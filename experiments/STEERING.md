@@ -1,13 +1,13 @@
-# Current frontier — Phase152 prepared constants and integrated native compiler
+# Current frontier — Phase153 measured cold-build headroom
 
-[Latest report](../implementation/phase152/README.md) ·
-[Metrics](../implementation/phase152/metrics.json) ·
+[Latest investigation](../implementation/phase153/README.md) ·
+[Headroom metrics](../implementation/phase153/metrics.json) ·
 [Qualification](../implementation/phase152/qualification.json) ·
 [Independent audit](../research/phase152/final-audit.md) ·
 [Experiment ledger](ledger.md).
 
 This is current steering, not another historical ledger. The previous complete
-Phase151 frontier remains in Git at `8b5abf2`.
+Phase152 frontier remains in Git at `0a16bb7`.
 
 ## What Phase152 establishes
 
@@ -57,30 +57,40 @@ available as the qualified parent. Use the one maintained source tree and
 Metric definitions remain in the
 [comparison guide](../docs/self_hosted/NATIVE_COMPILER_COMPARISON.md).
 
-## Highest-value next investigation
+## Highest-value next experiment
 
-The narrow prepared-value boundary paid off, but its prior ctor/sink profile
-envelope was only about 6%. Repeating this as another ambitious whole-build
-prediction is unjustified. Refresh attribution on the new qualified image and
-look for complete allocation/representation work in lowering, rendering and
-frontend publication. Use the roughly 16-second checked API acquisition and
-small independent witnesses before another full compiler build.
+[Phase153](../implementation/phase153/README.md) profiles the actual Phase152 N2
+on its exact qualified source: 7,406 usable samples, 236.947s staged CPU, complete
+N3 QBE equality. Raw lowering39.27s + initial optimization23.55s + output/cleanup
+38.63s =101.45s. Halving this whole region is a conditional roughly20% cold-build
+opportunity, not an achieved saving. Ownership/reclamation/allocation plus register
+transport occupy42.71% of disjoint physical samples; selected string workers
+add9.92%. These overlap stage costs and are not wholly removable.
 
-Packed static values and static boxes are a possible narrow follow-up. Raw static
-boxes can acquire owning wrappers when stored into owning objects; do not extend
-nonownership without preserving that boundary. Remaining sites are unprofiled.
-See the [semantic contract](../research/phase152/prepared-values-contract.md).
+Prioritize a complete producer→numeric identities/compact facts→analysis→output
+prototype using actual compiler and unrelated Map owners. Include final independent
+verification conversion and destruction; inspect native accesses. Require close
+to2× over a representative complete region before full image acquisition. Do not
+repeat Phase148's late pack/unpack adapter or a lookup-only microbenchmark.
 
-Make identity comparison the first generated-program regression gate. Emit
-against complete frozen references, then build/time changed products under the
-same runtime/toolchain. All 90 fresh program machine builds in this campaign
-preceded discovering identical code; much of that cost was avoidable. Identity
-is evidence, not a fabricated timing sample or a new full-suite speed score.
+Two alternatives are source-grounded: lifetime-tied borrowed-descendant results
+are still unsupported by scalar/original-root borrowing summaries, and
+`p143cp_put_log` canonicalizes the accumulated definition world before ordinary
+non-childless publication. The latter has243 named book-finalization samples in
+the33.57s checking interval and369 static type declarations as exposure; this is
+not369 measured calls or a20% whole-build opportunity. Audit exact publication
+commutation and failure worlds before its cheap replay experiment.
 
-Two existing host defects were fixed: C requests now use the public native route
-instead of direct-JS dependency analysis, and benchmark eligibility is assigned
-per input row. Frozen failed reports remain intact; future manifests must pin
-the corrected tools. Do not reinterpret old aggregate claims silently.
+Phase153 spent281.46s across five guarded jobs, including just10.48s for the small
+output gate; no self-build or broad runtime campaign. Production source remains
+Phase152. A small event probe records24.69M pooled allocation calls for a complete
+request including Base load and1.24MB output; do not extrapolate its counts to
+full-source CPU shares.
+
+Keep identity comparison before broad machine builds and timing. Reuse qualified
+unchanged products under exact source/runtime/toolchain identities. Identity is
+not a fabricated timing observation or a new full-suite speed score. The Phase152
+C-route and benchmark-eligibility fixes remain the maintained methods.
 
 ## Relevant recent evidence
 

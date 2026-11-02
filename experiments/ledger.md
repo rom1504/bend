@@ -6283,3 +6283,35 @@ fixed; negative reports remain frozen. All 51 guarded jobs closed, 29.10min
 including failures, no OOM/timeouts/pruning. Next use code identity before broad
 machine builds and refresh attribution on the qualified image. The compiler
 is measurably improved, but recursive research acceleration is not established.
+
+
+## 2026-11-02 — Phase153 substantial cold-build headroom
+
+[Report](../implementation/phase153/README.md) ·
+[Metrics](../implementation/phase153/metrics.json) ·
+[Design](../design/phase153/README.md).
+
+Qualified Phase152 N2, unchanged source/runtime selection. One fresh exact-output
+full profile:7,406 usable samples,236.947s staged CPU. Raw lowering39.27s,
+render/output/cleanup38.63s, check/publication33.57s, parse29.64s. Backend
+lower→initial-opt→output totals101.45s; making that whole region2× faster would
+conditionally remove about51s. No implementation speedup is claimed.
+
+Disjoint physical samples put42.71% in ownership/products, reclamation, allocation
+and register transport; selected string workers add9.92%. All313 eligible libc
+samples independently recover register-copy callers. A complete small request
+records24.69M mostly pooled allocation calls and25.57M drop entries, with Base
+loading/output/cleanup included; counts are not time or full-source projections.
+
+Source audits identify missing borrowed-descendant results and repeated whole-world
+canonicalization at non-childless definition publication. The latter's33.57s
+entire-stage ceiling cannot independently meet20%. Recommend a complete native
+producer-to-consumer compact-identity experiment, with final verifier conversion
+and teardown charged; stop before full qualification unless regional evidence
+supports a meaningful whole-build gain. Prior late conversion and optimization-
+disable negatives remain binding evidence.
+
+Five guarded jobs281.46s, no self-builds or broad runtime campaigns; all closed
+without pruning. One CLI resource-limit admission refusal started no target.
+Two bounded read-only agents; root controlled the sole target lane. Installed
+and maintained compiler remain Phase152; this phase changes research evidence only.

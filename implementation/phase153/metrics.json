@@ -1,0 +1,2575 @@
+{
+  "kind": "phase153-headroom",
+  "version": 1,
+  "sourceCommit": "0a16bb7",
+  "inputs": [
+    {
+      "file": "experiments/phase153/summarize.py",
+      "bytes": 5720,
+      "sha256": "d812cd1ec26bcbf3b370ec436eac37617caae139970af83f3a9770c67462d1ee"
+    },
+    {
+      "file": "selfhost/build/phase153/analysis01/summary.json",
+      "bytes": 74278,
+      "sha256": "4f82eb9bf1ee32d8c7cb58e59291a2faf94b52db04f7f0203900d2cb5b16b2df"
+    },
+    {
+      "file": "selfhost/build/phase153/attribution01/report.json",
+      "bytes": 1851234,
+      "sha256": "4f69a7a15891204d5919c517857c0dea6c72f1fec7609b2da2a0bd2204dd9e40"
+    },
+    {
+      "file": "selfhost/build/phase153/events-attribution01/report.json",
+      "bytes": 2436591,
+      "sha256": "fa1b5f155ae76a7154e631ade1550dea9995c33b0a65348be09716a8f178d656"
+    },
+    {
+      "file": "selfhost/build/phase153/full01/capture/000-sample-full-current-candidate-n2-diagnostic/analysis.json",
+      "bytes": 1555813,
+      "sha256": "b3ae2b98ee10e3144d4f49dedf7542420154cf4c3da77f10db8874bbeaf83d5d"
+    },
+    {
+      "file": "selfhost/build/phase153/attribution01/events.jsonl",
+      "bytes": 5017442,
+      "sha256": "881974f095e1824b7b6f40a8497b9a7f6df3fb0db058f2933e1d75afbed70026"
+    }
+  ],
+  "profile": {
+    "wallSeconds": 238.76167096709833,
+    "stagedThreadCpuSeconds": 236.946865927,
+    "samples": 7406,
+    "quality": {
+      "scope": "main_thread",
+      "main_thread_cpu_fraction": 0.9943202745212689,
+      "sampled_thread_cpu_fraction": 0.9943202745212689,
+      "minimum_process_cpu_fraction": 0.95,
+      "minimum_samples": 500,
+      "enough_samples": true,
+      "thread_lifecycle_complete": true,
+      "near_complete_process_cpu_coverage": true,
+      "usable_for_process_cpu_attribution": true,
+      "limitations": [],
+      "zero_loss": true,
+      "handler_intact": true,
+      "main_thread_shutdown": true,
+      "expected_clock_periods": 7406.66218865625,
+      "delivered_per_expected_period": 0.9999105955369122,
+      "delivery_plausible": true
+    },
+    "stageRows": [
+      {
+        "label": "raw generic/private lowering",
+        "threadCpuSeconds": 39.271960997,
+        "samples": 1225,
+        "quantitativeProfileAdmitted": true
+      },
+      {
+        "label": "render/output and teardown until milestone exit",
+        "threadCpuSeconds": 38.63334235,
+        "samples": 1205,
+        "quantitativeProfileAdmitted": true
+      },
+      {
+        "label": "checking/publication",
+        "threadCpuSeconds": 33.568180392,
+        "samples": 1047,
+        "quantitativeProfileAdmitted": true
+      },
+      {
+        "label": "parse/load",
+        "threadCpuSeconds": 29.63567213,
+        "samples": 924,
+        "quantitativeProfileAdmitted": true
+      },
+      {
+        "label": "initial optimizer",
+        "threadCpuSeconds": 23.546568484,
+        "samples": 734,
+        "quantitativeProfileAdmitted": true
+      },
+      {
+        "label": "observer composition and selected final admission",
+        "threadCpuSeconds": 19.416719816,
+        "samples": 604,
+        "quantitativeProfileAdmitted": true
+      },
+      {
+        "label": "registry preparation",
+        "threadCpuSeconds": 16.230700796,
+        "samples": 506,
+        "quantitativeProfileAdmitted": true
+      },
+      {
+        "label": "first independent verifier",
+        "threadCpuSeconds": 7.92979778,
+        "samples": 246,
+        "quantitativeProfileAdmitted": false
+      },
+      {
+        "label": "annotation/reach",
+        "threadCpuSeconds": 6.402286291,
+        "samples": 198,
+        "quantitativeProfileAdmitted": false
+      },
+      {
+        "label": "erasure/finalization",
+        "threadCpuSeconds": 6.205287592,
+        "samples": 192,
+        "quantitativeProfileAdmitted": false
+      },
+      {
+        "label": "static preparation",
+        "threadCpuSeconds": 4.357140157,
+        "samples": 134,
+        "quantitativeProfileAdmitted": false
+      },
+      {
+        "label": "proof report",
+        "threadCpuSeconds": 3.273565045,
+        "samples": 100,
+        "quantitativeProfileAdmitted": false
+      },
+      {
+        "label": "layout check",
+        "threadCpuSeconds": 2.610730046,
+        "samples": 80,
+        "quantitativeProfileAdmitted": false
+      },
+      {
+        "label": "observer discovery",
+        "threadCpuSeconds": 2.034619462,
+        "samples": 62,
+        "quantitativeProfileAdmitted": false
+      },
+      {
+        "label": "observer permission",
+        "threadCpuSeconds": 1.446276832,
+        "samples": 43,
+        "quantitativeProfileAdmitted": false
+      },
+      {
+        "label": "initial private admission",
+        "threadCpuSeconds": 0.959516279,
+        "samples": 28,
+        "quantitativeProfileAdmitted": false
+      },
+      {
+        "label": "checked context",
+        "threadCpuSeconds": 0.740407241,
+        "samples": 21,
+        "quantitativeProfileAdmitted": false
+      },
+      {
+        "label": "owned/foreign eligibility",
+        "threadCpuSeconds": 0.245084009,
+        "samples": 6,
+        "quantitativeProfileAdmitted": false
+      },
+      {
+        "label": "Base preparation",
+        "threadCpuSeconds": 0.23315142,
+        "samples": 6,
+        "quantitativeProfileAdmitted": false
+      },
+      {
+        "label": "registry finalization",
+        "threadCpuSeconds": 0.10593501,
+        "samples": 1,
+        "quantitativeProfileAdmitted": false
+      },
+      {
+        "label": "runtime admission/certificate",
+        "threadCpuSeconds": 0.09105561,
+        "samples": 1,
+        "quantitativeProfileAdmitted": false
+      },
+      {
+        "label": "main eligibility",
+        "threadCpuSeconds": 0.008843622,
+        "samples": 0,
+        "quantitativeProfileAdmitted": false
+      },
+      {
+        "label": "output opening",
+        "threadCpuSeconds": 2.4566e-05,
+        "samples": 0,
+        "quantitativeProfileAdmitted": false
+      }
+    ]
+  },
+  "disjointPhysicalCategories": [
+    {
+      "category": "reclamation",
+      "samples": 1307,
+      "fraction": 0.17647853092087495
+    },
+    {
+      "category": "ownership_and_products",
+      "samples": 1192,
+      "fraction": 0.16095058061031595
+    },
+    {
+      "category": "allocation",
+      "samples": 137,
+      "fraction": 0.018498514717796382
+    },
+    {
+      "category": "register_copy_including_recovered_libc",
+      "samples": 527,
+      "fraction": 0.07115852011882258
+    },
+    {
+      "category": "selected_string_equality_hash_compare",
+      "samples": 735,
+      "fraction": 0.09924385633270322
+    },
+    {
+      "category": "scheduler",
+      "samples": 337,
+      "fraction": 0.04550364569268161
+    }
+  ],
+  "physicalInterpretation": "Disjoint sampled-PC buckets, not independent causal savings. They overlap stage/owner attribution. Register libc samples are recovered through the exact CFI table.",
+  "backendRegion": {
+    "stages": [
+      "raw generic/private lowering",
+      "initial optimizer",
+      "render/output and teardown until milestone exit"
+    ],
+    "threadCpuSeconds": 101.451871831,
+    "diagnosticFraction": 0.4281629614896696
+  },
+  "frontendRegion": {
+    "stages": [
+      "parse/load",
+      "checking/publication",
+      "annotation/reach",
+      "erasure/finalization"
+    ],
+    "threadCpuSeconds": 75.811426405
+  },
+  "conditionalCeiling": {
+    "cleanBuildReferenceSeconds": 249.22208714671433,
+    "diagnosticBackendTwofoldSecondsSaved": 50.7259359155,
+    "approximateColdReductionIfSameSavingTransfers": 0.20353708010493546,
+    "remainingColdSecondsIfSameSavingTransfers": 198.49615123121433,
+    "qualification": "Arithmetic screening scenario; no implementation or measured speedup. Diagnostic and clean clocks differ; machine overlap and migration overhead remain."
+  },
+  "publication": {
+    "stageSeconds": 33.568180392,
+    "bookFinalNamedSamples": 243,
+    "stageSamples": 1047,
+    "diagnosticSamplePeriodSeconds": 7.776,
+    "wholeColdImpossibleTotalEliminationFraction": 0.1346918356086103,
+    "scope": "Named active-owner observations only; shared index/hash/reclamation are not causally assigned. Stage bound is a diagnostic-to-clean sizing screen."
+  },
+  "smallRequestEvents": {
+    "sourceBytes": 8202,
+    "qbeBytes": 1237299,
+    "totals": {
+      "dispatches": 20445463,
+      "heap_alloc_calls": 24687184,
+      "heap_alloc_miss_calls": 1334,
+      "heap_free_calls": 24687184,
+      "heap_alloc_requested_words": 46298317,
+      "heap_free_words": 46298317,
+      "term_keep_calls": 11011861,
+      "term_sink_calls": 23578115,
+      "term_drop_calls": 25566523,
+      "ctr_take_calls": 27830296,
+      "frame_push_calls": 148643,
+      "frame_capture_words": 155612,
+      "return_calls": 9635270,
+      "primitive_calls": 7501840,
+      "register_words_copy_requested": 36418475,
+      "register_words_clear_requested": 0
+    },
+    "topOwnersPerCounter": {
+      "dispatches": [
+        {
+          "owner": "p111v_name_chars",
+          "kind": "lowered_owner",
+          "count": 2857550,
+          "fractionOfAllEvents": 0.1397645042325527
+        },
+        {
+          "owner": "p130m_word",
+          "kind": "lowered_owner",
+          "count": 1299824,
+          "fractionOfAllEvents": 0.06357518046913391
+        },
+        {
+          "owner": "p113j_buffer_peel",
+          "kind": "lowered_owner",
+          "count": 979581,
+          "fractionOfAllEvents": 0.04791190104132149
+        },
+        {
+          "owner": "Bool.and",
+          "kind": "lowered_owner",
+          "count": 815239,
+          "fractionOfAllEvents": 0.03987383411175379
+        },
+        {
+          "owner": "p131i_insert",
+          "kind": "lowered_owner",
+          "count": 809300,
+          "fractionOfAllEvents": 0.039583354018444095
+        },
+        {
+          "owner": "p88_number",
+          "kind": "lowered_owner",
+          "count": 648138,
+          "fractionOfAllEvents": 0.03170082281824579
+        },
+        {
+          "owner": "String.append",
+          "kind": "lowered_owner",
+          "count": 544203,
+          "fractionOfAllEvents": 0.026617298908809255
+        },
+        {
+          "owner": "p88_fields",
+          "kind": "lowered_owner",
+          "count": 505142,
+          "fractionOfAllEvents": 0.02470680169972184
+        },
+        {
+          "owner": "p88_field",
+          "kind": "lowered_owner",
+          "count": 457490,
+          "fractionOfAllEvents": 0.022376113468303458
+        },
+        {
+          "owner": "String.eq",
+          "kind": "lowered_owner",
+          "count": 364582,
+          "fractionOfAllEvents": 0.017831926819167655
+        },
+        {
+          "owner": "p88_u32",
+          "kind": "lowered_owner",
+          "count": 324956,
+          "fractionOfAllEvents": 0.015893795117283477
+        },
+        {
+          "owner": "p111v_decl",
+          "kind": "lowered_owner",
+          "count": 251115,
+          "fractionOfAllEvents": 0.012282187006476694
+        },
+        {
+          "owner": "U32.show",
+          "kind": "lowered_owner",
+          "count": 238856,
+          "fractionOfAllEvents": 0.011682591878697
+        },
+        {
+          "owner": "p88_fields_next",
+          "kind": "lowered_owner",
+          "count": 228740,
+          "fractionOfAllEvents": 0.01118781218111813
+        },
+        {
+          "owner": "String.starts_with",
+          "kind": "lowered_owner",
+          "count": 211141,
+          "fractionOfAllEvents": 0.010327034413453978
+        },
+        {
+          "owner": "index_leaf",
+          "kind": "lowered_owner",
+          "count": 174060,
+          "fractionOfAllEvents": 0.008513380205672036
+        },
+        {
+          "owner": "index_join",
+          "kind": "lowered_owner",
+          "count": 159004,
+          "fractionOfAllEvents": 0.007776982110896682
+        },
+        {
+          "owner": "subst_terms",
+          "kind": "lowered_owner",
+          "count": 145027,
+          "fractionOfAllEvents": 0.007093358560772138
+        },
+        {
+          "owner": "index_remove",
+          "kind": "lowered_owner",
+          "count": 140738,
+          "fractionOfAllEvents": 0.006883580968550333
+        },
+        {
+          "owner": "Bool.not",
+          "kind": "lowered_owner",
+          "count": 139233,
+          "fractionOfAllEvents": 0.00680997050543683
+        },
+        {
+          "owner": "subst_node",
+          "kind": "lowered_owner",
+          "count": 131036,
+          "fractionOfAllEvents": 0.006409050262153515
+        },
+        {
+          "owner": "nc_ctor_codes",
+          "kind": "lowered_owner",
+          "count": 129513,
+          "fractionOfAllEvents": 0.006334559408119053
+        },
+        {
+          "owner": "p111v_intersection_bucket",
+          "kind": "lowered_owner",
+          "count": 128256,
+          "fractionOfAllEvents": 0.006273078775472094
+        },
+        {
+          "owner": "p112r_buffer_sites",
+          "kind": "lowered_owner",
+          "count": 125842,
+          "fractionOfAllEvents": 0.006155008570850168
+        },
+        {
+          "owner": "p112r_buffer",
+          "kind": "lowered_owner",
+          "count": 122754,
+          "fractionOfAllEvents": 0.006003972617299007
+        }
+      ],
+      "heap_alloc_calls": [
+        {
+          "owner": "String.append",
+          "kind": "lowered_owner",
+          "count": 8016875,
+          "fractionOfAllEvents": 0.32473833386586337
+        },
+        {
+          "owner": "p144e_body_tail",
+          "kind": "lowered_owner",
+          "count": 2102134,
+          "fractionOfAllEvents": 0.08515082157608579
+        },
+        {
+          "owner": "p88_number",
+          "kind": "lowered_owner",
+          "count": 1620345,
+          "fractionOfAllEvents": 0.06563506797697137
+        },
+        {
+          "owner": null,
+          "kind": "outside_dispatch",
+          "count": 1502046,
+          "fractionOfAllEvents": 0.060843148412552846
+        },
+        {
+          "owner": "p130m_word",
+          "kind": "lowered_owner",
+          "count": 974868,
+          "fractionOfAllEvents": 0.03948882950765061
+        },
+        {
+          "owner": "p131i_insert",
+          "kind": "lowered_owner",
+          "count": 806964,
+          "fractionOfAllEvents": 0.03268756776795604
+        },
+        {
+          "owner": "p88_field",
+          "kind": "lowered_owner",
+          "count": 747901,
+          "fractionOfAllEvents": 0.03029511182806431
+        },
+        {
+          "owner": "U32.show",
+          "kind": "lowered_owner",
+          "count": 468477,
+          "fractionOfAllEvents": 0.01897652644384228
+        },
+        {
+          "owner": "p88_fields_finish",
+          "kind": "lowered_owner",
+          "count": 457481,
+          "fractionOfAllEvents": 0.018531113147615377
+        },
+        {
+          "owner": "p111v_put",
+          "kind": "lowered_owner",
+          "count": 412707,
+          "fractionOfAllEvents": 0.016717459553102533
+        },
+        {
+          "owner": "p88_fields_next",
+          "kind": "lowered_owner",
+          "count": 409819,
+          "fractionOfAllEvents": 0.01660047577722919
+        },
+        {
+          "owner": "p118u_divmod",
+          "kind": "lowered_owner",
+          "count": 376438,
+          "fractionOfAllEvents": 0.01524831669744107
+        },
+        {
+          "owner": "index_leaf",
+          "kind": "lowered_owner",
+          "count": 343219,
+          "fractionOfAllEvents": 0.013902719726964404
+        },
+        {
+          "owner": "index_join",
+          "kind": "lowered_owner",
+          "count": 238506,
+          "fractionOfAllEvents": 0.009661126194060853
+        },
+        {
+          "owner": "p111q_memory",
+          "kind": "lowered_owner",
+          "count": 238230,
+          "fractionOfAllEvents": 0.00964994630412282
+        },
+        {
+          "owner": "p134e_data_slice",
+          "kind": "lowered_owner",
+          "count": 226133,
+          "fractionOfAllEvents": 0.009159934968686587
+        },
+        {
+          "owner": "p112f_name",
+          "kind": "lowered_owner",
+          "count": 189799,
+          "fractionOfAllEvents": 0.007688159167931021
+        },
+        {
+          "owner": "p112f_value",
+          "kind": "lowered_owner",
+          "count": 185218,
+          "fractionOfAllEvents": 0.007502597299068213
+        },
+        {
+          "owner": "p112a_original_stmt",
+          "kind": "lowered_owner",
+          "count": 183569,
+          "fractionOfAllEvents": 0.007435801507373219
+        },
+        {
+          "owner": "p114t_fusion_buffer",
+          "kind": "lowered_owner",
+          "count": 153467,
+          "fractionOfAllEvents": 0.006216464380870658
+        },
+        {
+          "owner": "p88_build",
+          "kind": "lowered_owner",
+          "count": 142983,
+          "fractionOfAllEvents": 0.005791790590615763
+        },
+        {
+          "owner": "p147v_insert",
+          "kind": "lowered_owner",
+          "count": 140630,
+          "fractionOfAllEvents": 0.00569647797820926
+        },
+        {
+          "owner": "p113k_put",
+          "kind": "lowered_owner",
+          "count": 130337,
+          "fractionOfAllEvents": 0.005279540995846266
+        },
+        {
+          "owner": "p147n_put",
+          "kind": "lowered_owner",
+          "count": 117015,
+          "fractionOfAllEvents": 0.004739908772098105
+        },
+        {
+          "owner": "p113e_public_loads",
+          "kind": "lowered_owner",
+          "count": 116916,
+          "fractionOfAllEvents": 0.00473589859418555
+        }
+      ],
+      "heap_alloc_miss_calls": [
+        {
+          "owner": null,
+          "kind": "outside_dispatch",
+          "count": 553,
+          "fractionOfAllEvents": 0.41454272863568215
+        },
+        {
+          "owner": "String.append",
+          "kind": "lowered_owner",
+          "count": 242,
+          "fractionOfAllEvents": 0.18140929535232383
+        },
+        {
+          "owner": "p88_number",
+          "kind": "lowered_owner",
+          "count": 67,
+          "fractionOfAllEvents": 0.05022488755622189
+        },
+        {
+          "owner": "p130m_word",
+          "kind": "lowered_owner",
+          "count": 54,
+          "fractionOfAllEvents": 0.04047976011994003
+        },
+        {
+          "owner": "p88_build",
+          "kind": "lowered_owner",
+          "count": 48,
+          "fractionOfAllEvents": 0.035982008995502246
+        },
+        {
+          "owner": "p88_field",
+          "kind": "lowered_owner",
+          "count": 37,
+          "fractionOfAllEvents": 0.027736131934032984
+        },
+        {
+          "owner": "p144e_body_tail",
+          "kind": "lowered_owner",
+          "count": 37,
+          "fractionOfAllEvents": 0.027736131934032984
+        },
+        {
+          "owner": "p88_fields_next",
+          "kind": "lowered_owner",
+          "count": 24,
+          "fractionOfAllEvents": 0.017991004497751123
+        },
+        {
+          "owner": "p131i_insert",
+          "kind": "lowered_owner",
+          "count": 17,
+          "fractionOfAllEvents": 0.012743628185907047
+        },
+        {
+          "owner": "p88_fields_finish",
+          "kind": "lowered_owner",
+          "count": 16,
+          "fractionOfAllEvents": 0.01199400299850075
+        },
+        {
+          "owner": "p111v_put",
+          "kind": "lowered_owner",
+          "count": 16,
+          "fractionOfAllEvents": 0.01199400299850075
+        },
+        {
+          "owner": "p112f_name",
+          "kind": "lowered_owner",
+          "count": 14,
+          "fractionOfAllEvents": 0.010494752623688156
+        },
+        {
+          "owner": "index_leaf",
+          "kind": "lowered_owner",
+          "count": 13,
+          "fractionOfAllEvents": 0.009745127436281859
+        },
+        {
+          "owner": "p112c_scan_next",
+          "kind": "lowered_owner",
+          "count": 11,
+          "fractionOfAllEvents": 0.008245877061469266
+        },
+        {
+          "owner": "p113a_raw",
+          "kind": "lowered_owner",
+          "count": 8,
+          "fractionOfAllEvents": 0.005997001499250375
+        },
+        {
+          "owner": "p123p_get",
+          "kind": "lowered_owner",
+          "count": 7,
+          "fractionOfAllEvents": 0.005247376311844078
+        },
+        {
+          "owner": "U32.show",
+          "kind": "lowered_owner",
+          "count": 7,
+          "fractionOfAllEvents": 0.005247376311844078
+        },
+        {
+          "owner": "subst_node",
+          "kind": "lowered_owner",
+          "count": 6,
+          "fractionOfAllEvents": 0.004497751124437781
+        },
+        {
+          "owner": "nq_layout_subst_list",
+          "kind": "lowered_owner",
+          "count": 6,
+          "fractionOfAllEvents": 0.004497751124437781
+        },
+        {
+          "owner": "index_join",
+          "kind": "lowered_owner",
+          "count": 6,
+          "fractionOfAllEvents": 0.004497751124437781
+        },
+        {
+          "owner": "p118t_original_done",
+          "kind": "lowered_owner",
+          "count": 5,
+          "fractionOfAllEvents": 0.0037481259370314842
+        },
+        {
+          "owner": "nu_insert",
+          "kind": "lowered_owner",
+          "count": 5,
+          "fractionOfAllEvents": 0.0037481259370314842
+        },
+        {
+          "owner": "k_rebuild",
+          "kind": "lowered_owner",
+          "count": 5,
+          "fractionOfAllEvents": 0.0037481259370314842
+        },
+        {
+          "owner": "p134e_next",
+          "kind": "lowered_owner",
+          "count": 5,
+          "fractionOfAllEvents": 0.0037481259370314842
+        },
+        {
+          "owner": "p113k_get",
+          "kind": "lowered_owner",
+          "count": 4,
+          "fractionOfAllEvents": 0.0029985007496251873
+        }
+      ],
+      "heap_free_calls": [
+        {
+          "owner": "String.append",
+          "kind": "lowered_owner",
+          "count": 4577409,
+          "fractionOfAllEvents": 0.18541640877307028
+        },
+        {
+          "owner": "String.starts_with",
+          "kind": "lowered_owner",
+          "count": 2724601,
+          "fractionOfAllEvents": 0.11036499748209436
+        },
+        {
+          "owner": null,
+          "kind": "outside_dispatch",
+          "count": 2456237,
+          "fractionOfAllEvents": 0.09949441783234572
+        },
+        {
+          "owner": "p88_number",
+          "kind": "lowered_owner",
+          "count": 1572682,
+          "fractionOfAllEvents": 0.06370439009973758
+        },
+        {
+          "owner": "p130m_word",
+          "kind": "lowered_owner",
+          "count": 1299824,
+          "fractionOfAllEvents": 0.05265177267686748
+        },
+        {
+          "owner": "p144e_body_tail",
+          "kind": "lowered_owner",
+          "count": 1252749,
+          "fractionOfAllEvents": 0.05074491282602341
+        },
+        {
+          "owner": "p131i_insert",
+          "kind": "lowered_owner",
+          "count": 764441,
+          "fractionOfAllEvents": 0.030965095087394333
+        },
+        {
+          "owner": "p88_u32",
+          "kind": "lowered_owner",
+          "count": 649910,
+          "fractionOfAllEvents": 0.026325805324738535
+        },
+        {
+          "owner": "p88_field",
+          "kind": "lowered_owner",
+          "count": 637489,
+          "fractionOfAllEvents": 0.025822669770679395
+        },
+        {
+          "owner": "p88_build",
+          "kind": "lowered_owner",
+          "count": 520231,
+          "fractionOfAllEvents": 0.021072917834614107
+        },
+        {
+          "owner": "p88_fields_finish",
+          "kind": "lowered_owner",
+          "count": 505143,
+          "fractionOfAllEvents": 0.020461750518001566
+        },
+        {
+          "owner": "p118u_divmod",
+          "kind": "lowered_owner",
+          "count": 365783,
+          "fractionOfAllEvents": 0.014816716236246304
+        },
+        {
+          "owner": "p111v_intersection_bucket",
+          "kind": "lowered_owner",
+          "count": 292176,
+          "fractionOfAllEvents": 0.011835128704837295
+        },
+        {
+          "owner": "p111v_step",
+          "kind": "lowered_owner",
+          "count": 291159,
+          "fractionOfAllEvents": 0.011793933240826495
+        },
+        {
+          "owner": "String.eq",
+          "kind": "lowered_owner",
+          "count": 286576,
+          "fractionOfAllEvents": 0.011608290358268485
+        },
+        {
+          "owner": "p123p_get",
+          "kind": "lowered_owner",
+          "count": 229306,
+          "fractionOfAllEvents": 0.00928846319612638
+        },
+        {
+          "owner": "p88_fields_next",
+          "kind": "lowered_owner",
+          "count": 228740,
+          "fractionOfAllEvents": 0.009265536320383889
+        },
+        {
+          "owner": "p134e_data_slice",
+          "kind": "lowered_owner",
+          "count": 189330,
+          "fractionOfAllEvents": 0.0076691614564058826
+        },
+        {
+          "owner": "p111v_finish",
+          "kind": "lowered_owner",
+          "count": 168842,
+          "fractionOfAllEvents": 0.006839257162744848
+        },
+        {
+          "owner": "book_context_world",
+          "kind": "lowered_owner",
+          "count": 167933,
+          "fractionOfAllEvents": 0.006802436438275017
+        },
+        {
+          "owner": "p113e_body",
+          "kind": "lowered_owner",
+          "count": 164900,
+          "fractionOfAllEvents": 0.0066795791694994455
+        },
+        {
+          "owner": "p128br_retry_plans",
+          "kind": "lowered_owner",
+          "count": 156281,
+          "fractionOfAllEvents": 0.006330450650021485
+        },
+        {
+          "owner": "p114t_fusion_buffer",
+          "kind": "lowered_owner",
+          "count": 153467,
+          "fractionOfAllEvents": 0.006216464380870658
+        },
+        {
+          "owner": "p134e_next",
+          "kind": "lowered_owner",
+          "count": 151246,
+          "fractionOfAllEvents": 0.006126498672347563
+        },
+        {
+          "owner": "p113e_public_loads",
+          "kind": "lowered_owner",
+          "count": 103704,
+          "fractionOfAllEvents": 0.004200722123673563
+        }
+      ],
+      "heap_alloc_requested_words": [
+        {
+          "owner": "String.append",
+          "kind": "lowered_owner",
+          "count": 12031307,
+          "fractionOfAllEvents": 0.25986488882522446
+        },
+        {
+          "owner": "p88_number",
+          "kind": "lowered_owner",
+          "count": 4536966,
+          "fractionOfAllEvents": 0.09799418842805885
+        },
+        {
+          "owner": "p144e_body_tail",
+          "kind": "lowered_owner",
+          "count": 3153201,
+          "fractionOfAllEvents": 0.06810616895642232
+        },
+        {
+          "owner": null,
+          "kind": "outside_dispatch",
+          "count": 2257515,
+          "fractionOfAllEvents": 0.04876019575398389
+        },
+        {
+          "owner": "p88_field",
+          "kind": "lowered_owner",
+          "count": 2066630,
+          "fractionOfAllEvents": 0.04463725970859805
+        },
+        {
+          "owner": "p131i_insert",
+          "kind": "lowered_owner",
+          "count": 2046639,
+          "fractionOfAllEvents": 0.044205472954880844
+        },
+        {
+          "owner": "p111v_put",
+          "kind": "lowered_owner",
+          "count": 2033749,
+          "fractionOfAllEvents": 0.04392706110677846
+        },
+        {
+          "owner": "p130m_word",
+          "kind": "lowered_owner",
+          "count": 1624780,
+          "fractionOfAllEvents": 0.035093716257547765
+        },
+        {
+          "owner": "p88_fields_finish",
+          "kind": "lowered_owner",
+          "count": 1019855,
+          "fractionOfAllEvents": 0.02202790654355751
+        },
+        {
+          "owner": "U32.show",
+          "kind": "lowered_owner",
+          "count": 804295,
+          "fractionOfAllEvents": 0.017372013760241004
+        },
+        {
+          "owner": "p88_fields_next",
+          "kind": "lowered_owner",
+          "count": 638559,
+          "fractionOfAllEvents": 0.013792272405927845
+        },
+        {
+          "owner": "p113k_put",
+          "kind": "lowered_owner",
+          "count": 568266,
+          "fractionOfAllEvents": 0.012274009873836235
+        },
+        {
+          "owner": "p118u_divmod",
+          "kind": "lowered_owner",
+          "count": 564811,
+          "fractionOfAllEvents": 0.01219938513099731
+        },
+        {
+          "owner": "index_leaf",
+          "kind": "lowered_owner",
+          "count": 517279,
+          "fractionOfAllEvents": 0.011172738741237613
+        },
+        {
+          "owner": "index_join",
+          "kind": "lowered_owner",
+          "count": 477012,
+          "fractionOfAllEvents": 0.010303009502483643
+        },
+        {
+          "owner": "p88_record_put",
+          "kind": "lowered_owner",
+          "count": 428957,
+          "fractionOfAllEvents": 0.009265066805776115
+        },
+        {
+          "owner": "p111q_memory",
+          "kind": "lowered_owner",
+          "count": 354661,
+          "fractionOfAllEvents": 0.007660343247466209
+        },
+        {
+          "owner": "p134e_data_slice",
+          "kind": "lowered_owner",
+          "count": 337497,
+          "fractionOfAllEvents": 0.007289617028627628
+        },
+        {
+          "owner": "p88_build",
+          "kind": "lowered_owner",
+          "count": 330274,
+          "fractionOfAllEvents": 0.00713360703802689
+        },
+        {
+          "owner": "subst_node",
+          "kind": "lowered_owner",
+          "count": 327154,
+          "fractionOfAllEvents": 0.007066217979370611
+        },
+        {
+          "owner": "p147v_insert",
+          "kind": "lowered_owner",
+          "count": 309567,
+          "fractionOfAllEvents": 0.006686355359310361
+        },
+        {
+          "owner": "p112f_name",
+          "kind": "lowered_owner",
+          "count": 286823,
+          "fractionOfAllEvents": 0.006195106400951896
+        },
+        {
+          "owner": "p112f_value",
+          "kind": "lowered_owner",
+          "count": 275458,
+          "fractionOfAllEvents": 0.005949633115173495
+        },
+        {
+          "owner": "p147n_put",
+          "kind": "lowered_owner",
+          "count": 274943,
+          "fractionOfAllEvents": 0.005938509600683757
+        },
+        {
+          "owner": "p112a_original_stmt",
+          "kind": "lowered_owner",
+          "count": 270620,
+          "fractionOfAllEvents": 0.00584513687614174
+        }
+      ],
+      "heap_free_words": [
+        {
+          "owner": "String.append",
+          "kind": "lowered_owner",
+          "count": 6988564,
+          "fractionOfAllEvents": 0.15094639401255125
+        },
+        {
+          "owner": "p88_number",
+          "kind": "lowered_owner",
+          "count": 4489303,
+          "fractionOfAllEvents": 0.09696471256179787
+        },
+        {
+          "owner": "String.starts_with",
+          "kind": "lowered_owner",
+          "count": 4087072,
+          "fractionOfAllEvents": 0.08827690216039602
+        },
+        {
+          "owner": null,
+          "kind": "outside_dispatch",
+          "count": 3688877,
+          "fractionOfAllEvents": 0.07967626555410211
+        },
+        {
+          "owner": "p88_field",
+          "kind": "lowered_owner",
+          "count": 1956218,
+          "fractionOfAllEvents": 0.04225246459822719
+        },
+        {
+          "owner": "p130m_word",
+          "kind": "lowered_owner",
+          "count": 1949736,
+          "fractionOfAllEvents": 0.042112459509057315
+        },
+        {
+          "owner": "p131i_insert",
+          "kind": "lowered_owner",
+          "count": 1857671,
+          "fractionOfAllEvents": 0.04012394230226554
+        },
+        {
+          "owner": "p144e_body_tail",
+          "kind": "lowered_owner",
+          "count": 1839593,
+          "fractionOfAllEvents": 0.03973347454508983
+        },
+        {
+          "owner": "p88_fields_finish",
+          "kind": "lowered_owner",
+          "count": 1067517,
+          "fractionOfAllEvents": 0.02305736081076122
+        },
+        {
+          "owner": "p111v_intersection_bucket",
+          "kind": "lowered_owner",
+          "count": 1000573,
+          "fractionOfAllEvents": 0.021611433521438805
+        },
+        {
+          "owner": "p88_u32",
+          "kind": "lowered_owner",
+          "count": 974866,
+          "fractionOfAllEvents": 0.021056186556414135
+        },
+        {
+          "owner": "p88_build",
+          "kind": "lowered_owner",
+          "count": 748971,
+          "fractionOfAllEvents": 0.0161770675162987
+        },
+        {
+          "owner": "p113e_body",
+          "kind": "lowered_owner",
+          "count": 561647,
+          "fractionOfAllEvents": 0.01213104571382152
+        },
+        {
+          "owner": "p111v_finish",
+          "kind": "lowered_owner",
+          "count": 549812,
+          "fractionOfAllEvents": 0.011875420871130154
+        },
+        {
+          "owner": "p118u_divmod",
+          "kind": "lowered_owner",
+          "count": 548831,
+          "fractionOfAllEvents": 0.011854232195956497
+        },
+        {
+          "owner": "p123p_get",
+          "kind": "lowered_owner",
+          "count": 500640,
+          "fractionOfAllEvents": 0.010813352027461387
+        },
+        {
+          "owner": "p88_fields_next",
+          "kind": "lowered_owner",
+          "count": 457480,
+          "fractionOfAllEvents": 0.009881136716049527
+        },
+        {
+          "owner": "p111v_step",
+          "kind": "lowered_owner",
+          "count": 438209,
+          "fractionOfAllEvents": 0.009464901283560697
+        },
+        {
+          "owner": "String.eq",
+          "kind": "lowered_owner",
+          "count": 428268,
+          "fractionOfAllEvents": 0.009250185055322853
+        },
+        {
+          "owner": "p128br_retry_plans",
+          "kind": "lowered_owner",
+          "count": 412706,
+          "fractionOfAllEvents": 0.008914060526217401
+        },
+        {
+          "owner": "p88_record_put",
+          "kind": "lowered_owner",
+          "count": 381296,
+          "fractionOfAllEvents": 0.008235634137629668
+        },
+        {
+          "owner": "p134e_data_slice",
+          "kind": "lowered_owner",
+          "count": 281745,
+          "fractionOfAllEvents": 0.00608542638817735
+        },
+        {
+          "owner": "p113k_join_bucket",
+          "kind": "lowered_owner",
+          "count": 275926,
+          "fractionOfAllEvents": 0.005959741473971937
+        },
+        {
+          "owner": "p134e_next",
+          "kind": "lowered_owner",
+          "count": 256824,
+          "fractionOfAllEvents": 0.005547156282160321
+        },
+        {
+          "owner": "book_context_world",
+          "kind": "lowered_owner",
+          "count": 251941,
+          "fractionOfAllEvents": 0.005441688085551792
+        }
+      ],
+      "term_keep_calls": [
+        {
+          "owner": "p131i_insert",
+          "kind": "lowered_owner",
+          "count": 1587570,
+          "fractionOfAllEvents": 0.14416909185468288
+        },
+        {
+          "owner": "p130m_word",
+          "kind": "lowered_owner",
+          "count": 1299824,
+          "fractionOfAllEvents": 0.11803854044289153
+        },
+        {
+          "owner": "nc_native_primitive",
+          "kind": "lowered_owner",
+          "count": 311163,
+          "fractionOfAllEvents": 0.02825707661947422
+        },
+        {
+          "owner": "p111v_get",
+          "kind": "lowered_owner",
+          "count": 290764,
+          "fractionOfAllEvents": 0.026404619527979876
+        },
+        {
+          "owner": "lookup",
+          "kind": "lowered_owner",
+          "count": 199753,
+          "fractionOfAllEvents": 0.01813980398045344
+        },
+        {
+          "owner": "p113j_buffer_peel",
+          "kind": "lowered_owner",
+          "count": 185901,
+          "fractionOfAllEvents": 0.01688188763007452
+        },
+        {
+          "owner": "p147v_insert",
+          "kind": "lowered_owner",
+          "count": 147311,
+          "fractionOfAllEvents": 0.013377484514197919
+        },
+        {
+          "owner": "p111v_intersection_bucket",
+          "kind": "lowered_owner",
+          "count": 147303,
+          "fractionOfAllEvents": 0.013376758024824324
+        },
+        {
+          "owner": "p147n_put",
+          "kind": "lowered_owner",
+          "count": 143583,
+          "fractionOfAllEvents": 0.013038940466102869
+        },
+        {
+          "owner": "p88_field",
+          "kind": "lowered_owner",
+          "count": 136248,
+          "fractionOfAllEvents": 0.012372840521688386
+        },
+        {
+          "owner": "p111v_decl",
+          "kind": "lowered_owner",
+          "count": 133928,
+          "fractionOfAllEvents": 0.012162158603345973
+        },
+        {
+          "owner": "p111v_value",
+          "kind": "lowered_owner",
+          "count": 115571,
+          "fractionOfAllEvents": 0.010495137924461632
+        },
+        {
+          "owner": "nt_clean",
+          "kind": "lowered_owner",
+          "count": 110619,
+          "fractionOfAllEvents": 0.01004544100220662
+        },
+        {
+          "owner": "p88_fields_finish",
+          "kind": "lowered_owner",
+          "count": 95324,
+          "fractionOfAllEvents": 0.008656484131065584
+        },
+        {
+          "owner": "nq_layout_subst",
+          "kind": "lowered_owner",
+          "count": 93136,
+          "fractionOfAllEvents": 0.008457789287387482
+        },
+        {
+          "owner": "p113k_get",
+          "kind": "lowered_owner",
+          "count": 89457,
+          "fractionOfAllEvents": 0.008123694986705699
+        },
+        {
+          "owner": "index_leaf",
+          "kind": "lowered_owner",
+          "count": 87030,
+          "fractionOfAllEvents": 0.007903296272991458
+        },
+        {
+          "owner": "f_prec",
+          "kind": "lowered_owner",
+          "count": 84393,
+          "fractionOfAllEvents": 0.007663827213220363
+        },
+        {
+          "owner": "nb_contains",
+          "kind": "lowered_owner",
+          "count": 80455,
+          "fractionOfAllEvents": 0.0073062128190684575
+        },
+        {
+          "owner": "index_join",
+          "kind": "lowered_owner",
+          "count": 79502,
+          "fractionOfAllEvents": 0.007219669772439009
+        },
+        {
+          "owner": "p147v_decl",
+          "kind": "lowered_owner",
+          "count": 78610,
+          "fractionOfAllEvents": 0.007138666207283219
+        },
+        {
+          "owner": "p111_op_id",
+          "kind": "lowered_owner",
+          "count": 76935,
+          "fractionOfAllEvents": 0.006986557494686865
+        },
+        {
+          "owner": "kr_resolve",
+          "kind": "lowered_owner",
+          "count": 75770,
+          "fractionOfAllEvents": 0.006880762479657162
+        },
+        {
+          "owner": "subst_node",
+          "kind": "lowered_owner",
+          "count": 69900,
+          "fractionOfAllEvents": 0.006347700901782178
+        },
+        {
+          "owner": "p113k_join_record",
+          "kind": "lowered_owner",
+          "count": 68540,
+          "fractionOfAllEvents": 0.006224197708271109
+        }
+      ],
+      "term_sink_calls": [
+        {
+          "owner": "p111v_get",
+          "kind": "lowered_owner",
+          "count": 1339384,
+          "fractionOfAllEvents": 0.05680623747911994
+        },
+        {
+          "owner": "lookup",
+          "kind": "lowered_owner",
+          "count": 1067994,
+          "fractionOfAllEvents": 0.045295987401876694
+        },
+        {
+          "owner": "p111v_intersection_bucket",
+          "kind": "lowered_owner",
+          "count": 760494,
+          "fractionOfAllEvents": 0.03225423236760021
+        },
+        {
+          "owner": "String.eq",
+          "kind": "lowered_owner",
+          "count": 724673,
+          "fractionOfAllEvents": 0.030734984539688606
+        },
+        {
+          "owner": "index_leaf",
+          "kind": "lowered_owner",
+          "count": 696240,
+          "fractionOfAllEvents": 0.029529078130291587
+        },
+        {
+          "owner": "p111v_value",
+          "kind": "lowered_owner",
+          "count": 627829,
+          "fractionOfAllEvents": 0.026627616329804142
+        },
+        {
+          "owner": "nc_native_primitive",
+          "kind": "lowered_owner",
+          "count": 526811,
+          "fractionOfAllEvents": 0.02234321954914547
+        },
+        {
+          "owner": "p113k_get",
+          "kind": "lowered_owner",
+          "count": 507384,
+          "fractionOfAllEvents": 0.02151927751645965
+        },
+        {
+          "owner": "p111v_decl",
+          "kind": "lowered_owner",
+          "count": 452007,
+          "fractionOfAllEvents": 0.019170616480579553
+        },
+        {
+          "owner": "p113l_relation",
+          "kind": "lowered_owner",
+          "count": 423649,
+          "fractionOfAllEvents": 0.017967890987044554
+        },
+        {
+          "owner": "String.starts_with",
+          "kind": "lowered_owner",
+          "count": 402260,
+          "fractionOfAllEvents": 0.01706073619540833
+        },
+        {
+          "owner": "kr_resolve",
+          "kind": "lowered_owner",
+          "count": 359438,
+          "fractionOfAllEvents": 0.015244560474830155
+        },
+        {
+          "owner": "p113k_join_record",
+          "kind": "lowered_owner",
+          "count": 335920,
+          "fractionOfAllEvents": 0.014247110084924092
+        },
+        {
+          "owner": "p113l_version",
+          "kind": "lowered_owner",
+          "count": 331556,
+          "fractionOfAllEvents": 0.0140620231939661
+        },
+        {
+          "owner": "p112w_ready",
+          "kind": "lowered_owner",
+          "count": 330884,
+          "fractionOfAllEvents": 0.014033522187842413
+        },
+        {
+          "owner": "index_remove",
+          "kind": "lowered_owner",
+          "count": 301538,
+          "fractionOfAllEvents": 0.012788893429351753
+        },
+        {
+          "owner": "p113k_value",
+          "kind": "lowered_owner",
+          "count": 274391,
+          "fractionOfAllEvents": 0.01163752912393548
+        },
+        {
+          "owner": "p113k_replace",
+          "kind": "lowered_owner",
+          "count": 272582,
+          "fractionOfAllEvents": 0.01156080543334359
+        },
+        {
+          "owner": "norm_max_book",
+          "kind": "lowered_owner",
+          "count": 254647,
+          "fractionOfAllEvents": 0.010800142420206195
+        },
+        {
+          "owner": "j_find_ctor",
+          "kind": "lowered_owner",
+          "count": 236344,
+          "fractionOfAllEvents": 0.010023871713239162
+        },
+        {
+          "owner": "List.length",
+          "kind": "lowered_owner",
+          "count": 228740,
+          "fractionOfAllEvents": 0.009701369257041964
+        },
+        {
+          "owner": "p88_string_eq",
+          "kind": "lowered_owner",
+          "count": 213074,
+          "fractionOfAllEvents": 0.009036939551783509
+        },
+        {
+          "owner": "ns_body",
+          "kind": "lowered_owner",
+          "count": 209954,
+          "fractionOfAllEvents": 0.008904613451923532
+        },
+        {
+          "owner": "nc_uses_term",
+          "kind": "lowered_owner",
+          "count": 209770,
+          "fractionOfAllEvents": 0.008896809605008712
+        },
+        {
+          "owner": "nc_pack_foreign",
+          "kind": "lowered_owner",
+          "count": 180456,
+          "fractionOfAllEvents": 0.007653538037285848
+        }
+      ],
+      "term_drop_calls": [
+        {
+          "owner": "p111v_get",
+          "kind": "lowered_owner",
+          "count": 4627175,
+          "fractionOfAllEvents": 0.18098569758586258
+        },
+        {
+          "owner": "lookup",
+          "kind": "lowered_owner",
+          "count": 1200449,
+          "fractionOfAllEvents": 0.04695394051040887
+        },
+        {
+          "owner": "p113k_get",
+          "kind": "lowered_owner",
+          "count": 1125211,
+          "fractionOfAllEvents": 0.04401110780687698
+        },
+        {
+          "owner": "String.starts_with",
+          "kind": "lowered_owner",
+          "count": 1118996,
+          "fractionOfAllEvents": 0.043768016479988306
+        },
+        {
+          "owner": "p111v_value",
+          "kind": "lowered_owner",
+          "count": 656186,
+          "fractionOfAllEvents": 0.02566582870889405
+        },
+        {
+          "owner": "p111v_name_chars",
+          "kind": "lowered_owner",
+          "count": 653616,
+          "fractionOfAllEvents": 0.025565306631644826
+        },
+        {
+          "owner": "p111v_intersection_bucket",
+          "kind": "lowered_owner",
+          "count": 438683,
+          "fractionOfAllEvents": 0.01715849276806236
+        },
+        {
+          "owner": "p117h_get",
+          "kind": "lowered_owner",
+          "count": 396154,
+          "fractionOfAllEvents": 0.015495028401007051
+        },
+        {
+          "owner": "index_leaf",
+          "kind": "lowered_owner",
+          "count": 348308,
+          "fractionOfAllEvents": 0.013623596763627186
+        },
+        {
+          "owner": "p144e_body_tail",
+          "kind": "lowered_owner",
+          "count": 317676,
+          "fractionOfAllEvents": 0.012425467475573429
+        },
+        {
+          "owner": "p113j_buffer_peel",
+          "kind": "lowered_owner",
+          "count": 297619,
+          "fractionOfAllEvents": 0.011640965022893414
+        },
+        {
+          "owner": "p112w_ready",
+          "kind": "lowered_owner",
+          "count": 291610,
+          "fractionOfAllEvents": 0.011405931107644164
+        },
+        {
+          "owner": "p113l_version",
+          "kind": "lowered_owner",
+          "count": 289016,
+          "fractionOfAllEvents": 0.0113044703028253
+        },
+        {
+          "owner": "p147v_value",
+          "kind": "lowered_owner",
+          "count": 285044,
+          "fractionOfAllEvents": 0.01114911089004946
+        },
+        {
+          "owner": "p147v_get",
+          "kind": "lowered_owner",
+          "count": 275023,
+          "fractionOfAllEvents": 0.010757153016074966
+        },
+        {
+          "owner": "p113l_relation",
+          "kind": "lowered_owner",
+          "count": 264716,
+          "fractionOfAllEvents": 0.010354008638562232
+        },
+        {
+          "owner": "nc_native_primitive",
+          "kind": "lowered_owner",
+          "count": 259400,
+          "fractionOfAllEvents": 0.010146080481886411
+        },
+        {
+          "owner": "norm_max_book",
+          "kind": "lowered_owner",
+          "count": 246427,
+          "fractionOfAllEvents": 0.009638659116845884
+        },
+        {
+          "owner": "p113k_value",
+          "kind": "lowered_owner",
+          "count": 245810,
+          "fractionOfAllEvents": 0.009614525995576325
+        },
+        {
+          "owner": "p113k_replace",
+          "kind": "lowered_owner",
+          "count": 245676,
+          "fractionOfAllEvents": 0.00960928476664582
+        },
+        {
+          "owner": "String.eq",
+          "kind": "lowered_owner",
+          "count": 233464,
+          "fractionOfAllEvents": 0.00913162888829271
+        },
+        {
+          "owner": "index_remove",
+          "kind": "lowered_owner",
+          "count": 216314,
+          "fractionOfAllEvents": 0.008460829812485648
+        },
+        {
+          "owner": "ns_body",
+          "kind": "lowered_owner",
+          "count": 199061,
+          "fractionOfAllEvents": 0.0077860020308588695
+        },
+        {
+          "owner": "j_find_ctor",
+          "kind": "lowered_owner",
+          "count": 177272,
+          "fractionOfAllEvents": 0.006933754738569652
+        },
+        {
+          "owner": "p113k_join_record",
+          "kind": "lowered_owner",
+          "count": 176467,
+          "fractionOfAllEvents": 0.006902268251337892
+        }
+      ],
+      "ctr_take_calls": [
+        {
+          "owner": "String.append",
+          "kind": "lowered_owner",
+          "count": 4014432,
+          "fractionOfAllEvents": 0.14424683086374648
+        },
+        {
+          "owner": "p111v_get",
+          "kind": "lowered_owner",
+          "count": 3752090,
+          "fractionOfAllEvents": 0.13482034111315236
+        },
+        {
+          "owner": "String.starts_with",
+          "kind": "lowered_owner",
+          "count": 1622146,
+          "fractionOfAllEvents": 0.058287055229308375
+        },
+        {
+          "owner": null,
+          "kind": "outside_dispatch",
+          "count": 1239782,
+          "fractionOfAllEvents": 0.04454792719416279
+        },
+        {
+          "owner": "p144e_body_tail",
+          "kind": "lowered_owner",
+          "count": 1160390,
+          "fractionOfAllEvents": 0.04169520870349349
+        },
+        {
+          "owner": "p88_number",
+          "kind": "lowered_owner",
+          "count": 972207,
+          "fractionOfAllEvents": 0.034933404948334
+        },
+        {
+          "owner": "p113k_get",
+          "kind": "lowered_owner",
+          "count": 858191,
+          "fractionOfAllEvents": 0.03083657464512774
+        },
+        {
+          "owner": "p111v_name_chars",
+          "kind": "lowered_owner",
+          "count": 708237,
+          "fractionOfAllEvents": 0.0254484177962031
+        },
+        {
+          "owner": "p130m_word",
+          "kind": "lowered_owner",
+          "count": 649912,
+          "fractionOfAllEvents": 0.02335268011522407
+        },
+        {
+          "owner": "lookup",
+          "kind": "lowered_owner",
+          "count": 521963,
+          "fractionOfAllEvents": 0.018755208352796534
+        },
+        {
+          "owner": "p88_field",
+          "kind": "lowered_owner",
+          "count": 501241,
+          "fractionOfAllEvents": 0.018010624105471246
+        },
+        {
+          "owner": "p131i_insert",
+          "kind": "lowered_owner",
+          "count": 448165,
+          "fractionOfAllEvents": 0.01610349383276412
+        },
+        {
+          "owner": "p88_build",
+          "kind": "lowered_owner",
+          "count": 352804,
+          "fractionOfAllEvents": 0.012676976198887717
+        },
+        {
+          "owner": "p88_u32",
+          "kind": "lowered_owner",
+          "count": 324956,
+          "fractionOfAllEvents": 0.011676340057612035
+        },
+        {
+          "owner": "p117h_get",
+          "kind": "lowered_owner",
+          "count": 311929,
+          "fractionOfAllEvents": 0.011208253049123157
+        },
+        {
+          "owner": "p113j_buffer_peel",
+          "kind": "lowered_owner",
+          "count": 299855,
+          "fractionOfAllEvents": 0.0107744092984135
+        },
+        {
+          "owner": "p111v_value",
+          "kind": "lowered_owner",
+          "count": 290965,
+          "fractionOfAllEvents": 0.010454973242109965
+        },
+        {
+          "owner": "p88_fields_finish",
+          "kind": "lowered_owner",
+          "count": 276402,
+          "fractionOfAllEvents": 0.009931694582048282
+        },
+        {
+          "owner": "List.length",
+          "kind": "lowered_owner",
+          "count": 228740,
+          "fractionOfAllEvents": 0.008219100508309362
+        },
+        {
+          "owner": "p88_fields_next",
+          "kind": "lowered_owner",
+          "count": 228740,
+          "fractionOfAllEvents": 0.008219100508309362
+        },
+        {
+          "owner": "p88_fields",
+          "kind": "lowered_owner",
+          "count": 228740,
+          "fractionOfAllEvents": 0.008219100508309362
+        },
+        {
+          "owner": "p113l_relation",
+          "kind": "lowered_owner",
+          "count": 197987,
+          "fractionOfAllEvents": 0.007114081718714023
+        },
+        {
+          "owner": "p113l_version",
+          "kind": "lowered_owner",
+          "count": 195981,
+          "fractionOfAllEvents": 0.0070420019966729785
+        },
+        {
+          "owner": "p118u_divmod",
+          "kind": "lowered_owner",
+          "count": 188200,
+          "fractionOfAllEvents": 0.0067624146002615276
+        },
+        {
+          "owner": "p112w_ready",
+          "kind": "lowered_owner",
+          "count": 173740,
+          "fractionOfAllEvents": 0.006242836942876928
+        }
+      ],
+      "frame_push_calls": [
+        {
+          "owner": "nb_contains",
+          "kind": "lowered_owner",
+          "count": 79817,
+          "fractionOfAllEvents": 0.53697113217575
+        },
+        {
+          "owner": "p112f_clean_args",
+          "kind": "lowered_owner",
+          "count": 30570,
+          "fractionOfAllEvents": 0.20566054237333745
+        },
+        {
+          "owner": "p114h_clean_args",
+          "kind": "lowered_owner",
+          "count": 9923,
+          "fractionOfAllEvents": 0.06675726404876113
+        },
+        {
+          "owner": "p114r_clean_args",
+          "kind": "lowered_owner",
+          "count": 9844,
+          "fractionOfAllEvents": 0.0662257893072664
+        },
+        {
+          "owner": "nc_has_ctor",
+          "kind": "lowered_owner",
+          "count": 2567,
+          "fractionOfAllEvents": 0.017269565334391796
+        },
+        {
+          "owner": "p113e_buffers",
+          "kind": "lowered_owner",
+          "count": 1873,
+          "fractionOfAllEvents": 0.012600660643286262
+        },
+        {
+          "owner": "p112t_buffer_args",
+          "kind": "lowered_owner",
+          "count": 1772,
+          "fractionOfAllEvents": 0.01192118027757782
+        },
+        {
+          "owner": "p113i_args",
+          "kind": "lowered_owner",
+          "count": 1250,
+          "fractionOfAllEvents": 0.008409410466688643
+        },
+        {
+          "owner": "p113i_values",
+          "kind": "lowered_owner",
+          "count": 870,
+          "fractionOfAllEvents": 0.005852949684815296
+        },
+        {
+          "owner": "p114so_args_clear",
+          "kind": "lowered_owner",
+          "count": 863,
+          "fractionOfAllEvents": 0.00580585698620184
+        },
+        {
+          "owner": "p113e_values",
+          "kind": "lowered_owner",
+          "count": 850,
+          "fractionOfAllEvents": 0.005718399117348278
+        },
+        {
+          "owner": "p147d_values",
+          "kind": "lowered_owner",
+          "count": 690,
+          "fractionOfAllEvents": 0.004641994577612131
+        },
+        {
+          "owner": "p113i_params",
+          "kind": "lowered_owner",
+          "count": 618,
+          "fractionOfAllEvents": 0.004157612534730865
+        },
+        {
+          "owner": "p134v_list~0",
+          "kind": "lowered_owner",
+          "count": 563,
+          "fractionOfAllEvents": 0.003787598474196565
+        },
+        {
+          "owner": "f_tbind",
+          "kind": "lowered_owner",
+          "count": 546,
+          "fractionOfAllEvents": 0.0036732304918495992
+        },
+        {
+          "owner": "f_lbind",
+          "kind": "lowered_owner",
+          "count": 530,
+          "fractionOfAllEvents": 0.003565590037875985
+        },
+        {
+          "owner": "p113a_params",
+          "kind": "lowered_owner",
+          "count": 443,
+          "fractionOfAllEvents": 0.002980295069394455
+        },
+        {
+          "owner": "nq_has_bundle",
+          "kind": "lowered_owner",
+          "count": 425,
+          "fractionOfAllEvents": 0.002859199558674139
+        },
+        {
+          "owner": "p134v_list~5",
+          "kind": "lowered_owner",
+          "count": 424,
+          "fractionOfAllEvents": 0.002852472030300788
+        },
+        {
+          "owner": "p113j_scratch_values",
+          "kind": "lowered_owner",
+          "count": 423,
+          "fractionOfAllEvents": 0.002845744501927437
+        },
+        {
+          "owner": "f_has_id",
+          "kind": "lowered_owner",
+          "count": 397,
+          "fractionOfAllEvents": 0.002670828764220313
+        },
+        {
+          "owner": "p114so_values_clear",
+          "kind": "lowered_owner",
+          "count": 368,
+          "fractionOfAllEvents": 0.0024757304413931367
+        },
+        {
+          "owner": "nq_match_args",
+          "kind": "lowered_owner",
+          "count": 358,
+          "fractionOfAllEvents": 0.0024084551576596274
+        },
+        {
+          "owner": "p112_scalar_safe",
+          "kind": "lowered_owner",
+          "count": 358,
+          "fractionOfAllEvents": 0.0024084551576596274
+        },
+        {
+          "owner": "p113e_multi",
+          "kind": "lowered_owner",
+          "count": 339,
+          "fractionOfAllEvents": 0.00228063211856596
+        }
+      ],
+      "frame_capture_words": [
+        {
+          "owner": "nb_contains",
+          "kind": "lowered_owner",
+          "count": 79817,
+          "fractionOfAllEvents": 0.5129231678790839
+        },
+        {
+          "owner": "p112f_clean_args",
+          "kind": "lowered_owner",
+          "count": 30570,
+          "fractionOfAllEvents": 0.19645014523301546
+        },
+        {
+          "owner": "p114h_clean_args",
+          "kind": "lowered_owner",
+          "count": 9923,
+          "fractionOfAllEvents": 0.06376757576536514
+        },
+        {
+          "owner": "p114r_clean_args",
+          "kind": "lowered_owner",
+          "count": 9844,
+          "fractionOfAllEvents": 0.06325990283525693
+        },
+        {
+          "owner": "f_tbind",
+          "kind": "lowered_owner",
+          "count": 3276,
+          "fractionOfAllEvents": 0.021052361000436986
+        },
+        {
+          "owner": "nc_has_ctor",
+          "kind": "lowered_owner",
+          "count": 2567,
+          "fractionOfAllEvents": 0.01649615710870627
+        },
+        {
+          "owner": "f_lbind",
+          "kind": "lowered_owner",
+          "count": 2438,
+          "fractionOfAllEvents": 0.015667172197516902
+        },
+        {
+          "owner": "p113e_buffers",
+          "kind": "lowered_owner",
+          "count": 1873,
+          "fractionOfAllEvents": 0.0120363468112999
+        },
+        {
+          "owner": "p112t_buffer_args",
+          "kind": "lowered_owner",
+          "count": 1772,
+          "fractionOfAllEvents": 0.011387296609515976
+        },
+        {
+          "owner": "p113i_args",
+          "kind": "lowered_owner",
+          "count": 1250,
+          "fractionOfAllEvents": 0.008032799527028765
+        },
+        {
+          "owner": "p112_special_test_fallback",
+          "kind": "lowered_owner",
+          "count": 1180,
+          "fractionOfAllEvents": 0.0075829627535151534
+        },
+        {
+          "owner": "p114t_captures",
+          "kind": "lowered_owner",
+          "count": 1056,
+          "fractionOfAllEvents": 0.0067861090404338995
+        },
+        {
+          "owner": "p113i_values",
+          "kind": "lowered_owner",
+          "count": 870,
+          "fractionOfAllEvents": 0.0055908284708120195
+        },
+        {
+          "owner": "p114so_args_clear",
+          "kind": "lowered_owner",
+          "count": 863,
+          "fractionOfAllEvents": 0.005545844793460659
+        },
+        {
+          "owner": "p113e_values",
+          "kind": "lowered_owner",
+          "count": 850,
+          "fractionOfAllEvents": 0.005462303678379559
+        },
+        {
+          "owner": "p147d_values",
+          "kind": "lowered_owner",
+          "count": 690,
+          "fractionOfAllEvents": 0.004434105338919877
+        },
+        {
+          "owner": "p113i_params",
+          "kind": "lowered_owner",
+          "count": 618,
+          "fractionOfAllEvents": 0.0039714160861630205
+        },
+        {
+          "owner": "p134v_list~0",
+          "kind": "lowered_owner",
+          "count": 563,
+          "fractionOfAllEvents": 0.0036179729069737553
+        },
+        {
+          "owner": "nq_match_args",
+          "kind": "lowered_owner",
+          "count": 537,
+          "fractionOfAllEvents": 0.0034508906768115567
+        },
+        {
+          "owner": "p113e_multi",
+          "kind": "lowered_owner",
+          "count": 485,
+          "fractionOfAllEvents": 0.0031167262164871604
+        },
+        {
+          "owner": "p113a_params",
+          "kind": "lowered_owner",
+          "count": 443,
+          "fractionOfAllEvents": 0.002846824152378994
+        },
+        {
+          "owner": "nq_has_bundle",
+          "kind": "lowered_owner",
+          "count": 425,
+          "fractionOfAllEvents": 0.0027311518391897795
+        },
+        {
+          "owner": "p134v_list~5",
+          "kind": "lowered_owner",
+          "count": 424,
+          "fractionOfAllEvents": 0.0027247255995681567
+        },
+        {
+          "owner": "p113j_scratch_values",
+          "kind": "lowered_owner",
+          "count": 423,
+          "fractionOfAllEvents": 0.0027182993599465335
+        },
+        {
+          "owner": "f_has_id",
+          "kind": "lowered_owner",
+          "count": 397,
+          "fractionOfAllEvents": 0.0025512171297843353
+        }
+      ],
+      "return_calls": [
+        {
+          "owner": "p111v_name_chars",
+          "kind": "lowered_owner",
+          "count": 1441076,
+          "fractionOfAllEvents": 0.14956259658525398
+        },
+        {
+          "owner": "p130m_word",
+          "kind": "lowered_owner",
+          "count": 1299824,
+          "fractionOfAllEvents": 0.1349027064109257
+        },
+        {
+          "owner": "Bool.and",
+          "kind": "lowered_owner",
+          "count": 815239,
+          "fractionOfAllEvents": 0.08460987600762615
+        },
+        {
+          "owner": "String.append",
+          "kind": "lowered_owner",
+          "count": 544203,
+          "fractionOfAllEvents": 0.05648030620833666
+        },
+        {
+          "owner": "String.eq",
+          "kind": "lowered_owner",
+          "count": 364582,
+          "fractionOfAllEvents": 0.03783827541937071
+        },
+        {
+          "owner": "p131i_insert",
+          "kind": "lowered_owner",
+          "count": 361135,
+          "fractionOfAllEvents": 0.03748052727116106
+        },
+        {
+          "owner": "p88_number",
+          "kind": "lowered_owner",
+          "count": 324069,
+          "fractionOfAllEvents": 0.033633618985248984
+        },
+        {
+          "owner": "U32.show",
+          "kind": "lowered_owner",
+          "count": 238856,
+          "fractionOfAllEvents": 0.02478975679975756
+        },
+        {
+          "owner": "p88_field",
+          "kind": "lowered_owner",
+          "count": 228745,
+          "fractionOfAllEvents": 0.02374038298874863
+        },
+        {
+          "owner": "String.starts_with",
+          "kind": "lowered_owner",
+          "count": 211141,
+          "fractionOfAllEvents": 0.021913345448544775
+        },
+        {
+          "owner": "Bool.not",
+          "kind": "lowered_owner",
+          "count": 139233,
+          "fractionOfAllEvents": 0.014450347525289899
+        },
+        {
+          "owner": "p88_string_eq",
+          "kind": "lowered_owner",
+          "count": 106537,
+          "fractionOfAllEvents": 0.011056981278158266
+        },
+        {
+          "owner": "p111v_decl",
+          "kind": "lowered_owner",
+          "count": 100446,
+          "fractionOfAllEvents": 0.010424824628681915
+        },
+        {
+          "owner": "index_remove",
+          "kind": "lowered_owner",
+          "count": 87138,
+          "fractionOfAllEvents": 0.009043649010354666
+        },
+        {
+          "owner": "index_leaf",
+          "kind": "lowered_owner",
+          "count": 87030,
+          "fractionOfAllEvents": 0.009032440191089612
+        },
+        {
+          "owner": "p111v_get",
+          "kind": "lowered_owner",
+          "count": 82552,
+          "fractionOfAllEvents": 0.008567689333044118
+        },
+        {
+          "owner": "index_join",
+          "kind": "lowered_owner",
+          "count": 79502,
+          "fractionOfAllEvents": 0.008251143974169898
+        },
+        {
+          "owner": "subst_terms",
+          "kind": "lowered_owner",
+          "count": 63783,
+          "fractionOfAllEvents": 0.006619741844286668
+        },
+        {
+          "owner": "p112r_buffer_sites",
+          "kind": "lowered_owner",
+          "count": 55072,
+          "fractionOfAllEvents": 0.005715667542269184
+        },
+        {
+          "owner": "p113j_buffer_peel",
+          "kind": "lowered_owner",
+          "count": 50076,
+          "fractionOfAllEvents": 0.005197155865896856
+        },
+        {
+          "owner": "subst_node",
+          "kind": "lowered_owner",
+          "count": 49798,
+          "fractionOfAllEvents": 0.005168303534825698
+        },
+        {
+          "owner": "List.length",
+          "kind": "lowered_owner",
+          "count": 47662,
+          "fractionOfAllEvents": 0.004946617998250179
+        },
+        {
+          "owner": "p88_build",
+          "kind": "lowered_owner",
+          "count": 47662,
+          "fractionOfAllEvents": 0.004946617998250179
+        },
+        {
+          "owner": "f_eq",
+          "kind": "lowered_owner",
+          "count": 46708,
+          "fractionOfAllEvents": 0.004847606761408866
+        },
+        {
+          "owner": "nt_clean",
+          "kind": "lowered_owner",
+          "count": 41009,
+          "fractionOfAllEvents": 0.004256133974450119
+        }
+      ],
+      "primitive_calls": [
+        {
+          "owner": "p111v_name_chars",
+          "kind": "lowered_owner",
+          "count": 2124711,
+          "fractionOfAllEvents": 0.2832253153892912
+        },
+        {
+          "owner": "String.eq",
+          "kind": "lowered_owner",
+          "count": 1210459,
+          "fractionOfAllEvents": 0.16135494758619218
+        },
+        {
+          "owner": "p112t_runtime_call",
+          "kind": "lowered_owner",
+          "count": 513846,
+          "fractionOfAllEvents": 0.06849599564906743
+        },
+        {
+          "owner": "p88_number",
+          "kind": "lowered_owner",
+          "count": 324069,
+          "fractionOfAllEvents": 0.04319860194298999
+        },
+        {
+          "owner": "p111v_signature",
+          "kind": "lowered_owner",
+          "count": 303454,
+          "fractionOfAllEvents": 0.040450609450481484
+        },
+        {
+          "owner": "p111v_contract",
+          "kind": "lowered_owner",
+          "count": 274403,
+          "fractionOfAllEvents": 0.03657809284122295
+        },
+        {
+          "owner": "p147v_get",
+          "kind": "lowered_owner",
+          "count": 269233,
+          "fractionOfAllEvents": 0.03588892858285434
+        },
+        {
+          "owner": "p147v_value",
+          "kind": "lowered_owner",
+          "count": 198887,
+          "fractionOfAllEvents": 0.02651176244761285
+        },
+        {
+          "owner": "p118z_transition",
+          "kind": "lowered_owner",
+          "count": 154554,
+          "fractionOfAllEvents": 0.02060214560694443
+        },
+        {
+          "owner": "nt_clean",
+          "kind": "lowered_owner",
+          "count": 110619,
+          "fractionOfAllEvents": 0.014745582417113668
+        },
+        {
+          "owner": "p111v_operator",
+          "kind": "lowered_owner",
+          "count": 100604,
+          "fractionOfAllEvents": 0.01341057660520619
+        },
+        {
+          "owner": "p112c_frame",
+          "kind": "lowered_owner",
+          "count": 98584,
+          "fractionOfAllEvents": 0.013141309332110522
+        },
+        {
+          "owner": "p113k_get",
+          "kind": "lowered_owner",
+          "count": 89211,
+          "fractionOfAllEvents": 0.011891882524820577
+        },
+        {
+          "owner": "nb_contains",
+          "kind": "lowered_owner",
+          "count": 79817,
+          "fractionOfAllEvents": 0.01063965640429548
+        },
+        {
+          "owner": "p111v_comparison",
+          "kind": "lowered_owner",
+          "count": 75161,
+          "fractionOfAllEvents": 0.010019008669872992
+        },
+        {
+          "owner": "p111q_binop",
+          "kind": "lowered_owner",
+          "count": 58809,
+          "fractionOfAllEvents": 0.00783927676410054
+        },
+        {
+          "owner": "p117h_get",
+          "kind": "lowered_owner",
+          "count": 50659,
+          "fractionOfAllEvents": 0.006752876627600695
+        },
+        {
+          "owner": "p111v_decl",
+          "kind": "lowered_owner",
+          "count": 50223,
+          "fractionOfAllEvents": 0.00669475755281371
+        },
+        {
+          "owner": "p88_record_put",
+          "kind": "lowered_owner",
+          "count": 47662,
+          "fractionOfAllEvents": 0.006353374638755292
+        },
+        {
+          "owner": "p88_record_width",
+          "kind": "lowered_owner",
+          "count": 47662,
+          "fractionOfAllEvents": 0.006353374638755292
+        },
+        {
+          "owner": "p113k_value",
+          "kind": "lowered_owner",
+          "count": 47504,
+          "fractionOfAllEvents": 0.006332313139176522
+        },
+        {
+          "owner": "p113k_replace",
+          "kind": "lowered_owner",
+          "count": 46928,
+          "fractionOfAllEvents": 0.0062555319761551835
+        },
+        {
+          "owner": "p125v_previous_sized",
+          "kind": "lowered_owner",
+          "count": 43569,
+          "fractionOfAllEvents": 0.005807775159160953
+        },
+        {
+          "owner": "p147v_contract",
+          "kind": "lowered_owner",
+          "count": 42848,
+          "fractionOfAllEvents": 0.0057116654047540336
+        },
+        {
+          "owner": "p111_op_id",
+          "kind": "lowered_owner",
+          "count": 41429,
+          "fractionOfAllEvents": 0.00552251181043584
+        }
+      ],
+      "register_words_copy_requested": [
+        {
+          "owner": "p111v_name_chars",
+          "kind": "lowered_owner",
+          "count": 4274024,
+          "fractionOfAllEvents": 0.1173586757820035
+        },
+        {
+          "owner": "p113j_buffer_peel",
+          "kind": "lowered_owner",
+          "count": 1889096,
+          "fractionOfAllEvents": 0.05187191391182635
+        },
+        {
+          "owner": "p88_fields",
+          "kind": "lowered_owner",
+          "count": 1791828,
+          "fractionOfAllEvents": 0.04920107170879615
+        },
+        {
+          "owner": "p131i_insert",
+          "kind": "lowered_owner",
+          "count": 1786430,
+          "fractionOfAllEvents": 0.04905285023604091
+        },
+        {
+          "owner": "p130m_word",
+          "kind": "lowered_owner",
+          "count": 1299824,
+          "fractionOfAllEvents": 0.03569133523575603
+        },
+        {
+          "owner": "p88_fields_next",
+          "kind": "lowered_owner",
+          "count": 1143700,
+          "fractionOfAllEvents": 0.03140439021677871
+        },
+        {
+          "owner": "Bool.and",
+          "kind": "lowered_owner",
+          "count": 815239,
+          "fractionOfAllEvents": 0.02238531404733449
+        },
+        {
+          "owner": "p88_number",
+          "kind": "lowered_owner",
+          "count": 648138,
+          "fractionOfAllEvents": 0.017796956077924735
+        },
+        {
+          "owner": "String.append",
+          "kind": "lowered_owner",
+          "count": 544203,
+          "fractionOfAllEvents": 0.014943047450504175
+        },
+        {
+          "owner": "p88_field",
+          "kind": "lowered_owner",
+          "count": 457490,
+          "fractionOfAllEvents": 0.012562030672618773
+        },
+        {
+          "owner": "p111v_decl",
+          "kind": "lowered_owner",
+          "count": 418525,
+          "fractionOfAllEvents": 0.01149210668486256
+        },
+        {
+          "owner": "String.eq",
+          "kind": "lowered_owner",
+          "count": 364582,
+          "fractionOfAllEvents": 0.010010907925167102
+        },
+        {
+          "owner": "p88_fields_finish",
+          "kind": "lowered_owner",
+          "count": 333634,
+          "fractionOfAllEvents": 0.009161119459285431
+        },
+        {
+          "owner": "p88_u32",
+          "kind": "lowered_owner",
+          "count": 324956,
+          "fractionOfAllEvents": 0.008922833808939008
+        },
+        {
+          "owner": "index_join",
+          "kind": "lowered_owner",
+          "count": 318008,
+          "fractionOfAllEvents": 0.008732051520553785
+        },
+        {
+          "owner": "subst_terms",
+          "kind": "lowered_owner",
+          "count": 307515,
+          "fractionOfAllEvents": 0.008443928528034191
+        },
+        {
+          "owner": "p111v_intersection_bucket",
+          "kind": "lowered_owner",
+          "count": 297072,
+          "fractionOfAllEvents": 0.008157178465051049
+        },
+        {
+          "owner": "index_leaf",
+          "kind": "lowered_owner",
+          "count": 261090,
+          "fractionOfAllEvents": 0.007169163453439497
+        },
+        {
+          "owner": "index_set",
+          "kind": "lowered_owner",
+          "count": 261090,
+          "fractionOfAllEvents": 0.007169163453439497
+        },
+        {
+          "owner": "index_remove",
+          "kind": "lowered_owner",
+          "count": 247938,
+          "fractionOfAllEvents": 0.006808028068171443
+        },
+        {
+          "owner": "p112r_buffer",
+          "kind": "lowered_owner",
+          "count": 245508,
+          "fractionOfAllEvents": 0.0067413036926999275
+        },
+        {
+          "owner": "U32.show",
+          "kind": "lowered_owner",
+          "count": 238856,
+          "fractionOfAllEvents": 0.006558649147170495
+        },
+        {
+          "owner": "p88_record_width_gate",
+          "kind": "lowered_owner",
+          "count": 238310,
+          "fractionOfAllEvents": 0.006543656756632451
+        },
+        {
+          "owner": "p88_record_width",
+          "kind": "lowered_owner",
+          "count": 238310,
+          "fractionOfAllEvents": 0.006543656756632451
+        },
+        {
+          "owner": "p111v_put",
+          "kind": "lowered_owner",
+          "count": 223592,
+          "fractionOfAllEvents": 0.006139521218282753
+        }
+      ],
+      "register_words_clear_requested": []
+    },
+    "scope": "Fresh process including prepared Base loading, compilation, output and cleanup. Counts can reuse pooled cells; not live memory, malloc counts or full-source projections."
+  },
+  "changedProduction": false,
+  "selfBuilds": 0,
+  "broadRuntimeCampaigns": 0
+}

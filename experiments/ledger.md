@@ -6315,3 +6315,29 @@ Five guarded jobs281.46s, no self-builds or broad runtime campaigns; all closed
 without pruning. One CLI resource-limit admission refusal started no target.
 Two bounded read-only agents; root controlled the sole target lane. Installed
 and maintained compiler remain Phase152; this phase changes research evidence only.
+
+
+## 2026-11-02 — Phase154 directly produced numeric local identities
+
+[Report](../implementation/phase154/README.md) ·
+[Metrics](../implementation/phase154/metrics.json) ·
+[Design](../design/phase154/README.md).
+
+Private checked Bend producer creates numeric locals before old string bodies
+exist; dedicated facts retain them through scalar analysis, then convert once
+for original verification/output. Whole-child native medians improve13.02% on
+five compiler helpers and2.36% on four Map helpers, four alternating pairs each.
+All45 finite controls pass; nine complete outputs match. Twenty actual owners
+include five producer and six verifier-context refusals, all retained.
+
+The near2× gate is not met. This legacy p113d producer is narrower than the
+current prepared pipeline; no whole-cold/upstream or general user-runtime claim.
+Short physical profiles show named hashing55→24 samples, reclamation112→107.
+Numeric facts still have owned runtime cells and scheduled lookup-return paths.
+Do not migrate production; next test a scalar-result query avoiding whole-cell
+return, or independently replay publication work if the local ceiling is weak.
+
+15 guarded jobs349.08s, one small native build, no self-host/broad benchmark.
+Four failed jobs and two superseded verifier-context controls preserved; all
+sealed without pruning. Three bounded implementation/capture agents; root owns
+the sole target lane. Production and qualified compiler remain Phase152.

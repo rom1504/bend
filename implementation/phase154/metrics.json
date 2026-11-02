@@ -1,0 +1,164 @@
+{
+  "kind": "phase154-direct-identities-results",
+  "complete": true,
+  "baselineCommit": "bde17c0",
+  "productionChanged": false,
+  "qualification": "private prototype only",
+  "timings": {
+    "compiler": {
+      "medianSeconds": {
+        "old": 5.90059147332795,
+        "new": 5.132589824264869
+      },
+      "ratio": 0.8698432771469391,
+      "timeReductionPercent": 13.01567228530609,
+      "repeats": 16,
+      "pairRatios": [
+        0.8690828820226294,
+        0.8653494099517417,
+        0.8821601124696454,
+        0.8590936370004987
+      ],
+      "clocks": "whole child, fixed setup and cleanup included; no subtraction",
+      "region": "Exact captured erased request book -> candidate production -> scalar transformation -> original independent verifier -> mature QBE emission -> write and teardown. New numeric path decodes once at final verification/output. Ordinary fixed leaf conversions charged."
+    },
+    "map": {
+      "medianSeconds": {
+        "old": 6.919723802944645,
+        "new": 6.756226941943169
+      },
+      "ratio": 0.976372342934858,
+      "timeReductionPercent": 2.3627657065142027,
+      "repeats": 1024,
+      "pairRatios": [
+        0.9747816571167482,
+        0.981216446039022,
+        0.9751880340484741,
+        0.979356503285504
+      ],
+      "clocks": "whole child, fixed setup and cleanup included; no subtraction",
+      "region": "Exact captured erased request book -> candidate production -> scalar transformation -> original independent verifier -> mature QBE emission -> write and teardown. New numeric path decodes once at final verification/output. Ordinary fixed leaf conversions charged."
+    }
+  },
+  "profiles": {
+    "old": {
+      "samples": 707,
+      "repeats": 33,
+      "periodUs": 16000,
+      "groups": {
+        "generated_bend": 233,
+        "ownership_and_products": 152,
+        "other": 142,
+        "reclamation": 112,
+        "allocation": 23,
+        "unresolved": 23,
+        "scheduler": 22
+      },
+      "namedIndexHashSamples": 55,
+      "quality": {
+        "scope": "main_thread",
+        "main_thread_cpu_fraction": 0.9997154835925661,
+        "sampled_thread_cpu_fraction": 0.9997154835925661,
+        "minimum_process_cpu_fraction": 0.95,
+        "minimum_samples": 500,
+        "enough_samples": true,
+        "thread_lifecycle_complete": true,
+        "near_complete_process_cpu_coverage": true,
+        "usable_for_process_cpu_attribution": true,
+        "limitations": [],
+        "zero_loss": true,
+        "handler_intact": true,
+        "main_thread_shutdown": true,
+        "expected_clock_periods": 708.1435973125,
+        "delivered_per_expected_period": 0.998385077098995,
+        "delivery_plausible": true,
+        "resolved_sample_fraction": 0.9674681753889675,
+        "unknown_samples": 23,
+        "inferred_symbol_range_samples": 0,
+        "resolved_symbol_coverage_is_not_logical_attribution": true
+      },
+      "warning": "One physical leaf capture per role. Not logical allocation attribution or a clean speed estimate."
+    },
+    "new": {
+      "samples": 607,
+      "repeats": 33,
+      "periodUs": 16000,
+      "groups": {
+        "generated_bend": 188,
+        "ownership_and_products": 130,
+        "other": 110,
+        "reclamation": 107,
+        "allocation": 29,
+        "unresolved": 26,
+        "scheduler": 17
+      },
+      "namedIndexHashSamples": 24,
+      "quality": {
+        "scope": "main_thread",
+        "main_thread_cpu_fraction": 0.9996680055767624,
+        "sampled_thread_cpu_fraction": 0.9996680055767624,
+        "minimum_process_cpu_fraction": 0.95,
+        "minimum_samples": 500,
+        "enough_samples": true,
+        "thread_lifecycle_complete": true,
+        "near_complete_process_cpu_coverage": true,
+        "usable_for_process_cpu_attribution": true,
+        "limitations": [],
+        "zero_loss": true,
+        "handler_intact": true,
+        "main_thread_shutdown": true,
+        "expected_clock_periods": 607.529077625,
+        "delivered_per_expected_period": 0.9991291320127946,
+        "delivery_plausible": true,
+        "resolved_sample_fraction": 0.957166392092257,
+        "unknown_samples": 26,
+        "inferred_symbol_range_samples": 0,
+        "resolved_symbol_coverage_is_not_logical_attribution": true
+      },
+      "warning": "One physical leaf capture per role. Not logical allocation attribution or a clean speed estimate."
+    }
+  },
+  "inputs": [
+    {
+      "file": "selfhost/build/phase154/time-compiler01/report.json",
+      "bytes": 41760,
+      "sha256": "2e32e52ba024ca1513a08d74ccd3bbc6b44d9a680c6147e3a5668f1d32772d36"
+    },
+    {
+      "file": "selfhost/build/phase154/time-map01/report.json",
+      "bytes": 49109,
+      "sha256": "3ee0ef5fbea84141324f9a0a162f9c14db9ab956259f70f051bcab55138eebf1"
+    },
+    {
+      "file": "selfhost/build/phase154/profile-plan01/capture/000-sample-compiler-verifier-slice-old/analysis.json",
+      "bytes": 278528,
+      "sha256": "4b4a6d0d042d97716221fdfdd4cfcdd295a1366a2aeb5d85d2eca327fd543147"
+    },
+    {
+      "file": "selfhost/build/phase154/profile-plan01/capture/001-sample-compiler-verifier-slice-new/analysis.json",
+      "bytes": 247027,
+      "sha256": "54dc371f7287c9557d29114f3bd281991f0c56df91afad3c6cb4055c37a51a27"
+    },
+    {
+      "file": "selfhost/build/phase154/controls03/report.json",
+      "bytes": 13931,
+      "sha256": "a6c974798fd5ea54c7079b3e774f8c8761810a9c26a3aef7d5618b4363264946"
+    }
+  ],
+  "controls": {
+    "passed": true,
+    "rows": 45,
+    "literalScalarCases": 25,
+    "actualOwners": 20,
+    "sameProducerRefusals": 5,
+    "sameVerifierContextRefusals": 6,
+    "verifiedExactOutputOwners": 9
+  },
+  "decision": "Retain private prototype; no production migration or full self-build. Near-2x discriminator not met. Legacy direct producer coverage does not establish the complete prepared backend region.",
+  "unmeasured": [
+    "whole cold build gain",
+    "current upstream ratio",
+    "general generated-program runtime",
+    "recursive research acceleration"
+  ]
+}

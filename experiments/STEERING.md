@@ -1,6 +1,7 @@
-# Current frontier — Phase153 measured cold-build headroom
+# Current frontier — Phase154 compact-identity experiment
 
-[Latest investigation](../implementation/phase153/README.md) ·
+[Latest experiment](../implementation/phase154/README.md) ·
+[Phase153 investigation](../implementation/phase153/README.md) ·
 [Headroom metrics](../implementation/phase153/metrics.json) ·
 [Qualification](../implementation/phase152/qualification.json) ·
 [Independent audit](../research/phase152/final-audit.md) ·
@@ -67,11 +68,18 @@ opportunity, not an achieved saving. Ownership/reclamation/allocation plus regis
 transport occupy42.71% of disjoint physical samples; selected string workers
 add9.92%. These overlap stage costs and are not wholly removable.
 
-Prioritize a complete producer→numeric identities/compact facts→analysis→output
-prototype using actual compiler and unrelated Map owners. Include final independent
-verification conversion and destruction; inspect native accesses. Require close
-to2× over a representative complete region before full image acquisition. Do not
-repeat Phase148's late pack/unpack adapter or a lookup-only microbenchmark.
+Phase154 tested direct numeric identities and compact facts on actual compiler
+and Map owners. Whole child time improves13.02%/2.36%; nine original-verifier QBE
+oracles match. The legacy direct producer covers only nine admitted helpers,
+not the full prepared pipeline. It misses the near2× gate: retain the private
+prototype, do not integrate or acquire a full image. Numeric hashing improves,
+but persistent owned fact objects, reclamation and scheduler transport remain.
+
+The next bounded discriminator is a scalar-result lookup that avoids returning
+an owned whole fact cell through a continuation. Require a real direct native
+access and complete-region saving before widening the representation change.
+If the machine-level ceiling is weak, use the independent publication replay.
+Do not project these component percentages onto the101.45s backend region.
 
 Two alternatives are source-grounded: lifetime-tied borrowed-descendant results
 are still unsupported by scalar/original-root borrowing summaries, and
@@ -94,6 +102,8 @@ C-route and benchmark-eligibility fixes remain the maintained methods.
 
 ## Relevant recent evidence
 
+- [Phase154](../implementation/phase154/README.md): 15 guarded jobs,5.82min;
+  one small image, no full compiler build; all closed without pruning.
 - [Phase152](../implementation/phase152/README.md): 51 guarded jobs, 29.10min;
   all closed, no OOM/pruning. Guard time excludes agent and documentation work.
 - [Phase151](../implementation/phase151/README.md): the artifact counterfactual

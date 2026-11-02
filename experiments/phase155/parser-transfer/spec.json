@@ -1,0 +1,72 @@
+{
+  "family": "parser-transfer",
+  "module": "selfhost/tests/phase155/parser-transfer.bend",
+  "dependencies": [
+    "selfhost/tests/phase155/frontend.bend",
+    "selfhost/tests/phase155/publication.bend",
+    "selfhost/build/phase155/parser-transfer-source03/parser-clone.bend",
+    "selfhost/build/phase155/parser-transfer-source03/fixtures.bend"
+  ],
+  "inputs": [
+    {
+      "file": "selfhost/build/phase155/parser-transfer-source03/parser-clone.bend",
+      "bytes": 99696,
+      "sha256": "678c1f9b261b53f091cf4899c4eb27052aba995332d8a7e04cd93facaaf5da73"
+    },
+    {
+      "file": "selfhost/build/phase155/parser-transfer-source03/fixtures.bend",
+      "bytes": 145388,
+      "sha256": "7bf44f0574c86cc9fad52444a5b93820db5fbe79121d88b00f54a86e717e80ac"
+    },
+    {
+      "file": "selfhost/build/phase155/parser-transfer-source03/compiler-verifier-slice.bend",
+      "bytes": 15463,
+      "sha256": "7bd150ea66f1de78f587de9c90e6cc147af38a9cf7283e7358f703e9e73f81cf"
+    },
+    {
+      "file": "selfhost/tests/consolidation/native-broad/coverage-expression-128.bend",
+      "bytes": 1662,
+      "sha256": "3276c1370eaba8646283c86e80177de9dc21c293e47dba6e78273f9430b58c68"
+    },
+    {
+      "file": "selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "bytes": 75064,
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+    }
+  ],
+  "cases": [
+    {
+      "id": "18t",
+      "status": "candidate-source-only",
+      "title": "Transfer the scalar identifier scan through the complete current parser",
+      "old": "p155t_old",
+      "new": "p155t_new",
+      "resultType": "String",
+      "controls": [
+        0,
+        1,
+        2,
+        7
+      ],
+      "expected": {
+        "0": "done"
+      },
+      "independentControlFunction": "p155t_controls",
+      "independentControlArgument": 0,
+      "independentControlExpected": "ok",
+      "dependencies": [
+        "f_load_graph_trace",
+        "p155x_valid",
+        "p155p_defs",
+        "p155p_terms",
+        "p155p_string"
+      ],
+      "scope": "Every repetition performs two genuine production source-graph loads: the pinned full Base plus a dependency-closed current compiler verifier slice (p111v_functions,49 declarations), and the same Base plus the complete ordinary expression-interpreter benchmark. The real loader derives the initial parser scope and constructor indexes from Base, parses each source, fills declarations and freshens results. This does not typecheck or emit a compiler request.",
+      "whatWorkDisappears": "Only actual f_valid_name call sites switch to p155x_valid. The parser no longer performs the predicate's redundant name rescans and sequential reserved-word comparisons. No artificial predicate call is added per token; no interning or parser algorithm changes are made.",
+      "observedOutput": "Exact String serialization of each complete repeated FResult from the loader: every KDef and recursive KTerm field including the Base definitions, errors, imports and source spans. Existing independent p155p_defs/terms/string observers do not use a checksum or truncate the AST. Separate success controls require empty error plus the source-ground p111v_functions/eval definition in both roles. Trace provenance fields are not serialized; the complete FResult is.",
+      "chargedWork": "Both roles freshly construct bounded literal chunks for source and full Base, build located source records, run the real complete source-graph loader including Base parsing and scope construction, serialize the entire FResult and clean up. Changing iteration comments are present in source and Base. The whole-child clock also includes printing the returned String; report this shared observation cost.",
+      "cloneAudit": "254 declarations for180 affected functions are cloned from the qualified Phase152 canonical source, with global main removed before extraction as in the maintained tournament preparer. Unaffected functions and all datatypes stay shared. Inverse exact-identifier renaming reproduces every cloned original declaration byte for byte. Only f_valid_name becomes p155x_valid.",
+      "limitations": "Source03 is the final bounded retry after source01 stack overflow and source02 matching constructor-context errors. Checked acquisition and exact equality are insufficient without the independent success control. This broader graph workload includes parsing Base twice per repetition; its ratio is not a standalone source-parser or whole-compiler ratio. Full serialization/output can dominate. No production integration or large image build is authorized; final extracted source must remain about600KB or less."
+    }
+  ]
+}

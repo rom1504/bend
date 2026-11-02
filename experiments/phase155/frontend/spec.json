@@ -1,0 +1,43 @@
+{
+  "family": "frontend",
+  "module": "selfhost/tests/phase155/frontend.bend",
+  "dependencies": ["FToken", "f_lex_cursor", "f_valid_name"],
+  "cases": [
+    {
+      "id": "17",
+      "status": "rejected-static",
+      "title": "Replace the eager token list with a one-way fused lexer/parser cursor",
+      "reason": "The actual parser requires repeatable lookahead, rewind with a newer context, synthetic-token pushback, and exact original-token checkpoint identity. A one-way consuming cursor violates those interfaces; a persistent cursor without memoization may rescan source. No bounded replacement preserving these contracts is provided, so this row must not be performance-tested or scored as a measured loss.",
+      "old": null,
+      "new": null,
+      "resultType": null,
+      "controls": [],
+      "dependencies": ["selfhost/src/front/lexer.bend:f_tl", "selfhost/src/front/contextual.bend:f_context_rewind", "selfhost/src/front/parser.bend:f_grow_existing", "selfhost/src/front/parser.bend:f_args_existing", "selfhost/src/front/compact-parser.bend:p140p_prior"],
+      "scope": "Reject the proposed local one-way substitution, not all possible future lexer/parser fusion designs.",
+      "whatWorkDisappears": "Intended token-list/FInput construction and reversal; currently coupled to persistent parser positions and checkpoint identity.",
+      "limitations": "Source audit only. No target run, native counterexample execution, throughput number or impossibility theorem. A redesigned memoized/token-buffer parser remains separate work.",
+      "sourceCounterexample": "def add_one(x: U32) -> U32:\n  x\n  + 1\n",
+      "counterexampleMeaning": "f_grow_existing explicitly admits an operator after a newline into the preceding expression. Flushing a fused parse unit at each newline would lose this behavior. Independently, f_context_rewind(old,new) must recover old tokens while retaining new context."
+    },
+    {
+      "id": "18",
+      "status": "candidate-source-only",
+      "title": "Fuse identifier syntax and exact reserved-word classification into one scalar scan",
+      "old": "p155x_name_old",
+      "new": "p155x_name_new",
+      "resultType": "String",
+      "controls": [0, 1, 2, 7, 31],
+      "dependencies": ["FToken", "f_lex_cursor", "f_valid_name"],
+      "independentControlFunction": "p155x_controls",
+      "independentControlArgument": 0,
+      "independentControlExpected": "ok",
+      "independentPredicateControls": {"valid": 17, "invalidIncludingReserved": 25, "reservedWords": 16},
+      "scope": "Actual maintained Phase150 scalar lexer plus complete maintained name-validation consumer, applied to every token of fresh valid Bend source per repetition. This is not the complete grammar parser, loader, checker or a whole-compiler request.",
+      "whatWorkDisappears": "Repeated first/tail projections and dot lookahead in f_name_chars, plus up to16 sequential String equality calls in f_reserved. Candidate validates identifier segments and accumulates exact first-six ASCII bytes in two U32 lanes during one scan; capped length and exact byte keys preserve keyword case and avoid hash collision assumptions.",
+      "observedOutput": "U32 tagged rolling observation returned as decimal String; consumes complete token text, all six scalar FToken fields and every predicate result. The checksum is a timing observer, not an equality proof;42 independent exact Boolean controls constrain the rule.",
+      "chargedWork": "Fresh source construction with varying numeric literal, the unchanged real lexer, complete token/name observation, recursive repeat and result destruction under the root's whole-process clock. No prelexed input or interning cache.",
+      "limitations": "No native timing or check has run for this source yet. Finite lexical/name controls do not qualify the full parse consumer. Some callers already test f_reserved before f_valid_name, so replacing only this predicate does not remove all duplicate classification. ASCII syntax is intentional and matches the existing predicate; Unicode remains rejected as a name. A full parser comparison and normal qualification would still be required before integration.",
+      "promotionGate": "Reject on any control/old-new mismatch. Even a large local gain needs measured transfer through the complete parser, because Phase150 already reduced lexical work and remaining parse costs are distributed. Never multiply this proxy ratio by the whole parse stage."
+    }
+  ]
+}

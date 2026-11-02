@@ -1,0 +1,197 @@
+{
+  "family": "facts",
+  "module": "selfhost/tests/phase155/facts.bend",
+  "dependencies": [
+    "selfhost/tests/phase154/model.bend",
+    "selfhost/tests/phase154/scalar.bend"
+  ],
+  "status": "source-prepared-not-target-validated",
+  "cases": [
+    {
+      "id": "01",
+      "title": "Return scalar width from fact lookup",
+      "old": "p155f_01_old",
+      "new": "p155f_01_new",
+      "resultType": "String",
+      "controls": [
+        0,
+        1,
+        2,
+        7,
+        31,
+        32,
+        33,
+        127,
+        257
+      ],
+      "dependencies": [
+        "selfhost/tests/phase154/model.bend",
+        "selfhost/tests/phase154/scalar.bend"
+      ],
+      "scope": "A 32-key mixed numeric/fixed-name persistent P154Facts table and n changing compiler-shaped transfer/update steps; includes setup, whole final-table checksum and teardown. Not a complete compiler stage.",
+      "oracle": "Baseline calls the unchanged Phase154 fact functions. Root compares old/new outputs; no expected values obtained by executing candidates during preparation.",
+      "limitations": [
+        "Checksum equality is a bounded regression screen, not whole-table structural equivalence or a proof.",
+        "Small fixed working set and deterministic trace do not establish whole-compiler coverage.",
+        "Machine admission and direct borrowed access must be checked by the root; source scalar return alone does not prove them.",
+        "The same capability already exists for P147VLive membership/capacity; this is an application to a different remaining call path, not a new ownership feature.",
+        "Only width queries are replaced; arithmetic using the full fact is unchanged."
+      ],
+      "whatWorkDisappears": "Whole P154FCell and P113KFact return lifetimes before width projection disappear; traversal count and ordinary update remain.",
+      "method": "p155f_bits descends to the requested width at the matching leaf. It applies the existing scalar-query pattern to the Phase154 full-cell fact path."
+    },
+    {
+      "id": "02",
+      "title": "Fuse width and version reads",
+      "old": "p155f_02_old",
+      "new": "p155f_02_new",
+      "resultType": "String",
+      "controls": [
+        0,
+        1,
+        2,
+        7,
+        31,
+        32,
+        33,
+        127,
+        257
+      ],
+      "dependencies": [
+        "selfhost/tests/phase154/model.bend",
+        "selfhost/tests/phase154/scalar.bend"
+      ],
+      "scope": "A 32-key mixed numeric/fixed-name persistent P154Facts table and n changing compiler-shaped transfer/update steps; includes setup, whole final-table checksum and teardown. Not a complete compiler stage.",
+      "oracle": "Baseline calls the unchanged Phase154 fact functions. Root compares old/new outputs; no expected values obtained by executing candidates during preparation.",
+      "limitations": [
+        "Checksum equality is a bounded regression screen, not whole-table structural equivalence or a proof.",
+        "Small fixed working set and deterministic trace do not establish whole-compiler coverage.",
+        "Machine admission and direct borrowed access must be checked by the root; source scalar return alone does not prove them.",
+        "The underlying whole-cell API already exposes both fields; the opportunity is the current separate access pattern.",
+        "The combined scalar decision is a probe for paired access, not a general borrowed-product return ABI."
+      ],
+      "whatWorkDisappears": "Two fact-tree descents become one existing whole-cell lookup followed by a combined scalar consumer.",
+      "method": "p155f_combined uses p154f_get once and retains its whole-cell result interface, deliberately isolating query fusion from idea01."
+    },
+    {
+      "id": "03",
+      "title": "Keep a computed hash through reads and update",
+      "old": "p155f_03_old",
+      "new": "p155f_03_new",
+      "resultType": "String",
+      "controls": [
+        0,
+        1,
+        2,
+        7,
+        31,
+        32,
+        33,
+        127,
+        257
+      ],
+      "dependencies": [
+        "selfhost/tests/phase154/model.bend",
+        "selfhost/tests/phase154/scalar.bend"
+      ],
+      "scope": "A 32-key mixed numeric/fixed-name persistent P154Facts table and n changing compiler-shaped transfer/update steps; includes setup, whole final-table checksum and teardown. Not a complete compiler stage.",
+      "oracle": "Baseline calls the unchanged Phase154 fact functions. Root compares old/new outputs; no expected values obtained by executing candidates during preparation.",
+      "limitations": [
+        "Checksum equality is a bounded regression screen, not whole-table structural equivalence or a proof.",
+        "Small fixed working set and deterministic trace do not establish whole-compiler coverage.",
+        "Machine admission and direct borrowed access must be checked by the root; source scalar return alone does not prove them.",
+        "Only four of 32 keys use String hashing; numeric-key hash work is already trivial.",
+        "Existing low-level APIs already accept a hash. This tests retaining it across the current wrapper calls."
+      ],
+      "whatWorkDisappears": "Four p154n_hash evaluations per update cycle become one; the whole-cell reads and tree traversal/rebuild counts remain.",
+      "method": "A precomputed hash flows through p154f_lookup and p154f_insert; ordinary epoch and metadata rules are copied exactly."
+    },
+    {
+      "id": "04",
+      "title": "Publish comparison fact and predicate once",
+      "old": "p155f_04_old",
+      "new": "p155f_04_new",
+      "resultType": "String",
+      "controls": [
+        0,
+        1,
+        2,
+        7,
+        31,
+        32,
+        33,
+        127,
+        257
+      ],
+      "dependencies": [
+        "selfhost/tests/phase154/model.bend",
+        "selfhost/tests/phase154/scalar.bend"
+      ],
+      "scope": "A 32-key mixed numeric/fixed-name persistent P154Facts table and n changing compiler-shaped transfer/update steps; includes setup, whole final-table checksum and teardown. Not a complete compiler stage.",
+      "oracle": "Baseline calls the unchanged Phase154 fact functions. Root compares old/new outputs; no expected values obtained by executing candidates during preparation.",
+      "limitations": [
+        "Checksum equality is a bounded regression screen, not whole-table structural equivalence or a proof.",
+        "Small fixed working set and deterministic trace do not establish whole-compiler coverage.",
+        "Machine admission and direct borrowed access must be checked by the root; source scalar return alone does not prove them.",
+        "Restricted to the comparison publication shape whose predicate root is its own destination.",
+        "It does not batch independent key updates or remove the final persistent path rebuild."
+      ],
+      "whatWorkDisappears": "The intermediate fact-only persistent path and subsequent read/rebuild for self-rooted predicate metadata disappear.",
+      "method": "One old-cell read constructs the final fact+predicate cell with incremented epoch, preserved relation, and new root/destination epochs; baseline uses p154k_put then p154p_put."
+    }
+  ],
+  "fixture": {
+    "keys": 32,
+    "fixedNamedKeys": 4,
+    "binderEndpoints": [
+      0,
+      4294967295
+    ],
+    "collision": {
+      "named": "value",
+      "binderId": 1113510858
+    },
+    "seed": "Exact/bounded facts plus valid Boolean relation/predicate records.",
+    "consumption": "Every iteration transfers facts and updates the persistent table; final checksum includes every key, normal-fact field, version, relation and predicate field.",
+    "output": "U32 modular checksum as String; n controls the number of changing iterations, not host-side semantics."
+  },
+  "measurement": {
+    "targetsRunDuringPreparation": false,
+    "timingClaim": null,
+    "recommendedScreen": "Use controls first, then calibrate n in the shared target lane; do not subtract n=0 from measured totals.",
+    "mechanismChecks": [
+      "01: inspect scalar-result worker admission and absence of returned P154FCell transport.",
+      "02: inspect one lookup for the paired consumer.",
+      "03: inspect retained hash use and unchanged traversal count.",
+      "04: inspect one persistent publication path instead of two."
+    ]
+  },
+  "extraChecks": [
+    {
+      "name": "p155f_controls",
+      "entry": "p155f_controls",
+      "resultType": "String",
+      "controls": [
+        0,
+        1,
+        2,
+        7,
+        31,
+        32,
+        33,
+        65
+      ],
+      "expected": "ok",
+      "scope": "Finite exact fieldwise controls, separate from timed kernels.",
+      "checks": [
+        "Compare scalar-width and combined width/version queries against original P154 operations for every key and two absent keys.",
+        "Compare cached-hash update and original update by exact entire trie structure, collision bucket ordering, names, normal fields, versions, relations and predicates.",
+        "Compare batched publication and original publication by the same exact whole-table comparator; repeated oracle-state updates exercise epochs and preserved stale relations."
+      ],
+      "limitations": [
+        "Finite states and sizes do not establish a universal equivalence proof.",
+        "The timed output remains a checksum; exact control is supplementary and never included in timing."
+      ]
+    }
+  ]
+}

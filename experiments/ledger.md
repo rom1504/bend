@@ -1,3 +1,25 @@
+# Phase155 — twenty cheap competing compilation-speed experiments
+
+[Design](../design/phase155/README.md) · [Report](../implementation/phase155/README.md) ·
+[All20 metrics](../implementation/phase155/metrics.json) ·
+[Independent audit](../research/phase155/independent-screen-audit.md).
+
+17 paired native prototypes,3 source rejections:12 local wins,2 neutral,3 losses.
+Dense fact storage0.166×; publication provenance0.302× and constructor metadata
+0.268×; shared use-set0.569× new/old time. These are overlapping component screens,
+not a cold-build result. Actual publication replay preserves603 compiler/504 Map
+source-order events exactly. Actual-parser transfer stops on hosted harness stack
+limits; no native transfer gain. Inlining-analysis result discounted for omitted
+admission. Text fusion/local caches/sparse merge lose and remain documented.
+
+Seven preparation agents, one independent reviewer, one root measurement lane.
+One shared small native image,19 guarded jobs159.16s including failures and both
+transfer follow-ups, all sealed without pruning. No full self-build or broad45
+campaign. Production/installed selection unchanged; Phase152 N2 remains qualified.
+Next test publication invalidation or dense full-region facts, then promote only
+with actual consumer/output gates. Agent/review/report costs are extra; no quota
+telemetry or recursive-research acceleration claim.
+
 # Phase151 — scalar dispatch and prepared Unit causality
 
 [Report](../implementation/phase151/README.md) ·

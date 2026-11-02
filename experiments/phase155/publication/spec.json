@@ -1,0 +1,73 @@
+{
+  "family": "publication",
+  "module": "selfhost/tests/phase155/publication.bend",
+  "dependencies": [],
+  "dependencyPolicy": "Extract named dependency closure from maintained source; Base plus publication.bend. No historical observer or probe module is required.",
+  "controlsExport": "p155p_controls",
+  "controlsExpected": "1",
+  "controls": [0, 1, 2, 3, 7, 31],
+  "extraChecks": [
+    {"function": "p155p_controls", "n": 0, "expected": "1"},
+    {"function": "p155p_controls", "n": 1, "expected": "1"},
+    {"function": "p155p_controls", "n": 3, "expected": "1"},
+    {"function": "p155p_controls", "n": 31, "expected": "1"},
+    {"function": "p155p_stale_adt", "n": 0, "expected": "0:1"},
+    {"function": "p155p_stale_adt", "n": 4294967295, "expected": "0:1"},
+    {"function": "p155p_deferred_type", "n": 0, "expected": "0:1"},
+    {"function": "p155p_deferred_type", "n": 4294967295, "expected": "0:1"}
+  ],
+  "counterexamples": [
+    {"export": "p155p_stale_adt", "arguments": [0, 4294967295], "expected": "0:1", "rejects": "Logging overwritten ADTs, or retaining constructor metadata after arbitrary owner replacement"},
+    {"export": "p155p_deferred_type", "arguments": [0, 4294967295], "expected": "0:1", "rejects": "Deferring successful publication across dependent checking"}
+  ],
+  "cases": [
+    {
+      "id": "05",
+      "title": "Skip repeated canonicalization when private publication state is already canonical",
+      "old": "p155p_05_old",
+      "new": "p155p_05_new",
+      "resultType": "String",
+      "controls": [0, 1, 2, 7, 31],
+      "n": [16, 64, 256],
+      "status": "candidate-unexecuted",
+      "dependencies": ["check_declarations", "book_cached", "book_put", "p143cp_replay", "p143cp_canon", "p143cp_childless", "p143cp_logged", "index_lookup"],
+      "scope": "Private publication replay with an authenticated canonical seed and dirty flag; n completed Def updates followed by n ADT updates. Does not replace checking or carry the flag across checker mutations.",
+      "whatWorkDisappears": "Whole-book reverse, name validation, duplicate selection and reconstruction before each consecutive non-childless publication after the first clean boundary.",
+      "charged": "Fixture construction, original declaration installation, all index updates, dirty-state records, first required canonicalization, unconditional original final canonicalization, full all-field string observation and ordinary cleanup.",
+      "admission": "The clean bit is established privately by check_declarations and reset only after canonicalization plus book_put. No arbitrary caller may assert it. Internal checker mutation integration remains unaudited.",
+      "negativeControls": "Every prefix of mixed replacements, childful Def, Foreign, empty names and full-hash collision names is independently finalized. ADTs are never blindly logged."
+    },
+    {
+      "id": "06",
+      "title": "Batch initial declaration installation with the existing exact overlay helper",
+      "old": "p155p_06_old",
+      "new": "p155p_06_new",
+      "resultType": "String",
+      "controls": [0, 1, 2, 7, 31],
+      "n": [16, 64, 256],
+      "status": "candidate-unexecuted",
+      "dependencies": ["check_declarations", "declared", "book_put_many", "book_cached"],
+      "scope": "Initial declaration installation only, before checking: n independent ADTs and n Def declarations over a disjoint Base-shaped seed. No dependent check or successful-body publication is reordered.",
+      "whatWorkDisappears": "Repeated per-definition outer book insertion/filter transport, replaced by one existing immutable overlay; index_set order is preserved.",
+      "charged": "Mapping every event through unchanged Foreign/declared choice, retained existing book_put_many admission scans/fallback, complete output observation and cleanup.",
+      "priorNegative": "Fresh-name cached insertion already avoids index_remove through index_put_rest, so this may add work. Independent successful-definition batching is not justified merely by distinct names: p155p_deferred_type is the concrete counterexample to a broader rule."
+    },
+    {
+      "id": "07",
+      "title": "Reuse constructor membership metadata across append-only successful declaration history",
+      "old": "p155p_07_old",
+      "new": "p155p_07_new",
+      "resultType": "String",
+      "controls": [0, 1, 2, 7, 31],
+      "n": [16, 64, 256],
+      "status": "candidate-unexecuted",
+      "dependencies": ["constructor_names", "has_name", "index_find", "index_set", "index_hash", "book_put", "book_cached"],
+      "scope": "Constructor-name validation component over n unique ADT owner events. Odd n appends a duplicate constructor event and returns the exact successful prefix world plus unchanged first error. This is not full type or dependent checking.",
+      "whatWorkDisappears": "Repeated whole-event-history constructor_exists scans for each newly declared constructor, replaced by full-name collision-correct indexed membership.",
+      "charged": "Start with an empty index, insert every successful constructor, retain original local-duplicate list checks and book publication, observe every final world field plus full error, and destroy the auxiliary index.",
+      "admission": "Unique owner names and successful append-only history; arbitrary replacement/removal and cache-record events require a separate fallback. Do not attach this index to the mutable checker world.",
+      "negativeControls": "Within-row duplicates, cross-owner duplicates, empty constructor names, and costarring/liquid full-hash collision. Replaced ADT counterexample explicitly prevents stale cache generalization."
+    }
+  ],
+  "measurementLimits": "All entries are constructed compiler-shaped component streams. Exact full result strings, no checksum-only correctness gate. No source checking, target execution or performance result was produced by the preparing agent. Phase153 checking/publication total 33.568s is a whole-stage ceiling, not a measured removable fraction or a 20% whole-build opportunity."
+}

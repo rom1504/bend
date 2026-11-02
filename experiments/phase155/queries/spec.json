@@ -1,0 +1,143 @@
+{
+  "family": "queries",
+  "module": "selfhost/tests/phase155/queries.bend",
+  "dependencies": [],
+  "cases": [
+    {
+      "id": "08",
+      "title": "Observe width inside indexed fact lookup",
+      "old": "p155q_08_old",
+      "new": "p155q_08_new",
+      "resultType": "String",
+      "controls": [
+        0,
+        1,
+        2,
+        7,
+        31,
+        32,
+        33,
+        35,
+        70,
+        127
+      ],
+      "expected": {
+        "0": "2166136261",
+        "1": "84696350",
+        "2": "276207160",
+        "7": "3835236751",
+        "31": "1266995239",
+        "32": "152284485",
+        "33": "2398733215",
+        "35": "3437822519",
+        "70": "4041881981",
+        "127": "4253123830"
+      },
+      "dependencies": [],
+      "scope": "Actual p111v_get/index_find/index_bucket plus scalar da consumption. Full index setup, repeated hits/misses and release included.",
+      "whatWorkDisappears": "Owned complete KDef result returned before scalar projection.",
+      "limitations": "Source + is not a borrowed ABI. Need machine access/ownership inspection and captured-owner transfer; fixture is synthetic, not whole compiler.",
+      "status": "prepared-unexecuted",
+      "suggestedTimingN": [
+        4096,
+        32768,
+        131072
+      ]
+    },
+    {
+      "id": "09",
+      "title": "Observe held descendant without escaping it",
+      "old": "p155q_09_old",
+      "new": "p155q_09_new",
+      "resultType": "String",
+      "controls": [
+        0,
+        1,
+        2,
+        7,
+        31,
+        32,
+        33,
+        35,
+        70,
+        127
+      ],
+      "expected": {
+        "0": "2166136261",
+        "1": "84696435",
+        "2": "1702304866",
+        "7": "1679031448",
+        "31": "2828863715",
+        "32": "1379204402",
+        "33": "2607453660",
+        "35": "1188703087",
+        "70": "1404202709",
+        "127": "3627699032"
+      },
+      "dependencies": [],
+      "scope": "Actual KDef/KTerm dt/kid/ix projection composition, root held across varying child queries.",
+      "whatWorkDisappears": "Owned type/list/child result boundaries before scalar ix consumption.",
+      "limitations": "Candidate only exposes lifetime scope. Existing optimizer may already fuse it. No runtime ownership primitive or arbitrary escaping borrowed result.",
+      "status": "prepared-unexecuted",
+      "suggestedTimingN": [
+        4096,
+        32768,
+        131072
+      ]
+    },
+    {
+      "id": "10",
+      "title": "Reuse located constructor across metadata consumers",
+      "old": "p155q_10_old",
+      "new": "p155q_10_new",
+      "resultType": "String",
+      "controls": [
+        0,
+        1,
+        2,
+        7,
+        31,
+        32,
+        33,
+        35,
+        70,
+        127
+      ],
+      "expected": {
+        "0": "2166136261",
+        "1": "96754974",
+        "2": "852988472",
+        "7": "4237134223",
+        "31": "3161706234",
+        "32": "2761676672",
+        "33": "2709665423",
+        "35": "2645126519",
+        "70": "3686563677",
+        "127": "4198080294"
+      },
+      "dependencies": [],
+      "scope": "Unchanged j_layout_ctor with nested prepared BookCache and ADT lookup; arity/templates/telescope ID observed together.",
+      "whatWorkDisappears": "Two repeated complete constructor lookups and independent metadata result transfers.",
+      "limitations": "Synthetic composition ceiling; do not assert production already performs this exact triple query. Needs measured actual consumer-chain integration. Shared root immutable only.",
+      "status": "prepared-unexecuted",
+      "suggestedTimingN": [
+        4096,
+        32768,
+        131072
+      ]
+    }
+  ],
+  "supplementalControls": [
+    {
+      "entry": "p155q_controls",
+      "n": 0,
+      "resultType": "String",
+      "expected": "ok",
+      "comparisons": 13
+    }
+  ],
+  "oracle": "U32 wrapping rolling checksum documented in README; calculated from independent fixture formulas",
+  "sourceBaseline": "Phase152 maintained source SHA256 027e15041035522ed7e40ef971eff75f24a09ef6a00e3f8fe335839f94bcb8a8",
+  "productionModified": false,
+  "targetRunsByAuthor": 0
+}

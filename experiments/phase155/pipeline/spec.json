@@ -1,0 +1,49 @@
+{
+  "family": "pipeline",
+  "module": "selfhost/tests/phase155/pipeline.bend",
+  "dependencies": [],
+  "controlFunction": "p155b_controls",
+  "expectedControl": true,
+  "status": "prepared-unexecuted",
+  "cases": [
+    {
+      "id": "14",
+      "title": "Skip ready candidates before expensive lowering",
+      "status": "rejected-static",
+      "controls": [],
+      "scope": "Current ordinary prepared QBE route, rather than obsolete p126bp_close replay.",
+      "whatWorkDisappears": "No newly demonstrated work: p128raw_plan_finish already retains raw candidates; p128raw_close reuses them and p113d_pass_function already drops ready names.",
+      "limits": "A stronger private-first/generic-elision proposal needs independent public ABI, continuation, closure, descriptor, constructor/static and ordered-ID reachability evidence. A ready private name alone cannot justify omitting generic lowering.",
+      "sourceAnchors": ["selfhost/src/back/qbe/prepared-context.bend:p128raw_plan_finish,p128raw_close,p128raw_session_finish", "selfhost/src/back/qbe/direct-lower.bend:p113d_pass_function", "selfhost/src/back/qbe/product-composition.bend:p126bp_close"]
+    },
+    {
+      "id": "15",
+      "title": "Share one flat-binding use summary across keep/live consumers",
+      "old": "p155b_15_old",
+      "new": "p155b_15_new",
+      "resultType": "String",
+      "controls": [0, 1, 2, 7, 31],
+      "suggestedSizes": [31, 127, 512],
+      "dependencies": [],
+      "scope": "The exact p111_keep plus nc_live_env expression pair in p113pl_bind_flat, with complete keep arguments and all retained binding fields consumed. Fixture construction and output observation are included.",
+      "whatWorkDisappears": "One repeated nc_uses(body) traversal and NU_Set construction/destruction; nc_live_uses reuses the first immutable summary.",
+      "limits": "Synthetic compiler-shaped terms, actual maintained analysis functions. Not complete product lowering. Substitution, reanalysis of transformed bodies, p113p_bindable, ownership policy and independent verifier remain untouched. Existing boxed/liveness/constructor sharing is not counted anew. Empty environments and early failures can reduce profitability.",
+      "sourceAnchors": ["selfhost/src/back/qbe/flat-products.bend:p113pl_bind_flat,p113px_known", "selfhost/src/back/native/bridge.bend:nc_uses,nc_live_env,nc_live_uses", "selfhost/src/back/qbe/lower.bend:p111_keep"]
+    },
+    {
+      "id": "16",
+      "title": "Fuse inline cleanliness, node-count and stack summaries",
+      "old": "p155b_16_old",
+      "new": "p155b_16_new",
+      "resultType": "String",
+      "controls": [0, 1, 2, 7, 31, 586],
+      "suggestedSizes": [31, 127, 512],
+      "dependencies": [],
+      "scope": "Complete three-field semantic summary over actual P113DStmt/N111Stmt grammar; every field observed as clean:size:stack. Original leaf policies and saturating additions retained.",
+      "whatWorkDisappears": "Repeated body/branch traversal for size and stack; leaf rules are reused and the candidate pays temporary P155BStats records.",
+      "limits": "Analysis kernel only, not full optimizer. p113i_function checks the original body while p113i_table_function may inspect a rewritten body: facts must be recomputed at that boundary. The benchmark cannot justify reusing pre-rewrite facts or removing any eligibility/admission/verifier gate. Clean-failure short circuit may favor original; summary allocation may erase traversal savings.",
+      "sourceAnchors": ["selfhost/src/back/qbe/inline.bend:p113i_clean,p113i_size,p113i_stack,p113i_function,p113i_functions_step,p113i_eligible"],
+      "independentExpected": "For generated n-block bodies: clean:min(4096,7*n+1):min(65536,96*n), within tested n range. n=1 is clean:8:96."
+    }
+  ]
+}

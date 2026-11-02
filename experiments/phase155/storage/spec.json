@@ -1,0 +1,97 @@
+{
+  "family": "storage",
+  "module": "selfhost/tests/phase155/storage.bend",
+  "dependencies": [
+    "selfhost/tests/phase154/model.bend",
+    "selfhost/tests/phase154/scalar.bend"
+  ],
+  "cases": [
+    {
+      "id": "19",
+      "title": "Direct dense scalar fact storage versus persistent numeric trie",
+      "old": "p155s_dense_old",
+      "new": "p155s_dense_new",
+      "resultType": "String",
+      "controls": [
+        0,
+        1,
+        2,
+        7,
+        31,
+        64,
+        129
+      ],
+      "dependencies": [
+        "selfhost/tests/phase154/model.bend",
+        "selfhost/tests/phase154/scalar.bend"
+      ],
+      "scope": "Fresh64-key direct production, n dependent point observations/replacements, rolling checksum and full final ordered map, allocation and destruction.",
+      "whatWorkDisappears": [
+        "Patricia-node/path rebuilding for updates",
+        "P154FCell and exact-value object transport",
+        "Numeric-key lookup traversal"
+      ],
+      "limitations": [
+        "This is a synthetic storage operation stream, not a complete compiler function or cold build.",
+        "All output fields are checked; hosted checking is not a proof or native qualification.",
+        "Maximum64 live keys; numeric identities and exact scalar facts only, without relation/predicate state, branches or persistent snapshots.",
+        "Actual Array scalar layout and native access must be inspected in the combined image; no four-byte or direct-load assumption.",
+        "Final full-map String construction and cleanup are included, and can dilute storage gains.",
+        "Every dense key exists; absent facts and sparse IDs are not covered.",
+        "Three words store changing low/high/version; present/exact/bits64 are invariant.",
+        "In-place updates require unique logical ownership; snapshot clone costs are not measured."
+      ],
+      "oracle": "experiments/phase155/storage/controls.json",
+      "oracleGenerator": "experiments/phase155/storage/oracle.py",
+      "suggestedScreenN": [
+        64,
+        256,
+        1024
+      ]
+    },
+    {
+      "id": "20",
+      "title": "Sorted sparse flat facts and bulk merge versus repeated trie insertion",
+      "old": "p155s_sparse_old",
+      "new": "p155s_sparse_new",
+      "resultType": "String",
+      "controls": [
+        0,
+        1,
+        2,
+        7,
+        31,
+        64,
+        129
+      ],
+      "dependencies": [
+        "selfhost/tests/phase154/model.bend",
+        "selfhost/tests/phase154/scalar.bend"
+      ],
+      "scope": "Fresh32-key sparse production, n dependent observations and8-item sorted batches, binary-search queries plus full fresh-buffer merge versus eight trie insertions, rolling checksum/full final map and cleanup.",
+      "whatWorkDisappears": [
+        "Eight repeated trie walks and persistent path rebuilds per batch",
+        "Owned per-fact product representation in the candidate",
+        "Hash-prefix/collision dispatch in candidate updates"
+      ],
+      "limitations": [
+        "This is a synthetic storage operation stream, not a complete compiler function or cold build.",
+        "All output fields are checked; hosted checking is not a proof or native qualification.",
+        "Maximum64 live keys; numeric identities and exact scalar facts only, without relation/predicate state, branches or persistent snapshots.",
+        "Actual Array scalar layout and native access must be inspected in the combined image; no four-byte or direct-load assumption.",
+        "Final full-map String construction and cleanup are included, and can dilute storage gains.",
+        "Input batches are constructed sorted; sorting arbitrary input is not measured.",
+        "Eight updates over at most64 records; full copy may lose on larger maps/smaller batches.",
+        "Both roles pay identical scalar batch-array creation.",
+        "After eight batches all64 possible keys exist, still sparse over a roughly four-million-wide numeric domain."
+      ],
+      "oracle": "experiments/phase155/storage/controls.json",
+      "oracleGenerator": "experiments/phase155/storage/oracle.py",
+      "suggestedScreenN": [
+        32,
+        128,
+        512
+      ]
+    }
+  ]
+}

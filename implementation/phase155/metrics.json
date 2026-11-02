@@ -1,0 +1,1092 @@
+{
+  "kind": "phase155-twenty-idea-screen",
+  "complete": true,
+  "baselineCommit": "c9de3ee",
+  "counts": {
+    "loss-screen": 3,
+    "neutral-screen": 2,
+    "rejected-static": 3,
+    "win-screen": 12
+  },
+  "inputs": [
+    {
+      "file": "selfhost/build/phase155/prepare07/manifest.json",
+      "bytes": 204336,
+      "sha256": "100c2e0772dbcc5365154c4a50910f14d098fb74b0a921ac7431f56207552f91"
+    },
+    {
+      "file": "selfhost/build/phase155/controls01/report.json",
+      "bytes": 3463267,
+      "sha256": "00c31a444dc40c970e47e9e08161330ebc4e601323f398d64f353eeeedae9b4a"
+    },
+    {
+      "file": "selfhost/build/phase155/screen01/report.json",
+      "bytes": 873998,
+      "sha256": "4120bc4f4dd6c1f271278b840541fa8609b91465a4ee3c7c984fe725637c254e"
+    },
+    {
+      "file": "selfhost/build/phase155/screen02/report.json",
+      "bytes": 227374,
+      "sha256": "33782114c3dd601aa08a35dd5ada1e3d7215ec618dbf1447eae623ecd7667a52"
+    }
+  ],
+  "rows": [
+    {
+      "id": "01",
+      "title": "Return scalar width from fact lookup",
+      "family": "facts",
+      "specification": {
+        "id": "01",
+        "title": "Return scalar width from fact lookup",
+        "old": "p155f_01_old",
+        "new": "p155f_01_new",
+        "resultType": "String",
+        "controls": [
+          0,
+          1,
+          2,
+          7,
+          31,
+          32,
+          33,
+          127,
+          257
+        ],
+        "dependencies": [
+          "selfhost/tests/phase154/model.bend",
+          "selfhost/tests/phase154/scalar.bend"
+        ],
+        "scope": "A 32-key mixed numeric/fixed-name persistent P154Facts table and n changing compiler-shaped transfer/update steps; includes setup, whole final-table checksum and teardown. Not a complete compiler stage.",
+        "oracle": "Baseline calls the unchanged Phase154 fact functions. Root compares old/new outputs; no expected values obtained by executing candidates during preparation.",
+        "limitations": [
+          "Checksum equality is a bounded regression screen, not whole-table structural equivalence or a proof.",
+          "Small fixed working set and deterministic trace do not establish whole-compiler coverage.",
+          "Machine admission and direct borrowed access must be checked by the root; source scalar return alone does not prove them.",
+          "The same capability already exists for P147VLive membership/capacity; this is an application to a different remaining call path, not a new ownership feature.",
+          "Only width queries are replaced; arithmetic using the full fact is unchanged."
+        ],
+        "whatWorkDisappears": "Whole P154FCell and P113KFact return lifetimes before width projection disappear; traversal count and ordinary update remain.",
+        "method": "p155f_bits descends to the requested width at the matching leaf. It applies the existing scalar-query pattern to the Phase154 full-cell fact path.",
+        "family": "facts"
+      },
+      "status": "win-screen",
+      "ratio": 0.8810634311653232,
+      "n": 65536,
+      "receipt": "screen01/report.json",
+      "speedup": 1.1349920614425768,
+      "timeReductionPercent": 11.893656883467685,
+      "medianSeconds": {
+        "old": 0.15445995517075062,
+        "new": 0.13608901808038354
+      },
+      "pairRatios": [
+        0.8838489914751729,
+        0.8801349120567985,
+        0.8796633750692702
+      ],
+      "promotion": "not production-qualified"
+    },
+    {
+      "id": "02",
+      "title": "Fuse width and version reads",
+      "family": "facts",
+      "specification": {
+        "id": "02",
+        "title": "Fuse width and version reads",
+        "old": "p155f_02_old",
+        "new": "p155f_02_new",
+        "resultType": "String",
+        "controls": [
+          0,
+          1,
+          2,
+          7,
+          31,
+          32,
+          33,
+          127,
+          257
+        ],
+        "dependencies": [
+          "selfhost/tests/phase154/model.bend",
+          "selfhost/tests/phase154/scalar.bend"
+        ],
+        "scope": "A 32-key mixed numeric/fixed-name persistent P154Facts table and n changing compiler-shaped transfer/update steps; includes setup, whole final-table checksum and teardown. Not a complete compiler stage.",
+        "oracle": "Baseline calls the unchanged Phase154 fact functions. Root compares old/new outputs; no expected values obtained by executing candidates during preparation.",
+        "limitations": [
+          "Checksum equality is a bounded regression screen, not whole-table structural equivalence or a proof.",
+          "Small fixed working set and deterministic trace do not establish whole-compiler coverage.",
+          "Machine admission and direct borrowed access must be checked by the root; source scalar return alone does not prove them.",
+          "The underlying whole-cell API already exposes both fields; the opportunity is the current separate access pattern.",
+          "The combined scalar decision is a probe for paired access, not a general borrowed-product return ABI."
+        ],
+        "whatWorkDisappears": "Two fact-tree descents become one existing whole-cell lookup followed by a combined scalar consumer.",
+        "method": "p155f_combined uses p154f_get once and retains its whole-cell result interface, deliberately isolating query fusion from idea01.",
+        "family": "facts"
+      },
+      "status": "win-screen",
+      "ratio": 0.7660453942529079,
+      "n": 65536,
+      "receipt": "screen01/report.json",
+      "speedup": 1.3054056685181932,
+      "timeReductionPercent": 23.395460574709215,
+      "medianSeconds": {
+        "old": 0.19498545303940773,
+        "new": 0.14936770824715495
+      },
+      "pairRatios": [
+        0.7660453942529079,
+        0.7486691032296322,
+        0.7679307595801473
+      ],
+      "promotion": "not production-qualified"
+    },
+    {
+      "id": "03",
+      "title": "Keep a computed hash through reads and update",
+      "family": "facts",
+      "specification": {
+        "id": "03",
+        "title": "Keep a computed hash through reads and update",
+        "old": "p155f_03_old",
+        "new": "p155f_03_new",
+        "resultType": "String",
+        "controls": [
+          0,
+          1,
+          2,
+          7,
+          31,
+          32,
+          33,
+          127,
+          257
+        ],
+        "dependencies": [
+          "selfhost/tests/phase154/model.bend",
+          "selfhost/tests/phase154/scalar.bend"
+        ],
+        "scope": "A 32-key mixed numeric/fixed-name persistent P154Facts table and n changing compiler-shaped transfer/update steps; includes setup, whole final-table checksum and teardown. Not a complete compiler stage.",
+        "oracle": "Baseline calls the unchanged Phase154 fact functions. Root compares old/new outputs; no expected values obtained by executing candidates during preparation.",
+        "limitations": [
+          "Checksum equality is a bounded regression screen, not whole-table structural equivalence or a proof.",
+          "Small fixed working set and deterministic trace do not establish whole-compiler coverage.",
+          "Machine admission and direct borrowed access must be checked by the root; source scalar return alone does not prove them.",
+          "Only four of 32 keys use String hashing; numeric-key hash work is already trivial.",
+          "Existing low-level APIs already accept a hash. This tests retaining it across the current wrapper calls."
+        ],
+        "whatWorkDisappears": "Four p154n_hash evaluations per update cycle become one; the whole-cell reads and tree traversal/rebuild counts remain.",
+        "method": "A precomputed hash flows through p154f_lookup and p154f_insert; ordinary epoch and metadata rules are copied exactly.",
+        "family": "facts"
+      },
+      "status": "win-screen",
+      "ratio": 0.9385020492401964,
+      "n": 65536,
+      "receipt": "screen01/report.json",
+      "speedup": 1.065527774616573,
+      "timeReductionPercent": 6.149795075980357,
+      "medianSeconds": {
+        "old": 0.19591793976724148,
+        "new": 0.1838693879544735
+      },
+      "pairRatios": [
+        0.9409994126148921,
+        0.9372090293452694,
+        0.919842649101658
+      ],
+      "promotion": "not production-qualified"
+    },
+    {
+      "id": "04",
+      "title": "Publish comparison fact and predicate once",
+      "family": "facts",
+      "specification": {
+        "id": "04",
+        "title": "Publish comparison fact and predicate once",
+        "old": "p155f_04_old",
+        "new": "p155f_04_new",
+        "resultType": "String",
+        "controls": [
+          0,
+          1,
+          2,
+          7,
+          31,
+          32,
+          33,
+          127,
+          257
+        ],
+        "dependencies": [
+          "selfhost/tests/phase154/model.bend",
+          "selfhost/tests/phase154/scalar.bend"
+        ],
+        "scope": "A 32-key mixed numeric/fixed-name persistent P154Facts table and n changing compiler-shaped transfer/update steps; includes setup, whole final-table checksum and teardown. Not a complete compiler stage.",
+        "oracle": "Baseline calls the unchanged Phase154 fact functions. Root compares old/new outputs; no expected values obtained by executing candidates during preparation.",
+        "limitations": [
+          "Checksum equality is a bounded regression screen, not whole-table structural equivalence or a proof.",
+          "Small fixed working set and deterministic trace do not establish whole-compiler coverage.",
+          "Machine admission and direct borrowed access must be checked by the root; source scalar return alone does not prove them.",
+          "Restricted to the comparison publication shape whose predicate root is its own destination.",
+          "It does not batch independent key updates or remove the final persistent path rebuild."
+        ],
+        "whatWorkDisappears": "The intermediate fact-only persistent path and subsequent read/rebuild for self-rooted predicate metadata disappear.",
+        "method": "One old-cell read constructs the final fact+predicate cell with incremented epoch, preserved relation, and new root/destination epochs; baseline uses p154k_put then p154p_put.",
+        "family": "facts"
+      },
+      "status": "win-screen",
+      "ratio": 0.7465984035851267,
+      "n": 65536,
+      "receipt": "screen01/report.json",
+      "speedup": 1.3394081680298966,
+      "timeReductionPercent": 25.340159641487325,
+      "medianSeconds": {
+        "old": 0.5348633606918156,
+        "new": 0.3993281312286854
+      },
+      "pairRatios": [
+        0.7470168326606157,
+        0.7497151058683155,
+        0.745015222617001
+      ],
+      "promotion": "not production-qualified"
+    },
+    {
+      "id": "05",
+      "title": "Skip repeated canonicalization when private publication state is already canonical",
+      "family": "publication",
+      "specification": {
+        "id": "05",
+        "title": "Skip repeated canonicalization when private publication state is already canonical",
+        "old": "p155p_05_old",
+        "new": "p155p_05_new",
+        "resultType": "String",
+        "controls": [
+          0,
+          1,
+          2,
+          7,
+          31
+        ],
+        "n": [
+          16,
+          64,
+          256
+        ],
+        "status": "candidate-unexecuted",
+        "dependencies": [
+          "check_declarations",
+          "book_cached",
+          "book_put",
+          "p143cp_replay",
+          "p143cp_canon",
+          "p143cp_childless",
+          "p143cp_logged",
+          "index_lookup"
+        ],
+        "scope": "Private publication replay with an authenticated canonical seed and dirty flag; n completed Def updates followed by n ADT updates. Does not replace checking or carry the flag across checker mutations.",
+        "whatWorkDisappears": "Whole-book reverse, name validation, duplicate selection and reconstruction before each consecutive non-childless publication after the first clean boundary.",
+        "charged": "Fixture construction, original declaration installation, all index updates, dirty-state records, first required canonicalization, unconditional original final canonicalization, full all-field string observation and ordinary cleanup.",
+        "admission": "The clean bit is established privately by check_declarations and reset only after canonicalization plus book_put. No arbitrary caller may assert it. Internal checker mutation integration remains unaudited.",
+        "negativeControls": "Every prefix of mixed replacements, childful Def, Foreign, empty names and full-hash collision names is independently finalized. ADTs are never blindly logged.",
+        "family": "publication"
+      },
+      "status": "win-screen",
+      "ratio": 0.3016578428955481,
+      "n": 256,
+      "receipt": "screen01/report.json",
+      "speedup": 3.3150140914660704,
+      "timeReductionPercent": 69.83421571044519,
+      "medianSeconds": {
+        "old": 0.40279338881373405,
+        "new": 0.1215057848021388
+      },
+      "pairRatios": [
+        0.3016468997950581,
+        0.3039998907569201,
+        0.3016578428955481
+      ],
+      "promotion": "not production-qualified"
+    },
+    {
+      "id": "06",
+      "title": "Batch initial declaration installation with the existing exact overlay helper",
+      "family": "publication",
+      "specification": {
+        "id": "06",
+        "title": "Batch initial declaration installation with the existing exact overlay helper",
+        "old": "p155p_06_old",
+        "new": "p155p_06_new",
+        "resultType": "String",
+        "controls": [
+          0,
+          1,
+          2,
+          7,
+          31
+        ],
+        "n": [
+          16,
+          64,
+          256
+        ],
+        "status": "candidate-unexecuted",
+        "dependencies": [
+          "check_declarations",
+          "declared",
+          "book_put_many",
+          "book_cached"
+        ],
+        "scope": "Initial declaration installation only, before checking: n independent ADTs and n Def declarations over a disjoint Base-shaped seed. No dependent check or successful-body publication is reordered.",
+        "whatWorkDisappears": "Repeated per-definition outer book insertion/filter transport, replaced by one existing immutable overlay; index_set order is preserved.",
+        "charged": "Mapping every event through unchanged Foreign/declared choice, retained existing book_put_many admission scans/fallback, complete output observation and cleanup.",
+        "priorNegative": "Fresh-name cached insertion already avoids index_remove through index_put_rest, so this may add work. Independent successful-definition batching is not justified merely by distinct names: p155p_deferred_type is the concrete counterexample to a broader rule.",
+        "family": "publication"
+      },
+      "status": "neutral-screen",
+      "ratio": 0.9772384304102897,
+      "n": 1024,
+      "receipt": "screen01/report.json",
+      "speedup": 1.023291725828009,
+      "timeReductionPercent": 2.2761569589710318,
+      "medianSeconds": {
+        "old": 0.29581855284050107,
+        "new": 0.2890852582640946
+      },
+      "pairRatios": [
+        0.9630507826431107,
+        0.9772384304102897,
+        0.9743356706309245
+      ],
+      "promotion": "not production-qualified"
+    },
+    {
+      "id": "07",
+      "title": "Reuse constructor membership metadata across append-only successful declaration history",
+      "family": "publication",
+      "specification": {
+        "id": "07",
+        "title": "Reuse constructor membership metadata across append-only successful declaration history",
+        "old": "p155p_07_old",
+        "new": "p155p_07_new",
+        "resultType": "String",
+        "controls": [
+          0,
+          1,
+          2,
+          7,
+          31
+        ],
+        "n": [
+          16,
+          64,
+          256
+        ],
+        "status": "candidate-unexecuted",
+        "dependencies": [
+          "constructor_names",
+          "has_name",
+          "index_find",
+          "index_set",
+          "index_hash",
+          "book_put",
+          "book_cached"
+        ],
+        "scope": "Constructor-name validation component over n unique ADT owner events. Odd n appends a duplicate constructor event and returns the exact successful prefix world plus unchanged first error. This is not full type or dependent checking.",
+        "whatWorkDisappears": "Repeated whole-event-history constructor_exists scans for each newly declared constructor, replaced by full-name collision-correct indexed membership.",
+        "charged": "Start with an empty index, insert every successful constructor, retain original local-duplicate list checks and book publication, observe every final world field plus full error, and destroy the auxiliary index.",
+        "admission": "Unique owner names and successful append-only history; arbitrary replacement/removal and cache-record events require a separate fallback. Do not attach this index to the mutable checker world.",
+        "negativeControls": "Within-row duplicates, cross-owner duplicates, empty constructor names, and costarring/liquid full-hash collision. Replaced ADT counterexample explicitly prevents stale cache generalization.",
+        "family": "publication"
+      },
+      "status": "win-screen",
+      "ratio": 0.2677086167444381,
+      "n": 1024,
+      "receipt": "screen01/report.json",
+      "speedup": 3.735404605801789,
+      "timeReductionPercent": 73.22913832555619,
+      "medianSeconds": {
+        "old": 0.6720780548639596,
+        "new": 0.17992108641192317
+      },
+      "pairRatios": [
+        0.268595137155629,
+        0.26689714069455067,
+        0.2677221636969439
+      ],
+      "promotion": "not production-qualified"
+    },
+    {
+      "id": "08",
+      "title": "Observe width inside indexed fact lookup",
+      "family": "queries",
+      "specification": {
+        "id": "08",
+        "title": "Observe width inside indexed fact lookup",
+        "old": "p155q_08_old",
+        "new": "p155q_08_new",
+        "resultType": "String",
+        "controls": [
+          0,
+          1,
+          2,
+          7,
+          31,
+          32,
+          33,
+          35,
+          70,
+          127
+        ],
+        "expected": {
+          "0": "2166136261",
+          "1": "84696350",
+          "2": "276207160",
+          "7": "3835236751",
+          "31": "1266995239",
+          "32": "152284485",
+          "33": "2398733215",
+          "35": "3437822519",
+          "70": "4041881981",
+          "127": "4253123830"
+        },
+        "dependencies": [],
+        "scope": "Actual p111v_get/index_find/index_bucket plus scalar da consumption. Full index setup, repeated hits/misses and release included.",
+        "whatWorkDisappears": "Owned complete KDef result returned before scalar projection.",
+        "limitations": "Source + is not a borrowed ABI. Need machine access/ownership inspection and captured-owner transfer; fixture is synthetic, not whole compiler.",
+        "status": "prepared-unexecuted",
+        "suggestedTimingN": [
+          4096,
+          32768,
+          131072
+        ],
+        "family": "queries"
+      },
+      "status": "neutral-screen",
+      "ratio": 0.9530115543038145,
+      "n": 262144,
+      "receipt": "screen02/report.json",
+      "speedup": 1.0493052214151917,
+      "timeReductionPercent": 4.698844569618554,
+      "medianSeconds": {
+        "old": 0.23271941393613815,
+        "new": 0.2217842903919518
+      },
+      "pairRatios": [
+        0.954542064599374,
+        0.9530115543038145,
+        0.9463725772113529
+      ],
+      "promotion": "not production-qualified"
+    },
+    {
+      "id": "09",
+      "title": "Observe held descendant without escaping it",
+      "family": "queries",
+      "specification": {
+        "id": "09",
+        "title": "Observe held descendant without escaping it",
+        "old": "p155q_09_old",
+        "new": "p155q_09_new",
+        "resultType": "String",
+        "controls": [
+          0,
+          1,
+          2,
+          7,
+          31,
+          32,
+          33,
+          35,
+          70,
+          127
+        ],
+        "expected": {
+          "0": "2166136261",
+          "1": "84696435",
+          "2": "1702304866",
+          "7": "1679031448",
+          "31": "2828863715",
+          "32": "1379204402",
+          "33": "2607453660",
+          "35": "1188703087",
+          "70": "1404202709",
+          "127": "3627699032"
+        },
+        "dependencies": [],
+        "scope": "Actual KDef/KTerm dt/kid/ix projection composition, root held across varying child queries.",
+        "whatWorkDisappears": "Owned type/list/child result boundaries before scalar ix consumption.",
+        "limitations": "Candidate only exposes lifetime scope. Existing optimizer may already fuse it. No runtime ownership primitive or arbitrary escaping borrowed result.",
+        "status": "prepared-unexecuted",
+        "suggestedTimingN": [
+          4096,
+          32768,
+          131072
+        ],
+        "family": "queries"
+      },
+      "status": "win-screen",
+      "ratio": 0.7051117216216657,
+      "n": 1048576,
+      "receipt": "screen02/report.json",
+      "speedup": 1.4182149712390675,
+      "timeReductionPercent": 29.48882783783343,
+      "medianSeconds": {
+        "old": 0.28319818805903196,
+        "new": 0.19968636194244027
+      },
+      "pairRatios": [
+        0.7051117216216657,
+        0.7041842199341414,
+        0.7038981518041313
+      ],
+      "promotion": "not production-qualified"
+    },
+    {
+      "id": "10",
+      "title": "Reuse located constructor across metadata consumers",
+      "family": "queries",
+      "specification": {
+        "id": "10",
+        "title": "Reuse located constructor across metadata consumers",
+        "old": "p155q_10_old",
+        "new": "p155q_10_new",
+        "resultType": "String",
+        "controls": [
+          0,
+          1,
+          2,
+          7,
+          31,
+          32,
+          33,
+          35,
+          70,
+          127
+        ],
+        "expected": {
+          "0": "2166136261",
+          "1": "96754974",
+          "2": "852988472",
+          "7": "4237134223",
+          "31": "3161706234",
+          "32": "2761676672",
+          "33": "2709665423",
+          "35": "2645126519",
+          "70": "3686563677",
+          "127": "4198080294"
+        },
+        "dependencies": [],
+        "scope": "Unchanged j_layout_ctor with nested prepared BookCache and ADT lookup; arity/templates/telescope ID observed together.",
+        "whatWorkDisappears": "Two repeated complete constructor lookups and independent metadata result transfers.",
+        "limitations": "Synthetic composition ceiling; do not assert production already performs this exact triple query. Needs measured actual consumer-chain integration. Shared root immutable only.",
+        "status": "prepared-unexecuted",
+        "suggestedTimingN": [
+          4096,
+          32768,
+          131072
+        ],
+        "family": "queries"
+      },
+      "status": "win-screen",
+      "ratio": 0.39222165134901643,
+      "n": 65536,
+      "receipt": "screen01/report.json",
+      "speedup": 2.549578781692893,
+      "timeReductionPercent": 60.777834865098356,
+      "medianSeconds": {
+        "old": 0.47491868026554585,
+        "new": 0.18627338903024793
+      },
+      "pairRatios": [
+        0.393076169133789,
+        0.3923708247665583,
+        0.3904777685767813
+      ],
+      "promotion": "not production-qualified"
+    },
+    {
+      "id": "11",
+      "title": "Fuse UTF-8 name-table traversal and QBE rendering",
+      "family": "render",
+      "specification": {
+        "controls": [
+          0,
+          1,
+          2,
+          7,
+          31
+        ],
+        "dependencies": [],
+        "conversionAndCleanup": "Fresh inputs/cache/intermediate data/output for each repetition; complete String returned and consumed by caller. No length-only or prefix-only acceptance. Whole child includes teardown.",
+        "promotion": "Private kernel screen only; no production override or whole-compiler gain claim.",
+        "id": "11",
+        "title": "Fuse UTF-8 name-table traversal and QBE rendering",
+        "old": "p155r_fused_old",
+        "new": "p155r_fused_new",
+        "resultType": "String",
+        "status": "prepared",
+        "scope": "All 185 compiler and 150 Map constructor names, in exact captured order, rendered as the p111_cid_names_N string-data declarations. Old: current p111q_utf8 plus p111q_data. New: direct character-to-QBE byte text. Each n repeats both complete tables.",
+        "whatWorkDisappears": "Per-byte P111QByte objects, the UTF-8 reversed list/reversal, datum-to-String list construction and later fragment flattening. Decimal formatting and full final String remain.",
+        "oracle": "Exact canonical old/new String equality for every control; additional literal UTF-8 controls include empty, ASCII, 2/3/4-byte Unicode, embedded NUL/newline.",
+        "limitations": [
+          "These are complete string-data definitions, not a whole backend or bounded native publication cursor.",
+          "Active P134 streaming also caps datum slices; this pure one-string screen does not establish peak-memory parity for long data rows.",
+          "The original table-building path materializes UTF-8 before later emission; moving construction changes lifetime and requires a future full native-request test.",
+          "n repetitions concatenate both distinct workloads; this output is a benchmark text corpus, not one linkable QBE program."
+        ],
+        "family": "render"
+      },
+      "status": "loss-screen",
+      "ratio": 1.107541642570113,
+      "n": 64,
+      "receipt": "screen01/report.json",
+      "speedup": 0.902900587719161,
+      "timeReductionPercent": -10.7541642570113,
+      "medianSeconds": {
+        "old": 0.39566820999607444,
+        "new": 0.4382190192118287
+      },
+      "pairRatios": [
+        1.1297439941274856,
+        1.1226997080707024,
+        1.0941086336392962
+      ],
+      "promotion": "not production-qualified"
+    },
+    {
+      "id": "12",
+      "title": "Pre-size/chunk/destination output",
+      "family": "render",
+      "specification": {
+        "id": "12",
+        "title": "Pre-size/chunk/destination output",
+        "status": "rejected-static",
+        "dependencies": [],
+        "scope": "Existing selected native QBE publication boundary.",
+        "whatWorkDisappears": "No distinct missing broad mechanism found: p134e_next already emits/releases one function or bounded data slice, p134e_data_slice caps128 items, and the IO path writes the LF separately.",
+        "sourceEvidence": [
+          "selfhost/src/back/qbe/stream-emission.bend:p134e_next",
+          "selfhost/src/back/qbe/stream-emission.bend:p134e_data_slice",
+          "implementation/phase134/README.md:Work removed and Rejected attempts",
+          "implementation/phase101/README.md:Naive chunk splicing loses"
+        ],
+        "limitations": [
+          "This rejects duplicating the current chunking strategy, not a new runtime destination ABI.",
+          "Pre-sizing a mutable byte/string destination would need a separately authorized runtime/ownership experiment; Array transport is not assumed cheap after Phase148.",
+          "Phase134 packet batching added length scans/joins and measured1.29% slower than its same-block parent."
+        ],
+        "family": "render"
+      },
+      "status": "rejected-static",
+      "promotion": "not production-qualified"
+    },
+    {
+      "id": "13",
+      "title": "Render repeated local spellings once per owner",
+      "family": "render",
+      "specification": {
+        "controls": [
+          0,
+          1,
+          2,
+          7,
+          31
+        ],
+        "dependencies": [],
+        "conversionAndCleanup": "Fresh inputs/cache/intermediate data/output for each repetition; complete String returned and consumed by caller. No length-only or prefix-only acceptance. Whole child includes teardown.",
+        "promotion": "Private kernel screen only; no production override or whole-compiler gain claim.",
+        "id": "13",
+        "title": "Render repeated local spellings once per owner",
+        "old": "p155r_cached_old",
+        "new": "p155r_cached_new",
+        "resultType": "String",
+        "status": "prepared",
+        "scope": "Every N111Local occurrence in source traversal order in three complete authentic retained lexer scalar segments:12,10,13 operands. Cache is reconstructed separately for each owner and every n repetition.",
+        "whatWorkDisappears": "Repeated p111q_local special-name tests and %v_ String construction after the first identical spelling per owner.",
+        "oracle": "Exact canonical p111q_local output sequence, including every occurrence/newline. Independent fixed cache spelling oracle covers state, repeated name, empty name and Unicode.",
+        "limitations": [
+          "This is a local-operand renderer kernel, not a whole-function emitter replacement; no non-local values are timed.",
+          "The three retained source inputs are native primitives/continuations from a Lexer compilation, not central Lexer control flow.",
+          "Linear cache search, exact String comparisons and fresh cache construction may cost more than formatting. These costs are included.",
+          "Numeric constants/labels are not cached in this bounded prototype; absent a local-name win there is no justification for broadening it."
+        ],
+        "family": "render"
+      },
+      "status": "loss-screen",
+      "ratio": 1.6645739665009494,
+      "n": 4096,
+      "receipt": "screen01/report.json",
+      "speedup": 0.6007543191980046,
+      "timeReductionPercent": -66.45739665009494,
+      "medianSeconds": {
+        "old": 0.22205850481987,
+        "new": 0.3696328061632812
+      },
+      "pairRatios": [
+        1.5884274699079204,
+        1.6757221658380173,
+        1.655548893568703
+      ],
+      "promotion": "not production-qualified"
+    },
+    {
+      "id": "14",
+      "title": "Skip ready candidates before expensive lowering",
+      "family": "pipeline",
+      "specification": {
+        "id": "14",
+        "title": "Skip ready candidates before expensive lowering",
+        "status": "rejected-static",
+        "controls": [],
+        "scope": "Current ordinary prepared QBE route, rather than obsolete p126bp_close replay.",
+        "whatWorkDisappears": "No newly demonstrated work: p128raw_plan_finish already retains raw candidates; p128raw_close reuses them and p113d_pass_function already drops ready names.",
+        "limits": "A stronger private-first/generic-elision proposal needs independent public ABI, continuation, closure, descriptor, constructor/static and ordered-ID reachability evidence. A ready private name alone cannot justify omitting generic lowering.",
+        "sourceAnchors": [
+          "selfhost/src/back/qbe/prepared-context.bend:p128raw_plan_finish,p128raw_close,p128raw_session_finish",
+          "selfhost/src/back/qbe/direct-lower.bend:p113d_pass_function",
+          "selfhost/src/back/qbe/product-composition.bend:p126bp_close"
+        ],
+        "family": "pipeline"
+      },
+      "status": "rejected-static",
+      "promotion": "not production-qualified"
+    },
+    {
+      "id": "15",
+      "title": "Share one flat-binding use summary across keep/live consumers",
+      "family": "pipeline",
+      "specification": {
+        "id": "15",
+        "title": "Share one flat-binding use summary across keep/live consumers",
+        "old": "p155b_15_old",
+        "new": "p155b_15_new",
+        "resultType": "String",
+        "controls": [
+          0,
+          1,
+          2,
+          7,
+          31
+        ],
+        "suggestedSizes": [
+          31,
+          127,
+          512
+        ],
+        "dependencies": [],
+        "scope": "The exact p111_keep plus nc_live_env expression pair in p113pl_bind_flat, with complete keep arguments and all retained binding fields consumed. Fixture construction and output observation are included.",
+        "whatWorkDisappears": "One repeated nc_uses(body) traversal and NU_Set construction/destruction; nc_live_uses reuses the first immutable summary.",
+        "limits": "Synthetic compiler-shaped terms, actual maintained analysis functions. Not complete product lowering. Substitution, reanalysis of transformed bodies, p113p_bindable, ownership policy and independent verifier remain untouched. Existing boxed/liveness/constructor sharing is not counted anew. Empty environments and early failures can reduce profitability.",
+        "sourceAnchors": [
+          "selfhost/src/back/qbe/flat-products.bend:p113pl_bind_flat,p113px_known",
+          "selfhost/src/back/native/bridge.bend:nc_uses,nc_live_env,nc_live_uses",
+          "selfhost/src/back/qbe/lower.bend:p111_keep"
+        ],
+        "family": "pipeline"
+      },
+      "status": "win-screen",
+      "ratio": 0.5693259785034447,
+      "n": 65536,
+      "receipt": "screen01/report.json",
+      "speedup": 1.7564629715802607,
+      "timeReductionPercent": 43.06740214965553,
+      "medianSeconds": {
+        "old": 0.3015489219687879,
+        "new": 0.17167963506653905
+      },
+      "pairRatios": [
+        0.6391196549338071,
+        0.5693259785034447,
+        0.5292851884205945
+      ],
+      "promotion": "not production-qualified"
+    },
+    {
+      "id": "16",
+      "title": "Fuse inline cleanliness, node-count and stack summaries",
+      "family": "pipeline",
+      "specification": {
+        "id": "16",
+        "title": "Fuse inline cleanliness, node-count and stack summaries",
+        "old": "p155b_16_old",
+        "new": "p155b_16_new",
+        "resultType": "String",
+        "controls": [
+          0,
+          1,
+          2,
+          7,
+          31,
+          586
+        ],
+        "suggestedSizes": [
+          31,
+          127,
+          512
+        ],
+        "dependencies": [],
+        "scope": "Complete three-field semantic summary over actual P113DStmt/N111Stmt grammar; every field observed as clean:size:stack. Original leaf policies and saturating additions retained.",
+        "whatWorkDisappears": "Repeated body/branch traversal for size and stack; leaf rules are reused and the candidate pays temporary P155BStats records.",
+        "limits": "Analysis kernel only, not full optimizer. p113i_function checks the original body while p113i_table_function may inspect a rewritten body: facts must be recomputed at that boundary. The benchmark cannot justify reusing pre-rewrite facts or removing any eligibility/admission/verifier gate. Clean-failure short circuit may favor original; summary allocation may erase traversal savings.",
+        "sourceAnchors": [
+          "selfhost/src/back/qbe/inline.bend:p113i_clean,p113i_size,p113i_stack,p113i_function,p113i_functions_step,p113i_eligible"
+        ],
+        "independentExpected": "For generated n-block bodies: clean:min(4096,7*n+1):min(65536,96*n), within tested n range. n=1 is clean:8:96.",
+        "family": "pipeline"
+      },
+      "status": "win-screen",
+      "ratio": 0.7748417853623901,
+      "n": 65536,
+      "receipt": "screen01/report.json",
+      "speedup": 1.2905860511024252,
+      "timeReductionPercent": 22.515821463760986,
+      "medianSeconds": {
+        "old": 0.26544659910723567,
+        "new": 0.20567911677062511
+      },
+      "pairRatios": [
+        0.7709169968902722,
+        0.8390514088069381,
+        0.768818139402131
+      ],
+      "promotion": "not production-qualified"
+    },
+    {
+      "id": "17",
+      "title": "Replace the eager token list with a one-way fused lexer/parser cursor",
+      "family": "frontend",
+      "specification": {
+        "id": "17",
+        "status": "rejected-static",
+        "title": "Replace the eager token list with a one-way fused lexer/parser cursor",
+        "reason": "The actual parser requires repeatable lookahead, rewind with a newer context, synthetic-token pushback, and exact original-token checkpoint identity. A one-way consuming cursor violates those interfaces; a persistent cursor without memoization may rescan source. No bounded replacement preserving these contracts is provided, so this row must not be performance-tested or scored as a measured loss.",
+        "old": null,
+        "new": null,
+        "resultType": null,
+        "controls": [],
+        "dependencies": [
+          "selfhost/src/front/lexer.bend:f_tl",
+          "selfhost/src/front/contextual.bend:f_context_rewind",
+          "selfhost/src/front/parser.bend:f_grow_existing",
+          "selfhost/src/front/parser.bend:f_args_existing",
+          "selfhost/src/front/compact-parser.bend:p140p_prior"
+        ],
+        "scope": "Reject the proposed local one-way substitution, not all possible future lexer/parser fusion designs.",
+        "whatWorkDisappears": "Intended token-list/FInput construction and reversal; currently coupled to persistent parser positions and checkpoint identity.",
+        "limitations": "Source audit only. No target run, native counterexample execution, throughput number or impossibility theorem. A redesigned memoized/token-buffer parser remains separate work.",
+        "sourceCounterexample": "def add_one(x: U32) -> U32:\n  x\n  + 1\n",
+        "counterexampleMeaning": "f_grow_existing explicitly admits an operator after a newline into the preceding expression. Flushing a fused parse unit at each newline would lose this behavior. Independently, f_context_rewind(old,new) must recover old tokens while retaining new context.",
+        "family": "frontend"
+      },
+      "status": "rejected-static",
+      "promotion": "not production-qualified"
+    },
+    {
+      "id": "18",
+      "title": "Fuse identifier syntax and exact reserved-word classification into one scalar scan",
+      "family": "frontend",
+      "specification": {
+        "id": "18",
+        "status": "candidate-source-only",
+        "title": "Fuse identifier syntax and exact reserved-word classification into one scalar scan",
+        "old": "p155x_name_old",
+        "new": "p155x_name_new",
+        "resultType": "String",
+        "controls": [
+          0,
+          1,
+          2,
+          7,
+          31
+        ],
+        "dependencies": [
+          "FToken",
+          "f_lex_cursor",
+          "f_valid_name"
+        ],
+        "independentControlFunction": "p155x_controls",
+        "independentControlArgument": 0,
+        "independentControlExpected": "ok",
+        "independentPredicateControls": {
+          "valid": 17,
+          "invalidIncludingReserved": 25,
+          "reservedWords": 16
+        },
+        "scope": "Actual maintained Phase150 scalar lexer plus complete maintained name-validation consumer, applied to every token of fresh valid Bend source per repetition. This is not the complete grammar parser, loader, checker or a whole-compiler request.",
+        "whatWorkDisappears": "Repeated first/tail projections and dot lookahead in f_name_chars, plus up to16 sequential String equality calls in f_reserved. Candidate validates identifier segments and accumulates exact first-six ASCII bytes in two U32 lanes during one scan; capped length and exact byte keys preserve keyword case and avoid hash collision assumptions.",
+        "observedOutput": "U32 tagged rolling observation returned as decimal String; consumes complete token text, all six scalar FToken fields and every predicate result. The checksum is a timing observer, not an equality proof;42 independent exact Boolean controls constrain the rule.",
+        "chargedWork": "Fresh source construction with varying numeric literal, the unchanged real lexer, complete token/name observation, recursive repeat and result destruction under the root's whole-process clock. No prelexed input or interning cache.",
+        "limitations": "No native timing or check has run for this source yet. Finite lexical/name controls do not qualify the full parse consumer. Some callers already test f_reserved before f_valid_name, so replacing only this predicate does not remove all duplicate classification. ASCII syntax is intentional and matches the existing predicate; Unicode remains rejected as a name. A full parser comparison and normal qualification would still be required before integration.",
+        "promotionGate": "Reject on any control/old-new mismatch. Even a large local gain needs measured transfer through the complete parser, because Phase150 already reduced lexical work and remaining parse costs are distributed. Never multiply this proxy ratio by the whole parse stage.",
+        "family": "frontend"
+      },
+      "status": "win-screen",
+      "ratio": 0.36220745182948,
+      "n": 4096,
+      "receipt": "screen01/report.json",
+      "speedup": 2.760848775885428,
+      "timeReductionPercent": 63.779254817052,
+      "medianSeconds": {
+        "old": 0.7988232369534671,
+        "new": 0.2893397291190922
+      },
+      "pairRatios": [
+        0.3611804997785203,
+        0.36748447614732266,
+        0.36637243101508427
+      ],
+      "promotion": "not production-qualified"
+    },
+    {
+      "id": "19",
+      "title": "Direct dense scalar fact storage versus persistent numeric trie",
+      "family": "storage",
+      "specification": {
+        "id": "19",
+        "title": "Direct dense scalar fact storage versus persistent numeric trie",
+        "old": "p155s_dense_old",
+        "new": "p155s_dense_new",
+        "resultType": "String",
+        "controls": [
+          0,
+          1,
+          2,
+          7,
+          31,
+          64,
+          129
+        ],
+        "dependencies": [
+          "selfhost/tests/phase154/model.bend",
+          "selfhost/tests/phase154/scalar.bend"
+        ],
+        "scope": "Fresh64-key direct production, n dependent point observations/replacements, rolling checksum and full final ordered map, allocation and destruction.",
+        "whatWorkDisappears": [
+          "Patricia-node/path rebuilding for updates",
+          "P154FCell and exact-value object transport",
+          "Numeric-key lookup traversal"
+        ],
+        "limitations": [
+          "This is a synthetic storage operation stream, not a complete compiler function or cold build.",
+          "All output fields are checked; hosted checking is not a proof or native qualification.",
+          "Maximum64 live keys; numeric identities and exact scalar facts only, without relation/predicate state, branches or persistent snapshots.",
+          "Actual Array scalar layout and native access must be inspected in the combined image; no four-byte or direct-load assumption.",
+          "Final full-map String construction and cleanup are included, and can dilute storage gains.",
+          "Every dense key exists; absent facts and sparse IDs are not covered.",
+          "Three words store changing low/high/version; present/exact/bits64 are invariant.",
+          "In-place updates require unique logical ownership; snapshot clone costs are not measured."
+        ],
+        "oracle": "experiments/phase155/storage/controls.json",
+        "oracleGenerator": "experiments/phase155/storage/oracle.py",
+        "suggestedScreenN": [
+          64,
+          256,
+          1024
+        ],
+        "family": "storage",
+        "expected": {
+          "0": "2166136261|0:1:0:1;1:4:65537:1;2:7:131074:1;3:10:196611:1;4:13:262148:1;5:16:327685:1;6:19:393222:1;7:22:458759:1;8:25:524296:1;9:28:589833:1;10:31:655370:1;11:34:720907:1;12:37:786444:1;13:40:851981:1;14:43:917518:1;15:46:983055:1;16:49:1048592:1;17:52:1114129:1;18:55:1179666:1;19:58:1245203:1;20:61:1310740:1;21:64:1376277:1;22:67:1441814:1;23:70:1507351:1;24:73:1572888:1;25:76:1638425:1;26:79:1703962:1;27:82:1769499:1;28:85:1835036:1;29:88:1900573:1;30:91:1966110:1;31:94:2031647:1;32:97:2097184:1;33:100:2162721:1;34:103:2228258:1;35:106:2293795:1;36:109:2359332:1;37:112:2424869:1;38:115:2490406:1;39:118:2555943:1;40:121:2621480:1;41:124:2687017:1;42:127:2752554:1;43:130:2818091:1;44:133:2883628:1;45:136:2949165:1;46:139:3014702:1;47:142:3080239:1;48:145:3145776:1;49:148:3211313:1;50:151:3276850:1;51:154:3342387:1;52:157:3407924:1;53:160:3473461:1;54:163:3538998:1;55:166:3604535:1;56:169:3670072:1;57:172:3735609:1;58:175:3801146:1;59:178:3866683:1;60:181:3932220:1;61:184:3997757:1;62:187:4063294:1;63:190:4128831:1;",
+          "1": "85810234|0:2:1:1;1:1114416:1114407:2;2:8:131075:1;3:11:196610:1;4:14:262149:1;5:17:327684:1;6:20:393223:1;7:23:458758:1;8:26:524297:1;9:29:589832:1;10:32:655371:1;11:35:720906:1;12:38:786445:1;13:41:851980:1;14:44:917519:1;15:47:983054:1;16:50:1048593:1;17:53:1114128:1;18:56:1179667:1;19:59:1245202:1;20:62:1310741:1;21:65:1376276:1;22:68:1441815:1;23:71:1507350:1;24:74:1572889:1;25:77:1638424:1;26:80:1703963:1;27:83:1769498:1;28:86:1835037:1;29:89:1900572:1;30:92:1966111:1;31:95:2031646:1;32:98:2097185:1;33:101:2162720:1;34:104:2228259:1;35:107:2293794:1;36:110:2359333:1;37:113:2424868:1;38:116:2490407:1;39:119:2555942:1;40:122:2621481:1;41:125:2687016:1;42:128:2752555:1;43:131:2818090:1;44:134:2883629:1;45:137:2949164:1;46:140:3014703:1;47:143:3080238:1;48:146:3145777:1;49:149:3211312:1;50:152:3276851:1;51:155:3342386:1;52:158:3407925:1;53:161:3473460:1;54:164:3538999:1;55:167:3604534:1;56:170:3670073:1;57:173:3735608:1;58:176:3801147:1;59:179:3866682:1;60:182:3932221:1;61:185:3997756:1;62:188:4063295:1;63:191:4128830:1;",
+          "2": "2176344240|0:3:2:1;1:6:65539:1;2:2228561:2228546:2;3:12:196609:1;4:15:262150:1;5:18:327687:1;6:21:393220:1;7:24:458757:1;8:27:524298:1;9:30:589835:1;10:33:655368:1;11:36:720905:1;12:39:786446:1;13:42:851983:1;14:45:917516:1;15:48:983053:1;16:51:1048594:1;17:54:1114131:1;18:57:1179664:1;19:21168311:21168318:3;20:63:1310742:1;21:66:1376279:1;22:69:1441812:1;23:72:1507349:1;24:75:1572890:1;25:78:1638427:1;26:81:1703960:1;27:84:1769497:1;28:87:1835038:1;29:90:1900575:1;30:93:1966108:1;31:96:2031645:1;32:99:2097186:1;33:102:2162723:1;34:105:2228256:1;35:108:2293793:1;36:111:2359334:1;37:114:2424871:1;38:117:2490404:1;39:120:2555941:1;40:123:2621482:1;41:126:2687019:1;42:129:2752552:1;43:132:2818089:1;44:135:2883630:1;45:138:2949167:1;46:141:3014700:1;47:144:3080237:1;48:147:3145778:1;49:150:3211315:1;50:153:3276848:1;51:156:3342385:1;52:159:3407926:1;53:162:3473463:1;54:165:3538996:1;55:168:3604533:1;56:171:3670074:1;57:174:3735611:1;58:177:3801144:1;59:180:3866681:1;60:183:3932222:1;61:186:3997759:1;62:189:4063292:1;63:192:4128829:1;",
+          "7": "2927843305|0:8:7:1;1:11:65542:1;2:14:131077:1;3:17:196612:1;4:20:262147:1;5:23:327682:1;6:26:393217:1;7:7799298:7799289:2;8:32:524303:1;9:35:589838:1;10:38:655373:1;11:12255426:12255393:6;12:44:786443:1;13:47:851978:1;14:50:917513:1;15:53:983048:1;16:56:1048599:1;17:59:1114134:1;18:62:1179669:1;19:65:1245204:1;20:68:1310739:1;21:71:1376274:1;22:74:1441809:1;23:77:1507344:1;24:26738740:26738743:3;25:83:1638430:1;26:86:1703965:1;27:89:1769500:1;28:31195420:31195439:7;29:95:1900570:1;30:98:1966105:1;31:101:2031640:1;32:104:2097191:1;33:107:2162726:1;34:110:2228261:1;35:113:2293796:1;36:116:2359331:1;37:119:2424866:1;38:122:2490401:1;39:125:2555936:1;40:128:2621487:1;41:45678978:45678917:4;42:134:2752557:1;43:137:2818092:1;44:140:2883627:1;45:50136538:50136573:8;46:146:3014697:1;47:149:3080232:1;48:152:3145783:1;49:155:3211318:1;50:158:3276853:1;51:161:3342388:1;52:164:3407923:1;53:167:3473458:1;54:170:3538993:1;55:173:3604528:1;56:176:3670079:1;57:179:3735614:1;58:64619200:64619251:5;59:185:3866684:1;60:188:3932219:1;61:191:3997754:1;62:194:4063289:1;63:197:4128824:1;",
+          "31": "4272137145|0:844:815:19;1:1114826:1114781:4;2:38:131101:1;3:41:196636:1;4:4457092:4457031:23;5:5571202:5571157:8;6:50:393241:1;7:53:458776:1;8:8913884:8913823:27;9:10027834:10027789:12;10:62:655381:1;11:65:720916:1;12:13370404:13370327:31;13:14484482:14484421:16;14:74:917521:1;15:77:983056:1;16:80:1048591:1;17:18940842:18940861:20;18:20054888:20054891:5;19:89:1245196:1;20:92:1310731:1;21:23397218:23397237:24;22:24511144:24511139:9;23:101:1507336:1;24:104:1572871:1;25:27853370:27853357:28;26:28967640:28967675:13;27:113:1769476:1;28:116:1835011:1;29:32310018:32309989:32;30:33424680:33424691:17;31:34538826:34538753:2;32:128:2097215:1;33:131:2162750:1;34:37880264:37880299:21;35:38993994:38994041:6;36:140:2359355:1;37:143:2424890:1;38:42336776:42336675:25;39:43450890:43450801:10;40:152:2621495:1;41:155:2687030:1;42:46793048:46793083:29;43:47907258:47907305:14;44:164:2883635:1;45:167:2949170:1;46:170:3014705:1;47:52363914:52363809:18;48:53478060:53478127:3;49:179:3211310:1;50:182:3276845:1;51:56821034:56821081:22;52:57935076:57934983:7;53:191:3473450:1;54:194:3538985:1;55:61277418:61277329:26;56:62391324:62391391:11;57:203:3735590:1;58:206:3801125:1;59:65733818:65733833:30;60:66849636:66849559:15;61:215:3997730:1;62:218:4063265:1;63:221:4128800:1;",
+          "64": "2188301765|0:1291:1344:2;1:1115501:1115504:51;2:2229779:2229668:36;3:3343857:3343760:21;4:4457819:4457736:6;5:5572029:5571896:55;6:6685915:6685932:40;7:7799993:7800016:25;8:8914091:8914128:10;9:10028269:10028256:59;10:11142323:11142196:44;11:12256369:12256256:29;12:13371371:13371288:14;13:14485549:14485416:63;14:15598699:15598716:48;15:16712873:16712752:33;16:17826891:17826912:18;17:18941165:18941104:3;18:20055315:20055172:52;19:21169265:21169168:37;20:22283419:22283304:22;21:23397821:23397880:7;22:24511963:24511948:56;23:25626041:25626064:41;24:26740171:26740208:26;25:27854221:27854112:11;26:28968339:28968212:60;27:30082321:30082176:45;28:31196427:31196344:30;29:32310093:32310120:15;30:33424203:33424220:64;31:34538313:34538320:49;32:35652619:35652480:34;33:36766701:36766640:19;34:37880659:37880612:4;35:38994865:38994704:53;36:40108763:40108744:38;37:41222845:41222904:23;38:42336923:42337004:8;39:43451129:43451088:57;40:44565163:44565008:42;41:45679213:45679136:27;42:46796275:46796212:12;43:47910449:47910272:61;44:49024619:49024600:46;45:50138669:50138728:31;46:51252779:51252860:16;47:52366953:52366960:65;48:53481227:53481120:50;49:54595181:54595120:35;50:55709331:55709188:20;51:56823729:56823760:5;52:57937883:57937896:54;53:59051965:59052024:39;54:60166107:60166092:24;55:61280121:61280016:9;56:62394251:62394160:58;57:63508237:63508128:43;58:64622355:64622228:28;59:65732945:65732928:13;60:66847051:66847096:62;61:67961165:67961192:47;62:69075275:69075292:32;63:70189577:70189456:17;",
+          "129": "2883850697|0:47858:47641:81;1:353059105:353058836:130;2:39900756:39900507:115;3:55624611:55624626:100;4:79735782:79735565:85;5:99654981:99654768:70;6:111201352:111201103:119;7:126925831:126925598:104;8:159439082:159438849:89;9:179356841:179356892:74;10:199291468:199291203:123;11:215015579:215015594:108;12:222346254:222346021:93;13:242265405:242265192:78;14:253806336:253806327:127;15:269535967:269535990:112;16:318814530:318814281:97;17:303082897:303082916:82;18:358653156:358652939:67;19:338746515:338746498:116;20:398510294:398510333:101;21:382778549:382778560:86;22:429954168:429954239:71;23:410054359:410054350:120;24:444644090:444643857:105;25:496020601:496020620:90;26:484482844:484482643:75;27:532108747:532108762:124;28:507587550:507587573:109;29:559101293:559101336:94;30:539035280:539035303:79;31:554652879:554652902:128;32:637611538:637611321:113;33:661857153:661857204:98;34:606149620:606149435:83;35:634447043:634447058:68;36:717305862:717305645:117;37:733152485:733152464:102;38:677428584:677428655:87;39:781233639:781233470:72;40:796973578:796973345:121;41:753976457:753976508:106;42:765516780:765516579:91;43:844155835:844155850:76;44:859897966:859897669:125;45:808512477:808512456:110;46:820043168:820043159:95;47:907074367:907074134:80;48:889251170:889250921:129;49:873528561:873528516:114;50:992015556:992015595:99;51:988857395:988857186:84;52:968928758:968928541:69;53:944827733:944827488:118;54:1063306648:1063306655:103;55:1035000695:1035000750:88;56:1015063258:1015063089:73;57:1133548953:1133548972:122;58:1117815804:1117815603:107;59:1097888235:1097888058:92;60:1077963774:1077963541:77;61:1087411341:1087411384:126;62:1105232816:1105232775:111;63:1127255279:1127255110:96;"
+        }
+      },
+      "status": "win-screen",
+      "ratio": 0.16618344315563985,
+      "n": 1048576,
+      "receipt": "screen02/report.json",
+      "speedup": 6.017446630128162,
+      "timeReductionPercent": 83.38165568443601,
+      "medianSeconds": {
+        "old": 1.6811997438780963,
+        "new": 0.2793875620700419
+      },
+      "pairRatios": [
+        0.16568108202085846,
+        0.16601925448699653,
+        0.16737201773038538
+      ],
+      "promotion": "not production-qualified"
+    },
+    {
+      "id": "20",
+      "title": "Sorted sparse flat facts and bulk merge versus repeated trie insertion",
+      "family": "storage",
+      "specification": {
+        "id": "20",
+        "title": "Sorted sparse flat facts and bulk merge versus repeated trie insertion",
+        "old": "p155s_sparse_old",
+        "new": "p155s_sparse_new",
+        "resultType": "String",
+        "controls": [
+          0,
+          1,
+          2,
+          7,
+          31,
+          64,
+          129
+        ],
+        "dependencies": [
+          "selfhost/tests/phase154/model.bend",
+          "selfhost/tests/phase154/scalar.bend"
+        ],
+        "scope": "Fresh32-key sparse production, n dependent observations and8-item sorted batches, binary-search queries plus full fresh-buffer merge versus eight trie insertions, rolling checksum/full final map and cleanup.",
+        "whatWorkDisappears": [
+          "Eight repeated trie walks and persistent path rebuilds per batch",
+          "Owned per-fact product representation in the candidate",
+          "Hash-prefix/collision dispatch in candidate updates"
+        ],
+        "limitations": [
+          "This is a synthetic storage operation stream, not a complete compiler function or cold build.",
+          "All output fields are checked; hosted checking is not a proof or native qualification.",
+          "Maximum64 live keys; numeric identities and exact scalar facts only, without relation/predicate state, branches or persistent snapshots.",
+          "Actual Array scalar layout and native access must be inspected in the combined image; no four-byte or direct-load assumption.",
+          "Final full-map String construction and cleanup are included, and can dilute storage gains.",
+          "Input batches are constructed sorted; sorting arbitrary input is not measured.",
+          "Eight updates over at most64 records; full copy may lose on larger maps/smaller batches.",
+          "Both roles pay identical scalar batch-array creation.",
+          "After eight batches all64 possible keys exist, still sparse over a roughly four-million-wide numeric domain."
+        ],
+        "oracle": "experiments/phase155/storage/controls.json",
+        "oracleGenerator": "experiments/phase155/storage/oracle.py",
+        "suggestedScreenN": [
+          32,
+          128,
+          512
+        ],
+        "family": "storage",
+        "expected": {
+          "0": "2166136261|1000003:3000010:1112687171:1;1065540:-;1131077:3393232:1112949317:1;1196614:-;1262151:3786454:1113211463:1;1327688:-;1393225:4179676:1113473609:1;1458762:-;1524299:4572898:1113735755:1;1589836:-;1655373:4966120:1113997901:1;1720910:-;1786447:5359342:1114260047:1;1851984:-;1917521:5752564:1114522193:1;1983058:-;2048595:6145786:1114784339:1;2114132:-;2179669:6539008:1115046485:1;2245206:-;2310743:6932230:1115308631:1;2376280:-;2441817:7325452:1115570777:1;2507354:-;2572891:7718674:1115832923:1;2638428:-;2703965:8111896:1116095069:1;2769502:-;2835039:8505118:1116357215:1;2900576:-;2966113:8898340:1116619361:1;3031650:-;3097187:9291562:1116881507:1;3162724:-;3228261:9684784:1117143653:1;3293798:-;3359335:10078006:1117405799:1;3424872:-;3490409:10471228:1117667945:1;3555946:-;3621483:10864450:1117930091:1;3687020:-;3752557:11257672:1118192237:1;3818094:-;3883631:11650894:1118454383:1;3949168:-;4014705:12044116:1118716529:1;4080242:-;4145779:12437338:1118978675:1;4211316:-;4276853:12830560:1119240821:1;4342390:-;4407927:13223782:1119502967:1;4473464:-;4539001:13617004:1119765113:1;4604538:-;4670075:14010226:1120027259:1;4735612:-;4801149:14403448:1120289405:1;4866686:-;4932223:14796670:1120551551:1;4997760:-;5063297:15189892:1120813697:1;5128834:-;",
+          "1": "84696351|1000003:1000003:1000004:2;1065540:-;1131077:3393233:1112949316:1;1196614:-;1262151:3786455:1113211462:1;1327688:-;1393225:4179677:1113473608:1;1458762:-;1524299:1524299:1524300:2;1589836:-;1655373:4966121:1113997900:1;1720910:-;1786447:5359343:1114260046:1;1851984:-;1917521:5752565:1114522192:1;1983058:-;2048595:2048595:2048596:2;2114132:-;2179669:6539009:1115046484:1;2245206:-;2310743:6932231:1115308630:1;2376280:-;2441817:7325453:1115570776:1;2507354:-;2572891:2572891:2572892:2;2638428:-;2703965:8111897:1116095068:1;2769502:-;2835039:8505119:1116357214:1;2900576:-;2966113:8898341:1116619360:1;3031650:-;3097187:3097187:3097188:2;3162724:-;3228261:9684785:1117143652:1;3293798:-;3359335:10078007:1117405798:1;3424872:-;3490409:10471229:1117667944:1;3555946:-;3621483:3621483:3621484:2;3687020:-;3752557:11257673:1118192236:1;3818094:-;3883631:11650895:1118454382:1;3949168:-;4014705:12044117:1118716528:1;4080242:-;4145779:4145779:4145780:2;4211316:-;4276853:12830561:1119240820:1;4342390:-;4407927:13223783:1119502966:1;4473464:-;4539001:13617005:1119765112:1;4604538:-;4670075:4670075:4670076:2;4735612:-;4801149:14403449:1120289404:1;4866686:-;4932223:14796671:1120551550:1;4997760:-;5063297:15189893:1120813696:1;5128834:-;",
+          "2": "943304254|1000003:1711271128:1711270096:2;1065540:1065541:1065542:3;1131077:3393234:1112949319:1;1196614:-;1262151:3786456:1113211461:1;1327688:-;1393225:4179678:1113473611:1;1458762:-;1524299:1711795424:1709697240:2;1589836:1589837:1589838:3;1655373:4966122:1113997903:1;1720910:-;1786447:5359344:1114260045:1;1851984:-;1917521:5752566:1114522195:1;1983058:-;2048595:1712319720:1710221504:2;2114132:2114133:2114134:3;2179669:6539010:1115046487:1;2245206:-;2310743:6932232:1115308629:1;2376280:-;2441817:7325454:1115570779:1;2507354:-;2572891:1712844016:1708648648:2;2638428:2638429:2638430:3;2703965:8111898:1116095071:1;2769502:-;2835039:8505120:1116357213:1;2900576:-;2966113:8898342:1116619363:1;3031650:-;3097187:1713368312:1709172976:2;3162724:3162725:3162726:3;3228261:9684786:1117143655:1;3293798:-;3359335:10078008:1117405797:1;3424872:-;3490409:10471230:1117667947:1;3555946:-;3621483:1713892608:1707600120:2;3687020:3687021:3687022:3;3752557:11257674:1118192239:1;3818094:-;3883631:11650896:1118454381:1;3949168:-;4014705:12044118:1118716531:1;4080242:-;4145779:1714416904:1708124384:2;4211316:4211317:4211318:3;4276853:12830562:1119240823:1;4342390:-;4407927:13223784:1119502965:1;4473464:-;4539001:13617006:1119765115:1;4604538:-;4670075:1714941200:1706551528:2;4735612:4735613:4735614:3;4801149:14403450:1120289407:1;4866686:-;4932223:14796672:1120551549:1;4997760:-;5063297:15189894:1120813699:1;5128834:-;",
+          "7": "704035248|1000003:1000003:1000010:2;1065540:1858136588:1856038284:3;1131077:575207790:572978539:4;1196614:1707277350:1705180048:5;1262151:2875653832:2873163315:6;1327688:58155617:58155611:7;1393225:812394346:809740107:8;1458762:-;1524299:1524299:1524306:2;1589836:1858660884:1856562580:3;1655373:575732086:573502835:4;1720910:1707801646:1705704328:5;1786447:2876178128:2873687595:6;1851984:58679913:58679875:7;1917521:812918642:810264387:8;1983058:-;2048595:2048595:2048602:2;2114132:1859185180:1854989724:3;2179669:576256382:571929979:4;2245206:1708325942:1704131456:5;2310743:2876702424:2876309027:6;2376280:59204209:55009867:7;2441817:813442938:812885883:8;2507354:-;2572891:2572891:2572898:2;2638428:1859709476:1855514020:3;2703965:576780678:572454211:4;2769502:1708850238:1704655800:5;2835039:2877226720:2876833307:6;2900576:59728505:55534195:7;2966113:813967234:813410163:8;3031650:-;3097187:3097187:3097194:2;3162724:1860233772:1853941164:3;3228261:577304974:570881355:4;3293798:1709374534:1703082928:5;3359335:2877751016:2875260435:6;3424872:60252801:56058491:7;3490409:814491530:811837291:8;3555946:-;3621483:3621483:3621490:2;3687020:1860758068:1854465460:3;3752557:577829270:571405651:4;3818094:1709898830:1703607208:5;3883631:2878275312:2875784715:6;3949168:60777097:56582755:7;4014705:815015826:812361571:8;4080242:-;4145779:4145779:4145786:2;4211316:1861282364:1861281212:3;4276853:578353566:578221403:4;4342390:1710423126:1710422944:5;4407927:2878799608:2870017539:6;4473464:61301393:52912747:7;4539001:815540122:806594459:8;4604538:-;4670075:4670075:4670082:2;4735612:1861806660:1861805380:3;4801149:578877862:578745763:4;4866686:1710947422:1710947160:5;4932223:2879323904:2870542075:6;4997760:61825689:53437075:7;5063297:816064418:807118739:8;5128834:-;",
+          "31": "4036024024|1000003:3291268336:3289563383:26;1065540:551546693:551546507:27;1131077:23743782:21514403:28;1196614:1133020531:1130627447:29;1262151:1017511108:1015150599:30;1327688:3472321113:3472319891:31;1393225:1765536058:1765010619:32;1458762:2361540551:2361245455:25;1524299:3291792632:3289039103:26;1589836:552070989:551022211:27;1655373:24268078:20990123:28;1720910:1133544827:1131151743:29;1786447:1018035404:1015674895:30;1851984:3472845409:3472844187:31;1917521:1766060354:1765534883:32;1983058:2362064847:2360721175:25;2048595:3292316928:3288514791:26;2114132:552595285:552595099:27;2179669:24792374:24660147:28;2245206:1134069123:1129578855:29;2310743:1018559700:1018296343:30;2376280:3473369705:3469174147:31;2441817:1766584650:1761864875:32;2507354:2362589143:2358099743:25;2572891:3292841224:3292184815:26;2638428:553119581:552070803:27;2703965:25316670:24135867:28;2769502:1134593419:1130103151:29;2835039:1019083996:1018820639:30;2900576:3473894001:3469698443:31;2966113:1767108946:1762389075:32;3031650:2363113439:2357575655:25;3097187:3293365520:3291660311:26;3162724:553643877:553643627:27;3228261:25840966:23611459:28;3293798:1135117715:1128530327:29;3359335:1019608292:1017247975:30;3424872:3474418297:3470222707:31;3490409:1767633242:1762913371:32;3555946:2363637735:2359148527:25;3621483:3293889816:3291136031:26;3687020:554168173:553119331:27;3752557:26365262:23087179:28;3818094:1135642011:1129054623:29;3883631:1020132588:1017772271:30;3949168:3474942593:3470747003:31;4014705:1768157538:1763437635:32;4080242:2364162031:2358624247:25;4145779:3294414112:3290611719:26;4211316:554692469:546303611:27;4276853:26889558:18368595:28;4342390:1136166307:1127481735:29;4407927:1020656884:1020393719:30;4473464:3475466889:3467076963:31;4539001:1768681834:1768156235:32;4604538:2364686327:2364391423:25;4670075:3294938408:3294281743:26;4735612:555216765:545779315:27;4801149:27413854:17844315:28;4866686:1136690603:1128006031:29;4932223:1021181180:1020918015:30;4997760:3475991185:3467601259:31;5063297:1769206130:1768680563:32;5128834:2365210623:2363867079:25;",
+          "64": "414403983|1000003:1088698416:1088141110:58;1065540:2665733011:2663635858:59;1131077:3735150750:3733052570:60;1196614:1805125597:1805092826:61;1262151:1802454660:1800357510:62;1327688:762736175:762734882:63;1393225:519717858:519062482:64;1458762:1537514009:1536693530:65;1524299:1089222712:1086568254:58;1589836:2666257307:2664160154:59;1655373:3735675046:3733576850:60;1720910:1805649893:1805617106:61;1786447:1802978956:1799833230:62;1851984:763260471:763259194:63;1917521:520242154:519586762:64;1983058:1538038305:1536169218:65;2048595:1089747008:1087092518:58;2114132:2666781603:2666781570:59;2179669:3736199342:3736198282:60;2245206:1806174189:1806141386:61;2310743:1803503252:1803503254:62;2376280:763784767:759589170:63;2441817:520766450:515916738:64;2507354:1538562601:1537742090:65;2572891:1090271304:1089713966:58;2638428:2667305899:2667305866:59;2703965:3736723638:3736722562:60;2769502:1806698485:1806665666:61;2835039:1804027548:1802978974:62;2900576:764309063:760113418:63;2966113:521290746:516441082:64;3031650:1539086897:1537217842:65;3097187:1090795600:1090238230:58;3162724:2667830195:2665733042:59;3228261:3737247934:3735149754:60;3293798:1807222781:1807190010:61;3359335:1804551844:1802454694:62;3424872:764833359:760637698:63;3490409:521815042:516965362:64;3555946:1539611193:1538790714:65;3621483:1091319896:1088665374:58;3687020:2668354491:2666257338:59;3752557:3737772230:3735674034:60;3818094:1807747077:1807714290:61;3883631:1805076140:1801930414:62;3949168:765357655:761162010:63;4014705:522339338:517489642:64;4080242:1540135489:1538266402:65;4145779:1091844192:1089189638:58;4211316:2668878787:2660490146:59;4276853:3738296526:3738295466:60;4342390:1808271373:1808238570:61;4407927:1805600436:1797211830:62;4473464:765881951:757491986:63;4539001:522863634:513819618:64;4604538:1540659785:1539839274:65;4670075:1092368488:1083422478:58;4735612:2669403083:2661014442:59;4801149:3738820822:3738819746:60;4866686:1808795669:1808762850:61;4932223:1806124732:1796687550:62;4997760:766406247:758016362:63;5063297:523387930:514343834:64;5128834:1541184081:1539315026:65;",
+          "129": "1951773173|1000003:1103384284:1102728925:130;1065540:3962980325:3962980333:123;1131077:2243276542:2243243769:124;1196614:3929632311:3929369009:125;1262151:509896040:507666541:126;1327688:1421894649:1421370365:127;1393225:205778258:205252673:128;1458762:3650607475:3650606177:129;1524299:1103908580:1101156053:130;1589836:3963504621:3963504613:123;1655373:2243800838:2243768049:124;1720910:3930156607:3929893305:125;1786447:510420336:508190837:126;1851984:1422418945:1420846053:127;1917521:206302554:204728409:128;1983058:3651131771:3651130489:129;2048595:1104432876:1101680333:130;2114132:3964028917:3959834621:123;2179669:2244325134:2240098025:124;2245206:3930680903:3926223265:125;2310743:510944632:510812285:126;2376280:1422943241:1418224621:127;2441817:206826850:202106961:128;2507354:3651656067:3651654769:129;2572891:1104957172:1100107461:130;2638428:3964553213:3960358901:123;2703965:2244849430:2240622305:124;2769502:3931205199:3926747561:125;2835039:511468928:511336517:126;2900576:1423467537:1417700309:127;2966113:207351146:201582697:128;3031650:3652180363:3652179017:129;3097187:1105481468:1100631805:130;3162724:3965077509:3960883149:123;3228261:2245373726:2241146585:124;3293798:3931729495:3927271825:125;3359335:511993224:509763661:126;3424872:1423991833:1419273181:127;3490409:207875442:203155553:128;3555946:3652704659:3652703297:129;3621483:1106005764:1099058933:130;3687020:3965601805:3961407429:123;3752557:2245898022:2241670865:124;3818094:3932253791:3927796121:125;3883631:512517520:510287957:126;3949168:1424516129:1418748869:127;4014705:208399738:202631289:128;4080242:3653228955:3653227609:129;4145779:1106530060:1099583213:130;4211316:3966126101:3966126045:123;4276853:2246422318:2246389449:124;4342390:3932778087:3932514689:125;4407927:513041816:504520797:126;4473464:1425040425:1424516045:127;4539001:208924034:208398449:128;4604538:3653753251:3653751889:129;4670075:1107054356:1106398949:130;4735612:3966650397:3966650325:123;4801149:2246946614:2246913729:124;4866686:3933302383:3933038985:125;4932223:513566112:505045413:126;4997760:1425564721:1423991349:127;5063297:209448330:207874441:128;5128834:3654277547:3654276521:129;"
+        }
+      },
+      "status": "loss-screen",
+      "ratio": 1.656933964263088,
+      "n": 16384,
+      "receipt": "screen01/report.json",
+      "speedup": 0.6035243537570577,
+      "timeReductionPercent": -65.69339642630881,
+      "medianSeconds": {
+        "old": 0.15757390297949314,
+        "new": 0.2610895517282188
+      },
+      "pairRatios": [
+        1.664297708920029,
+        1.6342821849261713,
+        1.656933964263088
+      ],
+      "promotion": "not production-qualified"
+    }
+  ],
+  "warning": "Local paired screens. Percentages overlap and must not be summed or projected onto cold builds. ID16 is an ungated tuple-analysis ceiling; storage has no persistent snapshots. Independent exact controls complement, but do not turn timing checksums into proofs."
+}

@@ -1,0 +1,99 @@
+{
+  "family": "render",
+  "module": "selfhost/tests/phase155/render.bend",
+  "dependencies": [],
+  "cases": [
+    {
+      "controls": [
+        0,
+        1,
+        2,
+        7,
+        31
+      ],
+      "dependencies": [],
+      "conversionAndCleanup": "Fresh inputs/cache/intermediate data/output for each repetition; complete String returned and consumed by caller. No length-only or prefix-only acceptance. Whole child includes teardown.",
+      "promotion": "Private kernel screen only; no production override or whole-compiler gain claim.",
+      "id": "11",
+      "title": "Fuse UTF-8 name-table traversal and QBE rendering",
+      "old": "p155r_fused_old",
+      "new": "p155r_fused_new",
+      "resultType": "String",
+      "status": "prepared",
+      "scope": "All 185 compiler and 150 Map constructor names, in exact captured order, rendered as the p111_cid_names_N string-data declarations. Old: current p111q_utf8 plus p111q_data. New: direct character-to-QBE byte text. Each n repeats both complete tables.",
+      "whatWorkDisappears": "Per-byte P111QByte objects, the UTF-8 reversed list/reversal, datum-to-String list construction and later fragment flattening. Decimal formatting and full final String remain.",
+      "oracle": "Exact canonical old/new String equality for every control; additional literal UTF-8 controls include empty, ASCII, 2/3/4-byte Unicode, embedded NUL/newline.",
+      "limitations": [
+        "These are complete string-data definitions, not a whole backend or bounded native publication cursor.",
+        "Active P134 streaming also caps datum slices; this pure one-string screen does not establish peak-memory parity for long data rows.",
+        "The original table-building path materializes UTF-8 before later emission; moving construction changes lifetime and requires a future full native-request test.",
+        "n repetitions concatenate both distinct workloads; this output is a benchmark text corpus, not one linkable QBE program."
+      ]
+    },
+    {
+      "id": "12",
+      "title": "Pre-size/chunk/destination output",
+      "status": "rejected-static",
+      "dependencies": [],
+      "scope": "Existing selected native QBE publication boundary.",
+      "whatWorkDisappears": "No distinct missing broad mechanism found: p134e_next already emits/releases one function or bounded data slice, p134e_data_slice caps128 items, and the IO path writes the LF separately.",
+      "sourceEvidence": [
+        "selfhost/src/back/qbe/stream-emission.bend:p134e_next",
+        "selfhost/src/back/qbe/stream-emission.bend:p134e_data_slice",
+        "implementation/phase134/README.md:Work removed and Rejected attempts",
+        "implementation/phase101/README.md:Naive chunk splicing loses"
+      ],
+      "limitations": [
+        "This rejects duplicating the current chunking strategy, not a new runtime destination ABI.",
+        "Pre-sizing a mutable byte/string destination would need a separately authorized runtime/ownership experiment; Array transport is not assumed cheap after Phase148.",
+        "Phase134 packet batching added length scans/joins and measured1.29% slower than its same-block parent."
+      ]
+    },
+    {
+      "controls": [
+        0,
+        1,
+        2,
+        7,
+        31
+      ],
+      "dependencies": [],
+      "conversionAndCleanup": "Fresh inputs/cache/intermediate data/output for each repetition; complete String returned and consumed by caller. No length-only or prefix-only acceptance. Whole child includes teardown.",
+      "promotion": "Private kernel screen only; no production override or whole-compiler gain claim.",
+      "id": "13",
+      "title": "Render repeated local spellings once per owner",
+      "old": "p155r_cached_old",
+      "new": "p155r_cached_new",
+      "resultType": "String",
+      "status": "prepared",
+      "scope": "Every N111Local occurrence in source traversal order in three complete authentic retained lexer scalar segments:12,10,13 operands. Cache is reconstructed separately for each owner and every n repetition.",
+      "whatWorkDisappears": "Repeated p111q_local special-name tests and %v_ String construction after the first identical spelling per owner.",
+      "oracle": "Exact canonical p111q_local output sequence, including every occurrence/newline. Independent fixed cache spelling oracle covers state, repeated name, empty name and Unicode.",
+      "limitations": [
+        "This is a local-operand renderer kernel, not a whole-function emitter replacement; no non-local values are timed.",
+        "The three retained source inputs are native primitives/continuations from a Lexer compilation, not central Lexer control flow.",
+        "Linear cache search, exact String comparisons and fresh cache construction may cost more than formatting. These costs are included.",
+        "Numeric constants/labels are not cached in this bounded prototype; absent a local-name win there is no justification for broadening it."
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "file": "selfhost/tests/phase155/render.bend",
+      "bytes": 10049,
+      "sha256": "dde02f9821461114a526b150bba48e48bc5ff348caa98075397be2789c80e138"
+    },
+    {
+      "file": "experiments/phase155/render/fixtures.json",
+      "bytes": 10154,
+      "sha256": "21a44b951b1dd629fa4a23a4c3d0a910cea0e5c30c3191c3eed0fd10d773c953"
+    }
+  ],
+  "literalControl": {
+    "function": "p155r_literal_controls",
+    "arguments": [],
+    "expected": true
+  },
+  "fixture": "experiments/phase155/render/fixtures.json",
+  "targetsRun": false
+}

@@ -1,0 +1,19 @@
+{
+  "family": "publication-transfer",
+  "module": "selfhost/tests/phase155/publication-transfer.bend",
+  "dependencies": ["selfhost/tests/phase155/publication.bend"],
+  "protocol": "raw-source-events-v1",
+  "argumentSchema": {"events": "List<&2,KDef> from the unchanged current loader FLoadTrace.result.book", "limit": "U32 maximum processed source events; full initial declarations and full suffix schedule remain intact"},
+  "exports": ["f_load_graph_trace", "p155pt_admitted", "p155pt_controls", "p155pt_05_raw_old", "p155pt_05_raw_new", "p155pt_07_raw_old", "p155pt_07_raw_new", "p155pt_05_old", "p155pt_05_new", "p155pt_07_old", "p155pt_07_new"],
+  "limits": [0, 32, 4294967295],
+  "cases": [
+    {"id": "05t", "title": "Canonical provenance on actual source-order publication schedule", "old": "p155pt_05_old", "new": "p155pt_05_new", "rawOld": "p155pt_05_raw_old", "rawNew": "p155pt_05_raw_new", "resultType": "String", "status": "transfer-unexecuted"},
+    {"id": "07t", "title": "Constructor history metadata on actual mixed definition events", "old": "p155pt_07_old", "new": "p155pt_07_new", "rawOld": "p155pt_07_raw_old", "rawNew": "p155pt_07_raw_new", "resultType": "String", "status": "transfer-unexecuted"}
+  ],
+  "admission": "Ordinary KDef events; no BookCache/index events; every non-ADT has empty constructor children. Original event_error remains authoritative for duplicate owners and law/fill checks. Failed events never update constructor metadata.",
+  "context": "Fresh checker-shaped world: unchanged check_declarations over every real event, cached empty initial seen history, same p143cs_plan suffix visibility and p143cp_publish last-event rule. Full source order is retained, without grouping or filtering ADTs.",
+  "charged": "Source parsing/loading is recorded separately. Each raw replay builds its whole declarations, suffix schedule, optional constructor index, all publications and original event guards, then independently canonicalizes the final book. Exact raw observation is outside diagnostic clocks; String wrappers provide fully consuming complete-region entries for any later native measurement.",
+  "limitsOfClaim": "No dependent type checking, template/specialization mutation, prepared-Base checker reuse, final proof/verifier replacement or native timing is claimed. The fresh world is an actual maintained checker entry shape, not the current prepared-Base request path. Root must reject nonadmitted/error actual streams, not count them as fast passes.",
+  "initialWorkloads": ["Freshly extracted original compiler verifier slice (~37KB)", "Current coverage-map-churn-128 source, with actual Base import"],
+  "fullSourcePolicy": "prepare.py --full-source explicitly adds full current qualified compiler only after the small transfer is cheap. Default never includes it."
+}

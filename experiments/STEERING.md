@@ -1,39 +1,21 @@
-# Current frontier — Phase159 runtime evidence; Phase156 integration pending
+# Current frontier — Phase160 complete self-request comparison; Phase156 integration pending
 
-[Latest experiment](../implementation/phase156/README.md) ·
+[Latest investigation](../implementation/phase160/README.md) ·
 [Phase153 investigation](../implementation/phase153/README.md) ·
 [Headroom metrics](../implementation/phase153/metrics.json) ·
 [Qualification](../implementation/phase152/qualification.json) ·
 [Independent audit](../research/phase152/final-audit.md) ·
 [Experiment ledger](ledger.md).
 
-## What Phase152 establishes
+## Qualified compiler results
 
-The maintained source now integrates authenticated prepared nullary constants,
-the preferred Phase150 scalar lexer and compact Phase151 dispatch tables.
-Original selector admission, bounded correspondence, constructor identity,
-full-width nonownership and the independent final verifier remain intact.
-The implementation is in the existing five modules, not a new parallel compiler.
-The exact qualified source has 66,399 lines and 8,265 declarations (+292/+42).
-All 112 protected declaration hashes remain unchanged.
-
-Same-source cold source-to-executable screens: Phase147 N2 → new N1 takes
-259.302s; new N1 → N2 takes 254.613s; new N2 → N3 takes 249.222s (3.89% less
-than the first). One observation each, fixed assets/CPU3, OS caches not flushed;
-this is not a confidence interval or a fresh upstream ratio. Three smaller
-compiler requests improve 2.56% geometrically in four balanced rounds.
-
-N1 → N2 removes all 13,600 strict nullary constructor/copies/sink pairs across
-4,466 functions, preserving all 73,926 symbols. Calls fall 10.83%; QBE text
-1.50%, object 4.99%, executable 3.32%. These are immediate values: the removed
-calls did not allocate heap objects. Static counts are not dynamic hotness.
-Consumed scalar dispatch witnesses improve 34–54%; this is not a whole-compiler
-speedup of that size. The safe usage-summary witness is neutral.
-
-All 45 ordinary benchmark QBE, assembly and object products are byte-identical
-between Phase147 and Phase152. The 44 resolved runtime points are neutral
-(0.99896×): 40 use scale1, four short points use scale64 in both roles, and
-one zero-work point is correctness-only. No fresh upstream comparison.
+Phase152 integrates the scalar lexer, compact dispatch and authenticated nullary
+constants; original admission and final verifier remain intact. Exact source:
+66,399 lines/8,265 declarations;112 protected hashes unchanged. Cold screens:
+259.302→254.613→249.222s across native generations, one observation each, no fresh
+upstream ratio. Smaller requests improve2.56% across four balanced rounds.
+All45 ordinary QBE/assembly/object products remain exact;44 resolved runtime
+points are neutral (0.99896×). Details and finite gates are in the linked report.
 
 ## Qualified and installed identities
 
@@ -57,106 +39,86 @@ Metric definitions remain in the
 
 ## Highest-value next experiment
 
-[Phase159](../implementation/phase159/README.md) changes the interpretation of
-the bendc comparison. On the identical captured five-owner compiler computation,
-77.77% of original bendc GC samples fall in allocator refill, chiefly its
-whole-heap reuse search. A private tracing-only64-iteration cap retains existing
-ownership/claim/collection/fallback checks and reduces four paired16-batch
-medians13.836s→2.585s (5.35×). Complete output oracles pass before/after;
-refill's physical share becomes7.79%, with1,033 accepted pooled samples.
-Median RSS rises0.23% but remains about1.16GiB, roughly15× QBE. This is one
-third-party-runtime diagnostic, not a production compiler speedup or general
-runtime qualification. Test transfer before a runtime change. It makes complete
-borrowed-reader/direct-result regions worth investigating in QBE; do not infer
-GC alone causes the cross-backend execution difference.
+[Phase160](../implementation/phase160/README.md) now compares the **same complete
+Bend compiler implementation** through QBE and bendc/C. Full3.085MB input:
+223.237s QBE versus167.602s C; same118,227,421 independent QBE bytes. C with
+only BEND_GC_FACTOR=1 takes138.383s:38.01% less than QBE, but peak RSS rises
+from1043.4MiB QBE to4074.7/5057.3MiB C. One fresh observation per role, not a
+qualified cold-build/TypeScript ratio or paired-median claim. Map and checker
+pilots were2.55×/2.26× faster; they overstated full-source transfer.
 
-Historical self-emission still performs whole-loaded-program optimization and
-327.8M allocation requests/8.068GB requested bytes. Counts are not mallocs/live
-memory or comparable workloads. The profiler now supports the existing child-
-pthread collector and explicit argv0 identity. Main-only and overrunning samples
-were rejected. All17 runs are sealed; production source/selection stay unchanged.
+The same compiler algorithms, live Base, checking, optimization, final verifier
+and output/teardown execute in both roles. Source whitespace has an independent
+exact structural parse bridge. C uses private bounded-search GC, no-local-free,
+BEND_UNBOX=0, pinned Clang-O2 and nine effect adapters. This measures the bundle
+of execution mechanisms, not Clang alone or default bendc. Default unboxing
+failed Map: generated code passed a function list as an error String. Preserve
+that counterexample; only the unboxed-off image passed complete output gates.
 
-[Phase158](../implementation/phase158/README.md) reproduces the historical
-bendc self-C exactly:4.50s median unchecked /8.81s checked on this Xeon.
-Its public2.13s M4 emission is a different hardware/unspecified-checking boundary;
-AArch64 native build remains unmeasured. This is genuine few-second self-emission,
-not a comparable ratio against our full QBE build or a reason to replace runtime.
+The accepted full C profile has1,672 samples,99.94% CPU coverage, zero loss:
+55.62% tracing/collection/rescan,5.86% refill,7.95% generic apply.8ms was rejected
+for36 overruns;100ms accepted. No pooling. Raising only allocation headroom
+reduces full time17.43% and raises RSS24.12%, establishing cadence sensitivity.
+Do not infer that a GC replacement or removal of every ownership operation is
+sound/profitable. QBE's historical42.71% ownership/transport attribution overlaps
+its stages and is not a matched physical subtraction from this new C image.
 
-The original [Phase157 ecosystem comparison](../implementation/phase157/README.md)
-remains evidence for the unmodified runtime. On one identical captured
-five-owner compiler workload, QBE is0.914× upstream for16 repeated batches but
-2.029× for a fresh single batch; input preparation changes the ranking. Adapted
-bendc GC is2.130×/1.549× respectively and uses much more memory. Explicit RC
-fails the ordinary output gate. Phase159 explains and removes a major GC cost
-on this fixture; do not use the old negative as an architectural rejection of
-GC/direct execution. These are extracted computations, not full compiler ratios.
-Investigate measured borrowed-reader/scalar-result composition;
-keep the existing qualified compiler and the Phase156 integration priority below.
+Next prioritize compact, lifetime-bounded complete compiler computations:
+durable admitted IR/facts versus per-function temporaries, borrowed readers and
+stack-safe direct returns. Output already streams; do not invent a retained
+118MB String. Capture actual allocation/retention by owner before choosing a
+region/representation change. Inspect the hot admitted worker, include setup,
+conversion and teardown, then require transfer to full source. Preserve prior
+negative evidence: local numeric/dense/use-set wins did not broadly transfer.
 
-[Phase156](../implementation/phase156/README.md) transfers the strongest
-[Phase155 kernels](../implementation/phase155/README.md) into actual compiler work.
-One shared checked native image retains original/candidate routes, complete
-verification and exact independent qualified-image QBE oracles.
+An independent quick-win candidate is the exact native-main source closure:
+3.085→1.698MB,8,265→5,007 rows, every mapped runtime owner retained; whole-book
+source check passes. Native output/ABI and self-build qualification remain
+pending.44.97% fewer source bytes is not44.97% less time. Keep JS/C/QBE in the
+maintained tree; only target-specific assembly changes. A10–15% whole-build
+saving is a planning hypothesis from the frontend envelope.
 
-Publication provenance is the surviving candidate. Its private dirty bit skips
-redundant canonicalization only after established canonical/coherent publication;
-childless logged insertions invalidate it. Real checker mutations, error order,
-law/fill scheduling, entry admission and final canonicalization are preserved.
-Two reversed full-source pairs give medians215.026s→205.086s (4.62% less), with
-identical118,227,421-byte QBE; pair gains6.19%/3.02%. Fresh **source-to-QBE** request,
-live Base preparation and teardown included; machine construction is excluded.
-Next integrate this state into the existing loop, then qualify its native image.
-Do not call this a new qualified cold-build score or upstream ratio.
+Current bendc self-emission separately reproduces its4.628MB seed C:
+original runtime16.974/39.728s unchecked/checked; bounded-search runtime
+5.981/11.374s. One observation each. Historical published9c54842e remains
+4.499/8.810s medians from [Phase158](../implementation/phase158/README.md).
+Different source, runtime, input, output and checking boundaries prevent using
+these as an apples-to-apples ratio against ours. Both do whole-loaded-program
+work; historical bendc is not allocation-free. See the source/work census.
 
-The actual645-declaration checker slice is neutral (23.670s→23.756s). It has
-23 datatype declarations/21 static adjacencies versus369/294 in full source.
-Static exposure and hosted checker diagnostic time are not native speed claims.
+Phase160 closes23 guarded jobs,28.30min target-lane time; two bounded agents.
+Exact artifacts, failed acquisitions, wrong-code control and rejected profile
+are preserved. No production edits or installed changes. Three already archived
+Phase153 raw products were pruned with authenticated receipts; no broad deletion.
 
-Shared-use lowering does not transfer its0.569× kernel result: the compiler
-slice is neutral and balanced Map requests are1.00130×. Its initial11.6% Map
-slowdown did not repeat. Machine inspection finds added guard/continuation and
-retained-set transport, with no direct-worker admission loss. Preserve both
-measurements; do not claim the static overhead caused a stable regression.
+[Phase156](../implementation/phase156/README.md) remains the pending production
+optimization: publication provenance skips redundant canonicalization only
+after established coherent publication; childless inserts invalidate it. Two
+reversed full-source pairs215.026→205.086s,4.62% less, identical QBE. The actual
+checker slice is neutral; do not extrapolate from its static type adjacency.
+Integrate compactly with original fallback/error/law scheduling and focused
+controls, then qualify once. Shared-use lowering was neutral on actual requests;
+its kernel win and initial nonrepeating Map regression do not justify promotion.
+Dense storage needs snapshots/joins/old-state observations, not a naive mutable port.
 
-Dense storage's0.166× kernel is not a production fact engine. Actual owners
-need snapshots, joins, old-state observations and full-width/name handling;
-seven of nine retained admitted products branch. Reject a naive mutable port.
-The20-owner eligibility probe is not a speedup or final optimizer-admission gate.
+[Phase153](../implementation/phase153/README.md) remains the complete QBE stage
+profile:236.947s staged CPU; raw lowering39.27s, initial optimization23.55s,
+output/cleanup38.63s, check/publication33.57s, parse29.64s. Nested final verifier
+costs must not be double-counted. Reduce complete work, not just metric counts.
 
-Next prioritize compact integration of publication-state reuse after its
-balanced full-source transfer. Keep the original fallback, source invariant,
-focused corrected controls and byte equality. Do not rebuild the full compiler
-just to rescue the neutral use-set idea or mechanically port mutable arrays.
-For further ideas, capture complete real native consumers and include lifetime,
-setup and teardown before relying on Phase155 local ratios.
+[Phase159](../implementation/phase159/README.md) demonstrated the original
+bounded-search hypothesis on five captured owners:13.836→2.585s,5.35× in four
+paired rounds, with roughly1.16GiB RSS. That kernel is not the complete compiler;
+Phase160 supplies the larger transfer and exposes a different tracing bottleneck.
+[Phase157](../implementation/phase157/README.md)'s original negative is therefore
+not evidence against all GC/direct execution. Explicit RC failed its output gate.
 
-[Phase153](../implementation/phase153/README.md) remains the complete-source
-profile:7,406 usable samples,236.947s staged CPU. Raw lowering39.27s + initial
-optimization23.55s + output/cleanup38.63s =101.45s; checking/publication33.57s.
-Ownership/reclamation/allocation/register transport42.71% of physical samples
-is overlapping attribution, not wholly removable work. Phase154 numeric locals
-improved its smaller actual-owner kernel13.02%/2.36%, not a near2× region.
-
-Keep identity comparison before broad machine builds and timing. Exact unchanged
-products can reuse prior generated-program evidence under fixed identities;
-this is not a fabricated timing or new whole-suite score. Source checking,
-finite controls and source reviews are not mathematical proof. Phase156 leaves
-the maintained source and qualified/installed selections unchanged.
-
-## Relevant recent evidence
-
-- [Phase154](../implementation/phase154/README.md): 15 jobs,5.82min; one small image, all closed.
-- [Phase152](../implementation/phase152/README.md): 51 guarded jobs, 29.10min;
-  all closed, no OOM/pruning. Guard time excludes agent and documentation work.
-- [Phase150](../implementation/phase150/README.md): scalar lexer integrated;
-  the two-process correctness pilot is not native heap parallelism.
-- [Phase149](../implementation/phase149/README.md): reduced optimization saved
-  acquisition but regressed compiler execution1.831×. Keep complete-loop metrics.
-- [Phase129](../research/phase129/selected-compiler-audit.md): source checking,
-  finite laws, admission checks and independently checked proofs are distinct.
-- [Upstream assessment](../research/phase150/upstream-assessment.md): migration
-  needs runtime, representation and checker-contract gates. No upstream pin
-  change was mixed into these measurements.
+Keep source checking, finite laws, structural admission and independently checked
+BendTT proofs distinct. The [Phase129 audit](../research/phase129/selected-compiler-audit.md)
+and [upstream assessment](../research/phase150/upstream-assessment.md) still apply.
+No upstream migration, proof-strength claim or parallel/GPU qualification was
+mixed into these experiments. Full self-reproduction/broad conformance is for
+justified integration, not every early hypothesis.
 
 ## Resource, evidence and communication rules
 

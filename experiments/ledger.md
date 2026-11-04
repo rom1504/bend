@@ -1,3 +1,43 @@
+# Phase160 — same compiler, different execution; full-scale memory cost, 2026-11-04
+
+[Report](../implementation/phase160/README.md) · [Metrics](../implementation/phase160/metrics.json) ·
+[Profiles](../implementation/phase160/profiles.json) · [Design](../design/phase160/README.md) ·
+[Independent audit](phase160/final-audit.md).
+
+Identical original complete Bend request algorithms, live Base, full3.085MB input
+and118,227,421-byte independent QBE oracle: QBE223.237s/1043.4MiB versus private
+bendc/C167.602s/4074.7MiB. Same C executable with only GC allocation factor0.5→1
+reaches138.383s/5057.3MiB:38.01% less time than QBE,17.43% less than default C.
+One fresh observation per role; no native promotion or new cold/upstream score.
+Small Map/checker advantages2.55×/2.26× did not transfer unchanged to full source.
+
+Accepted full C profile:1,672 samples,99.94% CPU coverage, zero loss. Tracing/
+collection/rescan55.62%, refill5.86%, apply7.95%.8ms capture rejected for36 overruns;
+100ms accepted. Policy ablation establishes collection-cadence sensitivity, not
+soundness of region allocation or a generic GC replacement. Full output already
+streams; durable original/derived IR and transient work coexist. Prior QBE
+ownership/transport evidence is context, not a matched physical subtraction.
+
+Default bendc unboxing generated a concrete wrong projection and failed Map;
+UNBOX=0 removes that path and passes complete output gates. Independent parser
+bridge covers4,890 structural rows excluding spans; source check remains distinct.
+Original seed checked/unchecked emission timed out180/120s; private bounded-search
+seed unlocked acquisition. Same current bendc self-C reproduced exactly:
+16.974/39.728s→5.981/11.374s unchecked/checked under bounded search. Different
+implementation/input/output from ours; historical published source stays separate.
+
+Native-main source closure3.085→1.698MB/8,265→5,007 rows retains every mapped
+runtime owner and passes whole-book source checking. Native output/ABI/self-build
+qualification remains pending;44.97% fewer bytes is not44.97% faster compilation.
+Next test compact lifetime-bounded complete compiler work and qualify the closure
+as an independent low-cost acquisition opportunity. Preserve Phase156 publication
+integration as the already measured production candidate.
+
+23 guarded jobs,1697.71s (28.30min), two bounded agents, root-owned CPU3 lane.
+All classified/sealed, all negative evidence retained. Three already archived
+Phase153 raw products pruned with authenticated receipts. No OOM, production
+source/default edits or full fixed-point campaign. Exact evidence committed.
+
 # Phase159 — allocator search concealed execution headroom, 2026-11-04
 
 [Report](../implementation/phase159/README.md) ·

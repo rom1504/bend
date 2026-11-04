@@ -1,3 +1,24 @@
+# Phase158 — historical bendc self-emission reproduced, 2026-11-04
+
+[Report](../implementation/phase158/README.md) · [Metrics](../implementation/phase158/metrics.json) ·
+[Method](phase158/README.md) · [Independent audit](phase158/independent-plan.md).
+
+Exact publication-source reconstruction: bendc9c54842e, matching Bend2.0.32
+Base/effects, unmodified historical C seed/runtime. Serial self-emission best /
+median4.484/4.499s unchecked,8.764/8.810s checked; check-only5.023/5.044s.
+Nine emission samples each and five checking samples, alternating order.
+All25 pilot/measured C products equal the complete published2,802,777-byte seed.
+Both checkers report the identical24 foreign/unsafe dependencies and exit1;
+this differential gate is not all-proofs acceptance.
+
+Separate five-round eight-worker check median5.062s; checked emission9.635s,
+with higher CPU use. Old Xeon measurements cannot reproduce absolute M4 timings.
+AArch64 native-built2.55s and direct source-to-executable3.5s remain unmeasured;
+no ratio against our full QBE self-build. Seed acquisition60.642s is separate.
+Six guarded jobs301.10s, one failed entry-path setup, two bounded read-only
+audits, no production changes. All runs sealed; exact evidence committed.
+Qualified Phase152 and Phase156 optimization frontier remain unchanged.
+
 # Phase157 — bendc ecosystem hypothesis tested, 2026-11-04
 
 [Report](../implementation/phase157/README.md) · [Metrics](../implementation/phase157/metrics.json) ·

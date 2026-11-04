@@ -1,0 +1,154 @@
+{
+  "kind": "phase158-published-self-compilation-reproduction",
+  "complete": true,
+  "startingHead": "b0481bf",
+  "bendcCommit": "9c54842eb5756803af599583ca49870d1e09186a",
+  "upstreamCommit": "573002f01ec6c52416d44489543f69a9625facf8",
+  "baseVersion": "2.0.32",
+  "host": {
+    "file": "selfhost/build/phase158/host.json",
+    "bytes": 4827,
+    "sha256": "553cc39d6d3552e10109b3c65dc2e053251f710d5cae2f044d7f84283bec5dc1"
+  },
+  "seedC": {
+    "file": "selfhost/build/phase158/historical/seed/bendc.c",
+    "bytes": 2802777,
+    "sha256": "039673e7cd0a3f8534b30b44af6256b1e957e473814a6337b43e4ba687e90db2"
+  },
+  "seedExecutable": {
+    "file": "selfhost/build/phase158/seed01/bendc",
+    "bytes": 2928752,
+    "sha256": "6eadbd111a78fd2f89a41cd42647e1bd9655a00ecfa04baf240b3eeec18d0847"
+  },
+  "seedConstructionSeconds": 60.64187564980239,
+  "cohorts": {
+    "timing01": {
+      "receipt": {
+        "file": "selfhost/build/phase158/timing01/report.json",
+        "bytes": 70265,
+        "sha256": "434f25e382d7efd84adb9e38c16b8f6ce505870a20cb994e12777311b7386371"
+      },
+      "workers": 1,
+      "affinity": [
+        3
+      ],
+      "summary": {
+        "no-check": {
+          "bestSeconds": 4.483838492073119,
+          "medianSeconds": 4.498990376014262,
+          "medianCpuSeconds": 4.4977849999999995,
+          "maxRssKiB": 559184,
+          "times": [
+            4.4965922916308045,
+            4.8204469522461295,
+            4.829817671794444,
+            4.502932034898549,
+            4.496777471154928,
+            4.554088555276394,
+            4.483838492073119,
+            4.498990376014262,
+            4.488788784015924
+          ]
+        },
+        "check-only": {
+          "bestSeconds": 5.022872882895172,
+          "medianSeconds": 5.0442847069352865,
+          "medianCpuSeconds": 5.043067000000001,
+          "maxRssKiB": 646744,
+          "times": [
+            5.025967233814299,
+            5.426899095997214,
+            5.0442847069352865,
+            5.057656497228891,
+            5.022872882895172
+          ]
+        },
+        "checked": {
+          "bestSeconds": 8.764403646811843,
+          "medianSeconds": 8.810186861082911,
+          "medianCpuSeconds": 8.808659,
+          "maxRssKiB": 701116,
+          "times": [
+            8.776736974250525,
+            8.952059074304998,
+            8.890432151965797,
+            8.789525102823973,
+            8.88901791209355,
+            8.764403646811843,
+            8.797372456174344,
+            8.876885347999632,
+            8.810186861082911
+          ]
+        }
+      },
+      "passedCalls": 23,
+      "scope": "Historical published-source reconstruction; ordinary checking, unchecked emission and machine construction remain separate. No native AArch64 timing on x86."
+    },
+    "default-workers01": {
+      "receipt": {
+        "file": "selfhost/build/phase158/default-workers01/report.json",
+        "bytes": 54044,
+        "sha256": "9c71929318276d1189dd0e81bacb8744945ff988d884ef9dd2c4cd5c2835a8e1"
+      },
+      "workers": 8,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "summary": {
+        "check-only": {
+          "bestSeconds": 5.018362244125456,
+          "medianSeconds": 5.06155729200691,
+          "medianCpuSeconds": 22.837263,
+          "maxRssKiB": 687596,
+          "times": [
+            5.02418675692752,
+            5.068094157148153,
+            5.06155729200691,
+            5.089731980115175,
+            5.018362244125456
+          ]
+        },
+        "checked": {
+          "bestSeconds": 9.516939686145633,
+          "medianSeconds": 9.634829272981733,
+          "medianCpuSeconds": 36.471176,
+          "maxRssKiB": 746412,
+          "times": [
+            9.634829272981733,
+            9.516939686145633,
+            9.645105584990233,
+            9.638402289710939,
+            9.610219098627567
+          ]
+        }
+      },
+      "passedCalls": 10,
+      "scope": "Historical published-source reconstruction; ordinary checking, unchecked emission and machine construction remain separate. No native AArch64 timing on x86."
+    }
+  },
+  "limits": [
+    "Different hardware from published M4 Pro",
+    "Published emission flags and exact executable identities unspecified",
+    "No AArch64 direct-native measurements",
+    "No full source-to-executable or new self-hosting qualification",
+    "Expected unsafe/foreign checker verdict is not a full proof"
+  ],
+  "published": {
+    "source": "https://github.com/Lulzx/bendc/blob/9c54842eb5756803af599583ca49870d1e09186a/README.md",
+    "hardware": "Apple M4 Pro, shared load average 8\u201321",
+    "cBuiltSelfEmissionSeconds": 2.13,
+    "nativeBuiltSelfEmissionSeconds": 2.55,
+    "cBuiltCheckSeconds": 1.95,
+    "nativeBuiltCheckSeconds": 2.54,
+    "emissionSampling": "best of 9",
+    "checkSampling": "best of 5",
+    "fullBuildClaimHasEarlierSourceBoundary": true
+  }
+}

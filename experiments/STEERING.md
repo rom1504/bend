@@ -57,6 +57,12 @@ Metric definitions remain in the
 
 ## Highest-value next experiment
 
+[Phase158](../implementation/phase158/README.md) reproduces the historical
+bendc self-C exactly:4.50s median unchecked /8.81s checked on this Xeon.
+Its public2.13s M4 emission is a different hardware/unspecified-checking boundary;
+AArch64 native build remains unmeasured. This is genuine few-second self-emission,
+not a comparable ratio against our full QBE build or a reason to replace runtime.
+
 The separate [Phase157 ecosystem comparison](../implementation/phase157/README.md)
 does not justify replacing QBE with bendc's runtime. On one identical captured
 five-owner compiler workload, QBE is0.914× upstream for16 repeated batches but

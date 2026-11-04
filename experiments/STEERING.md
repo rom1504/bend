@@ -1,6 +1,7 @@
-# Current frontier — Phase160 complete self-request comparison; Phase156 integration pending
+# Current frontier — Phase161 source/work audit; Phase156 integration pending
 
-[Latest investigation](../implementation/phase160/README.md) ·
+[Latest investigation](../implementation/phase161/README.md) ·
+[Same-source execution comparison](../implementation/phase160/README.md) ·
 [Phase153 investigation](../implementation/phase153/README.md) ·
 [Headroom metrics](../implementation/phase153/metrics.json) ·
 [Qualification](../implementation/phase152/qualification.json) ·
@@ -39,6 +40,49 @@ Metric definitions remain in the
 
 ## Highest-value next experiment
 
+[Phase161](../implementation/phase161/README.md) separates source inventory from
+backend work. Fixed original Phase156 QBE executable/live Base: full3.085MB input
+226.912s versus checked1.698MB native closure194.417s,14.32% less in one clean
+observation each. Closure44,186 lines versus current bendc's six-module43,857:
+raw source size is not an order-of-magnitude difference. Both QBE outputs still
+have73,926 functions/56,649 dispatcher segments and about118MB. Closure changes
+constructor/specialization identities and static data; it is NOT equivalent by
+byte comparison or a qualified compiler. Do not promote it from source checking.
+
+Fresh same-object diagnostic captures accept7,452/6,442 samples, zero loss,
+99.43/99.35% CPU coverage. Stage totals239.794→207.461s;84% of savings comes
+from parse/load, checking/publication and proof report. Both variants still walk
+4,291 names through generic/signature/candidate enumeration. New full-source split:
+generic body11.59s; private/direct candidates26.78s; signatures0.81s; SCC0.44s;
+dependency admission0.51s. Initial optimizer23.67s, registry16.19s and render/
+teardown40.21s remain substantial. Prepared-Base diagnostic clocks are distinct
+from the clean live-Base request clocks; nested final verification is not added.
+
+Prefer investigating which generic continuation bodies can remain unmaterialized
+once a private implementation is admitted, while preserving actual fallback,
+public/closure ABI, ownership, bounded stack and independent verification
+obligations. First classify needs from verified metadata, not textual call grep;
+prove one real owner/proxy before a broad refactor. Generic lowering alone is
+only4.8% of staged time, so a large win needs downstream analysis, optimizer,
+registry, emitted-body and destruction savings too. Gain remains unmeasured.
+
+Do NOT add another common compacted-body cache: p112s_defs already prepares
+NativeStaticBody for ordinary reachable definitions and both lowerers reuse it.
+Two nc_compact_definition call sites do not prove duplicate compaction. Remaining
+use/layout analyses need full producer/consumer evidence; Phase156's transported
+use-set experiment was neutral. Typed checker Book/publication is a separate
+promising structural simplification, starting with the already-measured Phase156
+provenance improvement. bendc also has two frontend parsers and already-present
+memoization/native intrinsics, not a magical single-pass/caching feature to copy.
+
+Eight guarded jobs,15.30min target-lane time, two bounded source-audit agents.
+No production/source/selection changes. Exact full and closure output gates,
+rejected diagnostic-build attempts, source census and restoration/retention
+receipts are preserved. Only obsolete authenticated Phase156 SSA/assembly/object
+payloads were pruned; its request ELF and qualified compilers remain available.
+
+## Prior runtime comparison — retained evidence
+
 [Phase160](../implementation/phase160/README.md) now compares the **same complete
 Bend compiler implementation** through QBE and bendc/C. Full3.085MB input:
 223.237s QBE versus167.602s C; same118,227,421 independent QBE bytes. C with
@@ -71,12 +115,10 @@ region/representation change. Inspect the hot admitted worker, include setup,
 conversion and teardown, then require transfer to full source. Preserve prior
 negative evidence: local numeric/dense/use-set wins did not broadly transfer.
 
-An independent quick-win candidate is the exact native-main source closure:
-3.085→1.698MB,8,265→5,007 rows, every mapped runtime owner retained; whole-book
-source check passes. Native output/ABI and self-build qualification remain
-pending.44.97% fewer source bytes is not44.97% less time. Keep JS/C/QBE in the
-maintained tree; only target-specific assembly changes. A10–15% whole-build
-saving is a planning hypothesis from the frontend envelope.
+The native-main closure is now screened in Phase161 above. Its14.32% request
+saving is not a qualified build gain or generated-program speed gain. Preserve
+all maintained targets; target-specific assembly and semantic identity changes
+need their own integration/qualification before promotion.
 
 Current bendc self-emission separately reproduces its4.628MB seed C:
 original runtime16.974/39.728s unchecked/checked; bounded-search runtime

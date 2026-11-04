@@ -1,0 +1,157 @@
+{
+  "kind": "phase161-proposed-native-stage-extension",
+  "executed": false,
+  "ownerMap": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase153/prep01/owners.json",
+    "bytes": 35789274,
+    "sha256": "92a8cf291b516d1093115afbb27593e14a689512ebceaf8172a54c34887df291"
+  },
+  "programObject": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase153/prep01/inputs/program.o",
+    "bytes": 24811328,
+    "sha256": "896a04ccd67d0159871ec3b3d46907404b5fa73c2e5ae88b6a787463558e66eb"
+  },
+  "unwindTable": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase153/prep01/unwind/table.json",
+    "bytes": 4707,
+    "sha256": "c7245df4732c0b4c8212f9e715e0733aec602c42765fb348e5a65b9c57ab49b5"
+  },
+  "qbe": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase153/prep01/inputs/program.ssa",
+    "bytes": 118227421,
+    "sha256": "1032c6a6495ca86bb26ad2bcd7ae639ed49dc987765dfe567dce7ac6224bf7bb"
+  },
+  "oldSpec": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase153/prep01/spec.json",
+    "bytes": 9575,
+    "sha256": "7edf4da87aa540a5508752a74ecd67723a490fc1fe338a08987c751f9bb2a816"
+  },
+  "existingMarkers": 24,
+  "proposedMarkers": 30,
+  "addedMarkers": [
+    {
+      "label": "p111_compile_defs",
+      "fid": 1329,
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_49_95_99_111_109_112_105_108_101_95_100_101_102_115_",
+      "multiplicity": "first",
+      "qbeLine": 689417
+    },
+    {
+      "label": "p140or_finish",
+      "fid": 30583,
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_49_52_48_111_114_95_102_105_110_105_115_104_",
+      "multiplicity": "once",
+      "qbeLine": 1935084
+    },
+    {
+      "label": "nq_signatures",
+      "fid": 20499,
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_110_113_95_115_105_103_110_97_116_117_114_101_115_",
+      "multiplicity": "first",
+      "qbeLine": 1502729
+    },
+    {
+      "label": "p113pl_candidates",
+      "fid": 29412,
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_51_112_108_95_99_97_110_100_105_100_97_116_101_115_",
+      "multiplicity": "first",
+      "qbeLine": 1874089
+    },
+    {
+      "label": "p126sc_candidates",
+      "fid": 31029,
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_49_50_54_115_99_95_99_97_110_100_105_100_97_116_101_115_",
+      "multiplicity": "once",
+      "qbeLine": 1952610
+    },
+    {
+      "label": "p113d_passes",
+      "fid": 44033,
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_51_100_95_112_97_115_115_101_115_",
+      "multiplicity": "first",
+      "qbeLine": 2505273
+    }
+  ],
+  "replaceRequiredSubsequence": [
+    "p144o_prepared",
+    "p111_compile_defs",
+    "p140or_finish",
+    "nq_signatures",
+    "p113pl_candidates",
+    "p128raw_plan_finish",
+    "p126sc_candidates",
+    "p113d_passes",
+    "p128raw_session_finish"
+  ],
+  "replaceIntervals": [
+    {
+      "label": "raw generic/private lowering",
+      "begin": "p144o_prepared",
+      "end": "p128raw_plan_finish"
+    },
+    {
+      "label": "initial private admission",
+      "begin": "p128raw_plan_finish",
+      "end": "p128raw_session_finish"
+    }
+  ],
+  "newDisjointIntervals": [
+    {
+      "label": "bang-list/pre-generic preparation",
+      "begin": "p144o_prepared",
+      "end": "p111_compile_defs"
+    },
+    {
+      "label": "generic segment body production",
+      "begin": "p111_compile_defs",
+      "end": "p140or_finish"
+    },
+    {
+      "label": "generic final metadata plus static bundle finishing",
+      "begin": "p140or_finish",
+      "end": "nq_signatures"
+    },
+    {
+      "label": "product signatures plus book_cached construction",
+      "begin": "nq_signatures",
+      "end": "p113pl_candidates"
+    },
+    {
+      "label": "private/direct candidate production",
+      "begin": "p113pl_candidates",
+      "end": "p128raw_plan_finish"
+    },
+    {
+      "label": "initial candidate handoff",
+      "begin": "p128raw_plan_finish",
+      "end": "p126sc_candidates"
+    },
+    {
+      "label": "candidate SCC cleanup",
+      "begin": "p126sc_candidates",
+      "end": "p113d_passes"
+    },
+    {
+      "label": "dependency admission and raw bundle finish",
+      "begin": "p113d_passes",
+      "end": "p128raw_session_finish"
+    }
+  ],
+  "staticEvidence": [
+    "N3 SSA690360 direct lower_bangs pushes continuations1352,1356,1357 then jumps1329 at690454.",
+    "After generic production continuation1357 ($p111.k.120217) jumps30583 at690658; return resumes1356 ($p111.k.120212), which directly calls private p112s_finish at690623; that return resumes1352 ($p111.k.120198).",
+    "Continuation1352 jumps20499 at690531, with returns through1355 ($p111.k.120207: book_cached20513 at690598) then1354 ($p111.k.120204: candidates29412 at690585), then1353 ($p111.k.120199: plan_finish31041 at690552). Text order is not execution order.",
+    "plan_finish31041 jumps31029 at1952856; its return continuation31044 dispatches p113d_passes44033 at1952932 (valid direct branch); continuation31045 also dispatches44033 at1952959 in the other branch.",
+    "p111_compile_defs, nq_signatures and p113pl_candidates are recursive; use first. p113d_passes is a recursive dependency fixed point and may be called again after worker extension; first denotes initial admission only.",
+    "p140or_finish and p126sc_candidates are nonrecursive once boundaries on this ordinary route. A pilot must still validate observed multiplicity/order; marker presence does not prove execution.",
+    "Do not mark p112s_finish FID30598 as required: this call uses its p112w private worker and bypasses that dispatcher.",
+    "Do not add global book_cached as a first marker: it is also used before this region. nq_signatures-to-p113pl_candidates intentionally includes local book_cached construction."
+  ],
+  "limits": [
+    "Entry intervals include continuation, ownership and transition overhead; these are not exclusive logical function durations.",
+    "first records all entry counts but retains clocks for only first8; later recursion does not restart stage.",
+    "Keep original larger intervals only as explicitly overlapping envelopes; never sum them with new partitions.",
+    "The global first entries must pass fresh pilot order gates; no source-only claim excludes every alternate earlier call.",
+    "The original exact object, owners, unwind and strict output/loss/coverage admission remain required."
+  ]
+}

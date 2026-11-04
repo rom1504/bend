@@ -1,3 +1,38 @@
+# Phase161 — source inventory versus architectural work, 2026-11-04
+
+[Report](../implementation/phase161/README.md) ·
+[Clean metrics](../implementation/phase161/source-metrics.json) ·
+[Profile metrics](../implementation/phase161/profile-metrics.json) ·
+[Design](../design/phase161/README.md) ·
+[Frontend audit](phase161/frontend-architecture.md) ·
+[Backend audit](phase161/backend-architecture.md).
+
+Fixed original Phase156 executable/live Base:3.085→1.698MB input,226.912→194.417s,
+14.32% less in one clean observation each. Native-main closure44,186 lines versus
+current bendc six modules43,857. Source size alone is not the main gap. Both
+outputs retain73,926 functions,56,649 dispatcher entries and~118MB. Closure
+changes constructor/specialization identities, dispatcher references and static
+image; source checking is not native equivalence/qualification. No promotion.
+
+Refined existing stage observer, same qualified object, small exact-output pilot,
+then two accepted captures:7,452/6,442 samples, zero loss,99.43/99.35% main-thread
+coverage. Stage239.794→207.461s;84% saving in parse/check/proof reporting.
+Full generic production11.59s, candidates26.78s; dependency admission only0.51s.
+Same4,291 enumerated names after pruning. Common compacted bodies are ALREADY
+reused through NativeStaticBody; a new body cache was rejected as a duplicate
+proposal. Remaining candidates are later generic/private materialization and
+analyses, typed Book/coherence simplification, and carefully qualified source
+closure. No estimate that deleting all generic lowering alone yields a large win:
+its direct envelope is4.8%; downstream effects need proof and measurement.
+
+Two bounded agents, root-only target lane.8 guards/917.97s; two tiny diagnostic
+acquisition failures preserved, final relink6.73s. No compiler source/installed
+selection or PR changes. Archived/authenticated three obsolete Phase156 bulk
+intermediates before pruning210.88MB; kept ELF/source/reports/qualified products.
+Exact evidence, source and output audits, failed methods and retention receipts
+are sealed in the phase capsule. This is an architectural investigation, not a
+new compiler-throughput or generated-program qualification.
+
 # Phase160 — same compiler, different execution; full-scale memory cost, 2026-11-04
 
 [Report](../implementation/phase160/README.md) · [Metrics](../implementation/phase160/metrics.json) ·

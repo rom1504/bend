@@ -1,0 +1,107 @@
+{
+  "kind": "phase161-resource-cost",
+  "complete": true,
+  "jobs": 8,
+  "guardWallSeconds": 917.9714993797243,
+  "peakTreeRssBytes": 1128304640,
+  "runs": [
+    {
+      "run": "closure01-guard",
+      "complete": true,
+      "seconds": 196.14519241731614,
+      "peakTreeRssBytes": 1066979328,
+      "classification": "completed",
+      "closure": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase161/closure01-guard-close/report.json",
+        "bytes": 1426,
+        "sha256": "b7ad1377c5efc855e5f2ecd2ef5489bc0a217645649e098f95fb71cc3e6e13f7"
+      }
+    },
+    {
+      "run": "full01-guard",
+      "complete": true,
+      "seconds": 229.09544947743416,
+      "peakTreeRssBytes": 1107603456,
+      "classification": "completed",
+      "closure": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase161/full01-guard-close/report.json",
+        "bytes": 1416,
+        "sha256": "8dc301f1e1141bebb15f74e35de91a62664cb7cc9b0243eb09818e21555083d7"
+      }
+    },
+    {
+      "run": "profile-build01-guard",
+      "complete": false,
+      "seconds": 0.7407647748477757,
+      "peakTreeRssBytes": 32231424,
+      "classification": "failed",
+      "closure": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase161/profile-build01-guard-close/report.json",
+        "bytes": 1441,
+        "sha256": "6d412ea553e0a27b29234e0cf0d2780fd5a9c08ea9d3e5d7bab4062ce06c0c4a"
+      }
+    },
+    {
+      "run": "profile-build02-guard",
+      "complete": false,
+      "seconds": 1.4396189088001847,
+      "peakTreeRssBytes": 174600192,
+      "classification": "failed",
+      "closure": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase161/profile-build02-guard-close/report.json",
+        "bytes": 1442,
+        "sha256": "1a1bcb96d68838751416e41e65b4d8275d36a9fca8b39196f9953dfc4aa2d27b"
+      }
+    },
+    {
+      "run": "profile-build03-guard",
+      "complete": true,
+      "seconds": 6.731313914991915,
+      "peakTreeRssBytes": 241524736,
+      "classification": "completed",
+      "closure": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase161/profile-build03-guard-close/report.json",
+        "bytes": 1444,
+        "sha256": "148c11d0de251d166e087b907568c525aead59a00c4f004823b283d8feb21b0b"
+      }
+    },
+    {
+      "run": "profile-closure01-guard",
+      "complete": true,
+      "seconds": 220.06939930608496,
+      "peakTreeRssBytes": 1086595072,
+      "classification": "completed",
+      "closure": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase161/profile-closure01-guard-close/report.json",
+        "bytes": 1451,
+        "sha256": "d2e32df795dfb117b29c69ca3e73615f2d9fc365aceb3b295adcd18efe293ed1"
+      }
+    },
+    {
+      "run": "profile-full01-guard",
+      "complete": true,
+      "seconds": 252.56018663337454,
+      "peakTreeRssBytes": 1128304640,
+      "classification": "completed",
+      "closure": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase161/profile-full01-guard-close/report.json",
+        "bytes": 1441,
+        "sha256": "a81704fc68f676a2d7228a5072447d5c2938bab23227660f2fb26de739c940c9"
+      }
+    },
+    {
+      "run": "profile-pilot01-guard",
+      "complete": true,
+      "seconds": 11.189573946874589,
+      "peakTreeRssBytes": 360267776,
+      "classification": "completed",
+      "closure": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase161/profile-pilot01-guard-close/report.json",
+        "bytes": 1444,
+        "sha256": "7f86b844e4e63322fb5fd6f17bb3bf7799f0f1d314e41fdf73de216d4e97d640"
+      }
+    }
+  ],
+  "scope": "Serial guarded job elapsed time includes compiler execution, machine acquisition, validation and failed attempts. It excludes preparation, agent/source analysis, documentation and archiving. No token/quota telemetry available; these are not billing estimates.",
+  "retention": "Each run explicitly classified; fresh investigation artifacts kept hot and sealed together into a content-deduplicated exact capsule. Earlier Phase156 raw-file pruning and Phase153 diagnostic alias restoration are separately authenticated; no age-based deletion."
+}

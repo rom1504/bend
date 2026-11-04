@@ -1,0 +1,116 @@
+{
+  "kind": "phase161-source-request-screen",
+  "complete": true,
+  "method": {
+    "file": "experiments/phase161/tools/summarize.py",
+    "bytes": 3981,
+    "sha256": "b893f8cb44ceb8a3c1c0391b521373ebfdae48a2774e4fad199162f8c692a981"
+  },
+  "inputs": [
+    {
+      "file": "selfhost/build/phase161/full01/report.json",
+      "bytes": 5459,
+      "sha256": "330039e533f2c9b77b956557be51c673e496b25e7baa4ebcf4a2ff25b179c0cd"
+    },
+    {
+      "file": "selfhost/build/phase161/closure01/report.json",
+      "bytes": 5531,
+      "sha256": "770ba4400f027f4ae6cb309fb0da12689669ee9a18ca502beb5ab275b85e7721"
+    }
+  ],
+  "sameExecutable": true,
+  "sameBase": true,
+  "rows": [
+    {
+      "case": "full",
+      "source": {
+        "file": "selfhost/build/phase152/composite01/compiler.bend",
+        "bytes": 3085157,
+        "sha256": "027e15041035522ed7e40ef971eff75f24a09ef6a00e3f8fe335839f94bcb8a8",
+        "physicalLines": 66399,
+        "nonblankNoncommentLines": 48436
+      },
+      "wallSeconds": 226.91156186209992,
+      "cpuSeconds": 226.48327799999998,
+      "peakRssKiB": 1066356,
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase161/full01/child/program.ssa",
+        "bytes": 118227421,
+        "sha256": "1032c6a6495ca86bb26ad2bcd7ae639ed49dc987765dfe567dce7ac6224bf7bb"
+      },
+      "equalToQualifiedFullQbe": true
+    },
+    {
+      "case": "closure",
+      "source": {
+        "file": "selfhost/build/phase160/closure-prepare01/compiler.bend",
+        "bytes": 1697879,
+        "sha256": "15d41d9bf2cec2b11f4dab6dbce8c2cfea5eb59b5ce0b879d5281a5084012bc2",
+        "physicalLines": 44186,
+        "nonblankNoncommentLines": 28715
+      },
+      "wallSeconds": 194.41711103636771,
+      "cpuSeconds": 194.31131,
+      "peakRssKiB": 1026112,
+      "output": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase161/closure01/child/program.ssa",
+        "bytes": 118188267,
+        "sha256": "c1a93beb26acb1de6a69c4f84f0cf57b8bd7fc7f54d4730ba1e277a6b9532dea"
+      },
+      "equalToQualifiedFullQbe": false
+    }
+  ],
+  "timeReduction": 0.14320315174367326,
+  "sourceByteReduction": 0.4496620431310303,
+  "outputByteReduction": 0.00033117528631532167,
+  "bendcCurrentModules": [
+    {
+      "file": "selfhost/build/phase158/current/bendc.bend",
+      "bytes": 1187548,
+      "sha256": "72be729fb5a27c528acc4d232314ac44c4595a86dc67d9dde47197956edabb99",
+      "physicalLines": 31028,
+      "nonblankNoncommentLines": 25733
+    },
+    {
+      "file": "selfhost/build/phase158/current/check.bend",
+      "bytes": 310429,
+      "sha256": "786514afc1804c00371356943ac6790c16c04c04551e7ab8e0d8f6468e22bf41",
+      "physicalLines": 8581,
+      "nonblankNoncommentLines": 7419
+    },
+    {
+      "file": "selfhost/build/phase158/current/core.bend",
+      "bytes": 69163,
+      "sha256": "776ec5d81269d74ab3e8da0ad0f748e0f0e48695aae667a5d57ed033c433a1b7",
+      "physicalLines": 2352,
+      "nonblankNoncommentLines": 2031
+    },
+    {
+      "file": "selfhost/build/phase158/current/rt/rtjs.bend",
+      "bytes": 26110,
+      "sha256": "cb6d37062e77441383ec205d0a89e8bbaa3ac38b58dc0da8764bb6debfeffd24",
+      "physicalLines": 603,
+      "nonblankNoncommentLines": 590
+    },
+    {
+      "file": "selfhost/build/phase158/current/rt/rtchan.bend",
+      "bytes": 3144,
+      "sha256": "34ac7e6bb3a91203ccee8fc7d66825aeba611766d51ba62c7ddffa274e50a51f",
+      "physicalLines": 102,
+      "nonblankNoncommentLines": 97
+    },
+    {
+      "file": "selfhost/build/phase158/current/asm.bend",
+      "bytes": 44202,
+      "sha256": "91794842d83c54362a756d0a759ea8fc4979b889184567cc543b640fb6f7a2f9",
+      "physicalLines": 1191,
+      "nonblankNoncommentLines": 816
+    }
+  ],
+  "bendcModuleTotal": {
+    "bytes": 1640596,
+    "physicalLines": 43857,
+    "nonblankNoncommentLines": 36686
+  },
+  "scope": "One clean observation per input, closure then full, same original Phase156 compiler and live Base. Complete compiler request, excluding QBE/assembler/link machine construction. Input source differs; closure output differs and is unqualified. No median, confidence interval, cold-cache guarantee or generated-program speed claim."
+}

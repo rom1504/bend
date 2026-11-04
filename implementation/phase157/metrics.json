@@ -1,0 +1,220 @@
+{
+  "kind": "phase157-results",
+  "complete": true,
+  "scope": "Same extracted five-owner compiler computation, not complete compilation or45-program aggregate.",
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase157/workload-compatible.bend",
+    "bytes": 387345,
+    "sha256": "a926e00c75df0bc2b5c49eaccdb8cd98eb21a4b461592891338e4178fe65cca1"
+  },
+  "book": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase154/book-fixtures01/compiler-verifier-slice.book.txt",
+    "bytes": 2979167,
+    "sha256": "15f41031b1f89fe4add47cadbb80badbe677798ebd4c42638f17efd42fa502d4"
+  },
+  "oracle": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase154/native-plan03/0-expected.stdout",
+    "bytes": 173582,
+    "sha256": "9c08e21b3f5eac0bf17c1be4fcb76fe1fda79f8faadbf99469dfb03c3399f82e"
+  },
+  "reports": {
+    "measure01": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase157/measure01/report.json",
+      "bytes": 8388,
+      "sha256": "d6e2fdabdb9a89449ae952535a3db28b6bf4b7e551a6e413920d5f5c2c7bb19d"
+    },
+    "measure02": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase157/measure02/report.json",
+      "bytes": 49749,
+      "sha256": "fdab7acf64ed77ebf68b71ab0dd89975a37338fca202458d3102fa013162f148"
+    },
+    "latency01": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase157/latency01/report.json",
+      "bytes": 38345,
+      "sha256": "1a709b65df8847e38066ddf0c7e18675a34d7eec66a0b2aa8b5ac819d2669437"
+    },
+    "gc-stats01": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase157/gc-stats01/report.json",
+      "bytes": 1933,
+      "sha256": "77a9dd513f8aa7980dd9adebc84ed86fe062eba9a16d6ea94cbeea64772aa6b6"
+    }
+  },
+  "throughput": {
+    "repeats": 16,
+    "summary": {
+      "upstream02": {
+        "medianSeconds": 6.491450311616063,
+        "medianCpuSeconds": 6.490121,
+        "maximumRssKiB": 114252,
+        "seconds": [
+          6.520699545741081,
+          6.473297596909106,
+          6.497208324726671,
+          6.495906887110323,
+          6.4869937361218035,
+          6.433436044957489
+        ],
+        "ratioToUpstream": 1.0
+      },
+      "qbe02": {
+        "medianSeconds": 5.935447066556662,
+        "medianCpuSeconds": 5.934152999999999,
+        "maximumRssKiB": 83372,
+        "seconds": [
+          5.929122460074723,
+          5.941771673038602,
+          5.980673756916076,
+          5.924194514751434,
+          5.993634896818548,
+          5.923720966093242
+        ],
+        "ratioToUpstream": 0.9143483785026489
+      },
+      "gc03": {
+        "medianSeconds": 13.823575555812567,
+        "medianCpuSeconds": 13.8219165,
+        "maximumRssKiB": 1214048,
+        "seconds": [
+          13.818134607281536,
+          13.812968151178211,
+          13.829016504343599,
+          13.95457418775186,
+          13.809659954626113,
+          14.195328372064978
+        ],
+        "ratioToUpstream": 2.1295049476195023
+      }
+    }
+  },
+  "latency": {
+    "repeats": 1,
+    "summary": {
+      "upstream02": {
+        "medianSeconds": 0.6923455169890076,
+        "medianCpuSeconds": 0.6908574999999999,
+        "maximumRssKiB": 114264,
+        "seconds": [
+          0.6930014146491885,
+          0.6887020152062178,
+          0.6916896193288267,
+          0.7006460260599852,
+          0.6935651460662484,
+          0.6240081749856472
+        ],
+        "ratioToUpstream": 1.0
+      },
+      "qbe02": {
+        "medianSeconds": 1.4048420409671962,
+        "medianCpuSeconds": 1.4031645,
+        "maximumRssKiB": 83440,
+        "seconds": [
+          1.4129781113006175,
+          1.4064173311926425,
+          1.3994491719640791,
+          1.4025388527661562,
+          1.421967698726803,
+          1.40326675074175
+        ],
+        "ratioToUpstream": 2.029105419901926
+      },
+      "gc03": {
+        "medianSeconds": 1.072217199485749,
+        "medianCpuSeconds": 1.070689,
+        "maximumRssKiB": 841792,
+        "seconds": [
+          1.0714899860322475,
+          1.0729444129392505,
+          1.0695007680915296,
+          1.0693223252892494,
+          1.0761184901930392,
+          1.07699936022982
+        ],
+        "ratioToUpstream": 1.548673564246929
+      }
+    }
+  },
+  "gcDiagnostic": {
+    "collections": 135,
+    "major": 7,
+    "sumCollectionElapsedSeconds": 1.0775000000000001,
+    "sumMarkingSeconds": 0.7609999999999998,
+    "wholeSeconds": 13.818343844264746,
+    "heapExitReportedMiB": 1035,
+    "scope": "Instrumented rounded GC intervals, not exclusive CPU or total allocated bytes."
+  },
+  "rc": {
+    "qualified": false,
+    "error": "bend: runtime fail-stop",
+    "evidence": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase157/measure01/3/stderr",
+      "bytes": 24,
+      "sha256": "2cbbd1308f68fc5f9e6e335928ae04cea79a550863032a303a9449e573adf083"
+    }
+  },
+  "hardwareInstructions": "Unavailable; not inferred from static disassembly",
+  "acquisition": {
+    "upstream01": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase157/upstream01/report.json",
+        "bytes": 22470,
+        "sha256": "2690ed07882b9aae23bb3b5a25a3f13543944fee2a68a4fe4c5bf15f74830f4e"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase157/upstream01/program",
+        "bytes": 3311688,
+        "sha256": "8699c527f157a36a4ee9039612c8aea64ecba6efa468212c47fd351d900433c0"
+      },
+      "emissionSeconds": 28.8955382630229,
+      "machineSeconds": 56.71970030106604,
+      "sumSeconds": 85.61523856408894,
+      "scope": "Source checked+emitted, then monolithic C/Clang-O3. GC emission reused exact retained original; measured costs listed once."
+    },
+    "qbe02": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase157/qbe02/report.json",
+        "bytes": 17832,
+        "sha256": "29ad1d99480f748bd7aa39acb279cef5f9b2c128ad930457e651c5ef4a70493e"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase157/qbe02/program",
+        "bytes": 4017712,
+        "sha256": "2eb4dc254925ac36c652e4fe0d2af861433fa627c3a4d8bf645560ae0fafb743"
+      },
+      "wallSeconds": 51.99036516295746,
+      "emitAndQbeSeconds": 50.50171543797478,
+      "scope": "Pipelined emission/QBE plus assembly/link; cachedBase, source checked earlier independently."
+    },
+    "gc03": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase157/gc03/report.json",
+        "bytes": 5824,
+        "sha256": "af160bbe58d68ee6428b590c28b9575d1b7c9b69e41134544b70eaf929070949"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase157/gc03/program",
+        "bytes": 1954840,
+        "sha256": "ad6061004d5239184c93ab0ec4acf0c1e6e32990fb251cb09479e2aecfe997a2"
+      },
+      "emissionSeconds": 19.18513857293874,
+      "machineSeconds": 56.40898955333978,
+      "sumSeconds": 75.59412812627852,
+      "scope": "Source checked+emitted, then monolithic C/Clang-O3. GC emission reused exact retained original; measured costs listed once."
+    },
+    "rc01": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase157/rc01/report.json",
+        "bytes": 5592,
+        "sha256": "b22f166ece267dfe49921b7dc77e068ee4decf596cb7e7487aa32f64c8fdb972"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase157/rc01/program",
+        "bytes": 5769888,
+        "sha256": "cfcaee583774e284077c4e1e4e5c507911eecc1da47cbb6a23a5dba3ed8e54a8"
+      },
+      "emissionSeconds": 21.015300122089684,
+      "machineSeconds": 128.77604930801317,
+      "sumSeconds": 149.79134943010285,
+      "scope": "Source checked+emitted, then monolithic C/Clang-O3. GC emission reused exact retained original; measured costs listed once."
+    }
+  }
+}

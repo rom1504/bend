@@ -1,3 +1,29 @@
+# Phase157 — bendc ecosystem hypothesis tested, 2026-11-04
+
+[Report](../implementation/phase157/README.md) · [Metrics](../implementation/phase157/metrics.json) ·
+[Method](phase157/README.md) · [Independent review](phase157/independent-review.md).
+
+One captured five-owner compiler workload, identical Bend/Base/input and complete
+173,582-byte independent output oracle. Six balanced role permutations at each
+boundary. Fresh one-batch medians: upstream C0.692s, QBE1.405s, adapted bendc
+GC1.072s. Sixteen-batch medians: upstream6.491s, QBE5.935s (0.914×), GC13.824s
+(2.130×); peak RSS111.6/81.4/1185.6MiB. This is extracted owner throughput with
+input preparation, not a full request, self-build or broad corpus score. Explicit
+bendc RC fails the ordinary full-output gate; no RC performance claim.
+
+Whitespace-only lambda normalization produces exact upstream C and QBE. Nine
+legacy effect registrations adapted to the pinned bendc seed's exact policy;
+common Bend/Base unchanged. Separate GC diagnostics report135 collections and
+1.078s summed rounded intervals in13.818s: collection pauses alone do not explain
+the deficit. Static direct-call/borrowed-scalar evidence identifies narrower
+follow-ups, not a demonstrated reason to change runtime. Hardware counters absent.
+
+16 guarded jobs800.37s including acquisition, compatibility failures and timing;
+all sealed, no OOM, no full compiler build or production change. Phase152 remains
+qualified; Phase156 publication integration remains the measured optimization
+frontier. Next test measured borrowed-reader composition, not wholesale GC/backend
+migration. Exact products, oracles, failures and method revisions are retained.
+
 # Phase156 — real compiler transfer, 2026-11-04
 
 [Design](../design/phase156/README.md) · [Report](../implementation/phase156/README.md) ·

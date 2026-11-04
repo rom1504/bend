@@ -57,6 +57,15 @@ Metric definitions remain in the
 
 ## Highest-value next experiment
 
+The separate [Phase157 ecosystem comparison](../implementation/phase157/README.md)
+does not justify replacing QBE with bendc's runtime. On one identical captured
+five-owner compiler workload, QBE is0.914× upstream for16 repeated batches but
+2.029× for a fresh single batch; input preparation changes the ranking. Adapted
+bendc GC is2.130×/1.549× respectively and uses much more memory. Explicit RC
+fails the ordinary output gate. These are extracted computations, not full
+compiler ratios. Investigate measured borrowed-reader/scalar-result composition;
+keep the existing qualified compiler and the Phase156 integration priority below.
+
 [Phase156](../implementation/phase156/README.md) transfers the strongest
 [Phase155 kernels](../implementation/phase155/README.md) into actual compiler work.
 One shared checked native image retains original/candidate routes, complete

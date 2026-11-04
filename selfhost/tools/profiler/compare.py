@@ -190,13 +190,23 @@ def event_totals(events):
     return totals
 
 
+def _effective_argv0(variant):
+    value = variant.get('argv0', variant['command'][0])
+    if not isinstance(value, str) or not value or '\0' in value:
+        raise ValueError('argv0 must be a nonempty string without NUL')
+    return value
+
+
 def _source_identity(variant, cwd):
     command = variant['command']
     arguments = command[1:]
     files = {item['file']:(item['bytes'], item['sha256']) for item in variant.get('inputs', [])}
     resolved = [str((Path(cwd)/arg).resolve()) for arg in arguments]
     argument_files = [(arg, files[arg]) for arg in resolved if arg in files]
-    return dict(cwd=cwd, arguments=arguments, inputFiles=argument_files)
+    # Default executable names can differ between compared variants. Their
+    # actual argv0 remains part of each variant's pooling identity below.
+    argv0 = dict(mode='explicit', value=_effective_argv0(variant)) if 'argv0' in variant else dict(mode='executable')
+    return dict(cwd=cwd, arguments=arguments, inputFiles=argument_files, argv0=argv0)
 
 
 def _output_contract(expected):
@@ -260,12 +270,16 @@ def summarize_reports(paths, reference=None, *, baseline_variants=None, minimum_
             key = (row['workload'], row['variant'])
             variant = variants[key]
             if row['command'] != variant['command']: raise ValueError('Command differs from frozen variant')
+            argv0 = _effective_argv0(variant)
+            if row.get('argv0', row['command'][0]) != argv0:
+                raise ValueError('argv0 differs from frozen variant')
             source_id = _source_identity(variant, manifest['cwd'])
             if row['workload'] in source_ids and source_ids[row['workload']] != source_id:
                 raise ValueError('Same workload name has different source/arguments: ' + row['workload'])
             source_ids[row['workload']] = source_id
             identity = dict(source=source_id, binary={k:variant['binary'][k] for k in ('bytes','sha256')},
-                            expected=_output_contract(variant['expected']), diagnostic=bool(variant.get('dispatchInstrumentation')))
+                            argv0=argv0, expected=_output_contract(variant['expected']),
+                            diagnostic=bool(variant.get('dispatchInstrumentation')))
             group = groups.setdefault(key, dict(identity=identity, rows=[], captures=[], events=[]))
             if group['identity'] != identity:
                 raise ValueError('Same variant name has different binary/source/expectations: ' + str(key))

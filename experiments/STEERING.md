@@ -1,4 +1,4 @@
-# Current frontier — Phase156 real compiler transfer
+# Current frontier — Phase159 runtime evidence; Phase156 integration pending
 
 [Latest experiment](../implementation/phase156/README.md) ·
 [Phase153 investigation](../implementation/phase153/README.md) ·
@@ -57,19 +57,40 @@ Metric definitions remain in the
 
 ## Highest-value next experiment
 
+[Phase159](../implementation/phase159/README.md) changes the interpretation of
+the bendc comparison. On the identical captured five-owner compiler computation,
+77.77% of original bendc GC samples fall in allocator refill, chiefly its
+whole-heap reuse search. A private tracing-only64-iteration cap retains existing
+ownership/claim/collection/fallback checks and reduces four paired16-batch
+medians13.836s→2.585s (5.35×). Complete output oracles pass before/after;
+refill's physical share becomes7.79%, with1,033 accepted pooled samples.
+Median RSS rises0.23% but remains about1.16GiB, roughly15× QBE. This is one
+third-party-runtime diagnostic, not a production compiler speedup or general
+runtime qualification. Test transfer before a runtime change. It makes complete
+borrowed-reader/direct-result regions worth investigating in QBE; do not infer
+GC alone causes the cross-backend execution difference.
+
+Historical self-emission still performs whole-loaded-program optimization and
+327.8M allocation requests/8.068GB requested bytes. Counts are not mallocs/live
+memory or comparable workloads. The profiler now supports the existing child-
+pthread collector and explicit argv0 identity. Main-only and overrunning samples
+were rejected. All17 runs are sealed; production source/selection stay unchanged.
+
 [Phase158](../implementation/phase158/README.md) reproduces the historical
 bendc self-C exactly:4.50s median unchecked /8.81s checked on this Xeon.
 Its public2.13s M4 emission is a different hardware/unspecified-checking boundary;
 AArch64 native build remains unmeasured. This is genuine few-second self-emission,
 not a comparable ratio against our full QBE build or a reason to replace runtime.
 
-The separate [Phase157 ecosystem comparison](../implementation/phase157/README.md)
-does not justify replacing QBE with bendc's runtime. On one identical captured
+The original [Phase157 ecosystem comparison](../implementation/phase157/README.md)
+remains evidence for the unmodified runtime. On one identical captured
 five-owner compiler workload, QBE is0.914× upstream for16 repeated batches but
 2.029× for a fresh single batch; input preparation changes the ranking. Adapted
 bendc GC is2.130×/1.549× respectively and uses much more memory. Explicit RC
-fails the ordinary output gate. These are extracted computations, not full
-compiler ratios. Investigate measured borrowed-reader/scalar-result composition;
+fails the ordinary output gate. Phase159 explains and removes a major GC cost
+on this fixture; do not use the old negative as an architectural rejection of
+GC/direct execution. These are extracted computations, not full compiler ratios.
+Investigate measured borrowed-reader/scalar-result composition;
 keep the existing qualified compiler and the Phase156 integration priority below.
 
 [Phase156](../implementation/phase156/README.md) transfers the strongest

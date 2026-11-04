@@ -4,7 +4,7 @@ import argparse
 import json
 from pathlib import Path
 
-from run import pin, save
+from run import pin, save, validate_argv0
 
 
 def freeze(recipe, recipe_path):
@@ -42,10 +42,13 @@ def freeze(recipe, recipe_path):
                         expected[channel]['evidence'] = pin(path(oracle['evidence']))
                 else:
                     raise ValueError('Expected oracle path or explicit stdout elapsed-line contract')
-            row['variants'].append(dict(name=variant['name'], command=command,
+            frozen_variant = dict(name=variant['name'], command=command,
                 binary=pin(command[0]), expected=expected,
                 dispatchInstrumentation=bool(variant.get('dispatchInstrumentation', False)),
-                inputs=[pin(path(p)) for p in variant.get('inputs', [])]))
+                inputs=[pin(path(p)) for p in variant.get('inputs', [])])
+            if 'argv0' in variant:
+                frozen_variant['argv0'] = validate_argv0(variant['argv0'])
+            row['variants'].append(frozen_variant)
         if not row['variants']:
             raise ValueError('Workload has no variants')
         result['workloads'].append(row)

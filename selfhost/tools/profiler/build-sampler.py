@@ -16,18 +16,22 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--out', type=Path, required=True)
     p.add_argument('--cc', default='gcc')
-    p.add_argument('--unwind-table', type=Path)
+    scope = p.add_mutually_exclusive_group()
+    scope.add_argument('--unwind-table', type=Path)
+    scope.add_argument('--all-threads', action='store_true',
+                       help='Sample main and intercepted pthreads; no caller-unwind support')
     a = p.parse_args()
     out = a.out.resolve()
     assert not out.exists()
     out.mkdir(parents=True)
-    source = Path(__file__).with_name('sample.c').resolve()
+    source = Path(__file__).with_name('sample-threads.c' if a.all_threads else 'sample.c').resolve()
     compiler = Path(shutil.which(a.cc)).resolve()
-    snapshot = out/'sample.c'; snapshot.write_bytes(source.read_bytes())
+    snapshot = out/source.name; snapshot.write_bytes(source.read_bytes())
     method = out/'method.py'; method.write_bytes(Path(__file__).read_bytes())
     command = [str(compiler), '-O2', '-std=gnu11', '-Wall', '-Wextra', '-Werror',
                '-fPIC', '-shared', str(snapshot), '-o', str(out/'sampler.so'), '-pthread', '-lrt', '-ldl']
     report = dict(complete=False, inputs=[pin(source), pin(compiler), pin(__file__)], command=command)
+    report['samplerScope'] = 'all_created_threads' if a.all_threads else 'main_thread'
     report['snapshots'] = [pin(snapshot), pin(method)]
     if a.unwind_table:
         table = a.unwind_table.resolve()

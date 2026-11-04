@@ -1,4 +1,5 @@
 import tempfile
+import sys
 import unittest
 from unittest.mock import Mock, patch
 from pathlib import Path
@@ -7,6 +8,33 @@ import run
 
 
 class RunContracts(unittest.TestCase):
+    @unittest.skipUnless(sys.platform == 'linux', 'Linux native profiler contract')
+    def test_explicit_argv0_reaches_child_without_changing_binary_command(self):
+        code = ('from pathlib import Path; '
+                'print(Path("/proc/self/cmdline").read_bytes().split(b"\\0")[0].decode())')
+        command = [sys.executable, '-c', code]
+        with tempfile.TemporaryDirectory() as directory:
+            for name, override, expected in [('default', None, sys.executable),
+                                             ('override', 'compiler-work', 'compiler-work')]:
+                result = run.execute(command, Path(directory)/name, directory, 5, {},
+                                     argv0=override)
+                self.assertEqual(result['returncode'], 0)
+                self.assertFalse(result['timedOut'])
+                self.assertEqual(result['command'], command)
+                self.assertEqual(result['argv0'], expected)
+                self.assertEqual((Path(directory)/name/'stdout').read_text(), expected+'\n')
+                self.assertEqual((Path(directory)/name/'stderr').read_bytes(), b'')
+
+    def test_invalid_argv0_rejected_before_launch(self):
+        with tempfile.TemporaryDirectory() as directory, patch.object(run.subprocess, 'Popen') as launch:
+            for invalid in ['', 'bad\0argument', 17, ['compiler-work']]:
+                with self.subTest(invalid=invalid), self.assertRaises(ValueError):
+                    run.execute(['dummy'], Path(directory)/'run', directory, 5, {}, argv0=invalid)
+            launch.assert_not_called()
+            self.assertFalse((Path(directory)/'run').exists())
+        with self.assertRaises(ValueError):
+            run.validate_argv0(None)
+
     def test_canceled_runner_kills_and_reaps_workload(self):
         child = Mock(pid=12345)
         with tempfile.TemporaryDirectory() as directory, \

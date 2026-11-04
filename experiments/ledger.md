@@ -1,3 +1,29 @@
+# Phase159 — allocator search concealed execution headroom, 2026-11-04
+
+[Report](../implementation/phase159/README.md) ·
+[Metrics](../implementation/phase159/metrics.json) ·
+[Design](../design/phase159/README.md) ·
+[Independent audit](phase159/final-audit.md).
+
+Same Phase157 generated C/runtime policy, private bounded GC reuse-search loop:
+four balanced16-batch pairs13.8355s→2.5852s,5.35× faster, median RSS+0.23%.
+Complete independent173,582-byte oracle passes before/after; ordinary verifier
+runs in every batch. Physical refill share77.77%→7.79%, candidate1,033 accepted
+8/13ms samples.2/3ms profiles rejected. No claim of a5× whole-compiler speedup,
+GC-only architectural advantage or broad runtime qualification;~1.16GiB remains
+roughly15× QBE memory. The original negative no longer rejects GC/direct execution
+as an architectural hypothesis. Test transfer and complete borrowed/direct-result
+regions before rewriting production runtime/backend.
+
+Historical bendc9c54842e is a separate source/runtime: full-loaded lower/optimize/
+raise,3,406→3,461 declarations,2,023 Gen.def calls;327.8M allocation requests and
+8.068GB before size-class rounding. Both diagnostic outputs exactly reproduce
+the seed. Counter timing is perturbed; source audit refutes lazy-only/no-allocation
+explanations. Worker-complete profiler and explicit argv0 support are maintained;
+32 focused host tests pass. All17 guarded runs sealed,472.859s total including
+123.227s diagnostic Clang acquisition. Two bounded agents, root-only target lane.
+No production self-build or selection change. Phase156 integration remains pending.
+
 # Phase158 — historical bendc self-emission reproduced, 2026-11-04
 
 [Report](../implementation/phase158/README.md) · [Metrics](../implementation/phase158/metrics.json) ·

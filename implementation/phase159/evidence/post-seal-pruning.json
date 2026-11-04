@@ -1,0 +1,112 @@
+{
+  "complete": true,
+  "scope": "Only completed diagnostic image and original common profile raw files, after exact capsule and retention archive verification. Qualified compilers, original comparison binaries and winning candidate retained.",
+  "runs": [
+    {
+      "run": "stage-build01",
+      "plan": "selfhost/build-retention/phase159/stage-build01-close/root-00/verified/plan.json",
+      "planSha256": "7a38410677cff8cc3db0a75d2e33b8255056d39fb30528771895f3eb08123ab6",
+      "receipts": {
+        "intent.json": {
+          "kind": "build-retention-prune-intent-v1",
+          "complete": true,
+          "plan": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase159/stage-build01-close/root-00/verified/plan.json",
+            "bytes": 1724,
+            "sha256": "7a38410677cff8cc3db0a75d2e33b8255056d39fb30528771895f3eb08123ab6"
+          },
+          "files": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase159/stage-build01-close/root-00/verified/files.jsonl",
+            "bytes": 1703,
+            "sha256": "e833e62eb80e8a5fe60471e0a2537241987c67be8d8cb6362bdf94dc2eb0001b"
+          },
+          "selectedFiles": 4,
+          "authorizedPolicy": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase159/stage-build01-close/root-00/policy.json",
+            "bytes": 241,
+            "sha256": "3e945ca5686557b533364706efbddef1cb4155b9b2e9624bf8196849c95627ec"
+          },
+          "freeBeforeBytes": 5388283904
+        },
+        "report.json": {
+          "kind": "build-retention-prune-result-v1",
+          "complete": true,
+          "method": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/archive-v02.py",
+            "bytes": 18412,
+            "sha256": "3238e0774c6c21c3de6c07bcbd71e469cbb23aaba01f99da0cb1e9f51990ad9f"
+          },
+          "plan": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase159/stage-build01-close/root-00/verified/plan.json",
+            "bytes": 1724,
+            "sha256": "7a38410677cff8cc3db0a75d2e33b8255056d39fb30528771895f3eb08123ab6"
+          },
+          "intent": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase159/stage-build01-post-seal-prune/intent.json",
+            "bytes": 871,
+            "sha256": "11b08c87a223ac1415dd1b28f58b0ceee94337dbb846755d852196fe544205bd"
+          },
+          "removedFiles": 4,
+          "freeBeforeBytes": 5388283904,
+          "freeAfterBytes": 5391601664,
+          "selectedAllocatedBytes": 3325952,
+          "seconds": 0.09090738510712981,
+          "scope": "Files only; empty directories retained. Exact recovery uses pinned archive members and plan metadata. Interrupted intents retain the entire removal allowlist."
+        }
+      }
+    },
+    {
+      "run": "common-sample01",
+      "plan": "selfhost/build-retention/phase159/common-sample01-close/root-00/verified/plan.json",
+      "planSha256": "df856b9817b5eaef0250ce6d3accd39504ae23d9cf254a4309718180f718ccc4",
+      "receipts": {
+        "intent.json": {
+          "kind": "build-retention-prune-intent-v1",
+          "complete": true,
+          "plan": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase159/common-sample01-close/root-00/verified/plan.json",
+            "bytes": 1736,
+            "sha256": "df856b9817b5eaef0250ce6d3accd39504ae23d9cf254a4309718180f718ccc4"
+          },
+          "files": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase159/common-sample01-close/root-00/verified/files.jsonl",
+            "bytes": 15158,
+            "sha256": "9078dcb240df412cf5b0e6af728665563cf03a61dd8c40dc54eaa1a14162e383"
+          },
+          "selectedFiles": 29,
+          "authorizedPolicy": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase159/common-sample01-close/root-00/policy.json",
+            "bytes": 247,
+            "sha256": "49d50bdc05323125202604724785e0d378934243f61e68d8b857d8e07d1dc056"
+          },
+          "freeBeforeBytes": 5391593472
+        },
+        "report.json": {
+          "kind": "build-retention-prune-result-v1",
+          "complete": true,
+          "method": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/archive-v02.py",
+            "bytes": 18412,
+            "sha256": "3238e0774c6c21c3de6c07bcbd71e469cbb23aaba01f99da0cb1e9f51990ad9f"
+          },
+          "plan": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase159/common-sample01-close/root-00/verified/plan.json",
+            "bytes": 1736,
+            "sha256": "df856b9817b5eaef0250ce6d3accd39504ae23d9cf254a4309718180f718ccc4"
+          },
+          "intent": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase159/common-sample01-post-seal-prune/intent.json",
+            "bytes": 879,
+            "sha256": "45540dedb6002a5581dfd69046a361537729b24a69d4868655b478bb9ade1310"
+          },
+          "removedFiles": 29,
+          "freeBeforeBytes": 5391593472,
+          "freeAfterBytes": 5393580032,
+          "selectedAllocatedBytes": 1994752,
+          "seconds": 0.04468308296054602,
+          "scope": "Files only; empty directories retained. Exact recovery uses pinned archive members and plan metadata. Interrupted intents retain the entire removal allowlist."
+        }
+      }
+    }
+  ]
+}

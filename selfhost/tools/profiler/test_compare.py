@@ -92,9 +92,10 @@ class Reports(unittest.TestCase):
     def tearDown(self):self.temp.cleanup()
 
     def build(self, name, *, workload='work', variant='base', binary_text='binary',
-              argument='arg', diagnostic=False, clean_cpu=2.0, source=None):
+              argument='arg', diagnostic=False, clean_cpu=2.0, source=None,
+              argv0=None, binary_name=None):
         out=self.root/name;out.mkdir()
-        binary=self.root/(variant+'.bin')
+        binary=self.root/(binary_name or variant+'.bin')
         if not binary.exists():binary.write_text(binary_text)
         source=source or self.source
         oracle=self.root/'oracle';oracle.write_text('correct\n')
@@ -103,6 +104,7 @@ class Reports(unittest.TestCase):
         command=[str(binary),str(source),argument]
         v=dict(name=variant,binary=C.pin(binary),command=command,inputs=[C.pin(binary),C.pin(source)],
                expected=expected,dispatchInstrumentation=diagnostic)
+        if argv0 is not None:v['argv0']=argv0
         manifest=dict(schema='bend-native-profile-workloads-v1',cwd=str(self.root),workloads=[dict(name=workload,variants=[v])])
         mp=out/'manifest.json';mp.write_text(json.dumps(manifest))
         rows=[]
@@ -112,6 +114,7 @@ class Reports(unittest.TestCase):
             row=dict(workload=workload,variant=variant,mode=mode,command=command,correct=True,
                 diagnosticRuntime=diagnostic,returncode=0,timedOut=False,wallSeconds=clean_cpu,
                 cpuSeconds=clean_cpu,peakRssKiB=100,stdout=C.pin(stdout),stderr=C.pin(stderr))
+            if argv0 is not None:row['argv0']=argv0
             if mode=='sample':
                 raw=out/f'{index}.samples';raw.write_text('frozen capture'+str(index))
                 a=analysis(300,index*1000,150,binary=str(binary))
@@ -139,6 +142,30 @@ class Reports(unittest.TestCase):
         a=self.build('a');b=self.build('b')
         result=C.summarize_reports([a,b])
         self.assertEqual(result['workloads']['work']['base']['profile']['samples'],1200)
+
+    def test_changed_explicit_argv0_cannot_pool(self):
+        a=self.build('a',argv0='compiler-work');b=self.build('b',argv0='other-work')
+        with self.assertRaisesRegex(ValueError,'different source/arguments'):
+            C.summarize_reports([a,b])
+
+    def test_recorded_argv0_must_match_manifest(self):
+        a=self.build('a',argv0='compiler-work')
+        document=json.loads(a.read_text());document['rows'][0]['argv0']='wrong'
+        a.write_text(json.dumps(document))
+        with self.assertRaisesRegex(ValueError,'argv0 differs'):
+            C.summarize_reports([a])
+
+    def test_default_argv0_path_change_cannot_pool_same_variant(self):
+        a=self.build('a');b=self.build('b',binary_name='relocated.bin')
+        with self.assertRaisesRegex(ValueError,'Same variant name has different'):
+            C.summarize_reports([a,b])
+
+    def test_explicit_argv0_allows_identical_binary_relocation(self):
+        a=self.build('a',argv0='compiler-work')
+        b=self.build('b',argv0='compiler-work',binary_name='relocated.bin')
+        result=C.summarize_reports([a,b])
+        self.assertEqual(result['workloads']['work']['base']['profile']['samples'],1200)
+        self.assertEqual(result['workloads']['work']['base']['identity']['argv0'],'compiler-work')
 
     def test_same_workload_with_different_source_is_rejected(self):
         different=self.root/'other.bend';different.write_text('another source')

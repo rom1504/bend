@@ -67,13 +67,25 @@ def output_matches(path, expected):
     raise ValueError('Unknown output expectation')
 
 
-def execute(command, directory, cwd, timeout, env):
+def validate_argv0(value):
+    if not isinstance(value, str) or not value or '\0' in value:
+        raise ValueError('argv0 must be a nonempty string without NUL')
+    return value
+
+
+def execute(command, directory, cwd, timeout, env, argv0=None):
+    launch = list(command)
+    options = {}
+    if argv0 is not None:
+        launch[0] = validate_argv0(argv0)
+        options['executable'] = command[0]
     directory.mkdir()
     finished = threading.Event()
     expired = []
     with (directory/'stdout').open('xb') as stdout, (directory/'stderr').open('xb') as stderr:
         start = time.monotonic()
-        child = subprocess.Popen(command, cwd=cwd, env=env, stdout=stdout, stderr=stderr, start_new_session=True)
+        child = subprocess.Popen(launch, cwd=cwd, env=env, stdout=stdout, stderr=stderr,
+                                 start_new_session=True, **options)
 
         def deadline():
             if not finished.wait(timeout):
@@ -103,7 +115,7 @@ def execute(command, directory, cwd, timeout, env):
         finally:
             finished.set()
             watchdog.join()
-    return dict(command=command, returncode=child.returncode, timedOut=bool(expired),
+    return dict(command=command, argv0=launch[0], returncode=child.returncode, timedOut=bool(expired),
                 wallSeconds=seconds, userSeconds=usage.ru_utime, systemSeconds=usage.ru_stime,
                 cpuSeconds=usage.ru_utime + usage.ru_stime, peakRssKiB=usage.ru_maxrss,
                 minorFaults=usage.ru_minflt, majorFaults=usage.ru_majflt,
@@ -174,6 +186,8 @@ def main():
         for variant in workload['variants']:
             if str(Path(variant['command'][0]).resolve()) != variant['binary']['file']:
                 raise ValueError('Command must directly execute pinned binary')
+            if 'argv0' in variant:
+                validate_argv0(variant['argv0'])
             if variant.get('env'):
                 raise ValueError('Environment overrides need an explicit future schema')
     out = args.out.resolve()
@@ -233,7 +247,8 @@ def main():
                         report['rows'].append(row)
                         save(out/'report.json', report)
                         row.update(execute(variant['command'], directory, manifest['cwd'],
-                                           workload.get('timeoutSeconds', 30), env))
+                                           workload.get('timeoutSeconds', 30), env,
+                                           argv0=variant.get('argv0')))
                         expected = variant['expected']
                         row['correct'] = (not row['timedOut'] and row['returncode'] == expected.get('exitCode', 0)
                             and output_matches(directory/'stdout', expected['stdout'])

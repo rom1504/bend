@@ -15,12 +15,15 @@ selected physical callers and runtime event counts. Workloads and independent
 output expectations are data; the profiler contains no compiler-phase or
 benchmark-name recognizers.
 
-The first qualified platform is Linux x86-64 with an ELF executable. This is a
-research tool for the direct-QBE/P111 runtime, not an installed `bend --profile`
-option. Leaf sampling also works with other native ELF programs. JavaScript,
-GPU execution, all-thread profiling and complete logical Bend stacks are outside
-this version's qualification. See the [Phase127 report](../../implementation/phase127/README.md)
-for measurements, overhead and the compiler findings.
+The first qualified platform is Linux x86-64 with an ELF executable. Runtime
+events and dispatch attribution target the direct-QBE/P111 runtime; physical
+leaf sampling also works with other native ELF programs. This is not an
+installed `bend --profile` option. The default collector samples the main thread;
+the optional bounded collector also samples intercepted pthreads. JavaScript,
+GPU execution, unobserved thread mechanisms and complete logical Bend stacks
+remain outside this support. See the [Phase127 report](../../implementation/phase127/README.md)
+for the original qualification and [Phase159](../../implementation/phase159/README.md)
+for exact-output sampling of C runtimes whose work runs on a child thread.
 
 ## What each measurement means
 
@@ -57,6 +60,17 @@ python3 -B selfhost/tools/build-retention/guard.py \
   --out selfhost/build/profile-sampler
 ```
 
+Add `--all-threads` to `build-sampler.py` when native work runs in pthreads rather
+than on the initial main thread. This selects `sample-threads.c` and records
+`samplerScope: all_created_threads` plus exact source/build identities. It
+intercepts `pthread_create`, with 32 lifetime slots including main and 25,000
+samples per slot; it does not promise to intercept raw-clone or preexisting
+threads. Thread overflow and incomplete CPU coverage invalidate attribution.
+The collector has no physical-caller unwind or dispatch-context support;
+`--all-threads` and `--unwind-table` are mutually exclusive. Keep
+`dispatchInstrumentation` false for its physical-only captures. Build and run
+it under the same guard and independent output gates as the default collector.
+
 Write a recipe. Paths are absolute or relative to `cwd`; program arguments stay
 exactly as supplied. List input files explicitly so the manifest can authenticate
 them. `stdout` and `stderr` are existing independent oracle files, not outputs
@@ -80,6 +94,22 @@ learned from the executable being tested. An empty expected stderr file is valid
   }]
 }
 ```
+
+A variant can optionally set `"argv0": "compiler-work"` without changing
+`command[0]`, which must remain the actual executable. Freezing pins that ELF;
+the runner uses an explicit executable path while passing the alternate argv0
+to the child, and records actual argv0 in each process receipt. This is useful
+when a foreign runtime exposes argv0 through the program's argument API. The
+override must be a nonempty string without NUL. Avoid `bash -c 'exec -a ...'`
+under sampling: `LD_PRELOAD` would instrument the shell before the target, and
+the collector's fresh-file contract cannot be reused across that exec.
+
+Pooling requires the same effective argv0 for the same variant, including its
+default executable path. The comparator permits different default executable
+names across different variants, preserving ordinary backend comparisons; the
+experiment author must establish that those names do not alter the intended
+work. If they do matter, use the same explicit override in every variant. Old
+manifests without overrides keep their original launch behavior.
 
 Freeze the recipe, then run alternating clean and sampled captures:
 
@@ -182,6 +212,11 @@ coordinates and retain ordinal sample windows. A changing mix of function names
 does not itself establish compiler phase boundaries. Use `--window-samples`
 for explicit ordinal windows.
 
+The thread-aware collector writes PCs grouped by thread, not in a global time
+order. Do not use `timeline.py` to infer stages or chronological behavior from
+that stream, even with `--window-samples`; use aggregate physical attribution.
+Its collector scope is explicit in the capture header.
+
 ## Quality gates and interpretation
 
 Every run must match its independent status/stdout/stderr contract. Inputs,
@@ -202,11 +237,20 @@ better: the name-search control produced timer overruns at2–3ms on this host;
 failed captures rather than counting more interrupts as better evidence. Reports retain low-sample
 captures but suppress confident quantitative attribution. Comparison can pool
 compatible captures; it requires at least 500 accepted samples, no reported loss,
-adequate main-thread CPU coverage and plausible timer delivery before estimating
+adequate sampled-thread CPU coverage and plausible timer delivery before estimating
 costs. Absolute CPU estimates additionally require at least 95% capture-window
 coverage of the complete child's CPU time. Tiny programs need larger batches.
 The default sample threshold is a screening rule, not a statistical confidence
 interval or proof against sampling bias.
+
+For a thread-aware capture, coverage uses summed observed thread CPU versus
+process CPU and checks lifecycle/overflow evidence. A single short capture can
+fail the 500-sample threshold while passing all other checks; `compare.py` may
+pool compatible same-workload/variant captures and weight samples by their
+periods. It cannot rescue loss, overruns, incomplete thread coverage or implausible
+delivery. Retain rejected captures. Several 8ms/13ms captures are preferable to
+2–3ms periods that overrun on this host. The comparison keeps effective argv0,
+binary identity and argument/output contracts bound across pooled observations.
 
 Period-weighted sample fractions can be multiplied by the independent clean CPU
 median to estimate costs. These are approximate: instrumentation and code layout
@@ -214,10 +258,12 @@ may change execution. Compare fractions, estimated absolute costs and dynamic
 counts together, then perform a controlled semantic transformation to establish
 causality. Preserve unknown samples and failures in denominators and evidence.
 
-The collector samples the initial main thread. Substantial worker CPU fails its
-coverage gate. Fork/exec trees, later library unload/remapping, custom signal
-handling and unsupported unwind states need separate support. Do not describe
-this tool as a complete universal stack or memory profiler.
+The default collector samples the initial main thread; substantial worker CPU
+fails its coverage gate. The optional collector covers the main thread and
+intercepted pthreads within its fixed lifetime limits, without caller or context
+support. Fork/exec trees, later library unload/remapping, custom signal handling
+and unsupported unwind states need separate support. Do not describe this tool
+as a complete universal stack or memory profiler.
 
 Run the offline tests with:
 

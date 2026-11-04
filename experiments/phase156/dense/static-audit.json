@@ -1,0 +1,166 @@
+{
+  "kind": "phase156-dense-transfer-static-eligibility",
+  "version": 1,
+  "targetsRun": false,
+  "complete": true,
+  "candidateImplemented": false,
+  "decision": "Do not port full persistent scalar transformer within bounded screen. Inspect exact produced P154 bodies before any narrow dense candidate.",
+  "inputs": [
+    {
+      "file": "selfhost/build/phase154/controls03/report.json",
+      "bytes": 13931,
+      "sha256": "a6c974798fd5ea54c7079b3e774f8c8761810a9c26a3aef7d5618b4363264946"
+    },
+    {
+      "file": "selfhost/build/phase154/capture-plan05/capture/report.json",
+      "bytes": 17298,
+      "sha256": "ad1cb72a4a208d402dbc99686966efb539a5a783cda405392005be4b7e53df86"
+    },
+    {
+      "file": "selfhost/tests/phase154/scalar.bend",
+      "bytes": 25283,
+      "sha256": "2a28686e00cc58839450e37a78a676d5d8be4ceca2ec405218f67721b6fd6656"
+    },
+    {
+      "file": "selfhost/tests/phase154/model.bend",
+      "bytes": 2650,
+      "sha256": "e4f7aade4a6e48b27c3cae18677e0da344f23eb62bc2db3634b103e89466c272"
+    },
+    {
+      "file": "selfhost/tests/phase156/dense-eligibility.bend",
+      "bytes": 4782,
+      "sha256": "6c3bd910228452543b3f91d87b5660d8d2d2a6d9785829671fd7616a5fab9386"
+    }
+  ],
+  "rows": [
+    {
+      "family": "compiler-verifier-slice",
+      "owner": "p111_empty",
+      "oracle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase154/controls03/compiler-verifier-slice-0.ssa",
+        "bytes": 1127,
+        "sha256": "87fa2bd650a8dfafb9c2bbbcaf388db1ebccfeda8048fc58ec09688284ddeed2"
+      },
+      "lines": 31,
+      "conditionalBranches": 0,
+      "calls": 7,
+      "branchlessOutput": true
+    },
+    {
+      "family": "compiler-verifier-slice",
+      "owner": "p111v_contract",
+      "oracle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase154/controls03/compiler-verifier-slice-29.ssa",
+        "bytes": 104387,
+        "sha256": "82700a60d9f54407759e1b733ef7ab0b693e6b85e66ee7f0aa9bf0fe3432ea2b"
+      },
+      "lines": 2571,
+      "conditionalBranches": 21,
+      "calls": 592,
+      "branchlessOutput": false
+    },
+    {
+      "family": "compiler-verifier-slice",
+      "owner": "p111v_state_argument",
+      "oracle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase154/controls03/compiler-verifier-slice-31.ssa",
+        "bytes": 4343,
+        "sha256": "b953ac685a13761d8025d4583353dd8bffcca47763f4f858c6bd25352041c2cc"
+      },
+      "lines": 113,
+      "conditionalBranches": 4,
+      "calls": 26,
+      "branchlessOutput": false
+    },
+    {
+      "family": "compiler-verifier-slice",
+      "owner": "p111v_value",
+      "oracle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase154/controls03/compiler-verifier-slice-extra0.ssa",
+        "bytes": 17573,
+        "sha256": "e49d169a760870835a512e0541fc0f4d6b7c2b7930ecc6c7f6106058f982059c"
+      },
+      "lines": 437,
+      "conditionalBranches": 9,
+      "calls": 88,
+      "branchlessOutput": false
+    },
+    {
+      "family": "compiler-verifier-slice",
+      "owner": "p111v_counted_call",
+      "oracle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase154/controls03/compiler-verifier-slice-extra1.ssa",
+        "bytes": 46152,
+        "sha256": "778d129c309d5e0ab7aae2faa883a6002b8c44b9c94145c72a9e0c94f4e183de"
+      },
+      "lines": 1118,
+      "conditionalBranches": 8,
+      "calls": 268,
+      "branchlessOutput": false
+    },
+    {
+      "family": "coverage-map-churn-128",
+      "owner": "p37.map.key",
+      "oracle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase154/controls03/coverage-map-churn-128-17.ssa",
+        "bytes": 1650,
+        "sha256": "bc966724585bbe4c32ac5d3e5416f30ac11f5ab92919fdeca5cc52b173e3cf35"
+      },
+      "lines": 39,
+      "conditionalBranches": 0,
+      "calls": 9,
+      "branchlessOutput": true
+    },
+    {
+      "family": "coverage-map-churn-128",
+      "owner": "Map.bit.go.rec",
+      "oracle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase154/controls03/coverage-map-churn-128-43.ssa",
+        "bytes": 1088,
+        "sha256": "20479c930d788b3b9c6bce7de9f6d392b22b031c01caedafb5a3670c5eefb87b"
+      },
+      "lines": 32,
+      "conditionalBranches": 1,
+      "calls": 4,
+      "branchlessOutput": false
+    },
+    {
+      "family": "coverage-map-churn-128",
+      "owner": "Map.ins.splice.bit",
+      "oracle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase154/controls03/coverage-map-churn-128-extra0.ssa",
+        "bytes": 2953,
+        "sha256": "9180b9e8869e9c0f780d08fdaf11e662204354d0accced70a8cf8c2a3f9168c4"
+      },
+      "lines": 79,
+      "conditionalBranches": 3,
+      "calls": 12,
+      "branchlessOutput": false
+    },
+    {
+      "family": "coverage-map-churn-128",
+      "owner": "Map.pop.lo",
+      "oracle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase154/controls03/coverage-map-churn-128-extra1.ssa",
+        "bytes": 1723,
+        "sha256": "ad76b139e1f631ab726d5c954b51999186a10a899a83ae59b63ebc39ad2dce46"
+      },
+      "lines": 51,
+      "conditionalBranches": 2,
+      "calls": 6,
+      "branchlessOutput": false
+    }
+  ],
+  "acceptedOwners": 9,
+  "ownersWithConditionalOutput": 7,
+  "branchlessOutputOwners": [
+    "p111_empty",
+    "p37.map.key"
+  ],
+  "limitations": [
+    "Saved exact optimized QBE shows surviving branches, not exact pre-optimizer eligibility.",
+    "Zero conditional branches does not establish absence of branches/predicates before optimization.",
+    "No gate or candidate has been source-checked or executed in this lane.",
+    "No compiler timing, dense transfer speed or semantic-equivalence claim."
+  ]
+}

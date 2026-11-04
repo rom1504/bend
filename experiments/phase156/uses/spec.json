@@ -1,0 +1,20 @@
+{
+  "family": "uses",
+  "phase": 156,
+  "status": "prepared-unexecuted",
+  "baselineCommit": "209f2df",
+  "module": "selfhost/tests/phase156/uses.bend",
+  "replacements": ["p113pl_bind_flat"],
+  "productionModule": "selfhost/src/back/qbe/flat-products.bend",
+  "productionDelta": {"codeLines": 1, "declarations": 0, "types": 0},
+  "dependencies": [],
+  "entry": "Keep existing maintained ordinary request entry/API; replace by declaration identity, never append a duplicate.",
+  "controlsModule": "selfhost/tests/phase156/uses-controls.bend",
+  "controlsExports": ["p156u_controls", "p156u_controls_ok"],
+  "controlsExpected": {"rows": 11, "suffix": ":pass", "ok": true},
+  "controlDependencies": ["Current compiler declaration closure, including p134v_list/p134v_stmt/p134v_scalar/p134v_binding from selfhost/tests/compiler/native-controls.bend"],
+  "sourceBoundary": "p113pl_bind_flat: two identical original-body nc_uses computations become one; empty env skips the summary.",
+  "preserved": ["shape/bindability admission", "ordered value lowering", "original-body liveness semantics", "full U32 IDs and binding order", "ownership keep policy", "substitution and fresh IDs", "all error priority", "independent final verifier"],
+  "requiredTransfer": ["checked isolated compiler source", "11 focused controls", "complete QBE equality against unchanged compiler on actual flat-binding requests", "unrelated and refusal outputs", "complete compilation timing with preparation and teardown"],
+  "limits": "Phase155's 1.76x constructed consumer result is not a compiler speed prediction. No target executions or production qualification have occurred for this overlay. Local controls share the current recursive lowerer; whole-request differential evidence remains required."
+}

@@ -1,3 +1,37 @@
+# Phase156 — real compiler transfer, 2026-11-04
+
+[Design](../design/phase156/README.md) · [Report](../implementation/phase156/README.md) ·
+[Metrics](../implementation/phase156/metrics.json) · [Cost](../implementation/phase156/cost.json).
+
+Publication provenance survives real complete native requests: full compiler
+medians215.026→205.086s,4.62% less, across two reversed pairs (6.19%/3.02% gains).
+All four118,227,421-byte QBE outputs match the qualified N2→N3 oracle. This measures
+source-to-QBE with live Base and teardown, excluding machine construction;
+no new cold-build score, upstream ratio or confidence interval. The645-declaration
+checker slice is neutral. Its21 static type adjacencies contrast with294 in full
+source, illustrating why tiny transfer workloads can miss an opportunity.
+
+Guarded use-set sharing has no real-request gain. Its first Map pair's11.6%
+regression does not repeat: two balanced follow-up rounds give1.00130×. Static
+machine evidence finds added guard/continuation and lifetime work, not lost direct
+admission; those counts alone do not establish runtime causality. Naive dense
+mutable facts are deferred because real owner bodies need snapshots, joins,
+old-state observations and full identity semantics absent from the fast toy.
+
+One independently checked shared native image,16 complete candidate outputs
+identical to independent oracles, corrected semantic controls and finite source
+invariant review. Failed preparation/harness reports retained with exact bound
+correction.11 guards,1,279.20s (21.32min):199.27s image acquisition,991.14s actual
+request measurement/oracle checks; no full self-build or broad runtime campaign.
+Agent/report/retention costs are extra, not guard time. All runs sealed, no OOM,
+no Phase156 pruning. Exact archived Phase155 reclamation and journaled QBE hardlink
+dedup keep disk reserve intact; evidence capsule preserves actual bytes.
+
+Maintained source/installed selection unchanged; Phase152 N2 remains qualified.
+Next compactly integrate publication-state reuse into the existing checker and
+qualify that image. Do not promote the shared experiment or a6× dense kernel as
+if it were the selected compiler. No recursive acceleration claim.
+
 # Phase155 — twenty cheap competing compilation-speed experiments
 
 [Design](../design/phase155/README.md) · [Report](../implementation/phase155/README.md) ·

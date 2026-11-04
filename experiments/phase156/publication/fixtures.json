@@ -1,0 +1,20 @@
+{
+  "kind": "phase156-publication-checker-fixtures",
+  "version": 1,
+  "parseErrorExpected": "",
+  "cases": [
+    {"name":"empty", "success":true, "source":""},
+    {"name":"consecutive-adts", "success":true, "source":"type Bit is Data:\n  Off{}\n  Onn{}\ntype Other is Data:\n  Else{}\ndef keep() -> Bit:\n  Off{}\n"},
+    {"name":"dirty-flush-clean-run", "success":true, "source":"type Bit is Data:\n  Off{}\ndef keep() -> Bit:\n  Off{}\ntype A is Data:\n  Aa{}\ntype B is Data:\n  Bb{}\ndef last() -> B:\n  Bb{}\n"},
+    {"name":"clean-type-failure", "success":false, "source":"type Bit is Data:\n  Off{}\ntype Other is Data:\n  Else{}\ndef bad() -> Bit:\n  Other\n"},
+    {"name":"dirty-type-failure", "success":false, "source":"type Bit is Data:\n  Off{}\ndef good() -> Bit:\n  Off{}\ndef bad() -> Bit:\n  Bit\n"},
+    {"name":"template-clean-entry-success", "success":true, "source":"type Bit is Data:\n  Off{}\ndef ident(~A: Type, x: A) -> A:\n  x\ntype Barrier is Data:\n  Stop{}\ndef use() -> Bit:\n  ident(~Bit, Off{})\ntype After is Data:\n  End{}\ntype Final is Data:\n  Last{}\n"},
+    {"name":"template-failure-after-instantiation", "success":false, "source":"type Bit is Data:\n  Off{}\ndef early() -> Bit:\n  Off{}\ndef ident(~A: Type, x: A) -> A:\n  x\ndef use() -> Bit:\n  ident(~Bit, Off{})\ntype Barrier is Data:\n  Stop{}\ndef bad() -> Bit:\n  Bit\n"},
+    {"name":"template-body-failure-clean-entry", "success":false, "source":"type Bit is Data:\n  Off{}\ntype Barrier is Data:\n  Stop{}\ndef bad(~A: Type, x: A) -> Bit:\n  x\n"},
+    {"name":"law-fill", "success":true, "source":"type Bit is Data:\n  Off{}\nlaw f: Bit -> Bit\ntype Barrier is Data:\n  Stop{}\ndef f(x): x\ndef use() -> Bit:\n  f(Off{})\n"},
+    {"name":"open-law", "success":true, "source":"type Bit is Data:\n  Off{}\nlaw f: Bit -> Bit\n"},
+    {"name":"duplicate-definition", "success":false, "source":"type Bit is Data:\n  Off{}\ndef same() -> Bit:\n  Off{}\ndef same() -> Bit:\n  Off{}\n"},
+    {"name":"post-body-adt", "success":true, "source":"type Bit is Data:\n  Off{}\ndef choose() -> Bit:\n  Off{}\ntype Other is Data:\n  Else{}\n"}
+  ],
+  "notes": ["success means empty checker error, not driver proof completeness: open-law must still yield its original TODO verdict through the unchanged driver.", "For genuine prepared-Base controls, prepend import Base; loader/source handling and parse success must be independently asserted.", "These finite fixture expectations are source-grounded but have not been executed by the preparing agent."]
+}

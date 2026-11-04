@@ -1,0 +1,29 @@
+{
+  "family": "publication",
+  "module": "selfhost/tests/phase156/publication.bend",
+  "mode": "isolated-overrides",
+  "replacements": ["p143cp_seed_ready", "p143cb_resume_state"],
+  "dependencies": [],
+  "exports": ["p86_prepare", "p156cp_load", "p156cp_enabled", "p156cp_route", "p156cp_reference_check", "p156cp_reference_seed", "p156cp_reference_load", "p143cp_check", "p143cp_seed", "p143cb_check_load", "dg_check_world", "f_load_graph_trace"],
+  "reference": {"fresh": "p156cp_reference_check(book, logging)", "prepared": "p156cp_reference_load(prepared, load, logging)", "selected": "p156cp_route(prepared, load, False{})"},
+  "candidate": {"fresh": "p143cp_check(book, logging)", "prepared": "p143cb_check_load(prepared, load, logging)", "selected": "p156cp_route(prepared, load, True{})"},
+  "observation": "Exact full DChecking object, including KChecking term/type/uses/error/world/consumed and complete diagnostic. World book/index, memo, fresh state and checked bodies must all compare. Checksums alone are insufficient.",
+  "preparationRecipe": [
+    "Assemble the maintained qbe source using source.py maintained_assemble; require the current qualified canonical identity.",
+    "Read source.py blocks for canonical and additive module. Remove exactly the two replacement declaration names from canonical, preserving all other declaration bytes and order.",
+    "Append all additive blocks. Extract the named closure of exports plus root-owned native harness through experiments/phase147/tools/prepare.py extract.",
+    "For separate baseline source, retain canonical replacement blocks and omit those two blocks from the additive module; all p156cp reference/helper declarations may remain.",
+    "Freeze original and replacement hashes and retained input files. Independently source-check before any native acquisition. Root owns all guarded jobs."
+  ],
+  "runtimeHarness": [
+    "Read exact Base and source files through external IO; call p86_prepare once for the genuine Base seed.",
+    "Call p156cp_load(seed,path,text), require P156CLoadReady and empty load.trace.result.error. Loader ancestors are exact p86_plan copies stopping before checking.",
+    "Read prepared=seed.world. Compare p156cp_route(prepared,load,False{}) and True{} as full objects outside timing.",
+    "Assert p156cp_enabled(load) for active performance cases: the unchanged ordinary route needs at least 256 childless suffix definitions, excluding Base.",
+    "Keep setup, result observation and cleanup explicit. A complete native region must consume all DChecking fields, not just success/error."
+  ],
+  "actualWorkloadProposal": "Extract the real named closure rooted at check_definition_world (435 maintained declarations in the source audit), add an ordinary main if necessary, and independently check that its actual loaded suffix passes p143cg_enough(...,256). Do not pad the count with fabricated ADT runs. Full current compiler is the later exact-transfer case.",
+  "controls": "fixtures.json supplies ordinary parser/checker cases. Compare candidate, retained scheduled reference and dg_check_world for fresh worlds. Repeat logging=False. For prepared worlds use genuine Base plus the same cases, force ready=False only as a fallback control, and keep natural routing tests separate from direct private checker tests.",
+  "additionalDataControls": ["empty book at bound 4294967295", "law/fill and duplicate declaration core fixtures from Phase143", "full-hash collision costarring/liquid", "childful Def fallback", "cache/index event fallback", "same Base/suffix full-hash collision fallback"],
+  "scope": "Real dependent checking with conservative canonical provenance only; constructor metadata remains original. No KWorld layout, checker logic, name index, suffix schedule, diagnostic, final canonicalizer, verifier, production routing or admission changes. Source-checking, exact-output and performance gates remain pending."
+}

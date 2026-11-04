@@ -1,6 +1,6 @@
-# Current frontier — Phase155 twenty-idea screen
+# Current frontier — Phase156 real compiler transfer
 
-[Latest experiment](../implementation/phase155/README.md) ·
+[Latest experiment](../implementation/phase156/README.md) ·
 [Phase153 investigation](../implementation/phase153/README.md) ·
 [Headroom metrics](../implementation/phase153/metrics.json) ·
 [Qualification](../implementation/phase152/qualification.json) ·
@@ -57,58 +57,59 @@ Metric definitions remain in the
 
 ## Highest-value next experiment
 
-[Phase155](../implementation/phase155/README.md) screened20 distinct ideas:
-17 paired native kernels and3 source-level rejections.12 local wins,2 neutral,
-3 losses. One shared small image;159.16 guarded seconds including failed checks
-and transfer follow-ups,19 sealed jobs, no full self-build or production changes.
-Seven agents prepared disjoint prototypes and an eighth reviewed independently;
-root owned the single measurement lane. Agent effort is extra, not guard time.
+[Phase156](../implementation/phase156/README.md) transfers the strongest
+[Phase155 kernels](../implementation/phase155/README.md) into actual compiler work.
+One shared checked native image retains original/candidate routes, complete
+verification and exact independent qualified-image QBE oracles.
 
-The strongest directions are now:
+Publication provenance is the surviving candidate. Its private dirty bit skips
+redundant canonicalization only after established canonical/coherent publication;
+childless logged insertions invalidate it. Real checker mutations, error order,
+law/fill scheduling, entry admission and final canonicalization are preserved.
+Two reversed full-source pairs give medians215.026s→205.086s (4.62% less), with
+identical118,227,421-byte QBE; pair gains6.19%/3.02%. Fresh **source-to-QBE** request,
+live Base preparation and teardown included; machine construction is excluded.
+Next integrate this state into the existing loop, then qualify its native image.
+Do not call this a new qualified cold-build score or upstream ratio.
 
-1. Publication provenance05/constructor metadata07:0.302×/0.268× local new/old.
-   Exact complete replay of603 compiler and504 Map events passes with actual
-   source order, guards and law/fill schedule. Production checker mutations and
-   canonical-state invalidation still need an explicit invariant. Measure that
-   complete region next; do not assume the replay is dependent checking.
-2. Dense scalar facts19:0.166× complete mutable kernel, general Term-slot arrays.
-   Transfer to retained Phase154 actual-owner lowering with full metadata,
-   snapshots, joins and original verifier/output equality before a large rewrite.
-   Current model is not the selected fact engine and has no persistent branches.
-3. Shared use-set15:0.569× complete keep/live consumer, active duplicate analysis.
-   Check actual body sizes/early exits and byte-identical QBE before promotion.
-4. Lifetime and query fusion09/02/04:0.705×/0.766×/0.747× local; require measured
-   hot consumers and disappearance of ownership/scheduler work.
+The actual645-declaration checker slice is neutral (23.670s→23.756s). It has
+23 datatype declarations/21 static adjacencies versus369/294 in full source.
+Static exposure and hosted checker diagnostic time are not native speed claims.
 
-Identifier classification18 is0.362× in lexer-plus-all-token validation, but its
-actual-parser transfer remains unmeasured: final checked fixture hits hosted
-`dg_width` stack limits. Stop that harness campaign; do not count matching parse
-errors as success. Body-analysis16's0.775× is discounted because actual inliner
-admission rejects the large calibrated bodies. Text fusion11, local-spelling
-cache13 and sparse bulk storage20 lose1.108×/1.665×/1.657×; retain negatives.
-12/14 are already implemented; naive lazy lexer17 violates parser contracts.
+Shared-use lowering does not transfer its0.569× kernel result: the compiler
+slice is neutral and balanced Map requests are1.00130×. Its initial11.6% Map
+slowdown did not repeat. Machine inspection finds added guard/continuation and
+retained-set transport, with no direct-worker admission loss. Preserve both
+measurements; do not claim the static overhead caused a stable regression.
 
-These gains overlap and are component results. Do not add them or project them
-onto the cold build. [Phase153](../implementation/phase153/README.md) remains the
-complete-source profile:7,406 usable samples,236.947s staged CPU, N3 QBE equality.
-Raw lowering39.27s + initial optimization23.55s + output/cleanup38.63s =101.45s;
-checking/publication33.57s. Ownership/reclamation/allocation/register transport
-42.71% of physical samples overlaps these stages and is not wholly removable.
+Dense storage's0.166× kernel is not a production fact engine. Actual owners
+need snapshots, joins, old-state observations and full-width/name handling;
+seven of nine retained admitted products branch. Reject a naive mutable port.
+The20-owner eligibility probe is not a speedup or final optimizer-admission gate.
 
-[Phase154](../implementation/phase154/README.md) actual-owner numeric identities
-improved complete child time13.02% compiler/2.36% Map, with9 original-verifier
-QBE oracles. It missed the near2× gate. Phase155 creates new storage/lifetime
-hypotheses; it does not retroactively qualify that private producer.
+Next prioritize compact integration of publication-state reuse after its
+balanced full-source transfer. Keep the original fallback, source invariant,
+focused corrected controls and byte equality. Do not rebuild the full compiler
+just to rescue the neutral use-set idea or mechanically port mutable arrays.
+For further ideas, capture complete real native consumers and include lifetime,
+setup and teardown before relying on Phase155 local ratios.
 
-Keep identity comparison before broad machine builds and timing. Reuse qualified
-unchanged products under exact source/runtime/toolchain identities. Identity is
-not a fabricated timing observation or a new full-suite speed score. The Phase152
-C-route and benchmark-eligibility fixes remain the maintained methods.
+[Phase153](../implementation/phase153/README.md) remains the complete-source
+profile:7,406 usable samples,236.947s staged CPU. Raw lowering39.27s + initial
+optimization23.55s + output/cleanup38.63s =101.45s; checking/publication33.57s.
+Ownership/reclamation/allocation/register transport42.71% of physical samples
+is overlapping attribution, not wholly removable work. Phase154 numeric locals
+improved its smaller actual-owner kernel13.02%/2.36%, not a near2× region.
+
+Keep identity comparison before broad machine builds and timing. Exact unchanged
+products can reuse prior generated-program evidence under fixed identities;
+this is not a fabricated timing or new whole-suite score. Source checking,
+finite controls and source reviews are not mathematical proof. Phase156 leaves
+the maintained source and qualified/installed selections unchanged.
 
 ## Relevant recent evidence
 
-- [Phase154](../implementation/phase154/README.md): 15 guarded jobs,5.82min;
-  one small image, no full compiler build; all closed without pruning.
+- [Phase154](../implementation/phase154/README.md): 15 jobs,5.82min; one small image, all closed.
 - [Phase152](../implementation/phase152/README.md): 51 guarded jobs, 29.10min;
   all closed, no OOM/pruning. Guard time excludes agent and documentation work.
 - [Phase150](../implementation/phase150/README.md): scalar lexer integrated;

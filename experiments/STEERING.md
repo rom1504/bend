@@ -1,4 +1,43 @@
-# Current frontier — Phase166 execution boundaries; Phase152 remains qualified
+# Current frontier — Phase167 architecture experiments; Phase152 stays qualified
+
+[Report](../implementation/phase167/README.md) · [Metrics](../implementation/phase167/metrics.json) ·
+[Admission graph](phase167/admission-obstructions.md) · [Reproduce](../implementation/phase167/reproduce.md).
+
+Three experimental Bend paths now test substantial work elimination. On the real
+39,333-byte nonempty verifier closure, clean fresh-process hosted compilation:
+baseline31.276s; demanded direct/plain22.685s; single generic16.770s; single plus
+regions19.509s. These are complete source-to-native-executable pilots under Bun,
+not nativeN1/N2 or full250s build gains. Generated verifier runtime regresses
+2.58×/3.60×/2.26×, so none qualifies. No full native image campaign or promotion.
+
+The important new mechanism is early semantic capability:127 raw candidates,
+61 locally error-free rejections with unavailable callees,11 explicit errors and
+four independent error-free blocked SCCs. Earlier source-authorized observer
+synthesis selects one owner and admits EXACTLY16 predicted original workers plus
+its reader. Direct56→73, fallback families49→37, scheduled segments1223→983.
+Matched complete build31.343→23.351s (25.50% less); fully matched native execution
+0.4412→0.6554s (1.485× slower).35 controls and frozen verifier/Map outputs pass.
+This validates the dependency mechanism, not runtime qualification or a10× path.
+
+Prioritize reusable semantic summaries before alternate body construction, then
+one canonical recursive computation with ordinary calls/explicit resumable frames.
+Preserve scalar observer composition and retained-root ownership through returns.
+Do not fix this by raising admission fuel, whitelisting recursion, changing the
+backend or restoring every old pass blindly. The early renderer's hidden region
+registry was found and separately removed; do not repeat the mistaken claim.
+
+The native full cost model still has83.223 diagnostic CPU seconds before backend
+entry. Generic construction alone is4.83% of the diagnostic request. Ownership
+samples overlap stage times;2.132B allocation events remain unattributed by owner.
+A free backend under unchanged execution cannot deliver10×. Keep the clean full
+249.222s pipelined reference separate from diagnostic CPU and hosted pilot clocks.
+
+41 bounded guarded jobs used about667s total execution-lane time. All are sealed
+with verified retention receipts; failures and preliminary methods are retained.
+No production/core/runtime/installed-image change. Three bounded source/audit
+agents; root alone executed targets. No PR comments posted.
+
+# Previous frontier — Phase166 execution boundaries; Phase152 remains qualified
 
 [Report](../implementation/phase166/README.md) ·
 [Metrics and receipts](../implementation/phase166/metrics.json) ·

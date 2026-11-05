@@ -1,3 +1,35 @@
+# Phase167 — work-eliminating architectures and admission cascades, 2026-11-05
+
+[Report](../implementation/phase167/README.md) · [Metrics](../implementation/phase167/metrics.json) ·
+[Design](../design/phase167/README.md) · [Independent audit](phase167/prototype-independent-audit.md).
+
+Implemented demanded direct/generic representations, true plain emission,
+single-generic compilation without speculative candidates, and source-authorized
+observer-before-admission. No production changes. All tested semantics remain
+Bend with actual final generic/static/adapter/borrowed verification.
+
+Real nonempty verifier complete hosted builds31.276→22.685/16.770/19.509s;
+generated runtime2.58×/3.60×/2.26×. No candidate met the joint quality gate.
+Explicitly retain the hidden-registry correction and initial eager-diagnostic
+method; final clean outputs equal their corresponding preliminary QBE.
+
+Dependency graph predicts16 candidates unlocked by the comparison SCC. General
+early observer synthesis recovers EXACTLY that set plus its reader:56→73 direct,
+49→37 fallback families,1223→983 segments. Matched fresh complete31.343→23.351s;
+matched generated execution0.4412→0.6554s. This is25.50% less construction time
+with48.54% slower execution, not a native whole-build gain. No full acquisition.
+
+35 finite malformed/projection controls;18 independent JS boundary verdicts and
+768 complete verifier output; lawful shared Data captures/linear partial closures
+and20,000 non-tail recursion produce20040; frozen Map/IO value/count checks pass
+for demand and observer paths. Source/type checks, structural contracts, finite
+semantics and mathematical proofs remain separate.
+
+41 guarded jobs~667s, all closed/archived/verified. Nine failed early checks or
+acquisitions retained. Three bounded agents, one root-owned target lane. Reviewed
+retention reclaimed162MiB of old individually authenticated artifacts. Qualified
+Phase152 preserved; full cold10× and generated-runtime preservation remain unmet.
+
 # Phase166 — complete execution and backend work, 2026-11-05
 
 [Report](../implementation/phase166/README.md) ·

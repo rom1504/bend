@@ -1,0 +1,170 @@
+{
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase167/tools/clean-contrast.py",
+      "bytes": 1152,
+      "sha256": "99b1b603e57fece29bb69bc6fae9dd484d4a071767cd20c0c42e2319b17aaf64"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/api04/report.json",
+      "bytes": 5390,
+      "sha256": "e689d1a87791a974bcd6558809e27b57fc8b9f3fa790accfad68e9aa45141b4f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/verifier-source03/compiler.bend",
+      "bytes": 39333,
+      "sha256": "ff6b4083aa2f3e034f3b4f8e43dfb25d93a4f524685934e0ee13845278033ef3"
+    }
+  ],
+  "rows": [
+    {
+      "role": "plain-live",
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "experiments/phase167/tools/one-build-v4.py",
+        "--receipt",
+        "selfhost/build/phase167/api04/report.json",
+        "--source",
+        "selfhost/build/phase167/verifier-source03/compiler.bend",
+        "--role",
+        "plain-live",
+        "--preparation",
+        "cache",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/clean01/plain-live"
+      ],
+      "limitSeconds": 150,
+      "complete": true,
+      "started": 1793897430.1222136,
+      "exitCode": 0,
+      "userSeconds": 22.235827,
+      "systemSeconds": 0.476775,
+      "peakRssKiB": 419364,
+      "timedOut": false,
+      "seconds": 22.74211679631844,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/clean01/plain-live.stdout",
+        "bytes": 3977,
+        "sha256": "e058aa2696acde7a3e05658ccf4130c41453746d3e1857888f7c6bf4de1f15bc"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/clean01/plain-live.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "role": "baseline",
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "experiments/phase167/tools/one-build-v4.py",
+        "--receipt",
+        "selfhost/build/phase167/api04/report.json",
+        "--source",
+        "selfhost/build/phase167/verifier-source03/compiler.bend",
+        "--role",
+        "baseline",
+        "--preparation",
+        "cache",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/clean01/baseline"
+      ],
+      "limitSeconds": 150,
+      "complete": true,
+      "started": 1793897452.8652184,
+      "exitCode": 0,
+      "userSeconds": 30.647897,
+      "systemSeconds": 0.657567,
+      "peakRssKiB": 497428,
+      "timedOut": false,
+      "seconds": 31.332424252294004,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/clean01/baseline.stdout",
+        "bytes": 3958,
+        "sha256": "65b40d0d0639c89a1b32318973f545c5fe09a87e1662f3ba13981d8e748e1bd3"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/clean01/baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "role": "single",
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "experiments/phase167/tools/one-build-v4.py",
+        "--receipt",
+        "selfhost/build/phase167/api04/report.json",
+        "--source",
+        "selfhost/build/phase167/verifier-source03/compiler.bend",
+        "--role",
+        "single",
+        "--preparation",
+        "cache",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/clean01/single"
+      ],
+      "limitSeconds": 150,
+      "complete": true,
+      "started": 1793897484.1987963,
+      "exitCode": 0,
+      "userSeconds": 16.409642,
+      "systemSeconds": 0.363899,
+      "peakRssKiB": 366344,
+      "timedOut": false,
+      "seconds": 16.825965831056237,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/clean01/single.stdout",
+        "bytes": 3937,
+        "sha256": "b9fad2df46ce87c5a0c8f090109b22b8783a47339b3cb34a5bc5ac69ce4c3e25"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/clean01/single.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "role": "single-region",
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "experiments/phase167/tools/one-build-v4.py",
+        "--receipt",
+        "selfhost/build/phase167/api04/report.json",
+        "--source",
+        "selfhost/build/phase167/verifier-source03/compiler.bend",
+        "--role",
+        "single-region",
+        "--preparation",
+        "cache",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/clean01/single-region"
+      ],
+      "limitSeconds": 150,
+      "complete": true,
+      "started": 1793897501.0261185,
+      "exitCode": 0,
+      "userSeconds": 18.964078,
+      "systemSeconds": 0.540497,
+      "peakRssKiB": 362836,
+      "timedOut": false,
+      "seconds": 19.5651257452555,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/clean01/single-region.stdout",
+        "bytes": 4011,
+        "sha256": "870ff29c28ecee368a3c282b9ef96c9a4b19a7a310ee04f87516ff6964fb3433"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/clean01/single-region.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ]
+}

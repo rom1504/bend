@@ -1,0 +1,76 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": true,
+  "started": 1793898459.4944131,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "3",
+    "python3",
+    "-B",
+    "experiments/phase167/tools/one-build-v4.py",
+    "--receipt",
+    "selfhost/build/phase167/api04/report.json",
+    "--source",
+    "selfhost/tests/phase167/closures-workload.bend",
+    "--role",
+    "plain-live",
+    "--preparation",
+    "cache",
+    "--out",
+    "selfhost/build/phase167/closures04"
+  ],
+  "returncode": 0,
+  "rssLimitBytes": 2147483648,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 156172288,
+  "minimumAvailableBytes": 24570642432,
+  "diskBudgetBytes": 8388608,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 5486047232,
+  "minimumDiskFreeBytes": 5485600768,
+  "peakRunAllocatedBytes": 380928,
+  "peakFilesystemDecreaseBytes": 446464,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/closures04"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "3",
+    "fileLimitBytes": 134217728,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/experiments/phase167/tools/one-build-v4.py",
+        "sha256": "180390541aacc63fd7d0374a76072cb477c8931bc3b0fac049684e796f62693c",
+        "bytes": 2520
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/api04/report.json",
+        "sha256": "e689d1a87791a974bcd6558809e27b57fc8b9f3fa790accfad68e9aa45141b4f",
+        "bytes": 5390
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase167/closures-workload.bend",
+        "sha256": "50d8e5801385e1ef8de549f172423fa30212e7697850ecfa916148f9e7302db2",
+        "bytes": 868
+      }
+    ]
+  },
+  "wallSeconds": 3.7963643381372094,
+  "finished": 1793898463.2906299
+}

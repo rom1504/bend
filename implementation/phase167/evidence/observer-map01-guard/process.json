@@ -1,0 +1,76 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": true,
+  "started": 1793899750.4790983,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "3",
+    "python3",
+    "-B",
+    "experiments/phase167/tools/one-build-v5.py",
+    "--receipt",
+    "selfhost/build/phase167/observer-api02/report.json",
+    "--source",
+    "selfhost/tools/bench/catalogs/native45/fixtures/coverage-map-churn-128.bend",
+    "--role",
+    "observers",
+    "--preparation",
+    "cache",
+    "--out",
+    "selfhost/build/phase167/observer-map01"
+  ],
+  "returncode": 0,
+  "rssLimitBytes": 2147483648,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 310484992,
+  "minimumAvailableBytes": 24692174848,
+  "diskBudgetBytes": 16777216,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 5445345280,
+  "minimumDiskFreeBytes": 5443043328,
+  "peakRunAllocatedBytes": 2285568,
+  "peakFilesystemDecreaseBytes": 2301952,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/observer-map01"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "3",
+    "fileLimitBytes": 134217728,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/experiments/phase167/tools/one-build-v5.py",
+        "sha256": "669fd9cf24641d1a5fb07a7373caa2b0071d0aa7486bb4e6767192d9457d8854",
+        "bytes": 2520
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/observer-api02/report.json",
+        "sha256": "315617a1213a1d758ef4c80e572308ee9e31a73da083a49c79e5c568a23cd1d7",
+        "bytes": 5253
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-map-churn-128.bend",
+        "sha256": "cd22c831c180c0de12d84aeb80debf4881d08cbd18fcf8f6d634153fba2feb03",
+        "bytes": 3659
+      }
+    ]
+  },
+  "wallSeconds": 10.498116626869887,
+  "finished": 1793899760.9770794
+}

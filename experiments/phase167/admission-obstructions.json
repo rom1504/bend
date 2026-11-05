@@ -1,0 +1,1261 @@
+{
+  "kind": "phase167-admission-obstruction-census",
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/experiments/phase167/tools/admission-graph.py",
+    "bytes": 6662,
+    "sha256": "00a62cefcdc650205eab6cece67031a300544c75dc6a8a7ba80b9ba088a11f5e"
+  },
+  "receipt": {
+    "file": "selfhost/build/phase167/reasons01/report.json",
+    "bytes": 134152,
+    "sha256": "a584a0dd547bf92a46f92ad8a720a2718fc7932e9693983f1be8022191292bab"
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase167/tools/reasons.mjs",
+      "bytes": 1530,
+      "sha256": "e5d3e467acdfabd50513e80ddb81173c2ac0efce3c76f851805b48ec9ab07b6e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/why-api01/report.json",
+      "bytes": 4743,
+      "sha256": "5b5d2028abe136243e363c17b9a1bc2df28ecf57946090d7efae1230a10e811b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/verifier-source03/compiler.bend",
+      "bytes": 39333,
+      "sha256": "ff6b4083aa2f3e034f3b4f8e43dfb25d93a4f524685934e0ee13845278033ef3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/clean01/baseline/base-binding.json",
+      "bytes": 757,
+      "sha256": "3d1f6f8d1159fb19f1ca37faf23ead04ca807c36ec40cb7cca3e1fcf933a9351"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "bytes": 75064,
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/base/base.p130",
+      "bytes": 2612691,
+      "sha256": "984fad041a0ba855ea0aaedd384485afa2153da644655c00882eb50ace33817f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/why-api01/api.mjs",
+      "bytes": 1412727,
+      "sha256": "40c7924db07c7dbd5abddffb4d9163ff5a4916be22e2334b2241617f19ee08b5"
+    }
+  ],
+  "counts": {
+    "raw": 127,
+    "errorRows": 11,
+    "errorFree": 116,
+    "rawAdmitted": 55,
+    "finalFunctions": 56,
+    "blockedErrorFree": 61,
+    "independentErrorFreeSccs": 4
+  },
+  "generatedAdmittedIdentities": [
+    "$p126scc.0"
+  ],
+  "unknownMissingCallees": [],
+  "classes": {
+    "no-errors+cycles": 20,
+    "errors+cycles": 32,
+    "errors+no-cycles": 9
+  },
+  "explicitErrors": [
+    {
+      "owner": "$direct.index_insert",
+      "error": "product non-tail self call",
+      "blockedRowsReaching": [
+        "$direct.index_insert_legacy",
+        "$direct.p131i_original_set"
+      ]
+    },
+    {
+      "owner": "$direct.kc",
+      "error": "product dynamic call",
+      "blockedRowsReaching": []
+    },
+    {
+      "owner": "$direct.nt_choose",
+      "error": "product dynamic call",
+      "blockedRowsReaching": []
+    },
+    {
+      "owner": "$direct.p111v_args",
+      "error": "product non-tail self call",
+      "blockedRowsReaching": [
+        "$direct.p111_verify_program",
+        "$direct.p111v_body",
+        "$direct.p111v_call",
+        "$direct.p111v_program_indexed",
+        "$direct.p111v_segment",
+        "$direct.p111v_segment_flow",
+        "$direct.p111v_segments",
+        "$direct.p111v_stmt",
+        "$direct.p167w_check",
+        "$direct.p167w_round",
+        "$product.p111_verify_program",
+        "$product.p111v_args",
+        "$product.p111v_call",
+        "$product.p111v_program_indexed",
+        "$product.p111v_segments",
+        "main"
+      ]
+    },
+    {
+      "owner": "$direct.p111v_intersection",
+      "error": "product non-tail self call",
+      "blockedRowsReaching": [
+        "$direct.p111_verify_program",
+        "$direct.p111v_body",
+        "$direct.p111v_join",
+        "$direct.p111v_program_indexed",
+        "$direct.p111v_segment",
+        "$direct.p111v_segment_flow",
+        "$direct.p111v_segments",
+        "$direct.p111v_stmt",
+        "$direct.p167w_check",
+        "$direct.p167w_round",
+        "$product.p111_verify_program",
+        "$product.p111v_join",
+        "$product.p111v_program_indexed",
+        "$product.p111v_segments",
+        "main"
+      ]
+    },
+    {
+      "owner": "$direct.p111v_name_chars",
+      "error": "product non-tail self call",
+      "blockedRowsReaching": [
+        "$direct.p111_verify_program",
+        "$direct.p111v_decl",
+        "$direct.p111v_program_indexed",
+        "$direct.p111v_schema",
+        "$direct.p111v_schema_stmt",
+        "$direct.p111v_segment",
+        "$direct.p111v_segments",
+        "$direct.p167w_check",
+        "$direct.p167w_round",
+        "$product.p111_verify_program",
+        "$product.p111v_decl",
+        "$product.p111v_program_indexed",
+        "$product.p111v_schema",
+        "$product.p111v_schema_stmt",
+        "$product.p111v_segment",
+        "$product.p111v_segments",
+        "main"
+      ]
+    },
+    {
+      "owner": "$direct.p111v_raw_name_chars",
+      "error": "product non-tail self call",
+      "blockedRowsReaching": [
+        "$direct.p111_verify_program",
+        "$direct.p111v_constructors",
+        "$direct.p111v_functions",
+        "$direct.p111v_raw_name",
+        "$direct.p167w_check",
+        "$direct.p167w_round",
+        "$product.p111_verify_program",
+        "$product.p111v_constructors",
+        "$product.p111v_functions",
+        "main"
+      ]
+    },
+    {
+      "owner": "$direct.p131i_insert",
+      "error": "product non-tail self call",
+      "blockedRowsReaching": [
+        "$direct.index_set",
+        "$direct.p111_verify_program",
+        "$direct.p111v_assign",
+        "$direct.p111v_body",
+        "$direct.p111v_constructors",
+        "$direct.p111v_decl",
+        "$direct.p111v_functions",
+        "$direct.p111v_intersection_bucket",
+        "$direct.p111v_offset",
+        "$direct.p111v_program_indexed",
+        "$direct.p111v_put",
+        "$direct.p111v_schema",
+        "$direct.p111v_schema_stmt",
+        "$direct.p111v_segment",
+        "$direct.p111v_segment_flow",
+        "$direct.p111v_segments",
+        "$direct.p111v_step",
+        "$direct.p111v_stmt",
+        "$direct.p167w_check",
+        "$direct.p167w_round",
+        "$product.p111_verify_program",
+        "$product.p111v_constructors",
+        "$product.p111v_decl",
+        "$product.p111v_functions",
+        "$product.p111v_offset",
+        "$product.p111v_program_indexed",
+        "$product.p111v_schema",
+        "$product.p111v_schema_stmt",
+        "$product.p111v_segment",
+        "$product.p111v_segments",
+        "$product.p111v_step",
+        "main"
+      ]
+    },
+    {
+      "owner": "$direct.p167w_segments",
+      "error": "product non-tail self call",
+      "blockedRowsReaching": [
+        "$direct.p167w_check",
+        "$direct.p167w_round",
+        "main"
+      ]
+    },
+    {
+      "owner": "$product.p111v_body",
+      "error": "product result shape mismatch",
+      "blockedRowsReaching": [
+        "$product.p111v_segment",
+        "$product.p111v_segment_flow"
+      ]
+    },
+    {
+      "owner": "$product.p111v_stmt",
+      "error": "product result shape mismatch",
+      "blockedRowsReaching": []
+    }
+  ],
+  "cycles": [
+    {
+      "id": "cycle-0",
+      "members": [
+        "$direct.String.cmp",
+        "$direct.String.cmp.fin"
+      ],
+      "externalUnadmittedDependencies": [],
+      "closedAgainstAdmitted": true,
+      "blockedRowsReaching": [
+        "$direct.String.cmp",
+        "$direct.String.cmp.fin",
+        "$direct.String.eq",
+        "$direct.String.order",
+        "$direct.p111_verify_program",
+        "$direct.p111v_body",
+        "$direct.p111v_call",
+        "$direct.p111v_comparison",
+        "$direct.p111v_constructors",
+        "$direct.p111v_contract",
+        "$direct.p111v_counted_call",
+        "$direct.p111v_decl",
+        "$direct.p111v_functions",
+        "$direct.p111v_intersection_bucket",
+        "$direct.p111v_memory",
+        "$direct.p111v_offset",
+        "$direct.p111v_operator",
+        "$direct.p111v_program_indexed",
+        "$direct.p111v_schema",
+        "$direct.p111v_schema_stmt",
+        "$direct.p111v_segment",
+        "$direct.p111v_segment_flow",
+        "$direct.p111v_segments",
+        "$direct.p111v_signature",
+        "$direct.p111v_state_argument",
+        "$direct.p111v_stmt",
+        "$direct.p111v_value",
+        "$direct.p167w_check",
+        "$direct.p167w_round",
+        "$product.p111_verify_program",
+        "$product.p111v_args",
+        "$product.p111v_call",
+        "$product.p111v_constructors",
+        "$product.p111v_contract",
+        "$product.p111v_counted_call",
+        "$product.p111v_decl",
+        "$product.p111v_functions",
+        "$product.p111v_memory",
+        "$product.p111v_offset",
+        "$product.p111v_program_indexed",
+        "$product.p111v_schema",
+        "$product.p111v_schema_stmt",
+        "$product.p111v_segment",
+        "$product.p111v_segments",
+        "$product.p111v_value",
+        "main"
+      ]
+    },
+    {
+      "id": "cycle-1",
+      "members": [
+        "$direct.index_remove",
+        "$direct.index_remove_step"
+      ],
+      "externalUnadmittedDependencies": [],
+      "closedAgainstAdmitted": true,
+      "blockedRowsReaching": [
+        "$direct.index_insert_legacy",
+        "$direct.index_join",
+        "$direct.index_leaf",
+        "$direct.index_remove",
+        "$direct.index_remove_step",
+        "$direct.p131i_original_set"
+      ]
+    },
+    {
+      "id": "cycle-2",
+      "members": [
+        "$direct.p111v_body",
+        "$direct.p111v_stmt"
+      ],
+      "externalUnadmittedDependencies": [
+        "$direct.p111v_call",
+        "$direct.p111v_join",
+        "$direct.p111v_memory",
+        "$direct.p111v_offset",
+        "$direct.p111v_operator",
+        "$direct.p111v_value",
+        "$product.p111v_step"
+      ],
+      "closedAgainstAdmitted": false,
+      "blockedRowsReaching": [
+        "$direct.p111_verify_program",
+        "$direct.p111v_body",
+        "$direct.p111v_program_indexed",
+        "$direct.p111v_segment",
+        "$direct.p111v_segment_flow",
+        "$direct.p111v_segments",
+        "$direct.p111v_stmt",
+        "$direct.p167w_check",
+        "$direct.p167w_round",
+        "$product.p111_verify_program",
+        "$product.p111v_program_indexed",
+        "$product.p111v_segments",
+        "main"
+      ]
+    },
+    {
+      "id": "cycle-3",
+      "members": [
+        "$product.p111v_schema",
+        "$product.p111v_schema_stmt"
+      ],
+      "externalUnadmittedDependencies": [
+        "$direct.p111v_comparison",
+        "$product.p111v_decl"
+      ],
+      "closedAgainstAdmitted": false,
+      "blockedRowsReaching": [
+        "$direct.p111_verify_program",
+        "$direct.p111v_program_indexed",
+        "$direct.p111v_schema",
+        "$direct.p111v_schema_stmt",
+        "$direct.p111v_segment",
+        "$direct.p111v_segments",
+        "$direct.p167w_check",
+        "$direct.p167w_round",
+        "$product.p111_verify_program",
+        "$product.p111v_program_indexed",
+        "$product.p111v_schema",
+        "$product.p111v_schema_stmt",
+        "$product.p111v_segment",
+        "$product.p111v_segments",
+        "main"
+      ]
+    }
+  ],
+  "blocked": [
+    {
+      "owner": "$direct.String.cmp",
+      "missing": [
+        "$direct.String.cmp.fin"
+      ],
+      "reachesErrors": [],
+      "reachesCycles": [
+        "cycle-0"
+      ]
+    },
+    {
+      "owner": "$direct.String.cmp.fin",
+      "missing": [
+        "$direct.String.cmp"
+      ],
+      "reachesErrors": [],
+      "reachesCycles": [
+        "cycle-0"
+      ]
+    },
+    {
+      "owner": "$direct.String.eq",
+      "missing": [
+        "$direct.String.order"
+      ],
+      "reachesErrors": [],
+      "reachesCycles": [
+        "cycle-0"
+      ]
+    },
+    {
+      "owner": "$direct.String.order",
+      "missing": [
+        "$direct.String.cmp"
+      ],
+      "reachesErrors": [],
+      "reachesCycles": [
+        "cycle-0"
+      ]
+    },
+    {
+      "owner": "$direct.index_insert_legacy",
+      "missing": [
+        "$direct.index_insert",
+        "$direct.index_join",
+        "$direct.index_leaf"
+      ],
+      "reachesErrors": [
+        "$direct.index_insert"
+      ],
+      "reachesCycles": [
+        "cycle-1"
+      ]
+    },
+    {
+      "owner": "$direct.index_join",
+      "missing": [
+        "$direct.index_leaf"
+      ],
+      "reachesErrors": [],
+      "reachesCycles": [
+        "cycle-1"
+      ]
+    },
+    {
+      "owner": "$direct.index_leaf",
+      "missing": [
+        "$direct.index_remove"
+      ],
+      "reachesErrors": [],
+      "reachesCycles": [
+        "cycle-1"
+      ]
+    },
+    {
+      "owner": "$direct.index_remove",
+      "missing": [
+        "$direct.index_remove_step"
+      ],
+      "reachesErrors": [],
+      "reachesCycles": [
+        "cycle-1"
+      ]
+    },
+    {
+      "owner": "$direct.index_remove_step",
+      "missing": [
+        "$direct.index_remove"
+      ],
+      "reachesErrors": [],
+      "reachesCycles": [
+        "cycle-1"
+      ]
+    },
+    {
+      "owner": "$direct.index_set",
+      "missing": [
+        "$direct.p131i_insert"
+      ],
+      "reachesErrors": [
+        "$direct.p131i_insert"
+      ],
+      "reachesCycles": []
+    },
+    {
+      "owner": "$direct.p111_verify_program",
+      "missing": [
+        "$product.p111v_constructors",
+        "$product.p111v_functions",
+        "$product.p111v_program_indexed"
+      ],
+      "reachesErrors": [
+        "$direct.p111v_args",
+        "$direct.p111v_intersection",
+        "$direct.p111v_name_chars",
+        "$direct.p111v_raw_name_chars",
+        "$direct.p131i_insert"
+      ],
+      "reachesCycles": [
+        "cycle-0",
+        "cycle-2",
+        "cycle-3"
+      ]
+    },
+    {
+      "owner": "$direct.p111v_assign",
+      "missing": [
+        "$direct.p111v_put"
+      ],
+      "reachesErrors": [
+        "$direct.p131i_insert"
+      ],
+      "reachesCycles": []
+    },
+    {
+      "owner": "$direct.p111v_body",
+      "missing": [
+        "$direct.p111v_stmt"
+      ],
+      "reachesErrors": [
+        "$direct.p111v_args",
+        "$direct.p111v_intersection",
+        "$direct.p131i_insert"
+      ],
+      "reachesCycles": [
+        "cycle-0",
+        "cycle-2"
+      ]
+    },
+    {
+      "owner": "$direct.p111v_call",
+      "missing": [
+        "$direct.p111v_args",
+        "$direct.p111v_contract",
+        "$direct.p111v_signature",
+        "$direct.p111v_state_argument"
+      ],
+      "reachesErrors": [
+        "$direct.p111v_args"
+      ],
+      "reachesCycles": [
+        "cycle-0"
+      ]
+    },
+    {
+      "owner": "$direct.p111v_comparison",
+      "missing": [
+        "$direct.String.eq"
+      ],
+      "reachesErrors": [],
+      "reachesCycles": [
+        "cycle-0"
+      ]
+    },
+    {
+      "owner": "$direct.p111v_constructors",
+      "missing": [
+        "$direct.String.eq",
+        "$direct.p111v_put",
+        "$direct.p111v_raw_name",
+        "$product.p111v_constructors"
+      ],
+      "reachesErrors": [
+        "$direct.p111v_raw_name_chars",
+        "$direct.p131i_insert"
+      ],
+      "reachesCycles": [
+        "cycle-0"
+      ]
+    },
+    {
+      "owner": "$direct.p111v_contract",
+      "missing": [
+        "$direct.String.eq",
+        "$direct.p111v_counted_call"
+      ],
+      "reachesErrors": [],
+      "reachesCycles": [
+        "cycle-0"
+      ]
+    },
+    {
+      "owner": "$direct.p111v_counted_call",
+      "missing": [
+        "$direct.String.eq"
+      ],
+      "reachesErrors": [],
+      "reachesCycles": [
+        "cycle-0"
+      ]
+    },
+    {
+      "owner": "$direct.p111v_decl",
+      "missing": [
+        "$direct.String.eq",
+        "$direct.p111v_name_chars",
+        "$direct.p111v_put"
+      ],
+      "reachesErrors": [
+        "$direct.p111v_name_chars",
+        "$direct.p131i_insert"
+      ],
+      "reachesCycles": [
+        "cycle-0"
+      ]
+    },
+    {
+      "owner": "$direct.p111v_functions",
+      "missing": [
+        "$direct.String.eq",
+        "$direct.p111v_put",
+        "$direct.p111v_raw_name",
+        "$product.p111v_functions"
+      ],
+      "reachesErrors": [
+        "$direct.p111v_raw_name_chars",
+        "$direct.p131i_insert"
+      ],
+      "reachesCycles": [
+        "cycle-0"
+      ]
+    },
+    {
+      "owner": "$direct.p111v_intersection_bucket",
+      "missing": [
+        "$direct.String.eq",
+        "$direct.p111v_put"
+      ],
+      "reachesErrors": [
+        "$direct.p131i_insert"
+      ],
+      "reachesCycles": [
+        "cycle-0"
+      ]
+    },
+    {
+      "owner": "$direct.p111v_join",
+      "missing": [
+        "$direct.p111v_intersection"
+      ],
+      "reachesErrors": [
+        "$direct.p111v_intersection"
+      ],
+      "reachesCycles": []
+    },
+    {
+      "owner": "$direct.p111v_memory",
+      "missing": [
+        "$direct.p111v_value"
+      ],
+      "reachesErrors": [],
+      "reachesCycles": [
+        "cycle-0"
+      ]
+    },
+    {
+      "owner": "$direct.p111v_offset",
+      "missing": [
+        "$direct.p111v_put",
+        "$direct.p111v_value"
+      ],
+      "reachesErrors": [
+        "$direct.p131i_insert"
+      ],
+      "reachesCycles": [
+        "cycle-0"
+      ]
+    },
+    {
+      "owner": "$direct.p111v_operator",
+      "missing": [
+        "$direct.String.eq",
+        "$direct.p111v_comparison"
+      ],
+      "reachesErrors": [],
+      "reachesCycles": [
+        "cycle-0"
+      ]
+    },
+    {
+      "owner": "$direct.p111v_program_indexed",
+      "missing": [
+        "$direct.String.eq",
+        "$product.p111v_segments"
+      ],
+      "reachesErrors": [
+        "$direct.p111v_args",
+        "$direct.p111v_intersection",
+        "$direct.p111v_name_chars",
+        "$direct.p131i_insert"
+      ],
+      "reachesCycles": [
+        "cycle-0",
+        "cycle-2",
+        "cycle-3"
+      ]
+    },
+    {
+      "owner": "$direct.p111v_put",
+      "missing": [
+        "$direct.index_set"
+      ],
+      "reachesErrors": [
+        "$direct.p131i_insert"
+      ],
+      "reachesCycles": []
+    },
+    {
+      "owner": "$direct.p111v_raw_name",
+      "missing": [
+        "$direct.p111v_raw_name_chars"
+      ],
+      "reachesErrors": [
+        "$direct.p111v_raw_name_chars"
+      ],
+      "reachesCycles": []
+    },
+    {
+      "owner": "$direct.p111v_schema",
+      "missing": [
+        "$product.p111v_schema",
+        "$product.p111v_schema_stmt"
+      ],
+      "reachesErrors": [
+        "$direct.p111v_name_chars",
+        "$direct.p131i_insert"
+      ],
+      "reachesCycles": [
+        "cycle-0",
+        "cycle-3"
+      ]
+    },
+    {
+      "owner": "$direct.p111v_schema_stmt",
+      "missing": [
+        "$direct.p111v_comparison",
+        "$direct.p111v_decl",
+        "$direct.p111v_schema"
+      ],
+      "reachesErrors": [
+        "$direct.p111v_name_chars",
+        "$direct.p131i_insert"
+      ],
+      "reachesCycles": [
+        "cycle-0",
+        "cycle-3"
+      ]
+    },
+    {
+      "owner": "$direct.p111v_segment",
+      "missing": [
+        "$direct.p111v_put",
+        "$direct.p111v_segment_flow",
+        "$product.p111v_schema"
+      ],
+      "reachesErrors": [
+        "$direct.p111v_args",
+        "$direct.p111v_intersection",
+        "$direct.p111v_name_chars",
+        "$direct.p131i_insert"
+      ],
+      "reachesCycles": [
+        "cycle-0",
+        "cycle-2",
+        "cycle-3"
+      ]
+    },
+    {
+      "owner": "$direct.p111v_segment_flow",
+      "missing": [
+        "$direct.p111v_body"
+      ],
+      "reachesErrors": [
+        "$direct.p111v_args",
+        "$direct.p111v_intersection",
+        "$direct.p131i_insert"
+      ],
+      "reachesCycles": [
+        "cycle-0",
+        "cycle-2"
+      ]
+    },
+    {
+      "owner": "$direct.p111v_segments",
+      "missing": [
+        "$direct.p111v_segment"
+      ],
+      "reachesErrors": [
+        "$direct.p111v_args",
+        "$direct.p111v_intersection",
+        "$direct.p111v_name_chars",
+        "$direct.p131i_insert"
+      ],
+      "reachesCycles": [
+        "cycle-0",
+        "cycle-2",
+        "cycle-3"
+      ]
+    },
+    {
+      "owner": "$direct.p111v_signature",
+      "missing": [
+        "$direct.String.eq"
+      ],
+      "reachesErrors": [],
+      "reachesCycles": [
+        "cycle-0"
+      ]
+    },
+    {
+      "owner": "$direct.p111v_state_argument",
+      "missing": [
+        "$direct.String.eq"
+      ],
+      "reachesErrors": [],
+      "reachesCycles": [
+        "cycle-0"
+      ]
+    },
+    {
+      "owner": "$direct.p111v_step",
+      "missing": [
+        "$direct.p111v_assign"
+      ],
+      "reachesErrors": [
+        "$direct.p131i_insert"
+      ],
+      "reachesCycles": []
+    },
+    {
+      "owner": "$direct.p111v_stmt",
+      "missing": [
+        "$direct.p111v_body",
+        "$direct.p111v_call",
+        "$direct.p111v_join",
+        "$direct.p111v_memory",
+        "$direct.p111v_offset",
+        "$direct.p111v_operator",
+        "$direct.p111v_value",
+        "$product.p111v_step"
+      ],
+      "reachesErrors": [
+        "$direct.p111v_args",
+        "$direct.p111v_intersection",
+        "$direct.p131i_insert"
+      ],
+      "reachesCycles": [
+        "cycle-0",
+        "cycle-2"
+      ]
+    },
+    {
+      "owner": "$direct.p111v_value",
+      "missing": [
+        "$direct.String.eq"
+      ],
+      "reachesErrors": [],
+      "reachesCycles": [
+        "cycle-0"
+      ]
+    },
+    {
+      "owner": "$direct.p131i_original_set",
+      "missing": [
+        "$direct.index_insert",
+        "$direct.index_leaf"
+      ],
+      "reachesErrors": [
+        "$direct.index_insert"
+      ],
+      "reachesCycles": [
+        "cycle-1"
+      ]
+    },
+    {
+      "owner": "$direct.p167w_check",
+      "missing": [
+        "$direct.p167w_segments",
+        "$product.p111_verify_program"
+      ],
+      "reachesErrors": [
+        "$direct.p111v_args",
+        "$direct.p111v_intersection",
+        "$direct.p111v_name_chars",
+        "$direct.p111v_raw_name_chars",
+        "$direct.p131i_insert",
+        "$direct.p167w_segments"
+      ],
+      "reachesCycles": [
+        "cycle-0",
+        "cycle-2",
+        "cycle-3"
+      ]
+    },
+    {
+      "owner": "$direct.p167w_round",
+      "missing": [
+        "$direct.p167w_check"
+      ],
+      "reachesErrors": [
+        "$direct.p111v_args",
+        "$direct.p111v_intersection",
+        "$direct.p111v_name_chars",
+        "$direct.p111v_raw_name_chars",
+        "$direct.p131i_insert",
+        "$direct.p167w_segments"
+      ],
+      "reachesCycles": [
+        "cycle-0",
+        "cycle-2",
+        "cycle-3"
+      ]
+    },
+    {
+      "owner": "$product.p111_verify_program",
+      "missing": [
+        "$product.p111v_constructors",
+        "$product.p111v_functions",
+        "$product.p111v_program_indexed"
+      ],
+      "reachesErrors": [
+        "$direct.p111v_args",
+        "$direct.p111v_intersection",
+        "$direct.p111v_name_chars",
+        "$direct.p111v_raw_name_chars",
+        "$direct.p131i_insert"
+      ],
+      "reachesCycles": [
+        "cycle-0",
+        "cycle-2",
+        "cycle-3"
+      ]
+    },
+    {
+      "owner": "$product.p111v_args",
+      "missing": [
+        "$direct.p111v_args",
+        "$direct.p111v_value"
+      ],
+      "reachesErrors": [
+        "$direct.p111v_args"
+      ],
+      "reachesCycles": [
+        "cycle-0"
+      ]
+    },
+    {
+      "owner": "$product.p111v_call",
+      "missing": [
+        "$direct.p111v_args",
+        "$direct.p111v_contract",
+        "$direct.p111v_signature",
+        "$direct.p111v_state_argument"
+      ],
+      "reachesErrors": [
+        "$direct.p111v_args"
+      ],
+      "reachesCycles": [
+        "cycle-0"
+      ]
+    },
+    {
+      "owner": "$product.p111v_constructors",
+      "missing": [
+        "$direct.String.eq",
+        "$direct.p111v_put",
+        "$direct.p111v_raw_name"
+      ],
+      "reachesErrors": [
+        "$direct.p111v_raw_name_chars",
+        "$direct.p131i_insert"
+      ],
+      "reachesCycles": [
+        "cycle-0"
+      ]
+    },
+    {
+      "owner": "$product.p111v_contract",
+      "missing": [
+        "$direct.String.eq",
+        "$product.p111v_counted_call"
+      ],
+      "reachesErrors": [],
+      "reachesCycles": [
+        "cycle-0"
+      ]
+    },
+    {
+      "owner": "$product.p111v_counted_call",
+      "missing": [
+        "$direct.String.eq"
+      ],
+      "reachesErrors": [],
+      "reachesCycles": [
+        "cycle-0"
+      ]
+    },
+    {
+      "owner": "$product.p111v_decl",
+      "missing": [
+        "$direct.String.eq",
+        "$direct.p111v_name_chars",
+        "$direct.p111v_put"
+      ],
+      "reachesErrors": [
+        "$direct.p111v_name_chars",
+        "$direct.p131i_insert"
+      ],
+      "reachesCycles": [
+        "cycle-0"
+      ]
+    },
+    {
+      "owner": "$product.p111v_functions",
+      "missing": [
+        "$direct.String.eq",
+        "$direct.p111v_put",
+        "$direct.p111v_raw_name"
+      ],
+      "reachesErrors": [
+        "$direct.p111v_raw_name_chars",
+        "$direct.p131i_insert"
+      ],
+      "reachesCycles": [
+        "cycle-0"
+      ]
+    },
+    {
+      "owner": "$product.p111v_join",
+      "missing": [
+        "$direct.p111v_intersection"
+      ],
+      "reachesErrors": [
+        "$direct.p111v_intersection"
+      ],
+      "reachesCycles": []
+    },
+    {
+      "owner": "$product.p111v_memory",
+      "missing": [
+        "$product.p111v_value"
+      ],
+      "reachesErrors": [],
+      "reachesCycles": [
+        "cycle-0"
+      ]
+    },
+    {
+      "owner": "$product.p111v_offset",
+      "missing": [
+        "$direct.p111v_put",
+        "$direct.p111v_value"
+      ],
+      "reachesErrors": [
+        "$direct.p131i_insert"
+      ],
+      "reachesCycles": [
+        "cycle-0"
+      ]
+    },
+    {
+      "owner": "$product.p111v_program_indexed",
+      "missing": [
+        "$direct.String.eq",
+        "$product.p111v_segments"
+      ],
+      "reachesErrors": [
+        "$direct.p111v_args",
+        "$direct.p111v_intersection",
+        "$direct.p111v_name_chars",
+        "$direct.p131i_insert"
+      ],
+      "reachesCycles": [
+        "cycle-0",
+        "cycle-2",
+        "cycle-3"
+      ]
+    },
+    {
+      "owner": "$product.p111v_schema",
+      "missing": [
+        "$product.p111v_schema_stmt"
+      ],
+      "reachesErrors": [
+        "$direct.p111v_name_chars",
+        "$direct.p131i_insert"
+      ],
+      "reachesCycles": [
+        "cycle-0",
+        "cycle-3"
+      ]
+    },
+    {
+      "owner": "$product.p111v_schema_stmt",
+      "missing": [
+        "$direct.p111v_comparison",
+        "$product.p111v_decl",
+        "$product.p111v_schema"
+      ],
+      "reachesErrors": [
+        "$direct.p111v_name_chars",
+        "$direct.p131i_insert"
+      ],
+      "reachesCycles": [
+        "cycle-0",
+        "cycle-3"
+      ]
+    },
+    {
+      "owner": "$product.p111v_segment",
+      "missing": [
+        "$direct.p111v_put",
+        "$product.p111v_schema",
+        "$product.p111v_segment_flow"
+      ],
+      "reachesErrors": [
+        "$direct.p111v_name_chars",
+        "$direct.p131i_insert",
+        "$product.p111v_body"
+      ],
+      "reachesCycles": [
+        "cycle-0",
+        "cycle-3"
+      ]
+    },
+    {
+      "owner": "$product.p111v_segment_flow",
+      "missing": [
+        "$product.p111v_body"
+      ],
+      "reachesErrors": [
+        "$product.p111v_body"
+      ],
+      "reachesCycles": []
+    },
+    {
+      "owner": "$product.p111v_segments",
+      "missing": [
+        "$direct.p111v_segment",
+        "$direct.p111v_segments"
+      ],
+      "reachesErrors": [
+        "$direct.p111v_args",
+        "$direct.p111v_intersection",
+        "$direct.p111v_name_chars",
+        "$direct.p131i_insert"
+      ],
+      "reachesCycles": [
+        "cycle-0",
+        "cycle-2",
+        "cycle-3"
+      ]
+    },
+    {
+      "owner": "$product.p111v_step",
+      "missing": [
+        "$direct.p111v_assign"
+      ],
+      "reachesErrors": [
+        "$direct.p131i_insert"
+      ],
+      "reachesCycles": []
+    },
+    {
+      "owner": "$product.p111v_value",
+      "missing": [
+        "$direct.String.eq"
+      ],
+      "reachesErrors": [],
+      "reachesCycles": [
+        "cycle-0"
+      ]
+    },
+    {
+      "owner": "main",
+      "missing": [
+        "$direct.p167w_round"
+      ],
+      "reachesErrors": [
+        "$direct.p111v_args",
+        "$direct.p111v_intersection",
+        "$direct.p111v_name_chars",
+        "$direct.p111v_raw_name_chars",
+        "$direct.p131i_insert",
+        "$direct.p167w_segments"
+      ],
+      "reachesCycles": [
+        "cycle-0",
+        "cycle-2",
+        "cycle-3"
+      ]
+    }
+  ],
+  "dependencyOnlyCounterfactuals": {
+    "cycle-0": [
+      "$direct.String.cmp",
+      "$direct.String.cmp.fin",
+      "$direct.String.eq",
+      "$direct.String.order",
+      "$direct.p111v_comparison",
+      "$direct.p111v_contract",
+      "$direct.p111v_counted_call",
+      "$direct.p111v_memory",
+      "$direct.p111v_operator",
+      "$direct.p111v_signature",
+      "$direct.p111v_state_argument",
+      "$direct.p111v_value",
+      "$product.p111v_contract",
+      "$product.p111v_counted_call",
+      "$product.p111v_memory",
+      "$product.p111v_value"
+    ],
+    "cycle-1": [
+      "$direct.index_join",
+      "$direct.index_leaf",
+      "$direct.index_remove",
+      "$direct.index_remove_step"
+    ],
+    "cycle-2": [],
+    "cycle-3": [],
+    "closed-cycles": [
+      "$direct.String.cmp",
+      "$direct.String.cmp.fin",
+      "$direct.String.eq",
+      "$direct.String.order",
+      "$direct.index_join",
+      "$direct.index_leaf",
+      "$direct.index_remove",
+      "$direct.index_remove_step",
+      "$direct.p111v_comparison",
+      "$direct.p111v_contract",
+      "$direct.p111v_counted_call",
+      "$direct.p111v_memory",
+      "$direct.p111v_operator",
+      "$direct.p111v_signature",
+      "$direct.p111v_state_argument",
+      "$direct.p111v_value",
+      "$product.p111v_contract",
+      "$product.p111v_counted_call",
+      "$product.p111v_memory",
+      "$product.p111v_value"
+    ],
+    "all-cycles": [
+      "$direct.String.cmp",
+      "$direct.String.cmp.fin",
+      "$direct.String.eq",
+      "$direct.String.order",
+      "$direct.index_join",
+      "$direct.index_leaf",
+      "$direct.index_remove",
+      "$direct.index_remove_step",
+      "$direct.p111v_comparison",
+      "$direct.p111v_contract",
+      "$direct.p111v_counted_call",
+      "$direct.p111v_memory",
+      "$direct.p111v_operator",
+      "$direct.p111v_signature",
+      "$direct.p111v_state_argument",
+      "$direct.p111v_value",
+      "$product.p111v_contract",
+      "$product.p111v_counted_call",
+      "$product.p111v_memory",
+      "$product.p111v_value"
+    ]
+  },
+  "limits": [
+    "Static candidate dependency observations; no runtime or wall-time attribution.",
+    "A cycle is an additional legality obligation, not permission for unbounded native recursion.",
+    "Counterfactuals assume a correct stack-safe cycle transformation; they only count dependency readiness.",
+    "Failed candidate call lists may be partial; traversal stops at error rows.",
+    "Reach sets overlap; counts cannot be summed into independent gains.",
+    "More complete lowering can change bodies and dependencies; no fixed speed gain follows."
+  ]
+}

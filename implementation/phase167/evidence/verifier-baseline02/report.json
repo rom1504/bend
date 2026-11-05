@@ -1,0 +1,52 @@
+{
+  "complete": false,
+  "role": "baseline",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase167/tools/one-build.py",
+      "bytes": 2029,
+      "sha256": "ea737042c06e707d3d255896502a4ff2dbd078631410b7a965db84a844038799"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/api02/report.json",
+      "bytes": 4949,
+      "sha256": "b576b54c0f71a7abdcf85ad39c0f68847cf558792393097c953f80bff2af7701"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/verifier-source02/compiler.bend",
+      "bytes": 39326,
+      "sha256": "fb1ace9ae98dc2a97fb810cd9c408de8695b2901b1233ee57998cc9403de3e7e"
+    }
+  ],
+  "stages": {},
+  "emission": {
+    "command": [
+      "selfhost/.assets/bin/bun",
+      "experiments/phase167/tools/request.mjs",
+      "selfhost/build/phase167/api02/report.json",
+      "selfhost/build/phase167/verifier-source02/compiler.bend",
+      "selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "baseline",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/verifier-baseline02/emit"
+    ],
+    "limitSeconds": 120,
+    "complete": false,
+    "started": 1793896346.543282,
+    "exitCode": 1,
+    "userSeconds": 10.463825,
+    "systemSeconds": 0.259995,
+    "peakRssKiB": 276592,
+    "timedOut": false,
+    "seconds": 10.725891468115151,
+    "stdout": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/verifier-baseline02/emit.stdout",
+      "bytes": 1392,
+      "sha256": "d663ee95759b28918605a4a6da63fc7f24fd93dbadb190ab8045820ba7b54234"
+    },
+    "stderr": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/verifier-baseline02/emit.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

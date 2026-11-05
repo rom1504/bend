@@ -1,0 +1,235 @@
+{
+  "kind": "bend-native-build",
+  "version": 1,
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/closures04/emit/program.ssa",
+      "bytes": 62448,
+      "sha256": "5f2828562cdb20d2056adad4cdbdf021e0388bf0e8496b8b6232040b52f51635"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/manifests/assets-native.json",
+      "bytes": 17657,
+      "sha256": "4b8181ff0a8917d5eac5d5a1976385449e2c3962e503335e3800adb154fddaa0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/native.py",
+      "bytes": 13731,
+      "sha256": "bc53fc000d45574e913904f7e899d785e5c98050b0942d14a81118b9ab009e58"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/assets.py",
+      "bytes": 7994,
+      "sha256": "02a8b03647f5a6292502363fc1bb79147b61196a9271c21cee55a2ec6bf64dba"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/request.py",
+      "bytes": 18653,
+      "sha256": "f2638c055de2de15c80b8e36d888337a3061f8f7725c55f16ad645943562566c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/common.py",
+      "bytes": 4809,
+      "sha256": "d9a16fef18cf936499e51f8c7f36a653f2921ef9a50f846257c2e8bc460ec6d1"
+    },
+    {
+      "file": "/usr/bin/python3.9",
+      "bytes": 5451288,
+      "sha256": "ca7655083b581ffe36c72dcb445857704db533ca39b03f79c97d8d0ef3bef9af"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/qbe",
+      "bytes": 262024,
+      "sha256": "1eca24288f9574ad57032ac88f11c3f74ced605838749226d77a9acd4443e5f4"
+    },
+    {
+      "file": "/usr/bin/x86_64-linux-gnu-as",
+      "bytes": 472248,
+      "sha256": "fac4e966afe9223dbab23aa15d27d144af81de4a44c8cad97c1dde290adb9493"
+    },
+    {
+      "file": "/usr/bin/x86_64-linux-gnu-gcc-10",
+      "bytes": 817704,
+      "sha256": "693abcb42e67fb871673f258a3644257ca69a209691ec4d8137a42442834bd19"
+    }
+  ],
+  "host": null,
+  "target": "qbe",
+  "stage": null,
+  "request": null,
+  "sourceIR": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/closures04/emit/program.ssa",
+    "bytes": 62448,
+    "sha256": "5f2828562cdb20d2056adad4cdbdf021e0388bf0e8496b8b6232040b52f51635"
+  },
+  "runtime": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+    "bytes": 119096,
+    "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+  },
+  "runtimePolicy": {
+    "threads": 1,
+    "gpu": "off",
+    "bendHeapMutators": 1,
+    "hostIoWorkersAllowed": true,
+    "providerScope": "Pinned direct-QBE foreign provider table; no arbitrary C embedding or foreign callbacks."
+  },
+  "compilerCommand": null,
+  "qbeCommand": [
+    "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/qbe",
+    "-t",
+    "amd64_sysv",
+    "-o",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/closures04/machine/program.s",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/closures04/emit/program.ssa"
+  ],
+  "toolchain": {
+    "target": "amd64_sysv",
+    "assemblerFlags": [
+      "-mbranches-within-32B-boundaries"
+    ],
+    "linkerFlags": [
+      "-no-pie"
+    ],
+    "libraries": [
+      "-pthread",
+      "-lm"
+    ]
+  },
+  "jobs": [
+    {
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/qbe",
+        "-t",
+        "amd64_sysv",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/closures04/machine/program.s",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/closures04/emit/program.ssa"
+      ],
+      "limitSeconds": 44.99961492000148,
+      "complete": true,
+      "started": 1793898463.0799897,
+      "exitCode": 0,
+      "userSeconds": 0.0051909999999999994,
+      "systemSeconds": 0.0,
+      "peakRssKiB": 11036,
+      "timedOut": false,
+      "seconds": 0.0065499767661094666,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/closures04/machine/qbe.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/closures04/machine/qbe.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "label": "qbe"
+    },
+    {
+      "command": [
+        "/usr/bin/x86_64-linux-gnu-as",
+        "-mbranches-within-32B-boundaries",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/closures04/machine/program.o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/closures04/machine/program.s"
+      ],
+      "limitSeconds": 44.92692402889952,
+      "complete": true,
+      "started": 1793898463.1527119,
+      "exitCode": 0,
+      "userSeconds": 0.0032029999999999997,
+      "systemSeconds": 0.0032029999999999997,
+      "peakRssKiB": 11160,
+      "timedOut": false,
+      "seconds": 0.007761002983897924,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/closures04/machine/assemble.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/closures04/machine/assemble.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "label": "assemble"
+    },
+    {
+      "command": [
+        "/usr/bin/x86_64-linux-gnu-gcc-10",
+        "-no-pie",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/closures04/machine/program.o",
+        "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+        "-pthread",
+        "-lm",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/closures04/machine/program"
+      ],
+      "limitSeconds": 44.91770315775648,
+      "complete": true,
+      "started": 1793898463.161912,
+      "exitCode": 0,
+      "userSeconds": 0.016791999999999998,
+      "systemSeconds": 0.0036,
+      "peakRssKiB": 11168,
+      "timedOut": false,
+      "seconds": 0.021441373974084854,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/closures04/machine/link.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/closures04/machine/link.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "label": "link"
+    }
+  ],
+  "retainIR": false,
+  "expectedQbe": null,
+  "expectedStdout": null,
+  "comparedToReference": false,
+  "relayLimitBytes": 65536,
+  "maximumRelayBytes": 0,
+  "machineDiagnosticPolicy": "Assembler/linker warnings retained on zero exit; compiler/QBE/execution stderr fails.",
+  "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+  "timingScope": "Whole emission/machine pipeline after preflight, under one outer disk/process guard.",
+  "wallSeconds": 0.1289703850634396,
+  "irDigest": {
+    "bytes": 62448,
+    "sha256": "5f2828562cdb20d2056adad4cdbdf021e0388bf0e8496b8b6232040b52f51635"
+  },
+  "emitAndQbeSeconds": 0.07201321888715029,
+  "assembly": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/closures04/machine/program.s",
+    "bytes": 85240,
+    "sha256": "c4ca0e7df44410858ca99949d73c9b27c9348227522b6411f3549ba489cfc10b"
+  },
+  "object": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/closures04/machine/program.o",
+    "bytes": 35608,
+    "sha256": "217a6e97da2ebd9f94af9c8fdab8be00d4b2c43c80c4cd220158a0a5871e0a16"
+  },
+  "binary": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/closures04/machine/program",
+    "bytes": 124832,
+    "sha256": "d5704e5d29930179d89fbebc47cc675d42b32a5df2bb9c7f8cbc78d8ce2e5d51"
+  },
+  "processes": [],
+  "changedInputs": [],
+  "qbeStderr": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/closures04/machine/qbe.stderr",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

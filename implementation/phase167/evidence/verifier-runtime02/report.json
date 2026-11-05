@@ -1,0 +1,170 @@
+{
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase167/tools/runtime.py",
+      "bytes": 1682,
+      "sha256": "da3f1db6e45bcf3e24cef69edd19d8a06b74a35e054f8e64969296fdf721fa34"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/verifier-baseline03/report.json",
+      "bytes": 3793,
+      "sha256": "01a6125a1a84de6b920d2418f8beead9f0d3d5e6b4f67ec80d39f77f135c9b1f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/verifier-baseline03/machine/program",
+      "bytes": 618488,
+      "sha256": "d61ede99e9d3d13fd55273e4d6ec643659e8255169eef6c02013dddaf2185836"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/verifier-bounded01/report.json",
+      "bytes": 3797,
+      "sha256": "d21453300786e2357fb174e999b7ed709f5f64f8aff8b0275d5c88ebbd61b935"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/verifier-bounded01/machine/program",
+      "bytes": 497232,
+      "sha256": "162b3a37ff8579342d9bdf39fdf2916e757c967cf66a1ede9aa42fdbca831794"
+    }
+  ],
+  "rows": [
+    {
+      "role": "baseline",
+      "median": 0.44555462477728724,
+      "samples": [
+        0.4440258382819593,
+        0.4470834112726152
+      ]
+    },
+    {
+      "role": "bounded",
+      "median": 1.3261191949713975,
+      "samples": [
+        1.3162179309874773,
+        1.3360204589553177
+      ]
+    }
+  ],
+  "samples": [
+    {
+      "role": "baseline",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/verifier-baseline03/machine/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "limitSeconds": 20,
+      "complete": true,
+      "started": 1793896655.8672483,
+      "exitCode": 0,
+      "userSeconds": 0.438252,
+      "systemSeconds": 0.003984,
+      "peakRssKiB": 9280,
+      "timedOut": false,
+      "seconds": 0.4440258382819593,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/verifier-runtime02/0-baseline.stdout",
+        "bytes": 4,
+        "sha256": "eac49b0badacd9a2b90dda6621d141162732bf83418d0d76cc4c422f28eb4f1d"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/verifier-runtime02/0-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "role": "bounded",
+      "round": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/verifier-bounded01/machine/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "limitSeconds": 20,
+      "complete": true,
+      "started": 1793896656.3122015,
+      "exitCode": 0,
+      "userSeconds": 1.315237,
+      "systemSeconds": 0.0,
+      "peakRssKiB": 9332,
+      "timedOut": false,
+      "seconds": 1.3162179309874773,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/verifier-runtime02/0-bounded.stdout",
+        "bytes": 4,
+        "sha256": "eac49b0badacd9a2b90dda6621d141162732bf83418d0d76cc4c422f28eb4f1d"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/verifier-runtime02/0-bounded.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "role": "bounded",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/verifier-bounded01/machine/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "limitSeconds": 20,
+      "complete": true,
+      "started": 1793896657.7007637,
+      "exitCode": 0,
+      "userSeconds": 1.334463,
+      "systemSeconds": 0.0,
+      "peakRssKiB": 9340,
+      "timedOut": false,
+      "seconds": 1.3360204589553177,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/verifier-runtime02/1-bounded.stdout",
+        "bytes": 4,
+        "sha256": "eac49b0badacd9a2b90dda6621d141162732bf83418d0d76cc4c422f28eb4f1d"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/verifier-runtime02/1-bounded.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "role": "baseline",
+      "round": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/verifier-baseline03/machine/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "limitSeconds": 20,
+      "complete": true,
+      "started": 1793896659.0643618,
+      "exitCode": 0,
+      "userSeconds": 0.446036,
+      "systemSeconds": 0.0,
+      "peakRssKiB": 9348,
+      "timedOut": false,
+      "seconds": 0.4470834112726152,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/verifier-runtime02/1-baseline.stdout",
+        "bytes": 4,
+        "sha256": "eac49b0badacd9a2b90dda6621d141162732bf83418d0d76cc4c422f28eb4f1d"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/verifier-runtime02/1-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "complete": true,
+  "role": "live",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase167/tools/one-build-v2.py",
+      "bytes": 2520,
+      "sha256": "e213dc12e95d92a18339672bd18317379b267c69f18305ed36803a42a5d27d08"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/api03/report.json",
+      "bytes": 5245,
+      "sha256": "3c32b37e271ab15f40743f9641584125f9cf613d5d27e85ae624963b6d5a5ab9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/verifier-source03/compiler.bend",
+      "bytes": 39333,
+      "sha256": "ff6b4083aa2f3e034f3b4f8e43dfb25d93a4f524685934e0ee13845278033ef3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "bytes": 75064,
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/base/base.p130",
+      "bytes": 2612691,
+      "sha256": "984fad041a0ba855ea0aaedd384485afa2153da644655c00882eb50ace33817f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/manifests/assets-native.json",
+      "bytes": 17657,
+      "sha256": "4b8181ff0a8917d5eac5d5a1976385449e2c3962e503335e3800adb154fddaa0"
+    }
+  ],
+  "stages": {
+    "loadSeconds": 0.222533912,
+    "baseSeconds": 1.00737445,
+    "frontendSeconds": 8.118279042,
+    "lowerVerifySeconds": 13.692204074,
+    "writeRenderSeconds": 0.047258514000001015
+  },
+  "preparationPolicy": "cache",
+  "emission": {
+    "command": [
+      "selfhost/.assets/bin/bun",
+      "experiments/phase167/tools/request-v2.mjs",
+      "selfhost/build/phase167/api03/report.json",
+      "selfhost/build/phase167/verifier-source03/compiler.bend",
+      "selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "live",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/contrast01/live/emit",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/contrast01/live/base-binding.json"
+    ],
+    "limitSeconds": 120,
+    "complete": true,
+    "started": 1793896955.4846613,
+    "exitCode": 0,
+    "userSeconds": 23.275799,
+    "systemSeconds": 0.49199499999999996,
+    "peakRssKiB": 425060,
+    "timedOut": false,
+    "seconds": 23.769771608058363,
+    "stdout": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/contrast01/live/emit.stdout",
+      "bytes": 1821,
+      "sha256": "9562edbb3166ff112132b7fbec58bb96c8a45466b87f60e1623001a2e59f6963"
+    },
+    "stderr": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/contrast01/live/emit.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "functions": 1437,
+  "ir": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/contrast01/live/emit/program.ssa",
+    "bytes": 2063363,
+    "sha256": "dba25e5f635445d42f3ca3c22a1113f490c74d4ecdeb1e8870b4c81aed2d57a3"
+  },
+  "construction": {
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "selfhost/tools/build/native.py",
+      "--assets",
+      "selfhost/manifests/assets-native.json",
+      "--target",
+      "qbe",
+      "--ir",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/contrast01/live/emit/program.ssa",
+      "--out",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/contrast01/live/machine",
+      "--seconds",
+      "45"
+    ],
+    "limitSeconds": 50,
+    "complete": true,
+    "started": 1793896979.2554986,
+    "exitCode": 0,
+    "userSeconds": 0.420107,
+    "systemSeconds": 0.051128,
+    "peakRssKiB": 26276,
+    "timedOut": false,
+    "seconds": 0.5066746030934155,
+    "stdout": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/contrast01/live/machine.stdout",
+      "bytes": 427,
+      "sha256": "944a1512a351176647b428e7fe96e0fdbf7f996478c7804f17d0c017cb2c9b4a"
+    },
+    "stderr": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/contrast01/live/machine.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "sourceToExecutableSeconds": 24.288581839762628,
+  "binary": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/contrast01/live/machine/program",
+    "bytes": 493136,
+    "sha256": "6a44f5f42c5c52a4e46e218edcc56ae7e8604f5f33af7bf720d7e61286e2a37f"
+  },
+  "machineStages": null
+}

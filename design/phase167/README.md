@@ -104,3 +104,12 @@ fresh artifact roots. Reclaim only individually verified archived artifacts.
 Record rejected attempts and all timing components; no full qualification merely
 to test an initial idea. Finish with working experimental code, evidence, cost
 model, exact limitations and the next highest-information architectural step.
+
+## Outcome
+
+See the [Phase167 report](../../implementation/phase167/README.md). The initial
+renderer retained a hidden registry and is preserved as a separate treatment.
+Explicit plain emission, a single-generic counterarchitecture and general early
+observer synthesis were implemented and measured. Early observers recovered the
+exact16 candidates predicted by the dependency graph, but the generated-runtime
+gate still fails; no native image or production selection was changed.

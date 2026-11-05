@@ -1,0 +1,726 @@
+{
+  "kind": "phase163-reviewed-retention-proposal",
+  "version": 1,
+  "date": "2026-11-05",
+  "status": "proposal-only-no-files-deleted",
+  "targetsRun": false,
+  "method": {
+    "file": "selfhost/tools/build-retention/archive-v02.py",
+    "bytes": 18412,
+    "sha256": "3238e0774c6c21c3de6c07bcbd71e469cbb23aaba01f99da0cb1e9f51990ad9f"
+  },
+  "allowedRoots": [
+    "selfhost/build/phase150/parser-reference-native01",
+    "selfhost/build/phase150/parser-reference-native02",
+    "selfhost/build/phase150/parser-candidate-native01",
+    "selfhost/build/phase150/parser-candidate-native02",
+    "selfhost/build/phase150/parser-scalar-native01",
+    "selfhost/build/phase150/parser-acquisition-profile01"
+  ],
+  "archiveRoots": {
+    "selfhost/build-retention/phase150/parser-reference-native01-guard/root-00/receipt.json": "selfhost/build/phase150/parser-reference-native01",
+    "selfhost/build-retention/phase150/parser-reference-native02-guard/root-00/receipt.json": "selfhost/build/phase150/parser-reference-native02",
+    "selfhost/build-retention/phase150/parser-candidate-native01-guard/root-00/receipt.json": "selfhost/build/phase150/parser-candidate-native01",
+    "selfhost/build-retention/phase150/parser-candidate-native02-guard/root-00/receipt.json": "selfhost/build/phase150/parser-candidate-native02",
+    "selfhost/build-retention/phase150/parser-scalar-native01-guard/root-00/receipt.json": "selfhost/build/phase150/parser-scalar-native01",
+    "selfhost/build-retention/phase150/parser-acquisition-profile01-guard/root-00/receipt.json": "selfhost/build/phase150/parser-acquisition-profile01"
+  },
+  "keepPrefixes": [
+    "selfhost/build/phase32/execution.lock",
+    "selfhost/build/phase147",
+    "selfhost/build/phase151",
+    "selfhost/build/phase152",
+    "selfhost/build/phase153",
+    "selfhost/build/phase154",
+    "selfhost/build/phase156",
+    "selfhost/build/phase160",
+    "selfhost/build/phase163",
+    "selfhost/.assets",
+    "selfhost/.bootstrap",
+    "selfhost/src",
+    "selfhost/tests",
+    "selfhost/tools",
+    "selfhost/build-retention",
+    "implementation",
+    "selfhost/build/phase150/parser-reference-native01/assemble.stderr",
+    "selfhost/build/phase150/parser-reference-native01/assemble.stdout",
+    "selfhost/build/phase150/parser-reference-native01/compiler.stderr",
+    "selfhost/build/phase150/parser-reference-native01/link.stderr",
+    "selfhost/build/phase150/parser-reference-native01/link.stdout",
+    "selfhost/build/phase150/parser-reference-native01/program",
+    "selfhost/build/phase150/parser-reference-native01/qbe.stderr",
+    "selfhost/build/phase150/parser-reference-native01/qbe.stdout",
+    "selfhost/build/phase150/parser-reference-native01/report.json",
+    "selfhost/build/phase150/parser-reference-native01/request.json",
+    "selfhost/build/phase150/parser-reference-native02/assemble.stderr",
+    "selfhost/build/phase150/parser-reference-native02/assemble.stdout",
+    "selfhost/build/phase150/parser-reference-native02/compiler.stderr",
+    "selfhost/build/phase150/parser-reference-native02/link.stderr",
+    "selfhost/build/phase150/parser-reference-native02/link.stdout",
+    "selfhost/build/phase150/parser-reference-native02/program",
+    "selfhost/build/phase150/parser-reference-native02/qbe.stderr",
+    "selfhost/build/phase150/parser-reference-native02/qbe.stdout",
+    "selfhost/build/phase150/parser-reference-native02/report.json",
+    "selfhost/build/phase150/parser-reference-native02/request.json",
+    "selfhost/build/phase150/parser-candidate-native01/assemble.stderr",
+    "selfhost/build/phase150/parser-candidate-native01/assemble.stdout",
+    "selfhost/build/phase150/parser-candidate-native01/compiler.stderr",
+    "selfhost/build/phase150/parser-candidate-native01/link.stderr",
+    "selfhost/build/phase150/parser-candidate-native01/link.stdout",
+    "selfhost/build/phase150/parser-candidate-native01/program",
+    "selfhost/build/phase150/parser-candidate-native01/qbe.stderr",
+    "selfhost/build/phase150/parser-candidate-native01/qbe.stdout",
+    "selfhost/build/phase150/parser-candidate-native01/report.json",
+    "selfhost/build/phase150/parser-candidate-native01/request.json",
+    "selfhost/build/phase150/parser-candidate-native02/assemble.stderr",
+    "selfhost/build/phase150/parser-candidate-native02/assemble.stdout",
+    "selfhost/build/phase150/parser-candidate-native02/compiler.stderr",
+    "selfhost/build/phase150/parser-candidate-native02/link.stderr",
+    "selfhost/build/phase150/parser-candidate-native02/link.stdout",
+    "selfhost/build/phase150/parser-candidate-native02/program",
+    "selfhost/build/phase150/parser-candidate-native02/qbe.stderr",
+    "selfhost/build/phase150/parser-candidate-native02/qbe.stdout",
+    "selfhost/build/phase150/parser-candidate-native02/report.json",
+    "selfhost/build/phase150/parser-candidate-native02/request.json",
+    "selfhost/build/phase150/parser-scalar-native01/assemble.stderr",
+    "selfhost/build/phase150/parser-scalar-native01/assemble.stdout",
+    "selfhost/build/phase150/parser-scalar-native01/compiler.stderr",
+    "selfhost/build/phase150/parser-scalar-native01/link.stderr",
+    "selfhost/build/phase150/parser-scalar-native01/link.stdout",
+    "selfhost/build/phase150/parser-scalar-native01/program",
+    "selfhost/build/phase150/parser-scalar-native01/qbe.stderr",
+    "selfhost/build/phase150/parser-scalar-native01/qbe.stdout",
+    "selfhost/build/phase150/parser-scalar-native01/report.json",
+    "selfhost/build/phase150/parser-scalar-native01/request.json",
+    "selfhost/build/phase150/parser-acquisition-profile01/candidate-stages.json",
+    "selfhost/build/phase150/parser-acquisition-profile01/capture/000-sample-parser-reference-source-phase147-same-object-diagnostic/analysis.json",
+    "selfhost/build/phase150/parser-acquisition-profile01/capture/000-sample-parser-reference-source-phase147-same-object-diagnostic/callers.txt",
+    "selfhost/build/phase150/parser-acquisition-profile01/capture/000-sample-parser-reference-source-phase147-same-object-diagnostic/contexts.txt",
+    "selfhost/build/phase150/parser-acquisition-profile01/capture/000-sample-parser-reference-source-phase147-same-object-diagnostic/samples.txt",
+    "selfhost/build/phase150/parser-acquisition-profile01/capture/000-sample-parser-reference-source-phase147-same-object-diagnostic/samples.txt.stages-v1.json",
+    "selfhost/build/phase150/parser-acquisition-profile01/capture/000-sample-parser-reference-source-phase147-same-object-diagnostic/stderr",
+    "selfhost/build/phase150/parser-acquisition-profile01/capture/001-sample-parser-candidate-source-phase147-same-object-diagnostic/analysis.json",
+    "selfhost/build/phase150/parser-acquisition-profile01/capture/001-sample-parser-candidate-source-phase147-same-object-diagnostic/callers.txt",
+    "selfhost/build/phase150/parser-acquisition-profile01/capture/001-sample-parser-candidate-source-phase147-same-object-diagnostic/contexts.txt",
+    "selfhost/build/phase150/parser-acquisition-profile01/capture/001-sample-parser-candidate-source-phase147-same-object-diagnostic/samples.txt",
+    "selfhost/build/phase150/parser-acquisition-profile01/capture/001-sample-parser-candidate-source-phase147-same-object-diagnostic/samples.txt.stages-v1.json",
+    "selfhost/build/phase150/parser-acquisition-profile01/capture/001-sample-parser-candidate-source-phase147-same-object-diagnostic/stderr",
+    "selfhost/build/phase150/parser-acquisition-profile01/capture/manifest.json",
+    "selfhost/build/phase150/parser-acquisition-profile01/capture/methods/1382cd7d3a66f800a18f2bf3d15c4b7c88b20cd9e27dc654d62a592600de3279-run.py",
+    "selfhost/build/phase150/parser-acquisition-profile01/capture/methods/16e92d883263577177d50ae3cc1f381ea6cb97b77be50a4157999102047a6fdc-analyze.py",
+    "selfhost/build/phase150/parser-acquisition-profile01/capture/methods/3e0c25cf5a929b3bcc6d7d2a7c00ae00de4a389cb1e31260cd2fba4bee9f4ba8-freeze.py",
+    "selfhost/build/phase150/parser-acquisition-profile01/capture/methods/4728b9a8175087ff0159c4bc59a0575ffa37838b00be0fc83bbac356610916da-attribute.py",
+    "selfhost/build/phase150/parser-acquisition-profile01/capture/methods/768cde4664bbd1442139ab5fde702b7d51d7e4709330392a8947905d17b553c7-stages_v1.py",
+    "selfhost/build/phase150/parser-acquisition-profile01/capture/methods/a18cee1be520527d98b86910d2c9d075a864ccf34675d8bdfac3cb157346485a-elf.py",
+    "selfhost/build/phase150/parser-acquisition-profile01/capture/report.json",
+    "selfhost/build/phase150/parser-acquisition-profile01/manifest.json",
+    "selfhost/build/phase150/parser-acquisition-profile01/reference-stages.json"
+  ],
+  "roots": [
+    {
+      "root": "selfhost/build/phase150/parser-reference-native01",
+      "reason": "Obsolete component machine-build intermediates; retained executable/source do not read these outputs.",
+      "lifecycle": {
+        "file": "selfhost/build/phase150/parser-reference-native01-guard/retention.json",
+        "bytes": 1247,
+        "sha256": "5bce9536a588ee74abd0c8ad2fb1838080c5af8d133337efe4a293956303c117"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase150/parser-reference-native01-guard/report.json",
+        "bytes": 2110,
+        "sha256": "b449867929e0c643d35afa8ce5a99f800c74dae042624b6e1a4fd619c86f9601"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase150/parser-reference-native01-guard/root-00/receipt.json",
+        "bytes": 2551,
+        "sha256": "58885d57acb91d0ffd8173ae20bf9a65cebe2e228270ba820e44b0207e444757"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase150/parser-reference-native01-guard/root-00/files.tar.gz",
+        "bytes": 8111548,
+        "sha256": "e5511d2fdee27d16f2a475e3fac9fa1d176391a0c1f22c3fa4499aee0d7541b9"
+      },
+      "allArchiveMembersAuthenticated": 13,
+      "selectedCurrentBytesAndMetadataVerified": true,
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase150/parser-reference-native01/program.ssa",
+          "bytes": 28241468,
+          "sha256": "75b26e47d35d203a7887e50f1fedaa25892860083019b691f42df2b5c2ba52f3",
+          "archiveMember": "program.ssa",
+          "allocatedBytes": 28246016,
+          "mode": 420,
+          "links": 1,
+          "device": 2306,
+          "inode": 79564703
+        },
+        {
+          "file": "selfhost/build/phase150/parser-reference-native01/program.s",
+          "bytes": 19023114,
+          "sha256": "7b26fae1cd330b7c32389b8b7847d6466e01c8b1686a9eba6615168beda21575",
+          "archiveMember": "program.s",
+          "allocatedBytes": 19025920,
+          "mode": 420,
+          "links": 1,
+          "device": 2306,
+          "inode": 79564702
+        },
+        {
+          "file": "selfhost/build/phase150/parser-reference-native01/program.o",
+          "bytes": 5678448,
+          "sha256": "87005a7b3820dcbd897799b17098bb91804729598110a0e85d5e295ed2e76293",
+          "archiveMember": "program.o",
+          "allocatedBytes": 5681152,
+          "mode": 420,
+          "links": 1,
+          "device": 2306,
+          "inode": 79564712
+        }
+      ],
+      "allocatedBytes": 52953088,
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase163/retention-proposal.json",
+        "--receipt",
+        "selfhost/build-retention/phase150/parser-reference-native01-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase163/reclaim-parser-reference-native01/verified"
+      ],
+      "verifyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py verify --policy experiments/phase163/retention-proposal.json --receipt selfhost/build-retention/phase150/parser-reference-native01-guard/root-00/receipt.json --out selfhost/build-retention/phase163/reclaim-parser-reference-native01/verified",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase163/reclaim-parser-reference-native01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase163/reclaim-parser-reference-native01/applied"
+      ],
+      "applyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py apply --plan selfhost/build-retention/phase163/reclaim-parser-reference-native01/verified/plan.json --out selfhost/build-retention/phase163/reclaim-parser-reference-native01/applied",
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase163/reclaim-parser-reference-native01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase163/reclaim-parser-reference-native01/restored"
+      ]
+    },
+    {
+      "root": "selfhost/build/phase150/parser-reference-native02",
+      "reason": "Obsolete component machine-build intermediates; retained executable/source do not read these outputs.",
+      "lifecycle": {
+        "file": "selfhost/build/phase150/parser-reference-native02-guard/retention.json",
+        "bytes": 1246,
+        "sha256": "cdc0d88c1147431e93138a5070b96b11ea65de7aa1ccb2e41b50a88f7db4da7f"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase150/parser-reference-native02-guard/report.json",
+        "bytes": 2110,
+        "sha256": "b6e435d3d9be8b525c33cdcc7e85ac11d13614976f8c9f1cc7169e7786306f5e"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase150/parser-reference-native02-guard/root-00/receipt.json",
+        "bytes": 2551,
+        "sha256": "a9e939e12170e525159ce9894f6aef8f8df011882c3372f80c9d401321d660e4"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase150/parser-reference-native02-guard/root-00/files.tar.gz",
+        "bytes": 8111869,
+        "sha256": "d43d69b21b639628dab4bc334c4b7b0728c334c6aff216044e6db92b9361a4ac"
+      },
+      "allArchiveMembersAuthenticated": 13,
+      "selectedCurrentBytesAndMetadataVerified": true,
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase150/parser-reference-native02/program.ssa",
+          "bytes": 28241468,
+          "sha256": "75b26e47d35d203a7887e50f1fedaa25892860083019b691f42df2b5c2ba52f3",
+          "archiveMember": "program.ssa",
+          "allocatedBytes": 28246016,
+          "mode": 420,
+          "links": 1,
+          "device": 2306,
+          "inode": 79565198
+        },
+        {
+          "file": "selfhost/build/phase150/parser-reference-native02/program.s",
+          "bytes": 19023114,
+          "sha256": "7b26fae1cd330b7c32389b8b7847d6466e01c8b1686a9eba6615168beda21575",
+          "archiveMember": "program.s",
+          "allocatedBytes": 19030016,
+          "mode": 420,
+          "links": 1,
+          "device": 2306,
+          "inode": 79565197
+        },
+        {
+          "file": "selfhost/build/phase150/parser-reference-native02/program.o",
+          "bytes": 5678448,
+          "sha256": "87005a7b3820dcbd897799b17098bb91804729598110a0e85d5e295ed2e76293",
+          "archiveMember": "program.o",
+          "allocatedBytes": 5681152,
+          "mode": 420,
+          "links": 1,
+          "device": 2306,
+          "inode": 79565201
+        }
+      ],
+      "allocatedBytes": 52957184,
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase163/retention-proposal.json",
+        "--receipt",
+        "selfhost/build-retention/phase150/parser-reference-native02-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase163/reclaim-parser-reference-native02/verified"
+      ],
+      "verifyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py verify --policy experiments/phase163/retention-proposal.json --receipt selfhost/build-retention/phase150/parser-reference-native02-guard/root-00/receipt.json --out selfhost/build-retention/phase163/reclaim-parser-reference-native02/verified",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase163/reclaim-parser-reference-native02/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase163/reclaim-parser-reference-native02/applied"
+      ],
+      "applyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py apply --plan selfhost/build-retention/phase163/reclaim-parser-reference-native02/verified/plan.json --out selfhost/build-retention/phase163/reclaim-parser-reference-native02/applied",
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase163/reclaim-parser-reference-native02/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase163/reclaim-parser-reference-native02/restored"
+      ]
+    },
+    {
+      "root": "selfhost/build/phase150/parser-candidate-native01",
+      "reason": "Obsolete component machine-build intermediates; retained executable/source do not read these outputs.",
+      "lifecycle": {
+        "file": "selfhost/build/phase150/parser-candidate-native01-guard/retention.json",
+        "bytes": 1245,
+        "sha256": "9d9e150522de0e0db76f7475c8b2c003b1c623b7cda0e203b5205cbea6b39fe8"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase150/parser-candidate-native01-guard/report.json",
+        "bytes": 2110,
+        "sha256": "dbf33cfe6cc84ed2f40d8610895a49a8dbcc2e1481bd8ad2fdafda232a91aa43"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase150/parser-candidate-native01-guard/root-00/receipt.json",
+        "bytes": 2551,
+        "sha256": "586c2a9ca1053b77a94d2bdae74bb4ae357eb01a951ece6be6b0fcb52fcd1920"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase150/parser-candidate-native01-guard/root-00/files.tar.gz",
+        "bytes": 8151753,
+        "sha256": "f78f753f647fc684a8fba02a424b83b7fed95563e5b33e016b64a80d79a13ff8"
+      },
+      "allArchiveMembersAuthenticated": 13,
+      "selectedCurrentBytesAndMetadataVerified": true,
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase150/parser-candidate-native01/program.ssa",
+          "bytes": 28436000,
+          "sha256": "b38bd77dcc96f42cab72a3947a5529432b65294c6350fc32f6a1e17e66f6206b",
+          "archiveMember": "program.ssa",
+          "allocatedBytes": 28442624,
+          "mode": 420,
+          "links": 1,
+          "device": 2306,
+          "inode": 79564729
+        },
+        {
+          "file": "selfhost/build/phase150/parser-candidate-native01/program.s",
+          "bytes": 19270444,
+          "sha256": "d3331308cc19d7ab43b7cbf04d448e964172c54ff580ae450003cb4a13007f69",
+          "archiveMember": "program.s",
+          "allocatedBytes": 19271680,
+          "mode": 420,
+          "links": 1,
+          "device": 2306,
+          "inode": 79564728
+        },
+        {
+          "file": "selfhost/build/phase150/parser-candidate-native01/program.o",
+          "bytes": 5745792,
+          "sha256": "74face9f7edc5e5401f016f8685673047782998c656deab26eff19b1ecdf19ad",
+          "archiveMember": "program.o",
+          "allocatedBytes": 5746688,
+          "mode": 420,
+          "links": 1,
+          "device": 2306,
+          "inode": 79564732
+        }
+      ],
+      "allocatedBytes": 53460992,
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase163/retention-proposal.json",
+        "--receipt",
+        "selfhost/build-retention/phase150/parser-candidate-native01-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase163/reclaim-parser-candidate-native01/verified"
+      ],
+      "verifyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py verify --policy experiments/phase163/retention-proposal.json --receipt selfhost/build-retention/phase150/parser-candidate-native01-guard/root-00/receipt.json --out selfhost/build-retention/phase163/reclaim-parser-candidate-native01/verified",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase163/reclaim-parser-candidate-native01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase163/reclaim-parser-candidate-native01/applied"
+      ],
+      "applyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py apply --plan selfhost/build-retention/phase163/reclaim-parser-candidate-native01/verified/plan.json --out selfhost/build-retention/phase163/reclaim-parser-candidate-native01/applied",
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase163/reclaim-parser-candidate-native01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase163/reclaim-parser-candidate-native01/restored"
+      ]
+    },
+    {
+      "root": "selfhost/build/phase150/parser-candidate-native02",
+      "reason": "Obsolete component machine-build intermediates; retained executable/source do not read these outputs.",
+      "lifecycle": {
+        "file": "selfhost/build/phase150/parser-candidate-native02-guard/retention.json",
+        "bytes": 1245,
+        "sha256": "b487db80a00c3b994cc9f6903c7027c192f6b75ff90bd3d3197dab9a12893055"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase150/parser-candidate-native02-guard/report.json",
+        "bytes": 2109,
+        "sha256": "8f4bc418b6c997ea7ec2391c0c31cc4b113d250043f574e8b9e6e40701ec5586"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase150/parser-candidate-native02-guard/root-00/receipt.json",
+        "bytes": 2551,
+        "sha256": "b84b6d6472b331706de67acd3d49f7748c255603e50e3ccba336052d48252239"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase150/parser-candidate-native02-guard/root-00/files.tar.gz",
+        "bytes": 8151830,
+        "sha256": "ce0fe23e5adf628eb880241ddb1a42e4dbd06c8622aad73003e0d89bf126246c"
+      },
+      "allArchiveMembersAuthenticated": 13,
+      "selectedCurrentBytesAndMetadataVerified": true,
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase150/parser-candidate-native02/program.ssa",
+          "bytes": 28436000,
+          "sha256": "b38bd77dcc96f42cab72a3947a5529432b65294c6350fc32f6a1e17e66f6206b",
+          "archiveMember": "program.ssa",
+          "allocatedBytes": 28442624,
+          "mode": 420,
+          "links": 1,
+          "device": 2306,
+          "inode": 79565178
+        },
+        {
+          "file": "selfhost/build/phase150/parser-candidate-native02/program.s",
+          "bytes": 19270444,
+          "sha256": "d3331308cc19d7ab43b7cbf04d448e964172c54ff580ae450003cb4a13007f69",
+          "archiveMember": "program.s",
+          "allocatedBytes": 19275776,
+          "mode": 420,
+          "links": 1,
+          "device": 2306,
+          "inode": 79565177
+        },
+        {
+          "file": "selfhost/build/phase150/parser-candidate-native02/program.o",
+          "bytes": 5745792,
+          "sha256": "74face9f7edc5e5401f016f8685673047782998c656deab26eff19b1ecdf19ad",
+          "archiveMember": "program.o",
+          "allocatedBytes": 5746688,
+          "mode": 420,
+          "links": 1,
+          "device": 2306,
+          "inode": 79565181
+        }
+      ],
+      "allocatedBytes": 53465088,
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase163/retention-proposal.json",
+        "--receipt",
+        "selfhost/build-retention/phase150/parser-candidate-native02-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase163/reclaim-parser-candidate-native02/verified"
+      ],
+      "verifyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py verify --policy experiments/phase163/retention-proposal.json --receipt selfhost/build-retention/phase150/parser-candidate-native02-guard/root-00/receipt.json --out selfhost/build-retention/phase163/reclaim-parser-candidate-native02/verified",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase163/reclaim-parser-candidate-native02/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase163/reclaim-parser-candidate-native02/applied"
+      ],
+      "applyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py apply --plan selfhost/build-retention/phase163/reclaim-parser-candidate-native02/verified/plan.json --out selfhost/build-retention/phase163/reclaim-parser-candidate-native02/applied",
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase163/reclaim-parser-candidate-native02/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase163/reclaim-parser-candidate-native02/restored"
+      ]
+    },
+    {
+      "root": "selfhost/build/phase150/parser-scalar-native01",
+      "reason": "Obsolete component machine-build intermediates; retained executable/source do not read these outputs.",
+      "lifecycle": {
+        "file": "selfhost/build/phase150/parser-scalar-native01-guard/retention.json",
+        "bytes": 1235,
+        "sha256": "2fbcd5a1cbb1eb0af86eb8bc8c9a76eb23ac598286ecb728e6ddf7787b50ce2f"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase150/parser-scalar-native01-guard/report.json",
+        "bytes": 2094,
+        "sha256": "f5868b32d931512cfbb797718b935d698d01552bf085e8b7366b7fd2a5996d83"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase150/parser-scalar-native01-guard/root-00/receipt.json",
+        "bytes": 2546,
+        "sha256": "c8524af90b7be7ac50eaff683a87ac12d6a51b6b85cbd37101b6d8160fc77829"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase150/parser-scalar-native01-guard/root-00/files.tar.gz",
+        "bytes": 8166797,
+        "sha256": "f3a02ee3ef220e587fcc52746209b1703bd8abe4c2a8b5f8e17b1be3704c6a8a"
+      },
+      "allArchiveMembersAuthenticated": 13,
+      "selectedCurrentBytesAndMetadataVerified": true,
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase150/parser-scalar-native01/program.ssa",
+          "bytes": 28379597,
+          "sha256": "a20d9a5e1eb8d8d0ff20eac20a086f8ea7900d93e06d81d10b0888f7d766fa55",
+          "archiveMember": "program.ssa",
+          "allocatedBytes": 28385280,
+          "mode": 420,
+          "links": 1,
+          "device": 2306,
+          "inode": 79565409
+        },
+        {
+          "file": "selfhost/build/phase150/parser-scalar-native01/program.s",
+          "bytes": 19228505,
+          "sha256": "bfc9bf5f1d41ee9a7705e0324dce4c695544e2e487d1df19f9d6248fffbd966d",
+          "archiveMember": "program.s",
+          "allocatedBytes": 19234816,
+          "mode": 420,
+          "links": 1,
+          "device": 2306,
+          "inode": 79565408
+        },
+        {
+          "file": "selfhost/build/phase150/parser-scalar-native01/program.o",
+          "bytes": 5739328,
+          "sha256": "ac10e78b521af84eb06c7d200c8be4f1bd68a35bc37c275493fd7b29a13ea2fc",
+          "archiveMember": "program.o",
+          "allocatedBytes": 5742592,
+          "mode": 420,
+          "links": 1,
+          "device": 2306,
+          "inode": 79565412
+        }
+      ],
+      "allocatedBytes": 53362688,
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase163/retention-proposal.json",
+        "--receipt",
+        "selfhost/build-retention/phase150/parser-scalar-native01-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase163/reclaim-parser-scalar-native01/verified"
+      ],
+      "verifyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py verify --policy experiments/phase163/retention-proposal.json --receipt selfhost/build-retention/phase150/parser-scalar-native01-guard/root-00/receipt.json --out selfhost/build-retention/phase163/reclaim-parser-scalar-native01/verified",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase163/reclaim-parser-scalar-native01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase163/reclaim-parser-scalar-native01/applied"
+      ],
+      "applyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py apply --plan selfhost/build-retention/phase163/reclaim-parser-scalar-native01/verified/plan.json --out selfhost/build-retention/phase163/reclaim-parser-scalar-native01/applied",
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase163/reclaim-parser-scalar-native01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase163/reclaim-parser-scalar-native01/restored"
+      ]
+    },
+    {
+      "root": "selfhost/build/phase150/parser-acquisition-profile01",
+      "reason": "Duplicate emitted-QBE capture outputs; retain all actual profile data and the original diagnostic image/object dependencies.",
+      "lifecycle": {
+        "file": "selfhost/build/phase150/parser-acquisition-profile01-guard/retention.json",
+        "bytes": 1259,
+        "sha256": "9a0521f342546659cbe92fd2e0c0bd7a4f40ba26d0a1d62fa445ebca1be1e130"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase150/parser-acquisition-profile01-guard/report.json",
+        "bytes": 2125,
+        "sha256": "1a15fc1b754440cb36c1ce51ba555f11d1d13db6c33dbd45ea473a4782963e9f"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase150/parser-acquisition-profile01-guard/root-00/receipt.json",
+        "bytes": 5739,
+        "sha256": "af52fbb75fc1610d6cc07b1b0ddc0e2ec498bbc35ef4f231a99c37627c0acf70"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase150/parser-acquisition-profile01-guard/root-00/files.tar.gz",
+        "bytes": 7895847,
+        "sha256": "9ea8b97f8d7fe809c0d13f30983764fbc4393f97c297ba15bd3daaf8dfb44e28"
+      },
+      "allArchiveMembersAuthenticated": 25,
+      "selectedCurrentBytesAndMetadataVerified": true,
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase150/parser-acquisition-profile01/capture/000-sample-parser-reference-source-phase147-same-object-diagnostic/stdout",
+          "bytes": 28241468,
+          "sha256": "75b26e47d35d203a7887e50f1fedaa25892860083019b691f42df2b5c2ba52f3",
+          "archiveMember": "capture/000-sample-parser-reference-source-phase147-same-object-diagnostic/stdout",
+          "allocatedBytes": 28246016,
+          "mode": 420,
+          "links": 1,
+          "device": 2306,
+          "inode": 79565245
+        },
+        {
+          "file": "selfhost/build/phase150/parser-acquisition-profile01/capture/001-sample-parser-candidate-source-phase147-same-object-diagnostic/stdout",
+          "bytes": 28436000,
+          "sha256": "b38bd77dcc96f42cab72a3947a5529432b65294c6350fc32f6a1e17e66f6206b",
+          "archiveMember": "capture/001-sample-parser-candidate-source-phase147-same-object-diagnostic/stdout",
+          "allocatedBytes": 28442624,
+          "mode": 420,
+          "links": 1,
+          "device": 2306,
+          "inode": 79565253
+        }
+      ],
+      "allocatedBytes": 56688640,
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase163/retention-proposal.json",
+        "--receipt",
+        "selfhost/build-retention/phase150/parser-acquisition-profile01-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase163/reclaim-parser-acquisition-profile01/verified"
+      ],
+      "verifyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py verify --policy experiments/phase163/retention-proposal.json --receipt selfhost/build-retention/phase150/parser-acquisition-profile01-guard/root-00/receipt.json --out selfhost/build-retention/phase163/reclaim-parser-acquisition-profile01/verified",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase163/reclaim-parser-acquisition-profile01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase163/reclaim-parser-acquisition-profile01/applied"
+      ],
+      "applyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py apply --plan selfhost/build-retention/phase163/reclaim-parser-acquisition-profile01/verified/plan.json --out selfhost/build-retention/phase163/reclaim-parser-acquisition-profile01/applied",
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase163/reclaim-parser-acquisition-profile01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase163/reclaim-parser-acquisition-profile01/restored"
+      ]
+    }
+  ],
+  "scope": "Only named generated intermediates in five completed Phase150 parser component builds and two emitted-QBE capture stdout files. All executable images, sources, reports, guard records, profiling samples/maps/objects, qualified/current raw oracles, C02 and current prerequisites remain hot. No whole-phase cleanup.",
+  "dependencyAudit": {
+    "selectedQualifiedParent": "implementation/phase152/qualification.json",
+    "findings": [
+      "Phase150 qualification says productionCompilerQualified=false; these are superseded component builds, not installed or qualified full compilers.",
+      "All five component executables are explicitly preserved. Only program.ssa, program.s and program.o are proposed.",
+      "The two profile stdout artifacts are emitted QBE products equal in size/hash to the corresponding old component SSA. All profile sample/analysis/context files and all Phase147/151/153 profiling objects/assets remain protected.",
+      "Searched bounded current experiment methods/specs (Phase151 through Phase162), build methods and asset manifests for references to the selected Phase150 build paths; no hits. No Phase163 source/manifest had been selected at review time.",
+      "Any future explicit rerun of those old builds/profiles must first restore a needed pruned intermediate. Current image execution does not read its program.o/program.s/program.ssa companions."
+    ],
+    "protectedByScope": [
+      "Phase152 N2/N3 executables, sources and raw oracle SSA",
+      "Phase156 request ELF/source and all Phase156 artifacts",
+      "Phase160 C02 and all Phase160 artifacts",
+      "Phase147, Phase151, Phase153 assets/profiling objects and all Phase154 dependencies",
+      "Installed selectors, runtime/Base/carriers, shared execution lock and all other roots outside the six explicit Phase150 roots"
+    ]
+  },
+  "archiveCaveat": "The compact implementation/phase150 study capsule has omittedLargeProducts; do not use it alone as recovery authority. This proposal authenticates the separate existing per-root closure files.tar.gz archives, which contain every selected byte. Keep those archives and receipts permanently; same-filesystem recovery is not an independent backup.",
+  "preconditions": [
+    "Root reviews exact selectedFiles below; no deletion is authorized by this audit alone.",
+    "After active targets finish, run each fresh archive-v02 verify command using this proposal as policy; review exact selected file list/count before applying.",
+    "All outputs must be fresh. Never overwrite a plan or reuse an interrupted apply directory.",
+    "Existing archive-v02 takes the unchanged shared Phase32 lock, reauthenticates archives/policy/method and current metadata, and journals file-only deletion.",
+    "Do not extend root scope or count shared raw-oracle aliases as reclaimable. Measure actual free space after any apply and retain the normal 5 GiB guard reserve."
+  ],
+  "diskSnapshot": {
+    "freeBytes": 5391503360,
+    "reserveBytes": 5368709120
+  },
+  "totals": {
+    "selectedFiles": 17,
+    "logicalBytes": 322815430,
+    "allocatedBytes": 322887680,
+    "archiveMembersAuthenticated": 90,
+    "archives": 6,
+    "allocatedMiB": 307.9296875,
+    "expectedFreeAfterBytesAtSnapshot": 5714391040
+  },
+  "verification": "Read-only audit rehashed all six compressed archives, all archive members and every selected current file; authenticated guard closure-to-archive receipt chain and checked current exclusive regular-file metadata. No archive-v02 command, deletion, mutation or target was executed."
+}

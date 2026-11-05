@@ -1,3 +1,33 @@
+# Phase163 — direct-first QBE and compact-term falsification, 2026-11-05
+
+[Report](../implementation/phase163/README.md) ·
+[Metrics](../implementation/phase163/metrics.json) ·
+[Design](../design/phase163/README.md) ·
+[Hypothesis](phase163/P163-001-direct-first.md) ·
+[Reproduction](../implementation/phase163/reproduce.md).
+
+Bend direct-first route constructs verified native workers without materializing
+their generic continuation program. One real ABI entry adapter and source-derived
+runtime metadata produce executable QBE. Native optimized requests: reversal
+0.991→0.767s, lookup 1.563→1.020s (two reversed samples). Generated runtime
+0.993×/1.070× qualified reference (four reversed pairs). Existing inlining and
+cold-constructor facts recover initial direct regressions of 1.57×/1.16×.
+
+Matched-policy hosted control constructs/verifies genuine generic IR, then emits
+the same direct output: exact final QBE, 149/310 generic segments avoided,
+29.8%/16.4% lower timed route; limited samples and visible variance. Independent
+helper/structural controls pass; eight preselected unrelated pure computations
+yield two exact outputs and six conservative refusals. No broad parity claim.
+
+Compact App changes 3 objects/15 requested words to 2/8; sixteen controls and
+complete frontend observations pass. Native 182KB checker parse+check is 4.7%
+slower, so stop before a full campaign. No production source/selector change.
+Optimized restricted native acquisition 146s is not a full self-build score.
+Retain unsafe proof verdict and resource-limit failures; recovered captured QBE
+instead of repeating one failed source build. All 37 guarded jobs are sealed;
+one controlled execution lane. Next: mixed direct/generic verification and direct
+imports, not an unsupported whole-compiler promotion. Phase152 remains qualified.
+
 # Phase162 — identical frontend input and operation census, 2026-11-05
 
 [Report](../implementation/phase162/README.md) ·

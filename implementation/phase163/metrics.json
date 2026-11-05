@@ -1,0 +1,457 @@
+{
+  "complete": true,
+  "productionChanged": false,
+  "qualifiedSourceSha256": "027e15041035522ed7e40ef971eff75f24a09ef6a00e3f8fe335839f94bcb8a8",
+  "qualifiedColdSecondsUnchanged": 249.222,
+  "optimizedNativeRequests": [
+    {
+      "name": "reverse-runtime-10000-source01-mode3",
+      "seconds": {
+        "baseline": 0.9908619914203882,
+        "direct": 0.7671612550038844
+      },
+      "ratio": 0.7742362323376321
+    },
+    {
+      "name": "lookup-runtime-10000-source01-mode3",
+      "seconds": {
+        "baseline": 1.5630270328838378,
+        "direct": 1.0200485854875296
+      },
+      "ratio": 0.6526109683499878
+    }
+  ],
+  "runtime": [
+    {
+      "name": "reverse-runtime-10000-source01-mode0",
+      "seconds": {
+        "baseline": 0.05747067998163402,
+        "direct": 0.09022473287768662
+      },
+      "ratio": 1.5699263155842222
+    },
+    {
+      "name": "reverse-runtime-10000-source01-mode1",
+      "seconds": {
+        "baseline": 0.057070669485256076,
+        "direct": 0.08192533394321799
+      },
+      "ratio": 1.4355067967860968
+    },
+    {
+      "name": "reverse-runtime-10000-source01-mode2",
+      "seconds": {
+        "baseline": 0.05726198898628354,
+        "direct": 0.06319504207931459
+      },
+      "ratio": 1.103612417208425
+    },
+    {
+      "name": "reverse-runtime-10000-source01-mode3",
+      "seconds": {
+        "baseline": 0.057289273012429476,
+        "direct": 0.05690167052671313
+      },
+      "ratio": 0.9932342921225017
+    },
+    {
+      "name": "lookup-runtime-10000-source01-mode3",
+      "seconds": {
+        "baseline": 0.2834897739812732,
+        "direct": 0.3032771998550743
+      },
+      "ratio": 1.0697994343708082
+    },
+    {
+      "name": "lookup-runtime-10000-source01-mode2",
+      "seconds": {
+        "baseline": 0.2839018243830651,
+        "direct": 0.31817449908703566
+      },
+      "ratio": 1.1207201636637842
+    },
+    {
+      "name": "lookup-runtime-10000-source01-mode1",
+      "seconds": {
+        "baseline": 0.2842272804118693,
+        "direct": 0.3146759120281786
+      },
+      "ratio": 1.1071277590672741
+    },
+    {
+      "name": "lookup-runtime-10000-source01-mode0",
+      "seconds": {
+        "baseline": 0.2829902246594429,
+        "direct": 0.3275170801207423
+      },
+      "ratio": 1.1573441468336374
+    }
+  ],
+  "matchedPolicy": [
+    {
+      "name": "reverse-runtime-10000-source01",
+      "rawSummary": "genericSegments=149;directFunctions=13;rawCandidates=13;constructors=163;staticWords=36",
+      "seconds": {
+        "generic": 2.447031862,
+        "direct": 1.717579967999999
+      },
+      "ratio": 0.701903393524346,
+      "byteIdentical": true
+    },
+    {
+      "name": "lookup-runtime-10000-source01",
+      "rawSummary": "genericSegments=310;directFunctions=34;rawCandidates=35;constructors=163;staticWords=151",
+      "seconds": {
+        "generic": 3.1162564275000006,
+        "direct": 2.6063107165000003
+      },
+      "ratio": 0.8363595156997072,
+      "byteIdentical": true
+    }
+  ],
+  "compactFrontend": {
+    "baseline": {
+      "read": 0.0035,
+      "base_prepare": 1.3995,
+      "parse_load": 2.112,
+      "check": 1.5805,
+      "observe_write": 11.087
+    },
+    "compact": {
+      "read": 0.004,
+      "base_prepare": 1.389,
+      "parse_load": 2.2195,
+      "check": 1.6455,
+      "observe_write": 11.0805
+    }
+  },
+  "transfer": [
+    {
+      "id": "local-fold",
+      "status": "output-passed",
+      "diagnostic": null
+    },
+    {
+      "id": "editdist",
+      "status": "refused",
+      "diagnostic": "direct library: root has no complete admitted boxed entry main\n"
+    },
+    {
+      "id": "lexer",
+      "status": "refused",
+      "diagnostic": "direct library: root has no complete admitted boxed entry main\n"
+    },
+    {
+      "id": "tree-bitonic",
+      "status": "refused",
+      "diagnostic": "direct library: root has no complete admitted boxed entry main\n"
+    },
+    {
+      "id": "mandelbrot",
+      "status": "refused",
+      "diagnostic": "direct library: root has no complete admitted boxed entry main\n"
+    },
+    {
+      "id": "coverage-closures-64",
+      "status": "output-passed",
+      "diagnostic": null
+    },
+    {
+      "id": "coverage-unicode-text-16",
+      "status": "refused",
+      "diagnostic": "direct library: root has no complete admitted boxed entry main\n"
+    },
+    {
+      "id": "coverage-record-aggregation-64",
+      "status": "refused",
+      "diagnostic": "direct library: root has no complete admitted boxed entry main\n"
+    }
+  ],
+  "directInitial": [
+    {
+      "name": "reverse-source01",
+      "baselineSeconds": 1.7728336179999988,
+      "directSeconds": 0.6326135570000005,
+      "baselineBytes": 147750,
+      "directBytes": 56756
+    },
+    {
+      "name": "lookup-source01",
+      "baselineSeconds": 4.4652046389999995,
+      "directSeconds": 1.1178235319999985,
+      "baselineBytes": 575998,
+      "directBytes": 133990
+    }
+  ],
+  "modeCensus": [
+    {
+      "name": "reverse-runtime-10000-source01-mode0",
+      "seconds": 1.7317657440000003,
+      "census": {
+        "scope": "Static emitted syntax only; not executed call/allocation counts",
+        "bytes": 141490,
+        "functions": 15,
+        "segments": 1,
+        "constructors": 163,
+        "coldConstructors": 0,
+        "hotConstructors": 163,
+        "capabilities": 1,
+        "staticWords": 36,
+        "runtimeCallSites": {
+          "p111_rt_keep": 0,
+          "p111_rt_sink": 0,
+          "p111_rt_ctor": 3,
+          "p111_rt_take": 4,
+          "p118_rt_borrow": 0
+        }
+      }
+    },
+    {
+      "name": "reverse-runtime-10000-source01-mode1",
+      "seconds": 2.031439749000001,
+      "census": {
+        "scope": "Static emitted syntax only; not executed call/allocation counts",
+        "bytes": 210901,
+        "functions": 15,
+        "segments": 1,
+        "constructors": 163,
+        "coldConstructors": 0,
+        "hotConstructors": 163,
+        "capabilities": 1,
+        "staticWords": 36,
+        "runtimeCallSites": {
+          "p111_rt_keep": 0,
+          "p111_rt_sink": 0,
+          "p111_rt_ctor": 27,
+          "p111_rt_take": 4,
+          "p118_rt_borrow": 0
+        }
+      }
+    },
+    {
+      "name": "reverse-runtime-10000-source01-mode2",
+      "seconds": 1.268240550999999,
+      "census": {
+        "scope": "Static emitted syntax only; not executed call/allocation counts",
+        "bytes": 141490,
+        "functions": 15,
+        "segments": 1,
+        "constructors": 163,
+        "coldConstructors": 31,
+        "hotConstructors": 132,
+        "capabilities": 9,
+        "staticWords": 36,
+        "runtimeCallSites": {
+          "p111_rt_keep": 0,
+          "p111_rt_sink": 0,
+          "p111_rt_ctor": 3,
+          "p111_rt_take": 4,
+          "p118_rt_borrow": 0
+        }
+      }
+    },
+    {
+      "name": "reverse-runtime-10000-source01-mode3",
+      "seconds": 1.9787712029999984,
+      "census": {
+        "scope": "Static emitted syntax only; not executed call/allocation counts",
+        "bytes": 210901,
+        "functions": 15,
+        "segments": 1,
+        "constructors": 163,
+        "coldConstructors": 31,
+        "hotConstructors": 132,
+        "capabilities": 9,
+        "staticWords": 36,
+        "runtimeCallSites": {
+          "p111_rt_keep": 0,
+          "p111_rt_sink": 0,
+          "p111_rt_ctor": 27,
+          "p111_rt_take": 4,
+          "p118_rt_borrow": 0
+        }
+      }
+    },
+    {
+      "name": "lookup-runtime-10000-source01-mode3",
+      "seconds": 3.0770988389999983,
+      "census": {
+        "scope": "Static emitted syntax only; not executed call/allocation counts",
+        "bytes": 407522,
+        "functions": 36,
+        "segments": 1,
+        "constructors": 163,
+        "coldConstructors": 23,
+        "hotConstructors": 140,
+        "capabilities": 9,
+        "staticWords": 151,
+        "runtimeCallSites": {
+          "p111_rt_keep": 29,
+          "p111_rt_sink": 115,
+          "p111_rt_ctor": 64,
+          "p111_rt_take": 9,
+          "p118_rt_borrow": 0
+        }
+      }
+    },
+    {
+      "name": "lookup-runtime-10000-source01-mode2",
+      "seconds": 1.576733336000001,
+      "census": {
+        "scope": "Static emitted syntax only; not executed call/allocation counts",
+        "bytes": 218141,
+        "functions": 36,
+        "segments": 1,
+        "constructors": 163,
+        "coldConstructors": 23,
+        "hotConstructors": 140,
+        "capabilities": 9,
+        "staticWords": 151,
+        "runtimeCallSites": {
+          "p111_rt_keep": 16,
+          "p111_rt_sink": 103,
+          "p111_rt_ctor": 5,
+          "p111_rt_take": 9,
+          "p118_rt_borrow": 0
+        }
+      }
+    },
+    {
+      "name": "lookup-runtime-10000-source01-mode1",
+      "seconds": 2.1714184520000015,
+      "census": {
+        "scope": "Static emitted syntax only; not executed call/allocation counts",
+        "bytes": 407522,
+        "functions": 36,
+        "segments": 1,
+        "constructors": 163,
+        "coldConstructors": 0,
+        "hotConstructors": 163,
+        "capabilities": 1,
+        "staticWords": 151,
+        "runtimeCallSites": {
+          "p111_rt_keep": 29,
+          "p111_rt_sink": 115,
+          "p111_rt_ctor": 64,
+          "p111_rt_take": 9,
+          "p118_rt_borrow": 0
+        }
+      }
+    },
+    {
+      "name": "lookup-runtime-10000-source01-mode0",
+      "seconds": 1.1273616440000005,
+      "census": {
+        "scope": "Static emitted syntax only; not executed call/allocation counts",
+        "bytes": 218141,
+        "functions": 36,
+        "segments": 1,
+        "constructors": 163,
+        "coldConstructors": 0,
+        "hotConstructors": 163,
+        "capabilities": 1,
+        "staticWords": 151,
+        "runtimeCallSites": {
+          "p111_rt_keep": 16,
+          "p111_rt_sink": 103,
+          "p111_rt_ctor": 5,
+          "p111_rt_take": 9,
+          "p118_rt_borrow": 0
+        }
+      }
+    }
+  ],
+  "sourceComplexity": {
+    "productionLineChange": 0,
+    "experimentalBendLines": 1950
+  },
+  "limits": [
+    "Two real compiler computation families, not full self-compilation/upstream parity.",
+    "Source-to-QBE request timings exclude QBE/assembly/link; cache mode Base is included.",
+    "Same-policy ablation hosted, two samples per mode with visible variance.",
+    "Compact term native scope is the 182039-byte checker workload, not the full compiler.",
+    "Eight preselected transfer computations; no frozen runtime benchmark ratio; refusals are not passes."
+  ],
+  "evidence": {
+    "workload-controls01": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase163/workload-controls01/report.json",
+      "bytes": 3430,
+      "sha256": "cbb6bcc1a1380fcf41b7e6aee4b531327620c0ad216b45540afcc5a151bce36d"
+    },
+    "compact-controls-run03": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase163/compact-controls-run03/report.json",
+      "bytes": 1383,
+      "sha256": "9e8a5a672a472abc6bc18f7e3adb7b4f5ddcbd8f461bb8b852bacf23556f44cc"
+    },
+    "direct-pilot01": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase163/direct-pilot01/report.json",
+      "bytes": 4623,
+      "sha256": "cf8363b57ae41d18f18df2fbe71ee7555f9ec2e4c3bf0515dba8864b1b3a41a5"
+    },
+    "native-pilot01": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase163/native-pilot01/report.json",
+      "bytes": 9294,
+      "sha256": "8dab45dacee52f914f100ee9d6c4479921230a2eb5de235815198c6dc14f8f74"
+    },
+    "direct-runtime-emission01": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase163/direct-runtime-emission01/report.json",
+      "bytes": 7395,
+      "sha256": "722c3494a77fb99107da94b8df3b278ed6461e3aad6768d7ae8a60568ad7e8dc"
+    },
+    "native-runtime01": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase163/native-runtime01/report.json",
+      "bytes": 18640,
+      "sha256": "9e29c0e9b3a87d65967f27914a55d235f7958389bb2cea5e180df3e35c7265ed"
+    },
+    "frontend-pilot01": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase163/frontend-pilot01/report.json",
+      "bytes": 8552,
+      "sha256": "7da3d6d7ef5ffe72d98d0d0097ca8a697c2ad506219d6bf7a635115d1cae4e55"
+    },
+    "frontend-native-pilot01": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase163/frontend-native-pilot01/report.json",
+      "bytes": 11077,
+      "sha256": "536d33e036101b41990330e38f8a58a784990880c6d68af57b0050aca3132f61"
+    },
+    "native-requests01": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase163/native-requests01/report.json",
+      "bytes": 15804,
+      "sha256": "ae75d3ca5304f306b423434ee5c6bc6b229f47dd6a687ca7da326c1c1e2b2019"
+    },
+    "direct-modes01": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase163/direct-modes01/report.json",
+      "bytes": 23925,
+      "sha256": "80f017d8e3b55007a6e752575cc8c10389438482e304effc49885a96ea54e3e8"
+    },
+    "native-modes01": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase163/native-modes01/report.json",
+      "bytes": 36755,
+      "sha256": "f4be1b178a69b91cd194e43e81b69e76677b151e5d160b716abebb2d64e59544"
+    },
+    "runtime-pairs01": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase163/runtime-pairs01/report.json",
+      "bytes": 97955,
+      "sha256": "05a7e8b136c4d8356cdcb74365c4c0b45b8e856f8b1760b9ec677ea3d24e9ad9"
+    },
+    "native-transfer01": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase163/native-transfer01/report.json",
+      "bytes": 28747,
+      "sha256": "584cbe442c33a22a70b05992e53f93a23a5c99bc6cb0cb9c521208d64cc62a09"
+    },
+    "native-optimized-requests01": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase163/native-optimized-requests01/report.json",
+      "bytes": 16723,
+      "sha256": "489d243d63e9035967145e5d12c005dded8a444c6d994b502238529d0e01ac8a"
+    },
+    "generic-matched01": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase163/generic-matched01/report.json",
+      "bytes": 4793,
+      "sha256": "3dfe1424462496abec2712609bfefc13de85161299354b1ac6f5d53d03652249"
+    },
+    "direct-native-optimized01": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase163/direct-native-optimized01/report.json",
+      "bytes": 18311,
+      "sha256": "44f560763ffcaf0786176d11b899d4d449fe24bf8f2ed4c2feab2c212184e9a7"
+    }
+  }
+}

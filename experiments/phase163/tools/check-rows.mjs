@@ -1,0 +1,10 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {pathToFileURL} from 'node:url';
+import {pin,verify,items} from '../../phase147/tools/support.mjs';
+const [receipt,out,name,count]=process.argv.slice(2),r=JSON.parse(fs.readFileSync(receipt));assert(r.complete&&r.checked);verify(r.api);
+fs.mkdirSync(out,{recursive:false});const api=(await import(pathToFileURL(r.api.file))).default;
+const rows=items(api[name]());const complete=rows.length===Number(count)&&rows.every(x=>x.endsWith(':pass'));
+fs.writeFileSync(path.join(out,'report.json'),JSON.stringify({complete,inputs:[pin(receipt),r.api,pin(import.meta.filename)],rows},null,2)+'\n');
+console.log(JSON.stringify({complete,rows}));assert(complete);

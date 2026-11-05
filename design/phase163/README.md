@@ -1,6 +1,7 @@
 # Phase163 — direct-first QBE and compact semantic computations
 
 Start: `a8b598980ef7016133484eb28563b63bd5e30f09`, 2026-11-05.
+Completed experiment: [implementation and measured limits](../../implementation/phase163/README.md).
 The user authorizes an extremely ambitious attempt to reduce native QBE
 self-compilation cost, informed by bendc rather than restricted to local patches.
 The architectural research target is roughly50s versus the qualified249s full

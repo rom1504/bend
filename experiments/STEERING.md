@@ -1,4 +1,24 @@
-# Current frontier — Phase162 frontend work/representation; Phase156 integration pending
+# Current frontier — Phase163 direct-first prototype; Phase152 remains qualified
+
+[Latest architectural experiment](../implementation/phase163/README.md) ·
+[Measured limits](../implementation/phase163/metrics.json) ·
+[Hybrid follow-up](phase163/hybrid-direct-first.md).
+
+Phase163 builds verified direct QBE workers without first constructing their
+generic continuation bodies. Optimized native source→QBE requests on actual
+compiler reversal/lookup workloads take 22.6%/34.7% less time; generated runtime
+is 0.993×/1.070× the qualified reference. A same-policy hosted ablation emits
+byte-identical QBE with 29.8%/16.4% less lowering time, two samples with visible
+variance. These are bounded workloads, not full compiler or upstream ratios.
+
+Only two of eight unrelated pure transfer computations are admitted; six refuse.
+The restricted native CLI cannot compile its own IO entry. Compact-App controls
+pass but native parse+check is 4.7% slower on the 182KB checker workload, so that
+overlay is not promoted. The next architectural gate is mixed generic/direct
+adapters with an independently checked direct-import registry. Preserve genuine
+fallbacks and cold/ownership facts; do not claim all continuation segments can
+disappear. No production source/selector change, new qualification, 5× full-build
+gain or recursive acceleration. Phase156 publication integration remains pending.
 
 [Latest investigation](../implementation/phase162/README.md) ·
 [Source/work audit](../implementation/phase161/README.md) ·

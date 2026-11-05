@@ -1,0 +1,360 @@
+{
+  "kind": "phase163-reviewed-retention-proposal",
+  "version": 2,
+  "status": "proposal-only-no-files-deleted",
+  "targetsRun": false,
+  "supersedes": null,
+  "complements": "experiments/phase163/retention-proposal.json",
+  "date": "2026-11-05",
+  "method": {
+    "file": "selfhost/tools/build-retention/archive-v02.py",
+    "bytes": 18412,
+    "sha256": "3238e0774c6c21c3de6c07bcbd71e469cbb23aaba01f99da0cb1e9f51990ad9f"
+  },
+  "allowedRoots": [
+    "selfhost/build/phase149/native01",
+    "selfhost/build/phase149/full-products01/p0",
+    "selfhost/build/phase149/full-products01/p11"
+  ],
+  "archiveRoots": {
+    "selfhost/build-retention/phase149/native01-guard/root-00/receipt.json": "selfhost/build/phase149/native01",
+    "selfhost/build-retention/phase149/full-products01/p0-guard/root-00/receipt.json": "selfhost/build/phase149/full-products01/p0",
+    "selfhost/build-retention/phase149/full-products01/p11-guard/root-00/receipt.json": "selfhost/build/phase149/full-products01/p11"
+  },
+  "keepPrefixes": [
+    "selfhost/build/phase32/execution.lock",
+    "selfhost/build/phase147",
+    "selfhost/build/phase148",
+    "selfhost/build/phase150",
+    "selfhost/build/phase151",
+    "selfhost/build/phase152",
+    "selfhost/build/phase153",
+    "selfhost/build/phase154",
+    "selfhost/build/phase156",
+    "selfhost/build/phase160",
+    "selfhost/build/phase161",
+    "selfhost/build/phase162",
+    "selfhost/build/phase163",
+    "selfhost/.assets",
+    "selfhost/.bootstrap",
+    "selfhost/src",
+    "selfhost/tests",
+    "selfhost/tools",
+    "selfhost/build-retention",
+    "implementation",
+    "selfhost/build/phase149/native01/assemble.stderr",
+    "selfhost/build/phase149/native01/assemble.stdout",
+    "selfhost/build/phase149/native01/compiler.stderr",
+    "selfhost/build/phase149/native01/link.stderr",
+    "selfhost/build/phase149/native01/link.stdout",
+    "selfhost/build/phase149/native01/program",
+    "selfhost/build/phase149/native01/program.ssa",
+    "selfhost/build/phase149/native01/qbe.stderr",
+    "selfhost/build/phase149/native01/qbe.stdout",
+    "selfhost/build/phase149/native01/report.json",
+    "selfhost/build/phase149/native01/request.json",
+    "selfhost/build/phase149/full-products01/p0/assemble.stderr",
+    "selfhost/build/phase149/full-products01/p0/assemble.stdout",
+    "selfhost/build/phase149/full-products01/p0/link.stderr",
+    "selfhost/build/phase149/full-products01/p0/link.stdout",
+    "selfhost/build/phase149/full-products01/p0/program",
+    "selfhost/build/phase149/full-products01/p0/qbe.stderr",
+    "selfhost/build/phase149/full-products01/p0/qbe.stdout",
+    "selfhost/build/phase149/full-products01/p0/report.json",
+    "selfhost/build/phase149/full-products01/p11/assemble.stderr",
+    "selfhost/build/phase149/full-products01/p11/assemble.stdout",
+    "selfhost/build/phase149/full-products01/p11/link.stderr",
+    "selfhost/build/phase149/full-products01/p11/link.stdout",
+    "selfhost/build/phase149/full-products01/p11/program",
+    "selfhost/build/phase149/full-products01/p11/qbe.stderr",
+    "selfhost/build/phase149/full-products01/p11/qbe.stdout",
+    "selfhost/build/phase149/full-products01/p11/report.json"
+  ],
+  "roots": [
+    {
+      "root": "selfhost/build/phase149/native01",
+      "reason": "Completed old optional-policy machine-build assembly/object intermediates; ELF, source, receipts and raw SSA remain available.",
+      "lifecycle": {
+        "file": "selfhost/build/phase149/native01-guard/retention.json",
+        "bytes": 1177,
+        "sha256": "c0a96f5ab1420f5a5ab272e85e2ea2aeae9c9dfe1db4706fdbef608302ed2228"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase149/native01-guard/report.json",
+        "bytes": 2025,
+        "sha256": "c0ba1a31818fec79f50544bac8e484d3600f280d70f28581605ad4b4e0cf5945"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase149/native01-guard/root-00/receipt.json",
+        "bytes": 2539,
+        "sha256": "86d8a83ddc092fe5f03ae291c19e133e3e7c024527f20fa54da25c5ade69517d"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase149/native01-guard/root-00/files.tar.gz",
+        "bytes": 35662570,
+        "sha256": "c3b3d213c90239c0b13c8cb72d8ed91f9a36d5c253028be2eadb27c7dba5fc8f"
+      },
+      "allArchiveMembersAuthenticated": 13,
+      "selectedCurrentBytesAndMetadataVerified": true,
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase149/native01/program.s",
+          "bytes": 89652842,
+          "sha256": "1f8585a6885a70bdea530e78b3086fad926a75fd351c9f2ded8cec866c456f60",
+          "archiveMember": "program.s",
+          "allocatedBytes": 89657344,
+          "mode": 420,
+          "links": 1,
+          "device": 2306,
+          "inode": 79562935
+        },
+        {
+          "file": "selfhost/build/phase149/native01/program.o",
+          "bytes": 26327976,
+          "sha256": "0b4a49dddd4c68c585bfa79699efccde567dce4ccf3eedd936e242ace14bc95e",
+          "archiveMember": "program.o",
+          "allocatedBytes": 26329088,
+          "mode": 420,
+          "links": 1,
+          "device": 2306,
+          "inode": 79562941
+        }
+      ],
+      "allocatedBytes": 115986432,
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase163/retention-proposal02.json",
+        "--receipt",
+        "selfhost/build-retention/phase149/native01-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase163/reclaim149-native01/verified"
+      ],
+      "verifyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py verify --policy experiments/phase163/retention-proposal02.json --receipt selfhost/build-retention/phase149/native01-guard/root-00/receipt.json --out selfhost/build-retention/phase163/reclaim149-native01/verified",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase163/reclaim149-native01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase163/reclaim149-native01/applied"
+      ],
+      "applyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py apply --plan selfhost/build-retention/phase163/reclaim149-native01/verified/plan.json --out selfhost/build-retention/phase163/reclaim149-native01/applied",
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase163/reclaim149-native01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase163/reclaim149-native01/restored"
+      ]
+    },
+    {
+      "root": "selfhost/build/phase149/full-products01/p0",
+      "reason": "Completed old optional-policy machine-build assembly/object intermediates; ELF, source, receipts and raw SSA remain available.",
+      "lifecycle": {
+        "file": "selfhost/build/phase149/full-products01/p0-guard/retention.json",
+        "bytes": 1219,
+        "sha256": "6a511b26b5d627e5a71b9f692c19661a6c404f0a47288ec7d49ec658e684563c"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase149/full-products01/p0-guard/report.json",
+        "bytes": 2074,
+        "sha256": "7e9dc5db920cdab4def346f557885b9a2af4b6f339d77f787da36eb806564d5f"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase149/full-products01/p0-guard/root-00/receipt.json",
+        "bytes": 2145,
+        "sha256": "7365b630b30d79fea2c11c1e9bb237179a4714db3e33bbae4d9f58a1e3e02680"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase149/full-products01/p0-guard/root-00/files.tar.gz",
+        "bytes": 19110975,
+        "sha256": "c3abc49e9aecc4ccce514b80d90cb5622138ee7a047f1030e633ce63304b479e"
+      },
+      "allArchiveMembersAuthenticated": 10,
+      "selectedCurrentBytesAndMetadataVerified": true,
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase149/full-products01/p0/program.s",
+          "bytes": 88466412,
+          "sha256": "07e650ff00d5571657c1dd1ed8c6c8fbb8eaa65429ec2d3f04420a3058d30c38",
+          "archiveMember": "program.s",
+          "allocatedBytes": 88473600,
+          "mode": 420,
+          "links": 1,
+          "device": 2306,
+          "inode": 79564301
+        },
+        {
+          "file": "selfhost/build/phase149/full-products01/p0/program.o",
+          "bytes": 25983392,
+          "sha256": "d4d55e9a4ba1a3a4d82b3b4c6adb019ceae91db5a3c623bb0ec4ae982fccc918",
+          "archiveMember": "program.o",
+          "allocatedBytes": 25985024,
+          "mode": 420,
+          "links": 1,
+          "device": 2306,
+          "inode": 79564304
+        }
+      ],
+      "allocatedBytes": 114458624,
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase163/retention-proposal02.json",
+        "--receipt",
+        "selfhost/build-retention/phase149/full-products01/p0-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase163/reclaim149-p0/verified"
+      ],
+      "verifyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py verify --policy experiments/phase163/retention-proposal02.json --receipt selfhost/build-retention/phase149/full-products01/p0-guard/root-00/receipt.json --out selfhost/build-retention/phase163/reclaim149-p0/verified",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase163/reclaim149-p0/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase163/reclaim149-p0/applied"
+      ],
+      "applyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py apply --plan selfhost/build-retention/phase163/reclaim149-p0/verified/plan.json --out selfhost/build-retention/phase163/reclaim149-p0/applied",
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase163/reclaim149-p0/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase163/reclaim149-p0/restored"
+      ]
+    },
+    {
+      "root": "selfhost/build/phase149/full-products01/p11",
+      "reason": "Completed old optional-policy machine-build assembly/object intermediates; ELF, source, receipts and raw SSA remain available.",
+      "lifecycle": {
+        "file": "selfhost/build/phase149/full-products01/p11-guard/retention.json",
+        "bytes": 1223,
+        "sha256": "e66665493a38a84819877c3252af8c0c7b52ce612aab80a1c39c1296e6ce8a8f"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase149/full-products01/p11-guard/report.json",
+        "bytes": 2080,
+        "sha256": "e3b25be0508a0935d4f515c9cb36a6aa00689949d83f72617924b61a54a3ab9d"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase149/full-products01/p11-guard/root-00/receipt.json",
+        "bytes": 2143,
+        "sha256": "f42c792bdb47c770809413613444dfc4e5e949505e78f7210baed3e032a2225f"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase149/full-products01/p11-guard/root-00/files.tar.gz",
+        "bytes": 17724078,
+        "sha256": "36728439ee97260f08f83294cef35776ecc5ef902dd95521bf0ecdef732f6821"
+      },
+      "allArchiveMembersAuthenticated": 10,
+      "selectedCurrentBytesAndMetadataVerified": true,
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase149/full-products01/p11/program.s",
+          "bytes": 83729010,
+          "sha256": "1d906e451d3706d9b62b1fdb14e9e56f52c8a6fa54cdbc04ba08798780eeaf61",
+          "archiveMember": "program.s",
+          "allocatedBytes": 83734528,
+          "mode": 420,
+          "links": 1,
+          "device": 2306,
+          "inode": 79564317
+        },
+        {
+          "file": "selfhost/build/phase149/full-products01/p11/program.o",
+          "bytes": 24441200,
+          "sha256": "4d62bcf52e8af7b1a1c6be022da650d936e465f5461daff9b9a3e94c02006ddd",
+          "archiveMember": "program.o",
+          "allocatedBytes": 24444928,
+          "mode": 420,
+          "links": 1,
+          "device": 2306,
+          "inode": 79564320
+        }
+      ],
+      "allocatedBytes": 108179456,
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase163/retention-proposal02.json",
+        "--receipt",
+        "selfhost/build-retention/phase149/full-products01/p11-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase163/reclaim149-p11/verified"
+      ],
+      "verifyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py verify --policy experiments/phase163/retention-proposal02.json --receipt selfhost/build-retention/phase149/full-products01/p11-guard/root-00/receipt.json --out selfhost/build-retention/phase163/reclaim149-p11/verified",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase163/reclaim149-p11/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase163/reclaim149-p11/applied"
+      ],
+      "applyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py apply --plan selfhost/build-retention/phase163/reclaim149-p11/verified/plan.json --out selfhost/build-retention/phase163/reclaim149-p11/applied",
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase163/reclaim149-p11/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase163/reclaim149-p11/restored"
+      ]
+    }
+  ],
+  "scope": "Exactly six obsolete Phase149 generated assembly/object files. Preserve every source, executable, SSA/raw oracle, profile, report, guard record and existing operational prerequisite; all of qualified Phase152 remains outside scope.",
+  "dependencyAudit": {
+    "findings": [
+      "Phase149 was an optional-policy research campaign; its full-products p0/p11 are old machine builds of frozen Phase147 source, not selected current qualified images. All three associated executable images remain hot.",
+      "program.s and program.o are completed machine-build intermediates; execution of the retained ELF does not read them. No Phase149 SSA is selected, including the experimental image SSA or full-source reference streams.",
+      "Bounded search of experiment methods/specs from Phase150 through Phase163, current build methods and asset manifests found no reads/pins of phase149/native01 or phase149/full-products01.",
+      "Existing Phase147/151/153 profiling objects, Phase152 qualified image/source/oracle, Phase156 request ELF/source and Phase160 C02 are explicitly outside the allowed roots.",
+      "Future reruns that explicitly hash/open these archived old machine intermediates require restoration first. No age-based or entire-phase deletion is proposed."
+    ]
+  },
+  "preconditions": [
+    "Wait for active targets to finish before root executes archive-v02 verify/apply under the existing shared lock.",
+    "Use the fresh per-root verify commands below; compare exact selected paths/counts before applying.",
+    "Retain all three local closure archives/receipts; authenticate them again before restoration. The compact Phase149 evidence capsule is supplementary, not the only recovery authority.",
+    "Never overwrite or edit consumed plans; interrupted applies require their intent/journal to be reviewed.",
+    "Measure actual free-space gain and keep normal 5 GiB reserve and declared run budgets unchanged."
+  ],
+  "diskSnapshot": {
+    "freeBytes": 5663870976,
+    "reserveBytes": 5368709120
+  },
+  "totals": {
+    "selectedFiles": 6,
+    "logicalBytes": 338600832,
+    "allocatedBytes": 338624512,
+    "archives": 3,
+    "archiveMembersAuthenticated": 33,
+    "allocatedMiB": 322.9375
+  },
+  "verification": "Read-only rehash of all three complete compressed archives and their members; authenticated sealed lifecycle-to-closure-to-archive bindings; exact current selected bytes/mode/owner/exclusive-inode/xattr checks. Policy selects exactly six files. No archive-v02 command or mutation executed."
+}

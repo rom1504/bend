@@ -1,3 +1,35 @@
+# Phase164 — mixed direct compilation and cheaper composition, 2026-11-05
+
+[Report](../implementation/phase164/README.md) ·
+[Mixed metrics](../implementation/phase164/mixed-metrics.json) ·
+[Zipper metrics](../implementation/phase164/zipper-metrics.json) ·
+[Design](../design/phase164/README.md).
+
+Mixed adapter/import route supports real IO and self-emission. Ten independent
+native outputs,35 finite mixed controls, exact conservative/broad/retained QBE
+on three cases, and exact N2 self-emission pass. Same1.556MB source acquisition
+201.931→201.271s is neutral;104.740MB self-emission takes179.548s without machine
+construction. It is not a new score against the different maintained3.085MB
+source. N2 Map requests regress5.6%; no promotion or broad parity claim.
+
+Only4600/44060 continuations disappear; direct functions stay2096. A100-line
+imports-only ablation with18 controls reproduces15.0%/12.4% runtime gains on
+Mandelbrot/Unicode; editdist neutral. This isolates useful call composition from
+the larger body-omission mechanism. Two-pair screens, not a new broad score.
+
+Whole compiler-index insertion zipper:356 complete host comparisons per variant,
+17 fused native controls, exact independent runtime output. List-plus-frame
+state is neutral; fused four-field path saves5.37%/1.55% in two complete-map
+workloads with four pairs. No expensive compiler acquisition for that small
+kernel effect. Existing stack-safe non-tail regions merit targeted admission
+investigation; bendc's large virtual stacks are a different recursion contract.
+
+Thirty guarded jobs1116.9s, six nonzero commands including two expected unsafe
+proof verdicts; no OOM/timeouts. All sealed.16 generated intermediates across
+reviewed Phase148/164 roots pruned only after exact archive verification; binaries,
+source, qualified assets and evidence remain available.1200 experimental Bend
+lines, zero production lines. Phase152 stays qualified; no PR comment.
+
 # Phase163 — direct-first QBE and compact-term falsification, 2026-11-05
 
 [Report](../implementation/phase163/README.md) ·

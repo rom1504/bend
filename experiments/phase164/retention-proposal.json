@@ -1,0 +1,596 @@
+{
+  "kind": "phase164-reviewed-retention-proposal",
+  "version": 1,
+  "status": "proposal-only-no-files-deleted",
+  "targetsRun": false,
+  "date": "2026-11-05",
+  "complements": [
+    "experiments/phase163/retention-proposal.json",
+    "experiments/phase163/retention-proposal02.json"
+  ],
+  "method": {
+    "file": "selfhost/tools/build-retention/archive-v02.py",
+    "bytes": 18412,
+    "sha256": "3238e0774c6c21c3de6c07bcbd71e469cbb23aaba01f99da0cb1e9f51990ad9f"
+  },
+  "allowedRoots": [
+    "selfhost/build/phase148/compiler-native02/native",
+    "selfhost/build/phase148/compiler-native03/native",
+    "selfhost/build/phase148/compiler-native04/native",
+    "selfhost/build/phase148/map-native01/native"
+  ],
+  "archiveRoots": {
+    "selfhost/build-retention/phase148/compiler-native02--native-guard/root-00/receipt.json": "selfhost/build/phase148/compiler-native02/native",
+    "selfhost/build-retention/phase148/compiler-native03--native-guard/root-00/receipt.json": "selfhost/build/phase148/compiler-native03/native",
+    "selfhost/build-retention/phase148/compiler-native04--native-guard/root-00/receipt.json": "selfhost/build/phase148/compiler-native04/native",
+    "selfhost/build-retention/phase148/map-native01--native-guard/root-00/receipt.json": "selfhost/build/phase148/map-native01/native"
+  },
+  "keepPrefixes": [
+    "selfhost/build/phase32/execution.lock",
+    "selfhost/build/phase147",
+    "selfhost/build/phase149",
+    "selfhost/build/phase150",
+    "selfhost/build/phase151",
+    "selfhost/build/phase152",
+    "selfhost/build/phase153",
+    "selfhost/build/phase154",
+    "selfhost/build/phase155",
+    "selfhost/build/phase156",
+    "selfhost/build/phase157",
+    "selfhost/build/phase158",
+    "selfhost/build/phase159",
+    "selfhost/build/phase160",
+    "selfhost/build/phase161",
+    "selfhost/build/phase162",
+    "selfhost/build/phase163",
+    "selfhost/build/phase164",
+    "selfhost/build/phase148/compiler-profile01",
+    "selfhost/build/phase148/compiler-profile02",
+    "selfhost/.assets",
+    "selfhost/.bootstrap",
+    "selfhost/src",
+    "selfhost/tests",
+    "selfhost/tools",
+    "selfhost/build-retention",
+    "implementation",
+    "selfhost/build/phase148/compiler-native02/native/assemble.stderr",
+    "selfhost/build/phase148/compiler-native02/native/assemble.stdout",
+    "selfhost/build/phase148/compiler-native02/native/compiler.stderr",
+    "selfhost/build/phase148/compiler-native02/native/link.stderr",
+    "selfhost/build/phase148/compiler-native02/native/link.stdout",
+    "selfhost/build/phase148/compiler-native02/native/program",
+    "selfhost/build/phase148/compiler-native02/native/qbe.stderr",
+    "selfhost/build/phase148/compiler-native02/native/qbe.stdout",
+    "selfhost/build/phase148/compiler-native02/native/report.json",
+    "selfhost/build/phase148/compiler-native02/native/request.json",
+    "selfhost/build/phase148/compiler-native03/native/assemble.stderr",
+    "selfhost/build/phase148/compiler-native03/native/assemble.stdout",
+    "selfhost/build/phase148/compiler-native03/native/compiler.stderr",
+    "selfhost/build/phase148/compiler-native03/native/link.stderr",
+    "selfhost/build/phase148/compiler-native03/native/link.stdout",
+    "selfhost/build/phase148/compiler-native03/native/program",
+    "selfhost/build/phase148/compiler-native03/native/qbe.stderr",
+    "selfhost/build/phase148/compiler-native03/native/qbe.stdout",
+    "selfhost/build/phase148/compiler-native03/native/report.json",
+    "selfhost/build/phase148/compiler-native03/native/request.json",
+    "selfhost/build/phase148/compiler-native04/native/assemble.stderr",
+    "selfhost/build/phase148/compiler-native04/native/assemble.stdout",
+    "selfhost/build/phase148/compiler-native04/native/compiler.stderr",
+    "selfhost/build/phase148/compiler-native04/native/link.stderr",
+    "selfhost/build/phase148/compiler-native04/native/link.stdout",
+    "selfhost/build/phase148/compiler-native04/native/program",
+    "selfhost/build/phase148/compiler-native04/native/qbe.stderr",
+    "selfhost/build/phase148/compiler-native04/native/qbe.stdout",
+    "selfhost/build/phase148/compiler-native04/native/report.json",
+    "selfhost/build/phase148/compiler-native04/native/request.json",
+    "selfhost/build/phase148/map-native01/native/assemble.stderr",
+    "selfhost/build/phase148/map-native01/native/assemble.stdout",
+    "selfhost/build/phase148/map-native01/native/compiler.stderr",
+    "selfhost/build/phase148/map-native01/native/link.stderr",
+    "selfhost/build/phase148/map-native01/native/link.stdout",
+    "selfhost/build/phase148/map-native01/native/program",
+    "selfhost/build/phase148/map-native01/native/qbe.stderr",
+    "selfhost/build/phase148/map-native01/native/qbe.stdout",
+    "selfhost/build/phase148/map-native01/native/report.json",
+    "selfhost/build/phase148/map-native01/native/request.json"
+  ],
+  "roots": [
+    {
+      "root": "selfhost/build/phase148/compiler-native02/native",
+      "reason": "Completed rejected Phase148 compact-IR prototype: generated QBE, assembly and object intermediates. Exact ELF, Bend source, manifests, timing reports and all profiler evidence stay hot.",
+      "lifecycle": {
+        "file": "selfhost/build/phase148/compiler-native02/native-guard/retention.json",
+        "bytes": 1245,
+        "sha256": "a919c4cfe5595e3ddf02a32150afa0265261cc987ab0aec2ae07b6b6acfeee55"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase148/compiler-native02--native-guard/report.json",
+        "bytes": 2106,
+        "sha256": "ce5d608a752a2753bf4187644905ef16d18b36bed6608dde5f4c1806aad27e1e"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase148/compiler-native02--native-guard/root-00/receipt.json",
+        "bytes": 2550,
+        "sha256": "0fbfe41967dd84f8d789db9fc9d4492124e8fb46eb61730f24e075504ad9da22"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase148/compiler-native02--native-guard/root-00/files.tar.gz",
+        "bytes": 6253381,
+        "sha256": "209a2a1afc367a65661d1ed66a7c33279a6f28c503a95c7a247f888e49e6b992"
+      },
+      "allArchiveMembersAuthenticated": 13,
+      "selectedCurrentBytesAndMetadataVerified": true,
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase148/compiler-native02/native/program.ssa",
+          "bytes": 20988942,
+          "sha256": "1d80194c16b6326faaf233aa1c2cb3b11f9fefbac625b1f15a6b73fb75883d9d",
+          "archiveMember": "program.ssa",
+          "allocatedBytes": 20992000,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79562070,
+          "mtimeNs": 1793553026551142434,
+          "xattrs": []
+        },
+        {
+          "file": "selfhost/build/phase148/compiler-native02/native/program.s",
+          "bytes": 14984671,
+          "sha256": "28df7b7e55603815fa0dcaf19a9c2d060ed4b4646e68570104b8b65ca39cd781",
+          "archiveMember": "program.s",
+          "allocatedBytes": 14987264,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79562069,
+          "mtimeNs": 1793553026547142556,
+          "xattrs": []
+        },
+        {
+          "file": "selfhost/build/phase148/compiler-native02/native/program.o",
+          "bytes": 4516520,
+          "sha256": "1d7a1e7ebc0fc76888ea7afcc9f1a3909144e990914aa7f8060058d6eb2cdf28",
+          "archiveMember": "program.o",
+          "allocatedBytes": 4517888,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79562073,
+          "mtimeNs": 1793553027483113802,
+          "xattrs": []
+        }
+      ],
+      "allocatedBytes": 40497152,
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase164/retention-proposal.json",
+        "--receipt",
+        "selfhost/build-retention/phase148/compiler-native02--native-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase164/reclaim148-compiler-native02/verified"
+      ],
+      "verifyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py verify --policy experiments/phase164/retention-proposal.json --receipt selfhost/build-retention/phase148/compiler-native02--native-guard/root-00/receipt.json --out selfhost/build-retention/phase164/reclaim148-compiler-native02/verified",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase164/reclaim148-compiler-native02/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase164/reclaim148-compiler-native02/applied"
+      ],
+      "applyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py apply --plan selfhost/build-retention/phase164/reclaim148-compiler-native02/verified/plan.json --out selfhost/build-retention/phase164/reclaim148-compiler-native02/applied",
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase164/reclaim148-compiler-native02/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase164/reclaim148-compiler-native02/restored"
+      ],
+      "restoreShell": "python3 -B selfhost/tools/build-retention/archive-v02.py restore --plan selfhost/build-retention/phase164/reclaim148-compiler-native02/verified/plan.json --out selfhost/build-retention/phase164/reclaim148-compiler-native02/restored"
+    },
+    {
+      "root": "selfhost/build/phase148/compiler-native03/native",
+      "reason": "Completed rejected Phase148 compact-IR prototype: generated QBE, assembly and object intermediates. Exact ELF, Bend source, manifests, timing reports and all profiler evidence stay hot.",
+      "lifecycle": {
+        "file": "selfhost/build/phase148/compiler-native03/native-guard/retention.json",
+        "bytes": 1245,
+        "sha256": "f6b1952cd50cc342c238a0906e619afd791cb66cb70c1516b57d082ad411f7c6"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase148/compiler-native03--native-guard/report.json",
+        "bytes": 2107,
+        "sha256": "02303d94c02e53e579f5c3a719c45aa0dd50bddcc54e37217c32ccad2a3abc24"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase148/compiler-native03--native-guard/root-00/receipt.json",
+        "bytes": 2550,
+        "sha256": "8fea23f0566333f78a1c7603b7cbf49fbb2de937fb83631f510dd2912202d968"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase148/compiler-native03--native-guard/root-00/files.tar.gz",
+        "bytes": 7046027,
+        "sha256": "ccd5718300a7a4c448d23776efcbdcaf164deb98e4874bd743f98297f4da0911"
+      },
+      "allArchiveMembersAuthenticated": 13,
+      "selectedCurrentBytesAndMetadataVerified": true,
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase148/compiler-native03/native/program.ssa",
+          "bytes": 23891449,
+          "sha256": "eaaf4d301212e0997c9220a9e649fbc54aced9e556c1c4dc3f0a5164ab2fcda0",
+          "archiveMember": "program.ssa",
+          "allocatedBytes": 23891968,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79562447,
+          "mtimeNs": 1793554306123834397,
+          "xattrs": []
+        },
+        {
+          "file": "selfhost/build/phase148/compiler-native03/native/program.s",
+          "bytes": 17125986,
+          "sha256": "ee7ee4d96df7a6a022ae1d9387d7eef74ec5e9bd6fd0b7649ec2ecd3f7f60c43",
+          "archiveMember": "program.s",
+          "allocatedBytes": 17129472,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79562446,
+          "mtimeNs": 1793554306123834397,
+          "xattrs": []
+        },
+        {
+          "file": "selfhost/build/phase148/compiler-native03/native/program.o",
+          "bytes": 5112696,
+          "sha256": "fde192b41ab671d554fbe6a29fc7fe0eb696fe5e46cb6149be889dca651029c7",
+          "archiveMember": "program.o",
+          "allocatedBytes": 5115904,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79562452,
+          "mtimeNs": 1793554307203801232,
+          "xattrs": []
+        }
+      ],
+      "allocatedBytes": 46137344,
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase164/retention-proposal.json",
+        "--receipt",
+        "selfhost/build-retention/phase148/compiler-native03--native-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase164/reclaim148-compiler-native03/verified"
+      ],
+      "verifyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py verify --policy experiments/phase164/retention-proposal.json --receipt selfhost/build-retention/phase148/compiler-native03--native-guard/root-00/receipt.json --out selfhost/build-retention/phase164/reclaim148-compiler-native03/verified",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase164/reclaim148-compiler-native03/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase164/reclaim148-compiler-native03/applied"
+      ],
+      "applyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py apply --plan selfhost/build-retention/phase164/reclaim148-compiler-native03/verified/plan.json --out selfhost/build-retention/phase164/reclaim148-compiler-native03/applied",
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase164/reclaim148-compiler-native03/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase164/reclaim148-compiler-native03/restored"
+      ],
+      "restoreShell": "python3 -B selfhost/tools/build-retention/archive-v02.py restore --plan selfhost/build-retention/phase164/reclaim148-compiler-native03/verified/plan.json --out selfhost/build-retention/phase164/reclaim148-compiler-native03/restored"
+    },
+    {
+      "root": "selfhost/build/phase148/compiler-native04/native",
+      "reason": "Completed rejected Phase148 compact-IR prototype: generated QBE, assembly and object intermediates. Exact ELF, Bend source, manifests, timing reports and all profiler evidence stay hot.",
+      "lifecycle": {
+        "file": "selfhost/build/phase148/compiler-native04/native-guard/retention.json",
+        "bytes": 1245,
+        "sha256": "354f48b6964733e94a69d7e7c733f9bcb9effcda1446b746d264e7679faf11f3"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase148/compiler-native04--native-guard/report.json",
+        "bytes": 2108,
+        "sha256": "645d30c89f527d013adaa3590f1f43193e60c64fca00473febca5d3d933ae50b"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase148/compiler-native04--native-guard/root-00/receipt.json",
+        "bytes": 2550,
+        "sha256": "b6a5c3e552cee6b5869141d0941c97f2e9d66c00787889f8633fbbb563e583a9"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase148/compiler-native04--native-guard/root-00/files.tar.gz",
+        "bytes": 7068578,
+        "sha256": "3854a84c946972a6468696d189f5e0d9bc8ae0f19c2bb8696aaab4a60de3b840"
+      },
+      "allArchiveMembersAuthenticated": 13,
+      "selectedCurrentBytesAndMetadataVerified": true,
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase148/compiler-native04/native/program.ssa",
+          "bytes": 23970785,
+          "sha256": "d8dd4b0f259f80948b32a121596809813a493466179a3a5aae62ae53234b748a",
+          "archiveMember": "program.ssa",
+          "allocatedBytes": 23973888,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79562720,
+          "mtimeNs": 1793554832039682653,
+          "xattrs": []
+        },
+        {
+          "file": "selfhost/build/phase148/compiler-native04/native/program.s",
+          "bytes": 17198340,
+          "sha256": "01fb128ffc7af799a460323119b1f722d8704146e200f42fb525938aa9fc923d",
+          "archiveMember": "program.s",
+          "allocatedBytes": 17199104,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79562719,
+          "mtimeNs": 1793554832039682653,
+          "xattrs": []
+        },
+        {
+          "file": "selfhost/build/phase148/compiler-native04/native/program.o",
+          "bytes": 5133864,
+          "sha256": "d2158d744b33eb0e91d8a6b641eb57b098738d575d3c45a408be7edf6880fcbd",
+          "archiveMember": "program.o",
+          "allocatedBytes": 5136384,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79562723,
+          "mtimeNs": 1793554833115649605,
+          "xattrs": []
+        }
+      ],
+      "allocatedBytes": 46309376,
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase164/retention-proposal.json",
+        "--receipt",
+        "selfhost/build-retention/phase148/compiler-native04--native-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase164/reclaim148-compiler-native04/verified"
+      ],
+      "verifyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py verify --policy experiments/phase164/retention-proposal.json --receipt selfhost/build-retention/phase148/compiler-native04--native-guard/root-00/receipt.json --out selfhost/build-retention/phase164/reclaim148-compiler-native04/verified",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase164/reclaim148-compiler-native04/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase164/reclaim148-compiler-native04/applied"
+      ],
+      "applyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py apply --plan selfhost/build-retention/phase164/reclaim148-compiler-native04/verified/plan.json --out selfhost/build-retention/phase164/reclaim148-compiler-native04/applied",
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase164/reclaim148-compiler-native04/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase164/reclaim148-compiler-native04/restored"
+      ],
+      "restoreShell": "python3 -B selfhost/tools/build-retention/archive-v02.py restore --plan selfhost/build-retention/phase164/reclaim148-compiler-native04/verified/plan.json --out selfhost/build-retention/phase164/reclaim148-compiler-native04/restored"
+    },
+    {
+      "root": "selfhost/build/phase148/map-native01/native",
+      "reason": "Completed rejected Phase148 compact-IR prototype: generated QBE, assembly and object intermediates. Exact ELF, Bend source, manifests, timing reports and all profiler evidence stay hot.",
+      "lifecycle": {
+        "file": "selfhost/build/phase148/map-native01/native-guard/retention.json",
+        "bytes": 1225,
+        "sha256": "bc7cac7ead4c248b03a6b4e592238a70cafe3a3851f16b0d526aa260e490d764"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase148/map-native01--native-guard/report.json",
+        "bytes": 2083,
+        "sha256": "cc49005c33f3fe2c93ed08a705ca932d7781eadd452a889d55edb0b3ccb1d364"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase148/map-native01--native-guard/root-00/receipt.json",
+        "bytes": 2545,
+        "sha256": "1429179f9f62b593cd6adf11935d574086c2a1ed5aa34ce9a7ef259eb862ae29"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase148/map-native01--native-guard/root-00/files.tar.gz",
+        "bytes": 6852416,
+        "sha256": "e9f2355db28930ef0261a55ada15530c47d7f2ace94625e0891cfc1576a71c64"
+      },
+      "allArchiveMembersAuthenticated": 13,
+      "selectedCurrentBytesAndMetadataVerified": true,
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase148/map-native01/native/program.ssa",
+          "bytes": 23555558,
+          "sha256": "da3430a9209628eea79619e48ab5cf5a92e1f10a8316d3617bc89d06a2784a28",
+          "archiveMember": "program.ssa",
+          "allocatedBytes": 23556096,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79562602,
+          "mtimeNs": 1793554575695556030,
+          "xattrs": []
+        },
+        {
+          "file": "selfhost/build/phase148/map-native01/native/program.s",
+          "bytes": 16701483,
+          "sha256": "65f1b05ac7f4681a782400887454f6c8e6a5131af4ea0175cebe8bb70e79dd6f",
+          "archiveMember": "program.s",
+          "allocatedBytes": 16703488,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79562601,
+          "mtimeNs": 1793554575695556030,
+          "xattrs": []
+        },
+        {
+          "file": "selfhost/build/phase148/map-native01/native/program.o",
+          "bytes": 4935472,
+          "sha256": "28760b42b81eb0e4756abd1f75177a6f1aff915be8fc046689c79281fd4de47a",
+          "archiveMember": "program.o",
+          "allocatedBytes": 4935680,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79562605,
+          "mtimeNs": 1793554576803522006,
+          "xattrs": []
+        }
+      ],
+      "allocatedBytes": 45195264,
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase164/retention-proposal.json",
+        "--receipt",
+        "selfhost/build-retention/phase148/map-native01--native-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase164/reclaim148-map-native01/verified"
+      ],
+      "verifyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py verify --policy experiments/phase164/retention-proposal.json --receipt selfhost/build-retention/phase148/map-native01--native-guard/root-00/receipt.json --out selfhost/build-retention/phase164/reclaim148-map-native01/verified",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase164/reclaim148-map-native01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase164/reclaim148-map-native01/applied"
+      ],
+      "applyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py apply --plan selfhost/build-retention/phase164/reclaim148-map-native01/verified/plan.json --out selfhost/build-retention/phase164/reclaim148-map-native01/applied",
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase164/reclaim148-map-native01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase164/reclaim148-map-native01/restored"
+      ],
+      "restoreShell": "python3 -B selfhost/tools/build-retention/archive-v02.py restore --plan selfhost/build-retention/phase164/reclaim148-map-native01/verified/plan.json --out selfhost/build-retention/phase164/reclaim148-map-native01/restored"
+    }
+  ],
+  "scope": "Exactly twelve generated non-oracle Phase148 QBE/assembly/object files in four completed rejected prototype builds. No directory deletion, binaries, source, profiles, qualified images, raw qualification oracles, operational assets or current Phase163/164 artifacts.",
+  "dependencyAudit": {
+    "evidence": [
+      {
+        "file": "implementation/phase148/README.md",
+        "bytes": 11729,
+        "sha256": "4acfa812a1fa25279add4d1ff3ef33d7a1f1ca6cf828101cc7ebbc613f19eca4"
+      },
+      {
+        "file": "selfhost/build/phase148/compiler-profile01/recipe.json",
+        "bytes": 2583,
+        "sha256": "bae93de36f0b5f964ae327d682ce2260e3dbbac40c3f59eb309a1799926ff1fa"
+      },
+      {
+        "file": "selfhost/build/phase148/compiler-profile02/recipe.json",
+        "bytes": 2583,
+        "sha256": "e0f6ff8db3e3a53df91de4f102ef2d66a9b88c8f06f6576d3c65a450ecf560df"
+      },
+      {
+        "file": "experiments/phase163/tools/prepare.py",
+        "bytes": 3464,
+        "sha256": "7e74a5332bfec6191bc36341941cf2b6ea78f9d7b9fcad88d81293fa670222c8"
+      },
+      {
+        "file": "experiments/phase164/P164-001-mixed-direct-first.md",
+        "bytes": 889,
+        "sha256": "67ba9fc6dc2a41de70147c914e56df40c05bd0da5a69c53ac3c56789204524aa"
+      }
+    ],
+    "findings": [
+      "Phase148 compact-IR prototype was completed and rejected for production; all four native-build guards are sealed/completed and name exact per-root closure archives.",
+      "Both Phase148 profile JSON trees reference only compiler-native03/compiler.bend, manifest.json, native/program, native/report.json and timing/report.json within the candidate roots. Those files and every profile/map remain hot. No profile JSON reference to selected SSA/assembly/object paths was found.",
+      "Phase148 report cites native03 assembly as historical static evidence and already identifies the full assembly/QBE closure archive as its recovery source. Direct rereading of those archived lines requires restoration.",
+      "Bounded search of Phase149 through Phase164 experiment methods/specifications, maintained build tools and asset manifests found no reference to these Phase148 roots. Phase163 prepare.py reads the maintained source and Phase152 qualification. This is a source-dependency audit, not a target run.",
+      "All generated SSA selected here belongs to isolated experimental kernel images, not full-source qualified output oracles. Phase149 SSA and every qualified/current oracle remain hot.",
+      "Existing Phase147/151/153 profiling objects, Phase152 N2/N3, Phase156 request ELF/source, Phase160 C02 and current Phase163/164 prototypes remain outside allowed roots.",
+      "Previously pruned Phase163 proposal files are disjoint from this tranche. Future historical reruns that validate/open the selected intermediates must restore them first."
+    ],
+    "excludedLargerCandidates": "Inspected older Phase134/140 transport and Phase147 machine intermediates have only metadata/compact archive coverage or explicitly kept-hot roots. Exact existing full-byte archive coverage was insufficient, so none are proposed."
+  },
+  "preconditions": [
+    "Root must wait for active target work to finish before fresh archive-v02 verify/apply under the existing shared lock. This proposal did not acquire/modify the lock or execute archive-v02.",
+    "Compare every fresh verified plan against the exact three selected files for its root before applying. Do not consume earlier closure plans that select whole roots.",
+    "Keep all four exact local archives and lifecycle/closure/receipt pins. They are same-machine recovery copies, not independent backups. Authenticate recovery bytes before restoration.",
+    "Apply creates its ordinary journal/receipt; never overwrite consumed plans. Interrupted applies require intent/journal review.",
+    "Measure actual space recovered; retain the ordinary 5 GiB reserve and declared target disk budgets. No new archive creation is needed."
+  ],
+  "diskSnapshot": {
+    "freeBytes": 5697011712,
+    "reserveBytes": 5368709120
+  },
+  "totals": {
+    "selectedFiles": 12,
+    "logicalBytes": 178115766,
+    "allocatedBytes": 178139136,
+    "allocatedMiB": 169.88671875,
+    "archives": 4,
+    "archiveMembersAuthenticated": 52,
+    "existingArchiveBytes": 27220402
+  },
+  "verification": "Independent read-only rehash of all four compressed archives, all regular member bytes and gzip footer; authenticated sealed lifecycle-to-closure-to-receipt bindings; current selected exclusive file bytes, mode, owner and empty xattrs checked. Policy selects precisely twelve files. No archive-v02 command, target run or deletion executed."
+}

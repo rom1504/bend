@@ -1,0 +1,2515 @@
+{
+  "images": {
+    "hybrid-n2-03": {
+      "assembly": {
+        "bytes": 75150548,
+        "file": "selfhost/build/phase164/hybrid-n2-03/program.s",
+        "sha256": "bc3a1bedb5fc59459945c21b41b6e04c02dc6dc663cef117c1f3311aeac2e28e"
+      },
+      "categories": {
+        "p111_": 47360,
+        "p112w_": 14360,
+        "p113d_": 2096,
+        "p114r_": 84
+      },
+      "largestPublicWorkersByStaticInstructions": [
+        [
+          "p111_FID_$direct.p118f_original_stmt",
+          4055
+        ],
+        [
+          "p111_FID_$direct.p118xs_original",
+          2936
+        ],
+        [
+          "p111_FID_$direct.p114t_expand",
+          2221
+        ],
+        [
+          "p111_FID_$direct.p114t_stmt",
+          2048
+        ],
+        [
+          "p111_FID_$direct.p88_digits",
+          1609
+        ],
+        [
+          "p111_FID_$direct.p131u_merge_loop",
+          1560
+        ],
+        [
+          "p111_FID_$direct.p113a_call_id",
+          1555
+        ],
+        [
+          "p111_FID_$direct.p113j_array_call",
+          1472
+        ],
+        [
+          "p111_FID_$direct.p112r_result",
+          1366
+        ],
+        [
+          "p111_FID_$direct.p128bf_match",
+          1347
+        ],
+        [
+          "p111_FID_$direct.p126s_cells",
+          1325
+        ],
+        [
+          "p111_FID_$direct.p147n_intersection",
+          1021
+        ],
+        [
+          "p111_FID_$direct.p112f_cont_result",
+          803
+        ],
+        [
+          "p111_FID_$direct.p128bi_rule",
+          801
+        ],
+        [
+          "p111_FID_$direct.p112r_failure_frame",
+          801
+        ],
+        [
+          "p111_FID_$direct.p112f_cont_get",
+          800
+        ],
+        [
+          "p111_FID_$direct.p117h_scalar",
+          756
+        ],
+        [
+          "p111_FID_$direct.p134v_scalar",
+          754
+        ],
+        [
+          "p111_FID_$direct.p112t_param_stmt",
+          753
+        ],
+        [
+          "p111_FID_$direct.f_prefix_graph_trace",
+          706
+        ]
+      ],
+      "publicCategories": {
+        "continuation": 39460,
+        "other_or_factory": 3960,
+        "source_worker": 3940
+      },
+      "sameOwnerForwardingCensus": {
+        "ordinary_forwarders_to_same_owner": 1147,
+        "public_direct_adapters_to_same_owner": 1359
+      },
+      "selectedOwners": {
+        "String.append": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.String.append": 1
+            },
+            "instructions": 29
+          },
+          "p112w": {
+            "calls": {
+              "p113d_FID_$direct.String.append": 1
+            },
+            "instructions": 6
+          },
+          "p113d": {
+            "calls": {
+              "p113d_FID_$p118.trmc.$direct.String.append": 1
+            },
+            "instructions": 8
+          }
+        },
+        "String.eq": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.String.eq": 1
+            },
+            "instructions": 29
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_sink": 2,
+              "p113d_FID_$p118borrow.read.String.eq": 1,
+              "p113d_FID_$p128borrow.owned.String.eq": 1,
+              "p118_rt_borrow_scalar_safe": 1
+            },
+            "instructions": 38
+          }
+        },
+        "book_final_filter": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.book_final_filter": 1
+            },
+            "instructions": 29
+          },
+          "p112w": {
+            "calls": {
+              "p113d_FID_$direct.book_final_filter": 1
+            },
+            "instructions": 6
+          },
+          "p113d": {
+            "calls": {
+              "p113d_FID_$p118.trmc.$direct.book_final_filter": 1
+            },
+            "instructions": 8
+          }
+        },
+        "book_final_names_valid": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 1,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.book_final_names_valid": 1
+            },
+            "instructions": 20
+          },
+          "p112w": {
+            "calls": {
+              "p113d_FID_$direct.book_final_names_valid": 1
+            },
+            "instructions": 6
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_sink": 1,
+              "p113d_FID_$p118borrow.read.book_final_names_valid": 1,
+              "p113d_FID_$p128borrow.owned.book_final_names_valid": 1,
+              "p118_rt_borrow_scalar_safe": 1
+            },
+            "instructions": 28
+          }
+        },
+        "book_final_scan": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 2,
+              "p111_rt_keep": 1,
+              "p112w_FID_$direct.book_final_filter": 1,
+              "p112w_FID_$direct.dn": 1,
+              "p125_rt_take2": 1
+            },
+            "instructions": 111
+          }
+        },
+        "book_final_seen": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 3,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.book_final_seen": 1
+            },
+            "instructions": 39
+          },
+          "p112w": {
+            "calls": {
+              "p113d_FID_$direct.book_final_seen": 1
+            },
+            "instructions": 6
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_keep": 2,
+              "p111_rt_sink": 2,
+              "p113d_FID_$direct.dk": 1,
+              "p113d_FID_$direct.index_find": 1,
+              "p113d_FID_$direct.p88_string_eq_go": 1
+            },
+            "instructions": 46
+          }
+        },
+        "book_final_step": {
+          "p111": {
+            "calls": {
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 2,
+              "p112w_FID_$direct.dn": 1
+            },
+            "instructions": 60
+          }
+        },
+        "constructor_exists": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 2,
+              "p111_rt_return": 1,
+              "p111_rt_sink": 1,
+              "p112w_FID_$direct.dk": 1,
+              "p125_rt_take2": 1
+            },
+            "instructions": 96
+          }
+        },
+        "f_ctor_lookup": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 3,
+              "p111_rt_return": 1,
+              "p111_rt_sink": 1,
+              "p112w_FID_$direct.dk": 1,
+              "p112w_FID_$direct.f_find": 1,
+              "p125_rt_take2": 1
+            },
+            "instructions": 104
+          }
+        },
+        "f_eq": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.f_eq": 1
+            },
+            "instructions": 29
+          },
+          "p112w": {
+            "calls": {
+              "p113d_FID_$direct.f_eq": 1
+            },
+            "instructions": 6
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_sink": 2,
+              "p113d_FID_$p118borrow.read.f_eq": 1,
+              "p113d_FID_$p128borrow.owned.f_eq": 1,
+              "p118_rt_borrow_scalar_safe": 1
+            },
+            "instructions": 38
+          }
+        },
+        "f_find": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.f_find": 1
+            },
+            "instructions": 29
+          },
+          "p112w": {
+            "calls": {
+              "p113d_FID_$direct.f_find": 1
+            },
+            "instructions": 6
+          },
+          "p113d": {
+            "calls": {
+              "p113d_FID_$p126scc.1047": 1
+            },
+            "instructions": 11
+          }
+        },
+        "f_grow_base": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 1,
+              "p112w_FID_$direct.tg": 1,
+              "p125_rt_take2": 1
+            },
+            "instructions": 69
+          }
+        },
+        "f_grow_existing": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 3,
+              "p112w_FID_$direct.f_tx": 1,
+              "p125_rt_take2": 1
+            },
+            "instructions": 89
+          }
+        },
+        "f_name_chars": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 3,
+              "p111_rt_return": 1,
+              "p111_rt_sink": 2,
+              "p112w_FID_$direct.String.is_empty": 1,
+              "p112w_FID_$direct.f_head": 1
+            },
+            "instructions": 83
+          }
+        },
+        "f_pattern_sub": {
+          "p111": {
+            "calls": {
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 2,
+              "p112w_FID_$direct.tg": 1
+            },
+            "instructions": 51
+          }
+        },
+        "f_prec": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 1,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.f_prec": 1
+            },
+            "instructions": 20
+          },
+          "p112w": {
+            "calls": {
+              "p113d_FID_$direct.f_prec": 1
+            },
+            "instructions": 6
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_fail": 12,
+              "p111_rt_keep": 54,
+              "p111_rt_op": 11,
+              "p111_rt_sink": 54,
+              "p113d_FID_$direct.f_eq": 7,
+              "p113d_FID_$direct.p88_string_eq_go": 16
+            },
+            "instructions": 967
+          }
+        },
+        "f_skip": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 1,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.f_skip": 1
+            },
+            "instructions": 20
+          },
+          "p112w": {
+            "calls": {
+              "p113d_FID_$direct.f_skip": 1
+            },
+            "instructions": 6
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_fail": 6,
+              "p111_rt_keep": 6,
+              "p111_rt_op": 1,
+              "p111_rt_sink": 8,
+              "p111_rt_take": 2,
+              "p113d_FID_$direct.f_raw_skip": 1,
+              "p113d_FID_$direct.p88_string_eq_go": 2,
+              "p125_rt_ctor2": 2,
+              "p125_rt_take2": 3
+            },
+            "instructions": 250
+          }
+        },
+        "index_find": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 4,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.index_find": 1
+            },
+            "instructions": 49
+          },
+          "p112w": {
+            "calls": {
+              "p113d_FID_$direct.index_find": 1
+            },
+            "instructions": 6
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_fail": 4,
+              "p111_rt_keep": 3,
+              "p111_rt_sink": 29,
+              "p111_rt_take": 1,
+              "p113d_FID_$direct.index_bucket": 3,
+              "p113d_FID_$direct.p88_string_eq_go": 1,
+              "p125_rt_ctor2": 2,
+              "p125_rt_take2": 3,
+              "p125_rt_take4": 1
+            },
+            "instructions": 405
+          }
+        },
+        "index_remove": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 2,
+              "p111_rt_return": 1,
+              "p111_rt_sink": 1,
+              "p112w_FID_$direct.dn": 1,
+              "p125_rt_take2": 1
+            },
+            "instructions": 88
+          }
+        },
+        "index_set": {
+          "p111": {
+            "calls": {
+              "p111_rt_jump": 1
+            },
+            "instructions": 16
+          }
+        },
+        "k_rebuild": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 8,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.k_rebuild": 1
+            },
+            "instructions": 89
+          },
+          "p112w": {
+            "calls": {
+              "p113d_FID_$direct.k_rebuild": 1
+            },
+            "instructions": 18
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_ctor": 3,
+              "p111_rt_fail": 1,
+              "p111_rt_sink": 9,
+              "p111_rt_take": 3
+            },
+            "instructions": 161
+          }
+        },
+        "kt": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 5,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.kt": 1
+            },
+            "instructions": 59
+          },
+          "p112w": {
+            "calls": {
+              "p113d_FID_$direct.kt": 1
+            },
+            "instructions": 6
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_ctor": 1
+            },
+            "instructions": 19
+          }
+        },
+        "lookup": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.lookup": 1
+            },
+            "instructions": 29
+          },
+          "p112w": {
+            "calls": {
+              "p113d_FID_$direct.lookup": 1
+            },
+            "instructions": 6
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_fail": 4,
+              "p111_rt_keep": 4,
+              "p111_rt_sink": 11,
+              "p113d_FID_$direct.dc": 1,
+              "p113d_FID_$direct.index_find": 1,
+              "p113d_FID_$direct.index_hash": 1,
+              "p113d_FID_$direct.p137q_is_cache": 1,
+              "p113d_FID_$direct.p137q_name_eq": 1,
+              "p125_rt_take2": 2
+            },
+            "instructions": 204
+          }
+        },
+        "nc_native_primitive": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 1,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.nc_native_primitive": 1
+            },
+            "instructions": 20
+          },
+          "p112w": {
+            "calls": {
+              "p113d_FID_$direct.nc_native_primitive": 1
+            },
+            "instructions": 6
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_keep": 24,
+              "p111_rt_op": 8,
+              "p111_rt_sink": 16,
+              "p113d_FID_$direct.nc_atomic": 1,
+              "p113d_FID_$direct.ni_template": 1,
+              "p113d_FID_$direct.p88_string_eq_go": 8
+            },
+            "instructions": 388
+          }
+        },
+        "nc_uses_list": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_return": 1,
+              "p125_rt_take2": 1
+            },
+            "instructions": 60
+          }
+        },
+        "nc_uses_term": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 2,
+              "p111_rt_keep": 1,
+              "p111_rt_sink": 2,
+              "p112w_FID_$direct.ix": 1,
+              "p112w_FID_$direct.ks": 1,
+              "p112w_FID_$direct.p98_tag_eq": 1
+            },
+            "instructions": 74
+          }
+        },
+        "nol_scalar_specs": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 1,
+              "p111_rt_return": 1,
+              "p111_rt_sink": 2,
+              "p112w_FID_$direct.dn": 1,
+              "p125_rt_take2": 1
+            },
+            "instructions": 85
+          }
+        },
+        "nq_layout_subst": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 2,
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 7,
+              "p111_rt_return": 2,
+              "p111_rt_sink": 5,
+              "p112w_FID_$direct.ix": 2,
+              "p112w_FID_$direct.ks": 1,
+              "p112w_FID_$direct.nm": 1,
+              "p112w_FID_$direct.p98_tag_eq": 1,
+              "p112w_FID_$direct.qt": 1
+            },
+            "instructions": 193
+          }
+        },
+        "nt_text_finish": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.nt_text_finish": 1
+            },
+            "instructions": 29
+          },
+          "p112w": {
+            "calls": {
+              "p113d_FID_$direct.nt_text_finish": 1
+            },
+            "instructions": 6
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p113d_FID_$p118.trmc.$direct.String.append": 1,
+              "p125_rt_take2": 1
+            },
+            "instructions": 40
+          }
+        },
+        "p111_lower": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 2,
+              "p111_rt_keep": 2,
+              "p111_rt_op": 1,
+              "p111_rt_sink": 3,
+              "p112w_FID_$direct.ks": 1,
+              "p112w_FID_$direct.p98_tag_eq": 2
+            },
+            "instructions": 125
+          }
+        },
+        "p111q_memory": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 8,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.p111q_memory": 1
+            },
+            "instructions": 89
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_fail": 6,
+              "p111_rt_keep": 6,
+              "p111_rt_sink": 23,
+              "p113d_FID_$direct.String.append": 4,
+              "p113d_FID_$direct.String.eq": 1,
+              "p113d_FID_$direct.U32.show": 1,
+              "p113d_FID_$direct.p111q_local": 1,
+              "p113d_FID_$direct.p111q_tmp": 1,
+              "p113d_FID_$direct.p111q_type": 4,
+              "p113d_FID_$direct.p111q_value": 3,
+              "p125_rt_ctor2": 17,
+              "p125_rt_ctor4": 1,
+              "p125_rt_take4": 1
+            },
+            "instructions": 600
+          }
+        },
+        "p111q_stmt": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 2,
+              "p111_rt_sink": 2,
+              "p112w_FID_$direct.Bool.not": 1,
+              "p112w_FID_$direct.String.is_empty": 1,
+              "p125_rt_take4": 1
+            },
+            "instructions": 103
+          }
+        },
+        "p111q_stmts": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_return": 1,
+              "p111_rt_sink": 1,
+              "p125_rt_take2": 1
+            },
+            "instructions": 67
+          }
+        },
+        "p111v_assign": {
+          "p111": {
+            "calls": {
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 3,
+              "p112w_FID_$direct.da": 1,
+              "p112w_FID_$direct.dk": 1,
+              "p112w_FID_$direct.dx": 1,
+              "p112w_FID_$direct.p111v_get": 1
+            },
+            "instructions": 61
+          }
+        },
+        "p111v_contract": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 7,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.p111v_contract": 1
+            },
+            "instructions": 80
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_fail": 11,
+              "p111_rt_keep": 18,
+              "p111_rt_op": 4,
+              "p111_rt_sink": 40,
+              "p113d_FID_$direct.Bool.and": 10,
+              "p113d_FID_$direct.String.eq": 14,
+              "p113d_FID_$direct.p111v_arg": 5,
+              "p113d_FID_$direct.p111v_at": 1,
+              "p113d_FID_$direct.p111v_buffer": 4,
+              "p113d_FID_$direct.p111v_counted_call": 1,
+              "p113d_FID_$direct.p111v_literal": 5,
+              "p113d_FID_$direct.p111v_special_arity": 2,
+              "p113d_FID_p111v_primitive_arities": 1
+            },
+            "instructions": 901
+          }
+        },
+        "p111v_get": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.p111v_get": 1
+            },
+            "instructions": 29
+          },
+          "p112w": {
+            "calls": {
+              "p113d_FID_$direct.p111v_get": 1
+            },
+            "instructions": 6
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_keep": 1,
+              "p113d_FID_$direct.index_find": 1,
+              "p113d_FID_$direct.index_hash": 1
+            },
+            "instructions": 31
+          }
+        },
+        "p111v_intersection_bucket": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 2,
+              "p111_rt_return": 1,
+              "p111_rt_sink": 1,
+              "p112w_FID_$direct.dn": 1,
+              "p125_rt_take2": 1
+            },
+            "instructions": 98
+          }
+        },
+        "p111v_name_chars": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_op": 2,
+              "p111_rt_return": 1,
+              "p112w_FID_$direct.Bool.and": 3,
+              "p112w_FID_$direct.Char.to_u32": 1,
+              "p125_rt_take2": 1
+            },
+            "instructions": 144
+          }
+        },
+        "p111v_put": {
+          "p111": {
+            "calls": {
+              "p111_rt_ctor": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 1,
+              "p112w_FID_$direct.atom": 2,
+              "p112w_FID_$direct.index_hash": 1
+            },
+            "instructions": 72
+          }
+        },
+        "p111v_value": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 4,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.p111v_value": 1
+            },
+            "instructions": 49
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_fail": 5,
+              "p111_rt_keep": 1,
+              "p111_rt_sink": 12,
+              "p113d_FID_$direct.Bool.and": 4,
+              "p113d_FID_$direct.Bool.not": 3,
+              "p113d_FID_$direct.String.eq": 3,
+              "p113d_FID_$direct.da": 1,
+              "p113d_FID_$direct.dk": 3,
+              "p113d_FID_$direct.p111v_get": 3,
+              "p125_rt_take1": 4,
+              "p125_rt_take2": 3
+            },
+            "instructions": 310
+          }
+        },
+        "p112c_frame": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 4,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.p112c_frame": 1
+            },
+            "instructions": 49
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_fail": 7,
+              "p111_rt_keep": 1,
+              "p111_rt_sink": 167,
+              "p113d_FID_$direct.Bool.and": 5,
+              "p113d_FID_$direct.String.eq": 4,
+              "p113d_FID_$direct.nt_reverse": 1,
+              "p125_rt_ctor1": 1,
+              "p125_rt_ctor2": 1,
+              "p125_rt_ctor4": 1,
+              "p125_rt_take1": 4,
+              "p125_rt_take2": 10,
+              "p125_rt_take4": 2
+            },
+            "instructions": 1344
+          }
+        },
+        "p112f_clean_args": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 1,
+              "p111_rt_return": 1,
+              "p114r_FID_$direct.p112f_clean_args": 1
+            },
+            "instructions": 20
+          },
+          "p114r": {
+            "calls": {
+              "p111_rt_fail": 3,
+              "p111_rt_frame": 1,
+              "p111_rt_sink": 1,
+              "p113d_FID_$direct.Bool.and": 1,
+              "p113d_FID_$direct.p112f_clean_value": 1,
+              "p125_rt_take2": 2
+            },
+            "instructions": 123
+          }
+        },
+        "p112f_clean_stmt": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 5,
+              "p111_rt_return": 4,
+              "p111_rt_sink": 11,
+              "p111_rt_take": 1,
+              "p112w_FID_$direct.p112f_clean_name": 6,
+              "p112w_FID_$direct.p112f_clean_value": 6,
+              "p125_rt_take1": 1,
+              "p125_rt_take3": 4,
+              "p125_rt_take4": 3
+            },
+            "instructions": 307
+          }
+        },
+        "p112r_buffer": {
+          "p111": {
+            "calls": {
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 1
+            },
+            "instructions": 39
+          }
+        },
+        "p112r_buffer_sites": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 1,
+              "p111_rt_return": 1,
+              "p111_rt_sink": 2,
+              "p112w_FID_$direct.U32.show": 1
+            },
+            "instructions": 96
+          }
+        },
+        "p112t_runtime_call": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 1,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.p112t_runtime_call": 1
+            },
+            "instructions": 20
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_keep": 9,
+              "p111_rt_op": 9,
+              "p113d_FID_$direct.String.eq": 10
+            },
+            "instructions": 201
+          }
+        },
+        "p112w_ready": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.p112w_ready": 1
+            },
+            "instructions": 29
+          },
+          "p113d": {
+            "calls": {
+              "p113d_FID_$direct.String.eq": 1,
+              "p113d_FID_$direct.dk": 1,
+              "p113d_FID_$direct.p111v_get": 1
+            },
+            "instructions": 18
+          }
+        },
+        "p113k_function": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 1,
+              "p111_rt_take": 1
+            },
+            "instructions": 70
+          }
+        },
+        "p113k_get": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.p113k_get": 1
+            },
+            "instructions": 29
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_keep": 4,
+              "p111_rt_sink": 1,
+              "p113d_FID_$direct.String.eq": 1,
+              "p113d_FID_$direct.da": 1,
+              "p113d_FID_$direct.dk": 1,
+              "p113d_FID_$direct.dv": 2,
+              "p113d_FID_$direct.dx": 1,
+              "p113d_FID_$direct.ix": 1,
+              "p113d_FID_$direct.p111v_get": 1,
+              "p113d_FID_$direct.qt": 1,
+              "p113d_FID_$product.p113k_bound": 1,
+              "p125_rt_ctor4": 2
+            },
+            "instructions": 124
+          }
+        },
+        "p113k_put": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 3,
+              "p111_rt_sink": 2,
+              "p112w_FID_$direct.Bool.to_u32": 1,
+              "p112w_FID_$direct.p113l_version": 1,
+              "p125_rt_take4": 1
+            },
+            "instructions": 123
+          }
+        },
+        "p113l_version": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.p113l_version": 1
+            },
+            "instructions": 29
+          },
+          "p112w": {
+            "calls": {
+              "p113d_FID_$direct.p113l_version": 1
+            },
+            "instructions": 6
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_keep": 1,
+              "p111_rt_sink": 9,
+              "p111_rt_take": 3,
+              "p113d_FID_$direct.dt": 1,
+              "p113d_FID_$direct.index_find": 1,
+              "p113d_FID_$direct.index_hash": 1
+            },
+            "instructions": 115
+          }
+        },
+        "p113pl_candidates": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 10,
+              "p111_rt_return": 1,
+              "p111_rt_sink": 4,
+              "p112w_FID_$direct.dk": 1,
+              "p112w_FID_$direct.lookup": 2,
+              "p125_rt_take2": 1
+            },
+            "instructions": 195
+          }
+        },
+        "p118t_original_done": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 3,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.p118t_original_done": 1
+            },
+            "instructions": 39
+          },
+          "p112w": {
+            "calls": {
+              "p113d_FID_$direct.p118t_original_done": 1
+            },
+            "instructions": 6
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_fail": 5,
+              "p111_rt_keep": 12,
+              "p111_rt_sink": 41,
+              "p111_rt_take": 7,
+              "p113d_FID_$direct.nt_count_go": 2,
+              "p113d_FID_$direct.nt_reverse": 2,
+              "p113d_FID_$direct.p88_string_eq_go": 3,
+              "p113d_FID_$p118.trmc.$direct.String.append": 1,
+              "p113d_FID_$p118.trmc.$direct.p113d_scalars": 1,
+              "p113d_FID_$p118.trmc.$direct.p113pl_locals": 1,
+              "p113d_FID_$p118.trmc.$direct.p113pl_names": 1,
+              "p113d_FID_$p118.trmc.$direct.p113pl_sets": 2,
+              "p113d_FID_$p126scc.5772": 1,
+              "p125_rt_ctor1": 1,
+              "p125_rt_ctor2": 1,
+              "p125_rt_ctor4": 4
+            },
+            "instructions": 734
+          }
+        },
+        "p118z_transition": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 1,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.p118z_transition": 1
+            },
+            "instructions": 20
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_keep": 2,
+              "p111_rt_op": 2,
+              "p113d_FID_$direct.String.eq": 3
+            },
+            "instructions": 54
+          }
+        },
+        "p128br_retry_plans": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 5,
+              "p111_rt_return": 1,
+              "p111_rt_sink": 4,
+              "p112w_FID_$direct.no_plan_owner": 1,
+              "p125_rt_take2": 1
+            },
+            "instructions": 144
+          }
+        },
+        "p131i_insert": {
+          "p111": {
+            "calls": {
+              "p111_rt_ctor": 1,
+              "p111_rt_fail": 5,
+              "p111_rt_jump": 7,
+              "p111_rt_keep": 5,
+              "p111_rt_sink": 19,
+              "p111_rt_take": 1,
+              "p112w_FID_$direct.index_split_bit": 2,
+              "p125_rt_ctor2": 1,
+              "p125_rt_ctor4": 2,
+              "p125_rt_take2": 1,
+              "p125_rt_take4": 1
+            },
+            "instructions": 504
+          }
+        },
+        "p144e_body_tail": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.p144e_body_tail": 1
+            },
+            "instructions": 29
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_fail": 3,
+              "p111_rt_sink": 4,
+              "p113d_FID_$direct.String.append": 2,
+              "p113d_FID_$direct.String.eq": 1,
+              "p113d_FID_$direct.nt_text_finish": 1,
+              "p125_rt_take4": 1
+            },
+            "instructions": 103
+          }
+        },
+        "p147v_value": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 4,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.p147v_value": 1
+            },
+            "instructions": 49
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_fail": 5,
+              "p111_rt_sink": 12,
+              "p113d_FID_$direct.Bool.and": 3,
+              "p113d_FID_$direct.Bool.not": 2,
+              "p113d_FID_$direct.String.eq": 2,
+              "p113d_FID_$direct.dk": 2,
+              "p113d_FID_$direct.p111v_get": 2,
+              "p113d_FID_$direct.p147v_local": 1,
+              "p125_rt_take1": 4,
+              "p125_rt_take2": 3
+            },
+            "instructions": 285
+          }
+        },
+        "p164h_emit_request": {
+          "p111": {
+            "calls": {
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 1
+            },
+            "instructions": 23
+          }
+        },
+        "p164l_defs": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 2,
+              "p111_rt_return": 1,
+              "p111_rt_sink": 4,
+              "p112w_FID_$direct.lookup": 1,
+              "p112w_FID_$direct.nt_reverse": 1,
+              "p125_rt_ctor3": 2,
+              "p125_rt_take2": 1
+            },
+            "instructions": 204
+          }
+        },
+        "p88_string_eq": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.p88_string_eq": 1
+            },
+            "instructions": 29
+          },
+          "p112w": {
+            "calls": {
+              "p113d_FID_$direct.p88_string_eq": 1
+            },
+            "instructions": 6
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_sink": 2,
+              "p113d_FID_$p118borrow.read.p88_string_eq": 1,
+              "p113d_FID_$p128borrow.owned.p88_string_eq": 1,
+              "p118_rt_borrow_scalar_safe": 1
+            },
+            "instructions": 38
+          }
+        }
+      }
+    },
+    "hybrid-native03": {
+      "assembly": {
+        "bytes": 78989271,
+        "file": "selfhost/build/phase164/hybrid-native03/program.s",
+        "sha256": "3cd20d0a249ded534abdb100d02769bdf2ea1fcef8820f7b5a85d83add83b7c2"
+      },
+      "categories": {
+        "p111_": 51960,
+        "p112w_": 13223,
+        "p113d_": 2096,
+        "p114r_": 86
+      },
+      "largestPublicWorkersByStaticInstructions": [
+        [
+          "p111_FID_$direct.p118f_original_stmt",
+          4055
+        ],
+        [
+          "p111_FID_$direct.p118xs_original",
+          2936
+        ],
+        [
+          "p111_FID_$direct.p114t_expand",
+          2221
+        ],
+        [
+          "p111_FID_$direct.p114t_stmt",
+          2048
+        ],
+        [
+          "p111_FID_$direct.p88_digits",
+          1609
+        ],
+        [
+          "p111_FID_$direct.p131u_merge_loop",
+          1560
+        ],
+        [
+          "p111_FID_$direct.p113a_call_id",
+          1555
+        ],
+        [
+          "p111_FID_$direct.p113j_array_call",
+          1472
+        ],
+        [
+          "p111_FID_$direct.p112r_result",
+          1366
+        ],
+        [
+          "p111_FID_$direct.p128bf_match",
+          1347
+        ],
+        [
+          "p111_FID_$direct.p126s_cells",
+          1325
+        ],
+        [
+          "p111_FID_$direct.p147n_intersection",
+          1021
+        ],
+        [
+          "p111_FID_$direct.p112f_cont_result",
+          803
+        ],
+        [
+          "p111_FID_$direct.p128bi_rule",
+          801
+        ],
+        [
+          "p111_FID_$direct.p112r_failure_frame",
+          801
+        ],
+        [
+          "p111_FID_$direct.p112f_cont_get",
+          800
+        ],
+        [
+          "p111_FID_$direct.p117h_scalar",
+          756
+        ],
+        [
+          "p111_FID_$direct.p134v_scalar",
+          754
+        ],
+        [
+          "p111_FID_$direct.p112t_param_stmt",
+          753
+        ],
+        [
+          "p111_FID_$direct.f_prefix_graph_trace",
+          706
+        ]
+      ],
+      "publicCategories": {
+        "continuation": 44060,
+        "other_or_factory": 3960,
+        "source_worker": 3940
+      },
+      "sameOwnerForwardingCensus": {
+        "ordinary_forwarders_to_same_owner": 592,
+        "public_direct_adapters_to_same_owner": 1359
+      },
+      "selectedOwners": {
+        "String.append": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.String.append": 1
+            },
+            "instructions": 29
+          },
+          "p113d": {
+            "calls": {
+              "p113d_FID_$p118.trmc.$direct.String.append": 1
+            },
+            "instructions": 8
+          }
+        },
+        "String.eq": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.String.eq": 1
+            },
+            "instructions": 29
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_sink": 2,
+              "p113d_FID_$p118borrow.read.String.eq": 1,
+              "p113d_FID_$p128borrow.owned.String.eq": 1,
+              "p118_rt_borrow_scalar_safe": 1
+            },
+            "instructions": 38
+          }
+        },
+        "book_final_filter": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.book_final_filter": 1
+            },
+            "instructions": 29
+          },
+          "p113d": {
+            "calls": {
+              "p113d_FID_$p118.trmc.$direct.book_final_filter": 1
+            },
+            "instructions": 8
+          }
+        },
+        "book_final_names_valid": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 1,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.book_final_names_valid": 1
+            },
+            "instructions": 20
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_sink": 1,
+              "p113d_FID_$p118borrow.read.book_final_names_valid": 1,
+              "p113d_FID_$p128borrow.owned.book_final_names_valid": 1,
+              "p118_rt_borrow_scalar_safe": 1
+            },
+            "instructions": 28
+          }
+        },
+        "book_final_scan": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 2,
+              "p111_rt_keep": 1,
+              "p112w_FID_$direct.dn": 1,
+              "p125_rt_take2": 1
+            },
+            "instructions": 108
+          }
+        },
+        "book_final_seen": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 3,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.book_final_seen": 1
+            },
+            "instructions": 39
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_keep": 2,
+              "p111_rt_sink": 2,
+              "p113d_FID_$direct.dk": 1,
+              "p113d_FID_$direct.index_find": 1,
+              "p113d_FID_$direct.p88_string_eq_go": 1
+            },
+            "instructions": 46
+          }
+        },
+        "book_final_step": {
+          "p111": {
+            "calls": {
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 2,
+              "p112w_FID_$direct.dn": 1
+            },
+            "instructions": 60
+          }
+        },
+        "constructor_exists": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 2,
+              "p111_rt_return": 1,
+              "p111_rt_sink": 1,
+              "p112w_FID_$direct.dk": 1,
+              "p125_rt_take2": 1
+            },
+            "instructions": 96
+          }
+        },
+        "f_ctor_lookup": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 2,
+              "p111_rt_keep": 3,
+              "p111_rt_sink": 1,
+              "p112w_FID_$direct.dk": 1,
+              "p125_rt_take2": 1
+            },
+            "instructions": 102
+          }
+        },
+        "f_eq": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.f_eq": 1
+            },
+            "instructions": 29
+          },
+          "p112w": {
+            "calls": {
+              "p113d_FID_$direct.f_eq": 1
+            },
+            "instructions": 6
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_sink": 2,
+              "p113d_FID_$p118borrow.read.f_eq": 1,
+              "p113d_FID_$p128borrow.owned.f_eq": 1,
+              "p118_rt_borrow_scalar_safe": 1
+            },
+            "instructions": 38
+          }
+        },
+        "f_find": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.f_find": 1
+            },
+            "instructions": 29
+          },
+          "p113d": {
+            "calls": {
+              "p113d_FID_$p126scc.1047": 1
+            },
+            "instructions": 11
+          }
+        },
+        "f_grow_base": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 1,
+              "p112w_FID_$direct.tg": 1,
+              "p125_rt_take2": 1
+            },
+            "instructions": 69
+          }
+        },
+        "f_grow_existing": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 3,
+              "p112w_FID_$direct.f_tx": 1,
+              "p125_rt_take2": 1
+            },
+            "instructions": 89
+          }
+        },
+        "f_name_chars": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 3,
+              "p111_rt_return": 1,
+              "p111_rt_sink": 2,
+              "p112w_FID_$direct.String.is_empty": 1,
+              "p112w_FID_$direct.f_head": 1
+            },
+            "instructions": 83
+          }
+        },
+        "f_pattern_sub": {
+          "p111": {
+            "calls": {
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 2,
+              "p112w_FID_$direct.tg": 1
+            },
+            "instructions": 51
+          }
+        },
+        "f_prec": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 1,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.f_prec": 1
+            },
+            "instructions": 20
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_fail": 12,
+              "p111_rt_keep": 54,
+              "p111_rt_op": 11,
+              "p111_rt_sink": 54,
+              "p113d_FID_$direct.f_eq": 7,
+              "p113d_FID_$direct.p88_string_eq_go": 16
+            },
+            "instructions": 967
+          }
+        },
+        "f_skip": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 1,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.f_skip": 1
+            },
+            "instructions": 20
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_fail": 6,
+              "p111_rt_keep": 6,
+              "p111_rt_op": 1,
+              "p111_rt_sink": 8,
+              "p111_rt_take": 2,
+              "p113d_FID_$direct.f_raw_skip": 1,
+              "p113d_FID_$direct.p88_string_eq_go": 2,
+              "p125_rt_ctor2": 2,
+              "p125_rt_take2": 3
+            },
+            "instructions": 250
+          }
+        },
+        "index_find": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 4,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.index_find": 1
+            },
+            "instructions": 49
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_fail": 4,
+              "p111_rt_keep": 3,
+              "p111_rt_sink": 29,
+              "p111_rt_take": 1,
+              "p113d_FID_$direct.index_bucket": 3,
+              "p113d_FID_$direct.p88_string_eq_go": 1,
+              "p125_rt_ctor2": 2,
+              "p125_rt_take2": 3,
+              "p125_rt_take4": 1
+            },
+            "instructions": 405
+          }
+        },
+        "index_remove": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 2,
+              "p111_rt_return": 1,
+              "p111_rt_sink": 1,
+              "p112w_FID_$direct.dn": 1,
+              "p125_rt_take2": 1
+            },
+            "instructions": 88
+          }
+        },
+        "index_set": {
+          "p111": {
+            "calls": {
+              "p111_rt_jump": 1
+            },
+            "instructions": 16
+          }
+        },
+        "k_rebuild": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 8,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.k_rebuild": 1
+            },
+            "instructions": 89
+          },
+          "p112w": {
+            "calls": {
+              "p113d_FID_$direct.k_rebuild": 1
+            },
+            "instructions": 18
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_ctor": 3,
+              "p111_rt_fail": 1,
+              "p111_rt_sink": 9,
+              "p111_rt_take": 3
+            },
+            "instructions": 161
+          }
+        },
+        "kt": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 5,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.kt": 1
+            },
+            "instructions": 59
+          },
+          "p112w": {
+            "calls": {
+              "p113d_FID_$direct.kt": 1
+            },
+            "instructions": 6
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_ctor": 1
+            },
+            "instructions": 19
+          }
+        },
+        "lookup": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.lookup": 1
+            },
+            "instructions": 29
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_fail": 4,
+              "p111_rt_keep": 4,
+              "p111_rt_sink": 11,
+              "p113d_FID_$direct.dc": 1,
+              "p113d_FID_$direct.index_find": 1,
+              "p113d_FID_$direct.index_hash": 1,
+              "p113d_FID_$direct.p137q_is_cache": 1,
+              "p113d_FID_$direct.p137q_name_eq": 1,
+              "p125_rt_take2": 2
+            },
+            "instructions": 204
+          }
+        },
+        "nc_native_primitive": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 1,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.nc_native_primitive": 1
+            },
+            "instructions": 20
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_keep": 24,
+              "p111_rt_op": 8,
+              "p111_rt_sink": 16,
+              "p113d_FID_$direct.nc_atomic": 1,
+              "p113d_FID_$direct.ni_template": 1,
+              "p113d_FID_$direct.p88_string_eq_go": 8
+            },
+            "instructions": 388
+          }
+        },
+        "nc_uses_list": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_return": 1,
+              "p125_rt_take2": 1
+            },
+            "instructions": 60
+          }
+        },
+        "nc_uses_term": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 2,
+              "p111_rt_keep": 1,
+              "p111_rt_sink": 2,
+              "p112w_FID_$direct.ix": 1,
+              "p112w_FID_$direct.ks": 1,
+              "p112w_FID_$direct.p98_tag_eq": 1
+            },
+            "instructions": 74
+          }
+        },
+        "nol_scalar_specs": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 1,
+              "p111_rt_return": 1,
+              "p111_rt_sink": 2,
+              "p112w_FID_$direct.dn": 1,
+              "p125_rt_take2": 1
+            },
+            "instructions": 85
+          }
+        },
+        "nq_layout_subst": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 2,
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 7,
+              "p111_rt_return": 2,
+              "p111_rt_sink": 5,
+              "p112w_FID_$direct.ix": 2,
+              "p112w_FID_$direct.ks": 1,
+              "p112w_FID_$direct.nm": 1,
+              "p112w_FID_$direct.p98_tag_eq": 1,
+              "p112w_FID_$direct.qt": 1
+            },
+            "instructions": 193
+          }
+        },
+        "nt_text_finish": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.nt_text_finish": 1
+            },
+            "instructions": 29
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p113d_FID_$p118.trmc.$direct.String.append": 1,
+              "p125_rt_take2": 1
+            },
+            "instructions": 40
+          }
+        },
+        "p111_lower": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 2,
+              "p111_rt_keep": 2,
+              "p111_rt_op": 1,
+              "p111_rt_sink": 3,
+              "p112w_FID_$direct.ks": 1,
+              "p112w_FID_$direct.p98_tag_eq": 2
+            },
+            "instructions": 125
+          }
+        },
+        "p111q_memory": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 8,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.p111q_memory": 1
+            },
+            "instructions": 89
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_fail": 6,
+              "p111_rt_keep": 6,
+              "p111_rt_sink": 23,
+              "p113d_FID_$direct.String.append": 4,
+              "p113d_FID_$direct.String.eq": 1,
+              "p113d_FID_$direct.U32.show": 1,
+              "p113d_FID_$direct.p111q_local": 1,
+              "p113d_FID_$direct.p111q_tmp": 1,
+              "p113d_FID_$direct.p111q_type": 4,
+              "p113d_FID_$direct.p111q_value": 3,
+              "p125_rt_ctor2": 17,
+              "p125_rt_ctor4": 1,
+              "p125_rt_take4": 1
+            },
+            "instructions": 600
+          }
+        },
+        "p111q_stmt": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 2,
+              "p111_rt_sink": 2,
+              "p112w_FID_$direct.Bool.not": 1,
+              "p112w_FID_$direct.String.is_empty": 1,
+              "p125_rt_take4": 1
+            },
+            "instructions": 103
+          }
+        },
+        "p111q_stmts": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_return": 1,
+              "p111_rt_sink": 1,
+              "p125_rt_take2": 1
+            },
+            "instructions": 67
+          }
+        },
+        "p111v_assign": {
+          "p111": {
+            "calls": {
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 1
+            },
+            "instructions": 33
+          }
+        },
+        "p111v_contract": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 7,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.p111v_contract": 1
+            },
+            "instructions": 80
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_fail": 11,
+              "p111_rt_keep": 18,
+              "p111_rt_op": 4,
+              "p111_rt_sink": 40,
+              "p113d_FID_$direct.Bool.and": 10,
+              "p113d_FID_$direct.String.eq": 14,
+              "p113d_FID_$direct.p111v_arg": 5,
+              "p113d_FID_$direct.p111v_at": 1,
+              "p113d_FID_$direct.p111v_buffer": 4,
+              "p113d_FID_$direct.p111v_counted_call": 1,
+              "p113d_FID_$direct.p111v_literal": 5,
+              "p113d_FID_$direct.p111v_special_arity": 2,
+              "p113d_FID_p111v_primitive_arities": 1
+            },
+            "instructions": 901
+          }
+        },
+        "p111v_get": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.p111v_get": 1
+            },
+            "instructions": 29
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_keep": 1,
+              "p113d_FID_$direct.index_find": 1,
+              "p113d_FID_$direct.index_hash": 1
+            },
+            "instructions": 31
+          }
+        },
+        "p111v_intersection_bucket": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 2,
+              "p111_rt_return": 1,
+              "p111_rt_sink": 1,
+              "p112w_FID_$direct.dn": 1,
+              "p125_rt_take2": 1
+            },
+            "instructions": 98
+          }
+        },
+        "p111v_name_chars": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_op": 2,
+              "p111_rt_return": 1,
+              "p112w_FID_$direct.Bool.and": 3,
+              "p112w_FID_$direct.Char.to_u32": 1,
+              "p125_rt_take2": 1
+            },
+            "instructions": 144
+          }
+        },
+        "p111v_put": {
+          "p111": {
+            "calls": {
+              "p111_rt_ctor": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 1,
+              "p112w_FID_$direct.atom": 2,
+              "p112w_FID_$direct.index_hash": 1
+            },
+            "instructions": 72
+          }
+        },
+        "p111v_value": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 4,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.p111v_value": 1
+            },
+            "instructions": 49
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_fail": 5,
+              "p111_rt_keep": 1,
+              "p111_rt_sink": 12,
+              "p113d_FID_$direct.Bool.and": 4,
+              "p113d_FID_$direct.Bool.not": 3,
+              "p113d_FID_$direct.String.eq": 3,
+              "p113d_FID_$direct.da": 1,
+              "p113d_FID_$direct.dk": 3,
+              "p113d_FID_$direct.p111v_get": 3,
+              "p125_rt_take1": 4,
+              "p125_rt_take2": 3
+            },
+            "instructions": 310
+          }
+        },
+        "p112c_frame": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 4,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.p112c_frame": 1
+            },
+            "instructions": 49
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_fail": 7,
+              "p111_rt_keep": 1,
+              "p111_rt_sink": 167,
+              "p113d_FID_$direct.Bool.and": 5,
+              "p113d_FID_$direct.String.eq": 4,
+              "p113d_FID_$direct.nt_reverse": 1,
+              "p125_rt_ctor1": 1,
+              "p125_rt_ctor2": 1,
+              "p125_rt_ctor4": 1,
+              "p125_rt_take1": 4,
+              "p125_rt_take2": 10,
+              "p125_rt_take4": 2
+            },
+            "instructions": 1344
+          }
+        },
+        "p112f_clean_args": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 1,
+              "p111_rt_return": 1,
+              "p114r_FID_$direct.p112f_clean_args": 1
+            },
+            "instructions": 20
+          },
+          "p114r": {
+            "calls": {
+              "p111_rt_fail": 3,
+              "p111_rt_frame": 1,
+              "p111_rt_sink": 1,
+              "p113d_FID_$direct.Bool.and": 1,
+              "p113d_FID_$direct.p112f_clean_value": 1,
+              "p125_rt_take2": 2
+            },
+            "instructions": 123
+          }
+        },
+        "p112f_clean_stmt": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 9,
+              "p111_rt_sink": 11,
+              "p111_rt_take": 1,
+              "p125_rt_take1": 1,
+              "p125_rt_take3": 4,
+              "p125_rt_take4": 3
+            },
+            "instructions": 271
+          }
+        },
+        "p112r_buffer": {
+          "p111": {
+            "calls": {
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 1
+            },
+            "instructions": 39
+          }
+        },
+        "p112r_buffer_sites": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 1,
+              "p111_rt_return": 1,
+              "p111_rt_sink": 2
+            },
+            "instructions": 98
+          }
+        },
+        "p112t_runtime_call": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 1,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.p112t_runtime_call": 1
+            },
+            "instructions": 20
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_keep": 9,
+              "p111_rt_op": 9,
+              "p113d_FID_$direct.String.eq": 10
+            },
+            "instructions": 201
+          }
+        },
+        "p112w_ready": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.p112w_ready": 1
+            },
+            "instructions": 29
+          },
+          "p113d": {
+            "calls": {
+              "p113d_FID_$direct.String.eq": 1,
+              "p113d_FID_$direct.dk": 1,
+              "p113d_FID_$direct.p111v_get": 1
+            },
+            "instructions": 18
+          }
+        },
+        "p113k_function": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 1,
+              "p111_rt_take": 1
+            },
+            "instructions": 70
+          }
+        },
+        "p113k_get": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.p113k_get": 1
+            },
+            "instructions": 29
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_keep": 4,
+              "p111_rt_sink": 1,
+              "p113d_FID_$direct.String.eq": 1,
+              "p113d_FID_$direct.da": 1,
+              "p113d_FID_$direct.dk": 1,
+              "p113d_FID_$direct.dv": 2,
+              "p113d_FID_$direct.dx": 1,
+              "p113d_FID_$direct.ix": 1,
+              "p113d_FID_$direct.p111v_get": 1,
+              "p113d_FID_$direct.qt": 1,
+              "p113d_FID_$product.p113k_bound": 1,
+              "p125_rt_ctor4": 2
+            },
+            "instructions": 124
+          }
+        },
+        "p113k_put": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 3,
+              "p111_rt_sink": 2,
+              "p112w_FID_$direct.Bool.to_u32": 1,
+              "p125_rt_take4": 1
+            },
+            "instructions": 122
+          }
+        },
+        "p113l_version": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.p113l_version": 1
+            },
+            "instructions": 29
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_keep": 1,
+              "p111_rt_sink": 9,
+              "p111_rt_take": 3,
+              "p113d_FID_$direct.dt": 1,
+              "p113d_FID_$direct.index_find": 1,
+              "p113d_FID_$direct.index_hash": 1
+            },
+            "instructions": 115
+          }
+        },
+        "p113pl_candidates": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 2,
+              "p111_rt_return": 1,
+              "p111_rt_sink": 4,
+              "p125_rt_take2": 1
+            },
+            "instructions": 114
+          }
+        },
+        "p118t_original_done": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 3,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.p118t_original_done": 1
+            },
+            "instructions": 39
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_fail": 5,
+              "p111_rt_keep": 12,
+              "p111_rt_sink": 41,
+              "p111_rt_take": 7,
+              "p113d_FID_$direct.nt_count_go": 2,
+              "p113d_FID_$direct.nt_reverse": 2,
+              "p113d_FID_$direct.p88_string_eq_go": 3,
+              "p113d_FID_$p118.trmc.$direct.String.append": 1,
+              "p113d_FID_$p118.trmc.$direct.p113d_scalars": 1,
+              "p113d_FID_$p118.trmc.$direct.p113pl_locals": 1,
+              "p113d_FID_$p118.trmc.$direct.p113pl_names": 1,
+              "p113d_FID_$p118.trmc.$direct.p113pl_sets": 2,
+              "p113d_FID_$p126scc.5772": 1,
+              "p125_rt_ctor1": 1,
+              "p125_rt_ctor2": 1,
+              "p125_rt_ctor4": 4
+            },
+            "instructions": 734
+          }
+        },
+        "p118z_transition": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 1,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.p118z_transition": 1
+            },
+            "instructions": 20
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_keep": 2,
+              "p111_rt_op": 2,
+              "p113d_FID_$direct.String.eq": 3
+            },
+            "instructions": 54
+          }
+        },
+        "p128br_retry_plans": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 5,
+              "p111_rt_return": 1,
+              "p111_rt_sink": 4,
+              "p112w_FID_$direct.no_plan_owner": 1,
+              "p125_rt_take2": 1
+            },
+            "instructions": 144
+          }
+        },
+        "p131i_insert": {
+          "p111": {
+            "calls": {
+              "p111_rt_ctor": 1,
+              "p111_rt_fail": 5,
+              "p111_rt_jump": 7,
+              "p111_rt_keep": 5,
+              "p111_rt_sink": 19,
+              "p111_rt_take": 1,
+              "p112w_FID_$direct.index_split_bit": 2,
+              "p125_rt_ctor2": 1,
+              "p125_rt_ctor4": 2,
+              "p125_rt_take2": 1,
+              "p125_rt_take4": 1
+            },
+            "instructions": 504
+          }
+        },
+        "p144e_body_tail": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.p144e_body_tail": 1
+            },
+            "instructions": 29
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_fail": 3,
+              "p111_rt_sink": 4,
+              "p113d_FID_$direct.String.append": 2,
+              "p113d_FID_$direct.String.eq": 1,
+              "p113d_FID_$direct.nt_text_finish": 1,
+              "p125_rt_take4": 1
+            },
+            "instructions": 103
+          }
+        },
+        "p147v_value": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 4,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.p147v_value": 1
+            },
+            "instructions": 49
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_fail": 5,
+              "p111_rt_sink": 12,
+              "p113d_FID_$direct.Bool.and": 3,
+              "p113d_FID_$direct.Bool.not": 2,
+              "p113d_FID_$direct.String.eq": 2,
+              "p113d_FID_$direct.dk": 2,
+              "p113d_FID_$direct.p111v_get": 2,
+              "p113d_FID_$direct.p147v_local": 1,
+              "p125_rt_take1": 4,
+              "p125_rt_take2": 3
+            },
+            "instructions": 285
+          }
+        },
+        "p164h_emit_request": {
+          "p111": {
+            "calls": {
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 1
+            },
+            "instructions": 23
+          }
+        },
+        "p164l_defs": {
+          "p111": {
+            "calls": {
+              "p111_rt_fail": 1,
+              "p111_rt_jump": 1,
+              "p111_rt_keep": 2,
+              "p111_rt_return": 1,
+              "p111_rt_sink": 4,
+              "p112w_FID_$direct.nt_reverse": 1,
+              "p125_rt_ctor3": 2,
+              "p125_rt_take2": 1
+            },
+            "instructions": 204
+          }
+        },
+        "p88_string_eq": {
+          "p111": {
+            "calls": {
+              "p111_rt_reg_get": 2,
+              "p111_rt_return": 1,
+              "p113d_FID_$direct.p88_string_eq": 1
+            },
+            "instructions": 29
+          },
+          "p112w": {
+            "calls": {
+              "p113d_FID_$direct.p88_string_eq": 1
+            },
+            "instructions": 6
+          },
+          "p113d": {
+            "calls": {
+              "p111_rt_sink": 2,
+              "p113d_FID_$p118borrow.read.p88_string_eq": 1,
+              "p113d_FID_$p128borrow.owned.p88_string_eq": 1,
+              "p118_rt_borrow_scalar_safe": 1
+            },
+            "instructions": 38
+          }
+        }
+      }
+    }
+  },
+  "phase161HotOwnerSelection": {
+    "checking/publication": [
+      "p131i_insert",
+      "book_final_seen",
+      "book_final_names_valid",
+      "book_final_filter",
+      "index_remove",
+      "lookup",
+      "p88_string_eq",
+      "constructor_exists",
+      "book_final_step",
+      "book_final_scan"
+    ],
+    "initial optimizer": [
+      "p111v_name_chars",
+      "p113k_get",
+      "p111v_get",
+      "p111v_value",
+      "p131i_insert",
+      "p111v_contract",
+      "p113l_version",
+      "String.eq",
+      "p147v_value"
+    ],
+    "observer composition and selected final admission": [
+      "nol_scalar_specs",
+      "p111v_get",
+      "lookup",
+      "p111v_name_chars",
+      "p131i_insert",
+      "p111v_intersection_bucket",
+      "p128br_retry_plans",
+      "p88_string_eq",
+      "p111v_put"
+    ],
+    "parse/load": [
+      "f_eq",
+      "f_prec",
+      "f_grow_base",
+      "f_pattern_sub",
+      "f_find",
+      "f_grow_existing",
+      "f_name_chars",
+      "f_ctor_lookup",
+      "f_skip"
+    ],
+    "private/direct candidate production": [
+      "nc_uses_term",
+      "lookup",
+      "String.eq",
+      "nc_uses_list",
+      "nq_layout_subst",
+      "String.append",
+      "p118t_original_done",
+      "nc_native_primitive",
+      "k_rebuild"
+    ],
+    "registry preparation": [
+      "String.eq",
+      "String.append",
+      "p112w_ready",
+      "p112r_buffer_sites",
+      "p111v_get",
+      "p112t_runtime_call",
+      "p112r_buffer",
+      "p112c_frame",
+      "p118z_transition"
+    ],
+    "render/output and teardown until milestone exit": [
+      "p144e_body_tail",
+      "String.append",
+      "String.eq",
+      "p112w_ready",
+      "p111q_memory",
+      "p111v_get",
+      "p112t_runtime_call",
+      "p112f_clean_stmt",
+      "p112f_clean_args"
+    ]
+  },
+  "profileSource": {
+    "bytes": 205017,
+    "file": "implementation/phase161/profile-metrics.json",
+    "sha256": "23885230c01c238682427a62a629f096be0a9b6d9cf1e31b60325484223891a1"
+  },
+  "scope": "Offline static assembly/source census. Not dynamic instruction counts, runtime profiles, omitted-body counts or same-generation compiler timing. Earlier Phase161 owner names select inspection only."
+}

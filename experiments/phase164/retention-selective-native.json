@@ -1,0 +1,179 @@
+{
+  "kind": "phase164-selective-native-retention-policy",
+  "version": 1,
+  "status": "pending-campaign-closure-and-archive-verification",
+  "allowedRoots": [
+    "selfhost/build/phase164/hybrid-native03",
+    "selfhost/build/phase164/hybrid-n2-03"
+  ],
+  "archiveRoots": {
+    "selfhost/build-retention/phase164/hybrid-native03-guard/root-00/receipt.json": "selfhost/build/phase164/hybrid-native03",
+    "selfhost/build-retention/phase164/hybrid-n2-03-guard/root-00/receipt.json": "selfhost/build/phase164/hybrid-n2-03"
+  },
+  "keepPrefixes": [
+    "selfhost/build/phase164/hybrid-native03/link.stdout",
+    "selfhost/build/phase164/hybrid-native03/compiler.stderr",
+    "selfhost/build/phase164/hybrid-native03/link.stderr",
+    "selfhost/build/phase164/hybrid-native03/assemble.stdout",
+    "selfhost/build/phase164/hybrid-native03/report.json",
+    "selfhost/build/phase164/hybrid-native03/program",
+    "selfhost/build/phase164/hybrid-native03/request.json",
+    "selfhost/build/phase164/hybrid-native03/qbe.stdout",
+    "selfhost/build/phase164/hybrid-native03/assemble.stderr",
+    "selfhost/build/phase164/hybrid-native03/qbe.stderr",
+    "selfhost/build/phase164/hybrid-native03/program.ssa",
+    "selfhost/build/phase164/hybrid-n2-03/link.stdout",
+    "selfhost/build/phase164/hybrid-n2-03/compiler.stderr",
+    "selfhost/build/phase164/hybrid-n2-03/link.stderr",
+    "selfhost/build/phase164/hybrid-n2-03/assemble.stdout",
+    "selfhost/build/phase164/hybrid-n2-03/report.json",
+    "selfhost/build/phase164/hybrid-n2-03/program",
+    "selfhost/build/phase164/hybrid-n2-03/request.json",
+    "selfhost/build/phase164/hybrid-n2-03/qbe.stdout",
+    "selfhost/build/phase164/hybrid-n2-03/assemble.stderr",
+    "selfhost/build/phase164/hybrid-n2-03/qbe.stderr",
+    "selfhost/build/phase164/hybrid-n2-03/program.ssa"
+  ],
+  "roots": [
+    {
+      "root": "selfhost/build/phase164/hybrid-native03",
+      "guard": "selfhost/build/phase164/hybrid-native03-guard",
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase164/hybrid-native03/program.s",
+          "bytes": 78989271,
+          "recordedBuildSha256": "3cd20d0a249ded534abdb100d02769bdf2ea1fcef8820f7b5a85d83add83b7c2",
+          "allocatedBytes": 78995456
+        },
+        {
+          "file": "selfhost/build/phase164/hybrid-native03/program.o",
+          "bytes": 22793808,
+          "recordedBuildSha256": "a27abc0942ae24f2c4150e9cca47990bfa394865372869d909f617d4f51c0ff7",
+          "allocatedBytes": 22794240
+        }
+      ],
+      "closeCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/close.py",
+        "--run",
+        "selfhost/build/phase164/hybrid-native03-guard",
+        "--out",
+        "selfhost/build-retention/phase164/hybrid-native03-guard",
+        "--classification",
+        "completed"
+      ],
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase164/retention-selective-native.json",
+        "--receipt",
+        "selfhost/build-retention/phase164/hybrid-native03-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase164/selective-hybrid-native03/verified"
+      ],
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase164/selective-hybrid-native03/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase164/selective-hybrid-native03/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase164/selective-hybrid-native03/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase164/selective-hybrid-native03/restored"
+      ]
+    },
+    {
+      "root": "selfhost/build/phase164/hybrid-n2-03",
+      "guard": "selfhost/build/phase164/hybrid-n2-03-guard",
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase164/hybrid-n2-03/program.s",
+          "bytes": 75150548,
+          "recordedBuildSha256": "bc3a1bedb5fc59459945c21b41b6e04c02dc6dc663cef117c1f3311aeac2e28e",
+          "allocatedBytes": 75157504
+        },
+        {
+          "file": "selfhost/build/phase164/hybrid-n2-03/program.o",
+          "bytes": 21526712,
+          "recordedBuildSha256": "bd227561ffede8e25dfde6f3c6adbaf63f9d8803160b8893f942a53e78a151c9",
+          "allocatedBytes": 21528576
+        }
+      ],
+      "closeCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/close.py",
+        "--run",
+        "selfhost/build/phase164/hybrid-n2-03-guard",
+        "--out",
+        "selfhost/build-retention/phase164/hybrid-n2-03-guard",
+        "--classification",
+        "completed"
+      ],
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase164/retention-selective-native.json",
+        "--receipt",
+        "selfhost/build-retention/phase164/hybrid-n2-03-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase164/selective-hybrid-n2-03/verified"
+      ],
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase164/selective-hybrid-n2-03/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase164/selective-hybrid-n2-03/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase164/selective-hybrid-n2-03/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase164/selective-hybrid-n2-03/restored"
+      ]
+    }
+  ],
+  "allocatedBytesBeforeNewArchives": 198475776,
+  "allocatedMiBBeforeNewArchives": 189.28125,
+  "dependencies": [
+    "Maintained request.py image_binding reads the ELF and completed report/imageBinding; it does not open assembly/object paths.",
+    "Phase164 requests.py reads the candidate report and verifies its binary. self-emission.py additionally verifies source/Base/carrier/runtime identities; none are selected.",
+    "runtime-mechanism.py reads transfer-machine01 assembly/objects, a different root that is outside this policy.",
+    "All Phase163 roots, Phase152 qualified assets, source trees, reports, ELF images, existing raw oracles, request records and other Phase164 roots remain outside the selection."
+  ],
+  "conditions": [
+    "Root alone closes/archives/verifies/applies after the target lane ends and confirms no profiling or machine inspection needs these four files hot.",
+    "Do not use close.py --prune: its automatic closure plan covers the whole root. Close without pruning, then use this narrower policy.",
+    "The two specified receipt paths are future outputs, not existing recovery evidence. No pruning before both full-byte archives are created and independently verified.",
+    "Fresh archive-v02 plans must select exactly program.s and program.o for each root. Any added root member must be protected or reviewed before applying.",
+    "Build-report SHA values above are recorded identities, not fresh archive authentication. Fresh verify must authenticate current bytes/metadata and every archived member under the shared lock.",
+    "Gross reclaim is 198475776 bytes; subtract newly created archive sizes for actual net gain. Keep the normal 5 GiB reserve and declared job budgets.",
+    "Restore uses each fresh selective verified plan; retain those plans, apply journals, closure reports and exact archives. No source, executable, report or qualification status changes are authorized by this policy."
+  ],
+  "actionsExecuted": "Read-only source/metadata review and this policy file only. No target, archive, close, verification-tool or prune job executed."
+}

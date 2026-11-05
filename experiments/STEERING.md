@@ -1,4 +1,34 @@
-# Current frontier — Phase163 direct-first prototype; Phase152 remains qualified
+# Current frontier — Phase164 mixed-route limits; Phase152 remains qualified
+
+[Latest report](../implementation/phase164/README.md) ·
+[Mixed evidence](../implementation/phase164/mixed-metrics.json) ·
+[Index experiment](../implementation/phase164/zipper-metrics.json).
+
+Mixed direct-first lowering now executes ten original IO fixtures and compiles
+its own native source. N2 self-emission exactly reproduces the predecessor QBE.
+However, same-source full acquisition is201.931→201.271s: no meaningful cold
+gain established. This1.556MB private source differs from the3.085MB maintained
+source behind the249.222s qualified observation. N2 small native requests improve
+about5% on two cases but regress5.6% on Map. Do not promote this route yet.
+
+A100-line imports-only interface reproduces the clear Mandelbrot/Unicode runtime
+gains (15.0%/12.4%, two pairs) while retaining all original lowering and checking;
+editdist is neutral. No new broad score or native imports-only qualification.
+Explicit index reconstruction passes356 complete host comparisons per variant
+and17 fused native controls. List-plus-frame state is neutral; a fused recursive
+frame saves5.37%/1.55% on two complete4096-key map workloads, four pairs. This is
+not a whole-compiler speedup and does not justify another acquisition alone.
+
+Next identify the exact existing local-region refusal on insertion/typed verifier
+reconstruction and measure a complete checker request. Existing non-tail regions
+already provide stack-safe execution; bendc's ordinary recursive C calls instead
+rely on large guarded virtual stacks. Preserve that distinction. Generic fact
+records, repeated hashing and semantic work remain separate measured leads.
+No credible five-second full-build forecast, production change or recursive
+acceleration claim. All30 target jobs sealed,18.6min target wall; exact failures
+and source snapshots retained. See report for resource and validation boundaries.
+
+## Previous direct-first experiment
 
 [Latest architectural experiment](../implementation/phase163/README.md) ·
 [Measured limits](../implementation/phase163/metrics.json) ·

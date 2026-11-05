@@ -1,0 +1,4119 @@
+{
+  "kind": "phase164-mixed-frozen-metrics",
+  "version": 1,
+  "scope": "Receipt-only consolidation of mixed lowering and imports-only experiments. Excludes the separate index-reconstruction/zipper experiment. No target jobs or archive operations during consolidation.",
+  "status": "Private research candidates; no production promotion or whole-language qualification asserted.",
+  "method": "All product pins/counts/timings are copied or derived from pinned local JSON receipts. Products are not re-executed or independently rehashed in this consolidation. Ratios mean candidate/baseline; lower is faster.",
+  "sources": {
+    "hybrid-api-source01": {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/hybrid-api-source01/compiler.bend",
+        "bytes": 1524187,
+        "sha256": "54d6dc38e7ba1c860f41fafb7a28e0c155c60a767afbde7578c1b785136e79be"
+      },
+      "parentSource": {
+        "file": "selfhost/build/phase152/production-source02/compiler.bend",
+        "bytes": 3085157,
+        "sha256": "027e15041035522ed7e40ef971eff75f24a09ef6a00e3f8fe335839f94bcb8a8"
+      },
+      "declarationCount": 4513,
+      "replacements": [
+        [
+          "def",
+          "p134e_prepare"
+        ],
+        [
+          "def",
+          "p134e_private"
+        ]
+      ],
+      "additiveReplacements": [],
+      "protectedUnchanged": true,
+      "experimentalModules": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase164/hybrid-adapter.bend",
+          "bytes": 3621,
+          "sha256": "747359e8199927f3b24ff3b5561b38cf3cee75dfbf5f3174d9e31185877e5d6a"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase164/hybrid-lower.bend",
+          "bytes": 6203,
+          "sha256": "4de269efbad3b0cb4209dc1ec6895dcdc5ceb198a6e15c6d373dd416ac598f39"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase164/hybrid-verify.bend",
+          "bytes": 5015,
+          "sha256": "e1e53f813c2c454251059d4f2243ba46b8e0fc75ec97978ae8fa1f95f43e7858"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase164/hybrid-entry.bend",
+          "bytes": 4390,
+          "sha256": "ce951cc7dfc0fa9afbecf587ec6a3432927730a5e89b561cecd4fecebdd8a72a"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase164/hybrid-render.bend",
+          "bytes": 3231,
+          "sha256": "f4517077e2e5994b1fc71c625bb808464dfe334c37950032e8044cc7d8cd7463"
+        }
+      ]
+    },
+    "hybrid-api-source02": {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/hybrid-api-source02/compiler.bend",
+        "bytes": 1530259,
+        "sha256": "81396e6bc056bf96c2fc5a13f6bfa2997fd29b82150781cca8fc89d8cb2373d4"
+      },
+      "parentSource": {
+        "file": "selfhost/build/phase152/production-source02/compiler.bend",
+        "bytes": 3085157,
+        "sha256": "027e15041035522ed7e40ef971eff75f24a09ef6a00e3f8fe335839f94bcb8a8"
+      },
+      "declarationCount": 4526,
+      "replacements": [
+        [
+          "def",
+          "p134e_prepare"
+        ],
+        [
+          "def",
+          "p134e_private"
+        ]
+      ],
+      "additiveReplacements": [],
+      "protectedUnchanged": true,
+      "experimentalModules": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase164/hybrid-adapter.bend",
+          "bytes": 3342,
+          "sha256": "81f17161e8cce01760ba773d345eb920f10039eca7fa386782ad205a57bd85cb"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase164/hybrid-lower.bend",
+          "bytes": 6123,
+          "sha256": "af9438c1dfd3fcb7a5d77c447bc4f1982aec4c3feb35b642ca9a614cc613feaa"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase164/hybrid-verify.bend",
+          "bytes": 5015,
+          "sha256": "e1e53f813c2c454251059d4f2243ba46b8e0fc75ec97978ae8fa1f95f43e7858"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase164/hybrid-entry.bend",
+          "bytes": 4739,
+          "sha256": "76b8778e2b7cbe598dd530a93c3d49c4f52b07d5e020b29b38357985e1ee1068"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase164/hybrid-render.bend",
+          "bytes": 3286,
+          "sha256": "aea2ab9857624741c0ef4dc724e3c77156e33f5ed9521ad407e0670271bc2727"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase164/hybrid-controls.bend",
+          "bytes": 5858,
+          "sha256": "d12bfc03736b998ebd9bb81f113b050fd5e5487f80376d055b227a2265326369"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase164/controls-api.bend",
+          "bytes": 143,
+          "sha256": "ef3e6a45f6c2b2c215b1ec70fa7753e5ffc6e49984e92db48bb38ea797a85d1b"
+        }
+      ]
+    },
+    "hybrid-api-source03": {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/hybrid-api-source03/compiler.bend",
+        "bytes": 1537053,
+        "sha256": "c4b5f4715a0d0d5015435cf7e9ff17777b75fdef9b06328f4f5a37b5d569bfd0"
+      },
+      "parentSource": {
+        "file": "selfhost/build/phase152/production-source02/compiler.bend",
+        "bytes": 3085157,
+        "sha256": "027e15041035522ed7e40ef971eff75f24a09ef6a00e3f8fe335839f94bcb8a8"
+      },
+      "declarationCount": 4539,
+      "replacements": [
+        [
+          "def",
+          "p134e_prepare"
+        ],
+        [
+          "def",
+          "p134e_private"
+        ]
+      ],
+      "additiveReplacements": [
+        [
+          "def",
+          "p164h_functions"
+        ]
+      ],
+      "protectedUnchanged": true,
+      "experimentalModules": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase164/hybrid-adapter.bend",
+          "bytes": 3342,
+          "sha256": "81f17161e8cce01760ba773d345eb920f10039eca7fa386782ad205a57bd85cb"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase164/hybrid-lower.bend",
+          "bytes": 6123,
+          "sha256": "af9438c1dfd3fcb7a5d77c447bc4f1982aec4c3feb35b642ca9a614cc613feaa"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase164/hybrid-verify.bend",
+          "bytes": 5015,
+          "sha256": "e1e53f813c2c454251059d4f2243ba46b8e0fc75ec97978ae8fa1f95f43e7858"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase164/hybrid-entry.bend",
+          "bytes": 4739,
+          "sha256": "76b8778e2b7cbe598dd530a93c3d49c4f52b07d5e020b29b38357985e1ee1068"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase164/hybrid-render.bend",
+          "bytes": 3286,
+          "sha256": "aea2ab9857624741c0ef4dc724e3c77156e33f5ed9521ad407e0670271bc2727"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase164/hybrid-retained.bend",
+          "bytes": 4353,
+          "sha256": "d4312aeeec0b28a75f3050fb90e76ef7c374c2fa338e0bbd84ba6fb75862a294"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase164/hybrid-controls.bend",
+          "bytes": 5858,
+          "sha256": "d12bfc03736b998ebd9bb81f113b050fd5e5487f80376d055b227a2265326369"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase164/hybrid-retained-controls.bend",
+          "bytes": 3042,
+          "sha256": "2eb8aa94a5f74e11e33539676c215ba35f55007d71d23e0c00d6425d19d5be8d"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase164/controls-retained-api.bend",
+          "bytes": 104,
+          "sha256": "bc78ba7d4e5fe023da335a4babc223f6a94adca82bfaf92f7db4f65552cb515b"
+        }
+      ]
+    },
+    "hybrid-native-source03": {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/hybrid-native-source03/compiler.bend",
+        "bytes": 1556351,
+        "sha256": "77326516581c469a60cd5c8c0dd55a17615a2f4db4fc3863a284249b33391f91"
+      },
+      "parentSource": {
+        "file": "selfhost/build/phase152/production-source02/compiler.bend",
+        "bytes": 3085157,
+        "sha256": "027e15041035522ed7e40ef971eff75f24a09ef6a00e3f8fe335839f94bcb8a8"
+      },
+      "declarationCount": 4603,
+      "replacements": [
+        [
+          "def",
+          "p134e_prepare"
+        ],
+        [
+          "def",
+          "p134e_private"
+        ]
+      ],
+      "additiveReplacements": [
+        [
+          "def",
+          "p164h_functions"
+        ]
+      ],
+      "protectedUnchanged": true,
+      "experimentalModules": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase164/hybrid-adapter.bend",
+          "bytes": 3342,
+          "sha256": "81f17161e8cce01760ba773d345eb920f10039eca7fa386782ad205a57bd85cb"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase164/hybrid-lower.bend",
+          "bytes": 6123,
+          "sha256": "af9438c1dfd3fcb7a5d77c447bc4f1982aec4c3feb35b642ca9a614cc613feaa"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase164/hybrid-verify.bend",
+          "bytes": 5015,
+          "sha256": "e1e53f813c2c454251059d4f2243ba46b8e0fc75ec97978ae8fa1f95f43e7858"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase164/hybrid-entry.bend",
+          "bytes": 4739,
+          "sha256": "76b8778e2b7cbe598dd530a93c3d49c4f52b07d5e020b29b38357985e1ee1068"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase164/hybrid-render.bend",
+          "bytes": 3286,
+          "sha256": "aea2ab9857624741c0ef4dc724e3c77156e33f5ed9521ad407e0670271bc2727"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase164/hybrid-retained.bend",
+          "bytes": 4353,
+          "sha256": "d4312aeeec0b28a75f3050fb90e76ef7c374c2fa338e0bbd84ba6fb75862a294"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase164/native-entry.bend",
+          "bytes": 2068,
+          "sha256": "bf1314d6bb6d185870b0797a128a94d7531a623352879ddbc6cb4b8b08e861b8"
+        }
+      ]
+    },
+    "imports-api-source01": {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-api-source01/compiler.bend",
+        "bytes": 1516700,
+        "sha256": "c52f5b824fbf476881a2a5b0c1dc870b1aa94bb19f734dcbd036891176e66d71"
+      },
+      "parentSource": {
+        "file": "selfhost/build/phase152/production-source02/compiler.bend",
+        "bytes": 3085157,
+        "sha256": "027e15041035522ed7e40ef971eff75f24a09ef6a00e3f8fe335839f94bcb8a8"
+      },
+      "declarationCount": 4494,
+      "replacements": [
+        [
+          "def",
+          "p134e_prepare"
+        ],
+        [
+          "def",
+          "p134e_private"
+        ]
+      ],
+      "additiveReplacements": [],
+      "protectedUnchanged": true,
+      "experimentalModules": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase164/hybrid-imports-only.bend",
+          "bytes": 5586,
+          "sha256": "c70b5461b30484ad8df4d630f62186c5913fa96baed3213c025d7704d90f7a38"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase164/imports-api.bend",
+          "bytes": 322,
+          "sha256": "b5c2ab3c83c2ae62a55d06164a9570b9967450aff03fda1a96e2f3d30c524bf1"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase164/hybrid-imports-controls.bend",
+          "bytes": 3970,
+          "sha256": "61e1c6e1e2a995dc06046d20cacecb23a572d3b5047f7b83e5b28632772952e0"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase164/imports-controls-api.bend",
+          "bytes": 118,
+          "sha256": "4b548a57d5e2486221b0d1945d4bbcad8a1bdb85aba9e43e6091e5d6929646db"
+        }
+      ]
+    }
+  },
+  "conservative": {
+    "caseCount": 10,
+    "independentOutputsPassed": true,
+    "runtimePairsPerCase": 2,
+    "resolvedCases": 9,
+    "scope": "Original frozen IO sources and inputs. Shared checked request; hosted complete backend emission, not native whole-request time. Independent native outputs checked separately.",
+    "runtimeScope": "Frozen original IO programs. Same runtime/toolchain; exact independent value/count checks. Optional fixed native45 batches, not a broad score.",
+    "cases": [
+      {
+        "emission": {
+          "name": "local-fold",
+          "complete": true,
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/local-fold.bend",
+            "sha256": "2252256562cc415348f3aa53c960b318f87c4a8b5fd118a0a2f115d446723125",
+            "bytes": 2737
+          },
+          "expected": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/local-fold.stdout",
+            "sha256": "c07893fbab1330de5e1c73495d24da59ca965c977e89fa9ea508b2f316ab3e20",
+            "bytes": 11
+          },
+          "runtimeArgs": [
+            4096,
+            17
+          ],
+          "frontendSeconds": 1.550304353999999,
+          "backendRatio": 0.8164983594446119,
+          "summary": "segments=358;adapters=33;generic=325;direct=53;arrays=1;live=1",
+          "products": {
+            "baseline": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke01/local-fold-baseline.ssa",
+                "bytes": 568622,
+                "sha256": "25008ef60eea5e095b639dffe30721ba3e7969814c75da3c4da896b058b0bdef"
+              },
+              "seconds": 5.851408045999999,
+              "functions": 695
+            },
+            "candidate": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke01/local-fold-candidate.ssa",
+                "bytes": 553770,
+                "sha256": "24225ab5bb98b1cbf05867e3b53b737512cadaa635b57a9be70a58119c55085e"
+              },
+              "seconds": 4.777665070000001,
+              "functions": 671
+            }
+          }
+        },
+        "runtime": {
+          "name": "local-fold",
+          "complete": true,
+          "resolved": true,
+          "medianMilliseconds": {
+            "baseline": 337.0,
+            "candidate": 337.5
+          },
+          "runtimeRatio": 1.0014836795252227,
+          "samples": [
+            {
+              "role": "baseline",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.3396688071079552,
+              "userSeconds": 0.338607,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10628,
+              "internalMilliseconds": 337,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke-machine01/0-0-baseline.stdout",
+                "bytes": 23,
+                "sha256": "4f38a71b3df03b1f7a34609abfc54d4bf10331c87cf8da8f3fdea59efede38d9"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke-machine01/0-0-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "candidate",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.3402943890541792,
+              "userSeconds": 0.339101,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10628,
+              "internalMilliseconds": 338,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke-machine01/0-0-candidate.stdout",
+                "bytes": 23,
+                "sha256": "3228a726ed20e4c73b444208627bcad08667461244fac930ba4360478ff389a9"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke-machine01/0-0-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "candidate",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.3386443187482655,
+              "userSeconds": 0.337659,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10628,
+              "internalMilliseconds": 337,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke-machine01/0-1-candidate.stdout",
+                "bytes": 23,
+                "sha256": "4f38a71b3df03b1f7a34609abfc54d4bf10331c87cf8da8f3fdea59efede38d9"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke-machine01/0-1-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "baseline",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.3389099691994488,
+              "userSeconds": 0.333916,
+              "systemSeconds": 0.003975,
+              "peakRssKiB": 10628,
+              "internalMilliseconds": 337,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke-machine01/0-1-baseline.stdout",
+                "bytes": 23,
+                "sha256": "4f38a71b3df03b1f7a34609abfc54d4bf10331c87cf8da8f3fdea59efede38d9"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke-machine01/0-1-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          ],
+          "products": {
+            "baseline": {
+              "binary": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke-machine01/local-fold-baseline/program",
+                "bytes": 232888,
+                "sha256": "d070fe0ccf23b79fe0451293baeefe1a592f2930aef8a70a94f67ebc6a4958a4"
+              },
+              "buildReceipt": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke-machine01/local-fold-baseline/report.json",
+                "bytes": 8931,
+                "sha256": "a413216d2f9a160186244ad78d9a6d945df18bd1d28bbd9b4e3a97cc76ea12c2"
+              },
+              "independentOutputPassed": true,
+              "executionStdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke-machine01/local-fold-baseline.check.stdout",
+                "bytes": 17,
+                "sha256": "5f4df38587f46b697cd3acaa9223fbc9374f39564aac3cad81127b4101040075"
+              },
+              "executionStderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke-machine01/local-fold-baseline.check.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            "candidate": {
+              "binary": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke-machine01/local-fold-candidate/program",
+                "bytes": 230920,
+                "sha256": "8d28c2c0cf9c6f4ad648b62f575e8fc737d672de97c2b83579e71663a25a0b64"
+              },
+              "buildReceipt": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke-machine01/local-fold-candidate/report.json",
+                "bytes": 8966,
+                "sha256": "fcae149a76f9aa271a3222e9cc10e17aaf4b99d1debf59f7e442167f3236df03"
+              },
+              "independentOutputPassed": true,
+              "executionStdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke-machine01/local-fold-candidate.check.stdout",
+                "bytes": 17,
+                "sha256": "5f4df38587f46b697cd3acaa9223fbc9374f39564aac3cad81127b4101040075"
+              },
+              "executionStderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke-machine01/local-fold-candidate.check.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          }
+        },
+        "emissionReceipt": "selfhost/build/phase164/smoke01/report.json",
+        "runtimeReceipt": "selfhost/build/phase164/smoke-machine01/report.json"
+      },
+      {
+        "emission": {
+          "name": "coverage-closures-64",
+          "complete": true,
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-closures-64.bend",
+            "sha256": "d5a0e144805beec3aafdfa5a5bf0ae1579659caff90d42fc178f0ac17b9db60a",
+            "bytes": 3364
+          },
+          "expected": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/coverage-closures-64.stdout",
+            "sha256": "802ecf9f67ccf8fda5913f286bd0b3236043f5f4b0c2ae7e7bf3d05f1758f865",
+            "bytes": 5
+          },
+          "runtimeArgs": [
+            64,
+            17
+          ],
+          "frontendSeconds": 0.8808925019999988,
+          "backendRatio": 0.9155962643276012,
+          "summary": "segments=335;adapters=29;generic=306;direct=46;arrays=1;live=1",
+          "products": {
+            "candidate": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke01/coverage-closures-64-candidate.ssa",
+                "bytes": 467012,
+                "sha256": "0ad95134f8185c7c1ac03a59dc8dc23b66717dcc9a09dedd859364ddcf4a541e"
+              },
+              "seconds": 3.2461844749999984,
+              "functions": 609
+            },
+            "baseline": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke01/coverage-closures-64-baseline.ssa",
+                "bytes": 476702,
+                "sha256": "8d51ce318de9adfcc823424123f673a6b6993309c0670000ebd7da23b42d9f09"
+              },
+              "seconds": 3.5454321969999985,
+              "functions": 626
+            }
+          }
+        },
+        "runtime": {
+          "name": "coverage-closures-64",
+          "complete": true,
+          "resolved": false,
+          "medianMilliseconds": {
+            "baseline": 4.5,
+            "candidate": 4.5
+          },
+          "runtimeRatio": 1.0,
+          "samples": [
+            {
+              "role": "candidate",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.006667261943221092,
+              "userSeconds": 0.005752,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10668,
+              "internalMilliseconds": 5,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke-machine01/1-0-candidate.stdout",
+                "bytes": 15,
+                "sha256": "99086164d46f749f65dff13827411a2e7d6048990f0f75403dd295facf077401"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke-machine01/1-0-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "baseline",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.006435974035412073,
+              "userSeconds": 0.0056,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10672,
+              "internalMilliseconds": 4,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke-machine01/1-0-baseline.stdout",
+                "bytes": 15,
+                "sha256": "cacac60a03a2fc126f93529ffc84671512ea359f23d3cc20a47eb4b0f43d19e5"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke-machine01/1-0-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "baseline",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.008077328093349934,
+              "userSeconds": 0.0070209999999999995,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10676,
+              "internalMilliseconds": 5,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke-machine01/1-1-baseline.stdout",
+                "bytes": 15,
+                "sha256": "99086164d46f749f65dff13827411a2e7d6048990f0f75403dd295facf077401"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke-machine01/1-1-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "candidate",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.006516873836517334,
+              "userSeconds": 0.002836,
+              "systemSeconds": 0.002836,
+              "peakRssKiB": 10684,
+              "internalMilliseconds": 4,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke-machine01/1-1-candidate.stdout",
+                "bytes": 15,
+                "sha256": "cacac60a03a2fc126f93529ffc84671512ea359f23d3cc20a47eb4b0f43d19e5"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke-machine01/1-1-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          ],
+          "products": {
+            "baseline": {
+              "binary": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke-machine01/coverage-closures-64-baseline/program",
+                "bytes": 218168,
+                "sha256": "28b5e0a35e99e0ccc0bdb06268955408fcb41fad240d03afcf5166c0282680ae"
+              },
+              "buildReceipt": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke-machine01/coverage-closures-64-baseline/report.json",
+                "bytes": 9114,
+                "sha256": "89303ff028de5c19ebe9fb8ebfb32f796719e423063c2321221f2f735d8b9670"
+              },
+              "independentOutputPassed": true,
+              "executionStdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke-machine01/coverage-closures-64-baseline.check.stdout",
+                "bytes": 11,
+                "sha256": "5d00e2609769b006421480bfba343fddf5bc4a786d048ac9cec2437d780c3084"
+              },
+              "executionStderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke-machine01/coverage-closures-64-baseline.check.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            "candidate": {
+              "binary": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke-machine01/coverage-closures-64-candidate/program",
+                "bytes": 216800,
+                "sha256": "e756e623c6af4ec4fb2d98e0c39612a80e54ca9fc3f15fffe890be0b307887ab"
+              },
+              "buildReceipt": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke-machine01/coverage-closures-64-candidate/report.json",
+                "bytes": 9138,
+                "sha256": "b2f9b9d9f5e64a6d83a222da78bb825b83294cc9d41cfce14f93419009ff27ca"
+              },
+              "independentOutputPassed": true,
+              "executionStdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke-machine01/coverage-closures-64-candidate.check.stdout",
+                "bytes": 11,
+                "sha256": "5d00e2609769b006421480bfba343fddf5bc4a786d048ac9cec2437d780c3084"
+              },
+              "executionStderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/smoke-machine01/coverage-closures-64-candidate.check.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          }
+        },
+        "emissionReceipt": "selfhost/build/phase164/smoke01/report.json",
+        "runtimeReceipt": "selfhost/build/phase164/smoke-machine01/report.json"
+      },
+      {
+        "emission": {
+          "name": "editdist",
+          "complete": true,
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/editdist.bend",
+            "sha256": "759d82e26789e55187d175cb8416d6ebe4266a53f73a53ca6d32b69d4f71e988",
+            "bytes": 7835
+          },
+          "expected": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/editdist.stdout",
+            "sha256": "cc6e43baccd95c4f6e49e8df91d27c77ab7d18524070d83af32977422f0b1280",
+            "bytes": 11
+          },
+          "runtimeArgs": [
+            2,
+            0
+          ],
+          "frontendSeconds": 1.7503151040000002,
+          "backendRatio": 1.0288627452806764,
+          "summary": "segments=468;adapters=44;generic=424;direct=71;arrays=1;live=1",
+          "products": {
+            "baseline": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer01/editdist-baseline.ssa",
+                "bytes": 1218184,
+                "sha256": "973816ae077350e4e622bbdc6f828d8da92be7fbe6a9488cf8e16a0d410c880a"
+              },
+              "seconds": 9.950932221,
+              "functions": 927
+            },
+            "candidate": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer01/editdist-candidate.ssa",
+                "bytes": 1195386,
+                "sha256": "6f8aede7d225f0122c92b2a6efbb0691c99c08baddd03a8dcb3f74057c9ed240"
+              },
+              "seconds": 10.238143443,
+              "functions": 894
+            }
+          }
+        },
+        "runtime": {
+          "name": "editdist",
+          "complete": true,
+          "resolved": true,
+          "medianMilliseconds": {
+            "baseline": 253.0,
+            "candidate": 252.5
+          },
+          "runtimeRatio": 0.9980237154150198,
+          "samples": [
+            {
+              "role": "baseline",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.25998659897595644,
+              "userSeconds": 0.258972,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10204,
+              "internalMilliseconds": 253,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/0-0-baseline.stdout",
+                "bytes": 21,
+                "sha256": "d495091e265cae98f9c1d91aa5058718d454cd1291049b490bfa7519d4a1cebd"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/0-0-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "candidate",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.25935098668560386,
+              "userSeconds": 0.258311,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10204,
+              "internalMilliseconds": 251,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/0-0-candidate.stdout",
+                "bytes": 21,
+                "sha256": "6f3da64f7c69c1452b5262cd53a801021086f4f0e676f1ccea5c7157aa8d28f0"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/0-0-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "candidate",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.2613343158736825,
+              "userSeconds": 0.260304,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10204,
+              "internalMilliseconds": 254,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/0-1-candidate.stdout",
+                "bytes": 21,
+                "sha256": "49025c7533738403b2fc854d0a3a1315a115f531994964773f53980db6394228"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/0-1-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "baseline",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.26029805885627866,
+              "userSeconds": 0.259284,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10204,
+              "internalMilliseconds": 253,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/0-1-baseline.stdout",
+                "bytes": 21,
+                "sha256": "d495091e265cae98f9c1d91aa5058718d454cd1291049b490bfa7519d4a1cebd"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/0-1-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          ],
+          "products": {
+            "baseline": {
+              "binary": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/editdist-baseline/program",
+                "bytes": 284280,
+                "sha256": "c16e1bcf1580ef9f9876c81383375316dd181b28e7377b87f0f465b303a01268"
+              },
+              "buildReceipt": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/editdist-baseline/report.json",
+                "bytes": 8962,
+                "sha256": "62e87e13b7635211187e17fd26efa544f24a9d466d2476b4c53541a0995b9bf6"
+              },
+              "independentOutputPassed": true,
+              "executionStdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/editdist-baseline.check.stdout",
+                "bytes": 17,
+                "sha256": "84b640f1742c81a1da5481d9ad6a2ac1d8575fec563f14c744708b71479e8d20"
+              },
+              "executionStderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/editdist-baseline.check.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            "candidate": {
+              "binary": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/editdist-candidate/program",
+                "bytes": 277320,
+                "sha256": "12959929a00e101d66984644e125bdc998141549977edbac4d5282b9ed1b5e3f"
+              },
+              "buildReceipt": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/editdist-candidate/report.json",
+                "bytes": 8968,
+                "sha256": "b04a38a6efc8441be37be748870f61086d85b17fb298e277a007eb08feb23d6f"
+              },
+              "independentOutputPassed": true,
+              "executionStdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/editdist-candidate.check.stdout",
+                "bytes": 17,
+                "sha256": "84b640f1742c81a1da5481d9ad6a2ac1d8575fec563f14c744708b71479e8d20"
+              },
+              "executionStderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/editdist-candidate.check.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          }
+        },
+        "emissionReceipt": "selfhost/build/phase164/transfer01/report.json",
+        "runtimeReceipt": "selfhost/build/phase164/transfer-machine01/report.json"
+      },
+      {
+        "emission": {
+          "name": "lexer",
+          "complete": true,
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/lexer.bend",
+            "sha256": "bfb62870600b63fd6ec6088471a2d805fabb819a7f2e9d47c9b0ef3c368d169a",
+            "bytes": 9095
+          },
+          "expected": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/lexer.stdout",
+            "sha256": "ce7ae380f780c64e26dc0b2fd2f547364c4e837bdecd61714cf04150768acf0a",
+            "bytes": 11
+          },
+          "runtimeArgs": [
+            8,
+            0
+          ],
+          "frontendSeconds": 1.2802637859999995,
+          "backendRatio": 1.085236528011162,
+          "summary": "segments=463;adapters=46;generic=417;direct=67;arrays=1;live=1",
+          "products": {
+            "candidate": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer01/lexer-candidate.ssa",
+                "bytes": 889477,
+                "sha256": "1e3a826870799a88b0ab6ad95c1e4c532e7ed988dda30920699db990c7cc819e"
+              },
+              "seconds": 6.886378988000001,
+              "functions": 861
+            },
+            "baseline": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer01/lexer-baseline.ssa",
+                "bytes": 935720,
+                "sha256": "9519ad31b0de5e17cce8098b8f5aad43728e40ed64a66c9d285f6ac0ec8f8728"
+              },
+              "seconds": 6.345509767000003,
+              "functions": 921
+            }
+          }
+        },
+        "runtime": {
+          "name": "lexer",
+          "complete": true,
+          "resolved": true,
+          "medianMilliseconds": {
+            "baseline": 505.5,
+            "candidate": 498.5
+          },
+          "runtimeRatio": 0.9861523244312562,
+          "samples": [
+            {
+              "role": "candidate",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.5036856853403151,
+              "userSeconds": 0.502597,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10856,
+              "internalMilliseconds": 497,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/1-0-candidate.stdout",
+                "bytes": 21,
+                "sha256": "4b98bd0d07a0c0cbbe48b00162fc4251630f2f8bc91253af8fada5d590319b16"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/1-0-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "baseline",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.5145748099312186,
+              "userSeconds": 0.5094609999999999,
+              "systemSeconds": 0.00398,
+              "peakRssKiB": 10856,
+              "internalMilliseconds": 507,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/1-0-baseline.stdout",
+                "bytes": 21,
+                "sha256": "74321bdc70398475f75a7869eeddf45ef5ae1127e2e5b7b37bf27ab8f8b1d7b0"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/1-0-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "baseline",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.5110253342427313,
+              "userSeconds": 0.509927,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10856,
+              "internalMilliseconds": 504,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/1-1-baseline.stdout",
+                "bytes": 21,
+                "sha256": "3498136242955315410cd3e6835bff227297523381d272f14bb948a8d9b5ee12"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/1-1-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "candidate",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.5064745349809527,
+              "userSeconds": 0.505463,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10868,
+              "internalMilliseconds": 500,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/1-1-candidate.stdout",
+                "bytes": 21,
+                "sha256": "80dc6f8cda2042f09f1c1f8e9651d124f142f454af73ee11d906026b7b5bab2e"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/1-1-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          ],
+          "products": {
+            "baseline": {
+              "binary": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/lexer-baseline/program",
+                "bytes": 272352,
+                "sha256": "5ad0079f29d1197e06a4a53b7e0b578d5d85d88251dcf124c5dd1bb659fff7ab"
+              },
+              "buildReceipt": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/lexer-baseline/report.json",
+                "bytes": 8890,
+                "sha256": "109ccfc999d384d1dfd8ee7c7854c6d7c742d7dc1c0c2bb36d2383aed0b675ef"
+              },
+              "independentOutputPassed": true,
+              "executionStdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/lexer-baseline.check.stdout",
+                "bytes": 17,
+                "sha256": "1b19574000f5313d84fee9d6bd38023f5646e8eb53bb7cc86bc02092bacc8400"
+              },
+              "executionStderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/lexer-baseline.check.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            "candidate": {
+              "binary": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/lexer-candidate/program",
+                "bytes": 263112,
+                "sha256": "a93c86b9de427d479df185086d8261f9c0ee354a7b5e7f3ddc319be78a00d220"
+              },
+              "buildReceipt": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/lexer-candidate/report.json",
+                "bytes": 8908,
+                "sha256": "2a78a337052d6a70a599df3d2325ba000bf65e9a6ca15e1147d7476c9f634ebd"
+              },
+              "independentOutputPassed": true,
+              "executionStdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/lexer-candidate.check.stdout",
+                "bytes": 17,
+                "sha256": "1b19574000f5313d84fee9d6bd38023f5646e8eb53bb7cc86bc02092bacc8400"
+              },
+              "executionStderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/lexer-candidate.check.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          }
+        },
+        "emissionReceipt": "selfhost/build/phase164/transfer01/report.json",
+        "runtimeReceipt": "selfhost/build/phase164/transfer-machine01/report.json"
+      },
+      {
+        "emission": {
+          "name": "tree-bitonic",
+          "complete": true,
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/tree-bitonic.bend",
+            "sha256": "405f8d8fb2066e6fedd8baa45943bcdf92b59cb40e23ce2ad3ea4bd3eeb53ae0",
+            "bytes": 6593
+          },
+          "expected": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/tree-bitonic.stdout",
+            "sha256": "4d9faad3bd6736bd6b3be55577bba89ff3064588775afe8959dd2f709ca6aa21",
+            "bytes": 10
+          },
+          "runtimeArgs": [
+            8,
+            0
+          ],
+          "frontendSeconds": 1.112454515999998,
+          "backendRatio": 1.14512761717387,
+          "summary": "segments=451;adapters=34;generic=417;direct=55;arrays=1;live=1",
+          "products": {
+            "baseline": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer01/tree-bitonic-baseline.ssa",
+                "bytes": 669474,
+                "sha256": "bffd730b58d208196d337c71740a0ed0490c3bd0d86f3e09267c8d698f17a8fe"
+              },
+              "seconds": 4.303786185999997,
+              "functions": 832
+            },
+            "candidate": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer01/tree-bitonic-candidate.ssa",
+                "bytes": 655479,
+                "sha256": "d0cb11f7e2d1d6f6b8d7d80f90211953500a94ee0e575395e78d0a333d0f74ef"
+              },
+              "seconds": 4.928384419999995,
+              "functions": 806
+            }
+          }
+        },
+        "runtime": {
+          "name": "tree-bitonic",
+          "complete": true,
+          "resolved": true,
+          "medianMilliseconds": {
+            "baseline": 914.0,
+            "candidate": 922.0
+          },
+          "runtimeRatio": 1.0087527352297594,
+          "samples": [
+            {
+              "role": "baseline",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.9127106969244778,
+              "userSeconds": 0.911754,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10936,
+              "internalMilliseconds": 908,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/2-0-baseline.stdout",
+                "bytes": 21,
+                "sha256": "ec598eb585154fd253ffd94f6ee8b644e68a36f95f38e3182762567ccc99ee86"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/2-0-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "candidate",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.9245481370016932,
+              "userSeconds": 0.919493,
+              "systemSeconds": 0.003997,
+              "peakRssKiB": 10940,
+              "internalMilliseconds": 920,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/2-0-candidate.stdout",
+                "bytes": 21,
+                "sha256": "e1d225b2050d8f7358a33a410caa9d7c5164fa6d793d5d81b1e55a97a0813262"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/2-0-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "candidate",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.9288236517459154,
+              "userSeconds": 0.9277789999999999,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10948,
+              "internalMilliseconds": 924,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/2-1-candidate.stdout",
+                "bytes": 21,
+                "sha256": "b62bd98d6fed878fe4fdb25bdf2d89c806f5c14167572e74d7b4d6ddba670f57"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/2-1-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "baseline",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.9258882021531463,
+              "userSeconds": 0.92462,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10956,
+              "internalMilliseconds": 920,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/2-1-baseline.stdout",
+                "bytes": 21,
+                "sha256": "e1d225b2050d8f7358a33a410caa9d7c5164fa6d793d5d81b1e55a97a0813262"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/2-1-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          ],
+          "products": {
+            "baseline": {
+              "binary": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/tree-bitonic-baseline/program",
+                "bytes": 256952,
+                "sha256": "0820a2f5b17029eb2d21c7e9e3f659153e4d74686d0c0e451fd0ebbb7b2e477f"
+              },
+              "buildReceipt": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/tree-bitonic-baseline/report.json",
+                "bytes": 9022,
+                "sha256": "c6742e8ac2bd6bde801e981e9f328a5431545878995500d640d0ac7c393597fe"
+              },
+              "independentOutputPassed": true,
+              "executionStdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/tree-bitonic-baseline.check.stdout",
+                "bytes": 16,
+                "sha256": "9307a36c63b8280a7c00f7e50f8e7573579ec98808c37ddeb97c46f8316a5784"
+              },
+              "executionStderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/tree-bitonic-baseline.check.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            "candidate": {
+              "binary": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/tree-bitonic-candidate/program",
+                "bytes": 254816,
+                "sha256": "644ca5c119dc1678750240eb75c09c28c616c24c0137cb5d4c93d970d78fd9f9"
+              },
+              "buildReceipt": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/tree-bitonic-candidate/report.json",
+                "bytes": 9035,
+                "sha256": "56863ace5c71819bda694433f58ad1210823183dd676bdc5fdff745a12354121"
+              },
+              "independentOutputPassed": true,
+              "executionStdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/tree-bitonic-candidate.check.stdout",
+                "bytes": 16,
+                "sha256": "d80b78c83af751d00748c3dcba9e30354288fde82e512820b6a1c327ac2ef1a9"
+              },
+              "executionStderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/tree-bitonic-candidate.check.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          }
+        },
+        "emissionReceipt": "selfhost/build/phase164/transfer01/report.json",
+        "runtimeReceipt": "selfhost/build/phase164/transfer-machine01/report.json"
+      },
+      {
+        "emission": {
+          "name": "mandelbrot",
+          "complete": true,
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/mandelbrot.bend",
+            "sha256": "7d47d183cf02b3e943e0e35532eb8ba12c683eafd9b2031bbc25983181174897",
+            "bytes": 8536
+          },
+          "expected": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/mandelbrot.stdout",
+            "sha256": "1529134f8bd7e9d3989167e1dca0726ea4b01b5dba6e8e3407e966f8f37c7758",
+            "bytes": 10
+          },
+          "runtimeArgs": [
+            2,
+            0
+          ],
+          "frontendSeconds": 1.2408192830000044,
+          "backendRatio": 0.8792057053715046,
+          "summary": "segments=464;adapters=37;generic=427;direct=56;arrays=1;live=1",
+          "products": {
+            "candidate": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer01/mandelbrot-candidate.ssa",
+                "bytes": 831383,
+                "sha256": "941f0ca560329ab91f7bbf5585145641521be32e0f9b6d03bf5cf5dfd1f3ea2b"
+              },
+              "seconds": 7.050526519999999,
+              "functions": 843
+            },
+            "baseline": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer01/mandelbrot-baseline.ssa",
+                "bytes": 1256237,
+                "sha256": "f080b8c342cce21c456ebaf5487ff3162b647786e2e2e513b8f6f0d3b1f0b187"
+              },
+              "seconds": 8.019200145000003,
+              "functions": 908
+            }
+          }
+        },
+        "runtime": {
+          "name": "mandelbrot",
+          "complete": true,
+          "resolved": true,
+          "medianMilliseconds": {
+            "baseline": 701.5,
+            "candidate": 605.5
+          },
+          "runtimeRatio": 0.8631503920171062,
+          "samples": [
+            {
+              "role": "candidate",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.6072898050770164,
+              "userSeconds": 0.606351,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10916,
+              "internalMilliseconds": 605,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/3-0-candidate.stdout",
+                "bytes": 21,
+                "sha256": "2fdd5670ff97e5f7a13ba0c03af8f9d45a2307bdff84e552f0d47ee6d655997c"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/3-0-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "baseline",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.6910484968684614,
+              "userSeconds": 0.69001,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10924,
+              "internalMilliseconds": 689,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/3-0-baseline.stdout",
+                "bytes": 21,
+                "sha256": "f87d764c035fdd023c8b3e56939b42163d705be8e0bf69be8589b04fc226407c"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/3-0-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "baseline",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.7169397897087038,
+              "userSeconds": 0.7158829999999999,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10928,
+              "internalMilliseconds": 714,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/3-1-baseline.stdout",
+                "bytes": 21,
+                "sha256": "7b3eecc392d53f143770aed08a0c7dc565c19e9704a993cb2b1ba4f7985c4cc0"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/3-1-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "candidate",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.6087111998349428,
+              "userSeconds": 0.603673,
+              "systemSeconds": 0.003997,
+              "peakRssKiB": 10936,
+              "internalMilliseconds": 606,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/3-1-candidate.stdout",
+                "bytes": 21,
+                "sha256": "744a3babb5eeb8a1b8a08e1c675619d6a6386524aa1f0fb2d4f3f3b501505105"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/3-1-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          ],
+          "products": {
+            "baseline": {
+              "binary": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/mandelbrot-baseline/program",
+                "bytes": 294680,
+                "sha256": "17d674f77b3330e29dbea07939a16f5d95bd5de14059ce3da5fac0f3b1197c55"
+              },
+              "buildReceipt": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/mandelbrot-baseline/report.json",
+                "bytes": 9008,
+                "sha256": "90ad816b51532d0ba222040b348d958de24d1a16f3ea721c191a0392a844d68e"
+              },
+              "independentOutputPassed": true,
+              "executionStdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/mandelbrot-baseline.check.stdout",
+                "bytes": 16,
+                "sha256": "88f976f53976d741ceb5789d7e7fb933ac379187be80c62bdbfc425dcf2c19da"
+              },
+              "executionStderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/mandelbrot-baseline.check.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            "candidate": {
+              "binary": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/mandelbrot-candidate/program",
+                "bytes": 264592,
+                "sha256": "dcd46a7b8fbf3554275aafe5babbcdc93a43fb3d6f96d85ec678cc3375016e37"
+              },
+              "buildReceipt": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/mandelbrot-candidate/report.json",
+                "bytes": 9010,
+                "sha256": "b1fe5236df67d395b22c9097f78523c4f465ad79ef35b63db23f29ce50a4521c"
+              },
+              "independentOutputPassed": true,
+              "executionStdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/mandelbrot-candidate.check.stdout",
+                "bytes": 16,
+                "sha256": "88f976f53976d741ceb5789d7e7fb933ac379187be80c62bdbfc425dcf2c19da"
+              },
+              "executionStderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/mandelbrot-candidate.check.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          }
+        },
+        "emissionReceipt": "selfhost/build/phase164/transfer01/report.json",
+        "runtimeReceipt": "selfhost/build/phase164/transfer-machine01/report.json"
+      },
+      {
+        "emission": {
+          "name": "coverage-unicode-text-16",
+          "complete": true,
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-unicode-text-16.bend",
+            "sha256": "1e44705513750680563a8939e46120e4fbb5e9ffbfabe1f3d22b773a6eada3c5",
+            "bytes": 7528
+          },
+          "expected": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/coverage-unicode-text-16.stdout",
+            "sha256": "835a668452e7da17c4390ebeca7cc5422056349b74011e53130159d123360eaf",
+            "bytes": 289
+          },
+          "runtimeArgs": [
+            16,
+            17
+          ],
+          "frontendSeconds": 1.4926565589999954,
+          "backendRatio": 0.8934597231251512,
+          "summary": "segments=379;adapters=29;generic=350;direct=49;arrays=1;live=1",
+          "products": {
+            "baseline": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer01/coverage-unicode-text-16-baseline.ssa",
+                "bytes": 535214,
+                "sha256": "2f1b5099497af665a5901e2a0d4d69f5f3cfb7e93dd9347491e1ec4043d15307"
+              },
+              "seconds": 3.2902492679999997,
+              "functions": 689
+            },
+            "candidate": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer01/coverage-unicode-text-16-candidate.ssa",
+                "bytes": 527398,
+                "sha256": "c2bcf9c0f056f1745e81db41808137d253af61cdc9c4e38dfd3d89266fb401be"
+              },
+              "seconds": 2.9397052000000112,
+              "functions": 670
+            }
+          }
+        },
+        "runtime": {
+          "name": "coverage-unicode-text-16",
+          "complete": true,
+          "resolved": true,
+          "medianMilliseconds": {
+            "baseline": 271.0,
+            "candidate": 239.5
+          },
+          "runtimeRatio": 0.8837638376383764,
+          "samples": [
+            {
+              "role": "baseline",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.2725819298066199,
+              "userSeconds": 0.271636,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 11000,
+              "internalMilliseconds": 270,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/4-0-baseline.stdout",
+                "bytes": 300,
+                "sha256": "e65aa049080a11713e9e8f100dca182fbc7ac7a81e86ab00bab5304b51e672e9"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/4-0-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "candidate",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.2421113639138639,
+              "userSeconds": 0.24110199999999998,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 11004,
+              "internalMilliseconds": 240,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/4-0-candidate.stdout",
+                "bytes": 300,
+                "sha256": "bbec2f5df9bdac08e935f2b55c23d3bf1072f4dbabf6ddc2e8dfc2add47477a9"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/4-0-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "candidate",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.24154686275869608,
+              "userSeconds": 0.240508,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 11016,
+              "internalMilliseconds": 239,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/4-1-candidate.stdout",
+                "bytes": 300,
+                "sha256": "e888ee01cc7db6f9bef2200ee6daa6ed0cdffb55eef706e89fe26c4935f71f59"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/4-1-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "baseline",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.27418802212923765,
+              "userSeconds": 0.273095,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 11020,
+              "internalMilliseconds": 272,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/4-1-baseline.stdout",
+                "bytes": 300,
+                "sha256": "770bd388933b7f84fbe001ea1a3e72c5deb3c475a5d6c605f2c73936778d3521"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/4-1-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          ],
+          "products": {
+            "baseline": {
+              "binary": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/coverage-unicode-text-16-baseline/program",
+                "bytes": 235040,
+                "sha256": "faba139031862453d415f4e0656205e74f78a94d9d65f85ec31939dca60a1d64"
+              },
+              "buildReceipt": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/coverage-unicode-text-16-baseline/report.json",
+                "bytes": 9289,
+                "sha256": "d86a7747d3745ed7b261b5e1fd61f02ad1bfee9bf57f834190047fdb38b44272"
+              },
+              "independentOutputPassed": true,
+              "executionStdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/coverage-unicode-text-16-baseline.check.stdout",
+                "bytes": 295,
+                "sha256": "ecab3df32cf944aa47a6f9eabb61f7755d068b98ef41745a4ea631ded37174f7"
+              },
+              "executionStderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/coverage-unicode-text-16-baseline.check.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            "candidate": {
+              "binary": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/coverage-unicode-text-16-candidate/program",
+                "bytes": 233520,
+                "sha256": "42a040529202a553f830eb23bcd71c9c6276896c03bbbb14ad2046cf3023b420"
+              },
+              "buildReceipt": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/coverage-unicode-text-16-candidate/report.json",
+                "bytes": 9268,
+                "sha256": "bf00c50896d27afe59b1997e006221425b6e95b8e583e216403aa83672f42b57"
+              },
+              "independentOutputPassed": true,
+              "executionStdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/coverage-unicode-text-16-candidate.check.stdout",
+                "bytes": 295,
+                "sha256": "ecab3df32cf944aa47a6f9eabb61f7755d068b98ef41745a4ea631ded37174f7"
+              },
+              "executionStderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/coverage-unicode-text-16-candidate.check.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          }
+        },
+        "emissionReceipt": "selfhost/build/phase164/transfer01/report.json",
+        "runtimeReceipt": "selfhost/build/phase164/transfer-machine01/report.json"
+      },
+      {
+        "emission": {
+          "name": "coverage-record-aggregation-64",
+          "complete": true,
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-record-aggregation-64.bend",
+            "sha256": "36ad15032712bd62a88a3fae13105880db1a0ecde3fc98e43791c4f21876c2c9",
+            "bytes": 3802
+          },
+          "expected": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/coverage-record-aggregation-64.stdout",
+            "sha256": "d83688ded4a47d7a93d617a687fb1e804b178378530dbcfc633910793e62270a",
+            "bytes": 215
+          },
+          "runtimeArgs": [
+            64,
+            17
+          ],
+          "frontendSeconds": 1.8042002159999975,
+          "backendRatio": 1.2691549489114151,
+          "summary": "segments=833;adapters=38;generic=795;direct=74;arrays=0;live=1",
+          "products": {
+            "candidate": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer01/coverage-record-aggregation-64-candidate.ssa",
+                "bytes": 1295388,
+                "sha256": "c2c45ad0f62c15ebe2d279b75136c5b7de2f34617fb7b7a2b99a6004b747a258"
+              },
+              "seconds": 8.757176685,
+              "functions": 1267
+            },
+            "baseline": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer01/coverage-record-aggregation-64-baseline.ssa",
+                "bytes": 1315673,
+                "sha256": "86d689aa6c90f2cde9b4422d928c39e8eb1bbe5bd614f87d6cbc518a09ae8c1f"
+              },
+              "seconds": 6.900005938999995,
+              "functions": 1301
+            }
+          }
+        },
+        "runtime": {
+          "name": "coverage-record-aggregation-64",
+          "complete": true,
+          "resolved": true,
+          "medianMilliseconds": {
+            "baseline": 490.0,
+            "candidate": 483.0
+          },
+          "runtimeRatio": 0.9857142857142858,
+          "samples": [
+            {
+              "role": "candidate",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.48723003594204783,
+              "userSeconds": 0.486174,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10588,
+              "internalMilliseconds": 483,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/5-0-candidate.stdout",
+                "bytes": 226,
+                "sha256": "e71c0fd564db09d5ac7755ccd4137f9ffda7931f76ec8028274694a51658cf8b"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/5-0-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "baseline",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.4935455210506916,
+              "userSeconds": 0.492473,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10604,
+              "internalMilliseconds": 490,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/5-0-baseline.stdout",
+                "bytes": 226,
+                "sha256": "92b0a76d9318fc04bdbdfd4f75f721bbb0786a93686db60e8b35219d83e0db29"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/5-0-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "baseline",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.4941449170000851,
+              "userSeconds": 0.49311299999999997,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10616,
+              "internalMilliseconds": 490,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/5-1-baseline.stdout",
+                "bytes": 226,
+                "sha256": "92b0a76d9318fc04bdbdfd4f75f721bbb0786a93686db60e8b35219d83e0db29"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/5-1-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "candidate",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.4872762318700552,
+              "userSeconds": 0.486189,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10624,
+              "internalMilliseconds": 483,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/5-1-candidate.stdout",
+                "bytes": 226,
+                "sha256": "e71c0fd564db09d5ac7755ccd4137f9ffda7931f76ec8028274694a51658cf8b"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/5-1-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          ],
+          "products": {
+            "baseline": {
+              "binary": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/coverage-record-aggregation-64-baseline/program",
+                "bytes": 386520,
+                "sha256": "7ee7bb3468c11b4e532df3f06c31a0bce8f5bbb35a8d70ae0a4f3956b2878788"
+              },
+              "buildReceipt": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/coverage-record-aggregation-64-baseline/report.json",
+                "bytes": 9390,
+                "sha256": "c24d144e1d4ba99093b09cbb9c1e0a5715eea76e21c19d2bbeff8de1486c65ca"
+              },
+              "independentOutputPassed": true,
+              "executionStdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/coverage-record-aggregation-64-baseline.check.stdout",
+                "bytes": 221,
+                "sha256": "ff89c2516873966af0ad42956ab4ea2abc2f0ff97a6dc0c9fec87cce314a4a86"
+              },
+              "executionStderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/coverage-record-aggregation-64-baseline.check.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            "candidate": {
+              "binary": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/coverage-record-aggregation-64-candidate/program",
+                "bytes": 379584,
+                "sha256": "91a388e990d374cb09aecb9b7d79f211baf94db5b079947805dafbe3f316a574"
+              },
+              "buildReceipt": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/coverage-record-aggregation-64-candidate/report.json",
+                "bytes": 9405,
+                "sha256": "40e664742a4a51203a29dcbba64e412ee5b3cc30019bcfd4e38ef5e138523608"
+              },
+              "independentOutputPassed": true,
+              "executionStdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/coverage-record-aggregation-64-candidate.check.stdout",
+                "bytes": 221,
+                "sha256": "ff89c2516873966af0ad42956ab4ea2abc2f0ff97a6dc0c9fec87cce314a4a86"
+              },
+              "executionStderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/coverage-record-aggregation-64-candidate.check.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          }
+        },
+        "emissionReceipt": "selfhost/build/phase164/transfer01/report.json",
+        "runtimeReceipt": "selfhost/build/phase164/transfer-machine01/report.json"
+      },
+      {
+        "emission": {
+          "name": "test-rle-roundtrip",
+          "complete": true,
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/test-rle-roundtrip.bend",
+            "sha256": "b46580acb1656502d0e37a0115d172529e648719acb75eadb3b9ad45db5b078d",
+            "bytes": 4708
+          },
+          "expected": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/test-rle-roundtrip.stdout",
+            "sha256": "25d4f2a86deb5e2574bb3210b67bb24fcc4afb19f93a7b65a057daa874a9d18e",
+            "bytes": 3
+          },
+          "runtimeArgs": [
+            0,
+            0
+          ],
+          "frontendSeconds": 0.9102345880000067,
+          "backendRatio": 1.0777866983944058,
+          "summary": "segments=383;adapters=35;generic=348;direct=55;arrays=1;live=1",
+          "products": {
+            "baseline": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer01/test-rle-roundtrip-baseline.ssa",
+                "bytes": 557641,
+                "sha256": "98c5ac717c36f17ea7bffc676f8f4a1d53764d483b3a6006e8e10211f306233a"
+              },
+              "seconds": 2.394899216000005,
+              "functions": 722
+            },
+            "candidate": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer01/test-rle-roundtrip-candidate.ssa",
+                "bytes": 541698,
+                "sha256": "f84d375ab4aac23dc0790aeb898d2b7671eade3257a192fd8745d577a23abd48"
+              },
+              "seconds": 2.581190518999996,
+              "functions": 693
+            }
+          }
+        },
+        "runtime": {
+          "name": "test-rle-roundtrip",
+          "complete": true,
+          "resolved": true,
+          "medianMilliseconds": {
+            "baseline": 1021.5,
+            "candidate": 999.5
+          },
+          "runtimeRatio": 0.9784630445423397,
+          "samples": [
+            {
+              "role": "baseline",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 1.01898371335119,
+              "userSeconds": 1.017804,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10848,
+              "internalMilliseconds": 1017,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/6-0-baseline.stdout",
+                "bytes": 17,
+                "sha256": "f2547148bf49466cc6898163e5a1c66e5a7a7f3c13fb5356c09f02b9d26ec71e"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/6-0-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "candidate",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.9963377928361297,
+              "userSeconds": 0.995243,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10852,
+              "internalMilliseconds": 994,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/6-0-candidate.stdout",
+                "bytes": 16,
+                "sha256": "36848370c1a17e06b3400e2e5db8400d2a0573999fba9aaeca1f0131c0eb7aff"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/6-0-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "candidate",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 1.0067765791900456,
+              "userSeconds": 1.001718,
+              "systemSeconds": 0.00399,
+              "peakRssKiB": 10868,
+              "internalMilliseconds": 1005,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/6-1-candidate.stdout",
+                "bytes": 17,
+                "sha256": "b7097c3dd2a222cc98ba34f1c2c4bfc5bad340a8dfcff95a4076f8b830512dc1"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/6-1-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "baseline",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 1.02881566202268,
+              "userSeconds": 1.023179,
+              "systemSeconds": 0.0039959999999999996,
+              "peakRssKiB": 10872,
+              "internalMilliseconds": 1026,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/6-1-baseline.stdout",
+                "bytes": 17,
+                "sha256": "1c24e50023dbd054c5a61c389be90a84d8ac9b6fdf1c237a966780300b647924"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/6-1-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          ],
+          "products": {
+            "baseline": {
+              "binary": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/test-rle-roundtrip-baseline/program",
+                "bytes": 238464,
+                "sha256": "cd1ce27efd48bb925063a6e2926b9bca3818c57fd5200fb3a4254c3878dfd487"
+              },
+              "buildReceipt": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/test-rle-roundtrip-baseline/report.json",
+                "bytes": 9141,
+                "sha256": "4d4ac1e3ffdb77bebb32f979f415f3131aa9971b4eeefba8fe9d5a582837c012"
+              },
+              "independentOutputPassed": true,
+              "executionStdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/test-rle-roundtrip-baseline.check.stdout",
+                "bytes": 9,
+                "sha256": "b8b88f7a40df8228ad417354ffec04352ab8b09f1c9cc3390bf120b05337e298"
+              },
+              "executionStderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/test-rle-roundtrip-baseline.check.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            "candidate": {
+              "binary": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/test-rle-roundtrip-candidate/program",
+                "bytes": 231952,
+                "sha256": "c05432364a7f44d22e11b1fbe33334e15aa551ded890d618730f6950f7d72f08"
+              },
+              "buildReceipt": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/test-rle-roundtrip-candidate/report.json",
+                "bytes": 9154,
+                "sha256": "5ef68bce2d56e0f344474b58205c327dfbcb035fecdfdf549f48111edf1efe05"
+              },
+              "independentOutputPassed": true,
+              "executionStdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/test-rle-roundtrip-candidate.check.stdout",
+                "bytes": 9,
+                "sha256": "b8b88f7a40df8228ad417354ffec04352ab8b09f1c9cc3390bf120b05337e298"
+              },
+              "executionStderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/test-rle-roundtrip-candidate.check.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          }
+        },
+        "emissionReceipt": "selfhost/build/phase164/transfer01/report.json",
+        "runtimeReceipt": "selfhost/build/phase164/transfer-machine01/report.json"
+      },
+      {
+        "emission": {
+          "name": "test-map-set-ops",
+          "complete": true,
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/test-map-set-ops.bend",
+            "sha256": "e93dc56e4c91670bb831c329e9ced90a0e17126bc02f4d7709131a516f0eb0ca",
+            "bytes": 7234
+          },
+          "expected": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/test-map-set-ops.stdout",
+            "sha256": "32c66107f0f4f2053128e519681fc8e88806d0d2b17607ce9f2362aff66ad6c7",
+            "bytes": 6
+          },
+          "runtimeArgs": [
+            0,
+            0
+          ],
+          "frontendSeconds": 1.4133673460000136,
+          "backendRatio": 1.0335006545579457,
+          "summary": "segments=1161;adapters=50;generic=1111;direct=97;arrays=0;live=1",
+          "products": {
+            "candidate": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer01/test-map-set-ops-candidate.ssa",
+                "bytes": 1774358,
+                "sha256": "d0633b67df7c847a7b3c934c703f22088f03c7b8748f4e900bef107f98f540b6"
+              },
+              "seconds": 9.411828819000002,
+              "functions": 1718
+            },
+            "baseline": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer01/test-map-set-ops-baseline.ssa",
+                "bytes": 1829245,
+                "sha256": "7ffd216f6ea36facfde0c8d3ce556f91cda807d4934cfdef2c0c074b1345f9a4"
+              },
+              "seconds": 9.106746839,
+              "functions": 1776
+            }
+          }
+        },
+        "runtime": {
+          "name": "test-map-set-ops",
+          "complete": true,
+          "resolved": true,
+          "medianMilliseconds": {
+            "baseline": 811.5,
+            "candidate": 776.0
+          },
+          "runtimeRatio": 0.9562538508934073,
+          "samples": [
+            {
+              "role": "candidate",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.7849217639304698,
+              "userSeconds": 0.783013,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10804,
+              "internalMilliseconds": 781,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/7-0-candidate.stdout",
+                "bytes": 18,
+                "sha256": "a365e14764a1a61786a158cff67990b6a3517527d6a3d38a43dbb3dda5a432a6"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/7-0-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "baseline",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.8213795768097043,
+              "userSeconds": 0.816333,
+              "systemSeconds": 0.004001,
+              "peakRssKiB": 10824,
+              "internalMilliseconds": 819,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/7-0-baseline.stdout",
+                "bytes": 18,
+                "sha256": "250704a517a4581258e18829d26daf582eef7084ae182cf6aa9472c5cc3cb90a"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/7-0-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "baseline",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.8072983208112419,
+              "userSeconds": 0.8057989999999999,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10832,
+              "internalMilliseconds": 804,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/7-1-baseline.stdout",
+                "bytes": 18,
+                "sha256": "5c33f3b90c14ceadbc0c508c602da2b6a07a42ce3969c94f1a71566b05bea052"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/7-1-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "candidate",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.7732572266831994,
+              "userSeconds": 0.7722359999999999,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10836,
+              "internalMilliseconds": 771,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/7-1-candidate.stdout",
+                "bytes": 18,
+                "sha256": "bbe7c51f75af952f296f90fe2b1057249ee24587603c23cfddcf83aed341a854"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/7-1-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          ],
+          "products": {
+            "baseline": {
+              "binary": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/test-map-set-ops-baseline/program",
+                "bytes": 483960,
+                "sha256": "aa92a9abc29137e31d3436c3a5514ae9ca0af20f79b5e1912e914606d8136234"
+              },
+              "buildReceipt": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/test-map-set-ops-baseline/report.json",
+                "bytes": 9123,
+                "sha256": "729e779199a4558c0b457db9887e0ed01cab1227e1dc9b4824b9acea6d43502a"
+              },
+              "independentOutputPassed": true,
+              "executionStdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/test-map-set-ops-baseline.check.stdout",
+                "bytes": 12,
+                "sha256": "530902743312f0a713164c8b96d058187f62faada1129230fcb633c378240f42"
+              },
+              "executionStderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/test-map-set-ops-baseline.check.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            "candidate": {
+              "binary": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/test-map-set-ops-candidate/program",
+                "bytes": 474744,
+                "sha256": "d0c9931f976810283ffce4d8bd2d775850dc5d061a4b33bfe9425188499261c1"
+              },
+              "buildReceipt": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/test-map-set-ops-candidate/report.json",
+                "bytes": 9134,
+                "sha256": "8bc041bf6f90af9d18e22dcc2635fa4c256e0571ee2595f5c100d4f1d2aea5e2"
+              },
+              "independentOutputPassed": true,
+              "executionStdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/test-map-set-ops-candidate.check.stdout",
+                "bytes": 12,
+                "sha256": "9bdb17c17dc6c1aa2fccc2a5b166ffbccaa469f442f3667ac7721f67b4c252ad"
+              },
+              "executionStderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/transfer-machine01/test-map-set-ops-candidate.check.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          }
+        },
+        "emissionReceipt": "selfhost/build/phase164/transfer01/report.json",
+        "runtimeReceipt": "selfhost/build/phase164/transfer-machine01/report.json"
+      }
+    ]
+  },
+  "broadAndRetained": {
+    "caseCount": 3,
+    "broadControls": [
+      "independent-zero-adapter-shape:pass",
+      "mixed-final-valid:pass",
+      "lost-final-worker-refused:pass",
+      "missing-adapter-map-refused:pass",
+      "missing-owner-header-refused:pass",
+      "duplicate-header-refused:pass",
+      "duplicate-worker-refused:pass",
+      "source-owner-mismatch-refused:pass",
+      "source-bang-refused:pass",
+      "map-arity-refused:pass",
+      "header-arity-refused:pass",
+      "header-result-refused:pass",
+      "header-incoming-refused:pass",
+      "header-effect-flag-refused:pass",
+      "empty-adapter-body-refused:pass",
+      "raw-result-return-refused:pass",
+      "extra-adapter-instruction-refused:pass",
+      "worker-arity-refused:pass",
+      "worker-result-refused:pass",
+      "worker-private-claim-refused:pass",
+      "worker-unterminated-refused:pass",
+      "worker-unknown-direct-call-refused:pass",
+      "worker-self-call-refused:pass",
+      "worker-removed-fid-refused:pass",
+      "worker-undefined-value-refused:pass",
+      "worker-scheduler-transition-refused:pass",
+      "unguarded-materialized-success-refused:pass",
+      "materialized-error-preserved:pass"
+    ],
+    "retainedControls": [
+      "independent-zero-adapter-shape:pass",
+      "mixed-final-valid:pass",
+      "lost-final-worker-refused:pass",
+      "missing-adapter-map-refused:pass",
+      "missing-owner-header-refused:pass",
+      "duplicate-header-refused:pass",
+      "duplicate-worker-refused:pass",
+      "source-owner-mismatch-refused:pass",
+      "source-bang-refused:pass",
+      "map-arity-refused:pass",
+      "header-arity-refused:pass",
+      "header-result-refused:pass",
+      "header-incoming-refused:pass",
+      "header-effect-flag-refused:pass",
+      "empty-adapter-body-refused:pass",
+      "raw-result-return-refused:pass",
+      "extra-adapter-instruction-refused:pass",
+      "worker-arity-refused:pass",
+      "worker-result-refused:pass",
+      "worker-private-claim-refused:pass",
+      "worker-unterminated-refused:pass",
+      "worker-unknown-direct-call-refused:pass",
+      "worker-self-call-refused:pass",
+      "worker-removed-fid-refused:pass",
+      "worker-undefined-value-refused:pass",
+      "worker-scheduler-transition-refused:pass",
+      "unguarded-materialized-success-refused:pass",
+      "materialized-error-preserved:pass",
+      "retained-valid:pass",
+      "retained-lost-worker-refused:pass",
+      "retained-ctor-order-refused:pass",
+      "retained-ctor-arity-refused:pass",
+      "retained-ctor-name-refused:pass",
+      "retained-malformed-final-body-refused:pass",
+      "retained-late-fields-and-certificate-ignored:pass"
+    ],
+    "broadControlCount": 28,
+    "retainedControlCount": 35,
+    "controlsAllPass": true,
+    "scope": "Exact broad/retained candidate QBE equality on three fixtures; baseline/candidate QBE differs intentionally. Hosted backend/render samples are single observations. This is not a new ten-case runtime run of each source revision.",
+    "cases": [
+      {
+        "name": "local-fold",
+        "broad": {
+          "name": "local-fold",
+          "complete": true,
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/local-fold.bend",
+            "sha256": "2252256562cc415348f3aa53c960b318f87c4a8b5fd118a0a2f115d446723125",
+            "bytes": 2737
+          },
+          "expected": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/local-fold.stdout",
+            "sha256": "c07893fbab1330de5e1c73495d24da59ca965c977e89fa9ea508b2f316ab3e20",
+            "bytes": 11
+          },
+          "runtimeArgs": [
+            4096,
+            17
+          ],
+          "frontendSeconds": 1.4175638930000005,
+          "backendRatio": 0.8512527109214274,
+          "summary": "segments=358;adapters=33;generic=325;direct=53;arrays=1;live=1",
+          "products": {
+            "baseline": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/broad02/local-fold-baseline.ssa",
+                "bytes": 568622,
+                "sha256": "25008ef60eea5e095b639dffe30721ba3e7969814c75da3c4da896b058b0bdef"
+              },
+              "seconds": 5.899066675,
+              "functions": 695
+            },
+            "candidate": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/broad02/local-fold-candidate.ssa",
+                "bytes": 553770,
+                "sha256": "24225ab5bb98b1cbf05867e3b53b737512cadaa635b57a9be70a58119c55085e"
+              },
+              "seconds": 5.021596499000001,
+              "functions": 671
+            }
+          }
+        },
+        "retained": {
+          "name": "local-fold",
+          "complete": true,
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/local-fold.bend",
+            "sha256": "2252256562cc415348f3aa53c960b318f87c4a8b5fd118a0a2f115d446723125",
+            "bytes": 2737
+          },
+          "expected": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/local-fold.stdout",
+            "sha256": "c07893fbab1330de5e1c73495d24da59ca965c977e89fa9ea508b2f316ab3e20",
+            "bytes": 11
+          },
+          "runtimeArgs": [
+            4096,
+            17
+          ],
+          "frontendSeconds": 1.4188533499999993,
+          "backendRatio": 0.8306532233665781,
+          "summary": "segments=358;adapters=33;generic=325;direct=53;arrays=1;live=1",
+          "products": {
+            "baseline": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/retained03/local-fold-baseline.ssa",
+                "bytes": 568622,
+                "sha256": "25008ef60eea5e095b639dffe30721ba3e7969814c75da3c4da896b058b0bdef"
+              },
+              "seconds": 5.423347802999999,
+              "functions": 695
+            },
+            "candidate": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/retained03/local-fold-candidate.ssa",
+                "bytes": 553770,
+                "sha256": "24225ab5bb98b1cbf05867e3b53b737512cadaa635b57a9be70a58119c55085e"
+              },
+              "seconds": 4.504921333999999,
+              "functions": 671
+            }
+          }
+        },
+        "exactBroadToRetainedPerRole": {
+          "baseline": true,
+          "candidate": true
+        },
+        "exactConservativeToBroadCandidate": true
+      },
+      {
+        "name": "tree-bitonic",
+        "broad": {
+          "name": "tree-bitonic",
+          "complete": true,
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/tree-bitonic.bend",
+            "sha256": "405f8d8fb2066e6fedd8baa45943bcdf92b59cb40e23ce2ad3ea4bd3eeb53ae0",
+            "bytes": 6593
+          },
+          "expected": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/tree-bitonic.stdout",
+            "sha256": "4d9faad3bd6736bd6b3be55577bba89ff3064588775afe8959dd2f709ca6aa21",
+            "bytes": 10
+          },
+          "runtimeArgs": [
+            8,
+            0
+          ],
+          "frontendSeconds": 1.2134168620000019,
+          "backendRatio": 0.9308368644459457,
+          "summary": "segments=451;adapters=34;generic=417;direct=55;arrays=1;live=1",
+          "products": {
+            "candidate": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/broad02/tree-bitonic-candidate.ssa",
+                "bytes": 655479,
+                "sha256": "d0cb11f7e2d1d6f6b8d7d80f90211953500a94ee0e575395e78d0a333d0f74ef"
+              },
+              "seconds": 4.407442288000002,
+              "functions": 806
+            },
+            "baseline": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/broad02/tree-bitonic-baseline.ssa",
+                "bytes": 669474,
+                "sha256": "bffd730b58d208196d337c71740a0ed0490c3bd0d86f3e09267c8d698f17a8fe"
+              },
+              "seconds": 4.7349245139999985,
+              "functions": 832
+            }
+          }
+        },
+        "retained": {
+          "name": "tree-bitonic",
+          "complete": true,
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/tree-bitonic.bend",
+            "sha256": "405f8d8fb2066e6fedd8baa45943bcdf92b59cb40e23ce2ad3ea4bd3eeb53ae0",
+            "bytes": 6593
+          },
+          "expected": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/tree-bitonic.stdout",
+            "sha256": "4d9faad3bd6736bd6b3be55577bba89ff3064588775afe8959dd2f709ca6aa21",
+            "bytes": 10
+          },
+          "runtimeArgs": [
+            8,
+            0
+          ],
+          "frontendSeconds": 1.2349495739999985,
+          "backendRatio": 0.8722767598234974,
+          "summary": "segments=451;adapters=34;generic=417;direct=55;arrays=1;live=1",
+          "products": {
+            "candidate": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/retained03/tree-bitonic-candidate.ssa",
+                "bytes": 655479,
+                "sha256": "d0cb11f7e2d1d6f6b8d7d80f90211953500a94ee0e575395e78d0a333d0f74ef"
+              },
+              "seconds": 4.217133419999998,
+              "functions": 806
+            },
+            "baseline": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/retained03/tree-bitonic-baseline.ssa",
+                "bytes": 669474,
+                "sha256": "bffd730b58d208196d337c71740a0ed0490c3bd0d86f3e09267c8d698f17a8fe"
+              },
+              "seconds": 4.83462774,
+              "functions": 832
+            }
+          }
+        },
+        "exactBroadToRetainedPerRole": {
+          "baseline": true,
+          "candidate": true
+        },
+        "exactConservativeToBroadCandidate": true
+      },
+      {
+        "name": "test-map-set-ops",
+        "broad": {
+          "name": "test-map-set-ops",
+          "complete": true,
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/test-map-set-ops.bend",
+            "sha256": "e93dc56e4c91670bb831c329e9ced90a0e17126bc02f4d7709131a516f0eb0ca",
+            "bytes": 7234
+          },
+          "expected": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/test-map-set-ops.stdout",
+            "sha256": "32c66107f0f4f2053128e519681fc8e88806d0d2b17607ce9f2362aff66ad6c7",
+            "bytes": 6
+          },
+          "runtimeArgs": [
+            0,
+            0
+          ],
+          "frontendSeconds": 2.6340064970000023,
+          "backendRatio": 1.1167871823397135,
+          "summary": "segments=1161;adapters=50;generic=1111;direct=97;arrays=0;live=1",
+          "products": {
+            "baseline": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/broad02/test-map-set-ops-baseline.ssa",
+                "bytes": 1829245,
+                "sha256": "7ffd216f6ea36facfde0c8d3ce556f91cda807d4934cfdef2c0c074b1345f9a4"
+              },
+              "seconds": 12.502966033999998,
+              "functions": 1776
+            },
+            "candidate": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/broad02/test-map-set-ops-candidate.ssa",
+                "bytes": 1774358,
+                "sha256": "d0633b67df7c847a7b3c934c703f22088f03c7b8748f4e900bef107f98f540b6"
+              },
+              "seconds": 13.963152208,
+              "functions": 1718
+            }
+          }
+        },
+        "retained": {
+          "name": "test-map-set-ops",
+          "complete": true,
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/test-map-set-ops.bend",
+            "sha256": "e93dc56e4c91670bb831c329e9ced90a0e17126bc02f4d7709131a516f0eb0ca",
+            "bytes": 7234
+          },
+          "expected": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/test-map-set-ops.stdout",
+            "sha256": "32c66107f0f4f2053128e519681fc8e88806d0d2b17607ce9f2362aff66ad6c7",
+            "bytes": 6
+          },
+          "runtimeArgs": [
+            0,
+            0
+          ],
+          "frontendSeconds": 2.4902230490000004,
+          "backendRatio": 1.023368891486317,
+          "summary": "segments=1161;adapters=50;generic=1111;direct=97;arrays=0;live=1",
+          "products": {
+            "baseline": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/retained03/test-map-set-ops-baseline.ssa",
+                "bytes": 1829245,
+                "sha256": "7ffd216f6ea36facfde0c8d3ce556f91cda807d4934cfdef2c0c074b1345f9a4"
+              },
+              "seconds": 12.639390283999997,
+              "functions": 1776
+            },
+            "candidate": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/retained03/test-map-set-ops-candidate.ssa",
+                "bytes": 1774358,
+                "sha256": "d0633b67df7c847a7b3c934c703f22088f03c7b8748f4e900bef107f98f540b6"
+              },
+              "seconds": 12.934758824000005,
+              "functions": 1718
+            }
+          }
+        },
+        "exactBroadToRetainedPerRole": {
+          "baseline": true,
+          "candidate": true
+        },
+        "exactConservativeToBroadCandidate": true
+      }
+    ]
+  },
+  "nativeRequests": {
+    "N1": {
+      "receipt": "selfhost/build/phase164/native-requests03/report.json",
+      "scope": "Fresh processes, same source/Base/carrier/CPU/runtime. Complete source-to-QBE including startup/frontend/output; excludes machine build. Exact independent hosted output per role, not a claim of baseline/candidate byte equality.",
+      "pairsPerCase": 2,
+      "caseCount": 3,
+      "rows": [
+        {
+          "name": "local-fold",
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/local-fold.bend",
+            "sha256": "2252256562cc415348f3aa53c960b318f87c4a8b5fd118a0a2f115d446723125",
+            "bytes": 2737
+          },
+          "complete": true,
+          "medianSeconds": {
+            "baseline": 0.9873419224750251,
+            "candidate": 0.9643275206908584
+          },
+          "ratio": 0.9766905453315755,
+          "samples": [
+            {
+              "role": "baseline",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.9931500470265746,
+              "userSeconds": 0.975464,
+              "systemSeconds": 0.015991,
+              "peakRssKiB": 34876,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/native-requests03/local-fold-0-baseline.ssa",
+                "bytes": 568622,
+                "sha256": "25008ef60eea5e095b639dffe30721ba3e7969814c75da3c4da896b058b0bdef"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/native-requests03/local-fold-0-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "candidate",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.9578646160662174,
+              "userSeconds": 0.932785,
+              "systemSeconds": 0.02402,
+              "peakRssKiB": 33792,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/native-requests03/local-fold-0-candidate.ssa",
+                "bytes": 553770,
+                "sha256": "24225ab5bb98b1cbf05867e3b53b737512cadaa635b57a9be70a58119c55085e"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/native-requests03/local-fold-0-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "candidate",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.9707904253154993,
+              "userSeconds": 0.929665,
+              "systemSeconds": 0.040070999999999996,
+              "peakRssKiB": 33704,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/native-requests03/local-fold-1-candidate.ssa",
+                "bytes": 553770,
+                "sha256": "24225ab5bb98b1cbf05867e3b53b737512cadaa635b57a9be70a58119c55085e"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/native-requests03/local-fold-1-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "baseline",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.9815337979234755,
+              "userSeconds": 0.961482,
+              "systemSeconds": 0.018819,
+              "peakRssKiB": 34748,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/native-requests03/local-fold-1-baseline.ssa",
+                "bytes": 568622,
+                "sha256": "25008ef60eea5e095b639dffe30721ba3e7969814c75da3c4da896b058b0bdef"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/native-requests03/local-fold-1-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          ],
+          "exactRoleOracle": true,
+          "emptyStderr": true
+        },
+        {
+          "name": "tree-bitonic",
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/tree-bitonic.bend",
+            "sha256": "405f8d8fb2066e6fedd8baa45943bcdf92b59cb40e23ce2ad3ea4bd3eeb53ae0",
+            "bytes": 6593
+          },
+          "complete": true,
+          "medianSeconds": {
+            "baseline": 1.117842758540064,
+            "candidate": 1.104421028168872
+          },
+          "ratio": 0.9879931857422226,
+          "samples": [
+            {
+              "role": "candidate",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 1.1024592155590653,
+              "userSeconds": 1.080901,
+              "systemSeconds": 0.020023,
+              "peakRssKiB": 33984,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/native-requests03/tree-bitonic-0-candidate.ssa",
+                "bytes": 655479,
+                "sha256": "d0cb11f7e2d1d6f6b8d7d80f90211953500a94ee0e575395e78d0a333d0f74ef"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/native-requests03/tree-bitonic-0-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "baseline",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 1.1168306628242135,
+              "userSeconds": 1.083689,
+              "systemSeconds": 0.03199,
+              "peakRssKiB": 35004,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/native-requests03/tree-bitonic-0-baseline.ssa",
+                "bytes": 669474,
+                "sha256": "bffd730b58d208196d337c71740a0ed0490c3bd0d86f3e09267c8d698f17a8fe"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/native-requests03/tree-bitonic-0-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "baseline",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 1.1188548542559147,
+              "userSeconds": 1.073821,
+              "systemSeconds": 0.04391,
+              "peakRssKiB": 35040,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/native-requests03/tree-bitonic-1-baseline.ssa",
+                "bytes": 669474,
+                "sha256": "bffd730b58d208196d337c71740a0ed0490c3bd0d86f3e09267c8d698f17a8fe"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/native-requests03/tree-bitonic-1-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "candidate",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 1.1063828407786787,
+              "userSeconds": 1.0566,
+              "systemSeconds": 0.048027,
+              "peakRssKiB": 33984,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/native-requests03/tree-bitonic-1-candidate.ssa",
+                "bytes": 655479,
+                "sha256": "d0cb11f7e2d1d6f6b8d7d80f90211953500a94ee0e575395e78d0a333d0f74ef"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/native-requests03/tree-bitonic-1-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          ],
+          "exactRoleOracle": true,
+          "emptyStderr": true
+        },
+        {
+          "name": "test-map-set-ops",
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/test-map-set-ops.bend",
+            "sha256": "e93dc56e4c91670bb831c329e9ced90a0e17126bc02f4d7709131a516f0eb0ca",
+            "bytes": 7234
+          },
+          "complete": true,
+          "medianSeconds": {
+            "baseline": 2.6890145340003073,
+            "candidate": 2.658799404511228
+          },
+          "ratio": 0.9887634934259245,
+          "samples": [
+            {
+              "role": "baseline",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 2.6777608008123934,
+              "userSeconds": 2.612589,
+              "systemSeconds": 0.064014,
+              "peakRssKiB": 39464,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/native-requests03/test-map-set-ops-0-baseline.ssa",
+                "bytes": 1829245,
+                "sha256": "7ffd216f6ea36facfde0c8d3ce556f91cda807d4934cfdef2c0c074b1345f9a4"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/native-requests03/test-map-set-ops-0-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "candidate",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 2.650331602897495,
+              "userSeconds": 2.592947,
+              "systemSeconds": 0.05602,
+              "peakRssKiB": 38084,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/native-requests03/test-map-set-ops-0-candidate.ssa",
+                "bytes": 1774358,
+                "sha256": "d0633b67df7c847a7b3c934c703f22088f03c7b8748f4e900bef107f98f540b6"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/native-requests03/test-map-set-ops-0-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "candidate",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 2.6672672061249614,
+              "userSeconds": 2.613011,
+              "systemSeconds": 0.052929,
+              "peakRssKiB": 38052,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/native-requests03/test-map-set-ops-1-candidate.ssa",
+                "bytes": 1774358,
+                "sha256": "d0633b67df7c847a7b3c934c703f22088f03c7b8748f4e900bef107f98f540b6"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/native-requests03/test-map-set-ops-1-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "baseline",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 2.700268267188221,
+              "userSeconds": 2.646454,
+              "systemSeconds": 0.052048,
+              "peakRssKiB": 39400,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/native-requests03/test-map-set-ops-1-baseline.ssa",
+                "bytes": 1829245,
+                "sha256": "7ffd216f6ea36facfde0c8d3ce556f91cda807d4934cfdef2c0c074b1345f9a4"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/native-requests03/test-map-set-ops-1-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          ],
+          "exactRoleOracle": true,
+          "emptyStderr": true
+        }
+      ]
+    },
+    "N2": {
+      "receipt": "selfhost/build/phase164/n2-requests03/report.json",
+      "scope": "Fresh processes, same source/Base/carrier/CPU/runtime. Complete source-to-QBE including startup/frontend/output; excludes machine build. Exact independent hosted output per role, not a claim of baseline/candidate byte equality.",
+      "pairsPerCase": 2,
+      "caseCount": 3,
+      "rows": [
+        {
+          "name": "local-fold",
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/local-fold.bend",
+            "sha256": "2252256562cc415348f3aa53c960b318f87c4a8b5fd118a0a2f115d446723125",
+            "bytes": 2737
+          },
+          "complete": true,
+          "medianSeconds": {
+            "baseline": 0.994441936025396,
+            "candidate": 0.9413139659445733
+          },
+          "ratio": 0.9465750908563193,
+          "samples": [
+            {
+              "role": "baseline",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.998927318956703,
+              "userSeconds": 0.9471259999999999,
+              "systemSeconds": 0.050105,
+              "peakRssKiB": 34744,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/n2-requests03/local-fold-0-baseline.ssa",
+                "bytes": 568622,
+                "sha256": "25008ef60eea5e095b639dffe30721ba3e7969814c75da3c4da896b058b0bdef"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/n2-requests03/local-fold-0-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "candidate",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.9378894558176398,
+              "userSeconds": 0.9087369999999999,
+              "systemSeconds": 0.028022,
+              "peakRssKiB": 32564,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/n2-requests03/local-fold-0-candidate.ssa",
+                "bytes": 553770,
+                "sha256": "24225ab5bb98b1cbf05867e3b53b737512cadaa635b57a9be70a58119c55085e"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/n2-requests03/local-fold-0-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "candidate",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.9447384760715067,
+              "userSeconds": 0.9276669999999999,
+              "systemSeconds": 0.015993999999999998,
+              "peakRssKiB": 32460,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/n2-requests03/local-fold-1-candidate.ssa",
+                "bytes": 553770,
+                "sha256": "24225ab5bb98b1cbf05867e3b53b737512cadaa635b57a9be70a58119c55085e"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/n2-requests03/local-fold-1-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "baseline",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.989956553094089,
+              "userSeconds": 0.948838,
+              "systemSeconds": 0.040035,
+              "peakRssKiB": 34840,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/n2-requests03/local-fold-1-baseline.ssa",
+                "bytes": 568622,
+                "sha256": "25008ef60eea5e095b639dffe30721ba3e7969814c75da3c4da896b058b0bdef"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/n2-requests03/local-fold-1-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          ],
+          "exactRoleOracle": true,
+          "emptyStderr": true
+        },
+        {
+          "name": "tree-bitonic",
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/tree-bitonic.bend",
+            "sha256": "405f8d8fb2066e6fedd8baa45943bcdf92b59cb40e23ce2ad3ea4bd3eeb53ae0",
+            "bytes": 6593
+          },
+          "complete": true,
+          "medianSeconds": {
+            "baseline": 1.1542792089749128,
+            "candidate": 1.0945059761870652
+          },
+          "ratio": 0.948215966879512,
+          "samples": [
+            {
+              "role": "candidate",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 1.0905853500589728,
+              "userSeconds": 1.044918,
+              "systemSeconds": 0.044038,
+              "peakRssKiB": 32752,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/n2-requests03/tree-bitonic-0-candidate.ssa",
+                "bytes": 655479,
+                "sha256": "d0cb11f7e2d1d6f6b8d7d80f90211953500a94ee0e575395e78d0a333d0f74ef"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/n2-requests03/tree-bitonic-0-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "baseline",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 1.1381818749941885,
+              "userSeconds": 1.108443,
+              "systemSeconds": 0.028010999999999998,
+              "peakRssKiB": 35192,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/n2-requests03/tree-bitonic-0-baseline.ssa",
+                "bytes": 669474,
+                "sha256": "bffd730b58d208196d337c71740a0ed0490c3bd0d86f3e09267c8d698f17a8fe"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/n2-requests03/tree-bitonic-0-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "baseline",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 1.170376542955637,
+              "userSeconds": 1.136954,
+              "systemSeconds": 0.031914,
+              "peakRssKiB": 35164,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/n2-requests03/tree-bitonic-1-baseline.ssa",
+                "bytes": 669474,
+                "sha256": "bffd730b58d208196d337c71740a0ed0490c3bd0d86f3e09267c8d698f17a8fe"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/n2-requests03/tree-bitonic-1-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "candidate",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 1.0984266023151577,
+              "userSeconds": 1.073134,
+              "systemSeconds": 0.024024999999999998,
+              "peakRssKiB": 32844,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/n2-requests03/tree-bitonic-1-candidate.ssa",
+                "bytes": 655479,
+                "sha256": "d0cb11f7e2d1d6f6b8d7d80f90211953500a94ee0e575395e78d0a333d0f74ef"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/n2-requests03/tree-bitonic-1-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          ],
+          "exactRoleOracle": true,
+          "emptyStderr": true
+        },
+        {
+          "name": "test-map-set-ops",
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/test-map-set-ops.bend",
+            "sha256": "e93dc56e4c91670bb831c329e9ced90a0e17126bc02f4d7709131a516f0eb0ca",
+            "bytes": 7234
+          },
+          "complete": true,
+          "medianSeconds": {
+            "baseline": 2.696204335661605,
+            "candidate": 2.8459631353616714
+          },
+          "ratio": 1.0555443063863028,
+          "samples": [
+            {
+              "role": "baseline",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 2.6861568582244217,
+              "userSeconds": 2.640885,
+              "systemSeconds": 0.044014,
+              "peakRssKiB": 39356,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/n2-requests03/test-map-set-ops-0-baseline.ssa",
+                "bytes": 1829245,
+                "sha256": "7ffd216f6ea36facfde0c8d3ce556f91cda807d4934cfdef2c0c074b1345f9a4"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/n2-requests03/test-map-set-ops-0-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "candidate",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 2.804162859916687,
+              "userSeconds": 2.704822,
+              "systemSeconds": 0.06547499999999999,
+              "peakRssKiB": 36960,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/n2-requests03/test-map-set-ops-0-candidate.ssa",
+                "bytes": 1774358,
+                "sha256": "d0633b67df7c847a7b3c934c703f22088f03c7b8748f4e900bef107f98f540b6"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/n2-requests03/test-map-set-ops-0-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "candidate",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 2.887763410806656,
+              "userSeconds": 2.810235,
+              "systemSeconds": 0.07595199999999999,
+              "peakRssKiB": 36920,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/n2-requests03/test-map-set-ops-1-candidate.ssa",
+                "bytes": 1774358,
+                "sha256": "d0633b67df7c847a7b3c934c703f22088f03c7b8748f4e900bef107f98f540b6"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/n2-requests03/test-map-set-ops-1-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "baseline",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 2.7062518130987883,
+              "userSeconds": 2.638958,
+              "systemSeconds": 0.066,
+              "peakRssKiB": 39500,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/n2-requests03/test-map-set-ops-1-baseline.ssa",
+                "bytes": 1829245,
+                "sha256": "7ffd216f6ea36facfde0c8d3ce556f91cda807d4934cfdef2c0c074b1345f9a4"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/n2-requests03/test-map-set-ops-1-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          ],
+          "exactRoleOracle": true,
+          "emptyStderr": true
+        }
+      ]
+    }
+  },
+  "acquisition": {
+    "scope": "One complete emission/QBE/assembly/link observation per producer on the exact same 1,556,351-byte private compiler source. N1 is produced by the qualified compiler; N2 by N1. Generated QBE differs across these producer policies.",
+    "sameInputSource": true,
+    "builds": {
+      "N1": {
+        "complete": true,
+        "wallSeconds": 201.93065262865275,
+        "emitAndQbeSeconds": 196.24953149165958,
+        "irDigest": {
+          "bytes": 109886524,
+          "sha256": "250d5ae1492eba82e50a17accaf45b66b4cfa77fe3300f43482c127aff081fc4"
+        },
+        "assembly": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/hybrid-native03/program.s",
+          "bytes": 78989271,
+          "sha256": "3cd20d0a249ded534abdb100d02769bdf2ea1fcef8820f7b5a85d83add83b7c2"
+        },
+        "object": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/hybrid-native03/program.o",
+          "bytes": 22793808,
+          "sha256": "a27abc0942ae24f2c4150e9cca47990bfa394865372869d909f617d4f51c0ff7"
+        },
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/hybrid-native03/program",
+          "bytes": 17378632,
+          "sha256": "001c2fc90d959bba19eb34443781e236f5d1b8bf53e1344409dcc72d374634de"
+        },
+        "imageBinding": {
+          "kind": "bend-build-image-binding",
+          "version": 1,
+          "complete": true,
+          "image": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/hybrid-native03/program",
+            "bytes": 17378632,
+            "sha256": "001c2fc90d959bba19eb34443781e236f5d1b8bf53e1344409dcc72d374634de"
+          },
+          "sourceIdentity": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/hybrid-native-source03/compiler.bend",
+            "bytes": 1556351,
+            "sha256": "77326516581c469a60cd5c8c0dd55a17615a2f4db4fc3863a284249b33391f91"
+          },
+          "host": "native",
+          "stage": "N1-P164-mixed",
+          "protocol": "qbe-source-v1",
+          "targets": [
+            "qbe"
+          ],
+          "linkedRuntime": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+            "bytes": 119096,
+            "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+          },
+          "producer": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/native-n2/program",
+            "bytes": 18945224,
+            "sha256": "d62712958b53ecdbe19998ca54c9184f895b556acc661ad014dae89754b952bd"
+          },
+          "producerHost": "native",
+          "producerStage": "N2",
+          "qualification": "Built; semantic/self-host qualification is separate."
+        },
+        "timingScope": "Whole emission/machine pipeline after preflight, under one outer disk/process guard.",
+        "compilerExitCode": 0,
+        "qbeExitCode": 0,
+        "compilerStderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/hybrid-native03/compiler.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "qbeStderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/hybrid-native03/qbe.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "receipt": "selfhost/build/phase164/hybrid-native03/report.json",
+        "inputSource": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/hybrid-native-source03/compiler.bend",
+          "bytes": 1556351,
+          "sha256": "77326516581c469a60cd5c8c0dd55a17615a2f4db4fc3863a284249b33391f91"
+        }
+      },
+      "N2": {
+        "complete": true,
+        "wallSeconds": 201.27131587592885,
+        "emitAndQbeSeconds": 195.7000800902024,
+        "irDigest": {
+          "bytes": 104739601,
+          "sha256": "adafabb40174a111aecf910d4e0725f3f6b203d5c1225b21a1f00bd05881488a"
+        },
+        "assembly": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/hybrid-n2-03/program.s",
+          "bytes": 75150548,
+          "sha256": "bc3a1bedb5fc59459945c21b41b6e04c02dc6dc663cef117c1f3311aeac2e28e"
+        },
+        "object": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/hybrid-n2-03/program.o",
+          "bytes": 21526712,
+          "sha256": "bd227561ffede8e25dfde6f3c6adbaf63f9d8803160b8893f942a53e78a151c9"
+        },
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/hybrid-n2-03/program",
+          "bytes": 16483424,
+          "sha256": "2c604e1f6efb34b091658a0e697e33e39c2a1e56e22b2822c3dbc36ad50dc149"
+        },
+        "imageBinding": {
+          "kind": "bend-build-image-binding",
+          "version": 1,
+          "complete": true,
+          "image": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/hybrid-n2-03/program",
+            "bytes": 16483424,
+            "sha256": "2c604e1f6efb34b091658a0e697e33e39c2a1e56e22b2822c3dbc36ad50dc149"
+          },
+          "sourceIdentity": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/hybrid-native-source03/compiler.bend",
+            "bytes": 1556351,
+            "sha256": "77326516581c469a60cd5c8c0dd55a17615a2f4db4fc3863a284249b33391f91"
+          },
+          "host": "native",
+          "stage": "N2-P164-mixed",
+          "protocol": "qbe-source-v1",
+          "targets": [
+            "qbe"
+          ],
+          "linkedRuntime": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+            "bytes": 119096,
+            "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+          },
+          "producer": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/hybrid-native03/program",
+            "bytes": 17378632,
+            "sha256": "001c2fc90d959bba19eb34443781e236f5d1b8bf53e1344409dcc72d374634de"
+          },
+          "producerHost": "native",
+          "producerStage": "N1-P164-mixed",
+          "qualification": "Built; semantic/self-host qualification is separate."
+        },
+        "timingScope": "Whole emission/machine pipeline after preflight, under one outer disk/process guard.",
+        "compilerExitCode": 0,
+        "qbeExitCode": 0,
+        "compilerStderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/hybrid-n2-03/compiler.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "qbeStderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/hybrid-n2-03/qbe.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "receipt": "selfhost/build/phase164/hybrid-n2-03/report.json",
+        "inputSource": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/hybrid-native-source03/compiler.bend",
+          "bytes": 1556351,
+          "sha256": "77326516581c469a60cd5c8c0dd55a17615a2f4db4fc3863a284249b33391f91"
+        }
+      }
+    },
+    "qualifiedContextOnly": {
+      "receipt": "selfhost/build/phase152/native-n3/report.json",
+      "wallSeconds": 249.22208714671433,
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/composite01/compiler.bend",
+        "bytes": 3085157,
+        "sha256": "027e15041035522ed7e40ef971eff75f24a09ef6a00e3f8fe335839f94bcb8a8"
+      },
+      "comparableSource": false,
+      "claim": "249.222 seconds is a different 3,085,157-byte source; no speedup ratio is computed against it."
+    },
+    "candidateOverQualifiedProducerSameSourceWallRatio": 0.9967348357263203,
+    "limitations": [
+      "Single observations, not a paired statistical comparison.",
+      "Do not compare reduced-source acquisition to historical full-source acquisition as an algorithmic compiler speedup."
+    ]
+  },
+  "selfEmission": {
+    "complete": true,
+    "seconds": 179.54751310078427,
+    "firstBlockSeconds": 146.39852220471948,
+    "observedSeconds": 179.60898361587897,
+    "irDigest": {
+      "bytes": 104739601,
+      "sha256": "adafabb40174a111aecf910d4e0725f3f6b203d5c1225b21a1f00bd05881488a"
+    },
+    "expected": {
+      "bytes": 104739601,
+      "sha256": "adafabb40174a111aecf910d4e0725f3f6b203d5c1225b21a1f00bd05881488a"
+    },
+    "scope": "Native compiler execution, complete source-to-QBE including output/teardown; excludes QBE, assembly and linking. Exact predecessor stream hash comparison is self-reproduction, not a proof.",
+    "stderr": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/n2-self-emission03/compiler.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "exitCode": 0,
+    "exactPredecessorStream": true,
+    "receipt": "selfhost/build/phase164/n2-self-emission03/report.json",
+    "limitation": "One source-to-QBE observation, excludes QBE/assembler/linker. Exact self-reproduction is not semantic proof or complete promotion qualification."
+  },
+  "importsOnly": {
+    "controls": [
+      "eligible-zero:pass",
+      "eligible-arity32:pass",
+      "arity33-refused:pass",
+      "missing-worker-refused:pass",
+      "wrong-name-refused:pass",
+      "wrong-kind-refused:pass",
+      "private-worker-refused:pass",
+      "worker-arity-refused:pass",
+      "worker-result-refused:pass",
+      "header-result-refused:pass",
+      "incoming-capture-refused:pass",
+      "effect-flag-refused:pass",
+      "registry-real-import-no-fake-plan:pass",
+      "candidate-only-import-removed:pass",
+      "independent-zero-forwarder:pass",
+      "independent-two-forwarder:pass",
+      "unregistered-forwarder-absent:pass",
+      "analyzed-region-forwarder-absent:pass"
+    ],
+    "controlCount": 18,
+    "controlsAllPass": true,
+    "caseCount": 3,
+    "runtimePairsPerCase": 2,
+    "scope": "Original generic lowering and independent verifiers retained; only direct-import renderer ablation. Hosted backend/render samples are single observations; generated runtime is separate.",
+    "cases": [
+      {
+        "emission": {
+          "name": "mandelbrot",
+          "complete": true,
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/mandelbrot.bend",
+            "sha256": "7d47d183cf02b3e943e0e35532eb8ba12c683eafd9b2031bbc25983181174897",
+            "bytes": 8536
+          },
+          "expected": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/mandelbrot.stdout",
+            "sha256": "1529134f8bd7e9d3989167e1dca0726ea4b01b5dba6e8e3407e966f8f37c7758",
+            "bytes": 10
+          },
+          "runtimeArgs": [
+            2,
+            0
+          ],
+          "frontendSeconds": 1.911604722,
+          "backendRatio": 0.8777585870581318,
+          "summary": "segments=561;direct=56;imports=41",
+          "products": {
+            "baseline": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports01/mandelbrot-baseline.ssa",
+                "bytes": 1256237,
+                "sha256": "f080b8c342cce21c456ebaf5487ff3162b647786e2e2e513b8f6f0d3b1f0b187"
+              },
+              "seconds": 11.103227297,
+              "functions": 908
+            },
+            "candidate": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports01/mandelbrot-candidate.ssa",
+                "bytes": 1296024,
+                "sha256": "1c7bc18d73077d80e98e0ea9dec4933ba1fdf6bf163990c9e3ddb263397ed509"
+              },
+              "seconds": 9.745953104,
+              "functions": 948
+            }
+          }
+        },
+        "runtime": {
+          "name": "mandelbrot",
+          "complete": true,
+          "resolved": true,
+          "medianMilliseconds": {
+            "baseline": 708.0,
+            "candidate": 601.5
+          },
+          "runtimeRatio": 0.8495762711864406,
+          "samples": [
+            {
+              "role": "baseline",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.7026781300082803,
+              "userSeconds": 0.701641,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10336,
+              "internalMilliseconds": 700,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/0-0-baseline.stdout",
+                "bytes": 21,
+                "sha256": "0227f4fd40e3c4a251b2368740c562b3f526bc831899f14f191148a0d4543894"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/0-0-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "candidate",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.6043341662734747,
+              "userSeconds": 0.6033189999999999,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10336,
+              "internalMilliseconds": 602,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/0-0-candidate.stdout",
+                "bytes": 21,
+                "sha256": "de9a4e79392025d6b9ba06616d540c44d24118164ba5f29b502b1b384dc72dae"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/0-0-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "candidate",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.6034124232828617,
+              "userSeconds": 0.602418,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10336,
+              "internalMilliseconds": 601,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/0-1-candidate.stdout",
+                "bytes": 21,
+                "sha256": "672ac2573977fd98323691cb392f1df00da8cb491b930e8193fbe6c5faf84722"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/0-1-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "baseline",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.7188899358734488,
+              "userSeconds": 0.7179059999999999,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10336,
+              "internalMilliseconds": 716,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/0-1-baseline.stdout",
+                "bytes": 21,
+                "sha256": "f218769c97f0c9a3830fb3c53aa5a7bcd95732256f8730d9900b61a1ee82eae2"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/0-1-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          ],
+          "products": {
+            "baseline": {
+              "binary": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/mandelbrot-baseline/program",
+                "bytes": 294672,
+                "sha256": "cf8879fab16c9abd056b82ef58e4363ebfa248cdd24585cb2d8a8747e682ece8"
+              },
+              "buildReceipt": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/mandelbrot-baseline/report.json",
+                "bytes": 8983,
+                "sha256": "e09a4993c0cedfc49cf5c2c4567c0b24e104da765e2b414973f430607eb5b6ed"
+              },
+              "independentOutputPassed": true,
+              "executionStdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/mandelbrot-baseline.check.stdout",
+                "bytes": 16,
+                "sha256": "88f976f53976d741ceb5789d7e7fb933ac379187be80c62bdbfc425dcf2c19da"
+              },
+              "executionStderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/mandelbrot-baseline.check.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            "candidate": {
+              "binary": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/mandelbrot-candidate/program",
+                "bytes": 302296,
+                "sha256": "57c14c630323c4ffe13f423e7f9696ddf43b7dbdeb062ceb5ae9092927fa2ee8"
+              },
+              "buildReceipt": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/mandelbrot-candidate/report.json",
+                "bytes": 9011,
+                "sha256": "845c810322cf566d5b2f736f7b63e1106361e58ca119d06b0f13653744d4e232"
+              },
+              "independentOutputPassed": true,
+              "executionStdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/mandelbrot-candidate.check.stdout",
+                "bytes": 16,
+                "sha256": "88f976f53976d741ceb5789d7e7fb933ac379187be80c62bdbfc425dcf2c19da"
+              },
+              "executionStderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/mandelbrot-candidate.check.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          }
+        }
+      },
+      {
+        "emission": {
+          "name": "coverage-unicode-text-16",
+          "complete": true,
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-unicode-text-16.bend",
+            "sha256": "1e44705513750680563a8939e46120e4fbb5e9ffbfabe1f3d22b773a6eada3c5",
+            "bytes": 7528
+          },
+          "expected": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/coverage-unicode-text-16.stdout",
+            "sha256": "835a668452e7da17c4390ebeca7cc5422056349b74011e53130159d123360eaf",
+            "bytes": 289
+          },
+          "runtimeArgs": [
+            16,
+            17
+          ],
+          "frontendSeconds": 1.3562759269999989,
+          "backendRatio": 1.0091915026392153,
+          "summary": "segments=428;direct=49;imports=34",
+          "products": {
+            "candidate": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports01/coverage-unicode-text-16-candidate.ssa",
+                "bytes": 570264,
+                "sha256": "ad0a28462dd6a86a1a4524ef46c3e1bc7568253b1ef40eed4be69348a9169320"
+              },
+              "seconds": 3.356222579000001,
+              "functions": 729
+            },
+            "baseline": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports01/coverage-unicode-text-16-baseline.ssa",
+                "bytes": 535214,
+                "sha256": "2f1b5099497af665a5901e2a0d4d69f5f3cfb7e93dd9347491e1ec4043d15307"
+              },
+              "seconds": 3.3256548140000013,
+              "functions": 689
+            }
+          }
+        },
+        "runtime": {
+          "name": "coverage-unicode-text-16",
+          "complete": true,
+          "resolved": true,
+          "medianMilliseconds": {
+            "baseline": 270.0,
+            "candidate": 236.5
+          },
+          "runtimeRatio": 0.8759259259259259,
+          "samples": [
+            {
+              "role": "candidate",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.23813208984211087,
+              "userSeconds": 0.233257,
+              "systemSeconds": 0.003953,
+              "peakRssKiB": 10652,
+              "internalMilliseconds": 235,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/1-0-candidate.stdout",
+                "bytes": 300,
+                "sha256": "9d44ebc4468498d2a1f70688f78682b227f284cb6a89d0ce3a6d79168f4ff4df"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/1-0-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "baseline",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.2723628762178123,
+              "userSeconds": 0.267314,
+              "systemSeconds": 0.0039889999999999995,
+              "peakRssKiB": 10660,
+              "internalMilliseconds": 270,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/1-0-baseline.stdout",
+                "bytes": 300,
+                "sha256": "e65aa049080a11713e9e8f100dca182fbc7ac7a81e86ab00bab5304b51e672e9"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/1-0-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "baseline",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.271978409960866,
+              "userSeconds": 0.267024,
+              "systemSeconds": 0.003985,
+              "peakRssKiB": 10660,
+              "internalMilliseconds": 270,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/1-1-baseline.stdout",
+                "bytes": 300,
+                "sha256": "e65aa049080a11713e9e8f100dca182fbc7ac7a81e86ab00bab5304b51e672e9"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/1-1-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "candidate",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.24022506270557642,
+              "userSeconds": 0.23907199999999998,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10664,
+              "internalMilliseconds": 238,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/1-1-candidate.stdout",
+                "bytes": 300,
+                "sha256": "d4064786ada2e96a85d8ba5ffeee2fe242c62215c448f2fbb0af1b9df2ebd798"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/1-1-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          ],
+          "products": {
+            "baseline": {
+              "binary": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/coverage-unicode-text-16-baseline/program",
+                "bytes": 235040,
+                "sha256": "8477473b72280eea73dd9cbca187d5ad0753ea6d3c06b86280c67d26be76a5d8"
+              },
+              "buildReceipt": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/coverage-unicode-text-16-baseline/report.json",
+                "bytes": 9272,
+                "sha256": "918f1c80cb59f9b521f2827f86b7564a2d43009bd42fa03ecd9d4722b4f2ed1e"
+              },
+              "independentOutputPassed": true,
+              "executionStdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/coverage-unicode-text-16-baseline.check.stdout",
+                "bytes": 295,
+                "sha256": "ecab3df32cf944aa47a6f9eabb61f7755d068b98ef41745a4ea631ded37174f7"
+              },
+              "executionStderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/coverage-unicode-text-16-baseline.check.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            "candidate": {
+              "binary": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/coverage-unicode-text-16-candidate/program",
+                "bytes": 238608,
+                "sha256": "5e30378b2cf88afbd2d4d65f562379cde4e19bc0606f9deba4a1c32b30d8ce04"
+              },
+              "buildReceipt": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/coverage-unicode-text-16-candidate/report.json",
+                "bytes": 9277,
+                "sha256": "44ea30c0301d17786dab8b8acbeaa6d49f54ec8ed699cc203861362cad3e1cc4"
+              },
+              "independentOutputPassed": true,
+              "executionStdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/coverage-unicode-text-16-candidate.check.stdout",
+                "bytes": 295,
+                "sha256": "ecab3df32cf944aa47a6f9eabb61f7755d068b98ef41745a4ea631ded37174f7"
+              },
+              "executionStderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/coverage-unicode-text-16-candidate.check.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          }
+        }
+      },
+      {
+        "emission": {
+          "name": "editdist",
+          "complete": true,
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/editdist.bend",
+            "sha256": "759d82e26789e55187d175cb8416d6ebe4266a53f73a53ca6d32b69d4f71e988",
+            "bytes": 7835
+          },
+          "expected": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/editdist.stdout",
+            "sha256": "cc6e43baccd95c4f6e49e8df91d27c77ab7d18524070d83af32977422f0b1280",
+            "bytes": 11
+          },
+          "runtimeArgs": [
+            2,
+            0
+          ],
+          "frontendSeconds": 1.2337923459999947,
+          "backendRatio": 0.9781009165032933,
+          "summary": "segments=549;direct=71;imports=48",
+          "products": {
+            "baseline": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports01/editdist-baseline.ssa",
+                "bytes": 1218184,
+                "sha256": "973816ae077350e4e622bbdc6f828d8da92be7fbe6a9488cf8e16a0d410c880a"
+              },
+              "seconds": 7.072590733000005,
+              "functions": 927
+            },
+            "candidate": {
+              "ir": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports01/editdist-candidate.ssa",
+                "bytes": 1268853,
+                "sha256": "3e120083de580c64bd97b8580cb3c80814dfc44cebceab0b741a19dda57b816f"
+              },
+              "seconds": 6.917707478000004,
+              "functions": 983
+            }
+          }
+        },
+        "runtime": {
+          "name": "editdist",
+          "complete": true,
+          "resolved": true,
+          "medianMilliseconds": {
+            "baseline": 252.5,
+            "candidate": 252.5
+          },
+          "runtimeRatio": 1.0,
+          "samples": [
+            {
+              "role": "baseline",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.2603253619745374,
+              "userSeconds": 0.25932099999999997,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10420,
+              "internalMilliseconds": 253,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/2-0-baseline.stdout",
+                "bytes": 21,
+                "sha256": "d495091e265cae98f9c1d91aa5058718d454cd1291049b490bfa7519d4a1cebd"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/2-0-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "candidate",
+              "pair": 0,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.2593575450591743,
+              "userSeconds": 0.254397,
+              "systemSeconds": 0.003974,
+              "peakRssKiB": 10424,
+              "internalMilliseconds": 252,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/2-0-candidate.stdout",
+                "bytes": 21,
+                "sha256": "875791c4dbb0eaa46d64c0a3e1b53899501e23688fea3b25e13714d0bdf43c4b"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/2-0-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "candidate",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.2607768289744854,
+              "userSeconds": 0.259751,
+              "systemSeconds": 0.0,
+              "peakRssKiB": 10432,
+              "internalMilliseconds": 253,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/2-1-candidate.stdout",
+                "bytes": 21,
+                "sha256": "d495091e265cae98f9c1d91aa5058718d454cd1291049b490bfa7519d4a1cebd"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/2-1-candidate.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            {
+              "role": "baseline",
+              "pair": 1,
+              "complete": true,
+              "exitCode": 0,
+              "seconds": 0.25982726691290736,
+              "userSeconds": 0.254865,
+              "systemSeconds": 0.003981999999999999,
+              "peakRssKiB": 10440,
+              "internalMilliseconds": 252,
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/2-1-baseline.stdout",
+                "bytes": 21,
+                "sha256": "875791c4dbb0eaa46d64c0a3e1b53899501e23688fea3b25e13714d0bdf43c4b"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/2-1-baseline.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          ],
+          "products": {
+            "baseline": {
+              "binary": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/editdist-baseline/program",
+                "bytes": 284280,
+                "sha256": "84eeef87c4e292b9671a27745e735272f2fc0a931f0360c69660a8de913a28cd"
+              },
+              "buildReceipt": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/editdist-baseline/report.json",
+                "bytes": 8923,
+                "sha256": "9dbe07d6419a09920ec0d1f4791dc48a6b922b1dc3af4daffe3d57f261adcd61"
+              },
+              "independentOutputPassed": true,
+              "executionStdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/editdist-baseline.check.stdout",
+                "bytes": 17,
+                "sha256": "84b640f1742c81a1da5481d9ad6a2ac1d8575fec563f14c744708b71479e8d20"
+              },
+              "executionStderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/editdist-baseline.check.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            "candidate": {
+              "binary": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/editdist-candidate/program",
+                "bytes": 293176,
+                "sha256": "306879d91b95dc0480a0d0ea75bb9ce55a512ae2dd7dd797ce41fa22299860a0"
+              },
+              "buildReceipt": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/editdist-candidate/report.json",
+                "bytes": 8954,
+                "sha256": "2c8bd17b6669e1da70146a4193b85a3d2de6d3160130b1d0a983077a05d0e67d"
+              },
+              "independentOutputPassed": true,
+              "executionStdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/editdist-candidate.check.stdout",
+                "bytes": 17,
+                "sha256": "84b640f1742c81a1da5481d9ad6a2ac1d8575fec563f14c744708b71479e8d20"
+              },
+              "executionStderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase164/imports-machine01/editdist-candidate.check.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "interpretation": "Mandelbrot/Unicode execution gains survive without omitted generic construction. Does not establish a native whole-compiler acquisition gain; no imports-only native compiler image acquired."
+  },
+  "compilerCodeCensus": {
+    "receipt": "experiments/phase164/compiler-generic-census.json",
+    "scope": "Offline static assembly/source census. Not dynamic instruction counts, runtime profiles, omitted-body counts or same-generation compiler timing. Earlier Phase161 owner names select inspection only.",
+    "images": {
+      "hybrid-n2-03": {
+        "assembly": {
+          "bytes": 75150548,
+          "file": "selfhost/build/phase164/hybrid-n2-03/program.s",
+          "sha256": "bc3a1bedb5fc59459945c21b41b6e04c02dc6dc663cef117c1f3311aeac2e28e"
+        },
+        "categories": {
+          "p111_": 47360,
+          "p112w_": 14360,
+          "p113d_": 2096,
+          "p114r_": 84
+        },
+        "publicCategories": {
+          "continuation": 39460,
+          "other_or_factory": 3960,
+          "source_worker": 3940
+        },
+        "sameOwnerForwardingCensus": {
+          "ordinary_forwarders_to_same_owner": 1147,
+          "public_direct_adapters_to_same_owner": 1359
+        }
+      },
+      "hybrid-native03": {
+        "assembly": {
+          "bytes": 78989271,
+          "file": "selfhost/build/phase164/hybrid-native03/program.s",
+          "sha256": "3cd20d0a249ded534abdb100d02769bdf2ea1fcef8820f7b5a85d83add83b7c2"
+        },
+        "categories": {
+          "p111_": 51960,
+          "p112w_": 13223,
+          "p113d_": 2096,
+          "p114r_": 86
+        },
+        "publicCategories": {
+          "continuation": 44060,
+          "other_or_factory": 3960,
+          "source_worker": 3940
+        },
+        "sameOwnerForwardingCensus": {
+          "ordinary_forwarders_to_same_owner": 592,
+          "public_direct_adapters_to_same_owner": 1359
+        }
+      }
+    },
+    "limitation": "Static symbol/category/forwarder counts are not dynamic hotness or time attribution."
+  },
+  "limitations": [
+    "Ten conservative runtime cases, two pairs each; coverage-closures-64 has only 4.5ms medians and is explicitly unresolved.",
+    "Broad and retained variants have three exact-output bridge cases, not full runtime requalification.",
+    "Three native small requests are insufficient to predict full compiler-source execution; N2 Map/Set regresses.",
+    "Fresh process requests use the same authenticated Base carrier (cache mode), so cold process is not cold Base-source reconstruction.",
+    "Different source closures, output policies and timing regions must not be mixed into a headline speedup.",
+    "Source checking and finite refusal controls do not prove whole-language semantics or stack safety.",
+    "No default compiler selection, production edit, new target execution or archive operation is part of this consolidation."
+  ],
+  "inputReceipts": [
+    {
+      "file": "selfhost/build/phase164/smoke01/report.json",
+      "bytes": 6277,
+      "sha256": "f756d18cf9d98bedeb25a2a01b12d781a7a69e200e60442b24f3fa6b7c664dcd"
+    },
+    {
+      "file": "selfhost/build/phase164/smoke-machine01/report.json",
+      "bytes": 25698,
+      "sha256": "252fca9b7a3086dba1b4b0aeed22a39cd20f7a74b9cfd032ab3734213d40c38e"
+    },
+    {
+      "file": "selfhost/build/phase164/transfer01/report.json",
+      "bytes": 20182,
+      "sha256": "e7ed24d7183fcd927e71005f5069c50253659b6415945eb479fc0b32b543e16d"
+    },
+    {
+      "file": "selfhost/build/phase164/transfer-machine01/report.json",
+      "bytes": 105484,
+      "sha256": "55e125655f53aac5ffb0cd9d5fc1b38bcb3a4f993591be5e0de6b6d91761a486"
+    },
+    {
+      "file": "selfhost/build/phase164/broad02/report.json",
+      "bytes": 9556,
+      "sha256": "fff009f257d79a55aa9fe818cd4aa5604707a75a7311db0801a2804887b1973c"
+    },
+    {
+      "file": "selfhost/build/phase164/retained03/report.json",
+      "bytes": 9870,
+      "sha256": "93df84a906c67d689bf2d034434899c9e26fe2b3e264f8790de5764e0ef794a2"
+    },
+    {
+      "file": "selfhost/build/phase164/hybrid-native03/report.json",
+      "bytes": 18059,
+      "sha256": "5a799a4f5dc41032f64c33a5368e56aae8f4a21b57d6c33020938f34f7f9e4f3"
+    },
+    {
+      "file": "selfhost/build/phase164/hybrid-n2-03/report.json",
+      "bytes": 18118,
+      "sha256": "2c2c3b347ce491757bd66a8dbb64acf944b8e270d2dc7f29743088d10d6562f6"
+    },
+    {
+      "file": "selfhost/build/phase164/native-requests03/report.json",
+      "bytes": 25313,
+      "sha256": "600f2024d15e8d2de94f121074c16973f1ce5132b33601ae7edff14a19c08853"
+    },
+    {
+      "file": "selfhost/build/phase164/n2-requests03/report.json",
+      "bytes": 25271,
+      "sha256": "dba318faa0ac1c837e278d03824418454961697a2f089ea11fc710068eceacfb"
+    },
+    {
+      "file": "selfhost/build/phase164/n2-self-emission03/report.json",
+      "bytes": 2943,
+      "sha256": "c854d0dbac2875feecfb33063287544160064af80c4df51b8212321175aed946"
+    },
+    {
+      "file": "selfhost/build/phase164/imports01/report.json",
+      "bytes": 9316,
+      "sha256": "d707f13763faa4d2b78220e0e4020ca1cb8691c5e211ffd89f45a2e4406e0326"
+    },
+    {
+      "file": "selfhost/build/phase164/imports-machine01/report.json",
+      "bytes": 41597,
+      "sha256": "2b5edf7bf28852425bf51e503646e8a5bf2a2d66618c61978f6900f65ac81b64"
+    },
+    {
+      "file": "selfhost/build/phase164/hybrid-api-source01/manifest.json",
+      "bytes": 947155,
+      "sha256": "c794cf2d9ce88bfb17ee5aa25c2648d9fbb0f4dd9e5d0134c5738bea2bc1e9c7"
+    },
+    {
+      "file": "selfhost/build/phase164/hybrid-api-source02/manifest.json",
+      "bytes": 950304,
+      "sha256": "dd6cde830794e142c1a227e257b38df3d146901a15b3c159d7d51a37521e4d89"
+    },
+    {
+      "file": "selfhost/build/phase164/hybrid-api-source03/manifest.json",
+      "bytes": 953544,
+      "sha256": "08a22f5978cb5cc31a3c1cbc05e56d3df071cc7a73d7b772986556d54fcf416c"
+    },
+    {
+      "file": "selfhost/build/phase164/hybrid-native-source03/manifest.json",
+      "bytes": 966320,
+      "sha256": "498a2d35897d7ff4992600a6d499bb32ea95654ecc9f5b6fa5b8e7ca52cf2663"
+    },
+    {
+      "file": "selfhost/build/phase164/imports-api-source01/manifest.json",
+      "bytes": 943064,
+      "sha256": "01e8e8e6eb5fbb135cab1424ad5d6881f6672721ec30dce85b29f8877ab45626"
+    },
+    {
+      "file": "selfhost/build/phase152/native-n3/report.json",
+      "bytes": 19182,
+      "sha256": "3d3a57afb2ffb8e0aa9b762be4d8ae004b231a846cb1dfd78db9ec3141e0783b"
+    },
+    {
+      "file": "experiments/phase164/compiler-generic-census.json",
+      "bytes": 69703,
+      "sha256": "b9d3c3f1c27f34b260b4fb904c88edea0cb1648473702e776c1dcc92aff3b239"
+    }
+  ]
+}

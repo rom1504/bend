@@ -1,0 +1,756 @@
+{
+  "cases": [
+    {
+      "medianMilliseconds": {
+        "baseline": 701.5,
+        "candidate": 605.5
+      },
+      "name": "mandelbrot",
+      "products": {
+        "baseline": {
+          "assembly": {
+            "bytes": 856231,
+            "file": "selfhost/build/phase164/transfer-machine01/mandelbrot-baseline/program.s",
+            "sha256": "3ef50bd7c18573cc937da66413811db539ec009e101b37a8212aa62076587a05"
+          },
+          "binary": {
+            "bytes": 294680,
+            "file": "selfhost/build/phase164/transfer-machine01/mandelbrot-baseline/program",
+            "sha256": "17d674f77b3330e29dbea07939a16f5d95bd5de14059ce3da5fac0f3b1197c55"
+          },
+          "functionCounts": {
+            "main": 1,
+            "p111_": 561,
+            "p112w_": 289,
+            "p113d_": 56,
+            "p114r_": 1
+          },
+          "object": {
+            "bytes": 244296,
+            "file": "selfhost/build/phase164/transfer-machine01/mandelbrot-baseline/program.o",
+            "sha256": "61f654fa314878fbd1691f2d3194b607ae89e964d21759dff0234ad310fa12b7"
+          },
+          "selectedFunctions": {
+            "p111_FID_$direct.hfold": {
+              "asmLabelsOnlySha256": "2195faa3e3c07b56caa9bac1096ca580aaf7c1a7cd219888cd2bed1c4296c649",
+              "assemblyCalls": [
+                "p111_rt_keep",
+                "p111_rt_jump",
+                "p111_rt_jump"
+              ],
+              "assemblyInstructionLines": 61,
+              "fid": 280,
+              "ssaJumpTargets": [
+                {
+                  "fid": 254,
+                  "symbol": "p111_FID_$direct.hchunk"
+                },
+                {
+                  "fid": 280,
+                  "symbol": "p111_FID_$direct.hfold"
+                }
+              ],
+              "ssaSha256": "26a06278eda3a258663a2f00097f8105d260c2b74ce76ef1a4056d0b204b81db"
+            },
+            "p111_FID_$direct.rcol": {
+              "asmLabelsOnlySha256": "b4da453689fcd65b429ef84a3bd2793a906a87ede97f33a80a41b5f493b8ca71",
+              "assemblyCalls": [
+                "p111_rt_keep",
+                "p111_rt_jump",
+                "p111_rt_jump"
+              ],
+              "assemblyInstructionLines": 119,
+              "fid": 413,
+              "ssaJumpTargets": [
+                {
+                  "fid": 390,
+                  "symbol": "p111_FID_$direct.rpix"
+                },
+                {
+                  "fid": 413,
+                  "symbol": "p111_FID_$direct.rcol"
+                }
+              ],
+              "ssaSha256": "6c8e2380edf2fab710caf435c0e5684b0a33eb3acb13f51ab8ec506cf5505e60"
+            },
+            "p113d_FID_$direct.hchunk": {
+              "asmLabelsOnlySha256": "780ec1ac1332c847d5e16c4bc87c1a95f1ee1165e2a6e3c35f8950e77937d33a",
+              "assemblyCalls": [
+                "p111_rt_op",
+                "p113d_FID_$direct.mit",
+                "p111_rt_op",
+                "p113d_FID_$product.hchunk",
+                "p111_rt_ctor",
+                "p111_rt_ctor"
+              ],
+              "assemblyInstructionLines": 285,
+              "ssaJumpTargets": [],
+              "ssaSha256": "da89787566fe9dcb937ed7ee5d8dfdda6ee87ebcd1099110f19e8738c5f1be51"
+            },
+            "p113d_FID_$direct.mit": {
+              "asmLabelsOnlySha256": "a6334a74872469de65b9993e26786593886b822a938da583ae265ac225ca6fcc",
+              "assemblyCalls": [],
+              "assemblyInstructionLines": 99,
+              "ssaJumpTargets": [],
+              "ssaSha256": "d8e71937d1fc3ca8450b03ed26f2af39850ca66bf6b214f5ab43e31414607952"
+            },
+            "p113d_FID_$direct.rpix": {
+              "asmLabelsOnlySha256": "db70265ad408f43b8421759cbecc942e2e6e5dfb08e589dfbb278b598604a434",
+              "assemblyCalls": [
+                "p113d_FID_$direct.mit",
+                "p111_rt_op"
+              ],
+              "assemblyInstructionLines": 218,
+              "ssaJumpTargets": [],
+              "ssaSha256": "7c2f8a878de2f3c17ae8cb8b40e7f1c3d869c52fd0938d93721257991312395b"
+            }
+          },
+          "ssa": {
+            "bytes": 1256237,
+            "file": "selfhost/build/phase164/transfer01/mandelbrot-baseline.ssa",
+            "sha256": "f080b8c342cce21c456ebaf5487ff3162b647786e2e2e513b8f6f0d3b1f0b187"
+          }
+        },
+        "candidate": {
+          "assembly": {
+            "bytes": 716857,
+            "file": "selfhost/build/phase164/transfer-machine01/mandelbrot-candidate/program.s",
+            "sha256": "6033dd3c483129b3fa59cde755e46a5673b9c70485a9b3a145215c9c3ffc0fb0"
+          },
+          "binary": {
+            "bytes": 264592,
+            "file": "selfhost/build/phase164/transfer-machine01/mandelbrot-candidate/program",
+            "sha256": "dcd46a7b8fbf3554275aafe5babbcdc93a43fb3d6f96d85ec678cc3375016e37"
+          },
+          "functionCounts": {
+            "main": 1,
+            "p111_": 464,
+            "p112w_": 321,
+            "p113d_": 56,
+            "p114r_": 1
+          },
+          "object": {
+            "bytes": 209320,
+            "file": "selfhost/build/phase164/transfer-machine01/mandelbrot-candidate/program.o",
+            "sha256": "553e17a97861c545c69e64b4960a49344ffbce8baf96f0292cc1438d4362b90e"
+          },
+          "selectedFunctions": {
+            "p111_FID_$direct.hfold": {
+              "asmLabelsOnlySha256": "182ef0e7046929e9f0353a1f9a89f0cff9d8a4c91f34aa040a15b177e7f8ab6d",
+              "assemblyCalls": [
+                "p111_rt_keep",
+                "p111_rt_jump",
+                "p112w_FID_$direct.hchunk",
+                "p111_rt_return"
+              ],
+              "assemblyInstructionLines": 81,
+              "fid": 217,
+              "ssaJumpTargets": [
+                {
+                  "fid": 217,
+                  "symbol": "p111_FID_$direct.hfold"
+                }
+              ],
+              "ssaSha256": "40e85db5feca3c1b509c7d57bb89e8480b988f0157b5b2b7d7e3b5d6d9ec68b8"
+            },
+            "p111_FID_$direct.rcol": {
+              "asmLabelsOnlySha256": "9a316367e7f96b75c43c8ee5f7c1a89419e8077b83cf0ec7ad1cbd3e16e93307",
+              "assemblyCalls": [
+                "p111_rt_keep",
+                "p111_rt_jump",
+                "p112w_FID_$direct.rpix",
+                "p111_rt_return"
+              ],
+              "assemblyInstructionLines": 141,
+              "fid": 321,
+              "ssaJumpTargets": [
+                {
+                  "fid": 321,
+                  "symbol": "p111_FID_$direct.rcol"
+                }
+              ],
+              "ssaSha256": "60fbc20712f21eb7d02f17fee8acbc906d4836da498d9f1b572d5c3f1b4659ec"
+            },
+            "p112w_FID_$direct.hchunk": {
+              "asmLabelsOnlySha256": "d65c459b2b19e565d93f9bfb3b696dcf9cf1c3952a05c9243f29ca94af7aff30",
+              "assemblyCalls": [
+                "p113d_FID_$direct.hchunk"
+              ],
+              "assemblyInstructionLines": 29,
+              "ssaJumpTargets": [],
+              "ssaSha256": "dcfe5a3c8a722f42c08f79932dea7ec22a9f2c9d315fa2a14414b8021127b1b9"
+            },
+            "p112w_FID_$direct.rpix": {
+              "asmLabelsOnlySha256": "fc89d709936f4f258ac3bb68d1f32bf218c930b4a971e3fae76d4c962a44e7b4",
+              "assemblyCalls": [
+                "p113d_FID_$direct.rpix"
+              ],
+              "assemblyInstructionLines": 26,
+              "ssaJumpTargets": [],
+              "ssaSha256": "b4069bbe97b1b64e8ec2d8f854b0874aaeb2c51819ccf90e38646086b25c82a3"
+            },
+            "p113d_FID_$direct.hchunk": {
+              "asmLabelsOnlySha256": "780ec1ac1332c847d5e16c4bc87c1a95f1ee1165e2a6e3c35f8950e77937d33a",
+              "assemblyCalls": [
+                "p111_rt_op",
+                "p113d_FID_$direct.mit",
+                "p111_rt_op",
+                "p113d_FID_$product.hchunk",
+                "p111_rt_ctor",
+                "p111_rt_ctor"
+              ],
+              "assemblyInstructionLines": 285,
+              "ssaJumpTargets": [],
+              "ssaSha256": "da89787566fe9dcb937ed7ee5d8dfdda6ee87ebcd1099110f19e8738c5f1be51"
+            },
+            "p113d_FID_$direct.mit": {
+              "asmLabelsOnlySha256": "a6334a74872469de65b9993e26786593886b822a938da583ae265ac225ca6fcc",
+              "assemblyCalls": [],
+              "assemblyInstructionLines": 99,
+              "ssaJumpTargets": [],
+              "ssaSha256": "d8e71937d1fc3ca8450b03ed26f2af39850ca66bf6b214f5ab43e31414607952"
+            },
+            "p113d_FID_$direct.rpix": {
+              "asmLabelsOnlySha256": "db70265ad408f43b8421759cbecc942e2e6e5dfb08e589dfbb278b598604a434",
+              "assemblyCalls": [
+                "p113d_FID_$direct.mit",
+                "p111_rt_op"
+              ],
+              "assemblyInstructionLines": 218,
+              "ssaJumpTargets": [],
+              "ssaSha256": "7c2f8a878de2f3c17ae8cb8b40e7f1c3d869c52fd0938d93721257991312395b"
+            }
+          },
+          "ssa": {
+            "bytes": 831383,
+            "file": "selfhost/build/phase164/transfer01/mandelbrot-candidate.ssa",
+            "sha256": "941f0ca560329ab91f7bbf5585145641521be32e0f9b6d03bf5cf5dfd1f3ea2b"
+          }
+        }
+      },
+      "runtimeRatio": 0.8631503920171062,
+      "workerComparisons": {
+        "p111_FID_$direct.hfold": {
+          "assemblyLabelsOnly": false,
+          "exactSSA": false
+        },
+        "p111_FID_$direct.rcol": {
+          "assemblyLabelsOnly": false,
+          "exactSSA": false
+        },
+        "p113d_FID_$direct.hchunk": {
+          "assemblyLabelsOnly": true,
+          "exactSSA": true
+        },
+        "p113d_FID_$direct.mit": {
+          "assemblyLabelsOnly": true,
+          "exactSSA": true
+        },
+        "p113d_FID_$direct.rpix": {
+          "assemblyLabelsOnly": true,
+          "exactSSA": true
+        }
+      }
+    },
+    {
+      "medianMilliseconds": {
+        "baseline": 271.0,
+        "candidate": 239.5
+      },
+      "name": "coverage-unicode-text-16",
+      "products": {
+        "baseline": {
+          "assembly": {
+            "bytes": 584486,
+            "file": "selfhost/build/phase164/transfer-machine01/coverage-unicode-text-16-baseline/program.s",
+            "sha256": "80e211f652e82c70f67af7abf3544d9ec26e92f63facb012226622f7e00ed889"
+          },
+          "binary": {
+            "bytes": 235040,
+            "file": "selfhost/build/phase164/transfer-machine01/coverage-unicode-text-16-baseline/program",
+            "sha256": "faba139031862453d415f4e0656205e74f78a94d9d65f85ec31939dca60a1d64"
+          },
+          "functionCounts": {
+            "main": 1,
+            "p111_": 428,
+            "p112w_": 208,
+            "p113d_": 49,
+            "p114r_": 3
+          },
+          "object": {
+            "bytes": 175184,
+            "file": "selfhost/build/phase164/transfer-machine01/coverage-unicode-text-16-baseline/program.o",
+            "sha256": "e6fa42afbc0ea1f1add691891cb40ffe3a17180e81971cde6825d2ecfc93bc57"
+          },
+          "selectedFunctions": {
+            "p111_FID_$p111.k.53073": {
+              "asmLabelsOnlySha256": "a957b05d1f28e36bd9f890ec2474e0f79dc2ee344934a156e990261a3de83b70",
+              "assemblyCalls": [
+                "p111_rt_jump"
+              ],
+              "assemblyInstructionLines": 18,
+              "fid": 281,
+              "ssaJumpTargets": [
+                {
+                  "fid": 334,
+                  "symbol": "p111_FID_$direct.String.append"
+                }
+              ],
+              "ssaSha256": "798be78ae5f02ea1b0e3d939c28dc5aef168448318631187bac8507e51ba3940"
+            },
+            "p111_FID_$p111.k.53076": {
+              "asmLabelsOnlySha256": "4a84bae69456be9e6ef837b312c92ccaeb15175b77bc15d7cc67dd843cc7e112",
+              "assemblyCalls": [
+                "p111_rt_jump"
+              ],
+              "assemblyInstructionLines": 18,
+              "fid": 282,
+              "ssaJumpTargets": [
+                {
+                  "fid": 334,
+                  "symbol": "p111_FID_$direct.String.append"
+                }
+              ],
+              "ssaSha256": "dfd8a8647e4b70cf1da1202226007aa1d95c3d0d037909fad706b9492b79041e"
+            },
+            "p113d_FID_$p118.trmc.$direct.String.append": {
+              "asmLabelsOnlySha256": "ba54cda6a319c18746c30d29cb15b6b1a355e28fa822efb7b6e5e1820224edee",
+              "assemblyCalls": [
+                "p125_rt_take2",
+                "p118_rt_extend1",
+                "p111_rt_fail",
+                "p118_rt_finish",
+                "p118_rt_finish"
+              ],
+              "assemblyInstructionLines": 72,
+              "ssaJumpTargets": [],
+              "ssaSha256": "8bbef6112fc77da5198ec31a7a34ffcc54d3af2b4289598af92e3cf5c13f4a99"
+            },
+            "p114r_FID_$direct.p37.text.repeat": {
+              "asmLabelsOnlySha256": "838ab57d40ddf99163d2e13e4df5815fb19242c1e11cd34f409adfd9008e05c4",
+              "assemblyCalls": [
+                "p111_rt_keep",
+                "p111_rt_sink",
+                "p113d_FID_$direct.String.append",
+                "p111_rt_fail"
+              ],
+              "assemblyInstructionLines": 63,
+              "ssaJumpTargets": [],
+              "ssaSha256": "c89483125adc41752c16e6fb30bae62cf6d30d76cc6aea5dfab0483f9a2ff17e"
+            },
+            "p114r_FID_$direct.ssplit": {
+              "asmLabelsOnlySha256": "3cbf73a1c29269eefa815734d6df4b31a6d5c35ffaaa1891f1369004dd98059b",
+              "assemblyCalls": [
+                "p125_rt_take2",
+                "p111_rt_special_take",
+                "p111_rt_keep",
+                "p111_rt_fail",
+                "p112w_FID_$direct.ssplit.pick",
+                "p111_rt_fail"
+              ],
+              "assemblyInstructionLines": 110,
+              "ssaJumpTargets": [],
+              "ssaSha256": "9c3cf92f0e4873593f6959a89726b75db5a59faa5ecf2a8b48e2c3f010e1c01c"
+            }
+          },
+          "ssa": {
+            "bytes": 535214,
+            "file": "selfhost/build/phase164/transfer01/coverage-unicode-text-16-baseline.ssa",
+            "sha256": "2f1b5099497af665a5901e2a0d4d69f5f3cfb7e93dd9347491e1ec4043d15307"
+          }
+        },
+        "candidate": {
+          "assembly": {
+            "bytes": 572962,
+            "file": "selfhost/build/phase164/transfer-machine01/coverage-unicode-text-16-candidate/program.s",
+            "sha256": "7afaccbe1b57efae4ac4c9dd827f7aad57eb8974e71115c829818d4813620690"
+          },
+          "binary": {
+            "bytes": 233520,
+            "file": "selfhost/build/phase164/transfer-machine01/coverage-unicode-text-16-candidate/program",
+            "sha256": "42a040529202a553f830eb23bcd71c9c6276896c03bbbb14ad2046cf3023b420"
+          },
+          "functionCounts": {
+            "main": 1,
+            "p111_": 379,
+            "p112w_": 238,
+            "p113d_": 49,
+            "p114r_": 3
+          },
+          "object": {
+            "bytes": 170240,
+            "file": "selfhost/build/phase164/transfer-machine01/coverage-unicode-text-16-candidate/program.o",
+            "sha256": "0a06ea61d31c26c76dc4d2490589b642fefc0aa52ef14a7eff7ece68938e55c9"
+          },
+          "selectedFunctions": {
+            "p111_FID_$p111.k.52710": {
+              "asmLabelsOnlySha256": "5bdf09e6c64270265dd8cadd98738d2401c74be53379b80936f6fb224ee0819d",
+              "assemblyCalls": [
+                "p112w_FID_$direct.String.append",
+                "p111_rt_return"
+              ],
+              "assemblyInstructionLines": 23,
+              "fid": 240,
+              "ssaJumpTargets": [],
+              "ssaSha256": "5d65dd35c7d3f8b6689c6b8ac90ba1812e97f28c204074ebac2e530a6e81a13c"
+            },
+            "p111_FID_$p111.k.52713": {
+              "asmLabelsOnlySha256": "1e156464ce34cb0190dfbd01a9ed2c153892311a133f03f106fb1f1ed8277fb3",
+              "assemblyCalls": [
+                "p112w_FID_$direct.String.append",
+                "p111_rt_return"
+              ],
+              "assemblyInstructionLines": 23,
+              "fid": 241,
+              "ssaJumpTargets": [],
+              "ssaSha256": "cc3cf774bc6b40450852f322be05c368037b2fb679ff39c94c3af16731d996ad"
+            },
+            "p112w_FID_$direct.String.append": {
+              "asmLabelsOnlySha256": "b6885bfac88085f63cd953dd97bb18a5b1040b403fd9c58ec29e01bca2b0aae5",
+              "assemblyCalls": [
+                "p113d_FID_$direct.String.append"
+              ],
+              "assemblyInstructionLines": 6,
+              "ssaJumpTargets": [],
+              "ssaSha256": "28c060506a762ca13369b6cb1f2b7df017e95d9f106749a36acfd3218c31b90d"
+            },
+            "p113d_FID_$p118.trmc.$direct.String.append": {
+              "asmLabelsOnlySha256": "ba54cda6a319c18746c30d29cb15b6b1a355e28fa822efb7b6e5e1820224edee",
+              "assemblyCalls": [
+                "p125_rt_take2",
+                "p118_rt_extend1",
+                "p111_rt_fail",
+                "p118_rt_finish",
+                "p118_rt_finish"
+              ],
+              "assemblyInstructionLines": 72,
+              "ssaJumpTargets": [],
+              "ssaSha256": "8bbef6112fc77da5198ec31a7a34ffcc54d3af2b4289598af92e3cf5c13f4a99"
+            },
+            "p114r_FID_$direct.p37.text.repeat": {
+              "asmLabelsOnlySha256": "2299f968e4abcac74d8302d2d43eec89d55a71b02eb0851e16a9525fe1ee79d1",
+              "assemblyCalls": [
+                "p111_rt_keep",
+                "p111_rt_sink",
+                "p112w_FID_$direct.String.append",
+                "p111_rt_fail"
+              ],
+              "assemblyInstructionLines": 63,
+              "ssaJumpTargets": [],
+              "ssaSha256": "c23826a0b1ddabbf947fc3d4e6df52533f3c82121cc730697ffd9a5e352f8d8f"
+            },
+            "p114r_FID_$direct.ssplit": {
+              "asmLabelsOnlySha256": "44fa72a02631e5fffe96acd2a7da1245fa332dbc0b3a2efdceca2e504e97b06d",
+              "assemblyCalls": [
+                "p125_rt_take2",
+                "p111_rt_special_take",
+                "p111_rt_keep",
+                "p111_rt_fail",
+                "p112w_FID_$direct.ssplit.pick",
+                "p111_rt_fail"
+              ],
+              "assemblyInstructionLines": 110,
+              "ssaJumpTargets": [],
+              "ssaSha256": "050f0c2635e4a57d0c774273c0e3a2ae56795e0aea4ae93feb4025778a60cfa6"
+            }
+          },
+          "ssa": {
+            "bytes": 527398,
+            "file": "selfhost/build/phase164/transfer01/coverage-unicode-text-16-candidate.ssa",
+            "sha256": "c2bcf9c0f056f1745e81db41808137d253af61cdc9c4e38dfd3d89266fb401be"
+          }
+        }
+      },
+      "runtimeRatio": 0.8837638376383764,
+      "workerComparisons": {
+        "p113d_FID_$p118.trmc.$direct.String.append": {
+          "assemblyLabelsOnly": true,
+          "exactSSA": true
+        },
+        "p114r_FID_$direct.p37.text.repeat": {
+          "assemblyLabelsOnly": false,
+          "exactSSA": false
+        },
+        "p114r_FID_$direct.ssplit": {
+          "assemblyLabelsOnly": false,
+          "exactSSA": false
+        }
+      }
+    },
+    {
+      "medianMilliseconds": {
+        "baseline": 253.0,
+        "candidate": 252.5
+      },
+      "name": "editdist",
+      "products": {
+        "baseline": {
+          "assembly": {
+            "bytes": 810997,
+            "file": "selfhost/build/phase164/transfer-machine01/editdist-baseline/program.s",
+            "sha256": "acf68eb6c7d773cbdbe0c4d1a74bc57378a973cdc0378a6b89f33e1a85ba57d8"
+          },
+          "binary": {
+            "bytes": 284280,
+            "file": "selfhost/build/phase164/transfer-machine01/editdist-baseline/program",
+            "sha256": "c16e1bcf1580ef9f9876c81383375316dd181b28e7377b87f0f465b303a01268"
+          },
+          "functionCounts": {
+            "main": 1,
+            "p111_": 549,
+            "p112w_": 301,
+            "p113d_": 71,
+            "p114r_": 2,
+            "p117v_": 3
+          },
+          "object": {
+            "bytes": 237496,
+            "file": "selfhost/build/phase164/transfer-machine01/editdist-baseline/program.o",
+            "sha256": "8cb7853c91b42440d039cbf3a89df4df0fe4596ed960dd0c7e269c3986b6c59c"
+          },
+          "selectedFunctions": {
+            "p113d_FID_$direct.dp": {
+              "asmLabelsOnlySha256": "a859d14905574ed742f8fb314228f57c175f1b6ded7c635c3255176a80101bf5",
+              "assemblyCalls": [
+                "p111_rt_fail",
+                "p125_rt_take4",
+                "p113_rt_array_pair",
+                "p111_rt_op",
+                "p113d_FID_$product.row",
+                "p125_rt_ctor4"
+              ],
+              "assemblyInstructionLines": 192,
+              "ssaJumpTargets": [],
+              "ssaSha256": "b1e7b4828226f1afe44d096815fe357daac175ceaa6c15bf3ca075d081ac6696"
+            },
+            "p113d_FID_$direct.pair": {
+              "asmLabelsOnlySha256": "227144dd3a059e78cec9db1711d3ed22076cb01a779983917c70e28673d1bab0",
+              "assemblyCalls": [
+                "p111_rt_op",
+                "p113d_FID_$direct.gen",
+                "p111_rt_op",
+                "p113d_FID_$direct.gen",
+                "p111_rt_op",
+                "p113d_FID_$direct.init",
+                "p111_rt_op",
+                "p113d_FID_$product.dp",
+                "p111_rt_sink",
+                "p111_rt_sink",
+                "p111_rt_sink",
+                "p113_rt_array_pair",
+                "p111_rt_sink"
+              ],
+              "assemblyInstructionLines": 159,
+              "ssaJumpTargets": [],
+              "ssaSha256": "7129679755effeca283895e0582a4d9196756bc98d9c45907ad3373d5f5d86ab"
+            },
+            "p113d_FID_$direct.row": {
+              "asmLabelsOnlySha256": "e7cfb188ecac203219d3cf1ddf884fb06b47acb1fae8e17abfd50b96134e35a9",
+              "assemblyCalls": [
+                "p111_rt_fail",
+                "p125_rt_take4",
+                "p113_rt_array_pair",
+                "p113_rt_array_pair",
+                "p113_rt_array_pair",
+                "p113_rt_array_pair",
+                "p111_rt_op",
+                "p125_rt_ctor4",
+                "p111_rt_fail",
+                "p125_rt_take4",
+                "p125_rt_ctor4"
+              ],
+              "assemblyInstructionLines": 344,
+              "ssaJumpTargets": [],
+              "ssaSha256": "00152fd6121c17c14c439bde90f9b5393eda43f9d414d657458bac49e252c2f9"
+            },
+            "p113d_FID_$product.row": {
+              "asmLabelsOnlySha256": "9424f0cd76b29a83de63c0cfde043d20b2633de0e97c4c5046c9a02d1c686ca7",
+              "assemblyCalls": [
+                "p117v_FID_$product.row"
+              ],
+              "assemblyInstructionLines": 175,
+              "ssaJumpTargets": [],
+              "ssaSha256": "aa6f743af82a7ebe3585b102205fa8704fc2cd4fcc667ab27da8bea26a0e2f9c"
+            },
+            "p114r_FID_$direct.batch": {
+              "asmLabelsOnlySha256": "933ee9d393ce2fab9e8aa3d72762ff9f1604281187fb375bdfdb965b94ae1a4c",
+              "assemblyCalls": [
+                "p111_rt_keep",
+                "p113d_FID_$direct.pair",
+                "p111_rt_fail",
+                "p111_rt_frame",
+                "p111_rt_keep"
+              ],
+              "assemblyInstructionLines": 117,
+              "ssaJumpTargets": [],
+              "ssaSha256": "f56af7587ffcef83f4308a6666cf399337fb3eabca9a86a9190235ab71264adf"
+            }
+          },
+          "ssa": {
+            "bytes": 1218184,
+            "file": "selfhost/build/phase164/transfer01/editdist-baseline.ssa",
+            "sha256": "973816ae077350e4e622bbdc6f828d8da92be7fbe6a9488cf8e16a0d410c880a"
+          }
+        },
+        "candidate": {
+          "assembly": {
+            "bytes": 783617,
+            "file": "selfhost/build/phase164/transfer-machine01/editdist-candidate/program.s",
+            "sha256": "62fe365cb749456220b16447efaf67dede567f7989ed34bc6b16338c6445e34f"
+          },
+          "binary": {
+            "bytes": 277320,
+            "file": "selfhost/build/phase164/transfer-machine01/editdist-candidate/program",
+            "sha256": "12959929a00e101d66984644e125bdc998141549977edbac4d5282b9ed1b5e3f"
+          },
+          "functionCounts": {
+            "main": 1,
+            "p111_": 468,
+            "p112w_": 349,
+            "p113d_": 71,
+            "p114r_": 2,
+            "p117v_": 3
+          },
+          "object": {
+            "bytes": 227672,
+            "file": "selfhost/build/phase164/transfer-machine01/editdist-candidate/program.o",
+            "sha256": "dbab666685c8d98ca84e5c19ffd9c1d8c0bde4a530f1a8dcbe1f5498e255a4f6"
+          },
+          "selectedFunctions": {
+            "p112w_FID_$direct.pair": {
+              "asmLabelsOnlySha256": "a655f69f5f0a1faf0a8630515d1fd60594646d69c8e6f4ace48c3e1255aa80eb",
+              "assemblyCalls": [
+                "p113d_FID_$direct.pair"
+              ],
+              "assemblyInstructionLines": 6,
+              "ssaJumpTargets": [],
+              "ssaSha256": "423ef4751b179597510bbd6f969292d632d5fccf4c2481f1a10df159aae40472"
+            },
+            "p113d_FID_$direct.dp": {
+              "asmLabelsOnlySha256": "a859d14905574ed742f8fb314228f57c175f1b6ded7c635c3255176a80101bf5",
+              "assemblyCalls": [
+                "p111_rt_fail",
+                "p125_rt_take4",
+                "p113_rt_array_pair",
+                "p111_rt_op",
+                "p113d_FID_$product.row",
+                "p125_rt_ctor4"
+              ],
+              "assemblyInstructionLines": 192,
+              "ssaJumpTargets": [],
+              "ssaSha256": "b1e7b4828226f1afe44d096815fe357daac175ceaa6c15bf3ca075d081ac6696"
+            },
+            "p113d_FID_$direct.pair": {
+              "asmLabelsOnlySha256": "227144dd3a059e78cec9db1711d3ed22076cb01a779983917c70e28673d1bab0",
+              "assemblyCalls": [
+                "p111_rt_op",
+                "p113d_FID_$direct.gen",
+                "p111_rt_op",
+                "p113d_FID_$direct.gen",
+                "p111_rt_op",
+                "p113d_FID_$direct.init",
+                "p111_rt_op",
+                "p113d_FID_$product.dp",
+                "p111_rt_sink",
+                "p111_rt_sink",
+                "p111_rt_sink",
+                "p113_rt_array_pair",
+                "p111_rt_sink"
+              ],
+              "assemblyInstructionLines": 159,
+              "ssaJumpTargets": [],
+              "ssaSha256": "7129679755effeca283895e0582a4d9196756bc98d9c45907ad3373d5f5d86ab"
+            },
+            "p113d_FID_$direct.row": {
+              "asmLabelsOnlySha256": "e7cfb188ecac203219d3cf1ddf884fb06b47acb1fae8e17abfd50b96134e35a9",
+              "assemblyCalls": [
+                "p111_rt_fail",
+                "p125_rt_take4",
+                "p113_rt_array_pair",
+                "p113_rt_array_pair",
+                "p113_rt_array_pair",
+                "p113_rt_array_pair",
+                "p111_rt_op",
+                "p125_rt_ctor4",
+                "p111_rt_fail",
+                "p125_rt_take4",
+                "p125_rt_ctor4"
+              ],
+              "assemblyInstructionLines": 344,
+              "ssaJumpTargets": [],
+              "ssaSha256": "00152fd6121c17c14c439bde90f9b5393eda43f9d414d657458bac49e252c2f9"
+            },
+            "p113d_FID_$product.row": {
+              "asmLabelsOnlySha256": "9424f0cd76b29a83de63c0cfde043d20b2633de0e97c4c5046c9a02d1c686ca7",
+              "assemblyCalls": [
+                "p117v_FID_$product.row"
+              ],
+              "assemblyInstructionLines": 175,
+              "ssaJumpTargets": [],
+              "ssaSha256": "aa6f743af82a7ebe3585b102205fa8704fc2cd4fcc667ab27da8bea26a0e2f9c"
+            },
+            "p114r_FID_$direct.batch": {
+              "asmLabelsOnlySha256": "2afe5d23e946a215d0b8a67221b0c5d0d915747c766868d036c2fce835e6db70",
+              "assemblyCalls": [
+                "p111_rt_keep",
+                "p112w_FID_$direct.pair",
+                "p111_rt_fail",
+                "p111_rt_frame",
+                "p111_rt_keep"
+              ],
+              "assemblyInstructionLines": 117,
+              "ssaJumpTargets": [],
+              "ssaSha256": "dc93a466517afa59a8fa787e7884982d1f95d8337a20d35a7777b2d9bb4f0c1a"
+            }
+          },
+          "ssa": {
+            "bytes": 1195386,
+            "file": "selfhost/build/phase164/transfer01/editdist-candidate.ssa",
+            "sha256": "6f8aede7d225f0122c92b2a6efbb0691c99c08baddd03a8dcb3f74057c9ed240"
+          }
+        }
+      },
+      "runtimeRatio": 0.9980237154150198,
+      "workerComparisons": {
+        "p113d_FID_$direct.dp": {
+          "assemblyLabelsOnly": true,
+          "exactSSA": true
+        },
+        "p113d_FID_$direct.pair": {
+          "assemblyLabelsOnly": true,
+          "exactSSA": true
+        },
+        "p113d_FID_$direct.row": {
+          "assemblyLabelsOnly": true,
+          "exactSSA": true
+        },
+        "p113d_FID_$product.row": {
+          "assemblyLabelsOnly": true,
+          "exactSSA": true
+        },
+        "p114r_FID_$direct.batch": {
+          "assemblyLabelsOnly": false,
+          "exactSSA": false
+        }
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "bytes": 105484,
+      "file": "selfhost/build/phase164/transfer-machine01/report.json",
+      "sha256": "55e125655f53aac5ffb0cd9d5fc1b38bcb3a4f993591be5e0de6b6d91761a486"
+    },
+    {
+      "bytes": 20182,
+      "file": "selfhost/build/phase164/transfer01/report.json",
+      "sha256": "e7ed24d7183fcd927e71005f5069c50253659b6415945eb479fc0b32b543e16d"
+    },
+    {
+      "bytes": 1524187,
+      "file": "selfhost/build/phase164/hybrid-api-source01/compiler.bend",
+      "sha256": "54d6dc38e7ba1c860f41fafb7a28e0c155c60a767afbde7578c1b785136e79be"
+    }
+  ],
+  "method": "Offline exact SSA worker equality; assembly equality normalizes only .Lbb numeric labels. Counts are static, not execution counts."
+}

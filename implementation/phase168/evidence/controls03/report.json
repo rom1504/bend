@@ -1,0 +1,120 @@
+{
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase168/tools/controls-v2.mjs",
+      "bytes": 1174,
+      "sha256": "cb23d2e00eb2b7d36fcaf14e4db62cfa870374eb09408e0a5ef9ac66639c2bfc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase168/api05/report.json",
+      "bytes": 5884,
+      "sha256": "91f8633039d9c1816f4cedceedd8ab133728e08226de67cbfacbbaad91b04f68"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase168/api05/api.mjs",
+      "bytes": 2775653,
+      "sha256": "0a8f8c5846ccd11875f8560da370385543eee241e02f9f1cbcc753c84d97b226"
+    }
+  ],
+  "groups": [
+    {
+      "name": "p168tc_controls",
+      "rows": [
+        "selective-leaf-helper-only-target-changes:pass",
+        "selective-blocked-helper-not-inlined:pass",
+        "selective-seed-helper-not-inlined:pass",
+        "selective-unavailable-helper-preserves-original:pass"
+      ]
+    },
+    {
+      "name": "p167e_controls",
+      "rows": [
+        "valid-generic-final:pass",
+        "independent-adapter-shape:pass",
+        "valid-private-adapter-final:pass",
+        "missing-worker-refused:pass",
+        "missing-adapter-map-refused:pass",
+        "missing-header-refused:pass",
+        "duplicate-header-refused:pass",
+        "duplicate-worker-refused:pass",
+        "source-mismatch-refused:pass",
+        "source-law-refused:pass",
+        "source-bang-refused:pass",
+        "map-arity-refused:pass",
+        "header-arity-refused:pass",
+        "header-result-refused:pass",
+        "header-incoming-refused:pass",
+        "header-flags-refused:pass",
+        "body-mismatch-refused:pass",
+        "worker-arity-refused:pass",
+        "worker-result-refused:pass",
+        "worker-public-refused:pass",
+        "worker-unterminated-refused:pass",
+        "unknown-fid-refused:pass",
+        "unknown-cid-refused:pass",
+        "unknown-direct-refused:pass",
+        "self-direct-refused:pass",
+        "cyclic-direct-refused:pass",
+        "undefined-local-refused:pass",
+        "duplicate-constructor-refused:pass",
+        "invalid-static-image-refused:pass",
+        "error-emits-no-chunks:pass"
+      ]
+    },
+    {
+      "name": "p167ob_controls",
+      "rows": [
+        "observer-seed-valid-projection:pass",
+        "observer-seed-count-refused:pass",
+        "observer-seed-unknown-ctor-refused:pass",
+        "observer-seed-duplicate-ctor-refused:pass",
+        "observer-final-missing-worker-refused:pass"
+      ]
+    },
+    {
+      "name": "p128bs_controls",
+      "rows": [
+        "guard-one-root:pass",
+        "guard-two-roots:pass",
+        "guard-zero-refused:pass",
+        "guard-three-refused:pass",
+        "guard-result-width-refused:pass",
+        "guard-state-identity-refused:pass",
+        "guard-arity-refused:pass",
+        "leaf-tail-loop:pass",
+        "leaf-direct-call-refused:pass",
+        "leaf-nested-call-refused:pass",
+        "transport-new-readonly-guard:pass",
+        "transport-divmod-repair-retained:pass"
+      ]
+    },
+    {
+      "name": "p128br_call_controls",
+      "rows": [
+        "borrow-call-held-root:pass",
+        "borrow-call-held-descendant:pass",
+        "borrow-call-unheld-refused:pass",
+        "borrow-call-fresh-origin-refused:pass",
+        "borrow-call-virtual-root-refused:pass",
+        "borrow-call-wrong-type-refused:pass",
+        "borrow-call-arity-refused:pass",
+        "borrow-call-bound-atom-projects:pass",
+        "borrow-call-unbound-atom-refused:pass",
+        "borrow-call-owning-constructor-refused:pass"
+      ]
+    },
+    {
+      "name": "p128bl_controls",
+      "rows": [
+        "layout-single-recursive-child:pass",
+        "layout-two-recursive-children-refused:pass",
+        "layout-changed-instantiation-refused:pass",
+        "layout-no-recursive-child-refused:pass",
+        "layout-instance-conflict-refused:pass",
+        "layout-identical-instance-reused:pass",
+        "layout-budget-refused:pass"
+      ]
+    }
+  ]
+}

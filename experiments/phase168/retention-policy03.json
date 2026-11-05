@@ -1,0 +1,44 @@
+{
+  "kind": "phase168-superseded-baseline-retention-v1",
+  "allowedRoots": [
+    "selfhost/build/phase168/baseline01"
+  ],
+  "archiveRoots": {
+    "selfhost/build-retention/phase168-baseline01-close/root-00/receipt.json": "selfhost/build/phase168/baseline01"
+  },
+  "keepPrefixes": [
+    "selfhost/build/phase168/baseline01/machine.stdout",
+    "selfhost/build/phase168/baseline01/report.json",
+    "selfhost/build/phase168/baseline01/machine.stderr",
+    "selfhost/build/phase168/baseline01/emit.stderr",
+    "selfhost/build/phase168/baseline01/emit.stdout",
+    "selfhost/build/phase168/baseline01/base-binding.json",
+    "selfhost/build/phase168/baseline01/emit/report.json",
+    "selfhost/build/phase168/baseline01/machine/link.stdout",
+    "selfhost/build/phase168/baseline01/machine/link.stderr",
+    "selfhost/build/phase168/baseline01/machine/assemble.stdout",
+    "selfhost/build/phase168/baseline01/machine/report.json",
+    "selfhost/build/phase168/baseline01/machine/program",
+    "selfhost/build/phase168/baseline01/machine/qbe.stdout",
+    "selfhost/build/phase168/baseline01/machine/assemble.stderr",
+    "selfhost/build/phase168/baseline01/machine/qbe.stderr"
+  ],
+  "selected": [
+    {
+      "file": "selfhost/build/phase168/baseline01/emit/program.ssa",
+      "bytes": 2895455,
+      "sha256": "9cda5e8a74391981af585270c72c610725f213f147c172e37b783882ce88067b"
+    },
+    {
+      "file": "selfhost/build/phase168/baseline01/machine/program.s",
+      "bytes": 2296385,
+      "sha256": "b062e6e7f34c438e2bb53f0065b3a3ca707b1c8b10bebbbc1c0df22d0d42785e"
+    },
+    {
+      "file": "selfhost/build/phase168/baseline01/machine/program.o",
+      "bytes": 673328,
+      "sha256": "e1b0ae02d48b578be8df01ca60dbfa619952936d6f56ea8cb6888e342b1baf77"
+    }
+  ],
+  "scope": "Only archived superseded baseline01 SSA/assembly/object. Preserve every ELF/source/API/receipt and all baseline02/baseline03/final/transfer artifacts. Restoring baseline01 is needed for historical offline inspection; runtime replay retains its ELF."
+}

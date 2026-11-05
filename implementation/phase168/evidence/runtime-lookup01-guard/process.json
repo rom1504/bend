@@ -1,0 +1,76 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": true,
+  "started": 1793913864.4232361,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "3",
+    "python3",
+    "-B",
+    "experiments/phase167/tools/runtime.py",
+    "--build",
+    "selfhost/build/phase168/lookup-baseline01/report.json",
+    "--build",
+    "selfhost/build/phase168/lookup-candidate01/report.json",
+    "--expected",
+    "3279346725",
+    "--rounds",
+    "4",
+    "--out",
+    "selfhost/build/phase168/runtime-lookup01"
+  ],
+  "returncode": 0,
+  "rssLimitBytes": 2147483648,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 19324928,
+  "minimumAvailableBytes": 24971280384,
+  "diskBudgetBytes": 2097152,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 5375856640,
+  "minimumDiskFreeBytes": 5375782912,
+  "peakRunAllocatedBytes": 69632,
+  "peakFilesystemDecreaseBytes": 73728,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase168/runtime-lookup01"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "3",
+    "fileLimitBytes": 134217728,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/experiments/phase167/tools/runtime.py",
+        "sha256": "da3f1db6e45bcf3e24cef69edd19d8a06b74a35e054f8e64969296fdf721fa34",
+        "bytes": 1682
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase168/lookup-baseline01/report.json",
+        "sha256": "385157bdc3344372d76f15103f829d83adbcff41768f7497fb14ec33c29f8f19",
+        "bytes": 4541
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase168/lookup-candidate01/report.json",
+        "sha256": "79944cdd26f23c16126d785910337b6127335e81818077b5f3d14057a9c50a5e",
+        "bytes": 4566
+      }
+    ]
+  },
+  "wallSeconds": 4.7010859358124435,
+  "finished": 1793913869.124192
+}

@@ -1,0 +1,69 @@
+{
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase167/tools/map-oracle.py",
+      "bytes": 1702,
+      "sha256": "83332fe381f8355cf93b9443e25f1210cca79af0f35074cc8920349a67bdcd4f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase168/map01/report.json",
+      "bytes": 4471,
+      "sha256": "dc436acfa99a3d105c474d99518d758b06ddc1b08108c83118fbb6a74dfb51d7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase168/map01/machine/program",
+      "bytes": 294664,
+      "sha256": "1a34af4b9993258c3bef4a2599d24fc2be4aabf5670b8b11e8bf4c70d4757480"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/catalog.json",
+      "bytes": 54895,
+      "sha256": "746fe610bfe1a5704f390b71cd5ee702e6bd874bd89a5a9363d5f69f69c0e475"
+    }
+  ],
+  "point": {
+    "expectedStdout": "3714872484\n",
+    "runtimeArgs": [
+      128,
+      123
+    ],
+    "repetitions": 1,
+    "warmups": 0,
+    "ratioEligible": true
+  },
+  "job": {
+    "command": [
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase168/map01/machine/program",
+      "--threads",
+      "1",
+      "--gpu",
+      "off",
+      "--",
+      "1",
+      "0",
+      "128",
+      "123"
+    ],
+    "limitSeconds": 20,
+    "complete": true,
+    "started": 1793914056.0862617,
+    "exitCode": 0,
+    "userSeconds": 0.002923,
+    "systemSeconds": 0.0,
+    "peakRssKiB": 9900,
+    "timedOut": false,
+    "seconds": 0.0043412246741354465,
+    "stdout": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase168/map-oracle01/stdout",
+      "bytes": 17,
+      "sha256": "645984e7a6ed8fb4470344af6023d31fd62885d583df505083d7d2d0ec9df75c"
+    },
+    "stderr": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase168/map-oracle01/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "internalMilliseconds": 1
+}

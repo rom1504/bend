@@ -1,0 +1,2075 @@
+{
+  "kind": "phase168-reviewed-retention-policy",
+  "version": 2,
+  "status": "verified-read-only-proposal-no-deletion",
+  "complements": "experiments/phase168/retention-policy.json",
+  "targetsRun": false,
+  "method": {
+    "file": "selfhost/tools/build-retention/archive-v02.py",
+    "bytes": 18412,
+    "sha256": "3238e0774c6c21c3de6c07bcbd71e469cbb23aaba01f99da0cb1e9f51990ad9f"
+  },
+  "runner": {
+    "file": "experiments/phase168/retention-plan02.py",
+    "bytes": 2517,
+    "sha256": "e5807711a0322ab723e12c92614f6cb88e67279e79fa0c5a4470520d4b64ef4f"
+  },
+  "allowedRoots": [
+    "selfhost/build/phase149/products01/product05",
+    "selfhost/build/phase149/products01/product06",
+    "selfhost/build/phase149/products01/product07",
+    "selfhost/build/phase149/products01/product08",
+    "selfhost/build/phase149/products01/product09",
+    "selfhost/build/phase149/products01/product10",
+    "selfhost/build/phase149/products01/product11",
+    "selfhost/build/phase149/products01/product12",
+    "selfhost/build/phase149/products01/product13",
+    "selfhost/build/phase149/products01/product14",
+    "selfhost/build/phase149/products01/product15",
+    "selfhost/build/phase149/products01/product16",
+    "selfhost/build/phase149/products01/product17",
+    "selfhost/build/phase149/products01/product18",
+    "selfhost/build/phase149/products01/product19",
+    "selfhost/build/phase149/products01/product20",
+    "selfhost/build/phase149/products01/product21",
+    "selfhost/build/phase149/transfer-products01/test-rle-roundtrip/p0",
+    "selfhost/build/phase149/transfer-products01/test-rle-roundtrip/p4",
+    "selfhost/build/phase149/transfer-products01/tree-bitonic/p0"
+  ],
+  "archiveRoots": {
+    "selfhost/build-retention/phase149/products01/product05-guard/root-00/receipt.json": "selfhost/build/phase149/products01/product05",
+    "selfhost/build-retention/phase149/products01/product06-guard/root-00/receipt.json": "selfhost/build/phase149/products01/product06",
+    "selfhost/build-retention/phase149/products01/product07-guard/root-00/receipt.json": "selfhost/build/phase149/products01/product07",
+    "selfhost/build-retention/phase149/products01/product08-guard/root-00/receipt.json": "selfhost/build/phase149/products01/product08",
+    "selfhost/build-retention/phase149/products01/product09-guard/root-00/receipt.json": "selfhost/build/phase149/products01/product09",
+    "selfhost/build-retention/phase149/products01/product10-guard/root-00/receipt.json": "selfhost/build/phase149/products01/product10",
+    "selfhost/build-retention/phase149/products01/product11-guard/root-00/receipt.json": "selfhost/build/phase149/products01/product11",
+    "selfhost/build-retention/phase149/products01/product12-guard/root-00/receipt.json": "selfhost/build/phase149/products01/product12",
+    "selfhost/build-retention/phase149/products01/product13-guard/root-00/receipt.json": "selfhost/build/phase149/products01/product13",
+    "selfhost/build-retention/phase149/products01/product14-guard/root-00/receipt.json": "selfhost/build/phase149/products01/product14",
+    "selfhost/build-retention/phase149/products01/product15-guard/root-00/receipt.json": "selfhost/build/phase149/products01/product15",
+    "selfhost/build-retention/phase149/products01/product16-guard/root-00/receipt.json": "selfhost/build/phase149/products01/product16",
+    "selfhost/build-retention/phase149/products01/product17-guard/root-00/receipt.json": "selfhost/build/phase149/products01/product17",
+    "selfhost/build-retention/phase149/products01/product18-guard/root-00/receipt.json": "selfhost/build/phase149/products01/product18",
+    "selfhost/build-retention/phase149/products01/product19-guard/root-00/receipt.json": "selfhost/build/phase149/products01/product19",
+    "selfhost/build-retention/phase149/products01/product20-guard/root-00/receipt.json": "selfhost/build/phase149/products01/product20",
+    "selfhost/build-retention/phase149/products01/product21-guard/root-00/receipt.json": "selfhost/build/phase149/products01/product21",
+    "selfhost/build-retention/phase149/transfer-products01/test-rle-roundtrip/p0-guard/root-00/receipt.json": "selfhost/build/phase149/transfer-products01/test-rle-roundtrip/p0",
+    "selfhost/build-retention/phase149/transfer-products01/test-rle-roundtrip/p4-guard/root-00/receipt.json": "selfhost/build/phase149/transfer-products01/test-rle-roundtrip/p4",
+    "selfhost/build-retention/phase149/transfer-products01/tree-bitonic/p0-guard/root-00/receipt.json": "selfhost/build/phase149/transfer-products01/tree-bitonic/p0"
+  },
+  "keepPrefixes": [
+    "selfhost/build/phase32/execution.lock",
+    "selfhost/build/phase147",
+    "selfhost/build/phase148",
+    "selfhost/build/phase150",
+    "selfhost/build/phase151",
+    "selfhost/build/phase152",
+    "selfhost/build/phase153",
+    "selfhost/build/phase154",
+    "selfhost/build/phase155",
+    "selfhost/build/phase156",
+    "selfhost/build/phase157",
+    "selfhost/build/phase158",
+    "selfhost/build/phase159",
+    "selfhost/build/phase160",
+    "selfhost/build/phase161",
+    "selfhost/build/phase162",
+    "selfhost/build/phase163",
+    "selfhost/build/phase164",
+    "selfhost/build/phase165",
+    "selfhost/build/phase166",
+    "selfhost/build/phase167",
+    "selfhost/build/phase168",
+    "selfhost/build/phase149/products01/product00",
+    "selfhost/build/phase149/products01/product01",
+    "selfhost/build/phase149/products01/product02",
+    "selfhost/build/phase149/products01/product03",
+    "selfhost/build/phase149/products01/product04",
+    "selfhost/build/phase149/native01",
+    "selfhost/build/phase149/full01",
+    "selfhost/build/phase149/full-products01",
+    "selfhost/build/phase149/parent01",
+    "selfhost/build/phase149/requests01",
+    "selfhost/.assets",
+    "selfhost/.bootstrap",
+    "selfhost/src",
+    "selfhost/tests",
+    "selfhost/tools",
+    "selfhost/manifests",
+    "selfhost/build-retention",
+    "implementation",
+    "selfhost/build/phase149/products01/product05/assemble.stderr",
+    "selfhost/build/phase149/products01/product05/assemble.stdout",
+    "selfhost/build/phase149/products01/product05/link.stderr",
+    "selfhost/build/phase149/products01/product05/link.stdout",
+    "selfhost/build/phase149/products01/product05/program",
+    "selfhost/build/phase149/products01/product05/qbe.stderr",
+    "selfhost/build/phase149/products01/product05/qbe.stdout",
+    "selfhost/build/phase149/products01/product05/report.json",
+    "selfhost/build/phase149/products01/product06/assemble.stderr",
+    "selfhost/build/phase149/products01/product06/assemble.stdout",
+    "selfhost/build/phase149/products01/product06/link.stderr",
+    "selfhost/build/phase149/products01/product06/link.stdout",
+    "selfhost/build/phase149/products01/product06/program",
+    "selfhost/build/phase149/products01/product06/qbe.stderr",
+    "selfhost/build/phase149/products01/product06/qbe.stdout",
+    "selfhost/build/phase149/products01/product06/report.json",
+    "selfhost/build/phase149/products01/product07/assemble.stderr",
+    "selfhost/build/phase149/products01/product07/assemble.stdout",
+    "selfhost/build/phase149/products01/product07/link.stderr",
+    "selfhost/build/phase149/products01/product07/link.stdout",
+    "selfhost/build/phase149/products01/product07/program",
+    "selfhost/build/phase149/products01/product07/qbe.stderr",
+    "selfhost/build/phase149/products01/product07/qbe.stdout",
+    "selfhost/build/phase149/products01/product07/report.json",
+    "selfhost/build/phase149/products01/product08/assemble.stderr",
+    "selfhost/build/phase149/products01/product08/assemble.stdout",
+    "selfhost/build/phase149/products01/product08/link.stderr",
+    "selfhost/build/phase149/products01/product08/link.stdout",
+    "selfhost/build/phase149/products01/product08/program",
+    "selfhost/build/phase149/products01/product08/qbe.stderr",
+    "selfhost/build/phase149/products01/product08/qbe.stdout",
+    "selfhost/build/phase149/products01/product08/report.json",
+    "selfhost/build/phase149/products01/product09/assemble.stderr",
+    "selfhost/build/phase149/products01/product09/assemble.stdout",
+    "selfhost/build/phase149/products01/product09/link.stderr",
+    "selfhost/build/phase149/products01/product09/link.stdout",
+    "selfhost/build/phase149/products01/product09/program",
+    "selfhost/build/phase149/products01/product09/qbe.stderr",
+    "selfhost/build/phase149/products01/product09/qbe.stdout",
+    "selfhost/build/phase149/products01/product09/report.json",
+    "selfhost/build/phase149/products01/product10/assemble.stderr",
+    "selfhost/build/phase149/products01/product10/assemble.stdout",
+    "selfhost/build/phase149/products01/product10/link.stderr",
+    "selfhost/build/phase149/products01/product10/link.stdout",
+    "selfhost/build/phase149/products01/product10/program",
+    "selfhost/build/phase149/products01/product10/qbe.stderr",
+    "selfhost/build/phase149/products01/product10/qbe.stdout",
+    "selfhost/build/phase149/products01/product10/report.json",
+    "selfhost/build/phase149/products01/product11/assemble.stderr",
+    "selfhost/build/phase149/products01/product11/assemble.stdout",
+    "selfhost/build/phase149/products01/product11/link.stderr",
+    "selfhost/build/phase149/products01/product11/link.stdout",
+    "selfhost/build/phase149/products01/product11/program",
+    "selfhost/build/phase149/products01/product11/qbe.stderr",
+    "selfhost/build/phase149/products01/product11/qbe.stdout",
+    "selfhost/build/phase149/products01/product11/report.json",
+    "selfhost/build/phase149/products01/product12/assemble.stderr",
+    "selfhost/build/phase149/products01/product12/assemble.stdout",
+    "selfhost/build/phase149/products01/product12/link.stderr",
+    "selfhost/build/phase149/products01/product12/link.stdout",
+    "selfhost/build/phase149/products01/product12/program",
+    "selfhost/build/phase149/products01/product12/qbe.stderr",
+    "selfhost/build/phase149/products01/product12/qbe.stdout",
+    "selfhost/build/phase149/products01/product12/report.json",
+    "selfhost/build/phase149/products01/product13/assemble.stderr",
+    "selfhost/build/phase149/products01/product13/assemble.stdout",
+    "selfhost/build/phase149/products01/product13/link.stderr",
+    "selfhost/build/phase149/products01/product13/link.stdout",
+    "selfhost/build/phase149/products01/product13/program",
+    "selfhost/build/phase149/products01/product13/qbe.stderr",
+    "selfhost/build/phase149/products01/product13/qbe.stdout",
+    "selfhost/build/phase149/products01/product13/report.json",
+    "selfhost/build/phase149/products01/product14/assemble.stderr",
+    "selfhost/build/phase149/products01/product14/assemble.stdout",
+    "selfhost/build/phase149/products01/product14/link.stderr",
+    "selfhost/build/phase149/products01/product14/link.stdout",
+    "selfhost/build/phase149/products01/product14/program",
+    "selfhost/build/phase149/products01/product14/qbe.stderr",
+    "selfhost/build/phase149/products01/product14/qbe.stdout",
+    "selfhost/build/phase149/products01/product14/report.json",
+    "selfhost/build/phase149/products01/product15/assemble.stderr",
+    "selfhost/build/phase149/products01/product15/assemble.stdout",
+    "selfhost/build/phase149/products01/product15/link.stderr",
+    "selfhost/build/phase149/products01/product15/link.stdout",
+    "selfhost/build/phase149/products01/product15/program",
+    "selfhost/build/phase149/products01/product15/qbe.stderr",
+    "selfhost/build/phase149/products01/product15/qbe.stdout",
+    "selfhost/build/phase149/products01/product15/report.json",
+    "selfhost/build/phase149/products01/product16/assemble.stderr",
+    "selfhost/build/phase149/products01/product16/assemble.stdout",
+    "selfhost/build/phase149/products01/product16/link.stderr",
+    "selfhost/build/phase149/products01/product16/link.stdout",
+    "selfhost/build/phase149/products01/product16/program",
+    "selfhost/build/phase149/products01/product16/qbe.stderr",
+    "selfhost/build/phase149/products01/product16/qbe.stdout",
+    "selfhost/build/phase149/products01/product16/report.json",
+    "selfhost/build/phase149/products01/product17/assemble.stderr",
+    "selfhost/build/phase149/products01/product17/assemble.stdout",
+    "selfhost/build/phase149/products01/product17/link.stderr",
+    "selfhost/build/phase149/products01/product17/link.stdout",
+    "selfhost/build/phase149/products01/product17/program",
+    "selfhost/build/phase149/products01/product17/qbe.stderr",
+    "selfhost/build/phase149/products01/product17/qbe.stdout",
+    "selfhost/build/phase149/products01/product17/report.json",
+    "selfhost/build/phase149/products01/product18/assemble.stderr",
+    "selfhost/build/phase149/products01/product18/assemble.stdout",
+    "selfhost/build/phase149/products01/product18/link.stderr",
+    "selfhost/build/phase149/products01/product18/link.stdout",
+    "selfhost/build/phase149/products01/product18/program",
+    "selfhost/build/phase149/products01/product18/qbe.stderr",
+    "selfhost/build/phase149/products01/product18/qbe.stdout",
+    "selfhost/build/phase149/products01/product18/report.json",
+    "selfhost/build/phase149/products01/product19/assemble.stderr",
+    "selfhost/build/phase149/products01/product19/assemble.stdout",
+    "selfhost/build/phase149/products01/product19/link.stderr",
+    "selfhost/build/phase149/products01/product19/link.stdout",
+    "selfhost/build/phase149/products01/product19/program",
+    "selfhost/build/phase149/products01/product19/qbe.stderr",
+    "selfhost/build/phase149/products01/product19/qbe.stdout",
+    "selfhost/build/phase149/products01/product19/report.json",
+    "selfhost/build/phase149/products01/product20/assemble.stderr",
+    "selfhost/build/phase149/products01/product20/assemble.stdout",
+    "selfhost/build/phase149/products01/product20/link.stderr",
+    "selfhost/build/phase149/products01/product20/link.stdout",
+    "selfhost/build/phase149/products01/product20/program",
+    "selfhost/build/phase149/products01/product20/qbe.stderr",
+    "selfhost/build/phase149/products01/product20/qbe.stdout",
+    "selfhost/build/phase149/products01/product20/report.json",
+    "selfhost/build/phase149/products01/product21/assemble.stderr",
+    "selfhost/build/phase149/products01/product21/assemble.stdout",
+    "selfhost/build/phase149/products01/product21/link.stderr",
+    "selfhost/build/phase149/products01/product21/link.stdout",
+    "selfhost/build/phase149/products01/product21/program",
+    "selfhost/build/phase149/products01/product21/qbe.stderr",
+    "selfhost/build/phase149/products01/product21/qbe.stdout",
+    "selfhost/build/phase149/products01/product21/report.json",
+    "selfhost/build/phase149/transfer-products01/test-rle-roundtrip/p0/assemble.stderr",
+    "selfhost/build/phase149/transfer-products01/test-rle-roundtrip/p0/assemble.stdout",
+    "selfhost/build/phase149/transfer-products01/test-rle-roundtrip/p0/link.stderr",
+    "selfhost/build/phase149/transfer-products01/test-rle-roundtrip/p0/link.stdout",
+    "selfhost/build/phase149/transfer-products01/test-rle-roundtrip/p0/program",
+    "selfhost/build/phase149/transfer-products01/test-rle-roundtrip/p0/qbe.stderr",
+    "selfhost/build/phase149/transfer-products01/test-rle-roundtrip/p0/qbe.stdout",
+    "selfhost/build/phase149/transfer-products01/test-rle-roundtrip/p0/report.json",
+    "selfhost/build/phase149/transfer-products01/test-rle-roundtrip/p4/assemble.stderr",
+    "selfhost/build/phase149/transfer-products01/test-rle-roundtrip/p4/assemble.stdout",
+    "selfhost/build/phase149/transfer-products01/test-rle-roundtrip/p4/link.stderr",
+    "selfhost/build/phase149/transfer-products01/test-rle-roundtrip/p4/link.stdout",
+    "selfhost/build/phase149/transfer-products01/test-rle-roundtrip/p4/program",
+    "selfhost/build/phase149/transfer-products01/test-rle-roundtrip/p4/qbe.stderr",
+    "selfhost/build/phase149/transfer-products01/test-rle-roundtrip/p4/qbe.stdout",
+    "selfhost/build/phase149/transfer-products01/test-rle-roundtrip/p4/report.json",
+    "selfhost/build/phase149/transfer-products01/tree-bitonic/p0/assemble.stderr",
+    "selfhost/build/phase149/transfer-products01/tree-bitonic/p0/assemble.stdout",
+    "selfhost/build/phase149/transfer-products01/tree-bitonic/p0/link.stderr",
+    "selfhost/build/phase149/transfer-products01/tree-bitonic/p0/link.stdout",
+    "selfhost/build/phase149/transfer-products01/tree-bitonic/p0/program",
+    "selfhost/build/phase149/transfer-products01/tree-bitonic/p0/qbe.stderr",
+    "selfhost/build/phase149/transfer-products01/tree-bitonic/p0/qbe.stdout",
+    "selfhost/build/phase149/transfer-products01/tree-bitonic/p0/report.json"
+  ],
+  "roots": [
+    {
+      "root": "selfhost/build/phase149/products01/product05",
+      "lifecycle": {
+        "file": "selfhost/build/phase149/products01/product05-guard/retention.json",
+        "bytes": 1226,
+        "sha256": "2c34322b36730586d1a178c49805bf6041af481ec93188a91c80cbf33980a33d"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase149/products01/product05-guard/report.json",
+        "bytes": 2084,
+        "sha256": "6b3ad340c6b64d3d6c80ba4a30d613b7732e8c56a9a096e892e4475e30d967ef"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase149/products01/product05-guard/root-00/receipt.json",
+        "bytes": 2137,
+        "sha256": "1f109ab78ce8ded83c9799b4b0c33a31b7c1a05b135dbebbae6b09a531893ebe"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase149/products01/product05-guard/root-00/files.tar.gz",
+        "bytes": 318086,
+        "sha256": "71f76c7a62aff14e37010b52831580cc2a0c9d7fadd5b452da413cd826868f04"
+      },
+      "allArchiveMembersAuthenticated": 10,
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase149/products01/product05/program.s",
+          "bytes": 1278822,
+          "sha256": "22b8d560f5748f6eddf1e7e2b130c538e76701e85f990d2ef4888092096a36c6",
+          "archiveMember": "program.s",
+          "allocatedBytes": 1282048,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563214
+        },
+        {
+          "file": "selfhost/build/phase149/products01/product05/program.o",
+          "bytes": 388312,
+          "sha256": "11b316ffa17b9bac6a6478b15957e00b147f78a2a7b46a703795201b34fad7ac",
+          "archiveMember": "program.o",
+          "allocatedBytes": 389120,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563217
+        }
+      ],
+      "allocatedBytes": 1671168,
+      "plan": "selfhost/build-retention/phase168/reclaim02-phase149-products01-product05/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase168/retention-policy02.json",
+        "--receipt",
+        "selfhost/build-retention/phase149/products01/product05-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product05/verified"
+      ],
+      "verifyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py verify --policy experiments/phase168/retention-policy02.json --receipt selfhost/build-retention/phase149/products01/product05-guard/root-00/receipt.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product05/verified",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product05/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product05/applied"
+      ],
+      "applyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py apply --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product05/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product05/applied",
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product05/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product05/restored"
+      ],
+      "restoreShell": "python3 -B selfhost/tools/build-retention/archive-v02.py restore --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product05/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product05/restored"
+    },
+    {
+      "root": "selfhost/build/phase149/products01/product06",
+      "lifecycle": {
+        "file": "selfhost/build/phase149/products01/product06-guard/retention.json",
+        "bytes": 1227,
+        "sha256": "a28da67a185e39c66bcb7b8ae8abacf39bdf4aa801daf62c64ed3eca65bbdc48"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase149/products01/product06-guard/report.json",
+        "bytes": 2084,
+        "sha256": "2728de0f7c0a7595ac49236aa200f46e92f6096c64f9c22e9191a8e92ef90515"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase149/products01/product06-guard/root-00/receipt.json",
+        "bytes": 2137,
+        "sha256": "c88fdff8906240b0782432f3b70698fead216d1302edf91ccc1dedf5d9a397c4"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase149/products01/product06-guard/root-00/files.tar.gz",
+        "bytes": 314551,
+        "sha256": "31accddad1d2bbe0c66babe474e50b7d7b41a8186e3b73d3576c1f0c1315a653"
+      },
+      "allArchiveMembersAuthenticated": 10,
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase149/products01/product06/program.s",
+          "bytes": 1260584,
+          "sha256": "faef8746259cf6c0eeb57d5a329685476fd1e012999e9892a16daeffda8be6d9",
+          "archiveMember": "program.s",
+          "allocatedBytes": 1261568,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563230
+        },
+        {
+          "file": "selfhost/build/phase149/products01/product06/program.o",
+          "bytes": 384416,
+          "sha256": "2a46aeb04694b0e177f6515b19cfa8ea78c4e5cacee8447598e15ced5d42fd0c",
+          "archiveMember": "program.o",
+          "allocatedBytes": 385024,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563233
+        }
+      ],
+      "allocatedBytes": 1646592,
+      "plan": "selfhost/build-retention/phase168/reclaim02-phase149-products01-product06/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase168/retention-policy02.json",
+        "--receipt",
+        "selfhost/build-retention/phase149/products01/product06-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product06/verified"
+      ],
+      "verifyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py verify --policy experiments/phase168/retention-policy02.json --receipt selfhost/build-retention/phase149/products01/product06-guard/root-00/receipt.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product06/verified",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product06/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product06/applied"
+      ],
+      "applyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py apply --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product06/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product06/applied",
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product06/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product06/restored"
+      ],
+      "restoreShell": "python3 -B selfhost/tools/build-retention/archive-v02.py restore --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product06/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product06/restored"
+    },
+    {
+      "root": "selfhost/build/phase149/products01/product07",
+      "lifecycle": {
+        "file": "selfhost/build/phase149/products01/product07-guard/retention.json",
+        "bytes": 1227,
+        "sha256": "333f6025eb4298cb57a9b27c62b72fddc5c7bb351e30d5452b7c6f0074095830"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase149/products01/product07-guard/report.json",
+        "bytes": 2085,
+        "sha256": "880404c18f798031130300eb6eb28cbd29bf66a036627e993141def3677fd846"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase149/products01/product07-guard/root-00/receipt.json",
+        "bytes": 2137,
+        "sha256": "abe25789bbf9e32145b6c3061b8d9a4dd98ffb631295512de0953b6f27c79a09"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase149/products01/product07-guard/root-00/files.tar.gz",
+        "bytes": 318165,
+        "sha256": "4db5cb26b9a0f528c5f437a47ea880090d94ad1f03666fb2f7073f1061be5127"
+      },
+      "allArchiveMembersAuthenticated": 10,
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase149/products01/product07/program.s",
+          "bytes": 1277967,
+          "sha256": "d087ccc9f74a410ef3aa2cddd2db8cac506dc5dd78e749d06cf70f90b450a547",
+          "archiveMember": "program.s",
+          "allocatedBytes": 1282048,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563246
+        },
+        {
+          "file": "selfhost/build/phase149/products01/product07/program.o",
+          "bytes": 388456,
+          "sha256": "c16a0507ec8e32aade0713be9b5712f74d30ae35a702fdc1652b85a2559001bc",
+          "archiveMember": "program.o",
+          "allocatedBytes": 389120,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563249
+        }
+      ],
+      "allocatedBytes": 1671168,
+      "plan": "selfhost/build-retention/phase168/reclaim02-phase149-products01-product07/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase168/retention-policy02.json",
+        "--receipt",
+        "selfhost/build-retention/phase149/products01/product07-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product07/verified"
+      ],
+      "verifyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py verify --policy experiments/phase168/retention-policy02.json --receipt selfhost/build-retention/phase149/products01/product07-guard/root-00/receipt.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product07/verified",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product07/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product07/applied"
+      ],
+      "applyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py apply --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product07/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product07/applied",
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product07/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product07/restored"
+      ],
+      "restoreShell": "python3 -B selfhost/tools/build-retention/archive-v02.py restore --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product07/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product07/restored"
+    },
+    {
+      "root": "selfhost/build/phase149/products01/product08",
+      "lifecycle": {
+        "file": "selfhost/build/phase149/products01/product08-guard/retention.json",
+        "bytes": 1227,
+        "sha256": "732558be75e34bdd492dfca1c2de2b90ad5b9a1181627b57d3066d11ca0338ae"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase149/products01/product08-guard/report.json",
+        "bytes": 2084,
+        "sha256": "44841ca5a4218e24ba204ac66d62c8705d4b98ef534779f8173459bc8346b700"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase149/products01/product08-guard/root-00/receipt.json",
+        "bytes": 2137,
+        "sha256": "3fbfe9ee9196f03246610b3f8b2db5cbe65483ca59a27eda8608c52a2306fe05"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase149/products01/product08-guard/root-00/files.tar.gz",
+        "bytes": 313838,
+        "sha256": "98c2855c22d44dcf41df73399a00058b41693afd0eac474b4300451bf0d0ea15"
+      },
+      "allArchiveMembersAuthenticated": 10,
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase149/products01/product08/program.s",
+          "bytes": 1258947,
+          "sha256": "7a22a98477607d32c90d224f3da5b92231ef8a10b83746b39ff29308b831e569",
+          "archiveMember": "program.s",
+          "allocatedBytes": 1261568,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563262
+        },
+        {
+          "file": "selfhost/build/phase149/products01/product08/program.o",
+          "bytes": 383744,
+          "sha256": "bfabdaebc395f4fda2d62dd287b00aca02be2b2ca1bd120a6e7526bdd07f517c",
+          "archiveMember": "program.o",
+          "allocatedBytes": 385024,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563265
+        }
+      ],
+      "allocatedBytes": 1646592,
+      "plan": "selfhost/build-retention/phase168/reclaim02-phase149-products01-product08/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase168/retention-policy02.json",
+        "--receipt",
+        "selfhost/build-retention/phase149/products01/product08-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product08/verified"
+      ],
+      "verifyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py verify --policy experiments/phase168/retention-policy02.json --receipt selfhost/build-retention/phase149/products01/product08-guard/root-00/receipt.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product08/verified",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product08/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product08/applied"
+      ],
+      "applyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py apply --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product08/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product08/applied",
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product08/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product08/restored"
+      ],
+      "restoreShell": "python3 -B selfhost/tools/build-retention/archive-v02.py restore --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product08/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product08/restored"
+    },
+    {
+      "root": "selfhost/build/phase149/products01/product09",
+      "lifecycle": {
+        "file": "selfhost/build/phase149/products01/product09-guard/retention.json",
+        "bytes": 1227,
+        "sha256": "6a41df1da03b76b12e999051344756eb1fe87b51b8ed855b417813c8f54cd7d5"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase149/products01/product09-guard/report.json",
+        "bytes": 2083,
+        "sha256": "2c2bacd97ce34f400b33300fc87fee51056c76faa27d921627dbaaa90c5009e4"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase149/products01/product09-guard/root-00/receipt.json",
+        "bytes": 2136,
+        "sha256": "ab4b0cb244ff67cd1cf55d44ad26af76808937256f571d337d09a7a5ebc4c8b1"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase149/products01/product09-guard/root-00/files.tar.gz",
+        "bytes": 312235,
+        "sha256": "c015acece11a260a5bc30f2ea388de38c853534a3c647e82e04150e6d06e532a"
+      },
+      "allArchiveMembersAuthenticated": 10,
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase149/products01/product09/program.s",
+          "bytes": 1254426,
+          "sha256": "d2185f03a57b94e1ff324e72b2eded545d4764e7e003a5aa4030fdcf3d9b88fe",
+          "archiveMember": "program.s",
+          "allocatedBytes": 1257472,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563278
+        },
+        {
+          "file": "selfhost/build/phase149/products01/product09/program.o",
+          "bytes": 382784,
+          "sha256": "ea7c76fc7756fdd841e1bb7d94aed7464cd15bfa3c56a3dcd46dfe4c9d67de9c",
+          "archiveMember": "program.o",
+          "allocatedBytes": 385024,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563281
+        }
+      ],
+      "allocatedBytes": 1642496,
+      "plan": "selfhost/build-retention/phase168/reclaim02-phase149-products01-product09/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase168/retention-policy02.json",
+        "--receipt",
+        "selfhost/build-retention/phase149/products01/product09-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product09/verified"
+      ],
+      "verifyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py verify --policy experiments/phase168/retention-policy02.json --receipt selfhost/build-retention/phase149/products01/product09-guard/root-00/receipt.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product09/verified",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product09/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product09/applied"
+      ],
+      "applyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py apply --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product09/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product09/applied",
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product09/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product09/restored"
+      ],
+      "restoreShell": "python3 -B selfhost/tools/build-retention/archive-v02.py restore --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product09/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product09/restored"
+    },
+    {
+      "root": "selfhost/build/phase149/products01/product10",
+      "lifecycle": {
+        "file": "selfhost/build/phase149/products01/product10-guard/retention.json",
+        "bytes": 1225,
+        "sha256": "499d463715df8a67a0ed7f3348c4d8df007550af4aa3c8e440d88169497f4fd5"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase149/products01/product10-guard/report.json",
+        "bytes": 2083,
+        "sha256": "fa1ea592b31e96dc09f6f9af1566c1bf21755477efa9f96813b30726381c122f"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase149/products01/product10-guard/root-00/receipt.json",
+        "bytes": 2135,
+        "sha256": "bc51d1bd967f41e11f61eceb929accb7efadb733d098f31b7c98f31470b33b2b"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase149/products01/product10-guard/root-00/files.tar.gz",
+        "bytes": 161473,
+        "sha256": "ea66c7c7b07c38e79d313d5229cf993c58abe7e468308bcc53b35436a378cb4a"
+      },
+      "allArchiveMembersAuthenticated": 10,
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase149/products01/product10/program.s",
+          "bytes": 540293,
+          "sha256": "c7c750b31c64c010cc556571a57f88df34efdb1948cad6e7a7e6723f74a8463f",
+          "archiveMember": "program.s",
+          "allocatedBytes": 540672,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563294
+        },
+        {
+          "file": "selfhost/build/phase149/products01/product10/program.o",
+          "bytes": 161568,
+          "sha256": "c1247c58704a16bf3b85bdb4eaa27a60ae99666717a6d59bc93e29369d1f632d",
+          "archiveMember": "program.o",
+          "allocatedBytes": 163840,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563297
+        }
+      ],
+      "allocatedBytes": 704512,
+      "plan": "selfhost/build-retention/phase168/reclaim02-phase149-products01-product10/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase168/retention-policy02.json",
+        "--receipt",
+        "selfhost/build-retention/phase149/products01/product10-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product10/verified"
+      ],
+      "verifyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py verify --policy experiments/phase168/retention-policy02.json --receipt selfhost/build-retention/phase149/products01/product10-guard/root-00/receipt.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product10/verified",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product10/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product10/applied"
+      ],
+      "applyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py apply --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product10/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product10/applied",
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product10/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product10/restored"
+      ],
+      "restoreShell": "python3 -B selfhost/tools/build-retention/archive-v02.py restore --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product10/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product10/restored"
+    },
+    {
+      "root": "selfhost/build/phase149/products01/product11",
+      "lifecycle": {
+        "file": "selfhost/build/phase149/products01/product11-guard/retention.json",
+        "bytes": 1227,
+        "sha256": "04d96b25a33873c0bb0b829594aeee679df4581a74715a5be70333df9c788a1a"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase149/products01/product11-guard/report.json",
+        "bytes": 2083,
+        "sha256": "21ba157232aa207c4394f9deb85fe6ba2c9614dc7f8e05d704a8d1e4d2e6c662"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase149/products01/product11-guard/root-00/receipt.json",
+        "bytes": 2136,
+        "sha256": "66ab383beae396555b91040fbcf5fc8e17a05ba18894db4969be5b9d06081025"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase149/products01/product11-guard/root-00/files.tar.gz",
+        "bytes": 160873,
+        "sha256": "6d3ab3f2cad7005f7f777c258c88bb39899fbfa3d04f91110631fc03dcc3677a"
+      },
+      "allArchiveMembersAuthenticated": 10,
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase149/products01/product11/program.s",
+          "bytes": 539038,
+          "sha256": "f964236556615d0f0b0cdb5c818160f389174a26b52b4486f48027bbdd3b98c8",
+          "archiveMember": "program.s",
+          "allocatedBytes": 540672,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563310
+        },
+        {
+          "file": "selfhost/build/phase149/products01/product11/program.o",
+          "bytes": 160992,
+          "sha256": "9511848ca0f9124e32073fcec5803b0c3d0643c5d8ff7683a7a3f054928ba651",
+          "archiveMember": "program.o",
+          "allocatedBytes": 163840,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563313
+        }
+      ],
+      "allocatedBytes": 704512,
+      "plan": "selfhost/build-retention/phase168/reclaim02-phase149-products01-product11/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase168/retention-policy02.json",
+        "--receipt",
+        "selfhost/build-retention/phase149/products01/product11-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product11/verified"
+      ],
+      "verifyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py verify --policy experiments/phase168/retention-policy02.json --receipt selfhost/build-retention/phase149/products01/product11-guard/root-00/receipt.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product11/verified",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product11/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product11/applied"
+      ],
+      "applyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py apply --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product11/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product11/applied",
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product11/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product11/restored"
+      ],
+      "restoreShell": "python3 -B selfhost/tools/build-retention/archive-v02.py restore --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product11/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product11/restored"
+    },
+    {
+      "root": "selfhost/build/phase149/products01/product12",
+      "lifecycle": {
+        "file": "selfhost/build/phase149/products01/product12-guard/retention.json",
+        "bytes": 1224,
+        "sha256": "a578d8d04b3dbe2710dacb9280b10a394a4d20235d4de9ca4d65608cad230855"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase149/products01/product12-guard/report.json",
+        "bytes": 2082,
+        "sha256": "3c1146354d467c62fe0b2908f33d66a0ec7fc3189c0eaaf21e09e3d8fa32e5f8"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase149/products01/product12-guard/root-00/receipt.json",
+        "bytes": 2136,
+        "sha256": "54a30ebea98d4b1ae6d58357093e503760d71fb55415ee424e9c30801c408560"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase149/products01/product12-guard/root-00/files.tar.gz",
+        "bytes": 159741,
+        "sha256": "1057c882532c2517899ba8e056cef76d85a2872e993b0de1270d230bc7357583"
+      },
+      "allArchiveMembersAuthenticated": 10,
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase149/products01/product12/program.s",
+          "bytes": 530088,
+          "sha256": "40902ddf58782ab9aad44efc1c63c7ce6fd56d8b3203d841c084b5d995ffeca5",
+          "archiveMember": "program.s",
+          "allocatedBytes": 532480,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563326
+        },
+        {
+          "file": "selfhost/build/phase149/products01/product12/program.o",
+          "bytes": 159320,
+          "sha256": "f10c97b52a9335e3469d20528b94a61d3f32569471bdc632f8e1a65956544da8",
+          "archiveMember": "program.o",
+          "allocatedBytes": 159744,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563329
+        }
+      ],
+      "allocatedBytes": 692224,
+      "plan": "selfhost/build-retention/phase168/reclaim02-phase149-products01-product12/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase168/retention-policy02.json",
+        "--receipt",
+        "selfhost/build-retention/phase149/products01/product12-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product12/verified"
+      ],
+      "verifyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py verify --policy experiments/phase168/retention-policy02.json --receipt selfhost/build-retention/phase149/products01/product12-guard/root-00/receipt.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product12/verified",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product12/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product12/applied"
+      ],
+      "applyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py apply --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product12/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product12/applied",
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product12/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product12/restored"
+      ],
+      "restoreShell": "python3 -B selfhost/tools/build-retention/archive-v02.py restore --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product12/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product12/restored"
+    },
+    {
+      "root": "selfhost/build/phase149/products01/product13",
+      "lifecycle": {
+        "file": "selfhost/build/phase149/products01/product13-guard/retention.json",
+        "bytes": 1226,
+        "sha256": "d2e33794adb711816bd8b36cdd5e9174db1c224812b017cda97820195ec4798d"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase149/products01/product13-guard/report.json",
+        "bytes": 2084,
+        "sha256": "32988bfcd558e4ebdae3fb857f35a655e62db33da30cd399b4788a21b956f5d1"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase149/products01/product13-guard/root-00/receipt.json",
+        "bytes": 2136,
+        "sha256": "e7c4531bd0a9c58f2b41a155f02a4bccbe55cfb9824d7c6b47017906bf037584"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase149/products01/product13-guard/root-00/files.tar.gz",
+        "bytes": 159494,
+        "sha256": "b985244647bbb0844600e7140f9e76e3603555ad11df8b23be223aed3cc7718e"
+      },
+      "allArchiveMembersAuthenticated": 10,
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase149/products01/product13/program.s",
+          "bytes": 535217,
+          "sha256": "7195e7c7509f1bda1307ee514fe58388e8bf3ccee80d76d89075b7ca06f6b2ee",
+          "archiveMember": "program.s",
+          "allocatedBytes": 536576,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563342
+        },
+        {
+          "file": "selfhost/build/phase149/products01/product13/program.o",
+          "bytes": 160296,
+          "sha256": "825e3e84c4f92b07ac43ab3fd43ac29656f23085861fee035e7dd638d6e9ba9c",
+          "archiveMember": "program.o",
+          "allocatedBytes": 163840,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563345
+        }
+      ],
+      "allocatedBytes": 700416,
+      "plan": "selfhost/build-retention/phase168/reclaim02-phase149-products01-product13/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase168/retention-policy02.json",
+        "--receipt",
+        "selfhost/build-retention/phase149/products01/product13-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product13/verified"
+      ],
+      "verifyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py verify --policy experiments/phase168/retention-policy02.json --receipt selfhost/build-retention/phase149/products01/product13-guard/root-00/receipt.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product13/verified",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product13/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product13/applied"
+      ],
+      "applyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py apply --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product13/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product13/applied",
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product13/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product13/restored"
+      ],
+      "restoreShell": "python3 -B selfhost/tools/build-retention/archive-v02.py restore --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product13/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product13/restored"
+    },
+    {
+      "root": "selfhost/build/phase149/products01/product14",
+      "lifecycle": {
+        "file": "selfhost/build/phase149/products01/product14-guard/retention.json",
+        "bytes": 1227,
+        "sha256": "b9264f25ab715e505c51d4f8092073a216a768b777118409f354567e897215b6"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase149/products01/product14-guard/report.json",
+        "bytes": 2085,
+        "sha256": "66b5185a79b9dd62e8556f4b63bbb9bcf4e1e6d566088d863aeef2f3f5702a06"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase149/products01/product14-guard/root-00/receipt.json",
+        "bytes": 2135,
+        "sha256": "6d59248ee2ea2849e174b934ffa7f2809e0ba62f9ca9643957de37e22b45af4f"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase149/products01/product14-guard/root-00/files.tar.gz",
+        "bytes": 159011,
+        "sha256": "1c4ca519cf51d83f0f245b7a85094ed65961c82dd82029306044504283738fcc"
+      },
+      "allArchiveMembersAuthenticated": 10,
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase149/products01/product14/program.s",
+          "bytes": 528822,
+          "sha256": "89c6f956754bdaab4c970468ae5f1c8a935ba53d3dda13d05a7614313e347105",
+          "archiveMember": "program.s",
+          "allocatedBytes": 532480,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563358
+        },
+        {
+          "file": "selfhost/build/phase149/products01/product14/program.o",
+          "bytes": 158744,
+          "sha256": "73555a22eee7be15b3adbae20fb5cd0b9312cbc5fe50b70fd5144a3b2236881c",
+          "archiveMember": "program.o",
+          "allocatedBytes": 159744,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563361
+        }
+      ],
+      "allocatedBytes": 692224,
+      "plan": "selfhost/build-retention/phase168/reclaim02-phase149-products01-product14/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase168/retention-policy02.json",
+        "--receipt",
+        "selfhost/build-retention/phase149/products01/product14-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product14/verified"
+      ],
+      "verifyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py verify --policy experiments/phase168/retention-policy02.json --receipt selfhost/build-retention/phase149/products01/product14-guard/root-00/receipt.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product14/verified",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product14/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product14/applied"
+      ],
+      "applyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py apply --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product14/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product14/applied",
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product14/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product14/restored"
+      ],
+      "restoreShell": "python3 -B selfhost/tools/build-retention/archive-v02.py restore --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product14/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product14/restored"
+    },
+    {
+      "root": "selfhost/build/phase149/products01/product15",
+      "lifecycle": {
+        "file": "selfhost/build/phase149/products01/product15-guard/retention.json",
+        "bytes": 1227,
+        "sha256": "94e09bb96ccf958393a6b907494b7f31bb159cadef32a60885d80c066e22337f"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase149/products01/product15-guard/report.json",
+        "bytes": 2083,
+        "sha256": "37fc26034779a2e7243d1507bcdb52f9b49758ec2300e35be5e78f1ee0564e5f"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase149/products01/product15-guard/root-00/receipt.json",
+        "bytes": 2136,
+        "sha256": "96c58370fedf3be92e8b0b2572a712778a24ccbaeffb5606e84e79e8b92b2958"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase149/products01/product15-guard/root-00/files.tar.gz",
+        "bytes": 156850,
+        "sha256": "5911d06d84928eb6fdef3d46aa21d35d58131ea6a056cbf4ad4e6843e0cc6b0c"
+      },
+      "allArchiveMembersAuthenticated": 10,
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase149/products01/product15/program.s",
+          "bytes": 523739,
+          "sha256": "7cce2798e0ac1e6631fc1ea654ebb5dcf790c4328a05d79ba877990d700637e4",
+          "archiveMember": "program.s",
+          "allocatedBytes": 524288,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563374
+        },
+        {
+          "file": "selfhost/build/phase149/products01/product15/program.o",
+          "bytes": 157512,
+          "sha256": "329c9529c309a6cd7e89acdd7ab0853c05ed45ec5417fc42779eac5d0798568a",
+          "archiveMember": "program.o",
+          "allocatedBytes": 159744,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563377
+        }
+      ],
+      "allocatedBytes": 684032,
+      "plan": "selfhost/build-retention/phase168/reclaim02-phase149-products01-product15/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase168/retention-policy02.json",
+        "--receipt",
+        "selfhost/build-retention/phase149/products01/product15-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product15/verified"
+      ],
+      "verifyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py verify --policy experiments/phase168/retention-policy02.json --receipt selfhost/build-retention/phase149/products01/product15-guard/root-00/receipt.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product15/verified",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product15/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product15/applied"
+      ],
+      "applyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py apply --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product15/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product15/applied",
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product15/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product15/restored"
+      ],
+      "restoreShell": "python3 -B selfhost/tools/build-retention/archive-v02.py restore --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product15/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product15/restored"
+    },
+    {
+      "root": "selfhost/build/phase149/products01/product16",
+      "lifecycle": {
+        "file": "selfhost/build/phase149/products01/product16-guard/retention.json",
+        "bytes": 1227,
+        "sha256": "9b37d7123fd51b5b0db7dbedc604a71a12f29ffcf4c3fcd8388b3d4595177c16"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase149/products01/product16-guard/report.json",
+        "bytes": 2085,
+        "sha256": "93d71ad1d046f18306956ffe9da6b299d6f067b04a8d3b406f8c67ad5d10f2ef"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase149/products01/product16-guard/root-00/receipt.json",
+        "bytes": 2136,
+        "sha256": "51aad1b875809828f01371c2134ea74626a52a23e8bef85ef65faeda6c944572"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase149/products01/product16-guard/root-00/files.tar.gz",
+        "bytes": 234014,
+        "sha256": "919034cd271442a6444d2167a29f0106c831560d763935b4efe740afeb7296de"
+      },
+      "allArchiveMembersAuthenticated": 10,
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase149/products01/product16/program.s",
+          "bytes": 856231,
+          "sha256": "3ef50bd7c18573cc937da66413811db539ec009e101b37a8212aa62076587a05",
+          "archiveMember": "program.s",
+          "allocatedBytes": 860160,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563390
+        },
+        {
+          "file": "selfhost/build/phase149/products01/product16/program.o",
+          "bytes": 244296,
+          "sha256": "61f654fa314878fbd1691f2d3194b607ae89e964d21759dff0234ad310fa12b7",
+          "archiveMember": "program.o",
+          "allocatedBytes": 245760,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563393
+        }
+      ],
+      "allocatedBytes": 1105920,
+      "plan": "selfhost/build-retention/phase168/reclaim02-phase149-products01-product16/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase168/retention-policy02.json",
+        "--receipt",
+        "selfhost/build-retention/phase149/products01/product16-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product16/verified"
+      ],
+      "verifyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py verify --policy experiments/phase168/retention-policy02.json --receipt selfhost/build-retention/phase149/products01/product16-guard/root-00/receipt.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product16/verified",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product16/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product16/applied"
+      ],
+      "applyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py apply --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product16/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product16/applied",
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product16/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product16/restored"
+      ],
+      "restoreShell": "python3 -B selfhost/tools/build-retention/archive-v02.py restore --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product16/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product16/restored"
+    },
+    {
+      "root": "selfhost/build/phase149/products01/product17",
+      "lifecycle": {
+        "file": "selfhost/build/phase149/products01/product17-guard/retention.json",
+        "bytes": 1227,
+        "sha256": "fdb3c4b2f78ca7c3369fcd3e5a0ca5af0587be76d5b52ea5d0e65018df6cd9ed"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase149/products01/product17-guard/report.json",
+        "bytes": 2085,
+        "sha256": "30a25942ad0f46587fa3f9bac209b65922079c3ece4da0f46c9a539f5eadd101"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase149/products01/product17-guard/root-00/receipt.json",
+        "bytes": 2136,
+        "sha256": "053abe9ade8bad81a90efe0dd3d3d6f07d34efb36082836148707b00eae21b42"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase149/products01/product17-guard/root-00/files.tar.gz",
+        "bytes": 233438,
+        "sha256": "da58bd0bf5b9a6ee2e8e81c033b4ff1fc9ebdb933c78df9eff69dd48f3ddbebd"
+      },
+      "allArchiveMembersAuthenticated": 10,
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase149/products01/product17/program.s",
+          "bytes": 856531,
+          "sha256": "bbfd5dab5151b8dae3f0c5c318aa825713e1f50f3ba4fa9e428829cf1a76ec03",
+          "archiveMember": "program.s",
+          "allocatedBytes": 860160,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563406
+        },
+        {
+          "file": "selfhost/build/phase149/products01/product17/program.o",
+          "bytes": 243328,
+          "sha256": "464e5ac445da209d6eb4038d71ddb60f3bb5e2c47c2bc034998c998da763560b",
+          "archiveMember": "program.o",
+          "allocatedBytes": 245760,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563409
+        }
+      ],
+      "allocatedBytes": 1105920,
+      "plan": "selfhost/build-retention/phase168/reclaim02-phase149-products01-product17/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase168/retention-policy02.json",
+        "--receipt",
+        "selfhost/build-retention/phase149/products01/product17-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product17/verified"
+      ],
+      "verifyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py verify --policy experiments/phase168/retention-policy02.json --receipt selfhost/build-retention/phase149/products01/product17-guard/root-00/receipt.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product17/verified",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product17/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product17/applied"
+      ],
+      "applyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py apply --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product17/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product17/applied",
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product17/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product17/restored"
+      ],
+      "restoreShell": "python3 -B selfhost/tools/build-retention/archive-v02.py restore --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product17/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product17/restored"
+    },
+    {
+      "root": "selfhost/build/phase149/products01/product18",
+      "lifecycle": {
+        "file": "selfhost/build/phase149/products01/product18-guard/retention.json",
+        "bytes": 1227,
+        "sha256": "d8934a7aee7335854179814d17cc1f3e3dcc8a0517aa9d6a4444a1e21837dc78"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase149/products01/product18-guard/report.json",
+        "bytes": 2081,
+        "sha256": "432daae763689c1f168ef5bf4f97a2d0f0c4885aad45e4a7c8226dd002235d02"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase149/products01/product18-guard/root-00/receipt.json",
+        "bytes": 2134,
+        "sha256": "77f84ee6029b1b066e5c8e843a1fed3c9067e3e394564b99f07d626a4ca19a5a"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase149/products01/product18-guard/root-00/files.tar.gz",
+        "bytes": 232114,
+        "sha256": "ffb17cb9112a09b83afc2286352983ecc02d41c3f6272a4e7a0d579d37dff300"
+      },
+      "allArchiveMembersAuthenticated": 10,
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase149/products01/product18/program.s",
+          "bytes": 846068,
+          "sha256": "76930e8c1862f4f69571617ebfe6a449f3004f83f65795b684cda10334ac8b48",
+          "archiveMember": "program.s",
+          "allocatedBytes": 847872,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563422
+        },
+        {
+          "file": "selfhost/build/phase149/products01/product18/program.o",
+          "bytes": 242088,
+          "sha256": "4ba4dcbc36fb6f26d55d9bbf474954ee95916d25964312d20c0ae918bc9f0212",
+          "archiveMember": "program.o",
+          "allocatedBytes": 245760,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563425
+        }
+      ],
+      "allocatedBytes": 1093632,
+      "plan": "selfhost/build-retention/phase168/reclaim02-phase149-products01-product18/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase168/retention-policy02.json",
+        "--receipt",
+        "selfhost/build-retention/phase149/products01/product18-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product18/verified"
+      ],
+      "verifyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py verify --policy experiments/phase168/retention-policy02.json --receipt selfhost/build-retention/phase149/products01/product18-guard/root-00/receipt.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product18/verified",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product18/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product18/applied"
+      ],
+      "applyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py apply --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product18/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product18/applied",
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product18/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product18/restored"
+      ],
+      "restoreShell": "python3 -B selfhost/tools/build-retention/archive-v02.py restore --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product18/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product18/restored"
+    },
+    {
+      "root": "selfhost/build/phase149/products01/product19",
+      "lifecycle": {
+        "file": "selfhost/build/phase149/products01/product19-guard/retention.json",
+        "bytes": 1226,
+        "sha256": "6d20bcaff1320deaaefbac151bb28e4757696c9acd71069d1827315d1ff1707b"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase149/products01/product19-guard/report.json",
+        "bytes": 2085,
+        "sha256": "10ea851a331353f79325de1b7a08b5b6ecbdd4e093f794ebc19cb2cc0639f629"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase149/products01/product19-guard/root-00/receipt.json",
+        "bytes": 2135,
+        "sha256": "a091569a7afacb2f8f97bf209596cbecfe50b53aaa35e548e520cc4cb60d47bb"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase149/products01/product19-guard/root-00/files.tar.gz",
+        "bytes": 233613,
+        "sha256": "d9306f4b4d84679d57e00760e710a073102c8733a458db660c68c3d222acc529"
+      },
+      "allArchiveMembersAuthenticated": 10,
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase149/products01/product19/program.s",
+          "bytes": 855056,
+          "sha256": "d712fd1cba6300425821be729705a04cd6079db279d11234125eaca4afeb3822",
+          "archiveMember": "program.s",
+          "allocatedBytes": 856064,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563438
+        },
+        {
+          "file": "selfhost/build/phase149/products01/product19/program.o",
+          "bytes": 244008,
+          "sha256": "f9b288901e1126efa2372725824cbdb3b45163895d64e428bf72aead79e20157",
+          "archiveMember": "program.o",
+          "allocatedBytes": 245760,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563441
+        }
+      ],
+      "allocatedBytes": 1101824,
+      "plan": "selfhost/build-retention/phase168/reclaim02-phase149-products01-product19/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase168/retention-policy02.json",
+        "--receipt",
+        "selfhost/build-retention/phase149/products01/product19-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product19/verified"
+      ],
+      "verifyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py verify --policy experiments/phase168/retention-policy02.json --receipt selfhost/build-retention/phase149/products01/product19-guard/root-00/receipt.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product19/verified",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product19/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product19/applied"
+      ],
+      "applyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py apply --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product19/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product19/applied",
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product19/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product19/restored"
+      ],
+      "restoreShell": "python3 -B selfhost/tools/build-retention/archive-v02.py restore --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product19/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product19/restored"
+    },
+    {
+      "root": "selfhost/build/phase149/products01/product20",
+      "lifecycle": {
+        "file": "selfhost/build/phase149/products01/product20-guard/retention.json",
+        "bytes": 1226,
+        "sha256": "4271def5ef2db9212756485c93d9e84cece5131cd75ec6536add1c9cf1d6cd88"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase149/products01/product20-guard/report.json",
+        "bytes": 2085,
+        "sha256": "18eb2497039101e79cdc49170f0b3f9021c82417d1fbe89cee970a901b0d8a10"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase149/products01/product20-guard/root-00/receipt.json",
+        "bytes": 2136,
+        "sha256": "be45d5ef9a7dc98a554d7e05e5514502511a3d824881ec8f2c64421fd7af35f0"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase149/products01/product20-guard/root-00/files.tar.gz",
+        "bytes": 231365,
+        "sha256": "7fe78642ac0435ce6b90d7ecb52c5807a9cd4b73793adbcdbcb0270d5c7e6996"
+      },
+      "allArchiveMembersAuthenticated": 10,
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase149/products01/product20/program.s",
+          "bytes": 846361,
+          "sha256": "205504dc4297af619856411e485e6d6910c40a0b169902621d489e1d7d86ca1e",
+          "archiveMember": "program.s",
+          "allocatedBytes": 847872,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563454
+        },
+        {
+          "file": "selfhost/build/phase149/products01/product20/program.o",
+          "bytes": 241120,
+          "sha256": "b20ceb7302bc5571f495a2e5214fa5f5007db95f3095cb02d853ec94f1fe991e",
+          "archiveMember": "program.o",
+          "allocatedBytes": 241664,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563457
+        }
+      ],
+      "allocatedBytes": 1089536,
+      "plan": "selfhost/build-retention/phase168/reclaim02-phase149-products01-product20/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase168/retention-policy02.json",
+        "--receipt",
+        "selfhost/build-retention/phase149/products01/product20-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product20/verified"
+      ],
+      "verifyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py verify --policy experiments/phase168/retention-policy02.json --receipt selfhost/build-retention/phase149/products01/product20-guard/root-00/receipt.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product20/verified",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product20/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product20/applied"
+      ],
+      "applyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py apply --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product20/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product20/applied",
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product20/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product20/restored"
+      ],
+      "restoreShell": "python3 -B selfhost/tools/build-retention/archive-v02.py restore --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product20/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product20/restored"
+    },
+    {
+      "root": "selfhost/build/phase149/products01/product21",
+      "lifecycle": {
+        "file": "selfhost/build/phase149/products01/product21-guard/retention.json",
+        "bytes": 1226,
+        "sha256": "f3be07547c1cec8b66fe89e7bb444d28cddb1a01065a5084889b737cf64c8fc4"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase149/products01/product21-guard/report.json",
+        "bytes": 2085,
+        "sha256": "b37935b1504ebd0898c5814ab10f6800c242fb4ccdb8cf6d8382d82c54d2b717"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase149/products01/product21-guard/root-00/receipt.json",
+        "bytes": 2136,
+        "sha256": "68d69449b1ae84f2b8fd6771ab952f0c5b3df8a4836ead6244d188332e2ee466"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase149/products01/product21-guard/root-00/files.tar.gz",
+        "bytes": 231245,
+        "sha256": "536caccf46d815748887f073b6ade75e26b88cb9f3ca7f85a40d011ee642ca20"
+      },
+      "allArchiveMembersAuthenticated": 10,
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase149/products01/product21/program.s",
+          "bytes": 845186,
+          "sha256": "8c5257e64f070455b9b3736adad689be96ad2b09247ca7b729bd83029ddce009",
+          "archiveMember": "program.s",
+          "allocatedBytes": 847872,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563470
+        },
+        {
+          "file": "selfhost/build/phase149/products01/product21/program.o",
+          "bytes": 240832,
+          "sha256": "05f60afe91f6663f746eb57b1b5d123af493c543244f9968d0d54ef072dd7563",
+          "archiveMember": "program.o",
+          "allocatedBytes": 241664,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79563473
+        }
+      ],
+      "allocatedBytes": 1089536,
+      "plan": "selfhost/build-retention/phase168/reclaim02-phase149-products01-product21/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase168/retention-policy02.json",
+        "--receipt",
+        "selfhost/build-retention/phase149/products01/product21-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product21/verified"
+      ],
+      "verifyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py verify --policy experiments/phase168/retention-policy02.json --receipt selfhost/build-retention/phase149/products01/product21-guard/root-00/receipt.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product21/verified",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product21/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product21/applied"
+      ],
+      "applyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py apply --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product21/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product21/applied",
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product21/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-products01-product21/restored"
+      ],
+      "restoreShell": "python3 -B selfhost/tools/build-retention/archive-v02.py restore --plan selfhost/build-retention/phase168/reclaim02-phase149-products01-product21/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-products01-product21/restored"
+    },
+    {
+      "root": "selfhost/build/phase149/transfer-products01/test-rle-roundtrip/p0",
+      "lifecycle": {
+        "file": "selfhost/build/phase149/transfer-products01/test-rle-roundtrip/p0-guard/retention.json",
+        "bytes": 1310,
+        "sha256": "1eca181d698e29822da670292e7a8eddbdf36176fbd11063891c4b4a13380142"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase149/transfer-products01/test-rle-roundtrip/p0-guard/report.json",
+        "bytes": 2190,
+        "sha256": "08d53db0a7b25d7d41d74b38e37fa823b011f9e8311594da09125d0a22c85f44"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase149/transfer-products01/test-rle-roundtrip/p0-guard/root-00/receipt.json",
+        "bytes": 2157,
+        "sha256": "568debf0c3a2a12794b5b0596a7ea2977c8d16f8f5387e9b9abdb28ded98894e"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase149/transfer-products01/test-rle-roundtrip/p0-guard/root-00/files.tar.gz",
+        "bytes": 173211,
+        "sha256": "f6798e73b7db776038968e395e7d78ce2584413534d53111e29a89d29a3ca654"
+      },
+      "allArchiveMembersAuthenticated": 10,
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase149/transfer-products01/test-rle-roundtrip/p0/program.s",
+          "bytes": 599231,
+          "sha256": "bc058c07ce8f147750e6dc11ee59079ec4570c58b04ac82c949b1ec40a486186",
+          "archiveMember": "program.s",
+          "allocatedBytes": 602112,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79564335
+        },
+        {
+          "file": "selfhost/build/phase149/transfer-products01/test-rle-roundtrip/p0/program.o",
+          "bytes": 178712,
+          "sha256": "cecb017a467479b2d32a4bfe7d0a25b3c931a04261709270b8f21b06cae19e6c",
+          "archiveMember": "program.o",
+          "allocatedBytes": 180224,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79564338
+        }
+      ],
+      "allocatedBytes": 782336,
+      "plan": "selfhost/build-retention/phase168/reclaim02-phase149-transfer-products01-test-rle-roundtrip-p0/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase168/retention-policy02.json",
+        "--receipt",
+        "selfhost/build-retention/phase149/transfer-products01/test-rle-roundtrip/p0-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-transfer-products01-test-rle-roundtrip-p0/verified"
+      ],
+      "verifyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py verify --policy experiments/phase168/retention-policy02.json --receipt selfhost/build-retention/phase149/transfer-products01/test-rle-roundtrip/p0-guard/root-00/receipt.json --out selfhost/build-retention/phase168/reclaim02-phase149-transfer-products01-test-rle-roundtrip-p0/verified",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-transfer-products01-test-rle-roundtrip-p0/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-transfer-products01-test-rle-roundtrip-p0/applied"
+      ],
+      "applyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py apply --plan selfhost/build-retention/phase168/reclaim02-phase149-transfer-products01-test-rle-roundtrip-p0/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-transfer-products01-test-rle-roundtrip-p0/applied",
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-transfer-products01-test-rle-roundtrip-p0/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-transfer-products01-test-rle-roundtrip-p0/restored"
+      ],
+      "restoreShell": "python3 -B selfhost/tools/build-retention/archive-v02.py restore --plan selfhost/build-retention/phase168/reclaim02-phase149-transfer-products01-test-rle-roundtrip-p0/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-transfer-products01-test-rle-roundtrip-p0/restored"
+    },
+    {
+      "root": "selfhost/build/phase149/transfer-products01/test-rle-roundtrip/p4",
+      "lifecycle": {
+        "file": "selfhost/build/phase149/transfer-products01/test-rle-roundtrip/p4-guard/retention.json",
+        "bytes": 1310,
+        "sha256": "7ff84e77ebbd889bcc09df0346555f5ebc105328832391d19f864531b2d2de20"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase149/transfer-products01/test-rle-roundtrip/p4-guard/report.json",
+        "bytes": 2189,
+        "sha256": "e04922f6d8134a5359b3427b08350698b09312beb5b0011e66fe10da82acbb89"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase149/transfer-products01/test-rle-roundtrip/p4-guard/root-00/receipt.json",
+        "bytes": 2157,
+        "sha256": "81105273b490392f6384e8ea57e575e3c50f205752159f870e246be08b303039"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase149/transfer-products01/test-rle-roundtrip/p4-guard/root-00/files.tar.gz",
+        "bytes": 172500,
+        "sha256": "e737bfcd1208667e7e122fb2b46d0a13df985330dc16ddb7ccf74aaa8ec3ba82"
+      },
+      "allArchiveMembersAuthenticated": 10,
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase149/transfer-products01/test-rle-roundtrip/p4/program.s",
+          "bytes": 597673,
+          "sha256": "080cc56196231d54ec4c3e5fb23d1fb3bcb4ad467f576d9890da2b43f52127f4",
+          "archiveMember": "program.s",
+          "allocatedBytes": 598016,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79564351
+        },
+        {
+          "file": "selfhost/build/phase149/transfer-products01/test-rle-roundtrip/p4/program.o",
+          "bytes": 178304,
+          "sha256": "b18a76c4689def7e390af786cddc3ac7289122c71d5a60a820bf1e71cdcb2349",
+          "archiveMember": "program.o",
+          "allocatedBytes": 180224,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79564354
+        }
+      ],
+      "allocatedBytes": 778240,
+      "plan": "selfhost/build-retention/phase168/reclaim02-phase149-transfer-products01-test-rle-roundtrip-p4/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase168/retention-policy02.json",
+        "--receipt",
+        "selfhost/build-retention/phase149/transfer-products01/test-rle-roundtrip/p4-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-transfer-products01-test-rle-roundtrip-p4/verified"
+      ],
+      "verifyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py verify --policy experiments/phase168/retention-policy02.json --receipt selfhost/build-retention/phase149/transfer-products01/test-rle-roundtrip/p4-guard/root-00/receipt.json --out selfhost/build-retention/phase168/reclaim02-phase149-transfer-products01-test-rle-roundtrip-p4/verified",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-transfer-products01-test-rle-roundtrip-p4/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-transfer-products01-test-rle-roundtrip-p4/applied"
+      ],
+      "applyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py apply --plan selfhost/build-retention/phase168/reclaim02-phase149-transfer-products01-test-rle-roundtrip-p4/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-transfer-products01-test-rle-roundtrip-p4/applied",
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-transfer-products01-test-rle-roundtrip-p4/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-transfer-products01-test-rle-roundtrip-p4/restored"
+      ],
+      "restoreShell": "python3 -B selfhost/tools/build-retention/archive-v02.py restore --plan selfhost/build-retention/phase168/reclaim02-phase149-transfer-products01-test-rle-roundtrip-p4/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-transfer-products01-test-rle-roundtrip-p4/restored"
+    },
+    {
+      "root": "selfhost/build/phase149/transfer-products01/tree-bitonic/p0",
+      "lifecycle": {
+        "file": "selfhost/build/phase149/transfer-products01/tree-bitonic/p0-guard/retention.json",
+        "bytes": 1287,
+        "sha256": "aebf1f5b8571d521221dc712e61e77451a96558b680c9c703891d473f10767b4"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase149/transfer-products01/tree-bitonic/p0-guard/report.json",
+        "bytes": 2160,
+        "sha256": "ffb01a73c03b50abf7128ca9addee8fab65cd9cc4da2f39cf109c165f8051599"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase149/transfer-products01/tree-bitonic/p0-guard/root-00/receipt.json",
+        "bytes": 2149,
+        "sha256": "84c4f25454340c74478066d7f8fe0da9bf8842bbecf9f4f393285e824deff862"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase149/transfer-products01/tree-bitonic/p0-guard/root-00/files.tar.gz",
+        "bytes": 191782,
+        "sha256": "f3e89131e3ad8a6aaa689bbb17e594ca7f61213a41d0e09a5d1c918a6491e9f3"
+      },
+      "allArchiveMembersAuthenticated": 10,
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase149/transfer-products01/tree-bitonic/p0/program.s",
+          "bytes": 692067,
+          "sha256": "3418b0ccc9dfe98e6d8ca66e0150547d0355e078b90563eb947cffa65d090aa6",
+          "archiveMember": "program.s",
+          "allocatedBytes": 692224,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79564368
+        },
+        {
+          "file": "selfhost/build/phase149/transfer-products01/tree-bitonic/p0/program.o",
+          "bytes": 204928,
+          "sha256": "3bbdff46e2f81c80593d4a1e15a662539046c6413dc1757e84816096768ac471",
+          "archiveMember": "program.o",
+          "allocatedBytes": 208896,
+          "mode": 420,
+          "uid": 1003,
+          "gid": 1003,
+          "links": 1,
+          "device": 2306,
+          "inode": 79564371
+        }
+      ],
+      "allocatedBytes": 901120,
+      "plan": "selfhost/build-retention/phase168/reclaim02-phase149-transfer-products01-tree-bitonic-p0/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase168/retention-policy02.json",
+        "--receipt",
+        "selfhost/build-retention/phase149/transfer-products01/tree-bitonic/p0-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-transfer-products01-tree-bitonic-p0/verified"
+      ],
+      "verifyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py verify --policy experiments/phase168/retention-policy02.json --receipt selfhost/build-retention/phase149/transfer-products01/tree-bitonic/p0-guard/root-00/receipt.json --out selfhost/build-retention/phase168/reclaim02-phase149-transfer-products01-tree-bitonic-p0/verified",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-transfer-products01-tree-bitonic-p0/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-transfer-products01-tree-bitonic-p0/applied"
+      ],
+      "applyShell": "python3 -B selfhost/tools/build-retention/archive-v02.py apply --plan selfhost/build-retention/phase168/reclaim02-phase149-transfer-products01-tree-bitonic-p0/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-transfer-products01-tree-bitonic-p0/applied",
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase168/reclaim02-phase149-transfer-products01-tree-bitonic-p0/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase168/reclaim02-phase149-transfer-products01-tree-bitonic-p0/restored"
+      ],
+      "restoreShell": "python3 -B selfhost/tools/build-retention/archive-v02.py restore --plan selfhost/build-retention/phase168/reclaim02-phase149-transfer-products01-tree-bitonic-p0/verified/plan.json --out selfhost/build-retention/phase168/reclaim02-phase149-transfer-products01-tree-bitonic-p0/restored"
+    }
+  ],
+  "totals": {
+    "selectedFiles": 40,
+    "roots": 20,
+    "logicalBytes": 21426107,
+    "allocatedBytes": 21504000,
+    "allocatedMiB": 20.5078125,
+    "archiveMembersAuthenticated": 200,
+    "existingArchiveBytes": 4467599
+  },
+  "scope": "Exactly program.s/program.o from Phase149 products01/product05 through product21 and the three archived transfer-products01 products. Every ELF, source, API, report, request, log and receipt is retained. All Phase167/168 roots are protected.",
+  "dependencyAudit": [
+    "These are completed old generated-program build intermediates; retained ELF execution does not open assembly/object files. Existing bounded maintained tool/manifest and Phase160-168 method checks found no operational references to the selected roots.",
+    "No old Phase167 intermediate remains eligible outside the protected clean01/final observer roots. This tranche therefore selects no Phase167 or Phase168 file.",
+    "Phase149 product00-04 were handled by the first Phase168 policy and are explicitly protected here. No already-absent or shared file is counted.",
+    "Historical reassembly or raw-product inspection requires restoration from the retained exact closure archive. Original input QBE, ELF products and source/receipt identities remain available.",
+    "The requested approximate 30 MiB is not available from remaining protected-scope candidates. Verified 20.51 MiB exceeds the expected 15 MiB experiment increment; no protection is relaxed to increase it."
+  ],
+  "preconditions": [
+    "Wait until the target lane is idle. Maintained archive-v02 uses the existing shared Phase32 lock.",
+    "Run ./experiments/phase168/retention-plan02.py verify, review the twenty exact two-file plans, then separately run ./experiments/phase168/retention-plan02.py apply. Verify never applies.",
+    "Runner checks all exact identities/counts/allocated totals before the first apply; maintained apply reauthenticates current bytes and metadata and journals removals.",
+    "Keep all exact archives, receipts, fresh plans and journals. No archive creation or scratch copy is needed; same-machine capsules are recovery copies rather than independent backups.",
+    "Do not edit consumed policy/plans or reuse output paths. Restore through the runner or recorded per-root commands before historical reanalysis.",
+    "Preserve the normal 5 GiB reserve and run budget. Measure actual free-space gain after root applies."
+  ],
+  "diskSnapshot": {
+    "freeBytes": 5387337728,
+    "reserveBytes": 5368709120
+  },
+  "verification": "Read-only full compressed archive hashes, all member hashes and gzip footers, sealed lifecycle/closure/receipt bindings and current selected bytes/modes/owners/exclusive links/empty xattrs verified. Exact policy selection asserted; runner syntax parsed. No subagent, targets, archive-v02 operation, archive creation or deletion executed."
+}

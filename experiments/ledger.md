@@ -1,3 +1,38 @@
+# Phase168 — early verified interfaces recover composition, 2026-11-05
+
+[Report](../implementation/phase168/README.md) · [Metrics](../implementation/phase168/metrics.json) ·
+[Design](../design/phase168/README.md) · [Audit](phase168/quality-audit.md).
+
+Working experimental Bend path retains demand-driven omission of generic bodies
+while reusing cached scalar plans, selective fallback preparation and actual
+adapter-derived callable interfaces. The decisive change imports these interfaces
+before region discovery, with real emitted forwarders and unchanged final gates.
+
+Same-source/API/Base complete hosted verifier builds31.558→27.759s (12.04% less);
+final matched native runtime0.43819→0.42841s (0.978×, drift visible). Unrelated
+lookup/digest builds11.754→7.037s (40.13% less), runtime0.53772→0.57496s (1.069×).
+Builds are single screens; runtimes four alternating pairs. No native compiler
+request or full-self-build gain claimed. Original≈25% verifier-build target missed.
+
+Retained negative variants: broad inlining restores cost and embeds old owned
+helper implementations; selective scalar recovery alone retains≈1.35× runtime;
+late public flags do not fix earlier registry discovery. Final imports preserve
+all93 direct bodies and add36 real forwarders, not36 discovered region workers.
+Machine inspection confirms local atom/index_hash calls replace saved-frame
+scheduler transitions in a real verifier helper. Static jumps716→421 do not
+measure dynamic frequency. The hypothesized array-mode difference was falsified.
+
+Final source checks and68 finite malformed/ownership/policy controls pass;
+independent complete verifier/lookup outputs, sharing/non-tail recursion and
+frozen Map/IO semantics pass. One failed acquisition (missing List annotations)
+is retained. No new theorem, native reproduction or frozen45 qualification.
+
+572 experimental Bend lines, zero production declaration replacements, byte-exact
+source replay.32 guarded jobs461.27s execution-lane time; all sealed/verified,
+with failed variants preserved and targeted archive-backed reclamation only.
+Phase152/installed selection/full249.222s reference unchanged. Next: larger real
+closure transfer and a shared early-interface boundary before full qualification.
+
 # Phase167 — work-eliminating architectures and admission cascades, 2026-11-05
 
 [Report](../implementation/phase167/README.md) · [Metrics](../implementation/phase167/metrics.json) ·

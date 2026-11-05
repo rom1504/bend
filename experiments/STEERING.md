@@ -1,4 +1,43 @@
-# Current frontier — Phase167 architecture experiments; Phase152 stays qualified
+# Current frontier — Phase168 early interfaces recover execution quality
+
+[Report](../implementation/phase168/README.md) · [Metrics](../implementation/phase168/metrics.json) ·
+[Independent audit](phase168/quality-audit.md) · [Reproduce](../implementation/phase168/reproduce.md).
+
+The demanded/observer-first alternative now has a useful joint tradeoff on two
+real compiler computations. Matched fresh-process hosted verifier builds fall
+31.558→27.759s (12.04%); four alternating native pairs give0.43819→0.42841s,
+roughly maintained execution with visible first-pair drift. Lookup/complete-digest
+builds fall11.754→7.037s (40.13%), but execution regresses0.53772→0.57496s (6.92%).
+Both pass the pilot's≤1.10× runtime limit; the verifier misses its≈25% build target.
+Build times are screens. These are Bun-hosted checked Bend compiler requests,
+same authenticated prepared Base, not nativeN1/N2/full-self-build improvements.
+
+The concrete capability is verified direct interfaces BEFORE continuation
+discovery. Broad early inlining embeds stale owned helpers; selective scalar
+preparation avoids that but does not recover quality alone. Callable flags added
+after registry construction arrive too late. Seeding authenticated imports before
+unchanged region analysis, with real p112w→p113d forwarders, restores local
+composition. All93 direct bodies remain exact;36 added region-named functions
+are import forwarders, not36 newly discovered region workers. Static jump sites
+716→421 are descriptive, not dynamic cost attribution. No array-mode claim.
+
+68 finite controls, independent verifier768 and lookup3279346725 outputs,
+shared-data/affine-closure plus20000-depth recursion20040, and frozen Map/IO point
+pass. Actual private final verification and additional public/borrowed-copy
+verification remain. Source/type checking is not a new BendTT proof. Experimental
+modules only; no production/runtime/installed change or new native qualification.
+
+Next test one larger real checker/optimizer closure before full acquisition.
+Preserve semantic interfaces across the preparation boundary; identify retained
+frontend/region/verification cost rather than restoring all old passes. Lookup's
+regression remains an explicit quality limit. The full249.222s qualified native
+reference is unchanged; no10× path or recursive acceleration is established.
+
+32 bounded root-owned guards used461.27s target-lane wall time (excluding agent
+work/extraction/retention); one source-check failure retained. All runs archived
+and verified. Phase152 stays qualified and available. No PR comments posted.
+
+# Previous frontier — Phase167 architecture experiments; Phase152 stays qualified
 
 [Report](../implementation/phase167/README.md) · [Metrics](../implementation/phase167/metrics.json) ·
 [Admission graph](phase167/admission-obstructions.md) · [Reproduce](../implementation/phase167/reproduce.md).

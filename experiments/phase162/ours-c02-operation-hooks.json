@@ -1,0 +1,499 @@
+{
+  "schema": "phase162-generated-c-operation-hook-proposal-v2",
+  "status": "source-only-proposal-not-applied",
+  "source": {
+    "file": "selfhost/build/phase160/request-c02/program.c",
+    "bytes": 6012086,
+    "sha256": "9d90a1c2e28d9b58f61ea6aa39b779e02de2657cc055aea59b36f0e03384fb89",
+    "lines": 175901
+  },
+  "policy": {
+    "generatedC": "Existing C02 BEND_UNBOX=0 product; no source algorithms/ownership/GC policy changed by proposal.",
+    "execution": "Sequential one worker. Header must use thread-safe counters if policy changes.",
+    "binding": "Require full source hash, exact function bounds/hash, and exactly one anchor inside that function before inserting. Never global replace top: or IS_N branches.",
+    "hooks": "Count before nonempty branch body or after top label as explicitly indicated. Do not alter values/control flow or musttail return adjacency.",
+    "boundaryMeaning": "Entry snapshots, not exits. Require one parse_begin, check_begin, check_end_report_begin, report_end in order on successful single request. Record sourceSymbol to prove role. Failure/missing boundary is not completion.",
+    "overhead": "Counter build is diagnostic only; retain complete exact output and separate uninstrumented clocks. Disable counters with same header/build for overhead control if needed.",
+    "support": "BEND_PN is preserve_none calling convention, not pure attribute. Do not introduce incompatible hook calling conventions/musttail signatures."
+  },
+  "routeEvidence": [
+    {
+      "symbol": "F_p156h__plan / L29502",
+      "line": 81195,
+      "finding": "publication or both selects L29510 -> F_p86__plan; old or uses selects L29512 -> F_p156o__p86__plan."
+    },
+    {
+      "symbol": "L29908 / L29906",
+      "line": 81946,
+      "finding": "Original large suffix selects F_p156o__p143cb__program and returns through shared F_p86__plan__checked."
+    },
+    {
+      "symbol": "L35883 / L35881",
+      "line": 93856,
+      "finding": "Candidate large suffix selects F_p143cb__program and returns through shared F_p86__plan__checked."
+    },
+    {
+      "symbol": "L30528",
+      "line": 83112,
+      "finding": "Shared checked continuation computes driver_report_data before shared F_p86__plan__reported."
+    }
+  ],
+  "excludedSpecializations": [
+    {
+      "symbol": "F_f__find_x37s3580055888x2930167514",
+      "line": 34199,
+      "reason": "Produces Missing without visiting a list row."
+    },
+    {
+      "symbol": "F_index__remove_x37s3596833507x2930167513",
+      "line": 51858,
+      "reason": "Returns Nil without visiting a list row."
+    },
+    {
+      "symbol": "F_book__final__names__valid / W_* wrappers",
+      "line": 78811,
+      "reason": "Fast Nil return/wrapper forwards to observed H_ worker; counting both would duplicate work."
+    },
+    {
+      "symbol": "F_List_dreverse_dgo",
+      "reason": "Generic List.reverse used by p143cp_canon is not attributed by book_final_reverse_rows. Thus measured book_final row passes are a lower bound on canonicalization traversal, not every reversal."
+    }
+  ],
+  "limitations": [
+    "Counters observe actual generated sites, not every source-level expression after inlining/specialization. All selected named specialized variants found in this C have been classified; cloned planners are handled explicitly.",
+    "book_final_step_calls is redundant with scan_rows and is for checking instrumentation consistency, not additive work.",
+    "Separate snapshots per stage are essential: Base, checking, proof-report and backend all can use these shared helpers. Whole-process totals are not checker totals.",
+    "All canon, search and row work still executes. Counts do not indicate how much can safely disappear or allocate blame to a unique caller."
+  ],
+  "hooks": [
+    {
+      "label": "canon_calls",
+      "kind": "counter",
+      "priority": "core",
+      "sourceSymbol": "F_p143cp__canon",
+      "variant": "ordinary",
+      "function": {
+        "startByte": 2614943,
+        "endByteExclusive": 2615556,
+        "startLine": 82930,
+        "sha256": "c1955b368729b62397516ca2a2db3847f3dae223e80641fa91a3f31bafeb6a31",
+        "signature": "static V F_p143cp__canon(V a0) {"
+      },
+      "patch": {
+        "operation": "insert-after",
+        "originalSubstring": "top:;\n",
+        "expectedMatchesInsideFunction": 1,
+        "sourceLine": 82931,
+        "relativeByte": 33,
+        "counterIncrement": 1
+      },
+      "interpretation": "One canonicalization request, including empty input. No recursive goto in this worker.",
+      "symbol": "F_p143cp__canon",
+      "needle": "top:;\n"
+    },
+    {
+      "label": "book_final_names_rows",
+      "kind": "counter",
+      "priority": "core",
+      "sourceSymbol": "H_F_book__final__names__valid",
+      "variant": "ordinary",
+      "function": {
+        "startByte": 2475618,
+        "endByteExclusive": 2476189,
+        "startLine": 78793,
+        "sha256": "7621f876eac25b14588cc70ed127d7233d8c0c1c8e02c294305001e5468182c7",
+        "signature": "static __attribute__((noinline)) BEND_PN V H_F_book__final__names__valid(V a0) {"
+      },
+      "patch": {
+        "operation": "insert-after",
+        "originalSubstring": "} else if (IS_N(s28342, 1)) {\n",
+        "expectedMatchesInsideFunction": 1,
+        "sourceLine": 78798,
+        "relativeByte": 143,
+        "counterIncrement": 1
+      },
+      "interpretation": "One nonempty declaration row whose name is validated. F_ wrapper bypasses only Nil; H_ performs every nonempty row.",
+      "symbol": "H_F_book__final__names__valid",
+      "needle": "} else if (IS_N(s28342, 1)) {\n"
+    },
+    {
+      "label": "book_final_scan_rows",
+      "kind": "counter",
+      "priority": "core",
+      "sourceSymbol": "F_book__final__scan",
+      "variant": "ordinary",
+      "function": {
+        "startByte": 2470798,
+        "endByteExclusive": 2471382,
+        "startLine": 78669,
+        "sha256": "5a6103d7ade64be1250857c35d3da213de034bfdafb0eaf41b3c340efb0fa8a6",
+        "signature": "static V F_book__final__scan(V a0, V a1, V a2, V a3) {"
+      },
+      "patch": {
+        "operation": "insert-after",
+        "originalSubstring": "} else if (IS_N(s28276, 1)) {\n",
+        "expectedMatchesInsideFunction": 1,
+        "sourceLine": 78674,
+        "relativeByte": 168,
+        "counterIncrement": 1
+      },
+      "interpretation": "One raw declaration row scanned for final-definition selection; excludes terminal Nil.",
+      "symbol": "F_book__final__scan",
+      "needle": "} else if (IS_N(s28276, 1)) {\n"
+    },
+    {
+      "label": "book_final_filter_rows",
+      "kind": "counter",
+      "priority": "core",
+      "sourceSymbol": "F_book__final__filter",
+      "variant": "ordinary",
+      "function": {
+        "startByte": 2474188,
+        "endByteExclusive": 2475342,
+        "startLine": 78750,
+        "sha256": "669a7d39a4c426ab2df1915b48ba242543221fabf1c31f0be781893436e25296",
+        "signature": "static BEND_PN V F_book__final__filter(V a0, V a1) {"
+      },
+      "patch": {
+        "operation": "insert-after",
+        "originalSubstring": "} else if (IS_N(s28315, 1)) {\n",
+        "expectedMatchesInsideFunction": 1,
+        "sourceLine": 78755,
+        "relativeByte": 115,
+        "counterIncrement": 1
+      },
+      "interpretation": "One done-list row tested against final seen index; repeated visits count as work.",
+      "symbol": "F_book__final__filter",
+      "needle": "} else if (IS_N(s28315, 1)) {\n"
+    },
+    {
+      "label": "book_final_reverse_rows",
+      "kind": "counter",
+      "priority": "core",
+      "sourceSymbol": "F_book__final__reverse",
+      "variant": "ordinary",
+      "function": {
+        "startByte": 2470320,
+        "endByteExclusive": 2470588,
+        "startLine": 78657,
+        "sha256": "aa9a4c3187829a6383987d8a570c1ecedadc0b0d09252362fcb6f5bf9d251d9f",
+        "signature": "static V F_book__final__reverse(V a0, V a1) {"
+      },
+      "patch": {
+        "operation": "insert-after",
+        "originalSubstring": "} else if (IS_N(s28274, 1)) {\n",
+        "expectedMatchesInsideFunction": 1,
+        "sourceLine": 78662,
+        "relativeByte": 104,
+        "counterIncrement": 1
+      },
+      "interpretation": "One row reversed; hook is before tail goto, so every loop iteration is counted.",
+      "symbol": "F_book__final__reverse",
+      "needle": "} else if (IS_N(s28274, 1)) {\n"
+    },
+    {
+      "label": "book_final_reverse_rows",
+      "kind": "counter",
+      "priority": "core",
+      "sourceSymbol": "F_book__final__reverse_x37f492564435x2455732687",
+      "variant": "fused-prefix-first-row",
+      "function": {
+        "startByte": 2515965,
+        "endByteExclusive": 2516918,
+        "startLine": 80035,
+        "sha256": "5d864b0dd1b314b8131248b2de1fc5245a0db37e37d3a340716ffd26b0b97070",
+        "signature": "static V F_book__final__reverse_x37f492564435x2455732687(V a0, V a1, V a2) {"
+      },
+      "patch": {
+        "operation": "insert-after",
+        "originalSubstring": "} else if (IS_N(s28926, 1)) {\n",
+        "expectedMatchesInsideFunction": 1,
+        "sourceLine": 80040,
+        "relativeByte": 135,
+        "counterIncrement": 1
+      },
+      "interpretation": "One first row consumed by fused prefix-patch/reverse specialization; remaining rows go to ordinary reverse. Does not count separate base_prefix_patch traversal.",
+      "symbol": "F_book__final__reverse_x37f492564435x2455732687",
+      "needle": "} else if (IS_N(s28926, 1)) {\n"
+    },
+    {
+      "label": "index_remove_rows",
+      "kind": "counter",
+      "priority": "core",
+      "sourceSymbol": "D_index__remove",
+      "variant": "ordinary",
+      "function": {
+        "startByte": 1603186,
+        "endByteExclusive": 1603779,
+        "startLine": 52173,
+        "sha256": "63ec0cb00a4de9948477170bd0d832abfaac2bbfe6cfacfbf4cffd80e28b8fe6",
+        "signature": "static BEND_PN V D_index__remove(V *dst, V a0, V a1, V z2, V z3) {"
+      },
+      "patch": {
+        "operation": "insert-after",
+        "originalSubstring": "} else if (IS_N(s14058, 1)) {\n",
+        "expectedMatchesInsideFunction": 1,
+        "sourceLine": 52179,
+        "relativeByte": 139,
+        "counterIncrement": 1
+      },
+      "interpretation": "One list row considered for name removal. Destination-passing D_ worker covers recursive musttail cycle; F_ wrapper alone misses rows.",
+      "symbol": "D_index__remove",
+      "needle": "} else if (IS_N(s14058, 1)) {\n"
+    },
+    {
+      "label": "constructor_exists_rows",
+      "kind": "counter",
+      "priority": "core",
+      "sourceSymbol": "F_constructor__exists",
+      "variant": "ordinary",
+      "function": {
+        "startByte": 2045607,
+        "endByteExclusive": 2047346,
+        "startLine": 65495,
+        "sha256": "7e2f1052d9a330c3e3cc95495a35c437fdf5049191ed227000f0f3c72321408c",
+        "signature": "static V F_constructor__exists(V a0, V a1) {"
+      },
+      "patch": {
+        "operation": "insert-after",
+        "originalSubstring": "} else if (IS_N(s21138, 1)) {\n",
+        "expectedMatchesInsideFunction": 1,
+        "sourceLine": 65500,
+        "relativeByte": 107,
+        "counterIncrement": 1
+      },
+      "interpretation": "One declaration/cache-sentinel row examined by constructor collision search; excludes nested lookup nodes. Each tail goto iteration counts.",
+      "symbol": "F_constructor__exists",
+      "needle": "} else if (IS_N(s21138, 1)) {\n"
+    },
+    {
+      "label": "parser_find_rows",
+      "kind": "counter",
+      "priority": "core",
+      "sourceSymbol": "F_f__find",
+      "variant": "ordinary",
+      "function": {
+        "startByte": 1021531,
+        "endByteExclusive": 1022004,
+        "startLine": 34207,
+        "sha256": "3b21cfb47a6741aee8b33be421fb1fc1b9881d32fc8d517c1c6b1f0ab35e886c",
+        "signature": "static V F_f__find(V a0, V a1) {"
+      },
+      "patch": {
+        "operation": "insert-after",
+        "originalSubstring": "} else if (IS_N(s4729, 1)) {\n",
+        "expectedMatchesInsideFunction": 1,
+        "sourceLine": 34212,
+        "relativeByte": 165,
+        "counterIncrement": 1
+      },
+      "interpretation": "One declaration row compared by linear parser search; excludes specialized missing result and Nil. Each tail goto iteration counts.",
+      "symbol": "F_f__find",
+      "needle": "} else if (IS_N(s4729, 1)) {\n"
+    },
+    {
+      "label": "parser_ctor_lookup_rows",
+      "kind": "counter",
+      "priority": "additional",
+      "sourceSymbol": "F_f__ctor__lookup",
+      "variant": "ordinary",
+      "function": {
+        "startByte": 1675540,
+        "endByteExclusive": 1676570,
+        "startLine": 54417,
+        "sha256": "a6e85a5ee56118233fba2079f585398ed39b29dc75873458fa1acf3b03261511",
+        "signature": "static V F_f__ctor__lookup(V a0, V a1) {"
+      },
+      "patch": {
+        "operation": "insert-after",
+        "originalSubstring": "} else if (IS_N(s15298, 1)) {\n",
+        "expectedMatchesInsideFunction": 1,
+        "sourceLine": 54422,
+        "relativeByte": 136,
+        "counterIncrement": 1
+      },
+      "interpretation": "One row visited by constructor lookup, including nested constructor lists; no whole-query count inferred.",
+      "symbol": "F_f__ctor__lookup",
+      "needle": "} else if (IS_N(s15298, 1)) {\n"
+    },
+    {
+      "label": "book_final_step_calls",
+      "kind": "counter",
+      "priority": "consistency",
+      "sourceSymbol": "F_book__final__step",
+      "variant": "ordinary",
+      "function": {
+        "startByte": 2472746,
+        "endByteExclusive": 2473492,
+        "startLine": 78713,
+        "sha256": "744facb34936f6f6e54855108031935148c330f4c16e2e2fc8aefab9a66173c2",
+        "signature": "static V F_book__final__step(V a0, V a1, V a2, V a3, V a4, V a5) {"
+      },
+      "patch": {
+        "operation": "insert-after",
+        "originalSubstring": "top:;\n",
+        "expectedMatchesInsideFunction": 1,
+        "sourceLine": 78714,
+        "relativeByte": 67,
+        "counterIncrement": 1
+      },
+      "interpretation": "Consistency counter: one step per nonempty ordinary scan row. Expected scan_rows==step_calls for inspected paths. Do not sum as extra traversed rows.",
+      "symbol": "F_book__final__step",
+      "needle": "top:;\n"
+    }
+  ],
+  "markers": [
+    {
+      "label": "parse_begin",
+      "kind": "boundary",
+      "priority": "required",
+      "sourceSymbol": "F_p156o__p86__plan",
+      "variant": "old-or-uses",
+      "function": {
+        "startByte": 2554031,
+        "endByteExclusive": 2554525,
+        "startLine": 81210,
+        "sha256": "5206e54dad5b578d5d3b5793155fbc4a46079632380c6a5fbb9fb2f07b6e7751",
+        "signature": "static V F_p156o__p86__plan(V a0, V a1, V a2) {"
+      },
+      "patch": {
+        "operation": "insert-after",
+        "originalSubstring": "top:;\n",
+        "expectedMatchesInsideFunction": 1,
+        "sourceLine": 81211,
+        "relativeByte": 48,
+        "counterIncrement": null
+      },
+      "interpretation": "Original route parser/loader begins after live Base preparation.",
+      "symbol": "F_p156o__p86__plan"
+    },
+    {
+      "label": "check_begin",
+      "kind": "boundary",
+      "priority": "required",
+      "sourceSymbol": "F_p156o__p86__plan__loaded",
+      "variant": "old-or-uses",
+      "function": {
+        "startByte": 2581948,
+        "endByteExclusive": 2582426,
+        "startLine": 81959,
+        "sha256": "0289e30aee5a2722613c52d03e2a0d5fcf4bd8d35d78d4beb5e3f4dcf430399c",
+        "signature": "static V F_p156o__p86__plan__loaded(V a0, V a1) {"
+      },
+      "patch": {
+        "operation": "insert-after",
+        "originalSubstring": "top:;\n",
+        "expectedMatchesInsideFunction": 1,
+        "sourceLine": 81960,
+        "relativeByte": 50,
+        "counterIncrement": null
+      },
+      "interpretation": "Original route load result is materialized; checking starts after parse error guard.",
+      "symbol": "F_p156o__p86__plan__loaded"
+    },
+    {
+      "label": "check_end_report_begin",
+      "kind": "boundary",
+      "priority": "required",
+      "sourceSymbol": "F_p86__plan__checked",
+      "variant": "shared",
+      "function": {
+        "startByte": 2621390,
+        "endByteExclusive": 2621773,
+        "startLine": 83119,
+        "sha256": "ffcbca37c42530d7f055f5957d35fb3e28cbc77a4b95bc2ca194236e6ac8dfbd",
+        "signature": "static V F_p86__plan__checked(V a0, V a1, V a2, V a3) {"
+      },
+      "patch": {
+        "operation": "insert-after",
+        "originalSubstring": "top:;\n",
+        "expectedMatchesInsideFunction": 1,
+        "sourceLine": 83120,
+        "relativeByte": 56,
+        "counterIncrement": null
+      },
+      "interpretation": "DResult argument fully computed; check error test/report computation have not run.",
+      "symbol": "F_p86__plan__checked"
+    },
+    {
+      "label": "report_end",
+      "kind": "boundary",
+      "priority": "required",
+      "sourceSymbol": "F_p86__plan__reported",
+      "variant": "shared",
+      "function": {
+        "startByte": 2637871,
+        "endByteExclusive": 2638037,
+        "startLine": 83592,
+        "sha256": "325d6f46b3950ab649fc3c26e36e8edb4432b4558841cca242f510ab51af3a3c",
+        "signature": "static V F_p86__plan__reported(V a0, V a1, V a2, V a3) {"
+      },
+      "patch": {
+        "operation": "insert-after",
+        "originalSubstring": "top:;\n",
+        "expectedMatchesInsideFunction": 1,
+        "sourceLine": 83593,
+        "relativeByte": 57,
+        "counterIncrement": null
+      },
+      "interpretation": "DR_Report argument fully computed; owned/foreign eligibility has not run.",
+      "symbol": "F_p86__plan__reported"
+    }
+  ],
+  "alternativeCandidateMarkers": [
+    {
+      "label": "parse_begin",
+      "kind": "boundary",
+      "priority": "required",
+      "sourceSymbol": "F_p86__plan",
+      "variant": "publication-or-both",
+      "function": {
+        "startByte": 2996423,
+        "endByteExclusive": 2996903,
+        "startLine": 93751,
+        "sha256": "997f74cd89fca4d3b5598b4f4039c623e4cca03f8b1266edc5eb880d1f625899",
+        "signature": "static V F_p86__plan(V a0, V a1, V a2) {"
+      },
+      "patch": {
+        "operation": "insert-after",
+        "originalSubstring": "top:;\n",
+        "expectedMatchesInsideFunction": 1,
+        "sourceLine": 93752,
+        "relativeByte": 41,
+        "counterIncrement": null
+      },
+      "interpretation": "Candidate route parser/loader begins after live Base preparation.",
+      "symbol": "F_p86__plan"
+    },
+    {
+      "label": "check_begin",
+      "kind": "boundary",
+      "priority": "required",
+      "sourceSymbol": "F_p86__plan__loaded",
+      "variant": "publication-or-both",
+      "function": {
+        "startByte": 3000571,
+        "endByteExclusive": 3001042,
+        "startLine": 93869,
+        "sha256": "f2f154791ca44a0fffdce245b4025919c6c5b46e41696b67229de15dff38556f",
+        "signature": "static V F_p86__plan__loaded(V a0, V a1) {"
+      },
+      "patch": {
+        "operation": "insert-after",
+        "originalSubstring": "top:;\n",
+        "expectedMatchesInsideFunction": 1,
+        "sourceLine": 93870,
+        "relativeByte": 43,
+        "counterIncrement": null
+      },
+      "interpretation": "Candidate route load result is materialized; checking starts after parse error guard.",
+      "symbol": "F_p86__plan__loaded"
+    }
+  ],
+  "functionHashScope": "Exact function signature through matching closing brace and one trailing newline; excludes following W_ wrapper. Function byte bounds are authoritative.",
+  "instrumenterContract": {
+    "hooks": "For each hooks row, insert p162_count(counter_id,1) AFTER exact needle scoped to function. Repeated labels (reverse ordinary/fused) must share counter_id or be explicitly summed.",
+    "markers": "markers is the four actual old-route entry snapshots; candidate alternatives are metadata only unless running publication/both. Require old-route symbols exactly once in order.",
+    "claimBoundary": "These are operations of original Bend algorithms as emitted through C02. They are not exact counts of QBE generated instructions, dispatches or events."
+  }
+}

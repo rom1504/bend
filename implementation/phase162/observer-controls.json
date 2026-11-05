@@ -1,0 +1,22 @@
+{
+  "complete": true,
+  "negative": {
+    "file": "selfhost/build/phase162/bendc-diag-unsafe02/report.json",
+    "bytes": 3883,
+    "sha256": "fa1901b56958ee56abe7da4e7f2bb428798f2cadcf7949a6b3b4bd5d2bab36af"
+  },
+  "counts": {
+    "file": "selfhost/build/phase162/bendc-diag-unsafe02/counts.json",
+    "bytes": 4490,
+    "sha256": "c5c55f5cf2aeebea5e6e5766a436cc153257e3956b9e96aa5206b9729f077fb1"
+  },
+  "checks": [
+    "Full input: both parses Done; all8761jobs attempted; checker Done; exact unsafe verdict.",
+    "Ill-typed @unsafe: both parses Done, checker not Done, no proof-report call, exact128-byte error.",
+    "Our Map/full/publication: four once-only ordered stage markers, nonzero allocations, complete exact QBE.",
+    "Publication preserves parse/report logical allocation and word counts; index-remove/constructor-scan work unchanged."
+  ],
+  "notRun": [
+    "Additional unsafe-valid and parse-error fixtures are supplied but were not executed."
+  ]
+}

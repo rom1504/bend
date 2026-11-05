@@ -1,0 +1,26 @@
+{
+  "complete": true,
+  "originalObserverPassed": false,
+  "original": {
+    "file": "selfhost/build/phase162/unsafe-control01/report.json",
+    "bytes": 3681,
+    "sha256": "7f5084364103e4c990bb059830f7da000edb2dfbb7b3a20d58398264911d4e3c"
+  },
+  "stderr": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase162/unsafe-control01/child/stderr",
+    "bytes": 128,
+    "sha256": "7d4975cb80cb616ce0e7c64484664d3dcd5610db4c39549563a019ac07fcbe3f"
+  },
+  "fixture": {
+    "file": "selfhost/tests/phase162/unsafe-type-error.bend",
+    "bytes": 48,
+    "sha256": "4cb5d7298ded1c73c3642cb9c5251505dd8d785bc73e4b89b9dcda4dd7271266"
+  },
+  "expected": "SOME PROOFS FAIL\nError:\n- expected : U32\n- observed : Bool\nLocation: main\n3 | def main() -> U32:\n4>|   True{}\n  |   ^^^^^^\n5 | \n",
+  "conclusion": "Correctly rejects ill-typed body under @unsafe. Original runner incorrectly treated common proof-status prefix as a type-error rejection; original failed receipt is unchanged.",
+  "method": {
+    "file": "experiments/phase162/tools/analyze.py",
+    "bytes": 4879,
+    "sha256": "0ee135676e1b4a8b64d16793d14cb5f54802ca01510888279a82c9dff4d2af36"
+  }
+}

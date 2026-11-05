@@ -1,6 +1,7 @@
-# Current frontier — Phase161 source/work audit; Phase156 integration pending
+# Current frontier — Phase162 frontend work/representation; Phase156 integration pending
 
-[Latest investigation](../implementation/phase161/README.md) ·
+[Latest investigation](../implementation/phase162/README.md) ·
+[Source/work audit](../implementation/phase161/README.md) ·
 [Same-source execution comparison](../implementation/phase160/README.md) ·
 [Phase153 investigation](../implementation/phase153/README.md) ·
 [Headroom metrics](../implementation/phase153/metrics.json) ·
@@ -38,7 +39,41 @@ available as the qualified parent. Use the one maintained source tree and
 Metric definitions remain in the
 [comparison guide](../docs/self_hosted/NATIVE_COMPILER_COMPARISON.md).
 
-## Highest-value next experiment
+## Phase162: controlled frontend explanation
+
+Same exact3.085MB source and75KBBase, original bendc check-only63.111s versus
+private bounded-search runtime17.153s, identical122,602-byte unsafe verdict.
+This3.679× effect changes runtime policy, not frontend algorithms. Do not treat
+our prior66.52s prepared-Base diagnostic versus17.15s as a checker-algorithm ratio.
+Counter controls confirm both complete parses,8761jobs and successful body checking;
+an ill-typed @unsafe body fails before proof reporting.
+
+Actual same-source C02 observations: checking613.60million allocations and
+4.320billion requested words versus bendc224.19million/998.16million. Existing
+Phase156 publication-only policy reduces ours to254.70million/1.708billion,
+canonicalizations370→76, with all118,227,421 output bytes unchanged. Diagnostic
+check31.543→12.344s; complete streamed C request178.990→148.379s. These are NOT
+new clean QBE gains or production qualification; prior clean native gain4.62%
+remains the relevant measured integration result. Runtime/GC changes the benefit.
+
+Source-to-generated-C trace finds a concrete representation tax: generic KTerm
+application plus child lists needs3objects/15words; typed bendc TApp needs1/4,
+given existing operands/span. Cached tags are not new allocations. This is a
+local cost, not a3.75× compiler-speed prediction. First count hot constructors
+and test a compact typed term through a complete computation, retaining spans,
+quantities, errors, ownership and exact checked outcomes; avoid conversion at
+every consumer. Whole request still allocates2.132billion objects outside its
+measured frontend, including Base and backend/output. Publication and compact
+terms do not by themselves explain the remaining whole self-compilation gap.
+
+No production changes. Two bounded audit agents, root-only guarded lane, exact
+outputs and negative observer findings preserved. See
+[operation metrics](../implementation/phase162/operation-metrics.json),
+[representation trace](phase162/representation-note.md) and
+[causal audit](phase162/causal-audit.md). Do not multiply incompatible ratios into
+a purported explanation of the advertised100× comparison.
+
+## Previous backend work frontier
 
 [Phase161](../implementation/phase161/README.md) separates source inventory from
 backend work. Fixed original Phase156 QBE executable/live Base: full3.085MB input

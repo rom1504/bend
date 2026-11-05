@@ -1,3 +1,27 @@
+# Phase162 — identical frontend input and operation census, 2026-11-05
+
+[Report](../implementation/phase162/README.md) ·
+[Metrics](../implementation/phase162/operation-metrics.json) ·
+[Design](../design/phase162/README.md) ·
+[Hypothesis](phase162/P162-001-matched-frontend.md) ·
+[Representation](phase162/representation-note.md).
+
+Same-source bendc check-only63.111→17.153s with only bounded-search runtime
+policy changed; exact unsafe verdict, successful checking explicitly observed.
+Full body/EOF/job counters reject skipped checking as an explanation.
+Our original C02 checker613.60M allocations/4.320B words; existing publication
+policy254.70M/1.708B, canonicalizations370→76; exact complete118MBQBE. Diagnostic
+checker31.543→12.344s and whole178.990→148.379s; not clean QBE/promotion metrics.
+Application representation trace: generic KTerm/list3objects15words versus typed
+TApp1object4words, existing operands/span. Local mechanism, not whole-speed claim.
+
+Independent audit caught wrong-thread TLS dump before measurements; acquired v1
+observer rejected. Original type-error classifier failed; exact error is retained
+and separately admitted; v2 observes checker failure/no report. Two bounded
+agents, one guarded lane, no production or PR changes. Source line count remains
+a weak work proxy; next census typed-node producers and compact whole-computation
+representation, while preserving publication qualification and backend audit.
+
 # Phase161 — source inventory versus architectural work, 2026-11-04
 
 [Report](../implementation/phase161/README.md) ·

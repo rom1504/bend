@@ -1,3 +1,33 @@
+# Phase166 — complete execution and backend work, 2026-11-05
+
+[Report](../implementation/phase166/README.md) ·
+[Metrics](../implementation/phase166/metrics.json) ·
+[Design](../design/phase166/README.md).
+
+Same 15,408-byte lookup/hash/equality/complete-consumer source through retained
+Phase152 QBE/C API and bounded-search bendc C: 0.54148/0.35772/0.15649s, four
+balanced runs. 1000-round screen rejected for timing resolution; 10000 accepted.
+The independent native profiler confirms 3.48× QBE/bendc; 120 captures admit 2144/
+1407/585 physical samples, zero rejects/unknowns. QBE constructor/take helpers
+46.73%, equality 5.57%. Full machine shapes and exact source identities retained.
+
+Expected-record producer with the same complete consumer: 0.28461/0.12483/0.11678s.
+This supports investigating QBE runtime call boundaries and owned lookup-result
+lifetimes separately. It changes sharing/inlining; timings are not additive
+component attribution or whole-compiler forecasts. 108 literal complete-record
+controls, four small digests and 156 native observations pass independent outputs.
+
+Three hosted backend replays match six complete prior C/QBE products. Typed-object
+counters reveal 37.56M/69.94M QBE events against 29.83M/53.41M C, but the apparent
+comparison-tuple opportunity does not transfer directly: native borrowed readers
+already eliminate it. Prepared static-body reuse is confirmed; verifier getters
+are indexed. No duplicate-cache or equality optimization promoted.
+
+Eleven guarded jobs 235.08s, all closed and archived/verified. No full compiler
+acquisition or production change; Phase152 remains qualified. Reclaimed only one
+verified archived Phase149 SSA (115.3 MiB). Next: unique-cell fastpath experiment and
+borrowed result-to-real-consumer transfer; keep native event units and semantics.
+
 # Phase165 — source capability cuts and reciprocal equality, 2026-11-05
 
 [Report](../implementation/phase165/README.md) ·

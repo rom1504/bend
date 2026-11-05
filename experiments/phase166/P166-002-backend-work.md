@@ -11,3 +11,12 @@ Do not equate static helper counts with execution, hosted object events with
 native allocations, or instrumented stage clocks with clean speed. A hypothesis
 is useful only if the counters identify a removable category of real work and
 give a small follow-up experiment with a meaningful whole-region ceiling.
+
+## Outcome
+
+Completed with exact C/QBE output gates and ordered markers. Added lexical
+constructor attribution after total counts suggested a large Tuple cost. Native
+inspection falsified transferring that hosted reconstruction count to native
+allocation. Prepared-body reuse and indexed verifier getters are confirmed
+negative results. This census does not partition the old native allocation
+residual. [Report](../../implementation/phase166/README.md).

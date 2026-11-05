@@ -10,3 +10,11 @@ from clean repeated execution; inspect the actual slow region afterwards.
 Reject a speed explanation from an unobserved result, unequal source/work,
 different semantic output, incomplete controls, insufficient timing or a
 microbenchmark that bypasses the actual lookup boundary.
+
+## Outcome
+
+Completed: full values, three native paths, bounded scaling, matched clean/profile
+lanes and an expected-record producer control. QBE/bendc3.46x on the full kernel;
+QBE helper boundaries and owned-result lifetimes remain separate leads. The
+consumer is substantial, so its counterfactual and limits are required context.
+[Report](../../implementation/phase166/README.md).

@@ -1,0 +1,624 @@
+{
+  "schema": "bend-native-profile-run-v1",
+  "complete": true,
+  "started": 1793892972.6874475,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-profile-plan01/recipe.json",
+      "bytes": 2595,
+      "sha256": "f25b557137f0ef1c391a24b3998c24db8584b2afdf01dda2e768b57465c39cd7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-products02/report.json",
+      "bytes": 16107,
+      "sha256": "6e03f5c631680bdd2289c1ad97bf904ff94e806b3d0000c0ebc4b1051506b18b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase166/lookup-profile.py",
+      "bytes": 566,
+      "sha256": "170cbe875446a81a8cf8c57c9b2daca6ab04d012c9e6c6aae2e9b2bac6d9aaff"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase159/thread-sampler01/report.json",
+      "bytes": 2239,
+      "sha256": "9f75ac32405d6b116dee173f312300e981c2935db984245c96e078cb0a61768b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-products02/qbe-machine/program",
+      "bytes": 254472,
+      "sha256": "0c6e8005d54a32991f226331e0a440dfed3120f199adacbe2e7985ac9a3d6c53"
+    },
+    {
+      "kind": "exact",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-profile-plan01/expected.stdout",
+      "bytes": 11,
+      "sha256": "13b0825189cbddcc62a8345313f1066247a3e9aa466b13011a68c457360e8182"
+    },
+    {
+      "kind": "exact",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-profile-plan01/expected.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-source02/compiler.bend",
+      "bytes": 15408,
+      "sha256": "4627d3b8c7b8291277574a1fc68bdf6afc972be1e32f8d1d8620c62eb4bdf181"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-products02/mature-c",
+      "bytes": 114120,
+      "sha256": "5761df1b8c022270fea6a03df50d4fb252e916022b81fe363baf4771706cbfa9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-products02/bendc-program",
+      "bytes": 81240,
+      "sha256": "ec7947a1b1ed0e1c69908610a95ed1186f8448d2e8916c5fe1a9cb0f51793598"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase159/thread-sampler01/sampler.so",
+      "bytes": 18456,
+      "sha256": "45b41488737177170352b164d62af88d1cee8a3c0d9dee4aa79a0cf5431edf54"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-profile-plan01/manifest.json",
+      "bytes": 6242,
+      "sha256": "e71034a3743d40fc6c153f9aba81fad995920a25b8f3ad248de32569ee8f1cfc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/run.py",
+      "bytes": 15855,
+      "sha256": "910e370556adc64f5a7351852e24201082f30efab4fe7e545e08baede60c6db9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/analyze.py",
+      "bytes": 16552,
+      "sha256": "16e92d883263577177d50ae3cc1f381ea6cb97b77be50a4157999102047a6fdc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/elf.py",
+      "bytes": 3141,
+      "sha256": "a18cee1be520527d98b86910d2c9d075a864ccf34675d8bdfac3cb157346485a"
+    },
+    {
+      "file": "/usr/bin/python3.9",
+      "bytes": 5451288,
+      "sha256": "ca7655083b581ffe36c72dcb445857704db533ca39b03f79c97d8d0ef3bef9af"
+    }
+  ],
+  "cpuAffinity": [
+    3
+  ],
+  "rows": [
+    {
+      "workload": "lookup10000",
+      "variant": "qbe",
+      "mode": "clean",
+      "round": 1,
+      "periodUs": null,
+      "diagnosticRuntime": false,
+      "timingKind": "clean",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-products02/qbe-machine/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "argv0": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-products02/qbe-machine/program",
+      "returncode": 0,
+      "timedOut": false,
+      "wallSeconds": 0.5359791736118495,
+      "userSeconds": 0.5345059999999999,
+      "systemSeconds": 0.0,
+      "cpuSeconds": 0.5345059999999999,
+      "peakRssKiB": 9448,
+      "minorFaults": 117,
+      "majorFaults": 0,
+      "voluntarySwitches": 1,
+      "involuntarySwitches": 2,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-clean01/000-clean-lookup10000-qbe/stdout",
+        "bytes": 11,
+        "sha256": "13b0825189cbddcc62a8345313f1066247a3e9aa466b13011a68c457360e8182"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-clean01/000-clean-lookup10000-qbe/stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "correct": true
+    },
+    {
+      "workload": "lookup10000",
+      "variant": "c",
+      "mode": "clean",
+      "round": 1,
+      "periodUs": null,
+      "diagnosticRuntime": false,
+      "timingKind": "clean",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-products02/mature-c",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "argv0": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-products02/mature-c",
+      "returncode": 0,
+      "timedOut": false,
+      "wallSeconds": 0.3566380301490426,
+      "userSeconds": 0.35176799999999997,
+      "systemSeconds": 0.003997,
+      "cpuSeconds": 0.35576499999999994,
+      "peakRssKiB": 9516,
+      "minorFaults": 116,
+      "majorFaults": 0,
+      "voluntarySwitches": 1,
+      "involuntarySwitches": 4,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-clean01/001-clean-lookup10000-c/stdout",
+        "bytes": 11,
+        "sha256": "13b0825189cbddcc62a8345313f1066247a3e9aa466b13011a68c457360e8182"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-clean01/001-clean-lookup10000-c/stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "correct": true
+    },
+    {
+      "workload": "lookup10000",
+      "variant": "bendc",
+      "mode": "clean",
+      "round": 1,
+      "periodUs": null,
+      "diagnosticRuntime": false,
+      "timingKind": "clean",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-products02/bendc-program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "argv0": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-products02/bendc-program",
+      "returncode": 0,
+      "timedOut": false,
+      "wallSeconds": 0.1543613630346954,
+      "userSeconds": 0.149549,
+      "systemSeconds": 0.003935,
+      "cpuSeconds": 0.15348399999999998,
+      "peakRssKiB": 29476,
+      "minorFaults": 142,
+      "majorFaults": 0,
+      "voluntarySwitches": 2,
+      "involuntarySwitches": 2,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-clean01/002-clean-lookup10000-bendc/stdout",
+        "bytes": 11,
+        "sha256": "13b0825189cbddcc62a8345313f1066247a3e9aa466b13011a68c457360e8182"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-clean01/002-clean-lookup10000-bendc/stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "correct": true
+    },
+    {
+      "workload": "lookup10000",
+      "variant": "c",
+      "mode": "clean",
+      "round": 2,
+      "periodUs": null,
+      "diagnosticRuntime": false,
+      "timingKind": "clean",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-products02/mature-c",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "argv0": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-products02/mature-c",
+      "returncode": 0,
+      "timedOut": false,
+      "wallSeconds": 0.356794704683125,
+      "userSeconds": 0.35590099999999997,
+      "systemSeconds": 0.0,
+      "cpuSeconds": 0.35590099999999997,
+      "peakRssKiB": 9540,
+      "minorFaults": 116,
+      "majorFaults": 0,
+      "voluntarySwitches": 1,
+      "involuntarySwitches": 2,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-clean01/003-clean-lookup10000-c/stdout",
+        "bytes": 11,
+        "sha256": "13b0825189cbddcc62a8345313f1066247a3e9aa466b13011a68c457360e8182"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-clean01/003-clean-lookup10000-c/stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "correct": true
+    },
+    {
+      "workload": "lookup10000",
+      "variant": "bendc",
+      "mode": "clean",
+      "round": 2,
+      "periodUs": null,
+      "diagnosticRuntime": false,
+      "timingKind": "clean",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-products02/bendc-program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "argv0": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-products02/bendc-program",
+      "returncode": 0,
+      "timedOut": false,
+      "wallSeconds": 0.15369864599779248,
+      "userSeconds": 0.148755,
+      "systemSeconds": 0.00402,
+      "cpuSeconds": 0.152775,
+      "peakRssKiB": 29508,
+      "minorFaults": 145,
+      "majorFaults": 0,
+      "voluntarySwitches": 2,
+      "involuntarySwitches": 2,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-clean01/004-clean-lookup10000-bendc/stdout",
+        "bytes": 11,
+        "sha256": "13b0825189cbddcc62a8345313f1066247a3e9aa466b13011a68c457360e8182"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-clean01/004-clean-lookup10000-bendc/stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "correct": true
+    },
+    {
+      "workload": "lookup10000",
+      "variant": "qbe",
+      "mode": "clean",
+      "round": 2,
+      "periodUs": null,
+      "diagnosticRuntime": false,
+      "timingKind": "clean",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-products02/qbe-machine/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "argv0": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-products02/qbe-machine/program",
+      "returncode": 0,
+      "timedOut": false,
+      "wallSeconds": 0.5386720490641892,
+      "userSeconds": 0.5377379999999999,
+      "systemSeconds": 0.0,
+      "cpuSeconds": 0.5377379999999999,
+      "peakRssKiB": 9560,
+      "minorFaults": 123,
+      "majorFaults": 0,
+      "voluntarySwitches": 1,
+      "involuntarySwitches": 5,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-clean01/005-clean-lookup10000-qbe/stdout",
+        "bytes": 11,
+        "sha256": "13b0825189cbddcc62a8345313f1066247a3e9aa466b13011a68c457360e8182"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-clean01/005-clean-lookup10000-qbe/stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "correct": true
+    },
+    {
+      "workload": "lookup10000",
+      "variant": "bendc",
+      "mode": "clean",
+      "round": 3,
+      "periodUs": null,
+      "diagnosticRuntime": false,
+      "timingKind": "clean",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-products02/bendc-program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "argv0": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-products02/bendc-program",
+      "returncode": 0,
+      "timedOut": false,
+      "wallSeconds": 0.15539560792967677,
+      "userSeconds": 0.146555,
+      "systemSeconds": 0.007921,
+      "cpuSeconds": 0.154476,
+      "peakRssKiB": 29472,
+      "minorFaults": 143,
+      "majorFaults": 0,
+      "voluntarySwitches": 2,
+      "involuntarySwitches": 2,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-clean01/006-clean-lookup10000-bendc/stdout",
+        "bytes": 11,
+        "sha256": "13b0825189cbddcc62a8345313f1066247a3e9aa466b13011a68c457360e8182"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-clean01/006-clean-lookup10000-bendc/stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "correct": true
+    },
+    {
+      "workload": "lookup10000",
+      "variant": "qbe",
+      "mode": "clean",
+      "round": 3,
+      "periodUs": null,
+      "diagnosticRuntime": false,
+      "timingKind": "clean",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-products02/qbe-machine/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "argv0": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-products02/qbe-machine/program",
+      "returncode": 0,
+      "timedOut": false,
+      "wallSeconds": 0.5369085539132357,
+      "userSeconds": 0.5359999999999999,
+      "systemSeconds": 0.0,
+      "cpuSeconds": 0.5359999999999999,
+      "peakRssKiB": 9592,
+      "minorFaults": 125,
+      "majorFaults": 0,
+      "voluntarySwitches": 1,
+      "involuntarySwitches": 4,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-clean01/007-clean-lookup10000-qbe/stdout",
+        "bytes": 11,
+        "sha256": "13b0825189cbddcc62a8345313f1066247a3e9aa466b13011a68c457360e8182"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-clean01/007-clean-lookup10000-qbe/stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "correct": true
+    },
+    {
+      "workload": "lookup10000",
+      "variant": "c",
+      "mode": "clean",
+      "round": 3,
+      "periodUs": null,
+      "diagnosticRuntime": false,
+      "timingKind": "clean",
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-products02/mature-c",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "argv0": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-products02/mature-c",
+      "returncode": 0,
+      "timedOut": false,
+      "wallSeconds": 0.3540366981178522,
+      "userSeconds": 0.353149,
+      "systemSeconds": 0.0,
+      "cpuSeconds": 0.353149,
+      "peakRssKiB": 9604,
+      "minorFaults": 116,
+      "majorFaults": 0,
+      "voluntarySwitches": 1,
+      "involuntarySwitches": 3,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-clean01/008-clean-lookup10000-c/stdout",
+        "bytes": 11,
+        "sha256": "13b0825189cbddcc62a8345313f1066247a3e9aa466b13011a68c457360e8182"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-clean01/008-clean-lookup10000-c/stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "correct": true
+    }
+  ],
+  "methodSnapshots": [
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/run.py",
+        "bytes": 15855,
+        "sha256": "910e370556adc64f5a7351852e24201082f30efab4fe7e545e08baede60c6db9"
+      },
+      "snapshot": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-clean01/methods/910e370556adc64f5a7351852e24201082f30efab4fe7e545e08baede60c6db9-run.py",
+        "bytes": 15855,
+        "sha256": "910e370556adc64f5a7351852e24201082f30efab4fe7e545e08baede60c6db9"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/analyze.py",
+        "bytes": 16552,
+        "sha256": "16e92d883263577177d50ae3cc1f381ea6cb97b77be50a4157999102047a6fdc"
+      },
+      "snapshot": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-clean01/methods/16e92d883263577177d50ae3cc1f381ea6cb97b77be50a4157999102047a6fdc-analyze.py",
+        "bytes": 16552,
+        "sha256": "16e92d883263577177d50ae3cc1f381ea6cb97b77be50a4157999102047a6fdc"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/elf.py",
+        "bytes": 3141,
+        "sha256": "a18cee1be520527d98b86910d2c9d075a864ccf34675d8bdfac3cb157346485a"
+      },
+      "snapshot": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-clean01/methods/a18cee1be520527d98b86910d2c9d075a864ccf34675d8bdfac3cb157346485a-elf.py",
+        "bytes": 3141,
+        "sha256": "a18cee1be520527d98b86910d2c9d075a864ccf34675d8bdfac3cb157346485a"
+      }
+    }
+  ],
+  "scope": "Same exact lookup10000 products; three-runtime diagnostic physical samples with BEND_RC=0 BEND_NO_FREE=1 BEND_AUTO_PAR=0 BANGS=0, default unboxing. Fresh processes and independent output per capture. Pool only accepted quality gates.",
+  "modes": [
+    "clean"
+  ],
+  "cleanRounds": 3,
+  "samplePeriodsUs": [
+    8000,
+    13000
+  ],
+  "timing": "Complete child process; diagnostic sampling times are excluded from clean metrics.",
+  "summary": {
+    "lookup10000": {
+      "bendc": {
+        "cleanRuns": 3,
+        "clean": {
+          "wallSeconds": {
+            "samples": [
+              0.1543613630346954,
+              0.15369864599779248,
+              0.15539560792967677
+            ],
+            "median": 0.1543613630346954,
+            "minimum": 0.15369864599779248,
+            "maximum": 0.15539560792967677
+          },
+          "cpuSeconds": {
+            "samples": [
+              0.15348399999999998,
+              0.152775,
+              0.154476
+            ],
+            "median": 0.15348399999999998,
+            "minimum": 0.152775,
+            "maximum": 0.154476
+          },
+          "peakRssKiB": {
+            "samples": [
+              29476,
+              29508,
+              29472
+            ],
+            "median": 29476,
+            "minimum": 29472,
+            "maximum": 29508
+          }
+        },
+        "instrumentedUnsampledRuns": 0,
+        "instrumentedUnsampledWallSeconds": [],
+        "sampledRuns": 0,
+        "usableCaptures": 0,
+        "diagnosticWallSeconds": [],
+        "diagnosticOverCleanWallRatio": null
+      },
+      "c": {
+        "cleanRuns": 3,
+        "clean": {
+          "wallSeconds": {
+            "samples": [
+              0.3566380301490426,
+              0.356794704683125,
+              0.3540366981178522
+            ],
+            "median": 0.3566380301490426,
+            "minimum": 0.3540366981178522,
+            "maximum": 0.356794704683125
+          },
+          "cpuSeconds": {
+            "samples": [
+              0.35576499999999994,
+              0.35590099999999997,
+              0.353149
+            ],
+            "median": 0.35576499999999994,
+            "minimum": 0.353149,
+            "maximum": 0.35590099999999997
+          },
+          "peakRssKiB": {
+            "samples": [
+              9516,
+              9540,
+              9604
+            ],
+            "median": 9540,
+            "minimum": 9516,
+            "maximum": 9604
+          }
+        },
+        "instrumentedUnsampledRuns": 0,
+        "instrumentedUnsampledWallSeconds": [],
+        "sampledRuns": 0,
+        "usableCaptures": 0,
+        "diagnosticWallSeconds": [],
+        "diagnosticOverCleanWallRatio": null
+      },
+      "qbe": {
+        "cleanRuns": 3,
+        "clean": {
+          "wallSeconds": {
+            "samples": [
+              0.5359791736118495,
+              0.5386720490641892,
+              0.5369085539132357
+            ],
+            "median": 0.5369085539132357,
+            "minimum": 0.5359791736118495,
+            "maximum": 0.5386720490641892
+          },
+          "cpuSeconds": {
+            "samples": [
+              0.5345059999999999,
+              0.5377379999999999,
+              0.5359999999999999
+            ],
+            "median": 0.5359999999999999,
+            "minimum": 0.5345059999999999,
+            "maximum": 0.5377379999999999
+          },
+          "peakRssKiB": {
+            "samples": [
+              9448,
+              9560,
+              9592
+            ],
+            "median": 9560,
+            "minimum": 9448,
+            "maximum": 9592
+          }
+        },
+        "instrumentedUnsampledRuns": 0,
+        "instrumentedUnsampledWallSeconds": [],
+        "sampledRuns": 0,
+        "usableCaptures": 0,
+        "diagnosticWallSeconds": [],
+        "diagnosticOverCleanWallRatio": null
+      }
+    }
+  },
+  "passed": true,
+  "profilesUsable": true,
+  "changedInputs": [],
+  "finished": 1793892976.0318549
+}

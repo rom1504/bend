@@ -1,0 +1,53 @@
+{
+  "kind": "phase166-complete-lookup-source",
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "selfhost/tests/phase163/direct-workloads.bend",
+      "bytes": 4225,
+      "sha256": "c8a7813540a897d7bdf64ae84193ff4328509649fe1ab08d50f76a3b558d9e1f"
+    },
+    {
+      "file": "selfhost/tests/phase163/direct-runtime.bend",
+      "bytes": 4495,
+      "sha256": "2df58a5472b0f859d3972466b153715a3a75ffaab9a080cd8ebc2328c7e1c235"
+    },
+    {
+      "file": "selfhost/tests/phase166/lookup-workload.bend",
+      "bytes": 1777,
+      "sha256": "843795fce87aaf78d9077c3e7ed44086c7c25e7927dd69965a3cdce4c06c957b"
+    },
+    {
+      "file": "selfhost/tests/phase166/lookup-main.bend",
+      "bytes": 37,
+      "sha256": "3f7dd260306acee988b060c93043d8e54d21231a5cd80226494a1f2d4fb1698b"
+    },
+    {
+      "file": "selfhost/tests/phase166/lookup-10000-main.bend",
+      "bytes": 38,
+      "sha256": "de9aea2684953386ce735aebd2cd09187942035bb262b927d2cb8597119689b9"
+    },
+    {
+      "file": "experiments/phase166/lookup-oracle.py",
+      "bytes": 2764,
+      "sha256": "05d2895f9c3964e4993b8bf4d7cb3b460cfa1a23c8e00bc0e53ff4112f570216"
+    }
+  ],
+  "exports": [
+    "p166l_values",
+    "p166l_expected_values",
+    "p166l_run"
+  ],
+  "roundResults": 18,
+  "expectedStdout": {
+    "0": "2166136261\n",
+    "1": "953560951\n",
+    "2": "2065683247\n",
+    "7": "2168612185\n",
+    "100": "1570147109\n",
+    "1000": "2231325349\n",
+    "10000": "3279346725\n"
+  },
+  "scope": "Complete round-local producer/query/full-field consumer. Independent Python literal-result oracle; no claimed source checking or native qualification."
+}

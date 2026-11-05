@@ -1,0 +1,67 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": true,
+  "started": 1793892392.9870892,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "3",
+    "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/backend-census03/census-replay.mjs",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/backend-census03/map-plan.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/backend-census03/map-replay"
+  ],
+  "returncode": 0,
+  "rssLimitBytes": 3221225472,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 509857792,
+  "minimumAvailableBytes": 24585314304,
+  "diskBudgetBytes": 25165824,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 5461393408,
+  "minimumDiskFreeBytes": 5458984960,
+  "peakRunAllocatedBytes": 2043904,
+  "peakFilesystemDecreaseBytes": 2408448,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/backend-census03/map-replay"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "3",
+    "fileLimitBytes": 67108864,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+        "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b",
+        "bytes": 88979072
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/backend-census03/census-replay.mjs",
+        "sha256": "50232ab7c5b5dabfbf76bd9b23f4bca87517ea83df45cfd199a2d3a4ca44442c",
+        "bytes": 7116
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/backend-census03/map-plan.json",
+        "sha256": "8d2e6d840e01f6d2e0cf2054e4ce1f04f7f5878eef32e263478fed19e423edb5",
+        "bytes": 11982
+      }
+    ]
+  },
+  "wallSeconds": 30.78597570816055,
+  "finished": 1793892423.7729433
+}

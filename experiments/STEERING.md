@@ -1,4 +1,35 @@
-# Current frontier — Phase165 source bisection; Phase152 remains qualified
+# Current frontier — Phase166 execution boundaries; Phase152 remains qualified
+
+[Report](../implementation/phase166/README.md) ·
+[Metrics and receipts](../implementation/phase166/metrics.json) ·
+[Native profiles](../implementation/phase166/evidence/lookup-profile-summary02.md).
+
+Identical compiler-derived lookup/complete-consumer source runs in 0.54148s QBE,
+0.35772s mature C and 0.15649s bendc C, four balanced runs at 10,000 rounds. Separate
+clean/profile lanes confirm the gap. This is a tiny-book kernel, not compiler
+throughput. 120 output-checked sampled captures pass pooled quality gates. QBE's
+four constructor/take helpers account for 46.73% physical CPU; equality 5.57%.
+
+Replacing lookup/index construction with independently specified complete records,
+retaining the digest consumer, gives 0.28461/0.12483/0.11678s. Mature C approaches
+bendc in this control; QBE still has a 2.44× gap. Sharing, reachability and inlining
+change, so subtraction is not exclusive lookup time. Next test QBE unique-cell
+constructor/take fastpaths with exact fallbacks, and a real compiler consumer
+that preserves the borrowed lookup result through its use. Keep stack/alias gates.
+
+Hosted backend census matches six complete C/QBE products and preserves ordered
+stage admission. It exposes 19.27M Map Tuple events in comparisons, but native
+borrowed comparison already eliminates per-character reconstruction. Do not sell
+hosted events as native allocation savings. Prepared body reuse and indexed
+verifier getters already work; another general cache/linear-lookup rewrite is
+unsupported. The 2.132B native allocation residual remains unattributed.
+
+Eleven guarded jobs used 235.08s. 108 complete raw record controls and 156 native
+output checks pass; no production change, full acquisition or new cold-build gain.
+All new runs are archived/verified. One old archived Phase149 SSA reclaimed 115.3 MiB;
+qualified images remain hot. Read the report's fixture and runtime-policy limits.
+
+# Previous frontier — Phase165 source bisection; Phase152 remains qualified
 
 [Latest report](../implementation/phase165/README.md) ·
 [Causal metrics](../implementation/phase165/metrics.json) ·

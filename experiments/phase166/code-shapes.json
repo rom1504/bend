@@ -1,0 +1,508 @@
+{
+  "kind": "phase166-static-machine-shapes",
+  "targetsRun": false,
+  "inputs": {
+    "qbe": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-products02/qbe-machine/program",
+      "bytes": 254472,
+      "sha256": "0c6e8005d54a32991f226331e0a440dfed3120f199adacbe2e7985ac9a3d6c53"
+    },
+    "c": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-products02/mature-c",
+      "bytes": 114120,
+      "sha256": "5761df1b8c022270fea6a03df50d4fb252e916022b81fe363baf4771706cbfa9"
+    },
+    "bendc": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-products02/bendc-program",
+      "bytes": 81240,
+      "sha256": "ec7947a1b1ed0e1c69908610a95ed1186f8448d2e8916c5fe1a9cb0f51793598"
+    }
+  },
+  "methodSha256": "222477e6191ea65b59adb3d73638942d94a66afc680653384b3400f20ca14f51",
+  "roles": {
+    "qbe": [
+      {
+        "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_",
+        "decoded": "p113d_FID_$direct.index_find",
+        "bytes": 1628,
+        "instructions": 409,
+        "callSites": {
+          "p125_rt_take4": 1,
+          "p111_rt_sink": 29,
+          "p125_rt_ctor2": 2,
+          "p113d_FID_$direct.index_bucket": 3,
+          "p111_rt_fail": 4,
+          "p125_rt_take2": 3,
+          "p111_rt_take": 1,
+          "p111_rt_keep": 3,
+          "p113d_FID_$direct.p88_string_eq_go": 1
+        },
+        "stackSubtractions": [
+          "$0x888,%rsp"
+        ],
+        "conditionalBranches": 28
+      },
+      {
+        "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_104_97_115_104_",
+        "decoded": "p113d_FID_$direct.index_hash",
+        "bytes": 98,
+        "instructions": 33,
+        "callSites": {
+          "p118_rt_borrow_scalar_safe": 1,
+          "p113d_FID_$p128borrow.owned.index_hash": 1,
+          "p113d_FID_$p118borrow.read.index_hash": 1,
+          "p111_rt_sink": 1
+        },
+        "stackSubtractions": [
+          "$0x8,%rsp"
+        ],
+        "conditionalBranches": 1
+      },
+      {
+        "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_98_117_99_107_101_116_",
+        "decoded": "p113d_FID_$direct.index_bucket",
+        "bytes": 469,
+        "instructions": 131,
+        "callSites": {
+          "p125_rt_take2": 1,
+          "p111_rt_keep": 4,
+          "p113d_FID_$direct.dn": 1,
+          "p113d_FID_$direct.p88_string_eq_go": 1,
+          "p111_rt_sink": 8,
+          "p111_rt_fail": 2
+        },
+        "stackSubtractions": [
+          "$0x818,%rsp"
+        ],
+        "conditionalBranches": 4
+      },
+      {
+        "symbol": "p113d_FID_36_100_105_114_101_99_116_46_108_111_111_107_117_112_",
+        "decoded": "p113d_FID_$direct.lookup",
+        "bytes": 760,
+        "instructions": 206,
+        "callSites": {
+          "p125_rt_take2": 2,
+          "p111_rt_keep": 4,
+          "p113d_FID_$direct.p137q_is_cache": 1,
+          "p113d_FID_$direct.p137q_name_eq": 1,
+          "p111_rt_sink": 11,
+          "p111_rt_fail": 4,
+          "p113d_FID_$direct.dc": 1,
+          "p113d_FID_$direct.index_hash": 1,
+          "p113d_FID_$direct.index_find": 1
+        },
+        "stackSubtractions": [
+          "$0x810,%rsp"
+        ],
+        "conditionalBranches": 11
+      },
+      {
+        "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_54_51_114_95_115_99_97_110_",
+        "decoded": "p113d_FID_$direct.p163r_scan",
+        "bytes": 10154,
+        "instructions": 2271,
+        "callSites": {
+          "p125_rt_take2": 6,
+          "p125_rt_take1": 7,
+          "p111_rt_take": 4,
+          "p125_rt_ctor1": 44,
+          "p125_rt_ctor2": 47,
+          "p113d_FID_$direct.p163r_mix": 7,
+          "p113d_FID_$direct.p163r_mix2": 8,
+          "p111_rt_fail": 8,
+          "p113d_FID_$direct.Bool.to_u32": 3,
+          "p125_rt_take4": 1,
+          "p111_rt_special_take": 1
+        },
+        "stackSubtractions": [
+          "$0xa48,%rsp"
+        ],
+        "conditionalBranches": 89
+      },
+      {
+        "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_54_54_108_95_103_111_",
+        "decoded": "p113d_FID_$direct.p166l_go",
+        "bytes": 35,
+        "instructions": 11,
+        "callSites": {
+          "p113d_FID_$p126scc.33": 1
+        },
+        "stackSubtractions": [],
+        "conditionalBranches": 0
+      },
+      {
+        "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_54_54_108_95_99_111_110_116_105_110_117_101_",
+        "decoded": "p113d_FID_$direct.p166l_continue",
+        "bytes": 32,
+        "instructions": 11,
+        "callSites": {
+          "p113d_FID_$p126scc.33": 1
+        },
+        "stackSubtractions": [],
+        "conditionalBranches": 0
+      },
+      {
+        "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_",
+        "decoded": "p113d_FID_$direct.p88_string_eq",
+        "bytes": 113,
+        "instructions": 38,
+        "callSites": {
+          "p118_rt_borrow_scalar_safe": 1,
+          "p113d_FID_$p128borrow.owned.p88_string_eq": 1,
+          "p113d_FID_$p118borrow.read.p88_string_eq": 1,
+          "p111_rt_sink": 2
+        },
+        "stackSubtractions": [
+          "$0x8,%rsp"
+        ],
+        "conditionalBranches": 1
+      },
+      {
+        "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+        "decoded": "p113d_FID_$direct.p88_string_eq_go",
+        "bytes": 120,
+        "instructions": 41,
+        "callSites": {
+          "p118_rt_borrow_scalar_safe": 1,
+          "p113d_FID_$p128borrow.owned.p88_string_eq_go": 1,
+          "p113d_FID_$p118borrow.read.p88_string_eq_go": 1,
+          "p111_rt_sink": 2
+        },
+        "stackSubtractions": [],
+        "conditionalBranches": 1
+      },
+      {
+        "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_105_110_100_101_120_95_104_97_115_104_",
+        "decoded": "p113d_FID_$p118borrow.read.index_hash",
+        "bytes": 274,
+        "instructions": 71,
+        "callSites": {
+          "p118_rt_borrow_fields": 1,
+          "p111_rt_fail": 1
+        },
+        "stackSubtractions": [
+          "$0x800,%rsp"
+        ],
+        "conditionalBranches": 5
+      },
+      {
+        "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_",
+        "decoded": "p113d_FID_$p118borrow.read.p88_string_eq",
+        "bytes": 107,
+        "instructions": 34,
+        "callSites": {
+          "p111_rt_special_ctor": 1,
+          "p113d_FID_$p118borrow.read.p88_string_eq_go": 1,
+          "p113d_FID_$p118borrow.read.p98_eq_finish": 1
+        },
+        "stackSubtractions": [
+          "$0x808,%rsp"
+        ],
+        "conditionalBranches": 0
+      },
+      {
+        "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+        "decoded": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+        "bytes": 902,
+        "instructions": 220,
+        "callSites": {
+          "p118_rt_borrow_fields": 3,
+          "p111_rt_fail": 4,
+          "p111_rt_special_ctor": 3
+        },
+        "stackSubtractions": [
+          "$0x828,%rsp"
+        ],
+        "conditionalBranches": 20
+      },
+      {
+        "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_105_110_100_101_120_95_104_97_115_104_",
+        "decoded": "p113d_FID_$p128borrow.owned.index_hash",
+        "bytes": 188,
+        "instructions": 53,
+        "callSites": {
+          "p125_rt_take2": 1,
+          "p111_rt_special_take": 1,
+          "p111_rt_fail": 1
+        },
+        "stackSubtractions": [
+          "$0x818,%rsp"
+        ],
+        "conditionalBranches": 2
+      },
+      {
+        "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_",
+        "decoded": "p113d_FID_$p128borrow.owned.p88_string_eq",
+        "bytes": 111,
+        "instructions": 37,
+        "callSites": {
+          "p111_rt_keep": 2,
+          "p113d_FID_$direct.p88_string_eq_go": 1,
+          "p111_rt_sink": 2
+        },
+        "stackSubtractions": [
+          "$0x8,%rsp"
+        ],
+        "conditionalBranches": 0
+      },
+      {
+        "symbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+        "decoded": "p113d_FID_$p128borrow.owned.p88_string_eq_go",
+        "bytes": 617,
+        "instructions": 154,
+        "callSites": {
+          "p125_rt_take2": 3,
+          "p111_rt_special_take": 2,
+          "p111_rt_sink": 7,
+          "p111_rt_fail": 4
+        },
+        "stackSubtractions": [
+          "$0x810,%rsp"
+        ],
+        "conditionalBranches": 11
+      }
+    ],
+    "c": [
+      {
+        "symbol": "NF_FID_105_110_100_101_120_95_102_105_110_100_",
+        "decoded": "NF_FID_index_find",
+        "bytes": 4221,
+        "instructions": 968,
+        "callSites": {
+          "term_drop": 18,
+          "NF_FID_p88_string_eq": 1,
+          "rfc_wrap": 4,
+          "heap_hand": 10,
+          "span_fade": 5,
+          "NF_FID_index_bucket": 3,
+          "heap_alloc_miss": 2,
+          "err_fail": 2
+        },
+        "stackSubtractions": [
+          "$0x78,%rsp"
+        ],
+        "conditionalBranches": 134
+      },
+      {
+        "symbol": "NF_FID_105_110_100_101_120_95_98_117_99_107_101_116_",
+        "decoded": "NF_FID_index_bucket",
+        "bytes": 2905,
+        "instructions": 690,
+        "callSites": {
+          "rfc_wrap": 2,
+          "heap_hand": 8,
+          "term_drop": 14,
+          "NF_FID_p88_string_eq": 1,
+          "span_fade": 4,
+          "err_fail": 2
+        },
+        "stackSubtractions": [
+          "$0x58,%rsp"
+        ],
+        "conditionalBranches": 85
+      },
+      {
+        "symbol": "NF_FID_108_111_111_107_117_112_",
+        "decoded": "NF_FID_lookup",
+        "bytes": 1376,
+        "instructions": 340,
+        "callSites": {
+          "rfc_wrap": 3,
+          "NF_FID_p137q_is_cache": 1,
+          "NF_FID_p137q_name_eq": 1,
+          "term_drop": 6,
+          "heap_hand": 2,
+          "span_fade": 1,
+          "NF_FID_index_lookup": 1,
+          "err_fail": 2
+        },
+        "stackSubtractions": [
+          "$0x28,%rsp"
+        ],
+        "conditionalBranches": 40
+      },
+      {
+        "symbol": "NF_FID_112_49_54_51_114_95_115_99_97_110_",
+        "decoded": "NF_FID_p163r_scan",
+        "bytes": 21356,
+        "instructions": 4660,
+        "callSites": {
+          "heap_alloc_miss": 73,
+          "span_fade": 18,
+          "heap_hand": 36,
+          "rfc_wrap": 68,
+          "term_drop": 2,
+          "err_fail": 1
+        },
+        "stackSubtractions": [
+          "$0x78,%rsp"
+        ],
+        "conditionalBranches": 604
+      },
+      {
+        "symbol": "NF_FID_112_56_56_95_115_116_114_105_110_103_95_101_113_",
+        "decoded": "NF_FID_p88_string_eq",
+        "bytes": 2969,
+        "instructions": 743,
+        "callSites": {
+          "rfc_wrap": 2,
+          "heap_hand": 6,
+          "span_fade": 3,
+          "term_drop": 13,
+          "err_fail": 2
+        },
+        "stackSubtractions": [
+          "$0x28,%rsp"
+        ],
+        "conditionalBranches": 96
+      },
+      {
+        "symbol": "WL_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_104_97_115_104_",
+        "decoded": "WL_FID_$direct.index_hash",
+        "bytes": 674,
+        "instructions": 165,
+        "callSites": {
+          "span_fade": 1,
+          "heap_hand": 2,
+          "term_drop": 2,
+          "err_fail": 1
+        },
+        "stackSubtractions": [],
+        "conditionalBranches": 27
+      },
+      {
+        "symbol": "WL_FID_36_100_105_114_101_99_116_46_112_49_54_54_108_95_103_111_",
+        "decoded": "WL_FID_$direct.p166l_go",
+        "bytes": 390,
+        "instructions": 98,
+        "callSites": {
+          "NF_FID_p166l_values": 1,
+          "NF_FID_p163r_scan": 1,
+          "heap_alloc_miss": 2,
+          "rfc_wrap": 1
+        },
+        "stackSubtractions": [
+          "$0x20,%rsp"
+        ],
+        "conditionalBranches": 11
+      },
+      {
+        "symbol": "WL_FID_36_100_105_114_101_99_116_46_112_49_54_54_108_95_99_111_110_116_105_110_117_101_",
+        "decoded": "WL_FID_$direct.p166l_continue",
+        "bytes": 2103,
+        "instructions": 506,
+        "callSites": {
+          "term_drop": 9,
+          "heap_hand": 6,
+          "span_fade": 3
+        },
+        "stackSubtractions": [
+          "$0x30,%rsp"
+        ],
+        "conditionalBranches": 56
+      },
+      {
+        "symbol": "WL_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+        "decoded": "WL_FID_$direct.p88_string_eq_go",
+        "bytes": 2263,
+        "instructions": 572,
+        "callSites": {
+          "heap_hand": 6,
+          "span_fade": 3,
+          "term_drop": 10,
+          "err_fail": 1
+        },
+        "stackSubtractions": [
+          "$0x20,%rsp"
+        ],
+        "conditionalBranches": 84
+      }
+    ],
+    "bendc": [
+      {
+        "symbol": "F_index__bucket",
+        "decoded": "F_index__bucket",
+        "bytes": 702,
+        "instructions": 164,
+        "callSites": {
+          "str_cache": 1,
+          "F_p88__string__eq__go": 1,
+          "gc_refill": 2,
+          "bend_fail": 1
+        },
+        "stackSubtractions": [],
+        "conditionalBranches": 31
+      },
+      {
+        "symbol": "F_index__find",
+        "decoded": "F_index__find",
+        "bytes": 1223,
+        "instructions": 261,
+        "callSites": {
+          "str_cache": 1,
+          "F_p88__string__eq__go": 1,
+          "gc_refill": 4,
+          "bend_fail": 1
+        },
+        "stackSubtractions": [
+          "$0x10,%rsp"
+        ],
+        "conditionalBranches": 43
+      },
+      {
+        "symbol": "F_lookup",
+        "decoded": "F_lookup",
+        "bytes": 730,
+        "instructions": 161,
+        "callSites": {
+          "str_cache": 1,
+          "F_p88__string__eq__go": 1,
+          "gc_refill": 2,
+          "bend_fail": 1
+        },
+        "stackSubtractions": [
+          "$0x18,%rsp"
+        ],
+        "conditionalBranches": 32
+      },
+      {
+        "symbol": "F_p88__string__eq__go",
+        "decoded": "F_p88__string__eq__go",
+        "bytes": 172,
+        "instructions": 52,
+        "callSites": {
+          "bend_fail": 1
+        },
+        "stackSubtractions": [],
+        "conditionalBranches": 12
+      },
+      {
+        "symbol": "H_F_index__hash",
+        "decoded": "H_F_index__hash",
+        "bytes": 66,
+        "instructions": 20,
+        "callSites": {
+          "bend_fail": 1
+        },
+        "stackSubtractions": [],
+        "conditionalBranches": 3
+      },
+      {
+        "symbol": "H_F_p163r__scan",
+        "decoded": "H_F_p163r__scan",
+        "bytes": 14919,
+        "instructions": 3447,
+        "callSites": {
+          "gc_refill": 71,
+          "bend_fail": 1
+        },
+        "stackSubtractions": [
+          "$0x48,%rsp"
+        ],
+        "conditionalBranches": 354
+      }
+    ]
+  },
+  "scope": "Selected actual symbol bodies only. Sizes/instructions/calls are static, not inclusive work or dynamic time; split public/borrowed/owned bodies are not comparable as single total costs."
+}

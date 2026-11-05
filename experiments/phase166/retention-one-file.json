@@ -1,0 +1,33 @@
+{
+  "kind": "phase166-reviewed-one-file-retention",
+  "status": "reviewed-no-deletion-performed",
+  "allowedRoots": [
+    "selfhost/build/phase149/native01"
+  ],
+  "archiveRoots": {
+    "selfhost/build-retention/phase149/native01-guard/root-00/receipt.json": "selfhost/build/phase149/native01"
+  },
+  "keepPrefixes": [
+    "selfhost/build/phase149/native01/assemble.stderr",
+    "selfhost/build/phase149/native01/assemble.stdout",
+    "selfhost/build/phase149/native01/compiler.stderr",
+    "selfhost/build/phase149/native01/link.stderr",
+    "selfhost/build/phase149/native01/link.stdout",
+    "selfhost/build/phase149/native01/program",
+    "selfhost/build/phase149/native01/qbe.stderr",
+    "selfhost/build/phase149/native01/qbe.stdout",
+    "selfhost/build/phase149/native01/report.json",
+    "selfhost/build/phase149/native01/request.json"
+  ],
+  "scope": "Only the archived single-link Phase149 program.ssa; preserve every current sibling including source, executable, object, reports and logs. Not the qualified Phase152 image or any Phase166 input.",
+  "selected": [
+    {
+      "file": "selfhost/build/phase149/native01/program.ssa",
+      "bytes": 120905980,
+      "sha256": "d05883b5befae9f02df55290eaa7eba18989f022f6e6eac1a41a51a6df49b2ef",
+      "links": 1,
+      "archiveMember": "program.ssa"
+    }
+  ],
+  "verification": "Both current selected file and complete archive SHA256 rechecked offline; receipt complete and reopenedVerified. Parent must run existing verify/apply method before removal."
+}

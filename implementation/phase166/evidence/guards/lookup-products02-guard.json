@@ -1,0 +1,70 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": true,
+  "started": 1793892499.973474,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "3",
+    "python3",
+    "-B",
+    "experiments/phase166/lookup-run.py",
+    "--plan",
+    "selfhost/build/phase166/lookup-plan02/plan.json",
+    "--controls",
+    "selfhost/build/phase166/lookup-controls01/report.json"
+  ],
+  "returncode": 0,
+  "rssLimitBytes": 3221225472,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 480890880,
+  "minimumAvailableBytes": 24634306560,
+  "diskBudgetBytes": 50331648,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 5458685952,
+  "minimumDiskFreeBytes": 5458497536,
+  "peakRunAllocatedBytes": 2703360,
+  "peakFilesystemDecreaseBytes": 188416,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-products02"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "3",
+    "fileLimitBytes": 134217728,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/experiments/phase166/lookup-run.py",
+        "sha256": "cf797b6d3e49985d7e1df65487f36999dbfbfa5f5eba2feafcfb1eddea71eb5e",
+        "bytes": 3888
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-plan02/plan.json",
+        "sha256": "df541449456b3c814ff48acc04cb817969c4a8e2904eb99c721aec883c058bce",
+        "bytes": 10235
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-controls01/report.json",
+        "sha256": "efe967c614401cf0b9b3fd371b42a11ebaef6fcb8f6d498e2d78da337440c7bc",
+        "bytes": 3177
+      }
+    ]
+  },
+  "wallSeconds": 29.868415042292327,
+  "finished": 1793892529.8417628
+}

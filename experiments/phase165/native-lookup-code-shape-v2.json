@@ -1,0 +1,569 @@
+{
+  "kind": "phase165-generated-c-portable-lookup-audit",
+  "version": 2,
+  "targetsRun": false,
+  "method": "/home/ai/bend2/build/publish/bend/experiments/phase165/tools/audit-native-lookup.py",
+  "methodSha256": "9b5a600fd620d22f0ed002b7bf2b4352af5dea3c2ebcdb82cf2bcb1bc83bb20d",
+  "baseline": {
+    "input": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/original02/program.c",
+      "bytes": 4628175,
+      "sha256": "b41edf49ccdb3846853955e5b89cf13c199b38e5d6fbe54d2c492a84fef519e3"
+    },
+    "functions": 14893,
+    "checkerFunctions": 1079,
+    "privateFunctions": 0,
+    "checkerSelectedNativeReferences": {
+      "F_Map_dbit": 1,
+      "F_Map_dget": 0,
+      "F_Map_dhas": 4,
+      "F_String_dcmp": 0,
+      "F_String_deq": 36
+    },
+    "checkerNativeMemoReferences": {
+      "F_Chk_dmemo_dget": 1,
+      "F_Chk_dmemo_dhas": 1,
+      "F_Chk_dmemo_dlink": 2,
+      "F_Chk_dmemo_dnew": 2,
+      "F_Chk_dmemo_dsame": 2,
+      "F_Chk_dmemo_dset": 1
+    },
+    "privateReachableFunctions": 0,
+    "privateSelectedNativeTerminals": [],
+    "privateSelectedNativeDefinedFunctions": [],
+    "privateOtherTerminals": [],
+    "examples": {
+      "F_Chk_dStr_dhas": {
+        "line": 21160,
+        "references": [
+          "F_String_deq"
+        ]
+      },
+      "F_Chk_dMap_dfind_dgo": {
+        "line": 19467,
+        "references": [
+          "F_String_deq",
+          "F_Map_dbit"
+        ]
+      }
+    },
+    "privateOrdinaryBodies": {}
+  },
+  "candidate": {
+    "input": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup04/program.c",
+      "bytes": 4682697,
+      "sha256": "07b0ef135376605ff9de4115ed0a6f3208acf882a68e745e89acb309847d8b6e"
+    },
+    "functions": 15014,
+    "checkerFunctions": 1199,
+    "privateFunctions": 120,
+    "checkerSelectedNativeReferences": {
+      "F_Map_dbit": 0,
+      "F_Map_dget": 0,
+      "F_Map_dhas": 0,
+      "F_String_dcmp": 0,
+      "F_String_deq": 0
+    },
+    "checkerNativeMemoReferences": {
+      "F_Chk_dmemo_dget": 1,
+      "F_Chk_dmemo_dhas": 1,
+      "F_Chk_dmemo_dlink": 2,
+      "F_Chk_dmemo_dnew": 2,
+      "F_Chk_dmemo_dsame": 2,
+      "F_Chk_dmemo_dset": 1
+    },
+    "privateReachableFunctions": 120,
+    "privateSelectedNativeTerminals": [],
+    "privateSelectedNativeDefinedFunctions": [],
+    "privateOtherTerminals": [
+      "F_Nat_dadd",
+      "F_Nat_ddivmod",
+      "F_Nat_dis__lt",
+      "F_Nat_dsub",
+      "F_U32_dand",
+      "F_U32_dcmp",
+      "F_U32_dis__eq",
+      "F_U32_dis__ne",
+      "F_U32_dis__zero",
+      "F_U32_dshr",
+      "F_U32_dshrn",
+      "F_U32_dxor"
+    ],
+    "examples": {
+      "F_Chk_dStr_dhas": {
+        "line": 21409,
+        "references": [
+          "U_Chk_dp165portable_dString_dcmp"
+        ]
+      },
+      "F_Chk_dMap_dfind_dgo": {
+        "line": 19588,
+        "references": [
+          "U_Chk_dp165portable_dString_dcmp",
+          "F_Nat_ddivmod",
+          "U_Chk_dp165portable_dMap_dbit_dgo"
+        ]
+      }
+    },
+    "privateOrdinaryBodies": {
+      "F_Chk_dp165portable_dMap_dbit_dgo": {
+        "line": 19635,
+        "references": [
+          "U_Chk_dp165portable_dMap_dbit_dgo"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dbit_dchr": {
+        "line": 19651,
+        "references": [
+          "U_Chk_dp165portable_dMap_dbit_dchr"
+        ]
+      },
+      "F_Chk_dp165portable_dString_dcmp": {
+        "line": 19684,
+        "references": [
+          "U_Chk_dp165portable_dString_dcmp"
+        ]
+      },
+      "F_Chk_dp165portable_dString_dcmp_dfin_x37u": {
+        "line": 19720,
+        "references": [
+          "U_Chk_dp165portable_dString_dcmp_dfin_x37u"
+        ]
+      },
+      "F_Chk_dp165portable_dChar_dcmp": {
+        "line": 19732,
+        "references": [
+          "U_Chk_dp165portable_dChar_dcmp"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dset": {
+        "line": 64491,
+        "references": [
+          "U_Chk_dp165portable_dMap_dseek",
+          "F_Chk_dp165portable_dMap_dset_dgo_x37u"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dset_dgo_x37u": {
+        "line": 64497,
+        "references": [
+          "F_Chk_dp165portable_dMap_dset_dfin"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dset_dfin": {
+        "line": 64512,
+        "references": [
+          "U_Chk_dp165portable_dString_dcmp",
+          "F_Chk_dp165portable_dMap_dset_dfin_dgo_x37u"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dset_dfin_dgo_x37u": {
+        "line": 64518,
+        "references": [
+          "F_Chk_dp165portable_dMap_dput",
+          "F_Chk_dp165portable_dMap_dins",
+          "F_Chk_dp165portable_dMap_ddiff"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_ddiff": {
+        "line": 64532,
+        "references": [
+          "U_Chk_dp165portable_dMap_ddiff_dstep",
+          "F_Chk_dp165portable_dMap_ddiff_dfin_x37u"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_ddiff_dfin_x37u": {
+        "line": 64548,
+        "references": [
+          "F_Nat_dadd",
+          "F_Nat_dadd",
+          "F_Nat_dadd",
+          "U_Chk_dp165portable_dMap_ddiff_dstep",
+          "F_Chk_dp165portable_dMap_ddiff_dfin_x37u"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_ddiff_dstep": {
+        "line": 64581,
+        "references": [
+          "U_Chk_dp165portable_dMap_ddiff_dstep"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dmsb_du_x37s4263300433x249100021": {
+        "line": 64583,
+        "references": [
+          "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s1056331238x249070230",
+          "F_U32_dis__zero"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s1056331238x249070230": {
+        "line": 64588,
+        "references": [
+          "F_U32_dshr",
+          "F_Nat_dadd",
+          "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s2315385555x249040439",
+          "F_U32_dis__zero"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s2315385555x249040439": {
+        "line": 64601,
+        "references": [
+          "F_U32_dshr",
+          "F_Nat_dadd",
+          "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s3975089365x248385037",
+          "F_U32_dis__zero"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s3975089365x248385037": {
+        "line": 64614,
+        "references": [
+          "F_U32_dshr",
+          "F_Nat_dadd",
+          "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s1960636328x248355246",
+          "F_U32_dis__zero"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s1960636328x248355246": {
+        "line": 64627,
+        "references": [
+          "F_U32_dshr",
+          "F_Nat_dadd",
+          "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s1940615907x248325455",
+          "F_U32_dis__zero"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s1940615907x248325455": {
+        "line": 64640,
+        "references": [
+          "F_U32_dshr",
+          "F_Nat_dadd",
+          "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s4241918518x248295664",
+          "F_U32_dis__zero"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s4241918518x248295664": {
+        "line": 64653,
+        "references": [
+          "F_U32_dshr",
+          "F_Nat_dadd",
+          "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s1751441313x248265873",
+          "F_U32_dis__zero"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s1751441313x248265873": {
+        "line": 64666,
+        "references": [
+          "F_U32_dshr",
+          "F_Nat_dadd",
+          "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s4031955572x248236082",
+          "F_U32_dis__zero"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s4031955572x248236082": {
+        "line": 64679,
+        "references": [
+          "F_U32_dshr",
+          "F_Nat_dadd",
+          "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s3203078111x248206291",
+          "F_U32_dis__zero"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s3203078111x248206291": {
+        "line": 64692,
+        "references": [
+          "F_U32_dshr",
+          "F_Nat_dadd",
+          "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s2389269618x248176500",
+          "F_U32_dis__zero"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s2389269618x248176500": {
+        "line": 64705,
+        "references": [
+          "F_U32_dshr",
+          "F_Nat_dadd",
+          "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s2944178877x248146709",
+          "F_U32_dis__zero"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s2944178877x248146709": {
+        "line": 64718,
+        "references": [
+          "F_U32_dshr",
+          "F_Nat_dadd",
+          "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s413630384x248116918",
+          "F_U32_dis__zero"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s413630384x248116918": {
+        "line": 64731,
+        "references": [
+          "F_U32_dshr",
+          "F_Nat_dadd",
+          "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s2262144112x247461516",
+          "F_U32_dis__zero"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s2262144112x247461516": {
+        "line": 64744,
+        "references": [
+          "F_U32_dshr",
+          "F_Nat_dadd",
+          "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s497725309x247431725",
+          "F_U32_dis__zero"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s497725309x247431725": {
+        "line": 64757,
+        "references": [
+          "F_U32_dshr",
+          "F_Nat_dadd",
+          "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s3777270958x247401934",
+          "F_U32_dis__zero"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s3777270958x247401934": {
+        "line": 64770,
+        "references": [
+          "F_U32_dshr",
+          "F_Nat_dadd",
+          "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s4117685691x247372143",
+          "F_U32_dis__zero"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s4117685691x247372143": {
+        "line": 64783,
+        "references": [
+          "F_U32_dshr",
+          "F_Nat_dadd",
+          "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s399152620x247342352",
+          "F_U32_dis__zero"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s399152620x247342352": {
+        "line": 64796,
+        "references": [
+          "F_U32_dshr",
+          "F_Nat_dadd",
+          "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s3795296409x247312561",
+          "F_U32_dis__zero"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s3795296409x247312561": {
+        "line": 64809,
+        "references": [
+          "F_U32_dshr",
+          "F_Nat_dadd",
+          "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s675041226x247282770",
+          "F_U32_dis__zero"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s675041226x247282770": {
+        "line": 64822,
+        "references": [
+          "F_U32_dshr",
+          "F_Nat_dadd",
+          "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s2689494263x247252979",
+          "F_U32_dis__zero"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s2689494263x247252979": {
+        "line": 64835,
+        "references": [
+          "F_U32_dshr",
+          "F_Nat_dadd",
+          "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s4233607528x247223188",
+          "F_U32_dis__zero"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s4233607528x247223188": {
+        "line": 64848,
+        "references": [
+          "F_U32_dshr",
+          "F_Nat_dadd",
+          "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s1953093269x247193397",
+          "F_U32_dis__zero"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s1953093269x247193397": {
+        "line": 64861,
+        "references": [
+          "F_U32_dshr",
+          "F_Nat_dadd",
+          "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s3305376709x8269577",
+          "F_U32_dis__zero"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s3305376709x8269577": {
+        "line": 64874,
+        "references": [
+          "F_U32_dshr",
+          "F_Nat_dadd",
+          "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s2491568216x8239786",
+          "F_U32_dis__zero"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s2491568216x8239786": {
+        "line": 64887,
+        "references": [
+          "F_U32_dshr",
+          "F_Nat_dadd",
+          "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s1291691603x8209995",
+          "F_U32_dis__zero"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s1291691603x8209995": {
+        "line": 64900,
+        "references": [
+          "F_U32_dshr",
+          "F_Nat_dadd",
+          "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s32637286x8180204",
+          "F_U32_dis__zero"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s32637286x8180204": {
+        "line": 64913,
+        "references": [
+          "F_U32_dshr",
+          "F_Nat_dadd",
+          "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s3239606481x8150413",
+          "F_U32_dis__zero"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s3239606481x8150413": {
+        "line": 64926,
+        "references": [
+          "F_U32_dshr",
+          "F_Nat_dadd",
+          "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s2405009636x8120622",
+          "F_U32_dis__zero"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s2405009636x8120622": {
+        "line": 64939,
+        "references": [
+          "F_U32_dshr",
+          "F_Nat_dadd",
+          "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s1586577935x8090831",
+          "F_U32_dis__zero"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s1586577935x8090831": {
+        "line": 64952,
+        "references": [
+          "F_U32_dshr",
+          "F_Nat_dadd",
+          "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s3867092194x8061040",
+          "F_U32_dis__zero"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s3867092194x8061040": {
+        "line": 64965,
+        "references": [
+          "F_U32_dshr",
+          "F_Nat_dadd",
+          "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s1860454509x8031249",
+          "F_U32_dis__zero"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s1860454509x8031249": {
+        "line": 64978,
+        "references": [
+          "F_U32_dshr",
+          "F_Nat_dadd",
+          "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s509762208x8001458",
+          "F_U32_dis__zero"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dmsb_du_dif_x37s509762208x8001458": {
+        "line": 64991,
+        "references": [
+          "F_Nat_dadd"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dins": {
+        "line": 65003,
+        "references": [
+          "F_Chk_dp165portable_dMap_dins_dsplice",
+          "F_Nat_ddivmod",
+          "U_Chk_dp165portable_dMap_dbit_dgo",
+          "F_Chk_dp165portable_dMap_dins_dgo_x37u",
+          "F_Nat_dis__lt"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dins_dgo_x37u": {
+        "line": 65018,
+        "references": [
+          "F_Chk_dp165portable_dMap_dins_dsplice",
+          "F_Chk_dp165portable_dMap_dins_dsplice",
+          "F_Nat_ddivmod",
+          "U_Chk_dp165portable_dMap_dbit_dgo",
+          "F_Chk_dp165portable_dMap_dins_dgo_x37u",
+          "F_Nat_dis__lt",
+          "F_Chk_dp165portable_dMap_dins_dsplice",
+          "F_Nat_ddivmod",
+          "U_Chk_dp165portable_dMap_dbit_dgo",
+          "F_Chk_dp165portable_dMap_dins_dgo_x37u",
+          "F_Nat_dis__lt"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dins_dsplice": {
+        "line": 65053,
+        "references": [
+          "F_Nat_ddivmod",
+          "U_Chk_dp165portable_dMap_dbit_dgo"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dput": {
+        "line": 65065,
+        "references": [
+          "F_Nat_ddivmod",
+          "U_Chk_dp165portable_dMap_dbit_dgo",
+          "F_Chk_dp165portable_dMap_dput_dgo_x37u"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dput_dgo_x37u": {
+        "line": 65080,
+        "references": [
+          "F_Nat_ddivmod",
+          "U_Chk_dp165portable_dMap_dbit_dgo",
+          "F_Chk_dp165portable_dMap_dput_dgo_x37u",
+          "F_Nat_ddivmod",
+          "U_Chk_dp165portable_dMap_dbit_dgo",
+          "F_Chk_dp165portable_dMap_dput_dgo_x37u"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dseek": {
+        "line": 65130,
+        "references": [
+          "U_Chk_dp165portable_dMap_dseek"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dseek_dgo_x37u": {
+        "line": 65175,
+        "references": [
+          "U_Chk_dp165portable_dMap_dseek_dgo_x37u"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dhas": {
+        "line": 67976,
+        "references": [
+          "U_Chk_dp165portable_dMap_dhas"
+        ]
+      },
+      "F_Chk_dp165portable_dMap_dhas_dgo_x37u": {
+        "line": 68037,
+        "references": [
+          "U_Chk_dp165portable_dMap_dhas_dgo_x37u"
+        ]
+      },
+      "F_Chk_dp165portable_dSet_dfrom__list_dgo": {
+        "line": 113949,
+        "references": [
+          "F_Chk_dp165portable_dMap_dset"
+        ]
+      }
+    }
+  },
+  "nativeMemoStaticReferencesEqual": true,
+  "limitations": "Static F/U/W function references only, including wrapper references. Counts are not dynamic calls. Runtime intrinsic bodies are external; this does not establish semantic equivalence or speed."
+}

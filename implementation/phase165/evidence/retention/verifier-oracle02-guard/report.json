@@ -1,0 +1,51 @@
+{
+  "kind": "build-retention-run-close-v1",
+  "complete": true,
+  "state": "sealed",
+  "classification": "completed",
+  "initialRetention": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/verifier-oracle02-guard/retention.json",
+    "bytes": 660,
+    "sha256": "0056062d41b435ce53f5636f85b125e60632e03a8eb5ba520aa548a47827cb2d"
+  },
+  "process": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/verifier-oracle02-guard/process.json",
+    "bytes": 3595,
+    "sha256": "7eafcf8b8eebee46d91d39f7870caaffb39b096b34993de018594474a4717ef5"
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/close.py",
+    "bytes": 13971,
+    "sha256": "7e37ec90fe3fd4a0f990cae727052e8ccdf7880f05dcc68618da15c0d76b0fef"
+  },
+  "archiveMethod": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/archive-v02.py",
+    "bytes": 18412,
+    "sha256": "3238e0774c6c21c3de6c07bcbd71e469cbb23aaba01f99da0cb1e9f51990ad9f"
+  },
+  "qualification": null,
+  "pruneRequested": false,
+  "roots": [
+    {
+      "root": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/verifier-oracle02",
+      "keptHot": false,
+      "archiveReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase165/verifier-oracle02-guard/root-00/receipt.json",
+        "bytes": 1355,
+        "sha256": "0f66f5e8946aa9863d13270a786ccf74eae9288e2d5916bf932f6e9a5f4e0356"
+      },
+      "archivedFiles": 4,
+      "plan": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase165/verifier-oracle02-guard/root-00/verified/plan.json",
+        "bytes": 1743,
+        "sha256": "c4d185c9f8cae1585c8d84a82eee3081d80008dbce378ac4abff72040cc2aebd"
+      },
+      "prunableFiles": 4,
+      "kept": {}
+    }
+  ],
+  "started": 1793862716.8535106,
+  "guardCommitRequired": "Close is committed only when guard retention.json names this report; process.json remains immutable.",
+  "finished": 1793862717.139918,
+  "minimumDiskFreeBytes": 5391843328
+}

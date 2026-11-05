@@ -1,0 +1,203 @@
+{
+  "kind": "phase165-backend-machine-v2",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase165/tools/backend-machine-v2.py",
+      "bytes": 5256,
+      "sha256": "a27b3123e694196132951c00b89a8d9b7012237db2bd9a401bee13e2d6459e67"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan04/replay/report.json",
+      "bytes": 9088,
+      "sha256": "1d010465f24a2ad6070c5681118b4c41c967c85afc11b75ea319cc5de452c1f5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/manifests/assets-native.json",
+      "bytes": 17657,
+      "sha256": "4b8181ff0a8917d5eac5d5a1976385449e2c3962e503335e3800adb154fddaa0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/native.py",
+      "bytes": 13731,
+      "sha256": "bc53fc000d45574e913904f7e899d785e5c98050b0942d14a81118b9ab009e58"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/common.py",
+      "bytes": 4809,
+      "sha256": "d9a16fef18cf936499e51f8c7f36a653f2921ef9a50f846257c2e8bc460ec6d1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase154/capture-plan05/compiler-workload.bend",
+      "bytes": 37696,
+      "sha256": "42017745e7c9aa674c59823487fdcca8ff9ee4c957e2d753beb1fc3c9c6a2396"
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+      "bytes": 119320,
+      "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def",
+      "executable": true
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan04/replay/program.ssa",
+      "bytes": 2146264,
+      "sha256": "5e402f9177a9165e430df40dc6a90d2d18747e2c2fb51ef6fb2f8848a47b62a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan04/replay/program.c",
+      "bytes": 998317,
+      "sha256": "a3329c3e44c4b19167dac29f9ac3884a337cbab42c54595bb513ae9b86e92630"
+    }
+  ],
+  "products": {
+    "qbe": {
+      "build": {
+        "command": [
+          "/usr/bin/python3",
+          "-B",
+          "selfhost/tools/build/native.py",
+          "--assets",
+          "/home/ai/bend2/build/publish/bend/selfhost/manifests/assets-native.json",
+          "--target",
+          "qbe",
+          "--ir",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan04/replay/program.ssa",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine03/qbe",
+          "--seconds",
+          "45"
+        ],
+        "limitSeconds": 50,
+        "complete": true,
+        "started": 1793860708.3236926,
+        "exitCode": 0,
+        "userSeconds": 0.417691,
+        "systemSeconds": 0.047836,
+        "peakRssKiB": 26432,
+        "timedOut": false,
+        "seconds": 0.546313292812556,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine03/qbe-build.stdout",
+          "bytes": 425,
+          "sha256": "97534b26d53b85d8d01f542ccf1759ea7100f57390aef541a79b5f5a3c1331a0"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine03/qbe-build.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "machineReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine03/qbe/report.json",
+        "bytes": 8719,
+        "sha256": "cc55289d394ef296bf75a0ca3a5ca232d6abb607bf51464e0f72eb0a3517c845"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine03/qbe/program",
+        "bytes": 496544,
+        "sha256": "e4ce85fc038faca36d22317940eb9909278736bd666acaa5cdce032932488880"
+      },
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine03/qbe/program",
+          "--threads",
+          "1",
+          "--gpu",
+          "off"
+        ],
+        "limitSeconds": 10,
+        "complete": true,
+        "started": 1793860708.873068,
+        "exitCode": 0,
+        "userSeconds": 0.0,
+        "systemSeconds": 0.0010869999999999999,
+        "peakRssKiB": 9168,
+        "timedOut": false,
+        "seconds": 0.0019223811104893684,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine03/qbe.stdout",
+          "bytes": 2,
+          "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine03/qbe.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "exact": true
+    },
+    "c": {
+      "build": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan04/replay/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine03/c-program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 50,
+        "complete": true,
+        "started": 1793860708.8760421,
+        "exitCode": 0,
+        "userSeconds": 5.638346,
+        "systemSeconds": 0.054049,
+        "peakRssKiB": 146700,
+        "timedOut": false,
+        "seconds": 5.718564761802554,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine03/c-build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine03/c-build.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine03/c-program",
+        "bytes": 346256,
+        "sha256": "bf5935fae5745964739ba1900caa511269c6fc121c13855bdba130a3077c2bfc"
+      },
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine03/c-program",
+          "--threads",
+          "1",
+          "--gpu",
+          "off"
+        ],
+        "limitSeconds": 10,
+        "complete": true,
+        "started": 1793860714.5980213,
+        "exitCode": 0,
+        "userSeconds": 0.001114,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 9200,
+        "timedOut": false,
+        "seconds": 0.001968624070286751,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine03/c.stdout",
+          "bytes": 2,
+          "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine03/c.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "exact": true
+    }
+  },
+  "expectedStdout": "0\n",
+  "expectedReason": "Exact frozen source: p111_empty has no main; p111v_program_indexed returns nonempty diagnostic, String.is_empty=False, Bool.to_u32=0. No retained prior whole-program execution is asserted.",
+  "scope": "Complete frozen C/QBE programs; pinned incumbent machine policies; exact original source result and exit/stderr. No benchmark timing or compiler acquisition claim."
+}

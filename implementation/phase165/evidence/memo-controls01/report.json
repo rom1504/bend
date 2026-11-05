@@ -1,0 +1,529 @@
+{
+  "kind": "phase165-checker-comparison",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase165/tools/compare.py",
+      "bytes": 4578,
+      "sha256": "5d92f1700e81cd0d1599c6bd6a5ec2bc5d28190157f2cd7018ac1fd95c55c6ee"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "bytes": 75064,
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase165/shared-cells-4.bend",
+      "bytes": 564,
+      "sha256": "186736a5778b931735a79de50c8ada1ba8c59aac5146b484469c3a05bf6d412b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase165/copy-before-unfold-4.bend",
+      "bytes": 983,
+      "sha256": "060e0a6b45d87b9be6aa25e39d373d35f525bb4ff944b3e30b9510fa1b9ecbc4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/tests/check/beta_ann_lambda.bend",
+      "bytes": 530,
+      "sha256": "1b2262faa962dee6c77db555af174e3f7dfbb0efd29057e74dc39b62e422cec5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/tests/check/typed_let_mismatch.bend",
+      "bytes": 275,
+      "sha256": "c3c6ec82018aa9247f71e6211e9be6e9361807baab53d91c0d0b5a4e3438d604"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase162/unsafe-type-error.bend",
+      "bytes": 48,
+      "sha256": "4cb5d7298ded1c73c3642cb9c5251505dd8d785bc73e4b89b9dcda4dd7271266"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/original02/report.json",
+      "bytes": 23069,
+      "sha256": "bcb76cfc475fe806647ec368e9441ad1ecab549c98bfd0f25529c1fda9ee9929"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase160/capped-seed01/bendc",
+      "bytes": 4308824,
+      "sha256": "1f41eadeb854ab06f2b81b8fb0d11ae7178c79022cd2e56494d700546f612f39"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo01/report.json",
+      "bytes": 23886,
+      "sha256": "65e42583df79637fb0dbadc44962316c2b2ac727e5686fc7051a01e2555c229c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo01/bendc",
+      "bytes": 4307776,
+      "sha256": "94c88365f9d1c37dee4d2af575fb29c15d192a035ce0b394863d7cb565259e01"
+    }
+  ],
+  "rows": [
+    {
+      "role": "original02",
+      "round": 0,
+      "case": "selfhost/tests/phase165/shared-cells-4.bend",
+      "process": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase160/capped-seed01/bendc",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "--check-only",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/tests/phase165/shared-cells-4.bend"
+        ],
+        "limitSeconds": 15.0,
+        "complete": true,
+        "started": 1793859774.2204819,
+        "exitCode": 0,
+        "userSeconds": 0.126682,
+        "systemSeconds": 0.007917,
+        "peakRssKiB": 52552,
+        "timedOut": false,
+        "seconds": 0.136479829903692,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-controls01/0-0-original02.stdout",
+          "bytes": 58,
+          "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-controls01/0-0-original02.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "exactOracle": true
+    },
+    {
+      "role": "memo01",
+      "round": 0,
+      "case": "selfhost/tests/phase165/shared-cells-4.bend",
+      "process": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo01/bendc",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "--check-only",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/tests/phase165/shared-cells-4.bend"
+        ],
+        "limitSeconds": 15.0,
+        "complete": true,
+        "started": 1793859774.4720137,
+        "exitCode": 0,
+        "userSeconds": 0.13358799999999998,
+        "systemSeconds": 0.003929,
+        "peakRssKiB": 54524,
+        "timedOut": false,
+        "seconds": 0.13936681486666203,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-controls01/0-0-memo01.stdout",
+          "bytes": 58,
+          "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-controls01/0-0-memo01.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "exactOracle": true
+    },
+    {
+      "role": "original02",
+      "round": 0,
+      "case": "selfhost/tests/phase165/copy-before-unfold-4.bend",
+      "process": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase160/capped-seed01/bendc",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "--check-only",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/tests/phase165/copy-before-unfold-4.bend"
+        ],
+        "limitSeconds": 15.0,
+        "complete": true,
+        "started": 1793859774.6126528,
+        "exitCode": 0,
+        "userSeconds": 0.127013,
+        "systemSeconds": 0.0039689999999999994,
+        "peakRssKiB": 52428,
+        "timedOut": false,
+        "seconds": 0.132124911993742,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-controls01/0-1-original02.stdout",
+          "bytes": 58,
+          "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-controls01/0-1-original02.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "exactOracle": true
+    },
+    {
+      "role": "memo01",
+      "round": 0,
+      "case": "selfhost/tests/phase165/copy-before-unfold-4.bend",
+      "process": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo01/bendc",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "--check-only",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/tests/phase165/copy-before-unfold-4.bend"
+        ],
+        "limitSeconds": 15.0,
+        "complete": true,
+        "started": 1793859774.7461512,
+        "exitCode": 0,
+        "userSeconds": 0.130432,
+        "systemSeconds": 0.004076,
+        "peakRssKiB": 54508,
+        "timedOut": false,
+        "seconds": 0.13585493806749582,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-controls01/0-1-memo01.stdout",
+          "bytes": 58,
+          "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-controls01/0-1-memo01.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "exactOracle": true
+    },
+    {
+      "role": "original02",
+      "round": 0,
+      "case": "tests/check/beta_ann_lambda.bend",
+      "process": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase160/capped-seed01/bendc",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "--check-only",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/tests/check/beta_ann_lambda.bend"
+        ],
+        "limitSeconds": 15.0,
+        "complete": false,
+        "started": 1793859774.883382,
+        "exitCode": 1,
+        "userSeconds": 0.180454,
+        "systemSeconds": 0.00401,
+        "peakRssKiB": 52472,
+        "timedOut": false,
+        "seconds": 0.1855997140519321,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-controls01/0-2-original02.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-controls01/0-2-original02.stderr",
+          "bytes": 166,
+          "sha256": "88bb3b3dde7ef0b101e8925022a2f48f4f6ee420bc90251e3ff0f3766bec6aef"
+        }
+      },
+      "exactOracle": true
+    },
+    {
+      "role": "memo01",
+      "round": 0,
+      "case": "tests/check/beta_ann_lambda.bend",
+      "process": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo01/bendc",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "--check-only",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/tests/check/beta_ann_lambda.bend"
+        ],
+        "limitSeconds": 15.0,
+        "complete": false,
+        "started": 1793859775.070483,
+        "exitCode": 1,
+        "userSeconds": 0.18131,
+        "systemSeconds": 0.004029,
+        "peakRssKiB": 52632,
+        "timedOut": false,
+        "seconds": 0.18654294032603502,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-controls01/0-2-memo01.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-controls01/0-2-memo01.stderr",
+          "bytes": 166,
+          "sha256": "88bb3b3dde7ef0b101e8925022a2f48f4f6ee420bc90251e3ff0f3766bec6aef"
+        }
+      },
+      "exactOracle": true
+    },
+    {
+      "role": "original02",
+      "round": 0,
+      "case": "tests/check/typed_let_mismatch.bend",
+      "process": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase160/capped-seed01/bendc",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "--check-only",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/tests/check/typed_let_mismatch.bend"
+        ],
+        "limitSeconds": 15.0,
+        "complete": false,
+        "started": 1793859775.2585406,
+        "exitCode": 1,
+        "userSeconds": 0.17928,
+        "systemSeconds": 0.003984,
+        "peakRssKiB": 52416,
+        "timedOut": false,
+        "seconds": 0.18448598496615887,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-controls01/0-3-original02.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-controls01/0-3-original02.stderr",
+          "bytes": 142,
+          "sha256": "b80b2a044dd0a20835e512b2d9bb8c99255aee1bc72b450589422dfef4af2c87"
+        }
+      },
+      "exactOracle": true
+    },
+    {
+      "role": "memo01",
+      "round": 0,
+      "case": "tests/check/typed_let_mismatch.bend",
+      "process": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo01/bendc",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "--check-only",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/tests/check/typed_let_mismatch.bend"
+        ],
+        "limitSeconds": 15.0,
+        "complete": false,
+        "started": 1793859775.444569,
+        "exitCode": 1,
+        "userSeconds": 0.183755,
+        "systemSeconds": 0.004996,
+        "peakRssKiB": 54516,
+        "timedOut": false,
+        "seconds": 0.1899288217537105,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-controls01/0-3-memo01.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-controls01/0-3-memo01.stderr",
+          "bytes": 142,
+          "sha256": "b80b2a044dd0a20835e512b2d9bb8c99255aee1bc72b450589422dfef4af2c87"
+        }
+      },
+      "exactOracle": true
+    },
+    {
+      "role": "original02",
+      "round": 0,
+      "case": "selfhost/tests/phase162/unsafe-type-error.bend",
+      "process": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase160/capped-seed01/bendc",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "--check-only",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/tests/phase162/unsafe-type-error.bend"
+        ],
+        "limitSeconds": 15.0,
+        "complete": false,
+        "started": 1793859775.6361847,
+        "exitCode": 1,
+        "userSeconds": 0.17632699999999998,
+        "systemSeconds": 0.004007,
+        "peakRssKiB": 54496,
+        "timedOut": false,
+        "seconds": 0.18147368030622602,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-controls01/0-4-original02.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-controls01/0-4-original02.stderr",
+          "bytes": 128,
+          "sha256": "7d4975cb80cb616ce0e7c64484664d3dcd5610db4c39549563a019ac07fcbe3f"
+        }
+      },
+      "exactOracle": true
+    },
+    {
+      "role": "memo01",
+      "round": 0,
+      "case": "selfhost/tests/phase162/unsafe-type-error.bend",
+      "process": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo01/bendc",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "--check-only",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/tests/phase162/unsafe-type-error.bend"
+        ],
+        "limitSeconds": 15.0,
+        "complete": false,
+        "started": 1793859775.8194559,
+        "exitCode": 1,
+        "userSeconds": 0.17948899999999998,
+        "systemSeconds": 0.003988,
+        "peakRssKiB": 54620,
+        "timedOut": false,
+        "seconds": 0.18464777013286948,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-controls01/0-4-memo01.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-controls01/0-4-memo01.stderr",
+          "bytes": 128,
+          "sha256": "7d4975cb80cb616ce0e7c64484664d3dcd5610db4c39549563a019ac07fcbe3f"
+        }
+      },
+      "exactOracle": true
+    }
+  ],
+  "suite": "controls",
+  "environment": {
+    "BEND_RC": "0",
+    "BEND_NO_FREE": "1",
+    "BEND_AUTO_PAR": "0"
+  },
+  "policy": "Exact exit, stdout and stderr; a timeout or changed verdict is not a valid slowdown. CPU3 outer guard, one worker, GPU off.",
+  "oracles": {
+    "selfhost/tests/phase165/shared-cells-4.bend": {
+      "exitCode": 0,
+      "stdout": {
+        "bytes": 58,
+        "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "selfhost/tests/phase165/copy-before-unfold-4.bend": {
+      "exitCode": 0,
+      "stdout": {
+        "bytes": 58,
+        "sha256": "931f1e664a679af1355a9ca547ac1daef9f7b14137bc7cc21b110b0cc504b5b1"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "tests/check/beta_ann_lambda.bend": {
+      "exitCode": 1,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 166,
+        "sha256": "88bb3b3dde7ef0b101e8925022a2f48f4f6ee420bc90251e3ff0f3766bec6aef"
+      }
+    },
+    "tests/check/typed_let_mismatch.bend": {
+      "exitCode": 1,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 142,
+        "sha256": "b80b2a044dd0a20835e512b2d9bb8c99255aee1bc72b450589422dfef4af2c87"
+      }
+    },
+    "selfhost/tests/phase162/unsafe-type-error.bend": {
+      "exitCode": 1,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 128,
+        "sha256": "7d4975cb80cb616ce0e7c64484664d3dcd5610db4c39549563a019ac07fcbe3f"
+      }
+    }
+  },
+  "medians": {
+    "selfhost/tests/phase165/shared-cells-4.bend": {
+      "original02": 0.136479829903692,
+      "memo01": 0.13936681486666203
+    },
+    "selfhost/tests/phase165/copy-before-unfold-4.bend": {
+      "original02": 0.132124911993742,
+      "memo01": 0.13585493806749582
+    },
+    "tests/check/beta_ann_lambda.bend": {
+      "original02": 0.1855997140519321,
+      "memo01": 0.18654294032603502
+    },
+    "tests/check/typed_let_mismatch.bend": {
+      "original02": 0.18448598496615887,
+      "memo01": 0.1899288217537105
+    },
+    "selfhost/tests/phase162/unsafe-type-error.bend": {
+      "original02": 0.18147368030622602,
+      "memo01": 0.18464777013286948
+    }
+  }
+}

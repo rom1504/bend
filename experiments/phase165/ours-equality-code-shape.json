@@ -1,0 +1,116 @@
+{
+  "kind": "phase165-generated-c-portable-lookup-audit",
+  "version": 3,
+  "privatePrefix": "p165ours",
+  "targetsRun": false,
+  "method": "/home/ai/bend2/build/publish/bend/experiments/phase165/tools/audit-native-lookup.py",
+  "methodSha256": "ba244d8bae526a69983e4e7c01526dd1182e1d50e3acef071106baebebfaa73b",
+  "baseline": {
+    "input": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/original02/program.c",
+      "bytes": 4628175,
+      "sha256": "b41edf49ccdb3846853955e5b89cf13c199b38e5d6fbe54d2c492a84fef519e3"
+    },
+    "functions": 14893,
+    "checkerFunctions": 1079,
+    "privateFunctions": 0,
+    "checkerSelectedNativeReferences": {
+      "F_Map_dbit": 1,
+      "F_Map_dget": 0,
+      "F_Map_dhas": 4,
+      "F_String_dcmp": 0,
+      "F_String_deq": 36
+    },
+    "checkerNativeMemoReferences": {
+      "F_Chk_dmemo_dget": 1,
+      "F_Chk_dmemo_dhas": 1,
+      "F_Chk_dmemo_dlink": 2,
+      "F_Chk_dmemo_dnew": 2,
+      "F_Chk_dmemo_dsame": 2,
+      "F_Chk_dmemo_dset": 1
+    },
+    "privateReachableFunctions": 0,
+    "privateSelectedNativeTerminals": [],
+    "privateSelectedNativeDefinedFunctions": [],
+    "privateOtherTerminals": [],
+    "examples": {
+      "F_Chk_dStr_dhas": {
+        "line": 21160,
+        "references": [
+          "F_String_deq"
+        ]
+      },
+      "F_Chk_dMap_dfind_dgo": {
+        "line": 19467,
+        "references": [
+          "F_String_deq",
+          "F_Map_dbit"
+        ]
+      }
+    },
+    "privateOrdinaryBodies": {}
+  },
+  "candidate": {
+    "input": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/ours-eq01/program.c",
+      "bytes": 4632711,
+      "sha256": "d8eb687a92cc1d47f2cee64467979261610412beec46d28560615cb8fd5f62bb"
+    },
+    "functions": 14897,
+    "checkerFunctions": 1083,
+    "privateFunctions": 4,
+    "checkerSelectedNativeReferences": {
+      "F_Map_dbit": 1,
+      "F_Map_dget": 0,
+      "F_Map_dhas": 4,
+      "F_String_dcmp": 0,
+      "F_String_deq": 0
+    },
+    "checkerNativeMemoReferences": {
+      "F_Chk_dmemo_dget": 1,
+      "F_Chk_dmemo_dhas": 1,
+      "F_Chk_dmemo_dlink": 2,
+      "F_Chk_dmemo_dnew": 2,
+      "F_Chk_dmemo_dsame": 2,
+      "F_Chk_dmemo_dset": 1
+    },
+    "privateReachableFunctions": 4,
+    "privateSelectedNativeTerminals": [],
+    "privateSelectedNativeDefinedFunctions": [],
+    "privateOtherTerminals": [
+      "F_U32_dis__eq"
+    ],
+    "examples": {
+      "F_Chk_dStr_dhas": {
+        "line": 21221,
+        "references": [
+          "F_Chk_dp165ours_dp88__string__eq__go_x37s2926210816x2142777094"
+        ]
+      },
+      "F_Chk_dMap_dfind_dgo": {
+        "line": 19471,
+        "references": [
+          "F_Chk_dp165ours_dp88__string__eq__go_x37s2926210816x2142777094",
+          "F_Map_dbit"
+        ]
+      }
+    },
+    "privateOrdinaryBodies": {
+      "F_Chk_dp165ours_dp88__string__eq__go_x37s2926210816x2142777094": {
+        "line": 19495,
+        "references": [
+          "F_Chk_dp165ours_dp88__string__eq__go",
+          "F_U32_dis__eq"
+        ]
+      },
+      "F_Chk_dp165ours_dp88__string__eq__go": {
+        "line": 19522,
+        "references": [
+          "F_U32_dis__eq"
+        ]
+      }
+    }
+  },
+  "nativeMemoStaticReferencesEqual": true,
+  "limitations": "Static F/U/W function references only, including wrapper references. Counts are not dynamic calls. Runtime intrinsic bodies are external; this does not establish semantic equivalence or speed."
+}

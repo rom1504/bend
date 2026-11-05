@@ -1,0 +1,51 @@
+{
+  "kind": "build-retention-run-close-v1",
+  "complete": true,
+  "state": "sealed",
+  "classification": "completed",
+  "initialRetention": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup-controls01-guard/retention.json",
+    "bytes": 661,
+    "sha256": "f2dab597f4104ddf30b3a23039aaba7b6b2c5748cc39bfc9abc7dcffb546d6a4"
+  },
+  "process": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup-controls01-guard/process.json",
+    "bytes": 2619,
+    "sha256": "4d3a18d53125c739d6aabb4c34d239dfbc18eba00a12b49b218591c016279417"
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/close.py",
+    "bytes": 13971,
+    "sha256": "7e37ec90fe3fd4a0f990cae727052e8ccdf7880f05dcc68618da15c0d76b0fef"
+  },
+  "archiveMethod": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/archive-v02.py",
+    "bytes": 18412,
+    "sha256": "3238e0774c6c21c3de6c07bcbd71e469cbb23aaba01f99da0cb1e9f51990ad9f"
+  },
+  "qualification": null,
+  "pruneRequested": false,
+  "roots": [
+    {
+      "root": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup-controls01",
+      "keptHot": false,
+      "archiveReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase165/lookup-controls01-guard/root-00/receipt.json",
+        "bytes": 3735,
+        "sha256": "28e3bf02cdd1a77e382a521c5ea5bc3a7ebc211b5c15ce2e93a7f5e01ed7f9ba"
+      },
+      "archivedFiles": 21,
+      "plan": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase165/lookup-controls01-guard/root-00/verified/plan.json",
+        "bytes": 1741,
+        "sha256": "693dd3cd922bcd0ede65f28fca34f126a9130e5789aa6706ac576fcb6d6b0b7a"
+      },
+      "prunableFiles": 21,
+      "kept": {}
+    }
+  ],
+  "started": 1793862706.133287,
+  "guardCommitRequired": "Close is committed only when guard retention.json names this report; process.json remains immutable.",
+  "finished": 1793862706.3836615,
+  "minimumDiskFreeBytes": 5405487104
+}

@@ -1,0 +1,51 @@
+{
+  "kind": "build-retention-run-close-v1",
+  "complete": true,
+  "state": "sealed",
+  "classification": "rejected",
+  "initialRetention": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/verifier-oracle01-guard/retention.json",
+    "bytes": 658,
+    "sha256": "d94aa30d661b456dbc33bfc0b40021afaadaaa6c3cadfe3522a10022d2648ed9"
+  },
+  "process": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/verifier-oracle01-guard/process.json",
+    "bytes": 3076,
+    "sha256": "c7d63d734b7ab9c9e4b76e49d69398201940e7076790bc2fb5fbb9430d0953fc"
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/close.py",
+    "bytes": 13971,
+    "sha256": "7e37ec90fe3fd4a0f990cae727052e8ccdf7880f05dcc68618da15c0d76b0fef"
+  },
+  "archiveMethod": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/archive-v02.py",
+    "bytes": 18412,
+    "sha256": "3238e0774c6c21c3de6c07bcbd71e469cbb23aaba01f99da0cb1e9f51990ad9f"
+  },
+  "qualification": null,
+  "pruneRequested": false,
+  "roots": [
+    {
+      "root": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/verifier-oracle01",
+      "keptHot": false,
+      "archiveReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase165/verifier-oracle01-guard/root-00/receipt.json",
+        "bytes": 1355,
+        "sha256": "1f8bdbf95db05a83b9b413c36127c96fe8136a8902660263a2c92675a2ed9e6d"
+      },
+      "archivedFiles": 4,
+      "plan": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase165/verifier-oracle01-guard/root-00/verified/plan.json",
+        "bytes": 1743,
+        "sha256": "b2c6b2668f93f00d2ea0bafa59e918f5949f7415834fa4668016d78c04c9c633"
+      },
+      "prunableFiles": 4,
+      "kept": {}
+    }
+  ],
+  "started": 1793862716.3024294,
+  "guardCommitRequired": "Close is committed only when guard retention.json names this report; process.json remains immutable.",
+  "finished": 1793862716.623706,
+  "minimumDiskFreeBytes": 5392175104
+}

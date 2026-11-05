@@ -1,0 +1,51 @@
+{
+  "kind": "build-retention-run-close-v1",
+  "complete": true,
+  "state": "sealed",
+  "classification": "completed",
+  "initialRetention": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/map-controls01-guard/retention.json",
+    "bytes": 655,
+    "sha256": "0f4c6342362014899a0c0dc19773581fc17ee894ce68a78d47942ed1554aa9a9"
+  },
+  "process": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/map-controls01-guard/process.json",
+    "bytes": 2633,
+    "sha256": "5b51ff32b412722172582583f4f7872d043925bb48455ac8af963cdec0beef9d"
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/close.py",
+    "bytes": 13971,
+    "sha256": "7e37ec90fe3fd4a0f990cae727052e8ccdf7880f05dcc68618da15c0d76b0fef"
+  },
+  "archiveMethod": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/archive-v02.py",
+    "bytes": 18412,
+    "sha256": "3238e0774c6c21c3de6c07bcbd71e469cbb23aaba01f99da0cb1e9f51990ad9f"
+  },
+  "qualification": null,
+  "pruneRequested": false,
+  "roots": [
+    {
+      "root": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/map-controls01",
+      "keptHot": false,
+      "archiveReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase165/map-controls01-guard/root-00/receipt.json",
+        "bytes": 3702,
+        "sha256": "9f407de5ff0d7fc9a93ceef2cbb1af624d05c1ec15f9b76e491d54c12d3ed686"
+      },
+      "archivedFiles": 21,
+      "plan": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase165/map-controls01-guard/root-00/verified/plan.json",
+        "bytes": 1726,
+        "sha256": "9d40f7e17dff92b6796a4ead094c0858a93b81d325c9ee0da3fdbc325de24b98"
+      },
+      "prunableFiles": 21,
+      "kept": {}
+    }
+  ],
+  "started": 1793862709.6233113,
+  "guardCommitRequired": "Close is committed only when guard retention.json names this report; process.json remains immutable.",
+  "finished": 1793862709.8626146,
+  "minimumDiskFreeBytes": 5402324992
+}

@@ -1,3 +1,36 @@
+# Phase165 — source capability cuts and reciprocal equality, 2026-11-05
+
+[Report](../implementation/phase165/README.md) ·
+[Metrics/evidence](../implementation/phase165/metrics.json) ·
+[Design](../design/phase165/README.md).
+
+Four private bendc treatments, same runtime/compiler flags, checked acquisition,
+same source/Base and exact outcomes: no-memo neutral; portable Map 1.151× full
+checking/reporting; portable Map+String 1.756×; our exact safe equality transplanted
+into bendc 1.015×. Two alternating pairs per timed source; 72 complete outcomes
+pass independently established gates. No isolated primitive timing is substituted
+for the complete request. Native call closure audits confirm each treatment.
+
+Source transplantation required legal publication order and three checked helper
+rewrites for copied Base recursion. Three refused lookup versions remain intact;
+no new unsafe annotations, unchecked mode or Base trust exemption. Our reciprocal
+three-function predicate needs only renaming and already avoids the reconstructed
+String pairs in the slower Base fallback. This rules out a large whole-request
+algorithmic equality penalty in the tested bendc configuration, not all runtime
+representation/calling costs in our compiler.
+
+Same checked NR_Request through mature C and QBE: QBE/C 1.26–1.57× Map and
+1.77–2.04× verifier in two hosted screens, complete exact products and four
+independent native IO outcomes. Reverse order omits earlier graph capture, so
+warmup is a stated confound. Explicit matching Phase152 N2 resolves a preserved
+older-image oracle mismatch. No full cold-build result or production change.
+
+31 guarded jobs, 946.94s; four private bendc acquisitions, zero full self-hosting
+campaigns. Peak sampled process-tree RSS 1.16 GiB, target disk reserve maintained.
+All runs classified/sealed; reviewed existing archives reclaimed 146.48 MiB.
+Next investigate executed ownership/call/representation work around the existing
+equality/lookup and attribute backend work from the shared-request boundary.
+
 # Phase164 — mixed direct compilation and cheaper composition, 2026-11-05
 
 [Report](../implementation/phase164/README.md) ·

@@ -1,0 +1,191 @@
+{
+  "kind": "phase165-backend-replay",
+  "version": 1,
+  "complete": true,
+  "targetsRun": false,
+  "apiReceipt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/composite-api01/report.json",
+    "bytes": 13139,
+    "sha256": "184ad279e29193730528731368f830fe2b6021c56a34abcfa839bea19fe44f12"
+  },
+  "api": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/composite-api01/api.mjs",
+    "bytes": 3939108,
+    "sha256": "b5bda080852437823a6d7391c09bef8b467694f388daa5a18627ad480f9e50df"
+  },
+  "requiredExports": [
+    "p86_prepare",
+    "p86_plan",
+    "p134e_plan",
+    "p134e_begin",
+    "p134e_next",
+    "nr_compile_prepared",
+    "ne_runtime_prepare",
+    "kf_source",
+    "nc_foreign_source"
+  ],
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-map-churn-128.bend",
+    "bytes": 1817,
+    "sha256": "99892f1c473588fcc814f17594b9d173343ef195bda6378113dbf088bea01120"
+  },
+  "name": "coverage-map-churn-128",
+  "expectedStdout": "3714872484\n",
+  "expectedReason": "Frozen original Map point",
+  "providers": {
+    "base": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "bytes": 75064,
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+    },
+    "bun": {
+      "file": "selfhost/.assets/bin/bun",
+      "bytes": 88979072,
+      "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b",
+      "executable": true
+    },
+    "c-runtime": {
+      "file": "selfhost/src/runtime/native/runtime.c",
+      "bytes": 83683,
+      "sha256": "9e1c59078878be94052cb4d2d63a713e19e29b41ed3f94b034f2175a50efd0a9"
+    },
+    "c-effect-args": {
+      "file": "selfhost/src/runtime/native/effs/args.c",
+      "bytes": 351,
+      "sha256": "7209a5fa11396fa8b0667a6738c913c40f554797e442c847a25e13a5f69676e0"
+    },
+    "c-effect-print": {
+      "file": "selfhost/src/runtime/native/effs/print.c",
+      "bytes": 397,
+      "sha256": "709500d2ace6e2eaeec0f5f1e4373d4ec5e402b3c1e289bd70dfef7e2a635b26"
+    },
+    "c-effect-now": {
+      "file": "selfhost/src/runtime/native/effs/now.c",
+      "bytes": 198,
+      "sha256": "da5fde65701c4fadc7560625c9615b4d60b2eefbd7b6bbe1aedda61887b825b9"
+    }
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase165/tools/prepare-backend.py",
+      "bytes": 4403,
+      "sha256": "541cad1a23d3e595b5dac73f9164ef4754babcb72c514301960b17f680c6c1df"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase165/tools/backend-replay.mjs",
+      "bytes": 6377,
+      "sha256": "af51a16f6841d848f1fb81f2ffa0702c806647bdfa9bfae3ed1b1ff35c3d8729"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase147/tools/support.mjs",
+      "bytes": 4533,
+      "sha256": "befa0df96e95be6ff597447d645e8e7d877347063900a6024cfb0594a74e9cc1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase154/tools/graph.mjs",
+      "bytes": 2130,
+      "sha256": "80679fdf9ac770ef5039b0f2ad24e24212610bd49582448e9f6dde8305cf8445"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/composite-api01/report.json",
+      "bytes": 13139,
+      "sha256": "184ad279e29193730528731368f830fe2b6021c56a34abcfa839bea19fe44f12"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase154/capture-plan05/capture/report.json",
+      "bytes": 17298,
+      "sha256": "ad1cb72a4a208d402dbc99686966efb539a5a783cda405392005be4b7e53df86"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/manifests/assets-native.json",
+      "bytes": 17657,
+      "sha256": "4b8181ff0a8917d5eac5d5a1976385449e2c3962e503335e3800adb154fddaa0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/composite-api01/api.mjs",
+      "bytes": 3939108,
+      "sha256": "b5bda080852437823a6d7391c09bef8b467694f388daa5a18627ad480f9e50df"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/composite01/compiler.bend",
+      "bytes": 3085157,
+      "sha256": "027e15041035522ed7e40ef971eff75f24a09ef6a00e3f8fe335839f94bcb8a8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-map-churn-128.bend",
+      "bytes": 1817,
+      "sha256": "99892f1c473588fcc814f17594b9d173343ef195bda6378113dbf088bea01120"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "bytes": 75064,
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+    },
+    {
+      "file": "selfhost/.assets/bin/bun",
+      "bytes": 88979072,
+      "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b",
+      "executable": true
+    },
+    {
+      "file": "selfhost/src/runtime/native/runtime.c",
+      "bytes": 83683,
+      "sha256": "9e1c59078878be94052cb4d2d63a713e19e29b41ed3f94b034f2175a50efd0a9"
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/args.c",
+      "bytes": 351,
+      "sha256": "7209a5fa11396fa8b0667a6738c913c40f554797e442c847a25e13a5f69676e0"
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/print.c",
+      "bytes": 397,
+      "sha256": "709500d2ace6e2eaeec0f5f1e4373d4ec5e402b3c1e289bd70dfef7e2a635b26"
+    },
+    {
+      "file": "selfhost/src/runtime/native/effs/now.c",
+      "bytes": 198,
+      "sha256": "da5fde65701c4fadc7560625c9615b4d60b2eefbd7b6bbe1aedda61887b825b9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase156/pilot01/oracle-map/report.json",
+      "bytes": 9752,
+      "sha256": "585bc21f00f67432ae42297e734e2d29c7eb24acc251ad8f33a0295fd175f6d3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase156/pilot01/oracle-map/program.ssa",
+      "bytes": 1028598,
+      "sha256": "eba759e043db9d1dcb5883e51c2120d99e103cac70e334fa327da1458d7f7fda"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-map-churn-128.stdout",
+      "bytes": 11,
+      "sha256": "f10e5e29d4f448b0f6aeef222b95d6790cf410196cd6d64d27156e08c7ecafb8"
+    }
+  ],
+  "qbeOracle": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase156/pilot01/oracle-map/program.ssa",
+    "bytes": 1028598,
+    "sha256": "eba759e043db9d1dcb5883e51c2120d99e103cac70e334fa327da1458d7f7fda"
+  },
+  "expectedFile": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-map-churn-128.stdout",
+    "bytes": 11,
+    "sha256": "f10e5e29d4f448b0f6aeef222b95d6790cf410196cd6d64d27156e08c7ecafb8"
+  },
+  "executionArgs": [
+    "--threads",
+    "1",
+    "--gpu",
+    "off"
+  ],
+  "bounds": {
+    "graphBytes": 33554432,
+    "productBytes": 16777216,
+    "pieces": 1000000
+  },
+  "acquisition": {
+    "required": false,
+    "reason": "Exact retained checked API exports all nine roots"
+  }
+}

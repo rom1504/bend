@@ -1,0 +1,51 @@
+{
+  "kind": "build-retention-run-close-v1",
+  "complete": true,
+  "state": "sealed",
+  "classification": "completed",
+  "initialRetention": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup-full01-guard/retention.json",
+    "bytes": 653,
+    "sha256": "b31c45408a283fa336ef132502818165e3ab36f4bee6201f219a5414434b5a4f"
+  },
+  "process": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup-full01-guard/process.json",
+    "bytes": 2634,
+    "sha256": "fc212031ffc9373c7ba4729109ec9d549939577e6963c481887e0522629ae5ba"
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/close.py",
+    "bytes": 13971,
+    "sha256": "7e37ec90fe3fd4a0f990cae727052e8ccdf7880f05dcc68618da15c0d76b0fef"
+  },
+  "archiveMethod": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/archive-v02.py",
+    "bytes": 18412,
+    "sha256": "3238e0774c6c21c3de6c07bcbd71e469cbb23aaba01f99da0cb1e9f51990ad9f"
+  },
+  "qualification": null,
+  "pruneRequested": false,
+  "roots": [
+    {
+      "root": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup-full01",
+      "keptHot": false,
+      "archiveReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase165/lookup-full01-guard/root-00/receipt.json",
+        "bytes": 2078,
+        "sha256": "5daf3444d3be4018f33b355e3246683bbfadb16e16da7ef2fa2ccc04dcb459b7"
+      },
+      "archivedFiles": 9,
+      "plan": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase165/lookup-full01-guard/root-00/verified/plan.json",
+        "bytes": 1721,
+        "sha256": "a38057d83096ee9248798c23358fde5558a7475d62e991e60c5c0e8325cc5dd2"
+      },
+      "prunableFiles": 9,
+      "kept": {}
+    }
+  ],
+  "started": 1793862706.5361688,
+  "guardCommitRequired": "Close is committed only when guard retention.json names this report; process.json remains immutable.",
+  "finished": 1793862707.0942535,
+  "minimumDiskFreeBytes": 5405290496
+}

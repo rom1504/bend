@@ -1,0 +1,51 @@
+{
+  "kind": "build-retention-run-close-v1",
+  "complete": true,
+  "state": "sealed",
+  "classification": "completed",
+  "initialRetention": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/map04-guard/retention.json",
+    "bytes": 638,
+    "sha256": "9a7e596264a7497717fe2a5799e279159554ead1143f5300625e205c1ce546b8"
+  },
+  "process": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/map04-guard/process.json",
+    "bytes": 2968,
+    "sha256": "8fabf85a158904dbbfd19ece4d7d5bd053229173ba399282e771c7783aee3011"
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/close.py",
+    "bytes": 13971,
+    "sha256": "7e37ec90fe3fd4a0f990cae727052e8ccdf7880f05dcc68618da15c0d76b0fef"
+  },
+  "archiveMethod": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/archive-v02.py",
+    "bytes": 18412,
+    "sha256": "3238e0774c6c21c3de6c07bcbd71e469cbb23aaba01f99da0cb1e9f51990ad9f"
+  },
+  "qualification": null,
+  "pruneRequested": false,
+  "roots": [
+    {
+      "root": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/map04",
+      "keptHot": false,
+      "archiveReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase165/map04-guard/root-00/receipt.json",
+        "bytes": 1607,
+        "sha256": "d88bc92a9b398b078308c307495ed57c967c6202320e2088f3f2cfcd08ea1200"
+      },
+      "archivedFiles": 6,
+      "plan": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase165/map04-guard/root-00/verified/plan.json",
+        "bytes": 1684,
+        "sha256": "04439c09b4858176db67d795474c2907c78781f66ffc62de379fb9cf56b6a119"
+      },
+      "prunableFiles": 6,
+      "kept": {}
+    }
+  ],
+  "started": 1793862710.477384,
+  "guardCommitRequired": "Close is committed only when guard retention.json names this report; process.json remains immutable.",
+  "finished": 1793862711.1569345,
+  "minimumDiskFreeBytes": 5399457792
+}

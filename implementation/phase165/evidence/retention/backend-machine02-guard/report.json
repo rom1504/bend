@@ -1,0 +1,40 @@
+{
+  "kind": "build-retention-run-close-v1",
+  "complete": true,
+  "state": "sealed",
+  "classification": "failed",
+  "initialRetention": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine02-guard/retention.json",
+    "bytes": 659,
+    "sha256": "0d23275a6242e1f694057d14546136d6d43987c4c3cd91830811ddffef503451"
+  },
+  "process": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine02-guard/process.json",
+    "bytes": 2292,
+    "sha256": "579ad2960263ea497f08074b164e14fbbab36e61609fd99e49e038d322f0aaaa"
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/close.py",
+    "bytes": 13971,
+    "sha256": "7e37ec90fe3fd4a0f990cae727052e8ccdf7880f05dcc68618da15c0d76b0fef"
+  },
+  "archiveMethod": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/archive-v02.py",
+    "bytes": 18412,
+    "sha256": "3238e0774c6c21c3de6c07bcbd71e469cbb23aaba01f99da0cb1e9f51990ad9f"
+  },
+  "qualification": null,
+  "pruneRequested": false,
+  "roots": [
+    {
+      "root": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine02",
+      "keptHot": false,
+      "emptyOrAbsent": true,
+      "archivedFiles": 0
+    }
+  ],
+  "started": 1793862700.7949362,
+  "guardCommitRequired": "Close is committed only when guard retention.json names this report; process.json remains immutable.",
+  "finished": 1793862700.832354,
+  "minimumDiskFreeBytes": 5415276544
+}

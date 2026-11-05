@@ -1,0 +1,51 @@
+{
+  "kind": "build-retention-run-close-v1",
+  "complete": true,
+  "state": "sealed",
+  "classification": "rejected",
+  "initialRetention": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup03-guard/retention.json",
+    "bytes": 641,
+    "sha256": "5fc6b6a848976067b387867f65714557399db870f29d244d8a7f2bb4bae1202f"
+  },
+  "process": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup03-guard/process.json",
+    "bytes": 2970,
+    "sha256": "3e3cda31bf29158130e9e4076cc7a8c7998948c393e67bbe72535c3888c51c62"
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/close.py",
+    "bytes": 13971,
+    "sha256": "7e37ec90fe3fd4a0f990cae727052e8ccdf7880f05dcc68618da15c0d76b0fef"
+  },
+  "archiveMethod": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/archive-v02.py",
+    "bytes": 18412,
+    "sha256": "3238e0774c6c21c3de6c07bcbd71e469cbb23aaba01f99da0cb1e9f51990ad9f"
+  },
+  "qualification": null,
+  "pruneRequested": false,
+  "roots": [
+    {
+      "root": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup03",
+      "keptHot": false,
+      "archiveReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase165/lookup03-guard/root-00/receipt.json",
+        "bytes": 1209,
+        "sha256": "51e96d9ad50b196789c102aeab5a99d4c4b55c464359fb63d6ea9f522a6dbaf4"
+      },
+      "archivedFiles": 3,
+      "plan": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase165/lookup03-guard/root-00/verified/plan.json",
+        "bytes": 1692,
+        "sha256": "e18afe70ec035b3253a4fa2e6153455a0b5959943bf215f5a7bd1c37432303e2"
+      },
+      "prunableFiles": 3,
+      "kept": {}
+    }
+  ],
+  "started": 1793862707.9814076,
+  "guardCommitRequired": "Close is committed only when guard retention.json names this report; process.json remains immutable.",
+  "finished": 1793862708.220423,
+  "minimumDiskFreeBytes": 5405155328
+}

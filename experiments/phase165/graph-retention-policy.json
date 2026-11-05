@@ -1,0 +1,24 @@
+{
+  "kind": "phase165-reviewed-cold-graph-retention",
+  "allowedRoots": [
+    "selfhost/build/phase165/backend-plan02/replay",
+    "selfhost/build/phase165/backend-plan03/replay",
+    "selfhost/build/phase165/backend-plan04/replay"
+  ],
+  "archiveRoots": {
+    "selfhost/build-retention/phase165/backend-plan02-replay-guard/root-00/receipt.json": "selfhost/build/phase165/backend-plan02/replay",
+    "selfhost/build-retention/phase165/backend-plan03-replay-guard/root-00/receipt.json": "selfhost/build/phase165/backend-plan03/replay",
+    "selfhost/build-retention/phase165/backend-plan04-replay-guard/root-00/receipt.json": "selfhost/build/phase165/backend-plan04/replay"
+  },
+  "keepPrefixes": [
+    "selfhost/build/phase165/backend-plan02/replay/program.c",
+    "selfhost/build/phase165/backend-plan02/replay/program.ssa",
+    "selfhost/build/phase165/backend-plan02/replay/report.json",
+    "selfhost/build/phase165/backend-plan03/replay/program.ssa",
+    "selfhost/build/phase165/backend-plan03/replay/report.json",
+    "selfhost/build/phase165/backend-plan04/replay/program.c",
+    "selfhost/build/phase165/backend-plan04/replay/program.ssa",
+    "selfhost/build/phase165/backend-plan04/replay/report.json"
+  ],
+  "scope": "Only three fully archived captured request.graph.json files; every source, executable, C/QBE output, report and log remains hot. Future capture consumers must restore exact graph bytes first."
+}

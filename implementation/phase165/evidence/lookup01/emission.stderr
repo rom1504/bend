@@ -1,0 +1,13 @@
+SOME PROOFS FAIL
+Error:
+- expected : a filled definition (an unfilled law is a dead claim: live code cannot use it)
+- observed : p165portable.String.eq
+Context:
+- h : String
+- t : List<&2, String>
+- x : String
+Location: Str.has
+19 |     case +h <> t:
+20>|       Bool.pick(Unit -> Bool, p165portable.String.eq(h, x), u => True{}, u => Str.has(t, x))(Unit{})
+   |                               ^^^^^^^^^^^^^^^^^^^^^^
+21 | 

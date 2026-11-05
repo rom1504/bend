@@ -1,0 +1,31 @@
+[
+  {
+    "name": "complete-backend-replay",
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "--out",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan06/replay-guard",
+      "--run-root",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan06/replay",
+      "--seconds",
+      "90",
+      "--disk-mib",
+      "40",
+      "--rss-mib",
+      "3072",
+      "--available-mib",
+      "16384",
+      "--file-mib",
+      "64",
+      "--cpu",
+      "3",
+      "--",
+      "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+      "/home/ai/bend2/build/publish/bend/experiments/phase165/tools/backend-replay-v2.mjs",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan06/plan.json",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan06/replay"
+    ]
+  }
+]

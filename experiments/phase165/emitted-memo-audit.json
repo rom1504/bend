@@ -1,0 +1,302 @@
+{
+  "kind": "phase165-independent-emitted-memo-audit",
+  "targetsRunByAudit": false,
+  "scope": "Checked emitted C and source/acquisition provenance; not workload equivalence, machine qualification, proof or timing conclusion. Counts are static.",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase165/tools/acquire.py",
+      "bytes": 3722,
+      "sha256": "4c0ef9640c30206792e8e33309b5e2ce5e70ca924e9b6fc51cf0a530e90d0119"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-source01/manifest.json",
+      "bytes": 42102,
+      "sha256": "f03b1e679e90d80dd2b6a58cb642294dd5d3aa48e38946ca4d0174172ec46f78"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/source-effects01/report.json",
+      "bytes": 20528,
+      "sha256": "b9d38bd86960f454dd309229d1c5f10ab9397adceae09748a7326be238ba854c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase160/capped-seed01/report.json",
+      "bytes": 3167,
+      "sha256": "5546255e734142368930a89a7cb1b6e030b6154a79d8864d9aced38ebfff9839"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase159/refill-prepare01/report.json",
+      "bytes": 1016,
+      "sha256": "255da9fe44b4266866f3ef715c9d266d87485028315bacf85e8cf9116f6dab6a"
+    }
+  ],
+  "sourcePreparationAndSupportProductsVerified": true,
+  "originalExactSeedC": true,
+  "nativeTableBodyExact": true,
+  "mapStringLexicalInventoryExact": true,
+  "lexicalMethod": "Mask C string/character literals and both comment forms while preserving offsets; identify top-level generated function definitions and balanced braces; count memo calls only inside function bodies and all memo identifiers across masked file. Hash exact selected bodies. Map/String inventory includes declarations and definitions as well as calls, so it is a static unchanged-frontier screen only.",
+  "roles": {
+    "original02": {
+      "c": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/original02/program.c",
+        "bytes": 4628175,
+        "sha256": "b41edf49ccdb3846853955e5b89cf13c199b38e5d6fbe54d2c492a84fef519e3"
+      },
+      "acquisitionPolicy": {
+        "BEND_RC": "0",
+        "BEND_NO_FREE": "1",
+        "BEND_AUTO_PAR": "0"
+      },
+      "checkedEmission": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase160/capped-seed01/bendc",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-source01/base-acquisition/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-source01/original/bendc.bend"
+        ],
+        "limitSeconds": 60,
+        "complete": true,
+        "started": 1793859631.205848,
+        "exitCode": 0,
+        "userSeconds": 11.157161,
+        "systemSeconds": 0.240024,
+        "peakRssKiB": 1145600,
+        "timedOut": false,
+        "seconds": 11.39914206508547,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/original02/program.c",
+          "bytes": 4628175,
+          "sha256": "b41edf49ccdb3846853955e5b89cf13c199b38e5d6fbe54d2c492a84fef519e3"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/original02/emission.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "acquisitionCompleteAtAudit": true,
+      "allReceiptInputPinsVerified": true,
+      "functions": {
+        "D_Chk_dwnf_drun": {
+          "line": 19613,
+          "bytes": 25864,
+          "sha256": "92eea7eda50ce945f4630a6688418dae2e3f95cc441b43286c152db01d15ee77"
+        },
+        "F_Chk_dterm__cell": {
+          "line": 20194,
+          "bytes": 234,
+          "sha256": "bd23aacaeaf87d2209b5d546c1abe12003f05c61c20ec29ebf35f0bdd3c73da0"
+        },
+        "F_Natives": {
+          "line": 47912,
+          "bytes": 51,
+          "sha256": "6e4355ee61540844ae6ac1e00c2447c55a52ca36c022cedce2bed54e3bc266a8"
+        },
+        "F_Chk_dcmp_drun": {
+          "line": 64705,
+          "bytes": 14297,
+          "sha256": "408fc7fa2c2d089cfa3d6f1979a9395de79af11981a06d22400d4eae47b34cd9"
+        }
+      },
+      "nativeMemoCallSites": [
+        {
+          "owner": "D_Chk_dwnf_drun",
+          "callee": "F_Chk_dmemo_dhas",
+          "line": 19950
+        },
+        {
+          "owner": "D_Chk_dwnf_drun",
+          "callee": "F_Chk_dmemo_dget",
+          "line": 19952
+        },
+        {
+          "owner": "D_Chk_dwnf_drun",
+          "callee": "F_Chk_dmemo_dset",
+          "line": 20011
+        },
+        {
+          "owner": "F_Chk_dterm__cell",
+          "callee": "F_Chk_dmemo_dnew",
+          "line": 20200
+        },
+        {
+          "owner": "W_Chk_dmemo_dnew",
+          "callee": "F_Chk_dmemo_dnew",
+          "line": 20204
+        },
+        {
+          "owner": "W_Chk_dmemo_dset",
+          "callee": "F_Chk_dmemo_dset",
+          "line": 20294
+        },
+        {
+          "owner": "W_Chk_dmemo_dget",
+          "callee": "F_Chk_dmemo_dget",
+          "line": 20909
+        },
+        {
+          "owner": "W_Chk_dmemo_dhas",
+          "callee": "F_Chk_dmemo_dhas",
+          "line": 20910
+        },
+        {
+          "owner": "F_Chk_dcmp_drun",
+          "callee": "F_Chk_dmemo_dsame",
+          "line": 64739
+        },
+        {
+          "owner": "F_Chk_dcmp_drun",
+          "callee": "F_Chk_dmemo_dlink",
+          "line": 64751
+        },
+        {
+          "owner": "W_Chk_dmemo_dlink",
+          "callee": "F_Chk_dmemo_dlink",
+          "line": 65098
+        },
+        {
+          "owner": "W_Chk_dmemo_dsame",
+          "callee": "F_Chk_dmemo_dsame",
+          "line": 65099
+        }
+      ],
+      "nativeMemoCodeReferences": 12,
+      "portableMemoCodeReferences": 0,
+      "nativeTable": {
+        "symbol": "K16152",
+        "line": 47911,
+        "bodySha256": "248222e69deee6a58e28d43350b861878c606e567292513942a4379fd26bab3a",
+        "memoNames": [
+          "Chk.memo.new",
+          "Chk.memo.has",
+          "Chk.memo.get",
+          "Chk.memo.set",
+          "Chk.memo.same",
+          "Chk.memo.link"
+        ]
+      },
+      "mapStringLexicalFunctionOccurrenceCount": 5340,
+      "mapStringLexicalInventorySha256": "58bbf4fdc585b778ce91290e93c5f25026c7488b5280abc7eb5a2a42a036500d",
+      "finalAcquisitionReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/original02/report.json",
+        "bytes": 23069,
+        "sha256": "bcb76cfc475fe806647ec368e9441ad1ecab549c98bfd0f25529c1fda9ee9929"
+      }
+    },
+    "memo01": {
+      "c": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo01/program.c",
+        "bytes": 4626981,
+        "sha256": "9ac086b9102248545cb978d0bd9fe6998893bfd22566798be9bf80c81ace5f48"
+      },
+      "acquisitionPolicy": {
+        "BEND_RC": "0",
+        "BEND_NO_FREE": "1",
+        "BEND_AUTO_PAR": "0"
+      },
+      "checkedEmission": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase160/capped-seed01/bendc",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-source01/base-acquisition/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-source01/candidate/bendc.bend"
+        ],
+        "limitSeconds": 60,
+        "complete": true,
+        "started": 1793859660.4258964,
+        "exitCode": 0,
+        "userSeconds": 11.023011,
+        "systemSeconds": 0.24806699999999998,
+        "peakRssKiB": 1143392,
+        "timedOut": false,
+        "seconds": 11.273245435208082,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo01/program.c",
+          "bytes": 4626981,
+          "sha256": "9ac086b9102248545cb978d0bd9fe6998893bfd22566798be9bf80c81ace5f48"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo01/emission.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "acquisitionCompleteAtAudit": true,
+      "allReceiptInputPinsVerified": true,
+      "functions": {
+        "D_Chk_dwnf_drun": {
+          "line": 19608,
+          "bytes": 25508,
+          "sha256": "d899aeb4ca5e84d1f7bd7a3099bc9d9804eb8c4bc41e0aa089dcefe574f2ff08"
+        },
+        "F_Chk_dterm__cell": {
+          "line": 20185,
+          "bytes": 218,
+          "sha256": "e40ff53d644e43d957b66b648ab35f3e9500fe5eabf0fa38de0b4b40e522dcc0"
+        },
+        "F_Natives": {
+          "line": 47899,
+          "bytes": 51,
+          "sha256": "a5a0a4e3f8bd25df03c71e93bba50fb3377b70524312b5df47429508c616e8df"
+        },
+        "F_Chk_dcmp_drun": {
+          "line": 64692,
+          "bytes": 14089,
+          "sha256": "0009ecadbf103b1a219c2ea11be2e38e083620406467cf146492b69eac9a5c10"
+        }
+      },
+      "nativeMemoCallSites": [],
+      "nativeMemoCodeReferences": 0,
+      "portableMemoCodeReferences": 0,
+      "nativeTable": {
+        "symbol": "K16147",
+        "line": 47898,
+        "bodySha256": "248222e69deee6a58e28d43350b861878c606e567292513942a4379fd26bab3a",
+        "memoNames": [
+          "Chk.memo.new",
+          "Chk.memo.has",
+          "Chk.memo.get",
+          "Chk.memo.set",
+          "Chk.memo.same",
+          "Chk.memo.link"
+        ]
+      },
+      "mapStringLexicalFunctionOccurrenceCount": 5340,
+      "mapStringLexicalInventorySha256": "58bbf4fdc585b778ce91290e93c5f25026c7488b5280abc7eb5a2a42a036500d",
+      "finalAcquisitionReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo01/report.json",
+        "bytes": 23886,
+        "sha256": "65e42583df79637fb0dbadc44962316c2b2ac727e5686fc7051a01e2555c229c"
+      },
+      "machineCommand": [
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "-O2",
+        "-w",
+        "-isystem",
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+        "-I",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase159/refill-prepare01",
+        "-I",
+        "selfhost/build/phase157/vendor/rt",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo01/program.c",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo01/bendc",
+        "-lm",
+        "-lpthread"
+      ]
+    }
+  },
+  "machineCommandExactModuloInputOutput": true,
+  "candidateBinary": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo01/bendc",
+    "bytes": 4307776,
+    "sha256": "94c88365f9d1c37dee4d2af575fb29c15d192a035ce0b394863d7cb565259e01"
+  }
+}

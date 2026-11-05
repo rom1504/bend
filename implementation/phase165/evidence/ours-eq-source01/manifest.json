@@ -1,0 +1,517 @@
+{
+  "kind": "phase165-exact-ours-equality-transplant",
+  "version": 1,
+  "complete": true,
+  "targetsRun": false,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/experiments/phase165/tools/prepare-ours-equality.py",
+    "bytes": 5433,
+    "sha256": "8b265cdc840079908f1dcd0c71fb5382af85c70101d7f91a7eee71627b43a31c"
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase165/tools/prepare-native-lookup.py",
+      "bytes": 10500,
+      "sha256": "6fa2b4d1ce742fc4e717ae00dadcac92a47f283fb6593775599f34a465741bee"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase165/tools/prepare-memo.py",
+      "bytes": 9376,
+      "sha256": "3f29febde2efc8d661a725e0554df2b07b5ca5b44c69791dd086f231dbb857fd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/core/consuming-strings.bend",
+      "bytes": 3239,
+      "sha256": "d5f4d84c7bbd4421e0d5356fe9398a6ddd34508333a402a8207765d5b018bc3c"
+    },
+    {
+      "file": "selfhost/build/phase165/memo-source01/original/bendc.bend",
+      "bytes": 1187548,
+      "sha256": "72be729fb5a27c528acc4d232314ac44c4595a86dc67d9dde47197956edabb99"
+    },
+    {
+      "file": "selfhost/build/phase165/memo-source01/original/check.bend",
+      "bytes": 310429,
+      "sha256": "786514afc1804c00371356943ac6790c16c04c04551e7ab8e0d8f6468e22bf41"
+    },
+    {
+      "file": "selfhost/build/phase165/memo-source01/original/core.bend",
+      "bytes": 69163,
+      "sha256": "776ec5d81269d74ab3e8da0ad0f748e0f0e48695aae667a5d57ed033c433a1b7"
+    },
+    {
+      "file": "selfhost/build/phase165/memo-source01/original/asm.bend",
+      "bytes": 44202,
+      "sha256": "91794842d83c54362a756d0a759ea8fc4979b889184567cc543b640fb6f7a2f9"
+    },
+    {
+      "file": "selfhost/build/phase165/memo-source01/original/rt/rtjs.bend",
+      "bytes": 26110,
+      "sha256": "cb6d37062e77441383ec205d0a89e8bbaa3ac38b58dc0da8764bb6debfeffd24"
+    },
+    {
+      "file": "selfhost/build/phase165/memo-source01/original/rt/rtchan.bend",
+      "bytes": 3144,
+      "sha256": "34ac7e6bb3a91203ccee8fc7d66825aeba611766d51ba62c7ddffa274e50a51f"
+    }
+  ],
+  "policies": {
+    "checkerStringEq": "exact-safe-ours-predicate",
+    "maps": "native",
+    "memo": "native"
+  },
+  "definitions": [
+    {
+      "name": "p88_string_eq_go",
+      "sourceStart": 203,
+      "sourceEnd": 556,
+      "sourceSha256": "22044bdebde1293a87da15b837df67df1bd5777fbf57de2fa2736bc9fc1622d5",
+      "privateSha256": "bd278c9a1a321e5a67bb80444b48d4ee4dc6bbd420d5ce72f16193db2634a64c",
+      "edits": [
+        {
+          "originalStart": 4,
+          "originalEnd": 20,
+          "candidateStart": 4,
+          "candidateEnd": 29,
+          "old": "p88_string_eq_go",
+          "new": "p165ours.p88_string_eq_go"
+        },
+        {
+          "originalStart": 307,
+          "originalEnd": 323,
+          "candidateStart": 316,
+          "candidateEnd": 341,
+          "old": "p88_string_eq_go",
+          "new": "p165ours.p88_string_eq_go"
+        }
+      ]
+    },
+    {
+      "name": "p98_eq_finish",
+      "sourceStart": 556,
+      "sourceEnd": 632,
+      "sourceSha256": "a690d3a27ca2442c8551dcdfa25af1887e965d16a6371c77063cadae03367c30",
+      "privateSha256": "da7264605934cfe68559ded82a84a8efe6761733c62efb2226e961f6614d971b",
+      "edits": [
+        {
+          "originalStart": 4,
+          "originalEnd": 17,
+          "candidateStart": 4,
+          "candidateEnd": 26,
+          "old": "p98_eq_finish",
+          "new": "p165ours.p98_eq_finish"
+        }
+      ]
+    },
+    {
+      "name": "p88_string_eq",
+      "sourceStart": 632,
+      "sourceEnd": 738,
+      "sourceSha256": "aadea14b206240221b78c941faa4b267f6f4eaa9487b8a2d3ba559cbfe7f0014",
+      "privateSha256": "05dfa172448ace50a198cee3d8da9b37390d6d5a2d35fecc39ae67f11d82de95",
+      "edits": [
+        {
+          "originalStart": 4,
+          "originalEnd": 17,
+          "candidateStart": 4,
+          "candidateEnd": 26,
+          "old": "p88_string_eq",
+          "new": "p165ours.p88_string_eq"
+        },
+        {
+          "originalStart": 53,
+          "originalEnd": 66,
+          "candidateStart": 62,
+          "candidateEnd": 84,
+          "old": "p98_eq_finish",
+          "new": "p165ours.p98_eq_finish"
+        },
+        {
+          "originalStart": 67,
+          "originalEnd": 83,
+          "candidateStart": 85,
+          "candidateEnd": 110,
+          "old": "p88_string_eq_go",
+          "new": "p165ours.p88_string_eq_go"
+        }
+      ]
+    }
+  ],
+  "checkerEdits": [
+    {
+      "originalStart": 487,
+      "originalEnd": 496,
+      "candidateStart": 487,
+      "candidateEnd": 509,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 2309,
+      "originalEnd": 2318,
+      "candidateStart": 2322,
+      "candidateEnd": 2344,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 14399,
+      "originalEnd": 14408,
+      "candidateStart": 14425,
+      "candidateEnd": 14447,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 21326,
+      "originalEnd": 21335,
+      "candidateStart": 21365,
+      "candidateEnd": 21387,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 21779,
+      "originalEnd": 21788,
+      "candidateStart": 21831,
+      "candidateEnd": 21853,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 23206,
+      "originalEnd": 23215,
+      "candidateStart": 23271,
+      "candidateEnd": 23293,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 24170,
+      "originalEnd": 24179,
+      "candidateStart": 24248,
+      "candidateEnd": 24270,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 34152,
+      "originalEnd": 34161,
+      "candidateStart": 34243,
+      "candidateEnd": 34265,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 38165,
+      "originalEnd": 38174,
+      "candidateStart": 38269,
+      "candidateEnd": 38291,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 38230,
+      "originalEnd": 38239,
+      "candidateStart": 38347,
+      "candidateEnd": 38369,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 38322,
+      "originalEnd": 38331,
+      "candidateStart": 38452,
+      "candidateEnd": 38474,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 38657,
+      "originalEnd": 38666,
+      "candidateStart": 38800,
+      "candidateEnd": 38822,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 38678,
+      "originalEnd": 38687,
+      "candidateStart": 38834,
+      "candidateEnd": 38856,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 38873,
+      "originalEnd": 38882,
+      "candidateStart": 39042,
+      "candidateEnd": 39064,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 49290,
+      "originalEnd": 49299,
+      "candidateStart": 49472,
+      "candidateEnd": 49494,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 69029,
+      "originalEnd": 69038,
+      "candidateStart": 69224,
+      "candidateEnd": 69246,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 76286,
+      "originalEnd": 76295,
+      "candidateStart": 76494,
+      "candidateEnd": 76516,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 76717,
+      "originalEnd": 76726,
+      "candidateStart": 76938,
+      "candidateEnd": 76960,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 112689,
+      "originalEnd": 112698,
+      "candidateStart": 112923,
+      "candidateEnd": 112945,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 113329,
+      "originalEnd": 113338,
+      "candidateStart": 113576,
+      "candidateEnd": 113598,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 157657,
+      "originalEnd": 157666,
+      "candidateStart": 157917,
+      "candidateEnd": 157939,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 159454,
+      "originalEnd": 159463,
+      "candidateStart": 159727,
+      "candidateEnd": 159749,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 188090,
+      "originalEnd": 188099,
+      "candidateStart": 188376,
+      "candidateEnd": 188398,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 188494,
+      "originalEnd": 188503,
+      "candidateStart": 188793,
+      "candidateEnd": 188815,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 189891,
+      "originalEnd": 189900,
+      "candidateStart": 190203,
+      "candidateEnd": 190225,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 190231,
+      "originalEnd": 190240,
+      "candidateStart": 190556,
+      "candidateEnd": 190578,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 190503,
+      "originalEnd": 190512,
+      "candidateStart": 190841,
+      "candidateEnd": 190863,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 190598,
+      "originalEnd": 190607,
+      "candidateStart": 190949,
+      "candidateEnd": 190971,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 191183,
+      "originalEnd": 191192,
+      "candidateStart": 191547,
+      "candidateEnd": 191569,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 193115,
+      "originalEnd": 193124,
+      "candidateStart": 193492,
+      "candidateEnd": 193514,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 205768,
+      "originalEnd": 205777,
+      "candidateStart": 206158,
+      "candidateEnd": 206180,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 209031,
+      "originalEnd": 209040,
+      "candidateStart": 209434,
+      "candidateEnd": 209456,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 217889,
+      "originalEnd": 217898,
+      "candidateStart": 218305,
+      "candidateEnd": 218327,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 249233,
+      "originalEnd": 249242,
+      "candidateStart": 249662,
+      "candidateEnd": 249684,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 259651,
+      "originalEnd": 259660,
+      "candidateStart": 260093,
+      "candidateEnd": 260115,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 269069,
+      "originalEnd": 269078,
+      "candidateStart": 269524,
+      "candidateEnd": 269546,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 273134,
+      "originalEnd": 273143,
+      "candidateStart": 273602,
+      "candidateEnd": 273624,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 286955,
+      "originalEnd": 286964,
+      "candidateStart": 287436,
+      "candidateEnd": 287458,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 287026,
+      "originalEnd": 287035,
+      "candidateStart": 287520,
+      "candidateEnd": 287542,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 289476,
+      "originalEnd": 289485,
+      "candidateStart": 289983,
+      "candidateEnd": 290005,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    },
+    {
+      "originalStart": 293037,
+      "originalEnd": 293046,
+      "candidateStart": 293557,
+      "candidateEnd": 293579,
+      "old": "String.eq",
+      "new": "p165ours.p88_string_eq"
+    }
+  ],
+  "insertedBytes": 655,
+  "audit": {
+    "allEditsInvertExactly": true,
+    "only41CheckerStringEqReferencesChanged": true,
+    "definitionsUnchangedModuloNames": true,
+    "noNewUnsafe": true,
+    "nativeTableAndOtherModulesUnchanged": true,
+    "CharIsEqFromOriginalBase": true
+  },
+  "products": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/ours-eq-source01/source/bendc.bend",
+      "bytes": 1187548,
+      "sha256": "72be729fb5a27c528acc4d232314ac44c4595a86dc67d9dde47197956edabb99"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/ours-eq-source01/source/check.bend",
+      "bytes": 311617,
+      "sha256": "a4784316505b41dd884f0d85e925780af1ddf40d88b4a4c5ba7b094860bb519b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/ours-eq-source01/source/core.bend",
+      "bytes": 69163,
+      "sha256": "776ec5d81269d74ab3e8da0ad0f748e0f0e48695aae667a5d57ed033c433a1b7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/ours-eq-source01/source/asm.bend",
+      "bytes": 44202,
+      "sha256": "91794842d83c54362a756d0a759ea8fc4979b889184567cc543b640fb6f7a2f9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/ours-eq-source01/source/rt/rtjs.bend",
+      "bytes": 26110,
+      "sha256": "cb6d37062e77441383ec205d0a89e8bbaa3ac38b58dc0da8764bb6debfeffd24"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/ours-eq-source01/source/rt/rtchan.bend",
+      "bytes": 3144,
+      "sha256": "34ac7e6bb3a91203ccee8fc7d66825aeba611766d51ba62c7ddffa274e50a51f"
+    }
+  ],
+  "helperFragment": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/ours-eq-source01/portable.bend",
+    "bytes": 591,
+    "sha256": "ba839cfb1ceb591f7f1fc3db9dbf4e585a97b0837140f2412f2f946bf223babb"
+  },
+  "scope": "Source preparation only; ordinary checked acquisition and independent runtime controls required."
+}

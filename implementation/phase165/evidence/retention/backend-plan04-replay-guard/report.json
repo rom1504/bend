@@ -1,0 +1,51 @@
+{
+  "kind": "build-retention-run-close-v1",
+  "complete": true,
+  "state": "sealed",
+  "classification": "completed",
+  "initialRetention": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan04/replay-guard/retention.json",
+    "bytes": 671,
+    "sha256": "68c07452bdebbbe77d9143e7a743fe0ddb49d2c505e6d758e24f06515ab341d0"
+  },
+  "process": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan04/replay-guard/process.json",
+    "bytes": 2610,
+    "sha256": "58b0a9941ef76a9eb434271d99c62724ffb5e14350a74a773fe1d6c3ca3ff5bf"
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/close.py",
+    "bytes": 13971,
+    "sha256": "7e37ec90fe3fd4a0f990cae727052e8ccdf7880f05dcc68618da15c0d76b0fef"
+  },
+  "archiveMethod": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/archive-v02.py",
+    "bytes": 18412,
+    "sha256": "3238e0774c6c21c3de6c07bcbd71e469cbb23aaba01f99da0cb1e9f51990ad9f"
+  },
+  "qualification": null,
+  "pruneRequested": false,
+  "roots": [
+    {
+      "root": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan04/replay",
+      "keptHot": false,
+      "archiveReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase165/backend-plan04-replay-guard/root-00/receipt.json",
+        "bytes": 1372,
+        "sha256": "1c6f029da1bc62daf1930f1f2334a08f73abf52d3668b848a0990cfcf645b707"
+      },
+      "archivedFiles": 4,
+      "plan": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase165/backend-plan04-replay-guard/root-00/verified/plan.json",
+        "bytes": 1766,
+        "sha256": "9ffde3baf24bcb14f7f9806be65ffefdeb3f7ce87c3cc33bf753dd7beabcf69b"
+      },
+      "prunableFiles": 4,
+      "kept": {}
+    }
+  ],
+  "started": 1793862703.4599288,
+  "guardCommitRequired": "Close is committed only when guard retention.json names this report; process.json remains immutable.",
+  "finished": 1793862704.34252,
+  "minimumDiskFreeBytes": 5408583680
+}

@@ -1,0 +1,67 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": true,
+  "started": 1793862038.6606948,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "3",
+    "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+    "/home/ai/bend2/build/publish/bend/experiments/phase165/tools/backend-replay-v2.mjs",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan06/plan.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan06/replay"
+  ],
+  "returncode": 0,
+  "rssLimitBytes": 3221225472,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 567021568,
+  "minimumAvailableBytes": 24617938944,
+  "diskBudgetBytes": 41943040,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 5432250368,
+  "minimumDiskFreeBytes": 5429010432,
+  "peakRunAllocatedBytes": 3178496,
+  "peakFilesystemDecreaseBytes": 3239936,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan06/replay"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "3",
+    "fileLimitBytes": 67108864,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+        "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b",
+        "bytes": 88979072
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/experiments/phase165/tools/backend-replay-v2.mjs",
+        "sha256": "d08f75965c7f0af4f9e5dd86d0a72dcd3a23d9fd52b35ccb6abf8ab07546a6f1",
+        "bytes": 6810
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan06/plan.json",
+        "sha256": "5d18d50fa578fceaf755fd4a31d574b122544b41c26f5ccc930f80d39e50ff82",
+        "bytes": 12838
+      }
+    ]
+  },
+  "wallSeconds": 37.72259388398379,
+  "finished": 1793862076.3831723
+}

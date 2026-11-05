@@ -1,0 +1,78 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": true,
+  "started": 1793861441.8397295,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 65536; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "3",
+    "python3",
+    "-B",
+    "experiments/phase165/tools/compare-v2.py",
+    "--acquisition",
+    "selfhost/build/phase165/original02/report.json",
+    "--acquisition",
+    "selfhost/build/phase165/lookup04/report.json",
+    "--suite",
+    "full",
+    "--rounds",
+    "2",
+    "--seconds",
+    "60",
+    "--out",
+    "selfhost/build/phase165/lookup-full01"
+  ],
+  "returncode": 0,
+  "rssLimitBytes": 2147483648,
+  "availableFloorBytes": 4294967296,
+  "peakTreeRssBytes": 1239851008,
+  "minimumAvailableBytes": 23449776128,
+  "diskBudgetBytes": 4194304,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 5446369280,
+  "minimumDiskFreeBytes": 5445468160,
+  "peakRunAllocatedBytes": 577536,
+  "peakFilesystemDecreaseBytes": 901120,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup-full01"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "3",
+    "fileLimitBytes": 67108864,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/experiments/phase165/tools/compare-v2.py",
+        "sha256": "9833b83cc78649f6229ba45902adff7e129328e3124d37946416e3ac9d9a1411",
+        "bytes": 6037
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/original02/report.json",
+        "sha256": "bcb76cfc475fe806647ec368e9441ad1ecab549c98bfd0f25529c1fda9ee9929",
+        "bytes": 23069
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup04/report.json",
+        "sha256": "206a91cb99b7997bba4712636f6476efcbbe0220d594d6f14865118f992f955d",
+        "bytes": 23889
+      }
+    ]
+  },
+  "wallSeconds": 93.71913118287921,
+  "finished": 1793861535.5586789
+}

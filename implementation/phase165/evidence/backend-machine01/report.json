@@ -1,0 +1,206 @@
+{
+  "kind": "phase165-backend-machine",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase165/tools/backend-machine.py",
+      "bytes": 4128,
+      "sha256": "f345784cdd45445a40e5364bb8b90d252b4827c1ca8c00e1cf0b968ea7b8f6d0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan02/replay/report.json",
+      "bytes": 6300,
+      "sha256": "1c5ef5d1cccd6a331c86b1731afd6d5ba8214bd3d25fd1a43a307be7d1e5ef8b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/manifests/assets-native.json",
+      "bytes": 17657,
+      "sha256": "4b8181ff0a8917d5eac5d5a1976385449e2c3962e503335e3800adb154fddaa0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/native.py",
+      "bytes": 13731,
+      "sha256": "bc53fc000d45574e913904f7e899d785e5c98050b0942d14a81118b9ab009e58"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/common.py",
+      "bytes": 4809,
+      "sha256": "d9a16fef18cf936499e51f8c7f36a653f2921ef9a50f846257c2e8bc460ec6d1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-map-churn-128.bend",
+      "bytes": 1817,
+      "sha256": "99892f1c473588fcc814f17594b9d173343ef195bda6378113dbf088bea01120"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-map-churn-128.stdout",
+      "bytes": 11,
+      "sha256": "f10e5e29d4f448b0f6aeef222b95d6790cf410196cd6d64d27156e08c7ecafb8"
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+      "bytes": 119320,
+      "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def",
+      "executable": true
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan02/replay/program.ssa",
+      "bytes": 1028598,
+      "sha256": "eba759e043db9d1dcb5883e51c2120d99e103cac70e334fa327da1458d7f7fda"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan02/replay/program.c",
+      "bytes": 809678,
+      "sha256": "7ced41c63b08f77d10444adf782979ad344758ac45dd3ab34457b88dd096f3cc"
+    }
+  ],
+  "products": {
+    "qbe": {
+      "build": {
+        "command": [
+          "/usr/bin/python3",
+          "-B",
+          "selfhost/tools/build/native.py",
+          "--assets",
+          "/home/ai/bend2/build/publish/bend/selfhost/manifests/assets-native.json",
+          "--target",
+          "qbe",
+          "--ir",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan02/replay/program.ssa",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine01/qbe",
+          "--seconds",
+          "45"
+        ],
+        "limitSeconds": 50,
+        "complete": true,
+        "started": 1793860031.4420671,
+        "exitCode": 0,
+        "userSeconds": 0.309478,
+        "systemSeconds": 0.020205,
+        "peakRssKiB": 18720,
+        "timedOut": false,
+        "seconds": 0.3710041241720319,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine01/qbe-build.stdout",
+          "bytes": 425,
+          "sha256": "947c6a76b3146e5c79e6decb095df84abcc0a2b575bebbf6f1b7758f3fb65883"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine01/qbe-build.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "machineReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine01/qbe/report.json",
+        "bytes": 8710,
+        "sha256": "7c6a98a0ed1b651135862b20035260afba2e6fe0b8ffe54afd4855534fc865b4"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine01/qbe/program",
+        "bytes": 318976,
+        "sha256": "ce5f3422acabf08103150dbf0f7a8353b5af067b90ff495324e636417d8cd78c"
+      },
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine01/qbe/program",
+          "--threads",
+          "1",
+          "--gpu",
+          "off"
+        ],
+        "limitSeconds": 10,
+        "complete": true,
+        "started": 1793860031.8156185,
+        "exitCode": 0,
+        "userSeconds": 0.002141,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 9408,
+        "timedOut": false,
+        "seconds": 0.0030852099880576134,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine01/qbe.stdout",
+          "bytes": 11,
+          "sha256": "f10e5e29d4f448b0f6aeef222b95d6790cf410196cd6d64d27156e08c7ecafb8"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine01/qbe.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "exact": true
+    },
+    "c": {
+      "build": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan02/replay/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine01/c-program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 50,
+        "complete": true,
+        "started": 1793860031.8197727,
+        "exitCode": 0,
+        "userSeconds": 3.908143,
+        "systemSeconds": 0.07331599999999999,
+        "peakRssKiB": 132808,
+        "timedOut": false,
+        "seconds": 4.027522039134055,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine01/c-build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine01/c-build.stderr",
+          "bytes": 6820,
+          "sha256": "ab494bf1aaddd7d54dac7d328ab89a49feefe524bf7559502efc828213a9034b"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine01/c-program",
+        "bytes": 232208,
+        "sha256": "9566ccc9d01c264cef888ef656c713694ad577e9ce962825fa1fecd2b72d8c70"
+      },
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine01/c-program",
+          "--threads",
+          "1",
+          "--gpu",
+          "off"
+        ],
+        "limitSeconds": 10,
+        "complete": true,
+        "started": 1793860035.850078,
+        "exitCode": 0,
+        "userSeconds": 0.0013189999999999999,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 9460,
+        "timedOut": false,
+        "seconds": 0.0021635200828313828,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine01/c.stdout",
+          "bytes": 11,
+          "sha256": "f10e5e29d4f448b0f6aeef222b95d6790cf410196cd6d64d27156e08c7ecafb8"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine01/c.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "exact": true
+    }
+  },
+  "scope": "Complete frozen C/QBE programs; pinned incumbent machine policies; exact original Map IO value and exit/stderr. No benchmark timing or compiler acquisition claim."
+}

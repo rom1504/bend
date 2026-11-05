@@ -1,4 +1,32 @@
-# Current frontier — Phase164 mixed-route limits; Phase152 remains qualified
+# Current frontier — Phase165 source bisection; Phase152 remains qualified
+
+[Latest report](../implementation/phase165/README.md) ·
+[Causal metrics](../implementation/phase165/metrics.json) ·
+[Reciprocal transfer](phase165/transfer-note.md).
+
+Same-executor bendc checker ablations now preserve complete outcomes on our
+182 KB checker and full 3.085 MB compiler input. Removing native memo is neutral.
+Portable Map alone costs 1.15× on full checking/reporting; portable Map+String
+costs 1.76×. Crucially, transplanting our exact safe three-function equality into
+bendc costs only 1.015×. Our existing algorithm already avoids Base's reconstructed
+String pairs; do not infer a large new native-equality win for our compiler from
+the Base fallback slowdown. All 72 observed outcomes agree with fixed oracles.
+
+Complete shared-request backend screens put QBE at 1.26–1.57× mature C on Map and
+1.77–2.04× on a verifier slice, two execution orders with exact complete products.
+Both generated backends pass their independent IO points. Hosted diagnostic
+clocks and warmup differences are explicit; these are not native/full-build ratios.
+The source-sized verifier fixture executes an empty-program control, not a large
+runtime verification workload.
+
+Next measure ownership/call/representation cost around the existing predicate
+and complete lookup under QBE, and bisect semantic production/private preparation/
+verification/output from one checked request. The residual 2.132B allocation
+count remains unattributed. No new cold-build speedup, production changes or
+five-second forecast. Prefer explicit Phase152 N2 image+receipt: the default
+asset named qbe-n2 is an older source and caused a preserved comparison refusal.
+
+# Previous frontier — Phase164 mixed-route limits
 
 [Latest report](../implementation/phase164/README.md) ·
 [Mixed evidence](../implementation/phase164/mixed-metrics.json) ·

@@ -1,0 +1,2232 @@
+{
+  "kind": "phase165-causal-bisection-results",
+  "complete": true,
+  "scope": "Private diagnostic ablations. No production compiler changes, speedup, broad qualification or new full cold-build result.",
+  "source": "027e15041035522ed7e40ef971eff75f24a09ef6a00e3f8fe335839f94bcb8a8",
+  "comparisons": {
+    "memo-controls": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-controls01/report.json",
+        "bytes": 19003,
+        "sha256": "5a32b334de80f27f85e83b0db1458dfc8121a9d2cc55c9174143ca6a157ee15c"
+      },
+      "points": {
+        "selfhost/tests/phase165/shared-cells-4.bend": {
+          "seconds": {
+            "original02": [
+              0.136479829903692
+            ],
+            "memo01": [
+              0.13936681486666203
+            ]
+          },
+          "medians": {
+            "original02": 0.136479829903692,
+            "memo01": 0.13936681486666203
+          },
+          "candidateOverOriginal": 1.0211531987181346
+        },
+        "selfhost/tests/phase165/copy-before-unfold-4.bend": {
+          "seconds": {
+            "original02": [
+              0.132124911993742
+            ],
+            "memo01": [
+              0.13585493806749582
+            ]
+          },
+          "medians": {
+            "original02": 0.132124911993742,
+            "memo01": 0.13585493806749582
+          },
+          "candidateOverOriginal": 1.0282310581514749
+        },
+        "tests/check/beta_ann_lambda.bend": {
+          "seconds": {
+            "original02": [
+              0.1855997140519321
+            ],
+            "memo01": [
+              0.18654294032603502
+            ]
+          },
+          "medians": {
+            "original02": 0.1855997140519321,
+            "memo01": 0.18654294032603502
+          },
+          "candidateOverOriginal": 1.0050820459445267
+        },
+        "tests/check/typed_let_mismatch.bend": {
+          "seconds": {
+            "original02": [
+              0.18448598496615887
+            ],
+            "memo01": [
+              0.1899288217537105
+            ]
+          },
+          "medians": {
+            "original02": 0.18448598496615887,
+            "memo01": 0.1899288217537105
+          },
+          "candidateOverOriginal": 1.029502711485374
+        },
+        "selfhost/tests/phase162/unsafe-type-error.bend": {
+          "seconds": {
+            "original02": [
+              0.18147368030622602
+            ],
+            "memo01": [
+              0.18464777013286948
+            ]
+          },
+          "medians": {
+            "original02": 0.18147368030622602,
+            "memo01": 0.18464777013286948
+          },
+          "candidateOverOriginal": 1.017490634571842
+        }
+      }
+    },
+    "memo-checker": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-checker01/report.json",
+        "bytes": 7960,
+        "sha256": "ecebe1cdeb28cba75b80b421afc0797193dab68be0734feab491ea226fbd14c0"
+      },
+      "points": {
+        "selfhost/build/phase156/inputs01/checker.bend": {
+          "seconds": {
+            "original02": [
+              1.208636034745723,
+              1.2136306860484183
+            ],
+            "memo01": [
+              1.1938036088831723,
+              1.2088487781584263
+            ]
+          },
+          "medians": {
+            "original02": 1.2111333603970706,
+            "memo01": 1.2013261935207993
+          },
+          "candidateOverOriginal": 0.991902488035623
+        }
+      }
+    },
+    "memo-full": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-full01/report.json",
+        "bytes": 7992,
+        "sha256": "675c16ea08048b189dd58abccd2332405b74b169012bdc6bd7381ddbc51982ac"
+      },
+      "points": {
+        "selfhost/build/phase152/composite01/compiler.bend": {
+          "seconds": {
+            "original02": [
+              16.79186130175367,
+              17.492144720163196
+            ],
+            "memo01": [
+              16.751771700568497,
+              17.057743440847844
+            ]
+          },
+          "medians": {
+            "original02": 17.142003010958433,
+            "memo01": 16.90475757070817
+          },
+          "candidateOverOriginal": 0.9861599930825705
+        }
+      }
+    },
+    "lookup-controls": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup-controls01/report.json",
+        "bytes": 75994,
+        "sha256": "4292b759023d59ad66eb952f28766329941317ce915079abe5e06c84317fa287"
+      },
+      "points": {
+        "selfhost/tests/phase165/shared-cells-4.bend": {
+          "seconds": {
+            "original02": [
+              0.1321574943140149
+            ],
+            "lookup04": [
+              0.17126368405297399
+            ]
+          },
+          "medians": {
+            "original02": 0.1321574943140149,
+            "lookup04": 0.17126368405297399
+          },
+          "candidateOverOriginal": 1.2959059563133075
+        },
+        "selfhost/tests/phase165/copy-before-unfold-4.bend": {
+          "seconds": {
+            "original02": [
+              0.13365826709195971
+            ],
+            "lookup04": [
+              0.1708165155723691
+            ]
+          },
+          "medians": {
+            "original02": 0.13365826709195971,
+            "lookup04": 0.1708165155723691
+          },
+          "candidateOverOriginal": 1.2780093539207995
+        },
+        "tests/check/beta_ann_lambda.bend": {
+          "seconds": {
+            "original02": [
+              0.1856189351528883
+            ],
+            "lookup04": [
+              0.22603295277804136
+            ]
+          },
+          "medians": {
+            "original02": 0.1856189351528883,
+            "lookup04": 0.22603295277804136
+          },
+          "candidateOverOriginal": 1.2177257271294297
+        },
+        "tests/check/typed_let_mismatch.bend": {
+          "seconds": {
+            "original02": [
+              0.1841392540372908
+            ],
+            "lookup04": [
+              0.22410714998841286
+            ]
+          },
+          "medians": {
+            "original02": 0.1841392540372908,
+            "lookup04": 0.22410714998841286
+          },
+          "candidateOverOriginal": 1.2170525570991397
+        },
+        "selfhost/tests/phase162/unsafe-type-error.bend": {
+          "seconds": {
+            "original02": [
+              0.18067690124735236
+            ],
+            "lookup04": [
+              0.22178288456052542
+            ]
+          },
+          "medians": {
+            "original02": 0.18067690124735236,
+            "lookup04": 0.22178288456052542
+          },
+          "candidateOverOriginal": 1.2275110046131334
+        }
+      }
+    },
+    "lookup-checker": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup-checker01/report.json",
+        "bytes": 64860,
+        "sha256": "c4666a5b69541b40bc431df13ab2ce2433c7c176334744ccaf5918566caf295c"
+      },
+      "points": {
+        "selfhost/build/phase156/inputs01/checker.bend": {
+          "seconds": {
+            "original02": [
+              1.1165738152340055,
+              1.1332147410139441
+            ],
+            "lookup04": [
+              1.4822502369061112,
+              1.4816956617869437
+            ]
+          },
+          "medians": {
+            "original02": 1.1248942781239748,
+            "lookup04": 1.4819729493465275
+          },
+          "candidateOverOriginal": 1.3174330940842416
+        }
+      }
+    },
+    "lookup-full": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup-full01/report.json",
+        "bytes": 64902,
+        "sha256": "b815d32f2521e4dad14813e8cd951b22f4873ad5de0c815737364171c186ab55"
+      },
+      "points": {
+        "selfhost/build/phase152/composite01/compiler.bend": {
+          "seconds": {
+            "original02": [
+              16.91123577672988,
+              16.84999239863828
+            ],
+            "lookup04": [
+              29.38629202498123,
+              29.901958546601236
+            ]
+          },
+          "medians": {
+            "original02": 16.88061408768408,
+            "lookup04": 29.644125285791233
+          },
+          "candidateOverOriginal": 1.7561046731954661
+        }
+      }
+    },
+    "map-controls": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/map-controls01/report.json",
+        "bytes": 75847,
+        "sha256": "77d5781a6d60450809d7e112f0defbe76b955a5982883c065c04d7c4f7b53b57"
+      },
+      "points": {
+        "selfhost/tests/phase165/shared-cells-4.bend": {
+          "seconds": {
+            "original02": [
+              0.13224273175001144
+            ],
+            "map04": [
+              0.133921192958951
+            ]
+          },
+          "medians": {
+            "original02": 0.13224273175001144,
+            "map04": 0.133921192958951
+          },
+          "candidateOverOriginal": 1.012692275686746
+        },
+        "selfhost/tests/phase165/copy-before-unfold-4.bend": {
+          "seconds": {
+            "original02": [
+              0.13095518155023456
+            ],
+            "map04": [
+              0.1340943928807974
+            ]
+          },
+          "medians": {
+            "original02": 0.13095518155023456,
+            "map04": 0.1340943928807974
+          },
+          "candidateOverOriginal": 1.023971646584741
+        },
+        "tests/check/beta_ann_lambda.bend": {
+          "seconds": {
+            "original02": [
+              0.18592495005577803
+            ],
+            "map04": [
+              0.17868749471381307
+            ]
+          },
+          "medians": {
+            "original02": 0.18592495005577803,
+            "map04": 0.17868749471381307
+          },
+          "candidateOverOriginal": 0.9610732430489093
+        },
+        "tests/check/typed_let_mismatch.bend": {
+          "seconds": {
+            "original02": [
+              0.18294727196916938
+            ],
+            "map04": [
+              0.17901442106813192
+            ]
+          },
+          "medians": {
+            "original02": 0.18294727196916938,
+            "map04": 0.17901442106813192
+          },
+          "candidateOverOriginal": 0.9785028174582443
+        },
+        "selfhost/tests/phase162/unsafe-type-error.bend": {
+          "seconds": {
+            "original02": [
+              0.18360924813896418
+            ],
+            "map04": [
+              0.18052385607734323
+            ]
+          },
+          "medians": {
+            "original02": 0.18360924813896418,
+            "map04": 0.18052385607734323
+          },
+          "candidateOverOriginal": 0.9831958787866405
+        }
+      }
+    },
+    "map-checker": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/map-checker01/report.json",
+        "bytes": 64788,
+        "sha256": "11cdc80dc38197c61228099a43177446bc790ffcebb693ddfff0d78f38fe5513"
+      },
+      "points": {
+        "selfhost/build/phase156/inputs01/checker.bend": {
+          "seconds": {
+            "original02": [
+              1.096390181221068,
+              1.1042640311643481
+            ],
+            "map04": [
+              1.2067441917024553,
+              1.1988051049411297
+            ]
+          },
+          "medians": {
+            "original02": 1.100327106192708,
+            "map04": 1.2027746483217925
+          },
+          "candidateOverOriginal": 1.0931064422138685
+        }
+      }
+    },
+    "map-full": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/map-full01/report.json",
+        "bytes": 64828,
+        "sha256": "b716ac26277dd929bcf6266239735cf0abc0e90eadf70a50263a776284c7fd18"
+      },
+      "points": {
+        "selfhost/build/phase152/composite01/compiler.bend": {
+          "seconds": {
+            "original02": [
+              17.6658285507001,
+              16.82473601633683
+            ],
+            "map04": [
+              19.778427463024855,
+              19.92505548428744
+            ]
+          },
+          "medians": {
+            "original02": 17.245282283518463,
+            "map04": 19.851741473656148
+          },
+          "candidateOverOriginal": 1.1511404190019383
+        }
+      }
+    },
+    "ours-eq-controls": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/ours-eq-controls01/report.json",
+        "bytes": 76078,
+        "sha256": "64177ce23777978d3fc13f7aa540787502cec7f1802039dd2bc4af0e130783f9"
+      },
+      "points": {
+        "selfhost/tests/phase165/shared-cells-4.bend": {
+          "seconds": {
+            "original02": [
+              0.13260833593085408
+            ],
+            "ours-eq01": [
+              0.13251740718260407
+            ]
+          },
+          "medians": {
+            "original02": 0.13260833593085408,
+            "ours-eq01": 0.13251740718260407
+          },
+          "candidateOverOriginal": 0.9993143059400321
+        },
+        "selfhost/tests/phase165/copy-before-unfold-4.bend": {
+          "seconds": {
+            "original02": [
+              0.13260655011981726
+            ],
+            "ours-eq01": [
+              0.135679068043828
+            ]
+          },
+          "medians": {
+            "original02": 0.13260655011981726,
+            "ours-eq01": 0.135679068043828
+          },
+          "candidateOverOriginal": 1.023170182176028
+        },
+        "tests/check/beta_ann_lambda.bend": {
+          "seconds": {
+            "original02": [
+              0.1829334544017911
+            ],
+            "ours-eq01": [
+              0.18556269677355886
+            ]
+          },
+          "medians": {
+            "original02": 0.1829334544017911,
+            "ours-eq01": 0.18556269677355886
+          },
+          "candidateOverOriginal": 1.0143726710916032
+        },
+        "tests/check/typed_let_mismatch.bend": {
+          "seconds": {
+            "original02": [
+              0.18294621212407947
+            ],
+            "ours-eq01": [
+              0.18281063018366694
+            ]
+          },
+          "medians": {
+            "original02": 0.18294621212407947,
+            "ours-eq01": 0.18281063018366694
+          },
+          "candidateOverOriginal": 0.9992588972527041
+        },
+        "selfhost/tests/phase162/unsafe-type-error.bend": {
+          "seconds": {
+            "original02": [
+              0.18020711606368423
+            ],
+            "ours-eq01": [
+              0.18384070694446564
+            ]
+          },
+          "medians": {
+            "original02": 0.18020711606368423,
+            "ours-eq01": 0.18384070694446564
+          },
+          "candidateOverOriginal": 1.0201634150756695
+        }
+      }
+    },
+    "ours-eq-checker": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/ours-eq-checker01/report.json",
+        "bytes": 64889,
+        "sha256": "2ea4f6b7a24a892acb8ea85679c048dd62de148dfe308ed8e5eda372028b8c5b"
+      },
+      "points": {
+        "selfhost/build/phase156/inputs01/checker.bend": {
+          "seconds": {
+            "original02": [
+              1.09598683193326,
+              1.1078359866514802
+            ],
+            "ours-eq01": [
+              1.1056177699938416,
+              1.1102726780809462
+            ]
+          },
+          "medians": {
+            "original02": 1.10191140929237,
+            "ours-eq01": 1.107945224037394
+          },
+          "candidateOverOriginal": 1.0054757711864502
+        }
+      }
+    },
+    "ours-eq-full": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/ours-eq-full01/report.json",
+        "bytes": 64933,
+        "sha256": "c1ce1a43869054d2a83dcd6adf26f470361c1ceb8e030d1eeb6f72340099701e"
+      },
+      "points": {
+        "selfhost/build/phase152/composite01/compiler.bend": {
+          "seconds": {
+            "original02": [
+              17.019639178179204,
+              16.73540339572355
+            ],
+            "ours-eq01": [
+              16.86305912118405,
+              17.411194621119648
+            ]
+          },
+          "medians": {
+            "original02": 16.877521286951378,
+            "ours-eq01": 17.13712687115185
+          },
+          "candidateOverOriginal": 1.0153817364402427
+        }
+      }
+    }
+  },
+  "backends": [
+    {
+      "name": "backend-plan02",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan02/replay/report.json",
+        "bytes": 6300,
+        "sha256": "1c5ef5d1cccd6a331c86b1731afd6d5ba8214bd3d25fd1a43a307be7d1e5ef8b"
+      },
+      "case": "coverage-map-churn-128",
+      "seconds": {
+        "qbe": 8.266072643,
+        "c": 6.548368179000001
+      },
+      "qbeOverC": 1.2623103064834558,
+      "bytes": {
+        "qbe": 1028598,
+        "c": 809678
+      }
+    },
+    {
+      "name": "backend-plan04",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan04/replay/report.json",
+        "bytes": 9088,
+        "sha256": "1d010465f24a2ad6070c5681118b4c41c967c85afc11b75ea319cc5de452c1f5"
+      },
+      "case": "compiler-verifier-slice",
+      "seconds": {
+        "qbe": 15.456792719,
+        "c": 7.5936399529999985
+      },
+      "qbeOverC": 2.0354919135840155,
+      "bytes": {
+        "qbe": 2146264,
+        "c": 998317
+      }
+    },
+    {
+      "name": "backend-plan05",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan05/replay/report.json",
+        "bytes": 8447,
+        "sha256": "cf64dcd0bd457762053c3dd2b57b6b270c0b3ba0a7ca54d4f36d1283d1eccb35"
+      },
+      "case": "coverage-map-churn-128",
+      "seconds": {
+        "c": 5.710114568999999,
+        "qbe": 8.984367777
+      },
+      "qbeOverC": 1.573412874371348,
+      "bytes": {
+        "c": 809678,
+        "qbe": 1028598
+      }
+    },
+    {
+      "name": "backend-plan06",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan06/replay/report.json",
+        "bytes": 11223,
+        "sha256": "b74a21767e9954776c69053958cccf54deccd842ac0cef9e9115a7e2a19a76eb"
+      },
+      "case": "compiler-verifier-slice",
+      "seconds": {
+        "c": 9.141003294,
+        "qbe": 16.144220051
+      },
+      "qbeOverC": 1.7661321773723453,
+      "bytes": {
+        "c": 998317,
+        "qbe": 2146264
+      }
+    }
+  ],
+  "guards": [
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine01-guard/process.json",
+        "bytes": 2295,
+        "sha256": "8ea9e20ba460c50d50a238fc13a22b1a0060ad96ba233f9e3b9c7ccc57a9b994"
+      },
+      "complete": true,
+      "seconds": 4.505251238122582,
+      "peakRssBytes": 198000640,
+      "minimumDiskFreeBytes": 5516845056,
+      "stoppedFor": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine02-guard/process.json",
+        "bytes": 2292,
+        "sha256": "579ad2960263ea497f08074b164e14fbbab36e61609fd99e49e038d322f0aaaa"
+      },
+      "complete": false,
+      "seconds": 0.0650682058185339,
+      "peakRssBytes": 11948032,
+      "minimumDiskFreeBytes": 5475254272,
+      "stoppedFor": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine03-guard/process.json",
+        "bytes": 2300,
+        "sha256": "8f52655a8056f1d904e86a699f2094049c7a75d4534b03720a75c2b4baca879f"
+      },
+      "complete": true,
+      "seconds": 6.374685384798795,
+      "peakRssBytes": 212561920,
+      "minimumDiskFreeBytes": 5471543296,
+      "stoppedFor": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan02/replay-guard/process.json",
+        "bytes": 2608,
+        "sha256": "c64ad320296bfafea1906b2a8cbd4f67464ead5a80af444ad34ae901f6a48f49"
+      },
+      "complete": true,
+      "seconds": 26.37658612197265,
+      "peakRssBytes": 694726656,
+      "minimumDiskFreeBytes": 5519106048,
+      "stoppedFor": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan03/replay-guard/process.json",
+        "bytes": 2611,
+        "sha256": "f163fa5898cf8e3a0be09ec0f2698a6c708ae3b89e6407abaae80acf1fb618d3"
+      },
+      "complete": false,
+      "seconds": 30.539667929988354,
+      "peakRssBytes": 508678144,
+      "minimumDiskFreeBytes": 5499908096,
+      "stoppedFor": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan04/replay-guard/process.json",
+        "bytes": 2610,
+        "sha256": "58b0a9941ef76a9eb434271d99c62724ffb5e14350a74a773fe1d6c3ca3ff5bf"
+      },
+      "complete": true,
+      "seconds": 36.83606983302161,
+      "peakRssBytes": 891400192,
+      "minimumDiskFreeBytes": 5477068800,
+      "stoppedFor": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan05/replay-guard/process.json",
+        "bytes": 2612,
+        "sha256": "64a027cd8e4fe4219076dfebdd335cb39cc928c5b356b01ed7af43c32951bf5d"
+      },
+      "complete": true,
+      "seconds": 25.96924570389092,
+      "peakRssBytes": 511696896,
+      "minimumDiskFreeBytes": 5432250368,
+      "stoppedFor": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan06/replay-guard/process.json",
+        "bytes": 2613,
+        "sha256": "28d09552f1427347c9b878966e5ec61f004f9fb4b4cdc064202227b52f5dfa84"
+      },
+      "complete": true,
+      "seconds": 37.72259388398379,
+      "peakRssBytes": 567021568,
+      "minimumDiskFreeBytes": 5429010432,
+      "stoppedFor": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup-checker01-guard/process.json",
+        "bytes": 2639,
+        "sha256": "5b89224a883bd704aefd6749fb4a351eb40be56722044167d12feb788205e08b"
+      },
+      "complete": true,
+      "seconds": 5.902909446973354,
+      "peakRssBytes": 241565696,
+      "minimumDiskFreeBytes": 5447471104,
+      "stoppedFor": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup-controls01-guard/process.json",
+        "bytes": 2619,
+        "sha256": "4d3a18d53125c739d6aabb4c34d239dfbc18eba00a12b49b218591c016279417"
+      },
+      "complete": true,
+      "seconds": 2.490239459089935,
+      "peakRssBytes": 93003776,
+      "minimumDiskFreeBytes": 5448839168,
+      "stoppedFor": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup-full01-guard/process.json",
+        "bytes": 2634,
+        "sha256": "fc212031ffc9373c7ba4729109ec9d549939577e6963c481887e0522629ae5ba"
+      },
+      "complete": true,
+      "seconds": 93.71913118287921,
+      "peakRssBytes": 1239851008,
+      "minimumDiskFreeBytes": 5445468160,
+      "stoppedFor": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup01-guard/process.json",
+        "bytes": 2971,
+        "sha256": "a3710feb2e5897b4700237fea588b8395addd6b7c8d9feb8ed65dddccced4d2b"
+      },
+      "complete": false,
+      "seconds": 6.617543745785952,
+      "peakRssBytes": 1174573056,
+      "minimumDiskFreeBytes": 5516333056,
+      "stoppedFor": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup02-guard/process.json",
+        "bytes": 2968,
+        "sha256": "1af5bae21f258f52ddc10a509a1fe819c40194753701a6687dcf5b6ae16b3aa0"
+      },
+      "complete": false,
+      "seconds": 0.290266043972224,
+      "peakRssBytes": 247541760,
+      "minimumDiskFreeBytes": 5470986240,
+      "stoppedFor": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup03-guard/process.json",
+        "bytes": 2970,
+        "sha256": "3e3cda31bf29158130e9e4076cc7a8c7998948c393e67bbe72535c3888c51c62"
+      },
+      "complete": false,
+      "seconds": 0.3098489008843899,
+      "peakRssBytes": 266010624,
+      "minimumDiskFreeBytes": 5464309760,
+      "stoppedFor": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup04-guard/process.json",
+        "bytes": 2974,
+        "sha256": "25642596bd18705c88ef4a70507a70849bb8512f584bb308511c11378a6a8264"
+      },
+      "complete": true,
+      "seconds": 101.84743521083146,
+      "peakRssBytes": 1187860480,
+      "minimumDiskFreeBytes": 5447688192,
+      "stoppedFor": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/map-checker01-guard/process.json",
+        "bytes": 2630,
+        "sha256": "d818bd167a70b5a21d359e703ee85b102ff7c68d10ed53371d1f6a512793d8bb"
+      },
+      "complete": true,
+      "seconds": 5.188732431270182,
+      "peakRssBytes": 238325760,
+      "minimumDiskFreeBytes": 5435408384,
+      "stoppedFor": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/map-controls01-guard/process.json",
+        "bytes": 2633,
+        "sha256": "5b51ff32b412722172582583f4f7872d043925bb48455ac8af963cdec0beef9d"
+      },
+      "complete": true,
+      "seconds": 2.2455867948010564,
+      "peakRssBytes": 73084928,
+      "minimumDiskFreeBytes": 5435559936,
+      "stoppedFor": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/map-full01-guard/process.json",
+        "bytes": 2622,
+        "sha256": "61953e21094a1127f30777a38e68e0813877a34166f6f1709e6b9eb6dcbda78d"
+      },
+      "complete": true,
+      "seconds": 74.90340268891305,
+      "peakRssBytes": 1242419200,
+      "minimumDiskFreeBytes": 5434359808,
+      "stoppedFor": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/map04-guard/process.json",
+        "bytes": 2968,
+        "sha256": "8fabf85a158904dbbfd19ece4d7d5bd053229173ba399282e771c7783aee3011"
+      },
+      "complete": true,
+      "seconds": 100.7886939891614,
+      "peakRssBytes": 1183862784,
+      "minimumDiskFreeBytes": 5430218752,
+      "stoppedFor": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-checker01-guard/process.json",
+        "bytes": 2626,
+        "sha256": "bdc4564bdabde0ae36510460bf7086bcbc2671d8336e79157303a32bbb0a1f49"
+      },
+      "complete": true,
+      "seconds": 5.06495259096846,
+      "peakRssBytes": 235995136,
+      "minimumDiskFreeBytes": 5533696000,
+      "stoppedFor": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-controls01-guard/process.json",
+        "bytes": 2604,
+        "sha256": "2ba671d1829608108ec8a7aaeb6f34bb2bb53eb899cc3bbb755ab902349d8eaa"
+      },
+      "complete": true,
+      "seconds": 1.9489571927115321,
+      "peakRssBytes": 72593408,
+      "minimumDiskFreeBytes": 5533995008,
+      "stoppedFor": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-full01-guard/process.json",
+        "bytes": 2620,
+        "sha256": "b388e01f973eecc0e05205486c4f96fa45164e0fc5c5bd92196dbf1bfd45d90e"
+      },
+      "complete": true,
+      "seconds": 68.37295606499538,
+      "peakRssBytes": 1242525696,
+      "minimumDiskFreeBytes": 5532319744,
+      "stoppedFor": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo01-guard/process.json",
+        "bytes": 2969,
+        "sha256": "aa098ec2474313bdbee5134f7b744e9eed2fd1b4c6aa51b26f1ec0e7db344761"
+      },
+      "complete": true,
+      "seconds": 100.15813222108409,
+      "peakRssBytes": 1181278208,
+      "minimumDiskFreeBytes": 5532745728,
+      "stoppedFor": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/original01-guard/process.json",
+        "bytes": 2681,
+        "sha256": "85ccd90fed623962f681411144650f446ec56e77568b2673fa4bd323e96e9dcf"
+      },
+      "complete": false,
+      "seconds": 11.382345905061811,
+      "peakRssBytes": 1180569600,
+      "minimumDiskFreeBytes": 5555863552,
+      "stoppedFor": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/original02-guard/process.json",
+        "bytes": 2991,
+        "sha256": "b33e112694a2bcacb8e56367eb058062678cf1bd07b26d62c0f6539f9743434e"
+      },
+      "complete": true,
+      "seconds": 11.669266185257584,
+      "peakRssBytes": 1182986240,
+      "minimumDiskFreeBytes": 5543923712,
+      "stoppedFor": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/ours-eq-checker01-guard/process.json",
+        "bytes": 2646,
+        "sha256": "3e9bff1ee465c453ed2b1d9eb4df22264ea1fc33a1c030e7f2d18193e6b74a03"
+      },
+      "complete": true,
+      "seconds": 5.040251414291561,
+      "peakRssBytes": 236425216,
+      "minimumDiskFreeBytes": 5416644608,
+      "stoppedFor": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/ours-eq-controls01-guard/process.json",
+        "bytes": 2648,
+        "sha256": "f45e219748a9c66cfe06242dc2c8ed718b5bef3b5c74ae17242ccc1431958e8c"
+      },
+      "complete": true,
+      "seconds": 2.283919650129974,
+      "peakRssBytes": 73003008,
+      "minimumDiskFreeBytes": 5416804352,
+      "stoppedFor": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/ours-eq-full01-guard/process.json",
+        "bytes": 2638,
+        "sha256": "ad228c38830981cfdb25912973c4b11a3c6b316a132564ed55f03cca9ab40598"
+      },
+      "complete": true,
+      "seconds": 68.69643618026748,
+      "peakRssBytes": 1243918336,
+      "minimumDiskFreeBytes": 5415927808,
+      "stoppedFor": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/ours-eq01-guard/process.json",
+        "bytes": 2980,
+        "sha256": "71143c369abf55ddcc2f298dee8cc06e703a502f91dbfd8e07399e3f2c78ba21"
+      },
+      "complete": true,
+      "seconds": 99.67638235306367,
+      "peakRssBytes": 1181364224,
+      "minimumDiskFreeBytes": 5411381248,
+      "stoppedFor": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/verifier-oracle01-guard/process.json",
+        "bytes": 3076,
+        "sha256": "c7d63d734b7ab9c9e4b76e49d69398201940e7076790bc2fb5fbb9430d0953fc"
+      },
+      "complete": false,
+      "seconds": 5.3385920422151685,
+      "peakRssBytes": 59777024,
+      "minimumDiskFreeBytes": 5497257984,
+      "stoppedFor": null
+    },
+    {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/verifier-oracle02-guard/process.json",
+        "bytes": 3595,
+        "sha256": "7eafcf8b8eebee46d91d39f7870caaffb39b096b34993de018594474a4717ef5"
+      },
+      "complete": true,
+      "seconds": 4.618881668895483,
+      "peakRssBytes": 59727872,
+      "minimumDiskFreeBytes": 5494685696,
+      "stoppedFor": null
+    }
+  ],
+  "evidence": [
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-controls01/report.json",
+        "bytes": 19003,
+        "sha256": "5a32b334de80f27f85e83b0db1458dfc8121a9d2cc55c9174143ca6a157ee15c"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/memo-controls01/report.json",
+        "bytes": 19003,
+        "sha256": "5a32b334de80f27f85e83b0db1458dfc8121a9d2cc55c9174143ca6a157ee15c"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-checker01/report.json",
+        "bytes": 7960,
+        "sha256": "ecebe1cdeb28cba75b80b421afc0797193dab68be0734feab491ea226fbd14c0"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/memo-checker01/report.json",
+        "bytes": 7960,
+        "sha256": "ecebe1cdeb28cba75b80b421afc0797193dab68be0734feab491ea226fbd14c0"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-full01/report.json",
+        "bytes": 7992,
+        "sha256": "675c16ea08048b189dd58abccd2332405b74b169012bdc6bd7381ddbc51982ac"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/memo-full01/report.json",
+        "bytes": 7992,
+        "sha256": "675c16ea08048b189dd58abccd2332405b74b169012bdc6bd7381ddbc51982ac"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup-controls01/report.json",
+        "bytes": 75994,
+        "sha256": "4292b759023d59ad66eb952f28766329941317ce915079abe5e06c84317fa287"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/lookup-controls01/report.json",
+        "bytes": 75994,
+        "sha256": "4292b759023d59ad66eb952f28766329941317ce915079abe5e06c84317fa287"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup-checker01/report.json",
+        "bytes": 64860,
+        "sha256": "c4666a5b69541b40bc431df13ab2ce2433c7c176334744ccaf5918566caf295c"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/lookup-checker01/report.json",
+        "bytes": 64860,
+        "sha256": "c4666a5b69541b40bc431df13ab2ce2433c7c176334744ccaf5918566caf295c"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup-full01/report.json",
+        "bytes": 64902,
+        "sha256": "b815d32f2521e4dad14813e8cd951b22f4873ad5de0c815737364171c186ab55"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/lookup-full01/report.json",
+        "bytes": 64902,
+        "sha256": "b815d32f2521e4dad14813e8cd951b22f4873ad5de0c815737364171c186ab55"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/map-controls01/report.json",
+        "bytes": 75847,
+        "sha256": "77d5781a6d60450809d7e112f0defbe76b955a5982883c065c04d7c4f7b53b57"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/map-controls01/report.json",
+        "bytes": 75847,
+        "sha256": "77d5781a6d60450809d7e112f0defbe76b955a5982883c065c04d7c4f7b53b57"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/map-checker01/report.json",
+        "bytes": 64788,
+        "sha256": "11cdc80dc38197c61228099a43177446bc790ffcebb693ddfff0d78f38fe5513"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/map-checker01/report.json",
+        "bytes": 64788,
+        "sha256": "11cdc80dc38197c61228099a43177446bc790ffcebb693ddfff0d78f38fe5513"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/map-full01/report.json",
+        "bytes": 64828,
+        "sha256": "b716ac26277dd929bcf6266239735cf0abc0e90eadf70a50263a776284c7fd18"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/map-full01/report.json",
+        "bytes": 64828,
+        "sha256": "b716ac26277dd929bcf6266239735cf0abc0e90eadf70a50263a776284c7fd18"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/ours-eq-controls01/report.json",
+        "bytes": 76078,
+        "sha256": "64177ce23777978d3fc13f7aa540787502cec7f1802039dd2bc4af0e130783f9"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/ours-eq-controls01/report.json",
+        "bytes": 76078,
+        "sha256": "64177ce23777978d3fc13f7aa540787502cec7f1802039dd2bc4af0e130783f9"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/ours-eq-checker01/report.json",
+        "bytes": 64889,
+        "sha256": "2ea4f6b7a24a892acb8ea85679c048dd62de148dfe308ed8e5eda372028b8c5b"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/ours-eq-checker01/report.json",
+        "bytes": 64889,
+        "sha256": "2ea4f6b7a24a892acb8ea85679c048dd62de148dfe308ed8e5eda372028b8c5b"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/ours-eq-full01/report.json",
+        "bytes": 64933,
+        "sha256": "c1ce1a43869054d2a83dcd6adf26f470361c1ceb8e030d1eeb6f72340099701e"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/ours-eq-full01/report.json",
+        "bytes": 64933,
+        "sha256": "c1ce1a43869054d2a83dcd6adf26f470361c1ceb8e030d1eeb6f72340099701e"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan02/replay/report.json",
+        "bytes": 6300,
+        "sha256": "1c5ef5d1cccd6a331c86b1731afd6d5ba8214bd3d25fd1a43a307be7d1e5ef8b"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/backend-plan02/replay/report.json",
+        "bytes": 6300,
+        "sha256": "1c5ef5d1cccd6a331c86b1731afd6d5ba8214bd3d25fd1a43a307be7d1e5ef8b"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan04/replay/report.json",
+        "bytes": 9088,
+        "sha256": "1d010465f24a2ad6070c5681118b4c41c967c85afc11b75ea319cc5de452c1f5"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/backend-plan04/replay/report.json",
+        "bytes": 9088,
+        "sha256": "1d010465f24a2ad6070c5681118b4c41c967c85afc11b75ea319cc5de452c1f5"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan05/replay/report.json",
+        "bytes": 8447,
+        "sha256": "cf64dcd0bd457762053c3dd2b57b6b270c0b3ba0a7ca54d4f36d1283d1eccb35"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/backend-plan05/replay/report.json",
+        "bytes": 8447,
+        "sha256": "cf64dcd0bd457762053c3dd2b57b6b270c0b3ba0a7ca54d4f36d1283d1eccb35"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan06/replay/report.json",
+        "bytes": 11223,
+        "sha256": "b74a21767e9954776c69053958cccf54deccd842ac0cef9e9115a7e2a19a76eb"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/backend-plan06/replay/report.json",
+        "bytes": 11223,
+        "sha256": "b74a21767e9954776c69053958cccf54deccd842ac0cef9e9115a7e2a19a76eb"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine01-guard/process.json",
+        "bytes": 2295,
+        "sha256": "8ea9e20ba460c50d50a238fc13a22b1a0060ad96ba233f9e3b9c7ccc57a9b994"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/backend-machine01-guard/process.json",
+        "bytes": 2295,
+        "sha256": "8ea9e20ba460c50d50a238fc13a22b1a0060ad96ba233f9e3b9c7ccc57a9b994"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine02-guard/process.json",
+        "bytes": 2292,
+        "sha256": "579ad2960263ea497f08074b164e14fbbab36e61609fd99e49e038d322f0aaaa"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/backend-machine02-guard/process.json",
+        "bytes": 2292,
+        "sha256": "579ad2960263ea497f08074b164e14fbbab36e61609fd99e49e038d322f0aaaa"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine03-guard/process.json",
+        "bytes": 2300,
+        "sha256": "8f52655a8056f1d904e86a699f2094049c7a75d4534b03720a75c2b4baca879f"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/backend-machine03-guard/process.json",
+        "bytes": 2300,
+        "sha256": "8f52655a8056f1d904e86a699f2094049c7a75d4534b03720a75c2b4baca879f"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan02/replay-guard/process.json",
+        "bytes": 2608,
+        "sha256": "c64ad320296bfafea1906b2a8cbd4f67464ead5a80af444ad34ae901f6a48f49"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/backend-plan02/replay-guard/process.json",
+        "bytes": 2608,
+        "sha256": "c64ad320296bfafea1906b2a8cbd4f67464ead5a80af444ad34ae901f6a48f49"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan03/replay-guard/process.json",
+        "bytes": 2611,
+        "sha256": "f163fa5898cf8e3a0be09ec0f2698a6c708ae3b89e6407abaae80acf1fb618d3"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/backend-plan03/replay-guard/process.json",
+        "bytes": 2611,
+        "sha256": "f163fa5898cf8e3a0be09ec0f2698a6c708ae3b89e6407abaae80acf1fb618d3"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan04/replay-guard/process.json",
+        "bytes": 2610,
+        "sha256": "58b0a9941ef76a9eb434271d99c62724ffb5e14350a74a773fe1d6c3ca3ff5bf"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/backend-plan04/replay-guard/process.json",
+        "bytes": 2610,
+        "sha256": "58b0a9941ef76a9eb434271d99c62724ffb5e14350a74a773fe1d6c3ca3ff5bf"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan05/replay-guard/process.json",
+        "bytes": 2612,
+        "sha256": "64a027cd8e4fe4219076dfebdd335cb39cc928c5b356b01ed7af43c32951bf5d"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/backend-plan05/replay-guard/process.json",
+        "bytes": 2612,
+        "sha256": "64a027cd8e4fe4219076dfebdd335cb39cc928c5b356b01ed7af43c32951bf5d"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan06/replay-guard/process.json",
+        "bytes": 2613,
+        "sha256": "28d09552f1427347c9b878966e5ec61f004f9fb4b4cdc064202227b52f5dfa84"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/backend-plan06/replay-guard/process.json",
+        "bytes": 2613,
+        "sha256": "28d09552f1427347c9b878966e5ec61f004f9fb4b4cdc064202227b52f5dfa84"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup-checker01-guard/process.json",
+        "bytes": 2639,
+        "sha256": "5b89224a883bd704aefd6749fb4a351eb40be56722044167d12feb788205e08b"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/lookup-checker01-guard/process.json",
+        "bytes": 2639,
+        "sha256": "5b89224a883bd704aefd6749fb4a351eb40be56722044167d12feb788205e08b"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup-controls01-guard/process.json",
+        "bytes": 2619,
+        "sha256": "4d3a18d53125c739d6aabb4c34d239dfbc18eba00a12b49b218591c016279417"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/lookup-controls01-guard/process.json",
+        "bytes": 2619,
+        "sha256": "4d3a18d53125c739d6aabb4c34d239dfbc18eba00a12b49b218591c016279417"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup-full01-guard/process.json",
+        "bytes": 2634,
+        "sha256": "fc212031ffc9373c7ba4729109ec9d549939577e6963c481887e0522629ae5ba"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/lookup-full01-guard/process.json",
+        "bytes": 2634,
+        "sha256": "fc212031ffc9373c7ba4729109ec9d549939577e6963c481887e0522629ae5ba"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup01-guard/process.json",
+        "bytes": 2971,
+        "sha256": "a3710feb2e5897b4700237fea588b8395addd6b7c8d9feb8ed65dddccced4d2b"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/lookup01-guard/process.json",
+        "bytes": 2971,
+        "sha256": "a3710feb2e5897b4700237fea588b8395addd6b7c8d9feb8ed65dddccced4d2b"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup02-guard/process.json",
+        "bytes": 2968,
+        "sha256": "1af5bae21f258f52ddc10a509a1fe819c40194753701a6687dcf5b6ae16b3aa0"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/lookup02-guard/process.json",
+        "bytes": 2968,
+        "sha256": "1af5bae21f258f52ddc10a509a1fe819c40194753701a6687dcf5b6ae16b3aa0"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup03-guard/process.json",
+        "bytes": 2970,
+        "sha256": "3e3cda31bf29158130e9e4076cc7a8c7998948c393e67bbe72535c3888c51c62"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/lookup03-guard/process.json",
+        "bytes": 2970,
+        "sha256": "3e3cda31bf29158130e9e4076cc7a8c7998948c393e67bbe72535c3888c51c62"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup04-guard/process.json",
+        "bytes": 2974,
+        "sha256": "25642596bd18705c88ef4a70507a70849bb8512f584bb308511c11378a6a8264"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/lookup04-guard/process.json",
+        "bytes": 2974,
+        "sha256": "25642596bd18705c88ef4a70507a70849bb8512f584bb308511c11378a6a8264"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/map-checker01-guard/process.json",
+        "bytes": 2630,
+        "sha256": "d818bd167a70b5a21d359e703ee85b102ff7c68d10ed53371d1f6a512793d8bb"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/map-checker01-guard/process.json",
+        "bytes": 2630,
+        "sha256": "d818bd167a70b5a21d359e703ee85b102ff7c68d10ed53371d1f6a512793d8bb"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/map-controls01-guard/process.json",
+        "bytes": 2633,
+        "sha256": "5b51ff32b412722172582583f4f7872d043925bb48455ac8af963cdec0beef9d"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/map-controls01-guard/process.json",
+        "bytes": 2633,
+        "sha256": "5b51ff32b412722172582583f4f7872d043925bb48455ac8af963cdec0beef9d"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/map-full01-guard/process.json",
+        "bytes": 2622,
+        "sha256": "61953e21094a1127f30777a38e68e0813877a34166f6f1709e6b9eb6dcbda78d"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/map-full01-guard/process.json",
+        "bytes": 2622,
+        "sha256": "61953e21094a1127f30777a38e68e0813877a34166f6f1709e6b9eb6dcbda78d"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/map04-guard/process.json",
+        "bytes": 2968,
+        "sha256": "8fabf85a158904dbbfd19ece4d7d5bd053229173ba399282e771c7783aee3011"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/map04-guard/process.json",
+        "bytes": 2968,
+        "sha256": "8fabf85a158904dbbfd19ece4d7d5bd053229173ba399282e771c7783aee3011"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-checker01-guard/process.json",
+        "bytes": 2626,
+        "sha256": "bdc4564bdabde0ae36510460bf7086bcbc2671d8336e79157303a32bbb0a1f49"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/memo-checker01-guard/process.json",
+        "bytes": 2626,
+        "sha256": "bdc4564bdabde0ae36510460bf7086bcbc2671d8336e79157303a32bbb0a1f49"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-controls01-guard/process.json",
+        "bytes": 2604,
+        "sha256": "2ba671d1829608108ec8a7aaeb6f34bb2bb53eb899cc3bbb755ab902349d8eaa"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/memo-controls01-guard/process.json",
+        "bytes": 2604,
+        "sha256": "2ba671d1829608108ec8a7aaeb6f34bb2bb53eb899cc3bbb755ab902349d8eaa"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-full01-guard/process.json",
+        "bytes": 2620,
+        "sha256": "b388e01f973eecc0e05205486c4f96fa45164e0fc5c5bd92196dbf1bfd45d90e"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/memo-full01-guard/process.json",
+        "bytes": 2620,
+        "sha256": "b388e01f973eecc0e05205486c4f96fa45164e0fc5c5bd92196dbf1bfd45d90e"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo01-guard/process.json",
+        "bytes": 2969,
+        "sha256": "aa098ec2474313bdbee5134f7b744e9eed2fd1b4c6aa51b26f1ec0e7db344761"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/memo01-guard/process.json",
+        "bytes": 2969,
+        "sha256": "aa098ec2474313bdbee5134f7b744e9eed2fd1b4c6aa51b26f1ec0e7db344761"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/original01-guard/process.json",
+        "bytes": 2681,
+        "sha256": "85ccd90fed623962f681411144650f446ec56e77568b2673fa4bd323e96e9dcf"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/original01-guard/process.json",
+        "bytes": 2681,
+        "sha256": "85ccd90fed623962f681411144650f446ec56e77568b2673fa4bd323e96e9dcf"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/original02-guard/process.json",
+        "bytes": 2991,
+        "sha256": "b33e112694a2bcacb8e56367eb058062678cf1bd07b26d62c0f6539f9743434e"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/original02-guard/process.json",
+        "bytes": 2991,
+        "sha256": "b33e112694a2bcacb8e56367eb058062678cf1bd07b26d62c0f6539f9743434e"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/ours-eq-checker01-guard/process.json",
+        "bytes": 2646,
+        "sha256": "3e9bff1ee465c453ed2b1d9eb4df22264ea1fc33a1c030e7f2d18193e6b74a03"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/ours-eq-checker01-guard/process.json",
+        "bytes": 2646,
+        "sha256": "3e9bff1ee465c453ed2b1d9eb4df22264ea1fc33a1c030e7f2d18193e6b74a03"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/ours-eq-controls01-guard/process.json",
+        "bytes": 2648,
+        "sha256": "f45e219748a9c66cfe06242dc2c8ed718b5bef3b5c74ae17242ccc1431958e8c"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/ours-eq-controls01-guard/process.json",
+        "bytes": 2648,
+        "sha256": "f45e219748a9c66cfe06242dc2c8ed718b5bef3b5c74ae17242ccc1431958e8c"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/ours-eq-full01-guard/process.json",
+        "bytes": 2638,
+        "sha256": "ad228c38830981cfdb25912973c4b11a3c6b316a132564ed55f03cca9ab40598"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/ours-eq-full01-guard/process.json",
+        "bytes": 2638,
+        "sha256": "ad228c38830981cfdb25912973c4b11a3c6b316a132564ed55f03cca9ab40598"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/ours-eq01-guard/process.json",
+        "bytes": 2980,
+        "sha256": "71143c369abf55ddcc2f298dee8cc06e703a502f91dbfd8e07399e3f2c78ba21"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/ours-eq01-guard/process.json",
+        "bytes": 2980,
+        "sha256": "71143c369abf55ddcc2f298dee8cc06e703a502f91dbfd8e07399e3f2c78ba21"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/verifier-oracle01-guard/process.json",
+        "bytes": 3076,
+        "sha256": "c7d63d734b7ab9c9e4b76e49d69398201940e7076790bc2fb5fbb9430d0953fc"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/verifier-oracle01-guard/process.json",
+        "bytes": 3076,
+        "sha256": "c7d63d734b7ab9c9e4b76e49d69398201940e7076790bc2fb5fbb9430d0953fc"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/verifier-oracle02-guard/process.json",
+        "bytes": 3595,
+        "sha256": "7eafcf8b8eebee46d91d39f7870caaffb39b096b34993de018594474a4717ef5"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/verifier-oracle02-guard/process.json",
+        "bytes": 3595,
+        "sha256": "7eafcf8b8eebee46d91d39f7870caaffb39b096b34993de018594474a4717ef5"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine01/qbe/report.json",
+        "bytes": 8710,
+        "sha256": "7c6a98a0ed1b651135862b20035260afba2e6fe0b8ffe54afd4855534fc865b4"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/backend-machine01/qbe/report.json",
+        "bytes": 8710,
+        "sha256": "7c6a98a0ed1b651135862b20035260afba2e6fe0b8ffe54afd4855534fc865b4"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine01/report.json",
+        "bytes": 8004,
+        "sha256": "85e9bd40548a5df5a52152946b3dcac017906186e0f2f172ad4cf0206c4a49fe"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/backend-machine01/report.json",
+        "bytes": 8004,
+        "sha256": "85e9bd40548a5df5a52152946b3dcac017906186e0f2f172ad4cf0206c4a49fe"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine03/qbe/report.json",
+        "bytes": 8719,
+        "sha256": "cc55289d394ef296bf75a0ca3a5ca232d6abb607bf51464e0f72eb0a3517c845"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/backend-machine03/qbe/report.json",
+        "bytes": 8719,
+        "sha256": "cc55289d394ef296bf75a0ca3a5ca232d6abb607bf51464e0f72eb0a3517c845"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-machine03/report.json",
+        "bytes": 7987,
+        "sha256": "675d432971e78cd469203872232702a21a55b760150d444e151a7f62c2112055"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/backend-machine03/report.json",
+        "bytes": 7987,
+        "sha256": "675d432971e78cd469203872232702a21a55b760150d444e151a7f62c2112055"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan03/replay/report.json",
+        "bytes": 7403,
+        "sha256": "8ed78468b75468327c9bad80703d28a59ed09e7e03738982b9403cf1f5c356d5"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/backend-plan03/replay/report.json",
+        "bytes": 7403,
+        "sha256": "8ed78468b75468327c9bad80703d28a59ed09e7e03738982b9403cf1f5c356d5"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup01/report.json",
+        "bytes": 22366,
+        "sha256": "e521c3a865ca83dc436d1ebd879a788a43d1d5bc8b418330fc706d37eeda6cdf"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/lookup01/report.json",
+        "bytes": 22366,
+        "sha256": "e521c3a865ca83dc436d1ebd879a788a43d1d5bc8b418330fc706d37eeda6cdf"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup02/report.json",
+        "bytes": 22366,
+        "sha256": "b35627e4dacc47aab055f102262cfca9745cb7d414d831b5f9e56ad123252a72"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/lookup02/report.json",
+        "bytes": 22366,
+        "sha256": "b35627e4dacc47aab055f102262cfca9745cb7d414d831b5f9e56ad123252a72"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup03/report.json",
+        "bytes": 22367,
+        "sha256": "197a0a76aa904a9c1dfd86ac922ea83e6cc0c00b8bd94feea517ca4c458880aa"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/lookup03/report.json",
+        "bytes": 22367,
+        "sha256": "197a0a76aa904a9c1dfd86ac922ea83e6cc0c00b8bd94feea517ca4c458880aa"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup04/report.json",
+        "bytes": 23889,
+        "sha256": "206a91cb99b7997bba4712636f6476efcbbe0220d594d6f14865118f992f955d"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/lookup04/report.json",
+        "bytes": 23889,
+        "sha256": "206a91cb99b7997bba4712636f6476efcbbe0220d594d6f14865118f992f955d"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/map04/report.json",
+        "bytes": 23827,
+        "sha256": "9f9d9e002bc7ff938d963210d51c03509b7fe389c4e1dbc226031281a536f9b5"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/map04/report.json",
+        "bytes": 23827,
+        "sha256": "9f9d9e002bc7ff938d963210d51c03509b7fe389c4e1dbc226031281a536f9b5"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo01/report.json",
+        "bytes": 23886,
+        "sha256": "65e42583df79637fb0dbadc44962316c2b2ac727e5686fc7051a01e2555c229c"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/memo01/report.json",
+        "bytes": 23886,
+        "sha256": "65e42583df79637fb0dbadc44962316c2b2ac727e5686fc7051a01e2555c229c"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/original01/report.json",
+        "bytes": 21251,
+        "sha256": "afc9fb8785ba6225de0967cc48aa249bf6c39422c48af35724c99078ea0a9884"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/original01/report.json",
+        "bytes": 21251,
+        "sha256": "afc9fb8785ba6225de0967cc48aa249bf6c39422c48af35724c99078ea0a9884"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/original02/report.json",
+        "bytes": 23069,
+        "sha256": "bcb76cfc475fe806647ec368e9441ad1ecab549c98bfd0f25529c1fda9ee9929"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/original02/report.json",
+        "bytes": 23069,
+        "sha256": "bcb76cfc475fe806647ec368e9441ad1ecab549c98bfd0f25529c1fda9ee9929"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/ours-eq-effects01/report.json",
+        "bytes": 5489,
+        "sha256": "9df60e2748d357fe4be68b540ef08d5384e9d45fc410bda76d4adc3584cd7b7d"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/ours-eq-effects01/report.json",
+        "bytes": 5489,
+        "sha256": "9df60e2748d357fe4be68b540ef08d5384e9d45fc410bda76d4adc3584cd7b7d"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/ours-eq01/report.json",
+        "bytes": 23887,
+        "sha256": "26ae2c5a836fa9d82fcb3d22c5010da4082d33d61d409995e65921cbbdf25686"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/ours-eq01/report.json",
+        "bytes": 23887,
+        "sha256": "26ae2c5a836fa9d82fcb3d22c5010da4082d33d61d409995e65921cbbdf25686"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/source-effects01/report.json",
+        "bytes": 20528,
+        "sha256": "b9d38bd86960f454dd309229d1c5f10ab9397adceae09748a7326be238ba854c"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/source-effects01/report.json",
+        "bytes": 20528,
+        "sha256": "b9d38bd86960f454dd309229d1c5f10ab9397adceae09748a7326be238ba854c"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/source-effects02/report.json",
+        "bytes": 5478,
+        "sha256": "776c2fae8b63ed21b11bfa81e8182a920c6e472642ad60a4795d9be1c2803d20"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/source-effects02/report.json",
+        "bytes": 5478,
+        "sha256": "776c2fae8b63ed21b11bfa81e8182a920c6e472642ad60a4795d9be1c2803d20"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/source-effects03/report.json",
+        "bytes": 12981,
+        "sha256": "d244bfba7b4bf76c5f64357d773f10946c36c1980bd641562419deeb0f3b95b0"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/source-effects03/report.json",
+        "bytes": 12981,
+        "sha256": "d244bfba7b4bf76c5f64357d773f10946c36c1980bd641562419deeb0f3b95b0"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/source-effects04/report.json",
+        "bytes": 5478,
+        "sha256": "b3784d3a10d217df88163cd0ab9405976256076193e861a4edca2d824e43b634"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/source-effects04/report.json",
+        "bytes": 5478,
+        "sha256": "b3784d3a10d217df88163cd0ab9405976256076193e861a4edca2d824e43b634"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/source-effects04-arms/report.json",
+        "bytes": 9213,
+        "sha256": "8463c14c9b972048d9c560c8d9000a56c34a0d1910d75e94ef15eca8afe3e777"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/source-effects04-arms/report.json",
+        "bytes": 9213,
+        "sha256": "8463c14c9b972048d9c560c8d9000a56c34a0d1910d75e94ef15eca8afe3e777"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/verifier-oracle01/report.json",
+        "bytes": 9099,
+        "sha256": "6b8e18435b86aa1202513bc93fdac82e1d2a318091c2dd9de6bf88b4924113f4"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/verifier-oracle01/report.json",
+        "bytes": 9099,
+        "sha256": "6b8e18435b86aa1202513bc93fdac82e1d2a318091c2dd9de6bf88b4924113f4"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/verifier-oracle02/report.json",
+        "bytes": 10429,
+        "sha256": "9c4432a84e6f3255535eecbe5cb0a6907eba9ebe8441a0345c9c78b9c13ec0c9"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/verifier-oracle02/report.json",
+        "bytes": 10429,
+        "sha256": "9c4432a84e6f3255535eecbe5cb0a6907eba9ebe8441a0345c9c78b9c13ec0c9"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup-source01/manifest.json",
+        "bytes": 35949,
+        "sha256": "cf2b7227f7fa9ea35160262ece1ff3811b7da794a031840339d4fb97b252ce0f"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/lookup-source01/manifest.json",
+        "bytes": 35949,
+        "sha256": "cf2b7227f7fa9ea35160262ece1ff3811b7da794a031840339d4fb97b252ce0f"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup-source02/manifest.json",
+        "bytes": 40801,
+        "sha256": "f5040b495a60c358765c68b7141ef2671604fe641b92ddbb34a6970301fa3590"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/lookup-source02/manifest.json",
+        "bytes": 40801,
+        "sha256": "f5040b495a60c358765c68b7141ef2671604fe641b92ddbb34a6970301fa3590"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup-source03/manifest.json",
+        "bytes": 41418,
+        "sha256": "616a50fc983fd9c3423ccce31d98bc793a0e6682c50ece228d467af6c8187765"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/lookup-source03/manifest.json",
+        "bytes": 41418,
+        "sha256": "616a50fc983fd9c3423ccce31d98bc793a0e6682c50ece228d467af6c8187765"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup-source04/manifest.json",
+        "bytes": 42360,
+        "sha256": "6985205169387e028c27cabfc8dd67fc87aee22ce60f8e5719fdaeb59bf29384"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/lookup-source04/manifest.json",
+        "bytes": 42360,
+        "sha256": "6985205169387e028c27cabfc8dd67fc87aee22ce60f8e5719fdaeb59bf29384"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/map-source01/manifest.json",
+        "bytes": 23391,
+        "sha256": "db385a87b0ef9efd5b399d32b9bf5f60de93b8be54f50d5abc4df949e023b13c"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/map-source01/manifest.json",
+        "bytes": 23391,
+        "sha256": "db385a87b0ef9efd5b399d32b9bf5f60de93b8be54f50d5abc4df949e023b13c"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/map-source03/manifest.json",
+        "bytes": 27358,
+        "sha256": "48d2a1b6ad59cb67c901724411943fd2cf3a5ba1f58cae4001b3c6b77e205511"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/map-source03/manifest.json",
+        "bytes": 27358,
+        "sha256": "48d2a1b6ad59cb67c901724411943fd2cf3a5ba1f58cae4001b3c6b77e205511"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/map-source04/manifest.json",
+        "bytes": 27799,
+        "sha256": "4e6394571ff502989304f097570d98caa70f4493e873b42ad5ea03eecb0af584"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/map-source04/manifest.json",
+        "bytes": 27799,
+        "sha256": "4e6394571ff502989304f097570d98caa70f4493e873b42ad5ea03eecb0af584"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-source01/manifest.json",
+        "bytes": 42102,
+        "sha256": "f03b1e679e90d80dd2b6a58cb642294dd5d3aa48e38946ca4d0174172ec46f78"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/memo-source01/manifest.json",
+        "bytes": 42102,
+        "sha256": "f03b1e679e90d80dd2b6a58cb642294dd5d3aa48e38946ca4d0174172ec46f78"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/ours-eq-source01/manifest.json",
+        "bytes": 14645,
+        "sha256": "d9f013423a6396e6006f67367e10f5f3c0e17295a6905efaaffcc4592640459e"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/ours-eq-source01/manifest.json",
+        "bytes": 14645,
+        "sha256": "d9f013423a6396e6006f67367e10f5f3c0e17295a6905efaaffcc4592640459e"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/string-source01/manifest.json",
+        "bytes": 29624,
+        "sha256": "2576d9d13238245123602daba765a532955685c183c4002955651bb2f759d589"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/string-source01/manifest.json",
+        "bytes": 29624,
+        "sha256": "2576d9d13238245123602daba765a532955685c183c4002955651bb2f759d589"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/string-source03/manifest.json",
+        "bytes": 34604,
+        "sha256": "cb029c576e03c1442c511378a4d159c9b2059142d517ab5676da93bc427e983f"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/string-source03/manifest.json",
+        "bytes": 34604,
+        "sha256": "cb029c576e03c1442c511378a4d159c9b2059142d517ab5676da93bc427e983f"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/string-source04/manifest.json",
+        "bytes": 35546,
+        "sha256": "cf58771e2df1b2bd0696467e1898af106c4ad9751cfe017ece251ee2a9046f0f"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/string-source04/manifest.json",
+        "bytes": 35546,
+        "sha256": "cf58771e2df1b2bd0696467e1898af106c4ad9751cfe017ece251ee2a9046f0f"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan01/plan.json",
+        "bytes": 5821,
+        "sha256": "e71a0b0043a67a624b45b772f58fb04045e4ef46e077c04b6e2173265b94800d"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/backend-plan01/plan.json",
+        "bytes": 5821,
+        "sha256": "e71a0b0043a67a624b45b772f58fb04045e4ef46e077c04b6e2173265b94800d"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan02/plan.json",
+        "bytes": 7056,
+        "sha256": "a46f6ace697dc21a570911ceb4cb8ca8a0b919a62c385ded8324d0d03230fc2d"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/backend-plan02/plan.json",
+        "bytes": 7056,
+        "sha256": "a46f6ace697dc21a570911ceb4cb8ca8a0b919a62c385ded8324d0d03230fc2d"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan03/plan.json",
+        "bytes": 7911,
+        "sha256": "c205d660b20a690d25fb8d945efbae5e653ec25ad463ac644d22823d8798c594"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/backend-plan03/plan.json",
+        "bytes": 7911,
+        "sha256": "c205d660b20a690d25fb8d945efbae5e653ec25ad463ac644d22823d8798c594"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan04/plan.json",
+        "bytes": 10134,
+        "sha256": "44c55ec4635ecd6e35110bdda941ced864308f680a0ec5d76490a6a31493f57e"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/backend-plan04/plan.json",
+        "bytes": 10134,
+        "sha256": "44c55ec4635ecd6e35110bdda941ced864308f680a0ec5d76490a6a31493f57e"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan05/plan.json",
+        "bytes": 9758,
+        "sha256": "ddb4c9f64a5bde23497b17d6a0d5427262d920dfcdf07755e68ef97570f8383d"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/backend-plan05/plan.json",
+        "bytes": 9758,
+        "sha256": "ddb4c9f64a5bde23497b17d6a0d5427262d920dfcdf07755e68ef97570f8383d"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan06/plan.json",
+        "bytes": 12838,
+        "sha256": "5d18d50fa578fceaf755fd4a31d574b122544b41c26f5ccc930f80d39e50ff82"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/backend-plan06/plan.json",
+        "bytes": 12838,
+        "sha256": "5d18d50fa578fceaf755fd4a31d574b122544b41c26f5ccc930f80d39e50ff82"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan01/jobs.json",
+        "bytes": 958,
+        "sha256": "7bfd3f9e296d3a52fb41e1ff35548778625614b9d3d321356ea6d871d525e1fd"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/backend-plan01/jobs.json",
+        "bytes": 958,
+        "sha256": "7bfd3f9e296d3a52fb41e1ff35548778625614b9d3d321356ea6d871d525e1fd"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan02/jobs.json",
+        "bytes": 957,
+        "sha256": "26557e2fa158581f521134607089f339025dcb2447f02714be04fa2c16914e4a"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/backend-plan02/jobs.json",
+        "bytes": 957,
+        "sha256": "26557e2fa158581f521134607089f339025dcb2447f02714be04fa2c16914e4a"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan03/jobs.json",
+        "bytes": 957,
+        "sha256": "fb3d335ee3d9b8ddd65f94d83108af4545f609c0a5cbec1eedad9b20ec877302"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/backend-plan03/jobs.json",
+        "bytes": 957,
+        "sha256": "fb3d335ee3d9b8ddd65f94d83108af4545f609c0a5cbec1eedad9b20ec877302"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan04/jobs.json",
+        "bytes": 957,
+        "sha256": "2f5d0116146336093f6de147d4c03e58f46a8ad3f9e8ffb09834b66f92635b11"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/backend-plan04/jobs.json",
+        "bytes": 957,
+        "sha256": "2f5d0116146336093f6de147d4c03e58f46a8ad3f9e8ffb09834b66f92635b11"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan05/jobs.json",
+        "bytes": 960,
+        "sha256": "70b830fcbf40780548c1f4480b3600c26d0c1380c24487fc02c5435848441adb"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/backend-plan05/jobs.json",
+        "bytes": 960,
+        "sha256": "70b830fcbf40780548c1f4480b3600c26d0c1380c24487fc02c5435848441adb"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/backend-plan06/jobs.json",
+        "bytes": 960,
+        "sha256": "511a8e5e3256ccc2fd6fc1784351def27094a5451537de6c050fe3d00e553fef"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/backend-plan06/jobs.json",
+        "bytes": 960,
+        "sha256": "511a8e5e3256ccc2fd6fc1784351def27094a5451537de6c050fe3d00e553fef"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup01/emission.stderr",
+        "bytes": 421,
+        "sha256": "76ac49e916f28f3f178972614409c0cb278b01b07c6fd22ed33e1e0665eb75b1"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/lookup01/emission.stderr",
+        "bytes": 421,
+        "sha256": "76ac49e916f28f3f178972614409c0cb278b01b07c6fd22ed33e1e0665eb75b1"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup02/emission.stderr",
+        "bytes": 297,
+        "sha256": "a2fada87ce3612e5dc7854550233283421f22aabe96f6cd8d809dfcbfe70fb43"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/lookup02/emission.stderr",
+        "bytes": 297,
+        "sha256": "a2fada87ce3612e5dc7854550233283421f22aabe96f6cd8d809dfcbfe70fb43"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup03/emission.stderr",
+        "bytes": 246,
+        "sha256": "f488c81db6b6fb0d7b007dab3bb772313f92afe96170ebfa13796d469ff19642"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/lookup03/emission.stderr",
+        "bytes": 246,
+        "sha256": "f488c81db6b6fb0d7b007dab3bb772313f92afe96170ebfa13796d469ff19642"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup04/emission.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/lookup04/emission.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/map04/emission.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/map04/emission.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo01/emission.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/memo01/emission.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/original01/emission.stderr",
+        "bytes": 26,
+        "sha256": "7833838098dff21a62433384c486ade9ca1da78ee9f7995fa051640e4a6db5e4"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/original01/emission.stderr",
+        "bytes": 26,
+        "sha256": "7833838098dff21a62433384c486ade9ca1da78ee9f7995fa051640e4a6db5e4"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/original02/emission.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/original02/emission.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "original": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/ours-eq01/emission.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "copy": {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase165/evidence/ours-eq01/emission.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "cost": {
+    "guardedRuns": 31,
+    "guardedSeconds": 946.9440316651016,
+    "peakRssBytes": 1243918336,
+    "minimumDiskFreeBytes": 5411381248
+  }
+}

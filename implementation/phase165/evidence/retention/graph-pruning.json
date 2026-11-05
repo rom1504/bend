@@ -1,0 +1,129 @@
+{
+  "complete": true,
+  "rows": [
+    {
+      "root": "selfhost/build/phase165/backend-plan02/replay",
+      "verify": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase165/graph-retention-policy.json",
+        "--receipt",
+        "selfhost/build-retention/phase165/backend-plan02-replay-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase165/graph-prune-0/verified"
+      ],
+      "apply": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase165/graph-prune-0/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase165/graph-prune-0/applied"
+      ],
+      "restore": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase165/graph-prune-0/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase165/graph-prune-0/restored"
+      ],
+      "result": {
+        "kind": "build-retention-prune-result-v1",
+        "complete": true,
+        "removedFiles": 1,
+        "seconds": 0.03656116686761379
+      }
+    },
+    {
+      "root": "selfhost/build/phase165/backend-plan03/replay",
+      "verify": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase165/graph-retention-policy.json",
+        "--receipt",
+        "selfhost/build-retention/phase165/backend-plan03-replay-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase165/graph-prune-1/verified"
+      ],
+      "apply": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase165/graph-prune-1/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase165/graph-prune-1/applied"
+      ],
+      "restore": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase165/graph-prune-1/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase165/graph-prune-1/restored"
+      ],
+      "result": {
+        "kind": "build-retention-prune-result-v1",
+        "complete": true,
+        "removedFiles": 1,
+        "seconds": 0.03641724260523915
+      }
+    },
+    {
+      "root": "selfhost/build/phase165/backend-plan04/replay",
+      "verify": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase165/graph-retention-policy.json",
+        "--receipt",
+        "selfhost/build-retention/phase165/backend-plan04-replay-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase165/graph-prune-2/verified"
+      ],
+      "apply": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase165/graph-prune-2/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase165/graph-prune-2/applied"
+      ],
+      "restore": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase165/graph-prune-2/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase165/graph-prune-2/restored"
+      ],
+      "result": {
+        "kind": "build-retention-prune-result-v1",
+        "complete": true,
+        "removedFiles": 1,
+        "seconds": 0.033487307373434305
+      }
+    }
+  ],
+  "freeBytes": 5430190080
+}

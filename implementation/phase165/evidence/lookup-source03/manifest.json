@@ -1,0 +1,1247 @@
+{
+  "kind": "phase165-checker-portable-native-closure",
+  "version": 3,
+  "complete": true,
+  "targetsRun": false,
+  "bendcCommit": "56edcc65b3527a75838011682c231072d5b46097",
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/experiments/phase165/tools/prepare-native-lookup-v3.py",
+    "bytes": 10615,
+    "sha256": "48f1ab7e2bf70cd495c403ef9c6543b088528b3dc2e85a29c1a22175c1d5b733"
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase165/tools/prepare-native-lookup.py",
+      "bytes": 10500,
+      "sha256": "6fa2b4d1ce742fc4e717ae00dadcac92a47f283fb6593775599f34a465741bee"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase165/tools/prepare-memo.py",
+      "bytes": 9376,
+      "sha256": "3f29febde2efc8d661a725e0554df2b07b5ca5b44c69791dd086f231dbb857fd"
+    },
+    {
+      "file": "selfhost/build/phase165/memo-source01/base-acquisition/base.bend",
+      "bytes": 71530,
+      "sha256": "c742fae9c49b14f0cc9128429a2c6109364c8a933a142f2c90b9f2e5fd976661"
+    },
+    {
+      "file": "selfhost/build/phase165/memo-source01/original/bendc.bend",
+      "bytes": 1187548,
+      "sha256": "72be729fb5a27c528acc4d232314ac44c4595a86dc67d9dde47197956edabb99"
+    },
+    {
+      "file": "selfhost/build/phase165/memo-source01/original/check.bend",
+      "bytes": 310429,
+      "sha256": "786514afc1804c00371356943ac6790c16c04c04551e7ab8e0d8f6468e22bf41"
+    },
+    {
+      "file": "selfhost/build/phase165/memo-source01/original/core.bend",
+      "bytes": 69163,
+      "sha256": "776ec5d81269d74ab3e8da0ad0f748e0f0e48695aae667a5d57ed033c433a1b7"
+    },
+    {
+      "file": "selfhost/build/phase165/memo-source01/original/asm.bend",
+      "bytes": 44202,
+      "sha256": "91794842d83c54362a756d0a759ea8fc4979b889184567cc543b640fb6f7a2f9"
+    },
+    {
+      "file": "selfhost/build/phase165/memo-source01/original/rt/rtjs.bend",
+      "bytes": 26110,
+      "sha256": "cb6d37062e77441383ec205d0a89e8bbaa3ac38b58dc0da8764bb6debfeffd24"
+    },
+    {
+      "file": "selfhost/build/phase165/memo-source01/original/rt/rtchan.bend",
+      "bytes": 3144,
+      "sha256": "34ac7e6bb3a91203ccee8fc7d66825aeba611766d51ba62c7ddffa274e50a51f"
+    }
+  ],
+  "detail": {
+    "policies": {
+      "maps": "portable",
+      "strings": "portable",
+      "memo": "native"
+    },
+    "selectedNativeOperations": [
+      "Map.bit",
+      "Map.get",
+      "Map.has",
+      "String.cmp",
+      "String.eq"
+    ],
+    "checkerDirectNativeOccurrences": {
+      "Map.bit": 1,
+      "Map.get": 0,
+      "Map.has": 0,
+      "String.cmp": 0,
+      "String.eq": 41
+    },
+    "redirectedCheckerRoots": {
+      "Map.bit": 1,
+      "Map.set": 5,
+      "Set.add": 3,
+      "Set.from_list": 1,
+      "Set.has": 4,
+      "String.eq": 41
+    },
+    "copiedDefinitions": [
+      "Char.cmp",
+      "Cmp.is_eq",
+      "Map.bit",
+      "Map.bit.at",
+      "Map.bit.chr",
+      "Map.bit.go",
+      "Map.bit.go.chr",
+      "Map.bit.go.rec",
+      "Map.bit.u",
+      "Map.diff",
+      "Map.diff.chr",
+      "Map.diff.fin",
+      "Map.diff.step",
+      "Map.get",
+      "Map.get.go",
+      "Map.get.leaf",
+      "Map.has",
+      "Map.has.go",
+      "Map.has.leaf",
+      "Map.hi",
+      "Map.ins",
+      "Map.ins.go",
+      "Map.ins.splice",
+      "Map.ins.splice.bit",
+      "Map.lo",
+      "Map.msb.u",
+      "Map.msb.u.if",
+      "Map.new",
+      "Map.put",
+      "Map.put.go",
+      "Map.seek",
+      "Map.seek.go",
+      "Map.set",
+      "Map.set.fin",
+      "Map.set.fin.go",
+      "Map.set.go",
+      "Pair.snd",
+      "Set.add",
+      "Set.from_list",
+      "Set.from_list.go",
+      "Set.has",
+      "Set.new",
+      "String.cmp",
+      "String.cmp.fin",
+      "String.cmp.rec",
+      "String.eq",
+      "String.order"
+    ],
+    "copiedDeclarationBlocks": [
+      {
+        "name": "Pair.snd",
+        "kind": "def",
+        "sourceStart": 2366,
+        "sourceEnd": 2454,
+        "sourceSha256": "2073adcee9225e206802e9b204b272604099113f1ed00b2d652ba7488ef50cf4",
+        "privateSha256": "0fe51e50e0911fbba285d23ecf177e105c67b1d6283aeb0001cdd62c7991a3d6",
+        "renameCount": 1
+      },
+      {
+        "name": "Cmp.is_eq",
+        "kind": "def",
+        "sourceStart": 12834,
+        "sourceEnd": 12931,
+        "sourceSha256": "b38b826cd014151dfa4835679340ce39ef2ca402636124569f0ff521597df6ed",
+        "privateSha256": "74fb80eb71cbf5aab773d3e76d857c98c781f9b1a1932d1829cc9032dc4045b3",
+        "renameCount": 1
+      },
+      {
+        "name": "Char.cmp",
+        "kind": "def",
+        "sourceStart": 37873,
+        "sourceEnd": 38008,
+        "sourceSha256": "569edcd64587a6f90c7c0651e82ed796fea5d7b432ea18f13413080649ac311b",
+        "privateSha256": "898b83e03677f43ab3788a7b8c579ed5d59fcaa8c06aded95624d452ab04a5ec",
+        "renameCount": 1
+      },
+      {
+        "name": "String.cmp.rec",
+        "kind": "def",
+        "sourceStart": 39241,
+        "sourceEnd": 39405,
+        "sourceSha256": "7dd110f22280354299c39fe872832a99b1abc04bff5cf821c5e2f06bc39def14",
+        "privateSha256": "f9bfe84c692f8219e90866879015ea50b207d2a207ba50aba7c44578b7208e74",
+        "renameCount": 1
+      },
+      {
+        "name": "String.cmp",
+        "kind": "law",
+        "sourceStart": 39405,
+        "sourceEnd": 39480,
+        "sourceSha256": "314bf9c9abb02a1db24888a94b25326907c4f8946cc9a8171b69e37ca9a90ed0",
+        "privateSha256": "93b66ccc08e65008e1c7682697e0079311844f3fa7ddbed3baac3cd77c29eb5c",
+        "renameCount": 1
+      },
+      {
+        "name": "String.cmp.fin",
+        "kind": "def",
+        "sourceStart": 39480,
+        "sourceEnd": 39799,
+        "sourceSha256": "615b650c3ef7face02767e518909539536984019b437d0d05c88638dd343145e",
+        "privateSha256": "8712f9eebe4c428b3dbed80462f994182ebcf39232999434438fa64b0aeeb061",
+        "renameCount": 3
+      },
+      {
+        "name": "String.cmp",
+        "kind": "def",
+        "sourceStart": 39799,
+        "sourceEnd": 40099,
+        "sourceSha256": "6c2db5a13ec98c9e7bcc16b479ed3b5cd0300f70404abddb5e6caae455598f32",
+        "privateSha256": "adae7ba9115a2da1cd60a201d75881b699ffa7b83563d52f7a856534359d55ca",
+        "renameCount": 3
+      },
+      {
+        "name": "String.eq",
+        "kind": "def",
+        "sourceStart": 40099,
+        "sourceEnd": 40177,
+        "sourceSha256": "b829d43b29dce189c9c13b671b8990a6f35df69de56623f547c0d05b32a4264e",
+        "privateSha256": "fb7af51cf0a8602d472203810b7cd6f604c539edbada246d3c8ef3ba79aa84e2",
+        "renameCount": 3
+      },
+      {
+        "name": "String.order",
+        "kind": "def",
+        "sourceStart": 40647,
+        "sourceEnd": 40746,
+        "sourceSha256": "04950eeb1b090d0399ca4136e0fb728a67f5170f192c24e2fe743ddc536c909b",
+        "privateSha256": "ae0d49bc85e55673f4a709c9f700ad39c12b0dfb79fbbbc1e338525fbfe505f5",
+        "renameCount": 3
+      },
+      {
+        "name": "Map.bit.u",
+        "kind": "def",
+        "sourceStart": 54218,
+        "sourceEnd": 54301,
+        "sourceSha256": "ad26db356f9d7c7a74af5c0bd401eb7b9d318b64d66ad20d4a65ab75352899a5",
+        "privateSha256": "bb77d3e390b860f0d489f73d019beb4d764a3192a2882c7a6ac4a650627a322c",
+        "renameCount": 1
+      },
+      {
+        "name": "Map.bit.chr",
+        "kind": "def",
+        "sourceStart": 54301,
+        "sourceEnd": 54480,
+        "sourceSha256": "8de00187d8a4db5c584cbf3525f5afbb238b227919c4e44973fbb81919a3aee7",
+        "privateSha256": "0dd9c208f40317912da6cfc8a1f720a9d3692487b3ca3061dcda8ffb80706034",
+        "renameCount": 2
+      },
+      {
+        "name": "Map.bit.go.chr",
+        "kind": "def",
+        "sourceStart": 54480,
+        "sourceEnd": 54578,
+        "sourceSha256": "8cdbf365612f7d5c8d2d5af8452ce5b119bba4b4c4aa0b572e226f54b1139da4",
+        "privateSha256": "75cbd1e4ca8719c94694327c48dcc805ef9cc5826c1241801c1ff75665912a4e",
+        "renameCount": 1
+      },
+      {
+        "name": "Map.bit.go.rec",
+        "kind": "def",
+        "sourceStart": 54578,
+        "sourceEnd": 54676,
+        "sourceSha256": "ab1892c446a44e2b1c1fa05bdedf2df2e9b19ad3ba3347d201542f2124c6cf18",
+        "privateSha256": "61bf16e8070046cbae71a96ec16bf3daaf910c6f569dbf66ccd4cf8f2e9aa122",
+        "renameCount": 1
+      },
+      {
+        "name": "Map.bit.go",
+        "kind": "def",
+        "sourceStart": 54676,
+        "sourceEnd": 54969,
+        "sourceSha256": "2362dedb04b584064aaacc5b4bade23df73c0c72cc84f57396fefa570794d79e",
+        "privateSha256": "c96e5f681fec9f9d4915f86d6a145a6b77fca6e183491a73c1532e7e87cb3e62",
+        "renameCount": 5
+      },
+      {
+        "name": "Map.bit.at",
+        "kind": "def",
+        "sourceStart": 54969,
+        "sourceEnd": 55075,
+        "sourceSha256": "a60e1b90fdf0460cc2cc4a2302da17725a13382090d9a870fbdd9ec2f45fd298",
+        "privateSha256": "5325619b93e3798e3e01883d9d4f526ca241947f046a0577783fb06615a65890",
+        "renameCount": 2
+      },
+      {
+        "name": "Map.bit",
+        "kind": "def",
+        "sourceStart": 55075,
+        "sourceEnd": 55169,
+        "sourceSha256": "960b8d681d9c629346727778777e45fb1aeb4d5e6d523b1ba9a5e6459e94e977",
+        "privateSha256": "2ef0c09f3c23aed98c494b9e92e0420554815870df538d46787f186ae82c2615",
+        "renameCount": 2
+      },
+      {
+        "name": "Map.msb.u",
+        "kind": "law",
+        "sourceStart": 55169,
+        "sourceEnd": 55218,
+        "sourceSha256": "184b18672a9766fe8ea1e231b07f45c8f2895a23873683064436dca0c3ca5e06",
+        "privateSha256": "509d103c6e6082ed557c4dc7e033719688e02e9a8b6b52713f9e0d865706fc62",
+        "renameCount": 1
+      },
+      {
+        "name": "Map.msb.u.if",
+        "kind": "def",
+        "sourceStart": 55218,
+        "sourceEnd": 55370,
+        "sourceSha256": "bfaccc418a43dacd35c7e7182e7f7234a3b7143ec9327fefa392cd46bff98471",
+        "privateSha256": "0b8be6d3f8b536d759f4a7aa6fae9b16713ee3a70029e64d93d52bd2cf253edb",
+        "renameCount": 2
+      },
+      {
+        "name": "Map.msb.u",
+        "kind": "def",
+        "sourceStart": 55370,
+        "sourceEnd": 55481,
+        "sourceSha256": "f25d14bcc96af7dd360bbddfa1ccba1ca0fbac0b40e26110998c527a7d0e8367",
+        "privateSha256": "a6ad71285129d0dcacd9abccadf96bf80a508e82746e762bb239f8b98a2bbd51",
+        "renameCount": 2
+      },
+      {
+        "name": "Map.diff.chr",
+        "kind": "def",
+        "sourceStart": 55481,
+        "sourceEnd": 55549,
+        "sourceSha256": "3af47760e7dd281006d014a30927d01846dcc520f83529cc9ecf3df07296c428",
+        "privateSha256": "fd0641bf70adda07249392934ddc89aad0d2b0ac19066056a3c9f3f6457fa0c2",
+        "renameCount": 2
+      },
+      {
+        "name": "Map.diff.step",
+        "kind": "def",
+        "sourceStart": 55549,
+        "sourceEnd": 55699,
+        "sourceSha256": "a050d734ed2a9dddced95648ff474cf5cdc3181a8d8389a6b7fb55ddf80f33e7",
+        "privateSha256": "e3bfdc51eda4008a197235820efb28018c81a780c7e86161afa03058be2f14c2",
+        "renameCount": 2
+      },
+      {
+        "name": "Map.diff",
+        "kind": "law",
+        "sourceStart": 55699,
+        "sourceEnd": 55752,
+        "sourceSha256": "aecdecf1a51b06ec590366798289b4405b6bdcbe7fd688e0d85a82fb30a4922e",
+        "privateSha256": "31554cb89085d74d36c99f5b55e500adb48dbe9314b5f0e969b5f5db9e8983d6",
+        "renameCount": 1
+      },
+      {
+        "name": "Map.diff.fin",
+        "kind": "def",
+        "sourceStart": 55752,
+        "sourceEnd": 55923,
+        "sourceSha256": "b38ebb5031f0365d77415e312b8e6df37b96a550ffa6644b5f1f63f30f8b0d46",
+        "privateSha256": "724a26349731e9b5cc580a2e8a4412665d076d34bc34ea8c9a575ac9adae0a44",
+        "renameCount": 2
+      },
+      {
+        "name": "Map.diff",
+        "kind": "def",
+        "sourceStart": 55923,
+        "sourceEnd": 56104,
+        "sourceSha256": "56e77cb0a99f7abaa4b7662b2f4f9dc4a82fdb03a7335a78a09419ff2594ff20",
+        "privateSha256": "4d7f069d351acc9712ceb78976409edc40b7aec183c5501defb9b1d405a4dca9",
+        "renameCount": 3
+      },
+      {
+        "name": "Map.new",
+        "kind": "def",
+        "sourceStart": 56104,
+        "sourceEnd": 56361,
+        "sourceSha256": "70d05a00cf71c9a113591d9e551d691c8c4f3e6d9b6bf68a3a2717bcf4ed9b7b",
+        "privateSha256": "0ee609c1e45ea93f5e6655bb6d4a47cac59a41927266a556206eacfdc22debeb",
+        "renameCount": 1
+      },
+      {
+        "name": "Map.put.go",
+        "kind": "def",
+        "sourceStart": 56361,
+        "sourceEnd": 57105,
+        "sourceSha256": "6ba5905144829469355b626fc8c44ac54f4eaa374dd479cd0d954880f3d1c15b",
+        "privateSha256": "4bfc5960728b25685189a2ea8265cd2e54666a2877c583940abb5ed79cac5bd3",
+        "renameCount": 5
+      },
+      {
+        "name": "Map.put",
+        "kind": "def",
+        "sourceStart": 57105,
+        "sourceEnd": 57372,
+        "sourceSha256": "e32fd9028be76c67609253b4ebf45e716c903c6bf37f97e47de708662d30a301",
+        "privateSha256": "d1ae42a981d88f6e96ebb76cf200c550d33f521e0c47487dafd03be865d3fdca",
+        "renameCount": 3
+      },
+      {
+        "name": "Map.ins.splice.bit",
+        "kind": "def",
+        "sourceStart": 57372,
+        "sourceEnd": 57620,
+        "sourceSha256": "44d21211225c06dc0f91aebd74998223019fdc8b312ad6700b54c2f0e33b4d8e",
+        "privateSha256": "57758c7cbe8c3f4997b1553353dc38c4609c2460c2f3c4c6bfb2a2c5102a9f1e",
+        "renameCount": 1
+      },
+      {
+        "name": "Map.ins.splice",
+        "kind": "def",
+        "sourceStart": 57620,
+        "sourceEnd": 57844,
+        "sourceSha256": "7959eab422f551e751fb3efa051d8e202979d92f01a752ef1351d0757fe6414d",
+        "privateSha256": "bfd19547072af260ea51a1b38d9173616a2d70328f43e63b49d86593e89092f4",
+        "renameCount": 3
+      },
+      {
+        "name": "Map.ins.go",
+        "kind": "def",
+        "sourceStart": 57844,
+        "sourceEnd": 58869,
+        "sourceSha256": "34003e6be2f02fd731f42680bf08f41861c40220d9c00b16551c09ec76c204ee",
+        "privateSha256": "beb52b279ec0571daeb4d01f4afca9f12294dc59ae174a2fc8015212e1356891",
+        "renameCount": 8
+      },
+      {
+        "name": "Map.ins",
+        "kind": "def",
+        "sourceStart": 58869,
+        "sourceEnd": 59204,
+        "sourceSha256": "a15b96459c9792a859a46f127db8d7d83841e4d7489071a82802905349216b42",
+        "privateSha256": "b22f96bf93117412b46accb382bc79f60953bdb2637278375c61b852da7b0d56",
+        "renameCount": 4
+      },
+      {
+        "name": "Map.lo",
+        "kind": "def",
+        "sourceStart": 59204,
+        "sourceEnd": 59349,
+        "sourceSha256": "c7f4cf4b05504e0a45a2aa693b4588455f7787c471ecec798212e9e9d328bb57",
+        "privateSha256": "d876d9b83a41a7acbf645168dfbf4553973edd8abe40f84ce0d1b3ef7b4736a0",
+        "renameCount": 1
+      },
+      {
+        "name": "Map.hi",
+        "kind": "def",
+        "sourceStart": 59349,
+        "sourceEnd": 59494,
+        "sourceSha256": "4a43703aed3e70e4d148b4643d58d239cad89f9e6c4c619d7b69dab42847991b",
+        "privateSha256": "9f4ac17aa839048f7e9bcc7aa89c9eef70dbf1d0d01a21bd0c857dd61eeae12f",
+        "renameCount": 1
+      },
+      {
+        "name": "Map.seek.go",
+        "kind": "def",
+        "sourceStart": 59494,
+        "sourceEnd": 60407,
+        "sourceSha256": "1a7b8bc41a02d74bdddeda8d20cd65c86226441f571d82dba03a3f6b78de41f8",
+        "privateSha256": "b7fb4b58970fd8b5865b7f4168e37d77c20bde62bd6115b498d9998c89c2380e",
+        "renameCount": 7
+      },
+      {
+        "name": "Map.seek",
+        "kind": "def",
+        "sourceStart": 60407,
+        "sourceEnd": 60723,
+        "sourceSha256": "130e51ba56ec28b2983ae273961b342d1efbad5f049f90b9920009ba557c783a",
+        "privateSha256": "cb139d5d4a78bdbf9dc1c5a670de9e823ff91546c6bb4441e46cdd94ab2f97f4",
+        "renameCount": 3
+      },
+      {
+        "name": "Map.set.fin.go",
+        "kind": "def",
+        "sourceStart": 60723,
+        "sourceEnd": 60982,
+        "sourceSha256": "a2b7bdbae132223dcc31816f16b14658ea7cd58e01d61ccaf5a84cd3b3bf52f3",
+        "privateSha256": "76d94461a52918356cc7417becc1d8f98a46a7785aa2c660a60171e2eef88f5a",
+        "renameCount": 4
+      },
+      {
+        "name": "Map.set.fin",
+        "kind": "def",
+        "sourceStart": 60982,
+        "sourceEnd": 61146,
+        "sourceSha256": "2c6dce668f84cdf61eea88de51a10306a4688403ff7b792348e438590838ecf5",
+        "privateSha256": "cf7a3ef09c1fdaa52e6163791ca62a0acae583fd1f83f68a9aca6bbc49d0589c",
+        "renameCount": 3
+      },
+      {
+        "name": "Map.set.go",
+        "kind": "def",
+        "sourceStart": 61146,
+        "sourceEnd": 61410,
+        "sourceSha256": "3ead5acdec6a8b9a4746b3a131577dc9a4c68ef50fadcec79863a0ae382bae00",
+        "privateSha256": "0a0d5b65e6e456c9140625c51fbcf8d57e01163774553b2e111113c95d82cbd8",
+        "renameCount": 2
+      },
+      {
+        "name": "Map.set",
+        "kind": "def",
+        "sourceStart": 61410,
+        "sourceEnd": 61532,
+        "sourceSha256": "05c2bb572e5d0f3d764132fdc318267dd9f69e2e7a9d3840e497e0fc98365c63",
+        "privateSha256": "60693fad37409835e9b89e58e9cf312e9b38df3dbbd92c108cacc8546c091144",
+        "renameCount": 3
+      },
+      {
+        "name": "Map.has.leaf",
+        "kind": "def",
+        "sourceStart": 61532,
+        "sourceEnd": 61676,
+        "sourceSha256": "4bc629284a784105a7d9d6a2b15314fe80580d06fbaa876446428a7b03c1bd9d",
+        "privateSha256": "fc10a815a0d76d3b6eac35b039c3570789e899fa17ddfb48e0299915864bd405",
+        "renameCount": 2
+      },
+      {
+        "name": "Map.has.go",
+        "kind": "def",
+        "sourceStart": 61676,
+        "sourceEnd": 62548,
+        "sourceSha256": "a8c488014d7f6eaf3dada5bf2ebcd5810c977ba8f60e44b5e656ae88b352fdfa",
+        "privateSha256": "a60ff8cebd4b419469d3b5a570ba19d877231be213383ee6f5003ac25d568084",
+        "renameCount": 13
+      },
+      {
+        "name": "Map.has",
+        "kind": "def",
+        "sourceStart": 62548,
+        "sourceEnd": 62847,
+        "sourceSha256": "458d820d723d89ac0e9da144afda06b5739530d6a3441d07d1fa7d07f3b186e3",
+        "privateSha256": "c9263fc84c68189d8870c8db3b2e6cd23803a573bdfa0b4179180cc815d5f4f9",
+        "renameCount": 5
+      },
+      {
+        "name": "Map.get.leaf",
+        "kind": "def",
+        "sourceStart": 62847,
+        "sourceEnd": 63045,
+        "sourceSha256": "b0d8e737e0007b285b335398ee2913cbc6bcfd9540d455c45293631b85c36953",
+        "privateSha256": "c2a38270a30f6625ae71bc602240b6ce817da884488557ce00c5504b18e28466",
+        "renameCount": 1
+      },
+      {
+        "name": "Map.get.go",
+        "kind": "def",
+        "sourceStart": 63045,
+        "sourceEnd": 63890,
+        "sourceSha256": "b80a474862235f81422852e8111e7727390a23c385d3a0bd04c3e041e0165005",
+        "privateSha256": "80b80aa3ecb160cdf4faa227a540d2f337967bc6d53afd6e5462b691bfc6ac0f",
+        "renameCount": 13
+      },
+      {
+        "name": "Map.get",
+        "kind": "def",
+        "sourceStart": 63890,
+        "sourceEnd": 64174,
+        "sourceSha256": "258987405713ecd2a99b031935e96d20855b5741156bae8754712c6a713b2253",
+        "privateSha256": "4d0c5fa19feacfda2290fa9454fc05218881cd8d8d008c66cf856b72cd135a4b",
+        "renameCount": 5
+      },
+      {
+        "name": "Set.new",
+        "kind": "def",
+        "sourceStart": 68029,
+        "sourceEnd": 68074,
+        "sourceSha256": "e27cad27b492a6c919f24ad2953dcdfebc29868b9ca61915a4ca78baffe11165",
+        "privateSha256": "b914f4bff9b1d1d72f16cc2a982aaec7ef5584fa56cbc39d271641348037bec1",
+        "renameCount": 2
+      },
+      {
+        "name": "Set.add",
+        "kind": "def",
+        "sourceStart": 68074,
+        "sourceEnd": 68156,
+        "sourceSha256": "eb5e335eaf70e059b57de0f18eb047b7a70df11346e9b1c4ce7a5aadbe632260",
+        "privateSha256": "8604be98e08c7e0d9ed4ab0a2e23c7b4d6acb63e94b01ecb748a91e1cfc44e42",
+        "renameCount": 2
+      },
+      {
+        "name": "Set.has",
+        "kind": "def",
+        "sourceStart": 68156,
+        "sourceEnd": 68237,
+        "sourceSha256": "58386d0e40f7997db703ba75e69a171cd4ae425abcd4f6e8db6a5984629eadd2",
+        "privateSha256": "5f3a93df6b6e9af40c05dde0fd7f852f86c29b9e440758b339d6ea1dd3170f42",
+        "renameCount": 2
+      },
+      {
+        "name": "Set.from_list.go",
+        "kind": "def",
+        "sourceStart": 68439,
+        "sourceEnd": 68601,
+        "sourceSha256": "63b0448c21195a0274c6ef7d7e082c3912a797429038b23ec42aece809779c2b",
+        "privateSha256": "8b6cb210c9feb721d81dfc5eccf946561dcfd7ec9351e86af10836f0a329354f",
+        "renameCount": 3
+      },
+      {
+        "name": "Set.from_list",
+        "kind": "def",
+        "sourceStart": 68601,
+        "sourceEnd": 68707,
+        "sourceSha256": "d47c2e3a888418dd904d9074466be76ac5be55ffd71a7458a5d49c2b805bf3cb",
+        "privateSha256": "3cbf59745ee0b9ac7c30faf6c573eaba31c0506055ebc57d888c2069fb02979e",
+        "renameCount": 3
+      }
+    ],
+    "checkerEdits": [
+      {
+        "originalStart": 487,
+        "originalEnd": 496,
+        "candidateStart": 487,
+        "candidateEnd": 509,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 20
+      },
+      {
+        "originalStart": 2309,
+        "originalEnd": 2318,
+        "candidateStart": 2322,
+        "candidateEnd": 2344,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 86
+      },
+      {
+        "originalStart": 14399,
+        "originalEnd": 14408,
+        "candidateStart": 14425,
+        "candidateEnd": 14447,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 481
+      },
+      {
+        "originalStart": 21326,
+        "originalEnd": 21335,
+        "candidateStart": 21365,
+        "candidateEnd": 21387,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 748
+      },
+      {
+        "originalStart": 21779,
+        "originalEnd": 21788,
+        "candidateStart": 21831,
+        "candidateEnd": 21853,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 765
+      },
+      {
+        "originalStart": 21889,
+        "originalEnd": 21896,
+        "candidateStart": 21954,
+        "candidateEnd": 21974,
+        "old": "Map.bit",
+        "new": "p165portable.Map.bit",
+        "line": 767
+      },
+      {
+        "originalStart": 23206,
+        "originalEnd": 23215,
+        "candidateStart": 23284,
+        "candidateEnd": 23306,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 811
+      },
+      {
+        "originalStart": 24170,
+        "originalEnd": 24179,
+        "candidateStart": 24261,
+        "candidateEnd": 24283,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 830
+      },
+      {
+        "originalStart": 34152,
+        "originalEnd": 34161,
+        "candidateStart": 34256,
+        "candidateEnd": 34278,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 1185
+      },
+      {
+        "originalStart": 38165,
+        "originalEnd": 38174,
+        "candidateStart": 38282,
+        "candidateEnd": 38304,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 1327
+      },
+      {
+        "originalStart": 38230,
+        "originalEnd": 38239,
+        "candidateStart": 38360,
+        "candidateEnd": 38382,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 1328
+      },
+      {
+        "originalStart": 38322,
+        "originalEnd": 38331,
+        "candidateStart": 38465,
+        "candidateEnd": 38487,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 1329
+      },
+      {
+        "originalStart": 38657,
+        "originalEnd": 38666,
+        "candidateStart": 38813,
+        "candidateEnd": 38835,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 1336
+      },
+      {
+        "originalStart": 38678,
+        "originalEnd": 38687,
+        "candidateStart": 38847,
+        "candidateEnd": 38869,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 1336
+      },
+      {
+        "originalStart": 38873,
+        "originalEnd": 38882,
+        "candidateStart": 39055,
+        "candidateEnd": 39077,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 1338
+      },
+      {
+        "originalStart": 49290,
+        "originalEnd": 49299,
+        "candidateStart": 49485,
+        "candidateEnd": 49507,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 1721
+      },
+      {
+        "originalStart": 69029,
+        "originalEnd": 69038,
+        "candidateStart": 69237,
+        "candidateEnd": 69259,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 2255
+      },
+      {
+        "originalStart": 76286,
+        "originalEnd": 76295,
+        "candidateStart": 76507,
+        "candidateEnd": 76529,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 2416
+      },
+      {
+        "originalStart": 76717,
+        "originalEnd": 76726,
+        "candidateStart": 76951,
+        "candidateEnd": 76973,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 2425
+      },
+      {
+        "originalStart": 112689,
+        "originalEnd": 112698,
+        "candidateStart": 112936,
+        "candidateEnd": 112958,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 3458
+      },
+      {
+        "originalStart": 113329,
+        "originalEnd": 113338,
+        "candidateStart": 113589,
+        "candidateEnd": 113611,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 3476
+      },
+      {
+        "originalStart": 157657,
+        "originalEnd": 157666,
+        "candidateStart": 157930,
+        "candidateEnd": 157952,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 4609
+      },
+      {
+        "originalStart": 159454,
+        "originalEnd": 159463,
+        "candidateStart": 159740,
+        "candidateEnd": 159762,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 4646
+      },
+      {
+        "originalStart": 164008,
+        "originalEnd": 164015,
+        "candidateStart": 164307,
+        "candidateEnd": 164327,
+        "old": "Map.set",
+        "new": "p165portable.Map.set",
+        "line": 4767
+      },
+      {
+        "originalStart": 170338,
+        "originalEnd": 170345,
+        "candidateStart": 170650,
+        "candidateEnd": 170670,
+        "old": "Map.set",
+        "new": "p165portable.Map.set",
+        "line": 4946
+      },
+      {
+        "originalStart": 188090,
+        "originalEnd": 188099,
+        "candidateStart": 188415,
+        "candidateEnd": 188437,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 5471
+      },
+      {
+        "originalStart": 188494,
+        "originalEnd": 188503,
+        "candidateStart": 188832,
+        "candidateEnd": 188854,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 5477
+      },
+      {
+        "originalStart": 189891,
+        "originalEnd": 189900,
+        "candidateStart": 190242,
+        "candidateEnd": 190264,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 5500
+      },
+      {
+        "originalStart": 190231,
+        "originalEnd": 190240,
+        "candidateStart": 190595,
+        "candidateEnd": 190617,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 5502
+      },
+      {
+        "originalStart": 190503,
+        "originalEnd": 190512,
+        "candidateStart": 190880,
+        "candidateEnd": 190902,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 5506
+      },
+      {
+        "originalStart": 190598,
+        "originalEnd": 190607,
+        "candidateStart": 190988,
+        "candidateEnd": 191010,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 5508
+      },
+      {
+        "originalStart": 191183,
+        "originalEnd": 191192,
+        "candidateStart": 191586,
+        "candidateEnd": 191608,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 5516
+      },
+      {
+        "originalStart": 193115,
+        "originalEnd": 193124,
+        "candidateStart": 193531,
+        "candidateEnd": 193553,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 5570
+      },
+      {
+        "originalStart": 205768,
+        "originalEnd": 205777,
+        "candidateStart": 206197,
+        "candidateEnd": 206219,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 5967
+      },
+      {
+        "originalStart": 209031,
+        "originalEnd": 209040,
+        "candidateStart": 209473,
+        "candidateEnd": 209495,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 6080
+      },
+      {
+        "originalStart": 217889,
+        "originalEnd": 217898,
+        "candidateStart": 218344,
+        "candidateEnd": 218366,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 6314
+      },
+      {
+        "originalStart": 234390,
+        "originalEnd": 234397,
+        "candidateStart": 234858,
+        "candidateEnd": 234878,
+        "old": "Map.set",
+        "new": "p165portable.Map.set",
+        "line": 6779
+      },
+      {
+        "originalStart": 234425,
+        "originalEnd": 234432,
+        "candidateStart": 234906,
+        "candidateEnd": 234926,
+        "old": "Map.set",
+        "new": "p165portable.Map.set",
+        "line": 6779
+      },
+      {
+        "originalStart": 249233,
+        "originalEnd": 249242,
+        "candidateStart": 249727,
+        "candidateEnd": 249749,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 7054
+      },
+      {
+        "originalStart": 259651,
+        "originalEnd": 259660,
+        "candidateStart": 260158,
+        "candidateEnd": 260180,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 7238
+      },
+      {
+        "originalStart": 269069,
+        "originalEnd": 269078,
+        "candidateStart": 269589,
+        "candidateEnd": 269611,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 7392
+      },
+      {
+        "originalStart": 273134,
+        "originalEnd": 273143,
+        "candidateStart": 273667,
+        "candidateEnd": 273689,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 7497
+      },
+      {
+        "originalStart": 284062,
+        "originalEnd": 284069,
+        "candidateStart": 284608,
+        "candidateEnd": 284628,
+        "old": "Set.add",
+        "new": "p165portable.Set.add",
+        "line": 7783
+      },
+      {
+        "originalStart": 284249,
+        "originalEnd": 284256,
+        "candidateStart": 284808,
+        "candidateEnd": 284828,
+        "old": "Set.has",
+        "new": "p165portable.Set.has",
+        "line": 7787
+      },
+      {
+        "originalStart": 286955,
+        "originalEnd": 286964,
+        "candidateStart": 287527,
+        "candidateEnd": 287549,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 7868
+      },
+      {
+        "originalStart": 287026,
+        "originalEnd": 287035,
+        "candidateStart": 287611,
+        "candidateEnd": 287633,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 7870
+      },
+      {
+        "originalStart": 289476,
+        "originalEnd": 289485,
+        "candidateStart": 290074,
+        "candidateEnd": 290096,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 7936
+      },
+      {
+        "originalStart": 293037,
+        "originalEnd": 293046,
+        "candidateStart": 293648,
+        "candidateEnd": 293670,
+        "old": "String.eq",
+        "new": "p165portable.String.eq",
+        "line": 8037
+      },
+      {
+        "originalStart": 297898,
+        "originalEnd": 297905,
+        "candidateStart": 298522,
+        "candidateEnd": 298542,
+        "old": "Set.add",
+        "new": "p165portable.Set.add",
+        "line": 8194
+      },
+      {
+        "originalStart": 298373,
+        "originalEnd": 298380,
+        "candidateStart": 299010,
+        "candidateEnd": 299030,
+        "old": "Set.has",
+        "new": "p165portable.Set.has",
+        "line": 8209
+      },
+      {
+        "originalStart": 298983,
+        "originalEnd": 298990,
+        "candidateStart": 299633,
+        "candidateEnd": 299653,
+        "old": "Map.set",
+        "new": "p165portable.Map.set",
+        "line": 8226
+      },
+      {
+        "originalStart": 299544,
+        "originalEnd": 299551,
+        "candidateStart": 300207,
+        "candidateEnd": 300227,
+        "old": "Set.add",
+        "new": "p165portable.Set.add",
+        "line": 8242
+      },
+      {
+        "originalStart": 299703,
+        "originalEnd": 299710,
+        "candidateStart": 300379,
+        "candidateEnd": 300399,
+        "old": "Set.has",
+        "new": "p165portable.Set.has",
+        "line": 8246
+      },
+      {
+        "originalStart": 301078,
+        "originalEnd": 301085,
+        "candidateStart": 301767,
+        "candidateEnd": 301787,
+        "old": "Set.has",
+        "new": "p165portable.Set.has",
+        "line": 8281
+      },
+      {
+        "originalStart": 301947,
+        "originalEnd": 301960,
+        "candidateStart": 302649,
+        "candidateEnd": 302675,
+        "old": "Set.from_list",
+        "new": "p165portable.Set.from_list",
+        "line": 8308
+      }
+    ],
+    "retainedNativeFrontier": [
+      "Nat.add",
+      "Nat.divmod",
+      "Nat.is_lt",
+      "Nat.sub",
+      "U32.and",
+      "U32.cmp",
+      "U32.is_eq",
+      "U32.is_ne",
+      "U32.is_zero",
+      "U32.shr",
+      "U32.shrn",
+      "U32.xor"
+    ],
+    "retainedTypeAliases": [
+      "Set"
+    ],
+    "audit": {
+      "checkerExactInverseBeforeAppend": true,
+      "helperExactInverseModuloRenames": false,
+      "stringsCommentsLayoutPreserved": true,
+      "typesQuantitiesLawsPreserved": true,
+      "selectedNativeEdgesClosed": true,
+      "nativeTableUnchanged": true,
+      "helperBodyChangesExactlyRecordedWorkerUnfoldings": true
+    },
+    "legalPublication": {
+      "betaExpansions": [
+        {
+          "worker": "p165portable.String.cmp",
+          "helper": "p165portable.String.cmp.fin",
+          "originalDefinitionSha256": "bad3ad63c5e1961ca27d0f10fa346defd8d838e008abca7867bcd5b4c9c9900f",
+          "unfoldedWorkerSha256": "88c0ee0057a43c6a1fd4c3631e549f90961e3a2aacc17102a76fdae5ecb2efa0",
+          "newDefinitionSha256": "dd3650490da56d1997f965fc5c8ff96684b7aebcc4565b94db173b499a929120",
+          "call": "      p165portable.String.cmp.rec(h1b, h2b, p165portable.String.cmp(t1, t2))\n",
+          "replacement": "      match t1 t2:\n        case SNil{} SNil{}:\n          p165portable.String.cmp.rec(h1b, h2b, ((SNil{}, SNil{}), EQ{}))\n        case SNil{} SCon{p165h, p165t}:\n          p165portable.String.cmp.rec(h1b, h2b, ((SNil{}, SCon{p165h, p165t}), LT{}))\n        case SCon{p165h, p165t} SNil{}:\n          p165portable.String.cmp.rec(h1b, h2b, ((SCon{p165h, p165t}, SNil{}), GT{}))\n        case SCon{p165x, p165xt} SCon{p165y, p165yt}:\n          p165portable.String.cmp.rec(h1b, h2b,\n            p165portable.String.cmp.fin(p165xt, p165yt, p165portable.Char.cmp(p165x, p165y)))\n",
+          "direction": "worker body unfolded inside helper recursive branch",
+          "freshBinderPrefix": "p165"
+        },
+        {
+          "worker": "p165portable.Map.diff",
+          "helper": "p165portable.Map.diff.fin",
+          "originalDefinitionSha256": "fe29277d4b6f23cd0a18648e0fca2a25e055885e7b943f799d25c912c16c561f",
+          "unfoldedWorkerSha256": "d1e36d2114d7bb49682b5568a72b30e564a0f69f6a48384ea9e8d56e94eadd33",
+          "newDefinitionSha256": "f0648e83f78941f3df2902371e75be67e23a007c5e4d0590d9163970f081c526",
+          "call": "      Nat.add(33n, p165portable.Map.diff(xt, yt))\n",
+          "replacement": "      match xt yt:\n        case SNil{} _:\n          Nat.add(33n, 0n)\n        case SCon{p165h, p165t} SNil{}:\n          Nat.add(33n, 0n)\n        case SCon{p165x, p165xt} SCon{p165y, p165yt}:\n          Nat.add(33n, p165portable.Map.diff.fin(p165xt, p165yt, p165portable.Map.diff.step(p165x, p165y)))\n",
+          "direction": "worker body unfolded inside helper recursive branch",
+          "freshBinderPrefix": "p165"
+        },
+        {
+          "worker": "p165portable.Map.msb.u",
+          "helper": "p165portable.Map.msb.u.if",
+          "originalDefinitionSha256": "9374d84641248568ab67d860df58c8e9b792bb1ad505371afe837e8f31b188d4",
+          "unfoldedWorkerSha256": "ed3ec0672a831b457ee01183529e419a5a8e4b7c5694e26171391f67f2c7d942",
+          "newDefinitionSha256": "283ade1815feebbe7ffa53b17114611a22287b90707c4eb3870f2c11f95db5cb",
+          "call": "      Nat.add(1n, p165portable.Map.msb.u(p, U32.shr(x2)))\n",
+          "replacement": "      +p165next : U32 = U32.shr(x2)\n      match p:\n        case 0n:\n          Nat.add(1n, 0n)\n        case 1n+p165q:\n          Nat.add(1n, p165portable.Map.msb.u.if(p165q, p165next, U32.is_zero(p165next)))\n",
+          "direction": "worker body unfolded inside helper recursive branch",
+          "freshBinderPrefix": "p165"
+        }
+      ],
+      "definitionPublicationOrder": [
+        "p165portable.Pair.snd",
+        "p165portable.Cmp.is_eq",
+        "p165portable.Char.cmp",
+        "p165portable.String.cmp.rec",
+        "p165portable.String.cmp.fin",
+        "p165portable.String.cmp",
+        "p165portable.String.order",
+        "p165portable.String.eq",
+        "p165portable.Map.bit.u",
+        "p165portable.Map.bit.chr",
+        "p165portable.Map.bit.go.chr",
+        "p165portable.Map.bit.go.rec",
+        "p165portable.Map.bit.go",
+        "p165portable.Map.bit.at",
+        "p165portable.Map.bit",
+        "p165portable.Map.msb.u.if",
+        "p165portable.Map.msb.u",
+        "p165portable.Map.diff.chr",
+        "p165portable.Map.diff.step",
+        "p165portable.Map.diff.fin",
+        "p165portable.Map.diff",
+        "p165portable.Map.new",
+        "p165portable.Map.put.go",
+        "p165portable.Map.put",
+        "p165portable.Map.ins.splice.bit",
+        "p165portable.Map.ins.splice",
+        "p165portable.Map.ins.go",
+        "p165portable.Map.ins",
+        "p165portable.Map.lo",
+        "p165portable.Map.hi",
+        "p165portable.Map.seek.go",
+        "p165portable.Map.seek",
+        "p165portable.Map.set.fin.go",
+        "p165portable.Map.set.fin",
+        "p165portable.Map.set.go",
+        "p165portable.Map.set",
+        "p165portable.Map.has.leaf",
+        "p165portable.Map.has.go",
+        "p165portable.Map.has",
+        "p165portable.Map.get.leaf",
+        "p165portable.Map.get.go",
+        "p165portable.Map.get",
+        "p165portable.Set.new",
+        "p165portable.Set.add",
+        "p165portable.Set.has",
+        "p165portable.Set.from_list.go",
+        "p165portable.Set.from_list"
+      ],
+      "allNonselfPrivateDependenciesEarlier": true,
+      "newUnsafeAnnotations": 0,
+      "baseTrustMarkerChanges": 0,
+      "insertionByte": 12,
+      "insertedBytes": 14732,
+      "checkerExactInverseAfterRemovingInsertion": true
+    },
+    "v1FailedLayoutSha256": "e96a849c69f68f1bf1904731fb0cc84a47b592de54a1d2ef79ed46649f216304"
+  },
+  "scope": "Source preparation only. Forward publication and three Base mutual-helper cycles repaired by helper-local worker unfolding; no local scrutinees, unsafe/no-check/Base-trust changes. Checked acquisition remains required.",
+  "workloadBase": {
+    "bytes": 75064,
+    "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+  },
+  "products": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup-source03/source/bendc.bend",
+      "bytes": 1187548,
+      "sha256": "72be729fb5a27c528acc4d232314ac44c4595a86dc67d9dde47197956edabb99"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup-source03/source/check.bend",
+      "bytes": 325876,
+      "sha256": "d6bbcd2f3a0c465a72170e172f045b7bae23188c94ddd3b141c73c47afc3d5d7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup-source03/source/core.bend",
+      "bytes": 69163,
+      "sha256": "776ec5d81269d74ab3e8da0ad0f748e0f0e48695aae667a5d57ed033c433a1b7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup-source03/source/asm.bend",
+      "bytes": 44202,
+      "sha256": "91794842d83c54362a756d0a759ea8fc4979b889184567cc543b640fb6f7a2f9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup-source03/source/rt/rtjs.bend",
+      "bytes": 26110,
+      "sha256": "cb6d37062e77441383ec205d0a89e8bbaa3ac38b58dc0da8764bb6debfeffd24"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup-source03/source/rt/rtchan.bend",
+      "bytes": 3144,
+      "sha256": "34ac7e6bb3a91203ccee8fc7d66825aeba611766d51ba62c7ddffa274e50a51f"
+    }
+  ],
+  "helperFragment": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/lookup-source03/portable.bend",
+    "bytes": 14671,
+    "sha256": "81cd8168f182bb9c1606e2a957651cae1fe87ad7d8d460c78ee12f079558501f"
+  }
+}

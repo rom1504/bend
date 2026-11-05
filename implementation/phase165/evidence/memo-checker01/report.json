@@ -1,0 +1,221 @@
+{
+  "kind": "phase165-checker-comparison",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase165/tools/compare.py",
+      "bytes": 4578,
+      "sha256": "5d92f1700e81cd0d1599c6bd6a5ec2bc5d28190157f2cd7018ac1fd95c55c6ee"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "bytes": 75064,
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase156/inputs01/checker.bend",
+      "bytes": 182039,
+      "sha256": "a33aface7ce9002c95063978f98387e9b4b6d7d51f6a1a57fffc45c559188a1a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/original02/report.json",
+      "bytes": 23069,
+      "sha256": "bcb76cfc475fe806647ec368e9441ad1ecab549c98bfd0f25529c1fda9ee9929"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase160/capped-seed01/bendc",
+      "bytes": 4308824,
+      "sha256": "1f41eadeb854ab06f2b81b8fb0d11ae7178c79022cd2e56494d700546f612f39"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo01/report.json",
+      "bytes": 23886,
+      "sha256": "65e42583df79637fb0dbadc44962316c2b2ac727e5686fc7051a01e2555c229c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo01/bendc",
+      "bytes": 4307776,
+      "sha256": "94c88365f9d1c37dee4d2af575fb29c15d192a035ce0b394863d7cb565259e01"
+    }
+  ],
+  "rows": [
+    {
+      "role": "original02",
+      "round": 0,
+      "case": "selfhost/build/phase156/inputs01/checker.bend",
+      "process": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase160/capped-seed01/bendc",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "--check-only",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase156/inputs01/checker.bend"
+        ],
+        "limitSeconds": 30.0,
+        "complete": false,
+        "started": 1793859795.545516,
+        "exitCode": 1,
+        "userSeconds": 1.186509,
+        "systemSeconds": 0.019974,
+        "peakRssKiB": 210984,
+        "timedOut": false,
+        "seconds": 1.208636034745723,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-checker01/0-0-original02.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-checker01/0-0-original02.stderr",
+          "bytes": 6565,
+          "sha256": "c9d6dd0a75eb359c333d9c4a2c13de179f97c07b70008cb23c84de72bc904304"
+        }
+      },
+      "exactOracle": true
+    },
+    {
+      "role": "memo01",
+      "round": 0,
+      "case": "selfhost/build/phase156/inputs01/checker.bend",
+      "process": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo01/bendc",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "--check-only",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase156/inputs01/checker.bend"
+        ],
+        "limitSeconds": 30.0,
+        "complete": false,
+        "started": 1793859796.7729094,
+        "exitCode": 1,
+        "userSeconds": 1.164711,
+        "systemSeconds": 0.027920999999999998,
+        "peakRssKiB": 211416,
+        "timedOut": false,
+        "seconds": 1.1938036088831723,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-checker01/0-0-memo01.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-checker01/0-0-memo01.stderr",
+          "bytes": 6565,
+          "sha256": "c9d6dd0a75eb359c333d9c4a2c13de179f97c07b70008cb23c84de72bc904304"
+        }
+      },
+      "exactOracle": true
+    },
+    {
+      "role": "memo01",
+      "round": 1,
+      "case": "selfhost/build/phase156/inputs01/checker.bend",
+      "process": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo01/bendc",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "--check-only",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase156/inputs01/checker.bend"
+        ],
+        "limitSeconds": 30.0,
+        "complete": false,
+        "started": 1793859797.9854436,
+        "exitCode": 1,
+        "userSeconds": 1.179363,
+        "systemSeconds": 0.027984,
+        "peakRssKiB": 214456,
+        "timedOut": false,
+        "seconds": 1.2088487781584263,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-checker01/1-0-memo01.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-checker01/1-0-memo01.stderr",
+          "bytes": 6565,
+          "sha256": "c9d6dd0a75eb359c333d9c4a2c13de179f97c07b70008cb23c84de72bc904304"
+        }
+      },
+      "exactOracle": true
+    },
+    {
+      "role": "original02",
+      "round": 1,
+      "case": "selfhost/build/phase156/inputs01/checker.bend",
+      "process": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase160/capped-seed01/bendc",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "--",
+          "--check-only",
+          "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase156/inputs01/checker.bend"
+        ],
+        "limitSeconds": 30.0,
+        "complete": false,
+        "started": 1793859799.1956189,
+        "exitCode": 1,
+        "userSeconds": 1.192436,
+        "systemSeconds": 0.020007,
+        "peakRssKiB": 214228,
+        "timedOut": false,
+        "seconds": 1.2136306860484183,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-checker01/1-0-original02.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase165/memo-checker01/1-0-original02.stderr",
+          "bytes": 6565,
+          "sha256": "c9d6dd0a75eb359c333d9c4a2c13de179f97c07b70008cb23c84de72bc904304"
+        }
+      },
+      "exactOracle": true
+    }
+  ],
+  "suite": "checker",
+  "environment": {
+    "BEND_RC": "0",
+    "BEND_NO_FREE": "1",
+    "BEND_AUTO_PAR": "0"
+  },
+  "policy": "Exact exit, stdout and stderr; a timeout or changed verdict is not a valid slowdown. CPU3 outer guard, one worker, GPU off.",
+  "oracles": {
+    "selfhost/build/phase156/inputs01/checker.bend": {
+      "exitCode": 1,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 6565,
+        "sha256": "c9d6dd0a75eb359c333d9c4a2c13de179f97c07b70008cb23c84de72bc904304"
+      }
+    }
+  },
+  "medians": {
+    "selfhost/build/phase156/inputs01/checker.bend": {
+      "original02": 1.2111333603970706,
+      "memo01": 1.2013261935207993
+    }
+  }
+}

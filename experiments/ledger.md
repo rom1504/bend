@@ -1,3 +1,31 @@
+# Phase169 — native self-build147.764s with recovered program quality, 2026-11-06
+
+[Report](../implementation/phase169/README.md) ·
+[Runtime metrics](../implementation/phase169/program-runtime.json) ·
+[Receipts](../implementation/phase169/evidence/final03/metrics.json) ·
+[Reproduce](../implementation/phase169/reproduce.md).
+
+Working checked Bend early-interface pipeline, native six-string request entry,
+publication reuse, lazy/cached scalar admission and single complete final body
+verification. Final native closure1,538,604bytes self-builds147.764s; N1/N2 exact
+86,387,580-byte QBE/assembly/object/mapped executable reproduction.64/64 native
+finite cases pass. Unchanged full3,085,157-byte source244.461→185.190s (24.25%
+less); full-source150s remains open. One clean full-build observation per image,
+same prepared Base/runtime/machine policy and CPU3; no source-size conflation.
+
+Initial fast image regressed six-family runtime1.820×, editdist19.192×. Arrays
+alone left14.898×; existing bounded helper composition restored its complete hot
+row byte-for-byte. Cold metadata repaired the tree regression. Final actual
+native45 runtime0.96896×Phase152, family0.95892×, worst1.03578×;392 correct outputs
+including32 predeclared resolution-repair observations. Original low-resolution
+aggregate remains incomplete rather than excluding cases. No new upstream ratio.
+
+Negative runtime/helper and projection pilots remain unintegrated. Finite laws,
+source/type checking and independent admission are not BendTT/compiler proofs.
+Experimental explicit image only; production sources/runtime/installed selection
+remainPhase152. All target runs closed with verified retention; old exact
+intermediates archived before file-level pruning. No PR comments posted.
+
 # Phase168 — early verified interfaces recover composition, 2026-11-05
 
 [Report](../implementation/phase168/README.md) · [Metrics](../implementation/phase168/metrics.json) ·

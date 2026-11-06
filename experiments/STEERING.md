@@ -1,4 +1,48 @@
-# Current frontier — Phase168 early interfaces recover execution quality
+# Current frontier — Phase169 native self-build147.764s, canonical185.190s
+
+[Report](../implementation/phase169/README.md) ·
+[Reproduce](../implementation/phase169/reproduce.md) ·
+[Program runtime](../implementation/phase169/program-runtime.json) ·
+[Independent final audit](phase169/final-claims-audit.md).
+
+The experimental direct-QBE native compiler now self-builds its1,538,604-byte
+main closure in147.764s, one clean observation including QBE/assembly/link.
+Native N1/N2 reproduce86,387,580 QBE bytes, assembly, object and mapped ELF bytes.
+All64 maintained native qualification cases pass. Select the explicit
+`quality-native-n2` image/receipt; installed and maintained production stayPhase152.
+This entry supports single-request qbe-source-v1, not session/batch or newJS/C/GPU
+qualification. A narrow150s single-run margin is not a stable timing guarantee.
+
+The unchanged3,085,157-byte canonical workload improves244.461→185.190s,
+24.25% less complete cold build time, preserving94,447,397 expected QBE bytes.
+It has NOT reached150s. Prepared Base, runtime/toolchain and one CPU3 execution
+lane are matched. Do not compare the smaller closure directly to the old244s.
+
+Early verified callable interfaces remove dependent fallback/discovery work;
+publication facts, lazy admission, exact scalar eligibility reuse and one full
+unchanged final body verifier retain the cheap path. Original/static/adapter
+checks and cold diagnostic order remain. A first148.821s image lost important
+optimization capabilities and regressed editdist19.2×; it is rejected as a
+general replacement. Actual source certificates, bounded ordinary composition
+and cold-constructor metadata restore quality without restoring the old pipeline.
+
+Final actual native45 acquisition passes all independent outputs. Four balanced
+rounds plus a predeclared resolution repair yield392 correct observations:
+44 timed ratios, geometric0.96896× versusPhase152 (3.10% less), family-weighted
+0.95892×, worst1.03578×, no case above1.05×. The four shortest points use40×
+repetitions for both variants; the original incomplete aggregate is retained.
+This is not a new upstream ratio or mathematical compiler-correctness proof.
+
+The profiling-led projection ceiling gives only1.46% on the real checker;
+runtime helper tweaks2.15% on a small request. Neither is integrated. Large
+ownership leaf shares do not imply removable costs. The next larger hypothesis
+is one recursive computation plus bounded resumable frames, replacing repeated
+continuation construction/analysis/rendering. Remaining scheduled code is77.9%
+of text, not77.9% of time; obtain owner/stage attribution before promising a20%
+full-build improvement. Keep final sources/images/receipts and Phase152 hot.
+No PR comments posted.
+
+# Previous frontier — Phase168 early interfaces recover execution quality
 
 [Report](../implementation/phase168/README.md) · [Metrics](../implementation/phase168/metrics.json) ·
 [Independent audit](phase168/quality-audit.md) · [Reproduce](../implementation/phase168/reproduce.md).

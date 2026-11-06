@@ -15,6 +15,7 @@ def read(path):
 
 
 def pin(path):
+    path = path.resolve()
     h = hashlib.sha256()
     with path.open('rb') as stream:
         for block in iter(lambda: stream.read(1048576), b''):
@@ -40,7 +41,7 @@ def main():
             identity.update({k: r.get(k) for k in ['wallSeconds', 'emitAndQbeSeconds',
                 'stage', 'irDigest', 'assembly', 'object', 'binary', 'imageBinding',
                 'runtime', 'sourceIR', 'expectedQbe', 'expectedStdout', 'error']})
-            identity['source'] = r.get('request', {}).get('source')
+            identity['source'] = (r.get('request') or {}).get('source')
             identity['machineJobs'] = [dict(label=j.get('label'), seconds=j.get('seconds'),
                 complete=j.get('complete')) for j in r.get('jobs', [])]
             result['nativeBuilds'].append(identity)

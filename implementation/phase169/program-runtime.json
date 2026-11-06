@@ -1,0 +1,269 @@
+{
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase169/tools/summarize-programs.py",
+      "bytes": 3091,
+      "sha256": "6a4c085bad5269166185e29094f88ccdfec8f853b5632634f91b0e8a0a7b8dba"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-broad-timing01/report.json",
+      "bytes": 598032,
+      "sha256": "17fb2b16d6861fe5c005affaf7e972f555f6bdfcd9e9155ca13dc3d62d33143e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-resolution01/report.json",
+      "bytes": 59422,
+      "sha256": "5375fae48894ee0617b60ec48611677d02ec09ac23ae94ab44db8f18ab60d497"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase169/broad-resolution.md",
+      "bytes": 1290,
+      "sha256": "063594cb1b44ee61928078ef0cd3e8bc75d0caa6a0741653ee782f3f8a9177dd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-broad-screen01/programs.manifest.json",
+      "bytes": 710339,
+      "sha256": "b72169f4d49078116f2613721b955227b1a6e6d3806d0ae19dc2c52d54bd2df1"
+    }
+  ],
+  "originalAggregate": {
+    "complete": false,
+    "reason": "Incomplete, failed, zero-duration or low-resolution timed cases"
+  },
+  "aggregate": {
+    "complete": true,
+    "timedCases": 44,
+    "correctnessOnlyCases": 1,
+    "roles": {
+      "candidate": {
+        "geomean": 0.9689621986138194,
+        "equalSourceGeomean": 0.9603793662817639,
+        "sourceCount": 23,
+        "meanPositiveLogSlowdown": 0.006459202734195503,
+        "casesOver105": 0,
+        "families": {
+          "local-pair": 1.0059642147117298,
+          "local-fold": 0.9985258324465016,
+          "scalar-region-8192": 1.0,
+          "complete-generic-row32": 0.8715415019762847,
+          "mandelbrot": 0.9586740089280192,
+          "editdist": 1.0026385346573239,
+          "tree-bitonic": 1.0130356364137267,
+          "lexer": 0.9933200109231128,
+          "symreg": 1.0292289838947162,
+          "test-morning-program": 0.9399830938292475,
+          "test-evening-program": 0.8987929433611885,
+          "test-rle-roundtrip": 0.9887310142087214,
+          "test-map-set-ops": 0.8610763454317898,
+          "raytrace": 1.0033967918860518,
+          "closures": 1.0014035094626166,
+          "list-pipeline": 1.0213661319576854,
+          "unicode-text": 0.8957132700552428,
+          "map-churn": 0.817891132728254,
+          "numeric-recurrence": 1.0016597521794577,
+          "bst": 1.0304054343320168,
+          "expression": 1.002758947235952,
+          "record-aggregation": 0.8146581598734559
+        }
+      }
+    }
+  },
+  "repairedCases": [
+    "coverage-closures-256",
+    "coverage-closures-64",
+    "coverage-list-pipeline-128",
+    "coverage-list-pipeline-512"
+  ],
+  "originalScale": 1,
+  "repairScale": 40,
+  "interpretation": "Normalized per-call ratios; four predeclared low-resolution points rerun at equal40x repetitions for both images.",
+  "casesOver110": 0,
+  "casesOver200": 0,
+  "familyWeightedGeomean": 0.9589186445737977,
+  "originalFixedBatchMedianSumMs": {
+    "phase152": 20231.0,
+    "candidate": 19475.5
+  },
+  "fixedBatchScope": "Sum of per-case median timed intervals in original scale1 observations; no harness/process-start overhead, no mixed-scale clock.",
+  "worstRatios": [
+    [
+      "variation-symreg-4-17",
+      1.0357751277683134
+    ],
+    [
+      "coverage-list-pipeline-128",
+      1.0351020408163267
+    ],
+    [
+      "coverage-bst-64",
+      1.0332778702163061
+    ],
+    [
+      "coverage-bst-32",
+      1.0275409836065574
+    ],
+    [
+      "symreg",
+      1.027027027027027
+    ],
+    [
+      "variation-symreg-7-123",
+      1.0249169435215948
+    ],
+    [
+      "raytrace",
+      1.021080368906456
+    ],
+    [
+      "variation-tree-bitonic-6-17",
+      1.0150981378963262
+    ],
+    [
+      "variation-tree-bitonic-9-123",
+      1.0146886016451235
+    ],
+    [
+      "tree-bitonic",
+      1.009330406147091
+    ],
+    [
+      "coverage-expression-128",
+      1.008849557522124
+    ],
+    [
+      "coverage-list-pipeline-512",
+      1.0078124999999998
+    ],
+    [
+      "local-pair",
+      1.0059642147117298
+    ],
+    [
+      "variation-mandelbrot-grid-4-7",
+      1.004120879120879
+    ],
+    [
+      "variation-editdist-3-123",
+      1.003968253968254
+    ],
+    [
+      "editdist",
+      1.0039525691699605
+    ],
+    [
+      "coverage-numeric-recurrence-1024",
+      1.0033222591362128
+    ],
+    [
+      "variation-local-fold-8192-123",
+      1.0029806259314458
+    ],
+    [
+      "coverage-closures-64",
+      1.0028089887640448
+    ],
+    [
+      "scalar-region-8192",
+      1.0
+    ],
+    [
+      "variation-editdist-0-17",
+      1.0
+    ],
+    [
+      "variation-local-fold-128-0",
+      1.0
+    ],
+    [
+      "coverage-closures-256",
+      1.0
+    ],
+    [
+      "coverage-numeric-recurrence-256",
+      1.0
+    ],
+    [
+      "variation-ray-active-256-2240",
+      0.9993355481727575
+    ],
+    [
+      "lexer",
+      0.9990049751243781
+    ],
+    [
+      "variation-mandelbrot-grid-5-31",
+      0.9967532467532467
+    ],
+    [
+      "coverage-expression-32",
+      0.9967051070840198
+    ],
+    [
+      "local-fold",
+      0.9926253687315633
+    ],
+    [
+      "variation-lexer-10-123",
+      0.9910714285714286
+    ],
+    [
+      "variation-ray-active-64-2440",
+      0.9900265957446808
+    ],
+    [
+      "variation-lexer-6-17",
+      0.9899082568807339
+    ],
+    [
+      "test-rle-roundtrip",
+      0.9887310142087214
+    ],
+    [
+      "test-morning-program",
+      0.9399830938292475
+    ],
+    [
+      "coverage-unicode-text-64",
+      0.9021739130434783
+    ],
+    [
+      "test-evening-program",
+      0.8987929433611885
+    ],
+    [
+      "coverage-unicode-text-16",
+      0.8892988929889298
+    ],
+    [
+      "mandelbrot",
+      0.8803172314347513
+    ],
+    [
+      "complete-generic-row32",
+      0.8715415019762847
+    ],
+    [
+      "test-map-set-ops",
+      0.8610763454317898
+    ],
+    [
+      "coverage-map-churn-32",
+      0.8272807794508414
+    ],
+    [
+      "coverage-record-aggregation-64",
+      0.8201219512195123
+    ],
+    [
+      "coverage-record-aggregation-256",
+      0.8092307692307691
+    ],
+    [
+      "coverage-map-churn-128",
+      0.8086080586080586
+    ]
+  ],
+  "correctObservations": 392,
+  "scope": "Actual native candidate versus Phase152; frozen45 corpus, not new upstream ratio or full-language guarantee."
+}

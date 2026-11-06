@@ -1,8 +1,10 @@
 # Phase169 — early verified interfaces in a native self-hosting compiler
 
 Work in progress. The requested target is a complete native self-build in150s
-or less. **It has not yet been reached.** Qualified/installed production remains
-Phase152. No production source, runtime or selection has changed.
+or less. **The experimental native closure now builds itself in148.821s in one
+observation. The unchanged full canonical source has not reached150s.**
+Qualified/installed production remains Phase152. No production source, runtime
+or selection has changed.
 
 ## Measured checkpoint
 
@@ -17,12 +19,23 @@ assembly and linking. Compiler/QBE overlap is not counted twice.
 | Experimental N1 → same-source N2 |same closure|154.376s|
 | Experimental N2 → same-source N3 |same closure|156.480s|
 | Experimental N1 → canonical compiler |unchanged3,085,157-byte Phase152 source|197.355s|
+| Fresh qualified Phase152 → canonical compiler |same canonical source|244.461s|
+| Previous experimental N2 → single-verifier N1 |1,509,504-byte successor closure|159.160s|
+| Single-verifier N1 → same-source N2 |same successor closure|148.821s|
 
 N2 and N3 reproduce the complete84,506,244-byte QBE stream, assembly and object
 bytes exactly. This is a bootstrap consistency result, not a correctness theorem.
-The retained canonical Phase152 build took249.222s, but that observation is from
-an earlier campaign; a fresh same-source baseline remains to be collected.
-Do not compare the smaller native closure's154s directly to the canonical249s.
+The fresh same-source baseline reproduces the qualified118,227,421-byte QBE
+exactly. The experimental route takes19.27% less complete build time on that
+input, a1.239× speedup in these single observations. The earlier249.222s result
+is historical. Do not compare the smaller native closure's154s directly to
+the canonical244s.
+
+The last two rows use identical source, runtime and machine policy:6.50% less
+complete build time, with exact84,730,980-byte QBE, assembly and object identity.
+Their complete ELF hashes differ; executable-section identity is being audited.
+This combines metadata guards, exact eligibility reuse, lazy admission and the
+single final body verifier. It does not isolate their individual contributions.
 
 N1 and N2 both emit the exact independently retained Phase168 verifier QBE and
 produce its required768 result. The canonical-source product has the old main
@@ -74,13 +87,32 @@ runtime tweak as the main architectural result or changing production.
 
 ## Current next tests
 
-Profile the actual N2 compiler on canonical source, preserving exact full output.
-Then screen guarded metadata lookups and same-book scalar eligibility reuse:
+The actual N2 compiler profile preserves exact full canonical output. It has
+5,484 samples,99.35% main-thread CPU coverage and zero lost samples. Physical
+leaves include destruction/reclamation18.34%, borrowed String equality8.52%,
+and take/sink helpers14.99%. These categories are not pass-level savings;
+the diagnostic compiler-only176.90s is not a clean whole-build timing.
+See the [profile](../../experiments/phase169/native-n2-profile-summary.md).
+
+Guarded metadata lookups, lazy admission and same-book scalar eligibility reuse
+now pass100 combined finite controls and exact real verifier QBE. That hosted
+pilot is neutral overall; no native saving is established yet. In particular,
 the existing eligibility query constructs an observer body, so caching its
 NO_Plan alone does not reuse all that work. Independent source review found no
 semantic blocker, but new records have a cost and exact-QBE/performance gates
 must determine whether the candidate is worth retaining. See the
 [bounded successor](../../experiments/phase169/admission-work.md).
+
+A further candidate removes a duplicate complete body-verifier traversal. The
+final flag-only callable view receives the unchanged complete verifier once;
+original source/static/adapter and private-input obligations remain. On failure,
+the old verification order is replayed for identical diagnostics. Independent
+source review supports the success implication,116 finite controls pass, and
+the real verifier QBE remains exact. Native self-build now takes148.821s, while
+the same-source previous producer takes159.160s. Canonical-source timing and
+broader native correctness gates are pending.
+This is source reasoning and finite evidence, not a new BendTT theorem. See
+the [implementation and obligations](../../experiments/phase169/verifier-single.md).
 
 All completed runs are sealed through verified retention. Old, authenticated
 intermediates were archived before selective pruning; executables and current

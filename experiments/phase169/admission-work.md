@@ -115,3 +115,19 @@ the old controller's owner bindings cannot be inherited. If physical costs do
 not resolve the question, separately bind fresh stage markers/FIDs from this
 image before adding runtime dispatch/stage instrumentation. No new profiling
 framework is needed.
+
+## First combined source-check correction
+
+The root's first combined API check rejected a control helper:
+`p169qc_direct` used its `name` twice without a shared binder. That failure is
+preserved with its original method, module and assembled API. A source audit
+also found two repeated plan projections in `p169qc_cached_flags` requiring
+shared pattern binders. `admission-controls-v2.bend` changes only `+name`,
+`+left` and `+right`; it changes no expected outcome or candidate implementation.
+
+`tools/prepare-native-variants-v2.py` selects that control snapshot while retaining
+the prior method and control as pinned provenance. Its combined API source02
+uses all three optional variants (publication, admission cache, lazy predicate),
+SHA256 `7b13596b7e27328257e1c04dca7bb55ff46c53dc9b4a7bcddcc912061c94f3c1`.
+This preparation is data-only; a successful compiler check or finite outcome
+does not follow from the ownership correction itself.

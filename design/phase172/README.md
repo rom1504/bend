@@ -89,3 +89,30 @@ one durable checked function representation whose direct/scheduled projections
 are demanded only when needed. Current evidence does not yet demonstrate that
 any of these delivers100s. The goal is a working, transferable improvement and a
 complete cold comparison, not another promise based on static counts.
+
+
+## Evidence-directed pivot: static publication wrappers
+
+The cold-only inlining variant has zero full-compiler coverage. The sealed-field
+variant passes its finite and native output gates but is neutral on the real
+verifier and slower on lookup, with larger QBE. Do not acquire a full image from
+those results. Deferred rows preserve complete loader values and exact verifier
+QBE but have neutral hosted loader timing. A proposed native checker falsifier
+was cancelled after discovering that its embedded inputs contain no patterns.
+
+The narrower runtime follow-up removes work rather than moving calls: `rfc_seal`
+currently allocates a wrapper even for a raw immutable static constructor.
+The unchanged final static-image verifier establishes transitively static or
+immediate fields; `term_keep`, `term_sink`, `span_fade`, and `spare_free` already
+handle raw static values. Destructive reuse excludes static addresses. See the
+[explicit audit](../../experiments/phase172/static-seal-audit.md).
+
+Build a private host-only runtime with this one omission, require the disabled
+object to equal the installed runtime, then relink unchanged authenticated
+program objects. Ordinary complete-output controls precede clean balanced
+measurements. Count the original static sealing operations separately; diagnostic
+time is not performance evidence. A material improvement can be tested on the
+complete compiler by relinking its existing object, avoiding a fresh acquisition.
+Keep the target-program runtime fixed in that compiler-throughput comparison.
+A source-to-executable clock and exact QBE still decide the result. No installed
+runtime change or broad/parallel/device qualification follows automatically.

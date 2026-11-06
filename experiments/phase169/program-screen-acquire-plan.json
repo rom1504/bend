@@ -1,0 +1,122 @@
+{
+  "kind": "bend-benchmark-acquisition",
+  "complete": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/acquire.py",
+      "bytes": 17789,
+      "sha256": "ad6c0a29b8017454bcae29b7dfe979ccf9725c51f4e709546507a37f62635a0d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase169/program-screen.recipe.json",
+      "bytes": 776,
+      "sha256": "67b1d01540673349591495c69c5bc68b4b553abb5d1e1c59f81ef5ddc8a53fc3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/catalog.json",
+      "bytes": 54895,
+      "sha256": "746fe610bfe1a5704f390b71cd5ee702e6bd874bd89a5a9363d5f69f69c0e475"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/manifests/assets-native.json",
+      "bytes": 17657,
+      "sha256": "4b8181ff0a8917d5eac5d5a1976385449e2c3962e503335e3800adb154fddaa0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/request.py",
+      "bytes": 18653,
+      "sha256": "f2638c055de2de15c80b8e36d888337a3061f8f7725c55f16ad645943562566c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/assets.py",
+      "bytes": 7994,
+      "sha256": "02a8b03647f5a6292502363fc1bb79147b61196a9271c21cee55a2ec6bf64dba"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/common.py",
+      "bytes": 4809,
+      "sha256": "d9a16fef18cf936499e51f8c7f36a653f2921ef9a50f846257c2e8bc460ec6d1"
+    },
+    {
+      "file": "/usr/bin/python3.9",
+      "bytes": 5451288,
+      "sha256": "ca7655083b581ffe36c72dcb445857704db533ca39b03f79c97d8d0ef3bef9af"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/editdist.bend",
+      "bytes": 7835,
+      "sha256": "759d82e26789e55187d175cb8416d6ebe4266a53f73a53ca6d32b69d4f71e988"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/single-native-n2/program",
+      "bytes": 13704120,
+      "sha256": "4b9534d788fb71054d19638383a21b4f2e8cdc0e724b8cc62f584c512e00f652"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/single-native-n2/report.json",
+      "bytes": 18274,
+      "sha256": "adff4e5f03670a15681d6524d508e087bb5657051c599bdafdad56ad1df2f5ce"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "bytes": 75064,
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/base/base.p130",
+      "bytes": 2612691,
+      "sha256": "984fad041a0ba855ea0aaedd384485afa2153da644655c00882eb50ace33817f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/tree-bitonic.bend",
+      "bytes": 6593,
+      "sha256": "405f8d8fb2066e6fedd8baa45943bcdf92b59cb40e23ce2ad3ea4bd3eeb53ae0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/lexer.bend",
+      "bytes": 9095,
+      "sha256": "bfb62870600b63fd6ec6088471a2d805fabb819a7f2e9d47c9b0ef3c368d169a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/test-rle-roundtrip.bend",
+      "bytes": 4708,
+      "sha256": "b46580acb1656502d0e37a0115d172529e648719acb75eadb3b9ad45db5b078d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/test-map-set-ops.bend",
+      "bytes": 7234,
+      "sha256": "e93dc56e4c91670bb831c329e9ced90a0e17126bc02f4d7709131a516f0eb0ca"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/raytrace.bend",
+      "bytes": 16182,
+      "sha256": "17e96389638b1a6a12bf9a4f7cabaf00184f1974e75d8363d699aef6b318fd34"
+    }
+  ],
+  "roles": {
+    "candidate": {
+      "provider": "build",
+      "assets": "/home/ai/bend2/build/publish/bend/selfhost/manifests/assets-native.json",
+      "host": "native",
+      "stage": "N2-P169-single",
+      "target": "qbe",
+      "image": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/single-native-n2/program",
+      "imageReceipt": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/single-native-n2/report.json",
+      "mode": "cache",
+      "runtimeKey": "qbe-runtime",
+      "policy": "ordinary-serial",
+      "status": "phase169-experimental-no-promotion"
+    }
+  },
+  "selected": [
+    "editdist",
+    "tree-bitonic",
+    "lexer",
+    "test-rle-roundtrip",
+    "test-map-set-ops",
+    "raytrace"
+  ],
+  "rows": [],
+  "scope": "Acquisition and one independent value/count check. Not timing, broad conformance, self-hosting or installed promotion.",
+  "planOnly": true
+}

@@ -1,0 +1,178 @@
+{
+  "targetsRun": false,
+  "scope": "same editdist source; static checked products, not dynamic attribution",
+  "products": {
+    "baseline": {
+      "ir": {
+        "file": "selfhost/build/phase152/programs45-acquire01/editdist/phase152/emission/program.ssa",
+        "bytes": 1218184,
+        "sha256": "973816ae077350e4e622bbdc6f828d8da92be7fbe6a9488cf8e16a0d410c880a"
+      },
+      "machineReport": {
+        "file": "selfhost/build/phase152/programs45-acquire01/editdist/phase152/machine/report.json",
+        "bytes": 9212,
+        "sha256": "0ed1a4d483ae9395b327c86f03e8715d73cdcd77477b8938693108bffbe3ce80"
+      },
+      "assembly": {
+        "file": "selfhost/build/phase152/programs45-acquire01/editdist/phase152/machine/program.s",
+        "bytes": 810997,
+        "sha256": "acf68eb6c7d773cbdbe0c4d1a74bc57378a973cdc0378a6b89f33e1a85ba57d8"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/editdist.bend",
+        "bytes": 7835,
+        "sha256": "759d82e26789e55187d175cb8416d6ebe4266a53f73a53ca6d32b69d4f71e988"
+      },
+      "runtime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+        "bytes": 119096,
+        "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+      },
+      "descriptor": "export data $p111_program = align 8 { l 11101, l 192, l 549, l 151, l 542, l 0, l 8, l 1, l 42, l 1, l 0, l 15, l $p111_segments, l $p111_fid_arity, l $p111_fid_flags, l $p111_fid_results, l $p111_cid_arity, l $p111_cid_hot, l $p111_cid_names, l $p111_static_image, l $p111_show_desc, l $p111_show_names, l 3, l $p111_effects }",
+      "constructors": 151,
+      "hot": 133,
+      "cold": 18,
+      "families": {
+        "p113d": 71,
+        "p117v": 3,
+        "p112w": 301,
+        "p111": 549,
+        "p114r": 2,
+        "main": 1
+      },
+      "selected": {
+        "p113d:$product.row": {
+          "bytes": 64067,
+          "calls": {
+            "p117v:$product.row": 1,
+            "p111_rt_fail": 1
+          }
+        },
+        "p113d:$direct.row": {
+          "bytes": 63954,
+          "calls": {
+            "p125_rt_take4": 2,
+            "p125_rt_ctor4": 2,
+            "p111_rt_fail": 3,
+            "p113_rt_array_pair": 4,
+            "p111_rt_op": 1
+          }
+        },
+        "p113d:$product.cell": {
+          "bytes": 49818,
+          "calls": {
+            "p113_rt_array_pair": 4,
+            "p111_rt_op": 1
+          }
+        },
+        "p113d:$direct.init": {
+          "bytes": 3781,
+          "calls": {
+            "p117v:$direct.init": 1,
+            "p111_rt_fail": 1
+          }
+        },
+        "p113d:$direct.gen": {
+          "bytes": 8153,
+          "calls": {
+            "p117v:$direct.gen": 1,
+            "p111_rt_fail": 1
+          }
+        },
+        "p113d:$product.dp.row": {
+          "bytes": 8673,
+          "calls": {
+            "p113_rt_array_pair": 1,
+            "p111_rt_op": 1,
+            "p113d:$product.row": 1
+          }
+        }
+      }
+    },
+    "candidate": {
+      "ir": {
+        "file": "selfhost/build/phase169/program-screen-acquire01/editdist/candidate/emission/program.ssa",
+        "bytes": 358696,
+        "sha256": "92c53995d76e7b6d19909cb4b653ce54951fdb52ebb5b3211a93353964f46622"
+      },
+      "machineReport": {
+        "file": "selfhost/build/phase169/program-screen-acquire01/editdist/candidate/machine/report.json",
+        "bytes": 9296,
+        "sha256": "1a9f4ce092a257716671cc72f90576d99e20a1c237efa06fa4afb9b0a3655d72"
+      },
+      "assembly": {
+        "file": "selfhost/build/phase169/program-screen-acquire01/editdist/candidate/machine/program.s",
+        "bytes": 282305,
+        "sha256": "1d51815c53f3802699db580f542b25f80984755349a5fa458089bdf9ec666270"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/editdist.bend",
+        "bytes": 7835,
+        "sha256": "759d82e26789e55187d175cb8416d6ebe4266a53f73a53ca6d32b69d4f71e988"
+      },
+      "runtime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+        "bytes": 119096,
+        "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+      },
+      "descriptor": "export data $p111_program = align 8 { l 11101, l 192, l 144, l 151, l 0, l 0, l 5, l 1, l 42, l 1, l 0, l 5, l $p111_segments, l $p111_fid_arity, l $p111_fid_flags, l $p111_fid_results, l $p111_cid_arity, l $p111_cid_hot, l $p111_cid_names, l $p111_static_image, l $p111_show_desc, l $p111_show_names, l 3, l $p111_effects }",
+      "constructors": 151,
+      "hot": 151,
+      "cold": 0,
+      "families": {
+        "p112w": 45,
+        "p113d": 71,
+        "p111": 144,
+        "p114r": 2,
+        "main": 1
+      },
+      "selected": {
+        "p113d:$product.row": {
+          "bytes": 6048,
+          "calls": {
+            "p113d:$product.cell": 1,
+            "p111_rt_fail": 1
+          }
+        },
+        "p113d:$direct.row": {
+          "bytes": 3742,
+          "calls": {
+            "p125_rt_take4": 1,
+            "p125_rt_ctor4": 1,
+            "p111_rt_fail": 2,
+            "p113d:$direct.cell": 1
+          }
+        },
+        "p113d:$product.cell": {
+          "bytes": 2777,
+          "calls": {
+            "p113_rt_array_pair": 1,
+            "p113d:$product.cell.f1": 1
+          }
+        },
+        "p113d:$direct.init": {
+          "bytes": 2359,
+          "calls": {
+            "p111_rt_op": 1,
+            "p111_rt_fail": 1
+          }
+        },
+        "p113d:$direct.gen": {
+          "bytes": 3361,
+          "calls": {
+            "p113d:$direct.prng": 1,
+            "p111_rt_op": 1,
+            "p111_rt_fail": 1
+          }
+        },
+        "p113d:$product.dp.row": {
+          "bytes": 2654,
+          "calls": {
+            "p113_rt_array_pair": 1,
+            "p113d:$product.dp.f1": 1
+          }
+        }
+      }
+    }
+  }
+}

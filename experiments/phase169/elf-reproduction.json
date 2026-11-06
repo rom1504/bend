@@ -1,0 +1,176 @@
+{
+  "kind": "phase169-offline-elf-reproduction-audit",
+  "version": 1,
+  "targetExecutions": 0,
+  "binaries": [
+    {
+      "file": "selfhost/build/phase169/single-native-n1/program",
+      "bytes": 13704120,
+      "sha256": "a8c481c36fa51d9dda339f414cdfa2d92c97354b252d0447c0fbf73d03b89006"
+    },
+    {
+      "file": "selfhost/build/phase169/single-native-n2/program",
+      "bytes": 13704120,
+      "sha256": "4b9534d788fb71054d19638383a21b4f2e8cdc0e724b8cc62f584c512e00f652"
+    }
+  ],
+  "receipts": [
+    {
+      "file": "selfhost/build/phase169/single-native-n1/report.json",
+      "bytes": 18208,
+      "sha256": "354154157b4748ed4c104ccec29cad08e23553717adf990d607c7bd95c7e0cb8"
+    },
+    {
+      "file": "selfhost/build/phase169/single-native-n2/report.json",
+      "bytes": 18274,
+      "sha256": "adff4e5f03670a15681d6524d508e087bb5657051c599bdafdad56ad1df2f5ce"
+    }
+  ],
+  "products": {
+    "irDigest": {
+      "equal": true,
+      "n1": {
+        "bytes": 84730980,
+        "sha256": "3049fbde7c1faefdb762c19cbd01c62d70c84a696731062a37c8c8adc30221ed"
+      },
+      "n2": {
+        "bytes": 84730980,
+        "sha256": "3049fbde7c1faefdb762c19cbd01c62d70c84a696731062a37c8c8adc30221ed"
+      }
+    },
+    "assembly": {
+      "equal": true,
+      "n1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/single-native-n1/program.s",
+        "bytes": 62581163,
+        "sha256": "f2bb9300c0046348f3e49bcf22736546628c075438d09faf3a9c17664c573e1a"
+      },
+      "n2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/single-native-n2/program.s",
+        "bytes": 62581163,
+        "sha256": "f2bb9300c0046348f3e49bcf22736546628c075438d09faf3a9c17664c573e1a"
+      }
+    },
+    "object": {
+      "equal": true,
+      "n1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/single-native-n1/program.o",
+        "bytes": 17808768,
+        "sha256": "cd63f8c39c8c567047f4d8c17d4d92d82d84b6ef1efb3e603cdf4a9a72bcfcec"
+      },
+      "n2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/single-native-n2/program.o",
+        "bytes": 17808768,
+        "sha256": "cd63f8c39c8c567047f4d8c17d4d92d82d84b6ef1efb3e603cdf4a9a72bcfcec"
+      }
+    },
+    "runtime": {
+      "equal": true,
+      "n1": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+        "bytes": 119096,
+        "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+      },
+      "n2": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+        "bytes": 119096,
+        "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+      }
+    }
+  },
+  "equalElfHeader": true,
+  "equalSectionHeaders": true,
+  "equalProgramHeaders": true,
+  "gnuBuildId": "f78350cb963dc64ad1a154989098752b4eebc253",
+  "executableSections": [
+    {
+      "name": ".init",
+      "offset": 8192,
+      "bytes": 23,
+      "sha256": "1195ea2b2f3a1e54d53396b8578e7799f087a02a2198ed6289cd3230b38ba45f",
+      "equal": true
+    },
+    {
+      "name": ".plt",
+      "offset": 8224,
+      "bytes": 1248,
+      "sha256": "9e350310a0682a135f9515e1ecec21d6515268c821fe863e8ff3c69eaffa085a",
+      "equal": true
+    },
+    {
+      "name": ".text",
+      "offset": 9472,
+      "bytes": 8477025,
+      "sha256": "a5c396e08602ab9a07f2b5fa7d660f97c320e198284544ceb72676cb45fb6059",
+      "equal": true
+    },
+    {
+      "name": ".fini",
+      "offset": 8486500,
+      "bytes": 9,
+      "sha256": "66e6f54550612182b4ad78f30b140dd08318b968db3878de2db65fef87dc04d7",
+      "equal": true
+    }
+  ],
+  "loadSegments": [
+    {
+      "programHeader": 2,
+      "flags": 4,
+      "offset": 0,
+      "fileBytes": 5840,
+      "memoryBytes": 5840,
+      "sha256": "3666c1d99a4e7c1323b91bf909988814619ec4aff0f815be68b81f5a09888133",
+      "equal": true
+    },
+    {
+      "programHeader": 3,
+      "flags": 5,
+      "offset": 8192,
+      "fileBytes": 8478317,
+      "memoryBytes": 8478317,
+      "sha256": "f24a32489ef2021c5ad87053afdb7a5d26d19305c2d3201e63c944466c122abc",
+      "equal": true
+    },
+    {
+      "programHeader": 4,
+      "flags": 4,
+      "offset": 8486912,
+      "fileBytes": 15672,
+      "memoryBytes": 15672,
+      "sha256": "6c903906983be46b32b545be11343a987b7dec1466e12e8abdccf5130fb74ef3",
+      "equal": true
+    },
+    {
+      "programHeader": 5,
+      "flags": 6,
+      "offset": 8506608,
+      "fileBytes": 824280,
+      "memoryBytes": 1972752,
+      "sha256": "19f3df1e99169aadc29863a8860fba4cd34ee4f4cb774a7762d6c1e905445b34",
+      "equal": true
+    }
+  ],
+  "difference": {
+    "count": 1,
+    "offset": 10581178,
+    "oldByte": 49,
+    "newByte": 50,
+    "section": ".strtab",
+    "sectionFlags": 0,
+    "stringStart": 10581105,
+    "strings": [
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/single-native-n1/program.o",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/single-native-n2/program.o"
+    ],
+    "symbol": {
+      "index": 190,
+      "nameOffset": 2393,
+      "binding": 0,
+      "type": 4,
+      "sectionIndex": 65521,
+      "value": 0,
+      "size": 0
+    }
+  },
+  "conclusion": "QBE, assembly, object, runtime, all executable sections and all file-backed PT_LOAD bytes are identical. Whole ELF files differ by one non-loaded STT_FILE source-path byte; this is not a whole-file hash reproduction claim or an independent semantic qualification."
+}

@@ -5,15 +5,15 @@
   "upstream": "059266225b77c8ca256ac6b25ee5c21449bab151",
   "assets": {
     "qbe-n2": {
-      "file": "selfhost/.assets/native/qbe-n2",
-      "bytes": 19100528,
-      "sha256": "367b639915c0bbc8906fc5827b002ca2c7fc07acc238034e54be994f8833d251",
+      "file": "selfhost/dist/qbe/bend",
+      "bytes": 16031672,
+      "sha256": "0dba3d4d19cd974e759058afbe86608fc7e1770d0c5ebf8f9d06c2697b658f4f",
       "executable": true
     },
     "qbe-api": {
-      "file": "selfhost/.assets/native/qbe-api.mjs",
-      "bytes": 2580282,
-      "sha256": "f482b8d9c8d7668439666bb34b23b8960468edcf4b5d238db2028011a75b26fc"
+      "file": "selfhost/dist/qbe/hosted-api.mjs",
+      "bytes": 2760355,
+      "sha256": "68e6cc22cf2ca715ce8ce9248aebb623653bb5cb59f48ad81aa382e5c5fb0e17"
     },
     "qbe-runtime": {
       "file": "selfhost/.assets/native/qbe-runtime.o",
@@ -325,8 +325,8 @@
       ],
       "protocol": "qbe-source-v1",
       "sourceIdentity": {
-        "bytes": 3010912,
-        "sha256": "96c40c9dd273e2fae5fabfe68093aa7fb8f25f075e2317bed06ff46d4feaab80"
+        "bytes": 3150535,
+        "sha256": "434edd1d56128f9480800573abf8a0ae21d910a547837af089f25cd1d0e89b71"
       },
       "linkedRuntime": {
         "bytes": 119096,
@@ -336,7 +336,21 @@
         "cache",
         "live"
       ],
-      "qualification": "Qualified ordinary native compiler; not installed/incremental-qualified."
+      "sessionProtocols": [
+        "P140/2"
+      ],
+      "qualificationReceipt": {
+        "file": "selfhost/dist/qbe/evidence/qbe-qualified.json",
+        "bytes": 105502,
+        "sha256": "e43578805e7ced7f1389666b41def33e671a11e7fbd5293b14f6031fe4cc6c80"
+      },
+      "sessionQualification": {
+        "file": "selfhost/dist/qbe/evidence/qbe-session-bootstrap.json",
+        "bytes": 24619,
+        "sha256": "46d5fd1143c60df2b4f58d83162e5349309949778dca985364f70444ec56c4e9"
+      },
+      "sessionScope": "Qualified positive native P140/2 byte batches; no native recovery or object-unit claim.",
+      "qualification": "Installed final Phase170 native N2; exact native64 and positive session gates."
     },
     "qbe-api": {
       "host": "js",
@@ -347,8 +361,8 @@
       "protocol": "qbe-api-v1",
       "checked": true,
       "sourceIdentity": {
-        "bytes": 3010912,
-        "sha256": "96c40c9dd273e2fae5fabfe68093aa7fb8f25f075e2317bed06ff46d4feaab80"
+        "bytes": 3150535,
+        "sha256": "434edd1d56128f9480800573abf8a0ae21d910a547837af089f25cd1d0e89b71"
       },
       "exports": [
         "p88_cache_prepare",
@@ -378,7 +392,17 @@
       "preparationModes": [
         "cache"
       ],
-      "qualification": "Upstream checked API; original roots omit p86_prepare, so cache only."
+      "acquisitionReceipt": {
+        "file": "selfhost/dist/qbe/evidence/qbe-hosted-acquisition.json",
+        "bytes": 6072,
+        "sha256": "73c741afc983ae4cd622e7318e5ea3d4f1bbd0af818163e789540251c0405f7a"
+      },
+      "qualificationReceipt": {
+        "file": "selfhost/dist/qbe/evidence/qbe-hosted-qualified.json",
+        "bytes": 38353,
+        "sha256": "9f0b84d787d016964979faeabd02fb54327b3f1ab9fa3cf5fc8f06785c7accf5"
+      },
+      "qualification": "Installed upstream-checked B1 cursor API; cache-only, with its own hosted QBE gate."
     }
   },
   "preparedBase": {

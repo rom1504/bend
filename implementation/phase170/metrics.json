@@ -1,0 +1,267 @@
+{
+  "kind": "phase170-installed-release-summary",
+  "complete": true,
+  "installed": true,
+  "canonicalSource": {
+    "bytes": 3150535,
+    "sha256": "434edd1d56128f9480800573abf8a0ae21d910a547837af089f25cd1d0e89b71"
+  },
+  "sourceLines": 67929,
+  "sourceDeclarations": 8414,
+  "components": {
+    "qbe": {
+      "host": "native",
+      "stage": "N2",
+      "protocol": "qbe-source-v1",
+      "sourceIdentity": {
+        "bytes": 3150535,
+        "sha256": "434edd1d56128f9480800573abf8a0ae21d910a547837af089f25cd1d0e89b71"
+      },
+      "image": {
+        "file": "selfhost/dist/qbe/bend",
+        "bytes": 16031672,
+        "sha256": "0dba3d4d19cd974e759058afbe86608fc7e1770d0c5ebf8f9d06c2697b658f4f"
+      }
+    },
+    "js": {
+      "host": "js",
+      "stage": "B2",
+      "protocol": "hosted-api-v1",
+      "sourceIdentity": {
+        "bytes": 3150535,
+        "sha256": "434edd1d56128f9480800573abf8a0ae21d910a547837af089f25cd1d0e89b71"
+      },
+      "image": {
+        "file": "selfhost/dist/typed-api.mjs",
+        "bytes": 5024712,
+        "sha256": "a689f6b8629eb959f1489f63675a15748f033e14f2cb57fdba5489c5e7c54329"
+      }
+    },
+    "nativeCli": {
+      "host": "native",
+      "stage": "N1",
+      "protocol": "native-public-cli-v1",
+      "sourceIdentity": {
+        "bytes": 3159871,
+        "sha256": "a12ab176d32bc0e15499b3326ecaff07a4cf69f922814615e16a67c307e02ed6"
+      },
+      "image": {
+        "file": "selfhost/dist/native/bend",
+        "bytes": 23839160,
+        "sha256": "cbb3351284179518c6aa221575a7b19db4fd1d65699886446000b51deec89489"
+      }
+    }
+  },
+  "nativeFullMaintainedBuild": {
+    "seconds": 189.3289372692816,
+    "source": {
+      "bytes": 3150535,
+      "sha256": "434edd1d56128f9480800573abf8a0ae21d910a547837af089f25cd1d0e89b71"
+    },
+    "mode": "cache",
+    "preparedBase": true,
+    "cpu": 3,
+    "includes": [
+      "compiler emission",
+      "QBE construction",
+      "assembly",
+      "link"
+    ],
+    "checkingTimedSeparately": true,
+    "report": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/native-chain-final/n2/report.json",
+      "bytes": 19584,
+      "sha256": "41cfd47c91dc3796fa466744bcc552178ca4373860a6ccf07e81778b26385e15"
+    }
+  },
+  "nativeSameFinalSourceLexerComparison": {
+    "oldLexerSeconds": 189.19099885085598,
+    "fixedLexerSeconds": 189.3289372692816,
+    "observationsPerImage": 1
+  },
+  "gates": {
+    "qbe64-final": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/qbe64-final/report.json",
+        "bytes": 105502,
+        "sha256": "e43578805e7ced7f1389666b41def33e671a11e7fbd5293b14f6031fe4cc6c80"
+      },
+      "passed": true,
+      "counts": {
+        "pass": 64,
+        "fail": 0,
+        "unsupported": 0
+      }
+    },
+    "js45-final-retry": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/js45-final-retry/report.json",
+        "bytes": 138929,
+        "sha256": "1e788035e6eb4946a366445fc898ae34e4944814cbad1ab27362b181e5bed681"
+      },
+      "passed": true,
+      "counts": {
+        "pass": 45,
+        "fail": 0,
+        "unsupported": 0
+      }
+    },
+    "c45-final": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/c45-final/report.json",
+        "bytes": 222106,
+        "sha256": "e811e72a32a7e593dfdcf263c9c4703bf2399e5845caa1a03c1b236da6092912"
+      },
+      "passed": true,
+      "counts": {
+        "pass": 45,
+        "fail": 0,
+        "unsupported": 0
+      }
+    },
+    "js-public-final": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/js-public-final/report.json",
+        "bytes": 42130,
+        "sha256": "b02809ed6e13e16c473a08b32b8610d02a9e5cd653d4571a88eca719d1366184"
+      },
+      "passed": true
+    },
+    "js-negative-final": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/js-negative-final/report.json",
+        "bytes": 7847,
+        "sha256": "73bd78121de9190f1290bec82e0314c82e17bb8ef4f601e3ea310df3795c5703"
+      },
+      "passed": true,
+      "counts": {
+        "pass": 2,
+        "fail": 0,
+        "unsupported": 0
+      }
+    },
+    "js-c-focused-final": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/js-c-focused-final/report.json",
+        "bytes": 39206,
+        "sha256": "3207cc356c6df92d13a65c91a745a762d20076d022ccc28e92915e5ecec85a88"
+      },
+      "passed": true,
+      "counts": {
+        "pass": 5,
+        "fail": 0,
+        "unsupported": 0
+      }
+    },
+    "qbe-hosted-final": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/qbe-hosted-final/report.json",
+        "bytes": 38353,
+        "sha256": "9f0b84d787d016964979faeabd02fb54327b3f1ab9fa3cf5fc8f06785c7accf5"
+      },
+      "passed": true,
+      "counts": {
+        "pass": 19,
+        "fail": 0,
+        "unsupported": 0
+      }
+    },
+    "session-hosted-controls-final": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/session-hosted-controls-final/report.json",
+        "bytes": 799,
+        "sha256": "717a1cb86f8f95ce1c93155c9fa76274420ee6916863b3b0b6e82e93451cbf2a"
+      },
+      "requests": 8,
+      "positiveProducts": 6,
+      "modeMatchedColdComparisons": 8
+    },
+    "native-session-bootstrap-final": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/native-session-bootstrap-final/report.json",
+        "bytes": 24619,
+        "sha256": "46d5fd1143c60df2b4f58d83162e5349309949778dca985364f70444ec56c4e9"
+      },
+      "passed": true,
+      "modeMatchedColdComparisons": 6
+    },
+    "installed-native-smoke": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/installed-native-smoke/report.json",
+        "bytes": 6502,
+        "sha256": "17c57f7dac5bf1b1a5618034b423966fdc5e67ee5ff03181d59fa609feb0e34e"
+      },
+      "passed": true,
+      "counts": {
+        "pass": 1,
+        "fail": 0,
+        "unsupported": 0
+      }
+    },
+    "installed-hosted-smoke": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/installed-hosted-smoke/report.json",
+        "bytes": 7194,
+        "sha256": "0696ab6c5cf6953bdb993702c9aaf0c79d07c80e1c4f9ef53052010160d25ded"
+      },
+      "passed": true,
+      "counts": {
+        "pass": 1,
+        "fail": 0,
+        "unsupported": 0
+      }
+    },
+    "installed-session-smoke": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/installed-session-smoke/report.json",
+        "bytes": 15724,
+        "sha256": "55a4a72a729622119b734bb7f96478e5b7645c27326bf3e87a89685dcc19c373"
+      }
+    },
+    "installed-public-smoke-retry": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/installed-public-smoke-retry/report.json",
+        "bytes": 3916,
+        "sha256": "6d2f8a92afba75529ca56c64ca7a54ca0fc401f3ca4786291a26e6193d416c68"
+      },
+      "passed": true
+    },
+    "qualification-products-final.json": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/qualification-products-final.json",
+        "bytes": 155298,
+        "sha256": "5d5287f72edb769da82d970f318c763234445b611af98b45031e7a83cc9d1d69"
+      }
+    },
+    "timed-products-final/report.json": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/timed-products-final/report.json",
+        "bytes": 140672,
+        "sha256": "f965da8fbc838951724b6ceee949403b371b47a0d746864f692e82a2d434eb2c"
+      }
+    },
+    "elf-comparison-final.json": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/elf-comparison-final.json",
+        "bytes": 1590,
+        "sha256": "8d647bc8deaf325edfaabe4ba97704438d3b03ad0a27ce600e06c706d94f8f8f"
+      }
+    }
+  },
+  "installation": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/install-final01/report.json",
+    "bytes": 5556,
+    "sha256": "a698db772f1bfe03c5fd3412cc0b22033342a009052a53371017dec1bfdfd168"
+  },
+  "selectors": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/selector-install01/report.json",
+    "bytes": 2093,
+    "sha256": "af8a409cd35969024561982bf9525011e7df69eebc460541a56cfcbce512ff6e"
+  },
+  "installedVerification": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/installed-verify.json",
+    "bytes": 383,
+    "sha256": "b9992f3f444354a04547490b7d685eb0aa7142c3a64c2287d06e6c576576f40a"
+  },
+  "runtimeScope": "Exact qualification45 and distinct timed45 QBE products match Phase169 with unchanged runtime/toolchain. No new runtime timing ratio."
+}

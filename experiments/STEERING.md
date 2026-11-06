@@ -1,4 +1,37 @@
-# Current frontier — Phase169 native self-build147.764s, canonical185.190s
+# Current frontier — Phase170 fast compiler installed
+
+[Report](../implementation/phase170/README.md) ·
+[Reproduce](../implementation/phase170/reproduce.md) ·
+[Current selector](../selfhost/manifests/current.json).
+
+Phase169's qualified ordinary QBE path is now integrated into maintained modules
+and installed as genuine native N2. The 3,150,535-byte canonical source self-builds
+in 189.329 seconds, including QBE/assembly/link, with prepared Base and one CPU 3
+lane. This is the full maintained source, not the smaller 147.764-second Phase169
+extraction. Native N1/N2/Q3 reproduce QBE; assembly, object and loaded ELF bytes
+match. Whole ELF differs only in nonloaded `.strtab`.
+
+All 64 native controls pass. Both the 45 correctness products and the distinct
+45 timed-wrapper QBE products match Phase169 exactly with unchanged runtime and
+toolchain. This transfers its generated-code evidence; it is not a fresh runtime
+measurement or upstream parity claim. Fresh JS B2/B3 reproduction and JS/C broad
+45 gates qualify the actual installed interfaces. The native public command
+still emits C; QBE uses the explicit maintained build tools. Hosted QBE remains a
+separately checked, cache-only B1 API. Positive native P140/2 reuse is qualified;
+error recovery and object-unit capability are not inferred.
+
+Rebuilding JS exposed repeated suffix reconstruction in five lexer lookaheads.
+Returning an untouched original alias fixes large-source rope growth. Finite
+Bun/Node controls, fresh B3 checking and same-source native timing support the
+repair; this is not a BendTT theorem. Earlier failed/cancelled attempts remain
+recorded. The release auditor and final semantic verifiers are unchanged.
+
+The selector-last installation retains rollback and prior qualified references.
+Use the installed compiler for the next research cycle. The remaining cold-build
+goal is below 150 seconds for this full maintained source; this promotion itself
+does not establish a new architectural speedup. No PR comment posted.
+
+# Previous frontier — Phase169 native self-build147.764s, canonical185.190s
 
 [Report](../implementation/phase169/README.md) ·
 [Reproduce](../implementation/phase169/reproduce.md) ·

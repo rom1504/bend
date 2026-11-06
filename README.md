@@ -22,12 +22,14 @@ source assembly, authenticated compiler assets, bootstrap generations and cold
 builds. Source profiles choose an entry/API; they do not silently select an
 installed release or qualify every host/target combination. Existing public
 entry points remain `node selfhost/cli.mjs FILE --run` and
-`selfhost/bend FILE -o OUTPUT.c`; their installed selections have not been
-promoted by the source/tool consolidation.
+`selfhost/bend FILE -o OUTPUT.c`.
 
-The [Phase152 native checkpoint](implementation/phase152/README.md) integrates
-[prepared-constant preservation](docs/self_hosted/prepared-constants.md) and the
-faster scalar lexer, with explicit cold-build, runtime and correctness evidence.
+The [Phase170 installed release](implementation/phase170/README.md) promotes the
+fast QBE path into the maintained compiler, with fresh native N1/N2 reproduction,
+JS B2/B3 reproduction and public C qualification. Its full maintained-source
+native self-build took 189.3 seconds with prepared Base. The 45 timed QBE products
+remain byte-identical to the qualified Phase169 products. See the report for
+exact sources, timing scope, finite gates and rollback evidence.
 
 | Task | Maintained entry |
 | --- | --- |

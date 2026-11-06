@@ -6789,3 +6789,18 @@ return, or independently replay publication work if the local ceiling is weak.
 Four failed jobs and two superseded verifier-context controls preserved; all
 sealed without pruning. Three bounded implementation/capture agents; root owns
 the sole target lane. Production and qualified compiler remain Phase152.
+
+## Phase170 — qualify and install the maintained fast compiler
+
+Integrated Phase169's ordinary path into maintained modules, retained final
+verification and existing entry/session boundaries, and rebuilt all installed
+interfaces from exact current source. Full maintained-source native self-build:
+189.329s with prepared Base; N1/N2/Q3 QBE fixed point and loaded machine identity.
+All64 native controls,45 exact correctness products,45 exact timed products,
+fresh JS B2/B3 equality, selected JS/C45 and public compatibility gates pass.
+The initial JS B2 memory refusal exposed large-suffix reconstruction; five small
+Bend wrappers preserve original aliases (+25 source lines), validated under Bun,
+Node and the final native chain. No verifier weakening, source relabeling or new
+BendTT proof. Installed via audited transaction with rollback; operational QBE
+assets select actual new N2. See [report](../implementation/phase170/README.md)
+for exact identities, costs, failed attempts and supported capabilities.

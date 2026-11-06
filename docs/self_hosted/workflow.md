@@ -7,8 +7,8 @@ prepared Base images, compiler executables and benchmark artifacts are explicit
 inputs or outputs, not editable alternative compiler sources.
 
 The [consolidation design](../../design/repository-consolidation/README.md)
-records migration boundaries; the [completed report](../../implementation/repository-consolidation/README.md)
-records current qualification. Current tools live under
+records migration boundaries; the [Phase170 report](../../implementation/phase170/README.md)
+records current installed qualification. Current tools live under
 [`tools/build/`](../../selfhost/tools/build/),
 [`tools/bench/`](../../selfhost/tools/bench/README.md),
 [`tools/profiler/`](../../selfhost/tools/profiler/README.md),
@@ -29,7 +29,12 @@ selfhost/bend input.bend -o output.c
 
 The installed [current selector](../../selfhost/manifests/current.json) binds
 JS B2, public native C N1 and qualified QBE N2 to their recorded source and
-qualification evidence. A new assembly, successful small differential run or
+qualification evidence. Phase170 installs all three from current maintained
+source, with an explicit thin profile for the public C CLI. The default
+`qbe-n2` asset points to `selfhost/dist/qbe/bend`; `qbe-api` selects the separately
+checked, cache-only B1 API at `selfhost/dist/qbe/hosted-api.mjs`. Native P140/2
+positive reuse has its own gate; native error recovery and object-unit support
+are not inferred from that result. A new assembly, successful small differential run or
 moved tool does not install another release. Package availability, supported
 imports/effects and image identities change only through qualified promotion.
 

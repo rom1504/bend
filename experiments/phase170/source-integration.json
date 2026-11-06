@@ -1,0 +1,265 @@
+{
+  "complete": true,
+  "compilerExecuted": false,
+  "selected": {
+    "file": "selfhost/build/phase169/quality-native-source01/compiler.bend",
+    "bytes": 1538604,
+    "sha256": "db744d67dffc6cdbbe69eadfa42fa49e37ed6219cccccc0534e020c73f699e20"
+  },
+  "beforeSource": {
+    "bytes": 3085157,
+    "sha256": "027e15041035522ed7e40ef971eff75f24a09ef6a00e3f8fe335839f94bcb8a8"
+  },
+  "source": {
+    "file": "selfhost/build/phase169/maintained-source-integration01/compiler.bend",
+    "bytes": 3149379,
+    "sha256": "5903812cda7f23f4e25dfbe88b8717ad1b9c5fbe9f342d52fe00e179317b5e9e"
+  },
+  "sourceMap": {
+    "file": "selfhost/build/phase169/maintained-source-integration01/compiler.map.json",
+    "bytes": 2735075,
+    "sha256": "b336f824f2415f73676b2c61d76997a811f4fd036be8ad0538b5786e2b7fa362"
+  },
+  "recipe": {
+    "file": "selfhost/src/compiler.json",
+    "bytes": 541378,
+    "sha256": "b53415cb4258c92069b309f4adad21b3e7028978457a53a10a7917924108b549"
+  },
+  "profiles": {
+    "qbe": {
+      "bytes": 3149379,
+      "sha256": "5903812cda7f23f4e25dfbe88b8717ad1b9c5fbe9f342d52fe00e179317b5e9e"
+    },
+    "native-c": {
+      "bytes": 3149463,
+      "sha256": "582d35d2e77cd3dc5dc936c538213e3fc7d94bef7a99e086964b46c38791f0e1"
+    },
+    "js-api": {
+      "bytes": 3149266,
+      "sha256": "897e6ef0a182482fc36add5492515ebb2ce378496370638f6fb5b0e2c796aaf1"
+    },
+    "qbe-policy": {
+      "bytes": 3149378,
+      "sha256": "eb5bade9810d5c24e36702678f82dc2b7a0909fa568e524464f01e7d4b332fa2"
+    },
+    "qbe-policy-test": {
+      "bytes": 3149372,
+      "sha256": "081414daf71a273cc2280944109fd52e3ee0816e063316b274c50dc54b7e49fd"
+    }
+  },
+  "addedDeclarations": 144,
+  "changedExisting": [
+    "p111_native_request",
+    "p128bs_eligible",
+    "p143cb_resume_state"
+  ],
+  "removedDeclarations": 0,
+  "protectedDeclarationsUnchanged": 111,
+  "authorizedProtectedEntryChange": {
+    "name": "p111_native_request",
+    "before": {
+      "normalizedSha256": "d5e221ea8f0219afb5832d8a156739ec6719f20af93218139dc48895fa8ab04a",
+      "verifier": true,
+      "proof": false
+    },
+    "after": {
+      "normalizedSha256": "00ca877012c17146f34795e4e2d6266d993a059c88a99b5c3a3842146b2b383d",
+      "verifier": true,
+      "proof": false
+    },
+    "reason": "Explicitly authorized ordinary-native interface routing; no verifier/proof body changes."
+  },
+  "addedOwners": {
+    "src/back/qbe/early-demand.bend": [
+      "p164a_put",
+      "p164a_arg",
+      "p164a_loads",
+      "p164a_args",
+      "p164a_body",
+      "p164a_segment",
+      "p164a_allowed",
+      "p164a_shape",
+      "p164a_generic",
+      "P167Lowered",
+      "P167Catalogue",
+      "P167Context",
+      "P167Demand",
+      "P167Built",
+      "p167l_fail",
+      "p167l_mark",
+      "p167l_demand",
+      "p167l_value",
+      "p167l_values",
+      "p167l_args",
+      "p167l_stmts",
+      "p167l_stmt",
+      "p167l_direct",
+      "p167l_direct_stmt",
+      "p167l_function_demands",
+      "p167l_segment_demands",
+      "p167l_present",
+      "p167l_private",
+      "p167l_catalogue_put",
+      "p167l_catalogue",
+      "p167l_catalogue_name",
+      "p167l_factory",
+      "p167l_family",
+      "p167l_accept",
+      "p167l_code",
+      "p167l_dispatch",
+      "p167l_take",
+      "p167l_loop",
+      "p167l_complete",
+      "p167l_finish",
+      "p167l_finished",
+      "p167l_catalogued",
+      "p167l_functions"
+    ],
+    "src/back/qbe/early-observers.bend": [
+      "p167v_allowed",
+      "p167v_obligation",
+      "p167v_bucket",
+      "p167v_obligations",
+      "p167v_one",
+      "p167v_segments",
+      "p167v_segment_done",
+      "p167v_scans",
+      "p167v_catalogued",
+      "p167v_original",
+      "p167v_private",
+      "p167live_eligible",
+      "p167ob_permission",
+      "p167ob_seed_checked",
+      "p167ob_seed_verify",
+      "p167ob_remaining",
+      "p167ob_direct",
+      "p167ob_final",
+      "p168_scalars",
+      "p168_scalar_ready",
+      "p168_stats",
+      "p168_finished",
+      "p168_finish_functions",
+      "p168_retry",
+      "p168_scalar_verified",
+      "p168_scalar_result",
+      "p168_inlined",
+      "p168_closed",
+      "p168_candidates",
+      "p168_selected",
+      "p168_seed_verified",
+      "p168_scanned",
+      "p168_prepared",
+      "p168_catalogued",
+      "p168_request_mode",
+      "P168TSelection",
+      "p168t_has",
+      "p168t_accept",
+      "p168t_target",
+      "p168t_walk",
+      "p168t_selected",
+      "p169q_metadata",
+      "p169q_import",
+      "P169ScalarPlan",
+      "p169q_plans",
+      "p169q_selection",
+      "p169q_scalars",
+      "p169q_scalar_ready",
+      "p169q_inlined",
+      "p169q_closed",
+      "p169o_next",
+      "p169o_walk",
+      "p169o_selected",
+      "p169o_closed",
+      "p169o_certified"
+    ],
+    "src/back/qbe/early-emission.bend": [
+      "p168v_callable",
+      "p168v_functions",
+      "p168j_eligible",
+      "p168j_insert",
+      "p168j_imports",
+      "p168j_candidates",
+      "p168j_registry",
+      "p168j_forward",
+      "p168j_forward_if",
+      "p168j_forwards",
+      "P169Prepared",
+      "p169s_fail",
+      "p169s_registered",
+      "p169s_seeded",
+      "p169s_lowered",
+      "p169s_prefix_written",
+      "p169s_prefix",
+      "p169s_print",
+      "p169sv_refused",
+      "p169a_seeded",
+      "p169a_namespace",
+      "p169a_checked",
+      "p169a_view",
+      "p169a_original",
+      "p169c_scalar",
+      "p169c_selected",
+      "p169c_output",
+      "p169c_emitted"
+    ],
+    "src/host/qbe-early-entry.bend": [
+      "p169n_prepared",
+      "p169n_compile",
+      "p169n_request",
+      "p169n_args",
+      "p169np_admitted",
+      "p169np_plan"
+    ],
+    "src/back/qbe/borrowed-regions.bend": [
+      "p169e_emit",
+      "p169e_names",
+      "p169e_roots",
+      "p169e_shape"
+    ],
+    "src/check/publication-reuse.bend": [
+      "p156cp_continue",
+      "p156cp_stored",
+      "p156cp_put",
+      "p156cp_publish",
+      "p156cp_next",
+      "p156cp_guard",
+      "p156cp_walk",
+      "p156cp_start"
+    ]
+  },
+  "preservedEntries": [
+    "main",
+    "p111_native_args",
+    "p134e_plan",
+    "p140n_compile",
+    "p140n_backend",
+    "p140nb_start",
+    "p143cp_seed_ready"
+  ],
+  "scope": "Exact selected declaration transport plus ordinary-native delegation; no compiler, runtime, session, JS or C qualification claimed.",
+  "kind": "bend-phase170-source-integration-audit",
+  "literalUnchangedOriginalDeclarations": 8262,
+  "sourceAuditRecomputed": true,
+  "retainedReport": {
+    "file": "selfhost/build/phase169/maintained-source-integration01/report.json",
+    "bytes": 6456,
+    "sha256": "e4973bc52854d565c3cabfed4a26918da220f5144035ff2ae9d0f77c1b3bd3d3"
+  },
+  "dataToolChecks": [
+    {
+      "file": "selfhost/build/phase170/product-comparison-selfcheck01.json",
+      "bytes": 122183,
+      "sha256": "cb27b26c1df3800b2349fa88819112dd85c29b85ef6da35e6f542b26e1ff9428"
+    },
+    {
+      "file": "selfhost/build/phase170/product-comparison-wrappers-negative01.json",
+      "bytes": 161112,
+      "sha256": "57168b20975e737aafaea5bff029c5b3372b2460c6bbf2561462b7a9a1de1588"
+    },
+    {
+      "file": "selfhost/build/phase170/reemit-tool-plan-selfcheck01.json",
+      "bytes": 432604,
+      "sha256": "226f10642305e6b97e55455750c84f811772b66c1039ea509d32820dfc2a6ba3"
+    }
+  ]
+}

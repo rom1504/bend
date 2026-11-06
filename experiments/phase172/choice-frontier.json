@@ -1,0 +1,60 @@
+{
+  "kind": "offline-current-image-choice-audit",
+  "IR": "selfhost/build/phase170/native-chain-final/n2/program.ssa",
+  "IRBytes": 97488970,
+  "IRSha256": "661b62664acdac83d12bc3192b5f9113a2bb946dd331433e64ca0452f6f83850",
+  "functionCount": 60569,
+  "choiceRelatedFunctionNames": [
+    "p113d_FID_$direct.Bool.pick",
+    "p112w_FID_j_fusion_choose",
+    "p112w_FID_p140sp_choose",
+    "p111_FID_j_fusion_choose",
+    "p111_FID_$direct.j_fusion_choose",
+    "p111_FID_p140sp_choose",
+    "p111_FID_$direct.p140sp_choose"
+  ],
+  "allStaticClosureCallSites": 22264,
+  "allStaticApplyCallSites": 7769,
+  "verifierExamples": [
+    {
+      "function": "p113d_FID_$direct.p147v_counted_call",
+      "bytes": 21820,
+      "jnz": 8,
+      "closureCalls": 0,
+      "applyCalls": 0
+    },
+    {
+      "function": "p113d_FID_$product.p147v_counted_call",
+      "bytes": 22430,
+      "jnz": 8,
+      "closureCalls": 0,
+      "applyCalls": 0
+    },
+    {
+      "function": "p113d_FID_$direct.p111v_counted_call",
+      "bytes": 21773,
+      "jnz": 8,
+      "closureCalls": 0,
+      "applyCalls": 0
+    },
+    {
+      "function": "p113d_FID_$product.p111v_counted_call",
+      "bytes": 22079,
+      "jnz": 8,
+      "closureCalls": 0,
+      "applyCalls": 0
+    }
+  ],
+  "profile": "selfhost/build/phase171/runtime-callers-full-stages01.json",
+  "profileSha256": "6e4cd058c79876ad0a880156cd58c0c976f7dff67e761bfbb354adf9be2e16d7",
+  "physicalLeafSamples": {
+    "p111_rt_closure": 0,
+    "p111_rt_apply": 0,
+    "p111_rt_jump": 94
+  },
+  "limitations": [
+    "Static sites are not dynamic calls.",
+    "No physical leaf samples is not proof of zero execution cost.",
+    "Names were decoded from exact generated function symbols; no target executed."
+  ]
+}

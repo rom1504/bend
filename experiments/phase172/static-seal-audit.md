@@ -137,3 +137,23 @@ Do not claim byte-identical heap state or identical resource-failure timing.
 Ordinary successful value/effect semantics, actual dynamic ownership and all
 supported behavior remain the correctness requirements. No speedup or full
 compiler qualification is established by this audit alone.
+
+## Baseline-only opportunity counter prepared
+
+`tools/static-seal-counts.py` prepares a separate diagnostic runtime from the
+exact unchanged runtime source. It verifies the source hash and inverse of its
+single replacement, snapshots unchanged headers, and records pinned compiler
+and reference-runtime identities. It never builds or executes a target.
+
+The diagnostic increments four host-only, single-mutator counters inside the
+original `rfc_seal`: total logical calls, early identity returns, raw static
+wrap requests, and raw dynamic wrap requests. Both raw cases still call the
+unchanged `rfc_wrap`. An explicit destructor writes one prefixed JSON line to
+stderr on normal process exit. The counts must satisfy the exact partition;
+stdout remains the complete independent program oracle. Direct `rfc_wrap`
+calls outside `rfc_seal` are intentionally outside this census.
+
+Raw counters are requests before wrapping, not successful allocations. Accept
+only ordinary successful checked runs. These observations cannot provide clean
+performance measurements, and must not alter the frozen optimized runtime or
+its existing builder receipts.

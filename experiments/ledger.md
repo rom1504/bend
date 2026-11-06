@@ -6828,3 +6828,33 @@ from generated compiler callers, and unknowns remain in the denominators.
 Follow-ups add90 terminal guards/882.393s,9 nonzero attempts, all sealed. The
 intermediate44-job inventory is included, not additive. No production/runtime/
 selector change, new full self-hosting gate or PR comment. See [follow-up report](../implementation/phase171/followup.md) and exact receipt/cost inventory there.
+
+
+## Phase172 — producer/consumer and runtime retry,100s unmet
+
+[Report](../implementation/phase172/README.md) · [Metrics](../implementation/phase172/metrics.json).
+Deferred ordered substitutions preserve20 complete substitution controls,24
+flattening observations,682,767 loader values and exact real-verifier QBE but
+have neutral hosted loader timing. The native checker falsifier was cancelled
+because its actual embedded inputs contain no relevant pattern syntax.
+
+Cold constructor inlining has zero coverage; guarded already-sealed-field
+inlining passes27 controls/native outputs but is neutral on verifier,6.89%
+slower on lookup and enlarges QBE. Reject as a default. Static publication
+wrapper omission survives independent ownership/static-graph audit and six
+ordinary positive controls; real verifier runtime improves4.19%, lookup neutral.
+Baseline diagnostic counts637,184/770,000 removable static wrapping requests,
+separate from clean timing. Source/ABI/proof boundaries and negatives retained.
+
+Relinking the unchanged Phase171 compiler object costs no full source acquisition.
+Matched full fixed-source builds181.741→180.667s (0.59%, single pair, neutral),
+identical97,488,970-byte QBE/assembly/object. Whole ELF differs, no loaded-segment
+claim. The target runtime stays unchanged; only the executing image runtime
+varies. No new generation/self-reproduction, production edit or installation.
+
+Chooser audit finds current structural closed-selector expansion already removes
+conditional thunks. Bendc's Strings are linked code points too. Neither shortcut
+provides a100s route. Next work needs measured complete reconstruction removal,
+not another large-gain forecast from helper counts.29 guards/563.670s, five failed
+source acquisitions preserved, four bounded agents with one root execution lane.
+Verified archival of12 reviewed old roots recovers570.27MiB net. No PR comment.

@@ -1,0 +1,551 @@
+{
+  "kind": "phase172-deferred-pattern-controls",
+  "version": 1,
+  "complete": true,
+  "passed": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase172/deferred-pattern-controls.mjs",
+      "bytes": 6976,
+      "sha256": "e68cceaec87b6e878d579d023c05e9f885663ffdef04afeb484a7caa210f0ef0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+      "bytes": 88979072,
+      "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase172/deferred-pattern-controls.bend",
+      "bytes": 7604,
+      "sha256": "a5bd7b819807fcb9b2487e60bb4577e73087c768dd3620b4f67154fa5685b9b8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/frontend-baseline-api05/report.json",
+      "bytes": 5190,
+      "sha256": "69ca3e0e7f66146e511866086177c84cf68b95afbd84c43a11e1178c85d92001"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/frontend-baseline-source05/compiler.bend",
+      "bytes": 1547655,
+      "sha256": "c6299b51b9ad839cfd1cbeb12a4c11e8ac14401c028747666f310b2024dc8f37"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/frontend-baseline-api05/api.mjs",
+      "bytes": 2672276,
+      "sha256": "f569be35f0a407c50ca4dffb934ecdb165f2cb227ffd2d1a942627d04d4bb245"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/frontend-candidate-api05/report.json",
+      "bytes": 5200,
+      "sha256": "e9536eef4e62fce28b1a1d9aa982df64942e5b39841edd864e909696d7503860"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/frontend-candidate-source05/compiler.bend",
+      "bytes": 1549182,
+      "sha256": "3c8ca601d99d5b8f89c5aba510bfb2a8c4877c8bdc05e2c5c304cfefb1d0d060"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/frontend-candidate-api05/api.mjs",
+      "bytes": 2674206,
+      "sha256": "d83ef5055a5604ef3096675978bdf30f0777cde6b6b96bde757d75baa9d1edc9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/verifier-source03/compiler.bend",
+      "bytes": 39333,
+      "sha256": "ff6b4083aa2f3e034f3b4f8e43dfb25d93a4f524685934e0ee13845278033ef3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "bytes": 75064,
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+    }
+  ],
+  "authorities": {
+    "baseline": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/frontend-baseline-api05/report.json",
+        "bytes": 5190,
+        "sha256": "69ca3e0e7f66146e511866086177c84cf68b95afbd84c43a11e1178c85d92001"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/frontend-baseline-source05/compiler.bend",
+        "bytes": 1547655,
+        "sha256": "c6299b51b9ad839cfd1cbeb12a4c11e8ac14401c028747666f310b2024dc8f37"
+      },
+      "image": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/frontend-baseline-api05/api.mjs",
+        "bytes": 2672276,
+        "sha256": "f569be35f0a407c50ca4dffb934ecdb165f2cb227ffd2d1a942627d04d4bb245"
+      }
+    },
+    "candidate": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/frontend-candidate-api05/report.json",
+        "bytes": 5200,
+        "sha256": "e9536eef4e62fce28b1a1d9aa982df64942e5b39841edd864e909696d7503860"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/frontend-candidate-source05/compiler.bend",
+        "bytes": 1549182,
+        "sha256": "3c8ca601d99d5b8f89c5aba510bfb2a8c4877c8bdc05e2c5c304cfefb1d0d060"
+      },
+      "image": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/frontend-candidate-api05/api.mjs",
+        "bytes": 2674206,
+        "sha256": "d83ef5055a5604ef3096675978bdf30f0777cde6b6b96bde757d75baa9d1edc9"
+      }
+    }
+  },
+  "scope": "Whole-record equality from independently checked Bend APIs; finite data and optional complete loader controls. No native execution, proof or compilation-speed claim.",
+  "substitution": [
+    {
+      "mode": 0,
+      "baseline": {
+        "valuesCompared": 1,
+        "completeGraphExact": true
+      },
+      "candidate": {
+        "valuesCompared": 1,
+        "completeGraphExact": true
+      },
+      "apisExact": {
+        "valuesCompared": 99,
+        "completeGraphExact": true
+      }
+    },
+    {
+      "mode": 1,
+      "baseline": {
+        "valuesCompared": 72,
+        "completeGraphExact": true
+      },
+      "candidate": {
+        "valuesCompared": 72,
+        "completeGraphExact": true
+      },
+      "apisExact": {
+        "valuesCompared": 166,
+        "completeGraphExact": true
+      }
+    },
+    {
+      "mode": 2,
+      "baseline": {
+        "valuesCompared": 72,
+        "completeGraphExact": true
+      },
+      "candidate": {
+        "valuesCompared": 72,
+        "completeGraphExact": true
+      },
+      "apisExact": {
+        "valuesCompared": 170,
+        "completeGraphExact": true
+      }
+    },
+    {
+      "mode": 3,
+      "baseline": {
+        "valuesCompared": 72,
+        "completeGraphExact": true
+      },
+      "candidate": {
+        "valuesCompared": 72,
+        "completeGraphExact": true
+      },
+      "apisExact": {
+        "valuesCompared": 166,
+        "completeGraphExact": true
+      }
+    },
+    {
+      "mode": 4,
+      "baseline": {
+        "valuesCompared": 72,
+        "completeGraphExact": true
+      },
+      "candidate": {
+        "valuesCompared": 72,
+        "completeGraphExact": true
+      },
+      "apisExact": {
+        "valuesCompared": 162,
+        "completeGraphExact": true
+      }
+    },
+    {
+      "mode": 5,
+      "baseline": {
+        "valuesCompared": 72,
+        "completeGraphExact": true
+      },
+      "candidate": {
+        "valuesCompared": 72,
+        "completeGraphExact": true
+      },
+      "apisExact": {
+        "valuesCompared": 166,
+        "completeGraphExact": true
+      }
+    },
+    {
+      "mode": 6,
+      "baseline": {
+        "valuesCompared": 24,
+        "completeGraphExact": true
+      },
+      "candidate": {
+        "valuesCompared": 24,
+        "completeGraphExact": true
+      },
+      "apisExact": {
+        "valuesCompared": 59,
+        "completeGraphExact": true
+      }
+    },
+    {
+      "mode": 7,
+      "baseline": {
+        "valuesCompared": 24,
+        "completeGraphExact": true
+      },
+      "candidate": {
+        "valuesCompared": 24,
+        "completeGraphExact": true
+      },
+      "apisExact": {
+        "valuesCompared": 59,
+        "completeGraphExact": true
+      }
+    },
+    {
+      "mode": 8,
+      "baseline": {
+        "valuesCompared": 24,
+        "completeGraphExact": true
+      },
+      "candidate": {
+        "valuesCompared": 24,
+        "completeGraphExact": true
+      },
+      "apisExact": {
+        "valuesCompared": 59,
+        "completeGraphExact": true
+      }
+    },
+    {
+      "mode": 9,
+      "baseline": {
+        "valuesCompared": 11,
+        "completeGraphExact": true
+      },
+      "candidate": {
+        "valuesCompared": 11,
+        "completeGraphExact": true
+      },
+      "apisExact": {
+        "valuesCompared": 29,
+        "completeGraphExact": true
+      }
+    },
+    {
+      "mode": 10,
+      "baseline": {
+        "valuesCompared": 7,
+        "completeGraphExact": true
+      },
+      "candidate": {
+        "valuesCompared": 7,
+        "completeGraphExact": true
+      },
+      "apisExact": {
+        "valuesCompared": 17,
+        "completeGraphExact": true
+      }
+    },
+    {
+      "mode": 11,
+      "baseline": {
+        "valuesCompared": 37,
+        "completeGraphExact": true
+      },
+      "candidate": {
+        "valuesCompared": 37,
+        "completeGraphExact": true
+      },
+      "apisExact": {
+        "valuesCompared": 89,
+        "completeGraphExact": true
+      }
+    },
+    {
+      "mode": 12,
+      "baseline": {
+        "valuesCompared": 137,
+        "completeGraphExact": true
+      },
+      "candidate": {
+        "valuesCompared": 137,
+        "completeGraphExact": true
+      },
+      "apisExact": {
+        "valuesCompared": 300,
+        "completeGraphExact": true
+      }
+    },
+    {
+      "mode": 13,
+      "baseline": {
+        "valuesCompared": 72,
+        "completeGraphExact": true
+      },
+      "candidate": {
+        "valuesCompared": 72,
+        "completeGraphExact": true
+      },
+      "apisExact": {
+        "valuesCompared": 162,
+        "completeGraphExact": true
+      }
+    },
+    {
+      "mode": 14,
+      "baseline": {
+        "valuesCompared": 72,
+        "completeGraphExact": true
+      },
+      "candidate": {
+        "valuesCompared": 72,
+        "completeGraphExact": true
+      },
+      "apisExact": {
+        "valuesCompared": 170,
+        "completeGraphExact": true
+      }
+    },
+    {
+      "mode": 15,
+      "baseline": {
+        "valuesCompared": 85,
+        "completeGraphExact": true
+      },
+      "candidate": {
+        "valuesCompared": 85,
+        "completeGraphExact": true
+      },
+      "apisExact": {
+        "valuesCompared": 200,
+        "completeGraphExact": true
+      }
+    },
+    {
+      "mode": 16,
+      "baseline": {
+        "valuesCompared": 64,
+        "completeGraphExact": true
+      },
+      "candidate": {
+        "valuesCompared": 64,
+        "completeGraphExact": true
+      },
+      "apisExact": {
+        "valuesCompared": 146,
+        "completeGraphExact": true
+      }
+    },
+    {
+      "mode": 17,
+      "baseline": {
+        "valuesCompared": 37,
+        "completeGraphExact": true
+      },
+      "candidate": {
+        "valuesCompared": 37,
+        "completeGraphExact": true
+      },
+      "apisExact": {
+        "valuesCompared": 86,
+        "completeGraphExact": true
+      }
+    },
+    {
+      "mode": 18,
+      "baseline": {
+        "valuesCompared": 24,
+        "completeGraphExact": true
+      },
+      "candidate": {
+        "valuesCompared": 24,
+        "completeGraphExact": true
+      },
+      "apisExact": {
+        "valuesCompared": 59,
+        "completeGraphExact": true
+      }
+    },
+    {
+      "mode": 19,
+      "baseline": {
+        "valuesCompared": 24,
+        "completeGraphExact": true
+      },
+      "candidate": {
+        "valuesCompared": 24,
+        "completeGraphExact": true
+      },
+      "apisExact": {
+        "valuesCompared": 59,
+        "completeGraphExact": true
+      }
+    }
+  ],
+  "matches": [
+    {
+      "mode": 0,
+      "valuesCompared": 18,
+      "completeGraphExact": true
+    },
+    {
+      "mode": 1,
+      "valuesCompared": 101,
+      "completeGraphExact": true
+    },
+    {
+      "mode": 2,
+      "valuesCompared": 21,
+      "completeGraphExact": true
+    },
+    {
+      "mode": 3,
+      "valuesCompared": 35,
+      "completeGraphExact": true
+    },
+    {
+      "mode": 4,
+      "valuesCompared": 63,
+      "completeGraphExact": true
+    },
+    {
+      "mode": 5,
+      "valuesCompared": 80,
+      "completeGraphExact": true
+    },
+    {
+      "mode": 6,
+      "valuesCompared": 160,
+      "completeGraphExact": true
+    },
+    {
+      "mode": 7,
+      "valuesCompared": 102,
+      "completeGraphExact": true
+    },
+    {
+      "mode": 8,
+      "valuesCompared": 32,
+      "completeGraphExact": true
+    },
+    {
+      "mode": 9,
+      "valuesCompared": 32,
+      "completeGraphExact": true
+    },
+    {
+      "mode": 10,
+      "valuesCompared": 35,
+      "completeGraphExact": true
+    },
+    {
+      "mode": 11,
+      "valuesCompared": 35,
+      "completeGraphExact": true
+    },
+    {
+      "mode": 12,
+      "valuesCompared": 49,
+      "completeGraphExact": true
+    },
+    {
+      "mode": 13,
+      "valuesCompared": 18,
+      "completeGraphExact": true
+    },
+    {
+      "mode": 14,
+      "valuesCompared": 18,
+      "completeGraphExact": true
+    },
+    {
+      "mode": 15,
+      "valuesCompared": 32,
+      "completeGraphExact": true
+    },
+    {
+      "mode": 16,
+      "valuesCompared": 74,
+      "completeGraphExact": true
+    },
+    {
+      "mode": 17,
+      "valuesCompared": 32,
+      "completeGraphExact": true
+    },
+    {
+      "mode": 18,
+      "valuesCompared": 63,
+      "completeGraphExact": true
+    },
+    {
+      "mode": 19,
+      "valuesCompared": 102,
+      "completeGraphExact": true
+    },
+    {
+      "mode": 20,
+      "valuesCompared": 35,
+      "completeGraphExact": true
+    },
+    {
+      "mode": 21,
+      "valuesCompared": 35,
+      "completeGraphExact": true
+    },
+    {
+      "mode": 22,
+      "valuesCompared": 35,
+      "completeGraphExact": true
+    },
+    {
+      "mode": 23,
+      "valuesCompared": 80,
+      "completeGraphExact": true
+    }
+  ],
+  "comparator": {
+    "equal": 1,
+    "changedFieldsRejected": 6
+  },
+  "artifacts": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/frontend-controls05/baseline.json",
+      "bytes": 49878,
+      "sha256": "e3b2ca184e8664ffebdc38a4c928ac2865de44f83cfe5ad29710e86526b84b8a",
+      "role": "baseline"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/frontend-controls05/candidate.json",
+      "bytes": 49878,
+      "sha256": "e3b2ca184e8664ffebdc38a4c928ac2865de44f83cfe5ad29710e86526b84b8a",
+      "role": "candidate"
+    }
+  ],
+  "loader": {
+    "valuesCompared": 682767,
+    "completeGraphExact": true,
+    "diagnosticSeconds": {
+      "baseline": 4.967317795,
+      "candidate": 5.020755726
+    },
+    "scope": "Single shared host process; not clean native timing. Complete graph including diagnostic, ordering and origin fields compared."
+  }
+}

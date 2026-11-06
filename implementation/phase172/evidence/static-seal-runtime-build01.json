@@ -1,0 +1,203 @@
+{
+  "kind": "phase172-static-seal-runtime-build",
+  "complete": true,
+  "generatedProgramsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase172/tools/static-seal-runtime.py",
+      "bytes": 9045,
+      "sha256": "1afece5ba404efa2a23376fa777ee97d995a2e7b795d4eb49e9e04bddb269f4f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/static-seal-runtime-source01/plan.json",
+      "bytes": 4751,
+      "sha256": "1470b8e554058e989ae8d75941948db8c0d3ada584d4c63907369f93f85e5b9f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase172/tools/static-seal-runtime.py",
+      "bytes": 9045,
+      "sha256": "1afece5ba404efa2a23376fa777ee97d995a2e7b795d4eb49e9e04bddb269f4f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/common.py",
+      "bytes": 4809,
+      "sha256": "d9a16fef18cf936499e51f8c7f36a653f2921ef9a50f846257c2e8bc460ec6d1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/manifests/assets-native.json",
+      "bytes": 18715,
+      "sha256": "3d19a8b9f801fabc1de6dc5f484c7d20a795047776d1390a4bdea98e42b3e6b7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/qbe/runtime.c",
+      "bytes": 150560,
+      "sha256": "aa95d2c0426c05bcc4d34244dd8b22b79ebcaf6d30634569201961f60b57f333"
+    },
+    {
+      "file": "/usr/bin/x86_64-linux-gnu-gcc-10",
+      "bytes": 817704,
+      "sha256": "693abcb42e67fb871673f258a3644257ca69a209691ec4d8137a42442834bd19"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/qbe/runtime.h",
+      "bytes": 4518,
+      "sha256": "9b19b8d6ae1c8f07759041201c2692c20d9612393819e2bbc597deba44679d12"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/qbe/primitives.h",
+      "bytes": 3067,
+      "sha256": "ecbdfe62b875fc20e5805840b83c3779ed8fb8fb1de83c543ba1ce1217165d20"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/static-seal-runtime-source01/runtime.c",
+      "bytes": 151403,
+      "sha256": "b6fbb888d64cbd7b5649cc56a5150ea5a51f55e3788883345ae30eedbc36163a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/static-seal-runtime-source01/runtime.h",
+      "bytes": 4518,
+      "sha256": "9b19b8d6ae1c8f07759041201c2692c20d9612393819e2bbc597deba44679d12"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/static-seal-runtime-source01/primitives.h",
+      "bytes": 3067,
+      "sha256": "ecbdfe62b875fc20e5805840b83c3779ed8fb8fb1de83c543ba1ce1217165d20"
+    }
+  ],
+  "variants": [
+    {
+      "label": "baseline",
+      "staticSeal": 0,
+      "command": [
+        "/usr/bin/x86_64-linux-gnu-gcc-10",
+        "-O2",
+        "-std=gnu11",
+        "-ffp-contract=off",
+        "-DP144_SINGLE_MUTATOR_RFC=1",
+        "-DP172_STATIC_SEAL=0",
+        "-c",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/static-seal-runtime-source01/runtime.c",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/static-seal-runtime-build01/baseline.o"
+      ],
+      "job": {
+        "command": [
+          "/usr/bin/x86_64-linux-gnu-gcc-10",
+          "-O2",
+          "-std=gnu11",
+          "-ffp-contract=off",
+          "-DP144_SINGLE_MUTATOR_RFC=1",
+          "-DP172_STATIC_SEAL=0",
+          "-c",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/static-seal-runtime-source01/runtime.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/static-seal-runtime-build01/baseline.o"
+        ],
+        "limitSeconds": 60,
+        "complete": true,
+        "started": 1794000582.1161122,
+        "exitCode": 0,
+        "userSeconds": 1.624743,
+        "systemSeconds": 0.027999999999999997,
+        "peakRssKiB": 69284,
+        "timedOut": false,
+        "seconds": 1.7405126988887787,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/static-seal-runtime-build01/baseline.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/static-seal-runtime-build01/baseline.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/static-seal-runtime-build01/baseline.o",
+        "bytes": 119096,
+        "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+      }
+    },
+    {
+      "label": "static-seal",
+      "staticSeal": 1,
+      "command": [
+        "/usr/bin/x86_64-linux-gnu-gcc-10",
+        "-O2",
+        "-std=gnu11",
+        "-ffp-contract=off",
+        "-DP144_SINGLE_MUTATOR_RFC=1",
+        "-DP172_STATIC_SEAL=1",
+        "-c",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/static-seal-runtime-source01/runtime.c",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/static-seal-runtime-build01/static-seal.o"
+      ],
+      "job": {
+        "command": [
+          "/usr/bin/x86_64-linux-gnu-gcc-10",
+          "-O2",
+          "-std=gnu11",
+          "-ffp-contract=off",
+          "-DP144_SINGLE_MUTATOR_RFC=1",
+          "-DP172_STATIC_SEAL=1",
+          "-c",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/static-seal-runtime-source01/runtime.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/static-seal-runtime-build01/static-seal.o"
+        ],
+        "limitSeconds": 60,
+        "complete": true,
+        "started": 1794000583.8580704,
+        "exitCode": 0,
+        "userSeconds": 1.697954,
+        "systemSeconds": 0.032195999999999995,
+        "peakRssKiB": 69780,
+        "timedOut": false,
+        "seconds": 1.7552665271796286,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/static-seal-runtime-build01/static-seal.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/static-seal-runtime-build01/static-seal.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/static-seal-runtime-build01/static-seal.o",
+        "bytes": 120120,
+        "sha256": "b810431800e6105a11da3efe17a06b7d262075d992f723ac37749f46b5b5786c"
+      }
+    }
+  ],
+  "checks": [
+    {
+      "name": "disabled-equals-installed-runtime",
+      "passed": true,
+      "actual": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/static-seal-runtime-build01/baseline.o",
+        "bytes": 119096,
+        "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+        "bytes": 119096,
+        "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+      }
+    }
+  ],
+  "compiler": {
+    "file": "/usr/bin/x86_64-linux-gnu-gcc-10",
+    "bytes": 817704,
+    "sha256": "693abcb42e67fb871673f258a3644257ca69a209691ec4d8137a42442834bd19"
+  }
+}

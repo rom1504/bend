@@ -1,0 +1,254 @@
+{
+  "kind": "phase171-native-product-pair",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase171/tools/native-pair.py",
+      "bytes": 3728,
+      "sha256": "838297f40faeb4c13661ef80c953d59c65ac2cb8ef7804037bce12294b320399"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-lookup-machine-baseline11/report.json",
+      "bytes": 10503,
+      "sha256": "5907f366557d2ec9e8186e47e952c8b9758d6b5381b14dcf16cf01b61e00cb1e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/runtime-lookup-machine02/report.json",
+      "bytes": 8777,
+      "sha256": "18b16aa6218e762a1012c518c653845d36e66924a05573d87d3463c014f71bb3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-lookup-machine-baseline11/program",
+      "bytes": 156016,
+      "sha256": "da83d08c90778f175ecc4f3b86911417518a876f9eb4af64abd493ee3e64d9e6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-lookup-baseline11/program.ssa",
+      "bytes": 273945,
+      "sha256": "aeb44ff0e189ff0a49ef6d7190422ace8425970e5a5be55981935c0e3ca5da2a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/runtime-lookup-machine02/program",
+      "bytes": 176480,
+      "sha256": "37b570c9853a35e225b0fef6816fec435aaa868d376d9175fa278e45d4875c57"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/runtime-lookup-request02/program.ssa",
+      "bytes": 483914,
+      "sha256": "d844d3fe7c99be88d823c7df05bce99ebe6ff11f85985f6632b10cabe25087fc"
+    }
+  ],
+  "runs": [
+    {
+      "role": "baseline",
+      "cycle": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-lookup-machine-baseline11/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.6353618218563497,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/runtime-lookup-pair02/0-baseline.stdout",
+        "bytes": 11,
+        "sha256": "13b0825189cbddcc62a8345313f1066247a3e9aa466b13011a68c457360e8182"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/runtime-lookup-pair02/0-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/runtime-lookup-machine02/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.6780405291356146,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/runtime-lookup-pair02/0-candidate.stdout",
+        "bytes": 11,
+        "sha256": "13b0825189cbddcc62a8345313f1066247a3e9aa466b13011a68c457360e8182"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/runtime-lookup-pair02/0-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/runtime-lookup-machine02/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.6119367047213018,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/runtime-lookup-pair02/1-candidate.stdout",
+        "bytes": 11,
+        "sha256": "13b0825189cbddcc62a8345313f1066247a3e9aa466b13011a68c457360e8182"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/runtime-lookup-pair02/1-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "baseline",
+      "cycle": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-lookup-machine-baseline11/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.5673337019979954,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/runtime-lookup-pair02/1-baseline.stdout",
+        "bytes": 11,
+        "sha256": "13b0825189cbddcc62a8345313f1066247a3e9aa466b13011a68c457360e8182"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/runtime-lookup-pair02/1-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "baseline",
+      "cycle": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-lookup-machine-baseline11/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.5587692554108799,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/runtime-lookup-pair02/2-baseline.stdout",
+        "bytes": 11,
+        "sha256": "13b0825189cbddcc62a8345313f1066247a3e9aa466b13011a68c457360e8182"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/runtime-lookup-pair02/2-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/runtime-lookup-machine02/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.593964024912566,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/runtime-lookup-pair02/2-candidate.stdout",
+        "bytes": 11,
+        "sha256": "13b0825189cbddcc62a8345313f1066247a3e9aa466b13011a68c457360e8182"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/runtime-lookup-pair02/2-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 3,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/runtime-lookup-machine02/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.5937207592651248,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/runtime-lookup-pair02/3-candidate.stdout",
+        "bytes": 11,
+        "sha256": "13b0825189cbddcc62a8345313f1066247a3e9aa466b13011a68c457360e8182"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/runtime-lookup-pair02/3-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "baseline",
+      "cycle": 3,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-lookup-machine-baseline11/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.5608052797615528,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/runtime-lookup-pair02/3-baseline.stdout",
+        "bytes": 11,
+        "sha256": "13b0825189cbddcc62a8345313f1066247a3e9aa466b13011a68c457360e8182"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase172/runtime-lookup-pair02/3-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    }
+  ],
+  "rounds": 4,
+  "oracle": "baseline complete output; see source oracle manifest",
+  "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+  "medians": {
+    "baseline": 0.5640694908797741,
+    "candidate": 0.6029503648169339
+  },
+  "resolved": true,
+  "ratio": 1.0689292269229411
+}

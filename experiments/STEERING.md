@@ -52,6 +52,35 @@ production or runtime change is made. Prefer a measured producer/consumer work
 elimination across frontend terms or shared function semantics next; quantify the
 whole-request ceiling before a larger implementation.
 
+## Phase172 retry — no new full-build win
+
+[Report](../implementation/phase172/README.md) · [Exact metrics](../implementation/phase172/metrics.json).
+
+The next controlled full-source comparison is181.741→180.667s,0.59% less in one
+pair: effectively neutral.100s remains unmet. The private runtime skips sealing
+wrappers around verified immutable static constructors; real verifier runtime
+improves4.19%, lookup is neutral, full compiler does not materially benefit.
+Both full builds reproduce97,488,970 QBE bytes, assembly and object. Runtime
+macro-off object and relinked baseline compiler exactly match their originals.
+No installed, maintained compiler or runtime change; no new native qualification.
+
+Other tested routes are also unselected: deferred pattern rows pass20 substitution,
+24 flattening and complete loader/QBE controls but have neutral hosted loader
+time. Guarded constructor inlining grows code, leaves verifier neutral and slows
+lookup6.89%. Cold-only construction has zero full-compiler coverage. A proposed
+native checker test was cancelled because its inputs do not exercise patterns.
+Current closed-selector lowering already removes ordinary choose-helper closures.
+Bendc uses linked code-point Strings; do not claim a packed String advantage.
+
+The baseline-only sealing census finds637,184 static wrappers in the verifier
+and770,000 in lookup, but that is35.46% and5.23% of new sealing wrappers, not of
+whole-request cost. Removing many objects alone is not a large speed result.
+Do not acquire another full compiler or run broad qualification for these neutral
+variants. Next investigate a measured hot record reconstruction boundary only if
+its dynamic cost and existing destination-pass coverage justify it. No80-second
+removable category has yet been demonstrated.29 guarded jobs total563.670s;
+all closed. Reviewed verified archiving recovered570.27MiB net. No PR comment.
+
 # Previous frontier — Phase169 native self-build147.764s, canonical185.190s
 
 [Report](../implementation/phase169/README.md) ·

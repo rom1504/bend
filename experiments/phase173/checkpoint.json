@@ -1,0 +1,46 @@
+{
+  "status": "in progress, no production changes",
+  "qualified": "Phase170",
+  "designCommit": "dc0440a",
+  "store": {
+    "source": "store-source05/manifest.json",
+    "checked": "store-api05/report.json",
+    "finite": "store-finite01/report.json",
+    "realVerifier": "store-verifier-controls01/report.json",
+    "nativeFailure": "store-native-baseline01/report.json",
+    "nativeFailureReason": "Unchanged final verifier refuses monolithic corpus literal exceeding65535locals; transport split, corpus unchanged.",
+    "nativePair": "store-native-pair01/report.json",
+    "nativeResult": {
+      "baselineMedianSeconds": 0.07872491655871272,
+      "candidateMedianSeconds": 0.15769174718298018,
+      "ratio": 2.003072903422823,
+      "outputsExact": true,
+      "independentOracle": "store-native-oracle-run03/0-baseline.stdout"
+    },
+    "flat7Pair": "store-flat7-pair01/report.json",
+    "flat7Result": {
+      "baselineMedianSeconds": 0.07987045194022357,
+      "candidateMedianSeconds": 0.15726289874874055,
+      "ratio": 1.9689746950028382,
+      "interpretation": "No meaningful recovery; both store implementations remain about2x slower."
+    }
+  },
+  "borrow": {
+    "source": "borrow-source02/manifest.json",
+    "checked": "borrow-api02/report.json",
+    "finite": "borrow-finite01/report.json",
+    "realVerifier": "borrow-verifier-emission01/report.json",
+    "realVerifierResult": "Byte-identical QBE: zero admitted update regions; not runtime improvement."
+  },
+  "buildRoot": "selfhost/build/phase173",
+  "sourceFailures": [
+    "store-api01",
+    "store-api02",
+    "store-api03",
+    "store-api04",
+    "vertical-base-api01",
+    "borrow-api01"
+  ],
+  "caveat": "Working helper cleanup is a newer source revision than measured source05 and needs its own checking.",
+  "next": "General bounded multi-result tail-SCC fusion, because existing direct-admission only fuses pairs and source store loops span3-36 helpers."
+}

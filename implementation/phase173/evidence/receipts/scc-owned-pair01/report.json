@@ -1,0 +1,258 @@
+{
+  "kind": "phase173-native-product-pair",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase173/native-pair.py",
+      "bytes": 3973,
+      "sha256": "219a9a447f8b85262adfa2b58eea7f1d635233c2fbe6a0083fd8e7d9651d6f9b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-owned-baseline01/report.json",
+      "bytes": 16325,
+      "sha256": "ba34f3f640af9c8817b0f5fa433af62acab11bb67eeec60fcbc0697e131744fb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-owned-machine01/report.json",
+      "bytes": 8674,
+      "sha256": "a5ec0901c289e741f5730c3492f9060a559ea71294839f9f2e23a8a16e291369"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-owned-baseline01/program",
+      "bytes": 124080,
+      "sha256": "d4b4618fc2395b459ee8545a408ed71c366a62d38f5211e77f2545ae04fba940"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-owned-baseline01/program.ssa",
+      "bytes": 58985,
+      "sha256": "f3caa1d30870628edec344de8a708f6c41cba11f9b97dcf013b2d93a506bda96"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-owned-machine01/program",
+      "bytes": 122792,
+      "sha256": "e928b46539141a17dbe13444ebd5f24d636b51d8710d47f1e41c87c496a2bbdc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-owned-emission01/program.ssa",
+      "bytes": 60270,
+      "sha256": "9eacd24485b9c3c7bce7b8fab88d2b3006b1144b0675f04f381e8e9bad8d92a9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-owned-expected.txt",
+      "bytes": 7,
+      "sha256": "d43574be921c54215a1e05bb2fc0c1a4b63dd2aea4bbfd5b9ebc11a2685943e2"
+    }
+  ],
+  "runs": [
+    {
+      "role": "baseline",
+      "cycle": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-owned-baseline01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.01203717291355133,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-owned-pair01/0-baseline.stdout",
+        "bytes": 7,
+        "sha256": "d43574be921c54215a1e05bb2fc0c1a4b63dd2aea4bbfd5b9ebc11a2685943e2"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-owned-pair01/0-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-owned-machine01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.006143609993159771,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-owned-pair01/0-candidate.stdout",
+        "bytes": 7,
+        "sha256": "d43574be921c54215a1e05bb2fc0c1a4b63dd2aea4bbfd5b9ebc11a2685943e2"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-owned-pair01/0-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-owned-machine01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.006373489275574684,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-owned-pair01/1-candidate.stdout",
+        "bytes": 7,
+        "sha256": "d43574be921c54215a1e05bb2fc0c1a4b63dd2aea4bbfd5b9ebc11a2685943e2"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-owned-pair01/1-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "baseline",
+      "cycle": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-owned-baseline01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.010452939663082361,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-owned-pair01/1-baseline.stdout",
+        "bytes": 7,
+        "sha256": "d43574be921c54215a1e05bb2fc0c1a4b63dd2aea4bbfd5b9ebc11a2685943e2"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-owned-pair01/1-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "baseline",
+      "cycle": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-owned-baseline01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.011687041725963354,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-owned-pair01/2-baseline.stdout",
+        "bytes": 7,
+        "sha256": "d43574be921c54215a1e05bb2fc0c1a4b63dd2aea4bbfd5b9ebc11a2685943e2"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-owned-pair01/2-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-owned-machine01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.007125812117010355,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-owned-pair01/2-candidate.stdout",
+        "bytes": 7,
+        "sha256": "d43574be921c54215a1e05bb2fc0c1a4b63dd2aea4bbfd5b9ebc11a2685943e2"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-owned-pair01/2-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 3,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-owned-machine01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.006114406976848841,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-owned-pair01/3-candidate.stdout",
+        "bytes": 7,
+        "sha256": "d43574be921c54215a1e05bb2fc0c1a4b63dd2aea4bbfd5b9ebc11a2685943e2"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-owned-pair01/3-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "baseline",
+      "cycle": 3,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-owned-baseline01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.010346805676817894,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-owned-pair01/3-baseline.stdout",
+        "bytes": 7,
+        "sha256": "d43574be921c54215a1e05bb2fc0c1a4b63dd2aea4bbfd5b9ebc11a2685943e2"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-owned-pair01/3-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    }
+  ],
+  "rounds": 4,
+  "oracle": "fixed expected bytes",
+  "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+  "medians": {
+    "baseline": 0.011069990694522858,
+    "candidate": 0.0062585496343672276
+  },
+  "resolved": false
+}

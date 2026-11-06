@@ -53,9 +53,11 @@ reclamation for an unbounded request.
 
 The first storage implementation is in checked Bend with exact import/export,
 an independently checkable postorder graph invariant, and full KTerm/KLambda/
-KLiteral metadata. Ordinary Bend Array is a persistent tree, not a mutable native
-arena. Its access/update and ownership costs must be charged; this implementation
-can falsify an assumed storage advantage. A native storage interface would need
+KLiteral metadata. Ordinary Bend Array has a persistent-tree source definition,
+but authenticated native get/set already use contiguous TAG_ARR storage even
+when File effects disable scalar packing. Hosted tree costs must not be mistaken
+for native costs. Actual access/update, carrier and ownership costs must be
+charged; this implementation can falsify an assumed storage advantage. A new native storage interface would need
 an explicit lifetime/alias contract and measured justification, not silent host
 compiler logic.
 

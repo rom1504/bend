@@ -1,0 +1,37 @@
+{
+  "kind": "phase169-constructor-cold-static-audit",
+  "targetsRun": false,
+  "method": "Parse exact data declarations p111_cid_hot,p111_program field11 and p111_effects_N; no compiler execution",
+  "rows": [
+    {
+      "file": "selfhost/build/phase152/native-n2/program.ssa",
+      "bytes": 118227421,
+      "sha256": "1032c6a6495ca86bb26ad2bcd7ae639ed49dc987765dfe567dce7ac6224bf7bb",
+      "constructorCount": 695,
+      "hot": 695,
+      "cold": 0,
+      "capabilities": 5,
+      "effects": [
+        "File.write",
+        "IO.print",
+        "File.close",
+        "File.read",
+        "File.size",
+        "File.open",
+        "IO.now",
+        "IO.args"
+      ]
+    },
+    {
+      "file": "selfhost/build/phase169/verifier-stream01/emit/program.ssa",
+      "bytes": 2309376,
+      "sha256": "8be3a072b84dfc8bb85ddb9478c00d05179f7de89c8d4079af9ca3a5190bfbfb",
+      "constructorCount": 185,
+      "hot": 185,
+      "cold": 0,
+      "capabilities": 5,
+      "effects": []
+    }
+  ],
+  "conclusion": "No qualified compiler cold flags to lose; early route still omits cold derivation for other eligible programs"
+}

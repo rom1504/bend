@@ -1,0 +1,2004 @@
+{
+  "kind": "phase169-exact-intermediate-retention-policy",
+  "version": 1,
+  "status": "proposal-only-no-deletion",
+  "targetsRun": false,
+  "method": {
+    "file": "selfhost/tools/build-retention/archive-v02.py",
+    "bytes": 18412,
+    "sha256": "3238e0774c6c21c3de6c07bcbd71e469cbb23aaba01f99da0cb1e9f51990ad9f"
+  },
+  "runner": {
+    "file": "experiments/phase169/retention-plan.py",
+    "bytes": 2515,
+    "sha256": "d42be87081036f3ab8a24be38cf83275e3955d72324a3f2bfcc61fe1bbea74df"
+  },
+  "allowedRoots": [
+    "selfhost/build/phase147/render-fragment-native-calls01",
+    "selfhost/build/phase147/render-fragment-native-fragments01",
+    "selfhost/build/phase147/render-fragment-native-original01",
+    "selfhost/build/phase147/render-native-baseline03",
+    "selfhost/build/phase147/render-native-candidate03",
+    "selfhost/build/phase147/render-selected01/controls",
+    "selfhost/build/phase147/runtime-classifier-literal-emit01",
+    "selfhost/build/phase147/runtime-classifier-plan05/native",
+    "selfhost/build/phase147/verifier-native-compiler01/native",
+    "selfhost/build/phase147/verifier-native-compiler02/native",
+    "selfhost/build/phase147/verifier-native-lexer01/native",
+    "selfhost/build/phase147/verifier-native-lexer02/native",
+    "selfhost/build/phase147/verifier-native-map01/native",
+    "selfhost/build/phase147/verifier-native-map02/native",
+    "selfhost/build/phase148/layout07/native",
+    "selfhost/build/phase148/pack-probe01/native",
+    "selfhost/build/phase148/pack-probe02/native",
+    "selfhost/build/phase148/roundtrip-probe01/native",
+    "selfhost/build/phase148/seed-probe01/native",
+    "selfhost/build/phase154/native-plan03/native"
+  ],
+  "archiveRoots": {
+    "selfhost/build-retention/phase147/render-fragment-native-calls01-guard-close/root-00/receipt.json": "selfhost/build/phase147/render-fragment-native-calls01",
+    "selfhost/build-retention/phase147/render-fragment-native-fragments01-guard-close/root-00/receipt.json": "selfhost/build/phase147/render-fragment-native-fragments01",
+    "selfhost/build-retention/phase147/render-fragment-native-original01-guard-close/root-00/receipt.json": "selfhost/build/phase147/render-fragment-native-original01",
+    "selfhost/build-retention/phase147/render-native-baseline03-guard-close/root-00/receipt.json": "selfhost/build/phase147/render-native-baseline03",
+    "selfhost/build-retention/phase147/render-native-candidate03-guard-close/root-00/receipt.json": "selfhost/build/phase147/render-native-candidate03",
+    "selfhost/build-retention/phase147/render-selected01--controls-guard-close/root-00/receipt.json": "selfhost/build/phase147/render-selected01/controls",
+    "selfhost/build-retention/phase147/runtime-classifier-literal-emit01-guard-close/root-00/receipt.json": "selfhost/build/phase147/runtime-classifier-literal-emit01",
+    "selfhost/build-retention/phase147/runtime-classifier-plan05--native-guard-close/root-00/receipt.json": "selfhost/build/phase147/runtime-classifier-plan05/native",
+    "selfhost/build-retention/phase147/verifier-native-compiler01--native-guard-close/root-00/receipt.json": "selfhost/build/phase147/verifier-native-compiler01/native",
+    "selfhost/build-retention/phase147/verifier-native-compiler02--native-guard-close/root-00/receipt.json": "selfhost/build/phase147/verifier-native-compiler02/native",
+    "selfhost/build-retention/phase147/verifier-native-lexer01--native-guard-close/root-00/receipt.json": "selfhost/build/phase147/verifier-native-lexer01/native",
+    "selfhost/build-retention/phase147/verifier-native-lexer02--native-guard-close/root-00/receipt.json": "selfhost/build/phase147/verifier-native-lexer02/native",
+    "selfhost/build-retention/phase147/verifier-native-map01--native-guard-close/root-00/receipt.json": "selfhost/build/phase147/verifier-native-map01/native",
+    "selfhost/build-retention/phase147/verifier-native-map02--native-guard-close/root-00/receipt.json": "selfhost/build/phase147/verifier-native-map02/native",
+    "selfhost/build-retention/phase148/layout07--native-guard/root-00/receipt.json": "selfhost/build/phase148/layout07/native",
+    "selfhost/build-retention/phase148/pack-probe01--native-guard/root-00/receipt.json": "selfhost/build/phase148/pack-probe01/native",
+    "selfhost/build-retention/phase148/pack-probe02--native-guard/root-00/receipt.json": "selfhost/build/phase148/pack-probe02/native",
+    "selfhost/build-retention/phase148/roundtrip-probe01--native-guard/root-00/receipt.json": "selfhost/build/phase148/roundtrip-probe01/native",
+    "selfhost/build-retention/phase148/seed-probe01--native-guard/root-00/receipt.json": "selfhost/build/phase148/seed-probe01/native",
+    "selfhost/build-retention/phase154/native-plan03--native-guard/root-00/receipt.json": "selfhost/build/phase154/native-plan03/native"
+  },
+  "keepPrefixes": [
+    "selfhost/build/phase147/render-fragment-native-calls01/assemble.stderr",
+    "selfhost/build/phase147/render-fragment-native-calls01/assemble.stdout",
+    "selfhost/build/phase147/render-fragment-native-calls01/compiler.stderr",
+    "selfhost/build/phase147/render-fragment-native-calls01/link.stderr",
+    "selfhost/build/phase147/render-fragment-native-calls01/link.stdout",
+    "selfhost/build/phase147/render-fragment-native-calls01/program",
+    "selfhost/build/phase147/render-fragment-native-calls01/qbe.stderr",
+    "selfhost/build/phase147/render-fragment-native-calls01/qbe.stdout",
+    "selfhost/build/phase147/render-fragment-native-calls01/report.json",
+    "selfhost/build/phase147/render-fragment-native-calls01/request.json",
+    "selfhost/build/phase147/render-fragment-native-fragments01/assemble.stderr",
+    "selfhost/build/phase147/render-fragment-native-fragments01/assemble.stdout",
+    "selfhost/build/phase147/render-fragment-native-fragments01/compiler.stderr",
+    "selfhost/build/phase147/render-fragment-native-fragments01/link.stderr",
+    "selfhost/build/phase147/render-fragment-native-fragments01/link.stdout",
+    "selfhost/build/phase147/render-fragment-native-fragments01/program",
+    "selfhost/build/phase147/render-fragment-native-fragments01/qbe.stderr",
+    "selfhost/build/phase147/render-fragment-native-fragments01/qbe.stdout",
+    "selfhost/build/phase147/render-fragment-native-fragments01/report.json",
+    "selfhost/build/phase147/render-fragment-native-fragments01/request.json",
+    "selfhost/build/phase147/render-fragment-native-original01/assemble.stderr",
+    "selfhost/build/phase147/render-fragment-native-original01/assemble.stdout",
+    "selfhost/build/phase147/render-fragment-native-original01/compiler.stderr",
+    "selfhost/build/phase147/render-fragment-native-original01/link.stderr",
+    "selfhost/build/phase147/render-fragment-native-original01/link.stdout",
+    "selfhost/build/phase147/render-fragment-native-original01/program",
+    "selfhost/build/phase147/render-fragment-native-original01/qbe.stderr",
+    "selfhost/build/phase147/render-fragment-native-original01/qbe.stdout",
+    "selfhost/build/phase147/render-fragment-native-original01/report.json",
+    "selfhost/build/phase147/render-fragment-native-original01/request.json",
+    "selfhost/build/phase147/render-native-baseline03/assemble.stderr",
+    "selfhost/build/phase147/render-native-baseline03/assemble.stdout",
+    "selfhost/build/phase147/render-native-baseline03/compiler.stderr",
+    "selfhost/build/phase147/render-native-baseline03/link.stderr",
+    "selfhost/build/phase147/render-native-baseline03/link.stdout",
+    "selfhost/build/phase147/render-native-baseline03/program",
+    "selfhost/build/phase147/render-native-baseline03/qbe.stderr",
+    "selfhost/build/phase147/render-native-baseline03/qbe.stdout",
+    "selfhost/build/phase147/render-native-baseline03/report.json",
+    "selfhost/build/phase147/render-native-baseline03/request.json",
+    "selfhost/build/phase147/render-native-candidate03/assemble.stderr",
+    "selfhost/build/phase147/render-native-candidate03/assemble.stdout",
+    "selfhost/build/phase147/render-native-candidate03/compiler.stderr",
+    "selfhost/build/phase147/render-native-candidate03/link.stderr",
+    "selfhost/build/phase147/render-native-candidate03/link.stdout",
+    "selfhost/build/phase147/render-native-candidate03/program",
+    "selfhost/build/phase147/render-native-candidate03/qbe.stderr",
+    "selfhost/build/phase147/render-native-candidate03/qbe.stdout",
+    "selfhost/build/phase147/render-native-candidate03/report.json",
+    "selfhost/build/phase147/render-native-candidate03/request.json",
+    "selfhost/build/phase147/render-selected01/controls/report.json",
+    "selfhost/build/phase147/runtime-classifier-literal-emit01/emit.stderr",
+    "selfhost/build/phase147/runtime-classifier-literal-emit01/report.json",
+    "selfhost/build/phase147/runtime-classifier-literal-emit01/request.json",
+    "selfhost/build/phase147/runtime-classifier-plan05/native/assemble.stderr",
+    "selfhost/build/phase147/runtime-classifier-plan05/native/assemble.stdout",
+    "selfhost/build/phase147/runtime-classifier-plan05/native/compiler.stderr",
+    "selfhost/build/phase147/runtime-classifier-plan05/native/link.stderr",
+    "selfhost/build/phase147/runtime-classifier-plan05/native/link.stdout",
+    "selfhost/build/phase147/runtime-classifier-plan05/native/program",
+    "selfhost/build/phase147/runtime-classifier-plan05/native/qbe.stderr",
+    "selfhost/build/phase147/runtime-classifier-plan05/native/qbe.stdout",
+    "selfhost/build/phase147/runtime-classifier-plan05/native/report.json",
+    "selfhost/build/phase147/runtime-classifier-plan05/native/request.json",
+    "selfhost/build/phase147/verifier-native-compiler01/native/assemble.stderr",
+    "selfhost/build/phase147/verifier-native-compiler01/native/assemble.stdout",
+    "selfhost/build/phase147/verifier-native-compiler01/native/compiler.stderr",
+    "selfhost/build/phase147/verifier-native-compiler01/native/link.stderr",
+    "selfhost/build/phase147/verifier-native-compiler01/native/link.stdout",
+    "selfhost/build/phase147/verifier-native-compiler01/native/program",
+    "selfhost/build/phase147/verifier-native-compiler01/native/qbe.stderr",
+    "selfhost/build/phase147/verifier-native-compiler01/native/qbe.stdout",
+    "selfhost/build/phase147/verifier-native-compiler01/native/report.json",
+    "selfhost/build/phase147/verifier-native-compiler01/native/request.json",
+    "selfhost/build/phase147/verifier-native-compiler02/native/assemble.stderr",
+    "selfhost/build/phase147/verifier-native-compiler02/native/assemble.stdout",
+    "selfhost/build/phase147/verifier-native-compiler02/native/compiler.stderr",
+    "selfhost/build/phase147/verifier-native-compiler02/native/link.stderr",
+    "selfhost/build/phase147/verifier-native-compiler02/native/link.stdout",
+    "selfhost/build/phase147/verifier-native-compiler02/native/program",
+    "selfhost/build/phase147/verifier-native-compiler02/native/qbe.stderr",
+    "selfhost/build/phase147/verifier-native-compiler02/native/qbe.stdout",
+    "selfhost/build/phase147/verifier-native-compiler02/native/report.json",
+    "selfhost/build/phase147/verifier-native-compiler02/native/request.json",
+    "selfhost/build/phase147/verifier-native-lexer01/native/assemble.stderr",
+    "selfhost/build/phase147/verifier-native-lexer01/native/assemble.stdout",
+    "selfhost/build/phase147/verifier-native-lexer01/native/compiler.stderr",
+    "selfhost/build/phase147/verifier-native-lexer01/native/link.stderr",
+    "selfhost/build/phase147/verifier-native-lexer01/native/link.stdout",
+    "selfhost/build/phase147/verifier-native-lexer01/native/program",
+    "selfhost/build/phase147/verifier-native-lexer01/native/qbe.stderr",
+    "selfhost/build/phase147/verifier-native-lexer01/native/qbe.stdout",
+    "selfhost/build/phase147/verifier-native-lexer01/native/report.json",
+    "selfhost/build/phase147/verifier-native-lexer01/native/request.json",
+    "selfhost/build/phase147/verifier-native-lexer02/native/assemble.stderr",
+    "selfhost/build/phase147/verifier-native-lexer02/native/assemble.stdout",
+    "selfhost/build/phase147/verifier-native-lexer02/native/compiler.stderr",
+    "selfhost/build/phase147/verifier-native-lexer02/native/link.stderr",
+    "selfhost/build/phase147/verifier-native-lexer02/native/link.stdout",
+    "selfhost/build/phase147/verifier-native-lexer02/native/program",
+    "selfhost/build/phase147/verifier-native-lexer02/native/qbe.stderr",
+    "selfhost/build/phase147/verifier-native-lexer02/native/qbe.stdout",
+    "selfhost/build/phase147/verifier-native-lexer02/native/report.json",
+    "selfhost/build/phase147/verifier-native-lexer02/native/request.json",
+    "selfhost/build/phase147/verifier-native-map01/native/assemble.stderr",
+    "selfhost/build/phase147/verifier-native-map01/native/assemble.stdout",
+    "selfhost/build/phase147/verifier-native-map01/native/compiler.stderr",
+    "selfhost/build/phase147/verifier-native-map01/native/link.stderr",
+    "selfhost/build/phase147/verifier-native-map01/native/link.stdout",
+    "selfhost/build/phase147/verifier-native-map01/native/program",
+    "selfhost/build/phase147/verifier-native-map01/native/qbe.stderr",
+    "selfhost/build/phase147/verifier-native-map01/native/qbe.stdout",
+    "selfhost/build/phase147/verifier-native-map01/native/report.json",
+    "selfhost/build/phase147/verifier-native-map01/native/request.json",
+    "selfhost/build/phase147/verifier-native-map02/native/assemble.stderr",
+    "selfhost/build/phase147/verifier-native-map02/native/assemble.stdout",
+    "selfhost/build/phase147/verifier-native-map02/native/compiler.stderr",
+    "selfhost/build/phase147/verifier-native-map02/native/link.stderr",
+    "selfhost/build/phase147/verifier-native-map02/native/link.stdout",
+    "selfhost/build/phase147/verifier-native-map02/native/program",
+    "selfhost/build/phase147/verifier-native-map02/native/qbe.stderr",
+    "selfhost/build/phase147/verifier-native-map02/native/qbe.stdout",
+    "selfhost/build/phase147/verifier-native-map02/native/report.json",
+    "selfhost/build/phase147/verifier-native-map02/native/request.json",
+    "selfhost/build/phase148/layout07/native/assemble.stderr",
+    "selfhost/build/phase148/layout07/native/assemble.stdout",
+    "selfhost/build/phase148/layout07/native/compiler.stderr",
+    "selfhost/build/phase148/layout07/native/link.stderr",
+    "selfhost/build/phase148/layout07/native/link.stdout",
+    "selfhost/build/phase148/layout07/native/program",
+    "selfhost/build/phase148/layout07/native/qbe.stderr",
+    "selfhost/build/phase148/layout07/native/qbe.stdout",
+    "selfhost/build/phase148/layout07/native/report.json",
+    "selfhost/build/phase148/layout07/native/request.json",
+    "selfhost/build/phase148/pack-probe01/native/assemble.stderr",
+    "selfhost/build/phase148/pack-probe01/native/assemble.stdout",
+    "selfhost/build/phase148/pack-probe01/native/compiler.stderr",
+    "selfhost/build/phase148/pack-probe01/native/link.stderr",
+    "selfhost/build/phase148/pack-probe01/native/link.stdout",
+    "selfhost/build/phase148/pack-probe01/native/program",
+    "selfhost/build/phase148/pack-probe01/native/qbe.stderr",
+    "selfhost/build/phase148/pack-probe01/native/qbe.stdout",
+    "selfhost/build/phase148/pack-probe01/native/report.json",
+    "selfhost/build/phase148/pack-probe01/native/request.json",
+    "selfhost/build/phase148/pack-probe02/native/assemble.stderr",
+    "selfhost/build/phase148/pack-probe02/native/assemble.stdout",
+    "selfhost/build/phase148/pack-probe02/native/compiler.stderr",
+    "selfhost/build/phase148/pack-probe02/native/link.stderr",
+    "selfhost/build/phase148/pack-probe02/native/link.stdout",
+    "selfhost/build/phase148/pack-probe02/native/program",
+    "selfhost/build/phase148/pack-probe02/native/qbe.stderr",
+    "selfhost/build/phase148/pack-probe02/native/qbe.stdout",
+    "selfhost/build/phase148/pack-probe02/native/report.json",
+    "selfhost/build/phase148/pack-probe02/native/request.json",
+    "selfhost/build/phase148/roundtrip-probe01/native/assemble.stderr",
+    "selfhost/build/phase148/roundtrip-probe01/native/assemble.stdout",
+    "selfhost/build/phase148/roundtrip-probe01/native/compiler.stderr",
+    "selfhost/build/phase148/roundtrip-probe01/native/link.stderr",
+    "selfhost/build/phase148/roundtrip-probe01/native/link.stdout",
+    "selfhost/build/phase148/roundtrip-probe01/native/program",
+    "selfhost/build/phase148/roundtrip-probe01/native/qbe.stderr",
+    "selfhost/build/phase148/roundtrip-probe01/native/qbe.stdout",
+    "selfhost/build/phase148/roundtrip-probe01/native/report.json",
+    "selfhost/build/phase148/roundtrip-probe01/native/request.json",
+    "selfhost/build/phase148/seed-probe01/native/assemble.stderr",
+    "selfhost/build/phase148/seed-probe01/native/assemble.stdout",
+    "selfhost/build/phase148/seed-probe01/native/compiler.stderr",
+    "selfhost/build/phase148/seed-probe01/native/link.stderr",
+    "selfhost/build/phase148/seed-probe01/native/link.stdout",
+    "selfhost/build/phase148/seed-probe01/native/program",
+    "selfhost/build/phase148/seed-probe01/native/qbe.stderr",
+    "selfhost/build/phase148/seed-probe01/native/qbe.stdout",
+    "selfhost/build/phase148/seed-probe01/native/report.json",
+    "selfhost/build/phase148/seed-probe01/native/request.json",
+    "selfhost/build/phase152",
+    "selfhost/build/phase154/native-plan03/native/assemble.stderr",
+    "selfhost/build/phase154/native-plan03/native/assemble.stdout",
+    "selfhost/build/phase154/native-plan03/native/compiler.stderr",
+    "selfhost/build/phase154/native-plan03/native/link.stderr",
+    "selfhost/build/phase154/native-plan03/native/link.stdout",
+    "selfhost/build/phase154/native-plan03/native/program",
+    "selfhost/build/phase154/native-plan03/native/qbe.stderr",
+    "selfhost/build/phase154/native-plan03/native/qbe.stdout",
+    "selfhost/build/phase154/native-plan03/native/report.json",
+    "selfhost/build/phase154/native-plan03/native/request.json",
+    "selfhost/build/phase168",
+    "selfhost/build/phase169",
+    "selfhost/build/phase32/execution.lock",
+    "selfhost/dist",
+    "selfhost/manifests"
+  ],
+  "roots": [
+    {
+      "root": "selfhost/build/phase147/render-fragment-native-calls01",
+      "lifecycle": {
+        "file": "selfhost/build/phase147/render-fragment-native-calls01-guard/retention.json",
+        "bytes": 1279,
+        "sha256": "e57f7d7e4bba116d2fe471de26bdd9a764ab4240d865039495949dbdcd3b48ea"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase147/render-fragment-native-calls01-guard-close/report.json",
+        "bytes": 2148,
+        "sha256": "74c751d379150cf8d43e3f19aea479b659a310765d179d37efa45ce406eb54d2"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase147/render-fragment-native-calls01-guard-close/root-00/receipt.json",
+        "bytes": 2417,
+        "sha256": "2a0fb063090663e33d5ce64b3cd00c4640eb0d6d99986a8266ce8781386351ff"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase147/render-fragment-native-calls01-guard-close/root-00/files.tar.gz",
+        "bytes": 855113,
+        "sha256": "9306dc07096bd8e26a99380e4bae78eca248cf54abf1a3865a8fda19c9f0732b"
+      },
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase147/render-fragment-native-calls01/program.o",
+          "bytes": 1078016,
+          "sha256": "c72a1605b10d9ccb95f30b5c375cd4fa23eae7615f7de2fae250c5bd1dec1e60",
+          "archiveMember": "program.o",
+          "allocatedBytes": 1081344
+        },
+        {
+          "file": "selfhost/build/phase147/render-fragment-native-calls01/program.s",
+          "bytes": 3630594,
+          "sha256": "4d72b9425abe066244e86ae458c133ae8411025c830b7c6d13f2eb2883dc9211",
+          "archiveMember": "program.s",
+          "allocatedBytes": 3633152
+        }
+      ],
+      "allocatedBytes": 4714496,
+      "plan": "selfhost/build-retention/phase169/reclaim01-phase147-render-fragment-native-calls01/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase169/retention-policy.json",
+        "--receipt",
+        "selfhost/build-retention/phase147/render-fragment-native-calls01-guard-close/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-render-fragment-native-calls01/verified"
+      ],
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase147-render-fragment-native-calls01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-render-fragment-native-calls01/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase147-render-fragment-native-calls01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-render-fragment-native-calls01/restored"
+      ]
+    },
+    {
+      "root": "selfhost/build/phase147/render-fragment-native-fragments01",
+      "lifecycle": {
+        "file": "selfhost/build/phase147/render-fragment-native-fragments01-guard/retention.json",
+        "bytes": 1294,
+        "sha256": "19a82a53c89ff4a0cbb41c46e64202e3accafed4e7c4fcc79ac9d26b54b26b67"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase147/render-fragment-native-fragments01-guard-close/report.json",
+        "bytes": 2168,
+        "sha256": "9852831a1be63f3374fc50ac8edc9b469076835503a69517b1475ad7a5f3dc0b"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase147/render-fragment-native-fragments01-guard-close/root-00/receipt.json",
+        "bytes": 2421,
+        "sha256": "a509ccb3eff355271e65337669b7c5cbc5c738bec45ea22c3f81ab5c1d895a7a"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase147/render-fragment-native-fragments01-guard-close/root-00/files.tar.gz",
+        "bytes": 855125,
+        "sha256": "4d75188a3f2593ff93183c943a41297cef3ff7711636832237ea444831af0d8f"
+      },
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase147/render-fragment-native-fragments01/program.o",
+          "bytes": 1078016,
+          "sha256": "bf062e7545d51f0517c0b3d79bfbf1dff4dcd83caee5198c1200d5d9f4b1a0d5",
+          "archiveMember": "program.o",
+          "allocatedBytes": 1081344
+        },
+        {
+          "file": "selfhost/build/phase147/render-fragment-native-fragments01/program.s",
+          "bytes": 3630594,
+          "sha256": "9b4cc87b1075c86fdf92d76c10f312f4ddf494827f31e182e049dfe8d9d6fb7f",
+          "archiveMember": "program.s",
+          "allocatedBytes": 3633152
+        }
+      ],
+      "allocatedBytes": 4714496,
+      "plan": "selfhost/build-retention/phase169/reclaim01-phase147-render-fragment-native-fragments01/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase169/retention-policy.json",
+        "--receipt",
+        "selfhost/build-retention/phase147/render-fragment-native-fragments01-guard-close/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-render-fragment-native-fragments01/verified"
+      ],
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase147-render-fragment-native-fragments01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-render-fragment-native-fragments01/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase147-render-fragment-native-fragments01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-render-fragment-native-fragments01/restored"
+      ]
+    },
+    {
+      "root": "selfhost/build/phase147/render-fragment-native-original01",
+      "lifecycle": {
+        "file": "selfhost/build/phase147/render-fragment-native-original01-guard/retention.json",
+        "bytes": 1289,
+        "sha256": "a2b0588a575107cc0f043f5b3865c4544e3947ab53be575de3f13c8907374b3a"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase147/render-fragment-native-original01-guard-close/report.json",
+        "bytes": 2162,
+        "sha256": "b33a471a2ea6f4eab56ce004286c5bc47fa68c7cfc5f59d3d1df8433e8a6d4ef"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase147/render-fragment-native-original01-guard-close/root-00/receipt.json",
+        "bytes": 2419,
+        "sha256": "3a2dd43b217b577f5ad7b5c38f4a5990e9ec8827801ff90ce96fd9d7f03192bc"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase147/render-fragment-native-original01-guard-close/root-00/files.tar.gz",
+        "bytes": 855124,
+        "sha256": "1ca6dcab2160c677ed8ae44c9798c8ba6492109aec9db9d0aad85352881f4766"
+      },
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase147/render-fragment-native-original01/program.o",
+          "bytes": 1078016,
+          "sha256": "2b217c4736079171e29c6ca6984182bad8b35e5d76492a075aa26a2376545f01",
+          "archiveMember": "program.o",
+          "allocatedBytes": 1081344
+        },
+        {
+          "file": "selfhost/build/phase147/render-fragment-native-original01/program.s",
+          "bytes": 3630594,
+          "sha256": "c51157ddee0b80d08ed5e74e8e4d2ab7cf42cbb6a048037911bcefe2484b932f",
+          "archiveMember": "program.s",
+          "allocatedBytes": 3633152
+        }
+      ],
+      "allocatedBytes": 4714496,
+      "plan": "selfhost/build-retention/phase169/reclaim01-phase147-render-fragment-native-original01/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase169/retention-policy.json",
+        "--receipt",
+        "selfhost/build-retention/phase147/render-fragment-native-original01-guard-close/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-render-fragment-native-original01/verified"
+      ],
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase147-render-fragment-native-original01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-render-fragment-native-original01/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase147-render-fragment-native-original01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-render-fragment-native-original01/restored"
+      ]
+    },
+    {
+      "root": "selfhost/build/phase147/render-native-baseline03",
+      "lifecycle": {
+        "file": "selfhost/build/phase147/render-native-baseline03-guard/retention.json",
+        "bytes": 1253,
+        "sha256": "8bf12345993a107cc71715ff6b84d173c77193b2ba4782e22641036f2706b35a"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase147/render-native-baseline03-guard-close/report.json",
+        "bytes": 2115,
+        "sha256": "d7d2e0ced6f781044bf6f4d5524ffa331e66e1b45188ef91a397d0a6f93a9da9"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase147/render-native-baseline03-guard-close/root-00/receipt.json",
+        "bytes": 2409,
+        "sha256": "216d3e8011937786334ab567a2f2c210eac52c333876fddc095bc0e7336c14cd"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase147/render-native-baseline03-guard-close/root-00/files.tar.gz",
+        "bytes": 815822,
+        "sha256": "8160d86bfdfbe6d68daa7cc51f29bdf2de021c86efe295cf1788f684bec08689"
+      },
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase147/render-native-baseline03/program.o",
+          "bytes": 1035752,
+          "sha256": "c879f62beb0336bcfa2c3bb38ad51f8769b9fc099d6f211f11d92b78787139da",
+          "archiveMember": "program.o",
+          "allocatedBytes": 1036288
+        },
+        {
+          "file": "selfhost/build/phase147/render-native-baseline03/program.s",
+          "bytes": 3492796,
+          "sha256": "a5d631117dab9e498c0e948225f440e10f437e7c9bed3df2b840d45139823f5d",
+          "archiveMember": "program.s",
+          "allocatedBytes": 3493888
+        }
+      ],
+      "allocatedBytes": 4530176,
+      "plan": "selfhost/build-retention/phase169/reclaim01-phase147-render-native-baseline03/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase169/retention-policy.json",
+        "--receipt",
+        "selfhost/build-retention/phase147/render-native-baseline03-guard-close/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-render-native-baseline03/verified"
+      ],
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase147-render-native-baseline03/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-render-native-baseline03/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase147-render-native-baseline03/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-render-native-baseline03/restored"
+      ]
+    },
+    {
+      "root": "selfhost/build/phase147/render-native-candidate03",
+      "lifecycle": {
+        "file": "selfhost/build/phase147/render-native-candidate03-guard/retention.json",
+        "bytes": 1259,
+        "sha256": "3494f68366408cc3fc77f193150e022488d810aee32da7fdccc984cc9fb5b7e5"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase147/render-native-candidate03-guard-close/report.json",
+        "bytes": 2123,
+        "sha256": "344fcda7335554a53644c78050aeefbeffb1f33239b3168daeb08b68ebf0ee78"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase147/render-native-candidate03-guard-close/root-00/receipt.json",
+        "bytes": 2410,
+        "sha256": "69d173155f9a1674680cc2f8b495e912275dae2670aa6ff40ff174cfe86fb4ad"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase147/render-native-candidate03-guard-close/root-00/files.tar.gz",
+        "bytes": 815820,
+        "sha256": "758e636aa75b329de860c99ce7499f46d9e38479f4469c59fe5f56c0cb1c3c42"
+      },
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase147/render-native-candidate03/program.o",
+          "bytes": 1035752,
+          "sha256": "6c216458edbdfd71e598f37cdc7558b2241155e5bc6668d2ca01b585af8772ef",
+          "archiveMember": "program.o",
+          "allocatedBytes": 1036288
+        },
+        {
+          "file": "selfhost/build/phase147/render-native-candidate03/program.s",
+          "bytes": 3492796,
+          "sha256": "5f6b28cab287563b0cb75aae70ef86a41c445650d467a2cb0464a1753028a820",
+          "archiveMember": "program.s",
+          "allocatedBytes": 3493888
+        }
+      ],
+      "allocatedBytes": 4530176,
+      "plan": "selfhost/build-retention/phase169/reclaim01-phase147-render-native-candidate03/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase169/retention-policy.json",
+        "--receipt",
+        "selfhost/build-retention/phase147/render-native-candidate03-guard-close/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-render-native-candidate03/verified"
+      ],
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase147-render-native-candidate03/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-render-native-candidate03/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase147-render-native-candidate03/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-render-native-candidate03/restored"
+      ]
+    },
+    {
+      "root": "selfhost/build/phase147/render-selected01/controls",
+      "lifecycle": {
+        "file": "selfhost/build/phase147/render-selected01/controls-guard/retention.json",
+        "bytes": 1264,
+        "sha256": "cd489cfbd980562c3579fc94ed97c570232f651ac89cf9aac5ef8c6a8fd54f2e"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase147/render-selected01--controls-guard-close/report.json",
+        "bytes": 2130,
+        "sha256": "2e11c8fcbf4ddd8fccc863451c6b7af17a15cbad15a64dde358dbc7e408ace54"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase147/render-selected01--controls-guard-close/root-00/receipt.json",
+        "bytes": 6536,
+        "sha256": "9c55994bfcb6db049e811986cb3bec7bcb8f6bca4401eed3efc238bd1f06eab7"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase147/render-selected01--controls-guard-close/root-00/files.tar.gz",
+        "bytes": 80693,
+        "sha256": "f1c429e5448f8e98f70f3d3b1da0a3da00f287a5ce1aa3638f195e91e52ed36e"
+      },
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/compiler-verifier-slice-0-baseline.ssa",
+          "bytes": 225,
+          "sha256": "3f58ba018653c5cb2fe7329c9a53f65af363ffd042e15ffe65f1487be6324bb2",
+          "archiveMember": "compiler-verifier-slice-0-baseline.ssa",
+          "allocatedBytes": 4096
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/compiler-verifier-slice-0-candidate.ssa",
+          "bytes": 225,
+          "sha256": "3f58ba018653c5cb2fe7329c9a53f65af363ffd042e15ffe65f1487be6324bb2",
+          "archiveMember": "compiler-verifier-slice-0-candidate.ssa",
+          "allocatedBytes": 4096
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/compiler-verifier-slice-1034-baseline.ssa",
+          "bytes": 16141,
+          "sha256": "fac50598a671b80549bdbaf86e0e667c0503a4ed9cf062cac27bf38b9e9696e7",
+          "archiveMember": "compiler-verifier-slice-1034-baseline.ssa",
+          "allocatedBytes": 16384
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/compiler-verifier-slice-1034-candidate.ssa",
+          "bytes": 16141,
+          "sha256": "fac50598a671b80549bdbaf86e0e667c0503a4ed9cf062cac27bf38b9e9696e7",
+          "archiveMember": "compiler-verifier-slice-1034-candidate.ssa",
+          "allocatedBytes": 16384
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/compiler-verifier-slice-1098-baseline.ssa",
+          "bytes": 289,
+          "sha256": "475c5c37429ae131789a2c77b489ff341e910c80c59ba13cababa81055d0079d",
+          "archiveMember": "compiler-verifier-slice-1098-baseline.ssa",
+          "allocatedBytes": 4096
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/compiler-verifier-slice-1098-candidate.ssa",
+          "bytes": 289,
+          "sha256": "475c5c37429ae131789a2c77b489ff341e910c80c59ba13cababa81055d0079d",
+          "archiveMember": "compiler-verifier-slice-1098-candidate.ssa",
+          "allocatedBytes": 4096
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/compiler-verifier-slice-366-baseline.ssa",
+          "bytes": 1806,
+          "sha256": "6f9f46f15c41b4e5a2e3efc6357973646ee78c7180e1b60139f24d191df0c79a",
+          "archiveMember": "compiler-verifier-slice-366-baseline.ssa",
+          "allocatedBytes": 4096
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/compiler-verifier-slice-366-candidate.ssa",
+          "bytes": 1806,
+          "sha256": "6f9f46f15c41b4e5a2e3efc6357973646ee78c7180e1b60139f24d191df0c79a",
+          "archiveMember": "compiler-verifier-slice-366-candidate.ssa",
+          "allocatedBytes": 4096
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/compiler-verifier-slice-523-baseline.ssa",
+          "bytes": 15495,
+          "sha256": "d855596ba82597ead009aed064bacae663b3beb1de3db877194e38c15135fb7b",
+          "archiveMember": "compiler-verifier-slice-523-baseline.ssa",
+          "allocatedBytes": 16384
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/compiler-verifier-slice-523-candidate.ssa",
+          "bytes": 15495,
+          "sha256": "d855596ba82597ead009aed064bacae663b3beb1de3db877194e38c15135fb7b",
+          "archiveMember": "compiler-verifier-slice-523-candidate.ssa",
+          "allocatedBytes": 16384
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/compiler-verifier-slice-732-baseline.ssa",
+          "bytes": 3973,
+          "sha256": "53f31f90e7406d7ef176d6bb20403e204f489a14abb828e8e49c28b42902bd2e",
+          "archiveMember": "compiler-verifier-slice-732-baseline.ssa",
+          "allocatedBytes": 4096
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/compiler-verifier-slice-732-candidate.ssa",
+          "bytes": 3973,
+          "sha256": "53f31f90e7406d7ef176d6bb20403e204f489a14abb828e8e49c28b42902bd2e",
+          "archiveMember": "compiler-verifier-slice-732-candidate.ssa",
+          "allocatedBytes": 4096
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/coverage-map-churn-128-0-baseline.ssa",
+          "bytes": 298,
+          "sha256": "c782da4462cc77b30fc1efbf5bb902429611639e386f8f065e0b040282b3556d",
+          "archiveMember": "coverage-map-churn-128-0-baseline.ssa",
+          "allocatedBytes": 4096
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/coverage-map-churn-128-0-candidate.ssa",
+          "bytes": 298,
+          "sha256": "c782da4462cc77b30fc1efbf5bb902429611639e386f8f065e0b040282b3556d",
+          "archiveMember": "coverage-map-churn-128-0-candidate.ssa",
+          "allocatedBytes": 4096
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/coverage-map-churn-128-176-baseline.ssa",
+          "bytes": 60674,
+          "sha256": "2fbe4ebfa4af142a304c6c57a981d32d71257359f0661df0c3605410181c7fa5",
+          "archiveMember": "coverage-map-churn-128-176-baseline.ssa",
+          "allocatedBytes": 61440
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/coverage-map-churn-128-176-candidate.ssa",
+          "bytes": 60674,
+          "sha256": "2fbe4ebfa4af142a304c6c57a981d32d71257359f0661df0c3605410181c7fa5",
+          "archiveMember": "coverage-map-churn-128-176-candidate.ssa",
+          "allocatedBytes": 61440
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/coverage-map-churn-128-222-baseline.ssa",
+          "bytes": 582,
+          "sha256": "1c4b8c1b8aa03c140e65b4073b570ebb2ab9966750e3398bac8ca297f29f9861",
+          "archiveMember": "coverage-map-churn-128-222-baseline.ssa",
+          "allocatedBytes": 4096
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/coverage-map-churn-128-222-candidate.ssa",
+          "bytes": 582,
+          "sha256": "1c4b8c1b8aa03c140e65b4073b570ebb2ab9966750e3398bac8ca297f29f9861",
+          "archiveMember": "coverage-map-churn-128-222-candidate.ssa",
+          "allocatedBytes": 4096
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/coverage-map-churn-128-328-baseline.ssa",
+          "bytes": 127386,
+          "sha256": "2bee7c87471320a59dc5762cf59f9625280dfd04e32bc47c67c1cdb3f5b385b2",
+          "archiveMember": "coverage-map-churn-128-328-baseline.ssa",
+          "allocatedBytes": 131072
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/coverage-map-churn-128-328-candidate.ssa",
+          "bytes": 127386,
+          "sha256": "2bee7c87471320a59dc5762cf59f9625280dfd04e32bc47c67c1cdb3f5b385b2",
+          "archiveMember": "coverage-map-churn-128-328-candidate.ssa",
+          "allocatedBytes": 131072
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/coverage-map-churn-128-443-baseline.ssa",
+          "bytes": 1523,
+          "sha256": "a1497685780052e244f31fa172f198a0a6c2822740af0c6a9a96275dc500ecb1",
+          "archiveMember": "coverage-map-churn-128-443-baseline.ssa",
+          "allocatedBytes": 4096
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/coverage-map-churn-128-443-candidate.ssa",
+          "bytes": 1523,
+          "sha256": "a1497685780052e244f31fa172f198a0a6c2822740af0c6a9a96275dc500ecb1",
+          "archiveMember": "coverage-map-churn-128-443-candidate.ssa",
+          "allocatedBytes": 4096
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/coverage-map-churn-128-665-baseline.ssa",
+          "bytes": 285,
+          "sha256": "a32396293928ece3eb2bdb45f7c4c6b09191ec13a0caba42b141530d3b417f46",
+          "archiveMember": "coverage-map-churn-128-665-baseline.ssa",
+          "allocatedBytes": 4096
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/coverage-map-churn-128-665-candidate.ssa",
+          "bytes": 285,
+          "sha256": "a32396293928ece3eb2bdb45f7c4c6b09191ec13a0caba42b141530d3b417f46",
+          "archiveMember": "coverage-map-churn-128-665-candidate.ssa",
+          "allocatedBytes": 4096
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/lexer-0-baseline.ssa",
+          "bytes": 263,
+          "sha256": "e338fbc750e14e2c2c1c87e27a683322fb435d667d89032fb0e58654de67461e",
+          "archiveMember": "lexer-0-baseline.ssa",
+          "allocatedBytes": 4096
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/lexer-0-candidate.ssa",
+          "bytes": 263,
+          "sha256": "e338fbc750e14e2c2c1c87e27a683322fb435d667d89032fb0e58654de67461e",
+          "archiveMember": "lexer-0-candidate.ssa",
+          "allocatedBytes": 4096
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/lexer-12-baseline.ssa",
+          "bytes": 3906,
+          "sha256": "e2313699d6f1fa4651a6f5ae445733aaa8518fbad3ba06e25b4148d9f0690a2e",
+          "archiveMember": "lexer-12-baseline.ssa",
+          "allocatedBytes": 4096
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/lexer-12-candidate.ssa",
+          "bytes": 3906,
+          "sha256": "e2313699d6f1fa4651a6f5ae445733aaa8518fbad3ba06e25b4148d9f0690a2e",
+          "archiveMember": "lexer-12-candidate.ssa",
+          "allocatedBytes": 4096
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/lexer-138-baseline.ssa",
+          "bytes": 20320,
+          "sha256": "e7003b0be2126f24741293d9e5cb7ade612d5d901baad9f5f510cbec81dc7dff",
+          "archiveMember": "lexer-138-baseline.ssa",
+          "allocatedBytes": 20480
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/lexer-138-candidate.ssa",
+          "bytes": 20320,
+          "sha256": "e7003b0be2126f24741293d9e5cb7ade612d5d901baad9f5f510cbec81dc7dff",
+          "archiveMember": "lexer-138-candidate.ssa",
+          "allocatedBytes": 20480
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/lexer-176-baseline.ssa",
+          "bytes": 498,
+          "sha256": "ed1aa834ac7da4d169212887d7bb3eeeb6b74c7ff8d0b8f67f0fb674fc7c7471",
+          "archiveMember": "lexer-176-baseline.ssa",
+          "allocatedBytes": 4096
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/lexer-176-candidate.ssa",
+          "bytes": 498,
+          "sha256": "ed1aa834ac7da4d169212887d7bb3eeeb6b74c7ff8d0b8f67f0fb674fc7c7471",
+          "archiveMember": "lexer-176-candidate.ssa",
+          "allocatedBytes": 4096
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/lexer-264-baseline.ssa",
+          "bytes": 285,
+          "sha256": "a55bc5447ea7839d0cd3c4d1b77eab759aed894a58a3d3b91909604147b08e94",
+          "archiveMember": "lexer-264-baseline.ssa",
+          "allocatedBytes": 4096
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/lexer-264-candidate.ssa",
+          "bytes": 285,
+          "sha256": "a55bc5447ea7839d0cd3c4d1b77eab759aed894a58a3d3b91909604147b08e94",
+          "archiveMember": "lexer-264-candidate.ssa",
+          "allocatedBytes": 4096
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/lexer-88-baseline.ssa",
+          "bytes": 377,
+          "sha256": "4fe990f90e7cb687431822b399e40138c6e247f18d5b94bdc4d1c9d67c312213",
+          "archiveMember": "lexer-88-baseline.ssa",
+          "allocatedBytes": 4096
+        },
+        {
+          "file": "selfhost/build/phase147/render-selected01/controls/lexer-88-candidate.ssa",
+          "bytes": 377,
+          "sha256": "4fe990f90e7cb687431822b399e40138c6e247f18d5b94bdc4d1c9d67c312213",
+          "archiveMember": "lexer-88-candidate.ssa",
+          "allocatedBytes": 4096
+        }
+      ],
+      "allocatedBytes": 598016,
+      "plan": "selfhost/build-retention/phase169/reclaim01-phase147-render-selected01-controls/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase169/retention-policy.json",
+        "--receipt",
+        "selfhost/build-retention/phase147/render-selected01--controls-guard-close/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-render-selected01-controls/verified"
+      ],
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase147-render-selected01-controls/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-render-selected01-controls/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase147-render-selected01-controls/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-render-selected01-controls/restored"
+      ]
+    },
+    {
+      "root": "selfhost/build/phase147/runtime-classifier-literal-emit01",
+      "lifecycle": {
+        "file": "selfhost/build/phase147/runtime-classifier-literal-emit01-guard/retention.json",
+        "bytes": 1289,
+        "sha256": "4eb9098e7a795e2df3a3409ab46c626747c3cb6924602549be70409e381d2cbb"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase147/runtime-classifier-literal-emit01-guard-close/report.json",
+        "bytes": 2161,
+        "sha256": "3b671509629d9477bd598e5c4394ffa89ef3326a872063a1983a2cdbf96844c4"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase147/runtime-classifier-literal-emit01-guard-close/root-00/receipt.json",
+        "bytes": 1369,
+        "sha256": "089250ef27c533a8563b3d731a8f76de8464011ec25c0d975769e6a7f27539c6"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase147/runtime-classifier-literal-emit01-guard-close/root-00/files.tar.gz",
+        "bytes": 155447,
+        "sha256": "2999af28740b94e6400a06d4505dc7c0dcb87e0c235491be954efe79e5789293"
+      },
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase147/runtime-classifier-literal-emit01/program.ssa",
+          "bytes": 1188233,
+          "sha256": "144a2b11fc38a24297267dd4e43b54b62a987f20cdf90b30498dce85870e010a",
+          "archiveMember": "program.ssa",
+          "allocatedBytes": 1191936
+        }
+      ],
+      "allocatedBytes": 1191936,
+      "plan": "selfhost/build-retention/phase169/reclaim01-phase147-runtime-classifier-literal-emit01/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase169/retention-policy.json",
+        "--receipt",
+        "selfhost/build-retention/phase147/runtime-classifier-literal-emit01-guard-close/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-runtime-classifier-literal-emit01/verified"
+      ],
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase147-runtime-classifier-literal-emit01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-runtime-classifier-literal-emit01/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase147-runtime-classifier-literal-emit01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-runtime-classifier-literal-emit01/restored"
+      ]
+    },
+    {
+      "root": "selfhost/build/phase147/runtime-classifier-plan05/native",
+      "lifecycle": {
+        "file": "selfhost/build/phase147/runtime-classifier-plan05/native-guard/retention.json",
+        "bytes": 1289,
+        "sha256": "de80a4fe4c38bc263e19dd89951180a7b4d770f6174d59463e701dc5e1dce3c8"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase147/runtime-classifier-plan05--native-guard-close/report.json",
+        "bytes": 2160,
+        "sha256": "28b34187ca28f83a4fbfb9e70d57bf29a6cf003fd3784711a05aaba2b3fe7c49"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase147/runtime-classifier-plan05--native-guard-close/root-00/receipt.json",
+        "bytes": 2414,
+        "sha256": "13dc0d2bd52b059c22c872f957cd2258aa677f530a61b74229d27aee49cebc90"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase147/runtime-classifier-plan05--native-guard-close/root-00/files.tar.gz",
+        "bytes": 285431,
+        "sha256": "7df633807ac61db04d21d76b28aaf27327c9db33ea19bc5e4fdb5adf8edd0f4a"
+      },
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase147/runtime-classifier-plan05/native/program.o",
+          "bytes": 376112,
+          "sha256": "17acb7fc3fd9fae96d96a72aee282ad097fa069c52376f12a05de8930fd8cd5d",
+          "archiveMember": "program.o",
+          "allocatedBytes": 376832
+        },
+        {
+          "file": "selfhost/build/phase147/runtime-classifier-plan05/native/program.s",
+          "bytes": 1102754,
+          "sha256": "59a01ed44d860693fa9c32c1b6c92cd2057ea5e8229e977f0c163f9fc0dd81b9",
+          "archiveMember": "program.s",
+          "allocatedBytes": 1105920
+        }
+      ],
+      "allocatedBytes": 1482752,
+      "plan": "selfhost/build-retention/phase169/reclaim01-phase147-runtime-classifier-plan05-native/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase169/retention-policy.json",
+        "--receipt",
+        "selfhost/build-retention/phase147/runtime-classifier-plan05--native-guard-close/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-runtime-classifier-plan05-native/verified"
+      ],
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase147-runtime-classifier-plan05-native/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-runtime-classifier-plan05-native/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase147-runtime-classifier-plan05-native/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-runtime-classifier-plan05-native/restored"
+      ]
+    },
+    {
+      "root": "selfhost/build/phase147/verifier-native-compiler01/native",
+      "lifecycle": {
+        "file": "selfhost/build/phase147/verifier-native-compiler01/native-guard/retention.json",
+        "bytes": 1291,
+        "sha256": "433a0dbee955d4e4b48099385cc5c8e10db09d8f785f5327fb8d85b95817398b"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase147/verifier-native-compiler01--native-guard-close/report.json",
+        "bytes": 2164,
+        "sha256": "dee452d51e7aa004be5b5e1cccc0e797d355864562095276386ee361725a0dac"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase147/verifier-native-compiler01--native-guard-close/root-00/receipt.json",
+        "bytes": 2420,
+        "sha256": "4ac4486cb8daffe177b97d2a47c2162f49f66d5b70ad2b7fee78c1dfd65f91b7"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase147/verifier-native-compiler01--native-guard-close/root-00/files.tar.gz",
+        "bytes": 1372507,
+        "sha256": "2694c56ce24040e3ade7cb23762cfd9ed1d2dafce1cf95c51f8cef7dd331c05d"
+      },
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase147/verifier-native-compiler01/native/program.o",
+          "bytes": 1752792,
+          "sha256": "e9ebdbbc084791d4b5106bb64c8492ee7652aa00769db88205d7ab127fad67a4",
+          "archiveMember": "program.o",
+          "allocatedBytes": 1753088
+        },
+        {
+          "file": "selfhost/build/phase147/verifier-native-compiler01/native/program.s",
+          "bytes": 5465821,
+          "sha256": "70a74797d25d65bbeac402689f83da701e9d85f172e2c16e725a47a9fb152a3d",
+          "archiveMember": "program.s",
+          "allocatedBytes": 5468160
+        }
+      ],
+      "allocatedBytes": 7221248,
+      "plan": "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-compiler01-native/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase169/retention-policy.json",
+        "--receipt",
+        "selfhost/build-retention/phase147/verifier-native-compiler01--native-guard-close/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-compiler01-native/verified"
+      ],
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-compiler01-native/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-compiler01-native/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-compiler01-native/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-compiler01-native/restored"
+      ]
+    },
+    {
+      "root": "selfhost/build/phase147/verifier-native-compiler02/native",
+      "lifecycle": {
+        "file": "selfhost/build/phase147/verifier-native-compiler02/native-guard/retention.json",
+        "bytes": 1292,
+        "sha256": "450bfa80f5064363fcc9607d6993120c9558568ba73911fe19539ae5fc4e8eae"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase147/verifier-native-compiler02--native-guard-close/report.json",
+        "bytes": 2164,
+        "sha256": "2478178e1b8ca0b2616b08f56ebc7c9708b9aad6216a726447f1056f31293505"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase147/verifier-native-compiler02--native-guard-close/root-00/receipt.json",
+        "bytes": 2420,
+        "sha256": "20f014c5d4e1eef7dcdf20f171ce8c9cb2dfbf14576eec53a9ff3d3af5d4d954"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase147/verifier-native-compiler02--native-guard-close/root-00/files.tar.gz",
+        "bytes": 1377362,
+        "sha256": "b4e05a5000ef1d3f0b2042607568c378afa76cf0f204fd5e50bafac017976e98"
+      },
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase147/verifier-native-compiler02/native/program.o",
+          "bytes": 1761872,
+          "sha256": "6abf23e014ce56e5331514d066df019440183551725ed0eda895cf91611bde38",
+          "archiveMember": "program.o",
+          "allocatedBytes": 1765376
+        },
+        {
+          "file": "selfhost/build/phase147/verifier-native-compiler02/native/program.s",
+          "bytes": 5494216,
+          "sha256": "3b0c89a4af5b68affe82f545514059481aa2493225a52a1c09676b65f6826235",
+          "archiveMember": "program.s",
+          "allocatedBytes": 5496832
+        }
+      ],
+      "allocatedBytes": 7262208,
+      "plan": "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-compiler02-native/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase169/retention-policy.json",
+        "--receipt",
+        "selfhost/build-retention/phase147/verifier-native-compiler02--native-guard-close/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-compiler02-native/verified"
+      ],
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-compiler02-native/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-compiler02-native/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-compiler02-native/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-compiler02-native/restored"
+      ]
+    },
+    {
+      "root": "selfhost/build/phase147/verifier-native-lexer01/native",
+      "lifecycle": {
+        "file": "selfhost/build/phase147/verifier-native-lexer01/native-guard/retention.json",
+        "bytes": 1280,
+        "sha256": "2cadb5d2701aa6420b886ec65829d4608d6eee9dd24b558862f7537f480b15ef"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase147/verifier-native-lexer01--native-guard-close/report.json",
+        "bytes": 2149,
+        "sha256": "863945b2151009a619caba6d7fa13af5ac4ec7215092ca4744548490bb0a6b3b"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase147/verifier-native-lexer01--native-guard-close/root-00/receipt.json",
+        "bytes": 2417,
+        "sha256": "f2ae8bd6bacdf80f74e7c375f9801d0145742a9626661393855c911ec825e1c9"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase147/verifier-native-lexer01--native-guard-close/root-00/files.tar.gz",
+        "bytes": 1199534,
+        "sha256": "db32d319ab7e52c7a338b86b081c7ebe86cc752359ed4abf997d749950c90f6b"
+      },
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase147/verifier-native-lexer01/native/program.o",
+          "bytes": 1512032,
+          "sha256": "c280219b07681afe529c272ed352cb199dd978854ffa08602212fb1fdc5e7a3a",
+          "archiveMember": "program.o",
+          "allocatedBytes": 1515520
+        },
+        {
+          "file": "selfhost/build/phase147/verifier-native-lexer01/native/program.s",
+          "bytes": 4908924,
+          "sha256": "47cc3a8b9aa76e1d2e7a9a59a46e90ae3c850c8dffd091f580ee40fe32cc080c",
+          "archiveMember": "program.s",
+          "allocatedBytes": 4911104
+        }
+      ],
+      "allocatedBytes": 6426624,
+      "plan": "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-lexer01-native/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase169/retention-policy.json",
+        "--receipt",
+        "selfhost/build-retention/phase147/verifier-native-lexer01--native-guard-close/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-lexer01-native/verified"
+      ],
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-lexer01-native/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-lexer01-native/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-lexer01-native/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-lexer01-native/restored"
+      ]
+    },
+    {
+      "root": "selfhost/build/phase147/verifier-native-lexer02/native",
+      "lifecycle": {
+        "file": "selfhost/build/phase147/verifier-native-lexer02/native-guard/retention.json",
+        "bytes": 1279,
+        "sha256": "1a73d2f48e3f77a7a2928d21af03c9c390c8094cbbdb7fa57cda0c4d43b657da"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase147/verifier-native-lexer02--native-guard-close/report.json",
+        "bytes": 2150,
+        "sha256": "d1c43d7efa33347846a331fd03c52bc36a2f755ec3f643a97fad259e50ae4277"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase147/verifier-native-lexer02--native-guard-close/root-00/receipt.json",
+        "bytes": 2416,
+        "sha256": "a42a411db7727a68cb009e693726ac6706cf5e4f1e50ff798fd866d502b43c8a"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase147/verifier-native-lexer02--native-guard-close/root-00/files.tar.gz",
+        "bytes": 1204818,
+        "sha256": "7458631ec50c645316e75f8e76cf09789d4f964dfe7d1452e2cf9697726b1459"
+      },
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase147/verifier-native-lexer02/native/program.o",
+          "bytes": 1521112,
+          "sha256": "9f9a471f1753f46e695b978d208ffd92f1eb275e714eab346e65aa5a5fb8283a",
+          "archiveMember": "program.o",
+          "allocatedBytes": 1523712
+        },
+        {
+          "file": "selfhost/build/phase147/verifier-native-lexer02/native/program.s",
+          "bytes": 4937319,
+          "sha256": "5e8c51165cafeebd29b8c514bc7f65de9c238cba1d05a067442bd5bfd8ef48ae",
+          "archiveMember": "program.s",
+          "allocatedBytes": 4939776
+        }
+      ],
+      "allocatedBytes": 6463488,
+      "plan": "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-lexer02-native/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase169/retention-policy.json",
+        "--receipt",
+        "selfhost/build-retention/phase147/verifier-native-lexer02--native-guard-close/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-lexer02-native/verified"
+      ],
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-lexer02-native/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-lexer02-native/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-lexer02-native/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-lexer02-native/restored"
+      ]
+    },
+    {
+      "root": "selfhost/build/phase147/verifier-native-map01/native",
+      "lifecycle": {
+        "file": "selfhost/build/phase147/verifier-native-map01/native-guard/retention.json",
+        "bytes": 1273,
+        "sha256": "a5895637a5fb14ba529b7d09214b23564c10ad81d96ac4ab35167f4e1c512249"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase147/verifier-native-map01--native-guard-close/report.json",
+        "bytes": 2139,
+        "sha256": "cb077057bd7efe426cb16765be7079f46b9b00629df95805ce64a604ed5f3506"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase147/verifier-native-map01--native-guard-close/root-00/receipt.json",
+        "bytes": 2415,
+        "sha256": "f1be9528209ada01d3dd0beef134bcd1b81e7f03b73c1145958e3d38450732b0"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase147/verifier-native-map01--native-guard-close/root-00/files.tar.gz",
+        "bytes": 1408355,
+        "sha256": "864d59288987637cf11373c85b59421dc6674e009be6b26ad5e11ec0aac7de90"
+      },
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase147/verifier-native-map01/native/program.o",
+          "bytes": 1778512,
+          "sha256": "6e04cd5aaffb9cede19d12eb16c689748352db370e799e26fd6d59ed05bc322c",
+          "archiveMember": "program.o",
+          "allocatedBytes": 1781760
+        },
+        {
+          "file": "selfhost/build/phase147/verifier-native-map01/native/program.s",
+          "bytes": 5585313,
+          "sha256": "286cd10dbe987b841342da814fd9657d2cadb5d9f1ee9ca90a8618f1678db53c",
+          "archiveMember": "program.s",
+          "allocatedBytes": 5586944
+        }
+      ],
+      "allocatedBytes": 7368704,
+      "plan": "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-map01-native/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase169/retention-policy.json",
+        "--receipt",
+        "selfhost/build-retention/phase147/verifier-native-map01--native-guard-close/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-map01-native/verified"
+      ],
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-map01-native/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-map01-native/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-map01-native/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-map01-native/restored"
+      ]
+    },
+    {
+      "root": "selfhost/build/phase147/verifier-native-map02/native",
+      "lifecycle": {
+        "file": "selfhost/build/phase147/verifier-native-map02/native-guard/retention.json",
+        "bytes": 1273,
+        "sha256": "be823eaa3189f85fa1d9c4989147041e39f14b81ce1118d195c41e77f6c116e2"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase147/verifier-native-map02--native-guard-close/report.json",
+        "bytes": 2140,
+        "sha256": "1c899535a26d9ef743d068304e85f276ffabce00510fd3cffff74382734ad31a"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase147/verifier-native-map02--native-guard-close/root-00/receipt.json",
+        "bytes": 2415,
+        "sha256": "a74a95563a18240c1c6ce29684816c078d27cae0b0bc14cb7cc6759e754dcd0a"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase147/verifier-native-map02--native-guard-close/root-00/files.tar.gz",
+        "bytes": 1414219,
+        "sha256": "fd7d9a997c67c1fbfd6426c3cb3b2ce77bad604ca05694d32da45ba2501e7d32"
+      },
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase147/verifier-native-map02/native/program.o",
+          "bytes": 1787592,
+          "sha256": "5d1f726afb4ff28f26e6ccc62a607dd00d792c8af9819a941ea18b3d8ce9d521",
+          "archiveMember": "program.o",
+          "allocatedBytes": 1789952
+        },
+        {
+          "file": "selfhost/build/phase147/verifier-native-map02/native/program.s",
+          "bytes": 5613708,
+          "sha256": "5e695373d4c85c367922830e36c84babf66fafef8bd8ccb7b19296e9c9fe2391",
+          "archiveMember": "program.s",
+          "allocatedBytes": 5615616
+        }
+      ],
+      "allocatedBytes": 7405568,
+      "plan": "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-map02-native/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase169/retention-policy.json",
+        "--receipt",
+        "selfhost/build-retention/phase147/verifier-native-map02--native-guard-close/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-map02-native/verified"
+      ],
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-map02-native/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-map02-native/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-map02-native/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase147-verifier-native-map02-native/restored"
+      ]
+    },
+    {
+      "root": "selfhost/build/phase148/layout07/native",
+      "lifecycle": {
+        "file": "selfhost/build/phase148/layout07/native-guard/retention.json",
+        "bytes": 1209,
+        "sha256": "e892bf8b208cb39c835de9f7495d65a5244037fb30d05b809bea9ab4b777f192"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase148/layout07--native-guard/report.json",
+        "bytes": 2063,
+        "sha256": "ca2a1ca19f8c57a9d7c57a0926da83d16343202c957e4361f4f5dd3760747d08"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase148/layout07--native-guard/root-00/receipt.json",
+        "bytes": 2532,
+        "sha256": "b27ef00113ccef2012e4254b7126c317c9050b4b64a8fc7f0491dd07bb43d6cc"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase148/layout07--native-guard/root-00/files.tar.gz",
+        "bytes": 187721,
+        "sha256": "fe540c5a20bbb1888f460d2bcb5eb9da425bffe680a26ac3178e3061d2f40975"
+      },
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase148/layout07/native/program.o",
+          "bytes": 130200,
+          "sha256": "0e1989c4fd98f067af0b52ee5c1e9f07204284888178c22d7947992820f73ea8",
+          "archiveMember": "program.o",
+          "allocatedBytes": 131072
+        },
+        {
+          "file": "selfhost/build/phase148/layout07/native/program.s",
+          "bytes": 428291,
+          "sha256": "84a5ed26081e26530bb6dbcf868312f413ec7427f879d8197bd714873916e1bb",
+          "archiveMember": "program.s",
+          "allocatedBytes": 430080
+        },
+        {
+          "file": "selfhost/build/phase148/layout07/native/program.ssa",
+          "bytes": 389545,
+          "sha256": "b49f50c8d25551b396ce8b1f0742c46134da30a85d523b4268ea56cf1387d3a9",
+          "archiveMember": "program.ssa",
+          "allocatedBytes": 393216
+        }
+      ],
+      "allocatedBytes": 954368,
+      "plan": "selfhost/build-retention/phase169/reclaim01-phase148-layout07-native/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase169/retention-policy.json",
+        "--receipt",
+        "selfhost/build-retention/phase148/layout07--native-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase148-layout07-native/verified"
+      ],
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase148-layout07-native/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase148-layout07-native/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase148-layout07-native/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase148-layout07-native/restored"
+      ]
+    },
+    {
+      "root": "selfhost/build/phase148/pack-probe01/native",
+      "lifecycle": {
+        "file": "selfhost/build/phase148/pack-probe01/native-guard/retention.json",
+        "bytes": 1225,
+        "sha256": "17b8b86340bb3171f87a017c5f991af45a80ea10e5e4c32887cc36e5641d6441"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase148/pack-probe01--native-guard/report.json",
+        "bytes": 2082,
+        "sha256": "b0bac03e1b5f8c26764c2af65c7090f8fcb0f368061e8e529aab4106477c0408"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase148/pack-probe01--native-guard/root-00/receipt.json",
+        "bytes": 2538,
+        "sha256": "7835c593d42e3d3b65c8d76c4d197bd6806ae8b181070baf81334fcf90ca0a24"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase148/pack-probe01--native-guard/root-00/files.tar.gz",
+        "bytes": 614352,
+        "sha256": "66a4ad9a18ecc422d68ac5d6b5ae86572e35d942700a44e8aad10341a2283683"
+      },
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase148/pack-probe01/native/program.o",
+          "bytes": 455184,
+          "sha256": "f09b51ed2761d31a4ada3938b1be29ee6228c0195a12e45fbfbc80f751ac3220",
+          "archiveMember": "program.o",
+          "allocatedBytes": 458752
+        },
+        {
+          "file": "selfhost/build/phase148/pack-probe01/native/program.s",
+          "bytes": 1549639,
+          "sha256": "a3915c699d0d954362049cb6037f83ff7164e5a2430f9dff14c802e4b55245c8",
+          "archiveMember": "program.s",
+          "allocatedBytes": 1552384
+        },
+        {
+          "file": "selfhost/build/phase148/pack-probe01/native/program.ssa",
+          "bytes": 1766570,
+          "sha256": "50cf2e38b705b765f31b99ff8a8c3cc96477c5c17a72c0eca06abc7c26428e64",
+          "archiveMember": "program.ssa",
+          "allocatedBytes": 1769472
+        }
+      ],
+      "allocatedBytes": 3780608,
+      "plan": "selfhost/build-retention/phase169/reclaim01-phase148-pack-probe01-native/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase169/retention-policy.json",
+        "--receipt",
+        "selfhost/build-retention/phase148/pack-probe01--native-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase148-pack-probe01-native/verified"
+      ],
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase148-pack-probe01-native/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase148-pack-probe01-native/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase148-pack-probe01-native/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase148-pack-probe01-native/restored"
+      ]
+    },
+    {
+      "root": "selfhost/build/phase148/pack-probe02/native",
+      "lifecycle": {
+        "file": "selfhost/build/phase148/pack-probe02/native-guard/retention.json",
+        "bytes": 1225,
+        "sha256": "33db4afb7af5b1e4658f4a576750ddaad78d6c57e92f9f5fc1f066c71fb5b510"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase148/pack-probe02--native-guard/report.json",
+        "bytes": 2082,
+        "sha256": "2414008a508d2af2632fff4a80a68ca05cda986bf7ae67ea38bfea5740100c39"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase148/pack-probe02--native-guard/root-00/receipt.json",
+        "bytes": 2538,
+        "sha256": "2baf98946840c40872527be860d4dd4594a81b1a3e51a44de8c697e360065bd2"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase148/pack-probe02--native-guard/root-00/files.tar.gz",
+        "bytes": 648022,
+        "sha256": "ad61d74835646292b77391a0376e82d1f4706d10eae40eff98119f76cc75ff1a"
+      },
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase148/pack-probe02/native/program.o",
+          "bytes": 478080,
+          "sha256": "7459fa866415cc5ff2bcecf7f95921e8c445aede400ff434158332d797cf9218",
+          "archiveMember": "program.o",
+          "allocatedBytes": 479232
+        },
+        {
+          "file": "selfhost/build/phase148/pack-probe02/native/program.s",
+          "bytes": 1630894,
+          "sha256": "9f41185c41d943521c56b410f8411683118a92cb79d1296fda47f466a00f3e45",
+          "archiveMember": "program.s",
+          "allocatedBytes": 1634304
+        },
+        {
+          "file": "selfhost/build/phase148/pack-probe02/native/program.ssa",
+          "bytes": 1964123,
+          "sha256": "5a3f13b54673368275561bc4dc2231aab2cc9aae247ae9dce53e8aa9afaebb04",
+          "archiveMember": "program.ssa",
+          "allocatedBytes": 1966080
+        }
+      ],
+      "allocatedBytes": 4079616,
+      "plan": "selfhost/build-retention/phase169/reclaim01-phase148-pack-probe02-native/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase169/retention-policy.json",
+        "--receipt",
+        "selfhost/build-retention/phase148/pack-probe02--native-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase148-pack-probe02-native/verified"
+      ],
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase148-pack-probe02-native/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase148-pack-probe02-native/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase148-pack-probe02-native/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase148-pack-probe02-native/restored"
+      ]
+    },
+    {
+      "root": "selfhost/build/phase148/roundtrip-probe01/native",
+      "lifecycle": {
+        "file": "selfhost/build/phase148/roundtrip-probe01/native-guard/retention.json",
+        "bytes": 1241,
+        "sha256": "fa42af38523b732832e3f1cdc43dfa7d321d892d6bf55623c2a82b7c52987088"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase148/roundtrip-probe01--native-guard/report.json",
+        "bytes": 2108,
+        "sha256": "0104194495687f063203fc95805619d12d63bdfa063b370a98f57f1e259cfb37"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase148/roundtrip-probe01--native-guard/root-00/receipt.json",
+        "bytes": 2543,
+        "sha256": "5357da3fdc40fb79ea8c495741d4e2f39c7864ff446d18fabf92e5d9c9408b8e"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase148/roundtrip-probe01--native-guard/root-00/files.tar.gz",
+        "bytes": 913616,
+        "sha256": "b7b153fbf9200b9b64757957a03b1c53ceb735a8ff1086a1fb5d8d466b3fcf51"
+      },
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase148/roundtrip-probe01/native/program.o",
+          "bytes": 661984,
+          "sha256": "d58085fc2223bc3497ca5161473e0978c8b8592093c3bfab0dbd342384042416",
+          "archiveMember": "program.o",
+          "allocatedBytes": 663552
+        },
+        {
+          "file": "selfhost/build/phase148/roundtrip-probe01/native/program.s",
+          "bytes": 2285798,
+          "sha256": "fd08ebe3f92d193ddf51a0fa1ff1288fd599c766ad36eab5f5e0f40699858c51",
+          "archiveMember": "program.s",
+          "allocatedBytes": 2289664
+        },
+        {
+          "file": "selfhost/build/phase148/roundtrip-probe01/native/program.ssa",
+          "bytes": 2995132,
+          "sha256": "54aea4708607f57b400ca2651f140491e5b05c21da0e4bf2ae0edcdd5385faf2",
+          "archiveMember": "program.ssa",
+          "allocatedBytes": 2998272
+        }
+      ],
+      "allocatedBytes": 5951488,
+      "plan": "selfhost/build-retention/phase169/reclaim01-phase148-roundtrip-probe01-native/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase169/retention-policy.json",
+        "--receipt",
+        "selfhost/build-retention/phase148/roundtrip-probe01--native-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase148-roundtrip-probe01-native/verified"
+      ],
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase148-roundtrip-probe01-native/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase148-roundtrip-probe01-native/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase148-roundtrip-probe01-native/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase148-roundtrip-probe01-native/restored"
+      ]
+    },
+    {
+      "root": "selfhost/build/phase148/seed-probe01/native",
+      "lifecycle": {
+        "file": "selfhost/build/phase148/seed-probe01/native-guard/retention.json",
+        "bytes": 1224,
+        "sha256": "6537567250a7c3f2873dbcaa017b037efdd025668de3f0ba9853d3701e7b705f"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase148/seed-probe01--native-guard/report.json",
+        "bytes": 2083,
+        "sha256": "6ef085fae8c32961f02f25410e4eef5971bc6f73c813efa3a9e78867e210f08d"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase148/seed-probe01--native-guard/root-00/receipt.json",
+        "bytes": 2536,
+        "sha256": "7d24b95c9c745ad4923c4a36c94c69600aacbaa7b6d5a33d62392c6937756a65"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase148/seed-probe01--native-guard/root-00/files.tar.gz",
+        "bytes": 227165,
+        "sha256": "f07715c868c3cea04508a2e2b3fb7be323026f3f767c02bd21683d00c78c62af"
+      },
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase148/seed-probe01/native/program.o",
+          "bytes": 147160,
+          "sha256": "0245fbeea02eb008e43cb15e2820cedba4d0ead1342ef2d206a255f38dc89bad",
+          "archiveMember": "program.o",
+          "allocatedBytes": 147456
+        },
+        {
+          "file": "selfhost/build/phase148/seed-probe01/native/program.s",
+          "bytes": 488466,
+          "sha256": "e723ac8299a196f2f1bc799d7b2fa4195523ab34ce8d62357171ad9bbce5adb5",
+          "archiveMember": "program.s",
+          "allocatedBytes": 491520
+        },
+        {
+          "file": "selfhost/build/phase148/seed-probe01/native/program.ssa",
+          "bytes": 510670,
+          "sha256": "61df70a019b79920da41ceda79df2060585b2c871f640ece04a51aab3f67b7a5",
+          "archiveMember": "program.ssa",
+          "allocatedBytes": 512000
+        }
+      ],
+      "allocatedBytes": 1150976,
+      "plan": "selfhost/build-retention/phase169/reclaim01-phase148-seed-probe01-native/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase169/retention-policy.json",
+        "--receipt",
+        "selfhost/build-retention/phase148/seed-probe01--native-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase148-seed-probe01-native/verified"
+      ],
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase148-seed-probe01-native/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase148-seed-probe01-native/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase148-seed-probe01-native/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase148-seed-probe01-native/restored"
+      ]
+    },
+    {
+      "root": "selfhost/build/phase154/native-plan03/native",
+      "lifecycle": {
+        "file": "selfhost/build/phase154/native-plan03/native-guard/retention.json",
+        "bytes": 1229,
+        "sha256": "1c04843223f76b6cb5ac5373af5b1066b291c3ab0097293120f8c4726504ef89"
+      },
+      "closure": {
+        "file": "selfhost/build-retention/phase154/native-plan03--native-guard/report.json",
+        "bytes": 2087,
+        "sha256": "f75e238986dc14a01eb37a71233b63daea9102e21814699fc35ac96c988da4e9"
+      },
+      "receipt": {
+        "file": "selfhost/build-retention/phase154/native-plan03--native-guard/root-00/receipt.json",
+        "bytes": 2546,
+        "sha256": "4c8420e3273b6521a2d82f4f59b45818c988d59911c592551a21d20cd52bd6cc"
+      },
+      "archive": {
+        "file": "selfhost/build-retention/phase154/native-plan03--native-guard/root-00/files.tar.gz",
+        "bytes": 8149987,
+        "sha256": "99ba133a80476bbc4d1305faef955eb14ad32bbcd5bae333e93179e2cfa9ce02"
+      },
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase154/native-plan03/native/program.o",
+          "bytes": 6141784,
+          "sha256": "01e7495a79edfb42891460997970b370b01587f55d08362d08efe36201d18268",
+          "archiveMember": "program.o",
+          "allocatedBytes": 6144000
+        },
+        {
+          "file": "selfhost/build/phase154/native-plan03/native/program.s",
+          "bytes": 20397419,
+          "sha256": "d88d8de74d95cb65471fca8d41b72d8e59ae9b74b3f16bd25e0b9384fdc7d6ca",
+          "archiveMember": "program.s",
+          "allocatedBytes": 20398080
+        },
+        {
+          "file": "selfhost/build/phase154/native-plan03/native/program.ssa",
+          "bytes": 28026765,
+          "sha256": "959bb294639acf29965636a704e60fc2db73bcd64622dcda747dd8b01d2aa4c1",
+          "archiveMember": "program.ssa",
+          "allocatedBytes": 28033024
+        }
+      ],
+      "allocatedBytes": 54575104,
+      "plan": "selfhost/build-retention/phase169/reclaim01-phase154-native-plan03-native/verified/plan.json",
+      "verifyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "verify",
+        "--policy",
+        "experiments/phase169/retention-policy.json",
+        "--receipt",
+        "selfhost/build-retention/phase154/native-plan03--native-guard/root-00/receipt.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase154-native-plan03-native/verified"
+      ],
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase154-native-plan03-native/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase154-native-plan03-native/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase169/reclaim01-phase154-native-plan03-native/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/reclaim01-phase154-native-plan03-native/restored"
+      ]
+    }
+  ],
+  "totals": {
+    "roots": 20,
+    "selectedFiles": 79,
+    "allocatedBytes": 139116544
+  },
+  "scope": "Only exact listed generated SSA/assembly/object intermediates in completed Phase147/148/154 component runs. Keep every ELF/image, source/API, receipt/log/report/profile and all Phase152/168/169 data. No whole-directory deletion.",
+  "preconditions": [
+    "Root reviews exact selection and waits until target lane is idle.",
+    "Run verify first; runner asserts exact current-file set and allocated-byte selection before any apply.",
+    "Apply reauthenticates archives, current bytes and metadata before unlinking.",
+    "Existing exclusive file/ownership/mode/xattr checks remain unchanged.",
+    "Restore selected files via retained verified plans; no archive is removed."
+  ],
+  "diskSnapshot": {
+    "freeBytes": 5243891712,
+    "reserveBytes": 5368709120
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "kind": "phase169-publication-source-extraction",
+  "version": 1,
+  "complete": true,
+  "source": {
+    "file": "selfhost/tests/phase156/publication.bend",
+    "bytes": 10800,
+    "sha256": "5ae6a0288a00d4b04758ceaf4f86ddc4a6264adc52a92662bb3597cbb217f60c"
+  },
+  "extracted": {
+    "file": "selfhost/tests/phase169/publication.bend",
+    "bytes": 4147,
+    "sha256": "5b0c7b87db77cfff6cadc1d8708f766d763700773f1df95fbdf036b534aa9be7",
+    "lines": 79,
+    "declarations": 10
+  },
+  "declarations": [
+    {
+      "name": "p156cp_continue",
+      "action": "add",
+      "sourceLine": 8,
+      "bytes": 200,
+      "sha256": "cc4a93d2b9e68be79004fa0b715c8639395be1a3d68271355e09d1d3502c167a",
+      "byteIdentical": true
+    },
+    {
+      "name": "p156cp_stored",
+      "action": "add",
+      "sourceLine": 13,
+      "bytes": 298,
+      "sha256": "6001df40de8a4d2d363939bb3014102e417a20d85521532bdc3be5872afb24e7",
+      "byteIdentical": true
+    },
+    {
+      "name": "p156cp_put",
+      "action": "add",
+      "sourceLine": 19,
+      "bytes": 746,
+      "sha256": "74456ccda5755b0243d2478e4b2f946bc9f24a70627b4bb5a3e2343657e25ba5",
+      "byteIdentical": true
+    },
+    {
+      "name": "p156cp_publish",
+      "action": "add",
+      "sourceLine": 31,
+      "bytes": 373,
+      "sha256": "4c8a41b6e184d7ff0c3490cac713d391524c94d005fa8ee0492a7dd22075a4ce",
+      "byteIdentical": true
+    },
+    {
+      "name": "p156cp_next",
+      "action": "add",
+      "sourceLine": 38,
+      "bytes": 308,
+      "sha256": "93ded1b70648fd5ffa914dbe1cac14cfcba9c42d10716105c741919392225c4e",
+      "byteIdentical": true
+    },
+    {
+      "name": "p156cp_guard",
+      "action": "add",
+      "sourceLine": 45,
+      "bytes": 440,
+      "sha256": "738b955d2f02ec413e2e2b7e80811f8b0f47abee8fae09b58b7b2a5706bf9b2d",
+      "byteIdentical": true
+    },
+    {
+      "name": "p156cp_walk",
+      "action": "add",
+      "sourceLine": 53,
+      "bytes": 371,
+      "sha256": "d55d02f1c3280b2c5a77387c6b2e698fff9f23a041451b7f02b95bd1401657d3",
+      "byteIdentical": true
+    },
+    {
+      "name": "p156cp_start",
+      "action": "add",
+      "sourceLine": 63,
+      "bytes": 250,
+      "sha256": "6f1dddb190cc091c8bbf3956df6ecb0c93f0bceae4f8e3ef37cd9855423bab57",
+      "byteIdentical": true
+    },
+    {
+      "name": "p143cp_seed_ready",
+      "action": "override",
+      "sourceLine": 125,
+      "bytes": 236,
+      "sha256": "8c16c42e1f7c47cba06bd5748e09361032b330f6f75906513af08b0daff621e0",
+      "byteIdentical": true
+    },
+    {
+      "name": "p143cb_resume_state",
+      "action": "override",
+      "sourceLine": 132,
+      "bytes": 916,
+      "sha256": "cf10194c55bd92dc8879f6dd2e77e21d21b6441bebbe6e20f4f8db3bc03f4559",
+      "byteIdentical": true
+    }
+  ],
+  "inverseComparison": {
+    "method": "Replace the ten original declaration spans using independently reparsed extracted blocks; preserve all omitted source bytes.",
+    "byteIdentical": true,
+    "reconstructedSourceSha256": "5ae6a0288a00d4b04758ceaf4f86ddc4a6264adc52a92662bb3597cbb217f60c"
+  },
+  "productionOverrides": [
+    "p143cp_seed_ready",
+    "p143cb_resume_state"
+  ],
+  "newTypes": 0,
+  "additionalExperimentalDependencies": [],
+  "sourceChecked": false,
+  "targetsExecuted": false,
+  "productionChanged": false,
+  "scope": "Exact extraction only; prior finite controls apply to the Phase156 parent, and fresh integration source/semantic/native gates remain required."
+}

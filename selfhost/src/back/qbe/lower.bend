@@ -773,17 +773,12 @@ def p111_print_emission(result: P111Emission) -> IO(U32):
         u => IO.die(U32,1,error))
     case P134Planned{plan}: p134w_plan(plan)
 
+# Keep the maintained argument/session dispatcher. Ordinary native requests use
+# the verified early-interface pipeline and its single-file streaming writer.
 @unsafe
 def p111_native_request(+path: String, +base_path: String, +cache_path: String,
   +stamp: String, +cached: Bool) -> IO(U32):
-  do IO<U32>:
-    +source : String <- p86_read_file(path)
-    +base : String <- p86_read_file(base_path)
-    nt_choose(IO(U32),cached,
-      u => do IO<U32>:
-        carrier : String <- p86_read_file(cache_path)
-        p111_print_emission(p134e_compile_source(path,source,base_path,base,carrier,stamp,True{})),
-      u => p111_print_emission(p134e_compile_source(path,source,base_path,base,"","",False{})))
+  p169n_request(path,base_path,cache_path,stamp,cached)
 
 @unsafe
 def p111_native_args(args: List<&1,String>) -> IO(U32):

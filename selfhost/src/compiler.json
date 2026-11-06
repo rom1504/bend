@@ -214,7 +214,12 @@
     "src/driver/policy-native.bend",
     "tests/phase149/policy-controls.bend",
     "tests/phase149/region-controls.bend",
-    "tests/phase149/driver.bend"
+    "tests/phase149/driver.bend",
+    "src/back/qbe/early-demand.bend",
+    "src/back/qbe/early-observers.bend",
+    "src/back/qbe/early-emission.bend",
+    "src/host/qbe-early-entry.bend",
+    "src/check/publication-reuse.bend"
   ],
   "order": [
     [
@@ -41541,6 +41546,726 @@
       212,
       "def",
       "p149t_args"
+    ],
+    [
+      213,
+      "def",
+      "p164a_put"
+    ],
+    [
+      213,
+      "def",
+      "p164a_arg"
+    ],
+    [
+      213,
+      "def",
+      "p164a_loads"
+    ],
+    [
+      213,
+      "def",
+      "p164a_args"
+    ],
+    [
+      213,
+      "def",
+      "p164a_body"
+    ],
+    [
+      213,
+      "def",
+      "p164a_segment"
+    ],
+    [
+      213,
+      "def",
+      "p164a_allowed"
+    ],
+    [
+      213,
+      "def",
+      "p164a_shape"
+    ],
+    [
+      213,
+      "def",
+      "p164a_generic"
+    ],
+    [
+      213,
+      "type",
+      "P167Lowered"
+    ],
+    [
+      213,
+      "type",
+      "P167Catalogue"
+    ],
+    [
+      213,
+      "type",
+      "P167Context"
+    ],
+    [
+      213,
+      "type",
+      "P167Demand"
+    ],
+    [
+      213,
+      "type",
+      "P167Built"
+    ],
+    [
+      213,
+      "def",
+      "p167l_fail"
+    ],
+    [
+      213,
+      "def",
+      "p167l_mark"
+    ],
+    [
+      213,
+      "def",
+      "p167l_demand"
+    ],
+    [
+      213,
+      "def",
+      "p167l_value"
+    ],
+    [
+      213,
+      "def",
+      "p167l_values"
+    ],
+    [
+      213,
+      "def",
+      "p167l_args"
+    ],
+    [
+      213,
+      "def",
+      "p167l_stmts"
+    ],
+    [
+      213,
+      "def",
+      "p167l_stmt"
+    ],
+    [
+      213,
+      "def",
+      "p167l_direct"
+    ],
+    [
+      213,
+      "def",
+      "p167l_direct_stmt"
+    ],
+    [
+      213,
+      "def",
+      "p167l_function_demands"
+    ],
+    [
+      213,
+      "def",
+      "p167l_segment_demands"
+    ],
+    [
+      213,
+      "def",
+      "p167l_present"
+    ],
+    [
+      213,
+      "def",
+      "p167l_private"
+    ],
+    [
+      213,
+      "def",
+      "p167l_catalogue_put"
+    ],
+    [
+      213,
+      "def",
+      "p167l_catalogue"
+    ],
+    [
+      213,
+      "def",
+      "p167l_catalogue_name"
+    ],
+    [
+      213,
+      "def",
+      "p167l_factory"
+    ],
+    [
+      213,
+      "def",
+      "p167l_family"
+    ],
+    [
+      213,
+      "def",
+      "p167l_accept"
+    ],
+    [
+      213,
+      "def",
+      "p167l_code"
+    ],
+    [
+      213,
+      "def",
+      "p167l_dispatch"
+    ],
+    [
+      213,
+      "def",
+      "p167l_take"
+    ],
+    [
+      213,
+      "def",
+      "p167l_loop"
+    ],
+    [
+      213,
+      "def",
+      "p167l_complete"
+    ],
+    [
+      213,
+      "def",
+      "p167l_finish"
+    ],
+    [
+      213,
+      "def",
+      "p167l_finished"
+    ],
+    [
+      213,
+      "def",
+      "p167l_catalogued"
+    ],
+    [
+      213,
+      "def",
+      "p167l_functions"
+    ],
+    [
+      214,
+      "def",
+      "p167v_allowed"
+    ],
+    [
+      214,
+      "def",
+      "p167v_obligation"
+    ],
+    [
+      214,
+      "def",
+      "p167v_bucket"
+    ],
+    [
+      214,
+      "def",
+      "p167v_obligations"
+    ],
+    [
+      214,
+      "def",
+      "p167v_one"
+    ],
+    [
+      214,
+      "def",
+      "p167v_segments"
+    ],
+    [
+      214,
+      "def",
+      "p167v_segment_done"
+    ],
+    [
+      214,
+      "def",
+      "p167v_scans"
+    ],
+    [
+      214,
+      "def",
+      "p167v_catalogued"
+    ],
+    [
+      214,
+      "def",
+      "p167v_original"
+    ],
+    [
+      214,
+      "def",
+      "p167v_private"
+    ],
+    [
+      214,
+      "def",
+      "p167live_eligible"
+    ],
+    [
+      214,
+      "def",
+      "p167ob_permission"
+    ],
+    [
+      214,
+      "def",
+      "p167ob_seed_checked"
+    ],
+    [
+      214,
+      "def",
+      "p167ob_seed_verify"
+    ],
+    [
+      214,
+      "def",
+      "p167ob_remaining"
+    ],
+    [
+      214,
+      "def",
+      "p167ob_direct"
+    ],
+    [
+      214,
+      "def",
+      "p167ob_final"
+    ],
+    [
+      214,
+      "def",
+      "p168_scalars"
+    ],
+    [
+      214,
+      "def",
+      "p168_scalar_ready"
+    ],
+    [
+      214,
+      "def",
+      "p168_stats"
+    ],
+    [
+      214,
+      "def",
+      "p168_finished"
+    ],
+    [
+      214,
+      "def",
+      "p168_finish_functions"
+    ],
+    [
+      214,
+      "def",
+      "p168_retry"
+    ],
+    [
+      214,
+      "def",
+      "p168_scalar_verified"
+    ],
+    [
+      214,
+      "def",
+      "p168_scalar_result"
+    ],
+    [
+      214,
+      "def",
+      "p168_inlined"
+    ],
+    [
+      214,
+      "def",
+      "p168_closed"
+    ],
+    [
+      214,
+      "def",
+      "p168_candidates"
+    ],
+    [
+      214,
+      "def",
+      "p168_selected"
+    ],
+    [
+      214,
+      "def",
+      "p168_seed_verified"
+    ],
+    [
+      214,
+      "def",
+      "p168_scanned"
+    ],
+    [
+      214,
+      "def",
+      "p168_prepared"
+    ],
+    [
+      214,
+      "def",
+      "p168_catalogued"
+    ],
+    [
+      214,
+      "def",
+      "p168_request_mode"
+    ],
+    [
+      214,
+      "type",
+      "P168TSelection"
+    ],
+    [
+      214,
+      "def",
+      "p168t_has"
+    ],
+    [
+      214,
+      "def",
+      "p168t_accept"
+    ],
+    [
+      214,
+      "def",
+      "p168t_target"
+    ],
+    [
+      214,
+      "def",
+      "p168t_walk"
+    ],
+    [
+      214,
+      "def",
+      "p168t_selected"
+    ],
+    [
+      215,
+      "def",
+      "p168v_callable"
+    ],
+    [
+      215,
+      "def",
+      "p168v_functions"
+    ],
+    [
+      215,
+      "def",
+      "p168j_eligible"
+    ],
+    [
+      215,
+      "def",
+      "p168j_insert"
+    ],
+    [
+      215,
+      "def",
+      "p168j_imports"
+    ],
+    [
+      215,
+      "def",
+      "p168j_candidates"
+    ],
+    [
+      215,
+      "def",
+      "p168j_registry"
+    ],
+    [
+      215,
+      "def",
+      "p168j_forward"
+    ],
+    [
+      215,
+      "def",
+      "p168j_forward_if"
+    ],
+    [
+      215,
+      "def",
+      "p168j_forwards"
+    ],
+    [
+      215,
+      "type",
+      "P169Prepared"
+    ],
+    [
+      215,
+      "def",
+      "p169s_fail"
+    ],
+    [
+      215,
+      "def",
+      "p169s_registered"
+    ],
+    [
+      215,
+      "def",
+      "p169s_seeded"
+    ],
+    [
+      215,
+      "def",
+      "p169s_lowered"
+    ],
+    [
+      215,
+      "def",
+      "p169s_prefix_written"
+    ],
+    [
+      215,
+      "def",
+      "p169s_prefix"
+    ],
+    [
+      215,
+      "def",
+      "p169s_print"
+    ],
+    [
+      216,
+      "def",
+      "p169n_prepared"
+    ],
+    [
+      216,
+      "def",
+      "p169n_compile"
+    ],
+    [
+      216,
+      "def",
+      "p169n_request"
+    ],
+    [
+      216,
+      "def",
+      "p169n_args"
+    ],
+    [
+      214,
+      "def",
+      "p169q_metadata"
+    ],
+    [
+      214,
+      "def",
+      "p169q_import"
+    ],
+    [
+      214,
+      "type",
+      "P169ScalarPlan"
+    ],
+    [
+      214,
+      "def",
+      "p169q_plans"
+    ],
+    [
+      214,
+      "def",
+      "p169q_selection"
+    ],
+    [
+      214,
+      "def",
+      "p169q_scalars"
+    ],
+    [
+      214,
+      "def",
+      "p169q_scalar_ready"
+    ],
+    [
+      214,
+      "def",
+      "p169q_inlined"
+    ],
+    [
+      214,
+      "def",
+      "p169q_closed"
+    ],
+    [
+      103,
+      "def",
+      "p169e_emit"
+    ],
+    [
+      103,
+      "def",
+      "p169e_names"
+    ],
+    [
+      103,
+      "def",
+      "p169e_roots"
+    ],
+    [
+      103,
+      "def",
+      "p169e_shape"
+    ],
+    [
+      217,
+      "def",
+      "p156cp_continue"
+    ],
+    [
+      217,
+      "def",
+      "p156cp_stored"
+    ],
+    [
+      217,
+      "def",
+      "p156cp_put"
+    ],
+    [
+      217,
+      "def",
+      "p156cp_publish"
+    ],
+    [
+      217,
+      "def",
+      "p156cp_next"
+    ],
+    [
+      217,
+      "def",
+      "p156cp_guard"
+    ],
+    [
+      217,
+      "def",
+      "p156cp_walk"
+    ],
+    [
+      217,
+      "def",
+      "p156cp_start"
+    ],
+    [
+      215,
+      "def",
+      "p169sv_refused"
+    ],
+    [
+      216,
+      "def",
+      "p169np_admitted"
+    ],
+    [
+      216,
+      "def",
+      "p169np_plan"
+    ],
+    [
+      215,
+      "def",
+      "p169a_seeded"
+    ],
+    [
+      215,
+      "def",
+      "p169a_namespace"
+    ],
+    [
+      215,
+      "def",
+      "p169a_checked"
+    ],
+    [
+      215,
+      "def",
+      "p169a_view"
+    ],
+    [
+      215,
+      "def",
+      "p169a_original"
+    ],
+    [
+      214,
+      "def",
+      "p169o_next"
+    ],
+    [
+      214,
+      "def",
+      "p169o_walk"
+    ],
+    [
+      214,
+      "def",
+      "p169o_selected"
+    ],
+    [
+      214,
+      "def",
+      "p169o_closed"
+    ],
+    [
+      214,
+      "def",
+      "p169o_certified"
+    ],
+    [
+      215,
+      "def",
+      "p169c_scalar"
+    ],
+    [
+      215,
+      "def",
+      "p169c_selected"
+    ],
+    [
+      215,
+      "def",
+      "p169c_output"
+    ],
+    [
+      215,
+      "def",
+      "p169c_emitted"
     ]
   ],
   "defaultProfile": "qbe",
@@ -41548,27 +42273,27 @@
     "qbe": {
       "entryModule": null,
       "omitMain": false,
-      "status": "phase152-native-qualified-source; see implementation/phase152/README.md; installed release unchanged"
+      "status": "phase169-maintained-integration-pending-source-and-interface-qualification"
     },
     "native-c": {
       "entryModule": "src/host/native-c-main.bend",
       "omitMain": false,
-      "status": "adapter-only-unqualified-requires-C-differential-gates"
+      "status": "phase169-maintained-integration-pending-source-and-interface-qualification"
     },
     "js-api": {
       "entryModule": null,
       "omitMain": true,
-      "status": "entry-omission-only-unqualified-requires-JS-differential-gates"
+      "status": "phase169-maintained-integration-pending-source-and-interface-qualification"
     },
     "qbe-policy": {
       "entryModule": "src/host/qbe-policy-main.bend",
       "omitMain": false,
-      "status": "experimental-policy-entry-requires-independent-gates"
+      "status": "phase169-maintained-integration-pending-source-and-interface-qualification"
     },
     "qbe-policy-test": {
       "entryModule": "tests/phase149/main.bend",
       "omitMain": false,
-      "status": "experimental-policy-control-entry-not-installed"
+      "status": "phase169-maintained-integration-pending-source-and-interface-qualification"
     }
   },
   "frozenSource": {
@@ -41615,7 +42340,7 @@
       "proof": false
     },
     "p111_native_request": {
-      "normalizedSha256": "d5e221ea8f0219afb5832d8a156739ec6719f20af93218139dc48895fa8ab04a",
+      "normalizedSha256": "00ca877012c17146f34795e4e2d6266d993a059c88a99b5c3a3842146b2b383d",
       "verifier": true,
       "proof": false
     },
@@ -42148,217 +42873,728 @@
   "inventoryChange": {
     "added": [
       [
-        183,
+        103,
+        "def",
+        "p169e_emit"
+      ],
+      [
+        103,
+        "def",
+        "p169e_names"
+      ],
+      [
+        103,
+        "def",
+        "p169e_roots"
+      ],
+      [
+        103,
+        "def",
+        "p169e_shape"
+      ],
+      [
+        213,
+        "def",
+        "p164a_put"
+      ],
+      [
+        213,
+        "def",
+        "p164a_arg"
+      ],
+      [
+        213,
+        "def",
+        "p164a_loads"
+      ],
+      [
+        213,
+        "def",
+        "p164a_args"
+      ],
+      [
+        213,
+        "def",
+        "p164a_body"
+      ],
+      [
+        213,
+        "def",
+        "p164a_segment"
+      ],
+      [
+        213,
+        "def",
+        "p164a_allowed"
+      ],
+      [
+        213,
+        "def",
+        "p164a_shape"
+      ],
+      [
+        213,
+        "def",
+        "p164a_generic"
+      ],
+      [
+        213,
         "type",
-        "P150LQuoted"
+        "P167Lowered"
       ],
       [
-        183,
+        213,
         "type",
-        "P150LEdge"
+        "P167Catalogue"
       ],
       [
-        183,
-        "def",
-        "p150l_cursor"
+        213,
+        "type",
+        "P167Context"
       ],
       [
-        183,
-        "def",
-        "p150l_newline"
+        213,
+        "type",
+        "P167Demand"
       ],
       [
-        183,
-        "def",
-        "p150l_comment"
+        213,
+        "type",
+        "P167Built"
       ],
       [
-        183,
+        213,
         "def",
-        "p150l_digit"
+        "p167l_fail"
       ],
       [
-        183,
+        213,
         "def",
-        "p150l_word"
+        "p167l_mark"
       ],
       [
-        183,
+        213,
         "def",
-        "p150l_word_done"
+        "p167l_demand"
       ],
       [
-        183,
+        213,
         "def",
-        "p150l_word_end"
+        "p167l_value"
       ],
       [
-        183,
+        213,
         "def",
-        "p150l_quote"
+        "p167l_values"
       ],
       [
-        183,
+        213,
         "def",
-        "p150l_escape"
+        "p167l_args"
       ],
       [
-        183,
+        213,
         "def",
-        "p150l_quoted"
+        "p167l_stmts"
       ],
       [
-        183,
+        213,
         "def",
-        "p150l_quote_end"
+        "p167l_stmt"
       ],
       [
-        183,
+        213,
         "def",
-        "p150l_unterminated"
+        "p167l_direct"
       ],
       [
-        183,
+        213,
         "def",
-        "p150l_other"
+        "p167l_direct_stmt"
       ],
       [
-        183,
+        213,
         "def",
-        "p150l_triple"
+        "p167l_function_demands"
       ],
       [
-        183,
+        213,
         "def",
-        "p150l_other_plain"
+        "p167l_segment_demands"
       ],
       [
-        183,
+        213,
         "def",
-        "p150l_edge"
+        "p167l_present"
       ],
       [
-        183,
+        213,
         "def",
-        "p150l_edge_text"
+        "p167l_private"
       ],
       [
-        183,
+        213,
         "def",
-        "p150l_plus"
+        "p167l_catalogue_put"
       ],
       [
-        183,
+        213,
         "def",
-        "p150l_plus_at"
+        "p167l_catalogue"
       ],
       [
-        183,
+        213,
         "def",
-        "p150l_greater"
+        "p167l_catalogue_name"
       ],
       [
-        183,
+        213,
         "def",
-        "p150l_greater_at"
+        "p167l_factory"
       ],
       [
-        183,
+        213,
         "def",
-        "p150l_symbol"
+        "p167l_family"
       ],
       [
-        183,
+        213,
         "def",
-        "p150l_pair"
+        "p167l_accept"
       ],
       [
-        183,
+        213,
         "def",
-        "p150l_single"
+        "p167l_code"
       ],
       [
-        183,
+        213,
         "def",
-        "p150l_depth"
+        "p167l_dispatch"
       ],
       [
-        183,
+        213,
         "def",
-        "p150l_emit"
+        "p167l_take"
       ],
       [
-        183,
+        213,
         "def",
-        "p150l_emitted"
+        "p167l_loop"
       ],
       [
-        195,
+        213,
         "def",
-        "p151_choose"
+        "p167l_complete"
       ],
       [
-        195,
+        213,
         "def",
-        "p151_roles"
+        "p167l_finish"
       ],
       [
-        195,
+        213,
         "def",
-        "p151_binary"
+        "p167l_finished"
       ],
       [
-        65,
+        213,
         "def",
-        "p152c_nullary"
+        "p167l_catalogued"
       ],
       [
-        65,
+        213,
         "def",
-        "p152c_immediate"
+        "p167l_functions"
       ],
       [
-        65,
+        214,
         "def",
-        "p152c_strings"
+        "p167v_allowed"
       ],
       [
-        65,
+        214,
         "def",
-        "p152c_variant"
+        "p167v_obligation"
       ],
       [
-        65,
+        214,
         "def",
-        "p152c_pair"
+        "p167v_bucket"
       ],
       [
-        65,
+        214,
         "def",
-        "p152c_pairs"
+        "p167v_obligations"
       ],
       [
-        65,
+        214,
         "def",
-        "p152c_fact"
+        "p167v_one"
       ],
       [
-        65,
+        214,
         "def",
-        "p152c_select"
+        "p167v_segments"
       ],
       [
-        65,
+        214,
         "def",
-        "p152c_source"
+        "p167v_segment_done"
       ],
       [
-        65,
+        214,
         "def",
-        "p152c_prior_kind"
+        "p167v_scans"
+      ],
+      [
+        214,
+        "def",
+        "p167v_catalogued"
+      ],
+      [
+        214,
+        "def",
+        "p167v_original"
+      ],
+      [
+        214,
+        "def",
+        "p167v_private"
+      ],
+      [
+        214,
+        "def",
+        "p167live_eligible"
+      ],
+      [
+        214,
+        "def",
+        "p167ob_permission"
+      ],
+      [
+        214,
+        "def",
+        "p167ob_seed_checked"
+      ],
+      [
+        214,
+        "def",
+        "p167ob_seed_verify"
+      ],
+      [
+        214,
+        "def",
+        "p167ob_remaining"
+      ],
+      [
+        214,
+        "def",
+        "p167ob_direct"
+      ],
+      [
+        214,
+        "def",
+        "p167ob_final"
+      ],
+      [
+        214,
+        "def",
+        "p168_scalars"
+      ],
+      [
+        214,
+        "def",
+        "p168_scalar_ready"
+      ],
+      [
+        214,
+        "def",
+        "p168_stats"
+      ],
+      [
+        214,
+        "def",
+        "p168_finished"
+      ],
+      [
+        214,
+        "def",
+        "p168_finish_functions"
+      ],
+      [
+        214,
+        "def",
+        "p168_retry"
+      ],
+      [
+        214,
+        "def",
+        "p168_scalar_verified"
+      ],
+      [
+        214,
+        "def",
+        "p168_scalar_result"
+      ],
+      [
+        214,
+        "def",
+        "p168_inlined"
+      ],
+      [
+        214,
+        "def",
+        "p168_closed"
+      ],
+      [
+        214,
+        "def",
+        "p168_candidates"
+      ],
+      [
+        214,
+        "def",
+        "p168_selected"
+      ],
+      [
+        214,
+        "def",
+        "p168_seed_verified"
+      ],
+      [
+        214,
+        "def",
+        "p168_scanned"
+      ],
+      [
+        214,
+        "def",
+        "p168_prepared"
+      ],
+      [
+        214,
+        "def",
+        "p168_catalogued"
+      ],
+      [
+        214,
+        "def",
+        "p168_request_mode"
+      ],
+      [
+        214,
+        "type",
+        "P168TSelection"
+      ],
+      [
+        214,
+        "def",
+        "p168t_has"
+      ],
+      [
+        214,
+        "def",
+        "p168t_accept"
+      ],
+      [
+        214,
+        "def",
+        "p168t_target"
+      ],
+      [
+        214,
+        "def",
+        "p168t_walk"
+      ],
+      [
+        214,
+        "def",
+        "p168t_selected"
+      ],
+      [
+        214,
+        "def",
+        "p169q_metadata"
+      ],
+      [
+        214,
+        "def",
+        "p169q_import"
+      ],
+      [
+        214,
+        "type",
+        "P169ScalarPlan"
+      ],
+      [
+        214,
+        "def",
+        "p169q_plans"
+      ],
+      [
+        214,
+        "def",
+        "p169q_selection"
+      ],
+      [
+        214,
+        "def",
+        "p169q_scalars"
+      ],
+      [
+        214,
+        "def",
+        "p169q_scalar_ready"
+      ],
+      [
+        214,
+        "def",
+        "p169q_inlined"
+      ],
+      [
+        214,
+        "def",
+        "p169q_closed"
+      ],
+      [
+        214,
+        "def",
+        "p169o_next"
+      ],
+      [
+        214,
+        "def",
+        "p169o_walk"
+      ],
+      [
+        214,
+        "def",
+        "p169o_selected"
+      ],
+      [
+        214,
+        "def",
+        "p169o_closed"
+      ],
+      [
+        214,
+        "def",
+        "p169o_certified"
+      ],
+      [
+        215,
+        "def",
+        "p168v_callable"
+      ],
+      [
+        215,
+        "def",
+        "p168v_functions"
+      ],
+      [
+        215,
+        "def",
+        "p168j_eligible"
+      ],
+      [
+        215,
+        "def",
+        "p168j_insert"
+      ],
+      [
+        215,
+        "def",
+        "p168j_imports"
+      ],
+      [
+        215,
+        "def",
+        "p168j_candidates"
+      ],
+      [
+        215,
+        "def",
+        "p168j_registry"
+      ],
+      [
+        215,
+        "def",
+        "p168j_forward"
+      ],
+      [
+        215,
+        "def",
+        "p168j_forward_if"
+      ],
+      [
+        215,
+        "def",
+        "p168j_forwards"
+      ],
+      [
+        215,
+        "type",
+        "P169Prepared"
+      ],
+      [
+        215,
+        "def",
+        "p169s_fail"
+      ],
+      [
+        215,
+        "def",
+        "p169s_registered"
+      ],
+      [
+        215,
+        "def",
+        "p169s_seeded"
+      ],
+      [
+        215,
+        "def",
+        "p169s_lowered"
+      ],
+      [
+        215,
+        "def",
+        "p169s_prefix_written"
+      ],
+      [
+        215,
+        "def",
+        "p169s_prefix"
+      ],
+      [
+        215,
+        "def",
+        "p169s_print"
+      ],
+      [
+        215,
+        "def",
+        "p169sv_refused"
+      ],
+      [
+        215,
+        "def",
+        "p169a_seeded"
+      ],
+      [
+        215,
+        "def",
+        "p169a_namespace"
+      ],
+      [
+        215,
+        "def",
+        "p169a_checked"
+      ],
+      [
+        215,
+        "def",
+        "p169a_view"
+      ],
+      [
+        215,
+        "def",
+        "p169a_original"
+      ],
+      [
+        215,
+        "def",
+        "p169c_scalar"
+      ],
+      [
+        215,
+        "def",
+        "p169c_selected"
+      ],
+      [
+        215,
+        "def",
+        "p169c_output"
+      ],
+      [
+        215,
+        "def",
+        "p169c_emitted"
+      ],
+      [
+        216,
+        "def",
+        "p169n_prepared"
+      ],
+      [
+        216,
+        "def",
+        "p169n_compile"
+      ],
+      [
+        216,
+        "def",
+        "p169n_request"
+      ],
+      [
+        216,
+        "def",
+        "p169n_args"
+      ],
+      [
+        216,
+        "def",
+        "p169np_admitted"
+      ],
+      [
+        216,
+        "def",
+        "p169np_plan"
+      ],
+      [
+        217,
+        "def",
+        "p156cp_continue"
+      ],
+      [
+        217,
+        "def",
+        "p156cp_stored"
+      ],
+      [
+        217,
+        "def",
+        "p156cp_put"
+      ],
+      [
+        217,
+        "def",
+        "p156cp_publish"
+      ],
+      [
+        217,
+        "def",
+        "p156cp_next"
+      ],
+      [
+        217,
+        "def",
+        "p156cp_guard"
+      ],
+      [
+        217,
+        "def",
+        "p156cp_walk"
+      ],
+      [
+        217,
+        "def",
+        "p156cp_start"
       ]
     ],
     "removed": [],
-    "scope": "Complete Phase152 maintained inventory change versus 0bdc7f0; protected112 unchanged; native qualification recorded in implementation/phase152/README.md."
+    "scope": "Ordering proposal only; source checking and target qualification remain required.",
+    "ordering": "Existing declarations retain their order; additions retain the qualified native source order."
   }
 }

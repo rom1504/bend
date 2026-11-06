@@ -159,6 +159,7 @@ def p143cp_replay(+book: List<&2,KDef>, updates: List<&2,KDef>, +logging: Bool) 
     case Nil{}: nt_choose(List<&2,KDef>,logging,u => p143cp_canon(book),u => book)
     case Con{definition,rest}: p143cp_replay(p143cp_put(book,definition,logging),rest,logging)
 
+
 @unsafe
 def p143cb_resume_state(+state: KBasePrefixState, +book: List<&2,KDef>, +checked: List<&2,KDef>,
     +seen: List<&2,KDef>, +suffix: List<&2,KDef>, +bound: U32, +logging: Bool) -> DChecking:
@@ -166,8 +167,8 @@ def p143cb_resume_state(+state: KBasePrefixState, +book: List<&2,KDef>, +checked
     case KBasePrefixState{base_bound,delta,stamp,patches,ready}:
       +declared = check_declarations(suffix,kw_bound_book(book,U32.add(bound,stamp)))
       +ordered = base_prefix_world_order(declared,base_prefix_world_raw(book),suffix)
-      +world: KWorld = KWorld{ordered,Nil{},KFreshKnown{U32.add(U32.add(bound,delta),1)},checked}
-      p143cp_result(p143cp_walk(p143cs_plan(suffix),world,kw_bound_book(seen,bound),logging),logging)
+      +world : KWorld = KWorld{ordered,Nil{},KFreshKnown{U32.add(U32.add(bound,delta),1)},checked}
+      p143cp_result(p156cp_start(p143cs_plan(suffix),world,kw_bound_book(seen,bound),logging),logging)
 
 
 @unsafe

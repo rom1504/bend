@@ -1,0 +1,49 @@
+{
+  "cwd": "/home/ai/bend2/build/publish/bend",
+  "scope": "Phase169 real nonempty checker workload, independent full-result and frozen digest oracle; output timing only, separate from compilation",
+  "inputs": [
+    "selfhost/build/phase169/checker-oracle01/report.json",
+    "selfhost/src/runtime/qbe/runtime.c",
+    "selfhost/build/phase169/checker-controls01/report.json"
+  ],
+  "workloads": [
+    {
+      "name": "checker32",
+      "timeoutSeconds": 30,
+      "variants": [
+        {
+          "name": "baseline",
+          "command": [
+            "selfhost/build/phase169/checker-baseline-machine01/program",
+            "--threads",
+            "1",
+            "--gpu",
+            "off"
+          ],
+          "stdout": "experiments/phase169/checker32.expected",
+          "stderr": "selfhost/build/phase169/checker-candidate01/compiler.stderr",
+          "inputs": [
+            "selfhost/build/phase169/checker-baseline-machine01/report.json",
+            "selfhost/build/phase169/checker-source01/compiler.bend"
+          ]
+        },
+        {
+          "name": "candidate",
+          "command": [
+            "selfhost/build/phase169/checker-candidate01/program",
+            "--threads",
+            "1",
+            "--gpu",
+            "off"
+          ],
+          "stdout": "experiments/phase169/checker32.expected",
+          "stderr": "selfhost/build/phase169/checker-candidate01/compiler.stderr",
+          "inputs": [
+            "selfhost/build/phase169/checker-candidate01/report.json",
+            "selfhost/build/phase169/checker-source01/compiler.bend"
+          ]
+        }
+      ]
+    }
+  ]
+}

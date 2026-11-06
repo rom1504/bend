@@ -1,0 +1,54 @@
+{
+  "cwd": "/home/ai/bend2/build/publish/bend",
+  "sampler": "/home/ai/bend2/build/publish/bend/selfhost/build/phase159/sampler01/sampler.so",
+  "scope": "Phase169 N1 complete canonical source-to-QBE compiler child, cache Base, one main-thread32ms diagnostic capture. Exact retained unprofiled same-image SSA is a perturbation gate, not independent semantic proof. Excludes QBE/as/link and has no first-output/stage boundary.",
+  "inputs": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/native-n1/report.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/canonical-candidate01/report.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase159/sampler01/report.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase159/sampler01/sample.c",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase159/sampler01/method.py",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/freeze.py",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/run.py",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/analyze.py",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/elf.py",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/compare.py",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/render.py",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/sample.c"
+  ],
+  "workloads": [
+    {
+      "name": "canonical-compiler",
+      "timeoutSeconds": 300,
+      "variants": [
+        {
+          "name": "n1-imports",
+          "command": [
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/native-n1/program",
+            "--threads",
+            "1",
+            "--gpu",
+            "off",
+            "--",
+            "phase111",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/composite01/compiler.bend",
+            "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+            "cache",
+            "/home/ai/bend2/build/publish/bend/selfhost/.assets/base/base.p130",
+            "p130-word-pair-v1:p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+          ],
+          "dispatchInstrumentation": false,
+          "inputs": [
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/composite01/compiler.bend",
+            "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+            "/home/ai/bend2/build/publish/bend/selfhost/.assets/base/base.p130",
+            "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/native-source01/compiler.bend"
+          ],
+          "stdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/canonical-candidate01/program.ssa",
+          "stderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/canonical-candidate01/compiler.stderr"
+        }
+      ]
+    }
+  ]
+}

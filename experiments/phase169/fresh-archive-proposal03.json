@@ -1,0 +1,502 @@
+{
+  "kind": "phase169-additional-selective-archive-proposal",
+  "version": 3,
+  "status": "metadata-only-awaiting-root-review-no-archive-or-prune",
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/experiments/phase169/archive-selected-v02.py",
+    "bytes": 6877,
+    "sha256": "f1b5463bbdfa2e1d650da65d896da8268d89de1b8e58f7d7a0a34a68b36a79b9"
+  },
+  "archiveVerifier": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/archive-v02.py",
+    "bytes": 18412,
+    "sha256": "3238e0774c6c21c3de6c07bcbd71e469cbb23aaba01f99da0cb1e9f51990ad9f"
+  },
+  "archiveBudgetPerRootBytes": 67108864,
+  "roots": [
+    {
+      "name": "p144-final03-n1",
+      "root": "selfhost/build/phase134/p144-final03-n1",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/p144-final03-n1/report.json",
+        "bytes": 14517,
+        "sha256": "bd6a45ccd3b5483ec8c71f14496635611fc2a4fabdd4fc05366752d026af9922"
+      },
+      "guards": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/p144-final03-n1-guard/process.json",
+          "bytes": 1155,
+          "sha256": "31b53f84ba9243c59bd34aebfab5c141480b29e2e80d575f6dd30deaff813797"
+        }
+      ],
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase134/p144-final03-n1/program.ssa",
+          "bytes": 117094086,
+          "sha256": "248328cd9ee8a68c6eb0752c769e0449fa0dc84a73b4ae8b08bf645b1bf5e8f4",
+          "allocatedBytes": 117100544,
+          "links": 1,
+          "mode": 420
+        },
+        {
+          "file": "selfhost/build/phase134/p144-final03-n1/program.s",
+          "bytes": 86489465,
+          "sha256": "87a78a95fea2978f5865e0ad4244c9b0694708ef37265e606aef90f7e9f1853c",
+          "allocatedBytes": 86495232,
+          "links": 1,
+          "mode": 420
+        },
+        {
+          "file": "selfhost/build/phase134/p144-final03-n1/program.o",
+          "bytes": 25398960,
+          "sha256": "fa100aa01fd33264003d0cb4401cedc19123d0389faaf502f6899ae4c3e6f058",
+          "allocatedBytes": 25403392,
+          "links": 1,
+          "mode": 420
+        }
+      ],
+      "allocatedBytes": 228999168,
+      "captureCommand": [
+        "python3",
+        "-B",
+        "experiments/phase169/archive-selected-v02.py",
+        "--proposal",
+        "experiments/phase169/fresh-archive-proposal03.json",
+        "--name",
+        "p144-final03-n1",
+        "--out",
+        "selfhost/build-retention/phase169/fresh03-p144-final03-n1"
+      ],
+      "captureShell": "python3 -B experiments/phase169/archive-selected-v02.py --proposal experiments/phase169/fresh-archive-proposal03.json --name p144-final03-n1 --out selfhost/build-retention/phase169/fresh03-p144-final03-n1",
+      "plan": "selfhost/build-retention/phase169/fresh03-p144-final03-n1/verified/plan.json",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase169/fresh03-p144-final03-n1/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/fresh03-p144-final03-n1/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase169/fresh03-p144-final03-n1/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/fresh03-p144-final03-n1/restored"
+      ]
+    },
+    {
+      "name": "p144-integrated-n1-01",
+      "root": "selfhost/build/phase134/p144-integrated-n1-01",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/p144-integrated-n1-01/report.json",
+        "bytes": 14828,
+        "sha256": "1cb41d89c0c40d7e3ee6086a3f147cfad10b7cae85eff885082536605d520885"
+      },
+      "guards": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/integrated-n1-acquire01-guard/process.json",
+          "bytes": 939,
+          "sha256": "0e234896d638b61e63c94d0c22c247fa5c89cc5235497170cb90766965b93d7c"
+        }
+      ],
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase134/p144-integrated-n1-01/program.ssa",
+          "bytes": 117055961,
+          "sha256": "4b913b26a9f007aa9296cb99be189f636d9ff32b49a6150c634219859764394a",
+          "allocatedBytes": 117063680,
+          "links": 1,
+          "mode": 420
+        },
+        {
+          "file": "selfhost/build/phase134/p144-integrated-n1-01/program.s",
+          "bytes": 86493187,
+          "sha256": "d8c48b2c0cbd95aa60f9c6ac4a53bfb179e797a1d7dd2a4ccb7fa385402e5be3",
+          "allocatedBytes": 86499328,
+          "links": 1,
+          "mode": 420
+        },
+        {
+          "file": "selfhost/build/phase134/p144-integrated-n1-01/program.o",
+          "bytes": 25397120,
+          "sha256": "f08bda546c00a7671634d66eb19ac4778b132701fe49589c66da3030218f3269",
+          "allocatedBytes": 25403392,
+          "links": 1,
+          "mode": 420
+        }
+      ],
+      "allocatedBytes": 228966400,
+      "captureCommand": [
+        "python3",
+        "-B",
+        "experiments/phase169/archive-selected-v02.py",
+        "--proposal",
+        "experiments/phase169/fresh-archive-proposal03.json",
+        "--name",
+        "p144-integrated-n1-01",
+        "--out",
+        "selfhost/build-retention/phase169/fresh03-p144-integrated-n1-01"
+      ],
+      "captureShell": "python3 -B experiments/phase169/archive-selected-v02.py --proposal experiments/phase169/fresh-archive-proposal03.json --name p144-integrated-n1-01 --out selfhost/build-retention/phase169/fresh03-p144-integrated-n1-01",
+      "plan": "selfhost/build-retention/phase169/fresh03-p144-integrated-n1-01/verified/plan.json",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase169/fresh03-p144-integrated-n1-01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/fresh03-p144-integrated-n1-01/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase169/fresh03-p144-integrated-n1-01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/fresh03-p144-integrated-n1-01/restored"
+      ]
+    },
+    {
+      "name": "p144-final04-n1",
+      "root": "selfhost/build/phase134/p144-final04-n1",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/p144-final04-n1/report.json",
+        "bytes": 14456,
+        "sha256": "ce2986ed167bb0eef40fa676f2fab37fbb44a2a7749521e9bd484fe8fb8518e8"
+      },
+      "guards": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/p144-final04-n1-guard/process.json",
+          "bytes": 1141,
+          "sha256": "67de0fe0ec8623646e1b8fdb0a8a5d0656a1db4f97d67f0b61956d32484fa312"
+        }
+      ],
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase134/p144-final04-n1/program.ssa",
+          "bytes": 117239738,
+          "sha256": "a3e69ca11f68890508a0c6dff28d98cc8c97867690e1c9729c25f9cb710f0704",
+          "allocatedBytes": 117243904,
+          "links": 1,
+          "mode": 420
+        },
+        {
+          "file": "selfhost/build/phase134/p144-final04-n1/program.s",
+          "bytes": 86670774,
+          "sha256": "f91f2176dc339ed109d70e197d09056dbd709589b12f1bd087a5917ee9097ed2",
+          "allocatedBytes": 86675456,
+          "links": 1,
+          "mode": 420
+        },
+        {
+          "file": "selfhost/build/phase134/p144-final04-n1/program.o",
+          "bytes": 25454072,
+          "sha256": "409922fd1e5d9ac129f420ee00b64c98df83f6f71dd602fbc197d7e0cdc8ce66",
+          "allocatedBytes": 25456640,
+          "links": 1,
+          "mode": 420
+        }
+      ],
+      "allocatedBytes": 229376000,
+      "captureCommand": [
+        "python3",
+        "-B",
+        "experiments/phase169/archive-selected-v02.py",
+        "--proposal",
+        "experiments/phase169/fresh-archive-proposal03.json",
+        "--name",
+        "p144-final04-n1",
+        "--out",
+        "selfhost/build-retention/phase169/fresh03-p144-final04-n1"
+      ],
+      "captureShell": "python3 -B experiments/phase169/archive-selected-v02.py --proposal experiments/phase169/fresh-archive-proposal03.json --name p144-final04-n1 --out selfhost/build-retention/phase169/fresh03-p144-final04-n1",
+      "plan": "selfhost/build-retention/phase169/fresh03-p144-final04-n1/verified/plan.json",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase169/fresh03-p144-final04-n1/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/fresh03-p144-final04-n1/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase169/fresh03-p144-final04-n1/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/fresh03-p144-final04-n1/restored"
+      ]
+    },
+    {
+      "name": "p147-integrated-plan04-image",
+      "root": "selfhost/build/phase147/integrated-plan04/image",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-plan04/image/report.json",
+        "bytes": 17086,
+        "sha256": "a122fc5f3964a192f8f6e1d0e43a3d46bf38f4703487db3093a792c26f86e380"
+      },
+      "guards": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-plan04/image-guard/process.json",
+          "bytes": 2923,
+          "sha256": "b354ad23b372593e40c1baffd2cb38b459316b68a3c107e580f339e480ca12e6"
+        }
+      ],
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase147/integrated-plan04/image/program.ssa",
+          "bytes": 119081603,
+          "sha256": "2c468b86fbcbdbddef86bf8705ffe6dfb90fb610c5e40e2adad257185d17c162",
+          "allocatedBytes": 119087104,
+          "links": 1,
+          "mode": 420
+        },
+        {
+          "file": "selfhost/build/phase147/integrated-plan04/image/program.s",
+          "bytes": 88146845,
+          "sha256": "4919730dc86a5c5cf15766b99e9033ed48a8f7a3229ff4acb7ec26a09dfa6559",
+          "allocatedBytes": 88154112,
+          "links": 1,
+          "mode": 420
+        },
+        {
+          "file": "selfhost/build/phase147/integrated-plan04/image/program.o",
+          "bytes": 25881736,
+          "sha256": "eb28eba606655da2a6378a5dda82e1e3310ec66f865d15198fc1fe97e6e2b834",
+          "allocatedBytes": 25882624,
+          "links": 1,
+          "mode": 420
+        }
+      ],
+      "allocatedBytes": 233123840,
+      "captureCommand": [
+        "python3",
+        "-B",
+        "experiments/phase169/archive-selected-v02.py",
+        "--proposal",
+        "experiments/phase169/fresh-archive-proposal03.json",
+        "--name",
+        "p147-integrated-plan04-image",
+        "--out",
+        "selfhost/build-retention/phase169/fresh03-p147-integrated-plan04-image"
+      ],
+      "captureShell": "python3 -B experiments/phase169/archive-selected-v02.py --proposal experiments/phase169/fresh-archive-proposal03.json --name p147-integrated-plan04-image --out selfhost/build-retention/phase169/fresh03-p147-integrated-plan04-image",
+      "plan": "selfhost/build-retention/phase169/fresh03-p147-integrated-plan04-image/verified/plan.json",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase169/fresh03-p147-integrated-plan04-image/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/fresh03-p147-integrated-plan04-image/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase169/fresh03-p147-integrated-plan04-image/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/fresh03-p147-integrated-plan04-image/restored"
+      ]
+    },
+    {
+      "name": "p147-integrated-plan05-image",
+      "root": "selfhost/build/phase147/integrated-plan05/image",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-plan05/image/report.json",
+        "bytes": 17099,
+        "sha256": "44704112b3e94fab254802667a9435065940c8fa9873b2930951e0c5645071e0"
+      },
+      "guards": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-plan05/image-guard/process.json",
+          "bytes": 2924,
+          "sha256": "ce23df458cd72f0b63c3545e9a3843b2f9a717a42758ce7c589fc9d010eea00c"
+        }
+      ],
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase147/integrated-plan05/image/program.ssa",
+          "bytes": 119544406,
+          "sha256": "76eb1a7c500b19c86cbeaa523f4e0066cafa2588b02f729e1909ef35902c2a2f",
+          "allocatedBytes": 119549952,
+          "links": 1,
+          "mode": 420
+        },
+        {
+          "file": "selfhost/build/phase147/integrated-plan05/image/program.s",
+          "bytes": 88466412,
+          "sha256": "07e650ff00d5571657c1dd1ed8c6c8fbb8eaa65429ec2d3f04420a3058d30c38",
+          "allocatedBytes": 88473600,
+          "links": 1,
+          "mode": 420
+        },
+        {
+          "file": "selfhost/build/phase147/integrated-plan05/image/program.o",
+          "bytes": 25983392,
+          "sha256": "d4d55e9a4ba1a3a4d82b3b4c6adb019ceae91db5a3c623bb0ec4ae982fccc918",
+          "allocatedBytes": 25985024,
+          "links": 1,
+          "mode": 420
+        }
+      ],
+      "allocatedBytes": 234008576,
+      "captureCommand": [
+        "python3",
+        "-B",
+        "experiments/phase169/archive-selected-v02.py",
+        "--proposal",
+        "experiments/phase169/fresh-archive-proposal03.json",
+        "--name",
+        "p147-integrated-plan05-image",
+        "--out",
+        "selfhost/build-retention/phase169/fresh03-p147-integrated-plan05-image"
+      ],
+      "captureShell": "python3 -B experiments/phase169/archive-selected-v02.py --proposal experiments/phase169/fresh-archive-proposal03.json --name p147-integrated-plan05-image --out selfhost/build-retention/phase169/fresh03-p147-integrated-plan05-image",
+      "plan": "selfhost/build-retention/phase169/fresh03-p147-integrated-plan05-image/verified/plan.json",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase169/fresh03-p147-integrated-plan05-image/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/fresh03-p147-integrated-plan05-image/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase169/fresh03-p147-integrated-plan05-image/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/fresh03-p147-integrated-plan05-image/restored"
+      ]
+    },
+    {
+      "name": "p147-cold-baseline01",
+      "root": "selfhost/build/phase147/cold-baseline01",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/cold-baseline01/report.json",
+        "bytes": 16899,
+        "sha256": "35bf49219fff66dcb829910fcd08cbbcfefdd1f4919f798b00891a75f9c6e1c8"
+      },
+      "guards": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/guards/cold-baseline01/process.json",
+          "bytes": 2765,
+          "sha256": "f9315d4f0a0640fc1379a797240edfe2bca5d1fb724608b73cd07320c0d517f2"
+        }
+      ],
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase147/cold-baseline01/program.ssa",
+          "bytes": 117232528,
+          "sha256": "dceae94a7659ad1ff58395ed34914971422ff9e5841668e910cd95e6b0914010",
+          "allocatedBytes": 117239808,
+          "links": 1,
+          "mode": 420
+        },
+        {
+          "file": "selfhost/build/phase147/cold-baseline01/program.s",
+          "bytes": 86620520,
+          "sha256": "b622de4f7bdf4955fc305651fff0fde386533c009f97769a13da54117baab1e8",
+          "allocatedBytes": 86626304,
+          "links": 1,
+          "mode": 420
+        },
+        {
+          "file": "selfhost/build/phase147/cold-baseline01/program.o",
+          "bytes": 25437152,
+          "sha256": "04575430f750d2ee7ef69e1192ec1d8a8102814f0c0fac912029ded60f2aaf19",
+          "allocatedBytes": 25440256,
+          "links": 1,
+          "mode": 420
+        }
+      ],
+      "allocatedBytes": 229306368,
+      "captureCommand": [
+        "python3",
+        "-B",
+        "experiments/phase169/archive-selected-v02.py",
+        "--proposal",
+        "experiments/phase169/fresh-archive-proposal03.json",
+        "--name",
+        "p147-cold-baseline01",
+        "--out",
+        "selfhost/build-retention/phase169/fresh03-p147-cold-baseline01"
+      ],
+      "captureShell": "python3 -B experiments/phase169/archive-selected-v02.py --proposal experiments/phase169/fresh-archive-proposal03.json --name p147-cold-baseline01 --out selfhost/build-retention/phase169/fresh03-p147-cold-baseline01",
+      "plan": "selfhost/build-retention/phase169/fresh03-p147-cold-baseline01/verified/plan.json",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase169/fresh03-p147-cold-baseline01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/fresh03-p147-cold-baseline01/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase169/fresh03-p147-cold-baseline01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/fresh03-p147-cold-baseline01/restored"
+      ]
+    }
+  ],
+  "totals": {
+    "roots": 6,
+    "files": 18,
+    "allocatedBytes": 1383780352
+  },
+  "dependencyAudit": [
+    "Bounded direct-file census only: 18 exclusive regular generated leaves, no symlink/hardlink/xattr selection.",
+    "Every original product SHA/size is present in its complete build report; exact writer process is complete/exit0. Current byte hashing deferred to capture after active target ends.",
+    "No selected root reference found in maintained selfhost/tools/build sources, current binding manifest, or Phase169 methods/recipes inspected before writing this proposal.",
+    "Qualified Phase152 and all current Phase168/169 artifacts excluded. Every ELF/source/API/receipt remains hot.",
+    "Historical Phase144/147 relinking or re-symbolization may need explicit restore of these older object/SSA products; retained ELF/source/profile evidence is preserved."
+  ],
+  "preconditions": [
+    "Root review required; wait for all targets to finish before capture/apply.",
+    "Capture one root, verify exact member/current identity, root apply, then next root to keep archive scratch bounded.",
+    "64MiB archive cap per root; actual compression/net reclaim measured only after capture.",
+    "Apply/restore only through maintained archive-v02 verified plans. No deletion of directories, images, sources, APIs, receipts or execution lock."
+  ],
+  "estimatedNetReclaimBytes": {
+    "low": 1163579392,
+    "high": 1226493952
+  },
+  "estimateScope": "Estimated 150-210MiB retained archives against 1,319.68MiB raw allocation; not a measured gain.",
+  "runner": {
+    "file": "/home/ai/bend2/build/publish/bend/experiments/phase169/fresh-retention-plan03.py",
+    "bytes": 2249,
+    "sha256": "a1f13455cbfe61ec50976c41686eb3dd3ac10ee82e8364404190ff4a22721b0e"
+  }
+}

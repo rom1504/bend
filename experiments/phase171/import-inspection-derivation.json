@@ -1,0 +1,21 @@
+{
+  "kind": "phase171-import-inspection-derivation",
+  "complete": true,
+  "targetsRun": false,
+  "parent": {
+    "file": "selfhost/tests/phase171/request.mjs",
+    "bytes": 8390,
+    "sha256": "18cae08ba8628af5efb7186794b6d9d7f8ea72ccc92fc123fb265e3175f085aa"
+  },
+  "successor": {
+    "file": "selfhost/tests/phase171/inspect-imports.mjs",
+    "bytes": 7671,
+    "sha256": "905a3d1c6eb59e7d7efb1afe41204ec0a2c8ea6e15e433084b56f86f2b2158b4"
+  },
+  "changes": [
+    "Copy exact checked API/assembly/Base/input authentication and frontend call boundary.",
+    "Remove emission/control mode switch and byte equality code.",
+    "Observe p171_request/p171c_summary records; count actual typed P113DCall sites and dependency closure.",
+    "Do not emit, run native code, infer dynamic counts or claim final caller verification."
+  ]
+}

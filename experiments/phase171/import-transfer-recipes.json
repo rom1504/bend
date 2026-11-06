@@ -1,0 +1,244 @@
+{
+  "kind": "phase171-import-transfer-recipes",
+  "version": 1,
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase171/inspect-imports.mjs",
+      "bytes": 7671,
+      "sha256": "905a3d1c6eb59e7d7efb1afe41204ec0a2c8ea6e15e433084b56f86f2b2158b4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/hosted.mjs",
+      "bytes": 13187,
+      "sha256": "fc0aa95be44aff8b7a00f0821055151cef82fae6df087fa6c0f0fc26da6bdf3b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/manifests/assets-c-request.json",
+      "bytes": 19291,
+      "sha256": "ab6680891a7afc663f78514f1a1bc6f0ed43a6d209411a2d7b45685d9811bdca"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/import-api02/report.json",
+      "bytes": 5147,
+      "sha256": "313088906fa945e70ccb064b1c7b1fb90f4e3de9aad82f3a3d73ce0093b1ba90"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/import-source02/manifest.json",
+      "bytes": 3964096,
+      "sha256": "2896463a43df8da034e365b2ebe36a93ebaf61ec3a780d493bd37dc54cafcdee"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase171/recursive-tree.bend",
+      "bytes": 940,
+      "sha256": "71b79a2c178b25e14d5af9e56bf84eb0fa9ee1e1d32a0da1c735ab59ef0d0920"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/verifier-source03/compiler.bend",
+      "bytes": 39333,
+      "sha256": "ff6b4083aa2f3e034f3b4f8e43dfb25d93a4f524685934e0ee13845278033ef3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-map-churn-128.bend",
+      "bytes": 3659,
+      "sha256": "cd22c831c180c0de12d84aeb80debf4881d08cbd18fcf8f6d634153fba2feb03"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-source02/compiler.bend",
+      "bytes": 15408,
+      "sha256": "4627d3b8c7b8291277574a1fc68bdf6afc972be1e32f8d1d8620c62eb4bdf181"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+      "bytes": 88979072,
+      "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "bytes": 75064,
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+      "bytes": 119320,
+      "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/bend.ts",
+      "bytes": 138101,
+      "sha256": "1d133151652b597a1a035c77c172475e6de096da37f3b9e3adc23c2f75bdfe49"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/comp.ts",
+      "bytes": 185124,
+      "sha256": "2b13224ba09a9e39e37cccf06e449c1bdafe5e03a81641654f7d0e455507629c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/main.ts",
+      "bytes": 35211,
+      "sha256": "407c0196a47e464640c6557cb06d230016270a40f28ea4250f00936ab79c2f8e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/safe.ts",
+      "bytes": 65468,
+      "sha256": "bf495d64c03caa7a2558aaae5e172cd7743b9aa5470c4d33ad86634e23d81ffc"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "tree-upstream-emit",
+      "argv": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/main.ts",
+        "/home/ai/bend2/build/publish/bend/selfhost/tests/phase171/recursive-tree.bend",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/tree-upstream-oracle01/program.c"
+      ],
+      "env": {
+        "BEND_NO_TELEMETRY": "1"
+      },
+      "seconds": 30,
+      "freshOutput": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/tree-upstream-oracle01",
+      "requireExit": 0,
+      "scope": "Pinned upstream source check and C emission; root guard creates output directory."
+    },
+    {
+      "id": "tree-upstream-build",
+      "argv": [
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "-isystem",
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+        "-std=c11",
+        "-O3",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/tree-upstream-oracle01/program.c",
+        "-lpthread",
+        "-lm",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/tree-upstream-oracle01/program"
+      ],
+      "seconds": 30,
+      "requireExit": 0,
+      "scope": "Exact maintained pinned C toolchain construction policy."
+    },
+    {
+      "id": "tree-upstream-run",
+      "argv": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/tree-upstream-oracle01/program"
+      ],
+      "seconds": 10,
+      "requireExit": 0,
+      "stdoutOracle": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/tree-upstream-oracle01/stdout",
+      "stderrExpected": "",
+      "semanticExpected": [
+        127,
+        8128,
+        8128,
+        127
+      ],
+      "scope": "Capture full independent upstream stdout as oracle; compare QBE baseline/treatment stdout bytes to it. No timing claim."
+    },
+    {
+      "id": "inspect-tree",
+      "argv": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tests/phase171/inspect-imports.mjs",
+        "--receipt",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/import-api02/report.json",
+        "--assembly",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/import-source02/manifest.json",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/tests/phase171/recursive-tree.bend",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/import-inspect-tree01"
+      ],
+      "seconds": 60,
+      "scope": "Only producer structure and call-site closure; not final verification or dynamic frequency."
+    },
+    {
+      "id": "inspect-verifier",
+      "argv": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tests/phase171/inspect-imports.mjs",
+        "--receipt",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/import-api02/report.json",
+        "--assembly",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/import-source02/manifest.json",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/verifier-source03/compiler.bend",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/import-inspect-verifier01"
+      ],
+      "seconds": 90,
+      "scope": "Only producer structure and call-site closure; not final verification or dynamic frequency."
+    },
+    {
+      "id": "inspect-map",
+      "argv": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tests/phase171/inspect-imports.mjs",
+        "--receipt",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/import-api02/report.json",
+        "--assembly",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/import-source02/manifest.json",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-map-churn-128.bend",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/import-inspect-map01"
+      ],
+      "seconds": 60,
+      "scope": "Only producer structure and call-site closure; not final verification or dynamic frequency."
+    },
+    {
+      "id": "inspect-lookup",
+      "argv": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tests/phase171/inspect-imports.mjs",
+        "--receipt",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/import-api02/report.json",
+        "--assembly",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/import-source02/manifest.json",
+        "--source",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-source02/compiler.bend",
+        "--out",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/import-inspect-lookup01"
+      ],
+      "seconds": 90,
+      "scope": "Only producer structure and call-site closure; not final verification or dynamic frequency."
+    }
+  ],
+  "guard": {
+    "owner": "root",
+    "cpu": "3",
+    "serial": true,
+    "maxRssGiB": 2,
+    "availableFloorGiB": 16,
+    "diskReserveGiB": 5
+  },
+  "oracles": {
+    "tree": {
+      "upstreamRequired": true,
+      "fullValue": [
+        127,
+        8128,
+        8128,
+        127
+      ]
+    },
+    "verifier": {
+      "stdout": "768\n"
+    },
+    "lookup": {
+      "stdout": "3279346725\n"
+    },
+    "map": {
+      "validator": {
+        "file": "/home/ai/bend2/build/publish/bend/experiments/phase167/tools/map-oracle.py",
+        "bytes": 1702,
+        "sha256": "83332fe381f8355cf93b9443e25f1210cca79af0f35074cc8920349a67bdcd4f"
+      },
+      "scope": "Independent semantic fields; elapsed timing text is not an exact stdout oracle."
+    }
+  },
+  "decision": "First require imports>0 and actual added callers transitively depending on imports. Then compare complete native oracles and timings; no early-integration/compiler-speed claim from static counts."
+}

@@ -1,0 +1,48 @@
+{
+  "cwd": "/home/ai/bend2/build/publish/bend",
+  "sampler": "/home/ai/bend2/build/publish/bend/selfhost/build/phase159/sampler01/sampler.so",
+  "scope": "Phase171 installed Phase170 N2, exact full maintained source and Q3 output. Complete compiler child only; excludes QBE/as/link. One physical 32ms sample; no stage or allocation attribution implied.",
+  "inputs": [
+    "/home/ai/bend2/build/publish/bend/selfhost/manifests/current.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/native-chain-final/n2/report.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/native-chain-final/q3/report.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase159/sampler01/report.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase159/sampler01/sample.c",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase159/sampler01/method.py",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/sample.c"
+  ],
+  "workloads": [
+    {
+      "name": "full-maintained",
+      "timeoutSeconds": 300,
+      "variants": [
+        {
+          "name": "installed-n2",
+          "command": [
+            "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/bend",
+            "--threads",
+            "1",
+            "--gpu",
+            "off",
+            "--",
+            "phase111",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/source-final/compiler.bend",
+            "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+            "cache",
+            "/home/ai/bend2/build/publish/bend/selfhost/.assets/base/base.p130",
+            "p130-word-pair-v1:p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+          ],
+          "dispatchInstrumentation": false,
+          "inputs": [
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/source-final/compiler.bend",
+            "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+            "/home/ai/bend2/build/publish/bend/selfhost/.assets/base/base.p130",
+            "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o"
+          ],
+          "stdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/native-chain-final/q3/program.ssa",
+          "stderr": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/native-chain-final/q3/emit.stderr"
+        }
+      ]
+    }
+  ]
+}

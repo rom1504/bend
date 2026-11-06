@@ -1,0 +1,2519 @@
+{
+  "schema": "bend-phase171-current-profile-summary-v1",
+  "targetsRunByAnalysis": false,
+  "inputs": [
+    {
+      "file": "selfhost/build/phase171/profile-full01/report.json",
+      "bytes": 11067,
+      "sha256": "2f592194dde9a73442272ed30b0f3247bd02255b49d7c2e8f92bcf87206b8a00"
+    },
+    {
+      "file": "selfhost/build/phase171/profile-full-stages01.json",
+      "bytes": 95383,
+      "sha256": "149d526eebdd215961f89b6c321ae77576b3eee85277ffe4475fe472ddddd1f6"
+    },
+    {
+      "file": "selfhost/build/phase171/profile-prep01/spec.json",
+      "bytes": 9401,
+      "sha256": "40298fac78aafdad3354d6f62661797fad5f9d8e1125685cb2d6c2bd3066225b"
+    },
+    {
+      "file": "selfhost/tools/profiler/attribute.py",
+      "bytes": 35029,
+      "sha256": "4728b9a8175087ff0159c4bc59a0575ffa37838b00be0fc83bbac356610916da"
+    },
+    {
+      "file": "selfhost/build/phase171/profile-full01/000-sample-full-installed-n2-staged/analysis.json",
+      "bytes": 1286588,
+      "sha256": "dcccf1c3d51c5e2712d25ed7afd4184015c8268fea6140f65a26372a37836570"
+    }
+  ],
+  "scope": "Exact installed Phase170 canonical request; diagnostic relink from retained same program object; main-thread32ms physical/dispatch sampling and disjoint first-entry clocks; no counters or machine construction.",
+  "output": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/profile-full01/000-sample-full-installed-n2-staged/stdout",
+    "bytes": 97488970,
+    "sha256": "661b62664acdac83d12bc3192b5f9113a2bb946dd331433e64ca0452f6f83850"
+  },
+  "requestPassed": true,
+  "sampleQuality": {
+    "scope": "main_thread",
+    "main_thread_cpu_fraction": 0.9937506142350931,
+    "sampled_thread_cpu_fraction": 0.9937506142350931,
+    "minimum_process_cpu_fraction": 0.95,
+    "minimum_samples": 500,
+    "enough_samples": true,
+    "thread_lifecycle_complete": true,
+    "near_complete_process_cpu_coverage": true,
+    "usable_for_process_cpu_attribution": true,
+    "limitations": [],
+    "zero_loss": true,
+    "handler_intact": true,
+    "main_thread_shutdown": true,
+    "expected_clock_periods": 5584.62620853125,
+    "delivered_per_expected_period": 0.9998878692131098,
+    "delivery_plausible": true
+  },
+  "ownerBinding": {
+    "kind": "exact-ELF-segment-table-pointers",
+    "checkedFids": 45896,
+    "checkedFunctionSymbols": 60569,
+    "runtimeDescriptor": {
+      "capabilities": 5,
+      "registerWidth": 21,
+      "resultWidth": 1
+    },
+    "liveRegisterBank": true,
+    "ownerMapCapabilities": 5,
+    "symbolLookup": {
+      "policy": "required-role-and-allocated-section-v1",
+      "method": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/attribute.py",
+        "bytes": 35029,
+        "sha256": "4728b9a8175087ff0159c4bc59a0575ffa37838b00be0fc83bbac356610916da"
+      },
+      "dataRole": "OBJECT/NOTYPE, allocated file-backed non-executable non-TLS section",
+      "functionRole": "FUNC/NOTYPE, allocated executable non-TLS section",
+      "ambiguity": "distinct addresses in the queried role are rejected"
+    },
+    "elfType": 2,
+    "producerProvenanceVerified": false,
+    "lexicalOwnerConditionalOnEmitterContract": true
+  },
+  "measurement": {
+    "wallSeconds": 180.0950509691611,
+    "cpuSeconds": 179.901145,
+    "userSeconds": 178.345066,
+    "systemSeconds": 1.556079,
+    "peakRssKiB": 811912
+  },
+  "stageWallSeconds": 179.96058576,
+  "stageCpuSeconds": 179.768161531,
+  "outsideMarkedWallSeconds": 0.1344652091611067,
+  "outsideMarkedCpuSeconds": 0.1329834690000098,
+  "physicalGroupRules": {
+    "lifetime_and_reclamation": "^(term_drop|span_fade|term_keep|term_triv|rfc_.*|p111_rt_keep|p111_rt_sink)([.@]|$)",
+    "product_access_and_construction": "^(ctr_take|root_take|p\\d+_(?:p\\d+_)?rt_(?:take\\w*|ctor\\w*|extend\\w*|special_ctor)|p118_destination_fill)([.@]|$)",
+    "allocation": "^(heap_alloc|blk_new|blk_free|malloc|calloc|realloc|free)([.@]|$)",
+    "registers_and_control": "^(p111_set_regs|p111_rt_(?:reg_\\w+|jump|return))([.@]|$)",
+    "scheduler": "^(WL_|task_|pool_|work_|p111_run)",
+    "named_string_and_hash_workers": "_FID_.*(?:p88_string_eq_go|p98_tag_eq|String\\.cmp|index_hash)(?:$|\\.)"
+  },
+  "physicalGroupPolicy": "Ordered first matching regex over decoded physical symbol; mutually exclusive; exact sample labels, not source allocation origin. Remaining symbols explicitly other/unresolved.",
+  "overall": {
+    "samples": 5584,
+    "physicalGroups": [
+      {
+        "name": "lifetime_and_reclamation",
+        "samples": 1424,
+        "fraction": 0.25501432664756446
+      },
+      {
+        "name": "other_generated",
+        "samples": 1172,
+        "fraction": 0.20988538681948424
+      },
+      {
+        "name": "product_access_and_construction",
+        "samples": 1132,
+        "fraction": 0.2027220630372493
+      },
+      {
+        "name": "named_string_and_hash_workers",
+        "samples": 631,
+        "fraction": 0.11300143266475644
+      },
+      {
+        "name": "other_physical",
+        "samples": 323,
+        "fraction": 0.05784383954154728
+      },
+      {
+        "name": "registers_and_control",
+        "samples": 323,
+        "fraction": 0.05784383954154728
+      },
+      {
+        "name": "scheduler",
+        "samples": 252,
+        "fraction": 0.04512893982808023
+      },
+      {
+        "name": "unresolved",
+        "samples": 238,
+        "fraction": 0.04262177650429799
+      },
+      {
+        "name": "allocation",
+        "samples": 89,
+        "fraction": 0.01593839541547278
+      }
+    ],
+    "topPhysicalLeaves": [
+      {
+        "name": "term_drop",
+        "samples": 633,
+        "fraction": 0.11335959885386819
+      },
+      {
+        "name": "span_fade",
+        "samples": 377,
+        "fraction": 0.06751432664756447
+      },
+      {
+        "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+        "samples": 355,
+        "fraction": 0.06357449856733524
+      },
+      {
+        "name": "p125_rt_take2",
+        "samples": 250,
+        "fraction": 0.04477077363896848
+      },
+      {
+        "name": "work_loop.constprop.0",
+        "samples": 250,
+        "fraction": 0.04477077363896848
+      },
+      {
+        "name": null,
+        "samples": 238,
+        "fraction": 0.04262177650429799
+      },
+      {
+        "name": "p111_rt_sink",
+        "samples": 216,
+        "fraction": 0.03868194842406877
+      },
+      {
+        "name": "ctr_take",
+        "samples": 165,
+        "fraction": 0.029548710601719198
+      },
+      {
+        "name": "p111_rt_special_ctor",
+        "samples": 139,
+        "fraction": 0.024892550143266474
+      },
+      {
+        "name": "p111_set_regs",
+        "samples": 128,
+        "fraction": 0.022922636103151862
+      },
+      {
+        "name": "p113d_FID_$p118borrow.read.String.cmp",
+        "samples": 107,
+        "fraction": 0.01916189111747851
+      },
+      {
+        "name": "p118_rt_extend1",
+        "samples": 101,
+        "fraction": 0.018087392550143265
+      }
+    ],
+    "topActiveOwners": [
+      {
+        "name": null,
+        "samples": 2992,
+        "fraction": 0.5358166189111748
+      },
+      {
+        "name": "nc_uses_term",
+        "samples": 109,
+        "fraction": 0.019520057306590257
+      },
+      {
+        "name": "nol_scalar_specs",
+        "samples": 75,
+        "fraction": 0.013431232091690544
+      },
+      {
+        "name": "driver_report_data",
+        "samples": 69,
+        "fraction": 0.0123567335243553
+      },
+      {
+        "name": "subst_node",
+        "samples": 65,
+        "fraction": 0.011640401146131804
+      },
+      {
+        "name": "index_remove",
+        "samples": 61,
+        "fraction": 0.01092406876790831
+      },
+      {
+        "name": "nc_uses_list",
+        "samples": 53,
+        "fraction": 0.009491404011461318
+      },
+      {
+        "name": "nd_arity",
+        "samples": 49,
+        "fraction": 0.008775071633237822
+      },
+      {
+        "name": "f_grow_base",
+        "samples": 48,
+        "fraction": 0.008595988538681949
+      },
+      {
+        "name": "nq_layout_subst",
+        "samples": 45,
+        "fraction": 0.008058739255014326
+      },
+      {
+        "name": "f_pattern_sub",
+        "samples": 39,
+        "fraction": 0.006984240687679083
+      },
+      {
+        "name": "no_effect_terms",
+        "samples": 34,
+        "fraction": 0.0060888252148997134
+      }
+    ],
+    "unknownActiveOwnerSamples": 2992,
+    "unknownActiveOwnerFraction": 0.5358166189111748,
+    "unknownPhysicalSamples": 238,
+    "unknownPhysicalFraction": 0.04262177650429799
+  },
+  "groupedStages": [
+    {
+      "name": "Base preparation",
+      "firstInterval": 0,
+      "endIntervalExclusive": 1,
+      "wallSeconds": 0.235565175,
+      "processCpuSeconds": 0.235570189,
+      "samples": 6
+    },
+    {
+      "name": "Parse/load",
+      "firstInterval": 1,
+      "endIntervalExclusive": 2,
+      "wallSeconds": 28.741854836,
+      "processCpuSeconds": 28.741993707,
+      "samples": 896
+    },
+    {
+      "name": "Check/publication",
+      "firstInterval": 2,
+      "endIntervalExclusive": 3,
+      "wallSeconds": 21.239218176,
+      "processCpuSeconds": 21.239301371,
+      "samples": 662
+    },
+    {
+      "name": "Frontend reporting/ownership/context/annotation/erasure",
+      "firstInterval": 3,
+      "endIntervalExclusive": 9,
+      "wallSeconds": 18.08031215,
+      "processCpuSeconds": 18.080294096,
+      "samples": 553
+    },
+    {
+      "name": "Backend runtime/catalogue/static/seed/signature preparation",
+      "firstInterval": 9,
+      "endIntervalExclusive": 16,
+      "wallSeconds": 8.417295024,
+      "processCpuSeconds": 8.417317385999999,
+      "samples": 252
+    },
+    {
+      "name": "Raw private candidates",
+      "firstInterval": 16,
+      "endIntervalExclusive": 17,
+      "wallSeconds": 25.513903647,
+      "processCpuSeconds": 25.513889358,
+      "samples": 795
+    },
+    {
+      "name": "SCC/admission",
+      "firstInterval": 17,
+      "endIntervalExclusive": 18,
+      "wallSeconds": 1.289905488,
+      "processCpuSeconds": 1.289899631,
+      "samples": 38
+    },
+    {
+      "name": "Inline preparation",
+      "firstInterval": 18,
+      "endIntervalExclusive": 19,
+      "wallSeconds": 0.108109786,
+      "processCpuSeconds": 0.108104142,
+      "samples": 2
+    },
+    {
+      "name": "Scalar finish and retry composition",
+      "firstInterval": 19,
+      "endIntervalExclusive": 20,
+      "wallSeconds": 8.635293573,
+      "processCpuSeconds": 8.635177938,
+      "samples": 268
+    },
+    {
+      "name": "Demanded generic fallback and adapters",
+      "firstInterval": 20,
+      "endIntervalExclusive": 21,
+      "wallSeconds": 8.442953455,
+      "processCpuSeconds": 8.44283633,
+      "samples": 261
+    },
+    {
+      "name": "Actual generic/static/adapter verifier",
+      "firstInterval": 21,
+      "endIntervalExclusive": 22,
+      "wallSeconds": 8.914097729,
+      "processCpuSeconds": 8.914036861,
+      "samples": 277
+    },
+    {
+      "name": "Private discipline",
+      "firstInterval": 22,
+      "endIntervalExclusive": 23,
+      "wallSeconds": 0.000735987,
+      "processCpuSeconds": 0.000735342,
+      "samples": 0
+    },
+    {
+      "name": "Flag-only view/certificate and borrowed/direct verifier",
+      "firstInterval": 23,
+      "endIntervalExclusive": 24,
+      "wallSeconds": 3.129094201,
+      "processCpuSeconds": 3.129084034,
+      "samples": 96
+    },
+    {
+      "name": "Namespace/live/cold metadata",
+      "firstInterval": 24,
+      "endIntervalExclusive": 25,
+      "wallSeconds": 2.341072079,
+      "processCpuSeconds": 2.341103235,
+      "samples": 71
+    },
+    {
+      "name": "IDs/tables/fusion index/seeded registry",
+      "firstInterval": 25,
+      "endIntervalExclusive": 26,
+      "wallSeconds": 12.181684217,
+      "processCpuSeconds": 12.18163939,
+      "samples": 379
+    },
+    {
+      "name": "Cursor/forwarder/prefix preparation",
+      "firstInterval": 26,
+      "endIntervalExclusive": 28,
+      "wallSeconds": 0.23812299,
+      "processCpuSeconds": 0.238130901,
+      "samples": 3
+    },
+    {
+      "name": "Cursor rendering/output/exit hook",
+      "firstInterval": 28,
+      "endIntervalExclusive": 29,
+      "wallSeconds": 32.451367247,
+      "processCpuSeconds": 32.25904762,
+      "samples": 972
+    }
+  ],
+  "intervals": [
+    {
+      "label": "p88_cache_prepare to p86_plan",
+      "begin": "p88_cache_prepare",
+      "end": "p86_plan",
+      "available": true,
+      "wallSeconds": 0.235565175,
+      "processCpuSeconds": 0.235570189,
+      "threadCpuSeconds": 0.235568879,
+      "sampleStartInclusive": 2,
+      "sampleEndExclusive": 8,
+      "samples": 6,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": false,
+      "unknownActiveOwnerSamples": 6,
+      "unknownActiveOwnerFraction": 1.0,
+      "unknownPhysicalSamples": 1,
+      "unknownPhysicalFraction": 0.16666666666666666
+    },
+    {
+      "label": "p86_plan to p86_plan_loaded",
+      "begin": "p86_plan",
+      "end": "p86_plan_loaded",
+      "available": true,
+      "wallSeconds": 28.741854836,
+      "processCpuSeconds": 28.741993707,
+      "threadCpuSeconds": 28.741994366,
+      "sampleStartInclusive": 10,
+      "sampleEndExclusive": 906,
+      "samples": 896,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": true,
+      "physicalGroups": [
+        {
+          "name": "lifetime_and_reclamation",
+          "samples": 238,
+          "fraction": 0.265625
+        },
+        {
+          "name": "other_generated",
+          "samples": 220,
+          "fraction": 0.24553571428571427
+        },
+        {
+          "name": "product_access_and_construction",
+          "samples": 127,
+          "fraction": 0.14174107142857142
+        },
+        {
+          "name": "registers_and_control",
+          "samples": 77,
+          "fraction": 0.0859375
+        },
+        {
+          "name": "named_string_and_hash_workers",
+          "samples": 76,
+          "fraction": 0.08482142857142858
+        },
+        {
+          "name": "scheduler",
+          "samples": 62,
+          "fraction": 0.06919642857142858
+        },
+        {
+          "name": "other_physical",
+          "samples": 49,
+          "fraction": 0.0546875
+        },
+        {
+          "name": "unresolved",
+          "samples": 38,
+          "fraction": 0.04241071428571429
+        },
+        {
+          "name": "allocation",
+          "samples": 9,
+          "fraction": 0.010044642857142858
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "name": "term_drop",
+          "samples": 91,
+          "fraction": 0.1015625
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 70,
+          "fraction": 0.078125
+        },
+        {
+          "name": "span_fade",
+          "samples": 67,
+          "fraction": 0.07477678571428571
+        },
+        {
+          "name": "work_loop.constprop.0",
+          "samples": 62,
+          "fraction": 0.06919642857142858
+        },
+        {
+          "name": "p111_rt_sink",
+          "samples": 45,
+          "fraction": 0.05022321428571429
+        },
+        {
+          "name": null,
+          "samples": 38,
+          "fraction": 0.04241071428571429
+        },
+        {
+          "name": "p111_rt_special_ctor",
+          "samples": 36,
+          "fraction": 0.04017857142857143
+        },
+        {
+          "name": "p111_set_regs",
+          "samples": 31,
+          "fraction": 0.03459821428571429
+        },
+        {
+          "name": "p125_rt_take2",
+          "samples": 29,
+          "fraction": 0.03236607142857143
+        },
+        {
+          "name": "p118_rt_borrow_scalar_safe",
+          "samples": 23,
+          "fraction": 0.025669642857142856
+        },
+        {
+          "name": "p111_rt_return",
+          "samples": 23,
+          "fraction": 0.025669642857142856
+        },
+        {
+          "name": "ctr_take",
+          "samples": 19,
+          "fraction": 0.021205357142857144
+        }
+      ],
+      "topActiveOwners": [
+        {
+          "name": null,
+          "samples": 492,
+          "fraction": 0.5491071428571429
+        },
+        {
+          "name": "f_grow_base",
+          "samples": 48,
+          "fraction": 0.05357142857142857
+        },
+        {
+          "name": "f_pattern_sub",
+          "samples": 39,
+          "fraction": 0.04352678571428571
+        },
+        {
+          "name": "f_context_material_children",
+          "samples": 33,
+          "fraction": 0.036830357142857144
+        },
+        {
+          "name": "f_decl_local",
+          "samples": 32,
+          "fraction": 0.03571428571428571
+        },
+        {
+          "name": "f_ctor_lookup",
+          "samples": 25,
+          "fraction": 0.027901785714285716
+        },
+        {
+          "name": "fpe_term",
+          "samples": 24,
+          "fraction": 0.026785714285714284
+        },
+        {
+          "name": "ffw_walk_existing",
+          "samples": 19,
+          "fraction": 0.021205357142857144
+        },
+        {
+          "name": "f_context_material_done",
+          "samples": 17,
+          "fraction": 0.018973214285714284
+        },
+        {
+          "name": "f_pattern_subs",
+          "samples": 16,
+          "fraction": 0.017857142857142856
+        },
+        {
+          "name": "f_valid_name",
+          "samples": 9,
+          "fraction": 0.010044642857142858
+        },
+        {
+          "name": "f_validate_param",
+          "samples": 8,
+          "fraction": 0.008928571428571428
+        }
+      ],
+      "unknownActiveOwnerSamples": 492,
+      "unknownActiveOwnerFraction": 0.5491071428571429,
+      "unknownPhysicalSamples": 38,
+      "unknownPhysicalFraction": 0.04241071428571429
+    },
+    {
+      "label": "p86_plan_loaded to p86_plan_checked",
+      "begin": "p86_plan_loaded",
+      "end": "p86_plan_checked",
+      "available": true,
+      "wallSeconds": 21.239218176,
+      "processCpuSeconds": 21.239301371,
+      "threadCpuSeconds": 21.239300812,
+      "sampleStartInclusive": 908,
+      "sampleEndExclusive": 1570,
+      "samples": 662,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": true,
+      "physicalGroups": [
+        {
+          "name": "lifetime_and_reclamation",
+          "samples": 186,
+          "fraction": 0.2809667673716012
+        },
+        {
+          "name": "other_generated",
+          "samples": 153,
+          "fraction": 0.2311178247734139
+        },
+        {
+          "name": "product_access_and_construction",
+          "samples": 107,
+          "fraction": 0.16163141993957703
+        },
+        {
+          "name": "named_string_and_hash_workers",
+          "samples": 73,
+          "fraction": 0.11027190332326284
+        },
+        {
+          "name": "registers_and_control",
+          "samples": 46,
+          "fraction": 0.06948640483383686
+        },
+        {
+          "name": "unresolved",
+          "samples": 34,
+          "fraction": 0.0513595166163142
+        },
+        {
+          "name": "scheduler",
+          "samples": 31,
+          "fraction": 0.04682779456193353
+        },
+        {
+          "name": "other_physical",
+          "samples": 20,
+          "fraction": 0.030211480362537766
+        },
+        {
+          "name": "allocation",
+          "samples": 12,
+          "fraction": 0.01812688821752266
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "name": "term_drop",
+          "samples": 75,
+          "fraction": 0.11329305135951662
+        },
+        {
+          "name": "span_fade",
+          "samples": 61,
+          "fraction": 0.09214501510574018
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 52,
+          "fraction": 0.07854984894259819
+        },
+        {
+          "name": null,
+          "samples": 34,
+          "fraction": 0.0513595166163142
+        },
+        {
+          "name": "p111_rt_sink",
+          "samples": 32,
+          "fraction": 0.04833836858006042
+        },
+        {
+          "name": "work_loop.constprop.0",
+          "samples": 31,
+          "fraction": 0.04682779456193353
+        },
+        {
+          "name": "p111_set_regs",
+          "samples": 22,
+          "fraction": 0.03323262839879154
+        },
+        {
+          "name": "ctr_take",
+          "samples": 20,
+          "fraction": 0.030211480362537766
+        },
+        {
+          "name": "p111_rt_special_ctor",
+          "samples": 20,
+          "fraction": 0.030211480362537766
+        },
+        {
+          "name": "p125_rt_take2",
+          "samples": 16,
+          "fraction": 0.02416918429003021
+        },
+        {
+          "name": "p118_rt_borrow_scalar_safe",
+          "samples": 13,
+          "fraction": 0.019637462235649546
+        },
+        {
+          "name": "p111_rt_take",
+          "samples": 13,
+          "fraction": 0.019637462235649546
+        }
+      ],
+      "topActiveOwners": [
+        {
+          "name": null,
+          "samples": 374,
+          "fraction": 0.5649546827794562
+        },
+        {
+          "name": "index_remove",
+          "samples": 56,
+          "fraction": 0.08459214501510574
+        },
+        {
+          "name": "subst_node",
+          "samples": 16,
+          "fraction": 0.02416918429003021
+        },
+        {
+          "name": "book_final_scan",
+          "samples": 15,
+          "fraction": 0.022658610271903322
+        },
+        {
+          "name": "subst",
+          "samples": 13,
+          "fraction": 0.019637462235649546
+        },
+        {
+          "name": "check_node",
+          "samples": 10,
+          "fraction": 0.015105740181268883
+        },
+        {
+          "name": "driver_holes",
+          "samples": 10,
+          "fraction": 0.015105740181268883
+        },
+        {
+          "name": "p156cp_stored",
+          "samples": 9,
+          "fraction": 0.013595166163141994
+        },
+        {
+          "name": "infer_node",
+          "samples": 9,
+          "fraction": 0.013595166163141994
+        },
+        {
+          "name": "book_final_fast",
+          "samples": 9,
+          "fraction": 0.013595166163141994
+        },
+        {
+          "name": "ki_lam_kind",
+          "samples": 8,
+          "fraction": 0.012084592145015106
+        },
+        {
+          "name": "norm_node_ref",
+          "samples": 6,
+          "fraction": 0.00906344410876133
+        }
+      ],
+      "unknownActiveOwnerSamples": 374,
+      "unknownActiveOwnerFraction": 0.5649546827794562,
+      "unknownPhysicalSamples": 34,
+      "unknownPhysicalFraction": 0.0513595166163142
+    },
+    {
+      "label": "p86_plan_checked to p86_plan_reported",
+      "begin": "p86_plan_checked",
+      "end": "p86_plan_reported",
+      "available": true,
+      "wallSeconds": 2.566477872,
+      "processCpuSeconds": 2.56647609,
+      "threadCpuSeconds": 2.56647634,
+      "sampleStartInclusive": 1572,
+      "sampleEndExclusive": 1650,
+      "samples": 78,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": false,
+      "unknownActiveOwnerSamples": 4,
+      "unknownActiveOwnerFraction": 0.05128205128205128,
+      "unknownPhysicalSamples": 0,
+      "unknownPhysicalFraction": 0.0
+    },
+    {
+      "label": "p86_plan_reported to p86_plan_owned",
+      "begin": "p86_plan_reported",
+      "end": "p86_plan_owned",
+      "available": true,
+      "wallSeconds": 0.190866933,
+      "processCpuSeconds": 0.190872563,
+      "threadCpuSeconds": 0.190872358,
+      "sampleStartInclusive": 1652,
+      "sampleEndExclusive": 1656,
+      "samples": 4,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": false,
+      "unknownActiveOwnerSamples": 1,
+      "unknownActiveOwnerFraction": 0.25,
+      "unknownPhysicalSamples": 1,
+      "unknownPhysicalFraction": 0.25
+    },
+    {
+      "label": "p86_plan_owned to p86_plan_context",
+      "begin": "p86_plan_owned",
+      "end": "p86_plan_context",
+      "available": true,
+      "wallSeconds": 0.656555582,
+      "processCpuSeconds": 0.656546542,
+      "threadCpuSeconds": 0.656546648,
+      "sampleStartInclusive": 1658,
+      "sampleEndExclusive": 1676,
+      "samples": 18,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": false,
+      "unknownActiveOwnerSamples": 1,
+      "unknownActiveOwnerFraction": 0.05555555555555555,
+      "unknownPhysicalSamples": 0,
+      "unknownPhysicalFraction": 0.0
+    },
+    {
+      "label": "p86_plan_context to p86_plan_annotated",
+      "begin": "p86_plan_context",
+      "end": "p86_plan_annotated",
+      "available": true,
+      "wallSeconds": 6.29887329,
+      "processCpuSeconds": 6.298889576,
+      "threadCpuSeconds": 6.298889487,
+      "sampleStartInclusive": 1678,
+      "sampleEndExclusive": 1873,
+      "samples": 195,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": false,
+      "unknownActiveOwnerSamples": 83,
+      "unknownActiveOwnerFraction": 0.4256410256410256,
+      "unknownPhysicalSamples": 8,
+      "unknownPhysicalFraction": 0.041025641025641026
+    },
+    {
+      "label": "p86_plan_annotated to p144o_prepare_annotated",
+      "begin": "p86_plan_annotated",
+      "end": "p144o_prepare_annotated",
+      "available": true,
+      "wallSeconds": 2.534128523,
+      "processCpuSeconds": 2.534121642,
+      "threadCpuSeconds": 2.534121519,
+      "sampleStartInclusive": 1875,
+      "sampleEndExclusive": 1952,
+      "samples": 77,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": false,
+      "unknownActiveOwnerSamples": 16,
+      "unknownActiveOwnerFraction": 0.2077922077922078,
+      "unknownPhysicalSamples": 6,
+      "unknownPhysicalFraction": 0.07792207792207792
+    },
+    {
+      "label": "p144o_prepare_annotated to p169np_plan",
+      "begin": "p144o_prepare_annotated",
+      "end": "p169np_plan",
+      "available": true,
+      "wallSeconds": 5.83340995,
+      "processCpuSeconds": 5.833387683,
+      "threadCpuSeconds": 5.83338823,
+      "sampleStartInclusive": 1954,
+      "sampleEndExclusive": 2135,
+      "samples": 181,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": false,
+      "unknownActiveOwnerSamples": 76,
+      "unknownActiveOwnerFraction": 0.4198895027624309,
+      "unknownPhysicalSamples": 9,
+      "unknownPhysicalFraction": 0.049723756906077346
+    },
+    {
+      "label": "p169np_plan to p168_request_mode",
+      "begin": "p169np_plan",
+      "end": "p168_request_mode",
+      "available": true,
+      "wallSeconds": 0.040878665,
+      "processCpuSeconds": 0.040878977,
+      "threadCpuSeconds": 0.040886412,
+      "sampleStartInclusive": 2137,
+      "sampleEndExclusive": 2137,
+      "samples": 0,
+      "boundarySamplesExcluded": 1,
+      "quantitativeProfileAdmitted": false,
+      "unknownActiveOwnerSamples": 0,
+      "unknownActiveOwnerFraction": null,
+      "unknownPhysicalSamples": 0,
+      "unknownPhysicalFraction": null
+    },
+    {
+      "label": "p168_request_mode to p168_catalogued",
+      "begin": "p168_request_mode",
+      "end": "p168_catalogued",
+      "available": true,
+      "wallSeconds": 1.655791438,
+      "processCpuSeconds": 1.655794453,
+      "threadCpuSeconds": 1.655786568,
+      "sampleStartInclusive": 2138,
+      "sampleEndExclusive": 2188,
+      "samples": 50,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": false,
+      "unknownActiveOwnerSamples": 11,
+      "unknownActiveOwnerFraction": 0.22,
+      "unknownPhysicalSamples": 0,
+      "unknownPhysicalFraction": 0.0
+    },
+    {
+      "label": "p168_catalogued to p168_prepared",
+      "begin": "p168_catalogued",
+      "end": "p168_prepared",
+      "available": true,
+      "wallSeconds": 4.127575816,
+      "processCpuSeconds": 4.127581771,
+      "threadCpuSeconds": 4.127581836,
+      "sampleStartInclusive": 2190,
+      "sampleEndExclusive": 2317,
+      "samples": 127,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": false,
+      "unknownActiveOwnerSamples": 55,
+      "unknownActiveOwnerFraction": 0.4330708661417323,
+      "unknownPhysicalSamples": 5,
+      "unknownPhysicalFraction": 0.03937007874015748
+    },
+    {
+      "label": "p168_prepared to p168_scanned",
+      "begin": "p168_prepared",
+      "end": "p168_scanned",
+      "available": true,
+      "wallSeconds": 1.722730036,
+      "processCpuSeconds": 1.722735589,
+      "threadCpuSeconds": 1.722735555,
+      "sampleStartInclusive": 2319,
+      "sampleEndExclusive": 2371,
+      "samples": 52,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": false,
+      "unknownActiveOwnerSamples": 23,
+      "unknownActiveOwnerFraction": 0.4423076923076923,
+      "unknownPhysicalSamples": 4,
+      "unknownPhysicalFraction": 0.07692307692307693
+    },
+    {
+      "label": "p168_scanned to p168_seed_verified",
+      "begin": "p168_scanned",
+      "end": "p168_seed_verified",
+      "available": true,
+      "wallSeconds": 0.012580573,
+      "processCpuSeconds": 0.012580625,
+      "threadCpuSeconds": 0.012580237,
+      "sampleStartInclusive": 2372,
+      "sampleEndExclusive": 2372,
+      "samples": 0,
+      "boundarySamplesExcluded": 0,
+      "quantitativeProfileAdmitted": false,
+      "unknownActiveOwnerSamples": 0,
+      "unknownActiveOwnerFraction": null,
+      "unknownPhysicalSamples": 0,
+      "unknownPhysicalFraction": null
+    },
+    {
+      "label": "p168_seed_verified to p168_selected",
+      "begin": "p168_seed_verified",
+      "end": "p168_selected",
+      "available": true,
+      "wallSeconds": 0.064502069,
+      "processCpuSeconds": 0.064504402,
+      "threadCpuSeconds": 0.064504624,
+      "sampleStartInclusive": 2373,
+      "sampleEndExclusive": 2373,
+      "samples": 0,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": false,
+      "unknownActiveOwnerSamples": 0,
+      "unknownActiveOwnerFraction": null,
+      "unknownPhysicalSamples": 0,
+      "unknownPhysicalFraction": null
+    },
+    {
+      "label": "p168_selected to p113pl_candidates",
+      "begin": "p168_selected",
+      "end": "p113pl_candidates",
+      "available": true,
+      "wallSeconds": 0.793236427,
+      "processCpuSeconds": 0.793241569,
+      "threadCpuSeconds": 0.7932416,
+      "sampleStartInclusive": 2375,
+      "sampleEndExclusive": 2398,
+      "samples": 23,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": false,
+      "unknownActiveOwnerSamples": 9,
+      "unknownActiveOwnerFraction": 0.391304347826087,
+      "unknownPhysicalSamples": 1,
+      "unknownPhysicalFraction": 0.043478260869565216
+    },
+    {
+      "label": "p113pl_candidates to p168_candidates",
+      "begin": "p113pl_candidates",
+      "end": "p168_candidates",
+      "available": true,
+      "wallSeconds": 25.513903647,
+      "processCpuSeconds": 25.513889358,
+      "threadCpuSeconds": 25.513890069,
+      "sampleStartInclusive": 2400,
+      "sampleEndExclusive": 3195,
+      "samples": 795,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": true,
+      "physicalGroups": [
+        {
+          "name": "lifetime_and_reclamation",
+          "samples": 200,
+          "fraction": 0.25157232704402516
+        },
+        {
+          "name": "other_generated",
+          "samples": 193,
+          "fraction": 0.24276729559748428
+        },
+        {
+          "name": "product_access_and_construction",
+          "samples": 128,
+          "fraction": 0.1610062893081761
+        },
+        {
+          "name": "named_string_and_hash_workers",
+          "samples": 98,
+          "fraction": 0.12327044025157233
+        },
+        {
+          "name": "registers_and_control",
+          "samples": 57,
+          "fraction": 0.07169811320754717
+        },
+        {
+          "name": "other_physical",
+          "samples": 44,
+          "fraction": 0.055345911949685536
+        },
+        {
+          "name": "unresolved",
+          "samples": 38,
+          "fraction": 0.04779874213836478
+        },
+        {
+          "name": "scheduler",
+          "samples": 34,
+          "fraction": 0.042767295597484274
+        },
+        {
+          "name": "allocation",
+          "samples": 3,
+          "fraction": 0.0037735849056603774
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "name": "term_drop",
+          "samples": 71,
+          "fraction": 0.08930817610062892
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 56,
+          "fraction": 0.07044025157232704
+        },
+        {
+          "name": "span_fade",
+          "samples": 51,
+          "fraction": 0.06415094339622641
+        },
+        {
+          "name": null,
+          "samples": 38,
+          "fraction": 0.04779874213836478
+        },
+        {
+          "name": "p111_rt_sink",
+          "samples": 37,
+          "fraction": 0.04654088050314465
+        },
+        {
+          "name": "work_loop.constprop.0",
+          "samples": 34,
+          "fraction": 0.042767295597484274
+        },
+        {
+          "name": "p111_rt_special_ctor",
+          "samples": 25,
+          "fraction": 0.031446540880503145
+        },
+        {
+          "name": "p125_rt_take2",
+          "samples": 23,
+          "fraction": 0.028930817610062894
+        },
+        {
+          "name": "p111_rt_keep",
+          "samples": 22,
+          "fraction": 0.027672955974842768
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p98_tag_eq",
+          "samples": 22,
+          "fraction": 0.027672955974842768
+        },
+        {
+          "name": "p111_set_regs",
+          "samples": 21,
+          "fraction": 0.026415094339622643
+        },
+        {
+          "name": "p111_rt_jump",
+          "samples": 20,
+          "fraction": 0.025157232704402517
+        }
+      ],
+      "topActiveOwners": [
+        {
+          "name": null,
+          "samples": 373,
+          "fraction": 0.4691823899371069
+        },
+        {
+          "name": "nc_uses_term",
+          "samples": 76,
+          "fraction": 0.09559748427672957
+        },
+        {
+          "name": "nc_uses_list",
+          "samples": 42,
+          "fraction": 0.052830188679245285
+        },
+        {
+          "name": "nq_layout_subst",
+          "samples": 26,
+          "fraction": 0.03270440251572327
+        },
+        {
+          "name": "nd_arity",
+          "samples": 25,
+          "fraction": 0.031446540880503145
+        },
+        {
+          "name": "p111_partition",
+          "samples": 16,
+          "fraction": 0.02012578616352201
+        },
+        {
+          "name": "nq_uses",
+          "samples": 14,
+          "fraction": 0.01761006289308176
+        },
+        {
+          "name": "subst_node",
+          "samples": 13,
+          "fraction": 0.016352201257861635
+        },
+        {
+          "name": "nu_add",
+          "samples": 11,
+          "fraction": 0.013836477987421384
+        },
+        {
+          "name": "p112m_fresh_terms",
+          "samples": 10,
+          "fraction": 0.012578616352201259
+        },
+        {
+          "name": "nq_min_uses",
+          "samples": 9,
+          "fraction": 0.011320754716981131
+        },
+        {
+          "name": "p113n_canonical",
+          "samples": 8,
+          "fraction": 0.010062893081761006
+        }
+      ],
+      "unknownActiveOwnerSamples": 373,
+      "unknownActiveOwnerFraction": 0.4691823899371069,
+      "unknownPhysicalSamples": 38,
+      "unknownPhysicalFraction": 0.04779874213836478
+    },
+    {
+      "label": "p168_candidates to p168_closed",
+      "begin": "p168_candidates",
+      "end": "p168_closed",
+      "available": true,
+      "wallSeconds": 1.289905488,
+      "processCpuSeconds": 1.289899631,
+      "threadCpuSeconds": 1.28989925,
+      "sampleStartInclusive": 3197,
+      "sampleEndExclusive": 3235,
+      "samples": 38,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": false,
+      "unknownActiveOwnerSamples": 29,
+      "unknownActiveOwnerFraction": 0.7631578947368421,
+      "unknownPhysicalSamples": 1,
+      "unknownPhysicalFraction": 0.02631578947368421
+    },
+    {
+      "label": "p168_closed to p169q_inlined",
+      "begin": "p168_closed",
+      "end": "p169q_inlined",
+      "available": true,
+      "wallSeconds": 0.108109786,
+      "processCpuSeconds": 0.108104142,
+      "threadCpuSeconds": 0.108104191,
+      "sampleStartInclusive": 3237,
+      "sampleEndExclusive": 3239,
+      "samples": 2,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": false,
+      "unknownActiveOwnerSamples": 1,
+      "unknownActiveOwnerFraction": 0.5,
+      "unknownPhysicalSamples": 0,
+      "unknownPhysicalFraction": 0.0
+    },
+    {
+      "label": "p169q_inlined to p168_finish_functions",
+      "begin": "p169q_inlined",
+      "end": "p168_finish_functions",
+      "available": true,
+      "wallSeconds": 8.635293573,
+      "processCpuSeconds": 8.635177938,
+      "threadCpuSeconds": 8.635177696,
+      "sampleStartInclusive": 3241,
+      "sampleEndExclusive": 3509,
+      "samples": 268,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": false,
+      "physicalGroups": [
+        {
+          "name": "lifetime_and_reclamation",
+          "samples": 102,
+          "fraction": 0.3805970149253731
+        },
+        {
+          "name": "product_access_and_construction",
+          "samples": 50,
+          "fraction": 0.1865671641791045
+        },
+        {
+          "name": "other_generated",
+          "samples": 47,
+          "fraction": 0.17537313432835822
+        },
+        {
+          "name": "named_string_and_hash_workers",
+          "samples": 22,
+          "fraction": 0.08208955223880597
+        },
+        {
+          "name": "other_physical",
+          "samples": 14,
+          "fraction": 0.05223880597014925
+        },
+        {
+          "name": "scheduler",
+          "samples": 13,
+          "fraction": 0.048507462686567165
+        },
+        {
+          "name": "registers_and_control",
+          "samples": 12,
+          "fraction": 0.04477611940298507
+        },
+        {
+          "name": "unresolved",
+          "samples": 7,
+          "fraction": 0.026119402985074626
+        },
+        {
+          "name": "allocation",
+          "samples": 1,
+          "fraction": 0.0037313432835820895
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "name": "term_drop",
+          "samples": 52,
+          "fraction": 0.19402985074626866
+        },
+        {
+          "name": "span_fade",
+          "samples": 31,
+          "fraction": 0.11567164179104478
+        },
+        {
+          "name": "p111_rt_sink",
+          "samples": 15,
+          "fraction": 0.055970149253731345
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 13,
+          "fraction": 0.048507462686567165
+        },
+        {
+          "name": "work_loop.constprop.0",
+          "samples": 13,
+          "fraction": 0.048507462686567165
+        },
+        {
+          "name": "p125_rt_take2.cold",
+          "samples": 11,
+          "fraction": 0.041044776119402986
+        },
+        {
+          "name": "ctr_take",
+          "samples": 9,
+          "fraction": 0.033582089552238806
+        },
+        {
+          "name": null,
+          "samples": 7,
+          "fraction": 0.026119402985074626
+        },
+        {
+          "name": "p111_rt_return",
+          "samples": 6,
+          "fraction": 0.022388059701492536
+        },
+        {
+          "name": "p125_rt_take4",
+          "samples": 5,
+          "fraction": 0.018656716417910446
+        },
+        {
+          "name": "p125_rt_take2",
+          "samples": 5,
+          "fraction": 0.018656716417910446
+        },
+        {
+          "name": "p118_rt_borrow_scalar_safe",
+          "samples": 5,
+          "fraction": 0.018656716417910446
+        }
+      ],
+      "topActiveOwners": [
+        {
+          "name": null,
+          "samples": 127,
+          "fraction": 0.47388059701492535
+        },
+        {
+          "name": "nol_scalar_specs",
+          "samples": 63,
+          "fraction": 0.23507462686567165
+        },
+        {
+          "name": "nd_arity",
+          "samples": 14,
+          "fraction": 0.05223880597014925
+        },
+        {
+          "name": "nol_owner",
+          "samples": 11,
+          "fraction": 0.041044776119402986
+        },
+        {
+          "name": "nol_scalar",
+          "samples": 11,
+          "fraction": 0.041044776119402986
+        },
+        {
+          "name": "nol_fields",
+          "samples": 6,
+          "fraction": 0.022388059701492536
+        },
+        {
+          "name": "nc_ref_name",
+          "samples": 4,
+          "fraction": 0.014925373134328358
+        },
+        {
+          "name": "p128br_find",
+          "samples": 4,
+          "fraction": 0.014925373134328358
+        },
+        {
+          "name": "p128br_eligible",
+          "samples": 3,
+          "fraction": 0.011194029850746268
+        },
+        {
+          "name": "noa_scalar",
+          "samples": 2,
+          "fraction": 0.007462686567164179
+        },
+        {
+          "name": "nq_layout_eval",
+          "samples": 2,
+          "fraction": 0.007462686567164179
+        },
+        {
+          "name": "nc_occurs",
+          "samples": 2,
+          "fraction": 0.007462686567164179
+        }
+      ],
+      "unknownActiveOwnerSamples": 127,
+      "unknownActiveOwnerFraction": 0.47388059701492535,
+      "unknownPhysicalSamples": 7,
+      "unknownPhysicalFraction": 0.026119402985074626
+    },
+    {
+      "label": "p168_finish_functions to p169s_lowered",
+      "begin": "p168_finish_functions",
+      "end": "p169s_lowered",
+      "available": true,
+      "wallSeconds": 8.442953455,
+      "processCpuSeconds": 8.44283633,
+      "threadCpuSeconds": 8.44283665,
+      "sampleStartInclusive": 3511,
+      "sampleEndExclusive": 3772,
+      "samples": 261,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": false,
+      "physicalGroups": [
+        {
+          "name": "lifetime_and_reclamation",
+          "samples": 74,
+          "fraction": 0.2835249042145594
+        },
+        {
+          "name": "other_generated",
+          "samples": 62,
+          "fraction": 0.23754789272030652
+        },
+        {
+          "name": "product_access_and_construction",
+          "samples": 38,
+          "fraction": 0.14559386973180077
+        },
+        {
+          "name": "named_string_and_hash_workers",
+          "samples": 30,
+          "fraction": 0.11494252873563218
+        },
+        {
+          "name": "registers_and_control",
+          "samples": 16,
+          "fraction": 0.06130268199233716
+        },
+        {
+          "name": "unresolved",
+          "samples": 15,
+          "fraction": 0.05747126436781609
+        },
+        {
+          "name": "scheduler",
+          "samples": 14,
+          "fraction": 0.05363984674329502
+        },
+        {
+          "name": "other_physical",
+          "samples": 8,
+          "fraction": 0.03065134099616858
+        },
+        {
+          "name": "allocation",
+          "samples": 4,
+          "fraction": 0.01532567049808429
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "name": "term_drop",
+          "samples": 32,
+          "fraction": 0.12260536398467432
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 18,
+          "fraction": 0.06896551724137931
+        },
+        {
+          "name": "span_fade",
+          "samples": 17,
+          "fraction": 0.06513409961685823
+        },
+        {
+          "name": null,
+          "samples": 15,
+          "fraction": 0.05747126436781609
+        },
+        {
+          "name": "work_loop.constprop.0",
+          "samples": 14,
+          "fraction": 0.05363984674329502
+        },
+        {
+          "name": "p111_rt_sink",
+          "samples": 9,
+          "fraction": 0.034482758620689655
+        },
+        {
+          "name": "p125_rt_take2",
+          "samples": 7,
+          "fraction": 0.02681992337164751
+        },
+        {
+          "name": "term_triv",
+          "samples": 7,
+          "fraction": 0.02681992337164751
+        },
+        {
+          "name": "p118_rt_borrow_scalar_safe",
+          "samples": 7,
+          "fraction": 0.02681992337164751
+        },
+        {
+          "name": "p111_rt_keep",
+          "samples": 7,
+          "fraction": 0.02681992337164751
+        },
+        {
+          "name": "p111_rt_return",
+          "samples": 6,
+          "fraction": 0.022988505747126436
+        },
+        {
+          "name": "p111_FID_$direct.nc_uses_list",
+          "samples": 6,
+          "fraction": 0.022988505747126436
+        }
+      ],
+      "topActiveOwners": [
+        {
+          "name": null,
+          "samples": 99,
+          "fraction": 0.3793103448275862
+        },
+        {
+          "name": "nc_uses_term",
+          "samples": 33,
+          "fraction": 0.12643678160919541
+        },
+        {
+          "name": "nq_layout_subst",
+          "samples": 19,
+          "fraction": 0.07279693486590039
+        },
+        {
+          "name": "nc_uses_list",
+          "samples": 11,
+          "fraction": 0.0421455938697318
+        },
+        {
+          "name": "p112s_live_fallback",
+          "samples": 9,
+          "fraction": 0.034482758620689655
+        },
+        {
+          "name": "nd_arity",
+          "samples": 7,
+          "fraction": 0.02681992337164751
+        },
+        {
+          "name": "p112_liveness_value",
+          "samples": 5,
+          "fraction": 0.019157088122605363
+        },
+        {
+          "name": "p167l_loop",
+          "samples": 5,
+          "fraction": 0.019157088122605363
+        },
+        {
+          "name": "p113n_canonical",
+          "samples": 4,
+          "fraction": 0.01532567049808429
+        },
+        {
+          "name": "nu_add",
+          "samples": 3,
+          "fraction": 0.011494252873563218
+        },
+        {
+          "name": "p152c_pair",
+          "samples": 3,
+          "fraction": 0.011494252873563218
+        },
+        {
+          "name": "p111_partition",
+          "samples": 3,
+          "fraction": 0.011494252873563218
+        }
+      ],
+      "unknownActiveOwnerSamples": 99,
+      "unknownActiveOwnerFraction": 0.3793103448275862,
+      "unknownPhysicalSamples": 15,
+      "unknownPhysicalFraction": 0.05747126436781609
+    },
+    {
+      "label": "p169s_lowered to p169a_original",
+      "begin": "p169s_lowered",
+      "end": "p169a_original",
+      "available": true,
+      "wallSeconds": 8.914097729,
+      "processCpuSeconds": 8.914036861,
+      "threadCpuSeconds": 8.914036595,
+      "sampleStartInclusive": 3774,
+      "sampleEndExclusive": 4051,
+      "samples": 277,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": false,
+      "physicalGroups": [
+        {
+          "name": "lifetime_and_reclamation",
+          "samples": 72,
+          "fraction": 0.259927797833935
+        },
+        {
+          "name": "other_generated",
+          "samples": 62,
+          "fraction": 0.22382671480144403
+        },
+        {
+          "name": "named_string_and_hash_workers",
+          "samples": 46,
+          "fraction": 0.16606498194945848
+        },
+        {
+          "name": "product_access_and_construction",
+          "samples": 42,
+          "fraction": 0.15162454873646208
+        },
+        {
+          "name": "other_physical",
+          "samples": 17,
+          "fraction": 0.061371841155234655
+        },
+        {
+          "name": "unresolved",
+          "samples": 15,
+          "fraction": 0.05415162454873646
+        },
+        {
+          "name": "scheduler",
+          "samples": 10,
+          "fraction": 0.036101083032490974
+        },
+        {
+          "name": "registers_and_control",
+          "samples": 9,
+          "fraction": 0.032490974729241874
+        },
+        {
+          "name": "allocation",
+          "samples": 4,
+          "fraction": 0.01444043321299639
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "name": "term_drop",
+          "samples": 34,
+          "fraction": 0.12274368231046931
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.String.cmp",
+          "samples": 19,
+          "fraction": 0.06859205776173286
+        },
+        {
+          "name": "span_fade",
+          "samples": 18,
+          "fraction": 0.06498194945848375
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.index_hash",
+          "samples": 16,
+          "fraction": 0.05776173285198556
+        },
+        {
+          "name": null,
+          "samples": 15,
+          "fraction": 0.05415162454873646
+        },
+        {
+          "name": "p125_rt_take2",
+          "samples": 12,
+          "fraction": 0.04332129963898917
+        },
+        {
+          "name": "work_loop.constprop.0",
+          "samples": 10,
+          "fraction": 0.036101083032490974
+        },
+        {
+          "name": "p111_rt_sink",
+          "samples": 10,
+          "fraction": 0.036101083032490974
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 9,
+          "fraction": 0.032490974729241874
+        },
+        {
+          "name": "p125_rt_take4",
+          "samples": 9,
+          "fraction": 0.032490974729241874
+        },
+        {
+          "name": "p111_rt_op",
+          "samples": 7,
+          "fraction": 0.02527075812274368
+        },
+        {
+          "name": "p111_set_regs",
+          "samples": 5,
+          "fraction": 0.018050541516245487
+        }
+      ],
+      "topActiveOwners": [
+        {
+          "name": null,
+          "samples": 176,
+          "fraction": 0.6353790613718412
+        },
+        {
+          "name": "p111v_decl",
+          "samples": 19,
+          "fraction": 0.06859205776173286
+        },
+        {
+          "name": "p111v_assign",
+          "samples": 15,
+          "fraction": 0.05415162454873646
+        },
+        {
+          "name": "p111v_step",
+          "samples": 15,
+          "fraction": 0.05415162454873646
+        },
+        {
+          "name": "index_leaf",
+          "samples": 10,
+          "fraction": 0.036101083032490974
+        },
+        {
+          "name": "p111v_body",
+          "samples": 7,
+          "fraction": 0.02527075812274368
+        },
+        {
+          "name": "nc_bangs_term",
+          "samples": 6,
+          "fraction": 0.021660649819494584
+        },
+        {
+          "name": "index_remove",
+          "samples": 4,
+          "fraction": 0.01444043321299639
+        },
+        {
+          "name": "p167v_one",
+          "samples": 4,
+          "fraction": 0.01444043321299639
+        },
+        {
+          "name": "index_join",
+          "samples": 4,
+          "fraction": 0.01444043321299639
+        },
+        {
+          "name": "nc_bangs_terms",
+          "samples": 3,
+          "fraction": 0.010830324909747292
+        },
+        {
+          "name": "p111v_functions",
+          "samples": 3,
+          "fraction": 0.010830324909747292
+        }
+      ],
+      "unknownActiveOwnerSamples": 176,
+      "unknownActiveOwnerFraction": 0.6353790613718412,
+      "unknownPhysicalSamples": 15,
+      "unknownPhysicalFraction": 0.05415162454873646
+    },
+    {
+      "label": "p169a_original to p169a_view",
+      "begin": "p169a_original",
+      "end": "p169a_view",
+      "available": true,
+      "wallSeconds": 0.000735987,
+      "processCpuSeconds": 0.000735342,
+      "threadCpuSeconds": 0.000734898,
+      "sampleStartInclusive": 4052,
+      "sampleEndExclusive": 4052,
+      "samples": 0,
+      "boundarySamplesExcluded": 0,
+      "quantitativeProfileAdmitted": false,
+      "unknownActiveOwnerSamples": 0,
+      "unknownActiveOwnerFraction": null,
+      "unknownPhysicalSamples": 0,
+      "unknownPhysicalFraction": null
+    },
+    {
+      "label": "p169a_view to p169a_checked",
+      "begin": "p169a_view",
+      "end": "p169a_checked",
+      "available": true,
+      "wallSeconds": 3.129094201,
+      "processCpuSeconds": 3.129084034,
+      "threadCpuSeconds": 3.129084984,
+      "sampleStartInclusive": 4053,
+      "sampleEndExclusive": 4149,
+      "samples": 96,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": false,
+      "physicalGroups": [
+        {
+          "name": "lifetime_and_reclamation",
+          "samples": 22,
+          "fraction": 0.22916666666666666
+        },
+        {
+          "name": "other_generated",
+          "samples": 16,
+          "fraction": 0.16666666666666666
+        },
+        {
+          "name": "product_access_and_construction",
+          "samples": 12,
+          "fraction": 0.125
+        },
+        {
+          "name": "named_string_and_hash_workers",
+          "samples": 9,
+          "fraction": 0.09375
+        },
+        {
+          "name": "unresolved",
+          "samples": 9,
+          "fraction": 0.09375
+        },
+        {
+          "name": "allocation",
+          "samples": 8,
+          "fraction": 0.08333333333333333
+        },
+        {
+          "name": "other_physical",
+          "samples": 8,
+          "fraction": 0.08333333333333333
+        },
+        {
+          "name": "registers_and_control",
+          "samples": 6,
+          "fraction": 0.0625
+        },
+        {
+          "name": "scheduler",
+          "samples": 6,
+          "fraction": 0.0625
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "name": "term_drop",
+          "samples": 16,
+          "fraction": 0.16666666666666666
+        },
+        {
+          "name": null,
+          "samples": 9,
+          "fraction": 0.09375
+        },
+        {
+          "name": "heap_alloc",
+          "samples": 8,
+          "fraction": 0.08333333333333333
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.index_hash",
+          "samples": 6,
+          "fraction": 0.0625
+        },
+        {
+          "name": "work_loop.constprop.0",
+          "samples": 6,
+          "fraction": 0.0625
+        },
+        {
+          "name": "p125_rt_take4",
+          "samples": 4,
+          "fraction": 0.041666666666666664
+        },
+        {
+          "name": "p111_set_regs",
+          "samples": 3,
+          "fraction": 0.03125
+        },
+        {
+          "name": "p111_FID_$direct.p131i_insert",
+          "samples": 3,
+          "fraction": 0.03125
+        },
+        {
+          "name": "p111_rt_op",
+          "samples": 3,
+          "fraction": 0.03125
+        },
+        {
+          "name": "span_fade",
+          "samples": 3,
+          "fraction": 0.03125
+        },
+        {
+          "name": "p125_rt_take2.cold",
+          "samples": 2,
+          "fraction": 0.020833333333333332
+        },
+        {
+          "name": "p111_rt_return",
+          "samples": 2,
+          "fraction": 0.020833333333333332
+        }
+      ],
+      "topActiveOwners": [
+        {
+          "name": null,
+          "samples": 64,
+          "fraction": 0.6666666666666666
+        },
+        {
+          "name": "p111v_decl",
+          "samples": 7,
+          "fraction": 0.07291666666666667
+        },
+        {
+          "name": "p111v_assign",
+          "samples": 4,
+          "fraction": 0.041666666666666664
+        },
+        {
+          "name": "p113e_originals",
+          "samples": 3,
+          "fraction": 0.03125
+        },
+        {
+          "name": "p118ns_project",
+          "samples": 3,
+          "fraction": 0.03125
+        },
+        {
+          "name": "p113e_body",
+          "samples": 2,
+          "fraction": 0.020833333333333332
+        },
+        {
+          "name": "p113e_base_scalar_safe",
+          "samples": 2,
+          "fraction": 0.020833333333333332
+        },
+        {
+          "name": "p111v_step",
+          "samples": 2,
+          "fraction": 0.020833333333333332
+        },
+        {
+          "name": "p111v_join",
+          "samples": 2,
+          "fraction": 0.020833333333333332
+        },
+        {
+          "name": "index_set",
+          "samples": 2,
+          "fraction": 0.020833333333333332
+        },
+        {
+          "name": "p113e_schema",
+          "samples": 1,
+          "fraction": 0.010416666666666666
+        },
+        {
+          "name": "p126dp_original_scalar_safe",
+          "samples": 1,
+          "fraction": 0.010416666666666666
+        }
+      ],
+      "unknownActiveOwnerSamples": 64,
+      "unknownActiveOwnerFraction": 0.6666666666666666,
+      "unknownPhysicalSamples": 9,
+      "unknownPhysicalFraction": 0.09375
+    },
+    {
+      "label": "p169a_checked to p169c_output",
+      "begin": "p169a_checked",
+      "end": "p169c_output",
+      "available": true,
+      "wallSeconds": 2.341072079,
+      "processCpuSeconds": 2.341103235,
+      "threadCpuSeconds": 2.341102793,
+      "sampleStartInclusive": 4151,
+      "sampleEndExclusive": 4222,
+      "samples": 71,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": false,
+      "unknownActiveOwnerSamples": 32,
+      "unknownActiveOwnerFraction": 0.4507042253521127,
+      "unknownPhysicalSamples": 3,
+      "unknownPhysicalFraction": 0.04225352112676056
+    },
+    {
+      "label": "p169c_output to p169s_registered",
+      "begin": "p169c_output",
+      "end": "p169s_registered",
+      "available": true,
+      "wallSeconds": 12.181684217,
+      "processCpuSeconds": 12.18163939,
+      "threadCpuSeconds": 12.181639114,
+      "sampleStartInclusive": 4224,
+      "sampleEndExclusive": 4603,
+      "samples": 379,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": false,
+      "physicalGroups": [
+        {
+          "name": "product_access_and_construction",
+          "samples": 98,
+          "fraction": 0.25857519788918204
+        },
+        {
+          "name": "lifetime_and_reclamation",
+          "samples": 89,
+          "fraction": 0.23482849604221637
+        },
+        {
+          "name": "other_generated",
+          "samples": 72,
+          "fraction": 0.18997361477572558
+        },
+        {
+          "name": "named_string_and_hash_workers",
+          "samples": 47,
+          "fraction": 0.12401055408970976
+        },
+        {
+          "name": "other_physical",
+          "samples": 22,
+          "fraction": 0.05804749340369393
+        },
+        {
+          "name": "unresolved",
+          "samples": 20,
+          "fraction": 0.052770448548812667
+        },
+        {
+          "name": "registers_and_control",
+          "samples": 16,
+          "fraction": 0.04221635883905013
+        },
+        {
+          "name": "scheduler",
+          "samples": 12,
+          "fraction": 0.0316622691292876
+        },
+        {
+          "name": "allocation",
+          "samples": 3,
+          "fraction": 0.0079155672823219
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "name": "term_drop",
+          "samples": 51,
+          "fraction": 0.1345646437994723
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.String.cmp",
+          "samples": 30,
+          "fraction": 0.079155672823219
+        },
+        {
+          "name": "span_fade",
+          "samples": 24,
+          "fraction": 0.0633245382585752
+        },
+        {
+          "name": "p118_rt_extend1",
+          "samples": 21,
+          "fraction": 0.055408970976253295
+        },
+        {
+          "name": null,
+          "samples": 20,
+          "fraction": 0.052770448548812667
+        },
+        {
+          "name": "p118_destination_fill",
+          "samples": 17,
+          "fraction": 0.044854881266490766
+        },
+        {
+          "name": "p111_rt_op",
+          "samples": 17,
+          "fraction": 0.044854881266490766
+        },
+        {
+          "name": "p125_rt_take2",
+          "samples": 16,
+          "fraction": 0.04221635883905013
+        },
+        {
+          "name": "work_loop.constprop.0",
+          "samples": 12,
+          "fraction": 0.0316622691292876
+        },
+        {
+          "name": "p113d_FID_$p118.trmc.$direct.String.append",
+          "samples": 12,
+          "fraction": 0.0316622691292876
+        },
+        {
+          "name": "p125_rt_take4",
+          "samples": 9,
+          "fraction": 0.023746701846965697
+        },
+        {
+          "name": "p111_rt_jump",
+          "samples": 9,
+          "fraction": 0.023746701846965697
+        }
+      ],
+      "topActiveOwners": [
+        {
+          "name": null,
+          "samples": 209,
+          "fraction": 0.5514511873350924
+        },
+        {
+          "name": "p112r_scalar",
+          "samples": 20,
+          "fraction": 0.052770448548812667
+        },
+        {
+          "name": "p112c_try",
+          "samples": 16,
+          "fraction": 0.04221635883905013
+        },
+        {
+          "name": "p112r_buffer",
+          "samples": 15,
+          "fraction": 0.0395778364116095
+        },
+        {
+          "name": "p112r_scan_target",
+          "samples": 12,
+          "fraction": 0.0316622691292876
+        },
+        {
+          "name": "p112r_private_call",
+          "samples": 8,
+          "fraction": 0.021108179419525065
+        },
+        {
+          "name": "p112t_param_stmt",
+          "samples": 8,
+          "fraction": 0.021108179419525065
+        },
+        {
+          "name": "p112c_freeze",
+          "samples": 8,
+          "fraction": 0.021108179419525065
+        },
+        {
+          "name": "p112c_add",
+          "samples": 8,
+          "fraction": 0.021108179419525065
+        },
+        {
+          "name": "p112f_clean_stmt",
+          "samples": 7,
+          "fraction": 0.018469656992084433
+        },
+        {
+          "name": "p112r_normal",
+          "samples": 7,
+          "fraction": 0.018469656992084433
+        },
+        {
+          "name": "p112c_target",
+          "samples": 7,
+          "fraction": 0.018469656992084433
+        }
+      ],
+      "unknownActiveOwnerSamples": 209,
+      "unknownActiveOwnerFraction": 0.5514511873350924,
+      "unknownPhysicalSamples": 20,
+      "unknownPhysicalFraction": 0.052770448548812667
+    },
+    {
+      "label": "p169s_registered to p169s_print",
+      "begin": "p169s_registered",
+      "end": "p169s_print",
+      "available": true,
+      "wallSeconds": 0.177978089,
+      "processCpuSeconds": 0.177983785,
+      "threadCpuSeconds": 0.177984115,
+      "sampleStartInclusive": 4605,
+      "sampleEndExclusive": 4608,
+      "samples": 3,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": false,
+      "unknownActiveOwnerSamples": 3,
+      "unknownActiveOwnerFraction": 1.0,
+      "unknownPhysicalSamples": 0,
+      "unknownPhysicalFraction": 0.0
+    },
+    {
+      "label": "p169s_print to p134w_drain",
+      "begin": "p169s_print",
+      "end": "p134w_drain",
+      "available": true,
+      "wallSeconds": 0.060144901,
+      "processCpuSeconds": 0.060147116,
+      "threadCpuSeconds": 0.043868188,
+      "sampleStartInclusive": 4610,
+      "sampleEndExclusive": 4610,
+      "samples": 0,
+      "boundarySamplesExcluded": 1,
+      "quantitativeProfileAdmitted": false,
+      "unknownActiveOwnerSamples": 0,
+      "unknownActiveOwnerFraction": null,
+      "unknownPhysicalSamples": 0,
+      "unknownPhysicalFraction": null
+    },
+    {
+      "label": "cursor rendering / output / exit hook",
+      "begin": "p134w_drain",
+      "end": "@exit",
+      "available": true,
+      "wallSeconds": 32.451367247,
+      "processCpuSeconds": 32.25904762,
+      "threadCpuSeconds": 31.153257851,
+      "sampleStartInclusive": 4611,
+      "sampleEndExclusive": 5583,
+      "samples": 972,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": true,
+      "physicalGroups": [
+        {
+          "name": "product_access_and_construction",
+          "samples": 377,
+          "fraction": 0.38786008230452673
+        },
+        {
+          "name": "lifetime_and_reclamation",
+          "samples": 165,
+          "fraction": 0.1697530864197531
+        },
+        {
+          "name": "other_generated",
+          "samples": 162,
+          "fraction": 0.16666666666666666
+        },
+        {
+          "name": "other_physical",
+          "samples": 108,
+          "fraction": 0.1111111111111111
+        },
+        {
+          "name": "named_string_and_hash_workers",
+          "samples": 40,
+          "fraction": 0.0411522633744856
+        },
+        {
+          "name": "registers_and_control",
+          "samples": 35,
+          "fraction": 0.0360082304526749
+        },
+        {
+          "name": "allocation",
+          "samples": 33,
+          "fraction": 0.033950617283950615
+        },
+        {
+          "name": "scheduler",
+          "samples": 30,
+          "fraction": 0.030864197530864196
+        },
+        {
+          "name": "unresolved",
+          "samples": 22,
+          "fraction": 0.02263374485596708
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "name": "p125_rt_take2",
+          "samples": 113,
+          "fraction": 0.11625514403292181
+        },
+        {
+          "name": "term_drop",
+          "samples": 85,
+          "fraction": 0.0874485596707819
+        },
+        {
+          "name": "ctr_take",
+          "samples": 76,
+          "fraction": 0.07818930041152264
+        },
+        {
+          "name": "p118_rt_extend1",
+          "samples": 62,
+          "fraction": 0.06378600823045268
+        },
+        {
+          "name": "p118_destination_fill",
+          "samples": 40,
+          "fraction": 0.0411522633744856
+        },
+        {
+          "name": "heap_alloc",
+          "samples": 33,
+          "fraction": 0.033950617283950615
+        },
+        {
+          "name": "span_fade",
+          "samples": 32,
+          "fraction": 0.03292181069958848
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.String.cmp",
+          "samples": 30,
+          "fraction": 0.030864197530864196
+        },
+        {
+          "name": "work_loop.constprop.0",
+          "samples": 28,
+          "fraction": 0.02880658436213992
+        },
+        {
+          "name": "p125_rt_take4",
+          "samples": 22,
+          "fraction": 0.02263374485596708
+        },
+        {
+          "name": "p111_rt_op",
+          "samples": 22,
+          "fraction": 0.02263374485596708
+        },
+        {
+          "name": null,
+          "samples": 22,
+          "fraction": 0.02263374485596708
+        }
+      ],
+      "topActiveOwners": [
+        {
+          "name": null,
+          "samples": 707,
+          "fraction": 0.727366255144033
+        },
+        {
+          "name": "p112t_scalar_safe",
+          "samples": 25,
+          "fraction": 0.0257201646090535
+        },
+        {
+          "name": "p112f_clean_stmt",
+          "samples": 17,
+          "fraction": 0.01748971193415638
+        },
+        {
+          "name": "p112w_private",
+          "samples": 14,
+          "fraction": 0.01440329218106996
+        },
+        {
+          "name": "p114h_clean_stmt",
+          "samples": 12,
+          "fraction": 0.012345679012345678
+        },
+        {
+          "name": "p112c_try",
+          "samples": 11,
+          "fraction": 0.01131687242798354
+        },
+        {
+          "name": "p114r_clean_stmt",
+          "samples": 10,
+          "fraction": 0.0102880658436214
+        },
+        {
+          "name": "p112f_clean",
+          "samples": 10,
+          "fraction": 0.0102880658436214
+        },
+        {
+          "name": "p114t_frame",
+          "samples": 8,
+          "fraction": 0.00823045267489712
+        },
+        {
+          "name": "p124r_legacy",
+          "samples": 8,
+          "fraction": 0.00823045267489712
+        },
+        {
+          "name": "p118f_original_stmt",
+          "samples": 7,
+          "fraction": 0.00720164609053498
+        },
+        {
+          "name": "p112a_stmt",
+          "samples": 7,
+          "fraction": 0.00720164609053498
+        }
+      ],
+      "unknownActiveOwnerSamples": 707,
+      "unknownActiveOwnerFraction": 0.727366255144033,
+      "unknownPhysicalSamples": 22,
+      "unknownPhysicalFraction": 0.02263374485596708
+    }
+  ],
+  "budget": {
+    "cleanWholeBuildSeconds": 189.3289372692816,
+    "cleanRegularFileCompilerSeconds": 164.61613187519833,
+    "crossRunResidualNotExclusiveMachineSeconds": 24.71280539408326,
+    "targetWholeSeconds": 100,
+    "requiredWholeReductionSeconds": 89.3289372692816,
+    "requiredWholeReductionFraction": 0.47181872226024013,
+    "conditionalCompilerBudgetIfResidualUnchangedSeconds": 75.28719460591674,
+    "conditionalCompilerSpeedupIfResidualUnchanged": 2.186509043627737
+  },
+  "limits": [
+    "Single main-thread sample stream; no concurrent or logical-call-stack claim.",
+    "First-entry intervals include continuation/ownership work; optional repeated endpoints do not define a single interval.",
+    "Nested/overlapping declared intervals must not be summed.",
+    "One sample at either edge excluded for non-atomic clock/ordinal observations. Unknown contexts remain in denominators.",
+    "Less than500 samples or failed quality checks allow descriptive distributions only; diagnostic clocks are not clean timings.",
+    "No clean same-block parent of this diagnostic capture: 180.095 versus prior164.616s cannot isolate instrumentation overhead from run variation.",
+    "Active lexical owner is conditional and incomplete, not a logical call stack. Private helper work can remain attributed to the outer dispatch.",
+    "Physical categories and semantic intervals overlap; never add them as separate savings.",
+    "No current allocation/RC event volume or source allocator-origin attribution was collected.",
+    "Stage envelopes bound an ideal removal on this diagnostic only; none is a forecast or permission to remove semantic work."
+  ],
+  "detailedAttributionIntervalIndices": [
+    1,
+    2,
+    16,
+    19,
+    20,
+    21,
+    23,
+    25,
+    28
+  ],
+  "optionalMarkerEntries": {
+    "p169q_closed": 1,
+    "p169o_closed": 0,
+    "p169np_admitted": 1
+  }
+}

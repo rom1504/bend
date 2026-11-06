@@ -1,0 +1,260 @@
+{
+  "kind": "phase171-exact-text-delta",
+  "version": 1,
+  "fromRevision": 12,
+  "toRevision": 13,
+  "changes": [
+    {
+      "name": "borrowed-selectors-controls.bend",
+      "before": {
+        "bytes": 3973,
+        "sha256": "8d7522e4db185abd891359f6d640283f53ec090f735ce2ede11cfb4757594775"
+      },
+      "after": {
+        "bytes": 3976,
+        "sha256": "a2fa3c60db313ec84351ac933b82ec3f72f58c795f5a0cdec6c4ebe5a4c878e6"
+      },
+      "edits": [
+        {
+          "offset": 899,
+          "before": "  p171d_walk(p171dc_context(),body,p171dc_env(),cases,P171DView{\"\",\"\",0},0)\n",
+          "after": "  p171d_walk(p171dc_context(),body,p171dc_env(),cases,P171DView{\"\",\"\",0,\"\"},0)\n"
+        }
+      ]
+    },
+    {
+      "name": "borrowed-selectors-laws.bend",
+      "before": {
+        "bytes": 7829,
+        "sha256": "bc57a2999ca528950170f3d1e564d2850dcf2be4dd9ea15637efbe8ac9358857"
+      },
+      "after": {
+        "bytes": 7854,
+        "sha256": "2255466395a078591620685e6fc819f6dfa7f348caba569827a5aa16b91c605b"
+      },
+      "edits": [
+        {
+          "offset": 2890,
+          "before": "",
+          "after": "  for +buffer: N111Value\n"
+        }
+      ]
+    },
+    {
+      "name": "borrowed-selectors-types.bend",
+      "before": {
+        "bytes": 1262,
+        "sha256": "a0c3bf8008703fa3434d3bff326cff71a9c6fef8fcee5aef37a7e097394d6303"
+      },
+      "after": {
+        "bytes": 1326,
+        "sha256": "99af76516be8d828756a99718812a2da9bd760e8a82199c05633562c8bc175df"
+      },
+      "edits": [
+        {
+          "offset": 257,
+          "before": "",
+          "after": "  P171DBuffer{+origin: String, +capacity: U32}\n"
+        },
+        {
+          "offset": 566,
+          "before": "  P171DView{+path: String, +ctor: String, +width: U32}\n",
+          "after": "  P171DView{+path: String, +ctor: String, +width: U32, +buffer: String}\n"
+        }
+      ]
+    },
+    {
+      "name": "borrowed-selectors.bend",
+      "before": {
+        "bytes": 13401,
+        "sha256": "5ff7a42ddd77546f05cd8e7945c326d748334ae9326f83cf89c9488962b4e6bc"
+      },
+      "after": {
+        "bytes": 16140,
+        "sha256": "8aa845bbcf14481d0b79d73c40ae7090a0e0967e990509199e16347649428a9d"
+      },
+      "edits": [
+        {
+          "offset": 0,
+          "before": "",
+          "after": "# Local buffers are stack storage, never descendant values or helper arguments.\n# Origin survives exact pointer copies; only the most recent verified write is\n# readable. Any allocation/callee invalidates the view; arbitrary stores decline.\n@unsafe\ndef p171d_buffer(+value: N111Value, +env: List<&2,P171DLocal>) -> P171DInfo:\n  match value:\n    case N111Local{+name}:\n      nt_choose(P171DInfo,String.eq(name,\"scratch\"),u => P171DBuffer{\"scratch\",2048},u => p171d_info(name,env))\n    case _: P171DUnknown{}\n\n@unsafe\ndef p171d_buffer_unused(info: P171DInfo) -> Bool:\n  match info:\n    case P171DUnknown{}: True{}\n    case _: False{}\n\n@unsafe\ndef p171d_buffer_valid(info: P171DInfo, +need: U32) -> Bool:\n  match info:\n    case P171DBuffer{origin,capacity}: U32.is_gt(need,0) && U32.is_le(need,capacity)\n    case _: False{}\n\n@unsafe\ndef p171d_buffer_origin(info: P171DInfo) -> String:\n  match info:\n    case P171DBuffer{origin,capacity}: origin\n    case _: \"\"\n\n"
+        },
+        {
+          "offset": 731,
+          "before": "",
+          "after": "    case P171DBuffer{origin,capacity}: False{}\n"
+        },
+        {
+          "offset": 4693,
+          "before": "",
+          "after": "# A same-local integer constant join has one exact postcondition regardless of\n# which arm runs. Keep the original conditional and inspect its continuation once.\n@unsafe\ndef p171d_scalar_phi(yes: List<&2,N111Stmt>, no: List<&2,N111Stmt>) -> String:\n  match yes no:\n    case Con{N111Set{+left,+lt,N111Const{a,b}},Nil{}} Con{N111Set{right,rt,N111Const{c,d}},Nil{}}:\n      nt_choose(String,String.eq(left,right) && U32.is_eq(p111v_type(lt),p111v_type(rt)) && U32.is_le(p111v_type(lt),2),u => left,u => \"\")\n    case _ _: \"\"\n\n"
+        },
+        {
+          "offset": 4771,
+          "before": "    case N111Set{+name,typ,+value}:\n      nt_choose(P171DCode,p171d_known(p171d_value(value,env)),\n        u => p171d_continue(ctx,stmt,rest,env,cases,view,n,name,p171d_value(value,env)),u => p171d_decline(n))\n",
+          "after": "    case N111Set{+name,+typ,+value}:\n      nt_choose(P171DCode,U32.is_eq(p111v_type(typ),3) && p171d_buffer_valid(p171d_buffer(value,env),1),\n        u => p171d_continue(ctx,stmt,rest,env,cases,view,n,name,p171d_buffer(value,env)),\n        u => nt_choose(P171DCode,p171d_known(p171d_value(value,env)),\n          v => p171d_continue(ctx,stmt,rest,env,cases,view,n,name,p171d_value(value,env)),v => p171d_decline(n)))\n    case N111Alloca{+name,+bytes,+align}:\n      nt_choose(P171DCode,U32.is_gt(bytes,0) && U32.is_le(bytes,2048) && (U32.is_eq(align,8) || U32.is_eq(align,16)) && Bool.not(String.eq(name,\"scratch\")) && p171d_buffer_unused(p171d_info(name,env)),\n        u => p171d_continue(ctx,stmt,rest,env,cases,P171DView{\"\",\"\",0,\"\"},n,name,P171DBuffer{name,bytes}),u => p171d_decline(n))\n"
+        },
+        {
+          "offset": 5263,
+          "before": "    case N111If{condition,yes,no}:\n      p171d_step(ctx,Con{P113DIf{condition,p113d_scalars(yes),p113d_scalars(no)},rest},env,cases,view,n)\n",
+          "after": "    case N111If{+condition,+yes,+no}:\n      +phi = p171d_scalar_phi(yes,no)\n      nt_choose(P171DCode,Bool.not(String.is_empty(phi)) && p171d_known(p171d_value(condition,env)),\n        u => p171d_continue(ctx,stmt,rest,env,cases,view,n,phi,P171DWord{\"\"}),\n        u => p171d_step(ctx,Con{P113DIf{condition,p113d_scalars(yes),p113d_scalars(no)},rest},env,cases,view,n))\n"
+        },
+        {
+          "offset": 5747,
+          "before": "    case N111Local{buffer} P171DView{+path,+ctor,+width}:\n      nt_choose(P171DCode,String.eq(buffer,\"scratch\") && U32.is_eq(p111v_type(typ),2) && U32.is_eq(U32.mod(offset,8),0) && U32.is_lt(U32.div(offset,8),width),\n        u => p171d_continue(ctx,stmt,rest,env,cases,P171DView{path,ctor,width},n,name,\n",
+          "after": "    case N111Local{+buffer} P171DView{+path,+ctor,+width,+origin}:\n      nt_choose(P171DCode,String.eq(p171d_buffer_origin(p171d_buffer(N111Local{buffer},env)),origin) && p171d_buffer_valid(p171d_buffer(N111Local{buffer},env),U32.mul(width,8)) && U32.is_eq(p111v_type(typ),2) && U32.is_eq(U32.mod(offset,8),0) && U32.is_lt(U32.div(offset,8),width),\n        u => p171d_continue(ctx,stmt,rest,env,cases,P171DView{path,ctor,width,origin},n,name,\n"
+        },
+        {
+          "offset": 6623,
+          "before": "def p171d_take(ctx, name, typ, word, count, rest, env, cases, n):\n",
+          "after": "def p171d_take(ctx, name, typ, word, count, buffer, rest, env, cases, n):\n"
+        },
+        {
+          "offset": 6854,
+          "before": "    u => p171d_prefix([P113DScalar{N111Call{name,typ,\"p118_rt_borrow_fields\",[p111_state(),p111_word(word),p111_scratch(),N111Arg{N111U32{},N111CtorId{ctor}},p111_u32(count)]}}],\n      p171d_walk(ctx,rest,Con{P171DLocal{name,P171DWord{\"\"}},env},cases,P171DView{path,ctor,count},n)),u => p171d_decline(n))\n",
+          "after": "    u => p171d_prefix([P113DScalar{N111Call{name,typ,\"p118_rt_borrow_fields\",[p111_state(),p111_word(word),N111Arg{N111Ptr{},buffer},N111Arg{N111U32{},N111CtorId{ctor}},p111_u32(count)]}}],\n      p171d_walk(ctx,rest,Con{P171DLocal{name,P171DWord{\"\"}},env},cases,P171DView{path,ctor,count,p171d_buffer_origin(p171d_buffer(buffer,env))},n)),u => p171d_decline(n))\n"
+        },
+        {
+          "offset": 8455,
+          "before": "    nt_choose(P171DCode,p134v_value(p111v_arg(args,2),N111Local{\"scratch\"}),\n      v => p171d_take(ctx,name,typ,p111v_arg(args,1),p111v_literal(p111v_arg(args,3)),rest,env,cases,n),v => p171d_decline(n)),u =>\n",
+          "after": "    nt_choose(P171DCode,p171d_buffer_valid(p171d_buffer(p111v_arg(args,2),env),U32.mul(p111v_literal(p111v_arg(args,3)),8)),\n      v => p171d_take(ctx,name,typ,p111v_arg(args,1),p111v_literal(p111v_arg(args,3)),p111v_arg(args,2),rest,env,cases,n),v => p171d_decline(n)),u =>\n"
+        },
+        {
+          "offset": 8733,
+          "before": "    nt_choose(P171DCode,p134v_value(p111v_arg(args,2),N111Local{\"scratch\"}),\n      v => p171d_take(ctx,name,typ,p111v_arg(args,1),p111v_literal(p111v_arg(args,4)),rest,env,cases,n),v => p171d_decline(n)),u =>\n",
+          "after": "    nt_choose(P171DCode,p171d_buffer_valid(p171d_buffer(p111v_arg(args,2),env),U32.mul(p111v_literal(p111v_arg(args,4)),8)),\n      v => p171d_take(ctx,name,typ,p111v_arg(args,1),p111v_literal(p111v_arg(args,4)),p111v_arg(args,2),rest,env,cases,n),v => p171d_decline(n)),u =>\n"
+        },
+        {
+          "offset": 9159,
+          "before": "    u => nt_choose(P171DCode,p171d_known(p171d_value(p111v_arg(args,2),env)) && p134v_value(p111v_arg(args,3),N111Local{\"scratch\"}),\n      v => p171d_continue(ctx,N111Call{name,typ,symbol,args},rest,env,cases,P171DView{\"\",\"\",1},n,name,P171DWord{\"\"}),v => p171d_decline(n)),u =>\n",
+          "after": "    u => nt_choose(P171DCode,p171d_known(p171d_value(p111v_arg(args,2),env)) && p171d_buffer_valid(p171d_buffer(p111v_arg(args,3),env),8),\n      v => p171d_continue(ctx,N111Call{name,typ,symbol,args},rest,env,cases,P171DView{\"\",\"\",1,p171d_buffer_origin(p171d_buffer(p111v_arg(args,3),env))},n,name,P171DWord{\"\"}),v => p171d_decline(n)),u =>\n"
+        },
+        {
+          "offset": 10487,
+          "before": "        u => p171d_worker_done(reader,params,p171d_walk(P171DContext{functions,ids,Con{name,stack},U32.inc(depth)},body,p171d_env(params,args,env),[],P171DView{\"\",\"\",0},U32.inc(n))),\n",
+          "after": "        u => p171d_worker_done(reader,params,p171d_walk(P171DContext{functions,ids,Con{name,stack},U32.inc(depth)},body,p171d_env(params,args,env),[],P171DView{\"\",\"\",0,\"\"},U32.inc(n))),\n"
+        },
+        {
+          "offset": 11031,
+          "before": "          p171d_walk(ctx,rest,Con{P171DLocal{destination,P171DWord{nt_choose(String,rooted,v => \"call.\" ++ U32.show(n),v => \"\")}},env},cases,P171DView{\"\",\"\",0},next)),u => p171d_decline(next))\n",
+          "after": "          p171d_walk(ctx,rest,Con{P171DLocal{destination,P171DWord{nt_choose(String,rooted,v => \"call.\" ++ U32.show(n),v => \"\")}},env},cases,P171DView{\"\",\"\",0,\"\"},next)),u => p171d_decline(next))\n"
+        }
+      ]
+    },
+    {
+      "name": "buffer-controls.bend",
+      "before": null,
+      "after": {
+        "bytes": 3589,
+        "sha256": "8030ea49502e5257d701ac7c85727269241cbcbc777fd5dca37e9289db2ad275"
+      },
+      "edits": [
+        {
+          "offset": 0,
+          "before": "",
+          "after": "# Compiler-data controls only. The actual request entry and final verifier remain\n# required to authorize emitted runtime bodies.\n\n@unsafe\ndef p171db_take(kind: U32, buffer: String) -> P113DStmt:\n  P113DScalar{N111Call{\"ignored\",N111U64{},\"p111_rt_special_take\",[p111_state(),p111_u32(kind),p111_word(N111Local{\"root\"}),N111Arg{N111Ptr{},N111Local{buffer}},p111_u32(1)]}}\n\n@unsafe\ndef p171db_tail(buffer: String) -> List<&2,P113DStmt>:\n  [P113DScalar{N111Load{\"field\",N111U64{},N111Local{buffer},0}},P113DResult{[N111Local{\"field\"}]}]\n\n@unsafe\ndef p171db_alias(+kind: U32) -> Bool:\n  p171di_exact(p171dc_run(nt_append(P113DStmt,[\n    P113DScalar{N111Alloca{\"buffer\",8,8}},\n    P113DScalar{N111Set{\"alias\",N111Ptr{},N111Local{\"buffer\"}}},p171db_take(kind,\"buffer\")],p171db_tail(\"alias\")),[]),[\n    P113DScalar{N111Alloca{\"buffer\",8,8}},\n    P113DScalar{N111Set{\"alias\",N111Ptr{},N111Local{\"buffer\"}}},p171db_take(kind,\"buffer\"),\n    P113DScalar{N111Load{\"field\",N111U64{},N111Local{\"alias\"},0}},\n    P113DResult{[N111Const{1,0},N111Local{\"field\"}]}],5,1,0,False{})\n\n@unsafe\ndef p171db_refuse(body: List<&2,P113DStmt>) -> Bool:\n  Bool.not(p171dc_accept(p171dc_run(body,[])))\n\n@unsafe\ndef p171db_phi(+bit: U32) -> Bool:\n  +prefix : List<&2,P113DStmt> = [\n    P113DScalar{N111Set{\"condition\",N111U32{},N111Const{bit,0}}},\n    P113DScalar{N111If{N111Local{\"condition\"},[N111Set{\"joined\",N111U64{},N111Const{1,0}}],[N111Set{\"joined\",N111U64{},N111Const{0,0}}]}},\n    P113DScalar{N111Set{\"alias\",N111U64{},N111Local{\"joined\"}}}]\n  p171di_exact(p171dc_run(nt_append(P113DStmt,prefix,[P113DResult{[N111Local{\"alias\"}]}]),[]),\n    nt_append(P113DStmt,prefix,[P113DResult{[N111Const{1,0},N111Local{\"alias\"}]}]),4,1,0,False{})\n\n@unsafe\ndef p171d_buffer_controls() -> List<&2,String>:\n  [p171dc_row(\"named-Chr-buffer-pointer-alias-full-value\",p171db_alias(5)),\n   p171dc_row(\"named-Succ-buffer-pointer-alias-full-value\",p171db_alias(4)),\n   p171dc_row(\"undeclared-buffer-refuses\",p171db_refuse(Con{p171db_take(5,\"absent\"),p171db_tail(\"absent\")})),\n   p171dc_row(\"uninitialized-buffer-load-refuses\",p171db_refuse(Con{P113DScalar{N111Alloca{\"buffer\",8,8}},p171db_tail(\"buffer\")})),\n   p171dc_row(\"short-buffer-refuses\",p171db_refuse(nt_append(P113DStmt,[P113DScalar{N111Alloca{\"buffer\",4,8}},p171db_take(5,\"buffer\")],p171db_tail(\"buffer\")))),\n   p171dc_row(\"bad-alignment-refuses\",p171db_refuse(nt_append(P113DStmt,[P113DScalar{N111Alloca{\"buffer\",8,3}},p171db_take(5,\"buffer\")],p171db_tail(\"buffer\")))),\n   p171dc_row(\"oversized-buffer-refuses\",p171db_refuse(nt_append(P113DStmt,[P113DScalar{N111Alloca{\"buffer\",2049,8}},p171db_take(5,\"buffer\")],p171db_tail(\"buffer\")))),\n   p171dc_row(\"other-buffer-not-last-writer-refuses\",p171db_refuse(nt_append(P113DStmt,[P113DScalar{N111Alloca{\"buffer\",8,8}},P113DScalar{N111Alloca{\"other\",8,8}},p171db_take(5,\"buffer\")],p171db_tail(\"other\")))),\n   p171dc_row(\"reallocation-invalidates-and-refuses\",p171db_refuse(nt_append(P113DStmt,[P113DScalar{N111Alloca{\"buffer\",8,8}},P113DScalar{N111Set{\"alias\",N111Ptr{},N111Local{\"buffer\"}}},P113DScalar{N111Alloca{\"buffer\",8,8}},p171db_take(5,\"buffer\")],p171db_tail(\"alias\")))),\n   p171dc_row(\"pointer-result-refuses\",p171db_refuse([P113DScalar{N111Alloca{\"buffer\",8,8}},P113DResult{[N111Local{\"buffer\"}]}])),\n   p171dc_row(\"allocating-special-kind-refuses\",p171db_refuse(nt_append(P113DStmt,[P113DScalar{N111Alloca{\"buffer\",8,8}},p171db_take(7,\"buffer\")],p171db_tail(\"buffer\")))),\n   p171dc_row(\"compact-true-constant-join-full-value\",p171db_phi(1)),\n   p171dc_row(\"compact-false-constant-join-full-value\",p171db_phi(0))]\n"
+        }
+      ]
+    },
+    {
+      "name": "derivation.json",
+      "before": {
+        "bytes": 2172,
+        "sha256": "014a84cc0db901efe2330a09414aaac90ac10ccf3080589b45fad89f61e543d8"
+      },
+      "after": {
+        "bytes": 1982,
+        "sha256": "650762d8fbef4daa6be63c88fec68c641b017dae10a1465c67db8613abf53e02"
+      },
+      "edits": [
+        {
+          "offset": 2,
+          "before": "  \"kind\": \"phase171-descendant-scalar-if-successor\",\n",
+          "after": "  \"kind\": \"phase171-descendant-stack-buffer-successor\",\n"
+        },
+        {
+          "offset": 121,
+          "before": "      \"file\": \"selfhost/tests/phase171/borrowed-selectors-controls.bend\",\n",
+          "after": "      \"file\": \"selfhost/tests/phase171/descendant-v12/borrowed-selectors-controls.bend\",\n"
+        },
+        {
+          "offset": 312,
+          "before": "      \"file\": \"selfhost/tests/phase171/borrowed-selectors-diagnostic.bend\",\n",
+          "after": "      \"file\": \"selfhost/tests/phase171/descendant-v12/borrowed-selectors-diagnostic.bend\",\n"
+        },
+        {
+          "offset": 505,
+          "before": "      \"file\": \"selfhost/tests/phase171/borrowed-selectors-emission.bend\",\n",
+          "after": "      \"file\": \"selfhost/tests/phase171/descendant-v12/borrowed-selectors-emission.bend\",\n"
+        },
+        {
+          "offset": 696,
+          "before": "      \"file\": \"selfhost/tests/phase171/borrowed-selectors-entry.bend\",\n",
+          "after": "      \"file\": \"selfhost/tests/phase171/descendant-v12/borrowed-selectors-entry.bend\",\n"
+        },
+        {
+          "offset": 884,
+          "before": "      \"file\": \"selfhost/tests/phase171/borrowed-selectors-laws.bend\",\n",
+          "after": "      \"file\": \"selfhost/tests/phase171/descendant-v12/borrowed-selectors-laws.bend\",\n"
+        },
+        {
+          "offset": 1071,
+          "before": "      \"file\": \"selfhost/tests/phase171/borrowed-selectors-types.bend\",\n",
+          "after": "      \"file\": \"selfhost/tests/phase171/descendant-v12/borrowed-selectors-types.bend\",\n"
+        },
+        {
+          "offset": 1259,
+          "before": "      \"file\": \"selfhost/tests/phase171/borrowed-selectors.bend\",\n      \"bytes\": 13261,\n      \"sha256\": \"cc7dc201381142fc7ebe9fcdc90e2815191d50988a0f9f53f1c307d27ceb58db\"\n",
+          "after": "      \"file\": \"selfhost/tests/phase171/descendant-v12/borrowed-selectors.bend\",\n      \"bytes\": 13401,\n      \"sha256\": \"5ff7a42ddd77546f05cd8e7945c326d748334ae9326f83cf89c9488962b4e6bc\"\n    },\n    {\n      \"file\": \"selfhost/tests/phase171/descendant-v12/scalar-if-controls.bend\",\n      \"bytes\": 3378,\n      \"sha256\": \"7195e544666d53541d7e8df4cff0e61e581cfa90674c34615423b7e93c85142b\"\n"
+        },
+        {
+          "offset": 1440,
+          "before": "  \"change\": {\n    \"file\": \"selfhost/tests/phase171/descendant-v12/borrowed-selectors.bend\",\n    \"before\": \"    case N111Load{name,typ,base,offset}: p171d_load(ctx,stmt,name,typ,base,offset,rest,env,cases,view,n)\",\n    \"after\": \"    case N111If{condition,yes,no}:\\n      p171d_step(ctx,Con{P113DIf{condition,p113d_scalars(yes),p113d_scalars(no)},rest},env,cases,view,n)\\n    case N111Load{name,typ,base,offset}: p171d_load(ctx,stmt,name,typ,base,offset,rest,env,cases,view,n)\"\n  },\n  \"scope\": \"Only N111If becomes an equivalent P113DIf with unchanged scalar children, then existing branch/environment/budget logic. Unknown effects, stores, return statements and unsupported forms still decline. Original source11 files untouched.\"\n",
+          "after": "  \"scope\": \"Exact static original stack allocations, tracked pointer aliases/capacity, most recent write provenance. No arbitrary stores/offsets, heap allocations, runtime guard changes, pointer escape or new imported runtime helper.\"\n"
+        }
+      ]
+    }
+  ],
+  "inventory": {
+    "borrowed-selectors-controls.bend": {
+      "bytes": 3976,
+      "sha256": "a2fa3c60db313ec84351ac933b82ec3f72f58c795f5a0cdec6c4ebe5a4c878e6"
+    },
+    "borrowed-selectors-diagnostic.bend": {
+      "bytes": 1215,
+      "sha256": "88ecbe47022069848bb1eeb994dea6328fa3265c69c33c9183d2d6bfc454f49c"
+    },
+    "borrowed-selectors-emission.bend": {
+      "bytes": 4503,
+      "sha256": "1721877ff9b3ba79f4ea1d0253e5e964d5d0ba56fa660e9ba98e47b8dd38b068"
+    },
+    "borrowed-selectors-entry.bend": {
+      "bytes": 6950,
+      "sha256": "f3b40f6eac33dff9180d57ada9c0ff260b64113a94c02ce167f4cc1c552dae7a"
+    },
+    "borrowed-selectors-laws.bend": {
+      "bytes": 7854,
+      "sha256": "2255466395a078591620685e6fc819f6dfa7f348caba569827a5aa16b91c605b"
+    },
+    "borrowed-selectors-types.bend": {
+      "bytes": 1326,
+      "sha256": "99af76516be8d828756a99718812a2da9bd760e8a82199c05633562c8bc175df"
+    },
+    "borrowed-selectors.bend": {
+      "bytes": 16140,
+      "sha256": "8aa845bbcf14481d0b79d73c40ae7090a0e0967e990509199e16347649428a9d"
+    },
+    "buffer-controls.bend": {
+      "bytes": 3589,
+      "sha256": "8030ea49502e5257d701ac7c85727269241cbcbc777fd5dca37e9289db2ad275"
+    },
+    "derivation.json": {
+      "bytes": 1982,
+      "sha256": "650762d8fbef4daa6be63c88fec68c641b017dae10a1465c67db8613abf53e02"
+    },
+    "scalar-if-controls.bend": {
+      "bytes": 3378,
+      "sha256": "7195e544666d53541d7e8df4cff0e61e581cfa90674c34615423b7e93c85142b"
+    }
+  }
+}

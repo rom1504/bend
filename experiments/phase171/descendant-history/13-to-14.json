@@ -1,0 +1,168 @@
+{
+  "kind": "phase171-exact-text-delta",
+  "version": 1,
+  "fromRevision": 13,
+  "toRevision": 14,
+  "changes": [
+    {
+      "name": "borrowed-selectors-controls.bend",
+      "before": {
+        "bytes": 3976,
+        "sha256": "a2fa3c60db313ec84351ac933b82ec3f72f58c795f5a0cdec6c4ebe5a4c878e6"
+      },
+      "after": {
+        "bytes": 4042,
+        "sha256": "7d020963013acf46d28a22085e9c87c7b31c4bd63e6c669e78f39d3945628a8c"
+      },
+      "edits": [
+        {
+          "offset": 1594,
+          "before": "",
+          "after": "        P113DScalar{N111Set{\"ignored\",N111U64{},N111Const{0,0}}},\n"
+        }
+      ]
+    },
+    {
+      "name": "borrowed-selectors.bend",
+      "before": {
+        "bytes": 16140,
+        "sha256": "8aa845bbcf14481d0b79d73c40ae7090a0e0967e990509199e16347649428a9d"
+      },
+      "after": {
+        "bytes": 16196,
+        "sha256": "a2d9820ff7ed10e4f9e256b39b709074b7082f8d92819a7cf3f646ed045cfdc8"
+      },
+      "edits": [
+        {
+          "offset": 10459,
+          "before": "    u => nt_choose(P171DCode,p171d_known(p171d_value(p111v_arg(args,1),env)),v => p171d_walk(ctx,rest,env,cases,view,n),v => p171d_decline(n)),u =>\n",
+          "after": "    u => nt_choose(P171DCode,p171d_known(p171d_value(p111v_arg(args,1),env)),v => p171d_continue(ctx,N111Set{name,typ,N111Const{0,0}},rest,env,cases,view,n,name,P171DWord{\"\"}),v => p171d_decline(n)),u =>\n"
+        }
+      ]
+    },
+    {
+      "name": "derivation.json",
+      "before": {
+        "bytes": 1982,
+        "sha256": "650762d8fbef4daa6be63c88fec68c641b017dae10a1465c67db8613abf53e02"
+      },
+      "after": {
+        "bytes": 2987,
+        "sha256": "b13e273a6debdfefb4cee6cbda037af7124857c4bce0c6155f75748cd74a4fd6"
+      },
+      "edits": [
+        {
+          "offset": 2,
+          "before": "  \"kind\": \"phase171-descendant-stack-buffer-successor\",\n",
+          "after": "  \"kind\": \"phase171-descendant-sink-value-successor\",\n"
+        },
+        {
+          "offset": 124,
+          "before": "      \"file\": \"selfhost/tests/phase171/descendant-v12/borrowed-selectors-controls.bend\",\n      \"bytes\": 3973,\n      \"sha256\": \"8d7522e4db185abd891359f6d640283f53ec090f735ce2ede11cfb4757594775\"\n",
+          "after": "      \"file\": \"selfhost/tests/phase171/descendant-v13/borrowed-selectors-controls.bend\",\n      \"bytes\": 3976,\n      \"sha256\": \"a2fa3c60db313ec84351ac933b82ec3f72f58c795f5a0cdec6c4ebe5a4c878e6\"\n"
+        },
+        {
+          "offset": 330,
+          "before": "      \"file\": \"selfhost/tests/phase171/descendant-v12/borrowed-selectors-diagnostic.bend\",\n",
+          "after": "      \"file\": \"selfhost/tests/phase171/descendant-v13/borrowed-selectors-diagnostic.bend\",\n"
+        },
+        {
+          "offset": 538,
+          "before": "      \"file\": \"selfhost/tests/phase171/descendant-v12/borrowed-selectors-emission.bend\",\n",
+          "after": "      \"file\": \"selfhost/tests/phase171/descendant-v13/borrowed-selectors-emission.bend\",\n"
+        },
+        {
+          "offset": 744,
+          "before": "      \"file\": \"selfhost/tests/phase171/descendant-v12/borrowed-selectors-entry.bend\",\n",
+          "after": "      \"file\": \"selfhost/tests/phase171/descendant-v13/borrowed-selectors-entry.bend\",\n"
+        },
+        {
+          "offset": 947,
+          "before": "      \"file\": \"selfhost/tests/phase171/descendant-v12/borrowed-selectors-laws.bend\",\n      \"bytes\": 7829,\n      \"sha256\": \"bc57a2999ca528950170f3d1e564d2850dcf2be4dd9ea15637efbe8ac9358857\"\n",
+          "after": "      \"file\": \"selfhost/tests/phase171/descendant-v13/borrowed-selectors-laws.bend\",\n      \"bytes\": 7854,\n      \"sha256\": \"2255466395a078591620685e6fc819f6dfa7f348caba569827a5aa16b91c605b\"\n"
+        },
+        {
+          "offset": 1149,
+          "before": "      \"file\": \"selfhost/tests/phase171/descendant-v12/borrowed-selectors-types.bend\",\n      \"bytes\": 1262,\n      \"sha256\": \"a0c3bf8008703fa3434d3bff326cff71a9c6fef8fcee5aef37a7e097394d6303\"\n",
+          "after": "      \"file\": \"selfhost/tests/phase171/descendant-v13/borrowed-selectors-types.bend\",\n      \"bytes\": 1326,\n      \"sha256\": \"99af76516be8d828756a99718812a2da9bd760e8a82199c05633562c8bc175df\"\n"
+        },
+        {
+          "offset": 1352,
+          "before": "      \"file\": \"selfhost/tests/phase171/descendant-v12/borrowed-selectors.bend\",\n      \"bytes\": 13401,\n      \"sha256\": \"5ff7a42ddd77546f05cd8e7945c326d748334ae9326f83cf89c9488962b4e6bc\"\n",
+          "after": "      \"file\": \"selfhost/tests/phase171/descendant-v13/borrowed-selectors.bend\",\n      \"bytes\": 16140,\n      \"sha256\": \"8aa845bbcf14481d0b79d73c40ae7090a0e0967e990509199e16347649428a9d\"\n"
+        },
+        {
+          "offset": 1550,
+          "before": "      \"file\": \"selfhost/tests/phase171/descendant-v12/scalar-if-controls.bend\",\n",
+          "after": "      \"file\": \"selfhost/tests/phase171/descendant-v13/buffer-controls.bend\",\n      \"bytes\": 3589,\n      \"sha256\": \"8030ea49502e5257d701ac7c85727269241cbcbc777fd5dca37e9289db2ad275\"\n    },\n    {\n      \"file\": \"selfhost/tests/phase171/descendant-v13/scalar-if-controls.bend\",\n"
+        },
+        {
+          "offset": 1745,
+          "before": "  \"scope\": \"Exact static original stack allocations, tracked pointer aliases/capacity, most recent write provenance. No arbitrary stores/offsets, heap allocations, runtime guard changes, pointer escape or new imported runtime helper.\"\n",
+          "after": "  \"scope\": \"Only sink suppression preserves its exact zero-valued assignment and updates local facts. Original runtime guards and fallback unchanged. Literal full-body original control updated to require the preserved assignment; separate fresh/reused destination controls added.\",\n  \"controlBefore\": \"        P113DScalar{N111Set{\\\"alias\\\",N111U64{},N111Local{\\\"field\\\"}}},\\n        P113DResult{[N111Const{1,0},N111Local{\\\"alias\\\"}]}])\",\n  \"controlAfter\": \"        P113DScalar{N111Set{\\\"alias\\\",N111U64{},N111Local{\\\"field\\\"}}},\\n        P113DScalar{N111Set{\\\"ignored\\\",N111U64{},N111Const{0,0}}},\\n        P113DResult{[N111Const{1,0},N111Local{\\\"alias\\\"}]}])\",\n  \"sourceBefore\": \"u => nt_choose(P171DCode,p171d_known(p171d_value(p111v_arg(args,1),env)),v => p171d_walk(ctx,rest,env,cases,view,n),v => p171d_decline(n)),u =>\",\n  \"sourceAfter\": \"u => nt_choose(P171DCode,p171d_known(p171d_value(p111v_arg(args,1),env)),v => p171d_continue(ctx,N111Set{name,typ,N111Const{0,0}},rest,env,cases,view,n,name,P171DWord{\\\"\\\"}),v => p171d_decline(n)),u =>\"\n"
+        }
+      ]
+    },
+    {
+      "name": "sink-controls.bend",
+      "before": null,
+      "after": {
+        "bytes": 1066,
+        "sha256": "bd35b77c1fe25362df38640f6192c030f91e4bce75d04625dcad9e285bf4beef"
+      },
+      "edits": [
+        {
+          "offset": 0,
+          "before": "",
+          "after": "# Suppressing a decrement must preserve the runtime call's exact return value.\n# These are finite compiler IR values, not executed failure/runtime probes.\n\n@unsafe\ndef p171d_sink_controls() -> List<&2,String>:\n  [p171dc_row(\"fresh-sink-destination-zero-used-later\",p171di_exact(p171dc_run([\n     P113DScalar{N111Call{\"zero\",N111U64{},\"p111_rt_sink\",[p111_state(),p111_word(N111Local{\"root\"})]}},\n     P113DResult{[N111Local{\"zero\"}]}],[]),[\n     P113DScalar{N111Set{\"zero\",N111U64{},N111Const{0,0}}},\n     P113DResult{[N111Const{1,0},N111Local{\"zero\"}]}],2,1,0,False{})),\n   p171dc_row(\"reused-sink-destination-overwrites-prior-one\",p171di_exact(p171dc_run([\n     P113DScalar{N111Set{\"value\",N111U64{},N111Const{1,0}}},\n     P113DScalar{N111Call{\"value\",N111U64{},\"p111_rt_sink\",[p111_state(),p111_word(N111Local{\"root\"})]}},\n     P113DResult{[N111Local{\"value\"}]}],[]),[\n     P113DScalar{N111Set{\"value\",N111U64{},N111Const{1,0}}},\n     P113DScalar{N111Set{\"value\",N111U64{},N111Const{0,0}}},\n     P113DResult{[N111Const{1,0},N111Local{\"value\"}]}],3,1,0,False{}))]\n"
+        }
+      ]
+    }
+  ],
+  "inventory": {
+    "borrowed-selectors-controls.bend": {
+      "bytes": 4042,
+      "sha256": "7d020963013acf46d28a22085e9c87c7b31c4bd63e6c669e78f39d3945628a8c"
+    },
+    "borrowed-selectors-diagnostic.bend": {
+      "bytes": 1215,
+      "sha256": "88ecbe47022069848bb1eeb994dea6328fa3265c69c33c9183d2d6bfc454f49c"
+    },
+    "borrowed-selectors-emission.bend": {
+      "bytes": 4503,
+      "sha256": "1721877ff9b3ba79f4ea1d0253e5e964d5d0ba56fa660e9ba98e47b8dd38b068"
+    },
+    "borrowed-selectors-entry.bend": {
+      "bytes": 6950,
+      "sha256": "f3b40f6eac33dff9180d57ada9c0ff260b64113a94c02ce167f4cc1c552dae7a"
+    },
+    "borrowed-selectors-laws.bend": {
+      "bytes": 7854,
+      "sha256": "2255466395a078591620685e6fc819f6dfa7f348caba569827a5aa16b91c605b"
+    },
+    "borrowed-selectors-types.bend": {
+      "bytes": 1326,
+      "sha256": "99af76516be8d828756a99718812a2da9bd760e8a82199c05633562c8bc175df"
+    },
+    "borrowed-selectors.bend": {
+      "bytes": 16196,
+      "sha256": "a2d9820ff7ed10e4f9e256b39b709074b7082f8d92819a7cf3f646ed045cfdc8"
+    },
+    "buffer-controls.bend": {
+      "bytes": 3589,
+      "sha256": "8030ea49502e5257d701ac7c85727269241cbcbc777fd5dca37e9289db2ad275"
+    },
+    "derivation.json": {
+      "bytes": 2987,
+      "sha256": "b13e273a6debdfefb4cee6cbda037af7124857c4bce0c6155f75748cd74a4fd6"
+    },
+    "scalar-if-controls.bend": {
+      "bytes": 3378,
+      "sha256": "7195e544666d53541d7e8df4cff0e61e581cfa90674c34615423b7e93c85142b"
+    },
+    "sink-controls.bend": {
+      "bytes": 1066,
+      "sha256": "bd35b77c1fe25362df38640f6192c030f91e4bce75d04625dcad9e285bf4beef"
+    }
+  }
+}

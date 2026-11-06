@@ -1,0 +1,47 @@
+{
+  "kind": "phase171-live-env-source-audit",
+  "version": 1,
+  "baselineOverlay": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase171/fail-fast.bend",
+    "bytes": 6486,
+    "sha256": "23141d0278e92fe5251e1e52ded22c14f053cf6b2c119e58dba588bcef3960bd"
+  },
+  "candidateOverlay": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase171/fail-fast-live-env.bend",
+    "bytes": 6481,
+    "sha256": "393586feadf21be6629e4240c3207ac4655168ac0a5d00a65db5063a8d78425e"
+  },
+  "changes": [
+    {
+      "name": "p113d_let",
+      "oldPrefix": "+first = p113d_lower(",
+      "newPrefix": "+first = p113d_live(",
+      "originalNormalizedSha256": "848f7ea242cf6a02a3d9ca046159c25beb8d0425bc0efa3d5304b5c0890a9acc"
+    },
+    {
+      "name": "p113dl_let",
+      "oldPrefix": "+first = p113d_lower(",
+      "newPrefix": "+first = p113d_live(",
+      "originalNormalizedSha256": "cd63616c75f51b9422d62c568c03bf993fef1ea48e70429532549921087908a1"
+    },
+    {
+      "name": "p113pl_bind_flat",
+      "oldPrefix": "+first = p113pl_lower(",
+      "newPrefix": "+first = p113pl_live(",
+      "originalNormalizedSha256": "d0d3345cc3f4822ebc1c117b5212e3ab2468eb6ffc5bd68a975a0b7bf4194247"
+    },
+    {
+      "name": "p113pl_bind_boxed",
+      "oldPrefix": "+first = p113pl_lower(",
+      "newPrefix": "+first = p113pl_live(",
+      "originalNormalizedSha256": "954195f3c790489f7b2d80aa49d938268671e16a0dffbe9ba3ede38954d11779"
+    },
+    {
+      "name": "p113px_boxed",
+      "oldPrefix": "+first = p113pl_lower(",
+      "newPrefix": "+first = p113pl_live(",
+      "originalNormalizedSha256": "4e1a5ee2dfeb05adccb28907f765f0262e211585853216ff9f45448248110813"
+    }
+  ],
+  "scope": "Exactly5 private first-value lower calls become live calls; all existing fail-fast guards and other declarations unchanged. Metadata only."
+}

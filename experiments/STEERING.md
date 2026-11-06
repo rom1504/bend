@@ -31,6 +31,27 @@ Use the installed compiler for the next research cycle. The remaining cold-build
 goal is below 150 seconds for this full maintained source; this promotion itself
 does not establish a new architectural speedup. No PR comment posted.
 
+## Current experiment — Phase171100s campaign
+
+[Checkpoint](../implementation/phase171/README.md) ·
+[Follow-up and next decision](../implementation/phase171/followup.md).
+
+Four private Bend overlays give180.677s versus a fresh188.620s full-source cold
+build,4.21% less, with exact QBE/assembly/object output. This is a single matched
+pair and an experimental native N1, not a new installed or self-reproducing
+selection.100s is not reached; qualified Phase170 remains the research compiler.
+
+The borrowed-descendant follow-up now promotes99.535% of calls to the selected `index_find` wrapper in the real-verifier
+workload but improves complete runtime only1.25%; lookup and three exact-output
+cleanup screens are neutral. Do not continue expanding these local hypotheses or
+pay for a full image based on admission counts.47 finite controls and independent
+complete values pass; a prototype sink-binding defect was found and corrected.
+A sampler-only improvement recovers2,269 runtime callers in5,429 zero-loss full
+request samples, with runtime intermediaries/unknowns kept explicit. No new
+production or runtime change is made. Prefer a measured producer/consumer work
+elimination across frontend terms or shared function semantics next; quantify the
+whole-request ceiling before a larger implementation.
+
 # Previous frontier — Phase169 native self-build147.764s, canonical185.190s
 
 [Report](../implementation/phase169/README.md) ·

@@ -1,0 +1,71 @@
+{
+  "kind": "phase171-descendant-rfc-one-result-successor",
+  "complete": true,
+  "targetsRun": false,
+  "originals": [
+    {
+      "file": "selfhost/tests/phase171/descendant-v14/borrowed-selectors-controls.bend",
+      "bytes": 4042,
+      "sha256": "7d020963013acf46d28a22085e9c87c7b31c4bd63e6c669e78f39d3945628a8c"
+    },
+    {
+      "file": "selfhost/tests/phase171/descendant-v14/borrowed-selectors-diagnostic.bend",
+      "bytes": 1215,
+      "sha256": "88ecbe47022069848bb1eeb994dea6328fa3265c69c33c9183d2d6bfc454f49c"
+    },
+    {
+      "file": "selfhost/tests/phase171/descendant-v14/borrowed-selectors-emission.bend",
+      "bytes": 4503,
+      "sha256": "1721877ff9b3ba79f4ea1d0253e5e964d5d0ba56fa660e9ba98e47b8dd38b068"
+    },
+    {
+      "file": "selfhost/tests/phase171/descendant-v14/borrowed-selectors-entry.bend",
+      "bytes": 6950,
+      "sha256": "f3b40f6eac33dff9180d57ada9c0ff260b64113a94c02ce167f4cc1c552dae7a"
+    },
+    {
+      "file": "selfhost/tests/phase171/descendant-v14/borrowed-selectors-laws.bend",
+      "bytes": 7854,
+      "sha256": "2255466395a078591620685e6fc819f6dfa7f348caba569827a5aa16b91c605b"
+    },
+    {
+      "file": "selfhost/tests/phase171/descendant-v14/borrowed-selectors-types.bend",
+      "bytes": 1326,
+      "sha256": "99af76516be8d828756a99718812a2da9bd760e8a82199c05633562c8bc175df"
+    },
+    {
+      "file": "selfhost/tests/phase171/descendant-v14/borrowed-selectors.bend",
+      "bytes": 16196,
+      "sha256": "a2d9820ff7ed10e4f9e256b39b709074b7082f8d92819a7cf3f646ed045cfdc8"
+    },
+    {
+      "file": "selfhost/tests/phase171/descendant-v14/buffer-controls.bend",
+      "bytes": 3589,
+      "sha256": "8030ea49502e5257d701ac7c85727269241cbcbc777fd5dca37e9289db2ad275"
+    },
+    {
+      "file": "selfhost/tests/phase171/descendant-v14/scalar-if-controls.bend",
+      "bytes": 3378,
+      "sha256": "7195e544666d53541d7e8df4cff0e61e581cfa90674c34615423b7e93c85142b"
+    },
+    {
+      "file": "selfhost/tests/phase171/descendant-v14/sink-controls.bend",
+      "bytes": 1066,
+      "sha256": "bd35b77c1fe25362df38640f6192c030f91e4bce75d04625dcad9e285bf4beef"
+    }
+  ],
+  "runtime": {
+    "file": "selfhost/src/runtime/qbe/runtime.c",
+    "bytes": 150560,
+    "sha256": "aa95d2c0426c05bcc4d34244dd8b22b79ebcaf6d30634569201961f60b57f333"
+  },
+  "runtimeAnchors": [
+    "#define RFC_BIT  (1ull << 63)",
+    "#define term_rfc(t) ((bool)(((Term)(t) & RFC_BIT) != 0))",
+    "INLINE Term term_keep(Env e, Term t)",
+    "uint64_t p118_rt_borrow_scalar_safe"
+  ],
+  "before": "@unsafe\ndef p171d_wrapper(name, params, reader, roots):\n  +args = p111_env_words(params)\n  +held = p128bs_roots(params,roots,0)\n  +fallback = p171d_fallback(name,args)\n  +accepted : List<&2,P113DStmt> = [\n    P113DScalar{N111Call{\"p171desc_escape\",N111U64{},\"p118_rt_borrow_scalar_safe\",[p111_state(),p111_word(N111Local{\"p171desc_result\"}),p111_word(N111Const{0,0}),p111_u32(1)]}},\n    P113DScalar{N111Bin{\"p171desc_escape_bool\",N111U64{},\"ne\",N111Local{\"p171desc_escape\"},N111Const{0,0}}},\n    P113DIf{N111Local{\"p171desc_escape_bool\"},\n      Con{P113DScalar{N111Call{\"p171desc_owned\",N111U64{},\"p111_rt_keep\",[p111_state(),p111_word(N111Local{\"p171desc_result\"})]}},\n        nt_append(P113DStmt,p128bs_drops(held,0),[P113DResult{[N111Local{\"p171desc_owned\"}]}])},fallback}]\n  P113DFunction{\"$p171desc.entry.\" ++ name,params,1,False{},[\n    P113DScalar{N111Call{\"p171desc_roots\",N111U64{},\"p118_rt_borrow_scalar_safe\",p128bs_guard_args(held)}},\n    P113DScalar{N111Bin{\"p171desc_roots_bool\",N111U64{},\"ne\",N111Local{\"p171desc_roots\"},N111Const{0,0}}},\n    P113DIf{N111Local{\"p171desc_roots_bool\"},[\n      P113DCall{[\"p171desc_accepted\",\"p171desc_result\"],reader,args},\n      P113DScalar{N111Bin{\"p171desc_accepted_bool\",N111U64{},\"ne\",N111Local{\"p171desc_accepted\"},N111Const{0,0}}},\n      P113DIf{N111Local{\"p171desc_accepted_bool\"},accepted,fallback}],fallback}]}\n",
+  "after": "# Result-only extension for the pinned valid ordinary Data ABI. Existing guard\n# remains authoritative for its old true states; newly accepted RFC count1 is\n# retained BEFORE any parent drop. No raw non-RFC child is admitted.\n@unsafe\ndef p171d_promote_ops() -> List<&2,N111Stmt>:\n  [N111Bin{\"p171desc_escape_bool\",N111U64{},\"ne\",N111Local{\"p171desc_escape\"},N111Const{0,0}},\n   N111Bin{\"p171desc_rfc_bits\",N111U64{},\"and\",N111Local{\"p171desc_result\"},N111Const{0,2147483648}},\n   N111Bin{\"p171desc_rfc_bool\",N111U64{},\"ne\",N111Local{\"p171desc_rfc_bits\"},N111Const{0,0}},\n   N111Bin{\"p171desc_promote\",N111U32{},\"or\",N111Local{\"p171desc_escape_bool\"},N111Local{\"p171desc_rfc_bool\"}}]\n\n@unsafe\ndef p171d_wrapper(name, params, reader, roots):\n  +args = p111_env_words(params)\n  +held = p128bs_roots(params,roots,0)\n  +fallback = p171d_fallback(name,args)\n  +accepted : List<&2,P113DStmt> = Con{\n    P113DScalar{N111Call{\"p171desc_escape\",N111U64{},\"p118_rt_borrow_scalar_safe\",[p111_state(),p111_word(N111Local{\"p171desc_result\"}),p111_word(N111Const{0,0}),p111_u32(1)]}},\n    nt_append(P113DStmt,p113d_scalars(p171d_promote_ops()),[P113DIf{N111Local{\"p171desc_promote\"},\n      Con{P113DScalar{N111Call{\"p171desc_owned\",N111U64{},\"p111_rt_keep\",[p111_state(),p111_word(N111Local{\"p171desc_result\"})]}},\n        nt_append(P113DStmt,p128bs_drops(held,0),[P113DResult{[N111Local{\"p171desc_owned\"}]}])},fallback}])}\n  P113DFunction{\"$p171desc.entry.\" ++ name,params,1,False{},[\n    P113DScalar{N111Call{\"p171desc_roots\",N111U64{},\"p118_rt_borrow_scalar_safe\",p128bs_guard_args(held)}},\n    P113DScalar{N111Bin{\"p171desc_roots_bool\",N111U64{},\"ne\",N111Local{\"p171desc_roots\"},N111Const{0,0}}},\n    P113DIf{N111Local{\"p171desc_roots_bool\"},[\n      P113DCall{[\"p171desc_accepted\",\"p171desc_result\"],reader,args},\n      P113DScalar{N111Bin{\"p171desc_accepted_bool\",N111U64{},\"ne\",N111Local{\"p171desc_accepted\"},N111Const{0,0}}},\n      P113DIf{N111Local{\"p171desc_accepted_bool\"},accepted,fallback}],fallback}]}\n",
+  "scope": "Only result Boolean becomes old guard OR RFC bit. Original guard call/args, root/helper guards, keep-before-drop, original fallback unchanged. New states oldfalse+RFC under valid live ordinary one-mutator Data imply count1; keep1\u21922 adds no overflow state. Raw non-RFC still refused. Malformed heap/failure-state equivalence not claimed. No runtime or verifier edits."
+}

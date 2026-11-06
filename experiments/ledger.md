@@ -6804,3 +6804,27 @@ Node and the final native chain. No verifier weakening, source relabeling or new
 BendTT proof. Installed via audited transaction with rollback; operational QBE
 assets select actual new N2. See [report](../implementation/phase170/README.md)
 for exact identities, costs, failed attempts and supported capabilities.
+
+
+## Phase171 — four-overlay gain, borrowed-selector falsification, runtime callers
+
+Full maintained-source cold build188.620→180.677s (4.21% less), same fixed source,
+Base/runtime/toolchain and CPU3, exact QBE/assembly/object. Experimental N1 only;
+100s target open and qualified Phase170 remains installed. Original checkpoint
+has40 guarded jobs/1,254.774s. See [report](../implementation/phase171/README.md).
+
+The follow-up's borrowed descendant transform passes47 finite controls and exact
+independent native values/diagnostics. Correcting coverage reaches99.535%
+promotions on the real verifier, yet complete runtime improves only1.25%; lookup
+is neutral. Liveness/hygiene reuse and public producer-emitter fusion are neutral.
+Keep these negative results; do not acquire a full compiler for them. Intermediate
+sources are retained as checked deltas rather than full duplicate directories.
+
+New exact-ELF runtime CFI recovers2,269 callers across5,429 zero-loss samples of a
+complete compiler request;175.011s is diagnostic execution, not a new cold score.
+The1ms pilot is rejected for sample loss. Runtime intermediaries remain distinct
+from generated compiler callers, and unknowns remain in the denominators.
+
+Follow-ups add90 terminal guards/882.393s,9 nonzero attempts, all sealed. The
+intermediate44-job inventory is included, not additive. No production/runtime/
+selector change, new full self-hosting gate or PR comment. See [follow-up report](../implementation/phase171/followup.md) and exact receipt/cost inventory there.

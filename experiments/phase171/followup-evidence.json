@@ -1,0 +1,2056 @@
+{
+  "kind": "phase171-followup-evidence-snapshot",
+  "version": 1,
+  "complete": true,
+  "targetsRunByInventory": false,
+  "snapshotUtc": "2026-11-06T17:19:49.542373+00:00",
+  "baselineCommit": "c5d17c0597e147c4010e14f40e4cbb45c2983539",
+  "baselineCommitUtc": "2026-11-06T16:37:55+00:00",
+  "baselineLedger": {
+    "gitObject": "c5d17c0:implementation/phase171/metrics.json",
+    "bytes": 40804,
+    "sha256": "731bdb8283756ec45c33c2d0e84e75e23ad74d078e88bc9b323dab9a35d91583",
+    "accountedGuards": 40
+  },
+  "selection": "All Phase171 guard receipts absent from committed checkpoint cost ledger. Runs that started before commit but were unaccounted there are retained and explicitly marked.",
+  "cost": {
+    "unaccountedTerminalJobs": 44,
+    "unaccountedGuardWallSeconds": 371.7461568908766,
+    "strictlyStartedAfterCommitJobs": 40,
+    "strictlyStartedAfterCommitGuardWallSeconds": 336.1370129440911,
+    "preCommitUnaccountedJobs": 4,
+    "preCommitUnaccountedGuardWallSeconds": 35.60914394678548,
+    "successfulGuards": 35,
+    "failedGuards": 9,
+    "inFlightJobs": 0,
+    "families": {
+      "descendant": {
+        "terminalJobs": 33,
+        "successfulGuards": 26,
+        "failedGuards": 7,
+        "guardWallSeconds": 209.5324066276662
+      },
+      "liveness": {
+        "terminalJobs": 4,
+        "successfulGuards": 4,
+        "failedGuards": 0,
+        "guardWallSeconds": 60.86896233027801
+      },
+      "render": {
+        "terminalJobs": 7,
+        "successfulGuards": 5,
+        "failedGuards": 2,
+        "guardWallSeconds": 101.34478793293238
+      }
+    },
+    "agentTokens": null,
+    "quotaConsumed": null,
+    "totalAgentElapsedSeconds": null,
+    "sessionElapsedSeconds": null,
+    "scope": "Sum of terminal root-guard elapsed durations including failures. Not exclusive CPU or total session/agent time. No token/quota meter supplied. In-flight duration excluded."
+  },
+  "results": {
+    "liveness": {
+      "baseline": {
+        "file": "selfhost/build/phase171/combined-verifier01/report.json",
+        "bytes": 56932,
+        "sha256": "9b253f3218485911152364c8c7c0ec039180f01f167ddae9cf27da61af50ec64"
+      },
+      "candidate": {
+        "file": "selfhost/build/phase171/live-verifier01/report.json",
+        "bytes": 56333,
+        "sha256": "04b5e03f356d35449936b7243f3163425e7279904d4bfa9b1c53be207a76be50"
+      },
+      "controls": {
+        "file": "selfhost/build/phase171/live-controls01/report.json",
+        "bytes": 8575,
+        "sha256": "ee00a5196e3cf98360bac00b33496a0ab03855be7bd87b04527c6b9f77f92e49"
+      },
+      "controlCount": 44,
+      "baselineSeconds": 29.031967429,
+      "candidateSeconds": 29.513512449,
+      "candidateOverBaseline": 1.0165867167348426,
+      "baselineStages": {
+        "loadSeconds": 2.4602235309999996,
+        "baseSeconds": 0.8056662099999998,
+        "frontendSeconds": 8.051557475,
+        "lowerVerifySeconds": 13.918687022000002,
+        "renderWriteSeconds": 2.6535673659999994
+      },
+      "candidateStages": {
+        "loadSeconds": 2.4487942700000005,
+        "baseSeconds": 0.8065023689999998,
+        "frontendSeconds": 8.301015956999999,
+        "lowerVerifySeconds": 14.151340871,
+        "renderWriteSeconds": 2.670612477999999
+      },
+      "exactQbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/live-verifier01/program.ssa",
+        "bytes": 2309376,
+        "sha256": "8be3a072b84dfc8bb85ddb9478c00d05179f7de89c8d4079af9ca3a5190bfbfb"
+      },
+      "finding": "No demonstrated improvement in this single hosted complete-request screen; no native whole-build gain claimed.",
+      "baselineCaveat": "Baseline is earlier combined-verifier01, not a fresh matched/repeated baseline."
+    },
+    "render": {
+      "baseline": {
+        "file": "selfhost/build/phase171/render-verifier-baseline01/report.json",
+        "bytes": 56094,
+        "sha256": "3c7689251d2736539f33494ed4452d31fa09024493213780e7355d93f35e20e6"
+      },
+      "candidate": {
+        "file": "selfhost/build/phase171/render-verifier-candidate01/report.json",
+        "bytes": 57028,
+        "sha256": "ab78fcfe724372ce77a5a0c0d46e4b25763bbb2fd70f37bdc1deff386ef30545"
+      },
+      "controls": {
+        "file": "selfhost/build/phase171/render-controls01/report.json",
+        "bytes": 12347,
+        "sha256": "c0f77b39958fd9266883dc877a382ec16474dee78329cca8ebe694e53334a914"
+      },
+      "controlCount": 44,
+      "baselineSeconds": 29.013104852999998,
+      "candidateSeconds": 29.176440048999996,
+      "candidateOverBaseline": 1.0056297041225875,
+      "baselineStages": {
+        "loadSeconds": 2.451338995,
+        "baseSeconds": 0.816657725,
+        "frontendSeconds": 8.203693218999998,
+        "lowerVerifySeconds": 13.679304128,
+        "renderWriteSeconds": 2.7437119559999994
+      },
+      "candidateStages": {
+        "loadSeconds": 2.4295964430000003,
+        "baseSeconds": 0.8263711189999999,
+        "frontendSeconds": 8.086358948,
+        "lowerVerifySeconds": 13.969390454000003,
+        "renderWriteSeconds": 2.731714574999998
+      },
+      "exactQbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/render-verifier-candidate01/program.ssa",
+        "bytes": 2309376,
+        "sha256": "8be3a072b84dfc8bb85ddb9478c00d05179f7de89c8d4079af9ca3a5190bfbfb"
+      },
+      "finding": "No demonstrated improvement in this single hosted complete-request screen; no native whole-build gain claimed.",
+      "baselineCaveat": "One fresh observation per role; small change does not establish a reliable regression or speedup."
+    },
+    "descendant": {
+      "checkedApi": {
+        "file": "selfhost/build/phase171/descendant-api11/report.json",
+        "bytes": 5311,
+        "sha256": "93364b8abaf3834316f619dc1c2e4bdd7e611762588d6124990778381e0c088a"
+      },
+      "controls": {
+        "file": "selfhost/build/phase171/descendant-controls11/report.json",
+        "bytes": 3391,
+        "sha256": "be776e478314b9a4b859388fa439ac3f22c5ba1d91b6695a20f516ca40f4d9b9"
+      },
+      "constantControls": {
+        "file": "selfhost/build/phase171/descendant-constants11/report.json",
+        "bytes": 3157,
+        "sha256": "570e2781106903ce4cbcfa321aa1e8ec76d9ac3f077b3a45e7677fdf68654afa"
+      },
+      "finiteControls": 15,
+      "staticAdmissions": [
+        {
+          "receipt": {
+            "file": "selfhost/build/phase171/descendant-bucket11/report.json",
+            "bytes": 55728,
+            "sha256": "f3b537ddde5da6d4ee31118268d298b5f558a5482055243fdd3de9caea8c1d70"
+          },
+          "summary": [
+            "index_bucket",
+            "$p171desc.$direct.index_bucket.0",
+            "15",
+            "2",
+            "5",
+            ""
+          ]
+        },
+        {
+          "receipt": {
+            "file": "selfhost/build/phase171/descendant-index-find11/report.json",
+            "bytes": 55731,
+            "sha256": "5d8281a28c4b5d01010d4aaed24b327232646565e3d1b0fa0c0d677c1c764aa0"
+          },
+          "summary": [
+            "index_find",
+            "$p171desc.$direct.index_find.0",
+            "14",
+            "1",
+            "7",
+            ""
+          ]
+        }
+      ],
+      "staticAdmissionIsNotDynamicFastPathCoverage": true,
+      "completeValueGate": {
+        "receipt": {
+          "file": "selfhost/build/phase171/descendant-values-native11/report.json",
+          "bytes": 4184,
+          "sha256": "b6951f4af114e8c7df23984f331a13cfd354ea127fa53b036854468c053ba218"
+        },
+        "oracleManifest": {
+          "file": "selfhost/build/phase171/descendant-full-values01/manifest.json",
+          "bytes": 1861,
+          "sha256": "bea11721451a5303879bc56e02f857389bc1b5721766660a8aa39c0ad4c506d5"
+        },
+        "recordCount": 18,
+        "outputBytes": 2394,
+        "outputSha256": "da193de62c5cc62f5e6e81e9633cb26e61fc69ecc5adf574df23bacf14ae71fb",
+        "allOutputsExact": true,
+        "timingResolved": false
+      },
+      "timingScreens": [
+        {
+          "receipt": {
+            "file": "selfhost/build/phase171/descendant-lookup-pair11/report.json",
+            "bytes": 9539,
+            "sha256": "0a5df944a8115cc4f194b3b89d49e57b5fb1a9b15596a2be687e8b1cefb41d76"
+          },
+          "rounds": 4,
+          "executions": 8,
+          "medians": {
+            "baseline": 0.5578365118708462,
+            "candidate": 0.5626672303769737
+          },
+          "candidateOverBaseline": 1.0086597388362526,
+          "resolved": true,
+          "allOutputsExact": true,
+          "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+          "finding": "Approximately neutral; no whole-compiler or general borrowed-result speedup."
+        },
+        {
+          "receipt": {
+            "file": "selfhost/build/phase171/descendant-find-pair11/report.json",
+            "bytes": 9424,
+            "sha256": "2094a242562648a7cd8c0070120a84da33d2ed9d483423525da415d5c0044b91"
+          },
+          "rounds": 4,
+          "executions": 8,
+          "medians": {
+            "baseline": 0.5583655256778002,
+            "candidate": 0.5558757537510246
+          },
+          "candidateOverBaseline": 0.9955409640956017,
+          "resolved": true,
+          "allOutputsExact": true,
+          "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+          "finding": "Approximately neutral; no whole-compiler or general borrowed-result speedup."
+        }
+      ],
+      "source11Negatives": [
+        {
+          "receipt": {
+            "file": "selfhost/build/phase171/descendant-list-emission11/report.json",
+            "bytes": 55560,
+            "sha256": "1a168da046ea85149aed1a633c89764adde727e97b7ef10fd4ff9a60fee41298"
+          },
+          "error": "Error: descendant: no actual direct owner",
+          "scope": "Source11 emission refused before machine execution; preserve failed guard and report."
+        }
+      ],
+      "limits": [
+        "Finite source/structural controls and emitted-output agreement are not independent BendTT proof.",
+        "Timed fixture retains the Phase166 consumer/setup limits; no whole-compiler extrapolation.",
+        "No dynamic root/result guard acceptance counts are present in the inspected source11 timing receipts; fallback can preserve exact outputs.",
+        "Source11 failures/refusals remain negatives; later versions do not retroactively qualify them.",
+        "Root native investigation continues; later runs are outside this timestamped snapshot."
+      ]
+    }
+  },
+  "runs": [
+    {
+      "name": "descendant-api01",
+      "guard": {
+        "file": "selfhost/build/phase171/descendant-api01-guard/process.json",
+        "bytes": 3129,
+        "sha256": "cd266202b4a070b78b288924d5af3db3747afeab66a1f5eaae4ebf28a1041459"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": true,
+      "started": 1793982837.07039,
+      "finished": 1793982839.9498699,
+      "returncode": 1,
+      "guardComplete": false,
+      "wallSeconds": 2.8796578510664403,
+      "peakTreeRssBytes": 264998912,
+      "peakRunAllocatedBytes": 28672,
+      "report": {
+        "file": "selfhost/build/phase171/descendant-api01/report.json",
+        "bytes": 4042,
+        "sha256": "7c585c0fa976e0558cdb4a995eeffb4b3170fa26cefb6afe33c172317aa61b7a"
+      },
+      "result": {
+        "kind": "bend-checked-hosted-api",
+        "complete": false,
+        "checked": false,
+        "seconds": 2.4648556179999996,
+        "error": "Error: Checked acquisition failed; inspect captured diagnostics",
+        "recordedArtifactPins": {
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-source01/compiler.bend",
+            "bytes": 1573117,
+            "sha256": "7f6629fb75190450987f0269ffb43240dbdbfbbc35d37dbe7637233a31e30b6b"
+          }
+        }
+      },
+      "diagnostics": {
+        "stdout": {
+          "file": "selfhost/build/phase171/descendant-api01/stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "selfhost/build/phase171/descendant-api01/stderr",
+          "bytes": 290,
+          "sha256": "33f42779d2679237bc8fef86fff4fd433b8cfe4f0f97c42e42c1b5ecf19815c7"
+        }
+      },
+      "diagnosticExcerpt": "Error: (bootstrap structural summary; terms are not normalized)\n- expected : a name\n- observed : '-'\nLocation:\n/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-source01/compiler.bend:44912:57\n44912 | def p171d_info(+name: String, env: List<&2,P171DLocal>) -> P171DInfo:\n"
+    },
+    {
+      "name": "descendant-api02",
+      "guard": {
+        "file": "selfhost/build/phase171/descendant-api02-guard/process.json",
+        "bytes": 3129,
+        "sha256": "04cdbdc19599e23887a0d0a76bb4ef83367e50be210f70562af26a8202a3f722"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": true,
+      "started": 1793982936.488587,
+      "finished": 1793982939.6388016,
+      "returncode": 1,
+      "guardComplete": false,
+      "wallSeconds": 3.150395938195288,
+      "peakTreeRssBytes": 273244160,
+      "peakRunAllocatedBytes": 28672,
+      "report": {
+        "file": "selfhost/build/phase171/descendant-api02/report.json",
+        "bytes": 4035,
+        "sha256": "32f092a33b51f2b7077976ed9f0a9a04d75b83ee1b43c723c8f57c7549144554"
+      },
+      "result": {
+        "kind": "bend-checked-hosted-api",
+        "complete": false,
+        "checked": false,
+        "seconds": 2.725454144,
+        "error": "Error: Checked acquisition failed; inspect captured diagnostics",
+        "recordedArtifactPins": {
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-source02/compiler.bend",
+            "bytes": 1569200,
+            "sha256": "885e89cf1dab9f4bd88f2a6dd9d10d1938705f181868fda376ddf0ea7a169b34"
+          }
+        }
+      },
+      "diagnostics": {
+        "stdout": {
+          "file": "selfhost/build/phase171/descendant-api02/stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "selfhost/build/phase171/descendant-api02/stderr",
+          "bytes": 280,
+          "sha256": "0999e4347cc55c94b4d8b1c090691fc11608124f843e45de5e21460a529efe70"
+        }
+      },
+      "diagnosticExcerpt": "Error: (bootstrap structural summary; terms are not normalized)\n- expected : a term (the keyword 'law' cannot head one)\n- observed : 'law'\nLocation:\n/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-source02/compiler.bend:45416:1\n45416 | law p171d_worker_done:\n"
+    },
+    {
+      "name": "descendant-api04",
+      "guard": {
+        "file": "selfhost/build/phase171/descendant-api04-guard/process.json",
+        "bytes": 3130,
+        "sha256": "0862123d1351b01aa378785478419bc6bf5f8eaf2fb65fb43a0075d5577a3ced"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793983120.0516722,
+      "finished": 1793983122.9455025,
+      "returncode": 1,
+      "guardComplete": false,
+      "wallSeconds": 2.8940086560323834,
+      "peakTreeRssBytes": 268972032,
+      "peakRunAllocatedBytes": 28672,
+      "report": {
+        "file": "selfhost/build/phase171/descendant-api04/report.json",
+        "bytes": 4078,
+        "sha256": "0cfea15e9c2a589b1aeb5695bf9bb98a25f81369f4a2db4c25bdd150c04064a9"
+      },
+      "result": {
+        "kind": "bend-checked-hosted-api",
+        "complete": false,
+        "checked": false,
+        "seconds": 2.4780258359999996,
+        "error": "Error: Checked acquisition failed; inspect captured diagnostics",
+        "recordedArtifactPins": {
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-source04/compiler.bend",
+            "bytes": 1574430,
+            "sha256": "c98951ed1549ad05d290fbb7def41c8cd11732747570f00471806c29473530ab"
+          }
+        }
+      },
+      "diagnostics": {
+        "stdout": {
+          "file": "selfhost/build/phase171/descendant-api04/stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "selfhost/build/phase171/descendant-api04/stderr",
+          "bytes": 378,
+          "sha256": "f582b73b435196c8e10d1545a40073290868dc40271754c879518dc850af1666"
+        }
+      },
+      "diagnosticExcerpt": "Error: (bootstrap structural summary; terms are not normalized)\n- message  : 'original' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-source04/compiler.bend:46059:13\n46059 |       match original:\n"
+    },
+    {
+      "name": "descendant-api05",
+      "guard": {
+        "file": "selfhost/build/phase171/descendant-api05-guard/process.json",
+        "bytes": 3130,
+        "sha256": "34ab1f5f3750656a805317c7f102510a440add0cf6a551bbd8a7d266a57a3839"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793983279.7604125,
+      "finished": 1793983285.2508245,
+      "returncode": 1,
+      "guardComplete": false,
+      "wallSeconds": 5.4905952187255025,
+      "peakTreeRssBytes": 583426048,
+      "peakRunAllocatedBytes": 28672,
+      "report": {
+        "file": "selfhost/build/phase171/descendant-api05/report.json",
+        "bytes": 4070,
+        "sha256": "4e8c1b8cfda0f6054791c445b6bd33471430b8131d08491a8f771cf05f8d21ec"
+      },
+      "result": {
+        "kind": "bend-checked-hosted-api",
+        "complete": false,
+        "checked": false,
+        "seconds": 5.10877099,
+        "error": "Error: Checked acquisition failed; inspect captured diagnostics",
+        "recordedArtifactPins": {
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-source05/compiler.bend",
+            "bytes": 1574970,
+            "sha256": "0e93f2c02e46f5807971b5fda9d2fe226e0373f1847e68fd49267bc710f9bd80"
+          }
+        }
+      },
+      "diagnostics": {
+        "stdout": {
+          "file": "selfhost/build/phase171/descendant-api05/stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "selfhost/build/phase171/descendant-api05/stderr",
+          "bytes": 284,
+          "sha256": "59c4f7bff13e9fd22c12ca2b99b01de11cc83424b249a013ae3da0d9885da677"
+        }
+      },
+      "diagnosticExcerpt": "Error: (bootstrap structural summary; terms are not normalized)\n- expected : name\n- observed : name (consumed more than once)\nLocation: p171dc_row\n/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-source05/compiler.bend:45976:16\n45976 | def p171dc_row(name, good):\n"
+    },
+    {
+      "name": "descendant-api06",
+      "guard": {
+        "file": "selfhost/build/phase171/descendant-api06-guard/process.json",
+        "bytes": 3130,
+        "sha256": "ef329ae4de38790e67b602507ec197740c12ece656139057425e014e71bdf2fb"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793983453.8014455,
+      "finished": 1793983459.9901156,
+      "returncode": 1,
+      "guardComplete": false,
+      "wallSeconds": 6.188850509934127,
+      "peakTreeRssBytes": 607539200,
+      "peakRunAllocatedBytes": 28672,
+      "report": {
+        "file": "selfhost/build/phase171/descendant-api06/report.json",
+        "bytes": 4070,
+        "sha256": "d77256bd5468af32d39786c4869a1b4dd8cf85eecfcbaf7569fb05ec343e599d"
+      },
+      "result": {
+        "kind": "bend-checked-hosted-api",
+        "complete": false,
+        "checked": false,
+        "seconds": 5.73170925,
+        "error": "Error: Checked acquisition failed; inspect captured diagnostics",
+        "recordedArtifactPins": {
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-source06/compiler.bend",
+            "bytes": 1575254,
+            "sha256": "c8c663b7f24b8590bfc81eddc745e4d433e1eadc69c58aacc7cae9fec8c6da9d"
+          }
+        }
+      },
+      "diagnostics": {
+        "stdout": {
+          "file": "selfhost/build/phase171/descendant-api06/stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "selfhost/build/phase171/descendant-api06/stderr",
+          "bytes": 310,
+          "sha256": "6e2fbe4dfddca0ee4f49bdf9bf66d2a6cd0ac9a0d77dd990c683b5ce778a1aba"
+        }
+      },
+      "diagnosticExcerpt": "Error: (bootstrap structural summary; terms are not normalized)\n- expected : an annotated term (cannot infer)\n- observed : Con{\u2026}\nLocation: p171d_controls\n/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-source06/compiler.bend:45995:12\n45995 |   +known = [P171DCase{\"root.0\",\"P171Pair\"}]\n"
+    },
+    {
+      "name": "descendant-api07",
+      "guard": {
+        "file": "selfhost/build/phase171/descendant-api07-guard/process.json",
+        "bytes": 3129,
+        "sha256": "5b847dc162c564ad87907f09e183a3b397e49bb18cad8fa884534a08c5170461"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793983627.5014422,
+      "finished": 1793983632.5931497,
+      "returncode": 1,
+      "guardComplete": false,
+      "wallSeconds": 5.091888941358775,
+      "peakTreeRssBytes": 563347456,
+      "peakRunAllocatedBytes": 28672,
+      "report": {
+        "file": "selfhost/build/phase171/descendant-api07/report.json",
+        "bytes": 4071,
+        "sha256": "0ab5143d2220ad4ef88d498a0922abef3aab14a2c903d5cda1770af03dab10be"
+      },
+      "result": {
+        "kind": "bend-checked-hosted-api",
+        "complete": false,
+        "checked": false,
+        "seconds": 4.707331183,
+        "error": "Error: Checked acquisition failed; inspect captured diagnostics",
+        "recordedArtifactPins": {
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-source07/compiler.bend",
+            "bytes": 1575275,
+            "sha256": "3a62151ef3e3ad08ddd0d7cd8622e077b60a74d6249619d0830435c754670eb1"
+          }
+        }
+      },
+      "diagnostics": {
+        "stdout": {
+          "file": "selfhost/build/phase171/descendant-api07/stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "selfhost/build/phase171/descendant-api07/stderr",
+          "bytes": 286,
+          "sha256": "ba77116dd6301f1204ca9e7f21bc0e3a13867aba4f8f5ee5cd8b35d434453439"
+        }
+      },
+      "diagnosticExcerpt": "Error: (bootstrap structural summary; terms are not normalized)\n- expected : rest\n- observed : rest (consumed more than once)\nLocation: p171de_readers\n/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-source07/compiler.bend:46031:20\n46031 |     case Con{+head,rest}:\n"
+    },
+    {
+      "name": "descendant-api08",
+      "guard": {
+        "file": "selfhost/build/phase171/descendant-api08-guard/process.json",
+        "bytes": 3134,
+        "sha256": "3989cbc05c776e42f15f0176c8eeb0f301ffdf10fedc3c8b199aca9dd0f719bb"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793983747.7816498,
+      "finished": 1793983762.6032698,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 14.821796283125877,
+      "peakTreeRssBytes": 2096164864,
+      "peakRunAllocatedBytes": 2723840,
+      "report": {
+        "file": "selfhost/build/phase171/descendant-api08/report.json",
+        "bytes": 5146,
+        "sha256": "52c514e3459c994fbbb0d0f56dbd9108d8bbf718e0e97f18cb1e3130e2a6861c"
+      },
+      "result": {
+        "kind": "bend-checked-hosted-api",
+        "complete": true,
+        "checked": true,
+        "seconds": 14.439602403999999,
+        "recordedArtifactPins": {
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-source08/compiler.bend",
+            "bytes": 1575276,
+            "sha256": "ab22d561f79622361c6f5cb847d95bee28204fec96f71b8e98fa0e6df37ce182"
+          },
+          "api": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-api08/api.mjs",
+            "bytes": 2689848,
+            "sha256": "6afc34462c2a69b50e4f8d072da3939dab980dddd1c1fd92a50773b43dd14d84"
+          }
+        }
+      }
+    },
+    {
+      "name": "descendant-api09",
+      "guard": {
+        "file": "selfhost/build/phase171/descendant-api09-guard/process.json",
+        "bytes": 3134,
+        "sha256": "97a879dcf69944058f698e2c8832eaf4ff4a1727f783785f378d7aff47788240"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793983909.2817507,
+      "finished": 1793983924.6610782,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 15.379507509991527,
+      "peakTreeRssBytes": 2303561728,
+      "peakRunAllocatedBytes": 2723840,
+      "report": {
+        "file": "selfhost/build/phase171/descendant-api09/report.json",
+        "bytes": 5140,
+        "sha256": "9f94421194996c222281dea2640a1726b54123ffefc5779ad415a4b7cb2d38a6"
+      },
+      "result": {
+        "kind": "bend-checked-hosted-api",
+        "complete": true,
+        "checked": true,
+        "seconds": 14.986042324,
+        "recordedArtifactPins": {
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-source09/compiler.bend",
+            "bytes": 1575741,
+            "sha256": "9992b60efdb0d18957959f5b66e697a70c3a0674367faedf190b0dad0c7d77dd"
+          },
+          "api": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-api09/api.mjs",
+            "bytes": 2690868,
+            "sha256": "4aadb2d3497d6aeac6e6a79e9d96bf5a2992abc12e345bd1c131ad8d077baaaf"
+          }
+        }
+      }
+    },
+    {
+      "name": "descendant-api10",
+      "guard": {
+        "file": "selfhost/build/phase171/descendant-api10-guard/process.json",
+        "bytes": 3134,
+        "sha256": "631818373a2ff0d28fd92adf7a26e10132f118798db8f1effb658049d7ddf8b4"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793984263.0776668,
+      "finished": 1793984278.0550215,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 14.977535096928477,
+      "peakTreeRssBytes": 2096287744,
+      "peakRunAllocatedBytes": 2727936,
+      "report": {
+        "file": "selfhost/build/phase171/descendant-api10/report.json",
+        "bytes": 5223,
+        "sha256": "2704e3194caa076ef4868eed166838f606c4d931ab35e78ddc6180487609d0b7"
+      },
+      "result": {
+        "kind": "bend-checked-hosted-api",
+        "complete": true,
+        "checked": true,
+        "seconds": 14.596230768000002,
+        "recordedArtifactPins": {
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-source10/compiler.bend",
+            "bytes": 1576962,
+            "sha256": "c6321e6f1aa10e443093ccbc7a45390106d2f82d35b4593224c7058fddad7ed8"
+          },
+          "api": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-api10/api.mjs",
+            "bytes": 2692794,
+            "sha256": "54155f41d5b82a83556be306cf4640e1c8b7b6c13eff39a9d2dfe561b27c1699"
+          }
+        }
+      }
+    },
+    {
+      "name": "descendant-api11",
+      "guard": {
+        "file": "selfhost/build/phase171/descendant-api11-guard/process.json",
+        "bytes": 3134,
+        "sha256": "bc710aa4c7902844810dd3dda54d72d9e22ee98af16a12d2126dc3d692fc370e"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793984626.0541544,
+      "finished": 1793984641.3252506,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 15.271273294929415,
+      "peakTreeRssBytes": 2178473984,
+      "peakRunAllocatedBytes": 2732032,
+      "report": {
+        "file": "selfhost/build/phase171/descendant-api11/report.json",
+        "bytes": 5311,
+        "sha256": "93364b8abaf3834316f619dc1c2e4bdd7e611762588d6124990778381e0c088a"
+      },
+      "result": {
+        "kind": "bend-checked-hosted-api",
+        "complete": true,
+        "checked": true,
+        "seconds": 14.88410328,
+        "recordedArtifactPins": {
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-source11/compiler.bend",
+            "bytes": 1578371,
+            "sha256": "5a20587cdd658751db5f1b181b3dd3333a23ce5a334e24b2498c9e7ef532ec23"
+          },
+          "api": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-api11/api.mjs",
+            "bytes": 2697596,
+            "sha256": "787e63eef8129f3137831c1612846163c25cd1ec8ec14cb1c38dbf6b0d9aa2a6"
+          }
+        }
+      }
+    },
+    {
+      "name": "descendant-bucket09",
+      "guard": {
+        "file": "selfhost/build/phase171/descendant-bucket09-guard/process.json",
+        "bytes": 3172,
+        "sha256": "28b87fa692732df9f98d1998202741bcb5eb76242ba1624dffbde2b2ec5d57c9"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793984022.3145638,
+      "finished": 1793984032.603941,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 10.289565739687532,
+      "peakTreeRssBytes": 507166720,
+      "peakRunAllocatedBytes": 81920,
+      "report": {
+        "file": "selfhost/build/phase171/descendant-bucket09/report.json",
+        "bytes": 55547,
+        "sha256": "780ca08dc1a8ea6ac76f7fdce2ddc1c05b3eb2c1565ae39ac556fdad23fc6407"
+      },
+      "result": {
+        "kind": "phase171-descendant-inspection",
+        "complete": true,
+        "admitted": false,
+        "admissionError": "descendant: source parameter/result shape",
+        "owner": "index_bucket",
+        "mode": "metadata",
+        "summary": [
+          "index_bucket",
+          "",
+          "0",
+          "0",
+          "0",
+          "descendant: source parameter/result shape"
+        ],
+        "wallSeconds": 9.954670178,
+        "recordedArtifactPins": {
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-source02/compiler.bend",
+            "bytes": 15408,
+            "sha256": "4627d3b8c7b8291277574a1fc68bdf6afc972be1e32f8d1d8620c62eb4bdf181"
+          },
+          "proposal": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-bucket09/proposal.json",
+            "bytes": 268,
+            "sha256": "6368b03e14cb9c47a187351d21ff4721e2437a5843886dc73752dc6b7e0affcf"
+          }
+        }
+      }
+    },
+    {
+      "name": "descendant-bucket11",
+      "guard": {
+        "file": "selfhost/build/phase171/descendant-bucket11-guard/process.json",
+        "bytes": 3175,
+        "sha256": "3dc9f75329ac97ada6caa4191f14f2ef99cda5a2061705fffe53a7884905dd3c"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793984646.9449131,
+      "finished": 1793984657.3405201,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 10.39577896008268,
+      "peakTreeRssBytes": 470114304,
+      "peakRunAllocatedBytes": 200704,
+      "report": {
+        "file": "selfhost/build/phase171/descendant-bucket11/report.json",
+        "bytes": 55728,
+        "sha256": "f3b537ddde5da6d4ee31118268d298b5f558a5482055243fdd3de9caea8c1d70"
+      },
+      "result": {
+        "kind": "phase171-descendant-inspection",
+        "complete": true,
+        "admitted": true,
+        "admissionError": "",
+        "owner": "index_bucket",
+        "mode": "metadata",
+        "summary": [
+          "index_bucket",
+          "$p171desc.$direct.index_bucket.0",
+          "15",
+          "2",
+          "5",
+          ""
+        ],
+        "wallSeconds": 10.046028456,
+        "recordedArtifactPins": {
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-source02/compiler.bend",
+            "bytes": 15408,
+            "sha256": "4627d3b8c7b8291277574a1fc68bdf6afc972be1e32f8d1d8620c62eb4bdf181"
+          },
+          "proposal": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-bucket11/proposal.json",
+            "bytes": 120628,
+            "sha256": "be8ee053f228437268e7495877f8749d52cfef4b61ec8b8924dc18641d28e44c"
+          }
+        }
+      }
+    },
+    {
+      "name": "descendant-constants11",
+      "guard": {
+        "file": "selfhost/build/phase171/descendant-constants11-guard/process.json",
+        "bytes": 2582,
+        "sha256": "4f7b68edd0aebfcff8126ed76dd1d0d8cace1ac375f010c83feeabc2b08fa85b"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793984644.77013,
+      "finished": 1793984646.3645961,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 1.5946446429006755,
+      "peakTreeRssBytes": 209367040,
+      "peakRunAllocatedBytes": 24576,
+      "report": {
+        "file": "selfhost/build/phase171/descendant-constants11/report.json",
+        "bytes": 3157,
+        "sha256": "570e2781106903ce4cbcfa321aa1e8ec76d9ac3f077b3a45e7677fdf68654afa"
+      },
+      "result": {
+        "kind": "phase171-descendant-controls",
+        "complete": true,
+        "controlRows": 5,
+        "recordedArtifactPins": {}
+      }
+    },
+    {
+      "name": "descendant-controls09",
+      "guard": {
+        "file": "selfhost/build/phase171/descendant-controls09-guard/process.json",
+        "bytes": 2570,
+        "sha256": "6c87b852bc508e957c646e4f45969e2697f908ed642c0040aa4367fa487144d5"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793983997.138354,
+      "finished": 1793983998.7533593,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 1.6151735940948129,
+      "peakTreeRssBytes": 207306752,
+      "peakRunAllocatedBytes": 24576,
+      "report": {
+        "file": "selfhost/build/phase171/descendant-controls09/report.json",
+        "bytes": 3391,
+        "sha256": "398e1b4433121e3ba50ffb444ee716b9b52751afb1d4aed9cc4e283bddd4600c"
+      },
+      "result": {
+        "kind": "phase171-descendant-controls",
+        "complete": true,
+        "controlRows": 10,
+        "recordedArtifactPins": {}
+      }
+    },
+    {
+      "name": "descendant-controls11",
+      "guard": {
+        "file": "selfhost/build/phase171/descendant-controls11-guard/process.json",
+        "bytes": 2572,
+        "sha256": "297c56a826e41938c6a1557765e75516ac714a38d94457de32abf9a9f1c5aea8"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793984642.133795,
+      "finished": 1793984643.748965,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 1.6153505193069577,
+      "peakTreeRssBytes": 207368192,
+      "peakRunAllocatedBytes": 24576,
+      "report": {
+        "file": "selfhost/build/phase171/descendant-controls11/report.json",
+        "bytes": 3391,
+        "sha256": "be776e478314b9a4b859388fa439ac3f22c5ba1d91b6695a20f516ca40f4d9b9"
+      },
+      "result": {
+        "kind": "phase171-descendant-controls",
+        "complete": true,
+        "controlRows": 10,
+        "recordedArtifactPins": {}
+      }
+    },
+    {
+      "name": "descendant-find-emission11",
+      "guard": {
+        "file": "selfhost/build/phase171/descendant-find-emission11-guard/process.json",
+        "bytes": 3218,
+        "sha256": "33de6d372dbd7f023ad9d052d3dfbef8f75e2d21df07e79d9c00da07d4a56e9f"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793985268.0001001,
+      "finished": 1793985279.4009552,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 11.401043784338981,
+      "peakTreeRssBytes": 511287296,
+      "peakRunAllocatedBytes": 397312,
+      "report": {
+        "file": "selfhost/build/phase171/descendant-find-emission11/report.json",
+        "bytes": 55646,
+        "sha256": "ea12a86883ba25e4ed16256ee02e0b6080e700ca45574d040766ff38af2d9356"
+      },
+      "result": {
+        "kind": "phase171-descendant-emission",
+        "complete": true,
+        "owner": "index_find",
+        "mode": "descendant",
+        "wallSeconds": 11.047117116999999,
+        "recordedArtifactPins": {
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-source02/compiler.bend",
+            "bytes": 15408,
+            "sha256": "4627d3b8c7b8291277574a1fc68bdf6afc972be1e32f8d1d8620c62eb4bdf181"
+          },
+          "ir": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-find-emission11/program.ssa",
+            "bytes": 316150,
+            "sha256": "e8e431d838c1944d13c8b79c3fb17b6050c8e43952a7061c7a32b105898e482a"
+          }
+        }
+      }
+    },
+    {
+      "name": "descendant-find-machine11",
+      "guard": {
+        "file": "selfhost/build/phase171/descendant-find-machine11-guard/process.json",
+        "bytes": 2953,
+        "sha256": "867d6e6eec674a93c98788def102e3fdee8ed0f73bee58111fdd18692ba1b059"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793985324.149338,
+      "finished": 1793985325.1155643,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 0.9663976021111012,
+      "peakTreeRssBytes": 29270016,
+      "peakRunAllocatedBytes": 524288,
+      "report": {
+        "file": "selfhost/build/phase171/descendant-find-machine11/report.json",
+        "bytes": 10257,
+        "sha256": "b7d67e59c6968e502f6c4ba6ee5b4ef73586f1bf48406a00b8e33479017ca45e"
+      },
+      "result": {
+        "kind": "bend-native-build",
+        "complete": true,
+        "outputExact": true,
+        "wallSeconds": 0.849100902210921,
+        "recordedArtifactPins": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-find-machine11/program",
+            "bytes": 162544,
+            "sha256": "f517af3cedf56d035d2a767a75044e31f298a8846f1ec52839e01299a095c290"
+          },
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-find-machine11/program.o",
+            "bytes": 78976,
+            "sha256": "460402f0577db1e20f88e60066a71d7032c85e78151b5d62daac244e22ef8538"
+          }
+        }
+      }
+    },
+    {
+      "name": "descendant-find-pair11",
+      "guard": {
+        "file": "selfhost/build/phase171/descendant-find-pair11-guard/process.json",
+        "bytes": 2981,
+        "sha256": "d978a64f17f8ba58e74545142403475c1016f1d1a8901cb3cdd328bf38ee6de4"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793985326.1800685,
+      "finished": 1793985330.861413,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 4.681514773983508,
+      "peakTreeRssBytes": 18915328,
+      "peakRunAllocatedBytes": 65536,
+      "report": {
+        "file": "selfhost/build/phase171/descendant-find-pair11/report.json",
+        "bytes": 9424,
+        "sha256": "2094a242562648a7cd8c0070120a84da33d2ed9d483423525da415d5c0044b91"
+      },
+      "result": {
+        "kind": "phase171-native-product-pair",
+        "complete": true,
+        "ratio": 0.9955409640956017,
+        "resolved": true,
+        "medians": {
+          "baseline": 0.5583655256778002,
+          "candidate": 0.5558757537510246
+        },
+        "rounds": 4,
+        "executionCount": 8,
+        "allOutputsExact": true,
+        "recordedArtifactPins": {}
+      }
+    },
+    {
+      "name": "descendant-find-values-machine11",
+      "guard": {
+        "file": "selfhost/build/phase171/descendant-find-values-machine11-guard/process.json",
+        "bytes": 2980,
+        "sha256": "d074df4ef1209fd018fd7c138620a4c2fd80738d1dec685ddb720a555da21635"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793985325.6701689,
+      "finished": 1793985325.8779023,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 0.2079071057960391,
+      "peakTreeRssBytes": 26898432,
+      "peakRunAllocatedBytes": 442368,
+      "report": {
+        "file": "selfhost/build/phase171/descendant-find-values-machine11/report.json",
+        "bytes": 10404,
+        "sha256": "2b123f353f05bc8528eb462f9d3fc31bd362f1ad0f2175c6a8b422a80c3ce108"
+      },
+      "result": {
+        "kind": "bend-native-build",
+        "complete": true,
+        "outputExact": true,
+        "wallSeconds": 0.08645000820979476,
+        "recordedArtifactPins": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-find-values-machine11/program",
+            "bytes": 149968,
+            "sha256": "e95e22d8284dbdc363d825e47db9e5ab63e9992af63a250fff3589ca575b4fa7"
+          },
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-find-values-machine11/program.o",
+            "bytes": 64048,
+            "sha256": "3cd5bd303729e9e556b4485c7942477269fc924748c5a60565f2f52afdb8d8c3"
+          }
+        }
+      }
+    },
+    {
+      "name": "descendant-find-values11",
+      "guard": {
+        "file": "selfhost/build/phase171/descendant-find-values11-guard/process.json",
+        "bytes": 3227,
+        "sha256": "a729ea026ef5c436c463883a6a813055f0cf4427e2686e0c0a4396402ca49af2"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793985279.970618,
+      "finished": 1793985290.3102312,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 10.339818913023919,
+      "peakTreeRssBytes": 494321664,
+      "peakRunAllocatedBytes": 303104,
+      "report": {
+        "file": "selfhost/build/phase171/descendant-find-values11/report.json",
+        "bytes": 55642,
+        "sha256": "67135563c42067ec38491275f84decc40553ceb4ab3159ed28ecf145e6d7b792"
+      },
+      "result": {
+        "kind": "phase171-descendant-emission",
+        "complete": true,
+        "owner": "index_find",
+        "mode": "descendant",
+        "wallSeconds": 9.973567847999998,
+        "recordedArtifactPins": {
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-full-values01/actual.bend",
+            "bytes": 15417,
+            "sha256": "6858cb262043d400b5a2fcaba4a70c5c1db22a742aa1ef7f254d5fe25c06f8f0"
+          },
+          "ir": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-find-values11/program.ssa",
+            "bytes": 224621,
+            "sha256": "5ff051f8958c5c1df126c62f5f5954a35e5459c56f1796f100ae5056dd2d20f4"
+          }
+        }
+      }
+    },
+    {
+      "name": "descendant-index-find11",
+      "guard": {
+        "file": "selfhost/build/phase171/descendant-index-find11-guard/process.json",
+        "bytes": 3182,
+        "sha256": "94271b5048711f6f37a82288c394a1967f69428d2214a042899450af639808bb"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793985103.7669857,
+      "finished": 1793985114.1516044,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 10.384797563776374,
+      "peakTreeRssBytes": 464420864,
+      "peakRunAllocatedBytes": 249856,
+      "report": {
+        "file": "selfhost/build/phase171/descendant-index-find11/report.json",
+        "bytes": 55731,
+        "sha256": "5d8281a28c4b5d01010d4aaed24b327232646565e3d1b0fa0c0d677c1c764aa0"
+      },
+      "result": {
+        "kind": "phase171-descendant-inspection",
+        "complete": true,
+        "admitted": true,
+        "admissionError": "",
+        "owner": "index_find",
+        "mode": "metadata",
+        "summary": [
+          "index_find",
+          "$p171desc.$direct.index_find.0",
+          "14",
+          "1",
+          "7",
+          ""
+        ],
+        "wallSeconds": 9.982577754,
+        "recordedArtifactPins": {
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-source02/compiler.bend",
+            "bytes": 15408,
+            "sha256": "4627d3b8c7b8291277574a1fc68bdf6afc972be1e32f8d1d8620c62eb4bdf181"
+          },
+          "proposal": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-index-find11/proposal.json",
+            "bytes": 170078,
+            "sha256": "de2658e1699e96031b89f85934793b42b50bbbdfedaf5a8594f8005cfb7041ca"
+          }
+        }
+      }
+    },
+    {
+      "name": "descendant-list-emission11",
+      "guard": {
+        "file": "selfhost/build/phase171/descendant-list-emission11-guard/process.json",
+        "bytes": 3206,
+        "sha256": "cd919bfbed74359d450a766835bde00b57143b2da7093c3b3a4e6d82859ce8d4"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793985290.9455168,
+      "finished": 1793985296.0749795,
+      "returncode": 1,
+      "guardComplete": false,
+      "wallSeconds": 5.129641379695386,
+      "peakTreeRssBytes": 232861696,
+      "peakRunAllocatedBytes": 77824,
+      "report": {
+        "file": "selfhost/build/phase171/descendant-list-emission11/report.json",
+        "bytes": 55560,
+        "sha256": "1a168da046ea85149aed1a633c89764adde727e97b7ef10fd4ff9a60fee41298"
+      },
+      "result": {
+        "kind": "phase171-descendant-emission",
+        "complete": false,
+        "mode": "metadata",
+        "wallSeconds": 4.805434956,
+        "error": "Error: descendant: no actual direct owner",
+        "recordedArtifactPins": {
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase171/descendant-list-find.bend",
+            "bytes": 1039,
+            "sha256": "dd9f4630c7817c544f1a5d97be435d8cbceee46da87ea07d7ae024098a5bc1f1"
+          }
+        }
+      }
+    },
+    {
+      "name": "descendant-lookup-baseline11",
+      "guard": {
+        "file": "selfhost/build/phase171/descendant-lookup-baseline11-guard/process.json",
+        "bytes": 3222,
+        "sha256": "b27064ab9d4f7b3ffa8333b76c7c0127a38040a9224977ebf01e88e8ba21ec01"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793984727.4737976,
+      "finished": 1793984738.1412082,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 10.667586887720972,
+      "peakTreeRssBytes": 514945024,
+      "peakRunAllocatedBytes": 352256,
+      "report": {
+        "file": "selfhost/build/phase171/descendant-lookup-baseline11/report.json",
+        "bytes": 55635,
+        "sha256": "341ede9e88f5f100b9fcb1daf892cf1151162efaa59bcac2b14b570748761e6e"
+      },
+      "result": {
+        "kind": "phase171-descendant-emission",
+        "complete": true,
+        "owner": "index_bucket",
+        "mode": "baseline",
+        "wallSeconds": 10.321554425,
+        "recordedArtifactPins": {
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-source02/compiler.bend",
+            "bytes": 15408,
+            "sha256": "4627d3b8c7b8291277574a1fc68bdf6afc972be1e32f8d1d8620c62eb4bdf181"
+          },
+          "ir": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-lookup-baseline11/program.ssa",
+            "bytes": 273945,
+            "sha256": "aeb44ff0e189ff0a49ef6d7190422ace8425970e5a5be55981935c0e3ca5da2a"
+          }
+        }
+      }
+    },
+    {
+      "name": "descendant-lookup-descendant11",
+      "guard": {
+        "file": "selfhost/build/phase171/descendant-lookup-descendant11-guard/process.json",
+        "bytes": 3226,
+        "sha256": "da3189cd7e22fcb8a15f78503d6dfff0433ab9b3caa26cb2a68943862b61ff2f"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793984738.756544,
+      "finished": 1793984750.1869164,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 11.43055364722386,
+      "peakTreeRssBytes": 510480384,
+      "peakRunAllocatedBytes": 417792,
+      "report": {
+        "file": "selfhost/build/phase171/descendant-lookup-descendant11/report.json",
+        "bytes": 55639,
+        "sha256": "f370c469a848b0c42f1f8cd010fc0a715190acc23cd2fb266b08c7a0e9c52eb5"
+      },
+      "result": {
+        "kind": "phase171-descendant-emission",
+        "complete": true,
+        "owner": "index_bucket",
+        "mode": "descendant",
+        "wallSeconds": 11.079167518,
+        "recordedArtifactPins": {
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-source02/compiler.bend",
+            "bytes": 15408,
+            "sha256": "4627d3b8c7b8291277574a1fc68bdf6afc972be1e32f8d1d8620c62eb4bdf181"
+          },
+          "ir": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-lookup-descendant11/program.ssa",
+            "bytes": 336744,
+            "sha256": "d7dcbaadf386ddb372aa5a7918634eed7f7c85ecdd47b204ac27a5d65570b698"
+          }
+        }
+      }
+    },
+    {
+      "name": "descendant-lookup-machine-baseline11",
+      "guard": {
+        "file": "selfhost/build/phase171/descendant-lookup-machine-baseline11-guard/process.json",
+        "bytes": 2980,
+        "sha256": "a09f38af23abfcc2216c7579d354f79b2a5df23bb7814b4cc2be13f49fa162df"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793985028.8043368,
+      "finished": 1793985029.7898796,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 0.9857144667766988,
+      "peakTreeRssBytes": 26107904,
+      "peakRunAllocatedBytes": 483328,
+      "report": {
+        "file": "selfhost/build/phase171/descendant-lookup-machine-baseline11/report.json",
+        "bytes": 10503,
+        "sha256": "5907f366557d2ec9e8186e47e952c8b9758d6b5381b14dcf16cf01b61e00cb1e"
+      },
+      "result": {
+        "kind": "bend-native-build",
+        "complete": true,
+        "outputExact": true,
+        "wallSeconds": 0.8356274608522654,
+        "recordedArtifactPins": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-lookup-machine-baseline11/program",
+            "bytes": 156016,
+            "sha256": "da83d08c90778f175ecc4f3b86911417518a876f9eb4af64abd493ee3e64d9e6"
+          },
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-lookup-machine-baseline11/program.o",
+            "bytes": 72544,
+            "sha256": "e11fbb2266ed0b2dbf0803b66e16fc22db31f662fd3a9153420d03814238f097"
+          }
+        }
+      }
+    },
+    {
+      "name": "descendant-lookup-machine-descendant11",
+      "guard": {
+        "file": "selfhost/build/phase171/descendant-lookup-machine-descendant11-guard/process.json",
+        "bytes": 2987,
+        "sha256": "12648c7605e70e2e87d488cf77145a0c29761c245f89f17a5c37844322874093"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793985030.105087,
+      "finished": 1793985030.9277773,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 0.8228645590133965,
+      "peakTreeRssBytes": 21012480,
+      "peakRunAllocatedBytes": 532480,
+      "report": {
+        "file": "selfhost/build/phase171/descendant-lookup-machine-descendant11/report.json",
+        "bytes": 10555,
+        "sha256": "57787ecd8ac9bb09f8350be1baf9e1aec70ef6776c20bbe5b1dfed191c87b94e"
+      },
+      "result": {
+        "kind": "bend-native-build",
+        "complete": true,
+        "outputExact": true,
+        "wallSeconds": 0.6876696730032563,
+        "recordedArtifactPins": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-lookup-machine-descendant11/program",
+            "bytes": 162688,
+            "sha256": "1cf9b9dc1cec13dbd2021f89b1923d8b5552453c3087a9e2ce993031edf6e6d4"
+          },
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-lookup-machine-descendant11/program.o",
+            "bytes": 81192,
+            "sha256": "df7aface4c7eaacc9204a5411c9bd2c8b61ff00d4ef64b579058c95d1e44d6eb"
+          }
+        }
+      }
+    },
+    {
+      "name": "descendant-lookup-pair11",
+      "guard": {
+        "file": "selfhost/build/phase171/descendant-lookup-pair11-guard/process.json",
+        "bytes": 3011,
+        "sha256": "20a730ed4eb3522c670a577b5c7ed01537552a5e24442566655faa17f19e82bb"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793985208.9205713,
+      "finished": 1793985213.6624873,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 4.742087250109762,
+      "peakTreeRssBytes": 23220224,
+      "peakRunAllocatedBytes": 65536,
+      "report": {
+        "file": "selfhost/build/phase171/descendant-lookup-pair11/report.json",
+        "bytes": 9539,
+        "sha256": "0a5df944a8115cc4f194b3b89d49e57b5fb1a9b15596a2be687e8b1cefb41d76"
+      },
+      "result": {
+        "kind": "phase171-native-product-pair",
+        "complete": true,
+        "ratio": 1.0086597388362526,
+        "resolved": true,
+        "medians": {
+          "baseline": 0.5578365118708462,
+          "candidate": 0.5626672303769737
+        },
+        "rounds": 4,
+        "executionCount": 8,
+        "allOutputsExact": true,
+        "recordedArtifactPins": {}
+      }
+    },
+    {
+      "name": "descendant-shape10",
+      "guard": {
+        "file": "selfhost/build/phase171/descendant-shape10-guard/process.json",
+        "bytes": 3178,
+        "sha256": "7c37eddfe3a5e596da7da39af059764faff737d42033344c5471c52e794e5997"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793984340.3815348,
+      "finished": 1793984348.312184,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 7.93082056986168,
+      "peakTreeRssBytes": 425164800,
+      "peakRunAllocatedBytes": 86016,
+      "report": {
+        "file": "selfhost/build/phase171/descendant-shape10/report.json",
+        "bytes": 55579,
+        "sha256": "105c7f964364f5f9cb8613f8208733c9f4a5c3c7989ae52be7083fb8d5524310"
+      },
+      "result": {
+        "kind": "phase171-descendant-shape",
+        "complete": true,
+        "owner": "index_bucket",
+        "mode": "metadata",
+        "wallSeconds": 7.595209255,
+        "recordedArtifactPins": {
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-source02/compiler.bend",
+            "bytes": 15408,
+            "sha256": "4627d3b8c7b8291277574a1fc68bdf6afc972be1e32f8d1d8620c62eb4bdf181"
+          }
+        }
+      }
+    },
+    {
+      "name": "descendant-values-actual11",
+      "guard": {
+        "file": "selfhost/build/phase171/descendant-values-actual11-guard/process.json",
+        "bytes": 3234,
+        "sha256": "c16b4c8570472dbd626f43f3d8280fc08ccfb4dee02142e42ee34a7b45bac680"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793985122.9655406,
+      "finished": 1793985132.9959924,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 10.030629551969469,
+      "peakTreeRssBytes": 497512448,
+      "peakRunAllocatedBytes": 323584,
+      "report": {
+        "file": "selfhost/build/phase171/descendant-values-actual11/report.json",
+        "bytes": 55669,
+        "sha256": "95250679e1c5db6b261c354c09beb4f61db6695ac6970dedcac37dc7fed389e7"
+      },
+      "result": {
+        "kind": "phase171-descendant-emission",
+        "complete": true,
+        "owner": "index_bucket",
+        "mode": "descendant",
+        "wallSeconds": 9.660565448,
+        "recordedArtifactPins": {
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-full-values01/actual.bend",
+            "bytes": 15417,
+            "sha256": "6858cb262043d400b5a2fcaba4a70c5c1db22a742aa1ef7f254d5fe25c06f8f0"
+          },
+          "ir": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-values-actual11/program.ssa",
+            "bytes": 245215,
+            "sha256": "120e72eff9a586e8bfc30c542b618b6f11fde6dbcb5afdd886d1bc9f5f5a8e48"
+          }
+        }
+      }
+    },
+    {
+      "name": "descendant-values-expected11",
+      "guard": {
+        "file": "selfhost/build/phase171/descendant-values-expected11-guard/process.json",
+        "bytes": 3239,
+        "sha256": "62d08266797b4ac24dfed226b0903bfc18493b5d2fb9a124ea013552837d848d"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793985114.7556267,
+      "finished": 1793985122.348789,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 7.5933414828032255,
+      "peakTreeRssBytes": 428744704,
+      "peakRunAllocatedBytes": 131072,
+      "report": {
+        "file": "selfhost/build/phase171/descendant-values-expected11/report.json",
+        "bytes": 55672,
+        "sha256": "3c125ed6679c4cec55f619bbda4fdc699092ef943330dc6fec7b7544c5dc2dcc"
+      },
+      "result": {
+        "kind": "phase171-descendant-emission",
+        "complete": true,
+        "owner": "index_bucket",
+        "mode": "baseline",
+        "wallSeconds": 7.25980024,
+        "recordedArtifactPins": {
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-full-values01/expected.bend",
+            "bytes": 17382,
+            "sha256": "7e274d0d62e603731392839885458db5fdf1f4528f5084275e09636331e3fa95"
+          },
+          "ir": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-values-expected11/program.ssa",
+            "bytes": 52734,
+            "sha256": "86846c8876d7fd4c623c69450d9d3a370ca0a12692c9d075500272329db7a158"
+          }
+        }
+      }
+    },
+    {
+      "name": "descendant-values-machine-actual11",
+      "guard": {
+        "file": "selfhost/build/phase171/descendant-values-machine-actual11-guard/process.json",
+        "bytes": 2640,
+        "sha256": "d0e6aca9050599777d63fd925328766045292ed9a5b0700ba7405f6536bd43c1"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793985208.0369895,
+      "finished": 1793985208.2449083,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 0.2080906662158668,
+      "peakTreeRssBytes": 29224960,
+      "peakRunAllocatedBytes": 450560,
+      "report": {
+        "file": "selfhost/build/phase171/descendant-values-machine-actual11/report.json",
+        "bytes": 8950,
+        "sha256": "c13231b4cb0c3ebbd80e6e0f0c3d5ec7a978c39ebb60d7a5ab342c7b61732d9e"
+      },
+      "result": {
+        "kind": "bend-native-build",
+        "complete": true,
+        "wallSeconds": 0.08612900273874402,
+        "recordedArtifactPins": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-values-machine-actual11/program",
+            "bytes": 150096,
+            "sha256": "0362dcec984ccb572c797b3369b28bb4baf1cd1633142db747615163276205ad"
+          },
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-values-machine-actual11/program.o",
+            "bytes": 66264,
+            "sha256": "420f5982ec11c8b58af243f659874532592889cc608e586c5f18c8a5539cdd7c"
+          }
+        }
+      }
+    },
+    {
+      "name": "descendant-values-machine-expected11",
+      "guard": {
+        "file": "selfhost/build/phase171/descendant-values-machine-expected11-guard/process.json",
+        "bytes": 2646,
+        "sha256": "5096b6b0e67b137862b896ee1ef501343aec56300f46391782c0a77c95a712f0"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793985207.4843628,
+      "finished": 1793985207.752568,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 0.2683860086835921,
+      "peakTreeRssBytes": 19042304,
+      "peakRunAllocatedBytes": 278528,
+      "report": {
+        "file": "selfhost/build/phase171/descendant-values-machine-expected11/report.json",
+        "bytes": 9004,
+        "sha256": "49e4abb800c02adb3ce5514f458d92fb42da5b47771aa788155b7c4af8e5d92b"
+      },
+      "result": {
+        "kind": "bend-native-build",
+        "complete": true,
+        "wallSeconds": 0.12599955825135112,
+        "recordedArtifactPins": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-values-machine-expected11/program",
+            "bytes": 128152,
+            "sha256": "e29c02fd803edd85cd52e1da68296a4ec46e08efccbbf8f4ecb8498071d71268"
+          },
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-values-machine-expected11/program.o",
+            "bytes": 34656,
+            "sha256": "279ad53524ac47cfe7c8762a94128492f55a21988e7e154d30ee7a16d634facc"
+          }
+        }
+      }
+    },
+    {
+      "name": "descendant-values-native11",
+      "guard": {
+        "file": "selfhost/build/phase171/descendant-values-native11-guard/process.json",
+        "bytes": 2706,
+        "sha256": "6dd4c9941c085df7c9c80725cdcfce743f4f3e7878d354b85fd0c90424b96a04"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793985208.5448086,
+      "finished": 1793985208.6298249,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 0.0851876582019031,
+      "peakTreeRssBytes": 15740928,
+      "peakRunAllocatedBytes": 36864,
+      "report": {
+        "file": "selfhost/build/phase171/descendant-values-native11/report.json",
+        "bytes": 4184,
+        "sha256": "b6951f4af114e8c7df23984f331a13cfd354ea127fa53b036854468c053ba218"
+      },
+      "result": {
+        "kind": "phase171-native-product-pair",
+        "complete": true,
+        "resolved": false,
+        "medians": {
+          "baseline": 0.0032247109338641167,
+          "candidate": 0.003045196644961834
+        },
+        "rounds": 1,
+        "executionCount": 2,
+        "allOutputsExact": true,
+        "recordedArtifactPins": {}
+      }
+    },
+    {
+      "name": "live-baseline-api01",
+      "guard": {
+        "file": "selfhost/build/phase171/live-baseline-api01-guard/process.json",
+        "bytes": 3151,
+        "sha256": "362d8d547e5d038f27f27c1a7ae704b34ce2174308bdb4f4f175cae7114c97b5"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": true,
+      "started": 1793983011.3117435,
+      "finished": 1793983026.4171605,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 15.10559666575864,
+      "peakTreeRssBytes": 2068455424,
+      "peakRunAllocatedBytes": 2686976,
+      "report": {
+        "file": "selfhost/build/phase171/live-baseline-api01/report.json",
+        "bytes": 4978,
+        "sha256": "504407c58173ec7623c359e5117e148250f7ebee351b797020a3588b5a68b403"
+      },
+      "result": {
+        "kind": "bend-checked-hosted-api",
+        "complete": true,
+        "checked": true,
+        "seconds": 14.719793185,
+        "recordedArtifactPins": {
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/live-baseline-source01/compiler.bend",
+            "bytes": 1552905,
+            "sha256": "c5bdb30afadd41e94b80a19a4a35042d6b6aa81078ffbd53b41ed7567931ab09"
+          },
+          "api": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/live-baseline-api01/api.mjs",
+            "bytes": 2653371,
+            "sha256": "610204b19510836f61df62134bdbbaf02d14e641a404d59f7e766cb68006c0f2"
+          }
+        }
+      }
+    },
+    {
+      "name": "live-candidate-api01",
+      "guard": {
+        "file": "selfhost/build/phase171/live-candidate-api01-guard/process.json",
+        "bytes": 3158,
+        "sha256": "0f37d9e84d557c23556d960b0fc5190e4584662f5eedf84846c07302462efa76"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": true,
+      "started": 1793983050.9674103,
+      "finished": 1793983065.4407234,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 14.473493491765112,
+      "peakTreeRssBytes": 2059481088,
+      "peakRunAllocatedBytes": 2686976,
+      "report": {
+        "file": "selfhost/build/phase171/live-candidate-api01/report.json",
+        "bytes": 4994,
+        "sha256": "efc7a67f70eae4a13a064c23d5fd297beb9e493a2dc31c1a598b26673001ff1a"
+      },
+      "result": {
+        "kind": "bend-checked-hosted-api",
+        "complete": true,
+        "checked": true,
+        "seconds": 14.084675365999999,
+        "recordedArtifactPins": {
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/live-candidate-source01/compiler.bend",
+            "bytes": 1552900,
+            "sha256": "c413ea716965e481f7ab8ab6b12b8f1cc5a0093b61c6d24793f00b3c04677958"
+          },
+          "api": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/live-candidate-api01/api.mjs",
+            "bytes": 2653366,
+            "sha256": "88a03f3b925bf8bf5d8e704b2c9faadd22ad2dbfbbfdff6bb87937b4b0a6387a"
+          }
+        }
+      }
+    },
+    {
+      "name": "live-controls01",
+      "guard": {
+        "file": "selfhost/build/phase171/live-controls01-guard/process.json",
+        "bytes": 2770,
+        "sha256": "6b963cdb48fe3159619d3ebbfd90d097373afed6ab126e21ee1101549a73b859"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793983087.2830775,
+      "finished": 1793983088.6962228,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 1.4133235746994615,
+      "peakTreeRssBytes": 208117760,
+      "peakRunAllocatedBytes": 237568,
+      "report": {
+        "file": "selfhost/build/phase171/live-controls01/report.json",
+        "bytes": 8575,
+        "sha256": "ee00a5196e3cf98360bac00b33496a0ab03855be7bd87b04527c6b9f77f92e49"
+      },
+      "result": {
+        "kind": "phase171-live-env-controls",
+        "complete": true,
+        "passed": true,
+        "controlRows": 44,
+        "recordedArtifactPins": {}
+      }
+    },
+    {
+      "name": "live-verifier01",
+      "guard": {
+        "file": "selfhost/build/phase171/live-verifier01-guard/process.json",
+        "bytes": 3477,
+        "sha256": "78116ef1f691756a3665ddec08c93d8548a1ace4a6d4bf810a53b049c71917d2"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793983177.708134,
+      "finished": 1793983207.5845087,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 29.876548598054796,
+      "peakTreeRssBytes": 589160448,
+      "peakRunAllocatedBytes": 2387968,
+      "report": {
+        "file": "selfhost/build/phase171/live-verifier01/report.json",
+        "bytes": 56333,
+        "sha256": "04b5e03f356d35449936b7243f3163425e7279904d4bfa9b1c53be207a76be50"
+      },
+      "result": {
+        "kind": "phase171-checked-request",
+        "complete": true,
+        "mode": "baseline",
+        "exactQbe": true,
+        "wallSeconds": 29.513512449,
+        "recordedArtifactPins": {
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/verifier-source03/compiler.bend",
+            "bytes": 39333,
+            "sha256": "ff6b4083aa2f3e034f3b4f8e43dfb25d93a4f524685934e0ee13845278033ef3"
+          },
+          "ir": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/live-verifier01/program.ssa",
+            "bytes": 2309376,
+            "sha256": "8be3a072b84dfc8bb85ddb9478c00d05179f7de89c8d4079af9ca3a5190bfbfb"
+          }
+        }
+      }
+    },
+    {
+      "name": "render-baseline-api01",
+      "guard": {
+        "file": "selfhost/build/phase171/render-baseline-api01-guard/process.json",
+        "bytes": 3158,
+        "sha256": "aca61d0014673f6e153515b3d0ae9d2a5b2e59bf995808fb318dfbfb04452afb"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793984072.147074,
+      "finished": 1793984075.1096404,
+      "returncode": 1,
+      "guardComplete": false,
+      "wallSeconds": 2.962746617384255,
+      "peakTreeRssBytes": 276455424,
+      "peakRunAllocatedBytes": 28672,
+      "report": {
+        "file": "selfhost/build/phase171/render-baseline-api01/report.json",
+        "bytes": 3987,
+        "sha256": "57f69a13dc3d199a809031053406d2751d9d98a69d8bef3efb93db519b72d46a"
+      },
+      "result": {
+        "kind": "bend-checked-hosted-api",
+        "complete": false,
+        "checked": false,
+        "seconds": 2.5688421399999997,
+        "error": "Error: Checked acquisition failed; inspect captured diagnostics",
+        "recordedArtifactPins": {
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/render-baseline-source01/compiler.bend",
+            "bytes": 1556992,
+            "sha256": "fbc65eaca5871e76ba5603d8da27ec903d7109df9e30d55272a1b0e7a4cc470f"
+          }
+        }
+      },
+      "diagnostics": {
+        "stdout": {
+          "file": "selfhost/build/phase171/render-baseline-api01/stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "selfhost/build/phase171/render-baseline-api01/stderr",
+          "bytes": 375,
+          "sha256": "48f5c21e0ff64bd816d23e97dd16a3fe1c83910d1e75aab03cb00e675c085e67"
+        }
+      },
+      "diagnosticExcerpt": "Error: (bootstrap structural summary; terms are not normalized)\n- message  : 'mode' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n/home/ai/bend2/build/publish/bend/selfhost/build/phase171/render-baseline-source01/compiler.bend:45233:13\n45233 |       match mode:\n"
+    },
+    {
+      "name": "render-baseline-api02",
+      "guard": {
+        "file": "selfhost/build/phase171/render-baseline-api02-guard/process.json",
+        "bytes": 3163,
+        "sha256": "31497b45207f40ebb93e96b52039f4e7ede8bbd73897149fa6b3d75bcb9d31b8"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793984278.851115,
+      "finished": 1793984293.9825284,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 15.131590674165636,
+      "peakTreeRssBytes": 1985638400,
+      "peakRunAllocatedBytes": 2707456,
+      "report": {
+        "file": "selfhost/build/phase171/render-baseline-api02/report.json",
+        "bytes": 4995,
+        "sha256": "0978aa2ccbeaf1f43a7f644f42d5acab321a80abc8ebf992d34f932192da9556"
+      },
+      "result": {
+        "kind": "bend-checked-hosted-api",
+        "complete": true,
+        "checked": true,
+        "seconds": 14.728275087,
+        "recordedArtifactPins": {
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/render-baseline-source02/compiler.bend",
+            "bytes": 1556992,
+            "sha256": "78b6b25e4ce658a322e5a1619fed221b282673028c9d408ff299644dfd00d296"
+          },
+          "api": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/render-baseline-api02/api.mjs",
+            "bytes": 2671781,
+            "sha256": "c874cad5c18030c5cc5513c808342176b22f87ef99256def9f212782ead0cf0f"
+          }
+        }
+      }
+    },
+    {
+      "name": "render-candidate-api02",
+      "guard": {
+        "file": "selfhost/build/phase171/render-candidate-api02-guard/process.json",
+        "bytes": 3166,
+        "sha256": "170f7c1ee5dfe549c5d3175607802c9b85c2020630ba092528773607aab462d5"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793984294.8219793,
+      "finished": 1793984297.5163524,
+      "returncode": 1,
+      "guardComplete": false,
+      "wallSeconds": 2.6945502958260477,
+      "peakTreeRssBytes": 249974784,
+      "peakRunAllocatedBytes": 28672,
+      "report": {
+        "file": "selfhost/build/phase171/render-candidate-api02/report.json",
+        "bytes": 3987,
+        "sha256": "c9a08339e06f5f2a2550ffc6d40d83d18d78921c82585fe64e12f24f9660b774"
+      },
+      "result": {
+        "kind": "bend-checked-hosted-api",
+        "complete": false,
+        "checked": false,
+        "seconds": 2.308557527,
+        "error": "Error: Checked acquisition failed; inspect captured diagnostics",
+        "recordedArtifactPins": {
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/render-candidate-source02/compiler.bend",
+            "bytes": 1557979,
+            "sha256": "0e1452023adc86f33642c954f8746f01859e9ca78802938d00adc506428004de"
+          }
+        }
+      },
+      "diagnostics": {
+        "stdout": {
+          "file": "selfhost/build/phase171/render-candidate-api02/stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "selfhost/build/phase171/render-candidate-api02/stderr",
+          "bytes": 275,
+          "sha256": "5449889603f9cc40a9933e896beac7dcde4e8d04ba8c221bf1d3b824a309fabc"
+        }
+      },
+      "diagnosticExcerpt": "Error: (bootstrap structural summary; terms are not normalized)\n- expected : 'def' (@unsafe marks the def below it)\n- observed : 'l'\nLocation:\n/home/ai/bend2/build/publish/bend/selfhost/build/phase171/render-candidate-source02/compiler.bend:37897:1\n37897 | law p171rc_enter:\n"
+    },
+    {
+      "name": "render-candidate-api03",
+      "guard": {
+        "file": "selfhost/build/phase171/render-candidate-api03-guard/process.json",
+        "bytes": 3170,
+        "sha256": "1e2dd3b9c1261e5f21f26e7ebf1da03500f3ecb6122bb4f7fbc384323cf71825"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793984386.0338278,
+      "finished": 1793984401.7663217,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 15.732671085745096,
+      "peakTreeRssBytes": 1993527296,
+      "peakRunAllocatedBytes": 2707456,
+      "report": {
+        "file": "selfhost/build/phase171/render-candidate-api03/report.json",
+        "bytes": 5011,
+        "sha256": "907f4bcd6dcd3f88c16abc49c804cf5508dc0ebed01a58a980f5c25c22cbd6e8"
+      },
+      "result": {
+        "kind": "bend-checked-hosted-api",
+        "complete": true,
+        "checked": true,
+        "seconds": 15.298840817999999,
+        "recordedArtifactPins": {
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/render-candidate-source03/compiler.bend",
+            "bytes": 1557989,
+            "sha256": "5e518d00a7b18a1421e06fa959417f29336ca9818da16aae6ab1453e50a3e387"
+          },
+          "api": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/render-candidate-api03/api.mjs",
+            "bytes": 2673704,
+            "sha256": "037723f1ae8a7436dbe1182905e18a9e1e242faf85c7dcf8ae9f1e94e83e35ab"
+          }
+        }
+      }
+    },
+    {
+      "name": "render-controls01",
+      "guard": {
+        "file": "selfhost/build/phase171/render-controls01-guard/process.json",
+        "bytes": 2844,
+        "sha256": "b2ebfe3707a81dd09f0ee0882132973531879567a863f224e921bd41dd478813"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793984466.523431,
+      "finished": 1793984472.4349883,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 5.911729528103024,
+      "peakTreeRssBytes": 206987264,
+      "peakRunAllocatedBytes": 364544,
+      "report": {
+        "file": "selfhost/build/phase171/render-controls01/report.json",
+        "bytes": 12347,
+        "sha256": "c0f77b39958fd9266883dc877a382ec16474dee78329cca8ebe694e53334a914"
+      },
+      "result": {
+        "kind": "phase171-render-clean-controls",
+        "complete": true,
+        "passed": true,
+        "controlRows": 44,
+        "recordedArtifactPins": {}
+      }
+    },
+    {
+      "name": "render-verifier-baseline01",
+      "guard": {
+        "file": "selfhost/build/phase171/render-verifier-baseline01-guard/process.json",
+        "bytes": 3187,
+        "sha256": "edb0f166a1b33024154cfd249676833f4242f8a373789762de101056eacc5f2a"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793984533.6434827,
+      "finished": 1793984563.0187855,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 29.375478243920952,
+      "peakTreeRssBytes": 609292288,
+      "peakRunAllocatedBytes": 2387968,
+      "report": {
+        "file": "selfhost/build/phase171/render-verifier-baseline01/report.json",
+        "bytes": 56094,
+        "sha256": "3c7689251d2736539f33494ed4452d31fa09024493213780e7355d93f35e20e6"
+      },
+      "result": {
+        "kind": "phase171-checked-request",
+        "complete": true,
+        "mode": "baseline",
+        "wallSeconds": 29.013104852999998,
+        "recordedArtifactPins": {
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/verifier-source03/compiler.bend",
+            "bytes": 39333,
+            "sha256": "ff6b4083aa2f3e034f3b4f8e43dfb25d93a4f524685934e0ee13845278033ef3"
+          },
+          "ir": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/render-verifier-baseline01/program.ssa",
+            "bytes": 2309376,
+            "sha256": "8be3a072b84dfc8bb85ddb9478c00d05179f7de89c8d4079af9ca3a5190bfbfb"
+          }
+        }
+      }
+    },
+    {
+      "name": "render-verifier-candidate01",
+      "guard": {
+        "file": "selfhost/build/phase171/render-verifier-candidate01-guard/process.json",
+        "bytes": 3524,
+        "sha256": "a2ab59c6cdb413a3f5c4ff6e0ccd7c56736bdf6e6c3ccd04abc46eb7d0063b1c"
+      },
+      "terminalAtSnapshot": true,
+      "startedBeforeCommit": false,
+      "started": 1793984563.6750994,
+      "finished": 1793984593.2109485,
+      "returncode": 0,
+      "guardComplete": true,
+      "wallSeconds": 29.536021487787366,
+      "peakTreeRssBytes": 625471488,
+      "peakRunAllocatedBytes": 2387968,
+      "report": {
+        "file": "selfhost/build/phase171/render-verifier-candidate01/report.json",
+        "bytes": 57028,
+        "sha256": "ab78fcfe724372ce77a5a0c0d46e4b25763bbb2fd70f37bdc1deff386ef30545"
+      },
+      "result": {
+        "kind": "phase171-checked-request",
+        "complete": true,
+        "mode": "baseline",
+        "exactQbe": true,
+        "wallSeconds": 29.176440048999996,
+        "recordedArtifactPins": {
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/verifier-source03/compiler.bend",
+            "bytes": 39333,
+            "sha256": "ff6b4083aa2f3e034f3b4f8e43dfb25d93a4f524685934e0ee13845278033ef3"
+          },
+          "ir": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/render-verifier-candidate01/program.ssa",
+            "bytes": 2309376,
+            "sha256": "8be3a072b84dfc8bb85ddb9478c00d05179f7de89c8d4079af9ca3a5190bfbfb"
+          }
+        }
+      }
+    }
+  ]
+}

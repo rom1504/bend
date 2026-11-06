@@ -119,3 +119,11 @@ only after the smaller checked API gates justify it. Compare the resulting
 candidate compiler against the baseline on the **fixed original** source input;
 compiling the changed candidate source is a distinct self-build measurement.
 The older `prepare-api.py` stays frozen for its already recorded receipts.
+
+
+The subsequent borrowed-selector and cleanup experiments are closed without
+integration. See the [follow-up report](../../../implementation/phase171/followup.md)
+and [compact reproduction package](../../../experiments/phase171/descendant-history/README.md).
+The root borrowed-selector modules are the original experimental baseline;
+`descendant-v15/` is its final tested successor. Intermediate revisions are
+reconstructed from authenticated deltas, not additional maintained compilers.

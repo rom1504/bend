@@ -1,0 +1,1345 @@
+{
+  "schema": "phase171-runtime-callers-summary-v1",
+  "preparedAtUtc": "2026-11-06T18:19:41.242588+00:00",
+  "offlineOnly": true,
+  "inputs": [
+    {
+      "file": "selfhost/build/phase171/runtime-callers-full01/report.json",
+      "bytes": 12401,
+      "sha256": "931a80b53d542fc053d781c787bdd3151b1204bc0c468be1564a626786395d5b"
+    },
+    {
+      "file": "selfhost/build/phase171/runtime-callers-full-stages01.json",
+      "bytes": 580341,
+      "sha256": "6e4cd058c79876ad0a880156cd58c0c976f7dff67e761bfbb354adf9be2e16d7"
+    },
+    {
+      "file": "selfhost/build/phase171/runtime-callers-prep01/unwind/table.json",
+      "bytes": 43965,
+      "sha256": "354cdc9fe2ea6d7ca00fedd50cc857eb01352c5be54970b33e7b36034a748f60"
+    },
+    {
+      "file": "selfhost/build/phase171/candidate-profile-prep01/owners.json",
+      "bytes": 22097630,
+      "sha256": "034175251c57c1e4a839b4339798e84d1838ef7581c665345457124d9b02cc9c"
+    },
+    {
+      "file": "selfhost/tools/profiler/attribute.py",
+      "bytes": 35029,
+      "sha256": "4728b9a8175087ff0159c4bc59a0575ffa37838b00be0fc83bbac356610916da"
+    },
+    {
+      "file": "selfhost/tools/profiler/stages_v1.py",
+      "bytes": 13152,
+      "sha256": "768cde4664bbd1442139ab5fde702b7d51d7e4709330392a8947905d17b553c7"
+    },
+    {
+      "file": "experiments/phase171/tools/runtime-callers.py",
+      "bytes": 13360,
+      "sha256": "44ac78b71b43e67163c83d7db20a225d6f51b8df3510949d33566daa146972c4"
+    },
+    {
+      "file": "selfhost/build/phase171/candidate-profile-products01/program",
+      "bytes": 16181672,
+      "sha256": "a61dfe42bfb5e6dd3abd8d16cf96179fbde682e6317eae6ed6f803050b64cfc7"
+    },
+    {
+      "file": "selfhost/build/phase171/native-source01/compiler.bend",
+      "bytes": 3161409,
+      "sha256": "74cd7de3e5076490e20ba0218d4c9254853be72562946b9ef66fed6c10c7a53a"
+    },
+    {
+      "file": "selfhost/build/phase170/source-final/compiler.bend",
+      "bytes": 3150535,
+      "sha256": "434edd1d56128f9480800573abf8a0ae21d910a547837af089f25cd1d0e89b71"
+    },
+    {
+      "file": "selfhost/src/back/native/text.bend",
+      "bytes": 4208,
+      "sha256": "61327d126a4a727f515287ac8cc0b3528f0ee3a424c5603e6fcb240c5e47b4a0"
+    },
+    {
+      "file": "selfhost/src/back/qbe/emit.bend",
+      "bytes": 18671,
+      "sha256": "c9f3a0db8eb22abde614cbb42295ce183215db539d692fe1840b735cb46df2fa"
+    },
+    {
+      "file": "selfhost/src/back/qbe/stream-emission.bend",
+      "bytes": 15525,
+      "sha256": "16003ea64ecbcd50f50093423f3d489e8fec4ccc664b962e3d7bc0a25b06d391"
+    },
+    {
+      "file": "selfhost/build/phase171/runtime-callers-full01/000-sample-full-candidate-runtime-callers/analysis.json",
+      "bytes": 1309767,
+      "sha256": "1b82927608b5bfe56aa0a4a71058d19f1e8e0b3df91523fd7598d6b533d73e2f"
+    },
+    {
+      "file": "selfhost/build/phase171/runtime-callers-full01/000-sample-full-candidate-runtime-callers/callers.txt",
+      "bytes": 64046,
+      "sha256": "255fd9812b8d21dffed97510aab208461818ff0be9f3ab6afe05bbc909cb234e"
+    },
+    {
+      "file": "selfhost/build/phase171/runtime-callers-full01/000-sample-full-candidate-runtime-callers/contexts.txt",
+      "bytes": 30852,
+      "sha256": "4c41b976903398aacece81e832d6b201637dbc58fabace0cf5402dd0bff3f889"
+    },
+    {
+      "file": "selfhost/build/phase171/runtime-callers-full01/000-sample-full-candidate-runtime-callers/samples.txt",
+      "bytes": 45796,
+      "sha256": "f5d4700f91d38a36007ac936fe7d6daa98a669d56d745d026722246065211ca8"
+    }
+  ],
+  "measurement": {
+    "wallSeconds": 175.0110646742396,
+    "cpuSeconds": 174.970229,
+    "peakRssKiB": 788916,
+    "periodUs": 32000,
+    "samples": 5429,
+    "timingKind": "diagnostic compiler-only request, not clean cold machine construction",
+    "stdout": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/runtime-callers-full01/000-sample-full-candidate-runtime-callers/stdout",
+      "bytes": 97488970,
+      "sha256": "661b62664acdac83d12bc3192b5f9113a2bb946dd331433e64ca0452f6f83850"
+    },
+    "stderr": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/runtime-callers-full01/000-sample-full-candidate-runtime-callers/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "exactOutputPassed": true,
+    "quality": {
+      "scope": "main_thread",
+      "main_thread_cpu_fraction": 0.9933773505066235,
+      "sampled_thread_cpu_fraction": 0.9933773505066235,
+      "minimum_process_cpu_fraction": 0.95,
+      "minimum_samples": 500,
+      "enough_samples": true,
+      "thread_lifecycle_complete": true,
+      "near_complete_process_cpu_coverage": true,
+      "usable_for_process_cpu_attribution": true,
+      "limitations": [],
+      "zero_loss": true,
+      "handler_intact": true,
+      "main_thread_shutdown": true,
+      "expected_clock_periods": 5429.12478096875,
+      "delivered_per_expected_period": 0.9999770163748699,
+      "delivery_plausible": true
+    },
+    "stageAttributionValid": true,
+    "originalEmbeddedStageSpecPreserved": true
+  },
+  "callerCoverage": {
+    "eligibleLeafSamples": 2269,
+    "recoveredCallerSamples": 2269,
+    "symbolizedCallerSamples": 2269,
+    "inferredCallerSymbolSamples": 0,
+    "knownDispatchSamples": 5136,
+    "allSamples": 5429,
+    "unknownCallerSamples": 3160,
+    "eligibleWithoutCallerSamples": 0
+  },
+  "disjointCallerClasses": {
+    "generatedCompilerCaller": 966,
+    "runtimeOrOtherCaller": 1303,
+    "withoutSupportedCaller": 3160
+  },
+  "disjointNearestObservedGeneratedFrame": {
+    "generatedLeaf": 1800,
+    "runtimeLeafWithGeneratedCaller": 966,
+    "noObservedGeneratedFrame": 2663
+  },
+  "generatedCallersWithEmitterOwnerMetadata": 99,
+  "topRecoveredPhysicalCallers": [
+    {
+      "name": "p111_rt_sink",
+      "samples": 430,
+      "fractionOfAllSamples": 0.07920427334684103
+    },
+    {
+      "name": "p113d_FID_$p118.trmc.$direct.String.append",
+      "samples": 223,
+      "fractionOfAllSamples": 0.04107570454964082
+    },
+    {
+      "name": "ctr_take.cold",
+      "samples": 204,
+      "fractionOfAllSamples": 0.03757598084361761
+    },
+    {
+      "name": "p125_rt_take2.cold",
+      "samples": 157,
+      "fractionOfAllSamples": 0.028918769570823358
+    },
+    {
+      "name": "p111_rt_take",
+      "samples": 97,
+      "fractionOfAllSamples": 0.017867010499171117
+    },
+    {
+      "name": "p125_rt_take4.cold",
+      "samples": 96,
+      "fractionOfAllSamples": 0.01768281451464358
+    },
+    {
+      "name": "span_fade",
+      "samples": 93,
+      "fractionOfAllSamples": 0.01713022656106097
+    },
+    {
+      "name": "p113d_FID_$direct.index_find",
+      "samples": 79,
+      "fractionOfAllSamples": 0.014551482777675446
+    },
+    {
+      "name": "rfc_wrap",
+      "samples": 73,
+      "fractionOfAllSamples": 0.013446306870510223
+    },
+    {
+      "name": "io_cbuf",
+      "samples": 56,
+      "fractionOfAllSamples": 0.01031497513354209
+    },
+    {
+      "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+      "samples": 47,
+      "fractionOfAllSamples": 0.008657211272794254
+    },
+    {
+      "name": "p113d_FID_$direct.ks",
+      "samples": 31,
+      "fractionOfAllSamples": 0.005710075520353656
+    },
+    {
+      "name": "p113d_FID_$direct.p98_tag_eq",
+      "samples": 30,
+      "fractionOfAllSamples": 0.005525879535826119
+    },
+    {
+      "name": "p113d_FID_$p118borrow.read.p98_tag_eq",
+      "samples": 29,
+      "fractionOfAllSamples": 0.005341683551298581
+    },
+    {
+      "name": "p118_destination_fill.cold",
+      "samples": 26,
+      "fractionOfAllSamples": 0.00478909559771597
+    },
+    {
+      "name": "p113d_FID_$direct.f_eq",
+      "samples": 22,
+      "fractionOfAllSamples": 0.004052311659605821
+    },
+    {
+      "name": "p111_rt_ctor",
+      "samples": 19,
+      "fractionOfAllSamples": 0.003499723706023209
+    },
+    {
+      "name": "p113d_FID_$direct.dk",
+      "samples": 16,
+      "fractionOfAllSamples": 0.002947135752440597
+    },
+    {
+      "name": "p111_FID_$direct.p131i_insert",
+      "samples": 16,
+      "fractionOfAllSamples": 0.002947135752440597
+    },
+    {
+      "name": "p113d_FID_$p118borrow.read.String.cmp",
+      "samples": 16,
+      "fractionOfAllSamples": 0.002947135752440597
+    }
+  ],
+  "topNearestObservedGeneratedFunctions": [
+    {
+      "name": null,
+      "samples": 2663,
+      "fractionOfAllSamples": 0.4905139067968318
+    },
+    {
+      "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+      "samples": 413,
+      "fractionOfAllSamples": 0.07607294160987291
+    },
+    {
+      "name": "p113d_FID_$p118.trmc.$direct.String.append",
+      "samples": 261,
+      "fractionOfAllSamples": 0.04807515196168723
+    },
+    {
+      "name": "p113d_FID_$p118borrow.read.String.cmp",
+      "samples": 139,
+      "fractionOfAllSamples": 0.025603241849327683
+    },
+    {
+      "name": "p113d_FID_$direct.index_find",
+      "samples": 122,
+      "fractionOfAllSamples": 0.02247191011235955
+    },
+    {
+      "name": "p113d_FID_$p118borrow.read.p98_tag_eq",
+      "samples": 103,
+      "fractionOfAllSamples": 0.01897218640633634
+    },
+    {
+      "name": "p113d_FID_$p118borrow.read.index_hash",
+      "samples": 68,
+      "fractionOfAllSamples": 0.012525326947872537
+    },
+    {
+      "name": "p113d_FID_$direct.p98_tag_eq",
+      "samples": 51,
+      "fractionOfAllSamples": 0.009393995210904402
+    },
+    {
+      "name": "p113d_FID_$direct.ks",
+      "samples": 39,
+      "fractionOfAllSamples": 0.007183643396573955
+    },
+    {
+      "name": "p111_FID_$direct.p131i_insert",
+      "samples": 32,
+      "fractionOfAllSamples": 0.005894271504881194
+    },
+    {
+      "name": "p113d_FID_$direct.f_eq",
+      "samples": 31,
+      "fractionOfAllSamples": 0.005710075520353656
+    },
+    {
+      "name": "p113d_FID_$p118borrow.read.has_name",
+      "samples": 31,
+      "fractionOfAllSamples": 0.005710075520353656
+    },
+    {
+      "name": "p113d_FID_$direct.dk",
+      "samples": 26,
+      "fractionOfAllSamples": 0.00478909559771597
+    },
+    {
+      "name": "p113d_FID_$direct.tg",
+      "samples": 25,
+      "fractionOfAllSamples": 0.004604899613188432
+    },
+    {
+      "name": "p113d_FID_$p118borrow.read.f_eq",
+      "samples": 24,
+      "fractionOfAllSamples": 0.004420703628660895
+    },
+    {
+      "name": "p113d_FID_$direct.p88_string_eq",
+      "samples": 24,
+      "fractionOfAllSamples": 0.004420703628660895
+    },
+    {
+      "name": "p113d_FID_$direct.String.eq",
+      "samples": 23,
+      "fractionOfAllSamples": 0.004236507644133358
+    },
+    {
+      "name": "p113d_FID_$p118borrow.read.String.eq",
+      "samples": 21,
+      "fractionOfAllSamples": 0.0038681156750782833
+    }
+  ],
+  "append": {
+    "leafOrImmediateRuntimeCalleeSamples": 273,
+    "fractionOfAllSamples": 0.05028550377601768,
+    "trmcRecoveredCallerSamples": 223,
+    "meaning": "Disjoint physical location in any String.append variant OR in a selected runtime leaf with that variant as recovered immediate caller; not inclusive cost or removable-work estimate."
+  },
+  "intervals": [
+    {
+      "label": "p88_cache_prepare to p86_plan",
+      "wallSeconds": 0.263494242,
+      "samples": 6,
+      "sampleStartInclusive": 3,
+      "sampleEndExclusive": 9,
+      "quantitativeProfileAdmitted": false,
+      "counts": {
+        "generatedLeaf": 1,
+        "generatedCaller": 2,
+        "runtimeOrOtherCaller": 1,
+        "withoutSupportedCaller": 3,
+        "appendLeafOrImmediateCallee": 0
+      },
+      "appendFractionOfStageSamples": 0.0,
+      "topGeneratedCallers": [
+        {
+          "name": "p113d_FID_$direct.p88_string_at",
+          "samples": 1,
+          "fractionOfAllSamples": 0.0001841959845275373
+        },
+        {
+          "name": "p111_FID_$direct.p130m_word",
+          "samples": 1,
+          "fractionOfAllSamples": 0.0001841959845275373
+        }
+      ]
+    },
+    {
+      "label": "p86_plan to p86_plan_loaded",
+      "wallSeconds": 30.522191191,
+      "samples": 952,
+      "sampleStartInclusive": 11,
+      "sampleEndExclusive": 963,
+      "quantitativeProfileAdmitted": true,
+      "counts": {
+        "generatedLeaf": 328,
+        "generatedCaller": 134,
+        "runtimeOrOtherCaller": 221,
+        "withoutSupportedCaller": 597,
+        "appendLeafOrImmediateCallee": 0
+      },
+      "appendFractionOfStageSamples": 0.0,
+      "topGeneratedCallers": [
+        {
+          "name": "p113d_FID_$direct.f_eq",
+          "samples": 22,
+          "fractionOfAllSamples": 0.004052311659605821
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.f_eq",
+          "samples": 12,
+          "fractionOfAllSamples": 0.0022103518143304474
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 11,
+          "fractionOfAllSamples": 0.0020261558298029104
+        },
+        {
+          "name": "p113d_FID_$direct.f_raw_tx",
+          "samples": 11,
+          "fractionOfAllSamples": 0.0020261558298029104
+        },
+        {
+          "name": "p113d_FID_$direct.tg",
+          "samples": 7,
+          "fractionOfAllSamples": 0.0012893718916927612
+        }
+      ]
+    },
+    {
+      "label": "p86_plan_loaded to p86_plan_checked",
+      "wallSeconds": 19.339018993,
+      "samples": 602,
+      "sampleStartInclusive": 965,
+      "sampleEndExclusive": 1567,
+      "quantitativeProfileAdmitted": true,
+      "counts": {
+        "generatedLeaf": 222,
+        "generatedCaller": 83,
+        "runtimeOrOtherCaller": 165,
+        "withoutSupportedCaller": 354,
+        "appendLeafOrImmediateCallee": 0
+      },
+      "appendFractionOfStageSamples": 0.0,
+      "topGeneratedCallers": [
+        {
+          "name": "p113d_FID_$direct.index_find",
+          "samples": 10,
+          "fractionOfAllSamples": 0.001841959845275373
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 9,
+          "fractionOfAllSamples": 0.0016577638607478357
+        },
+        {
+          "name": "p113d_FID_$direct.ks",
+          "samples": 7,
+          "fractionOfAllSamples": 0.0012893718916927612
+        },
+        {
+          "name": "p111_FID_$direct.index_remove",
+          "samples": 4,
+          "fractionOfAllSamples": 0.0007367839381101492
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p98_tag_eq",
+          "samples": 4,
+          "fractionOfAllSamples": 0.0007367839381101492
+        }
+      ]
+    },
+    {
+      "label": "p86_plan_checked to p86_plan_reported",
+      "wallSeconds": 2.642550851,
+      "samples": 81,
+      "sampleStartInclusive": 1569,
+      "sampleEndExclusive": 1650,
+      "quantitativeProfileAdmitted": false,
+      "counts": {
+        "generatedLeaf": 71,
+        "generatedCaller": 7,
+        "runtimeOrOtherCaller": 2,
+        "withoutSupportedCaller": 72,
+        "appendLeafOrImmediateCallee": 0
+      },
+      "appendFractionOfStageSamples": 0.0,
+      "topGeneratedCallers": [
+        {
+          "name": "p113d_FID_$p118borrow.read.has_name",
+          "samples": 3,
+          "fractionOfAllSamples": 0.0005525879535826119
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 2,
+          "fractionOfAllSamples": 0.0003683919690550746
+        },
+        {
+          "name": "p113d_FID_$direct.index_find",
+          "samples": 2,
+          "fractionOfAllSamples": 0.0003683919690550746
+        }
+      ]
+    },
+    {
+      "label": "p86_plan_reported to p86_plan_owned",
+      "wallSeconds": 0.202063625,
+      "samples": 4,
+      "sampleStartInclusive": 1652,
+      "sampleEndExclusive": 1656,
+      "quantitativeProfileAdmitted": false,
+      "counts": {
+        "generatedLeaf": 2,
+        "generatedCaller": 0,
+        "runtimeOrOtherCaller": 1,
+        "withoutSupportedCaller": 3,
+        "appendLeafOrImmediateCallee": 0
+      },
+      "appendFractionOfStageSamples": 0.0,
+      "topGeneratedCallers": []
+    },
+    {
+      "label": "p86_plan_owned to p86_plan_context",
+      "wallSeconds": 0.656054765,
+      "samples": 18,
+      "sampleStartInclusive": 1658,
+      "sampleEndExclusive": 1676,
+      "quantitativeProfileAdmitted": false,
+      "counts": {
+        "generatedLeaf": 1,
+        "generatedCaller": 1,
+        "runtimeOrOtherCaller": 14,
+        "withoutSupportedCaller": 3,
+        "appendLeafOrImmediateCallee": 0
+      },
+      "appendFractionOfStageSamples": 0.0,
+      "topGeneratedCallers": [
+        {
+          "name": "p113d_FID_$p126scc.6664",
+          "samples": 1,
+          "fractionOfAllSamples": 0.0001841959845275373
+        }
+      ]
+    },
+    {
+      "label": "p86_plan_context to p86_plan_annotated",
+      "wallSeconds": 6.42075942,
+      "samples": 199,
+      "sampleStartInclusive": 1678,
+      "sampleEndExclusive": 1877,
+      "quantitativeProfileAdmitted": false,
+      "counts": {
+        "generatedLeaf": 68,
+        "generatedCaller": 39,
+        "runtimeOrOtherCaller": 49,
+        "withoutSupportedCaller": 111,
+        "appendLeafOrImmediateCallee": 0
+      },
+      "appendFractionOfStageSamples": 0.0,
+      "topGeneratedCallers": [
+        {
+          "name": "p113d_FID_$direct.p98_tag_eq",
+          "samples": 5,
+          "fractionOfAllSamples": 0.0009209799226376865
+        },
+        {
+          "name": "p113d_FID_$direct.dk",
+          "samples": 4,
+          "fractionOfAllSamples": 0.0007367839381101492
+        },
+        {
+          "name": "p113d_FID_$direct.dc",
+          "samples": 3,
+          "fractionOfAllSamples": 0.0005525879535826119
+        },
+        {
+          "name": "p113d_FID_$direct.index_find",
+          "samples": 3,
+          "fractionOfAllSamples": 0.0005525879535826119
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 3,
+          "fractionOfAllSamples": 0.0005525879535826119
+        }
+      ]
+    },
+    {
+      "label": "p86_plan_annotated to p144o_prepare_annotated",
+      "wallSeconds": 2.562392062,
+      "samples": 78,
+      "sampleStartInclusive": 1879,
+      "sampleEndExclusive": 1957,
+      "quantitativeProfileAdmitted": false,
+      "counts": {
+        "generatedLeaf": 29,
+        "generatedCaller": 13,
+        "runtimeOrOtherCaller": 20,
+        "withoutSupportedCaller": 45,
+        "appendLeafOrImmediateCallee": 0
+      },
+      "appendFractionOfStageSamples": 0.0,
+      "topGeneratedCallers": [
+        {
+          "name": "p113d_FID_$direct.index_find",
+          "samples": 3,
+          "fractionOfAllSamples": 0.0005525879535826119
+        },
+        {
+          "name": "p113d_FID_$p126scc.6664",
+          "samples": 1,
+          "fractionOfAllSamples": 0.0001841959845275373
+        },
+        {
+          "name": "p113d_FID_$direct.terms_at",
+          "samples": 1,
+          "fractionOfAllSamples": 0.0001841959845275373
+        },
+        {
+          "name": "p113d_FID_$direct.index_bucket",
+          "samples": 1,
+          "fractionOfAllSamples": 0.0001841959845275373
+        },
+        {
+          "name": "p113d_FID_$direct.dc",
+          "samples": 1,
+          "fractionOfAllSamples": 0.0001841959845275373
+        }
+      ]
+    },
+    {
+      "label": "p144o_prepare_annotated to p169np_plan",
+      "wallSeconds": 5.923324886,
+      "samples": 183,
+      "sampleStartInclusive": 1959,
+      "sampleEndExclusive": 2142,
+      "quantitativeProfileAdmitted": false,
+      "counts": {
+        "generatedLeaf": 66,
+        "generatedCaller": 26,
+        "runtimeOrOtherCaller": 56,
+        "withoutSupportedCaller": 101,
+        "appendLeafOrImmediateCallee": 0
+      },
+      "appendFractionOfStageSamples": 0.0,
+      "topGeneratedCallers": [
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 4,
+          "fractionOfAllSamples": 0.0007367839381101492
+        },
+        {
+          "name": "p113d_FID_$direct.index_find",
+          "samples": 4,
+          "fractionOfAllSamples": 0.0007367839381101492
+        },
+        {
+          "name": "p113d_FID_$direct.p98_tag_eq",
+          "samples": 3,
+          "fractionOfAllSamples": 0.0005525879535826119
+        },
+        {
+          "name": "p113d_FID_$direct.norm_max_walk",
+          "samples": 2,
+          "fractionOfAllSamples": 0.0003683919690550746
+        },
+        {
+          "name": "p113d_FID_$direct.dc",
+          "samples": 2,
+          "fractionOfAllSamples": 0.0003683919690550746
+        }
+      ]
+    },
+    {
+      "label": "p169np_plan to p168_request_mode",
+      "wallSeconds": 0.032000927,
+      "samples": 0,
+      "sampleStartInclusive": 2144,
+      "sampleEndExclusive": 2144,
+      "quantitativeProfileAdmitted": false,
+      "counts": {
+        "generatedLeaf": 0,
+        "generatedCaller": 0,
+        "runtimeOrOtherCaller": 0,
+        "withoutSupportedCaller": 0,
+        "appendLeafOrImmediateCallee": 0
+      },
+      "appendFractionOfStageSamples": null,
+      "topGeneratedCallers": []
+    },
+    {
+      "label": "p168_request_mode to p168_catalogued",
+      "wallSeconds": 1.650158355,
+      "samples": 50,
+      "sampleStartInclusive": 2145,
+      "sampleEndExclusive": 2195,
+      "quantitativeProfileAdmitted": false,
+      "counts": {
+        "generatedLeaf": 15,
+        "generatedCaller": 5,
+        "runtimeOrOtherCaller": 13,
+        "withoutSupportedCaller": 32,
+        "appendLeafOrImmediateCallee": 0
+      },
+      "appendFractionOfStageSamples": 0.0,
+      "topGeneratedCallers": [
+        {
+          "name": "p111_FID_$direct.no_effect_terms",
+          "samples": 3,
+          "fractionOfAllSamples": 0.0005525879535826119
+        },
+        {
+          "name": "p113d_FID_$direct.tg",
+          "samples": 1,
+          "fractionOfAllSamples": 0.0001841959845275373
+        },
+        {
+          "name": "p113d_FID_$direct.p88_string_eq",
+          "samples": 1,
+          "fractionOfAllSamples": 0.0001841959845275373
+        }
+      ]
+    },
+    {
+      "label": "p168_catalogued to p168_prepared",
+      "wallSeconds": 4.218675263,
+      "samples": 130,
+      "sampleStartInclusive": 2197,
+      "sampleEndExclusive": 2327,
+      "quantitativeProfileAdmitted": false,
+      "counts": {
+        "generatedLeaf": 42,
+        "generatedCaller": 23,
+        "runtimeOrOtherCaller": 32,
+        "withoutSupportedCaller": 75,
+        "appendLeafOrImmediateCallee": 5
+      },
+      "appendFractionOfStageSamples": 0.038461538461538464,
+      "topGeneratedCallers": [
+        {
+          "name": "p113d_FID_$p118.trmc.$direct.String.append",
+          "samples": 4,
+          "fractionOfAllSamples": 0.0007367839381101492
+        },
+        {
+          "name": "p113d_FID_$direct.ks",
+          "samples": 3,
+          "fractionOfAllSamples": 0.0005525879535826119
+        },
+        {
+          "name": "p111_FID_$direct.nc_compact_plain",
+          "samples": 2,
+          "fractionOfAllSamples": 0.0003683919690550746
+        },
+        {
+          "name": "p113d_FID_$direct.tg",
+          "samples": 2,
+          "fractionOfAllSamples": 0.0003683919690550746
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 2,
+          "fractionOfAllSamples": 0.0003683919690550746
+        }
+      ]
+    },
+    {
+      "label": "p168_prepared to p168_scanned",
+      "wallSeconds": 1.754077591,
+      "samples": 52,
+      "sampleStartInclusive": 2329,
+      "sampleEndExclusive": 2381,
+      "quantitativeProfileAdmitted": false,
+      "counts": {
+        "generatedLeaf": 19,
+        "generatedCaller": 9,
+        "runtimeOrOtherCaller": 12,
+        "withoutSupportedCaller": 31,
+        "appendLeafOrImmediateCallee": 0
+      },
+      "appendFractionOfStageSamples": 0.0,
+      "topGeneratedCallers": [
+        {
+          "name": "p113d_FID_$direct.index_find",
+          "samples": 4,
+          "fractionOfAllSamples": 0.0007367839381101492
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p98_tag_eq",
+          "samples": 1,
+          "fractionOfAllSamples": 0.0001841959845275373
+        },
+        {
+          "name": "p113d_FID_$p118.trmc.$direct.noa_unames",
+          "samples": 1,
+          "fractionOfAllSamples": 0.0001841959845275373
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq",
+          "samples": 1,
+          "fractionOfAllSamples": 0.0001841959845275373
+        },
+        {
+          "name": "p113d_FID_$direct.lookup",
+          "samples": 1,
+          "fractionOfAllSamples": 0.0001841959845275373
+        }
+      ]
+    },
+    {
+      "label": "p168_scanned to p168_seed_verified",
+      "wallSeconds": 0.011635533,
+      "samples": 0,
+      "sampleStartInclusive": 2383,
+      "sampleEndExclusive": 2383,
+      "quantitativeProfileAdmitted": false,
+      "counts": {
+        "generatedLeaf": 0,
+        "generatedCaller": 0,
+        "runtimeOrOtherCaller": 0,
+        "withoutSupportedCaller": 0,
+        "appendLeafOrImmediateCallee": 0
+      },
+      "appendFractionOfStageSamples": null,
+      "topGeneratedCallers": []
+    },
+    {
+      "label": "p168_seed_verified to p168_selected",
+      "wallSeconds": 0.064669563,
+      "samples": 0,
+      "sampleStartInclusive": 2384,
+      "sampleEndExclusive": 2384,
+      "quantitativeProfileAdmitted": false,
+      "counts": {
+        "generatedLeaf": 0,
+        "generatedCaller": 0,
+        "runtimeOrOtherCaller": 0,
+        "withoutSupportedCaller": 0,
+        "appendLeafOrImmediateCallee": 0
+      },
+      "appendFractionOfStageSamples": null,
+      "topGeneratedCallers": []
+    },
+    {
+      "label": "p168_selected to p113pl_candidates",
+      "wallSeconds": 0.806835288,
+      "samples": 23,
+      "sampleStartInclusive": 2386,
+      "sampleEndExclusive": 2409,
+      "quantitativeProfileAdmitted": false,
+      "counts": {
+        "generatedLeaf": 9,
+        "generatedCaller": 2,
+        "runtimeOrOtherCaller": 6,
+        "withoutSupportedCaller": 15,
+        "appendLeafOrImmediateCallee": 0
+      },
+      "appendFractionOfStageSamples": 0.0,
+      "topGeneratedCallers": [
+        {
+          "name": "p113d_FID_$direct.nm",
+          "samples": 1,
+          "fractionOfAllSamples": 0.0001841959845275373
+        },
+        {
+          "name": "p111_FID_$direct.norm_node_app",
+          "samples": 1,
+          "fractionOfAllSamples": 0.0001841959845275373
+        }
+      ]
+    },
+    {
+      "label": "p113pl_candidates to p168_candidates",
+      "wallSeconds": 24.50088531,
+      "samples": 764,
+      "sampleStartInclusive": 2411,
+      "sampleEndExclusive": 3175,
+      "quantitativeProfileAdmitted": true,
+      "counts": {
+        "generatedLeaf": 271,
+        "generatedCaller": 159,
+        "runtimeOrOtherCaller": 146,
+        "withoutSupportedCaller": 459,
+        "appendLeafOrImmediateCallee": 22
+      },
+      "appendFractionOfStageSamples": 0.028795811518324606,
+      "topGeneratedCallers": [
+        {
+          "name": "p113d_FID_$p118.trmc.$direct.String.append",
+          "samples": 16,
+          "fractionOfAllSamples": 0.002947135752440597
+        },
+        {
+          "name": "p113d_FID_$direct.ks",
+          "samples": 11,
+          "fractionOfAllSamples": 0.0020261558298029104
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 11,
+          "fractionOfAllSamples": 0.0020261558298029104
+        },
+        {
+          "name": "p113d_FID_$direct.p98_tag_eq",
+          "samples": 11,
+          "fractionOfAllSamples": 0.0020261558298029104
+        },
+        {
+          "name": "p113d_FID_$direct.index_find",
+          "samples": 9,
+          "fractionOfAllSamples": 0.0016577638607478357
+        }
+      ]
+    },
+    {
+      "label": "p168_candidates to p168_closed",
+      "wallSeconds": 1.26675427,
+      "samples": 37,
+      "sampleStartInclusive": 3177,
+      "sampleEndExclusive": 3214,
+      "quantitativeProfileAdmitted": false,
+      "counts": {
+        "generatedLeaf": 13,
+        "generatedCaller": 7,
+        "runtimeOrOtherCaller": 13,
+        "withoutSupportedCaller": 17,
+        "appendLeafOrImmediateCallee": 0
+      },
+      "appendFractionOfStageSamples": 0.0,
+      "topGeneratedCallers": [
+        {
+          "name": "p113d_FID_$direct.index_find",
+          "samples": 3,
+          "fractionOfAllSamples": 0.0005525879535826119
+        },
+        {
+          "name": "p113d_FID_$p128borrow.owned.p88_string_eq_go",
+          "samples": 2,
+          "fractionOfAllSamples": 0.0003683919690550746
+        },
+        {
+          "name": "p111_FID_$direct.p113i_put_node",
+          "samples": 1,
+          "fractionOfAllSamples": 0.0001841959845275373
+        },
+        {
+          "name": "p113d_FID_$direct.p113i_get",
+          "samples": 1,
+          "fractionOfAllSamples": 0.0001841959845275373
+        }
+      ]
+    },
+    {
+      "label": "p168_closed to p169q_inlined",
+      "wallSeconds": 0.10841678,
+      "samples": 2,
+      "sampleStartInclusive": 3216,
+      "sampleEndExclusive": 3218,
+      "quantitativeProfileAdmitted": false,
+      "counts": {
+        "generatedLeaf": 0,
+        "generatedCaller": 0,
+        "runtimeOrOtherCaller": 0,
+        "withoutSupportedCaller": 2,
+        "appendLeafOrImmediateCallee": 0
+      },
+      "appendFractionOfStageSamples": 0.0,
+      "topGeneratedCallers": []
+    },
+    {
+      "label": "p169q_inlined to p168_finish_functions",
+      "wallSeconds": 3.813434899,
+      "samples": 117,
+      "sampleStartInclusive": 3220,
+      "sampleEndExclusive": 3337,
+      "quantitativeProfileAdmitted": false,
+      "counts": {
+        "generatedLeaf": 48,
+        "generatedCaller": 18,
+        "runtimeOrOtherCaller": 28,
+        "withoutSupportedCaller": 71,
+        "appendLeafOrImmediateCallee": 2
+      },
+      "appendFractionOfStageSamples": 0.017094017094017096,
+      "topGeneratedCallers": [
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 4,
+          "fractionOfAllSamples": 0.0007367839381101492
+        },
+        {
+          "name": "p111_FID_$direct.nol_scalar",
+          "samples": 2,
+          "fractionOfAllSamples": 0.0003683919690550746
+        },
+        {
+          "name": "p113d_FID_$direct.index_find",
+          "samples": 2,
+          "fractionOfAllSamples": 0.0003683919690550746
+        },
+        {
+          "name": "p113d_FID_$direct.dn",
+          "samples": 2,
+          "fractionOfAllSamples": 0.0003683919690550746
+        },
+        {
+          "name": "p113d_FID_$direct.dk",
+          "samples": 2,
+          "fractionOfAllSamples": 0.0003683919690550746
+        }
+      ]
+    },
+    {
+      "label": "p168_finish_functions to p169s_lowered",
+      "wallSeconds": 8.688293649,
+      "samples": 269,
+      "sampleStartInclusive": 3339,
+      "sampleEndExclusive": 3608,
+      "quantitativeProfileAdmitted": false,
+      "counts": {
+        "generatedLeaf": 96,
+        "generatedCaller": 45,
+        "runtimeOrOtherCaller": 67,
+        "withoutSupportedCaller": 157,
+        "appendLeafOrImmediateCallee": 0
+      },
+      "appendFractionOfStageSamples": 0.0,
+      "topGeneratedCallers": [
+        {
+          "name": "p113d_FID_$direct.p98_tag_eq",
+          "samples": 5,
+          "fractionOfAllSamples": 0.0009209799226376865
+        },
+        {
+          "name": "p113d_FID_$direct.index_find",
+          "samples": 5,
+          "fractionOfAllSamples": 0.0009209799226376865
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p98_tag_eq",
+          "samples": 4,
+          "fractionOfAllSamples": 0.0007367839381101492
+        },
+        {
+          "name": "p113d_FID_$direct.ks",
+          "samples": 4,
+          "fractionOfAllSamples": 0.0007367839381101492
+        },
+        {
+          "name": "p113d_FID_$direct.nu_has",
+          "samples": 3,
+          "fractionOfAllSamples": 0.0005525879535826119
+        }
+      ]
+    },
+    {
+      "label": "p169s_lowered to p169a_original",
+      "wallSeconds": 9.564867686,
+      "samples": 297,
+      "sampleStartInclusive": 3610,
+      "sampleEndExclusive": 3907,
+      "quantitativeProfileAdmitted": false,
+      "counts": {
+        "generatedLeaf": 94,
+        "generatedCaller": 52,
+        "runtimeOrOtherCaller": 71,
+        "withoutSupportedCaller": 174,
+        "appendLeafOrImmediateCallee": 8
+      },
+      "appendFractionOfStageSamples": 0.026936026936026935,
+      "topGeneratedCallers": [
+        {
+          "name": "p113d_FID_$p118.trmc.$direct.String.append",
+          "samples": 8,
+          "fractionOfAllSamples": 0.0014735678762202984
+        },
+        {
+          "name": "p111_FID_$direct.p131i_insert",
+          "samples": 6,
+          "fractionOfAllSamples": 0.0011051759071652237
+        },
+        {
+          "name": "p113d_FID_$direct.index_find",
+          "samples": 5,
+          "fractionOfAllSamples": 0.0009209799226376865
+        },
+        {
+          "name": "p113d_FID_$direct.dn",
+          "samples": 4,
+          "fractionOfAllSamples": 0.0007367839381101492
+        },
+        {
+          "name": "p113d_FID_$direct.dk",
+          "samples": 2,
+          "fractionOfAllSamples": 0.0003683919690550746
+        }
+      ]
+    },
+    {
+      "label": "p169a_original to p169a_view",
+      "wallSeconds": 0.000751819,
+      "samples": 0,
+      "sampleStartInclusive": 3908,
+      "sampleEndExclusive": 3908,
+      "quantitativeProfileAdmitted": false,
+      "counts": {
+        "generatedLeaf": 0,
+        "generatedCaller": 0,
+        "runtimeOrOtherCaller": 0,
+        "withoutSupportedCaller": 0,
+        "appendLeafOrImmediateCallee": 0
+      },
+      "appendFractionOfStageSamples": null,
+      "topGeneratedCallers": []
+    },
+    {
+      "label": "p169a_view to p169a_checked",
+      "wallSeconds": 3.15686798,
+      "samples": 97,
+      "sampleStartInclusive": 3909,
+      "sampleEndExclusive": 4006,
+      "quantitativeProfileAdmitted": false,
+      "counts": {
+        "generatedLeaf": 40,
+        "generatedCaller": 8,
+        "runtimeOrOtherCaller": 16,
+        "withoutSupportedCaller": 73,
+        "appendLeafOrImmediateCallee": 0
+      },
+      "appendFractionOfStageSamples": 0.0,
+      "topGeneratedCallers": [
+        {
+          "name": "p111_FID_$direct.p131i_insert",
+          "samples": 2,
+          "fractionOfAllSamples": 0.0003683919690550746
+        },
+        {
+          "name": "p111_FID_$direct.index_remove",
+          "samples": 1,
+          "fractionOfAllSamples": 0.0001841959845275373
+        },
+        {
+          "name": "p113d_FID_$direct.dk",
+          "samples": 1,
+          "fractionOfAllSamples": 0.0001841959845275373
+        },
+        {
+          "name": "p111_FID_$direct.p113e_body",
+          "samples": 1,
+          "fractionOfAllSamples": 0.0001841959845275373
+        },
+        {
+          "name": "p113d_FID_$p128borrow.owned.p88_string_eq_go",
+          "samples": 1,
+          "fractionOfAllSamples": 0.0001841959845275373
+        }
+      ]
+    },
+    {
+      "label": "p169a_checked to p169c_output",
+      "wallSeconds": 2.338242872,
+      "samples": 71,
+      "sampleStartInclusive": 4008,
+      "sampleEndExclusive": 4079,
+      "quantitativeProfileAdmitted": false,
+      "counts": {
+        "generatedLeaf": 20,
+        "generatedCaller": 7,
+        "runtimeOrOtherCaller": 32,
+        "withoutSupportedCaller": 32,
+        "appendLeafOrImmediateCallee": 6
+      },
+      "appendFractionOfStageSamples": 0.08450704225352113,
+      "topGeneratedCallers": [
+        {
+          "name": "p113d_FID_$p118.trmc.$direct.String.append",
+          "samples": 6,
+          "fractionOfAllSamples": 0.0011051759071652237
+        },
+        {
+          "name": "p111_FID_$direct.p118ns_segments",
+          "samples": 1,
+          "fractionOfAllSamples": 0.0001841959845275373
+        }
+      ]
+    },
+    {
+      "label": "p169c_output to p169s_registered",
+      "wallSeconds": 12.173016418,
+      "samples": 378,
+      "sampleStartInclusive": 4081,
+      "sampleEndExclusive": 4459,
+      "quantitativeProfileAdmitted": false,
+      "counts": {
+        "generatedLeaf": 114,
+        "generatedCaller": 74,
+        "runtimeOrOtherCaller": 80,
+        "withoutSupportedCaller": 224,
+        "appendLeafOrImmediateCallee": 42
+      },
+      "appendFractionOfStageSamples": 0.1111111111111111,
+      "topGeneratedCallers": [
+        {
+          "name": "p113d_FID_$p118.trmc.$direct.String.append",
+          "samples": 34,
+          "fractionOfAllSamples": 0.006262663473936269
+        },
+        {
+          "name": "p113d_FID_$direct.index_find",
+          "samples": 9,
+          "fractionOfAllSamples": 0.0016577638607478357
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.String.cmp",
+          "samples": 6,
+          "fractionOfAllSamples": 0.0011051759071652237
+        },
+        {
+          "name": "p113d_FID_$direct.Pair.snd",
+          "samples": 5,
+          "fractionOfAllSamples": 0.0009209799226376865
+        },
+        {
+          "name": "p113d_FID_$direct.p112f_index_tip",
+          "samples": 2,
+          "fractionOfAllSamples": 0.0003683919690550746
+        }
+      ]
+    },
+    {
+      "label": "p169s_registered to p169s_print",
+      "wallSeconds": 0.178954514,
+      "samples": 4,
+      "sampleStartInclusive": 4461,
+      "sampleEndExclusive": 4465,
+      "quantitativeProfileAdmitted": false,
+      "counts": {
+        "generatedLeaf": 0,
+        "generatedCaller": 2,
+        "runtimeOrOtherCaller": 1,
+        "withoutSupportedCaller": 1,
+        "appendLeafOrImmediateCallee": 2
+      },
+      "appendFractionOfStageSamples": 0.5,
+      "topGeneratedCallers": [
+        {
+          "name": "p113d_FID_$p118.trmc.$direct.String.append",
+          "samples": 2,
+          "fractionOfAllSamples": 0.0003683919690550746
+        }
+      ]
+    },
+    {
+      "label": "p169s_print to p134w_drain",
+      "wallSeconds": 0.060108932,
+      "samples": 0,
+      "sampleStartInclusive": 4467,
+      "sampleEndExclusive": 4467,
+      "quantitativeProfileAdmitted": false,
+      "counts": {
+        "generatedLeaf": 0,
+        "generatedCaller": 0,
+        "runtimeOrOtherCaller": 0,
+        "withoutSupportedCaller": 0,
+        "appendLeafOrImmediateCallee": 0
+      },
+      "appendFractionOfStageSamples": null,
+      "topGeneratedCallers": []
+    },
+    {
+      "label": "cursor rendering / output / exit hook",
+      "wallSeconds": 31.937452979,
+      "samples": 960,
+      "sampleStartInclusive": 4468,
+      "sampleEndExclusive": 5428,
+      "quantitativeProfileAdmitted": true,
+      "counts": {
+        "generatedLeaf": 218,
+        "generatedCaller": 242,
+        "runtimeOrOtherCaller": 237,
+        "withoutSupportedCaller": 481,
+        "appendLeafOrImmediateCallee": 183
+      },
+      "appendFractionOfStageSamples": 0.190625,
+      "topGeneratedCallers": [
+        {
+          "name": "p113d_FID_$p118.trmc.$direct.String.append",
+          "samples": 150,
+          "fractionOfAllSamples": 0.027629397679130595
+        },
+        {
+          "name": "p113d_FID_$direct.index_find",
+          "samples": 18,
+          "fractionOfAllSamples": 0.0033155277214956713
+        },
+        {
+          "name": "p113d_FID_$direct.nt_text_finish",
+          "samples": 8,
+          "fractionOfAllSamples": 0.0014735678762202984
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.String.eq",
+          "samples": 7,
+          "fractionOfAllSamples": 0.0012893718916927612
+        },
+        {
+          "name": "p113d_FID_$direct.String.eq",
+          "samples": 4,
+          "fractionOfAllSamples": 0.0007367839381101492
+        }
+      ]
+    }
+  ],
+  "ownerBinding": {
+    "kind": "exact-ELF-segment-table-pointers",
+    "checkedFids": 46151,
+    "checkedFunctionSymbols": 60929,
+    "runtimeDescriptor": {
+      "capabilities": 5,
+      "registerWidth": 21,
+      "resultWidth": 1
+    },
+    "liveRegisterBank": true,
+    "ownerMapCapabilities": 5,
+    "symbolLookup": {
+      "policy": "required-role-and-allocated-section-v1",
+      "method": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/attribute.py",
+        "bytes": 35029,
+        "sha256": "4728b9a8175087ff0159c4bc59a0575ffa37838b00be0fc83bbac356610916da"
+      },
+      "dataRole": "OBJECT/NOTYPE, allocated file-backed non-executable non-TLS section",
+      "functionRole": "FUNC/NOTYPE, allocated executable non-TLS section",
+      "ambiguity": "distinct addresses in the queried role are rejected"
+    },
+    "elfType": 2,
+    "producerProvenanceVerified": false,
+    "lexicalOwnerConditionalOnEmitterContract": true
+  },
+  "limitations": [
+    "One physical frame only; runtime intermediates and recursion are not transitively attributed. Tail-erased callers cannot be reconstructed.",
+    "Generated-name decoding identifies actual physical functions; lexical owner metadata is incomplete and conditional on the recorded emitter contract.",
+    "The recorded dispatch context is separate, may outlive a direct call, and is not added to physical caller counts.",
+    "Only constant RSP-relative CFI-supported runtime leaves are targeted. Libc caller coverage from the earlier separate capture is not pooled.",
+    "Stage windows are disjoint wall intervals with boundary samples excluded; fewer than500 samples fails the maintained per-stage quantitative profile gate.",
+    "Samples count time locations, not allocation, instruction, call or reference-count operations.",
+    "The 1ms pilot lost samples and is excluded. The successful32ms pilot is only an integrity gate.",
+    "The same retained diagnostic executable was used. No production source/runtime/installed image changed, and this is not a new clean compiler speed measurement."
+  ]
+}

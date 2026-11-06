@@ -10,7 +10,8 @@ installed Phase170 and its rollback remain unchanged.
 [Design](../../design/phase171/README.md) · [Metrics and receipt pins](metrics.json) ·
 [Reproduce](reproduce.md) ·
 [Original profile](../../experiments/phase171/current-profile.md) ·
-[Candidate profile](../../experiments/phase171/candidate-profile.md).
+[Candidate profile](../../experiments/phase171/candidate-profile.md) ·
+[Follow-up experiments](followup.md).
 
 ## Controlled result
 
@@ -109,11 +110,13 @@ consistent with the intervals, not independently measured per-patch savings.
 The comparison supports retaining this bounded candidate for further work, not
 spending immediately on broad qualification of a purported 100s breakthrough.
 
-The next architectural experiment is a root-tied borrowed descendant result,
-preserving an unchanged owning fallback and explicit promotion contract.
-[Its audit](../../experiments/phase171/borrowed-descendant-audit.md) identifies
-unremoved lookup/AST ownership boundaries and a non-RFC promotion hazard. Its
-source/runtime gates and speed results remain pending; no 30% gain is asserted.
+The root-tied borrowed descendant experiment is now closed without integration.
+It passes complete values and47 finite controls, but lookup is neutral and the
+real verifier improves only1.25% despite99.535% promotion coverage. Three other
+small exact-output cleanup experiments are also neutral. See the
+[follow-up report](followup.md) for retained failures, measurements and the
+runtime-caller profiler improvement. The original four-overlay result above
+remains the best measured full-source build; no follow-up speedup is added to it.
 
 ## Cost and remaining gates
 

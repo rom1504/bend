@@ -1,0 +1,94 @@
+{
+  "kind": "phase171-exact-text-delta",
+  "version": 1,
+  "fromRevision": 11,
+  "toRevision": 12,
+  "changes": [
+    {
+      "name": "borrowed-selectors.bend",
+      "before": {
+        "bytes": 13261,
+        "sha256": "cc7dc201381142fc7ebe9fcdc90e2815191d50988a0f9f53f1c307d27ceb58db"
+      },
+      "after": {
+        "bytes": 13401,
+        "sha256": "5ff7a42ddd77546f05cd8e7945c326d748334ae9326f83cf89c9488962b4e6bc"
+      },
+      "edits": [
+        {
+          "offset": 5263,
+          "before": "",
+          "after": "    case N111If{condition,yes,no}:\n      p171d_step(ctx,Con{P113DIf{condition,p113d_scalars(yes),p113d_scalars(no)},rest},env,cases,view,n)\n"
+        }
+      ]
+    },
+    {
+      "name": "derivation.json",
+      "before": null,
+      "after": {
+        "bytes": 2172,
+        "sha256": "014a84cc0db901efe2330a09414aaac90ac10ccf3080589b45fad89f61e543d8"
+      },
+      "edits": [
+        {
+          "offset": 0,
+          "before": "",
+          "after": "{\n  \"kind\": \"phase171-descendant-scalar-if-successor\",\n  \"complete\": true,\n  \"targetsRun\": false,\n  \"originals\": [\n    {\n      \"file\": \"selfhost/tests/phase171/borrowed-selectors-controls.bend\",\n      \"bytes\": 3973,\n      \"sha256\": \"8d7522e4db185abd891359f6d640283f53ec090f735ce2ede11cfb4757594775\"\n    },\n    {\n      \"file\": \"selfhost/tests/phase171/borrowed-selectors-diagnostic.bend\",\n      \"bytes\": 1215,\n      \"sha256\": \"88ecbe47022069848bb1eeb994dea6328fa3265c69c33c9183d2d6bfc454f49c\"\n    },\n    {\n      \"file\": \"selfhost/tests/phase171/borrowed-selectors-emission.bend\",\n      \"bytes\": 4503,\n      \"sha256\": \"1721877ff9b3ba79f4ea1d0253e5e964d5d0ba56fa660e9ba98e47b8dd38b068\"\n    },\n    {\n      \"file\": \"selfhost/tests/phase171/borrowed-selectors-entry.bend\",\n      \"bytes\": 6950,\n      \"sha256\": \"f3b40f6eac33dff9180d57ada9c0ff260b64113a94c02ce167f4cc1c552dae7a\"\n    },\n    {\n      \"file\": \"selfhost/tests/phase171/borrowed-selectors-laws.bend\",\n      \"bytes\": 7829,\n      \"sha256\": \"bc57a2999ca528950170f3d1e564d2850dcf2be4dd9ea15637efbe8ac9358857\"\n    },\n    {\n      \"file\": \"selfhost/tests/phase171/borrowed-selectors-types.bend\",\n      \"bytes\": 1262,\n      \"sha256\": \"a0c3bf8008703fa3434d3bff326cff71a9c6fef8fcee5aef37a7e097394d6303\"\n    },\n    {\n      \"file\": \"selfhost/tests/phase171/borrowed-selectors.bend\",\n      \"bytes\": 13261,\n      \"sha256\": \"cc7dc201381142fc7ebe9fcdc90e2815191d50988a0f9f53f1c307d27ceb58db\"\n    }\n  ],\n  \"change\": {\n    \"file\": \"selfhost/tests/phase171/descendant-v12/borrowed-selectors.bend\",\n    \"before\": \"    case N111Load{name,typ,base,offset}: p171d_load(ctx,stmt,name,typ,base,offset,rest,env,cases,view,n)\",\n    \"after\": \"    case N111If{condition,yes,no}:\\n      p171d_step(ctx,Con{P113DIf{condition,p113d_scalars(yes),p113d_scalars(no)},rest},env,cases,view,n)\\n    case N111Load{name,typ,base,offset}: p171d_load(ctx,stmt,name,typ,base,offset,rest,env,cases,view,n)\"\n  },\n  \"scope\": \"Only N111If becomes an equivalent P113DIf with unchanged scalar children, then existing branch/environment/budget logic. Unknown effects, stores, return statements and unsupported forms still decline. Original source11 files untouched.\"\n}\n"
+        }
+      ]
+    },
+    {
+      "name": "scalar-if-controls.bend",
+      "before": null,
+      "after": {
+        "bytes": 3378,
+        "sha256": "7195e544666d53541d7e8df4cff0e61e581cfa90674c34615423b7e93c85142b"
+      },
+      "edits": [
+        {
+          "offset": 0,
+          "before": "",
+          "after": "# Exact finite IR controls for the successor. No runtime bodies are executed.\n# Every branch retains its own environment and complete remaining continuation.\n\n@unsafe\ndef p171di_exact(actual: P171DCode, expected: List<&2,P113DStmt>, next: U32, yes: U32, no: U32, rooted: Bool) -> Bool:\n  match actual:\n    case P171DCode{body,helpers,n,accepted,declined,held}:\n      p134v_list(~P113DStmt,~p134v_stmt,body,expected) && List.is_empty(&2,P113DFunction,helpers) &&\n        U32.is_eq(n,next) && U32.is_eq(accepted,yes) && U32.is_eq(declined,no) && p134v_bool(held,rooted)\n\n@unsafe\ndef p171di_assign(+bit: U32) -> Bool:\n  p171di_exact(p171dc_run([\n    P113DScalar{N111Set{\"condition\",N111U32{},N111Const{bit,0}}},\n    P113DScalar{N111If{N111Local{\"condition\"},\n      [N111Set{\"selected\",N111U64{},N111Local{\"root\"}}],\n      [N111Set{\"selected\",N111U64{},N111Const{0,0}}]}},\n    P113DScalar{N111Set{\"alias\",N111U64{},N111Local{\"selected\"}}},\n    P113DResult{[N111Local{\"alias\"}]}],[]),[\n    P113DScalar{N111Set{\"condition\",N111U32{},N111Const{bit,0}}},\n    P113DIf{N111Local{\"condition\"},[\n      P113DScalar{N111Set{\"selected\",N111U64{},N111Local{\"root\"}}},\n      P113DScalar{N111Set{\"alias\",N111U64{},N111Local{\"selected\"}}},\n      P113DResult{[N111Const{1,0},N111Local{\"alias\"}]}],[\n      P113DScalar{N111Set{\"selected\",N111U64{},N111Const{0,0}}},\n      P113DScalar{N111Set{\"alias\",N111U64{},N111Local{\"selected\"}}},\n      P113DResult{[N111Const{1,0},N111Local{\"alias\"}]}]}],8,2,0,True{})\n\n@unsafe\ndef p171di_refusal(stmt: N111Stmt) -> Bool:\n  p171di_exact(p171dc_run([\n    P113DScalar{N111Set{\"condition\",N111U32{},N111Const{1,0}}},\n    P113DScalar{N111If{N111Local{\"condition\"},[stmt],[]}},\n    P113DResult{[N111Local{\"root\"}]}],[]),[\n    P113DScalar{N111Set{\"condition\",N111U32{},N111Const{1,0}}},\n    P113DIf{N111Local{\"condition\"},[P113DResult{[N111Const{0,0},N111Const{0,0}]}],\n      [P113DResult{[N111Const{1,0},N111Local{\"root\"}]}]}],4,1,1,True{})\n\n@unsafe\ndef p171d_scalar_if_controls() -> List<&2,String>:\n  [p171dc_row(\"scalar-if-true-full-branches-later-alias\",p171di_assign(1)),\n   p171dc_row(\"scalar-if-false-full-branches-later-alias\",p171di_assign(0)),\n   p171dc_row(\"scalar-if-store-arm-declines-before-continuation\",p171di_refusal(N111Store{N111U64{},N111Local{\"scratch\"},0,N111Local{\"root\"}})),\n   p171dc_row(\"scalar-if-terminal-arm-declines-without-fallthrough\",p171di_refusal(N111Return{N111Local{\"root\"}})),\n   p171dc_row(\"scalar-if-unknown-call-arm-declines\",p171di_refusal(N111Call{\"effect\",N111U64{},\"unknown_effect\",[p111_state()]})),\n   p171dc_row(\"scalar-if-unknown-condition-declines\",p171di_exact(p171dc_run([\n     P113DScalar{N111If{N111Local{\"unknown\"},[],[]}},P113DResult{[N111Local{\"root\"}]}],[]),\n     [P113DResult{[N111Const{0,0},N111Const{0,0}]}],1,0,1,False{})),\n   p171dc_row(\"scalar-if-branch-local-does-not-leak\",p171di_exact(p171dc_run([\n     P113DScalar{N111Set{\"condition\",N111U32{},N111Const{1,0}}},\n     P113DScalar{N111If{N111Local{\"condition\"},[N111Set{\"local\",N111U64{},N111Local{\"root\"}}],[]}},\n     P113DResult{[N111Local{\"local\"}]}],[]),[\n     P113DScalar{N111Set{\"condition\",N111U32{},N111Const{1,0}}},\n     P113DIf{N111Local{\"condition\"},[\n       P113DScalar{N111Set{\"local\",N111U64{},N111Local{\"root\"}}},P113DResult{[N111Const{1,0},N111Local{\"local\"}]}],\n       [P113DResult{[N111Const{0,0},N111Const{0,0}]}]}],5,1,1,True{}))]\n"
+        }
+      ]
+    }
+  ],
+  "inventory": {
+    "borrowed-selectors-controls.bend": {
+      "bytes": 3973,
+      "sha256": "8d7522e4db185abd891359f6d640283f53ec090f735ce2ede11cfb4757594775"
+    },
+    "borrowed-selectors-diagnostic.bend": {
+      "bytes": 1215,
+      "sha256": "88ecbe47022069848bb1eeb994dea6328fa3265c69c33c9183d2d6bfc454f49c"
+    },
+    "borrowed-selectors-emission.bend": {
+      "bytes": 4503,
+      "sha256": "1721877ff9b3ba79f4ea1d0253e5e964d5d0ba56fa660e9ba98e47b8dd38b068"
+    },
+    "borrowed-selectors-entry.bend": {
+      "bytes": 6950,
+      "sha256": "f3b40f6eac33dff9180d57ada9c0ff260b64113a94c02ce167f4cc1c552dae7a"
+    },
+    "borrowed-selectors-laws.bend": {
+      "bytes": 7829,
+      "sha256": "bc57a2999ca528950170f3d1e564d2850dcf2be4dd9ea15637efbe8ac9358857"
+    },
+    "borrowed-selectors-types.bend": {
+      "bytes": 1262,
+      "sha256": "a0c3bf8008703fa3434d3bff326cff71a9c6fef8fcee5aef37a7e097394d6303"
+    },
+    "borrowed-selectors.bend": {
+      "bytes": 13401,
+      "sha256": "5ff7a42ddd77546f05cd8e7945c326d748334ae9326f83cf89c9488962b4e6bc"
+    },
+    "derivation.json": {
+      "bytes": 2172,
+      "sha256": "014a84cc0db901efe2330a09414aaac90ac10ccf3080589b45fad89f61e543d8"
+    },
+    "scalar-if-controls.bend": {
+      "bytes": 3378,
+      "sha256": "7195e544666d53541d7e8df4cff0e61e581cfa90674c34615423b7e93c85142b"
+    }
+  }
+}

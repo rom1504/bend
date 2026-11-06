@@ -69,3 +69,30 @@ release contract to bypass this work. Long machine construction can run while
 documentation and receipt audits proceed. Record actual integration cost and
 any failed gates. Commit and push the maintained implementation, reproducible
 evidence and an honest installation report.
+
+## Integration finding: JS string suffixes
+
+The initial full maintained native chain and all64 native gates passed, with
+all45 timed QBE products unchanged. Genuine JS B2 acquisition exposed an older
+cross-target issue in the scalar lexer: upstream match refinement reconstructs
+the matched String on non-consuming branches. In JavaScript this can reconstruct
+a large suffix repeatedly. Bun hit the4GiB guard during full-source loading; a
+bounded Node retry was cancelled without obtaining a complete loader result.
+The interrupted guard did not publish its final receipt; preserve it unpruned
+and do not infer timing or peak memory from its initial receipt.
+
+Test five small Bend wrappers passing both an inspected suffix and an unchanged
+original to private helpers. Every wrapper establishes their equality. Preserve
+consuming tails, predicate order and all metadata arithmetic. The independently
+checked experiment passed315 exact token pairs and complete small-loader graph
+comparison under both Bun and Node. This is finite evidence plus a source-level
+invariant, not a new kernel proof.
+
+Integrate only those five wrappers/helpers, preserving prior declaration order
+and all112 current protected entries. Freeze a new final canonical source.
+Repeat source checking, genuine JS B2/B3, native reproduction,64 cases and45
+exact timed products for that source. Seed the new native chain with the first
+qualified Phase170 N2: its N1 and N2 builds compile the same final source, giving
+a direct observation of the native cost of suffix preservation. Regenerate the
+public CLI profiles before building them. No stale-source gate is inherited as
+qualification of the final image.

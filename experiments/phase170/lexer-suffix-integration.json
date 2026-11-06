@@ -1,0 +1,684 @@
+{
+  "kind": "phase170-lexer-suffix-integration",
+  "version": 1,
+  "complete": true,
+  "targetsRun": false,
+  "baseline": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/source/compiler.bend",
+    "bytes": 3149379,
+    "sha256": "5903812cda7f23f4e25dfbe88b8717ad1b9c5fbe9f342d52fe00e179317b5e9e"
+  },
+  "experimentalSource": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/lexer-suffix-source/compiler.bend",
+    "bytes": 3150526,
+    "sha256": "e372dab66ab3a557feb881f563ffe1ecfbe9634724133b1f434776e95c59e257"
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/source-final/compiler.bend",
+    "bytes": 3150535,
+    "sha256": "434edd1d56128f9480800573abf8a0ae21d910a547837af089f25cd1d0e89b71"
+  },
+  "map": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/source-final/map.json",
+    "bytes": 2736660,
+    "sha256": "cf8eaa30e8476c6a304da6e2be27c4d8efd7c4ceaa1cc88e811fe75bc2f22559"
+  },
+  "sourceRecipe": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/src/compiler.json",
+    "bytes": 542010,
+    "sha256": "6f15663dc8c99e905b3dc7d4923ad457758597d83e1e433c5161dcdab403eb62"
+  },
+  "lexer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/src/front/lexer.bend",
+    "bytes": 27028,
+    "sha256": "9d901e1de2d020018c31f40d152fc58683ad30aeab4a82b04f92c73780f1599b"
+  },
+  "preservedRecipe": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/source-final/predecessor-compiler.json",
+    "bytes": 541378,
+    "sha256": "b53415cb4258c92069b309f4adad21b3e7028978457a53a10a7917924108b549"
+  },
+  "preservedLexer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/source-final/predecessor-lexer.bend",
+    "bytes": 25872,
+    "sha256": "d237f5a2769782ea0c492bef12bb67d9f02f1eca0293a058c1b65db829faf147"
+  },
+  "preservedUnconsumedDraft": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/source-final/recipe-refresh-draft/compiler.bend",
+    "bytes": 3150535,
+    "sha256": "7df90ea44244b9e3bec3ba4dabe9c53cd5aba9fe3b9aca7fe5449948e40c3a8c"
+  },
+  "overlay": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase170/lexer-suffix.bend",
+    "bytes": 4282,
+    "sha256": "e8ad92588419f2d1bf149ef4711f4da841b9b11bd231cc00754ec27002074f21"
+  },
+  "replacedDeclarations": [
+    "p150l_word",
+    "p150l_other",
+    "p150l_plus_at",
+    "p150l_greater_at",
+    "p150l_symbol"
+  ],
+  "addedDeclarations": [
+    "p170ls_word",
+    "p170ls_other",
+    "p170ls_symbol",
+    "p170ls_plus",
+    "p170ls_greater"
+  ],
+  "removedDeclarations": [],
+  "unchangedOriginalDeclarations": 8404,
+  "baselineDeclarations": 8409,
+  "finalDeclarations": 8414,
+  "originalDeclarationOrderPreserved": true,
+  "helpersAppendedOnly": true,
+  "recipeChangedOnlyByAppendingFiveOrderAndInventoryRows": true,
+  "everyDeclarationMatchesCheckedExperimentalSource": true,
+  "currentProtected": {
+    "count": 112,
+    "allUnchanged": true,
+    "rows": [
+      {
+        "name": "P131UEntry",
+        "normalizedSha256": "f7ffc89d9ec294b2c1abf70f691f479de62b9227d2ddd4aad9c10c9b7cf60b25",
+        "unchanged": true
+      },
+      {
+        "name": "main",
+        "normalizedSha256": "5f6a208befbb28a203fa52f6616fc1821fa0ce77293ed260555ef60e52a4063c",
+        "unchanged": true
+      },
+      {
+        "name": "p111_compile_prepared",
+        "normalizedSha256": "78faaaf040701a72add02eb1f37aa38b8a0474675261ec23ea7b2e6a2736c405",
+        "unchanged": true
+      },
+      {
+        "name": "p111_compile_source",
+        "normalizedSha256": "16e132882c58ffee16a259a684af023aa8ae91266d4d504ecbf16671c8adb273",
+        "unchanged": true
+      },
+      {
+        "name": "p111_emit_admitted",
+        "normalizedSha256": "c5aaa1b38d68232b6f50a15889c923da27d5ed019ba692ca540882ccc5523356",
+        "unchanged": true
+      },
+      {
+        "name": "p111_emit_plan",
+        "normalizedSha256": "c7f2479ea76e0dda0406b4694788adc178ac36633e696e19e81f8aa111d580e9",
+        "unchanged": true
+      },
+      {
+        "name": "p111_native_args",
+        "normalizedSha256": "2a74b436e4404e988642239ae48ea366ce1e7d3746b2bca5aacb515b00acb25b",
+        "unchanged": true
+      },
+      {
+        "name": "p111_native_request",
+        "normalizedSha256": "00ca877012c17146f34795e4e2d6266d993a059c88a99b5c3a3842146b2b383d",
+        "unchanged": true
+      },
+      {
+        "name": "p111_runtime_admission",
+        "normalizedSha256": "aac75fa078679ea6c1cd77b22171cba2bf3680504b2c23596f88db38ad45f4ae",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_arg",
+        "normalizedSha256": "a68c71fbd9822baa51d7daa5fa520075b452714b2e1a1f87ad1e9255431aeb1b",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_args",
+        "normalizedSha256": "9e76a8555f281659d0b0a320831293a2be4f07ce4768d2f87a6e7bae88f55d0c",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_assign",
+        "normalizedSha256": "b1896f4e2b644bf194dd13a0205f56ebb8c2fd0f594fb1ed5529c85c7d0bff6d",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_at",
+        "normalizedSha256": "a364faa6a6d025591f9f3719a1e57067c869a9c20231bda039501f74a7ddfe79",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_body",
+        "normalizedSha256": "bb32301eab929b283e027b019e6b19518ed8d0d84d5a8ab7dda2700f10dfdb95",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_buffer",
+        "normalizedSha256": "f9baec7cc49008b743e24aa9ef95485906316ff1801374b0d3f6703cdcbc49bc",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_call",
+        "normalizedSha256": "79ef3ec45b955729b509c626ebc1bbb31c91d816c1678466986df3aa495c2b02",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_capacity",
+        "normalizedSha256": "f471be7be1a3c49cdde35bfe6217de09972e335dbd6ea96775f6ffedae50277c",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_comparison",
+        "normalizedSha256": "febd4751ad1c78bdd94c6ac843692e8e4a0687c8e5bab8b5ddb7e55d5c7b152c",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_constructors",
+        "normalizedSha256": "75875ed95b787dc00fae8703319c4c7acaa3ebe99481da4770d2a26e5c6c2eab",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_contract",
+        "normalizedSha256": "768190a772b81f86071e8987d05be98c63e975aa570cedb7343a8c77b6faa707",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_counted_call",
+        "normalizedSha256": "5d1837046da4f474972968de688f3e44aea3b90cf3ef20198c1af80bed82043a",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_decl",
+        "normalizedSha256": "ada059bbe52bed1a2b972ded4b39dd117e5f1e05cda8c27a62e6a38d385fbc3a",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_finish",
+        "normalizedSha256": "6a2ac82e60db20b04d8ec229b661fb2b65bee63bc1a170fbc91a67b2af566aa5",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_functions",
+        "normalizedSha256": "cbe82a7a2012ab6c33523a82ce8c7c67f32c69b7c462758693011c57478f4773",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_get",
+        "normalizedSha256": "de2cf864c4c8d40960c8445f6877aa92f54e678e270c4cdce0acb0e4c792236c",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_intersection",
+        "normalizedSha256": "cd6ac94108b80cf0091245bfb4fbce88ecead90298064765e1a829c9be544588",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_intersection_bucket",
+        "normalizedSha256": "5a551ed2a60bd22898f00defb2ef8e951cda41a8bde240eb90bacd202a4cd367",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_join",
+        "normalizedSha256": "150045e1637389f46a6f35842874f3a7164cdf0187a47e1ea0a7e09ddfa9ddcd",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_literal",
+        "normalizedSha256": "c32bbf1d1aed12a84692fdb403a51d09518ad5adadc4d41428896998f1c202cf",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_memory",
+        "normalizedSha256": "df7a7931c14887f8225b5ac2160b19b42bbe3ed5be08bc5894a70dc638445da1",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_name_chars",
+        "normalizedSha256": "559e1794429ec8acec2265d57e2d9f43e1cb3021244673a47373324a442177f9",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_offset",
+        "normalizedSha256": "449409a4a6fbb16aadbff7e236570dcc792561dec7b163d78c4d1c0d19456560",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_operator",
+        "normalizedSha256": "3fcf2d7363823277e66fb1063da5bf1c5a5839f4dead0e632323ae6b2d5f16d1",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_primitive_arities",
+        "normalizedSha256": "6f3d8fa86f335b18d90bd8699c437f1f7121a7535137de7e96962e73ec9af18e",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_program_indexed",
+        "normalizedSha256": "5c50c80bb86b4e904d95f8b89afa43638f493450b1717a556779cf732cc36110",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_put",
+        "normalizedSha256": "a84d4de37749a0bc354f98d579f6f52d1c83e44723c8e3916d664ea653fa6acf",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_raw_name",
+        "normalizedSha256": "3c899cffb49607acf5bd7a250173abc52327b503fcf7edf32f15694c7ff0b869",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_raw_name_chars",
+        "normalizedSha256": "2bb17e9366f7df725eb10b902e22805b33d7067f80667b2de14674a45bce4cc0",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_schema",
+        "normalizedSha256": "43033fae9060758fa64bdce586b035b03ee48161f2496ac10ed81462d776728b",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_schema_stmt",
+        "normalizedSha256": "08acfdde03c9446328ad91d21682e034079678ee3d652eac73c139a0e591fa96",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_segment",
+        "normalizedSha256": "afafb2bc7b05419aaf3a8431a8b013e53438b7af5dbfcbd0ac19cd5b23499974",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_segment_error",
+        "normalizedSha256": "244409d076ae969f4b467475ef4c8343e4cc5971405cb14d1ed2ef1e48bbe940",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_segment_flow",
+        "normalizedSha256": "3cb139a7ecf61e16c9d8966a1c8dc77379172635c19b3b001788e839085f3952",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_segments",
+        "normalizedSha256": "0a44ead1ce4c9de942965f253f1c32455fd8da4fe28920aeb018b1309e5a76c8",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_signature",
+        "normalizedSha256": "242e029b50906a0285e2de461c56ffd6637d5d8da9e2f676ee60856afacd280c",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_special_arity",
+        "normalizedSha256": "a2ebd49b4521903a51b10e6eb6b91a8cc05d6d04ca54a2163dc9cb29c52b85b2",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_state_argument",
+        "normalizedSha256": "ac219eb7fc6c3945bd5188861534c623a8651ba002d21930a17fdeff42abeb76",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_step",
+        "normalizedSha256": "d83884430e29530ae973a3f2c585fd561412316adcca92fdf7023c215640cafd",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_stmt",
+        "normalizedSha256": "708f45fd1bfd3ffa43132866ff7012ebd71c99c2726043f35ca76b4fba9488d2",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_target",
+        "normalizedSha256": "05556840d8f673ee74933e7adc6919c00c45a2b545df9892e5aecc7e67c2c0d2",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_type",
+        "normalizedSha256": "1b2d2fb446a33eb2dad06e36f08fed3fad6785550ccfbe4ecda08e70a2ba4b2e",
+        "unchanged": true
+      },
+      {
+        "name": "p111v_value",
+        "normalizedSha256": "4392f65f3e5b128e7ef1f998431fe490e82ec65ee89da0cf84873d8e5f052e74",
+        "unchanged": true
+      },
+      {
+        "name": "p113a_body_names",
+        "normalizedSha256": "ee5009e4a8dadf3d1628299e37fd3e95413a18d22075efb05d7a19dc7584641f",
+        "unchanged": true
+      },
+      {
+        "name": "p113a_function_names",
+        "normalizedSha256": "b41dcf5332ea60178a28ea54099f8754268b04fa67583cb120ae6ab33d0e6f28",
+        "unchanged": true
+      },
+      {
+        "name": "p113a_names",
+        "normalizedSha256": "62547b4f64e69cd685b7f33cacd9b7c2b2aee8884926f7e563cb4bdc62e1b25e",
+        "unchanged": true
+      },
+      {
+        "name": "p113a_namespace",
+        "normalizedSha256": "8f8c9f9188e48a2bb5f31ad3b5a5318349c319a66e53718727becdf706b97bd4",
+        "unchanged": true
+      },
+      {
+        "name": "p113a_params",
+        "normalizedSha256": "f75270a2f2f242b0bcdf5e6d10f660fa9ebb98011625f7848da94b381fee8832",
+        "unchanged": true
+      },
+      {
+        "name": "p113a_scalar_list_names",
+        "normalizedSha256": "e055d8f01aeb06077ec9a56ded38012908b822a651dd7c6d00cbb3c19973289f",
+        "unchanged": true
+      },
+      {
+        "name": "p113a_scalar_names",
+        "normalizedSha256": "2a82b9f0fec602e8fddda4d93a174cdfa8aab19fa121118d28630822d5fac1c1",
+        "unchanged": true
+      },
+      {
+        "name": "p113a_verify",
+        "normalizedSha256": "a5e7e4162419f5c0fe39d4cef043744d543469225797802cd7dd2eac8fbd67ce",
+        "unchanged": true
+      },
+      {
+        "name": "p113a_verify_after",
+        "normalizedSha256": "f832fc56ce577e44cbc1b97c03e4b38b1c87a16854085598d7e6db3ee42abc28",
+        "unchanged": true
+      },
+      {
+        "name": "p113d_verify",
+        "normalizedSha256": "cb440a73cb80e55a2d38f404a2919a5faaa0af0bdf28d598e3f5648617738adb",
+        "unchanged": true
+      },
+      {
+        "name": "p113e_assign_names",
+        "normalizedSha256": "26828f76986cc2e66dc5928738a4ad2bb2ec9e7058caed0ce5e21c5e8a517d6d",
+        "unchanged": true
+      },
+      {
+        "name": "p113e_body",
+        "normalizedSha256": "f3838d501a7e967967cffdbb9b0da83d94cbcca078be36304187e1cba27b4ebc",
+        "unchanged": true
+      },
+      {
+        "name": "p113e_buffers",
+        "normalizedSha256": "f3c5af17784923a2995ffd8b5ab67bfdf416c01ce9618b0e31318bdb1103f9da",
+        "unchanged": true
+      },
+      {
+        "name": "p113e_call",
+        "normalizedSha256": "eb6e157afac3f18a773e41568ba06e96bc7aee5e697b3a27bf6143749384be11",
+        "unchanged": true
+      },
+      {
+        "name": "p113e_declare_names",
+        "normalizedSha256": "c8dc26dfaff61cf4cafe143e1215c1c3fa0e82fa15b774b135c3a61008223344",
+        "unchanged": true
+      },
+      {
+        "name": "p113e_distinct",
+        "normalizedSha256": "c14eb3ba658130379d0d6eba1ef3967a30a5c8dce64e35d16579d2854e2e75b5",
+        "unchanged": true
+      },
+      {
+        "name": "p113e_flow",
+        "normalizedSha256": "73501cc8c947da34276c08cb8772db311cf2d06b68a96b82218e91dbb9e8b86c",
+        "unchanged": true
+      },
+      {
+        "name": "p113e_function",
+        "normalizedSha256": "f11c59295548b3e0e6a8749bfcf5cf468e5dea4b2c485a43585323913dd662fa",
+        "unchanged": true
+      },
+      {
+        "name": "p113e_functions",
+        "normalizedSha256": "03b0e0ca68ec03518a6a12161986066c895ca1dd77ffb88b0dadde28f42a9b98",
+        "unchanged": true
+      },
+      {
+        "name": "p113e_insert",
+        "normalizedSha256": "c0f8fd354a807b33ab65cf646a994492a22ae97656cad3a7d75e24486ad28677",
+        "unchanged": true
+      },
+      {
+        "name": "p113e_nonstate_pointer",
+        "normalizedSha256": "c1f65da9cddd39d090c47bf5ca99e512b92bcf9245434fc1b8d1bff4866694de",
+        "unchanged": true
+      },
+      {
+        "name": "p113e_originals",
+        "normalizedSha256": "dc48e515027bb3b2cf29a0791adbc6c64a90e48605ae53debcc005d9f3d0dc83",
+        "unchanged": true
+      },
+      {
+        "name": "p113e_runtime_args",
+        "normalizedSha256": "b226ea7867f2b6464aea8d4336be2377302a608f489c6b712afc37e07ee51386",
+        "unchanged": true
+      },
+      {
+        "name": "p113e_scalar_safe",
+        "normalizedSha256": "99a9ca53e965fdcf51d7640541274350aa6769034064beabd2e546310fb2f5e2",
+        "unchanged": true
+      },
+      {
+        "name": "p113e_scalars",
+        "normalizedSha256": "18ce7d5f86f4c6b30e695db3111f579856c87021e04952b34318f2514063df83",
+        "unchanged": true
+      },
+      {
+        "name": "p113e_schema",
+        "normalizedSha256": "8c7d0514d5b110a0f479b000921ab5b61d76bc50601d95c32b02e2290c8f37b6",
+        "unchanged": true
+      },
+      {
+        "name": "p113e_schema_stmt",
+        "normalizedSha256": "10d2a39bb30fbdaa6133bf51c2ba267bfdfb3802a32533eae9e0258b99b5c5d3",
+        "unchanged": true
+      },
+      {
+        "name": "p113e_seed",
+        "normalizedSha256": "d6a4f3614003babd9b0ceee3e7bbb226692492d81a2fa465d2f7943f3e262dbd",
+        "unchanged": true
+      },
+      {
+        "name": "p113e_seed_params",
+        "normalizedSha256": "4d860208da69083bec4e44ac62b384d966cfb15eae4b444bb460cfb1a3407deb",
+        "unchanged": true
+      },
+      {
+        "name": "p113e_seeded",
+        "normalizedSha256": "1208f98786b299237febd0871ab429bc308df289b71c41f20f5f3b579e26d0c7",
+        "unchanged": true
+      },
+      {
+        "name": "p113e_signature",
+        "normalizedSha256": "3cde7f6efebe8713c91b792838cfb6199aec997daf648377eca6fc792a86bdf3",
+        "unchanged": true
+      },
+      {
+        "name": "p113e_signatures",
+        "normalizedSha256": "40f067d557e1cac56252247fab4aff0747642cde50de708c12ef2c4a0b2db520",
+        "unchanged": true
+      },
+      {
+        "name": "p113e_stmt",
+        "normalizedSha256": "434e93f1c03eb0d93120e27a3cff4e10d5ffdc0048631195bae0e5d076d07a99",
+        "unchanged": true
+      },
+      {
+        "name": "p113e_values",
+        "normalizedSha256": "2d1bc624e4f8d09b448194af9fef2328d59f089eb352f4f4d85d9f7650c2a939",
+        "unchanged": true
+      },
+      {
+        "name": "p113e_vector",
+        "normalizedSha256": "a05a5e94b9117d22eaecf44ee4e62c34e3830a4d315bb92735bf12cac829d4aa",
+        "unchanged": true
+      },
+      {
+        "name": "p113e_verified_original",
+        "normalizedSha256": "81205444ff45f3643433e2c8eea249008fb9ff0030bee689ace521b9a0c1ffb2",
+        "unchanged": true
+      },
+      {
+        "name": "p113e_verify",
+        "normalizedSha256": "e7024eaab72c15c74e88d95e21e112beee0837dddb6d12e03430e41088f43fff",
+        "unchanged": true
+      },
+      {
+        "name": "p113e_verify_original",
+        "normalizedSha256": "a783e34e898445c7b6b2fc4bd7822527707954036f2391b5b5d1d23a27605cd0",
+        "unchanged": true
+      },
+      {
+        "name": "p118e_lowered",
+        "normalizedSha256": "b6cccd94d743b34b5751f73eb66d88e6b09dc3b95e591de600f452a9d25ca859",
+        "unchanged": true
+      },
+      {
+        "name": "p118e_verified",
+        "normalizedSha256": "5298668887b776a7e355e7d2e9f224b2be78703274f0ad9c587e5b07da04bc95",
+        "unchanged": true
+      },
+      {
+        "name": "p126bp_complete",
+        "normalizedSha256": "1969dbca311e743078ed0092497ec74d25db15888971ffe31214e889c221a160",
+        "unchanged": true
+      },
+      {
+        "name": "p131a_add",
+        "normalizedSha256": "d29127bfb407d9f8c65c789228aadd3ae2d92c5c6040a7cee5fc268ac9c80ee1",
+        "unchanged": true
+      },
+      {
+        "name": "p131a_high",
+        "normalizedSha256": "9cd037cbcf4d195d1b77ce3e8577610088c4e5124c5694020dfbd6f9862111e8",
+        "unchanged": true
+      },
+      {
+        "name": "p131a_low",
+        "normalizedSha256": "ee5b753e8adde09f7d9969c02d4e36c9e0f27d301bfee9f9af525676b7018064",
+        "unchanged": true
+      },
+      {
+        "name": "p131u_absent",
+        "normalizedSha256": "3e15620345abd70dfa8ff6bbb713c91b7ddb110779b4f64527e895e4c040fced",
+        "unchanged": true
+      },
+      {
+        "name": "p131u_max",
+        "normalizedSha256": "d2760462db37923b1b7ef8048afef9837740e0b03ae40da26139ce1f54950cfe",
+        "unchanged": true
+      },
+      {
+        "name": "p131u_max_loop",
+        "normalizedSha256": "b75ef1e73be7bc5f51f7ea4a6aeb8e4222255b1b67f68474a69d33ebce115b73",
+        "unchanged": true
+      },
+      {
+        "name": "p131u_merge",
+        "normalizedSha256": "6c71bd796459ea1451656fa5fbf272181e6d8404d46127f999ecb9a92d0d5529",
+        "unchanged": true
+      },
+      {
+        "name": "p131u_merge_loop",
+        "normalizedSha256": "149615981e2b5390680dd5449d7d973c9b985b22b55df16f7a70efef76694041",
+        "unchanged": true
+      },
+      {
+        "name": "p131u_min",
+        "normalizedSha256": "6fa8a471197aeb5e22b59f83ef840013097aa785936996dadee78fb7de33eb75",
+        "unchanged": true
+      },
+      {
+        "name": "p131u_min_loop",
+        "normalizedSha256": "7d834009711ab4f165dc7f7e18be4ba1447af5e0c38db7c44db3ab6edda88e28",
+        "unchanged": true
+      },
+      {
+        "name": "p140v_array",
+        "normalizedSha256": "036e5ac13e994f9f3d86f16cad4b55859c6aa22be760fabe4ad694a1f102c0b2",
+        "unchanged": true
+      },
+      {
+        "name": "p140v_check",
+        "normalizedSha256": "3f39a0d2fe4654eed8f177c760ad9860a0f9a003fa1e38f5ee2e410d0c0ce760",
+        "unchanged": true
+      },
+      {
+        "name": "p140v_context",
+        "normalizedSha256": "106c782fce9ffbd1b344224eb8e5353123e980f67d2359e52ebbf71b5997162d",
+        "unchanged": true
+      },
+      {
+        "name": "p140v_direct_result",
+        "normalizedSha256": "e54939acbcd9accb7c8aa543c789318ceba3269d8506e61f97f5912e5bd16291",
+        "unchanged": true
+      },
+      {
+        "name": "p140v_direct_step",
+        "normalizedSha256": "0dff11b7fac2032926b12312f5cdd40e3c91b8a80d8e40fda23d4243706156a9",
+        "unchanged": true
+      },
+      {
+        "name": "p140v_direct_walk",
+        "normalizedSha256": "552edf4f501bf1a3ca1bc62aa39f918e38dea94daf39b25f3dfe28bf44f52ea5",
+        "unchanged": true
+      },
+      {
+        "name": "p140v_open",
+        "normalizedSha256": "1e4118c15ba5136ae1656da281bfbf7f20d8ac803bc56d3b97ce6fe05ed2d2ad",
+        "unchanged": true
+      },
+      {
+        "name": "p140v_raw_walk",
+        "normalizedSha256": "cae85c91ae54ae83182922b95e0d3704aa39224185c017a124aa582837dd31f4",
+        "unchanged": true
+      },
+      {
+        "name": "p140v_segment",
+        "normalizedSha256": "ac8ce86000e796fe496c67033d5dea46c221a7a6f5a97e3c22759bc16fb10387",
+        "unchanged": true
+      }
+    ]
+  },
+  "originalPhase152Protected": {
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase152/composite01/compiler.bend",
+      "bytes": 3085157,
+      "sha256": "027e15041035522ed7e40ef971eff75f24a09ef6a00e3f8fe335839f94bcb8a8"
+    },
+    "unchanged": 111,
+    "previouslyAuthorizedDifference": [
+      "p111_native_request"
+    ]
+  },
+  "main": {
+    "beforeSha256": "5f6a208befbb28a203fa52f6616fc1821fa0ce77293ed260555ef60e52a4063c",
+    "afterSha256": "5f6a208befbb28a203fa52f6616fc1821fa0ce77293ed260555ef60e52a4063c",
+    "bytes": 111,
+    "unchanged": true
+  },
+  "gates": {
+    "lexer-baseline-api": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/lexer-baseline-api/report.json",
+      "bytes": 4665,
+      "sha256": "67c6654ccc2ef92c5220b10f3aebad4dfc5dd3bc08d9037bac8d1e978b60bcfc"
+    },
+    "lexer-candidate-api": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/lexer-candidate-api/report.json",
+      "bytes": 4723,
+      "sha256": "2e939e75feee1519ab66a68918805de4564d7715d2dddacc6ba6c3be0edec116"
+    },
+    "lexer-controls-bun": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/lexer-controls-bun/report.json",
+      "bytes": 79337,
+      "sha256": "dfde30f469e252a5beea542305eede44db1897c225d9f3922824a4ed196f9281"
+    },
+    "lexer-controls-node": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/lexer-controls-node/report.json",
+      "bytes": 79349,
+      "sha256": "76dd4ab595fd91b4f24469615c944dbcbbffa5e64209fc83e02bc55318573b5c"
+    }
+  },
+  "scope": "Metadata-only maintained integration. Checked experimental declaration bodies match; final ordered full source still requires its own acquisition and native/JS release gates."
+}

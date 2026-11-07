@@ -1,0 +1,355 @@
+{
+  "kind": "phase173-native-qualification-proposal",
+  "version": 1,
+  "executed": false,
+  "workingDirectory": "/home/ai/bend2/build/publish/bend",
+  "candidate": {
+    "image": "selfhost/build/phase173/owned-native-n2-08/program",
+    "receipt": "selfhost/build/phase173/owned-native-n2-08/report.json",
+    "actualRequiredStage": "N2",
+    "bindingRequired": "Complete maintained image binding; not a qualification or promotion"
+  },
+  "protectedInputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/manifests/assets-native.json",
+      "bytes": 18715,
+      "sha256": "3d19a8b9f801fabc1de6dc5f484c7d20a795047776d1390a4bdea98e42b3e6b7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/conformance/qualification-catalog.json",
+      "bytes": 77329,
+      "sha256": "d22a51bcf3e6901a992dd97768f6622a24deb90fbe5e131c8c3c577d7138b9be"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/qualification.py",
+      "bytes": 12875,
+      "sha256": "4aecaad1d946b295472e77afa0a59cb18134958af9478f9e7921388ff7127227"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/request.py",
+      "bytes": 18653,
+      "sha256": "f2638c055de2de15c80b8e36d888337a3061f8f7725c55f16ad645943562566c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/timed-products-final/report.json",
+      "bytes": 140672,
+      "sha256": "f965da8fbc838951724b6ceee949403b371b47a0d746864f692e82a2d434eb2c"
+    }
+  ],
+  "finite64": {
+    "command": [
+      "python3",
+      "-B",
+      "selfhost/tools/build-retention/guard.py",
+      "--out",
+      "selfhost/build/phase173/owned-native64-08-guard",
+      "--run-root",
+      "selfhost/build/phase173/owned-native64-08",
+      "--seconds",
+      "240",
+      "--disk-mib",
+      "512",
+      "--rss-mib",
+      "4096",
+      "--available-mib",
+      "16384",
+      "--cpu",
+      "3",
+      "--",
+      "python3",
+      "-B",
+      "selfhost/tools/build/qualification.py",
+      "--assets",
+      "selfhost/manifests/assets-native.json",
+      "--host",
+      "native",
+      "--stage",
+      "N2",
+      "--target",
+      "qbe",
+      "--mode",
+      "cache",
+      "--image",
+      "selfhost/build/phase173/owned-native-n2-08/program",
+      "--image-receipt",
+      "selfhost/build/phase173/owned-native-n2-08/report.json",
+      "--suite",
+      "all",
+      "--seconds",
+      "30",
+      "--build-seconds",
+      "30",
+      "--execute-seconds",
+      "10",
+      "--out",
+      "selfhost/build/phase173/owned-native64-08"
+    ],
+    "historicalPhase170Seconds": 68.28266119305044,
+    "counts": {
+      "wholeOutputPositive": 61,
+      "stageSpecificRefusal": 3
+    },
+    "note": "One suite-all run avoids duplicate focused+broad execution. Guard once; new output paths; no installed asset changes."
+  },
+  "runtimeIdentityScreen": {
+    "reference": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/timed-products-final/report.json",
+      "bytes": 140672,
+      "sha256": "f965da8fbc838951724b6ceee949403b371b47a0d746864f692e82a2d434eb2c"
+    },
+    "cases": [
+      {
+        "id": "editdist",
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/editdist.bend",
+          "bytes": 7835,
+          "sha256": "759d82e26789e55187d175cb8416d6ebe4266a53f73a53ca6d32b69d4f71e988"
+        },
+        "expectedQbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/editdist/candidate/emission/program.ssa",
+          "bytes": 729837,
+          "sha256": "78944243742125c4ae4c7ab3a95c32154208b9fbedc2590fc8dcbde552b09063"
+        },
+        "command": [
+          "python3",
+          "-B",
+          "selfhost/tools/build/request.py",
+          "--assets",
+          "selfhost/manifests/assets-native.json",
+          "--host",
+          "native",
+          "--stage",
+          "N2",
+          "--target",
+          "qbe",
+          "--mode",
+          "cache",
+          "--image",
+          "selfhost/build/phase173/owned-native-n2-08/program",
+          "--image-receipt",
+          "selfhost/build/phase173/owned-native-n2-08/report.json",
+          "--source",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/editdist.bend",
+          "--expected-qbe",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/editdist/candidate/emission/program.ssa",
+          "--seconds",
+          "30",
+          "--out",
+          "selfhost/build/phase173/owned-quality-screen08/00-editdist"
+        ]
+      },
+      {
+        "id": "tree-bitonic",
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/tree-bitonic.bend",
+          "bytes": 6593,
+          "sha256": "405f8d8fb2066e6fedd8baa45943bcdf92b59cb40e23ce2ad3ea4bd3eeb53ae0"
+        },
+        "expectedQbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/tree-bitonic/candidate/emission/program.ssa",
+          "bytes": 394540,
+          "sha256": "b9be242566f220606111ea618245aa80c2159dd7bc367154a33281de50bc23c7"
+        },
+        "command": [
+          "python3",
+          "-B",
+          "selfhost/tools/build/request.py",
+          "--assets",
+          "selfhost/manifests/assets-native.json",
+          "--host",
+          "native",
+          "--stage",
+          "N2",
+          "--target",
+          "qbe",
+          "--mode",
+          "cache",
+          "--image",
+          "selfhost/build/phase173/owned-native-n2-08/program",
+          "--image-receipt",
+          "selfhost/build/phase173/owned-native-n2-08/report.json",
+          "--source",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/tree-bitonic.bend",
+          "--expected-qbe",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/tree-bitonic/candidate/emission/program.ssa",
+          "--seconds",
+          "30",
+          "--out",
+          "selfhost/build/phase173/owned-quality-screen08/01-tree-bitonic"
+        ]
+      },
+      {
+        "id": "test-morning-program",
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/test-morning-program.bend",
+          "bytes": 5064,
+          "sha256": "740992084d3171460f394dfdd2574a3def860de3260d818b2a99fb9c8e945746"
+        },
+        "expectedQbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/test-morning-program/candidate/emission/program.ssa",
+          "bytes": 1061806,
+          "sha256": "0c162a4c6eb42850a1a53ad4cdb2791830d11eb86a6b7259d5b9ee70a982c733"
+        },
+        "command": [
+          "python3",
+          "-B",
+          "selfhost/tools/build/request.py",
+          "--assets",
+          "selfhost/manifests/assets-native.json",
+          "--host",
+          "native",
+          "--stage",
+          "N2",
+          "--target",
+          "qbe",
+          "--mode",
+          "cache",
+          "--image",
+          "selfhost/build/phase173/owned-native-n2-08/program",
+          "--image-receipt",
+          "selfhost/build/phase173/owned-native-n2-08/report.json",
+          "--source",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/test-morning-program.bend",
+          "--expected-qbe",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/test-morning-program/candidate/emission/program.ssa",
+          "--seconds",
+          "30",
+          "--out",
+          "selfhost/build/phase173/owned-quality-screen08/02-test-morning-program"
+        ]
+      },
+      {
+        "id": "test-rle-roundtrip",
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/test-rle-roundtrip.bend",
+          "bytes": 4708,
+          "sha256": "b46580acb1656502d0e37a0115d172529e648719acb75eadb3b9ad45db5b078d"
+        },
+        "expectedQbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/test-rle-roundtrip/candidate/emission/program.ssa",
+          "bytes": 317502,
+          "sha256": "7fc59cb8120c818bfa5d94879f014c1e977141bf8fd0e4fe4595eadec0f79645"
+        },
+        "command": [
+          "python3",
+          "-B",
+          "selfhost/tools/build/request.py",
+          "--assets",
+          "selfhost/manifests/assets-native.json",
+          "--host",
+          "native",
+          "--stage",
+          "N2",
+          "--target",
+          "qbe",
+          "--mode",
+          "cache",
+          "--image",
+          "selfhost/build/phase173/owned-native-n2-08/program",
+          "--image-receipt",
+          "selfhost/build/phase173/owned-native-n2-08/report.json",
+          "--source",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/test-rle-roundtrip.bend",
+          "--expected-qbe",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/test-rle-roundtrip/candidate/emission/program.ssa",
+          "--seconds",
+          "30",
+          "--out",
+          "selfhost/build/phase173/owned-quality-screen08/03-test-rle-roundtrip"
+        ]
+      },
+      {
+        "id": "coverage-record-aggregation-256",
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-record-aggregation-256.bend",
+          "bytes": 3806,
+          "sha256": "eb5841e7f516d2f87ef8028f83a902390c4aab439875207448ffa4c4d5c28bc1"
+        },
+        "expectedQbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-record-aggregation-256/candidate/emission/program.ssa",
+          "bytes": 1031984,
+          "sha256": "6d7fadb15b874d3d2b23f734f5792f1dc88155eae2c2d67233e705d37ec75713"
+        },
+        "command": [
+          "python3",
+          "-B",
+          "selfhost/tools/build/request.py",
+          "--assets",
+          "selfhost/manifests/assets-native.json",
+          "--host",
+          "native",
+          "--stage",
+          "N2",
+          "--target",
+          "qbe",
+          "--mode",
+          "cache",
+          "--image",
+          "selfhost/build/phase173/owned-native-n2-08/program",
+          "--image-receipt",
+          "selfhost/build/phase173/owned-native-n2-08/report.json",
+          "--source",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-record-aggregation-256.bend",
+          "--expected-qbe",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-record-aggregation-256/candidate/emission/program.ssa",
+          "--seconds",
+          "30",
+          "--out",
+          "selfhost/build/phase173/owned-quality-screen08/04-coverage-record-aggregation-256"
+        ]
+      },
+      {
+        "id": "coverage-map-churn-128",
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-map-churn-128.bend",
+          "bytes": 3659,
+          "sha256": "cd22c831c180c0de12d84aeb80debf4881d08cbd18fcf8f6d634153fba2feb03"
+        },
+        "expectedQbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-map-churn-128/candidate/emission/program.ssa",
+          "bytes": 1047197,
+          "sha256": "f2f076204850d6a339f70a031d60bf6751aeaff0d1d4a867a04518c80bff752a"
+        },
+        "command": [
+          "python3",
+          "-B",
+          "selfhost/tools/build/request.py",
+          "--assets",
+          "selfhost/manifests/assets-native.json",
+          "--host",
+          "native",
+          "--stage",
+          "N2",
+          "--target",
+          "qbe",
+          "--mode",
+          "cache",
+          "--image",
+          "selfhost/build/phase173/owned-native-n2-08/program",
+          "--image-receipt",
+          "selfhost/build/phase173/owned-native-n2-08/report.json",
+          "--source",
+          "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-map-churn-128.bend",
+          "--expected-qbe",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-map-churn-128/candidate/emission/program.ssa",
+          "--seconds",
+          "30",
+          "--out",
+          "selfhost/build/phase173/owned-quality-screen08/05-coverage-map-churn-128"
+        ]
+      }
+    ],
+    "outerGuard": {
+      "seconds": 120,
+      "diskMib": 256,
+      "cpu": 3,
+      "singleExecutionLane": true
+    },
+    "interpretation": "Exact full QBE plus unchanged source/runtime/machine policy preserves code, not a fresh speed sample. Any mismatch is an investigation trigger, not automatically a semantic or performance failure."
+  },
+  "fullTimed45": {
+    "historicalReemissionSeconds": 63.15942929778248,
+    "scope": "Separate timed wrapper fixtures, not the ordinary broad45 correctness sources. Acquire and time changed products only; no fresh all45 speed claim from subset."
+  },
+  "noPromotion": true
+}

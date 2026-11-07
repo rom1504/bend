@@ -192,7 +192,7 @@ still have to be measured.
 the adjacent `.stdout` file is a literal, independently derived expected trace.
 It has two deliberately distinguished paths:
 
-- `p173io_change` is the exact syntactic composition the pass can admit. It
+- `p173io_change` has the intended syntactic composition. It
   updates a String field while retaining the original root, a second field
   aliasing that String, and an external alias to that same String. The original
   root and aliases are printed after the updated value. Vacant tests the exact
@@ -215,6 +215,17 @@ contain `seed`; both Vacant results retain tag 7. The second worker prints the
 empty getter value before the ignored result is discarded. Exactly ten lines,
 each terminated by a newline, are expected. Source checking and native/independent
 execution are left to the coordinating agent's single execution lane.
+
+Subsequent root-owned evidence refined its scope: the unchanged IO trace passes,
+and all32 structural/permission controls pass, but
+`owned-decomposition-qbe-observe07/report.json` records **zero transformed rows**
+for this particular String fixture. Source inspection identifies a sufficient
+refusal: the ignored variant's getter returns literal `""`; `nc_erase` preserves
+literal nodes, while the getter summary admits only field variables, constructor
+constants and native words. This must not be reported as a positive transformed
+IO test. A separately acquired Packet-with-IO fixture uses its already admitted
+getters; `owned-packet-io-observe07/report.json` records one actual changed row in
+`p173odw_change`, with the corresponding root-owned native pair receipt.
 
 ## Rejected stronger IO fixture: Church elimination is not effect execution
 

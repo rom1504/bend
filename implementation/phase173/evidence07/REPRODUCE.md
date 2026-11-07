@@ -1,0 +1,15 @@
+# Phase173 evidence07: native transfer and generation checks
+
+The three completed native checks reproduce the selected hosted QBE byte-for-byte and their independent expected output: N1 layout, N1 Packet IO, and N2 layout. This is targeted native transfer evidence, not the complete qualification suite. Source assembly, source checking, frozen pass modules and the N1 acquisition are referenced by exact evidence06 pins rather than recopied.
+
+The same 3,205,249-byte candidate source took **201.615 s** with the old qualified producer to acquire N1, and **209.643 s** with N1 executing the new optimizer to acquire N2 (**1.03982×**, about 3.98% longer). N1 and N2 emitted different QBE as expected when the optimizer changes. The N1-emitted QBE is therefore not the next self-reproduction oracle. Only a completed N2 → N3 request can compare the same compiler algorithm compiled with its own optimization. These are individual build observations, not statistically qualified throughput gains.
+
+N3 completed before finalization in **204.438 s**, ratio **0.975174×** versus N2 acquisition (about 2.48% lower in this single observation). The exact N2/N3 emitted-QBE comparison is **True**; their binary hashes agree: **False**. This establishes an emitted-QBE fixed point for the frozen source/toolchain, not binary identity, whole-compiler correctness or broad qualification. The N2 → N3 request executes the new compiler compiled by its own optimizer.
+
+Storage05 preserves exact N1 QBE/assembly/object archive members and removes only those three hot files. N1 executable and all source/runtime identities remain available. Storage06 archives only N2 assembly/object; N2 QBE remains hot as the exact N3 oracle. Original proposals, reviews, archive identity, independent member verification, plans, apply receipts and journals are retained. Archive bodies are not copied.
+
+`analysis/owned-decomposition-scalability.md` is a source-level cost/coverage audit. `analysis/native-qualification-plan.*` describes unexecuted proposed gates. Their presence is not a claim that the plan was run or that its observations are measured runtime costs.
+
+Reproduce using `recipes.json` and exact guard commands, pinned source/Base/carrier/stamp/runtime/toolchain and output-image bindings, under the single controlled lane and fresh output paths. Native builder stage fields identify the producer; output generation identity is in `imageBinding`. The complete elapsed emission/QBE interval already includes concurrent stream processing and must not be added to itself. Restore archived generated files only when their exact bytes are required; normal execution does not require those assembly/object files.
+
+`generation-summary.json` and `results-summary.json` are derived from the original receipts. `previous-evidence-pins.json` authenticates the existing evidence06 source/acquisition records. `inventory.json` hashes every capsule file except itself; `copy-provenance.json` records verbatim originals. No targets were executed while packaging, no root README was changed, and no source/IR/binary bulk is duplicated.

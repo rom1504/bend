@@ -208,3 +208,120 @@ retained alias, and unchanged fallback. Also preserve unknown-provider refusal
 at the public emission boundary. This is a sharper experiment than building a
 per-function/higher-order purity framework or acquiring the complete compiler
 before any generated-code coverage is known.
+
+## Native source08 certificate and cost-recovery review
+
+The acquired `owned-native-n1-08` receipt binds checked source
+`8536e598ee618e401fafed82e9e75f0d32e13c697a13ddbd5f2de23639e6c3c6`
+to native image
+`a634d2405acee15369b050f9b931201d0662d3bae085a32989e825b29791e85a`.
+Acquisition took 201.615 s using the installed Phase170 producer. This review
+read existing artifacts only; it did not execute the image or qualify it.
+
+**The ordinary File/IO compiler is admitted by the new extra certificate.** The
+important argument is the actual control flow, rather than trusting a source
+name whitelist:
+
+1. The sole maintained caller of `p168_catalogued` is `p168_request_mode` in
+   `back/qbe/early-observers.bend`. Frozen source08 retains that call structure
+   at lines 67157–67179. It first requires `p167ob_permission(request)`.
+2. `p167ob_permission` tries `ns_definitions`, otherwise calls
+   `p118i_permission`, which is exactly
+   `p118ns_effect_definitions(True{}, book, names)`.
+3. `ns_definitions` permits only three foreign names: IO.args, IO.print, IO.now.
+   The real compiler has reachable File operations, so that first branch is
+   false. Reaching the new catalogue hook therefore means the exact second
+   certificate already returned true for the same immutable book and names.
+4. The existing source08 emitted QBE effect table contains exactly File.write,
+   IO.print, File.close, File.read, File.size, File.open, IO.now and IO.args.
+   No byte-file or NativeHost provider is used by this executable. The acquired
+   QBE also contains 132 private `$p118borrow.*` worker definitions, corroborating
+   actual permission-enabled lowering. A lexical source check found no rewrite
+   syntax outside comments/quoted strings; this is supporting evidence, not a
+   substitute for the actual admission control flow.
+
+Thus `p173op_prepared` repeats a guaranteed-successful whole-body certificate scan
+on this full compiler request. It cannot silently reject this particular request
+unless the existing internal contract is violated. Constructor-summary refusal
+or zero useful site coverage remains a different possibility; this argument does
+not establish the number of rewritten owners.
+
+### Do not generalize the implication to every admitted request
+
+`ns_definitions => p118ns_effect_definitions` is not an established invariant.
+In particular, `ns_term` strips `Ann` and does not traverse its type, whereas
+`no_effect_terms` traverses all children and refuses any `Rwt`. A rewrite inside
+an erased annotation can distinguish the two syntactic predicates. The scalar
+foreign check also lacks the second predicate's explicit filled-Foreign check.
+Checked request/Base assumptions may eliminate some examples, but no general
+implication proof was found. A fabricated-book control alone would not prove a
+counterexample is reachable through the public checked path either.
+
+Consequently deleting the second predicate solely because
+`p167ob_permission=True` would silently widen the experiment's existing scope.
+
+### Minimal exact certificate reuse
+
+If the additional scan has material measured cost, change the optional
+experiment's permission plumbing, not the predicate or foreign allowlist:
+
+| Original scalar predicate A | Existing observer predicate B | Existing route | Rewrite permission |
+| --- | --- | --- | --- |
+| false | false | Existing permission error | Not reached |
+| false | true | Catalogue | Pass this already-computed true certificate |
+| true | false | Catalogue | Retain original prepared bodies |
+| true | true | Catalogue | Apply optional rewrite |
+
+At `p168_request_mode`, compute the exact observer result once when needed and
+pass it immediately to a private catalogue/preparation continuation. The
+continuation must receive the same source, book and names, call original
+`p112s_prepare` exactly once, and retain every existing error/context/freshness
+check. For A=true, B must still be computed once for this optional rewrite; for
+A=false the preceding route check already computed B, so reuse it. Keep the
+legacy catalogue signature as a conservative wrapper if raw internal callers
+remain; never synthesize permission from a source marker or mode bit.
+
+The maintained public route is `p169np_plan` → runtime admission →
+`p168_request_mode` → catalogue. A direct internal test call that bypasses it
+must supply the same documented checked/runtime preconditions. No frozen08 file
+or production gate was changed during this review.
+
+Required bounded checks for a cost-only revision: all four truth-table paths
+with unchanged errors/fallback; identical source08 prepared outputs/QBE; ordinary
+IO/File acceptance; unknown/unfilled foreign and active rewrite refusal; an
+annotation distinction control so A alone cannot grant B; unchanged static
+preparation invocation and exact field/ownership controls. Use counters for
+certificate invocation only in a diagnostic build, then clean timing. Do not
+spend another full image merely to test this plumbing.
+
+### Integration merit and stage distinction
+
+The extracted automatic pass is 54,350 bytes/2,035 lines, with 104 definitions,
+103 forward laws and nine data types. Source assembly adds 217 declarations in
+total including the external prelude contract; these laws are callable type
+contracts, not 103 mathematical equivalence proofs. The complete source grows
+from 3,150,535 to 3,205,249 bytes (54,714 bytes, about 1.74%). The two manual
+consuming modules plus the layout helper contract are 1,873 bytes/37 lines and
+mostly replace existing functions.
+
+The automatic result has real generality evidence: retained paired measurements
+show runtime ratios 0.88948 for pattern traversal, 0.81148 for layout traversal,
+and 0.50051 for the unrelated wider packet computation. The manual pattern
+ratio is 0.79861 and the earlier manual layout screen is about 0.7922. These
+are individual workload results, not additive full-compiler speedups. The
+automatic rule starts later than the manual pattern rewrite and pays whole-body
+analysis overhead on every compiled program.
+
+N1-08 was generated by the installed producer **without this new optimization**.
+Its compiler executable contains the new pass but has not itself acquired the
+pass's generated-code benefits. N1 request timing first measures added analysis
+and resulting product construction; compiler execution improvements appear only
+when a generated successor is run. Conversely, an acquired successor cannot
+justify installation without matched complete-request and correctness gates.
+
+For the immediate cold-build objective, the manual changes have the smaller
+complexity and analysis-cost burden. Keep the automatic implementation
+experimental until its net successor execution benefit and general workload
+coverage justify the new persistent compiler work. The packet transfer makes it
+a useful optimization capability; it does not by itself justify adding two
+thousand lines to the default research compiler or predict progress to 100 s.

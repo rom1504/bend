@@ -1,0 +1,48 @@
+{
+  "kind": "phase173-native08-generation-evidence",
+  "complete": true,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-native-source08/compiler.bend",
+    "bytes": 3205249,
+    "sha256": "8536e598ee618e401fafed82e9e75f0d32e13c697a13ddbd5f2de23639e6c3c6"
+  },
+  "sameSource": true,
+  "generations": [
+    {
+      "generation": "candidate N1 acquisition",
+      "producer": "old qualified Phase170 N2",
+      "algorithm": "old optimizer",
+      "wallSeconds": 201.61463175388053,
+      "irDigest": {
+        "bytes": 100193009,
+        "sha256": "aa7d731335ce38f51619b3a80978dbc64913e634cf58d21c4bbec9983d035614"
+      }
+    },
+    {
+      "generation": "candidate N2 acquisition",
+      "producer": "candidate N1",
+      "algorithm": "new multi08 optimizer, executable built by old optimizer",
+      "wallSeconds": 209.64255201490596,
+      "irDigest": {
+        "bytes": 100278749,
+        "sha256": "a3ccea7189234d0b52b4b3669da93b616f52a2eb3e8b893c437d11efcf286068"
+      }
+    },
+    {
+      "generation": "candidate N3 acquisition",
+      "producer": "candidate N2",
+      "algorithm": "new multi08 optimizer, executable built by new optimizer",
+      "wallSeconds": 204.43798394780606,
+      "irDigest": {
+        "bytes": 100278749,
+        "sha256": "a3ccea7189234d0b52b4b3669da93b616f52a2eb3e8b893c437d11efcf286068"
+      }
+    }
+  ],
+  "n2BuildVersusN1BuildRatio": 1.039818143113866,
+  "n3Included": true,
+  "scope": "Single cold source-to-executable requests with the same candidate source and prepared-Base policy. N1 acquisition vs N2 acquisition changes optimizer implementation. N2 vs N3, when complete, keeps algorithm/source fixed and tests its generated executable. Streaming emission/QBE overlap; not separate additive timings. No statistical confidence interval, broad qualification or installed promotion.",
+  "n3BuildVersusN2BuildRatio": 0.9751740855228196,
+  "n2N3QbeExact": true,
+  "n2N3BinaryExact": false
+}

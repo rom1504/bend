@@ -148,3 +148,59 @@ native allocator. This review does not establish separation for arbitrarily
 large generic builds whose native fresh counter is cumulative. The bounded
 experiment and unchanged final verification remain the qualification scope;
 avoid claiming a new general allocator theorem.
+
+## Multi-argument extension review
+
+The separate `owned-decomposition-multi-*` modules reuse the one-replacement
+emitter after specializing an ordinary same-constructor setter. This review
+found no new semantic blocker in the source inspected; the frozen execution
+gates remain root-owned evidence.
+
+The relevant new condition is stricter than merely counting one worker call.
+Every other argument is an already evaluated atom or an independently certified
+projection/closed-constant getter on the same root. `p173om_all_args` checks even
+getter arguments that the setter ignores. Without that check, eliminating an
+unused but divergent/error-producing getter would be wrong. Rows that do not
+use the computed argument retain the original fallback, including all original
+strict argument evaluation.
+
+The original relative placement of the one worker among these getter arguments
+may change. Those crossed getters have been established as total structural
+operations, and all getter values refer to the same immutable value under the
+existing ordinary-ownership/provider contract. The pass is not allowed to move
+an unknown call, arbitrary root producer or effectful extra-argument expression
+through that boundary. The call collector enforces those restrictions.
+
+Origin substitution is simultaneous in effect: `p173om_values` resolves each
+original constructor-field expression independently, rather than repeatedly
+substituting the result of a previous substitution. This prevents one caller
+atom from accidentally becoming a different formal argument. Inserted caller
+variable atoms are additionally refused when their IDs overlap the setter's
+field basis or the symbolic replacement, because those are the only IDs the
+shared emitter later renames/substitutes. The unchanged worker-extra arguments
+are outside those renamed terms; fresh emitted binders must still exceed all
+IDs in the complete original call.
+
+Each setter row binds an exact field count and exact remaining-argument count.
+Field binders remain quantity 2. Already evaluated formal arguments may have
+quantity 1 or 2, but erased/foreign quantities and repeated IDs refuse. The
+computed formal occurs exactly once in the original constructor body, and the
+resolved result contains exactly one symbolic replacement. The replacement is
+chosen from a valid formal and cannot be zero or overlap a later row's fields.
+Every admitted row returns its original constructor at the original width.
+
+The synthesized summary can intentionally replace metadata fields with values
+from other certified getters or caller atoms. Therefore its semantic statement
+is exact specialization of the original multi-argument setter, not the narrower
+claim that every field except the computed one always remains unchanged.
+KLambda's quantity-presence field is preserved when its original setter obtains
+that field from the original root; the source-backed `k_rebuild` experiment must
+check the actual complete values, not infer this from the setter's name.
+
+Bounds remain explicit: at most eight total arguments, eight variants and
+sixteen fields. Unsupported rows retain the original expression. The existing
+finite controls cover identifier collisions, missing/duplicate computed slots,
+unknown origins, rejected getter computations and unused-call fallback; actual
+checked helper summaries and unrelated packet results provide the transfer
+gates. No generic effect analysis, new runtime representation or final-verifier
+relaxation is introduced by this extension.

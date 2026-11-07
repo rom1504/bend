@@ -42,7 +42,7 @@
     "borrow-api01"
   ],
   "caveat": "Older fields describe immutable checkpoints; latest automatic full-chain result pending. N1 QBE is archived exactly and is not the N2 fixed-point oracle.",
-  "next": "Finish full automatic08 native chain: N1 checked, N2 building; compare N2/N3 IR, source-to-executable cost, independent semantic gates before any promotion.",
+  "next": "Finish bounded native correctness and contextual-materializer ceiling; keep qualified Phase170 installed.",
   "automaticOwnedDecomposition": {
     "source": "owned-decomposition-multi-source08/manifest.json",
     "checked": "owned-decomposition-multi-api08/report.json",
@@ -54,10 +54,15 @@
     "nativeLayoutHostedEquality": "native08-layout-check/report.json",
     "nativeIoHostedEquality": "native08-packet-io-check/report.json",
     "nativeN2": "owned-native-n2-08/report.json",
-    "nativeN2Status": "running",
+    "nativeN2Status": "complete",
     "patternRatio": 0.889483,
     "layoutMultiRatio": 0.81148,
     "packetMultiRatio": 0.500508,
-    "qualification": "No production change; kernel ratios are not full compiler gain."
+    "qualification": "No production change; kernel ratios are not full compiler gain.",
+    "nativeN2Seconds": 209.64255201490596,
+    "nativeN3": "owned-native-n3-08/report.json",
+    "nativeN3Seconds": 204.43798394780606,
+    "nativeQbeFixedPoint": true,
+    "selection": "Not promoted: complete same-source build is1.40% slower than qualified producer in one observation."
   }
 }

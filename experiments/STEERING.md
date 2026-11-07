@@ -42,10 +42,13 @@ a general checked QBE prototype saves11.05% on pattern,18.85% on layout and49.95
 on unrelated multi-argument Packet reconstruction. Independent complete values,
 62 finite controls and native/hosted exact-QBE transfer pass. These are local
 workload results, not full compiler or upstream parity. Ownership reclamation
-falls much more than allocations. Full native candidate08 is being evaluated;
-Phase170 stays installed. Its first acquisition costs201.615s using the old
-qualified producer. New optimizer generation needs N2→N3 agreement, not equality
-between old-producer N1 IR and new-optimizer N2 IR.
+falls much more than allocations. Full native candidate08
+now reproduces N2/N3 QBE/assembly/object. Same-source cold builds are201.615s
+with old qualified producer,209.643s with new N1,204.438s with optimized N2.
+One observation each: the self-generated runtime saving2.48% does not recover
+all analysis cost; net is1.40% slower than old producer. Do not promote the
+2,035-line automatic pass as a cold-build win. Native64 and the separate bounded
+context-materializer ceiling are being completed; Phase170 stays installed.
 
 The durable indexed representation initially regressed2.003×. General tail-SCC
 fusion, owned-argument adaptation and direct destinations recover much of this,

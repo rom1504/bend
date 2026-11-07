@@ -348,9 +348,31 @@ main and112 protected verifier/proof declarations. Its3,205,249-byte source was
 independently checked; the qualified compiler built the first experimental native
 image in201.615s with884.6MB peak guarded process-tree RSS. This is acquisition
 using old code generation, not a successor speedup or qualification result.
-N1 contains the new optimizer; N1→N2 changes code generation, so the meaningful
-fixed-point test is N2→N3 QBE agreement on identical source. The installed compiler
-remains unchanged pending those experiments and independent gates.
+The new native N1 independently emits byte-identical hosted QBE for layout
+substitution and the transformed IO request, and both complete executions match
+their expected outputs. N1 contains the new optimizer. The completed chain now measures:
+
+| Producer building identical candidate source | Complete source-to-executable |
+|---|---:|
+| Qualified Phase170 (acquires experimental N1) |201.615s|
+| Experimental N1 (new optimizer, old generated compiler code) |209.643s|
+| Experimental N2 (new optimizer and optimized compiler code) |204.438s|
+
+These are one clean observation each, not paired medians. N2-generated compiler
+execution recovers5.205s (2.48%) versus N1, but the complete result remains2.823s
+(1.40%) slower than the old compiler building identical source. The extra
+optimizer adds54,350 bytes /2,035 lines /216 runtime-closure declarations plus
+one forward law. The two manual source changes are only1,873 bytes /37 lines
+including their helper law. Acquisition source growth and running analysis cost
+must not be hidden behind the kernel runtime gains.
+
+N2/N3 emit exactly100,278,749 QBE bytes with SHA256
+`a3ccea7189234d0b52b4b3669da93b616f52a2eb3e8b893c437d11efcf286068`;
+assembly and object hashes also match. Whole executable hashes differ and must
+not be called identical without a loaded-image comparison. This is an emitted
+fixed point, not independent compiler correctness or recursive acceleration.
+The installed compiler remains unchanged. The automatic pass is not selected
+for production on these full-build results. The100s milestone remains open.
 
 See [the transformation](../../experiments/phase173/automatic-owned-decomposition.md),
 [wide-interface extension](../../experiments/phase173/owned-decomposition-multi.md)
@@ -366,6 +388,10 @@ images or IR into Git.
 the failed eight-field structural gate, layout substitution, the unchanged
 verifier product, and neutral wide-record timing with actual event counts.
 It excludes the later automatic-pass investigation.
+
+[Evidence checkpoint06](evidence06/REPRODUCE.md) covers the wide interface and N1
+acquisition; [checkpoint07](evidence07/REPRODUCE.md) adds the completed native
+fixed point and targeted cross-backend identity gates.
 
 [Evidence checkpoint05](evidence05/REPRODUCE.md) retains the one-field automatic
 pass, controls, complete independent values, native timing, event counts, hosted
@@ -392,3 +418,9 @@ compression itself took about 0.3 seconds. This was excessive maintenance cost.
 Future retention should batch unchanged dependency discovery while retaining
 the independent immediate pre-apply check. No performance sample ran alongside
 that batch, and qualified products remain protected.
+
+The fifth retention batch archives only completed experimental N1 QBE, assembly
+and object files, with26,018,303 compressed bytes versus196,997,120 allocated
+source bytes. The executable, source, runtime and receipts remain hot. Those old-
+producer QBE bytes are not the new optimizer's fixed-point oracle; N2 output will
+be retained for N3 comparison. Exact restoration remains available.

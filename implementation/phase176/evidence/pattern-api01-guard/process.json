@@ -1,0 +1,67 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": false,
+  "started": 1794070278.197079,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "3,5",
+    "python3",
+    "-B",
+    "selfhost/tests/phase176/batch.py",
+    "--manifest",
+    "experiments/phase176/pattern-api.json",
+    "--cpus",
+    "3,5",
+    "--out",
+    "selfhost/build/phase176/pattern-api01"
+  ],
+  "returncode": 1,
+  "rssLimitBytes": 2147483648,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 15052800,
+  "minimumAvailableBytes": 25322201088,
+  "diskBudgetBytes": 16777216,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 5412515840,
+  "minimumDiskFreeBytes": 5412462592,
+  "peakRunAllocatedBytes": 53248,
+  "peakFilesystemDecreaseBytes": 53248,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/pattern-api01"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "3,5",
+    "fileLimitBytes": 134217728,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase176/batch.py",
+        "sha256": "37c0517e293ba3417c4e455a0780dd6d3c9411f2aed572aea6da848bc282ef0d",
+        "bytes": 6441
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/experiments/phase176/pattern-api.json",
+        "sha256": "5781eac41d7de01768ddc4f943d3e68885798a018d384f814f47fbe5c592990a",
+        "bytes": 2248
+      }
+    ]
+  },
+  "wallSeconds": 0.14617619197815657,
+  "finished": 1794070278.3430827
+}

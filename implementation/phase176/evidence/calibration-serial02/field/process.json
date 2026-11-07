@@ -1,0 +1,52 @@
+{
+  "id": "field",
+  "cpu": 3,
+  "command": [
+    "taskset",
+    "-c",
+    "3",
+    "python3",
+    "-B",
+    "selfhost/tests/phase175/native-frontend.py",
+    "--baseline",
+    "selfhost/build/phase175/baseline-native01/report.json",
+    "--candidate",
+    "selfhost/build/phase175/field-native01/report.json",
+    "--binding",
+    "selfhost/build/phase175/baseline-source03/base-binding.json",
+    "--source",
+    "selfhost/build/phase175/parse-baseline-source01/compiler.bend",
+    "--mode",
+    "request",
+    "--rounds",
+    "2",
+    "--seconds",
+    "20",
+    "--out",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/calibration-serial02/field/result"
+  ],
+  "complete": true,
+  "started": 1794070075.5847604,
+  "limitSeconds": 100,
+  "exitCode": 0,
+  "seconds": 27.094725964125246,
+  "userSeconds": 26.829745,
+  "systemSeconds": 0.12379499999999999,
+  "peakRssKiB": 59664,
+  "stdout": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/calibration-serial02/field/stdout",
+    "bytes": 648,
+    "sha256": "c1261654c76a2321eb82967694d2207aacc0ad73e59bdc155087a4ce51e4a5c5"
+  },
+  "stderr": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/calibration-serial02/field/stderr",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "payloadComplete": true,
+  "result": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/calibration-serial02/field/result/report.json",
+    "bytes": 10700,
+    "sha256": "8e253417e46f30289ebfb9c20aa075fc1467ec6b22f52e578b0ca8756e678dc6"
+  }
+}

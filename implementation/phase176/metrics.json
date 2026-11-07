@@ -1,0 +1,849 @@
+{
+  "kind": "phase176-measured-results",
+  "complete": true,
+  "sourceParent": "de627cb",
+  "productionChanged": false,
+  "installedChanged": false,
+  "fullFrontendMeasured": false,
+  "completeColdBuildMeasured": false,
+  "calibration": [
+    {
+      "run": "calibration-serial02",
+      "seconds": 76.50439974898472,
+      "childCpuSeconds": 75.706625,
+      "cpus": [
+        3
+      ],
+      "peakTreeRssMiB": 87.984375,
+      "comparisons": [
+        {
+          "id": "lookahead",
+          "cases": [
+            {
+              "source": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-baseline-source01/compiler.bend",
+                "bytes": 356626,
+                "sha256": "578d0d3fa834ba5ac0402e7fc19e7ae22368b80d8af94fc08fcd61ca239a0493"
+              },
+              "medians": {
+                "baseline": {
+                  "seconds": 2.853616235079244,
+                  "frontendSeconds": 2.5540000000000003,
+                  "baseSeconds": 0.214,
+                  "observationSeconds": 0.0545
+                },
+                "candidate": {
+                  "seconds": 2.658759692683816,
+                  "frontendSeconds": 2.3625,
+                  "baseSeconds": 0.2115,
+                  "observationSeconds": 0.054
+                }
+              },
+              "wholeProcessRatio": 0.9317159259188135,
+              "frontendRatio": 0.9250195771339075
+            }
+          ]
+        },
+        {
+          "id": "precedence",
+          "cases": [
+            {
+              "source": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-baseline-source01/compiler.bend",
+                "bytes": 356626,
+                "sha256": "578d0d3fa834ba5ac0402e7fc19e7ae22368b80d8af94fc08fcd61ca239a0493"
+              },
+              "medians": {
+                "baseline": {
+                  "seconds": 2.847371365642175,
+                  "frontendSeconds": 2.549,
+                  "baseSeconds": 0.213,
+                  "observationSeconds": 0.054
+                },
+                "candidate": {
+                  "seconds": 2.7641051404643804,
+                  "frontendSeconds": 2.4665,
+                  "baseSeconds": 0.212,
+                  "observationSeconds": 0.0545
+                }
+              },
+              "wholeProcessRatio": 0.9707568088298818,
+              "frontendRatio": 0.9676343664182032
+            }
+          ]
+        },
+        {
+          "id": "field",
+          "cases": [
+            {
+              "source": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-baseline-source01/compiler.bend",
+                "bytes": 356626,
+                "sha256": "578d0d3fa834ba5ac0402e7fc19e7ae22368b80d8af94fc08fcd61ca239a0493"
+              },
+              "medians": {
+                "baseline": {
+                  "seconds": 6.741771318018436,
+                  "frontendSeconds": 5.391500000000001,
+                  "baseSeconds": 0.216,
+                  "observationSeconds": 1.1025
+                },
+                "candidate": {
+                  "seconds": 6.630093053914607,
+                  "frontendSeconds": 5.285500000000001,
+                  "baseSeconds": 0.211,
+                  "observationSeconds": 1.1015000000000001
+                }
+              },
+              "wholeProcessRatio": 0.983434878040827,
+              "frontendRatio": 0.9803394231660948
+            }
+          ]
+        },
+        {
+          "id": "combined",
+          "cases": [
+            {
+              "source": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-baseline-source01/compiler.bend",
+                "bytes": 356626,
+                "sha256": "578d0d3fa834ba5ac0402e7fc19e7ae22368b80d8af94fc08fcd61ca239a0493"
+              },
+              "medians": {
+                "baseline": {
+                  "seconds": 6.676704969489947,
+                  "frontendSeconds": 5.3365,
+                  "baseSeconds": 0.213,
+                  "observationSeconds": 1.0955
+                },
+                "candidate": {
+                  "seconds": 6.303907240042463,
+                  "frontendSeconds": 4.9704999999999995,
+                  "baseSeconds": 0.213,
+                  "observationSeconds": 1.088
+                }
+              },
+              "wholeProcessRatio": 0.9441644147598208,
+              "frontendRatio": 0.9314157219151128
+            }
+          ]
+        }
+      ],
+      "throughputVsSerial": 1.0
+    },
+    {
+      "run": "calibration-parallel01",
+      "seconds": 38.89032883197069,
+      "childCpuSeconds": 76.89816400000001,
+      "cpus": [
+        3,
+        5
+      ],
+      "peakTreeRssMiB": 161.55078125,
+      "comparisons": [
+        {
+          "id": "lookahead",
+          "cases": [
+            {
+              "source": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-baseline-source01/compiler.bend",
+                "bytes": 356626,
+                "sha256": "578d0d3fa834ba5ac0402e7fc19e7ae22368b80d8af94fc08fcd61ca239a0493"
+              },
+              "medians": {
+                "baseline": {
+                  "seconds": 2.878657071152702,
+                  "frontendSeconds": 2.5780000000000003,
+                  "baseSeconds": 0.214,
+                  "observationSeconds": 0.0555
+                },
+                "candidate": {
+                  "seconds": 2.521657104603946,
+                  "frontendSeconds": 2.2215,
+                  "baseSeconds": 0.2155,
+                  "observationSeconds": 0.054
+                }
+              },
+              "wholeProcessRatio": 0.8759838502035249,
+              "frontendRatio": 0.8617145073700542
+            }
+          ]
+        },
+        {
+          "id": "precedence",
+          "cases": [
+            {
+              "source": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-baseline-source01/compiler.bend",
+                "bytes": 356626,
+                "sha256": "578d0d3fa834ba5ac0402e7fc19e7ae22368b80d8af94fc08fcd61ca239a0493"
+              },
+              "medians": {
+                "baseline": {
+                  "seconds": 2.9022858841344714,
+                  "frontendSeconds": 2.601,
+                  "baseSeconds": 0.215,
+                  "observationSeconds": 0.055
+                },
+                "candidate": {
+                  "seconds": 2.810366593534127,
+                  "frontendSeconds": 2.508,
+                  "baseSeconds": 0.2165,
+                  "observationSeconds": 0.0545
+                }
+              },
+              "wholeProcessRatio": 0.9683286573859498,
+              "frontendRatio": 0.9642445213379469
+            }
+          ]
+        },
+        {
+          "id": "field",
+          "cases": [
+            {
+              "source": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-baseline-source01/compiler.bend",
+                "bytes": 356626,
+                "sha256": "578d0d3fa834ba5ac0402e7fc19e7ae22368b80d8af94fc08fcd61ca239a0493"
+              },
+              "medians": {
+                "baseline": {
+                  "seconds": 6.850292324554175,
+                  "frontendSeconds": 5.48,
+                  "baseSeconds": 0.215,
+                  "observationSeconds": 1.1235
+                },
+                "candidate": {
+                  "seconds": 6.721935191890225,
+                  "frontendSeconds": 5.362500000000001,
+                  "baseSeconds": 0.214,
+                  "observationSeconds": 1.1145
+                }
+              },
+              "wholeProcessRatio": 0.9812625320814606,
+              "frontendRatio": 0.978558394160584
+            }
+          ]
+        },
+        {
+          "id": "combined",
+          "cases": [
+            {
+              "source": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-baseline-source01/compiler.bend",
+                "bytes": 356626,
+                "sha256": "578d0d3fa834ba5ac0402e7fc19e7ae22368b80d8af94fc08fcd61ca239a0493"
+              },
+              "medians": {
+                "baseline": {
+                  "seconds": 6.893430595984682,
+                  "frontendSeconds": 5.513,
+                  "baseSeconds": 0.2165,
+                  "observationSeconds": 1.1320000000000001
+                },
+                "candidate": {
+                  "seconds": 6.489032273413613,
+                  "frontendSeconds": 5.107,
+                  "baseSeconds": 0.224,
+                  "observationSeconds": 1.1265
+                }
+              },
+              "wholeProcessRatio": 0.9413356938986772,
+              "frontendRatio": 0.9263558860874298
+            }
+          ]
+        }
+      ],
+      "throughputVsSerial": 1.9671831544425646
+    },
+    {
+      "run": "calibration-four01",
+      "seconds": 28.170452976133674,
+      "childCpuSeconds": 79.07558399999999,
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "peakTreeRssMiB": 266.75,
+      "comparisons": [
+        {
+          "id": "lookahead",
+          "cases": [
+            {
+              "source": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-baseline-source01/compiler.bend",
+                "bytes": 356626,
+                "sha256": "578d0d3fa834ba5ac0402e7fc19e7ae22368b80d8af94fc08fcd61ca239a0493"
+              },
+              "medians": {
+                "baseline": {
+                  "seconds": 3.0316561649087816,
+                  "frontendSeconds": 2.7165,
+                  "baseSeconds": 0.2245,
+                  "observationSeconds": 0.057999999999999996
+                },
+                "candidate": {
+                  "seconds": 2.6551440490875393,
+                  "frontendSeconds": 2.343,
+                  "baseSeconds": 0.223,
+                  "observationSeconds": 0.057
+                }
+              },
+              "wholeProcessRatio": 0.8758064584700122,
+              "frontendRatio": 0.8625069022639426
+            }
+          ]
+        },
+        {
+          "id": "precedence",
+          "cases": [
+            {
+              "source": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-baseline-source01/compiler.bend",
+                "bytes": 356626,
+                "sha256": "578d0d3fa834ba5ac0402e7fc19e7ae22368b80d8af94fc08fcd61ca239a0493"
+              },
+              "medians": {
+                "baseline": {
+                  "seconds": 3.0532979499548674,
+                  "frontendSeconds": 2.7344999999999997,
+                  "baseSeconds": 0.2285,
+                  "observationSeconds": 0.057999999999999996
+                },
+                "candidate": {
+                  "seconds": 2.929307381156832,
+                  "frontendSeconds": 2.6155,
+                  "baseSeconds": 0.225,
+                  "observationSeconds": 0.057
+                }
+              },
+              "wholeProcessRatio": 0.9593912645178083,
+              "frontendRatio": 0.9564819893947706
+            }
+          ]
+        },
+        {
+          "id": "combined",
+          "cases": [
+            {
+              "source": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-baseline-source01/compiler.bend",
+                "bytes": 356626,
+                "sha256": "578d0d3fa834ba5ac0402e7fc19e7ae22368b80d8af94fc08fcd61ca239a0493"
+              },
+              "medians": {
+                "baseline": {
+                  "seconds": 6.971979532158002,
+                  "frontendSeconds": 5.578,
+                  "baseSeconds": 0.2195,
+                  "observationSeconds": 1.1425
+                },
+                "candidate": {
+                  "seconds": 6.585858383914456,
+                  "frontendSeconds": 5.213,
+                  "baseSeconds": 0.222,
+                  "observationSeconds": 1.119
+                }
+              },
+              "wholeProcessRatio": 0.944618146616384,
+              "frontendRatio": 0.9345643599856579
+            }
+          ]
+        },
+        {
+          "id": "field",
+          "cases": [
+            {
+              "source": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-baseline-source01/compiler.bend",
+                "bytes": 356626,
+                "sha256": "578d0d3fa834ba5ac0402e7fc19e7ae22368b80d8af94fc08fcd61ca239a0493"
+              },
+              "medians": {
+                "baseline": {
+                  "seconds": 7.0755944706033915,
+                  "frontendSeconds": 5.666,
+                  "baseSeconds": 0.2245,
+                  "observationSeconds": 1.153
+                },
+                "candidate": {
+                  "seconds": 6.82915233168751,
+                  "frontendSeconds": 5.4645,
+                  "baseSeconds": 0.2185,
+                  "observationSeconds": 1.114
+                }
+              },
+              "wholeProcessRatio": 0.9651701153959908,
+              "frontendRatio": 0.9644369925873632
+            }
+          ]
+        }
+      ],
+      "throughputVsSerial": 2.715767467913992
+    },
+    {
+      "run": "calibration-medium01",
+      "seconds": 88.72226294409484,
+      "childCpuSeconds": 87.989902,
+      "cpus": [
+        3
+      ],
+      "peakTreeRssMiB": 141.81640625,
+      "comparisons": [
+        {
+          "id": "lookahead",
+          "cases": [
+            {
+              "source": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/baseline-source03/compiler.bend",
+                "bytes": 656302,
+                "sha256": "351ad0e69554e5b12cf8367d5cdde648ab5a1787825614e23158196f5d0e851b"
+              },
+              "medians": {
+                "baseline": {
+                  "seconds": 6.174688450759277,
+                  "frontendSeconds": 5.7865,
+                  "baseSeconds": 0.2135,
+                  "observationSeconds": 0.136
+                },
+                "candidate": {
+                  "seconds": 5.45720581850037,
+                  "frontendSeconds": 5.0715,
+                  "baseSeconds": 0.211,
+                  "observationSeconds": 0.136
+                }
+              },
+              "wholeProcessRatio": 0.8838026180623444,
+              "frontendRatio": 0.8764365333102913
+            }
+          ]
+        },
+        {
+          "id": "combined",
+          "cases": [
+            {
+              "source": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/baseline-source03/compiler.bend",
+                "bytes": 656302,
+                "sha256": "351ad0e69554e5b12cf8367d5cdde648ab5a1787825614e23158196f5d0e851b"
+              },
+              "medians": {
+                "baseline": {
+                  "seconds": 16.458244842244312,
+                  "frontendSeconds": 13.8205,
+                  "baseSeconds": 0.2135,
+                  "observationSeconds": 2.3855
+                },
+                "candidate": {
+                  "seconds": 15.684731262503192,
+                  "frontendSeconds": 13.068999999999999,
+                  "baseSeconds": 0.2125,
+                  "observationSeconds": 2.3630000000000004
+                }
+              },
+              "wholeProcessRatio": 0.953001453851525,
+              "frontendRatio": 0.9456242538258384
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "nativeWorkloads": {
+    "mutual": {
+      "medians": {
+        "baseline": 0.8661538800224662,
+        "candidate": 0.9094380843453109
+      },
+      "ratio": 1.0499728804790691,
+      "seconds": 11.073747021146119,
+      "pairs": 6
+    },
+    "single": {
+      "medians": {
+        "baseline": 0.863975120941177,
+        "candidate": 0.6698740534484386
+      },
+      "ratio": 0.7753395175531292,
+      "seconds": 9.619925702922046,
+      "pairs": 6
+    }
+  },
+  "parseTransfer": {
+    "small-medium": {
+      "cases": [
+        {
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-baseline-source01/compiler.bend",
+            "bytes": 356626,
+            "sha256": "578d0d3fa834ba5ac0402e7fc19e7ae22368b80d8af94fc08fcd61ca239a0493"
+          },
+          "medians": {
+            "baseline": {
+              "seconds": 2.4881504287477583,
+              "frontendSeconds": 2.1925,
+              "baseSeconds": 0.2115,
+              "observationSeconds": 0.054
+            },
+            "candidate": {
+              "seconds": 2.413502972573042,
+              "frontendSeconds": 2.117,
+              "baseSeconds": 0.212,
+              "observationSeconds": 0.054
+            }
+          },
+          "wholeProcessRatio": 0.9699988170681927,
+          "frontendRatio": 0.9655644241733182
+        },
+        {
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/baseline-source03/compiler.bend",
+            "bytes": 656302,
+            "sha256": "351ad0e69554e5b12cf8367d5cdde648ab5a1787825614e23158196f5d0e851b"
+          },
+          "medians": {
+            "baseline": {
+              "seconds": 5.436794840497896,
+              "frontendSeconds": 5.054,
+              "baseSeconds": 0.21,
+              "observationSeconds": 0.1355
+            },
+            "candidate": {
+              "seconds": 5.245803154539317,
+              "frontendSeconds": 4.8605,
+              "baseSeconds": 0.2105,
+              "observationSeconds": 0.137
+            }
+          },
+          "wholeProcessRatio": 0.9648705364903767,
+          "frontendRatio": 0.9617134942619707
+        }
+      ],
+      "seconds": 31.616549448110163,
+      "rounds": 2
+    },
+    "full": {
+      "cases": [
+        {
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/source-final/compiler.bend",
+            "bytes": 3150535,
+            "sha256": "434edd1d56128f9480800573abf8a0ae21d910a547837af089f25cd1d0e89b71"
+          },
+          "medians": {
+            "baseline": {
+              "seconds": 24.03364020260051,
+              "frontendSeconds": 23.238500000000002,
+              "baseSeconds": 0.218,
+              "observationSeconds": 0.4825
+            },
+            "candidate": {
+              "seconds": 23.367250048788264,
+              "frontendSeconds": 22.573,
+              "baseSeconds": 0.2125,
+              "observationSeconds": 0.487
+            }
+          },
+          "wholeProcessRatio": 0.9722726083858017,
+          "frontendRatio": 0.9713621791423714
+        }
+      ],
+      "seconds": 95.0785976331681,
+      "rounds": 2
+    }
+  },
+  "gates": {
+    "pattern-values02": {
+      "complete": true,
+      "rows": 57,
+      "checks": null
+    },
+    "pattern-single-values01": {
+      "complete": true,
+      "rows": 57,
+      "checks": null
+    },
+    "parse-values02": {
+      "complete": true,
+      "rows": 14,
+      "checks": null
+    },
+    "batch-controls01": {
+      "complete": true,
+      "rows": 0,
+      "checks": [
+        "timeout-killed",
+        "exit-preserved",
+        "later-job-runs",
+        "no-blocked-lane",
+        "changed-input-refused"
+      ]
+    }
+  },
+  "cost": {
+    "guards": [
+      {
+        "run": "batch-controls01-guard",
+        "complete": true,
+        "seconds": 0.48411876522004604,
+        "stoppedFor": null,
+        "peakTreeRssMiB": 46.375
+      },
+      {
+        "run": "calibration-four01-guard",
+        "complete": true,
+        "seconds": 28.485251643694937,
+        "stoppedFor": null,
+        "peakTreeRssMiB": 266.75
+      },
+      {
+        "run": "calibration-medium01-guard",
+        "complete": true,
+        "seconds": 88.99655485991389,
+        "stoppedFor": null,
+        "peakTreeRssMiB": 141.81640625
+      },
+      {
+        "run": "calibration-parallel01-guard",
+        "complete": true,
+        "seconds": 39.15216361917555,
+        "stoppedFor": null,
+        "peakTreeRssMiB": 161.55078125
+      },
+      {
+        "run": "calibration-serial01-guard",
+        "complete": false,
+        "seconds": 6.215414321050048,
+        "stoppedFor": "disk-budget",
+        "peakTreeRssMiB": 16.5
+      },
+      {
+        "run": "calibration-serial02-guard",
+        "complete": true,
+        "seconds": 76.75758761493489,
+        "stoppedFor": null,
+        "peakTreeRssMiB": 87.984375
+      },
+      {
+        "run": "parse-baseline-api01-guard",
+        "complete": true,
+        "seconds": 4.007555620279163,
+        "stoppedFor": null,
+        "peakTreeRssMiB": 353.99609375
+      },
+      {
+        "run": "parse-full01-guard",
+        "complete": true,
+        "seconds": 95.19281106907874,
+        "stoppedFor": null,
+        "peakTreeRssMiB": 338.02734375
+      },
+      {
+        "run": "parse-single-api01-guard",
+        "complete": true,
+        "seconds": 4.31567452615127,
+        "stoppedFor": null,
+        "peakTreeRssMiB": 430.3046875
+      },
+      {
+        "run": "parse-single-native01-guard",
+        "complete": true,
+        "seconds": 27.96096389601007,
+        "stoppedFor": null,
+        "peakTreeRssMiB": 175.77734375
+      },
+      {
+        "run": "parse-transfer01-guard",
+        "complete": true,
+        "seconds": 31.735072060953826,
+        "stoppedFor": null,
+        "peakTreeRssMiB": 99.3046875
+      },
+      {
+        "run": "parse-values01-guard",
+        "complete": false,
+        "seconds": 0.9018925628624856,
+        "stoppedFor": null,
+        "peakTreeRssMiB": 198.84765625
+      },
+      {
+        "run": "parse-values02-guard",
+        "complete": true,
+        "seconds": 10.873797634150833,
+        "stoppedFor": null,
+        "peakTreeRssMiB": 353.01953125
+      },
+      {
+        "run": "pattern-api01-guard",
+        "complete": false,
+        "seconds": 0.14617619197815657,
+        "stoppedFor": null,
+        "peakTreeRssMiB": 14.35546875
+      },
+      {
+        "run": "pattern-api02-guard",
+        "complete": false,
+        "seconds": 2.086786424741149,
+        "stoppedFor": null,
+        "peakTreeRssMiB": 461.09375
+      },
+      {
+        "run": "pattern-api03-guard",
+        "complete": false,
+        "seconds": 0.6170992720872164,
+        "stoppedFor": null,
+        "peakTreeRssMiB": 223.3046875
+      },
+      {
+        "run": "pattern-api04-guard",
+        "complete": false,
+        "seconds": 0.8848418178968132,
+        "stoppedFor": null,
+        "peakTreeRssMiB": 223.359375
+      },
+      {
+        "run": "pattern-api05-guard",
+        "complete": false,
+        "seconds": 0.6376127861440182,
+        "stoppedFor": null,
+        "peakTreeRssMiB": 223.3203125
+      },
+      {
+        "run": "pattern-api06-guard",
+        "complete": true,
+        "seconds": 1.457613328937441,
+        "stoppedFor": null,
+        "peakTreeRssMiB": 223.3515625
+      },
+      {
+        "run": "pattern-native-api01-guard",
+        "complete": true,
+        "seconds": 2.107277538161725,
+        "stoppedFor": null,
+        "peakTreeRssMiB": 459.109375
+      },
+      {
+        "run": "pattern-native-baseline01-guard",
+        "complete": true,
+        "seconds": 1.6491249110549688,
+        "stoppedFor": null,
+        "peakTreeRssMiB": 49.4375
+      },
+      {
+        "run": "pattern-native-candidate01-guard",
+        "complete": false,
+        "seconds": 0.3294165092520416,
+        "stoppedFor": null,
+        "peakTreeRssMiB": 17.6796875
+      },
+      {
+        "run": "pattern-native-candidate02-guard",
+        "complete": true,
+        "seconds": 1.7287190747447312,
+        "stoppedFor": null,
+        "peakTreeRssMiB": 48.62890625
+      },
+      {
+        "run": "pattern-oracle01-guard",
+        "complete": true,
+        "seconds": 6.376005119178444,
+        "stoppedFor": null,
+        "peakTreeRssMiB": 278.05859375
+      },
+      {
+        "run": "pattern-single-api01-guard",
+        "complete": true,
+        "seconds": 1.9922126247547567,
+        "stoppedFor": null,
+        "peakTreeRssMiB": 223.4296875
+      },
+      {
+        "run": "pattern-single-native01-guard",
+        "complete": true,
+        "seconds": 2.8149960241280496,
+        "stoppedFor": null,
+        "peakTreeRssMiB": 58.34765625
+      },
+      {
+        "run": "pattern-single-timing01-guard",
+        "complete": true,
+        "seconds": 9.690666389185935,
+        "stoppedFor": null,
+        "peakTreeRssMiB": 20.1015625
+      },
+      {
+        "run": "pattern-single-values01-guard",
+        "complete": true,
+        "seconds": 2.5325845521874726,
+        "stoppedFor": null,
+        "peakTreeRssMiB": 281.05859375
+      },
+      {
+        "run": "pattern-timing01-guard",
+        "complete": true,
+        "seconds": 11.16024047229439,
+        "stoppedFor": null,
+        "peakTreeRssMiB": 20.39453125
+      },
+      {
+        "run": "pattern-values01-guard",
+        "complete": false,
+        "seconds": 1.6972067370079458,
+        "stoppedFor": null,
+        "peakTreeRssMiB": 281.55078125
+      },
+      {
+        "run": "pattern-values02-guard",
+        "complete": true,
+        "seconds": 2.5116410148330033,
+        "stoppedFor": null,
+        "peakTreeRssMiB": 281.4609375
+      }
+    ],
+    "guardCount": 31,
+    "targetSeconds": 465.499078982044,
+    "failedGuardCount": 9,
+    "failedGuardSeconds": 13.516446623019874,
+    "scope": "Outer supervised target wall time; no overlapping guarded runs. Metadata preparation, research, agent work, storage dedup and writing are outside this sum. Not quota measurement."
+  },
+  "acquisition": {
+    "pattern-native-baseline01": {
+      "wallSeconds": 1.273653187789023,
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/pattern-native-baseline01/program",
+        "bytes": 187344,
+        "sha256": "555d9b539cfc2462dbc629a853e3238aaf338a2091b7c818766a32c33f00cb1c"
+      },
+      "qbeBytes": 437041
+    },
+    "pattern-native-candidate02": {
+      "wallSeconds": 1.3576297019608319,
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/pattern-native-candidate02/program",
+        "bytes": 202304,
+        "sha256": "67159ac1641f3fbb778675599405d9f613b14e4d8eaded72e01e5ce5f7183798"
+      },
+      "qbeBytes": 513066
+    },
+    "pattern-single-native01": {
+      "wallSeconds": 2.4483842020854354,
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/pattern-single-native01/program",
+        "bytes": 176864,
+        "sha256": "458c54b7fa64e75b8ca20b5df669ebf89460a621c5c7c82d6b5369aafc6729a9"
+      },
+      "qbeBytes": 416732
+    },
+    "parse-single-native01": {
+      "wallSeconds": 27.603904434945434,
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/parse-single-native01/program",
+        "bytes": 3159232,
+        "sha256": "ad9d03b9d57c261303c1babcf8c37e2fcd9b4e1ec27acc98b93578750bb6be4a"
+      },
+      "qbeBytes": null
+    }
+  }
+}

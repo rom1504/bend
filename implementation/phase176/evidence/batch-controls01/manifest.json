@@ -1,0 +1,46 @@
+{
+  "kind": "phase176-independent-jobs",
+  "version": 1,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase176/batch-control-child.py",
+      "bytes": 289,
+      "sha256": "0a692233cc84a67b8e8aa64de6143745492678b82bdf746700f764fc1994a375"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "timeout",
+      "seconds": 0.25,
+      "resultReport": false,
+      "command": [
+        "python3",
+        "-B",
+        "selfhost/tests/phase176/batch-control-child.py",
+        "timeout"
+      ]
+    },
+    {
+      "id": "fail",
+      "seconds": 2,
+      "resultReport": false,
+      "command": [
+        "python3",
+        "-B",
+        "selfhost/tests/phase176/batch-control-child.py",
+        "fail"
+      ]
+    },
+    {
+      "id": "pass",
+      "seconds": 2,
+      "resultReport": false,
+      "command": [
+        "python3",
+        "-B",
+        "selfhost/tests/phase176/batch-control-child.py",
+        "pass"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": true,
+  "started": 1794070836.102095,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "0,1,2,3",
+    "python3",
+    "-B",
+    "selfhost/tests/phase176/batch.py",
+    "--manifest",
+    "experiments/phase176/calibration-small.json",
+    "--cpus",
+    "0,1,2,3",
+    "--out",
+    "selfhost/build/phase176/calibration-four01"
+  ],
+  "returncode": 0,
+  "rssLimitBytes": 2147483648,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 279707648,
+  "minimumAvailableBytes": 25116618752,
+  "diskBudgetBytes": 8388608,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 5388681216,
+  "minimumDiskFreeBytes": 5388353536,
+  "peakRunAllocatedBytes": 282624,
+  "peakFilesystemDecreaseBytes": 327680,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/calibration-four01"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "0,1,2,3",
+    "fileLimitBytes": 134217728,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase176/batch.py",
+        "sha256": "520679ad84d7d6ca0a7a574ad9d4dc9e51316d556a610b8a31f415debeb1bf74",
+        "bytes": 7058
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/experiments/phase176/calibration-small.json",
+        "sha256": "f602b10d980f5d11b5cedecfc65e9738e9b9117a0b45ecc5e433061537303571",
+        "bytes": 7945
+      }
+    ]
+  },
+  "wallSeconds": 28.485251643694937,
+  "finished": 1794070864.5871263
+}

@@ -1,4 +1,29 @@
-# Current frontend frontier — Phase175 integrated; Phase171 installed
+# Current research frontier — Phase176 calibrated experiments
+
+[Report](../implementation/phase176/README.md) · [Metrics](../implementation/phase176/metrics.json) ·
+[Runner](../selfhost/tests/phase176/README.md).
+
+The same four-comparison frontend batch takes76.504s serially,38.890s with two
+workers and28.170s with four distinct physical cores (2.72× throughput). These are
+software screens under one aggregate guard; final timing remains isolated.
+Smaller real compiler inputs recover known broad positive/neutral outcomes, but
+do not predict gain magnitude or automatically authorize promotion.
+
+A source-level explicit-frame traversal is5.00% slower while still using generic
+scheduler functions. A separate single-owner loop gains a private worker and
+reduces complete native workload time22.47%. Real parse/load falls3.44%/3.83% on
+two smaller compiler inputs and2.86% on the frozen full source (23.2385→22.5730s).
+57 complete-value controls per variant and14 complete parser comparisons pass.
+These are experimental components: no new whole-frontend/cold-build score,
+maintained source change, installed promotion or full-image qualification.
+
+Next prioritize a larger measured semantic cost and test actual private-worker
+admission before image acquisition. Preserve the rejected frame version. Avoid
+manually converting every traversal or adding another global pass from one kernel.
+The qualified source/image frontier remains Phase175 below; installed Phase171
+is unchanged. Exact QBE duplicate storage aliases are immutable.
+
+# Qualified frontend frontier — Phase175 integrated; Phase171 installed
 
 [Report](../implementation/phase175/README.md) · [Metrics](../implementation/phase175/metrics.json) ·
 [Reproduce](../implementation/phase175/reproduce.md).

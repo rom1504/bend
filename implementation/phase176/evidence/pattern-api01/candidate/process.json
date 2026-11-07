@@ -1,0 +1,41 @@
+{
+  "id": "candidate",
+  "cpu": 5,
+  "command": [
+    "taskset",
+    "-c",
+    "5",
+    "node",
+    "selfhost/tools/build/hosted.mjs",
+    "acquire",
+    "--source",
+    "selfhost/build/phase176/pattern-candidate-source01/compiler.bend",
+    "--exports",
+    "selfhost/build/phase176/pattern-candidate-source01/exports.json",
+    "--upstream",
+    "selfhost/.bootstrap/upstream-phase66",
+    "--engine",
+    "selfhost/.assets/bin/bun",
+    "--out",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/pattern-api01/candidate/result"
+  ],
+  "complete": false,
+  "started": 1794070278.2540529,
+  "limitSeconds": 35,
+  "exitCode": 127,
+  "seconds": 0.029019287787377834,
+  "userSeconds": 0.0012699999999999999,
+  "systemSeconds": 0.0,
+  "peakRssKiB": 8268,
+  "stdout": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/pattern-api01/candidate/stdout",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stderr": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/pattern-api01/candidate/stderr",
+    "bytes": 59,
+    "sha256": "f904fceb40683db0be2161895aa1cb3369fede867e5682907458c56e980095ab"
+  },
+  "payloadComplete": false
+}

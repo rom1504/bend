@@ -1,0 +1,71 @@
+{
+  "kind": "phase176-independent-jobs",
+  "version": 1,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/hosted.mjs",
+      "bytes": 13187,
+      "sha256": "fc0aa95be44aff8b7a00f0821055151cef82fae6df087fa6c0f0fc26da6bdf3b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/pattern-baseline-source01/compiler.bend",
+      "bytes": 12134,
+      "sha256": "ac1cfec5d50168594f3fcfddcf73ef5f0003aad14f2e8eef21112fa7e890d068"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/pattern-baseline-source01/exports.json",
+      "bytes": 452,
+      "sha256": "a72db54662501238727847f9032b991e9fdb8d50191ca1ee8673f85d5aaf5dd7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/pattern-candidate-source01/compiler.bend",
+      "bytes": 13833,
+      "sha256": "5a26c331a60354992f3d7cc3a5153238d4ae35581460dbe92113662f0a090313"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/pattern-candidate-source01/exports.json",
+      "bytes": 452,
+      "sha256": "a72db54662501238727847f9032b991e9fdb8d50191ca1ee8673f85d5aaf5dd7"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "baseline",
+      "seconds": 35,
+      "command": [
+        "node",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase176/pattern-baseline-source01/compiler.bend",
+        "--exports",
+        "selfhost/build/phase176/pattern-baseline-source01/exports.json",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase66",
+        "--engine",
+        "selfhost/.assets/bin/bun",
+        "--out",
+        "{out}"
+      ]
+    },
+    {
+      "id": "candidate",
+      "seconds": 35,
+      "command": [
+        "node",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase176/pattern-candidate-source01/compiler.bend",
+        "--exports",
+        "selfhost/build/phase176/pattern-candidate-source01/exports.json",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase66",
+        "--engine",
+        "selfhost/.assets/bin/bun",
+        "--out",
+        "{out}"
+      ]
+    }
+  ]
+}

@@ -6915,3 +6915,25 @@ explicit. No new runtime score, upstream ratio,100s result or theorem is claimed
 
 The report retains failures, source/measurement scopes, bounded-loop tooling,
 verified storage recovery and an outer-guard cost census. No PR comment.
+
+## Phase176 — calibrated software screens and single-owner traversal
+
+[Report](../implementation/phase176/README.md) · [Metrics](../implementation/phase176/metrics.json).
+Four fixed frontend comparisons take76.504s serially,38.890s on two physical
+cores,28.170s on four:2.72× batch throughput with4.45% more child CPU. One aggregate
+guard; isolated final measurements. Small real compiler inputs preserve the known
+broad positive/neutral outcomes but do not establish universal proxy validity.
+
+Explicit mutually recursive traversal frames preserve complete values but slow
+an extracted native workload5.00%; generic scheduler boundaries remain. A single
+recursive owner instead gains a private worker, improves that workload22.47%,
+and transfers to3.44%/3.83% small compiler parse gains and2.86% full-source parse
+(23.2385→22.5730s).57 complete-value observations per variant,14 complete parser
+comparisons and native outputs pass. No new whole-frontend or complete-build
+measurement, production edit, installed change, proof theorem or PR comment.
+
+31 sealed guards/465.499 target seconds; nine nonzero runs/13.516s retained.
+One bounded read-only agent audit; trials dispatched by software. Exact duplicate
+QBE hardlinks recover23.49MiB with all paths preserved. Selected source-map
+metadata reduces3,044,736→63,311 bytes without changing generated source. Keep
+actual admission plus complete-workload evidence as the next experiment gate.

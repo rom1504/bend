@@ -1,0 +1,46 @@
+{
+  "id": "baseline",
+  "cpu": 3,
+  "command": [
+    "taskset",
+    "-c",
+    "3",
+    "selfhost/.assets/bin/bun",
+    "selfhost/tools/build/hosted.mjs",
+    "acquire",
+    "--source",
+    "selfhost/build/phase176/pattern-native-baseline-source01/compiler.bend",
+    "--exports",
+    "selfhost/build/phase176/pattern-native-baseline-source01/exports.json",
+    "--upstream",
+    "selfhost/.bootstrap/upstream-phase66",
+    "--engine",
+    "selfhost/.assets/bin/bun",
+    "--out",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/pattern-native-api01/baseline/result"
+  ],
+  "complete": true,
+  "started": 1794070725.362785,
+  "limitSeconds": 35,
+  "exitCode": 0,
+  "seconds": 1.441669869236648,
+  "userSeconds": 1.293031,
+  "systemSeconds": 0.144206,
+  "peakRssKiB": 116196,
+  "stdout": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/pattern-native-api01/baseline/stdout",
+    "bytes": 136,
+    "sha256": "7057c1f808417923ecf2e730dd88762aacb75cfa0a22bb91ff4b6d794c6b1d64"
+  },
+  "stderr": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/pattern-native-api01/baseline/stderr",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "payloadComplete": true,
+  "result": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/pattern-native-api01/baseline/result/report.json",
+    "bytes": 4802,
+    "sha256": "4f04388f115cf45b3a23381818e890dd75637ec4fc67cf6635749acb6de6b541"
+  }
+}

@@ -1,0 +1,264 @@
+{
+  "kind": "phase176-pattern-worker-inspection",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase176/inspect-machines.py",
+      "bytes": 2095,
+      "sha256": "6405af6f302cd7048093a3152a03b278be8f286667a2b8e154581ca3564963b7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/pattern-native-baseline01/report.json",
+      "bytes": 17261,
+      "sha256": "ac75b82108ee6c1b60484f4a1088631de867446b8239819b84112388833e3425"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/pattern-native-baseline01/program.ssa",
+      "bytes": 437041,
+      "sha256": "f415a095751d11549fee5c9b3ca3846b845f7a6cc36e18f79cbaac52e41b06c5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/pattern-native-candidate02/report.json",
+      "bytes": 17294,
+      "sha256": "b926262b5f3f1988e517146bf1dc49b754064006bea8dee210dc7640149afe97"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/pattern-native-candidate02/program.ssa",
+      "bytes": 513066,
+      "sha256": "5a2abac2ca780659290fab7da8ee3c3329e7d352afc78bf23e62c57dd643a8f5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/pattern-single-native01/report.json",
+      "bytes": 17168,
+      "sha256": "f062b7875f9b70a5c2c9b0a7e7af0611477d865c3be83a972630dd9894166471"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/pattern-single-native01/program.ssa",
+      "bytes": 416732,
+      "sha256": "353448e1dfa9c09ca5583d7b288cce6e7d39cae1c31274c6c306385edc68ebee"
+    }
+  ],
+  "images": [
+    {
+      "label": "baseline",
+      "qbeBytes": 437041,
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/pattern-native-baseline01/program",
+        "bytes": 187344,
+        "sha256": "555d9b539cfc2462dbc629a853e3238aaf338a2091b7c818766a32c33f00cb1c"
+      },
+      "functionCount": 271,
+      "privateWorkers": [],
+      "relevantFunctionCount": 12
+    },
+    {
+      "label": "mutual",
+      "qbeBytes": 513066,
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/pattern-native-candidate02/program",
+        "bytes": 202304,
+        "sha256": "67159ac1641f3fbb778675599405d9f613b14e4d8eaded72e01e5ce5f7183798"
+      },
+      "functionCount": 349,
+      "privateWorkers": [
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_55_54_112_109_95_114_101_118_101_114_115_101_",
+          "source": "$direct.p176pm_reverse",
+          "textBytes": 1739,
+          "calls": [
+            "p125_rt_take2",
+            "p125_rt_ctor2",
+            "p111_rt_fail"
+          ],
+          "jumpCount": 2,
+          "callsSelf": false
+        }
+      ],
+      "relevantFunctionCount": 24
+    },
+    {
+      "label": "single",
+      "qbeBytes": 416732,
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/pattern-single-native01/program",
+        "bytes": 176864,
+        "sha256": "458c54b7fa64e75b8ca20b5df669ebf89460a621c5c7c82d6b5369aafc6729a9"
+      },
+      "functionCount": 193,
+      "privateWorkers": [
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_55_54_112_115_95_114_101_118_101_114_115_101_",
+          "source": "$direct.p176ps_reverse",
+          "textBytes": 1739,
+          "calls": [
+            "p125_rt_take2",
+            "p125_rt_ctor2",
+            "p111_rt_fail"
+          ],
+          "jumpCount": 2,
+          "callsSelf": false
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_55_54_112_115_95_115_116_97_116_101_",
+          "source": "$direct.p176ps_state",
+          "textBytes": 1114,
+          "calls": [
+            "p111_rt_fail"
+          ],
+          "jumpCount": 1,
+          "callsSelf": false
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_55_54_112_115_95_108_111_111_112_",
+          "source": "$direct.p176ps_loop",
+          "textBytes": 74671,
+          "calls": [
+            "p111_rt_sink",
+            "p111_rt_keep",
+            "p111_rt_keep",
+            "p113d_FID_36_100_105_114_101_99_116_46_116_103_",
+            "p113d_FID_36_100_105_114_101_99_116_46_102_95_101_113_",
+            "p113d_FID_36_100_105_114_101_99_116_46_66_111_111_108_46_97_110_100_",
+            "p113d_FID_36_100_105_114_101_99_116_46_105_120_",
+            "p113d_FID_36_100_105_114_101_99_116_46_66_111_111_108_46_97_110_100_",
+            "p113d_FID_36_100_105_114_101_99_116_46_112_49_55_54_112_115_95_115_116_97_116_101_",
+            "p111_rt_sink",
+            "p111_rt_sink",
+            "p125_rt_take2",
+            "p111_rt_take",
+            "p125_rt_ctor2",
+            "p113d_FID_36_100_105_114_101_99_116_46_112_49_55_54_112_115_95_114_101_118_101_114_115_101_",
+            "p113d_FID_36_100_105_114_101_99_116_46_107_95_119_105_116_104_95_99_104_105_108_100_114_101_110_",
+            "p125_rt_take2",
+            "p125_rt_ctor2",
+            "p111_rt_ctor",
+            "p125_rt_ctor2",
+            "p111_rt_sink",
+            "p111_rt_sink",
+            "p111_rt_sink",
+            "p111_rt_fail",
+            "p111_rt_sink",
+            "p111_rt_sink",
+            "p111_rt_fail",
+            "p111_rt_sink",
+            "p111_rt_sink",
+            "p111_rt_fail",
+            "p111_rt_take",
+            "p111_rt_sink",
+            "p111_rt_fail",
+            "p111_rt_fail",
+            "p111_rt_ctor",
+            "p111_rt_take",
+            "p111_rt_sink",
+            "p111_rt_fail",
+            "p111_rt_fail",
+            "p111_rt_ctor",
+            "p111_rt_take",
+            "p111_rt_sink",
+            "p111_rt_fail",
+            "p111_rt_fail",
+            "p111_rt_ctor",
+            "p111_rt_fail",
+            "p111_rt_sink",
+            "p111_rt_sink",
+            "p125_rt_take2",
+            "p111_rt_take",
+            "p125_rt_ctor2",
+            "p113d_FID_36_100_105_114_101_99_116_46_112_49_55_54_112_115_95_114_101_118_101_114_115_101_",
+            "p113d_FID_36_100_105_114_101_99_116_46_107_95_119_105_116_104_95_99_104_105_108_100_114_101_110_",
+            "p125_rt_take2",
+            "p125_rt_ctor2",
+            "p111_rt_ctor",
+            "p125_rt_ctor2",
+            "p111_rt_sink",
+            "p111_rt_sink",
+            "p111_rt_sink",
+            "p111_rt_fail",
+            "p111_rt_sink",
+            "p111_rt_sink",
+            "p111_rt_fail",
+            "p111_rt_sink",
+            "p111_rt_sink",
+            "p111_rt_fail",
+            "p111_rt_sink",
+            "p111_rt_keep",
+            "p111_rt_keep",
+            "p113d_FID_36_100_105_114_101_99_116_46_107_98_",
+            "p113d_FID_36_100_105_114_101_99_116_46_107_101_",
+            "p111_rt_sink",
+            "p111_rt_sink",
+            "p125_rt_take2",
+            "p111_rt_take",
+            "p125_rt_ctor2",
+            "p113d_FID_36_100_105_114_101_99_116_46_112_49_55_54_112_115_95_114_101_118_101_114_115_101_",
+            "p113d_FID_36_100_105_114_101_99_116_46_107_95_119_105_116_104_95_99_104_105_108_100_114_101_110_",
+            "p125_rt_take2",
+            "p125_rt_ctor2",
+            "p111_rt_ctor",
+            "p125_rt_ctor2",
+            "p111_rt_sink",
+            "p111_rt_sink",
+            "p111_rt_sink",
+            "p111_rt_fail",
+            "p111_rt_sink",
+            "p111_rt_sink",
+            "p111_rt_fail",
+            "p111_rt_sink",
+            "p111_rt_sink",
+            "p111_rt_fail",
+            "p125_rt_take2",
+            "p111_rt_ctor",
+            "p125_rt_ctor2",
+            "p111_rt_sink",
+            "p111_rt_fail",
+            "p111_rt_sink",
+            "p111_rt_sink",
+            "p125_rt_take2",
+            "p111_rt_take",
+            "p125_rt_ctor2",
+            "p113d_FID_36_100_105_114_101_99_116_46_112_49_55_54_112_115_95_114_101_118_101_114_115_101_",
+            "p113d_FID_36_100_105_114_101_99_116_46_107_95_119_105_116_104_95_99_104_105_108_100_114_101_110_",
+            "p125_rt_take2",
+            "p125_rt_ctor2",
+            "p111_rt_ctor",
+            "p125_rt_ctor2",
+            "p111_rt_sink",
+            "p111_rt_sink",
+            "p111_rt_sink",
+            "p111_rt_fail",
+            "p111_rt_sink",
+            "p111_rt_sink",
+            "p111_rt_fail",
+            "p111_rt_sink",
+            "p111_rt_sink",
+            "p111_rt_fail",
+            "p111_rt_fail"
+          ],
+          "jumpCount": 40,
+          "callsSelf": false
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_55_54_112_115_95_115_117_98_95_101_110_116_114_121_",
+          "source": "$direct.p176ps_sub_entry",
+          "textBytes": 1273,
+          "calls": [
+            "p113d_FID_36_100_105_114_101_99_116_46_112_49_55_54_112_115_95_108_111_111_112_"
+          ],
+          "jumpCount": 1,
+          "callsSelf": false
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_102_95_112_97_116_116_101_114_110_95_115_117_98_",
+          "source": "$direct.f_pattern_sub",
+          "textBytes": 695,
+          "calls": [
+            "p113d_FID_36_100_105_114_101_99_116_46_112_49_55_54_112_115_95_115_117_98_95_101_110_116_114_121_"
+          ],
+          "jumpCount": 1,
+          "callsSelf": false
+        }
+      ],
+      "relevantFunctionCount": 7
+    }
+  ]
+}

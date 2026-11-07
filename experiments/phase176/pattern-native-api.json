@@ -1,0 +1,76 @@
+{
+  "kind": "phase176-independent-jobs",
+  "version": 1,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/hosted.mjs",
+      "bytes": 13187,
+      "sha256": "fc0aa95be44aff8b7a00f0821055151cef82fae6df087fa6c0f0fc26da6bdf3b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+      "bytes": 88979072,
+      "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/pattern-native-baseline-source01/compiler.bend",
+      "bytes": 11910,
+      "sha256": "9db90903e2b67050a16166d0b08a64b3c0d24c153ae205364a82791b5a463d30"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/pattern-native-baseline-source01/exports.json",
+      "bytes": 339,
+      "sha256": "e64e7b9127be2474c8cce5897f6172b553fabf1527a7f612e3d75bbd205d342c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/pattern-native-candidate-source01/compiler.bend",
+      "bytes": 12949,
+      "sha256": "de3ced1b7b7d5e0da7bd0f8426d56f6e10058cd571a0fd63c5e23ffe6df147be"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase176/pattern-native-candidate-source01/exports.json",
+      "bytes": 339,
+      "sha256": "e64e7b9127be2474c8cce5897f6172b553fabf1527a7f612e3d75bbd205d342c"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "baseline",
+      "seconds": 35,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase176/pattern-native-baseline-source01/compiler.bend",
+        "--exports",
+        "selfhost/build/phase176/pattern-native-baseline-source01/exports.json",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase66",
+        "--engine",
+        "selfhost/.assets/bin/bun",
+        "--out",
+        "{out}"
+      ]
+    },
+    {
+      "id": "candidate",
+      "seconds": 35,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase176/pattern-native-candidate-source01/compiler.bend",
+        "--exports",
+        "selfhost/build/phase176/pattern-native-candidate-source01/exports.json",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase66",
+        "--engine",
+        "selfhost/.assets/bin/bun",
+        "--out",
+        "{out}"
+      ]
+    }
+  ]
+}

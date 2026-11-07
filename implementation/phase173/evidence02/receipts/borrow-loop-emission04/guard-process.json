@@ -1,0 +1,85 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": true,
+  "started": 1794008173.3239574,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "3",
+    "selfhost/.assets/bin/bun",
+    "selfhost/tests/phase171/request.mjs",
+    "--receipt",
+    "selfhost/build/phase173/borrow-api04/report.json",
+    "--assembly",
+    "selfhost/build/phase173/borrow-source04/manifest.json",
+    "--source",
+    "selfhost/build/phase173/borrow-loop-source01/compiler.bend",
+    "--mode",
+    "baseline",
+    "--out",
+    "selfhost/build/phase173/borrow-loop-emission04"
+  ],
+  "returncode": 0,
+  "rssLimitBytes": 2147483648,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 415215616,
+  "minimumAvailableBytes": 24915898368,
+  "diskBudgetBytes": 16777216,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 5952786432,
+  "minimumDiskFreeBytes": 5952315392,
+  "peakRunAllocatedBytes": 184320,
+  "peakFilesystemDecreaseBytes": 471040,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-emission04"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "3",
+    "fileLimitBytes": 134217728,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+        "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b",
+        "bytes": 88979072
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase171/request.mjs",
+        "sha256": "18cae08ba8628af5efb7186794b6d9d7f8ea72ccc92fc123fb265e3175f085aa",
+        "bytes": 8390
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-api04/report.json",
+        "sha256": "fe00f10bef8513664b659c4ce048d875e2572e5a74f5a539c11bea978ee300f7",
+        "bytes": 5193
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-source04/manifest.json",
+        "sha256": "7ebd495726665c6e0d9a9c01bb8e67189875f2260256e01ea98b58ce23d82b98",
+        "bytes": 3969426
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-source01/compiler.bend",
+        "sha256": "1f2b5df52aaa1c7f1291804fcd6ca4cbc0701d8cb53ff22042cb63d00c6afa71",
+        "bytes": 2872
+      }
+    ]
+  },
+  "wallSeconds": 6.580772310961038,
+  "finished": 1794008179.90454
+}

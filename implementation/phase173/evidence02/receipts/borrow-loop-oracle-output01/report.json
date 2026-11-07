@@ -1,0 +1,109 @@
+{
+  "kind": "phase173-native-product-pair",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase173/native-pair.py",
+      "bytes": 3973,
+      "sha256": "219a9a447f8b85262adfa2b58eea7f1d635233c2fbe6a0083fd8e7d9651d6f9b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-oracle-machine01/report.json",
+      "bytes": 16494,
+      "sha256": "242bbdcb78ec385afb3348df7e7484545fae997de88aa200d3d06dc992312e43"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-oracle-machine01/report.json",
+      "bytes": 16494,
+      "sha256": "242bbdcb78ec385afb3348df7e7484545fae997de88aa200d3d06dc992312e43"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-oracle-machine01/program",
+      "bytes": 125368,
+      "sha256": "af8264a5d589ec1758f1935a79d5a61faf2032e3382388e00cf8f6694322aa68"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-oracle-machine01/program.ssa",
+      "bytes": 46832,
+      "sha256": "1b3593f2d1a4014a7aa3499377549cbe15457e808a90cc7d6488496f43edae49"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-oracle-machine01/program",
+      "bytes": 125368,
+      "sha256": "af8264a5d589ec1758f1935a79d5a61faf2032e3382388e00cf8f6694322aa68"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-oracle-machine01/program.ssa",
+      "bytes": 46832,
+      "sha256": "1b3593f2d1a4014a7aa3499377549cbe15457e808a90cc7d6488496f43edae49"
+    }
+  ],
+  "runs": [
+    {
+      "role": "baseline",
+      "cycle": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-oracle-machine01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.003123427741229534,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-oracle-output01/0-baseline.stdout",
+        "bytes": 669,
+        "sha256": "bf852b5c2ed3f9504e63a511e85241f481105c882baa12893435564119650ab1"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-oracle-output01/0-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-oracle-machine01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.0031102229841053486,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-oracle-output01/0-candidate.stdout",
+        "bytes": 669,
+        "sha256": "bf852b5c2ed3f9504e63a511e85241f481105c882baa12893435564119650ab1"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-oracle-output01/0-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    }
+  ],
+  "rounds": 1,
+  "oracle": "baseline complete output; see source oracle manifest",
+  "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+  "medians": {
+    "baseline": 0.003123427741229534,
+    "candidate": 0.0031102229841053486
+  },
+  "resolved": false
+}

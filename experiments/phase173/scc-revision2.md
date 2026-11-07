@@ -40,8 +40,9 @@ The empty-index wrapper is not an authorization to ignore them.
 The new controls use an existing worker with the **same ABI but a different
 constant result**, test an already-ready component member, and ensure a later
 component can still fuse after the first name collides. They extend the prior
-18 controls to 21. Source checking, native execution and benchmarking are parent
-gates; these new controls are not reported as passing before execution.
+18 controls to 21. The parent's later `abi-api03` checked acquisition and
+`abi-finite03/report.json` pass all 21 controls. Native execution and benchmarking
+remain separate gates; this finite result is not a correctness theorem.
 
 ## Revision1 admission is visible in actual emitted QBE
 
@@ -81,6 +82,11 @@ The owned fixture has only three states. The compaction loop has 36 source
 members, more arguments, arrays and multi-result helpers. It may encounter
 different lowering errors, result-shape differences or the explicit body/scratch
 budgets; inspect actual candidate refusal reasons before changing bounds.
+The subsequent diagnostic found missing boxed-to-flat argument composition,
+rather than a genuinely non-tail loop or oversized component. The narrow argument
+bridge restores the complete 36-member compaction SCC without raising limits;
+see [the boundary experiment](product-argument-boundary.md) and its actual emitted
+QBE evidence. All four main store loops now use fused workers.
 
 Even an admitted large component can lose time to the linear tag-dispatch
 chain, padded argument lanes, register spills and larger machine bodies. A

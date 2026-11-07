@@ -1,0 +1,131 @@
+{
+  "schema": "bend-native-profile-runtime-plan-v1",
+  "complete": true,
+  "compiled": false,
+  "executed": false,
+  "reverseExact": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/event-runtime-input01/manifest.json",
+      "bytes": 848,
+      "sha256": "a3535f9bb1bd53234d99de42d87d9ef91e62bca6cc7c3a304eef80b63384b14a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/qbe/runtime.c",
+      "bytes": 150560,
+      "sha256": "aa95d2c0426c05bcc4d34244dd8b22b79ebcaf6d30634569201961f60b57f333"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/qbe/runtime.h",
+      "bytes": 4518,
+      "sha256": "9b19b8d6ae1c8f07759041201c2692c20d9612393819e2bbc597deba44679d12"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/qbe/primitives.h",
+      "bytes": 3067,
+      "sha256": "ecbdfe62b875fc20e5805840b83c3779ed8fb8fb1de83c543ba1ce1217165d20"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/runtime-support.inc.c",
+      "bytes": 7701,
+      "sha256": "b4f57c1be439ba35327010a22dc809fa8a64d05bd3e7b5a701e9505d223f78df"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/runtime.py",
+      "bytes": 9469,
+      "sha256": "3dbc144ec75822690c5d099d8d440fb8d82d8f1ceea9ca5c236f3f0c77b0bb9b"
+    },
+    {
+      "file": "/usr/bin/x86_64-linux-gnu-gcc-10",
+      "bytes": 817704,
+      "sha256": "693abcb42e67fb871673f258a3644257ca69a209691ec4d8137a42442834bd19"
+    },
+    {
+      "file": "/usr/bin/x86_64-linux-gnu-gcc-10",
+      "bytes": 817704,
+      "sha256": "693abcb42e67fb871673f258a3644257ca69a209691ec4d8137a42442834bd19"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/event-runtime-plan01/plan.json",
+      "bytes": 4399,
+      "sha256": "d8278a590a7e69cdcbcea892b4c357fd1bfc75aabe585904b820f3025563da54"
+    }
+  ],
+  "outputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/event-runtime-plan01/runtime.c",
+      "bytes": 151493,
+      "sha256": "d81a0f9cd2640f916d4ba8bdd325ade9aaa55d8130ad10d5c8a02756cec03ecf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/event-runtime-plan01/runtime-support.inc.c",
+      "bytes": 7701,
+      "sha256": "b4f57c1be439ba35327010a22dc809fa8a64d05bd3e7b5a701e9505d223f78df"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/event-runtime-plan01/method.py",
+      "bytes": 9469,
+      "sha256": "3dbc144ec75822690c5d099d8d440fb8d82d8f1ceea9ca5c236f3f0c77b0bb9b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/event-runtime-plan01/edits.json",
+      "bytes": 3855,
+      "sha256": "721e6e091dd98415ac83571b210cf8175c2db40fcff1d04881c2f148f986a91a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/event-runtime-plan01/runtime.h",
+      "bytes": 4518,
+      "sha256": "9b19b8d6ae1c8f07759041201c2692c20d9612393819e2bbc597deba44679d12"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/event-runtime-plan01/primitives.h",
+      "bytes": 3067,
+      "sha256": "ecbdfe62b875fc20e5805840b83c3779ed8fb8fb1de83c543ba1ce1217165d20"
+    }
+  ],
+  "jobs": [
+    {
+      "label": "compile-runtime",
+      "command": [
+        "/usr/bin/x86_64-linux-gnu-gcc-10",
+        "-O2",
+        "-std=gnu11",
+        "-ffp-contract=off",
+        "-DP144_SINGLE_MUTATOR_RFC=1",
+        "-c",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/event-runtime-plan01/runtime.c",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/event-runtime-build02/runtime.o"
+      ]
+    }
+  ],
+  "extension": null,
+  "context": {
+    "getter": "bend_profile_dispatch_get",
+    "getterResult": "uint32_t",
+    "unknown": 4294967295,
+    "storage": "initial-exec TLS lock-free atomic uint32",
+    "globalSymbol": "bend_profile_dispatch_id",
+    "globalScope": "one active dispatch thread only",
+    "meaning": "Active dispatcher segment; private calls retain outer segment; not logical ancestry"
+  },
+  "environment": {
+    "BEND_PROFILE_EVENTS_OUT": "Fresh event JSON path; exclusive create",
+    "BEND_PROFILE_COUNTERS": "0: context only; 1: count runtime events (default with output path)"
+  },
+  "scope": "Diagnostic runtime-only relink; generated program object and P111 ABI unchanged. Semantic equivalence, signal-safe getter machine inspection and overhead require separate execution gates.",
+  "retarget": {
+    "original": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/event-runtime-plan01/plan.json",
+      "bytes": 4399,
+      "sha256": "d8278a590a7e69cdcbcea892b4c357fd1bfc75aabe585904b820f3025563da54"
+    },
+    "changes": [
+      {
+        "from": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/event-runtime-plan01/runtime.o",
+        "to": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/event-runtime-build02/runtime.o"
+      }
+    ],
+    "scope": "Only product destination moved into fresh guarded output root. Source, flags, inputs, instrumentation and compiler unchanged."
+  }
+}

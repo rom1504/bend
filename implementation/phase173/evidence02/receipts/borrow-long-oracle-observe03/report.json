@@ -1,0 +1,133 @@
+{
+  "kind": "phase173-independent-borrow-value-oracle",
+  "version": 1,
+  "complete": true,
+  "variant": "compiler",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase173/borrow-oracle.mjs",
+      "bytes": 8039,
+      "sha256": "e83932948b39d27739c6bfc2be04c5d0c5f1dd0bd95074e04c9fb07beab1c225"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+      "bytes": 88979072,
+      "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-long-oracle-api03/report.json",
+      "bytes": 4644,
+      "sha256": "c26aea6e8c9f3c09b92193405ef26a9289af040595cdf07f29fbe2d8d90bcea6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/hosted.mjs",
+      "bytes": 13187,
+      "sha256": "fc0aa95be44aff8b7a00f0821055151cef82fae6df087fa6c0f0fc26da6bdf3b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-source03/exports.json",
+      "bytes": 268,
+      "sha256": "7f6998c329b03c6260b6ef3a40ab56839bb10e0c599c6a5b28030d19f0efc6f0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-source03/compiler.bend",
+      "bytes": 2874,
+      "sha256": "170dbb51d6a1c330bab135592e6fe139f5eb7cfb2c827e71fb3120b3e0371ef4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+      "bytes": 88979072,
+      "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/stage0-library.mjs",
+      "bytes": 4172,
+      "sha256": "ec3506de1558fa1e56cef54345053ffaf7bfcc92b8632eaf96e217c15b8a59c1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/bend.ts",
+      "bytes": 138101,
+      "sha256": "1d133151652b597a1a035c77c172475e6de096da37f3b9e3adc23c2f75bdfe49"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/comp.ts",
+      "bytes": 185124,
+      "sha256": "2b13224ba09a9e39e37cccf06e449c1bdafe5e03a81641654f7d0e455507629c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "bytes": 75064,
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/compiler.json",
+      "bytes": 542010,
+      "sha256": "6f15663dc8c99e905b3dc7d4923ad457758597d83e1e433c5161dcdab403eb62"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-source03/compiler.bend",
+      "bytes": 2874,
+      "sha256": "170dbb51d6a1c330bab135592e6fe139f5eb7cfb2c827e71fb3120b3e0371ef4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-long-oracle-api03/api.mjs",
+      "bytes": 8154,
+      "sha256": "2edc5334f6b73bf4f2777f853c58e08454f6a72dc8136167aa7f785e0349cbe4"
+    }
+  ],
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-source03/compiler.bend",
+    "bytes": 2874,
+    "sha256": "170dbb51d6a1c330bab135592e6fe139f5eb7cfb2c827e71fb3120b3e0371ef4"
+  },
+  "acquisition": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-long-oracle-api03/report.json",
+    "bytes": 4644,
+    "sha256": "c26aea6e8c9f3c09b92193405ef26a9289af040595cdf07f29fbe2d8d90bcea6"
+  },
+  "typeBindings": [
+    {
+      "name": "KTerm",
+      "sha256": "02c95c149b637e8395a8a2127afed3f66f5086d9524dbdcc507f08da620ba759",
+      "text": "type KTerm is Data:\n  KTerm{+tag: String, +name: String, +id: U32, +quant: U32, +kids: List<&2, KTerm>, +removed: List<&2, String>, +originBegin: U32, +originEnd: U32}\n  KLambda{+name: String, +id: U32, +quant: U32, +kids: List<&2,KTerm>, +removed: List<&2,String>, +originBegin: U32, +originEnd: U32, +quantityPresent: Bool}\n  KLiteral{+kind: String, +number: U32, +text: String, +originBegin: U32, +originEnd: U32}\n"
+    },
+    {
+      "name": "GHeap",
+      "sha256": "20e401fdb112901076b6d1d180920c697fd8da1021703e3cc7d6b52f4e3228d8",
+      "text": "type GHeap is Data:\n  GEmpty{}\n  GNode{+value: KTerm, +left: GHeap, +right: GHeap}\n"
+    },
+    {
+      "name": "GState",
+      "sha256": "ec7ba40a5fb2e5b514da672c8ba085ec96d629f36262976d99a8a1509907875a",
+      "text": "type GState is Data:\n  GState{+heap: GHeap, +next: U32}\n"
+    },
+    {
+      "name": "GResult",
+      "sha256": "b445365434eb6da58b66ada019c76cd76cf0c98f722e02661e0d37a8fabb2c14",
+      "text": "type GResult is Data:\n  GResult{+state: GState, +term: KTerm}\n"
+    },
+    {
+      "name": "P173BWReport",
+      "sha256": "935093c29c1750cd59a8d8878ca945f1ec94d742f5d10ca575c8a6707ff060ae",
+      "text": "type P173BWReport is Data:\n  P173BWReport{+located: List<&2,KTerm>, +shared: List<&2,GResult>, +replaced: KTerm}\n"
+    }
+  ],
+  "scope": "Unchanged workload evaluated by pinned upstream JS; complete typed value transported to a constant Bend program. The constant requires independent checking and baseline native readback before use as an execution oracle.",
+  "value": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-long-oracle-observe03/value.json",
+    "bytes": 5553,
+    "sha256": "245d777aa655292ca2698a2b362786edcee13621371f2123b77096234468c163"
+  },
+  "oracleSource": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-long-oracle-observe03/oracle.bend",
+    "bytes": 1475,
+    "sha256": "8fb6166a4f147e544d6a94ff17b208d12c0220205a0c8a83e8ae37f6875d4320"
+  },
+  "observation": {
+    "nodes": 115,
+    "strings": 150,
+    "maxDepth": 5,
+    "mainCalls": 1
+  },
+  "wallSeconds": 0.5964511210000001
+}

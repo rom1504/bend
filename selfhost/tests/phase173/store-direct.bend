@@ -1,5 +1,7 @@
 # Direct terminal destination for indexed compaction. The input store is read
 # only; output KTerm and ordered refs are the required public product.
+# Final validation stays independent. Fused walk budget is the sum of the
+# previous compaction and export budgets; refs add no traversal frames.
 type P173OChild is Data:
   P173OChild{+shape: P173Shape, +start: U32, +next: U32, +count: U32, +terms: List<&2,KTerm>, +raw: Bool}
 
@@ -273,7 +275,7 @@ def p173o_validate(name: String, result: P173OResult) -> P173VBody:
 @unsafe
 def p173o_imported(+name: String, pair: P173Store & U32) -> P173VBody:
   match pair:
-    case Tuple{store,id}: p173o_validate(name,p173o_go(store,P173OState{[P173OVisit{id,False{}}],[],[],10000000}))
+    case Tuple{store,id}: p173o_validate(name,p173o_go(store,P173OState{[P173OVisit{id,False{}}],[],[],20000000}))
 
 @unsafe
 def p173o_body(input: P173VInput) -> P173VBody:

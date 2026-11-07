@@ -1,0 +1,112 @@
+{
+  "kind": "phase173-experimental-evidence-checkpoint",
+  "version": 2,
+  "createdUTC": "2026-11-07T00:26:54.512941+00:00",
+  "basedOnCommit": "be1b798293a93ef2e2f7288d5c461d5d0d965261",
+  "collectionComplete": true,
+  "targetRunsDuringCollection": false,
+  "productionEdited": false,
+  "installedReference": "Phase170 native N2",
+  "qualifiedSuccessor": false,
+  "wholeCompilerSpeedResult": false,
+  "priorCapsule": {
+    "file": "/home/ai/bend2/build/publish/bend/implementation/phase173/evidence/inventory.json",
+    "bytes": 62142,
+    "sha256": "098d467e4b4287e56e9d06bc96be07c9f8bd1b02db22ddf763a151deaebd4cfd"
+  },
+  "capsule": {
+    "file": "/home/ai/bend2/build/publish/bend/implementation/phase173/evidence02/inventory.json",
+    "bytes": 116095,
+    "sha256": "a5fb00c3aa74c69f68836603320bd68a1ab7dbb9751901d12af3cb28a61e30ed"
+  },
+  "completedTopics": [
+    "ABI03 product arguments and general SCCs",
+    "direct terminal semantic-store destination",
+    "long borrowed-record update workload",
+    "first known-tag dispatch specialization",
+    "checked-plan binary capture and exact same-API replay"
+  ],
+  "excludes": [
+    "in-flight AST transfer",
+    "later dispatch revisions",
+    "full self-build or N1/N2 qualification",
+    "production selection changes"
+  ],
+  "results": [
+    {
+      "name": "abi-store-pair03",
+      "resolved": true,
+      "medians": {
+        "baseline": 0.07864872319623828,
+        "candidate": 0.09368994901888072
+      },
+      "ratio": 1.1912456453375948,
+      "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed."
+    },
+    {
+      "name": "abi-direct-store-pair03",
+      "resolved": true,
+      "medians": {
+        "baseline": 0.07880550669506192,
+        "candidate": 0.09104769350960851
+      },
+      "ratio": 1.1553468447568995,
+      "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed."
+    },
+    {
+      "name": "abi-verifier-pair03",
+      "resolved": true,
+      "medians": {
+        "baseline": 0.4228114834986627,
+        "candidate": 0.42218631971627474
+      },
+      "ratio": 0.9985214124810071,
+      "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed."
+    },
+    {
+      "name": "store-direct-pair01",
+      "resolved": true,
+      "medians": {
+        "baseline": 0.07918783160857856,
+        "candidate": 0.11447999789379537
+      },
+      "ratio": 1.4456766345069807,
+      "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed."
+    },
+    {
+      "name": "borrow-long-pair04",
+      "resolved": true,
+      "medians": {
+        "baseline": 0.05491032777354121,
+        "candidate": 0.041202720487490296
+      },
+      "ratio": 0.7503637686778482,
+      "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed."
+    },
+    {
+      "name": "dispatch-store-pair01",
+      "resolved": true,
+      "medians": {
+        "baseline": 0.09510209830477834,
+        "candidate": 0.09181830752640963
+      },
+      "ratio": 0.9654708903704208,
+      "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed."
+    },
+    {
+      "name": "plan-replay-binary03",
+      "exactQbe": true,
+      "warmReplay": true,
+      "scope": "Warm backend-only replay from an authenticated complete checked P86Plan. Frontend is omitted explicitly; not a cold-build metric."
+    }
+  ],
+  "negativeResults": [
+    "ABI01 source check rejected",
+    "ABI02 duplicate-scratch finite fixture rejected",
+    "initial ABI native expected output formatting rejected",
+    "initial JSON checked-plan capture exceeded node bound",
+    "indexed and direct store variants remain slower than original complete consumer",
+    "short native loops unresolved",
+    "first dispatch leaves compaction and Word workers unchanged"
+  ]
+}

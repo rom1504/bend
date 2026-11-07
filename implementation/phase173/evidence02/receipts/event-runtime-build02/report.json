@@ -1,0 +1,65 @@
+{
+  "complete": true,
+  "plan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/event-runtime-retarget02.json",
+    "bytes": 5274,
+    "sha256": "8277cca5765e74fb2451e7eb1ddd439597f4db16f2b90b98104edc03f5e0498f"
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/build-runtime.py",
+    "bytes": 1901,
+    "sha256": "c6aadc9b48b038d33f1b8d52edebff34c0f31f706558e95896ac4d0449549c13"
+  },
+  "jobs": [
+    {
+      "command": [
+        "/usr/bin/x86_64-linux-gnu-gcc-10",
+        "-O2",
+        "-std=gnu11",
+        "-ffp-contract=off",
+        "-DP144_SINGLE_MUTATOR_RFC=1",
+        "-c",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/event-runtime-plan01/runtime.c",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/event-runtime-build02/runtime.o"
+      ],
+      "argv0": "/usr/bin/x86_64-linux-gnu-gcc-10",
+      "returncode": 0,
+      "timedOut": false,
+      "wallSeconds": 1.8733159601688385,
+      "userSeconds": 1.809898,
+      "systemSeconds": 0.035801,
+      "cpuSeconds": 1.845699,
+      "peakRssKiB": 74696,
+      "minorFaults": 18299,
+      "majorFaults": 0,
+      "voluntarySwitches": 13,
+      "involuntarySwitches": 19,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/event-runtime-build02/0-compile-runtime/stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/event-runtime-build02/0-compile-runtime/stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "label": "compile-runtime",
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/event-runtime-build02/runtime.o",
+        "bytes": 152552,
+        "sha256": "f1f1f87884ffd70790aea6fc82be3d41fb58f1098661006a89b268b37a3ddd52"
+      }
+    }
+  ],
+  "started": 1794006465.079495,
+  "products": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/event-runtime-build02/runtime.o",
+      "bytes": 152552,
+      "sha256": "f1f1f87884ffd70790aea6fc82be3d41fb58f1098661006a89b268b37a3ddd52"
+    }
+  ],
+  "finished": 1794006466.9817102
+}

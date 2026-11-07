@@ -1,0 +1,65 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": true,
+  "started": 1794006465.0183256,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "3",
+    "python3",
+    "-B",
+    "selfhost/tools/profiler/build-runtime.py",
+    "--plan",
+    "selfhost/build/phase173/event-runtime-retarget02.json",
+    "--out",
+    "selfhost/build/phase173/event-runtime-build02"
+  ],
+  "returncode": 0,
+  "rssLimitBytes": 2147483648,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 93614080,
+  "minimumAvailableBytes": 25371709440,
+  "diskBudgetBytes": 33554432,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 6088581120,
+  "minimumDiskFreeBytes": 6088134656,
+  "peakRunAllocatedBytes": 184320,
+  "peakFilesystemDecreaseBytes": 446464,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/event-runtime-build02"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "3",
+    "fileLimitBytes": 134217728,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/build-runtime.py",
+        "sha256": "c6aadc9b48b038d33f1b8d52edebff34c0f31f706558e95896ac4d0449549c13",
+        "bytes": 1901
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/event-runtime-retarget02.json",
+        "sha256": "8277cca5765e74fb2451e7eb1ddd439597f4db16f2b90b98104edc03f5e0498f",
+        "bytes": 5274
+      }
+    ]
+  },
+  "wallSeconds": 1.9805391058325768,
+  "finished": 1794006466.9986873
+}

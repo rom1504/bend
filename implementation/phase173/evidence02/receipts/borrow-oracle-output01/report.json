@@ -1,0 +1,109 @@
+{
+  "kind": "phase173-native-product-pair",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase173/native-pair.py",
+      "bytes": 3973,
+      "sha256": "219a9a447f8b85262adfa2b58eea7f1d635233c2fbe6a0083fd8e7d9651d6f9b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-compiler-oracle-machine01/report.json",
+      "bytes": 16565,
+      "sha256": "12a9c4b42968dce834e778d513eebba556ea29edaa17d6ddee70077dacb1464b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-compiler-oracle-machine01/report.json",
+      "bytes": 16565,
+      "sha256": "12a9c4b42968dce834e778d513eebba556ea29edaa17d6ddee70077dacb1464b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-compiler-oracle-machine01/program",
+      "bytes": 128096,
+      "sha256": "b00e24801a8f264885c1010c829e3d2a856a05d5777fd14f64b9239f2ff15755"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-compiler-oracle-machine01/program.ssa",
+      "bytes": 51956,
+      "sha256": "601c07e98860192b3a1c13f5867ecd43de096bd3e83288653636fbfe942c15b8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-compiler-oracle-machine01/program",
+      "bytes": 128096,
+      "sha256": "b00e24801a8f264885c1010c829e3d2a856a05d5777fd14f64b9239f2ff15755"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-compiler-oracle-machine01/program.ssa",
+      "bytes": 51956,
+      "sha256": "601c07e98860192b3a1c13f5867ecd43de096bd3e83288653636fbfe942c15b8"
+    }
+  ],
+  "runs": [
+    {
+      "role": "baseline",
+      "cycle": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-compiler-oracle-machine01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.003157961182296276,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-oracle-output01/0-baseline.stdout",
+        "bytes": 1724,
+        "sha256": "971508935828004ff8e6cf02e8f1605165b56c372d44e2875b92512a195d734e"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-oracle-output01/0-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-compiler-oracle-machine01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.003153313882648945,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-oracle-output01/0-candidate.stdout",
+        "bytes": 1724,
+        "sha256": "971508935828004ff8e6cf02e8f1605165b56c372d44e2875b92512a195d734e"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-oracle-output01/0-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    }
+  ],
+  "rounds": 1,
+  "oracle": "baseline complete output; see source oracle manifest",
+  "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+  "medians": {
+    "baseline": 0.003157961182296276,
+    "candidate": 0.003153313882648945
+  },
+  "resolved": false
+}

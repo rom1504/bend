@@ -6,9 +6,16 @@ N1/N2 qualification is established here. The installed reference remains
 Phase170. Experiments continuing after this capsule was collected need their
 own receipts and must not be silently attributed to these source versions.
 
-The [capsule inventory](evidence/inventory.json) records its collection time,
-file hashes and exclusions. Packaging copied existing evidence and inspected
-source; it did not run any target. Original measured artifacts were not edited.
+The [first inventory](evidence/inventory.json) and
+[second inventory](evidence02/inventory.json) record collection times, file
+hashes and exclusions. [Checkpoint metadata](checkpoint02.json) distinguishes
+the completed second checkpoint from work still in flight. Packaging copied
+existing evidence and inspected source; it did not run any target. Original
+measured artifacts were not edited.
+
+The first capsule was committed in `be1b798`. Its files remain unchanged. The
+second capsule supplements it with ABI03, direct destination, long record
+update, first dispatch specialization, and checked-plan replay evidence.
 
 ## What is retained
 
@@ -175,7 +182,7 @@ The complete native output is 962,601 bytes with SHA256
 The recorded pair harness compares actual bytes; this pin is a reproducibility
 identifier, not a substitute for the independent expected-value construction.
 
-## Completed results represented in this capsule
+## Completed results represented in the first capsule
 
 | Comparison | Baseline median | Candidate median | Candidate/baseline | Interpretation |
 | --- | ---: | ---: | ---: | --- |
@@ -187,7 +194,7 @@ The SCC owned-list source produced exact `200000\n` in both programs. Its
 fresh-process timings are below the harness's 30ms resolution threshold; the
 receipt says `resolved: false`, so no runtime ratio is reported as established.
 
-Borrow revision04 has source checking and 38 finite controls in this capsule.
+Borrow revision04 has source checking and 38 finite controls in the first capsule.
 Its retained compiler-workload emission is a code-generation observation, not a
 qualified native runtime speedup. The earlier verifier request emitted exactly
 baseline QBE because no regions were admitted; its byte equality establishes
@@ -212,3 +219,145 @@ Only the original frozen module sets and exact generated source pins establish
 which implementation a measurement concerns. Continue experiments under fresh
 versioned names, retain negative results, and reserve full qualification for an
 independently justified integrated candidate.
+
+## Second checkpoint: sources and reproduction order
+
+[evidence02](evidence02/) is additive. Its [recipes](evidence02/recipes.json),
+[source identities](evidence02/source-pins.json),
+[historical receipts](evidence02/receipts/), and
+[source-to-working comparison](evidence02/source-vs-working.json) preserve exact
+versions. The older qualified compiler, independent baseline, original store
+consumer and its constant oracle remain the first capsule's dependencies.
+
+| Variant | Frozen modules | Checked API source SHA256 |
+| --- | --- | --- |
+| ABI03: owned product arguments and general SCCs | `abi-modules03` | `a01a9f0f9e7c5389b184ca0500a3f25d0fb5cec69db7ea82006a4c33b42f50eb` |
+| Direct terminal destination | `store-direct-modules01` | `83a95c468a1be56f2947cf3fe5fd5bf5d078f18183a60231c2d201babbf98ed9` |
+| First known-tag dispatch specialization | `dispatch-modules01` | `1b9b8c2ccacdcac73375b622be47ba3a38de4554895a5eee772f2cc174a93ee8` |
+
+The dispatch snapshot includes `product-arguments-v3.bend`; ABI03 uses
+`product-arguments-v2.bend`. Preserve each complete module set and order. The
+first dispatch measurement must not be reproduced using a newer working
+`dispatch-jumps.bend`. The negative ABI01/02 sources are retained separately so
+the source and finite-control failures remain reproducible.
+
+1. Reconstruct and acquire the selected API using the recorded source recipe
+   and pinned upstream/Bun. Require successful source checking, then execute
+   its finite controls through the recorded runner.
+2. For ABI03's indexed-store result, emit the unchanged first-capsule
+   `store-native-candidate-source02` through ABI03, build that QBE with the
+   pinned native runtime/toolchain, and run the complete-output pair against
+   `store-native-baseline02`. All 101 bodies and their output remain required.
+3. For the direct destination result, run the direct API's vertical comparator,
+   then reconstruct its native consumer with `vertical-native.py --role
+   candidate`. The expected source has 878,965 bytes and SHA256
+   `30af9a0eb4e7104cec847f08a9c08a18137c7b7d5bd9b33b5900bce873d8366d`.
+   Build this source either with the unchanged producer or with ABI03,
+   according to the specific historical comparison. They are different rows.
+4. For the long record-update experiment, reconstruct
+   `borrow-loop-source03` from `borrow-loop-modules03`. Its complete small source
+   is also retained under `evidence02/workloads/`: 2,874 bytes, SHA256
+   `170dbb51d6a1c330bab135592e6fe139f5eb7cfb2c827e71fb3120b3e0371ef4`.
+   Independently evaluate it through pinned upstream JavaScript, build the
+   resulting constant oracle with the ordinary producer, and compare complete
+   readback bytes. Emit the candidate through first-capsule borrow04. The
+   original shorter workload is retained as a separate unresolved result.
+5. For dispatch01, replay the same indexed-store checked plan through its
+   checked API, build the emitted QBE, and pair against ABI03's build of the
+   same source. The frozen static comparison establishes that exactly nine
+   SCC worker bodies changed; all other function and data blocks were
+   byte-identical. It does not establish a dynamic instruction count.
+
+The direct traversal's 16 finite controls and real-body comparisons do not
+silently inherit all indexed-store edge controls. Its fused fuel policy also
+differs from the earlier separate pass budgets. See the independent
+[direct-store audit](../../experiments/phase173/direct-store-audit.md).
+
+## Second checkpoint: measured effects and limits
+
+All runtime rows below are whole native processes with complete expected
+outputs, four balanced pairs, and the original harness resolution rule.
+They measure extracted computations, not cold self-build time.
+
+| Comparison | Baseline median | Candidate median | Candidate/baseline |
+| --- | ---: | ---: | ---: |
+| Direct destination versus original term consumer | 79.188 ms | 114.480 ms | 1.445677 |
+| ABI03 indexed consumer versus original term consumer | 78.649 ms | 93.690 ms | 1.191246 |
+| ABI03 direct destination versus original term consumer | 78.806 ms | 91.048 ms | 1.155347 |
+| ABI03 on the independent verifier workload | 422.811 ms | 422.186 ms | 0.998521 |
+| Long record-update loop, ordinary versus borrow04 | 54.910 ms | 41.203 ms | 0.750364 |
+| First dispatch specialization versus ABI03 indexed consumer | 95.102 ms | 91.818 ms | 0.965471 |
+
+The indexed variants therefore remain slower than the original consumer.
+ABI03's independent verifier result is effectively neutral. The 24.96% long
+record-update gain and 3.45% first-dispatch gain apply to their stated workloads;
+they are neither a new compiler speed ratio nor evidence of a sub-100-second
+self-build. Do not multiply ratios from different campaigns or workloads.
+
+ABI03 passed 21 SCC and 25 product-argument controls. Dispatch01 additionally
+passed 30 dispatch controls. Its actual compaction worker and Word decoder
+retained generic dispatch because of conservative admission: the largest
+intended worker was not optimized in this checkpoint. Later admission changes
+and AST transfer measurements are excluded.
+
+The shorter borrow loop, tiny compiler-record workload, and owned ABI workload
+remain below the pair harness's resolution threshold. Their exact outputs
+passed, but their apparent ratios are not established speedups. Diagnostic
+runtime counters are retained separately: the tiny record workload changed
+allocation calls from 180 to 177 and constructor takes from 57 to 54. These
+instrumented runs are not clean timing samples or a count of every inlined
+operation.
+
+## Checked-plan replay: identity and amortization boundary
+
+Replay reuses the complete checked `P86Plan` only when source, logical source
+path, frontend declaration closure, Base/carrier/stamp, acquisition boundary,
+and Bun identity match. It decodes a fresh graph for each backend experiment.
+Ordinary source checking and cold builds remain independent routes.
+
+The retained [bindings](evidence02/frontend/) pin the same 2,135-declaration,
+637,203-byte frontend closure. Its fingerprint is
+`7a9c5f9be623e3ebf145d2011201e7f7233713fe2d4ca84cc14702e800e08ec7`.
+Use the recorded `plan-binding.py` recipes after acquiring the exact APIs.
+Then use `plan-replay-binary.mjs` with its recorded `capture` and `replay`
+commands, fresh output paths and the outer resource guard.
+
+| Operation | Recorded wall time | Relevant separate costs |
+| --- | ---: | --- |
+| Ordinary ABI03 emission | 102.322 s | Base 0.813 s; frontend 44.922 s |
+| Capture only | 58.241 s | Base 0.816 s; frontend 46.250 s; serialization 1.989 s |
+| Same-API warm replay | 64.274 s | Fresh decode 0.578 s; Base/frontend execution zero |
+| Dispatch01 warm replay | 64.465 s | Fresh decode 0.572 s; Base/frontend execution zero |
+
+These are single hosted diagnostic runs, not a repeated controlled estimate of
+cold compilation speed. Capture is an additional acquisition cost; the table
+must not imply that the first capture-plus-replay is faster than one ordinary
+request. Reuse pays only across subsequent matching backend experiments.
+
+The same-API replay produced byte-identical 12,717,939-byte QBE with SHA256
+`00f447ed3e2e3838eb013d3eebf1da5e7a028ead74a5db937175cfd86d913fff`.
+The 93,984,983-byte binary plan is deliberately excluded from the capsule;
+its complete metadata and hash are retained in
+[plan.json](evidence02/frontend/plan-capture-binary03/plan.json).
+Recreate it with the pinned Bun codec; it is not a portable compiler IR.
+Capture and same-API replay guards observed process-tree peaks of approximately
+1.76 and 1.87 GiB respectively. Preserve explicit memory/disk limits.
+
+The initial JSON capture failed its one-million-object bound after successful
+frontend work. Its failed receipt remains alongside the successful binary
+transport probe, capture and exact replay. Do not relabel that failed capture
+as successful or remove its cost from experiment accounting.
+
+## Second checkpoint exclusions and integrity
+
+The second capsule adds no full compiler sources, generated APIs, QBE,
+assembly, objects, executables, large complete-value dumps, or binary plan
+payload. Small self-contained control/workload sources and constant-oracle
+values are retained. Larger products are pinned and reconstructible; missing
+external assets still require independent recovery.
+
+Current harness snapshots are labeled `harness-current`, with their own hashes.
+Historical receipts retain historical method hashes even if a tool subsequently
+changed. The inventory covers capsule files other than the inventory itself;
+its hash is recorded in the external checkpoint metadata. No target was run
+while collecting or checking either capsule.

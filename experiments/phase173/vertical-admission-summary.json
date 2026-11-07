@@ -1,0 +1,6346 @@
+{
+  "kind": "phase173-candidate-admission-corrected-summary",
+  "version": 1,
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase173/vertical-admission-summary.py",
+      "bytes": 4186,
+      "sha256": "378f640014ceccad374a064061af9a4b4d08cf9eb1057aa472a4c35d8669102f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-store-admission01/report.json",
+      "bytes": 168214,
+      "sha256": "1ab89026946cd3255e89f616150bf8f1528c7500b849eed497b45297cc249403"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-store-admission01/complete-candidates.json",
+      "bytes": 4053081,
+      "sha256": "3e559f13c8a1208bd7d997a202119ab43b7f24d674b887aee19646d360a8b455"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-store-emission01/program.ssa",
+      "bytes": 13042801,
+      "sha256": "caf979008175bf3c9c4b0dd4789bc3009fc7fad52acaf0ed9d93c99e9850cd33"
+    }
+  ],
+  "correction": "v1 compact summary call entries were null because each name String was read as a record; complete artifact unchanged.",
+  "scope": "Read-only raw-error and emitted-worker dependency observation. Diagnostic candidate set precedes early-ready filtering; graph paths are evidence for investigation, not compiler transformations.",
+  "candidates": [
+    {
+      "name": "p173s_new",
+      "error": "",
+      "calls": [
+        "$product.p173s_empty_node"
+      ],
+      "result": 1,
+      "parameters": 0
+    },
+    {
+      "name": "$direct.p173take_9",
+      "error": "",
+      "calls": [
+        "$product.p173s_import_go"
+      ],
+      "result": 1,
+      "parameters": 4
+    },
+    {
+      "name": "$product.p173take_9",
+      "error": "",
+      "calls": [
+        "$product.p173s_import_go"
+      ],
+      "result": 2,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173match_5",
+      "error": "",
+      "calls": [
+        "$direct.nt_reverse",
+        "$product.p173s_emit",
+        "$product.p173take_9",
+        "$product.p173s_import_go"
+      ],
+      "result": 1,
+      "parameters": 8
+    },
+    {
+      "name": "$product.p173match_5",
+      "error": "",
+      "calls": [
+        "$direct.nt_reverse",
+        "$product.p173s_emit",
+        "$product.p173take_9",
+        "$product.p173s_import_go"
+      ],
+      "result": 2,
+      "parameters": 8
+    },
+    {
+      "name": "$direct.p173match_4",
+      "error": "",
+      "calls": [
+        "$direct.p173s_fail",
+        "$product.p173match_5"
+      ],
+      "result": 1,
+      "parameters": 7
+    },
+    {
+      "name": "$product.p173match_4",
+      "error": "",
+      "calls": [
+        "$direct.p173s_fail",
+        "$product.p173match_5"
+      ],
+      "result": 2,
+      "parameters": 7
+    },
+    {
+      "name": "$direct.p173take_3",
+      "error": "",
+      "calls": [
+        "$product.p173s_import_go"
+      ],
+      "result": 1,
+      "parameters": 4
+    },
+    {
+      "name": "$product.p173take_3",
+      "error": "",
+      "calls": [
+        "$product.p173s_import_go"
+      ],
+      "result": 2,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173s_import_children",
+      "error": "",
+      "calls": [
+        "$product.p173s_emit",
+        "$product.p173take_3",
+        "$product.p173s_import_go"
+      ],
+      "result": 1,
+      "parameters": 6
+    },
+    {
+      "name": "$product.p173s_import_children",
+      "error": "",
+      "calls": [
+        "$product.p173s_emit",
+        "$product.p173take_3",
+        "$product.p173s_import_go"
+      ],
+      "result": 2,
+      "parameters": 6
+    },
+    {
+      "name": "$direct.p173s_import_visit",
+      "error": "",
+      "calls": [
+        "$product.p173s_import_children",
+        "$product.p173s_import_children",
+        "$product.p173s_import_children"
+      ],
+      "result": 1,
+      "parameters": 5
+    },
+    {
+      "name": "$product.p173s_import_visit",
+      "error": "",
+      "calls": [
+        "$product.p173s_import_children",
+        "$product.p173s_import_children",
+        "$product.p173s_import_children"
+      ],
+      "result": 2,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173match_3",
+      "error": "",
+      "calls": [
+        "$product.p173s_import_visit",
+        "$product.p173match_4"
+      ],
+      "result": 1,
+      "parameters": 5
+    },
+    {
+      "name": "$product.p173match_3",
+      "error": "",
+      "calls": [
+        "$product.p173s_import_visit",
+        "$product.p173match_4"
+      ],
+      "result": 2,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173branch_8",
+      "error": "",
+      "calls": [
+        "$direct.p173s_fail",
+        "$product.p173match_3"
+      ],
+      "result": 1,
+      "parameters": 6
+    },
+    {
+      "name": "$product.p173branch_8",
+      "error": "",
+      "calls": [
+        "$direct.p173s_fail",
+        "$product.p173match_3"
+      ],
+      "result": 2,
+      "parameters": 6
+    },
+    {
+      "name": "$direct.p173match_1",
+      "error": "",
+      "calls": [
+        "$direct.p173s_fail"
+      ],
+      "result": 1,
+      "parameters": 2
+    },
+    {
+      "name": "$product.p173match_1",
+      "error": "",
+      "calls": [
+        "$direct.p173s_fail"
+      ],
+      "result": 2,
+      "parameters": 2
+    },
+    {
+      "name": "$direct.p173s_import_go",
+      "error": "",
+      "calls": [
+        "$product.p173match_1",
+        "$product.p173branch_8"
+      ],
+      "result": 1,
+      "parameters": 4
+    },
+    {
+      "name": "$product.p173s_import_go",
+      "error": "",
+      "calls": [
+        "$product.p173match_1",
+        "$product.p173branch_8"
+      ],
+      "result": 2,
+      "parameters": 4
+    },
+    {
+      "name": "$direct.p173s_import",
+      "error": "",
+      "calls": [
+        "$product.p173s_import_go"
+      ],
+      "result": 1,
+      "parameters": 3
+    },
+    {
+      "name": "$product.p173s_import",
+      "error": "",
+      "calls": [
+        "$product.p173s_import_go"
+      ],
+      "result": 2,
+      "parameters": 3
+    },
+    {
+      "name": "$direct.p173take_36",
+      "error": "",
+      "calls": [
+        "$product.p173c_go"
+      ],
+      "result": 1,
+      "parameters": 10
+    },
+    {
+      "name": "$product.p173take_36",
+      "error": "",
+      "calls": [
+        "$product.p173c_go"
+      ],
+      "result": 2,
+      "parameters": 11
+    },
+    {
+      "name": "$direct.p173take_35",
+      "error": "",
+      "calls": [
+        "$product.p173c_go"
+      ],
+      "result": 1,
+      "parameters": 4
+    },
+    {
+      "name": "$product.p173take_35",
+      "error": "",
+      "calls": [
+        "$product.p173c_go"
+      ],
+      "result": 2,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173branch_51",
+      "error": "",
+      "calls": [
+        "$direct.p173c_clear",
+        "$direct.nt_reverse",
+        "$product.p173s_emit",
+        "$product.p173take_35",
+        "$product.p173s_edge",
+        "$product.p173take_36"
+      ],
+      "result": 1,
+      "parameters": 11
+    },
+    {
+      "name": "$product.p173branch_51",
+      "error": "",
+      "calls": [
+        "$direct.p173c_clear",
+        "$direct.nt_reverse",
+        "$product.p173s_emit",
+        "$product.p173take_35",
+        "$product.p173s_edge",
+        "$product.p173take_36"
+      ],
+      "result": 2,
+      "parameters": 11
+    },
+    {
+      "name": "$direct.p173match_16",
+      "error": "",
+      "calls": [
+        "$direct.p173s_fail",
+        "$product.p173branch_51"
+      ],
+      "result": 1,
+      "parameters": 9
+    },
+    {
+      "name": "$product.p173match_16",
+      "error": "",
+      "calls": [
+        "$direct.p173s_fail",
+        "$product.p173branch_51"
+      ],
+      "result": 2,
+      "parameters": 9
+    },
+    {
+      "name": "$direct.p173take_41",
+      "error": "",
+      "calls": [
+        "$product.p173c_go"
+      ],
+      "result": 1,
+      "parameters": 4
+    },
+    {
+      "name": "$product.p173take_41",
+      "error": "",
+      "calls": [
+        "$product.p173c_go"
+      ],
+      "result": 2,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173match_15",
+      "error": "",
+      "calls": [
+        "$direct.p173s_fail",
+        "$direct.U32.show",
+        "$product.p173s_emit",
+        "$product.p173take_41"
+      ],
+      "result": 1,
+      "parameters": 5
+    },
+    {
+      "name": "$product.p173match_15",
+      "error": "",
+      "calls": [
+        "$direct.p173s_fail",
+        "$direct.U32.show",
+        "$product.p173s_emit",
+        "$product.p173take_41"
+      ],
+      "result": 2,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173take_40",
+      "error": "",
+      "calls": [
+        "$product.p173c_go"
+      ],
+      "result": 1,
+      "parameters": 4
+    },
+    {
+      "name": "$product.p173take_40",
+      "error": "",
+      "calls": [
+        "$product.p173c_go"
+      ],
+      "result": 2,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173match_14",
+      "error": "",
+      "calls": [
+        "$direct.p173s_fail",
+        "$product.p173s_emit",
+        "$product.p173take_40"
+      ],
+      "result": 1,
+      "parameters": 5
+    },
+    {
+      "name": "$product.p173match_14",
+      "error": "",
+      "calls": [
+        "$direct.p173s_fail",
+        "$product.p173s_emit",
+        "$product.p173take_40"
+      ],
+      "result": 2,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173take_39",
+      "error": "",
+      "calls": [
+        "$product.p173c_go"
+      ],
+      "result": 1,
+      "parameters": 5
+    },
+    {
+      "name": "$product.p173take_39",
+      "error": "",
+      "calls": [
+        "$product.p173c_go"
+      ],
+      "result": 2,
+      "parameters": 6
+    },
+    {
+      "name": "$direct.p173take_38",
+      "error": "",
+      "calls": [
+        "$product.p173s_emit",
+        "$product.p173take_39"
+      ],
+      "result": 1,
+      "parameters": 5
+    },
+    {
+      "name": "$product.p173take_38",
+      "error": "",
+      "calls": [
+        "$product.p173s_emit",
+        "$product.p173take_39"
+      ],
+      "result": 2,
+      "parameters": 6
+    },
+    {
+      "name": "$direct.p173take_37",
+      "error": "",
+      "calls": [
+        "$product.p173c_go"
+      ],
+      "result": 1,
+      "parameters": 4
+    },
+    {
+      "name": "$product.p173take_37",
+      "error": "",
+      "calls": [
+        "$product.p173c_go"
+      ],
+      "result": 2,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173match_13",
+      "error": "",
+      "calls": [
+        "$product.p173s_emit",
+        "$product.p173take_37",
+        "$direct.Char.to_u32",
+        "$product.p173c_word_emit",
+        "$product.p173take_38"
+      ],
+      "result": 1,
+      "parameters": 5
+    },
+    {
+      "name": "$product.p173match_13",
+      "error": "",
+      "calls": [
+        "$product.p173s_emit",
+        "$product.p173take_37",
+        "$direct.Char.to_u32",
+        "$product.p173c_word_emit",
+        "$product.p173take_38"
+      ],
+      "result": 2,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173take_20",
+      "error": "",
+      "calls": [
+        "$product.p173c_nat"
+      ],
+      "result": 1,
+      "parameters": 3
+    },
+    {
+      "name": "$product.p173take_20",
+      "error": "",
+      "calls": [
+        "$product.p173c_nat"
+      ],
+      "result": 2,
+      "parameters": 4
+    },
+    {
+      "name": "$direct.p173branch_31",
+      "error": "",
+      "calls": [
+        "$product.p173c_kid",
+        "$product.p173take_20"
+      ],
+      "result": 1,
+      "parameters": 7
+    },
+    {
+      "name": "$product.p173branch_31",
+      "error": "",
+      "calls": [
+        "$product.p173c_kid",
+        "$product.p173take_20"
+      ],
+      "result": 2,
+      "parameters": 7
+    },
+    {
+      "name": "$direct.p173branch_30",
+      "error": "",
+      "calls": [
+        "$direct.p88_string_eq",
+        "$product.p173branch_31"
+      ],
+      "result": 1,
+      "parameters": 7
+    },
+    {
+      "name": "$product.p173branch_30",
+      "error": "",
+      "calls": [
+        "$direct.p88_string_eq",
+        "$product.p173branch_31"
+      ],
+      "result": 2,
+      "parameters": 7
+    },
+    {
+      "name": "$direct.p173branch_29",
+      "error": "",
+      "calls": [
+        "$direct.p88_string_eq",
+        "$product.p173branch_30"
+      ],
+      "result": 1,
+      "parameters": 8
+    },
+    {
+      "name": "$product.p173branch_29",
+      "error": "",
+      "calls": [
+        "$direct.p88_string_eq",
+        "$product.p173branch_30"
+      ],
+      "result": 2,
+      "parameters": 8
+    },
+    {
+      "name": "$direct.p173branch_28",
+      "error": "",
+      "calls": [],
+      "result": 1,
+      "parameters": 6
+    },
+    {
+      "name": "$product.p173branch_28",
+      "error": "",
+      "calls": [],
+      "result": 2,
+      "parameters": 6
+    },
+    {
+      "name": "$direct.p173match_9",
+      "error": "",
+      "calls": [
+        "$direct.p88_string_eq",
+        "$direct.Bool.and",
+        "$product.p173branch_28",
+        "$direct.p88_string_eq",
+        "$product.p173branch_29"
+      ],
+      "result": 1,
+      "parameters": 6
+    },
+    {
+      "name": "$product.p173match_9",
+      "error": "",
+      "calls": [
+        "$direct.p88_string_eq",
+        "$direct.Bool.and",
+        "$product.p173branch_28",
+        "$direct.p88_string_eq",
+        "$product.p173branch_29"
+      ],
+      "result": 2,
+      "parameters": 6
+    },
+    {
+      "name": "$direct.p173branch_27",
+      "error": "",
+      "calls": [
+        "$product.p173match_9"
+      ],
+      "result": 1,
+      "parameters": 4
+    },
+    {
+      "name": "$product.p173branch_27",
+      "error": "",
+      "calls": [
+        "$product.p173match_9"
+      ],
+      "result": 2,
+      "parameters": 6
+    },
+    {
+      "name": "$direct.p173take_21",
+      "error": "",
+      "calls": [
+        "$direct.p173branch_27"
+      ],
+      "result": 1,
+      "parameters": 3
+    },
+    {
+      "name": "$product.p173take_21",
+      "error": "product result shape mismatch",
+      "calls": [
+        "$direct.p173branch_27"
+      ],
+      "result": 2,
+      "parameters": 4
+    },
+    {
+      "name": "$direct.p173branch_26",
+      "error": "",
+      "calls": [
+        "$direct.p173s_fail",
+        "$product.p173s_node",
+        "$product.p173take_21"
+      ],
+      "result": 1,
+      "parameters": 5
+    },
+    {
+      "name": "$product.p173branch_26",
+      "error": "",
+      "calls": [
+        "$direct.p173s_fail",
+        "$product.p173s_node",
+        "$product.p173take_21"
+      ],
+      "result": 2,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173c_nat",
+      "error": "",
+      "calls": [
+        "$product.p173branch_26"
+      ],
+      "result": 1,
+      "parameters": 4
+    },
+    {
+      "name": "$product.p173c_nat",
+      "error": "",
+      "calls": [
+        "$product.p173branch_26"
+      ],
+      "result": 2,
+      "parameters": 4
+    },
+    {
+      "name": "$direct.p173take_22",
+      "error": "",
+      "calls": [
+        "$product.p173c_word"
+      ],
+      "result": 1,
+      "parameters": 5
+    },
+    {
+      "name": "$product.p173take_22",
+      "error": "",
+      "calls": [
+        "$product.p173c_word"
+      ],
+      "result": 2,
+      "parameters": 6
+    },
+    {
+      "name": "$direct.p173branch_37",
+      "error": "",
+      "calls": [
+        "$direct.p173s_shape_name",
+        "$direct.p88_string_eq",
+        "$product.p173c_kid",
+        "$product.p173take_22"
+      ],
+      "result": 1,
+      "parameters": 8
+    },
+    {
+      "name": "$product.p173branch_37",
+      "error": "",
+      "calls": [
+        "$direct.p173s_shape_name",
+        "$direct.p88_string_eq",
+        "$product.p173c_kid",
+        "$product.p173take_22"
+      ],
+      "result": 2,
+      "parameters": 8
+    },
+    {
+      "name": "$direct.p173branch_36",
+      "error": "",
+      "calls": [
+        "$direct.p173s_shape_tag",
+        "$direct.p88_string_eq",
+        "$direct.p173s_shape_name",
+        "$direct.p88_string_eq",
+        "$direct.p173s_shape_name",
+        "$direct.p88_string_eq",
+        "$direct.Bool.and",
+        "$product.p173branch_37"
+      ],
+      "result": 1,
+      "parameters": 7
+    },
+    {
+      "name": "$product.p173branch_36",
+      "error": "",
+      "calls": [
+        "$direct.p173s_shape_tag",
+        "$direct.p88_string_eq",
+        "$direct.p173s_shape_name",
+        "$direct.p88_string_eq",
+        "$direct.p173s_shape_name",
+        "$direct.p88_string_eq",
+        "$direct.Bool.and",
+        "$product.p173branch_37"
+      ],
+      "result": 2,
+      "parameters": 9
+    },
+    {
+      "name": "$direct.p173take_24",
+      "error": "",
+      "calls": [
+        "$direct.p173branch_36"
+      ],
+      "result": 1,
+      "parameters": 6
+    },
+    {
+      "name": "$product.p173take_24",
+      "error": "product result shape mismatch",
+      "calls": [
+        "$direct.p173branch_36"
+      ],
+      "result": 2,
+      "parameters": 7
+    },
+    {
+      "name": "$direct.p173take_23",
+      "error": "",
+      "calls": [
+        "$product.p173s_node",
+        "$product.p173take_24"
+      ],
+      "result": 1,
+      "parameters": 7
+    },
+    {
+      "name": "$product.p173take_23",
+      "error": "",
+      "calls": [
+        "$product.p173s_node",
+        "$product.p173take_24"
+      ],
+      "result": 2,
+      "parameters": 10
+    },
+    {
+      "name": "$direct.p173branch_35",
+      "error": "",
+      "calls": [
+        "$product.p173c_kid",
+        "$direct.p173take_23"
+      ],
+      "result": 1,
+      "parameters": 9
+    },
+    {
+      "name": "$product.p173branch_35",
+      "error": "product result shape mismatch",
+      "calls": [
+        "$product.p173c_kid",
+        "$direct.p173take_23"
+      ],
+      "result": 2,
+      "parameters": 11
+    },
+    {
+      "name": "$direct.p173branch_34",
+      "error": "",
+      "calls": [
+        "$direct.p173s_shape_tag",
+        "$direct.p88_string_eq",
+        "$direct.p173s_shape_name",
+        "$direct.p88_string_eq",
+        "$direct.Bool.and",
+        "$direct.Bool.and",
+        "$direct.p173branch_35"
+      ],
+      "result": 1,
+      "parameters": 9
+    },
+    {
+      "name": "$product.p173branch_34",
+      "error": "product result shape mismatch",
+      "calls": [
+        "$direct.p173s_shape_tag",
+        "$direct.p88_string_eq",
+        "$direct.p173s_shape_name",
+        "$direct.p88_string_eq",
+        "$direct.Bool.and",
+        "$direct.Bool.and",
+        "$direct.p173branch_35"
+      ],
+      "result": 2,
+      "parameters": 11
+    },
+    {
+      "name": "$direct.p173branch_33",
+      "error": "",
+      "calls": [
+        "$direct.p173s_shape_tag",
+        "$direct.p88_string_eq",
+        "$direct.p173s_shape_name",
+        "$direct.p88_string_eq",
+        "$direct.Bool.and",
+        "$product.p173branch_34"
+      ],
+      "result": 1,
+      "parameters": 5
+    },
+    {
+      "name": "$product.p173branch_33",
+      "error": "",
+      "calls": [
+        "$direct.p173s_shape_tag",
+        "$direct.p88_string_eq",
+        "$direct.p173s_shape_name",
+        "$direct.p88_string_eq",
+        "$direct.Bool.and",
+        "$product.p173branch_34"
+      ],
+      "result": 2,
+      "parameters": 7
+    },
+    {
+      "name": "$direct.p173take_25",
+      "error": "",
+      "calls": [
+        "$direct.p173branch_33"
+      ],
+      "result": 1,
+      "parameters": 4
+    },
+    {
+      "name": "$product.p173take_25",
+      "error": "product result shape mismatch",
+      "calls": [
+        "$direct.p173branch_33"
+      ],
+      "result": 2,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173branch_32",
+      "error": "",
+      "calls": [
+        "$direct.p173s_fail",
+        "$product.p173s_node",
+        "$product.p173take_25"
+      ],
+      "result": 1,
+      "parameters": 6
+    },
+    {
+      "name": "$product.p173branch_32",
+      "error": "",
+      "calls": [
+        "$direct.p173s_fail",
+        "$product.p173s_node",
+        "$product.p173take_25"
+      ],
+      "result": 2,
+      "parameters": 6
+    },
+    {
+      "name": "$direct.p173c_word",
+      "error": "",
+      "calls": [
+        "$product.p173branch_32"
+      ],
+      "result": 1,
+      "parameters": 5
+    },
+    {
+      "name": "$product.p173c_word",
+      "error": "",
+      "calls": [
+        "$product.p173branch_32"
+      ],
+      "result": 2,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173take_26",
+      "error": "",
+      "calls": [
+        "$product.p173c_word"
+      ],
+      "result": 1,
+      "parameters": 2
+    },
+    {
+      "name": "$product.p173take_26",
+      "error": "",
+      "calls": [
+        "$product.p173c_word"
+      ],
+      "result": 2,
+      "parameters": 3
+    },
+    {
+      "name": "$direct.p173branch_38",
+      "error": "",
+      "calls": [
+        "$product.p173c_kid",
+        "$product.p173take_26",
+        "$product.p173c_nat"
+      ],
+      "result": 1,
+      "parameters": 7
+    },
+    {
+      "name": "$product.p173branch_38",
+      "error": "",
+      "calls": [
+        "$product.p173c_kid",
+        "$product.p173take_26",
+        "$product.p173c_nat"
+      ],
+      "result": 2,
+      "parameters": 7
+    },
+    {
+      "name": "$direct.p173c_decode",
+      "error": "",
+      "calls": [
+        "$direct.p173s_shape_name",
+        "$direct.p88_string_eq",
+        "$direct.p173s_shape_name",
+        "$direct.p88_string_eq",
+        "$product.p173branch_38"
+      ],
+      "result": 1,
+      "parameters": 6
+    },
+    {
+      "name": "$product.p173c_decode",
+      "error": "",
+      "calls": [
+        "$direct.p173s_shape_name",
+        "$direct.p88_string_eq",
+        "$direct.p173s_shape_name",
+        "$direct.p88_string_eq",
+        "$product.p173branch_38"
+      ],
+      "result": 2,
+      "parameters": 6
+    },
+    {
+      "name": "$direct.p173branch_25",
+      "error": "",
+      "calls": [
+        "$product.p173s_edge"
+      ],
+      "result": 1,
+      "parameters": 5
+    },
+    {
+      "name": "$product.p173branch_25",
+      "error": "",
+      "calls": [
+        "$product.p173s_edge"
+      ],
+      "result": 2,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173c_kid",
+      "error": "",
+      "calls": [
+        "$product.p173branch_25"
+      ],
+      "result": 1,
+      "parameters": 4
+    },
+    {
+      "name": "$product.p173c_kid",
+      "error": "",
+      "calls": [
+        "$product.p173branch_25"
+      ],
+      "result": 2,
+      "parameters": 4
+    },
+    {
+      "name": "$direct.p173take_27",
+      "error": "",
+      "calls": [
+        "$product.p173c_succ_scan"
+      ],
+      "result": 1,
+      "parameters": 3
+    },
+    {
+      "name": "$product.p173take_27",
+      "error": "",
+      "calls": [
+        "$product.p173c_succ_scan"
+      ],
+      "result": 2,
+      "parameters": 4
+    },
+    {
+      "name": "$direct.p173branch_41",
+      "error": "",
+      "calls": [
+        "$product.p173c_kid",
+        "$product.p173take_27"
+      ],
+      "result": 1,
+      "parameters": 8
+    },
+    {
+      "name": "$product.p173branch_41",
+      "error": "",
+      "calls": [
+        "$product.p173c_kid",
+        "$product.p173take_27"
+      ],
+      "result": 2,
+      "parameters": 8
+    },
+    {
+      "name": "$direct.p173branch_40",
+      "error": "",
+      "calls": [
+        "$direct.p173s_shape_tag",
+        "$direct.p88_string_eq",
+        "$direct.p173s_shape_name",
+        "$direct.p88_string_eq",
+        "$direct.Bool.and",
+        "$direct.Bool.and",
+        "$direct.Bool.and",
+        "$product.p173branch_41"
+      ],
+      "result": 1,
+      "parameters": 5
+    },
+    {
+      "name": "$product.p173branch_40",
+      "error": "",
+      "calls": [
+        "$direct.p173s_shape_tag",
+        "$direct.p88_string_eq",
+        "$direct.p173s_shape_name",
+        "$direct.p88_string_eq",
+        "$direct.Bool.and",
+        "$direct.Bool.and",
+        "$direct.Bool.and",
+        "$product.p173branch_41"
+      ],
+      "result": 2,
+      "parameters": 7
+    },
+    {
+      "name": "$direct.p173take_28",
+      "error": "",
+      "calls": [
+        "$direct.p173branch_40"
+      ],
+      "result": 1,
+      "parameters": 4
+    },
+    {
+      "name": "$product.p173take_28",
+      "error": "product result shape mismatch",
+      "calls": [
+        "$direct.p173branch_40"
+      ],
+      "result": 2,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173branch_39",
+      "error": "",
+      "calls": [
+        "$direct.p173s_fail",
+        "$product.p173s_node",
+        "$product.p173take_28"
+      ],
+      "result": 1,
+      "parameters": 5
+    },
+    {
+      "name": "$product.p173branch_39",
+      "error": "",
+      "calls": [
+        "$direct.p173s_fail",
+        "$product.p173s_node",
+        "$product.p173take_28"
+      ],
+      "result": 2,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173c_succ_scan",
+      "error": "",
+      "calls": [
+        "$product.p173branch_39"
+      ],
+      "result": 1,
+      "parameters": 4
+    },
+    {
+      "name": "$product.p173c_succ_scan",
+      "error": "",
+      "calls": [
+        "$product.p173branch_39"
+      ],
+      "result": 2,
+      "parameters": 4
+    },
+    {
+      "name": "$direct.p173branch_45",
+      "error": "",
+      "calls": [
+        "$product.p173c_go"
+      ],
+      "result": 1,
+      "parameters": 5
+    },
+    {
+      "name": "$product.p173branch_45",
+      "error": "",
+      "calls": [
+        "$product.p173c_go"
+      ],
+      "result": 2,
+      "parameters": 7
+    },
+    {
+      "name": "$direct.p173take_32",
+      "error": "",
+      "calls": [
+        "$direct.p173branch_45"
+      ],
+      "result": 1,
+      "parameters": 4
+    },
+    {
+      "name": "$product.p173take_32",
+      "error": "product result shape mismatch",
+      "calls": [
+        "$direct.p173branch_45"
+      ],
+      "result": 2,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173take_31",
+      "error": "",
+      "calls": [
+        "$product.p173c_succ_scan",
+        "$product.p173take_32"
+      ],
+      "result": 1,
+      "parameters": 4
+    },
+    {
+      "name": "$product.p173take_31",
+      "error": "",
+      "calls": [
+        "$product.p173c_succ_scan",
+        "$product.p173take_32"
+      ],
+      "result": 2,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173branch_44",
+      "error": "",
+      "calls": [
+        "$product.p173c_children",
+        "$product.p173c_kid",
+        "$product.p173take_31"
+      ],
+      "result": 1,
+      "parameters": 8
+    },
+    {
+      "name": "$product.p173branch_44",
+      "error": "",
+      "calls": [
+        "$product.p173c_children",
+        "$product.p173c_kid",
+        "$product.p173take_31"
+      ],
+      "result": 2,
+      "parameters": 8
+    },
+    {
+      "name": "$direct.p173take_33",
+      "error": "",
+      "calls": [
+        "$product.p173c_go"
+      ],
+      "result": 1,
+      "parameters": 4
+    },
+    {
+      "name": "$product.p173take_33",
+      "error": "",
+      "calls": [
+        "$product.p173c_go"
+      ],
+      "result": 2,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173match_10",
+      "error": "",
+      "calls": [
+        "$product.p173c_word_emit",
+        "$product.p173take_33",
+        "$direct.p173s_shape_name",
+        "$direct.p88_string_eq",
+        "$direct.Bool.and",
+        "$product.p173branch_44"
+      ],
+      "result": 1,
+      "parameters": 9
+    },
+    {
+      "name": "$product.p173match_10",
+      "error": "",
+      "calls": [
+        "$product.p173c_word_emit",
+        "$product.p173take_33",
+        "$direct.p173s_shape_name",
+        "$direct.p88_string_eq",
+        "$direct.Bool.and",
+        "$product.p173branch_44"
+      ],
+      "result": 2,
+      "parameters": 9
+    },
+    {
+      "name": "$direct.p173branch_43",
+      "error": "",
+      "calls": [
+        "$product.p173match_10"
+      ],
+      "result": 1,
+      "parameters": 7
+    },
+    {
+      "name": "$product.p173branch_43",
+      "error": "",
+      "calls": [
+        "$product.p173match_10"
+      ],
+      "result": 2,
+      "parameters": 9
+    },
+    {
+      "name": "$direct.p173take_18",
+      "error": "",
+      "calls": [
+        "$direct.p173branch_43"
+      ],
+      "result": 1,
+      "parameters": 6
+    },
+    {
+      "name": "$product.p173take_18",
+      "error": "product result shape mismatch",
+      "calls": [
+        "$direct.p173branch_43"
+      ],
+      "result": 2,
+      "parameters": 7
+    },
+    {
+      "name": "$direct.p173c_constructor",
+      "error": "",
+      "calls": [
+        "$product.p173c_decode",
+        "$product.p173take_18"
+      ],
+      "result": 1,
+      "parameters": 8
+    },
+    {
+      "name": "$product.p173c_constructor",
+      "error": "",
+      "calls": [
+        "$product.p173c_decode",
+        "$product.p173take_18"
+      ],
+      "result": 2,
+      "parameters": 8
+    },
+    {
+      "name": "$direct.p173branch_49",
+      "error": "",
+      "calls": [
+        "$product.p173c_constructor",
+        "$product.p173c_children"
+      ],
+      "result": 1,
+      "parameters": 10
+    },
+    {
+      "name": "$product.p173branch_49",
+      "error": "",
+      "calls": [
+        "$product.p173c_constructor",
+        "$product.p173c_children"
+      ],
+      "result": 2,
+      "parameters": 10
+    },
+    {
+      "name": "$direct.p173branch_48",
+      "error": "",
+      "calls": [
+        "$product.p173c_go",
+        "$direct.p88_string_eq",
+        "$product.p173branch_49"
+      ],
+      "result": 1,
+      "parameters": 16
+    },
+    {
+      "name": "$product.p173branch_48",
+      "error": "",
+      "calls": [
+        "$product.p173c_go",
+        "$direct.p88_string_eq",
+        "$product.p173branch_49"
+      ],
+      "result": 2,
+      "parameters": 16
+    },
+    {
+      "name": "$direct.p173take_30",
+      "error": "",
+      "calls": [
+        "$product.p173c_go"
+      ],
+      "result": 1,
+      "parameters": 7
+    },
+    {
+      "name": "$product.p173take_30",
+      "error": "",
+      "calls": [
+        "$product.p173c_go"
+      ],
+      "result": 2,
+      "parameters": 8
+    },
+    {
+      "name": "$direct.p173c_clear",
+      "error": "",
+      "calls": [],
+      "result": 1,
+      "parameters": 1
+    },
+    {
+      "name": "$direct.p173take_29",
+      "error": "",
+      "calls": [
+        "$product.p173c_go"
+      ],
+      "result": 1,
+      "parameters": 4
+    },
+    {
+      "name": "$product.p173take_29",
+      "error": "",
+      "calls": [
+        "$product.p173c_go"
+      ],
+      "result": 2,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173branch_42",
+      "error": "",
+      "calls": [
+        "$direct.p173c_clear",
+        "$product.p173s_emit",
+        "$product.p173take_29",
+        "$product.p173s_edge",
+        "$product.p173take_30"
+      ],
+      "result": 1,
+      "parameters": 8
+    },
+    {
+      "name": "$product.p173branch_42",
+      "error": "",
+      "calls": [
+        "$direct.p173c_clear",
+        "$product.p173s_emit",
+        "$product.p173take_29",
+        "$product.p173s_edge",
+        "$product.p173take_30"
+      ],
+      "result": 2,
+      "parameters": 8
+    },
+    {
+      "name": "$direct.p173c_children",
+      "error": "",
+      "calls": [
+        "$product.p173branch_42"
+      ],
+      "result": 1,
+      "parameters": 7
+    },
+    {
+      "name": "$product.p173c_children",
+      "error": "",
+      "calls": [
+        "$product.p173branch_42"
+      ],
+      "result": 2,
+      "parameters": 7
+    },
+    {
+      "name": "$direct.p173branch_7",
+      "error": "",
+      "calls": [],
+      "result": 1,
+      "parameters": 11
+    },
+    {
+      "name": "$direct.p173branch_6",
+      "error": "",
+      "calls": [
+        "$direct.p173branch_7"
+      ],
+      "result": 1,
+      "parameters": 11
+    },
+    {
+      "name": "$direct.p173branch_5",
+      "error": "",
+      "calls": [
+        "$direct.p173branch_6"
+      ],
+      "result": 1,
+      "parameters": 11
+    },
+    {
+      "name": "$direct.p173s_add_edge",
+      "error": "",
+      "calls": [
+        "$direct.p173branch_5"
+      ],
+      "result": 1,
+      "parameters": 2
+    },
+    {
+      "name": "$direct.p173s_add_edges",
+      "error": "",
+      "calls": [
+        "$direct.p173s_add_edge",
+        "$product.p173s_add_edges"
+      ],
+      "result": 1,
+      "parameters": 3
+    },
+    {
+      "name": "$product.p173s_add_edges",
+      "error": "",
+      "calls": [
+        "$direct.p173s_add_edge"
+      ],
+      "result": 2,
+      "parameters": 3
+    },
+    {
+      "name": "$direct.p173branch_4",
+      "error": "",
+      "calls": [
+        "$product.p173s_empty_node"
+      ],
+      "result": 1,
+      "parameters": 11
+    },
+    {
+      "name": "$product.p173branch_4",
+      "error": "",
+      "calls": [
+        "$product.p173s_empty_node"
+      ],
+      "result": 2,
+      "parameters": 13
+    },
+    {
+      "name": "$direct.p173branch_3",
+      "error": "",
+      "calls": [
+        "$direct.p173branch_4"
+      ],
+      "result": 1,
+      "parameters": 11
+    },
+    {
+      "name": "$product.p173branch_3",
+      "error": "product result shape mismatch",
+      "calls": [
+        "$direct.p173branch_4"
+      ],
+      "result": 2,
+      "parameters": 13
+    },
+    {
+      "name": "$direct.p173s_add_node",
+      "error": "",
+      "calls": [
+        "$direct.p173branch_3"
+      ],
+      "result": 1,
+      "parameters": 2
+    },
+    {
+      "name": "$product.p173s_add_node",
+      "error": "",
+      "calls": [
+        "$product.p173branch_3"
+      ],
+      "result": 2,
+      "parameters": 4
+    },
+    {
+      "name": "$direct.p173take_2",
+      "error": "",
+      "calls": [
+        "$product.p173s_add_node"
+      ],
+      "result": 1,
+      "parameters": 3
+    },
+    {
+      "name": "$product.p173take_2",
+      "error": "",
+      "calls": [
+        "$product.p173s_add_node"
+      ],
+      "result": 2,
+      "parameters": 4
+    },
+    {
+      "name": "$direct.p173take_1",
+      "error": "",
+      "calls": [
+        "$product.p173s_add_edges",
+        "$product.p173take_2"
+      ],
+      "result": 1,
+      "parameters": 3
+    },
+    {
+      "name": "$product.p173take_1",
+      "error": "",
+      "calls": [
+        "$product.p173s_add_edges",
+        "$product.p173take_2"
+      ],
+      "result": 2,
+      "parameters": 4
+    },
+    {
+      "name": "$direct.p173s_emit",
+      "error": "",
+      "calls": [
+        "$product.p173s_edges_end",
+        "$product.p173take_1"
+      ],
+      "result": 1,
+      "parameters": 3
+    },
+    {
+      "name": "$product.p173s_emit",
+      "error": "",
+      "calls": [
+        "$product.p173s_edges_end",
+        "$product.p173take_1"
+      ],
+      "result": 2,
+      "parameters": 3
+    },
+    {
+      "name": "$direct.p173c_word_emit",
+      "error": "",
+      "calls": [
+        "$direct.U32.show",
+        "$product.p173s_emit"
+      ],
+      "result": 1,
+      "parameters": 2
+    },
+    {
+      "name": "$product.p173c_word_emit",
+      "error": "",
+      "calls": [
+        "$direct.U32.show",
+        "$product.p173s_emit"
+      ],
+      "result": 2,
+      "parameters": 2
+    },
+    {
+      "name": "$direct.p173take_34",
+      "error": "",
+      "calls": [
+        "$product.p173c_go"
+      ],
+      "result": 1,
+      "parameters": 4
+    },
+    {
+      "name": "$product.p173take_34",
+      "error": "",
+      "calls": [
+        "$product.p173c_go"
+      ],
+      "result": 2,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173branch_47",
+      "error": "",
+      "calls": [
+        "$product.p173c_go",
+        "$product.p173c_word_emit",
+        "$product.p173take_34"
+      ],
+      "result": 1,
+      "parameters": 8
+    },
+    {
+      "name": "$product.p173branch_47",
+      "error": "",
+      "calls": [
+        "$product.p173c_go",
+        "$product.p173c_word_emit",
+        "$product.p173take_34"
+      ],
+      "result": 2,
+      "parameters": 8
+    },
+    {
+      "name": "$direct.p173match_11",
+      "error": "",
+      "calls": [
+        "$direct.p88_string_eq",
+        "$product.p173branch_47",
+        "$product.p173c_children",
+        "$direct.p88_string_eq",
+        "$product.p173branch_48"
+      ],
+      "result": 1,
+      "parameters": 8
+    },
+    {
+      "name": "$product.p173match_11",
+      "error": "",
+      "calls": [
+        "$direct.p88_string_eq",
+        "$product.p173branch_47",
+        "$product.p173c_children",
+        "$direct.p88_string_eq",
+        "$product.p173branch_48"
+      ],
+      "result": 2,
+      "parameters": 8
+    },
+    {
+      "name": "$direct.p173branch_46",
+      "error": "",
+      "calls": [
+        "$product.p173match_11"
+      ],
+      "result": 1,
+      "parameters": 6
+    },
+    {
+      "name": "$product.p173branch_46",
+      "error": "",
+      "calls": [
+        "$product.p173match_11"
+      ],
+      "result": 2,
+      "parameters": 8
+    },
+    {
+      "name": "$direct.p173take_19",
+      "error": "",
+      "calls": [
+        "$direct.p173branch_46"
+      ],
+      "result": 1,
+      "parameters": 5
+    },
+    {
+      "name": "$product.p173take_19",
+      "error": "product result shape mismatch",
+      "calls": [
+        "$direct.p173branch_46"
+      ],
+      "result": 2,
+      "parameters": 6
+    },
+    {
+      "name": "$direct.p173c_visit",
+      "error": "",
+      "calls": [
+        "$product.p173s_node",
+        "$product.p173take_19"
+      ],
+      "result": 1,
+      "parameters": 5
+    },
+    {
+      "name": "$product.p173c_visit",
+      "error": "",
+      "calls": [
+        "$product.p173s_node",
+        "$product.p173take_19"
+      ],
+      "result": 2,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173match_12",
+      "error": "",
+      "calls": [
+        "$product.p173c_visit",
+        "$product.p173match_13",
+        "$product.p173match_14",
+        "$product.p173match_15",
+        "$product.p173match_16"
+      ],
+      "result": 1,
+      "parameters": 5
+    },
+    {
+      "name": "$product.p173match_12",
+      "error": "",
+      "calls": [
+        "$product.p173c_visit",
+        "$product.p173match_13",
+        "$product.p173match_14",
+        "$product.p173match_15",
+        "$product.p173match_16"
+      ],
+      "result": 2,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173branch_50",
+      "error": "",
+      "calls": [
+        "$direct.p173s_fail",
+        "$product.p173match_12"
+      ],
+      "result": 1,
+      "parameters": 6
+    },
+    {
+      "name": "$product.p173branch_50",
+      "error": "",
+      "calls": [
+        "$direct.p173s_fail",
+        "$product.p173match_12"
+      ],
+      "result": 2,
+      "parameters": 6
+    },
+    {
+      "name": "$direct.p173match_8",
+      "error": "",
+      "calls": [
+        "$direct.p173s_fail"
+      ],
+      "result": 1,
+      "parameters": 2
+    },
+    {
+      "name": "$product.p173match_8",
+      "error": "",
+      "calls": [
+        "$direct.p173s_fail"
+      ],
+      "result": 2,
+      "parameters": 2
+    },
+    {
+      "name": "$direct.p173c_go",
+      "error": "",
+      "calls": [
+        "$product.p173match_8",
+        "$product.p173branch_50"
+      ],
+      "result": 1,
+      "parameters": 4
+    },
+    {
+      "name": "$product.p173c_go",
+      "error": "",
+      "calls": [
+        "$product.p173match_8",
+        "$product.p173branch_50"
+      ],
+      "result": 2,
+      "parameters": 4
+    },
+    {
+      "name": "$direct.p173s_compact",
+      "error": "",
+      "calls": [
+        "$product.p173c_go"
+      ],
+      "result": 1,
+      "parameters": 3
+    },
+    {
+      "name": "$product.p173s_compact",
+      "error": "",
+      "calls": [
+        "$product.p173c_go"
+      ],
+      "result": 2,
+      "parameters": 3
+    },
+    {
+      "name": "$direct.p173take_12",
+      "error": "",
+      "calls": [
+        "$product.p173s_push_edges"
+      ],
+      "result": 1,
+      "parameters": 4
+    },
+    {
+      "name": "$product.p173take_12",
+      "error": "",
+      "calls": [
+        "$product.p173s_push_edges"
+      ],
+      "result": 2,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173branch_13",
+      "error": "",
+      "calls": [
+        "$product.p173s_edge",
+        "$product.p173take_12"
+      ],
+      "result": 1,
+      "parameters": 5
+    },
+    {
+      "name": "$product.p173branch_13",
+      "error": "",
+      "calls": [
+        "$product.p173s_edge",
+        "$product.p173take_12"
+      ],
+      "result": 2,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173s_push_edges",
+      "error": "",
+      "calls": [
+        "$product.p173branch_13"
+      ],
+      "result": 1,
+      "parameters": 4
+    },
+    {
+      "name": "$product.p173s_push_edges",
+      "error": "",
+      "calls": [
+        "$product.p173branch_13"
+      ],
+      "result": 2,
+      "parameters": 4
+    },
+    {
+      "name": "$direct.p173s_shape_tag",
+      "error": "",
+      "calls": [],
+      "result": 1,
+      "parameters": 1
+    },
+    {
+      "name": "$direct.p173s_shape_name",
+      "error": "",
+      "calls": [],
+      "result": 1,
+      "parameters": 1
+    },
+    {
+      "name": "$direct.p173branch_16",
+      "error": "",
+      "calls": [
+        "$direct.p173s_shape_name",
+        "$product.p173s_refs_go",
+        "$product.p173s_refs_go"
+      ],
+      "result": 1,
+      "parameters": 6
+    },
+    {
+      "name": "$product.p173branch_16",
+      "error": "",
+      "calls": [
+        "$direct.p173s_shape_name",
+        "$product.p173s_refs_go",
+        "$product.p173s_refs_go"
+      ],
+      "result": 2,
+      "parameters": 6
+    },
+    {
+      "name": "$direct.p173take_13",
+      "error": "",
+      "calls": [
+        "$direct.p173s_shape_tag",
+        "$direct.p88_string_eq",
+        "$product.p173branch_16"
+      ],
+      "result": 1,
+      "parameters": 4
+    },
+    {
+      "name": "$product.p173take_13",
+      "error": "",
+      "calls": [
+        "$direct.p173s_shape_tag",
+        "$direct.p88_string_eq",
+        "$product.p173branch_16"
+      ],
+      "result": 2,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173branch_15",
+      "error": "",
+      "calls": [
+        "$product.p173s_push_edges",
+        "$product.p173take_13"
+      ],
+      "result": 1,
+      "parameters": 5
+    },
+    {
+      "name": "$product.p173branch_15",
+      "error": "",
+      "calls": [
+        "$product.p173s_push_edges",
+        "$product.p173take_13"
+      ],
+      "result": 2,
+      "parameters": 7
+    },
+    {
+      "name": "$direct.p173take_14",
+      "error": "",
+      "calls": [
+        "$direct.p173branch_15"
+      ],
+      "result": 1,
+      "parameters": 4
+    },
+    {
+      "name": "$product.p173take_14",
+      "error": "product result shape mismatch",
+      "calls": [
+        "$direct.p173branch_15"
+      ],
+      "result": 2,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173branch_14",
+      "error": "",
+      "calls": [
+        "$direct.p173s_fail",
+        "$product.p173s_node",
+        "$product.p173take_14"
+      ],
+      "result": 1,
+      "parameters": 6
+    },
+    {
+      "name": "$product.p173branch_14",
+      "error": "",
+      "calls": [
+        "$direct.p173s_fail",
+        "$product.p173s_node",
+        "$product.p173take_14"
+      ],
+      "result": 2,
+      "parameters": 6
+    },
+    {
+      "name": "$direct.p173s_refs_go",
+      "error": "",
+      "calls": [
+        "$direct.nt_reverse",
+        "$product.p173branch_14"
+      ],
+      "result": 1,
+      "parameters": 4
+    },
+    {
+      "name": "$product.p173s_refs_go",
+      "error": "",
+      "calls": [
+        "$direct.nt_reverse",
+        "$product.p173branch_14"
+      ],
+      "result": 2,
+      "parameters": 4
+    },
+    {
+      "name": "$direct.p173s_refs",
+      "error": "",
+      "calls": [
+        "$product.p173s_refs_go"
+      ],
+      "result": 1,
+      "parameters": 3
+    },
+    {
+      "name": "$product.p173s_refs",
+      "error": "",
+      "calls": [
+        "$product.p173s_refs_go"
+      ],
+      "result": 2,
+      "parameters": 3
+    },
+    {
+      "name": "$direct.p173take_11",
+      "error": "",
+      "calls": [
+        "$product.p173s_export_go"
+      ],
+      "result": 1,
+      "parameters": 10
+    },
+    {
+      "name": "$product.p173take_11",
+      "error": "",
+      "calls": [
+        "$product.p173s_export_go"
+      ],
+      "result": 2,
+      "parameters": 11
+    },
+    {
+      "name": "$direct.p173branch_12",
+      "error": "",
+      "calls": [
+        "$direct.nt_reverse",
+        "$direct.p173s_shape_term",
+        "$product.p173s_export_go",
+        "$product.p173s_edge",
+        "$product.p173take_11"
+      ],
+      "result": 1,
+      "parameters": 11
+    },
+    {
+      "name": "$product.p173branch_12",
+      "error": "",
+      "calls": [
+        "$direct.nt_reverse",
+        "$direct.p173s_shape_term",
+        "$product.p173s_export_go",
+        "$product.p173s_edge",
+        "$product.p173take_11"
+      ],
+      "result": 2,
+      "parameters": 11
+    },
+    {
+      "name": "$direct.p173match_7",
+      "error": "",
+      "calls": [
+        "$direct.p173s_fail",
+        "$direct.atom",
+        "$product.p173branch_12"
+      ],
+      "result": 1,
+      "parameters": 9
+    },
+    {
+      "name": "$product.p173match_7",
+      "error": "",
+      "calls": [
+        "$direct.p173s_fail",
+        "$direct.atom",
+        "$product.p173branch_12"
+      ],
+      "result": 2,
+      "parameters": 9
+    },
+    {
+      "name": "$direct.p173take_10",
+      "error": "",
+      "calls": [
+        "$product.p173s_export_go"
+      ],
+      "result": 1,
+      "parameters": 7
+    },
+    {
+      "name": "$product.p173take_10",
+      "error": "",
+      "calls": [
+        "$product.p173s_export_go"
+      ],
+      "result": 2,
+      "parameters": 8
+    },
+    {
+      "name": "$direct.p173s_shape_term",
+      "error": "",
+      "calls": [],
+      "result": 1,
+      "parameters": 2
+    },
+    {
+      "name": "$direct.p173branch_10",
+      "error": "",
+      "calls": [
+        "$direct.p173s_shape_term",
+        "$product.p173s_export_go",
+        "$product.p173s_edge",
+        "$product.p173take_10"
+      ],
+      "result": 1,
+      "parameters": 8
+    },
+    {
+      "name": "$product.p173branch_10",
+      "error": "",
+      "calls": [
+        "$direct.p173s_shape_term",
+        "$product.p173s_export_go",
+        "$product.p173s_edge",
+        "$product.p173take_10"
+      ],
+      "result": 2,
+      "parameters": 8
+    },
+    {
+      "name": "$direct.p173branch_9",
+      "error": "",
+      "calls": [
+        "$product.p173branch_10"
+      ],
+      "result": 1,
+      "parameters": 5
+    },
+    {
+      "name": "$product.p173branch_9",
+      "error": "",
+      "calls": [
+        "$product.p173branch_10"
+      ],
+      "result": 2,
+      "parameters": 7
+    },
+    {
+      "name": "$direct.p173take_4",
+      "error": "",
+      "calls": [
+        "$direct.p173branch_9"
+      ],
+      "result": 1,
+      "parameters": 4
+    },
+    {
+      "name": "$product.p173take_4",
+      "error": "product result shape mismatch",
+      "calls": [
+        "$direct.p173branch_9"
+      ],
+      "result": 2,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173s_export_visit",
+      "error": "",
+      "calls": [
+        "$product.p173s_node",
+        "$product.p173take_4"
+      ],
+      "result": 1,
+      "parameters": 5
+    },
+    {
+      "name": "$product.p173s_export_visit",
+      "error": "",
+      "calls": [
+        "$product.p173s_node",
+        "$product.p173take_4"
+      ],
+      "result": 2,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173match_6",
+      "error": "",
+      "calls": [
+        "$product.p173s_export_visit",
+        "$product.p173match_7"
+      ],
+      "result": 1,
+      "parameters": 5
+    },
+    {
+      "name": "$product.p173match_6",
+      "error": "",
+      "calls": [
+        "$product.p173s_export_visit",
+        "$product.p173match_7"
+      ],
+      "result": 2,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173branch_11",
+      "error": "",
+      "calls": [
+        "$direct.p173s_fail",
+        "$direct.atom",
+        "$product.p173match_6"
+      ],
+      "result": 1,
+      "parameters": 6
+    },
+    {
+      "name": "$product.p173branch_11",
+      "error": "",
+      "calls": [
+        "$direct.p173s_fail",
+        "$direct.atom",
+        "$product.p173match_6"
+      ],
+      "result": 2,
+      "parameters": 6
+    },
+    {
+      "name": "$direct.p173s_fail",
+      "error": "",
+      "calls": [],
+      "result": 1,
+      "parameters": 1
+    },
+    {
+      "name": "$direct.p173match_2",
+      "error": "",
+      "calls": [
+        "$direct.p173s_fail",
+        "$direct.atom"
+      ],
+      "result": 1,
+      "parameters": 2
+    },
+    {
+      "name": "$product.p173match_2",
+      "error": "",
+      "calls": [
+        "$direct.p173s_fail",
+        "$direct.atom"
+      ],
+      "result": 2,
+      "parameters": 2
+    },
+    {
+      "name": "$direct.p173s_export_go",
+      "error": "",
+      "calls": [
+        "$product.p173match_2",
+        "$product.p173branch_11"
+      ],
+      "result": 1,
+      "parameters": 4
+    },
+    {
+      "name": "$product.p173s_export_go",
+      "error": "",
+      "calls": [
+        "$product.p173match_2",
+        "$product.p173branch_11"
+      ],
+      "result": 2,
+      "parameters": 4
+    },
+    {
+      "name": "$direct.p173s_export",
+      "error": "",
+      "calls": [
+        "$product.p173s_export_go"
+      ],
+      "result": 1,
+      "parameters": 3
+    },
+    {
+      "name": "$product.p173s_export",
+      "error": "",
+      "calls": [
+        "$product.p173s_export_go"
+      ],
+      "result": 2,
+      "parameters": 3
+    },
+    {
+      "name": "$direct.p173s_size",
+      "error": "",
+      "calls": [],
+      "result": 1,
+      "parameters": 1
+    },
+    {
+      "name": "$product.p173s_size",
+      "error": "",
+      "calls": [],
+      "result": 2,
+      "parameters": 1
+    },
+    {
+      "name": "$direct.p173s_edges_end",
+      "error": "",
+      "calls": [],
+      "result": 1,
+      "parameters": 1
+    },
+    {
+      "name": "$product.p173s_edges_end",
+      "error": "",
+      "calls": [],
+      "result": 2,
+      "parameters": 1
+    },
+    {
+      "name": "p173s_absent",
+      "error": "",
+      "calls": [],
+      "result": 1,
+      "parameters": 0
+    },
+    {
+      "name": "p173s_empty_node",
+      "error": "",
+      "calls": [
+        "p173s_absent"
+      ],
+      "result": 1,
+      "parameters": 0
+    },
+    {
+      "name": "$product.p173s_empty_node",
+      "error": "",
+      "calls": [
+        "p173s_absent"
+      ],
+      "result": 3,
+      "parameters": 0
+    },
+    {
+      "name": "$direct.p173take_7",
+      "error": "",
+      "calls": [],
+      "result": 1,
+      "parameters": 9
+    },
+    {
+      "name": "$product.p173take_7",
+      "error": "",
+      "calls": [],
+      "result": 2,
+      "parameters": 10
+    },
+    {
+      "name": "$direct.p173branch_1",
+      "error": "",
+      "calls": [
+        "$product.p173take_7",
+        "$product.p173s_empty_node"
+      ],
+      "result": 1,
+      "parameters": 11
+    },
+    {
+      "name": "$product.p173branch_1",
+      "error": "",
+      "calls": [
+        "$product.p173take_7",
+        "$product.p173s_empty_node"
+      ],
+      "result": 2,
+      "parameters": 11
+    },
+    {
+      "name": "$direct.p173s_node",
+      "error": "",
+      "calls": [
+        "$product.p173branch_1"
+      ],
+      "result": 1,
+      "parameters": 2
+    },
+    {
+      "name": "$product.p173s_node",
+      "error": "",
+      "calls": [
+        "$product.p173branch_1"
+      ],
+      "result": 2,
+      "parameters": 2
+    },
+    {
+      "name": "$direct.p173take_8",
+      "error": "",
+      "calls": [],
+      "result": 1,
+      "parameters": 9
+    },
+    {
+      "name": "$product.p173take_8",
+      "error": "",
+      "calls": [],
+      "result": 2,
+      "parameters": 10
+    },
+    {
+      "name": "$direct.p173branch_2",
+      "error": "",
+      "calls": [
+        "$product.p173take_8"
+      ],
+      "result": 1,
+      "parameters": 11
+    },
+    {
+      "name": "$product.p173branch_2",
+      "error": "",
+      "calls": [
+        "$product.p173take_8"
+      ],
+      "result": 2,
+      "parameters": 11
+    },
+    {
+      "name": "$direct.p173s_edge",
+      "error": "",
+      "calls": [
+        "$product.p173branch_2"
+      ],
+      "result": 1,
+      "parameters": 2
+    },
+    {
+      "name": "$product.p173s_edge",
+      "error": "",
+      "calls": [
+        "$product.p173branch_2"
+      ],
+      "result": 2,
+      "parameters": 2
+    },
+    {
+      "name": "$direct.p173branch_19",
+      "error": "",
+      "calls": [
+        "$product.p173s_valid_edges"
+      ],
+      "result": 1,
+      "parameters": 7
+    },
+    {
+      "name": "$product.p173branch_19",
+      "error": "",
+      "calls": [
+        "$product.p173s_valid_edges"
+      ],
+      "result": 2,
+      "parameters": 7
+    },
+    {
+      "name": "$direct.p173take_15",
+      "error": "",
+      "calls": [
+        "$product.p173branch_19"
+      ],
+      "result": 1,
+      "parameters": 5
+    },
+    {
+      "name": "$product.p173take_15",
+      "error": "",
+      "calls": [
+        "$product.p173branch_19"
+      ],
+      "result": 2,
+      "parameters": 6
+    },
+    {
+      "name": "$direct.p173branch_18",
+      "error": "",
+      "calls": [
+        "$product.p173s_edge",
+        "$product.p173take_15"
+      ],
+      "result": 1,
+      "parameters": 6
+    },
+    {
+      "name": "$product.p173branch_18",
+      "error": "",
+      "calls": [
+        "$product.p173s_edge",
+        "$product.p173take_15"
+      ],
+      "result": 2,
+      "parameters": 6
+    },
+    {
+      "name": "$direct.p173branch_17",
+      "error": "",
+      "calls": [
+        "$product.p173branch_18"
+      ],
+      "result": 1,
+      "parameters": 6
+    },
+    {
+      "name": "$product.p173branch_17",
+      "error": "",
+      "calls": [
+        "$product.p173branch_18"
+      ],
+      "result": 2,
+      "parameters": 6
+    },
+    {
+      "name": "$direct.p173s_valid_edges",
+      "error": "",
+      "calls": [
+        "$product.p173branch_17"
+      ],
+      "result": 1,
+      "parameters": 5
+    },
+    {
+      "name": "$product.p173s_valid_edges",
+      "error": "",
+      "calls": [
+        "$product.p173branch_17"
+      ],
+      "result": 2,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173branch_24",
+      "error": "",
+      "calls": [
+        "$product.p173s_valid_go"
+      ],
+      "result": 1,
+      "parameters": 7
+    },
+    {
+      "name": "$product.p173branch_24",
+      "error": "",
+      "calls": [
+        "$product.p173s_valid_go"
+      ],
+      "result": 2,
+      "parameters": 7
+    },
+    {
+      "name": "$direct.p173take_16",
+      "error": "",
+      "calls": [
+        "$product.p173branch_24"
+      ],
+      "result": 1,
+      "parameters": 6
+    },
+    {
+      "name": "$product.p173take_16",
+      "error": "",
+      "calls": [
+        "$product.p173branch_24"
+      ],
+      "result": 2,
+      "parameters": 7
+    },
+    {
+      "name": "$direct.p173branch_23",
+      "error": "",
+      "calls": [
+        "$product.p173s_valid_edges",
+        "$product.p173take_16"
+      ],
+      "result": 1,
+      "parameters": 8
+    },
+    {
+      "name": "$product.p173branch_23",
+      "error": "",
+      "calls": [
+        "$product.p173s_valid_edges",
+        "$product.p173take_16"
+      ],
+      "result": 2,
+      "parameters": 8
+    },
+    {
+      "name": "$direct.p173branch_22",
+      "error": "",
+      "calls": [
+        "$direct.Bool.and",
+        "$direct.Bool.and",
+        "$product.p173branch_23"
+      ],
+      "result": 1,
+      "parameters": 6
+    },
+    {
+      "name": "$product.p173branch_22",
+      "error": "",
+      "calls": [
+        "$direct.Bool.and",
+        "$direct.Bool.and",
+        "$product.p173branch_23"
+      ],
+      "result": 2,
+      "parameters": 8
+    },
+    {
+      "name": "$direct.p173take_17",
+      "error": "",
+      "calls": [
+        "$direct.p173branch_22"
+      ],
+      "result": 1,
+      "parameters": 5
+    },
+    {
+      "name": "$product.p173take_17",
+      "error": "product result shape mismatch",
+      "calls": [
+        "$direct.p173branch_22"
+      ],
+      "result": 2,
+      "parameters": 6
+    },
+    {
+      "name": "$direct.p173branch_21",
+      "error": "",
+      "calls": [
+        "$product.p173s_node",
+        "$product.p173take_17"
+      ],
+      "result": 1,
+      "parameters": 6
+    },
+    {
+      "name": "$product.p173branch_21",
+      "error": "",
+      "calls": [
+        "$product.p173s_node",
+        "$product.p173take_17"
+      ],
+      "result": 2,
+      "parameters": 6
+    },
+    {
+      "name": "$direct.p173branch_20",
+      "error": "",
+      "calls": [
+        "$product.p173s_ok",
+        "$product.p173branch_21"
+      ],
+      "result": 1,
+      "parameters": 6
+    },
+    {
+      "name": "$product.p173branch_20",
+      "error": "",
+      "calls": [
+        "$product.p173s_ok",
+        "$product.p173branch_21"
+      ],
+      "result": 2,
+      "parameters": 6
+    },
+    {
+      "name": "$direct.p173s_valid_go",
+      "error": "",
+      "calls": [
+        "$product.p173branch_20"
+      ],
+      "result": 1,
+      "parameters": 5
+    },
+    {
+      "name": "$product.p173s_valid_go",
+      "error": "",
+      "calls": [
+        "$product.p173branch_20"
+      ],
+      "result": 2,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173take_6",
+      "error": "",
+      "calls": [
+        "$product.p173s_valid_go"
+      ],
+      "result": 1,
+      "parameters": 3
+    },
+    {
+      "name": "$product.p173take_6",
+      "error": "",
+      "calls": [
+        "$product.p173s_valid_go"
+      ],
+      "result": 2,
+      "parameters": 4
+    },
+    {
+      "name": "$direct.p173take_5",
+      "error": "",
+      "calls": [
+        "$product.p173s_edges_end",
+        "$product.p173take_6"
+      ],
+      "result": 1,
+      "parameters": 2
+    },
+    {
+      "name": "$product.p173take_5",
+      "error": "",
+      "calls": [
+        "$product.p173s_edges_end",
+        "$product.p173take_6"
+      ],
+      "result": 2,
+      "parameters": 3
+    },
+    {
+      "name": "$direct.p173s_valid_header_test",
+      "error": "",
+      "calls": [
+        "$product.p173s_size",
+        "$product.p173take_5"
+      ],
+      "result": 1,
+      "parameters": 3
+    },
+    {
+      "name": "$product.p173s_valid_header_test",
+      "error": "",
+      "calls": [
+        "$product.p173s_size",
+        "$product.p173take_5"
+      ],
+      "result": 2,
+      "parameters": 3
+    },
+    {
+      "name": "$direct.p173s_valid_earray",
+      "error": "",
+      "calls": [
+        "$direct.Bool.and",
+        "$direct.Bool.and",
+        "$direct.Bool.and",
+        "$direct.Bool.and",
+        "$direct.Bool.and",
+        "$product.p173s_valid_header_test"
+      ],
+      "result": 1,
+      "parameters": 11
+    },
+    {
+      "name": "$product.p173s_valid_earray",
+      "error": "",
+      "calls": [
+        "$direct.Bool.and",
+        "$direct.Bool.and",
+        "$direct.Bool.and",
+        "$direct.Bool.and",
+        "$direct.Bool.and",
+        "$product.p173s_valid_header_test"
+      ],
+      "result": 2,
+      "parameters": 12
+    },
+    {
+      "name": "$direct.p173s_valid_narray",
+      "error": "",
+      "calls": [
+        "$product.p173s_valid_earray"
+      ],
+      "result": 1,
+      "parameters": 10
+    },
+    {
+      "name": "$product.p173s_valid_narray",
+      "error": "",
+      "calls": [
+        "$product.p173s_valid_earray"
+      ],
+      "result": 2,
+      "parameters": 11
+    },
+    {
+      "name": "$direct.p173s_valid",
+      "error": "",
+      "calls": [
+        "$product.p173s_valid_narray"
+      ],
+      "result": 1,
+      "parameters": 2
+    },
+    {
+      "name": "$product.p173s_valid",
+      "error": "",
+      "calls": [
+        "$product.p173s_valid_narray"
+      ],
+      "result": 2,
+      "parameters": 2
+    },
+    {
+      "name": "$direct.p173s_ok",
+      "error": "",
+      "calls": [],
+      "result": 1,
+      "parameters": 1
+    },
+    {
+      "name": "$product.p173s_ok",
+      "error": "",
+      "calls": [],
+      "result": 2,
+      "parameters": 1
+    },
+    {
+      "name": "$direct.p173v_finished",
+      "error": "",
+      "calls": [
+        "$direct.Bool.and"
+      ],
+      "result": 1,
+      "parameters": 5
+    },
+    {
+      "name": "$product.p173v_finished",
+      "error": "",
+      "calls": [
+        "$direct.Bool.and"
+      ],
+      "result": 4,
+      "parameters": 6
+    },
+    {
+      "name": "$direct.p173v_validated",
+      "error": "",
+      "calls": [
+        "$product.p173s_ok",
+        "$product.p173v_finished"
+      ],
+      "result": 1,
+      "parameters": 4
+    },
+    {
+      "name": "$product.p173v_validated",
+      "error": "",
+      "calls": [
+        "$product.p173s_ok",
+        "$product.p173v_finished"
+      ],
+      "result": 4,
+      "parameters": 5
+    },
+    {
+      "name": "$direct.p173v_exported",
+      "error": "",
+      "calls": [
+        "$product.p173s_valid",
+        "$product.p173v_validated"
+      ],
+      "result": 1,
+      "parameters": 3
+    },
+    {
+      "name": "$product.p173v_exported",
+      "error": "",
+      "calls": [
+        "$product.p173s_valid",
+        "$product.p173v_validated"
+      ],
+      "result": 4,
+      "parameters": 4
+    },
+    {
+      "name": "$direct.p173v_referenced",
+      "error": "",
+      "calls": [
+        "$product.p173s_export",
+        "$product.p173v_exported"
+      ],
+      "result": 1,
+      "parameters": 3
+    },
+    {
+      "name": "$product.p173v_referenced",
+      "error": "",
+      "calls": [
+        "$product.p173s_export",
+        "$product.p173v_exported"
+      ],
+      "result": 4,
+      "parameters": 4
+    },
+    {
+      "name": "$direct.p173v_compacted",
+      "error": "",
+      "calls": [
+        "$product.p173s_refs",
+        "$product.p173v_referenced"
+      ],
+      "result": 1,
+      "parameters": 2
+    },
+    {
+      "name": "$product.p173v_compacted",
+      "error": "",
+      "calls": [
+        "$product.p173s_refs",
+        "$product.p173v_referenced"
+      ],
+      "result": 4,
+      "parameters": 3
+    },
+    {
+      "name": "$direct.p173v_imported",
+      "error": "",
+      "calls": [
+        "$product.p173s_compact",
+        "$product.p173v_compacted"
+      ],
+      "result": 1,
+      "parameters": 2
+    },
+    {
+      "name": "$product.p173v_imported",
+      "error": "",
+      "calls": [
+        "$product.p173s_compact",
+        "$product.p173v_compacted"
+      ],
+      "result": 4,
+      "parameters": 3
+    },
+    {
+      "name": "$direct.p173v_candidate_body",
+      "error": "",
+      "calls": [
+        "p173s_new",
+        "$product.p173s_import",
+        "$product.p173v_imported"
+      ],
+      "result": 1,
+      "parameters": 1
+    },
+    {
+      "name": "$product.p173v_candidate_body",
+      "error": "",
+      "calls": [
+        "p173s_new",
+        "$product.p173s_import",
+        "$product.p173v_imported"
+      ],
+      "result": 4,
+      "parameters": 2
+    },
+    {
+      "name": "$p118.trmc.$direct.p173v_candidate",
+      "error": "",
+      "calls": [
+        "$direct.p173v_candidate_body"
+      ],
+      "result": 1,
+      "parameters": 3
+    },
+    {
+      "name": "$direct.p173v_candidate",
+      "error": "",
+      "calls": [
+        "$p118.trmc.$direct.p173v_candidate"
+      ],
+      "result": 1,
+      "parameters": 1
+    }
+  ],
+  "errorCounts": {
+    "": 296,
+    "product result shape mismatch": 13
+  },
+  "components": [
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "p173s_absent"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 0,
+      "statements": 1,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173s_empty_node"
+      ],
+      "found": 1,
+      "result": 3,
+      "width": 0,
+      "statements": 8,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "p173s_new"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 0,
+      "statements": 54,
+      "stack": 72,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173s_fail"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 1,
+      "statements": 47,
+      "stack": 72,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173match_1"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 2,
+      "statements": 33,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173s_edges_end"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 1,
+      "statements": 51,
+      "stack": 72,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_7"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 11,
+      "statements": 127,
+      "stack": 72,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_6"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 11,
+      "statements": 104,
+      "stack": 72,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_5"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 11,
+      "statements": 86,
+      "stack": 72,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173s_add_edge"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 2,
+      "statements": 54,
+      "stack": 72,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173s_add_edges"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 3,
+      "statements": 43,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173s_add_node"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 4,
+      "statements": 69,
+      "stack": 72,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173take_2"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 4,
+      "statements": 20,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173take_1"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 4,
+      "statements": 21,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173s_emit"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 3,
+      "statements": 13,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173s_import_go",
+        "$product.p173branch_8",
+        "$product.p173match_3",
+        "$product.p173s_import_visit",
+        "$product.p173s_import_children",
+        "$product.p173take_3",
+        "$product.p173match_4",
+        "$product.p173match_5",
+        "$product.p173take_9"
+      ],
+      "found": 9,
+      "result": 2,
+      "width": 8,
+      "statements": 664,
+      "stack": 200,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_9"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 4,
+      "statements": 32,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173match_5"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 8,
+      "statements": 131,
+      "stack": 24,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173match_4"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 7,
+      "statements": 75,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_3"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 4,
+      "statements": 32,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173s_import_children"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 6,
+      "statements": 98,
+      "stack": 24,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173s_import_visit"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 5,
+      "statements": 171,
+      "stack": 64,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173match_3"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 5,
+      "statements": 68,
+      "stack": 24,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_8"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 6,
+      "statements": 64,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173match_1"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 2,
+      "statements": 39,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173s_import_go"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 4,
+      "statements": 60,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173s_import"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 3,
+      "statements": 30,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173s_import"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 3,
+      "statements": 27,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173match_8"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 2,
+      "statements": 33,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173take_7"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 10,
+      "statements": 37,
+      "stack": 72,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_1"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 11,
+      "statements": 100,
+      "stack": 88,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173s_node"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 2,
+      "statements": 54,
+      "stack": 72,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173c_visit"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 5,
+      "statements": 19,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173c_word_emit"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 2,
+      "statements": 33,
+      "stack": 56,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173c_clear"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 1,
+      "statements": 104,
+      "stack": 56,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173take_8"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 10,
+      "statements": 37,
+      "stack": 72,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_2"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 11,
+      "statements": 89,
+      "stack": 88,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173s_edge"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 2,
+      "statements": 54,
+      "stack": 72,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173c_go",
+        "$product.p173branch_50",
+        "$product.p173match_12",
+        "$product.p173match_13",
+        "$product.p173take_37",
+        "$product.p173take_38",
+        "$product.p173take_39",
+        "$product.p173match_14",
+        "$product.p173take_40",
+        "$product.p173match_15",
+        "$product.p173take_41",
+        "$product.p173match_16",
+        "$product.p173branch_51",
+        "$product.p173take_35",
+        "$product.p173take_36"
+      ],
+      "found": 15,
+      "result": 2,
+      "width": 11,
+      "statements": 967,
+      "stack": 312,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_36"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 10,
+      "statements": 80,
+      "stack": 40,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_35"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 4,
+      "statements": 32,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_51"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 11,
+      "statements": 103,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173match_16"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 9,
+      "statements": 98,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_41"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 4,
+      "statements": 32,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173match_15"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 5,
+      "statements": 147,
+      "stack": 56,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_40"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 4,
+      "statements": 32,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173match_14"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 5,
+      "statements": 79,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_39"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 5,
+      "statements": 60,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_38"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 5,
+      "statements": 44,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_37"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 4,
+      "statements": 32,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173match_13"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 5,
+      "statements": 78,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_26"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 5,
+      "statements": 45,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173c_nat"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 4,
+      "statements": 22,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_20"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 3,
+      "statements": 37,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173take_20"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 4,
+      "statements": 28,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_25"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 5,
+      "statements": 41,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173c_kid"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 4,
+      "statements": 22,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_31"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 7,
+      "statements": 77,
+      "stack": 24,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_31"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 7,
+      "statements": 71,
+      "stack": 24,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_30"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 7,
+      "statements": 81,
+      "stack": 24,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_30"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 7,
+      "statements": 75,
+      "stack": 24,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_29"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 8,
+      "statements": 82,
+      "stack": 24,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_29"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 8,
+      "statements": 76,
+      "stack": 24,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_28"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 6,
+      "statements": 95,
+      "stack": 24,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_28"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 6,
+      "statements": 89,
+      "stack": 24,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173match_9"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 6,
+      "statements": 178,
+      "stack": 56,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173match_9"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 6,
+      "statements": 169,
+      "stack": 56,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_27"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 4,
+      "statements": 29,
+      "stack": 24,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_27"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 6,
+      "statements": 20,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_21"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 3,
+      "statements": 20,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_26"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 5,
+      "statements": 51,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173c_nat"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 4,
+      "statements": 25,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_32"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 6,
+      "statements": 47,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173c_word"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 5,
+      "statements": 24,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_22"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 5,
+      "statements": 47,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173take_22"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 6,
+      "statements": 38,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173s_shape_name"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 1,
+      "statements": 46,
+      "stack": 56,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_37"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 8,
+      "statements": 138,
+      "stack": 24,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_37"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 8,
+      "statements": 132,
+      "stack": 24,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173s_shape_tag"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 1,
+      "statements": 48,
+      "stack": 56,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_36"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 7,
+      "statements": 76,
+      "stack": 24,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_36"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 9,
+      "statements": 67,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_24"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 6,
+      "statements": 26,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_23"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 7,
+      "statements": 35,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173take_23"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 10,
+      "statements": 32,
+      "stack": 24,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_35"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 9,
+      "statements": 89,
+      "stack": 24,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_34"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 9,
+      "statements": 116,
+      "stack": 24,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_33"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 5,
+      "statements": 69,
+      "stack": 24,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_33"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 7,
+      "statements": 60,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_25"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 4,
+      "statements": 22,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_32"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 6,
+      "statements": 53,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173c_word"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 5,
+      "statements": 27,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_26"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 2,
+      "statements": 25,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173take_26"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 3,
+      "statements": 16,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_38"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 7,
+      "statements": 56,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_38"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 7,
+      "statements": 50,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173c_decode"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 6,
+      "statements": 44,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173c_decode"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 6,
+      "statements": 41,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_25"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 5,
+      "statements": 47,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173c_kid"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 4,
+      "statements": 25,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_39"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 5,
+      "statements": 63,
+      "stack": 24,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173c_succ_scan"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 4,
+      "statements": 22,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_27"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 3,
+      "statements": 37,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173take_27"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 4,
+      "statements": 28,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_41"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 8,
+      "statements": 77,
+      "stack": 24,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_41"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 8,
+      "statements": 71,
+      "stack": 24,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_40"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 5,
+      "statements": 86,
+      "stack": 24,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_40"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 7,
+      "statements": 77,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_28"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 4,
+      "statements": 22,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_39"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 5,
+      "statements": 69,
+      "stack": 24,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173c_succ_scan"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 4,
+      "statements": 25,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_45"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 5,
+      "statements": 61,
+      "stack": 24,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_45"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 7,
+      "statements": 50,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_32"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 4,
+      "statements": 24,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_31"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 4,
+      "statements": 36,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173take_31"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 5,
+      "statements": 25,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173take_29"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 5,
+      "statements": 21,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173take_30"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 8,
+      "statements": 54,
+      "stack": 40,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_42"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 8,
+      "statements": 70,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173c_children"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 7,
+      "statements": 28,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_44"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 8,
+      "statements": 68,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_44"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 8,
+      "statements": 62,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_33"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 4,
+      "statements": 32,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173take_33"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 5,
+      "statements": 21,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173match_10"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 9,
+      "statements": 119,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173match_10"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 9,
+      "statements": 113,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_43"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 7,
+      "statements": 38,
+      "stack": 24,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_43"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 9,
+      "statements": 26,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_18"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 6,
+      "statements": 29,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173c_constructor"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 8,
+      "statements": 33,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173c_constructor"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 8,
+      "statements": 30,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_49"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 10,
+      "statements": 66,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_49"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 10,
+      "statements": 60,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_48"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 16,
+      "statements": 107,
+      "stack": 56,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_48"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 16,
+      "statements": 101,
+      "stack": 56,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_30"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 7,
+      "statements": 66,
+      "stack": 40,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_29"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 4,
+      "statements": 32,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_42"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 8,
+      "statements": 76,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173c_children"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 7,
+      "statements": 31,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173s_add_edges"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 3,
+      "statements": 50,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_4"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 11,
+      "statements": 155,
+      "stack": 72,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_4"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 13,
+      "statements": 155,
+      "stack": 72,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_3"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 11,
+      "statements": 112,
+      "stack": 72,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173s_add_node"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 2,
+      "statements": 55,
+      "stack": 72,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_2"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 3,
+      "statements": 30,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_1"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 3,
+      "statements": 32,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173s_emit"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 3,
+      "statements": 16,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173c_word_emit"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 2,
+      "statements": 36,
+      "stack": 56,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_34"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 4,
+      "statements": 32,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173take_34"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 5,
+      "statements": 21,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_47"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 8,
+      "statements": 76,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_47"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 8,
+      "statements": 70,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173match_11"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 8,
+      "statements": 217,
+      "stack": 56,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173match_11"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 8,
+      "statements": 208,
+      "stack": 56,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_46"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 6,
+      "statements": 35,
+      "stack": 24,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_46"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 8,
+      "statements": 24,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_19"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 5,
+      "statements": 26,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173c_visit"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 5,
+      "statements": 22,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173match_12"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 5,
+      "statements": 164,
+      "stack": 40,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_50"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 6,
+      "statements": 64,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173match_8"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 2,
+      "statements": 39,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173c_go"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 4,
+      "statements": 60,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173s_compact"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 3,
+      "statements": 30,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173s_compact"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 3,
+      "statements": 27,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173s_push_edges",
+        "$product.p173branch_13",
+        "$product.p173take_12"
+      ],
+      "found": 3,
+      "result": 2,
+      "width": 5,
+      "statements": 106,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_12"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 4,
+      "statements": 31,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_13"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 5,
+      "statements": 69,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173s_push_edges"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 4,
+      "statements": 25,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_14"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 6,
+      "statements": 51,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173s_refs_go"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 4,
+      "statements": 58,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_16"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 6,
+      "statements": 77,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_16"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 6,
+      "statements": 71,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_13"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 4,
+      "statements": 38,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173take_13"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 5,
+      "statements": 27,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_15"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 5,
+      "statements": 38,
+      "stack": 24,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_15"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 7,
+      "statements": 27,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_14"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 4,
+      "statements": 24,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_14"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 6,
+      "statements": 57,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173s_refs_go"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 4,
+      "statements": 64,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173s_refs"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 3,
+      "statements": 20,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173s_refs"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 3,
+      "statements": 17,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173match_2"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 2,
+      "statements": 36,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173s_export_visit"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 5,
+      "statements": 17,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173s_shape_term"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 2,
+      "statements": 115,
+      "stack": 64,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173s_export_go",
+        "$product.p173branch_11",
+        "$product.p173match_6",
+        "$product.p173match_7",
+        "$product.p173branch_12",
+        "$product.p173take_11"
+      ],
+      "found": 6,
+      "result": 2,
+      "width": 11,
+      "statements": 443,
+      "stack": 128,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_11"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 10,
+      "statements": 81,
+      "stack": 40,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_12"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 11,
+      "statements": 104,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173match_7"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 9,
+      "statements": 101,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_10"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 7,
+      "statements": 66,
+      "stack": 40,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173take_10"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 8,
+      "statements": 54,
+      "stack": 40,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_10"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 8,
+      "statements": 76,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_10"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 8,
+      "statements": 70,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_9"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 5,
+      "statements": 45,
+      "stack": 24,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_9"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 7,
+      "statements": 34,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_4"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 4,
+      "statements": 24,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173s_export_visit"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 5,
+      "statements": 20,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173match_6"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 5,
+      "statements": 74,
+      "stack": 40,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_11"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 6,
+      "statements": 67,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173match_2"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 2,
+      "statements": 42,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173s_export_go"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 4,
+      "statements": 60,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173s_export"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 3,
+      "statements": 30,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173s_export"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 3,
+      "statements": 27,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173s_size"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 1,
+      "statements": 54,
+      "stack": 72,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173s_size"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 1,
+      "statements": 51,
+      "stack": 72,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173s_edges_end"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 1,
+      "statements": 54,
+      "stack": 72,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "p173s_empty_node"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 0,
+      "statements": 12,
+      "stack": 24,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_7"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 9,
+      "statements": 47,
+      "stack": 72,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_1"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 11,
+      "statements": 106,
+      "stack": 88,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173s_node"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 2,
+      "statements": 57,
+      "stack": 72,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_8"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 9,
+      "statements": 47,
+      "stack": 72,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_2"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 11,
+      "statements": 95,
+      "stack": 88,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173s_edge"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 2,
+      "statements": 57,
+      "stack": 72,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173s_valid_edges",
+        "$product.p173branch_17",
+        "$product.p173branch_18",
+        "$product.p173take_15",
+        "$product.p173branch_19"
+      ],
+      "found": 5,
+      "result": 2,
+      "width": 7,
+      "statements": 212,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_19"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 7,
+      "statements": 67,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_15"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 5,
+      "statements": 39,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_18"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 6,
+      "statements": 52,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_17"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 6,
+      "statements": 57,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173s_valid_edges"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 5,
+      "statements": 27,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173s_ok"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 1,
+      "statements": 51,
+      "stack": 72,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_21"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 6,
+      "statements": 46,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_20"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 6,
+      "statements": 50,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173s_valid_go"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 5,
+      "statements": 24,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_24"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 7,
+      "statements": 67,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_24"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 7,
+      "statements": 61,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_16"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 6,
+      "statements": 29,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173take_16"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 7,
+      "statements": 20,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_23"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 8,
+      "statements": 60,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_23"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 8,
+      "statements": 54,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_22"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 6,
+      "statements": 90,
+      "stack": 24,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173branch_22"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 8,
+      "statements": 81,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_17"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 5,
+      "statements": 24,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_21"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 6,
+      "statements": 52,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173branch_20"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 6,
+      "statements": 56,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173s_valid_go"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 5,
+      "statements": 27,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_6"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 3,
+      "statements": 25,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173take_6"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 4,
+      "statements": 16,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173take_5"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 2,
+      "statements": 26,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173take_5"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 3,
+      "statements": 17,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173s_valid_header_test"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 3,
+      "statements": 44,
+      "stack": 16,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173s_valid_header_test"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 3,
+      "statements": 38,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173s_valid_earray"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 11,
+      "statements": 125,
+      "stack": 72,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173s_valid_earray"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 12,
+      "statements": 115,
+      "stack": 72,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173s_valid_narray"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 10,
+      "statements": 48,
+      "stack": 32,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173s_valid_narray"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 11,
+      "statements": 38,
+      "stack": 24,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173s_valid"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 2,
+      "statements": 54,
+      "stack": 88,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173s_valid"
+      ],
+      "found": 1,
+      "result": 2,
+      "width": 2,
+      "statements": 51,
+      "stack": 88,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173s_ok"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 1,
+      "statements": 54,
+      "stack": 72,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173v_finished"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 5,
+      "statements": 63,
+      "stack": 32,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173v_finished"
+      ],
+      "found": 1,
+      "result": 4,
+      "width": 6,
+      "statements": 49,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173v_validated"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 4,
+      "statements": 35,
+      "stack": 32,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173v_validated"
+      ],
+      "found": 1,
+      "result": 4,
+      "width": 5,
+      "statements": 21,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173v_exported"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 3,
+      "statements": 34,
+      "stack": 32,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173v_exported"
+      ],
+      "found": 1,
+      "result": 4,
+      "width": 4,
+      "statements": 21,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173v_referenced"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 3,
+      "statements": 33,
+      "stack": 32,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173v_referenced"
+      ],
+      "found": 1,
+      "result": 4,
+      "width": 4,
+      "statements": 21,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173v_compacted"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 2,
+      "statements": 33,
+      "stack": 32,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173v_compacted"
+      ],
+      "found": 1,
+      "result": 4,
+      "width": 3,
+      "statements": 21,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173v_imported"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 2,
+      "statements": 31,
+      "stack": 32,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173v_imported"
+      ],
+      "found": 1,
+      "result": 4,
+      "width": 3,
+      "statements": 19,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173v_candidate_body"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 1,
+      "statements": 31,
+      "stack": 32,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$product.p173v_candidate_body"
+      ],
+      "found": 1,
+      "result": 4,
+      "width": 2,
+      "statements": 20,
+      "stack": 0,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$p118.trmc.$direct.p173v_candidate"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 3,
+      "statements": 32,
+      "stack": 2048,
+      "valid": true
+    },
+    {
+      "$": "P173VDComponent",
+      "names": [
+        "$direct.p173v_candidate"
+      ],
+      "found": 1,
+      "result": 1,
+      "width": 1,
+      "statements": 2,
+      "stack": 0,
+      "valid": true
+    }
+  ],
+  "firstUnavailablePaths": {
+    "$product.p173s_import_go": [
+      {
+        "chain": [
+          "$product.p173s_import_go",
+          "$product.p173branch_8",
+          "$product.p173match_3",
+          "$product.p173s_import_visit",
+          "$product.p173s_import_children",
+          "$product.p173s_emit",
+          "$product.p173take_1",
+          "$product.p173take_2",
+          "$product.p173s_add_node",
+          "$product.p173branch_3"
+        ],
+        "reason": "product result shape mismatch"
+      }
+    ],
+    "$product.p173s_export_go": [
+      {
+        "chain": [
+          "$product.p173s_export_go",
+          "$product.p173branch_11",
+          "$product.p173match_6",
+          "$product.p173s_export_visit",
+          "$product.p173take_4"
+        ],
+        "reason": "product result shape mismatch"
+      }
+    ],
+    "$product.p173s_refs_go": [
+      {
+        "chain": [
+          "$product.p173s_refs_go",
+          "$product.p173branch_14",
+          "$product.p173take_14"
+        ],
+        "reason": "product result shape mismatch"
+      }
+    ],
+    "$product.p173c_go": [
+      {
+        "chain": [
+          "$product.p173c_go",
+          "$product.p173branch_50",
+          "$product.p173match_12",
+          "$product.p173c_visit",
+          "$product.p173take_19"
+        ],
+        "reason": "product result shape mismatch"
+      },
+      {
+        "chain": [
+          "$product.p173c_go",
+          "$product.p173branch_50",
+          "$product.p173match_12",
+          "$product.p173match_13",
+          "$product.p173s_emit",
+          "$product.p173take_1",
+          "$product.p173take_2",
+          "$product.p173s_add_node",
+          "$product.p173branch_3"
+        ],
+        "reason": "product result shape mismatch"
+      }
+    ]
+  }
+}

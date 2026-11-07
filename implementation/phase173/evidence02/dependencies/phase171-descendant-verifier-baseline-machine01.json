@@ -1,0 +1,274 @@
+{
+  "kind": "bend-native-build",
+  "version": 1,
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/public-verifier-baseline01/program.ssa",
+      "bytes": 2309376,
+      "sha256": "8be3a072b84dfc8bb85ddb9478c00d05179f7de89c8d4079af9ca3a5190bfbfb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/manifests/assets-native.json",
+      "bytes": 18715,
+      "sha256": "3d19a8b9f801fabc1de6dc5f484c7d20a795047776d1390a4bdea98e42b3e6b7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/native.py",
+      "bytes": 13731,
+      "sha256": "bc53fc000d45574e913904f7e899d785e5c98050b0942d14a81118b9ab009e58"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/assets.py",
+      "bytes": 7994,
+      "sha256": "02a8b03647f5a6292502363fc1bb79147b61196a9271c21cee55a2ec6bf64dba"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/request.py",
+      "bytes": 18653,
+      "sha256": "f2638c055de2de15c80b8e36d888337a3061f8f7725c55f16ad645943562566c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/common.py",
+      "bytes": 4809,
+      "sha256": "d9a16fef18cf936499e51f8c7f36a653f2921ef9a50f846257c2e8bc460ec6d1"
+    },
+    {
+      "file": "/usr/bin/python3.9",
+      "bytes": 5451288,
+      "sha256": "ca7655083b581ffe36c72dcb445857704db533ca39b03f79c97d8d0ef3bef9af"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/qbe",
+      "bytes": 262024,
+      "sha256": "1eca24288f9574ad57032ac88f11c3f74ced605838749226d77a9acd4443e5f4"
+    },
+    {
+      "file": "/usr/bin/x86_64-linux-gnu-as",
+      "bytes": 472248,
+      "sha256": "fac4e966afe9223dbab23aa15d27d144af81de4a44c8cad97c1dde290adb9493"
+    },
+    {
+      "file": "/usr/bin/x86_64-linux-gnu-gcc-10",
+      "bytes": 817704,
+      "sha256": "693abcb42e67fb871673f258a3644257ca69a209691ec4d8137a42442834bd19"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase169/verifier.expected",
+      "bytes": 4,
+      "sha256": "eac49b0badacd9a2b90dda6621d141162732bf83418d0d76cc4c422f28eb4f1d"
+    }
+  ],
+  "host": null,
+  "target": "qbe",
+  "stage": null,
+  "request": null,
+  "sourceIR": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/public-verifier-baseline01/program.ssa",
+    "bytes": 2309376,
+    "sha256": "8be3a072b84dfc8bb85ddb9478c00d05179f7de89c8d4079af9ca3a5190bfbfb"
+  },
+  "runtime": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+    "bytes": 119096,
+    "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+  },
+  "runtimePolicy": {
+    "threads": 1,
+    "gpu": "off",
+    "bendHeapMutators": 1,
+    "hostIoWorkersAllowed": true,
+    "providerScope": "Pinned direct-QBE foreign provider table; no arbitrary C embedding or foreign callbacks."
+  },
+  "compilerCommand": null,
+  "qbeCommand": [
+    "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/qbe",
+    "-t",
+    "amd64_sysv",
+    "-o",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-verifier-baseline-machine01/program.s",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/public-verifier-baseline01/program.ssa"
+  ],
+  "toolchain": {
+    "target": "amd64_sysv",
+    "assemblerFlags": [
+      "-mbranches-within-32B-boundaries"
+    ],
+    "linkerFlags": [
+      "-no-pie"
+    ],
+    "libraries": [
+      "-pthread",
+      "-lm"
+    ]
+  },
+  "jobs": [
+    {
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/qbe",
+        "-t",
+        "amd64_sysv",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-verifier-baseline-machine01/program.s",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/public-verifier-baseline01/program.ssa"
+      ],
+      "limitSeconds": 44.99958937428892,
+      "complete": true,
+      "started": 1793987048.9664958,
+      "exitCode": 0,
+      "userSeconds": 0.19266799999999998,
+      "systemSeconds": 0.0,
+      "peakRssKiB": 10844,
+      "timedOut": false,
+      "seconds": 0.19432276394218206,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-verifier-baseline-machine01/qbe.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-verifier-baseline-machine01/qbe.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "label": "qbe"
+    },
+    {
+      "command": [
+        "/usr/bin/x86_64-linux-gnu-as",
+        "-mbranches-within-32B-boundaries",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-verifier-baseline-machine01/program.o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-verifier-baseline-machine01/program.s"
+      ],
+      "limitSeconds": 44.29992991825566,
+      "complete": true,
+      "started": 1793987049.666182,
+      "exitCode": 0,
+      "userSeconds": 0.084815,
+      "systemSeconds": 0.008076999999999999,
+      "peakRssKiB": 26528,
+      "timedOut": false,
+      "seconds": 0.09449276002123952,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-verifier-baseline-machine01/assemble.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-verifier-baseline-machine01/assemble.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "label": "assemble"
+    },
+    {
+      "command": [
+        "/usr/bin/x86_64-linux-gnu-gcc-10",
+        "-no-pie",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-verifier-baseline-machine01/program.o",
+        "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+        "-pthread",
+        "-lm",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-verifier-baseline-machine01/program"
+      ],
+      "limitSeconds": 44.16591242188588,
+      "complete": true,
+      "started": 1793987049.8001797,
+      "exitCode": 0,
+      "userSeconds": 0.013652,
+      "systemSeconds": 0.010294,
+      "peakRssKiB": 10640,
+      "timedOut": false,
+      "seconds": 0.02498367102816701,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-verifier-baseline-machine01/link.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-verifier-baseline-machine01/link.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "label": "link"
+    },
+    {
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-verifier-baseline-machine01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "limitSeconds": 43.809371195267886,
+      "complete": true,
+      "started": 1793987050.156735,
+      "exitCode": 0,
+      "userSeconds": 0.423452,
+      "systemSeconds": 0.0,
+      "peakRssKiB": 10596,
+      "timedOut": false,
+      "seconds": 0.4250816102139652,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-verifier-baseline-machine01/execute.stdout",
+        "bytes": 4,
+        "sha256": "eac49b0badacd9a2b90dda6621d141162732bf83418d0d76cc4c422f28eb4f1d"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-verifier-baseline-machine01/execute.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "label": "execute"
+    }
+  ],
+  "retainIR": false,
+  "expectedQbe": null,
+  "expectedStdout": {
+    "file": "/home/ai/bend2/build/publish/bend/experiments/phase169/verifier.expected",
+    "bytes": 4,
+    "sha256": "eac49b0badacd9a2b90dda6621d141162732bf83418d0d76cc4c422f28eb4f1d"
+  },
+  "comparedToReference": false,
+  "relayLimitBytes": 65536,
+  "maximumRelayBytes": 0,
+  "machineDiagnosticPolicy": "Assembler/linker warnings retained on zero exit; compiler/QBE/execution stderr fails.",
+  "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+  "timingScope": "Whole emission/machine pipeline after preflight, under one outer disk/process guard.",
+  "wallSeconds": 1.6469766427762806,
+  "irDigest": {
+    "bytes": 2309376,
+    "sha256": "8be3a072b84dfc8bb85ddb9478c00d05179f7de89c8d4079af9ca3a5190bfbfb"
+  },
+  "emitAndQbeSeconds": 0.6878470489755273,
+  "assembly": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-verifier-baseline-machine01/program.s",
+    "bytes": 1644422,
+    "sha256": "3919a2650d8e1e1c32e5d153e742998822043bab513676b5a2122311c8acb4be"
+  },
+  "object": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-verifier-baseline-machine01/program.o",
+    "bytes": 484656,
+    "sha256": "941fa3d6c401c93535d010a95013b0149cdbb5bfa891946e16fbcb126452b395"
+  },
+  "binary": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-verifier-baseline-machine01/program",
+    "bytes": 473504,
+    "sha256": "0427a9adb74ec3197e99ec065f03ffff8193ea2e9260861532bf7ec40d37be29"
+  },
+  "outputExact": true,
+  "processes": [],
+  "changedInputs": [],
+  "qbeStderr": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/descendant-verifier-baseline-machine01/qbe.stderr",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

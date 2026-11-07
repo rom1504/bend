@@ -1,0 +1,86 @@
+[
+  {
+    "label": "support",
+    "original": "// Dialect\n// =======\n",
+    "diagnostic": "#include \"runtime-support.inc.c\"\n\n// Dialect\n// =======\n",
+    "occurrences": 1
+  },
+  {
+    "label": "bind",
+    "original": "  p111_program_active = program;\n",
+    "diagnostic": "  p111_program_active = program;\n  bend_profile_initialize((uint32_t)program->segment_count, program->segments);\n",
+    "occurrences": 1
+  },
+  {
+    "label": "dispatch",
+    "original": "    Reply reply = run(&state);\n",
+    "diagnostic": "    uint32_t bend_profile_previous = bend_profile_dispatch_enter(next);\n    Reply reply = run(&state);\n    bend_profile_dispatch_leave(bend_profile_previous);\n",
+    "occurrences": 1
+  },
+  {
+    "label": "heap-alloc",
+    "original": "INLINE Loc heap_alloc(Env e, Cls cls) {\n",
+    "diagnostic": "INLINE Loc heap_alloc(Env e, Cls cls) {\n  bend_profile_count(BP_ALLOC, 1);\n  bend_profile_count(BP_ALLOC_WORDS, UINT64_C(1) << cls);\n",
+    "occurrences": 1
+  },
+  {
+    "label": "heap-refill",
+    "original": "OUTLINE Loc heap_alloc_miss(Env e, Cls cls) {\n",
+    "diagnostic": "OUTLINE Loc heap_alloc_miss(Env e, Cls cls) {\n  bend_profile_count(BP_ALLOC_MISS, 1);\n",
+    "occurrences": 1
+  },
+  {
+    "label": "heap-free",
+    "original": "INLINE void heap_free(Env e, Cls cls, Loc loc) {\n",
+    "diagnostic": "INLINE void heap_free(Env e, Cls cls, Loc loc) {\n  bend_profile_count(BP_FREE, 1);\n  bend_profile_count(BP_FREE_WORDS, UINT64_C(1) << cls);\n",
+    "occurrences": 1
+  },
+  {
+    "label": "keep",
+    "original": "INLINE Term term_keep(Env e, Term t) {\n",
+    "diagnostic": "INLINE Term term_keep(Env e, Term t) {\n  bend_profile_count(BP_KEEP, 1);\n",
+    "occurrences": 1
+  },
+  {
+    "label": "sink",
+    "original": "INLINE void term_sink(Env e, Term t) {\n",
+    "diagnostic": "INLINE void term_sink(Env e, Term t) {\n  bend_profile_count(BP_SINK, 1);\n",
+    "occurrences": 1
+  },
+  {
+    "label": "drop",
+    "original": "FAR void term_drop(Env e, Term t) {\n",
+    "diagnostic": "FAR void term_drop(Env e, Term t) {\n  bend_profile_count(BP_DROP, 1);\n",
+    "occurrences": 1
+  },
+  {
+    "label": "take",
+    "original": "INLINE Loc ctr_take(Env e, Term t, u32 n, THR Term* out) {\n",
+    "diagnostic": "INLINE Loc ctr_take(Env e, Term t, u32 n, THR Term* out) {\n  bend_profile_count(BP_TAKE, 1);\n",
+    "occurrences": 1
+  },
+  {
+    "label": "frame",
+    "original": "uint64_t p111_rt_frame(P111State *state, uint32_t next_fid, const uint64_t *captures, uint32_t count) {\n",
+    "diagnostic": "uint64_t p111_rt_frame(P111State *state, uint32_t next_fid, const uint64_t *captures, uint32_t count) {\n  bend_profile_count(BP_FRAME, 1);\n  bend_profile_count(BP_FRAME_WORDS, count);\n",
+    "occurrences": 1
+  },
+  {
+    "label": "return",
+    "original": "uint64_t p111_rt_return(P111State *state, const uint64_t *values, uint32_t count) {\n",
+    "diagnostic": "uint64_t p111_rt_return(P111State *state, const uint64_t *values, uint32_t count) {\n  bend_profile_count(BP_RETURN, 1);\n",
+    "occurrences": 1
+  },
+  {
+    "label": "primitive",
+    "original": "uint64_t p111_rt_op(P111State *state, uint32_t op, const uint64_t *args, uint32_t count) {\n",
+    "diagnostic": "uint64_t p111_rt_op(P111State *state, uint32_t op, const uint64_t *args, uint32_t count) {\n  bend_profile_count(BP_PRIMITIVE, 1);\n",
+    "occurrences": 1
+  },
+  {
+    "label": "register-transport",
+    "original": "static void p111_set_regs(P111State *state, const uint64_t *values, uint32_t count) {\n",
+    "diagnostic": "static void p111_set_regs(P111State *state, const uint64_t *values, uint32_t count) {\n  bend_profile_count(BP_REG_COPY_WORDS, count);\n  bend_profile_count(BP_REG_CLEAR_WORDS, (p111_program_active->capabilities & UINT64_C(4)) ? 0 : p111_transport_words - count);\n",
+    "occurrences": 1
+  }
+]

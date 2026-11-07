@@ -194,3 +194,70 @@ arguments. Its risk is an extra materialized root when flat-product elimination
 fails. Test only if code inspection implicates that boundary; a broader SCC
 optimizer may make the old arity obstruction irrelevant. No target jobs were run
 by the store implementation agent for either variant.
+
+## Complete-work inventory and direct terminal destination
+
+A metadata-only census of the independently saved input and output products in
+`store-verifier-controls01` gives the following exact counts. It counts existing
+constructor values; it does not reimplement or execute the compiler transform.
+
+| Product/work | Nodes | Child edges |
+| --- | ---: | ---: |
+| 101 original body trees | 16,665 | 16,564 |
+| 101 compacted body trees | 22,620 | 22,519 |
+| Current retained store, including 101 Absent sentinels | 39,386 | 39,083 |
+| Current separate ordered-ref traversal | 22,620 | 22,519 |
+| Current separate export traversal | 22,620 | 22,519 |
+| Current independent final store scan | 39,386 | 39,083 |
+
+There are no NStatic nodes in this real corpus, so each compacted output node is
+newly appended. String literal expansion explains why output is larger than
+input; source pruning or line counts would miss this. Known post-compaction reads
+sum to 168,747 node/edge operations, before counting the compactor's own decoder
+reads. Each logical access also transports owning store/pair values in source;
+actual boxing elimination must be checked in generated code rather than counted
+as guaranteed heap allocations.
+
+The actual measured complete pass already validates the graph **once**, not
+repeatedly per transformation. The extra `p173s_ok` after `p173s_valid` is redundant
+but only a constant operation per body. It is not a credible main optimization.
+The important avoidable lifetime is the newly materialized indexed output graph:
+none of its IDs survive the immediate export into the required KTerm product.
+
+The bounded alternative `store-direct.bend` keeps the imported input graph and
+all existing indexed Nat/Word/Succ decoders. Its new terminal compaction machine
+writes final KTerm values directly and accumulates ordered Ref occurrences when
+the output-node decision is known. It never writes an indexed output graph,
+then never walks that graph for refs or export. NStatic uses a raw-preserving mode
+inside the same traversal, retaining every field and collecting descendant refs.
+Unknown/malformed finite constructors retain the existing compaction decisions.
+The unchanged final `p173s_valid` independently validates the entire input store,
+which is consumed before returning the public complete body product.
+
+For this corpus, the source-level work removed is 45,139 output-store writes,
+90,278 separate ref/export reads, and 45,139 output-snapshot validation reads.
+The remaining final validation reads all 33,330 input nodes/edges including
+sentinels. This removes 80.25% of the known **post-compaction store reads**, not
+80.25% of runtime or compiler work. Imports, actual input decoding, final KTerm
+allocation, refs construction, input-store validation/destruction and printing
+remain. The new explicit frame/state transport also has costs. No speed result
+is inferred from the arithmetic.
+
+The implementation is 289 lines, reusing the numeric decoders without copying
+them. `p173o_candidate`/`p173o_body` expose the complete alternative. The fused
+walk budget is 20M, the sum of the previous separate 10M compaction and 10M export
+budgets; input import and final validation budgets remain 10M. This explicit
+resource choice avoids silently reducing admitted static-subtree work because
+two previously separately budgeted traversals now compose. Source checking,
+complete finite controls and exact native oracle output remain pending for this
+new module. It does not edit any previously measured source.
+
+A simpler eventual optimization of the original KTerm pipeline is to fuse
+`nc_compact` with ordered-ref collection using the same output-preorder discipline.
+That avoids its existing final 45,139-operation ref traversal without adding an
+indexed import or storage validator. It is likely the better local engineering
+choice for this isolated pass, but is not implemented as a competing campaign.
+The indexed terminal destination tests the more general lesson: choose the final
+consumer's representation before materializing another complete intermediate
+version. Neither route alone explains the desired 181→100s whole-build gain;
+this pass is only part of the roughly 4.13s static-preparation interval.

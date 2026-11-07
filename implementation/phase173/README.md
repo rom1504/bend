@@ -14,8 +14,10 @@ from nine fields to seven did not recover meaningful performance.
 The resulting machine-code investigation found a concrete execution barrier:
 the new complete state machines form 3–36-member mutually recursive components,
 but the existing direct optimizer fuses only pairs with one result. Direct
-getters coexist with generic scheduler loops. We are now testing general,
-multi-result, stack-safe tail-component fusion before migrating more algorithms.
+getters coexist with generic scheduler loops. General multi-result cycle fusion
+and an ownership-safe product-argument adapter now make all four major loops
+direct, without scheduler transitions. This recovers much of the experimental
+regression, but does not yet justify replacing the original representation.
 
 | Native complete consumer, 101 actual verifier bodies | Baseline median | Candidate median | Ratio |
 |---|---:|---:|---:|
@@ -31,6 +33,74 @@ baseline. The two candidate medians are essentially unchanged; do not call the
 small difference between ratios an improvement.
 
 ## What was implemented and checked
+
+Further complete-consumer observations, each four balanced native pairs:
+
+| Comparison | Baseline | Candidate | Candidate/baseline |
+|---|---:|---:|---:|
+| Same indexed source, general cycle fusion | 159.526ms | 150.364ms | 0.943× |
+| Original KTerm → indexed direct destination | 79.188ms | 114.480ms | 1.446× |
+| Original KTerm → indexed with argument adaptation and cycles | 78.649ms | 93.690ms | 1.191× |
+| Original KTerm → direct destination with adaptation and cycles | 78.806ms | 91.048ms | 1.155× |
+| Existing compiler verifier, adaptation and cycles | 422.811ms | 422.186ms | 0.999× |
+
+The indexed algorithm therefore becomes substantially faster, but the existing
+verifier does not. These results are not a measured cold-compiler improvement.
+All complete indexed outputs remain identical to the original frozen oracle.
+
+The actual obstruction was13 `product result shape mismatch` errors. A nested
+boxed product reached a known flat-argument helper; lowering selected its boxed
+fallback, then refused that fallback's boxed result. The adapter consumes the
+owned shell through the existing guarded take, preserves fields and tail-result
+vectors, and clears all13 errors. It only repairs previously failing product
+result calls; existing successful boxed calls keep their original dependency.
+All21 SCC and25 adapter controls pass, including both independent verifiers.
+Actual QBE confirms full import9/export11/refs6/compaction36-member admission.
+
+Constant-tag backedges still traverse the generated state dispatcher. A separate
+structural emission experiment passes30 additional finite controls. Its first
+native comparison measures95.102→91.818ms (3.45% less) against the ABI-fixed
+indexed implementation, with the complete output exact. Only nine SCC functions
+change; all other function/data blocks remain byte-identical. The largest
+compaction and Word workers remain unchanged because admission rejects a valid
+conditional join before a common return. Revision2 adds that general admission
+case and passes36 dispatch controls; its native comparison is in progress.
+No new IR variant or verifier relaxation was introduced. See the
+[boundary analysis](../../experiments/phase173/product-argument-boundary.md)
+and [dispatch experiment](../../experiments/phase173/constant-tag-backedge.md).
+
+## Complete destination construction
+
+The direct-destination variant avoids constructing an indexed output graph that
+would immediately be traversed for references and exported to KTerm. It produces
+the final terms and ordered references together, then validates the unchanged
+input store. Source analysis counts45,139 fewer output-store writes and135,417
+fewer subsequent reads on this corpus; these are logical operations, not runtime
+event counts. The new traversal passes16 finite complete-value controls and all
+101 actual bodies. The26 original store controls exercise the old compactor and
+must not be counted as new-traversal controls. Its combined20M fuel is a different
+refusal boundary from two separate10M bounds. See the
+[independent audit](../../experiments/phase173/direct-store-audit.md).
+
+## Checked-plan reuse for experiments
+
+Repeated hosted frontend preparation of the unchanged native corpus costs about
+45–46s. The first JSON transport stopped at its declared1M-node bound. A pinned
+Bun structured-clone transport captures the complete P86Plan in93,984,983 bytes,
+including its verdict and sharing, in1.989s after full checking. A separate
+16,384-deep ordinary-data control verifies exact values, sharing, cycles and
+isolated decodes. The full capture took58.241s.
+
+Same-API replay decodes in0.578s and emits byte-identical12,717,939-byte QBE.
+One full hosted request took102.322s; one complete warm replay took64.274s.
+These are diagnostic observations, not a new cold-build score. Authentication,
+lowering, independent verification and rendering remain charged. Reuse requires
+the same source/path, Base, carrier, engine, acquisition ABI and exact2,135-
+declaration frontend closure. This is bounded experiment transport, not an
+incremental production compiler or a mathematical certificate.
+See [plan reuse](../../experiments/phase173/plan-replay.md).
+
+## Original indexed-store implementation
 
 The all-Bend store preserves KTerm/KLambda/KLiteral fields, source spans,
 removed-name metadata and lambda quantity presence. IDs are append-only and
@@ -85,6 +155,23 @@ decrease from180 to177 allocation requests,412 to388 requested words, and57 to54
 constructor takes. Other categories are unchanged. This establishes actual
 removed work; the small driver is too short for a runtime claim.
 
+A subsequent two-million-update loop calls unchanged `k_with_span` and retains
+the original shared alias. Four clean balanced pairs measure54.910→41.203ms,
+25.0% less runtime, with the complete upstream-derived output identical. The
+earlier500,000-update pilot was below the30ms resolution gate and is not used
+for this speed claim. This does not establish a25% compiler speedup.
+
+A full8,223-node `f_span_created`→`g_share_head` computation now matches its
+complete independently checked upstream output, including a retained shared
+alias and all metadata. Both runtimes are below30ms, so no speed claim follows.
+Separate diagnostic execution removes3,600 of145,197 allocation requests and
+28,793 of333,733 requested words. Dispatcher and continuation counts are
+unchanged. This is real transfer of work removal, but only2.48% of this
+computation's allocations. A digest consumer is being prepared to isolate
+execution from printing the large result; it does not replace the full-value
+correctness gate. The broader audit finds the current terminal-region admission
+does not cover recursive reconstruction across allocating calls.
+
 This transform happens after final IR verification and extends trusted emission.
 The unchanged verifier alone does not prove the new memory operations correct.
 The separate [ownership audit](../../experiments/phase173/borrow-audit.md), full
@@ -94,7 +181,7 @@ It is not a BendTT theorem.
 ## Current architectural experiment
 
 General tail-component fusion is implemented experimentally in Bend and passes
-source checking plus **18 finite controls**, including both independent direct
+source checking plus **21 finite controls**, including both independent direct
 verifiers, renamed array imports, two-result cycles, argument/result mismatch,
 non-tail refusal, duplicate names, stale call metadata, and size limits.
 
@@ -109,15 +196,14 @@ Review caught ineffective saturating budget counters and scratch names that the
 array-import verifier would not authenticate. Both were fixed before native
 execution. Native owned-list and argument-swap workloads pass at200,000 steps.
 Three-member cycles use local jumps with no per-transition scheduler calls.
-The complete store improves0.159526→0.150364s (5.74%) in four paired rounds,
-all962,601 output bytes exact. This is still much slower than the original
-KTerm representation. Only edge insertion and validation cycles become direct;
-the large import/export/reference/compaction loops remain generic. A diagnostic
-now targets their actual admission errors. The unrelated existing verifier is
-neutral:0.422187→0.425313s (0.74% slower), four paired rounds.
+The initial complete store improves0.159526→0.150364s (5.74%) in four paired
+rounds, all962,601 output bytes exact. That revision admits only edge insertion
+and validation cycles. The subsequent owned-argument repair admits all four
+major loops and produces the stronger results in the table above. Both stages
+remain slower than original KTerm. The unrelated existing verifier is neutral.
 
-Before broader integration, generated worker identity must also be checked
-against the pre-existing ready namespace, not just raw candidates. See the
+Revision2 checks generated worker identity against the pre-existing ready
+namespace as well as raw candidates. See the
 [execution barrier](../../experiments/phase173/store-execution-barrier.md) and
 [independent SCC audit](../../experiments/phase173/scc-audit.md).
 

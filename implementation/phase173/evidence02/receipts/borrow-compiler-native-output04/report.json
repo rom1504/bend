@@ -1,0 +1,114 @@
+{
+  "kind": "phase173-native-product-pair",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase173/native-pair.py",
+      "bytes": 3973,
+      "sha256": "219a9a447f8b85262adfa2b58eea7f1d635233c2fbe6a0083fd8e7d9651d6f9b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-compiler-native-base01/report.json",
+      "bytes": 8879,
+      "sha256": "176915da8e833e07053c4ab5a4b968e826842a6faacdefb6e4e019eca0c26bc0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-compiler-native-cand04/report.json",
+      "bytes": 8892,
+      "sha256": "222ef995282301bf68e063ed9608363df07b150190d6cfe89b458e056fc495bd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-compiler-native-base01/program",
+      "bytes": 183120,
+      "sha256": "1b7a5f2ccc540703c679ce3eceb93fc6ce57f28597b73f5a4a874712be763814"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-compiler-baseline01/program.ssa",
+      "bytes": 432563,
+      "sha256": "b07d15ffad676ff62c3ae7795e44387d82c641a2da45d7aba8e99e3bd18c461d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-compiler-native-cand04/program",
+      "bytes": 187216,
+      "sha256": "ddc00f2703f9957d262c518f5b45ccc32c045fbbd9a0bdc68ad3b8bc33861e3c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-compiler-candidate04/program.ssa",
+      "bytes": 470172,
+      "sha256": "f4722f99d3aea37cc9d3ab90ac8fd716306138fc3ce4947ea2d303d2fa64662a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-oracle-output01/0-baseline.stdout",
+      "bytes": 1724,
+      "sha256": "971508935828004ff8e6cf02e8f1605165b56c372d44e2875b92512a195d734e"
+    }
+  ],
+  "runs": [
+    {
+      "role": "baseline",
+      "cycle": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-compiler-native-base01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.003174446988850832,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-compiler-native-output04/0-baseline.stdout",
+        "bytes": 1724,
+        "sha256": "971508935828004ff8e6cf02e8f1605165b56c372d44e2875b92512a195d734e"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-compiler-native-output04/0-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-compiler-native-cand04/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.0041006822139024734,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-compiler-native-output04/0-candidate.stdout",
+        "bytes": 1724,
+        "sha256": "971508935828004ff8e6cf02e8f1605165b56c372d44e2875b92512a195d734e"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-compiler-native-output04/0-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    }
+  ],
+  "rounds": 1,
+  "oracle": "fixed expected bytes",
+  "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+  "medians": {
+    "baseline": 0.003174446988850832,
+    "candidate": 0.0041006822139024734
+  },
+  "resolved": false
+}

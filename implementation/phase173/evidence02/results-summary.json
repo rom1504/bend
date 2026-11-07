@@ -1,0 +1,1673 @@
+[
+  {
+    "kind": "bend-checked-hosted-api",
+    "complete": true,
+    "checked": true,
+    "error": null,
+    "scope": "Upstream-checked B1 acquisition only; no B2/self-hosting/default promotion.",
+    "seconds": 14.985881032000002,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-source02/compiler.bend",
+      "bytes": 1608389,
+      "sha256": "5aef3dfd9c6685b97a5b31d6a2d4d53e8682d34846948accecca0d2c500e1433"
+    },
+    "name": "abi-api02"
+  },
+  {
+    "kind": "bend-checked-hosted-api",
+    "complete": true,
+    "checked": true,
+    "error": null,
+    "scope": "Upstream-checked B1 acquisition only; no B2/self-hosting/default promotion.",
+    "seconds": 14.806737404,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-source03/compiler.bend",
+      "bytes": 1609259,
+      "sha256": "a01a9f0f9e7c5389b184ca0500a3f25d0fb5cec69db7ea82006a4c33b42f50eb"
+    },
+    "name": "abi-api03"
+  },
+  {
+    "kind": "phase173-abi-finite-controls",
+    "complete": true,
+    "scope": "Finite compiler-data controls and existing final verifiers; not a correctness theorem or native qualification.",
+    "name": "abi-finite03",
+    "controlCounts": {
+      "p173sc_controls": 21,
+      "p173ab_controls": 25
+    }
+  },
+  {
+    "kind": "phase173-candidate-admission-diagnostic",
+    "complete": true,
+    "scope": "Actual checked request, unchanged static preparation, selected p173 raw candidate errors and SCC obligations. Pre-early-ready diagnostic superset; no generic emission, machine execution, optimization or promotion claim.",
+    "wallSeconds": 65.411335411,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-native-candidate-source02/compiler.bend",
+      "bytes": 892697,
+      "sha256": "8ca5a159c6ae2f484eb6a6cf8642ac42f99f561ae536c6a81bad53e1b6068a95"
+    },
+    "stages": {
+      "apiLoadSeconds": 1.600570324,
+      "preparedBaseSeconds": 0.7984389609999998,
+      "frontendSeconds": 44.709954406,
+      "diagnosticSeconds": 17.02234484
+    },
+    "name": "abi-store-admission03"
+  },
+  {
+    "kind": "phase171-checked-request",
+    "complete": true,
+    "scope": "Checked experimental hosted compiler request. This is not native compiler timing, generated-program execution, or promotion.",
+    "wallSeconds": 102.321881562,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-native-candidate-source02/compiler.bend",
+      "bytes": 892697,
+      "sha256": "8ca5a159c6ae2f484eb6a6cf8642ac42f99f561ae536c6a81bad53e1b6068a95"
+    },
+    "stages": {
+      "loadSeconds": 2.4598230900000004,
+      "baseSeconds": 0.8132450210000002,
+      "frontendSeconds": 44.922352443,
+      "lowerVerifySeconds": 48.223547744,
+      "renderWriteSeconds": 4.747050659
+    },
+    "ir": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-store-emission03/program.ssa",
+      "bytes": 12717939,
+      "sha256": "00f447ed3e2e3838eb013d3eebf1da5e7a028ead74a5db937175cfd86d913fff"
+    },
+    "name": "abi-store-emission03"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 1.2452249829657376,
+    "name": "abi-store-machine03"
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "resolved": true,
+    "medians": {
+      "baseline": 0.07864872319623828,
+      "candidate": 0.09368994901888072
+    },
+    "ratio": 1.1912456453375948,
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "name": "abi-store-pair03",
+    "runs": [
+      {
+        "role": "baseline",
+        "cycle": 0,
+        "seconds": 0.07868844922631979,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-store-pair03/0-baseline.stdout",
+          "bytes": 962601,
+          "sha256": "6f2f5400603f0f7209abd2da2317ef3bd8097fff19d4f36b2b39797d18001ac7"
+        }
+      },
+      {
+        "role": "candidate",
+        "cycle": 0,
+        "seconds": 0.09355306066572666,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-store-pair03/0-candidate.stdout",
+          "bytes": 962601,
+          "sha256": "6f2f5400603f0f7209abd2da2317ef3bd8097fff19d4f36b2b39797d18001ac7"
+        }
+      },
+      {
+        "role": "candidate",
+        "cycle": 1,
+        "seconds": 0.09384325286373496,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-store-pair03/1-candidate.stdout",
+          "bytes": 962601,
+          "sha256": "6f2f5400603f0f7209abd2da2317ef3bd8097fff19d4f36b2b39797d18001ac7"
+        }
+      },
+      {
+        "role": "baseline",
+        "cycle": 1,
+        "seconds": 0.07860899716615677,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-store-pair03/1-baseline.stdout",
+          "bytes": 962601,
+          "sha256": "6f2f5400603f0f7209abd2da2317ef3bd8097fff19d4f36b2b39797d18001ac7"
+        }
+      },
+      {
+        "role": "baseline",
+        "cycle": 2,
+        "seconds": 0.07876179786399007,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-store-pair03/2-baseline.stdout",
+          "bytes": 962601,
+          "sha256": "6f2f5400603f0f7209abd2da2317ef3bd8097fff19d4f36b2b39797d18001ac7"
+        }
+      },
+      {
+        "role": "candidate",
+        "cycle": 2,
+        "seconds": 0.09377405093982816,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-store-pair03/2-candidate.stdout",
+          "bytes": 962601,
+          "sha256": "6f2f5400603f0f7209abd2da2317ef3bd8097fff19d4f36b2b39797d18001ac7"
+        }
+      },
+      {
+        "role": "candidate",
+        "cycle": 3,
+        "seconds": 0.09360584709793329,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-store-pair03/3-candidate.stdout",
+          "bytes": 962601,
+          "sha256": "6f2f5400603f0f7209abd2da2317ef3bd8097fff19d4f36b2b39797d18001ac7"
+        }
+      },
+      {
+        "role": "baseline",
+        "cycle": 3,
+        "seconds": 0.07847862597554922,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-store-pair03/3-baseline.stdout",
+          "bytes": 962601,
+          "sha256": "6f2f5400603f0f7209abd2da2317ef3bd8097fff19d4f36b2b39797d18001ac7"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "phase171-checked-request",
+    "complete": true,
+    "scope": "Checked experimental hosted compiler request. This is not native compiler timing, generated-program execution, or promotion.",
+    "wallSeconds": 101.76091000299999,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-direct-native-source01/compiler.bend",
+      "bytes": 878965,
+      "sha256": "30af9a0eb4e7104cec847f08a9c08a18137c7b7d5bd9b33b5900bce873d8366d"
+    },
+    "stages": {
+      "loadSeconds": 2.451271651,
+      "baseSeconds": 0.8143219640000002,
+      "frontendSeconds": 44.125406994,
+      "lowerVerifySeconds": 47.334095280999996,
+      "renderWriteSeconds": 5.859653411000006
+    },
+    "ir": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-direct-store-emission03/program.ssa",
+      "bytes": 12413708,
+      "sha256": "cfc599b43bf0f6db32939b728b75f29154c0b788a755d22c0a8df01e78bae16a"
+    },
+    "name": "abi-direct-store-emission03"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 1.2730673071928322,
+    "name": "abi-direct-store-machine03"
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "resolved": true,
+    "medians": {
+      "baseline": 0.07880550669506192,
+      "candidate": 0.09104769350960851
+    },
+    "ratio": 1.1553468447568995,
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "name": "abi-direct-store-pair03",
+    "runs": [
+      {
+        "role": "baseline",
+        "cycle": 0,
+        "seconds": 0.07932508084923029,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-direct-store-pair03/0-baseline.stdout",
+          "bytes": 962601,
+          "sha256": "6f2f5400603f0f7209abd2da2317ef3bd8097fff19d4f36b2b39797d18001ac7"
+        }
+      },
+      {
+        "role": "candidate",
+        "cycle": 0,
+        "seconds": 0.09060220792889595,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-direct-store-pair03/0-candidate.stdout",
+          "bytes": 962601,
+          "sha256": "6f2f5400603f0f7209abd2da2317ef3bd8097fff19d4f36b2b39797d18001ac7"
+        }
+      },
+      {
+        "role": "candidate",
+        "cycle": 1,
+        "seconds": 0.09037447301670909,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-direct-store-pair03/1-candidate.stdout",
+          "bytes": 962601,
+          "sha256": "6f2f5400603f0f7209abd2da2317ef3bd8097fff19d4f36b2b39797d18001ac7"
+        }
+      },
+      {
+        "role": "baseline",
+        "cycle": 1,
+        "seconds": 0.07858368009328842,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-direct-store-pair03/1-baseline.stdout",
+          "bytes": 962601,
+          "sha256": "6f2f5400603f0f7209abd2da2317ef3bd8097fff19d4f36b2b39797d18001ac7"
+        }
+      },
+      {
+        "role": "baseline",
+        "cycle": 2,
+        "seconds": 0.07835564995184541,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-direct-store-pair03/2-baseline.stdout",
+          "bytes": 962601,
+          "sha256": "6f2f5400603f0f7209abd2da2317ef3bd8097fff19d4f36b2b39797d18001ac7"
+        }
+      },
+      {
+        "role": "candidate",
+        "cycle": 2,
+        "seconds": 0.09149317909032106,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-direct-store-pair03/2-candidate.stdout",
+          "bytes": 962601,
+          "sha256": "6f2f5400603f0f7209abd2da2317ef3bd8097fff19d4f36b2b39797d18001ac7"
+        }
+      },
+      {
+        "role": "candidate",
+        "cycle": 3,
+        "seconds": 0.09167525917291641,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-direct-store-pair03/3-candidate.stdout",
+          "bytes": 962601,
+          "sha256": "6f2f5400603f0f7209abd2da2317ef3bd8097fff19d4f36b2b39797d18001ac7"
+        }
+      },
+      {
+        "role": "baseline",
+        "cycle": 3,
+        "seconds": 0.07902733329683542,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-direct-store-pair03/3-baseline.stdout",
+          "bytes": 962601,
+          "sha256": "6f2f5400603f0f7209abd2da2317ef3bd8097fff19d4f36b2b39797d18001ac7"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "phase171-checked-request",
+    "complete": true,
+    "scope": "Checked experimental hosted compiler request. This is not native compiler timing, generated-program execution, or promotion.",
+    "wallSeconds": 31.126978619,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/verifier-source03/compiler.bend",
+      "bytes": 39333,
+      "sha256": "ff6b4083aa2f3e034f3b4f8e43dfb25d93a4f524685934e0ee13845278033ef3"
+    },
+    "stages": {
+      "loadSeconds": 2.649780677,
+      "baseSeconds": 0.8796072680000002,
+      "frontendSeconds": 8.173356553000001,
+      "lowerVerifySeconds": 15.228436074000001,
+      "renderWriteSeconds": 3.0530405900000006
+    },
+    "ir": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-verifier-emission03/program.ssa",
+      "bytes": 2311943,
+      "sha256": "8f981b0a11d6975e33a502cdc38cf0854758b606bb4bcc8a886a4b06a3e95a85"
+    },
+    "name": "abi-verifier-emission03"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.38143817987293005,
+    "name": "abi-verifier-machine03"
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "resolved": true,
+    "medians": {
+      "baseline": 0.4228114834986627,
+      "candidate": 0.42218631971627474
+    },
+    "ratio": 0.9985214124810071,
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "name": "abi-verifier-pair03",
+    "runs": [
+      {
+        "role": "baseline",
+        "cycle": 0,
+        "seconds": 0.4298962433822453,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-verifier-pair03/0-baseline.stdout",
+          "bytes": 4,
+          "sha256": "eac49b0badacd9a2b90dda6621d141162732bf83418d0d76cc4c422f28eb4f1d"
+        }
+      },
+      {
+        "role": "candidate",
+        "cycle": 0,
+        "seconds": 0.4220370356924832,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-verifier-pair03/0-candidate.stdout",
+          "bytes": 4,
+          "sha256": "eac49b0badacd9a2b90dda6621d141162732bf83418d0d76cc4c422f28eb4f1d"
+        }
+      },
+      {
+        "role": "candidate",
+        "cycle": 1,
+        "seconds": 0.4223356037400663,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-verifier-pair03/1-candidate.stdout",
+          "bytes": 4,
+          "sha256": "eac49b0badacd9a2b90dda6621d141162732bf83418d0d76cc4c422f28eb4f1d"
+        }
+      },
+      {
+        "role": "baseline",
+        "cycle": 1,
+        "seconds": 0.42285227682441473,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-verifier-pair03/1-baseline.stdout",
+          "bytes": 4,
+          "sha256": "eac49b0badacd9a2b90dda6621d141162732bf83418d0d76cc4c422f28eb4f1d"
+        }
+      },
+      {
+        "role": "baseline",
+        "cycle": 2,
+        "seconds": 0.4227706901729107,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-verifier-pair03/2-baseline.stdout",
+          "bytes": 4,
+          "sha256": "eac49b0badacd9a2b90dda6621d141162732bf83418d0d76cc4c422f28eb4f1d"
+        }
+      },
+      {
+        "role": "candidate",
+        "cycle": 2,
+        "seconds": 0.421419819816947,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-verifier-pair03/2-candidate.stdout",
+          "bytes": 4,
+          "sha256": "eac49b0badacd9a2b90dda6621d141162732bf83418d0d76cc4c422f28eb4f1d"
+        }
+      },
+      {
+        "role": "candidate",
+        "cycle": 3,
+        "seconds": 0.42285875510424376,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-verifier-pair03/3-candidate.stdout",
+          "bytes": 4,
+          "sha256": "eac49b0badacd9a2b90dda6621d141162732bf83418d0d76cc4c422f28eb4f1d"
+        }
+      },
+      {
+        "role": "baseline",
+        "cycle": 3,
+        "seconds": 0.42066664481535554,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-verifier-pair03/3-baseline.stdout",
+          "bytes": 4,
+          "sha256": "eac49b0badacd9a2b90dda6621d141162732bf83418d0d76cc4c422f28eb4f1d"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.8644213462248445,
+    "name": "abi-workload-baseline01"
+  },
+  {
+    "kind": "phase171-checked-request",
+    "complete": true,
+    "scope": "Checked experimental hosted compiler request. This is not native compiler timing, generated-program execution, or promotion.",
+    "wallSeconds": 8.380059009,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-workload-source01/compiler.bend",
+      "bytes": 3793,
+      "sha256": "c35fef7781016b315fe31481709f1850e1779cfa35690e5045c3905566821baa"
+    },
+    "stages": {
+      "loadSeconds": 2.461560557,
+      "baseSeconds": 0.8150761229999999,
+      "frontendSeconds": 1.9742702160000003,
+      "lowerVerifySeconds": 1.843479056,
+      "renderWriteSeconds": 0.15608850299999993
+    },
+    "ir": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-workload-emission03/program.ssa",
+      "bytes": 143768,
+      "sha256": "73ec0a640c96d36fef3b5b5e2ca00f410eef662e97e8a2187a1339688908443f"
+    },
+    "name": "abi-workload-emission03"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.08966718800365925,
+    "name": "abi-workload-machine03"
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "resolved": false,
+    "medians": {
+      "baseline": 0.0069772470742464066,
+      "candidate": 0.004005253314971924
+    },
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "name": "abi-workload-output04",
+    "runs": [
+      {
+        "role": "baseline",
+        "cycle": 0,
+        "seconds": 0.0069772470742464066,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-workload-output04/0-baseline.stdout",
+          "bytes": 50,
+          "sha256": "6c5aa38c389bcdd081fffd96f90dac934c05576d96a08a5e016ca50037c5a4b4"
+        }
+      },
+      {
+        "role": "candidate",
+        "cycle": 0,
+        "seconds": 0.004005253314971924,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-workload-output04/0-candidate.stdout",
+          "bytes": 50,
+          "sha256": "6c5aa38c389bcdd081fffd96f90dac934c05576d96a08a5e016ca50037c5a4b4"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "bend-checked-hosted-api",
+    "complete": true,
+    "checked": true,
+    "error": null,
+    "scope": "Upstream-checked B1 acquisition only; no B2/self-hosting/default promotion.",
+    "seconds": 16.073544782000003,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-direct-source01/compiler.bend",
+      "bytes": 1621076,
+      "sha256": "83a95c468a1be56f2947cf3fe5fd5bf5d078f18183a60231c2d201babbf98ed9"
+    },
+    "name": "store-direct-api01"
+  },
+  {
+    "kind": "phase173-indexed-vertical-controls",
+    "complete": true,
+    "passed": true,
+    "actualBodies": 101,
+    "scope": "Complete checked compiler values, same source and prepared Base. Shared hosted process diagnostic; not native runtime, complete cold-build timing, proof, or qualification.",
+    "wallSeconds": 23.512450758000004,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/verifier-source03/compiler.bend",
+      "bytes": 39333,
+      "sha256": "ff6b4083aa2f3e034f3b4f8e43dfb25d93a4f524685934e0ee13845278033ef3"
+    },
+    "capturedInputs": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-direct-verifier01/complete-input-values.json",
+      "bytes": 2570751,
+      "sha256": "5278370c25e15660606607d87ca60310c1d3f8fdc6394db25180542a302a1765"
+    },
+    "completeInputs": {
+      "completeValuesEqual": true,
+      "valuesCompared": 229340
+    },
+    "completePassOutputs": {
+      "completeValuesEqual": true,
+      "valuesCompared": 321590
+    },
+    "finiteCompaction": {
+      "completeValuesEqual": true,
+      "valuesCompared": 650
+    },
+    "stages": {
+      "baseline": {
+        "apiLoadSeconds": 0.21066134799999964,
+        "preparedBaseSeconds": 0.791123266,
+        "frontendSeconds": 8.309551715,
+        "extractErasedBodiesSeconds": 0.005330968000000212,
+        "completePassSeconds": 0.3250640740000017
+      },
+      "candidate": {
+        "apiLoadSeconds": 0.5748641490000009,
+        "preparedBaseSeconds": 0.8106095610000011,
+        "frontendSeconds": 7.979558405,
+        "extractErasedBodiesSeconds": 0.005662640000002284,
+        "completePassSeconds": 0.30525206099999924
+      }
+    },
+    "name": "store-direct-verifier01"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 30.81557221710682,
+    "name": "store-direct-native01"
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "resolved": true,
+    "medians": {
+      "baseline": 0.07918783160857856,
+      "candidate": 0.11447999789379537
+    },
+    "ratio": 1.4456766345069807,
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "name": "store-direct-pair01",
+    "runs": [
+      {
+        "role": "baseline",
+        "cycle": 0,
+        "seconds": 0.07932013226673007,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-direct-pair01/0-baseline.stdout",
+          "bytes": 962601,
+          "sha256": "6f2f5400603f0f7209abd2da2317ef3bd8097fff19d4f36b2b39797d18001ac7"
+        }
+      },
+      {
+        "role": "candidate",
+        "cycle": 0,
+        "seconds": 0.11220901599153876,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-direct-pair01/0-candidate.stdout",
+          "bytes": 962601,
+          "sha256": "6f2f5400603f0f7209abd2da2317ef3bd8097fff19d4f36b2b39797d18001ac7"
+        }
+      },
+      {
+        "role": "candidate",
+        "cycle": 1,
+        "seconds": 0.1166235120035708,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-direct-pair01/1-candidate.stdout",
+          "bytes": 962601,
+          "sha256": "6f2f5400603f0f7209abd2da2317ef3bd8097fff19d4f36b2b39797d18001ac7"
+        }
+      },
+      {
+        "role": "baseline",
+        "cycle": 1,
+        "seconds": 0.07905553095042706,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-direct-pair01/1-baseline.stdout",
+          "bytes": 962601,
+          "sha256": "6f2f5400603f0f7209abd2da2317ef3bd8097fff19d4f36b2b39797d18001ac7"
+        }
+      },
+      {
+        "role": "baseline",
+        "cycle": 2,
+        "seconds": 0.07848425908014178,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-direct-pair01/2-baseline.stdout",
+          "bytes": 962601,
+          "sha256": "6f2f5400603f0f7209abd2da2317ef3bd8097fff19d4f36b2b39797d18001ac7"
+        }
+      },
+      {
+        "role": "candidate",
+        "cycle": 2,
+        "seconds": 0.11233648378401995,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-direct-pair01/2-candidate.stdout",
+          "bytes": 962601,
+          "sha256": "6f2f5400603f0f7209abd2da2317ef3bd8097fff19d4f36b2b39797d18001ac7"
+        }
+      },
+      {
+        "role": "candidate",
+        "cycle": 3,
+        "seconds": 0.12871572095900774,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-direct-pair01/3-candidate.stdout",
+          "bytes": 962601,
+          "sha256": "6f2f5400603f0f7209abd2da2317ef3bd8097fff19d4f36b2b39797d18001ac7"
+        }
+      },
+      {
+        "role": "baseline",
+        "cycle": 3,
+        "seconds": 0.0796706648543477,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-direct-pair01/3-baseline.stdout",
+          "bytes": 962601,
+          "sha256": "6f2f5400603f0f7209abd2da2317ef3bd8097fff19d4f36b2b39797d18001ac7"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.1915980358608067,
+    "name": "borrow-compiler-native-base01"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.12339931353926659,
+    "name": "borrow-compiler-native-cand04"
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "resolved": false,
+    "medians": {
+      "baseline": 0.003174446988850832,
+      "candidate": 0.0041006822139024734
+    },
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "name": "borrow-compiler-native-output04",
+    "runs": [
+      {
+        "role": "baseline",
+        "cycle": 0,
+        "seconds": 0.003174446988850832,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-compiler-native-output04/0-baseline.stdout",
+          "bytes": 1724,
+          "sha256": "971508935828004ff8e6cf02e8f1605165b56c372d44e2875b92512a195d734e"
+        }
+      },
+      {
+        "role": "candidate",
+        "cycle": 0,
+        "seconds": 0.0041006822139024734,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-compiler-native-output04/0-candidate.stdout",
+          "bytes": 1724,
+          "sha256": "971508935828004ff8e6cf02e8f1605165b56c372d44e2875b92512a195d734e"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.1642324049025774,
+    "name": "borrow-compiler-events-base-build01"
+  },
+  {
+    "kind": "phase173-native-events",
+    "complete": true,
+    "scope": "Complete fixed-output run of authenticated diagnostic executable. Runtime events may omit generated inline work; event differences are not a direct fast-arm counter.",
+    "outputExact": true,
+    "totals": {
+      "dispatches": 140,
+      "heap_alloc_calls": 180,
+      "heap_alloc_miss_calls": 4,
+      "heap_free_calls": 30,
+      "heap_alloc_requested_words": 412,
+      "heap_free_words": 70,
+      "term_keep_calls": 54,
+      "term_sink_calls": 99,
+      "term_drop_calls": 28,
+      "ctr_take_calls": 57,
+      "frame_push_calls": 0,
+      "frame_capture_words": 0,
+      "return_calls": 60,
+      "primitive_calls": 24,
+      "register_words_copy_requested": 300,
+      "register_words_clear_requested": 0
+    },
+    "timingKind": "diagnostic: counter overhead; not usable for performance claims",
+    "name": "borrow-compiler-events-base01"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.11502272682264447,
+    "name": "borrow-compiler-events-cand-build04"
+  },
+  {
+    "kind": "phase173-native-events",
+    "complete": true,
+    "scope": "Complete fixed-output run of authenticated diagnostic executable. Runtime events may omit generated inline work; event differences are not a direct fast-arm counter.",
+    "outputExact": true,
+    "totals": {
+      "dispatches": 140,
+      "heap_alloc_calls": 177,
+      "heap_alloc_miss_calls": 4,
+      "heap_free_calls": 27,
+      "heap_alloc_requested_words": 388,
+      "heap_free_words": 46,
+      "term_keep_calls": 54,
+      "term_sink_calls": 99,
+      "term_drop_calls": 28,
+      "ctr_take_calls": 54,
+      "frame_push_calls": 0,
+      "frame_capture_words": 0,
+      "return_calls": 60,
+      "primitive_calls": 24,
+      "register_words_copy_requested": 300,
+      "register_words_clear_requested": 0
+    },
+    "timingKind": "diagnostic: counter overhead; not usable for performance claims",
+    "name": "borrow-compiler-events-cand04"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.5551631720736623,
+    "name": "borrow-loop-baseline01"
+  },
+  {
+    "kind": "phase171-checked-request",
+    "complete": true,
+    "scope": "Checked experimental hosted compiler request. This is not native compiler timing, generated-program execution, or promotion.",
+    "wallSeconds": 6.246445465,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-source01/compiler.bend",
+      "bytes": 2872,
+      "sha256": "1f2b5df52aaa1c7f1291804fcd6ca4cbc0701d8cb53ff22042cb63d00c6afa71"
+    },
+    "stages": {
+      "loadSeconds": 2.46012455,
+      "baseSeconds": 0.811386661,
+      "frontendSeconds": 0.9192799220000002,
+      "lowerVerifySeconds": 0.7666651619999993,
+      "renderWriteSeconds": 0.12506346099999974
+    },
+    "ir": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-emission04/program.ssa",
+      "bytes": 102988,
+      "sha256": "4886e8a16a79389fc27f225810c4e005c7ae2ad4944c30163be8e1b0eb04dcca"
+    },
+    "name": "borrow-loop-emission04"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.06703275861218572,
+    "name": "borrow-loop-machine04"
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "resolved": false,
+    "medians": {
+      "baseline": 0.01603217259980738,
+      "candidate": 0.012604302959516644
+    },
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "name": "borrow-loop-pair04",
+    "runs": [
+      {
+        "role": "baseline",
+        "cycle": 0,
+        "seconds": 0.016200268175452948,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-pair04/0-baseline.stdout",
+          "bytes": 669,
+          "sha256": "bf852b5c2ed3f9504e63a511e85241f481105c882baa12893435564119650ab1"
+        }
+      },
+      {
+        "role": "candidate",
+        "cycle": 0,
+        "seconds": 0.01266604196280241,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-pair04/0-candidate.stdout",
+          "bytes": 669,
+          "sha256": "bf852b5c2ed3f9504e63a511e85241f481105c882baa12893435564119650ab1"
+        }
+      },
+      {
+        "role": "candidate",
+        "cycle": 1,
+        "seconds": 0.012542563956230879,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-pair04/1-candidate.stdout",
+          "bytes": 669,
+          "sha256": "bf852b5c2ed3f9504e63a511e85241f481105c882baa12893435564119650ab1"
+        }
+      },
+      {
+        "role": "baseline",
+        "cycle": 1,
+        "seconds": 0.01608565915375948,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-pair04/1-baseline.stdout",
+          "bytes": 669,
+          "sha256": "bf852b5c2ed3f9504e63a511e85241f481105c882baa12893435564119650ab1"
+        }
+      },
+      {
+        "role": "baseline",
+        "cycle": 2,
+        "seconds": 0.015903147868812084,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-pair04/2-baseline.stdout",
+          "bytes": 669,
+          "sha256": "bf852b5c2ed3f9504e63a511e85241f481105c882baa12893435564119650ab1"
+        }
+      },
+      {
+        "role": "candidate",
+        "cycle": 2,
+        "seconds": 0.012711835093796253,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-pair04/2-candidate.stdout",
+          "bytes": 669,
+          "sha256": "bf852b5c2ed3f9504e63a511e85241f481105c882baa12893435564119650ab1"
+        }
+      },
+      {
+        "role": "candidate",
+        "cycle": 3,
+        "seconds": 0.012438301928341389,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-pair04/3-candidate.stdout",
+          "bytes": 669,
+          "sha256": "bf852b5c2ed3f9504e63a511e85241f481105c882baa12893435564119650ab1"
+        }
+      },
+      {
+        "role": "baseline",
+        "cycle": 3,
+        "seconds": 0.015978686045855284,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-pair04/3-baseline.stdout",
+          "bytes": 669,
+          "sha256": "bf852b5c2ed3f9504e63a511e85241f481105c882baa12893435564119650ab1"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "bend-checked-hosted-api",
+    "complete": true,
+    "checked": true,
+    "error": null,
+    "scope": "Upstream-checked B1 acquisition only; no B2/self-hosting/default promotion.",
+    "seconds": 0.8034177240000001,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-source01/compiler.bend",
+      "bytes": 2872,
+      "sha256": "1f2b5df52aaa1c7f1291804fcd6ca4cbc0701d8cb53ff22042cb63d00c6afa71"
+    },
+    "name": "borrow-loop-oracle-api01"
+  },
+  {
+    "kind": "phase173-independent-borrow-value-oracle",
+    "complete": true,
+    "scope": "Unchanged workload evaluated by pinned upstream JS; complete typed value transported to a constant Bend program. The constant requires independent checking and baseline native readback before use as an execution oracle.",
+    "wallSeconds": 0.5694829349999999,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-source01/compiler.bend",
+      "bytes": 2872,
+      "sha256": "1f2b5df52aaa1c7f1291804fcd6ca4cbc0701d8cb53ff22042cb63d00c6afa71"
+    },
+    "name": "borrow-loop-oracle-observe01"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.5195779763162136,
+    "name": "borrow-loop-oracle-machine01"
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "resolved": false,
+    "medians": {
+      "baseline": 0.003123427741229534,
+      "candidate": 0.0031102229841053486
+    },
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "name": "borrow-loop-oracle-output01",
+    "runs": [
+      {
+        "role": "baseline",
+        "cycle": 0,
+        "seconds": 0.003123427741229534,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-oracle-output01/0-baseline.stdout",
+          "bytes": 669,
+          "sha256": "bf852b5c2ed3f9504e63a511e85241f481105c882baa12893435564119650ab1"
+        }
+      },
+      {
+        "role": "candidate",
+        "cycle": 0,
+        "seconds": 0.0031102229841053486,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-oracle-output01/0-candidate.stdout",
+          "bytes": 669,
+          "sha256": "bf852b5c2ed3f9504e63a511e85241f481105c882baa12893435564119650ab1"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.6012771436944604,
+    "name": "borrow-long-baseline03"
+  },
+  {
+    "kind": "phase171-checked-request",
+    "complete": true,
+    "scope": "Checked experimental hosted compiler request. This is not native compiler timing, generated-program execution, or promotion.",
+    "wallSeconds": 6.490005343000001,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-source03/compiler.bend",
+      "bytes": 2874,
+      "sha256": "170dbb51d6a1c330bab135592e6fe139f5eb7cfb2c827e71fb3120b3e0371ef4"
+    },
+    "stages": {
+      "loadSeconds": 2.459512824,
+      "baseSeconds": 0.8113380069999998,
+      "frontendSeconds": 0.9594223460000003,
+      "lowerVerifySeconds": 0.838392331,
+      "renderWriteSeconds": 0.13683053999999992
+    },
+    "ir": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-long-emission04/program.ssa",
+      "bytes": 102991,
+      "sha256": "c7efcff35b0f37c8fdfdb875f0ffa91719d36eb6d62cea7ae8041e5359646279"
+    },
+    "name": "borrow-long-emission04"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.09286905359476805,
+    "name": "borrow-long-machine04"
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "resolved": true,
+    "medians": {
+      "baseline": 0.05491032777354121,
+      "candidate": 0.041202720487490296
+    },
+    "ratio": 0.7503637686778482,
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "name": "borrow-long-pair04",
+    "runs": [
+      {
+        "role": "baseline",
+        "cycle": 0,
+        "seconds": 0.05472701881080866,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-long-pair04/0-baseline.stdout",
+          "bytes": 672,
+          "sha256": "397624dd394afb63697dfa0da9323a36cf350927cc12b9283652ec1855cfe212"
+        }
+      },
+      {
+        "role": "candidate",
+        "cycle": 0,
+        "seconds": 0.04124794714152813,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-long-pair04/0-candidate.stdout",
+          "bytes": 672,
+          "sha256": "397624dd394afb63697dfa0da9323a36cf350927cc12b9283652ec1855cfe212"
+        }
+      },
+      {
+        "role": "candidate",
+        "cycle": 1,
+        "seconds": 0.040990274865180254,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-long-pair04/1-candidate.stdout",
+          "bytes": 672,
+          "sha256": "397624dd394afb63697dfa0da9323a36cf350927cc12b9283652ec1855cfe212"
+        }
+      },
+      {
+        "role": "baseline",
+        "cycle": 1,
+        "seconds": 0.055093636736273766,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-long-pair04/1-baseline.stdout",
+          "bytes": 672,
+          "sha256": "397624dd394afb63697dfa0da9323a36cf350927cc12b9283652ec1855cfe212"
+        }
+      },
+      {
+        "role": "baseline",
+        "cycle": 2,
+        "seconds": 0.05467904591932893,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-long-pair04/2-baseline.stdout",
+          "bytes": 672,
+          "sha256": "397624dd394afb63697dfa0da9323a36cf350927cc12b9283652ec1855cfe212"
+        }
+      },
+      {
+        "role": "candidate",
+        "cycle": 2,
+        "seconds": 0.04115749383345246,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-long-pair04/2-candidate.stdout",
+          "bytes": 672,
+          "sha256": "397624dd394afb63697dfa0da9323a36cf350927cc12b9283652ec1855cfe212"
+        }
+      },
+      {
+        "role": "candidate",
+        "cycle": 3,
+        "seconds": 0.041259475983679295,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-long-pair04/3-candidate.stdout",
+          "bytes": 672,
+          "sha256": "397624dd394afb63697dfa0da9323a36cf350927cc12b9283652ec1855cfe212"
+        }
+      },
+      {
+        "role": "baseline",
+        "cycle": 3,
+        "seconds": 0.055510008707642555,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-long-pair04/3-baseline.stdout",
+          "bytes": 672,
+          "sha256": "397624dd394afb63697dfa0da9323a36cf350927cc12b9283652ec1855cfe212"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "bend-checked-hosted-api",
+    "complete": true,
+    "checked": true,
+    "error": null,
+    "scope": "Upstream-checked B1 acquisition only; no B2/self-hosting/default promotion.",
+    "seconds": 0.8127285430000001,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-source03/compiler.bend",
+      "bytes": 2874,
+      "sha256": "170dbb51d6a1c330bab135592e6fe139f5eb7cfb2c827e71fb3120b3e0371ef4"
+    },
+    "name": "borrow-long-oracle-api03"
+  },
+  {
+    "kind": "phase173-independent-borrow-value-oracle",
+    "complete": true,
+    "scope": "Unchanged workload evaluated by pinned upstream JS; complete typed value transported to a constant Bend program. The constant requires independent checking and baseline native readback before use as an execution oracle.",
+    "wallSeconds": 0.5964511210000001,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-loop-source03/compiler.bend",
+      "bytes": 2874,
+      "sha256": "170dbb51d6a1c330bab135592e6fe139f5eb7cfb2c827e71fb3120b3e0371ef4"
+    },
+    "name": "borrow-long-oracle-observe03"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.6215498289093375,
+    "name": "borrow-long-oracle-machine03"
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "resolved": false,
+    "medians": {
+      "baseline": 0.0031604268588125706,
+      "candidate": 0.002869728021323681
+    },
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "name": "borrow-long-oracle-output03",
+    "runs": [
+      {
+        "role": "baseline",
+        "cycle": 0,
+        "seconds": 0.0031604268588125706,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-long-oracle-output03/0-baseline.stdout",
+          "bytes": 672,
+          "sha256": "397624dd394afb63697dfa0da9323a36cf350927cc12b9283652ec1855cfe212"
+        }
+      },
+      {
+        "role": "candidate",
+        "cycle": 0,
+        "seconds": 0.002869728021323681,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-long-oracle-output03/0-candidate.stdout",
+          "bytes": 672,
+          "sha256": "397624dd394afb63697dfa0da9323a36cf350927cc12b9283652ec1855cfe212"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "bend-checked-hosted-api",
+    "complete": true,
+    "checked": true,
+    "error": null,
+    "scope": "Upstream-checked B1 acquisition only; no B2/self-hosting/default promotion.",
+    "seconds": 15.237664921,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-source01/compiler.bend",
+      "bytes": 1633690,
+      "sha256": "1b9b8c2ccacdcac73375b622be47ba3a38de4554895a5eee772f2cc174a93ee8"
+    },
+    "name": "dispatch-api01"
+  },
+  {
+    "kind": "phase173-abi-finite-controls",
+    "complete": true,
+    "scope": "Finite compiler-data controls and existing final verifiers; not a correctness theorem or native qualification.",
+    "name": "dispatch-finite01",
+    "controlCounts": {
+      "p173sc_controls": 21,
+      "p173ab_controls": 25,
+      "p173dj_controls": 30
+    }
+  },
+  {
+    "kind": "phase173-checked-plan-run",
+    "complete": true,
+    "scope": "Warm backend-only replay from an authenticated complete checked P86Plan. Frontend is omitted explicitly; not a cold-build metric.",
+    "wallSeconds": 64.464681198,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-native-candidate-source02/compiler.bend",
+      "bytes": 892697,
+      "sha256": "8ca5a159c6ae2f484eb6a6cf8642ac42f99f561ae536c6a81bad53e1b6068a95"
+    },
+    "warmReplay": true,
+    "transport": "bun:jsc-structured-clone",
+    "stages": {
+      "authenticateLoadSeconds": 4.140772316,
+      "decodeSeconds": 0.5722586470000006,
+      "baseSeconds": 0,
+      "frontendSeconds": 0,
+      "lowerVerifySeconds": 45.65823348600001,
+      "renderWriteSeconds": 5.404902217999996
+    },
+    "omittedPreparation": {
+      "baseSeconds": 0.8164663719999998,
+      "frontendSeconds": 46.250320208,
+      "captureSeconds": 1.9889143330000005
+    },
+    "fingerprint": {
+      "sha256": "7a9c5f9be623e3ebf145d2011201e7f7233713fe2d4ca84cc14702e800e08ec7",
+      "declarations": 2135,
+      "bytes": 637203
+    },
+    "ir": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-store-replay01/program.ssa",
+      "bytes": 12719989,
+      "sha256": "e1f9e161aab4e42ec11cdd9a12808651cf6f8b555bfe22f7d02d6404b6dd6dfd"
+    },
+    "capture": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/plan-capture-binary03/plan.json",
+      "bytes": 110334,
+      "sha256": "f6f97e69cd4b940ccc74a095712a067aacbf8692de2fb31ecbd5a414f110f2e6"
+    },
+    "name": "dispatch-store-replay01"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 1.3613159200176597,
+    "name": "dispatch-store-machine01"
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "resolved": true,
+    "medians": {
+      "baseline": 0.09510209830477834,
+      "candidate": 0.09181830752640963
+    },
+    "ratio": 0.9654708903704208,
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "name": "dispatch-store-pair01",
+    "runs": [
+      {
+        "role": "baseline",
+        "cycle": 0,
+        "seconds": 0.09534112317487597,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-store-pair01/0-baseline.stdout",
+          "bytes": 962601,
+          "sha256": "6f2f5400603f0f7209abd2da2317ef3bd8097fff19d4f36b2b39797d18001ac7"
+        }
+      },
+      {
+        "role": "candidate",
+        "cycle": 0,
+        "seconds": 0.09177486132830381,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-store-pair01/0-candidate.stdout",
+          "bytes": 962601,
+          "sha256": "6f2f5400603f0f7209abd2da2317ef3bd8097fff19d4f36b2b39797d18001ac7"
+        }
+      },
+      {
+        "role": "candidate",
+        "cycle": 1,
+        "seconds": 0.0914134350605309,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-store-pair01/1-candidate.stdout",
+          "bytes": 962601,
+          "sha256": "6f2f5400603f0f7209abd2da2317ef3bd8097fff19d4f36b2b39797d18001ac7"
+        }
+      },
+      {
+        "role": "baseline",
+        "cycle": 1,
+        "seconds": 0.09523576684296131,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-store-pair01/1-baseline.stdout",
+          "bytes": 962601,
+          "sha256": "6f2f5400603f0f7209abd2da2317ef3bd8097fff19d4f36b2b39797d18001ac7"
+        }
+      },
+      {
+        "role": "baseline",
+        "cycle": 2,
+        "seconds": 0.09469990292564034,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-store-pair01/2-baseline.stdout",
+          "bytes": 962601,
+          "sha256": "6f2f5400603f0f7209abd2da2317ef3bd8097fff19d4f36b2b39797d18001ac7"
+        }
+      },
+      {
+        "role": "candidate",
+        "cycle": 2,
+        "seconds": 0.09208131395280361,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-store-pair01/2-candidate.stdout",
+          "bytes": 962601,
+          "sha256": "6f2f5400603f0f7209abd2da2317ef3bd8097fff19d4f36b2b39797d18001ac7"
+        }
+      },
+      {
+        "role": "candidate",
+        "cycle": 3,
+        "seconds": 0.09186175372451544,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-store-pair01/3-candidate.stdout",
+          "bytes": 962601,
+          "sha256": "6f2f5400603f0f7209abd2da2317ef3bd8097fff19d4f36b2b39797d18001ac7"
+        }
+      },
+      {
+        "role": "baseline",
+        "cycle": 3,
+        "seconds": 0.09496842976659536,
+        "exitCode": 0,
+        "outputExact": true,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-store-pair01/3-baseline.stdout",
+          "bytes": 962601,
+          "sha256": "6f2f5400603f0f7209abd2da2317ef3bd8097fff19d4f36b2b39797d18001ac7"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "phase173-plan-transport-probe",
+    "complete": true,
+    "results": [
+      {
+        "codec": "bun:jsc",
+        "objects": 20485,
+        "linkedListDepth": 16384,
+        "artifact": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/plan-transport-probe01/probe.jsc",
+          "bytes": 663419,
+          "sha256": "5fbec57f9d28fde4417217a97848d5c6fda04c6c10783153acb3fba0e55c502d"
+        },
+        "encodeSeconds": 0.014059123999999997,
+        "writeDecodeSeconds": 0.011068169000000011,
+        "exactValues": true,
+        "sharing": true,
+        "cycle": true,
+        "freshDecode": true
+      },
+      {
+        "codec": "node:v8-on-bun",
+        "objects": 20485,
+        "linkedListDepth": 16384,
+        "artifact": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/plan-transport-probe01/probe.v8",
+          "bytes": 663419,
+          "sha256": "5fbec57f9d28fde4417217a97848d5c6fda04c6c10783153acb3fba0e55c502d"
+        },
+        "encodeSeconds": 0.03135487799999998,
+        "writeDecodeSeconds": 0.009877614999999992,
+        "exactValues": true,
+        "sharing": true,
+        "cycle": true,
+        "freshDecode": true
+      }
+    ],
+    "jsonReference": {
+      "nodes": 20485,
+      "bytes": 1503542,
+      "bytesPerNode": 73.3972174762021,
+      "seconds": 0.20200830999999994
+    },
+    "name": "plan-transport-probe01"
+  },
+  {
+    "kind": "phase173-checked-plan-run",
+    "complete": true,
+    "scope": "Full checked preparation, optionally followed by ordinary Bend backend emission. Hosted diagnostic, not native compiler or full executable-build timing.",
+    "wallSeconds": 58.241288557,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-native-candidate-source02/compiler.bend",
+      "bytes": 892697,
+      "sha256": "8ca5a159c6ae2f484eb6a6cf8642ac42f99f561ae536c6a81bad53e1b6068a95"
+    },
+    "warmReplay": false,
+    "transport": "bun:jsc-structured-clone",
+    "stages": {
+      "authenticateLoadSeconds": 4.18191744,
+      "baseSeconds": 0.8164663719999998,
+      "frontendSeconds": 46.250320208,
+      "captureSeconds": 1.9889143330000005
+    },
+    "fingerprint": {
+      "sha256": "7a9c5f9be623e3ebf145d2011201e7f7233713fe2d4ca84cc14702e800e08ec7",
+      "declarations": 2135,
+      "bytes": 637203
+    },
+    "capture": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/plan-capture-binary03/plan.json",
+      "bytes": 110334,
+      "sha256": "f6f97e69cd4b940ccc74a095712a067aacbf8692de2fb31ecbd5a414f110f2e6"
+    },
+    "name": "plan-capture-binary03"
+  },
+  {
+    "kind": "phase173-checked-plan-run",
+    "complete": true,
+    "scope": "Warm backend-only replay from an authenticated complete checked P86Plan. Frontend is omitted explicitly; not a cold-build metric.",
+    "wallSeconds": 64.27389970499999,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-native-candidate-source02/compiler.bend",
+      "bytes": 892697,
+      "sha256": "8ca5a159c6ae2f484eb6a6cf8642ac42f99f561ae536c6a81bad53e1b6068a95"
+    },
+    "exactQbe": true,
+    "warmReplay": true,
+    "transport": "bun:jsc-structured-clone",
+    "stages": {
+      "authenticateLoadSeconds": 4.139816926,
+      "decodeSeconds": 0.5776156199999987,
+      "baseSeconds": 0,
+      "frontendSeconds": 0,
+      "lowerVerifySeconds": 45.874887835,
+      "renderWriteSeconds": 4.928597401999999
+    },
+    "omittedPreparation": {
+      "baseSeconds": 0.8164663719999998,
+      "frontendSeconds": 46.250320208,
+      "captureSeconds": 1.9889143330000005
+    },
+    "fingerprint": {
+      "sha256": "7a9c5f9be623e3ebf145d2011201e7f7233713fe2d4ca84cc14702e800e08ec7",
+      "declarations": 2135,
+      "bytes": 637203
+    },
+    "ir": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/plan-replay-binary03/program.ssa",
+      "bytes": 12717939,
+      "sha256": "00f447ed3e2e3838eb013d3eebf1da5e7a028ead74a5db937175cfd86d913fff"
+    },
+    "capture": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/plan-capture-binary03/plan.json",
+      "bytes": 110334,
+      "sha256": "f6f97e69cd4b940ccc74a095712a067aacbf8692de2fb31ecbd5a414f110f2e6"
+    },
+    "name": "plan-replay-binary03"
+  },
+  {
+    "kind": "bend-checked-hosted-api",
+    "complete": false,
+    "checked": false,
+    "error": "Error: Checked acquisition failed; inspect captured diagnostics\n    at requireThat (/home/ai/bend2/build/publish/bend/selfhost/tools/build/hosted.mjs:12:60)\n    at acquire (/home/ai/bend2/build/publish/bend/selfhost/tools/build/hosted.mjs:133:5)\n    at /home/ai/bend2/build/publish/bend/selfhost/tools/build/hosted.mjs:150:114",
+    "scope": "Upstream-checked B1 acquisition only; no B2/self-hosting/default promotion.",
+    "seconds": 5.127251554,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-source01/compiler.bend",
+      "bytes": 1607379,
+      "sha256": "2c267367bbe5bb66fd8e3a500ce149bc8a8db1934dcbc5cee3d9bb2673c5bf8c"
+    },
+    "name": "abi-api01"
+  },
+  {
+    "kind": "phase173-abi-finite-controls",
+    "complete": false,
+    "error": "AssertionError [ERR_ASSERTION]: bridge-both-independent-verifiers:FAIL\n    at forEach (native:1:11)\n    at /home/ai/bend2/build/publish/bend/selfhost/tests/phase173/abi-controls.mjs:32:10",
+    "scope": "Finite compiler-data controls and existing final verifiers; not a correctness theorem or native qualification.",
+    "name": "abi-finite02",
+    "controlCounts": {
+      "p173sc_controls": 21,
+      "p173ab_controls": 25
+    }
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": false,
+    "error": "ValueError('Native output mismatch: baseline')",
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "name": "abi-workload-output03",
+    "runs": [
+      {
+        "role": "baseline",
+        "cycle": 0,
+        "seconds": 0.006754080764949322,
+        "exitCode": 0,
+        "outputExact": false,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-workload-output03/0-baseline.stdout",
+          "bytes": 50,
+          "sha256": "6c5aa38c389bcdd081fffd96f90dac934c05576d96a08a5e016ca50037c5a4b4"
+        }
+      }
+    ]
+  },
+  {
+    "kind": "phase173-checked-plan-run",
+    "complete": false,
+    "error": "AssertionError [ERR_ASSERTION]: Graph node bound exceeded\n    at ref (/home/ai/bend2/build/publish/bend/experiments/phase154/tools/graph.mjs:7:23)\n    at <anonymous> (/home/ai/bend2/build/publish/bend/experiments/phase154/tools/graph.mjs:10:156)\n    at map (native:1:11)\n    at encodeGraph (/home/ai/bend2/build/publish/bend/experiments/phase154/tools/graph.mjs:10:140)\n    at /home/ai/bend2/build/publish/bend/selfhost/tests/phase173/plan-replay.mjs:97:37",
+    "scope": "Full checked preparation, optionally followed by ordinary Bend backend emission. Hosted diagnostic, not native compiler or full executable-build timing.",
+    "wallSeconds": 51.497964614000004,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-native-candidate-source02/compiler.bend",
+      "bytes": 892697,
+      "sha256": "8ca5a159c6ae2f484eb6a6cf8642ac42f99f561ae536c6a81bad53e1b6068a95"
+    },
+    "warmReplay": false,
+    "stages": {
+      "authenticateLoadSeconds": 4.118976193,
+      "baseSeconds": 0.8009075320000002,
+      "frontendSeconds": 44.191044292
+    },
+    "fingerprint": {
+      "sha256": "7a9c5f9be623e3ebf145d2011201e7f7233713fe2d4ca84cc14702e800e08ec7",
+      "declarations": 2135,
+      "bytes": 637203
+    },
+    "name": "plan-capture-store03"
+  },
+  {
+    "name": "event-runtime-build02",
+    "complete": true
+  },
+  {
+    "name": "borrow-oracle-output01",
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "resolved": false,
+    "medians": {
+      "baseline": 0.003157961182296276,
+      "candidate": 0.003153313882648945
+    }
+  }
+]

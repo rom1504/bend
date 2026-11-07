@@ -1,0 +1,74 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": true,
+  "started": 1794007087.88634,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "3",
+    "python3",
+    "-B",
+    "selfhost/tests/phase173/native-pair.py",
+    "--baseline",
+    "selfhost/build/phase173/borrow-compiler-oracle-machine01/report.json",
+    "--candidate",
+    "selfhost/build/phase173/borrow-compiler-oracle-machine01/report.json",
+    "--rounds",
+    "1",
+    "--out",
+    "selfhost/build/phase173/borrow-oracle-output01"
+  ],
+  "returncode": 0,
+  "rssLimitBytes": 2147483648,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 15507456,
+  "minimumAvailableBytes": 25345413120,
+  "diskBudgetBytes": 8388608,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 6043787264,
+  "minimumDiskFreeBytes": 6043750400,
+  "peakRunAllocatedBytes": 36864,
+  "peakFilesystemDecreaseBytes": 36864,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-oracle-output01"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "3",
+    "fileLimitBytes": 134217728,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase173/native-pair.py",
+        "sha256": "219a9a447f8b85262adfa2b58eea7f1d635233c2fbe6a0083fd8e7d9651d6f9b",
+        "bytes": 3973
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-compiler-oracle-machine01/report.json",
+        "sha256": "12a9c4b42968dce834e778d513eebba556ea29edaa17d6ddee70077dacb1464b",
+        "bytes": 16565
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-compiler-oracle-machine01/report.json",
+        "sha256": "12a9c4b42968dce834e778d513eebba556ea29edaa17d6ddee70077dacb1464b",
+        "bytes": 16565
+      }
+    ]
+  },
+  "wallSeconds": 0.14598906319588423,
+  "finished": 1794007088.032142
+}

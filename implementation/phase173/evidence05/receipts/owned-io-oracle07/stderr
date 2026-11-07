@@ -1,0 +1,9 @@
+SOME PROOFS FAIL
+Error:
+- expected : an annotated term (cannot infer)
+- observed : "seed"
+Location: main
+37 | def main() -> IO(Unit):
+38>|   +child = "seed"
+   |            ^^^^^^
+39 |   +root : P173EffectRow = P173EffectRow{child,child}

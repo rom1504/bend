@@ -78,4 +78,92 @@ no untracked function or constructor dependency.
    Stop for poor coverage or neutral runtime. No full image before material
    transfer evidence. Charge pass time and code growth separately.
 
+Implementation refinement: identity-setter variants will not be decomposed.
+Their match fallthrough executes the exact original expression, with its root
+alpha-renamed to the fallback lambda argument. This preserves eager `F` work and
+the original no-reconstruction behavior without requiring a new constructor.
+Only structurally proved replacement branches receive the early consuming take.
+
+## Implemented prototype, awaiting execution gates
+
+The implementation consists of the checked-Bend experimental modules
+`owned-decomposition-summary.bend`, `owned-decomposition.bend` and a single
+`owned-decomposition-entry.bend` override of `p112s_prepare`. The override calls
+the original static-preparation algorithm unchanged, then replaces changed
+`NativeStaticBody` entries in its existing index. Original checked definitions,
+prior erased facts, constructor metadata and static-image entries remain intact.
+All subsequent direct/generic lowering and final verification are unchanged.
+
+The actual captured compiler bodies are important: `ks` and `k_with_children`
+are top-level erased `Mat` chains. Each setter branch places its replacement
+lambda after its constructor-field lambdas. The summary normalizes those
+different replacement IDs to one authenticated ID, retaining positional field
+provenance. It supports that actual shape rather than assuming every function
+begins with a root lambda. Summaries read cached erased bodies without an extra
+literal-compaction pass. Current restrictions include ordinary nonparametric
+Data constructors, quantity2 field binders,8 variants and16 fields.
+
+Fresh IDs start above the original whole-book bound, are threaded across all
+rewritten bodies, and remain below the backend's existing4,000,000,000 source-ID
+boundary. Each successful candidate additionally checks all original candidate
+and summary IDs before sequential structural renaming. The generated matcher
+uses quantity2 field/fallback lambdas and a strict quantity1 result binding.
+This uses the existing bounded native temporary convention; the numeric boundary
+alone is not a new proof against arbitrarily many downstream temporaries.
+
+The initial whole-request gate refuses every reachable foreign/unknown
+definition. This admits the pure extracted workloads and conservatively skips
+the complete File/IO compiler executable. Existing observer permission allows
+trusted IO and therefore cannot be called a purity proof. Generalizing the effect
+scope is a later qualification question, not silently included here.
+
+The independent structural module contains16 controls, including an exact full
+graph, ignored variants, same-field sharing, field/helper/fresh-ID collisions,
+effectful extra arguments, span preservation and absence of beta reduction.
+The unrelated `owned-decomposition-workload.bend` exercises packet updates,
+retained parent aliases and shared children; its separate digest main performs
+10,000 updates over128 list elements. These are prepared controls, not claimed
+passing results until the root's checked execution completes.
+
+The automatic first slice remains inside the original `f_pattern_sub` branch.
+It preserves its preceding predicate getter calls, whereas the manual consuming
+source screen decomposes before that predicate. Therefore the manual20.1% result
+is useful motivation, not an automatic-pass speed prediction.
+
+## Observation adapter and expected coverage
+
+`owned-decomposition-observe.mjs` authenticates the checked API, frozen source
+assembly, Base carrier and exact engine before calling the16 controls. Its
+inspection mode checks the three explicit frozen source files through `p86_plan`
+and calls `p173oa_inspect_request`; every admission and rewrite remains in Bend.
+It preserves the returned owner/row counts and complete bounded helper summaries,
+including refusals. Inspection clocks are diagnostic and do not include native
+machine construction or execution. The adapter was prepared without executing
+any target. A local Node syntax check was unavailable because `node` is absent;
+root's pinned Bun invocation remains the execution gate.
+
+Expected, still unmeasured admission:
+
+- `f_pattern_sub`: two changed KTerm/KLambda branches; literal variant uses the
+  old expression. Predicate getter calls stay. Other compatible compositions in
+  its reachable closure may appear and must be reported, not presumed.
+- `nq_layout_subst`: the principal `k_rebuild` call remains refused because it
+  has eight live arguments. This negative transfer is intentional in the first
+  two-argument-setter slice; no claim that seven syntactic replacement arguments
+  imply seven semantically changed fields.
+- Packet user program: one changed packet branch and the unchanged vacant
+  fallback, if its actual checked catalogue satisfies the ordinary Data gate.
+- File/IO compiler executable: whole-request foreign gate refuses all rewriting.
+
+On the selected prepared request, `p173od_pair` calls `nc_definition`, whose
+`NativeErasedBody` fact lookup returns the already erased body. It does not erase
+or compact helpers anew. Repeated work consists of indexed definition/fact
+lookups, the bounded structural summary and constructor-telescope validation.
+The main additional cost may instead be `p173oa_walk`: it visits each prepared
+body, builds result records and child lists even when no descendant changes,
+then returns the original term on zero hits. No elapsed attribution yet supports
+calling summary recomputation the bottleneck. Do not add a summary cache or
+broaden the pass before measuring admitted sites, complete lowering cost and
+actual ownership traffic on these first workloads.
+
 No production compiler or installed selection changes in this experiment.

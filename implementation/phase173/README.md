@@ -13,8 +13,9 @@ instead of retaining the old parent through getter/setter calls. Two workloads
 with one experimental compiler-function replacement run20.1% and20.8% faster
 under the same qualified producer. Full independent values match. In the first
 workload, allocations barely change; term drops fall90.7%. These are complete
-compiler computations, not a20% full self-build result. Automatic derivation of
-this transformation is now the next bounded implementation.
+compiler computations, not a20% full self-build result. Automatic derivation is now implemented and tested on two compiler computations
+and an unrelated packet workload. Full native self-compilation transfer is being
+measured; these local gains are not a cold-build gain.
 
 An exact indexed representation alone made the complete native test **2.003×
 slower**, despite passing independent full-value comparisons. Reducing its root
@@ -297,6 +298,64 @@ the existing checked QBE runtime contract as a possible way to avoid a redundant
 whole-request purity restriction; it does not authorize arbitrary foreign
 handlers or weakening runtime admission.
 
+## Automatic early ownership decomposition
+
+The experimental pass recognizes a verified getter/computation/rebuild chain
+from the actual erased helper bodies. It opens the owned parent before the
+recursive computation, preserves unchanged fields, calls the computation once,
+and constructs the result. Unknown variants retain the complete strict fallback.
+The wider extension handles multiple preserved getter arguments through the same
+one-replacement semantic plan. It introduces no runtime ABI, backend IR variant,
+or final-verifier exception. Its selected hook is QBE-specific; common preparation
+and JS/C paths remain unchanged.
+
+| Same workload and producer, four balanced native pairs | Baseline | Automatic | Ratio |
+|---|---:|---:|---:|
+| Pattern substitution, two-argument setter |104.575ms|93.018ms|0.889×|
+| Packet reconstruction, two-argument setter |66.256ms|34.263ms|0.517×|
+| Layout substitution, eight-argument rebuild |92.269ms|74.874ms|0.811×|
+| Packet reconstruction, five-argument rebuild |69.980ms|35.025ms|0.501×|
+
+Separate complete-value gates match independently evaluated upstream outputs;
+the timing digests do not replace those gates. The multi-argument version passes
+62 finite controls. An audit caught a disappearing eager getter evaluation before
+execution: every getter argument must now be a certified total projection or
+constant for the selected variant, including arguments ignored by the setter.
+The literal fallback still evaluates the original computed argument. These are
+checked implementations and finite controls, not a BendTT equivalence theorem.
+
+The diagnostic counters identify the removed work. Automatic pattern rewriting
+keeps allocation requests unchanged but reduces drops from761,264 to395,808;
+dispatch and frame counts are unchanged. Packet drops fall1,320,000→0 while
+allocation requests fall only2,580,261→2,570,261. This is primarily an ownership
+lifetime/reclamation improvement, not an allocation-count breakthrough.
+
+The first one-field hosted request comparison adds approximately1.07% total time
+and4.48% lowering/verification time on pattern substitution (two balanced samples
+per role). A zero-hit layout request adds about4.18% total in one observation,
+with byte-identical QBE. Those diagnostics expose analysis overhead; they are not
+native compiler timings. Later wider/QBE-scoped versions need their own full
+compiler measurements.
+
+A supported IO request executes an actually transformed Packet helper and retains
+an alias. Baseline, candidate and independent upstream execution produce the exact
+five-line trace. The earlier String IO fixture admits zero rows; it is scope
+coverage only. A proposed ordinary match on foreign Church-IO was rejected by
+source audit before execution and remains documented as a failed fixture.
+
+The full runtime-only overlay preserves every original compiler declaration,
+main and112 protected verifier/proof declarations. Its3,205,249-byte source was
+independently checked; the qualified compiler built the first experimental native
+image in201.615s with884.6MB peak guarded process-tree RSS. This is acquisition
+using old code generation, not a successor speedup or qualification result.
+N1 contains the new optimizer; N1→N2 changes code generation, so the meaningful
+fixed-point test is N2→N3 QBE agreement on identical source. The installed compiler
+remains unchanged pending those experiments and independent gates.
+
+See [the transformation](../../experiments/phase173/automatic-owned-decomposition.md),
+[wide-interface extension](../../experiments/phase173/owned-decomposition-multi.md)
+and [independent audit](../../experiments/phase173/owned-decomposition-multi-audit.md).
+
 ## Evidence and resources
 
 The [reproduction guide](reproduction.md) preserves measured module versions,
@@ -306,7 +365,11 @@ images or IR into Git.
 [Evidence checkpoint04](evidence04/REPRODUCE.md) adds 26 completed guarded runs,
 the failed eight-field structural gate, layout substitution, the unchanged
 verifier product, and neutral wide-record timing with actual event counts.
-It excludes the still-running automatic-pass investigation.
+It excludes the later automatic-pass investigation.
+
+[Evidence checkpoint05](evidence05/REPRODUCE.md) retains the one-field automatic
+pass, controls, complete independent values, native timing, event counts, hosted
+request overhead and supported IO gates, including five failed acquisitions.
 
 Exact current run locations are in
 [checkpoint.json](../../experiments/phase173/checkpoint.json). Native pairs:

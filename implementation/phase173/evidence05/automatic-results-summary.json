@@ -1,0 +1,550 @@
+{
+  "kind": "phase173-automatic-owned-decomposition-results",
+  "scope": "Frozen automatic06/07 experiments. Extracted-computation runtime and hosted request costs; no full compiler/native self-build or broad-suite qualification.",
+  "native": [
+    {
+      "name": "automatic-pattern-value-pair06",
+      "medians": {
+        "baseline": 0.003667537122964859,
+        "candidate": 0.003378561232239008
+      },
+      "rounds": 1,
+      "resolved": false,
+      "ratio": null,
+      "runtimeReductionFraction": null,
+      "outputsExact": true,
+      "scope": "Full values and IO below timing floor are correctness only. Four digest pairs establish local measurements, not a general compiler speed gain."
+    },
+    {
+      "name": "automatic-pattern-digest-pair06",
+      "medians": {
+        "baseline": 0.10457520838826895,
+        "candidate": 0.09301787056028843
+      },
+      "rounds": 4,
+      "resolved": true,
+      "ratio": 0.8894830045657648,
+      "runtimeReductionFraction": 0.11051699543423521,
+      "outputsExact": true,
+      "scope": "Full values and IO below timing floor are correctness only. Four digest pairs establish local measurements, not a general compiler speed gain."
+    },
+    {
+      "name": "automatic-packet-value-pair06",
+      "medians": {
+        "baseline": 0.0030362880788743496,
+        "candidate": 0.0026970920152962208
+      },
+      "rounds": 1,
+      "resolved": false,
+      "ratio": null,
+      "runtimeReductionFraction": null,
+      "outputsExact": true,
+      "scope": "Full values and IO below timing floor are correctness only. Four digest pairs establish local measurements, not a general compiler speed gain."
+    },
+    {
+      "name": "automatic-packet-digest-pair06",
+      "medians": {
+        "baseline": 0.06625635013915598,
+        "candidate": 0.03426299453713
+      },
+      "rounds": 4,
+      "resolved": true,
+      "ratio": 0.5171277087429142,
+      "runtimeReductionFraction": 0.48287229125708575,
+      "outputsExact": true,
+      "scope": "Full values and IO below timing floor are correctness only. Four digest pairs establish local measurements, not a general compiler speed gain."
+    },
+    {
+      "name": "owned-packet-io-pair07",
+      "medians": {
+        "baseline": 0.002856680192053318,
+        "candidate": 0.0028037461452186108
+      },
+      "rounds": 1,
+      "resolved": false,
+      "ratio": null,
+      "runtimeReductionFraction": null,
+      "outputsExact": true,
+      "scope": "Full values and IO below timing floor are correctness only. Four digest pairs establish local measurements, not a general compiler speed gain."
+    }
+  ],
+  "requests": [
+    {
+      "baseline": "request-pattern-base01",
+      "candidate": "request-pattern-auto01",
+      "sameSource": true,
+      "wallSeconds": {
+        "baseline": 11.319730961,
+        "candidate": 11.514441356999999,
+        "ratio": 1.0172009738279857
+      },
+      "stages": {
+        "loadSeconds": {
+          "baseline": 2.4526414480000005,
+          "candidate": 2.4331252119999998,
+          "ratio": 0.9920427684136566
+        },
+        "baseSeconds": {
+          "baseline": 0.886422837,
+          "candidate": 0.8069867330000002,
+          "ratio": 0.9103857654786485
+        },
+        "frontendSeconds": {
+          "baseline": 2.2334972090000007,
+          "candidate": 2.278799426,
+          "ratio": 1.0202830864607537
+        },
+        "lowerVerifySeconds": {
+          "baseline": 3.717145540999999,
+          "candidate": 3.925555258000001,
+          "ratio": 1.0560671393415322
+        },
+        "renderWriteSeconds": {
+          "baseline": 0.7614782529999993,
+          "candidate": 0.7715344779999996,
+          "ratio": 1.0132061880432983
+        }
+      },
+      "qbeBytes": {
+        "baseline": 436753,
+        "candidate": 446085
+      },
+      "byteIdenticalQbe": false,
+      "scope": "Six individual hosted requests, three baseline/candidate comparisons. Short repeated sample, no confidence interval; stage clocks do not include all wall-clock work."
+    },
+    {
+      "baseline": "request-pattern-base02",
+      "candidate": "request-pattern-auto02",
+      "sameSource": true,
+      "wallSeconds": {
+        "baseline": 11.468760734000002,
+        "candidate": 11.517188908,
+        "ratio": 1.0042226161242016
+      },
+      "stages": {
+        "loadSeconds": {
+          "baseline": 2.429102392,
+          "candidate": 2.429560547,
+          "ratio": 1.0001886108224622
+        },
+        "baseSeconds": {
+          "baseline": 0.826941206,
+          "candidate": 0.8006389690000001,
+          "ratio": 0.9681933409423065
+        },
+        "frontendSeconds": {
+          "baseline": 2.2812462630000003,
+          "candidate": 2.242980112,
+          "ratio": 0.9832257693434301
+        },
+        "lowerVerifySeconds": {
+          "baseline": 3.8260108390000003,
+          "candidate": 3.9556113129999995,
+          "ratio": 1.0338735250509308
+        },
+        "renderWriteSeconds": {
+          "baseline": 0.794782720000001,
+          "candidate": 0.7865115540000006,
+          "ratio": 0.9895931733392487
+        }
+      },
+      "qbeBytes": {
+        "baseline": 436753,
+        "candidate": 446085
+      },
+      "byteIdenticalQbe": false,
+      "scope": "Six individual hosted requests, three baseline/candidate comparisons. Short repeated sample, no confidence interval; stage clocks do not include all wall-clock work."
+    },
+    {
+      "baseline": "request-layout-base01",
+      "candidate": "request-layout-auto01",
+      "sameSource": true,
+      "wallSeconds": {
+        "baseline": 11.261669748,
+        "candidate": 11.732672269999998,
+        "ratio": 1.0418235068635044
+      },
+      "stages": {
+        "loadSeconds": {
+          "baseline": 2.4283727259999996,
+          "candidate": 2.4336812869999997,
+          "ratio": 1.0021860569191716
+        },
+        "baseSeconds": {
+          "baseline": 0.8051121539999999,
+          "candidate": 0.7965511940000001,
+          "ratio": 0.9893667485238338
+        },
+        "frontendSeconds": {
+          "baseline": 2.2367749019999996,
+          "candidate": 2.241325329,
+          "ratio": 1.0020343696613958
+        },
+        "lowerVerifySeconds": {
+          "baseline": 3.9240751040000004,
+          "candidate": 4.115713659000001,
+          "ratio": 1.0488366175266763
+        },
+        "renderWriteSeconds": {
+          "baseline": 0.6873972909999994,
+          "candidate": 0.8366429230000012,
+          "ratio": 1.21711699180962
+        }
+      },
+      "qbeBytes": {
+        "baseline": 519405,
+        "candidate": 519405
+      },
+      "byteIdenticalQbe": true,
+      "scope": "Six individual hosted requests, three baseline/candidate comparisons. Short repeated sample, no confidence interval; stage clocks do not include all wall-clock work."
+    }
+  ],
+  "events": [
+    {
+      "name": "pattern",
+      "baseline": "consuming-pattern-event-base-run01",
+      "candidate": "automatic-pattern-event06-run",
+      "outputExact": true,
+      "counts": {
+        "dispatches": {
+          "baseline": 1515860,
+          "candidate": 1515860,
+          "delta": 0,
+          "ratio": 1.0
+        },
+        "heap_alloc_calls": {
+          "baseline": 1386511,
+          "candidate": 1386511,
+          "delta": 0,
+          "ratio": 1.0
+        },
+        "heap_alloc_miss_calls": {
+          "baseline": 164,
+          "candidate": 121,
+          "delta": -43,
+          "ratio": 0.7378048780487805
+        },
+        "heap_free_calls": {
+          "baseline": 1386511,
+          "candidate": 1386511,
+          "delta": 0,
+          "ratio": 1.0
+        },
+        "heap_alloc_requested_words": {
+          "baseline": 2875367,
+          "candidate": 2875367,
+          "delta": 0,
+          "ratio": 1.0
+        },
+        "heap_free_words": {
+          "baseline": 2875367,
+          "candidate": 2875367,
+          "delta": 0,
+          "ratio": 1.0
+        },
+        "term_keep_calls": {
+          "baseline": 296024,
+          "candidate": 242576,
+          "delta": -53448,
+          "ratio": 0.8194470718590384
+        },
+        "term_sink_calls": {
+          "baseline": 786056,
+          "candidate": 584552,
+          "delta": -201504,
+          "ratio": 0.7436518517764638
+        },
+        "term_drop_calls": {
+          "baseline": 761264,
+          "candidate": 395808,
+          "delta": -365456,
+          "ratio": 0.5199352655583346
+        },
+        "ctr_take_calls": {
+          "baseline": 1275799,
+          "candidate": 1226447,
+          "delta": -49352,
+          "ratio": 0.9613167904975627
+        },
+        "frame_push_calls": {
+          "baseline": 65760,
+          "candidate": 65760,
+          "delta": 0,
+          "ratio": 1.0
+        },
+        "frame_capture_words": {
+          "baseline": 394560,
+          "candidate": 394560,
+          "delta": 0,
+          "ratio": 1.0
+        },
+        "return_calls": {
+          "baseline": 691865,
+          "candidate": 691865,
+          "delta": 0,
+          "ratio": 1.0
+        },
+        "primitive_calls": {
+          "baseline": 0,
+          "candidate": 0,
+          "delta": 0,
+          "ratio": null
+        },
+        "register_words_copy_requested": {
+          "baseline": 2574204,
+          "candidate": 2574204,
+          "delta": 0,
+          "ratio": 1.0
+        },
+        "register_words_clear_requested": {
+          "baseline": 0,
+          "candidate": 0,
+          "delta": 0,
+          "ratio": null
+        }
+      },
+      "scope": "Instrumented logical event counts, not allocator bytes or clean timing. Pattern baseline was pinned from the earlier completed campaign."
+    },
+    {
+      "name": "packet",
+      "baseline": "automatic-packet-event-base06-run",
+      "candidate": "automatic-packet-event-cand06-run",
+      "outputExact": true,
+      "counts": {
+        "dispatches": {
+          "baseline": 12,
+          "candidate": 12,
+          "delta": 0,
+          "ratio": 1.0
+        },
+        "heap_alloc_calls": {
+          "baseline": 2580261,
+          "candidate": 2570261,
+          "delta": -10000,
+          "ratio": 0.9961244230719295
+        },
+        "heap_alloc_miss_calls": {
+          "baseline": 3,
+          "candidate": 3,
+          "delta": 0,
+          "ratio": 1.0
+        },
+        "heap_free_calls": {
+          "baseline": 2580261,
+          "candidate": 2570261,
+          "delta": -10000,
+          "ratio": 0.9961244230719295
+        },
+        "heap_alloc_requested_words": {
+          "baseline": 3890394,
+          "candidate": 3880394,
+          "delta": -10000,
+          "ratio": 0.9974295662598698
+        },
+        "heap_free_words": {
+          "baseline": 3890394,
+          "candidate": 3880394,
+          "delta": -10000,
+          "ratio": 0.9974295662598698
+        },
+        "term_keep_calls": {
+          "baseline": 10000,
+          "candidate": 0,
+          "delta": -10000,
+          "ratio": 0.0
+        },
+        "term_sink_calls": {
+          "baseline": 30001,
+          "candidate": 1,
+          "delta": -30000,
+          "ratio": 3.333222225925803e-05
+        },
+        "term_drop_calls": {
+          "baseline": 1320000,
+          "candidate": 0,
+          "delta": -1320000,
+          "ratio": 0.0
+        },
+        "ctr_take_calls": {
+          "baseline": 1300132,
+          "candidate": 1290132,
+          "delta": -10000,
+          "ratio": 0.9923084732934809
+        },
+        "frame_push_calls": {
+          "baseline": 0,
+          "candidate": 0,
+          "delta": 0,
+          "ratio": null
+        },
+        "frame_capture_words": {
+          "baseline": 0,
+          "candidate": 0,
+          "delta": 0,
+          "ratio": null
+        },
+        "return_calls": {
+          "baseline": 5,
+          "candidate": 5,
+          "delta": 0,
+          "ratio": 1.0
+        },
+        "primitive_calls": {
+          "baseline": 1,
+          "candidate": 1,
+          "delta": 0,
+          "ratio": 1.0
+        },
+        "register_words_copy_requested": {
+          "baseline": 11,
+          "candidate": 11,
+          "delta": 0,
+          "ratio": 1.0
+        },
+        "register_words_clear_requested": {
+          "baseline": 0,
+          "candidate": 0,
+          "delta": 0,
+          "ratio": null
+        }
+      },
+      "scope": "Instrumented logical event counts, not allocator bytes or clean timing. Pattern baseline was pinned from the earlier completed campaign."
+    }
+  ],
+  "admission": [
+    {
+      "name": "owned-decomposition-observe06",
+      "controls": {
+        "total": 16,
+        "passed": 16,
+        "failed": 0
+      },
+      "scope": "Checked Bend finite controls and semantic-plan admission diagnostics. No host optimization, native execution, full request timing, or production qualification.",
+      "workloads": [
+        {
+          "name": "pattern",
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/pattern-digest-source01/compiler.bend",
+            "bytes": 11939,
+            "sha256": "1a4dc0ef5495dabf134c76272df1839a10f58de4d3017add0faef9cf351d5242"
+          },
+          "checkedTag": "P86PlanReady",
+          "scope": "scope:pure",
+          "owners": [
+            {
+              "owner": "f_pattern_sub",
+              "rows": 2
+            }
+          ],
+          "transformedRows": 2
+        },
+        {
+          "name": "layout",
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/layout-digest-source01/compiler.bend",
+            "bytes": 11872,
+            "sha256": "cea5efc0ad911ea0a848ed06c1b431b31cfea0a804d52d99a19c9b6794797cf7"
+          },
+          "checkedTag": "P86PlanReady",
+          "scope": "scope:pure",
+          "owners": [],
+          "transformedRows": 0
+        },
+        {
+          "name": "user",
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-packet-source01/digest.bend",
+            "bytes": 2434,
+            "sha256": "7e300342bdf8a69508cf84ffb9ac4f3933a7018487493c407aa13e35c8ffffc6"
+          },
+          "checkedTag": "P86PlanReady",
+          "scope": "scope:pure",
+          "owners": [
+            {
+              "owner": "p173odw_change",
+              "rows": 1
+            }
+          ],
+          "transformedRows": 1
+        }
+      ]
+    },
+    {
+      "name": "owned-decomposition-qbe-observe07",
+      "controls": {
+        "total": 32,
+        "passed": 32,
+        "failed": 0
+      },
+      "scope": "Checked Bend finite controls and QBE permission/owner census for one frozen source. No host optimization, native execution, full request timing, or production qualification.",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-io-source08/compiler.bend",
+        "bytes": 1718,
+        "sha256": "66c4500c9c79ab456e2a1a9cd755cf406724d643edbcda1da0d7e99ab7bfdd1e"
+      },
+      "checkedTag": "P86PlanReady",
+      "runtimeAdmitted": true,
+      "observerCertificate": true,
+      "scopeAdmitted": true,
+      "owners": [],
+      "transformedRows": 0
+    },
+    {
+      "name": "owned-packet-io-observe07",
+      "controls": {
+        "total": 32,
+        "passed": 32,
+        "failed": 0
+      },
+      "scope": "Checked Bend finite controls and QBE permission/owner census for one frozen source. No host optimization, native execution, full request timing, or production qualification.",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-packet-io-source07/compiler.bend",
+        "bytes": 2606,
+        "sha256": "f70902635b4dc5f2892ccea8f679a90bb91c482614371deabd6a37a67e0a5f1a"
+      },
+      "checkedTag": "P86PlanReady",
+      "runtimeAdmitted": true,
+      "observerCertificate": true,
+      "scopeAdmitted": true,
+      "owners": [
+        {
+          "owner": "p173odw_change",
+          "rows": 1
+        }
+      ],
+      "transformedRows": 1
+    }
+  ],
+  "failures": [
+    {
+      "name": "owned-decomposition-api02",
+      "error": "Error: Checked acquisition failed; inspect captured diagnostics\n    at requireThat (/home/ai/bend2/build/publish/bend/selfhost/tools/build/hosted.mjs:12:60)\n    at acquire (/home/ai/bend2/build/publish/bend/selfhost/tools/build/hosted.mjs:133:5)\n    at /home/ai/bend2/build/publish/bend/selfhost/tools/build/hosted.mjs:150:114",
+      "diagnostic": "receipts/owned-decomposition-api02/stderr",
+      "scope": "Terminal failed acquisition or annotation oracle, retained; not a running or omitted success."
+    },
+    {
+      "name": "owned-decomposition-api03",
+      "error": "Error: Checked acquisition failed; inspect captured diagnostics\n    at requireThat (/home/ai/bend2/build/publish/bend/selfhost/tools/build/hosted.mjs:12:60)\n    at acquire (/home/ai/bend2/build/publish/bend/selfhost/tools/build/hosted.mjs:133:5)\n    at /home/ai/bend2/build/publish/bend/selfhost/tools/build/hosted.mjs:150:114",
+      "diagnostic": "receipts/owned-decomposition-api03/stderr",
+      "scope": "Terminal failed acquisition or annotation oracle, retained; not a running or omitted success."
+    },
+    {
+      "name": "owned-decomposition-api04",
+      "error": "Error: Checked acquisition failed; inspect captured diagnostics\n    at requireThat (/home/ai/bend2/build/publish/bend/selfhost/tools/build/hosted.mjs:12:60)\n    at acquire (/home/ai/bend2/build/publish/bend/selfhost/tools/build/hosted.mjs:133:5)\n    at /home/ai/bend2/build/publish/bend/selfhost/tools/build/hosted.mjs:150:114",
+      "diagnostic": "receipts/owned-decomposition-api04/stderr",
+      "scope": "Terminal failed acquisition or annotation oracle, retained; not a running or omitted success."
+    },
+    {
+      "name": "owned-decomposition-api05",
+      "error": "Error: Checked acquisition failed; inspect captured diagnostics\n    at requireThat (/home/ai/bend2/build/publish/bend/selfhost/tools/build/hosted.mjs:12:60)\n    at acquire (/home/ai/bend2/build/publish/bend/selfhost/tools/build/hosted.mjs:133:5)\n    at /home/ai/bend2/build/publish/bend/selfhost/tools/build/hosted.mjs:150:114",
+      "diagnostic": "receipts/owned-decomposition-api05/stderr",
+      "scope": "Terminal failed acquisition or annotation oracle, retained; not a running or omitted success."
+    },
+    {
+      "name": "owned-io-oracle07",
+      "error": "Upstream IO execution failed",
+      "diagnostic": "receipts/owned-io-oracle07/stderr",
+      "scope": "Terminal failed acquisition or annotation oracle, retained; not a running or omitted success."
+    }
+  ]
+}

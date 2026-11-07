@@ -330,3 +330,25 @@ complete-value observations plus three refusal controls in 1.199 seconds. This
 establishes the first source/finite gate only. It is neither native performance
 evidence nor evidence that the Store boxes disappeared. Revision 2's payload
 quantity correction still requires its own source/admission gate.
+
+### Revision 2 machine-shape gate: incomplete elimination
+
+The parent subsequently checked revision 2, passed the 29 finite controls and
+101 actual complete-value controls, and emitted
+`selfhost/build/phase173/store-wide8-emission02/program.ssa`. Static inspection
+is preserved in [`wide-return-qbe-gate.json`](wide-return-qbe-gate.json).
+
+The eight-result ABI itself works: the flat pack helper writes offsets 0 through
+56 and contains no calls; the flat node/edge getters have no local Store
+constructor/take. However, this does **not** compose through the complete
+consumer. The compaction SCC still contains 11 Store7 construction sites and 15
+seven-field take sites, along with boxed edge/emission helper calls. Its QBE text
+is 575,177 bytes and carries 22 state lanes. Import, export and reference SCCs
+likewise retain Store construction/take pairs. These are static site counts,
+not measured dynamic frequencies.
+
+The shape gate therefore fails. Do not pay for a native build merely to assume
+that eight result lanes remove the entire category of work. The generic pack
+helper is not the obstruction; other call/let boundaries still materialize the
+source-level Store reconstruction. This is evidence that a nominally flat return
+contract alone is insufficient, not evidence of runtime speedup or regression.

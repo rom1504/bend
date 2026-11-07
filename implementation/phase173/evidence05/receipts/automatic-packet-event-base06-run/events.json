@@ -1,0 +1,23 @@
+{
+"schema":"bend-native-dispatch-events-v1",
+"complete":true,"segment_count":22,"runtime_segment_count":4,"unknown_fid":4294967295,
+"context_kind":"active-dispatch-not-logical-ancestry",
+"global_context_scope":"one-active-dispatch-thread-only",
+"counts_enabled":true,"counter_bytes":3456,"counter_overflow":false,"invalid_context_events":0,
+"counter_names":["dispatches","heap_alloc_calls","heap_alloc_miss_calls","heap_free_calls","heap_alloc_requested_words","heap_free_words","term_keep_calls","term_sink_calls","term_drop_calls","ctr_take_calls","frame_push_calls","frame_capture_words","return_calls","primitive_calls","register_words_copy_requested","register_words_clear_requested"],
+"rows":[
+{"fid":0,"segment_address":"0x4057c0","counts":[1,260,2,0,392,0,0,0,0,0,0,0,0,0,2,0]},
+{"fid":1,"segment_address":"0x405830","counts":[1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0]},
+{"fid":3,"segment_address":"0x4058d0","counts":[1,2580000,0,2580000,3890000,3890000,10000,30000,1320000,1300000,0,0,1,0,1,0]},
+{"fid":6,"segment_address":"0x4059c0","counts":[1,0,0,1,0,4,0,0,0,1,0,0,0,0,1,0]},
+{"fid":7,"segment_address":"0x405af0","counts":[1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0]},
+{"fid":8,"segment_address":"0x405bc0","counts":[1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0]},
+{"fid":9,"segment_address":"0x405c60","counts":[1,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0]},
+{"fid":13,"segment_address":"0x405dc0","counts":[2,0,0,257,0,385,0,0,0,130,0,0,2,0,2,0]},
+{"fid":18,"segment_address":"0x406050","counts":[1,0,0,2,0,3,0,1,0,1,0,0,1,0,1,0]},
+{"fid":24,"segment_address":"0x0","counts":[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]},
+{"fid":25,"segment_address":"0x0","counts":[1,0,0,1,0,2,0,0,0,0,0,0,0,0,0,0]},
+{"fid":4294967295,"segment_address":"0x0","counts":[0,1,1,0,2,0,0,0,0,0,0,0,0,0,0,0]}
+],
+"limitations":["Counts are diagnostic runtime events; generated inline operations may bypass them.","heap_alloc_miss is a lane refill and may reuse memory; it is not fresh allocation.","Ownership counts identify execution sites, not allocation origins or logical ancestors.","term_drop_calls counts entries, not traversed nodes; heap_free_calls counts reclamation calls.","Private synchronous calls retain their outer dispatch ID.","Counters change execution cost; use an uninstrumented executable for performance claims.","Completion does not establish target program correctness."]
+}

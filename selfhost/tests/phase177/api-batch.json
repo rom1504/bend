@@ -1,0 +1,235 @@
+{
+  "kind": "phase176-independent-jobs",
+  "version": 1,
+  "inputs": [],
+  "jobs": [
+    {
+      "id": "front-base",
+      "seconds": 90,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase177/front-base-source01/compiler.bend",
+        "--exports",
+        "selfhost/build/phase177/front-base-source01/exports.json",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase66",
+        "--engine",
+        "selfhost/.assets/bin/bun",
+        "--out",
+        "{out}"
+      ]
+    },
+    {
+      "id": "front-fresh",
+      "seconds": 90,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase177/front-fresh-source01/compiler.bend",
+        "--exports",
+        "selfhost/build/phase177/front-fresh-source01/exports.json",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase66",
+        "--engine",
+        "selfhost/.assets/bin/bun",
+        "--out",
+        "{out}"
+      ]
+    },
+    {
+      "id": "front-remove",
+      "seconds": 90,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase177/front-remove-source01/compiler.bend",
+        "--exports",
+        "selfhost/build/phase177/front-remove-source01/exports.json",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase66",
+        "--engine",
+        "selfhost/.assets/bin/bun",
+        "--out",
+        "{out}"
+      ]
+    },
+    {
+      "id": "subst-base-control",
+      "seconds": 90,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase177/subst-base-control-source01/compiler.bend",
+        "--exports",
+        "selfhost/build/phase177/subst-base-control-source01/exports.json",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase66",
+        "--engine",
+        "selfhost/.assets/bin/bun",
+        "--out",
+        "{out}"
+      ]
+    },
+    {
+      "id": "subst-candidate-control",
+      "seconds": 90,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase177/subst-candidate-control-source01/compiler.bend",
+        "--exports",
+        "selfhost/build/phase177/subst-candidate-control-source01/exports.json",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase66",
+        "--engine",
+        "selfhost/.assets/bin/bun",
+        "--out",
+        "{out}"
+      ]
+    },
+    {
+      "id": "fresh-base-control",
+      "seconds": 90,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase177/fresh-base-control-source01/compiler.bend",
+        "--exports",
+        "selfhost/build/phase177/fresh-base-control-source01/exports.json",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase66",
+        "--engine",
+        "selfhost/.assets/bin/bun",
+        "--out",
+        "{out}"
+      ]
+    },
+    {
+      "id": "fresh-candidate-control",
+      "seconds": 90,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase177/fresh-candidate-control-source01/compiler.bend",
+        "--exports",
+        "selfhost/build/phase177/fresh-candidate-control-source01/exports.json",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase66",
+        "--engine",
+        "selfhost/.assets/bin/bun",
+        "--out",
+        "{out}"
+      ]
+    },
+    {
+      "id": "remove-base-control",
+      "seconds": 60,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase177/remove-base-control-source01/compiler.bend",
+        "--exports",
+        "selfhost/build/phase177/remove-base-control-source01/exports.json",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase66",
+        "--engine",
+        "selfhost/.assets/bin/bun",
+        "--out",
+        "{out}"
+      ]
+    },
+    {
+      "id": "remove-candidate-control",
+      "seconds": 60,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase177/remove-candidate-control-source01/compiler.bend",
+        "--exports",
+        "selfhost/build/phase177/remove-candidate-control-source01/exports.json",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase66",
+        "--engine",
+        "selfhost/.assets/bin/bun",
+        "--out",
+        "{out}"
+      ]
+    },
+    {
+      "id": "front-reach",
+      "seconds": 90,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase177/front-reach-source01/compiler.bend",
+        "--exports",
+        "selfhost/build/phase177/front-reach-source01/exports.json",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase66",
+        "--engine",
+        "selfhost/.assets/bin/bun",
+        "--out",
+        "{out}"
+      ]
+    },
+    {
+      "id": "reach-base-control",
+      "seconds": 90,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase177/reach-base-control-source01/compiler.bend",
+        "--exports",
+        "selfhost/build/phase177/reach-base-control-source01/exports.json",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase66",
+        "--engine",
+        "selfhost/.assets/bin/bun",
+        "--out",
+        "{out}"
+      ]
+    },
+    {
+      "id": "reach-candidate-control",
+      "seconds": 90,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase177/reach-candidate-control-source01/compiler.bend",
+        "--exports",
+        "selfhost/build/phase177/reach-candidate-control-source01/exports.json",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase66",
+        "--engine",
+        "selfhost/.assets/bin/bun",
+        "--out",
+        "{out}"
+      ]
+    }
+  ]
+}

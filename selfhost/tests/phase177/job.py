@@ -2,6 +2,7 @@
 """Run one bounded Phase177 job, recording failures and retention closure."""
 from pathlib import Path
 import argparse
+import json
 import subprocess
 import sys
 
@@ -42,6 +43,12 @@ print('job', a.name, 'exit', result.returncode, flush=True)
 if result.returncode:
     diagnostics = [out / 'stderr', out / 'compiler.stderr', out / 'qbe.stderr', guard / 'stderr.log']
     printed = False
+    report = out / 'report.json'
+    if report.exists():
+        detail = json.loads(report.read_text()).get('error')
+        if detail:
+            print(str(detail)[:2500], flush=True)
+            printed = True
     for file in diagnostics:
         if file.exists() and file.stat().st_size:
             print(str(file), file.read_text()[-3500:], flush=True)

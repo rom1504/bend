@@ -1,0 +1,45 @@
+{
+  "kind": "phase176-independent-jobs",
+  "version": 1,
+  "inputs": [],
+  "jobs": [
+    {
+      "id": "front-matsingle",
+      "seconds": 90,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase177/front-matsingle-source01/compiler.bend",
+        "--exports",
+        "selfhost/build/phase177/front-matsingle-source01/exports.json",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase66",
+        "--engine",
+        "selfhost/.assets/bin/bun",
+        "--out",
+        "{out}"
+      ]
+    },
+    {
+      "id": "matsingle-candidate-control",
+      "seconds": 90,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase177/matsingle-candidate-control-source01/compiler.bend",
+        "--exports",
+        "selfhost/build/phase177/matsingle-candidate-control-source01/exports.json",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase66",
+        "--engine",
+        "selfhost/.assets/bin/bun",
+        "--out",
+        "{out}"
+      ]
+    }
+  ]
+}

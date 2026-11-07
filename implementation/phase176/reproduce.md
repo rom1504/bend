@@ -37,7 +37,9 @@ runner for new work. The first interrupted threaded runner was not retained.
 ## Native traversal experiment
 
 The exact small workload source snapshots and full command receipts are retained
-under `evidence/`. To regenerate the single-loop source from maintained Bend:
+as `implementation/phase176/evidence/` members of `evidence.tar.gz`. Restore with
+`tar -xzf implementation/phase176/evidence.tar.gz -C .` at the repository root.
+To regenerate the single-loop source from maintained Bend:
 
 ```sh
 python3 -B selfhost/tests/phase176/prepare.py \
@@ -112,10 +114,12 @@ and the prepared-Base binding. Do not edit an old receipt to make it pass.
 
 ## Evidence and storage
 
-`metrics.py` reads finished runs only. `retain.py` preserves exact reports, logs
-and small source snapshots; gzip files decompress normally. Large metadata source
+`metrics.py` reads finished runs only. `retain.py` captured exact reports, logs
+and small source snapshots before sealing; the final byte-verified tar archive
+replaces the loose capture at HEAD. Nested gzip files decompress normally. Large metadata source
 manifests retain explicitly derived selected-declaration provenance summaries.
-`evidence-index.json` distinguishes original hashes from retained hashes and marks
+`evidence-index.json` records the archive hash, raw-evidence commit, restore command,
+distinguishes original hashes from retained hashes and marks
 `exact=false` for those summaries. Original source manifests remain local. No
 whole compiler source, API, native image or machine product is duplicated here.
 

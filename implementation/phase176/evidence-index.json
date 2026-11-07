@@ -6041,5 +6041,13 @@
       "storedBytes": 11330
     }
   ],
-  "scope": "Reports, logs and small source snapshots are exact. Large metadata source manifests explicitly retain derived selected-declaration provenance summaries, with original hashes and exact=false. Images, QBE, assembly, hosted APIs and large input sources use retained build assets and recorded reconstruction commands."
+  "scope": "Reports, logs and small source snapshots are exact. Large metadata source manifests explicitly retain derived selected-declaration provenance summaries, with original hashes and exact=false. Images, QBE, assembly, hosted APIs and large input sources use retained build assets and recorded reconstruction commands. Retained paths are archive members; restore the verified tar.gz at repository root to inspect them, or read them at verifiedAgainstCommit.",
+  "archive": {
+    "file": "implementation/phase176/evidence.tar.gz",
+    "bytes": 670634,
+    "sha256": "c205040cfdd6bc5393b80cd025aa16937e829a3fee06217e9ed921618f4c152e",
+    "files": 549,
+    "verifiedAgainstCommit": "aa661d5a12168bb1f2862da6b16114a897e0668c",
+    "restore": "tar -xzf implementation/phase176/evidence.tar.gz -C ."
+  }
 }

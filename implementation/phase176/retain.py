@@ -8,6 +8,8 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2]
 BUILD=ROOT/'selfhost/build/phase176'
 OUT=Path(__file__).resolve().parent
+if (OUT/'evidence.tar.gz').exists():
+    raise SystemExit('Evidence is sealed. Restore the verified archive for inspection; do not recapture over this report.')
 (OUT/'evidence').mkdir(exist_ok=True)
 rows=[]
 for path in sorted(BUILD.rglob('*')):

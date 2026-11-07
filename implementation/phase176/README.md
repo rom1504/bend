@@ -140,6 +140,9 @@ future small source manifests retain only relevant parent source-map entries:
 This is experimental metadata reduction, **not** emitted compiler IR reduction.
 Retained large source manifests are explicitly labeled derived provenance
 summaries; measured reports/logs and small source snapshots remain exact.
+The 549 retained evidence members are packed into a byte-verified 671KB archive,
+so they do not add hundreds of loose files to the working tree. The index records
+the original commit, member paths, hashes and restoration command.
 
 ## Recommendation
 

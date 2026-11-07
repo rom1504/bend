@@ -1,0 +1,913 @@
+{
+  "kind": "phase174-durable-retired-intermediate-storage-proposal-v1",
+  "complete": true,
+  "targetsRun": false,
+  "archivesCreated": 0,
+  "filesDeleted": 0,
+  "head": "c1af28f5b3862b3c638b830349b5f71e4130a482",
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/experiments/phase169/archive-selected-v02.py",
+    "bytes": 6877,
+    "sha256": "f1b5463bbdfa2e1d650da65d896da8268d89de1b8e58f7d7a0a34a68b36a79b9"
+  },
+  "archiveVerifier": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/archive-v02.py",
+    "bytes": 18412,
+    "sha256": "3238e0774c6c21c3de6c07bcbd71e469cbb23aaba01f99da0cb1e9f51990ad9f"
+  },
+  "archiveBudgetPerRootBytes": 20971520,
+  "requiredReserveBytes": 5368709120,
+  "maxSelectedMemberBytes": 134217728,
+  "roots": [
+    {
+      "name": "p174-retired-p147-profile-prep01-ir",
+      "root": "selfhost/build/phase147/profile-prep01/inputs",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-prep01/ready.json",
+        "bytes": 3404,
+        "sha256": "6ba25919d22d3b59790856242193211fc3f0b8fc52cc2910d84da4829cb28d7b"
+      },
+      "guards": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-build01-guard/process.json",
+          "bytes": 2071,
+          "sha256": "c582e6c0bc221fe8551c6e8e209050b542d2ae7573c3295beead5fb61fad7fb1"
+        }
+      ],
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase147/profile-prep01/inputs/program.ssa",
+          "bytes": 117232528,
+          "sha256": "dceae94a7659ad1ff58395ed34914971422ff9e5841668e910cd95e6b0914010",
+          "metadata": {
+            "device": 2306,
+            "inode": 79458566,
+            "size": 117232528,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1793513370618586176,
+            "ctimeNs": 1793513370618586176,
+            "allocatedBytes": 117239808
+          }
+        }
+      ],
+      "allocatedBytes": 117239808,
+      "stage": 1,
+      "captureAdapter": "existing-phase169",
+      "status": "Retired generated bulk only. Preserve all executables, source/runtime, profile objects, owner maps, raw samples, receipts and unlisted files. Future input-authenticating replay requires exact restore.",
+      "preparationEvidence": {
+        "ready": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-prep01/ready.json",
+          "bytes": 3404,
+          "sha256": "6ba25919d22d3b59790856242193211fc3f0b8fc52cc2910d84da4829cb28d7b"
+        },
+        "copiedImageBuild": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-prep01/inputs/image-build.json",
+          "bytes": 14680,
+          "sha256": "d5f0ef401346f78f18ec3d9692e18d098b0b5efab2312084977f94004cf9bea3"
+        },
+        "historicalSelectedImage": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/bend",
+          "bytes": 19100528,
+          "sha256": "367b639915c0bbc8906fc5827b002ca2c7fc07acc238034e54be994f8833d251"
+        },
+        "guardScope": "Successful completed consumer of the prepared immutable copy. This is not a claimed guard around the metadata-copy step; ready.json authenticates the copied SSA.",
+        "targetsRunDuringPreparation": false
+      },
+      "existingArchiveCandidates": [
+        {
+          "file": "selfhost/build/phase147/profile-prep01/inputs/program.ssa",
+          "originalReceipt": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase169/fresh03-p147-cold-baseline01/receipt.json",
+            "bytes": 1682,
+            "sha256": "b733eba08b8dd20794eef3858fd7db7053267dd95bdf6813522d8bbd9f47c674"
+          },
+          "member": "program.ssa",
+          "status": "Current digest matches receipt only; requires independent archive/member verification. Do not silently rebase rawRoot."
+        }
+      ],
+      "captureCommand": [
+        "python3",
+        "-B",
+        "experiments/phase169/archive-selected-v02.py",
+        "--proposal",
+        "experiments/phase174/storage-proposal01.json",
+        "--name",
+        "p174-retired-p147-profile-prep01-ir",
+        "--out",
+        "selfhost/build-retention/phase169/p174-retired-p147-profile-prep01-ir"
+      ],
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase169/p174-retired-p147-profile-prep01-ir/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/p174-retired-p147-profile-prep01-ir/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase169/p174-retired-p147-profile-prep01-ir/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/p174-retired-p147-profile-prep01-ir/restored"
+      ]
+    },
+    {
+      "name": "p174-retired-p147-profile-prep02-ir",
+      "root": "selfhost/build/phase147/profile-prep02/inputs",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-prep02/ready.json",
+        "bytes": 3404,
+        "sha256": "611dbb29a5915acf45e1e7c5fc8925beab37392ad82aebd3651f572688430d77"
+      },
+      "guards": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-build02-guard/process.json",
+          "bytes": 2073,
+          "sha256": "97a917e1c2b4f6cbbc5573619551328b3f20a21fd7f61f1cb876b42862ea325a"
+        }
+      ],
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase147/profile-prep02/inputs/program.ssa",
+          "bytes": 117232528,
+          "sha256": "dceae94a7659ad1ff58395ed34914971422ff9e5841668e910cd95e6b0914010",
+          "metadata": {
+            "device": 2306,
+            "inode": 79460174,
+            "size": 117232528,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1793513631306618343,
+            "ctimeNs": 1793513631306618343,
+            "allocatedBytes": 117239808
+          }
+        }
+      ],
+      "allocatedBytes": 117239808,
+      "stage": 1,
+      "captureAdapter": "existing-phase169",
+      "status": "Retired generated bulk only. Preserve all executables, source/runtime, profile objects, owner maps, raw samples, receipts and unlisted files. Future input-authenticating replay requires exact restore.",
+      "preparationEvidence": {
+        "ready": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-prep02/ready.json",
+          "bytes": 3404,
+          "sha256": "611dbb29a5915acf45e1e7c5fc8925beab37392ad82aebd3651f572688430d77"
+        },
+        "copiedImageBuild": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-prep02/inputs/image-build.json",
+          "bytes": 14680,
+          "sha256": "d5f0ef401346f78f18ec3d9692e18d098b0b5efab2312084977f94004cf9bea3"
+        },
+        "historicalSelectedImage": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/bend",
+          "bytes": 19100528,
+          "sha256": "367b639915c0bbc8906fc5827b002ca2c7fc07acc238034e54be994f8833d251"
+        },
+        "guardScope": "Successful completed consumer of the prepared immutable copy. This is not a claimed guard around the metadata-copy step; ready.json authenticates the copied SSA.",
+        "targetsRunDuringPreparation": false
+      },
+      "existingArchiveCandidates": [
+        {
+          "file": "selfhost/build/phase147/profile-prep02/inputs/program.ssa",
+          "originalReceipt": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase169/fresh03-p147-cold-baseline01/receipt.json",
+            "bytes": 1682,
+            "sha256": "b733eba08b8dd20794eef3858fd7db7053267dd95bdf6813522d8bbd9f47c674"
+          },
+          "member": "program.ssa",
+          "status": "Current digest matches receipt only; requires independent archive/member verification. Do not silently rebase rawRoot."
+        }
+      ],
+      "captureCommand": [
+        "python3",
+        "-B",
+        "experiments/phase169/archive-selected-v02.py",
+        "--proposal",
+        "experiments/phase174/storage-proposal01.json",
+        "--name",
+        "p174-retired-p147-profile-prep02-ir",
+        "--out",
+        "selfhost/build-retention/phase169/p174-retired-p147-profile-prep02-ir"
+      ],
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase169/p174-retired-p147-profile-prep02-ir/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/p174-retired-p147-profile-prep02-ir/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase169/p174-retired-p147-profile-prep02-ir/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/p174-retired-p147-profile-prep02-ir/restored"
+      ]
+    },
+    {
+      "name": "p174-retired-p147-profile-candidate-prep01-ir",
+      "root": "selfhost/build/phase147/profile-candidate-prep01/inputs",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-candidate-prep01/ready.json",
+        "bytes": 5470,
+        "sha256": "c1560168af096b289e2ef3204fe5652f2e943132d41ccb1e68f6b1c246c72949"
+      },
+      "guards": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-candidate-build01-guard/process.json",
+          "bytes": 2191,
+          "sha256": "7025066c122fb2bc12e8344c684d59522b4cb15d83490cf10ef53983296dc379"
+        }
+      ],
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase147/profile-candidate-prep01/inputs/program.ssa",
+          "bytes": 119081603,
+          "sha256": "2c468b86fbcbdbddef86bf8705ffe6dfb90fb610c5e40e2adad257185d17c162",
+          "metadata": {
+            "device": 2306,
+            "inode": 79465905,
+            "size": 119081603,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1793515634313899153,
+            "ctimeNs": 1793515634313899153,
+            "allocatedBytes": 119087104
+          }
+        }
+      ],
+      "allocatedBytes": 119087104,
+      "stage": 1,
+      "captureAdapter": "existing-phase169",
+      "status": "Retired generated bulk only. Preserve all executables, source/runtime, profile objects, owner maps, raw samples, receipts and unlisted files. Future input-authenticating replay requires exact restore.",
+      "preparationEvidence": {
+        "ready": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-candidate-prep01/ready.json",
+          "bytes": 5470,
+          "sha256": "c1560168af096b289e2ef3204fe5652f2e943132d41ccb1e68f6b1c246c72949"
+        },
+        "copiedImageBuild": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-candidate-prep01/inputs/image-build.json",
+          "bytes": 17086,
+          "sha256": "a122fc5f3964a192f8f6e1d0e43a3d46bf38f4703487db3093a792c26f86e380"
+        },
+        "historicalSelectedImage": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-plan04/image/program",
+          "bytes": 19428912,
+          "sha256": "4a925b352c8d747600bd62aa5691e7b0b52dfd372b2a9f796dcc6344382c3042"
+        },
+        "guardScope": "Successful completed consumer of the prepared immutable copy. This is not a claimed guard around the metadata-copy step; ready.json authenticates the copied SSA.",
+        "targetsRunDuringPreparation": false
+      },
+      "existingArchiveCandidates": [
+        {
+          "file": "selfhost/build/phase147/profile-candidate-prep01/inputs/program.ssa",
+          "originalReceipt": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase169/fresh03-p147-integrated-plan04-image/receipt.json",
+            "bytes": 1704,
+            "sha256": "eb677db66fb2d97348ad3e36d44bb0721ae546cf1afa28fa924f81107fed7abe"
+          },
+          "member": "program.ssa",
+          "status": "Current digest matches receipt only; requires independent archive/member verification. Do not silently rebase rawRoot."
+        }
+      ],
+      "captureCommand": [
+        "python3",
+        "-B",
+        "experiments/phase169/archive-selected-v02.py",
+        "--proposal",
+        "experiments/phase174/storage-proposal01.json",
+        "--name",
+        "p174-retired-p147-profile-candidate-prep01-ir",
+        "--out",
+        "selfhost/build-retention/phase169/p174-retired-p147-profile-candidate-prep01-ir"
+      ],
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase169/p174-retired-p147-profile-candidate-prep01-ir/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/p174-retired-p147-profile-candidate-prep01-ir/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase169/p174-retired-p147-profile-candidate-prep01-ir/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/p174-retired-p147-profile-candidate-prep01-ir/restored"
+      ]
+    },
+    {
+      "name": "p174-retired-p147-profile-final-prep01-ir",
+      "root": "selfhost/build/phase147/profile-final-prep01/inputs",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-prep01/ready.json",
+        "bytes": 5410,
+        "sha256": "21dd3f0db1affb345f2e3cef6d8d5a0695f1ac21776891b0d38878249e201b96"
+      },
+      "guards": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-build01-guard/process.json",
+          "bytes": 2179,
+          "sha256": "06b5def90644a22afd2dfe80aebff8d412f5c66c1b1ec7fd49a7551149e38a35"
+        }
+      ],
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase147/profile-final-prep01/inputs/program.ssa",
+          "bytes": 119544406,
+          "sha256": "76eb1a7c500b19c86cbeaa523f4e0066cafa2588b02f729e1909ef35902c2a2f",
+          "metadata": {
+            "device": 2306,
+            "inode": 79466473,
+            "size": 119544406,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1793517137716175635,
+            "ctimeNs": 1793517137716175635,
+            "allocatedBytes": 119549952
+          }
+        }
+      ],
+      "allocatedBytes": 119549952,
+      "stage": 1,
+      "captureAdapter": "existing-phase169",
+      "status": "Retired generated bulk only. Preserve all executables, source/runtime, profile objects, owner maps, raw samples, receipts and unlisted files. Future input-authenticating replay requires exact restore.",
+      "preparationEvidence": {
+        "ready": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-prep01/ready.json",
+          "bytes": 5410,
+          "sha256": "21dd3f0db1affb345f2e3cef6d8d5a0695f1ac21776891b0d38878249e201b96"
+        },
+        "copiedImageBuild": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-prep01/inputs/image-build.json",
+          "bytes": 17099,
+          "sha256": "44704112b3e94fab254802667a9435065940c8fa9873b2930951e0c5645071e0"
+        },
+        "historicalSelectedImage": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-plan05/image/program",
+          "bytes": 19499168,
+          "sha256": "a37593134399a2011198b933be4acc35837c9c2a3bad16315cff32d238452796"
+        },
+        "guardScope": "Successful completed consumer of the prepared immutable copy. This is not a claimed guard around the metadata-copy step; ready.json authenticates the copied SSA.",
+        "targetsRunDuringPreparation": false
+      },
+      "existingArchiveCandidates": [
+        {
+          "file": "selfhost/build/phase147/profile-final-prep01/inputs/program.ssa",
+          "originalReceipt": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase169/fresh03-p147-integrated-plan05-image/receipt.json",
+            "bytes": 1705,
+            "sha256": "8c41418c527a352ed84d7c6119fb5e3619b203f9326fd37f0a2b82033763c60f"
+          },
+          "member": "program.ssa",
+          "status": "Current digest matches receipt only; requires independent archive/member verification. Do not silently rebase rawRoot."
+        }
+      ],
+      "captureCommand": [
+        "python3",
+        "-B",
+        "experiments/phase169/archive-selected-v02.py",
+        "--proposal",
+        "experiments/phase174/storage-proposal01.json",
+        "--name",
+        "p174-retired-p147-profile-final-prep01-ir",
+        "--out",
+        "selfhost/build-retention/phase169/p174-retired-p147-profile-final-prep01-ir"
+      ],
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase169/p174-retired-p147-profile-final-prep01-ir/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/p174-retired-p147-profile-final-prep01-ir/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase169/p174-retired-p147-profile-final-prep01-ir/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/p174-retired-p147-profile-final-prep01-ir/restored"
+      ]
+    },
+    {
+      "name": "p174-retired-p146-context-n1-ir",
+      "root": "selfhost/build/phase134/p146-context01-n1",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase134/p146-context01-n1/report.json",
+        "bytes": 14464,
+        "sha256": "0a328060a808155feff8534a82a8be1eeff4276f41e58da67cdfd5be6a1c34cf"
+      },
+      "guards": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase146/n1-guard/process.json",
+          "bytes": 922,
+          "sha256": "a55e273032173b1088aea269e2caa8a9e1a0130e53c1888c4f0eadf6da4645de"
+        }
+      ],
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase134/p146-context01-n1/program.ssa",
+          "bytes": 117232528,
+          "sha256": "dceae94a7659ad1ff58395ed34914971422ff9e5841668e910cd95e6b0914010",
+          "metadata": {
+            "device": 2306,
+            "inode": 79455434,
+            "size": 117232528,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1793074673132532272,
+            "ctimeNs": 1793074673132532272,
+            "allocatedBytes": 117239808
+          }
+        }
+      ],
+      "allocatedBytes": 117239808,
+      "stage": 2,
+      "captureAdapter": "existing-phase169",
+      "status": "Retired generated bulk only. Preserve all executables, source/runtime, profile objects, owner maps, raw samples, receipts and unlisted files. Future input-authenticating replay requires exact restore.",
+      "existingArchiveCandidates": [
+        {
+          "file": "selfhost/build/phase134/p146-context01-n1/program.ssa",
+          "originalReceipt": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase169/fresh03-p147-cold-baseline01/receipt.json",
+            "bytes": 1682,
+            "sha256": "b733eba08b8dd20794eef3858fd7db7053267dd95bdf6813522d8bbd9f47c674"
+          },
+          "member": "program.ssa",
+          "status": "Current digest matches receipt only; requires independent archive/member verification. Do not silently rebase rawRoot."
+        }
+      ],
+      "captureCommand": [
+        "python3",
+        "-B",
+        "experiments/phase169/archive-selected-v02.py",
+        "--proposal",
+        "experiments/phase174/storage-proposal01.json",
+        "--name",
+        "p174-retired-p146-context-n1-ir",
+        "--out",
+        "selfhost/build-retention/phase169/p174-retired-p146-context-n1-ir"
+      ],
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase169/p174-retired-p146-context-n1-ir/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/p174-retired-p146-context-n1-ir/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase169/p174-retired-p146-context-n1-ir/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/p174-retired-p146-context-n1-ir/restored"
+      ]
+    },
+    {
+      "name": "p174-retired-p147-sequel-q3-ir",
+      "root": "selfhost/build/phase147/integrated-sequel02/q3",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-sequel02/q3/report.json",
+        "bytes": 11823,
+        "sha256": "822ac1699e5ecc2226bc9ae0cac244b586ed1fbb40830ca70dbd7d2166ee0988"
+      },
+      "guards": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-sequel02/q3-guard/process.json",
+          "bytes": 3912,
+          "sha256": "c9657703bd4dbaad7b184f65e1c10992311b6e1e98cad05afc20955ccbc8f81b"
+        }
+      ],
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase147/integrated-sequel02/q3/program.ssa",
+          "bytes": 119544406,
+          "sha256": "76eb1a7c500b19c86cbeaa523f4e0066cafa2588b02f729e1909ef35902c2a2f",
+          "metadata": {
+            "device": 2306,
+            "inode": 79467070,
+            "size": 119544406,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1793518341935510716,
+            "ctimeNs": 1793518341935510716,
+            "allocatedBytes": 119549952
+          }
+        }
+      ],
+      "allocatedBytes": 119549952,
+      "stage": 2,
+      "captureAdapter": "existing-phase169",
+      "status": "Retired generated bulk only. Preserve all executables, source/runtime, profile objects, owner maps, raw samples, receipts and unlisted files. Future input-authenticating replay requires exact restore.",
+      "existingArchiveCandidates": [
+        {
+          "file": "selfhost/build/phase147/integrated-sequel02/q3/program.ssa",
+          "originalReceipt": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase169/fresh03-p147-integrated-plan05-image/receipt.json",
+            "bytes": 1705,
+            "sha256": "8c41418c527a352ed84d7c6119fb5e3619b203f9326fd37f0a2b82033763c60f"
+          },
+          "member": "program.ssa",
+          "status": "Current digest matches receipt only; requires independent archive/member verification. Do not silently rebase rawRoot."
+        }
+      ],
+      "captureCommand": [
+        "python3",
+        "-B",
+        "experiments/phase169/archive-selected-v02.py",
+        "--proposal",
+        "experiments/phase174/storage-proposal01.json",
+        "--name",
+        "p174-retired-p147-sequel-q3-ir",
+        "--out",
+        "selfhost/build-retention/phase169/p174-retired-p147-sequel-q3-ir"
+      ],
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase169/p174-retired-p147-sequel-q3-ir/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/p174-retired-p147-sequel-q3-ir/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase169/p174-retired-p147-sequel-q3-ir/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/p174-retired-p147-sequel-q3-ir/restored"
+      ]
+    },
+    {
+      "name": "p174-retired-p147-sequel-n2-machine",
+      "root": "selfhost/build/phase147/integrated-sequel02/n2",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-sequel02/n2/report.json",
+        "bytes": 19458,
+        "sha256": "7eeb7e2b017b984dfbf7d591f8453132aaffbe08bf338a040bd190cf52c94fc2"
+      },
+      "guards": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/integrated-sequel02/n2-guard/process.json",
+          "bytes": 3946,
+          "sha256": "83602398e540b6c35dad61e2ced297b846ce622dae27ad632ba6756d063dba6f"
+        }
+      ],
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase147/integrated-sequel02/n2/program.s",
+          "bytes": 88466412,
+          "sha256": "07e650ff00d5571657c1dd1ed8c6c8fbb8eaa65429ec2d3f04420a3058d30c38",
+          "metadata": {
+            "device": 2306,
+            "inode": 79467053,
+            "size": 88466412,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1793518105658707379,
+            "ctimeNs": 1793518105658707379,
+            "allocatedBytes": 88473600
+          }
+        },
+        {
+          "file": "selfhost/build/phase147/integrated-sequel02/n2/program.o",
+          "bytes": 25983392,
+          "sha256": "d4d55e9a4ba1a3a4d82b3b4c6adb019ceae91db5a3c623bb0ec4ae982fccc918",
+          "metadata": {
+            "device": 2306,
+            "inode": 79467058,
+            "size": 25983392,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1793518111622525729,
+            "ctimeNs": 1793518111622525729,
+            "allocatedBytes": 25985024
+          }
+        }
+      ],
+      "allocatedBytes": 114458624,
+      "stage": 2,
+      "captureAdapter": "existing-phase169",
+      "status": "Retired generated bulk only. Preserve all executables, source/runtime, profile objects, owner maps, raw samples, receipts and unlisted files. Future input-authenticating replay requires exact restore.",
+      "captureCommand": [
+        "python3",
+        "-B",
+        "experiments/phase169/archive-selected-v02.py",
+        "--proposal",
+        "experiments/phase174/storage-proposal01.json",
+        "--name",
+        "p174-retired-p147-sequel-n2-machine",
+        "--out",
+        "selfhost/build-retention/phase169/p174-retired-p147-sequel-n2-machine"
+      ],
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase169/p174-retired-p147-sequel-n2-machine/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/p174-retired-p147-sequel-n2-machine/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase169/p174-retired-p147-sequel-n2-machine/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase169/p174-retired-p147-sequel-n2-machine/restored"
+      ]
+    },
+    {
+      "name": "p174-retired-p147-profile-full02-stdout",
+      "root": "selfhost/build/phase147/profile-full02/capture/000-sample-full-current-selected-n2-diagnostic",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-full02/capture/report.json",
+        "bytes": 10317,
+        "sha256": "97f58c5f41625041f4466d6771788d195c6efdeab1b55685d590c3ab1a93b9ff"
+      },
+      "guards": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-full02-guard/process.json",
+          "bytes": 2746,
+          "sha256": "b01f7b0125989f051d4471661ac884e996713c2216be593b660f6375bec3d859"
+        }
+      ],
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase147/profile-full02/capture/000-sample-full-current-selected-n2-diagnostic/stdout",
+          "bytes": 117232528,
+          "sha256": "dceae94a7659ad1ff58395ed34914971422ff9e5841668e910cd95e6b0914010",
+          "metadata": {
+            "device": 2306,
+            "inode": 79460491,
+            "size": 117232528,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1793514111564035312,
+            "ctimeNs": 1793514111564035312,
+            "allocatedBytes": 117239808
+          }
+        }
+      ],
+      "allocatedBytes": 117239808,
+      "stage": 3,
+      "captureAdapter": "exact-generic-capsule-required",
+      "status": "Retired generated bulk only. Preserve all executables, source/runtime, profile objects, owner maps, raw samples, receipts and unlisted files. Future input-authenticating replay requires exact restore.",
+      "outputSemantics": "Complete emitted QBE, not sampling data. Keep raw profiles/callers/contexts/analysis/owner maps and diagnostic ELF/runtime inputs."
+    },
+    {
+      "name": "p174-retired-p147-profile-final-full01-stdout",
+      "root": "selfhost/build/phase147/profile-final-full01/capture/000-sample-full-current-candidate-n1-diagnostic",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-full01/capture/report.json",
+        "bytes": 10447,
+        "sha256": "3fd31010c8452666181af4d7ed425ef8aaf6785cef0ae55cde9ccc48f5312de4"
+      },
+      "guards": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-final-full01-guard/process.json",
+          "bytes": 3004,
+          "sha256": "e72768e4ece2660bd319b78b1acdf3f9a75fbe2d6a314e1ab2cfc105b145ce4d"
+        }
+      ],
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase147/profile-final-full01/capture/000-sample-full-current-candidate-n1-diagnostic/stdout",
+          "bytes": 117232528,
+          "sha256": "dceae94a7659ad1ff58395ed34914971422ff9e5841668e910cd95e6b0914010",
+          "metadata": {
+            "device": 2306,
+            "inode": 79466610,
+            "size": 117232528,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1793517794936171186,
+            "ctimeNs": 1793517794936171186,
+            "allocatedBytes": 117239808
+          }
+        }
+      ],
+      "allocatedBytes": 117239808,
+      "stage": 3,
+      "captureAdapter": "exact-generic-capsule-required",
+      "status": "Retired generated bulk only. Preserve all executables, source/runtime, profile objects, owner maps, raw samples, receipts and unlisted files. Future input-authenticating replay requires exact restore.",
+      "outputSemantics": "Complete emitted QBE, not sampling data. Keep raw profiles/callers/contexts/analysis/owner maps and diagnostic ELF/runtime inputs."
+    },
+    {
+      "name": "p174-retired-p147-profile-candidate-full01-stdout",
+      "root": "selfhost/build/phase147/profile-candidate-full01/capture/000-sample-full-current-candidate-n1-diagnostic",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-candidate-full01/capture/report.json",
+        "bytes": 10532,
+        "sha256": "0d470d0a6d38aac8acbcbe39cdfb12be813e0ff8ae055094f277d0071b89bbe4"
+      },
+      "guards": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase147/profile-candidate-full01-guard/process.json",
+          "bytes": 3018,
+          "sha256": "fe20581bc2d7dc7bd8ebd5527152763b8e3d77a402870cd5d13992cea328841b"
+        }
+      ],
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase147/profile-candidate-full01/capture/000-sample-full-current-candidate-n1-diagnostic/stdout",
+          "bytes": 117232528,
+          "sha256": "dceae94a7659ad1ff58395ed34914971422ff9e5841668e910cd95e6b0914010",
+          "metadata": {
+            "device": 2306,
+            "inode": 79466087,
+            "size": 117232528,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1793516233731673934,
+            "ctimeNs": 1793516233731673934,
+            "allocatedBytes": 117239808
+          }
+        }
+      ],
+      "allocatedBytes": 117239808,
+      "stage": 3,
+      "captureAdapter": "exact-generic-capsule-required",
+      "status": "Retired generated bulk only. Preserve all executables, source/runtime, profile objects, owner maps, raw samples, receipts and unlisted files. Future input-authenticating replay requires exact restore.",
+      "outputSemantics": "Complete emitted QBE, not sampling data. Keep raw profiles/callers/contexts/analysis/owner maps and diagnostic ELF/runtime inputs."
+    },
+    {
+      "name": "p174-retired-p144-product-graphs",
+      "root": "selfhost/build/phase144/product-retry-census02",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/product-retry-census02/report.json",
+        "bytes": 261205,
+        "sha256": "82fba37b59ac568c3e13dd1f0eb9ea29378a56e4f2684c943327e7b964aff090"
+      },
+      "guards": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase144/product-retry-fixtures02/census-guard/process.json",
+          "bytes": 910,
+          "sha256": "54e6cab8bac887abfa9137cf20a5f8dced76aea59f6f1ec26c20117f6abf3bdb"
+        }
+      ],
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase144/product-retry-census02/verifier-original-trace.graph.json",
+          "bytes": 34251210,
+          "sha256": "9f4ad7f19769e036ef309ad343044a00d0a25dd736ca429f8df15518ef1ac214",
+          "metadata": {
+            "device": 2306,
+            "inode": 79443826,
+            "size": 34251210,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1793014998043484171,
+            "ctimeNs": 1793014998043484171,
+            "allocatedBytes": 34258944
+          }
+        },
+        {
+          "file": "selfhost/build/phase144/product-retry-census02/verifier-product-trace.graph.json",
+          "bytes": 32745837,
+          "sha256": "bfc5f781d9afd7b728de9dbfcc1d1b87738c44feadf9f5bcb80ddf954d1100e2",
+          "metadata": {
+            "device": 2306,
+            "inode": 79443827,
+            "size": 32745837,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1793015020122799376,
+            "ctimeNs": 1793015020122799376,
+            "allocatedBytes": 32751616
+          }
+        },
+        {
+          "file": "selfhost/build/phase144/product-retry-census02/verifier-sum-trace.graph.json",
+          "bytes": 30829629,
+          "sha256": "208c35e15092283221a9ce784761e22ab7785d587b7ed87c0af52d9af00da7c4",
+          "metadata": {
+            "device": 2306,
+            "inode": 79443828,
+            "size": 30829629,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1793015040830157132,
+            "ctimeNs": 1793015040830157132,
+            "allocatedBytes": 30834688
+          }
+        }
+      ],
+      "allocatedBytes": 97845248,
+      "stage": 3,
+      "captureAdapter": "exact-generic-capsule-required",
+      "status": "Retired generated bulk only. Preserve all executables, source/runtime, profile objects, owner maps, raw samples, receipts and unlisted files. Future input-authenticating replay requires exact restore."
+    }
+  ],
+  "selectedFiles": 14,
+  "allocatedBytes": 1273929728,
+  "referenceAudit": {
+    "file": "/home/ai/bend2/build/publish/bend/experiments/phase174/storage-reference-audit01.json",
+    "bytes": 2434,
+    "sha256": "b7a39de6f611d5bf65394ba23559069be8806264d6cf917a6981754107a834e9"
+  },
+  "auditAssessment": {
+    "activeReferences": "No candidate root appears in Phase170\u2013174 operational metadata/current profiler/selection manifests. Two maintained p146-context01-n1 references name its executable only, which stays hot. Phase173 graph mention is historical storage review.",
+    "historicalProfiles": "Phase147 inputs belong to superseded compiler identities. Only copied textual IR and generated stdout selected; diagnostic ELF/object, owners, raw samples, reports/runtimes stay hot. Restore selected bytes before historical reconstruction.",
+    "scopeLimit": "Scoped reference audit, not a dynamic-dependency theorem. Root must protect any newly introduced input and serialize maintenance with publication targets."
+  },
+  "capacity": {
+    "freeBytesAtReview": 5501120512,
+    "aboveReserveBytesAtReview": 132411392,
+    "stage1AllocatedBytes": 473116672,
+    "stage1WorstCapNetBytes": 389230592,
+    "estimatedArchiveBytes": 178350162,
+    "estimatedNetRecoveryBytes": 1095579566,
+    "allRootCapNetBytes": 1043243008,
+    "estimateScope": "Provisional14% aggregate compression from previous QBE/machine captures; graph JSON may differ. >=1GiB estimated, not guaranteed. First4 alone exceed300MiB net conditional on successful capped captures, excluding receipts/concurrent writers.",
+    "existingArchives": "Six exact SSA digests also occur in existing archive receipts. No reuse/prune authorization until independent exact member/target verification."
+  },
+  "executionPlan": [
+    "Wait for current guarded JS build/other target activity to finish.",
+    "First4 rows: unchanged v169 helper,20MiB cap. Root enforces5GiB+20MiB outside helper older4GiB check. Separate capture/verify/apply per root.",
+    "Next3 rows also v169-compatible.",
+    "Final4 nonstandard roots require reviewed narrow adapter around maintained close.capsule/archive-v02. Existing v169 correctly rejects their non-program filenames.",
+    "Keep immutable proposal, exact archives, verified plans/journals. Measure actual capacity after each stage."
+  ],
+  "protected": [
+    "Entire Phase170 installed/rollback/qualified chains and selectors",
+    "Phase171 native-candidate01 binary/source/receipts and77-control references",
+    "Every source/API/compiler executable, runtime, Base/carrier/toolchain, current profile/publication input",
+    "Historical profile ELF/objects/owners/samples/analysis/context/caller maps",
+    "Every unlisted file, failed attempt, prior capsule and shared Phase32 lock"
+  ],
+  "excluded": [
+    "Broad Phase171\u2013173 source/API retirement: fragmented low payoff and stronger ownership risks.",
+    "Phase152/169 qualified roots and Phase170/171 publication inputs.",
+    "No directory selected merely by age."
+  ]
+}

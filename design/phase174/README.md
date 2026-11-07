@@ -39,3 +39,14 @@ One CPU3 execution lane, maintained guards, fresh outputs, 5 GiB reserve and
 explicit budgets. Archive only exact verified retired artifacts when necessary.
 Source auditors work concurrently; expensive target runs remain serial. Failed
 attempts remain evidence. Do not promote Phase172/173 speculative changes.
+
+## Linked image identity clarification
+
+The strict first reproduction check found identical QBE/assembly/object and
+actual Q3, but raw ELF load bytes differ. The bounded [audit](../../experiments/phase174/elf-audit.md)
+accounts for exactly 21 mapped metadata bytes: one section-table offset byte and
+the 20-byte GNU build-id. All loading parameters, executable code and runtime
+data are identical. The separate v2 receipt preserves raw equality as false
+and admits only that explicitly parsed pair. The original failed receipt remains.
+The release auditor and semantic gates are unchanged; no arbitrary metadata
+mask or binary rewriting is used.

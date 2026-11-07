@@ -1,0 +1,163 @@
+{
+  "kind": "phase174-serial-job-plan",
+  "jobs": [
+    {
+      "name": "controls-api",
+      "seconds": 120,
+      "diskMiB": 64,
+      "rssMiB": 3072,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase174/control-source01/compiler.bend",
+        "--exports",
+        "selfhost/build/phase174/control-source01/exports.json",
+        "--out",
+        "selfhost/build/phase174/controls-api",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase66",
+        "--engine",
+        "selfhost/.assets/bin/bun"
+      ]
+    },
+    {
+      "name": "controls-failfast",
+      "seconds": 90,
+      "diskMiB": 32,
+      "rssMiB": 2048,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tests/phase171/fail-fast-controls.mjs",
+        "--baseline",
+        "selfhost/build/phase171/ff-baseline-api01/report.json",
+        "--candidate",
+        "selfhost/build/phase174/controls-api/report.json",
+        "--out",
+        "selfhost/build/phase174/controls-failfast"
+      ]
+    },
+    {
+      "name": "controls-lazy",
+      "seconds": 90,
+      "diskMiB": 32,
+      "rssMiB": 2048,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tests/phase171/lazy-admission-controls.mjs",
+        "--baseline",
+        "selfhost/build/phase171/lazy-baseline-api02/report.json",
+        "--candidate",
+        "selfhost/build/phase174/controls-api/report.json",
+        "--out",
+        "selfhost/build/phase174/controls-lazy"
+      ]
+    },
+    {
+      "name": "controls-scalar",
+      "seconds": 90,
+      "diskMiB": 32,
+      "rssMiB": 2048,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tests/phase171/value-controls.mjs",
+        "--receipt",
+        "selfhost/build/phase174/controls-api/report.json",
+        "--export",
+        "p171sc_controls",
+        "--count",
+        "12",
+        "--out",
+        "selfhost/build/phase174/controls-scalar"
+      ]
+    },
+    {
+      "name": "controls-history",
+      "seconds": 90,
+      "diskMiB": 32,
+      "rssMiB": 2048,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tests/phase171/value-controls.mjs",
+        "--receipt",
+        "selfhost/build/phase174/controls-api/report.json",
+        "--export",
+        "p171s_controls",
+        "--count",
+        "5",
+        "--out",
+        "selfhost/build/phase174/controls-history"
+      ]
+    },
+    {
+      "name": "native-n2",
+      "seconds": 300,
+      "diskMiB": 240,
+      "rssMiB": 2048,
+      "command": [
+        "python3",
+        "-B",
+        "selfhost/tools/build/native.py",
+        "--assets",
+        "selfhost/manifests/assets-native.json",
+        "--host",
+        "native",
+        "--stage",
+        "N1",
+        "--target",
+        "qbe",
+        "--mode",
+        "cache",
+        "--image",
+        "selfhost/build/phase171/native-candidate01/program",
+        "--image-receipt",
+        "selfhost/build/phase171/native-candidate01/report.json",
+        "--source",
+        "selfhost/build/phase174/source01/compiler.bend",
+        "--out",
+        "selfhost/build/phase174/native-n2",
+        "--seconds",
+        "280",
+        "--retain-ir",
+        "--expected",
+        "selfhost/build/phase171/native-candidate01/program.ssa",
+        "--output-stage",
+        "N2"
+      ]
+    },
+    {
+      "name": "q3",
+      "seconds": 270,
+      "diskMiB": 120,
+      "rssMiB": 2048,
+      "command": [
+        "python3",
+        "-B",
+        "selfhost/tools/build/request.py",
+        "--assets",
+        "selfhost/manifests/assets-native.json",
+        "--host",
+        "native",
+        "--stage",
+        "N2",
+        "--target",
+        "qbe",
+        "--mode",
+        "cache",
+        "--image",
+        "selfhost/build/phase174/native-n2/program",
+        "--image-receipt",
+        "selfhost/build/phase174/native-n2/report.json",
+        "--source",
+        "selfhost/build/phase174/source01/compiler.bend",
+        "--out",
+        "selfhost/build/phase174/q3",
+        "--seconds",
+        "250",
+        "--expected",
+        "selfhost/build/phase174/native-n2/program.ssa"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "kind": "phase174-additive-control-source",
+  "version": 1,
+  "canonicalProfile": "qbe",
+  "modules": [
+    {"file": "selfhost/tests/phase171/fail-fast-controls.bend", "bytes": 5338, "sha256": "444af2ba2a150476e26cc1e377494662ba62cbfacb897cfa653f22db00ee8c13"},
+    {"file": "selfhost/tests/phase171/lazy-admission-controls.bend", "bytes": 6263, "sha256": "87fd0a4cf4223d4e03dad178de8694e7581e8479e0ca23497d0d484819a0195e"},
+    {"file": "selfhost/tests/phase171/scalar-catalogue-controls.bend", "bytes": 4907, "sha256": "324eac81b1b7a20f86a83afb4dfc26ee5c4a2f33f99a4e3c4d2ea2bc92c4577a"},
+    {"file": "selfhost/tests/phase171/publication-controls.bend", "bytes": 1962, "sha256": "e186ac6c22b227b12fd555a922b39f1798ab1d334784aef89c8a4484a333d6c7"}
+  ],
+  "qbeExports": ["p88_cache_prepare", "p86_prepare", "p86_plan", "p169np_plan", "p134e_plan", "p134e_begin", "p134e_next"],
+  "groups": [
+    {"export": "p171ff_cases", "count": 22, "oracle": "Complete successful records and independent first errors; paired fail-fast-controls.mjs"},
+    {"export": "p171ff_scc_controls", "count": 6, "oracle": "Finite pass strings and paired exact records; fail-fast-controls.mjs"},
+    {"export": "p171l_case", "count": 32, "oracle": "Modes 0 through 31, complete plans and explicit expectations; lazy-admission-controls.mjs"},
+    {"export": "p171sc_controls", "count": 12, "oracle": "Finite pass strings; value-controls.mjs"},
+    {"export": "p171s_controls", "count": 5, "oracle": "Finite true values; value-controls.mjs"}
+  ],
+  "expectedControls": 77,
+  "scope": "Only unchanged Phase171 control declarations are appended. No optimization overlays, source pruning, production selection or qualification claim."
+}

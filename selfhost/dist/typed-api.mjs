@@ -12113,156 +12113,156 @@ function $jd$p150l_95_cursor$scc($pc,$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9,$a1
 /*JD_USE:16742*/$x16742)}),["tail"]:(
 /*JD_USE:16740*/$x16740)});const $next5=(
 /*JD_USE:16744*/$x16744);const $next6=(
-/*JD_USE:16744*/$x16744);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=0;continue;}}case 17:{const $x157195=$a0;{const $match2=$a1;if($match2!==""){const $x157196=($match2.codePointAt(0)>0xFFFF?$match2.slice(0,2):$match2[0]);{const $match4=($match2.codePointAt(0)>0xFFFF?$match2.slice(2):$match2.slice(1));if($match4!==""){const $x157197=($match4.codePointAt(0)>0xFFFF?$match4.slice(0,2):$match4[0]);const $x157198=($match4.codePointAt(0)>0xFFFF?$match4.slice(2):$match4.slice(1));const $x157199=$a2;const $x157200=$a3;const $x157201=$a4;const $x157202=$a5;const $x157203=$a6;const $x157204=$a7;const $x157205=$a8;{/* direct literal choice */if((
+/*JD_USE:16744*/$x16744);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=0;continue;}}case 17:{const $x157229=$a0;{const $match2=$a1;if($match2!==""){const $x157230=($match2.codePointAt(0)>0xFFFF?$match2.slice(0,2):$match2[0]);{const $match4=($match2.codePointAt(0)>0xFFFF?$match2.slice(2):$match2.slice(1));if($match4!==""){const $x157231=($match4.codePointAt(0)>0xFFFF?$match4.slice(0,2):$match4[0]);const $x157232=($match4.codePointAt(0)>0xFFFF?$match4.slice(2):$match4.slice(1));const $x157233=$a2;const $x157234=$a3;const $x157235=$a4;const $x157236=$a5;const $x157237=$a6;const $x157238=$a7;const $x157239=$a8;{/* direct literal choice */if((
 /*JD_REF:$jd$p150l_95_triple*/$jd$p150l_95_triple((
-/*JD_USE:157195*/$x157195),(
-/*JD_USE:157196*/$x157196),(
-/*JD_USE:157197*/$x157197)))){{
+/*JD_USE:157229*/$x157229),(
+/*JD_USE:157230*/$x157230),(
+/*JD_USE:157231*/$x157231)))){{
 /*JD_REF:$jd$p150l_95_emit*/const $next0=((
-/*JD_USE:157195*/$x157195)+((
-/*JD_USE:157196*/$x157196)+((
-/*JD_USE:157197*/$x157197)+"")));const $next1=(
-/*JD_USE:157198*/$x157198);const $next2=(
-/*JD_USE:157200*/$x157200);const $next3=(
-/*JD_USE:157201*/$x157201);const $next4=(
-/*JD_USE:157202*/$x157202);const $next5=(
-/*JD_USE:157203*/$x157203);const $next6=(
-/*JD_USE:157204*/$x157204);const $next7=(
-/*JD_USE:157205*/$x157205);const $next8=3;const $next9=3;$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$a9=$next9;$pc=15;continue;}}else{{
+/*JD_USE:157229*/$x157229)+((
+/*JD_USE:157230*/$x157230)+((
+/*JD_USE:157231*/$x157231)+"")));const $next1=(
+/*JD_USE:157232*/$x157232);const $next2=(
+/*JD_USE:157234*/$x157234);const $next3=(
+/*JD_USE:157235*/$x157235);const $next4=(
+/*JD_USE:157236*/$x157236);const $next5=(
+/*JD_USE:157237*/$x157237);const $next6=(
+/*JD_USE:157238*/$x157238);const $next7=(
+/*JD_USE:157239*/$x157239);const $next8=3;const $next9=3;$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$a9=$next9;$pc=15;continue;}}else{{
 /*JD_REF:$jd$p150l_95_other_95_plain*/const $next0=(
-/*JD_USE:157195*/$x157195);const $next1=(
-/*JD_USE:157199*/$x157199);const $next2=(
-/*JD_USE:157200*/$x157200);const $next3=(
-/*JD_USE:157201*/$x157201);const $next4=(
-/*JD_USE:157202*/$x157202);const $next5=(
-/*JD_USE:157203*/$x157203);const $next6=(
-/*JD_USE:157204*/$x157204);const $next7=(
-/*JD_USE:157205*/$x157205);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$pc=8;continue;}}}}else{const $x157209=$a2;const $x157210=$a3;const $x157211=$a4;const $x157212=$a5;const $x157213=$a6;const $x157214=$a7;const $x157215=$a8;{
+/*JD_USE:157229*/$x157229);const $next1=(
+/*JD_USE:157233*/$x157233);const $next2=(
+/*JD_USE:157234*/$x157234);const $next3=(
+/*JD_USE:157235*/$x157235);const $next4=(
+/*JD_USE:157236*/$x157236);const $next5=(
+/*JD_USE:157237*/$x157237);const $next6=(
+/*JD_USE:157238*/$x157238);const $next7=(
+/*JD_USE:157239*/$x157239);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$pc=8;continue;}}}}else{const $x157243=$a2;const $x157244=$a3;const $x157245=$a4;const $x157246=$a5;const $x157247=$a6;const $x157248=$a7;const $x157249=$a8;{
 /*JD_REF:$jd$p150l_95_other_95_plain*/const $next0=(
-/*JD_USE:157195*/$x157195);const $next1=(
-/*JD_USE:157209*/$x157209);const $next2=(
-/*JD_USE:157210*/$x157210);const $next3=(
-/*JD_USE:157211*/$x157211);const $next4=(
-/*JD_USE:157212*/$x157212);const $next5=(
-/*JD_USE:157213*/$x157213);const $next6=(
-/*JD_USE:157214*/$x157214);const $next7=(
-/*JD_USE:157215*/$x157215);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$pc=8;continue;}}}}else{const $x157217=$a2;const $x157218=$a3;const $x157219=$a4;const $x157220=$a5;const $x157221=$a6;const $x157222=$a7;const $x157223=$a8;{
-/*JD_REF:$jd$p150l_95_other_95_plain*/const $next0=(
-/*JD_USE:157195*/$x157195);const $next1=(
-/*JD_USE:157217*/$x157217);const $next2=(
-/*JD_USE:157218*/$x157218);const $next3=(
-/*JD_USE:157219*/$x157219);const $next4=(
-/*JD_USE:157220*/$x157220);const $next5=(
-/*JD_USE:157221*/$x157221);const $next6=(
-/*JD_USE:157222*/$x157222);const $next7=(
-/*JD_USE:157223*/$x157223);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$pc=8;continue;}}}}case 18:{const $x157233=$a0;{const $match2=$a1;if($match2===""){const $x157235=$a3;const $x157236=$a4;const $x157237=$a5;const $x157238=$a6;const $x157239=$a7;const $x157240=$a8;{
-/*JD_REF:$jd$p150l_95_single*/const $next0=(
-/*JD_USE:157233*/$x157233);const $next1="";const $next2=(
-/*JD_USE:157235*/$x157235);const $next3=(
-/*JD_USE:157236*/$x157236);const $next4=(
-/*JD_USE:157237*/$x157237);const $next5=(
-/*JD_USE:157238*/$x157238);const $next6=(
-/*JD_USE:157239*/$x157239);const $next7=(
-/*JD_USE:157240*/$x157240);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$pc=14;continue;}}else{{const $match3=$match2;const $x157241=($match3.codePointAt(0)>0xFFFF?$match3.slice(0,2):$match3[0]);const $x157242=($match3.codePointAt(0)>0xFFFF?$match3.slice(2):$match3.slice(1));const $x157243=$a2;const $x157244=$a3;const $x157245=$a4;const $x157246=$a5;const $x157247=$a6;const $x157248=$a7;const $x157249=$a8;{/* direct literal choice */if((
-/*JD_REF:$jd$p150l_95_pair*/$jd$p150l_95_pair((
-/*JD_USE:157233*/$x157233),(
-/*JD_USE:157241*/$x157241)))){{
-/*JD_REF:$jd$p150l_95_emit*/const $next0=((
-/*JD_USE:157233*/$x157233)+((
-/*JD_USE:157241*/$x157241)+""));const $next1=(
-/*JD_USE:157242*/$x157242);const $next2=(
-/*JD_USE:157244*/$x157244);const $next3=(
-/*JD_USE:157245*/$x157245);const $next4=(
-/*JD_USE:157246*/$x157246);const $next5=(
-/*JD_USE:157247*/$x157247);const $next6=(
-/*JD_USE:157248*/$x157248);const $next7=(
-/*JD_USE:157249*/$x157249);const $next8=2;const $next9=2;$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$a9=$next9;$pc=15;continue;}}else{{
-/*JD_REF:$jd$p150l_95_single*/const $next0=(
-/*JD_USE:157233*/$x157233);const $next1=(
+/*JD_USE:157229*/$x157229);const $next1=(
 /*JD_USE:157243*/$x157243);const $next2=(
 /*JD_USE:157244*/$x157244);const $next3=(
 /*JD_USE:157245*/$x157245);const $next4=(
 /*JD_USE:157246*/$x157246);const $next5=(
 /*JD_USE:157247*/$x157247);const $next6=(
 /*JD_USE:157248*/$x157248);const $next7=(
-/*JD_USE:157249*/$x157249);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$pc=14;continue;}}}}}}}case 19:{{const $match1=$a0;if($match1===""){const $x157262=$a2;const $x157263=$a3;const $x157264=$a4;const $x157265=$a5;const $x157266=$a6;const $x157267=$a7;{
+/*JD_USE:157249*/$x157249);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$pc=8;continue;}}}}else{const $x157251=$a2;const $x157252=$a3;const $x157253=$a4;const $x157254=$a5;const $x157255=$a6;const $x157256=$a7;const $x157257=$a8;{
+/*JD_REF:$jd$p150l_95_other_95_plain*/const $next0=(
+/*JD_USE:157229*/$x157229);const $next1=(
+/*JD_USE:157251*/$x157251);const $next2=(
+/*JD_USE:157252*/$x157252);const $next3=(
+/*JD_USE:157253*/$x157253);const $next4=(
+/*JD_USE:157254*/$x157254);const $next5=(
+/*JD_USE:157255*/$x157255);const $next6=(
+/*JD_USE:157256*/$x157256);const $next7=(
+/*JD_USE:157257*/$x157257);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$pc=8;continue;}}}}case 18:{const $x157267=$a0;{const $match2=$a1;if($match2===""){const $x157269=$a3;const $x157270=$a4;const $x157271=$a5;const $x157272=$a6;const $x157273=$a7;const $x157274=$a8;{
+/*JD_REF:$jd$p150l_95_single*/const $next0=(
+/*JD_USE:157267*/$x157267);const $next1="";const $next2=(
+/*JD_USE:157269*/$x157269);const $next3=(
+/*JD_USE:157270*/$x157270);const $next4=(
+/*JD_USE:157271*/$x157271);const $next5=(
+/*JD_USE:157272*/$x157272);const $next6=(
+/*JD_USE:157273*/$x157273);const $next7=(
+/*JD_USE:157274*/$x157274);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$pc=14;continue;}}else{{const $match3=$match2;const $x157275=($match3.codePointAt(0)>0xFFFF?$match3.slice(0,2):$match3[0]);const $x157276=($match3.codePointAt(0)>0xFFFF?$match3.slice(2):$match3.slice(1));const $x157277=$a2;const $x157278=$a3;const $x157279=$a4;const $x157280=$a5;const $x157281=$a6;const $x157282=$a7;const $x157283=$a8;{/* direct literal choice */if((
+/*JD_REF:$jd$p150l_95_pair*/$jd$p150l_95_pair((
+/*JD_USE:157267*/$x157267),(
+/*JD_USE:157275*/$x157275)))){{
+/*JD_REF:$jd$p150l_95_emit*/const $next0=((
+/*JD_USE:157267*/$x157267)+((
+/*JD_USE:157275*/$x157275)+""));const $next1=(
+/*JD_USE:157276*/$x157276);const $next2=(
+/*JD_USE:157278*/$x157278);const $next3=(
+/*JD_USE:157279*/$x157279);const $next4=(
+/*JD_USE:157280*/$x157280);const $next5=(
+/*JD_USE:157281*/$x157281);const $next6=(
+/*JD_USE:157282*/$x157282);const $next7=(
+/*JD_USE:157283*/$x157283);const $next8=2;const $next9=2;$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$a9=$next9;$pc=15;continue;}}else{{
+/*JD_REF:$jd$p150l_95_single*/const $next0=(
+/*JD_USE:157267*/$x157267);const $next1=(
+/*JD_USE:157277*/$x157277);const $next2=(
+/*JD_USE:157278*/$x157278);const $next3=(
+/*JD_USE:157279*/$x157279);const $next4=(
+/*JD_USE:157280*/$x157280);const $next5=(
+/*JD_USE:157281*/$x157281);const $next6=(
+/*JD_USE:157282*/$x157282);const $next7=(
+/*JD_USE:157283*/$x157283);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$pc=14;continue;}}}}}}}case 19:{{const $match1=$a0;if($match1===""){const $x157296=$a2;const $x157297=$a3;const $x157298=$a4;const $x157299=$a5;const $x157300=$a6;const $x157301=$a7;{
 /*JD_REF:$jd$p150l_95_emit*/const $next0="+";const $next1="";const $next2=(
-/*JD_USE:157262*/$x157262);const $next3=(
-/*JD_USE:157263*/$x157263);const $next4=(
-/*JD_USE:157264*/$x157264);const $next5=(
-/*JD_USE:157265*/$x157265);const $next6=(
-/*JD_USE:157266*/$x157266);const $next7=(
-/*JD_USE:157267*/$x157267);const $next8=1;const $next9=1;$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$a9=$next9;$pc=15;continue;}}else{{const $match2=$match1;const $x157269=($match2.codePointAt(0)>0xFFFF?$match2.slice(0,2):$match2[0]);const $x157270=($match2.codePointAt(0)>0xFFFF?$match2.slice(2):$match2.slice(1));const $x157271=$a1;const $x157272=$a2;const $x157273=$a3;const $x157274=$a4;const $x157275=$a5;const $x157276=$a6;const $x157277=$a7;const $x157278=$a8;{/* direct literal choice */if((
+/*JD_USE:157296*/$x157296);const $next3=(
+/*JD_USE:157297*/$x157297);const $next4=(
+/*JD_USE:157298*/$x157298);const $next5=(
+/*JD_USE:157299*/$x157299);const $next6=(
+/*JD_USE:157300*/$x157300);const $next7=(
+/*JD_USE:157301*/$x157301);const $next8=1;const $next9=1;$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$a9=$next9;$pc=15;continue;}}else{{const $match2=$match1;const $x157303=($match2.codePointAt(0)>0xFFFF?$match2.slice(0,2):$match2[0]);const $x157304=($match2.codePointAt(0)>0xFFFF?$match2.slice(2):$match2.slice(1));const $x157305=$a1;const $x157306=$a2;const $x157307=$a3;const $x157308=$a4;const $x157309=$a5;const $x157310=$a6;const $x157311=$a7;const $x157312=$a8;{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_ascii_95_char_95_eq*/$jd$f_95_ascii_95_char_95_eq((
-/*JD_USE:157269*/$x157269),"+"))){{/* direct literal choice */if((
-/*JD_USE:157278*/$x157278)){{
+/*JD_USE:157303*/$x157303),"+"))){{/* direct literal choice */if((
+/*JD_USE:157312*/$x157312)){{
 /*JD_REF:$jd$p150l_95_emit*/const $next0="+";const $next1=(
-/*JD_USE:157271*/$x157271);const $next2=(
-/*JD_USE:157272*/$x157272);const $next3=(
-/*JD_USE:157273*/$x157273);const $next4=(
-/*JD_USE:157274*/$x157274);const $next5=(
-/*JD_USE:157275*/$x157275);const $next6=(
-/*JD_USE:157276*/$x157276);const $next7=(
-/*JD_USE:157277*/$x157277);const $next8=1;const $next9=1;$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$a9=$next9;$pc=15;continue;}}else{{
+/*JD_USE:157305*/$x157305);const $next2=(
+/*JD_USE:157306*/$x157306);const $next3=(
+/*JD_USE:157307*/$x157307);const $next4=(
+/*JD_USE:157308*/$x157308);const $next5=(
+/*JD_USE:157309*/$x157309);const $next6=(
+/*JD_USE:157310*/$x157310);const $next7=(
+/*JD_USE:157311*/$x157311);const $next8=1;const $next9=1;$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$a9=$next9;$pc=15;continue;}}else{{
 /*JD_REF:$jd$p150l_95_emit*/const $next0="++";const $next1=(
-/*JD_USE:157270*/$x157270);const $next2=(
-/*JD_USE:157272*/$x157272);const $next3=(
-/*JD_USE:157273*/$x157273);const $next4=(
-/*JD_USE:157274*/$x157274);const $next5=(
-/*JD_USE:157275*/$x157275);const $next6=(
-/*JD_USE:157276*/$x157276);const $next7=(
-/*JD_USE:157277*/$x157277);const $next8=2;const $next9=2;$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$a9=$next9;$pc=15;continue;}}}}else{{
+/*JD_USE:157304*/$x157304);const $next2=(
+/*JD_USE:157306*/$x157306);const $next3=(
+/*JD_USE:157307*/$x157307);const $next4=(
+/*JD_USE:157308*/$x157308);const $next5=(
+/*JD_USE:157309*/$x157309);const $next6=(
+/*JD_USE:157310*/$x157310);const $next7=(
+/*JD_USE:157311*/$x157311);const $next8=2;const $next9=2;$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$a9=$next9;$pc=15;continue;}}}}else{{
 /*JD_REF:$jd$p150l_95_emit*/const $next0=(()=>{/* direct literal choice */if((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$f_95_ascii_95_alpha*/$jd$f_95_ascii_95_alpha((
-/*JD_USE:157269*/$x157269))),(
+/*JD_USE:157303*/$x157303))),(
 /*JD_REF:$jd$Bool_46_not*/$jd$Bool_46_not((
-/*JD_USE:157278*/$x157278)))))){return "+bind";}else{return "+";}})();const $next1=(
-/*JD_USE:157271*/$x157271);const $next2=(
-/*JD_USE:157272*/$x157272);const $next3=(
-/*JD_USE:157273*/$x157273);const $next4=(
-/*JD_USE:157274*/$x157274);const $next5=(
-/*JD_USE:157275*/$x157275);const $next6=(
-/*JD_USE:157276*/$x157276);const $next7=(
-/*JD_USE:157277*/$x157277);const $next8=1;const $next9=1;$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$a9=$next9;$pc=15;continue;}}}}}}}case 20:{{const $match1=$a0;if($match1===""){const $x157295=$a2;const $x157296=$a3;const $x157297=$a4;const $x157298=$a5;const $x157299=$a6;const $x157300=$a7;const $x157301=$a8;{
-/*JD_REF:$jd$p150l_95_emit*/const $next0=(()=>{/* direct literal choice */if((
-/*JD_USE:157301*/$x157301)){return ">op";}else{return ">";}})();const $next1="";const $next2=(
-/*JD_USE:157295*/$x157295);const $next3=(
-/*JD_USE:157296*/$x157296);const $next4=(
-/*JD_USE:157297*/$x157297);const $next5=(
-/*JD_USE:157298*/$x157298);const $next6=(
-/*JD_USE:157299*/$x157299);const $next7=(
-/*JD_USE:157300*/$x157300);const $next8=1;const $next9=1;$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$a9=$next9;$pc=15;continue;}}else{{const $match2=$match1;const $x157304=($match2.codePointAt(0)>0xFFFF?$match2.slice(0,2):$match2[0]);const $x157305=($match2.codePointAt(0)>0xFFFF?$match2.slice(2):$match2.slice(1));const $x157306=$a1;const $x157307=$a2;const $x157308=$a3;const $x157309=$a4;const $x157310=$a5;const $x157311=$a6;const $x157312=$a7;const $x157313=$a8;{/* direct literal choice */if((
-/*JD_REF:$jd$f_95_ascii_95_char_95_eq*/$jd$f_95_ascii_95_char_95_eq((
-/*JD_USE:157304*/$x157304),">"))){{
-/*JD_REF:$jd$p150l_95_emit*/const $next0=(()=>{/* direct literal choice */if((
-/*JD_USE:157313*/$x157313)){return ">>op";}else{return ">>";}})();const $next1=(
+/*JD_USE:157312*/$x157312)))))){return "+bind";}else{return "+";}})();const $next1=(
 /*JD_USE:157305*/$x157305);const $next2=(
-/*JD_USE:157307*/$x157307);const $next3=(
-/*JD_USE:157308*/$x157308);const $next4=(
-/*JD_USE:157309*/$x157309);const $next5=(
-/*JD_USE:157310*/$x157310);const $next6=(
-/*JD_USE:157311*/$x157311);const $next7=(
-/*JD_USE:157312*/$x157312);const $next8=2;const $next9=2;$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$a9=$next9;$pc=15;continue;}}else{{/* direct literal choice */if((
+/*JD_USE:157306*/$x157306);const $next3=(
+/*JD_USE:157307*/$x157307);const $next4=(
+/*JD_USE:157308*/$x157308);const $next5=(
+/*JD_USE:157309*/$x157309);const $next6=(
+/*JD_USE:157310*/$x157310);const $next7=(
+/*JD_USE:157311*/$x157311);const $next8=1;const $next9=1;$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$a9=$next9;$pc=15;continue;}}}}}}}case 20:{{const $match1=$a0;if($match1===""){const $x157329=$a2;const $x157330=$a3;const $x157331=$a4;const $x157332=$a5;const $x157333=$a6;const $x157334=$a7;const $x157335=$a8;{
+/*JD_REF:$jd$p150l_95_emit*/const $next0=(()=>{/* direct literal choice */if((
+/*JD_USE:157335*/$x157335)){return ">op";}else{return ">";}})();const $next1="";const $next2=(
+/*JD_USE:157329*/$x157329);const $next3=(
+/*JD_USE:157330*/$x157330);const $next4=(
+/*JD_USE:157331*/$x157331);const $next5=(
+/*JD_USE:157332*/$x157332);const $next6=(
+/*JD_USE:157333*/$x157333);const $next7=(
+/*JD_USE:157334*/$x157334);const $next8=1;const $next9=1;$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$a9=$next9;$pc=15;continue;}}else{{const $match2=$match1;const $x157338=($match2.codePointAt(0)>0xFFFF?$match2.slice(0,2):$match2[0]);const $x157339=($match2.codePointAt(0)>0xFFFF?$match2.slice(2):$match2.slice(1));const $x157340=$a1;const $x157341=$a2;const $x157342=$a3;const $x157343=$a4;const $x157344=$a5;const $x157345=$a6;const $x157346=$a7;const $x157347=$a8;{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_ascii_95_char_95_eq*/$jd$f_95_ascii_95_char_95_eq((
-/*JD_USE:157304*/$x157304),"="))){{
+/*JD_USE:157338*/$x157338),">"))){{
+/*JD_REF:$jd$p150l_95_emit*/const $next0=(()=>{/* direct literal choice */if((
+/*JD_USE:157347*/$x157347)){return ">>op";}else{return ">>";}})();const $next1=(
+/*JD_USE:157339*/$x157339);const $next2=(
+/*JD_USE:157341*/$x157341);const $next3=(
+/*JD_USE:157342*/$x157342);const $next4=(
+/*JD_USE:157343*/$x157343);const $next5=(
+/*JD_USE:157344*/$x157344);const $next6=(
+/*JD_USE:157345*/$x157345);const $next7=(
+/*JD_USE:157346*/$x157346);const $next8=2;const $next9=2;$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$a9=$next9;$pc=15;continue;}}else{{/* direct literal choice */if((
+/*JD_REF:$jd$f_95_ascii_95_char_95_eq*/$jd$f_95_ascii_95_char_95_eq((
+/*JD_USE:157338*/$x157338),"="))){{
 /*JD_REF:$jd$p150l_95_emit*/const $next0=">=";const $next1=(
-/*JD_USE:157305*/$x157305);const $next2=(
-/*JD_USE:157307*/$x157307);const $next3=(
-/*JD_USE:157308*/$x157308);const $next4=(
-/*JD_USE:157309*/$x157309);const $next5=(
-/*JD_USE:157310*/$x157310);const $next6=(
-/*JD_USE:157311*/$x157311);const $next7=(
-/*JD_USE:157312*/$x157312);const $next8=2;const $next9=2;$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$a9=$next9;$pc=15;continue;}}else{{
+/*JD_USE:157339*/$x157339);const $next2=(
+/*JD_USE:157341*/$x157341);const $next3=(
+/*JD_USE:157342*/$x157342);const $next4=(
+/*JD_USE:157343*/$x157343);const $next5=(
+/*JD_USE:157344*/$x157344);const $next6=(
+/*JD_USE:157345*/$x157345);const $next7=(
+/*JD_USE:157346*/$x157346);const $next8=2;const $next9=2;$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$a9=$next9;$pc=15;continue;}}else{{
 /*JD_REF:$jd$p150l_95_emit*/const $next0=(()=>{/* direct literal choice */if((
-/*JD_USE:157313*/$x157313)){return ">op";}else{return ">";}})();const $next1=(
-/*JD_USE:157306*/$x157306);const $next2=(
-/*JD_USE:157307*/$x157307);const $next3=(
-/*JD_USE:157308*/$x157308);const $next4=(
-/*JD_USE:157309*/$x157309);const $next5=(
-/*JD_USE:157310*/$x157310);const $next6=(
-/*JD_USE:157311*/$x157311);const $next7=(
-/*JD_USE:157312*/$x157312);const $next8=1;const $next9=1;$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$a9=$next9;$pc=15;continue;}}}}}}}}}}}
+/*JD_USE:157347*/$x157347)){return ">op";}else{return ">";}})();const $next1=(
+/*JD_USE:157340*/$x157340);const $next2=(
+/*JD_USE:157341*/$x157341);const $next3=(
+/*JD_USE:157342*/$x157342);const $next4=(
+/*JD_USE:157343*/$x157343);const $next5=(
+/*JD_USE:157344*/$x157344);const $next6=(
+/*JD_USE:157345*/$x157345);const $next7=(
+/*JD_USE:157346*/$x157346);const $next8=1;const $next9=1;$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$a9=$next9;$pc=15;continue;}}}}}}}}}}}
 function $jd$p150l_95_cursor($a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9,$a10){return (
 /*JD_REF:$jd$p150l_95_cursor*/$jd$p150l_95_cursor$scc(0,$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9,$a10));}
 function $jd$p150l_95_newline($a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9,$a10){return (
@@ -12280,34 +12280,34 @@ function $jd$p150l_95_word$scc($pc,$a0,$a1,$a2,$a3,$a4){
 /*JD_USE:16377*/$x16377);const $next2=(
 /*JD_USE:16378*/$x16378);const $next3=(
 /*JD_USE:16379*/$x16379);const $next4=(
-/*JD_USE:16380*/$x16380);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$pc=1;continue;}}case 1:{{const $match1=$a0;if($match1===""){const $x157173=$a2;const $x157174=$a3;return ({$:"FScanned","word":(
+/*JD_USE:16380*/$x16380);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$pc=1;continue;}}case 1:{{const $match1=$a0;if($match1===""){const $x157207=$a2;const $x157208=$a3;return ({$:"FScanned","word":(
 /*JD_REF:$jd$String_46_reverse*/$jd$String_46_reverse((
-/*JD_USE:157173*/$x157173))),"rest":"",["size"]:(
-/*JD_USE:157174*/$x157174)});}else{{const $match2=$match1;const $x157176=($match2.codePointAt(0)>0xFFFF?$match2.slice(0,2):$match2[0]);const $x157177=($match2.codePointAt(0)>0xFFFF?$match2.slice(2):$match2.slice(1));const $x157178=$a1;const $x157179=$a2;const $x157180=$a3;const $x157181=$a4;{/* direct literal choice */if((()=>{/* direct literal choice */if((
+/*JD_USE:157207*/$x157207))),"rest":"",["size"]:(
+/*JD_USE:157208*/$x157208)});}else{{const $match2=$match1;const $x157210=($match2.codePointAt(0)>0xFFFF?$match2.slice(0,2):$match2[0]);const $x157211=($match2.codePointAt(0)>0xFFFF?$match2.slice(2):$match2.slice(1));const $x157212=$a1;const $x157213=$a2;const $x157214=$a3;const $x157215=$a4;{/* direct literal choice */if((()=>{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_ident*/$jd$f_95_ident((
-/*JD_USE:157176*/$x157176)))){return true;}else{{const $ord0=(
+/*JD_USE:157210*/$x157210)))){return true;}else{{const $ord0=(
 /*JD_REF:$jd$Char_46_is_95_eq*/$jd$Char_46_is_95_eq((
-/*JD_USE:157176*/$x157176),"+"));const $ord1=(
+/*JD_USE:157210*/$x157210),"+"));const $ord1=(
 /*JD_REF:$jd$Char_46_is_95_eq*/$jd$Char_46_is_95_eq((
-/*JD_USE:157176*/$x157176),"-"));const $ord2=(
+/*JD_USE:157210*/$x157210),"-"));const $ord2=(
 /*JD_REF:$jd$Char_46_is_95_eq*/$jd$Char_46_is_95_eq((
-/*JD_USE:157181*/$x157181),"e"));const $ord3=(
+/*JD_USE:157215*/$x157215),"e"));const $ord3=(
 /*JD_REF:$jd$Char_46_is_95_eq*/$jd$Char_46_is_95_eq((
-/*JD_USE:157181*/$x157181),"E"));return (
+/*JD_USE:157215*/$x157215),"E"));return (
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((($ord0 || $ord1)),(($ord2 || $ord3)))),(
 /*JD_REF:$jd$p150l_95_digit*/$jd$p150l_95_digit((
-/*JD_USE:157177*/$x157177)))));}}})()){{
+/*JD_USE:157211*/$x157211)))));}}})()){{
 /*JD_REF:$jd$p150l_95_word*/const $next0=(
-/*JD_USE:157177*/$x157177);const $next1=((
-/*JD_USE:157176*/$x157176)+(
-/*JD_USE:157179*/$x157179));const $next2=((((
-/*JD_USE:157180*/$x157180) + 1) >>> 0));const $next3=(
-/*JD_USE:157176*/$x157176);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$pc=0;continue;}}else{return ({$:"FScanned","word":(
+/*JD_USE:157211*/$x157211);const $next1=((
+/*JD_USE:157210*/$x157210)+(
+/*JD_USE:157213*/$x157213));const $next2=((((
+/*JD_USE:157214*/$x157214) + 1) >>> 0));const $next3=(
+/*JD_USE:157210*/$x157210);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$pc=0;continue;}}else{return ({$:"FScanned","word":(
 /*JD_REF:$jd$String_46_reverse*/$jd$String_46_reverse((
-/*JD_USE:157179*/$x157179))),"rest":(
-/*JD_USE:157178*/$x157178),["size"]:(
-/*JD_USE:157180*/$x157180)});}}}}}}}}
+/*JD_USE:157213*/$x157213))),"rest":(
+/*JD_USE:157212*/$x157212),["size"]:(
+/*JD_USE:157214*/$x157214)});}}}}}}}}
 function $jd$p150l_95_word($a0,$a1,$a2,$a3,$a4){return (
 /*JD_REF:$jd$p150l_95_word*/$jd$p150l_95_word$scc(0,$a0,$a1,$a2,$a3,$a4));}
 function $jd$p150l_95_word_95_done($a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9,$a10){return (
@@ -73636,111 +73636,111 @@ function $jd$noa_95_continue$scc($pc,$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8){
 /*JD_REF:$jd$noa_95_in*/$jd$noa_95_in((
 /*JD_USE:49046*/$x49046))),(
 /*JD_REF:$jd$noa_95_iu*/$jd$noa_95_iu((
-/*JD_USE:49046*/$x49046)))));}}}}}}}case 11:{const $x139280=$a0;const $x139281=$a1;const $x139282=$a2;const $x139283=$a3;const $x139284=$a4;const $x139285=$a5;const $x139286=$a6;const $x139287=$a7;{const $match9=$a8;if($match9.$==="Some"){const $x139288=$match9["value"];{
+/*JD_USE:49046*/$x49046)))));}}}}}}}case 11:{const $x139309=$a0;const $x139310=$a1;const $x139311=$a2;const $x139312=$a3;const $x139313=$a4;const $x139314=$a5;const $x139315=$a6;const $x139316=$a7;{const $match9=$a8;if($match9.$==="Some"){const $x139317=$match9["value"];{
 /*JD_REF:$jd$p131rv_95_reference*/const $next0=(
-/*JD_USE:139280*/$x139280);const $next1=(
-/*JD_USE:139281*/$x139281);const $next2=(
-/*JD_USE:139282*/$x139282);const $next3=(
-/*JD_USE:139283*/$x139283);const $next4=(
-/*JD_USE:139284*/$x139284);const $next5=(
-/*JD_USE:139285*/$x139285);const $next6=(
-/*JD_USE:139286*/$x139286);const $next7=(
-/*JD_USE:139287*/$x139287);const $next8=(
-/*JD_USE:139288*/$x139288);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$pc=12;continue;}}else{{const $match10=$match9;{const $let0=(
+/*JD_USE:139309*/$x139309);const $next1=(
+/*JD_USE:139310*/$x139310);const $next2=(
+/*JD_USE:139311*/$x139311);const $next3=(
+/*JD_USE:139312*/$x139312);const $next4=(
+/*JD_USE:139313*/$x139313);const $next5=(
+/*JD_USE:139314*/$x139314);const $next6=(
+/*JD_USE:139315*/$x139315);const $next7=(
+/*JD_USE:139316*/$x139316);const $next8=(
+/*JD_USE:139317*/$x139317);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$pc=12;continue;}}else{{const $match10=$match9;{const $let0=(
 /*JD_REF:$jd$lookup*/$jd$lookup((
 /*JD_REF:$jd$noa_95_book*/$jd$noa_95_book((
-/*JD_USE:139280*/$x139280))),(
-/*JD_USE:139281*/$x139281)));{const $x139289=$let0;{const $ord0=(
+/*JD_USE:139309*/$x139309))),(
+/*JD_USE:139310*/$x139310)));{const $x139318=$let0;{const $ord0=(
 /*JD_REF:$jd$nc_95_foreign*/$jd$nc_95_foreign((
-/*JD_USE:139289*/$x139289)));const $ord1=(
+/*JD_USE:139318*/$x139318)));const $ord1=(
 /*JD_REF:$jd$nc_95_native_95_def*/$jd$nc_95_native_95_def((
-/*JD_USE:139289*/$x139289)));const $ord2=(($ord0 || $ord1));const $ord3=(
+/*JD_USE:139318*/$x139318)));const $ord2=(($ord0 || $ord1));const $ord3=(
 /*JD_REF:$jd$nb_95_contains*/$jd$nb_95_contains((
-/*JD_USE:139284*/$x139284),(
-/*JD_USE:139281*/$x139281)));const $ord4=(
+/*JD_USE:139313*/$x139313),(
+/*JD_USE:139310*/$x139310)));const $ord4=(
 /*JD_REF:$jd$nt_95_count*/$jd$nt_95_count((
-/*JD_USE:139284*/$x139284)));/* direct literal choice */if((
+/*JD_USE:139313*/$x139313)));/* direct literal choice */if((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$String_46_eq*/$jd$String_46_eq((
 /*JD_REF:$jd$dk*/$jd$dk((
-/*JD_USE:139289*/$x139289))),"Def")),(
+/*JD_USE:139318*/$x139318))),"Def")),(
 /*JD_REF:$jd$Bool_46_not*/$jd$Bool_46_not((($ord2 || $ord3)))))),(($ord4 < 8))))){{
 /*JD_REF:$jd$noa_95_eval*/const $next0=(
-/*JD_USE:139280*/$x139280);const $next1=(
+/*JD_USE:139309*/$x139309);const $next1=(
 /*JD_REF:$jd$nc_95_source_95_body*/$jd$nc_95_source_95_body((
 /*JD_REF:$jd$noa_95_book*/$jd$noa_95_book((
-/*JD_USE:139280*/$x139280))),(
-/*JD_USE:139289*/$x139289),(
-/*JD_USE:139285*/$x139285)));const $next2=({$:"Nil"});const $next3=(
-/*JD_USE:139283*/$x139283);const $next4=({$:"Con","head":(
-/*JD_USE:139281*/$x139281),["tail"]:(
-/*JD_USE:139284*/$x139284)});const $next5=(
-/*JD_USE:139285*/$x139285);const $next6=(
-/*JD_USE:139286*/$x139286);const $next7=({$:"NO_KApplyArgs","args":(
-/*JD_USE:139282*/$x139282),["next"]:(
-/*JD_USE:139287*/$x139287)});$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$pc=3;continue;}}else{return (
+/*JD_USE:139309*/$x139309))),(
+/*JD_USE:139318*/$x139318),(
+/*JD_USE:139314*/$x139314)));const $next2=({$:"Nil"});const $next3=(
+/*JD_USE:139312*/$x139312);const $next4=({$:"Con","head":(
+/*JD_USE:139310*/$x139310),["tail"]:(
+/*JD_USE:139313*/$x139313)});const $next5=(
+/*JD_USE:139314*/$x139314);const $next6=(
+/*JD_USE:139315*/$x139315);const $next7=({$:"NO_KApplyArgs","args":(
+/*JD_USE:139311*/$x139311),["next"]:(
+/*JD_USE:139316*/$x139316)});$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$pc=3;continue;}}else{return (
 /*JD_REF:$jd$noa_95_fail*/$jd$noa_95_fail("observer: helper effect, cycle or depth",(
-/*JD_USE:139285*/$x139285),(
-/*JD_USE:139286*/$x139286)));}}}}}}}}case 12:{const $x142711=$a0;const $x142712=$a1;const $x142713=$a2;const $x142714=$a3;const $x142715=$a4;const $x142716=$a5;const $x142717=$a6;const $x142718=$a7;{const $match9=$a8;const $x142719=$match9["owner"];const $x142720=$match9["params"];const $x142721=$match9["roots"];const $x142722=$match9["result"];const $x142723=$match9["reader"];const $x142724=$match9["wrapper"];const $x142725=$match9["resultId"];{/* direct literal choice */if((
+/*JD_USE:139314*/$x139314),(
+/*JD_USE:139315*/$x139315)));}}}}}}}}case 12:{const $x142742=$a0;const $x142743=$a1;const $x142744=$a2;const $x142745=$a3;const $x142746=$a4;const $x142747=$a5;const $x142748=$a6;const $x142749=$a7;{const $match9=$a8;const $x142750=$match9["owner"];const $x142751=$match9["params"];const $x142752=$match9["roots"];const $x142753=$match9["result"];const $x142754=$match9["reader"];const $x142755=$match9["wrapper"];const $x142756=$match9["resultId"];{/* direct literal choice */if((
 /*JD_REF:$jd$p128br_95_arguments*/$jd$p128br_95_arguments((
-/*JD_USE:142711*/$x142711),(
-/*JD_USE:142720*/$x142720),(
-/*JD_USE:142721*/$x142721),(
-/*JD_USE:142713*/$x142713),0))){return (
+/*JD_USE:142742*/$x142742),(
+/*JD_USE:142751*/$x142751),(
+/*JD_USE:142752*/$x142752),(
+/*JD_USE:142744*/$x142744),0))){return (
 /*JD_REF:$jd$p128br_95_call*/$jd$p128br_95_call((
-/*JD_USE:142711*/$x142711),({$:"P128BRHelper","owner":(
-/*JD_USE:142719*/$x142719),"params":(
-/*JD_USE:142720*/$x142720),"roots":(
-/*JD_USE:142721*/$x142721),"result":(
-/*JD_USE:142722*/$x142722),"reader":(
-/*JD_USE:142723*/$x142723),"wrapper":(
-/*JD_USE:142724*/$x142724),["resultId"]:(
-/*JD_USE:142725*/$x142725)}),(
-/*JD_USE:142713*/$x142713),(
-/*JD_USE:142714*/$x142714),(
-/*JD_USE:142716*/$x142716),(
-/*JD_USE:142717*/$x142717),(
-/*JD_USE:142718*/$x142718)));}else{{const $ord0=(
+/*JD_USE:142742*/$x142742),({$:"P128BRHelper","owner":(
+/*JD_USE:142750*/$x142750),"params":(
+/*JD_USE:142751*/$x142751),"roots":(
+/*JD_USE:142752*/$x142752),"result":(
+/*JD_USE:142753*/$x142753),"reader":(
+/*JD_USE:142754*/$x142754),"wrapper":(
+/*JD_USE:142755*/$x142755),["resultId"]:(
+/*JD_USE:142756*/$x142756)}),(
+/*JD_USE:142744*/$x142744),(
+/*JD_USE:142745*/$x142745),(
+/*JD_USE:142747*/$x142747),(
+/*JD_USE:142748*/$x142748),(
+/*JD_USE:142749*/$x142749)));}else{{const $ord0=(
 /*JD_REF:$jd$nt_95_count*/$jd$nt_95_count((
-/*JD_USE:142715*/$x142715)));/* direct literal choice */if((
+/*JD_USE:142746*/$x142746)));/* direct literal choice */if((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$p131rv_95_arguments*/$jd$p131rv_95_arguments((
-/*JD_USE:142711*/$x142711),(
-/*JD_USE:142720*/$x142720),(
-/*JD_USE:142721*/$x142721),(
-/*JD_USE:142713*/$x142713),0,false)),(($ord0 < 16))))){{
+/*JD_USE:142742*/$x142742),(
+/*JD_USE:142751*/$x142751),(
+/*JD_USE:142752*/$x142752),(
+/*JD_USE:142744*/$x142744),0,false)),(($ord0 < 16))))){{
 /*JD_REF:$jd$noa_95_eval*/const $next0=(
-/*JD_USE:142711*/$x142711);const $next1=(
+/*JD_USE:142742*/$x142742);const $next1=(
 /*JD_REF:$jd$nc_95_source_95_body*/$jd$nc_95_source_95_body((
 /*JD_REF:$jd$noa_95_book*/$jd$noa_95_book((
-/*JD_USE:142711*/$x142711))),(
+/*JD_USE:142742*/$x142742))),(
 /*JD_REF:$jd$lookup*/$jd$lookup((
 /*JD_REF:$jd$noa_95_book*/$jd$noa_95_book((
-/*JD_USE:142711*/$x142711))),(
-/*JD_USE:142712*/$x142712))),(
-/*JD_USE:142716*/$x142716)));const $next2=({$:"Nil"});const $next3=(
-/*JD_USE:142714*/$x142714);const $next4=({$:"Con","head":(
-/*JD_USE:142712*/$x142712),["tail"]:(
-/*JD_USE:142715*/$x142715)});const $next5=(
-/*JD_USE:142716*/$x142716);const $next6=(
-/*JD_USE:142717*/$x142717);const $next7=({$:"NO_KApplyArgs","args":(
-/*JD_USE:142713*/$x142713),["next"]:(
-/*JD_USE:142718*/$x142718)});$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$pc=3;continue;}}else{return (
+/*JD_USE:142742*/$x142742))),(
+/*JD_USE:142743*/$x142743))),(
+/*JD_USE:142747*/$x142747)));const $next2=({$:"Nil"});const $next3=(
+/*JD_USE:142745*/$x142745);const $next4=({$:"Con","head":(
+/*JD_USE:142743*/$x142743),["tail"]:(
+/*JD_USE:142746*/$x142746)});const $next5=(
+/*JD_USE:142747*/$x142747);const $next6=(
+/*JD_USE:142748*/$x142748);const $next7=({$:"NO_KApplyArgs","args":(
+/*JD_USE:142744*/$x142744),["next"]:(
+/*JD_USE:142749*/$x142749)});$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$pc=3;continue;}}else{return (
 /*JD_REF:$jd$p128br_95_call*/$jd$p128br_95_call((
-/*JD_USE:142711*/$x142711),({$:"P128BRHelper","owner":(
-/*JD_USE:142719*/$x142719),"params":(
-/*JD_USE:142720*/$x142720),"roots":(
-/*JD_USE:142721*/$x142721),"result":(
-/*JD_USE:142722*/$x142722),"reader":(
-/*JD_USE:142723*/$x142723),"wrapper":(
-/*JD_USE:142724*/$x142724),["resultId"]:(
-/*JD_USE:142725*/$x142725)}),(
-/*JD_USE:142713*/$x142713),(
-/*JD_USE:142714*/$x142714),(
-/*JD_USE:142716*/$x142716),(
-/*JD_USE:142717*/$x142717),(
-/*JD_USE:142718*/$x142718)));}}}}}}}}
+/*JD_USE:142742*/$x142742),({$:"P128BRHelper","owner":(
+/*JD_USE:142750*/$x142750),"params":(
+/*JD_USE:142751*/$x142751),"roots":(
+/*JD_USE:142752*/$x142752),"result":(
+/*JD_USE:142753*/$x142753),"reader":(
+/*JD_USE:142754*/$x142754),"wrapper":(
+/*JD_USE:142755*/$x142755),["resultId"]:(
+/*JD_USE:142756*/$x142756)}),(
+/*JD_USE:142744*/$x142744),(
+/*JD_USE:142745*/$x142745),(
+/*JD_USE:142747*/$x142747),(
+/*JD_USE:142748*/$x142748),(
+/*JD_USE:142749*/$x142749)));}}}}}}}}
 function $jd$noa_95_continue($a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8){return (
 /*JD_REF:$jd$noa_95_continue*/$jd$noa_95_continue$scc(0,$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8));}
 function $jd$noa_95_book($a0){for(;;){{const $match1=$a0;const $x48336=$match1["book"];return (
@@ -77073,14 +77073,14 @@ function $jd$p112s_95_context_95_ctors_95_list($a0){for(;;){{const $match1=$a0;i
 /*JD_REF:$jd$missing*/$jd$missing());}}}else{return (
 /*JD_REF:$jd$missing*/$jd$missing());}}}else{return (
 /*JD_REF:$jd$missing*/$jd$missing());}}}}
-function $jd$p113n_95_canonical($a0,$a1){for(;;){const $x77189=$a0;const $x77190=$a1;{const $let0=(
+function $jd$p113n_95_canonical($a0,$a1){for(;;){const $x77204=$a0;const $x77205=$a1;{const $let0=(
 /*JD_REF:$jd$nq_95_layout_95_type*/$jd$nq_95_layout_95_type((
-/*JD_USE:77189*/$x77189),(
-/*JD_USE:77190*/$x77190)));{const $x77191=$let0;{const $let0=(
+/*JD_USE:77204*/$x77204),(
+/*JD_USE:77205*/$x77205)));{const $x77206=$let0;{const $let0=(
 /*JD_REF:$jd$lookup*/$jd$lookup((
-/*JD_USE:77189*/$x77189),"Nat"));{const $x77192=$let0;{const $ord0=(
+/*JD_USE:77204*/$x77204),"Nat"));{const $x77207=$let0;{const $ord0=(
 /*JD_REF:$jd$da*/$jd$da((
-/*JD_USE:77192*/$x77192)));return (
+/*JD_USE:77207*/$x77207)));return (
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
@@ -77088,944 +77088,944 @@ function $jd$p113n_95_canonical($a0,$a1){for(;;){const $x77189=$a0;const $x77190
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$p98_95_tag_95_eq*/$jd$p98_95_tag_95_eq((
-/*JD_USE:77191*/$x77191),"ADT")),(
+/*JD_USE:77206*/$x77206),"ADT")),(
 /*JD_REF:$jd$String_46_eq*/$jd$String_46_eq((
 /*JD_REF:$jd$nm*/$jd$nm((
-/*JD_USE:77191*/$x77191))),"Nat")))),(
+/*JD_USE:77206*/$x77206))),"Nat")))),(
 /*JD_REF:$jd$String_46_eq*/$jd$String_46_eq((
 /*JD_REF:$jd$dk*/$jd$dk((
-/*JD_USE:77192*/$x77192))),"ADT")))),(
+/*JD_USE:77207*/$x77207))),"ADT")))),(
 /*JD_REF:$jd$db*/$jd$db((
-/*JD_USE:77192*/$x77192))))),(($ord0 === 0)))),(
+/*JD_USE:77207*/$x77207))))),(($ord0 === 0)))),(
 /*JD_REF:$jd$List_46_is_95_empty*/$jd$List_46_is_95_empty((
 /*JD_REF:$jd$rm*/$jd$rm((
-/*JD_USE:77191*/$x77191))))))),(
+/*JD_USE:77206*/$x77206))))))),(
 /*JD_REF:$jd$List_46_is_95_empty*/$jd$List_46_is_95_empty((
 /*JD_REF:$jd$ks*/$jd$ks((
-/*JD_USE:77191*/$x77191)))))));}}}}}}}
-function $jd$p113n_95_type_95_kind($a0,$a1){for(;;){const $x77195=$a0;const $x77196=$a1;{/* direct literal choice */if((
+/*JD_USE:77206*/$x77206)))))));}}}}}}}
+function $jd$p113n_95_type_95_kind($a0,$a1){for(;;){const $x77210=$a0;const $x77211=$a1;{/* direct literal choice */if((
 /*JD_REF:$jd$p113n_95_canonical*/$jd$p113n_95_canonical((
-/*JD_USE:77195*/$x77195),(
-/*JD_USE:77196*/$x77196)))){return ({$:"N_Imm64"});}else{return (
+/*JD_USE:77210*/$x77210),(
+/*JD_USE:77211*/$x77211)))){return ({$:"N_Imm64"});}else{return (
 /*JD_REF:$jd$nf_95_scalar_95_kind*/$jd$nf_95_scalar_95_kind((
-/*JD_USE:77195*/$x77195),(
-/*JD_USE:77196*/$x77196)));}}}}
-function $jd$p118np_95_foreign($a0){for(;;){const $x127822=$a0;{const $ord0=(
+/*JD_USE:77210*/$x77210),(
+/*JD_USE:77211*/$x77211)));}}}}
+function $jd$p118np_95_foreign($a0){for(;;){const $x127851=$a0;{const $ord0=(
 /*JD_REF:$jd$p98_95_tag_95_eq*/$jd$p98_95_tag_95_eq((
 /*JD_REF:$jd$nc_95_unann*/$jd$nc_95_unann((
 /*JD_REF:$jd$dv*/$jd$dv((
-/*JD_USE:127822*/$x127822))))),"Foreign"));const $ord1=(
+/*JD_USE:127851*/$x127851))))),"Foreign"));const $ord1=(
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$p88_95_string_95_eq*/$jd$p88_95_string_95_eq((
 /*JD_REF:$jd$dk*/$jd$dk((
-/*JD_USE:127822*/$x127822))),"Def")),(
+/*JD_USE:127851*/$x127851))),"Def")),(
 /*JD_REF:$jd$nc_95_foreign*/$jd$nc_95_foreign((
-/*JD_USE:127822*/$x127822)))));return (
+/*JD_USE:127851*/$x127851)))));return (
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_not*/$jd$Bool_46_not((
 /*JD_REF:$jd$db*/$jd$db((
-/*JD_USE:127822*/$x127822))))),(($ord0 || $ord1))));}}}
-function $jd$p118np_95_walk($a0,$a1){for(;;){{const $match1=$a0;if($match1.$==="Nil"){const $x127825=$a1;return (
-/*JD_USE:127825*/$x127825);}else{{const $match2=$match1;{const $match3=$match2["head"];if($match3.$==="Nil"){const $x127826=$match2["tail"];const $x127827=$a1;{
+/*JD_USE:127851*/$x127851))))),(($ord0 || $ord1))));}}}
+function $jd$p118np_95_walk($a0,$a1){for(;;){{const $match1=$a0;if($match1.$==="Nil"){const $x127854=$a1;return (
+/*JD_USE:127854*/$x127854);}else{{const $match2=$match1;{const $match3=$match2["head"];if($match3.$==="Nil"){const $x127855=$match2["tail"];const $x127856=$a1;{
 /*JD_REF:$jd$p118np_95_walk*/const $next0=(
-/*JD_USE:127826*/$x127826);const $next1=(
-/*JD_USE:127827*/$x127827);$a0=$next0;$a1=$next1;continue;}}else{{const $match4=$match3;const $x127828=$match4["head"];const $x127829=$match4["tail"];const $x127830=$match2["tail"];const $x127831=$a1;{const $ord0=(
+/*JD_USE:127855*/$x127855);const $next1=(
+/*JD_USE:127856*/$x127856);$a0=$next0;$a1=$next1;continue;}}else{{const $match4=$match3;const $x127857=$match4["head"];const $x127858=$match4["tail"];const $x127859=$match2["tail"];const $x127860=$a1;{const $ord0=(
 /*JD_REF:$jd$p118np_95_foreign*/$jd$p118np_95_foreign((
-/*JD_USE:127828*/$x127828)));{
+/*JD_USE:127857*/$x127857)));{
 /*JD_REF:$jd$p118np_95_walk*/const $next0=({$:"Con","head":(
 /*JD_REF:$jd$dc*/$jd$dc((
-/*JD_USE:127828*/$x127828))),["tail"]:({$:"Con","head":(
-/*JD_USE:127829*/$x127829),["tail"]:(
-/*JD_USE:127830*/$x127830)})});const $next1=(((
-/*JD_USE:127831*/$x127831) || $ord0));$a0=$next0;$a1=$next1;continue;}}}}}}}}}}
-function $jd$p128br_95_helpers($a0){for(;;){{const $match1=$a0;const $x139184=$match1["helpers"];return (
-/*JD_USE:139184*/$x139184);}}}
-function $jd$p128br_95_lookup($a0,$a1){for(;;){const $x139187=$a0;{const $match2=$a1;if($match2.$==="Nil"){return ({$:"None"});}else{{const $match3=$match2;{const $match4=$match3["head"];const $x139188=$match4["owner"];const $x139189=$match4["params"];const $x139190=$match4["roots"];const $x139191=$match4["result"];const $x139192=$match4["reader"];const $x139193=$match4["wrapper"];const $x139194=$match4["resultId"];const $x139195=$match3["tail"];{/* direct literal choice */if((
+/*JD_USE:127857*/$x127857))),["tail"]:({$:"Con","head":(
+/*JD_USE:127858*/$x127858),["tail"]:(
+/*JD_USE:127859*/$x127859)})});const $next1=(((
+/*JD_USE:127860*/$x127860) || $ord0));$a0=$next0;$a1=$next1;continue;}}}}}}}}}}
+function $jd$p128br_95_helpers($a0){for(;;){{const $match1=$a0;const $x139213=$match1["helpers"];return (
+/*JD_USE:139213*/$x139213);}}}
+function $jd$p128br_95_lookup($a0,$a1){for(;;){const $x139216=$a0;{const $match2=$a1;if($match2.$==="Nil"){return ({$:"None"});}else{{const $match3=$match2;{const $match4=$match3["head"];const $x139217=$match4["owner"];const $x139218=$match4["params"];const $x139219=$match4["roots"];const $x139220=$match4["result"];const $x139221=$match4["reader"];const $x139222=$match4["wrapper"];const $x139223=$match4["resultId"];const $x139224=$match3["tail"];{/* direct literal choice */if((
 /*JD_REF:$jd$String_46_eq*/$jd$String_46_eq((
-/*JD_USE:139187*/$x139187),(
-/*JD_USE:139188*/$x139188)))){return ({$:"Some",["value"]:({$:"P128BRHelper","owner":(
-/*JD_USE:139188*/$x139188),"params":(
-/*JD_USE:139189*/$x139189),"roots":(
-/*JD_USE:139190*/$x139190),"result":(
-/*JD_USE:139191*/$x139191),"reader":(
-/*JD_USE:139192*/$x139192),"wrapper":(
-/*JD_USE:139193*/$x139193),["resultId"]:(
-/*JD_USE:139194*/$x139194)})});}else{{
+/*JD_USE:139216*/$x139216),(
+/*JD_USE:139217*/$x139217)))){return ({$:"Some",["value"]:({$:"P128BRHelper","owner":(
+/*JD_USE:139217*/$x139217),"params":(
+/*JD_USE:139218*/$x139218),"roots":(
+/*JD_USE:139219*/$x139219),"result":(
+/*JD_USE:139220*/$x139220),"reader":(
+/*JD_USE:139221*/$x139221),"wrapper":(
+/*JD_USE:139222*/$x139222),["resultId"]:(
+/*JD_USE:139223*/$x139223)})});}else{{
 /*JD_REF:$jd$p128br_95_lookup*/const $next0=(
-/*JD_USE:139187*/$x139187);const $next1=(
-/*JD_USE:139195*/$x139195);$a0=$next0;$a1=$next1;continue;}}}}}}}}}
-function $jd$p128br_95_held($a0,$a1,$a2,$a3){for(;;){const $x139204=$a0;{const $match2=$a1;if($match2.$==="Nil"){return false;}else{{const $match3=$match2;const $x139208=$match3["tail"];const $x139209=$a2;const $x139210=$a3;{const $ord0=(
+/*JD_USE:139216*/$x139216);const $next1=(
+/*JD_USE:139224*/$x139224);$a0=$next0;$a1=$next1;continue;}}}}}}}}}
+function $jd$p128br_95_held($a0,$a1,$a2,$a3){for(;;){const $x139233=$a0;{const $match2=$a1;if($match2.$==="Nil"){return false;}else{{const $match3=$match2;const $x139237=$match3["tail"];const $x139238=$a2;const $x139239=$a3;{const $ord0=(
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$no_95_root_95_index*/$jd$no_95_root_95_index((
-/*JD_USE:139209*/$x139209),(
-/*JD_USE:139210*/$x139210))),(
+/*JD_USE:139238*/$x139238),(
+/*JD_USE:139239*/$x139239))),(
 /*JD_REF:$jd$noa_95_below*/$jd$noa_95_below((
-/*JD_USE:139204*/$x139204),(
+/*JD_USE:139233*/$x139233),(
 /*JD_REF:$jd$kt*/$jd$kt("OArg","",(
-/*JD_USE:139210*/$x139210),0,({$:"Nil"})))))));const $ord1=(
+/*JD_USE:139239*/$x139239),0,({$:"Nil"})))))));const $ord1=(
 /*JD_REF:$jd$p128br_95_held*/$jd$p128br_95_held((
-/*JD_USE:139204*/$x139204),(
-/*JD_USE:139208*/$x139208),(
-/*JD_USE:139209*/$x139209),((((
-/*JD_USE:139210*/$x139210) + 1) >>> 0))));return (($ord0 || $ord1));}}}}}}
-function $jd$p128br_95_arguments($a0,$a1,$a2,$a3,$a4){for(;;){const $x139216=$a0;{const $match2=$a1;if($match2.$==="Nil"){{const $match4=$a3;if($match4.$==="Nil"){return true;}else{return false;}}}else{{const $match3=$match2;const $x139221=$match3["head"];const $x139222=$match3["tail"];const $x139223=$a2;{const $match7=$a3;if($match7.$==="Con"){const $x139224=$match7["head"];const $x139225=$match7["tail"];const $x139226=$a4;return (
+/*JD_USE:139233*/$x139233),(
+/*JD_USE:139237*/$x139237),(
+/*JD_USE:139238*/$x139238),((((
+/*JD_USE:139239*/$x139239) + 1) >>> 0))));return (($ord0 || $ord1));}}}}}}
+function $jd$p128br_95_arguments($a0,$a1,$a2,$a3,$a4){for(;;){const $x139245=$a0;{const $match2=$a1;if($match2.$==="Nil"){{const $match4=$a3;if($match4.$==="Nil"){return true;}else{return false;}}}else{{const $match3=$match2;const $x139250=$match3["head"];const $x139251=$match3["tail"];const $x139252=$a2;{const $match7=$a3;if($match7.$==="Con"){const $x139253=$match7["head"];const $x139254=$match7["tail"];const $x139255=$a4;return (
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$String_46_eq*/$jd$String_46_eq((
 /*JD_REF:$jd$noa_95_value_95_type*/$jd$noa_95_value_95_type((
-/*JD_USE:139216*/$x139216),(
-/*JD_USE:139224*/$x139224))),(
+/*JD_USE:139245*/$x139245),(
+/*JD_USE:139253*/$x139253))),(
 /*JD_REF:$jd$nm*/$jd$nm((
-/*JD_USE:139221*/$x139221))))),(()=>{/* direct literal choice */if((
+/*JD_USE:139250*/$x139250))))),(()=>{/* direct literal choice */if((
 /*JD_REF:$jd$no_95_root_95_index*/$jd$no_95_root_95_index((
-/*JD_USE:139223*/$x139223),(
-/*JD_USE:139226*/$x139226)))){return (
+/*JD_USE:139252*/$x139252),(
+/*JD_USE:139255*/$x139255)))){return (
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$String_46_eq*/$jd$String_46_eq((
 /*JD_REF:$jd$tg*/$jd$tg((
-/*JD_USE:139224*/$x139224))),"OA")),(
+/*JD_USE:139253*/$x139253))),"OA")),(
 /*JD_REF:$jd$p128br_95_held*/$jd$p128br_95_held((
 /*JD_REF:$jd$noa_95_origin*/$jd$noa_95_origin((
-/*JD_USE:139224*/$x139224))),(
+/*JD_USE:139253*/$x139253))),(
 /*JD_REF:$jd$no_95_schema_95_params*/$jd$no_95_schema_95_params((
 /*JD_REF:$jd$noa_95_schema*/$jd$noa_95_schema((
-/*JD_USE:139216*/$x139216))))),(
+/*JD_USE:139245*/$x139245))))),(
 /*JD_REF:$jd$no_95_schema_95_roots*/$jd$no_95_schema_95_roots((
 /*JD_REF:$jd$noa_95_schema*/$jd$noa_95_schema((
-/*JD_USE:139216*/$x139216))))),0))));}else{return (
+/*JD_USE:139245*/$x139245))))),0))));}else{return (
 /*JD_REF:$jd$Bool_46_not*/$jd$Bool_46_not((
 /*JD_REF:$jd$String_46_eq*/$jd$String_46_eq((
 /*JD_REF:$jd$tg*/$jd$tg((
 /*JD_REF:$jd$noa_95_scalar*/$jd$noa_95_scalar((
-/*JD_USE:139216*/$x139216),(
-/*JD_USE:139224*/$x139224))))),"Absent"))));}})())),(
+/*JD_USE:139245*/$x139245),(
+/*JD_USE:139253*/$x139253))))),"Absent"))));}})())),(
 /*JD_REF:$jd$p128br_95_arguments*/$jd$p128br_95_arguments((
-/*JD_USE:139216*/$x139216),(
-/*JD_USE:139222*/$x139222),(
-/*JD_USE:139223*/$x139223),(
-/*JD_USE:139225*/$x139225),((((
-/*JD_USE:139226*/$x139226) + 1) >>> 0))))));}else{return false;}}}}}}}
-function $jd$p128br_95_words($a0,$a1,$a2,$a3){for(;;){const $x139239=$a0;{const $match2=$a1;if($match2.$==="Nil"){return ({$:"Nil"});}else{{const $match3=$match2;const $x139242=$match3["head"];const $x139243=$match3["tail"];const $x139244=$a2;const $x139245=$a3;return ({$:"Con","head":(()=>{/* direct literal choice */if((
+/*JD_USE:139245*/$x139245),(
+/*JD_USE:139251*/$x139251),(
+/*JD_USE:139252*/$x139252),(
+/*JD_USE:139254*/$x139254),((((
+/*JD_USE:139255*/$x139255) + 1) >>> 0))))));}else{return false;}}}}}}}
+function $jd$p128br_95_words($a0,$a1,$a2,$a3){for(;;){const $x139268=$a0;{const $match2=$a1;if($match2.$==="Nil"){return ({$:"Nil"});}else{{const $match3=$match2;const $x139271=$match3["head"];const $x139272=$match3["tail"];const $x139273=$a2;const $x139274=$a3;return ({$:"Con","head":(()=>{/* direct literal choice */if((
 /*JD_REF:$jd$no_95_root_95_index*/$jd$no_95_root_95_index((
-/*JD_USE:139244*/$x139244),(
-/*JD_USE:139245*/$x139245)))){return (
+/*JD_USE:139273*/$x139273),(
+/*JD_USE:139274*/$x139274)))){return (
 /*JD_REF:$jd$kid*/$jd$kid((
-/*JD_USE:139242*/$x139242),1));}else{return (
+/*JD_USE:139271*/$x139271),1));}else{return (
 /*JD_REF:$jd$noa_95_scalar*/$jd$noa_95_scalar((
-/*JD_USE:139239*/$x139239),(
-/*JD_USE:139242*/$x139242)));}})(),["tail"]:(
+/*JD_USE:139268*/$x139268),(
+/*JD_USE:139271*/$x139271)));}})(),["tail"]:(
 /*JD_REF:$jd$p128br_95_words*/$jd$p128br_95_words((
-/*JD_USE:139239*/$x139239),(
-/*JD_USE:139243*/$x139243),(
-/*JD_USE:139244*/$x139244),((((
-/*JD_USE:139245*/$x139245) + 1) >>> 0))))});}}}}}
-function $jd$p128br_95_call($a0,$a1,$a2,$a3,$a4,$a5,$a6){for(;;){const $x139255=$a0;{const $match2=$a1;const $x139257=$match2["params"];const $x139258=$match2["roots"];const $x139259=$match2["result"];const $x139260=$match2["reader"];const $x139261=$match2["wrapper"];const $x139262=$match2["resultId"];const $x139263=$a2;const $x139264=$a3;const $x139265=$a4;const $x139266=$a5;const $x139267=$a6;{const $let0=(
+/*JD_USE:139268*/$x139268),(
+/*JD_USE:139272*/$x139272),(
+/*JD_USE:139273*/$x139273),((((
+/*JD_USE:139274*/$x139274) + 1) >>> 0))))});}}}}}
+function $jd$p128br_95_call($a0,$a1,$a2,$a3,$a4,$a5,$a6){for(;;){const $x139284=$a0;{const $match2=$a1;const $x139286=$match2["params"];const $x139287=$match2["roots"];const $x139288=$match2["result"];const $x139289=$match2["reader"];const $x139290=$match2["wrapper"];const $x139291=$match2["resultId"];const $x139292=$a2;const $x139293=$a3;const $x139294=$a4;const $x139295=$a5;const $x139296=$a6;{const $let0=(
 /*JD_REF:$jd$nc_95_id*/$jd$nc_95_id((
-/*JD_USE:139265*/$x139265)));{const $x139268=$let0;{/* direct literal choice */if((
+/*JD_USE:139294*/$x139294)));{const $x139297=$let0;{/* direct literal choice */if((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$p128br_95_arguments*/$jd$p128br_95_arguments((
-/*JD_USE:139255*/$x139255),(
-/*JD_USE:139257*/$x139257),(
-/*JD_USE:139258*/$x139258),(
-/*JD_USE:139263*/$x139263),0)),(
+/*JD_USE:139284*/$x139284),(
+/*JD_USE:139286*/$x139286),(
+/*JD_USE:139287*/$x139287),(
+/*JD_USE:139292*/$x139292),0)),(
 /*JD_REF:$jd$nol_95_scalar*/$jd$nol_95_scalar((
 /*JD_REF:$jd$noa_95_book*/$jd$noa_95_book((
-/*JD_USE:139255*/$x139255))),(
+/*JD_USE:139284*/$x139284))),(
 /*JD_REF:$jd$kt*/$jd$kt("ADT",(
-/*JD_USE:139259*/$x139259),0,0,({$:"Nil"}))))))),(
+/*JD_USE:139288*/$x139288),0,0,({$:"Nil"}))))))),(
 /*JD_REF:$jd$Bool_46_not*/$jd$Bool_46_not((
 /*JD_REF:$jd$p131p_95_parameter*/$jd$p131p_95_parameter((
-/*JD_USE:139262*/$x139262),(
-/*JD_USE:139257*/$x139257))))))),(
+/*JD_USE:139291*/$x139291),(
+/*JD_USE:139286*/$x139286))))))),(
 /*JD_REF:$jd$p131p_95_wrapper_95_ok*/$jd$p131p_95_wrapper_95_ok((
-/*JD_USE:139261*/$x139261),(
-/*JD_USE:139257*/$x139257),(
-/*JD_USE:139262*/$x139262),0))))){return (
+/*JD_USE:139290*/$x139290),(
+/*JD_USE:139286*/$x139286),(
+/*JD_USE:139291*/$x139291),0))))){return (
 /*JD_REF:$jd$noa_95_prepend*/$jd$noa_95_prepend((
 /*JD_REF:$jd$kt*/$jd$kt("NO_Let","",(
-/*JD_USE:139268*/$x139268),0,({$:"Con","head":(
+/*JD_USE:139297*/$x139297),0,({$:"Con","head":(
 /*JD_REF:$jd$kt*/$jd$kt("NO_ReadCall",(
-/*JD_USE:139260*/$x139260),0,0,(
+/*JD_USE:139289*/$x139289),0,0,(
 /*JD_REF:$jd$p128br_95_words*/$jd$p128br_95_words((
-/*JD_USE:139255*/$x139255),(
-/*JD_USE:139263*/$x139263),(
-/*JD_USE:139258*/$x139258),0)))),["tail"]:({$:"Nil"})}))),(
+/*JD_USE:139284*/$x139284),(
+/*JD_USE:139292*/$x139292),(
+/*JD_USE:139287*/$x139287),0)))),["tail"]:({$:"Nil"})}))),(
 /*JD_REF:$jd$noa_95_continue*/$jd$noa_95_continue((
-/*JD_USE:139255*/$x139255),(
-/*JD_USE:139267*/$x139267),({$:"NO_Input","value":(
+/*JD_USE:139284*/$x139284),(
+/*JD_USE:139296*/$x139296),({$:"NO_Input","value":(
 /*JD_REF:$jd$p131p_95_virtual*/$jd$p131p_95_virtual((
-/*JD_USE:139261*/$x139261),(
-/*JD_USE:139257*/$x139257),(
-/*JD_USE:139263*/$x139263),(
-/*JD_USE:139262*/$x139262),(
+/*JD_USE:139290*/$x139290),(
+/*JD_USE:139286*/$x139286),(
+/*JD_USE:139292*/$x139292),(
+/*JD_USE:139291*/$x139291),(
 /*JD_REF:$jd$noa_95_atom*/$jd$noa_95_atom((
-/*JD_USE:139259*/$x139259),(
+/*JD_USE:139288*/$x139288),(
 /*JD_REF:$jd$kt*/$jd$kt("OUnique","",(
-/*JD_USE:139268*/$x139268),0,({$:"Nil"}))),(
+/*JD_USE:139297*/$x139297),0,({$:"Nil"}))),(
 /*JD_REF:$jd$var*/$jd$var("",(
-/*JD_USE:139268*/$x139268))))))),"facts":(
-/*JD_USE:139264*/$x139264),"fresh":((((
-/*JD_USE:139265*/$x139265) + 1) >>> 0)),["fuel"]:(
-/*JD_USE:139266*/$x139266)})))));}else{return (
+/*JD_USE:139297*/$x139297))))))),"facts":(
+/*JD_USE:139293*/$x139293),"fresh":((((
+/*JD_USE:139294*/$x139294) + 1) >>> 0)),["fuel"]:(
+/*JD_USE:139295*/$x139295)})))));}else{return (
 /*JD_REF:$jd$noa_95_fail*/$jd$noa_95_fail("observer: borrowed helper type, held-origin or result wrapper",(
-/*JD_USE:139265*/$x139265),(
-/*JD_USE:139266*/$x139266)));}}}}}}}
+/*JD_USE:139294*/$x139294),(
+/*JD_USE:139295*/$x139295)));}}}}}}}
 function $jd$p128br_95_reference($a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8){return (
 /*JD_REF:$jd$noa_95_continue*/$jd$noa_95_continue$scc(11,$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8));}
-function $jd$p128rf_95_members($a0,$a1){for(;;){{const $match1=$a0;if($match1.$==="Nil"){const $x139868=$a1;return (
-/*JD_USE:139868*/$x139868);}else{{const $match2=$match1;const $x139869=$match2["head"];const $x139870=$match2["tail"];const $x139871=$a1;{
+function $jd$p128rf_95_members($a0,$a1){for(;;){{const $match1=$a0;if($match1.$==="Nil"){const $x139899=$a1;return (
+/*JD_USE:139899*/$x139899);}else{{const $match2=$match1;const $x139900=$match2["head"];const $x139901=$match2["tail"];const $x139902=$a1;{
 /*JD_REF:$jd$p128rf_95_members*/const $next0=(
-/*JD_USE:139870*/$x139870);const $next1=(
+/*JD_USE:139901*/$x139901);const $next1=(
 /*JD_REF:$jd$index_95_set*/$jd$index_95_set((
-/*JD_USE:139871*/$x139871),({$:"KDef","name":(
-/*JD_USE:139869*/$x139869),"kind":"P128ReachMember","arity":0,"templates":0,"typ":({$:"KTerm","tag":"Absent","name":"","id":0,"quant":0,"kids":({$:"Nil"}),"removed":({$:"Nil"}),"originBegin":0,["originEnd"]:0}),"value":({$:"KTerm","tag":"Absent","name":"","id":0,"quant":0,"kids":({$:"Nil"}),"removed":({$:"Nil"}),"originBegin":0,["originEnd"]:0}),"ctors":({$:"Nil"}),"native":false,["unsafe"]:false}),(
+/*JD_USE:139902*/$x139902),({$:"KDef","name":(
+/*JD_USE:139900*/$x139900),"kind":"P128ReachMember","arity":0,"templates":0,"typ":({$:"KTerm","tag":"Absent","name":"","id":0,"quant":0,"kids":({$:"Nil"}),"removed":({$:"Nil"}),"originBegin":0,["originEnd"]:0}),"value":({$:"KTerm","tag":"Absent","name":"","id":0,"quant":0,"kids":({$:"Nil"}),"removed":({$:"Nil"}),"originBegin":0,["originEnd"]:0}),"ctors":({$:"Nil"}),"native":false,["unsafe"]:false}),(
 /*JD_REF:$jd$index_95_hash*/$jd$index_95_hash((
-/*JD_USE:139869*/$x139869),2166136261)),32));$a0=$next0;$a1=$next1;continue;}}}}}}
-function $jd$p128rf_95_member($a0,$a1){for(;;){const $x139874=$a0;const $x139875=$a1;return (
+/*JD_USE:139900*/$x139900),2166136261)),32));$a0=$next0;$a1=$next1;continue;}}}}}}
+function $jd$p128rf_95_member($a0,$a1){for(;;){const $x139905=$a0;const $x139906=$a1;return (
 /*JD_REF:$jd$String_46_eq*/$jd$String_46_eq((
 /*JD_REF:$jd$dk*/$jd$dk((
 /*JD_REF:$jd$index_95_find*/$jd$index_95_find((
-/*JD_USE:139874*/$x139874),(
-/*JD_USE:139875*/$x139875),(
+/*JD_USE:139905*/$x139905),(
+/*JD_USE:139906*/$x139906),(
 /*JD_REF:$jd$index_95_hash*/$jd$index_95_hash((
-/*JD_USE:139875*/$x139875),2166136261)),32)))),"P128ReachMember"));}}
-function $jd$p128rf_95_filter($a0,$a1){for(;;){{const $match1=$a0;if($match1.$==="Nil"){return ({$:"Nil"});}else{{const $match2=$match1;const $x139879=$match2["head"];const $x139880=$match2["tail"];const $x139881=$a1;{/* direct literal choice */if((
+/*JD_USE:139906*/$x139906),2166136261)),32)))),"P128ReachMember"));}}
+function $jd$p128rf_95_filter($a0,$a1){for(;;){{const $match1=$a0;if($match1.$==="Nil"){return ({$:"Nil"});}else{{const $match2=$match1;const $x139910=$match2["head"];const $x139911=$match2["tail"];const $x139912=$a1;{/* direct literal choice */if((
 /*JD_REF:$jd$p128rf_95_member*/$jd$p128rf_95_member((
-/*JD_USE:139881*/$x139881),(
+/*JD_USE:139912*/$x139912),(
 /*JD_REF:$jd$dn*/$jd$dn((
-/*JD_USE:139879*/$x139879)))))){return ({$:"Con","head":(
-/*JD_USE:139879*/$x139879),["tail"]:(
+/*JD_USE:139910*/$x139910)))))){return ({$:"Con","head":(
+/*JD_USE:139910*/$x139910),["tail"]:(
 /*JD_REF:$jd$p128rf_95_filter*/$jd$p128rf_95_filter((
-/*JD_USE:139880*/$x139880),(
-/*JD_USE:139881*/$x139881)))});}else{{
+/*JD_USE:139911*/$x139911),(
+/*JD_USE:139912*/$x139912)))});}else{{
 /*JD_REF:$jd$p128rf_95_filter*/const $next0=(
-/*JD_USE:139880*/$x139880);const $next1=(
-/*JD_USE:139881*/$x139881);$a0=$next0;$a1=$next1;continue;}}}}}}}}
-function $jd$p131a_95_add($a0,$a1){for(;;){const $x140835=$a0;const $x140836=$a1;return (
+/*JD_USE:139911*/$x139911);const $next1=(
+/*JD_USE:139912*/$x139912);$a0=$next0;$a1=$next1;continue;}}}}}}}}
+function $jd$p131a_95_add($a0,$a1){for(;;){const $x140866=$a0;const $x140867=$a1;return (
 /*JD_REF:$jd$U32_46_min*/$jd$U32_46_min(2,((((
-/*JD_USE:140835*/$x140835) + (
-/*JD_USE:140836*/$x140836)) >>> 0))));}}
-function $jd$p131a_95_low($a0,$a1,$a2){for(;;){{const $match1=$a0;if($match1==0){const $x140840=$a1;const $x140841=$a2;return (
+/*JD_USE:140866*/$x140866) + (
+/*JD_USE:140867*/$x140867)) >>> 0))));}}
+function $jd$p131a_95_low($a0,$a1,$a2){for(;;){{const $match1=$a0;if($match1==0){const $x140871=$a1;const $x140872=$a2;return (
 /*JD_REF:$jd$p131a_95_add*/$jd$p131a_95_add((
-/*JD_USE:140840*/$x140840),(
-/*JD_USE:140841*/$x140841)));}else{if(($match1&1)==0){return 0;}else{if($match1==1){const $x141062=$a1;const $x141063=$a2;return (
+/*JD_USE:140871*/$x140871),(
+/*JD_USE:140872*/$x140872)));}else{if(($match1&1)==0){return 0;}else{if($match1==1){const $x141093=$a1;const $x141094=$a2;return (
 /*JD_REF:$jd$U32_46_min*/$jd$U32_46_min((
-/*JD_USE:141062*/$x141062),(
-/*JD_USE:141063*/$x141063)));}else{return 0;}}}}}}
-function $jd$p131a_95_high($a0,$a1,$a2){for(;;){{const $match1=$a0;if($match1==0){const $x141297=$a1;const $x141298=$a2;return (
+/*JD_USE:141093*/$x141093),(
+/*JD_USE:141094*/$x141094)));}else{return 0;}}}}}}
+function $jd$p131a_95_high($a0,$a1,$a2){for(;;){{const $match1=$a0;if($match1==0){const $x141328=$a1;const $x141329=$a2;return (
 /*JD_REF:$jd$p131a_95_add*/$jd$p131a_95_add((
-/*JD_USE:141297*/$x141297),(
-/*JD_USE:141298*/$x141298)));}else{const $x141521=$a1;const $x141522=$a2;return (
+/*JD_USE:141328*/$x141328),(
+/*JD_USE:141329*/$x141329)));}else{const $x141552=$a1;const $x141553=$a2;return (
 /*JD_REF:$jd$U32_46_max*/$jd$U32_46_max((
-/*JD_USE:141521*/$x141521),(
-/*JD_USE:141522*/$x141522)));}}}}
-function $jd$p131u_95_absent($a0,$a1){for(;;){{const $match1=$a0;if($match1.$==="Nil"){{const $match2=$a1;if($match2==0){return ({$:"Nil"});}else{return ({$:"Nil"});}}}else{{const $match2=$match1;{const $match3=$match2["head"];const $x141632=$match3["id"];const $x141633=$match3["low"];const $x141634=$match3["high"];const $x141635=$match2["tail"];{const $match8=$a1;if($match8==0){return ({$:"Con","head":({$:"P131UEntry","id":(
-/*JD_USE:141632*/$x141632),"low":(
-/*JD_USE:141633*/$x141633),["high"]:(
-/*JD_USE:141634*/$x141634)}),["tail"]:(
-/*JD_USE:141635*/$x141635)});}else{return ({$:"Con","head":({$:"P131UEntry","id":(
-/*JD_USE:141632*/$x141632),"low":0,["high"]:(
-/*JD_USE:141634*/$x141634)}),["tail"]:(
+/*JD_USE:141552*/$x141552),(
+/*JD_USE:141553*/$x141553)));}}}}
+function $jd$p131u_95_absent($a0,$a1){for(;;){{const $match1=$a0;if($match1.$==="Nil"){{const $match2=$a1;if($match2==0){return ({$:"Nil"});}else{return ({$:"Nil"});}}}else{{const $match2=$match1;{const $match3=$match2["head"];const $x141663=$match3["id"];const $x141664=$match3["low"];const $x141665=$match3["high"];const $x141666=$match2["tail"];{const $match8=$a1;if($match8==0){return ({$:"Con","head":({$:"P131UEntry","id":(
+/*JD_USE:141663*/$x141663),"low":(
+/*JD_USE:141664*/$x141664),["high"]:(
+/*JD_USE:141665*/$x141665)}),["tail"]:(
+/*JD_USE:141666*/$x141666)});}else{return ({$:"Con","head":({$:"P131UEntry","id":(
+/*JD_USE:141663*/$x141663),"low":0,["high"]:(
+/*JD_USE:141665*/$x141665)}),["tail"]:(
 /*JD_REF:$jd$p131u_95_absent*/$jd$p131u_95_absent((
-/*JD_USE:141635*/$x141635),(
+/*JD_USE:141666*/$x141666),(
 /*JD_SCALAR_WORD*/(($match8&4294967295)|0)>>>0)))});}}}}}}}}
-function $jd$p131u_95_merge_95_loop($a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9){for(;;){{const $match1=$a0;if($match1.$==="Nil"){{const $match2=$a1;if($match2.$==="Nil"){const $x141747=$a2;{const $match4=$a3;if($match4.$==="LT"){const $x141748=$a4;const $x141749=$a5;const $x141750=$a6;const $x141751=$a7;const $x141752=$a8;const $x141753=$a9;return ({$:"Con","head":({$:"P131UEntry","id":(
-/*JD_USE:141748*/$x141748),"low":(
+function $jd$p131u_95_merge_95_loop($a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9){for(;;){{const $match1=$a0;if($match1.$==="Nil"){{const $match2=$a1;if($match2.$==="Nil"){const $x141778=$a2;{const $match4=$a3;if($match4.$==="LT"){const $x141779=$a4;const $x141780=$a5;const $x141781=$a6;const $x141782=$a7;const $x141783=$a8;const $x141784=$a9;return ({$:"Con","head":({$:"P131UEntry","id":(
+/*JD_USE:141779*/$x141779),"low":(
 /*JD_REF:$jd$p131a_95_low*/$jd$p131a_95_low((
-/*JD_USE:141747*/$x141747),(
-/*JD_USE:141749*/$x141749),0)),["high"]:(
-/*JD_REF:$jd$p131a_95_high*/$jd$p131a_95_high((
-/*JD_USE:141747*/$x141747),(
-/*JD_USE:141750*/$x141750),0))}),["tail"]:(
-/*JD_REF:$jd$p131u_95_absent*/$jd$p131u_95_absent(({$:"Con","head":({$:"P131UEntry","id":(
-/*JD_USE:141751*/$x141751),"low":(
-/*JD_USE:141752*/$x141752),["high"]:(
-/*JD_USE:141753*/$x141753)}),["tail"]:({$:"Nil"})}),(
-/*JD_USE:141747*/$x141747)))});}else{{const $match5=$match4;if($match5.$==="GT"){const $x141754=$a4;const $x141755=$a5;const $x141756=$a6;const $x141757=$a7;const $x141758=$a8;const $x141759=$a9;return ({$:"Con","head":({$:"P131UEntry","id":(
-/*JD_USE:141757*/$x141757),"low":(
-/*JD_REF:$jd$p131a_95_low*/$jd$p131a_95_low((
-/*JD_USE:141747*/$x141747),0,(
-/*JD_USE:141758*/$x141758))),["high"]:(
-/*JD_REF:$jd$p131a_95_high*/$jd$p131a_95_high((
-/*JD_USE:141747*/$x141747),0,(
-/*JD_USE:141759*/$x141759)))}),["tail"]:(
-/*JD_REF:$jd$p131u_95_absent*/$jd$p131u_95_absent(({$:"Con","head":({$:"P131UEntry","id":(
-/*JD_USE:141754*/$x141754),"low":(
-/*JD_USE:141755*/$x141755),["high"]:(
-/*JD_USE:141756*/$x141756)}),["tail"]:({$:"Nil"})}),(
-/*JD_USE:141747*/$x141747)))});}else{{const $match6=$match5;const $x141760=$a4;const $x141761=$a5;const $x141762=$a6;const $x141764=$a8;const $x141765=$a9;return ({$:"Con","head":({$:"P131UEntry","id":(
-/*JD_USE:141760*/$x141760),"low":(
-/*JD_REF:$jd$p131a_95_low*/$jd$p131a_95_low((
-/*JD_USE:141747*/$x141747),(
-/*JD_USE:141761*/$x141761),(
-/*JD_USE:141764*/$x141764))),["high"]:(
-/*JD_REF:$jd$p131a_95_high*/$jd$p131a_95_high((
-/*JD_USE:141747*/$x141747),(
-/*JD_USE:141762*/$x141762),(
-/*JD_USE:141765*/$x141765)))}),["tail"]:(
-/*JD_REF:$jd$p131u_95_absent*/$jd$p131u_95_absent(({$:"Nil"}),(
-/*JD_USE:141747*/$x141747)))});}}}}}}else{{const $match3=$match2;{const $match4=$match3["head"];const $x141766=$match4["id"];const $x141767=$match4["low"];const $x141768=$match4["high"];const $x141769=$match3["tail"];const $x141770=$a2;{const $match10=$a3;if($match10.$==="LT"){const $x141771=$a4;const $x141772=$a5;const $x141773=$a6;const $x141774=$a7;const $x141775=$a8;const $x141776=$a9;return ({$:"Con","head":({$:"P131UEntry","id":(
-/*JD_USE:141771*/$x141771),"low":(
-/*JD_REF:$jd$p131a_95_low*/$jd$p131a_95_low((
-/*JD_USE:141770*/$x141770),(
-/*JD_USE:141772*/$x141772),0)),["high"]:(
-/*JD_REF:$jd$p131a_95_high*/$jd$p131a_95_high((
-/*JD_USE:141770*/$x141770),(
-/*JD_USE:141773*/$x141773),0))}),["tail"]:(
-/*JD_REF:$jd$p131u_95_absent*/$jd$p131u_95_absent(({$:"Con","head":({$:"P131UEntry","id":(
-/*JD_USE:141774*/$x141774),"low":(
-/*JD_USE:141775*/$x141775),["high"]:(
-/*JD_USE:141776*/$x141776)}),["tail"]:({$:"Con","head":({$:"P131UEntry","id":(
-/*JD_USE:141766*/$x141766),"low":(
-/*JD_USE:141767*/$x141767),["high"]:(
-/*JD_USE:141768*/$x141768)}),["tail"]:(
-/*JD_USE:141769*/$x141769)})}),(
-/*JD_USE:141770*/$x141770)))});}else{{const $match11=$match10;if($match11.$==="GT"){const $x141777=$a4;const $x141778=$a5;const $x141779=$a6;const $x141780=$a7;const $x141781=$a8;const $x141782=$a9;return ({$:"Con","head":({$:"P131UEntry","id":(
-/*JD_USE:141780*/$x141780),"low":(
-/*JD_REF:$jd$p131a_95_low*/$jd$p131a_95_low((
-/*JD_USE:141770*/$x141770),0,(
-/*JD_USE:141781*/$x141781))),["high"]:(
-/*JD_REF:$jd$p131a_95_high*/$jd$p131a_95_high((
-/*JD_USE:141770*/$x141770),0,(
-/*JD_USE:141782*/$x141782)))}),["tail"]:(
-/*JD_REF:$jd$p131u_95_merge_95_loop*/$jd$p131u_95_merge_95_loop(({$:"Nil"}),(
-/*JD_USE:141769*/$x141769),(
-/*JD_USE:141770*/$x141770),(cmp_new((
-/*JD_USE:141777*/$x141777), (
-/*JD_USE:141766*/$x141766))),(
-/*JD_USE:141777*/$x141777),(
 /*JD_USE:141778*/$x141778),(
-/*JD_USE:141779*/$x141779),(
-/*JD_USE:141766*/$x141766),(
-/*JD_USE:141767*/$x141767),(
-/*JD_USE:141768*/$x141768)))});}else{{const $match12=$match11;const $x141783=$a4;const $x141784=$a5;const $x141785=$a6;const $x141787=$a8;const $x141788=$a9;return ({$:"Con","head":({$:"P131UEntry","id":(
-/*JD_USE:141783*/$x141783),"low":(
-/*JD_REF:$jd$p131a_95_low*/$jd$p131a_95_low((
-/*JD_USE:141770*/$x141770),(
-/*JD_USE:141784*/$x141784),(
-/*JD_USE:141787*/$x141787))),["high"]:(
+/*JD_USE:141780*/$x141780),0)),["high"]:(
 /*JD_REF:$jd$p131a_95_high*/$jd$p131a_95_high((
-/*JD_USE:141770*/$x141770),(
-/*JD_USE:141785*/$x141785),(
-/*JD_USE:141788*/$x141788)))}),["tail"]:(
+/*JD_USE:141778*/$x141778),(
+/*JD_USE:141781*/$x141781),0))}),["tail"]:(
 /*JD_REF:$jd$p131u_95_absent*/$jd$p131u_95_absent(({$:"Con","head":({$:"P131UEntry","id":(
-/*JD_USE:141766*/$x141766),"low":(
-/*JD_USE:141767*/$x141767),["high"]:(
-/*JD_USE:141768*/$x141768)}),["tail"]:(
-/*JD_USE:141769*/$x141769)}),(
-/*JD_USE:141770*/$x141770)))});}}}}}}}}}}else{{const $match2=$match1;{const $match3=$match2["head"];const $x141818=$match3["id"];const $x141819=$match3["low"];const $x141820=$match3["high"];const $x141821=$match2["tail"];{const $match8=$a1;if($match8.$==="Nil"){const $x141822=$a2;{const $match10=$a3;if($match10.$==="LT"){const $x141823=$a4;const $x141824=$a5;const $x141825=$a6;const $x141826=$a7;const $x141827=$a8;const $x141828=$a9;return ({$:"Con","head":({$:"P131UEntry","id":(
-/*JD_USE:141823*/$x141823),"low":(
+/*JD_USE:141782*/$x141782),"low":(
+/*JD_USE:141783*/$x141783),["high"]:(
+/*JD_USE:141784*/$x141784)}),["tail"]:({$:"Nil"})}),(
+/*JD_USE:141778*/$x141778)))});}else{{const $match5=$match4;if($match5.$==="GT"){const $x141785=$a4;const $x141786=$a5;const $x141787=$a6;const $x141788=$a7;const $x141789=$a8;const $x141790=$a9;return ({$:"Con","head":({$:"P131UEntry","id":(
+/*JD_USE:141788*/$x141788),"low":(
 /*JD_REF:$jd$p131a_95_low*/$jd$p131a_95_low((
-/*JD_USE:141822*/$x141822),(
-/*JD_USE:141824*/$x141824),0)),["high"]:(
+/*JD_USE:141778*/$x141778),0,(
+/*JD_USE:141789*/$x141789))),["high"]:(
 /*JD_REF:$jd$p131a_95_high*/$jd$p131a_95_high((
-/*JD_USE:141822*/$x141822),(
-/*JD_USE:141825*/$x141825),0))}),["tail"]:(
+/*JD_USE:141778*/$x141778),0,(
+/*JD_USE:141790*/$x141790)))}),["tail"]:(
+/*JD_REF:$jd$p131u_95_absent*/$jd$p131u_95_absent(({$:"Con","head":({$:"P131UEntry","id":(
+/*JD_USE:141785*/$x141785),"low":(
+/*JD_USE:141786*/$x141786),["high"]:(
+/*JD_USE:141787*/$x141787)}),["tail"]:({$:"Nil"})}),(
+/*JD_USE:141778*/$x141778)))});}else{{const $match6=$match5;const $x141791=$a4;const $x141792=$a5;const $x141793=$a6;const $x141795=$a8;const $x141796=$a9;return ({$:"Con","head":({$:"P131UEntry","id":(
+/*JD_USE:141791*/$x141791),"low":(
+/*JD_REF:$jd$p131a_95_low*/$jd$p131a_95_low((
+/*JD_USE:141778*/$x141778),(
+/*JD_USE:141792*/$x141792),(
+/*JD_USE:141795*/$x141795))),["high"]:(
+/*JD_REF:$jd$p131a_95_high*/$jd$p131a_95_high((
+/*JD_USE:141778*/$x141778),(
+/*JD_USE:141793*/$x141793),(
+/*JD_USE:141796*/$x141796)))}),["tail"]:(
+/*JD_REF:$jd$p131u_95_absent*/$jd$p131u_95_absent(({$:"Nil"}),(
+/*JD_USE:141778*/$x141778)))});}}}}}}else{{const $match3=$match2;{const $match4=$match3["head"];const $x141797=$match4["id"];const $x141798=$match4["low"];const $x141799=$match4["high"];const $x141800=$match3["tail"];const $x141801=$a2;{const $match10=$a3;if($match10.$==="LT"){const $x141802=$a4;const $x141803=$a5;const $x141804=$a6;const $x141805=$a7;const $x141806=$a8;const $x141807=$a9;return ({$:"Con","head":({$:"P131UEntry","id":(
+/*JD_USE:141802*/$x141802),"low":(
+/*JD_REF:$jd$p131a_95_low*/$jd$p131a_95_low((
+/*JD_USE:141801*/$x141801),(
+/*JD_USE:141803*/$x141803),0)),["high"]:(
+/*JD_REF:$jd$p131a_95_high*/$jd$p131a_95_high((
+/*JD_USE:141801*/$x141801),(
+/*JD_USE:141804*/$x141804),0))}),["tail"]:(
+/*JD_REF:$jd$p131u_95_absent*/$jd$p131u_95_absent(({$:"Con","head":({$:"P131UEntry","id":(
+/*JD_USE:141805*/$x141805),"low":(
+/*JD_USE:141806*/$x141806),["high"]:(
+/*JD_USE:141807*/$x141807)}),["tail"]:({$:"Con","head":({$:"P131UEntry","id":(
+/*JD_USE:141797*/$x141797),"low":(
+/*JD_USE:141798*/$x141798),["high"]:(
+/*JD_USE:141799*/$x141799)}),["tail"]:(
+/*JD_USE:141800*/$x141800)})}),(
+/*JD_USE:141801*/$x141801)))});}else{{const $match11=$match10;if($match11.$==="GT"){const $x141808=$a4;const $x141809=$a5;const $x141810=$a6;const $x141811=$a7;const $x141812=$a8;const $x141813=$a9;return ({$:"Con","head":({$:"P131UEntry","id":(
+/*JD_USE:141811*/$x141811),"low":(
+/*JD_REF:$jd$p131a_95_low*/$jd$p131a_95_low((
+/*JD_USE:141801*/$x141801),0,(
+/*JD_USE:141812*/$x141812))),["high"]:(
+/*JD_REF:$jd$p131a_95_high*/$jd$p131a_95_high((
+/*JD_USE:141801*/$x141801),0,(
+/*JD_USE:141813*/$x141813)))}),["tail"]:(
+/*JD_REF:$jd$p131u_95_merge_95_loop*/$jd$p131u_95_merge_95_loop(({$:"Nil"}),(
+/*JD_USE:141800*/$x141800),(
+/*JD_USE:141801*/$x141801),(cmp_new((
+/*JD_USE:141808*/$x141808), (
+/*JD_USE:141797*/$x141797))),(
+/*JD_USE:141808*/$x141808),(
+/*JD_USE:141809*/$x141809),(
+/*JD_USE:141810*/$x141810),(
+/*JD_USE:141797*/$x141797),(
+/*JD_USE:141798*/$x141798),(
+/*JD_USE:141799*/$x141799)))});}else{{const $match12=$match11;const $x141814=$a4;const $x141815=$a5;const $x141816=$a6;const $x141818=$a8;const $x141819=$a9;return ({$:"Con","head":({$:"P131UEntry","id":(
+/*JD_USE:141814*/$x141814),"low":(
+/*JD_REF:$jd$p131a_95_low*/$jd$p131a_95_low((
+/*JD_USE:141801*/$x141801),(
+/*JD_USE:141815*/$x141815),(
+/*JD_USE:141818*/$x141818))),["high"]:(
+/*JD_REF:$jd$p131a_95_high*/$jd$p131a_95_high((
+/*JD_USE:141801*/$x141801),(
+/*JD_USE:141816*/$x141816),(
+/*JD_USE:141819*/$x141819)))}),["tail"]:(
+/*JD_REF:$jd$p131u_95_absent*/$jd$p131u_95_absent(({$:"Con","head":({$:"P131UEntry","id":(
+/*JD_USE:141797*/$x141797),"low":(
+/*JD_USE:141798*/$x141798),["high"]:(
+/*JD_USE:141799*/$x141799)}),["tail"]:(
+/*JD_USE:141800*/$x141800)}),(
+/*JD_USE:141801*/$x141801)))});}}}}}}}}}}else{{const $match2=$match1;{const $match3=$match2["head"];const $x141849=$match3["id"];const $x141850=$match3["low"];const $x141851=$match3["high"];const $x141852=$match2["tail"];{const $match8=$a1;if($match8.$==="Nil"){const $x141853=$a2;{const $match10=$a3;if($match10.$==="LT"){const $x141854=$a4;const $x141855=$a5;const $x141856=$a6;const $x141857=$a7;const $x141858=$a8;const $x141859=$a9;return ({$:"Con","head":({$:"P131UEntry","id":(
+/*JD_USE:141854*/$x141854),"low":(
+/*JD_REF:$jd$p131a_95_low*/$jd$p131a_95_low((
+/*JD_USE:141853*/$x141853),(
+/*JD_USE:141855*/$x141855),0)),["high"]:(
+/*JD_REF:$jd$p131a_95_high*/$jd$p131a_95_high((
+/*JD_USE:141853*/$x141853),(
+/*JD_USE:141856*/$x141856),0))}),["tail"]:(
 /*JD_REF:$jd$p131u_95_merge_95_loop*/$jd$p131u_95_merge_95_loop((
-/*JD_USE:141821*/$x141821),({$:"Nil"}),(
-/*JD_USE:141822*/$x141822),(cmp_new((
-/*JD_USE:141818*/$x141818), (
-/*JD_USE:141826*/$x141826))),(
-/*JD_USE:141818*/$x141818),(
-/*JD_USE:141819*/$x141819),(
-/*JD_USE:141820*/$x141820),(
-/*JD_USE:141826*/$x141826),(
-/*JD_USE:141827*/$x141827),(
-/*JD_USE:141828*/$x141828)))});}else{{const $match11=$match10;if($match11.$==="GT"){const $x141829=$a4;const $x141830=$a5;const $x141831=$a6;const $x141832=$a7;const $x141833=$a8;const $x141834=$a9;return ({$:"Con","head":({$:"P131UEntry","id":(
-/*JD_USE:141832*/$x141832),"low":(
-/*JD_REF:$jd$p131a_95_low*/$jd$p131a_95_low((
-/*JD_USE:141822*/$x141822),0,(
-/*JD_USE:141833*/$x141833))),["high"]:(
-/*JD_REF:$jd$p131a_95_high*/$jd$p131a_95_high((
-/*JD_USE:141822*/$x141822),0,(
-/*JD_USE:141834*/$x141834)))}),["tail"]:(
-/*JD_REF:$jd$p131u_95_absent*/$jd$p131u_95_absent(({$:"Con","head":({$:"P131UEntry","id":(
-/*JD_USE:141829*/$x141829),"low":(
-/*JD_USE:141830*/$x141830),["high"]:(
-/*JD_USE:141831*/$x141831)}),["tail"]:({$:"Con","head":({$:"P131UEntry","id":(
-/*JD_USE:141818*/$x141818),"low":(
-/*JD_USE:141819*/$x141819),["high"]:(
-/*JD_USE:141820*/$x141820)}),["tail"]:(
-/*JD_USE:141821*/$x141821)})}),(
-/*JD_USE:141822*/$x141822)))});}else{{const $match12=$match11;const $x141835=$a4;const $x141836=$a5;const $x141837=$a6;const $x141839=$a8;const $x141840=$a9;return ({$:"Con","head":({$:"P131UEntry","id":(
-/*JD_USE:141835*/$x141835),"low":(
-/*JD_REF:$jd$p131a_95_low*/$jd$p131a_95_low((
-/*JD_USE:141822*/$x141822),(
-/*JD_USE:141836*/$x141836),(
-/*JD_USE:141839*/$x141839))),["high"]:(
-/*JD_REF:$jd$p131a_95_high*/$jd$p131a_95_high((
-/*JD_USE:141822*/$x141822),(
-/*JD_USE:141837*/$x141837),(
-/*JD_USE:141840*/$x141840)))}),["tail"]:(
-/*JD_REF:$jd$p131u_95_absent*/$jd$p131u_95_absent(({$:"Con","head":({$:"P131UEntry","id":(
-/*JD_USE:141818*/$x141818),"low":(
-/*JD_USE:141819*/$x141819),["high"]:(
-/*JD_USE:141820*/$x141820)}),["tail"]:(
-/*JD_USE:141821*/$x141821)}),(
-/*JD_USE:141822*/$x141822)))});}}}}}}else{{const $match9=$match8;{const $match10=$match9["head"];const $x141841=$match10["id"];const $x141842=$match10["low"];const $x141843=$match10["high"];const $x141844=$match9["tail"];const $x141845=$a2;{const $match16=$a3;if($match16.$==="LT"){const $x141846=$a4;const $x141847=$a5;const $x141848=$a6;const $x141849=$a7;const $x141850=$a8;const $x141851=$a9;return ({$:"Con","head":({$:"P131UEntry","id":(
-/*JD_USE:141846*/$x141846),"low":(
-/*JD_REF:$jd$p131a_95_low*/$jd$p131a_95_low((
-/*JD_USE:141845*/$x141845),(
-/*JD_USE:141847*/$x141847),0)),["high"]:(
-/*JD_REF:$jd$p131a_95_high*/$jd$p131a_95_high((
-/*JD_USE:141845*/$x141845),(
-/*JD_USE:141848*/$x141848),0))}),["tail"]:(
-/*JD_REF:$jd$p131u_95_merge_95_loop*/$jd$p131u_95_merge_95_loop((
-/*JD_USE:141821*/$x141821),({$:"Con","head":({$:"P131UEntry","id":(
-/*JD_USE:141841*/$x141841),"low":(
-/*JD_USE:141842*/$x141842),["high"]:(
-/*JD_USE:141843*/$x141843)}),["tail"]:(
-/*JD_USE:141844*/$x141844)}),(
-/*JD_USE:141845*/$x141845),(cmp_new((
-/*JD_USE:141818*/$x141818), (
-/*JD_USE:141849*/$x141849))),(
-/*JD_USE:141818*/$x141818),(
-/*JD_USE:141819*/$x141819),(
-/*JD_USE:141820*/$x141820),(
+/*JD_USE:141852*/$x141852),({$:"Nil"}),(
+/*JD_USE:141853*/$x141853),(cmp_new((
+/*JD_USE:141849*/$x141849), (
+/*JD_USE:141857*/$x141857))),(
 /*JD_USE:141849*/$x141849),(
 /*JD_USE:141850*/$x141850),(
-/*JD_USE:141851*/$x141851)))});}else{{const $match17=$match16;if($match17.$==="GT"){const $x141852=$a4;const $x141853=$a5;const $x141854=$a6;const $x141855=$a7;const $x141856=$a8;const $x141857=$a9;return ({$:"Con","head":({$:"P131UEntry","id":(
-/*JD_USE:141855*/$x141855),"low":(
+/*JD_USE:141851*/$x141851),(
+/*JD_USE:141857*/$x141857),(
+/*JD_USE:141858*/$x141858),(
+/*JD_USE:141859*/$x141859)))});}else{{const $match11=$match10;if($match11.$==="GT"){const $x141860=$a4;const $x141861=$a5;const $x141862=$a6;const $x141863=$a7;const $x141864=$a8;const $x141865=$a9;return ({$:"Con","head":({$:"P131UEntry","id":(
+/*JD_USE:141863*/$x141863),"low":(
 /*JD_REF:$jd$p131a_95_low*/$jd$p131a_95_low((
-/*JD_USE:141845*/$x141845),0,(
-/*JD_USE:141856*/$x141856))),["high"]:(
+/*JD_USE:141853*/$x141853),0,(
+/*JD_USE:141864*/$x141864))),["high"]:(
 /*JD_REF:$jd$p131a_95_high*/$jd$p131a_95_high((
-/*JD_USE:141845*/$x141845),0,(
-/*JD_USE:141857*/$x141857)))}),["tail"]:(
-/*JD_REF:$jd$p131u_95_merge_95_loop*/$jd$p131u_95_merge_95_loop(({$:"Con","head":({$:"P131UEntry","id":(
-/*JD_USE:141818*/$x141818),"low":(
-/*JD_USE:141819*/$x141819),["high"]:(
-/*JD_USE:141820*/$x141820)}),["tail"]:(
-/*JD_USE:141821*/$x141821)}),(
-/*JD_USE:141844*/$x141844),(
-/*JD_USE:141845*/$x141845),(cmp_new((
-/*JD_USE:141852*/$x141852), (
-/*JD_USE:141841*/$x141841))),(
-/*JD_USE:141852*/$x141852),(
-/*JD_USE:141853*/$x141853),(
-/*JD_USE:141854*/$x141854),(
-/*JD_USE:141841*/$x141841),(
-/*JD_USE:141842*/$x141842),(
-/*JD_USE:141843*/$x141843)))});}else{{const $match18=$match17;const $x141858=$a4;const $x141859=$a5;const $x141860=$a6;const $x141862=$a8;const $x141863=$a9;return ({$:"Con","head":({$:"P131UEntry","id":(
-/*JD_USE:141858*/$x141858),"low":(
-/*JD_REF:$jd$p131a_95_low*/$jd$p131a_95_low((
-/*JD_USE:141845*/$x141845),(
-/*JD_USE:141859*/$x141859),(
-/*JD_USE:141862*/$x141862))),["high"]:(
-/*JD_REF:$jd$p131a_95_high*/$jd$p131a_95_high((
-/*JD_USE:141845*/$x141845),(
-/*JD_USE:141860*/$x141860),(
-/*JD_USE:141863*/$x141863)))}),["tail"]:(
-/*JD_REF:$jd$p131u_95_merge_95_loop*/$jd$p131u_95_merge_95_loop((
-/*JD_USE:141821*/$x141821),(
-/*JD_USE:141844*/$x141844),(
-/*JD_USE:141845*/$x141845),(cmp_new((
-/*JD_USE:141818*/$x141818), (
-/*JD_USE:141841*/$x141841))),(
-/*JD_USE:141818*/$x141818),(
-/*JD_USE:141819*/$x141819),(
-/*JD_USE:141820*/$x141820),(
-/*JD_USE:141841*/$x141841),(
-/*JD_USE:141842*/$x141842),(
-/*JD_USE:141843*/$x141843)))});}}}}}}}}}}}}}}}
-function $jd$p131u_95_merge($a0,$a1,$a2){for(;;){{const $match1=$a0;if($match1.$==="Nil"){{const $match2=$a1;if($match2.$==="Nil"){const $x141935=$a2;return (
-/*JD_REF:$jd$p131u_95_absent*/$jd$p131u_95_absent(({$:"Nil"}),(
-/*JD_USE:141935*/$x141935)));}else{const $x141936=$match2;const $x141937=$a2;return (
-/*JD_REF:$jd$p131u_95_absent*/$jd$p131u_95_absent((
-/*JD_USE:141936*/$x141936),(
-/*JD_USE:141937*/$x141937)));}}}else{{const $match2=$match1;{const $match3=$match2["head"];const $x141938=$match3["id"];const $x141939=$match3["low"];const $x141940=$match3["high"];const $x141941=$match2["tail"];{const $match8=$a1;if($match8.$==="Nil"){const $x141942=$a2;return (
+/*JD_USE:141853*/$x141853),0,(
+/*JD_USE:141865*/$x141865)))}),["tail"]:(
 /*JD_REF:$jd$p131u_95_absent*/$jd$p131u_95_absent(({$:"Con","head":({$:"P131UEntry","id":(
-/*JD_USE:141938*/$x141938),"low":(
-/*JD_USE:141939*/$x141939),["high"]:(
-/*JD_USE:141940*/$x141940)}),["tail"]:(
-/*JD_USE:141941*/$x141941)}),(
-/*JD_USE:141942*/$x141942)));}else{{const $match9=$match8;{const $match10=$match9["head"];const $x141943=$match10["id"];const $x141944=$match10["low"];const $x141945=$match10["high"];const $x141946=$match9["tail"];const $x141947=$a2;return (
+/*JD_USE:141860*/$x141860),"low":(
+/*JD_USE:141861*/$x141861),["high"]:(
+/*JD_USE:141862*/$x141862)}),["tail"]:({$:"Con","head":({$:"P131UEntry","id":(
+/*JD_USE:141849*/$x141849),"low":(
+/*JD_USE:141850*/$x141850),["high"]:(
+/*JD_USE:141851*/$x141851)}),["tail"]:(
+/*JD_USE:141852*/$x141852)})}),(
+/*JD_USE:141853*/$x141853)))});}else{{const $match12=$match11;const $x141866=$a4;const $x141867=$a5;const $x141868=$a6;const $x141870=$a8;const $x141871=$a9;return ({$:"Con","head":({$:"P131UEntry","id":(
+/*JD_USE:141866*/$x141866),"low":(
+/*JD_REF:$jd$p131a_95_low*/$jd$p131a_95_low((
+/*JD_USE:141853*/$x141853),(
+/*JD_USE:141867*/$x141867),(
+/*JD_USE:141870*/$x141870))),["high"]:(
+/*JD_REF:$jd$p131a_95_high*/$jd$p131a_95_high((
+/*JD_USE:141853*/$x141853),(
+/*JD_USE:141868*/$x141868),(
+/*JD_USE:141871*/$x141871)))}),["tail"]:(
+/*JD_REF:$jd$p131u_95_absent*/$jd$p131u_95_absent(({$:"Con","head":({$:"P131UEntry","id":(
+/*JD_USE:141849*/$x141849),"low":(
+/*JD_USE:141850*/$x141850),["high"]:(
+/*JD_USE:141851*/$x141851)}),["tail"]:(
+/*JD_USE:141852*/$x141852)}),(
+/*JD_USE:141853*/$x141853)))});}}}}}}else{{const $match9=$match8;{const $match10=$match9["head"];const $x141872=$match10["id"];const $x141873=$match10["low"];const $x141874=$match10["high"];const $x141875=$match9["tail"];const $x141876=$a2;{const $match16=$a3;if($match16.$==="LT"){const $x141877=$a4;const $x141878=$a5;const $x141879=$a6;const $x141880=$a7;const $x141881=$a8;const $x141882=$a9;return ({$:"Con","head":({$:"P131UEntry","id":(
+/*JD_USE:141877*/$x141877),"low":(
+/*JD_REF:$jd$p131a_95_low*/$jd$p131a_95_low((
+/*JD_USE:141876*/$x141876),(
+/*JD_USE:141878*/$x141878),0)),["high"]:(
+/*JD_REF:$jd$p131a_95_high*/$jd$p131a_95_high((
+/*JD_USE:141876*/$x141876),(
+/*JD_USE:141879*/$x141879),0))}),["tail"]:(
 /*JD_REF:$jd$p131u_95_merge_95_loop*/$jd$p131u_95_merge_95_loop((
-/*JD_USE:141941*/$x141941),(
-/*JD_USE:141946*/$x141946),(
-/*JD_USE:141947*/$x141947),(cmp_new((
-/*JD_USE:141938*/$x141938), (
-/*JD_USE:141943*/$x141943))),(
-/*JD_USE:141938*/$x141938),(
-/*JD_USE:141939*/$x141939),(
-/*JD_USE:141940*/$x141940),(
-/*JD_USE:141943*/$x141943),(
-/*JD_USE:141944*/$x141944),(
-/*JD_USE:141945*/$x141945)));}}}}}}}}}}
-function $jd$p131u_95_build($a0){for(;;){const $x141954=$a0;{/* direct literal choice */if((
+/*JD_USE:141852*/$x141852),({$:"Con","head":({$:"P131UEntry","id":(
+/*JD_USE:141872*/$x141872),"low":(
+/*JD_USE:141873*/$x141873),["high"]:(
+/*JD_USE:141874*/$x141874)}),["tail"]:(
+/*JD_USE:141875*/$x141875)}),(
+/*JD_USE:141876*/$x141876),(cmp_new((
+/*JD_USE:141849*/$x141849), (
+/*JD_USE:141880*/$x141880))),(
+/*JD_USE:141849*/$x141849),(
+/*JD_USE:141850*/$x141850),(
+/*JD_USE:141851*/$x141851),(
+/*JD_USE:141880*/$x141880),(
+/*JD_USE:141881*/$x141881),(
+/*JD_USE:141882*/$x141882)))});}else{{const $match17=$match16;if($match17.$==="GT"){const $x141883=$a4;const $x141884=$a5;const $x141885=$a6;const $x141886=$a7;const $x141887=$a8;const $x141888=$a9;return ({$:"Con","head":({$:"P131UEntry","id":(
+/*JD_USE:141886*/$x141886),"low":(
+/*JD_REF:$jd$p131a_95_low*/$jd$p131a_95_low((
+/*JD_USE:141876*/$x141876),0,(
+/*JD_USE:141887*/$x141887))),["high"]:(
+/*JD_REF:$jd$p131a_95_high*/$jd$p131a_95_high((
+/*JD_USE:141876*/$x141876),0,(
+/*JD_USE:141888*/$x141888)))}),["tail"]:(
+/*JD_REF:$jd$p131u_95_merge_95_loop*/$jd$p131u_95_merge_95_loop(({$:"Con","head":({$:"P131UEntry","id":(
+/*JD_USE:141849*/$x141849),"low":(
+/*JD_USE:141850*/$x141850),["high"]:(
+/*JD_USE:141851*/$x141851)}),["tail"]:(
+/*JD_USE:141852*/$x141852)}),(
+/*JD_USE:141875*/$x141875),(
+/*JD_USE:141876*/$x141876),(cmp_new((
+/*JD_USE:141883*/$x141883), (
+/*JD_USE:141872*/$x141872))),(
+/*JD_USE:141883*/$x141883),(
+/*JD_USE:141884*/$x141884),(
+/*JD_USE:141885*/$x141885),(
+/*JD_USE:141872*/$x141872),(
+/*JD_USE:141873*/$x141873),(
+/*JD_USE:141874*/$x141874)))});}else{{const $match18=$match17;const $x141889=$a4;const $x141890=$a5;const $x141891=$a6;const $x141893=$a8;const $x141894=$a9;return ({$:"Con","head":({$:"P131UEntry","id":(
+/*JD_USE:141889*/$x141889),"low":(
+/*JD_REF:$jd$p131a_95_low*/$jd$p131a_95_low((
+/*JD_USE:141876*/$x141876),(
+/*JD_USE:141890*/$x141890),(
+/*JD_USE:141893*/$x141893))),["high"]:(
+/*JD_REF:$jd$p131a_95_high*/$jd$p131a_95_high((
+/*JD_USE:141876*/$x141876),(
+/*JD_USE:141891*/$x141891),(
+/*JD_USE:141894*/$x141894)))}),["tail"]:(
+/*JD_REF:$jd$p131u_95_merge_95_loop*/$jd$p131u_95_merge_95_loop((
+/*JD_USE:141852*/$x141852),(
+/*JD_USE:141875*/$x141875),(
+/*JD_USE:141876*/$x141876),(cmp_new((
+/*JD_USE:141849*/$x141849), (
+/*JD_USE:141872*/$x141872))),(
+/*JD_USE:141849*/$x141849),(
+/*JD_USE:141850*/$x141850),(
+/*JD_USE:141851*/$x141851),(
+/*JD_USE:141872*/$x141872),(
+/*JD_USE:141873*/$x141873),(
+/*JD_USE:141874*/$x141874)))});}}}}}}}}}}}}}}}
+function $jd$p131u_95_merge($a0,$a1,$a2){for(;;){{const $match1=$a0;if($match1.$==="Nil"){{const $match2=$a1;if($match2.$==="Nil"){const $x141966=$a2;return (
+/*JD_REF:$jd$p131u_95_absent*/$jd$p131u_95_absent(({$:"Nil"}),(
+/*JD_USE:141966*/$x141966)));}else{const $x141967=$match2;const $x141968=$a2;return (
+/*JD_REF:$jd$p131u_95_absent*/$jd$p131u_95_absent((
+/*JD_USE:141967*/$x141967),(
+/*JD_USE:141968*/$x141968)));}}}else{{const $match2=$match1;{const $match3=$match2["head"];const $x141969=$match3["id"];const $x141970=$match3["low"];const $x141971=$match3["high"];const $x141972=$match2["tail"];{const $match8=$a1;if($match8.$==="Nil"){const $x141973=$a2;return (
+/*JD_REF:$jd$p131u_95_absent*/$jd$p131u_95_absent(({$:"Con","head":({$:"P131UEntry","id":(
+/*JD_USE:141969*/$x141969),"low":(
+/*JD_USE:141970*/$x141970),["high"]:(
+/*JD_USE:141971*/$x141971)}),["tail"]:(
+/*JD_USE:141972*/$x141972)}),(
+/*JD_USE:141973*/$x141973)));}else{{const $match9=$match8;{const $match10=$match9["head"];const $x141974=$match10["id"];const $x141975=$match10["low"];const $x141976=$match10["high"];const $x141977=$match9["tail"];const $x141978=$a2;return (
+/*JD_REF:$jd$p131u_95_merge_95_loop*/$jd$p131u_95_merge_95_loop((
+/*JD_USE:141972*/$x141972),(
+/*JD_USE:141977*/$x141977),(
+/*JD_USE:141978*/$x141978),(cmp_new((
+/*JD_USE:141969*/$x141969), (
+/*JD_USE:141974*/$x141974))),(
+/*JD_USE:141969*/$x141969),(
+/*JD_USE:141970*/$x141970),(
+/*JD_USE:141971*/$x141971),(
+/*JD_USE:141974*/$x141974),(
+/*JD_USE:141975*/$x141975),(
+/*JD_USE:141976*/$x141976)));}}}}}}}}}}
+function $jd$p131u_95_build($a0){for(;;){const $x141985=$a0;{/* direct literal choice */if((
 /*JD_REF:$jd$p98_95_tag_95_eq*/$jd$p98_95_tag_95_eq((
-/*JD_USE:141954*/$x141954),"Var"))){return ({$:"Con","head":({$:"P131UEntry","id":(
+/*JD_USE:141985*/$x141985),"Var"))){return ({$:"Con","head":({$:"P131UEntry","id":(
 /*JD_REF:$jd$ix*/$jd$ix((
-/*JD_USE:141954*/$x141954))),"low":1,["high"]:1}),["tail"]:({$:"Nil"})});}else{{const $ord0=(
+/*JD_USE:141985*/$x141985))),"low":1,["high"]:1}),["tail"]:({$:"Nil"})});}else{{const $ord0=(
 /*JD_REF:$jd$terms_95_len*/$jd$terms_95_len((
 /*JD_REF:$jd$ks*/$jd$ks((
-/*JD_USE:141954*/$x141954)))));/* direct literal choice */if((
+/*JD_USE:141985*/$x141985)))));/* direct literal choice */if((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$p98_95_tag_95_eq*/$jd$p98_95_tag_95_eq((
-/*JD_USE:141954*/$x141954),"Mat")),(($ord0 === 2))))){return (
+/*JD_USE:141985*/$x141985),"Mat")),(($ord0 === 2))))){return (
 /*JD_REF:$jd$p131u_95_merge*/$jd$p131u_95_merge((
 /*JD_REF:$jd$p131u_95_build*/$jd$p131u_95_build((
 /*JD_REF:$jd$kid*/$jd$kid((
-/*JD_USE:141954*/$x141954),0)))),(
+/*JD_USE:141985*/$x141985),0)))),(
 /*JD_REF:$jd$p131u_95_build*/$jd$p131u_95_build((
 /*JD_REF:$jd$kid*/$jd$kid((
-/*JD_USE:141954*/$x141954),1)))),1));}else{{/* direct literal choice */if((
+/*JD_USE:141985*/$x141985),1)))),1));}else{{/* direct literal choice */if((
 /*JD_REF:$jd$p98_95_tag_95_eq*/$jd$p98_95_tag_95_eq((
-/*JD_USE:141954*/$x141954),"NWPattern"))){return (
+/*JD_USE:141985*/$x141985),"NWPattern"))){return (
 /*JD_REF:$jd$p131u_95_rows*/$jd$p131u_95_rows((
 /*JD_REF:$jd$ks*/$jd$ks((
-/*JD_USE:141954*/$x141954)))));}else{return (
+/*JD_USE:141985*/$x141985)))));}else{return (
 /*JD_REF:$jd$p131u_95_list*/$jd$p131u_95_list((
 /*JD_REF:$jd$ks*/$jd$ks((
-/*JD_USE:141954*/$x141954)))));}}}}}}}}
-function $jd$p131u_95_list($a0){for(;;){{const $match1=$a0;if($match1.$==="Nil"){return ({$:"Nil"});}else{{const $match2=$match1;const $x141962=$match2["head"];const $x141963=$match2["tail"];return (
+/*JD_USE:141985*/$x141985)))));}}}}}}}}
+function $jd$p131u_95_list($a0){for(;;){{const $match1=$a0;if($match1.$==="Nil"){return ({$:"Nil"});}else{{const $match2=$match1;const $x141993=$match2["head"];const $x141994=$match2["tail"];return (
 /*JD_REF:$jd$p131u_95_merge*/$jd$p131u_95_merge((
 /*JD_REF:$jd$p131u_95_build*/$jd$p131u_95_build((
-/*JD_USE:141962*/$x141962))),(
+/*JD_USE:141993*/$x141993))),(
 /*JD_REF:$jd$p131u_95_list*/$jd$p131u_95_list((
-/*JD_USE:141963*/$x141963))),0));}}}}}
-function $jd$p131u_95_rows($a0){for(;;){{const $match1=$a0;if($match1.$==="Nil"){return ({$:"Nil"});}else{{const $match2=$match1;const $x141965=$match2["head"];const $x141966=$match2["tail"];return (
+/*JD_USE:141994*/$x141994))),0));}}}}}
+function $jd$p131u_95_rows($a0){for(;;){{const $match1=$a0;if($match1.$==="Nil"){return ({$:"Nil"});}else{{const $match2=$match1;const $x141996=$match2["head"];const $x141997=$match2["tail"];return (
 /*JD_REF:$jd$p131u_95_merge*/$jd$p131u_95_merge((
 /*JD_REF:$jd$p131u_95_build*/$jd$p131u_95_build((
 /*JD_REF:$jd$kid*/$jd$kid((
-/*JD_USE:141965*/$x141965),0)))),(
+/*JD_USE:141996*/$x141996),0)))),(
 /*JD_REF:$jd$p131u_95_rows*/$jd$p131u_95_rows((
-/*JD_USE:141966*/$x141966))),2));}}}}}
-function $jd$p131u_95_max_95_loop($a0,$a1,$a2,$a3){for(;;){{const $match1=$a0;if($match1.$==="Nil"){{const $match3=$a2;if($match3.$==="EQ"){const $x141972=$a3;return (
-/*JD_USE:141972*/$x141972);}else{{const $match4=$match3;if($match4.$==="GT"){return 0;}else{{const $match5=$match4;return 0;}}}}}}else{{const $match2=$match1;{const $match3=$match2["head"];const $x141975=$match3["id"];const $x141977=$match3["high"];const $x141978=$match2["tail"];const $x141979=$a1;{const $match9=$a2;if($match9.$==="EQ"){const $x141980=$a3;return (
-/*JD_USE:141980*/$x141980);}else{{const $match10=$match9;if($match10.$==="GT"){return 0;}else{{const $match11=$match10;{
+/*JD_USE:141997*/$x141997))),2));}}}}}
+function $jd$p131u_95_max_95_loop($a0,$a1,$a2,$a3){for(;;){{const $match1=$a0;if($match1.$==="Nil"){{const $match3=$a2;if($match3.$==="EQ"){const $x142003=$a3;return (
+/*JD_USE:142003*/$x142003);}else{{const $match4=$match3;if($match4.$==="GT"){return 0;}else{{const $match5=$match4;return 0;}}}}}}else{{const $match2=$match1;{const $match3=$match2["head"];const $x142006=$match3["id"];const $x142008=$match3["high"];const $x142009=$match2["tail"];const $x142010=$a1;{const $match9=$a2;if($match9.$==="EQ"){const $x142011=$a3;return (
+/*JD_USE:142011*/$x142011);}else{{const $match10=$match9;if($match10.$==="GT"){return 0;}else{{const $match11=$match10;{
 /*JD_REF:$jd$p131u_95_max_95_loop*/const $next0=(
-/*JD_USE:141978*/$x141978);const $next1=(
-/*JD_USE:141979*/$x141979);const $next2=(cmp_new((
-/*JD_USE:141975*/$x141975), (
-/*JD_USE:141979*/$x141979)));const $next3=(
-/*JD_USE:141977*/$x141977);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;continue;}}}}}}}}}}}}
-function $jd$p131u_95_max($a0,$a1){for(;;){const $x141994=$a0;const $x141995=$a1;return (
+/*JD_USE:142009*/$x142009);const $next1=(
+/*JD_USE:142010*/$x142010);const $next2=(cmp_new((
+/*JD_USE:142006*/$x142006), (
+/*JD_USE:142010*/$x142010)));const $next3=(
+/*JD_USE:142008*/$x142008);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;continue;}}}}}}}}}}}}
+function $jd$p131u_95_max($a0,$a1){for(;;){const $x142025=$a0;const $x142026=$a1;return (
 /*JD_REF:$jd$p131u_95_max_95_loop*/$jd$p131u_95_max_95_loop((
-/*JD_USE:141994*/$x141994),(
-/*JD_USE:141995*/$x141995),({$:"LT"}),0));}}
-function $jd$p131u_95_unshared($a0,$a1,$a2){for(;;){const $x142028=$a0;const $x142029=$a1;{const $match3=$a2;if($match3.$==="Nil"){return true;}else{{const $match4=$match3;const $x142030=$match4["head"];const $x142031=$match4["tail"];{/* direct literal choice */if((
+/*JD_USE:142025*/$x142025),(
+/*JD_USE:142026*/$x142026),({$:"LT"}),0));}}
+function $jd$p131u_95_unshared($a0,$a1,$a2){for(;;){const $x142059=$a0;const $x142060=$a1;{const $match3=$a2;if($match3.$==="Nil"){return true;}else{{const $match4=$match3;const $x142061=$match4["head"];const $x142062=$match4["tail"];{/* direct literal choice */if((
 /*JD_REF:$jd$p98_95_tag_95_eq*/$jd$p98_95_tag_95_eq((
-/*JD_USE:142030*/$x142030),"Ann"))){{/* direct literal choice */if((
+/*JD_USE:142061*/$x142061),"Ann"))){{/* direct literal choice */if((
 /*JD_REF:$jd$p98_95_tag_95_eq*/$jd$p98_95_tag_95_eq((
 /*JD_REF:$jd$kid*/$jd$kid((
-/*JD_USE:142030*/$x142030),0)),"Var"))){{/* direct literal choice */if((
+/*JD_USE:142061*/$x142061),0)),"Var"))){{/* direct literal choice */if((
 /*JD_REF:$jd$ns_95_array_95_free*/$jd$ns_95_array_95_free((
-/*JD_USE:142028*/$x142028),(
+/*JD_USE:142059*/$x142059),(
 /*JD_REF:$jd$kid*/$jd$kid((
-/*JD_USE:142030*/$x142030),1))))){{
+/*JD_USE:142061*/$x142061),1))))){{
 /*JD_REF:$jd$p131u_95_unshared*/const $next0=(
-/*JD_USE:142028*/$x142028);const $next1=(
-/*JD_USE:142029*/$x142029);const $next2=(
-/*JD_USE:142031*/$x142031);$a0=$next0;$a1=$next1;$a2=$next2;continue;}}else{{const $ord0=(
+/*JD_USE:142059*/$x142059);const $next1=(
+/*JD_USE:142060*/$x142060);const $next2=(
+/*JD_USE:142062*/$x142062);$a0=$next0;$a1=$next1;$a2=$next2;continue;}}else{{const $ord0=(
 /*JD_REF:$jd$p131u_95_max*/$jd$p131u_95_max((
-/*JD_USE:142029*/$x142029),(
+/*JD_USE:142060*/$x142060),(
 /*JD_REF:$jd$ix*/$jd$ix((
 /*JD_REF:$jd$kid*/$jd$kid((
-/*JD_USE:142030*/$x142030),0))))));/* direct literal choice */if((($ord0 <= 1))){{
+/*JD_USE:142061*/$x142061),0))))));/* direct literal choice */if((($ord0 <= 1))){{
 /*JD_REF:$jd$p131u_95_unshared*/const $next0=(
-/*JD_USE:142028*/$x142028);const $next1=(
-/*JD_USE:142029*/$x142029);const $next2=(
-/*JD_USE:142031*/$x142031);$a0=$next0;$a1=$next1;$a2=$next2;continue;}}else{return false;}}}}}else{{
+/*JD_USE:142059*/$x142059);const $next1=(
+/*JD_USE:142060*/$x142060);const $next2=(
+/*JD_USE:142062*/$x142062);$a0=$next0;$a1=$next1;$a2=$next2;continue;}}else{return false;}}}}}else{{
 /*JD_REF:$jd$p131u_95_unshared*/const $next0=(
-/*JD_USE:142028*/$x142028);const $next1=(
-/*JD_USE:142029*/$x142029);const $next2=({$:"Con","head":(
+/*JD_USE:142059*/$x142059);const $next1=(
+/*JD_USE:142060*/$x142060);const $next2=({$:"Con","head":(
 /*JD_REF:$jd$kid*/$jd$kid((
-/*JD_USE:142030*/$x142030),0)),["tail"]:(
-/*JD_USE:142031*/$x142031)});$a0=$next0;$a1=$next1;$a2=$next2;continue;}}}}else{{/* direct literal choice */if((
+/*JD_USE:142061*/$x142061),0)),["tail"]:(
+/*JD_USE:142062*/$x142062)});$a0=$next0;$a1=$next1;$a2=$next2;continue;}}}}else{{/* direct literal choice */if((
 /*JD_REF:$jd$p98_95_tag_95_eq*/$jd$p98_95_tag_95_eq((
-/*JD_USE:142030*/$x142030),"Var"))){{const $ord0=(
+/*JD_USE:142061*/$x142061),"Var"))){{const $ord0=(
 /*JD_REF:$jd$p131u_95_max*/$jd$p131u_95_max((
-/*JD_USE:142029*/$x142029),(
+/*JD_USE:142060*/$x142060),(
 /*JD_REF:$jd$ix*/$jd$ix((
-/*JD_USE:142030*/$x142030)))));/* direct literal choice */if((($ord0 <= 1))){{
+/*JD_USE:142061*/$x142061)))));/* direct literal choice */if((($ord0 <= 1))){{
 /*JD_REF:$jd$p131u_95_unshared*/const $next0=(
-/*JD_USE:142028*/$x142028);const $next1=(
-/*JD_USE:142029*/$x142029);const $next2=(
+/*JD_USE:142059*/$x142059);const $next1=(
+/*JD_USE:142060*/$x142060);const $next2=(
 /*JD_REF:$jd$nt_95_append*/$jd$nt_95_append((
 /*JD_REF:$jd$ks*/$jd$ks((
-/*JD_USE:142030*/$x142030))),(
-/*JD_USE:142031*/$x142031)));$a0=$next0;$a1=$next1;$a2=$next2;continue;}}else{return false;}}}else{{
+/*JD_USE:142061*/$x142061))),(
+/*JD_USE:142062*/$x142062)));$a0=$next0;$a1=$next1;$a2=$next2;continue;}}else{return false;}}}else{{
 /*JD_REF:$jd$p131u_95_unshared*/const $next0=(
-/*JD_USE:142028*/$x142028);const $next1=(
-/*JD_USE:142029*/$x142029);const $next2=(
+/*JD_USE:142059*/$x142059);const $next1=(
+/*JD_USE:142060*/$x142060);const $next2=(
 /*JD_REF:$jd$nt_95_append*/$jd$nt_95_append((
 /*JD_REF:$jd$ks*/$jd$ks((
-/*JD_USE:142030*/$x142030))),(
-/*JD_USE:142031*/$x142031)));$a0=$next0;$a1=$next1;$a2=$next2;continue;}}}}}}}}}}
-function $jd$p131u_95_hot($a0,$a1,$a2,$a3){for(;;){const $x142048=$a0;const $x142049=$a1;{const $match3=$a2;if($match3.$==="Nil"){const $x142050=$a3;return (
-/*JD_USE:142050*/$x142050);}else{{const $match4=$match3;const $x142051=$match4["head"];const $x142052=$match4["tail"];const $x142053=$a3;{/* direct literal choice */if((
+/*JD_USE:142061*/$x142061))),(
+/*JD_USE:142062*/$x142062)));$a0=$next0;$a1=$next1;$a2=$next2;continue;}}}}}}}}}}
+function $jd$p131u_95_hot($a0,$a1,$a2,$a3){for(;;){const $x142079=$a0;const $x142080=$a1;{const $match3=$a2;if($match3.$==="Nil"){const $x142081=$a3;return (
+/*JD_USE:142081*/$x142081);}else{{const $match4=$match3;const $x142082=$match4["head"];const $x142083=$match4["tail"];const $x142084=$a3;{/* direct literal choice */if((
 /*JD_REF:$jd$nb_95_contains*/$jd$nb_95_contains((
-/*JD_USE:142053*/$x142053),"*"))){return (
-/*JD_USE:142053*/$x142053);}else{{/* direct literal choice */if((
+/*JD_USE:142084*/$x142084),"*"))){return (
+/*JD_USE:142084*/$x142084);}else{{/* direct literal choice */if((
 /*JD_REF:$jd$p98_95_tag_95_eq*/$jd$p98_95_tag_95_eq((
-/*JD_USE:142051*/$x142051),"Ann"))){{/* direct literal choice */if((
+/*JD_USE:142082*/$x142082),"Ann"))){{/* direct literal choice */if((
 /*JD_REF:$jd$p98_95_tag_95_eq*/$jd$p98_95_tag_95_eq((
 /*JD_REF:$jd$kid*/$jd$kid((
-/*JD_USE:142051*/$x142051),0)),"Var"))){{const $ord0=(
+/*JD_USE:142082*/$x142082),0)),"Var"))){{const $ord0=(
 /*JD_REF:$jd$p131u_95_max*/$jd$p131u_95_max((
-/*JD_USE:142049*/$x142049),(
+/*JD_USE:142080*/$x142080),(
 /*JD_REF:$jd$ix*/$jd$ix((
 /*JD_REF:$jd$kid*/$jd$kid((
-/*JD_USE:142051*/$x142051),0))))));{
+/*JD_USE:142082*/$x142082),0))))));{
 /*JD_REF:$jd$p131u_95_hot*/const $next0=(
-/*JD_USE:142048*/$x142048);const $next1=(
-/*JD_USE:142049*/$x142049);const $next2=(
-/*JD_USE:142052*/$x142052);const $next3=(()=>{/* direct literal choice */if((($ord0 > 1))){return (
+/*JD_USE:142079*/$x142079);const $next1=(
+/*JD_USE:142080*/$x142080);const $next2=(
+/*JD_USE:142083*/$x142083);const $next3=(()=>{/* direct literal choice */if((($ord0 > 1))){return (
 /*JD_REF:$jd$nh_95_type*/$jd$nh_95_type((
-/*JD_USE:142048*/$x142048),(
+/*JD_USE:142079*/$x142079),(
 /*JD_REF:$jd$kid*/$jd$kid((
-/*JD_USE:142051*/$x142051),1)),(
-/*JD_USE:142053*/$x142053),64));}else{return (
-/*JD_USE:142053*/$x142053);}})();$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;continue;}}}else{{
+/*JD_USE:142082*/$x142082),1)),(
+/*JD_USE:142084*/$x142084),64));}else{return (
+/*JD_USE:142084*/$x142084);}})();$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;continue;}}}else{{
 /*JD_REF:$jd$p131u_95_hot*/const $next0=(
-/*JD_USE:142048*/$x142048);const $next1=(
-/*JD_USE:142049*/$x142049);const $next2=({$:"Con","head":(
+/*JD_USE:142079*/$x142079);const $next1=(
+/*JD_USE:142080*/$x142080);const $next2=({$:"Con","head":(
 /*JD_REF:$jd$kid*/$jd$kid((
-/*JD_USE:142051*/$x142051),0)),["tail"]:(
-/*JD_USE:142052*/$x142052)});const $next3=(
-/*JD_USE:142053*/$x142053);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;continue;}}}}else{{/* direct literal choice */if((
+/*JD_USE:142082*/$x142082),0)),["tail"]:(
+/*JD_USE:142083*/$x142083)});const $next3=(
+/*JD_USE:142084*/$x142084);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;continue;}}}}else{{/* direct literal choice */if((
 /*JD_REF:$jd$p98_95_tag_95_eq*/$jd$p98_95_tag_95_eq((
-/*JD_USE:142051*/$x142051),"Var"))){{const $ord0=(
+/*JD_USE:142082*/$x142082),"Var"))){{const $ord0=(
 /*JD_REF:$jd$p131u_95_max*/$jd$p131u_95_max((
-/*JD_USE:142049*/$x142049),(
+/*JD_USE:142080*/$x142080),(
 /*JD_REF:$jd$ix*/$jd$ix((
-/*JD_USE:142051*/$x142051)))));/* direct literal choice */if((($ord0 > 1))){return (
+/*JD_USE:142082*/$x142082)))));/* direct literal choice */if((($ord0 > 1))){return (
 /*JD_REF:$jd$nh_95_add*/$jd$nh_95_add("*",(
-/*JD_USE:142053*/$x142053)));}else{{
+/*JD_USE:142084*/$x142084)));}else{{
 /*JD_REF:$jd$p131u_95_hot*/const $next0=(
-/*JD_USE:142048*/$x142048);const $next1=(
-/*JD_USE:142049*/$x142049);const $next2=(
-/*JD_USE:142052*/$x142052);const $next3=(
-/*JD_USE:142053*/$x142053);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;continue;}}}}else{{
+/*JD_USE:142079*/$x142079);const $next1=(
+/*JD_USE:142080*/$x142080);const $next2=(
+/*JD_USE:142083*/$x142083);const $next3=(
+/*JD_USE:142084*/$x142084);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;continue;}}}}else{{
 /*JD_REF:$jd$p131u_95_hot*/const $next0=(
-/*JD_USE:142048*/$x142048);const $next1=(
-/*JD_USE:142049*/$x142049);const $next2=(
+/*JD_USE:142079*/$x142079);const $next1=(
+/*JD_USE:142080*/$x142080);const $next2=(
 /*JD_REF:$jd$nt_95_append*/$jd$nt_95_append((
 /*JD_REF:$jd$ks*/$jd$ks((
-/*JD_USE:142051*/$x142051))),(
-/*JD_USE:142052*/$x142052)));const $next3=(
-/*JD_USE:142053*/$x142053);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;continue;}}}}}}}}}}}}
-function $jd$p131i_95_original_95_set($a0,$a1,$a2,$a3){for(;;){const $x142109=$a0;const $x142110=$a1;const $x142111=$a2;{/* direct literal choice */if((
+/*JD_USE:142082*/$x142082))),(
+/*JD_USE:142083*/$x142083)));const $next3=(
+/*JD_USE:142084*/$x142084);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;continue;}}}}}}}}}}}}
+function $jd$p131i_95_original_95_set($a0,$a1,$a2,$a3){for(;;){const $x142140=$a0;const $x142141=$a1;const $x142142=$a2;{/* direct literal choice */if((
 /*JD_REF:$jd$p88_95_string_95_eq*/$jd$p88_95_string_95_eq((
 /*JD_REF:$jd$dk*/$jd$dk((
-/*JD_USE:142109*/$x142109))),"Absent"))){return (
+/*JD_USE:142140*/$x142140))),"Absent"))){return (
 /*JD_REF:$jd$index_95_leaf*/$jd$index_95_leaf((
-/*JD_USE:142110*/$x142110),(
-/*JD_USE:142111*/$x142111),({$:"Nil"})));}else{{const $ord0=(
+/*JD_USE:142141*/$x142141),(
+/*JD_USE:142142*/$x142142),({$:"Nil"})));}else{{const $ord0=(
 /*JD_REF:$jd$da*/$jd$da((
 /*JD_REF:$jd$index_95_tip*/$jd$index_95_tip((
-/*JD_USE:142109*/$x142109),(
-/*JD_USE:142111*/$x142111)))));return (
+/*JD_USE:142140*/$x142140),(
+/*JD_USE:142142*/$x142142)))));return (
 /*JD_REF:$jd$index_95_insert*/$jd$index_95_insert((
-/*JD_USE:142109*/$x142109),(
-/*JD_USE:142110*/$x142110),(
-/*JD_USE:142111*/$x142111),(
-/*JD_REF:$jd$index_95_split_95_bit*/$jd$index_95_split_95_bit(((((
-/*JD_USE:142111*/$x142111) ^ $ord0) >>> 0))))));}}}}}
-function $jd$p131i_95_insert($a0,$a1,$a2){for(;;){{const $match1=$a0;if($match1.$==="KDef"){const $x142118=$match1["name"];const $x142119=$match1["kind"];const $x142120=$match1["arity"];const $x142121=$match1["templates"];const $x142122=$match1["typ"];const $x142123=$match1["value"];const $x142124=$match1["ctors"];const $x142125=$match1["native"];const $x142126=$match1["unsafe"];const $x142127=$a1;const $x142128=$a2;return (
-/*JD_REF:$jd$p131i_95_original_95_set*/$jd$p131i_95_original_95_set(({$:"KDef","name":(
-/*JD_USE:142118*/$x142118),"kind":(
-/*JD_USE:142119*/$x142119),"arity":(
-/*JD_USE:142120*/$x142120),"templates":(
-/*JD_USE:142121*/$x142121),"typ":(
-/*JD_USE:142122*/$x142122),"value":(
-/*JD_USE:142123*/$x142123),"ctors":(
-/*JD_USE:142124*/$x142124),"native":(
-/*JD_USE:142125*/$x142125),["unsafe"]:(
-/*JD_USE:142126*/$x142126)}),(
-/*JD_USE:142127*/$x142127),(
-/*JD_USE:142128*/$x142128),32));}else{{const $match2=$match1;if($match2.$==="KIndexLeaf"){const $x142129=$match2["hash"];const $x142130=$match2["bucket"];const $x142131=$a1;const $x142132=$a2;{const $let0=(
-/*JD_REF:$jd$index_95_split_95_bit*/$jd$index_95_split_95_bit(((((
-/*JD_USE:142132*/$x142132) ^ (
-/*JD_USE:142129*/$x142129)) >>> 0))));{const $x142133=$let0;{/* direct literal choice */if((((
-/*JD_USE:142133*/$x142133) === 0))){return (
-/*JD_REF:$jd$index_95_leaf*/$jd$index_95_leaf((
-/*JD_USE:142131*/$x142131),(
-/*JD_USE:142132*/$x142132),(
-/*JD_USE:142130*/$x142130)));}else{return (
-/*JD_REF:$jd$index_95_join*/$jd$index_95_join(({$:"KIndexLeaf","hash":(
-/*JD_USE:142129*/$x142129),["bucket"]:(
-/*JD_USE:142130*/$x142130)}),(
-/*JD_USE:142131*/$x142131),(
-/*JD_USE:142132*/$x142132),(
-/*JD_USE:142133*/$x142133)));}}}}}else{{const $match3=$match2;const $x142136=$match3["hash"];const $x142137=$match3["mask"];const $x142138=$match3["left"];const $x142139=$match3["right"];const $x142140=$a1;const $x142141=$a2;{const $let0=((((
-/*JD_USE:142141*/$x142141) ^ (
-/*JD_USE:142136*/$x142136)) >>> 0));{const $x142142=$let0;{/* direct literal choice */if((((
-/*JD_USE:142137*/$x142137) === 0))){return (
-/*JD_REF:$jd$p131i_95_original_95_set*/$jd$p131i_95_original_95_set(({$:"KIndexNode","hash":(
-/*JD_USE:142136*/$x142136),"mask":(
-/*JD_USE:142137*/$x142137),"left":(
-/*JD_USE:142138*/$x142138),["right"]:(
-/*JD_USE:142139*/$x142139)}),(
-/*JD_USE:142140*/$x142140),(
-/*JD_USE:142141*/$x142141),32));}else{{const $ord0=((((
-/*JD_USE:142137*/$x142137) - 1) >>> 0));const $ord1=((((
-/*JD_USE:142142*/$x142142) & $ord0) >>> 0));/* direct literal choice */if((($ord1 === 0))){{const $ord0=((((
-/*JD_USE:142141*/$x142141) & (
-/*JD_USE:142137*/$x142137)) >>> 0));/* direct literal choice */if((($ord0 === 0))){return (
-/*JD_REF:$jd$index_95_node*/$jd$index_95_node((
-/*JD_USE:142136*/$x142136),(
-/*JD_USE:142137*/$x142137),(
-/*JD_REF:$jd$p131i_95_insert*/$jd$p131i_95_insert((
-/*JD_USE:142138*/$x142138),(
-/*JD_USE:142140*/$x142140),(
-/*JD_USE:142141*/$x142141))),(
-/*JD_USE:142139*/$x142139)));}else{return (
-/*JD_REF:$jd$index_95_node*/$jd$index_95_node((
-/*JD_USE:142136*/$x142136),(
-/*JD_USE:142137*/$x142137),(
-/*JD_USE:142138*/$x142138),(
-/*JD_REF:$jd$p131i_95_insert*/$jd$p131i_95_insert((
-/*JD_USE:142139*/$x142139),(
-/*JD_USE:142140*/$x142140),(
-/*JD_USE:142141*/$x142141)))));}}}else{return (
-/*JD_REF:$jd$index_95_join*/$jd$index_95_join(({$:"KIndexNode","hash":(
-/*JD_USE:142136*/$x142136),"mask":(
-/*JD_USE:142137*/$x142137),"left":(
-/*JD_USE:142138*/$x142138),["right"]:(
-/*JD_USE:142139*/$x142139)}),(
 /*JD_USE:142140*/$x142140),(
 /*JD_USE:142141*/$x142141),(
+/*JD_USE:142142*/$x142142),(
+/*JD_REF:$jd$index_95_split_95_bit*/$jd$index_95_split_95_bit(((((
+/*JD_USE:142142*/$x142142) ^ $ord0) >>> 0))))));}}}}}
+function $jd$p131i_95_insert($a0,$a1,$a2){for(;;){{const $match1=$a0;if($match1.$==="KDef"){const $x142149=$match1["name"];const $x142150=$match1["kind"];const $x142151=$match1["arity"];const $x142152=$match1["templates"];const $x142153=$match1["typ"];const $x142154=$match1["value"];const $x142155=$match1["ctors"];const $x142156=$match1["native"];const $x142157=$match1["unsafe"];const $x142158=$a1;const $x142159=$a2;return (
+/*JD_REF:$jd$p131i_95_original_95_set*/$jd$p131i_95_original_95_set(({$:"KDef","name":(
+/*JD_USE:142149*/$x142149),"kind":(
+/*JD_USE:142150*/$x142150),"arity":(
+/*JD_USE:142151*/$x142151),"templates":(
+/*JD_USE:142152*/$x142152),"typ":(
+/*JD_USE:142153*/$x142153),"value":(
+/*JD_USE:142154*/$x142154),"ctors":(
+/*JD_USE:142155*/$x142155),"native":(
+/*JD_USE:142156*/$x142156),["unsafe"]:(
+/*JD_USE:142157*/$x142157)}),(
+/*JD_USE:142158*/$x142158),(
+/*JD_USE:142159*/$x142159),32));}else{{const $match2=$match1;if($match2.$==="KIndexLeaf"){const $x142160=$match2["hash"];const $x142161=$match2["bucket"];const $x142162=$a1;const $x142163=$a2;{const $let0=(
+/*JD_REF:$jd$index_95_split_95_bit*/$jd$index_95_split_95_bit(((((
+/*JD_USE:142163*/$x142163) ^ (
+/*JD_USE:142160*/$x142160)) >>> 0))));{const $x142164=$let0;{/* direct literal choice */if((((
+/*JD_USE:142164*/$x142164) === 0))){return (
+/*JD_REF:$jd$index_95_leaf*/$jd$index_95_leaf((
+/*JD_USE:142162*/$x142162),(
+/*JD_USE:142163*/$x142163),(
+/*JD_USE:142161*/$x142161)));}else{return (
+/*JD_REF:$jd$index_95_join*/$jd$index_95_join(({$:"KIndexLeaf","hash":(
+/*JD_USE:142160*/$x142160),["bucket"]:(
+/*JD_USE:142161*/$x142161)}),(
+/*JD_USE:142162*/$x142162),(
+/*JD_USE:142163*/$x142163),(
+/*JD_USE:142164*/$x142164)));}}}}}else{{const $match3=$match2;const $x142167=$match3["hash"];const $x142168=$match3["mask"];const $x142169=$match3["left"];const $x142170=$match3["right"];const $x142171=$a1;const $x142172=$a2;{const $let0=((((
+/*JD_USE:142172*/$x142172) ^ (
+/*JD_USE:142167*/$x142167)) >>> 0));{const $x142173=$let0;{/* direct literal choice */if((((
+/*JD_USE:142168*/$x142168) === 0))){return (
+/*JD_REF:$jd$p131i_95_original_95_set*/$jd$p131i_95_original_95_set(({$:"KIndexNode","hash":(
+/*JD_USE:142167*/$x142167),"mask":(
+/*JD_USE:142168*/$x142168),"left":(
+/*JD_USE:142169*/$x142169),["right"]:(
+/*JD_USE:142170*/$x142170)}),(
+/*JD_USE:142171*/$x142171),(
+/*JD_USE:142172*/$x142172),32));}else{{const $ord0=((((
+/*JD_USE:142168*/$x142168) - 1) >>> 0));const $ord1=((((
+/*JD_USE:142173*/$x142173) & $ord0) >>> 0));/* direct literal choice */if((($ord1 === 0))){{const $ord0=((((
+/*JD_USE:142172*/$x142172) & (
+/*JD_USE:142168*/$x142168)) >>> 0));/* direct literal choice */if((($ord0 === 0))){return (
+/*JD_REF:$jd$index_95_node*/$jd$index_95_node((
+/*JD_USE:142167*/$x142167),(
+/*JD_USE:142168*/$x142168),(
+/*JD_REF:$jd$p131i_95_insert*/$jd$p131i_95_insert((
+/*JD_USE:142169*/$x142169),(
+/*JD_USE:142171*/$x142171),(
+/*JD_USE:142172*/$x142172))),(
+/*JD_USE:142170*/$x142170)));}else{return (
+/*JD_REF:$jd$index_95_node*/$jd$index_95_node((
+/*JD_USE:142167*/$x142167),(
+/*JD_USE:142168*/$x142168),(
+/*JD_USE:142169*/$x142169),(
+/*JD_REF:$jd$p131i_95_insert*/$jd$p131i_95_insert((
+/*JD_USE:142170*/$x142170),(
+/*JD_USE:142171*/$x142171),(
+/*JD_USE:142172*/$x142172)))));}}}else{return (
+/*JD_REF:$jd$index_95_join*/$jd$index_95_join(({$:"KIndexNode","hash":(
+/*JD_USE:142167*/$x142167),"mask":(
+/*JD_USE:142168*/$x142168),"left":(
+/*JD_USE:142169*/$x142169),["right"]:(
+/*JD_USE:142170*/$x142170)}),(
+/*JD_USE:142171*/$x142171),(
+/*JD_USE:142172*/$x142172),(
 /*JD_REF:$jd$index_95_split_95_bit*/$jd$index_95_split_95_bit((
-/*JD_USE:142142*/$x142142)))));}}}}}}}}}}}}}
-function $jd$p131p_95_parameter($a0,$a1){for(;;){const $x142368=$a0;{const $match2=$a1;if($match2.$==="Nil"){return false;}else{{const $match3=$match2;const $x142369=$match3["head"];const $x142370=$match3["tail"];{const $ord0=(
+/*JD_USE:142173*/$x142173)))));}}}}}}}}}}}}}
+function $jd$p131p_95_parameter($a0,$a1){for(;;){const $x142399=$a0;{const $match2=$a1;if($match2.$==="Nil"){return false;}else{{const $match3=$match2;const $x142400=$match3["head"];const $x142401=$match3["tail"];{const $ord0=(
 /*JD_REF:$jd$ix*/$jd$ix((
-/*JD_USE:142369*/$x142369)));const $ord1=(($ord0 === (
-/*JD_USE:142368*/$x142368)));const $ord2=(
+/*JD_USE:142400*/$x142400)));const $ord1=(($ord0 === (
+/*JD_USE:142399*/$x142399)));const $ord2=(
 /*JD_REF:$jd$p131p_95_parameter*/$jd$p131p_95_parameter((
-/*JD_USE:142368*/$x142368),(
-/*JD_USE:142370*/$x142370)));return (($ord1 || $ord2));}}}}}}
-function $jd$p131p_95_wrapper_95_fields($a0,$a1,$a2,$a3){for(;;){{const $match1=$a0;if($match1.$==="Nil"){return true;}else{{const $match2=$match1;const $x142378=$match2["head"];const $x142379=$match2["tail"];const $x142380=$a1;const $x142381=$a2;const $x142382=$a3;return (
+/*JD_USE:142399*/$x142399),(
+/*JD_USE:142401*/$x142401)));return (($ord1 || $ord2));}}}}}}
+function $jd$p131p_95_wrapper_95_fields($a0,$a1,$a2,$a3){for(;;){{const $match1=$a0;if($match1.$==="Nil"){return true;}else{{const $match2=$match1;const $x142409=$match2["head"];const $x142410=$match2["tail"];const $x142411=$a1;const $x142412=$a2;const $x142413=$a3;return (
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$p131p_95_wrapper_95_ok*/$jd$p131p_95_wrapper_95_ok((
-/*JD_USE:142378*/$x142378),(
-/*JD_USE:142380*/$x142380),(
-/*JD_USE:142381*/$x142381),(
-/*JD_USE:142382*/$x142382))),(
+/*JD_USE:142409*/$x142409),(
+/*JD_USE:142411*/$x142411),(
+/*JD_USE:142412*/$x142412),(
+/*JD_USE:142413*/$x142413))),(
 /*JD_REF:$jd$p131p_95_wrapper_95_fields*/$jd$p131p_95_wrapper_95_fields((
-/*JD_USE:142379*/$x142379),(
-/*JD_USE:142380*/$x142380),(
-/*JD_USE:142381*/$x142381),(
-/*JD_USE:142382*/$x142382)))));}}}}}
-function $jd$p131p_95_wrapper_95_ok($a0,$a1,$a2,$a3){for(;;){const $x142387=$a0;const $x142388=$a1;const $x142389=$a2;const $x142390=$a3;{/* direct literal choice */if((
+/*JD_USE:142410*/$x142410),(
+/*JD_USE:142411*/$x142411),(
+/*JD_USE:142412*/$x142412),(
+/*JD_USE:142413*/$x142413)))));}}}}}
+function $jd$p131p_95_wrapper_95_ok($a0,$a1,$a2,$a3){for(;;){const $x142418=$a0;const $x142419=$a1;const $x142420=$a2;const $x142421=$a3;{/* direct literal choice */if((
 /*JD_REF:$jd$String_46_eq*/$jd$String_46_eq((
 /*JD_REF:$jd$tg*/$jd$tg((
-/*JD_USE:142387*/$x142387))),"Var"))){{const $ord0=(
+/*JD_USE:142418*/$x142418))),"Var"))){{const $ord0=(
 /*JD_REF:$jd$ix*/$jd$ix((
-/*JD_USE:142387*/$x142387)));const $ord1=(($ord0 === (
-/*JD_USE:142389*/$x142389)));const $ord2=(
+/*JD_USE:142418*/$x142418)));const $ord1=(($ord0 === (
+/*JD_USE:142420*/$x142420)));const $ord2=(
 /*JD_REF:$jd$p131p_95_parameter*/$jd$p131p_95_parameter((
 /*JD_REF:$jd$ix*/$jd$ix((
-/*JD_USE:142387*/$x142387))),(
-/*JD_USE:142388*/$x142388)));return (($ord1 || $ord2));}}else{return (
+/*JD_USE:142418*/$x142418))),(
+/*JD_USE:142419*/$x142419)));return (($ord1 || $ord2));}}else{return (
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$String_46_eq*/$jd$String_46_eq((
 /*JD_REF:$jd$tg*/$jd$tg((
-/*JD_USE:142387*/$x142387))),"Ctr")),(((
-/*JD_USE:142390*/$x142390) < 2)))),(
+/*JD_USE:142418*/$x142418))),"Ctr")),(((
+/*JD_USE:142421*/$x142421) < 2)))),(
 /*JD_REF:$jd$p131p_95_wrapper_95_fields*/$jd$p131p_95_wrapper_95_fields((
 /*JD_REF:$jd$ks*/$jd$ks((
-/*JD_USE:142387*/$x142387))),(
-/*JD_USE:142388*/$x142388),(
-/*JD_USE:142389*/$x142389),((((
-/*JD_USE:142390*/$x142390) + 1) >>> 0))))));}}}}
-function $jd$p131p_95_argument($a0,$a1,$a2){for(;;){const $x142396=$a0;{const $match2=$a1;if($match2.$==="Con"){const $x142397=$match2["head"];const $x142398=$match2["tail"];{const $match5=$a2;if($match5.$==="Con"){const $x142399=$match5["head"];const $x142400=$match5["tail"];{const $ord0=(
+/*JD_USE:142418*/$x142418))),(
+/*JD_USE:142419*/$x142419),(
+/*JD_USE:142420*/$x142420),((((
+/*JD_USE:142421*/$x142421) + 1) >>> 0))))));}}}}
+function $jd$p131p_95_argument($a0,$a1,$a2){for(;;){const $x142427=$a0;{const $match2=$a1;if($match2.$==="Con"){const $x142428=$match2["head"];const $x142429=$match2["tail"];{const $match5=$a2;if($match5.$==="Con"){const $x142430=$match5["head"];const $x142431=$match5["tail"];{const $ord0=(
 /*JD_REF:$jd$ix*/$jd$ix((
-/*JD_USE:142397*/$x142397)));/* direct literal choice */if((($ord0 === (
-/*JD_USE:142396*/$x142396)))){return (
-/*JD_USE:142399*/$x142399);}else{{
+/*JD_USE:142428*/$x142428)));/* direct literal choice */if((($ord0 === (
+/*JD_USE:142427*/$x142427)))){return (
+/*JD_USE:142430*/$x142430);}else{{
 /*JD_REF:$jd$p131p_95_argument*/const $next0=(
-/*JD_USE:142396*/$x142396);const $next1=(
-/*JD_USE:142398*/$x142398);const $next2=(
-/*JD_USE:142400*/$x142400);$a0=$next0;$a1=$next1;$a2=$next2;continue;}}}}else{return (
+/*JD_USE:142427*/$x142427);const $next1=(
+/*JD_USE:142429*/$x142429);const $next2=(
+/*JD_USE:142431*/$x142431);$a0=$next0;$a1=$next1;$a2=$next2;continue;}}}}else{return (
 /*JD_REF:$jd$atom*/$jd$atom("Absent"));}}}else{return (
 /*JD_REF:$jd$atom*/$jd$atom("Absent"));}}}}
-function $jd$p131p_95_virtual_95_fields($a0,$a1,$a2,$a3,$a4){for(;;){{const $match1=$a0;if($match1.$==="Nil"){return ({$:"Nil"});}else{{const $match2=$match1;const $x142415=$match2["head"];const $x142416=$match2["tail"];const $x142417=$a1;const $x142418=$a2;const $x142419=$a3;const $x142420=$a4;return ({$:"Con","head":(
+function $jd$p131p_95_virtual_95_fields($a0,$a1,$a2,$a3,$a4){for(;;){{const $match1=$a0;if($match1.$==="Nil"){return ({$:"Nil"});}else{{const $match2=$match1;const $x142446=$match2["head"];const $x142447=$match2["tail"];const $x142448=$a1;const $x142449=$a2;const $x142450=$a3;const $x142451=$a4;return ({$:"Con","head":(
 /*JD_REF:$jd$p131p_95_virtual*/$jd$p131p_95_virtual((
-/*JD_USE:142415*/$x142415),(
-/*JD_USE:142417*/$x142417),(
-/*JD_USE:142418*/$x142418),(
-/*JD_USE:142419*/$x142419),(
-/*JD_USE:142420*/$x142420))),["tail"]:(
+/*JD_USE:142446*/$x142446),(
+/*JD_USE:142448*/$x142448),(
+/*JD_USE:142449*/$x142449),(
+/*JD_USE:142450*/$x142450),(
+/*JD_USE:142451*/$x142451))),["tail"]:(
 /*JD_REF:$jd$p131p_95_virtual_95_fields*/$jd$p131p_95_virtual_95_fields((
-/*JD_USE:142416*/$x142416),(
-/*JD_USE:142417*/$x142417),(
-/*JD_USE:142418*/$x142418),(
-/*JD_USE:142419*/$x142419),(
-/*JD_USE:142420*/$x142420)))});}}}}}
-function $jd$p131p_95_virtual($a0,$a1,$a2,$a3,$a4){for(;;){const $x142426=$a0;const $x142427=$a1;const $x142428=$a2;const $x142429=$a3;const $x142430=$a4;{/* direct literal choice */if((
+/*JD_USE:142447*/$x142447),(
+/*JD_USE:142448*/$x142448),(
+/*JD_USE:142449*/$x142449),(
+/*JD_USE:142450*/$x142450),(
+/*JD_USE:142451*/$x142451)))});}}}}}
+function $jd$p131p_95_virtual($a0,$a1,$a2,$a3,$a4){for(;;){const $x142457=$a0;const $x142458=$a1;const $x142459=$a2;const $x142460=$a3;const $x142461=$a4;{/* direct literal choice */if((
 /*JD_REF:$jd$String_46_eq*/$jd$String_46_eq((
 /*JD_REF:$jd$tg*/$jd$tg((
-/*JD_USE:142426*/$x142426))),"Var"))){{const $ord0=(
+/*JD_USE:142457*/$x142457))),"Var"))){{const $ord0=(
 /*JD_REF:$jd$ix*/$jd$ix((
-/*JD_USE:142426*/$x142426)));/* direct literal choice */if((($ord0 === (
-/*JD_USE:142429*/$x142429)))){return (
-/*JD_USE:142430*/$x142430);}else{return (
+/*JD_USE:142457*/$x142457)));/* direct literal choice */if((($ord0 === (
+/*JD_USE:142460*/$x142460)))){return (
+/*JD_USE:142461*/$x142461);}else{return (
 /*JD_REF:$jd$p131p_95_argument*/$jd$p131p_95_argument((
 /*JD_REF:$jd$ix*/$jd$ix((
-/*JD_USE:142426*/$x142426))),(
-/*JD_USE:142427*/$x142427),(
-/*JD_USE:142428*/$x142428)));}}}else{{/* direct literal choice */if((
+/*JD_USE:142457*/$x142457))),(
+/*JD_USE:142458*/$x142458),(
+/*JD_USE:142459*/$x142459)));}}}else{{/* direct literal choice */if((
 /*JD_REF:$jd$String_46_eq*/$jd$String_46_eq((
 /*JD_REF:$jd$tg*/$jd$tg((
-/*JD_USE:142426*/$x142426))),"Ctr"))){return (
+/*JD_USE:142457*/$x142457))),"Ctr"))){return (
 /*JD_REF:$jd$kt*/$jd$kt("OC",(
 /*JD_REF:$jd$nm*/$jd$nm((
-/*JD_USE:142426*/$x142426))),0,0,(
+/*JD_USE:142457*/$x142457))),0,0,(
 /*JD_REF:$jd$p131p_95_virtual_95_fields*/$jd$p131p_95_virtual_95_fields((
 /*JD_REF:$jd$ks*/$jd$ks((
-/*JD_USE:142426*/$x142426))),(
-/*JD_USE:142427*/$x142427),(
-/*JD_USE:142428*/$x142428),(
-/*JD_USE:142429*/$x142429),(
-/*JD_USE:142430*/$x142430)))));}else{return (
+/*JD_USE:142457*/$x142457))),(
+/*JD_USE:142458*/$x142458),(
+/*JD_USE:142459*/$x142459),(
+/*JD_USE:142460*/$x142460),(
+/*JD_USE:142461*/$x142461)))));}else{return (
 /*JD_REF:$jd$atom*/$jd$atom("Absent"));}}}}}}
-function $jd$p131rv_95_value($a0,$a1,$a2,$a3){for(;;){const $x142631=$a0;const $x142632=$a1;const $x142633=$a2;const $x142634=$a3;{/* direct literal choice */if((((
-/*JD_USE:142634*/$x142634) === 0))){return false;}else{{/* direct literal choice */if((
+function $jd$p131rv_95_value($a0,$a1,$a2,$a3){for(;;){const $x142662=$a0;const $x142663=$a1;const $x142664=$a2;const $x142665=$a3;{/* direct literal choice */if((((
+/*JD_USE:142665*/$x142665) === 0))){return false;}else{{/* direct literal choice */if((
 /*JD_REF:$jd$String_46_eq*/$jd$String_46_eq((
 /*JD_REF:$jd$tg*/$jd$tg((
-/*JD_USE:142632*/$x142632))),"OC"))){return (
+/*JD_USE:142663*/$x142663))),"OC"))){return (
 /*JD_REF:$jd$p131rv_95_constructor*/$jd$p131rv_95_constructor((
-/*JD_USE:142631*/$x142631),(
-/*JD_USE:142632*/$x142632),(
-/*JD_USE:142633*/$x142633),((((
-/*JD_USE:142634*/$x142634) - 1) >>> 0)),(
+/*JD_USE:142662*/$x142662),(
+/*JD_USE:142663*/$x142663),(
+/*JD_USE:142664*/$x142664),((((
+/*JD_USE:142665*/$x142665) - 1) >>> 0)),(
 /*JD_REF:$jd$noa_95_spec*/$jd$noa_95_spec((
 /*JD_REF:$jd$nm*/$jd$nm((
-/*JD_USE:142632*/$x142632))),(
+/*JD_USE:142663*/$x142663))),(
 /*JD_REF:$jd$no_95_schema_95_specs*/$jd$no_95_schema_95_specs((
 /*JD_REF:$jd$noa_95_schema*/$jd$noa_95_schema((
-/*JD_USE:142631*/$x142631)))))))));}else{{const $ord0=(
+/*JD_USE:142662*/$x142662)))))))));}else{{const $ord0=(
 /*JD_REF:$jd$Bool_46_not*/$jd$Bool_46_not((
 /*JD_REF:$jd$String_46_eq*/$jd$String_46_eq((
 /*JD_REF:$jd$tg*/$jd$tg((
 /*JD_REF:$jd$noa_95_scalar*/$jd$noa_95_scalar((
-/*JD_USE:142631*/$x142631),(
-/*JD_USE:142632*/$x142632))))),"Absent"))));const $ord1=(
+/*JD_USE:142662*/$x142662),(
+/*JD_USE:142663*/$x142663))))),"Absent"))));const $ord1=(
 /*JD_REF:$jd$p128br_95_held*/$jd$p128br_95_held((
 /*JD_REF:$jd$noa_95_origin*/$jd$noa_95_origin((
-/*JD_USE:142632*/$x142632))),(
+/*JD_USE:142663*/$x142663))),(
 /*JD_REF:$jd$no_95_schema_95_params*/$jd$no_95_schema_95_params((
 /*JD_REF:$jd$noa_95_schema*/$jd$noa_95_schema((
-/*JD_USE:142631*/$x142631))))),(
+/*JD_USE:142662*/$x142662))))),(
 /*JD_REF:$jd$no_95_schema_95_roots*/$jd$no_95_schema_95_roots((
 /*JD_REF:$jd$noa_95_schema*/$jd$noa_95_schema((
-/*JD_USE:142631*/$x142631))))),0));return (
+/*JD_USE:142662*/$x142662))))),0));return (
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$String_46_eq*/$jd$String_46_eq((
 /*JD_REF:$jd$tg*/$jd$tg((
-/*JD_USE:142632*/$x142632))),"OA")),(
+/*JD_USE:142663*/$x142663))),"OA")),(
 /*JD_REF:$jd$String_46_eq*/$jd$String_46_eq((
 /*JD_REF:$jd$nm*/$jd$nm((
-/*JD_USE:142632*/$x142632))),(
-/*JD_USE:142633*/$x142633))))),(($ord0 || $ord1))));}}}}}}}
-function $jd$p131rv_95_fields($a0,$a1,$a2,$a3){for(;;){const $x142643=$a0;{const $match2=$a1;if($match2.$==="Nil"){{const $match3=$a2;if($match3.$==="Nil"){return true;}else{return false;}}}else{{const $match3=$match2;const $x142647=$match3["head"];const $x142648=$match3["tail"];{const $match6=$a2;if($match6.$==="Con"){const $x142649=$match6["head"];const $x142650=$match6["tail"];const $x142651=$a3;return (
+/*JD_USE:142663*/$x142663))),(
+/*JD_USE:142664*/$x142664))))),(($ord0 || $ord1))));}}}}}}}
+function $jd$p131rv_95_fields($a0,$a1,$a2,$a3){for(;;){const $x142674=$a0;{const $match2=$a1;if($match2.$==="Nil"){{const $match3=$a2;if($match3.$==="Nil"){return true;}else{return false;}}}else{{const $match3=$match2;const $x142678=$match3["head"];const $x142679=$match3["tail"];{const $match6=$a2;if($match6.$==="Con"){const $x142680=$match6["head"];const $x142681=$match6["tail"];const $x142682=$a3;return (
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$p131rv_95_value*/$jd$p131rv_95_value((
-/*JD_USE:142643*/$x142643),(
-/*JD_USE:142647*/$x142647),(
-/*JD_USE:142649*/$x142649),(
-/*JD_USE:142651*/$x142651))),(
+/*JD_USE:142674*/$x142674),(
+/*JD_USE:142678*/$x142678),(
+/*JD_USE:142680*/$x142680),(
+/*JD_USE:142682*/$x142682))),(
 /*JD_REF:$jd$p131rv_95_fields*/$jd$p131rv_95_fields((
-/*JD_USE:142643*/$x142643),(
-/*JD_USE:142648*/$x142648),(
-/*JD_USE:142650*/$x142650),(
-/*JD_USE:142651*/$x142651)))));}else{return false;}}}}}}}
-function $jd$p131rv_95_constructor($a0,$a1,$a2,$a3,$a4){for(;;){const $x142662=$a0;const $x142663=$a1;const $x142664=$a2;const $x142665=$a3;{const $match5=$a4;if($match5.$==="None"){return false;}else{{const $match6=$match5;{const $match7=$match6["value"];{const $match8=$match7["layout"];const $x142669=$match8["width"];const $x142670=$match7["owner"];const $x142671=$match7["fields"];{const $ord0=(
+/*JD_USE:142674*/$x142674),(
+/*JD_USE:142679*/$x142679),(
+/*JD_USE:142681*/$x142681),(
+/*JD_USE:142682*/$x142682)))));}else{return false;}}}}}}}
+function $jd$p131rv_95_constructor($a0,$a1,$a2,$a3,$a4){for(;;){const $x142693=$a0;const $x142694=$a1;const $x142695=$a2;const $x142696=$a3;{const $match5=$a4;if($match5.$==="None"){return false;}else{{const $match6=$match5;{const $match7=$match6["value"];{const $match8=$match7["layout"];const $x142700=$match8["width"];const $x142701=$match7["owner"];const $x142702=$match7["fields"];{const $ord0=(
 /*JD_REF:$jd$terms_95_len*/$jd$terms_95_len((
 /*JD_REF:$jd$ks*/$jd$ks((
-/*JD_USE:142663*/$x142663)))));const $ord1=(
+/*JD_USE:142694*/$x142694)))));const $ord1=(
 /*JD_REF:$jd$nt_95_count*/$jd$nt_95_count((
-/*JD_USE:142671*/$x142671)));return (
+/*JD_USE:142702*/$x142702)));return (
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$String_46_eq*/$jd$String_46_eq((
-/*JD_USE:142670*/$x142670),(
-/*JD_USE:142664*/$x142664))),(((
-/*JD_USE:142669*/$x142669) === $ord0)))),(((
-/*JD_USE:142669*/$x142669) === $ord1)))),(
+/*JD_USE:142701*/$x142701),(
+/*JD_USE:142695*/$x142695))),(((
+/*JD_USE:142700*/$x142700) === $ord0)))),(((
+/*JD_USE:142700*/$x142700) === $ord1)))),(
 /*JD_REF:$jd$p131rv_95_fields*/$jd$p131rv_95_fields((
-/*JD_USE:142662*/$x142662),(
+/*JD_USE:142693*/$x142693),(
 /*JD_REF:$jd$ks*/$jd$ks((
-/*JD_USE:142663*/$x142663))),(
-/*JD_USE:142671*/$x142671),(
-/*JD_USE:142665*/$x142665)))));}}}}}}}}
-function $jd$p131rv_95_arguments($a0,$a1,$a2,$a3,$a4,$a5){for(;;){const $x142678=$a0;{const $match2=$a1;if($match2.$==="Nil"){{const $match4=$a3;if($match4.$==="Nil"){const $x142681=$a5;return (
-/*JD_USE:142681*/$x142681);}else{return false;}}}else{{const $match3=$match2;const $x142685=$match3["head"];const $x142686=$match3["tail"];const $x142687=$a2;{const $match7=$a3;if($match7.$==="Con"){const $x142688=$match7["head"];const $x142689=$match7["tail"];const $x142690=$a4;const $x142691=$a5;{const $ord0=(
+/*JD_USE:142694*/$x142694))),(
+/*JD_USE:142702*/$x142702),(
+/*JD_USE:142696*/$x142696)))));}}}}}}}}
+function $jd$p131rv_95_arguments($a0,$a1,$a2,$a3,$a4,$a5){for(;;){const $x142709=$a0;{const $match2=$a1;if($match2.$==="Nil"){{const $match4=$a3;if($match4.$==="Nil"){const $x142712=$a5;return (
+/*JD_USE:142712*/$x142712);}else{return false;}}}else{{const $match3=$match2;const $x142716=$match3["head"];const $x142717=$match3["tail"];const $x142718=$a2;{const $match7=$a3;if($match7.$==="Con"){const $x142719=$match7["head"];const $x142720=$match7["tail"];const $x142721=$a4;const $x142722=$a5;{const $ord0=(
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$no_95_root_95_index*/$jd$no_95_root_95_index((
-/*JD_USE:142687*/$x142687),(
-/*JD_USE:142690*/$x142690))),(
+/*JD_USE:142718*/$x142718),(
+/*JD_USE:142721*/$x142721))),(
 /*JD_REF:$jd$String_46_eq*/$jd$String_46_eq((
 /*JD_REF:$jd$tg*/$jd$tg((
-/*JD_USE:142688*/$x142688))),"OC"))));return (
+/*JD_USE:142719*/$x142719))),"OC"))));return (
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$String_46_eq*/$jd$String_46_eq((
 /*JD_REF:$jd$noa_95_value_95_type*/$jd$noa_95_value_95_type((
-/*JD_USE:142678*/$x142678),(
-/*JD_USE:142688*/$x142688))),(
+/*JD_USE:142709*/$x142709),(
+/*JD_USE:142719*/$x142719))),(
 /*JD_REF:$jd$nm*/$jd$nm((
-/*JD_USE:142685*/$x142685))))),(()=>{/* direct literal choice */if((
+/*JD_USE:142716*/$x142716))))),(()=>{/* direct literal choice */if((
 /*JD_REF:$jd$no_95_root_95_index*/$jd$no_95_root_95_index((
-/*JD_USE:142687*/$x142687),(
-/*JD_USE:142690*/$x142690)))){return (
+/*JD_USE:142718*/$x142718),(
+/*JD_USE:142721*/$x142721)))){return (
 /*JD_REF:$jd$p131rv_95_value*/$jd$p131rv_95_value((
-/*JD_USE:142678*/$x142678),(
-/*JD_USE:142688*/$x142688),(
+/*JD_USE:142709*/$x142709),(
+/*JD_USE:142719*/$x142719),(
 /*JD_REF:$jd$nm*/$jd$nm((
-/*JD_USE:142685*/$x142685))),16));}else{return (
+/*JD_USE:142716*/$x142716))),16));}else{return (
 /*JD_REF:$jd$Bool_46_not*/$jd$Bool_46_not((
 /*JD_REF:$jd$String_46_eq*/$jd$String_46_eq((
 /*JD_REF:$jd$tg*/$jd$tg((
 /*JD_REF:$jd$noa_95_scalar*/$jd$noa_95_scalar((
-/*JD_USE:142678*/$x142678),(
-/*JD_USE:142688*/$x142688))))),"Absent"))));}})())),(
+/*JD_USE:142709*/$x142709),(
+/*JD_USE:142719*/$x142719))))),"Absent"))));}})())),(
 /*JD_REF:$jd$p131rv_95_arguments*/$jd$p131rv_95_arguments((
-/*JD_USE:142678*/$x142678),(
-/*JD_USE:142686*/$x142686),(
-/*JD_USE:142687*/$x142687),(
-/*JD_USE:142689*/$x142689),((((
-/*JD_USE:142690*/$x142690) + 1) >>> 0)),(((
-/*JD_USE:142691*/$x142691) || $ord0))))));}}else{return false;}}}}}}}
+/*JD_USE:142709*/$x142709),(
+/*JD_USE:142717*/$x142717),(
+/*JD_USE:142718*/$x142718),(
+/*JD_USE:142720*/$x142720),((((
+/*JD_USE:142721*/$x142721) + 1) >>> 0)),(((
+/*JD_USE:142722*/$x142722) || $ord0))))));}}else{return false;}}}}}}}
 function $jd$p131rv_95_reference($a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8){return (
 /*JD_REF:$jd$noa_95_continue*/$jd$noa_95_continue$scc(12,$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8));}
-function $jd$p137q_95_name_95_eq($a0,$a1){for(;;){const $x143629=$a0;{const $match2=$a1;if($match2.$==="KDef"){const $x143630=$match2["name"];return (
+function $jd$p137q_95_name_95_eq($a0,$a1){for(;;){const $x143660=$a0;{const $match2=$a1;if($match2.$==="KDef"){const $x143661=$match2["name"];return (
 /*JD_REF:$jd$p88_95_string_95_eq*/$jd$p88_95_string_95_eq((
-/*JD_USE:143630*/$x143630),(
-/*JD_USE:143629*/$x143629)));}else{{const $match3=$match2;if($match3.$==="KIndexLeaf"){return (
+/*JD_USE:143661*/$x143661),(
+/*JD_USE:143660*/$x143660)));}else{{const $match3=$match2;if($match3.$==="KIndexLeaf"){return (
 /*JD_REF:$jd$p88_95_string_95_eq*/$jd$p88_95_string_95_eq("",(
-/*JD_USE:143629*/$x143629)));}else{{const $match4=$match3;return (
+/*JD_USE:143660*/$x143660)));}else{{const $match4=$match3;return (
 /*JD_REF:$jd$p88_95_string_95_eq*/$jd$p88_95_string_95_eq("",(
-/*JD_USE:143629*/$x143629)));}}}}}}}
-function $jd$p137q_95_key_95_eq($a0,$a1){for(;;){const $x143647=$a0;{const $match2=$a1;if($match2.$==="KDef"){const $x143648=$match2["name"];return (
+/*JD_USE:143660*/$x143660)));}}}}}}}
+function $jd$p137q_95_key_95_eq($a0,$a1){for(;;){const $x143678=$a0;{const $match2=$a1;if($match2.$==="KDef"){const $x143679=$match2["name"];return (
 /*JD_REF:$jd$p88_95_string_95_eq*/$jd$p88_95_string_95_eq((
-/*JD_USE:143647*/$x143647),(
-/*JD_USE:143648*/$x143648)));}else{{const $match3=$match2;if($match3.$==="KIndexLeaf"){return (
+/*JD_USE:143678*/$x143678),(
+/*JD_USE:143679*/$x143679)));}else{{const $match3=$match2;if($match3.$==="KIndexLeaf"){return (
 /*JD_REF:$jd$p88_95_string_95_eq*/$jd$p88_95_string_95_eq((
-/*JD_USE:143647*/$x143647),""));}else{{const $match4=$match3;return (
+/*JD_USE:143678*/$x143678),""));}else{{const $match4=$match3;return (
 /*JD_REF:$jd$p88_95_string_95_eq*/$jd$p88_95_string_95_eq((
-/*JD_USE:143647*/$x143647),""));}}}}}}}
-function $jd$p137q_95_is_95_cache($a0){for(;;){{const $match1=$a0;if($match1.$==="KDef"){const $x143665=$match1["kind"];return (
+/*JD_USE:143678*/$x143678),""));}}}}}}}
+function $jd$p137q_95_is_95_cache($a0){for(;;){{const $match1=$a0;if($match1.$==="KDef"){const $x143696=$match1["kind"];return (
 /*JD_REF:$jd$p88_95_string_95_eq*/$jd$p88_95_string_95_eq((
-/*JD_USE:143665*/$x143665),"BookCache"));}else{{const $match2=$match1;if($match2.$==="KIndexLeaf"){return false;}else{{const $match3=$match2;return false;}}}}}}}
-function $jd$p137q_95_is_95_adt($a0){for(;;){{const $match1=$a0;if($match1.$==="KDef"){const $x143681=$match1["kind"];return (
+/*JD_USE:143696*/$x143696),"BookCache"));}else{{const $match2=$match1;if($match2.$==="KIndexLeaf"){return false;}else{{const $match3=$match2;return false;}}}}}}}
+function $jd$p137q_95_is_95_adt($a0){for(;;){{const $match1=$a0;if($match1.$==="KDef"){const $x143712=$match1["kind"];return (
 /*JD_REF:$jd$p88_95_string_95_eq*/$jd$p88_95_string_95_eq((
-/*JD_USE:143681*/$x143681),"ADT"));}else{{const $match2=$match1;if($match2.$==="KIndexLeaf"){return false;}else{{const $match3=$match2;return false;}}}}}}}
-function $jd$p137q_95_is_95_ctr($a0){for(;;){{const $match1=$a0;if($match1.$==="KDef"){const $x143697=$match1["kind"];return (
+/*JD_USE:143712*/$x143712),"ADT"));}else{{const $match2=$match1;if($match2.$==="KIndexLeaf"){return false;}else{{const $match3=$match2;return false;}}}}}}}
+function $jd$p137q_95_is_95_ctr($a0){for(;;){{const $match1=$a0;if($match1.$==="KDef"){const $x143728=$match1["kind"];return (
 /*JD_REF:$jd$p88_95_string_95_eq*/$jd$p88_95_string_95_eq((
-/*JD_USE:143697*/$x143697),"Ctr"));}else{{const $match2=$match1;if($match2.$==="KIndexLeaf"){return false;}else{{const $match3=$match2;return false;}}}}}}}
-function $jd$p140p_95_result($a0,$a1,$a2){for(;;){const $x143735=$a0;const $x143736=$a1;const $x143737=$a2;return ({$:"P140PDone",["raw"]:(
+/*JD_USE:143728*/$x143728),"Ctr"));}else{{const $match2=$match1;if($match2.$==="KIndexLeaf"){return false;}else{{const $match3=$match2;return false;}}}}}}}
+function $jd$p140p_95_result($a0,$a1,$a2){for(;;){const $x143766=$a0;const $x143767=$a1;const $x143768=$a2;return ({$:"P140PDone",["raw"]:(
 /*JD_REF:$jd$f_95_result*/$jd$f_95_result((
-/*JD_USE:143735*/$x143735),(
-/*JD_USE:143736*/$x143736),(
-/*JD_USE:143737*/$x143737)))});}}
+/*JD_USE:143766*/$x143766),(
+/*JD_USE:143767*/$x143767),(
+/*JD_USE:143768*/$x143768)))});}}
 function $jd$p140p_95_tops$scc($pc,$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9){
 /*JD_REF:$jd$p140p_95_tops*/
 /*JD_REF:$jd$p140p_95_top*/
@@ -78060,1398 +78060,1398 @@ function $jd$p140p_95_tops$scc($pc,$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9){
 /*JD_REF:$jd$p140p_95_named_95_top*/
 /*JD_REF:$jd$p140p_95_law_95_header*/
 /*JD_REF:$jd$p140p_95_def_95_context_95_header*/
-/*JD_REF:$jd$p140p_95_import_95_alias*/for(;;)switch($pc){case 0:{const $x143750=$a0;const $x143751=$a1;const $x143752=$a2;const $x143753=$a3;const $x143754=$a4;const $x143755=$a5;{
+/*JD_REF:$jd$p140p_95_import_95_alias*/for(;;)switch($pc){case 0:{const $x143781=$a0;const $x143782=$a1;const $x143783=$a2;const $x143784=$a3;const $x143785=$a4;const $x143786=$a5;{
 /*JD_REF:$jd$p140p_95_top*/const $next0=(
-/*JD_USE:143750*/$x143750);const $next1=(
+/*JD_USE:143781*/$x143781);const $next1=(
 /*JD_REF:$jd$f_95_skip*/$jd$f_95_skip((
-/*JD_USE:143751*/$x143751)));const $next2=(
-/*JD_USE:143752*/$x143752);const $next3=(
-/*JD_USE:143753*/$x143753);const $next4=(
-/*JD_USE:143754*/$x143754);const $next5=(
-/*JD_USE:143755*/$x143755);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=1;continue;}}case 1:{const $x143768=$a0;const $x143769=$a1;const $x143770=$a2;const $x143771=$a3;const $x143772=$a4;const $x143773=$a5;{const $ord0=(
+/*JD_USE:143782*/$x143782)));const $next2=(
+/*JD_USE:143783*/$x143783);const $next3=(
+/*JD_USE:143784*/$x143784);const $next4=(
+/*JD_USE:143785*/$x143785);const $next5=(
+/*JD_USE:143786*/$x143786);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=1;continue;}}case 1:{const $x143799=$a0;const $x143800=$a1;const $x143801=$a2;const $x143802=$a3;const $x143803=$a4;const $x143804=$a5;{const $ord0=(
 /*JD_REF:$jd$f_95_begin*/$jd$f_95_begin((
-/*JD_USE:143769*/$x143769)));const $ord1=(
+/*JD_USE:143800*/$x143800)));const $ord1=(
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:143769*/$x143769))),"def"));const $ord2=(
+/*JD_USE:143800*/$x143800))),"def"));const $ord2=(
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:143769*/$x143769))),"law"));const $ord3=(($ord1 || $ord2));const $ord4=(
+/*JD_USE:143800*/$x143800))),"law"));const $ord3=(($ord1 || $ord2));const $ord4=(
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:143769*/$x143769))),"type"));/* direct literal choice */if((
+/*JD_USE:143800*/$x143800))),"type"));/* direct literal choice */if((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((((
-/*JD_USE:143768*/$x143768) > 0)),(($ord0 >= (
-/*JD_USE:143768*/$x143768))))),(($ord3 || $ord4))))){return ({$:"P140PCut","input":(
-/*JD_USE:143769*/$x143769),"book":(
-/*JD_USE:143770*/$x143770),"imports":(
-/*JD_USE:143771*/$x143771),"unsafe":(
-/*JD_USE:143772*/$x143772),["scope"]:(
-/*JD_USE:143773*/$x143773)});}else{{/* direct literal choice */if((
-/*JD_USE:143772*/$x143772)){{/* direct literal choice */if((
+/*JD_USE:143799*/$x143799) > 0)),(($ord0 >= (
+/*JD_USE:143799*/$x143799))))),(($ord3 || $ord4))))){return ({$:"P140PCut","input":(
+/*JD_USE:143800*/$x143800),"book":(
+/*JD_USE:143801*/$x143801),"imports":(
+/*JD_USE:143802*/$x143802),"unsafe":(
+/*JD_USE:143803*/$x143803),["scope"]:(
+/*JD_USE:143804*/$x143804)});}else{{/* direct literal choice */if((
+/*JD_USE:143803*/$x143803)){{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:143769*/$x143769))),"def"))){{
+/*JD_USE:143800*/$x143800))),"def"))){{
 /*JD_REF:$jd$p140p_95_top_95_ready*/const $next0=(
-/*JD_USE:143768*/$x143768);const $next1=(
-/*JD_USE:143769*/$x143769);const $next2=(
-/*JD_USE:143770*/$x143770);const $next3=(
-/*JD_USE:143771*/$x143771);const $next4=(
-/*JD_USE:143772*/$x143772);const $next5=(
-/*JD_USE:143773*/$x143773);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=2;continue;}}else{return (
+/*JD_USE:143799*/$x143799);const $next1=(
+/*JD_USE:143800*/$x143800);const $next2=(
+/*JD_USE:143801*/$x143801);const $next3=(
+/*JD_USE:143802*/$x143802);const $next4=(
+/*JD_USE:143803*/$x143803);const $next5=(
+/*JD_USE:143804*/$x143804);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=2;continue;}}else{return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:143770*/$x143770),(
+/*JD_USE:143801*/$x143801),(
 /*JD_REF:$jd$f_95_pn*/$jd$f_95_pn((
 /*JD_REF:$jd$fpe_95_error*/$jd$fpe_95_error((
-/*JD_USE:143769*/$x143769),"expected def after @unsafe","'def' (@unsafe marks the def below it)")))),(
-/*JD_USE:143771*/$x143771)));}}}else{{
+/*JD_USE:143800*/$x143800),"expected def after @unsafe","'def' (@unsafe marks the def below it)")))),(
+/*JD_USE:143802*/$x143802)));}}}else{{
 /*JD_REF:$jd$p140p_95_top_95_ready*/const $next0=(
-/*JD_USE:143768*/$x143768);const $next1=(
-/*JD_USE:143769*/$x143769);const $next2=(
-/*JD_USE:143770*/$x143770);const $next3=(
-/*JD_USE:143771*/$x143771);const $next4=(
-/*JD_USE:143772*/$x143772);const $next5=(
-/*JD_USE:143773*/$x143773);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=2;continue;}}}}}}case 2:{const $x143792=$a0;const $x143793=$a1;const $x143794=$a2;const $x143795=$a3;const $x143796=$a4;const $x143797=$a5;{/* direct literal choice */if((
+/*JD_USE:143799*/$x143799);const $next1=(
+/*JD_USE:143800*/$x143800);const $next2=(
+/*JD_USE:143801*/$x143801);const $next3=(
+/*JD_USE:143802*/$x143802);const $next4=(
+/*JD_USE:143803*/$x143803);const $next5=(
+/*JD_USE:143804*/$x143804);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=2;continue;}}}}}}case 2:{const $x143823=$a0;const $x143824=$a1;const $x143825=$a2;const $x143826=$a3;const $x143827=$a4;const $x143828=$a5;{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:143793*/$x143793))),"<eof>"))){return (
+/*JD_USE:143824*/$x143824))),"<eof>"))){return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:143794*/$x143794),(
+/*JD_USE:143825*/$x143825),(
 /*JD_REF:$jd$atom*/$jd$atom("Absent")),(
-/*JD_USE:143795*/$x143795)));}else{{/* direct literal choice */if((
+/*JD_USE:143826*/$x143826)));}else{{/* direct literal choice */if((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:143793*/$x143793))),"@")),(
+/*JD_USE:143824*/$x143824))),"@")),(
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:143793*/$x143793))))),"unsafe"))))){{
+/*JD_USE:143824*/$x143824))))),"unsafe"))))){{
 /*JD_REF:$jd$p140p_95_tops*/const $next0=(
-/*JD_USE:143792*/$x143792);const $next1=(
+/*JD_USE:143823*/$x143823);const $next1=(
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:143793*/$x143793)))));const $next2=(
-/*JD_USE:143794*/$x143794);const $next3=(
-/*JD_USE:143795*/$x143795);const $next4=true;const $next5=(
-/*JD_USE:143797*/$x143797);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=0;continue;}}else{{/* direct literal choice */if((
+/*JD_USE:143824*/$x143824)))));const $next2=(
+/*JD_USE:143825*/$x143825);const $next3=(
+/*JD_USE:143826*/$x143826);const $next4=true;const $next5=(
+/*JD_USE:143828*/$x143828);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=0;continue;}}else{{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:143793*/$x143793))),"import"))){{
+/*JD_USE:143824*/$x143824))),"import"))){{
 /*JD_REF:$jd$p140p_95_import_95_leading*/const $next0=(
-/*JD_USE:143792*/$x143792);const $next1=(
-/*JD_USE:143793*/$x143793);const $next2=(
-/*JD_USE:143794*/$x143794);const $next3=(
-/*JD_USE:143795*/$x143795);const $next4=(
-/*JD_USE:143796*/$x143796);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$pc=15;continue;}}else{{/* direct literal choice */if((
+/*JD_USE:143823*/$x143823);const $next1=(
+/*JD_USE:143824*/$x143824);const $next2=(
+/*JD_USE:143825*/$x143825);const $next3=(
+/*JD_USE:143826*/$x143826);const $next4=(
+/*JD_USE:143827*/$x143827);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$pc=15;continue;}}else{{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:143793*/$x143793))),"law"))){{
+/*JD_USE:143824*/$x143824))),"law"))){{
 /*JD_REF:$jd$p140p_95_named_95_top*/const $next0=(
-/*JD_USE:143792*/$x143792);const $next1=(
+/*JD_USE:143823*/$x143823);const $next1=(
 /*JD_REF:$jd$f_95_space*/$jd$f_95_space((
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:143793*/$x143793)))));const $next2=(
-/*JD_USE:143794*/$x143794);const $next3=(
-/*JD_USE:143795*/$x143795);const $next4=false;const $next5=(
-/*JD_USE:143797*/$x143797);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=30;continue;}}else{{/* direct literal choice */if((
+/*JD_USE:143824*/$x143824)))));const $next2=(
+/*JD_USE:143825*/$x143825);const $next3=(
+/*JD_USE:143826*/$x143826);const $next4=false;const $next5=(
+/*JD_USE:143828*/$x143828);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=30;continue;}}else{{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:143793*/$x143793))),"def"))){{
+/*JD_USE:143824*/$x143824))),"def"))){{
 /*JD_REF:$jd$p140p_95_def_95_header*/const $next0=(
-/*JD_USE:143792*/$x143792);const $next1=(
+/*JD_USE:143823*/$x143823);const $next1=(
 /*JD_REF:$jd$f_95_space*/$jd$f_95_space((
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:143793*/$x143793)))));const $next2=(
-/*JD_USE:143794*/$x143794);const $next3=(
-/*JD_USE:143795*/$x143795);const $next4=(
-/*JD_USE:143796*/$x143796);const $next5=(
-/*JD_USE:143797*/$x143797);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=22;continue;}}else{{/* direct literal choice */if((
+/*JD_USE:143824*/$x143824)))));const $next2=(
+/*JD_USE:143825*/$x143825);const $next3=(
+/*JD_USE:143826*/$x143826);const $next4=(
+/*JD_USE:143827*/$x143827);const $next5=(
+/*JD_USE:143828*/$x143828);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=22;continue;}}else{{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:143793*/$x143793))),"type"))){{
+/*JD_USE:143824*/$x143824))),"type"))){{
 /*JD_REF:$jd$p140p_95_named_95_top*/const $next0=(
-/*JD_USE:143792*/$x143792);const $next1=(
+/*JD_USE:143823*/$x143823);const $next1=(
 /*JD_REF:$jd$f_95_space*/$jd$f_95_space((
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:143793*/$x143793)))));const $next2=(
-/*JD_USE:143794*/$x143794);const $next3=(
-/*JD_USE:143795*/$x143795);const $next4=true;const $next5=(
-/*JD_USE:143797*/$x143797);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=30;continue;}}else{return (
+/*JD_USE:143824*/$x143824)))));const $next2=(
+/*JD_USE:143825*/$x143825);const $next3=(
+/*JD_USE:143826*/$x143826);const $next4=true;const $next5=(
+/*JD_USE:143828*/$x143828);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=30;continue;}}else{return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:143794*/$x143794),(
+/*JD_USE:143825*/$x143825),(
 /*JD_REF:$jd$f_95_pn*/$jd$f_95_pn((()=>{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:143793*/$x143793))),"@"))){return (
+/*JD_USE:143824*/$x143824))),"@"))){return (
 /*JD_REF:$jd$f_95_err*/$jd$f_95_err((
-/*JD_USE:143793*/$x143793),"expected def, law, type or import"));}else{return (
+/*JD_USE:143824*/$x143824),"expected def, law, type or import"));}else{return (
 /*JD_REF:$jd$fpe_95_error*/$jd$fpe_95_error((
-/*JD_USE:143793*/$x143793),"expected def, law, type or import","'def', 'type' or 'law'"));}})())),(
-/*JD_USE:143795*/$x143795)));}}}}}}}}}}}}}case 3:{const $x143828=$a0;const $x143829=$a1;const $x143830=$a2;{const $match4=$a3;const $x143831=$match4["term"];const $x143832=$match4["rest"];const $x143833=$a4;const $x143834=$a5;const $x143835=$a6;const $x143836=$a7;{const $let0=(
+/*JD_USE:143824*/$x143824),"expected def, law, type or import","'def', 'type' or 'law'"));}})())),(
+/*JD_USE:143826*/$x143826)));}}}}}}}}}}}}}case 3:{const $x143859=$a0;const $x143860=$a1;const $x143861=$a2;{const $match4=$a3;const $x143862=$match4["term"];const $x143863=$match4["rest"];const $x143864=$a4;const $x143865=$a5;const $x143866=$a6;const $x143867=$a7;{const $let0=(
 /*JD_REF:$jd$f_95_context_95_signature*/$jd$f_95_context_95_signature((
 /*JD_REF:$jd$f_95_def_95_signature*/$jd$f_95_def_95_signature((
-/*JD_USE:143829*/$x143829),(
-/*JD_USE:143830*/$x143830),(
-/*JD_USE:143831*/$x143831),(
-/*JD_USE:143833*/$x143833),(
-/*JD_USE:143836*/$x143836))),(
-/*JD_USE:143832*/$x143832)));{const $x143837=$let0;{/* direct literal choice */if((
+/*JD_USE:143860*/$x143860),(
+/*JD_USE:143861*/$x143861),(
+/*JD_USE:143862*/$x143862),(
+/*JD_USE:143864*/$x143864),(
+/*JD_USE:143867*/$x143867))),(
+/*JD_USE:143863*/$x143863)));{const $x143868=$let0;{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_context_95_stop*/$jd$f_95_context_95_stop((
-/*JD_USE:143831*/$x143831)))){return (
+/*JD_USE:143862*/$x143862)))){return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:143833*/$x143833),(
-/*JD_USE:143831*/$x143831),(
-/*JD_USE:143834*/$x143834)));}else{{/* direct literal choice */if((
-/*JD_REF:$jd$f_95_context_95_stop*/$jd$f_95_context_95_stop((
-/*JD_USE:143837*/$x143837)))){return (
-/*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:143833*/$x143833),(
-/*JD_USE:143837*/$x143837),(
-/*JD_USE:143834*/$x143834)));}else{{/* direct literal choice */if((
-/*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
-/*JD_REF:$jd$tg*/$jd$tg((
-/*JD_USE:143831*/$x143831))),"Absent"))){{const $ord0="definition without return type needs a law: ";const $ord1="'->' (a def with no return type fills a law; no law named ";const $ord2=(($ord1 + (
-/*JD_USE:143829*/$x143829)));const $ord3=" is in scope)";return (
-/*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:143833*/$x143833),(
-/*JD_REF:$jd$f_95_pn*/$jd$f_95_pn((
-/*JD_REF:$jd$fpe_95_error*/$jd$fpe_95_error((
-/*JD_USE:143832*/$x143832),(($ord0 + (
-/*JD_USE:143829*/$x143829))),(($ord2 + $ord3)))))),(
-/*JD_USE:143834*/$x143834)));}}else{{/* direct literal choice */if((
-/*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
-/*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_REF:$jd$f_95_skip*/$jd$f_95_skip((
-/*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:143832*/$x143832))))))),"import"))){{
-/*JD_REF:$jd$p140p_95_foreign*/const $next0=(
-/*JD_USE:143828*/$x143828);const $next1=(
-/*JD_USE:143829*/$x143829);const $next2=(
-/*JD_USE:143830*/$x143830);const $next3=(
-/*JD_USE:143837*/$x143837);const $next4=(
-/*JD_REF:$jd$f_95_skip*/$jd$f_95_skip((
-/*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:143832*/$x143832)))));const $next5=(
-/*JD_USE:143833*/$x143833);const $next6=(
-/*JD_USE:143834*/$x143834);const $next7=(
-/*JD_USE:143835*/$x143835);const $next8=({$:"Nil"});const $next9=(
-/*JD_USE:143836*/$x143836);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$a9=$next9;$pc=5;continue;}}else{{
-/*JD_REF:$jd$p140p_95_def_95_body*/const $next0=(
-/*JD_USE:143828*/$x143828);const $next1=(
-/*JD_USE:143829*/$x143829);const $next2=(
-/*JD_USE:143830*/$x143830);const $next3=(
-/*JD_USE:143837*/$x143837);const $next4=(
-/*JD_REF:$jd$f_95_context_95_definition*/$jd$f_95_context_95_definition((
-/*JD_USE:143829*/$x143829),(
-/*JD_USE:143830*/$x143830),(
-/*JD_USE:143837*/$x143837),(
-/*JD_REF:$jd$f_95_expect*/$jd$f_95_expect(({$:"FParsed","term":(
-/*JD_USE:143831*/$x143831),["rest"]:(
-/*JD_USE:143832*/$x143832)}),":")),(
-/*JD_USE:143836*/$x143836)));const $next5=(
-/*JD_USE:143833*/$x143833);const $next6=(
-/*JD_USE:143834*/$x143834);const $next7=(
-/*JD_USE:143835*/$x143835);const $next8=(
-/*JD_USE:143836*/$x143836);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$pc=4;continue;}}}}}}}}}}}}}case 4:{const $x143864=$a0;const $x143865=$a1;const $x143866=$a2;const $x143867=$a3;{const $match5=$a4;const $x143868=$match5["term"];const $x143869=$match5["rest"];const $x143870=$a5;const $x143871=$a6;const $x143872=$a7;const $x143873=$a8;{/* direct literal choice */if((
+/*JD_USE:143864*/$x143864),(
+/*JD_USE:143862*/$x143862),(
+/*JD_USE:143865*/$x143865)));}else{{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_context_95_stop*/$jd$f_95_context_95_stop((
 /*JD_USE:143868*/$x143868)))){return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:143870*/$x143870),(
+/*JD_USE:143864*/$x143864),(
 /*JD_USE:143868*/$x143868),(
-/*JD_USE:143871*/$x143871)));}else{{
+/*JD_USE:143865*/$x143865)));}else{{/* direct literal choice */if((
+/*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
+/*JD_REF:$jd$tg*/$jd$tg((
+/*JD_USE:143862*/$x143862))),"Absent"))){{const $ord0="definition without return type needs a law: ";const $ord1="'->' (a def with no return type fills a law; no law named ";const $ord2=(($ord1 + (
+/*JD_USE:143860*/$x143860)));const $ord3=" is in scope)";return (
+/*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
+/*JD_USE:143864*/$x143864),(
+/*JD_REF:$jd$f_95_pn*/$jd$f_95_pn((
+/*JD_REF:$jd$fpe_95_error*/$jd$fpe_95_error((
+/*JD_USE:143863*/$x143863),(($ord0 + (
+/*JD_USE:143860*/$x143860))),(($ord2 + $ord3)))))),(
+/*JD_USE:143865*/$x143865)));}}else{{/* direct literal choice */if((
+/*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
+/*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
+/*JD_REF:$jd$f_95_skip*/$jd$f_95_skip((
+/*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
+/*JD_USE:143863*/$x143863))))))),"import"))){{
+/*JD_REF:$jd$p140p_95_foreign*/const $next0=(
+/*JD_USE:143859*/$x143859);const $next1=(
+/*JD_USE:143860*/$x143860);const $next2=(
+/*JD_USE:143861*/$x143861);const $next3=(
+/*JD_USE:143868*/$x143868);const $next4=(
+/*JD_REF:$jd$f_95_skip*/$jd$f_95_skip((
+/*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
+/*JD_USE:143863*/$x143863)))));const $next5=(
+/*JD_USE:143864*/$x143864);const $next6=(
+/*JD_USE:143865*/$x143865);const $next7=(
+/*JD_USE:143866*/$x143866);const $next8=({$:"Nil"});const $next9=(
+/*JD_USE:143867*/$x143867);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$a9=$next9;$pc=5;continue;}}else{{
+/*JD_REF:$jd$p140p_95_def_95_body*/const $next0=(
+/*JD_USE:143859*/$x143859);const $next1=(
+/*JD_USE:143860*/$x143860);const $next2=(
+/*JD_USE:143861*/$x143861);const $next3=(
+/*JD_USE:143868*/$x143868);const $next4=(
+/*JD_REF:$jd$f_95_context_95_definition*/$jd$f_95_context_95_definition((
+/*JD_USE:143860*/$x143860),(
+/*JD_USE:143861*/$x143861),(
+/*JD_USE:143868*/$x143868),(
+/*JD_REF:$jd$f_95_expect*/$jd$f_95_expect(({$:"FParsed","term":(
+/*JD_USE:143862*/$x143862),["rest"]:(
+/*JD_USE:143863*/$x143863)}),":")),(
+/*JD_USE:143867*/$x143867)));const $next5=(
+/*JD_USE:143864*/$x143864);const $next6=(
+/*JD_USE:143865*/$x143865);const $next7=(
+/*JD_USE:143866*/$x143866);const $next8=(
+/*JD_USE:143867*/$x143867);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$pc=4;continue;}}}}}}}}}}}}}case 4:{const $x143895=$a0;const $x143896=$a1;const $x143897=$a2;const $x143898=$a3;{const $match5=$a4;const $x143899=$match5["term"];const $x143900=$match5["rest"];const $x143901=$a5;const $x143902=$a6;const $x143903=$a7;const $x143904=$a8;{/* direct literal choice */if((
+/*JD_REF:$jd$f_95_context_95_stop*/$jd$f_95_context_95_stop((
+/*JD_USE:143899*/$x143899)))){return (
+/*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
+/*JD_USE:143901*/$x143901),(
+/*JD_USE:143899*/$x143899),(
+/*JD_USE:143902*/$x143902)));}else{{
 /*JD_REF:$jd$p140p_95_context_95_publish*/const $next0=(
-/*JD_USE:143864*/$x143864);const $next1=(
-/*JD_USE:143869*/$x143869);const $next2=({$:"KDef","name":(
-/*JD_USE:143865*/$x143865),"kind":"Def","arity":(
+/*JD_USE:143895*/$x143895);const $next1=(
+/*JD_USE:143900*/$x143900);const $next2=({$:"KDef","name":(
+/*JD_USE:143896*/$x143896),"kind":"Def","arity":(
 /*JD_REF:$jd$terms_95_len*/$jd$terms_95_len((
-/*JD_USE:143866*/$x143866))),"templates":(()=>{/* direct literal choice */if((
+/*JD_USE:143897*/$x143897))),"templates":(()=>{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$dk*/$jd$dk((
 /*JD_REF:$jd$f_95_decl_95_local*/$jd$f_95_decl_95_local((
-/*JD_USE:143865*/$x143865),(
-/*JD_USE:143870*/$x143870),(
-/*JD_USE:143873*/$x143873))))),"Missing"))){return (
+/*JD_USE:143896*/$x143896),(
+/*JD_USE:143901*/$x143901),(
+/*JD_USE:143904*/$x143904))))),"Missing"))){return (
 /*JD_REF:$jd$f_95_templates*/$jd$f_95_templates((
-/*JD_USE:143866*/$x143866)));}else{return (
+/*JD_USE:143897*/$x143897)));}else{return (
 /*JD_REF:$jd$dx*/$jd$dx((
 /*JD_REF:$jd$f_95_decl_95_local*/$jd$f_95_decl_95_local((
-/*JD_USE:143865*/$x143865),(
-/*JD_USE:143870*/$x143870),(
-/*JD_USE:143873*/$x143873)))));}})(),"typ":(
-/*JD_USE:143867*/$x143867),"value":(
-/*JD_USE:143868*/$x143868),"ctors":({$:"Nil"}),"native":false,["unsafe"]:(
-/*JD_USE:143872*/$x143872)});const $next3=(
-/*JD_USE:143870*/$x143870);const $next4=(
-/*JD_USE:143871*/$x143871);const $next5=(
-/*JD_USE:143873*/$x143873);const $next6=true;$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=19;continue;}}}}}case 5:{const $x143898=$a0;const $x143899=$a1;const $x143900=$a2;const $x143901=$a3;const $x143902=$a4;const $x143903=$a5;const $x143904=$a6;const $x143905=$a7;const $x143906=$a8;const $x143907=$a9;{/* direct literal choice */if((
+/*JD_USE:143896*/$x143896),(
+/*JD_USE:143901*/$x143901),(
+/*JD_USE:143904*/$x143904)))));}})(),"typ":(
+/*JD_USE:143898*/$x143898),"value":(
+/*JD_USE:143899*/$x143899),"ctors":({$:"Nil"}),"native":false,["unsafe"]:(
+/*JD_USE:143903*/$x143903)});const $next3=(
+/*JD_USE:143901*/$x143901);const $next4=(
+/*JD_USE:143902*/$x143902);const $next5=(
+/*JD_USE:143904*/$x143904);const $next6=true;$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=19;continue;}}}}}case 5:{const $x143929=$a0;const $x143930=$a1;const $x143931=$a2;const $x143932=$a3;const $x143933=$a4;const $x143934=$a5;const $x143935=$a6;const $x143936=$a7;const $x143937=$a8;const $x143938=$a9;{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:143902*/$x143902))),"import"))){{/* direct literal choice */if((
+/*JD_USE:143933*/$x143933))),"import"))){{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_foreign_95_path_95_valid*/$jd$f_95_foreign_95_path_95_valid((
-/*JD_USE:143902*/$x143902)))){{
+/*JD_USE:143933*/$x143933)))){{
 /*JD_REF:$jd$p140p_95_foreign*/const $next0=(
-/*JD_USE:143898*/$x143898);const $next1=(
-/*JD_USE:143899*/$x143899);const $next2=(
-/*JD_USE:143900*/$x143900);const $next3=(
-/*JD_USE:143901*/$x143901);const $next4=(
+/*JD_USE:143929*/$x143929);const $next1=(
+/*JD_USE:143930*/$x143930);const $next2=(
+/*JD_USE:143931*/$x143931);const $next3=(
+/*JD_USE:143932*/$x143932);const $next4=(
 /*JD_REF:$jd$f_95_skip*/$jd$f_95_skip((
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:143902*/$x143902)))))));const $next5=(
-/*JD_USE:143903*/$x143903);const $next6=(
-/*JD_USE:143904*/$x143904);const $next7=(
-/*JD_USE:143905*/$x143905);const $next8=({$:"Con","head":(
+/*JD_USE:143933*/$x143933)))))));const $next5=(
+/*JD_USE:143934*/$x143934);const $next6=(
+/*JD_USE:143935*/$x143935);const $next7=(
+/*JD_USE:143936*/$x143936);const $next8=({$:"Con","head":(
 /*JD_REF:$jd$kt*/$jd$kt("Path",(
 /*JD_REF:$jd$f_95_unquote*/$jd$f_95_unquote((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:143902*/$x143902))))))),0,0,({$:"Nil"}))),["tail"]:(
-/*JD_USE:143906*/$x143906)});const $next9=(
-/*JD_USE:143907*/$x143907);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$a9=$next9;continue;}}else{return (
+/*JD_USE:143933*/$x143933))))))),0,0,({$:"Nil"}))),["tail"]:(
+/*JD_USE:143937*/$x143937)});const $next9=(
+/*JD_USE:143938*/$x143938);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$a9=$next9;continue;}}else{return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:143903*/$x143903),(
+/*JD_USE:143934*/$x143934),(
 /*JD_REF:$jd$fpe_95_foreign*/$jd$fpe_95_foreign((
 /*JD_REF:$jd$f_95_space*/$jd$f_95_space((
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:143902*/$x143902))))))),(
-/*JD_USE:143904*/$x143904)));}}}else{{
+/*JD_USE:143933*/$x143933))))))),(
+/*JD_USE:143935*/$x143935)));}}}else{{
 /*JD_REF:$jd$p140p_95_context_95_publish*/const $next0=(
-/*JD_USE:143898*/$x143898);const $next1=(
-/*JD_USE:143902*/$x143902);const $next2=({$:"KDef","name":(
-/*JD_USE:143899*/$x143899),"kind":"Def","arity":(
+/*JD_USE:143929*/$x143929);const $next1=(
+/*JD_USE:143933*/$x143933);const $next2=({$:"KDef","name":(
+/*JD_USE:143930*/$x143930),"kind":"Def","arity":(
 /*JD_REF:$jd$terms_95_len*/$jd$terms_95_len((
-/*JD_USE:143900*/$x143900))),"templates":0,"typ":(
-/*JD_USE:143901*/$x143901),"value":(
+/*JD_USE:143931*/$x143931))),"templates":0,"typ":(
+/*JD_USE:143932*/$x143932),"value":(
 /*JD_REF:$jd$kt*/$jd$kt("Foreign",(
-/*JD_USE:143899*/$x143899),0,0,(
+/*JD_USE:143930*/$x143930),0,0,(
 /*JD_REF:$jd$List_46_reverse*/$jd$List_46_reverse((
-/*JD_USE:143906*/$x143906))))),"ctors":({$:"Nil"}),"native":false,["unsafe"]:(
-/*JD_USE:143905*/$x143905)});const $next3=(
-/*JD_USE:143903*/$x143903);const $next4=(
-/*JD_USE:143904*/$x143904);const $next5=(
-/*JD_USE:143907*/$x143907);const $next6=true;$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=19;continue;}}}}case 6:{const $x143926=$a0;const $x143927=$a1;const $x143928=$a2;const $x143929=$a3;const $x143930=$a4;const $x143931=$a5;const $x143932=$a6;{/* direct literal choice */if((
+/*JD_USE:143937*/$x143937))))),"ctors":({$:"Nil"}),"native":false,["unsafe"]:(
+/*JD_USE:143936*/$x143936)});const $next3=(
+/*JD_USE:143934*/$x143934);const $next4=(
+/*JD_USE:143935*/$x143935);const $next5=(
+/*JD_USE:143938*/$x143938);const $next6=true;$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=19;continue;}}}}case 6:{const $x143957=$a0;const $x143958=$a1;const $x143959=$a2;const $x143960=$a3;const $x143961=$a4;const $x143962=$a5;const $x143963=$a6;{/* direct literal choice */if((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$f_95_valid_95_name*/$jd$f_95_valid_95_name((
-/*JD_USE:143927*/$x143927))),(
+/*JD_USE:143958*/$x143958))),(
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$dk*/$jd$dk((
 /*JD_REF:$jd$f_95_decl_95_local*/$jd$f_95_decl_95_local((
-/*JD_USE:143927*/$x143927),(
-/*JD_USE:143929*/$x143929),(
-/*JD_USE:143932*/$x143932))))),"Missing"))))){{
+/*JD_USE:143958*/$x143958),(
+/*JD_USE:143960*/$x143960),(
+/*JD_USE:143963*/$x143963))))),"Missing"))))){{
 /*JD_REF:$jd$p140p_95_law_95_base*/const $next0=(
-/*JD_USE:143926*/$x143926);const $next1=(
-/*JD_USE:143927*/$x143927);const $next2=(
-/*JD_USE:143928*/$x143928);const $next3=(
-/*JD_USE:143929*/$x143929);const $next4=(
-/*JD_USE:143930*/$x143930);const $next5=(
-/*JD_USE:143931*/$x143931);const $next6=(
-/*JD_USE:143932*/$x143932);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=25;continue;}}else{{const $ord0="invalid or reserved law name: ";return (
+/*JD_USE:143957*/$x143957);const $next1=(
+/*JD_USE:143958*/$x143958);const $next2=(
+/*JD_USE:143959*/$x143959);const $next3=(
+/*JD_USE:143960*/$x143960);const $next4=(
+/*JD_USE:143961*/$x143961);const $next5=(
+/*JD_USE:143962*/$x143962);const $next6=(
+/*JD_USE:143963*/$x143963);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=25;continue;}}else{{const $ord0="invalid or reserved law name: ";return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:143929*/$x143929),(
+/*JD_USE:143960*/$x143960),(
 /*JD_REF:$jd$kt*/$jd$kt("Error",(($ord0 + (
-/*JD_USE:143927*/$x143927))),0,0,({$:"Nil"}))),(
-/*JD_USE:143930*/$x143930)));}}}}case 7:{const $x143951=$a0;const $x143952=$a1;const $x143953=$a2;const $x143954=$a3;const $x143955=$a4;const $x143956=$a5;const $x143957=$a6;const $x143958=$a7;{const $ord0=(
+/*JD_USE:143958*/$x143958))),0,0,({$:"Nil"}))),(
+/*JD_USE:143961*/$x143961)));}}}}case 7:{const $x143982=$a0;const $x143983=$a1;const $x143984=$a2;const $x143985=$a3;const $x143986=$a4;const $x143987=$a5;const $x143988=$a6;const $x143989=$a7;{const $ord0=(
 /*JD_REF:$jd$f_95_templates*/$jd$f_95_templates((
-/*JD_USE:143957*/$x143957)));const $ord1=(
+/*JD_USE:143988*/$x143988)));const $ord1=(
 /*JD_REF:$jd$terms_95_len*/$jd$terms_95_len((
-/*JD_USE:143957*/$x143957)));/* direct literal choice */if((
+/*JD_USE:143988*/$x143988)));/* direct literal choice */if((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_not*/$jd$Bool_46_not((
-/*JD_USE:143953*/$x143953))),(
+/*JD_USE:143984*/$x143984))),(
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:143954*/$x143954))),"~")))),(($ord0 < $ord1))))){return (
+/*JD_USE:143985*/$x143985))),"~")))),(($ord0 < $ord1))))){return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:143955*/$x143955),(
+/*JD_USE:143986*/$x143986),(
 /*JD_REF:$jd$f_95_pn*/$jd$f_95_pn((
 /*JD_REF:$jd$fpe_95_error*/$jd$fpe_95_error((
-/*JD_USE:143954*/$x143954),"expected a plain clause (only leading clauses take ~)","a plain clause (only leading clauses take ~)")))),(
-/*JD_USE:143956*/$x143956)));}else{{
+/*JD_USE:143985*/$x143985),"expected a plain clause (only leading clauses take ~)","a plain clause (only leading clauses take ~)")))),(
+/*JD_USE:143987*/$x143987)));}else{{
 /*JD_REF:$jd$p140p_95_law_95_type*/const $next0=(
-/*JD_USE:143951*/$x143951);const $next1=(
-/*JD_USE:143952*/$x143952);const $next2=(
+/*JD_USE:143982*/$x143982);const $next1=(
+/*JD_USE:143983*/$x143983);const $next2=(
 /*JD_REF:$jd$kt_95_span*/$jd$kt_95_span((()=>{/* direct literal choice */if((
-/*JD_USE:143953*/$x143953)){return "Exists";}else{{/* direct literal choice */if((
+/*JD_USE:143984*/$x143984)){return "Exists";}else{{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:143954*/$x143954))),"~"))){return "Template";}else{return "Bind";}}}})(),(
+/*JD_USE:143985*/$x143985))),"~"))){return "Template";}else{return "Bind";}}}})(),(
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
 /*JD_REF:$jd$f_95_unmark*/$jd$f_95_unmark((
-/*JD_USE:143954*/$x143954))))),(
+/*JD_USE:143985*/$x143985))))),(
 /*JD_REF:$jd$f_95_atid*/$jd$f_95_atid((
-/*JD_USE:143954*/$x143954))),(
+/*JD_USE:143985*/$x143985))),(
 /*JD_REF:$jd$f_95_quant*/$jd$f_95_quant((
-/*JD_USE:143954*/$x143954))),({$:"Nil"}),(
+/*JD_USE:143985*/$x143985))),({$:"Nil"}),(
 /*JD_REF:$jd$f_95_begin*/$jd$f_95_begin((
 /*JD_REF:$jd$f_95_unmark*/$jd$f_95_unmark((
-/*JD_USE:143954*/$x143954))))),(
+/*JD_USE:143985*/$x143985))))),(
 /*JD_REF:$jd$f_95_end*/$jd$f_95_end((
 /*JD_REF:$jd$f_95_unmark*/$jd$f_95_unmark((
-/*JD_USE:143954*/$x143954)))))));const $next3=(
+/*JD_USE:143985*/$x143985)))))));const $next3=(
 /*JD_REF:$jd$f_95_expr*/$jd$f_95_expr((
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
 /*JD_REF:$jd$f_95_unmark*/$jd$f_95_unmark((
-/*JD_USE:143954*/$x143954))))))),0));const $next4=(
-/*JD_USE:143955*/$x143955);const $next5=(
-/*JD_USE:143956*/$x143956);const $next6=(
-/*JD_USE:143957*/$x143957);const $next7=(
-/*JD_USE:143958*/$x143958);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$pc=8;continue;}}}}case 8:{const $x143981=$a0;const $x143982=$a1;const $x143983=$a2;{const $match4=$a3;const $x143984=$match4["term"];const $x143985=$match4["rest"];const $x143986=$a4;const $x143987=$a5;const $x143988=$a6;const $x143989=$a7;{/* direct literal choice */if((
+/*JD_USE:143985*/$x143985))))))),0));const $next4=(
+/*JD_USE:143986*/$x143986);const $next5=(
+/*JD_USE:143987*/$x143987);const $next6=(
+/*JD_USE:143988*/$x143988);const $next7=(
+/*JD_USE:143989*/$x143989);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$pc=8;continue;}}}}case 8:{const $x144012=$a0;const $x144013=$a1;const $x144014=$a2;{const $match4=$a3;const $x144015=$match4["term"];const $x144016=$match4["rest"];const $x144017=$a4;const $x144018=$a5;const $x144019=$a6;const $x144020=$a7;{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_context_95_stop*/$jd$f_95_context_95_stop((
-/*JD_USE:143984*/$x143984)))){return (
+/*JD_USE:144015*/$x144015)))){return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:143986*/$x143986),(
-/*JD_USE:143984*/$x143984),(
-/*JD_USE:143987*/$x143987)));}else{{
+/*JD_USE:144017*/$x144017),(
+/*JD_USE:144015*/$x144015),(
+/*JD_USE:144018*/$x144018)));}else{{
 /*JD_REF:$jd$p140p_95_context_95_law_95_open*/const $next0=(
-/*JD_USE:143981*/$x143981);const $next1=(
-/*JD_USE:143982*/$x143982);const $next2=(
-/*JD_USE:143983*/$x143983);const $next3=(
-/*JD_USE:143984*/$x143984);const $next4=(
+/*JD_USE:144012*/$x144012);const $next1=(
+/*JD_USE:144013*/$x144013);const $next2=(
+/*JD_USE:144014*/$x144014);const $next3=(
+/*JD_USE:144015*/$x144015);const $next4=(
 /*JD_REF:$jd$f_95_context_95_open*/$jd$f_95_context_95_open((
-/*JD_USE:143983*/$x143983),(
-/*JD_USE:143985*/$x143985)));const $next5=(
-/*JD_USE:143986*/$x143986);const $next6=(
-/*JD_USE:143987*/$x143987);const $next7=(
-/*JD_USE:143988*/$x143988);const $next8=(
-/*JD_USE:143989*/$x143989);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$pc=20;continue;}}}}}case 9:{const $x144006=$a0;const $x144007=$a1;{const $match3=$a2;const $x144008=$match3["term"];const $x144009=$match3["rest"];const $x144010=$a3;const $x144011=$a4;const $x144012=$a5;const $x144013=$a6;{const $let0=(
+/*JD_USE:144014*/$x144014),(
+/*JD_USE:144016*/$x144016)));const $next5=(
+/*JD_USE:144017*/$x144017);const $next6=(
+/*JD_USE:144018*/$x144018);const $next7=(
+/*JD_USE:144019*/$x144019);const $next8=(
+/*JD_USE:144020*/$x144020);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$pc=20;continue;}}}}}case 9:{const $x144037=$a0;const $x144038=$a1;{const $match3=$a2;const $x144039=$match3["term"];const $x144040=$match3["rest"];const $x144041=$a3;const $x144042=$a4;const $x144043=$a5;const $x144044=$a6;{const $let0=(
 /*JD_REF:$jd$f_95_context_95_signature*/$jd$f_95_context_95_signature((
 /*JD_REF:$jd$f_95_law_95_bind*/$jd$f_95_law_95_bind((
-/*JD_USE:144012*/$x144012),(
-/*JD_USE:144008*/$x144008))),(
-/*JD_USE:144009*/$x144009)));{const $x144014=$let0;{/* direct literal choice */if((
+/*JD_USE:144043*/$x144043),(
+/*JD_USE:144039*/$x144039))),(
+/*JD_USE:144040*/$x144040)));{const $x144045=$let0;{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_context_95_stop*/$jd$f_95_context_95_stop((
-/*JD_USE:144008*/$x144008)))){return (
+/*JD_USE:144039*/$x144039)))){return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144010*/$x144010),(
-/*JD_USE:144008*/$x144008),(
-/*JD_USE:144011*/$x144011)));}else{{/* direct literal choice */if((
+/*JD_USE:144041*/$x144041),(
+/*JD_USE:144039*/$x144039),(
+/*JD_USE:144042*/$x144042)));}else{{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_context_95_stop*/$jd$f_95_context_95_stop((
-/*JD_USE:144014*/$x144014)))){return (
+/*JD_USE:144045*/$x144045)))){return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144010*/$x144010),(
-/*JD_USE:144014*/$x144014),(
-/*JD_USE:144011*/$x144011)));}else{{
+/*JD_USE:144041*/$x144041),(
+/*JD_USE:144045*/$x144045),(
+/*JD_USE:144042*/$x144042)));}else{{
 /*JD_REF:$jd$p140p_95_context_95_publish*/const $next0=(
-/*JD_USE:144006*/$x144006);const $next1=(
-/*JD_USE:144009*/$x144009);const $next2=({$:"KDef","name":(
-/*JD_USE:144007*/$x144007),"kind":"Def","arity":(
+/*JD_USE:144037*/$x144037);const $next1=(
+/*JD_USE:144040*/$x144040);const $next2=({$:"KDef","name":(
+/*JD_USE:144038*/$x144038),"kind":"Def","arity":(
 /*JD_REF:$jd$f_95_law_95_arity*/$jd$f_95_law_95_arity((
-/*JD_USE:144012*/$x144012))),"templates":(
+/*JD_USE:144043*/$x144043))),"templates":(
 /*JD_REF:$jd$f_95_templates*/$jd$f_95_templates((
-/*JD_USE:144012*/$x144012))),"typ":(
-/*JD_USE:144014*/$x144014),"value":(
+/*JD_USE:144043*/$x144043))),"typ":(
+/*JD_USE:144045*/$x144045),"value":(
 /*JD_REF:$jd$atom*/$jd$atom("Absent")),"ctors":({$:"Nil"}),"native":false,["unsafe"]:false});const $next3=(
-/*JD_USE:144010*/$x144010);const $next4=(
-/*JD_USE:144011*/$x144011);const $next5=(
-/*JD_USE:144013*/$x144013);const $next6=true;$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=19;continue;}}}}}}}}}case 10:{const $x144031=$a0;const $x144032=$a1;const $x144033=$a2;const $x144034=$a3;const $x144035=$a4;const $x144036=$a5;{/* direct literal choice */if((
+/*JD_USE:144041*/$x144041);const $next4=(
+/*JD_USE:144042*/$x144042);const $next5=(
+/*JD_USE:144044*/$x144044);const $next6=true;$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=19;continue;}}}}}}}}}case 10:{const $x144062=$a0;const $x144063=$a1;const $x144064=$a2;const $x144065=$a3;const $x144066=$a4;const $x144067=$a5;{/* direct literal choice */if((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$f_95_valid_95_name*/$jd$f_95_valid_95_name((
-/*JD_USE:144032*/$x144032))),(
+/*JD_USE:144063*/$x144063))),(
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$dk*/$jd$dk((
 /*JD_REF:$jd$f_95_decl_95_local*/$jd$f_95_decl_95_local((
-/*JD_USE:144032*/$x144032),(
-/*JD_USE:144034*/$x144034),(
-/*JD_USE:144036*/$x144036))))),"Missing"))))){{
+/*JD_USE:144063*/$x144063),(
+/*JD_USE:144065*/$x144065),(
+/*JD_USE:144067*/$x144067))))),"Missing"))))){{
 /*JD_REF:$jd$p140p_95_type_95_named*/const $next0=(
-/*JD_USE:144031*/$x144031);const $next1=(
-/*JD_USE:144032*/$x144032);const $next2=(
-/*JD_USE:144033*/$x144033);const $next3=(
-/*JD_USE:144034*/$x144034);const $next4=(
-/*JD_USE:144035*/$x144035);const $next5=(
-/*JD_USE:144036*/$x144036);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=28;continue;}}else{{const $ord0="invalid or reserved datatype name: ";return (
+/*JD_USE:144062*/$x144062);const $next1=(
+/*JD_USE:144063*/$x144063);const $next2=(
+/*JD_USE:144064*/$x144064);const $next3=(
+/*JD_USE:144065*/$x144065);const $next4=(
+/*JD_USE:144066*/$x144066);const $next5=(
+/*JD_USE:144067*/$x144067);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=28;continue;}}else{{const $ord0="invalid or reserved datatype name: ";return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144034*/$x144034),(
+/*JD_USE:144065*/$x144065),(
 /*JD_REF:$jd$kt*/$jd$kt("Error",(($ord0 + (
-/*JD_USE:144032*/$x144032))),0,0,({$:"Nil"}))),(
-/*JD_USE:144035*/$x144035)));}}}}case 11:{const $x144051=$a0;const $x144052=$a1;{const $match3=$a2;const $x144053=$match3["term"];const $x144054=$match3["rest"];const $x144055=$a3;const $x144056=$a4;const $x144057=$a5;{/* direct literal choice */if((
+/*JD_USE:144063*/$x144063))),0,0,({$:"Nil"}))),(
+/*JD_USE:144066*/$x144066)));}}}}case 11:{const $x144082=$a0;const $x144083=$a1;{const $match3=$a2;const $x144084=$match3["term"];const $x144085=$match3["rest"];const $x144086=$a3;const $x144087=$a4;const $x144088=$a5;{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$tg*/$jd$tg((
-/*JD_USE:144053*/$x144053))),"Error"))){return (
+/*JD_USE:144084*/$x144084))),"Error"))){return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144055*/$x144055),(
-/*JD_USE:144053*/$x144053),(
-/*JD_USE:144056*/$x144056)));}else{{
+/*JD_USE:144086*/$x144086),(
+/*JD_USE:144084*/$x144084),(
+/*JD_USE:144087*/$x144087)));}else{{
 /*JD_REF:$jd$p140p_95_type_95_kind*/const $next0=(
-/*JD_USE:144051*/$x144051);const $next1=(
-/*JD_USE:144052*/$x144052);const $next2=(
+/*JD_USE:144082*/$x144082);const $next1=(
+/*JD_USE:144083*/$x144083);const $next2=(
 /*JD_REF:$jd$ks*/$jd$ks((
-/*JD_USE:144053*/$x144053)));const $next3=(
+/*JD_USE:144084*/$x144084)));const $next3=(
 /*JD_REF:$jd$f_95_expect*/$jd$f_95_expect((
 /*JD_REF:$jd$f_95_expr_95_after*/$jd$f_95_expr_95_after((
 /*JD_REF:$jd$f_95_expect*/$jd$f_95_expect(({$:"FParsed","term":(
-/*JD_USE:144053*/$x144053),["rest"]:(
-/*JD_USE:144054*/$x144054)}),"is")),0)),":"));const $next4=(
-/*JD_USE:144055*/$x144055);const $next5=(
-/*JD_USE:144056*/$x144056);const $next6=(
-/*JD_USE:144057*/$x144057);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=12;continue;}}}}}case 12:{const $x144074=$a0;const $x144075=$a1;const $x144076=$a2;{const $match4=$a3;const $x144077=$match4["term"];const $x144078=$match4["rest"];const $x144079=$a4;const $x144080=$a5;const $x144081=$a6;{/* direct literal choice */if((
+/*JD_USE:144084*/$x144084),["rest"]:(
+/*JD_USE:144085*/$x144085)}),"is")),0)),":"));const $next4=(
+/*JD_USE:144086*/$x144086);const $next5=(
+/*JD_USE:144087*/$x144087);const $next6=(
+/*JD_USE:144088*/$x144088);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=12;continue;}}}}}case 12:{const $x144105=$a0;const $x144106=$a1;const $x144107=$a2;{const $match4=$a3;const $x144108=$match4["term"];const $x144109=$match4["rest"];const $x144110=$a4;const $x144111=$a5;const $x144112=$a6;{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$tg*/$jd$tg((
-/*JD_USE:144077*/$x144077))),"Error"))){return (
+/*JD_USE:144108*/$x144108))),"Error"))){return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144079*/$x144079),(
-/*JD_USE:144077*/$x144077),(
-/*JD_USE:144080*/$x144080)));}else{{
+/*JD_USE:144110*/$x144110),(
+/*JD_USE:144108*/$x144108),(
+/*JD_USE:144111*/$x144111)));}else{{
 /*JD_REF:$jd$p140p_95_context_95_type_95_start*/const $next0=(
-/*JD_USE:144074*/$x144074);const $next1=(
-/*JD_USE:144075*/$x144075);const $next2=(
-/*JD_USE:144076*/$x144076);const $next3=(
-/*JD_USE:144077*/$x144077);const $next4=(
-/*JD_USE:144078*/$x144078);const $next5=(
-/*JD_USE:144079*/$x144079);const $next6=(
-/*JD_USE:144080*/$x144080);const $next7=(
-/*JD_USE:144081*/$x144081);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$pc=21;continue;}}}}}case 13:{const $x144102=$a0;const $x144103=$a1;const $x144104=$a2;const $x144105=$a3;const $x144106=$a4;const $x144107=$a5;const $x144108=$a6;const $x144109=$a7;const $x144110=$a8;{const $ord0=(
+/*JD_USE:144105*/$x144105);const $next1=(
+/*JD_USE:144106*/$x144106);const $next2=(
+/*JD_USE:144107*/$x144107);const $next3=(
+/*JD_USE:144108*/$x144108);const $next4=(
+/*JD_USE:144109*/$x144109);const $next5=(
+/*JD_USE:144110*/$x144110);const $next6=(
+/*JD_USE:144111*/$x144111);const $next7=(
+/*JD_USE:144112*/$x144112);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$pc=21;continue;}}}}}case 13:{const $x144133=$a0;const $x144134=$a1;const $x144135=$a2;const $x144136=$a3;const $x144137=$a4;const $x144138=$a5;const $x144139=$a6;const $x144140=$a7;const $x144141=$a8;{const $ord0=(
 /*JD_REF:$jd$f_95_ascii_95_alpha*/$jd$f_95_ascii_95_alpha((
 /*JD_REF:$jd$f_95_head*/$jd$f_95_head((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144106*/$x144106)))))));const $ord1=(
+/*JD_USE:144137*/$x144137)))))));const $ord1=(
 /*JD_REF:$jd$Char_46_is_95_eq*/$jd$Char_46_is_95_eq((
 /*JD_REF:$jd$f_95_head*/$jd$f_95_head((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144106*/$x144106))))),"_"));const $ord2=(
+/*JD_USE:144137*/$x144137))))),"_"));const $ord2=(
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144106*/$x144106))),"def"));const $ord3=(
+/*JD_USE:144137*/$x144137))),"def"));const $ord3=(
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144106*/$x144106))),"type"));const $ord4=(($ord2 || $ord3));const $ord5=(
+/*JD_USE:144137*/$x144137))),"type"));const $ord4=(($ord2 || $ord3));const $ord5=(
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144106*/$x144106))),"law"));/* direct literal choice */if((
+/*JD_USE:144137*/$x144137))),"law"));/* direct literal choice */if((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((($ord0 || $ord1)),(
 /*JD_REF:$jd$Bool_46_not*/$jd$Bool_46_not((($ord4 || $ord5))))))){{
 /*JD_REF:$jd$p140p_95_type_95_ctor_95_header*/const $next0=(
-/*JD_USE:144102*/$x144102);const $next1=(
-/*JD_USE:144103*/$x144103);const $next2=(
-/*JD_USE:144104*/$x144104);const $next3=(
-/*JD_USE:144105*/$x144105);const $next4=(
-/*JD_USE:144106*/$x144106);const $next5=(
-/*JD_USE:144107*/$x144107);const $next6=(
-/*JD_USE:144108*/$x144108);const $next7=(
-/*JD_USE:144109*/$x144109);const $next8=(
-/*JD_USE:144110*/$x144110);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$pc=27;continue;}}else{{
-/*JD_REF:$jd$p140p_95_context_95_publish*/const $next0=(
-/*JD_USE:144102*/$x144102);const $next1=(
-/*JD_USE:144106*/$x144106);const $next2=({$:"KDef","name":(
-/*JD_USE:144103*/$x144103),"kind":"ADT","arity":(
-/*JD_REF:$jd$terms_95_len*/$jd$terms_95_len((
-/*JD_USE:144104*/$x144104))),"templates":0,"typ":(
-/*JD_USE:144105*/$x144105),"value":(
-/*JD_REF:$jd$atom*/$jd$atom("Absent")),"ctors":(
-/*JD_REF:$jd$List_46_reverse*/$jd$List_46_reverse((
-/*JD_USE:144109*/$x144109))),"native":false,["unsafe"]:false});const $next3=(
-/*JD_USE:144107*/$x144107);const $next4=(
-/*JD_USE:144108*/$x144108);const $next5=(
-/*JD_USE:144110*/$x144110);const $next6=false;$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=19;continue;}}}}case 14:{const $x144133=$a0;const $x144134=$a1;const $x144135=$a2;const $x144136=$a3;const $x144137=$a4;{const $match6=$a5;const $x144138=$match6["term"];const $x144139=$match6["rest"];const $x144140=$a6;const $x144141=$a7;const $x144142=$a8;const $x144143=$a9;{const $let0=(
-/*JD_REF:$jd$f_95_context_95_signature*/$jd$f_95_context_95_signature((
-/*JD_REF:$jd$f_95_tbind*/$jd$f_95_tbind((
-/*JD_USE:144135*/$x144135),(
-/*JD_REF:$jd$f_95_tbind*/$jd$f_95_tbind((
-/*JD_REF:$jd$ks*/$jd$ks((
-/*JD_USE:144138*/$x144138))),(
-/*JD_REF:$jd$kt*/$jd$kt("ADT",(
-/*JD_REF:$jd$f_95_context_95_type_95_name*/$jd$f_95_context_95_type_95_name((
-/*JD_USE:144134*/$x144134),(
-/*JD_USE:144139*/$x144139))),0,1,(
-/*JD_REF:$jd$f_95_vars*/$jd$f_95_vars((
-/*JD_USE:144135*/$x144135))))))))),(
-/*JD_USE:144139*/$x144139)));{const $x144144=$let0;{/* direct literal choice */if((
-/*JD_REF:$jd$f_95_context_95_stop*/$jd$f_95_context_95_stop((
-/*JD_USE:144138*/$x144138)))){return (
-/*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144140*/$x144140),(
-/*JD_USE:144138*/$x144138),(
-/*JD_USE:144141*/$x144141)));}else{{/* direct literal choice */if((
-/*JD_REF:$jd$f_95_context_95_stop*/$jd$f_95_context_95_stop((
-/*JD_USE:144144*/$x144144)))){return (
-/*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144140*/$x144140),(
-/*JD_USE:144144*/$x144144),(
-/*JD_USE:144141*/$x144141)));}else{{
-/*JD_REF:$jd$p140p_95_type_95_ctors*/const $next0=(
 /*JD_USE:144133*/$x144133);const $next1=(
 /*JD_USE:144134*/$x144134);const $next2=(
 /*JD_USE:144135*/$x144135);const $next3=(
 /*JD_USE:144136*/$x144136);const $next4=(
+/*JD_USE:144137*/$x144137);const $next5=(
+/*JD_USE:144138*/$x144138);const $next6=(
+/*JD_USE:144139*/$x144139);const $next7=(
+/*JD_USE:144140*/$x144140);const $next8=(
+/*JD_USE:144141*/$x144141);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$pc=27;continue;}}else{{
+/*JD_REF:$jd$p140p_95_context_95_publish*/const $next0=(
+/*JD_USE:144133*/$x144133);const $next1=(
+/*JD_USE:144137*/$x144137);const $next2=({$:"KDef","name":(
+/*JD_USE:144134*/$x144134),"kind":"ADT","arity":(
+/*JD_REF:$jd$terms_95_len*/$jd$terms_95_len((
+/*JD_USE:144135*/$x144135))),"templates":0,"typ":(
+/*JD_USE:144136*/$x144136),"value":(
+/*JD_REF:$jd$atom*/$jd$atom("Absent")),"ctors":(
+/*JD_REF:$jd$List_46_reverse*/$jd$List_46_reverse((
+/*JD_USE:144140*/$x144140))),"native":false,["unsafe"]:false});const $next3=(
+/*JD_USE:144138*/$x144138);const $next4=(
+/*JD_USE:144139*/$x144139);const $next5=(
+/*JD_USE:144141*/$x144141);const $next6=false;$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=19;continue;}}}}case 14:{const $x144164=$a0;const $x144165=$a1;const $x144166=$a2;const $x144167=$a3;const $x144168=$a4;{const $match6=$a5;const $x144169=$match6["term"];const $x144170=$match6["rest"];const $x144171=$a6;const $x144172=$a7;const $x144173=$a8;const $x144174=$a9;{const $let0=(
+/*JD_REF:$jd$f_95_context_95_signature*/$jd$f_95_context_95_signature((
+/*JD_REF:$jd$f_95_tbind*/$jd$f_95_tbind((
+/*JD_USE:144166*/$x144166),(
+/*JD_REF:$jd$f_95_tbind*/$jd$f_95_tbind((
+/*JD_REF:$jd$ks*/$jd$ks((
+/*JD_USE:144169*/$x144169))),(
+/*JD_REF:$jd$kt*/$jd$kt("ADT",(
+/*JD_REF:$jd$f_95_context_95_type_95_name*/$jd$f_95_context_95_type_95_name((
+/*JD_USE:144165*/$x144165),(
+/*JD_USE:144170*/$x144170))),0,1,(
+/*JD_REF:$jd$f_95_vars*/$jd$f_95_vars((
+/*JD_USE:144166*/$x144166))))))))),(
+/*JD_USE:144170*/$x144170)));{const $x144175=$let0;{/* direct literal choice */if((
+/*JD_REF:$jd$f_95_context_95_stop*/$jd$f_95_context_95_stop((
+/*JD_USE:144169*/$x144169)))){return (
+/*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
+/*JD_USE:144171*/$x144171),(
+/*JD_USE:144169*/$x144169),(
+/*JD_USE:144172*/$x144172)));}else{{/* direct literal choice */if((
+/*JD_REF:$jd$f_95_context_95_stop*/$jd$f_95_context_95_stop((
+/*JD_USE:144175*/$x144175)))){return (
+/*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
+/*JD_USE:144171*/$x144171),(
+/*JD_USE:144175*/$x144175),(
+/*JD_USE:144172*/$x144172)));}else{{
+/*JD_REF:$jd$p140p_95_type_95_ctors*/const $next0=(
+/*JD_USE:144164*/$x144164);const $next1=(
+/*JD_USE:144165*/$x144165);const $next2=(
+/*JD_USE:144166*/$x144166);const $next3=(
+/*JD_USE:144167*/$x144167);const $next4=(
 /*JD_REF:$jd$f_95_context_95_close*/$jd$f_95_context_95_close((
 /*JD_REF:$jd$f_95_space*/$jd$f_95_space((
-/*JD_USE:144139*/$x144139))),(
+/*JD_USE:144170*/$x144170))),(
 /*JD_REF:$jd$f_95_context_95_parameters*/$jd$f_95_context_95_parameters((
-/*JD_USE:144135*/$x144135),({$:"Nil"})))));const $next5=(
-/*JD_USE:144140*/$x144140);const $next6=(
-/*JD_USE:144141*/$x144141);const $next7=({$:"Con","head":({$:"KDef","name":(
-/*JD_USE:144137*/$x144137),"kind":"Ctr","arity":(
+/*JD_USE:144166*/$x144166),({$:"Nil"})))));const $next5=(
+/*JD_USE:144171*/$x144171);const $next6=(
+/*JD_USE:144172*/$x144172);const $next7=({$:"Con","head":({$:"KDef","name":(
+/*JD_USE:144168*/$x144168),"kind":"Ctr","arity":(
 /*JD_REF:$jd$terms_95_len*/$jd$terms_95_len((
 /*JD_REF:$jd$ks*/$jd$ks((
-/*JD_USE:144138*/$x144138))))),"templates":0,"typ":(
-/*JD_USE:144144*/$x144144),"value":(
+/*JD_USE:144169*/$x144169))))),"templates":0,"typ":(
+/*JD_USE:144175*/$x144175),"value":(
 /*JD_REF:$jd$kt*/$jd$kt("Absent",(
-/*JD_USE:144137*/$x144137),0,0,({$:"Nil"}))),"ctors":({$:"Nil"}),"native":false,["unsafe"]:false}),["tail"]:(
-/*JD_USE:144142*/$x144142)});const $next8=(
-/*JD_USE:144143*/$x144143);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$pc=13;continue;}}}}}}}}}case 15:{const $x144159=$a0;const $x144160=$a1;{const $match3=$a2;if($match3.$==="Nil"){const $x144161=$a3;const $x144162=$a4;{/* direct literal choice */if((
-/*JD_USE:144162*/$x144162)){return (
+/*JD_USE:144168*/$x144168),0,0,({$:"Nil"}))),"ctors":({$:"Nil"}),"native":false,["unsafe"]:false}),["tail"]:(
+/*JD_USE:144173*/$x144173)});const $next8=(
+/*JD_USE:144174*/$x144174);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$pc=13;continue;}}}}}}}}}case 15:{const $x144190=$a0;const $x144191=$a1;{const $match3=$a2;if($match3.$==="Nil"){const $x144192=$a3;const $x144193=$a4;{/* direct literal choice */if((
+/*JD_USE:144193*/$x144193)){return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result(({$:"Nil"}),(
 /*JD_REF:$jd$f_95_pn*/$jd$f_95_pn((
 /*JD_REF:$jd$fpe_95_error*/$jd$fpe_95_error((
-/*JD_USE:144160*/$x144160),"expected def after @unsafe","'def' (@unsafe marks the def below it)")))),(
-/*JD_USE:144161*/$x144161)));}else{{
+/*JD_USE:144191*/$x144191),"expected def after @unsafe","'def' (@unsafe marks the def below it)")))),(
+/*JD_USE:144192*/$x144192)));}else{{
 /*JD_REF:$jd$p140p_95_import*/const $next0=(
-/*JD_USE:144159*/$x144159);const $next1=(
-/*JD_USE:144160*/$x144160);const $next2=({$:"Nil"});const $next3=(
-/*JD_USE:144161*/$x144161);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$pc=23;continue;}}}}else{{const $match4=$match3;const $x144165=$match4["head"];const $x144166=$match4["tail"];const $x144167=$a3;return (
+/*JD_USE:144190*/$x144190);const $next1=(
+/*JD_USE:144191*/$x144191);const $next2=({$:"Nil"});const $next3=(
+/*JD_USE:144192*/$x144192);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$pc=23;continue;}}}}else{{const $match4=$match3;const $x144196=$match4["head"];const $x144197=$match4["tail"];const $x144198=$a3;return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result(({$:"Con","head":(
-/*JD_USE:144165*/$x144165),["tail"]:(
-/*JD_USE:144166*/$x144166)}),(
+/*JD_USE:144196*/$x144196),["tail"]:(
+/*JD_USE:144197*/$x144197)}),(
 /*JD_REF:$jd$f_95_pn*/$jd$f_95_pn((
 /*JD_REF:$jd$fpe_95_error*/$jd$fpe_95_error((
-/*JD_USE:144160*/$x144160),"expected def, law or type; imports must precede declarations","'def', 'type' or 'law'")))),(
-/*JD_USE:144167*/$x144167)));}}}}case 16:{const $x144187=$a0;const $x144188=$a1;const $x144189=$a2;const $x144190=$a3;{const $match5=$a4;const $x144191=$match5["term"];const $x144192=$match5["rest"];const $x144193=$a5;const $x144194=$a6;const $x144195=$a7;const $x144196=$a8;{/* direct literal choice */if((
+/*JD_USE:144191*/$x144191),"expected def, law or type; imports must precede declarations","'def', 'type' or 'law'")))),(
+/*JD_USE:144198*/$x144198)));}}}}case 16:{const $x144218=$a0;const $x144219=$a1;const $x144220=$a2;const $x144221=$a3;{const $match5=$a4;const $x144222=$match5["term"];const $x144223=$match5["rest"];const $x144224=$a5;const $x144225=$a6;const $x144226=$a7;const $x144227=$a8;{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_context_95_stop*/$jd$f_95_context_95_stop((
-/*JD_USE:144191*/$x144191)))){return (
+/*JD_USE:144222*/$x144222)))){return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144193*/$x144193),(
-/*JD_USE:144191*/$x144191),(
-/*JD_USE:144194*/$x144194)));}else{{
+/*JD_USE:144224*/$x144224),(
+/*JD_USE:144222*/$x144222),(
+/*JD_USE:144225*/$x144225)));}else{{
 /*JD_REF:$jd$p140p_95_law*/const $next0=(
-/*JD_USE:144187*/$x144187);const $next1=(
-/*JD_USE:144188*/$x144188);const $next2=(
+/*JD_USE:144218*/$x144218);const $next1=(
+/*JD_USE:144219*/$x144219);const $next2=(
 /*JD_REF:$jd$f_95_skip*/$jd$f_95_skip((
-/*JD_USE:144192*/$x144192)));const $next3=(
-/*JD_USE:144193*/$x144193);const $next4=(
-/*JD_USE:144194*/$x144194);const $next5=({$:"Con","head":(
+/*JD_USE:144223*/$x144223)));const $next3=(
+/*JD_USE:144224*/$x144224);const $next4=(
+/*JD_USE:144225*/$x144225);const $next5=({$:"Con","head":(
 /*JD_REF:$jd$k_95_with_95_children*/$jd$k_95_with_95_children((
-/*JD_USE:144189*/$x144189),({$:"Con","head":(
+/*JD_USE:144220*/$x144220),({$:"Con","head":(
 /*JD_REF:$jd$f_95_app_95_span*/$jd$f_95_app_95_span((
 /*JD_REF:$jd$k_95_with_95_span*/$jd$k_95_with_95_span((
 /*JD_REF:$jd$ref*/$jd$ref("Exists")),(
 /*JD_REF:$jd$kb*/$jd$kb((
-/*JD_USE:144189*/$x144189))),(
+/*JD_USE:144220*/$x144220))),(
 /*JD_REF:$jd$ke*/$jd$ke((
-/*JD_USE:144189*/$x144189))))),({$:"Con","head":(
-/*JD_USE:144190*/$x144190),["tail"]:({$:"Con","head":(
+/*JD_USE:144220*/$x144220))))),({$:"Con","head":(
+/*JD_USE:144221*/$x144221),["tail"]:({$:"Con","head":(
 /*JD_REF:$jd$k_95_lam*/$jd$k_95_lam((
 /*JD_REF:$jd$nm*/$jd$nm((
-/*JD_USE:144189*/$x144189))),(
+/*JD_USE:144220*/$x144220))),(
 /*JD_REF:$jd$ix*/$jd$ix((
-/*JD_USE:144189*/$x144189))),1,({$:"Con","head":(
-/*JD_USE:144191*/$x144191),["tail"]:({$:"Nil"})}),(
+/*JD_USE:144220*/$x144220))),1,({$:"Con","head":(
+/*JD_USE:144222*/$x144222),["tail"]:({$:"Nil"})}),(
 /*JD_REF:$jd$kb*/$jd$kb((
-/*JD_USE:144189*/$x144189))),(
+/*JD_USE:144220*/$x144220))),(
 /*JD_REF:$jd$ke*/$jd$ke((
-/*JD_USE:144189*/$x144189))),false)),["tail"]:({$:"Nil"})})}),(
+/*JD_USE:144220*/$x144220))),false)),["tail"]:({$:"Nil"})})}),(
 /*JD_REF:$jd$kb*/$jd$kb((
-/*JD_USE:144189*/$x144189))),(
+/*JD_USE:144220*/$x144220))),(
 /*JD_REF:$jd$ke*/$jd$ke((
-/*JD_USE:144189*/$x144189))))),["tail"]:({$:"Nil"})}))),["tail"]:(
-/*JD_USE:144195*/$x144195)});const $next6=(
-/*JD_USE:144196*/$x144196);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=6;continue;}}}}}case 17:{const $x144217=$a0;const $x144218=$a1;const $x144219=$a2;const $x144220=$a3;const $x144221=$a4;const $x144222=$a5;const $x144223=$a6;const $x144224=$a7;const $x144225=$a8;{/* direct literal choice */if((
+/*JD_USE:144220*/$x144220))))),["tail"]:({$:"Nil"})}))),["tail"]:(
+/*JD_USE:144226*/$x144226)});const $next6=(
+/*JD_USE:144227*/$x144227);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=6;continue;}}}}}case 17:{const $x144248=$a0;const $x144249=$a1;const $x144250=$a2;const $x144251=$a3;const $x144252=$a4;const $x144253=$a5;const $x144254=$a6;const $x144255=$a7;const $x144256=$a8;{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$tg*/$jd$tg((
 /*JD_REF:$jd$f_95_pn*/$jd$f_95_pn((
-/*JD_USE:144219*/$x144219))))),"Error"))){return (
+/*JD_USE:144250*/$x144250))))),"Error"))){return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144220*/$x144220),(
+/*JD_USE:144251*/$x144251),(
 /*JD_REF:$jd$f_95_pn*/$jd$f_95_pn((
-/*JD_USE:144219*/$x144219))),(
-/*JD_USE:144221*/$x144221)));}else{{/* direct literal choice */if((
+/*JD_USE:144250*/$x144250))),(
+/*JD_USE:144252*/$x144252)));}else{{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$dk*/$jd$dk((
-/*JD_USE:144223*/$x144223))),"Missing"))){{/* direct literal choice */if((
+/*JD_USE:144254*/$x144254))),"Missing"))){{/* direct literal choice */if((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_not*/$jd$Bool_46_not((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_alias*/$jd$f_95_alias((
-/*JD_USE:144218*/$x144218),(
-/*JD_USE:144221*/$x144221))),(
-/*JD_USE:144218*/$x144218))))),(
+/*JD_USE:144249*/$x144249),(
+/*JD_USE:144252*/$x144252))),(
+/*JD_USE:144249*/$x144249))))),(
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
 /*JD_REF:$jd$f_95_pr*/$jd$f_95_pr((
-/*JD_USE:144219*/$x144219))))),"->"))))){{const $ord0="a fresh name (";const $ord1=(
+/*JD_USE:144250*/$x144250))))),"->"))))){{const $ord0="a fresh name (";const $ord1=(
 /*JD_REF:$jd$f_95_import_95_alias_95_head*/$jd$f_95_import_95_alias_95_head((
-/*JD_USE:144218*/$x144218)));const $ord2=(($ord0 + $ord1));const $ord3=" is an import's alias)";return (
+/*JD_USE:144249*/$x144249)));const $ord2=(($ord0 + $ord1));const $ord3=" is an import's alias)";return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144220*/$x144220),(
+/*JD_USE:144251*/$x144251),(
 /*JD_REF:$jd$f_95_pn*/$jd$f_95_pn((
 /*JD_REF:$jd$fpe_95_word*/$jd$fpe_95_word((
-/*JD_USE:144224*/$x144224),"an import alias can only name a law fill without a return annotation",(($ord2 + $ord3)))))),(
-/*JD_USE:144221*/$x144221)));}}else{{
+/*JD_USE:144255*/$x144255),"an import alias can only name a law fill without a return annotation",(($ord2 + $ord3)))))),(
+/*JD_USE:144252*/$x144252)));}}else{{
 /*JD_REF:$jd$p140p_95_def_95_base*/const $next0=(
-/*JD_USE:144217*/$x144217);const $next1=(
-/*JD_USE:144218*/$x144218);const $next2=(
-/*JD_USE:144219*/$x144219);const $next3=(
-/*JD_USE:144220*/$x144220);const $next4=(
-/*JD_USE:144221*/$x144221);const $next5=(
-/*JD_USE:144222*/$x144222);const $next6=(
-/*JD_USE:144225*/$x144225);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=24;continue;}}}}else{{/* direct literal choice */if((
+/*JD_USE:144248*/$x144248);const $next1=(
+/*JD_USE:144249*/$x144249);const $next2=(
+/*JD_USE:144250*/$x144250);const $next3=(
+/*JD_USE:144251*/$x144251);const $next4=(
+/*JD_USE:144252*/$x144252);const $next5=(
+/*JD_USE:144253*/$x144253);const $next6=(
+/*JD_USE:144256*/$x144256);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=24;continue;}}}}else{{/* direct literal choice */if((
 /*JD_REF:$jd$Bool_46_not*/$jd$Bool_46_not((
 /*JD_REF:$jd$f_95_bare_95_params*/$jd$f_95_bare_95_params((
 /*JD_REF:$jd$ks*/$jd$ks((
 /*JD_REF:$jd$f_95_pn*/$jd$f_95_pn((
-/*JD_USE:144219*/$x144219)))))))))){return (
+/*JD_USE:144250*/$x144250)))))))))){return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144220*/$x144220),(
+/*JD_USE:144251*/$x144251),(
 /*JD_REF:$jd$f_95_pn*/$jd$f_95_pn((
 /*JD_REF:$jd$fpe_95_error*/$jd$fpe_95_error((
 /*JD_REF:$jd$f_95_pr*/$jd$f_95_pr((
-/*JD_USE:144219*/$x144219))),"a law fill requires plain parameter names","a name")))),(
-/*JD_USE:144221*/$x144221)));}else{{const $ord0=(
+/*JD_USE:144250*/$x144250))),"a law fill requires plain parameter names","a name")))),(
+/*JD_USE:144252*/$x144252)));}else{{const $ord0=(
 /*JD_REF:$jd$terms_95_len*/$jd$terms_95_len((
 /*JD_REF:$jd$ks*/$jd$ks((
 /*JD_REF:$jd$f_95_pn*/$jd$f_95_pn((
-/*JD_USE:144219*/$x144219)))))));const $ord1=(
+/*JD_USE:144250*/$x144250)))))));const $ord1=(
 /*JD_REF:$jd$dx*/$jd$dx((
-/*JD_USE:144223*/$x144223)));/* direct literal choice */if((($ord0 < $ord1))){{const $ord0="a name for each ~ clause of the law (";const $ord1=(
+/*JD_USE:144254*/$x144254)));/* direct literal choice */if((($ord0 < $ord1))){{const $ord0="a name for each ~ clause of the law (";const $ord1=(
 /*JD_REF:$jd$U32_46_show*/$jd$U32_46_show((
 /*JD_REF:$jd$dx*/$jd$dx((
-/*JD_USE:144223*/$x144223)))));const $ord2=(($ord0 + $ord1));const $ord3=")";return (
+/*JD_USE:144254*/$x144254)))));const $ord2=(($ord0 + $ord1));const $ord3=")";return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144220*/$x144220),(
+/*JD_USE:144251*/$x144251),(
 /*JD_REF:$jd$f_95_pn*/$jd$f_95_pn((
 /*JD_REF:$jd$fpe_95_error*/$jd$fpe_95_error((
 /*JD_REF:$jd$f_95_pr*/$jd$f_95_pr((
-/*JD_USE:144219*/$x144219))),"a law fill requires its template parameters",(($ord2 + $ord3)))))),(
-/*JD_USE:144221*/$x144221)));}}else{{/* direct literal choice */if((
+/*JD_USE:144250*/$x144250))),"a law fill requires its template parameters",(($ord2 + $ord3)))))),(
+/*JD_USE:144252*/$x144252)));}}else{{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
 /*JD_REF:$jd$f_95_pr*/$jd$f_95_pr((
-/*JD_USE:144219*/$x144219))))),":"))){{
+/*JD_USE:144250*/$x144250))))),":"))){{
 /*JD_REF:$jd$p140p_95_def_95_base*/const $next0=(
-/*JD_USE:144217*/$x144217);const $next1=(
-/*JD_USE:144218*/$x144218);const $next2=(
-/*JD_USE:144219*/$x144219);const $next3=(
-/*JD_USE:144220*/$x144220);const $next4=(
-/*JD_USE:144221*/$x144221);const $next5=(
-/*JD_USE:144222*/$x144222);const $next6=(
-/*JD_USE:144225*/$x144225);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=24;continue;}}else{return (
+/*JD_USE:144248*/$x144248);const $next1=(
+/*JD_USE:144249*/$x144249);const $next2=(
+/*JD_USE:144250*/$x144250);const $next3=(
+/*JD_USE:144251*/$x144251);const $next4=(
+/*JD_USE:144252*/$x144252);const $next5=(
+/*JD_USE:144253*/$x144253);const $next6=(
+/*JD_USE:144256*/$x144256);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=24;continue;}}else{return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144220*/$x144220),(
+/*JD_USE:144251*/$x144251),(
 /*JD_REF:$jd$f_95_pn*/$jd$f_95_pn((
 /*JD_REF:$jd$fpe_95_error*/$jd$fpe_95_error((
 /*JD_REF:$jd$f_95_pr*/$jd$f_95_pr((
-/*JD_USE:144219*/$x144219))),"expected : (a definition filling a law has no return annotation)","':'")))),(
-/*JD_USE:144221*/$x144221)));}}}}}}}}}}}case 18:{const $x144252=$a0;const $x144253=$a1;const $x144254=$a2;const $x144255=$a3;const $x144256=$a4;const $x144257=$a5;const $x144258=$a6;{/* direct literal choice */if((
+/*JD_USE:144250*/$x144250))),"expected : (a definition filling a law has no return annotation)","':'")))),(
+/*JD_USE:144252*/$x144252)));}}}}}}}}}}}case 18:{const $x144283=$a0;const $x144284=$a1;const $x144285=$a2;const $x144286=$a3;const $x144287=$a4;const $x144288=$a5;const $x144289=$a6;{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144253*/$x144253))),"as"))){{
+/*JD_USE:144284*/$x144284))),"as"))){{
 /*JD_REF:$jd$p140p_95_import_95_alias*/const $next0=(
-/*JD_USE:144252*/$x144252);const $next1=(
-/*JD_USE:144253*/$x144253);const $next2=(
-/*JD_USE:144254*/$x144254);const $next3=(
-/*JD_USE:144255*/$x144255);const $next4=(
-/*JD_USE:144256*/$x144256);const $next5=(
-/*JD_USE:144257*/$x144257);const $next6=(
-/*JD_USE:144258*/$x144258);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=33;continue;}}else{{const $ord0=(
+/*JD_USE:144283*/$x144283);const $next1=(
+/*JD_USE:144284*/$x144284);const $next2=(
+/*JD_USE:144285*/$x144285);const $next3=(
+/*JD_USE:144286*/$x144286);const $next4=(
+/*JD_USE:144287*/$x144287);const $next5=(
+/*JD_USE:144288*/$x144288);const $next6=(
+/*JD_USE:144289*/$x144289);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=33;continue;}}else{{const $ord0=(
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144253*/$x144253))),"\n"));const $ord1=(
+/*JD_USE:144284*/$x144284))),"\n"));const $ord1=(
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144253*/$x144253))),"<eof>"));/* direct literal choice */if((($ord0 || $ord1))){{/* direct literal choice */if((
+/*JD_USE:144284*/$x144284))),"<eof>"));/* direct literal choice */if((($ord0 || $ord1))){{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
-/*JD_USE:144255*/$x144255),"Base"))){{
+/*JD_USE:144286*/$x144286),"Base"))){{
 /*JD_REF:$jd$p140p_95_tops*/const $next0=(
-/*JD_USE:144252*/$x144252);const $next1=(
-/*JD_USE:144253*/$x144253);const $next2=(
-/*JD_USE:144256*/$x144256);const $next3=({$:"Con","head":(
+/*JD_USE:144283*/$x144283);const $next1=(
+/*JD_USE:144284*/$x144284);const $next2=(
+/*JD_USE:144287*/$x144287);const $next3=({$:"Con","head":(
 /*JD_REF:$jd$kt*/$jd$kt("Import",(
-/*JD_USE:144255*/$x144255),(
+/*JD_USE:144286*/$x144286),(
 /*JD_REF:$jd$f_95_line*/$jd$f_95_line((
-/*JD_USE:144254*/$x144254))),(
+/*JD_USE:144285*/$x144285))),(
 /*JD_REF:$jd$f_95_col*/$jd$f_95_col((
-/*JD_USE:144254*/$x144254))),({$:"Nil"}))),["tail"]:(
-/*JD_USE:144257*/$x144257)});const $next4=false;const $next5=(
+/*JD_USE:144285*/$x144285))),({$:"Nil"}))),["tail"]:(
+/*JD_USE:144288*/$x144288)});const $next4=false;const $next5=(
 /*JD_REF:$jd$f_95_parse_95_scope_95_empty*/$jd$f_95_parse_95_scope_95_empty());$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=0;continue;}}else{return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144256*/$x144256),(
+/*JD_USE:144287*/$x144287),(
 /*JD_REF:$jd$f_95_import_95_header_95_error*/$jd$f_95_import_95_header_95_error((()=>{/* direct literal choice */if((
 /*JD_REF:$jd$String_46_is_95_empty*/$jd$String_46_is_95_empty((
-/*JD_USE:144255*/$x144255)))){return (
-/*JD_USE:144258*/$x144258);}else{return (
-/*JD_USE:144254*/$x144254);}})())),(
-/*JD_USE:144257*/$x144257)));}}}else{{const $ord0=([...(
-/*JD_USE:144255*/$x144255)].length);const $ord1=(
+/*JD_USE:144286*/$x144286)))){return (
+/*JD_USE:144289*/$x144289);}else{return (
+/*JD_USE:144285*/$x144285);}})())),(
+/*JD_USE:144288*/$x144288)));}}}else{{const $ord0=([...(
+/*JD_USE:144286*/$x144286)].length);const $ord1=(
 /*JD_REF:$jd$f_95_col*/$jd$f_95_col((
-/*JD_USE:144254*/$x144254)));const $ord2=(($ord0 >>> 0));const $ord3=(
+/*JD_USE:144285*/$x144285)));const $ord2=(($ord0 >>> 0));const $ord3=(
 /*JD_REF:$jd$f_95_col*/$jd$f_95_col((
-/*JD_USE:144253*/$x144253)));const $ord4=((($ord1 + $ord2) >>> 0));const $ord5=(
+/*JD_USE:144284*/$x144284)));const $ord4=((($ord1 + $ord2) >>> 0));const $ord5=(
 /*JD_REF:$jd$String_46_is_95_empty*/$jd$String_46_is_95_empty((
-/*JD_USE:144255*/$x144255)));const $ord6=(($ord3 === $ord4));/* direct literal choice */if((($ord5 || $ord6))){{const $ord0=(
+/*JD_USE:144286*/$x144286)));const $ord6=(($ord3 === $ord4));/* direct literal choice */if((($ord5 || $ord6))){{const $ord0=(
 /*JD_REF:$jd$f_95_import_95_token_95_text*/$jd$f_95_import_95_token_95_text((
-/*JD_USE:144253*/$x144253)));{
+/*JD_USE:144284*/$x144284)));{
 /*JD_REF:$jd$p140p_95_import_95_path*/const $next0=(
-/*JD_USE:144252*/$x144252);const $next1=(
+/*JD_USE:144283*/$x144283);const $next1=(
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:144253*/$x144253)));const $next2=(
-/*JD_USE:144254*/$x144254);const $next3=(((
-/*JD_USE:144255*/$x144255) + $ord0));const $next4=(
-/*JD_USE:144256*/$x144256);const $next5=(
-/*JD_USE:144257*/$x144257);const $next6=(
-/*JD_USE:144258*/$x144258);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;continue;}}}else{return (
+/*JD_USE:144284*/$x144284)));const $next2=(
+/*JD_USE:144285*/$x144285);const $next3=(((
+/*JD_USE:144286*/$x144286) + $ord0));const $next4=(
+/*JD_USE:144287*/$x144287);const $next5=(
+/*JD_USE:144288*/$x144288);const $next6=(
+/*JD_USE:144289*/$x144289);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;continue;}}}else{return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144256*/$x144256),(
+/*JD_USE:144287*/$x144287),(
 /*JD_REF:$jd$f_95_import_95_header_95_error*/$jd$f_95_import_95_header_95_error((
-/*JD_USE:144258*/$x144258))),(
-/*JD_USE:144257*/$x144257)));}}}}}}}case 19:{const $x144276=$a0;const $x144277=$a1;const $x144278=$a2;const $x144279=$a3;const $x144280=$a4;{const $match6=$a5;const $x144281=$match6["prior"];const $x144282=$match6["index"];const $x144283=$match6["ctors"];const $x144284=$match6["ns"];const $x144285=$match6["aliases"];const $x144286=$match6["priorView"];const $x144287=$a6;{
+/*JD_USE:144289*/$x144289))),(
+/*JD_USE:144288*/$x144288)));}}}}}}}case 19:{const $x144307=$a0;const $x144308=$a1;const $x144309=$a2;const $x144310=$a3;const $x144311=$a4;{const $match6=$a5;const $x144312=$match6["prior"];const $x144313=$match6["index"];const $x144314=$match6["ctors"];const $x144315=$match6["ns"];const $x144316=$match6["aliases"];const $x144317=$match6["priorView"];const $x144318=$a6;{
 /*JD_REF:$jd$p140p_95_top*/const $next0=(
-/*JD_USE:144276*/$x144276);const $next1=(()=>{/* direct literal choice */if((
-/*JD_USE:144287*/$x144287)){return (
+/*JD_USE:144307*/$x144307);const $next1=(()=>{/* direct literal choice */if((
+/*JD_USE:144318*/$x144318)){return (
 /*JD_REF:$jd$f_95_space*/$jd$f_95_space((
-/*JD_USE:144277*/$x144277)));}else{return (
-/*JD_USE:144277*/$x144277);}})();const $next2=({$:"Con","head":(
-/*JD_USE:144278*/$x144278),["tail"]:(
-/*JD_USE:144279*/$x144279)});const $next3=(
-/*JD_USE:144280*/$x144280);const $next4=false;const $next5=(
+/*JD_USE:144308*/$x144308)));}else{return (
+/*JD_USE:144308*/$x144308);}})();const $next2=({$:"Con","head":(
+/*JD_USE:144309*/$x144309),["tail"]:(
+/*JD_USE:144310*/$x144310)});const $next3=(
+/*JD_USE:144311*/$x144311);const $next4=false;const $next5=(
 /*JD_REF:$jd$f_95_context_95_declare*/$jd$f_95_context_95_declare((
-/*JD_USE:144278*/$x144278),({$:"FParseScope","prior":(
-/*JD_USE:144281*/$x144281),"index":(
-/*JD_USE:144282*/$x144282),"ctors":(
-/*JD_USE:144283*/$x144283),"ns":(
-/*JD_USE:144284*/$x144284),"aliases":(
-/*JD_USE:144285*/$x144285),["priorView"]:(
-/*JD_USE:144286*/$x144286)})));$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=1;continue;}}}case 20:{const $x144299=$a0;const $x144300=$a1;const $x144301=$a2;const $x144302=$a3;{const $match5=$a4;const $x144303=$match5["term"];const $x144304=$match5["rest"];const $x144305=$a5;const $x144306=$a6;const $x144307=$a7;const $x144308=$a8;{const $let0=(
+/*JD_USE:144309*/$x144309),({$:"FParseScope","prior":(
+/*JD_USE:144312*/$x144312),"index":(
+/*JD_USE:144313*/$x144313),"ctors":(
+/*JD_USE:144314*/$x144314),"ns":(
+/*JD_USE:144315*/$x144315),"aliases":(
+/*JD_USE:144316*/$x144316),["priorView"]:(
+/*JD_USE:144317*/$x144317)})));$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=1;continue;}}}case 20:{const $x144330=$a0;const $x144331=$a1;const $x144332=$a2;const $x144333=$a3;{const $match5=$a4;const $x144334=$match5["term"];const $x144335=$match5["rest"];const $x144336=$a5;const $x144337=$a6;const $x144338=$a7;const $x144339=$a8;{const $let0=(
 /*JD_REF:$jd$kt_95_span*/$jd$kt_95_span((
 /*JD_REF:$jd$tg*/$jd$tg((
-/*JD_USE:144301*/$x144301))),(
+/*JD_USE:144332*/$x144332))),(
 /*JD_REF:$jd$nm*/$jd$nm((
-/*JD_USE:144301*/$x144301))),(
+/*JD_USE:144332*/$x144332))),(
 /*JD_REF:$jd$ix*/$jd$ix((
-/*JD_USE:144303*/$x144303))),(
+/*JD_USE:144334*/$x144334))),(
 /*JD_REF:$jd$qt*/$jd$qt((
-/*JD_USE:144301*/$x144301))),({$:"Nil"}),(
+/*JD_USE:144332*/$x144332))),({$:"Nil"}),(
 /*JD_REF:$jd$kb*/$jd$kb((
-/*JD_USE:144301*/$x144301))),(
+/*JD_USE:144332*/$x144332))),(
 /*JD_REF:$jd$ke*/$jd$ke((
-/*JD_USE:144301*/$x144301)))));{const $x144309=$let0;{/* direct literal choice */if((
+/*JD_USE:144332*/$x144332)))));{const $x144340=$let0;{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
 /*JD_REF:$jd$f_95_skip*/$jd$f_95_skip((
-/*JD_USE:144304*/$x144304))))),"where"))){{
+/*JD_USE:144335*/$x144335))))),"where"))){{
 /*JD_REF:$jd$p140p_95_law_95_where*/const $next0=(
-/*JD_USE:144299*/$x144299);const $next1=(
-/*JD_USE:144300*/$x144300);const $next2=(
-/*JD_USE:144309*/$x144309);const $next3=(
-/*JD_USE:144302*/$x144302);const $next4=(
+/*JD_USE:144330*/$x144330);const $next1=(
+/*JD_USE:144331*/$x144331);const $next2=(
+/*JD_USE:144340*/$x144340);const $next3=(
+/*JD_USE:144333*/$x144333);const $next4=(
 /*JD_REF:$jd$f_95_expr*/$jd$f_95_expr((
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
 /*JD_REF:$jd$f_95_skip*/$jd$f_95_skip((
-/*JD_USE:144304*/$x144304))))),0));const $next5=(
-/*JD_USE:144305*/$x144305);const $next6=(
-/*JD_USE:144306*/$x144306);const $next7=(
-/*JD_USE:144307*/$x144307);const $next8=(
-/*JD_USE:144308*/$x144308);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$pc=16;continue;}}else{{
+/*JD_USE:144335*/$x144335))))),0));const $next5=(
+/*JD_USE:144336*/$x144336);const $next6=(
+/*JD_USE:144337*/$x144337);const $next7=(
+/*JD_USE:144338*/$x144338);const $next8=(
+/*JD_USE:144339*/$x144339);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$pc=16;continue;}}else{{
 /*JD_REF:$jd$p140p_95_law*/const $next0=(
-/*JD_USE:144299*/$x144299);const $next1=(
-/*JD_USE:144300*/$x144300);const $next2=(
+/*JD_USE:144330*/$x144330);const $next1=(
+/*JD_USE:144331*/$x144331);const $next2=(
 /*JD_REF:$jd$f_95_skip*/$jd$f_95_skip((
-/*JD_USE:144304*/$x144304)));const $next3=(
-/*JD_USE:144305*/$x144305);const $next4=(
-/*JD_USE:144306*/$x144306);const $next5=({$:"Con","head":(
+/*JD_USE:144335*/$x144335)));const $next3=(
+/*JD_USE:144336*/$x144336);const $next4=(
+/*JD_USE:144337*/$x144337);const $next5=({$:"Con","head":(
 /*JD_REF:$jd$k_95_with_95_children*/$jd$k_95_with_95_children((
-/*JD_USE:144309*/$x144309),({$:"Con","head":(
-/*JD_USE:144302*/$x144302),["tail"]:({$:"Nil"})}))),["tail"]:(
-/*JD_USE:144307*/$x144307)});const $next6=(
-/*JD_USE:144308*/$x144308);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=6;continue;}}}}}}}case 21:{const $x144320=$a0;const $x144321=$a1;const $x144322=$a2;const $x144323=$a3;const $x144324=$a4;const $x144325=$a5;const $x144326=$a6;const $x144327=$a7;{const $let0=(
+/*JD_USE:144340*/$x144340),({$:"Con","head":(
+/*JD_USE:144333*/$x144333),["tail"]:({$:"Nil"})}))),["tail"]:(
+/*JD_USE:144338*/$x144338)});const $next6=(
+/*JD_USE:144339*/$x144339);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=6;continue;}}}}}}}case 21:{const $x144351=$a0;const $x144352=$a1;const $x144353=$a2;const $x144354=$a3;const $x144355=$a4;const $x144356=$a5;const $x144357=$a6;const $x144358=$a7;{const $let0=(
 /*JD_REF:$jd$f_95_context_95_signature*/$jd$f_95_context_95_signature((
 /*JD_REF:$jd$f_95_tbind*/$jd$f_95_tbind((
-/*JD_USE:144322*/$x144322),(
-/*JD_USE:144323*/$x144323))),(
-/*JD_USE:144324*/$x144324)));{const $x144328=$let0;{const $let0=(
+/*JD_USE:144353*/$x144353),(
+/*JD_USE:144354*/$x144354))),(
+/*JD_USE:144355*/$x144355)));{const $x144359=$let0;{const $let0=(
 /*JD_REF:$jd$f_95_context_95_declare*/$jd$f_95_context_95_declare(({$:"KDef","name":(
-/*JD_USE:144321*/$x144321),"kind":"ADT","arity":(
+/*JD_USE:144352*/$x144352),"kind":"ADT","arity":(
 /*JD_REF:$jd$terms_95_len*/$jd$terms_95_len((
-/*JD_USE:144322*/$x144322))),"templates":0,"typ":(
-/*JD_USE:144328*/$x144328),"value":(
+/*JD_USE:144353*/$x144353))),"templates":0,"typ":(
+/*JD_USE:144359*/$x144359),"value":(
 /*JD_REF:$jd$atom*/$jd$atom("Absent")),"ctors":({$:"Nil"}),"native":false,["unsafe"]:false}),(
-/*JD_USE:144327*/$x144327)));{const $x144329=$let0;{/* direct literal choice */if((
+/*JD_USE:144358*/$x144358)));{const $x144360=$let0;{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_context_95_stop*/$jd$f_95_context_95_stop((
-/*JD_USE:144328*/$x144328)))){return (
+/*JD_USE:144359*/$x144359)))){return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144325*/$x144325),(
-/*JD_USE:144328*/$x144328),(
-/*JD_USE:144326*/$x144326)));}else{{
+/*JD_USE:144356*/$x144356),(
+/*JD_USE:144359*/$x144359),(
+/*JD_USE:144357*/$x144357)));}else{{
 /*JD_REF:$jd$p140p_95_type_95_ctors*/const $next0=(
-/*JD_USE:144320*/$x144320);const $next1=(
-/*JD_USE:144321*/$x144321);const $next2=(
-/*JD_USE:144322*/$x144322);const $next3=(
-/*JD_USE:144328*/$x144328);const $next4=(
+/*JD_USE:144351*/$x144351);const $next1=(
+/*JD_USE:144352*/$x144352);const $next2=(
+/*JD_USE:144353*/$x144353);const $next3=(
+/*JD_USE:144359*/$x144359);const $next4=(
 /*JD_REF:$jd$f_95_context_95_scope*/$jd$f_95_context_95_scope((
 /*JD_REF:$jd$f_95_space*/$jd$f_95_space((
-/*JD_USE:144324*/$x144324))),(
-/*JD_USE:144329*/$x144329)));const $next5=(
-/*JD_USE:144325*/$x144325);const $next6=(
-/*JD_USE:144326*/$x144326);const $next7=({$:"Nil"});const $next8=(
-/*JD_USE:144329*/$x144329);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$pc=13;continue;}}}}}}}}case 22:{const $x144338=$a0;const $x144339=$a1;const $x144340=$a2;const $x144341=$a3;const $x144342=$a4;const $x144343=$a5;{const $ord0=(
+/*JD_USE:144355*/$x144355))),(
+/*JD_USE:144360*/$x144360)));const $next5=(
+/*JD_USE:144356*/$x144356);const $next6=(
+/*JD_USE:144357*/$x144357);const $next7=({$:"Nil"});const $next8=(
+/*JD_USE:144360*/$x144360);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$pc=13;continue;}}}}}}}}case 22:{const $x144369=$a0;const $x144370=$a1;const $x144371=$a2;const $x144372=$a3;const $x144373=$a4;const $x144374=$a5;{const $ord0=(
 /*JD_REF:$jd$f_95_line*/$jd$f_95_line((
-/*JD_USE:144339*/$x144339)));const $ord1=(
+/*JD_USE:144370*/$x144370)));const $ord1=(
 /*JD_REF:$jd$f_95_line*/$jd$f_95_line((
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:144339*/$x144339)))));const $ord2=(
+/*JD_USE:144370*/$x144370)))));const $ord2=(
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144339*/$x144339)));const $ord3=([...$ord2].length);const $ord4=(
+/*JD_USE:144370*/$x144370)));const $ord3=([...$ord2].length);const $ord4=(
 /*JD_REF:$jd$f_95_col*/$jd$f_95_col((
-/*JD_USE:144339*/$x144339)));const $ord5=(($ord3 >>> 0));const $ord6=(
+/*JD_USE:144370*/$x144370)));const $ord5=(($ord3 >>> 0));const $ord6=(
 /*JD_REF:$jd$f_95_col*/$jd$f_95_col((
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:144339*/$x144339)))));const $ord7=((($ord4 + $ord5) >>> 0));const $let0=(
+/*JD_USE:144370*/$x144370)))));const $ord7=((($ord4 + $ord5) >>> 0));const $let0=(
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:144339*/$x144339))))),"?")),(($ord0 === $ord1)))),(($ord6 === $ord7))));{const $x144344=$let0;{const $let0=(
+/*JD_USE:144370*/$x144370))))),"?")),(($ord0 === $ord1)))),(($ord6 === $ord7))));{const $x144375=$let0;{const $let0=(
 /*JD_REF:$jd$f_95_space*/$jd$f_95_space((()=>{/* direct literal choice */if((
-/*JD_USE:144344*/$x144344)){return (
+/*JD_USE:144375*/$x144375)){return (
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:144339*/$x144339)))));}else{return (
+/*JD_USE:144370*/$x144370)))));}else{return (
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:144339*/$x144339)));}})()));{const $x144345=$let0;{/* direct literal choice */if((
+/*JD_USE:144370*/$x144370)));}})()));{const $x144376=$let0;{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_valid_95_name*/$jd$f_95_valid_95_name((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144339*/$x144339)))))){{
+/*JD_USE:144370*/$x144370)))))){{
 /*JD_REF:$jd$p140p_95_def_95_context_95_header*/const $next0=(
-/*JD_USE:144338*/$x144338);const $next1=(
-/*JD_USE:144339*/$x144339);const $next2=(
-/*JD_USE:144345*/$x144345);const $next3=(
-/*JD_USE:144340*/$x144340);const $next4=(
-/*JD_USE:144341*/$x144341);const $next5=(((
-/*JD_USE:144342*/$x144342) || (
-/*JD_USE:144344*/$x144344)));const $next6=(
+/*JD_USE:144369*/$x144369);const $next1=(
+/*JD_USE:144370*/$x144370);const $next2=(
+/*JD_USE:144376*/$x144376);const $next3=(
+/*JD_USE:144371*/$x144371);const $next4=(
+/*JD_USE:144372*/$x144372);const $next5=(((
+/*JD_USE:144373*/$x144373) || (
+/*JD_USE:144375*/$x144375)));const $next6=(
 /*JD_REF:$jd$f_95_decl_95_find*/$jd$f_95_decl_95_find((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144339*/$x144339))),(
-/*JD_USE:144340*/$x144340),(
-/*JD_USE:144343*/$x144343)));const $next7=(
-/*JD_USE:144343*/$x144343);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$pc=32;continue;}}else{return (
+/*JD_USE:144370*/$x144370))),(
+/*JD_USE:144371*/$x144371),(
+/*JD_USE:144374*/$x144374)));const $next7=(
+/*JD_USE:144374*/$x144374);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$pc=32;continue;}}else{return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144340*/$x144340),(
+/*JD_USE:144371*/$x144371),(
 /*JD_REF:$jd$f_95_pn*/$jd$f_95_pn((
 /*JD_REF:$jd$fpe_95_name_95_error*/$jd$fpe_95_name_95_error((
-/*JD_USE:144339*/$x144339))))),(
-/*JD_USE:144341*/$x144341)));}}}}}}}case 23:{const $x144354=$a0;const $x144355=$a1;const $x144356=$a2;const $x144357=$a3;{
+/*JD_USE:144370*/$x144370))))),(
+/*JD_USE:144372*/$x144372)));}}}}}}}case 23:{const $x144385=$a0;const $x144386=$a1;const $x144387=$a2;const $x144388=$a3;{
 /*JD_REF:$jd$p140p_95_import_95_path*/const $next0=(
-/*JD_USE:144354*/$x144354);const $next1=(
+/*JD_USE:144385*/$x144385);const $next1=(
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:144355*/$x144355)));const $next2=(
+/*JD_USE:144386*/$x144386)));const $next2=(
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:144355*/$x144355)));const $next3="";const $next4=(
-/*JD_USE:144356*/$x144356);const $next5=(
-/*JD_USE:144357*/$x144357);const $next6=(
-/*JD_USE:144355*/$x144355);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=18;continue;}}case 24:{const $x144365=$a0;const $x144366=$a1;{const $match3=$a2;const $x144367=$match3["term"];const $x144368=$match3["rest"];const $x144369=$a3;const $x144370=$a4;const $x144371=$a5;const $x144372=$a6;{/* direct literal choice */if((
+/*JD_USE:144386*/$x144386)));const $next3="";const $next4=(
+/*JD_USE:144387*/$x144387);const $next5=(
+/*JD_USE:144388*/$x144388);const $next6=(
+/*JD_USE:144386*/$x144386);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=18;continue;}}case 24:{const $x144396=$a0;const $x144397=$a1;{const $match3=$a2;const $x144398=$match3["term"];const $x144399=$match3["rest"];const $x144400=$a3;const $x144401=$a4;const $x144402=$a5;const $x144403=$a6;{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$tg*/$jd$tg((
-/*JD_USE:144367*/$x144367))),"Error"))){return (
+/*JD_USE:144398*/$x144398))),"Error"))){return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144369*/$x144369),(
-/*JD_USE:144367*/$x144367),(
-/*JD_USE:144370*/$x144370)));}else{{/* direct literal choice */if((
+/*JD_USE:144400*/$x144400),(
+/*JD_USE:144398*/$x144398),(
+/*JD_USE:144401*/$x144401)));}else{{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144368*/$x144368))),"->"))){{
+/*JD_USE:144399*/$x144399))),"->"))){{
 /*JD_REF:$jd$p140p_95_def_95_type*/const $next0=(
-/*JD_USE:144365*/$x144365);const $next1=(
-/*JD_USE:144366*/$x144366);const $next2=(
+/*JD_USE:144396*/$x144396);const $next1=(
+/*JD_USE:144397*/$x144397);const $next2=(
 /*JD_REF:$jd$ks*/$jd$ks((
-/*JD_USE:144367*/$x144367)));const $next3=(
+/*JD_USE:144398*/$x144398)));const $next3=(
 /*JD_REF:$jd$f_95_expr*/$jd$f_95_expr((
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:144368*/$x144368))),0));const $next4=(
-/*JD_USE:144369*/$x144369);const $next5=(
-/*JD_USE:144370*/$x144370);const $next6=(
-/*JD_USE:144371*/$x144371);const $next7=(
-/*JD_USE:144372*/$x144372);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$pc=3;continue;}}else{{const $ord0=(
+/*JD_USE:144399*/$x144399))),0));const $next4=(
+/*JD_USE:144400*/$x144400);const $next5=(
+/*JD_USE:144401*/$x144401);const $next6=(
+/*JD_USE:144402*/$x144402);const $next7=(
+/*JD_USE:144403*/$x144403);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$pc=3;continue;}}else{{const $ord0=(
 /*JD_REF:$jd$Bool_46_not*/$jd$Bool_46_not((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_alias*/$jd$f_95_alias((
-/*JD_USE:144366*/$x144366),(
-/*JD_USE:144370*/$x144370))),(
-/*JD_USE:144366*/$x144366)))));const $ord1=(
+/*JD_USE:144397*/$x144397),(
+/*JD_USE:144401*/$x144401))),(
+/*JD_USE:144397*/$x144397)))));const $ord1=(
 /*JD_REF:$jd$f_95_def_95_fillable*/$jd$f_95_def_95_fillable((
 /*JD_REF:$jd$f_95_decl_95_find*/$jd$f_95_decl_95_find((
-/*JD_USE:144366*/$x144366),(
-/*JD_USE:144369*/$x144369),(
-/*JD_USE:144372*/$x144372)))));{
+/*JD_USE:144397*/$x144397),(
+/*JD_USE:144400*/$x144400),(
+/*JD_USE:144403*/$x144403)))));{
 /*JD_REF:$jd$p140p_95_def_95_type*/const $next0=(
-/*JD_USE:144365*/$x144365);const $next1=(
-/*JD_USE:144366*/$x144366);const $next2=(
+/*JD_USE:144396*/$x144396);const $next1=(
+/*JD_USE:144397*/$x144397);const $next2=(
 /*JD_REF:$jd$ks*/$jd$ks((
-/*JD_USE:144367*/$x144367)));const $next3=({$:"FParsed","term":(()=>{/* direct literal choice */if((
+/*JD_USE:144398*/$x144398)));const $next3=({$:"FParsed","term":(()=>{/* direct literal choice */if((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$dk*/$jd$dk((
 /*JD_REF:$jd$f_95_decl_95_local*/$jd$f_95_decl_95_local((
-/*JD_USE:144366*/$x144366),(
-/*JD_USE:144369*/$x144369),(
-/*JD_USE:144372*/$x144372))))),"Missing")),(($ord0 || $ord1))))){return (
+/*JD_USE:144397*/$x144397),(
+/*JD_USE:144400*/$x144400),(
+/*JD_USE:144403*/$x144403))))),"Missing")),(($ord0 || $ord1))))){return (
 /*JD_REF:$jd$kt*/$jd$kt("ImportLaw",(
-/*JD_USE:144366*/$x144366),0,0,(
+/*JD_USE:144397*/$x144397),0,0,(
 /*JD_REF:$jd$ks*/$jd$ks((
-/*JD_USE:144367*/$x144367)))));}else{return (
+/*JD_USE:144398*/$x144398)))));}else{return (
 /*JD_REF:$jd$dt*/$jd$dt((
 /*JD_REF:$jd$f_95_decl_95_local*/$jd$f_95_decl_95_local((
-/*JD_USE:144366*/$x144366),(
-/*JD_USE:144369*/$x144369),(
-/*JD_USE:144372*/$x144372)))));}})(),["rest"]:(
-/*JD_USE:144368*/$x144368)});const $next4=(
-/*JD_USE:144369*/$x144369);const $next5=(
-/*JD_USE:144370*/$x144370);const $next6=(
-/*JD_USE:144371*/$x144371);const $next7=(
-/*JD_USE:144372*/$x144372);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$pc=3;continue;}}}}}}}}case 25:{const $x144386=$a0;const $x144387=$a1;const $x144388=$a2;const $x144389=$a3;const $x144390=$a4;const $x144391=$a5;const $x144392=$a6;{const $ord0=(
+/*JD_USE:144397*/$x144397),(
+/*JD_USE:144400*/$x144400),(
+/*JD_USE:144403*/$x144403)))));}})(),["rest"]:(
+/*JD_USE:144399*/$x144399)});const $next4=(
+/*JD_USE:144400*/$x144400);const $next5=(
+/*JD_USE:144401*/$x144401);const $next6=(
+/*JD_USE:144402*/$x144402);const $next7=(
+/*JD_USE:144403*/$x144403);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$pc=3;continue;}}}}}}}}case 25:{const $x144417=$a0;const $x144418=$a1;const $x144419=$a2;const $x144420=$a3;const $x144421=$a4;const $x144422=$a5;const $x144423=$a6;{const $ord0=(
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144388*/$x144388))),"for"));const $ord1=(
+/*JD_USE:144419*/$x144419))),"for"));const $ord1=(
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144388*/$x144388))),"exs"));/* direct literal choice */if((($ord0 || $ord1))){{
+/*JD_USE:144419*/$x144419))),"exs"));/* direct literal choice */if((($ord0 || $ord1))){{
 /*JD_REF:$jd$p140p_95_law_95_clause*/const $next0=(
-/*JD_USE:144386*/$x144386);const $next1=(
-/*JD_USE:144387*/$x144387);const $next2=(
+/*JD_USE:144417*/$x144417);const $next1=(
+/*JD_USE:144418*/$x144418);const $next2=(
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144388*/$x144388))),"exs"));const $next3=(
+/*JD_USE:144419*/$x144419))),"exs"));const $next3=(
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:144388*/$x144388)));const $next4=(
-/*JD_USE:144389*/$x144389);const $next5=(
-/*JD_USE:144390*/$x144390);const $next6=(
-/*JD_USE:144391*/$x144391);const $next7=(
-/*JD_USE:144392*/$x144392);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$pc=7;continue;}}else{{
+/*JD_USE:144419*/$x144419)));const $next4=(
+/*JD_USE:144420*/$x144420);const $next5=(
+/*JD_USE:144421*/$x144421);const $next6=(
+/*JD_USE:144422*/$x144422);const $next7=(
+/*JD_USE:144423*/$x144423);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$pc=7;continue;}}else{{
 /*JD_REF:$jd$p140p_95_law_95_end*/const $next0=(
-/*JD_USE:144386*/$x144386);const $next1=(
-/*JD_USE:144387*/$x144387);const $next2=(
+/*JD_USE:144417*/$x144417);const $next1=(
+/*JD_USE:144418*/$x144418);const $next2=(
 /*JD_REF:$jd$f_95_expr*/$jd$f_95_expr((
-/*JD_USE:144388*/$x144388),0));const $next3=(
-/*JD_USE:144389*/$x144389);const $next4=(
-/*JD_USE:144390*/$x144390);const $next5=(
+/*JD_USE:144419*/$x144419),0));const $next3=(
+/*JD_USE:144420*/$x144420);const $next4=(
+/*JD_USE:144421*/$x144421);const $next5=(
 /*JD_REF:$jd$List_46_reverse*/$jd$List_46_reverse((
-/*JD_USE:144391*/$x144391)));const $next6=(
-/*JD_USE:144392*/$x144392);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=9;continue;}}}}case 26:{const $x144401=$a0;const $x144402=$a1;const $x144403=$a2;const $x144404=$a3;const $x144405=$a4;const $x144406=$a5;{const $ord0=(
+/*JD_USE:144422*/$x144422)));const $next6=(
+/*JD_USE:144423*/$x144423);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=9;continue;}}}}case 26:{const $x144432=$a0;const $x144433=$a1;const $x144434=$a2;const $x144435=$a3;const $x144436=$a4;const $x144437=$a5;{const $ord0=(
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144403*/$x144403))),"<"));const $ord1=(
+/*JD_USE:144434*/$x144434))),"<"));const $ord1=(
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144403*/$x144403))),"<-"));/* direct literal choice */if((($ord0 || $ord1))){{
+/*JD_USE:144434*/$x144434))),"<-"));/* direct literal choice */if((($ord0 || $ord1))){{
 /*JD_REF:$jd$p140p_95_type_95_params*/const $next0=(
-/*JD_USE:144401*/$x144401);const $next1=(
-/*JD_USE:144402*/$x144402);const $next2=(
+/*JD_USE:144432*/$x144432);const $next1=(
+/*JD_USE:144433*/$x144433);const $next2=(
 /*JD_REF:$jd$f_95_tele*/$jd$f_95_tele((()=>{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144403*/$x144403))),"<-"))){{const $ord0=(
+/*JD_USE:144434*/$x144434))),"<-"))){{const $ord0=(
 /*JD_REF:$jd$f_95_col*/$jd$f_95_col((
-/*JD_USE:144403*/$x144403)));return (
+/*JD_USE:144434*/$x144434)));return (
 /*JD_REF:$jd$f_95_prepend*/$jd$f_95_prepend(({$:"FToken","text":"-","f_line":(
 /*JD_REF:$jd$f_95_line*/$jd$f_95_line((
-/*JD_USE:144403*/$x144403))),"f_col":((($ord0 + 1) >>> 0)),"f_kind":0,"begin":(
+/*JD_USE:144434*/$x144434))),"f_col":((($ord0 + 1) >>> 0)),"f_kind":0,"begin":(
 /*JD_REF:$jd$f_95_cursor_95_add*/$jd$f_95_cursor_95_add((
 /*JD_REF:$jd$f_95_begin*/$jd$f_95_begin((
-/*JD_USE:144403*/$x144403))),1)),"end":(
+/*JD_USE:144434*/$x144434))),1)),"end":(
 /*JD_REF:$jd$f_95_end*/$jd$f_95_end((
-/*JD_USE:144403*/$x144403))),["previousEnd"]:(
+/*JD_USE:144434*/$x144434))),["previousEnd"]:(
 /*JD_REF:$jd$f_95_cursor_95_add*/$jd$f_95_cursor_95_add((
 /*JD_REF:$jd$f_95_begin*/$jd$f_95_begin((
-/*JD_USE:144403*/$x144403))),1))}),(
+/*JD_USE:144434*/$x144434))),1))}),(
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:144403*/$x144403)))));}}else{return (
+/*JD_USE:144434*/$x144434)))));}}else{return (
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:144403*/$x144403)));}})(),">",({$:"Nil"})));const $next3=(
-/*JD_USE:144404*/$x144404);const $next4=(
-/*JD_USE:144405*/$x144405);const $next5=(
-/*JD_USE:144406*/$x144406);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=11;continue;}}else{{
+/*JD_USE:144434*/$x144434)));}})(),">",({$:"Nil"})));const $next3=(
+/*JD_USE:144435*/$x144435);const $next4=(
+/*JD_USE:144436*/$x144436);const $next5=(
+/*JD_USE:144437*/$x144437);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=11;continue;}}else{{
 /*JD_REF:$jd$p140p_95_type_95_params*/const $next0=(
-/*JD_USE:144401*/$x144401);const $next1=(
-/*JD_USE:144402*/$x144402);const $next2=({$:"FParsed","term":(
+/*JD_USE:144432*/$x144432);const $next1=(
+/*JD_USE:144433*/$x144433);const $next2=({$:"FParsed","term":(
 /*JD_REF:$jd$kt*/$jd$kt("Tele","",0,0,({$:"Nil"}))),["rest"]:(
-/*JD_USE:144403*/$x144403)});const $next3=(
-/*JD_USE:144404*/$x144404);const $next4=(
-/*JD_USE:144405*/$x144405);const $next5=(
-/*JD_USE:144406*/$x144406);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=11;continue;}}}}case 27:{const $x144420=$a0;const $x144421=$a1;const $x144422=$a2;const $x144423=$a3;const $x144424=$a4;const $x144425=$a5;const $x144426=$a6;const $x144427=$a7;const $x144428=$a8;{/* direct literal choice */if((
+/*JD_USE:144434*/$x144434)});const $next3=(
+/*JD_USE:144435*/$x144435);const $next4=(
+/*JD_USE:144436*/$x144436);const $next5=(
+/*JD_USE:144437*/$x144437);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=11;continue;}}}}case 27:{const $x144451=$a0;const $x144452=$a1;const $x144453=$a2;const $x144454=$a3;const $x144455=$a4;const $x144456=$a5;const $x144457=$a6;const $x144458=$a7;const $x144459=$a8;{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_valid_95_name*/$jd$f_95_valid_95_name((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144424*/$x144424)))))){{/* direct literal choice */if((
+/*JD_USE:144455*/$x144455)))))){{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_alias*/$jd$f_95_alias((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144424*/$x144424))),(
-/*JD_USE:144426*/$x144426))),(
+/*JD_USE:144455*/$x144455))),(
+/*JD_USE:144457*/$x144457))),(
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144424*/$x144424)))))){{const $ord0=(
+/*JD_USE:144455*/$x144455)))))){{const $ord0=(
 /*JD_REF:$jd$Bool_46_not*/$jd$Bool_46_not((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$dk*/$jd$dk((
 /*JD_REF:$jd$f_95_find*/$jd$f_95_find((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144424*/$x144424))),(
-/*JD_USE:144427*/$x144427))))),"Missing"))));const $ord1=(
+/*JD_USE:144455*/$x144455))),(
+/*JD_USE:144458*/$x144458))))),"Missing"))));const $ord1=(
 /*JD_REF:$jd$f_95_decl_95_ctor_95_taken*/$jd$f_95_decl_95_ctor_95_taken((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144424*/$x144424))),(
-/*JD_USE:144425*/$x144425),(
-/*JD_USE:144428*/$x144428)));/* direct literal choice */if((($ord0 || $ord1))){{const $ord0="expected a fresh constructor name (duplicate declaration: ";const $ord1=(
+/*JD_USE:144455*/$x144455))),(
+/*JD_USE:144456*/$x144456),(
+/*JD_USE:144459*/$x144459)));/* direct literal choice */if((($ord0 || $ord1))){{const $ord0="expected a fresh constructor name (duplicate declaration: ";const $ord1=(
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144424*/$x144424)));const $ord2=(($ord0 + $ord1));const $ord3=")";const $ord4="a fresh constructor name (duplicate declaration: ";const $ord5=(
+/*JD_USE:144455*/$x144455)));const $ord2=(($ord0 + $ord1));const $ord3=")";const $ord4="a fresh constructor name (duplicate declaration: ";const $ord5=(
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144424*/$x144424)));const $ord6=(($ord4 + $ord5));const $ord7=")";return (
+/*JD_USE:144455*/$x144455)));const $ord6=(($ord4 + $ord5));const $ord7=")";return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144425*/$x144425),(
+/*JD_USE:144456*/$x144456),(
 /*JD_REF:$jd$f_95_pn*/$jd$f_95_pn((
 /*JD_REF:$jd$fpe_95_word*/$jd$fpe_95_word((
-/*JD_USE:144424*/$x144424),(($ord2 + $ord3)),(($ord6 + $ord7)))))),(
-/*JD_USE:144426*/$x144426)));}}else{{/* direct literal choice */if((
+/*JD_USE:144455*/$x144455),(($ord2 + $ord3)),(($ord6 + $ord7)))))),(
+/*JD_USE:144457*/$x144457)));}}else{{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
 /*JD_REF:$jd$f_95_space*/$jd$f_95_space((
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:144424*/$x144424))))))),"{"))){{
+/*JD_USE:144455*/$x144455))))))),"{"))){{
 /*JD_REF:$jd$p140p_95_type_95_ctor*/const $next0=(
-/*JD_USE:144420*/$x144420);const $next1=(
-/*JD_USE:144421*/$x144421);const $next2=(
-/*JD_USE:144422*/$x144422);const $next3=(
-/*JD_USE:144423*/$x144423);const $next4=(
+/*JD_USE:144451*/$x144451);const $next1=(
+/*JD_USE:144452*/$x144452);const $next2=(
+/*JD_USE:144453*/$x144453);const $next3=(
+/*JD_USE:144454*/$x144454);const $next4=(
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144424*/$x144424)));const $next5=(
+/*JD_USE:144455*/$x144455)));const $next5=(
 /*JD_REF:$jd$f_95_tele*/$jd$f_95_tele((
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
 /*JD_REF:$jd$f_95_space*/$jd$f_95_space((
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:144424*/$x144424))))))),"}",({$:"Nil"})));const $next6=(
-/*JD_USE:144425*/$x144425);const $next7=(
-/*JD_USE:144426*/$x144426);const $next8=(
-/*JD_USE:144427*/$x144427);const $next9=(
-/*JD_USE:144428*/$x144428);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$a9=$next9;$pc=14;continue;}}else{return (
+/*JD_USE:144455*/$x144455))))))),"}",({$:"Nil"})));const $next6=(
+/*JD_USE:144456*/$x144456);const $next7=(
+/*JD_USE:144457*/$x144457);const $next8=(
+/*JD_USE:144458*/$x144458);const $next9=(
+/*JD_USE:144459*/$x144459);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$a9=$next9;$pc=14;continue;}}else{return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144425*/$x144425),(
+/*JD_USE:144456*/$x144456),(
 /*JD_REF:$jd$f_95_pn*/$jd$f_95_pn((
 /*JD_REF:$jd$fpe_95_error*/$jd$fpe_95_error((
 /*JD_REF:$jd$f_95_space*/$jd$f_95_space((
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:144424*/$x144424))))),"expected {","'{'")))),(
-/*JD_USE:144426*/$x144426)));}}}}}else{{const $ord0="a fresh constructor name (";const $ord1=(
+/*JD_USE:144455*/$x144455))))),"expected {","'{'")))),(
+/*JD_USE:144457*/$x144457)));}}}}}else{{const $ord0="a fresh constructor name (";const $ord1=(
 /*JD_REF:$jd$f_95_import_95_alias_95_head*/$jd$f_95_import_95_alias_95_head((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144424*/$x144424)))));const $ord2=(($ord0 + $ord1));const $ord3=" is an import's alias)";return (
+/*JD_USE:144455*/$x144455)))));const $ord2=(($ord0 + $ord1));const $ord3=" is an import's alias)";return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144425*/$x144425),(
+/*JD_USE:144456*/$x144456),(
 /*JD_REF:$jd$f_95_pn*/$jd$f_95_pn((
 /*JD_REF:$jd$fpe_95_word*/$jd$fpe_95_word((
-/*JD_USE:144424*/$x144424),"an import alias cannot name a constructor",(($ord2 + $ord3)))))),(
-/*JD_USE:144426*/$x144426)));}}}}else{return (
+/*JD_USE:144455*/$x144455),"an import alias cannot name a constructor",(($ord2 + $ord3)))))),(
+/*JD_USE:144457*/$x144457)));}}}}else{return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144425*/$x144425),(
+/*JD_USE:144456*/$x144456),(
 /*JD_REF:$jd$f_95_pn*/$jd$f_95_pn((
 /*JD_REF:$jd$fpe_95_name_95_error*/$jd$fpe_95_name_95_error((
-/*JD_USE:144424*/$x144424))))),(
-/*JD_USE:144426*/$x144426)));}}}case 28:{const $x144443=$a0;const $x144444=$a1;const $x144445=$a2;const $x144446=$a3;const $x144447=$a4;const $x144448=$a5;{/* direct literal choice */if((
+/*JD_USE:144455*/$x144455))))),(
+/*JD_USE:144457*/$x144457)));}}}case 28:{const $x144474=$a0;const $x144475=$a1;const $x144476=$a2;const $x144477=$a3;const $x144478=$a4;const $x144479=$a5;{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144445*/$x144445))),"<>"))){{
+/*JD_USE:144476*/$x144476))),"<>"))){{
 /*JD_REF:$jd$p140p_95_type_95_params*/const $next0=(
-/*JD_USE:144443*/$x144443);const $next1=(
-/*JD_USE:144444*/$x144444);const $next2=({$:"FParsed","term":(
+/*JD_USE:144474*/$x144474);const $next1=(
+/*JD_USE:144475*/$x144475);const $next2=({$:"FParsed","term":(
 /*JD_REF:$jd$kt*/$jd$kt("Tele","",0,0,({$:"Nil"}))),["rest"]:(
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:144445*/$x144445)))});const $next3=(
-/*JD_USE:144446*/$x144446);const $next4=(
-/*JD_USE:144447*/$x144447);const $next5=(
-/*JD_USE:144448*/$x144448);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=11;continue;}}else{{
+/*JD_USE:144476*/$x144476)))});const $next3=(
+/*JD_USE:144477*/$x144477);const $next4=(
+/*JD_USE:144478*/$x144478);const $next5=(
+/*JD_USE:144479*/$x144479);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=11;continue;}}else{{
 /*JD_REF:$jd$p140p_95_type_95_base*/const $next0=(
-/*JD_USE:144443*/$x144443);const $next1=(
-/*JD_USE:144444*/$x144444);const $next2=(
-/*JD_USE:144445*/$x144445);const $next3=(
-/*JD_USE:144446*/$x144446);const $next4=(
-/*JD_USE:144447*/$x144447);const $next5=(
-/*JD_USE:144448*/$x144448);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=26;continue;}}}}case 29:{const $x144459=$a0;const $x144460=$a1;const $x144461=$a2;const $x144462=$a3;const $x144463=$a4;const $x144464=$a5;const $x144465=$a6;const $x144466=$a7;{const $ord0=(
+/*JD_USE:144474*/$x144474);const $next1=(
+/*JD_USE:144475*/$x144475);const $next2=(
+/*JD_USE:144476*/$x144476);const $next3=(
+/*JD_USE:144477*/$x144477);const $next4=(
+/*JD_USE:144478*/$x144478);const $next5=(
+/*JD_USE:144479*/$x144479);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=26;continue;}}}}case 29:{const $x144490=$a0;const $x144491=$a1;const $x144492=$a2;const $x144493=$a3;const $x144494=$a4;const $x144495=$a5;const $x144496=$a6;const $x144497=$a7;{const $ord0=(
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$dk*/$jd$dk((
-/*JD_USE:144465*/$x144465))),"Missing"));const $ord1=(
+/*JD_USE:144496*/$x144496))),"Missing"));const $ord1=(
 /*JD_REF:$jd$f_95_def_95_fillable*/$jd$f_95_def_95_fillable((
-/*JD_USE:144465*/$x144465)));/* direct literal choice */if((($ord0 || $ord1))){{/* direct literal choice */if((
+/*JD_USE:144496*/$x144496)));/* direct literal choice */if((($ord0 || $ord1))){{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144461*/$x144461))),"("))){{/* direct literal choice */if((
+/*JD_USE:144492*/$x144492))),"("))){{/* direct literal choice */if((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$f_95_def_95_fillable*/$jd$f_95_def_95_fillable((
-/*JD_USE:144465*/$x144465))),(
+/*JD_USE:144496*/$x144496))),(
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
 /*JD_REF:$jd$f_95_skip*/$jd$f_95_skip((
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:144461*/$x144461))))))),"~"))))){return (
+/*JD_USE:144492*/$x144492))))))),"~"))))){return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144462*/$x144462),(
+/*JD_USE:144493*/$x144493),(
 /*JD_REF:$jd$f_95_pn*/$jd$f_95_pn((
 /*JD_REF:$jd$fpe_95_name_95_error*/$jd$fpe_95_name_95_error((
 /*JD_REF:$jd$f_95_skip*/$jd$f_95_skip((
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:144461*/$x144461))))))))),(
-/*JD_USE:144463*/$x144463)));}else{{
+/*JD_USE:144492*/$x144492))))))))),(
+/*JD_USE:144494*/$x144494)));}else{{
 /*JD_REF:$jd$p140p_95_def_95_prior*/const $next0=(
-/*JD_USE:144459*/$x144459);const $next1=(
+/*JD_USE:144490*/$x144490);const $next1=(
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144460*/$x144460)));const $next2=(
+/*JD_USE:144491*/$x144491)));const $next2=(
 /*JD_REF:$jd$f_95_tele*/$jd$f_95_tele((
 /*JD_REF:$jd$f_95_context_95_enter*/$jd$f_95_context_95_enter((
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:144461*/$x144461))),(
-/*JD_USE:144466*/$x144466))),")",({$:"Nil"})));const $next3=(
-/*JD_USE:144462*/$x144462);const $next4=(
-/*JD_USE:144463*/$x144463);const $next5=(
-/*JD_USE:144464*/$x144464);const $next6=(
-/*JD_USE:144465*/$x144465);const $next7=(
-/*JD_USE:144460*/$x144460);const $next8=(
-/*JD_USE:144466*/$x144466);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$pc=17;continue;}}}}else{return (
+/*JD_USE:144492*/$x144492))),(
+/*JD_USE:144497*/$x144497))),")",({$:"Nil"})));const $next3=(
+/*JD_USE:144493*/$x144493);const $next4=(
+/*JD_USE:144494*/$x144494);const $next5=(
+/*JD_USE:144495*/$x144495);const $next6=(
+/*JD_USE:144496*/$x144496);const $next7=(
+/*JD_USE:144491*/$x144491);const $next8=(
+/*JD_USE:144497*/$x144497);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$a8=$next8;$pc=17;continue;}}}}else{return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144462*/$x144462),(
+/*JD_USE:144493*/$x144493),(
 /*JD_REF:$jd$f_95_pn*/$jd$f_95_pn((
 /*JD_REF:$jd$fpe_95_error*/$jd$fpe_95_error((
-/*JD_USE:144461*/$x144461),"expected (","'('")))),(
-/*JD_USE:144463*/$x144463)));}}}else{{const $ord0="a fresh name (duplicate declaration: ";const $ord1=(
+/*JD_USE:144492*/$x144492),"expected (","'('")))),(
+/*JD_USE:144494*/$x144494)));}}}else{{const $ord0="a fresh name (duplicate declaration: ";const $ord1=(
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144460*/$x144460)));const $ord2=(($ord0 + $ord1));const $ord3=")";return (
+/*JD_USE:144491*/$x144491)));const $ord2=(($ord0 + $ord1));const $ord3=")";return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144462*/$x144462),(
+/*JD_USE:144493*/$x144493),(
 /*JD_REF:$jd$f_95_pn*/$jd$f_95_pn((
 /*JD_REF:$jd$fpe_95_word*/$jd$fpe_95_word((
-/*JD_USE:144460*/$x144460),"a definition must uniquely fill its law with plain parameter names",(($ord2 + $ord3)))))),(
-/*JD_USE:144463*/$x144463)));}}}}case 30:{const $x144479=$a0;const $x144480=$a1;const $x144481=$a2;const $x144482=$a3;const $x144483=$a4;const $x144484=$a5;{/* direct literal choice */if((
+/*JD_USE:144491*/$x144491),"a definition must uniquely fill its law with plain parameter names",(($ord2 + $ord3)))))),(
+/*JD_USE:144494*/$x144494)));}}}}case 30:{const $x144510=$a0;const $x144511=$a1;const $x144512=$a2;const $x144513=$a3;const $x144514=$a4;const $x144515=$a5;{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_valid_95_name*/$jd$f_95_valid_95_name((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144480*/$x144480)))))){{/* direct literal choice */if((
+/*JD_USE:144511*/$x144511)))))){{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_alias*/$jd$f_95_alias((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144480*/$x144480))),(
-/*JD_USE:144482*/$x144482))),(
+/*JD_USE:144511*/$x144511))),(
+/*JD_USE:144513*/$x144513))),(
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144480*/$x144480)))))){{/* direct literal choice */if((
+/*JD_USE:144511*/$x144511)))))){{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_decl_95_taken*/$jd$f_95_decl_95_taken((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144480*/$x144480))),(
-/*JD_USE:144481*/$x144481),(
-/*JD_USE:144484*/$x144484)))){{const $ord0="a fresh name (duplicate declaration: ";const $ord1=(
+/*JD_USE:144511*/$x144511))),(
+/*JD_USE:144512*/$x144512),(
+/*JD_USE:144515*/$x144515)))){{const $ord0="a fresh name (duplicate declaration: ";const $ord1=(
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144480*/$x144480)));const $ord2=(($ord0 + $ord1));const $ord3=")";return (
+/*JD_USE:144511*/$x144511)));const $ord2=(($ord0 + $ord1));const $ord3=")";return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144481*/$x144481),(
+/*JD_USE:144512*/$x144512),(
 /*JD_REF:$jd$f_95_pn*/$jd$f_95_pn((
 /*JD_REF:$jd$fpe_95_word*/$jd$fpe_95_word((
-/*JD_USE:144480*/$x144480),"duplicate declaration",(($ord2 + $ord3)))))),(
-/*JD_USE:144482*/$x144482)));}}else{{/* direct literal choice */if((
-/*JD_USE:144483*/$x144483)){{
+/*JD_USE:144511*/$x144511),"duplicate declaration",(($ord2 + $ord3)))))),(
+/*JD_USE:144513*/$x144513)));}}else{{/* direct literal choice */if((
+/*JD_USE:144514*/$x144514)){{
 /*JD_REF:$jd$p140p_95_type*/const $next0=(
-/*JD_USE:144479*/$x144479);const $next1=(
+/*JD_USE:144510*/$x144510);const $next1=(
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144480*/$x144480)));const $next2=(
+/*JD_USE:144511*/$x144511)));const $next2=(
 /*JD_REF:$jd$f_95_context_95_enter*/$jd$f_95_context_95_enter((
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:144480*/$x144480))),(
-/*JD_USE:144484*/$x144484)));const $next3=(
-/*JD_USE:144481*/$x144481);const $next4=(
-/*JD_USE:144482*/$x144482);const $next5=(
-/*JD_USE:144484*/$x144484);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=10;continue;}}else{{
+/*JD_USE:144511*/$x144511))),(
+/*JD_USE:144515*/$x144515)));const $next3=(
+/*JD_USE:144512*/$x144512);const $next4=(
+/*JD_USE:144513*/$x144513);const $next5=(
+/*JD_USE:144515*/$x144515);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=10;continue;}}else{{
 /*JD_REF:$jd$p140p_95_law_95_header*/const $next0=(
-/*JD_USE:144479*/$x144479);const $next1=(
+/*JD_USE:144510*/$x144510);const $next1=(
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144480*/$x144480)));const $next2=(
+/*JD_USE:144511*/$x144511)));const $next2=(
 /*JD_REF:$jd$f_95_expect*/$jd$f_95_expect(({$:"FParsed","term":({$:"KTerm","tag":"Absent","name":"","id":0,"quant":0,"kids":({$:"Nil"}),"removed":({$:"Nil"}),"originBegin":0,["originEnd"]:0}),["rest"]:(
 /*JD_REF:$jd$f_95_context_95_enter*/$jd$f_95_context_95_enter((
 /*JD_REF:$jd$f_95_space*/$jd$f_95_space((
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:144480*/$x144480))))),(
-/*JD_USE:144484*/$x144484)))}),":"));const $next3=(
-/*JD_USE:144481*/$x144481);const $next4=(
-/*JD_USE:144482*/$x144482);const $next5=(
-/*JD_USE:144484*/$x144484);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=31;continue;}}}}}}else{{const $ord0="a fresh name (";const $ord1=(
+/*JD_USE:144511*/$x144511))))),(
+/*JD_USE:144515*/$x144515)))}),":"));const $next3=(
+/*JD_USE:144512*/$x144512);const $next4=(
+/*JD_USE:144513*/$x144513);const $next5=(
+/*JD_USE:144515*/$x144515);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=31;continue;}}}}}}else{{const $ord0="a fresh name (";const $ord1=(
 /*JD_REF:$jd$f_95_import_95_alias_95_head*/$jd$f_95_import_95_alias_95_head((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144480*/$x144480)))));const $ord2=(($ord0 + $ord1));const $ord3=" is an import's alias)";return (
+/*JD_USE:144511*/$x144511)))));const $ord2=(($ord0 + $ord1));const $ord3=" is an import's alias)";return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144481*/$x144481),(
+/*JD_USE:144512*/$x144512),(
 /*JD_REF:$jd$f_95_pn*/$jd$f_95_pn((
 /*JD_REF:$jd$fpe_95_word*/$jd$fpe_95_word((
-/*JD_USE:144480*/$x144480),"an import alias cannot name a new declaration",(($ord2 + $ord3)))))),(
-/*JD_USE:144482*/$x144482)));}}}}else{return (
+/*JD_USE:144511*/$x144511),"an import alias cannot name a new declaration",(($ord2 + $ord3)))))),(
+/*JD_USE:144513*/$x144513)));}}}}else{return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144481*/$x144481),(
+/*JD_USE:144512*/$x144512),(
 /*JD_REF:$jd$f_95_pn*/$jd$f_95_pn((
 /*JD_REF:$jd$fpe_95_name_95_error*/$jd$fpe_95_name_95_error((
-/*JD_USE:144480*/$x144480))))),(
-/*JD_USE:144482*/$x144482)));}}}case 31:{const $x144499=$a0;const $x144500=$a1;{const $match3=$a2;const $x144501=$match3["term"];const $x144502=$match3["rest"];const $x144503=$a3;const $x144504=$a4;const $x144505=$a5;{/* direct literal choice */if((
+/*JD_USE:144511*/$x144511))))),(
+/*JD_USE:144513*/$x144513)));}}}case 31:{const $x144530=$a0;const $x144531=$a1;{const $match3=$a2;const $x144532=$match3["term"];const $x144533=$match3["rest"];const $x144534=$a3;const $x144535=$a4;const $x144536=$a5;{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$tg*/$jd$tg((
-/*JD_USE:144501*/$x144501))),"Error"))){return (
+/*JD_USE:144532*/$x144532))),"Error"))){return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144503*/$x144503),(
-/*JD_USE:144501*/$x144501),(
-/*JD_USE:144504*/$x144504)));}else{{
+/*JD_USE:144534*/$x144534),(
+/*JD_USE:144532*/$x144532),(
+/*JD_USE:144535*/$x144535)));}else{{
 /*JD_REF:$jd$p140p_95_law*/const $next0=(
-/*JD_USE:144499*/$x144499);const $next1=(
-/*JD_USE:144500*/$x144500);const $next2=(
+/*JD_USE:144530*/$x144530);const $next1=(
+/*JD_USE:144531*/$x144531);const $next2=(
 /*JD_REF:$jd$f_95_skip*/$jd$f_95_skip((
-/*JD_USE:144502*/$x144502)));const $next3=(
-/*JD_USE:144503*/$x144503);const $next4=(
-/*JD_USE:144504*/$x144504);const $next5=({$:"Nil"});const $next6=(
-/*JD_USE:144505*/$x144505);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=6;continue;}}}}}case 32:{const $x144516=$a0;const $x144517=$a1;const $x144518=$a2;const $x144519=$a3;const $x144520=$a4;const $x144521=$a5;const $x144522=$a6;{const $match8=$a7;const $x144523=$match8["prior"];const $x144524=$match8["index"];const $x144525=$match8["ctors"];const $x144526=$match8["ns"];const $x144527=$match8["aliases"];const $x144528=$match8["priorView"];{const $let0=(
+/*JD_USE:144533*/$x144533)));const $next3=(
+/*JD_USE:144534*/$x144534);const $next4=(
+/*JD_USE:144535*/$x144535);const $next5=({$:"Nil"});const $next6=(
+/*JD_USE:144536*/$x144536);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=6;continue;}}}}}case 32:{const $x144547=$a0;const $x144548=$a1;const $x144549=$a2;const $x144550=$a3;const $x144551=$a4;const $x144552=$a5;const $x144553=$a6;{const $match8=$a7;const $x144554=$match8["prior"];const $x144555=$match8["index"];const $x144556=$match8["ctors"];const $x144557=$match8["ns"];const $x144558=$match8["aliases"];const $x144559=$match8["priorView"];{const $let0=(
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144517*/$x144517)));{const $x144529=$let0;{const $let0=(
+/*JD_USE:144548*/$x144548)));{const $x144560=$let0;{const $let0=(
 /*JD_REF:$jd$f_95_alias*/$jd$f_95_alias((
-/*JD_USE:144529*/$x144529),(
-/*JD_USE:144527*/$x144527)));{const $x144530=$let0;{/* direct literal choice */if((()=>{/* direct literal choice */if((
+/*JD_USE:144560*/$x144560),(
+/*JD_USE:144558*/$x144558)));{const $x144561=$let0;{/* direct literal choice */if((()=>{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
-/*JD_USE:144530*/$x144530),(
-/*JD_USE:144529*/$x144529)))){return false;}else{return (
+/*JD_USE:144561*/$x144561),(
+/*JD_USE:144560*/$x144560)))){return false;}else{return (
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$f_95_declared*/$jd$f_95_declared((
-/*JD_USE:144530*/$x144530),(
-/*JD_USE:144523*/$x144523))),(
+/*JD_USE:144561*/$x144561),(
+/*JD_USE:144554*/$x144554))),(
 /*JD_REF:$jd$f_95_declared*/$jd$f_95_declared((
-/*JD_USE:144529*/$x144529),(
-/*JD_USE:144523*/$x144523)))));}})()){{const $ord0="an unambiguous name (the alias ";const $ord1=(
+/*JD_USE:144560*/$x144560),(
+/*JD_USE:144554*/$x144554)))));}})()){{const $ord0="an unambiguous name (the alias ";const $ord1=(
 /*JD_REF:$jd$f_95_import_95_alias_95_head*/$jd$f_95_import_95_alias_95_head((
-/*JD_USE:144529*/$x144529)));const $ord2=(($ord0 + $ord1));const $ord3=" shadows ";const $ord4=(($ord2 + $ord3));const $ord5=(($ord4 + (
-/*JD_USE:144529*/$x144529)));const $ord6=")";return (
+/*JD_USE:144560*/$x144560)));const $ord2=(($ord0 + $ord1));const $ord3=" shadows ";const $ord4=(($ord2 + $ord3));const $ord5=(($ord4 + (
+/*JD_USE:144560*/$x144560)));const $ord6=")";return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144519*/$x144519),(
+/*JD_USE:144550*/$x144550),(
 /*JD_REF:$jd$fpe_95_point_95_at*/$jd$fpe_95_point_95_at((
 /*JD_REF:$jd$kt_95_span*/$jd$kt_95_span("Ref",(
-/*JD_USE:144529*/$x144529),0,1,({$:"Nil"}),(
+/*JD_USE:144560*/$x144560),0,1,({$:"Nil"}),(
 /*JD_REF:$jd$f_95_end*/$jd$f_95_end((
-/*JD_USE:144517*/$x144517))),(
+/*JD_USE:144548*/$x144548))),(
 /*JD_REF:$jd$f_95_end*/$jd$f_95_end((
-/*JD_USE:144517*/$x144517))))),"ambiguous imported declaration",(($ord5 + $ord6)))),(
-/*JD_USE:144520*/$x144520)));}}else{{/* direct literal choice */if((
+/*JD_USE:144548*/$x144548))))),"ambiguous imported declaration",(($ord5 + $ord6)))),(
+/*JD_USE:144551*/$x144551)));}}else{{/* direct literal choice */if((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_not*/$jd$Bool_46_not((
 /*JD_REF:$jd$f_95_def_95_fillable*/$jd$f_95_def_95_fillable((
-/*JD_USE:144522*/$x144522))))),(
+/*JD_USE:144553*/$x144553))))),(
 /*JD_REF:$jd$Bool_46_not*/$jd$Bool_46_not((
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
-/*JD_USE:144530*/$x144530),(
-/*JD_USE:144529*/$x144529)))))))){{const $ord0="a fresh name (";const $ord1=(
+/*JD_USE:144561*/$x144561),(
+/*JD_USE:144560*/$x144560)))))))){{const $ord0="a fresh name (";const $ord1=(
 /*JD_REF:$jd$f_95_import_95_alias_95_head*/$jd$f_95_import_95_alias_95_head((
-/*JD_USE:144529*/$x144529)));const $ord2=(($ord0 + $ord1));const $ord3=" is an import's alias)";return (
+/*JD_USE:144560*/$x144560)));const $ord2=(($ord0 + $ord1));const $ord3=" is an import's alias)";return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144519*/$x144519),(
+/*JD_USE:144550*/$x144550),(
 /*JD_REF:$jd$f_95_pn*/$jd$f_95_pn((
 /*JD_REF:$jd$fpe_95_word*/$jd$fpe_95_word((
-/*JD_USE:144517*/$x144517),"an import alias cannot name a new declaration",(($ord2 + $ord3)))))),(
-/*JD_USE:144520*/$x144520)));}}else{{/* direct literal choice */if((()=>{/* direct literal choice */if((
+/*JD_USE:144548*/$x144548),"an import alias cannot name a new declaration",(($ord2 + $ord3)))))),(
+/*JD_USE:144551*/$x144551)));}}else{{/* direct literal choice */if((()=>{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_def_95_fillable*/$jd$f_95_def_95_fillable((
-/*JD_USE:144522*/$x144522)))){return false;}else{return (
+/*JD_USE:144553*/$x144553)))){return false;}else{return (
 /*JD_REF:$jd$f_95_decl_95_taken*/$jd$f_95_decl_95_taken((
-/*JD_USE:144529*/$x144529),(
-/*JD_USE:144519*/$x144519),({$:"FParseScope","prior":(
-/*JD_USE:144523*/$x144523),"index":(
-/*JD_USE:144524*/$x144524),"ctors":(
-/*JD_USE:144525*/$x144525),"ns":(
-/*JD_USE:144526*/$x144526),"aliases":(
-/*JD_USE:144527*/$x144527),["priorView"]:(
-/*JD_USE:144528*/$x144528)})));}})()){{const $ord0="a fresh name (duplicate declaration: ";const $ord1=(($ord0 + (
-/*JD_USE:144529*/$x144529)));const $ord2=")";return (
+/*JD_USE:144560*/$x144560),(
+/*JD_USE:144550*/$x144550),({$:"FParseScope","prior":(
+/*JD_USE:144554*/$x144554),"index":(
+/*JD_USE:144555*/$x144555),"ctors":(
+/*JD_USE:144556*/$x144556),"ns":(
+/*JD_USE:144557*/$x144557),"aliases":(
+/*JD_USE:144558*/$x144558),["priorView"]:(
+/*JD_USE:144559*/$x144559)})));}})()){{const $ord0="a fresh name (duplicate declaration: ";const $ord1=(($ord0 + (
+/*JD_USE:144560*/$x144560)));const $ord2=")";return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144519*/$x144519),(
+/*JD_USE:144550*/$x144550),(
 /*JD_REF:$jd$f_95_pn*/$jd$f_95_pn((
 /*JD_REF:$jd$fpe_95_word*/$jd$fpe_95_word((
-/*JD_USE:144517*/$x144517),"duplicate declaration",(($ord1 + $ord2)))))),(
-/*JD_USE:144520*/$x144520)));}}else{{
+/*JD_USE:144548*/$x144548),"duplicate declaration",(($ord1 + $ord2)))))),(
+/*JD_USE:144551*/$x144551)));}}else{{
 /*JD_REF:$jd$p140p_95_def_95_header_95_prior*/const $next0=(
-/*JD_USE:144516*/$x144516);const $next1=(
-/*JD_USE:144517*/$x144517);const $next2=(
-/*JD_USE:144518*/$x144518);const $next3=(
-/*JD_USE:144519*/$x144519);const $next4=(
-/*JD_USE:144520*/$x144520);const $next5=(
-/*JD_USE:144521*/$x144521);const $next6=(
-/*JD_USE:144522*/$x144522);const $next7=({$:"FParseScope","prior":(
-/*JD_USE:144523*/$x144523),"index":(
-/*JD_USE:144524*/$x144524),"ctors":(
-/*JD_USE:144525*/$x144525),"ns":(
-/*JD_USE:144526*/$x144526),"aliases":(
-/*JD_USE:144527*/$x144527),["priorView"]:(
-/*JD_USE:144528*/$x144528)});$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$pc=29;continue;}}}}}}}}}}}}}case 33:{const $x144548=$a0;const $x144549=$a1;const $x144550=$a2;const $x144551=$a3;const $x144552=$a4;const $x144553=$a5;const $x144554=$a6;{const $let0=(
+/*JD_USE:144547*/$x144547);const $next1=(
+/*JD_USE:144548*/$x144548);const $next2=(
+/*JD_USE:144549*/$x144549);const $next3=(
+/*JD_USE:144550*/$x144550);const $next4=(
+/*JD_USE:144551*/$x144551);const $next5=(
+/*JD_USE:144552*/$x144552);const $next6=(
+/*JD_USE:144553*/$x144553);const $next7=({$:"FParseScope","prior":(
+/*JD_USE:144554*/$x144554),"index":(
+/*JD_USE:144555*/$x144555),"ctors":(
+/*JD_USE:144556*/$x144556),"ns":(
+/*JD_USE:144557*/$x144557),"aliases":(
+/*JD_USE:144558*/$x144558),["priorView"]:(
+/*JD_USE:144559*/$x144559)});$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$pc=29;continue;}}}}}}}}}}}}}case 33:{const $x144579=$a0;const $x144580=$a1;const $x144581=$a2;const $x144582=$a3;const $x144583=$a4;const $x144584=$a5;const $x144585=$a6;{const $let0=(
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:144549*/$x144549)))));{const $x144555=$let0;{const $let0=(
+/*JD_USE:144580*/$x144580)))));{const $x144586=$let0;{const $let0=(
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:144549*/$x144549)))));{const $x144556=$let0;{const $ord0=(
+/*JD_USE:144580*/$x144580)))));{const $x144587=$let0;{const $ord0=(
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144556*/$x144556))),"\n"));const $ord1=(
+/*JD_USE:144587*/$x144587))),"\n"));const $ord1=(
 /*JD_REF:$jd$f_95_eq*/$jd$f_95_eq((
 /*JD_REF:$jd$f_95_tx*/$jd$f_95_tx((
-/*JD_USE:144556*/$x144556))),"<eof>"));const $ord2=(
+/*JD_USE:144587*/$x144587))),"<eof>"));const $ord2=(
 /*JD_REF:$jd$f_95_line*/$jd$f_95_line((
-/*JD_USE:144549*/$x144549)));const $ord3=(
+/*JD_USE:144580*/$x144580)));const $ord3=(
 /*JD_REF:$jd$f_95_line*/$jd$f_95_line((
 /*JD_REF:$jd$f_95_tl*/$jd$f_95_tl((
-/*JD_USE:144549*/$x144549)))));const $ord4=([...(
-/*JD_USE:144551*/$x144551)].length);const $ord5=(
+/*JD_USE:144580*/$x144580)))));const $ord4=([...(
+/*JD_USE:144582*/$x144582)].length);const $ord5=(
 /*JD_REF:$jd$f_95_col*/$jd$f_95_col((
-/*JD_USE:144550*/$x144550)));const $ord6=(($ord4 >>> 0));const $ord7=(
+/*JD_USE:144581*/$x144581)));const $ord6=(($ord4 >>> 0));const $ord7=(
 /*JD_REF:$jd$f_95_col*/$jd$f_95_col((
-/*JD_USE:144549*/$x144549)));const $ord8=((($ord5 + $ord6) >>> 0));/* direct literal choice */if((
+/*JD_USE:144580*/$x144580)));const $ord8=((($ord5 + $ord6) >>> 0));/* direct literal choice */if((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$f_95_alias_95_valid*/$jd$f_95_alias_95_valid((
-/*JD_USE:144555*/$x144555))),(($ord0 || $ord1)))),(($ord2 === $ord3)))),(($ord7 > $ord8))))){{/* direct literal choice */if((
+/*JD_USE:144586*/$x144586))),(($ord0 || $ord1)))),(($ord2 === $ord3)))),(($ord7 > $ord8))))){{/* direct literal choice */if((
 /*JD_REF:$jd$String_46_ends_95_with*/$jd$String_46_ends_95_with((
-/*JD_USE:144551*/$x144551),".bend"))){{/* direct literal choice */if((
+/*JD_USE:144582*/$x144582),".bend"))){{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_import_95_used*/$jd$f_95_import_95_used((
-/*JD_USE:144555*/$x144555),(
-/*JD_USE:144553*/$x144553)))){{const $ord0="expected a fresh alias (";const $ord1=(($ord0 + (
-/*JD_USE:144555*/$x144555)));const $ord2=" names an earlier import)";const $ord3="a fresh alias (";const $ord4=(($ord3 + (
-/*JD_USE:144555*/$x144555)));const $ord5=" names an earlier import)";return (
+/*JD_USE:144586*/$x144586),(
+/*JD_USE:144584*/$x144584)))){{const $ord0="expected a fresh alias (";const $ord1=(($ord0 + (
+/*JD_USE:144586*/$x144586)));const $ord2=" names an earlier import)";const $ord3="a fresh alias (";const $ord4=(($ord3 + (
+/*JD_USE:144586*/$x144586)));const $ord5=" names an earlier import)";return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144552*/$x144552),(
+/*JD_USE:144583*/$x144583),(
 /*JD_REF:$jd$fpe_95_line*/$jd$fpe_95_line((
-/*JD_USE:144550*/$x144550),(($ord1 + $ord2)),(($ord4 + $ord5)))),(
-/*JD_USE:144553*/$x144553)));}}else{{/* direct literal choice */if((
+/*JD_USE:144581*/$x144581),(($ord1 + $ord2)),(($ord4 + $ord5)))),(
+/*JD_USE:144584*/$x144584)));}}else{{/* direct literal choice */if((
 /*JD_REF:$jd$f_95_import_95_valid*/$jd$f_95_import_95_valid((
-/*JD_USE:144551*/$x144551)))){{
+/*JD_USE:144582*/$x144582)))){{
 /*JD_REF:$jd$p140p_95_tops*/const $next0=(
-/*JD_USE:144548*/$x144548);const $next1=(
-/*JD_USE:144556*/$x144556);const $next2=(
-/*JD_USE:144552*/$x144552);const $next3=({$:"Con","head":(
+/*JD_USE:144579*/$x144579);const $next1=(
+/*JD_USE:144587*/$x144587);const $next2=(
+/*JD_USE:144583*/$x144583);const $next3=({$:"Con","head":(
 /*JD_REF:$jd$kt*/$jd$kt("Import",(
-/*JD_USE:144551*/$x144551),(
+/*JD_USE:144582*/$x144582),(
 /*JD_REF:$jd$f_95_line*/$jd$f_95_line((
-/*JD_USE:144550*/$x144550))),(
+/*JD_USE:144581*/$x144581))),(
 /*JD_REF:$jd$f_95_col*/$jd$f_95_col((
-/*JD_USE:144550*/$x144550))),({$:"Con","head":(
+/*JD_USE:144581*/$x144581))),({$:"Con","head":(
 /*JD_REF:$jd$kt*/$jd$kt("Alias",(
-/*JD_USE:144555*/$x144555),0,0,({$:"Nil"}))),["tail"]:({$:"Nil"})}))),["tail"]:(
-/*JD_USE:144553*/$x144553)});const $next4=false;const $next5=(
+/*JD_USE:144586*/$x144586),0,0,({$:"Nil"}))),["tail"]:({$:"Nil"})}))),["tail"]:(
+/*JD_USE:144584*/$x144584)});const $next4=false;const $next5=(
 /*JD_REF:$jd$f_95_parse_95_scope_95_empty*/$jd$f_95_parse_95_scope_95_empty());$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=0;continue;}}else{{const $ord0="'";const $ord1=(($ord0 + (
-/*JD_USE:144551*/$x144551)));const $ord2="'";return (
+/*JD_USE:144582*/$x144582)));const $ord2="'";return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144552*/$x144552),(
+/*JD_USE:144583*/$x144583),(
 /*JD_REF:$jd$f_95_import_95_raw*/$jd$f_95_import_95_raw((
 /*JD_REF:$jd$f_95_pn*/$jd$f_95_pn((
 /*JD_REF:$jd$fpe_95_span*/$jd$fpe_95_span((
-/*JD_USE:144550*/$x144550),(
-/*JD_USE:144550*/$x144550),"invalid import path","an import path of plain names (letters, digits, _ and -; the hub's files import the hub's)",(($ord1 + $ord2)))))))),(
-/*JD_USE:144553*/$x144553)));}}}}}}else{{const $ord0="'";const $ord1=(($ord0 + (
-/*JD_USE:144551*/$x144551)));const $ord2="'";return (
+/*JD_USE:144581*/$x144581),(
+/*JD_USE:144581*/$x144581),"invalid import path","an import path of plain names (letters, digits, _ and -; the hub's files import the hub's)",(($ord1 + $ord2)))))))),(
+/*JD_USE:144584*/$x144584)));}}}}}}else{{const $ord0="'";const $ord1=(($ord0 + (
+/*JD_USE:144582*/$x144582)));const $ord2="'";return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144552*/$x144552),(
+/*JD_USE:144583*/$x144583),(
 /*JD_REF:$jd$f_95_import_95_raw*/$jd$f_95_import_95_raw((
 /*JD_REF:$jd$f_95_pn*/$jd$f_95_pn((
 /*JD_REF:$jd$fpe_95_span*/$jd$fpe_95_span((
-/*JD_USE:144550*/$x144550),(
-/*JD_USE:144550*/$x144550),"an import requires a .bend path and a valid alias","an import of a .bend file",(($ord1 + $ord2)))))))),(
-/*JD_USE:144553*/$x144553)));}}}}else{return (
+/*JD_USE:144581*/$x144581),(
+/*JD_USE:144581*/$x144581),"an import requires a .bend path and a valid alias","an import of a .bend file",(($ord1 + $ord2)))))))),(
+/*JD_USE:144584*/$x144584)));}}}}else{return (
 /*JD_REF:$jd$p140p_95_result*/$jd$p140p_95_result((
-/*JD_USE:144552*/$x144552),(
+/*JD_USE:144583*/$x144583),(
 /*JD_REF:$jd$f_95_import_95_header_95_error*/$jd$f_95_import_95_header_95_error((
-/*JD_USE:144554*/$x144554))),(
-/*JD_USE:144553*/$x144553)));}}}}}}}}}
+/*JD_USE:144585*/$x144585))),(
+/*JD_USE:144584*/$x144584)));}}}}}}}}}
 function $jd$p140p_95_tops($a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9){return (
 /*JD_REF:$jd$p140p_95_tops*/$jd$p140p_95_tops$scc(0,$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9));}
 function $jd$p140p_95_top($a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9){return (
@@ -79520,187 +79520,187 @@ function $jd$p140p_95_def_95_context_95_header($a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$
 /*JD_REF:$jd$p140p_95_tops*/$jd$p140p_95_tops$scc(32,$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9));}
 function $jd$p140p_95_import_95_alias($a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9){return (
 /*JD_REF:$jd$p140p_95_tops*/$jd$p140p_95_tops$scc(33,$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9));}
-function $jd$p141p_95_raw($a0){for(;;){{const $match1=$a0;if($match1.$==="P140PDone"){const $x151803=$match1["raw"];return (
-/*JD_USE:151803*/$x151803);}else{{const $match2=$match1;const $x151804=$match2["input"];const $x151805=$match2["book"];const $x151806=$match2["imports"];const $x151807=$match2["unsafe"];const $x151808=$match2["scope"];{
+function $jd$p141p_95_raw($a0){for(;;){{const $match1=$a0;if($match1.$==="P140PDone"){const $x151834=$match1["raw"];return (
+/*JD_USE:151834*/$x151834);}else{{const $match2=$match1;const $x151835=$match2["input"];const $x151836=$match2["book"];const $x151837=$match2["imports"];const $x151838=$match2["unsafe"];const $x151839=$match2["scope"];{
 /*JD_REF:$jd$p141p_95_raw*/const $next0=(
 /*JD_REF:$jd$p140p_95_top*/$jd$p140p_95_top(0,(
-/*JD_USE:151804*/$x151804),(
-/*JD_USE:151805*/$x151805),(
-/*JD_USE:151806*/$x151806),(
-/*JD_USE:151807*/$x151807),(
-/*JD_USE:151808*/$x151808)));$a0=$next0;continue;}}}}}}
-function $jd$p142j_95_checked_95_error($a0,$a1,$a2,$a3){for(;;){const $x151813=$a0;const $x151814=$a1;const $x151815=$a2;const $x151816=$a3;{/* direct literal choice */if((
+/*JD_USE:151835*/$x151835),(
+/*JD_USE:151836*/$x151836),(
+/*JD_USE:151837*/$x151837),(
+/*JD_USE:151838*/$x151838),(
+/*JD_USE:151839*/$x151839)));$a0=$next0;continue;}}}}}}
+function $jd$p142j_95_checked_95_error($a0,$a1,$a2,$a3){for(;;){const $x151844=$a0;const $x151845=$a1;const $x151846=$a2;const $x151847=$a3;{/* direct literal choice */if((
 /*JD_REF:$jd$p142j_95_visit*/$jd$p142j_95_visit((
 /*JD_REF:$jd$book_95_context*/$jd$book_95_context((
-/*JD_USE:151813*/$x151813))),(
+/*JD_USE:151844*/$x151844))),(
 /*JD_REF:$jd$book_95_cached*/$jd$book_95_cached((
-/*JD_USE:151814*/$x151814),0)),(
-/*JD_USE:151815*/$x151815),(
+/*JD_USE:151845*/$x151845),0)),(
+/*JD_USE:151846*/$x151846),(
 /*JD_REF:$jd$missing*/$jd$missing()),(
-/*JD_USE:151816*/$x151816)))){return "an open Array element type";}else{return "";}}}}
+/*JD_USE:151847*/$x151847)))){return "an open Array element type";}else{return "";}}}}
 function $jd$p142j_95_visit$scc($pc,$a0,$a1,$a2,$a3,$a4,$a5,$a6){
 /*JD_REF:$jd$p142j_95_visit*/
 /*JD_REF:$jd$p142j_95_name*/
-/*JD_REF:$jd$p142j_95_def*/for(;;)switch($pc){case 0:{const $x151824=$a0;const $x151825=$a1;{const $match3=$a2;if($match3.$==="Nil"){return false;}else{{const $match4=$match3;const $x151828=$match4["head"];const $x151829=$match4["tail"];const $x151830=$a3;const $x151831=$a4;{/* direct literal choice */if((
+/*JD_REF:$jd$p142j_95_def*/for(;;)switch($pc){case 0:{const $x151855=$a0;const $x151856=$a1;{const $match3=$a2;if($match3.$==="Nil"){return false;}else{{const $match4=$match3;const $x151859=$match4["head"];const $x151860=$match4["tail"];const $x151861=$a3;const $x151862=$a4;{/* direct literal choice */if((
 /*JD_REF:$jd$p88_95_string_95_eq*/$jd$p88_95_string_95_eq((
-/*JD_USE:151828*/$x151828),"$layout.open-array"))){return true;}else{{
+/*JD_USE:151859*/$x151859),"$layout.open-array"))){return true;}else{{
 /*JD_REF:$jd$p142j_95_name*/const $next0=(
-/*JD_USE:151824*/$x151824);const $next1=(
-/*JD_USE:151825*/$x151825);const $next2=(
-/*JD_USE:151828*/$x151828);const $next3=(
-/*JD_USE:151829*/$x151829);const $next4=(
-/*JD_USE:151830*/$x151830);const $next5=(
-/*JD_USE:151831*/$x151831);const $next6=(
+/*JD_USE:151855*/$x151855);const $next1=(
+/*JD_USE:151856*/$x151856);const $next2=(
+/*JD_USE:151859*/$x151859);const $next3=(
+/*JD_USE:151860*/$x151860);const $next4=(
+/*JD_USE:151861*/$x151861);const $next5=(
+/*JD_USE:151862*/$x151862);const $next6=(
 /*JD_REF:$jd$index_95_hash*/$jd$index_95_hash((
-/*JD_USE:151828*/$x151828),2166136261));$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=1;continue;}}}}}}}case 1:{const $x151841=$a0;const $x151842=$a1;const $x151843=$a2;const $x151844=$a3;const $x151845=$a4;const $x151846=$a5;const $x151847=$a6;{const $ord0=(
+/*JD_USE:151859*/$x151859),2166136261));$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=1;continue;}}}}}}}case 1:{const $x151872=$a0;const $x151873=$a1;const $x151874=$a2;const $x151875=$a3;const $x151876=$a4;const $x151877=$a5;const $x151878=$a6;{const $ord0=(
 /*JD_REF:$jd$p142j_95_member*/$jd$p142j_95_member((
-/*JD_USE:151845*/$x151845),(
-/*JD_USE:151843*/$x151843),(
-/*JD_USE:151847*/$x151847)));const $ord1=(
+/*JD_USE:151876*/$x151876),(
+/*JD_USE:151874*/$x151874),(
+/*JD_USE:151878*/$x151878)));const $ord1=(
 /*JD_REF:$jd$has_95_name*/$jd$has_95_name((
-/*JD_USE:151846*/$x151846),(
-/*JD_USE:151843*/$x151843)));/* direct literal choice */if((($ord0 || $ord1))){{
+/*JD_USE:151877*/$x151877),(
+/*JD_USE:151874*/$x151874)));/* direct literal choice */if((($ord0 || $ord1))){{
 /*JD_REF:$jd$p142j_95_visit*/const $next0=(
-/*JD_USE:151841*/$x151841);const $next1=(
-/*JD_USE:151842*/$x151842);const $next2=(
-/*JD_USE:151844*/$x151844);const $next3=(
-/*JD_USE:151845*/$x151845);const $next4=(
-/*JD_USE:151846*/$x151846);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$pc=0;continue;}}else{{
+/*JD_USE:151872*/$x151872);const $next1=(
+/*JD_USE:151873*/$x151873);const $next2=(
+/*JD_USE:151875*/$x151875);const $next3=(
+/*JD_USE:151876*/$x151876);const $next4=(
+/*JD_USE:151877*/$x151877);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$pc=0;continue;}}else{{
 /*JD_REF:$jd$p142j_95_def*/const $next0=(
-/*JD_USE:151841*/$x151841);const $next1=(
-/*JD_USE:151842*/$x151842);const $next2=(
+/*JD_USE:151872*/$x151872);const $next1=(
+/*JD_USE:151873*/$x151873);const $next2=(
 /*JD_REF:$jd$lookup*/$jd$lookup((
-/*JD_USE:151842*/$x151842),(
-/*JD_USE:151843*/$x151843)));const $next3=(
-/*JD_USE:151844*/$x151844);const $next4=(
+/*JD_USE:151873*/$x151873),(
+/*JD_USE:151874*/$x151874)));const $next3=(
+/*JD_USE:151875*/$x151875);const $next4=(
 /*JD_REF:$jd$p142j_95_mark*/$jd$p142j_95_mark((
-/*JD_USE:151845*/$x151845),(
-/*JD_USE:151843*/$x151843),(
-/*JD_USE:151847*/$x151847)));const $next5=(
-/*JD_USE:151846*/$x151846);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=2;continue;}}}}case 2:{const $x151856=$a0;const $x151857=$a1;const $x151858=$a2;const $x151859=$a3;const $x151860=$a4;const $x151861=$a5;{const $ord0=(
+/*JD_USE:151876*/$x151876),(
+/*JD_USE:151874*/$x151874),(
+/*JD_USE:151878*/$x151878)));const $next5=(
+/*JD_USE:151877*/$x151877);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=2;continue;}}}}case 2:{const $x151887=$a0;const $x151888=$a1;const $x151889=$a2;const $x151890=$a3;const $x151891=$a4;const $x151892=$a5;{const $ord0=(
 /*JD_REF:$jd$dx*/$jd$dx((
-/*JD_USE:151858*/$x151858)));{
+/*JD_USE:151889*/$x151889)));{
 /*JD_REF:$jd$p142j_95_visit*/const $next0=(
-/*JD_USE:151856*/$x151856);const $next1=(
-/*JD_USE:151857*/$x151857);const $next2=(()=>{/* direct literal choice */if((
+/*JD_USE:151887*/$x151887);const $next1=(
+/*JD_USE:151888*/$x151888);const $next2=(()=>{/* direct literal choice */if((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$p88_95_string_95_eq*/$jd$p88_95_string_95_eq((
 /*JD_REF:$jd$dk*/$jd$dk((
-/*JD_USE:151858*/$x151858))),"Def")),(($ord0 === 0))))){return (
+/*JD_USE:151889*/$x151889))),"Def")),(($ord0 === 0))))){return (
 /*JD_REF:$jd$jl_95_term*/$jd$jl_95_term((
-/*JD_USE:151856*/$x151856),(
+/*JD_USE:151887*/$x151887),(
 /*JD_REF:$jd$dv*/$jd$dv((
-/*JD_USE:151858*/$x151858))),(
-/*JD_USE:151859*/$x151859)));}else{return (
-/*JD_USE:151859*/$x151859);}})();const $next3=(
-/*JD_USE:151860*/$x151860);const $next4=(
-/*JD_USE:151861*/$x151861);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$pc=0;continue;}}}}}
+/*JD_USE:151889*/$x151889))),(
+/*JD_USE:151890*/$x151890)));}else{return (
+/*JD_USE:151890*/$x151890);}})();const $next3=(
+/*JD_USE:151891*/$x151891);const $next4=(
+/*JD_USE:151892*/$x151892);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$pc=0;continue;}}}}}
 function $jd$p142j_95_visit($a0,$a1,$a2,$a3,$a4,$a5,$a6){return (
 /*JD_REF:$jd$p142j_95_visit*/$jd$p142j_95_visit$scc(0,$a0,$a1,$a2,$a3,$a4,$a5,$a6));}
 function $jd$p142j_95_name($a0,$a1,$a2,$a3,$a4,$a5,$a6){return (
 /*JD_REF:$jd$p142j_95_visit*/$jd$p142j_95_visit$scc(1,$a0,$a1,$a2,$a3,$a4,$a5,$a6));}
 function $jd$p142j_95_def($a0,$a1,$a2,$a3,$a4,$a5,$a6){return (
 /*JD_REF:$jd$p142j_95_visit*/$jd$p142j_95_visit$scc(2,$a0,$a1,$a2,$a3,$a4,$a5,$a6));}
-function $jd$p142j_95_member($a0,$a1,$a2){for(;;){const $x151867=$a0;const $x151868=$a1;const $x151869=$a2;return (
+function $jd$p142j_95_member($a0,$a1,$a2){for(;;){const $x151898=$a0;const $x151899=$a1;const $x151900=$a2;return (
 /*JD_REF:$jd$p88_95_string_95_eq*/$jd$p88_95_string_95_eq((
 /*JD_REF:$jd$dk*/$jd$dk((
 /*JD_REF:$jd$index_95_find*/$jd$index_95_find((
-/*JD_USE:151867*/$x151867),(
-/*JD_USE:151868*/$x151868),(
-/*JD_USE:151869*/$x151869),32)))),"P142JSeen"));}}
-function $jd$p142j_95_mark($a0,$a1,$a2){for(;;){const $x151873=$a0;const $x151874=$a1;const $x151875=$a2;return (
+/*JD_USE:151898*/$x151898),(
+/*JD_USE:151899*/$x151899),(
+/*JD_USE:151900*/$x151900),32)))),"P142JSeen"));}}
+function $jd$p142j_95_mark($a0,$a1,$a2){for(;;){const $x151904=$a0;const $x151905=$a1;const $x151906=$a2;return (
 /*JD_REF:$jd$index_95_set*/$jd$index_95_set((
-/*JD_USE:151873*/$x151873),({$:"KDef","name":(
-/*JD_USE:151874*/$x151874),"kind":"P142JSeen","arity":0,"templates":0,"typ":({$:"KTerm","tag":"Absent","name":"","id":0,"quant":0,"kids":({$:"Nil"}),"removed":({$:"Nil"}),"originBegin":0,["originEnd"]:0}),"value":({$:"KTerm","tag":"Absent","name":"","id":0,"quant":0,"kids":({$:"Nil"}),"removed":({$:"Nil"}),"originBegin":0,["originEnd"]:0}),"ctors":({$:"Nil"}),"native":false,["unsafe"]:false}),(
-/*JD_USE:151875*/$x151875),32));}}
-function $jd$p142j_95_members($a0,$a1){for(;;){{const $match1=$a0;if($match1.$==="Nil"){const $x151878=$a1;return (
-/*JD_USE:151878*/$x151878);}else{{const $match2=$match1;const $x151879=$match2["head"];const $x151880=$match2["tail"];const $x151881=$a1;{
+/*JD_USE:151904*/$x151904),({$:"KDef","name":(
+/*JD_USE:151905*/$x151905),"kind":"P142JSeen","arity":0,"templates":0,"typ":({$:"KTerm","tag":"Absent","name":"","id":0,"quant":0,"kids":({$:"Nil"}),"removed":({$:"Nil"}),"originBegin":0,["originEnd"]:0}),"value":({$:"KTerm","tag":"Absent","name":"","id":0,"quant":0,"kids":({$:"Nil"}),"removed":({$:"Nil"}),"originBegin":0,["originEnd"]:0}),"ctors":({$:"Nil"}),"native":false,["unsafe"]:false}),(
+/*JD_USE:151906*/$x151906),32));}}
+function $jd$p142j_95_members($a0,$a1){for(;;){{const $match1=$a0;if($match1.$==="Nil"){const $x151909=$a1;return (
+/*JD_USE:151909*/$x151909);}else{{const $match2=$match1;const $x151910=$match2["head"];const $x151911=$match2["tail"];const $x151912=$a1;{
 /*JD_REF:$jd$p142j_95_members*/const $next0=(
-/*JD_USE:151880*/$x151880);const $next1=(
+/*JD_USE:151911*/$x151911);const $next1=(
 /*JD_REF:$jd$p142j_95_mark*/$jd$p142j_95_mark((
-/*JD_USE:151881*/$x151881),(
-/*JD_USE:151879*/$x151879),(
+/*JD_USE:151912*/$x151912),(
+/*JD_USE:151910*/$x151910),(
 /*JD_REF:$jd$index_95_hash*/$jd$index_95_hash((
-/*JD_USE:151879*/$x151879),2166136261))));$a0=$next0;$a1=$next1;continue;}}}}}}
-function $jd$p142r_95_kr_95_visit($a0,$a1,$a2,$a3){for(;;){const $x151886=$a0;const $x151887=$a1;const $x151888=$a2;const $x151889=$a3;return (
+/*JD_USE:151910*/$x151910),2166136261))));$a0=$next0;$a1=$next1;continue;}}}}}}
+function $jd$p142r_95_kr_95_visit($a0,$a1,$a2,$a3){for(;;){const $x151917=$a0;const $x151918=$a1;const $x151919=$a2;const $x151920=$a3;return (
 /*JD_REF:$jd$p142r_95_visit*/$jd$p142r_95_visit((
-/*JD_USE:151886*/$x151886),(
-/*JD_USE:151887*/$x151887),(
-/*JD_USE:151888*/$x151888),(
+/*JD_USE:151917*/$x151917),(
+/*JD_USE:151918*/$x151918),(
+/*JD_USE:151919*/$x151919),(
 /*JD_REF:$jd$p142j_95_members*/$jd$p142j_95_members((
-/*JD_USE:151888*/$x151888),(
+/*JD_USE:151919*/$x151919),(
 /*JD_REF:$jd$missing*/$jd$missing()))),(
-/*JD_USE:151889*/$x151889)));}}
+/*JD_USE:151920*/$x151920)));}}
 function $jd$p142r_95_visit$scc($pc,$a0,$a1,$a2,$a3,$a4,$a5,$a6){
 /*JD_REF:$jd$p142r_95_visit*/
 /*JD_REF:$jd$p142r_95_name*/
 /*JD_REF:$jd$p142r_95_def*/
-/*JD_REF:$jd$p142r_95_resolved*/for(;;)switch($pc){case 0:{const $x151901=$a0;{const $match2=$a1;if($match2.$==="Nil"){const $x151902=$a2;return (
-/*JD_USE:151902*/$x151902);}else{{const $match3=$match2;const $x151905=$match3["head"];const $x151906=$match3["tail"];const $x151907=$a2;const $x151908=$a3;const $x151909=$a4;{
+/*JD_REF:$jd$p142r_95_resolved*/for(;;)switch($pc){case 0:{const $x151932=$a0;{const $match2=$a1;if($match2.$==="Nil"){const $x151933=$a2;return (
+/*JD_USE:151933*/$x151933);}else{{const $match3=$match2;const $x151936=$match3["head"];const $x151937=$match3["tail"];const $x151938=$a2;const $x151939=$a3;const $x151940=$a4;{
 /*JD_REF:$jd$p142r_95_name*/const $next0=(
-/*JD_USE:151901*/$x151901);const $next1=(
-/*JD_USE:151906*/$x151906);const $next2=(
-/*JD_USE:151907*/$x151907);const $next3=(
-/*JD_USE:151908*/$x151908);const $next4=(
-/*JD_USE:151909*/$x151909);const $next5=(
-/*JD_USE:151905*/$x151905);const $next6=(
+/*JD_USE:151932*/$x151932);const $next1=(
+/*JD_USE:151937*/$x151937);const $next2=(
+/*JD_USE:151938*/$x151938);const $next3=(
+/*JD_USE:151939*/$x151939);const $next4=(
+/*JD_USE:151940*/$x151940);const $next5=(
+/*JD_USE:151936*/$x151936);const $next6=(
 /*JD_REF:$jd$index_95_hash*/$jd$index_95_hash((
-/*JD_USE:151905*/$x151905),2166136261));$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=1;continue;}}}}}case 1:{const $x151917=$a0;const $x151918=$a1;const $x151919=$a2;const $x151920=$a3;const $x151921=$a4;const $x151922=$a5;const $x151923=$a6;{/* direct literal choice */if((
+/*JD_USE:151936*/$x151936),2166136261));$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=1;continue;}}}}}case 1:{const $x151948=$a0;const $x151949=$a1;const $x151950=$a2;const $x151951=$a3;const $x151952=$a4;const $x151953=$a5;const $x151954=$a6;{/* direct literal choice */if((
 /*JD_REF:$jd$p142j_95_member*/$jd$p142j_95_member((
-/*JD_USE:151920*/$x151920),(
-/*JD_USE:151922*/$x151922),(
-/*JD_USE:151923*/$x151923)))){{
+/*JD_USE:151951*/$x151951),(
+/*JD_USE:151953*/$x151953),(
+/*JD_USE:151954*/$x151954)))){{
 /*JD_REF:$jd$p142r_95_visit*/const $next0=(
-/*JD_USE:151917*/$x151917);const $next1=(
-/*JD_USE:151918*/$x151918);const $next2=(
-/*JD_USE:151919*/$x151919);const $next3=(
-/*JD_USE:151920*/$x151920);const $next4=(
-/*JD_USE:151921*/$x151921);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$pc=0;continue;}}else{{
+/*JD_USE:151948*/$x151948);const $next1=(
+/*JD_USE:151949*/$x151949);const $next2=(
+/*JD_USE:151950*/$x151950);const $next3=(
+/*JD_USE:151951*/$x151951);const $next4=(
+/*JD_USE:151952*/$x151952);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$pc=0;continue;}}else{{
 /*JD_REF:$jd$p142r_95_def*/const $next0=(
-/*JD_USE:151917*/$x151917);const $next1=(
-/*JD_USE:151918*/$x151918);const $next2=({$:"Con","head":(
-/*JD_USE:151922*/$x151922),["tail"]:(
-/*JD_USE:151919*/$x151919)});const $next3=(
+/*JD_USE:151948*/$x151948);const $next1=(
+/*JD_USE:151949*/$x151949);const $next2=({$:"Con","head":(
+/*JD_USE:151953*/$x151953),["tail"]:(
+/*JD_USE:151950*/$x151950)});const $next3=(
 /*JD_REF:$jd$p142j_95_mark*/$jd$p142j_95_mark((
-/*JD_USE:151920*/$x151920),(
-/*JD_USE:151922*/$x151922),(
-/*JD_USE:151923*/$x151923)));const $next4=(
-/*JD_USE:151921*/$x151921);const $next5=(
+/*JD_USE:151951*/$x151951),(
+/*JD_USE:151953*/$x151953),(
+/*JD_USE:151954*/$x151954)));const $next4=(
+/*JD_USE:151952*/$x151952);const $next5=(
 /*JD_REF:$jd$kr_95_resolve*/$jd$kr_95_resolve((
-/*JD_USE:151917*/$x151917),(
-/*JD_USE:151922*/$x151922)));$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=2;continue;}}}}case 2:{const $x151932=$a0;const $x151933=$a1;const $x151934=$a2;const $x151935=$a3;const $x151936=$a4;const $x151937=$a5;{/* direct literal choice */if((
+/*JD_USE:151948*/$x151948),(
+/*JD_USE:151953*/$x151953)));$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=2;continue;}}}}case 2:{const $x151963=$a0;const $x151964=$a1;const $x151965=$a2;const $x151966=$a3;const $x151967=$a4;const $x151968=$a5;{/* direct literal choice */if((
 /*JD_REF:$jd$p88_95_string_95_eq*/$jd$p88_95_string_95_eq((
 /*JD_REF:$jd$dk*/$jd$dk((
-/*JD_USE:151937*/$x151937))),"Absent"))){{
+/*JD_USE:151968*/$x151968))),"Absent"))){{
 /*JD_REF:$jd$p142r_95_visit*/const $next0=(
-/*JD_USE:151932*/$x151932);const $next1=(
-/*JD_USE:151933*/$x151933);const $next2=(
-/*JD_USE:151934*/$x151934);const $next3=(
-/*JD_USE:151935*/$x151935);const $next4=(
-/*JD_USE:151936*/$x151936);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$pc=0;continue;}}else{{
+/*JD_USE:151963*/$x151963);const $next1=(
+/*JD_USE:151964*/$x151964);const $next2=(
+/*JD_USE:151965*/$x151965);const $next3=(
+/*JD_USE:151966*/$x151966);const $next4=(
+/*JD_USE:151967*/$x151967);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$pc=0;continue;}}else{{
 /*JD_REF:$jd$p142r_95_resolved*/const $next0=(
-/*JD_USE:151932*/$x151932);const $next1=(
-/*JD_USE:151933*/$x151933);const $next2=(
-/*JD_USE:151934*/$x151934);const $next3=(
-/*JD_USE:151935*/$x151935);const $next4=(
-/*JD_USE:151936*/$x151936);const $next5=(
-/*JD_USE:151937*/$x151937);const $next6=(
+/*JD_USE:151963*/$x151963);const $next1=(
+/*JD_USE:151964*/$x151964);const $next2=(
+/*JD_USE:151965*/$x151965);const $next3=(
+/*JD_USE:151966*/$x151966);const $next4=(
+/*JD_USE:151967*/$x151967);const $next5=(
+/*JD_USE:151968*/$x151968);const $next6=(
 /*JD_REF:$jd$dn*/$jd$dn((
-/*JD_USE:151937*/$x151937)));$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=3;continue;}}}}case 3:{const $x151947=$a0;const $x151948=$a1;const $x151949=$a2;const $x151950=$a3;const $x151951=$a4;const $x151952=$a5;const $x151953=$a6;{
+/*JD_USE:151968*/$x151968)));$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=3;continue;}}}}case 3:{const $x151978=$a0;const $x151979=$a1;const $x151980=$a2;const $x151981=$a3;const $x151982=$a4;const $x151983=$a5;const $x151984=$a6;{
 /*JD_REF:$jd$p142r_95_visit*/const $next0=(
-/*JD_USE:151947*/$x151947);const $next1=(
+/*JD_USE:151978*/$x151978);const $next1=(
 /*JD_REF:$jd$kr_95_dependencies*/$jd$kr_95_dependencies((
-/*JD_USE:151952*/$x151952),(
-/*JD_USE:151951*/$x151951),(
-/*JD_USE:151948*/$x151948)));const $next2=({$:"Con","head":(
-/*JD_USE:151953*/$x151953),["tail"]:(
-/*JD_USE:151949*/$x151949)});const $next3=(
+/*JD_USE:151983*/$x151983),(
+/*JD_USE:151982*/$x151982),(
+/*JD_USE:151979*/$x151979)));const $next2=({$:"Con","head":(
+/*JD_USE:151984*/$x151984),["tail"]:(
+/*JD_USE:151980*/$x151980)});const $next3=(
 /*JD_REF:$jd$p142j_95_mark*/$jd$p142j_95_mark((
-/*JD_USE:151950*/$x151950),(
-/*JD_USE:151953*/$x151953),(
+/*JD_USE:151981*/$x151981),(
+/*JD_USE:151984*/$x151984),(
 /*JD_REF:$jd$index_95_hash*/$jd$index_95_hash((
-/*JD_USE:151953*/$x151953),2166136261))));const $next4=(
-/*JD_USE:151951*/$x151951);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$pc=0;continue;}}}}
+/*JD_USE:151984*/$x151984),2166136261))));const $next4=(
+/*JD_USE:151982*/$x151982);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$pc=0;continue;}}}}
 function $jd$p142r_95_visit($a0,$a1,$a2,$a3,$a4,$a5,$a6){return (
 /*JD_REF:$jd$p142r_95_visit*/$jd$p142r_95_visit$scc(0,$a0,$a1,$a2,$a3,$a4,$a5,$a6));}
 function $jd$p142r_95_name($a0,$a1,$a2,$a3,$a4,$a5,$a6){return (
@@ -79709,323 +79709,323 @@ function $jd$p142r_95_def($a0,$a1,$a2,$a3,$a4,$a5,$a6){return (
 /*JD_REF:$jd$p142r_95_visit*/$jd$p142r_95_visit$scc(2,$a0,$a1,$a2,$a3,$a4,$a5,$a6));}
 function $jd$p142r_95_resolved($a0,$a1,$a2,$a3,$a4,$a5,$a6){return (
 /*JD_REF:$jd$p142r_95_visit*/$jd$p142r_95_visit$scc(3,$a0,$a1,$a2,$a3,$a4,$a5,$a6));}
-function $jd$p143o_95_in_95_range($a0,$a1,$a2){for(;;){const $x152610=$a0;const $x152611=$a1;const $x152612=$a2;{const $ord0=(
+function $jd$p143o_95_in_95_range($a0,$a1,$a2){for(;;){const $x152641=$a0;const $x152642=$a1;const $x152643=$a2;{const $ord0=(
 /*JD_REF:$jd$nc_95_id*/$jd$nc_95_id((
-/*JD_USE:152610*/$x152610)));const $ord1=((($ord0 - (
-/*JD_USE:152611*/$x152611)) >>> 0));return (($ord1 < (
-/*JD_USE:152612*/$x152612)));}}}
-function $jd$p143o_95_range_95_term($a0,$a1,$a2){for(;;){const $x152616=$a0;const $x152617=$a1;const $x152618=$a2;{/* direct literal choice */if((
+/*JD_USE:152641*/$x152641)));const $ord1=((($ord0 - (
+/*JD_USE:152642*/$x152642)) >>> 0));return (($ord1 < (
+/*JD_USE:152643*/$x152643)));}}}
+function $jd$p143o_95_range_95_term($a0,$a1,$a2){for(;;){const $x152647=$a0;const $x152648=$a1;const $x152649=$a2;{/* direct literal choice */if((
 /*JD_REF:$jd$p98_95_tag_95_eq*/$jd$p98_95_tag_95_eq((
-/*JD_USE:152616*/$x152616),"Var"))){return (
+/*JD_USE:152647*/$x152647),"Var"))){return (
 /*JD_REF:$jd$p143o_95_in_95_range*/$jd$p143o_95_in_95_range((
 /*JD_REF:$jd$ix*/$jd$ix((
-/*JD_USE:152616*/$x152616))),(
-/*JD_USE:152617*/$x152617),(
-/*JD_USE:152618*/$x152618)));}else{return (
+/*JD_USE:152647*/$x152647))),(
+/*JD_USE:152648*/$x152648),(
+/*JD_USE:152649*/$x152649)));}else{return (
 /*JD_REF:$jd$p143o_95_range_95_terms*/$jd$p143o_95_range_95_terms((
 /*JD_REF:$jd$ks*/$jd$ks((
-/*JD_USE:152616*/$x152616))),(
-/*JD_USE:152617*/$x152617),(
-/*JD_USE:152618*/$x152618)));}}}}
-function $jd$p143o_95_range_95_terms($a0,$a1,$a2){for(;;){{const $match1=$a0;if($match1.$==="Nil"){return false;}else{{const $match2=$match1;const $x152626=$match2["head"];const $x152627=$match2["tail"];const $x152628=$a1;const $x152629=$a2;{const $ord0=(
+/*JD_USE:152647*/$x152647))),(
+/*JD_USE:152648*/$x152648),(
+/*JD_USE:152649*/$x152649)));}}}}
+function $jd$p143o_95_range_95_terms($a0,$a1,$a2){for(;;){{const $match1=$a0;if($match1.$==="Nil"){return false;}else{{const $match2=$match1;const $x152657=$match2["head"];const $x152658=$match2["tail"];const $x152659=$a1;const $x152660=$a2;{const $ord0=(
 /*JD_REF:$jd$p143o_95_range_95_term*/$jd$p143o_95_range_95_term((
-/*JD_USE:152626*/$x152626),(
-/*JD_USE:152628*/$x152628),(
-/*JD_USE:152629*/$x152629)));const $ord1=(
+/*JD_USE:152657*/$x152657),(
+/*JD_USE:152659*/$x152659),(
+/*JD_USE:152660*/$x152660)));const $ord1=(
 /*JD_REF:$jd$p143o_95_range_95_terms*/$jd$p143o_95_range_95_terms((
-/*JD_USE:152627*/$x152627),(
-/*JD_USE:152628*/$x152628),(
-/*JD_USE:152629*/$x152629)));return (($ord0 || $ord1));}}}}}}
-function $jd$p143o_95_range_95_env($a0,$a1,$a2){for(;;){const $x152633=$a0;const $x152634=$a1;const $x152635=$a2;{/* direct literal choice */if((((
-/*JD_USE:152635*/$x152635) === 0))){return true;}else{{/* direct literal choice */if((
+/*JD_USE:152658*/$x152658),(
+/*JD_USE:152659*/$x152659),(
+/*JD_USE:152660*/$x152660)));return (($ord0 || $ord1));}}}}}}
+function $jd$p143o_95_range_95_env($a0,$a1,$a2){for(;;){const $x152664=$a0;const $x152665=$a1;const $x152666=$a2;{/* direct literal choice */if((((
+/*JD_USE:152666*/$x152666) === 0))){return true;}else{{/* direct literal choice */if((
 /*JD_REF:$jd$p88_95_string_95_eq*/$jd$p88_95_string_95_eq((
 /*JD_REF:$jd$nc_95_word*/$jd$nc_95_word((
 /*JD_REF:$jd$nc_95_id*/$jd$nc_95_id((
-/*JD_USE:152634*/$x152634))),(
-/*JD_USE:152633*/$x152633))),"NATIVE_UNBOUND_VARIABLE"))){{
+/*JD_USE:152665*/$x152665))),(
+/*JD_USE:152664*/$x152664))),"NATIVE_UNBOUND_VARIABLE"))){{
 /*JD_REF:$jd$p143o_95_range_95_env*/const $next0=(
-/*JD_USE:152633*/$x152633);const $next1=((((
-/*JD_USE:152634*/$x152634) + 1) >>> 0));const $next2=((((
-/*JD_USE:152635*/$x152635) - 1) >>> 0));$a0=$next0;$a1=$next1;$a2=$next2;continue;}}else{return false;}}}}}}
-function $jd$p143o_95_range($a0,$a1,$a2,$a3,$a4){for(;;){const $x152645=$a0;const $x152646=$a1;const $x152647=$a2;const $x152648=$a3;const $x152649=$a4;{/* direct literal choice */if((((
-/*JD_USE:152649*/$x152649) === 0))){return true;}else{return (
+/*JD_USE:152664*/$x152664);const $next1=((((
+/*JD_USE:152665*/$x152665) + 1) >>> 0));const $next2=((((
+/*JD_USE:152666*/$x152666) - 1) >>> 0));$a0=$next0;$a1=$next1;$a2=$next2;continue;}}else{return false;}}}}}}
+function $jd$p143o_95_range($a0,$a1,$a2,$a3,$a4){for(;;){const $x152676=$a0;const $x152677=$a1;const $x152678=$a2;const $x152679=$a3;const $x152680=$a4;{/* direct literal choice */if((((
+/*JD_USE:152680*/$x152680) === 0))){return true;}else{return (
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_not*/$jd$Bool_46_not((
 /*JD_REF:$jd$p143o_95_range_95_term*/$jd$p143o_95_range_95_term((
-/*JD_USE:152645*/$x152645),(
-/*JD_USE:152648*/$x152648),(
-/*JD_USE:152649*/$x152649))))),(
+/*JD_USE:152676*/$x152676),(
+/*JD_USE:152679*/$x152679),(
+/*JD_USE:152680*/$x152680))))),(
 /*JD_REF:$jd$Bool_46_not*/$jd$Bool_46_not((
 /*JD_REF:$jd$p143o_95_range_95_terms*/$jd$p143o_95_range_95_terms((
-/*JD_USE:152646*/$x152646),(
-/*JD_USE:152648*/$x152648),(
-/*JD_USE:152649*/$x152649))))))),(
+/*JD_USE:152677*/$x152677),(
+/*JD_USE:152679*/$x152679),(
+/*JD_USE:152680*/$x152680))))))),(
 /*JD_REF:$jd$p143o_95_range_95_env*/$jd$p143o_95_range_95_env((
-/*JD_USE:152647*/$x152647),(
-/*JD_USE:152648*/$x152648),(
-/*JD_USE:152649*/$x152649)))));}}}}
-function $jd$p143nr_95_begin($a0,$a1,$a2,$a3){for(;;){const $x152656=$a0;const $x152657=$a1;const $x152658=$a2;const $x152659=$a3;return (
+/*JD_USE:152678*/$x152678),(
+/*JD_USE:152679*/$x152679),(
+/*JD_USE:152680*/$x152680)))));}}}}
+function $jd$p143nr_95_begin($a0,$a1,$a2,$a3){for(;;){const $x152687=$a0;const $x152688=$a1;const $x152689=$a2;const $x152690=$a3;return (
 /*JD_REF:$jd$p143nr_95_walk*/$jd$p143nr_95_walk((
-/*JD_USE:152656*/$x152656),(
-/*JD_USE:152657*/$x152657),(
-/*JD_USE:152658*/$x152658),(
-/*JD_USE:152659*/$x152659),(
+/*JD_USE:152687*/$x152687),(
+/*JD_USE:152688*/$x152688),(
+/*JD_USE:152689*/$x152689),(
+/*JD_USE:152690*/$x152690),(
 /*JD_REF:$jd$p142j_95_members*/$jd$p142j_95_members((
-/*JD_USE:152658*/$x152658),(
+/*JD_USE:152689*/$x152689),(
 /*JD_REF:$jd$missing*/$jd$missing())))));}}
 function $jd$p143nr_95_walk$scc($pc,$a0,$a1,$a2,$a3,$a4,$a5,$a6){
 /*JD_REF:$jd$p143nr_95_walk*/
 /*JD_REF:$jd$p143nr_95_name*/
-/*JD_REF:$jd$p143nr_95_visit*/for(;;)switch($pc){case 0:{const $x152665=$a0;{const $match2=$a1;if($match2.$==="Nil"){const $x152666=$a2;const $x152667=$a3;return ({$:"NR_Closure","names":(
-/*JD_USE:152666*/$x152666),["facts"]:(
-/*JD_USE:152667*/$x152667)});}else{{const $match3=$match2;const $x152669=$match3["head"];const $x152670=$match3["tail"];const $x152671=$a2;const $x152672=$a3;const $x152673=$a4;{
+/*JD_REF:$jd$p143nr_95_visit*/for(;;)switch($pc){case 0:{const $x152696=$a0;{const $match2=$a1;if($match2.$==="Nil"){const $x152697=$a2;const $x152698=$a3;return ({$:"NR_Closure","names":(
+/*JD_USE:152697*/$x152697),["facts"]:(
+/*JD_USE:152698*/$x152698)});}else{{const $match3=$match2;const $x152700=$match3["head"];const $x152701=$match3["tail"];const $x152702=$a2;const $x152703=$a3;const $x152704=$a4;{
 /*JD_REF:$jd$p143nr_95_name*/const $next0=(
-/*JD_USE:152665*/$x152665);const $next1=(
-/*JD_USE:152669*/$x152669);const $next2=(
-/*JD_USE:152670*/$x152670);const $next3=(
-/*JD_USE:152671*/$x152671);const $next4=(
-/*JD_USE:152672*/$x152672);const $next5=(
-/*JD_USE:152673*/$x152673);const $next6=(
+/*JD_USE:152696*/$x152696);const $next1=(
+/*JD_USE:152700*/$x152700);const $next2=(
+/*JD_USE:152701*/$x152701);const $next3=(
+/*JD_USE:152702*/$x152702);const $next4=(
+/*JD_USE:152703*/$x152703);const $next5=(
+/*JD_USE:152704*/$x152704);const $next6=(
 /*JD_REF:$jd$index_95_hash*/$jd$index_95_hash((
-/*JD_USE:152669*/$x152669),2166136261));$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=1;continue;}}}}}case 1:{const $x152681=$a0;const $x152682=$a1;const $x152683=$a2;const $x152684=$a3;const $x152685=$a4;const $x152686=$a5;const $x152687=$a6;{/* direct literal choice */if((
+/*JD_USE:152700*/$x152700),2166136261));$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=1;continue;}}}}}case 1:{const $x152712=$a0;const $x152713=$a1;const $x152714=$a2;const $x152715=$a3;const $x152716=$a4;const $x152717=$a5;const $x152718=$a6;{/* direct literal choice */if((
 /*JD_REF:$jd$p142j_95_member*/$jd$p142j_95_member((
-/*JD_USE:152686*/$x152686),(
-/*JD_USE:152682*/$x152682),(
-/*JD_USE:152687*/$x152687)))){{
+/*JD_USE:152717*/$x152717),(
+/*JD_USE:152713*/$x152713),(
+/*JD_USE:152718*/$x152718)))){{
 /*JD_REF:$jd$p143nr_95_walk*/const $next0=(
-/*JD_USE:152681*/$x152681);const $next1=(
-/*JD_USE:152683*/$x152683);const $next2=(
-/*JD_USE:152684*/$x152684);const $next3=(
-/*JD_USE:152685*/$x152685);const $next4=(
-/*JD_USE:152686*/$x152686);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$pc=0;continue;}}else{{
+/*JD_USE:152712*/$x152712);const $next1=(
+/*JD_USE:152714*/$x152714);const $next2=(
+/*JD_USE:152715*/$x152715);const $next3=(
+/*JD_USE:152716*/$x152716);const $next4=(
+/*JD_USE:152717*/$x152717);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$pc=0;continue;}}else{{
 /*JD_REF:$jd$p143nr_95_visit*/const $next0=(
-/*JD_USE:152681*/$x152681);const $next1=(
-/*JD_USE:152682*/$x152682);const $next2=(
-/*JD_USE:152683*/$x152683);const $next3=(
-/*JD_USE:152684*/$x152684);const $next4=(
-/*JD_USE:152685*/$x152685);const $next5=(
+/*JD_USE:152712*/$x152712);const $next1=(
+/*JD_USE:152713*/$x152713);const $next2=(
+/*JD_USE:152714*/$x152714);const $next3=(
+/*JD_USE:152715*/$x152715);const $next4=(
+/*JD_USE:152716*/$x152716);const $next5=(
 /*JD_REF:$jd$p142j_95_mark*/$jd$p142j_95_mark((
-/*JD_USE:152686*/$x152686),(
-/*JD_USE:152682*/$x152682),(
-/*JD_USE:152687*/$x152687)));const $next6=(
+/*JD_USE:152717*/$x152717),(
+/*JD_USE:152713*/$x152713),(
+/*JD_USE:152718*/$x152718)));const $next6=(
 /*JD_REF:$jd$lookup*/$jd$lookup((
-/*JD_USE:152681*/$x152681),(
-/*JD_USE:152682*/$x152682)));$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=2;continue;}}}}case 2:{const $x152697=$a0;const $x152698=$a1;const $x152699=$a2;const $x152700=$a3;const $x152701=$a4;const $x152702=$a5;const $x152703=$a6;{const $let0=(
+/*JD_USE:152712*/$x152712),(
+/*JD_USE:152713*/$x152713)));$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$pc=2;continue;}}}}case 2:{const $x152728=$a0;const $x152729=$a1;const $x152730=$a2;const $x152731=$a3;const $x152732=$a4;const $x152733=$a5;const $x152734=$a6;{const $let0=(
 /*JD_REF:$jd$nc_95_definition_95_plain*/$jd$nc_95_definition_95_plain((
-/*JD_USE:152697*/$x152697),(
-/*JD_USE:152703*/$x152703),0));{const $x152704=$let0;{const $ord0=(
+/*JD_USE:152728*/$x152728),(
+/*JD_USE:152734*/$x152734),0));{const $x152735=$let0;{const $ord0=(
 /*JD_REF:$jd$nc_95_native_95_def*/$jd$nc_95_native_95_def((
-/*JD_USE:152703*/$x152703)));const $ord1=(
+/*JD_USE:152734*/$x152734)));const $ord1=(
 /*JD_REF:$jd$nc_95_foreign*/$jd$nc_95_foreign((
-/*JD_USE:152703*/$x152703)));const $let0=(()=>{/* direct literal choice */if((
+/*JD_USE:152734*/$x152734)));const $let0=(()=>{/* direct literal choice */if((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$p88_95_string_95_eq*/$jd$p88_95_string_95_eq((
 /*JD_REF:$jd$dk*/$jd$dk((
-/*JD_USE:152703*/$x152703))),"Def")),(
+/*JD_USE:152734*/$x152734))),"Def")),(
 /*JD_REF:$jd$Bool_46_not*/$jd$Bool_46_not((($ord0 || $ord1))))))){return ({$:"Con","head":({$:"KDef","name":(
-/*JD_USE:152698*/$x152698),"kind":"NativeErasedBody","arity":(
+/*JD_USE:152729*/$x152729),"kind":"NativeErasedBody","arity":(
 /*JD_REF:$jd$nd_95_arity_95_plain*/$jd$nd_95_arity_95_plain((
-/*JD_USE:152697*/$x152697),(
-/*JD_USE:152698*/$x152698))),"templates":1,"typ":({$:"KTerm","tag":"Absent","name":"","id":0,"quant":0,"kids":({$:"Nil"}),"removed":({$:"Nil"}),"originBegin":0,["originEnd"]:0}),"value":(
-/*JD_USE:152704*/$x152704),"ctors":({$:"Nil"}),"native":false,["unsafe"]:false}),["tail"]:(
-/*JD_USE:152701*/$x152701)});}else{return (
-/*JD_USE:152701*/$x152701);}})();{const $x152705=$let0;{
+/*JD_USE:152728*/$x152728),(
+/*JD_USE:152729*/$x152729))),"templates":1,"typ":({$:"KTerm","tag":"Absent","name":"","id":0,"quant":0,"kids":({$:"Nil"}),"removed":({$:"Nil"}),"originBegin":0,["originEnd"]:0}),"value":(
+/*JD_USE:152735*/$x152735),"ctors":({$:"Nil"}),"native":false,["unsafe"]:false}),["tail"]:(
+/*JD_USE:152732*/$x152732)});}else{return (
+/*JD_USE:152732*/$x152732);}})();{const $x152736=$let0;{
 /*JD_REF:$jd$p143nr_95_walk*/const $next0=(
-/*JD_USE:152697*/$x152697);const $next1=(
+/*JD_USE:152728*/$x152728);const $next1=(
 /*JD_REF:$jd$nt_95_append*/$jd$nt_95_append((
 /*JD_REF:$jd$nc_95_refs*/$jd$nc_95_refs((
-/*JD_USE:152704*/$x152704))),(
-/*JD_USE:152699*/$x152699)));const $next2=({$:"Con","head":(
-/*JD_USE:152698*/$x152698),["tail"]:(
-/*JD_USE:152700*/$x152700)});const $next3=(
-/*JD_USE:152705*/$x152705);const $next4=(
-/*JD_USE:152702*/$x152702);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$pc=0;continue;}}}}}}}}
+/*JD_USE:152735*/$x152735))),(
+/*JD_USE:152730*/$x152730)));const $next2=({$:"Con","head":(
+/*JD_USE:152729*/$x152729),["tail"]:(
+/*JD_USE:152731*/$x152731)});const $next3=(
+/*JD_USE:152736*/$x152736);const $next4=(
+/*JD_USE:152733*/$x152733);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$pc=0;continue;}}}}}}}}
 function $jd$p143nr_95_walk($a0,$a1,$a2,$a3,$a4,$a5,$a6){return (
 /*JD_REF:$jd$p143nr_95_walk*/$jd$p143nr_95_walk$scc(0,$a0,$a1,$a2,$a3,$a4,$a5,$a6));}
 function $jd$p143nr_95_name($a0,$a1,$a2,$a3,$a4,$a5,$a6){return (
 /*JD_REF:$jd$p143nr_95_walk*/$jd$p143nr_95_walk$scc(1,$a0,$a1,$a2,$a3,$a4,$a5,$a6));}
 function $jd$p143nr_95_visit($a0,$a1,$a2,$a3,$a4,$a5,$a6){return (
 /*JD_REF:$jd$p143nr_95_walk*/$jd$p143nr_95_walk$scc(2,$a0,$a1,$a2,$a3,$a4,$a5,$a6));}
-function $jd$p144p_95_find($a0,$a1,$a2){for(;;){const $x152711=$a0;const $x152712=$a1;{const $match3=$a2;if($match3.$==="None"){return (
+function $jd$p144p_95_find($a0,$a1,$a2){for(;;){const $x152742=$a0;const $x152743=$a1;{const $match3=$a2;if($match3.$==="None"){return (
 /*JD_REF:$jd$f_95_find*/$jd$f_95_find((
-/*JD_USE:152711*/$x152711),(
-/*JD_USE:152712*/$x152712)));}else{{const $match4=$match3;const $x152713=$match4["value"];{/* direct literal choice */if((
+/*JD_USE:152742*/$x152742),(
+/*JD_USE:152743*/$x152743)));}else{{const $match4=$match3;const $x152744=$match4["value"];{/* direct literal choice */if((
 /*JD_REF:$jd$String_46_is_95_empty*/$jd$String_46_is_95_empty((
-/*JD_USE:152711*/$x152711)))){return (
+/*JD_USE:152742*/$x152742)))){return (
 /*JD_REF:$jd$f_95_find*/$jd$f_95_find((
-/*JD_USE:152711*/$x152711),(
-/*JD_USE:152712*/$x152712)));}else{return (
+/*JD_USE:152742*/$x152742),(
+/*JD_USE:152743*/$x152743)));}else{return (
 /*JD_REF:$jd$p144p_95_found*/$jd$p144p_95_found((
-/*JD_USE:152711*/$x152711),(
+/*JD_USE:152742*/$x152742),(
 /*JD_REF:$jd$index_95_find*/$jd$index_95_find((
-/*JD_USE:152713*/$x152713),(
-/*JD_USE:152711*/$x152711),(
+/*JD_USE:152744*/$x152744),(
+/*JD_USE:152742*/$x152742),(
 /*JD_REF:$jd$index_95_hash*/$jd$index_95_hash((
-/*JD_USE:152711*/$x152711),2166136261)),32))));}}}}}}}
-function $jd$p144p_95_found($a0,$a1){for(;;){const $x152718=$a0;const $x152719=$a1;{/* direct literal choice */if((
+/*JD_USE:152742*/$x152742),2166136261)),32))));}}}}}}}
+function $jd$p144p_95_found($a0,$a1){for(;;){const $x152749=$a0;const $x152750=$a1;{/* direct literal choice */if((
 /*JD_REF:$jd$p88_95_string_95_eq*/$jd$p88_95_string_95_eq((
 /*JD_REF:$jd$dn*/$jd$dn((
-/*JD_USE:152719*/$x152719))),(
-/*JD_USE:152718*/$x152718)))){return (
-/*JD_USE:152719*/$x152719);}else{return (
+/*JD_USE:152750*/$x152750))),(
+/*JD_USE:152749*/$x152749)))){return (
+/*JD_USE:152750*/$x152750);}else{return (
 /*JD_REF:$jd$f_95_find*/$jd$f_95_find((
-/*JD_USE:152718*/$x152718),({$:"Nil"})));}}}}
-function $jd$p144p_95_ready_95_scope($a0){for(;;){{const $match1=$a0;const $x152723=$match1["prior"];const $x152724=$match1["index"];const $x152725=$match1["ctors"];const $x152726=$match1["ns"];const $x152727=$match1["aliases"];{const $match7=$match1["priorView"];if($match7.$==="None"){return ({$:"FParseScope","prior":(
-/*JD_USE:152723*/$x152723),"index":(
-/*JD_USE:152724*/$x152724),"ctors":(
-/*JD_USE:152725*/$x152725),"ns":(
-/*JD_USE:152726*/$x152726),"aliases":(
-/*JD_USE:152727*/$x152727),["priorView"]:({$:"Some",["value"]:(
+/*JD_USE:152749*/$x152749),({$:"Nil"})));}}}}
+function $jd$p144p_95_ready_95_scope($a0){for(;;){{const $match1=$a0;const $x152754=$match1["prior"];const $x152755=$match1["index"];const $x152756=$match1["ctors"];const $x152757=$match1["ns"];const $x152758=$match1["aliases"];{const $match7=$match1["priorView"];if($match7.$==="None"){return ({$:"FParseScope","prior":(
+/*JD_USE:152754*/$x152754),"index":(
+/*JD_USE:152755*/$x152755),"ctors":(
+/*JD_USE:152756*/$x152756),"ns":(
+/*JD_USE:152757*/$x152757),"aliases":(
+/*JD_USE:152758*/$x152758),["priorView"]:({$:"Some",["value"]:(
 /*JD_REF:$jd$index_95_build*/$jd$index_95_build((
-/*JD_USE:152723*/$x152723)))})});}else{{const $match8=$match7;const $x152728=$match8["value"];return ({$:"FParseScope","prior":(
-/*JD_USE:152723*/$x152723),"index":(
-/*JD_USE:152724*/$x152724),"ctors":(
-/*JD_USE:152725*/$x152725),"ns":(
-/*JD_USE:152726*/$x152726),"aliases":(
-/*JD_USE:152727*/$x152727),["priorView"]:({$:"Some",["value"]:(
-/*JD_USE:152728*/$x152728)})});}}}}}}
-function $jd$p144p_95_update($a0,$a1){for(;;){const $x152731=$a0;{const $match2=$a1;if($match2.$==="None"){return ({$:"None"});}else{{const $match3=$match2;const $x152732=$match3["value"];return ({$:"Some",["value"]:(
+/*JD_USE:152754*/$x152754)))})});}else{{const $match8=$match7;const $x152759=$match8["value"];return ({$:"FParseScope","prior":(
+/*JD_USE:152754*/$x152754),"index":(
+/*JD_USE:152755*/$x152755),"ctors":(
+/*JD_USE:152756*/$x152756),"ns":(
+/*JD_USE:152757*/$x152757),"aliases":(
+/*JD_USE:152758*/$x152758),["priorView"]:({$:"Some",["value"]:(
+/*JD_USE:152759*/$x152759)})});}}}}}}
+function $jd$p144p_95_update($a0,$a1){for(;;){const $x152762=$a0;{const $match2=$a1;if($match2.$==="None"){return ({$:"None"});}else{{const $match3=$match2;const $x152763=$match3["value"];return ({$:"Some",["value"]:(
 /*JD_REF:$jd$index_95_set*/$jd$index_95_set((
-/*JD_USE:152732*/$x152732),(
-/*JD_USE:152731*/$x152731),(
+/*JD_USE:152763*/$x152763),(
+/*JD_USE:152762*/$x152762),(
 /*JD_REF:$jd$index_95_hash*/$jd$index_95_hash((
 /*JD_REF:$jd$dn*/$jd$dn((
-/*JD_USE:152731*/$x152731))),2166136261)),32))});}}}}}
-function $jd$p144p_95_declared($a0,$a1,$a2,$a3,$a4,$a5,$a6){for(;;){const $x152740=$a0;const $x152741=$a1;const $x152742=$a2;const $x152743=$a3;const $x152744=$a4;const $x152745=$a5;const $x152746=$a6;return ({$:"FParseScope","prior":({$:"Con","head":(
-/*JD_USE:152740*/$x152740),["tail"]:(
-/*JD_USE:152741*/$x152741)}),"index":(
+/*JD_USE:152762*/$x152762))),2166136261)),32))});}}}}}
+function $jd$p144p_95_declared($a0,$a1,$a2,$a3,$a4,$a5,$a6){for(;;){const $x152771=$a0;const $x152772=$a1;const $x152773=$a2;const $x152774=$a3;const $x152775=$a4;const $x152776=$a5;const $x152777=$a6;return ({$:"FParseScope","prior":({$:"Con","head":(
+/*JD_USE:152771*/$x152771),["tail"]:(
+/*JD_USE:152772*/$x152772)}),"index":(
 /*JD_REF:$jd$index_95_set*/$jd$index_95_set((
-/*JD_USE:152742*/$x152742),(
-/*JD_USE:152740*/$x152740),(
+/*JD_USE:152773*/$x152773),(
+/*JD_USE:152771*/$x152771),(
 /*JD_REF:$jd$index_95_hash*/$jd$index_95_hash((
 /*JD_REF:$jd$dn*/$jd$dn((
-/*JD_USE:152740*/$x152740))),2166136261)),32)),"ctors":(
+/*JD_USE:152771*/$x152771))),2166136261)),32)),"ctors":(
 /*JD_REF:$jd$f_95_ctor_95_index_95_def*/$jd$f_95_ctor_95_index_95_def((
-/*JD_USE:152740*/$x152740),(
-/*JD_USE:152743*/$x152743))),"ns":(
-/*JD_USE:152744*/$x152744),"aliases":(
-/*JD_USE:152745*/$x152745),["priorView"]:(
+/*JD_USE:152771*/$x152771),(
+/*JD_USE:152774*/$x152774))),"ns":(
+/*JD_USE:152775*/$x152775),"aliases":(
+/*JD_USE:152776*/$x152776),["priorView"]:(
 /*JD_REF:$jd$p144p_95_update*/$jd$p144p_95_update((
-/*JD_USE:152740*/$x152740),(
-/*JD_USE:152746*/$x152746)))});}}
-function $jd$p144o_95_original($a0,$a1){for(;;){{const $match1=$a0;if($match1.$==="Nil"){return false;}else{{const $match2=$match1;const $x152801=$match2["head"];const $x152802=$match2["tail"];const $x152803=$a1;{/* direct literal choice */if((
+/*JD_USE:152771*/$x152771),(
+/*JD_USE:152777*/$x152777)))});}}
+function $jd$p144o_95_original($a0,$a1){for(;;){{const $match1=$a0;if($match1.$==="Nil"){return false;}else{{const $match2=$match1;const $x152832=$match2["head"];const $x152833=$match2["tail"];const $x152834=$a1;{/* direct literal choice */if((
 /*JD_REF:$jd$p137q_95_is_95_adt*/$jd$p137q_95_is_95_adt((
-/*JD_USE:152801*/$x152801)))){{/* direct literal choice */if((
+/*JD_USE:152832*/$x152832)))){{/* direct literal choice */if((
 /*JD_REF:$jd$p137q_95_is_95_ctr*/$jd$p137q_95_is_95_ctr((
 /*JD_REF:$jd$lookup*/$jd$lookup((
 /*JD_REF:$jd$dc*/$jd$dc((
-/*JD_USE:152801*/$x152801))),(
-/*JD_USE:152803*/$x152803)))))){return (
+/*JD_USE:152832*/$x152832))),(
+/*JD_USE:152834*/$x152834)))))){return (
 /*JD_REF:$jd$db*/$jd$db((
-/*JD_USE:152801*/$x152801)));}else{{
+/*JD_USE:152832*/$x152832)));}else{{
 /*JD_REF:$jd$p144o_95_original*/const $next0=(
-/*JD_USE:152802*/$x152802);const $next1=(
-/*JD_USE:152803*/$x152803);$a0=$next0;$a1=$next1;continue;}}}}else{{
+/*JD_USE:152833*/$x152833);const $next1=(
+/*JD_USE:152834*/$x152834);$a0=$next0;$a1=$next1;continue;}}}}else{{
 /*JD_REF:$jd$p144o_95_original*/const $next0=(
-/*JD_USE:152802*/$x152802);const $next1=(
-/*JD_USE:152803*/$x152803);$a0=$next0;$a1=$next1;continue;}}}}}}}}
-function $jd$p144o_95_build($a0){for(;;){const $x152809=$a0;return (
+/*JD_USE:152833*/$x152833);const $next1=(
+/*JD_USE:152834*/$x152834);$a0=$next0;$a1=$next1;continue;}}}}}}}}
+function $jd$p144o_95_build($a0){for(;;){const $x152840=$a0;return (
 /*JD_REF:$jd$p144o_95_rows*/$jd$p144o_95_rows((
-/*JD_USE:152809*/$x152809),(
+/*JD_USE:152840*/$x152840),(
 /*JD_REF:$jd$missing*/$jd$missing()),({$:"Nil"})));}}
 function $jd$p144o_95_rows$scc($pc,$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7){
 /*JD_REF:$jd$p144o_95_rows*/
 /*JD_REF:$jd$p144o_95_children*/
-/*JD_REF:$jd$p144o_95_child*/for(;;)switch($pc){case 0:{{const $match1=$a0;if($match1.$==="Nil"){const $x152814=$a2;return ({$:"P144OFacts","names":(
+/*JD_REF:$jd$p144o_95_child*/for(;;)switch($pc){case 0:{{const $match1=$a0;if($match1.$==="Nil"){const $x152845=$a2;return ({$:"P144OFacts","names":(
 /*JD_REF:$jd$nt_95_reverse*/$jd$nt_95_reverse((
-/*JD_USE:152814*/$x152814),({$:"Nil"}))),["valid"]:true});}else{{const $match2=$match1;const $x152815=$match2["head"];const $x152816=$match2["tail"];const $x152817=$a1;const $x152818=$a2;{/* direct literal choice */if((
+/*JD_USE:152845*/$x152845),({$:"Nil"}))),["valid"]:true});}else{{const $match2=$match1;const $x152846=$match2["head"];const $x152847=$match2["tail"];const $x152848=$a1;const $x152849=$a2;{/* direct literal choice */if((
 /*JD_REF:$jd$p137q_95_is_95_adt*/$jd$p137q_95_is_95_adt((
-/*JD_USE:152815*/$x152815)))){{
+/*JD_USE:152846*/$x152846)))){{
 /*JD_REF:$jd$p144o_95_children*/const $next0=(
-/*JD_USE:152816*/$x152816);const $next1=(
+/*JD_USE:152847*/$x152847);const $next1=(
 /*JD_REF:$jd$dc*/$jd$dc((
-/*JD_USE:152815*/$x152815)));const $next2=(
+/*JD_USE:152846*/$x152846)));const $next2=(
 /*JD_REF:$jd$db*/$jd$db((
-/*JD_USE:152815*/$x152815)));const $next3=(
+/*JD_USE:152846*/$x152846)));const $next3=(
 /*JD_REF:$jd$missing*/$jd$missing());const $next4=(
-/*JD_USE:152817*/$x152817);const $next5=(
-/*JD_USE:152818*/$x152818);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=1;continue;}}else{{
+/*JD_USE:152848*/$x152848);const $next5=(
+/*JD_USE:152849*/$x152849);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=1;continue;}}else{{
 /*JD_REF:$jd$p144o_95_rows*/const $next0=(
-/*JD_USE:152816*/$x152816);const $next1=(
-/*JD_USE:152817*/$x152817);const $next2=(
-/*JD_USE:152818*/$x152818);$a0=$next0;$a1=$next1;$a2=$next2;continue;}}}}}}}case 1:{const $x152827=$a0;{const $match2=$a1;if($match2.$==="Nil"){const $x152830=$a4;const $x152831=$a5;{
+/*JD_USE:152847*/$x152847);const $next1=(
+/*JD_USE:152848*/$x152848);const $next2=(
+/*JD_USE:152849*/$x152849);$a0=$next0;$a1=$next1;$a2=$next2;continue;}}}}}}}case 1:{const $x152858=$a0;{const $match2=$a1;if($match2.$==="Nil"){const $x152861=$a4;const $x152862=$a5;{
 /*JD_REF:$jd$p144o_95_rows*/const $next0=(
-/*JD_USE:152827*/$x152827);const $next1=(
-/*JD_USE:152830*/$x152830);const $next2=(
-/*JD_USE:152831*/$x152831);$a0=$next0;$a1=$next1;$a2=$next2;$pc=0;continue;}}else{{const $match3=$match2;const $x152832=$match3["head"];const $x152833=$match3["tail"];const $x152834=$a2;const $x152835=$a3;const $x152836=$a4;const $x152837=$a5;{const $ord0=(
+/*JD_USE:152858*/$x152858);const $next1=(
+/*JD_USE:152861*/$x152861);const $next2=(
+/*JD_USE:152862*/$x152862);$a0=$next0;$a1=$next1;$a2=$next2;$pc=0;continue;}}else{{const $match3=$match2;const $x152863=$match3["head"];const $x152864=$match3["tail"];const $x152865=$a2;const $x152866=$a3;const $x152867=$a4;const $x152868=$a5;{const $ord0=(
 /*JD_REF:$jd$p88_95_string_95_eq*/$jd$p88_95_string_95_eq((
 /*JD_REF:$jd$dk*/$jd$dk((
-/*JD_USE:152832*/$x152832))),"BookCache"));const $ord1=(
+/*JD_USE:152863*/$x152863))),"BookCache"));const $ord1=(
 /*JD_REF:$jd$Bool_46_not*/$jd$Bool_46_not((
 /*JD_REF:$jd$book_95_final_95_name_95_valid*/$jd$book_95_final_95_name_95_valid((
 /*JD_REF:$jd$dn*/$jd$dn((
-/*JD_USE:152832*/$x152832)))))));/* direct literal choice */if((($ord0 || $ord1))){return ({$:"P144OFacts","names":({$:"Nil"}),["valid"]:false});}else{{
+/*JD_USE:152863*/$x152863)))))));/* direct literal choice */if((($ord0 || $ord1))){return ({$:"P144OFacts","names":({$:"Nil"}),["valid"]:false});}else{{
 /*JD_REF:$jd$p144o_95_child*/const $next0=(
-/*JD_USE:152827*/$x152827);const $next1=(
-/*JD_USE:152833*/$x152833);const $next2=(
-/*JD_USE:152834*/$x152834);const $next3=(
-/*JD_USE:152835*/$x152835);const $next4=(
-/*JD_USE:152836*/$x152836);const $next5=(
-/*JD_USE:152837*/$x152837);const $next6=(
-/*JD_USE:152832*/$x152832);const $next7=(
+/*JD_USE:152858*/$x152858);const $next1=(
+/*JD_USE:152864*/$x152864);const $next2=(
+/*JD_USE:152865*/$x152865);const $next3=(
+/*JD_USE:152866*/$x152866);const $next4=(
+/*JD_USE:152867*/$x152867);const $next5=(
+/*JD_USE:152868*/$x152868);const $next6=(
+/*JD_USE:152863*/$x152863);const $next7=(
 /*JD_REF:$jd$index_95_hash*/$jd$index_95_hash((
 /*JD_REF:$jd$dn*/$jd$dn((
-/*JD_USE:152832*/$x152832))),2166136261));$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$pc=2;continue;}}}}}}}case 2:{const $x152848=$a0;const $x152849=$a1;const $x152850=$a2;const $x152851=$a3;const $x152852=$a4;const $x152853=$a5;const $x152854=$a6;const $x152855=$a7;{const $let0=(
+/*JD_USE:152863*/$x152863))),2166136261));$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$a6=$next6;$a7=$next7;$pc=2;continue;}}}}}}}case 2:{const $x152879=$a0;const $x152880=$a1;const $x152881=$a2;const $x152882=$a3;const $x152883=$a4;const $x152884=$a5;const $x152885=$a6;const $x152886=$a7;{const $let0=(
 /*JD_REF:$jd$dn*/$jd$dn((
-/*JD_USE:152854*/$x152854)));{const $x152856=$let0;{/* direct literal choice */if((
+/*JD_USE:152885*/$x152885)));{const $x152887=$let0;{/* direct literal choice */if((
 /*JD_REF:$jd$p142j_95_member*/$jd$p142j_95_member((
-/*JD_USE:152851*/$x152851),(
-/*JD_USE:152856*/$x152856),(
-/*JD_USE:152855*/$x152855)))){{
+/*JD_USE:152882*/$x152882),(
+/*JD_USE:152887*/$x152887),(
+/*JD_USE:152886*/$x152886)))){{
 /*JD_REF:$jd$p144o_95_children*/const $next0=(
-/*JD_USE:152848*/$x152848);const $next1=(
-/*JD_USE:152849*/$x152849);const $next2=(
-/*JD_USE:152850*/$x152850);const $next3=(
-/*JD_USE:152851*/$x152851);const $next4=(
-/*JD_USE:152852*/$x152852);const $next5=(
-/*JD_USE:152853*/$x152853);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=1;continue;}}else{{/* direct literal choice */if((
+/*JD_USE:152879*/$x152879);const $next1=(
+/*JD_USE:152880*/$x152880);const $next2=(
+/*JD_USE:152881*/$x152881);const $next3=(
+/*JD_USE:152882*/$x152882);const $next4=(
+/*JD_USE:152883*/$x152883);const $next5=(
+/*JD_USE:152884*/$x152884);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=1;continue;}}else{{/* direct literal choice */if((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$p137q_95_is_95_ctr*/$jd$p137q_95_is_95_ctr((
-/*JD_USE:152854*/$x152854))),(
+/*JD_USE:152885*/$x152885))),(
 /*JD_REF:$jd$Bool_46_not*/$jd$Bool_46_not((
 /*JD_REF:$jd$p142j_95_member*/$jd$p142j_95_member((
-/*JD_USE:152852*/$x152852),(
-/*JD_USE:152856*/$x152856),(
-/*JD_USE:152855*/$x152855)))))))){{
+/*JD_USE:152883*/$x152883),(
+/*JD_USE:152887*/$x152887),(
+/*JD_USE:152886*/$x152886)))))))){{
 /*JD_REF:$jd$p144o_95_children*/const $next0=(
-/*JD_USE:152848*/$x152848);const $next1=(
-/*JD_USE:152849*/$x152849);const $next2=(
-/*JD_USE:152850*/$x152850);const $next3=(
+/*JD_USE:152879*/$x152879);const $next1=(
+/*JD_USE:152880*/$x152880);const $next2=(
+/*JD_USE:152881*/$x152881);const $next3=(
 /*JD_REF:$jd$p142j_95_mark*/$jd$p142j_95_mark((
-/*JD_USE:152851*/$x152851),(
-/*JD_USE:152856*/$x152856),(
-/*JD_USE:152855*/$x152855)));const $next4=(
+/*JD_USE:152882*/$x152882),(
+/*JD_USE:152887*/$x152887),(
+/*JD_USE:152886*/$x152886)));const $next4=(
 /*JD_REF:$jd$p142j_95_mark*/$jd$p142j_95_mark((
-/*JD_USE:152852*/$x152852),(
-/*JD_USE:152856*/$x152856),(
-/*JD_USE:152855*/$x152855)));const $next5=(()=>{/* direct literal choice */if((
-/*JD_USE:152850*/$x152850)){return ({$:"Con","head":(
-/*JD_USE:152856*/$x152856),["tail"]:(
-/*JD_USE:152853*/$x152853)});}else{return (
-/*JD_USE:152853*/$x152853);}})();$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=1;continue;}}else{{
+/*JD_USE:152883*/$x152883),(
+/*JD_USE:152887*/$x152887),(
+/*JD_USE:152886*/$x152886)));const $next5=(()=>{/* direct literal choice */if((
+/*JD_USE:152881*/$x152881)){return ({$:"Con","head":(
+/*JD_USE:152887*/$x152887),["tail"]:(
+/*JD_USE:152884*/$x152884)});}else{return (
+/*JD_USE:152884*/$x152884);}})();$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=1;continue;}}else{{
 /*JD_REF:$jd$p144o_95_children*/const $next0=(
-/*JD_USE:152848*/$x152848);const $next1=(
-/*JD_USE:152849*/$x152849);const $next2=(
-/*JD_USE:152850*/$x152850);const $next3=(
+/*JD_USE:152879*/$x152879);const $next1=(
+/*JD_USE:152880*/$x152880);const $next2=(
+/*JD_USE:152881*/$x152881);const $next3=(
 /*JD_REF:$jd$p142j_95_mark*/$jd$p142j_95_mark((
-/*JD_USE:152851*/$x152851),(
-/*JD_USE:152856*/$x152856),(
-/*JD_USE:152855*/$x152855)));const $next4=(
-/*JD_USE:152852*/$x152852);const $next5=(
-/*JD_USE:152853*/$x152853);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=1;continue;}}}}}}}}}}
+/*JD_USE:152882*/$x152882),(
+/*JD_USE:152887*/$x152887),(
+/*JD_USE:152886*/$x152886)));const $next4=(
+/*JD_USE:152883*/$x152883);const $next5=(
+/*JD_USE:152884*/$x152884);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=1;continue;}}}}}}}}}}
 function $jd$p144o_95_rows($a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7){return (
 /*JD_REF:$jd$p144o_95_rows*/$jd$p144o_95_rows$scc(0,$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7));}
 function $jd$p144o_95_children($a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7){return (
 /*JD_REF:$jd$p144o_95_rows*/$jd$p144o_95_rows$scc(1,$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7));}
 function $jd$p144o_95_child($a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7){return (
 /*JD_REF:$jd$p144o_95_rows*/$jd$p144o_95_rows$scc(2,$a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7));}
-function $jd$p144o_95_ctor_95_carrier($a0,$a1){for(;;){{const $match1=$a0;if($match1.$==="KDef"){const $x152946=$match1["name"];const $x152947=$match1["kind"];const $x152948=$match1["arity"];const $x152949=$match1["templates"];const $x152950=$match1["typ"];const $x152951=$match1["value"];const $x152952=$match1["ctors"];const $x152953=$match1["native"];const $x152954=$match1["unsafe"];{const $match11=$a1;const $x152955=$match11["names"];const $x152956=$match11["valid"];{/* direct literal choice */if((
+function $jd$p144o_95_ctor_95_carrier($a0,$a1){for(;;){{const $match1=$a0;if($match1.$==="KDef"){const $x152977=$match1["name"];const $x152978=$match1["kind"];const $x152979=$match1["arity"];const $x152980=$match1["templates"];const $x152981=$match1["typ"];const $x152982=$match1["value"];const $x152983=$match1["ctors"];const $x152984=$match1["native"];const $x152985=$match1["unsafe"];{const $match11=$a1;const $x152986=$match11["names"];const $x152987=$match11["valid"];{/* direct literal choice */if((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
@@ -80033,103 +80033,103 @@ function $jd$p144o_95_ctor_95_carrier($a0,$a1){for(;;){{const $match1=$a0;if($ma
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
-/*JD_USE:152956*/$x152956),(
+/*JD_USE:152987*/$x152987),(
 /*JD_REF:$jd$p88_95_string_95_eq*/$jd$p88_95_string_95_eq((
-/*JD_USE:152946*/$x152946),"$native.ctors")))),(
+/*JD_USE:152977*/$x152977),"$native.ctors")))),(
 /*JD_REF:$jd$p88_95_string_95_eq*/$jd$p88_95_string_95_eq((
-/*JD_USE:152947*/$x152947),"NativeCtorIndex")))),(((
-/*JD_USE:152948*/$x152948) === 0)))),(((
-/*JD_USE:152949*/$x152949) === 0)))),(
+/*JD_USE:152978*/$x152978),"NativeCtorIndex")))),(((
+/*JD_USE:152979*/$x152979) === 0)))),(((
+/*JD_USE:152980*/$x152980) === 0)))),(
 /*JD_REF:$jd$Bool_46_not*/$jd$Bool_46_not((
-/*JD_USE:152953*/$x152953))))),(
+/*JD_USE:152984*/$x152984))))),(
 /*JD_REF:$jd$Bool_46_not*/$jd$Bool_46_not((
-/*JD_USE:152954*/$x152954))))),(
+/*JD_USE:152985*/$x152985))))),(
 /*JD_REF:$jd$p98_95_tag_95_eq*/$jd$p98_95_tag_95_eq((
-/*JD_USE:152950*/$x152950),"Absent"))))){return ({$:"KDef","name":(
-/*JD_USE:152946*/$x152946),"kind":(
-/*JD_USE:152947*/$x152947),"arity":(
-/*JD_USE:152948*/$x152948),"templates":(
-/*JD_USE:152949*/$x152949),"typ":({$:"KTerm","tag":"P144Ownership","name":"","id":0,"quant":1,"kids":({$:"Nil"}),"removed":(
-/*JD_USE:152955*/$x152955),"originBegin":0,["originEnd"]:0}),"value":(
-/*JD_USE:152951*/$x152951),"ctors":(
-/*JD_USE:152952*/$x152952),"native":(
-/*JD_USE:152953*/$x152953),["unsafe"]:(
-/*JD_USE:152954*/$x152954)});}else{return ({$:"KDef","name":(
-/*JD_USE:152946*/$x152946),"kind":(
-/*JD_USE:152947*/$x152947),"arity":(
-/*JD_USE:152948*/$x152948),"templates":(
-/*JD_USE:152949*/$x152949),"typ":(
-/*JD_USE:152950*/$x152950),"value":(
-/*JD_USE:152951*/$x152951),"ctors":(
-/*JD_USE:152952*/$x152952),"native":(
-/*JD_USE:152953*/$x152953),["unsafe"]:(
-/*JD_USE:152954*/$x152954)});}}}}else{const $x152960=$match1;return (
-/*JD_USE:152960*/$x152960);}}}}
-function $jd$p144o_95_view($a0,$a1){for(;;){{const $match1=$a0;if($match1.$==="Con"){const $x152964=$match1["head"];const $x152965=$match1["tail"];const $x152966=$a1;{/* direct literal choice */if((
+/*JD_USE:152981*/$x152981),"Absent"))))){return ({$:"KDef","name":(
+/*JD_USE:152977*/$x152977),"kind":(
+/*JD_USE:152978*/$x152978),"arity":(
+/*JD_USE:152979*/$x152979),"templates":(
+/*JD_USE:152980*/$x152980),"typ":({$:"KTerm","tag":"P144Ownership","name":"","id":0,"quant":1,"kids":({$:"Nil"}),"removed":(
+/*JD_USE:152986*/$x152986),"originBegin":0,["originEnd"]:0}),"value":(
+/*JD_USE:152982*/$x152982),"ctors":(
+/*JD_USE:152983*/$x152983),"native":(
+/*JD_USE:152984*/$x152984),["unsafe"]:(
+/*JD_USE:152985*/$x152985)});}else{return ({$:"KDef","name":(
+/*JD_USE:152977*/$x152977),"kind":(
+/*JD_USE:152978*/$x152978),"arity":(
+/*JD_USE:152979*/$x152979),"templates":(
+/*JD_USE:152980*/$x152980),"typ":(
+/*JD_USE:152981*/$x152981),"value":(
+/*JD_USE:152982*/$x152982),"ctors":(
+/*JD_USE:152983*/$x152983),"native":(
+/*JD_USE:152984*/$x152984),["unsafe"]:(
+/*JD_USE:152985*/$x152985)});}}}}else{const $x152991=$match1;return (
+/*JD_USE:152991*/$x152991);}}}}
+function $jd$p144o_95_view($a0,$a1){for(;;){{const $match1=$a0;if($match1.$==="Con"){const $x152995=$match1["head"];const $x152996=$match1["tail"];const $x152997=$a1;{/* direct literal choice */if((
 /*JD_REF:$jd$p88_95_string_95_eq*/$jd$p88_95_string_95_eq((
 /*JD_REF:$jd$dk*/$jd$dk((
-/*JD_USE:152964*/$x152964))),"BookCache"))){return ({$:"Con","head":({$:"KDef","name":(
+/*JD_USE:152995*/$x152995))),"BookCache"))){return ({$:"Con","head":({$:"KDef","name":(
 /*JD_REF:$jd$dn*/$jd$dn((
-/*JD_USE:152964*/$x152964))),"kind":(
+/*JD_USE:152995*/$x152995))),"kind":(
 /*JD_REF:$jd$dk*/$jd$dk((
-/*JD_USE:152964*/$x152964))),"arity":(
+/*JD_USE:152995*/$x152995))),"arity":(
 /*JD_REF:$jd$da*/$jd$da((
-/*JD_USE:152964*/$x152964))),"templates":(
+/*JD_USE:152995*/$x152995))),"templates":(
 /*JD_REF:$jd$dx*/$jd$dx((
-/*JD_USE:152964*/$x152964))),"typ":(
+/*JD_USE:152995*/$x152995))),"typ":(
 /*JD_REF:$jd$dt*/$jd$dt((
-/*JD_USE:152964*/$x152964))),"value":(
+/*JD_USE:152995*/$x152995))),"value":(
 /*JD_REF:$jd$dv*/$jd$dv((
-/*JD_USE:152964*/$x152964))),"ctors":({$:"Con","head":(
+/*JD_USE:152995*/$x152995))),"ctors":({$:"Con","head":(
 /*JD_REF:$jd$index_95_first*/$jd$index_95_first((
 /*JD_REF:$jd$dc*/$jd$dc((
-/*JD_USE:152964*/$x152964))))),["tail"]:({$:"Con","head":({$:"KDef","name":"$native.static","kind":"NativeStaticContext","arity":0,"templates":0,"typ":({$:"KTerm","tag":"NativeImage","name":"","id":0,"quant":0,"kids":({$:"Nil"}),"removed":({$:"Nil"}),"originBegin":0,["originEnd"]:0}),"value":({$:"KTerm","tag":"Absent","name":"","id":0,"quant":0,"kids":({$:"Nil"}),"removed":({$:"Nil"}),"originBegin":0,["originEnd"]:0}),"ctors":({$:"Con","head":(
+/*JD_USE:152995*/$x152995))))),["tail"]:({$:"Con","head":({$:"KDef","name":"$native.static","kind":"NativeStaticContext","arity":0,"templates":0,"typ":({$:"KTerm","tag":"NativeImage","name":"","id":0,"quant":0,"kids":({$:"Nil"}),"removed":({$:"Nil"}),"originBegin":0,["originEnd"]:0}),"value":({$:"KTerm","tag":"Absent","name":"","id":0,"quant":0,"kids":({$:"Nil"}),"removed":({$:"Nil"}),"originBegin":0,["originEnd"]:0}),"ctors":({$:"Con","head":(
 /*JD_REF:$jd$missing*/$jd$missing()),["tail"]:({$:"Con","head":(
 /*JD_REF:$jd$p144o_95_ctor_95_carrier*/$jd$p144o_95_ctor_95_carrier((
 /*JD_REF:$jd$nc_95_ctor_95_prepare*/$jd$nc_95_ctor_95_prepare(({$:"Con","head":(
-/*JD_USE:152964*/$x152964),["tail"]:(
-/*JD_USE:152965*/$x152965)}))),(
-/*JD_USE:152966*/$x152966))),["tail"]:({$:"Nil"})})}),"native":false,["unsafe"]:false}),["tail"]:({$:"Nil"})})}),"native":(
+/*JD_USE:152995*/$x152995),["tail"]:(
+/*JD_USE:152996*/$x152996)}))),(
+/*JD_USE:152997*/$x152997))),["tail"]:({$:"Nil"})})}),"native":false,["unsafe"]:false}),["tail"]:({$:"Nil"})})}),"native":(
 /*JD_REF:$jd$db*/$jd$db((
-/*JD_USE:152964*/$x152964))),["unsafe"]:(
+/*JD_USE:152995*/$x152995))),["unsafe"]:(
 /*JD_REF:$jd$du*/$jd$du((
-/*JD_USE:152964*/$x152964)))}),["tail"]:(
-/*JD_USE:152965*/$x152965)});}else{return ({$:"Con","head":(
-/*JD_USE:152964*/$x152964),["tail"]:(
-/*JD_USE:152965*/$x152965)});}}}else{{const $match2=$match1;return ({$:"Nil"});}}}}}
-function $jd$p144o_95_owned($a0,$a1){for(;;){const $x152972=$a0;const $x152973=$a1;return (
+/*JD_USE:152995*/$x152995)))}),["tail"]:(
+/*JD_USE:152996*/$x152996)});}else{return ({$:"Con","head":(
+/*JD_USE:152995*/$x152995),["tail"]:(
+/*JD_USE:152996*/$x152996)});}}}else{{const $match2=$match1;return ({$:"Nil"});}}}}}
+function $jd$p144o_95_owned($a0,$a1){for(;;){const $x153003=$a0;const $x153004=$a1;return (
 /*JD_REF:$jd$p144o_95_owned_95_context*/$jd$p144o_95_owned_95_context((
-/*JD_USE:152972*/$x152972),(
-/*JD_USE:152973*/$x152973),(
+/*JD_USE:153003*/$x153003),(
+/*JD_USE:153004*/$x153004),(
 /*JD_REF:$jd$nc_95_ctor_95_context*/$jd$nc_95_ctor_95_context((
-/*JD_USE:152972*/$x152972)))));}}
-function $jd$p144o_95_owned_95_context($a0,$a1,$a2){for(;;){const $x152977=$a0;const $x152978=$a1;{const $match3=$a2;if($match3.$==="KDef"){const $x152979=$match3["name"];const $x152980=$match3["kind"];const $x152981=$match3["arity"];const $x152982=$match3["templates"];const $x152983=$match3["typ"];const $x152986=$match3["native"];const $x152987=$match3["unsafe"];{/* direct literal choice */if((
+/*JD_USE:153003*/$x153003)))));}}
+function $jd$p144o_95_owned_95_context($a0,$a1,$a2){for(;;){const $x153008=$a0;const $x153009=$a1;{const $match3=$a2;if($match3.$==="KDef"){const $x153010=$match3["name"];const $x153011=$match3["kind"];const $x153012=$match3["arity"];const $x153013=$match3["templates"];const $x153014=$match3["typ"];const $x153017=$match3["native"];const $x153018=$match3["unsafe"];{/* direct literal choice */if((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$p88_95_string_95_eq*/$jd$p88_95_string_95_eq((
-/*JD_USE:152979*/$x152979),"$native.ctors")),(
+/*JD_USE:153010*/$x153010),"$native.ctors")),(
 /*JD_REF:$jd$p88_95_string_95_eq*/$jd$p88_95_string_95_eq((
-/*JD_USE:152980*/$x152980),"NativeCtorIndex")))),(((
-/*JD_USE:152981*/$x152981) === 0)))),(((
-/*JD_USE:152982*/$x152982) === 0)))),(
+/*JD_USE:153011*/$x153011),"NativeCtorIndex")))),(((
+/*JD_USE:153012*/$x153012) === 0)))),(((
+/*JD_USE:153013*/$x153013) === 0)))),(
 /*JD_REF:$jd$Bool_46_not*/$jd$Bool_46_not((
-/*JD_USE:152986*/$x152986))))),(
+/*JD_USE:153017*/$x153017))))),(
 /*JD_REF:$jd$Bool_46_not*/$jd$Bool_46_not((
-/*JD_USE:152987*/$x152987)))))){return (
+/*JD_USE:153018*/$x153018)))))){return (
 /*JD_REF:$jd$p144o_95_owned_95_term*/$jd$p144o_95_owned_95_term((
-/*JD_USE:152977*/$x152977),(
-/*JD_USE:152978*/$x152978),(
-/*JD_USE:152983*/$x152983)));}else{return (
+/*JD_USE:153008*/$x153008),(
+/*JD_USE:153009*/$x153009),(
+/*JD_USE:153014*/$x153014)));}else{return (
 /*JD_REF:$jd$p144o_95_original*/$jd$p144o_95_original((
-/*JD_USE:152977*/$x152977),(
-/*JD_USE:152978*/$x152978)));}}}else{return (
+/*JD_USE:153008*/$x153008),(
+/*JD_USE:153009*/$x153009)));}}}else{return (
 /*JD_REF:$jd$p144o_95_original*/$jd$p144o_95_original((
-/*JD_USE:152977*/$x152977),(
-/*JD_USE:152978*/$x152978)));}}}}
-function $jd$p144o_95_owned_95_term($a0,$a1,$a2){for(;;){const $x152994=$a0;const $x152995=$a1;{const $match3=$a2;if($match3.$==="KTerm"){const $x152996=$match3["tag"];const $x152997=$match3["name"];const $x152998=$match3["id"];const $x152999=$match3["quant"];const $x153000=$match3["kids"];const $x153001=$match3["removed"];const $x153002=$match3["originBegin"];const $x153003=$match3["originEnd"];{/* direct literal choice */if((
+/*JD_USE:153008*/$x153008),(
+/*JD_USE:153009*/$x153009)));}}}}
+function $jd$p144o_95_owned_95_term($a0,$a1,$a2){for(;;){const $x153025=$a0;const $x153026=$a1;{const $match3=$a2;if($match3.$==="KTerm"){const $x153027=$match3["tag"];const $x153028=$match3["name"];const $x153029=$match3["id"];const $x153030=$match3["quant"];const $x153031=$match3["kids"];const $x153032=$match3["removed"];const $x153033=$match3["originBegin"];const $x153034=$match3["originEnd"];{/* direct literal choice */if((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
@@ -80137,179 +80137,179 @@ function $jd$p144o_95_owned_95_term($a0,$a1,$a2){for(;;){const $x152994=$a0;cons
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$p88_95_string_95_eq*/$jd$p88_95_string_95_eq((
-/*JD_USE:152996*/$x152996),"P144Ownership")),(
+/*JD_USE:153027*/$x153027),"P144Ownership")),(
 /*JD_REF:$jd$p88_95_string_95_eq*/$jd$p88_95_string_95_eq((
-/*JD_USE:152997*/$x152997),"")))),(((
-/*JD_USE:152998*/$x152998) === 0)))),(((
-/*JD_USE:152999*/$x152999) === 1)))),(
+/*JD_USE:153028*/$x153028),"")))),(((
+/*JD_USE:153029*/$x153029) === 0)))),(((
+/*JD_USE:153030*/$x153030) === 1)))),(
 /*JD_REF:$jd$List_46_is_95_empty*/$jd$List_46_is_95_empty((
-/*JD_USE:153000*/$x153000))))),(((
-/*JD_USE:153002*/$x153002) === 0)))),(((
-/*JD_USE:153003*/$x153003) === 0))))){return (
+/*JD_USE:153031*/$x153031))))),(((
+/*JD_USE:153033*/$x153033) === 0)))),(((
+/*JD_USE:153034*/$x153034) === 0))))){return (
 /*JD_REF:$jd$nb_95_contains*/$jd$nb_95_contains((
-/*JD_USE:153001*/$x153001),(
-/*JD_USE:152995*/$x152995)));}else{return (
+/*JD_USE:153032*/$x153032),(
+/*JD_USE:153026*/$x153026)));}else{return (
 /*JD_REF:$jd$p144o_95_original*/$jd$p144o_95_original((
-/*JD_USE:152994*/$x152994),(
-/*JD_USE:152995*/$x152995)));}}}else{return (
-/*JD_REF:$jd$p144o_95_original*/$jd$p144o_95_original((
-/*JD_USE:152994*/$x152994),(
-/*JD_USE:152995*/$x152995)));}}}}
-function $jd$p144o_95_request($a0,$a1,$a2,$a3){for(;;){const $x153011=$a0;const $x153012=$a1;{const $match3=$a2;const $x153013=$match3["names"];const $x153014=$match3["facts"];const $x153015=$a3;return ({$:"NR_Request","source":(
-/*JD_USE:153011*/$x153011),"book":(
-/*JD_REF:$jd$ns_95_attach_95_book*/$jd$ns_95_attach_95_book((
-/*JD_USE:153012*/$x153012),(
-/*JD_USE:153014*/$x153014),0,({$:"Nil"}))),"names":(
-/*JD_USE:153013*/$x153013),"paths":(
-/*JD_REF:$jd$nc_95_paths_95_of*/$jd$nc_95_paths_95_of((
-/*JD_USE:153011*/$x153011),(
-/*JD_USE:153013*/$x153013))),"scope":(
-/*JD_REF:$jd$kr_95_filter*/$jd$kr_95_filter((
-/*JD_USE:153011*/$x153011),(
-/*JD_USE:153013*/$x153013))),["bound"]:(
-/*JD_USE:153015*/$x153015)});}}}
-function $jd$p144o_95_source_95_ready($a0,$a1,$a2){for(;;){const $x153019=$a0;const $x153020=$a1;const $x153021=$a2;{const $let0=(
-/*JD_REF:$jd$p144o_95_view*/$jd$p144o_95_view((
-/*JD_USE:153019*/$x153019),(
-/*JD_USE:153021*/$x153021)));{const $x153022=$let0;return (
-/*JD_REF:$jd$p144o_95_request*/$jd$p144o_95_request((
-/*JD_USE:153019*/$x153019),(
-/*JD_USE:153022*/$x153022),(
-/*JD_REF:$jd$nr_95_walk*/$jd$nr_95_walk((
-/*JD_USE:153022*/$x153022),({$:"Con","head":"main",["tail"]:({$:"Nil"})}),({$:"Nil"}),({$:"Nil"}))),({$:"Some",["value"]:(
-/*JD_USE:153020*/$x153020)})));}}}}
-function $jd$p144o_95_prepare_95_annotated($a0,$a1){for(;;){const $x153025=$a0;const $x153026=$a1;{const $let0=(
-/*JD_REF:$jd$nc_95_context_95_defs*/$jd$nc_95_context_95_defs((
 /*JD_USE:153025*/$x153025),(
+/*JD_USE:153026*/$x153026)));}}}else{return (
+/*JD_REF:$jd$p144o_95_original*/$jd$p144o_95_original((
+/*JD_USE:153025*/$x153025),(
+/*JD_USE:153026*/$x153026)));}}}}
+function $jd$p144o_95_request($a0,$a1,$a2,$a3){for(;;){const $x153042=$a0;const $x153043=$a1;{const $match3=$a2;const $x153044=$match3["names"];const $x153045=$match3["facts"];const $x153046=$a3;return ({$:"NR_Request","source":(
+/*JD_USE:153042*/$x153042),"book":(
+/*JD_REF:$jd$ns_95_attach_95_book*/$jd$ns_95_attach_95_book((
+/*JD_USE:153043*/$x153043),(
+/*JD_USE:153045*/$x153045),0,({$:"Nil"}))),"names":(
+/*JD_USE:153044*/$x153044),"paths":(
+/*JD_REF:$jd$nc_95_paths_95_of*/$jd$nc_95_paths_95_of((
+/*JD_USE:153042*/$x153042),(
+/*JD_USE:153044*/$x153044))),"scope":(
+/*JD_REF:$jd$kr_95_filter*/$jd$kr_95_filter((
+/*JD_USE:153042*/$x153042),(
+/*JD_USE:153044*/$x153044))),["bound"]:(
+/*JD_USE:153046*/$x153046)});}}}
+function $jd$p144o_95_source_95_ready($a0,$a1,$a2){for(;;){const $x153050=$a0;const $x153051=$a1;const $x153052=$a2;{const $let0=(
+/*JD_REF:$jd$p144o_95_view*/$jd$p144o_95_view((
+/*JD_USE:153050*/$x153050),(
+/*JD_USE:153052*/$x153052)));{const $x153053=$let0;return (
+/*JD_REF:$jd$p144o_95_request*/$jd$p144o_95_request((
+/*JD_USE:153050*/$x153050),(
+/*JD_USE:153053*/$x153053),(
+/*JD_REF:$jd$nr_95_walk*/$jd$nr_95_walk((
+/*JD_USE:153053*/$x153053),({$:"Con","head":"main",["tail"]:({$:"Nil"})}),({$:"Nil"}),({$:"Nil"}))),({$:"Some",["value"]:(
+/*JD_USE:153051*/$x153051)})));}}}}
+function $jd$p144o_95_prepare_95_annotated($a0,$a1){for(;;){const $x153056=$a0;const $x153057=$a1;{const $let0=(
+/*JD_REF:$jd$nc_95_context_95_defs*/$jd$nc_95_context_95_defs((
+/*JD_USE:153056*/$x153056),(
 /*JD_REF:$jd$nc_95_context_95_index*/$jd$nc_95_context_95_index((
-/*JD_USE:153026*/$x153026)))));{const $x153027=$let0;{const $let0=(
+/*JD_USE:153057*/$x153057)))));{const $x153058=$let0;{const $let0=(
 /*JD_REF:$jd$norm_95_max_95_book*/$jd$norm_95_max_95_book((
-/*JD_USE:153027*/$x153027)));{const $x153028=$let0;{const $let0=(
+/*JD_USE:153058*/$x153058)));{const $x153059=$let0;{const $let0=(
 /*JD_REF:$jd$book_95_cached*/$jd$book_95_cached((
-/*JD_USE:153027*/$x153027),(
-/*JD_USE:153028*/$x153028)));{const $x153029=$let0;return (
+/*JD_USE:153058*/$x153058),(
+/*JD_USE:153059*/$x153059)));{const $x153060=$let0;return (
 /*JD_REF:$jd$p144o_95_source_95_ready*/$jd$p144o_95_source_95_ready((
-/*JD_USE:153029*/$x153029),(
-/*JD_USE:153028*/$x153028),(
+/*JD_USE:153060*/$x153060),(
+/*JD_USE:153059*/$x153059),(
 /*JD_REF:$jd$p144o_95_build*/$jd$p144o_95_build((
-/*JD_USE:153029*/$x153029)))));}}}}}}}}
-function $jd$p144ce_95_build($a0){for(;;){const $x153274=$a0;return (
+/*JD_USE:153060*/$x153060)))));}}}}}}}}
+function $jd$p144ce_95_build($a0){for(;;){const $x153305=$a0;return (
 /*JD_REF:$jd$p144ce_95_rows*/$jd$p144ce_95_rows((
-/*JD_USE:153274*/$x153274),(
+/*JD_USE:153305*/$x153305),(
 /*JD_REF:$jd$missing*/$jd$missing())));}}
 function $jd$p144ce_95_rows$scc($pc,$a0,$a1,$a2,$a3,$a4,$a5){
 /*JD_REF:$jd$p144ce_95_rows*/
 /*JD_REF:$jd$p144ce_95_children*/
-/*JD_REF:$jd$p144ce_95_child*/for(;;)switch($pc){case 0:{{const $match1=$a0;if($match1.$==="Nil"){const $x153277=$a1;return ({$:"P144CEFacts","members":(
-/*JD_USE:153277*/$x153277),["valid"]:true});}else{{const $match2=$match1;const $x153278=$match2["head"];const $x153279=$match2["tail"];const $x153280=$a1;{/* direct literal choice */if((
+/*JD_REF:$jd$p144ce_95_child*/for(;;)switch($pc){case 0:{{const $match1=$a0;if($match1.$==="Nil"){const $x153308=$a1;return ({$:"P144CEFacts","members":(
+/*JD_USE:153308*/$x153308),["valid"]:true});}else{{const $match2=$match1;const $x153309=$match2["head"];const $x153310=$match2["tail"];const $x153311=$a1;{/* direct literal choice */if((
 /*JD_REF:$jd$book_95_final_95_name_95_valid*/$jd$book_95_final_95_name_95_valid((
 /*JD_REF:$jd$dk*/$jd$dk((
-/*JD_USE:153278*/$x153278)))))){{/* direct literal choice */if((
+/*JD_USE:153309*/$x153309)))))){{/* direct literal choice */if((
 /*JD_REF:$jd$p88_95_string_95_eq*/$jd$p88_95_string_95_eq((
 /*JD_REF:$jd$dk*/$jd$dk((
-/*JD_USE:153278*/$x153278))),"BookCache"))){{
+/*JD_USE:153309*/$x153309))),"BookCache"))){{
 /*JD_REF:$jd$p144ce_95_rows*/const $next0=(
-/*JD_USE:153279*/$x153279);const $next1=(
-/*JD_USE:153280*/$x153280);$a0=$next0;$a1=$next1;continue;}}else{{
+/*JD_USE:153310*/$x153310);const $next1=(
+/*JD_USE:153311*/$x153311);$a0=$next0;$a1=$next1;continue;}}else{{
 /*JD_REF:$jd$p144ce_95_children*/const $next0=(
-/*JD_USE:153279*/$x153279);const $next1=(
+/*JD_USE:153310*/$x153310);const $next1=(
 /*JD_REF:$jd$dc*/$jd$dc((
-/*JD_USE:153278*/$x153278)));const $next2=(
+/*JD_USE:153309*/$x153309)));const $next2=(
 /*JD_REF:$jd$missing*/$jd$missing());const $next3=(
-/*JD_USE:153280*/$x153280);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$pc=1;continue;}}}}else{return ({$:"P144CEFacts","members":(
-/*JD_REF:$jd$missing*/$jd$missing()),["valid"]:false});}}}}}}case 1:{const $x153289=$a0;{const $match2=$a1;if($match2.$==="Nil"){const $x153291=$a3;{
+/*JD_USE:153311*/$x153311);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$pc=1;continue;}}}}else{return ({$:"P144CEFacts","members":(
+/*JD_REF:$jd$missing*/$jd$missing()),["valid"]:false});}}}}}}case 1:{const $x153320=$a0;{const $match2=$a1;if($match2.$==="Nil"){const $x153322=$a3;{
 /*JD_REF:$jd$p144ce_95_rows*/const $next0=(
-/*JD_USE:153289*/$x153289);const $next1=(
-/*JD_USE:153291*/$x153291);$a0=$next0;$a1=$next1;$pc=0;continue;}}else{{const $match3=$match2;const $x153292=$match3["head"];const $x153293=$match3["tail"];const $x153294=$a2;const $x153295=$a3;{/* direct literal choice */if((
+/*JD_USE:153320*/$x153320);const $next1=(
+/*JD_USE:153322*/$x153322);$a0=$next0;$a1=$next1;$pc=0;continue;}}else{{const $match3=$match2;const $x153323=$match3["head"];const $x153324=$match3["tail"];const $x153325=$a2;const $x153326=$a3;{/* direct literal choice */if((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$book_95_final_95_name_95_valid*/$jd$book_95_final_95_name_95_valid((
 /*JD_REF:$jd$dn*/$jd$dn((
-/*JD_USE:153292*/$x153292))))),(
+/*JD_USE:153323*/$x153323))))),(
 /*JD_REF:$jd$book_95_final_95_name_95_valid*/$jd$book_95_final_95_name_95_valid((
 /*JD_REF:$jd$dk*/$jd$dk((
-/*JD_USE:153292*/$x153292)))))))){{/* direct literal choice */if((
+/*JD_USE:153323*/$x153323)))))))){{/* direct literal choice */if((
 /*JD_REF:$jd$p88_95_string_95_eq*/$jd$p88_95_string_95_eq((
 /*JD_REF:$jd$dk*/$jd$dk((
-/*JD_USE:153292*/$x153292))),"BookCache"))){return ({$:"P144CEFacts","members":(
+/*JD_USE:153323*/$x153323))),"BookCache"))){return ({$:"P144CEFacts","members":(
 /*JD_REF:$jd$missing*/$jd$missing()),["valid"]:false});}else{{
 /*JD_REF:$jd$p144ce_95_child*/const $next0=(
-/*JD_USE:153289*/$x153289);const $next1=(
-/*JD_USE:153293*/$x153293);const $next2=(
-/*JD_USE:153294*/$x153294);const $next3=(
-/*JD_USE:153295*/$x153295);const $next4=(
-/*JD_USE:153292*/$x153292);const $next5=(
+/*JD_USE:153320*/$x153320);const $next1=(
+/*JD_USE:153324*/$x153324);const $next2=(
+/*JD_USE:153325*/$x153325);const $next3=(
+/*JD_USE:153326*/$x153326);const $next4=(
+/*JD_USE:153323*/$x153323);const $next5=(
 /*JD_REF:$jd$index_95_hash*/$jd$index_95_hash((
 /*JD_REF:$jd$dn*/$jd$dn((
-/*JD_USE:153292*/$x153292))),2166136261));$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=2;continue;}}}}else{return ({$:"P144CEFacts","members":(
-/*JD_REF:$jd$missing*/$jd$missing()),["valid"]:false});}}}}}}case 2:{const $x153306=$a0;const $x153307=$a1;const $x153308=$a2;const $x153309=$a3;const $x153310=$a4;const $x153311=$a5;{const $let0=(
+/*JD_USE:153323*/$x153323))),2166136261));$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$a4=$next4;$a5=$next5;$pc=2;continue;}}}}else{return ({$:"P144CEFacts","members":(
+/*JD_REF:$jd$missing*/$jd$missing()),["valid"]:false});}}}}}}case 2:{const $x153337=$a0;const $x153338=$a1;const $x153339=$a2;const $x153340=$a3;const $x153341=$a4;const $x153342=$a5;{const $let0=(
 /*JD_REF:$jd$dn*/$jd$dn((
-/*JD_USE:153310*/$x153310)));{const $x153312=$let0;{/* direct literal choice */if((
+/*JD_USE:153341*/$x153341)));{const $x153343=$let0;{/* direct literal choice */if((
 /*JD_REF:$jd$p142j_95_member*/$jd$p142j_95_member((
-/*JD_USE:153308*/$x153308),(
-/*JD_USE:153312*/$x153312),(
-/*JD_USE:153311*/$x153311)))){{
+/*JD_USE:153339*/$x153339),(
+/*JD_USE:153343*/$x153343),(
+/*JD_USE:153342*/$x153342)))){{
 /*JD_REF:$jd$p144ce_95_children*/const $next0=(
-/*JD_USE:153306*/$x153306);const $next1=(
-/*JD_USE:153307*/$x153307);const $next2=(
-/*JD_USE:153308*/$x153308);const $next3=(
-/*JD_USE:153309*/$x153309);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$pc=1;continue;}}else{{
+/*JD_USE:153337*/$x153337);const $next1=(
+/*JD_USE:153338*/$x153338);const $next2=(
+/*JD_USE:153339*/$x153339);const $next3=(
+/*JD_USE:153340*/$x153340);$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$pc=1;continue;}}else{{
 /*JD_REF:$jd$p144ce_95_children*/const $next0=(
-/*JD_USE:153306*/$x153306);const $next1=(
-/*JD_USE:153307*/$x153307);const $next2=(
+/*JD_USE:153337*/$x153337);const $next1=(
+/*JD_USE:153338*/$x153338);const $next2=(
 /*JD_REF:$jd$p142j_95_mark*/$jd$p142j_95_mark((
-/*JD_USE:153308*/$x153308),(
-/*JD_USE:153312*/$x153312),(
-/*JD_USE:153311*/$x153311)));const $next3=(()=>{/* direct literal choice */if((
+/*JD_USE:153339*/$x153339),(
+/*JD_USE:153343*/$x153343),(
+/*JD_USE:153342*/$x153342)));const $next3=(()=>{/* direct literal choice */if((
 /*JD_REF:$jd$p88_95_string_95_eq*/$jd$p88_95_string_95_eq((
 /*JD_REF:$jd$dk*/$jd$dk((
-/*JD_USE:153310*/$x153310))),"Absent"))){return (
-/*JD_USE:153309*/$x153309);}else{return (
+/*JD_USE:153341*/$x153341))),"Absent"))){return (
+/*JD_USE:153340*/$x153340);}else{return (
 /*JD_REF:$jd$p142j_95_mark*/$jd$p142j_95_mark((
-/*JD_USE:153309*/$x153309),(
-/*JD_USE:153312*/$x153312),(
-/*JD_USE:153311*/$x153311)));}})();$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$pc=1;continue;}}}}}}}}
+/*JD_USE:153340*/$x153340),(
+/*JD_USE:153343*/$x153343),(
+/*JD_USE:153342*/$x153342)));}})();$a0=$next0;$a1=$next1;$a2=$next2;$a3=$next3;$pc=1;continue;}}}}}}}}
 function $jd$p144ce_95_rows($a0,$a1,$a2,$a3,$a4,$a5){return (
 /*JD_REF:$jd$p144ce_95_rows*/$jd$p144ce_95_rows$scc(0,$a0,$a1,$a2,$a3,$a4,$a5));}
 function $jd$p144ce_95_children($a0,$a1,$a2,$a3,$a4,$a5){return (
 /*JD_REF:$jd$p144ce_95_rows*/$jd$p144ce_95_rows$scc(1,$a0,$a1,$a2,$a3,$a4,$a5));}
 function $jd$p144ce_95_child($a0,$a1,$a2,$a3,$a4,$a5){return (
 /*JD_REF:$jd$p144ce_95_rows*/$jd$p144ce_95_rows$scc(2,$a0,$a1,$a2,$a3,$a4,$a5));}
-function $jd$p144ce_95_query($a0,$a1,$a2){for(;;){const $x153320=$a0;{const $match2=$a1;const $x153321=$match2["members"];const $x153322=$match2["valid"];const $x153323=$a2;{/* direct literal choice */if((
+function $jd$p144ce_95_query($a0,$a1,$a2){for(;;){const $x153351=$a0;{const $match2=$a1;const $x153352=$match2["members"];const $x153353=$match2["valid"];const $x153354=$a2;{/* direct literal choice */if((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
-/*JD_USE:153322*/$x153322),(
-/*JD_REF:$jd$book_95_final_95_name_95_valid*/$jd$book_95_final_95_name_95_valid((
-/*JD_USE:153323*/$x153323)))))){return (
-/*JD_REF:$jd$p142j_95_member*/$jd$p142j_95_member((
-/*JD_USE:153321*/$x153321),(
-/*JD_USE:153323*/$x153323),(
-/*JD_REF:$jd$index_95_hash*/$jd$index_95_hash((
-/*JD_USE:153323*/$x153323),2166136261))));}else{return (
-/*JD_REF:$jd$constructor_95_exists*/$jd$constructor_95_exists((
-/*JD_USE:153320*/$x153320),(
-/*JD_USE:153323*/$x153323)));}}}}}
-function $jd$p144ce_95_disjoint($a0,$a1){for(;;){{const $match1=$a0;if($match1.$==="Nil"){return true;}else{const $x153353=$match1;const $x153354=$a1;return (
-/*JD_REF:$jd$p144ce_95_disjoint_95_go*/$jd$p144ce_95_disjoint_95_go((
 /*JD_USE:153353*/$x153353),(
+/*JD_REF:$jd$book_95_final_95_name_95_valid*/$jd$book_95_final_95_name_95_valid((
+/*JD_USE:153354*/$x153354)))))){return (
+/*JD_REF:$jd$p142j_95_member*/$jd$p142j_95_member((
+/*JD_USE:153352*/$x153352),(
 /*JD_USE:153354*/$x153354),(
+/*JD_REF:$jd$index_95_hash*/$jd$index_95_hash((
+/*JD_USE:153354*/$x153354),2166136261))));}else{return (
+/*JD_REF:$jd$constructor_95_exists*/$jd$constructor_95_exists((
+/*JD_USE:153351*/$x153351),(
+/*JD_USE:153354*/$x153354)));}}}}}
+function $jd$p144ce_95_disjoint($a0,$a1){for(;;){{const $match1=$a0;if($match1.$==="Nil"){return true;}else{const $x153384=$match1;const $x153385=$a1;return (
+/*JD_REF:$jd$p144ce_95_disjoint_95_go*/$jd$p144ce_95_disjoint_95_go((
+/*JD_USE:153384*/$x153384),(
+/*JD_USE:153385*/$x153385),(
 /*JD_REF:$jd$p144ce_95_build*/$jd$p144ce_95_build((
-/*JD_USE:153354*/$x153354)))));}}}}
-function $jd$p144ce_95_disjoint_95_go($a0,$a1,$a2){for(;;){{const $match1=$a0;if($match1.$==="Nil"){return true;}else{{const $match2=$match1;const $x153360=$match2["head"];const $x153361=$match2["tail"];const $x153362=$a1;const $x153363=$a2;{/* direct literal choice */if((
+/*JD_USE:153385*/$x153385)))));}}}}
+function $jd$p144ce_95_disjoint_95_go($a0,$a1,$a2){for(;;){{const $match1=$a0;if($match1.$==="Nil"){return true;}else{{const $match2=$match1;const $x153391=$match2["head"];const $x153392=$match2["tail"];const $x153393=$a1;const $x153394=$a2;{/* direct literal choice */if((
 /*JD_REF:$jd$Bool_46_and*/$jd$Bool_46_and((
 /*JD_REF:$jd$Bool_46_not*/$jd$Bool_46_not((
 /*JD_REF:$jd$p144ce_95_query*/$jd$p144ce_95_query((
-/*JD_USE:153362*/$x153362),(
-/*JD_USE:153363*/$x153363),(
+/*JD_USE:153393*/$x153393),(
+/*JD_USE:153394*/$x153394),(
 /*JD_REF:$jd$dn*/$jd$dn((
-/*JD_USE:153360*/$x153360))))))),(
+/*JD_USE:153391*/$x153391))))))),(
 /*JD_REF:$jd$p144ce_95_disjoint_95_go*/$jd$p144ce_95_disjoint_95_go((
 /*JD_REF:$jd$dc*/$jd$dc((
-/*JD_USE:153360*/$x153360))),(
-/*JD_USE:153362*/$x153362),(
-/*JD_USE:153363*/$x153363)))))){{
+/*JD_USE:153391*/$x153391))),(
+/*JD_USE:153393*/$x153393),(
+/*JD_USE:153394*/$x153394)))))){{
 /*JD_REF:$jd$p144ce_95_disjoint_95_go*/const $next0=(
-/*JD_USE:153361*/$x153361);const $next1=(
-/*JD_USE:153362*/$x153362);const $next2=(
-/*JD_USE:153363*/$x153363);$a0=$next0;$a1=$next1;$a2=$next2;continue;}}else{return false;}}}}}}}
+/*JD_USE:153392*/$x153392);const $next1=(
+/*JD_USE:153393*/$x153393);const $next2=(
+/*JD_USE:153394*/$x153394);$a0=$next0;$a1=$next1;$a2=$next2;continue;}}else{return false;}}}}}}}
 function $jd$p170ls_95_word($a0,$a1,$a2,$a3,$a4){return (
 /*JD_REF:$jd$p150l_95_word*/$jd$p150l_95_word$scc(1,$a0,$a1,$a2,$a3,$a4));}
 function $jd$p170ls_95_other($a0,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9,$a10){return (

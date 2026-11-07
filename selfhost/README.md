@@ -9,7 +9,7 @@ transport, runtime support, measurement and independent validation.
 Start with the [maintained workflow](../docs/self_hosted/workflow.md). It explains
 source assembly, image/asset admission, native requests/builds, actual bootstrap
 generations and the distinction between current source and installed artifacts.
-The [Phase170 promotion report](../implementation/phase170/README.md) records the
+The [Phase174 promotion report](../implementation/phase174/README.md) records the
 current installed artifacts and qualification. The [consolidation report](../implementation/repository-consolidation/README.md)
 retains the source migration and historical recovery record.
 The pinned upstream language is `059266225b77c8ca256ac6b25ee5c21449bab151`
@@ -40,7 +40,7 @@ selfhost/bend input.bend -o output.c
 ```
 
 Run these from the repository root with their selected package assets available.
-The qualified Phase170 release is selected by [`manifests/current.json`](manifests/current.json):
+The qualified Phase174 release is selected by [`manifests/current.json`](manifests/current.json):
 JS B2, public native C N1 and direct-QBE N2, freshly bound to the maintained
 canonical source (with the explicit thin public C profile). The operational QBE
 assets select the installed N2; hosted QBE remains a separately checked B1 API.

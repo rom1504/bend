@@ -1,3 +1,17 @@
+# Phase174 — publish the measured Phase171 compiler, 2026-11-07
+
+[Report](../implementation/phase174/README.md) · [Metrics](../implementation/phase174/metrics.json) ·
+[Design](../design/phase174/README.md).
+
+Integrated exact Phase171 source and installed QBE N2, JS B2 and public native C.
+Fresh original-source pair 195.101→188.395s (3.44% less); current-source self-build
+188.002s. Historical 180.677s remains a separately labeled observation. No input
+conflation or new upstream ratio. 77 controls, native64, hosted19, JS45, C45,
+public-interface/session gates and five installed smoke jobs pass. QBE/assembly/
+object reproduce; code/data match with precisely audited ELF metadata differences.
+All 45 ordinary/45 timed QBE and JS45/C45 products remain exact. Selector-last
+publication retains rollback; 112 protected declarations unchanged. No PR comment.
+
 # Phase173 — ownership capability and falsified cold-build transfer, 2026-11-07
 
 [Report](../implementation/phase173/README.md) · [Design](../design/phase173/README.md) ·

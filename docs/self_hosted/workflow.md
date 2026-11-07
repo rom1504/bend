@@ -7,7 +7,7 @@ prepared Base images, compiler executables and benchmark artifacts are explicit
 inputs or outputs, not editable alternative compiler sources.
 
 The [consolidation design](../../design/repository-consolidation/README.md)
-records migration boundaries; the [Phase170 report](../../implementation/phase170/README.md)
+records migration boundaries; the [Phase174 report](../../implementation/phase174/README.md)
 records current installed qualification. Current tools live under
 [`tools/build/`](../../selfhost/tools/build/),
 [`tools/bench/`](../../selfhost/tools/bench/README.md),
@@ -29,7 +29,7 @@ selfhost/bend input.bend -o output.c
 
 The installed [current selector](../../selfhost/manifests/current.json) binds
 JS B2, public native C N1 and qualified QBE N2 to their recorded source and
-qualification evidence. Phase170 installs all three from current maintained
+qualification evidence. Phase174 installs all three from current maintained
 source, with an explicit thin profile for the public C CLI. The default
 `qbe-n2` asset points to `selfhost/dist/qbe/bend`; `qbe-api` selects the separately
 checked, cache-only B1 API at `selfhost/dist/qbe/hosted-api.mjs`. Native P140/2

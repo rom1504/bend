@@ -1,0 +1,71 @@
+{
+  "kind": "phase174-fixed-input-comparison-plan",
+  "scope": "Fresh-process same-source clean source-to-executable comparison, prepared Base, unchanged CPU3/runtime/toolchain. Candidate first then baseline; one observation each, no filesystem-cache flush.",
+  "jobs": [
+    {
+      "name": "fixed-candidate",
+      "seconds": 300,
+      "diskMiB": 128,
+      "rssMiB": 2048,
+      "command": [
+        "python3",
+        "-B",
+        "selfhost/tools/build/native.py",
+        "--assets",
+        "selfhost/manifests/assets-native.json",
+        "--host",
+        "native",
+        "--stage",
+        "N2",
+        "--target",
+        "qbe",
+        "--mode",
+        "cache",
+        "--image",
+        "selfhost/build/phase174/native-n2/program",
+        "--image-receipt",
+        "selfhost/build/phase174/native-n2/report.json",
+        "--source",
+        "selfhost/build/phase170/source-final/compiler.bend",
+        "--out",
+        "selfhost/build/phase174/fixed-candidate",
+        "--seconds",
+        "280",
+        "--expected",
+        "selfhost/build/phase170/native-chain-final/n2/program.ssa"
+      ]
+    },
+    {
+      "name": "fixed-baseline",
+      "seconds": 300,
+      "diskMiB": 128,
+      "rssMiB": 2048,
+      "command": [
+        "python3",
+        "-B",
+        "selfhost/tools/build/native.py",
+        "--assets",
+        "selfhost/manifests/assets-native.json",
+        "--host",
+        "native",
+        "--stage",
+        "N2",
+        "--target",
+        "qbe",
+        "--mode",
+        "cache",
+        "--image-key",
+        "qbe-n2",
+        "--source",
+        "selfhost/build/phase170/source-final/compiler.bend",
+        "--out",
+        "selfhost/build/phase174/fixed-baseline",
+        "--seconds",
+        "280",
+        "--expected",
+        "selfhost/build/phase170/native-chain-final/n2/program.ssa"
+      ]
+    }
+  ],
+  "sourcePathPolicy": "Same exact source path and bytes as historical Phase171 pair; frozen reference-source01 independently pins its identity."
+}

@@ -24,12 +24,12 @@ installed release or qualify every host/target combination. Existing public
 entry points remain `node selfhost/cli.mjs FILE --run` and
 `selfhost/bend FILE -o OUTPUT.c`.
 
-The [Phase170 installed release](implementation/phase170/README.md) promotes the
-fast QBE path into the maintained compiler, with fresh native N1/N2 reproduction,
-JS B2/B3 reproduction and public C qualification. Its full maintained-source
-native self-build took 189.3 seconds with prepared Base. The 45 timed QBE products
-remain byte-identical to the qualified Phase169 products. See the report for
-exact sources, timing scope, finite gates and rollback evidence.
+The [Phase174 publication](implementation/phase174/README.md) installs the measured
+Phase171 compiler across QBE, JS and C. A fresh same-source pair improved from
+195.1s to 188.4s; the current maintained-source self-build took 188.0s with prepared
+Base. Native and JS self-reproduction, cross-backend qualification and installed
+commands pass. Ordinary/timed QBE and JS/C program products remain byte-identical
+to qualified references. See the report for exact inputs, timing scope and rollback.
 
 | Task | Maintained entry |
 | --- | --- |

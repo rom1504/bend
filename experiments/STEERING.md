@@ -1,35 +1,35 @@
-# Current frontier — Phase170 fast compiler installed
+# Current frontier — Phase171 published and installed (Phase174)
 
-[Report](../implementation/phase170/README.md) ·
-[Reproduce](../implementation/phase170/reproduce.md) ·
+[Report](../implementation/phase174/README.md) ·
+[Metrics](../implementation/phase174/metrics.json) ·
+[Reproduce](../implementation/phase174/reproduce.md) ·
 [Current selector](../selfhost/manifests/current.json).
 
-Phase169's qualified ordinary QBE path is now integrated into maintained modules
-and installed as genuine native N2. The 3,150,535-byte canonical source self-builds
-in 189.329 seconds, including QBE/assembly/link, with prepared Base and one CPU 3
-lane. This is the full maintained source, not the smaller 147.764-second Phase169
-extraction. Native N1/N2/Q3 reproduce QBE; assembly, object and loaded ELF bytes
-match. Whole ELF differs only in nonloaded `.strtab`.
+Use the installed Phase171 compiler for the next research cycle. Its exact measured
+source is integrated in six maintained modules: 16 replacements, 28 additions,
+112 protected declarations unchanged. Canonical source is 3,161,409 bytes,
+SHA256 `74cd7de3e5076490e20ba0218d4c9254853be72562946b9ef66fed6c10c7a53a`.
 
-All 64 native controls pass. Both the 45 correctness products and the distinct
-45 timed-wrapper QBE products match Phase169 exactly with unchanged runtime and
-toolchain. This transfers its generated-code evidence; it is not a fresh runtime
-measurement or upstream parity claim. Fresh JS B2/B3 reproduction and JS/C broad
-45 gates qualify the actual installed interfaces. The native public command
-still emits C; QBE uses the explicit maintained build tools. Hosted QBE remains a
-separately checked, cache-only B1 API. Positive native P140/2 reuse is qualified;
-error recovery and object-unit capability are not inferred.
+Fresh fixed-input cold pair: Phase170 195.101s → Phase171 188.395s, 3.44% less,
+with identical QBE/assembly/object. The current-source N1→N2 build is 188.002s.
+The older 180.677s observation uses the original fixed source and remains
+historical evidence; do not mix observations or silently change benchmark input.
+Each pair has one observation per image, prepared Base, CPU3, fresh processes,
+and no filesystem-cache flush. No new upstream parity result.
 
-Rebuilding JS exposed repeated suffix reconstruction in five lexer lookaheads.
-Returning an untouched original alias fixes large-source rope growth. Finite
-Bun/Node controls, fresh B3 checking and same-source native timing support the
-repair; this is not a BendTT theorem. Earlier failed/cancelled attempts remain
-recorded. The release auditor and final semantic verifiers are unchanged.
+77 finite controls, native64, hostedQBE19, JS45, C45, public-interface gates and
+native/hosted sessions pass. Actual N1/N2/Q3 QBE and N1/N2 assembly/object reproduce.
+Executable code/data match; raw loaded ELF bytes differ in explicitly audited
+section-offset/build-id metadata. Fresh JS B2/B3 checks/reproduces current source.
+Ordinary45 and timed45 QBE plus JS45/C45 products match qualified references exactly.
+Installed cache/live, hosted, session and public commands pass; rollback is retained.
+No generated-program runtime regression is implied by code changes: these benchmark
+products are unchanged. This is not a fresh runtime score or full correctness theorem.
 
-The selector-last installation retains rollback and prior qualified references.
-Use the installed compiler for the next research cycle. The remaining cold-build
-goal is below 150 seconds for this full maintained source; this promotion itself
-does not establish a new architectural speedup. No PR comment posted.
+Phase172/173 architecture experiments remain separate. The next optimization
+campaign must start from this installed source/image and keep the frozen original
+full-source comparison alongside changing-source self-build measurements.
+No PR comment was posted.
 
 ## Phase173 closed — useful local capability, no cold-build win
 
@@ -46,7 +46,7 @@ Those facts do not establish a broad runtime score or a cold-build improvement.
 Same full candidate source: old producer201.615s, new N1 producer209.643s,
 optimized N2 producer204.438s, one observation each. Execution improves2.48%
 between new generations, but complete cost remains1.40% slower than old producer.
-The2,035-line automatic pass is therefore experimental; Phase170 stays installed.
+The2,035-line automatic pass is therefore experimental; Phase170 stayed installed at that close; Phase174 subsequently publishes Phase171.
 The contextual materializer source ceiling is neutral at67.553→68.174ms across
 four balanced pairs. Do not acquire more images for that overlay.
 
@@ -67,15 +67,16 @@ wall time, not agent effort or total research cost. Exact failure/resource
 receipts and cold-intermediate restoration paths are retained. Qualified source,
 runtime, images, controls and profiler dependencies remain intact. No PR comment.
 
-## Current experiment — Phase171100s campaign
+## Historical checkpoint — Phase171 100s campaign
 
 [Checkpoint](../implementation/phase171/README.md) ·
 [Follow-up and next decision](../implementation/phase171/followup.md).
 
-Four private Bend overlays give180.677s versus a fresh188.620s full-source cold
-build,4.21% less, with exact QBE/assembly/object output. This is a single matched
-pair and an experimental native N1, not a new installed or self-reproducing
-selection.100s is not reached; qualified Phase170 remains the research compiler.
+Four private Bend overlays gave 180.677s versus a fresh 188.620s full-source cold
+build, 4.21% less, with exact QBE/assembly/object output. At that checkpoint this
+was a single matched pair and an experimental native N1; Phase170 remained the
+installed research compiler. Phase174 subsequently qualified and published the
+Phase171 version as recorded above. The 100s target remains unmet.
 
 The borrowed-descendant follow-up now promotes99.535% of calls to the selected `index_find` wrapper in the real-verifier
 workload but improves complete runtime only1.25%; lookup and three exact-output

@@ -31,31 +31,41 @@ Use the installed compiler for the next research cycle. The remaining cold-build
 goal is below 150 seconds for this full maintained source; this promotion itself
 does not establish a new architectural speedup. No PR comment posted.
 
-## Active Phase173 architectural experiments
+## Phase173 closed — useful local capability, no cold-build win
 
-[Working report](../implementation/phase173/README.md) ·
-[Design](../design/phase173/README.md) · [Checkpoint](phase173/checkpoint.json).
+[Report](../implementation/phase173/README.md) ·
+[Design](../design/phase173/README.md) · [Final evidence](../implementation/phase173/evidence08/REPRODUCE.md).
 
-The strongest new result is early consuming decomposition of semantic parents.
-Manual pattern/layout variants save20.1%/20.8% on complete compiler computations;
-a general checked QBE prototype saves11.05% on pattern,18.85% on layout and49.95%
-on unrelated multi-argument Packet reconstruction. Independent complete values,
-62 finite controls and native/hosted exact-QBE transfer pass. These are local
-workload results, not full compiler or upstream parity. Ownership reclamation
-falls much more than allocations. Full native candidate08
-now reproduces N2/N3 QBE/assembly/object. Same-source cold builds are201.615s
-with old qualified producer,209.643s with new N1,204.438s with optimized N2.
-One observation each: the self-generated runtime saving2.48% does not recover
-all analysis cost; net is1.40% slower than old producer. Do not promote the
-2,035-line automatic pass as a cold-build win. Native64 and the separate bounded
-context-materializer ceiling are being completed; Phase170 stays installed.
+Early consuming decomposition improves complete pattern/layout computations by
+20.1%/20.8% manually. A general checked QBE pass improves selected unchanged
+programs by11.05–49.95%; independent full values and62 finite controls pass.
+Its full native compiler reproduces N2/N3 QBE/assembly/object/loaded ELF and
+passes64 native cases. Six selected timed wrappers emit exact qualified QBE.
+Those facts do not establish a broad runtime score or a cold-build improvement.
 
-The durable indexed representation initially regressed2.003×. General tail-SCC
-fusion, owned-argument adaptation and direct destinations recover much of this,
-but still trail original terms. Wide return lanes rebox at consumers; its shape
-gate failed before machine construction. Do not promote these representations
-or claim they establish a cold-build breakthrough. Exact negatives and evidence
-are retained. No100-second result or qualified successor is established yet.
+Same full candidate source: old producer201.615s, new N1 producer209.643s,
+optimized N2 producer204.438s, one observation each. Execution improves2.48%
+between new generations, but complete cost remains1.40% slower than old producer.
+The2,035-line automatic pass is therefore experimental; Phase170 stays installed.
+The contextual materializer source ceiling is neutral at67.553→68.174ms across
+four balanced pairs. Do not acquire more images for that overlay.
+
+Indexed storage initially regresses2.003×. General tail-SCC fusion, owned-argument
+adaptation and direct destinations recover much, but the matched original
+comparison still trails1.155×. Wide returns rebox at consumers and fail the shape
+gate. Do not migrate the full compiler based on these pilots.
+
+The suspected stale-body publication bug was falsified: modified prepared bodies
+reach private lowering. The seven relevant recursive-rebuild functions simply
+have no p113d worker; non-tail parent/child-list recursion and non-flat variants
+still obstruct their direct private execution. A future closed, stack-safe
+non-tail region experiment needs its own complete-cost ceiling and transfer gate.
+No100s result or recursive research acceleration was demonstrated.
+
+307 guarded runs total53.01min, including26 failures; this is execution-lane
+wall time, not agent effort or total research cost. Exact failure/resource
+receipts and cold-intermediate restoration paths are retained. Qualified source,
+runtime, images, controls and profiler dependencies remain intact. No PR comment.
 
 ## Current experiment — Phase171100s campaign
 

@@ -1,0 +1,109 @@
+{
+  "kind": "phase173-native-product-pair",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase173/native-pair.py",
+      "bytes": 3973,
+      "sha256": "219a9a447f8b85262adfa2b58eea7f1d635233c2fbe6a0083fd8e7d9651d6f9b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-oracle-native09/report.json",
+      "bytes": 16374,
+      "sha256": "dc6d47e133801c81dba006094b7f296eaf573ce5d691b7f85ce2a77f9dcad2e4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-oracle-native09/report.json",
+      "bytes": 16374,
+      "sha256": "dc6d47e133801c81dba006094b7f296eaf573ce5d691b7f85ce2a77f9dcad2e4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-oracle-native09/program",
+      "bytes": 140984,
+      "sha256": "44d5de9e81a6d38dc94b99b5698cd624effaef2dbb5805de05ccb16a5eec5c81"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-oracle-native09/program.ssa",
+      "bytes": 75596,
+      "sha256": "726db2328f37f4908786f5acf3d7b127c0a4d3e86d7e7a968f7c6ef33f41f200"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-oracle-native09/program",
+      "bytes": 140984,
+      "sha256": "44d5de9e81a6d38dc94b99b5698cd624effaef2dbb5805de05ccb16a5eec5c81"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-oracle-native09/program.ssa",
+      "bytes": 75596,
+      "sha256": "726db2328f37f4908786f5acf3d7b127c0a4d3e86d7e7a968f7c6ef33f41f200"
+    }
+  ],
+  "runs": [
+    {
+      "role": "baseline",
+      "cycle": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-oracle-native09/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.003214034717530012,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-oracle-output09/0-baseline.stdout",
+        "bytes": 7201,
+        "sha256": "131197a31e7c2e88b4e7eb64a71505e8dc9c42c410f2377d3399c4a8a5e47578"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-oracle-output09/0-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-oracle-native09/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.0032166210003197193,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-oracle-output09/0-candidate.stdout",
+        "bytes": 7201,
+        "sha256": "131197a31e7c2e88b4e7eb64a71505e8dc9c42c410f2377d3399c4a8a5e47578"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-oracle-output09/0-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    }
+  ],
+  "rounds": 1,
+  "oracle": "baseline complete output; see source oracle manifest",
+  "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+  "medians": {
+    "baseline": 0.003214034717530012,
+    "candidate": 0.0032166210003197193
+  },
+  "resolved": false
+}

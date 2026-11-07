@@ -1,0 +1,192 @@
+{
+  "kind": "phase173-native-n3-assembly-object-proposal-v7",
+  "complete": true,
+  "targetsRun": false,
+  "archivesCreated": 0,
+  "filesDeleted": 0,
+  "head": "1484319fac0ed27e21444058791c077c54c72603",
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/experiments/phase169/archive-selected-v02.py",
+    "bytes": 6877,
+    "sha256": "f1b5463bbdfa2e1d650da65d896da8268d89de1b8e58f7d7a0a34a68b36a79b9"
+  },
+  "archiveVerifier": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/archive-v02.py",
+    "bytes": 18412,
+    "sha256": "3238e0774c6c21c3de6c07bcbd71e469cbb23aaba01f99da0cb1e9f51990ad9f"
+  },
+  "archiveBudgetPerRootBytes": 33554432,
+  "requiredReserveBytes": 5368709120,
+  "roots": [
+    {
+      "name": "p173-owned-native-n3-08",
+      "root": "selfhost/build/phase173/owned-native-n3-08",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-native-n3-08/report.json",
+        "bytes": 19324,
+        "sha256": "aa594130f59ff52837bcd7b4b93e9fbf030fdde91e993d6f5a1b77cb3e86ae35"
+      },
+      "guards": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-native-n3-08-guard/process.json",
+          "bytes": 3720,
+          "sha256": "b88721b22c3b0a993fd3608e9053d4a8e33af556616c0c091a1b66bf2b47b4d9"
+        }
+      ],
+      "lifecycle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-native-n3-08-guard/retention.json",
+        "bytes": 1054,
+        "sha256": "8eb4ae8a571ddf6f8bae7eea52551b7210d45829a108ed825ae5957388791d2c"
+      },
+      "closure": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase173/owned-native-n3-08-close/report.json",
+        "bytes": 1454,
+        "sha256": "9d4f7e869c2f1251c1eaf1cdaf2b2cbfd8fc5dd982922fbc5043a5208f524682"
+      },
+      "classification": "completed",
+      "status": "Completed N3 fixed-point build; archive assembly/object only. No N3 SSA exists. Executable, N2 oracle, source/runtime and receipts stay hot.",
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase173/owned-native-n3-08/program.s",
+          "bytes": 75400299,
+          "sha256": "f54a07868efa7f1ae691d2c5c760b06653d4766a3dbea2b9b9242e40d4cb34ba",
+          "metadata": {
+            "device": 2306,
+            "inode": 79694173,
+            "size": 75400299,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794019217351222161,
+            "ctimeNs": 1794019217351222161,
+            "allocatedBytes": 75407360
+          }
+        },
+        {
+          "file": "selfhost/build/phase173/owned-native-n3-08/program.o",
+          "bytes": 21444880,
+          "sha256": "d3141d68e51beeee8e84e60257363f3a0e9b08e4d5d82fa26a889d79853300d2",
+          "metadata": {
+            "device": 2306,
+            "inode": 79694194,
+            "size": 21444880,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794019222307070251,
+            "ctimeNs": 1794019222307070251,
+            "allocatedBytes": 21446656
+          }
+        }
+      ],
+      "allocatedBytes": 96854016
+    }
+  ],
+  "selectedFiles": 2,
+  "allocatedBytes": 96854016,
+  "retainedImage": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-native-n3-08/program",
+    "bytes": 16506488,
+    "sha256": "066c0813d71d5c885e8aad46ef9f97a8a36d8aa9199f00838702914dfa6b0515"
+  },
+  "retainedN2Report": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-native-n2-08/report.json",
+    "bytes": 18413,
+    "sha256": "d7781dd149aa9b0ac309b7140f1272c1eae488b0b765692b8b496f82c32dbd62"
+  },
+  "retainedOracle": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-native-n2-08/program.ssa",
+    "bytes": 100278749,
+    "sha256": "a3ccea7189234d0b52b4b3669da93b616f52a2eb3e8b893c437d11efcf286068"
+  },
+  "fixedPointEvidence": {
+    "n2IR": {
+      "bytes": 100278749,
+      "sha256": "a3ccea7189234d0b52b4b3669da93b616f52a2eb3e8b893c437d11efcf286068"
+    },
+    "n3IR": {
+      "bytes": 100278749,
+      "sha256": "a3ccea7189234d0b52b4b3669da93b616f52a2eb3e8b893c437d11efcf286068"
+    },
+    "comparedToReference": true,
+    "assemblyBytesAndHashMatch": true,
+    "objectBytesAndHashMatch": true,
+    "binaryBytesAndHashMatch": false,
+    "scope": "N2/N3 QBE, assembly and object match their completed receipts; both distinct executable artifacts remain hot. This does not claim whole-language correctness."
+  },
+  "imageConsumerAudit": {
+    "requestMethod": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/request.py",
+      "bytes": 18653,
+      "sha256": "f2638c055de2de15c80b8e36d888337a3061f8f7725c55f16ad645943562566c"
+    },
+    "nativeMethod": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/native.py",
+      "bytes": 13731,
+      "sha256": "bc53fc000d45574e913904f7e899d785e5c98050b0942d14a81118b9ab009e58"
+    },
+    "imageBinding": {
+      "kind": "bend-build-image-binding",
+      "version": 1,
+      "complete": true,
+      "image": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-native-n3-08/program",
+        "bytes": 16506488,
+        "sha256": "066c0813d71d5c885e8aad46ef9f97a8a36d8aa9199f00838702914dfa6b0515"
+      },
+      "sourceIdentity": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-native-source08/compiler.bend",
+        "bytes": 3205249,
+        "sha256": "8536e598ee618e401fafed82e9e75f0d32e13c697a13ddbd5f2de23639e6c3c6"
+      },
+      "host": "native",
+      "stage": "N3",
+      "protocol": "qbe-source-v1",
+      "targets": [
+        "qbe"
+      ],
+      "linkedRuntime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+        "bytes": 119096,
+        "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+      },
+      "producer": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-native-n2-08/program",
+        "bytes": 16506488,
+        "sha256": "f3518ac593b20c683cb8297385a7f17148e45efe812d87b45746eec0c2290f1d"
+      },
+      "producerHost": "native",
+      "producerStage": "N2",
+      "qualification": "Built; semantic/self-host qualification is separate."
+    },
+    "assessment": "Unchanged request.image_binding reads executable+receipt, not assembly/object outputs. Source/runtime/assets remain available. Prior audited command logic is reused; no broad graph scan was repeated."
+  },
+  "capacity": {
+    "freeBytesAtReview": 5431988224,
+    "aboveReserveBytesAtReview": 63279104,
+    "conditionalArchiveNetLowerBoundBytes": 63299584,
+    "conditionalAboveReserveAfterBytes": 126578688,
+    "estimatedArchiveBytes": 12054153,
+    "estimatedNetBytes": 84799863,
+    "estimatedAboveReserveAfterBytes": 148078967,
+    "sameContentN2Capture": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase169/p173-owned-native-n2-08/capture.json",
+      "bytes": 649,
+      "sha256": "c1929ec7f116ae9e80aebd64792aa9418ff0e0aad8243d5050c90f1260f9e6e8"
+    },
+    "limitations": "Actual same-content N2 archive is the estimate basis; tar metadata can change compressed bytes slightly. Remeasure after apply; conditional floor excludes small receipts and unrelated writers."
+  },
+  "protected": [
+    "N3 program and all reports/image bindings",
+    "distinct N2 program and retained N2/program.ssa fixed-point oracle",
+    "all source/runtime, target/toolchain assets, original guards/lifecycles/closures and every unlisted file",
+    "qualified/installed compiler chains, profiler inputs and shared Phase32 execution lock"
+  ],
+  "limitations": [
+    "No target/capture/apply ran; exact-root metadata review only, no broad graph campaign.",
+    "Existing helper is compatible; root must enforce 5 GiB+32 MiB before capture since frozen helper internally checks 4 GiB.",
+    "Future N3 relinking/assembly inspection requires archive restore; execution through --image/--image-receipt remains supported."
+  ]
+}

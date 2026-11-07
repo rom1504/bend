@@ -1,0 +1,495 @@
+{
+  "kind": "phase173-cold-native-bulk-reference-audit-v10",
+  "complete": true,
+  "targetsRun": false,
+  "scope": [
+    "selfhost/build/phase173",
+    "selfhost/manifests",
+    "selfhost/tools/profiler",
+    "selfhost/tools/native",
+    "selfhost/tests/phase173",
+    "experiments/phase173"
+  ],
+  "method": "One bounded metadata/method-source byte scan; no dependency graph recursion and no historical phase traversal.",
+  "fileSelection": "Phase173 report/process/retention/request/binding/ready/manifest JSON; maintained manifests and profiler/native tools; Phase173 test/experiment JSON/Python/JS/shell methods. Large compiler/API/source and IR excluded.",
+  "filesRead": 1385,
+  "bytesRead": 112496150,
+  "seconds": 0.2772786794230342,
+  "selectedRoots": {
+    "store-native-oracle02": [
+      "program.ssa"
+    ],
+    "context-digest-native10": [
+      "program.s",
+      "program.o"
+    ],
+    "context-digest-baseline10": [
+      "program.s",
+      "program.o"
+    ],
+    "borrow-ast-oracle-machine01": [
+      "program.ssa",
+      "program.s",
+      "program.o"
+    ],
+    "store-native-candidate02": [
+      "program.ssa"
+    ],
+    "store-flat7-native01": [
+      "program.ssa"
+    ],
+    "store-direct-native01": [
+      "program.ssa"
+    ],
+    "store-native-baseline02": [
+      "program.ssa"
+    ]
+  },
+  "hits": [
+    {
+      "file": "experiments/phase173/storage-applied02.json",
+      "roots": [
+        "store-native-oracle02",
+        "store-native-candidate02",
+        "store-flat7-native01",
+        "store-direct-native01",
+        "store-native-baseline02"
+      ],
+      "exactLeaves": []
+    },
+    {
+      "file": "experiments/phase173/storage-proposal02.json",
+      "roots": [
+        "store-native-oracle02",
+        "store-native-candidate02",
+        "store-flat7-native01",
+        "store-direct-native01",
+        "store-native-baseline02"
+      ],
+      "exactLeaves": []
+    },
+    {
+      "file": "experiments/phase173/storage-proposal03.json",
+      "roots": [
+        "borrow-ast-oracle-machine01",
+        "store-native-baseline02"
+      ],
+      "exactLeaves": [
+        "borrow-ast-oracle-machine01/program.ssa",
+        "borrow-ast-oracle-machine01/program.s",
+        "borrow-ast-oracle-machine01/program.o",
+        "store-native-baseline02/program.ssa"
+      ]
+    },
+    {
+      "file": "experiments/phase173/store-code-shape.json",
+      "roots": [
+        "store-native-candidate02"
+      ],
+      "exactLeaves": [
+        "store-native-candidate02/program.ssa"
+      ]
+    },
+    {
+      "file": "experiments/phase173/vertical-admission-qbe.json",
+      "roots": [
+        "store-native-candidate02"
+      ],
+      "exactLeaves": [
+        "store-native-candidate02/program.ssa"
+      ]
+    },
+    {
+      "file": "selfhost/build/phase173/abi-direct-store-pair03/report.json",
+      "roots": [
+        "store-native-baseline02"
+      ],
+      "exactLeaves": [
+        "store-native-baseline02/program.ssa"
+      ]
+    },
+    {
+      "file": "selfhost/build/phase173/abi-direct-store-pair03-guard/process.json",
+      "roots": [
+        "store-native-baseline02"
+      ],
+      "exactLeaves": []
+    },
+    {
+      "file": "selfhost/build/phase173/abi-store-pair03/report.json",
+      "roots": [
+        "store-native-baseline02"
+      ],
+      "exactLeaves": [
+        "store-native-baseline02/program.ssa"
+      ]
+    },
+    {
+      "file": "selfhost/build/phase173/abi-store-pair03-guard/process.json",
+      "roots": [
+        "store-native-baseline02"
+      ],
+      "exactLeaves": []
+    },
+    {
+      "file": "selfhost/build/phase173/borrow-ast-oracle-machine01/report.json",
+      "roots": [
+        "borrow-ast-oracle-machine01"
+      ],
+      "exactLeaves": [
+        "borrow-ast-oracle-machine01/program.ssa",
+        "borrow-ast-oracle-machine01/program.s",
+        "borrow-ast-oracle-machine01/program.o"
+      ]
+    },
+    {
+      "file": "selfhost/build/phase173/borrow-ast-oracle-machine01-guard/process.json",
+      "roots": [
+        "borrow-ast-oracle-machine01"
+      ],
+      "exactLeaves": []
+    },
+    {
+      "file": "selfhost/build/phase173/borrow-ast-oracle-machine01-guard/retention.json",
+      "roots": [
+        "borrow-ast-oracle-machine01"
+      ],
+      "exactLeaves": []
+    },
+    {
+      "file": "selfhost/build/phase173/borrow-ast-oracle-output01/report.json",
+      "roots": [
+        "borrow-ast-oracle-machine01"
+      ],
+      "exactLeaves": [
+        "borrow-ast-oracle-machine01/program.ssa",
+        "borrow-ast-oracle-machine01/program.s"
+      ]
+    },
+    {
+      "file": "selfhost/build/phase173/borrow-ast-oracle-output01-guard/process.json",
+      "roots": [
+        "borrow-ast-oracle-machine01"
+      ],
+      "exactLeaves": []
+    },
+    {
+      "file": "selfhost/build/phase173/borrow-wide-store-pair06/report.json",
+      "roots": [
+        "store-native-baseline02"
+      ],
+      "exactLeaves": [
+        "store-native-baseline02/program.ssa"
+      ]
+    },
+    {
+      "file": "selfhost/build/phase173/borrow-wide-store-pair06-guard/process.json",
+      "roots": [
+        "store-native-baseline02"
+      ],
+      "exactLeaves": []
+    },
+    {
+      "file": "selfhost/build/phase173/context-digest-baseline10/report.json",
+      "roots": [
+        "context-digest-baseline10"
+      ],
+      "exactLeaves": [
+        "context-digest-baseline10/program.s",
+        "context-digest-baseline10/program.o"
+      ]
+    },
+    {
+      "file": "selfhost/build/phase173/context-digest-baseline10-guard/process.json",
+      "roots": [
+        "context-digest-baseline10"
+      ],
+      "exactLeaves": []
+    },
+    {
+      "file": "selfhost/build/phase173/context-digest-baseline10-guard/retention.json",
+      "roots": [
+        "context-digest-baseline10"
+      ],
+      "exactLeaves": []
+    },
+    {
+      "file": "selfhost/build/phase173/context-digest-native10/report.json",
+      "roots": [
+        "context-digest-native10"
+      ],
+      "exactLeaves": [
+        "context-digest-native10/program.s",
+        "context-digest-native10/program.o"
+      ]
+    },
+    {
+      "file": "selfhost/build/phase173/context-digest-native10-guard/process.json",
+      "roots": [
+        "context-digest-native10"
+      ],
+      "exactLeaves": []
+    },
+    {
+      "file": "selfhost/build/phase173/context-digest-native10-guard/retention.json",
+      "roots": [
+        "context-digest-native10"
+      ],
+      "exactLeaves": []
+    },
+    {
+      "file": "selfhost/build/phase173/context-digest-pair10/report.json",
+      "roots": [
+        "context-digest-native10",
+        "context-digest-baseline10"
+      ],
+      "exactLeaves": []
+    },
+    {
+      "file": "selfhost/build/phase173/context-digest-pair10-guard/process.json",
+      "roots": [
+        "context-digest-native10",
+        "context-digest-baseline10"
+      ],
+      "exactLeaves": []
+    },
+    {
+      "file": "selfhost/build/phase173/scc-store-pair01/report.json",
+      "roots": [
+        "store-native-candidate02"
+      ],
+      "exactLeaves": [
+        "store-native-candidate02/program.ssa"
+      ]
+    },
+    {
+      "file": "selfhost/build/phase173/scc-store-pair01-guard/process.json",
+      "roots": [
+        "store-native-candidate02"
+      ],
+      "exactLeaves": []
+    },
+    {
+      "file": "selfhost/build/phase173/store-direct-native01/report.json",
+      "roots": [
+        "store-direct-native01"
+      ],
+      "exactLeaves": [
+        "store-direct-native01/program.ssa"
+      ]
+    },
+    {
+      "file": "selfhost/build/phase173/store-direct-native01-guard/process.json",
+      "roots": [
+        "store-direct-native01"
+      ],
+      "exactLeaves": []
+    },
+    {
+      "file": "selfhost/build/phase173/store-direct-native01-guard/retention.json",
+      "roots": [
+        "store-direct-native01"
+      ],
+      "exactLeaves": []
+    },
+    {
+      "file": "selfhost/build/phase173/store-direct-pair01/report.json",
+      "roots": [
+        "store-direct-native01",
+        "store-native-baseline02"
+      ],
+      "exactLeaves": [
+        "store-direct-native01/program.ssa",
+        "store-native-baseline02/program.ssa"
+      ]
+    },
+    {
+      "file": "selfhost/build/phase173/store-direct-pair01-guard/process.json",
+      "roots": [
+        "store-direct-native01",
+        "store-native-baseline02"
+      ],
+      "exactLeaves": []
+    },
+    {
+      "file": "selfhost/build/phase173/store-flat7-native01/report.json",
+      "roots": [
+        "store-flat7-native01"
+      ],
+      "exactLeaves": [
+        "store-flat7-native01/program.ssa"
+      ]
+    },
+    {
+      "file": "selfhost/build/phase173/store-flat7-native01-guard/process.json",
+      "roots": [
+        "store-flat7-native01"
+      ],
+      "exactLeaves": []
+    },
+    {
+      "file": "selfhost/build/phase173/store-flat7-native01-guard/retention.json",
+      "roots": [
+        "store-flat7-native01"
+      ],
+      "exactLeaves": []
+    },
+    {
+      "file": "selfhost/build/phase173/store-flat7-pair01/report.json",
+      "roots": [
+        "store-flat7-native01",
+        "store-native-baseline02"
+      ],
+      "exactLeaves": [
+        "store-flat7-native01/program.ssa",
+        "store-native-baseline02/program.ssa"
+      ]
+    },
+    {
+      "file": "selfhost/build/phase173/store-flat7-pair01-guard/process.json",
+      "roots": [
+        "store-flat7-native01",
+        "store-native-baseline02"
+      ],
+      "exactLeaves": []
+    },
+    {
+      "file": "selfhost/build/phase173/store-native-baseline02/report.json",
+      "roots": [
+        "store-native-baseline02"
+      ],
+      "exactLeaves": [
+        "store-native-baseline02/program.ssa"
+      ]
+    },
+    {
+      "file": "selfhost/build/phase173/store-native-baseline02-guard/process.json",
+      "roots": [
+        "store-native-baseline02"
+      ],
+      "exactLeaves": []
+    },
+    {
+      "file": "selfhost/build/phase173/store-native-baseline02-guard/retention.json",
+      "roots": [
+        "store-native-baseline02"
+      ],
+      "exactLeaves": []
+    },
+    {
+      "file": "selfhost/build/phase173/store-native-candidate02/report.json",
+      "roots": [
+        "store-native-candidate02"
+      ],
+      "exactLeaves": [
+        "store-native-candidate02/program.ssa"
+      ]
+    },
+    {
+      "file": "selfhost/build/phase173/store-native-candidate02-guard/process.json",
+      "roots": [
+        "store-native-candidate02"
+      ],
+      "exactLeaves": []
+    },
+    {
+      "file": "selfhost/build/phase173/store-native-candidate02-guard/retention.json",
+      "roots": [
+        "store-native-candidate02"
+      ],
+      "exactLeaves": []
+    },
+    {
+      "file": "selfhost/build/phase173/store-native-oracle-run02-guard/process.json",
+      "roots": [
+        "store-native-oracle02"
+      ],
+      "exactLeaves": []
+    },
+    {
+      "file": "selfhost/build/phase173/store-native-oracle-run03/report.json",
+      "roots": [
+        "store-native-oracle02"
+      ],
+      "exactLeaves": [
+        "store-native-oracle02/program.ssa"
+      ]
+    },
+    {
+      "file": "selfhost/build/phase173/store-native-oracle-run03-guard/process.json",
+      "roots": [
+        "store-native-oracle02"
+      ],
+      "exactLeaves": []
+    },
+    {
+      "file": "selfhost/build/phase173/store-native-oracle02/report.json",
+      "roots": [
+        "store-native-oracle02"
+      ],
+      "exactLeaves": [
+        "store-native-oracle02/program.ssa"
+      ]
+    },
+    {
+      "file": "selfhost/build/phase173/store-native-oracle02-guard/process.json",
+      "roots": [
+        "store-native-oracle02"
+      ],
+      "exactLeaves": []
+    },
+    {
+      "file": "selfhost/build/phase173/store-native-oracle02-guard/retention.json",
+      "roots": [
+        "store-native-oracle02"
+      ],
+      "exactLeaves": []
+    },
+    {
+      "file": "selfhost/build/phase173/store-native-pair01/report.json",
+      "roots": [
+        "store-native-candidate02",
+        "store-native-baseline02"
+      ],
+      "exactLeaves": [
+        "store-native-candidate02/program.ssa",
+        "store-native-baseline02/program.ssa"
+      ]
+    },
+    {
+      "file": "selfhost/build/phase173/store-native-pair01-guard/process.json",
+      "roots": [
+        "store-native-candidate02",
+        "store-native-baseline02"
+      ],
+      "exactLeaves": []
+    },
+    {
+      "file": "selfhost/build/phase173/wide-store-event-base-run01/report.json",
+      "roots": [
+        "store-native-baseline02"
+      ],
+      "exactLeaves": [
+        "store-native-baseline02/program.ssa"
+      ]
+    },
+    {
+      "file": "selfhost/build/phase173/wide-store-event-base01/report.json",
+      "roots": [
+        "store-native-baseline02"
+      ],
+      "exactLeaves": [
+        "store-native-baseline02/program.ssa"
+      ]
+    },
+    {
+      "file": "selfhost/build/phase173/wide-store-event-base01-guard/process.json",
+      "roots": [
+        "store-native-baseline02"
+      ],
+      "exactLeaves": [
+        "store-native-baseline02/program.ssa"
+      ]
+    }
+  ]
+}

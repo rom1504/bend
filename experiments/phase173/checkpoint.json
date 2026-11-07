@@ -1,5 +1,5 @@
 {
-  "status": "in progress, no production changes",
+  "status": "experimental campaign complete; no production promotion; 100s goal not reached",
   "qualified": "Phase170",
   "designCommit": "dc0440a",
   "store": {
@@ -41,8 +41,8 @@
     "vertical-base-api01",
     "borrow-api01"
   ],
-  "caveat": "Older fields describe immutable checkpoints; latest automatic full-chain result pending. N1 QBE is archived exactly and is not the N2 fixed-point oracle.",
-  "next": "Finish bounded native correctness and contextual-materializer ceiling; keep qualified Phase170 installed.",
+  "caveat": "Historical early fields remain immutable checkpoint references. Later generated intermediates may require exact restoration via stored retention capsules.",
+  "next": "No further run pending. Next research hypothesis is a closed stack-safe non-tail region with measured complete-cost ceiling; migration not justified by current pilots.",
   "automaticOwnedDecomposition": {
     "source": "owned-decomposition-multi-source08/manifest.json",
     "checked": "owned-decomposition-multi-api08/report.json",
@@ -63,6 +63,17 @@
     "nativeN3": "owned-native-n3-08/report.json",
     "nativeN3Seconds": 204.43798394780606,
     "nativeQbeFixedPoint": true,
-    "selection": "Not promoted: complete same-source build is1.40% slower than qualified producer in one observation."
+    "selection": "Not promoted: complete same-source build is1.40% slower than qualified producer in one observation.",
+    "nativeQualification": "owned-native64-08/report.json",
+    "nativeQualificationCases": 64,
+    "qualityScreen": "owned-quality-screen08/report.json",
+    "timedQbeExactCases": 6,
+    "loadedElfEqual": true
+  },
+  "context": {
+    "fullValues": "context-value-pair10/report.json",
+    "digestPairs": "context-digest-pair10/report.json",
+    "ratio": 1.0091821534777585,
+    "selection": "Neutral, not selected"
   }
 }

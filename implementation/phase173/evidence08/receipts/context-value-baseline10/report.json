@@ -1,0 +1,235 @@
+{
+  "kind": "bend-native-build",
+  "version": 1,
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-value-baseline09/program.ssa",
+      "bytes": 17022733,
+      "sha256": "686644b13ba9dc99231e930ea72f949d9f95e9d9d6d366b37bf6f373fa883369"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/manifests/assets-native.json",
+      "bytes": 18715,
+      "sha256": "3d19a8b9f801fabc1de6dc5f484c7d20a795047776d1390a4bdea98e42b3e6b7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/native.py",
+      "bytes": 13731,
+      "sha256": "bc53fc000d45574e913904f7e899d785e5c98050b0942d14a81118b9ab009e58"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/assets.py",
+      "bytes": 7994,
+      "sha256": "02a8b03647f5a6292502363fc1bb79147b61196a9271c21cee55a2ec6bf64dba"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/request.py",
+      "bytes": 18653,
+      "sha256": "f2638c055de2de15c80b8e36d888337a3061f8f7725c55f16ad645943562566c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/common.py",
+      "bytes": 4809,
+      "sha256": "d9a16fef18cf936499e51f8c7f36a653f2921ef9a50f846257c2e8bc460ec6d1"
+    },
+    {
+      "file": "/usr/bin/python3.9",
+      "bytes": 5451288,
+      "sha256": "ca7655083b581ffe36c72dcb445857704db533ca39b03f79c97d8d0ef3bef9af"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/qbe",
+      "bytes": 262024,
+      "sha256": "1eca24288f9574ad57032ac88f11c3f74ced605838749226d77a9acd4443e5f4"
+    },
+    {
+      "file": "/usr/bin/x86_64-linux-gnu-as",
+      "bytes": 472248,
+      "sha256": "fac4e966afe9223dbab23aa15d27d144af81de4a44c8cad97c1dde290adb9493"
+    },
+    {
+      "file": "/usr/bin/x86_64-linux-gnu-gcc-10",
+      "bytes": 817704,
+      "sha256": "693abcb42e67fb871673f258a3644257ca69a209691ec4d8137a42442834bd19"
+    }
+  ],
+  "host": null,
+  "target": "qbe",
+  "stage": null,
+  "request": null,
+  "sourceIR": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-value-baseline09/program.ssa",
+    "bytes": 17022733,
+    "sha256": "686644b13ba9dc99231e930ea72f949d9f95e9d9d6d366b37bf6f373fa883369"
+  },
+  "runtime": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+    "bytes": 119096,
+    "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+  },
+  "runtimePolicy": {
+    "threads": 1,
+    "gpu": "off",
+    "bendHeapMutators": 1,
+    "hostIoWorkersAllowed": true,
+    "providerScope": "Pinned direct-QBE foreign provider table; no arbitrary C embedding or foreign callbacks."
+  },
+  "compilerCommand": null,
+  "qbeCommand": [
+    "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/qbe",
+    "-t",
+    "amd64_sysv",
+    "-o",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-value-baseline10/program.s",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-value-baseline09/program.ssa"
+  ],
+  "toolchain": {
+    "target": "amd64_sysv",
+    "assemblerFlags": [
+      "-mbranches-within-32B-boundaries"
+    ],
+    "linkerFlags": [
+      "-no-pie"
+    ],
+    "libraries": [
+      "-pthread",
+      "-lm"
+    ]
+  },
+  "jobs": [
+    {
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/qbe",
+        "-t",
+        "amd64_sysv",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-value-baseline10/program.s",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-value-baseline09/program.ssa"
+      ],
+      "limitSeconds": 29.999605800025165,
+      "complete": true,
+      "started": 1794019865.0472038,
+      "exitCode": 0,
+      "userSeconds": 1.357444,
+      "systemSeconds": 0.020021,
+      "peakRssKiB": 10840,
+      "timedOut": false,
+      "seconds": 1.3798234830610454,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-value-baseline10/qbe.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-value-baseline10/qbe.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "label": "qbe"
+    },
+    {
+      "command": [
+        "/usr/bin/x86_64-linux-gnu-as",
+        "-mbranches-within-32B-boundaries",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-value-baseline10/program.o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-value-baseline10/program.s"
+      ],
+      "limitSeconds": 28.47445312468335,
+      "complete": true,
+      "started": 1794019866.5723789,
+      "exitCode": 0,
+      "userSeconds": 0.663914,
+      "systemSeconds": 0.059992,
+      "peakRssKiB": 147148,
+      "timedOut": false,
+      "seconds": 0.725094080902636,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-value-baseline10/assemble.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-value-baseline10/assemble.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "label": "assemble"
+    },
+    {
+      "command": [
+        "/usr/bin/x86_64-linux-gnu-gcc-10",
+        "-no-pie",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-value-baseline10/program.o",
+        "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+        "-pthread",
+        "-lm",
+        "-o",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-value-baseline10/program"
+      ],
+      "limitSeconds": 27.732779394835234,
+      "complete": true,
+      "started": 1794019867.3140419,
+      "exitCode": 0,
+      "userSeconds": 0.041406,
+      "systemSeconds": 0.007771999999999999,
+      "peakRssKiB": 17664,
+      "timedOut": false,
+      "seconds": 0.050168975722044706,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-value-baseline10/link.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-value-baseline10/link.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "label": "link"
+    }
+  ],
+  "retainIR": false,
+  "expectedQbe": null,
+  "expectedStdout": null,
+  "comparedToReference": false,
+  "relayLimitBytes": 65536,
+  "maximumRelayBytes": 0,
+  "machineDiagnosticPolicy": "Assembler/linker warnings retained on zero exit; compiler/QBE/execution stderr fails.",
+  "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+  "timingScope": "Whole emission/machine pipeline after preflight, under one outer disk/process guard.",
+  "wallSeconds": 2.40977022331208,
+  "irDigest": {
+    "bytes": 17022733,
+    "sha256": "686644b13ba9dc99231e930ea72f949d9f95e9d9d6d366b37bf6f373fa883369"
+  },
+  "emitAndQbeSeconds": 1.45063048414886,
+  "assembly": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-value-baseline10/program.s",
+    "bytes": 12502136,
+    "sha256": "9d2586b92334f13ab887fe1f5338b6fa647ce791cc743e5d19e8c23e62864690"
+  },
+  "object": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-value-baseline10/program.o",
+    "bytes": 3563816,
+    "sha256": "6c21e13090f0c48dce285e183d634d1431b907a0d8c99e0ee8a26e922ee531c7"
+  },
+  "binary": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-value-baseline10/program",
+    "bytes": 2844384,
+    "sha256": "895703a03325ad733d9dceaab45d95a5e356f81ec5731a21b0a378bc8617d846"
+  },
+  "processes": [],
+  "changedInputs": [],
+  "qbeStderr": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-value-baseline10/qbe.stderr",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

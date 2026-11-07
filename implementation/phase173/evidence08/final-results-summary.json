@@ -1,0 +1,258 @@
+{
+  "kind": "phase173-final-bounded-results",
+  "contextPairs": [
+    {
+      "name": "context-value-pair10",
+      "medians": {
+        "baseline": 0.0070708319544792175,
+        "candidate": 0.0069921319372951984
+      },
+      "ratio": null,
+      "rounds": 1,
+      "resolved": false,
+      "allOutputsExact": true,
+      "decision": "Correctness only; below timing floor."
+    },
+    {
+      "name": "context-digest-pair10",
+      "medians": {
+        "baseline": 0.06755345733836293,
+        "candidate": 0.068173743551597
+      },
+      "ratio": 1.0091821534777585,
+      "rounds": 4,
+      "resolved": true,
+      "allOutputsExact": true,
+      "decision": "Not selected: neutral runtime outcome; full-value pair below timing floor."
+    }
+  ],
+  "contextIndependentValues": [
+    {
+      "baseline": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-oracle-value09/value.json",
+        "bytes": 70608,
+        "sha256": "c5385ecfb126f8d3ca21b3752c29952d00208ed19a5cea021cbe36359ee84c02"
+      },
+      "candidate": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-candidate-value09/value.json",
+        "bytes": 70608,
+        "sha256": "c5385ecfb126f8d3ca21b3752c29952d00208ed19a5cea021cbe36359ee84c02"
+      },
+      "completeBytesEqual": true
+    },
+    {
+      "baseline": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-digest-oracle09/value.json",
+        "bytes": 10,
+        "sha256": "db52c95b82ab750a5e932c3c29ca8b40346bbdb815b1e88686bfd0b8c492d46e"
+      },
+      "candidate": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-digest-candidate-value09/value.json",
+        "bytes": 10,
+        "sha256": "db52c95b82ab750a5e932c3c29ca8b40346bbdb815b1e88686bfd0b8c492d46e"
+      },
+      "completeBytesEqual": true
+    }
+  ],
+  "native64": {
+    "passed": true,
+    "counts": {
+      "pass": 64,
+      "fail": 0,
+      "unsupported": 0
+    },
+    "fullConformance": false,
+    "scope": "Focused19/broad45 regression sources with retained independent whole-output oracles. No performance, kernel-proof, unrestricted-provider, GPU or multi-mutator qualification."
+  },
+  "qualityScreen": {
+    "complete": true,
+    "allExact": true,
+    "cases": [
+      {
+        "id": "editdist",
+        "exact": true,
+        "exitCode": 0
+      },
+      {
+        "id": "tree-bitonic",
+        "exact": true,
+        "exitCode": 0
+      },
+      {
+        "id": "test-morning-program",
+        "exact": true,
+        "exitCode": 0
+      },
+      {
+        "id": "test-rle-roundtrip",
+        "exact": true,
+        "exitCode": 0
+      },
+      {
+        "id": "coverage-record-aggregation-256",
+        "exact": true,
+        "exitCode": 0
+      },
+      {
+        "id": "coverage-map-churn-128",
+        "exact": true,
+        "exitCode": 0
+      }
+    ],
+    "scope": "Six exact QBE comparisons, no runtime score."
+  },
+  "nativeSuccessor": {
+    "qbeEqual": true,
+    "assemblyEqual": true,
+    "objectEqual": true,
+    "fullELFEqual": false,
+    "loadImageEqual": true
+  },
+  "generationDiff": {
+    "counts": {
+      "identical": 14881,
+      "changed": 7918,
+      "added": 40460,
+      "removed": 40446
+    },
+    "byteDelta": 85740,
+    "scope": "Exact lexical declaration comparison; generated-ID movement inflates add/remove counts. Not a semantic optimization count."
+  },
+  "streamedHarnessControls": {
+    "kind": "phase173-streamed-pair-provenance-controls",
+    "complete": true,
+    "targetsRun": false,
+    "syntax": true,
+    "inputs": [
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase173/native-pair-streamed.py",
+        "bytes": 12062,
+        "sha256": "15c5200aa9a764a3f7499d5b21b0ff4d910258defb123429164f19f963d990e7"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/common.py",
+        "bytes": 4809,
+        "sha256": "d9a16fef18cf936499e51f8c7f36a653f2921ef9a50f846257c2e8bc460ec6d1"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-value-baseline10/report.json",
+        "bytes": 8780,
+        "sha256": "20409734377a34355c0fd789b90e9dde0b24b233446996f0e3a924009aca9b50"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-value-baseline09/report.json",
+        "bytes": 13688,
+        "sha256": "d037b91eb830e7983ab24c6374a6bedff844bbe7dbc1978f0f42af7b643d353f"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-native-n3-08/report.json",
+        "bytes": 19324,
+        "sha256": "aa594130f59ff52837bcd7b4b93e9fbf030fdde91e993d6f5a1b77cb3e86ae35"
+      }
+    ],
+    "positive": [
+      {
+        "case": "recovered-ir",
+        "accepted": true,
+        "authenticatedPins": 25,
+        "originalEmissionBuildComplete": false,
+        "retainedIR": true
+      },
+      {
+        "case": "streamed-source",
+        "accepted": true,
+        "authenticatedPins": 24,
+        "originalEmissionBuildComplete": true,
+        "retainedIR": false
+      }
+    ],
+    "negative": [
+      {
+        "case": "incomplete-product",
+        "refused": true,
+        "reason": "Completed unchanged build required"
+      },
+      {
+        "case": "changed-build-input",
+        "refused": true,
+        "reason": "Completed unchanged build required"
+      },
+      {
+        "case": "failed-producer",
+        "refused": true,
+        "reason": "Successful complete source emission required"
+      },
+      {
+        "case": "failed-qbe",
+        "refused": true,
+        "reason": "Successful complete source emission required"
+      },
+      {
+        "case": "producer-diagnostics",
+        "refused": true,
+        "reason": "Unexpected producer/QBE diagnostics"
+      },
+      {
+        "case": "missing-link",
+        "refused": true,
+        "reason": "Incomplete/reordered machine construction"
+      },
+      {
+        "case": "unbound-runtime",
+        "refused": true,
+        "reason": "Conflicting artifact identities: /home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o"
+      },
+      {
+        "case": "unpinned-qbe",
+        "refused": true,
+        "reason": "Unpinned executable: qbe"
+      },
+      {
+        "case": "unbound-source",
+        "refused": true,
+        "reason": "Conflicting artifact identities: /home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-native-source08/compiler.bend"
+      },
+      {
+        "case": "unbound-image",
+        "refused": true,
+        "reason": "Conflicting artifact identities: /home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-native-n2-08/program"
+      },
+      {
+        "case": "empty-stream",
+        "refused": true,
+        "reason": "Nonempty complete stream digest required"
+      },
+      {
+        "case": "rebuild-without-emission",
+        "refused": true,
+        "reason": "Supplied IR needs original --ROLE-emission receipt"
+      },
+      {
+        "case": "different-emission",
+        "refused": true,
+        "reason": "Original emission differs from supplied IR"
+      },
+      {
+        "case": "failed-original-emission",
+        "refused": true,
+        "reason": "Successful complete source emission required"
+      },
+      {
+        "case": "changed-original-input",
+        "refused": true,
+        "reason": "Original emission inputs changed"
+      }
+    ],
+    "scope": "Read-only receipt authentication and mutated receipt refusal; no compiled program or timing harness main executed."
+  },
+  "guardedCostTotals": {
+    "receipts": 307,
+    "terminalRuns": 307,
+    "successes": 281,
+    "failures": 26,
+    "unfinished": 0,
+    "guardedWallSeconds": 3180.862403015606,
+    "peakTreeRssBytesMaximum": 2446970880
+  },
+  "pending": []
+}

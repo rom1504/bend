@@ -1,6 +1,6 @@
 # Phase173 — reduce the work and the cost of executing it
 
-Status: implementation and experiments. Parent `5a2d9c0`; qualified reference
+Status: experimental campaign complete; production migration not selected. Parent `5a2d9c0`; qualified reference
 remains Phase170. The user authorized the complete investigation, implementation,
 and qualification of the proposed successor architecture. This document records
 selection gates, not an assertion that any speculative design will be promoted.
@@ -134,3 +134,16 @@ Report clean medians/ranges, full output identity and per-workload regressions.
 Keep generated-code quality, compiler throughput and research throughput separate.
 Report remaining unknowns honestly. Ambition is a reason to test a different cost
 model, not a license to weaken evaluation or predict an unsupported speedup.
+
+## Outcome of the decision gates
+
+The [report](../../implementation/phase173/README.md) contains the implemented
+alternatives and exact evidence. Indexed storage did not beat the original
+complete consumer after execution/ABI repairs. Automatic early decomposition
+improves several programs and passes native self-reproduction and64 controls,
+but its full same-source build is1.40% slower than the qualified producer in one
+observation. The follow-up contextual-materializer source ceiling is neutral.
+These results close the proposed pilots; they do not establish the100s goal or
+justify the conditional full storage/control-flow migration. The installed
+compiler is intentionally preserved, and no speculative rewrite is described
+as completed production architecture.

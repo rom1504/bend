@@ -1,0 +1,123 @@
+{
+  "kind": "phase173-independent-context-value-oracle",
+  "version": 1,
+  "complete": true,
+  "variant": "context-digest",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase173/borrow-context-oracle01.mjs",
+      "bytes": 9982,
+      "sha256": "4d4fface05382d9b57b10b378a7bb2f5987b10108c7d9ef29d8904e609a1c060"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+      "bytes": 88979072,
+      "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-digest-oracle-api09/report.json",
+      "bytes": 4674,
+      "sha256": "3514a1496efd55365df7e422ab4bb8b15c0699580e47f51c927eb5d88f11552b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/hosted.mjs",
+      "bytes": 13187,
+      "sha256": "fc0aa95be44aff8b7a00f0821055151cef82fae6df087fa6c0f0fc26da6bdf3b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase173/borrow-oracle-exports.json",
+      "bytes": 268,
+      "sha256": "7f6998c329b03c6260b6ef3a40ab56839bb10e0c599c6a5b28030d19f0efc6f0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-digest-source09/compiler.bend",
+      "bytes": 308616,
+      "sha256": "b07d69838dbfa4acbc45dc10347269041f833903c9dcebda4ee7e4743cdfa130"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+      "bytes": 88979072,
+      "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/stage0-library.mjs",
+      "bytes": 4172,
+      "sha256": "ec3506de1558fa1e56cef54345053ffaf7bfcc92b8632eaf96e217c15b8a59c1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/bend.ts",
+      "bytes": 138101,
+      "sha256": "1d133151652b597a1a035c77c172475e6de096da37f3b9e3adc23c2f75bdfe49"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/comp.ts",
+      "bytes": 185124,
+      "sha256": "2b13224ba09a9e39e37cccf06e449c1bdafe5e03a81641654f7d0e455507629c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "bytes": 75064,
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/compiler.json",
+      "bytes": 542010,
+      "sha256": "6f15663dc8c99e905b3dc7d4923ad457758597d83e1e433c5161dcdab403eb62"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-digest-source09/compiler.bend",
+      "bytes": 308616,
+      "sha256": "b07d69838dbfa4acbc45dc10347269041f833903c9dcebda4ee7e4743cdfa130"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-digest-oracle-api09/api.mjs",
+      "bytes": 452528,
+      "sha256": "40b6b4f4c5e936c3f5847f14d827248861585484c94752e424cbe9fe9d16a079"
+    }
+  ],
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-digest-source09/compiler.bend",
+    "bytes": 308616,
+    "sha256": "b07d69838dbfa4acbc45dc10347269041f833903c9dcebda4ee7e4743cdfa130"
+  },
+  "acquisition": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-digest-oracle-api09/report.json",
+    "bytes": 4674,
+    "sha256": "3514a1496efd55365df7e422ab4bb8b15c0699580e47f51c927eb5d88f11552b"
+  },
+  "typeBindings": [
+    {
+      "name": "KTerm",
+      "sha256": "02c95c149b637e8395a8a2127afed3f66f5086d9524dbdcc507f08da620ba759",
+      "text": "type KTerm is Data:\n  KTerm{+tag: String, +name: String, +id: U32, +quant: U32, +kids: List<&2, KTerm>, +removed: List<&2, String>, +originBegin: U32, +originEnd: U32}\n  KLambda{+name: String, +id: U32, +quant: U32, +kids: List<&2,KTerm>, +removed: List<&2,String>, +originBegin: U32, +originEnd: U32, +quantityPresent: Bool}\n  KLiteral{+kind: String, +number: U32, +text: String, +originBegin: U32, +originEnd: U32}\n"
+    },
+    {
+      "name": "KDef",
+      "sha256": "97afef8acf97205b4a3f81d5f5f454355478e2b454c5df27c73fdc1078da4694",
+      "text": "type KDef is Data:\n  KDef{+name: String, +kind: String, +arity: U32, +templates: U32, +typ: KTerm, +value: KTerm, +ctors: List<&2, KDef>, +native: Bool, +unsafe: Bool}\n  KIndexLeaf{+hash: U32, +bucket: List<&2,KDef>}\n  KIndexNode{+hash: U32, +mask: U32, +left: KDef, +right: KDef}\n"
+    },
+    {
+      "name": "FResult",
+      "sha256": "86942b064e98ef1d9826025b04cc6c4f72146dad3be87bce122203ac662f05e1",
+      "text": "type FResult is Data:\n  FResult{+book: List<&2, KDef>, +error: String, +imports: List<&2, KTerm>}\n"
+    }
+  ],
+  "scope": "Unchanged workload evaluated by pinned upstream JS; complete typed value transported to a constant Bend program. The constant requires independent checking and baseline native readback before use as an execution oracle.",
+  "value": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-digest-oracle09/value.json",
+    "bytes": 10,
+    "sha256": "db52c95b82ab750a5e932c3c29ca8b40346bbdb815b1e88686bfd0b8c492d46e"
+  },
+  "oracleSource": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-digest-oracle09/oracle.bend",
+    "bytes": 958,
+    "sha256": "e05c6b06e943f58b990b6f45e89066fa118d42770000352c6fbf73f4ef47039c"
+  },
+  "observation": {
+    "nodes": 1,
+    "strings": 0,
+    "maxDepth": 0,
+    "mainCalls": 1
+  },
+  "wallSeconds": 1.094509028
+}

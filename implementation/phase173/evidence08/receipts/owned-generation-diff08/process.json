@@ -1,0 +1,82 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": false,
+  "started": 1794019730.2660384,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "3",
+    "python3",
+    "-B",
+    "selfhost/tests/phase173/qbe-generation-diff.py",
+    "--old-capsule",
+    "selfhost/build-retention/phase169/p173-owned-native-n1-08",
+    "--old-report",
+    "selfhost/build/phase173/owned-native-n1-08/report.json",
+    "--new-report",
+    "selfhost/build/phase173/owned-native-n2-08/report.json",
+    "--successor-report",
+    "selfhost/build/phase173/owned-native-n3-08/report.json",
+    "--out",
+    "selfhost/build/phase173/owned-generation-diff08"
+  ],
+  "returncode": -9,
+  "rssLimitBytes": 2147483648,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 80191488,
+  "minimumAvailableBytes": 25344663552,
+  "diskBudgetBytes": 12582912,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 5435002880,
+  "minimumDiskFreeBytes": 5422362624,
+  "peakRunAllocatedBytes": 12619776,
+  "peakFilesystemDecreaseBytes": 12640256,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-generation-diff08"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "3",
+    "fileLimitBytes": 134217728,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase173/qbe-generation-diff.py",
+        "sha256": "9899317afae2ae0ad8d9574e02e519954360ca8e994fe5f8e332f9a513803c6d",
+        "bytes": 16183
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-native-n1-08/report.json",
+        "sha256": "090f00c46a18cddb127ca909be539d528ed91fcfc1949d27ea908b874c0d3023",
+        "bytes": 17564
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-native-n2-08/report.json",
+        "sha256": "d7781dd149aa9b0ac309b7140f1272c1eae488b0b765692b8b496f82c32dbd62",
+        "bytes": 18413
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-native-n3-08/report.json",
+        "sha256": "aa594130f59ff52837bcd7b4b93e9fbf030fdde91e993d6f5a1b77cb3e86ae35",
+        "bytes": 19324
+      }
+    ]
+  },
+  "stoppedFor": "disk-budget",
+  "wallSeconds": 13.90807092981413,
+  "finished": 1794019744.1738815
+}

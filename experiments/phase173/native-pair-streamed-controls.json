@@ -1,0 +1,127 @@
+{
+  "kind": "phase173-streamed-pair-provenance-controls",
+  "complete": true,
+  "targetsRun": false,
+  "syntax": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase173/native-pair-streamed.py",
+      "bytes": 12062,
+      "sha256": "15c5200aa9a764a3f7499d5b21b0ff4d910258defb123429164f19f963d990e7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/common.py",
+      "bytes": 4809,
+      "sha256": "d9a16fef18cf936499e51f8c7f36a653f2921ef9a50f846257c2e8bc460ec6d1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-value-baseline10/report.json",
+      "bytes": 8780,
+      "sha256": "20409734377a34355c0fd789b90e9dde0b24b233446996f0e3a924009aca9b50"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/context-value-baseline09/report.json",
+      "bytes": 13688,
+      "sha256": "d037b91eb830e7983ab24c6374a6bedff844bbe7dbc1978f0f42af7b643d353f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-native-n3-08/report.json",
+      "bytes": 19324,
+      "sha256": "aa594130f59ff52837bcd7b4b93e9fbf030fdde91e993d6f5a1b77cb3e86ae35"
+    }
+  ],
+  "positive": [
+    {
+      "case": "recovered-ir",
+      "accepted": true,
+      "authenticatedPins": 25,
+      "originalEmissionBuildComplete": false,
+      "retainedIR": true
+    },
+    {
+      "case": "streamed-source",
+      "accepted": true,
+      "authenticatedPins": 24,
+      "originalEmissionBuildComplete": true,
+      "retainedIR": false
+    }
+  ],
+  "negative": [
+    {
+      "case": "incomplete-product",
+      "refused": true,
+      "reason": "Completed unchanged build required"
+    },
+    {
+      "case": "changed-build-input",
+      "refused": true,
+      "reason": "Completed unchanged build required"
+    },
+    {
+      "case": "failed-producer",
+      "refused": true,
+      "reason": "Successful complete source emission required"
+    },
+    {
+      "case": "failed-qbe",
+      "refused": true,
+      "reason": "Successful complete source emission required"
+    },
+    {
+      "case": "producer-diagnostics",
+      "refused": true,
+      "reason": "Unexpected producer/QBE diagnostics"
+    },
+    {
+      "case": "missing-link",
+      "refused": true,
+      "reason": "Incomplete/reordered machine construction"
+    },
+    {
+      "case": "unbound-runtime",
+      "refused": true,
+      "reason": "Conflicting artifact identities: /home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o"
+    },
+    {
+      "case": "unpinned-qbe",
+      "refused": true,
+      "reason": "Unpinned executable: qbe"
+    },
+    {
+      "case": "unbound-source",
+      "refused": true,
+      "reason": "Conflicting artifact identities: /home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-native-source08/compiler.bend"
+    },
+    {
+      "case": "unbound-image",
+      "refused": true,
+      "reason": "Conflicting artifact identities: /home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-native-n2-08/program"
+    },
+    {
+      "case": "empty-stream",
+      "refused": true,
+      "reason": "Nonempty complete stream digest required"
+    },
+    {
+      "case": "rebuild-without-emission",
+      "refused": true,
+      "reason": "Supplied IR needs original --ROLE-emission receipt"
+    },
+    {
+      "case": "different-emission",
+      "refused": true,
+      "reason": "Original emission differs from supplied IR"
+    },
+    {
+      "case": "failed-original-emission",
+      "refused": true,
+      "reason": "Successful complete source emission required"
+    },
+    {
+      "case": "changed-original-input",
+      "refused": true,
+      "reason": "Original emission inputs changed"
+    }
+  ],
+  "scope": "Read-only receipt authentication and mutated receipt refusal; no compiled program or timing harness main executed."
+}

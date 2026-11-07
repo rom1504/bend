@@ -84,3 +84,54 @@ arbitrary literal kinds, legacy KTerm-lambda and KLambda variants, retained
 aliases, absent IDs, metadata and replacement observations. The independent
 full-output gates and emitted ownership evidence remain necessary before
 performance or integration claims.
+
+## Contextual materialization: metadata shell and owned children
+
+Reviewed the following experimental source files against
+`selfhost/src/front/literals_arrays.bend:f_context_higher`, `f_context_lower`,
+and the unchanged materialization helpers:
+
+| File | SHA256 |
+| --- | --- |
+| `borrow-consuming-context01.bend` | `3c0a91b8baac535fb899a6be4751084628a06a4de6b14b60e1905b60dbe3ddec` |
+| `borrow-consuming-context-lower01.bend` | `a5512d05569ff191a92c23bae800a9bb2210502432265e1264a520dd8ff19ba3` |
+| `borrow-consuming-context-prelude01.bend` | `8dd1c701eb07fab5082264b0265da6e91d93c27d0f0318fa13eeea2d30aa7dd6` |
+
+No semantic blocker was found in this source-only review. No target was run.
+The earlier Error/FName/operator branches are unchanged. For the ordinary
+nonempty-child case, the replacement consumes the parent into a metadata shell
+with empty children and an independently owned original child list. The loop's
+observable dependency on that shell is particularly small:
+
+1. `f_context_material_deferred` reads only its tag. The shell preserves the
+   tag and all other metadata, including the exact KLambda variant and its
+   quantity-presence bit.
+2. Every successful step on a nonempty list appends one element to `built`,
+   whether it defers or evaluates that child. Thus the terminal loop always
+   reconstructs a nonempty child list before `f_context_material_done` observes
+   children or applies beta reduction. No successful path returns the temporary
+   empty-child shell.
+3. A child error returns that exact child immediately through the unchanged
+   `f_context_material_next`; neither shell nor original parent becomes an
+   observable result. Traversal order, deferred-child selection and first-error
+   behavior remain the same.
+4. An initially empty child list takes the original `material_done(term, lower)`
+   route. All literals have empty children regardless of their arbitrary kind;
+   `tg(KLiteral)` is always `Lit`. The split helper's literal case is therefore
+   unreachable through its ordinary nonempty entry but remains conservative.
+
+The shell's remaining fields are Strings, U32s, a String list and possibly a
+Bool. They cannot retain the original KTerm child list. Strings shared with
+descendants or external aliases remain genuine shared values and must retain
+normal ownership. Consuming a current root reference does not authorize mutation
+of external root/child aliases.
+
+The source change adds a shell allocation for every nonempty parent and a
+temporary `ks` observer before decomposition. It may therefore lose even if it
+reduces retained-parent ownership work. Generated liveness must confirm that the
+original root token ends before recursive child processing; source appearance
+alone is insufficient. The prepared full-value controls cover both traversal
+modes, Lam/All/Let deferral, first-error ordering, beta application, FName,
+operator errors, empty variants, arbitrary literal kinds, root/child sharing
+and complete loader results. These are finite controls, not a formal proof or
+full compiler qualification.

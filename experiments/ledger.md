@@ -1,3 +1,26 @@
+# Phase173 — ownership capability and falsified cold-build transfer, 2026-11-07
+
+[Report](../implementation/phase173/README.md) · [Design](../design/phase173/README.md) ·
+[Final evidence](../implementation/phase173/evidence08/REPRODUCE.md).
+
+Implemented alternative indexed semantics, general tail-component fusion,
+owned-product argument adaptation, local dispatch, record reuse, consuming source
+forms and automatic verified getter/rebuild decomposition. Complete independent
+values and unchanged final verifiers separate legality from profitability.
+Selected automatic workloads save11.05–49.95% runtime, but same-source complete
+native builds201.615→204.438s are1.40% slower in one observation. N2 improves2.48%
+over new N1 execution; N2/N3 QBE/assembly/object/loaded ELF reproduce.64 native
+cases pass; six timed wrappers emit exact qualified QBE. No fresh broad runtime
+score or upstream ratio. Default compiler remains qualified Phase170, unchanged.
+
+The indexed complete consumer remains slower after execution repairs; the
+contextual materializer follow-up is neutral at1.00918× across four balanced
+pairs. Stale prepared-body publication is falsified; non-tail recursive private
+admission is a real remaining boundary. No full migration or100s claim.
+307 guarded jobs cost53.01min including26 failures, separate from agent/unguarded
+work. Evidence includes failures, source audits, complete values, bounded
+machine-code census, storage receipts and exact restoration requirements.
+
 # Phase169 — native self-build147.764s with recovered program quality, 2026-11-06
 
 [Report](../implementation/phase169/README.md) ·

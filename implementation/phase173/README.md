@@ -1,11 +1,48 @@
-# Phase173 working report — execution and durable semantic storage
+# Phase173 — execution and durable semantic storage: results
 
-**In progress. No production compiler has changed.** The qualified Phase170
-compiler remains available. This report records completed experiments and the
-next architectural test; it does not claim the requested successor migration or
-the 100-second cold-build milestone is finished.
+**Experimental campaign complete; no production promotion. The100-second goal
+was not reached.** The architecture pilots, automatic optimization, native
+self-reproduction, finite qualification and final loader ceiling are implemented
+and tested. The qualified Phase170 source and installed image remain byte-exact.
+The pilots do not justify migrating the full compiler into the new store or
+replacing its execution model.
 
-## Main result so far
+## Decision
+
+The automatic early-owned-decomposition pass can materially improve individual
+programs, but does not improve the complete cold compiler build in the measured
+comparison. All64 native qualification cases pass; N2/N3 QBE, assembly, object
+and loaded ELF contents reproduce exactly. Six selected timed benchmark wrappers
+emit the existing qualified QBE byte-for-byte, with unchanged machine policy.
+This is code preservation for six cases, not a fresh45-program runtime score.
+
+| Measured question | Result | Decision |
+|---|---|---|
+| Does the indexed store make a complete compiler computation faster? |Initially2.003× slower; direct loops/argument adaptation/destinations recover much, but the matched original comparison remains1.155× slower.|Do not migrate the compiler into this store.|
+| Can earlier parent consumption remove ownership work? |Manual pattern/layout computations save20.1%/20.8%; automatic cases save11.05–49.95%.|Preserve the general transformation and source examples as experimental results.|
+| Does the automatic pass improve the full compiler? |Same-source old-producer build201.615s; new optimized compiler204.438s,1.40% slower in one observation.|Do not promote as a cold-build optimization.|
+| Can the new compiler improve its own executable? |N1→N2 execution changes the subsequent self-build209.643→204.438s,2.48% less.|A small observed execution benefit; no recursive research acceleration demonstrated.|
+| Does removing the materializer's retained child list improve a complete loader? |67.553→68.174ms, ratio1.00918, four balanced pairs.|Neutral; reject a larger image campaign for this overlay.|
+
+The strongest architectural finding is narrower than the ambition: **ownership
+lifetime matters more than allocation counts in some traversals, while their
+non-tail recursive control flow still prevents direct private compilation.**
+An audit falsified the suspected stale-body publication bug. The rewritten
+prepared bodies do reach ordinary/flat private candidates. The seven relevant
+recursive-rebuild functions nevertheless have no `p113d` worker: their parent ↔
+child-list cycles retain non-tail reconstruction, and their multi-constructor
+KTerm/List representations do not meet the existing flat-product contracts.
+Identical private-worker bytes therefore do not prove that semantic facts were
+lost. See the [publication audit](../../experiments/phase173/owned-decomposition-publication-audit.md).
+
+This run over-weighted the promising local ownership gains before measuring how
+much of the whole compiler they could improve. The full image experiment corrected
+that expectation. Adding another broadly scanning pass is not a credible route
+to100s on this evidence. The next architectural experiment should target one
+closed, stack-safe non-tail traversal region and quantify its complete native
+cost before another full migration. Its benefit remains a hypothesis.
+
+## Main local result
 
 The strongest transferable finding is **early consuming decomposition**:
 destructure a semantic record before recursively transforming its children,
@@ -291,9 +328,9 @@ provide inclusive cost estimates; we cannot extrapolate the two 20% kernel wins
 to a 20% cold self-build win. See the
 [ranked census](../../experiments/phase173/consuming-frontier.md).
 
-The new automatic decomposition pass remains experimental. Its finite controls,
+The automatic decomposition pass remains experimental. Its completed controls,
 actual helper admission, independent native values, compilation overhead and
-transfer results must be measured before promotion. An effect review identifies
+full transfer results are reported below; promotion was rejected on total cost. An effect review identifies
 the existing checked QBE runtime contract as a possible way to avoid a redundant
 whole-request purity restriction; it does not authorize arbitrary foreign
 handlers or weakening runtime admission.
@@ -368,9 +405,13 @@ must not be hidden behind the kernel runtime gains.
 
 N2/N3 emit exactly100,278,749 QBE bytes with SHA256
 `a3ccea7189234d0b52b4b3669da93b616f52a2eb3e8b893c437d11efcf286068`;
-assembly and object hashes also match. Whole executable hashes differ and must
-not be called identical without a loaded-image comparison. This is an emitted
+assembly and object hashes also match. Whole executable hashes differ. An independent ELF64 program-header reader
+confirms every PT_LOAD byte and mapping property is identical; the whole files
+must still not be called identical. This is an emitted
 fixed point, not independent compiler correctness or recursive acceleration.
+All64 maintained native qualification cases pass in68.777s:61 exact outputs
+and3 compiler-stage refusals. This does not add a new generated-program runtime
+score, a proof, or unrestricted foreign/parallel qualification.
 The installed compiler remains unchanged. The automatic pass is not selected
 for production on these full-build results. The100s milestone remains open.
 
@@ -378,7 +419,71 @@ See [the transformation](../../experiments/phase173/automatic-owned-decompositio
 [wide-interface extension](../../experiments/phase173/owned-decomposition-multi.md)
 and [independent audit](../../experiments/phase173/owned-decomposition-multi-audit.md).
 
+## Final complete-loader ceiling
+
+The contextual materializer overlay preserves its existing recursive child loop,
+deferred Lam/All/Let handling, first-error order and reductions. It consumes a
+nonempty parent into metadata plus owned children, carrying an empty-child shell
+until reconstruction. It adds1,313 bytes and pays an extra shell allocation.
+Two independent source reviews found no semantic blocker.
+
+The baseline and candidate each pass independent upstream source checking and
+produce identical complete values for six real loader cases (four successes,
+two expected errors), explicit materializer boundaries and retained aliases.
+Native executions match the complete constant oracle. A separate32-load,
+24-nested-call timing workload consumes every result field and matches its own
+independent digest. Four balanced native pairs measure67.553ms versus68.174ms;
+this is neutral, not a meaningful regression or improvement. No full compiler
+image was rebuilt for this unprofitable variant.
+
+The first native acquisition exceeded its32MiB disk cap near linking. Its
+emission and QBE stages had completed successfully with an authenticated full IR;
+a fresh machine-only build reused that IR in2.410s. The original acquisition
+remains failed. A separately audited comparison harness accepts authenticated
+streamed builds without requiring a second hot textual IR copy, requires a fixed
+independent expected output, and checks toolchain executables as well as flags.
+Fifteen altered-receipt controls refuse. This is transport/resource cleanup,
+not a new compiler optimization or a weaker semantic oracle.
+
+[Context design and reproduction](../../experiments/phase173/consuming-context01.md) ·
+[Streaming-pair audit](../../experiments/phase173/native-pair-streamed-audit.md).
+
+## Final scope and remaining barrier
+
+No runtime ABI, maintained compiler source, installed selection, JS/C compiler
+path or independent final verifier changed. The canonical source remains
+3,150,535 bytes, SHA256
+`434edd1d56128f9480800573abf8a0ae21d910a547837af089f25cd1d0e89b71`;
+the installed native binary remains SHA256
+`0dba3d4d19cd974e759058afbe86608fc7e1770d0c5ebf8f9d06c2697b658f4f`.
+Its historical189.329s full-source score is not replaced by the larger candidate's
+201.615/204.438s comparison. None of these timings is a fresh upstream parity
+measurement. No mathematical compiler-equivalence theorem was proved.
+
+The durable-store migration and broader execution-model replacement were stopped
+at their explicit experimental gates, because the complete measured consumers
+did not improve. General tail fusion, owned-argument adaptation, known-tag local
+backedges, record reuse, early consumption and authenticated plan replay remain
+reproducible experimental capabilities. This is an implemented, tested research
+result, not the requested100s successor compiler.
+
 ## Evidence and resources
+
+[Final evidence08](evidence08/REPRODUCE.md) closes every target: native64,
+six exact timed products, the neutral context follow-up, loaded-ELF comparison,
+streamed provenance controls and preserved disk-budget failures.
+
+The full campaign has307 terminal guard receipts:281 successes and26 failures,
+with3,180.862s (53.01min) of guarded execution time. Native builds account for
+1,010.328s; API acquisitions422.502s; observations/requests1,403.884s; native
+runtime pairs36.191s; other guarded work307.957s. Observations include hosted
+compiler requests, controls and metadata, so this is not a validation-only
+breakdown. It excludes agent work, quota/billing, unguarded maintenance and total
+elapsed research time. Maximum sampled process-tree RSS was2,446,970,880 bytes.
+The numerous small experiments and their interpretation were a substantial cost;
+a future campaign should require a stronger whole-request gain bound before
+expanding a local transformation into another broad pass.
+
 
 The [reproduction guide](reproduction.md) preserves measured module versions,
 receipts, commands and negative findings without copying generated compiler
@@ -424,3 +529,11 @@ and object files, with26,018,303 compressed bytes versus196,997,120 allocated
 source bytes. The executable, source, runtime and receipts remain hot. Those old-
 producer QBE bytes are not the new optimizer's fixed-point oracle; N2 output will
 be retained for N3 comparison. Exact restoration remains available.
+
+
+[Final retention evidence09](evidence09/README.md) records eleven cold generated
+intermediates from seven completed experimental roots. Verified archiving and
+exact pruning recovered93,773,824 allocated bytes net in7.531s. Earlier replay
+of those selected IR products requires exact restoration; binaries and source
+remain hot. Final measured headroom was167.46MiB above the5GiB reserve, so future
+large retained-IR jobs still need explicit admission rather than assuming space.

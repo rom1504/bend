@@ -1,0 +1,998 @@
+{
+  "kind": "phase175-retained-frontend-profile",
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "selfhost/build/phase171/candidate-profile-stages01.json",
+      "bytes": 94719,
+      "sha256": "1935df55bc6c08ef7b39b01f157c0dc2b9792312249d9eb96bf716a5eb89dde2"
+    },
+    {
+      "file": "selfhost/build/phase171/candidate-profile-full01/report.json",
+      "bytes": 11773,
+      "sha256": "df232e2b9f6316532612b5175e80117678cf57c4ff7eeb7080aba3891c02ac87"
+    },
+    {
+      "file": "selfhost/build/phase171/runtime-callers-full-stages01.json",
+      "bytes": 580341,
+      "sha256": "6e4cd058c79876ad0a880156cd58c0c976f7dff67e761bfbb354adf9be2e16d7"
+    },
+    {
+      "file": "experiments/phase171/runtime-callers.json",
+      "bytes": 41690,
+      "sha256": "70403b1bdea877db96b4bd9d5155c09d97b406d4853a759141760adf98739499"
+    },
+    {
+      "file": "selfhost/manifests/current.json",
+      "bytes": 20921,
+      "sha256": "f2e22de67403389dd8e436f5cdbdede846fe1151bdb398995fdd466cfaccd756"
+    }
+  ],
+  "intervals": [
+    {
+      "label": "p88_cache_prepare to p86_plan",
+      "begin": "p88_cache_prepare",
+      "end": "p86_plan",
+      "available": true,
+      "wallSeconds": 0.235331583,
+      "processCpuSeconds": 0.235338996,
+      "threadCpuSeconds": 0.235337162,
+      "sampleStartInclusive": 2,
+      "sampleEndExclusive": 8,
+      "samples": 6,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": false,
+      "topActiveOwners": [
+        {
+          "name": null,
+          "samples": 6,
+          "fractionOfAllSamples": 1.0
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "name": "p111_rt_take",
+          "samples": 1,
+          "fractionOfAllSamples": 0.16666666666666666
+        },
+        {
+          "name": "p111_FID_$p111.k.2894444",
+          "samples": 1,
+          "fractionOfAllSamples": 0.16666666666666666
+        },
+        {
+          "name": "p111_rt_return",
+          "samples": 1,
+          "fractionOfAllSamples": 0.16666666666666666
+        },
+        {
+          "name": "p111_rt_op",
+          "samples": 1,
+          "fractionOfAllSamples": 0.16666666666666666
+        },
+        {
+          "name": "p112w_FID_$direct.Bool.and",
+          "samples": 1,
+          "fractionOfAllSamples": 0.16666666666666666
+        },
+        {
+          "name": "ctr_take",
+          "samples": 1,
+          "fractionOfAllSamples": 0.16666666666666666
+        }
+      ]
+    },
+    {
+      "label": "p86_plan to p86_plan_loaded",
+      "begin": "p86_plan",
+      "end": "p86_plan_loaded",
+      "available": true,
+      "wallSeconds": 29.544956563,
+      "processCpuSeconds": 29.545056802,
+      "threadCpuSeconds": 29.545057179,
+      "sampleStartInclusive": 10,
+      "sampleEndExclusive": 931,
+      "samples": 921,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": true,
+      "topActiveOwners": [
+        {
+          "name": null,
+          "samples": 493,
+          "fractionOfAllSamples": 0.5352877307274702
+        },
+        {
+          "name": "f_context_material_children",
+          "samples": 54,
+          "fractionOfAllSamples": 0.05863192182410423
+        },
+        {
+          "name": "f_grow_base",
+          "samples": 39,
+          "fractionOfAllSamples": 0.04234527687296417
+        },
+        {
+          "name": "f_pattern_sub",
+          "samples": 35,
+          "fractionOfAllSamples": 0.038002171552660155
+        },
+        {
+          "name": "f_decl_local",
+          "samples": 24,
+          "fractionOfAllSamples": 0.026058631921824105
+        },
+        {
+          "name": "fpe_term",
+          "samples": 23,
+          "fractionOfAllSamples": 0.0249728555917481
+        },
+        {
+          "name": "f_ctor_lookup",
+          "samples": 22,
+          "fractionOfAllSamples": 0.023887079261672096
+        },
+        {
+          "name": "f_context_material_done",
+          "samples": 15,
+          "fractionOfAllSamples": 0.016286644951140065
+        },
+        {
+          "name": "ffw_walk_existing",
+          "samples": 15,
+          "fractionOfAllSamples": 0.016286644951140065
+        },
+        {
+          "name": "f_atom_name",
+          "samples": 11,
+          "fractionOfAllSamples": 0.011943539630836048
+        },
+        {
+          "name": "p150l_cursor",
+          "samples": 10,
+          "fractionOfAllSamples": 0.010857763300760043
+        },
+        {
+          "name": "f_pattern_subs",
+          "samples": 10,
+          "fractionOfAllSamples": 0.010857763300760043
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "name": "term_drop",
+          "samples": 126,
+          "fractionOfAllSamples": 0.13680781758957655
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 74,
+          "fractionOfAllSamples": 0.08034744842562432
+        },
+        {
+          "name": "span_fade",
+          "samples": 64,
+          "fractionOfAllSamples": 0.06948968512486428
+        },
+        {
+          "name": null,
+          "samples": 49,
+          "fractionOfAllSamples": 0.053203040173724216
+        },
+        {
+          "name": "p111_rt_sink",
+          "samples": 44,
+          "fractionOfAllSamples": 0.04777415852334419
+        },
+        {
+          "name": "work_loop.constprop.0",
+          "samples": 40,
+          "fractionOfAllSamples": 0.04343105320304017
+        },
+        {
+          "name": "p111_set_regs",
+          "samples": 31,
+          "fractionOfAllSamples": 0.033659066232356136
+        },
+        {
+          "name": "p125_rt_take2",
+          "samples": 30,
+          "fractionOfAllSamples": 0.03257328990228013
+        },
+        {
+          "name": "p111_rt_special_ctor",
+          "samples": 30,
+          "fractionOfAllSamples": 0.03257328990228013
+        },
+        {
+          "name": "ctr_take",
+          "samples": 21,
+          "fractionOfAllSamples": 0.02280130293159609
+        },
+        {
+          "name": "term_triv",
+          "samples": 21,
+          "fractionOfAllSamples": 0.02280130293159609
+        },
+        {
+          "name": "p111_rt_take",
+          "samples": 19,
+          "fractionOfAllSamples": 0.02062975027144408
+        }
+      ]
+    },
+    {
+      "label": "p86_plan_loaded to p86_plan_checked",
+      "begin": "p86_plan_loaded",
+      "end": "p86_plan_checked",
+      "available": true,
+      "wallSeconds": 19.027307556,
+      "processCpuSeconds": 19.027400513,
+      "threadCpuSeconds": 19.027400106,
+      "sampleStartInclusive": 933,
+      "sampleEndExclusive": 1526,
+      "samples": 593,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": true,
+      "topActiveOwners": [
+        {
+          "name": null,
+          "samples": 338,
+          "fractionOfAllSamples": 0.5699831365935919
+        },
+        {
+          "name": "index_remove",
+          "samples": 32,
+          "fractionOfAllSamples": 0.05396290050590219
+        },
+        {
+          "name": "subst_node",
+          "samples": 28,
+          "fractionOfAllSamples": 0.047217537942664416
+        },
+        {
+          "name": "check_node",
+          "samples": 14,
+          "fractionOfAllSamples": 0.023608768971332208
+        },
+        {
+          "name": "book_final_fast",
+          "samples": 11,
+          "fractionOfAllSamples": 0.01854974704890388
+        },
+        {
+          "name": "ki_lam_kind",
+          "samples": 11,
+          "fractionOfAllSamples": 0.01854974704890388
+        },
+        {
+          "name": "core_rebuild",
+          "samples": 10,
+          "fractionOfAllSamples": 0.016863406408094434
+        },
+        {
+          "name": "norm_node_ann",
+          "samples": 9,
+          "fractionOfAllSamples": 0.01517706576728499
+        },
+        {
+          "name": "driver_holes",
+          "samples": 9,
+          "fractionOfAllSamples": 0.01517706576728499
+        },
+        {
+          "name": "book_final_scan",
+          "samples": 8,
+          "fractionOfAllSamples": 0.013490725126475547
+        },
+        {
+          "name": "norm_exact_lists",
+          "samples": 7,
+          "fractionOfAllSamples": 0.011804384485666104
+        },
+        {
+          "name": "infer_node",
+          "samples": 7,
+          "fractionOfAllSamples": 0.011804384485666104
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "name": "term_drop",
+          "samples": 67,
+          "fractionOfAllSamples": 0.11298482293423272
+        },
+        {
+          "name": "span_fade",
+          "samples": 55,
+          "fractionOfAllSamples": 0.09274873524451939
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 53,
+          "fractionOfAllSamples": 0.0893760539629005
+        },
+        {
+          "name": "work_loop.constprop.0",
+          "samples": 38,
+          "fractionOfAllSamples": 0.06408094435075885
+        },
+        {
+          "name": "p111_rt_sink",
+          "samples": 35,
+          "fractionOfAllSamples": 0.05902192242833052
+        },
+        {
+          "name": null,
+          "samples": 33,
+          "fractionOfAllSamples": 0.05564924114671164
+        },
+        {
+          "name": "p111_rt_special_ctor",
+          "samples": 18,
+          "fractionOfAllSamples": 0.03035413153456998
+        },
+        {
+          "name": "heap_alloc",
+          "samples": 15,
+          "fractionOfAllSamples": 0.025295109612141653
+        },
+        {
+          "name": "p111_set_regs",
+          "samples": 14,
+          "fractionOfAllSamples": 0.023608768971332208
+        },
+        {
+          "name": "p111_rt_keep",
+          "samples": 13,
+          "fractionOfAllSamples": 0.021922428330522766
+        },
+        {
+          "name": "term_triv",
+          "samples": 12,
+          "fractionOfAllSamples": 0.02023608768971332
+        },
+        {
+          "name": "ctr_take",
+          "samples": 11,
+          "fractionOfAllSamples": 0.01854974704890388
+        }
+      ]
+    },
+    {
+      "label": "p86_plan_checked to p86_plan_reported",
+      "begin": "p86_plan_checked",
+      "end": "p86_plan_reported",
+      "available": true,
+      "wallSeconds": 2.576791109,
+      "processCpuSeconds": 2.576819733,
+      "threadCpuSeconds": 2.576820198,
+      "sampleStartInclusive": 1528,
+      "sampleEndExclusive": 1606,
+      "samples": 78,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": false,
+      "topActiveOwners": [
+        {
+          "name": "driver_report_data",
+          "samples": 69,
+          "fractionOfAllSamples": 0.8846153846153846
+        },
+        {
+          "name": "dr_walk",
+          "samples": 7,
+          "fractionOfAllSamples": 0.08974358974358974
+        },
+        {
+          "name": "index_remove",
+          "samples": 1,
+          "fractionOfAllSamples": 0.01282051282051282
+        },
+        {
+          "name": null,
+          "samples": 1,
+          "fractionOfAllSamples": 0.01282051282051282
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 45,
+          "fractionOfAllSamples": 0.5769230769230769
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.has_name",
+          "samples": 22,
+          "fractionOfAllSamples": 0.28205128205128205
+        },
+        {
+          "name": "p111_rt_special_ctor",
+          "samples": 5,
+          "fractionOfAllSamples": 0.0641025641025641
+        },
+        {
+          "name": "term_drop",
+          "samples": 2,
+          "fractionOfAllSamples": 0.02564102564102564
+        },
+        {
+          "name": "p111_FID_$direct.index_remove",
+          "samples": 1,
+          "fractionOfAllSamples": 0.01282051282051282
+        },
+        {
+          "name": "p111_rt_sink",
+          "samples": 1,
+          "fractionOfAllSamples": 0.01282051282051282
+        },
+        {
+          "name": "ctr_take",
+          "samples": 1,
+          "fractionOfAllSamples": 0.01282051282051282
+        },
+        {
+          "name": "span_fade",
+          "samples": 1,
+          "fractionOfAllSamples": 0.01282051282051282
+        }
+      ]
+    },
+    {
+      "label": "p86_plan_reported to p86_plan_owned",
+      "begin": "p86_plan_reported",
+      "end": "p86_plan_owned",
+      "available": true,
+      "wallSeconds": 0.19389494,
+      "processCpuSeconds": 0.193861022,
+      "threadCpuSeconds": 0.193860798,
+      "sampleStartInclusive": 1608,
+      "sampleEndExclusive": 1612,
+      "samples": 4,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": false,
+      "topActiveOwners": [
+        {
+          "name": "j_find_ctor",
+          "samples": 3,
+          "fractionOfAllSamples": 0.75
+        },
+        {
+          "name": "driver_owned_name",
+          "samples": 1,
+          "fractionOfAllSamples": 0.25
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "name": "term_drop",
+          "samples": 1,
+          "fractionOfAllSamples": 0.25
+        },
+        {
+          "name": "span_fade",
+          "samples": 1,
+          "fractionOfAllSamples": 0.25
+        },
+        {
+          "name": "p111_FID_$direct.j_find_ctor",
+          "samples": 1,
+          "fractionOfAllSamples": 0.25
+        },
+        {
+          "name": "p111_rt_take",
+          "samples": 1,
+          "fractionOfAllSamples": 0.25
+        }
+      ]
+    },
+    {
+      "label": "p86_plan_owned to p86_plan_context",
+      "begin": "p86_plan_owned",
+      "end": "p86_plan_context",
+      "available": true,
+      "wallSeconds": 0.655810944,
+      "processCpuSeconds": 0.655805271,
+      "threadCpuSeconds": 0.65580501,
+      "sampleStartInclusive": 1614,
+      "sampleEndExclusive": 1633,
+      "samples": 19,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": false,
+      "topActiveOwners": [
+        {
+          "name": "base_prefix_context_world",
+          "samples": 9,
+          "fractionOfAllSamples": 0.47368421052631576
+        },
+        {
+          "name": "base_prefix_context_tail",
+          "samples": 6,
+          "fractionOfAllSamples": 0.3157894736842105
+        },
+        {
+          "name": "book_context_world",
+          "samples": 2,
+          "fractionOfAllSamples": 0.10526315789473684
+        },
+        {
+          "name": null,
+          "samples": 1,
+          "fractionOfAllSamples": 0.05263157894736842
+        },
+        {
+          "name": "base_prefix_world_admitted",
+          "samples": 1,
+          "fractionOfAllSamples": 0.05263157894736842
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "name": "term_drop",
+          "samples": 6,
+          "fractionOfAllSamples": 0.3157894736842105
+        },
+        {
+          "name": "span_fade",
+          "samples": 6,
+          "fractionOfAllSamples": 0.3157894736842105
+        },
+        {
+          "name": "p125_rt_take2",
+          "samples": 3,
+          "fractionOfAllSamples": 0.15789473684210525
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 2,
+          "fractionOfAllSamples": 0.10526315789473684
+        },
+        {
+          "name": "p111_rt_sink",
+          "samples": 1,
+          "fractionOfAllSamples": 0.05263157894736842
+        },
+        {
+          "name": "p118_destination_fill",
+          "samples": 1,
+          "fractionOfAllSamples": 0.05263157894736842
+        }
+      ]
+    },
+    {
+      "label": "p86_plan_context to p86_plan_annotated",
+      "begin": "p86_plan_context",
+      "end": "p86_plan_annotated",
+      "available": true,
+      "wallSeconds": 6.389631549,
+      "processCpuSeconds": 6.389680686,
+      "threadCpuSeconds": 6.389680739,
+      "sampleStartInclusive": 1635,
+      "sampleEndExclusive": 1832,
+      "samples": 197,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": false,
+      "topActiveOwners": [
+        {
+          "name": null,
+          "samples": 90,
+          "fractionOfAllSamples": 0.45685279187817257
+        },
+        {
+          "name": "p142r_name",
+          "samples": 13,
+          "fractionOfAllSamples": 0.06598984771573604
+        },
+        {
+          "name": "ka_node",
+          "samples": 13,
+          "fractionOfAllSamples": 0.06598984771573604
+        },
+        {
+          "name": "subst",
+          "samples": 11,
+          "fractionOfAllSamples": 0.05583756345177665
+        },
+        {
+          "name": "subst_node",
+          "samples": 9,
+          "fractionOfAllSamples": 0.04568527918781726
+        },
+        {
+          "name": "core_rebuild",
+          "samples": 7,
+          "fractionOfAllSamples": 0.03553299492385787
+        },
+        {
+          "name": "norm_node_app",
+          "samples": 6,
+          "fractionOfAllSamples": 0.030456852791878174
+        },
+        {
+          "name": "norm_ref",
+          "samples": 5,
+          "fractionOfAllSamples": 0.025380710659898477
+        },
+        {
+          "name": "norm_node_ref",
+          "samples": 5,
+          "fractionOfAllSamples": 0.025380710659898477
+        },
+        {
+          "name": "ka_args_static",
+          "samples": 4,
+          "fractionOfAllSamples": 0.02030456852791878
+        },
+        {
+          "name": "norm_node_ann",
+          "samples": 3,
+          "fractionOfAllSamples": 0.015228426395939087
+        },
+        {
+          "name": "norm_match",
+          "samples": 3,
+          "fractionOfAllSamples": 0.015228426395939087
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 29,
+          "fractionOfAllSamples": 0.14720812182741116
+        },
+        {
+          "name": "term_drop",
+          "samples": 20,
+          "fractionOfAllSamples": 0.10152284263959391
+        },
+        {
+          "name": "span_fade",
+          "samples": 16,
+          "fractionOfAllSamples": 0.08121827411167512
+        },
+        {
+          "name": null,
+          "samples": 12,
+          "fractionOfAllSamples": 0.06091370558375635
+        },
+        {
+          "name": "p111_rt_sink",
+          "samples": 11,
+          "fractionOfAllSamples": 0.05583756345177665
+        },
+        {
+          "name": "p118_rt_borrow_scalar_safe",
+          "samples": 7,
+          "fractionOfAllSamples": 0.03553299492385787
+        },
+        {
+          "name": "work_loop.constprop.0",
+          "samples": 7,
+          "fractionOfAllSamples": 0.03553299492385787
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p98_tag_eq",
+          "samples": 6,
+          "fractionOfAllSamples": 0.030456852791878174
+        },
+        {
+          "name": "p125_rt_take4",
+          "samples": 5,
+          "fractionOfAllSamples": 0.025380710659898477
+        },
+        {
+          "name": "p111_rt_keep",
+          "samples": 5,
+          "fractionOfAllSamples": 0.025380710659898477
+        },
+        {
+          "name": "ctr_take",
+          "samples": 4,
+          "fractionOfAllSamples": 0.02030456852791878
+        },
+        {
+          "name": "p111_rt_jump",
+          "samples": 4,
+          "fractionOfAllSamples": 0.02030456852791878
+        }
+      ]
+    },
+    {
+      "label": "p86_plan_annotated to p144o_prepare_annotated",
+      "begin": "p86_plan_annotated",
+      "end": "p144o_prepare_annotated",
+      "available": true,
+      "wallSeconds": 2.556171428,
+      "processCpuSeconds": 2.556200764,
+      "threadCpuSeconds": 2.556200854,
+      "sampleStartInclusive": 1834,
+      "sampleEndExclusive": 1912,
+      "samples": 78,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": false,
+      "topActiveOwners": [
+        {
+          "name": "j_layout_native_nat",
+          "samples": 15,
+          "fractionOfAllSamples": 0.19230769230769232
+        },
+        {
+          "name": null,
+          "samples": 13,
+          "fractionOfAllSamples": 0.16666666666666666
+        },
+        {
+          "name": "p142j_name",
+          "samples": 8,
+          "fractionOfAllSamples": 0.10256410256410256
+        },
+        {
+          "name": "jl_node",
+          "samples": 6,
+          "fractionOfAllSamples": 0.07692307692307693
+        },
+        {
+          "name": "jl_term",
+          "samples": 5,
+          "fractionOfAllSamples": 0.0641025641025641
+        },
+        {
+          "name": "norm_node_let",
+          "samples": 5,
+          "fractionOfAllSamples": 0.0641025641025641
+        },
+        {
+          "name": "norm_node_app",
+          "samples": 4,
+          "fractionOfAllSamples": 0.05128205128205128
+        },
+        {
+          "name": "jl_fields",
+          "samples": 3,
+          "fractionOfAllSamples": 0.038461538461538464
+        },
+        {
+          "name": "norm_args",
+          "samples": 3,
+          "fractionOfAllSamples": 0.038461538461538464
+        },
+        {
+          "name": "norm_match",
+          "samples": 2,
+          "fractionOfAllSamples": 0.02564102564102564
+        },
+        {
+          "name": "j_literal_ctor",
+          "samples": 2,
+          "fractionOfAllSamples": 0.02564102564102564
+        },
+        {
+          "name": "jl_match",
+          "samples": 2,
+          "fractionOfAllSamples": 0.02564102564102564
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 11,
+          "fractionOfAllSamples": 0.14102564102564102
+        },
+        {
+          "name": "term_drop",
+          "samples": 6,
+          "fractionOfAllSamples": 0.07692307692307693
+        },
+        {
+          "name": "span_fade",
+          "samples": 5,
+          "fractionOfAllSamples": 0.0641025641025641
+        },
+        {
+          "name": "p111_rt_special_ctor",
+          "samples": 4,
+          "fractionOfAllSamples": 0.05128205128205128
+        },
+        {
+          "name": "p111_rt_sink",
+          "samples": 4,
+          "fractionOfAllSamples": 0.05128205128205128
+        },
+        {
+          "name": "p111_rt_keep",
+          "samples": 4,
+          "fractionOfAllSamples": 0.05128205128205128
+        },
+        {
+          "name": null,
+          "samples": 4,
+          "fractionOfAllSamples": 0.05128205128205128
+        },
+        {
+          "name": "work_loop.constprop.0",
+          "samples": 3,
+          "fractionOfAllSamples": 0.038461538461538464
+        },
+        {
+          "name": "p118_rt_borrow_scalar_safe",
+          "samples": 3,
+          "fractionOfAllSamples": 0.038461538461538464
+        },
+        {
+          "name": "p113d_FID_$p128borrow.owned.p88_string_eq_go",
+          "samples": 2,
+          "fractionOfAllSamples": 0.02564102564102564
+        },
+        {
+          "name": "p111_set_regs",
+          "samples": 2,
+          "fractionOfAllSamples": 0.02564102564102564
+        },
+        {
+          "name": "p113d_FID_$direct.p88_string_eq",
+          "samples": 2,
+          "fractionOfAllSamples": 0.02564102564102564
+        }
+      ]
+    },
+    {
+      "label": "p144o_prepare_annotated to p169np_plan",
+      "begin": "p144o_prepare_annotated",
+      "end": "p169np_plan",
+      "available": true,
+      "wallSeconds": 5.909062943,
+      "processCpuSeconds": 5.909121883,
+      "threadCpuSeconds": 5.909122259,
+      "sampleStartInclusive": 1914,
+      "sampleEndExclusive": 2097,
+      "samples": 183,
+      "boundarySamplesExcluded": 2,
+      "quantitativeProfileAdmitted": false,
+      "topActiveOwners": [
+        {
+          "name": null,
+          "samples": 80,
+          "fractionOfAllSamples": 0.4371584699453552
+        },
+        {
+          "name": "nc_erase",
+          "samples": 17,
+          "fractionOfAllSamples": 0.09289617486338798
+        },
+        {
+          "name": "subst_node",
+          "samples": 9,
+          "fractionOfAllSamples": 0.04918032786885246
+        },
+        {
+          "name": "norm_node_let",
+          "samples": 8,
+          "fractionOfAllSamples": 0.04371584699453552
+        },
+        {
+          "name": "nc_erase_annotated",
+          "samples": 8,
+          "fractionOfAllSamples": 0.04371584699453552
+        },
+        {
+          "name": "norm_eval_node",
+          "samples": 6,
+          "fractionOfAllSamples": 0.03278688524590164
+        },
+        {
+          "name": "core_rebuild",
+          "samples": 5,
+          "fractionOfAllSamples": 0.0273224043715847
+        },
+        {
+          "name": "norm_node_min",
+          "samples": 5,
+          "fractionOfAllSamples": 0.0273224043715847
+        },
+        {
+          "name": "norm_node_app",
+          "samples": 5,
+          "fractionOfAllSamples": 0.0273224043715847
+        },
+        {
+          "name": "p143nr_visit",
+          "samples": 5,
+          "fractionOfAllSamples": 0.0273224043715847
+        },
+        {
+          "name": "subst",
+          "samples": 4,
+          "fractionOfAllSamples": 0.02185792349726776
+        },
+        {
+          "name": "nc_tele_fill",
+          "samples": 4,
+          "fractionOfAllSamples": 0.02185792349726776
+        }
+      ],
+      "topPhysicalLeaves": [
+        {
+          "name": "term_drop",
+          "samples": 25,
+          "fractionOfAllSamples": 0.1366120218579235
+        },
+        {
+          "name": "span_fade",
+          "samples": 16,
+          "fractionOfAllSamples": 0.08743169398907104
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p88_string_eq_go",
+          "samples": 16,
+          "fractionOfAllSamples": 0.08743169398907104
+        },
+        {
+          "name": "p113d_FID_$p118borrow.read.p98_tag_eq",
+          "samples": 14,
+          "fractionOfAllSamples": 0.07650273224043716
+        },
+        {
+          "name": "p111_rt_sink",
+          "samples": 12,
+          "fractionOfAllSamples": 0.06557377049180328
+        },
+        {
+          "name": null,
+          "samples": 7,
+          "fractionOfAllSamples": 0.03825136612021858
+        },
+        {
+          "name": "p125_rt_take2",
+          "samples": 5,
+          "fractionOfAllSamples": 0.0273224043715847
+        },
+        {
+          "name": "p111_set_regs",
+          "samples": 5,
+          "fractionOfAllSamples": 0.0273224043715847
+        },
+        {
+          "name": "p113d_FID_$direct.index_find",
+          "samples": 4,
+          "fractionOfAllSamples": 0.02185792349726776
+        },
+        {
+          "name": "p118_rt_borrow_scalar_safe",
+          "samples": 4,
+          "fractionOfAllSamples": 0.02185792349726776
+        },
+        {
+          "name": "p111_rt_return",
+          "samples": 4,
+          "fractionOfAllSamples": 0.02185792349726776
+        },
+        {
+          "name": "ctr_take",
+          "samples": 3,
+          "fractionOfAllSamples": 0.01639344262295082
+        }
+      ]
+    },
+    {
+      "label": "p169np_plan to p168_request_mode",
+      "begin": "p169np_plan",
+      "end": "p168_request_mode",
+      "available": true,
+      "wallSeconds": 0.031318441,
+      "processCpuSeconds": 0.031318463,
+      "threadCpuSeconds": 0.031317395,
+      "sampleStartInclusive": 2099,
+      "sampleEndExclusive": 2099,
+      "samples": 0,
+      "boundarySamplesExcluded": 1,
+      "quantitativeProfileAdmitted": false,
+      "topActiveOwners": [],
+      "topPhysicalLeaves": []
+    }
+  ],
+  "limitations": [
+    "Retained diagnostic Phase171 N1 capture, not a new clean Phase174 timing.",
+    "Phase174 installs the same source; N1/N2 reproduce machine code and runtime data.",
+    "Active owner contexts and one physical caller are not inclusive call stacks.",
+    "Times measure disjoint marked intervals; no allocation count or removable-cost inference."
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "jobs": [
+    {
+      "name": "baseline-api02",
+      "seconds": 150,
+      "diskMiB": 32,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase175/baseline-source02/compiler.bend",
+        "--exports",
+        "selfhost/build/phase175/baseline-source02/exports.json",
+        "--out",
+        "selfhost/build/phase175/baseline-api02",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase66",
+        "--engine",
+        "selfhost/.assets/bin/bun"
+      ]
+    },
+    {
+      "name": "precedence-api01",
+      "seconds": 150,
+      "diskMiB": 32,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase175/precedence-source01/compiler.bend",
+        "--exports",
+        "selfhost/build/phase175/precedence-source01/exports.json",
+        "--out",
+        "selfhost/build/phase175/precedence-api01",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase66",
+        "--engine",
+        "selfhost/.assets/bin/bun"
+      ]
+    },
+    {
+      "name": "lookahead-api01",
+      "seconds": 150,
+      "diskMiB": 32,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase175/lookahead-source01/compiler.bend",
+        "--exports",
+        "selfhost/build/phase175/lookahead-source01/exports.json",
+        "--out",
+        "selfhost/build/phase175/lookahead-api01",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase66",
+        "--engine",
+        "selfhost/.assets/bin/bun"
+      ]
+    }
+  ]
+}

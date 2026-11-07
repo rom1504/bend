@@ -1,0 +1,44 @@
+{
+  "jobs": [
+    {
+      "name": "parse-baseline-api01",
+      "seconds": 150,
+      "diskMiB": 32,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase175/parse-baseline-source01/compiler.bend",
+        "--exports",
+        "selfhost/build/phase175/parse-baseline-source01/exports.json",
+        "--out",
+        "selfhost/build/phase175/parse-baseline-api01",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase66",
+        "--engine",
+        "selfhost/.assets/bin/bun"
+      ]
+    },
+    {
+      "name": "field-api01",
+      "seconds": 150,
+      "diskMiB": 32,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase175/field-source01/compiler.bend",
+        "--exports",
+        "selfhost/build/phase175/field-source01/exports.json",
+        "--out",
+        "selfhost/build/phase175/field-api01",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase66",
+        "--engine",
+        "selfhost/.assets/bin/bun"
+      ]
+    }
+  ]
+}

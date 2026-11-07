@@ -1,0 +1,765 @@
+{
+  "kind": "phase175-own-native-machine-intermediate-proposal-v1",
+  "complete": true,
+  "targetsRun": false,
+  "capturesRun": false,
+  "prunesRun": false,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/close.py",
+    "bytes": 13971,
+    "sha256": "7e37ec90fe3fd4a0f990cae727052e8ccdf7880f05dcc68618da15c0d76b0fef"
+  },
+  "archiveVerifier": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/archive-v02.py",
+    "bytes": 18412,
+    "sha256": "3238e0774c6c21c3de6c07bcbd71e469cbb23aaba01f99da0cb1e9f51990ad9f"
+  },
+  "roots": [
+    {
+      "name": "baseline-native01",
+      "root": "selfhost/build/phase175/baseline-native01",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/baseline-native01/report.json",
+        "bytes": 16024,
+        "sha256": "a9406636f856d21d14be8e1a4651cae41b9c7864bee6ab3f76c282e2c68fadf0"
+      },
+      "guards": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/baseline-native01-guard/process.json",
+          "bytes": 2715,
+          "sha256": "e989e711c512c9a641d7ea02f71951c9410eb1e2ff6b46554ce3c0565a51325e"
+        }
+      ],
+      "lifecycle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/baseline-native01-guard/retention.json",
+        "bytes": 1051,
+        "sha256": "fdbcde90c972fa7f131aab47f20456f69ed09a446c33ba1e9ea0e3e34ea5e502"
+      },
+      "lifecycleState": "sealed",
+      "classification": "completed",
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase175/baseline-native01/program.s",
+          "member": "program.s",
+          "bytes": 26547271,
+          "sha256": "959cdeba19d35eedc54724a7109b877df762bef2e9459059fa7b38544d75c181",
+          "identityAuthority": "Original completed build report; capture must independently hash current bytes.",
+          "metadata": {
+            "device": 2306,
+            "inode": 79699317,
+            "size": 26547271,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794034925315991547,
+            "ctimeNs": 1794034925315991547,
+            "allocatedBytes": 26554368
+          }
+        },
+        {
+          "file": "selfhost/build/phase175/baseline-native01/program.o",
+          "member": "program.o",
+          "bytes": 7569392,
+          "sha256": "cb0dfb058f584e63cc6a914594e142c1e25172023090426088e468a81b59eea0",
+          "identityAuthority": "Original completed build report; capture must independently hash current bytes.",
+          "metadata": {
+            "device": 2306,
+            "inode": 79699320,
+            "size": 7569392,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794034926927941807,
+            "ctimeNs": 1794034926927941807,
+            "allocatedBytes": 7569408
+          }
+        }
+      ],
+      "allocatedBytes": 34123776,
+      "protectedImage": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/baseline-native01/program",
+        "bytes": 5896232,
+        "sha256": "25fc88840270c8fec7b4553095e7394c2ef5e8340cfab3352651ed1c120ff8d0"
+      },
+      "protectedRuntime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+        "bytes": 119096,
+        "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+      },
+      "protectedSource": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/baseline-source03/compiler.bend",
+        "bytes": 656302,
+        "sha256": "351ad0e69554e5b12cf8367d5cdde648ab5a1787825614e23158196f5d0e851b"
+      },
+      "captureOut": "selfhost/build-retention/phase175/own-intermediates-baseline-native01",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase175/own-intermediates-baseline-native01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/own-intermediates-baseline-native01/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/own-intermediates-baseline-native01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/own-intermediates-baseline-native01/restored"
+      ]
+    },
+    {
+      "name": "field-native01",
+      "root": "selfhost/build/phase175/field-native01",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/field-native01/report.json",
+        "bytes": 15981,
+        "sha256": "f276edce453fb540a37462bd77992ed9a54a25af58f6b976812379570a540658"
+      },
+      "guards": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/field-native01-guard/process.json",
+          "bytes": 2702,
+          "sha256": "56d59693c801626f91e58bd140c5e00b7d49a995887242678902c7bcd08b937b"
+        }
+      ],
+      "lifecycle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/field-native01-guard/retention.json",
+        "bytes": 1038,
+        "sha256": "d436a91d38a309b92d45bf4e8d01ec9f9801fb1dbf59f26248859f3ce9270c76"
+      },
+      "lifecycleState": "sealed",
+      "classification": "completed",
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase175/field-native01/program.s",
+          "member": "program.s",
+          "bytes": 26802955,
+          "sha256": "c9193e51a542fcbba3e5c9c2ea84969d9716c3d604c3d126accc7a4f962e88b5",
+          "identityAuthority": "Original completed build report; capture must independently hash current bytes.",
+          "metadata": {
+            "device": 2306,
+            "inode": 79699634,
+            "size": 26802955,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794037185762288666,
+            "ctimeNs": 1794037185762288666,
+            "allocatedBytes": 26804224
+          }
+        },
+        {
+          "file": "selfhost/build/phase175/field-native01/program.o",
+          "member": "program.o",
+          "bytes": 7640960,
+          "sha256": "360e95dee395742b275873daa9bda0d5c6e5248a31801720c8ab493c4eedb303",
+          "identityAuthority": "Original completed build report; capture must independently hash current bytes.",
+          "metadata": {
+            "device": 2306,
+            "inode": 79699637,
+            "size": 7640960,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794037187418237717,
+            "ctimeNs": 1794037187418237717,
+            "allocatedBytes": 7643136
+          }
+        }
+      ],
+      "allocatedBytes": 34447360,
+      "protectedImage": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/field-native01/program",
+        "bytes": 5951312,
+        "sha256": "639ce6628be5a80fa95ae2aa8f813b066b10a8b2ce971e61c3ca31fa2eb7b679"
+      },
+      "protectedRuntime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+        "bytes": 119096,
+        "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+      },
+      "protectedSource": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/field-source03/compiler.bend",
+        "bytes": 662958,
+        "sha256": "5f5487177a76f8440d4a9959061fc1f934af255b2407a5bc3b7cb7c46a94cdda"
+      },
+      "captureOut": "selfhost/build-retention/phase175/own-intermediates-field-native01",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase175/own-intermediates-field-native01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/own-intermediates-field-native01/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/own-intermediates-field-native01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/own-intermediates-field-native01/restored"
+      ]
+    },
+    {
+      "name": "publication-native01",
+      "root": "selfhost/build/phase175/publication-native01",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/publication-native01/report.json",
+        "bytes": 16089,
+        "sha256": "b1850ff49cf4fe7683f8aee4657421d330807c65119d4d350731396901511e72"
+      },
+      "guards": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/publication-native01-guard/process.json",
+          "bytes": 2727,
+          "sha256": "cac01b1c6d7b9f1ac60f9d589e22d7bb689414069f45203f953c91e82c36e50a"
+        }
+      ],
+      "lifecycle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/publication-native01-guard/retention.json",
+        "bytes": 1063,
+        "sha256": "f7bd0623119dddc1d43ce0ba7622e0c4255c13a2748b7031bf9291f60f79c20d"
+      },
+      "lifecycleState": "sealed",
+      "classification": "completed",
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase175/publication-native01/program.s",
+          "member": "program.s",
+          "bytes": 26561361,
+          "sha256": "63ebdfef747e0eed7b25c4de6282dd3fe7b508141ed4f0fb23d9c138db750322",
+          "identityAuthority": "Original completed build report; capture must independently hash current bytes.",
+          "metadata": {
+            "device": 2306,
+            "inode": 79699682,
+            "size": 26561361,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794037748708959476,
+            "ctimeNs": 1794037748708959476,
+            "allocatedBytes": 26562560
+          }
+        },
+        {
+          "file": "selfhost/build/phase175/publication-native01/program.o",
+          "member": "program.o",
+          "bytes": 7573176,
+          "sha256": "e7ef372d52ad786861347c56274c6d1f82a05622465c4c6af222aa895f9f96c4",
+          "identityAuthority": "Original completed build report; capture must independently hash current bytes.",
+          "metadata": {
+            "device": 2306,
+            "inode": 79699685,
+            "size": 7573176,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794037750308910213,
+            "ctimeNs": 1794037750308910213,
+            "allocatedBytes": 7573504
+          }
+        }
+      ],
+      "allocatedBytes": 34136064,
+      "protectedImage": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/publication-native01/program",
+        "bytes": 5897448,
+        "sha256": "df16e4c654ed4d5108abe0ff41f3abcc66db0935e5a26f3d9e9b963048913138"
+      },
+      "protectedRuntime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+        "bytes": 119096,
+        "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+      },
+      "protectedSource": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/publication-source04/compiler.bend",
+        "bytes": 666782,
+        "sha256": "52ae0f54d487fc5adf3bca6b0aab16c2efc6e84fbea6ee209344795730291ced"
+      },
+      "captureOut": "selfhost/build-retention/phase175/own-intermediates-publication-native01",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase175/own-intermediates-publication-native01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/own-intermediates-publication-native01/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/own-intermediates-publication-native01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/own-intermediates-publication-native01/restored"
+      ]
+    },
+    {
+      "name": "report-native01",
+      "root": "selfhost/build/phase175/report-native01",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/report-native01/report.json",
+        "bytes": 15981,
+        "sha256": "8c0b218973d2927f7f48ce0af1718d69ea0b9827ceee810e401c6a0c07b6b5a3"
+      },
+      "guards": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/report-native01-guard/process.json",
+          "bytes": 2706,
+          "sha256": "9149c7dd3514a5551c2733447f1fcb317f01dfb03370c385a8b5676b0076c542"
+        }
+      ],
+      "lifecycle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/report-native01-guard/retention.json",
+        "bytes": 1042,
+        "sha256": "f71c65fff332af9fa009aedc1abe0124c0f64a1f33db02f7eeda289df448722a"
+      },
+      "lifecycleState": "sealed",
+      "classification": "completed",
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase175/report-native01/program.s",
+          "member": "program.s",
+          "bytes": 26575105,
+          "sha256": "9f24ce5feeec7edc7a6f64d268af31eea6904c452794a3c60498888089d6bb11",
+          "identityAuthority": "Original completed build report; capture must independently hash current bytes.",
+          "metadata": {
+            "device": 2306,
+            "inode": 79699716,
+            "size": 26575105,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794038032584213053,
+            "ctimeNs": 1794038032584213053,
+            "allocatedBytes": 26583040
+          }
+        },
+        {
+          "file": "selfhost/build/phase175/report-native01/program.o",
+          "member": "program.o",
+          "bytes": 7577672,
+          "sha256": "52cbbef073ee6150b3970e35058725fa2010aa29c6ed75653bd4b7a8b5422bcd",
+          "identityAuthority": "Original completed build report; capture must independently hash current bytes.",
+          "metadata": {
+            "device": 2306,
+            "inode": 79699719,
+            "size": 7577672,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794038034200163239,
+            "ctimeNs": 1794038034200163239,
+            "allocatedBytes": 7581696
+          }
+        }
+      ],
+      "allocatedBytes": 34164736,
+      "protectedImage": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/report-native01/program",
+        "bytes": 5903112,
+        "sha256": "fcb9529f69bf83256128d5a7d1475c016c02a54fc9f5fe044af8b567831d0cc5"
+      },
+      "protectedRuntime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+        "bytes": 119096,
+        "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+      },
+      "protectedSource": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/report-source01/compiler.bend",
+        "bytes": 657836,
+        "sha256": "b793f9fa1b580799aec53df5e689d3f06af8863de36e72838a59fa4afe4d3212"
+      },
+      "captureOut": "selfhost/build-retention/phase175/own-intermediates-report-native01",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase175/own-intermediates-report-native01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/own-intermediates-report-native01/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/own-intermediates-report-native01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/own-intermediates-report-native01/restored"
+      ]
+    },
+    {
+      "name": "parse-baseline-native01",
+      "root": "selfhost/build/phase175/parse-baseline-native01",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-baseline-native01/report.json",
+        "bytes": 16179,
+        "sha256": "711191add08eefd6bbbd96d628ef63666818060d5eaf44425fefe0cae55ab3f7"
+      },
+      "guards": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-baseline-native01-guard/process.json",
+          "bytes": 2738,
+          "sha256": "12dfddcff2e8825d68fabf2823b7eaedd5346d86a1d2daaf75ad87f626e671d8"
+        }
+      ],
+      "lifecycle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-baseline-native01-guard/retention.json",
+        "bytes": 1072,
+        "sha256": "8d3be69990162ce672dcaa7ca94ac08f84522e9e8365bc157e2da027810979d3"
+      },
+      "lifecycleState": "sealed",
+      "classification": "completed",
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase175/parse-baseline-native01/program.s",
+          "member": "program.s",
+          "bytes": 14038676,
+          "sha256": "c49c053326d0632f8de660493db59dbae8167273398ec215d47e59beba231049",
+          "identityAuthority": "Original completed build report; capture must independently hash current bytes.",
+          "metadata": {
+            "device": 2306,
+            "inode": 79699382,
+            "size": 14038676,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794035288820775071,
+            "ctimeNs": 1794035288820775071,
+            "allocatedBytes": 14041088
+          }
+        },
+        {
+          "file": "selfhost/build/phase175/parse-baseline-native01/program.o",
+          "member": "program.o",
+          "bytes": 3999280,
+          "sha256": "ee5099810786df793ff39b532f24b6a3ad73380a4c6fcc856de44dd7eee89b32",
+          "identityAuthority": "Original completed build report; capture must independently hash current bytes.",
+          "metadata": {
+            "device": 2306,
+            "inode": 79699385,
+            "size": 3999280,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794035289664749034,
+            "ctimeNs": 1794035289664749034,
+            "allocatedBytes": 4001792
+          }
+        }
+      ],
+      "allocatedBytes": 18042880,
+      "protectedImage": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-baseline-native01/program",
+        "bytes": 3172048,
+        "sha256": "0d5e462cb07a6e030d514fd90bf93fa1872221b2c1fe1fe6b804093bb7ea3808"
+      },
+      "protectedRuntime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+        "bytes": 119096,
+        "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+      },
+      "protectedSource": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-baseline-source01/compiler.bend",
+        "bytes": 356626,
+        "sha256": "578d0d3fa834ba5ac0402e7fc19e7ae22368b80d8af94fc08fcd61ca239a0493"
+      },
+      "captureOut": "selfhost/build-retention/phase175/own-intermediates-parse-baseline-native01",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase175/own-intermediates-parse-baseline-native01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/own-intermediates-parse-baseline-native01/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/own-intermediates-parse-baseline-native01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/own-intermediates-parse-baseline-native01/restored"
+      ]
+    },
+    {
+      "name": "parse-precedence-native01",
+      "root": "selfhost/build/phase175/parse-precedence-native01",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-precedence-native01/report.json",
+        "bytes": 16199,
+        "sha256": "5af73b091af5a01382e4b3e5225f1ee833df85e9e955b2b6791cb401061d5016"
+      },
+      "guards": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-precedence-native01-guard/process.json",
+          "bytes": 2747,
+          "sha256": "b3dcfe034f180d66d065b1e7102c547e6c2e2b2d92011f42f9d0f31ac1c9c929"
+        }
+      ],
+      "lifecycle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-precedence-native01-guard/retention.json",
+        "bytes": 1082,
+        "sha256": "7240b4ee6f418ca9198bb461f10466eb124dbfcdce54fe2b5c259679b0850487"
+      },
+      "lifecycleState": "sealed",
+      "classification": "completed",
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase175/parse-precedence-native01/program.s",
+          "member": "program.s",
+          "bytes": 14041716,
+          "sha256": "b66658bc5d074b59416fb76d060a83ba5720d43faa06069b271ccd4a62b7ade1",
+          "identityAuthority": "Original completed build report; capture must independently hash current bytes.",
+          "metadata": {
+            "device": 2306,
+            "inode": 79699424,
+            "size": 14041716,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794035426824517481,
+            "ctimeNs": 1794035426824517481,
+            "allocatedBytes": 14049280
+          }
+        },
+        {
+          "file": "selfhost/build/phase175/parse-precedence-native01/program.o",
+          "member": "program.o",
+          "bytes": 3998992,
+          "sha256": "9312541069c774bd7697500e3f590d1292179818e348f5009fddfa170b8c3c56",
+          "identityAuthority": "Original completed build report; capture must independently hash current bytes.",
+          "metadata": {
+            "device": 2306,
+            "inode": 79699427,
+            "size": 3998992,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794035427664491567,
+            "ctimeNs": 1794035427664491567,
+            "allocatedBytes": 4001792
+          }
+        }
+      ],
+      "allocatedBytes": 18051072,
+      "protectedImage": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-precedence-native01/program",
+        "bytes": 3172456,
+        "sha256": "249b6681c2bd146efaf84b7943804bf6168681ff90973f18e3111f1cf87f78ec"
+      },
+      "protectedRuntime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+        "bytes": 119096,
+        "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+      },
+      "protectedSource": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-precedence-source01/compiler.bend",
+        "bytes": 358167,
+        "sha256": "2646219296750503eb84cc74083e33359ae8e31c3a344e6ffb0eb0577baacd61"
+      },
+      "captureOut": "selfhost/build-retention/phase175/own-intermediates-parse-precedence-native01",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase175/own-intermediates-parse-precedence-native01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/own-intermediates-parse-precedence-native01/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/own-intermediates-parse-precedence-native01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/own-intermediates-parse-precedence-native01/restored"
+      ]
+    },
+    {
+      "name": "parse-lookahead-native02",
+      "root": "selfhost/build/phase175/parse-lookahead-native02",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-lookahead-native02/report.json",
+        "bytes": 16179,
+        "sha256": "cb00a0ca65156b29332fe1bf64eec90475adc755f41919b24420666afebd2e7a"
+      },
+      "guards": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-lookahead-native02-guard/process.json",
+          "bytes": 2742,
+          "sha256": "8f0d57ae6d8752d157d540d11934af10ebebd46d307dcf3b1805b9de041c6fc8"
+        }
+      ],
+      "lifecycle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-lookahead-native02-guard/retention.json",
+        "bytes": 1077,
+        "sha256": "0335d331514bc38545f3207f20068a3868e9e6e3be493b8c2b917025c8ec2078"
+      },
+      "lifecycleState": "sealed",
+      "classification": "completed",
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase175/parse-lookahead-native02/program.s",
+          "member": "program.s",
+          "bytes": 14084586,
+          "sha256": "a615d06ba97448abe50a0fe842f74e17fa46cafa1cf18107516612a0c728dabe",
+          "identityAuthority": "Original completed build report; capture must independently hash current bytes.",
+          "metadata": {
+            "device": 2306,
+            "inode": 79699751,
+            "size": 14084586,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794038234841978198,
+            "ctimeNs": 1794038234841978198,
+            "allocatedBytes": 14086144
+          }
+        },
+        {
+          "file": "selfhost/build/phase175/parse-lookahead-native02/program.o",
+          "member": "program.o",
+          "bytes": 4013936,
+          "sha256": "e3f9b888a562741670fb7f7c944454b04bf5479ecd65c2d4bfc34a37f3c4a605",
+          "identityAuthority": "Original completed build report; capture must independently hash current bytes.",
+          "metadata": {
+            "device": 2306,
+            "inode": 79699754,
+            "size": 4013936,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794038235673952551,
+            "ctimeNs": 1794038235673952551,
+            "allocatedBytes": 4014080
+          }
+        }
+      ],
+      "allocatedBytes": 18100224,
+      "protectedImage": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-lookahead-native02/program",
+        "bytes": 3183272,
+        "sha256": "6f02b19abc92bcaeca37c62f32c79813b3f3ca166b50012101afc603b123baa5"
+      },
+      "protectedRuntime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+        "bytes": 119096,
+        "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+      },
+      "protectedSource": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-lookahead-source01/compiler.bend",
+        "bytes": 358267,
+        "sha256": "3f104e77908bd517d7981a3bbbafdbf5ebe769547117360e1fe878173ab8c323"
+      },
+      "captureOut": "selfhost/build-retention/phase175/own-intermediates-parse-lookahead-native02",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase175/own-intermediates-parse-lookahead-native02/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/own-intermediates-parse-lookahead-native02/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/own-intermediates-parse-lookahead-native02/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/own-intermediates-parse-lookahead-native02/restored"
+      ]
+    }
+  ],
+  "selectedFiles": 14,
+  "allocatedBytes": 191066112,
+  "archiveCapPerRootBytes": 67108864,
+  "memberCapBytes": 134217728,
+  "maintenanceReserveBytes": 5368709120,
+  "compilerReserveBytes": 5368709120,
+  "consumerAudit": {
+    "method": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase175/native-frontend.py",
+      "bytes": 5445,
+      "sha256": "7a83e8941efc0cc76877814ea529886d5387df1ea85e8b1e26c122af53a3d973"
+    },
+    "facts": [
+      "Lines32\u201344 preflight authenticates image reports/binding/Base/carrier/source plus each binary/runtime/source; assembly/object are not input rows.",
+      "Line56 verifies the executable immediately before execution; compiled images remain hot.",
+      "All seven original native writers completed successfully. Current timing uses the retained baseline/combined executables; combined root is entirely outside selection.",
+      "No capture/prune during timing. Future relinking or machine-level inspection requires restoring the selected exact products."
+    ],
+    "scope": "Read-only review of exact seven completed writer reports/guards/lifecycles and maintained consumer method. No broad dependency scan or source hashing while timing."
+  },
+  "capacity": {
+    "freeBytesAtReview": 5648429056,
+    "above5GiBReserveBytes": 279719936,
+    "estimatedArchiveBytes": 23779501,
+    "estimatedNetRecoveryBytes": 167286611,
+    "estimateBasis": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase169/p173-owned-native-n2-08/capture.json",
+      "bytes": 649,
+      "sha256": "c1929ec7f116ae9e80aebd64792aa9418ff0e0aad8243d5050c90f1260f9e6e8"
+    },
+    "estimateLimits": "Previous machine-product compression ratio is an estimate. Archive caps are safety bounds, not guaranteed savings. Measure actual archive blocks and receipt storage before target admission."
+  },
+  "protected": [
+    "Every executable/report/runtime/source/API/Base/binding and all unlisted files within these seven roots",
+    "Combined compiler image/root and ongoing timing/verification products",
+    "All retained IR, profiles, qualified/installed/rollback chains, toolchain and selector files",
+    "Shared Phase32 lock; all other phases and currentPhase175 inputs"
+  ],
+  "captureContract": [
+    "Root waits for active timing to finish and serializes maintenance under shared execution lock.",
+    "Authenticate proposal/method, successful report/guard, exact metadata and original assembly/object hashes before capture.",
+    "Use maintained close.capsule with only selected rows; preserve normal5GiB floor,64MiB archive cap and128MiB member cap. No guard or selector changes.",
+    "Reopen/hash complete archive and check source stability; independently run archive-v02 verify and require exact path/hash/metadata/allocated-total match.",
+    "Only then apply separately; retain capsule/receipt/plan/application journal. No whole-root deletion.",
+    "Restore commands recreate exact original paths by default; --out is a fresh journal. Reserve required disk first."
+  ]
+}

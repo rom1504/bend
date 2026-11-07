@@ -1,0 +1,533 @@
+{
+  "kind": "phase175-completed-own-native-intermediate-recovery",
+  "complete": true,
+  "aggregationOnly": true,
+  "targetsRun": false,
+  "newCapturesRun": false,
+  "newPrunesRun": false,
+  "proposal": {
+    "file": "/home/ai/bend2/build/publish/bend/experiments/phase175/storage-own-native-intermediates.json",
+    "bytes": 31906,
+    "sha256": "fa6ee5f9d23ea2956670c03baf1eb2a99e4dd193ce0e350967845b592988b7bc"
+  },
+  "priorCompletedRecovery": {
+    "file": "/home/ai/bend2/build/publish/bend/experiments/phase175/storage-recovery.json",
+    "bytes": 85429,
+    "sha256": "b0e745a80eaee6824b3d2e4627e07d4636bf8a71fdeb89b856bf2a6a1ddf4090"
+  },
+  "aggregationMethod": "Authenticate small report/guard/capsule/recovery/verified-plan/application receipt chains; compare exact original approved paths, hashes, metadata, counts and allocation totals; confirm all selected leaves absent and protected executable/runtime/source files present with recorded lengths. Stat retained archive and journal blocks. No archive stream re-verification or compiler execution.",
+  "sourceFreezeContext": {
+    "document": {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase175/full-candidate.md",
+      "bytes": 8047,
+      "sha256": "4cb5c025d674b87d64d28d2d08d58c47216abbe99e0a5898e315d409cabcac46"
+    },
+    "historicalFrozenBenchmarkSource": {
+      "file": "selfhost/build/phase170/source-final/compiler.bend",
+      "bytes": 3150535,
+      "sha256": "434edd1d56128f9480800573abf8a0ae21d910a547837af089f25cd1d0e89b71"
+    },
+    "candidateSourceAsRecordedInDesign": {
+      "bytes": 3163584,
+      "sha256": "a0e953a84de73aa22403dde7ec2144540197633857a0f7b5b9784f9e66f5ad04"
+    },
+    "scope": "Neither source is selected or changed. Historical frontend benchmark input and changing-source full candidate remain different measurements. Source hashes here are recorded design/benchmark identities, not freshly rehashed."
+  },
+  "ownIntermediates": {
+    "removedFiles": 14,
+    "sourceLogicalBytes": 191025078,
+    "sourceAllocatedBytes": 191066112,
+    "newArchiveLogicalBytes": 23952393,
+    "newArchiveAllocatedBytes": 23969792,
+    "newRetentionFileAllocatedBytes": 24256512,
+    "newRetentionDirectoryAllocatedBytes": 114688,
+    "newRetentionTotalAllocatedBytes": 24371200,
+    "netPayloadAllocatedRecoveryBytes": 167096320,
+    "netAllocatedRecoveryIncludingNewRetentionBytes": 166694912,
+    "observedPruneFilesystemDeltaBytes": 191000576,
+    "observedCompleteRootFilesystemDeltaBytes": 166674432,
+    "recordedRootRecoverySeconds": 12.842437538783997,
+    "roots": 7,
+    "firstRecordedFreeBytes": 5636915200,
+    "lastRecordedFreeBytes": 5803540480,
+    "observedCampaignSpanFilesystemDeltaBytes": 166625280,
+    "archiveLogicalFraction": 0.12538873560883979
+  },
+  "combinedWithPriorRecovery": {
+    "roots": 43,
+    "removedFiles": 1143,
+    "sourceAllocatedBytes": 4035796992,
+    "netAllocatedRecoveryIncludingNewRetentionBytes": 3598893056
+  },
+  "rows": [
+    {
+      "name": "baseline-native01",
+      "removedFiles": 2,
+      "sourceLogicalBytes": 34116663,
+      "sourceAllocatedBytes": 34123776,
+      "newArchiveLogicalBytes": 4270296,
+      "newArchiveAllocatedBytes": 4272128,
+      "newRetentionFileAllocatedBytes": 4313088,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 4329472,
+      "netPayloadAllocatedRecoveryBytes": 29851648,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 29794304,
+      "observedPruneFilesystemDeltaBytes": 34115584,
+      "observedCompleteRootFilesystemDeltaBytes": 29798400,
+      "recordedFreeBeforeBytes": 5636915200,
+      "recordedFreeAfterBytes": 5666713600,
+      "recordedRootRecoverySeconds": 2.1110060117207468,
+      "retentionFiles": 11,
+      "retentionDirectories": 4,
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/own-intermediates-baseline-native01/recovery.json",
+        "bytes": 661,
+        "sha256": "20c46f698be29cfafb481dbeef0e564a5b9b74ba1ab5324abff8635eb8e5e9d0"
+      },
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/own-intermediates-baseline-native01/verified/plan.json",
+        "bytes": 1777,
+        "sha256": "026f5bb2287634dcd1415e59752c6af78861b680bae9b983c76f00dff8279cc8"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/own-intermediates-baseline-native01/applied/report.json",
+        "bytes": 1126,
+        "sha256": "5eb91cfa4503a9fc2a1a3138da4cb468cb29c59885d9c93790be395ba10774ce"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/own-intermediates-baseline-native01/capsule/files.tar.gz",
+        "bytes": 4270296,
+        "sha256": "4ed69cbab48615cb7f59b47c35d2adcc4f90ee2362ca6e91d3474c7fad5a28ef",
+        "identityAuthority": "Completed streaming capture and independent verification receipts; not stream-rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/own-intermediates-baseline-native01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/own-intermediates-baseline-native01/restored"
+      ],
+      "protectedImage": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/baseline-native01/program",
+        "bytes": 5896232,
+        "sha256": "25fc88840270c8fec7b4553095e7394c2ef5e8340cfab3352651ed1c120ff8d0"
+      },
+      "protectedRuntime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+        "bytes": 119096,
+        "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+      },
+      "protectedSource": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/baseline-source03/compiler.bend",
+        "bytes": 656302,
+        "sha256": "351ad0e69554e5b12cf8367d5cdde648ab5a1787825614e23158196f5d0e851b"
+      }
+    },
+    {
+      "name": "field-native01",
+      "removedFiles": 2,
+      "sourceLogicalBytes": 34443915,
+      "sourceAllocatedBytes": 34447360,
+      "newArchiveLogicalBytes": 4313362,
+      "newArchiveAllocatedBytes": 4317184,
+      "newRetentionFileAllocatedBytes": 4358144,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 4374528,
+      "netPayloadAllocatedRecoveryBytes": 30130176,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 30072832,
+      "observedPruneFilesystemDeltaBytes": 34439168,
+      "observedCompleteRootFilesystemDeltaBytes": 30081024,
+      "recordedFreeBeforeBytes": 5666705408,
+      "recordedFreeAfterBytes": 5696786432,
+      "recordedRootRecoverySeconds": 2.2041276157833636,
+      "retentionFiles": 11,
+      "retentionDirectories": 4,
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/own-intermediates-field-native01/recovery.json",
+        "bytes": 652,
+        "sha256": "6a02457d1dcdd782a39b9182c02ccada68b49293903449d3b3e9c7952b7159a5"
+      },
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/own-intermediates-field-native01/verified/plan.json",
+        "bytes": 1761,
+        "sha256": "eb745d5cb3b60f6cb0d2cf354bdfb8bbe9e270902909defaf485a332d79b380e"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/own-intermediates-field-native01/applied/report.json",
+        "bytes": 1120,
+        "sha256": "893c7e9e8a6b354b4a370e432f3e77745797d6ca040517afc92d45895382ab8c"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/own-intermediates-field-native01/capsule/files.tar.gz",
+        "bytes": 4313362,
+        "sha256": "70fa047df9cc0ff4410cc02af6d68d2058ab05b73e0acbf0e71f56daeab28c80",
+        "identityAuthority": "Completed streaming capture and independent verification receipts; not stream-rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/own-intermediates-field-native01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/own-intermediates-field-native01/restored"
+      ],
+      "protectedImage": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/field-native01/program",
+        "bytes": 5951312,
+        "sha256": "639ce6628be5a80fa95ae2aa8f813b066b10a8b2ce971e61c3ca31fa2eb7b679"
+      },
+      "protectedRuntime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+        "bytes": 119096,
+        "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+      },
+      "protectedSource": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/field-source03/compiler.bend",
+        "bytes": 662958,
+        "sha256": "5f5487177a76f8440d4a9959061fc1f934af255b2407a5bc3b7cb7c46a94cdda"
+      }
+    },
+    {
+      "name": "publication-native01",
+      "removedFiles": 2,
+      "sourceLogicalBytes": 34134537,
+      "sourceAllocatedBytes": 34136064,
+      "newArchiveLogicalBytes": 4273242,
+      "newArchiveAllocatedBytes": 4276224,
+      "newRetentionFileAllocatedBytes": 4317184,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 4333568,
+      "netPayloadAllocatedRecoveryBytes": 29859840,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 29802496,
+      "observedPruneFilesystemDeltaBytes": 34119680,
+      "observedCompleteRootFilesystemDeltaBytes": 29802496,
+      "recordedFreeBeforeBytes": 5696778240,
+      "recordedFreeAfterBytes": 5726580736,
+      "recordedRootRecoverySeconds": 2.1676176888868213,
+      "retentionFiles": 11,
+      "retentionDirectories": 4,
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/own-intermediates-publication-native01/recovery.json",
+        "bytes": 670,
+        "sha256": "4d9b25152632397418563b6357fa9c3932730c77dfd3d4c9175aafa064fb2621"
+      },
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/own-intermediates-publication-native01/verified/plan.json",
+        "bytes": 1791,
+        "sha256": "a16353d7d0bb4a777cf4df8d7aed26fa6689fe76b2e9ad33aee30e941735a475"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/own-intermediates-publication-native01/applied/report.json",
+        "bytes": 1132,
+        "sha256": "891a3e3afa62f9a66bfec88e72a0e2b33321cb209b50c401b62bd34bc127085e"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/own-intermediates-publication-native01/capsule/files.tar.gz",
+        "bytes": 4273242,
+        "sha256": "c9077c6d13b3241acff857dfbbe063f0fc6e11331d87691e10c834b7418a837f",
+        "identityAuthority": "Completed streaming capture and independent verification receipts; not stream-rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/own-intermediates-publication-native01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/own-intermediates-publication-native01/restored"
+      ],
+      "protectedImage": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/publication-native01/program",
+        "bytes": 5897448,
+        "sha256": "df16e4c654ed4d5108abe0ff41f3abcc66db0935e5a26f3d9e9b963048913138"
+      },
+      "protectedRuntime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+        "bytes": 119096,
+        "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+      },
+      "protectedSource": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/publication-source04/compiler.bend",
+        "bytes": 666782,
+        "sha256": "52ae0f54d487fc5adf3bca6b0aab16c2efc6e84fbea6ee209344795730291ced"
+      }
+    },
+    {
+      "name": "report-native01",
+      "removedFiles": 2,
+      "sourceLogicalBytes": 34152777,
+      "sourceAllocatedBytes": 34164736,
+      "newArchiveLogicalBytes": 4274495,
+      "newArchiveAllocatedBytes": 4276224,
+      "newRetentionFileAllocatedBytes": 4317184,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 4333568,
+      "netPayloadAllocatedRecoveryBytes": 29888512,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 29831168,
+      "observedPruneFilesystemDeltaBytes": 34156544,
+      "observedCompleteRootFilesystemDeltaBytes": 29839360,
+      "recordedFreeBeforeBytes": 5726572544,
+      "recordedFreeAfterBytes": 5756411904,
+      "recordedRootRecoverySeconds": 2.1342428820207715,
+      "retentionFiles": 11,
+      "retentionDirectories": 4,
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/own-intermediates-report-native01/recovery.json",
+        "bytes": 655,
+        "sha256": "4a6094b764500a34c97396d357f95d473fdd60f68c2aa63d9e7d0cacb718765d"
+      },
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/own-intermediates-report-native01/verified/plan.json",
+        "bytes": 1767,
+        "sha256": "6b82472963684d24f42185e374a497e2185b1521059e214735b7d8f8bca858c2"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/own-intermediates-report-native01/applied/report.json",
+        "bytes": 1122,
+        "sha256": "60d8599db7fae15cc9f4a5b71ee050c16124d503ba92ae92fe8411d33442d16d"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/own-intermediates-report-native01/capsule/files.tar.gz",
+        "bytes": 4274495,
+        "sha256": "219fe5061759468327c935baf3b96e39fc10de184fbe1d37a4b307446b67c3fe",
+        "identityAuthority": "Completed streaming capture and independent verification receipts; not stream-rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/own-intermediates-report-native01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/own-intermediates-report-native01/restored"
+      ],
+      "protectedImage": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/report-native01/program",
+        "bytes": 5903112,
+        "sha256": "fcb9529f69bf83256128d5a7d1475c016c02a54fc9f5fe044af8b567831d0cc5"
+      },
+      "protectedRuntime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+        "bytes": 119096,
+        "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+      },
+      "protectedSource": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/report-source01/compiler.bend",
+        "bytes": 657836,
+        "sha256": "b793f9fa1b580799aec53df5e689d3f06af8863de36e72838a59fa4afe4d3212"
+      }
+    },
+    {
+      "name": "parse-baseline-native01",
+      "removedFiles": 2,
+      "sourceLogicalBytes": 18037956,
+      "sourceAllocatedBytes": 18042880,
+      "newArchiveLogicalBytes": 2270813,
+      "newArchiveAllocatedBytes": 2273280,
+      "newRetentionFileAllocatedBytes": 2314240,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 2330624,
+      "netPayloadAllocatedRecoveryBytes": 15769600,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 15712256,
+      "observedPruneFilesystemDeltaBytes": 18034688,
+      "observedCompleteRootFilesystemDeltaBytes": 15720448,
+      "recordedFreeBeforeBytes": 5756403712,
+      "recordedFreeAfterBytes": 5772124160,
+      "recordedRootRecoverySeconds": 1.4087591958232224,
+      "retentionFiles": 11,
+      "retentionDirectories": 4,
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/own-intermediates-parse-baseline-native01/recovery.json",
+        "bytes": 679,
+        "sha256": "06ede55e5493de9476a2b5372a6123519db26f1cbac3cf4a35416fad3b7e470d"
+      },
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/own-intermediates-parse-baseline-native01/verified/plan.json",
+        "bytes": 1807,
+        "sha256": "68f71b2b9cc724efc032b1bdd6392b7c01f737f301274503ae674052cc85b33e"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/own-intermediates-parse-baseline-native01/applied/report.json",
+        "bytes": 1139,
+        "sha256": "ce005816ea5bc12bc1110ea5ecf9b2ea9dcc05fd383d69de978baf1c2a761b00"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/own-intermediates-parse-baseline-native01/capsule/files.tar.gz",
+        "bytes": 2270813,
+        "sha256": "a4c03a276a861ff8fa28467c01ec80c90be6276498ccdcfa40ac8356e3f6314d",
+        "identityAuthority": "Completed streaming capture and independent verification receipts; not stream-rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/own-intermediates-parse-baseline-native01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/own-intermediates-parse-baseline-native01/restored"
+      ],
+      "protectedImage": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-baseline-native01/program",
+        "bytes": 3172048,
+        "sha256": "0d5e462cb07a6e030d514fd90bf93fa1872221b2c1fe1fe6b804093bb7ea3808"
+      },
+      "protectedRuntime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+        "bytes": 119096,
+        "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+      },
+      "protectedSource": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-baseline-source01/compiler.bend",
+        "bytes": 356626,
+        "sha256": "578d0d3fa834ba5ac0402e7fc19e7ae22368b80d8af94fc08fcd61ca239a0493"
+      }
+    },
+    {
+      "name": "parse-precedence-native01",
+      "removedFiles": 2,
+      "sourceLogicalBytes": 18040708,
+      "sourceAllocatedBytes": 18051072,
+      "newArchiveLogicalBytes": 2270761,
+      "newArchiveAllocatedBytes": 2273280,
+      "newRetentionFileAllocatedBytes": 2314240,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 2330624,
+      "netPayloadAllocatedRecoveryBytes": 15777792,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 15720448,
+      "observedPruneFilesystemDeltaBytes": 18042880,
+      "observedCompleteRootFilesystemDeltaBytes": 15728640,
+      "recordedFreeBeforeBytes": 5772115968,
+      "recordedFreeAfterBytes": 5787844608,
+      "recordedRootRecoverySeconds": 1.3838323657400906,
+      "retentionFiles": 11,
+      "retentionDirectories": 4,
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/own-intermediates-parse-precedence-native01/recovery.json",
+        "bytes": 685,
+        "sha256": "93cdddead3233c385d2b4f542ae7670c449ba412d84eb6a9a81de50a06127107"
+      },
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/own-intermediates-parse-precedence-native01/verified/plan.json",
+        "bytes": 1817,
+        "sha256": "d3a6e0f5bcfd5ad6ea877db95b4fe5f8240fa641ace6b1d9bc040319313e6e6c"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/own-intermediates-parse-precedence-native01/applied/report.json",
+        "bytes": 1143,
+        "sha256": "99247fdce444dce68d8cf615e707a0da54b6cf844c7b71025da3b2f0935117a3"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/own-intermediates-parse-precedence-native01/capsule/files.tar.gz",
+        "bytes": 2270761,
+        "sha256": "791e9b9b6da8eabce3f6856aef922504da0aa2c05fa1a82ee406cb42e5762df4",
+        "identityAuthority": "Completed streaming capture and independent verification receipts; not stream-rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/own-intermediates-parse-precedence-native01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/own-intermediates-parse-precedence-native01/restored"
+      ],
+      "protectedImage": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-precedence-native01/program",
+        "bytes": 3172456,
+        "sha256": "249b6681c2bd146efaf84b7943804bf6168681ff90973f18e3111f1cf87f78ec"
+      },
+      "protectedRuntime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+        "bytes": 119096,
+        "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+      },
+      "protectedSource": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-precedence-source01/compiler.bend",
+        "bytes": 358167,
+        "sha256": "2646219296750503eb84cc74083e33359ae8e31c3a344e6ffb0eb0577baacd61"
+      }
+    },
+    {
+      "name": "parse-lookahead-native02",
+      "removedFiles": 2,
+      "sourceLogicalBytes": 18098522,
+      "sourceAllocatedBytes": 18100224,
+      "newArchiveLogicalBytes": 2279424,
+      "newArchiveAllocatedBytes": 2281472,
+      "newRetentionFileAllocatedBytes": 2322432,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 2338816,
+      "netPayloadAllocatedRecoveryBytes": 15818752,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 15761408,
+      "observedPruneFilesystemDeltaBytes": 18092032,
+      "observedCompleteRootFilesystemDeltaBytes": 15704064,
+      "recordedFreeBeforeBytes": 5787836416,
+      "recordedFreeAfterBytes": 5803540480,
+      "recordedRootRecoverySeconds": 1.4328517788089812,
+      "retentionFiles": 11,
+      "retentionDirectories": 4,
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/own-intermediates-parse-lookahead-native02/recovery.json",
+        "bytes": 682,
+        "sha256": "90e3625e35a2710ee64270cc75ad9929112eeffd6929229f8999f6eb93cf146b"
+      },
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/own-intermediates-parse-lookahead-native02/verified/plan.json",
+        "bytes": 1811,
+        "sha256": "d883b77f5e104675bdbcbd3247ec0ccf6f9480c411895b43c2bd4be585560fb6"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/own-intermediates-parse-lookahead-native02/applied/report.json",
+        "bytes": 1140,
+        "sha256": "4d9b0637f68bcf3108e75a54cab09d3380c599b2476bdb7892e256c7bb0d7d0e"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/own-intermediates-parse-lookahead-native02/capsule/files.tar.gz",
+        "bytes": 2279424,
+        "sha256": "b65a2fe78abfb653cd8307839c1fbbbd5674dbef60503200fa55761059d0fae4",
+        "identityAuthority": "Completed streaming capture and independent verification receipts; not stream-rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/own-intermediates-parse-lookahead-native02/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/own-intermediates-parse-lookahead-native02/restored"
+      ],
+      "protectedImage": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-lookahead-native02/program",
+        "bytes": 3183272,
+        "sha256": "6f02b19abc92bcaeca37c62f32c79813b3f3ca166b50012101afc603b123baa5"
+      },
+      "protectedRuntime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+        "bytes": 119096,
+        "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+      },
+      "protectedSource": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-lookahead-source01/compiler.bend",
+        "bytes": 358267,
+        "sha256": "3f104e77908bd517d7981a3bbbafdbf5ebe769547117360e1fe878173ab8c323"
+      }
+    }
+  ],
+  "limitations": [
+    "All seven capsules used the normal 5 GiB maintenance floor. No compiler guard or selector changed.",
+    "Net allocation includes new capsule, verification/application files and directory blocks inside each recovery root, but not tracked experiment documentation or shared ancestor directory blocks.",
+    "Observed filesystem deltas include other activity and journal timing; they are not interchangeable with retained-block accounting. Recorded free space is historical, not an admission promise.",
+    "All executable/runtime/source/API/IR/receipt inputs remained hot. Restore is needed for future assembly inspection or relinking.",
+    "Restore recreates original paths by default. --out is a fresh journal, not the destination for recovered products. Reserve raw-file capacity before restoration."
+  ]
+}

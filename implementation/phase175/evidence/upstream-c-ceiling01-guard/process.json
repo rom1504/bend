@@ -1,0 +1,60 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": false,
+  "started": 1794038482.5277374,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "3",
+    "python3",
+    "-B",
+    "experiments/phase175/parser-c-ceiling.py",
+    "--out",
+    "selfhost/build/phase175/upstream-c-ceiling01",
+    "--seconds",
+    "175"
+  ],
+  "returncode": 1,
+  "rssLimitBytes": 2147483648,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 1939419136,
+  "minimumAvailableBytes": 23541637120,
+  "diskBudgetBytes": 268435456,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 5720023040,
+  "minimumDiskFreeBytes": 5707501568,
+  "peakRunAllocatedBytes": 11943936,
+  "peakFilesystemDecreaseBytes": 12521472,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/upstream-c-ceiling01"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "3",
+    "fileLimitBytes": 134217728,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/experiments/phase175/parser-c-ceiling.py",
+        "sha256": "c7d3a83161764b6be1fe2d73c0e6dea6391ee5388cb2a46d388dd2a1a316d76a",
+        "bytes": 7410
+      }
+    ]
+  },
+  "wallSeconds": 111.31570102414116,
+  "finished": 1794038593.8433187
+}

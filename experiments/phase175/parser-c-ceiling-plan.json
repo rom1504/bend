@@ -1,0 +1,103 @@
+{
+  "kind": "phase175-c-ceiling-source-audit",
+  "complete": true,
+  "targetsRun": false,
+  "upstreamRevision": "059266225b77c8ca256ac6b25ee5c21449bab151",
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/baseline-source03/compiler.bend",
+    "bytes": 656302,
+    "sha256": "351ad0e69554e5b12cf8367d5cdde648ab5a1787825614e23158196f5d0e851b"
+  },
+  "referenceSpec": {
+    "file": "/home/ai/bend2/build/publish/bend/experiments/phase175/parser-c-ceiling-upstream.json",
+    "bytes": 19303,
+    "sha256": "c4066c6bc1147e897e58d6fa0504112fb94b7ea7a93ecf9c50c403c4e66749b5"
+  },
+  "emissionCommand": [
+    "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/upstream.mjs",
+    "/home/ai/bend2/build/publish/bend/experiments/phase175/parser-c-ceiling-upstream.json",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/upstream-c-ceiling01/emission.json"
+  ],
+  "emissionStdout": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/upstream-c-ceiling01/program.c",
+  "buildCommand": [
+    "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+    "-std=c11",
+    "-O3",
+    "-isystem",
+    "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/upstream-c-ceiling01/program.c",
+    "-o",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/upstream-c-ceiling01/program",
+    "-lpthread",
+    "-lm"
+  ],
+  "compiler": {
+    "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+    "bytes": 119320,
+    "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+  },
+  "runtimeScope": "Unmodified runtime embedded by pinned upstream comp.ts; distinct from own C and QBE runtimes.",
+  "execute": {
+    "command": [
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/upstream-c-ceiling01/program",
+      "--threads",
+      "1",
+      "--gpu",
+      "off",
+      "--",
+      "request",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/source-final/compiler.bend",
+      "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "/home/ai/bend2/build/publish/bend/selfhost/.assets/base/base.p130",
+      "p130-word-pair-v1:p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+    ],
+    "argv0": "phase175-frontend",
+    "adapter": "selfhost/tools/profiler/run.py:execute",
+    "expectedStdout": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/frontend-full-baseline01/000-baseline.stdout",
+      "bytes": 42,
+      "sha256": "a14084dc5dc799e6fe67a1d4c52768f2876cafc3fb20a5e64b4c70f19f909fe9"
+    },
+    "timing": "Fresh complete process, with existing separate Base/frontend/observation IO.now clocks."
+  },
+  "baseline": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/frontend-full-baseline01/report.json",
+    "bytes": 4473,
+    "sha256": "06c2accd2efdbded2b2be6cb1029fe3c7c2f7afe022146fbf391c36f42ce61d3"
+  },
+  "recommendedBudgets": {
+    "totalSeconds": 175,
+    "outerSeconds": 180,
+    "emissionSeconds": 45,
+    "clangSeconds": 80,
+    "executionSeconds": "remaining total, max100",
+    "rssMiB": 2048,
+    "availableMiB": 16384,
+    "diskMiB": 256
+  },
+  "scope": "Commands only, no target run, no new compiler or source changes. Existing root resource guard required; stop if emission/ABI census makes Clang acquisition disproportionate. Budget recommendations are caps, not measured predictions.",
+  "orchestration": {
+    "file": "/home/ai/bend2/build/publish/bend/experiments/phase175/parser-c-ceiling.py",
+    "bytes": 7410,
+    "sha256": "c7d3a83161764b6be1fe2d73c0e6dea6391ee5388cb2a46d388dd2a1a316d76a"
+  },
+  "rootCommand": [
+    "python3",
+    "-B",
+    "selfhost/tests/phase175/job.py",
+    "--rss-mib",
+    "2048",
+    "upstream-c-ceiling01",
+    "180",
+    "256",
+    "python3",
+    "-B",
+    "experiments/phase175/parser-c-ceiling.py",
+    "--out",
+    "selfhost/build/phase175/upstream-c-ceiling01",
+    "--seconds",
+    "175"
+  ],
+  "staticSyntaxChecked": true
+}

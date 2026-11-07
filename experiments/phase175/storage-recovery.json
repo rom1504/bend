@@ -1,0 +1,1815 @@
+{
+  "kind": "phase175-completed-storage-recovery",
+  "complete": true,
+  "aggregationOnly": true,
+  "targetsRun": false,
+  "newCapturesRun": false,
+  "newPrunesRun": false,
+  "aggregationMethod": "Read completed immutable proposals, independent verifier plans/file lists, application reports and recovery/capsule receipts; authenticate small receipt chains, compare exact approved path/hash/metadata/count/byte sets, confirm selected source absence; stat retained archive and journal allocations. No archive stream re-verification or compiler execution.",
+  "groups": {
+    "existing_archives": {
+      "removedFiles": 485,
+      "sourceLogicalBytes": 273328972,
+      "sourceAllocatedBytes": 274345984,
+      "newArchiveLogicalBytes": 0,
+      "newArchiveAllocatedBytes": 0,
+      "newRetentionFileAllocatedBytes": 454656,
+      "newRetentionDirectoryAllocatedBytes": 98304,
+      "newRetentionTotalAllocatedBytes": 552960,
+      "netPayloadAllocatedRecoveryBytes": 274345984,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 273793024,
+      "observedPruneFilesystemDeltaBytes": 274247680,
+      "roots": 8,
+      "proposal": {
+        "file": "/home/ai/bend2/build/publish/bend/experiments/phase175/storage-proposal.json",
+        "bytes": 339865,
+        "sha256": "fec01b391cb1a68f7f8ed60b4981958a48912ce4bbf1582f3b7049d4d266003b"
+      },
+      "firstRecordedFreeBytes": 5477588992,
+      "lastRecordedFreeBytes": 5751779328
+    },
+    "phase140_transport": {
+      "removedFiles": 35,
+      "sourceLogicalBytes": 2720444429,
+      "sourceAllocatedBytes": 2720608256,
+      "newArchiveLogicalBytes": 372131586,
+      "newArchiveAllocatedBytes": 372150272,
+      "newRetentionFileAllocatedBytes": 372518912,
+      "newRetentionDirectoryAllocatedBytes": 147456,
+      "newRetentionTotalAllocatedBytes": 372666368,
+      "netPayloadAllocatedRecoveryBytes": 2348457984,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 2347941888,
+      "observedPruneFilesystemDeltaBytes": 2720522240,
+      "roots": 9,
+      "proposal": {
+        "file": "/home/ai/bend2/build/publish/bend/experiments/phase175/storage-emergency-phase140.json",
+        "bytes": 39831,
+        "sha256": "3739ce753eb9836e891cc9e4550f4af65ac9d2a75a3d8c0aaba175c4898ef6a7"
+      },
+      "firstRecordedFreeBytes": 2744549376,
+      "lastRecordedFreeBytes": 5091487744,
+      "archiveLogicalFraction": 0.1367907324380784,
+      "observedCompleteRootFilesystemDeltaBytes": 2347003904,
+      "recordedRootRecoverySeconds": 151.96736870380118
+    },
+    "phase102_child_logs": {
+      "removedFiles": 609,
+      "sourceLogicalBytes": 847964679,
+      "sourceAllocatedBytes": 849776640,
+      "newArchiveLogicalBytes": 37758367,
+      "newArchiveAllocatedBytes": 37818368,
+      "newRetentionFileAllocatedBytes": 39002112,
+      "newRetentionDirectoryAllocatedBytes": 311296,
+      "newRetentionTotalAllocatedBytes": 39313408,
+      "netPayloadAllocatedRecoveryBytes": 811958272,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 810463232,
+      "observedPruneFilesystemDeltaBytes": 849620992,
+      "roots": 19,
+      "proposal": {
+        "file": "/home/ai/bend2/build/publish/bend/experiments/phase175/storage-emergency-phase102.json",
+        "bytes": 564559,
+        "sha256": "233312656791efe9d3483947891ac17c61901ddca6e436a60b394f938088bc30"
+      },
+      "firstRecordedFreeBytes": 5091164160,
+      "lastRecordedFreeBytes": 5901307904,
+      "archiveLogicalFraction": 0.04452823087457868,
+      "observedCompleteRootFilesystemDeltaBytes": 810295296,
+      "recordedRootRecoverySeconds": 47.761722108814865
+    }
+  },
+  "emergencyTotal": {
+    "removedFiles": 644,
+    "roots": 28,
+    "sourceLogicalBytes": 3568409108,
+    "sourceAllocatedBytes": 3570384896,
+    "newArchiveLogicalBytes": 409889953,
+    "newArchiveAllocatedBytes": 409968640,
+    "newRetentionFileAllocatedBytes": 411521024,
+    "newRetentionDirectoryAllocatedBytes": 458752,
+    "newRetentionTotalAllocatedBytes": 411979776,
+    "netPayloadAllocatedRecoveryBytes": 3160416256,
+    "netAllocatedRecoveryIncludingNewRetentionBytes": 3158405120,
+    "observedPruneFilesystemDeltaBytes": 3570143232,
+    "observedCompleteRootFilesystemDeltaBytes": 3157299200,
+    "recordedRootRecoverySeconds": 199.72909081261605,
+    "archiveLogicalFraction": 0.11486630052621197,
+    "firstRecordedFreeBytes": 2744549376,
+    "lastRecordedFreeBytes": 5901307904,
+    "observedCampaignSpanFilesystemDeltaBytes": 3156758528
+  },
+  "combinedSourceAllocatedBytes": 3844730880,
+  "combinedNetAllocatedRecoveryIncludingNewRetentionBytes": 3432198144,
+  "rows": [
+    {
+      "name": "p152-programs45-acquire01",
+      "group": "existing_archives",
+      "removedFiles": 270,
+      "sourceLogicalBytes": 174290724,
+      "sourceAllocatedBytes": 174841856,
+      "newArchiveLogicalBytes": 0,
+      "newArchiveAllocatedBytes": 0,
+      "newRetentionFileAllocatedBytes": 192512,
+      "newRetentionDirectoryAllocatedBytes": 12288,
+      "newRetentionTotalAllocatedBytes": 204800,
+      "netPayloadAllocatedRecoveryBytes": 174841856,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 174637056,
+      "observedPruneFilesystemDeltaBytes": 174813184,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/p152-programs45-acquire01/verified/plan.json",
+        "bytes": 1765,
+        "sha256": "7fbdccef6481de4d37087d3c251f4722c20bd9232886a597178647f5b67f25d8"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/p152-programs45-acquire01/applied/report.json",
+        "bytes": 1108,
+        "sha256": "074d2db6039c8c5d9da87604d01fd21fc9355063aa6eb41a4919d0562ee0aab4"
+      },
+      "archive": null,
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/p152-programs45-acquire01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/p152-programs45-acquire01/restored"
+      ],
+      "recordedFreeBeforeBytes": 5477588992,
+      "recordedFreeAfterBytes": 5652402176
+    },
+    {
+      "name": "p152-n2-all",
+      "group": "existing_archives",
+      "removedFiles": 186,
+      "sourceLogicalBytes": 53633586,
+      "sourceAllocatedBytes": 54030336,
+      "newArchiveLogicalBytes": 0,
+      "newArchiveAllocatedBytes": 0,
+      "newRetentionFileAllocatedBytes": 126976,
+      "newRetentionDirectoryAllocatedBytes": 12288,
+      "newRetentionTotalAllocatedBytes": 139264,
+      "netPayloadAllocatedRecoveryBytes": 54030336,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 53891072,
+      "observedPruneFilesystemDeltaBytes": 54009856,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/p152-n2-all/verified/plan.json",
+        "bytes": 1687,
+        "sha256": "edd638323ea56d3a3159c86e4ec8c6f0a1f199790a1a245bb5e0054eef966064"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/p152-n2-all/applied/report.json",
+        "bytes": 1080,
+        "sha256": "1a4d3483e2dbf15227c290a0651f7128c16cc86e1f1da264c8329e7ee02853c2"
+      },
+      "archive": null,
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/p152-n2-all/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/p152-n2-all/restored"
+      ],
+      "recordedFreeBeforeBytes": 5652393984,
+      "recordedFreeAfterBytes": 5706403840
+    },
+    {
+      "name": "p152-compiler-bench01",
+      "group": "existing_archives",
+      "removedFiles": 24,
+      "sourceLogicalBytes": 22158888,
+      "sourceAllocatedBytes": 22216704,
+      "newArchiveLogicalBytes": 0,
+      "newArchiveAllocatedBytes": 0,
+      "newRetentionFileAllocatedBytes": 32768,
+      "newRetentionDirectoryAllocatedBytes": 12288,
+      "newRetentionTotalAllocatedBytes": 45056,
+      "netPayloadAllocatedRecoveryBytes": 22216704,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 22171648,
+      "observedPruneFilesystemDeltaBytes": 22208512,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/p152-compiler-bench01/verified/plan.json",
+        "bytes": 1733,
+        "sha256": "b306dd23397aa5b4e1741ce0055e28f75ae5ea1f848ec828efffc95781a2a71a"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/p152-compiler-bench01/applied/report.json",
+        "bytes": 1099,
+        "sha256": "098c3c95c7c210f8b0cf6cba8ec7d4862448672910229b508bd416501e2fdbd3"
+      },
+      "archive": null,
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/p152-compiler-bench01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/p152-compiler-bench01/restored"
+      ],
+      "recordedFreeBeforeBytes": 5706395648,
+      "recordedFreeAfterBytes": 5728604160
+    },
+    {
+      "name": "p165-lookup04",
+      "group": "existing_archives",
+      "removedFiles": 1,
+      "sourceLogicalBytes": 4682697,
+      "sourceAllocatedBytes": 4685824,
+      "newArchiveLogicalBytes": 0,
+      "newArchiveAllocatedBytes": 0,
+      "newRetentionFileAllocatedBytes": 20480,
+      "newRetentionDirectoryAllocatedBytes": 12288,
+      "newRetentionTotalAllocatedBytes": 32768,
+      "netPayloadAllocatedRecoveryBytes": 4685824,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 4653056,
+      "observedPruneFilesystemDeltaBytes": 4677632,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/p165-lookup04/verified/plan.json",
+        "bytes": 1697,
+        "sha256": "53eb70619cf6e5e6aeae457f74bb070d0b4ea69220a8b6f7a485ad62c99a66cf"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/p165-lookup04/applied/report.json",
+        "bytes": 1080,
+        "sha256": "97eb3c7cc3215dce5a4673d23519849f496c10f8f23075848918a521b5cad70c"
+      },
+      "archive": null,
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/p165-lookup04/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/p165-lookup04/restored"
+      ],
+      "recordedFreeBeforeBytes": 5728595968,
+      "recordedFreeAfterBytes": 5733273600
+    },
+    {
+      "name": "p165-map04",
+      "group": "existing_archives",
+      "removedFiles": 1,
+      "sourceLogicalBytes": 4675210,
+      "sourceAllocatedBytes": 4677632,
+      "newArchiveLogicalBytes": 0,
+      "newArchiveAllocatedBytes": 0,
+      "newRetentionFileAllocatedBytes": 20480,
+      "newRetentionDirectoryAllocatedBytes": 12288,
+      "newRetentionTotalAllocatedBytes": 32768,
+      "netPayloadAllocatedRecoveryBytes": 4677632,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 4644864,
+      "observedPruneFilesystemDeltaBytes": 4669440,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/p165-map04/verified/plan.json",
+        "bytes": 1682,
+        "sha256": "c8a311e5326d18d64e14f0ab9cb35ee0f83349f6738f97079bf27a132ecc1eff"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/p165-map04/applied/report.json",
+        "bytes": 1075,
+        "sha256": "b9c3d8bea088486eb6c4860cc9d729533b96340bde7ea739eb90c9a6dae267d1"
+      },
+      "archive": null,
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/p165-map04/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/p165-map04/restored"
+      ],
+      "recordedFreeBeforeBytes": 5733265408,
+      "recordedFreeAfterBytes": 5737934848
+    },
+    {
+      "name": "p165-ours-eq01",
+      "group": "existing_archives",
+      "removedFiles": 1,
+      "sourceLogicalBytes": 4632711,
+      "sourceAllocatedBytes": 4636672,
+      "newArchiveLogicalBytes": 0,
+      "newArchiveAllocatedBytes": 0,
+      "newRetentionFileAllocatedBytes": 20480,
+      "newRetentionDirectoryAllocatedBytes": 12288,
+      "newRetentionTotalAllocatedBytes": 32768,
+      "netPayloadAllocatedRecoveryBytes": 4636672,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 4603904,
+      "observedPruneFilesystemDeltaBytes": 4628480,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/p165-ours-eq01/verified/plan.json",
+        "bytes": 1702,
+        "sha256": "c4bbe6c8158ee71bbde4f9ef0ef26b0719927b9680d7983988cae7bf23d22f31"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/p165-ours-eq01/applied/report.json",
+        "bytes": 1083,
+        "sha256": "7620a8273f7f721ba7ed5f2deec3691381887963a52f5a7e7da297067f78d0db"
+      },
+      "archive": null,
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/p165-ours-eq01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/p165-ours-eq01/restored"
+      ],
+      "recordedFreeBeforeBytes": 5737926656,
+      "recordedFreeAfterBytes": 5742555136
+    },
+    {
+      "name": "p165-original02",
+      "group": "existing_archives",
+      "removedFiles": 1,
+      "sourceLogicalBytes": 4628175,
+      "sourceAllocatedBytes": 4628480,
+      "newArchiveLogicalBytes": 0,
+      "newArchiveAllocatedBytes": 0,
+      "newRetentionFileAllocatedBytes": 20480,
+      "newRetentionDirectoryAllocatedBytes": 12288,
+      "newRetentionTotalAllocatedBytes": 32768,
+      "netPayloadAllocatedRecoveryBytes": 4628480,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 4595712,
+      "observedPruneFilesystemDeltaBytes": 4620288,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/p165-original02/verified/plan.json",
+        "bytes": 1706,
+        "sha256": "10f83132c8c2c5018eab6ecb554bcc44e27814badd887dad1c34618b5456579d"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/p165-original02/applied/report.json",
+        "bytes": 1085,
+        "sha256": "1e055ba83c41b95965ecfbac62622653442fb24c14b09c0db674ea5bf26c99c5"
+      },
+      "archive": null,
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/p165-original02/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/p165-original02/restored"
+      ],
+      "recordedFreeBeforeBytes": 5742546944,
+      "recordedFreeAfterBytes": 5747167232
+    },
+    {
+      "name": "p165-memo01",
+      "group": "existing_archives",
+      "removedFiles": 1,
+      "sourceLogicalBytes": 4626981,
+      "sourceAllocatedBytes": 4628480,
+      "newArchiveLogicalBytes": 0,
+      "newArchiveAllocatedBytes": 0,
+      "newRetentionFileAllocatedBytes": 20480,
+      "newRetentionDirectoryAllocatedBytes": 12288,
+      "newRetentionTotalAllocatedBytes": 32768,
+      "netPayloadAllocatedRecoveryBytes": 4628480,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 4595712,
+      "observedPruneFilesystemDeltaBytes": 4620288,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/p165-memo01/verified/plan.json",
+        "bytes": 1686,
+        "sha256": "229d3c340c657acc3e3d93c5479d994fa9ddc6ca0eda67b21f691928ced02cd6"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/p165-memo01/applied/report.json",
+        "bytes": 1077,
+        "sha256": "f8c60ec9a4a5ce83fef351450695b7ea548a50e723bf9662196d6a281e1c4820"
+      },
+      "archive": null,
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/p165-memo01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/p165-memo01/restored"
+      ],
+      "recordedFreeBeforeBytes": 5747159040,
+      "recordedFreeAfterBytes": 5751779328
+    },
+    {
+      "name": "p140-full-product01",
+      "group": "phase140_transport",
+      "removedFiles": 4,
+      "sourceLogicalBytes": 325812767,
+      "sourceAllocatedBytes": 325832704,
+      "newArchiveLogicalBytes": 44564127,
+      "newArchiveAllocatedBytes": 44568576,
+      "newRetentionFileAllocatedBytes": 44609536,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 44625920,
+      "netPayloadAllocatedRecoveryBytes": 281264128,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 281206784,
+      "observedPruneFilesystemDeltaBytes": 325824512,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-full-product01/verified/plan.json",
+        "bytes": 1752,
+        "sha256": "880e11228a9a6c53f6756a78d57ce0764488dd5fc6702390246e8418c049bb66"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-full-product01/applied/report.json",
+        "bytes": 1114,
+        "sha256": "841bc20607bbd5a72e82bc6fffc399d24840c3f792005f5bac12e939643f0d60"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-full-product01/capsule/files.tar.gz",
+        "bytes": 44564127,
+        "sha256": "50a308833c635c230b88154116000a5905119436c03ce732b3f1912b8513a86e",
+        "identityAuthority": "Existing completed capsule and independent verification receipts; not rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/emergency-p140-full-product01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/emergency-p140-full-product01/restored"
+      ],
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-full-product01/recovery.json",
+        "bytes": 651,
+        "sha256": "b91844a53f79f7e791dc2cc37f4f12d820306aa1e7bab81441e9dad2435b0249"
+      },
+      "recordedRootRecoverySeconds": 17.910937719978392,
+      "observedCompleteRootFilesystemDeltaBytes": 281186304,
+      "recordedFreeBeforeBytes": 2744549376,
+      "recordedFreeAfterBytes": 3025735680
+    },
+    {
+      "name": "p140-full-product02",
+      "group": "phase140_transport",
+      "removedFiles": 4,
+      "sourceLogicalBytes": 325812767,
+      "sourceAllocatedBytes": 325832704,
+      "newArchiveLogicalBytes": 44564054,
+      "newArchiveAllocatedBytes": 44564480,
+      "newRetentionFileAllocatedBytes": 44605440,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 44621824,
+      "netPayloadAllocatedRecoveryBytes": 281268224,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 281210880,
+      "observedPruneFilesystemDeltaBytes": 325824512,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-full-product02/verified/plan.json",
+        "bytes": 1753,
+        "sha256": "74a06aab1c4f92a04dec570add23d7a186c0b44cefc2cc24d619a5081f49ef88"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-full-product02/applied/report.json",
+        "bytes": 1114,
+        "sha256": "aedbc39a5222f44a4feb478819c744049a04b948811aad635343757ab781d144"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-full-product02/capsule/files.tar.gz",
+        "bytes": 44564054,
+        "sha256": "05f9d848d518ea30a8249b75db9d0f9f4b86170108fba31ba8f86a130b64f50f",
+        "identityAuthority": "Existing completed capsule and independent verification receipts; not rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/emergency-p140-full-product02/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/emergency-p140-full-product02/restored"
+      ],
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-full-product02/recovery.json",
+        "bytes": 651,
+        "sha256": "19ecf03830b5e652142087c88ec9b7d1965b6f420eb8851cf41a43d2a7dada2c"
+      },
+      "recordedRootRecoverySeconds": 18.354056779295206,
+      "observedCompleteRootFilesystemDeltaBytes": 281178112,
+      "recordedFreeBeforeBytes": 3025727488,
+      "recordedFreeAfterBytes": 3306905600
+    },
+    {
+      "name": "p140-full-product03",
+      "group": "phase140_transport",
+      "removedFiles": 4,
+      "sourceLogicalBytes": 325812767,
+      "sourceAllocatedBytes": 325832704,
+      "newArchiveLogicalBytes": 44563984,
+      "newArchiveAllocatedBytes": 44564480,
+      "newRetentionFileAllocatedBytes": 44605440,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 44621824,
+      "netPayloadAllocatedRecoveryBytes": 281268224,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 281210880,
+      "observedPruneFilesystemDeltaBytes": 325824512,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-full-product03/verified/plan.json",
+        "bytes": 1753,
+        "sha256": "99f301677c6f347ed80ae2c07070e1d25e546565cc8458efc77ca48878bc5030"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-full-product03/applied/report.json",
+        "bytes": 1114,
+        "sha256": "74123e380bfee9718b54f7269ca8e17bcd52cd526b04ace5de17e0b0a0d768cb"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-full-product03/capsule/files.tar.gz",
+        "bytes": 44563984,
+        "sha256": "8f2e198a1e4332ac4a9da2ba4b998401b1df221fb981bf3c849d3f2867ff07c7",
+        "identityAuthority": "Existing completed capsule and independent verification receipts; not rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/emergency-p140-full-product03/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/emergency-p140-full-product03/restored"
+      ],
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-full-product03/recovery.json",
+        "bytes": 651,
+        "sha256": "606538baf9dbbcdae93f6e4671ca5274355eedc879f18eb2e738a5440a53dfb8"
+      },
+      "recordedRootRecoverySeconds": 17.653197628911585,
+      "observedCompleteRootFilesystemDeltaBytes": 281128960,
+      "recordedFreeBeforeBytes": 3306897408,
+      "recordedFreeAfterBytes": 3588026368
+    },
+    {
+      "name": "p140-p141-full-edit-baseline01",
+      "group": "phase140_transport",
+      "removedFiles": 4,
+      "sourceLogicalBytes": 325812767,
+      "sourceAllocatedBytes": 325832704,
+      "newArchiveLogicalBytes": 44564143,
+      "newArchiveAllocatedBytes": 44568576,
+      "newRetentionFileAllocatedBytes": 44609536,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 44625920,
+      "netPayloadAllocatedRecoveryBytes": 281264128,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 281206784,
+      "observedPruneFilesystemDeltaBytes": 325824512,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-p141-full-edit-baseline01/verified/plan.json",
+        "bytes": 1806,
+        "sha256": "91c13da00ef624ea92bb2c48f546d90771d325ec87dc27554e922c6bc87c6916"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-p141-full-edit-baseline01/applied/report.json",
+        "bytes": 1137,
+        "sha256": "6251478e2f8f1281d03519db336ab805301bb3c3ad329717ad1dd06d7ff91cb8"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-p141-full-edit-baseline01/capsule/files.tar.gz",
+        "bytes": 44564143,
+        "sha256": "755876102573361bd7e1daa5ca36456c5c916580796e6cdccc7c087cc33b5716",
+        "identityAuthority": "Existing completed capsule and independent verification receipts; not rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/emergency-p140-p141-full-edit-baseline01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/emergency-p140-p141-full-edit-baseline01/restored"
+      ],
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-p141-full-edit-baseline01/recovery.json",
+        "bytes": 684,
+        "sha256": "d24f02c8ba4223cdd4a4749ac3d8df621ba4510026b2b12b514fd1e24d4f3dec"
+      },
+      "recordedRootRecoverySeconds": 19.425877431873232,
+      "observedCompleteRootFilesystemDeltaBytes": 280584192,
+      "recordedFreeBeforeBytes": 3588018176,
+      "recordedFreeAfterBytes": 3868602368
+    },
+    {
+      "name": "p140-p141-full-edit-candidate01",
+      "group": "phase140_transport",
+      "removedFiles": 4,
+      "sourceLogicalBytes": 325812767,
+      "sourceAllocatedBytes": 325832704,
+      "newArchiveLogicalBytes": 44564058,
+      "newArchiveAllocatedBytes": 44564480,
+      "newRetentionFileAllocatedBytes": 44605440,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 44621824,
+      "netPayloadAllocatedRecoveryBytes": 281268224,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 281210880,
+      "observedPruneFilesystemDeltaBytes": 325824512,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-p141-full-edit-candidate01/verified/plan.json",
+        "bytes": 1813,
+        "sha256": "5ee866433c873a441a960b45249d90c63277f091bbc0d5e99eb7c4d033877edf"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-p141-full-edit-candidate01/applied/report.json",
+        "bytes": 1139,
+        "sha256": "2d525374c28d3c2e460d3b8b017e84cf7e731963c704ce54e5a4164d3bc93080"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-p141-full-edit-candidate01/capsule/files.tar.gz",
+        "bytes": 44564058,
+        "sha256": "ecaee739e06382069a921a7437a084a12467fe49d4331e327d7b1f5ab49fbfd7",
+        "identityAuthority": "Existing completed capsule and independent verification receipts; not rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/emergency-p140-p141-full-edit-candidate01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/emergency-p140-p141-full-edit-candidate01/restored"
+      ],
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-p141-full-edit-candidate01/recovery.json",
+        "bytes": 686,
+        "sha256": "1a3c85e85db5ff2272655f0e4af577affa6ad41c53fd0e41cb8ca3d0eb7a9392"
+      },
+      "recordedRootRecoverySeconds": 17.67610365198925,
+      "observedCompleteRootFilesystemDeltaBytes": 281178112,
+      "recordedFreeBeforeBytes": 3868594176,
+      "recordedFreeAfterBytes": 4149772288
+    },
+    {
+      "name": "p140-p142-parent-edit01",
+      "group": "phase140_transport",
+      "removedFiles": 4,
+      "sourceLogicalBytes": 325812767,
+      "sourceAllocatedBytes": 325832704,
+      "newArchiveLogicalBytes": 44564072,
+      "newArchiveAllocatedBytes": 44568576,
+      "newRetentionFileAllocatedBytes": 44609536,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 44625920,
+      "netPayloadAllocatedRecoveryBytes": 281264128,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 281206784,
+      "observedPruneFilesystemDeltaBytes": 325812224,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-p142-parent-edit01/verified/plan.json",
+        "bytes": 1773,
+        "sha256": "5c9d337a11243b3846e152d988e55de17e55d706d4e3a29264efe195dc3af43b"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-p142-parent-edit01/applied/report.json",
+        "bytes": 1122,
+        "sha256": "596a1df35fbdbae7afe4ab862d66e872781cb62c67b93e8bf55c7753f9cb5e8b"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-p142-parent-edit01/capsule/files.tar.gz",
+        "bytes": 44564072,
+        "sha256": "c0078581bd24b84d837b9137e421219477cb4364cf909ffd21cfc36fd8585c7a",
+        "identityAuthority": "Existing completed capsule and independent verification receipts; not rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/emergency-p140-p142-parent-edit01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/emergency-p140-p142-parent-edit01/restored"
+      ],
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-p142-parent-edit01/recovery.json",
+        "bytes": 662,
+        "sha256": "712000647e4af9385b4cb0bc3ac47b96aad8e986d0b55240c7bee1d385e301aa"
+      },
+      "recordedRootRecoverySeconds": 18.72936546895653,
+      "observedCompleteRootFilesystemDeltaBytes": 281112576,
+      "recordedFreeBeforeBytes": 4149764096,
+      "recordedFreeAfterBytes": 4430876672
+    },
+    {
+      "name": "p140-p142-indexed-edit01",
+      "group": "phase140_transport",
+      "removedFiles": 4,
+      "sourceLogicalBytes": 325812767,
+      "sourceAllocatedBytes": 325832704,
+      "newArchiveLogicalBytes": 44564071,
+      "newArchiveAllocatedBytes": 44564480,
+      "newRetentionFileAllocatedBytes": 44605440,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 44621824,
+      "netPayloadAllocatedRecoveryBytes": 281268224,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 281210880,
+      "observedPruneFilesystemDeltaBytes": 325824512,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-p142-indexed-edit01/verified/plan.json",
+        "bytes": 1778,
+        "sha256": "eea7aa4fb740c9253a65f9259954b7bac0e2b9818bb0fe34211f33fe9283fb01"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-p142-indexed-edit01/applied/report.json",
+        "bytes": 1124,
+        "sha256": "04332d9c75202a0f5e9f9fa624196fed00cc282c75c9d363d1493e15c0dd2f03"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-p142-indexed-edit01/capsule/files.tar.gz",
+        "bytes": 44564071,
+        "sha256": "0b54487a500b9c31edcf2edad2adf35845cfb82236fc699be702dfe458739d09",
+        "identityAuthority": "Existing completed capsule and independent verification receipts; not rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/emergency-p140-p142-indexed-edit01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/emergency-p140-p142-indexed-edit01/restored"
+      ],
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-p142-indexed-edit01/recovery.json",
+        "bytes": 666,
+        "sha256": "abd6d0167c4fdfab4a9199a47fcda6600f13405642db4e189d8d4abdd4296a95"
+      },
+      "recordedRootRecoverySeconds": 18.034485348965973,
+      "observedCompleteRootFilesystemDeltaBytes": 281194496,
+      "recordedFreeBeforeBytes": 4430868480,
+      "recordedFreeAfterBytes": 4712062976
+    },
+    {
+      "name": "p140-full-batch01",
+      "group": "phase140_transport",
+      "removedFiles": 5,
+      "sourceLogicalBytes": 227183474,
+      "sourceAllocatedBytes": 227196928,
+      "newArchiveLogicalBytes": 31417869,
+      "newArchiveAllocatedBytes": 31420416,
+      "newRetentionFileAllocatedBytes": 31461376,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 31477760,
+      "netPayloadAllocatedRecoveryBytes": 195776512,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 195719168,
+      "observedPruneFilesystemDeltaBytes": 227188736,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-full-batch01/verified/plan.json",
+        "bytes": 1742,
+        "sha256": "103aea1f8d5888801d0dd47eba0b4f38cab08c3a6a3c251a692a9fa3d85638de"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-full-batch01/applied/report.json",
+        "bytes": 1111,
+        "sha256": "32ffa87ff466de7f255fb6adf6bf6b21df99a8774420d9d62a1aec36485dcc60"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-full-batch01/capsule/files.tar.gz",
+        "bytes": 31417869,
+        "sha256": "6c200f6783bb9376d02cfdc0e396978ad702d14b29dd4921b108e2305c8295a8",
+        "identityAuthority": "Existing completed capsule and independent verification receipts; not rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/emergency-p140-full-batch01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/emergency-p140-full-batch01/restored"
+      ],
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-full-batch01/recovery.json",
+        "bytes": 645,
+        "sha256": "cea002226b7fdfb0a672e1acbd9213fef41174e2d8b7f06f959eb4887a009c92"
+      },
+      "recordedRootRecoverySeconds": 12.051917532924563,
+      "observedCompleteRootFilesystemDeltaBytes": 195706880,
+      "recordedFreeBeforeBytes": 4712054784,
+      "recordedFreeAfterBytes": 4907761664
+    },
+    {
+      "name": "p140-transport-replay02",
+      "group": "phase140_transport",
+      "removedFiles": 2,
+      "sourceLogicalBytes": 212571586,
+      "sourceAllocatedBytes": 212582400,
+      "newArchiveLogicalBytes": 28765208,
+      "newArchiveAllocatedBytes": 28766208,
+      "newRetentionFileAllocatedBytes": 28807168,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 28823552,
+      "netPayloadAllocatedRecoveryBytes": 183816192,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 183758848,
+      "observedPruneFilesystemDeltaBytes": 212574208,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-transport-replay02/verified/plan.json",
+        "bytes": 1771,
+        "sha256": "8285565b9300ff102051e07a35394204a3eeb8848db3cc22b57ae2927aeb7ba0"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-transport-replay02/applied/report.json",
+        "bytes": 1123,
+        "sha256": "a23e39530ee05caea07b31a08db771bac32e5a837a89991573669a4305cf3067"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-transport-replay02/capsule/files.tar.gz",
+        "bytes": 28765208,
+        "sha256": "d649979709c09f700a750ba512efa4af53ce5e237446b919835abc62c64ea54a",
+        "identityAuthority": "Existing completed capsule and independent verification receipts; not rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/emergency-p140-transport-replay02/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/emergency-p140-transport-replay02/restored"
+      ],
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p140-transport-replay02/recovery.json",
+        "bytes": 663,
+        "sha256": "2cd977e6e4413937c6376a5f6e2e1d8ca059823f4c72f7627aafa880ecebeeff"
+      },
+      "recordedRootRecoverySeconds": 12.131427140906453,
+      "observedCompleteRootFilesystemDeltaBytes": 183734272,
+      "recordedFreeBeforeBytes": 4907753472,
+      "recordedFreeAfterBytes": 5091487744
+    },
+    {
+      "name": "p102-chunk-typed01",
+      "group": "phase102_child_logs",
+      "removedFiles": 36,
+      "sourceLogicalBytes": 47817511,
+      "sourceAllocatedBytes": 47923200,
+      "newArchiveLogicalBytes": 2278001,
+      "newArchiveAllocatedBytes": 2281472,
+      "newRetentionFileAllocatedBytes": 2347008,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 2363392,
+      "netPayloadAllocatedRecoveryBytes": 45641728,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 45559808,
+      "observedPruneFilesystemDeltaBytes": 47915008,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-chunk-typed01/verified/plan.json",
+        "bytes": 1748,
+        "sha256": "dbaffb39a455980e3e3b2928a246e59836125589ef6bde40a6a2489105d8662f"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-chunk-typed01/applied/report.json",
+        "bytes": 1113,
+        "sha256": "906b167de20fe65a9d7243f8e685d29e153dbd670ac21e3225a295313da639b9"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-chunk-typed01/capsule/files.tar.gz",
+        "bytes": 2278001,
+        "sha256": "00e25ce748322843fee2787ad0a5a106e9a8b2aba21868814d0b8ace75317d3c",
+        "identityAuthority": "Existing completed capsule and independent verification receipts; not rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/emergency-p102-chunk-typed01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/emergency-p102-chunk-typed01/restored"
+      ],
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-chunk-typed01/recovery.json",
+        "bytes": 648,
+        "sha256": "24d0761c9d2e1574bcaa1c4d1100b9ea93f7236ecd13495952d74d1994b890e4"
+      },
+      "recordedRootRecoverySeconds": 2.5775246038101614,
+      "observedCompleteRootFilesystemDeltaBytes": 45559808,
+      "recordedFreeBeforeBytes": 5091164160,
+      "recordedFreeAfterBytes": 5136723968
+    },
+    {
+      "name": "p102-linked-typed01",
+      "group": "phase102_child_logs",
+      "removedFiles": 36,
+      "sourceLogicalBytes": 47817536,
+      "sourceAllocatedBytes": 47923200,
+      "newArchiveLogicalBytes": 2277751,
+      "newArchiveAllocatedBytes": 2281472,
+      "newRetentionFileAllocatedBytes": 2347008,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 2363392,
+      "netPayloadAllocatedRecoveryBytes": 45641728,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 45559808,
+      "observedPruneFilesystemDeltaBytes": 47915008,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-linked-typed01/verified/plan.json",
+        "bytes": 1753,
+        "sha256": "bfafacf38e6b7941436216ec805bff924eb5d4c9231209da48c97098dd0e2a71"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-linked-typed01/applied/report.json",
+        "bytes": 1115,
+        "sha256": "c58a437a7ce323885cc4decba764b63b9a4fed364a2d4096662f3a259f0e19d5"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-linked-typed01/capsule/files.tar.gz",
+        "bytes": 2277751,
+        "sha256": "8166079a3f34673d0448487b8b33ec68e8775161e5f628eb81c7e9df55da49ba",
+        "identityAuthority": "Existing completed capsule and independent verification receipts; not rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/emergency-p102-linked-typed01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/emergency-p102-linked-typed01/restored"
+      ],
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-linked-typed01/recovery.json",
+        "bytes": 651,
+        "sha256": "5f8f19356c3e4f1ae37e999d978ffca64b28f64790ef590aa9b42d87ff2c0786"
+      },
+      "recordedRootRecoverySeconds": 2.6038601431064308,
+      "observedCompleteRootFilesystemDeltaBytes": 45551616,
+      "recordedFreeBeforeBytes": 5136715776,
+      "recordedFreeAfterBytes": 5182267392
+    },
+    {
+      "name": "p102-projection-cost-screen01",
+      "group": "phase102_child_logs",
+      "removedFiles": 36,
+      "sourceLogicalBytes": 47817656,
+      "sourceAllocatedBytes": 47923200,
+      "newArchiveLogicalBytes": 2277677,
+      "newArchiveAllocatedBytes": 2281472,
+      "newRetentionFileAllocatedBytes": 2347008,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 2363392,
+      "netPayloadAllocatedRecoveryBytes": 45641728,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 45559808,
+      "observedPruneFilesystemDeltaBytes": 47915008,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-projection-cost-screen01/verified/plan.json",
+        "bytes": 1802,
+        "sha256": "c422c285f61c260752d805a8ee678abe66c35228a4a68c61dcf32fb83ab9150b"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-projection-cost-screen01/applied/report.json",
+        "bytes": 1135,
+        "sha256": "33141568b1ed92981d99368ece9c1972ba1dd13e6e7b6b8f32283288affc940f"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-projection-cost-screen01/capsule/files.tar.gz",
+        "bytes": 2277677,
+        "sha256": "1d4525fcc87056f9a96fd79d677087be45871f019abb3a7494a16c7af11c31a9",
+        "identityAuthority": "Existing completed capsule and independent verification receipts; not rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/emergency-p102-projection-cost-screen01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/emergency-p102-projection-cost-screen01/restored"
+      ],
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-projection-cost-screen01/recovery.json",
+        "bytes": 681,
+        "sha256": "3278451efe27a2933c52164b5367cbb7ce38c96e8cf32ea299803502a5feef10"
+      },
+      "recordedRootRecoverySeconds": 2.6457193666137755,
+      "observedCompleteRootFilesystemDeltaBytes": 45551616,
+      "recordedFreeBeforeBytes": 5182259200,
+      "recordedFreeAfterBytes": 5227810816
+    },
+    {
+      "name": "p102-final-screen03",
+      "group": "phase102_child_logs",
+      "removedFiles": 36,
+      "sourceLogicalBytes": 47817679,
+      "sourceAllocatedBytes": 47923200,
+      "newArchiveLogicalBytes": 2277849,
+      "newArchiveAllocatedBytes": 2281472,
+      "newRetentionFileAllocatedBytes": 2347008,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 2363392,
+      "netPayloadAllocatedRecoveryBytes": 45641728,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 45559808,
+      "observedPruneFilesystemDeltaBytes": 47915008,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-final-screen03/verified/plan.json",
+        "bytes": 1753,
+        "sha256": "4a731cafe60abdeb1702f3ef0ca47bed3418a6631ec77ee7e43dd0affbfa76ee"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-final-screen03/applied/report.json",
+        "bytes": 1114,
+        "sha256": "0642b4361e1c7ec9f658cd7af12de4d162b0044acd21cd8e94b6b88bf248f592"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-final-screen03/capsule/files.tar.gz",
+        "bytes": 2277849,
+        "sha256": "308dab974f01e47453c02a43feafa3835c0129944c6ee941caf2cbca6482cd59",
+        "identityAuthority": "Existing completed capsule and independent verification receipts; not rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/emergency-p102-final-screen03/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/emergency-p102-final-screen03/restored"
+      ],
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-final-screen03/recovery.json",
+        "bytes": 651,
+        "sha256": "dc30940ebc61565c069c8bc9beecbb77e23760b6afdd825428185c43fdb424ae"
+      },
+      "recordedRootRecoverySeconds": 2.5446745096705854,
+      "observedCompleteRootFilesystemDeltaBytes": 45568000,
+      "recordedFreeBeforeBytes": 5227802624,
+      "recordedFreeAfterBytes": 5273370624
+    },
+    {
+      "name": "p102-projection-screen01",
+      "group": "phase102_child_logs",
+      "removedFiles": 36,
+      "sourceLogicalBytes": 47817653,
+      "sourceAllocatedBytes": 47923200,
+      "newArchiveLogicalBytes": 2277652,
+      "newArchiveAllocatedBytes": 2281472,
+      "newRetentionFileAllocatedBytes": 2347008,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 2363392,
+      "netPayloadAllocatedRecoveryBytes": 45641728,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 45559808,
+      "observedPruneFilesystemDeltaBytes": 47915008,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-projection-screen01/verified/plan.json",
+        "bytes": 1778,
+        "sha256": "5229981e5382e1954081afdc118b9b640a2325d5377bf746b2cd0c59840463f0"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-projection-screen01/applied/report.json",
+        "bytes": 1125,
+        "sha256": "15731fe69ea26066a85d0205110f0b559159441a28157cebf930eb8e5a21a692"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-projection-screen01/capsule/files.tar.gz",
+        "bytes": 2277652,
+        "sha256": "0406d1bcd699be243d13ba3677055bf7248b7715b721f4925b072f7238b81c9d",
+        "identityAuthority": "Existing completed capsule and independent verification receipts; not rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/emergency-p102-projection-screen01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/emergency-p102-projection-screen01/restored"
+      ],
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-projection-screen01/recovery.json",
+        "bytes": 666,
+        "sha256": "a07cb3c6b2b93c167380a125b86cdb05ea86ae3d057f62a6f36e4f1018deb941"
+      },
+      "recordedRootRecoverySeconds": 2.5617935699410737,
+      "observedCompleteRootFilesystemDeltaBytes": 45568000,
+      "recordedFreeBeforeBytes": 5273362432,
+      "recordedFreeAfterBytes": 5318930432
+    },
+    {
+      "name": "p102-depth-bend-screen01",
+      "group": "phase102_child_logs",
+      "removedFiles": 36,
+      "sourceLogicalBytes": 47817683,
+      "sourceAllocatedBytes": 47923200,
+      "newArchiveLogicalBytes": 2277749,
+      "newArchiveAllocatedBytes": 2281472,
+      "newRetentionFileAllocatedBytes": 2347008,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 2363392,
+      "netPayloadAllocatedRecoveryBytes": 45641728,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 45559808,
+      "observedPruneFilesystemDeltaBytes": 47915008,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-depth-bend-screen01/verified/plan.json",
+        "bytes": 1778,
+        "sha256": "d3f5dd6b6ace133a8b547a66bc1cfc961ae441d59acbbfe97f3c338675272d0b"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-depth-bend-screen01/applied/report.json",
+        "bytes": 1125,
+        "sha256": "1e01d2faef5b2d828a7b20e8d2593a96cb987c2dd67b846449f2ad3839894db0"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-depth-bend-screen01/capsule/files.tar.gz",
+        "bytes": 2277749,
+        "sha256": "ec5046f8ee9ef4e79968271dd21ac692aa95f61c6bbe123e3d7c9098c645b92f",
+        "identityAuthority": "Existing completed capsule and independent verification receipts; not rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/emergency-p102-depth-bend-screen01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/emergency-p102-depth-bend-screen01/restored"
+      ],
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-depth-bend-screen01/recovery.json",
+        "bytes": 666,
+        "sha256": "8b11041b365807092c9ce589047086bbc92a188b6baab3a3b2d28af490e2256d"
+      },
+      "recordedRootRecoverySeconds": 2.5768581349402666,
+      "observedCompleteRootFilesystemDeltaBytes": 45563904,
+      "recordedFreeBeforeBytes": 5318918144,
+      "recordedFreeAfterBytes": 5364482048
+    },
+    {
+      "name": "p102-trmc-screen01",
+      "group": "phase102_child_logs",
+      "removedFiles": 36,
+      "sourceLogicalBytes": 47817594,
+      "sourceAllocatedBytes": 47923200,
+      "newArchiveLogicalBytes": 2277793,
+      "newArchiveAllocatedBytes": 2281472,
+      "newRetentionFileAllocatedBytes": 2347008,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 2363392,
+      "netPayloadAllocatedRecoveryBytes": 45641728,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 45559808,
+      "observedPruneFilesystemDeltaBytes": 47915008,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-trmc-screen01/verified/plan.json",
+        "bytes": 1748,
+        "sha256": "58a698aa740f464cdeec03a64ddb63c4bb31806e80d3aa72a665aae78ef8f3db"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-trmc-screen01/applied/report.json",
+        "bytes": 1113,
+        "sha256": "fba600ad78aa5313049a8ec70d302b1b586cff6ade57a74382d1c2095ebe0cc1"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-trmc-screen01/capsule/files.tar.gz",
+        "bytes": 2277793,
+        "sha256": "0b9b47be648aa661007bc34e684a808a4b54d45a7842fcde9d289f2da402e6a8",
+        "identityAuthority": "Existing completed capsule and independent verification receipts; not rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/emergency-p102-trmc-screen01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/emergency-p102-trmc-screen01/restored"
+      ],
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-trmc-screen01/recovery.json",
+        "bytes": 648,
+        "sha256": "907d9ca3c8848faf3fe6a6e61821860790f36cd2e9938393c2ff2cf07e38c6f5"
+      },
+      "recordedRootRecoverySeconds": 2.6569886030629277,
+      "observedCompleteRootFilesystemDeltaBytes": 45342720,
+      "recordedFreeBeforeBytes": 5364473856,
+      "recordedFreeAfterBytes": 5409816576
+    },
+    {
+      "name": "p102-combined-bend-screen01",
+      "group": "phase102_child_logs",
+      "removedFiles": 36,
+      "sourceLogicalBytes": 47817641,
+      "sourceAllocatedBytes": 47923200,
+      "newArchiveLogicalBytes": 2277765,
+      "newArchiveAllocatedBytes": 2281472,
+      "newRetentionFileAllocatedBytes": 2347008,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 2363392,
+      "netPayloadAllocatedRecoveryBytes": 45641728,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 45559808,
+      "observedPruneFilesystemDeltaBytes": 47915008,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-combined-bend-screen01/verified/plan.json",
+        "bytes": 1792,
+        "sha256": "86f30782793a4064eeddde36609e6a3c040f746f04a0c328bb96ad50eca78e6c"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-combined-bend-screen01/applied/report.json",
+        "bytes": 1132,
+        "sha256": "63adb6e2e262d588f82a6591a1242b35c7c40bfde7139a438a9435152b717c4b"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-combined-bend-screen01/capsule/files.tar.gz",
+        "bytes": 2277765,
+        "sha256": "3f45f052d7540422fc0fcf9acf4d16ca40e31e2ce96cb6f589106c98816a580c",
+        "identityAuthority": "Existing completed capsule and independent verification receipts; not rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/emergency-p102-combined-bend-screen01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/emergency-p102-combined-bend-screen01/restored"
+      ],
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-combined-bend-screen01/recovery.json",
+        "bytes": 675,
+        "sha256": "653b61aab4a9bc4b911bef7b9c635a66ff243274d5a3dc9427ff64f7555f6bb4"
+      },
+      "recordedRootRecoverySeconds": 2.5116764111444354,
+      "observedCompleteRootFilesystemDeltaBytes": 45568000,
+      "recordedFreeBeforeBytes": 5409808384,
+      "recordedFreeAfterBytes": 5455376384
+    },
+    {
+      "name": "p102-auto-inline-screen01",
+      "group": "phase102_child_logs",
+      "removedFiles": 36,
+      "sourceLogicalBytes": 47817724,
+      "sourceAllocatedBytes": 47923200,
+      "newArchiveLogicalBytes": 2278009,
+      "newArchiveAllocatedBytes": 2281472,
+      "newRetentionFileAllocatedBytes": 2347008,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 2363392,
+      "netPayloadAllocatedRecoveryBytes": 45641728,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 45559808,
+      "observedPruneFilesystemDeltaBytes": 47915008,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-auto-inline-screen01/verified/plan.json",
+        "bytes": 1783,
+        "sha256": "a010e5bc985be99de6277d5d7883ed89fb18cb0cfc6c50ddcfa47cf1e43d45c8"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-auto-inline-screen01/applied/report.json",
+        "bytes": 1126,
+        "sha256": "88d14170e3924518bef6bc773c9d54e606215f8b1de45190558f9c6a979dc6bc"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-auto-inline-screen01/capsule/files.tar.gz",
+        "bytes": 2278009,
+        "sha256": "a9b0d831ce9e65474fcef4f1a1ac09bd80a4823b9e70f638e1d6bc7196b508b4",
+        "identityAuthority": "Existing completed capsule and independent verification receipts; not rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/emergency-p102-auto-inline-screen01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/emergency-p102-auto-inline-screen01/restored"
+      ],
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-auto-inline-screen01/recovery.json",
+        "bytes": 668,
+        "sha256": "49ab703595ef4392218aec34e1413ac6bab583a6fc7120673afce68093828a02"
+      },
+      "recordedRootRecoverySeconds": 3.112395064905286,
+      "observedCompleteRootFilesystemDeltaBytes": 45555712,
+      "recordedFreeBeforeBytes": 5455368192,
+      "recordedFreeAfterBytes": 5500923904
+    },
+    {
+      "name": "p102-inline-screen01",
+      "group": "phase102_child_logs",
+      "removedFiles": 36,
+      "sourceLogicalBytes": 47817563,
+      "sourceAllocatedBytes": 47923200,
+      "newArchiveLogicalBytes": 2277933,
+      "newArchiveAllocatedBytes": 2281472,
+      "newRetentionFileAllocatedBytes": 2347008,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 2363392,
+      "netPayloadAllocatedRecoveryBytes": 45641728,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 45559808,
+      "observedPruneFilesystemDeltaBytes": 47915008,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-inline-screen01/verified/plan.json",
+        "bytes": 1758,
+        "sha256": "ad7c105293c85a97a90157ee4e221071c994b77edad5cedc632a7208e6e07740"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-inline-screen01/applied/report.json",
+        "bytes": 1116,
+        "sha256": "919e2699354ea3389500497c223e8db224e21fd2ee48ce24c549b2581fd378bc"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-inline-screen01/capsule/files.tar.gz",
+        "bytes": 2277933,
+        "sha256": "7256171ff2b1de880faf7f45d2d5413da9d60b88155690521a121cba4c73dfe3",
+        "identityAuthority": "Existing completed capsule and independent verification receipts; not rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/emergency-p102-inline-screen01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/emergency-p102-inline-screen01/restored"
+      ],
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-inline-screen01/recovery.json",
+        "bytes": 654,
+        "sha256": "81b5eee3f99a2aded31351379868e7fa0586c13f806898a9edaea2e0245b31fa"
+      },
+      "recordedRootRecoverySeconds": 2.6039443789049983,
+      "observedCompleteRootFilesystemDeltaBytes": 45568000,
+      "recordedFreeBeforeBytes": 5500915712,
+      "recordedFreeAfterBytes": 5546483712
+    },
+    {
+      "name": "p102-observer-screen01",
+      "group": "phase102_child_logs",
+      "removedFiles": 36,
+      "sourceLogicalBytes": 47817547,
+      "sourceAllocatedBytes": 47923200,
+      "newArchiveLogicalBytes": 2277572,
+      "newArchiveAllocatedBytes": 2281472,
+      "newRetentionFileAllocatedBytes": 2347008,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 2363392,
+      "netPayloadAllocatedRecoveryBytes": 45641728,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 45559808,
+      "observedPruneFilesystemDeltaBytes": 47915008,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-observer-screen01/verified/plan.json",
+        "bytes": 1768,
+        "sha256": "75b991bcfc5040be760d1c00ce6d228bd0818087d33bb619079428899e9ebb61"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-observer-screen01/applied/report.json",
+        "bytes": 1122,
+        "sha256": "0471cb87d1dc019c055af603e9757b303d47e2af94986e274ebf6a1664666017"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-observer-screen01/capsule/files.tar.gz",
+        "bytes": 2277572,
+        "sha256": "9c862cfb64786ed63f12f8727da59882f60698689f73cf314cc255de6076cf1e",
+        "identityAuthority": "Existing completed capsule and independent verification receipts; not rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/emergency-p102-observer-screen01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/emergency-p102-observer-screen01/restored"
+      ],
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-observer-screen01/recovery.json",
+        "bytes": 659,
+        "sha256": "c381658aea6acb8053e2768253c05ba01b7a69d467b74f2db5211ceeda957a7d"
+      },
+      "recordedRootRecoverySeconds": 2.561466208193451,
+      "observedCompleteRootFilesystemDeltaBytes": 45568000,
+      "recordedFreeBeforeBytes": 5546475520,
+      "recordedFreeAfterBytes": 5592043520
+    },
+    {
+      "name": "p102-projection-pair01",
+      "group": "phase102_child_logs",
+      "removedFiles": 36,
+      "sourceLogicalBytes": 47817834,
+      "sourceAllocatedBytes": 47923200,
+      "newArchiveLogicalBytes": 2277862,
+      "newArchiveAllocatedBytes": 2281472,
+      "newRetentionFileAllocatedBytes": 2342912,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 2359296,
+      "netPayloadAllocatedRecoveryBytes": 45641728,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 45563904,
+      "observedPruneFilesystemDeltaBytes": 47915008,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-projection-pair01/verified/plan.json",
+        "bytes": 1768,
+        "sha256": "83c89ce202472cbc61474e14f17bd2890f2f88a6c23de9dd26ce1ec43f35fd14"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-projection-pair01/applied/report.json",
+        "bytes": 1121,
+        "sha256": "f51324aef033a0690b31a81edd86c7ffa4bceeedfd030f658a3764f83332abbc"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-projection-pair01/capsule/files.tar.gz",
+        "bytes": 2277862,
+        "sha256": "adc0de38724854f74f2a392237310b7795208d6ca53edb074f6210c3dfce663c",
+        "identityAuthority": "Existing completed capsule and independent verification receipts; not rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/emergency-p102-projection-pair01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/emergency-p102-projection-pair01/restored"
+      ],
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-projection-pair01/recovery.json",
+        "bytes": 660,
+        "sha256": "85d63f767b8a0cbfe3c3baf50283a8a9f2a0a43cf626bccb07a7d7b3e9d29cf4"
+      },
+      "recordedRootRecoverySeconds": 2.5394831569865346,
+      "observedCompleteRootFilesystemDeltaBytes": 45572096,
+      "recordedFreeBeforeBytes": 5592035328,
+      "recordedFreeAfterBytes": 5637607424
+    },
+    {
+      "name": "p102-linked-append01",
+      "group": "phase102_child_logs",
+      "removedFiles": 24,
+      "sourceLogicalBytes": 44853275,
+      "sourceAllocatedBytes": 44924928,
+      "newArchiveLogicalBytes": 1616368,
+      "newArchiveAllocatedBytes": 1617920,
+      "newRetentionFileAllocatedBytes": 1675264,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 1691648,
+      "netPayloadAllocatedRecoveryBytes": 43307008,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 43233280,
+      "observedPruneFilesystemDeltaBytes": 44916736,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-linked-append01/verified/plan.json",
+        "bytes": 1757,
+        "sha256": "3696296ac5affaee3661f17b9004a086fba0896e1fbf64c19e9b1fb765673e07"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-linked-append01/applied/report.json",
+        "bytes": 1117,
+        "sha256": "30f271cd84a5a30bea700991e5d7a44da8ce4c0a37dcb9cd57650522b569101c"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-linked-append01/capsule/files.tar.gz",
+        "bytes": 1616368,
+        "sha256": "9a9470b50816203ab5ba67f62752f8f73da3fb026820259a26f406dbb23659e6",
+        "identityAuthority": "Existing completed capsule and independent verification receipts; not rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/emergency-p102-linked-append01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/emergency-p102-linked-append01/restored"
+      ],
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-linked-append01/recovery.json",
+        "bytes": 654,
+        "sha256": "496787c10f79e6189a5f7571e46b127085a64f0f8db89620876f7c28c2109af4"
+      },
+      "recordedRootRecoverySeconds": 2.4455185933038592,
+      "observedCompleteRootFilesystemDeltaBytes": 43241472,
+      "recordedFreeBeforeBytes": 5637599232,
+      "recordedFreeAfterBytes": 5680840704
+    },
+    {
+      "name": "p102-linked-copy01",
+      "group": "phase102_child_logs",
+      "removedFiles": 24,
+      "sourceLogicalBytes": 44853183,
+      "sourceAllocatedBytes": 44924928,
+      "newArchiveLogicalBytes": 1616354,
+      "newArchiveAllocatedBytes": 1617920,
+      "newRetentionFileAllocatedBytes": 1675264,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 1691648,
+      "netPayloadAllocatedRecoveryBytes": 43307008,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 43233280,
+      "observedPruneFilesystemDeltaBytes": 44916736,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-linked-copy01/verified/plan.json",
+        "bytes": 1748,
+        "sha256": "f403d59d770e7fa1da30213e215d12769f769741447d81e8453af6164b54691a"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-linked-copy01/applied/report.json",
+        "bytes": 1114,
+        "sha256": "1f2872afe03cd2fd901355a35cef78d4da489a2e5d62956b8e712375d57905bd"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-linked-copy01/capsule/files.tar.gz",
+        "bytes": 1616354,
+        "sha256": "064f015382914a3e50c100a1c64686660640bdd7ca238fb520329491d74d0a56",
+        "identityAuthority": "Existing completed capsule and independent verification receipts; not rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/emergency-p102-linked-copy01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/emergency-p102-linked-copy01/restored"
+      ],
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-linked-copy01/recovery.json",
+        "bytes": 647,
+        "sha256": "ce52acfb4bf811df363b5afa08cf92c811ec143f23db89f8a5f48e37d2c2d633"
+      },
+      "recordedRootRecoverySeconds": 2.527970832772553,
+      "observedCompleteRootFilesystemDeltaBytes": 43216896,
+      "recordedFreeBeforeBytes": 5680832512,
+      "recordedFreeAfterBytes": 5724049408
+    },
+    {
+      "name": "p102-reuse-screen01",
+      "group": "phase102_child_logs",
+      "removedFiles": 24,
+      "sourceLogicalBytes": 44853234,
+      "sourceAllocatedBytes": 44924928,
+      "newArchiveLogicalBytes": 1616357,
+      "newArchiveAllocatedBytes": 1617920,
+      "newRetentionFileAllocatedBytes": 1675264,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 1691648,
+      "netPayloadAllocatedRecoveryBytes": 43307008,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 43233280,
+      "observedPruneFilesystemDeltaBytes": 44916736,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-reuse-screen01/verified/plan.json",
+        "bytes": 1754,
+        "sha256": "2f662329015781ec64c5886f89f33d2080e6b259b9ad9cb82f64da095b67318a"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-reuse-screen01/applied/report.json",
+        "bytes": 1115,
+        "sha256": "92930577e1307861a385fe110b668b0668cbfedc7a970aa4d6d666e84fff0e00"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-reuse-screen01/capsule/files.tar.gz",
+        "bytes": 1616357,
+        "sha256": "d550c9cc2f82cce5a11a698c35a0bc2b7d149345888578989ff784695f9f4a5d",
+        "identityAuthority": "Existing completed capsule and independent verification receipts; not rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/emergency-p102-reuse-screen01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/emergency-p102-reuse-screen01/restored"
+      ],
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-reuse-screen01/recovery.json",
+        "bytes": 651,
+        "sha256": "1ba9305630ab426ae61dbc029f26c1f713347453db6689ce35b57391d2bbf50c"
+      },
+      "recordedRootRecoverySeconds": 2.4368186029605567,
+      "observedCompleteRootFilesystemDeltaBytes": 43241472,
+      "recordedFreeBeforeBytes": 5724041216,
+      "recordedFreeAfterBytes": 5767282688
+    },
+    {
+      "name": "p102-reuse-pair01",
+      "group": "phase102_child_logs",
+      "removedFiles": 24,
+      "sourceLogicalBytes": 44853237,
+      "sourceAllocatedBytes": 44924928,
+      "newArchiveLogicalBytes": 1616303,
+      "newArchiveAllocatedBytes": 1617920,
+      "newRetentionFileAllocatedBytes": 1675264,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 1691648,
+      "netPayloadAllocatedRecoveryBytes": 43307008,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 43233280,
+      "observedPruneFilesystemDeltaBytes": 44916736,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-reuse-pair01/verified/plan.json",
+        "bytes": 1744,
+        "sha256": "40824701b2b38679ea9fad38d59d0b660f2213c335d5f004b5d95608e9b32547"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-reuse-pair01/applied/report.json",
+        "bytes": 1112,
+        "sha256": "14ed9360dd5ed18bf139d289f5ceeb223cd1f87aa6bf2bfabe7fd6da136bd2c3"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-reuse-pair01/capsule/files.tar.gz",
+        "bytes": 1616303,
+        "sha256": "518c467f4dac881b153c558942db637f2cef1b8a1e0bce3d8c5ed77f73d500a5",
+        "identityAuthority": "Existing completed capsule and independent verification receipts; not rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/emergency-p102-reuse-pair01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/emergency-p102-reuse-pair01/restored"
+      ],
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-reuse-pair01/recovery.json",
+        "bytes": 645,
+        "sha256": "fc2e7bb4bbc922deb2f1c4d0204569373b1efca2738c86ca485895ab41a81b02"
+      },
+      "recordedRootRecoverySeconds": 2.4866030742414296,
+      "observedCompleteRootFilesystemDeltaBytes": 43233280,
+      "recordedFreeBeforeBytes": 5767274496,
+      "recordedFreeAfterBytes": 5810507776
+    },
+    {
+      "name": "p102-reuse-bend-broad01",
+      "group": "phase102_child_logs",
+      "removedFiles": 27,
+      "sourceLogicalBytes": 31580041,
+      "sourceAllocatedBytes": 31666176,
+      "newArchiveLogicalBytes": 1319877,
+      "newArchiveAllocatedBytes": 1323008,
+      "newRetentionFileAllocatedBytes": 1380352,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 1396736,
+      "netPayloadAllocatedRecoveryBytes": 30343168,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 30269440,
+      "observedPruneFilesystemDeltaBytes": 31657984,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-reuse-bend-broad01/verified/plan.json",
+        "bytes": 1773,
+        "sha256": "ba71a32009657f25fb00846d172e33412ddef32562d03f54171dcb5f29ca6c72"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-reuse-bend-broad01/applied/report.json",
+        "bytes": 1123,
+        "sha256": "d9486d870ed519622b38f56a0bca17fe6cec25f777eeb23617ef6ed6c3422ff1"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-reuse-bend-broad01/capsule/files.tar.gz",
+        "bytes": 1319877,
+        "sha256": "69e8831ff3ab522bd69d17cbbde125f7ac852e285d8a4c56ec301f29c37b19b0",
+        "identityAuthority": "Existing completed capsule and independent verification receipts; not rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/emergency-p102-reuse-bend-broad01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/emergency-p102-reuse-bend-broad01/restored"
+      ],
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-reuse-bend-broad01/recovery.json",
+        "bytes": 663,
+        "sha256": "05573c02e6d3f027553ca2f4b9ac123deed985021635105f369d41bc7b8a98b3"
+      },
+      "recordedRootRecoverySeconds": 1.9529215563088655,
+      "observedCompleteRootFilesystemDeltaBytes": 30269440,
+      "recordedFreeBeforeBytes": 5810499584,
+      "recordedFreeAfterBytes": 5840769024
+    },
+    {
+      "name": "p102-depth-bend-broad01",
+      "group": "phase102_child_logs",
+      "removedFiles": 27,
+      "sourceLogicalBytes": 31580070,
+      "sourceAllocatedBytes": 31666176,
+      "newArchiveLogicalBytes": 1319776,
+      "newArchiveAllocatedBytes": 1323008,
+      "newRetentionFileAllocatedBytes": 1380352,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 1396736,
+      "netPayloadAllocatedRecoveryBytes": 30343168,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 30269440,
+      "observedPruneFilesystemDeltaBytes": 31657984,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-depth-bend-broad01/verified/plan.json",
+        "bytes": 1774,
+        "sha256": "691cb2ad0245786e21114376cf43fbab88a3d6b4ced4b114933d7036bf87e8e6"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-depth-bend-broad01/applied/report.json",
+        "bytes": 1122,
+        "sha256": "eeb2f994e2dd85204341952dc28802fa8d493b0383b78e6cd51b078a6b5c3879"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-depth-bend-broad01/capsule/files.tar.gz",
+        "bytes": 1319776,
+        "sha256": "92a645e345d449a3fb44a7ff29f49c1cdb3138a72de553f8919b12fb19ac6883",
+        "identityAuthority": "Existing completed capsule and independent verification receipts; not rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/emergency-p102-depth-bend-broad01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/emergency-p102-depth-bend-broad01/restored"
+      ],
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-depth-bend-broad01/recovery.json",
+        "bytes": 663,
+        "sha256": "f6ba3f7381ff24a03d589c8e320d519ed2f85c945607303cd9e38474ead9341e"
+      },
+      "recordedRootRecoverySeconds": 1.9194370610639453,
+      "observedCompleteRootFilesystemDeltaBytes": 30277632,
+      "recordedFreeBeforeBytes": 5840760832,
+      "recordedFreeAfterBytes": 5871038464
+    },
+    {
+      "name": "p102-final-broad03",
+      "group": "phase102_child_logs",
+      "removedFiles": 27,
+      "sourceLogicalBytes": 31580018,
+      "sourceAllocatedBytes": 31666176,
+      "newArchiveLogicalBytes": 1319719,
+      "newArchiveAllocatedBytes": 1323008,
+      "newRetentionFileAllocatedBytes": 1380352,
+      "newRetentionDirectoryAllocatedBytes": 16384,
+      "newRetentionTotalAllocatedBytes": 1396736,
+      "netPayloadAllocatedRecoveryBytes": 30343168,
+      "netAllocatedRecoveryIncludingNewRetentionBytes": 30269440,
+      "observedPruneFilesystemDeltaBytes": 31657984,
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-final-broad03/verified/plan.json",
+        "bytes": 1748,
+        "sha256": "839d5056d9ffd2219ec43b0b9fbeeb5b06772579d796594c6f956fef7bf35387"
+      },
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-final-broad03/applied/report.json",
+        "bytes": 1113,
+        "sha256": "938971fc90d7fe8a7162577bdcefdd3059496c90ac084cb512c65f17c5561d97"
+      },
+      "archive": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-final-broad03/capsule/files.tar.gz",
+        "bytes": 1319719,
+        "sha256": "63d0f6abca31d74dfefcc6206cc51b52a563e56514d6e5decd3e134feebc820e",
+        "identityAuthority": "Existing completed capsule and independent verification receipts; not rehashed during aggregation."
+      },
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/emergency-p102-final-broad03/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/emergency-p102-final-broad03/restored"
+      ],
+      "recovery": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/emergency-p102-final-broad03/recovery.json",
+        "bytes": 648,
+        "sha256": "a38d28d0c1cf47f8b394b6e69c70420cec72b125469566d59e676bbff71492da"
+      },
+      "recordedRootRecoverySeconds": 2.4960682368837297,
+      "observedCompleteRootFilesystemDeltaBytes": 30277632,
+      "recordedFreeBeforeBytes": 5871030272,
+      "recordedFreeAfterBytes": 5901307904
+    }
+  ],
+  "limitations": [
+    "Allocated values use current st_blocks*512 for retained files/directories; payload bytes are not block allocation. Existing capsules in the first tranche predated this work and are not charged again.",
+    "Net file/directory accounting is distinct from observed free-space deltas, which include other writers, filesystem effects and receipt timing. No current-free snapshot is a target admission promise.",
+    "Original source inode identities are preserved in evidence, not recreated by restore. Maintained restore reconstructs exact member bytes, owner/group where permitted, mode and mtime at original paths by default, refusing changed existing content.",
+    "Restore commands allocate the original data again; reserve space first and use a fresh output journal. --member can restrict a restore.",
+    "Historical raw evidence became cold, not discarded: archive, receipt, independent verified plan and apply journal remain. CurrentPhase174/rollback/runtime/source/profile inputs stayed hot."
+  ]
+}

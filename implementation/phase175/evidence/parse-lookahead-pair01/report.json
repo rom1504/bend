@@ -1,0 +1,180 @@
+{
+  "kind": "phase175-native-frontend-pair",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase175/native-frontend.py",
+      "bytes": 5445,
+      "sha256": "7a83e8941efc0cc76877814ea529886d5387df1ea85e8b1e26c122af53a3d973"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-baseline-native01/report.json",
+      "bytes": 16179,
+      "sha256": "711191add08eefd6bbbd96d628ef63666818060d5eaf44425fefe0cae55ab3f7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-baseline-source01/base-binding.json",
+      "bytes": 1004,
+      "sha256": "6715b36229a84feb017b27d91479f84d2e4b020730928d76d96047aea93ab2ed"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "bytes": 75064,
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/base/base.p130",
+      "bytes": 2612691,
+      "sha256": "984fad041a0ba855ea0aaedd384485afa2153da644655c00882eb50ace33817f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/source-final/compiler.bend",
+      "bytes": 3150535,
+      "sha256": "434edd1d56128f9480800573abf8a0ae21d910a547837af089f25cd1d0e89b71"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-lookahead-native02/report.json",
+      "bytes": 16179,
+      "sha256": "cb00a0ca65156b29332fe1bf64eec90475adc755f41919b24420666afebd2e7a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-baseline-native01/program",
+      "bytes": 3172048,
+      "sha256": "0d5e462cb07a6e030d514fd90bf93fa1872221b2c1fe1fe6b804093bb7ea3808"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-baseline-source01/compiler.bend",
+      "bytes": 356626,
+      "sha256": "578d0d3fa834ba5ac0402e7fc19e7ae22368b80d8af94fc08fcd61ca239a0493"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-lookahead-native02/program",
+      "bytes": 3183272,
+      "sha256": "6f02b19abc92bcaeca37c62f32c79813b3f3ca166b50012101afc603b123baa5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-lookahead-source01/compiler.bend",
+      "bytes": 358267,
+      "sha256": "3f104e77908bd517d7981a3bbbafdbf5ebe769547117360e1fe878173ab8c323"
+    }
+  ],
+  "mode": "parse",
+  "rounds": 1,
+  "runs": [
+    {
+      "role": "baseline",
+      "cycle": 0,
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/source-final/compiler.bend",
+        "bytes": 3150535,
+        "sha256": "434edd1d56128f9480800573abf8a0ae21d910a547837af089f25cd1d0e89b71"
+      },
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-baseline-native01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--",
+        "phase175-frontend",
+        "parse",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/source-final/compiler.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/.assets/base/base.p130",
+        "p130-word-pair-v1:p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+      ],
+      "seconds": 27.246784907765687,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-lookahead-pair01/000-baseline.stdout",
+        "bytes": 39,
+        "sha256": "57ec32292005bced7d5364eba972ab73442801f1660dc4d0e4c1b6c8ced0cd1e"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-lookahead-pair01/000-baseline.stderr",
+        "bytes": 58,
+        "sha256": "593d28fbead8e2ec60c1f039a2cf3227c30547417ae4bfc23e4f34eb48849014"
+      },
+      "outputExact": true,
+      "baseSeconds": 0.212,
+      "frontendSeconds": 26.452,
+      "observationSeconds": 0.486
+    },
+    {
+      "role": "candidate",
+      "cycle": 0,
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/source-final/compiler.bend",
+        "bytes": 3150535,
+        "sha256": "434edd1d56128f9480800573abf8a0ae21d910a547837af089f25cd1d0e89b71"
+      },
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-lookahead-native02/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "--",
+        "phase175-frontend",
+        "parse",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/source-final/compiler.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/.assets/base/base.p130",
+        "p130-word-pair-v1:p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+      ],
+      "seconds": 23.850126591976732,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-lookahead-pair01/001-candidate.stdout",
+        "bytes": 39,
+        "sha256": "57ec32292005bced7d5364eba972ab73442801f1660dc4d0e4c1b6c8ced0cd1e"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/parse-lookahead-pair01/001-candidate.stderr",
+        "bytes": 58,
+        "sha256": "6252c8e93d12f4b095c5d877de086d0dfac5d8cb5c01912747c9de97460aac62"
+      },
+      "outputExact": true,
+      "baseSeconds": 0.212,
+      "frontendSeconds": 23.062,
+      "observationSeconds": 0.481
+    }
+  ],
+  "scope": "Whole fresh process includes reads, Base setup, frontend, digest and teardown. Frontend clock excludes structural digest. Digests are supplementary observations, not independent semantic equivalence or self-build timings.",
+  "cases": [
+    {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/source-final/compiler.bend",
+        "bytes": 3150535,
+        "sha256": "434edd1d56128f9480800573abf8a0ae21d910a547837af089f25cd1d0e89b71"
+      },
+      "medians": {
+        "baseline": {
+          "seconds": 27.246784907765687,
+          "frontendSeconds": 26.452,
+          "baseSeconds": 0.212,
+          "observationSeconds": 0.486
+        },
+        "candidate": {
+          "seconds": 23.850126591976732,
+          "frontendSeconds": 23.062,
+          "baseSeconds": 0.212,
+          "observationSeconds": 0.481
+        }
+      },
+      "wholeProcessRatio": 0.8753372800759013,
+      "frontendRatio": 0.8718433388779676
+    }
+  ],
+  "seconds": 51.221275456715375
+}

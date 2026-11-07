@@ -1,0 +1,69 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": true,
+  "started": 1794040027.5491364,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "3",
+    "selfhost/.assets/bin/bun",
+    "selfhost/tests/phase175/full-check.mjs",
+    "--source",
+    "selfhost/build/phase175/full-source01/compiler.bend",
+    "--out",
+    "selfhost/build/phase175/full-source-check02"
+  ],
+  "returncode": 0,
+  "rssLimitBytes": 3221225472,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 1122082816,
+  "minimumAvailableBytes": 24174755840,
+  "diskBudgetBytes": 33554432,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 5799288832,
+  "minimumDiskFreeBytes": 5798957056,
+  "peakRunAllocatedBytes": 24576,
+  "peakFilesystemDecreaseBytes": 331776,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-source-check02"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "3",
+    "fileLimitBytes": 134217728,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+        "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b",
+        "bytes": 88979072
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase175/full-check.mjs",
+        "sha256": "10c5f8b6478342771ce0e09397bcb4a3909bd75b5299f5f4b9549e81d252bcd2",
+        "bytes": 5682
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-source01/compiler.bend",
+        "sha256": "a0e953a84de73aa22403dde7ec2144540197633857a0f7b5b9784f9e66f5ad04",
+        "bytes": 3163584
+      }
+    ]
+  },
+  "wallSeconds": 8.063650652300566,
+  "finished": 1794040035.612666
+}

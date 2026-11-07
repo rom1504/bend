@@ -1,0 +1,83 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": true,
+  "started": 1794035135.768403,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "3",
+    "python3",
+    "-B",
+    "selfhost/tests/phase175/native-frontend.py",
+    "--baseline",
+    "selfhost/build/phase175/baseline-native01/report.json",
+    "--binding",
+    "selfhost/build/phase175/baseline-source03/base-binding.json",
+    "--source",
+    "selfhost/build/phase170/source-final/compiler.bend",
+    "--mode",
+    "request",
+    "--seconds",
+    "145",
+    "--out",
+    "selfhost/build/phase175/frontend-full-baseline01"
+  ],
+  "returncode": 0,
+  "rssLimitBytes": 2147483648,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 430870528,
+  "minimumAvailableBytes": 24756011008,
+  "diskBudgetBytes": 16777216,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 5683122176,
+  "minimumDiskFreeBytes": 5668253696,
+  "peakRunAllocatedBytes": 36864,
+  "peakFilesystemDecreaseBytes": 14868480,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/frontend-full-baseline01"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "3",
+    "fileLimitBytes": 134217728,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase175/native-frontend.py",
+        "sha256": "7a83e8941efc0cc76877814ea529886d5387df1ea85e8b1e26c122af53a3d973",
+        "bytes": 5445
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/baseline-native01/report.json",
+        "sha256": "a9406636f856d21d14be8e1a4651cae41b9c7864bee6ab3f76c282e2c68fadf0",
+        "bytes": 16024
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/baseline-source03/base-binding.json",
+        "sha256": "6715b36229a84feb017b27d91479f84d2e4b020730928d76d96047aea93ab2ed",
+        "bytes": 1004
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/source-final/compiler.bend",
+        "sha256": "434edd1d56128f9480800573abf8a0ae21d910a547837af089f25cd1d0e89b71",
+        "bytes": 3150535
+      }
+    ]
+  },
+  "wallSeconds": 69.24582701921463,
+  "finished": 1794035205.014112
+}

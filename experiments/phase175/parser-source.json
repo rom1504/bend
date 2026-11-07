@@ -1,0 +1,97 @@
+{
+  "kind": "phase175-parser-source-preparation",
+  "head": "0d12402",
+  "targetExecutions": 0,
+  "sourceChecking": "pending",
+  "correctnessComparisons": "pending",
+  "performanceMeasurements": "pending",
+  "original": {
+    "file": "selfhost/src/front/parser.bend",
+    "bytes": 38810,
+    "sha256": "510a8ecbf500ab8f72ecba18b25661a955e6722071548f878fa467879fef24fc",
+    "functions": {
+      "f_prec": {
+        "line": 520,
+        "sha256": "b9282612d39940c19210b282bf23b23a0f6444cfc83ff96ffcbda9f405d76bba",
+        "sourceOccurrences": {
+          "f_eq": 23,
+          "f_tx": 0,
+          "f_tl": 0,
+          "f_skip": 0
+        }
+      },
+      "f_grow_base": {
+        "line": 538,
+        "sha256": "9b8db672e0bccea15953a9e79381bdecdc7a9f43d8313a52a1c31aa7dc93b0bc",
+        "sourceOccurrences": {
+          "f_eq": 16,
+          "f_tx": 17,
+          "f_tl": 11,
+          "f_skip": 0
+        }
+      },
+      "f_grow_existing": {
+        "line": 638,
+        "sha256": "94f281fb0b2edff24df040725eb64c4540c0b873bc56f89c5f37c5af6b8920ef",
+        "sourceOccurrences": {
+          "f_eq": 6,
+          "f_tx": 7,
+          "f_tl": 5,
+          "f_skip": 6
+        }
+      }
+    }
+  },
+  "experimentalInputs": [
+    {
+      "file": "selfhost/tests/phase175/parser-controls.bend",
+      "bytes": 2675,
+      "sha256": "86ada2e37245c1e64afeafa9e55fe74b10779738a73dd6066351063b4cc21f2b"
+    },
+    {
+      "file": "selfhost/tests/phase175/parser-lookahead-prelude.bend",
+      "bytes": 788,
+      "sha256": "c6c0174164d84701d7fdc2be253889c25f385c0d6f487583321bc23e4f852846"
+    },
+    {
+      "file": "selfhost/tests/phase175/parser-lookahead.bend",
+      "bytes": 2588,
+      "sha256": "0521a9632c48d7dc69e6b39c62a72cb589f92bd95d030b29156fccf91f97f349"
+    },
+    {
+      "file": "selfhost/tests/phase175/parser-precedence-prelude.bend",
+      "bytes": 222,
+      "sha256": "444c38e8418e0d9d517ac83a243ce70600a1b76c5826334cd069715ea3a7d94e"
+    },
+    {
+      "file": "selfhost/tests/phase175/parser-precedence.bend",
+      "bytes": 2127,
+      "sha256": "95dd3618a24d06674bfbe1ba2f7ad5b570fbd2bca2b4c6d466109b2c17435b1a"
+    }
+  ],
+  "supportedOperatorPrecedences": {
+    "=>": 1,
+    "->": 1,
+    "&": 2,
+    "|": 2,
+    "||": 3,
+    "&&": 4,
+    "<": 5,
+    ">op": 5,
+    "<=": 5,
+    ">=": 5,
+    "<>": 6,
+    "++": 6,
+    "<&>": 6,
+    ".|.": 7,
+    ".^.": 8,
+    ".&.": 9,
+    "<<": 10,
+    ">>op": 10,
+    "+": 11,
+    "-": 11,
+    "*": 12,
+    "/": 12,
+    "%": 12
+  }
+}

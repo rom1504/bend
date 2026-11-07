@@ -1,0 +1,44 @@
+{
+  "jobs": [
+    {
+      "name": "publication-baseline-api05",
+      "seconds": 150,
+      "diskMiB": 32,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase175/publication-baseline-source05/compiler.bend",
+        "--exports",
+        "selfhost/build/phase175/publication-baseline-source05/exports.json",
+        "--out",
+        "selfhost/build/phase175/publication-baseline-api05",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase66",
+        "--engine",
+        "selfhost/.assets/bin/bun"
+      ]
+    },
+    {
+      "name": "publication-api04",
+      "seconds": 150,
+      "diskMiB": 32,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase175/publication-source04/compiler.bend",
+        "--exports",
+        "selfhost/build/phase175/publication-source04/exports.json",
+        "--out",
+        "selfhost/build/phase175/publication-api04",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase66",
+        "--engine",
+        "selfhost/.assets/bin/bun"
+      ]
+    }
+  ]
+}

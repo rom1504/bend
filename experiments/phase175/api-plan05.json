@@ -1,0 +1,124 @@
+{
+  "jobs": [
+    {
+      "name": "field-api02",
+      "seconds": 150,
+      "diskMiB": 32,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase175/field-source02/compiler.bend",
+        "--exports",
+        "selfhost/build/phase175/field-source02/exports.json",
+        "--out",
+        "selfhost/build/phase175/field-api02",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase66",
+        "--engine",
+        "selfhost/.assets/bin/bun"
+      ]
+    },
+    {
+      "name": "publication-baseline-api03",
+      "seconds": 150,
+      "diskMiB": 32,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase175/publication-baseline-source03/compiler.bend",
+        "--exports",
+        "selfhost/build/phase175/publication-baseline-source03/exports.json",
+        "--out",
+        "selfhost/build/phase175/publication-baseline-api03",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase66",
+        "--engine",
+        "selfhost/.assets/bin/bun"
+      ]
+    },
+    {
+      "name": "publication-api02",
+      "seconds": 150,
+      "diskMiB": 32,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase175/publication-source02/compiler.bend",
+        "--exports",
+        "selfhost/build/phase175/publication-source02/exports.json",
+        "--out",
+        "selfhost/build/phase175/publication-api02",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase66",
+        "--engine",
+        "selfhost/.assets/bin/bun"
+      ]
+    },
+    {
+      "name": "report-baseline-api01",
+      "seconds": 150,
+      "diskMiB": 32,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase175/report-baseline-source01/compiler.bend",
+        "--exports",
+        "selfhost/build/phase175/report-baseline-source01/exports.json",
+        "--out",
+        "selfhost/build/phase175/report-baseline-api01",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase66",
+        "--engine",
+        "selfhost/.assets/bin/bun"
+      ]
+    },
+    {
+      "name": "report-api01",
+      "seconds": 150,
+      "diskMiB": 32,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase175/report-source01/compiler.bend",
+        "--exports",
+        "selfhost/build/phase175/report-source01/exports.json",
+        "--out",
+        "selfhost/build/phase175/report-api01",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase66",
+        "--engine",
+        "selfhost/.assets/bin/bun"
+      ]
+    },
+    {
+      "name": "parse-precedence-api01",
+      "seconds": 150,
+      "diskMiB": 32,
+      "command": [
+        "selfhost/.assets/bin/bun",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase175/parse-precedence-source01/compiler.bend",
+        "--exports",
+        "selfhost/build/phase175/parse-precedence-source01/exports.json",
+        "--out",
+        "selfhost/build/phase175/parse-precedence-api01",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase66",
+        "--engine",
+        "selfhost/.assets/bin/bun"
+      ]
+    }
+  ]
+}

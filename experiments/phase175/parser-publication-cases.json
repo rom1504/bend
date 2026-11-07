@@ -1,0 +1,67 @@
+{
+  "kind": "phase175-publication-large-source-controls",
+  "scope": "Real source fixtures above 256-definition compact-path admission; assert actual admission and full-value comparison, not merely identical errors. Template syntax copied from retained Phase143 controls. No run claimed.",
+  "rows": [
+    {
+      "name": "valid",
+      "file": "selfhost/tests/phase175/parser-publication-valid.bend",
+      "sha256": "047470d6ffc4e6cc10f7801403741a7e3d0a30d6edc9542a73670e4d14261af4",
+      "bytes": 10836,
+      "expectedCheckSuccess": true,
+      "purpose": "Interleaved childless definitions and constructor-bearing owners; valid request.",
+      "minimumOrdinaryDefinitions": 257,
+      "status": "prepared; not source checked or executed"
+    },
+    {
+      "name": "duplicate-constructor",
+      "file": "selfhost/tests/phase175/parser-publication-duplicate-constructor.bend",
+      "sha256": "79f26145b831afe0c6dd62980e1a317baabf5ced861e758f7971cd375f321ace",
+      "bytes": 10872,
+      "expectedCheckSuccess": false,
+      "purpose": "Independent oracle rejects during parsing; this source fixture does not exercise compact checking. Direct large DChecking controls exercise constructor collisions.",
+      "minimumOrdinaryDefinitions": 257,
+      "status": "prepared; not source checked or executed",
+      "expectedFailureStage": "parse"
+    },
+    {
+      "name": "type-failure",
+      "file": "selfhost/tests/phase175/parser-publication-type-failure.bend",
+      "sha256": "b2ac0718fb43d27b108460ed8ca1dd4034285d1851d26e858ad78d37d7be3f76",
+      "bytes": 10875,
+      "expectedCheckSuccess": false,
+      "purpose": "Type failure after retained dirty publication and a new ADT.",
+      "minimumOrdinaryDefinitions": 257,
+      "status": "prepared; not source checked or executed"
+    },
+    {
+      "name": "missing-reference",
+      "file": "selfhost/tests/phase175/parser-publication-missing-reference.bend",
+      "sha256": "e121c8ce995dbbb17c41ed4f02d7e6f4bfed642f3fd7cbd40890b00f305651a9",
+      "bytes": 10876,
+      "expectedCheckSuccess": false,
+      "purpose": "Unbound reference after retained dirty publication.",
+      "minimumOrdinaryDefinitions": 257,
+      "status": "prepared; not source checked or executed"
+    },
+    {
+      "name": "template-valid",
+      "file": "selfhost/tests/phase175/parser-publication-template-valid.bend",
+      "sha256": "d3a1078194c5dc9c66fb3af44eebcfee5adedd62d1aeab997f09b6dc75c599aa",
+      "bytes": 10935,
+      "expectedCheckSuccess": true,
+      "purpose": "Template insertion, specialization, and successful restoration after ADT.",
+      "minimumOrdinaryDefinitions": 257,
+      "status": "prepared; not source checked or executed"
+    },
+    {
+      "name": "template-failure",
+      "file": "selfhost/tests/phase175/parser-publication-template-failure.bend",
+      "sha256": "db3847871ef9c9dc56632f4fa8e48c68b13f5e559b354a46bd19fd2a1beb0b34",
+      "bytes": 10974,
+      "expectedCheckSuccess": false,
+      "purpose": "Failure world after template specialization and restoration.",
+      "minimumOrdinaryDefinitions": 257,
+      "status": "prepared; not source checked or executed"
+    }
+  ]
+}

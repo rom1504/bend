@@ -1,3 +1,22 @@
+# Phase177 — repeated frontend work removed, 2026-11-07
+
+[Report](../implementation/phase177/README.md) · [Metrics](../implementation/phase177/metrics.json) ·
+[Design](../design/phase177/frontend.md) · [Evidence](../implementation/phase177/evidence-index.json).
+
+Nine candidate forms screened in software; selected single-owner substitution
+and exact parser declaration carry. Full frozen frontend 56.186→54.0595s (3.78%),
+whole cold build 178.7954→176.8633s (1.08%, one candidate-first pair), same input,
+runtime/toolchain/CPU3 and exact QBE/assembly/object. 264 substitution controls,
+565 parser controls,14 full-value frontend fixtures, source checking, native64,
+and 45 timed QBE product comparisons pass. No new runtime score/upstream ratio.
+
+Maintained source integrated exactly: 3,174,925B; 260 added source lines,
+27 added declarations, 112 protections intact. Explicit N1 only; installed Phase171
+and qualified Phase175 N2 unchanged. No new N2/self-reproduction or JS/C campaign.
+Accepted profile exposes distributed costs; failed/neutral candidates preserved.
+61 guarded jobs cost 38.38min, including 110.46s across 10 nonzero runs; agent and
+metadata effort separate. 1,389 exact evidence members in one verified archive.
+
 # Phase174 — publish the measured Phase171 compiler, 2026-11-07
 
 [Report](../implementation/phase174/README.md) · [Metrics](../implementation/phase174/metrics.json) ·

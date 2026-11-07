@@ -1,0 +1,61 @@
+{
+  "kind": "phase176-independent-jobs",
+  "version": 1,
+  "inputs": [],
+  "jobs": [
+    {
+      "id": "matsub",
+      "seconds": 100,
+      "command": [
+        "python3",
+        "-B",
+        "selfhost/tests/phase175/native-frontend.py",
+        "--baseline",
+        "selfhost/build/phase177/front-base-native01/report.json",
+        "--candidate",
+        "selfhost/build/phase177/front-matsub-native01/report.json",
+        "--binding",
+        "selfhost/build/phase177/front-base-source01/base-binding.json",
+        "--source",
+        "selfhost/build/phase175/parse-baseline-source01/compiler.bend",
+        "--source",
+        "selfhost/build/phase175/baseline-source03/compiler.bend",
+        "--mode",
+        "request",
+        "--rounds",
+        "1",
+        "--seconds",
+        "45",
+        "--out",
+        "{out}"
+      ]
+    },
+    {
+      "id": "combined",
+      "seconds": 100,
+      "command": [
+        "python3",
+        "-B",
+        "selfhost/tests/phase175/native-frontend.py",
+        "--baseline",
+        "selfhost/build/phase177/front-base-native01/report.json",
+        "--candidate",
+        "selfhost/build/phase177/front-combined-native01/report.json",
+        "--binding",
+        "selfhost/build/phase177/front-base-source01/base-binding.json",
+        "--source",
+        "selfhost/build/phase175/parse-baseline-source01/compiler.bend",
+        "--source",
+        "selfhost/build/phase175/baseline-source03/compiler.bend",
+        "--mode",
+        "request",
+        "--rounds",
+        "1",
+        "--seconds",
+        "45",
+        "--out",
+        "{out}"
+      ]
+    }
+  ]
+}

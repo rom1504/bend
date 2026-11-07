@@ -1,0 +1,149 @@
+{
+  "kind": "phase177-measured-summary",
+  "complete": true,
+  "frontend": [
+    {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/source-final/compiler.bend",
+        "bytes": 3150535,
+        "sha256": "434edd1d56128f9480800573abf8a0ae21d910a547837af089f25cd1d0e89b71"
+      },
+      "medians": {
+        "baseline": {
+          "seconds": 64.55023351800628,
+          "frontendSeconds": 56.186,
+          "baseSeconds": 0.212,
+          "observationSeconds": 8.062000000000001
+        },
+        "candidate": {
+          "seconds": 62.42426844756119,
+          "frontendSeconds": 54.0595,
+          "baseSeconds": 0.2105,
+          "observationSeconds": 8.0645
+        }
+      },
+      "wholeProcessRatio": 0.9670649515179205,
+      "frontendRatio": 0.9621524935037198
+    }
+  ],
+  "cold": {
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/source-final/compiler.bend",
+      "bytes": 3150535,
+      "sha256": "434edd1d56128f9480800573abf8a0ae21d910a547837af089f25cd1d0e89b71"
+    },
+    "wallSeconds": {
+      "baseline": 178.79538025334477,
+      "candidate": 176.86330032907426
+    },
+    "ratio": 0.989193904666145,
+    "emitAndQbeSeconds": {
+      "baseline": 172.93253868399188,
+      "candidate": 170.97823741892353
+    },
+    "exactProducts": [
+      "qbe",
+      "assembly",
+      "object"
+    ],
+    "scope": "One candidate-first pair, same frozen source/prepared Base/runtime/toolchain/CPU3; fresh processes, no filesystem-cache flush, no retained IR. Compiler emission and QBE construction overlap; do not sum their intervals."
+  },
+  "hostedScreen": {
+    "medians": {
+      "baseline": 20.860310038999998,
+      "candidate": 20.593114323
+    },
+    "ratio": 0.9871911915258952,
+    "scope": "Small in-process Bun request only; large warm-up variation, inconclusive."
+  },
+  "qualification": {
+    "native64": {
+      "pass": 64,
+      "fail": 0,
+      "unsupported": 0
+    },
+    "timedQbeProductsExact": 45,
+    "sourceAccepted": true,
+    "combinedCompleteValueCases": 14,
+    "newN2": false,
+    "newBendTTProof": false,
+    "installedChanged": false,
+    "freshGeneratedRuntimeBenchmark": false,
+    "jsCQualifiedThisPhase": false
+  },
+  "source": {
+    "parent": {
+      "bytes": 3163584,
+      "sha256": "a0e953a84de73aa22403dde7ec2144540197633857a0f7b5b9784f9e66f5ad04"
+    },
+    "selected": {
+      "bytes": 3174925,
+      "sha256": "1a359a4c94c8293fec12b8722793a5beafae1896dc2a8307bf5359a7f367532f"
+    },
+    "modules": [
+      {
+        "path": "selfhost/src/core/term.bend",
+        "before": {
+          "bytes": 23068,
+          "sha256": "21ea0a89a0d141c8967e005a9617339f0d64f9b9dddd162d3a391af421685862"
+        },
+        "after": {
+          "bytes": 26057,
+          "sha256": "2fabc8d4bacb57f9b4515dfa2a66a855b92578d3e9c82dc17d9078bf37f58975"
+        },
+        "selectedLines": 874
+      },
+      {
+        "path": "selfhost/src/front/compact-parser.bend",
+        "before": {
+          "bytes": 37553,
+          "sha256": "64d9033eac96e0bc7326343b3d4115bb62c894e2bbd372e7da906c6c0b972812"
+        },
+        "after": {
+          "bytes": 45905,
+          "sha256": "7569911944a655f2cbceae930b42f895f3f839f928626cba11bdba6c6ba4e8b5"
+        },
+        "selectedLines": 927
+      },
+      {
+        "path": "selfhost/src/compiler.json",
+        "before": {
+          "bytes": 535834,
+          "sha256": "c5f0f050a772b4f6c2a8f3ed885d9ab67495793d1d8e4f212837befaedf49b77"
+        },
+        "after": {
+          "bytes": 537873,
+          "sha256": "d1e44a68cdb4d28a9b88310235f489e8d574db1fc563a650031b9a8ee4c72567"
+        },
+        "selectedLines": 43393
+      }
+    ],
+    "addedLines": 260,
+    "addedDeclarations": 27,
+    "replacements": 3,
+    "protectedDeclarations": 112,
+    "allProfileAssembly": {
+      "qbe": {
+        "bytes": 3174925,
+        "sha256": "1a359a4c94c8293fec12b8722793a5beafae1896dc2a8307bf5359a7f367532f"
+      },
+      "native-c": {
+        "bytes": 3175009,
+        "sha256": "0c29142c70e001e0348b2a095822cf12fefc8602e55c2ef3eec7a47ab13315c8"
+      },
+      "js-api": {
+        "bytes": 3174812,
+        "sha256": "262a27ab5450b5e62389c6d43b27ea4344b4ba2c44ed555799184d83d6eb91ef"
+      },
+      "qbe-policy": {
+        "bytes": 3174924,
+        "sha256": "acdccfaaba00b2ca69db3f8abd2da2574f7e8f65904ff157fde95fd9e2f606b8"
+      },
+      "qbe-policy-test": {
+        "bytes": 3174918,
+        "sha256": "36443e46d5315a28bb3425ebf7d9ee7b8553f9f321e3ff1fa75f8fdbc7b87bb3"
+      }
+    }
+  },
+  "nativeAcquisitionSeconds": 181.31387902516872
+}

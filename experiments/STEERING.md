@@ -1,4 +1,34 @@
-# Current research frontier — Phase176 calibrated experiments
+# Current frontier — Phase177 frontend integrated; qualified reference retained
+
+[Report](../implementation/phase177/README.md) · [Metrics](../implementation/phase177/metrics.json) ·
+[Reproduce](../implementation/phase177/reproduce.md).
+
+Selected checked Bend changes carry the exact local declaration through parser
+continuations and keep substitution/beta rebuilding inside one direct owner.
+Frozen full-source frontend 56.186→54.0595s (3.78% less, B/C/C/B); complete cold
+build 178.7954→176.8633s (1.08% less, one candidate-first pair). Same original
+Phase170 source, prepared Base/runtime/toolchain/CPU3. QBE/assembly/object exact;
+no new upstream ratio. Do not extrapolate this modest result to the 100s goal.
+
+Maintained canonical source is 3,174,925B, SHA256
+`1a359a4c94c8293fec12b8722793a5beafae1896dc2a8307bf5359a7f367532f`.
+Three replacements, 27 additions, 260 source lines, 112 protected declarations.
+Independent source acceptance, 264 substitution/565 parser complete controls,
+14 combined parse/request cases, native64 and 45 exact timed QBE products pass.
+The Phase177 N1 image uses its separate `image-binding.json`; it has no new N2
+chain or JS/C qualification. Installed Phase171 and qualified Phase175 N2 remain
+explicitly available and unchanged. Source integration is not installation.
+
+Nine candidate forms were screened; materialization, freshening, reachability
+and filtering alternatives remain unselected. The accepted medium profile shows
+39% parse, 25% checking, 34% later annotation/layout/erasure. Ownership and String
+comparison span stages; 43% of samples lack valid lexical ancestry. Do not turn
+physical samples into removable cost ceilings. Avoid converting every walker.
+Next shared-mechanism discriminator: source-bound String identity before owning
+adapter alias guards, preserving both sinks, as already researched in Phase131.
+A larger architecture needs measured elimination of a complete category of work.
+
+# Previous research frontier — Phase176 calibrated experiments
 
 [Report](../implementation/phase176/README.md) · [Metrics](../implementation/phase176/metrics.json) ·
 [Runner](../selfhost/tests/phase176/README.md).

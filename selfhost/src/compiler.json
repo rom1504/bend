@@ -4409,8 +4409,18 @@
     ],
     [
       167,
+      "law",
+      "p177s_entry"
+    ],
+    [
+      167,
       "def",
       "subst"
+    ],
+    [
+      167,
+      "law",
+      "p177s_node_entry"
     ],
     [
       167,
@@ -36919,6 +36929,11 @@
     ],
     [
       175,
+      "law",
+      "p177dr_resolve"
+    ],
+    [
+      175,
       "def",
       "p140p_def_header"
     ],
@@ -42526,6 +42541,126 @@
       174,
       "def",
       "p175rn_walk"
+    ],
+    [
+      167,
+      "type",
+      "P177SFrame"
+    ],
+    [
+      167,
+      "def",
+      "p177s_reverse"
+    ],
+    [
+      167,
+      "def",
+      "p177s_visit_state"
+    ],
+    [
+      167,
+      "def",
+      "p177s_rebuild_state"
+    ],
+    [
+      167,
+      "def",
+      "p177s_leaf_state"
+    ],
+    [
+      167,
+      "def",
+      "p177s_apply_state"
+    ],
+    [
+      167,
+      "def",
+      "p177s_loop"
+    ],
+    [
+      167,
+      "def",
+      "p177s_entry"
+    ],
+    [
+      167,
+      "def",
+      "p177s_node_entry"
+    ],
+    [
+      175,
+      "law",
+      "p177dr_context_header"
+    ],
+    [
+      175,
+      "law",
+      "p177dr_header_prior"
+    ],
+    [
+      175,
+      "law",
+      "p177dr_prior"
+    ],
+    [
+      175,
+      "law",
+      "p177dr_base"
+    ],
+    [
+      175,
+      "law",
+      "p177dr_type"
+    ],
+    [
+      175,
+      "law",
+      "p177dr_body"
+    ],
+    [
+      175,
+      "law",
+      "p177dr_taken"
+    ],
+    [
+      175,
+      "def",
+      "p177dr_resolve"
+    ],
+    [
+      175,
+      "def",
+      "p177dr_taken"
+    ],
+    [
+      175,
+      "def",
+      "p177dr_context_header"
+    ],
+    [
+      175,
+      "def",
+      "p177dr_header_prior"
+    ],
+    [
+      175,
+      "def",
+      "p177dr_prior"
+    ],
+    [
+      175,
+      "def",
+      "p177dr_base"
+    ],
+    [
+      175,
+      "def",
+      "p177dr_type"
+    ],
+    [
+      175,
+      "def",
+      "p177dr_body"
     ]
   ],
   "defaultProfile": "qbe",
@@ -43131,95 +43266,127 @@
     "sha256": "5905d69085d1d9475627c90120befc9758b4f38cab651b8b3c4dfe5402da8bf3"
   },
   "inventoryChange": {
-    "phase": 175,
-    "kind": "measured-parser-lookahead-and-report-membership",
+    "phase": 177,
+    "kind": "measured-frontend-traversal-and-fact-reuse",
     "added": [
       [
         "def",
-        "p175p_grow_bang"
+        "p177dr_base"
       ],
       [
         "def",
-        "p175p_grow_newline"
+        "p177dr_body"
       ],
       [
         "def",
-        "p175p_grow_operator"
+        "p177dr_context_header"
       ],
       [
         "def",
-        "p175p_grow_shift"
+        "p177dr_header_prior"
       ],
       [
         "def",
-        "p175p_grow_sign"
+        "p177dr_prior"
       ],
       [
         "def",
-        "p175p_grow_suffix"
+        "p177dr_resolve"
       ],
       [
         "def",
-        "p175p_grow_word"
+        "p177dr_taken"
       ],
       [
         "def",
-        "p175p_shift_end"
+        "p177dr_type"
       ],
       [
         "def",
-        "p175rn_name"
+        "p177s_apply_state"
       ],
       [
         "def",
-        "p175rn_walk"
+        "p177s_entry"
+      ],
+      [
+        "def",
+        "p177s_leaf_state"
+      ],
+      [
+        "def",
+        "p177s_loop"
+      ],
+      [
+        "def",
+        "p177s_node_entry"
+      ],
+      [
+        "def",
+        "p177s_rebuild_state"
+      ],
+      [
+        "def",
+        "p177s_reverse"
+      ],
+      [
+        "def",
+        "p177s_visit_state"
       ],
       [
         "law",
-        "p175p_grow_bang"
+        "p177dr_base"
       ],
       [
         "law",
-        "p175p_grow_newline"
+        "p177dr_body"
       ],
       [
         "law",
-        "p175p_grow_operator"
+        "p177dr_context_header"
       ],
       [
         "law",
-        "p175p_grow_shift"
+        "p177dr_header_prior"
       ],
       [
         "law",
-        "p175p_grow_sign"
+        "p177dr_prior"
       ],
       [
         "law",
-        "p175p_grow_suffix"
+        "p177dr_resolve"
       ],
       [
         "law",
-        "p175p_grow_word"
+        "p177dr_taken"
       ],
       [
         "law",
-        "p175p_shift_end"
+        "p177dr_type"
       ],
       [
         "law",
-        "p175rn_walk"
+        "p177s_entry"
+      ],
+      [
+        "law",
+        "p177s_node_entry"
+      ],
+      [
+        "type",
+        "P177SFrame"
       ]
     ],
     "removed": [],
     "replaced": [
-      "dr_own_names",
-      "f_grow_base",
-      "f_grow_existing"
+      "p140p_def_header",
+      "subst",
+      "subst_node"
     ],
     "source": {
-      "bytes": 3163584,
-      "sha256": "a0e953a84de73aa22403dde7ec2144540197633857a0f7b5b9784f9e66f5ad04"
+      "bytes": 3174925,
+      "sha256": "1a359a4c94c8293fec12b8722793a5beafae1896dc2a8307bf5359a7f367532f"
     },
     "scope": "Exact measured source transport; target/image qualification is separate."
   }

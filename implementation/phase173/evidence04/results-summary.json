@@ -1,0 +1,399 @@
+[
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 1.2508968538604677,
+    "name": "layout-value-base01"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 1.1849103877320886,
+    "name": "layout-value-cand01"
+  },
+  {
+    "kind": "bend-checked-hosted-api",
+    "complete": true,
+    "checked": true,
+    "scope": "Upstream-checked B1 acquisition only; no B2/self-hosting/default promotion.",
+    "seconds": 1.0169966359999998,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/layout-value-source01/compiler.bend",
+      "bytes": 9349,
+      "sha256": "2368612f79cc722f988cfe4bf044015362ad7001a0b385641388cf87b03c920c"
+    },
+    "name": "layout-value-oracle-api01"
+  },
+  {
+    "kind": "phase173-independent-borrow-value-oracle",
+    "complete": true,
+    "scope": "Unchanged workload evaluated by pinned upstream JS; complete typed value transported to a constant Bend program. The constant requires independent checking and baseline native readback before use as an execution oracle.",
+    "wallSeconds": 0.5775000100000001,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/layout-value-source01/compiler.bend",
+      "bytes": 9349,
+      "sha256": "2368612f79cc722f988cfe4bf044015362ad7001a0b385641388cf87b03c920c"
+    },
+    "name": "layout-value-oracle01"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 1.0063977991230786,
+    "name": "layout-value-oracle-machine01"
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "resolved": false,
+    "medians": {
+      "baseline": 0.0034507643431425095,
+      "candidate": 0.0032748039811849594
+    },
+    "name": "layout-value-oracle-output01"
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "resolved": false,
+    "medians": {
+      "baseline": 0.003628441598266363,
+      "candidate": 0.0033414210192859173
+    },
+    "name": "layout-value-pair01"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 1.3273775498382747,
+    "name": "layout-digest-base01"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 1.2477295268326998,
+    "name": "layout-digest-cand01"
+  },
+  {
+    "kind": "bend-checked-hosted-api",
+    "complete": true,
+    "checked": true,
+    "scope": "Upstream-checked B1 acquisition only; no B2/self-hosting/default promotion.",
+    "seconds": 0.9976873819999998,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-layout-digest01/compiler.bend",
+      "bytes": 12311,
+      "sha256": "afb8d9e5c42997f764c6e31cc5dbe0186403d7b40f4d912bd15ffabc4c7a1d8c"
+    },
+    "name": "layout-digest-candidate-api01"
+  },
+  {
+    "kind": "bend-checked-hosted-api",
+    "complete": true,
+    "checked": true,
+    "scope": "Upstream-checked B1 acquisition only; no B2/self-hosting/default promotion.",
+    "seconds": 1.0750122329999998,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/layout-digest-source01/compiler.bend",
+      "bytes": 11872,
+      "sha256": "cea5efc0ad911ea0a848ed06c1b431b31cfea0a804d52d99a19c9b6794797cf7"
+    },
+    "name": "layout-digest-oracle-api01"
+  },
+  {
+    "kind": "phase173-independent-u32-oracle",
+    "complete": true,
+    "scope": "Pinned upstream checked main value; bounded numeric observation, not an equivalence proof.",
+    "name": "layout-digest-oracle01"
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "ratio": 0.7922354108106712,
+    "resolved": true,
+    "medians": {
+      "baseline": 0.09268337953835726,
+      "candidate": 0.07342705526389182
+    },
+    "name": "layout-digest-pair01"
+  },
+  {
+    "kind": "bend-checked-hosted-api",
+    "complete": true,
+    "checked": true,
+    "scope": "Upstream-checked B1 acquisition only; no B2/self-hosting/default promotion.",
+    "seconds": 14.048715201999999,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-compiler-source01/compiler.bend",
+      "bytes": 1538745,
+      "sha256": "1abb8ea8e3a2c2978295baf8269c538b35b24cb456035ff32b2339deb9c96a69"
+    },
+    "name": "consuming-compiler-api01"
+  },
+  {
+    "kind": "phase171-checked-request",
+    "complete": true,
+    "scope": "Checked experimental hosted compiler request. This is not native compiler timing, generated-program execution, or promotion.",
+    "stages": {
+      "loadSeconds": 2.4676166840000002,
+      "baseSeconds": 0.815272704,
+      "frontendSeconds": 8.114975894999999,
+      "lowerVerifySeconds": 14.881343324,
+      "renderWriteSeconds": 3.04009145
+    },
+    "wallSeconds": 30.454250878,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/verifier-source03/compiler.bend",
+      "bytes": 39333,
+      "sha256": "ff6b4083aa2f3e034f3b4f8e43dfb25d93a4f524685934e0ee13845278033ef3"
+    },
+    "ir": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-compiler-verifier01/program.ssa",
+      "bytes": 2309376,
+      "sha256": "8be3a072b84dfc8bb85ddb9478c00d05179f7de89c8d4079af9ca3a5190bfbfb"
+    },
+    "exactQbe": true,
+    "independentRuntimeOracle": {
+      "name": "captured-real-verifier",
+      "bytes": 39333,
+      "stdout": "768\n",
+      "executed": false
+    },
+    "name": "consuming-compiler-verifier01"
+  },
+  {
+    "kind": "phase171-checked-request",
+    "complete": true,
+    "scope": "Checked experimental hosted compiler request. This is not native compiler timing, generated-program execution, or promotion.",
+    "stages": {
+      "loadSeconds": 2.4416981939999998,
+      "baseSeconds": 0.820849021,
+      "frontendSeconds": 41.765595326,
+      "lowerVerifySeconds": 51.445407733,
+      "renderWriteSeconds": 5.603030729999999
+    },
+    "wallSeconds": 103.563635196,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-native-baseline-source02/compiler.bend",
+      "bytes": 843034,
+      "sha256": "911f6994b97539648b13f95be63ea7056b0d31658859e79d3b5199b7ec155887"
+    },
+    "ir": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-wide-store-emission06/program.ssa",
+      "bytes": 11934567,
+      "sha256": "2c7d3f7e8e23a5eb953aa1d485706471d753803b157ad4814fac355bcff9f9bb"
+    },
+    "name": "borrow-wide-store-emission06"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 1.1686321650631726,
+    "name": "borrow-wide-store-machine06"
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "ratio": 0.9999670808101282,
+    "resolved": true,
+    "medians": {
+      "baseline": 0.08026913739740849,
+      "candidate": 0.08026649500243366
+    },
+    "name": "borrow-wide-store-pair06"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 1.2496494799852371,
+    "name": "wide-store-event-base01"
+  },
+  {
+    "kind": "phase173-native-events",
+    "complete": true,
+    "scope": "Complete fixed-output run of authenticated diagnostic executable. Runtime events may omit generated inline work; event differences are not a direct fast-arm counter.",
+    "outputExact": true,
+    "totals": {
+      "dispatches": 543844,
+      "heap_alloc_calls": 270852,
+      "heap_alloc_miss_calls": 89,
+      "heap_free_calls": 127160,
+      "heap_alloc_requested_words": 606086,
+      "heap_free_words": 273811,
+      "term_keep_calls": 381268,
+      "term_sink_calls": 1201104,
+      "term_drop_calls": 639954,
+      "ctr_take_calls": 357855,
+      "frame_push_calls": 0,
+      "frame_capture_words": 0,
+      "return_calls": 292030,
+      "primitive_calls": 15741,
+      "register_words_copy_requested": 669400,
+      "register_words_clear_requested": 0
+    },
+    "name": "wide-store-event-base-run01"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 1.2793128029443324,
+    "name": "wide-store-event-wide01"
+  },
+  {
+    "kind": "phase173-native-events",
+    "complete": true,
+    "scope": "Complete fixed-output run of authenticated diagnostic executable. Runtime events may omit generated inline work; event differences are not a direct fast-arm counter.",
+    "outputExact": true,
+    "totals": {
+      "dispatches": 543844,
+      "heap_alloc_calls": 266344,
+      "heap_alloc_miss_calls": 89,
+      "heap_free_calls": 122652,
+      "heap_alloc_requested_words": 585800,
+      "heap_free_words": 253525,
+      "term_keep_calls": 383314,
+      "term_sink_calls": 1203150,
+      "term_drop_calls": 642000,
+      "ctr_take_calls": 355601,
+      "frame_push_calls": 0,
+      "frame_capture_words": 0,
+      "return_calls": 292030,
+      "primitive_calls": 15741,
+      "register_words_copy_requested": 669400,
+      "register_words_clear_requested": 0
+    },
+    "name": "wide-store-event-wide-run01"
+  },
+  {
+    "kind": "bend-checked-hosted-api",
+    "complete": true,
+    "checked": true,
+    "scope": "Upstream-checked B1 acquisition only; no B2/self-hosting/default promotion.",
+    "seconds": 15.268945487000002,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-wide8-source02/compiler.bend",
+      "bytes": 1621122,
+      "sha256": "914cd9c5c43d8c4852ddeca488670ae790d7336e214bdd275ea70d4795c68526"
+    },
+    "name": "store-wide8-api02"
+  },
+  {
+    "kind": "phase173-finite-controls",
+    "complete": true,
+    "scope": "Finite complete-value and admission controls; not native execution, mathematical proof, or image qualification.",
+    "wallSeconds": 1.1956376750000002,
+    "name": "store-wide8-finite02",
+    "controlCounts": {
+      "rows": 26,
+      "passed": 26,
+      "failed": 0,
+      "refusals": 3,
+      "expectedRefusals": 3
+    }
+  },
+  {
+    "kind": "phase173-indexed-vertical-controls",
+    "complete": true,
+    "passed": true,
+    "scope": "Complete checked compiler values, same source and prepared Base. Shared hosted process diagnostic; not native runtime, complete cold-build timing, proof, or qualification.",
+    "stages": {
+      "baseline": {
+        "apiLoadSeconds": 0.21239721499999997,
+        "preparedBaseSeconds": 0.810530878,
+        "frontendSeconds": 8.329127663,
+        "extractErasedBodiesSeconds": 0.005528274000000237,
+        "completePassSeconds": 0.3505897469999982
+      },
+      "candidate": {
+        "apiLoadSeconds": 0.5578852360000001,
+        "preparedBaseSeconds": 0.8135673770000013,
+        "frontendSeconds": 8.041304871000001,
+        "extractErasedBodiesSeconds": 0.011396876999999223,
+        "completePassSeconds": 0.49221958799999993
+      }
+    },
+    "wallSeconds": 23.58424798,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase167/verifier-source03/compiler.bend",
+      "bytes": 39333,
+      "sha256": "ff6b4083aa2f3e034f3b4f8e43dfb25d93a4f524685934e0ee13845278033ef3"
+    },
+    "name": "store-wide8-verifier02",
+    "actualBodies": 101,
+    "checkedRequests": {
+      "completeValuesEqual": true,
+      "valuesCompared": 1417426
+    },
+    "completeInputs": {
+      "completeValuesEqual": true,
+      "valuesCompared": 229340
+    },
+    "finiteCompaction": {
+      "completeValuesEqual": true,
+      "valuesCompared": 650
+    },
+    "completePassOutputs": {
+      "completeValuesEqual": true,
+      "valuesCompared": 321590
+    },
+    "observations": [
+      {
+        "role": "baseline",
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-wide8-verifier02/baseline-complete-values.json",
+        "bytes": 3574490,
+        "sha256": "868373929766049cae5de6ef0561de20cb68133a33aafae2fb6ab69427ddb2f0"
+      },
+      {
+        "role": "candidate",
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-wide8-verifier02/candidate-complete-values.json",
+        "bytes": 3574490,
+        "sha256": "868373929766049cae5de6ef0561de20cb68133a33aafae2fb6ab69427ddb2f0"
+      }
+    ],
+    "comparator": {
+      "equalControls": 1,
+      "changedFieldsRejected": 8,
+      "orderMutationsRejected": 1
+    },
+    "roundtripCounts": {
+      "total": 16,
+      "passed": 16
+    }
+  },
+  {
+    "kind": "phase171-checked-request",
+    "complete": true,
+    "scope": "Checked experimental hosted compiler request. This is not native compiler timing, generated-program execution, or promotion.",
+    "stages": {
+      "loadSeconds": 2.4431661750000004,
+      "baseSeconds": 0.8048287540000001,
+      "frontendSeconds": 44.725241827000005,
+      "lowerVerifySeconds": 48.297810459,
+      "renderWriteSeconds": 5.638483819000001
+    },
+    "wallSeconds": 103.072381271,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-wide8-native-source02/compiler.bend",
+      "bytes": 902873,
+      "sha256": "be5dd8cd2220b3980ed4d9d8d0e7ff5b01ab9991b201d9aa9e2c72a732e65e59"
+    },
+    "ir": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-wide8-emission02/program.ssa",
+      "bytes": 13970613,
+      "sha256": "2eeaad042340e8127afa60ac2a1dd2b259ca2d8980d194291d03021e37986ebe"
+    },
+    "name": "store-wide8-emission02"
+  }
+]

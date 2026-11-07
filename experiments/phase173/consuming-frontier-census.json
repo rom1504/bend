@@ -1,0 +1,286 @@
+{
+  "schema": "phase173-owned-lifetime-candidates-v1",
+  "head": "5a6baaa",
+  "targetsRun": false,
+  "censusRule": "Functions containing a k_with_children/k_rebuild call and any ks call; lexical screen only, no execution/reachability/legality claim.",
+  "broadFunctions": [
+    {
+      "file": "selfhost/src/check/specialize.bend",
+      "line": 334,
+      "function": "sp_shift",
+      "jsModule": false
+    },
+    {
+      "file": "selfhost/src/check/env-substitution.bend",
+      "line": 57,
+      "function": "env_subst_term",
+      "jsModule": false
+    },
+    {
+      "file": "selfhost/src/check/kernel.bend",
+      "line": 835,
+      "function": "tele_check_done",
+      "jsModule": false
+    },
+    {
+      "file": "selfhost/src/check/kernel.bend",
+      "line": 1501,
+      "function": "ki_args",
+      "jsModule": false
+    },
+    {
+      "file": "selfhost/src/front/literals_arrays.bend",
+      "line": 269,
+      "function": "f_context_namespace_let",
+      "jsModule": false
+    },
+    {
+      "file": "selfhost/src/front/elaborate.bend",
+      "line": 100,
+      "function": "f_sub",
+      "jsModule": false
+    },
+    {
+      "file": "selfhost/src/front/elaborate.bend",
+      "line": 216,
+      "function": "f_pattern_sub",
+      "jsModule": false
+    },
+    {
+      "file": "selfhost/src/load/graph.bend",
+      "line": 315,
+      "function": "f_alias_named",
+      "jsModule": false
+    },
+    {
+      "file": "selfhost/src/load/paths.bend",
+      "line": 57,
+      "function": "f_path_term",
+      "jsModule": false
+    },
+    {
+      "file": "selfhost/src/back/qbe/construction-elimination.bend",
+      "line": 164,
+      "function": "p121c_source_prefix",
+      "jsModule": false
+    },
+    {
+      "file": "selfhost/src/back/qbe/borrowed-regions.bend",
+      "line": 256,
+      "function": "p128br_project_residual",
+      "jsModule": false
+    },
+    {
+      "file": "selfhost/src/back/js/region.bend",
+      "line": 370,
+      "function": "j_region_constructor_done",
+      "jsModule": true
+    },
+    {
+      "file": "selfhost/src/back/js/region.bend",
+      "line": 377,
+      "function": "j_region_let_done",
+      "jsModule": true
+    },
+    {
+      "file": "selfhost/src/back/js/region.bend",
+      "line": 687,
+      "function": "j_region_inline_children",
+      "jsModule": true
+    },
+    {
+      "file": "selfhost/src/back/js/region.bend",
+      "line": 1344,
+      "function": "j_callback_capture_u32",
+      "jsModule": true
+    },
+    {
+      "file": "selfhost/src/back/js/tree.bend",
+      "line": 646,
+      "function": "j_covered_term",
+      "jsModule": true
+    },
+    {
+      "file": "selfhost/src/back/js/tree.bend",
+      "line": 696,
+      "function": "j_owned_term",
+      "jsModule": true
+    },
+    {
+      "file": "selfhost/src/back/js/tree.bend",
+      "line": 798,
+      "function": "j_flat_term",
+      "jsModule": true
+    },
+    {
+      "file": "selfhost/src/back/js/tree.bend",
+      "line": 1007,
+      "function": "j_sequence_hole",
+      "jsModule": true
+    },
+    {
+      "file": "selfhost/src/back/js/producer.bend",
+      "line": 15,
+      "function": "j_producer_normalize",
+      "jsModule": true
+    },
+    {
+      "file": "selfhost/src/back/js/producer.bend",
+      "line": 23,
+      "function": "j_producer_nested_let",
+      "jsModule": true
+    },
+    {
+      "file": "selfhost/src/back/js/emit.bend",
+      "line": 699,
+      "function": "j_l_mark",
+      "jsModule": true
+    },
+    {
+      "file": "selfhost/src/back/js/jpure.bend",
+      "line": 1159,
+      "function": "j_instance_rewrite",
+      "jsModule": true
+    },
+    {
+      "file": "selfhost/src/back/js/jpure.bend",
+      "line": 1253,
+      "function": "j_instance_cover",
+      "jsModule": true
+    },
+    {
+      "file": "selfhost/src/back/js/array-view.bend",
+      "line": 131,
+      "function": "j_array_view_normalize",
+      "jsModule": true
+    },
+    {
+      "file": "selfhost/src/back/js/array-view.bend",
+      "line": 140,
+      "function": "j_array_view_normalize_app",
+      "jsModule": true
+    },
+    {
+      "file": "selfhost/src/back/js/finite.bend",
+      "line": 312,
+      "function": "j_direct_term",
+      "jsModule": true
+    },
+    {
+      "file": "selfhost/src/back/js/direct/pattern.bend",
+      "line": 235,
+      "function": "jd_word_unann",
+      "jsModule": true
+    },
+    {
+      "file": "selfhost/src/back/native/word-pattern.bend",
+      "line": 211,
+      "function": "nw_restore_children",
+      "jsModule": false
+    },
+    {
+      "file": "selfhost/src/back/native/erase.bend",
+      "line": 84,
+      "function": "nc_erase_app",
+      "jsModule": false
+    },
+    {
+      "file": "selfhost/src/back/native/erase.bend",
+      "line": 91,
+      "function": "nc_erase",
+      "jsModule": false
+    },
+    {
+      "file": "selfhost/src/back/native/product-layout.bend",
+      "line": 135,
+      "function": "nq_layout_subst",
+      "jsModule": false
+    },
+    {
+      "file": "selfhost/src/back/native/bridge.bend",
+      "line": 687,
+      "function": "nc_compact_ctor",
+      "jsModule": false
+    },
+    {
+      "file": "selfhost/src/back/native/bridge.bend",
+      "line": 699,
+      "function": "nc_compact_plain",
+      "jsModule": false
+    },
+    {
+      "file": "selfhost/src/back/native/observer-layout.bend",
+      "line": 53,
+      "function": "nol_field_cons",
+      "jsModule": false
+    },
+    {
+      "file": "selfhost/src/back/native/observer-layout.bend",
+      "line": 245,
+      "function": "nol_wrap_cons",
+      "jsModule": false
+    }
+  ],
+  "broadCount": 36,
+  "nonJsCount": 19,
+  "manuallyConfirmedRecursiveRebuildCandidates": [
+    "sp_shift",
+    "env_subst_term",
+    "f_sub",
+    "f_pattern_sub",
+    "f_path_term",
+    "nw_restore_children",
+    "nc_erase_app",
+    "nc_erase",
+    "nq_layout_subst",
+    "nc_compact_ctor",
+    "nc_compact_plain"
+  ],
+  "profile": {
+    "file": "selfhost/build/phase171/runtime-callers-full-stages01.json",
+    "sha256": "6e4cd058c79876ad0a880156cd58c0c976f7dff67e761bfbb354adf9be2e16d7",
+    "samples": 5429,
+    "physicalSelection": "direct/product generated leaf, otherwise immediate generated caller; fixed p111/p112w/p113d prefixes; exact original helper name only. No inclusive or continuation-owner attribution.",
+    "nearestObservedSamples": {
+      "f_context_higher": 3,
+      "f_context_lower": 0,
+      "f_context_material_children": 6,
+      "f_context_material_next": 0,
+      "f_context_material_done": 1,
+      "f_sub": 0,
+      "f_subs": 0,
+      "f_pattern_sub": 1,
+      "f_pattern_subs": 2,
+      "env_subst_term": 0,
+      "env_subst_terms": 0,
+      "sp_shift": 0,
+      "sp_shifts": 0,
+      "f_path_term": 0,
+      "f_path_terms": 0,
+      "nq_layout_subst": 2,
+      "nq_layout_subst_list": 7,
+      "nc_erase": 2,
+      "nc_erase_app": 0,
+      "nc_erase_list": 0,
+      "nc_erase_annotated": 0,
+      "nc_compact": 1,
+      "nc_compact_plain": 2,
+      "nc_compact_ctor": 0,
+      "nc_compact_list": 0,
+      "nw_restore": 0,
+      "nw_restore_children": 0,
+      "nw_restore_list": 0,
+      "ffw_walk": 1,
+      "ffw_walk_existing": 1,
+      "ffw_kids": 0,
+      "ffw_frame": 1,
+      "subst_node": 9,
+      "nc_uses_term": 7
+    }
+  },
+  "limits": [
+    "Missing a helper in the truncated active-owner lists is not zero execution.",
+    "Observed physical samples and active dispatch contexts are distinct; do not sum.",
+    "The selected installed image is Phase170; Phase171 four-overlay and Phase172 runtime experiments are not represented by these counts."
+  ]
+}

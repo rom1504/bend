@@ -1,0 +1,71 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": true,
+  "started": 1794012707.4847507,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "3",
+    "selfhost/.assets/bin/bun",
+    "selfhost/tests/phase173/borrow-oracle.mjs",
+    "--receipt",
+    "selfhost/build/phase173/layout-value-oracle-api01/report.json",
+    "--out",
+    "selfhost/build/phase173/layout-value-oracle01",
+    "--kind",
+    "compiler"
+  ],
+  "returncode": 0,
+  "rssLimitBytes": 3221225472,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 305872896,
+  "minimumAvailableBytes": 25128288256,
+  "diskBudgetBytes": 12582912,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 5596258304,
+  "minimumDiskFreeBytes": 5591126016,
+  "peakRunAllocatedBytes": 241664,
+  "peakFilesystemDecreaseBytes": 5132288,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/layout-value-oracle01"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "3",
+    "fileLimitBytes": 134217728,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+        "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b",
+        "bytes": 88979072
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase173/borrow-oracle.mjs",
+        "sha256": "e83932948b39d27739c6bfc2be04c5d0c5f1dd0bd95074e04c9fb07beab1c225",
+        "bytes": 8039
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/layout-value-oracle-api01/report.json",
+        "sha256": "77c5b44b9b90aeb7a548927a355c57f9a700d6ca136ded065315d78043081359",
+        "bytes": 4656
+      }
+    ]
+  },
+  "wallSeconds": 1.4953502803109586,
+  "finished": 1794012708.9799058
+}

@@ -1,0 +1,76 @@
+{
+  "scope": "mechanical source ABI ceiling; no compiler algorithms/Array ABI/fuel/oracles changed",
+  "modules": [
+    {
+      "source": "store-flat7.bend",
+      "source_sha256": "c22336a1c9b751a74b42ebd7a3661504fc5e62a886ad9867b9bf6c1ba44340e7",
+      "output": "store-wide8-v2.bend",
+      "output_sha256": "3e688bfdaeff16f5eb7325d8b96f08964f0c243eb2cac3fbbd949f586e7075a3",
+      "rewritten_tuple_results": 29,
+      "rewritten_tuple_consumers": 15,
+      "lines": 999,
+      "string_literal_sequence_unchanged": true
+    },
+    {
+      "source": "store-compact.bend",
+      "source_sha256": "80681d7db1081957d182ddb2eeb8d5067f33f8830cdf5f6bb6f5ebf23cd459db",
+      "output": "store-compact-wide8.bend",
+      "output_sha256": "d8fc060d11307bf65cb0921166bacb28ceb774f767e8dc600a0a4bb9bae42730",
+      "rewritten_tuple_results": 20,
+      "rewritten_tuple_consumers": 24,
+      "lines": 1029,
+      "string_literal_sequence_unchanged": true
+    },
+    {
+      "source": "store-controls.bend",
+      "source_sha256": "3ecedce930738fbd3e5d0beecc225f61570be2b9e9bf29edc85a8b8b5018087b",
+      "output": "store-controls-wide8.bend",
+      "output_sha256": "82b2c30da1e7069c7070b3a31fe0875da964c668b219f957da63fb9724188100",
+      "rewritten_tuple_results": 0,
+      "rewritten_tuple_consumers": 19,
+      "lines": 185,
+      "string_literal_sequence_unchanged": true
+    },
+    {
+      "source": "vertical-store.bend",
+      "source_sha256": "85641414275a985dcda0118558c440bbdec0f1ea0b1b0c3193e8797631630656",
+      "output": "vertical-store-wide8.bend",
+      "output_sha256": "519119105bff15cd3f4bad793596fa0cf9c071f109f884a6b727edee58b808f6",
+      "rewritten_tuple_results": 0,
+      "rewritten_tuple_consumers": 8,
+      "lines": 81,
+      "string_literal_sequence_unchanged": true
+    }
+  ],
+  "mechanical_inverse_check": [
+    {
+      "source": "store-flat7.bend",
+      "wide": "store-wide8-v2.bend",
+      "inverse_source_token_equal": true
+    },
+    {
+      "source": "store-compact.bend",
+      "wide": "store-compact-wide8.bend",
+      "inverse_source_token_equal": true
+    },
+    {
+      "source": "store-controls.bend",
+      "wide": "store-controls-wide8.bend",
+      "inverse_source_token_equal": true
+    },
+    {
+      "source": "vertical-store.bend",
+      "wide": "vertical-store-wide8.bend",
+      "inverse_source_token_equal": true
+    }
+  ],
+  "inverse_check_scope": "Replace nominal return shell with Tuple(Store7,payload), inline pack body and inverse exact consumer field mapping. Lexical tokens identical outside inserted definitions/header; string literal text retained exactly. This is source-change accounting, not a formal semantic proof.",
+  "revision": 2,
+  "difference_from_revision1": "Only payload field and pack parameter +value:T become value:T, matching original Base Sigma.Tuple affine second field. Source header records revision. Other modules unchanged.",
+  "payload_quantity_reference": {
+    "path": "selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+    "line": 26,
+    "declaration": "Tuple{fst: A, snd: B(fst)}",
+    "meaning": "Both runtime fields have default affine quantity, no + annotation."
+  }
+}

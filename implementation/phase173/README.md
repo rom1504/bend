@@ -267,11 +267,46 @@ namespace as well as raw candidates. See the
 [execution barrier](../../experiments/phase173/store-execution-barrier.md) and
 [independent SCC audit](../../experiments/phase173/scc-audit.md).
 
+## Further transfer and rejected representation expansion
+
+Both consuming source changes together were acquired through the independently
+checked hosted compiler path. The existing real verifier request emitted
+byte-identical QBE: 2,309,376 bytes, SHA256
+`8be3a072b84dfc8bb85ddb9478c00d05179f7de89c8d4079af9ca3a5190bfbfb`.
+This establishes output preservation for that request, not a full native
+compiler speedup or self-hosting qualification.
+
+An eight-field return experiment also passed all finite controls and complete
+comparisons on the 101-body corpus. It nevertheless failed the generated-code
+gate: getters return flat lanes, but their consumers reconstruct Store7 before
+branches and subsequent helper calls. We stopped before machine construction
+and timing. Flattening an interface did not keep the whole computation flat.
+See the [obstruction](../../experiments/phase173/wide-return-obstruction.md).
+
+The early-decomposition source census finds eleven recursive rebuild sites,
+including the two tested. Contextual materialization has the strongest remaining
+profile evidence. Source occurrence counts and active-context samples do not
+provide inclusive cost estimates; we cannot extrapolate the two 20% kernel wins
+to a 20% cold self-build win. See the
+[ranked census](../../experiments/phase173/consuming-frontier.md).
+
+The new automatic decomposition pass remains experimental. Its finite controls,
+actual helper admission, independent native values, compilation overhead and
+transfer results must be measured before promotion. An effect review identifies
+the existing checked QBE runtime contract as a possible way to avoid a redundant
+whole-request purity restriction; it does not authorize arbitrary foreign
+handlers or weakening runtime admission.
+
 ## Evidence and resources
 
 The [reproduction guide](reproduction.md) preserves measured module versions,
 receipts, commands and negative findings without copying generated compiler
 images or IR into Git.
+
+[Evidence checkpoint04](evidence04/REPRODUCE.md) adds 26 completed guarded runs,
+the failed eight-field structural gate, layout substitution, the unchanged
+verifier product, and neutral wide-record timing with actual event counts.
+It excludes the still-running automatic-pass investigation.
 
 Exact current run locations are in
 [checkpoint.json](../../experiments/phase173/checkpoint.json). Native pairs:
@@ -287,3 +322,10 @@ archived, reopened and hash-verified before exact-file pruning. Binaries,
 qualified chains and profiler dependencies remain hot. The 5GiB reserve stays
 in force. Parser, transport, guard-admission and negative optimization results
 are retained rather than silently rerun under the same artifact names.
+
+The third retention batch archived and verified 22 retired roots, reclaiming
+67,956,736 bytes net. Repeated dependency scans cost about 48 seconds per root;
+compression itself took about 0.3 seconds. This was excessive maintenance cost.
+Future retention should batch unchanged dependency discovery while retaining
+the independent immediate pre-apply check. No performance sample ran alongside
+that batch, and qualified products remain protected.

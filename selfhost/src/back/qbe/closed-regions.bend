@@ -391,13 +391,14 @@ def p112c_scan_no(+condition: N111Value, +yes: List<&2,N111Stmt>, +yc: U32, +res
   match no:
     case P112FusionBody{+body,+count,+next}: p112f_scan_rest(condition,yes,body,U32.add(yc,count),p112c_scan(rest,index,ready,next))
 
-
 @unsafe
 def p112c_plan_index(segment: N111Segment, +index: P112FusionIndex, +ready: KDef) -> P112FusionBody:
   match segment:
     case N111Segment{+name,+arity,+result,+incoming,+flags,+body}:
-      nt_choose(P112FusionBody,U32.is_eq(result,1) && U32.is_eq(flags,0) && p112f_clean(body),
-        u => p112c_scan(body,index,ready,0),u => P112FusionBody{body,0,0})
+      nt_choose(P112FusionBody,U32.is_eq(result,1) && U32.is_eq(flags,0),
+        u => nt_choose(P112FusionBody,p112f_clean(body),
+          v => p112c_scan(body,index,ready,0),v => P112FusionBody{body,0,0}),
+        u => P112FusionBody{body,0,0})
 
 
 @unsafe

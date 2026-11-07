@@ -1,0 +1,81 @@
+{
+  "kind": "phase174-integration-metadata-audit",
+  "version": 1,
+  "complete": true,
+  "targetsRun": false,
+  "integration": {
+    "file": "/home/ai/bend2/build/publish/bend/implementation/phase174/source-integration.json",
+    "bytes": 32013,
+    "sha256": "42c087d418435e67b7f7a8071fbd559f012047e015d7aa46b7586c77b334e44b"
+  },
+  "referenceHead": "c1af28f5b3862b3c638b830349b5f71e4130a482",
+  "originalRecipeGitObject": "b1d7c9c47ec4586a7386c6a543595c45d89f0d99",
+  "changedRecipeFields": [
+    "inventoryChange",
+    "order"
+  ],
+  "oldDeclarationsRetainedInOrder": 8414,
+  "previousInventoryChange": {
+    "addedCount": 149,
+    "removedCount": 0,
+    "ordering": "Existing declarations retain their order; additions retain the qualified native source order.",
+    "sha256": "76e0f4f0f288f7346f4f9bb01248a77329a3b5aff8a852b5c66cf83453b2e59a",
+    "retainedInGit": "c1af28f5b3862b3c638b830349b5f71e4130a482:selfhost/src/compiler.json"
+  },
+  "currentInventoryAdded": 28,
+  "unrelatedRecipeFieldsExact": true,
+  "repeatInvocation": {
+    "returncode": 1,
+    "expectedRefusal": "Refuse overwriting integration receipt",
+    "stderr": "Traceback (most recent call last):\n  File \"/home/ai/bend2/build/publish/bend/experiments/phase174/integrate-phase171.py\", line 175, in <module>\n    if __name__=='__main__':main()\n  File \"/home/ai/bend2/build/publish/bend/experiments/phase174/integrate-phase171.py\", line 61, in main\n    need(not output.exists(),'Refuse overwriting integration receipt')\n  File \"/home/ai/bend2/build/publish/bend/experiments/phase174/integrate-phase171.py\", line 21, in need\n    if not value: raise ValueError(message)\nValueError: Refuse overwriting integration receipt\n",
+    "allTrackedBytesUnchanged": true,
+    "pins": [
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/qbe/borrowed-regions.bend",
+        "bytes": 68349,
+        "sha256": "04724cfde5c4c6be1db205b50efc293d953cf7d1f0cba541c0df462dd57dc272"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/qbe/closed-regions.bend",
+        "bytes": 36944,
+        "sha256": "18a8707c3aabc7d226708c8cb95271abbc3b11b21e4761f1f51c5ad770910bcf"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/qbe/direct-lower.bend",
+        "bytes": 30537,
+        "sha256": "bddf3e0314e598a2dcafc64f0dfba1825c296f7a35ce9b513f5d149cd0bc1d61"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/qbe/flat-products.bend",
+        "bytes": 32661,
+        "sha256": "3645ef4068bc0d6c4b766c517947a524ed345314e7a26442fb22c4974ed2f805"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/qbe/local-continuations.bend",
+        "bytes": 55249,
+        "sha256": "579adc2013f0ac8493b2b6a8dc49e4ac4fdb52068123454ea615dcc713806cfc"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/check/publication-reuse.bend",
+        "bytes": 4904,
+        "sha256": "e09982aa415b57819a9a6469cefcdc755fe641b75619b00eb07bbdabbfbcb3cf"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/compiler.json",
+        "bytes": 535326,
+        "sha256": "5f9a4ed5fdcebffd0725b259f3725b526b8d256c474e839823d431265f29e1f2"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/implementation/phase174/source-integration.json",
+        "bytes": 32013,
+        "sha256": "42c087d418435e67b7f7a8071fbd559f012047e015d7aa46b7586c77b334e44b"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/experiments/phase174/integrate-phase171.py",
+        "bytes": 10542,
+        "sha256": "c149105ef5c6ea44de65256d2b6b8eed4601db2a5f951bc4bcb119acb4e2ac54"
+      }
+    ]
+  },
+  "scope": "Metadata-only repeat refusal and configuration comparison; no compiler target or qualification claim."
+}

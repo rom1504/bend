@@ -1,0 +1,1043 @@
+{
+  "kind": "phase174-exact-phase171-integration",
+  "version": 1,
+  "complete": true,
+  "targetsRun": false,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/experiments/phase174/integrate-phase171.py",
+    "bytes": 10542,
+    "sha256": "c149105ef5c6ea44de65256d2b6b8eed4601db2a5f951bc4bcb119acb4e2ac54"
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase174/reference-source01/receipt.json",
+      "bytes": 1594,
+      "sha256": "adfeb7f44ca6b8065ea79fda7ffb70d5079a4bf1bb36fde66366367a932537bb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/native-source01/compiler.bend",
+      "bytes": 3161409,
+      "sha256": "74cd7de3e5076490e20ba0218d4c9254853be72562946b9ef66fed6c10c7a53a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/native-source01/report.json",
+      "bytes": 6788841,
+      "sha256": "ee3749a6b45bebe05a40bead78e67d0c2eb1c8f599de798c4e3647c70a77bcc1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/native-source01/inverse-originals.json",
+      "bytes": 11220,
+      "sha256": "567063a1fdd95baa0ebda17f63fd0bd508b72005204ae9ebd755daa02289fb57"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/source.py",
+      "bytes": 28941,
+      "sha256": "bb657cc05776c22f29244ae68606eb757c676b522a7052b2b32999fbc00599c7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/compiler.json",
+      "bytes": 542010,
+      "sha256": "6f15663dc8c99e905b3dc7d4923ad457758597d83e1e433c5161dcdab403eb62"
+    }
+  ],
+  "referenceHead": "c1af28f5b3862b3c638b830349b5f71e4130a482",
+  "parent": {
+    "bytes": 3150535,
+    "sha256": "434edd1d56128f9480800573abf8a0ae21d910a547837af089f25cd1d0e89b71"
+  },
+  "maintainedSource": {
+    "bytes": 3161409,
+    "sha256": "74cd7de3e5076490e20ba0218d4c9254853be72562946b9ef66fed6c10c7a53a"
+  },
+  "measuredSource": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase171/native-source01/compiler.bend",
+    "bytes": 3161409,
+    "sha256": "74cd7de3e5076490e20ba0218d4c9254853be72562946b9ef66fed6c10c7a53a"
+  },
+  "declarationCounts": {
+    "original": 8414,
+    "final": 8442,
+    "unchanged": 8398,
+    "replacements": 16,
+    "additions": 28,
+    "removed": 0
+  },
+  "byteIdenticalToMeasured": true,
+  "inverseRecoversParent": true,
+  "originalSignaturesPreserved": true,
+  "protected": {
+    "count": 112,
+    "mapUnchanged": true,
+    "normalizedChecksPassed": true
+  },
+  "mainUnchanged": {
+    "kind": "def",
+    "name": "main",
+    "owner": "src/host/qbe-main.bend",
+    "operation": "keep",
+    "original": {
+      "bytes": 113,
+      "sha256": "9d13e1e8cb171d803de0ed457d50521790375f094b1d508bc99b4938ad489398"
+    },
+    "final": {
+      "bytes": 113,
+      "sha256": "9d13e1e8cb171d803de0ed457d50521790375f094b1d508bc99b4938ad489398"
+    },
+    "measuredSpan": {
+      "begin": 1869729,
+      "end": 1869842,
+      "bytes": 113,
+      "sha256": "9d13e1e8cb171d803de0ed457d50521790375f094b1d508bc99b4938ad489398"
+    }
+  },
+  "unchangedDeclarations": {
+    "count": 8398,
+    "allBlockBytesCompared": true,
+    "orderedRecordSha256": "02d33e0b29aa43b5ff7b71716c8ed65d8c8bf8884185c9d2fac2b4cbfdd5b23d",
+    "recordFormat": "Compact JSON [kind,name,owner,{bytes,sha256}] plus LF in measured operation order."
+  },
+  "changes": [
+    {
+      "kind": "def",
+      "name": "p112c_plan_index",
+      "owner": "src/back/qbe/closed-regions.bend",
+      "operation": "replace",
+      "original": {
+        "bytes": 365,
+        "sha256": "096a1db0c5d8420b70ba00d7f0a5f215a064a7b62b80ae002b00b847203572f1"
+      },
+      "final": {
+        "bytes": 442,
+        "sha256": "772f72adbbe859348402d5dc1039a129a2a90a46ac0b7db8235cbf6b0e88cbf7"
+      },
+      "measuredSpan": {
+        "begin": 2006418,
+        "end": 2006860,
+        "bytes": 442,
+        "sha256": "772f72adbbe859348402d5dc1039a129a2a90a46ac0b7db8235cbf6b0e88cbf7"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p113d_let",
+      "owner": "src/back/qbe/direct-lower.bend",
+      "operation": "replace",
+      "original": {
+        "bytes": 535,
+        "sha256": "868807502c7f9d757b04ed12812e31f19189719b1f6bab286d3eac8cb6fdc44c"
+      },
+      "final": {
+        "bytes": 867,
+        "sha256": "d3b8f27c794a60053012a82272f0e35fe657a29a1e1a0101e143a548c690f21a"
+      },
+      "measuredSpan": {
+        "begin": 2029868,
+        "end": 2030735,
+        "bytes": 867,
+        "sha256": "d3b8f27c794a60053012a82272f0e35fe657a29a1e1a0101e143a548c690f21a"
+      }
+    },
+    {
+      "kind": "law",
+      "name": "p171ff_direct_match",
+      "owner": "src/back/qbe/direct-lower.bend",
+      "operation": "insert-law",
+      "original": null,
+      "final": {
+        "bytes": 266,
+        "sha256": "113634c79afaf99484511c2d0f50bcc13754a7152d9cb40ac475c59784c46d85"
+      },
+      "measuredSpan": {
+        "begin": 2040485,
+        "end": 2040751,
+        "bytes": 266,
+        "sha256": "113634c79afaf99484511c2d0f50bcc13754a7152d9cb40ac475c59784c46d85"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p113dm_original_match",
+      "owner": "src/back/qbe/direct-lower.bend",
+      "operation": "replace",
+      "original": {
+        "bytes": 954,
+        "sha256": "c14b3e5955c24cd2a40557bfab02f57c6692b83c8259bbdf8c19e33141982eb6"
+      },
+      "final": {
+        "bytes": 360,
+        "sha256": "21763237af3a479c7f2fd01818ccf4c416e34ca8e0865329bc292140b1b16a21"
+      },
+      "measuredSpan": {
+        "begin": 2040751,
+        "end": 2041111,
+        "bytes": 360,
+        "sha256": "21763237af3a479c7f2fd01818ccf4c416e34ca8e0865329bc292140b1b16a21"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p113dl_let",
+      "owner": "src/back/qbe/direct-lower.bend",
+      "operation": "replace",
+      "original": {
+        "bytes": 556,
+        "sha256": "067e56e73323ba3c88aa83bf923aa43435498e162446402bf3a44441ce39094d"
+      },
+      "final": {
+        "bytes": 633,
+        "sha256": "e52d8e25a7f470c4cca20f8b2d73d6da29a8b8188a59686cee0b76288bb69a96"
+      },
+      "measuredSpan": {
+        "begin": 2042621,
+        "end": 2043254,
+        "bytes": 633,
+        "sha256": "e52d8e25a7f470c4cca20f8b2d73d6da29a8b8188a59686cee0b76288bb69a96"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p113dm_more",
+      "owner": "src/back/qbe/direct-lower.bend",
+      "operation": "replace",
+      "original": {
+        "bytes": 281,
+        "sha256": "223d8716fb0e241787fa3a78085b144fb59165d750ce940ea53debec30bafd49"
+      },
+      "final": {
+        "bytes": 354,
+        "sha256": "acd2349f85ec9efaa42e47df279ccc4703422b1fc77e9429224cef7fbe09754f"
+      },
+      "measuredSpan": {
+        "begin": 2045383,
+        "end": 2045737,
+        "bytes": 354,
+        "sha256": "acd2349f85ec9efaa42e47df279ccc4703422b1fc77e9429224cef7fbe09754f"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p113pl_bind_flat",
+      "owner": "src/back/qbe/flat-products.bend",
+      "operation": "replace",
+      "original": {
+        "bytes": 625,
+        "sha256": "756418d7f66124508b95ce5d1c7f5393492c037c5aadd6f684737af46bda33c6"
+      },
+      "final": {
+        "bytes": 703,
+        "sha256": "3a153e3c283ef0252636b5d4e4102cb80a52fd8750b365eec5fc25b1f38df1fc"
+      },
+      "measuredSpan": {
+        "begin": 2093544,
+        "end": 2094247,
+        "bytes": 703,
+        "sha256": "3a153e3c283ef0252636b5d4e4102cb80a52fd8750b365eec5fc25b1f38df1fc"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p113pl_bind_boxed",
+      "owner": "src/back/qbe/flat-products.bend",
+      "operation": "replace",
+      "original": {
+        "bytes": 570,
+        "sha256": "fbeae70dfb33b417b4841232798914619e13673884d33b703b2fc2516611b460"
+      },
+      "final": {
+        "bytes": 647,
+        "sha256": "885628625a243d70bde2eeec622423c553a143da9d639316a6db9e80ef5230d6"
+      },
+      "measuredSpan": {
+        "begin": 2094247,
+        "end": 2094894,
+        "bytes": 647,
+        "sha256": "885628625a243d70bde2eeec622423c553a143da9d639316a6db9e80ef5230d6"
+      }
+    },
+    {
+      "kind": "law",
+      "name": "p171ff_product_match",
+      "owner": "src/back/qbe/flat-products.bend",
+      "operation": "insert-law",
+      "original": null,
+      "final": {
+        "bytes": 173,
+        "sha256": "fec193aad304ec40f39d1c718bb1c2b6fe0f261f555d713556d933b639cd6397"
+      },
+      "measuredSpan": {
+        "begin": 2105093,
+        "end": 2105266,
+        "bytes": 173,
+        "sha256": "fec193aad304ec40f39d1c718bb1c2b6fe0f261f555d713556d933b639cd6397"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p113pm_original_match",
+      "owner": "src/back/qbe/flat-products.bend",
+      "operation": "replace",
+      "original": {
+        "bytes": 970,
+        "sha256": "a908c4e48b53c8dca2a74ca87f55b7e8a4e109ad256d503df9ab25e182cfda0a"
+      },
+      "final": {
+        "bytes": 381,
+        "sha256": "b5b874af91bc986ce5ce884b3e957f132de1d261d83ec2c8ab86d0d6aaad66b7"
+      },
+      "measuredSpan": {
+        "begin": 2105266,
+        "end": 2105647,
+        "bytes": 381,
+        "sha256": "b5b874af91bc986ce5ce884b3e957f132de1d261d83ec2c8ab86d0d6aaad66b7"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p113pm_more",
+      "owner": "src/back/qbe/flat-products.bend",
+      "operation": "replace",
+      "original": {
+        "bytes": 259,
+        "sha256": "2df41c241efdd22ce9e70915e04d224e4f86ef8afe7296e05717252b01d53733"
+      },
+      "final": {
+        "bytes": 332,
+        "sha256": "ea60e025094f28144c273abe0bafb871785fe8164712e663ed80d0f97d283613"
+      },
+      "measuredSpan": {
+        "begin": 2107006,
+        "end": 2107338,
+        "bytes": 332,
+        "sha256": "ea60e025094f28144c273abe0bafb871785fe8164712e663ed80d0f97d283613"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p113px_boxed",
+      "owner": "src/back/qbe/flat-products.bend",
+      "operation": "replace",
+      "original": {
+        "bytes": 598,
+        "sha256": "a98ef65795a94af87e429cb42574689d5b5067f5aeaad1ec557170d96ab3e31e"
+      },
+      "final": {
+        "bytes": 675,
+        "sha256": "573a5651930797900914a055ff555ec76fcb52fb6a36da7ebc9b5d331935ae15"
+      },
+      "measuredSpan": {
+        "begin": 2111432,
+        "end": 2112107,
+        "bytes": 675,
+        "sha256": "573a5651930797900914a055ff555ec76fcb52fb6a36da7ebc9b5d331935ae15"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p114r_plan",
+      "owner": "src/back/qbe/local-continuations.bend",
+      "operation": "replace",
+      "original": {
+        "bytes": 427,
+        "sha256": "7876496c40a9ecca7913acc0f526507c529644964b50104b949ab133907013f4"
+      },
+      "final": {
+        "bytes": 794,
+        "sha256": "560191920c7963bdcc7169fb0c04348ea7715005f7586dab7f96d5a1e14282b8"
+      },
+      "measuredSpan": {
+        "begin": 2243574,
+        "end": 2244368,
+        "bytes": 794,
+        "sha256": "560191920c7963bdcc7169fb0c04348ea7715005f7586dab7f96d5a1e14282b8"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p114g_plan",
+      "owner": "src/back/qbe/local-continuations.bend",
+      "operation": "replace",
+      "original": {
+        "bytes": 484,
+        "sha256": "13d25dcdc0327ee78537afc071b860f8c2d5a6801043ec109a19f6ac8c22b3f7"
+      },
+      "final": {
+        "bytes": 594,
+        "sha256": "30a4e3d2d59a7038f4a70f8c137cfa6e13c9485823c136dfa8726534b2face80"
+      },
+      "measuredSpan": {
+        "begin": 2259961,
+        "end": 2260555,
+        "bytes": 594,
+        "sha256": "30a4e3d2d59a7038f4a70f8c137cfa6e13c9485823c136dfa8726534b2face80"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p114h_plan",
+      "owner": "src/back/qbe/local-continuations.bend",
+      "operation": "replace",
+      "original": {
+        "bytes": 560,
+        "sha256": "6b988f8b43a3c174fd7a8bb5ee5fc7da77bb18b3615f6ed404a32ae04ac6698a"
+      },
+      "final": {
+        "bytes": 797,
+        "sha256": "b4afed47bdb44afaf8d4f44a4ce6c6697ed61b8eec02410e296a4811d66584a2"
+      },
+      "measuredSpan": {
+        "begin": 2278690,
+        "end": 2279487,
+        "bytes": 797,
+        "sha256": "b4afed47bdb44afaf8d4f44a4ce6c6697ed61b8eec02410e296a4811d66584a2"
+      }
+    },
+    {
+      "kind": "law",
+      "name": "p171sc_retry",
+      "owner": "src/back/qbe/borrowed-regions.bend",
+      "operation": "insert-law",
+      "original": null,
+      "final": {
+        "bytes": 215,
+        "sha256": "311966998e11cd9783622d58bf6f1a8343f578b4b8ed4d9b2009806c14c1c214"
+      },
+      "measuredSpan": {
+        "begin": 2569728,
+        "end": 2569943,
+        "bytes": 215,
+        "sha256": "311966998e11cd9783622d58bf6f1a8343f578b4b8ed4d9b2009806c14c1c214"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p128br_retry_plans",
+      "owner": "src/back/qbe/borrowed-regions.bend",
+      "operation": "replace",
+      "original": {
+        "bytes": 404,
+        "sha256": "c226da136654c58f1b0f70d8991e0f683dc32f680bb67578aa4acb4020d16b27"
+      },
+      "final": {
+        "bytes": 216,
+        "sha256": "c582a5b67f2b75447cd84be358cea4de2edab45cca54e2568237316985d103ee"
+      },
+      "measuredSpan": {
+        "begin": 2569943,
+        "end": 2570159,
+        "bytes": 216,
+        "sha256": "c582a5b67f2b75447cd84be358cea4de2edab45cca54e2568237316985d103ee"
+      }
+    },
+    {
+      "kind": "law",
+      "name": "p171s_put",
+      "owner": "src/check/publication-reuse.bend",
+      "operation": "insert-law",
+      "original": null,
+      "final": {
+        "bytes": 83,
+        "sha256": "e8229bac93da6f942a869536d7095d873c986c01fabce27297b5fa1e1abccf42"
+      },
+      "measuredSpan": {
+        "begin": 3136556,
+        "end": 3136639,
+        "bytes": 83,
+        "sha256": "e8229bac93da6f942a869536d7095d873c986c01fabce27297b5fa1e1abccf42"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p156cp_continue",
+      "owner": "src/check/publication-reuse.bend",
+      "operation": "replace",
+      "original": {
+        "bytes": 202,
+        "sha256": "8d1df93a5e84a79890e5a473e27f94bab830e9da89d809416fca9f53027a8afb"
+      },
+      "final": {
+        "bytes": 281,
+        "sha256": "c1becbf138ff6f049d584815b9569bbe16b6b79feacef90d9bedd61ab211bf28"
+      },
+      "measuredSpan": {
+        "begin": 3136639,
+        "end": 3136920,
+        "bytes": 281,
+        "sha256": "c1becbf138ff6f049d584815b9569bbe16b6b79feacef90d9bedd61ab211bf28"
+      }
+    },
+    {
+      "kind": "law",
+      "name": "p171s_seed",
+      "owner": "src/check/publication-reuse.bend",
+      "operation": "insert-law",
+      "original": null,
+      "final": {
+        "bytes": 126,
+        "sha256": "93c051330eb691556986c97022e0e0b6671475fa04bd3725b9ad488f0ac6bc30"
+      },
+      "measuredSpan": {
+        "begin": 3139474,
+        "end": 3139600,
+        "bytes": 126,
+        "sha256": "93c051330eb691556986c97022e0e0b6671475fa04bd3725b9ad488f0ac6bc30"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p156cp_start",
+      "owner": "src/check/publication-reuse.bend",
+      "operation": "replace",
+      "original": {
+        "bytes": 253,
+        "sha256": "1ae718ce863a38e89c6a2e256fc72d0d8ccd61e8ee191312e5f0338dddb32231"
+      },
+      "final": {
+        "bytes": 263,
+        "sha256": "c44ec2d545f440bae7211d6141a6df73f381efe96ab1ba907122f979d5606340"
+      },
+      "measuredSpan": {
+        "begin": 3139600,
+        "end": 3139863,
+        "bytes": 263,
+        "sha256": "c44ec2d545f440bae7211d6141a6df73f381efe96ab1ba907122f979d5606340"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p171ff_direct_match",
+      "owner": "src/back/qbe/direct-lower.bend",
+      "operation": "append",
+      "original": null,
+      "final": {
+        "bytes": 775,
+        "sha256": "265fa5e31d90a8059b479eca113e1e18288086e5f857a8e3cd6f1b89d1b80ebf"
+      },
+      "measuredSpan": {
+        "begin": 3151694,
+        "end": 3152469,
+        "bytes": 775,
+        "sha256": "265fa5e31d90a8059b479eca113e1e18288086e5f857a8e3cd6f1b89d1b80ebf"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p171ff_product_match",
+      "owner": "src/back/qbe/flat-products.bend",
+      "operation": "append",
+      "original": null,
+      "final": {
+        "bytes": 759,
+        "sha256": "267beb1561fff842103e14a03b42238fb048d12a72bb50218cdd9e5cd9feb40d"
+      },
+      "measuredSpan": {
+        "begin": 3152469,
+        "end": 3153228,
+        "bytes": 759,
+        "sha256": "267beb1561fff842103e14a03b42238fb048d12a72bb50218cdd9e5cd9feb40d"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p171s_constructor_rows",
+      "owner": "src/check/publication-reuse.bend",
+      "operation": "append",
+      "original": null,
+      "final": {
+        "bytes": 671,
+        "sha256": "df98c8a490826f73202ef617ca42b0ca5675151a528c36db80896111b8a1478b"
+      },
+      "measuredSpan": {
+        "begin": 3153228,
+        "end": 3153899,
+        "bytes": 671,
+        "sha256": "df98c8a490826f73202ef617ca42b0ca5675151a528c36db80896111b8a1478b"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p171s_seed",
+      "owner": "src/check/publication-reuse.bend",
+      "operation": "append",
+      "original": null,
+      "final": {
+        "bytes": 225,
+        "sha256": "ee6267d9b0200404c29349a520fb8da104008b291ee1c5c579edbbf9a04628bb"
+      },
+      "measuredSpan": {
+        "begin": 3153899,
+        "end": 3154124,
+        "bytes": 225,
+        "sha256": "ee6267d9b0200404c29349a520fb8da104008b291ee1c5c579edbbf9a04628bb"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p171s_cached",
+      "owner": "src/check/publication-reuse.bend",
+      "operation": "append",
+      "original": null,
+      "final": {
+        "bytes": 427,
+        "sha256": "8cf9bfc18257e69c11159a0d37ace03633c8664be6067474e094ea85fffe5789"
+      },
+      "measuredSpan": {
+        "begin": 3154124,
+        "end": 3154551,
+        "bytes": 427,
+        "sha256": "8cf9bfc18257e69c11159a0d37ace03633c8664be6067474e094ea85fffe5789"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p171s_put",
+      "owner": "src/check/publication-reuse.bend",
+      "operation": "append",
+      "original": null,
+      "final": {
+        "bytes": 274,
+        "sha256": "dcc98f37dd2d5856f886b598e823ba107912765553dad96da46c9c4e0f270dd1"
+      },
+      "measuredSpan": {
+        "begin": 3154551,
+        "end": 3154825,
+        "bytes": 274,
+        "sha256": "dcc98f37dd2d5856f886b598e823ba107912765553dad96da46c9c4e0f270dd1"
+      }
+    },
+    {
+      "kind": "type",
+      "name": "P171SCPlan",
+      "owner": "src/back/qbe/borrowed-regions.bend",
+      "operation": "append",
+      "original": null,
+      "final": {
+        "bytes": 236,
+        "sha256": "fc8bf043c459750c01e3296bf9efbe1d70c890cc2deca458b627af8f614cb152"
+      },
+      "measuredSpan": {
+        "begin": 3154825,
+        "end": 3155061,
+        "bytes": 236,
+        "sha256": "fc8bf043c459750c01e3296bf9efbe1d70c890cc2deca458b627af8f614cb152"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p171sc_finish",
+      "owner": "src/back/qbe/borrowed-regions.bend",
+      "operation": "append",
+      "original": null,
+      "final": {
+        "bytes": 431,
+        "sha256": "f8214c4afab9acb9af547b71d90270589a744d9cda637b98df67dcef3adb2508"
+      },
+      "measuredSpan": {
+        "begin": 3155061,
+        "end": 3155492,
+        "bytes": 431,
+        "sha256": "f8214c4afab9acb9af547b71d90270589a744d9cda637b98df67dcef3adb2508"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p171sc_result",
+      "owner": "src/back/qbe/borrowed-regions.bend",
+      "operation": "append",
+      "original": null,
+      "final": {
+        "bytes": 592,
+        "sha256": "c26acd54fd1c9d9dd897a575c6b90ad71e8060d62db8d6cf2c17d06d784bccd5"
+      },
+      "measuredSpan": {
+        "begin": 3155492,
+        "end": 3156084,
+        "bytes": 592,
+        "sha256": "c26acd54fd1c9d9dd897a575c6b90ad71e8060d62db8d6cf2c17d06d784bccd5"
+      }
+    },
+    {
+      "kind": "law",
+      "name": "p171sc_params",
+      "owner": "src/back/qbe/borrowed-regions.bend",
+      "operation": "insert-law",
+      "original": null,
+      "final": {
+        "bytes": 304,
+        "sha256": "198ad0bac2a45572f95077b834ba6340465d5cd6f3b6c76739e31b1e017998dd"
+      },
+      "measuredSpan": {
+        "begin": 3156084,
+        "end": 3156388,
+        "bytes": 304,
+        "sha256": "198ad0bac2a45572f95077b834ba6340465d5cd6f3b6c76739e31b1e017998dd"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p171sc_param",
+      "owner": "src/back/qbe/borrowed-regions.bend",
+      "operation": "append",
+      "original": null,
+      "final": {
+        "bytes": 733,
+        "sha256": "6f0771d974781f008b546ea73fc9d362b95cbeeb1bca1e9d3af57038a541492e"
+      },
+      "measuredSpan": {
+        "begin": 3156388,
+        "end": 3157121,
+        "bytes": 733,
+        "sha256": "6f0771d974781f008b546ea73fc9d362b95cbeeb1bca1e9d3af57038a541492e"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p171sc_head",
+      "owner": "src/back/qbe/borrowed-regions.bend",
+      "operation": "append",
+      "original": null,
+      "final": {
+        "bytes": 587,
+        "sha256": "7cf44f3b385e55f6705f9f7f8e9209bc97b4ff5439e4263b114c951264c9b84f"
+      },
+      "measuredSpan": {
+        "begin": 3157121,
+        "end": 3157708,
+        "bytes": 587,
+        "sha256": "7cf44f3b385e55f6705f9f7f8e9209bc97b4ff5439e4263b114c951264c9b84f"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p171sc_params",
+      "owner": "src/back/qbe/borrowed-regions.bend",
+      "operation": "append",
+      "original": null,
+      "final": {
+        "bytes": 283,
+        "sha256": "c2fa05f4aac4aa73ef96778c79a2fecbd89d80e09e328fb57e50ebc0475a325e"
+      },
+      "measuredSpan": {
+        "begin": 3157708,
+        "end": 3157991,
+        "bytes": 283,
+        "sha256": "c2fa05f4aac4aa73ef96778c79a2fecbd89d80e09e328fb57e50ebc0475a325e"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p171sc_schema",
+      "owner": "src/back/qbe/borrowed-regions.bend",
+      "operation": "append",
+      "original": null,
+      "final": {
+        "bytes": 371,
+        "sha256": "44aca7101ca5da782c22dd022ee021800d7df4b9c1e73443803123d823056db2"
+      },
+      "measuredSpan": {
+        "begin": 3157991,
+        "end": 3158362,
+        "bytes": 371,
+        "sha256": "44aca7101ca5da782c22dd022ee021800d7df4b9c1e73443803123d823056db2"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p171sc_attach",
+      "owner": "src/back/qbe/borrowed-regions.bend",
+      "operation": "append",
+      "original": null,
+      "final": {
+        "bytes": 288,
+        "sha256": "fb85487abae7ee0e7e6c5591715779b9778dafd9e2996b03260ea9fb65d931fe"
+      },
+      "measuredSpan": {
+        "begin": 3158362,
+        "end": 3158650,
+        "bytes": 288,
+        "sha256": "fb85487abae7ee0e7e6c5591715779b9778dafd9e2996b03260ea9fb65d931fe"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p171sc_analyzed",
+      "owner": "src/back/qbe/borrowed-regions.bend",
+      "operation": "append",
+      "original": null,
+      "final": {
+        "bytes": 288,
+        "sha256": "8e4bd15001f41a8bdf8e61f4302962980679bb17f7d73324f428fd2be05c5bf4"
+      },
+      "measuredSpan": {
+        "begin": 3158650,
+        "end": 3158938,
+        "bytes": 288,
+        "sha256": "8e4bd15001f41a8bdf8e61f4302962980679bb17f7d73324f428fd2be05c5bf4"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p171sc_cached",
+      "owner": "src/back/qbe/borrowed-regions.bend",
+      "operation": "append",
+      "original": null,
+      "final": {
+        "bytes": 238,
+        "sha256": "a465dd5bae13014582bba68321d6534fc919defb155fec88ad15ba24429b8b51"
+      },
+      "measuredSpan": {
+        "begin": 3158938,
+        "end": 3159176,
+        "bytes": 238,
+        "sha256": "a465dd5bae13014582bba68321d6534fc919defb155fec88ad15ba24429b8b51"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p171sc_catalogue",
+      "owner": "src/back/qbe/borrowed-regions.bend",
+      "operation": "append",
+      "original": null,
+      "final": {
+        "bytes": 350,
+        "sha256": "2677bf299c68df70bd5270cad9a747a009f21591ca2bad6ad7636c4f541698e0"
+      },
+      "measuredSpan": {
+        "begin": 3159176,
+        "end": 3159526,
+        "bytes": 350,
+        "sha256": "2677bf299c68df70bd5270cad9a747a009f21591ca2bad6ad7636c4f541698e0"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p171sc_local_ready",
+      "owner": "src/back/qbe/borrowed-regions.bend",
+      "operation": "append",
+      "original": null,
+      "final": {
+        "bytes": 445,
+        "sha256": "42c13136704157a8c93775d4b9c4865b76948ec19f8c295933720deca619e2a3"
+      },
+      "measuredSpan": {
+        "begin": 3159526,
+        "end": 3159971,
+        "bytes": 445,
+        "sha256": "42c13136704157a8c93775d4b9c4865b76948ec19f8c295933720deca619e2a3"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p171sc_ordinary",
+      "owner": "src/back/qbe/borrowed-regions.bend",
+      "operation": "append",
+      "original": null,
+      "final": {
+        "bytes": 398,
+        "sha256": "66d24e4e682a722efb94077eaecf49358f8a91194cdf2e227a630833a8feac7e"
+      },
+      "measuredSpan": {
+        "begin": 3159971,
+        "end": 3160369,
+        "bytes": 398,
+        "sha256": "66d24e4e682a722efb94077eaecf49358f8a91194cdf2e227a630833a8feac7e"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p171sc_replan",
+      "owner": "src/back/qbe/borrowed-regions.bend",
+      "operation": "append",
+      "original": null,
+      "final": {
+        "bytes": 422,
+        "sha256": "0a22624017aa7540989f8c62d4eaf944e4128caebe8b5bdc586ac4fa985d6d7a"
+      },
+      "measuredSpan": {
+        "begin": 3160369,
+        "end": 3160791,
+        "bytes": 422,
+        "sha256": "0a22624017aa7540989f8c62d4eaf944e4128caebe8b5bdc586ac4fa985d6d7a"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p171sc_retry_step",
+      "owner": "src/back/qbe/borrowed-regions.bend",
+      "operation": "append",
+      "original": null,
+      "final": {
+        "bytes": 380,
+        "sha256": "56f87663ded2979c7b88f6dae72f7fa3384db0da18d0c0d7d95407c75ef148b7"
+      },
+      "measuredSpan": {
+        "begin": 3160791,
+        "end": 3161171,
+        "bytes": 380,
+        "sha256": "56f87663ded2979c7b88f6dae72f7fa3384db0da18d0c0d7d95407c75ef148b7"
+      }
+    },
+    {
+      "kind": "def",
+      "name": "p171sc_retry",
+      "owner": "src/back/qbe/borrowed-regions.bend",
+      "operation": "append",
+      "original": null,
+      "final": {
+        "bytes": 238,
+        "sha256": "3e420890d692a173e8092824352caf955c097502df12f7dd3a63fc7087fcb606"
+      },
+      "measuredSpan": {
+        "begin": 3161171,
+        "end": 3161409,
+        "bytes": 238,
+        "sha256": "3e420890d692a173e8092824352caf955c097502df12f7dd3a63fc7087fcb606"
+      }
+    }
+  ],
+  "helperLawPositions": [
+    {
+      "name": "p171ff_direct_match",
+      "before": "p113dm_original_match"
+    },
+    {
+      "name": "p171ff_product_match",
+      "before": "p113pm_original_match"
+    },
+    {
+      "name": "p171sc_retry",
+      "before": "p128br_retry_plans"
+    },
+    {
+      "name": "p171s_put",
+      "before": "p156cp_continue"
+    },
+    {
+      "name": "p171s_seed",
+      "before": "p156cp_start"
+    },
+    {
+      "name": "p171sc_params",
+      "before": "p171sc_param"
+    }
+  ],
+  "profiles": {
+    "qbe": {
+      "bytes": 3161409,
+      "sha256": "74cd7de3e5076490e20ba0218d4c9254853be72562946b9ef66fed6c10c7a53a"
+    },
+    "native-c": {
+      "bytes": 3161493,
+      "sha256": "e8a1d3ebdea74a816b0751a4db0b09b5f27109bc20ba928f342c142abc8e5a3d"
+    },
+    "js-api": {
+      "bytes": 3161296,
+      "sha256": "e6be394b3a2ff1a5016f537235dcf6c1447d841c915ad1134629e35c321d0a5c"
+    },
+    "qbe-policy": {
+      "bytes": 3161408,
+      "sha256": "8cbaf9137e5dadcb54bfcfdf399ff425e58e31f9a19ae7e06e15fab0bba4246a"
+    },
+    "qbe-policy-test": {
+      "bytes": 3161402,
+      "sha256": "af1e8deb7ea7159f1bee141989166e6497aed6544ff1c71308adb158e4ec0acf"
+    }
+  },
+  "files": [
+    {
+      "path": "src/back/qbe/borrowed-regions.bend",
+      "before": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/qbe/borrowed-regions.bend",
+        "bytes": 61738,
+        "sha256": "3138802f88bda9a3f277eff8e63a040742536d2f958f61838cb0148239c21260"
+      },
+      "after": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/qbe/borrowed-regions.bend",
+        "bytes": 68349,
+        "sha256": "04724cfde5c4c6be1db205b50efc293d953cf7d1f0cba541c0df462dd57dc272"
+      }
+    },
+    {
+      "path": "src/back/qbe/closed-regions.bend",
+      "before": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/qbe/closed-regions.bend",
+        "bytes": 36867,
+        "sha256": "4d9619fc10793b285fb040a7e80bd9c6a0ed98cb284eef0598c0d2b36cc9e888"
+      },
+      "after": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/qbe/closed-regions.bend",
+        "bytes": 36944,
+        "sha256": "18a8707c3aabc7d226708c8cb95271abbc3b11b21e4761f1f51c5ad770910bcf"
+      }
+    },
+    {
+      "path": "src/back/qbe/direct-lower.bend",
+      "before": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/qbe/direct-lower.bend",
+        "bytes": 29608,
+        "sha256": "0c645c8a4715e05ff7f375fdc13579dd59ab95750962ce32303857064145d948"
+      },
+      "after": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/qbe/direct-lower.bend",
+        "bytes": 30537,
+        "sha256": "bddf3e0314e598a2dcafc64f0dfba1825c296f7a35ce9b513f5d149cd0bc1d61"
+      }
+    },
+    {
+      "path": "src/back/qbe/flat-products.bend",
+      "before": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/qbe/flat-products.bend",
+        "bytes": 32013,
+        "sha256": "89988c5ae679698385503704da9923f008b010df4ae81253914a266c0ce6cdfe"
+      },
+      "after": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/qbe/flat-products.bend",
+        "bytes": 32661,
+        "sha256": "3645ef4068bc0d6c4b766c517947a524ed345314e7a26442fb22c4974ed2f805"
+      }
+    },
+    {
+      "path": "src/back/qbe/local-continuations.bend",
+      "before": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/qbe/local-continuations.bend",
+        "bytes": 54535,
+        "sha256": "1a2b14366029fd912e642aa287f43098d41625d76684c1d6035f1e5fdf441523"
+      },
+      "after": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/back/qbe/local-continuations.bend",
+        "bytes": 55249,
+        "sha256": "579adc2013f0ac8493b2b6a8dc49e4ac4fdb52068123454ea615dcc713806cfc"
+      }
+    },
+    {
+      "path": "src/check/publication-reuse.bend",
+      "before": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/check/publication-reuse.bend",
+        "bytes": 3009,
+        "sha256": "07a839b852d1fd88cbdedb4cc2b9723e116a03c14eaf90ea6a1a89611711df21"
+      },
+      "after": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/src/check/publication-reuse.bend",
+        "bytes": 4904,
+        "sha256": "e09982aa415b57819a9a6469cefcdc755fe641b75619b00eb07bbdabbfbcb3cf"
+      }
+    }
+  ],
+  "recipe": {
+    "before": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/compiler.json",
+      "bytes": 542010,
+      "sha256": "6f15663dc8c99e905b3dc7d4923ad457758597d83e1e433c5161dcdab403eb62"
+    },
+    "after": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/compiler.json",
+      "bytes": 535326,
+      "sha256": "5f9a4ed5fdcebffd0725b259f3725b526b8d256c474e839823d431265f29e1f2"
+    }
+  },
+  "productionDependencies": {
+    "moduleListUnchanged": true,
+    "preambleUnchanged": true,
+    "newHistoricalImports": false
+  },
+  "scope": "Only four measured Phase171 overlays. No Phase172/173 candidates, target execution, release assets, installed selection or qualification changes."
+}

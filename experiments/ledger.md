@@ -1,3 +1,22 @@
+# Phase178 — frontend cleanup and a neutral product, 2026-11-07
+
+[Report](../implementation/phase178/README.md) · [Design](../design/phase178/README.md) ·
+[Metrics](../implementation/phase178/metrics.json) · [Evidence](../implementation/phase178/evidence-index.json).
+
+Removed the superseded parser chain and its orphaned lookup/signature helpers:
+eight definitions/four signatures, 130 source lines. Final canonical source is
+3,167,327B /68,369 lines. Five profile closures and every surviving declaration
+match after comment/whitespace normalization; independent full source checking
+and 565 parser controls pass within their documented snapshot scopes.
+Shared source-only checker and current workflow documentation consolidated.
+
+Erased-body/reference fusion passes 1,474 complete observations but the native
+complete medium frontend is neutral (12.234→12.2215s, two reversed pairs). Result
+products and extra helper contracts have no demonstrated payoff; keep only the
+experimental evidence. No full compiler acquisition, installed change, new
+cold/runtime score, upstream comparison or PR comment. Qualified references and
+all 112 protections remain intact. Failures and exact guarded costs are archived.
+
 # Phase177 — repeated frontend work removed, 2026-11-07
 
 [Report](../implementation/phase177/README.md) · [Metrics](../implementation/phase177/metrics.json) ·

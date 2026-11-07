@@ -1,0 +1,14 @@
+{
+  "kind": "phase178-erased-product-overlay",
+  "parentCommit": "296f288",
+  "targetsRun": false,
+  "prelude": ["selfhost/tests/phase178/layout/erased-prelude.bend"],
+  "modules": ["selfhost/tests/phase178/layout/erased-product.bend"],
+  "replace": ["nc_erase", "nc_erase_list", "nc_erase_args", "nc_erase_mat", "nc_erase_annotated", "nc_erase_app", "nc_definition_plain", "p143nr_visit", "nr_visit", "p140oe_fresh"],
+  "controlBaselineModules": ["selfhost/tests/phase178/layout/controls.bend", "selfhost/tests/phase178/layout/control-baseline.bend"],
+  "controlCandidateModules": ["selfhost/tests/phase178/layout/controls.bend", "selfhost/tests/phase178/layout/control-candidate.bend"],
+  "controlExports": ["erasure_control_observe", "erasure_control_uncollected", "erasure_control_definition", "erasure_control_books", "erasure_control_cases", "erasure_control_actual", "erasure_control_expected", "erasure_control_telescopes", "erasure_control_arguments", "erasure_control_definitions", "erasure_control_closure_book", "erasure_control_string_lists", "erasure_control_adt", "erasure_control_visit", "erasure_control_incremental", "nc_erase", "nc_erase_app", "nc_erase_annotated", "nc_erase_args", "nc_erase_list", "nc_erase_mat", "nc_definition_plain", "nr_walk", "book_cached"],
+  "consumer": "p143nr_visit and nr_visit consume reverse refs directly; p140oe_fresh publishes forward refs to the unchanged incremental recorder; public NR_Request remains unchanged",
+  "bodyOnlyMode": "Compatibility APIs pass collect=False to the same core; no Ref list construction or fallback nc_refs. Product boxing remains a measured-cost question.",
+  "scope": "Private erasure product; original annotation, layout, source diagnostics, verifier, primitive/foreign constructors and public nc_refs remain unchanged. Complete-value and target gates are pending."
+}

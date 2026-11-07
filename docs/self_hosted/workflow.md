@@ -38,14 +38,20 @@ are not inferred from that result. A new assembly, successful small differential
 moved tool does not install another release. Package availability, supported
 imports/effects and image identities change only through qualified promotion.
 
-The maintained source now includes the independently checked and native-qualified
-[Phase175 frontend changes](../../implementation/phase175/README.md). Its explicit
-N2 image and receipt are `selfhost/build/phase175/full-native-n2/program` and
-`report.json` in the same directory. Select both with `--image` and
-`--image-receipt`, `--host native --stage N2 --target qbe`; do not use the installed
-`qbe-n2` alias to measure the new compiler. The exact canonical source SHA256 is
-`a0e953a84de73aa22403dde7ec2144540197633857a0f7b5b9784f9e66f5ad04`.
-The release selectors remain unchanged.
+The maintained source includes the [Phase177 frontend improvements](../../implementation/phase177/README.md)
+and [Phase178 cleanup](../../implementation/phase178/README.md). Source integration
+and image qualification are separate. Phase177 has an explicit N1 image at
+`selfhost/build/phase177/full-native-n1/program` with its separate
+`image-binding.json`; it has no new N2 reproduction chain. Phase178 checks the
+cleaned source and unchanged executable entry closures without installing or
+qualifying another native generation.
+
+The latest fully reproduced research N2 remains
+`selfhost/build/phase175/full-native-n2/program`, with `report.json` in the same
+directory. Select both using `--image` and `--image-receipt`,
+`--host native --stage N2 --target qbe`. The installed `qbe-n2` alias still selects
+Phase171. Use the explicit source identities and gate scopes in each phase report;
+do not assume a research image contains later source edits.
 
 Generated program targets remain available through explicit interfaces:
 
@@ -60,13 +66,15 @@ uses JS callable libraries; its native 45 catalog uses the corresponding C/QBE
 repetition wrappers. The same benchmark entry can execute all three targets, but
 the current two-case migration smoke covers upstream C and N2 QBE only.
 
-The maintained source has three entry profiles:
+The maintained source has five entry profiles:
 
 | Profile | Entry/API purpose | Qualification boundary |
 | --- | --- | --- |
 | `qbe` | Ordinary direct-QBE compiler entry | Exact extraction can inherit its frozen source identity; edits require fresh checking and relevant native gates. |
 | `native-c` | The same source with the native C request entry | Shared source does not by itself inherit the older installed C compiler's full qualification. |
 | `js-api` | The same source without a CLI main, for checked hosted APIs | Exports and the executing JS engine are separate authenticated image inputs. |
+| `qbe-policy` | QBE entry with explicit optimization-policy selection | Experimental policy behavior requires its own gates; it does not replace the ordinary installed entry. |
+| `qbe-policy-test` | Policy comparison/test entry | Test interface, not a separately qualified installed compiler. |
 
 These profiles do not promise every host × target combination. The
 [operational asset manifest](../../selfhost/manifests/assets-native.json)
@@ -91,6 +99,20 @@ or execute a compiler. Ordinary declaration-body edits are allowed while the
 manifest's protected verifier/proof declarations remain checked. Adding or
 removing declarations requires the explicit `source.py refresh` inventory step
 and review; it does not silently change declaration order.
+
+For independent source acceptance without emitting another JavaScript API, use
+[`check-source.mjs`](../../selfhost/tools/build/check-source.mjs) with the pinned
+Bun engine and the ordinary outer resource guard:
+
+```sh
+selfhost/.assets/bin/bun selfhost/tools/build/check-source.mjs \
+  --source selfhost/build/current-source01/compiler.bend \
+  --out selfhost/build/current-source01/check
+```
+
+This checks the assembled source and pinned Base with upstream `book_valid`,
+requiring zero unresolved holes. It is not BendTT verification, backend ownership
+validation, generated-program execution or native qualification.
 
 ```sh
 python3 -B selfhost/tools/build/source.py verify \

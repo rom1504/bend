@@ -56,48 +56,6 @@ def p140p_top_ready(p140p_stop, ts, book, imports, unsafe, scope):
     u => p140p_result(book, f_pn(f_choose(FParsed, f_eq(f_tx(ts), "@"), u => f_err(ts, "expected def, law, type or import"), u => fpe_error(ts, "expected def, law, type or import", "'def', 'type' or 'law'"))), imports)))))))
 
 
-law p140p_def_type:
-  for +p140p_stop: U32
-  for +name: String
-  for +pars: List<&2, KTerm>
-  for +p: FParsed
-  for +book: List<&2, KDef>
-  for +imports: List<&2, KTerm>
-  for +unsafe: Bool
-  for +scope: FParseScope
-  P140PStop
-
-@unsafe
-def p140p_def_type(p140p_stop, name, pars, p, book, imports, unsafe, scope):
-  match p:
-    case FParsed{ty, ts}:
-      +signature = f_context_signature(f_def_signature(name, pars, ty, book, scope), ts)
-      f_choose(P140PStop, f_context_stop(ty), u => p140p_result(book, ty, imports),
-        u => f_choose(P140PStop, f_context_stop(signature), u => p140p_result(book, signature, imports),
-        u => f_choose(P140PStop, f_eq(tg(ty), "Absent"), u => p140p_result(book, f_pn(fpe_error(ts, "definition without return type needs a law: " ++ name, "'->' (a def with no return type fills a law; no law named " ++ name ++ " is in scope)")), imports),
-        u => f_choose(P140PStop, f_eq(f_tx(f_skip(f_tl(ts))), "import"), u => p140p_foreign(p140p_stop, name, pars, signature, f_skip(f_tl(ts)), book, imports, unsafe, Nil{}, scope),
-          u => p140p_def_body(p140p_stop, name, pars, signature, f_context_definition(name, pars, signature, f_expect(FParsed{ty, ts}, ":"), scope), book, imports, unsafe, scope)))))
-
-
-law p140p_def_body:
-  for +p140p_stop: U32
-  for +name: String
-  for +pars: List<&2, KTerm>
-  for +ty: KTerm
-  for +p: FParsed
-  for +book: List<&2, KDef>
-  for +imports: List<&2, KTerm>
-  for +unsafe: Bool
-  for +scope: FParseScope
-  P140PStop
-
-@unsafe
-def p140p_def_body(p140p_stop, name, pars, ty, p, book, imports, unsafe, scope):
-  match p:
-    case FParsed{body, ts}:
-      f_choose(P140PStop, f_context_stop(body), u => p140p_result(book, body, imports), u => p140p_context_publish(p140p_stop, ts, KDef{name, "Def", terms_len(pars), f_choose(U32, f_eq(dk(f_decl_local(name, book, scope)), "Missing"), u => f_templates(pars), u => dx(f_decl_local(name, book, scope))), ty, body, Nil{}, False{}, unsafe}, book, imports, scope, True{}))
-
-
 law p140p_foreign:
   for +p140p_stop: U32
   for +name: String
@@ -313,34 +271,6 @@ def p140p_law_where(p140p_stop, name, binder, ty, p, book, imports, clauses, sco
         u => p140p_law(p140p_stop, name, f_skip(ts), book, imports, Con{k_with_children(binder, [f_app_span(k_with_span(ref("Exists"), kb(binder), ke(binder)), [ty, k_lam(nm(binder), ix(binder), 1, [predicate], kb(binder), ke(binder), False{})], kb(binder), ke(binder))]), clauses}, scope))
 
 
-law p140p_def_prior:
-  for +p140p_stop: U32
-  for +name: String
-  for +p: FParsed
-  for +book: List<&2, KDef>
-  for +imports: List<&2, KTerm>
-  for +unsafe: Bool
-  for +old: KDef
-  for +nameTokens: FInput
-  for +scope: FParseScope
-  P140PStop
-
-@unsafe
-def p140p_def_prior(p140p_stop, name, p, book, imports, unsafe, old, nameTokens, scope):
-  f_choose(P140PStop, f_eq(tg(f_pn(p)), "Error"), u => p140p_result(book, f_pn(p), imports),
-    u => f_choose(P140PStop, f_eq(dk(old), "Missing"),
-      u => f_choose(P140PStop, Bool.not(f_eq(f_alias(name, imports), name)) && f_eq(f_tx(f_pr(p)), "->"),
-        u => p140p_result(book, f_pn(fpe_word(nameTokens, "an import alias can only name a law fill without a return annotation", "a fresh name (" ++ f_import_alias_head(name) ++ " is an import's alias)")), imports),
-        u => p140p_def_base(p140p_stop, name, p, book, imports, unsafe, scope)),
-      u => f_choose(P140PStop, Bool.not(f_bare_params(ks(f_pn(p)))),
-        u => p140p_result(book, f_pn(fpe_error(f_pr(p), "a law fill requires plain parameter names", "a name")), imports),
-        u => f_choose(P140PStop, U32.is_lt(terms_len(ks(f_pn(p))), dx(old)),
-          u => p140p_result(book, f_pn(fpe_error(f_pr(p), "a law fill requires its template parameters", "a name for each ~ clause of the law (" ++ U32.show(dx(old)) ++ ")")), imports),
-          u => f_choose(P140PStop, f_eq(f_tx(f_pr(p)), ":"),
-            u => p140p_def_base(p140p_stop, name, p, book, imports, unsafe, scope),
-            u => p140p_result(book, f_pn(fpe_error(f_pr(p), "expected : (a definition filling a law has no return annotation)", "':'")), imports))))))
-
-
 law p140p_import_path:
   for +p140p_stop: U32
   for +ts: FInput
@@ -406,19 +336,6 @@ def p140p_import(+p140p_stop: U32,
 
 
 @unsafe
-def p140p_def_base(+p140p_stop: U32, 
-  +name: String,
-  +p: FParsed,
-  +book: List<&2, KDef>,
-  +imports: List<&2, KTerm>,
-  +unsafe: Bool, +scope: FParseScope
-) -> P140PStop:
-  match p:
-    case FParsed{+pars, +ts}:
-      f_choose(P140PStop, f_eq(tg(pars), "Error"), u => p140p_result(book, pars, imports), u => f_choose(P140PStop, f_eq(f_tx(ts), "->"), u => p140p_def_type(p140p_stop, name, ks(pars), f_expr(f_tl(ts), 0), book, imports, unsafe, scope), u => p140p_def_type(p140p_stop, name, ks(pars), FParsed{f_choose(KTerm, f_eq(dk(f_decl_local(name, book, scope)), "Missing") && (Bool.not(f_eq(f_alias(name, imports), name)) || f_def_fillable(f_decl_find(name, book, scope))), u => kt("ImportLaw", name, 0, 0, ks(pars)), u => dt(f_decl_local(name, book, scope))), ts}, book, imports, unsafe, scope)))
-
-
-@unsafe
 def p140p_law_base(+p140p_stop: U32, 
   +name: String,
   +ts: FInput,
@@ -466,17 +383,6 @@ def p140p_type_named(+p140p_stop: U32,
 
 
 @unsafe
-def p140p_def_header_prior(+p140p_stop: U32, +nameTokens: FInput, +rest: FInput, +book: List<&2,KDef>, +imports: List<&2,KTerm>, +unsafe: Bool, +old: KDef, +scope: FParseScope) -> P140PStop:
-  f_choose(P140PStop, f_eq(dk(old), "Missing") || f_def_fillable(old),
-    u => f_choose(P140PStop, f_eq(f_tx(rest), "("),
-      u => f_choose(P140PStop, f_def_fillable(old) && f_eq(f_tx(f_skip(f_tl(rest))), "~"),
-        u => p140p_result(book, f_pn(fpe_name_error(f_skip(f_tl(rest)))), imports),
-        u => p140p_def_prior(p140p_stop, f_tx(nameTokens), f_tele(f_context_enter(f_tl(rest), scope), ")", Nil{}), book, imports, unsafe, old, nameTokens, scope)),
-      u => p140p_result(book, f_pn(fpe_error(rest, "expected (", "'('")), imports)),
-    u => p140p_result(book, f_pn(fpe_word(nameTokens, "a definition must uniquely fill its law with plain parameter names", "a fresh name (duplicate declaration: " ++ f_tx(nameTokens) ++ ")")), imports))
-
-
-@unsafe
 def p140p_named_top(+p140p_stop: U32, +ts: FInput, +book: List<&2,KDef>, +imports: List<&2,KTerm>, +datatype: Bool, +scope: FParseScope) -> P140PStop:
   f_choose(P140PStop, f_valid_name(f_tx(ts)), u => f_choose(P140PStop, f_eq(f_alias(f_tx(ts), imports), f_tx(ts)), u => f_choose(P140PStop, f_decl_taken(f_tx(ts), book, scope), u => p140p_result(book, f_pn(fpe_word(ts, "duplicate declaration", "a fresh name (duplicate declaration: " ++ f_tx(ts) ++ ")")), imports),
       u => f_choose(P140PStop, datatype, u => p140p_type(p140p_stop, f_tx(ts), f_context_enter(f_tl(ts), scope), book, imports, scope), u => p140p_law_header(p140p_stop, f_tx(ts), f_expect(FParsed{{KTerm{"Absent", "", 0, 0, Nil{}, Nil{}, 0, 0} : KTerm}, f_context_enter(f_space(f_tl(ts)), scope)}, ":"), book, imports, scope))),
@@ -489,20 +395,6 @@ def p140p_law_header(+p140p_stop: U32, +name: String, +p: FParsed, +book: List<&
   match p:
     case FParsed{n, ts}: f_choose(P140PStop, f_eq(tg(n), "Error"), u => p140p_result(book, n, imports), u => p140p_law(p140p_stop, name, f_skip(ts), book, imports, Nil{}, scope))
 
-
-@unsafe
-def p140p_def_context_header(+p140p_stop: U32, +ts: FInput, +rest: FInput, +book: List<&2,KDef>, +imports: List<&2,KTerm>, +unsafe: Bool, +old: KDef, +scope: FParseScope) -> P140PStop:
-  match scope:
-    case FParseScope{prior, index, ctorIndex, ns, aliases, +p144p_view}:
-      +name = f_tx(ts)
-      +alias = f_alias(name, aliases)
-      f_choose(P140PStop, f_choose(Bool, f_eq(alias, name), u => False{}, u => f_declared(alias, prior) && f_declared(name, prior)),
-        u => p140p_result(book, fpe_point_at(kt_span("Ref", name, 0, 1, Nil{}, f_end(ts), f_end(ts)), "ambiguous imported declaration", "an unambiguous name (the alias " ++ f_import_alias_head(name) ++ " shadows " ++ name ++ ")"), imports),
-        u => f_choose(P140PStop, Bool.not(f_def_fillable(old)) && Bool.not(f_eq(alias, name)),
-          u => p140p_result(book, f_pn(fpe_word(ts, "an import alias cannot name a new declaration", "a fresh name (" ++ f_import_alias_head(name) ++ " is an import's alias)")), imports),
-          u => f_choose(P140PStop, f_choose(Bool, f_def_fillable(old), u => False{}, u => f_decl_taken(name, book, scope)),
-            u => p140p_result(book, f_pn(fpe_word(ts, "duplicate declaration", "a fresh name (duplicate declaration: " ++ name ++ ")")), imports),
-            u => p140p_def_header_prior(p140p_stop, ts, rest, book, imports, unsafe, old, scope))))
 
 @unsafe
 def p140p_import_alias(+p140p_stop: U32, 

@@ -1,0 +1,265 @@
+{
+  "kind": "phase178-five-profile-source-closure-audit",
+  "complete": true,
+  "baselineCommit": "296f288",
+  "targetRuns": false,
+  "manifestOrderEqualsBaselineMinusNineDeclarations": true,
+  "profilesProtectedDeclarationsPreambleAndPublicRootManifestsExact": true,
+  "profiles": [
+    {
+      "profile": "qbe",
+      "entryScopes": [
+        "canonical main"
+      ],
+      "roots": [
+        "main"
+      ],
+      "declarations": 5197,
+      "removedNamesReachable": [],
+      "closureInventoryExact": true,
+      "normalizedClosureExact": true,
+      "normalizedBytes": 1589265,
+      "normalizedSha256": "682213332dc0c0050af27d82f0ab51b3f18c195883f6b6cccd003ad134808c28",
+      "baselineSource": {
+        "bytes": 3174925,
+        "sha256": "1a359a4c94c8293fec12b8722793a5beafae1896dc2a8307bf5359a7f367532f"
+      },
+      "candidateSource": {
+        "bytes": 3168068,
+        "sha256": "7180a874634e00463d8a98fbad52c47eee4e5bf578d457282e18404a71f88f51"
+      }
+    },
+    {
+      "profile": "native-c",
+      "entryScopes": [
+        "src/host/native-c-main.bend"
+      ],
+      "roots": [
+        "main"
+      ],
+      "declarations": 3263,
+      "removedNamesReachable": [],
+      "closureInventoryExact": true,
+      "normalizedClosureExact": true,
+      "normalizedBytes": 895225,
+      "normalizedSha256": "6263a2d3946f5a0508f9a8a5f2bef8d753c1bb8261084506160e6aa291da8502",
+      "baselineSource": {
+        "bytes": 3175009,
+        "sha256": "0c29142c70e001e0348b2a095822cf12fefc8602e55c2ef3eec7a47ab13315c8"
+      },
+      "candidateSource": {
+        "bytes": 3168152,
+        "sha256": "af4e4ab5355a8ac568043ea4b372dcdf927be6d38df006bd077b319665c8c027"
+      }
+    },
+    {
+      "profile": "js-api",
+      "entryScopes": [
+        "selfhost/tools/build/hosted-exports.json",
+        "selfhost/tools/build/js-c-exports.json"
+      ],
+      "roots": [
+        "annotate_book",
+        "annotate_except",
+        "annotate_selected",
+        "annotate_selected_base",
+        "base_annotation_allowed",
+        "base_annotation_prepare",
+        "base_annotation_wanted",
+        "base_prefix_prepare",
+        "base_prefix_world_prepare",
+        "book_cached",
+        "book_context",
+        "book_context_world",
+        "check_book",
+        "check_book_diagnostic",
+        "check_book_diagnostic_from_exact_prefix",
+        "check_from_exact_prefix",
+        "check_program_diagnostic",
+        "check_program_diagnostic_prefix",
+        "check_program_diagnostic_seed",
+        "check_program_diagnostic_world",
+        "compiler_check_result_abi",
+        "compiler_load_abi",
+        "compiler_span_abi",
+        "compiler_term_abi",
+        "diagnostic_render",
+        "diagnostic_render_loaded",
+        "diagnostic_result_locate",
+        "driver_bad_names",
+        "driver_emit_owned",
+        "driver_has_main",
+        "driver_interpret",
+        "driver_is_io",
+        "driver_report",
+        "driver_report_data",
+        "driver_todos",
+        "exact_prefix",
+        "f_complete_seed",
+        "f_complete_source",
+        "f_fresh_prefix_prepare",
+        "f_graph_trace",
+        "f_graph_trace_from_prefix",
+        "f_import_failure",
+        "f_import_namespace_at",
+        "f_load_graph",
+        "f_load_graph_seed",
+        "f_load_graph_seed_trace",
+        "f_load_graph_trace",
+        "f_load_origins_for",
+        "f_loaded_origins_for",
+        "f_path_dir",
+        "f_path_join",
+        "f_prefix_complete_ready_seed",
+        "f_prefix_complete_seed",
+        "f_prefix_complete_source",
+        "f_prefix_graph_empty",
+        "f_prefix_graph_trace",
+        "f_ready_prefix_prepare",
+        "f_source_completed",
+        "f_source_header",
+        "f_source_located",
+        "j_compile_error",
+        "j_descriptor",
+        "j_expr",
+        "j_foreign_error",
+        "j_foreign_paths",
+        "j_io_type",
+        "j_layout_error",
+        "j_library",
+        "j_library_selected",
+        "j_modules",
+        "j_program",
+        "j_program_selected",
+        "j_roots",
+        "j_stops",
+        "jd_foreign_error",
+        "jd_foreign_paths",
+        "jd_library_selected",
+        "jd_modules",
+        "jd_plan_defs",
+        "jd_plan_error",
+        "jd_plan_library",
+        "jd_plan_selected",
+        "jd_program_selected",
+        "jd_reach_defs",
+        "jd_reach_error",
+        "jd_reach_selected",
+        "jd_roots",
+        "jd_stops",
+        "jl_checked_error",
+        "kf_source",
+        "nc_annotated_context",
+        "nc_annotation_stops",
+        "nc_compile",
+        "nc_compile_checked",
+        "nc_foreign_paths",
+        "nc_foreign_scope",
+        "nc_foreign_source",
+        "ne_runtime_prepare",
+        "nr_compile",
+        "nr_compile_prepared",
+        "nr_prepare",
+        "nr_prepare_annotated",
+        "ns_body",
+        "p134e_begin",
+        "p134e_next",
+        "p134e_plan",
+        "p86_plan",
+        "p86_prepare",
+        "p88_cache_prepare",
+        "reach_book",
+        "specialize_book",
+        "specialized_book",
+        "specialized_diagnostic",
+        "specialized_error"
+      ],
+      "declarations": 6810,
+      "removedNamesReachable": [],
+      "closureInventoryExact": true,
+      "normalizedClosureExact": true,
+      "normalizedBytes": 2175256,
+      "normalizedSha256": "2900e498d5f01fc281320757b7259be9e587adc9a7ce140351f87edf632aed22",
+      "baselineSource": {
+        "bytes": 3174812,
+        "sha256": "262a27ab5450b5e62389c6d43b27ea4344b4ba2c44ed555799184d83d6eb91ef"
+      },
+      "candidateSource": {
+        "bytes": 3167955,
+        "sha256": "726f9bb4848edf615781663fabddae8f689f1168e7056bd00331ca979fa63f33"
+      }
+    },
+    {
+      "profile": "qbe-policy",
+      "entryScopes": [
+        "src/host/qbe-policy-main.bend"
+      ],
+      "roots": [
+        "main"
+      ],
+      "declarations": 5252,
+      "removedNamesReachable": [],
+      "closureInventoryExact": true,
+      "normalizedClosureExact": true,
+      "normalizedBytes": 1607181,
+      "normalizedSha256": "27df23d2aa857ecd5cb83b9616b1048130dc9218d18127fadd1651df8a1eaf79",
+      "baselineSource": {
+        "bytes": 3174924,
+        "sha256": "acdccfaaba00b2ca69db3f8abd2da2574f7e8f65904ff157fde95fd9e2f606b8"
+      },
+      "candidateSource": {
+        "bytes": 3168067,
+        "sha256": "60c7e275fdc7d5fa0d4803bebc59c08776d257da3457d22fedceafcaef25513b"
+      }
+    },
+    {
+      "profile": "qbe-policy-test",
+      "entryScopes": [
+        "tests/phase149/main.bend"
+      ],
+      "roots": [
+        "main"
+      ],
+      "declarations": 5289,
+      "removedNamesReachable": [],
+      "closureInventoryExact": true,
+      "normalizedClosureExact": true,
+      "normalizedBytes": 1620062,
+      "normalizedSha256": "8a3ec4bc1cc82bc0d1bf8c12eb2a92ae892b7fd2c4844c3032f502e725461cfa",
+      "baselineSource": {
+        "bytes": 3174918,
+        "sha256": "36443e46d5315a28bb3425ebf7d9ee7b8553f9f321e3ff1fa75f8fdbc7b87bb3"
+      },
+      "candidateSource": {
+        "bytes": 3168061,
+        "sha256": "ef535d1bb4f72fb98e53c9e8c9a44031002ad23036d9f758dc549fd8f68307ad"
+      }
+    }
+  ],
+  "method": "Maintained source assembly plus the existing Phase147 conservative identifier closure, including declaration laws and constructor-owner references. Normalize blank/comment lines and trailing whitespace only; preserve literal bytes and declaration order.",
+  "scope": "All four main entry closures and the js-api union of both maintained public export manifests are unchanged executable source. Every surviving assembled declaration also normalizes identically.",
+  "caveats": [
+    "Lexical source closure is not a target-specific lowerer, generated-byte comparison or compiler proof.",
+    "The js-api profile omits main; its runtime roots come from the two unchanged explicit export manifests. Arbitrary experimental exports of removed internals are deliberately outside that contract.",
+    "Full source checking still reads a smaller book. Global declaration numbering, source spans, emitted names, dead-code emission or host-specific serialization can change target bytes despite identical reachable source; qualification belongs to root.",
+    "Comment cleanup in core/term.bend also changes text. Normalized executable declarations match; whole source is not byte-identical."
+  ],
+  "inputs": [
+    {
+      "file": "selfhost/tests/phase178/parser/audit-profiles.py",
+      "sha256": "1cc048a385e84a0b67c53e5424445f8b18fe639d2b0f8b963962d49789c82a55"
+    },
+    {
+      "file": "selfhost/tools/build/source.py",
+      "sha256": "bb657cc05776c22f29244ae68606eb757c676b522a7052b2b32999fbc00599c7"
+    },
+    {
+      "file": "experiments/phase147/tools/prepare.py",
+      "sha256": "f218c0b934c105592b33b48938c7de5e0353660bb0efd0033963817f1d3c6cc6"
+    },
+    {
+      "file": "selfhost/src/compiler.json",
+      "sha256": "f5cf659c1aaa4d0fbcd3a57ddfeb925136fcfdc0df19b9a34020f4d6356a0f23"
+    }
+  ]
+}

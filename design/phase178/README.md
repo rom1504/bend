@@ -7,10 +7,12 @@ The objective is a coherent frontend with fewer duplicated implementations and
 fewer producer/consumer traversals, while preserving language behavior, native
 stack safety and generated-code quality. This is not an installed-release change.
 
-1. Consolidate the copied definition-parser continuations. Keep one semantic
-   implementation with carried resolution facts; preserve direct compatibility
-   entry points, their resolution timing, and arbitrary book/scope behavior.
-   Require net source simplification and measure the normal fast path.
+1. Consolidate the copied definition-parser continuations. Preserve actual public
+   entry points, resolution timing and arbitrary book/scope behavior at those
+   boundaries. Audit reachability before preserving internal compatibility: the
+   old six-helper chain has no production caller or promised export. Delete it
+   instead of adding wrappers and optional state solely to keep it callable.
+   Require net source simplification and unchanged selected parser code.
 2. Establish a small typed product between a producer and its consumers, with
    actual removal of an old traversal. Initial inspection of annotation/layout
    shows that complete fusion changes roughly twenty dependent helper contracts
@@ -31,8 +33,10 @@ new host code may only assemble exact sources, compare outputs and record eviden
 - Freeze the actual baseline before edits. Record declaration additions/removals
   and canonical source/line changes; do not claim a speedup from smaller input.
 - Independently source-check small APIs and compare complete boundary values.
-  Parser controls must cover old direct helper entry points as well as565 current
-  header controls. Reference collection must preserve duplicates/order and omit
+  Use the565 current parser/header controls and audit all five maintained entry
+  closures. Superseded internal helpers need not remain arbitrary test exports;
+  the initial compatibility prototype is preserved as rejected evidence.
+  Reference collection must preserve duplicates/order and omit
   dead runtime branches exactly; test full products, not hashes alone.
 - Compare complete real frontend requests on the existing small/medium compiler
   inputs. Retain failed alternatives. Reject structural changes that merely add
@@ -45,3 +49,12 @@ new host code may only assemble exact sources, compare outputs and record eviden
 
 Follow the existing disk/RSS/time guard and retention policy. Keep all qualified
 images available; do not install a new compiler or post a PR comment in this phase.
+
+## Measured decision
+
+The erased-body/reference product passes1,474 complete-value observations but is
+neutral on the complete medium frontend (12.234→12.2215s, two reversed pairs).
+It adds result objects and helper contracts without demonstrated latency or
+simplicity benefit. Preserve it as an experiment; do not integrate it or broaden
+it to annotation/layout. The production change remains deletion of unreachable
+parser code, inventory reconciliation and directly related workflow cleanup.

@@ -1,0 +1,114 @@
+{
+  "kind": "phase178-cleanup-and-rejected-product",
+  "complete": true,
+  "parentCommit": "296f288",
+  "sources": {
+    "baseline": {
+      "path": "selfhost/build/phase178/baseline-source01/compiler.bend",
+      "bytes": 3174925,
+      "sha256": "1a359a4c94c8293fec12b8722793a5beafae1896dc2a8307bf5359a7f367532f",
+      "physicalLines": 68499,
+      "orderedDeclarations": 8488
+    },
+    "selected": {
+      "path": "selfhost/build/phase178/cleanup-source03/compiler.bend",
+      "bytes": 3167327,
+      "sha256": "8fd5043cd47361474ab9da6713687a2fd0825d8a7f0885192e5f70f67d7994db",
+      "physicalLines": 68369,
+      "orderedDeclarations": 8476
+    }
+  },
+  "selected": {
+    "removedParserDefinitions": 8,
+    "removedForwardLaws": 4,
+    "sourceLinesRemoved": 130,
+    "protectedDeclarations": 112,
+    "entryProfiles": [
+      "qbe",
+      "native-c",
+      "js-api",
+      "qbe-policy",
+      "qbe-policy-test"
+    ],
+    "installedChanged": false,
+    "newNativeQualification": false,
+    "scope": "Dead internal code and comments only; no new measured compiler or generated-program speed score."
+  },
+  "gates": {
+    "sourceCheck": {
+      "path": "selfhost/build/phase178/cleanup-check03/result/report.json",
+      "bytes": 3591,
+      "sha256": "5c631f52a9a73427b8c80a626ad22e898dcb78b8f6c38acca8e2e0acacff0017"
+    },
+    "parserValues": {
+      "path": "selfhost/build/phase178/parser-deletion-values01/report.json",
+      "bytes": 66313,
+      "sha256": "4891c9e8065bb53e977a56db0ec4c59030c2ba4740552935bcfbfedea7994ac0"
+    },
+    "profileClosures": {
+      "path": "selfhost/tests/phase178/parser/profile-closure-final.json",
+      "bytes": 9235,
+      "sha256": "3848e18f085716b946f5af44fbc4572764016cd4a7439f0fb31816fb514077af"
+    },
+    "parserValuesScope": "565 complete observations on the nine-deletion snapshot. The final three further deletions are orphaned helpers; final all-profile closure equality and final full source acceptance cover their removal."
+  },
+  "rejectedProduct": {
+    "reason": "Neutral complete frontend and added product/continuation complexity",
+    "observations": {
+      "path": "selfhost/build/phase178/erasure-values01/report.json",
+      "bytes": 131758,
+      "sha256": "5118119765d8eac7c5de3811242bc054cb372555b2612648451ff590a1266be9"
+    },
+    "nativeComparison": {
+      "path": "selfhost/build/phase178/front-product-medium01/result/report.json",
+      "bytes": 10691,
+      "sha256": "0ba123db772dcfee909063e543c8eae1773360e3d7990077b3e90a5cd70d597f"
+    },
+    "measurements": {
+      "seconds": {
+        "samples": {
+          "baseline": [
+            14.824256759136915,
+            14.80828246101737
+          ],
+          "candidate": [
+            14.895314425695688,
+            14.681486607063562
+          ]
+        },
+        "baselineMedian": 14.816269610077143,
+        "candidateMedian": 14.788400516379625,
+        "candidateOverBaseline": 0.9981190208850841,
+        "reductionPercent": 0.1880979114915915
+      },
+      "frontendSeconds": {
+        "samples": {
+          "baseline": [
+            12.234,
+            12.234
+          ],
+          "candidate": [
+            12.312,
+            12.131
+          ]
+        },
+        "baselineMedian": 12.234,
+        "candidateMedian": 12.221499999999999,
+        "candidateOverBaseline": 0.9989782573156776,
+        "reductionPercent": 0.10217426843224242
+      }
+    },
+    "smallNativeImageBytes": {
+      "baseline": 5904864,
+      "candidate": 5933976
+    },
+    "scope": "Two reversed native pairs on one frozen medium compiler input; no full-build or independent generated-user-program runtime comparison."
+  },
+  "cost": {
+    "outerJobs": 11,
+    "targetWallSeconds": 144.69282670505345,
+    "nonzeroJobs": 3,
+    "nonzeroWallSeconds": 1.1559988232329488,
+    "scope": "Outer guarded elapsed time only; excludes agent, metadata and reporting effort."
+  }
+}

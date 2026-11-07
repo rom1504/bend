@@ -1,5 +1,5 @@
 
-# Generated source assembly. Edit the individual src modules.
+# Core syntax, declarations, and structural term operations.
 
 # Module: src/core/term.bend:25
 type KTerm is Data:
@@ -776,7 +776,6 @@ law p177s_node_entry:
   KTerm
 # One recursive owner includes ordinary substitution AND eager App beta work.
 # A beta frame restores the enclosing substitution before its next sibling.
-# This is an experimental named override, not maintained compiler source.
 type P177SFrame is Data:
   P177SNode{shell: KTerm, rest: List<&2,KTerm>, done: List<&2,KTerm>}
   P177SBeta{oldId: U32, oldValue: KTerm}

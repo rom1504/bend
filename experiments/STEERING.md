@@ -1,4 +1,30 @@
-# Current frontier — Phase177 frontend integrated; qualified reference retained
+# Current frontier — Phase178 cleanup; product refactor rejected
+
+[Report](../implementation/phase178/README.md) · [Metrics](../implementation/phase178/metrics.json).
+
+Maintained source removes eight unreachable parser/resolution definitions and
+four forward signatures: 130 fewer physical lines, 68,369 remaining,
+3,167,327B, SHA256
+`8fd5043cd47361474ab9da6713687a2fd0825d8a7f0885192e5f70f67d7994db`.
+All five executable entry closures and every surviving declaration normalize
+identically to Phase177. All 112 protections and survivor order are unchanged.
+Independent final source acceptance passes; 565 parser observations pass on the
+initial deletion snapshot, with final orphan removals covered by source/closure
+audits. This is cleanup, not a new cold-build/runtime score or image promotion.
+
+An erased-body/ordered-reference product removes three consumer scans but adds
+result/continuation contracts. 1,474 complete-value observations pass. Native
+medium frontend is neutral: 12.234→12.2215s, B/C/C/B, variation larger than gain;
+small extracted ELF grows 29,112B. Do not integrate or broaden this product.
+Annotation/layout fusion was not implemented; it requires substantially broader
+consumer retirement. A per-node summary is not automatically cheaper than a walk.
+
+Installed Phase171, fully reproduced research Phase175 N2 and Phase177 N1 remain
+unchanged. Shared source-only checking is now `tools/build/check-source.mjs`;
+it does not emit JS or prove unsafe assumptions. Finite laws, upstream source
+checking, backend validation and BendTT proof remain distinct.
+
+# Previous frontier — Phase177 frontend integrated; qualified reference retained
 
 [Report](../implementation/phase177/README.md) · [Metrics](../implementation/phase177/metrics.json) ·
 [Reproduce](../implementation/phase177/reproduce.md).

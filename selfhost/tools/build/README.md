@@ -17,6 +17,7 @@ selection. A successful build does not change the installed compiler.
 | Tool | Responsibility | Output |
 | --- | --- | --- |
 | `source.py` | Assemble one editable source recipe; frozen verification is separate | Bend source and optional declaration map |
+| `check-source.mjs` | Independently load/check the assembled source with pinned upstream and require zero unresolved holes; no API emission | Source acceptance, assumption counts and authenticated inputs |
 | `assets.py` | Verify named pins or acquire exact files from explicit local inputs | Acquisition receipt; at most the declared asset bytes |
 | `request.py` | One JS-hosted or native compiler request with explicit target/stage | Raw JS/C/QBE product, command, timing and input/output pins |
 | `hosted.mjs` | IO adapter for the checked Bend API; upstream checked B1 acquisition | Raw product and worker report, or checked API with image binding |
@@ -106,6 +107,21 @@ python3 -B selfhost/tools/build/request.py \
 without executing a compiler or creating its output directory. Unsupported
 host/target/entry combinations fail. The pinned native QBE image cannot emit C
 or JS simply by changing `--target`; an actual appropriate derived image is needed.
+
+For source checking without JavaScript emission, run the pinned Bun engine under
+the same outer resource guard:
+
+```sh
+selfhost/.assets/bin/bun selfhost/tools/build/check-source.mjs \
+  --source selfhost/build/example/compiler.bend \
+  --out selfhost/build/example/source-check
+```
+
+This uses the unmodified upstream `book_load`, `book_valid` and zero-hole gates
+from checked API acquisition. The current adapter permits the assembled source
+plus its pinned Base import only. It neither emits nor executes the candidate,
+checks backend ownership, proves its unsafe assumptions, nor invokes BendTT.
+Generated-code, semantic and native qualification gates remain separate.
 
 ## Emit or build a program
 

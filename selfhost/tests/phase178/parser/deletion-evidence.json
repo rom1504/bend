@@ -1,0 +1,102 @@
+{
+  "kind": "phase178-parser-dead-continuation-source-audit",
+  "complete": true,
+  "baseline": {
+    "path": "selfhost/tests/phase178/parser/compact-parser-before.bend",
+    "bytes": 45905,
+    "sha256": "7569911944a655f2cbceae930b42f895f3f839f928626cba11bdba6c6ba4e8b5"
+  },
+  "maintained": {
+    "path": "selfhost/src/front/compact-parser.bend",
+    "bytes": 39123,
+    "sha256": "230edf8dd343eb92c3cf3e93eb8dfcf8936a71766309d0a738c3b3f75c8d9123"
+  },
+  "removed": [
+    {
+      "kind": "def",
+      "name": "p140p_def_base"
+    },
+    {
+      "kind": "def",
+      "name": "p140p_def_body"
+    },
+    {
+      "kind": "def",
+      "name": "p140p_def_context_header"
+    },
+    {
+      "kind": "def",
+      "name": "p140p_def_header_prior"
+    },
+    {
+      "kind": "def",
+      "name": "p140p_def_prior"
+    },
+    {
+      "kind": "def",
+      "name": "p140p_def_type"
+    },
+    {
+      "kind": "law",
+      "name": "p140p_def_body"
+    },
+    {
+      "kind": "law",
+      "name": "p140p_def_prior"
+    },
+    {
+      "kind": "law",
+      "name": "p140p_def_type"
+    }
+  ],
+  "retainedDeclarationsExact": 88,
+  "fastChainTextExact": true,
+  "originalInternalEdges": [
+    {
+      "file": "selfhost/src/front/compact-parser.bend",
+      "line": 79,
+      "caller": "p140p_def_type",
+      "callee": "p140p_def_body"
+    },
+    {
+      "file": "selfhost/src/front/compact-parser.bend",
+      "line": 334,
+      "caller": "p140p_def_prior",
+      "callee": "p140p_def_base"
+    },
+    {
+      "file": "selfhost/src/front/compact-parser.bend",
+      "line": 340,
+      "caller": "p140p_def_prior",
+      "callee": "p140p_def_base"
+    },
+    {
+      "file": "selfhost/src/front/compact-parser.bend",
+      "line": 418,
+      "caller": "p140p_def_base",
+      "callee": "p140p_def_type"
+    },
+    {
+      "file": "selfhost/src/front/compact-parser.bend",
+      "line": 474,
+      "caller": "p140p_def_header_prior",
+      "callee": "p140p_def_prior"
+    },
+    {
+      "file": "selfhost/src/front/compact-parser.bend",
+      "line": 505,
+      "caller": "p140p_def_context_header",
+      "callee": "p140p_def_header_prior"
+    }
+  ],
+  "incomingProductionEdges": [],
+  "publicProfilesAndProtectedDeclarationsUnaffected": true,
+  "publicContractRootsChecked": [
+    "docs/self_hosted",
+    "selfhost/tools/build",
+    "selfhost/tools/conformance",
+    "selfhost/manifests"
+  ],
+  "publicContractFilesChecked": 141,
+  "scope": "Lexical dependency and exact-source audit; no compiler, runtime, proof or performance claim."
+}

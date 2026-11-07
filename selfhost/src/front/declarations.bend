@@ -54,15 +54,6 @@ law f_tele_type:
   for +acc: List<&2, KTerm>
   FParsed
 
-# Module: src/front/declarations.bend:53
-law f_def_signature:
-  for +name: String
-  for +pars: List<&2, KTerm>
-  for +ty: KTerm
-  for +book: List<&2, KDef>
-  for +scope: FParseScope
-  KTerm
-
 # Module: src/front/declarations.bend:71
 law f_body:
   for +ts: FInput
@@ -255,11 +246,6 @@ def f_templates(
     case Con{p, ps}:
       U32.add(f_choose(U32, f_eq(tg(p), "Template"), u => 1, u => 0), f_templates(ps))
 
-# Module: src/front/declarations.bend:375
-@unsafe
-def f_def_signature(name, pars, ty, book, scope):
-  f_choose(KTerm, f_eq(dk(f_decl_local(name, book, scope)), "Missing") && Bool.not(f_eq(tg(ty), "ImportLaw")), u => f_tbind(pars, ty), u => ty)
-
 # Module: src/front/declarations.bend:402
 @unsafe
 def f_law_bind(
@@ -413,13 +399,6 @@ def f_decl_prior(+name: String, +scope: FParseScope) -> KDef:
       +found = f_choose(KDef, Bool.not(f_eq(dk(near), "Absent")) || f_eq(dk(far), "Absent"), u => near,
         u => f_choose(KDef, f_eq(dk(f_ctor_index_find(own, ctorIndex)), "Missing"), u => far, u => missing()))
       f_choose(KDef, f_eq(dk(found), "Absent"), u => f_find(name, Nil{}), u => found)
-
-# Module: src/front/declarations.bend:693
-
-@unsafe
-def f_decl_find(+name: String, +book: List<&2,KDef>, +scope: FParseScope) -> KDef:
-  +local = f_decl_local(name, book, scope)
-  f_choose(KDef, f_eq(dk(local), "Missing"), u => f_decl_local_ctor(name, book, scope, f_decl_prior(name, scope)), u => local)
 
 # Module: src/front/declarations.bend:698
 @unsafe

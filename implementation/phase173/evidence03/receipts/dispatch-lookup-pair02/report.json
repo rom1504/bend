@@ -1,0 +1,259 @@
+{
+  "kind": "phase173-native-product-pair",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase173/native-pair.py",
+      "bytes": 3973,
+      "sha256": "219a9a447f8b85262adfa2b58eea7f1d635233c2fbe6a0083fd8e7d9651d6f9b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-lookup-baseline01/report.json",
+      "bytes": 16387,
+      "sha256": "6650802a82719b7817a1b710374dcb97122c59b31d036379a4912a3b28892e0a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-lookup-machine02/report.json",
+      "bytes": 8785,
+      "sha256": "2ca85467390725204f2b0526cbe56918e15fa09d6d3287af043b4ddcd7ffb806"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-lookup-baseline01/program",
+      "bytes": 156008,
+      "sha256": "5807e415dad9adc7e8b8f5c2ddc80acd274f2fc7bfbd0ab561d39cb126f4c75f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-lookup-baseline01/program.ssa",
+      "bytes": 273945,
+      "sha256": "aeb44ff0e189ff0a49ef6d7190422ace8425970e5a5be55981935c0e3ca5da2a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-lookup-machine02/program",
+      "bytes": 156000,
+      "sha256": "1827ca7a74f51d4241cdc87c083961bb995371807047580c4508ca3176804124"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-lookup-emission02/program.ssa",
+      "bytes": 276755,
+      "sha256": "9557b0b4678fdd49bb1abd701f211bb31a92067a5c82c8dded532625352d1bf1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-profile-plan01/expected.stdout",
+      "bytes": 11,
+      "sha256": "13b0825189cbddcc62a8345313f1066247a3e9aa466b13011a68c457360e8182"
+    }
+  ],
+  "runs": [
+    {
+      "role": "baseline",
+      "cycle": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-lookup-baseline01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.6044954508543015,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-lookup-pair02/0-baseline.stdout",
+        "bytes": 11,
+        "sha256": "13b0825189cbddcc62a8345313f1066247a3e9aa466b13011a68c457360e8182"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-lookup-pair02/0-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-lookup-machine02/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.5580037101171911,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-lookup-pair02/0-candidate.stdout",
+        "bytes": 11,
+        "sha256": "13b0825189cbddcc62a8345313f1066247a3e9aa466b13011a68c457360e8182"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-lookup-pair02/0-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-lookup-machine02/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.5574836181476712,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-lookup-pair02/1-candidate.stdout",
+        "bytes": 11,
+        "sha256": "13b0825189cbddcc62a8345313f1066247a3e9aa466b13011a68c457360e8182"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-lookup-pair02/1-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "baseline",
+      "cycle": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-lookup-baseline01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.5598032171837986,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-lookup-pair02/1-baseline.stdout",
+        "bytes": 11,
+        "sha256": "13b0825189cbddcc62a8345313f1066247a3e9aa466b13011a68c457360e8182"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-lookup-pair02/1-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "baseline",
+      "cycle": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-lookup-baseline01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.5594900278374553,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-lookup-pair02/2-baseline.stdout",
+        "bytes": 11,
+        "sha256": "13b0825189cbddcc62a8345313f1066247a3e9aa466b13011a68c457360e8182"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-lookup-pair02/2-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-lookup-machine02/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.5587542951107025,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-lookup-pair02/2-candidate.stdout",
+        "bytes": 11,
+        "sha256": "13b0825189cbddcc62a8345313f1066247a3e9aa466b13011a68c457360e8182"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-lookup-pair02/2-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 3,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-lookup-machine02/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.5597236142493784,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-lookup-pair02/3-candidate.stdout",
+        "bytes": 11,
+        "sha256": "13b0825189cbddcc62a8345313f1066247a3e9aa466b13011a68c457360e8182"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-lookup-pair02/3-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "baseline",
+      "cycle": 3,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-lookup-baseline01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.557390483096242,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-lookup-pair02/3-baseline.stdout",
+        "bytes": 11,
+        "sha256": "13b0825189cbddcc62a8345313f1066247a3e9aa466b13011a68c457360e8182"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-lookup-pair02/3-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    }
+  ],
+  "rounds": 4,
+  "oracle": "fixed expected bytes",
+  "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+  "medians": {
+    "baseline": 0.5596466225106269,
+    "candidate": 0.5583790026139468
+  },
+  "resolved": true,
+  "ratio": 0.9977349637330187
+}

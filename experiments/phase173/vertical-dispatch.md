@@ -190,3 +190,68 @@ uses `%p113_again_*`. The currently selected legacy paths enter the patched
 There is no evidence requiring a typed-emitter expansion before testing revision
 2. Actual final QBE should demonstrate compaction's 36 arm labels and redirected
 50 constant transitions before paying for another native machine build.
+
+## Revision 2: complete intended coverage and native result
+
+The root's second replay confirms the predicted boundary. The
+[complete product comparison](vertical-dispatch-replay02.json) again retains all
+1,997 blocks and every data block. Exactly **11 SCC workers** change, with no
+added or removed functions. Compaction now has 36 arm labels and 50 redirected
+constant transitions; Word has 11 arm labels and 11 redirected transitions.
+Both retain only the initial jump to the dispatcher. This demonstrates that the
+non-final conditional admission restriction was the remaining blocker for these
+two workers. A typed-emitter expansion was unnecessary.
+
+| Worker | Instructions before → after | Exchanges before → after | Stack-reference instructions | Frame bytes |
+| --- | ---: | ---: | ---: | ---: |
+| Compaction | 2,504 → 2,017 | 203 → 141 | 763 → 516 | 1,160 → 1,400 |
+| Word decoder | 776 → 773 | 32 → 23 | 183 → 174 | 472 → 520 |
+
+Compaction loses 19.4% of its static instructions, 30.5% of exchanges and 32.4%
+of stack-reference instructions. Its 158 call sites are unchanged. Its frame
+grows, so fewer stack accesses must not be described as less stack space. The
+[exact revision-2 assembly](vertical-dispatch-replay02-bodies.s) is retained.
+The other nine transformed workers have the same code as revision 1.
+
+Four balanced process pairs produce the exact independent full output and
+measure **95.012 → 87.429 ms**, or **0.920195× / 7.98% lower elapsed time**.
+The baseline is the same ABI-fixed indexed implementation. This is the complete
+intended dispatch result; the earlier 3.45% result represented partial coverage.
+The two percentages are separate baseline-controlled campaigns, not additive
+gains. The original KTerm consumer remains a distinct baseline, and no new
+whole-compiler speed claim follows from this result.
+
+QBE grows from 12,717,939 to 12,721,699 bytes; assembly shrinks from 6,061,415 to
+6,051,615 bytes. The mechanism is bypassing a known-state dispatcher and exposing
+known control-flow edges to QBE. The observed instruction/exchange reductions
+are consistent with easier register allocation; they do not isolate its dynamic
+contribution. Neither IR text compression nor call elimination explains the gain.
+
+## Transfer to existing compiler computations
+
+A [read-only census](vertical-dispatch-transfer.json) of the retained qualified
+Phase170 N1 product finds **16 existing two-state SCC workers and 33 constant
+backedge sites**. These include:
+
+- `f_find` / `f_find_next`.
+- `p111q_decimal_go` / `p111q_decimal_step`.
+- `p113i_bucket` / `p113i_bucket_head` and
+  `p113j_buffer_origin` / `p113j_buffer_peel`.
+- `String.contains`, trimming, prefix tests, `U32.read`, `U32.show`, `Nat.show`
+  and borrowed name membership.
+
+All use the legacy snapshot path. The
+[exact canonical lookup-worker assembly](vertical-dispatch-canonical-find.s)
+retains a tag comparison and branch at `.Lbb16593`, including a constant-tag
+backedge to it. These are plausible transfer sites in actual compiler code,
+not newly synthesized workloads. However, each has only one dispatcher
+comparison, so the 36-state compaction gain cannot be extrapolated to them.
+Dynamic weights and complete compiler gains remain unmeasured.
+
+The existing verifier probe contains only the two-state `U32.show` SCC, making
+it a weak test of this transformation's potential effect on compiler lookup.
+A more informative bounded transfer source already exists:
+`phase166/lookup-source02/compiler.bend` (15,408 bytes), with an exact-value
+variant at `phase171/descendant-full-values01/actual.bend` (15,417 bytes).
+These can test the retained lookup path before another full native image build.
+No new compiler dump or target execution was performed for this census.

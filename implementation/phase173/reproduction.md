@@ -6,10 +6,12 @@ N1/N2 qualification is established here. The installed reference remains
 Phase170. Experiments continuing after this capsule was collected need their
 own receipts and must not be silently attributed to these source versions.
 
-The [first inventory](evidence/inventory.json) and
-[second inventory](evidence02/inventory.json) record collection times, file
-hashes and exclusions. [Checkpoint metadata](checkpoint02.json) distinguishes
-the completed second checkpoint from work still in flight. Packaging copied
+The [first inventory](evidence/inventory.json),
+[second inventory](evidence02/inventory.json), and
+[third inventory](evidence03/inventory.json) record collection times, file
+hashes and exclusions. [Second checkpoint metadata](checkpoint02.json) and
+[third checkpoint metadata](checkpoint03.json) distinguish completed evidence
+from work still in flight. Packaging copied
 existing evidence and inspected source; it did not run any target. Original
 measured artifacts were not edited.
 
@@ -361,3 +363,115 @@ Historical receipts retain historical method hashes even if a tool subsequently
 changed. The inventory covers capsule files other than the inventory itself;
 its hash is recorded in the external checkpoint metadata. No target was run
 while collecting or checking either capsule.
+
+## Third checkpoint: transfer, negative results and consuming traversal
+
+[evidence03](evidence03/) adds only completed runs: dispatch revision2, its
+lookup transfer, complete AST reconstruction plus its separate digest workload,
+the neutral record-reuse result on pattern substitution, and the consuming
+source variant. It includes 63 completed receipts, one failed acquisition and
+two command failures that ended before producing a target receipt. Wide-update
+source/finite controls are retained, but the in-flight wide-store build and
+pending nested-return and `nq_layout_subst` experiments are excluded.
+
+The capsule is about 3.32 MB including its inventory. It retains one expected
+readback per AST/pattern/control workload, independent digest outputs, exact
+frozen modules, compact source-manifest projections, historical commands and
+runtime-counter observations. It omits the 11,495,408-byte AST JSON, large
+constant oracle source, repeated timing stdout files, compiler images and IR.
+Those larger artifacts remain pinned and reproducible. The unchanged store
+output is represented by its existing pin, not another copy.
+
+| Measured comparison | Baseline median | Candidate median | Ratio | Scope |
+| --- | ---: | ---: | ---: | --- |
+| Dispatch revision2 versus ABI03 | 95.012 ms | 87.429 ms | 0.920195 | Same indexed complete 101-body consumer; 7.98% less elapsed time. |
+| Dispatch revision2 lookup transfer | 559.647 ms | 558.379 ms | 0.997735 | Effectively neutral unrelated workload. |
+| Borrow04 AST traversal with full-field digest | 69.607 ms | 66.284 ms | 0.952267 | 4.77% less elapsed time on the separate timed digest workload. |
+| Borrow04 original pattern traversal | 115.695 ms | 116.178 ms | 1.004176 | Effectively neutral. |
+| Consuming pattern source versus original source | 103.032 ms | 82.282 ms | 0.798605 | 20.14% less elapsed time; same ordinary compiler producer. |
+
+These are four-round balanced process comparisons. Their baselines differ;
+do not subtract times across campaigns or multiply their ratios to estimate a
+combined compiler improvement. No row measures full self-build time.
+
+The complete 8,223-node AST result passes the independent 418,803-byte readback
+oracle. Its direct print-and-exit timings remain below the 30ms resolution gate.
+The subsequent timed digest performs all the selected full-field observation
+work but prints only a scalar. Its scalar oracle is independently evaluated by
+upstream; it supplements the full-value gate rather than replacing it.
+
+The pattern complete-value and eight extra boundary cases likewise pass the
+independent full-output gates. The consuming candidate changes only
+`f_pattern_sub` in each extracted source; the preparation receipt records an
+exact inverse transplant. Both native variants use the same qualified producer,
+runtime and toolchain. The candidate's unchanged signature, literal handling,
+metadata and span behavior are covered by the
+[independent source audit](../../experiments/phase173/consuming-pattern-audit.md).
+
+### Rebuild the third-checkpoint variants
+
+Use [the recorded recipes](evidence03/recipes.json), preserving module order
+and filenames. The main additional source identities are:
+
+| Source | SHA256 |
+| --- | --- |
+| Checked dispatch02 API | `fe1ba68bc2af289fc1f8b0fff422f7623eb72117f90dd434a4acf48b5aeafee0` |
+| Original AST full-value workload | `4230ef89c8fa79a42458f0f1e0ca2ad62f48ca7ce7b89acc0fbb6f7018477934` |
+| Original AST digest workload | `6da8af2a5eb34e04d54eb650ff2c99eb16596d16ef022fa01945b834177de4c2` |
+| Original pattern full-value workload | `f9041ca87820c400563c89c4dbc0c946598495b6555375834b4bc20cff2529d1` |
+| Original pattern digest workload | `1a4dc0ef5495dabf134c76272df1839a10f58de4d3017add0faef9cf351d5242` |
+| Consuming pattern digest workload | `becb8390d0f06b3076b7997c3c9eabfc4a75b8abaaf3d510ea5d9cf4e5125b1d` |
+
+Dispatch02 has 21 SCC, 25 product-argument and 36 dispatch controls. Bind its
+frontend and replay the previous authenticated plan, then rebuild emitted QBE
+with the same runtime and machine toolchain. Compare native output before
+timing against ABI03. The complete block census and transfer census are retained
+under `evidence03/analysis/`; static instruction counts are not dynamic profiles.
+
+For AST/pattern reconstruction, use `prepare-workload.py` with the retained
+drivers to recover unchanged canonical helper bodies. Recover the complete
+upstream observation and constant native oracle using the recorded acquisition,
+observation and bounded-literal transport commands. The retained expected files
+provide complete native readback references; the original receipts pin the
+larger intermediate representations used to establish them.
+
+For consuming substitution, use `prepare-variant.py` on each reconstructed
+original workload, replacing only `f_pattern_sub` with the frozen
+`borrow-consuming-pattern01.bend`. Its definition SHA256 is
+`41aa5051cb13258c1602d19762c622d6fbd24b42b84d56e29727f4c95fd20af7`.
+Check and build that changed workload with the ordinary producer. Merely
+changing the compiler API while passing the old workload source does not test
+this source-level transformation. Run full-value and boundary controls before
+using the independent scalar digest oracle for clean timing.
+
+### What the counters establish
+
+Separate authenticated diagnostic builds retain complete output checks. The
+consuming pattern comparison records:
+
+| Runtime event | Original | Consuming source |
+| --- | ---: | ---: |
+| Allocation requests | 1,386,511 | 1,386,503 |
+| Keep calls | 296,024 | 213,792 |
+| Sink calls | 786,056 | 292,680 |
+| Drop entries | 761,264 | 71,048 |
+| Constructor takes | 1,275,799 | 1,152,455 |
+| Dispatcher entries | 1,515,860 | 1,351,396 |
+| Frame pushes | 65,760 | 65,760 |
+
+Allocation counts barely change, while ownership and transport operations fall
+substantially. This supports eliminating retained-parent sharing and accessor
+work as the useful mechanism on this workload. Counts do not include every
+inlined operation and are not exact time attribution. Counter-run timings must
+not replace the separate clean pair.
+
+For the complete AST value workload, borrow04 changes allocation requests from
+145,197 to 141,597 and requested words from 333,733 to 304,940; dispatcher and
+frame counts are unchanged. Its gain is narrower than the source-level pattern
+rewrite. Both positive and neutral transfer results remain part of the evidence.
+
+Retained command failures include invoking unavailable unqualified `bun` and
+combining `--ir` with incompatible compiler-request options. The later pinned
+engine/correct construction commands have separate run names. A wide-update API
+source-order failure is also preserved before its corrected source/finite gate.
+None is counted as a compiler correctness failure or a successful timing sample.

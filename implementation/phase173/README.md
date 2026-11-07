@@ -7,6 +7,15 @@ the 100-second cold-build milestone is finished.
 
 ## Main result so far
 
+The strongest transferable finding is **early consuming decomposition**:
+destructure a semantic record before recursively transforming its children,
+instead of retaining the old parent through getter/setter calls. Two workloads
+with one experimental compiler-function replacement run20.1% and20.8% faster
+under the same qualified producer. Full independent values match. In the first
+workload, allocations barely change; term drops fall90.7%. These are complete
+compiler computations, not a20% full self-build result. Automatic derivation of
+this transformation is now the next bounded implementation.
+
 An exact indexed representation alone made the complete native test **2.003×
 slower**, despite passing independent full-value comparisons. Reducing its root
 from nine fields to seven did not recover meaningful performance.
@@ -64,7 +73,12 @@ indexed implementation, with the complete output exact. Only nine SCC functions
 change; all other function/data blocks remain byte-identical. The largest
 compaction and Word workers remain unchanged because admission rejects a valid
 conditional join before a common return. Revision2 adds that general admission
-case and passes36 dispatch controls; its native comparison is in progress.
+case and passes36 dispatch controls. Its clean comparison measures95.012→87.429ms
+(7.98% less) against the ABI-fixed indexed baseline. All11 SCC bodies change;
+all other function/data blocks remain exact. Compaction redirects all50 constant
+backedges; machine instructions fall2,504→2,017. Its frame grows1,160→1,400 bytes,
+so fewer static stack references are not a dynamic spill claim. Transfer to the
+existing lookup workload is neutral:559.647→558.379ms (0.998×).
 No new IR variant or verifier relaxation was introduced. See the
 [boundary analysis](../../experiments/phase173/product-argument-boundary.md)
 and [dispatch experiment](../../experiments/phase173/constant-tag-backedge.md).
@@ -167,16 +181,62 @@ alias and all metadata. Both runtimes are below30ms, so no speed claim follows.
 Separate diagnostic execution removes3,600 of145,197 allocation requests and
 28,793 of333,733 requested words. Dispatcher and continuation counts are
 unchanged. This is real transfer of work removal, but only2.48% of this
-computation's allocations. A digest consumer is being prepared to isolate
-execution from printing the large result; it does not replace the full-value
-correctness gate. The broader audit finds the current terminal-region admission
-does not cover recursive reconstruction across allocating calls.
+computation's allocations. Eight varied-seed iterations with a complete-field
+digest instead of large printing measure69.607→66.284ms (4.77% less). This digest
+does not replace the separate full-value correctness gate. The broader audit
+finds the current terminal-region admission does not cover recursive
+reconstruction across allocating calls.
+
+A profitability-only widening admits the real `k_rebuild` without changing
+legality or runtime guards. It passes56 finite controls and the101-body full
+output oracle. Runtime is neutral:80.269→80.266ms. Diagnostic allocation requests
+fall270,852→266,344, but keeps/sinks/drops each increase2,046. This is another
+case where allocation removal alone does not establish a speed improvement.
 
 This transform happens after final IR verification and extends trusted emission.
 The unchanged verifier alone does not prove the new memory operations correct.
 The separate [ownership audit](../../experiments/phase173/borrow-audit.md), full
 upstream-derived value oracle and runtime execution controls are necessary.
 It is not a BendTT theorem.
+
+## A simpler ownership alternative
+
+| Complete computation, four balanced native pairs | Baseline | Candidate | Ratio |
+|---|---:|---:|---:|
+| Pattern substitution, existing record reuse |115.695ms|116.178ms|1.004×|
+| Pattern substitution, consuming source form |103.032ms|82.282ms|0.799×|
+| Backend layout substitution, consuming source form |92.683ms|73.427ms|0.792×|
+
+The consuming comparisons use two sources that differ only in the audited
+compiler function and, for layout substitution, one explicitly declared helper.
+The same qualified native compiler produces both binaries. Each ratio uses its
+own contemporaneous baseline; differences between separate baseline medians
+are not attributed to the optimization. Full-value controls separately cover
+shared originals, replacement values, origins, removed names, quantity presence,
+unmatched variables with children, arbitrary literal kinds and legacy variants.
+Original values come from the independently checked pinned upstream JavaScript
+implementation. Clean and diagnostic runs remain separate.
+
+For pattern substitution the complete diagnostic counts are:
+
+| Runtime operation | Original | Consuming |
+|---|---:|---:|
+| Allocation requests |1,386,511|1,386,503|
+| Keeps |296,024|213,792|
+| Sinks |786,056|292,680|
+| Drops |761,264|71,048|
+| Constructor takes |1,275,799|1,152,455|
+| Dispatcher transitions |1,515,860|1,351,396|
+| Continuation frames |65,760|65,760|
+
+This removes ownership and dispatch work without changing the essential
+allocation or stack-safety strategy. It does not require keeping a mutable
+parent with holes across calls, a borrowed-result ABI, or a new runtime.
+The [source audit](../../experiments/phase173/consuming-pattern-audit.md) is an
+extensional argument plus finite controls, not an independently checked BendTT
+theorem. An automatic generalization must preserve eager evaluation even when
+a setter ignores the changed field; the hand-proved cases can simplify that
+work only with additional facts.
 
 ## Current architectural experiment
 

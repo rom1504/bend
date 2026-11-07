@@ -1,0 +1,79 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": true,
+  "started": 1794011214.859107,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "3",
+    "python3",
+    "-B",
+    "selfhost/tests/phase173/native-pair.py",
+    "--baseline",
+    "selfhost/build/phase173/borrow-ast-baseline01/report.json",
+    "--candidate",
+    "selfhost/build/phase173/borrow-ast-machine06/report.json",
+    "--expected",
+    "selfhost/build/phase173/borrow-ast-oracle-output01/0-baseline.stdout",
+    "--out",
+    "selfhost/build/phase173/borrow-ast-pair06"
+  ],
+  "returncode": 0,
+  "rssLimitBytes": 3221225472,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 20803584,
+  "minimumAvailableBytes": 25391325184,
+  "diskBudgetBytes": 25165824,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 5673287680,
+  "minimumDiskFreeBytes": 5669879808,
+  "peakRunAllocatedBytes": 3407872,
+  "peakFilesystemDecreaseBytes": 3407872,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-pair06"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "3",
+    "fileLimitBytes": 134217728,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase173/native-pair.py",
+        "sha256": "219a9a447f8b85262adfa2b58eea7f1d635233c2fbe6a0083fd8e7d9651d6f9b",
+        "bytes": 3973
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-baseline01/report.json",
+        "sha256": "014b5b8744f912a402167a4cac769f3513eda5154dbfa2395c1b4457b7d5aeaf",
+        "bytes": 16315
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-machine06/report.json",
+        "sha256": "19df5742b6b3586c1c260671e703cd20ab1207ef9254a5eb6bb71130bb582899",
+        "bytes": 8682
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-oracle-output01/0-baseline.stdout",
+        "sha256": "43e473d2ffdaf2b6762aa6f222ce4aaef3e58c9b99caed749f4fe9acca3d8a16",
+        "bytes": 418803
+      }
+    ]
+  },
+  "wallSeconds": 0.31015708204358816,
+  "finished": 1794011215.169076
+}

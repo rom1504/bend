@@ -1,0 +1,259 @@
+{
+  "kind": "phase173-native-product-pair",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase173/native-pair.py",
+      "bytes": 3973,
+      "sha256": "219a9a447f8b85262adfa2b58eea7f1d635233c2fbe6a0083fd8e7d9651d6f9b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/pattern-digest-baseline01/report.json",
+      "bytes": 16442,
+      "sha256": "55232120ca3995c34916bdf26e9d3ad7a0fe70ca4a2efd0ac8bb8129ed9fb125"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-pattern-digest-machine01/report.json",
+      "bytes": 16576,
+      "sha256": "ec5d902c89fa208f5de120c8f95855c18e03108dae4674df40adee2f7b95bc94"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/pattern-digest-baseline01/program",
+      "bytes": 187248,
+      "sha256": "1fb5f512366c985528845bb510ff232935adb97440fbd52233400961687ecbb7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/pattern-digest-baseline01/program.ssa",
+      "bytes": 436753,
+      "sha256": "c4eb668093cb6372108f6230414571ad0ac82609865e86ff2c73a8ca41485cef"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-pattern-digest-machine01/program",
+      "bytes": 180864,
+      "sha256": "7df893110bb2dc98c8d65c2626fb3366d7141d76c46d864666c00e950f8ff051"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-pattern-digest-machine01/program.ssa",
+      "bytes": 385988,
+      "sha256": "857f8afc0d6174b638bc6d0e6a80a52e71cee80be44e4751c3a5c60744a1f755"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/pattern-digest-oracle01/expected.txt",
+      "bytes": 11,
+      "sha256": "4b9d7b55074eda9f061257dc221217586bfcfae079f0daad33f4e53fcd7aa642"
+    }
+  ],
+  "runs": [
+    {
+      "role": "baseline",
+      "cycle": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/pattern-digest-baseline01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.10333353327587247,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-pattern-digest-pair01/0-baseline.stdout",
+        "bytes": 11,
+        "sha256": "4b9d7b55074eda9f061257dc221217586bfcfae079f0daad33f4e53fcd7aa642"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-pattern-digest-pair01/0-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-pattern-digest-machine01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.08177541103214025,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-pattern-digest-pair01/0-candidate.stdout",
+        "bytes": 11,
+        "sha256": "4b9d7b55074eda9f061257dc221217586bfcfae079f0daad33f4e53fcd7aa642"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-pattern-digest-pair01/0-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-pattern-digest-machine01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.08295568823814392,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-pattern-digest-pair01/1-candidate.stdout",
+        "bytes": 11,
+        "sha256": "4b9d7b55074eda9f061257dc221217586bfcfae079f0daad33f4e53fcd7aa642"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-pattern-digest-pair01/1-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "baseline",
+      "cycle": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/pattern-digest-baseline01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.10325352987274528,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-pattern-digest-pair01/1-baseline.stdout",
+        "bytes": 11,
+        "sha256": "4b9d7b55074eda9f061257dc221217586bfcfae079f0daad33f4e53fcd7aa642"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-pattern-digest-pair01/1-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "baseline",
+      "cycle": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/pattern-digest-baseline01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.1027814750559628,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-pattern-digest-pair01/2-baseline.stdout",
+        "bytes": 11,
+        "sha256": "4b9d7b55074eda9f061257dc221217586bfcfae079f0daad33f4e53fcd7aa642"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-pattern-digest-pair01/2-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-pattern-digest-machine01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.08231810014694929,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-pattern-digest-pair01/2-candidate.stdout",
+        "bytes": 11,
+        "sha256": "4b9d7b55074eda9f061257dc221217586bfcfae079f0daad33f4e53fcd7aa642"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-pattern-digest-pair01/2-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 3,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-pattern-digest-machine01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.08224634500220418,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-pattern-digest-pair01/3-candidate.stdout",
+        "bytes": 11,
+        "sha256": "4b9d7b55074eda9f061257dc221217586bfcfae079f0daad33f4e53fcd7aa642"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-pattern-digest-pair01/3-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "baseline",
+      "cycle": 3,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/pattern-digest-baseline01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.10281128203496337,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-pattern-digest-pair01/3-baseline.stdout",
+        "bytes": 11,
+        "sha256": "4b9d7b55074eda9f061257dc221217586bfcfae079f0daad33f4e53fcd7aa642"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-pattern-digest-pair01/3-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    }
+  ],
+  "rounds": 4,
+  "oracle": "fixed expected bytes",
+  "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+  "medians": {
+    "baseline": 0.10303240595385432,
+    "candidate": 0.08228222257457674
+  },
+  "resolved": true,
+  "ratio": 0.7986052719319097
+}

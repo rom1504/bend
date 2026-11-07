@@ -1,0 +1,2631 @@
+{
+  "kind": "phase173-retired-api-source-capture-review-v3",
+  "complete": true,
+  "reviewRequired": true,
+  "actionablePrunePlan": false,
+  "targetsRun": false,
+  "archivesCreated": 0,
+  "filesDeleted": 0,
+  "head": "db10595c0f2272662cd6ccc3714224b277a1245b",
+  "roots": [
+    {
+      "name": "p173-retired-vertical-base-source01",
+      "root": "selfhost/build/phase173/vertical-base-source01",
+      "kind": "source-snapshot",
+      "classification": "completed metadata snapshot, failed API reader",
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase173/vertical-base-source01/compiler.bend",
+          "bytes": 1541483,
+          "sha256": "ca1d15076ddc6d74b6d0c6f0dda8b51ad14a267d9cf219a3914c2a28964beb70",
+          "metadata": {
+            "device": 2306,
+            "inode": 79594620,
+            "size": 1541483,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794003673824300534,
+            "ctimeNs": 1794003673824300534,
+            "allocatedBytes": 1544192
+          },
+          "identityEvidence": "Original terminal receipt pin agrees"
+        },
+        {
+          "file": "selfhost/build/phase173/vertical-base-source01/manifest.json",
+          "bytes": 3952285,
+          "sha256": "c2dc93bd9e075f73f20f87ec2fec19a4335d4f1f7d14dbd4fe4c2e8d1deccbff",
+          "metadata": {
+            "device": 2306,
+            "inode": 79596485,
+            "size": 3952285,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794003674020294418,
+            "ctimeNs": 1794003674024294293,
+            "allocatedBytes": 3952640
+          },
+          "identityEvidence": "Complete metadata snapshot manifest; fresh pin, source identity cross-checked against terminal API receipt"
+        }
+      ],
+      "allocatedBytes": 5496832,
+      "terminalReaderOrWriter": {
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/vertical-base-api01/report.json",
+          "bytes": 4121,
+          "sha256": "ebcd3bca8600621cf4544e2323e7831684d1aaabccdd817700d23f8f039ab318"
+        },
+        "guard": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/vertical-base-api01-guard/process.json",
+          "bytes": 3148,
+          "sha256": "7d2e9f3e6ce58b83ae993fed4e63aea84c2395b9bc9e847cabdb406f08748ad8"
+        },
+        "lifecycle": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/vertical-base-api01-guard/retention.json",
+          "bytes": 1052,
+          "sha256": "7653c0d56e1874c1df1ff527b6164b63db35bae909d0ecaf6041f9e1358ddb75"
+        },
+        "closure": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase173/vertical-base-api01-close/report.json",
+          "bytes": 1454,
+          "sha256": "28e4e8f1059602e5c4377d40e0689040da5669d7417029ec70aa6a3eb35e3e2c"
+        }
+      },
+      "sourceWriter": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/vertical-base-source01/manifest.json",
+        "bytes": 3952285,
+        "sha256": "c2dc93bd9e075f73f20f87ec2fec19a4335d4f1f7d14dbd4fe4c2e8d1deccbff"
+      },
+      "scope": "Only listed exact leaves. All API/control reports, logs, exports/bindings, binaries/IR and unlisted files stay hot. Historical replay requires exact restore."
+    },
+    {
+      "name": "p173-retired-store-source01",
+      "root": "selfhost/build/phase173/store-source01",
+      "kind": "source-snapshot",
+      "classification": "completed metadata snapshot, failed API reader",
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase173/store-source01/compiler.bend",
+          "bytes": 1550283,
+          "sha256": "6e3d2a2fcea2fb99777a377f1ae795bb88248280ae33c903a1c54f69bb97076e",
+          "metadata": {
+            "device": 2306,
+            "inode": 79596542,
+            "size": 1550283,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794003466202778933,
+            "ctimeNs": 1794003466202778933,
+            "allocatedBytes": 1552384
+          },
+          "identityEvidence": "Original terminal receipt pin agrees"
+        },
+        {
+          "file": "selfhost/build/phase173/store-source01/manifest.json",
+          "bytes": 3957148,
+          "sha256": "9df7eb9a05ddab0410738ed643029fe713cc3338a33b419c7207683186557c19",
+          "metadata": {
+            "device": 2306,
+            "inode": 79596545,
+            "size": 3957148,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794003466402772692,
+            "ctimeNs": 1794003466406772567,
+            "allocatedBytes": 3960832
+          },
+          "identityEvidence": "Complete metadata snapshot manifest; fresh pin, source identity cross-checked against terminal API receipt"
+        }
+      ],
+      "allocatedBytes": 5513216,
+      "terminalReaderOrWriter": {
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-api01/report.json",
+          "bytes": 4026,
+          "sha256": "b716f6427f26078b7112cfa08c95f0ae5ca6ac020631eb210807b22de725db95"
+        },
+        "guard": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-api01-guard/process.json",
+          "bytes": 3098,
+          "sha256": "d4a41b4efa4f34b8e4af2dabaf923c14139e2c7508a914dd24da95c719b7eac3"
+        },
+        "lifecycle": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-api01-guard/retention.json",
+          "bytes": 1019,
+          "sha256": "ae1e625f572d44f0d306c30c2a8540946e5a7d03950c62f28be823735b689433"
+        },
+        "closure": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase173/store-api01-close/report.json",
+          "bytes": 1430,
+          "sha256": "230ba5aee84f5442c8b5ad7b9a662768881bb985b98e0ca7919a5e33071fcc51"
+        }
+      },
+      "sourceWriter": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-source01/manifest.json",
+        "bytes": 3957148,
+        "sha256": "9df7eb9a05ddab0410738ed643029fe713cc3338a33b419c7207683186557c19"
+      },
+      "scope": "Only listed exact leaves. All API/control reports, logs, exports/bindings, binaries/IR and unlisted files stay hot. Historical replay requires exact restore."
+    },
+    {
+      "name": "p173-retired-store-source02",
+      "root": "selfhost/build/phase173/store-source02",
+      "kind": "source-snapshot",
+      "classification": "completed metadata snapshot, failed API reader",
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase173/store-source02/compiler.bend",
+          "bytes": 1581906,
+          "sha256": "67825bfedcf6fa7a4026c1cb561c25b48d33f3aea52add2e9e0a5df5797659d3",
+          "metadata": {
+            "device": 2306,
+            "inode": 79596568,
+            "size": 1581906,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794003724858708125,
+            "ctimeNs": 1794003724858708125,
+            "allocatedBytes": 1585152
+          },
+          "identityEvidence": "Original terminal receipt pin agrees"
+        },
+        {
+          "file": "selfhost/build/phase173/store-source02/manifest.json",
+          "bytes": 3984810,
+          "sha256": "d2b1e1dba965114c64e542a60166969bf8ae45b3e90f5fc2b12e91b2fd17e991",
+          "metadata": {
+            "device": 2306,
+            "inode": 79596571,
+            "size": 3984810,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794003725058701884,
+            "ctimeNs": 1794003725062701759,
+            "allocatedBytes": 3985408
+          },
+          "identityEvidence": "Complete metadata snapshot manifest; fresh pin, source identity cross-checked against terminal API receipt"
+        }
+      ],
+      "allocatedBytes": 5570560,
+      "terminalReaderOrWriter": {
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-api02/report.json",
+          "bytes": 4060,
+          "sha256": "a4081a2f79e28c16b454c51d87b13403434d65c8bee88619380e93ad72348daa"
+        },
+        "guard": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-api02-guard/process.json",
+          "bytes": 3098,
+          "sha256": "d15df3242014aed8226951383d7b0c9201b060e0e25025c1c74d3bb6fb94d867"
+        },
+        "lifecycle": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-api02-guard/retention.json",
+          "bytes": 1019,
+          "sha256": "a5db914ecc11c45aeb20fb4bcd6777440323918e4cffabe15685af496b45acc5"
+        },
+        "closure": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase173/store-api02-close/report.json",
+          "bytes": 1430,
+          "sha256": "ddae806273a817c7b09d7dfb0d96d394d4422dd5545c0093856a6db779c9ec0d"
+        }
+      },
+      "sourceWriter": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-source02/manifest.json",
+        "bytes": 3984810,
+        "sha256": "d2b1e1dba965114c64e542a60166969bf8ae45b3e90f5fc2b12e91b2fd17e991"
+      },
+      "scope": "Only listed exact leaves. All API/control reports, logs, exports/bindings, binaries/IR and unlisted files stay hot. Historical replay requires exact restore."
+    },
+    {
+      "name": "p173-retired-store-source03",
+      "root": "selfhost/build/phase173/store-source03",
+      "kind": "source-snapshot",
+      "classification": "completed metadata snapshot, failed API reader",
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase173/store-source03/compiler.bend",
+          "bytes": 1603162,
+          "sha256": "18d68587251767d1aba8bcacd6c2e9a8836d3d6648e64194150d5aa23d23ff2a",
+          "metadata": {
+            "device": 2306,
+            "inode": 79596606,
+            "size": 1603162,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794003950519666859,
+            "ctimeNs": 1794003950519666859,
+            "allocatedBytes": 1605632
+          },
+          "identityEvidence": "Original terminal receipt pin agrees"
+        },
+        {
+          "file": "selfhost/build/phase173/store-source03/manifest.json",
+          "bytes": 4012531,
+          "sha256": "fd6aba1a30eaa794193da4babe6290c0790964457c5dd56e77d08f9eb7e518f9",
+          "metadata": {
+            "device": 2306,
+            "inode": 79596609,
+            "size": 4012531,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794003950719660618,
+            "ctimeNs": 1794003950723660494,
+            "allocatedBytes": 4014080
+          },
+          "identityEvidence": "Complete metadata snapshot manifest; fresh pin, source identity cross-checked against terminal API receipt"
+        }
+      ],
+      "allocatedBytes": 5619712,
+      "terminalReaderOrWriter": {
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-api03/report.json",
+          "bytes": 4148,
+          "sha256": "a54165faeb46c722e7c5a25168a9c8074cabed9df92ca457aacc10b37b1d2e7f"
+        },
+        "guard": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-api03-guard/process.json",
+          "bytes": 3099,
+          "sha256": "9242d34c02cd902b8446e1c4b081037c9109caf1273506b1b1648e0163a710ce"
+        },
+        "lifecycle": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-api03-guard/retention.json",
+          "bytes": 1020,
+          "sha256": "d469149d58d50b6cf15fb2d94b8135077440f1cdc82f1321782b913b23a0f91f"
+        },
+        "closure": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase173/store-api03-close/report.json",
+          "bytes": 1429,
+          "sha256": "53e38de5d69ba9b4402c14553f90f0d97bbb0e267247865a8a098787d6716221"
+        }
+      },
+      "sourceWriter": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-source03/manifest.json",
+        "bytes": 4012531,
+        "sha256": "fd6aba1a30eaa794193da4babe6290c0790964457c5dd56e77d08f9eb7e518f9"
+      },
+      "scope": "Only listed exact leaves. All API/control reports, logs, exports/bindings, binaries/IR and unlisted files stay hot. Historical replay requires exact restore."
+    },
+    {
+      "name": "p173-retired-store-source04",
+      "root": "selfhost/build/phase173/store-source04",
+      "kind": "source-snapshot",
+      "classification": "completed metadata snapshot, failed API reader",
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase173/store-source04/compiler.bend",
+          "bytes": 1607530,
+          "sha256": "e991f6bff9d0a9486e3a0b4c37277ec37c08da0a6c03a51aa1c96694d7590ab3",
+          "metadata": {
+            "device": 2306,
+            "inode": 79596627,
+            "size": 1607530,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794004080563609112,
+            "ctimeNs": 1794004080563609112,
+            "allocatedBytes": 1609728
+          },
+          "identityEvidence": "Original terminal receipt pin agrees"
+        },
+        {
+          "file": "selfhost/build/phase173/store-source04/manifest.json",
+          "bytes": 4019037,
+          "sha256": "98b325ebcc71a44b37625d544889194e5be12cf9991c6589f52b47ffaf7bc4af",
+          "metadata": {
+            "device": 2306,
+            "inode": 79596630,
+            "size": 4019037,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794004080779602373,
+            "ctimeNs": 1794004080783602248,
+            "allocatedBytes": 4022272
+          },
+          "identityEvidence": "Complete metadata snapshot manifest; fresh pin, source identity cross-checked against terminal API receipt"
+        }
+      ],
+      "allocatedBytes": 5632000,
+      "terminalReaderOrWriter": {
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-api04/report.json",
+          "bytes": 4148,
+          "sha256": "5f34e21b3189a52ae1f8e0a00562ecd50da5cb6c7bd76365894200eb7c88e6a7"
+        },
+        "guard": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-api04-guard/process.json",
+          "bytes": 3098,
+          "sha256": "78bb9777cc44c3f4a1d9ae8e7474ecaa7631ebeb26ff4902004c7333de74dbe8"
+        },
+        "lifecycle": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-api04-guard/retention.json",
+          "bytes": 1018,
+          "sha256": "70026861ec302081f5bb23e788f2444f35258a2426beae5ebb36a6c0225e5a9c"
+        },
+        "closure": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase173/store-api04-close/report.json",
+          "bytes": 1430,
+          "sha256": "a774510e23307fb98b3a8de2562835d0cf06fdb5432bf903070aebe4158a9220"
+        }
+      },
+      "sourceWriter": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-source04/manifest.json",
+        "bytes": 4019037,
+        "sha256": "98b325ebcc71a44b37625d544889194e5be12cf9991c6589f52b47ffaf7bc4af"
+      },
+      "scope": "Only listed exact leaves. All API/control reports, logs, exports/bindings, binaries/IR and unlisted files stay hot. Historical replay requires exact restore."
+    },
+    {
+      "name": "p173-retired-store-source06",
+      "root": "selfhost/build/phase173/store-source06",
+      "kind": "source-snapshot",
+      "classification": "completed metadata snapshot, completed API reader",
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase173/store-source06/compiler.bend",
+          "bytes": 1606324,
+          "sha256": "34be1c40dec28617a57a2c7d90b21599b522f6917669fd51c7de3a8ef6cb9fb9",
+          "metadata": {
+            "device": 2306,
+            "inode": 79596969,
+            "size": 1606324,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794005526950565279,
+            "ctimeNs": 1794005526950565279,
+            "allocatedBytes": 1609728
+          },
+          "identityEvidence": "Original terminal receipt pin agrees"
+        },
+        {
+          "file": "selfhost/build/phase173/store-source06/manifest.json",
+          "bytes": 4014657,
+          "sha256": "5b26749e0d73da81e39bbe79652825d4aaa272bb7452232c3cbbb2751dde0cfb",
+          "metadata": {
+            "device": 2306,
+            "inode": 79596972,
+            "size": 4014657,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794005527162558714,
+            "ctimeNs": 1794005527162558714,
+            "allocatedBytes": 4018176
+          },
+          "identityEvidence": "Complete metadata snapshot manifest; fresh pin, source identity cross-checked against terminal API receipt"
+        }
+      ],
+      "allocatedBytes": 5627904,
+      "terminalReaderOrWriter": {
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-api06/report.json",
+          "bytes": 5262,
+          "sha256": "446248cb1f505263449c8df42095ba004bf5f66367445e81de60bdc73ae01166"
+        },
+        "guard": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-api06-guard/process.json",
+          "bytes": 3103,
+          "sha256": "dc8f7aab203b5ba29fb55fd444684af5b6dd20c3112b51abc4b9227fca61b74a"
+        },
+        "lifecycle": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-api06-guard/retention.json",
+          "bytes": 1025,
+          "sha256": "a448943aed43a8a4396e24c6628efcfcc8ca2d46b7b5012d53a4c873f7cf5f17"
+        },
+        "closure": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase173/store-api06-close/report.json",
+          "bytes": 1433,
+          "sha256": "8b3bc4e7602c3fbdc2199bddea455c943c44d230535521551ab3b2dccfb24371"
+        }
+      },
+      "sourceWriter": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-source06/manifest.json",
+        "bytes": 4014657,
+        "sha256": "5b26749e0d73da81e39bbe79652825d4aaa272bb7452232c3cbbb2751dde0cfb"
+      },
+      "scope": "Only listed exact leaves. All API/control reports, logs, exports/bindings, binaries/IR and unlisted files stay hot. Historical replay requires exact restore."
+    },
+    {
+      "name": "p173-retired-store-flat7-source01",
+      "root": "selfhost/build/phase173/store-flat7-source01",
+      "kind": "source-snapshot",
+      "classification": "completed metadata snapshot, completed API reader",
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase173/store-flat7-source01/compiler.bend",
+          "bytes": 1608318,
+          "sha256": "4eee8b77da3b94efa19fb10b09c551be0fdd193537ddd8e094935d759e313c6c",
+          "metadata": {
+            "device": 2306,
+            "inode": 79596894,
+            "size": 1608318,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794005156986049079,
+            "ctimeNs": 1794005156986049079,
+            "allocatedBytes": 1609728
+          },
+          "identityEvidence": "Original terminal receipt pin agrees"
+        },
+        {
+          "file": "selfhost/build/phase173/store-flat7-source01/manifest.json",
+          "bytes": 4019726,
+          "sha256": "994a7be14b71e5eed3aa9b6f0fee6de4aa5d4fc2cde33bfe184029c70687275d",
+          "metadata": {
+            "device": 2306,
+            "inode": 79596897,
+            "size": 4019726,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794005157186042845,
+            "ctimeNs": 1794005157190042720,
+            "allocatedBytes": 4022272
+          },
+          "identityEvidence": "Complete metadata snapshot manifest; fresh pin, source identity cross-checked against terminal API receipt"
+        }
+      ],
+      "allocatedBytes": 5632000,
+      "terminalReaderOrWriter": {
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-flat7-api01/report.json",
+          "bytes": 5322,
+          "sha256": "9dd66b9ea09403770fa5acc8d96061d88e25ba615081312bf1e59c4f6fe5cb6a"
+        },
+        "guard": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-flat7-api01-guard/process.json",
+          "bytes": 3138,
+          "sha256": "08b892ccdb2561e93989608116a556df3a023e410f7ed5c2fc5f0effd3bfe324"
+        },
+        "lifecycle": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-flat7-api01-guard/retention.json",
+          "bytes": 1049,
+          "sha256": "448ab704e9ec5394c56cbd4573457a37c5e1b0385a568bd266a914f3c1f74302"
+        },
+        "closure": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase173/store-flat7-api01-close/report.json",
+          "bytes": 1450,
+          "sha256": "5f5dcb4949edfb69f43b578fc2bda49a903857979847d5e70a75fc2866fee3aa"
+        }
+      },
+      "sourceWriter": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-flat7-source01/manifest.json",
+        "bytes": 4019726,
+        "sha256": "994a7be14b71e5eed3aa9b6f0fee6de4aa5d4fc2cde33bfe184029c70687275d"
+      },
+      "scope": "Only listed exact leaves. All API/control reports, logs, exports/bindings, binaries/IR and unlisted files stay hot. Historical replay requires exact restore."
+    },
+    {
+      "name": "p173-retired-store-direct-source01",
+      "root": "selfhost/build/phase173/store-direct-source01",
+      "kind": "source-snapshot",
+      "classification": "completed metadata snapshot, completed API reader",
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase173/store-direct-source01/compiler.bend",
+          "bytes": 1621076,
+          "sha256": "83a95c468a1be56f2947cf3fe5fd5bf5d078f18183a60231c2d201babbf98ed9",
+          "metadata": {
+            "device": 2306,
+            "inode": 79597567,
+            "size": 1621076,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794007498825725994,
+            "ctimeNs": 1794007498825725994,
+            "allocatedBytes": 1622016
+          },
+          "identityEvidence": "Original terminal receipt pin agrees"
+        },
+        {
+          "file": "selfhost/build/phase173/store-direct-source01/manifest.json",
+          "bytes": 4030431,
+          "sha256": "eb397b8aa690ebf5ceace7630b2633d873943e946934a718089cf032be147b39",
+          "metadata": {
+            "device": 2306,
+            "inode": 79597570,
+            "size": 4030431,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794007499029719711,
+            "ctimeNs": 1794007499061718725,
+            "allocatedBytes": 4030464
+          },
+          "identityEvidence": "Complete metadata snapshot manifest; fresh pin, source identity cross-checked against terminal API receipt"
+        }
+      ],
+      "allocatedBytes": 5652480,
+      "terminalReaderOrWriter": {
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-direct-api01/report.json",
+          "bytes": 5338,
+          "sha256": "9a4941abaff08547b528169f3bad009f7eb41bdf9e11228fdc79ffe8c157d1ac"
+        },
+        "guard": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-direct-api01-guard/process.json",
+          "bytes": 3145,
+          "sha256": "7d97965986a60988ecc98fbd77b37e2a23cbb32b596d23c485f28cccdca87bea"
+        },
+        "lifecycle": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-direct-api01-guard/retention.json",
+          "bytes": 1053,
+          "sha256": "9cd7fa54723a072137e07c6a550fb05af0ca69348ef832d406453725492b0b81"
+        },
+        "closure": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase173/store-direct-api01-close/report.json",
+          "bytes": 1453,
+          "sha256": "fca54f01750cce279b9ef4dbaede4f483f955c5defb1cdee8b627b66601316cd"
+        }
+      },
+      "sourceWriter": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-direct-source01/manifest.json",
+        "bytes": 4030431,
+        "sha256": "eb397b8aa690ebf5ceace7630b2633d873943e946934a718089cf032be147b39"
+      },
+      "scope": "Only listed exact leaves. All API/control reports, logs, exports/bindings, binaries/IR and unlisted files stay hot. Historical replay requires exact restore."
+    },
+    {
+      "name": "p173-retired-scc-source01",
+      "root": "selfhost/build/phase173/scc-source01",
+      "kind": "source-snapshot",
+      "classification": "completed metadata snapshot, failed API reader",
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase173/scc-source01/compiler.bend",
+          "bytes": 1588340,
+          "sha256": "0f63bb67e3f3e77f7a68ef355cc9b5f1055f0e8e56dd59db0c104c7c5ed72a44",
+          "metadata": {
+            "device": 2306,
+            "inode": 79597066,
+            "size": 1588340,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794005909746711055,
+            "ctimeNs": 1794005909746711055,
+            "allocatedBytes": 1589248
+          },
+          "identityEvidence": "Original terminal receipt pin agrees"
+        },
+        {
+          "file": "selfhost/build/phase173/scc-source01/manifest.json",
+          "bytes": 3986476,
+          "sha256": "8de33445ad450b7a7e0e88ae3e723d2f8a618b2073739873eb2c69625b634509",
+          "metadata": {
+            "device": 2306,
+            "inode": 79597069,
+            "size": 3986476,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794005909946704861,
+            "ctimeNs": 1794005909946704861,
+            "allocatedBytes": 3989504
+          },
+          "identityEvidence": "Complete metadata snapshot manifest; fresh pin, source identity cross-checked against terminal API receipt"
+        }
+      ],
+      "allocatedBytes": 5578752,
+      "terminalReaderOrWriter": {
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-api01/report.json",
+          "bytes": 3904,
+          "sha256": "d6af9f261048e2e61cc83dbf086fc44dff2e5de89a9eb120eeff4e6d582a8585"
+        },
+        "guard": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-api01-guard/process.json",
+          "bytes": 3087,
+          "sha256": "5c8161fbc5e981e6b249b79165a3d1021ba559a870503584363d1188f611cc70"
+        },
+        "lifecycle": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-api01-guard/retention.json",
+          "bytes": 1012,
+          "sha256": "e3003ecd59dc1a98593c259f8cc58a59acfb187ca12568de981873022e13117b"
+        },
+        "closure": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase173/scc-api01-close/report.json",
+          "bytes": 1424,
+          "sha256": "b087d6044b6a0960a85fe3cf3cabce23373edf54b9f922555ca421945f66c32a"
+        }
+      },
+      "sourceWriter": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-source01/manifest.json",
+        "bytes": 3986476,
+        "sha256": "8de33445ad450b7a7e0e88ae3e723d2f8a618b2073739873eb2c69625b634509"
+      },
+      "scope": "Only listed exact leaves. All API/control reports, logs, exports/bindings, binaries/IR and unlisted files stay hot. Historical replay requires exact restore."
+    },
+    {
+      "name": "p173-retired-scc-source02",
+      "root": "selfhost/build/phase173/scc-source02",
+      "kind": "source-snapshot",
+      "classification": "completed metadata snapshot, failed API reader",
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase173/scc-source02/compiler.bend",
+          "bytes": 1588373,
+          "sha256": "e8e3d68d5d1cd26131f827773dfe5d7762619e7a1547163729af386e769b11b0",
+          "metadata": {
+            "device": 2306,
+            "inode": 79597118,
+            "size": 1588373,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794006169302665764,
+            "ctimeNs": 1794006169302665764,
+            "allocatedBytes": 1589248
+          },
+          "identityEvidence": "Original terminal receipt pin agrees"
+        },
+        {
+          "file": "selfhost/build/phase173/scc-source02/manifest.json",
+          "bytes": 3986476,
+          "sha256": "6e9911dcb8fc9b4abe81cd8786627cc585fc8729599b83e8e0ee966ebf176803",
+          "metadata": {
+            "device": 2306,
+            "inode": 79597121,
+            "size": 3986476,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794006169510659276,
+            "ctimeNs": 1794006169510659276,
+            "allocatedBytes": 3989504
+          },
+          "identityEvidence": "Complete metadata snapshot manifest; fresh pin, source identity cross-checked against terminal API receipt"
+        }
+      ],
+      "allocatedBytes": 5578752,
+      "terminalReaderOrWriter": {
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-api02/report.json",
+          "bytes": 3910,
+          "sha256": "3b37a66fc071f7bc68c225452993f20a97b0ffcbc315b54f92157b00fbddb1c7"
+        },
+        "guard": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-api02-guard/process.json",
+          "bytes": 3085,
+          "sha256": "2aa6cec121b6d0c561e571592c2f56d70332164310698ed56a23fdfc85456e5b"
+        },
+        "lifecycle": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-api02-guard/retention.json",
+          "bytes": 1009,
+          "sha256": "c179db3cfaad34bd25dbc2086fc1024325f6565988fd9ed1d047b42913fe3d96"
+        },
+        "closure": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase173/scc-api02-close/report.json",
+          "bytes": 1424,
+          "sha256": "b2cfa47acc38063db733f86679ea706d426a8b1863754c414756c4ae517d23fa"
+        }
+      },
+      "sourceWriter": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-source02/manifest.json",
+        "bytes": 3986476,
+        "sha256": "6e9911dcb8fc9b4abe81cd8786627cc585fc8729599b83e8e0ee966ebf176803"
+      },
+      "scope": "Only listed exact leaves. All API/control reports, logs, exports/bindings, binaries/IR and unlisted files stay hot. Historical replay requires exact restore."
+    },
+    {
+      "name": "p173-retired-scc-source03",
+      "root": "selfhost/build/phase173/scc-source03",
+      "kind": "source-snapshot",
+      "classification": "completed metadata snapshot, completed API reader",
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase173/scc-source03/compiler.bend",
+          "bytes": 1588389,
+          "sha256": "1f1d9cb5f4087b2ab99c9949db0b0843c051750dfe14955c4150405d6c12c11a",
+          "metadata": {
+            "device": 2306,
+            "inode": 79597153,
+            "size": 1588389,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794006269835530048,
+            "ctimeNs": 1794006269835530048,
+            "allocatedBytes": 1589248
+          },
+          "identityEvidence": "Original terminal receipt pin agrees"
+        },
+        {
+          "file": "selfhost/build/phase173/scc-source03/manifest.json",
+          "bytes": 3986476,
+          "sha256": "91ff86bf9351f1d82818b1ccccef953edb3c5756ed101b8ccd256dd0cb0db5d5",
+          "metadata": {
+            "device": 2306,
+            "inode": 79597156,
+            "size": 3986476,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794006270155520067,
+            "ctimeNs": 1794006270155520067,
+            "allocatedBytes": 3989504
+          },
+          "identityEvidence": "Complete metadata snapshot manifest; fresh pin, source identity cross-checked against terminal API receipt"
+        }
+      ],
+      "allocatedBytes": 5578752,
+      "terminalReaderOrWriter": {
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-api03/report.json",
+          "bytes": 4886,
+          "sha256": "256f08987334d81e09e6d8b004bea5bd898cc35105788b864a912b8162376da1"
+        },
+        "guard": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-api03-guard/process.json",
+          "bytes": 3092,
+          "sha256": "f9f2d2a34fbc4e6ea5fe783a64dd1b7b37521a68c381338c93da7c320867c658"
+        },
+        "lifecycle": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-api03-guard/retention.json",
+          "bytes": 1017,
+          "sha256": "fe085a0de8e07e1e9cdc02972981aeda4f9d111d58ce5a7af7d66c9dd79ddf3f"
+        },
+        "closure": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase173/scc-api03-close/report.json",
+          "bytes": 1427,
+          "sha256": "cf6c5ee91312a52156b1b9cc4a067bcaa9385315e35aba1e98b67dc90d9c0ca9"
+        }
+      },
+      "sourceWriter": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-source03/manifest.json",
+        "bytes": 3986476,
+        "sha256": "91ff86bf9351f1d82818b1ccccef953edb3c5756ed101b8ccd256dd0cb0db5d5"
+      },
+      "scope": "Only listed exact leaves. All API/control reports, logs, exports/bindings, binaries/IR and unlisted files stay hot. Historical replay requires exact restore."
+    },
+    {
+      "name": "p173-retired-scc-diagnostic-source01",
+      "root": "selfhost/build/phase173/scc-diagnostic-source01",
+      "kind": "source-snapshot",
+      "classification": "completed metadata snapshot, completed API reader",
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase173/scc-diagnostic-source01/compiler.bend",
+          "bytes": 1591951,
+          "sha256": "03ff2b538b15680ec04ed7e63dd639d7bbc5ba00b98995fd88f8cd1d4f53d2a7",
+          "metadata": {
+            "device": 2306,
+            "inode": 79597536,
+            "size": 1591951,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794007255597256020,
+            "ctimeNs": 1794007255597256020,
+            "allocatedBytes": 1593344
+          },
+          "identityEvidence": "Original terminal receipt pin agrees"
+        },
+        {
+          "file": "selfhost/build/phase173/scc-diagnostic-source01/manifest.json",
+          "bytes": 3989299,
+          "sha256": "26be8bf12b7fbfbc5eb2d85f3d93b81134400b7b7167787ab350a4630e9e2350",
+          "metadata": {
+            "device": 2306,
+            "inode": 79597539,
+            "size": 3989299,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794007255793249911,
+            "ctimeNs": 1794007255797249785,
+            "allocatedBytes": 3989504
+          },
+          "identityEvidence": "Complete metadata snapshot manifest; fresh pin, source identity cross-checked against terminal API receipt"
+        }
+      ],
+      "allocatedBytes": 5582848,
+      "terminalReaderOrWriter": {
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-diagnostic-api01/report.json",
+          "bytes": 5065,
+          "sha256": "165dd3e2e59583f85a9aa150d1fcba40c72f9eeb2426a5a20aa728a028cbb830"
+        },
+        "guard": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-diagnostic-api01-guard/process.json",
+          "bytes": 3158,
+          "sha256": "d1919cb1e890eee6685c90abdd4e28c9500d454d895fb13fe659a6f408dc7d79"
+        },
+        "lifecycle": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-diagnostic-api01-guard/retention.json",
+          "bytes": 1062,
+          "sha256": "40a2507481a4f2225db5edff091f9e9be442029144904c77b4f8e3a6337f318a"
+        },
+        "closure": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase173/scc-diagnostic-api01-close/report.json",
+          "bytes": 1460,
+          "sha256": "aae899cdc94087988850cf2d8fe8b569ddd467e38d9cf19b883114049738c116"
+        }
+      },
+      "sourceWriter": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-diagnostic-source01/manifest.json",
+        "bytes": 3989299,
+        "sha256": "26be8bf12b7fbfbc5eb2d85f3d93b81134400b7b7167787ab350a4630e9e2350"
+      },
+      "scope": "Only listed exact leaves. All API/control reports, logs, exports/bindings, binaries/IR and unlisted files stay hot. Historical replay requires exact restore."
+    },
+    {
+      "name": "p173-retired-abi-source01",
+      "root": "selfhost/build/phase173/abi-source01",
+      "kind": "source-snapshot",
+      "classification": "completed metadata snapshot, failed API reader",
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase173/abi-source01/compiler.bend",
+          "bytes": 1607379,
+          "sha256": "2c267367bbe5bb66fd8e3a500ce149bc8a8db1934dcbc5cee3d9bb2673c5bf8c",
+          "metadata": {
+            "device": 2306,
+            "inode": 79597649,
+            "size": 1607379,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794008068392181953,
+            "ctimeNs": 1794008068392181953,
+            "allocatedBytes": 1609728
+          },
+          "identityEvidence": "Original terminal receipt pin agrees"
+        },
+        {
+          "file": "selfhost/build/phase173/abi-source01/manifest.json",
+          "bytes": 3999693,
+          "sha256": "46e082a27f0be209933e4d1a698e7e7b15a71ff6be2bfe76a0bafd12694d637d",
+          "metadata": {
+            "device": 2306,
+            "inode": 79597652,
+            "size": 3999693,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794008068592175793,
+            "ctimeNs": 1794008068596175671,
+            "allocatedBytes": 4001792
+          },
+          "identityEvidence": "Complete metadata snapshot manifest; fresh pin, source identity cross-checked against terminal API receipt"
+        }
+      ],
+      "allocatedBytes": 5611520,
+      "terminalReaderOrWriter": {
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-api01/report.json",
+          "bytes": 3994,
+          "sha256": "90affff134fa2482ebf4c6636beedac96bbce521f42b12a45d2de0a00aa0c7ab"
+        },
+        "guard": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-api01-guard/process.json",
+          "bytes": 3087,
+          "sha256": "fc3041398bed4011863e0aef4b3679b4ecc1fff4287e2438a569c9c87e971897"
+        },
+        "lifecycle": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-api01-guard/retention.json",
+          "bytes": 1011,
+          "sha256": "912dc58adfcb679d2386dd77ab10ce6fd51d967ae8d85ad1f273bddaad7c4a07"
+        },
+        "closure": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase173/abi-api01-close/report.json",
+          "bytes": 1423,
+          "sha256": "3546113a9512aa2170eb00acb0cfc44b8b6d39a109a44801cb79ad58c7e1af81"
+        }
+      },
+      "sourceWriter": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-source01/manifest.json",
+        "bytes": 3999693,
+        "sha256": "46e082a27f0be209933e4d1a698e7e7b15a71ff6be2bfe76a0bafd12694d637d"
+      },
+      "scope": "Only listed exact leaves. All API/control reports, logs, exports/bindings, binaries/IR and unlisted files stay hot. Historical replay requires exact restore."
+    },
+    {
+      "name": "p173-retired-abi-source02",
+      "root": "selfhost/build/phase173/abi-source02",
+      "kind": "source-snapshot",
+      "classification": "completed metadata snapshot, completed API reader",
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase173/abi-source02/compiler.bend",
+          "bytes": 1608389,
+          "sha256": "5aef3dfd9c6685b97a5b31d6a2d4d53e8682d34846948accecca0d2c500e1433",
+          "metadata": {
+            "device": 2306,
+            "inode": 79597761,
+            "size": 1608389,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794008192672348793,
+            "ctimeNs": 1794008192672348793,
+            "allocatedBytes": 1609728
+          },
+          "identityEvidence": "Original terminal receipt pin agrees"
+        },
+        {
+          "file": "selfhost/build/phase173/abi-source02/manifest.json",
+          "bytes": 3999708,
+          "sha256": "eedf63d2532f359c7c4f65c90b7fced414b0a1e45eb0df6658b615b08a718c8c",
+          "metadata": {
+            "device": 2306,
+            "inode": 79597764,
+            "size": 3999708,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794008192872342570,
+            "ctimeNs": 1794008192876342447,
+            "allocatedBytes": 4001792
+          },
+          "identityEvidence": "Complete metadata snapshot manifest; fresh pin, source identity cross-checked against terminal API receipt"
+        }
+      ],
+      "allocatedBytes": 5611520,
+      "terminalReaderOrWriter": {
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-api02/report.json",
+          "bytes": 5032,
+          "sha256": "749460eca41b856f1d0939aae083b42a972763f69d202d276c166bf5706a9922"
+        },
+        "guard": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-api02-guard/process.json",
+          "bytes": 3092,
+          "sha256": "b453d4a766d5b35ff0c408e8e4ce4b5323c606934560e523827b06353e7a1bed"
+        },
+        "lifecycle": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-api02-guard/retention.json",
+          "bytes": 1017,
+          "sha256": "4e262a183abb534761a2b15a2d40a6848510a0ec054b46e1bc9ecb4bcaf55713"
+        },
+        "closure": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase173/abi-api02-close/report.json",
+          "bytes": 1426,
+          "sha256": "38d00313bb02a660276a30997eefbd0e8e0cacd33831e9c194a006d8085f915a"
+        }
+      },
+      "sourceWriter": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-source02/manifest.json",
+        "bytes": 3999708,
+        "sha256": "eedf63d2532f359c7c4f65c90b7fced414b0a1e45eb0df6658b615b08a718c8c"
+      },
+      "scope": "Only listed exact leaves. All API/control reports, logs, exports/bindings, binaries/IR and unlisted files stay hot. Historical replay requires exact restore."
+    },
+    {
+      "name": "p173-retired-store-api06",
+      "root": "selfhost/build/phase173/store-api06",
+      "kind": "retired-hosted-api",
+      "classification": "completed",
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase173/store-api06/api.mjs",
+          "bytes": 3812510,
+          "sha256": "d74bffd0a4518c1ffcf840d2d39eb33b9e1555f7cd953e7be1996f2ecd8b57da",
+          "metadata": {
+            "device": 2306,
+            "inode": 79597059,
+            "size": 3812510,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794005861756197185,
+            "ctimeNs": 1794005861756197185,
+            "allocatedBytes": 3813376
+          },
+          "identityEvidence": "Original terminal receipt pin agrees"
+        }
+      ],
+      "allocatedBytes": 3813376,
+      "terminalReaderOrWriter": {
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-api06/report.json",
+          "bytes": 5262,
+          "sha256": "446248cb1f505263449c8df42095ba004bf5f66367445e81de60bdc73ae01166"
+        },
+        "guard": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-api06-guard/process.json",
+          "bytes": 3103,
+          "sha256": "dc8f7aab203b5ba29fb55fd444684af5b6dd20c3112b51abc4b9227fca61b74a"
+        },
+        "lifecycle": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-api06-guard/retention.json",
+          "bytes": 1025,
+          "sha256": "a448943aed43a8a4396e24c6628efcfcc8ca2d46b7b5012d53a4c873f7cf5f17"
+        },
+        "closure": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase173/store-api06-close/report.json",
+          "bytes": 1433,
+          "sha256": "8b3bc4e7602c3fbdc2199bddea455c943c44d230535521551ab3b2dccfb24371"
+        }
+      },
+      "sourceWriter": null,
+      "scope": "Only listed exact leaves. All API/control reports, logs, exports/bindings, binaries/IR and unlisted files stay hot. Historical replay requires exact restore."
+    },
+    {
+      "name": "p173-retired-store-flat7-api01",
+      "root": "selfhost/build/phase173/store-flat7-api01",
+      "kind": "retired-hosted-api",
+      "classification": "completed",
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase173/store-flat7-api01/api.mjs",
+          "bytes": 3819372,
+          "sha256": "191c1fc8a79ef650a0ac2f2d1aeb4c0f51359e1b90a52ebd435e15452c8b1c83",
+          "metadata": {
+            "device": 2306,
+            "inode": 79596907,
+            "size": 3819372,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794005199500723774,
+            "ctimeNs": 1794005199500723774,
+            "allocatedBytes": 3821568
+          },
+          "identityEvidence": "Original terminal receipt pin agrees"
+        }
+      ],
+      "allocatedBytes": 3821568,
+      "terminalReaderOrWriter": {
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-flat7-api01/report.json",
+          "bytes": 5322,
+          "sha256": "9dd66b9ea09403770fa5acc8d96061d88e25ba615081312bf1e59c4f6fe5cb6a"
+        },
+        "guard": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-flat7-api01-guard/process.json",
+          "bytes": 3138,
+          "sha256": "08b892ccdb2561e93989608116a556df3a023e410f7ed5c2fc5f0effd3bfe324"
+        },
+        "lifecycle": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-flat7-api01-guard/retention.json",
+          "bytes": 1049,
+          "sha256": "448ab704e9ec5394c56cbd4573457a37c5e1b0385a568bd266a914f3c1f74302"
+        },
+        "closure": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase173/store-flat7-api01-close/report.json",
+          "bytes": 1450,
+          "sha256": "5f5dcb4949edfb69f43b578fc2bda49a903857979847d5e70a75fc2866fee3aa"
+        }
+      },
+      "sourceWriter": null,
+      "scope": "Only listed exact leaves. All API/control reports, logs, exports/bindings, binaries/IR and unlisted files stay hot. Historical replay requires exact restore."
+    },
+    {
+      "name": "p173-retired-store-direct-api01",
+      "root": "selfhost/build/phase173/store-direct-api01",
+      "kind": "retired-hosted-api",
+      "classification": "completed",
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase173/store-direct-api01/api.mjs",
+          "bytes": 4468930,
+          "sha256": "b3a240630b6a1cf50c97b23080202f5ee79f693cdda602884b399eac8d7b4669",
+          "metadata": {
+            "device": 2306,
+            "inode": 79597580,
+            "size": 4468930,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794007529952767197,
+            "ctimeNs": 1794007529952767197,
+            "allocatedBytes": 4472832
+          },
+          "identityEvidence": "Original terminal receipt pin agrees"
+        }
+      ],
+      "allocatedBytes": 4472832,
+      "terminalReaderOrWriter": {
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-direct-api01/report.json",
+          "bytes": 5338,
+          "sha256": "9a4941abaff08547b528169f3bad009f7eb41bdf9e11228fdc79ffe8c157d1ac"
+        },
+        "guard": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-direct-api01-guard/process.json",
+          "bytes": 3145,
+          "sha256": "7d97965986a60988ecc98fbd77b37e2a23cbb32b596d23c485f28cccdca87bea"
+        },
+        "lifecycle": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-direct-api01-guard/retention.json",
+          "bytes": 1053,
+          "sha256": "9cd7fa54723a072137e07c6a550fb05af0ca69348ef832d406453725492b0b81"
+        },
+        "closure": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase173/store-direct-api01-close/report.json",
+          "bytes": 1453,
+          "sha256": "fca54f01750cce279b9ef4dbaede4f483f955c5defb1cdee8b627b66601316cd"
+        }
+      },
+      "sourceWriter": null,
+      "scope": "Only listed exact leaves. All API/control reports, logs, exports/bindings, binaries/IR and unlisted files stay hot. Historical replay requires exact restore."
+    },
+    {
+      "name": "p173-retired-scc-api03",
+      "root": "selfhost/build/phase173/scc-api03",
+      "kind": "retired-hosted-api",
+      "classification": "completed",
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase173/scc-api03/api.mjs",
+          "bytes": 2712848,
+          "sha256": "ec4b0b2d4d782afa8b3ef77122ab4e01190083020e7299f80761dd8f7ecaddeb",
+          "metadata": {
+            "device": 2306,
+            "inode": 79597166,
+            "size": 2712848,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794006285307047474,
+            "ctimeNs": 1794006285307047474,
+            "allocatedBytes": 2715648
+          },
+          "identityEvidence": "Original terminal receipt pin agrees"
+        }
+      ],
+      "allocatedBytes": 2715648,
+      "terminalReaderOrWriter": {
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-api03/report.json",
+          "bytes": 4886,
+          "sha256": "256f08987334d81e09e6d8b004bea5bd898cc35105788b864a912b8162376da1"
+        },
+        "guard": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-api03-guard/process.json",
+          "bytes": 3092,
+          "sha256": "f9f2d2a34fbc4e6ea5fe783a64dd1b7b37521a68c381338c93da7c320867c658"
+        },
+        "lifecycle": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-api03-guard/retention.json",
+          "bytes": 1017,
+          "sha256": "fe085a0de8e07e1e9cdc02972981aeda4f9d111d58ce5a7af7d66c9dd79ddf3f"
+        },
+        "closure": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase173/scc-api03-close/report.json",
+          "bytes": 1427,
+          "sha256": "cf6c5ee91312a52156b1b9cc4a067bcaa9385315e35aba1e98b67dc90d9c0ca9"
+        }
+      },
+      "sourceWriter": null,
+      "scope": "Only listed exact leaves. All API/control reports, logs, exports/bindings, binaries/IR and unlisted files stay hot. Historical replay requires exact restore."
+    },
+    {
+      "name": "p173-retired-scc-diagnostic-api01",
+      "root": "selfhost/build/phase173/scc-diagnostic-api01",
+      "kind": "retired-hosted-api",
+      "classification": "completed",
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase173/scc-diagnostic-api01/api.mjs",
+          "bytes": 2717089,
+          "sha256": "fc83cae690f474c5aeef42edb5492fc389db36291f85532d9ca8459f6e85df5f",
+          "metadata": {
+            "device": 2306,
+            "inode": 79597549,
+            "size": 2717089,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794007279788501933,
+            "ctimeNs": 1794007279788501933,
+            "allocatedBytes": 2719744
+          },
+          "identityEvidence": "Original terminal receipt pin agrees"
+        }
+      ],
+      "allocatedBytes": 2719744,
+      "terminalReaderOrWriter": {
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-diagnostic-api01/report.json",
+          "bytes": 5065,
+          "sha256": "165dd3e2e59583f85a9aa150d1fcba40c72f9eeb2426a5a20aa728a028cbb830"
+        },
+        "guard": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-diagnostic-api01-guard/process.json",
+          "bytes": 3158,
+          "sha256": "d1919cb1e890eee6685c90abdd4e28c9500d454d895fb13fe659a6f408dc7d79"
+        },
+        "lifecycle": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/scc-diagnostic-api01-guard/retention.json",
+          "bytes": 1062,
+          "sha256": "40a2507481a4f2225db5edff091f9e9be442029144904c77b4f8e3a6337f318a"
+        },
+        "closure": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase173/scc-diagnostic-api01-close/report.json",
+          "bytes": 1460,
+          "sha256": "aae899cdc94087988850cf2d8fe8b569ddd467e38d9cf19b883114049738c116"
+        }
+      },
+      "sourceWriter": null,
+      "scope": "Only listed exact leaves. All API/control reports, logs, exports/bindings, binaries/IR and unlisted files stay hot. Historical replay requires exact restore."
+    },
+    {
+      "name": "p173-retired-abi-api02",
+      "root": "selfhost/build/phase173/abi-api02",
+      "kind": "retired-hosted-api",
+      "classification": "completed",
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase173/abi-api02/api.mjs",
+          "bytes": 2743731,
+          "sha256": "5fdc252a3246a387631071855f48440e3c9dfcd85048d4711c040ad63e2b8ce0",
+          "metadata": {
+            "device": 2306,
+            "inode": 79597808,
+            "size": 2743731,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794008255298400552,
+            "ctimeNs": 1794008255298400552,
+            "allocatedBytes": 2744320
+          },
+          "identityEvidence": "Original terminal receipt pin agrees"
+        }
+      ],
+      "allocatedBytes": 2744320,
+      "terminalReaderOrWriter": {
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-api02/report.json",
+          "bytes": 5032,
+          "sha256": "749460eca41b856f1d0939aae083b42a972763f69d202d276c166bf5706a9922"
+        },
+        "guard": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-api02-guard/process.json",
+          "bytes": 3092,
+          "sha256": "b453d4a766d5b35ff0c408e8e4ce4b5323c606934560e523827b06353e7a1bed"
+        },
+        "lifecycle": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-api02-guard/retention.json",
+          "bytes": 1017,
+          "sha256": "4e262a183abb534761a2b15a2d40a6848510a0ec054b46e1bc9ecb4bcaf55713"
+        },
+        "closure": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase173/abi-api02-close/report.json",
+          "bytes": 1426,
+          "sha256": "38d00313bb02a660276a30997eefbd0e8e0cacd33831e9c194a006d8085f915a"
+        }
+      },
+      "sourceWriter": null,
+      "scope": "Only listed exact leaves. All API/control reports, logs, exports/bindings, binaries/IR and unlisted files stay hot. Historical replay requires exact restore."
+    },
+    {
+      "name": "p173-retired-store-flat7-verifier01",
+      "root": "selfhost/build/phase173/store-flat7-verifier01",
+      "kind": "optional-completed-verifier-values",
+      "classification": "completed",
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase173/store-flat7-verifier01/complete-input-values.json",
+          "bytes": 2570751,
+          "sha256": "5278370c25e15660606607d87ca60310c1d3f8fdc6394db25180542a302a1765",
+          "metadata": {
+            "device": 2306,
+            "inode": 79596930,
+            "size": 2570751,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794005410578169023,
+            "ctimeNs": 1794005410578169023,
+            "allocatedBytes": 2572288
+          },
+          "identityEvidence": "Original terminal receipt pin agrees"
+        },
+        {
+          "file": "selfhost/build/phase173/store-flat7-verifier01/baseline-complete-values.json",
+          "bytes": 3574490,
+          "sha256": "868373929766049cae5de6ef0561de20cb68133a33aafae2fb6ab69427ddb2f0",
+          "metadata": {
+            "device": 2306,
+            "inode": 79596931,
+            "size": 3574490,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794005411614136941,
+            "ctimeNs": 1794005411614136941,
+            "allocatedBytes": 3575808
+          },
+          "identityEvidence": "Original terminal receipt pin agrees"
+        },
+        {
+          "file": "selfhost/build/phase173/store-flat7-verifier01/candidate-complete-values.json",
+          "bytes": 3574490,
+          "sha256": "868373929766049cae5de6ef0561de20cb68133a33aafae2fb6ab69427ddb2f0",
+          "metadata": {
+            "device": 2306,
+            "inode": 79596932,
+            "size": 3574490,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794005411642136074,
+            "ctimeNs": 1794005411642136074,
+            "allocatedBytes": 3575808
+          },
+          "identityEvidence": "Original terminal receipt pin agrees"
+        }
+      ],
+      "allocatedBytes": 9723904,
+      "terminalReaderOrWriter": {
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-flat7-verifier01/report.json",
+          "bytes": 111158,
+          "sha256": "fc19c90edb153f5345a92e45c9dcac628b92d77c05fd7a2e710b98634fd1a8b0"
+        },
+        "guard": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-flat7-verifier01-guard/process.json",
+          "bytes": 3799,
+          "sha256": "f994ebe1e5d043680ee7b25e6e2365699457078f808b694a9b34afc5673e3c1f"
+        },
+        "lifecycle": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-flat7-verifier01-guard/retention.json",
+          "bytes": 1070,
+          "sha256": "f6483c392be869b070ad1377441959e9a0afc76bb0938983c3a509cf18cbd6f5"
+        },
+        "closure": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase173/store-flat7-verifier01-close/report.json",
+          "bytes": 1466,
+          "sha256": "331e03162e95dc6769235b6d7a5555925d6a7fb0dcfabd7436cc61ab619061e5"
+        }
+      },
+      "sourceWriter": null,
+      "scope": "Only listed exact leaves. All API/control reports, logs, exports/bindings, binaries/IR and unlisted files stay hot. Historical replay requires exact restore."
+    },
+    {
+      "name": "p173-retired-store-direct-verifier01",
+      "root": "selfhost/build/phase173/store-direct-verifier01",
+      "kind": "optional-completed-verifier-values",
+      "classification": "completed",
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase173/store-direct-verifier01/complete-input-values.json",
+          "bytes": 2570751,
+          "sha256": "5278370c25e15660606607d87ca60310c1d3f8fdc6394db25180542a302a1765",
+          "metadata": {
+            "device": 2306,
+            "inode": 79597588,
+            "size": 2570751,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794007566051655266,
+            "ctimeNs": 1794007566051655266,
+            "allocatedBytes": 2572288
+          },
+          "identityEvidence": "Original terminal receipt pin agrees"
+        },
+        {
+          "file": "selfhost/build/phase173/store-direct-verifier01/baseline-complete-values.json",
+          "bytes": 3574490,
+          "sha256": "868373929766049cae5de6ef0561de20cb68133a33aafae2fb6ab69427ddb2f0",
+          "metadata": {
+            "device": 2306,
+            "inode": 79597589,
+            "size": 3574490,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794007567075623726,
+            "ctimeNs": 1794007567075623726,
+            "allocatedBytes": 3575808
+          },
+          "identityEvidence": "Original terminal receipt pin agrees"
+        },
+        {
+          "file": "selfhost/build/phase173/store-direct-verifier01/candidate-complete-values.json",
+          "bytes": 3574490,
+          "sha256": "868373929766049cae5de6ef0561de20cb68133a33aafae2fb6ab69427ddb2f0",
+          "metadata": {
+            "device": 2306,
+            "inode": 79597590,
+            "size": 3574490,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794007567127622124,
+            "ctimeNs": 1794007567127622124,
+            "allocatedBytes": 3575808
+          },
+          "identityEvidence": "Original terminal receipt pin agrees"
+        }
+      ],
+      "allocatedBytes": 9723904,
+      "terminalReaderOrWriter": {
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-direct-verifier01/report.json",
+          "bytes": 111389,
+          "sha256": "419f8b1ef7c271e01219597e4525d0b3e2a94d3bf26c94a7eda9c755ba6b0d2d"
+        },
+        "guard": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-direct-verifier01-guard/process.json",
+          "bytes": 3805,
+          "sha256": "cd0c4b821701fc6acf81a1765ae892f228d61dd86628a3b54c3c2a0475350456"
+        },
+        "lifecycle": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-direct-verifier01-guard/retention.json",
+          "bytes": 1073,
+          "sha256": "d0fbfb250f61dec4d0b7172b1d83dea86c1b81eb65382c35542664a4846be7dc"
+        },
+        "closure": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase173/store-direct-verifier01-close/report.json",
+          "bytes": 1469,
+          "sha256": "497bcfd3c5ee0c6b9ff0a696fc52fd9aba5ab8093f55c97adf70b369f71bd90d"
+        }
+      },
+      "sourceWriter": null,
+      "scope": "Only listed exact leaves. All API/control reports, logs, exports/bindings, binaries/IR and unlisted files stay hot. Historical replay requires exact restore."
+    }
+  ],
+  "selectedFiles": 40,
+  "allocatedBytes": 118022144,
+  "byKindAllocatedBytes": {
+    "optional-completed-verifier-values": 19447808,
+    "retired-hosted-api": 20287488,
+    "source-snapshot": 78286848
+  },
+  "requiredReserveBytes": 5368709120,
+  "archiveBudgetPerRootBytes": 33554432,
+  "archiveVerifier": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/archive-v02.py",
+    "bytes": 18412,
+    "sha256": "3238e0774c6c21c3de6c07bcbd71e469cbb23aaba01f99da0cb1e9f51990ad9f"
+  },
+  "genericCapsuleImplementation": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/close.py",
+    "bytes": 13971,
+    "sha256": "7e37ec90fe3fd4a0f990cae727052e8ccdf7880f05dcc68618da15c0d76b0fef"
+  },
+  "captureCompatibility": {
+    "existingArchiveSelectedV02": false,
+    "existingCloseCLI": false,
+    "reason": "archive-selected-v02 only admits program.ssa/s/o and successful original writers; close CLI cannot reopen sealed roots. A root-reviewed exact-leaf adapter can reuse close.capsule and unchanged archive-v02 verification without reopening lifecycle.",
+    "sourceManifestHandling": "Archive selected source manifests byte-exactly. Keep terminal API reader receipts and compact proposal pins hot. Define the archive receipt protected metadata honestly; if a selected manifest is automatically protected through writersClosed, do not suppress the verifier refusal."
+  },
+  "dependencyAudit": {
+    "rootSeedRule": "Every dispatch-/plan-/borrow- root, every abi-*03 root, vertical-base-api02/source02 and store-native-candidate-source02; every direct file is protected, then existing Phase173 paths in bounded JSON are followed transitively.",
+    "protectedSeedRoots": [
+      "selfhost/build/phase173/abi-api03",
+      "selfhost/build/phase173/abi-direct-store-emission03",
+      "selfhost/build/phase173/abi-direct-store-machine03",
+      "selfhost/build/phase173/abi-direct-store-pair03",
+      "selfhost/build/phase173/abi-finite03",
+      "selfhost/build/phase173/abi-frontend03",
+      "selfhost/build/phase173/abi-modules03",
+      "selfhost/build/phase173/abi-source03",
+      "selfhost/build/phase173/abi-store-admission03",
+      "selfhost/build/phase173/abi-store-emission03",
+      "selfhost/build/phase173/abi-store-machine03",
+      "selfhost/build/phase173/abi-store-pair03",
+      "selfhost/build/phase173/abi-verifier-emission03",
+      "selfhost/build/phase173/abi-verifier-machine03",
+      "selfhost/build/phase173/abi-verifier-pair03",
+      "selfhost/build/phase173/abi-workload-emission03",
+      "selfhost/build/phase173/abi-workload-machine03",
+      "selfhost/build/phase173/abi-workload-output03",
+      "selfhost/build/phase173/borrow-api01",
+      "selfhost/build/phase173/borrow-api02",
+      "selfhost/build/phase173/borrow-api03",
+      "selfhost/build/phase173/borrow-api04",
+      "selfhost/build/phase173/borrow-api05",
+      "selfhost/build/phase173/borrow-api06",
+      "selfhost/build/phase173/borrow-ast-baseline01",
+      "selfhost/build/phase173/borrow-ast-digest-baseline01",
+      "selfhost/build/phase173/borrow-ast-digest-emission01",
+      "selfhost/build/phase173/borrow-ast-digest-machine01",
+      "selfhost/build/phase173/borrow-ast-digest-modules01",
+      "selfhost/build/phase173/borrow-ast-digest-oracle-api01",
+      "selfhost/build/phase173/borrow-ast-digest-oracle01",
+      "selfhost/build/phase173/borrow-ast-digest-pair01",
+      "selfhost/build/phase173/borrow-ast-digest-source01",
+      "selfhost/build/phase173/borrow-ast-emission05",
+      "selfhost/build/phase173/borrow-ast-event-base-run01",
+      "selfhost/build/phase173/borrow-ast-event-base01",
+      "selfhost/build/phase173/borrow-ast-event-cand-run01",
+      "selfhost/build/phase173/borrow-ast-event-cand01",
+      "selfhost/build/phase173/borrow-ast-machine06",
+      "selfhost/build/phase173/borrow-ast-modules01",
+      "selfhost/build/phase173/borrow-ast-oracle-api01",
+      "selfhost/build/phase173/borrow-ast-oracle-bounded01",
+      "selfhost/build/phase173/borrow-ast-oracle-machine01",
+      "selfhost/build/phase173/borrow-ast-oracle-observe01",
+      "selfhost/build/phase173/borrow-ast-oracle-output01",
+      "selfhost/build/phase173/borrow-ast-pair06",
+      "selfhost/build/phase173/borrow-ast-source01",
+      "selfhost/build/phase173/borrow-compiler-baseline01",
+      "selfhost/build/phase173/borrow-compiler-candidate01",
+      "selfhost/build/phase173/borrow-compiler-candidate04",
+      "selfhost/build/phase173/borrow-compiler-events-base-build01",
+      "selfhost/build/phase173/borrow-compiler-events-base01",
+      "selfhost/build/phase173/borrow-compiler-events-cand-build04",
+      "selfhost/build/phase173/borrow-compiler-events-cand04",
+      "selfhost/build/phase173/borrow-compiler-native-base01",
+      "selfhost/build/phase173/borrow-compiler-native-cand04",
+      "selfhost/build/phase173/borrow-compiler-native-output04",
+      "selfhost/build/phase173/borrow-compiler-oracle-api01",
+      "selfhost/build/phase173/borrow-compiler-oracle-machine01",
+      "selfhost/build/phase173/borrow-compiler-oracle-observe01",
+      "selfhost/build/phase173/borrow-compiler-source01",
+      "selfhost/build/phase173/borrow-dispatch-finite01",
+      "selfhost/build/phase173/borrow-finite01",
+      "selfhost/build/phase173/borrow-finite06",
+      "selfhost/build/phase173/borrow-hot-finite01",
+      "selfhost/build/phase173/borrow-long-baseline03",
+      "selfhost/build/phase173/borrow-long-emission04",
+      "selfhost/build/phase173/borrow-long-machine04",
+      "selfhost/build/phase173/borrow-long-oracle-api03",
+      "selfhost/build/phase173/borrow-long-oracle-machine03",
+      "selfhost/build/phase173/borrow-long-oracle-observe03",
+      "selfhost/build/phase173/borrow-long-oracle-output03",
+      "selfhost/build/phase173/borrow-long-pair04",
+      "selfhost/build/phase173/borrow-loop-baseline01",
+      "selfhost/build/phase173/borrow-loop-emission04",
+      "selfhost/build/phase173/borrow-loop-machine04",
+      "selfhost/build/phase173/borrow-loop-modules01",
+      "selfhost/build/phase173/borrow-loop-modules02",
+      "selfhost/build/phase173/borrow-loop-modules03",
+      "selfhost/build/phase173/borrow-loop-oracle-api01",
+      "selfhost/build/phase173/borrow-loop-oracle-machine01",
+      "selfhost/build/phase173/borrow-loop-oracle-observe01",
+      "selfhost/build/phase173/borrow-loop-oracle-output01",
+      "selfhost/build/phase173/borrow-loop-pair04",
+      "selfhost/build/phase173/borrow-loop-source01",
+      "selfhost/build/phase173/borrow-loop-source03",
+      "selfhost/build/phase173/borrow-modules01",
+      "selfhost/build/phase173/borrow-modules02",
+      "selfhost/build/phase173/borrow-modules03",
+      "selfhost/build/phase173/borrow-modules04",
+      "selfhost/build/phase173/borrow-modules05",
+      "selfhost/build/phase173/borrow-oracle-output01",
+      "selfhost/build/phase173/borrow-source01",
+      "selfhost/build/phase173/borrow-source02",
+      "selfhost/build/phase173/borrow-source03",
+      "selfhost/build/phase173/borrow-source04",
+      "selfhost/build/phase173/borrow-source05",
+      "selfhost/build/phase173/borrow-source06",
+      "selfhost/build/phase173/borrow-verifier-emission01",
+      "selfhost/build/phase173/borrow-workload-baseline01",
+      "selfhost/build/phase173/borrow-workloads01",
+      "selfhost/build/phase173/borrow-workloads02",
+      "selfhost/build/phase173/dispatch-abi-workload-emission02",
+      "selfhost/build/phase173/dispatch-abi-workload-machine02",
+      "selfhost/build/phase173/dispatch-abi-workload-output02",
+      "selfhost/build/phase173/dispatch-api01",
+      "selfhost/build/phase173/dispatch-api02",
+      "selfhost/build/phase173/dispatch-finite01",
+      "selfhost/build/phase173/dispatch-finite02",
+      "selfhost/build/phase173/dispatch-frontend01",
+      "selfhost/build/phase173/dispatch-frontend02",
+      "selfhost/build/phase173/dispatch-lookup-baseline01",
+      "selfhost/build/phase173/dispatch-lookup-emission02",
+      "selfhost/build/phase173/dispatch-lookup-machine02",
+      "selfhost/build/phase173/dispatch-lookup-pair02",
+      "selfhost/build/phase173/dispatch-modules01",
+      "selfhost/build/phase173/dispatch-modules02",
+      "selfhost/build/phase173/dispatch-source01",
+      "selfhost/build/phase173/dispatch-source02",
+      "selfhost/build/phase173/dispatch-store-machine01",
+      "selfhost/build/phase173/dispatch-store-machine02",
+      "selfhost/build/phase173/dispatch-store-pair01",
+      "selfhost/build/phase173/dispatch-store-pair02",
+      "selfhost/build/phase173/dispatch-store-replay01",
+      "selfhost/build/phase173/dispatch-store-replay02",
+      "selfhost/build/phase173/plan-capture-binary03",
+      "selfhost/build/phase173/plan-capture-store03",
+      "selfhost/build/phase173/plan-replay-binary03",
+      "selfhost/build/phase173/plan-transport-probe01",
+      "selfhost/build/phase173/store-native-candidate-source02",
+      "selfhost/build/phase173/vertical-base-api02",
+      "selfhost/build/phase173/vertical-base-source02"
+    ],
+    "seedJsonFiles": 161,
+    "phase173DependencyFilesTraversed": 851,
+    "protectedFiles": [
+      "selfhost/build/phase173/abi-api03/api.mjs",
+      "selfhost/build/phase173/abi-api03/report.json",
+      "selfhost/build/phase173/abi-api03/stderr",
+      "selfhost/build/phase173/abi-api03/stdout",
+      "selfhost/build/phase173/abi-direct-store-emission03/program.ssa",
+      "selfhost/build/phase173/abi-direct-store-emission03/report.json",
+      "selfhost/build/phase173/abi-direct-store-machine03/assemble.stderr",
+      "selfhost/build/phase173/abi-direct-store-machine03/assemble.stdout",
+      "selfhost/build/phase173/abi-direct-store-machine03/link.stderr",
+      "selfhost/build/phase173/abi-direct-store-machine03/link.stdout",
+      "selfhost/build/phase173/abi-direct-store-machine03/program",
+      "selfhost/build/phase173/abi-direct-store-machine03/program.o",
+      "selfhost/build/phase173/abi-direct-store-machine03/program.s",
+      "selfhost/build/phase173/abi-direct-store-machine03/qbe.stderr",
+      "selfhost/build/phase173/abi-direct-store-machine03/qbe.stdout",
+      "selfhost/build/phase173/abi-direct-store-machine03/report.json",
+      "selfhost/build/phase173/abi-direct-store-pair03/0-baseline.stderr",
+      "selfhost/build/phase173/abi-direct-store-pair03/0-baseline.stdout",
+      "selfhost/build/phase173/abi-direct-store-pair03/0-candidate.stderr",
+      "selfhost/build/phase173/abi-direct-store-pair03/0-candidate.stdout",
+      "selfhost/build/phase173/abi-direct-store-pair03/1-baseline.stderr",
+      "selfhost/build/phase173/abi-direct-store-pair03/1-baseline.stdout",
+      "selfhost/build/phase173/abi-direct-store-pair03/1-candidate.stderr",
+      "selfhost/build/phase173/abi-direct-store-pair03/1-candidate.stdout",
+      "selfhost/build/phase173/abi-direct-store-pair03/2-baseline.stderr",
+      "selfhost/build/phase173/abi-direct-store-pair03/2-baseline.stdout",
+      "selfhost/build/phase173/abi-direct-store-pair03/2-candidate.stderr",
+      "selfhost/build/phase173/abi-direct-store-pair03/2-candidate.stdout",
+      "selfhost/build/phase173/abi-direct-store-pair03/3-baseline.stderr",
+      "selfhost/build/phase173/abi-direct-store-pair03/3-baseline.stdout",
+      "selfhost/build/phase173/abi-direct-store-pair03/3-candidate.stderr",
+      "selfhost/build/phase173/abi-direct-store-pair03/3-candidate.stdout",
+      "selfhost/build/phase173/abi-direct-store-pair03/report.json",
+      "selfhost/build/phase173/abi-finite03/report.json",
+      "selfhost/build/phase173/abi-frontend03/binding.json",
+      "selfhost/build/phase173/abi-modules03/product-arguments-controls-v2.bend",
+      "selfhost/build/phase173/abi-modules03/product-arguments-controls-v3.bend",
+      "selfhost/build/phase173/abi-modules03/product-arguments-overlay-v2.bend",
+      "selfhost/build/phase173/abi-modules03/product-arguments-prelude-v2.bend",
+      "selfhost/build/phase173/abi-modules03/product-arguments-v2.bend",
+      "selfhost/build/phase173/abi-modules03/scc-controls-v2.bend",
+      "selfhost/build/phase173/abi-modules03/scc-overlay-v2.bend",
+      "selfhost/build/phase173/abi-modules03/scc-prelude-v2.bend",
+      "selfhost/build/phase173/abi-modules03/scc-v2.bend",
+      "selfhost/build/phase173/abi-modules03/vertical-admission-v2.bend",
+      "selfhost/build/phase173/abi-source03/base-binding.json",
+      "selfhost/build/phase173/abi-source03/compiler.bend",
+      "selfhost/build/phase173/abi-source03/exports.json",
+      "selfhost/build/phase173/abi-source03/manifest.json",
+      "selfhost/build/phase173/abi-store-admission03/complete-candidates.json",
+      "selfhost/build/phase173/abi-store-admission03/report.json",
+      "selfhost/build/phase173/abi-store-emission03/program.ssa",
+      "selfhost/build/phase173/abi-store-emission03/report.json",
+      "selfhost/build/phase173/abi-store-machine03/assemble.stderr",
+      "selfhost/build/phase173/abi-store-machine03/assemble.stdout",
+      "selfhost/build/phase173/abi-store-machine03/link.stderr",
+      "selfhost/build/phase173/abi-store-machine03/link.stdout",
+      "selfhost/build/phase173/abi-store-machine03/program",
+      "selfhost/build/phase173/abi-store-machine03/program.o",
+      "selfhost/build/phase173/abi-store-machine03/program.s",
+      "selfhost/build/phase173/abi-store-machine03/qbe.stderr",
+      "selfhost/build/phase173/abi-store-machine03/qbe.stdout",
+      "selfhost/build/phase173/abi-store-machine03/report.json",
+      "selfhost/build/phase173/abi-store-pair03/0-baseline.stderr",
+      "selfhost/build/phase173/abi-store-pair03/0-baseline.stdout",
+      "selfhost/build/phase173/abi-store-pair03/0-candidate.stderr",
+      "selfhost/build/phase173/abi-store-pair03/0-candidate.stdout",
+      "selfhost/build/phase173/abi-store-pair03/1-baseline.stderr",
+      "selfhost/build/phase173/abi-store-pair03/1-baseline.stdout",
+      "selfhost/build/phase173/abi-store-pair03/1-candidate.stderr",
+      "selfhost/build/phase173/abi-store-pair03/1-candidate.stdout",
+      "selfhost/build/phase173/abi-store-pair03/2-baseline.stderr",
+      "selfhost/build/phase173/abi-store-pair03/2-baseline.stdout",
+      "selfhost/build/phase173/abi-store-pair03/2-candidate.stderr",
+      "selfhost/build/phase173/abi-store-pair03/2-candidate.stdout",
+      "selfhost/build/phase173/abi-store-pair03/3-baseline.stderr",
+      "selfhost/build/phase173/abi-store-pair03/3-baseline.stdout",
+      "selfhost/build/phase173/abi-store-pair03/3-candidate.stderr",
+      "selfhost/build/phase173/abi-store-pair03/3-candidate.stdout",
+      "selfhost/build/phase173/abi-store-pair03/report.json",
+      "selfhost/build/phase173/abi-verifier-emission03/program.ssa",
+      "selfhost/build/phase173/abi-verifier-emission03/report.json",
+      "selfhost/build/phase173/abi-verifier-machine03/assemble.stderr",
+      "selfhost/build/phase173/abi-verifier-machine03/assemble.stdout",
+      "selfhost/build/phase173/abi-verifier-machine03/link.stderr",
+      "selfhost/build/phase173/abi-verifier-machine03/link.stdout",
+      "selfhost/build/phase173/abi-verifier-machine03/program",
+      "selfhost/build/phase173/abi-verifier-machine03/program.o",
+      "selfhost/build/phase173/abi-verifier-machine03/program.s",
+      "selfhost/build/phase173/abi-verifier-machine03/qbe.stderr",
+      "selfhost/build/phase173/abi-verifier-machine03/qbe.stdout",
+      "selfhost/build/phase173/abi-verifier-machine03/report.json",
+      "selfhost/build/phase173/abi-verifier-pair03/0-baseline.stderr",
+      "selfhost/build/phase173/abi-verifier-pair03/0-baseline.stdout",
+      "selfhost/build/phase173/abi-verifier-pair03/0-candidate.stderr",
+      "selfhost/build/phase173/abi-verifier-pair03/0-candidate.stdout",
+      "selfhost/build/phase173/abi-verifier-pair03/1-baseline.stderr",
+      "selfhost/build/phase173/abi-verifier-pair03/1-baseline.stdout",
+      "selfhost/build/phase173/abi-verifier-pair03/1-candidate.stderr",
+      "selfhost/build/phase173/abi-verifier-pair03/1-candidate.stdout",
+      "selfhost/build/phase173/abi-verifier-pair03/2-baseline.stderr",
+      "selfhost/build/phase173/abi-verifier-pair03/2-baseline.stdout",
+      "selfhost/build/phase173/abi-verifier-pair03/2-candidate.stderr",
+      "selfhost/build/phase173/abi-verifier-pair03/2-candidate.stdout",
+      "selfhost/build/phase173/abi-verifier-pair03/3-baseline.stderr",
+      "selfhost/build/phase173/abi-verifier-pair03/3-baseline.stdout",
+      "selfhost/build/phase173/abi-verifier-pair03/3-candidate.stderr",
+      "selfhost/build/phase173/abi-verifier-pair03/3-candidate.stdout",
+      "selfhost/build/phase173/abi-verifier-pair03/report.json",
+      "selfhost/build/phase173/abi-workload-baseline01/assemble.stderr",
+      "selfhost/build/phase173/abi-workload-baseline01/assemble.stdout",
+      "selfhost/build/phase173/abi-workload-baseline01/compiler.stderr",
+      "selfhost/build/phase173/abi-workload-baseline01/link.stderr",
+      "selfhost/build/phase173/abi-workload-baseline01/link.stdout",
+      "selfhost/build/phase173/abi-workload-baseline01/program",
+      "selfhost/build/phase173/abi-workload-baseline01/program.o",
+      "selfhost/build/phase173/abi-workload-baseline01/program.s",
+      "selfhost/build/phase173/abi-workload-baseline01/program.ssa",
+      "selfhost/build/phase173/abi-workload-baseline01/qbe.stderr",
+      "selfhost/build/phase173/abi-workload-baseline01/qbe.stdout",
+      "selfhost/build/phase173/abi-workload-baseline01/report.json",
+      "selfhost/build/phase173/abi-workload-emission03/program.ssa",
+      "selfhost/build/phase173/abi-workload-emission03/report.json",
+      "selfhost/build/phase173/abi-workload-expected-v2.txt",
+      "selfhost/build/phase173/abi-workload-expected.txt",
+      "selfhost/build/phase173/abi-workload-machine03/assemble.stderr",
+      "selfhost/build/phase173/abi-workload-machine03/assemble.stdout",
+      "selfhost/build/phase173/abi-workload-machine03/link.stderr",
+      "selfhost/build/phase173/abi-workload-machine03/link.stdout",
+      "selfhost/build/phase173/abi-workload-machine03/program",
+      "selfhost/build/phase173/abi-workload-machine03/program.o",
+      "selfhost/build/phase173/abi-workload-machine03/program.s",
+      "selfhost/build/phase173/abi-workload-machine03/qbe.stderr",
+      "selfhost/build/phase173/abi-workload-machine03/qbe.stdout",
+      "selfhost/build/phase173/abi-workload-machine03/report.json",
+      "selfhost/build/phase173/abi-workload-output03/0-baseline.stderr",
+      "selfhost/build/phase173/abi-workload-output03/0-baseline.stdout",
+      "selfhost/build/phase173/abi-workload-output03/report.json",
+      "selfhost/build/phase173/abi-workload-source01/compiler.bend",
+      "selfhost/build/phase173/base-modules02/vertical.bend",
+      "selfhost/build/phase173/borrow-api01/report.json",
+      "selfhost/build/phase173/borrow-api01/stderr",
+      "selfhost/build/phase173/borrow-api01/stdout",
+      "selfhost/build/phase173/borrow-api02/api.mjs",
+      "selfhost/build/phase173/borrow-api02/report.json",
+      "selfhost/build/phase173/borrow-api02/stderr",
+      "selfhost/build/phase173/borrow-api02/stdout",
+      "selfhost/build/phase173/borrow-api03/api.mjs",
+      "selfhost/build/phase173/borrow-api03/report.json",
+      "selfhost/build/phase173/borrow-api03/stderr",
+      "selfhost/build/phase173/borrow-api03/stdout",
+      "selfhost/build/phase173/borrow-api04/api.mjs",
+      "selfhost/build/phase173/borrow-api04/report.json",
+      "selfhost/build/phase173/borrow-api04/stderr",
+      "selfhost/build/phase173/borrow-api04/stdout",
+      "selfhost/build/phase173/borrow-api05/report.json",
+      "selfhost/build/phase173/borrow-api05/stderr",
+      "selfhost/build/phase173/borrow-api05/stdout",
+      "selfhost/build/phase173/borrow-api06/api.mjs",
+      "selfhost/build/phase173/borrow-api06/report.json",
+      "selfhost/build/phase173/borrow-api06/stderr",
+      "selfhost/build/phase173/borrow-api06/stdout",
+      "selfhost/build/phase173/borrow-ast-baseline01/assemble.stderr",
+      "selfhost/build/phase173/borrow-ast-baseline01/assemble.stdout",
+      "selfhost/build/phase173/borrow-ast-baseline01/compiler.stderr",
+      "selfhost/build/phase173/borrow-ast-baseline01/link.stderr",
+      "selfhost/build/phase173/borrow-ast-baseline01/link.stdout",
+      "selfhost/build/phase173/borrow-ast-baseline01/program",
+      "selfhost/build/phase173/borrow-ast-baseline01/program.o",
+      "selfhost/build/phase173/borrow-ast-baseline01/program.s",
+      "selfhost/build/phase173/borrow-ast-baseline01/program.ssa",
+      "selfhost/build/phase173/borrow-ast-baseline01/qbe.stderr",
+      "selfhost/build/phase173/borrow-ast-baseline01/qbe.stdout",
+      "selfhost/build/phase173/borrow-ast-baseline01/report.json",
+      "selfhost/build/phase173/borrow-ast-baseline01/request.json",
+      "selfhost/build/phase173/borrow-ast-digest-baseline01/assemble.stderr",
+      "selfhost/build/phase173/borrow-ast-digest-baseline01/assemble.stdout",
+      "selfhost/build/phase173/borrow-ast-digest-baseline01/compiler.stderr",
+      "selfhost/build/phase173/borrow-ast-digest-baseline01/link.stderr",
+      "selfhost/build/phase173/borrow-ast-digest-baseline01/link.stdout",
+      "selfhost/build/phase173/borrow-ast-digest-baseline01/program",
+      "selfhost/build/phase173/borrow-ast-digest-baseline01/program.o",
+      "selfhost/build/phase173/borrow-ast-digest-baseline01/program.s",
+      "selfhost/build/phase173/borrow-ast-digest-baseline01/program.ssa",
+      "selfhost/build/phase173/borrow-ast-digest-baseline01/qbe.stderr",
+      "selfhost/build/phase173/borrow-ast-digest-baseline01/qbe.stdout",
+      "selfhost/build/phase173/borrow-ast-digest-baseline01/report.json",
+      "selfhost/build/phase173/borrow-ast-digest-baseline01/request.json",
+      "selfhost/build/phase173/borrow-ast-digest-emission01/program.ssa",
+      "selfhost/build/phase173/borrow-ast-digest-emission01/report.json",
+      "selfhost/build/phase173/borrow-ast-digest-machine01/assemble.stderr",
+      "selfhost/build/phase173/borrow-ast-digest-machine01/assemble.stdout",
+      "selfhost/build/phase173/borrow-ast-digest-machine01/link.stderr",
+      "selfhost/build/phase173/borrow-ast-digest-machine01/link.stdout",
+      "selfhost/build/phase173/borrow-ast-digest-machine01/program",
+      "selfhost/build/phase173/borrow-ast-digest-machine01/program.o",
+      "selfhost/build/phase173/borrow-ast-digest-machine01/program.s",
+      "selfhost/build/phase173/borrow-ast-digest-machine01/qbe.stderr",
+      "selfhost/build/phase173/borrow-ast-digest-machine01/qbe.stdout",
+      "selfhost/build/phase173/borrow-ast-digest-machine01/report.json",
+      "selfhost/build/phase173/borrow-ast-digest-modules01/borrow-compiler-ast-digest.bend",
+      "selfhost/build/phase173/borrow-ast-digest-modules01/borrow-compiler-ast.bend",
+      "selfhost/build/phase173/borrow-ast-digest-oracle-api01/api.mjs",
+      "selfhost/build/phase173/borrow-ast-digest-oracle-api01/report.json",
+      "selfhost/build/phase173/borrow-ast-digest-oracle-api01/stderr",
+      "selfhost/build/phase173/borrow-ast-digest-oracle-api01/stdout",
+      "selfhost/build/phase173/borrow-ast-digest-oracle01/expected.txt",
+      "selfhost/build/phase173/borrow-ast-digest-oracle01/report.json",
+      "selfhost/build/phase173/borrow-ast-digest-pair01/0-baseline.stderr",
+      "selfhost/build/phase173/borrow-ast-digest-pair01/0-baseline.stdout",
+      "selfhost/build/phase173/borrow-ast-digest-pair01/0-candidate.stderr",
+      "selfhost/build/phase173/borrow-ast-digest-pair01/0-candidate.stdout",
+      "selfhost/build/phase173/borrow-ast-digest-pair01/1-baseline.stderr",
+      "selfhost/build/phase173/borrow-ast-digest-pair01/1-baseline.stdout",
+      "selfhost/build/phase173/borrow-ast-digest-pair01/1-candidate.stderr",
+      "selfhost/build/phase173/borrow-ast-digest-pair01/1-candidate.stdout",
+      "selfhost/build/phase173/borrow-ast-digest-pair01/2-baseline.stderr",
+      "selfhost/build/phase173/borrow-ast-digest-pair01/2-baseline.stdout",
+      "selfhost/build/phase173/borrow-ast-digest-pair01/2-candidate.stderr",
+      "selfhost/build/phase173/borrow-ast-digest-pair01/2-candidate.stdout",
+      "selfhost/build/phase173/borrow-ast-digest-pair01/3-baseline.stderr",
+      "selfhost/build/phase173/borrow-ast-digest-pair01/3-baseline.stdout",
+      "selfhost/build/phase173/borrow-ast-digest-pair01/3-candidate.stderr",
+      "selfhost/build/phase173/borrow-ast-digest-pair01/3-candidate.stdout",
+      "selfhost/build/phase173/borrow-ast-digest-pair01/report.json",
+      "selfhost/build/phase173/borrow-ast-digest-source01/compiler.bend",
+      "selfhost/build/phase173/borrow-ast-digest-source01/exports.json",
+      "selfhost/build/phase173/borrow-ast-digest-source01/manifest.json",
+      "selfhost/build/phase173/borrow-ast-emission05/program.ssa",
+      "selfhost/build/phase173/borrow-ast-emission05/report.json",
+      "selfhost/build/phase173/borrow-ast-event-base-run01/events.json",
+      "selfhost/build/phase173/borrow-ast-event-base-run01/report.json",
+      "selfhost/build/phase173/borrow-ast-event-base-run01/stderr",
+      "selfhost/build/phase173/borrow-ast-event-base-run01/stdout",
+      "selfhost/build/phase173/borrow-ast-event-base01/assemble.stderr",
+      "selfhost/build/phase173/borrow-ast-event-base01/assemble.stdout",
+      "selfhost/build/phase173/borrow-ast-event-base01/link.stderr",
+      "selfhost/build/phase173/borrow-ast-event-base01/link.stdout",
+      "selfhost/build/phase173/borrow-ast-event-base01/program",
+      "selfhost/build/phase173/borrow-ast-event-base01/program.o",
+      "selfhost/build/phase173/borrow-ast-event-base01/program.s",
+      "selfhost/build/phase173/borrow-ast-event-base01/qbe.stderr",
+      "selfhost/build/phase173/borrow-ast-event-base01/qbe.stdout",
+      "selfhost/build/phase173/borrow-ast-event-base01/report.json",
+      "selfhost/build/phase173/borrow-ast-event-cand-run01/events.json",
+      "selfhost/build/phase173/borrow-ast-event-cand-run01/report.json",
+      "selfhost/build/phase173/borrow-ast-event-cand-run01/stderr",
+      "selfhost/build/phase173/borrow-ast-event-cand-run01/stdout",
+      "selfhost/build/phase173/borrow-ast-event-cand01/assemble.stderr",
+      "selfhost/build/phase173/borrow-ast-event-cand01/assemble.stdout",
+      "selfhost/build/phase173/borrow-ast-event-cand01/link.stderr",
+      "selfhost/build/phase173/borrow-ast-event-cand01/link.stdout",
+      "selfhost/build/phase173/borrow-ast-event-cand01/program",
+      "selfhost/build/phase173/borrow-ast-event-cand01/program.o",
+      "selfhost/build/phase173/borrow-ast-event-cand01/program.s",
+      "selfhost/build/phase173/borrow-ast-event-cand01/qbe.stderr",
+      "selfhost/build/phase173/borrow-ast-event-cand01/qbe.stdout",
+      "selfhost/build/phase173/borrow-ast-event-cand01/report.json",
+      "selfhost/build/phase173/borrow-ast-machine06/assemble.stderr",
+      "selfhost/build/phase173/borrow-ast-machine06/assemble.stdout",
+      "selfhost/build/phase173/borrow-ast-machine06/link.stderr",
+      "selfhost/build/phase173/borrow-ast-machine06/link.stdout",
+      "selfhost/build/phase173/borrow-ast-machine06/program",
+      "selfhost/build/phase173/borrow-ast-machine06/program.o",
+      "selfhost/build/phase173/borrow-ast-machine06/program.s",
+      "selfhost/build/phase173/borrow-ast-machine06/qbe.stderr",
+      "selfhost/build/phase173/borrow-ast-machine06/qbe.stdout",
+      "selfhost/build/phase173/borrow-ast-machine06/report.json",
+      "selfhost/build/phase173/borrow-ast-modules01/borrow-compiler-ast-main.bend",
+      "selfhost/build/phase173/borrow-ast-modules01/borrow-compiler-ast.bend",
+      "selfhost/build/phase173/borrow-ast-oracle-api01/api.mjs",
+      "selfhost/build/phase173/borrow-ast-oracle-api01/report.json",
+      "selfhost/build/phase173/borrow-ast-oracle-api01/stderr",
+      "selfhost/build/phase173/borrow-ast-oracle-api01/stdout",
+      "selfhost/build/phase173/borrow-ast-oracle-bounded01/oracle.bend",
+      "selfhost/build/phase173/borrow-ast-oracle-bounded01/report.json",
+      "selfhost/build/phase173/borrow-ast-oracle-machine01/assemble.stderr",
+      "selfhost/build/phase173/borrow-ast-oracle-machine01/assemble.stdout",
+      "selfhost/build/phase173/borrow-ast-oracle-machine01/compiler.stderr",
+      "selfhost/build/phase173/borrow-ast-oracle-machine01/link.stderr",
+      "selfhost/build/phase173/borrow-ast-oracle-machine01/link.stdout",
+      "selfhost/build/phase173/borrow-ast-oracle-machine01/program",
+      "selfhost/build/phase173/borrow-ast-oracle-machine01/program.o",
+      "selfhost/build/phase173/borrow-ast-oracle-machine01/program.s",
+      "selfhost/build/phase173/borrow-ast-oracle-machine01/program.ssa",
+      "selfhost/build/phase173/borrow-ast-oracle-machine01/qbe.stderr",
+      "selfhost/build/phase173/borrow-ast-oracle-machine01/qbe.stdout",
+      "selfhost/build/phase173/borrow-ast-oracle-machine01/report.json",
+      "selfhost/build/phase173/borrow-ast-oracle-machine01/request.json",
+      "selfhost/build/phase173/borrow-ast-oracle-observe01/oracle.bend",
+      "selfhost/build/phase173/borrow-ast-oracle-observe01/report.json",
+      "selfhost/build/phase173/borrow-ast-oracle-observe01/value.json",
+      "selfhost/build/phase173/borrow-ast-oracle-output01/0-baseline.stderr",
+      "selfhost/build/phase173/borrow-ast-oracle-output01/0-baseline.stdout",
+      "selfhost/build/phase173/borrow-ast-oracle-output01/0-candidate.stderr",
+      "selfhost/build/phase173/borrow-ast-oracle-output01/0-candidate.stdout",
+      "selfhost/build/phase173/borrow-ast-oracle-output01/report.json",
+      "selfhost/build/phase173/borrow-ast-pair06/0-baseline.stderr",
+      "selfhost/build/phase173/borrow-ast-pair06/0-baseline.stdout",
+      "selfhost/build/phase173/borrow-ast-pair06/0-candidate.stderr",
+      "selfhost/build/phase173/borrow-ast-pair06/0-candidate.stdout",
+      "selfhost/build/phase173/borrow-ast-pair06/1-baseline.stderr",
+      "selfhost/build/phase173/borrow-ast-pair06/1-baseline.stdout",
+      "selfhost/build/phase173/borrow-ast-pair06/1-candidate.stderr",
+      "selfhost/build/phase173/borrow-ast-pair06/1-candidate.stdout",
+      "selfhost/build/phase173/borrow-ast-pair06/2-baseline.stderr",
+      "selfhost/build/phase173/borrow-ast-pair06/2-baseline.stdout",
+      "selfhost/build/phase173/borrow-ast-pair06/2-candidate.stderr",
+      "selfhost/build/phase173/borrow-ast-pair06/2-candidate.stdout",
+      "selfhost/build/phase173/borrow-ast-pair06/3-baseline.stderr",
+      "selfhost/build/phase173/borrow-ast-pair06/3-baseline.stdout",
+      "selfhost/build/phase173/borrow-ast-pair06/3-candidate.stderr",
+      "selfhost/build/phase173/borrow-ast-pair06/3-candidate.stdout",
+      "selfhost/build/phase173/borrow-ast-pair06/report.json",
+      "selfhost/build/phase173/borrow-ast-source01/compiler.bend",
+      "selfhost/build/phase173/borrow-ast-source01/exports.json",
+      "selfhost/build/phase173/borrow-ast-source01/manifest.json",
+      "selfhost/build/phase173/borrow-compiler-baseline01/program.ssa",
+      "selfhost/build/phase173/borrow-compiler-baseline01/report.json",
+      "selfhost/build/phase173/borrow-compiler-candidate01/program.ssa",
+      "selfhost/build/phase173/borrow-compiler-candidate01/report.json",
+      "selfhost/build/phase173/borrow-compiler-candidate04/program.ssa",
+      "selfhost/build/phase173/borrow-compiler-candidate04/report.json",
+      "selfhost/build/phase173/borrow-compiler-events-base-build01/assemble.stderr",
+      "selfhost/build/phase173/borrow-compiler-events-base-build01/assemble.stdout",
+      "selfhost/build/phase173/borrow-compiler-events-base-build01/link.stderr",
+      "selfhost/build/phase173/borrow-compiler-events-base-build01/link.stdout",
+      "selfhost/build/phase173/borrow-compiler-events-base-build01/program",
+      "selfhost/build/phase173/borrow-compiler-events-base-build01/program.o",
+      "selfhost/build/phase173/borrow-compiler-events-base-build01/program.s",
+      "selfhost/build/phase173/borrow-compiler-events-base-build01/qbe.stderr",
+      "selfhost/build/phase173/borrow-compiler-events-base-build01/qbe.stdout",
+      "selfhost/build/phase173/borrow-compiler-events-base-build01/report.json",
+      "selfhost/build/phase173/borrow-compiler-events-base01/events.json",
+      "selfhost/build/phase173/borrow-compiler-events-base01/report.json",
+      "selfhost/build/phase173/borrow-compiler-events-base01/stderr",
+      "selfhost/build/phase173/borrow-compiler-events-base01/stdout",
+      "selfhost/build/phase173/borrow-compiler-events-cand-build04/assemble.stderr",
+      "selfhost/build/phase173/borrow-compiler-events-cand-build04/assemble.stdout",
+      "selfhost/build/phase173/borrow-compiler-events-cand-build04/link.stderr",
+      "selfhost/build/phase173/borrow-compiler-events-cand-build04/link.stdout",
+      "selfhost/build/phase173/borrow-compiler-events-cand-build04/program",
+      "selfhost/build/phase173/borrow-compiler-events-cand-build04/program.o",
+      "selfhost/build/phase173/borrow-compiler-events-cand-build04/program.s",
+      "selfhost/build/phase173/borrow-compiler-events-cand-build04/qbe.stderr",
+      "selfhost/build/phase173/borrow-compiler-events-cand-build04/qbe.stdout",
+      "selfhost/build/phase173/borrow-compiler-events-cand-build04/report.json",
+      "selfhost/build/phase173/borrow-compiler-events-cand04/events.json",
+      "selfhost/build/phase173/borrow-compiler-events-cand04/report.json",
+      "selfhost/build/phase173/borrow-compiler-events-cand04/stderr",
+      "selfhost/build/phase173/borrow-compiler-events-cand04/stdout",
+      "selfhost/build/phase173/borrow-compiler-native-base01/assemble.stderr",
+      "selfhost/build/phase173/borrow-compiler-native-base01/assemble.stdout",
+      "selfhost/build/phase173/borrow-compiler-native-base01/link.stderr",
+      "selfhost/build/phase173/borrow-compiler-native-base01/link.stdout",
+      "selfhost/build/phase173/borrow-compiler-native-base01/program",
+      "selfhost/build/phase173/borrow-compiler-native-base01/program.o",
+      "selfhost/build/phase173/borrow-compiler-native-base01/program.s",
+      "selfhost/build/phase173/borrow-compiler-native-base01/qbe.stderr",
+      "selfhost/build/phase173/borrow-compiler-native-base01/qbe.stdout",
+      "selfhost/build/phase173/borrow-compiler-native-base01/report.json",
+      "selfhost/build/phase173/borrow-compiler-native-cand04/assemble.stderr",
+      "selfhost/build/phase173/borrow-compiler-native-cand04/assemble.stdout",
+      "selfhost/build/phase173/borrow-compiler-native-cand04/link.stderr",
+      "selfhost/build/phase173/borrow-compiler-native-cand04/link.stdout",
+      "selfhost/build/phase173/borrow-compiler-native-cand04/program",
+      "selfhost/build/phase173/borrow-compiler-native-cand04/program.o",
+      "selfhost/build/phase173/borrow-compiler-native-cand04/program.s",
+      "selfhost/build/phase173/borrow-compiler-native-cand04/qbe.stderr",
+      "selfhost/build/phase173/borrow-compiler-native-cand04/qbe.stdout",
+      "selfhost/build/phase173/borrow-compiler-native-cand04/report.json",
+      "selfhost/build/phase173/borrow-compiler-native-output04/0-baseline.stderr",
+      "selfhost/build/phase173/borrow-compiler-native-output04/0-baseline.stdout",
+      "selfhost/build/phase173/borrow-compiler-native-output04/0-candidate.stderr",
+      "selfhost/build/phase173/borrow-compiler-native-output04/0-candidate.stdout",
+      "selfhost/build/phase173/borrow-compiler-native-output04/report.json",
+      "selfhost/build/phase173/borrow-compiler-oracle-api01/api.mjs",
+      "selfhost/build/phase173/borrow-compiler-oracle-api01/report.json",
+      "selfhost/build/phase173/borrow-compiler-oracle-api01/stderr",
+      "selfhost/build/phase173/borrow-compiler-oracle-api01/stdout",
+      "selfhost/build/phase173/borrow-compiler-oracle-machine01/assemble.stderr",
+      "selfhost/build/phase173/borrow-compiler-oracle-machine01/assemble.stdout",
+      "selfhost/build/phase173/borrow-compiler-oracle-machine01/compiler.stderr",
+      "selfhost/build/phase173/borrow-compiler-oracle-machine01/link.stderr",
+      "selfhost/build/phase173/borrow-compiler-oracle-machine01/link.stdout",
+      "selfhost/build/phase173/borrow-compiler-oracle-machine01/program",
+      "selfhost/build/phase173/borrow-compiler-oracle-machine01/program.o",
+      "selfhost/build/phase173/borrow-compiler-oracle-machine01/program.s",
+      "selfhost/build/phase173/borrow-compiler-oracle-machine01/program.ssa",
+      "selfhost/build/phase173/borrow-compiler-oracle-machine01/qbe.stderr",
+      "selfhost/build/phase173/borrow-compiler-oracle-machine01/qbe.stdout",
+      "selfhost/build/phase173/borrow-compiler-oracle-machine01/report.json",
+      "selfhost/build/phase173/borrow-compiler-oracle-machine01/request.json",
+      "selfhost/build/phase173/borrow-compiler-oracle-observe01/oracle.bend",
+      "selfhost/build/phase173/borrow-compiler-oracle-observe01/report.json",
+      "selfhost/build/phase173/borrow-compiler-oracle-observe01/value.json",
+      "selfhost/build/phase173/borrow-compiler-source01/compiler.bend",
+      "selfhost/build/phase173/borrow-compiler-source01/exports.json",
+      "selfhost/build/phase173/borrow-compiler-source01/manifest.json",
+      "selfhost/build/phase173/borrow-dispatch-finite01/report.json",
+      "selfhost/build/phase173/borrow-dispatch-finite01/template.txt",
+      "selfhost/build/phase173/borrow-finite01/report.json",
+      "selfhost/build/phase173/borrow-finite01/template.txt",
+      "selfhost/build/phase173/borrow-finite06/report.json",
+      "selfhost/build/phase173/borrow-finite06/template.txt",
+      "selfhost/build/phase173/borrow-finite06/wide-template.txt",
+      "selfhost/build/phase173/borrow-hot-finite01/report.json",
+      "selfhost/build/phase173/borrow-hot-finite01/template.txt",
+      "selfhost/build/phase173/borrow-long-baseline03/assemble.stderr",
+      "selfhost/build/phase173/borrow-long-baseline03/assemble.stdout",
+      "selfhost/build/phase173/borrow-long-baseline03/compiler.stderr",
+      "selfhost/build/phase173/borrow-long-baseline03/link.stderr",
+      "selfhost/build/phase173/borrow-long-baseline03/link.stdout",
+      "selfhost/build/phase173/borrow-long-baseline03/program",
+      "selfhost/build/phase173/borrow-long-baseline03/program.o",
+      "selfhost/build/phase173/borrow-long-baseline03/program.s",
+      "selfhost/build/phase173/borrow-long-baseline03/program.ssa",
+      "selfhost/build/phase173/borrow-long-baseline03/qbe.stderr",
+      "selfhost/build/phase173/borrow-long-baseline03/qbe.stdout",
+      "selfhost/build/phase173/borrow-long-baseline03/report.json",
+      "selfhost/build/phase173/borrow-long-baseline03/request.json",
+      "selfhost/build/phase173/borrow-long-emission04/program.ssa",
+      "selfhost/build/phase173/borrow-long-emission04/report.json",
+      "selfhost/build/phase173/borrow-long-machine04/assemble.stderr",
+      "selfhost/build/phase173/borrow-long-machine04/assemble.stdout",
+      "selfhost/build/phase173/borrow-long-machine04/link.stderr",
+      "selfhost/build/phase173/borrow-long-machine04/link.stdout",
+      "selfhost/build/phase173/borrow-long-machine04/program",
+      "selfhost/build/phase173/borrow-long-machine04/program.o",
+      "selfhost/build/phase173/borrow-long-machine04/program.s",
+      "selfhost/build/phase173/borrow-long-machine04/qbe.stderr",
+      "selfhost/build/phase173/borrow-long-machine04/qbe.stdout",
+      "selfhost/build/phase173/borrow-long-machine04/report.json",
+      "selfhost/build/phase173/borrow-long-oracle-api03/api.mjs",
+      "selfhost/build/phase173/borrow-long-oracle-api03/report.json",
+      "selfhost/build/phase173/borrow-long-oracle-api03/stderr",
+      "selfhost/build/phase173/borrow-long-oracle-api03/stdout",
+      "selfhost/build/phase173/borrow-long-oracle-machine03/assemble.stderr",
+      "selfhost/build/phase173/borrow-long-oracle-machine03/assemble.stdout",
+      "selfhost/build/phase173/borrow-long-oracle-machine03/compiler.stderr",
+      "selfhost/build/phase173/borrow-long-oracle-machine03/link.stderr",
+      "selfhost/build/phase173/borrow-long-oracle-machine03/link.stdout",
+      "selfhost/build/phase173/borrow-long-oracle-machine03/program",
+      "selfhost/build/phase173/borrow-long-oracle-machine03/program.o",
+      "selfhost/build/phase173/borrow-long-oracle-machine03/program.s",
+      "selfhost/build/phase173/borrow-long-oracle-machine03/program.ssa",
+      "selfhost/build/phase173/borrow-long-oracle-machine03/qbe.stderr",
+      "selfhost/build/phase173/borrow-long-oracle-machine03/qbe.stdout",
+      "selfhost/build/phase173/borrow-long-oracle-machine03/report.json",
+      "selfhost/build/phase173/borrow-long-oracle-machine03/request.json",
+      "selfhost/build/phase173/borrow-long-oracle-observe03/oracle.bend",
+      "selfhost/build/phase173/borrow-long-oracle-observe03/report.json",
+      "selfhost/build/phase173/borrow-long-oracle-observe03/value.json",
+      "selfhost/build/phase173/borrow-long-oracle-output03/0-baseline.stderr",
+      "selfhost/build/phase173/borrow-long-oracle-output03/0-baseline.stdout",
+      "selfhost/build/phase173/borrow-long-oracle-output03/0-candidate.stderr",
+      "selfhost/build/phase173/borrow-long-oracle-output03/0-candidate.stdout",
+      "selfhost/build/phase173/borrow-long-oracle-output03/report.json",
+      "selfhost/build/phase173/borrow-long-pair04/0-baseline.stderr",
+      "selfhost/build/phase173/borrow-long-pair04/0-baseline.stdout",
+      "selfhost/build/phase173/borrow-long-pair04/0-candidate.stderr",
+      "selfhost/build/phase173/borrow-long-pair04/0-candidate.stdout",
+      "selfhost/build/phase173/borrow-long-pair04/1-baseline.stderr",
+      "selfhost/build/phase173/borrow-long-pair04/1-baseline.stdout",
+      "selfhost/build/phase173/borrow-long-pair04/1-candidate.stderr",
+      "selfhost/build/phase173/borrow-long-pair04/1-candidate.stdout",
+      "selfhost/build/phase173/borrow-long-pair04/2-baseline.stderr",
+      "selfhost/build/phase173/borrow-long-pair04/2-baseline.stdout",
+      "selfhost/build/phase173/borrow-long-pair04/2-candidate.stderr",
+      "selfhost/build/phase173/borrow-long-pair04/2-candidate.stdout",
+      "selfhost/build/phase173/borrow-long-pair04/3-baseline.stderr",
+      "selfhost/build/phase173/borrow-long-pair04/3-baseline.stdout",
+      "selfhost/build/phase173/borrow-long-pair04/3-candidate.stderr",
+      "selfhost/build/phase173/borrow-long-pair04/3-candidate.stdout",
+      "selfhost/build/phase173/borrow-long-pair04/report.json",
+      "selfhost/build/phase173/borrow-loop-baseline01/assemble.stderr",
+      "selfhost/build/phase173/borrow-loop-baseline01/assemble.stdout",
+      "selfhost/build/phase173/borrow-loop-baseline01/compiler.stderr",
+      "selfhost/build/phase173/borrow-loop-baseline01/link.stderr",
+      "selfhost/build/phase173/borrow-loop-baseline01/link.stdout",
+      "selfhost/build/phase173/borrow-loop-baseline01/program",
+      "selfhost/build/phase173/borrow-loop-baseline01/program.o",
+      "selfhost/build/phase173/borrow-loop-baseline01/program.s",
+      "selfhost/build/phase173/borrow-loop-baseline01/program.ssa",
+      "selfhost/build/phase173/borrow-loop-baseline01/qbe.stderr",
+      "selfhost/build/phase173/borrow-loop-baseline01/qbe.stdout",
+      "selfhost/build/phase173/borrow-loop-baseline01/report.json",
+      "selfhost/build/phase173/borrow-loop-baseline01/request.json",
+      "selfhost/build/phase173/borrow-loop-emission04/program.ssa",
+      "selfhost/build/phase173/borrow-loop-emission04/report.json",
+      "selfhost/build/phase173/borrow-loop-machine04/assemble.stderr",
+      "selfhost/build/phase173/borrow-loop-machine04/assemble.stdout",
+      "selfhost/build/phase173/borrow-loop-machine04/link.stderr",
+      "selfhost/build/phase173/borrow-loop-machine04/link.stdout",
+      "selfhost/build/phase173/borrow-loop-machine04/program",
+      "selfhost/build/phase173/borrow-loop-machine04/program.o",
+      "selfhost/build/phase173/borrow-loop-machine04/program.s",
+      "selfhost/build/phase173/borrow-loop-machine04/qbe.stderr",
+      "selfhost/build/phase173/borrow-loop-machine04/qbe.stdout",
+      "selfhost/build/phase173/borrow-loop-machine04/report.json",
+      "selfhost/build/phase173/borrow-loop-modules01/borrow-compiler-loop-main.bend",
+      "selfhost/build/phase173/borrow-loop-modules01/borrow-compiler-loop.bend",
+      "selfhost/build/phase173/borrow-loop-modules03/borrow-compiler-loop-main.bend",
+      "selfhost/build/phase173/borrow-loop-modules03/borrow-compiler-loop.bend",
+      "selfhost/build/phase173/borrow-loop-oracle-api01/api.mjs",
+      "selfhost/build/phase173/borrow-loop-oracle-api01/report.json",
+      "selfhost/build/phase173/borrow-loop-oracle-api01/stderr",
+      "selfhost/build/phase173/borrow-loop-oracle-api01/stdout",
+      "selfhost/build/phase173/borrow-loop-oracle-machine01/assemble.stderr",
+      "selfhost/build/phase173/borrow-loop-oracle-machine01/assemble.stdout",
+      "selfhost/build/phase173/borrow-loop-oracle-machine01/compiler.stderr",
+      "selfhost/build/phase173/borrow-loop-oracle-machine01/link.stderr",
+      "selfhost/build/phase173/borrow-loop-oracle-machine01/link.stdout",
+      "selfhost/build/phase173/borrow-loop-oracle-machine01/program",
+      "selfhost/build/phase173/borrow-loop-oracle-machine01/program.o",
+      "selfhost/build/phase173/borrow-loop-oracle-machine01/program.s",
+      "selfhost/build/phase173/borrow-loop-oracle-machine01/program.ssa",
+      "selfhost/build/phase173/borrow-loop-oracle-machine01/qbe.stderr",
+      "selfhost/build/phase173/borrow-loop-oracle-machine01/qbe.stdout",
+      "selfhost/build/phase173/borrow-loop-oracle-machine01/report.json",
+      "selfhost/build/phase173/borrow-loop-oracle-machine01/request.json",
+      "selfhost/build/phase173/borrow-loop-oracle-observe01/oracle.bend",
+      "selfhost/build/phase173/borrow-loop-oracle-observe01/report.json",
+      "selfhost/build/phase173/borrow-loop-oracle-observe01/value.json",
+      "selfhost/build/phase173/borrow-loop-oracle-output01/0-baseline.stderr",
+      "selfhost/build/phase173/borrow-loop-oracle-output01/0-baseline.stdout",
+      "selfhost/build/phase173/borrow-loop-oracle-output01/0-candidate.stderr",
+      "selfhost/build/phase173/borrow-loop-oracle-output01/0-candidate.stdout",
+      "selfhost/build/phase173/borrow-loop-oracle-output01/report.json",
+      "selfhost/build/phase173/borrow-loop-pair04/0-baseline.stderr",
+      "selfhost/build/phase173/borrow-loop-pair04/0-baseline.stdout",
+      "selfhost/build/phase173/borrow-loop-pair04/0-candidate.stderr",
+      "selfhost/build/phase173/borrow-loop-pair04/0-candidate.stdout",
+      "selfhost/build/phase173/borrow-loop-pair04/1-baseline.stderr",
+      "selfhost/build/phase173/borrow-loop-pair04/1-baseline.stdout",
+      "selfhost/build/phase173/borrow-loop-pair04/1-candidate.stderr",
+      "selfhost/build/phase173/borrow-loop-pair04/1-candidate.stdout",
+      "selfhost/build/phase173/borrow-loop-pair04/2-baseline.stderr",
+      "selfhost/build/phase173/borrow-loop-pair04/2-baseline.stdout",
+      "selfhost/build/phase173/borrow-loop-pair04/2-candidate.stderr",
+      "selfhost/build/phase173/borrow-loop-pair04/2-candidate.stdout",
+      "selfhost/build/phase173/borrow-loop-pair04/3-baseline.stderr",
+      "selfhost/build/phase173/borrow-loop-pair04/3-baseline.stdout",
+      "selfhost/build/phase173/borrow-loop-pair04/3-candidate.stderr",
+      "selfhost/build/phase173/borrow-loop-pair04/3-candidate.stdout",
+      "selfhost/build/phase173/borrow-loop-pair04/report.json",
+      "selfhost/build/phase173/borrow-loop-source01/compiler.bend",
+      "selfhost/build/phase173/borrow-loop-source01/exports.json",
+      "selfhost/build/phase173/borrow-loop-source01/manifest.json",
+      "selfhost/build/phase173/borrow-loop-source03/compiler.bend",
+      "selfhost/build/phase173/borrow-loop-source03/exports.json",
+      "selfhost/build/phase173/borrow-loop-source03/manifest.json",
+      "selfhost/build/phase173/borrow-modules01/borrow-controls.bend",
+      "selfhost/build/phase173/borrow-modules01/borrow-emission.bend",
+      "selfhost/build/phase173/borrow-modules01/borrow-entry.bend",
+      "selfhost/build/phase173/borrow-modules01/borrow-prelude.bend",
+      "selfhost/build/phase173/borrow-modules01/borrow-record.bend",
+      "selfhost/build/phase173/borrow-modules02/borrow-controls.bend",
+      "selfhost/build/phase173/borrow-modules02/borrow-emission.bend",
+      "selfhost/build/phase173/borrow-modules02/borrow-entry.bend",
+      "selfhost/build/phase173/borrow-modules02/borrow-prelude.bend",
+      "selfhost/build/phase173/borrow-modules02/borrow-record.bend",
+      "selfhost/build/phase173/borrow-modules03/borrow-controls.bend",
+      "selfhost/build/phase173/borrow-modules03/borrow-dispatch02.bend",
+      "selfhost/build/phase173/borrow-modules03/borrow-emission.bend",
+      "selfhost/build/phase173/borrow-modules03/borrow-entry02.bend",
+      "selfhost/build/phase173/borrow-modules03/borrow-prelude.bend",
+      "selfhost/build/phase173/borrow-modules03/borrow-prelude02.bend",
+      "selfhost/build/phase173/borrow-modules03/borrow-record.bend",
+      "selfhost/build/phase173/borrow-modules04/borrow-controls.bend",
+      "selfhost/build/phase173/borrow-modules04/borrow-dispatch04.bend",
+      "selfhost/build/phase173/borrow-modules04/borrow-emission04.bend",
+      "selfhost/build/phase173/borrow-modules04/borrow-entry04.bend",
+      "selfhost/build/phase173/borrow-modules04/borrow-hot-controls04.bend",
+      "selfhost/build/phase173/borrow-modules04/borrow-prelude.bend",
+      "selfhost/build/phase173/borrow-modules04/borrow-prelude02.bend",
+      "selfhost/build/phase173/borrow-modules04/borrow-record.bend",
+      "selfhost/build/phase173/borrow-modules05/borrow-controls.bend",
+      "selfhost/build/phase173/borrow-modules05/borrow-dispatch04.bend",
+      "selfhost/build/phase173/borrow-modules05/borrow-emission04.bend",
+      "selfhost/build/phase173/borrow-modules05/borrow-entry04.bend",
+      "selfhost/build/phase173/borrow-modules05/borrow-hot-controls04.bend",
+      "selfhost/build/phase173/borrow-modules05/borrow-prelude.bend",
+      "selfhost/build/phase173/borrow-modules05/borrow-prelude02.bend",
+      "selfhost/build/phase173/borrow-modules05/borrow-record05.bend",
+      "selfhost/build/phase173/borrow-modules05/borrow-wide-controls05.bend",
+      "selfhost/build/phase173/borrow-oracle-output01/0-baseline.stderr",
+      "selfhost/build/phase173/borrow-oracle-output01/0-baseline.stdout",
+      "selfhost/build/phase173/borrow-oracle-output01/0-candidate.stderr",
+      "selfhost/build/phase173/borrow-oracle-output01/0-candidate.stdout",
+      "selfhost/build/phase173/borrow-oracle-output01/report.json",
+      "selfhost/build/phase173/borrow-source01/base-binding.json",
+      "selfhost/build/phase173/borrow-source01/compiler.bend",
+      "selfhost/build/phase173/borrow-source01/exports.json",
+      "selfhost/build/phase173/borrow-source01/manifest.json",
+      "selfhost/build/phase173/borrow-source02/base-binding.json",
+      "selfhost/build/phase173/borrow-source02/compiler.bend",
+      "selfhost/build/phase173/borrow-source02/exports.json",
+      "selfhost/build/phase173/borrow-source02/manifest.json",
+      "selfhost/build/phase173/borrow-source03/base-binding.json",
+      "selfhost/build/phase173/borrow-source03/compiler.bend",
+      "selfhost/build/phase173/borrow-source03/exports.json",
+      "selfhost/build/phase173/borrow-source03/manifest.json",
+      "selfhost/build/phase173/borrow-source04/base-binding.json",
+      "selfhost/build/phase173/borrow-source04/compiler.bend",
+      "selfhost/build/phase173/borrow-source04/exports.json",
+      "selfhost/build/phase173/borrow-source04/manifest.json",
+      "selfhost/build/phase173/borrow-source05/base-binding.json",
+      "selfhost/build/phase173/borrow-source05/compiler.bend",
+      "selfhost/build/phase173/borrow-source05/exports.json",
+      "selfhost/build/phase173/borrow-source05/manifest.json",
+      "selfhost/build/phase173/borrow-source06/base-binding.json",
+      "selfhost/build/phase173/borrow-source06/compiler.bend",
+      "selfhost/build/phase173/borrow-source06/exports.json",
+      "selfhost/build/phase173/borrow-source06/manifest.json",
+      "selfhost/build/phase173/borrow-verifier-emission01/program.ssa",
+      "selfhost/build/phase173/borrow-verifier-emission01/report.json",
+      "selfhost/build/phase173/borrow-workload-baseline01/report.json",
+      "selfhost/build/phase173/borrow-workloads01/borrow-alias-workload.bend",
+      "selfhost/build/phase173/borrow-workloads01/borrow-workload.bend",
+      "selfhost/build/phase173/borrow-workloads02/borrow-alias-workload.bend",
+      "selfhost/build/phase173/borrow-workloads02/borrow-compiler-main.bend",
+      "selfhost/build/phase173/borrow-workloads02/borrow-compiler-workload.bend",
+      "selfhost/build/phase173/borrow-workloads02/borrow-workload.bend",
+      "selfhost/build/phase173/dispatch-abi-workload-emission02/program.ssa",
+      "selfhost/build/phase173/dispatch-abi-workload-emission02/report.json",
+      "selfhost/build/phase173/dispatch-abi-workload-machine02/assemble.stderr",
+      "selfhost/build/phase173/dispatch-abi-workload-machine02/assemble.stdout",
+      "selfhost/build/phase173/dispatch-abi-workload-machine02/link.stderr",
+      "selfhost/build/phase173/dispatch-abi-workload-machine02/link.stdout",
+      "selfhost/build/phase173/dispatch-abi-workload-machine02/program",
+      "selfhost/build/phase173/dispatch-abi-workload-machine02/program.o",
+      "selfhost/build/phase173/dispatch-abi-workload-machine02/program.s",
+      "selfhost/build/phase173/dispatch-abi-workload-machine02/qbe.stderr",
+      "selfhost/build/phase173/dispatch-abi-workload-machine02/qbe.stdout",
+      "selfhost/build/phase173/dispatch-abi-workload-machine02/report.json",
+      "selfhost/build/phase173/dispatch-abi-workload-output02/0-baseline.stderr",
+      "selfhost/build/phase173/dispatch-abi-workload-output02/0-baseline.stdout",
+      "selfhost/build/phase173/dispatch-abi-workload-output02/0-candidate.stderr",
+      "selfhost/build/phase173/dispatch-abi-workload-output02/0-candidate.stdout",
+      "selfhost/build/phase173/dispatch-abi-workload-output02/report.json",
+      "selfhost/build/phase173/dispatch-api01/api.mjs",
+      "selfhost/build/phase173/dispatch-api01/report.json",
+      "selfhost/build/phase173/dispatch-api01/stderr",
+      "selfhost/build/phase173/dispatch-api01/stdout",
+      "selfhost/build/phase173/dispatch-api02/api.mjs",
+      "selfhost/build/phase173/dispatch-api02/report.json",
+      "selfhost/build/phase173/dispatch-api02/stderr",
+      "selfhost/build/phase173/dispatch-api02/stdout",
+      "selfhost/build/phase173/dispatch-finite01/report.json",
+      "selfhost/build/phase173/dispatch-finite02/report.json",
+      "selfhost/build/phase173/dispatch-frontend01/binding.json",
+      "selfhost/build/phase173/dispatch-frontend02/binding.json",
+      "selfhost/build/phase173/dispatch-lookup-baseline01/assemble.stderr",
+      "selfhost/build/phase173/dispatch-lookup-baseline01/assemble.stdout",
+      "selfhost/build/phase173/dispatch-lookup-baseline01/compiler.stderr",
+      "selfhost/build/phase173/dispatch-lookup-baseline01/link.stderr",
+      "selfhost/build/phase173/dispatch-lookup-baseline01/link.stdout",
+      "selfhost/build/phase173/dispatch-lookup-baseline01/program",
+      "selfhost/build/phase173/dispatch-lookup-baseline01/program.o",
+      "selfhost/build/phase173/dispatch-lookup-baseline01/program.s",
+      "selfhost/build/phase173/dispatch-lookup-baseline01/program.ssa",
+      "selfhost/build/phase173/dispatch-lookup-baseline01/qbe.stderr",
+      "selfhost/build/phase173/dispatch-lookup-baseline01/qbe.stdout",
+      "selfhost/build/phase173/dispatch-lookup-baseline01/report.json",
+      "selfhost/build/phase173/dispatch-lookup-baseline01/request.json",
+      "selfhost/build/phase173/dispatch-lookup-emission02/program.ssa",
+      "selfhost/build/phase173/dispatch-lookup-emission02/report.json",
+      "selfhost/build/phase173/dispatch-lookup-machine02/assemble.stderr",
+      "selfhost/build/phase173/dispatch-lookup-machine02/assemble.stdout",
+      "selfhost/build/phase173/dispatch-lookup-machine02/link.stderr",
+      "selfhost/build/phase173/dispatch-lookup-machine02/link.stdout",
+      "selfhost/build/phase173/dispatch-lookup-machine02/program",
+      "selfhost/build/phase173/dispatch-lookup-machine02/program.o",
+      "selfhost/build/phase173/dispatch-lookup-machine02/program.s",
+      "selfhost/build/phase173/dispatch-lookup-machine02/qbe.stderr",
+      "selfhost/build/phase173/dispatch-lookup-machine02/qbe.stdout",
+      "selfhost/build/phase173/dispatch-lookup-machine02/report.json",
+      "selfhost/build/phase173/dispatch-lookup-pair02/0-baseline.stderr",
+      "selfhost/build/phase173/dispatch-lookup-pair02/0-baseline.stdout",
+      "selfhost/build/phase173/dispatch-lookup-pair02/0-candidate.stderr",
+      "selfhost/build/phase173/dispatch-lookup-pair02/0-candidate.stdout",
+      "selfhost/build/phase173/dispatch-lookup-pair02/1-baseline.stderr",
+      "selfhost/build/phase173/dispatch-lookup-pair02/1-baseline.stdout",
+      "selfhost/build/phase173/dispatch-lookup-pair02/1-candidate.stderr",
+      "selfhost/build/phase173/dispatch-lookup-pair02/1-candidate.stdout",
+      "selfhost/build/phase173/dispatch-lookup-pair02/2-baseline.stderr",
+      "selfhost/build/phase173/dispatch-lookup-pair02/2-baseline.stdout",
+      "selfhost/build/phase173/dispatch-lookup-pair02/2-candidate.stderr",
+      "selfhost/build/phase173/dispatch-lookup-pair02/2-candidate.stdout",
+      "selfhost/build/phase173/dispatch-lookup-pair02/3-baseline.stderr",
+      "selfhost/build/phase173/dispatch-lookup-pair02/3-baseline.stdout",
+      "selfhost/build/phase173/dispatch-lookup-pair02/3-candidate.stderr",
+      "selfhost/build/phase173/dispatch-lookup-pair02/3-candidate.stdout",
+      "selfhost/build/phase173/dispatch-lookup-pair02/report.json",
+      "selfhost/build/phase173/dispatch-modules01/dispatch-jumps-controls.bend",
+      "selfhost/build/phase173/dispatch-modules01/dispatch-jumps-overlay.bend",
+      "selfhost/build/phase173/dispatch-modules01/dispatch-jumps-prelude.bend",
+      "selfhost/build/phase173/dispatch-modules01/dispatch-jumps.bend",
+      "selfhost/build/phase173/dispatch-modules01/product-arguments-controls-v3.bend",
+      "selfhost/build/phase173/dispatch-modules01/product-arguments-overlay-v3.bend",
+      "selfhost/build/phase173/dispatch-modules01/product-arguments-prelude-v3.bend",
+      "selfhost/build/phase173/dispatch-modules01/product-arguments-v3.bend",
+      "selfhost/build/phase173/dispatch-modules01/scc-controls-v2.bend",
+      "selfhost/build/phase173/dispatch-modules01/scc-overlay-v2.bend",
+      "selfhost/build/phase173/dispatch-modules01/scc-prelude-v2.bend",
+      "selfhost/build/phase173/dispatch-modules01/scc-v2.bend",
+      "selfhost/build/phase173/dispatch-modules01/vertical-admission-v2.bend",
+      "selfhost/build/phase173/dispatch-modules02/dispatch-jumps-controls-v2.bend",
+      "selfhost/build/phase173/dispatch-modules02/dispatch-jumps-overlay-v2.bend",
+      "selfhost/build/phase173/dispatch-modules02/dispatch-jumps-prelude-v2.bend",
+      "selfhost/build/phase173/dispatch-modules02/dispatch-jumps-v2.bend",
+      "selfhost/build/phase173/dispatch-modules02/product-arguments-controls-v3.bend",
+      "selfhost/build/phase173/dispatch-modules02/product-arguments-overlay-v3.bend",
+      "selfhost/build/phase173/dispatch-modules02/product-arguments-prelude-v3.bend",
+      "selfhost/build/phase173/dispatch-modules02/product-arguments-v3.bend",
+      "selfhost/build/phase173/dispatch-modules02/scc-controls-v2.bend",
+      "selfhost/build/phase173/dispatch-modules02/scc-overlay-v2.bend",
+      "selfhost/build/phase173/dispatch-modules02/scc-prelude-v2.bend",
+      "selfhost/build/phase173/dispatch-modules02/scc-v2.bend",
+      "selfhost/build/phase173/dispatch-modules02/vertical-admission-v2.bend",
+      "selfhost/build/phase173/dispatch-source01/base-binding.json",
+      "selfhost/build/phase173/dispatch-source01/compiler.bend",
+      "selfhost/build/phase173/dispatch-source01/exports.json",
+      "selfhost/build/phase173/dispatch-source01/manifest.json",
+      "selfhost/build/phase173/dispatch-source02/base-binding.json",
+      "selfhost/build/phase173/dispatch-source02/compiler.bend",
+      "selfhost/build/phase173/dispatch-source02/exports.json",
+      "selfhost/build/phase173/dispatch-source02/manifest.json",
+      "selfhost/build/phase173/dispatch-store-machine01/assemble.stderr",
+      "selfhost/build/phase173/dispatch-store-machine01/assemble.stdout",
+      "selfhost/build/phase173/dispatch-store-machine01/link.stderr",
+      "selfhost/build/phase173/dispatch-store-machine01/link.stdout",
+      "selfhost/build/phase173/dispatch-store-machine01/program",
+      "selfhost/build/phase173/dispatch-store-machine01/program.o",
+      "selfhost/build/phase173/dispatch-store-machine01/program.s",
+      "selfhost/build/phase173/dispatch-store-machine01/qbe.stderr",
+      "selfhost/build/phase173/dispatch-store-machine01/qbe.stdout",
+      "selfhost/build/phase173/dispatch-store-machine01/report.json",
+      "selfhost/build/phase173/dispatch-store-machine02/assemble.stderr",
+      "selfhost/build/phase173/dispatch-store-machine02/assemble.stdout",
+      "selfhost/build/phase173/dispatch-store-machine02/link.stderr",
+      "selfhost/build/phase173/dispatch-store-machine02/link.stdout",
+      "selfhost/build/phase173/dispatch-store-machine02/program",
+      "selfhost/build/phase173/dispatch-store-machine02/program.o",
+      "selfhost/build/phase173/dispatch-store-machine02/program.s",
+      "selfhost/build/phase173/dispatch-store-machine02/qbe.stderr",
+      "selfhost/build/phase173/dispatch-store-machine02/qbe.stdout",
+      "selfhost/build/phase173/dispatch-store-machine02/report.json",
+      "selfhost/build/phase173/dispatch-store-pair01/0-baseline.stderr",
+      "selfhost/build/phase173/dispatch-store-pair01/0-baseline.stdout",
+      "selfhost/build/phase173/dispatch-store-pair01/0-candidate.stderr",
+      "selfhost/build/phase173/dispatch-store-pair01/0-candidate.stdout",
+      "selfhost/build/phase173/dispatch-store-pair01/1-baseline.stderr",
+      "selfhost/build/phase173/dispatch-store-pair01/1-baseline.stdout",
+      "selfhost/build/phase173/dispatch-store-pair01/1-candidate.stderr",
+      "selfhost/build/phase173/dispatch-store-pair01/1-candidate.stdout",
+      "selfhost/build/phase173/dispatch-store-pair01/2-baseline.stderr",
+      "selfhost/build/phase173/dispatch-store-pair01/2-baseline.stdout",
+      "selfhost/build/phase173/dispatch-store-pair01/2-candidate.stderr",
+      "selfhost/build/phase173/dispatch-store-pair01/2-candidate.stdout",
+      "selfhost/build/phase173/dispatch-store-pair01/3-baseline.stderr",
+      "selfhost/build/phase173/dispatch-store-pair01/3-baseline.stdout",
+      "selfhost/build/phase173/dispatch-store-pair01/3-candidate.stderr",
+      "selfhost/build/phase173/dispatch-store-pair01/3-candidate.stdout",
+      "selfhost/build/phase173/dispatch-store-pair01/report.json",
+      "selfhost/build/phase173/dispatch-store-pair02/0-baseline.stderr",
+      "selfhost/build/phase173/dispatch-store-pair02/0-baseline.stdout",
+      "selfhost/build/phase173/dispatch-store-pair02/0-candidate.stderr",
+      "selfhost/build/phase173/dispatch-store-pair02/0-candidate.stdout",
+      "selfhost/build/phase173/dispatch-store-pair02/1-baseline.stderr",
+      "selfhost/build/phase173/dispatch-store-pair02/1-baseline.stdout",
+      "selfhost/build/phase173/dispatch-store-pair02/1-candidate.stderr",
+      "selfhost/build/phase173/dispatch-store-pair02/1-candidate.stdout",
+      "selfhost/build/phase173/dispatch-store-pair02/2-baseline.stderr",
+      "selfhost/build/phase173/dispatch-store-pair02/2-baseline.stdout",
+      "selfhost/build/phase173/dispatch-store-pair02/2-candidate.stderr",
+      "selfhost/build/phase173/dispatch-store-pair02/2-candidate.stdout",
+      "selfhost/build/phase173/dispatch-store-pair02/3-baseline.stderr",
+      "selfhost/build/phase173/dispatch-store-pair02/3-baseline.stdout",
+      "selfhost/build/phase173/dispatch-store-pair02/3-candidate.stderr",
+      "selfhost/build/phase173/dispatch-store-pair02/3-candidate.stdout",
+      "selfhost/build/phase173/dispatch-store-pair02/report.json",
+      "selfhost/build/phase173/dispatch-store-replay01/program.ssa",
+      "selfhost/build/phase173/dispatch-store-replay01/report.json",
+      "selfhost/build/phase173/dispatch-store-replay02/program.ssa",
+      "selfhost/build/phase173/dispatch-store-replay02/report.json",
+      "selfhost/build/phase173/event-runtime-build02/0-compile-runtime/stderr",
+      "selfhost/build/phase173/event-runtime-build02/0-compile-runtime/stdout",
+      "selfhost/build/phase173/event-runtime-build02/report.json",
+      "selfhost/build/phase173/event-runtime-build02/runtime.o",
+      "selfhost/build/phase173/event-runtime-input01/manifest.json",
+      "selfhost/build/phase173/event-runtime-plan01/edits.json",
+      "selfhost/build/phase173/event-runtime-plan01/method.py",
+      "selfhost/build/phase173/event-runtime-plan01/plan.json",
+      "selfhost/build/phase173/event-runtime-plan01/primitives.h",
+      "selfhost/build/phase173/event-runtime-plan01/runtime-support.inc.c",
+      "selfhost/build/phase173/event-runtime-plan01/runtime.c",
+      "selfhost/build/phase173/event-runtime-plan01/runtime.h",
+      "selfhost/build/phase173/event-runtime-retarget02.json",
+      "selfhost/build/phase173/plan-capture-binary03/plan.jsc.bin",
+      "selfhost/build/phase173/plan-capture-binary03/plan.json",
+      "selfhost/build/phase173/plan-capture-binary03/report.json",
+      "selfhost/build/phase173/plan-capture-store03/report.json",
+      "selfhost/build/phase173/plan-replay-binary03/program.ssa",
+      "selfhost/build/phase173/plan-replay-binary03/report.json",
+      "selfhost/build/phase173/plan-transport-probe01/probe.jsc",
+      "selfhost/build/phase173/plan-transport-probe01/probe.v8",
+      "selfhost/build/phase173/plan-transport-probe01/report.json",
+      "selfhost/build/phase173/store-api05/api.mjs",
+      "selfhost/build/phase173/store-api05/report.json",
+      "selfhost/build/phase173/store-api05/stderr",
+      "selfhost/build/phase173/store-api05/stdout",
+      "selfhost/build/phase173/store-direct-native-source01/compiler.bend",
+      "selfhost/build/phase173/store-modules05/store-compact.bend",
+      "selfhost/build/phase173/store-modules05/store-controls.bend",
+      "selfhost/build/phase173/store-modules05/store.bend",
+      "selfhost/build/phase173/store-modules05/vertical-prelude.bend",
+      "selfhost/build/phase173/store-modules05/vertical-store.bend",
+      "selfhost/build/phase173/store-modules05/vertical.bend",
+      "selfhost/build/phase173/store-native-baseline-source02/compiler.bend",
+      "selfhost/build/phase173/store-native-baseline02/assemble.stderr",
+      "selfhost/build/phase173/store-native-baseline02/assemble.stdout",
+      "selfhost/build/phase173/store-native-baseline02/compiler.stderr",
+      "selfhost/build/phase173/store-native-baseline02/link.stderr",
+      "selfhost/build/phase173/store-native-baseline02/link.stdout",
+      "selfhost/build/phase173/store-native-baseline02/program",
+      "selfhost/build/phase173/store-native-baseline02/program.o",
+      "selfhost/build/phase173/store-native-baseline02/program.s",
+      "selfhost/build/phase173/store-native-baseline02/program.ssa",
+      "selfhost/build/phase173/store-native-baseline02/qbe.stderr",
+      "selfhost/build/phase173/store-native-baseline02/qbe.stdout",
+      "selfhost/build/phase173/store-native-baseline02/report.json",
+      "selfhost/build/phase173/store-native-candidate-source02/compiler.bend",
+      "selfhost/build/phase173/store-native-candidate-source02/exports.json",
+      "selfhost/build/phase173/store-native-candidate-source02/literal-entry.bend",
+      "selfhost/build/phase173/store-native-candidate-source02/manifest.json",
+      "selfhost/build/phase173/store-native-oracle-run03/0-baseline.stdout",
+      "selfhost/build/phase173/store-source05/base-binding.json",
+      "selfhost/build/phase173/store-source05/compiler.bend",
+      "selfhost/build/phase173/store-source05/exports.json",
+      "selfhost/build/phase173/store-source05/manifest.json",
+      "selfhost/build/phase173/store-verifier-controls01/baseline-complete-values.json",
+      "selfhost/build/phase173/store-verifier-controls01/candidate-complete-values.json",
+      "selfhost/build/phase173/store-verifier-controls01/complete-input-values.json",
+      "selfhost/build/phase173/store-verifier-controls01/report.json",
+      "selfhost/build/phase173/verifier-expected.txt",
+      "selfhost/build/phase173/vertical-base-api02/api.mjs",
+      "selfhost/build/phase173/vertical-base-api02/report.json",
+      "selfhost/build/phase173/vertical-base-api02/stderr",
+      "selfhost/build/phase173/vertical-base-api02/stdout",
+      "selfhost/build/phase173/vertical-base-source02/base-binding.json",
+      "selfhost/build/phase173/vertical-base-source02/compiler.bend",
+      "selfhost/build/phase173/vertical-base-source02/exports.json",
+      "selfhost/build/phase173/vertical-base-source02/manifest.json"
+    ],
+    "selectedProtectedOverlap": [],
+    "excludedCandidates": [
+      {
+        "file": "selfhost/build/phase173/store-verifier-controls01/complete-input-values.json",
+        "reason": "active transitive dependency",
+        "references": [
+          "selfhost/build/phase173/store-native-candidate-source02/manifest.json",
+          "selfhost/build/phase173/store-native-candidate-source02/manifest.json",
+          "selfhost/build/phase173/store-verifier-controls01/report.json"
+        ]
+      },
+      {
+        "file": "selfhost/build/phase173/store-verifier-controls01/baseline-complete-values.json",
+        "reason": "active transitive dependency",
+        "references": [
+          "selfhost/build/phase173/store-native-candidate-source02/manifest.json",
+          "selfhost/build/phase173/store-native-candidate-source02/manifest.json",
+          "selfhost/build/phase173/store-verifier-controls01/report.json"
+        ]
+      },
+      {
+        "file": "selfhost/build/phase173/store-verifier-controls01/candidate-complete-values.json",
+        "reason": "active transitive dependency",
+        "references": [
+          "selfhost/build/phase173/store-verifier-controls01/report.json"
+        ]
+      }
+    ],
+    "currentMethodScopes": [
+      "selfhost/manifests",
+      "selfhost/tools/build",
+      "selfhost/tools/native",
+      "selfhost/tools/profiler",
+      "selfhost/tests/phase173"
+    ],
+    "currentMethodFiles": 180,
+    "currentMethodSelectedPathHits": [],
+    "importantIndirectProtection": {
+      "selfhost/build/phase173/store-api05/api.mjs": [
+        "selfhost/build/phase173/store-native-candidate-source02/manifest.json",
+        "selfhost/build/phase173/store-native-candidate-source02/manifest.json",
+        "selfhost/build/phase173/store-verifier-controls01/report.json",
+        "selfhost/build/phase173/store-verifier-controls01/report.json",
+        "selfhost/build/phase173/store-api05/report.json"
+      ],
+      "selfhost/build/phase173/store-api05/report.json": [
+        "selfhost/build/phase173/store-native-candidate-source02/manifest.json",
+        "selfhost/build/phase173/store-native-candidate-source02/manifest.json",
+        "selfhost/build/phase173/store-verifier-controls01/report.json",
+        "selfhost/build/phase173/store-verifier-controls01/report.json"
+      ],
+      "selfhost/build/phase173/store-api05/stderr": [
+        "selfhost/build/phase173/store-api05/report.json"
+      ],
+      "selfhost/build/phase173/store-api05/stdout": [
+        "selfhost/build/phase173/store-api05/report.json"
+      ],
+      "selfhost/build/phase173/store-source05/base-binding.json": [
+        "selfhost/build/phase173/store-native-candidate-source02/manifest.json",
+        "selfhost/build/phase173/store-verifier-controls01/report.json",
+        "selfhost/build/phase173/store-source05/manifest.json"
+      ],
+      "selfhost/build/phase173/store-source05/compiler.bend": [
+        "selfhost/build/phase173/store-native-candidate-source02/manifest.json",
+        "selfhost/build/phase173/store-native-candidate-source02/manifest.json",
+        "selfhost/build/phase173/store-native-candidate-source02/manifest.json",
+        "selfhost/build/phase173/store-native-candidate-source02/manifest.json",
+        "selfhost/build/phase173/store-verifier-controls01/report.json"
+      ],
+      "selfhost/build/phase173/store-source05/exports.json": [
+        "selfhost/build/phase173/store-native-candidate-source02/manifest.json",
+        "selfhost/build/phase173/store-native-candidate-source02/manifest.json",
+        "selfhost/build/phase173/store-verifier-controls01/report.json",
+        "selfhost/build/phase173/store-verifier-controls01/report.json",
+        "selfhost/build/phase173/store-source05/manifest.json"
+      ],
+      "selfhost/build/phase173/store-source05/manifest.json": [
+        "selfhost/build/phase173/store-native-candidate-source02/manifest.json",
+        "selfhost/build/phase173/store-native-candidate-source02/manifest.json",
+        "selfhost/build/phase173/store-verifier-controls01/report.json",
+        "selfhost/build/phase173/store-verifier-controls01/report.json"
+      ]
+    },
+    "limits": "Conservative bounded JSON closure and current method literals, not a prediction of future requests. Root must recheck active inputs immediately before capture."
+  },
+  "protected": [
+    "all current ABI03, dispatch, checked-plan/replay, borrow/AST/digest artifacts and transitive inputs",
+    "store-api05/source05 and store-verifier-controls01 values discovered as transitive dependencies",
+    "all binaries, retained/source IR, profiles/runtime objects, qualified chains, native oracle source roots and every unselected file",
+    "shared lock, guard/retention state, original API/control reports and logs"
+  ],
+  "limitations": [
+    "Additional raw allocation, not net recovery. Proposal02 is separate; do not count applied files twice.",
+    "Review only: no adapter implementation, capsule, verified prune plan, archive or deletion.",
+    "Source snapshots are complete metadata-only outputs. Terminal guarded API readers establish finished use; no guarded source writer is fabricated. Failed acquisition stays labeled failed.",
+    "Historical retired API reacquisition/replay needs exact restoration of selected source/API/value leaves."
+  ]
+}

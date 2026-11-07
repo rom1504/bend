@@ -1,0 +1,114 @@
+{
+  "kind": "phase173-native-product-pair",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase173/native-pair.py",
+      "bytes": 3973,
+      "sha256": "219a9a447f8b85262adfa2b58eea7f1d635233c2fbe6a0083fd8e7d9651d6f9b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/pattern-value-baseline01/report.json",
+      "bytes": 16393,
+      "sha256": "d3dec5a2c08d4d4d7ae67d6680b55362733e4bff43c450788e85902661f24c81"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/pattern-value-machine04/report.json",
+      "bytes": 8781,
+      "sha256": "9b276ff95be7158aec861e50d3895d4a23d69575bb2b517921c702e4ea0f1451"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/pattern-value-baseline01/program",
+      "bytes": 159552,
+      "sha256": "089b10dea2f60492233716bb5529a5e6bae6bd19b02e12a89481ce3fba87c1e1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/pattern-value-baseline01/program.ssa",
+      "bytes": 291067,
+      "sha256": "3297653849303dbc04fad68ba5e32579abd29dcdf828ff6827198e98716698f5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/pattern-value-machine04/program",
+      "bytes": 163648,
+      "sha256": "abb8a88bcd0f739683631356b22fa2075d1a88a4a8a6e85b5293ad94e75cf47d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/pattern-value-emission04/program.ssa",
+      "bytes": 328676,
+      "sha256": "7589a04901fbcb3a54a1871b9ec28375fe70e7bf017227c39acd1fa4af521b31"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/pattern-value-oracle-output01/0-baseline.stdout",
+      "bytes": 13338,
+      "sha256": "429080bbb22c88f58e4be0331b843bd1cc6ee20c2d74b715c96e103f1ffe87e5"
+    }
+  ],
+  "runs": [
+    {
+      "role": "baseline",
+      "cycle": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/pattern-value-baseline01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.003569298889487982,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/pattern-value-pair04/0-baseline.stdout",
+        "bytes": 13338,
+        "sha256": "429080bbb22c88f58e4be0331b843bd1cc6ee20c2d74b715c96e103f1ffe87e5"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/pattern-value-pair04/0-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/pattern-value-machine04/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.004050124902278185,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/pattern-value-pair04/0-candidate.stdout",
+        "bytes": 13338,
+        "sha256": "429080bbb22c88f58e4be0331b843bd1cc6ee20c2d74b715c96e103f1ffe87e5"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/pattern-value-pair04/0-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    }
+  ],
+  "rounds": 1,
+  "oracle": "fixed expected bytes",
+  "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+  "medians": {
+    "baseline": 0.003569298889487982,
+    "candidate": 0.004050124902278185
+  },
+  "resolved": false
+}

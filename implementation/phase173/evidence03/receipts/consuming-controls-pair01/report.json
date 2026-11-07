@@ -1,0 +1,114 @@
+{
+  "kind": "phase173-native-product-pair",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase173/native-pair.py",
+      "bytes": 3973,
+      "sha256": "219a9a447f8b85262adfa2b58eea7f1d635233c2fbe6a0083fd8e7d9651d6f9b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-controls-base01/report.json",
+      "bytes": 16448,
+      "sha256": "d46686c76e3b6c59fe94b5a6900ba8cca7fc3ce3756e80c74f7907a6426826f9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-controls-cand01/report.json",
+      "bytes": 16442,
+      "sha256": "e4ee6349abf53d90d19fd233ea1a8b10fc09192d5aed7c87c2b30872f05b0e71"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-controls-base01/program",
+      "bytes": 160624,
+      "sha256": "dca06c95b562c055a34e2ce6e2baa75c59d3365bf07ffc5d2b35c11b971117d0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-controls-base01/program.ssa",
+      "bytes": 257509,
+      "sha256": "eca5d4ab18dd5ee7a623f2383a1196124e8203d5c0690c701b550df11ada616c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-controls-cand01/program",
+      "bytes": 154304,
+      "sha256": "b46f52c6600869ae0e2f09359c6770deb1c43aba9f2eab28e5646d4daf1e19c7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-controls-cand01/program.ssa",
+      "bytes": 206863,
+      "sha256": "1ead1f48d6cf76e40de25ca6a5cd630da4ce4e3f2d389f71bb1c88f38c684ac2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-controls-oracle-output01/0-baseline.stdout",
+      "bytes": 1896,
+      "sha256": "130d243043e63a650c1875f5f6d17997e48a19010da6651f40af877fa0a6644a"
+    }
+  ],
+  "runs": [
+    {
+      "role": "baseline",
+      "cycle": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-controls-base01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.0031423778273165226,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-controls-pair01/0-baseline.stdout",
+        "bytes": 1896,
+        "sha256": "130d243043e63a650c1875f5f6d17997e48a19010da6651f40af877fa0a6644a"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-controls-pair01/0-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-controls-cand01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.0027232817374169827,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-controls-pair01/0-candidate.stdout",
+        "bytes": 1896,
+        "sha256": "130d243043e63a650c1875f5f6d17997e48a19010da6651f40af877fa0a6644a"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-controls-pair01/0-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    }
+  ],
+  "rounds": 1,
+  "oracle": "fixed expected bytes",
+  "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+  "medians": {
+    "baseline": 0.0031423778273165226,
+    "candidate": 0.0027232817374169827
+  },
+  "resolved": false
+}

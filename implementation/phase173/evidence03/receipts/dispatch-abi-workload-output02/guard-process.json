@@ -1,0 +1,81 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": true,
+  "started": 1794011731.1849189,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "3",
+    "python3",
+    "-B",
+    "selfhost/tests/phase173/native-pair.py",
+    "--baseline",
+    "selfhost/build/phase173/abi-workload-baseline01/report.json",
+    "--candidate",
+    "selfhost/build/phase173/dispatch-abi-workload-machine02/report.json",
+    "--expected",
+    "selfhost/build/phase173/abi-workload-expected-v2.txt",
+    "--rounds",
+    "1",
+    "--out",
+    "selfhost/build/phase173/dispatch-abi-workload-output02"
+  ],
+  "returncode": 0,
+  "rssLimitBytes": 2147483648,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 16592896,
+  "minimumAvailableBytes": 25390628864,
+  "diskBudgetBytes": 8388608,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 5620948992,
+  "minimumDiskFreeBytes": 5620912128,
+  "peakRunAllocatedBytes": 36864,
+  "peakFilesystemDecreaseBytes": 36864,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-abi-workload-output02"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "3",
+    "fileLimitBytes": 134217728,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase173/native-pair.py",
+        "sha256": "219a9a447f8b85262adfa2b58eea7f1d635233c2fbe6a0083fd8e7d9651d6f9b",
+        "bytes": 3973
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-workload-baseline01/report.json",
+        "sha256": "0ccd7e03e0ba73b3b57d7b35b62d13784cc5153b89940ccb915ea885516263a0",
+        "bytes": 16350
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-abi-workload-machine02/report.json",
+        "sha256": "8f6d6c574391d13656bace5d9ef8811769dde89717360551c934d6dfffc2a5e8",
+        "bytes": 8953
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-workload-expected-v2.txt",
+        "sha256": "6c5aa38c389bcdd081fffd96f90dac934c05576d96a08a5e016ca50037c5a4b4",
+        "bytes": 50
+      }
+    ]
+  },
+  "wallSeconds": 0.10569703299552202,
+  "finished": 1794011731.2904189
+}

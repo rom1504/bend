@@ -1,0 +1,109 @@
+{
+  "kind": "phase173-native-product-pair",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase173/native-pair.py",
+      "bytes": 3973,
+      "sha256": "219a9a447f8b85262adfa2b58eea7f1d635233c2fbe6a0083fd8e7d9651d6f9b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-controls-oracle-machine01/report.json",
+      "bytes": 16576,
+      "sha256": "1fd01e42d6ed8414aff7f7af70db0bef58955fe3c2e8da2b42eff7188e50d49c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-controls-oracle-machine01/report.json",
+      "bytes": 16576,
+      "sha256": "1fd01e42d6ed8414aff7f7af70db0bef58955fe3c2e8da2b42eff7188e50d49c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-controls-oracle-machine01/program",
+      "bytes": 128984,
+      "sha256": "fbb59943269ef5d53ee695d8ec488fd3ef581455f150a194675a6bf6091ded99"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-controls-oracle-machine01/program.ssa",
+      "bytes": 53458,
+      "sha256": "f350648799c2f1d68fb24aca51ec94750cb9256d403bceac49a23c055a6ee893"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-controls-oracle-machine01/program",
+      "bytes": 128984,
+      "sha256": "fbb59943269ef5d53ee695d8ec488fd3ef581455f150a194675a6bf6091ded99"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-controls-oracle-machine01/program.ssa",
+      "bytes": 53458,
+      "sha256": "f350648799c2f1d68fb24aca51ec94750cb9256d403bceac49a23c055a6ee893"
+    }
+  ],
+  "runs": [
+    {
+      "role": "baseline",
+      "cycle": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-controls-oracle-machine01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.003235009964555502,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-controls-oracle-output01/0-baseline.stdout",
+        "bytes": 1896,
+        "sha256": "130d243043e63a650c1875f5f6d17997e48a19010da6651f40af877fa0a6644a"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-controls-oracle-output01/0-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-controls-oracle-machine01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.002743625082075596,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-controls-oracle-output01/0-candidate.stdout",
+        "bytes": 1896,
+        "sha256": "130d243043e63a650c1875f5f6d17997e48a19010da6651f40af877fa0a6644a"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-controls-oracle-output01/0-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    }
+  ],
+  "rounds": 1,
+  "oracle": "baseline complete output; see source oracle manifest",
+  "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+  "medians": {
+    "baseline": 0.003235009964555502,
+    "candidate": 0.002743625082075596
+  },
+  "resolved": false
+}

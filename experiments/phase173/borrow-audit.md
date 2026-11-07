@@ -217,3 +217,30 @@ entry agrees with the emitted byte at its numeric ID. Execution qualification
 should specifically confirm an actual capability-8/hot-constructor fast arm,
 alongside capability-8/cold fallback; previous capability-8 fallback-only
 results cannot establish the refined arm's runtime correctness.
+
+## Revision05: wide-update profitability ablation
+
+Independent source review of `borrow-record05.bend` found only the intended
+profitability delta: remove `changed * 2 <= width`, while retaining `changed >
+0`. The structural recognizer and revision04 emission/runtime guards are
+unchanged. No target was run for this review.
+
+There is no correctness obligation requiring half, or even one, of the old
+fields to survive. For every replaced field, the old value is still captured
+before mutation and must have one explicit sink or satisfy the dynamic trivial
+drop guard. Sinks retain their original order. New values still require
+independent ownership and normal publication; references derived from the old
+field bindings or the root remain rejected. A shared child held through a
+separate owned external token remains live when the old token is sunk.
+
+The parent allocation remains private under the existing raw-owned/RFC-count-1
+guard. Dropping all old fields does not drop the parent itself. Its layout and
+identity remain unchanged, and no preserved-field publication check is needed
+when no fields are preserved. The unchanged acyclic affine-value and single
+heap-mutator assumptions are still required. Shared/static parents and rejected
+replacement representations retain the original fallback.
+
+The 18 new finite controls inspect admission and emitted guards, including seven
+and eight replacements. They are not native ownership tests. The same complete
+semantic oracle and actual native execution remain necessary; the broader
+rule may be slower even when correct.

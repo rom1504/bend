@@ -1,0 +1,259 @@
+{
+  "kind": "phase173-native-product-pair",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase173/native-pair.py",
+      "bytes": 3973,
+      "sha256": "219a9a447f8b85262adfa2b58eea7f1d635233c2fbe6a0083fd8e7d9651d6f9b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-baseline01/report.json",
+      "bytes": 16501,
+      "sha256": "86d4c8f65e43f413f6f9f2d38081259796e07e1da60273420654509575b54089"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-machine01/report.json",
+      "bytes": 8831,
+      "sha256": "38886d79b8d45bd18c9859eb3a88ed7d91fca2802980ad23ac9bcf7673b345cd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-baseline01/program",
+      "bytes": 209024,
+      "sha256": "0085a2c41e7fda34a7b7fd4a3f8149c1b3e12f5635b86562c1583e566ae813f1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-baseline01/program.ssa",
+      "bytes": 603667,
+      "sha256": "138658aa087705975043132ba0eb3d439bebbf8f6e118731ce86a1a57de95ca0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-machine01/program",
+      "bytes": 213112,
+      "sha256": "7fab2587b56846f1f01feac39c50dc2968ac8e3abee825e92a685e45a825fae8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-emission01/program.ssa",
+      "bytes": 641276,
+      "sha256": "b4e7bcb0f5334bc79e7522e37c4d2c635891f7787ca857faad55dcb38843c781"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-oracle01/expected.txt",
+      "bytes": 11,
+      "sha256": "dd4eb0b5c900e7eb6f1a679606a50565229008759432553e23e3453174ac0c57"
+    }
+  ],
+  "runs": [
+    {
+      "role": "baseline",
+      "cycle": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-baseline01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.0653856829740107,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-pair01/0-baseline.stdout",
+        "bytes": 11,
+        "sha256": "dd4eb0b5c900e7eb6f1a679606a50565229008759432553e23e3453174ac0c57"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-pair01/0-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-machine01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.06586658721789718,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-pair01/0-candidate.stdout",
+        "bytes": 11,
+        "sha256": "dd4eb0b5c900e7eb6f1a679606a50565229008759432553e23e3453174ac0c57"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-pair01/0-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-machine01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.06563724298030138,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-pair01/1-candidate.stdout",
+        "bytes": 11,
+        "sha256": "dd4eb0b5c900e7eb6f1a679606a50565229008759432553e23e3453174ac0c57"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-pair01/1-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "baseline",
+      "cycle": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-baseline01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.07314411317929626,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-pair01/1-baseline.stdout",
+        "bytes": 11,
+        "sha256": "dd4eb0b5c900e7eb6f1a679606a50565229008759432553e23e3453174ac0c57"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-pair01/1-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "baseline",
+      "cycle": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-baseline01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.07931596087291837,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-pair01/2-baseline.stdout",
+        "bytes": 11,
+        "sha256": "dd4eb0b5c900e7eb6f1a679606a50565229008759432553e23e3453174ac0c57"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-pair01/2-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-machine01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.0670973639935255,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-pair01/2-candidate.stdout",
+        "bytes": 11,
+        "sha256": "dd4eb0b5c900e7eb6f1a679606a50565229008759432553e23e3453174ac0c57"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-pair01/2-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 3,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-machine01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.06670152395963669,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-pair01/3-candidate.stdout",
+        "bytes": 11,
+        "sha256": "dd4eb0b5c900e7eb6f1a679606a50565229008759432553e23e3453174ac0c57"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-pair01/3-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "baseline",
+      "cycle": 3,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-baseline01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.06606901902705431,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-pair01/3-baseline.stdout",
+        "bytes": 11,
+        "sha256": "dd4eb0b5c900e7eb6f1a679606a50565229008759432553e23e3453174ac0c57"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-pair01/3-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    }
+  ],
+  "rounds": 4,
+  "oracle": "fixed expected bytes",
+  "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+  "medians": {
+    "baseline": 0.06960656610317528,
+    "candidate": 0.06628405558876693
+  },
+  "resolved": true,
+  "ratio": 0.9522672830967769
+}

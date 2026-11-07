@@ -1,0 +1,258 @@
+{
+  "kind": "phase173-native-product-pair",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase173/native-pair.py",
+      "bytes": 3973,
+      "sha256": "219a9a447f8b85262adfa2b58eea7f1d635233c2fbe6a0083fd8e7d9651d6f9b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-baseline01/report.json",
+      "bytes": 16315,
+      "sha256": "014b5b8744f912a402167a4cac769f3513eda5154dbfa2395c1b4457b7d5aeaf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-machine06/report.json",
+      "bytes": 8682,
+      "sha256": "19df5742b6b3586c1c260671e703cd20ab1207ef9254a5eb6bb71130bb582899"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-baseline01/program",
+      "bytes": 181688,
+      "sha256": "b42d1a5e5a23cd6ed4b11d6014656d9c19bd8bea11ad6a6fe0b209959fbdaf03"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-baseline01/program.ssa",
+      "bytes": 461663,
+      "sha256": "6190adcc87d4fdbbe05cfb0df024c8fa79be6cf7545b5f75abd373acf18bc0e4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-machine06/program",
+      "bytes": 185784,
+      "sha256": "5442af42173189acb1ba97a6aad51c1d466611dc1f8b7806286b99284ef40ef3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-emission05/program.ssa",
+      "bytes": 499272,
+      "sha256": "52e9bcdf134678ffe4554be903d5bf5be95438268a85b5aaaf8292ae24dfe9cd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-oracle-output01/0-baseline.stdout",
+      "bytes": 418803,
+      "sha256": "43e473d2ffdaf2b6762aa6f222ce4aaef3e58c9b99caed749f4fe9acca3d8a16"
+    }
+  ],
+  "runs": [
+    {
+      "role": "baseline",
+      "cycle": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-baseline01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.01837623491883278,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-pair06/0-baseline.stdout",
+        "bytes": 418803,
+        "sha256": "43e473d2ffdaf2b6762aa6f222ce4aaef3e58c9b99caed749f4fe9acca3d8a16"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-pair06/0-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-machine06/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.018481521867215633,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-pair06/0-candidate.stdout",
+        "bytes": 418803,
+        "sha256": "43e473d2ffdaf2b6762aa6f222ce4aaef3e58c9b99caed749f4fe9acca3d8a16"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-pair06/0-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-machine06/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.01831553317606449,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-pair06/1-candidate.stdout",
+        "bytes": 418803,
+        "sha256": "43e473d2ffdaf2b6762aa6f222ce4aaef3e58c9b99caed749f4fe9acca3d8a16"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-pair06/1-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "baseline",
+      "cycle": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-baseline01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.018316317349672318,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-pair06/1-baseline.stdout",
+        "bytes": 418803,
+        "sha256": "43e473d2ffdaf2b6762aa6f222ce4aaef3e58c9b99caed749f4fe9acca3d8a16"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-pair06/1-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "baseline",
+      "cycle": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-baseline01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.018374919891357422,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-pair06/2-baseline.stdout",
+        "bytes": 418803,
+        "sha256": "43e473d2ffdaf2b6762aa6f222ce4aaef3e58c9b99caed749f4fe9acca3d8a16"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-pair06/2-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-machine06/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.01840330706909299,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-pair06/2-candidate.stdout",
+        "bytes": 418803,
+        "sha256": "43e473d2ffdaf2b6762aa6f222ce4aaef3e58c9b99caed749f4fe9acca3d8a16"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-pair06/2-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 3,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-machine06/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.01850958727300167,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-pair06/3-candidate.stdout",
+        "bytes": 418803,
+        "sha256": "43e473d2ffdaf2b6762aa6f222ce4aaef3e58c9b99caed749f4fe9acca3d8a16"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-pair06/3-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "baseline",
+      "cycle": 3,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-baseline01/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.018329954706132412,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-pair06/3-baseline.stdout",
+        "bytes": 418803,
+        "sha256": "43e473d2ffdaf2b6762aa6f222ce4aaef3e58c9b99caed749f4fe9acca3d8a16"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-pair06/3-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    }
+  ],
+  "rounds": 4,
+  "oracle": "fixed expected bytes",
+  "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+  "medians": {
+    "baseline": 0.018352437298744917,
+    "candidate": 0.01844241446815431
+  },
+  "resolved": false
+}

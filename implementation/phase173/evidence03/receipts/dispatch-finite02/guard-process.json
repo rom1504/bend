@@ -1,0 +1,76 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": true,
+  "started": 1794011231.9612358,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "3",
+    "selfhost/.assets/bin/bun",
+    "selfhost/tests/phase173/dispatch-controls-v2.mjs",
+    "--receipt",
+    "selfhost/build/phase173/dispatch-api02/report.json",
+    "--assembly",
+    "selfhost/build/phase173/dispatch-source02/manifest.json",
+    "--out",
+    "selfhost/build/phase173/dispatch-finite02"
+  ],
+  "returncode": 0,
+  "rssLimitBytes": 3221225472,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 512499712,
+  "minimumAvailableBytes": 24919392256,
+  "diskBudgetBytes": 12582912,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 5666988032,
+  "minimumDiskFreeBytes": 5666906112,
+  "peakRunAllocatedBytes": 81920,
+  "peakFilesystemDecreaseBytes": 81920,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-finite02"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "3",
+    "fileLimitBytes": 134217728,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+        "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b",
+        "bytes": 88979072
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase173/dispatch-controls-v2.mjs",
+        "sha256": "a9a0463aacdd8cc6fd64a3722e23a5a8c36010a555f7bf17852417f44261e268",
+        "bytes": 2471
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-api02/report.json",
+        "sha256": "74c867e51404c39ddd8387c30435b2413e14f04b9c99249be90bf9f079adb8df",
+        "bytes": 5239
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-source02/manifest.json",
+        "sha256": "b23497f665de502213f731cc97a4902061e8c7e8dc3390f40678d5139f1b1f46",
+        "bytes": 4021612
+      }
+    ]
+  },
+  "wallSeconds": 2.6360455080866814,
+  "finished": 1794011234.5970895
+}

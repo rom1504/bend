@@ -1,0 +1,104 @@
+{
+  "kind": "phase173-experimental-evidence-checkpoint",
+  "version": 3,
+  "createdUTC": "2026-11-07T00:54:13.649965+00:00",
+  "basedOnCommit": "db10595c0f2272662cd6ccc3714224b277a1245b",
+  "collectionComplete": true,
+  "targetRunsDuringCollection": false,
+  "productionEdited": false,
+  "qualifiedSuccessor": false,
+  "wholeCompilerSpeedResult": false,
+  "installedReference": "Phase170 native N2",
+  "priorCapsules": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase173/evidence/inventory.json",
+      "bytes": 62142,
+      "sha256": "098d467e4b4287e56e9d06bc96be07c9f8bd1b02db22ddf763a151deaebd4cfd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase173/evidence02/inventory.json",
+      "bytes": 116095,
+      "sha256": "a5fb00c3aa74c69f68836603320bd68a1ab7dbb9751901d12af3cb28a61e30ed"
+    }
+  ],
+  "capsule": {
+    "file": "/home/ai/bend2/build/publish/bend/implementation/phase173/evidence03/inventory.json",
+    "bytes": 66930,
+    "sha256": "3ec750a19824e79acb39a175799cff39fa45755b6ea1d530a3cd4f9198d2edb9"
+  },
+  "totalCapsuleBytes": 3317944,
+  "completedTopics": [
+    "dispatch revision2 and lookup transfer",
+    "complete AST reconstruction and separate full-field digest",
+    "neutral terminal record-reuse on pattern substitution",
+    "consuming f_pattern_sub source variant with full-value and boundary gates",
+    "diagnostic runtime event comparison"
+  ],
+  "excludes": [
+    "wide-store06 execution in flight",
+    "pending nested-return experiment",
+    "unexecuted nq_layout_subst transfer",
+    "full self-build or N1/N2 qualification",
+    "production selection changes"
+  ],
+  "results": [
+    {
+      "name": "dispatch-store-pair02",
+      "resolved": true,
+      "medians": {
+        "baseline": 0.09501175303012133,
+        "candidate": 0.087429333711043
+      },
+      "ratio": 0.9201949329713505,
+      "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed."
+    },
+    {
+      "name": "dispatch-lookup-pair02",
+      "resolved": true,
+      "medians": {
+        "baseline": 0.5596466225106269,
+        "candidate": 0.5583790026139468
+      },
+      "ratio": 0.9977349637330187,
+      "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed."
+    },
+    {
+      "name": "borrow-ast-digest-pair01",
+      "resolved": true,
+      "medians": {
+        "baseline": 0.06960656610317528,
+        "candidate": 0.06628405558876693
+      },
+      "ratio": 0.9522672830967769,
+      "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed."
+    },
+    {
+      "name": "pattern-digest-pair04",
+      "resolved": true,
+      "medians": {
+        "baseline": 0.11569489445537329,
+        "candidate": 0.1161780571565032
+      },
+      "ratio": 1.0041761799723694,
+      "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed."
+    },
+    {
+      "name": "consuming-pattern-digest-pair01",
+      "resolved": true,
+      "medians": {
+        "baseline": 0.10303240595385432,
+        "candidate": 0.08228222257457674
+      },
+      "ratio": 0.7986052719319097,
+      "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed."
+    }
+  ],
+  "negativeResults": [
+    "lookup transfer neutral",
+    "terminal record-reuse pattern result neutral",
+    "complete-value small-output timings unresolved",
+    "unqualified bun command not found",
+    "IR construction combined with incompatible request options",
+    "wide API source order failed before correction"
+  ]
+}

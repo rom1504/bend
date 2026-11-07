@@ -1,0 +1,818 @@
+[
+  {
+    "kind": "bend-checked-hosted-api",
+    "complete": true,
+    "checked": true,
+    "scope": "Upstream-checked B1 acquisition only; no B2/self-hosting/default promotion.",
+    "seconds": 14.925131274,
+    "error": null,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-source02/compiler.bend",
+      "bytes": 1635785,
+      "sha256": "fe1ba68bc2af289fc1f8b0fff422f7623eb72117f90dd434a4acf48b5aeafee0"
+    },
+    "name": "dispatch-api02"
+  },
+  {
+    "kind": "phase173-abi-finite-controls",
+    "complete": true,
+    "scope": "Finite compiler-data controls and existing final verifiers; not a correctness theorem or native qualification.",
+    "name": "dispatch-finite02",
+    "controlCounts": {
+      "p173sc_controls": 21,
+      "p173ab_controls": 25,
+      "p173dj_controls": 36
+    }
+  },
+  {
+    "kind": "phase173-checked-plan-run",
+    "complete": true,
+    "scope": "Warm backend-only replay from an authenticated complete checked P86Plan. Frontend is omitted explicitly; not a cold-build metric.",
+    "wallSeconds": 65.44134956100001,
+    "stages": {
+      "authenticateLoadSeconds": 4.365389744,
+      "decodeSeconds": 0.567319614,
+      "baseSeconds": 0,
+      "frontendSeconds": 0,
+      "lowerVerifySeconds": 46.302898741999996,
+      "renderWriteSeconds": 5.484023145999999
+    },
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/store-native-candidate-source02/compiler.bend",
+      "bytes": 892697,
+      "sha256": "8ca5a159c6ae2f484eb6a6cf8642ac42f99f561ae536c6a81bad53e1b6068a95"
+    },
+    "ir": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-store-replay02/program.ssa",
+      "bytes": 12721699,
+      "sha256": "4aebeba4dacc2646540d0ccfe9c01b38ad82c3e2e515f99b9919f677d9c0e126"
+    },
+    "warmReplay": true,
+    "name": "dispatch-store-replay02"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 1.2877715579234064,
+    "name": "dispatch-store-machine02"
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "resolved": true,
+    "ratio": 0.9201949329713505,
+    "medians": {
+      "baseline": 0.09501175303012133,
+      "candidate": 0.087429333711043
+    },
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "name": "dispatch-store-pair02"
+  },
+  {
+    "kind": "phase171-checked-request",
+    "complete": true,
+    "scope": "Checked experimental hosted compiler request. This is not native compiler timing, generated-program execution, or promotion.",
+    "wallSeconds": 8.494309816000001,
+    "stages": {
+      "loadSeconds": 2.481642442,
+      "baseSeconds": 0.8375784790000003,
+      "frontendSeconds": 1.9372431740000002,
+      "lowerVerifySeconds": 1.839639166,
+      "renderWriteSeconds": 0.1794338939999998
+    },
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/abi-workload-source01/compiler.bend",
+      "bytes": 3793,
+      "sha256": "c35fef7781016b315fe31481709f1850e1779cfa35690e5045c3905566821baa"
+    },
+    "ir": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-abi-workload-emission02/program.ssa",
+      "bytes": 143838,
+      "sha256": "3f9e3ac94f0f29c8f728fb278c2b888bd2a3a4e56e8781ec437cacaa137ab1bc"
+    },
+    "name": "dispatch-abi-workload-emission02"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.08860417176038027,
+    "name": "dispatch-abi-workload-machine02"
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "resolved": false,
+    "medians": {
+      "baseline": 0.006945396773517132,
+      "candidate": 0.003562578000128269
+    },
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "name": "dispatch-abi-workload-output02"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 1.1435569650493562,
+    "name": "dispatch-lookup-baseline01"
+  },
+  {
+    "kind": "phase171-checked-request",
+    "complete": true,
+    "scope": "Checked experimental hosted compiler request. This is not native compiler timing, generated-program execution, or promotion.",
+    "wallSeconds": 10.501343062,
+    "stages": {
+      "loadSeconds": 2.6369379879999997,
+      "baseSeconds": 0.8120196759999999,
+      "frontendSeconds": 2.695229117,
+      "lowerVerifySeconds": 2.84282684,
+      "renderWriteSeconds": 0.33277528300000087
+    },
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-source02/compiler.bend",
+      "bytes": 15408,
+      "sha256": "4627d3b8c7b8291277574a1fc68bdf6afc972be1e32f8d1d8620c62eb4bdf181"
+    },
+    "ir": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/dispatch-lookup-emission02/program.ssa",
+      "bytes": 276755,
+      "sha256": "9557b0b4678fdd49bb1abd701f211bb31a92067a5c82c8dded532625352d1bf1"
+    },
+    "name": "dispatch-lookup-emission02"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.10035412712022662,
+    "name": "dispatch-lookup-machine02"
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "resolved": true,
+    "ratio": 0.9977349637330187,
+    "medians": {
+      "baseline": 0.5596466225106269,
+      "candidate": 0.5583790026139468
+    },
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "name": "dispatch-lookup-pair02"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 1.1887945560738444,
+    "name": "borrow-ast-baseline01"
+  },
+  {
+    "kind": "phase171-checked-request",
+    "complete": true,
+    "scope": "Checked experimental hosted compiler request. This is not native compiler timing, generated-program execution, or promotion.",
+    "wallSeconds": 9.768966529000002,
+    "stages": {
+      "loadSeconds": 2.531455112,
+      "baseSeconds": 0.813410355,
+      "frontendSeconds": 1.4348246319999998,
+      "lowerVerifySeconds": 3.042193958000001,
+      "renderWriteSeconds": 0.7026085710000006
+    },
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-source01/compiler.bend",
+      "bytes": 11502,
+      "sha256": "4230ef89c8fa79a42458f0f1e0ca2ad62f48ca7ce7b89acc0fbb6f7018477934"
+    },
+    "ir": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-emission05/program.ssa",
+      "bytes": 499272,
+      "sha256": "52e9bcdf134678ffe4554be903d5bf5be95438268a85b5aaaf8292ae24dfe9cd"
+    },
+    "name": "borrow-ast-emission05"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.18185319798067212,
+    "name": "borrow-ast-machine06"
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "resolved": false,
+    "medians": {
+      "baseline": 0.018352437298744917,
+      "candidate": 0.01844241446815431
+    },
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "name": "borrow-ast-pair06"
+  },
+  {
+    "kind": "bend-checked-hosted-api",
+    "complete": true,
+    "checked": true,
+    "scope": "Upstream-checked B1 acquisition only; no B2/self-hosting/default promotion.",
+    "seconds": 0.9158423700000001,
+    "error": null,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-source01/compiler.bend",
+      "bytes": 11502,
+      "sha256": "4230ef89c8fa79a42458f0f1e0ca2ad62f48ca7ce7b89acc0fbb6f7018477934"
+    },
+    "name": "borrow-ast-oracle-api01"
+  },
+  {
+    "kind": "phase173-independent-borrow-value-oracle",
+    "complete": true,
+    "scope": "Unchanged workload evaluated by pinned upstream JS; complete typed value transported to a constant Bend program. The constant requires independent checking and baseline native readback before use as an execution oracle.",
+    "wallSeconds": 0.8388408710000002,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-source01/compiler.bend",
+      "bytes": 11502,
+      "sha256": "4230ef89c8fa79a42458f0f1e0ca2ad62f48ca7ce7b89acc0fbb6f7018477934"
+    },
+    "observation": {
+      "nodes": 66103,
+      "strings": 122614,
+      "maxDepth": 34,
+      "mainCalls": 1
+    },
+    "name": "borrow-ast-oracle-observe01"
+  },
+  {
+    "kind": "phase173-bounded-borrow-native-oracle",
+    "complete": true,
+    "checked": false,
+    "scope": "Complete value serialization only; independent source checking and native readback still required.",
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-oracle-bounded01/oracle.bend",
+      "bytes": 535296,
+      "sha256": "8b718136cbd0541b2b692818dd94545d9e3ce552e9b629ca735583f5ae1e4ac1"
+    },
+    "name": "borrow-ast-oracle-bounded01"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 22.473699199967086,
+    "name": "borrow-ast-oracle-machine01"
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "resolved": false,
+    "medians": {
+      "baseline": 0.015359490178525448,
+      "candidate": 0.014871138148009777
+    },
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "name": "borrow-ast-oracle-output01"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.13857720606029034,
+    "name": "borrow-ast-event-base01"
+  },
+  {
+    "kind": "phase173-native-events",
+    "complete": true,
+    "scope": "Complete fixed-output run of authenticated diagnostic executable. Runtime events may omit generated inline work; event differences are not a direct fast-arm counter.",
+    "outputExact": true,
+    "totals": {
+      "dispatches": 41157,
+      "heap_alloc_calls": 145197,
+      "heap_alloc_miss_calls": 53,
+      "heap_free_calls": 36385,
+      "heap_alloc_requested_words": 333733,
+      "heap_free_words": 127126,
+      "term_keep_calls": 12353,
+      "term_sink_calls": 8258,
+      "term_drop_calls": 91,
+      "ctr_take_calls": 20059,
+      "frame_push_calls": 8220,
+      "frame_capture_words": 45210,
+      "return_calls": 20573,
+      "primitive_calls": 8228,
+      "register_words_copy_requested": 82327,
+      "register_words_clear_requested": 0
+    },
+    "timingKind": "diagnostic: counter overhead; not usable for performance claims",
+    "name": "borrow-ast-event-base-run01"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.11805455526337028,
+    "name": "borrow-ast-event-cand01"
+  },
+  {
+    "kind": "phase173-native-events",
+    "complete": true,
+    "scope": "Complete fixed-output run of authenticated diagnostic executable. Runtime events may omit generated inline work; event differences are not a direct fast-arm counter.",
+    "outputExact": true,
+    "totals": {
+      "dispatches": 41157,
+      "heap_alloc_calls": 141597,
+      "heap_alloc_miss_calls": 53,
+      "heap_free_calls": 32785,
+      "heap_alloc_requested_words": 304940,
+      "heap_free_words": 98333,
+      "term_keep_calls": 12353,
+      "term_sink_calls": 8258,
+      "term_drop_calls": 91,
+      "ctr_take_calls": 16460,
+      "frame_push_calls": 8220,
+      "frame_capture_words": 45210,
+      "return_calls": 20573,
+      "primitive_calls": 8228,
+      "register_words_copy_requested": 82327,
+      "register_words_clear_requested": 0
+    },
+    "timingKind": "diagnostic: counter overhead; not usable for performance claims",
+    "name": "borrow-ast-event-cand-run01"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 1.3043329929932952,
+    "name": "borrow-ast-digest-baseline01"
+  },
+  {
+    "kind": "phase171-checked-request",
+    "complete": true,
+    "scope": "Checked experimental hosted compiler request. This is not native compiler timing, generated-program execution, or promotion.",
+    "wallSeconds": 11.116287377,
+    "stages": {
+      "loadSeconds": 2.446326262,
+      "baseSeconds": 0.8156461960000001,
+      "frontendSeconds": 1.7023753449999994,
+      "lowerVerifySeconds": 3.859081480000001,
+      "renderWriteSeconds": 0.9733022110000001
+    },
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-source01/compiler.bend",
+      "bytes": 15170,
+      "sha256": "6da8af2a5eb34e04d54eb650ff2c99eb16596d16ef022fa01945b834177de4c2"
+    },
+    "ir": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-emission01/program.ssa",
+      "bytes": 641276,
+      "sha256": "b4e7bcb0f5334bc79e7522e37c4d2c635891f7787ca857faad55dcb38843c781"
+    },
+    "name": "borrow-ast-digest-emission01"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.16715810913592577,
+    "name": "borrow-ast-digest-machine01"
+  },
+  {
+    "kind": "bend-checked-hosted-api",
+    "complete": true,
+    "checked": true,
+    "scope": "Upstream-checked B1 acquisition only; no B2/self-hosting/default promotion.",
+    "seconds": 0.9376311389999998,
+    "error": null,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-ast-digest-source01/compiler.bend",
+      "bytes": 15170,
+      "sha256": "6da8af2a5eb34e04d54eb650ff2c99eb16596d16ef022fa01945b834177de4c2"
+    },
+    "name": "borrow-ast-digest-oracle-api01"
+  },
+  {
+    "kind": "phase173-independent-u32-oracle",
+    "complete": true,
+    "scope": "Pinned upstream checked main value; bounded numeric observation, not an equivalence proof.",
+    "name": "borrow-ast-digest-oracle01"
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "resolved": true,
+    "ratio": 0.9522672830967769,
+    "medians": {
+      "baseline": 0.06960656610317528,
+      "candidate": 0.06628405558876693
+    },
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "name": "borrow-ast-digest-pair01"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 1.0637406129390001,
+    "name": "pattern-value-baseline01"
+  },
+  {
+    "kind": "phase171-checked-request",
+    "complete": true,
+    "scope": "Checked experimental hosted compiler request. This is not native compiler timing, generated-program execution, or promotion.",
+    "wallSeconds": 10.055932419,
+    "stages": {
+      "loadSeconds": 2.4508162870000003,
+      "baseSeconds": 0.8014867129999997,
+      "frontendSeconds": 2.058954976,
+      "lowerVerifySeconds": 3.013601400999999,
+      "renderWriteSeconds": 0.5359637500000008
+    },
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/pattern-value-source01/compiler.bend",
+      "bytes": 8293,
+      "sha256": "f9041ca87820c400563c89c4dbc0c946598495b6555375834b4bc20cff2529d1"
+    },
+    "ir": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/pattern-value-emission04/program.ssa",
+      "bytes": 328676,
+      "sha256": "7589a04901fbcb3a54a1871b9ec28375fe70e7bf017227c39acd1fa4af521b31"
+    },
+    "name": "pattern-value-emission04"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.22712266212329268,
+    "name": "pattern-value-machine04"
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "resolved": false,
+    "medians": {
+      "baseline": 0.003569298889487982,
+      "candidate": 0.004050124902278185
+    },
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "name": "pattern-value-pair04"
+  },
+  {
+    "kind": "bend-checked-hosted-api",
+    "complete": true,
+    "checked": true,
+    "scope": "Upstream-checked B1 acquisition only; no B2/self-hosting/default promotion.",
+    "seconds": 1.018730093,
+    "error": null,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/pattern-value-source01/compiler.bend",
+      "bytes": 8293,
+      "sha256": "f9041ca87820c400563c89c4dbc0c946598495b6555375834b4bc20cff2529d1"
+    },
+    "name": "pattern-value-oracle-api01"
+  },
+  {
+    "kind": "phase173-independent-borrow-value-oracle",
+    "complete": true,
+    "scope": "Unchanged workload evaluated by pinned upstream JS; complete typed value transported to a constant Bend program. The constant requires independent checking and baseline native readback before use as an execution oracle.",
+    "wallSeconds": 0.5693863370000001,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/pattern-value-source01/compiler.bend",
+      "bytes": 8293,
+      "sha256": "f9041ca87820c400563c89c4dbc0c946598495b6555375834b4bc20cff2529d1"
+    },
+    "observation": {
+      "nodes": 2135,
+      "strings": 4548,
+      "maxDepth": 18,
+      "mainCalls": 1
+    },
+    "name": "pattern-value-oracle01"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 1.0450285100378096,
+    "name": "pattern-value-oracle-machine01"
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "resolved": false,
+    "medians": {
+      "baseline": 0.0034039667807519436,
+      "candidate": 0.0030179168097674847
+    },
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "name": "pattern-value-oracle-output01"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 1.279755474999547,
+    "name": "pattern-digest-baseline01"
+  },
+  {
+    "kind": "phase171-checked-request",
+    "complete": true,
+    "scope": "Checked experimental hosted compiler request. This is not native compiler timing, generated-program execution, or promotion.",
+    "wallSeconds": 11.58004099,
+    "stages": {
+      "loadSeconds": 2.442734251,
+      "baseSeconds": 0.8278677969999999,
+      "frontendSeconds": 2.245117565,
+      "lowerVerifySeconds": 3.9475744130000003,
+      "renderWriteSeconds": 0.79103053
+    },
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/pattern-digest-source01/compiler.bend",
+      "bytes": 11939,
+      "sha256": "1a4dc0ef5495dabf134c76272df1839a10f58de4d3017add0faef9cf351d5242"
+    },
+    "ir": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/pattern-digest-emission04/program.ssa",
+      "bytes": 474362,
+      "sha256": "b638e9e01b2dfb01c4e9767690c11838680287522df75b3cf976b4c48f2b8d0f"
+    },
+    "name": "pattern-digest-emission04"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.1235855408012867,
+    "name": "pattern-digest-machine04"
+  },
+  {
+    "kind": "bend-checked-hosted-api",
+    "complete": true,
+    "checked": true,
+    "scope": "Upstream-checked B1 acquisition only; no B2/self-hosting/default promotion.",
+    "seconds": 1.0204725799999999,
+    "error": null,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/pattern-digest-source01/compiler.bend",
+      "bytes": 11939,
+      "sha256": "1a4dc0ef5495dabf134c76272df1839a10f58de4d3017add0faef9cf351d5242"
+    },
+    "name": "pattern-digest-oracle-api01"
+  },
+  {
+    "kind": "phase173-independent-u32-oracle",
+    "complete": true,
+    "scope": "Pinned upstream checked main value; bounded numeric observation, not an equivalence proof.",
+    "name": "pattern-digest-oracle01"
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "resolved": true,
+    "ratio": 1.0041761799723694,
+    "medians": {
+      "baseline": 0.11569489445537329,
+      "candidate": 0.1161780571565032
+    },
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "name": "pattern-digest-pair04"
+  },
+  {
+    "kind": "bend-checked-hosted-api",
+    "complete": true,
+    "checked": true,
+    "scope": "Upstream-checked B1 acquisition only; no B2/self-hosting/default promotion.",
+    "seconds": 1.017829946,
+    "error": null,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-pattern-digest01/compiler.bend",
+      "bytes": 12588,
+      "sha256": "becb8390d0f06b3076b7997c3c9eabfc4a75b8abaaf3d510ea5d9cf4e5125b1d"
+    },
+    "name": "consuming-digest-api01"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 1.2371771116741002,
+    "name": "consuming-pattern-digest-machine01"
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "resolved": true,
+    "ratio": 0.7986052719319097,
+    "medians": {
+      "baseline": 0.10303240595385432,
+      "candidate": 0.08228222257457674
+    },
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "name": "consuming-pattern-digest-pair01"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.991110922768712,
+    "name": "consuming-pattern-value-machine01"
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "resolved": false,
+    "medians": {
+      "baseline": 0.003579910844564438,
+      "candidate": 0.0031328159384429455
+    },
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "name": "consuming-pattern-value-pair01"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.8548812977969646,
+    "name": "consuming-controls-base01"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.8028376679867506,
+    "name": "consuming-controls-cand01"
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "resolved": false,
+    "medians": {
+      "baseline": 0.0031423778273165226,
+      "candidate": 0.0027232817374169827
+    },
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "name": "consuming-controls-pair01"
+  },
+  {
+    "kind": "bend-checked-hosted-api",
+    "complete": true,
+    "checked": true,
+    "scope": "Upstream-checked B1 acquisition only; no B2/self-hosting/default promotion.",
+    "seconds": 0.9134793000000001,
+    "error": null,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-controls-source01/compiler.bend",
+      "bytes": 8653,
+      "sha256": "ddb1dd4ee04fd11588dd9704aec4edbc2da35f99224476f2832a91e64d3355bb"
+    },
+    "name": "consuming-controls-oracle-api01"
+  },
+  {
+    "kind": "phase173-independent-borrow-value-oracle",
+    "complete": true,
+    "scope": "Unchanged workload evaluated by pinned upstream JS; complete typed value transported to a constant Bend program. The constant requires independent checking and baseline native readback before use as an execution oracle.",
+    "wallSeconds": 0.5542288380000001,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/consuming-controls-source01/compiler.bend",
+      "bytes": 8653,
+      "sha256": "ddb1dd4ee04fd11588dd9704aec4edbc2da35f99224476f2832a91e64d3355bb"
+    },
+    "observation": {
+      "nodes": 287,
+      "strings": 692,
+      "maxDepth": 10,
+      "mainCalls": 1
+    },
+    "name": "consuming-controls-oracle01"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.585862117819488,
+    "name": "consuming-controls-oracle-machine01"
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "resolved": false,
+    "medians": {
+      "baseline": 0.003235009964555502,
+      "candidate": 0.002743625082075596
+    },
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "name": "consuming-controls-oracle-output01"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.11136761028319597,
+    "name": "consuming-pattern-event-base01"
+  },
+  {
+    "kind": "phase173-native-events",
+    "complete": true,
+    "scope": "Complete fixed-output run of authenticated diagnostic executable. Runtime events may omit generated inline work; event differences are not a direct fast-arm counter.",
+    "outputExact": true,
+    "totals": {
+      "dispatches": 1515860,
+      "heap_alloc_calls": 1386511,
+      "heap_alloc_miss_calls": 164,
+      "heap_free_calls": 1386511,
+      "heap_alloc_requested_words": 2875367,
+      "heap_free_words": 2875367,
+      "term_keep_calls": 296024,
+      "term_sink_calls": 786056,
+      "term_drop_calls": 761264,
+      "ctr_take_calls": 1275799,
+      "frame_push_calls": 65760,
+      "frame_capture_words": 394560,
+      "return_calls": 691865,
+      "primitive_calls": 0,
+      "register_words_copy_requested": 2574204,
+      "register_words_clear_requested": 0
+    },
+    "timingKind": "diagnostic: counter overhead; not usable for performance claims",
+    "name": "consuming-pattern-event-base-run01"
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.1044800290837884,
+    "name": "consuming-pattern-event-cand01"
+  },
+  {
+    "kind": "phase173-native-events",
+    "complete": true,
+    "scope": "Complete fixed-output run of authenticated diagnostic executable. Runtime events may omit generated inline work; event differences are not a direct fast-arm counter.",
+    "outputExact": true,
+    "totals": {
+      "dispatches": 1351396,
+      "heap_alloc_calls": 1386503,
+      "heap_alloc_miss_calls": 121,
+      "heap_free_calls": 1386503,
+      "heap_alloc_requested_words": 2875359,
+      "heap_free_words": 2875359,
+      "term_keep_calls": 213792,
+      "term_sink_calls": 292680,
+      "term_drop_calls": 71048,
+      "ctr_take_calls": 1152455,
+      "frame_push_calls": 65760,
+      "frame_capture_words": 394560,
+      "return_calls": 609633,
+      "primitive_calls": 0,
+      "register_words_copy_requested": 2319284,
+      "register_words_clear_requested": 0
+    },
+    "timingKind": "diagnostic: counter overhead; not usable for performance claims",
+    "name": "consuming-pattern-event-cand-run01"
+  },
+  {
+    "kind": "bend-checked-hosted-api",
+    "complete": true,
+    "checked": true,
+    "scope": "Upstream-checked B1 acquisition only; no B2/self-hosting/default promotion.",
+    "seconds": 14.589822888,
+    "error": null,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-source06/compiler.bend",
+      "bytes": 1579763,
+      "sha256": "30afaf8a98f3f73e3f5272718e20d910fe6d32481a8b3b7927ed06dd13c75545"
+    },
+    "name": "borrow-api06"
+  },
+  {
+    "kind": "phase173-finite-controls",
+    "complete": true,
+    "scope": "Finite complete-value and admission controls; not native execution, mathematical proof, or image qualification.",
+    "wallSeconds": 1.5233867510000003,
+    "name": "borrow-finite06",
+    "controlCounts": 22
+  },
+  {
+    "kind": "bend-checked-hosted-api",
+    "complete": false,
+    "checked": false,
+    "scope": "Upstream-checked B1 acquisition only; no B2/self-hosting/default promotion.",
+    "seconds": 2.4684823060000003,
+    "error": "Error: Checked acquisition failed; inspect captured diagnostics\n    at requireThat (/home/ai/bend2/build/publish/bend/selfhost/tools/build/hosted.mjs:12:60)\n    at acquire (/home/ai/bend2/build/publish/bend/selfhost/tools/build/hosted.mjs:133:5)\n    at /home/ai/bend2/build/publish/bend/selfhost/tools/build/hosted.mjs:150:114",
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/borrow-source05/compiler.bend",
+      "bytes": 1579763,
+      "sha256": "a5defe002085ba19a57026ab09ad6f5bff896194d9982911d6684985012b92fc"
+    },
+    "name": "borrow-api05"
+  },
+  {
+    "name": "borrow-ast-emission04",
+    "status": "command failed before a target report",
+    "returncode": 127
+  },
+  {
+    "name": "borrow-ast-machine05",
+    "status": "command failed before a target report",
+    "returncode": 1
+  }
+]

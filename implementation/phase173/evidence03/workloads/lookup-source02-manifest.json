@@ -1,0 +1,393 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase163/tools/prepare.py",
+      "bytes": 3464,
+      "sha256": "7e74a5332bfec6191bc36341941cf2b6ea78f9d7b9fcad88d81293fa670222c8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase147/tools/prepare.py",
+      "bytes": 7457,
+      "sha256": "f218c0b934c105592b33b48938c7de5e0353660bb0efd0033963817f1d3c6cc6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/source.py",
+      "bytes": 28941,
+      "sha256": "bb657cc05776c22f29244ae68606eb757c676b522a7052b2b32999fbc00599c7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/compiler.json",
+      "bytes": 525440,
+      "sha256": "ce8a967e20cecfca47b588db2fe679405b5f2c3aba4897390ecc5dbef8bbc37d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/implementation/phase152/qualification.json",
+      "bytes": 4111,
+      "sha256": "b70806d308939f5f1433a2487a84b1670150c187b0fff4041c581bc849de54ba"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase163/direct-workloads.bend",
+      "bytes": 4225,
+      "sha256": "c8a7813540a897d7bdf64ae84193ff4328509649fe1ab08d50f76a3b558d9e1f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase163/direct-runtime.bend",
+      "bytes": 4495,
+      "sha256": "2df58a5472b0f859d3972466b153715a3a75ffaab9a080cd8ebc2328c7e1c235"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase166/lookup-workload.bend",
+      "bytes": 1777,
+      "sha256": "843795fce87aaf78d9077c3e7ed44086c7c25e7927dd69965a3cdce4c06c957b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase166/lookup-10000-main.bend",
+      "bytes": 38,
+      "sha256": "de9aea2684953386ce735aebd2cd09187942035bb262b927d2cb8597119689b9"
+    }
+  ],
+  "parentSource": {
+    "file": "selfhost/build/phase152/production-source02/compiler.bend",
+    "bytes": 3085157,
+    "sha256": "027e15041035522ed7e40ef971eff75f24a09ef6a00e3f8fe335839f94bcb8a8"
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase166/lookup-source02/compiler.bend",
+    "bytes": 15408,
+    "sha256": "4627d3b8c7b8291277574a1fc68bdf6afc972be1e32f8d1d8620c62eb4bdf181"
+  },
+  "exports": [
+    "main",
+    "p166l_values",
+    "p166l_expected_values"
+  ],
+  "replacements": [],
+  "additiveReplacements": [],
+  "declarations": [
+    {
+      "name": "p88_string_eq_go",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 555,
+      "sha256": "026bbc2ac4b3f8e807bb5f28da2e445c49b6bd5ce345f71f70838c4433561ace"
+    },
+    {
+      "name": "p98_eq_finish",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 76,
+      "sha256": "b14998f7e771aaa567be0c3e9c0ea6b0d728db007874d59f2e454cbb1eb99d88"
+    },
+    {
+      "name": "p88_string_eq",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 106,
+      "sha256": "addae4f4fb02f5b159151bd47e6a08e7d45bb37db3ab2139836e6da45fb596f4"
+    },
+    {
+      "name": "KTerm",
+      "kind": "type",
+      "source": "private-compiled-Bend",
+      "bytes": 513,
+      "sha256": "084882a12a1a451797f8999e3ea3ce361da01e41fc75b619897b334d0401e2e8"
+    },
+    {
+      "name": "KDef",
+      "kind": "type",
+      "source": "private-compiled-Bend",
+      "bytes": 314,
+      "sha256": "60ac6d5664585b804dd36c3fde3c5453ea6182289b8633a04f41fcc30f9e5251"
+    },
+    {
+      "name": "index_child_list",
+      "kind": "law",
+      "source": "private-compiled-Bend",
+      "bytes": 107,
+      "sha256": "d3439f15264b6616587a241ae8b79e8db32448aa526198ef42092ca078d3cb4c"
+    },
+    {
+      "name": "index_first",
+      "kind": "law",
+      "source": "private-compiled-Bend",
+      "bytes": 83,
+      "sha256": "7a321bb74380aff9069068268fcca34af08290f9bbcbfb84bfbc5ffb5ae01b46"
+    },
+    {
+      "name": "index_bucket",
+      "kind": "law",
+      "source": "private-compiled-Bend",
+      "bytes": 105,
+      "sha256": "c91c43712cbe05f0f63e77eed69130869f9c0e1ac34d714f0a441fdbf74cd7fe"
+    },
+    {
+      "name": "index_lookup",
+      "kind": "law",
+      "source": "private-compiled-Bend",
+      "bytes": 253,
+      "sha256": "33cd69bed1f7e1d7898fa2212e94ee3df26d6182e3a90fd63b78de12cf288368"
+    },
+    {
+      "name": "kc",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 196,
+      "sha256": "570ae3b54f14635213c3c88d9f942630db9bebc175ba6e8c720a1c50eb1deed4"
+    },
+    {
+      "name": "kt",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 342,
+      "sha256": "0c9b89ea67fd058ead5d14cef451adeaff8d11eaf590eec5005cfbc5c4e92350"
+    },
+    {
+      "name": "qua",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 103,
+      "sha256": "5be3d6ce8e5594b66a423039e0fe22e0df4386266c0d2bfb95c567f02db57c42"
+    },
+    {
+      "name": "typ",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 116,
+      "sha256": "5515de71cbff777edb5aa0245001e944d7bde82ddcda0bacc3066e453f8c55a8"
+    },
+    {
+      "name": "dn",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 264,
+      "sha256": "f808cd7fab7767eec919afe1f2694b130f383c80a09b31cc98f629dc0b620c8a"
+    },
+    {
+      "name": "dc",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 303,
+      "sha256": "8ad0e20ebef7d768131e8beb90036b3f2b76fa68bd6f46b8ade38a3f1b16b155"
+    },
+    {
+      "name": "missing",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 223,
+      "sha256": "ed6668a48afeb448804d199f4c9a9e17ad3e8e1984caf11f8eceb1fbea50a631"
+    },
+    {
+      "name": "lookup",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 290,
+      "sha256": "a9d841a12863772433212fbf48ccbe98580b7026f21db586c0ad46849db1179f"
+    },
+    {
+      "name": "index_hash",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 235,
+      "sha256": "6984856f6dbdc23fa26fb49b9250aa490dd1545fa8698ac93a572025b02a4c39"
+    },
+    {
+      "name": "index_child_list",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 224,
+      "sha256": "0fa0ee93558c82d135ea097c6555b9e4a69caa03664a7a3900417e3659860adb"
+    },
+    {
+      "name": "index_first",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 138,
+      "sha256": "f5c125c402ca87ca55208a24c30843151ca560ce122875df74af5d5bb4b9d42a"
+    },
+    {
+      "name": "index_find",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 1213,
+      "sha256": "fd3d33133214de858957f817c327faac8b86a24d656d267e6ade95ac7f71964c"
+    },
+    {
+      "name": "index_bucket",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 220,
+      "sha256": "3fbdb2b3df3743e54e3890225219376fbf7afb0cb7407d72a082f4eb28a0f100"
+    },
+    {
+      "name": "index_lookup",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 151,
+      "sha256": "78a67c7103da17677e8c792da7cd5909052de99f678aa3536110396bce3b138b"
+    },
+    {
+      "name": "p137q_name_eq",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 296,
+      "sha256": "84868265508beaea0f09c211d11f93e3fef7049c41813759f2844eee01b9d4b4"
+    },
+    {
+      "name": "p137q_is_cache",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 265,
+      "sha256": "0fb949b691059e3f99a03c94597088ea49e2506827321040e2b076e0ecb581e7"
+    },
+    {
+      "name": "p163w_row",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 577,
+      "sha256": "fe8fce2207921ca2a91f01859759cc2f7835acdbd5c7fb9940c0be54b0872cb0"
+    },
+    {
+      "name": "p163w_absent",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 157,
+      "sha256": "32b291eb2e490033dcb92e18d29ea6d6b43f22ae2cfdca36b3aaf52b2aac4aa4"
+    },
+    {
+      "name": "p163w_rows",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 192,
+      "sha256": "aee4c661117b4dd278eb43e02bc7245c9eecfd950b39ffe60ac28b8b52ddbdad"
+    },
+    {
+      "name": "p163w_collision",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 369,
+      "sha256": "41bed4e2f42ddb6486936693ef57e3b96165e3631596897b7e084dd835557761"
+    },
+    {
+      "name": "p163w_cache",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 196,
+      "sha256": "b73845037d6af39f3f8f937506ae2348130149c7760ab48d389e191245a03f13"
+    },
+    {
+      "name": "p163w_leaf",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 134,
+      "sha256": "cc4d254733c7a7e7e73d0f546959a7b660482deb5f29fd2d022720a54f5559a2"
+    },
+    {
+      "name": "p163w_legacy",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 317,
+      "sha256": "d1fffbb1d5fe839837ccd4ffc421e21e537bd9729a460cbb6089bb4934bfe7b4"
+    },
+    {
+      "name": "p163w_lookup_round",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 474,
+      "sha256": "26dbb7b0172b2d304cb11b38ca21b55a56ecf0f96e91ef89ec7e3b99eda83101"
+    },
+    {
+      "name": "p163w_lookup_expected_round",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 449,
+      "sha256": "7eba4cd025f9368e35a85ad62d87888547560723f89b6c8ce71240c5012ee883"
+    },
+    {
+      "name": "P163RWork",
+      "kind": "type",
+      "source": "private-compiled-Bend",
+      "bytes": 570,
+      "sha256": "d6bdd2cc1c3691a86acb9c8779b6b88c3643f104824cd3638e6b3d728012477d"
+    },
+    {
+      "name": "p163r_mix",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 79,
+      "sha256": "bfff9648af3206883a7e6df178efa2a2d42d819c166b28cba660be0d43993943"
+    },
+    {
+      "name": "p163r_mix2",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 74,
+      "sha256": "be6408864196dc5103fec3648b1a7de6b4a707cd5de9d32e56a0db85555400b6"
+    },
+    {
+      "name": "p163r_scan",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 3120,
+      "sha256": "af1e208e6f6e4197ad79a7c49a73ef8ace9f9fc7b3eaa39a848bfbf596afd852"
+    },
+    {
+      "name": "p163r_digest",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 129,
+      "sha256": "0eb1ea0fd4b6e9787c3e6c397e7d4606f4ff149efae5c251b17f778cca9621c8"
+    },
+    {
+      "name": "p166l_names",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 553,
+      "sha256": "d39590c07a3e9f1646c9b29fa67f9bf7b708f99c26d3831545a6bb87831e8541"
+    },
+    {
+      "name": "p166l_values",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 380,
+      "sha256": "135ff975035b88f0ae5ff2075a9d325b5ee7eb33037db76702aa0d1c91c8bfe6"
+    },
+    {
+      "name": "p166l_expected_values",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 364,
+      "sha256": "d2aa7ca50c14d030ea0864bf7dc8b9f594c8d13c56fb493d43e60bc3175b9c6d"
+    },
+    {
+      "name": "p166l_continue",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 241,
+      "sha256": "ee5492ff73ea495a8d2492e80767b0f3ca50034dff2ee69621a8f8bcc295c246"
+    },
+    {
+      "name": "p166l_go",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 178,
+      "sha256": "f1b872046eee1e11d66e3f9d7a4686b61e6b78cdac06da25b2ed9e8c333577d1"
+    },
+    {
+      "name": "p166l_run",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 67,
+      "sha256": "a5c792046a2b3013d5068ec16053feb14bcf17c673e8b20ffb69fe4f5e88c331"
+    },
+    {
+      "name": "main",
+      "kind": "def",
+      "source": "private-compiled-Bend",
+      "bytes": 39,
+      "sha256": "7409bc554a31a11e7ad5d52873a99231ad3538250f310a2af5fa4300a3e3a74f"
+    }
+  ],
+  "protectedUnchanged": true
+}

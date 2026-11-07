@@ -1,17 +1,55 @@
-# Current frontier — Phase171 published and installed (Phase174)
+# Current frontend frontier — Phase175 integrated; Phase171 installed
+
+[Report](../implementation/phase175/README.md) · [Metrics](../implementation/phase175/metrics.json) ·
+[Reproduce](../implementation/phase175/reproduce.md).
+
+The maintained parser and reporting modules now contain the two measured
+Phase175 improvements. Canonical QBE source is 3,163,584 bytes, SHA256
+`a0e953a84de73aa22403dde7ec2144540197633857a0f7b5b9784f9e66f5ad04`.
+Three definitions change; ten helper definitions and nine forward signatures
+add 98 source lines. These signatures are not mathematical proofs. All 112
+protected declarations and all five entry-profile transformations remain intact.
+
+Fresh fixed-source complete build: installed Phase171 185.550s → Phase175
+178.937s, 3.56% less, one candidate-first pair. Same original Phase170 source/path,
+prepared Base, CPU3, runtime/toolchain, streamed exact-output check and no retained
+IR; no filesystem-cache flush or confidence interval. QBE/assembly/object are
+identical. Do not compare this fresh pair to older 180s or 188s observations as
+though they share a contemporaneous baseline. No new upstream parity result.
+
+The extracted complete frontend improves 62.854→56.219s (10.56% less) across two
+balanced pairs. These are component timings, not a separate cold-build score.
+The full native N1/N2/Q3 reproduce QBE; N1/N2 assembly, object and every loaded
+ELF byte match (one nonloaded filename byte differs). Native64 passes; all45
+timed QBE products remain exact; six JS and six C products match their qualified
+references. Those public screens are partial, and exact products carry prior
+runtime evidence rather than a fresh runtime benchmark.
+
+Use `selfhost/build/phase175/full-native-n2/program` with its `report.json` as an
+explicit native N2 research compiler. **Installed/default selectors remain the
+Phase171 release below.** Source integration is not installed promotion.
+
+Keep the neutral precedence, field-quantity reuse and extra publication deferral
+experiments out of the maintained compiler. The new bounded parser/frontend loop
+is useful for source changes; a frontend gain alone cannot establish the 100s
+goal. Prioritize measured complete costs, including the still-dominant work after
+the frontend. No new runtime, verifier weakening or PR comment.
+
+## Installed release — Phase171 published in Phase174
+
 
 [Report](../implementation/phase174/README.md) ·
 [Metrics](../implementation/phase174/metrics.json) ·
 [Reproduce](../implementation/phase174/reproduce.md) ·
 [Current selector](../selfhost/manifests/current.json).
 
-Use the installed Phase171 compiler for the next research cycle. Its exact measured
-source is integrated in six maintained modules: 16 replacements, 28 additions,
-112 protected declarations unchanged. Canonical source is 3,161,409 bytes,
+Phase175 used the installed Phase171 compiler as its reference. That publication
+integrated six maintained modules: 16 replacements, 28 additions,
+112 protected declarations unchanged. Its canonical source is 3,161,409 bytes,
 SHA256 `74cd7de3e5076490e20ba0218d4c9254853be72562946b9ef66fed6c10c7a53a`.
 
 Fresh fixed-input cold pair: Phase170 195.101s → Phase171 188.395s, 3.44% less,
-with identical QBE/assembly/object. The current-source N1→N2 build is 188.002s.
+with identical QBE/assembly/object. Its publication-source N1→N2 build is 188.002s.
 The older 180.677s observation uses the original fixed source and remains
 historical evidence; do not mix observations or silently change benchmark input.
 Each pair has one observation per image, prepared Base, CPU3, fresh processes,
@@ -20,15 +58,16 @@ and no filesystem-cache flush. No new upstream parity result.
 77 finite controls, native64, hostedQBE19, JS45, C45, public-interface gates and
 native/hosted sessions pass. Actual N1/N2/Q3 QBE and N1/N2 assembly/object reproduce.
 Executable code/data match; raw loaded ELF bytes differ in explicitly audited
-section-offset/build-id metadata. Fresh JS B2/B3 checks/reproduces current source.
+section-offset/build-id metadata. Fresh JS B2/B3 checks/reproduces that source.
 Ordinary45 and timed45 QBE plus JS45/C45 products match qualified references exactly.
 Installed cache/live, hosted, session and public commands pass; rollback is retained.
 No generated-program runtime regression is implied by code changes: these benchmark
 products are unchanged. This is not a fresh runtime score or full correctness theorem.
 
-Phase172/173 architecture experiments remain separate. The next optimization
-campaign must start from this installed source/image and keep the frozen original
-full-source comparison alongside changing-source self-build measurements.
+Phase172/173 architecture experiments remain separate. Phase175 began from this
+installed source/image. Future campaigns must identify their actual compiler
+explicitly and retain the frozen original full-source comparison alongside
+changing-source self-build measurements.
 No PR comment was posted.
 
 ## Phase173 closed — useful local capability, no cold-build win

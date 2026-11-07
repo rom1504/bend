@@ -1,0 +1,103 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": true,
+  "started": 1794040556.3108296,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "3",
+    "python3",
+    "-B",
+    "selfhost/tools/build/request.py",
+    "--assets",
+    "selfhost/manifests/assets-native.json",
+    "--image",
+    "selfhost/build/phase175/full-native-n2/program",
+    "--image-receipt",
+    "selfhost/build/phase175/full-native-n2/report.json",
+    "--host",
+    "native",
+    "--stage",
+    "N2",
+    "--target",
+    "qbe",
+    "--mode",
+    "cache",
+    "--source",
+    "selfhost/build/phase175/full-source01/compiler.bend",
+    "--expected",
+    "selfhost/build/phase175/full-native-n1/program.ssa",
+    "--out",
+    "selfhost/build/phase175/full-native-q3",
+    "--seconds",
+    "220"
+  ],
+  "returncode": 0,
+  "rssLimitBytes": 2147483648,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 822431744,
+  "minimumAvailableBytes": 23965884416,
+  "diskBudgetBytes": 117440512,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 5566005248,
+  "minimumDiskFreeBytes": 5467226112,
+  "peakRunAllocatedBytes": 98197504,
+  "peakFilesystemDecreaseBytes": 98779136,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native-q3"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "3",
+    "fileLimitBytes": 134217728,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/request.py",
+        "sha256": "f2638c055de2de15c80b8e36d888337a3061f8f7725c55f16ad645943562566c",
+        "bytes": 18653
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/manifests/assets-native.json",
+        "sha256": "e1b0d32addd09c80b8b791dd74c5bcdc93cb1e5183b115b2d1b37231ad96125e",
+        "bytes": 18715
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native-n2/program",
+        "sha256": "88be8d8627ed84f5cf4ebb84bafa96c890b074fa49803056d6fd8a52fd8aaa02",
+        "bytes": 16140352
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native-n2/report.json",
+        "sha256": "5672432ccb4761954c153c7b95b41c9b576ad0eaa610da216cdaf6fc40acff59",
+        "bytes": 19111
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-source01/compiler.bend",
+        "sha256": "a0e953a84de73aa22403dde7ec2144540197633857a0f7b5b9784f9e66f5ad04",
+        "bytes": 3163584
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native-n1/program.ssa",
+        "sha256": "a52b5adeabcc3201a239bb4a8c4a07597a477fee5103fe1634f83c69cbe98644",
+        "bytes": 98149013
+      }
+    ]
+  },
+  "wallSeconds": 159.08974957792088,
+  "finished": 1794040715.4004598
+}

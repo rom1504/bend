@@ -1,0 +1,158 @@
+{
+  "kind": "phase175-fixed-build-pair-audit",
+  "version": 1,
+  "complete": true,
+  "targetsRun": false,
+  "baselineReceipt": {
+    "file": "selfhost/build/phase175/fixed-baseline01/report.json",
+    "bytes": 17112,
+    "sha256": "911c4b9fb5ee2b9c21342e4ff1d31938c82ee41a06fddc2897ab954abd171e75"
+  },
+  "candidateReceipt": {
+    "file": "selfhost/build/phase175/fixed-candidate02/report.json",
+    "bytes": 17939,
+    "sha256": "519ec508873fbac5066ef81867944699677c6fed1d488a20b7cf4bdf25e795a4"
+  },
+  "baselineGuard": {
+    "file": "selfhost/build/phase175/fixed-baseline01-guard/process.json",
+    "bytes": 3029,
+    "sha256": "cc0cbba1b9e84f7a5b7088bf1359bd9bd77408aabcdd1d477bbb6c9941bfc589"
+  },
+  "candidateGuard": {
+    "file": "selfhost/build/phase175/fixed-candidate02-guard/process.json",
+    "bytes": 3606,
+    "sha256": "0df851ab224c116b8af998476b64388a7e05e0f455867f979ca0beda8d93fa24"
+  },
+  "checks": {
+    "request.host": true,
+    "request.target": true,
+    "request.mode": true,
+    "request.source": true,
+    "request.base": true,
+    "request.carrier": true,
+    "request.stamp": true,
+    "request.providers": true,
+    "request.outputContract": true,
+    "runtime": true,
+    "runtimePolicy": true,
+    "toolchain": true,
+    "retainIR": true,
+    "expectedQbe": true,
+    "relayLimitBytes": true,
+    "maximumRelayBytes": true,
+    "machineDiagnosticPolicy": true,
+    "timingScope": true,
+    "producerLinkedRuntime": true,
+    "compilerArgumentsExceptImage": true,
+    "output.irDigest": true,
+    "output.assembly": true,
+    "output.object": true,
+    "completeWithoutInputMutation": true,
+    "streamingReferenceComparison": true,
+    "guard.rssLimitBytes": true,
+    "guard.availableFloorBytes": true,
+    "guard.diskBudgetBytes": true,
+    "guard.diskReserveBytes": true,
+    "cpu": true,
+    "allCommonInputIdentities": true,
+    "candidateThenBaseline": true,
+    "machineCommandsExceptOutputPaths": true
+  },
+  "sameCommonInputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/base/base.p130",
+      "bytes": 2612691,
+      "sha256": "984fad041a0ba855ea0aaedd384485afa2153da644655c00882eb50ace33817f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/qbe",
+      "bytes": 262024,
+      "sha256": "1eca24288f9574ad57032ac88f11c3f74ced605838749226d77a9acd4443e5f4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "bytes": 75064,
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/native-chain-final/n2/program.ssa",
+      "bytes": 97488970,
+      "sha256": "661b62664acdac83d12bc3192b5f9113a2bb946dd331433e64ca0452f6f83850"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/source-final/compiler.bend",
+      "bytes": 3150535,
+      "sha256": "434edd1d56128f9480800573abf8a0ae21d910a547837af089f25cd1d0e89b71"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/manifests/assets-native.json",
+      "bytes": 18715,
+      "sha256": "e1b0d32addd09c80b8b791dd74c5bcdc93cb1e5183b115b2d1b37231ad96125e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/assets.py",
+      "bytes": 7994,
+      "sha256": "02a8b03647f5a6292502363fc1bb79147b61196a9271c21cee55a2ec6bf64dba"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/common.py",
+      "bytes": 4809,
+      "sha256": "d9a16fef18cf936499e51f8c7f36a653f2921ef9a50f846257c2e8bc460ec6d1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/native.py",
+      "bytes": 13731,
+      "sha256": "bc53fc000d45574e913904f7e899d785e5c98050b0942d14a81118b9ab009e58"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/request.py",
+      "bytes": 18653,
+      "sha256": "f2638c055de2de15c80b8e36d888337a3061f8f7725c55f16ad645943562566c"
+    },
+    {
+      "file": "/usr/bin/python3.9",
+      "bytes": 5451288,
+      "sha256": "ca7655083b581ffe36c72dcb445857704db533ca39b03f79c97d8d0ef3bef9af"
+    },
+    {
+      "file": "/usr/bin/x86_64-linux-gnu-as",
+      "bytes": 472248,
+      "sha256": "fac4e966afe9223dbab23aa15d27d144af81de4a44c8cad97c1dde290adb9493"
+    },
+    {
+      "file": "/usr/bin/x86_64-linux-gnu-gcc-10",
+      "bytes": 817704,
+      "sha256": "693abcb42e67fb871673f258a3644257ca69a209691ec4d8137a42442834bd19"
+    }
+  ],
+  "excludedDifferences": {
+    "baselineOnlyInputPaths": [
+      "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/bend"
+    ],
+    "candidateOnlyInputPaths": [
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native-n2/program",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native-n2/report.json"
+    ],
+    "meaning": "Compiler executable and candidate acquisition receipt intentionally differ. Output-directory paths and image metadata also differ; semantic input/runtime/toolchain/output contract match."
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/source-final/compiler.bend",
+    "bytes": 3150535,
+    "sha256": "434edd1d56128f9480800573abf8a0ae21d910a547837af089f25cd1d0e89b71"
+  },
+  "baselineSeconds": 185.54959116922691,
+  "candidateSeconds": 178.93721645511687,
+  "candidateToBaselineRatio": 0.9643633021638978,
+  "elapsedReductionFraction": 0.03563669783610224,
+  "absoluteSecondsSaved": 6.612374714110047,
+  "baselineEmitAndQbeSeconds": 179.6236590249464,
+  "candidateEmitAndQbeSeconds": 173.0573082291521,
+  "baselineGuardWallSeconds": 187.32040263107046,
+  "candidateGuardWallSeconds": 180.7017893330194,
+  "scope": "Metadata audit of authenticated completed receipts: one candidate-first/baseline-second pair on CPU3, fixed Phase170 source, fresh processes, same pinned prepared Base, no object reuse, no filesystem-cache flush. Both stream expected QBE and retain no IR. Complete wallSeconds starts after builder preflight. No repeated-sample statistical confidence or 100-second result."
+}

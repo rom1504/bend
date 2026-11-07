@@ -108,18 +108,9 @@ def driver_bad_names(
 ) -> List<&2,String>:
   dr_bad_names(book_cached(book_final_fast(book, Nil{}), norm_max_book(book)), dr_own_names(book, Nil{}))
 
-# Module: src/driver/report.bend:91
 @unsafe
-def dr_own_names(
-  +book: List<&2,KDef>,
-  +seen: List<&2,String>,
-) -> List<&2,String>:
-  match book:
-    case Nil{}: Nil{}
-    case Con{d, rest}:
-      kc(List<&2,String>, db(d) || has_name(seen, dn(d)),
-        u => dr_own_names(rest, seen),
-        u => Con{dn(d), dr_own_names(rest, Con{dn(d), seen})})
+def dr_own_names(+book: List<&2,KDef>, +seen: List<&2,String>) -> List<&2,String>:
+  p175rn_walk(book,p142j_members(seen,missing()))
 
 # Owned successful requests need the same dependency result for both fields.
 # This query only follows names; no fresh binder allocation consults the bound.
@@ -179,3 +170,23 @@ def dr_cached_step(+book: List<&2, KDef>, +name: String, +rest: List<&2, String>
     case DR_Closure{+bad, +seen}:
       kc(List<&2, String>, bad, u => Con{name, dr_cached_names(book, rest, safe)},
         u => dr_cached_names(book, rest, dr_mark_safe(seen, safe)))
+law p175rn_walk:
+  for book: List<&2,KDef>
+  for +members: KDef
+  List<&2,String>
+# Exact ordered first non-native names. Reuse the existing collision-safe set.
+# Native rows must not mark their names: a later ordinary row may still be own.
+@unsafe
+def p175rn_name(+rest: List<&2,KDef>, +members: KDef, +name: String, +hash: U32) -> List<&2,String>:
+  nt_choose(List<&2,String>,p142j_member(members,name,hash),
+    u => p175rn_walk(rest,members),
+    u => Con{name,p175rn_walk(rest,p142j_mark(members,name,hash))})
+
+@unsafe
+def p175rn_walk(book,members):
+  match book:
+    case Nil{}: []
+    case Con{+head,+rest}:
+      nt_choose(List<&2,String>,db(head),
+        u => p175rn_walk(rest,members),
+        u => p175rn_name(rest,members,dn(head),index_hash(dn(head),2166136261)))

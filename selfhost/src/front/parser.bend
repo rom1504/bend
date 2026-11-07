@@ -532,21 +532,14 @@ def f_prec(
     u => f_choose(U32, f_eq(s, "<<") || f_eq(s, ">>op"), u => 10,
     u => f_choose(U32, f_eq(s, "+") || f_eq(s, "-"), u => 11,
     u => f_choose(U32, f_eq(s, "*") || f_eq(s, "/") || f_eq(s, "%"), u => 12, u => 0))))))))))))
-
-# Module: src/front/parser.bend:406
+# Separate overlay: use original f_prec unless the precedence experiment is
+# explicitly combined. Preserve parser calls, cursor values and failure paths.
 @unsafe
-def f_grow_base(
-  +p: FParsed,
-  +min: U32,
-) -> FParsed:
+def f_grow_base(+p: FParsed, +min: U32) -> FParsed:
   match p:
-    case FParsed{+n, +ts}:
-      f_choose(FParsed, f_eq(tg(n), "Error"), u => FParsed{n, ts},
-        u => f_choose(FParsed, f_eq(f_tx(ts), "("),
-          u => f_context_call(n, ts, min),
-        u => f_choose(FParsed, (U32.is_gt(f_prec(f_tx(ts)), min) || (f_eq(f_tx(ts), "<") && U32.is_eq(ke(n), f_begin(ts)))) && Bool.not((f_eq(f_tx(ts), "%") || f_eq(f_tx(ts), "-")) && U32.is_eq(f_col(f_tl(ts)), U32.add(f_col(ts), 1)) && Char.is_alpha(f_head(f_tx(f_tl(ts))))) && Bool.not(f_eq(f_tx(ts), ">")) && Bool.not(f_eq(f_tx(ts), ">>") && (f_eq(f_tx(f_tl(ts)), ")") || f_eq(f_tx(f_tl(ts)), "}") || f_eq(f_tx(f_tl(ts)), ",") || f_eq(f_tx(f_tl(ts)), ":") || f_eq(f_tx(f_tl(ts)), ">") || f_eq(f_tx(f_tl(ts)), "\n") || f_eq(f_tx(f_tl(ts)), "->") || f_eq(f_tx(f_tl(ts)), "<eof>") || f_eq(f_tx(f_tl(ts)), "]"))),
-          u => f_binary_start(n, ts, min),
-          u => FParsed{n, ts})))
+    case FParsed{n,ts}:
+      f_choose(FParsed,f_eq(tg(n),"Error"),u => FParsed{n,ts},
+        u => p175p_grow_word(n,ts,min,f_tx(ts)))
 
 # The first angle argument is parsed at comparison precedence. Compound type
 # operators need explicit parentheses; later comma arguments retain full terms.
@@ -633,12 +626,14 @@ def f_args_existing(+ts: FInput, +end: String, +acc: List<&2,KTerm>) -> FParsed:
 def f_grow(p, min):
   f_context_grow(p, min)
 
-# Module: src/front/parser.bend:492
 @unsafe
 def f_grow_existing(+p: FParsed, +min: U32) -> FParsed:
   match p:
-    case FParsed{n, +ts}:
-      f_choose(FParsed, f_eq(f_tx(ts), "\n") && U32.is_gt(f_prec(f_tx(f_skip(ts))), 0) && Bool.not((f_eq(f_tx(f_skip(ts)), "%") || f_eq(f_tx(f_skip(ts)), "-")) && U32.is_eq(f_col(f_tl(f_skip(ts))), U32.add(f_col(f_skip(ts)), 1))), u => f_grow_base(FParsed{n, f_skip(ts)}, min), u => f_choose(FParsed, f_eq(f_tx(ts), "!") && f_eq(f_tx(f_tl(ts)), "(") && U32.is_eq(f_line(ts), f_line(f_tl(ts))) && U32.is_eq(f_col(f_tl(ts)), U32.add(f_col(ts), 1)), u => f_bang(f_context_call_head(n), ts, min), u => f_choose(FParsed, f_eq(f_tx(ts), "["), u => f_index(n, f_expect(f_expr(f_tl(ts), 0), "]"), min), u => f_grow_base(FParsed{n, ts}, min))))
+    case FParsed{n,ts}:
+      +word = f_tx(ts)
+      f_choose(FParsed,f_eq(word,"\n"),
+        u => p175p_grow_newline(n,ts,min,f_skip(ts)),
+        u => p175p_grow_suffix(n,ts,min,word))
 
 # Module: src/front/parser.bend:514
 @unsafe
@@ -914,3 +909,95 @@ def fpe_source_slice(+source: String, +begin: U32, +end: U32) -> String:
       f_choose(String, U32.is_ge(begin, dg_units(c)),
         u => fpe_source_slice(rest, U32.sub(begin, dg_units(c)), U32.sub(end, dg_units(c))),
         u => f_choose(String, U32.is_ge(end, dg_units(c)), u => SCon{c, fpe_source_slice(rest, 0, U32.sub(end, dg_units(c)))}, u => ""))
+law p175p_grow_word:
+  for +n: KTerm
+  for +ts: FInput
+  for +min: U32
+  for +word: String
+  FParsed
+law p175p_grow_newline:
+  for +n: KTerm
+  for +ts: FInput
+  for +min: U32
+  for +skipped: FInput
+  FParsed
+law p175p_grow_suffix:
+  for +n: KTerm
+  for +ts: FInput
+  for +min: U32
+  for +word: String
+  FParsed
+law p175p_grow_operator:
+  for +n: KTerm
+  for +ts: FInput
+  for +min: U32
+  for +word: String
+  FParsed
+
+@unsafe
+def p175p_grow_word(n,ts,min,word):
+  f_choose(FParsed,f_eq(word,"("),u => f_context_call(n,ts,min),u =>
+    f_choose(FParsed,U32.is_gt(f_prec(word),min) || (f_eq(word,"<") && U32.is_eq(ke(n),f_begin(ts))),
+      u => p175p_grow_operator(n,ts,min,word),u => FParsed{n,ts}))
+law p175p_grow_sign:
+  for +n: KTerm
+  for +ts: FInput
+  for +min: U32
+  for +word: String
+  for +next: FInput
+  FParsed
+law p175p_grow_shift:
+  for +n: KTerm
+  for +ts: FInput
+  for +min: U32
+  for +word: String
+  FParsed
+
+@unsafe
+def p175p_grow_operator(n,ts,min,word):
+  f_choose(FParsed,f_eq(word,"%") || f_eq(word,"-"),
+    u => p175p_grow_sign(n,ts,min,word,f_tl(ts)),
+    u => p175p_grow_shift(n,ts,min,word))
+
+@unsafe
+def p175p_grow_sign(n,ts,min,word,next):
+  f_choose(FParsed,U32.is_eq(f_col(next),U32.add(f_col(ts),1)) && Char.is_alpha(f_head(f_tx(next))),
+    u => FParsed{n,ts},u => p175p_grow_shift(n,ts,min,word))
+law p175p_shift_end:
+  for +word: String
+  Bool
+
+@unsafe
+def p175p_grow_shift(n,ts,min,word):
+  f_choose(FParsed,f_eq(word,">"),u => FParsed{n,ts},u =>
+    f_choose(FParsed,f_eq(word,">>") && p175p_shift_end(f_tx(f_tl(ts))),
+      u => FParsed{n,ts},u => f_binary_start(n,ts,min)))
+
+@unsafe
+def p175p_shift_end(word):
+  f_eq(word,")") || f_eq(word,"}") || f_eq(word,",") || f_eq(word,":") ||
+  f_eq(word,">") || f_eq(word,"\n") || f_eq(word,"->") || f_eq(word,"<eof>") || f_eq(word,"]")
+
+@unsafe
+def p175p_grow_newline(n,ts,min,skipped):
+  +word = f_tx(skipped)
+  f_choose(FParsed,U32.is_gt(f_prec(word),0) && Bool.not((f_eq(word,"%") || f_eq(word,"-")) && U32.is_eq(f_col(f_tl(skipped)),U32.add(f_col(skipped),1))),
+    u => f_grow_base(FParsed{n,skipped},min),
+    u => p175p_grow_suffix(n,ts,min,"\n"))
+law p175p_grow_bang:
+  for +n: KTerm
+  for +ts: FInput
+  for +min: U32
+  for +next: FInput
+  FParsed
+
+@unsafe
+def p175p_grow_suffix(n,ts,min,word):
+  f_choose(FParsed,f_eq(word,"!"),u => p175p_grow_bang(n,ts,min,f_tl(ts)),u =>
+    f_choose(FParsed,f_eq(word,"["),u => f_index(n,f_expect(f_expr(f_tl(ts),0),"]"),min),
+      u => f_grow_base(FParsed{n,ts},min)))
+
+@unsafe
+def p175p_grow_bang(n,ts,min,next):
+  f_choose(FParsed,f_eq(f_tx(next),"(") && U32.is_eq(f_line(ts),f_line(next)) && U32.is_eq(f_col(next),U32.add(f_col(ts),1)),
+    u => f_bang(f_context_call_head(n),ts,min),u => f_grow_base(FParsed{n,ts},min))

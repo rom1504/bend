@@ -1,7 +1,9 @@
 # Phase175 full candidate: parser lookahead plus report-name membership
 
-This is a **source-only proposal**, pending the combined frontend screen. The
-installed Phase171 compiler and maintained source are unchanged. Use the separate
+The selected composition passed the combined frontend screen, independent source
+checking, native N1/N2/Q3, native64, timed45 product identity and JS6/C6 product
+screens. It is integrated byte-exactly into maintained source. The installed
+Phase171 release remains unchanged. Use the separate
 [`full-prepare.py`](../../selfhost/tests/phase175/full-prepare.py); the active
 frontend composer is not modified.
 
@@ -98,12 +100,12 @@ frontend screen supports a full image.
      --source selfhost/build/phase175/full-source01/compiler.bend \
      --expected selfhost/build/phase175/full-native-n1/program.ssa \
      --out selfhost/build/phase175/full-native-n2 --seconds 280 \
-     --retain-ir --output-stage N2
+     --output-stage N2
    ```
 
 4. **Execute N2 to produce Q3, without another machine build.** The maintained
    `request.py` command uses the same source, explicit N2 image/report, native
-   stage N2 and cache mode; set `--expected full-native-n2/program.ssa` and a fresh
+   stage N2 and cache mode; set `--expected full-native-n1/program.ssa` and a fresh
    `--out full-native-q3`. Require the complete request's exact QBE, unchanged
    input pins and successful process. Do not infer this execution from N1/N2
    product equality. Compare assembly/object separately; final ELF differences
@@ -157,3 +159,12 @@ native generations, exact frozen QBE and finite native correctness. Expensive
 JS B2/B3, hosted45 and C45 are not automatically required for this experimental
 native image. A later public multi-target promotion remains a separate decision
 with the relevant interface/target gates; these frontend changes are shared.
+
+## Completed integration
+
+`integration-applied01/report.json` records exact maintained assembly of
+`a0e953a8…`, all five profile transformations and 112 unchanged protections.
+The overlay preparation above is pinned to the pre-integration parent at
+commit `7f227f5`; it intentionally refuses the newer maintained source. For a
+new current-source build use maintained `source.py assemble` and an explicit
+qualified image, as described in the final Phase175 reproduction guide.

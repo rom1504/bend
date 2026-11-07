@@ -1,0 +1,165 @@
+{
+  "kind": "phase175-own-combined-machine-intermediate-proposal-v1",
+  "complete": true,
+  "targetsRun": false,
+  "capturesRun": false,
+  "prunesRun": false,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/close.py",
+    "bytes": 13971,
+    "sha256": "7e37ec90fe3fd4a0f990cae727052e8ccdf7880f05dcc68618da15c0d76b0fef"
+  },
+  "archiveVerifier": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/archive-v02.py",
+    "bytes": 18412,
+    "sha256": "3238e0774c6c21c3de6c07bcbd71e469cbb23aaba01f99da0cb1e9f51990ad9f"
+  },
+  "roots": [
+    {
+      "name": "combined-native01",
+      "root": "selfhost/build/phase175/combined-native01",
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/combined-native01/report.json",
+        "bytes": 16013,
+        "sha256": "7f86868f151dbbaa14b8bc941d7577ef9a3ded66b86c57bbd5397c7b4e9a7b80"
+      },
+      "guards": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/combined-native01-guard/process.json",
+          "bytes": 2714,
+          "sha256": "4ab13b68c872904769e0b8e07e36d24cfe65cb46bf048017f7bdb89207f2ed8f"
+        }
+      ],
+      "lifecycle": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/combined-native01-guard/retention.json",
+        "bytes": 1050,
+        "sha256": "3aebc53ec3e3d597c399c73faf4328f25f9cd5b1dacac59d0a81998ed04f85b9"
+      },
+      "lifecycleState": "sealed",
+      "classification": "completed",
+      "selectedFiles": [
+        {
+          "file": "selfhost/build/phase175/combined-native01/program.s",
+          "member": "program.s",
+          "bytes": 26622596,
+          "sha256": "5772bba66297f947b1d9734136f1e5917ba1f00ec2b33d56e8b1d5027dc5407f",
+          "identityAuthority": "Original completed build report; capture must independently hash current bytes.",
+          "metadata": {
+            "device": 2306,
+            "inode": 79699843,
+            "size": 26622596,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794038970011285260,
+            "ctimeNs": 1794038970011285260,
+            "allocatedBytes": 26624000
+          }
+        },
+        {
+          "file": "selfhost/build/phase175/combined-native01/program.o",
+          "member": "program.o",
+          "bytes": 7592592,
+          "sha256": "dad87b3d5e748806df630d9f097d249942d974d20647ad76c512d4298a618ab0",
+          "identityAuthority": "Original completed build report; capture must independently hash current bytes.",
+          "metadata": {
+            "device": 2306,
+            "inode": 79699846,
+            "size": 7592592,
+            "mode": 420,
+            "uid": 1003,
+            "gid": 1003,
+            "links": 1,
+            "mtimeNs": 1794038971619235581,
+            "ctimeNs": 1794038971619235581,
+            "allocatedBytes": 7593984
+          }
+        }
+      ],
+      "allocatedBytes": 34217984,
+      "protectedImage": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/combined-native01/program",
+        "bytes": 5914568,
+        "sha256": "4b35881456f91b751f0f814794a94612cf60fd8c72ca06c2d7054474209ee320"
+      },
+      "protectedRuntime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+        "bytes": 119096,
+        "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+      },
+      "protectedSource": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/combined-source01/compiler.bend",
+        "bytes": 662164,
+        "sha256": "740895466116a695eb5758b2eb8fe853b664ed5eea575a30b305ef55dabe9903"
+      },
+      "captureOut": "selfhost/build-retention/phase175/own-combined-native01",
+      "applyCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "apply",
+        "--plan",
+        "selfhost/build-retention/phase175/own-combined-native01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/own-combined-native01/applied"
+      ],
+      "restoreCommand": [
+        "python3",
+        "-B",
+        "selfhost/tools/build-retention/archive-v02.py",
+        "restore",
+        "--plan",
+        "selfhost/build-retention/phase175/own-combined-native01/verified/plan.json",
+        "--out",
+        "selfhost/build-retention/phase175/own-combined-native01/restored"
+      ]
+    }
+  ],
+  "selectedFiles": 2,
+  "allocatedBytes": 34217984,
+  "archiveCapPerRootBytes": 67108864,
+  "memberCapBytes": 134217728,
+  "maintenanceReserveBytes": 5368709120,
+  "compilerReserveBytes": 5368709120,
+  "consumerAudit": {
+    "method": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase175/native-frontend.py",
+      "bytes": 5445,
+      "sha256": "7a83e8941efc0cc76877814ea529886d5387df1ea85e8b1e26c122af53a3d973"
+    },
+    "facts": [
+      "Current frontend preflight/measurement consumes executable/runtime/source and receipts; these selected assembly/object leaves are not inputs.",
+      "The combined writer has completed successfully and its guard lifecycle is sealed.",
+      "The current fixed-candidate CPU run uses other roots; capture/prune still waits until the entire target lane is idle.",
+      "Future assembly inspection or relinking requires restoration; all binaries/source/API/runtime/reports/IR remain hot."
+    ],
+    "scope": "Read-only exact single writer/guard/lifecycle and selected-leaf metadata review; no large-product hashing while timing."
+  },
+  "capacity": {
+    "freeBytesAtReview": 5495410688,
+    "above5GiBReserveBytes": 126701568,
+    "estimatedArchiveBytes": 4290199,
+    "estimatedNetRecoveryBytes": 29927785,
+    "estimateBasis": {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase175/storage-own-native-recovery.json",
+      "bytes": 26346,
+      "sha256": "1f9fa5ceb0851885db68b0729e2b5af19720c579e0e8038bbbe4a6b78f760992"
+    },
+    "estimateLimits": "Observed prior seven-root machine compression predicts size; cap is only a bound. Actual archive allocation and receipt storage determine net recovery."
+  },
+  "protected": [
+    "Every executable/report/runtime/source/API/Base/binding and every unlisted file in combined-native01",
+    "All current fixed-candidate, baseline, qualification and timing/verification products outside these two explicit leaves",
+    "All retained IR, profiles, qualified/installed/rollback chains, toolchain and selector files",
+    "Shared Phase32 lock; all other roots and phases"
+  ],
+  "captureContract": [
+    "Root waits for active timing to finish and serializes maintenance under shared execution lock.",
+    "Authenticate proposal/method, successful report/guard, exact metadata and original assembly/object hashes before capture.",
+    "Use maintained close.capsule with only selected rows; preserve normal5GiB floor,64MiB archive cap and128MiB member cap. No guard or selector changes.",
+    "Reopen/hash complete archive and check source stability; independently run archive-v02 verify and require exact path/hash/metadata/allocated-total match.",
+    "Only then apply separately; retain capsule/receipt/plan/application journal. No whole-root deletion.",
+    "Restore commands recreate exact original paths by default; --out is a fresh journal. Reserve required disk first."
+  ]
+}

@@ -1,0 +1,1214 @@
+{
+  "kind": "phase175-outer-guard-cost-census",
+  "version": 1,
+  "snapshotUtc": "2026-11-07T08:57:11.790640+00:00",
+  "scope": "Immediate selfhost/build/phase175/*-guard/process.json only. Each closed outer invocation counted once, including failures/refusals. Nested case/emission/build reports and inner timing components are never added. Storage recovery, unguarded work, agent effort and quota are outside this total. Pending outer runs are listed but not charged partial times.",
+  "method": {
+    "file": "implementation/phase175/cost-census.py",
+    "bytes": 4572,
+    "sha256": "eb1100bc0ed1555e9e84debe7f588c43009c25ca6716c057d96c93a0c09d84d7"
+  },
+  "closedCount": 62,
+  "closedWallSeconds": 2799.68280733563,
+  "intervalUnionSeconds": 2799.6747369766235,
+  "overlappingIntervalSeconds": 0.0,
+  "byOutcome": {
+    "failed": {
+      "count": 12,
+      "wallSeconds": 187.60514244437218
+    },
+    "passed": {
+      "count": 48,
+      "wallSeconds": 2607.4545990433544
+    },
+    "admission-refused": {
+      "count": 1,
+      "wallSeconds": 0.0009615370072424412
+    },
+    "stopped": {
+      "count": 1,
+      "wallSeconds": 4.622104310896248
+    }
+  },
+  "pending": [],
+  "rows": [
+    {
+      "name": "baseline-api01",
+      "outcome": "failed",
+      "receipt": {
+        "file": "selfhost/build/phase175/baseline-api01-guard/process.json",
+        "bytes": 3117,
+        "sha256": "e323d8157c3cc144923a44261e40a4045c426b73ee882b971164184887eb9a7d"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/baseline-api01-guard/process.json",
+        "bytes": 3117,
+        "sha256": "e323d8157c3cc144923a44261e40a4045c426b73ee882b971164184887eb9a7d"
+      },
+      "started": 1794034493.9037359,
+      "finished": 1794034496.3510616,
+      "wallSeconds": 2.4475685921497643,
+      "returncode": 1,
+      "stoppedFor": null
+    },
+    {
+      "name": "baseline-api02",
+      "outcome": "failed",
+      "receipt": {
+        "file": "selfhost/build/phase175/baseline-api02-guard/process.json",
+        "bytes": 3118,
+        "sha256": "0bdc49e0a250fb36c5a500192ab3fc11ae853b27d3d9c8e93fef1275fd92c240"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/baseline-api02-guard/process.json",
+        "bytes": 3118,
+        "sha256": "0bdc49e0a250fb36c5a500192ab3fc11ae853b27d3d9c8e93fef1275fd92c240"
+      },
+      "started": 1794034707.7029645,
+      "finished": 1794034710.2327654,
+      "wallSeconds": 2.5299244662746787,
+      "returncode": 1,
+      "stoppedFor": null
+    },
+    {
+      "name": "baseline-api03",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/baseline-api03-guard/process.json",
+        "bytes": 3119,
+        "sha256": "b9b7fc156bc2534fd18121d5f8ce0737db6cea9a3658c05a3f36ddcf21e849ce"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/baseline-api03-guard/process.json",
+        "bytes": 3119,
+        "sha256": "b9b7fc156bc2534fd18121d5f8ce0737db6cea9a3658c05a3f36ddcf21e849ce"
+      },
+      "started": 1794034770.2082522,
+      "finished": 1794034776.9058182,
+      "wallSeconds": 6.697684519924223,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "baseline-native01",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/baseline-native01-guard/process.json",
+        "bytes": 2715,
+        "sha256": "e989e711c512c9a641d7ea02f71951c9410eb1e2ff6b46554ce3c0565a51325e"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/baseline-native01-guard/process.json",
+        "bytes": 2715,
+        "sha256": "e989e711c512c9a641d7ea02f71951c9410eb1e2ff6b46554ce3c0565a51325e"
+      },
+      "started": 1794034873.4209828,
+      "finished": 1794034927.2517734,
+      "wallSeconds": 53.83090863889083,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "c6-reemit01",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/c6-reemit01-guard/process.json",
+        "bytes": 2237,
+        "sha256": "e2e328b788d483ee06a87e7a8b3558178887f41e6c3b14974dab2e026381827b"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/c6-reemit01-guard/process.json",
+        "bytes": 2237,
+        "sha256": "e2e328b788d483ee06a87e7a8b3558178887f41e6c3b14974dab2e026381827b"
+      },
+      "started": 1794041692.3264773,
+      "finished": 1794041764.6191638,
+      "wallSeconds": 72.29287371598184,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "combined-api01",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/combined-api01-guard/process.json",
+        "bytes": 3118,
+        "sha256": "caadadcd2b2d77f1f99a96439e8b9c785b18bbb9b4de59e6e93292ecb9d460c9"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/combined-api01-guard/process.json",
+        "bytes": 3118,
+        "sha256": "caadadcd2b2d77f1f99a96439e8b9c785b18bbb9b4de59e6e93292ecb9d460c9"
+      },
+      "started": 1794038697.9000971,
+      "finished": 1794038704.723327,
+      "wallSeconds": 6.823351331055164,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "combined-full-pair01",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/combined-full-pair01-guard/process.json",
+        "bytes": 3312,
+        "sha256": "01bf46e3701c69191e5b85c1b1276fed659592fb1ad63678200ff01a9809eb11"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/combined-full-pair01-guard/process.json",
+        "bytes": 3312,
+        "sha256": "01bf46e3701c69191e5b85c1b1276fed659592fb1ad63678200ff01a9809eb11"
+      },
+      "started": 1794039108.2541807,
+      "finished": 1794039380.7461069,
+      "wallSeconds": 272.4920435869135,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "combined-native01",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/combined-native01-guard/process.json",
+        "bytes": 2714,
+        "sha256": "4ab13b68c872904769e0b8e07e36d24cfe65cb46bf048017f7bdb89207f2ed8f"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/combined-native01-guard/process.json",
+        "bytes": 2714,
+        "sha256": "4ab13b68c872904769e0b8e07e36d24cfe65cb46bf048017f7bdb89207f2ed8f"
+      },
+      "started": 1794038916.5893586,
+      "finished": 1794038971.968376,
+      "wallSeconds": 55.37913287198171,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "combined-values01",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/combined-values01-guard/process.json",
+        "bytes": 3228,
+        "sha256": "6a017baf3396653b3b18c060be39028e47fc4bcd8414aef189958630548b8759"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/combined-values01-guard/process.json",
+        "bytes": 3228,
+        "sha256": "6a017baf3396653b3b18c060be39028e47fc4bcd8414aef189958630548b8759"
+      },
+      "started": 1794038894.7035613,
+      "finished": 1794038916.2304323,
+      "wallSeconds": 21.526992960833013,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "combined-values02",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/combined-values02-guard/process.json",
+        "bytes": 3189,
+        "sha256": "f69a67d7a7feffef600ca207ed7ef62ed574f72cfb06c931fdcf415badc17e52"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/combined-values02-guard/process.json",
+        "bytes": 3189,
+        "sha256": "f69a67d7a7feffef600ca207ed7ef62ed574f72cfb06c931fdcf415badc17e52"
+      },
+      "started": 1794039966.174925,
+      "finished": 1794040012.6050222,
+      "wallSeconds": 46.430216337088495,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "field-api01",
+      "outcome": "failed",
+      "receipt": {
+        "file": "selfhost/build/phase175/field-api01-guard/process.json",
+        "bytes": 3098,
+        "sha256": "6ac1c6fd3a5913cc5ce278ffccd57700b017988b51a2ba8c3601ca03861e56e1"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/field-api01-guard/process.json",
+        "bytes": 3098,
+        "sha256": "6ac1c6fd3a5913cc5ce278ffccd57700b017988b51a2ba8c3601ca03861e56e1"
+      },
+      "started": 1794035356.829754,
+      "finished": 1794035358.0835602,
+      "wallSeconds": 1.2539248052053154,
+      "returncode": 1,
+      "stoppedFor": null
+    },
+    {
+      "name": "field-api02",
+      "outcome": "failed",
+      "receipt": {
+        "file": "selfhost/build/phase175/field-api02-guard/process.json",
+        "bytes": 3098,
+        "sha256": "5ba65396a095bf5b0561eef2ca3ac24e940ad16fbae2576589409f39cba4c247"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/field-api02-guard/process.json",
+        "bytes": 3098,
+        "sha256": "5ba65396a095bf5b0561eef2ca3ac24e940ad16fbae2576589409f39cba4c247"
+      },
+      "started": 1794036820.7772894,
+      "finished": 1794036822.156088,
+      "wallSeconds": 1.3789239972829819,
+      "returncode": 1,
+      "stoppedFor": null
+    },
+    {
+      "name": "field-api03",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/field-api03-guard/process.json",
+        "bytes": 3100,
+        "sha256": "23e52a3d290d338bb3cba26c04fb9c78ad6851c7f9833023f56a9436663d45c1"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/field-api03-guard/process.json",
+        "bytes": 3100,
+        "sha256": "23e52a3d290d338bb3cba26c04fb9c78ad6851c7f9833023f56a9436663d45c1"
+      },
+      "started": 1794036946.6742024,
+      "finished": 1794036953.5993342,
+      "wallSeconds": 6.92525397380814,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "field-full-screen01",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/field-full-screen01-guard/process.json",
+        "bytes": 3309,
+        "sha256": "20bc08d0a545969f3bdb2b72b1550f4a63954de9941281b3d8a55fd6c81a884c"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/field-full-screen01-guard/process.json",
+        "bytes": 3309,
+        "sha256": "20bc08d0a545969f3bdb2b72b1550f4a63954de9941281b3d8a55fd6c81a884c"
+      },
+      "started": 1794037290.3470354,
+      "finished": 1794037360.1051216,
+      "wallSeconds": 69.75820362381637,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "field-native01",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/field-native01-guard/process.json",
+        "bytes": 2702,
+        "sha256": "56d59693c801626f91e58bd140c5e00b7d49a995887242678902c7bcd08b937b"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/field-native01-guard/process.json",
+        "bytes": 2702,
+        "sha256": "56d59693c801626f91e58bd140c5e00b7d49a995887242678902c7bcd08b937b"
+      },
+      "started": 1794037132.264693,
+      "finished": 1794037187.7594187,
+      "wallSeconds": 55.49484365200624,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "field-values01",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/field-values01-guard/process.json",
+        "bytes": 3173,
+        "sha256": "a9d5b81d37a5e7af2521e10d8097251fda95ed4a0fb5a849a545a174bac2c6bf"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/field-values01-guard/process.json",
+        "bytes": 3173,
+        "sha256": "a9d5b81d37a5e7af2521e10d8097251fda95ed4a0fb5a849a545a174bac2c6bf"
+      },
+      "started": 1794037033.521367,
+      "finished": 1794037077.7819831,
+      "wallSeconds": 44.26073144096881,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "fixed-baseline01",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/fixed-baseline01-guard/process.json",
+        "bytes": 3029,
+        "sha256": "cc0cbba1b9e84f7a5b7088bf1359bd9bd77408aabcdd1d477bbb6c9941bfc589"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/fixed-baseline01-guard/process.json",
+        "bytes": 3029,
+        "sha256": "cc0cbba1b9e84f7a5b7088bf1359bd9bd77408aabcdd1d477bbb6c9941bfc589"
+      },
+      "started": 1794041254.905424,
+      "finished": 1794041442.2256603,
+      "wallSeconds": 187.32040263107046,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "fixed-candidate01",
+      "outcome": "admission-refused",
+      "receipt": {
+        "file": "selfhost/build/phase175/fixed-candidate01-guard/process.json",
+        "bytes": 3624,
+        "sha256": "d9900c78c16e6b422e90cacdbdf09c7ee5db223866b34795b538a0e2f97f8f4b"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/fixed-candidate01-guard/process.json",
+        "bytes": 3624,
+        "sha256": "d9900c78c16e6b422e90cacdbdf09c7ee5db223866b34795b538a0e2f97f8f4b"
+      },
+      "started": 1794040913.507842,
+      "finished": 1794040913.5086312,
+      "wallSeconds": 0.0009615370072424412,
+      "returncode": null,
+      "stoppedFor": "disk-admission"
+    },
+    {
+      "name": "fixed-candidate02",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/fixed-candidate02-guard/process.json",
+        "bytes": 3606,
+        "sha256": "0df851ab224c116b8af998476b64388a7e05e0f455867f979ca0beda8d93fa24"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/fixed-candidate02-guard/process.json",
+        "bytes": 3606,
+        "sha256": "0df851ab224c116b8af998476b64388a7e05e0f455867f979ca0beda8d93fa24"
+      },
+      "started": 1794040990.874597,
+      "finished": 1794041171.5762048,
+      "wallSeconds": 180.7017893330194,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "frontend-full-baseline01",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/frontend-full-baseline01-guard/process.json",
+        "bytes": 2982,
+        "sha256": "ea670bd89c306ab7bff6b5771e89d27b605211d7db3689549283b823df46232f"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/frontend-full-baseline01-guard/process.json",
+        "bytes": 2982,
+        "sha256": "ea670bd89c306ab7bff6b5771e89d27b605211d7db3689549283b823df46232f"
+      },
+      "started": 1794035135.768403,
+      "finished": 1794035205.014112,
+      "wallSeconds": 69.24582701921463,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "full-native-n1",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/full-native-n1-guard/process.json",
+        "bytes": 2756,
+        "sha256": "9df12f995dbab3f5d4ce3c7c65e61927a6a64718d42fcef332cbb1f5756093a3"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/full-native-n1-guard/process.json",
+        "bytes": 2756,
+        "sha256": "9df12f995dbab3f5d4ce3c7c65e61927a6a64718d42fcef332cbb1f5756093a3"
+      },
+      "started": 1794040062.3886526,
+      "finished": 1794040251.4017537,
+      "wallSeconds": 189.01322772400454,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "full-native-n2",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/full-native-n2-guard/process.json",
+        "bytes": 3621,
+        "sha256": "6745d88060788f63b40ed11cec796c8aedfa4dcc3a0d1d6c3e84317a584a13c5"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/full-native-n2-guard/process.json",
+        "bytes": 3621,
+        "sha256": "6745d88060788f63b40ed11cec796c8aedfa4dcc3a0d1d6c3e84317a584a13c5"
+      },
+      "started": 1794040279.1513026,
+      "finished": 1794040461.525715,
+      "wallSeconds": 182.37453754991293,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "full-native-q3",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/full-native-q3-guard/process.json",
+        "bytes": 3590,
+        "sha256": "ac34e23c4203463ae95204d01e7e8da195c2021cc4aa090d453de7a443b43eb8"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/full-native-q3-guard/process.json",
+        "bytes": 3590,
+        "sha256": "ac34e23c4203463ae95204d01e7e8da195c2021cc4aa090d453de7a443b43eb8"
+      },
+      "started": 1794040556.3108296,
+      "finished": 1794040715.4004598,
+      "wallSeconds": 159.08974957792088,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "full-native64",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/full-native64-guard/process.json",
+        "bytes": 3072,
+        "sha256": "742957bdb953b2dc6679be05f3e215b6d66d5e72f9827e218ad1aad8598cf0ad"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/full-native64-guard/process.json",
+        "bytes": 3072,
+        "sha256": "742957bdb953b2dc6679be05f3e215b6d66d5e72f9827e218ad1aad8598cf0ad"
+      },
+      "started": 1794040744.5119298,
+      "finished": 1794040812.1301396,
+      "wallSeconds": 67.6183335389942,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "full-source-check01",
+      "outcome": "failed",
+      "receipt": {
+        "file": "selfhost/build/phase175/full-source-check01-guard/process.json",
+        "bytes": 2456,
+        "sha256": "5707551606f6499cdfa315dd88d858ccb5a0cbb0b8822d2b15957da610fd394d"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/full-source-check01-guard/process.json",
+        "bytes": 2456,
+        "sha256": "5707551606f6499cdfa315dd88d858ccb5a0cbb0b8822d2b15957da610fd394d"
+      },
+      "started": 1794039673.4602864,
+      "finished": 1794039681.3962924,
+      "wallSeconds": 7.93612081091851,
+      "returncode": 1,
+      "stoppedFor": null
+    },
+    {
+      "name": "full-source-check02",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/full-source-check02-guard/process.json",
+        "bytes": 2489,
+        "sha256": "d9f0c9b29672e1a99a8aa82fd5a6f8c46207af9fcdea1c8690b44cdcf63a842f"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/full-source-check02-guard/process.json",
+        "bytes": 2489,
+        "sha256": "d9f0c9b29672e1a99a8aa82fd5a6f8c46207af9fcdea1c8690b44cdcf63a842f"
+      },
+      "started": 1794040027.5491364,
+      "finished": 1794040035.612666,
+      "wallSeconds": 8.063650652300566,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "js6-reemit01",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/js6-reemit01-guard/process.json",
+        "bytes": 2237,
+        "sha256": "5fe99244fd54c6e2d8843df6197cb641ed48dfa5080af7187775628c397d92b7"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/js6-reemit01-guard/process.json",
+        "bytes": 2237,
+        "sha256": "5fe99244fd54c6e2d8843df6197cb641ed48dfa5080af7187775628c397d92b7"
+      },
+      "started": 1794041552.941949,
+      "finished": 1794041619.5149715,
+      "wallSeconds": 66.57319846190512,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "lookahead-api03",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/lookahead-api03-guard/process.json",
+        "bytes": 3126,
+        "sha256": "90c3207cc0cb753cd4062068ac98ab4dd760dbd19dfcc9e429591cb8313e5f19"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/lookahead-api03-guard/process.json",
+        "bytes": 3126,
+        "sha256": "90c3207cc0cb753cd4062068ac98ab4dd760dbd19dfcc9e429591cb8313e5f19"
+      },
+      "started": 1794035218.0514946,
+      "finished": 1794035224.9154546,
+      "wallSeconds": 6.8640822768211365,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "lookahead-values01",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/lookahead-values01-guard/process.json",
+        "bytes": 3194,
+        "sha256": "cdfebea0838b573b3dd218e8f128251cec6ce1ceaee66694357b5597a61fff03"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/lookahead-values01-guard/process.json",
+        "bytes": 3194,
+        "sha256": "cdfebea0838b573b3dd218e8f128251cec6ce1ceaee66694357b5597a61fff03"
+      },
+      "started": 1794038035.176001,
+      "finished": 1794038086.0202992,
+      "wallSeconds": 50.844416135922074,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "oracle-api01",
+      "outcome": "failed",
+      "receipt": {
+        "file": "selfhost/build/phase175/oracle-api01-guard/process.json",
+        "bytes": 3104,
+        "sha256": "251837f7d664d9bdb7c5959e0c1f44b17b8c774db38e5ea258f6f6d9d695887a"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/oracle-api01-guard/process.json",
+        "bytes": 3104,
+        "sha256": "251837f7d664d9bdb7c5959e0c1f44b17b8c774db38e5ea258f6f6d9d695887a"
+      },
+      "started": 1794034343.1292875,
+      "finished": 1794034343.459216,
+      "wallSeconds": 0.3301638010889292,
+      "returncode": 1,
+      "stoppedFor": null
+    },
+    {
+      "name": "parse-baseline-api01",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/parse-baseline-api01-guard/process.json",
+        "bytes": 3154,
+        "sha256": "236d47f97f5e91914e2d3e1f3639fbaafe396554c58f8da596c3222b670744d0"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/parse-baseline-api01-guard/process.json",
+        "bytes": 3154,
+        "sha256": "236d47f97f5e91914e2d3e1f3639fbaafe396554c58f8da596c3222b670744d0"
+      },
+      "started": 1794035352.0065134,
+      "finished": 1794035355.9314075,
+      "wallSeconds": 3.9250230407342315,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "parse-baseline-native01",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/parse-baseline-native01-guard/process.json",
+        "bytes": 2738,
+        "sha256": "12dfddcff2e8825d68fabf2823b7eaedd5346d86a1d2daaf75ad87f626e671d8"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/parse-baseline-native01-guard/process.json",
+        "bytes": 2738,
+        "sha256": "12dfddcff2e8825d68fabf2823b7eaedd5346d86a1d2daaf75ad87f626e671d8"
+      },
+      "started": 1794035263.852654,
+      "finished": 1794035289.9435806,
+      "wallSeconds": 26.091044953092933,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "parse-lookahead-api01",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/parse-lookahead-api01-guard/process.json",
+        "bytes": 3158,
+        "sha256": "a2d61ddc2c71e5b6664bd8f3d3f45ee3084db095f86061c7c08cfbeaf382f078"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/parse-lookahead-api01-guard/process.json",
+        "bytes": 3158,
+        "sha256": "a2d61ddc2c71e5b6664bd8f3d3f45ee3084db095f86061c7c08cfbeaf382f078"
+      },
+      "started": 1794038319.9059935,
+      "finished": 1794038323.897361,
+      "wallSeconds": 3.991491863038391,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "parse-lookahead-native01",
+      "outcome": "stopped",
+      "receipt": {
+        "file": "selfhost/build/phase175/parse-lookahead-native01-guard/process.json",
+        "bytes": 2770,
+        "sha256": "2b92100fab84cc8d3e698f30522069e7167f2f98c1db1025d10a3eeca47d69b5"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/parse-lookahead-native01-guard/process.json",
+        "bytes": 2770,
+        "sha256": "2b92100fab84cc8d3e698f30522069e7167f2f98c1db1025d10a3eeca47d69b5"
+      },
+      "started": 1794035656.768415,
+      "finished": 1794035661.3903983,
+      "wallSeconds": 4.622104310896248,
+      "returncode": -9,
+      "stoppedFor": "disk-budget"
+    },
+    {
+      "name": "parse-lookahead-native02",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/parse-lookahead-native02-guard/process.json",
+        "bytes": 2742,
+        "sha256": "8f0d57ae6d8752d157d540d11934af10ebebd46d307dcf3b1805b9de041c6fc8"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/parse-lookahead-native02-guard/process.json",
+        "bytes": 2742,
+        "sha256": "8f0d57ae6d8752d157d540d11934af10ebebd46d307dcf3b1805b9de041c6fc8"
+      },
+      "started": 1794038208.887331,
+      "finished": 1794038235.9080772,
+      "wallSeconds": 27.020855879876763,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "parse-lookahead-pair01",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/parse-lookahead-pair01-guard/process.json",
+        "bytes": 3350,
+        "sha256": "fa4315182fd8e2ce4a691b79043a0897e6efa819249518011338b6ded8b70ac8"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/parse-lookahead-pair01-guard/process.json",
+        "bytes": 3350,
+        "sha256": "fa4315182fd8e2ce4a691b79043a0897e6efa819249518011338b6ded8b70ac8"
+      },
+      "started": 1794038390.8189156,
+      "finished": 1794038442.1648962,
+      "wallSeconds": 51.3460961477831,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "parse-lookahead-values01",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/parse-lookahead-values01-guard/process.json",
+        "bytes": 3234,
+        "sha256": "26ecde73fa0cc62a6fbf7146f636e071e50dd8d55f4853efd8ab169d6ec439f5"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/parse-lookahead-values01-guard/process.json",
+        "bytes": 3234,
+        "sha256": "26ecde73fa0cc62a6fbf7146f636e071e50dd8d55f4853efd8ab169d6ec439f5"
+      },
+      "started": 1794038336.8926973,
+      "finished": 1794038348.3650079,
+      "wallSeconds": 11.472425400745124,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "parse-precedence-api01",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/parse-precedence-api01-guard/process.json",
+        "bytes": 3166,
+        "sha256": "1be62ad4382c1caa0aff05ee513899b007abcdbb4e990dc424fd0d1a295dc55c"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/parse-precedence-api01-guard/process.json",
+        "bytes": 3166,
+        "sha256": "1be62ad4382c1caa0aff05ee513899b007abcdbb4e990dc424fd0d1a295dc55c"
+      },
+      "started": 1794037000.2525036,
+      "finished": 1794037004.3418806,
+      "wallSeconds": 4.0894996342249215,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "parse-precedence-native01",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/parse-precedence-native01-guard/process.json",
+        "bytes": 2747,
+        "sha256": "b3dcfe034f180d66d065b1e7102c547e6c2e2b2d92011f42f9d0f31ac1c9c929"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/parse-precedence-native01-guard/process.json",
+        "bytes": 2747,
+        "sha256": "b3dcfe034f180d66d065b1e7102c547e6c2e2b2d92011f42f9d0f31ac1c9c929"
+      },
+      "started": 1794035401.4250739,
+      "finished": 1794035427.9455087,
+      "wallSeconds": 26.520550150889903,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "parse-precedence-pair01",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/parse-precedence-pair01-guard/process.json",
+        "bytes": 3356,
+        "sha256": "200fff84c2a5c7657d04a809bc5a5cdf6b906776f193e50bfac5c80b314ad18b"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/parse-precedence-pair01-guard/process.json",
+        "bytes": 3356,
+        "sha256": "200fff84c2a5c7657d04a809bc5a5cdf6b906776f193e50bfac5c80b314ad18b"
+      },
+      "started": 1794035589.1518672,
+      "finished": 1794035644.1349032,
+      "wallSeconds": 54.98315516207367,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "parse-route-values01",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/parse-route-values01-guard/process.json",
+        "bytes": 3209,
+        "sha256": "e9624d2adcdd1adf10aabc6a404dd56af7b8429b86a4f8d9f41060aab6f278cc"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/parse-route-values01-guard/process.json",
+        "bytes": 3209,
+        "sha256": "e9624d2adcdd1adf10aabc6a404dd56af7b8429b86a4f8d9f41060aab6f278cc"
+      },
+      "started": 1794038324.5440388,
+      "finished": 1794038336.2395394,
+      "wallSeconds": 11.6956224758178,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "precedence-api03",
+      "outcome": "failed",
+      "receipt": {
+        "file": "selfhost/build/phase175/precedence-api03-guard/process.json",
+        "bytes": 3129,
+        "sha256": "eaa687eecfc785fba342892c64222ac90e07bed253d06bda60aa5096778875c4"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/precedence-api03-guard/process.json",
+        "bytes": 3129,
+        "sha256": "eaa687eecfc785fba342892c64222ac90e07bed253d06bda60aa5096778875c4"
+      },
+      "started": 1794034777.8671367,
+      "finished": 1794034780.3969626,
+      "wallSeconds": 2.5299460189417005,
+      "returncode": 1,
+      "stoppedFor": null
+    },
+    {
+      "name": "precedence-api04",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/precedence-api04-guard/process.json",
+        "bytes": 3131,
+        "sha256": "4e8905245cabf704bdddf189ef7b9dda5c23e57046e69005db4478c14c6d4b4f"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/precedence-api04-guard/process.json",
+        "bytes": 3131,
+        "sha256": "4e8905245cabf704bdddf189ef7b9dda5c23e57046e69005db4478c14c6d4b4f"
+      },
+      "started": 1794034839.7110078,
+      "finished": 1794034846.4922228,
+      "wallSeconds": 6.781333030201495,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "precedence-values01",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/precedence-values01-guard/process.json",
+        "bytes": 3133,
+        "sha256": "86c7e0826b3d922ece37d767d824c5d7205c184919734f6fc24c3e160f142bde"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/precedence-values01-guard/process.json",
+        "bytes": 3133,
+        "sha256": "86c7e0826b3d922ece37d767d824c5d7205c184919734f6fc24c3e160f142bde"
+      },
+      "started": 1794034981.6327853,
+      "finished": 1794035053.4352367,
+      "wallSeconds": 71.80256237089634,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "public-api01",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/public-api01-guard/process.json",
+        "bytes": 3079,
+        "sha256": "6bf50865e917030b0ca952e16c847c8566a58ba46419914936b9316d7b6a9a37"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/public-api01-guard/process.json",
+        "bytes": 3079,
+        "sha256": "6bf50865e917030b0ca952e16c847c8566a58ba46419914936b9316d7b6a9a37"
+      },
+      "started": 1794041523.1586008,
+      "finished": 1794041537.5996492,
+      "wallSeconds": 14.441243512090296,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "publication-api03",
+      "outcome": "failed",
+      "receipt": {
+        "file": "selfhost/build/phase175/publication-api03-guard/process.json",
+        "bytes": 3133,
+        "sha256": "991e5b5c3005f1485b1cfcba9d9c93d4b3c99f17a6d602782da52b133c316f1c"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/publication-api03-guard/process.json",
+        "bytes": 3133,
+        "sha256": "991e5b5c3005f1485b1cfcba9d9c93d4b3c99f17a6d602782da52b133c316f1c"
+      },
+      "started": 1794036981.218765,
+      "finished": 1794036983.6656733,
+      "wallSeconds": 2.447028721217066,
+      "returncode": 1,
+      "stoppedFor": null
+    },
+    {
+      "name": "publication-api04",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/publication-api04-guard/process.json",
+        "bytes": 3136,
+        "sha256": "0a94c3bb248b9add40d1a8d8b4c43cdb06224c591225f860ae9b1a161228fac2"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/publication-api04-guard/process.json",
+        "bytes": 3136,
+        "sha256": "0a94c3bb248b9add40d1a8d8b4c43cdb06224c591225f860ae9b1a161228fac2"
+      },
+      "started": 1794037124.8072634,
+      "finished": 1794037131.862792,
+      "wallSeconds": 7.055668444838375,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "publication-baseline-api03",
+      "outcome": "failed",
+      "receipt": {
+        "file": "selfhost/build/phase175/publication-baseline-api03-guard/process.json",
+        "bytes": 3189,
+        "sha256": "817aec13cb903bf32b66a0c1a72661016d4f3df3916faadf1b4223f59dd8c469"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/publication-baseline-api03-guard/process.json",
+        "bytes": 3189,
+        "sha256": "817aec13cb903bf32b66a0c1a72661016d4f3df3916faadf1b4223f59dd8c469"
+      },
+      "started": 1794036872.5327325,
+      "finished": 1794036873.8068695,
+      "wallSeconds": 1.2742610252462327,
+      "returncode": 1,
+      "stoppedFor": null
+    },
+    {
+      "name": "publication-baseline-api04",
+      "outcome": "failed",
+      "receipt": {
+        "file": "selfhost/build/phase175/publication-baseline-api04-guard/process.json",
+        "bytes": 3189,
+        "sha256": "14bb81bf111d03e51b16564fee39668a64238386ea81bc84246fcd7841a9b744"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/publication-baseline-api04-guard/process.json",
+        "bytes": 3189,
+        "sha256": "14bb81bf111d03e51b16564fee39668a64238386ea81bc84246fcd7841a9b744"
+      },
+      "started": 1794036977.8707078,
+      "finished": 1794036980.3515882,
+      "wallSeconds": 2.481002847198397,
+      "returncode": 1,
+      "stoppedFor": null
+    },
+    {
+      "name": "publication-baseline-api05",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/publication-baseline-api05-guard/process.json",
+        "bytes": 3189,
+        "sha256": "e78634ed8bf49ccd9d57d8e39044fee0ed909c9eede4f3a978917ff59ec33d4d"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/publication-baseline-api05-guard/process.json",
+        "bytes": 3189,
+        "sha256": "e78634ed8bf49ccd9d57d8e39044fee0ed909c9eede4f3a978917ff59ec33d4d"
+      },
+      "started": 1794037116.969394,
+      "finished": 1794037123.8967254,
+      "wallSeconds": 6.92745122499764,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "publication-full-screen01",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/publication-full-screen01-guard/process.json",
+        "bytes": 3344,
+        "sha256": "d232c182d796ffd161fe9997a8681ca9e49e4a3b6fc47259eb8a3370e52557d9"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/publication-full-screen01-guard/process.json",
+        "bytes": 3344,
+        "sha256": "d232c182d796ffd161fe9997a8681ca9e49e4a3b6fc47259eb8a3370e52557d9"
+      },
+      "started": 1794037765.096447,
+      "finished": 1794037834.2263525,
+      "wallSeconds": 69.13002773886546,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "publication-native01",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/publication-native01-guard/process.json",
+        "bytes": 2727,
+        "sha256": "cac01b1c6d7b9f1ac60f9d589e22d7bb689414069f45203f953c91e82c36e50a"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/publication-native01-guard/process.json",
+        "bytes": 2727,
+        "sha256": "cac01b1c6d7b9f1ac60f9d589e22d7bb689414069f45203f953c91e82c36e50a"
+      },
+      "started": 1794037695.3007066,
+      "finished": 1794037750.6241722,
+      "wallSeconds": 55.32358365971595,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "publication-probe01",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/publication-probe01-guard/process.json",
+        "bytes": 2821,
+        "sha256": "246358fe7d3e1c2f330cc3019f891a23967c051596c4b44c9d4c919085c8a622"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/publication-probe01-guard/process.json",
+        "bytes": 2821,
+        "sha256": "246358fe7d3e1c2f330cc3019f891a23967c051596c4b44c9d4c919085c8a622"
+      },
+      "started": 1794037551.7976372,
+      "finished": 1794037559.2399056,
+      "wallSeconds": 7.442386012990028,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "publication-values01",
+      "outcome": "failed",
+      "receipt": {
+        "file": "selfhost/build/phase175/publication-values01-guard/process.json",
+        "bytes": 3253,
+        "sha256": "eabeaff274bb2b84cb97de779accb2cd4a79ab98abfc55fb68e9e4b92790ecaf"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/publication-values01-guard/process.json",
+        "bytes": 3253,
+        "sha256": "eabeaff274bb2b84cb97de779accb2cd4a79ab98abfc55fb68e9e4b92790ecaf"
+      },
+      "started": 1794037379.5035565,
+      "finished": 1794037431.18402,
+      "wallSeconds": 51.68057633470744,
+      "returncode": 1,
+      "stoppedFor": null
+    },
+    {
+      "name": "publication-values02",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/publication-values02-guard/process.json",
+        "bytes": 3294,
+        "sha256": "908d9598be4e08c7a18df5aa4eff7a3048f0b64bb87607f03f99058146865a88"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/publication-values02-guard/process.json",
+        "bytes": 3294,
+        "sha256": "908d9598be4e08c7a18df5aa4eff7a3048f0b64bb87607f03f99058146865a88"
+      },
+      "started": 1794037630.312717,
+      "finished": 1794037655.4358149,
+      "wallSeconds": 25.12321366695687,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "report-api01",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/report-api01-guard/process.json",
+        "bytes": 3107,
+        "sha256": "71fce3d313c4b899ca7a94b4fe7d7b0eb133791a69df1e8254aff884aa7d6816"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/report-api01-guard/process.json",
+        "bytes": 3107,
+        "sha256": "71fce3d313c4b899ca7a94b4fe7d7b0eb133791a69df1e8254aff884aa7d6816"
+      },
+      "started": 1794036992.3908482,
+      "finished": 1794036999.3575294,
+      "wallSeconds": 6.966801852919161,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "report-baseline-api01",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/report-baseline-api01-guard/process.json",
+        "bytes": 3162,
+        "sha256": "d156fed99411c77aa5743a79f5f2e1f7e1b327135aced544069a584398e0222f"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/report-baseline-api01-guard/process.json",
+        "bytes": 3162,
+        "sha256": "d156fed99411c77aa5743a79f5f2e1f7e1b327135aced544069a584398e0222f"
+      },
+      "started": 1794036984.5697021,
+      "finished": 1794036991.5002234,
+      "wallSeconds": 6.9306410369463265,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "report-full-screen01",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/report-full-screen01-guard/process.json",
+        "bytes": 3315,
+        "sha256": "4eca57c620bf2db4c4c9f559f0fdb913133cda59e90c76c5f5c1c135d64445d0"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/report-full-screen01-guard/process.json",
+        "bytes": 3315,
+        "sha256": "4eca57c620bf2db4c4c9f559f0fdb913133cda59e90c76c5f5c1c135d64445d0"
+      },
+      "started": 1794038133.2065167,
+      "finished": 1794038201.2891726,
+      "wallSeconds": 68.08280109800398,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "report-native01",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/report-native01-guard/process.json",
+        "bytes": 2706,
+        "sha256": "9149c7dd3514a5551c2733447f1fcb317f01dfb03370c385a8b5676b0076c542"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/report-native01-guard/process.json",
+        "bytes": 2706,
+        "sha256": "9149c7dd3514a5551c2733447f1fcb317f01dfb03370c385a8b5676b0076c542"
+      },
+      "started": 1794037979.294256,
+      "finished": 1794038034.5047774,
+      "wallSeconds": 55.21064568916336,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "report-values01",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/report-values01-guard/process.json",
+        "bytes": 3203,
+        "sha256": "b41fc90809fb4a1bdf54edd293bbbd9fbf346bc1e2a49cb9c1342d2a8b37742d"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/report-values01-guard/process.json",
+        "bytes": 3203,
+        "sha256": "b41fc90809fb4a1bdf54edd293bbbd9fbf346bc1e2a49cb9c1342d2a8b37742d"
+      },
+      "started": 1794037875.7474802,
+      "finished": 1794037919.289823,
+      "wallSeconds": 43.542457471136004,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "timed-products45",
+      "outcome": "passed",
+      "receipt": {
+        "file": "selfhost/build/phase175/timed-products45-guard/process.json",
+        "bytes": 3643,
+        "sha256": "bfa8e65e50cad78bc46b0cfdf8e43c03505dd032206fe0bfc453200927229f98"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/timed-products45-guard/process.json",
+        "bytes": 3643,
+        "sha256": "bfa8e65e50cad78bc46b0cfdf8e43c03505dd032206fe0bfc453200927229f98"
+      },
+      "started": 1794040839.7408032,
+      "finished": 1794040901.6772351,
+      "wallSeconds": 61.93656597100198,
+      "returncode": 0,
+      "stoppedFor": null
+    },
+    {
+      "name": "upstream-c-ceiling01",
+      "outcome": "failed",
+      "receipt": {
+        "file": "selfhost/build/phase175/upstream-c-ceiling01-guard/process.json",
+        "bytes": 2010,
+        "sha256": "e7e25c75f8de91a5c37dc3086dcce089b71ea0c95ff05a6c4593d061758d5f00"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/upstream-c-ceiling01-guard/process.json",
+        "bytes": 2010,
+        "sha256": "e7e25c75f8de91a5c37dc3086dcce089b71ea0c95ff05a6c4593d061758d5f00"
+      },
+      "started": 1794038482.5277374,
+      "finished": 1794038593.8433187,
+      "wallSeconds": 111.31570102414116,
+      "returncode": 1,
+      "stoppedFor": null
+    }
+  ]
+}

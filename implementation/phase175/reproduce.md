@@ -1,12 +1,21 @@
-# Reproduce the provisional Phase175 experiments
+# Reproduce Phase175
 
-Start from the maintained source published by Phase174, with the unchanged
+For the historical experiment recipes below, use parent checkpoint `7f227f5`,
+before maintained integration. Start from the source published by Phase174, with the unchanged
 `assets-native.json` selecting the qualified Phase171 QBE compiler. The canonical
 source hash is `74cd7de3e5076490e20ba0218d4c9254853be72562946b9ef66fed6c10c7a53a`.
 The fixed timing input is `selfhost/build/phase170/source-final/compiler.bend`,
 SHA256 `434edd1d56128f9480800573abf8a0ae21d910a547837af089f25cd1d0e89b71`.
 Do not substitute a newer changing-source self-build and compare its time with
 these fixed-input observations.
+
+Current maintained source already includes the selected parser/report changes.
+Build that version through `selfhost/tools/build/source.py` and the maintained
+compiler manifest; do not reapply the historical experimental overlays.
+The old preparation tools deliberately authenticate the parent source hash and
+reject a changed integrated parent. Their refusal is not a new compiler failure.
+Integrated QBE source must equal
+`a0e953a84de73aa22403dde7ec2144540197633857a0f7b5b9784f9e66f5ad04`.
 
 ## Exact retained evidence
 
@@ -45,6 +54,12 @@ Core receipts under `selfhost/build/phase175/`:
 | Selected combined frontend |`combined-source01/manifest.json`, `combined-api01`, `combined-values01`, `combined-values02`, `combined-native01`, `combined-full-pair01`|
 | Full source preparation, not qualification |`full-source01`; proof-safety refusal in `full-source-check01-guard/process.json` and `stderr.log`|
 | Independent full-source type acceptance |`full-source-check02`, with its completed guard; no candidate emission or execution|
+| Public cross-backend product identity |`public-api01`, `js6-reemit01`, `c6-reemit01`|
+| Maintained integration |`integration-applied01`, exact selected source and matching source profiles|
+| Candidate-source native chain |`full-native-n1`, `full-native-n2`; exact QBE/assembly/object, asymmetric acquisition policies|
+| Candidate reproduction and correctness |`full-native-q3`, `full-native64` (64/64)|
+| Timed-wrapper product preservation |`timed-products45` (45 exact QBE products), not a new runtime campaign|
+| Frozen-source complete build pair |`fixed-candidate02`, then `fixed-baseline01`; `fixed-candidate01-guard` records a pre-start disk admission refusal|
 | Incomplete C diagnostic |`upstream-c-ceiling01`|
 
 The original publication comparison failure is `publication-values01`; the
@@ -146,7 +161,8 @@ The source is 3,163,584 bytes with SHA256
 `a0e953a84de73aa22403dde7ec2144540197633857a0f7b5b9784f9e66f5ad04`.
 It retains the canonical program and native main, replaces three frontend
 definitions, inserts 19 declarations and records exact inverse reconstruction.
-This source has not yet passed full native qualification. The first upstream
+The source has passed the retained native64, 45 QBE product, six JS product and
+six C product gates. Installed promotion remains separate. The first upstream
 CLI attempt refused its proof-safety policy because of unsafe/foreign
 dependencies; do not classify that as a source type error or a successful
 source-only check. The separate `full-source-check02` then passed unmodified
@@ -156,7 +172,25 @@ not assess proof safety or invoke BendTT. Follow the separate
 remaining independent checks; no installed selector is changed by preparation.
 
 No full compiler acquisition, candidate installation, broad runtime campaign or
-storage pruning is required to repeat these component experiments. Those are
-separate decisions after the pending whole-request and generated-code gates.
+storage pruning is required to repeat these component experiments. The completed
+whole-request and generated-product gates are recorded separately above.
 Historical storage restoration commands and exact archive receipts are in
 [storage-recovery.md](../../experiments/phase175/storage-recovery.md).
+
+## Retain later completed receipts
+
+`python3 -B implementation/phase175/retain-evidence.py full-native-n1 full-native-n2`
+is a metadata-only receipt copier. It never executes compiler targets. It requires
+explicit finished run names, refuses large artifacts or changed retained bytes,
+copies reports/guards/small diagnostics, and updates the evidence and metrics
+indices. It does not infer performance claims or qualification from a receipt.
+Add measured results to metrics separately, preserving their actual source and
+measurement scope. See [the native checkpoint](native-checkpoint.md) for the
+candidate-source acquisition comparison and its limitations.
+
+`python3 -B implementation/phase175/cost-census.py` refreshes the cost snapshot
+from immediate `selfhost/build/phase175/*-guard/process.json` files. It counts
+each closed outer invocation once, including failures and admission refusals,
+and lists active guards separately. It does not add nested build/test timings,
+run targets, or infer agent effort from elapsed time. The helper retains only
+new compact guard receipts and updates evidence pins.

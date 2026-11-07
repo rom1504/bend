@@ -1,0 +1,2825 @@
+{
+  "kind": "bend-phase170-timed-product-reemission",
+  "version": 1,
+  "complete": true,
+  "references": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/report.json",
+      "bytes": 5747,
+      "sha256": "a563ca1b2214aec63f145539750a887f5b6d5ffa4770f7b99f8ae1ff24b1831d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/report.json",
+      "bytes": 17483,
+      "sha256": "70fe96e1c816d02742cd05d388be69fefc8c6eb60fa0ee065f78da37ce076a0e"
+    }
+  ],
+  "image": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native-n2/program",
+    "bytes": 16140352,
+    "sha256": "88be8d8627ed84f5cf4ebb84bafa96c890b074fa49803056d6fd8a52fd8aaa02"
+  },
+  "machinePolicy": {
+    "runtime": {
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    "runtimePolicy": {
+      "threads": 1,
+      "gpu": "off",
+      "bendHeapMutators": 1,
+      "hostIoWorkersAllowed": true,
+      "providerScope": "Pinned direct-QBE foreign provider table; no arbitrary C embedding or foreign callbacks."
+    },
+    "toolchain": {
+      "target": "amd64_sysv",
+      "assemblerFlags": [
+        "-mbranches-within-32B-boundaries"
+      ],
+      "linkerFlags": [
+        "-no-pie"
+      ],
+      "libraries": [
+        "-pthread",
+        "-lm"
+      ]
+    },
+    "tools": {
+      "qbe": {
+        "bytes": 262024,
+        "sha256": "1eca24288f9574ad57032ac88f11c3f74ced605838749226d77a9acd4443e5f4"
+      },
+      "assemble": {
+        "bytes": 472248,
+        "sha256": "fac4e966afe9223dbab23aa15d27d144af81de4a44c8cad97c1dde290adb9493"
+      },
+      "link": {
+        "bytes": 817704,
+        "sha256": "693abcb42e67fb871673f258a3644257ca69a209691ec4d8137a42442834bd19"
+      }
+    }
+  },
+  "rows": [
+    {
+      "id": "editdist",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/editdist.bend",
+        "bytes": 7835,
+        "sha256": "759d82e26789e55187d175cb8416d6ebe4266a53f73a53ca6d32b69d4f71e988"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/editdist/candidate/emission/program.ssa",
+        "bytes": 729837,
+        "sha256": "78944243742125c4ae4c7ab3a95c32154208b9fbedc2590fc8dcbde552b09063"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/00/report.json",
+        "bytes": 11807,
+        "sha256": "14a89e0b4d9aab46fb05399aeec3d8207b0cb8ccf7ddf8502d16fd82e72dee23"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/00/program.ssa",
+        "bytes": 729837,
+        "sha256": "78944243742125c4ae4c7ab3a95c32154208b9fbedc2590fc8dcbde552b09063"
+      },
+      "complete": true
+    },
+    {
+      "id": "tree-bitonic",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/tree-bitonic.bend",
+        "bytes": 6593,
+        "sha256": "405f8d8fb2066e6fedd8baa45943bcdf92b59cb40e23ce2ad3ea4bd3eeb53ae0"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/tree-bitonic/candidate/emission/program.ssa",
+        "bytes": 394540,
+        "sha256": "b9be242566f220606111ea618245aa80c2159dd7bc367154a33281de50bc23c7"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/01/report.json",
+        "bytes": 11841,
+        "sha256": "6ecc38ba88bff8684b41e6153d12029214d39ab57d8b82693f975cf3f4c3d490"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/01/program.ssa",
+        "bytes": 394540,
+        "sha256": "b9be242566f220606111ea618245aa80c2159dd7bc367154a33281de50bc23c7"
+      },
+      "complete": true
+    },
+    {
+      "id": "lexer",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/lexer.bend",
+        "bytes": 9095,
+        "sha256": "bfb62870600b63fd6ec6088471a2d805fabb819a7f2e9d47c9b0ef3c368d169a"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/lexer/candidate/emission/program.ssa",
+        "bytes": 521069,
+        "sha256": "9cb9357f911a26ca9d805c9a2eedc38072ec78b02942296a53a290bb8379d1d3"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/02/report.json",
+        "bytes": 11765,
+        "sha256": "f32106c936341718fbc3aa3ace9b5f172a674ca820de214396d7523ba2e69ed0"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/02/program.ssa",
+        "bytes": 521069,
+        "sha256": "9cb9357f911a26ca9d805c9a2eedc38072ec78b02942296a53a290bb8379d1d3"
+      },
+      "complete": true
+    },
+    {
+      "id": "test-rle-roundtrip",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/test-rle-roundtrip.bend",
+        "bytes": 4708,
+        "sha256": "b46580acb1656502d0e37a0115d172529e648719acb75eadb3b9ad45db5b078d"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/test-rle-roundtrip/candidate/emission/program.ssa",
+        "bytes": 317502,
+        "sha256": "7fc59cb8120c818bfa5d94879f014c1e977141bf8fd0e4fe4595eadec0f79645"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/03/report.json",
+        "bytes": 11895,
+        "sha256": "7dbf258fbedbd6adce9a95be87f939e2b769e4f70cb5e551d0a2718c52c00e1a"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/03/program.ssa",
+        "bytes": 317502,
+        "sha256": "7fc59cb8120c818bfa5d94879f014c1e977141bf8fd0e4fe4595eadec0f79645"
+      },
+      "complete": true
+    },
+    {
+      "id": "test-map-set-ops",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/test-map-set-ops.bend",
+        "bytes": 7234,
+        "sha256": "e93dc56e4c91670bb831c329e9ced90a0e17126bc02f4d7709131a516f0eb0ca"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/test-map-set-ops/candidate/emission/program.ssa",
+        "bytes": 1432329,
+        "sha256": "048cdf372b93abe54fb8b073e39f61fb41654150518eb0ff68497a3f348a46e6"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/04/report.json",
+        "bytes": 11884,
+        "sha256": "d324f0a3810c55c654ad4e8354895b4f98a805d10b321880380f12c850bb4dad"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/04/program.ssa",
+        "bytes": 1432329,
+        "sha256": "048cdf372b93abe54fb8b073e39f61fb41654150518eb0ff68497a3f348a46e6"
+      },
+      "complete": true
+    },
+    {
+      "id": "raytrace",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/raytrace.bend",
+        "bytes": 16182,
+        "sha256": "17e96389638b1a6a12bf9a4f7cabaf00184f1974e75d8363d699aef6b318fd34"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/raytrace/candidate/emission/program.ssa",
+        "bytes": 865387,
+        "sha256": "8103588662e8c5383a79cb5622404ddf251952e766a43eccb7b3d68391ca8d0e"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/05/report.json",
+        "bytes": 11796,
+        "sha256": "2c1e5c50a9281111e9fe452af018f28fa0c27cffa97d9d0dcf451c47e9ce77ad"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/05/program.ssa",
+        "bytes": 865387,
+        "sha256": "8103588662e8c5383a79cb5622404ddf251952e766a43eccb7b3d68391ca8d0e"
+      },
+      "complete": true
+    },
+    {
+      "id": "mandelbrot",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/mandelbrot.bend",
+        "bytes": 8536,
+        "sha256": "7d47d183cf02b3e943e0e35532eb8ba12c683eafd9b2031bbc25983181174897"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/mandelbrot/candidate/emission/program.ssa",
+        "bytes": 540094,
+        "sha256": "60eec34feeaeaa2d5d11cb70dd869fbca8a4b176ba7e0643a3b96c073dce2995"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/06/report.json",
+        "bytes": 11843,
+        "sha256": "575146ac2e3ca51fff4e4694ce81039f210f766ef918581e2e980d08c0adca70"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/06/program.ssa",
+        "bytes": 540094,
+        "sha256": "60eec34feeaeaa2d5d11cb70dd869fbca8a4b176ba7e0643a3b96c073dce2995"
+      },
+      "complete": true
+    },
+    {
+      "id": "symreg",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/symreg.bend",
+        "bytes": 7369,
+        "sha256": "3c8afa94641531b0e88a51e228cc5e5479db3e36ea244362fcaea5b7705b56a2"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/symreg/candidate/emission/program.ssa",
+        "bytes": 449811,
+        "sha256": "17dc3acba829eaa7ff8f38a74cdc46f1f02d868055fe06db76de8ce403bbbd2f"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/07/report.json",
+        "bytes": 11794,
+        "sha256": "a6d3c4df64647abb745d9442246a1fb05ea2bf12dd4647b1538a731c80530536"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/07/program.ssa",
+        "bytes": 449811,
+        "sha256": "17dc3acba829eaa7ff8f38a74cdc46f1f02d868055fe06db76de8ce403bbbd2f"
+      },
+      "complete": true
+    },
+    {
+      "id": "test-morning-program",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/test-morning-program.bend",
+        "bytes": 5064,
+        "sha256": "740992084d3171460f394dfdd2574a3def860de3260d818b2a99fb9c8e945746"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/test-morning-program/candidate/emission/program.ssa",
+        "bytes": 1061806,
+        "sha256": "0c162a4c6eb42850a1a53ad4cdb2791830d11eb86a6b7259d5b9ee70a982c733"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/08/report.json",
+        "bytes": 11938,
+        "sha256": "2d1e4d4af9563c9fab0173445ba910c62093749603faa68998d664d2f6f502eb"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/08/program.ssa",
+        "bytes": 1061806,
+        "sha256": "0c162a4c6eb42850a1a53ad4cdb2791830d11eb86a6b7259d5b9ee70a982c733"
+      },
+      "complete": true
+    },
+    {
+      "id": "test-evening-program",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/test-evening-program.bend",
+        "bytes": 4120,
+        "sha256": "4d568aa3230e4383a930c7008e9b64c51fcc9326a61edd9532716114f1c2ae9c"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/test-evening-program/candidate/emission/program.ssa",
+        "bytes": 1149898,
+        "sha256": "f6f268ee27bb598d11f3ad82df1ecd08244745ae29a3c827e79a6bcaf89f2c34"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/09/report.json",
+        "bytes": 11935,
+        "sha256": "28118c4c673438735f4bffba28619340c80fdd54228d27b8893b337c2fcfae3c"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/09/program.ssa",
+        "bytes": 1149898,
+        "sha256": "f6f268ee27bb598d11f3ad82df1ecd08244745ae29a3c827e79a6bcaf89f2c34"
+      },
+      "complete": true
+    },
+    {
+      "id": "local-pair",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/local-pair.bend",
+        "bytes": 8202,
+        "sha256": "acb8a8bc1d8ed6fd5c3a57e08c154042e0524a8d4f3f12ddcec9da75a327e78c"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/local-pair/candidate/emission/program.ssa",
+        "bytes": 735639,
+        "sha256": "5ae1a74f8dc4d897dbe5b6c8249dac95741aea2f74b2ca585fafd95d32ae5e2e"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/10/report.json",
+        "bytes": 11831,
+        "sha256": "847d019e36670b60cdf676d70fa39ad23921317c66ec9ebffec1fa6991e86da6"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/10/program.ssa",
+        "bytes": 735639,
+        "sha256": "5ae1a74f8dc4d897dbe5b6c8249dac95741aea2f74b2ca585fafd95d32ae5e2e"
+      },
+      "complete": true
+    },
+    {
+      "id": "local-fold",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/local-fold.bend",
+        "bytes": 2737,
+        "sha256": "2252256562cc415348f3aa53c960b318f87c4a8b5fd118a0a2f115d446723125"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/local-fold/candidate/emission/program.ssa",
+        "bytes": 303015,
+        "sha256": "cb6a373e574ba29e709de3421b31ae89f77dbd4b95b8dcdfc2afe0e8b25e8028"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/11/report.json",
+        "bytes": 11841,
+        "sha256": "fa64088db2aabfa6e5b42b050a9b54dbab48b6995fda3f9c19448ccc711e14ec"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/11/program.ssa",
+        "bytes": 303015,
+        "sha256": "cb6a373e574ba29e709de3421b31ae89f77dbd4b95b8dcdfc2afe0e8b25e8028"
+      },
+      "complete": true
+    },
+    {
+      "id": "scalar-region-0",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/scalar-region-0.bend",
+        "bytes": 3445,
+        "sha256": "4f20060ec4dce1625914d1bca3a6e07390e3b6bffe001a09bae4ac92a386dc2e"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/scalar-region-0/candidate/emission/program.ssa",
+        "bytes": 302020,
+        "sha256": "1242bca5050bb0e1dd0bffc7ed6438c829807ccdbf59e0942afac8582176ef63"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/12/report.json",
+        "bytes": 11875,
+        "sha256": "c097c903f0aeb41d8c2d37543e387cd77e8b00cf5cd3ec5018714abe179f47f9"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/12/program.ssa",
+        "bytes": 302020,
+        "sha256": "1242bca5050bb0e1dd0bffc7ed6438c829807ccdbf59e0942afac8582176ef63"
+      },
+      "complete": true
+    },
+    {
+      "id": "scalar-region-8192",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/scalar-region-8192.bend",
+        "bytes": 3454,
+        "sha256": "ee300ddfdeda2e89e2f52550ec10d9f22842276cef737fbd19578bed095133f7"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/scalar-region-8192/candidate/emission/program.ssa",
+        "bytes": 302038,
+        "sha256": "ee04d47d77bef58ab1e4029298c47b3f9c43c3b1fda3b981b7ed14fdb8f8fbf5"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/13/report.json",
+        "bytes": 11900,
+        "sha256": "872dac24c9b4753690ec0e6ab76233bae5aeec79fdc777713c5d44bb3d15b48d"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/13/program.ssa",
+        "bytes": 302038,
+        "sha256": "ee04d47d77bef58ab1e4029298c47b3f9c43c3b1fda3b981b7ed14fdb8f8fbf5"
+      },
+      "complete": true
+    },
+    {
+      "id": "complete-generic-row32",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/complete-generic-row32.bend",
+        "bytes": 9874,
+        "sha256": "10e093925d81b26d82fc5071ef22c4b76dc9e55b3dbb9b47cbbb03110d29aba1"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/complete-generic-row32/candidate/emission/program.ssa",
+        "bytes": 748921,
+        "sha256": "7dd91f7d0c4aa44cd090a93ac53372e0b35266e233c3883d9a3b90ddcb167ec6"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/14/report.json",
+        "bytes": 11949,
+        "sha256": "30a242201b9c8356214432245d08e2dd2f7ec9c73ad5848bd625fdfa1546ed49"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/14/program.ssa",
+        "bytes": 748921,
+        "sha256": "7dd91f7d0c4aa44cd090a93ac53372e0b35266e233c3883d9a3b90ddcb167ec6"
+      },
+      "complete": true
+    },
+    {
+      "id": "variation-editdist-0-17",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-editdist-0-17.bend",
+        "bytes": 7836,
+        "sha256": "04626f081fd3ef709c7d5d7daf4b5ead6262b7b2c792e6fb347c68e4dda3a582"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-editdist-0-17/candidate/emission/program.ssa",
+        "bytes": 729839,
+        "sha256": "606a2f12dbe8d7148958d8b39c3013277c02236fd492b01396a3f55e951f4d92"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/15/report.json",
+        "bytes": 11960,
+        "sha256": "387ded14b111d23152fc13c51df0fdca93904bee055717c06d3b1b009dbd7112"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/15/program.ssa",
+        "bytes": 729839,
+        "sha256": "606a2f12dbe8d7148958d8b39c3013277c02236fd492b01396a3f55e951f4d92"
+      },
+      "complete": true
+    },
+    {
+      "id": "variation-editdist-3-123",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-editdist-3-123.bend",
+        "bytes": 7839,
+        "sha256": "a4e09e8b7c9a23cf0eb7ab4604993438f97184b5f30c98d693042461349272fd"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-editdist-3-123/candidate/emission/program.ssa",
+        "bytes": 729843,
+        "sha256": "081f73c7ce5626c8d5226aa0748ee51ae59ead7d891f226d380ebce89186101b"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/16/report.json",
+        "bytes": 11955,
+        "sha256": "f5c2d441191dbfb8a4886339c5773e6ca9a99974fcf60dfb952a38ee99d01cfe"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/16/program.ssa",
+        "bytes": 729843,
+        "sha256": "081f73c7ce5626c8d5226aa0748ee51ae59ead7d891f226d380ebce89186101b"
+      },
+      "complete": true
+    },
+    {
+      "id": "variation-lexer-6-17",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-lexer-6-17.bend",
+        "bytes": 9097,
+        "sha256": "2e3de72111f28e34b22bef4f0433506da55edaaa888d4df0d665d08b41a70887"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-lexer-6-17/candidate/emission/program.ssa",
+        "bytes": 521072,
+        "sha256": "3d70e7ba0a7ac0169d69f203dd5a76034ae10a18fcbbe2d7e31c6aabf73cea88"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/17/report.json",
+        "bytes": 11918,
+        "sha256": "49065493143ee99d6d218137381ca2ffbd832535309758f1525333d1b9240fda"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/17/program.ssa",
+        "bytes": 521072,
+        "sha256": "3d70e7ba0a7ac0169d69f203dd5a76034ae10a18fcbbe2d7e31c6aabf73cea88"
+      },
+      "complete": true
+    },
+    {
+      "id": "variation-lexer-10-123",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-lexer-10-123.bend",
+        "bytes": 9101,
+        "sha256": "513ae3729efd7f312c610e9136b7e8f3f2767cbcafe3bd9da2d2f04c92d59139"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-lexer-10-123/candidate/emission/program.ssa",
+        "bytes": 521077,
+        "sha256": "cc077d4d2d1487475a3409f80fdcc290b2ec42e64da333aafc93569a61a5d710"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/18/report.json",
+        "bytes": 11951,
+        "sha256": "e892a0d6ffd0bb0f7a8aad57aecf642d9d4c0771c5362e18e5c3691db5c6bb1a"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/18/program.ssa",
+        "bytes": 521077,
+        "sha256": "cc077d4d2d1487475a3409f80fdcc290b2ec42e64da333aafc93569a61a5d710"
+      },
+      "complete": true
+    },
+    {
+      "id": "variation-tree-bitonic-6-17",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-tree-bitonic-6-17.bend",
+        "bytes": 6596,
+        "sha256": "da4d24d043f90bc7dec87cde76de317e88db22e27d315172eb08567aac8fb3af"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-tree-bitonic-6-17/candidate/emission/program.ssa",
+        "bytes": 394544,
+        "sha256": "dff5e98f012f267005e030a7cff423bea7a752d0ee3c2d24312556c36c375357"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/19/report.json",
+        "bytes": 11984,
+        "sha256": "349fdf2ce8e70525c06dae9433a8c6f25e0da1eec920ef910367ebd26eafcb95"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/19/program.ssa",
+        "bytes": 394544,
+        "sha256": "dff5e98f012f267005e030a7cff423bea7a752d0ee3c2d24312556c36c375357"
+      },
+      "complete": true
+    },
+    {
+      "id": "variation-tree-bitonic-9-123",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-tree-bitonic-9-123.bend",
+        "bytes": 6598,
+        "sha256": "a641ba273024691024829018b0f494935e2e8c038ae6e8708ed58b410f0171b6"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-tree-bitonic-9-123/candidate/emission/program.ssa",
+        "bytes": 394547,
+        "sha256": "c9c1cbaa21f73afa9437d07606f616f73d780163727c80971a015d31da104f6a"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/20/report.json",
+        "bytes": 12014,
+        "sha256": "0394c34406320d6336064721d11e942c300a874a126e1f122cf1538c31135c7a"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/20/program.ssa",
+        "bytes": 394547,
+        "sha256": "c9c1cbaa21f73afa9437d07606f616f73d780163727c80971a015d31da104f6a"
+      },
+      "complete": true
+    },
+    {
+      "id": "variation-symreg-4-17",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-symreg-4-17.bend",
+        "bytes": 7369,
+        "sha256": "6e2e51bf436713ead1b06822a97d03dc853d1849aaa7749c018ff6db2b8a6400"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-symreg-4-17/candidate/emission/program.ssa",
+        "bytes": 449811,
+        "sha256": "2bfc3c8f91bc5bda2750179b49885fb6e68542751df7a97fff47369f87d7efd8"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/21/report.json",
+        "bytes": 11941,
+        "sha256": "8b1f95258361118802fca47f22bf6e855aea0272988360ddcf8cd7da0e7dc354"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/21/program.ssa",
+        "bytes": 449811,
+        "sha256": "2bfc3c8f91bc5bda2750179b49885fb6e68542751df7a97fff47369f87d7efd8"
+      },
+      "complete": true
+    },
+    {
+      "id": "variation-symreg-7-123",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-symreg-7-123.bend",
+        "bytes": 7371,
+        "sha256": "fb8dee79917f21fc6f621cdc8201d33a662ba4505b22d54895e39fd62c363546"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-symreg-7-123/candidate/emission/program.ssa",
+        "bytes": 449814,
+        "sha256": "7e64f2ece66a163d9e4ba856bc7006be175eb8d2777b8bee509706317ffc7078"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/22/report.json",
+        "bytes": 11960,
+        "sha256": "bd9bb3858696f9957510038ca5aa2b59627dc26ee4b2afa3fd432ebd2a4a5ca4"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/22/program.ssa",
+        "bytes": 449814,
+        "sha256": "7e64f2ece66a163d9e4ba856bc7006be175eb8d2777b8bee509706317ffc7078"
+      },
+      "complete": true
+    },
+    {
+      "id": "variation-local-fold-128-0",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-local-fold-128-0.bend",
+        "bytes": 2724,
+        "sha256": "73ce97cc78fd63446fe943dc3b8cc5604d8a95a49ac9b1b6d51853adee583bea"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-local-fold-128-0/candidate/emission/program.ssa",
+        "bytes": 302974,
+        "sha256": "137897217efc00763be10ebff0f3101bc2ac4646af463e0a44d14dd06f5abca7"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/23/report.json",
+        "bytes": 11984,
+        "sha256": "459eb324c509cd96f923a06fe5db83bdc61b42098aaa86507d9d887029395ee5"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/23/program.ssa",
+        "bytes": 302974,
+        "sha256": "137897217efc00763be10ebff0f3101bc2ac4646af463e0a44d14dd06f5abca7"
+      },
+      "complete": true
+    },
+    {
+      "id": "variation-local-fold-8192-123",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-local-fold-8192-123.bend",
+        "bytes": 2738,
+        "sha256": "40cd23bfd2931023132a077a33ba1e638ad8870e344ff9310945dc357b5abae5"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-local-fold-8192-123/candidate/emission/program.ssa",
+        "bytes": 303014,
+        "sha256": "868fb5a073e5feff018babfa46ec056f48f70fcf834cb92f414b8b86bcb8cd28"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/24/report.json",
+        "bytes": 12013,
+        "sha256": "303eef5b10d58825fd85e4cd3b41f4e82d9b588b4e28df205b0789a7d930be81"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/24/program.ssa",
+        "bytes": 303014,
+        "sha256": "868fb5a073e5feff018babfa46ec056f48f70fcf834cb92f414b8b86bcb8cd28"
+      },
+      "complete": true
+    },
+    {
+      "id": "variation-mandelbrot-grid-4-7",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-mandelbrot-grid-4-7.bend",
+        "bytes": 9364,
+        "sha256": "793feefdc1dec5425bddfc1cd50ca0746569b7fc5c327a41edb313125c545846"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-mandelbrot-grid-4-7/candidate/emission/program.ssa",
+        "bytes": 324052,
+        "sha256": "f69b71b46e03711533ee3a35fcc66a88894c2a4d52796572929d27e2447e2d44"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/25/report.json",
+        "bytes": 12012,
+        "sha256": "8e2c9e8f4a58042498bd50e69fc578267e154b843435107f7529f39bb602808d"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/25/program.ssa",
+        "bytes": 324052,
+        "sha256": "f69b71b46e03711533ee3a35fcc66a88894c2a4d52796572929d27e2447e2d44"
+      },
+      "complete": true
+    },
+    {
+      "id": "variation-mandelbrot-grid-5-31",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-mandelbrot-grid-5-31.bend",
+        "bytes": 9366,
+        "sha256": "898cb66cad62cd20615d3e100ee2638f695efd071ee8290b5e0da03b89f702c4"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-mandelbrot-grid-5-31/candidate/emission/program.ssa",
+        "bytes": 324055,
+        "sha256": "0ac6cdd71eec44b8e0d6f11455757a448350eeac9d8a520f8c15a96edca7d0c3"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/26/report.json",
+        "bytes": 12021,
+        "sha256": "1f3b0c01295dfc6e26a4fc67fe5cf0037b8a4ae708b34374bf6fdc7d6f68ecf6"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/26/program.ssa",
+        "bytes": 324055,
+        "sha256": "0ac6cdd71eec44b8e0d6f11455757a448350eeac9d8a520f8c15a96edca7d0c3"
+      },
+      "complete": true
+    },
+    {
+      "id": "variation-ray-active-64-2440",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-ray-active-64-2440.bend",
+        "bytes": 16659,
+        "sha256": "2e01d6027b6b046e38d8c34b4397f5df45f2d912d2f86f273aaa4e3a336f4296"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-ray-active-64-2440/candidate/emission/program.ssa",
+        "bytes": 798319,
+        "sha256": "c2fe92014d268060589b1d021496813f93fd4cfd4cea6e6c74ecff21ba269168"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/27/report.json",
+        "bytes": 11996,
+        "sha256": "78e9053a2f88cb97c30d2f671c2bc2dc39ea4c02b7c7c2284a770962d840d859"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/27/program.ssa",
+        "bytes": 798319,
+        "sha256": "c2fe92014d268060589b1d021496813f93fd4cfd4cea6e6c74ecff21ba269168"
+      },
+      "complete": true
+    },
+    {
+      "id": "variation-ray-active-256-2240",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-ray-active-256-2240.bend",
+        "bytes": 16661,
+        "sha256": "7099448e301e2cab7cb5ab47e2a4892dbf44ac246676b4f950282c7a57007669"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-ray-active-256-2240/candidate/emission/program.ssa",
+        "bytes": 798321,
+        "sha256": "285fcc7d8141b04ce633d9f078bd6bbae6e4a414169967c3a6e11494ce17f08c"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/28/report.json",
+        "bytes": 12004,
+        "sha256": "e366546675f9d339a27d7aa174a364b072fcb648be45d87cf5869690419fb130"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/28/program.ssa",
+        "bytes": 798321,
+        "sha256": "285fcc7d8141b04ce633d9f078bd6bbae6e4a414169967c3a6e11494ce17f08c"
+      },
+      "complete": true
+    },
+    {
+      "id": "coverage-closures-64",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-closures-64.bend",
+        "bytes": 3364,
+        "sha256": "d5a0e144805beec3aafdfa5a5bf0ae1579659caff90d42fc178f0ac17b9db60a"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-closures-64/candidate/emission/program.ssa",
+        "bytes": 252583,
+        "sha256": "d5c8383c6a74e46819cc6797bf5b3826e729a637c3fa8c4f518edc055e3e4bad"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/29/report.json",
+        "bytes": 11931,
+        "sha256": "68f75cafa366a66d3648d7204d41629540fb9d4fd5bf7eba3e604d4383c3fe94"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/29/program.ssa",
+        "bytes": 252583,
+        "sha256": "d5c8383c6a74e46819cc6797bf5b3826e729a637c3fa8c4f518edc055e3e4bad"
+      },
+      "complete": true
+    },
+    {
+      "id": "coverage-closures-256",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-closures-256.bend",
+        "bytes": 3369,
+        "sha256": "d0e35c8343fcbe86b45211f7738d293a27a0a5184060e0136b0275fc9556cef4"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-closures-256/candidate/emission/program.ssa",
+        "bytes": 252592,
+        "sha256": "99005ec1218061616bd3983d2d01f6f79beabcec94de6164b83cb9d84620b0bf"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/30/report.json",
+        "bytes": 11942,
+        "sha256": "4b9aaec2cefc1a44cd008a32acf0c8c82c3ed4c09901018a6e1f4d53fa8e4153"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/30/program.ssa",
+        "bytes": 252592,
+        "sha256": "99005ec1218061616bd3983d2d01f6f79beabcec94de6164b83cb9d84620b0bf"
+      },
+      "complete": true
+    },
+    {
+      "id": "coverage-list-pipeline-128",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-list-pipeline-128.bend",
+        "bytes": 5223,
+        "sha256": "5a6bb5b6e3e4549ceae238b40485aa6d00facdab6bb8382790a486b165a1cd97"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-list-pipeline-128/candidate/emission/program.ssa",
+        "bytes": 268109,
+        "sha256": "7baf6b803093d36dabf81e42b196bb87dac2d3e050f3c138da9bffeb84a8e68b"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/31/report.json",
+        "bytes": 11985,
+        "sha256": "2b0770811505317f2f9752f219e02b3eb9cdd1f9592e5bef670276d41e70f3ad"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/31/program.ssa",
+        "bytes": 268109,
+        "sha256": "7baf6b803093d36dabf81e42b196bb87dac2d3e050f3c138da9bffeb84a8e68b"
+      },
+      "complete": true
+    },
+    {
+      "id": "coverage-list-pipeline-512",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-list-pipeline-512.bend",
+        "bytes": 5225,
+        "sha256": "c4eba973b7176ba8a0bc7c07aa69f32c7f8ed8b09fd32d8d3b92fa2a343e0fe9"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-list-pipeline-512/candidate/emission/program.ssa",
+        "bytes": 268112,
+        "sha256": "0488c0873b07c9c3b7ccccce2744d17dfd7bae0c3e0deed38fb523c7e4e0c1e2"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/32/report.json",
+        "bytes": 11973,
+        "sha256": "5e56fac58925e1a97950c3a00e2d9da2745df512b3ec01163777f81b282ce229"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/32/program.ssa",
+        "bytes": 268112,
+        "sha256": "0488c0873b07c9c3b7ccccce2744d17dfd7bae0c3e0deed38fb523c7e4e0c1e2"
+      },
+      "complete": true
+    },
+    {
+      "id": "coverage-bst-32",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-bst-32.bend",
+        "bytes": 5027,
+        "sha256": "5b2e60b5e1435882bcdd25329194073c64df8d88d21f98ba2c3290384738c1c2"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-bst-32/candidate/emission/program.ssa",
+        "bytes": 327829,
+        "sha256": "9f95334f6c487a55282f8aeb189c71d576e63e2ade53e206f00dd63b6d988945"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/33/report.json",
+        "bytes": 11898,
+        "sha256": "ab7f249932eefb7549cdab018f32bd591de0499f811265ff9823023736350699"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/33/program.ssa",
+        "bytes": 327829,
+        "sha256": "9f95334f6c487a55282f8aeb189c71d576e63e2ade53e206f00dd63b6d988945"
+      },
+      "complete": true
+    },
+    {
+      "id": "coverage-bst-64",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-bst-64.bend",
+        "bytes": 5028,
+        "sha256": "474ffc3a68c1fcd4947cfe49fe117c15aae0a66dab99ed50d6c17bfcf6563d65"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-bst-64/candidate/emission/program.ssa",
+        "bytes": 327831,
+        "sha256": "253496c7913652134024f4edbdb60f73c7006020b3a8550ce3714f587c01d24c"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/34/report.json",
+        "bytes": 11875,
+        "sha256": "3f566a7b43a6341589f7d9adb404cd509fa978dbc47d521fea5e7edda73e8ada"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/34/program.ssa",
+        "bytes": 327831,
+        "sha256": "253496c7913652134024f4edbdb60f73c7006020b3a8550ce3714f587c01d24c"
+      },
+      "complete": true
+    },
+    {
+      "id": "coverage-unicode-text-16",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-unicode-text-16.bend",
+        "bytes": 7528,
+        "sha256": "1e44705513750680563a8939e46120e4fbb5e9ffbfabe1f3d22b773a6eada3c5"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-unicode-text-16/candidate/emission/program.ssa",
+        "bytes": 324461,
+        "sha256": "91dc36e94e7f3fa005dd8e06c4d0339b80ee893c7d6998db121a611a12c0b17d"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/35/report.json",
+        "bytes": 11979,
+        "sha256": "05714fe2d5cbaa65fa72e7d29c618174fb314153b2086587593642076ff79599"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/35/program.ssa",
+        "bytes": 324461,
+        "sha256": "91dc36e94e7f3fa005dd8e06c4d0339b80ee893c7d6998db121a611a12c0b17d"
+      },
+      "complete": true
+    },
+    {
+      "id": "coverage-unicode-text-64",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-unicode-text-64.bend",
+        "bytes": 8458,
+        "sha256": "49a53fc745be33a8237b1b48f3175dbba4e20c76549374253520ae39f6b894bf"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-unicode-text-64/candidate/emission/program.ssa",
+        "bytes": 341713,
+        "sha256": "41a598c78ede9932f136cd2b3f3ac9c246c80732a64bee6b12a8f5deb9dc08c9"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/36/report.json",
+        "bytes": 11957,
+        "sha256": "0a11ee99c2047702b1a06a3aa84fa764b9bcba1b905efaea89e9268bc23e6fe0"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/36/program.ssa",
+        "bytes": 341713,
+        "sha256": "41a598c78ede9932f136cd2b3f3ac9c246c80732a64bee6b12a8f5deb9dc08c9"
+      },
+      "complete": true
+    },
+    {
+      "id": "coverage-expression-32",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-expression-32.bend",
+        "bytes": 3497,
+        "sha256": "e1667f5fb6802cda5d062bf0bb97c3f5057fc3ab02d4cd5778e9198cd1439998"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-expression-32/candidate/emission/program.ssa",
+        "bytes": 300570,
+        "sha256": "3a26ab5c01b52559c5d865e9a3b473493c86b392e0f135d9b7e3c48d13164c34"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/37/report.json",
+        "bytes": 11959,
+        "sha256": "cbc02c4a072627dd46cf8c5e88f446a2b0c492085fecd8b7d1f9b47ec5a360c7"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/37/program.ssa",
+        "bytes": 300570,
+        "sha256": "3a26ab5c01b52559c5d865e9a3b473493c86b392e0f135d9b7e3c48d13164c34"
+      },
+      "complete": true
+    },
+    {
+      "id": "coverage-expression-128",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-expression-128.bend",
+        "bytes": 3504,
+        "sha256": "32ae9cc5bdaeff023b08403b357b7e8a3f03e06d37c461feb4a8930ad51c5a2c"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-expression-128/candidate/emission/program.ssa",
+        "bytes": 300578,
+        "sha256": "6871b081bbdd931e13822f14aabb526c0c4e32220b1ab62fa580aed510333937"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/38/report.json",
+        "bytes": 11958,
+        "sha256": "95e2526d0275577dac37ba34d4187ff1a8b95d1e08ae984df10f5618c06ff182"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/38/program.ssa",
+        "bytes": 300578,
+        "sha256": "6871b081bbdd931e13822f14aabb526c0c4e32220b1ab62fa580aed510333937"
+      },
+      "complete": true
+    },
+    {
+      "id": "coverage-map-churn-32",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-map-churn-32.bend",
+        "bytes": 3655,
+        "sha256": "ada0bc78c19c9ed252c779190144fa1155d2ff44fa12602166429140238870d9"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-map-churn-32/candidate/emission/program.ssa",
+        "bytes": 1047192,
+        "sha256": "b7a75315b5dda703b2ead22092682ece015b9e5d1545c014eb883edf4a7ed99f"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/39/report.json",
+        "bytes": 11933,
+        "sha256": "8d477879fea60c0cc66c06bd96a9e4274b9e7be90df7ffc6e42953a1b9474d47"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/39/program.ssa",
+        "bytes": 1047192,
+        "sha256": "b7a75315b5dda703b2ead22092682ece015b9e5d1545c014eb883edf4a7ed99f"
+      },
+      "complete": true
+    },
+    {
+      "id": "coverage-map-churn-128",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-map-churn-128.bend",
+        "bytes": 3659,
+        "sha256": "cd22c831c180c0de12d84aeb80debf4881d08cbd18fcf8f6d634153fba2feb03"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-map-churn-128/candidate/emission/program.ssa",
+        "bytes": 1047197,
+        "sha256": "f2f076204850d6a339f70a031d60bf6751aeaff0d1d4a867a04518c80bff752a"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/40/report.json",
+        "bytes": 11939,
+        "sha256": "dbeacf09c3f0d3695400adca9a8808aedbf9b162e799e98fbe74af3407e200da"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/40/program.ssa",
+        "bytes": 1047197,
+        "sha256": "f2f076204850d6a339f70a031d60bf6751aeaff0d1d4a867a04518c80bff752a"
+      },
+      "complete": true
+    },
+    {
+      "id": "coverage-numeric-recurrence-256",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-numeric-recurrence-256.bend",
+        "bytes": 2510,
+        "sha256": "4b9a0ee2ab80c844b74e44e5ce94d17669e70ed5d8f6da3cebe7354e1db9f293"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-numeric-recurrence-256/candidate/emission/program.ssa",
+        "bytes": 263638,
+        "sha256": "868993145710c314449e0cc9aa00f666d558c2a0dd37a5d45324dec779600443"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/41/report.json",
+        "bytes": 12020,
+        "sha256": "7146623e76f74b48c89126e8f4885a7d1a70d1d9c04ee097bef91f2caeee23dc"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/41/program.ssa",
+        "bytes": 263638,
+        "sha256": "868993145710c314449e0cc9aa00f666d558c2a0dd37a5d45324dec779600443"
+      },
+      "complete": true
+    },
+    {
+      "id": "coverage-numeric-recurrence-1024",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-numeric-recurrence-1024.bend",
+        "bytes": 2514,
+        "sha256": "39c7c7be54d5a47b6042b0d8f70b124610ea5a2fee28866d85599b7f0f5bbb46"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-numeric-recurrence-1024/candidate/emission/program.ssa",
+        "bytes": 263643,
+        "sha256": "c85f4e0c4086a365b20f2c05eb2978046f626dddf8cacbebf63043c3493a94f5"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/42/report.json",
+        "bytes": 12038,
+        "sha256": "a78502e6ad4f2dafddc4bb5ed35e180d0033986eef5b79fd321cfe7217b553e7"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/42/program.ssa",
+        "bytes": 263643,
+        "sha256": "c85f4e0c4086a365b20f2c05eb2978046f626dddf8cacbebf63043c3493a94f5"
+      },
+      "complete": true
+    },
+    {
+      "id": "coverage-record-aggregation-64",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-record-aggregation-64.bend",
+        "bytes": 3802,
+        "sha256": "36ad15032712bd62a88a3fae13105880db1a0ecde3fc98e43791c4f21876c2c9"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-record-aggregation-64/candidate/emission/program.ssa",
+        "bytes": 1031979,
+        "sha256": "ad42b80963be0fcfdd95dcad1898c12af7d89d2f31b6bc629ce3d2ab3eaed892"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/43/report.json",
+        "bytes": 12028,
+        "sha256": "f945b0bdde4dfbeccb3ccba442ff7fad1a7bf3e447137a5408b68feab0392a0d"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/43/program.ssa",
+        "bytes": 1031979,
+        "sha256": "ad42b80963be0fcfdd95dcad1898c12af7d89d2f31b6bc629ce3d2ab3eaed892"
+      },
+      "complete": true
+    },
+    {
+      "id": "coverage-record-aggregation-256",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-record-aggregation-256.bend",
+        "bytes": 3806,
+        "sha256": "eb5841e7f516d2f87ef8028f83a902390c4aab439875207448ffa4c4d5c28bc1"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-record-aggregation-256/candidate/emission/program.ssa",
+        "bytes": 1031984,
+        "sha256": "6d7fadb15b874d3d2b23f734f5792f1dc88155eae2c2d67233e705d37ec75713"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/44/report.json",
+        "bytes": 12047,
+        "sha256": "79330691142e1f8b5b18169e1aecc6357c426c5d21948845dd436aff379d1bf0"
+      },
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/timed-products45/44/program.ssa",
+        "bytes": 1031984,
+        "sha256": "6d7fadb15b874d3d2b23f734f5792f1dc88155eae2c2d67233e705d37ec75713"
+      },
+      "complete": true
+    }
+  ],
+  "expectedCount": 45,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase170/reemit-products.py",
+      "bytes": 5520,
+      "sha256": "28fb20e9eb9b029ce9846cf935cc74ceeac06eabb78ae31c0713ee9f1fb59802"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase170/compare-products.py",
+      "bytes": 8944,
+      "sha256": "3c69b8ad323408878f4684a55c414bbaa3770f5189f1b6b85f286e7458c97ba1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/request.py",
+      "bytes": 18653,
+      "sha256": "f2638c055de2de15c80b8e36d888337a3061f8f7725c55f16ad645943562566c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/assets.py",
+      "bytes": 7994,
+      "sha256": "02a8b03647f5a6292502363fc1bb79147b61196a9271c21cee55a2ec6bf64dba"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/report.json",
+      "bytes": 5747,
+      "sha256": "a563ca1b2214aec63f145539750a887f5b6d5ffa4770f7b99f8ae1ff24b1831d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/programs.manifest.json",
+      "bytes": 58759,
+      "sha256": "7f572d71e9e320f0f48c173266804d94e0e1ebe26fa51f15589838c6ce45c352"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/editdist/candidate/emission/report.json",
+      "bytes": 11199,
+      "sha256": "ca9f8701914ac977ad207c0b603f4f579c70a4c6e25c35153e023fb3266671ee"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/editdist.bend",
+      "bytes": 7835,
+      "sha256": "759d82e26789e55187d175cb8416d6ebe4266a53f73a53ca6d32b69d4f71e988"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/editdist/candidate/emission/program.ssa",
+      "bytes": 729837,
+      "sha256": "78944243742125c4ae4c7ab3a95c32154208b9fbedc2590fc8dcbde552b09063"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/editdist/candidate/machine/report.json",
+      "bytes": 9233,
+      "sha256": "08cfde77160cfa424f97f3006b9a74783d432b123954a3fbfeaa5f06f86d4d59"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "bytes": 75064,
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/base/base.p130",
+      "bytes": 2612691,
+      "sha256": "984fad041a0ba855ea0aaedd384485afa2153da644655c00882eb50ace33817f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-native-n2/program",
+      "bytes": 13986280,
+      "sha256": "2ef6b17987134e2f25716ae085432ebea0b0ac2f96ecf0de6e1f3470db87a42a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/qbe",
+      "bytes": 262024,
+      "sha256": "1eca24288f9574ad57032ac88f11c3f74ced605838749226d77a9acd4443e5f4"
+    },
+    {
+      "file": "/usr/bin/x86_64-linux-gnu-as",
+      "bytes": 472248,
+      "sha256": "fac4e966afe9223dbab23aa15d27d144af81de4a44c8cad97c1dde290adb9493"
+    },
+    {
+      "file": "/usr/bin/x86_64-linux-gnu-gcc-10",
+      "bytes": 817704,
+      "sha256": "693abcb42e67fb871673f258a3644257ca69a209691ec4d8137a42442834bd19"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/editdist/candidate/oracle-process.json",
+      "bytes": 976,
+      "sha256": "904b7433de6d4dbd4909d907df0860870acd7d1a63d13c31f252aed288c2319f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/editdist/candidate/oracle.stdout",
+      "bytes": 17,
+      "sha256": "84b640f1742c81a1da5481d9ad6a2ac1d8575fec563f14c744708b71479e8d20"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/editdist/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/tree-bitonic/candidate/emission/report.json",
+      "bytes": 11235,
+      "sha256": "0645e0a005bd7099ddbcb15a3c4ad73bf8f0541a66c33ddb222d7a32a6d55a5d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/tree-bitonic.bend",
+      "bytes": 6593,
+      "sha256": "405f8d8fb2066e6fedd8baa45943bcdf92b59cb40e23ce2ad3ea4bd3eeb53ae0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/tree-bitonic/candidate/emission/program.ssa",
+      "bytes": 394540,
+      "sha256": "b9be242566f220606111ea618245aa80c2159dd7bc367154a33281de50bc23c7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/tree-bitonic/candidate/machine/report.json",
+      "bytes": 9292,
+      "sha256": "18bc7a817512d3658040cb6a30431addbd9951f9f0fac63ccd79197cc122b8aa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/tree-bitonic/candidate/oracle-process.json",
+      "bytes": 976,
+      "sha256": "245200875cc76df39f4ed3550416d69ba1ab50c73eb1b4cd5a8968514dbc0c1d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/tree-bitonic/candidate/oracle.stdout",
+      "bytes": 16,
+      "sha256": "9307a36c63b8280a7c00f7e50f8e7573579ec98808c37ddeb97c46f8316a5784"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/tree-bitonic/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/lexer/candidate/emission/report.json",
+      "bytes": 11169,
+      "sha256": "20c53f7265e8417aa8b74d80251960505c9317bf99e7d5bc9c654c085d5d4d6a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/lexer.bend",
+      "bytes": 9095,
+      "sha256": "bfb62870600b63fd6ec6088471a2d805fabb819a7f2e9d47c9b0ef3c368d169a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/lexer/candidate/emission/program.ssa",
+      "bytes": 521069,
+      "sha256": "9cb9357f911a26ca9d805c9a2eedc38072ec78b02942296a53a290bb8379d1d3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/lexer/candidate/machine/report.json",
+      "bytes": 9175,
+      "sha256": "f847899ee1e0c89ffdddd96518ed3810825ead0ab20ec66dc6b48db82ba80a10"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/lexer/candidate/oracle-process.json",
+      "bytes": 955,
+      "sha256": "bb20ab91fb04dc4f2955f73ddb58dc8dde3e13f1470abfaa70254cc4da2011ec"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/lexer/candidate/oracle.stdout",
+      "bytes": 17,
+      "sha256": "1b19574000f5313d84fee9d6bd38023f5646e8eb53bb7cc86bc02092bacc8400"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/lexer/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/test-rle-roundtrip/candidate/emission/report.json",
+      "bytes": 11289,
+      "sha256": "5fc5bb27b8e85f145c0aac07e625b216d061d3ea28ea242a7745a712ce38c700"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/test-rle-roundtrip.bend",
+      "bytes": 4708,
+      "sha256": "b46580acb1656502d0e37a0115d172529e648719acb75eadb3b9ad45db5b078d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/test-rle-roundtrip/candidate/emission/program.ssa",
+      "bytes": 317502,
+      "sha256": "7fc59cb8120c818bfa5d94879f014c1e977141bf8fd0e4fe4595eadec0f79645"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/test-rle-roundtrip/candidate/machine/report.json",
+      "bytes": 9430,
+      "sha256": "049ab15542e7afc5778c56ff03a78f6f9fd104290da21b2ba10d85ed1eef3fcf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/test-rle-roundtrip/candidate/oracle-process.json",
+      "bytes": 1003,
+      "sha256": "83aabba955ae45812a14145424b3811d6d9d3077f464217324d27ad4fb2a6dea"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/test-rle-roundtrip/candidate/oracle.stdout",
+      "bytes": 9,
+      "sha256": "b8b88f7a40df8228ad417354ffec04352ab8b09f1c9cc3390bf120b05337e298"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/test-rle-roundtrip/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/test-map-set-ops/candidate/emission/report.json",
+      "bytes": 11274,
+      "sha256": "ab747f8d4199b6efe1f314da0048a12ae568649e1bf43c61a65c2678bcdc44f2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/test-map-set-ops.bend",
+      "bytes": 7234,
+      "sha256": "e93dc56e4c91670bb831c329e9ced90a0e17126bc02f4d7709131a516f0eb0ca"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/test-map-set-ops/candidate/emission/program.ssa",
+      "bytes": 1432329,
+      "sha256": "048cdf372b93abe54fb8b073e39f61fb41654150518eb0ff68497a3f348a46e6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/test-map-set-ops/candidate/machine/report.json",
+      "bytes": 9407,
+      "sha256": "1657408c69efd82aee78065279614ac29f3a888d4893799d471b9c6709a7d7e5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/test-map-set-ops/candidate/oracle-process.json",
+      "bytes": 988,
+      "sha256": "6ff59d49f972d3f0f2d6c34754e7fb4bc6aed92f756f9fbd2bcf610943de0605"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/test-map-set-ops/candidate/oracle.stdout",
+      "bytes": 12,
+      "sha256": "9bdb17c17dc6c1aa2fccc2a5b166ffbccaa469f442f3667ac7721f67b4c252ad"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/test-map-set-ops/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/raytrace/candidate/emission/report.json",
+      "bytes": 11202,
+      "sha256": "23201626658881e031845ea2b0ea876f306e40bc8d83bf9e39da20494807c9f0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/raytrace.bend",
+      "bytes": 16182,
+      "sha256": "17e96389638b1a6a12bf9a4f7cabaf00184f1974e75d8363d699aef6b318fd34"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/raytrace/candidate/emission/program.ssa",
+      "bytes": 865387,
+      "sha256": "8103588662e8c5383a79cb5622404ddf251952e766a43eccb7b3d68391ca8d0e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/raytrace/candidate/machine/report.json",
+      "bytes": 9245,
+      "sha256": "2f9f5cb82d6ff10603f7d2ba5be78b8af45f54f96fef3b140a4d9cce9bb058f5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/raytrace/candidate/oracle-process.json",
+      "bytes": 974,
+      "sha256": "938432153126c9b93dd97950ecd36b3a53be1a558ff45115907d9beb29983c86"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/raytrace/candidate/oracle.stdout",
+      "bytes": 14,
+      "sha256": "4b3e1a11ea0c4f519c328c8e11d8b3bf51d338c670686c21e209d6eb412ce04e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-six-native01/raytrace/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/report.json",
+      "bytes": 17483,
+      "sha256": "70fe96e1c816d02742cd05d388be69fefc8c6eb60fa0ee065f78da37ce076a0e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/programs.manifest.json",
+      "bytes": 347533,
+      "sha256": "2c4b4f9a99ff5b2f89c8b1f6e97e43344ed289521cd390d776d8e5590e9bb8b7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/mandelbrot/candidate/emission/report.json",
+      "bytes": 11235,
+      "sha256": "57d959d0c8cf385dbd9b647db737495e1ad8b040cdb5a95831e776789ac139ae"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/mandelbrot.bend",
+      "bytes": 8536,
+      "sha256": "7d47d183cf02b3e943e0e35532eb8ba12c683eafd9b2031bbc25983181174897"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/mandelbrot/candidate/emission/program.ssa",
+      "bytes": 540094,
+      "sha256": "60eec34feeaeaa2d5d11cb70dd869fbca8a4b176ba7e0643a3b96c073dce2995"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/mandelbrot/candidate/machine/report.json",
+      "bytes": 9389,
+      "sha256": "ea8d78b599743fbe3a4bbf0260de7777e8d02f3bd9207bb5ecb9c05ff7ff8abd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/mandelbrot/candidate/oracle-process.json",
+      "bytes": 985,
+      "sha256": "f3bef7a4b00dbccd76129a156cc34dcb31d3c7d380b4fbdf702f599b3df451e7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/mandelbrot/candidate/oracle.stdout",
+      "bytes": 16,
+      "sha256": "88f976f53976d741ceb5789d7e7fb933ac379187be80c62bdbfc425dcf2c19da"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/mandelbrot/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/symreg/candidate/emission/report.json",
+      "bytes": 11211,
+      "sha256": "b17a2357627bea9462c8a08653760d46df52be0eaa160b1777383b2e4ce548f5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/symreg.bend",
+      "bytes": 7369,
+      "sha256": "3c8afa94641531b0e88a51e228cc5e5479db3e36ea244362fcaea5b7705b56a2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/symreg/candidate/emission/program.ssa",
+      "bytes": 449811,
+      "sha256": "17dc3acba829eaa7ff8f38a74cdc46f1f02d868055fe06db76de8ce403bbbd2f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/symreg/candidate/machine/report.json",
+      "bytes": 9327,
+      "sha256": "0e17772bbdb65be87731a5e887c832969e9ad39bd438aa1b33c5a4284533c70b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/symreg/candidate/oracle-process.json",
+      "bytes": 975,
+      "sha256": "0b171847f5db886915ccd37507cd7ba8f0b3057e7525d1b026545e3c223f7c29"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/symreg/candidate/oracle.stdout",
+      "bytes": 17,
+      "sha256": "cf6a713861768088c880e1335d953319c9e01febbbc6977ef0647d438adf9170"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/symreg/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/test-morning-program/candidate/emission/report.json",
+      "bytes": 11340,
+      "sha256": "c941e73b26f1b3ec2acd4f3ef6d9e281c0fd3b3b24f4c908e736fb38475415e7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/test-morning-program.bend",
+      "bytes": 5064,
+      "sha256": "740992084d3171460f394dfdd2574a3def860de3260d818b2a99fb9c8e945746"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/test-morning-program/candidate/emission/program.ssa",
+      "bytes": 1061806,
+      "sha256": "0c162a4c6eb42850a1a53ad4cdb2791830d11eb86a6b7259d5b9ee70a982c733"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/test-morning-program/candidate/machine/report.json",
+      "bytes": 9605,
+      "sha256": "d56e0b7f6e116c9acb12fcc412d1abdb9afdd95b7023de1378c053b91955343c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/test-morning-program/candidate/oracle-process.json",
+      "bytes": 1032,
+      "sha256": "d42298cff44c12e79c02a20ef14283645246bbe6f7d666472a516dfbb8be8306"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/test-morning-program/candidate/oracle.stdout",
+      "bytes": 36,
+      "sha256": "cf0322352c16d3e65a63f2240fb0f858fe5c6da38cdaf00ac4390d161866e2e6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/test-morning-program/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/test-evening-program/candidate/emission/report.json",
+      "bytes": 11340,
+      "sha256": "65d4a58e39b2c197722e8650cba7309f8157bf220666d3a95d0640d4dcc05100"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/test-evening-program.bend",
+      "bytes": 4120,
+      "sha256": "4d568aa3230e4383a930c7008e9b64c51fcc9326a61edd9532716114f1c2ae9c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/test-evening-program/candidate/emission/program.ssa",
+      "bytes": 1149898,
+      "sha256": "f6f268ee27bb598d11f3ad82df1ecd08244745ae29a3c827e79a6bcaf89f2c34"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/test-evening-program/candidate/machine/report.json",
+      "bytes": 9601,
+      "sha256": "5df08a1af19a77d1451e79be1f4b095e4bf7dfa6961338c4bae0353fe2a16406"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/test-evening-program/candidate/oracle-process.json",
+      "bytes": 1031,
+      "sha256": "59ca5e714f3e77550d77d2229ad64c878905bd3a6b9091ec9a9df9fef4631ba9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/test-evening-program/candidate/oracle.stdout",
+      "bytes": 12,
+      "sha256": "81ea4b954c1a047f782b680e1e61ff82cba138d3501e128b7ccead9d45444345"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/test-evening-program/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/local-pair/candidate/emission/report.json",
+      "bytes": 11249,
+      "sha256": "9616ff943d25232a3915c9ecf55c2490f95497a65439a2db9d6176df8e20328b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/local-pair.bend",
+      "bytes": 8202,
+      "sha256": "acb8a8bc1d8ed6fd5c3a57e08c154042e0524a8d4f3f12ddcec9da75a327e78c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/local-pair/candidate/emission/program.ssa",
+      "bytes": 735639,
+      "sha256": "5ae1a74f8dc4d897dbe5b6c8249dac95741aea2f74b2ca585fafd95d32ae5e2e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/local-pair/candidate/machine/report.json",
+      "bytes": 9391,
+      "sha256": "066c4222d53ac4154d2f772971a9cb86700790244aad91e12e540518ea75e5ea"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/local-pair/candidate/oracle-process.json",
+      "bytes": 987,
+      "sha256": "bcf2e5de3c28410bc36031e3f2e2fbeb25165b5ee0e578928eb2068d6a4dbeea"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/local-pair/candidate/oracle.stdout",
+      "bytes": 17,
+      "sha256": "22c1c28b314618852da577deb41d7abcda5dc9bec2c5f8a4c176d389716400a2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/local-pair/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/local-fold/candidate/emission/report.json",
+      "bytes": 11250,
+      "sha256": "b625345c61f08258ccf4bfbbb381d77584f84214be467ad20928e74621630543"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/local-fold.bend",
+      "bytes": 2737,
+      "sha256": "2252256562cc415348f3aa53c960b318f87c4a8b5fd118a0a2f115d446723125"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/local-fold/candidate/emission/program.ssa",
+      "bytes": 303015,
+      "sha256": "cb6a373e574ba29e709de3421b31ae89f77dbd4b95b8dcdfc2afe0e8b25e8028"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/local-fold/candidate/machine/report.json",
+      "bytes": 9391,
+      "sha256": "be11ce6f3b8d25d0655489cd27b5d650857fdbbb1da5f5eaf14f7a18d0b39ceb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/local-fold/candidate/oracle-process.json",
+      "bytes": 990,
+      "sha256": "bc146b087726b6b7688c8aba126bf4f6f9dfe228e1d5f0af0de7b90615c0d20d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/local-fold/candidate/oracle.stdout",
+      "bytes": 17,
+      "sha256": "5f4df38587f46b697cd3acaa9223fbc9374f39564aac3cad81127b4101040075"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/local-fold/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/scalar-region-0/candidate/emission/report.json",
+      "bytes": 11283,
+      "sha256": "7967f01ea6c7bf70e30ff2dd18124f7438f0cee944d3b96b5a49771a2772b3ae"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/scalar-region-0.bend",
+      "bytes": 3445,
+      "sha256": "4f20060ec4dce1625914d1bca3a6e07390e3b6bffe001a09bae4ac92a386dc2e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/scalar-region-0/candidate/emission/program.ssa",
+      "bytes": 302020,
+      "sha256": "1242bca5050bb0e1dd0bffc7ed6438c829807ccdbf59e0942afac8582176ef63"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/scalar-region-0/candidate/machine/report.json",
+      "bytes": 9486,
+      "sha256": "df78175c9b77f15478d6843acc28ce7d31a06f6d6b6a3e41e61c495ca9d3edc7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/scalar-region-0/candidate/oracle-process.json",
+      "bytes": 1006,
+      "sha256": "ddf92f52aad16582ee4b8d55d5a5eb9e91dd00162a1499f210ddeab5913a1484"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/scalar-region-0/candidate/oracle.stdout",
+      "bytes": 8,
+      "sha256": "23f9df31234d3d531ee815aabbb9966fa2afe6e320c7b067f871e06e2d486594"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/scalar-region-0/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/scalar-region-8192/candidate/emission/report.json",
+      "bytes": 11317,
+      "sha256": "7649540fd0cc2846b10aab37ad4d3711ff4a8fa231ffd1b2d7868b198b66ec84"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/scalar-region-8192.bend",
+      "bytes": 3454,
+      "sha256": "ee300ddfdeda2e89e2f52550ec10d9f22842276cef737fbd19578bed095133f7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/scalar-region-8192/candidate/emission/program.ssa",
+      "bytes": 302038,
+      "sha256": "ee04d47d77bef58ab1e4029298c47b3f9c43c3b1fda3b981b7ed14fdb8f8fbf5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/scalar-region-8192/candidate/machine/report.json",
+      "bytes": 9533,
+      "sha256": "b1088777eb862046c16fa829c4668dc7ff493072f085110681d1a5cdc5b90ab1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/scalar-region-8192/candidate/oracle-process.json",
+      "bytes": 1031,
+      "sha256": "458c3e41ac4765b3b513bc0405086a363051573c739acb680d392b962a8ba281"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/scalar-region-8192/candidate/oracle.stdout",
+      "bytes": 11,
+      "sha256": "9f540bf4c056686ba73d03f5529801960ba2c9d19049eae17c82b01933b80f25"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/scalar-region-8192/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/complete-generic-row32/candidate/emission/report.json",
+      "bytes": 11345,
+      "sha256": "3809e027debd7e39e10e6eaf9768aaa9bad9dee4e506e6aa573483c99a058601"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/complete-generic-row32.bend",
+      "bytes": 9874,
+      "sha256": "10e093925d81b26d82fc5071ef22c4b76dc9e55b3dbb9b47cbbb03110d29aba1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/complete-generic-row32/candidate/emission/program.ssa",
+      "bytes": 748921,
+      "sha256": "7dd91f7d0c4aa44cd090a93ac53372e0b35266e233c3883d9a3b90ddcb167ec6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/complete-generic-row32/candidate/machine/report.json",
+      "bytes": 9623,
+      "sha256": "ee0413e5090d346f060f4b8a65e4a9bcfb74c8e7dd691e47ec16eb3d21e0ec50"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/complete-generic-row32/candidate/oracle-process.json",
+      "bytes": 1027,
+      "sha256": "7982f5ad55c281f06cee7d35858018b041373362ad680d99eed6ca5bd0aad27a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/complete-generic-row32/candidate/oracle.stdout",
+      "bytes": 1085,
+      "sha256": "d032e7d59f9fb3a581f168746de4581ec5a1036e2122cb9eee1cc8b4fa826ba7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/complete-generic-row32/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-editdist-0-17/candidate/emission/report.json",
+      "bytes": 11355,
+      "sha256": "e6961c3b9fe0ac1c0fda1fe424f03a62bc2073da80180a208a766f364079f1d6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-editdist-0-17.bend",
+      "bytes": 7836,
+      "sha256": "04626f081fd3ef709c7d5d7daf4b5ead6262b7b2c792e6fb347c68e4dda3a582"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-editdist-0-17/candidate/emission/program.ssa",
+      "bytes": 729839,
+      "sha256": "606a2f12dbe8d7148958d8b39c3013277c02236fd492b01396a3f55e951f4d92"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-editdist-0-17/candidate/machine/report.json",
+      "bytes": 9657,
+      "sha256": "8d77831f459e8fc6474e16f0ceb2610af50dca747bc1e6d114102efc9d7638a9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-editdist-0-17/candidate/oracle-process.json",
+      "bytes": 1028,
+      "sha256": "8dbfaa47c14b09a9dc29fa2701f66bfd439ea42499f0a8f587c132d723d1941a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-editdist-0-17/candidate/oracle.stdout",
+      "bytes": 16,
+      "sha256": "0bdbe50e254e418f3504833e938b6fd5836273c4031c588407c23182e503a355"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-editdist-0-17/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-editdist-3-123/candidate/emission/report.json",
+      "bytes": 11363,
+      "sha256": "862fa76e4f2fc18624968c9c25fa2aa2e3581e2a31404ce8437fee614611a41a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-editdist-3-123.bend",
+      "bytes": 7839,
+      "sha256": "a4e09e8b7c9a23cf0eb7ab4604993438f97184b5f30c98d693042461349272fd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-editdist-3-123/candidate/emission/program.ssa",
+      "bytes": 729843,
+      "sha256": "081f73c7ce5626c8d5226aa0748ee51ae59ead7d891f226d380ebce89186101b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-editdist-3-123/candidate/machine/report.json",
+      "bytes": 9681,
+      "sha256": "9346dce320fb6a5bc9099e2c1aa85a9cc24196e4cb70086e418ff58c586c7baf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-editdist-3-123/candidate/oracle-process.json",
+      "bytes": 1030,
+      "sha256": "4d8f16496460bd44f2df2c02c6177454db101606b63a4973c3852f951035c61f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-editdist-3-123/candidate/oracle.stdout",
+      "bytes": 17,
+      "sha256": "e95beb57ccdd544cd0240de23ba41281ac805d605159460919dbb1a1440d6eee"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-editdist-3-123/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-lexer-6-17/candidate/emission/report.json",
+      "bytes": 11339,
+      "sha256": "41161f5eb25cad0fc8d5bfdb9e1135ca6cb574a7c5cc748b62210e571b75bfe6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-lexer-6-17.bend",
+      "bytes": 9097,
+      "sha256": "2e3de72111f28e34b22bef4f0433506da55edaaa888d4df0d665d08b41a70887"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-lexer-6-17/candidate/emission/program.ssa",
+      "bytes": 521072,
+      "sha256": "3d70e7ba0a7ac0169d69f203dd5a76034ae10a18fcbbe2d7e31c6aabf73cea88"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-lexer-6-17/candidate/machine/report.json",
+      "bytes": 9597,
+      "sha256": "9f43a75561a0cca0a5585498019073f27e676a1271d8427129d327714ca79ffd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-lexer-6-17/candidate/oracle-process.json",
+      "bytes": 1018,
+      "sha256": "3959d5ad9812faa8f0ce1ecc7dc13534663f4aa33b0226dc782bf2d9bac38511"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-lexer-6-17/candidate/oracle.stdout",
+      "bytes": 17,
+      "sha256": "b7778aafacd36e14c9748567828c556147d2b8c02fb9b76d75d473c1b5db900a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-lexer-6-17/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-lexer-10-123/candidate/emission/report.json",
+      "bytes": 11344,
+      "sha256": "efec92c358ad8a87559d2d7e7dd197ad1e876f34200de24761216353f0b26be0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-lexer-10-123.bend",
+      "bytes": 9101,
+      "sha256": "513ae3729efd7f312c610e9136b7e8f3f2767cbcafe3bd9da2d2f04c92d59139"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-lexer-10-123/candidate/emission/program.ssa",
+      "bytes": 521077,
+      "sha256": "cc077d4d2d1487475a3409f80fdcc290b2ec42e64da333aafc93569a61a5d710"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-lexer-10-123/candidate/machine/report.json",
+      "bytes": 9630,
+      "sha256": "e56b709f87e3bd95736908a7df56f981d69fe0b5237289e9b30da091d11daa35"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-lexer-10-123/candidate/oracle-process.json",
+      "bytes": 1058,
+      "sha256": "c6ba007b2b7b1bca8f341fe272dd71daee92957b0bb72ab16adc0b45cf1b149d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-lexer-10-123/candidate/oracle.stdout",
+      "bytes": 17,
+      "sha256": "fb3e768f0940ca12fd0dbcf0082fad01a2f68f21b52df80b1d1c3d699a5bf418"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-lexer-10-123/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-tree-bitonic-6-17/candidate/emission/report.json",
+      "bytes": 11402,
+      "sha256": "003f8789493d30a8c4595ff43b280831810a087b62f6d623e69f638b13b9a25c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-tree-bitonic-6-17.bend",
+      "bytes": 6596,
+      "sha256": "da4d24d043f90bc7dec87cde76de317e88db22e27d315172eb08567aac8fb3af"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-tree-bitonic-6-17/candidate/emission/program.ssa",
+      "bytes": 394544,
+      "sha256": "dff5e98f012f267005e030a7cff423bea7a752d0ee3c2d24312556c36c375357"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-tree-bitonic-6-17/candidate/machine/report.json",
+      "bytes": 9734,
+      "sha256": "d942b70a141c25a75934fe2a0774ca28a66bcc10fddcf00f2eb43c1c8f043bd1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-tree-bitonic-6-17/candidate/oracle-process.json",
+      "bytes": 1040,
+      "sha256": "c155cd3b58b6985fd67bb1d0efd4d250019392bcfff8e84bd967f81501a9d291"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-tree-bitonic-6-17/candidate/oracle.stdout",
+      "bytes": 17,
+      "sha256": "7ead12f1259581c0775241a9573ca62695b2992aa7af91cc064d2cb658f09203"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-tree-bitonic-6-17/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-tree-bitonic-9-123/candidate/emission/report.json",
+      "bytes": 11399,
+      "sha256": "fa2150fc57456f0f6ecbee91c4c2af30ba34acd31b04103e8cf3034454763ac7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-tree-bitonic-9-123.bend",
+      "bytes": 6598,
+      "sha256": "a641ba273024691024829018b0f494935e2e8c038ae6e8708ed58b410f0171b6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-tree-bitonic-9-123/candidate/emission/program.ssa",
+      "bytes": 394547,
+      "sha256": "c9c1cbaa21f73afa9437d07606f616f73d780163727c80971a015d31da104f6a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-tree-bitonic-9-123/candidate/machine/report.json",
+      "bytes": 9738,
+      "sha256": "712fd9ec5f9402f6ac0e7da5c86580ba6ec2319e430507e623bf75d69afb33dc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-tree-bitonic-9-123/candidate/oracle-process.json",
+      "bytes": 1055,
+      "sha256": "8bec86b90caa2e4bc1117372c7fc487b7e6c7069010a67ec9c92051bfef2ca21"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-tree-bitonic-9-123/candidate/oracle.stdout",
+      "bytes": 17,
+      "sha256": "1a407718a0f8ef6bb85860816942a7b8bd434dc8a0c4faed702453e800f73309"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-tree-bitonic-9-123/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-symreg-4-17/candidate/emission/report.json",
+      "bytes": 11335,
+      "sha256": "b95e6b3f8f6ab85d154a3484cdb1a59c5e7d15527c9c942e6dee3ebfd0088765"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-symreg-4-17.bend",
+      "bytes": 7369,
+      "sha256": "6e2e51bf436713ead1b06822a97d03dc853d1849aaa7749c018ff6db2b8a6400"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-symreg-4-17/candidate/emission/program.ssa",
+      "bytes": 449811,
+      "sha256": "2bfc3c8f91bc5bda2750179b49885fb6e68542751df7a97fff47369f87d7efd8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-symreg-4-17/candidate/machine/report.json",
+      "bytes": 9629,
+      "sha256": "18d5d923e394c67f2579ea4a7823fb0a65fcf7d7b354955c58b8b83df31bc2b8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-symreg-4-17/candidate/oracle-process.json",
+      "bytes": 1022,
+      "sha256": "55fd3bdf22e172820cb75f0d91abdcc32142c75aa114be47949416914e4f3777"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-symreg-4-17/candidate/oracle.stdout",
+      "bytes": 17,
+      "sha256": "a6c7a5f1dfc012f5904b1148a32629583b78cf2c1fbc9f03fc8e6fee03aaaed0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-symreg-4-17/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-symreg-7-123/candidate/emission/report.json",
+      "bytes": 11357,
+      "sha256": "3111982eb17debfa8acd44638a69685f4dd4ef2b7776e1d27a172117a20a7455"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-symreg-7-123.bend",
+      "bytes": 7371,
+      "sha256": "fb8dee79917f21fc6f621cdc8201d33a662ba4505b22d54895e39fd62c363546"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-symreg-7-123/candidate/emission/program.ssa",
+      "bytes": 449814,
+      "sha256": "7e64f2ece66a163d9e4ba856bc7006be175eb8d2777b8bee509706317ffc7078"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-symreg-7-123/candidate/machine/report.json",
+      "bytes": 9629,
+      "sha256": "e1c6ab78edb2f24b50fb31188aa0860127eb364b2a746b654bf47fef628490fb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-symreg-7-123/candidate/oracle-process.json",
+      "bytes": 1025,
+      "sha256": "293bac75726b82adbf562a04c56825075de0c0bd19db80e6da2a17ef0836830e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-symreg-7-123/candidate/oracle.stdout",
+      "bytes": 17,
+      "sha256": "fff86be3125cdbde27a407561bb0ba46b2bb8d76daad5362f2f4991a3a7fe762"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-symreg-7-123/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-local-fold-128-0/candidate/emission/report.json",
+      "bytes": 11378,
+      "sha256": "f4bc2d76e2d3a270c01a354ddce631379f2762f149c501cbfa4c7fe88ae4c34e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-local-fold-128-0.bend",
+      "bytes": 2724,
+      "sha256": "73ce97cc78fd63446fe943dc3b8cc5604d8a95a49ac9b1b6d51853adee583bea"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-local-fold-128-0/candidate/emission/program.ssa",
+      "bytes": 302974,
+      "sha256": "137897217efc00763be10ebff0f3101bc2ac4646af463e0a44d14dd06f5abca7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-local-fold-128-0/candidate/machine/report.json",
+      "bytes": 9710,
+      "sha256": "cd037202695ee057c9a0de7e0269cab6fce3deb34791d1c7fe94ae0473d1935d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-local-fold-128-0/candidate/oracle-process.json",
+      "bytes": 1037,
+      "sha256": "bb77fb4a1740a40bcc00ce4e3c9491c85702435e3c0bd4080d463daf0c0b6b26"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-local-fold-128-0/candidate/oracle.stdout",
+      "bytes": 8,
+      "sha256": "23f9df31234d3d531ee815aabbb9966fa2afe6e320c7b067f871e06e2d486594"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-local-fold-128-0/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-local-fold-8192-123/candidate/emission/report.json",
+      "bytes": 11407,
+      "sha256": "6c105b595e5655d7a70e616f7f20ef0564960f94cf86954b9da0c5d96d8372f6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-local-fold-8192-123.bend",
+      "bytes": 2738,
+      "sha256": "40cd23bfd2931023132a077a33ba1e638ad8870e344ff9310945dc357b5abae5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-local-fold-8192-123/candidate/emission/program.ssa",
+      "bytes": 303014,
+      "sha256": "868fb5a073e5feff018babfa46ec056f48f70fcf834cb92f414b8b86bcb8cd28"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-local-fold-8192-123/candidate/machine/report.json",
+      "bytes": 9788,
+      "sha256": "fdcf72137bf5540242164e1d3cdfe0481f2b729d8f6eaa69866d19367e6670df"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-local-fold-8192-123/candidate/oracle-process.json",
+      "bytes": 1064,
+      "sha256": "97db523eb2c660adffc972c048de44c8b98b935041f9aa105a6ebd77f946b017"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-local-fold-8192-123/candidate/oracle.stdout",
+      "bytes": 16,
+      "sha256": "9a69f933b4d412ea0ac709ed515a40d516b94c27a7060f6d25ed7bf77639ac3f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-local-fold-8192-123/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-mandelbrot-grid-4-7/candidate/emission/report.json",
+      "bytes": 11419,
+      "sha256": "3f05bff1c12ad4c086eef1fc2e90ff44d37e12976383a8304235c15fcc27bc51"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-mandelbrot-grid-4-7.bend",
+      "bytes": 9364,
+      "sha256": "793feefdc1dec5425bddfc1cd50ca0746569b7fc5c327a41edb313125c545846"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-mandelbrot-grid-4-7/candidate/emission/program.ssa",
+      "bytes": 324052,
+      "sha256": "f69b71b46e03711533ee3a35fcc66a88894c2a4d52796572929d27e2447e2d44"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-mandelbrot-grid-4-7/candidate/machine/report.json",
+      "bytes": 9773,
+      "sha256": "0d7ea395c1de1195dff86c81dd09ad2783da9402680fc63e93d44f657759fcf8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-mandelbrot-grid-4-7/candidate/oracle-process.json",
+      "bytes": 1056,
+      "sha256": "29fc4db5fa89dc931d2600a1edbb80e0c9708bc0d303f62c4da48ebab40dae7e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-mandelbrot-grid-4-7/candidate/oracle.stdout",
+      "bytes": 17,
+      "sha256": "468d987158607537d03313601cc998f1bd1d0e41f97c8ee4969d8ad154a95927"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-mandelbrot-grid-4-7/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-mandelbrot-grid-5-31/candidate/emission/report.json",
+      "bytes": 11430,
+      "sha256": "025c81ab4ae565f90ac3c6d0b339980ebf321df19818312b078b8bacd48c438b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-mandelbrot-grid-5-31.bend",
+      "bytes": 9366,
+      "sha256": "898cb66cad62cd20615d3e100ee2638f695efd071ee8290b5e0da03b89f702c4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-mandelbrot-grid-5-31/candidate/emission/program.ssa",
+      "bytes": 324055,
+      "sha256": "0ac6cdd71eec44b8e0d6f11455757a448350eeac9d8a520f8c15a96edca7d0c3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-mandelbrot-grid-5-31/candidate/machine/report.json",
+      "bytes": 9785,
+      "sha256": "6020bc83a6119ea0a3e369f7feaa9df404341a8a5f2baec25904a5f953677112"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-mandelbrot-grid-5-31/candidate/oracle-process.json",
+      "bytes": 1049,
+      "sha256": "4b11a65d8e3d54a7ed696945c45264f921082af060698ee32820eca2b0bf9527"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-mandelbrot-grid-5-31/candidate/oracle.stdout",
+      "bytes": 17,
+      "sha256": "e32800d59c209e76ea65d6371ca4444180050267a0f8f3a8b7b40cb3c354eb7e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-mandelbrot-grid-5-31/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-ray-active-64-2440/candidate/emission/report.json",
+      "bytes": 11401,
+      "sha256": "64fcf9059b0ad5cd5763dda567182f64c32172ef7d8267bcc8b867ddd5973a23"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-ray-active-64-2440.bend",
+      "bytes": 16659,
+      "sha256": "2e01d6027b6b046e38d8c34b4397f5df45f2d912d2f86f273aaa4e3a336f4296"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-ray-active-64-2440/candidate/emission/program.ssa",
+      "bytes": 798319,
+      "sha256": "c2fe92014d268060589b1d021496813f93fd4cfd4cea6e6c74ecff21ba269168"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-ray-active-64-2440/candidate/machine/report.json",
+      "bytes": 9739,
+      "sha256": "8dd344e0b3499674ebe18222f9c932bde1bb6a8c60569ac830f88d4b8fb038a4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-ray-active-64-2440/candidate/oracle-process.json",
+      "bytes": 1047,
+      "sha256": "733f3abe38aa32c20ba0b562bfc75c16e2578a1e7af06ea36ad17d843737f1b9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-ray-active-64-2440/candidate/oracle.stdout",
+      "bytes": 17,
+      "sha256": "9f709c386af73a8be586d854422a152eed6945a85740919e425a3d410f95b99f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-ray-active-64-2440/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-ray-active-256-2240/candidate/emission/report.json",
+      "bytes": 11420,
+      "sha256": "af36b49fa82e7cd03529ed05330dfe7592f34369cd0879b365c5ca68684355ea"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-ray-active-256-2240.bend",
+      "bytes": 16661,
+      "sha256": "7099448e301e2cab7cb5ab47e2a4892dbf44ac246676b4f950282c7a57007669"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-ray-active-256-2240/candidate/emission/program.ssa",
+      "bytes": 798321,
+      "sha256": "285fcc7d8141b04ce633d9f078bd6bbae6e4a414169967c3a6e11494ce17f08c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-ray-active-256-2240/candidate/machine/report.json",
+      "bytes": 9801,
+      "sha256": "2a92534ef6eae779956d0c09a05cc51f3027c274938168c3b9d449dd37413ab5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-ray-active-256-2240/candidate/oracle-process.json",
+      "bytes": 1050,
+      "sha256": "e08a31d3bbc0673ee4b4ce65083b119fc7e3fdd15ea47953c56b5cd22727007e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-ray-active-256-2240/candidate/oracle.stdout",
+      "bytes": 17,
+      "sha256": "8a20750450ddee5376929a7e00bf854aa7194ba1fe06ff734ad6efc479e63ea4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/variation-ray-active-256-2240/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-closures-64/candidate/emission/report.json",
+      "bytes": 11327,
+      "sha256": "ecdb9c52673c380189313be3673baa935a599c697a2741780bad238a3c06a081"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-closures-64.bend",
+      "bytes": 3364,
+      "sha256": "d5a0e144805beec3aafdfa5a5bf0ae1579659caff90d42fc178f0ac17b9db60a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-closures-64/candidate/emission/program.ssa",
+      "bytes": 252583,
+      "sha256": "d5c8383c6a74e46819cc6797bf5b3826e729a637c3fa8c4f518edc055e3e4bad"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-closures-64/candidate/machine/report.json",
+      "bytes": 9596,
+      "sha256": "0b08c052a0d82c02b19d9a6a578e6a3430ac64d118f5b9f07b7ff347fcb49f71"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-closures-64/candidate/oracle-process.json",
+      "bytes": 1034,
+      "sha256": "ed47866b0c8d739ef4fe650a085c5b02f977c7a684c2b0f8bc2eb16d31a09203"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-closures-64/candidate/oracle.stdout",
+      "bytes": 11,
+      "sha256": "5d00e2609769b006421480bfba343fddf5bc4a786d048ac9cec2437d780c3084"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-closures-64/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-closures-256/candidate/emission/report.json",
+      "bytes": 11345,
+      "sha256": "f5b681f3f07275f6fb15bc5498f5bf03c5cb0964a9fe83aa402b2280513f38de"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-closures-256.bend",
+      "bytes": 3369,
+      "sha256": "d0e35c8343fcbe86b45211f7738d293a27a0a5184060e0136b0275fc9556cef4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-closures-256/candidate/emission/program.ssa",
+      "bytes": 252592,
+      "sha256": "99005ec1218061616bd3983d2d01f6f79beabcec94de6164b83cb9d84620b0bf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-closures-256/candidate/machine/report.json",
+      "bytes": 9603,
+      "sha256": "ce3df12e418a6ee506cb75caf7ef2eeb74623597fa94c8a33346f8658a51f70b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-closures-256/candidate/oracle-process.json",
+      "bytes": 1024,
+      "sha256": "dfcaeafbb61b3da817ef097813fe4e477328762226b77cc0b391f17b558033e1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-closures-256/candidate/oracle.stdout",
+      "bytes": 12,
+      "sha256": "7e69447036b70f7ca125b693adc4a2e0f8bede9d4d785087e922f5b8935272ea"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-closures-256/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-list-pipeline-128/candidate/emission/report.json",
+      "bytes": 11380,
+      "sha256": "4cd303f8e19c858e22623c31ba10684edb7271ea76744f75fa992a82c06a44e0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-list-pipeline-128.bend",
+      "bytes": 5223,
+      "sha256": "5a6bb5b6e3e4549ceae238b40485aa6d00facdab6bb8382790a486b165a1cd97"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-list-pipeline-128/candidate/emission/program.ssa",
+      "bytes": 268109,
+      "sha256": "7baf6b803093d36dabf81e42b196bb87dac2d3e050f3c138da9bffeb84a8e68b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-list-pipeline-128/candidate/machine/report.json",
+      "bytes": 9728,
+      "sha256": "63ebe9739a2e2175b982e7442509699ce87e6d030ffabf7e6c1ec27f9a5f65fa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-list-pipeline-128/candidate/oracle-process.json",
+      "bytes": 1039,
+      "sha256": "3bc27b52fc6f88493f7a3965501a61abf9f2d7e24538210fc7191e4522740b2d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-list-pipeline-128/candidate/oracle.stdout",
+      "bytes": 11,
+      "sha256": "3ea200b53df421b043b77ba3b6997a74d57c5e930aa9e6598f77931e586c57b1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-list-pipeline-128/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-list-pipeline-512/candidate/emission/report.json",
+      "bytes": 11382,
+      "sha256": "17b3faa5c0f192d6d229d314d4c3ade7cf78a4d0715eb74d204d7f5af32456a1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-list-pipeline-512.bend",
+      "bytes": 5225,
+      "sha256": "c4eba973b7176ba8a0bc7c07aa69f32c7f8ed8b09fd32d8d3b92fa2a343e0fe9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-list-pipeline-512/candidate/emission/program.ssa",
+      "bytes": 268112,
+      "sha256": "0488c0873b07c9c3b7ccccce2744d17dfd7bae0c3e0deed38fb523c7e4e0c1e2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-list-pipeline-512/candidate/machine/report.json",
+      "bytes": 9748,
+      "sha256": "b7dd90bab8fb1d24d67a74721c0b8e8d5a73ba0a336e9aeadd69d7d7c772b4b8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-list-pipeline-512/candidate/oracle-process.json",
+      "bytes": 1038,
+      "sha256": "a605989d958ba59790a091bedaf8a0564dc821eaca35e4273bd3a21804ecb0d8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-list-pipeline-512/candidate/oracle.stdout",
+      "bytes": 11,
+      "sha256": "a701e50bfa10e9db6a52ee996761048aafda51896e3e1aa37e7da8694b7aa5d9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-list-pipeline-512/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-bst-32/candidate/emission/report.json",
+      "bytes": 11293,
+      "sha256": "c0cbf9c0a8ec1e93c3745272db4a832bcdec39910db2d46a92373b85faecee67"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-bst-32.bend",
+      "bytes": 5027,
+      "sha256": "5b2e60b5e1435882bcdd25329194073c64df8d88d21f98ba2c3290384738c1c2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-bst-32/candidate/emission/program.ssa",
+      "bytes": 327829,
+      "sha256": "9f95334f6c487a55282f8aeb189c71d576e63e2ade53e206f00dd63b6d988945"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-bst-32/candidate/machine/report.json",
+      "bytes": 9523,
+      "sha256": "90a84e0edae59356d35a08dbb2c718f7a3686824b1417381d1484c3ff714fbff"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-bst-32/candidate/oracle-process.json",
+      "bytes": 1004,
+      "sha256": "6408c1f85c40ead090ae5526569837d72113fb64f91f20159c6df24056e53abd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-bst-32/candidate/oracle.stdout",
+      "bytes": 17,
+      "sha256": "48825922c90451700e638d3329bbc599fee9df057b627f980087eadeb21807b9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-bst-32/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-bst-64/candidate/emission/report.json",
+      "bytes": 11282,
+      "sha256": "f32a3049762b7d7af00674d1d74c1dff22508d11e1cc17c97ca546c05f445197"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-bst-64.bend",
+      "bytes": 5028,
+      "sha256": "474ffc3a68c1fcd4947cfe49fe117c15aae0a66dab99ed50d6c17bfcf6563d65"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-bst-64/candidate/emission/program.ssa",
+      "bytes": 327831,
+      "sha256": "253496c7913652134024f4edbdb60f73c7006020b3a8550ce3714f587c01d24c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-bst-64/candidate/machine/report.json",
+      "bytes": 9483,
+      "sha256": "23ac63ac126ff495c7fe20fa892710211278aae2090e9c72852c8f0c8086c56b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-bst-64/candidate/oracle-process.json",
+      "bytes": 1006,
+      "sha256": "632cff71b1b9d18e30fa56dfb90904e24e068f659130f6ee7301fc65d1d62b23"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-bst-64/candidate/oracle.stdout",
+      "bytes": 16,
+      "sha256": "512d44229f5111afe14556bc6ec8334854fec204ad70719915b6a597a8392201"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-bst-64/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-unicode-text-16/candidate/emission/report.json",
+      "bytes": 11363,
+      "sha256": "cd5b14f9bd2cd6268b6e1fca9ffe3cd7b55659a908d1886a0294902df4cf280a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-unicode-text-16.bend",
+      "bytes": 7528,
+      "sha256": "1e44705513750680563a8939e46120e4fbb5e9ffbfabe1f3d22b773a6eada3c5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-unicode-text-16/candidate/emission/program.ssa",
+      "bytes": 324461,
+      "sha256": "91dc36e94e7f3fa005dd8e06c4d0339b80ee893c7d6998db121a611a12c0b17d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-unicode-text-16/candidate/machine/report.json",
+      "bytes": 9668,
+      "sha256": "f456917a78d3c47ebd449089e39708c6af5f45b96f026b5d5640c8139f10d086"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-unicode-text-16/candidate/oracle-process.json",
+      "bytes": 1033,
+      "sha256": "107b7023d04d59286ae9fefea10f88bdf283585e263ded301214e1e1b3da6639"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-unicode-text-16/candidate/oracle.stdout",
+      "bytes": 295,
+      "sha256": "ecab3df32cf944aa47a6f9eabb61f7755d068b98ef41745a4ea631ded37174f7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-unicode-text-16/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-unicode-text-64/candidate/emission/report.json",
+      "bytes": 11374,
+      "sha256": "cf2ab092fad6ea31c81b648536fa2df348350624016a379d5fe8556e45e41fe9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-unicode-text-64.bend",
+      "bytes": 8458,
+      "sha256": "49a53fc745be33a8237b1b48f3175dbba4e20c76549374253520ae39f6b894bf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-unicode-text-64/candidate/emission/program.ssa",
+      "bytes": 341713,
+      "sha256": "41a598c78ede9932f136cd2b3f3ac9c246c80732a64bee6b12a8f5deb9dc08c9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-unicode-text-64/candidate/machine/report.json",
+      "bytes": 9701,
+      "sha256": "adfec5e2edb8bcda9533f193947ed1d0bde2dd583c0f63072b69209686a4d44e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-unicode-text-64/candidate/oracle-process.json",
+      "bytes": 1035,
+      "sha256": "8b194c932c5a7c1a88483c511b43baa1d75d13ce497b36d6d024bbcd1c63d0ea"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-unicode-text-64/candidate/oracle.stdout",
+      "bytes": 1223,
+      "sha256": "8ceb92c94277bd72c14d5eddc76ce07bcbec43b8e2038794b6fff708c8003f55"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-unicode-text-64/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-expression-32/candidate/emission/report.json",
+      "bytes": 11356,
+      "sha256": "9b029fb2188429887833bccd3e73c5e45ec4ac293099af16ff1719096cc587cc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-expression-32.bend",
+      "bytes": 3497,
+      "sha256": "e1667f5fb6802cda5d062bf0bb97c3f5057fc3ab02d4cd5778e9198cd1439998"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-expression-32/candidate/emission/program.ssa",
+      "bytes": 300570,
+      "sha256": "3a26ab5c01b52559c5d865e9a3b473493c86b392e0f135d9b7e3c48d13164c34"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-expression-32/candidate/machine/report.json",
+      "bytes": 9635,
+      "sha256": "74bca2fa8e8c31717a7237ab7c3bce7e39bee2ddeaf55f442133077c04019478"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-expression-32/candidate/oracle-process.json",
+      "bytes": 1038,
+      "sha256": "e68dd30b8207a7cf20a776b6fa54ad704781900e7a6c3b4c0e313bb2046363fa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-expression-32/candidate/oracle.stdout",
+      "bytes": 14,
+      "sha256": "045489bf0baeb53bc601ef09b1fd7737177b6eee489dcb70169811d0362427a0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-expression-32/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-expression-128/candidate/emission/report.json",
+      "bytes": 11350,
+      "sha256": "f3c6934a3faef9ce6c420c74fd9b7c11cb016e28ac3759fb297bfe70833c2b01"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-expression-128.bend",
+      "bytes": 3504,
+      "sha256": "32ae9cc5bdaeff023b08403b357b7e8a3f03e06d37c461feb4a8930ad51c5a2c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-expression-128/candidate/emission/program.ssa",
+      "bytes": 300578,
+      "sha256": "6871b081bbdd931e13822f14aabb526c0c4e32220b1ab62fa580aed510333937"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-expression-128/candidate/machine/report.json",
+      "bytes": 9707,
+      "sha256": "52476456f7528b0b04030beb1b031225a1983f3e7ae31e742b0d0adabdd4f5db"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-expression-128/candidate/oracle-process.json",
+      "bytes": 1044,
+      "sha256": "b4ec554925ecca382570b3e4510a834c0093adb888f2180970e6ee90ed1cd00e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-expression-128/candidate/oracle.stdout",
+      "bytes": 17,
+      "sha256": "19826988e9a652d347296f4577655c9450c870e033b7bf1d70a8aa095c752753"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-expression-128/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-map-churn-32/candidate/emission/report.json",
+      "bytes": 11347,
+      "sha256": "ce4d01dbd97c6c3261178386d16d72a769677ac834210d64d8563159d7b788a0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-map-churn-32.bend",
+      "bytes": 3655,
+      "sha256": "ada0bc78c19c9ed252c779190144fa1155d2ff44fa12602166429140238870d9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-map-churn-32/candidate/emission/program.ssa",
+      "bytes": 1047192,
+      "sha256": "b7a75315b5dda703b2ead22092682ece015b9e5d1545c014eb883edf4a7ed99f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-map-churn-32/candidate/machine/report.json",
+      "bytes": 9627,
+      "sha256": "d31bd8eac24433f99a68ea4cd2a8ec20dcf4efc4b84fee238a914f4a8ea88ac8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-map-churn-32/candidate/oracle-process.json",
+      "bytes": 1037,
+      "sha256": "4d06a0ecfb33e62433548e7fd107125668161483b0f9555a5f83b7f8d79ed621"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-map-churn-32/candidate/oracle.stdout",
+      "bytes": 17,
+      "sha256": "a7bb9da0f9c06dae0af915f7a17a4c6753010e63d1d69ffb3dabdc7c96c8ec70"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-map-churn-32/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-map-churn-128/candidate/emission/report.json",
+      "bytes": 11370,
+      "sha256": "880932fe4e91c0c96000d020c4fffb0164190666385cce33d385c48628a1c5ca"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-map-churn-128.bend",
+      "bytes": 3659,
+      "sha256": "cd22c831c180c0de12d84aeb80debf4881d08cbd18fcf8f6d634153fba2feb03"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-map-churn-128/candidate/emission/program.ssa",
+      "bytes": 1047197,
+      "sha256": "f2f076204850d6a339f70a031d60bf6751aeaff0d1d4a867a04518c80bff752a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-map-churn-128/candidate/machine/report.json",
+      "bytes": 9643,
+      "sha256": "a83d8bda36150a5fc6adea80533ccfae31656a1d7b644c78cdd60e7618c58d6a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-map-churn-128/candidate/oracle-process.json",
+      "bytes": 1028,
+      "sha256": "c9f8f60a66ab9f1af87dbbc1e76e368533dd7a94820b743b8df88c5e577fe2a4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-map-churn-128/candidate/oracle.stdout",
+      "bytes": 17,
+      "sha256": "645984e7a6ed8fb4470344af6023d31fd62885d583df505083d7d2d0ec9df75c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-map-churn-128/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-numeric-recurrence-256/candidate/emission/report.json",
+      "bytes": 11427,
+      "sha256": "1684c3cfa0f3effd8e4d605af591e49246d92e421cabca404efbbe7a2e59e01b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-numeric-recurrence-256.bend",
+      "bytes": 2510,
+      "sha256": "4b9a0ee2ab80c844b74e44e5ce94d17669e70ed5d8f6da3cebe7354e1db9f293"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-numeric-recurrence-256/candidate/emission/program.ssa",
+      "bytes": 263638,
+      "sha256": "868993145710c314449e0cc9aa00f666d558c2a0dd37a5d45324dec779600443"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-numeric-recurrence-256/candidate/machine/report.json",
+      "bytes": 9838,
+      "sha256": "a6378897121e084a7e9ae81b346adbef6839330f1bc33c2b83928b710efecbe9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-numeric-recurrence-256/candidate/oracle-process.json",
+      "bytes": 1066,
+      "sha256": "a612314f60ce1b3efd256e4fb81300ec514381bd3312a6dc51f5d266e43cbb16"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-numeric-recurrence-256/candidate/oracle.stdout",
+      "bytes": 17,
+      "sha256": "fe267e6e98a4d3eaee4645936eae29a5773b4fce1b673b73e3c2c37a64af389c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-numeric-recurrence-256/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-numeric-recurrence-1024/candidate/emission/report.json",
+      "bytes": 11433,
+      "sha256": "d70f81e8e114f695d2aec18a08981281d5e611f9903fa8d135cab08dc310976f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-numeric-recurrence-1024.bend",
+      "bytes": 2514,
+      "sha256": "39c7c7be54d5a47b6042b0d8f70b124610ea5a2fee28866d85599b7f0f5bbb46"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-numeric-recurrence-1024/candidate/emission/program.ssa",
+      "bytes": 263643,
+      "sha256": "c85f4e0c4086a365b20f2c05eb2978046f626dddf8cacbebf63043c3493a94f5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-numeric-recurrence-1024/candidate/machine/report.json",
+      "bytes": 9837,
+      "sha256": "ce1d40531b3c6465c083cced4e816990911c56b3b02da779a6054c6f40c1059d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-numeric-recurrence-1024/candidate/oracle-process.json",
+      "bytes": 1057,
+      "sha256": "8de85a4212245afd70d144a0cc15d17387d0861f5c4008b76cf97c745f763f9e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-numeric-recurrence-1024/candidate/oracle.stdout",
+      "bytes": 17,
+      "sha256": "b428da212c891618730c4b96e7f50bd82c820bb211049bab2b7fa807697e1b3b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-numeric-recurrence-1024/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-record-aggregation-64/candidate/emission/report.json",
+      "bytes": 11430,
+      "sha256": "11f60814a063e724479a29ae26d75e2ab2d8700e6f0af441afb1aff7de2c080f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-record-aggregation-64.bend",
+      "bytes": 3802,
+      "sha256": "36ad15032712bd62a88a3fae13105880db1a0ecde3fc98e43791c4f21876c2c9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-record-aggregation-64/candidate/emission/program.ssa",
+      "bytes": 1031979,
+      "sha256": "ad42b80963be0fcfdd95dcad1898c12af7d89d2f31b6bc629ce3d2ab3eaed892"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-record-aggregation-64/candidate/machine/report.json",
+      "bytes": 9784,
+      "sha256": "3ccd7005f7d72ec1efd9a59610a2478f6e81f530b16956f1904365420de135cf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-record-aggregation-64/candidate/oracle-process.json",
+      "bytes": 1050,
+      "sha256": "68c90950e2e5ff6cf9f4ee16ca1c28efb2792fb5a4ded932f461016b0cb3407f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-record-aggregation-64/candidate/oracle.stdout",
+      "bytes": 221,
+      "sha256": "ff89c2516873966af0ad42956ab4ea2abc2f0ff97a6dc0c9fec87cce314a4a86"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-record-aggregation-64/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-record-aggregation-256/candidate/emission/report.json",
+      "bytes": 11428,
+      "sha256": "ad8975c610610a0532a8a221e8d765a0253127bdfc62b1d16a479c1455e89e18"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-record-aggregation-256.bend",
+      "bytes": 3806,
+      "sha256": "eb5841e7f516d2f87ef8028f83a902390c4aab439875207448ffa4c4d5c28bc1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-record-aggregation-256/candidate/emission/program.ssa",
+      "bytes": 1031984,
+      "sha256": "6d7fadb15b874d3d2b23f734f5792f1dc88155eae2c2d67233e705d37ec75713"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-record-aggregation-256/candidate/machine/report.json",
+      "bytes": 9829,
+      "sha256": "4f6e9e60fdb53ad045d06fe61799427bde1d3038e19e709e34258023c492c6ab"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-record-aggregation-256/candidate/oracle-process.json",
+      "bytes": 1055,
+      "sha256": "c4db01cdd3754114e9fdb3b8b4dc649e67edece8731a94623de09deefff5522b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-record-aggregation-256/candidate/oracle.stdout",
+      "bytes": 221,
+      "sha256": "bb303e764d14852d720f3e64e22031d11f5901072d8e320f8cebe4ffc03f17f5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase169/quality-remaining-native01/coverage-record-aggregation-256/candidate/oracle.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/manifests/assets-native.json",
+      "bytes": 18715,
+      "sha256": "e1b0d32addd09c80b8b791dd74c5bcdc93cb1e5183b115b2d1b37231ad96125e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/common.py",
+      "bytes": 4809,
+      "sha256": "d9a16fef18cf936499e51f8c7f36a653f2921ef9a50f846257c2e8bc460ec6d1"
+    },
+    {
+      "file": "/usr/bin/python3.9",
+      "bytes": 5451288,
+      "sha256": "ca7655083b581ffe36c72dcb445857704db533ca39b03f79c97d8d0ef3bef9af"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native-n2/program",
+      "bytes": 16140352,
+      "sha256": "88be8d8627ed84f5cf4ebb84bafa96c890b074fa49803056d6fd8a52fd8aaa02"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native-n2/report.json",
+      "bytes": 19111,
+      "sha256": "5672432ccb4761954c153c7b95b41c9b576ad0eaa610da216cdaf6fc40acff59"
+    }
+  ],
+  "scope": "Whole QBE identity on exact timed wrapper sources with unchanged target runtime/toolchain. Prior runtime evidence applies to those products; no new timing, unrestricted conformance or compiler-speed claim.",
+  "changedInputs": [],
+  "seconds": 54.87467151414603
+}

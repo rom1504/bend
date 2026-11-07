@@ -17,9 +17,12 @@ A = C.A
 which = sys.argv[1] if len(sys.argv) == 2 else 'phase140'
 reviewed = {'phase140':'3739ce753eb9836e891cc9e4550f4af65ac9d2a75a3d8c0aaba175c4898ef6a7',
             'phase102':'233312656791efe9d3483947891ac17c61901ddca6e436a60b394f938088bc30',
-            'own':'fa6ee5f9d23ea2956670c03baf1eb2a99e4dd193ce0e350967845b592988b7bc'}
+            'own':'fa6ee5f9d23ea2956670c03baf1eb2a99e4dd193ce0e350967845b592988b7bc',
+            'own-combined':'0bfd87afea97018d1d01ca71a378609e13c04116801fdf3396ee723086009f79'}
 A.need(which in reviewed, 'Only explicitly reviewed proposals are admitted')
-proposal = ROOT/('experiments/phase175/storage-own-native-intermediates.json' if which=='own' else 'experiments/phase175/storage-emergency-'+which+'.json')
+proposal = ROOT/({'own':'experiments/phase175/storage-own-native-intermediates.json',
+                  'own-combined':'experiments/phase175/storage-own-combined.json'}.get(which,
+                  'experiments/phase175/storage-emergency-'+which+'.json'))
 expected = reviewed[which]
 A.need(A.pin(proposal)['sha256'] == expected, 'Unreviewed proposal')
 plan = json.loads(proposal.read_text())
@@ -54,7 +57,7 @@ for item in plan['roots']:
             A.need(path.relative_to(root).as_posix() == selected['member'], 'Member/path mismatch')
             A.need((which == 'phase140' and (path.name == 'payload.bin' or path.suffix == '.frames')) or
                    (which == 'phase102' and path.name == 'child.json') or
-                   (which == 'own' and path.name in ['program.s','program.o']), 'Unexpected file category')
+                   (which in ['own','own-combined'] and path.name in ['program.s','program.o']), 'Unexpected file category')
             A.need(A.metadata(path) == selected['metadata'], 'Changed metadata')
             identity = {k:selected[k] for k in ['bytes', 'sha256']}
             A.need(identity['bytes'] <= plan['memberCapBytes'], 'Member cap')

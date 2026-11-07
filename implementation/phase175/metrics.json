@@ -1,10 +1,10 @@
 {
-  "kind": "phase175-provisional-metrics",
+  "kind": "phase175-metrics",
   "version": 1,
-  "status": "in-progress",
-  "complete": false,
+  "status": "complete-integrated-installed-unchanged",
+  "complete": true,
   "installedUnchanged": true,
-  "maintainedSourceUnchanged": true,
+  "maintainedSourceUnchanged": false,
   "startRevision": "0d12402",
   "canonicalSource": {
     "bytes": 3161409,
@@ -738,23 +738,19 @@
   },
   "evidenceIndex": {
     "file": "implementation/phase175/evidence-index.json",
-    "bytes": 35055,
-    "sha256": "cfacc65130b3fc81b6dc5c6fe9fb0c903f5d181ebb5fa90fb079d56675f2f05e"
+    "bytes": 42286,
+    "sha256": "f8670cefc0634ccd42b69b2940713990bbe0ed2071e1b3ad227386d0b564bb44"
   },
-  "pending": [
-    "full candidate native image qualification",
-    "full compiler fixed-source cold build",
-    "generated QBE identity/runtime quality gate",
-    "same-source C execution comparison",
-    "integration/default promotion if justified"
-  ],
+  "pending": [],
   "claims": {
-    "newColdSelfBuildSpeedup": false,
+    "newColdSelfBuildSpeedup": true,
     "newUpstreamParity": false,
     "newGeneratedProgramRuntimeScore": false,
-    "newNativeQualification": false,
+    "newNativeQualification": true,
     "compilerCorrectnessProof": false,
-    "combinedFrontendComponentImprovement": true
+    "combinedFrontendComponentImprovement": true,
+    "native64FiniteGate": true,
+    "qbeProductIdentity45": true
   },
   "scope": "Frontend component experiments and reduced diagnostic-image acquisition. One ordered pair per parse candidate; other full-frontend observations are separate screens. Digest cost is separately reported and does not establish full-value equality. This draft is not a final phase close.",
   "pairedFrontend": {
@@ -1041,11 +1037,548 @@
   "retainedEvidence": {
     "index": {
       "file": "implementation/phase175/evidence/index.json",
-      "bytes": 76403,
-      "sha256": "9b729cd0370fb65fccf2af475bb6eaab3d212b9cf5be5ebc96b5e1f587170e32"
+      "bytes": 90089,
+      "sha256": "e60bcb7fec52d7851dcb136cb7ba275b834f33cf788f324c9afdeba3c1d0067d"
     },
-    "files": 166,
-    "bytes": 937875,
+    "files": 197,
+    "bytes": 1402310,
     "scope": "Lossless copies of finished compact result/guard/value receipts and selected diagnostics. Original absolute artifact references remain unchanged. Large sources, compiler images, generated IR and large source-operation manifests remain local and are not included. This is evidence retention, not a self-contained reproduction capsule."
-  }
+  },
+  "candidateSourceNativeAcquisition": {
+    "complete": true,
+    "sameTargetSource": true,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-source01/compiler.bend",
+      "bytes": 3163584,
+      "sha256": "a0e953a84de73aa22403dde7ec2144540197633857a0f7b5b9784f9e66f5ad04"
+    },
+    "runs": [
+      {
+        "name": "full-native-n1",
+        "receipt": {
+          "file": "selfhost/build/phase175/full-native-n1/report.json",
+          "bytes": 17421,
+          "sha256": "0a1b9654b160b53cf14938a8cec4b8b462aa38d9302944bba4aa205fb0881e27"
+        },
+        "retainedReceipt": {
+          "file": "implementation/phase175/evidence/full-native-n1/report.json",
+          "bytes": 17421,
+          "sha256": "0a1b9654b160b53cf14938a8cec4b8b462aa38d9302944bba4aa205fb0881e27"
+        },
+        "guard": {
+          "file": "selfhost/build/phase175/full-native-n1-guard/process.json",
+          "bytes": 2756,
+          "sha256": "9df12f995dbab3f5d4ce3c7c65e61927a6a64718d42fcef332cbb1f5756093a3"
+        },
+        "wallSeconds": 188.62712296191603,
+        "emitAndQbeSeconds": 183.2861250480637,
+        "guardWallSeconds": 189.01322772400454,
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-source01/compiler.bend",
+          "bytes": 3163584,
+          "sha256": "a0e953a84de73aa22403dde7ec2144540197633857a0f7b5b9784f9e66f5ad04"
+        },
+        "producer": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/bend",
+          "bytes": 16122328,
+          "sha256": "8214b3f3400b0d0bead3ef137e6d8b75b8c8b18f6da012dfa4673e4468d9f2ac"
+        },
+        "producerMetadataStage": "N2",
+        "irDigest": {
+          "bytes": 98149013,
+          "sha256": "a52b5adeabcc3201a239bb4a8c4a07597a477fee5103fe1634f83c69cbe98644"
+        },
+        "assembly": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native-n1/program.s",
+          "bytes": 73713271,
+          "sha256": "65876e920a3704e266dcd16ce2350bdf6f2aa2d5a6828010cf2495aa34333e24"
+        },
+        "object": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native-n1/program.o",
+          "bytes": 20977848,
+          "sha256": "44ae8100a8dc995c49f2caf157186007d90c18ee6009814f1a43d7b3a0741cf2"
+        },
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native-n1/program",
+          "bytes": 16140352,
+          "sha256": "cd78bd5d4000fbeecc907cd65b33502ee5cd5fcb1fef898bcf947d67cf3d6dda"
+        },
+        "retainedIR": true,
+        "expectedQbe": null,
+        "comparedToReference": false,
+        "changedInputs": []
+      },
+      {
+        "name": "full-native-n2",
+        "receipt": {
+          "file": "selfhost/build/phase175/full-native-n2/report.json",
+          "bytes": 19111,
+          "sha256": "5672432ccb4761954c153c7b95b41c9b576ad0eaa610da216cdaf6fc40acff59"
+        },
+        "retainedReceipt": {
+          "file": "implementation/phase175/evidence/full-native-n2/report.json",
+          "bytes": 19111,
+          "sha256": "5672432ccb4761954c153c7b95b41c9b576ad0eaa610da216cdaf6fc40acff59"
+        },
+        "guard": {
+          "file": "selfhost/build/phase175/full-native-n2-guard/process.json",
+          "bytes": 3621,
+          "sha256": "6745d88060788f63b40ed11cec796c8aedfa4dcc3a0d1d6c3e84317a584a13c5"
+        },
+        "wallSeconds": 180.58277012920007,
+        "emitAndQbeSeconds": 174.60591251030564,
+        "guardWallSeconds": 182.37453754991293,
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-source01/compiler.bend",
+          "bytes": 3163584,
+          "sha256": "a0e953a84de73aa22403dde7ec2144540197633857a0f7b5b9784f9e66f5ad04"
+        },
+        "producer": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native-n1/program",
+          "bytes": 16140352,
+          "sha256": "cd78bd5d4000fbeecc907cd65b33502ee5cd5fcb1fef898bcf947d67cf3d6dda"
+        },
+        "producerMetadataStage": "N1",
+        "irDigest": {
+          "bytes": 98149013,
+          "sha256": "a52b5adeabcc3201a239bb4a8c4a07597a477fee5103fe1634f83c69cbe98644"
+        },
+        "assembly": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native-n2/program.s",
+          "bytes": 73713271,
+          "sha256": "65876e920a3704e266dcd16ce2350bdf6f2aa2d5a6828010cf2495aa34333e24"
+        },
+        "object": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native-n2/program.o",
+          "bytes": 20977848,
+          "sha256": "44ae8100a8dc995c49f2caf157186007d90c18ee6009814f1a43d7b3a0741cf2"
+        },
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native-n2/program",
+          "bytes": 16140352,
+          "sha256": "88be8d8627ed84f5cf4ebb84bafa96c890b074fa49803056d6fd8a52fd8aaa02"
+        },
+        "retainedIR": false,
+        "expectedQbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native-n1/program.ssa",
+          "bytes": 98149013,
+          "sha256": "a52b5adeabcc3201a239bb4a8c4a07597a477fee5103fe1634f83c69cbe98644"
+        },
+        "comparedToReference": true,
+        "changedInputs": []
+      }
+    ],
+    "elapsedRatioN2ToN1": 0.9573531488664008,
+    "elapsedReductionFraction": 0.04264685113359923,
+    "absoluteSecondsSaved": 8.044352832715958,
+    "sameQBE": true,
+    "sameAssembly": true,
+    "sameObject": true,
+    "sameELF": false,
+    "elfDifferenceAudit": {
+      "receipt": {
+        "file": "experiments/phase175/elf-audit.json",
+        "bytes": 15294,
+        "sha256": "1583a3369f87caa0d4a6ec8d1ac919c8939e774d0a51b19a89e189ab5e9414f9"
+      },
+      "wholeELFEqual": false,
+      "loadedSegmentsEqual": true,
+      "allocatedSectionsEqual": true,
+      "compiledCodeDataEqual": true,
+      "differentBytes": 1,
+      "difference": "Nonloaded .strtab STT_FILE source-object pathname at file offset12414840 changes ASCII1 to2. All mapped bytes, layout, headers, raw symbols, remaining string table and padding exact.",
+      "scope": "Static artifact identity for this pair, not universal observational equivalence or independent semantic qualification."
+    },
+    "scope": "Same Phase175 candidate source acquired first by installed compiler, then by generated N1. Not the frozen Phase170 input benchmark. Two sequential acquisitions, not a balanced repeated pair; N1 retains IR, N2 does not and adds expected-QBE checking. No isolated throughput, final native qualification or installed promotion claim."
+  },
+  "retentionMethod": {
+    "file": "implementation/phase175/retain-evidence.py",
+    "bytes": 4478,
+    "sha256": "6111e5e517c0ab54fab451ad2998b6b677d7637cafa40bdae9d7fa5ac6b5d171"
+  },
+  "costCensus": {
+    "file": "implementation/phase175/cost-census.json",
+    "bytes": 43976,
+    "sha256": "7d8b52672cdc810b2a930a2c894f1c21a52f14061c7e0c3c7458a991fb790a81"
+  },
+  "nativeQ3Reproduction": {
+    "receipt": {
+      "file": "selfhost/build/phase175/full-native-q3/report.json",
+      "bytes": 11642,
+      "sha256": "5f0bc5ef98e7f338ed53a2e0e79b4152e39715657575053a3f4dfcd68dfa14c6"
+    },
+    "retainedReceipt": {
+      "file": "implementation/phase175/evidence/full-native-q3/report.json",
+      "bytes": 11642,
+      "sha256": "5f0bc5ef98e7f338ed53a2e0e79b4152e39715657575053a3f4dfcd68dfa14c6"
+    },
+    "complete": true,
+    "nativeSeconds": 157.0066735097207,
+    "totalSeconds": 158.25384475430474,
+    "byteExact": true,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-source01/compiler.bend",
+      "bytes": 3163584,
+      "sha256": "a0e953a84de73aa22403dde7ec2144540197633857a0f7b5b9784f9e66f5ad04"
+    },
+    "producer": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native-n2/program",
+      "bytes": 16140352,
+      "sha256": "88be8d8627ed84f5cf4ebb84bafa96c890b074fa49803056d6fd8a52fd8aaa02"
+    },
+    "product": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native-q3/program.ssa",
+      "bytes": 98149013,
+      "sha256": "a52b5adeabcc3201a239bb4a8c4a07597a477fee5103fe1634f83c69cbe98644"
+    },
+    "scope": "N2 emits the same candidate-source QBE as N1/N2. Emission only, no new QBE machine construction; do not compare this157s component with full180s acquisition."
+  },
+  "nativeCorrectness": {
+    "receipt": {
+      "file": "selfhost/build/phase175/full-native64/report.json",
+      "bytes": 105731,
+      "sha256": "b6635ebac5c98cdfa3a4689efa6e43a3c342873402d16ee8a99349af42b2d4fa"
+    },
+    "retainedReceipt": {
+      "file": "implementation/phase175/evidence/full-native64/report.json",
+      "bytes": 105731,
+      "sha256": "b6635ebac5c98cdfa3a4689efa6e43a3c342873402d16ee8a99349af42b2d4fa"
+    },
+    "complete": true,
+    "passed": true,
+    "counts": {
+      "pass": 64,
+      "fail": 0,
+      "unsupported": 0
+    },
+    "fullConformance": false,
+    "seconds": 67.27287198696285,
+    "image": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native-n2/program",
+      "bytes": 16140352,
+      "sha256": "88be8d8627ed84f5cf4ebb84bafa96c890b074fa49803056d6fd8a52fd8aaa02"
+    },
+    "scope": "Focused19/broad45 regression sources with retained independent whole-output oracles. No performance, kernel-proof, unrestricted-provider, GPU or multi-mutator qualification."
+  },
+  "generatedProgramPreservation": {
+    "receipt": {
+      "file": "selfhost/build/phase175/timed-products45/report.json",
+      "bytes": 140291,
+      "sha256": "4cc439fe57036e59b679f7113ea11ffe0d33fced59fe02a909955bbd1b28329e"
+    },
+    "retainedReceipt": {
+      "file": "implementation/phase175/evidence/timed-products45/report.json",
+      "bytes": 140291,
+      "sha256": "4cc439fe57036e59b679f7113ea11ffe0d33fced59fe02a909955bbd1b28329e"
+    },
+    "complete": true,
+    "count": 45,
+    "completeCount": 45,
+    "seconds": 54.87467151414603,
+    "image": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native-n2/program",
+      "bytes": 16140352,
+      "sha256": "88be8d8627ed84f5cf4ebb84bafa96c890b074fa49803056d6fd8a52fd8aaa02"
+    },
+    "machinePolicy": {
+      "runtime": {
+        "bytes": 119096,
+        "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+      },
+      "runtimePolicy": {
+        "threads": 1,
+        "gpu": "off",
+        "bendHeapMutators": 1,
+        "hostIoWorkersAllowed": true,
+        "providerScope": "Pinned direct-QBE foreign provider table; no arbitrary C embedding or foreign callbacks."
+      },
+      "toolchain": {
+        "target": "amd64_sysv",
+        "assemblerFlags": [
+          "-mbranches-within-32B-boundaries"
+        ],
+        "linkerFlags": [
+          "-no-pie"
+        ],
+        "libraries": [
+          "-pthread",
+          "-lm"
+        ]
+      },
+      "tools": {
+        "qbe": {
+          "bytes": 262024,
+          "sha256": "1eca24288f9574ad57032ac88f11c3f74ced605838749226d77a9acd4443e5f4"
+        },
+        "assemble": {
+          "bytes": 472248,
+          "sha256": "fac4e966afe9223dbab23aa15d27d144af81de4a44c8cad97c1dde290adb9493"
+        },
+        "link": {
+          "bytes": 817704,
+          "sha256": "693abcb42e67fb871673f258a3644257ca69a209691ec4d8137a42442834bd19"
+        }
+      }
+    },
+    "scope": "Whole QBE identity on exact timed wrapper sources with unchanged target runtime/toolchain. Prior runtime evidence applies to those products; no new timing, unrestricted conformance or compiler-speed claim."
+  },
+  "frozenSourceBuild": {
+    "status": "complete one same-policy candidate-first pair",
+    "candidate": {
+      "receipt": {
+        "file": "selfhost/build/phase175/fixed-candidate02/report.json",
+        "bytes": 17939,
+        "sha256": "519ec508873fbac5066ef81867944699677c6fed1d488a20b7cf4bdf25e795a4"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/fixed-candidate02/report.json",
+        "bytes": 17939,
+        "sha256": "519ec508873fbac5066ef81867944699677c6fed1d488a20b7cf4bdf25e795a4"
+      },
+      "wallSeconds": 178.93721645511687,
+      "emitAndQbeSeconds": 173.0573082291521,
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/source-final/compiler.bend",
+        "bytes": 3150535,
+        "sha256": "434edd1d56128f9480800573abf8a0ae21d910a547837af089f25cd1d0e89b71"
+      },
+      "image": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native-n2/program",
+        "bytes": 16140352,
+        "sha256": "88be8d8627ed84f5cf4ebb84bafa96c890b074fa49803056d6fd8a52fd8aaa02"
+      },
+      "retainIR": false,
+      "expectedQbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/native-chain-final/n2/program.ssa",
+        "bytes": 97488970,
+        "sha256": "661b62664acdac83d12bc3192b5f9113a2bb946dd331433e64ca0452f6f83850"
+      },
+      "comparedToReference": true,
+      "irDigest": {
+        "bytes": 97488970,
+        "sha256": "661b62664acdac83d12bc3192b5f9113a2bb946dd331433e64ca0452f6f83850"
+      },
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/fixed-candidate02/program.s",
+        "bytes": 73216845,
+        "sha256": "5309933dce7c965ed0de8c68bc10f7a23142bdcf4e59ea7166d8b1b32f65058e"
+      },
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/fixed-candidate02/program.o",
+        "bytes": 20835408,
+        "sha256": "40f7fec1eb1357b9fc2e6f142a454c9051205b8bb6d86ae9a4452541818b9a50"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/fixed-candidate02/program",
+        "bytes": 16031664,
+        "sha256": "fdb8ae84dfec23cc6af6ed22b01fdb0315e6713aa1f9bbd0e5d2970d7d570cc7"
+      }
+    },
+    "speedupClaim": true,
+    "scope": "Metadata audit of authenticated completed receipts: one candidate-first/baseline-second pair on CPU3, fixed Phase170 source, fresh processes, same pinned prepared Base, no object reuse, no filesystem-cache flush. Both stream expected QBE and retain no IR. Complete wallSeconds starts after builder preflight. No repeated-sample statistical confidence or 100-second result.",
+    "audit": {
+      "file": "implementation/phase175/evidence/fixed-pair-audit.json",
+      "bytes": 6353,
+      "sha256": "ef45fff3b88ce9e5b5e781c0e93ee343977a764f80e359ef2b2ac44a16b4e23f"
+    },
+    "baseline": {
+      "receipt": {
+        "file": "selfhost/build/phase175/fixed-baseline01/report.json",
+        "bytes": 17112,
+        "sha256": "911c4b9fb5ee2b9c21342e4ff1d31938c82ee41a06fddc2897ab954abd171e75"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/fixed-baseline01/report.json",
+        "bytes": 17112,
+        "sha256": "911c4b9fb5ee2b9c21342e4ff1d31938c82ee41a06fddc2897ab954abd171e75"
+      },
+      "wallSeconds": 185.54959116922691,
+      "emitAndQbeSeconds": 179.6236590249464,
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/source-final/compiler.bend",
+        "bytes": 3150535,
+        "sha256": "434edd1d56128f9480800573abf8a0ae21d910a547837af089f25cd1d0e89b71"
+      },
+      "image": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/bend",
+        "bytes": 16122328,
+        "sha256": "8214b3f3400b0d0bead3ef137e6d8b75b8c8b18f6da012dfa4673e4468d9f2ac"
+      },
+      "retainIR": false,
+      "expectedQbe": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase170/native-chain-final/n2/program.ssa",
+        "bytes": 97488970,
+        "sha256": "661b62664acdac83d12bc3192b5f9113a2bb946dd331433e64ca0452f6f83850"
+      },
+      "comparedToReference": true,
+      "irDigest": {
+        "bytes": 97488970,
+        "sha256": "661b62664acdac83d12bc3192b5f9113a2bb946dd331433e64ca0452f6f83850"
+      },
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/fixed-baseline01/program.s",
+        "bytes": 73216845,
+        "sha256": "5309933dce7c965ed0de8c68bc10f7a23142bdcf4e59ea7166d8b1b32f65058e"
+      },
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/fixed-baseline01/program.o",
+        "bytes": 20835408,
+        "sha256": "40f7fec1eb1357b9fc2e6f142a454c9051205b8bb6d86ae9a4452541818b9a50"
+      }
+    },
+    "candidateToBaselineRatio": 0.9643633021638978,
+    "elapsedReductionFraction": 0.03563669783610224,
+    "absoluteSecondsSaved": 6.612374714110047
+  },
+  "fixedCandidateAdmissionRefusal": {
+    "receipt": {
+      "file": "selfhost/build/phase175/fixed-candidate01-guard/process.json",
+      "bytes": 3624,
+      "sha256": "d9900c78c16e6b422e90cacdbdf09c7ee5db223866b34795b538a0e2f97f8f4b"
+    },
+    "retainedReceipt": {
+      "file": "implementation/phase175/evidence/fixed-candidate01-guard/process.json",
+      "bytes": 3624,
+      "sha256": "d9900c78c16e6b422e90cacdbdf09c7ee5db223866b34795b538a0e2f97f8f4b"
+    },
+    "compilerStarted": false,
+    "stoppedFor": "disk-admission",
+    "wallSeconds": 0.0009615370072424412,
+    "firstBudgetBytes": 134217728,
+    "retryBudgetBytes": 117440512,
+    "reserveBytes": 5368709120,
+    "retryReserveBytes": 5368709120,
+    "retryPeakRunAllocatedBytes": 110145536,
+    "scope": "Admission refusal before spawning compiler. Retry budgets128\u2192112MiB after existing comparable measurements; normal5GiB reserve unchanged. Not a failed compilation or timeout."
+  },
+  "maintainedIntegration": {
+    "receipt": {
+      "file": "selfhost/build/phase175/integration-applied01/report.json",
+      "bytes": 2948,
+      "sha256": "c4b55b91dccdeaa874ebfdc71e44111f0c60a8fb1c40ce0607dba2cf58a581e3"
+    },
+    "retainedReceipt": {
+      "file": "implementation/phase175/evidence/integration-applied01/report.json",
+      "bytes": 2948,
+      "sha256": "c4b55b91dccdeaa874ebfdc71e44111f0c60a8fb1c40ce0607dba2cf58a581e3"
+    },
+    "complete": true,
+    "applied": true,
+    "selected": {
+      "bytes": 3163584,
+      "sha256": "a0e953a84de73aa22403dde7ec2144540197633857a0f7b5b9784f9e66f5ad04"
+    },
+    "replacements": 3,
+    "helperDefinitions": 10,
+    "forwardLaws": 9,
+    "originalOrderPreserved": true,
+    "allProfilesExact": {
+      "qbe": {
+        "bytes": 3163584,
+        "sha256": "a0e953a84de73aa22403dde7ec2144540197633857a0f7b5b9784f9e66f5ad04"
+      },
+      "native-c": {
+        "bytes": 3163668,
+        "sha256": "6005da0a3ac31e828478f9782388e9d1d9fc8aea0d46e94c2bde2fb77565075a"
+      },
+      "js-api": {
+        "bytes": 3163471,
+        "sha256": "16f0fa6b1eea2f293242fcf24b3b700be5c60386c88f0e3aa8a06532bd2bdde4"
+      },
+      "qbe-policy": {
+        "bytes": 3163583,
+        "sha256": "7ed01d8bd8f479e107bf1d2ea91cc442b5a4ffc0776ff8f6ee552dff898e762a"
+      },
+      "qbe-policy-test": {
+        "bytes": 3163577,
+        "sha256": "9a3aa2360ee7c6a62fcda37b97ebf230232494acc7c703df08504b743fcebc4a"
+      }
+    },
+    "sourceCounts": {
+      "before": 8442,
+      "after": 8461
+    },
+    "scope": "Assembly equality only; no compiler execution or qualification.",
+    "sourceGrowthLines": 98,
+    "sourceGrowthBytes": 2175,
+    "lawScope": "Nine forward declaration laws are signatures, not new mathematical proofs."
+  },
+  "selectedSource": {
+    "bytes": 3163584,
+    "sha256": "a0e953a84de73aa22403dde7ec2144540197633857a0f7b5b9784f9e66f5ad04"
+  },
+  "qualifiedCandidate": {
+    "file": "selfhost/build/phase175/full-native-n2/program",
+    "sha256": "88be8d8627ed84f5cf4ebb84bafa96c890b074fa49803056d6fd8a52fd8aaa02",
+    "bytes": 16140352,
+    "scope": "Phase175 candidate passed native64, QBE product identity45, and N2\u2192Q3 reproduction; installed selector intentionally unchanged. Qualified only for the recorded contracts."
+  },
+  "publicProductChecks": {
+    "js6-reemit01": {
+      "receipt": {
+        "file": "selfhost/build/phase175/js6-reemit01/report.json",
+        "bytes": 24713,
+        "sha256": "c02878af65b5cfa2f3af87fc169b3fe89e49193bf9863e85a9294393487d6d36"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/js6-reemit01/report.json",
+        "bytes": 24713,
+        "sha256": "c02878af65b5cfa2f3af87fc169b3fe89e49193bf9863e85a9294393487d6d36"
+      },
+      "complete": true,
+      "seconds": 62.86058912007138,
+      "selected": [
+        "broad/editdist",
+        "broad/tree-bitonic",
+        "broad/lexer",
+        "broad/test-rle-roundtrip",
+        "broad/coverage-closures-256",
+        "broad/coverage-map-churn-128"
+      ],
+      "scope": "Exact complete JS/C product identity against qualified Phase174 sources and whole-output oracles. Historical C used native/cache; this gate uses checked B1/live. No machine rebuild, program execution, fresh conformance qualification, compiled-program speed or compiler-speed comparison claim."
+    },
+    "c6-reemit01": {
+      "receipt": {
+        "file": "selfhost/build/phase175/c6-reemit01/report.json",
+        "bytes": 57184,
+        "sha256": "1d890c8b1f33ae1ef38f03dcc7fffe4920854c03f5bee0bc31e187770218d432"
+      },
+      "retainedReceipt": {
+        "file": "implementation/phase175/evidence/c6-reemit01/report.json",
+        "bytes": 57184,
+        "sha256": "1d890c8b1f33ae1ef38f03dcc7fffe4920854c03f5bee0bc31e187770218d432"
+      },
+      "complete": true,
+      "seconds": 68.35119456611574,
+      "selected": [
+        "broad/editdist",
+        "broad/tree-bitonic",
+        "broad/lexer",
+        "broad/test-rle-roundtrip",
+        "broad/coverage-closures-256",
+        "broad/coverage-map-churn-128"
+      ],
+      "scope": "Exact complete JS/C product identity against qualified Phase174 sources and whole-output oracles. Historical C used native/cache; this gate uses checked B1/live. No machine rebuild, program execution, fresh conformance qualification, compiled-program speed or compiler-speed comparison claim."
+    }
+  },
+  "publicAPI": {
+    "receipt": {
+      "file": "selfhost/build/phase175/public-api01/report.json",
+      "bytes": 12745,
+      "sha256": "fa51858aff0b59ae9254a795ff4c59a47f76c49a1c2da3a90e9b4b8fe95b5a9b"
+    },
+    "retainedReceipt": {
+      "file": "implementation/phase175/evidence/public-api01/report.json",
+      "bytes": 12745,
+      "sha256": "fa51858aff0b59ae9254a795ff4c59a47f76c49a1c2da3a90e9b4b8fe95b5a9b"
+    }
+  },
+  "limitations": [
+    "Observed frozen build gain is one candidate-first pair, not a statistical confidence estimate.",
+    "Same-source C diagnostic emitted code but hit Clang budget; no C execution comparison.",
+    "No new generated-program timing score: exact QBE45/JS6/C6 products preserve prior evidence for their precise inputs.",
+    "Installed compiler intentionally retained; candidate is accessible separately.",
+    "Forward laws are declarations, not new mathematical proofs."
+  ],
+  "canonicalSourceScope": "Starting installed Phase171 source; selectedSource is the integrated Phase175 canonical source."
 }

@@ -6895,3 +6895,23 @@ provides a100s route. Next work needs measured complete reconstruction removal,
 not another large-gain forecast from helper counts.29 guards/563.670s, five failed
 source acquisitions preserved, four bounded agents with one root execution lane.
 Verified archival of12 reviewed old roots recovers570.27MiB net. No PR comment.
+
+
+## Phase175 — complete frontend optimization integrated
+
+[Report](../implementation/phase175/README.md) · [Design](../design/phase175/README.md).
+Parser lookahead reuse and collision-safe report-name membership reduce the
+complete frontend 62.854→56.219s in two balanced pairs (10.56% less). Fresh frozen
+source-to-executable pair:185.550→178.937s (3.56% less), identical QBE/assembly/
+object, common streaming policy and CPU3. The asymmetric retained-IR N1/N2 build
+pair is separate bootstrap evidence, not the headline speed comparison.
+
+Independent full-source checking, complete finite frontend values, native
+N1/N2/Q3 reproduction, native64, timed45 exact QBE and JS6/C6 exact products pass.
+Three neutral hypotheses remain excluded. Maintained integration adds98 lines,
+three replacements, ten helpers and nine forward signatures; all112 protections
+and five entry profiles survive. Installed Phase171 remains selected; new N2 is
+explicit. No new runtime score, upstream ratio,100s result or theorem is claimed.
+
+The report retains failures, source/measurement scopes, bounded-loop tooling,
+verified storage recovery and an outer-guard cost census. No PR comment.

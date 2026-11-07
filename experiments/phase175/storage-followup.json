@@ -1,0 +1,281 @@
+{
+  "kind": "phase175-completed-storage-followup",
+  "complete": true,
+  "aggregationOnly": true,
+  "targetsRun": false,
+  "capturesRun": false,
+  "prunesRun": false,
+  "linksCreated": false,
+  "scope": "Completed combined-native archive and exactly three completed dedup applies. Running fixed-baseline excluded. No compiler product bytes are rehashed during aggregation.",
+  "combinedArchive": {
+    "name": "combined-native01",
+    "proposal": {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase175/storage-own-combined.json",
+      "bytes": 7446,
+      "sha256": "0bfd87afea97018d1d01ca71a378609e13c04116801fdf3396ee723086009f79"
+    },
+    "recovery": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/own-combined-native01/recovery.json",
+      "bytes": 632,
+      "sha256": "42088f7c6b7b34544375a3ebaa7965c4cf1b1c018bcd79db737c19a1a7f947f1"
+    },
+    "capsule": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/own-combined-native01/capsule/receipt.json",
+      "bytes": 1094,
+      "sha256": "1b457269df7727f60cf65b0fabef18eaed57e0e39d16d7dcc9c8888fbd2a5f1c"
+    },
+    "verification": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/own-combined-native01/verified/plan.json",
+      "bytes": 1720,
+      "sha256": "8ef31afc8f95d4e28ffe9a272712c633e8123b09cc24fa2ce525ae16f71184b0"
+    },
+    "application": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase175/own-combined-native01/applied/report.json",
+      "bytes": 1099,
+      "sha256": "c762e17106341f070e91befe41ef5405aca76dd702a3767e89d88604b6044b60"
+    },
+    "removedFiles": 2,
+    "sourceLogicalBytes": 34215188,
+    "sourceAllocatedBytes": 34217984,
+    "archiveLogicalBytes": 4282058,
+    "archiveAllocatedBytes": 4284416,
+    "retainedFilesAllocatedBytes": 4325376,
+    "retainedDirectoriesAllocatedBytes": 16384,
+    "netRecoveryIncludingRetentionBytes": 29876224,
+    "recordedSeconds": 2.166086992248893,
+    "observedFilesystemDeltaBytes": 29884416,
+    "restoreCommand": [
+      "python3",
+      "-B",
+      "selfhost/tools/build-retention/archive-v02.py",
+      "restore",
+      "--plan",
+      "selfhost/build-retention/phase175/own-combined-native01/verified/plan.json",
+      "--out",
+      "selfhost/build-retention/phase175/own-combined-native01/restored"
+    ]
+  },
+  "deduplications": [
+    {
+      "name": "dedup-native-apply02",
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/dedup-native-apply02.json",
+        "bytes": 9285,
+        "sha256": "b565b984e64d249031a679cb181dab3d4f6456c34c73f24c31ce13da2c87593c"
+      },
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/dedup-native-verify02.json",
+        "bytes": 9060,
+        "sha256": "5cb19f6239bc9894d19ab6e607890098a2a721e7c916b420b73a42b8f5e29f07"
+      },
+      "intent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/dedup-native-apply02.json.intent.json",
+        "bytes": 5191,
+        "sha256": "ac81fd39778448ef38ccefb0cc0be1bc735a6a96cd89b6554074f0012eede6a5"
+      },
+      "journal": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/dedup-native-apply02.json.journal.jsonl",
+        "bytes": 486,
+        "sha256": "872ac2b2380120fd4b5e67b5b762c7e20be894e9f030d0d2bad9399305224a16"
+      },
+      "replacedFiles": 2,
+      "grossRecoveredAllocatedBytes": 94703616,
+      "newReceiptAllocatedBytes": 49152,
+      "netRecoveryIncludingReceiptsBytes": 94654464,
+      "products": [
+        {
+          "key": "assembly:assembly",
+          "left": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native-n1/program.s",
+            "bytes": 73713271,
+            "sha256": "65876e920a3704e266dcd16ce2350bdf6f2aa2d5a6828010cf2495aa34333e24"
+          },
+          "right": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native-n2/program.s",
+            "bytes": 73713271,
+            "sha256": "65876e920a3704e266dcd16ce2350bdf6f2aa2d5a6828010cf2495aa34333e24"
+          },
+          "sharedInode": 79699886,
+          "sharedDevice": 2306
+        },
+        {
+          "key": "object:object",
+          "left": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native-n1/program.o",
+            "bytes": 20977848,
+            "sha256": "44ae8100a8dc995c49f2caf157186007d90c18ee6009814f1a43d7b3a0741cf2"
+          },
+          "right": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native-n2/program.o",
+            "bytes": 20977848,
+            "sha256": "44ae8100a8dc995c49f2caf157186007d90c18ee6009814f1a43d7b3a0741cf2"
+          },
+          "sharedInode": 79699899,
+          "sharedDevice": 2306
+        }
+      ]
+    },
+    {
+      "name": "dedup-q3-apply01",
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/dedup-q3-apply01.json",
+        "bytes": 6744,
+        "sha256": "67c5df98f6e5ddcfbea4940258896d26d3d47465b93d4449c1030088617d747f"
+      },
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/dedup-q3-verify01.json",
+        "bytes": 6522,
+        "sha256": "4b94468b7a4a205f74f5650162fade21ef5bf48f1cd17d7c4086db27efd051c7"
+      },
+      "intent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/dedup-q3-apply01.json.intent.json",
+        "bytes": 3918,
+        "sha256": "d04c60a1165cb4e6bbb9aa604f95d568f9aca05c5aa40b52e7475d9f0aba13cf"
+      },
+      "journal": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/dedup-q3-apply01.json.journal.jsonl",
+        "bytes": 248,
+        "sha256": "e9e5c160c1bb2475932e913a08edf682d55e8e1fe72bd4dc147fa5715a40abaa"
+      },
+      "replacedFiles": 1,
+      "grossRecoveredAllocatedBytes": 98156544,
+      "newReceiptAllocatedBytes": 24576,
+      "netRecoveryIncludingReceiptsBytes": 98131968,
+      "products": [
+        {
+          "key": "retainedIR:product",
+          "left": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native-n1/program.ssa",
+            "bytes": 98149013,
+            "sha256": "a52b5adeabcc3201a239bb4a8c4a07597a477fee5103fe1634f83c69cbe98644"
+          },
+          "right": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native-q3/program.ssa",
+            "bytes": 98149013,
+            "sha256": "a52b5adeabcc3201a239bb4a8c4a07597a477fee5103fe1634f83c69cbe98644"
+          },
+          "sharedInode": 79699887,
+          "sharedDevice": 2306
+        }
+      ]
+    },
+    {
+      "name": "dedup-fixed-candidate-apply01",
+      "application": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/dedup-fixed-candidate-apply01.json",
+        "bytes": 9334,
+        "sha256": "dc1a16174b051fe105bd078e6661506615bef6e1736ed99ee7bd9d18d9582d6c"
+      },
+      "verification": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/dedup-fixed-candidate-verify01.json",
+        "bytes": 9100,
+        "sha256": "5260a6acbcead1fbb51a0a10c0302c856bfb91e0a949572af765a3450028dd7a"
+      },
+      "intent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/dedup-fixed-candidate-apply01.json.intent.json",
+        "bytes": 5220,
+        "sha256": "7e5c96b1509671dbf2580b0f03e5fa1b0ed15d2ad9b818805b25378bfc85a20f"
+      },
+      "journal": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/dedup-fixed-candidate-apply01.json.journal.jsonl",
+        "bytes": 492,
+        "sha256": "114177326c207b235fc11dd00df22580571ade14e1df645d7f9a67a23f17b742"
+      },
+      "replacedFiles": 2,
+      "grossRecoveredAllocatedBytes": 94060544,
+      "newReceiptAllocatedBytes": 36864,
+      "netRecoveryIncludingReceiptsBytes": 94023680,
+      "products": [
+        {
+          "key": "assembly:assembly",
+          "left": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase174/fixed-candidate/program.s",
+            "bytes": 73216845,
+            "sha256": "5309933dce7c965ed0de8c68bc10f7a23142bdcf4e59ea7166d8b1b32f65058e"
+          },
+          "right": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/fixed-candidate02/program.s",
+            "bytes": 73216845,
+            "sha256": "5309933dce7c965ed0de8c68bc10f7a23142bdcf4e59ea7166d8b1b32f65058e"
+          },
+          "sharedInode": 79698974,
+          "sharedDevice": 2306
+        },
+        {
+          "key": "object:object",
+          "left": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase174/fixed-candidate/program.o",
+            "bytes": 20835408,
+            "sha256": "40f7fec1eb1357b9fc2e6f142a454c9051205b8bb6d86ae9a4452541818b9a50"
+          },
+          "right": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/fixed-candidate02/program.o",
+            "bytes": 20835408,
+            "sha256": "40f7fec1eb1357b9fc2e6f142a454c9051205b8bb6d86ae9a4452541818b9a50"
+          },
+          "sharedInode": 79698977,
+          "sharedDevice": 2306
+        }
+      ]
+    }
+  ],
+  "negative": {
+    "name": "dedup-native-apply01",
+    "outcome": "Parent reported stale-verification refusal before mutation. No apply/intent/journal exists; independent comparison of the two verified snapshots isolates only +4096 allocatedBytes on the N2 object, with identical hashes, inode, mtime and ctime.",
+    "verify01": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/dedup-native-verify01.json",
+      "bytes": 9060,
+      "sha256": "a02cbb0a2fcf8ff45840a30ea630d0c7ea80b1adee1e1033e1ac071d040eb02d"
+    },
+    "verify02": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/dedup-native-verify02.json",
+      "bytes": 9060,
+      "sha256": "5cb19f6239bc9894d19ab6e607890098a2a721e7c916b420b73a42b8f5e29f07"
+    },
+    "differences": [
+      {
+        "path": "/after/rows/1/rightMetadata/allocatedBytes",
+        "before": 20979712,
+        "after": 20983808
+      },
+      {
+        "path": "/before/rows/1/rightMetadata/allocatedBytes",
+        "before": 20979712,
+        "after": 20983808
+      },
+      {
+        "path": "/potentialAllocatedBytes",
+        "before": 94699520,
+        "after": 94703616
+      }
+    ],
+    "absentApplyArtifacts": [
+      "selfhost/build/phase175/dedup-native-apply01.json",
+      "selfhost/build/phase175/dedup-native-apply01.json.intent.json",
+      "selfhost/build/phase175/dedup-native-apply01.json.journal.jsonl"
+    ],
+    "lesson": "Reverify exact metadata when allocation accounting changes; do not weaken metadata checks or silently reuse the stale receipt."
+  },
+  "totals": {
+    "archiveRoots": 1,
+    "archivedAndPrunedFiles": 2,
+    "dedupCampaigns": 3,
+    "dedupReplacedFiles": 5,
+    "grossHardlinkRecoveryBytes": 286920704,
+    "newDedupReceiptAllocatedBytes": 110592,
+    "netFollowupRecoveryBytes": 316686336,
+    "priorCompletedRecovery": {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase175/storage-own-native-recovery.json",
+      "bytes": 26346,
+      "sha256": "1f9fa5ceb0851885db68b0729e2b5af19720c579e0e8038bbbe4a6b78f760992"
+    },
+    "cumulativeNetRecoveryBytes": 3915579392
+  },
+  "limitations": [
+    "Archive net includes retained capsule/journal files and directories within its recovery root. Hardlink net subtracts verification, intent, journal and application receipt file allocations (including rejected first verification), but excludes shared parent directory blocks and tracked experiment documentation.",
+    "Completed tools performed streaming hashes/literal comparisons. This aggregation authenticates small receipt chains, compares approved metadata and stats current path/inode relationships; it does not rerun those large reads.",
+    "Hardlinked paths keep bytes and permissions but share inode/mtime/ctime. Products must remain immutable; use fresh build roots.",
+    "All binaries, runtimes, sources and report paths remain hot. Archived assembly/object restore uses the recorded command; hardlinked products already exist at both original paths.",
+    "No still-running fixed-baseline product or prospective cleanup is included. Net accounting is not a current free-space promise."
+  ]
+}

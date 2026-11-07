@@ -1,17 +1,19 @@
-# Phase175 — frontend optimization, provisional results
+# Phase175 — frontend work reuse and native qualification
 
-**The combined frontend improves 62.854→56.219s, 10.56% less, across two balanced
-pairs on the full fixed compiler input.** Parser lookahead reuse alone improves
-parse/load 26.452→23.062s, 12.82% less, in one ordered pair. The installed
-Phase171 compiler and maintained source remain unchanged pending full-build gates.
+**The complete fixed-source build took 185.550→178.937s: 6.612s, or 3.56%, less
+time in one controlled pair.** The frontend component decreased 10.56% in its
+separate two-round comparison. Native64 passes and all 45 timed-wrapper QBE
+products remain exact. The selected changes are integrated in maintained source;
+the installed compiler remains unchanged as planned.
 
-[Design](../../design/phase175/README.md) · [Exact provisional metrics](metrics.json) ·
+[Design](../../design/phase175/README.md) · [Exact metrics](metrics.json) ·
 [Receipt index](evidence-index.json) · [Reproduction](reproduce.md).
 
-This is an in-progress checkpoint. Full cold source-to-executable comparison
-and generated-code gates remain pending. The same-source C comparison hit its
+All selected source, native and public product gates passed. The same-source C
+execution comparison hit its
 Clang construction budget, so has no execution result. There is no new upstream-parity score,
-100-second build, generated-program runtime result, or native qualification.
+100-second build or generated-program runtime measurement. The installed compiler
+has not changed.
 
 ## What we learned
 
@@ -27,9 +29,8 @@ finite precedence dispatch was neutral; reusing already-established constructor
 field quantities during erasure was neutral or slightly worse; delaying further
 publication canonicalization was neutral. Replacing quadratic report-name
 membership with the existing collision-safe index has a small positive screen,
-but no isolated paired confirmation yet. The selected combination now improves
-the complete frontend component; this does not isolate each change's contribution
-or establish a complete self-build improvement.
+but no isolated paired confirmation yet. The selected combination improves the
+frontend and complete build; this does not isolate each change's contribution.
 
 ## Results and measurement boundaries
 
@@ -42,6 +43,7 @@ Targets run through the root-owned CPU3 execution lane.
 
 | Experiment | Component baseline | Candidate | Interpretation |
 |---|---:|---:|---|
+| Complete fixed-source build |185.550s|178.937s|3.56% less; one candidate→baseline pair, same streaming reference check and no retained IR.|
 | Lookahead plus indexed report names, complete frontend |62.854s|56.219s|10.56% less; baseline/candidate/candidate/baseline, matching full-input observation.|
 | Reuse parser lookahead |26.452s|23.062s|12.82% less; one baseline→candidate pair.|
 | Finite operator precedence dispatch |26.661s|26.381s|1.05% less; treat as neutral.|
@@ -59,9 +61,28 @@ The combined whole-process medians are 71.320→64.684s, 9.30% less; digest cost
 remains approximately 8.15s. Frontend observations were 62.624/63.084s versus
 56.437/56.001s. Use this fresh paired baseline for the combined result, rather
 than the earlier 60.509s screen baseline. Its full candidate source adds 2,175 bytes (0.069%),
-three replacements and 19 helper declarations, with every original declaration,
+three replacements, ten helper definitions and nine forward declaration laws,
+with every original declaration,
 all 112 protected declarations and the original native main preserved. This is
-still a component result, not a new complete cold self-build measurement.
+the separate frontend component measurement, not the complete build timer.
+The maintained source grows by 98 lines. The nine laws are forward signatures,
+not mathematical proofs or new compiler-correctness theorems.
+
+The complete build comparison uses the same frozen source path, prepared Base,
+runtime, QBE/assembler/linker, target flags, resource limits and expected QBE.
+Both stream the reference comparison without retaining IR; QBE, assembly and
+object identities match. The [33-check receipt audit](evidence/fixed-pair-audit.json)
+records these controls. Candidate ran first and baseline second on CPU3; there
+was one observation each and no filesystem-cache flush. The 3.56% reduction is
+an observed pair, not a confidence interval. The timer includes compiler
+execution and machine construction after builder preflight. It does not include
+the diagnostic digest used in the frontend experiments.
+
+The earlier candidate-source N1/N2 acquisition comparison showed 4.26% less
+time, but its retention/reference policies differ. It is bootstrap evidence,
+not the headline performance comparison. The broader result is modest: a
+10.56% frontend reduction becomes 3.56% for the complete build. The work outside
+the frontend still dominates; this phase has not established a 100-second path.
 
 The frontend driver stops before backend optimization, QBE rendering and machine
 construction. Its `parse`, `check`, `context`, `annotation` and `request` modes
@@ -104,8 +125,17 @@ The ordinary unchanged request entry is also compared where the receipt records
 it. Values include constructor variants, all fields, spans, quantities,
 ownership metadata, order, indexes and diagnostics. These are finite checks, not
 BendTT theorems or whole-compiler equivalence proofs. Matching native digests on
-the large timing input supplements these gates; no full-source complete-value
-or generated-QBE equality claim is added at this checkpoint.
+the large timing input supplements these gates. That frontend comparison alone
+does not establish full-source complete-value or generated-QBE equality.
+
+Subsequent native gates provide separate evidence: **64/64** focused and broad
+correctness cases pass in 67.273s, and **45/45 exact timed-wrapper QBE products**
+match the retained references in 54.875s under the same runtime and machine
+policy. Those product identities preserve the existing performance evidence for
+the exact workloads; they are not a new runtime timing campaign or a full-language
+conformance claim. N2 also emits Q3 identical to the candidate N1/N2 QBE in
+157.007s native execution (158.254s request total), without machine construction.
+See [the native checkpoint](native-checkpoint.md) for acquisition boundaries.
 
 Publication exposed an important fixture mistake: duplicate constructor names
 are rejected by the parser, before compact checking. The first comparison
@@ -140,8 +170,9 @@ candidate's source typing. The separate source-only check and native qualificati
 are distinct gates: `full-source-check02` subsequently passed unmodified upstream
 loading, `book_valid` and zero unresolved holes in 7.306s (8.064s guarded wall
 time). This establishes source type acceptance, not proof safety, BendTT
-verification, backend correctness or native self-hosting. Native qualification
-remains pending at this checkpoint.
+verification or backend correctness. The subsequent finite native and exact
+product gates above address their respective scopes; the public cross-backend
+product gates subsequently passed and the exact selected source is integrated.
 
 Method files evolved during the investigation. Historical receipts retain their
 original method hashes; in particular the precedence and field comparison runs
@@ -154,28 +185,46 @@ are preserved rather than rewritten to appear authenticated by the newer tool.
 The same-source upstream C diagnostic emitted 11,871,272 C bytes in 30.256s, then
 Clang exceeded its 80-second construction window. It produced no execution-speed
 comparison. This is an incomplete diagnostic, not evidence that C runs faster
-or slower. The receipt and timeout remain in the index.
+or slower. Its original zero ABI counts were a regex error; the
+[corrected static census](../../experiments/phase175/parser-c-census-correction.json)
+finds 43 Term parameters and 7,833 WL_CASE lines. The failed receipt stays unchanged.
+
+The first frozen-source candidate acquisition was refused **before the compiler
+started**: a 128 MiB declared disk budget could not fit above the unchanged 5 GiB
+reserve. The 112 MiB retry, justified by prior comparable allocation, passed and
+used 105.04 MiB in its declared output root. This was resource admission, not a
+compiler failure, weakened reserve or timeout.
 
 [Verified storage recovery](../../experiments/phase175/storage-recovery.md)
 recovered 3,012.09 MiB net in the emergency tranche, or 3,273.20 MiB including the
 earlier already-archived selection. Exact originals were archived and independently
 verified before pruning. Installed images, rollback and current evidence stayed
-hot; the normal 5 GiB compiler reserve remained unchanged. Recovery time, target
-time and agent effort must not be conflated. This draft does not claim a final
-phase-wide cost total while jobs are still pending.
+hot; the normal 5 GiB compiler reserve remained unchanged. Later
+[own-intermediate recovery and exact deduplication](../../experiments/phase175/storage-followup.md)
+are accounted separately. Recovery time, target
+time and agent effort must not be conflated. The final
+[outer-guard census](cost-census.json) counts 62 closed invocations once each:
+2,799.683s (46.66 minutes), including 187.605s failed runs and 4.622s stopped work.
+No outer runs remain open. Nested compilation/test-case
+timers are never added; storage recovery, unguarded work, agent effort and quota
+are outside this total. The recorded outer intervals do not overlap.
 
-## Next decision
+## Integration and next decision
 
 The combined frontend gate passed. The full candidate is prepared separately as
 `a0e953a84de73aa22403dde7ec2144540197633857a0f7b5b9784f9e66f5ad04`,
 with exact inverse reconstruction of the parent and no pruned declarations.
-Independent source checking is complete. Require representative generated-QBE
-gates and native qualification before considering it an installed compiler.
+Independent source checking, native64 and the 45 QBE product gates are complete.
+Six representative complete JS products and six C products also match the
+qualified references exactly; this gate did not rebuild or execute those
+programs. Integration reproduces the selected QBE source exactly and preserves
+the corresponding native-C, JS-API and policy source profiles. The latest
+qualified candidate is `selfhost/build/phase175/full-native-n2/program`; installed
+selection remains unchanged. Keep installed promotion a separate decision.
 Keep field reuse, extra publication deferral and precedence dispatch out of the
-selected combination unless new evidence overturns their neutral screens. A
-fixed-source cold pair is necessary to determine whether the parser saving
-survives compiler acquisition and later stages. Installation remains a separate
-qualification decision.
+selected combination unless new evidence overturns their neutral screens.
+Prioritize the still-dominant post-frontend work for the next performance
+investigation. Installation remains a separate qualification decision.
 
 Compact raw reports, resource-guard receipts, selected diagnostics and finite
 value artifacts are retained losslessly under [evidence/](evidence/index.json).

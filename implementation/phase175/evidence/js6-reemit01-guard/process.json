@@ -1,0 +1,72 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": true,
+  "started": 1794041552.941949,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "3",
+    "python3",
+    "-B",
+    "selfhost/tests/phase175/reemit-public.py",
+    "--target",
+    "js",
+    "--out",
+    "selfhost/build/phase175/js6-reemit01",
+    "--case",
+    "broad/editdist",
+    "--case",
+    "broad/tree-bitonic",
+    "--case",
+    "broad/lexer",
+    "--case",
+    "broad/test-rle-roundtrip",
+    "--case",
+    "broad/coverage-map-churn-128",
+    "--case",
+    "broad/coverage-closures-256"
+  ],
+  "returncode": 0,
+  "rssLimitBytes": 2147483648,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 340131840,
+  "minimumAvailableBytes": 24799793152,
+  "diskBudgetBytes": 16777216,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 5488242688,
+  "minimumDiskFreeBytes": 5487284224,
+  "peakRunAllocatedBytes": 614400,
+  "peakFilesystemDecreaseBytes": 958464,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/js6-reemit01"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "3",
+    "fileLimitBytes": 134217728,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase175/reemit-public.py",
+        "sha256": "1f5b8f389090b2ba38407fbd77fb8767e9e17089734e3e3a76619c61d4493fa8",
+        "bytes": 9947
+      }
+    ]
+  },
+  "wallSeconds": 66.57319846190512,
+  "finished": 1794041619.5149715
+}

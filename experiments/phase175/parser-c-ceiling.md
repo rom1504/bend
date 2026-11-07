@@ -134,3 +134,13 @@ It avoids acquiring a new emitting compiler, but measures an older self-hosted
 C backend and its runtime. It may also have substantial C emission/build cost.
 Prefer upstream first for the clean independent question; do not acquire both
 unless the first result creates a useful distinction.
+
+## Executed outcome and diagnostic correction
+
+The pinned source emitted 11,871,272 C bytes in 30.256s. Clang exceeded its
+80-second construction budget; there is no C executable or execution-speed
+result. The original ABI count fields contain a regex bug: their zero counts
+are invalid. A source-only recount finds 43 Term formal parameters and 7833 WL_CASE lines;
+see [corrected census](parser-c-census-correction.json). This is textual structure,
+not a profile or evidence of a dynamic speed ceiling. The original failed
+receipt remains unchanged.

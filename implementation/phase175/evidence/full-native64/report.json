@@ -1,0 +1,2433 @@
+{
+  "kind": "bend-finite-qualification",
+  "version": 1,
+  "complete": true,
+  "passed": true,
+  "fullConformance": false,
+  "upstream": "059266225b77c8ca256ac6b25ee5c21449bab151",
+  "host": "native",
+  "target": "qbe",
+  "stage": "N2",
+  "mode": "cache",
+  "image": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native-n2/program",
+    "bytes": 16140352,
+    "sha256": "88be8d8627ed84f5cf4ebb84bafa96c890b074fa49803056d6fd8a52fd8aaa02"
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/conformance/qualification-catalog.json",
+      "bytes": 77329,
+      "sha256": "d22a51bcf3e6901a992dd97768f6622a24deb90fbe5e131c8c3c577d7138b9be"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/nt-reverse.bend",
+      "bytes": 1084,
+      "sha256": "dfb8a3f7b5c432a2a4686bb014a0c9cc74d0d56c2c16264a3427026b090169ff"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/nt-reverse.stdout",
+      "bytes": 37,
+      "sha256": "b1ee553a36555bd2c18ac95f178607db1be2518c17c87f19cd9750fc9f24dcdf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/string-reverse-heldout.bend",
+      "bytes": 463,
+      "sha256": "4a2d2e5de64d79f5c51a0e86822f7275a156992e4b653ca9807a6e8ae28f4d45"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/string-reverse-heldout.stdout",
+      "bytes": 27,
+      "sha256": "7ea8681162e0dd6de357fe6bd2d3a79f4e23c5c4c7a4fd6c6f962caf242827c4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/higher-order-capture.bend",
+      "bytes": 229,
+      "sha256": "18c8832cf958215dab9cbedb66b191e0a31def3911296fc62b99c75a7b0ae715"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/higher-order-capture.stdout",
+      "bytes": 12,
+      "sha256": "8ba5dba048674b02237222cf7bdcb72e35450f4afff4bcc194ddbc201b895e05"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/non-tail-list.bend",
+      "bytes": 422,
+      "sha256": "b8fb74a95b2c646f0f92545a4acde8e0049c01d99d647459babef56dc3700452"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/non-tail-list.stdout",
+      "bytes": 8,
+      "sha256": "1fd7509719d8e7fe86eeff362247da6f733d4f112c93b2a00913c14e7b167eb7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/arrays-io.bend",
+      "bytes": 878,
+      "sha256": "733e76ff92db5e4eece60e2bd2b047d67218a56a0d2b5fdac7447ef1238d1cc1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/arrays-io.stdout",
+      "bytes": 25,
+      "sha256": "37ad9e1956e1ce46a45715596e7bea089dd734d9d1183dc42163862f35c64154"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/lexer-scan.bend",
+      "bytes": 2851,
+      "sha256": "c1ad42a85efe49274d0e0c5f607c6abde3d34de282299f7802eb3987d179d01f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/lexer-scan.stdout",
+      "bytes": 59,
+      "sha256": "f745e71b95ba4ffc77e479c92034a2003d06f0639b51e2553eb216881693e245"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/negative-type.bend",
+      "bytes": 54,
+      "sha256": "13576b71e13d0336b5b6ae1ad913ae8a5f636a6f292b097288c8ae3aa49ff2be"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/negative-affine.bend",
+      "bytes": 115,
+      "sha256": "2fe0f07f5556ca57e97bfece4afa302524bfa20f2583f3f3a999e466ecd1c0b4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/negative-foreign.bend",
+      "bytes": 260,
+      "sha256": "19a5b3686b07e311f3291e0c26a6308a76d4930f869d7f6a70249c94365ba11c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-char.bend",
+      "bytes": 126,
+      "sha256": "9fa073f6ee9a5ce3d39aad32e924f3b1d6542ebf7fc34cab875b22ab37ba1142"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-char.stdout",
+      "bytes": 5,
+      "sha256": "3e13534234d289337a67a0e44265a31f179902062faa91570650da282a32ac70"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-string.bend",
+      "bytes": 314,
+      "sha256": "7ff5a2331d30623f4df2a317d793a749b3f88740de88d990170927fd1a0758c7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-string.stdout",
+      "bytes": 19,
+      "sha256": "9dde57507de7eca9ddb42f3c439da4bf2125c34ca97223d6336ac00a2750d344"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-aggregate.bend",
+      "bytes": 440,
+      "sha256": "ffa6a0da942acbde8d606d276de926a4bba37279d19b4178ac6ffea8f1b90ba3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-aggregate.stdout",
+      "bytes": 54,
+      "sha256": "624521b7b1806e2de2c25bc8ae9b6bef6f37495b8d3c83b36e090fccf7dc7924"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/u32-wide-wrap.bend",
+      "bytes": 580,
+      "sha256": "437e7ee60da1a86bb62ac4bcec557ac0c3708fd9912fe840731ed33d4dc455f2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/u32-wide-wrap.stdout",
+      "bytes": 5,
+      "sha256": "26ea373847580972e5a298c73201fe5ad4a32ee3e1c23f4d754f8433900609c3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/u32-divmod.bend",
+      "bytes": 882,
+      "sha256": "a900f26ba8322d2b4c67aa1b2e44087694f44982610f4eef73ce08a62980330a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/u32-divmod.stdout",
+      "bytes": 2,
+      "sha256": "2e6d31a5983a91251bfae5aefa1c0a19d8ba3cf601d0e8a706b4cfa9661a6b8a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/nat-native.bend",
+      "bytes": 1432,
+      "sha256": "aac3f56702e9fbbb7ac9867d30597f98fc989ce8c8dabb229cc49416c2b6890f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/nat-native.stdout",
+      "bytes": 11,
+      "sha256": "1618aedff51fc552a93a684de0e5f98a546e978ac8427b544dc927c1e908df0a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/f32-literal.bend",
+      "bytes": 413,
+      "sha256": "22b50936b38419fb9bfbfc480a2ac293a82cdf49109f88968b3cb5a22525e115"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/f32-literal.stdout",
+      "bytes": 5,
+      "sha256": "b6daa603a2f9d854c9902d488a848de7099157f30f45ccddec68d70a8869f0d7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/f32-arithmetic.bend",
+      "bytes": 1380,
+      "sha256": "7516af85c298776c712a1577a053a96941d623853a47d1356f6282378a46ff57"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/f32-arithmetic.stdout",
+      "bytes": 2,
+      "sha256": "aa67a169b0bba217aa0aa88a65346920c84c42447c36ba5f7ea65f422c1fe5d8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-u32.bend",
+      "bytes": 55,
+      "sha256": "adc0caa2c7abc817f445fac6c5a04eb144553d6b7db7b10ee06dc2e689cb57d9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-u32.stdout",
+      "bytes": 3,
+      "sha256": "084c799cd551dd1d8d5c5f9a5d593b2e931f5e36122ee5c793c1d08a19839cc0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-f32.bend",
+      "bytes": 59,
+      "sha256": "98f704e293612773d2abcae11a9be2ec77e2d7e39e9a0a91cdb406f181dd9422"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-f32.stdout",
+      "bytes": 4,
+      "sha256": "5ca797740e932dd836206d2b4bea825c83bc47e25e45006d0a2b62fe71be40b6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/mandelbrot.bend",
+      "bytes": 6699,
+      "sha256": "c11d6bb0e81b5fa415166dc7cdc8c31759c4e9dda70fbdb0697cfa2d0aa025fb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/mandelbrot.stdout",
+      "bytes": 10,
+      "sha256": "1529134f8bd7e9d3989167e1dca0726ea4b01b5dba6e8e3407e966f8f37c7758"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/editdist.bend",
+      "bytes": 5997,
+      "sha256": "114864a8db3c61d2e76bee986d636bf17b9bf022a286689fd1fbfb691d251f47"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/editdist.stdout",
+      "bytes": 11,
+      "sha256": "cc6e43baccd95c4f6e49e8df91d27c77ab7d18524070d83af32977422f0b1280"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/tree-bitonic.bend",
+      "bytes": 4756,
+      "sha256": "97be00441287e3983f24b9c0f96a98f6f4bf27293a80a93bec50f21939401d60"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/tree-bitonic.stdout",
+      "bytes": 10,
+      "sha256": "4d9faad3bd6736bd6b3be55577bba89ff3064588775afe8959dd2f709ca6aa21"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/lexer.bend",
+      "bytes": 7257,
+      "sha256": "f1d8e7e7e68f5c79053fadc35ba2f6e95f0115a40a5e6ce792e34d9f1faafdae"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/lexer.stdout",
+      "bytes": 11,
+      "sha256": "ce7ae380f780c64e26dc0b2fd2f547364c4e837bdecd61714cf04150768acf0a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/symreg.bend",
+      "bytes": 5530,
+      "sha256": "110281edb46376f825439d098c92821fbe27b04976c60afc274bc0750a426e21"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/symreg.stdout",
+      "bytes": 11,
+      "sha256": "f05c8aaefce9db36f5dba04e256b126cfb0a89ae25f972c7471b1c0208dd6611"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/test-morning-program.bend",
+      "bytes": 3202,
+      "sha256": "a7be6340e8ff5a1c3301600a72fae35d6e2d02be664b04f750ce6ca04c4c6546"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/test-morning-program.stdout",
+      "bytes": 30,
+      "sha256": "9e5fd72ad28164f5db0a3ed002f64f949589ec8fdd6edab70c75b470c2e8f106"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/test-evening-program.bend",
+      "bytes": 2287,
+      "sha256": "e8a1ebdac1314b5a9ee0df8b81f078ff8ee69573114b78f5dab8bb6550181120"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/test-evening-program.stdout",
+      "bytes": 6,
+      "sha256": "cf851cececb82500a8e12ff58941a08d2b8f3c22a142ed09052a9b43e43658c4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/test-rle-roundtrip.bend",
+      "bytes": 2878,
+      "sha256": "20187aee760181fb99e5ef7bb5a99657a8ddc280209b64bb81199f7f72f5ff45"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/test-rle-roundtrip.stdout",
+      "bytes": 3,
+      "sha256": "25d4f2a86deb5e2574bb3210b67bb24fcc4afb19f93a7b65a057daa874a9d18e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/test-map-set-ops.bend",
+      "bytes": 5401,
+      "sha256": "356b4bb2038b5c936e1bb4145fb456c5c0fead83ccdf3424f40752280d19c70d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/test-map-set-ops.stdout",
+      "bytes": 6,
+      "sha256": "32c66107f0f4f2053128e519681fc8e88806d0d2b17607ce9f2362aff66ad6c7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/raytrace.bend",
+      "bytes": 14347,
+      "sha256": "973df11c929b3a986243480de2ddfa99d748f14bc35be047bc2776c47652149a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/raytrace.stdout",
+      "bytes": 7,
+      "sha256": "51919f34152cd418fdf625a4841ebf64375948e001d5699d7702a206e17ac834"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/local-pair.bend",
+      "bytes": 6364,
+      "sha256": "56c01dca88ff7b512ae63fedc3d121d0f48ca4a1b503a44429642fcb35ecc308"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/local-pair.stdout",
+      "bytes": 11,
+      "sha256": "4a736bfb1ff7d70ef494f46a67ca008db9fb990a30e28898d56d21583bf734fe"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/local-fold.bend",
+      "bytes": 895,
+      "sha256": "0f4debc5a89841f90bb12411ba63485655203480098abe905c10294e8f165603"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/local-fold.stdout",
+      "bytes": 11,
+      "sha256": "c07893fbab1330de5e1c73495d24da59ca965c977e89fa9ea508b2f316ab3e20"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/scalar-region-0.bend",
+      "bytes": 1611,
+      "sha256": "9d0d65645fd1032a19407559a95a0acd4e2079fac5635b975e863f021a7ddb86"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/scalar-region-0.stdout",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/scalar-region-8192.bend",
+      "bytes": 1614,
+      "sha256": "59001938cf0d45c7a2b8504a9eefddf4f55621ab86599549b86f00cf389181f7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/scalar-region-8192.stdout",
+      "bytes": 5,
+      "sha256": "131e490ede5d344e5a8539d4a5335ccc70db7eacb397b876cffc72578b1331bf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/complete-generic-row32.bend",
+      "bytes": 6961,
+      "sha256": "cf526d1b4844156b13ccde18fd476b5ea0f2e573f9d2239800725dec3c03a95a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/complete-generic-row32.stdout",
+      "bytes": 1079,
+      "sha256": "4a46fa4ae7c3a221cb96234de88bbcb734def182978a6bb808c59f97607615bd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-editdist-0-17.bend",
+      "bytes": 5998,
+      "sha256": "6009bae6b7ba1c9633e6a3a80deea4e1390f61ea9a4ef64d1b9ade9416011e38"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-editdist-0-17.stdout",
+      "bytes": 10,
+      "sha256": "21b9be437c896d87aa31e79362f67bd1be2412475608c78db32faf94276acf78"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-editdist-3-123.bend",
+      "bytes": 5999,
+      "sha256": "e3ffde2e54888e8ea3c0206148e7d4c1fe85e04ff62faad9b3f9caada488bdbd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-editdist-3-123.stdout",
+      "bytes": 11,
+      "sha256": "ac6d1585d80481772f899f026dd6916441268f40ac62652bfb2b9e31cb35f151"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-lexer-6-17.bend",
+      "bytes": 7258,
+      "sha256": "fce7adf9cb0e86b9febea652aca13a14fb7efd8e0d719b9136fa4b1f47089c6a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-lexer-6-17.stdout",
+      "bytes": 11,
+      "sha256": "277e42c734c5a92d99527e42cc5d3bb80d51f5f72f5e454855397c2f70d9e9e3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-lexer-10-123.bend",
+      "bytes": 7260,
+      "sha256": "a1b195b4f078c7795a2397ce1f0cb62706817d2f17fb1922be6075aefc2883b5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-lexer-10-123.stdout",
+      "bytes": 11,
+      "sha256": "5d310e186595597765446008b87ca55c4ecd369896021c968b942a1ff31060d0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-tree-bitonic-6-17.bend",
+      "bytes": 4757,
+      "sha256": "e974d3a2b3f058f76afe3d0d6f1b2145491fe08375dcc4aa79be8c06af31823b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-tree-bitonic-6-17.stdout",
+      "bytes": 11,
+      "sha256": "7db94831fc6984f4a54b78a6f704e45531675ca0ac60999021cdbed1153de90e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-tree-bitonic-9-123.bend",
+      "bytes": 4758,
+      "sha256": "1851213548a73a0c7c0920b769bdca320054ff52edff1cd6259349dac1ef5ada"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-tree-bitonic-9-123.stdout",
+      "bytes": 11,
+      "sha256": "dcaa9bb22003955b251b474fb7bb9c5f0db22c8591442bc3179841fc4dc677b9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-symreg-4-17.bend",
+      "bytes": 5530,
+      "sha256": "23770b9bb6942011185121a89366301398023ee6b4838c29b4730a5a88e77967"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-symreg-4-17.stdout",
+      "bytes": 11,
+      "sha256": "143d53cf55a4bb7e2c520fccada27265408f3569de6e180e61d1cb6ee7238095"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-symreg-7-123.bend",
+      "bytes": 5531,
+      "sha256": "abef37e5140f822b91538774feca5b7787372e0cd2a331b41ae6b280263e6a4c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-symreg-7-123.stdout",
+      "bytes": 11,
+      "sha256": "553d5d7a53135c492d7e7bacd94b3251b65415f3f329d2fcdb6f4fd96d27e6a2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-local-fold-128-0.bend",
+      "bytes": 893,
+      "sha256": "6b6788ddc2a50a15580b1cdbe1a7d3ec0b44f00f8c1971ab8c65c34a34c744ac"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-local-fold-128-0.stdout",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-local-fold-8192-123.bend",
+      "bytes": 896,
+      "sha256": "57eae36eb5136527f981595dbe5d5c174114589b24f050943e83de7774553ca2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-local-fold-8192-123.stdout",
+      "bytes": 10,
+      "sha256": "f775b02cdd5c72ac32b98b6762df5e8044b2e2762d343117e9dfc0619ae47a90"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-mandelbrot-grid-4-7.bend",
+      "bytes": 7526,
+      "sha256": "babf84596971e8efefa9f0bbcfeb913865dec01eea74dfdf9e40733ca41e3acc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-mandelbrot-grid-4-7.stdout",
+      "bytes": 11,
+      "sha256": "cafe8262db90e367b89b3f2c255c8744aff6b347dc1670030ac7c1593bfe706e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-mandelbrot-grid-5-31.bend",
+      "bytes": 7527,
+      "sha256": "2f022ed26bba1f49f3394097097657edc4ab2805eb976c1b31207e6f5ac5d367"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-mandelbrot-grid-5-31.stdout",
+      "bytes": 11,
+      "sha256": "89edfcb7ef2677c2dfd4f1fdd6ef159952e6e075f23428b7b1d5274731b55b32"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-ray-active-64-2440.bend",
+      "bytes": 14817,
+      "sha256": "990a71db072d0952e1b4da7f953c23a6527a9de7db4efdfad273285c48b14be0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-ray-active-64-2440.stdout",
+      "bytes": 11,
+      "sha256": "6bbe11f3e34f9de410ad15166630aac90dc832b59a96cd7afa70dda0b76b3b57"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-ray-active-256-2240.bend",
+      "bytes": 14818,
+      "sha256": "df3b2a4cd2afd020421f634ebef7f5d80b422b0a2a13c4609f0350a9f94cb440"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-ray-active-256-2240.stdout",
+      "bytes": 11,
+      "sha256": "15adde12f874e278a5e96d86c4ee20d18706611252e5cfc76a3ba63d29170dcf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-closures-64.bend",
+      "bytes": 1530,
+      "sha256": "92fa3e271d5e214fd88483ec6e589d1d387fcfc2e7c721354d6bf69713a73d6a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-closures-64.stdout",
+      "bytes": 5,
+      "sha256": "802ecf9f67ccf8fda5913f286bd0b3236043f5f4b0c2ae7e7bf3d05f1758f865"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-closures-256.bend",
+      "bytes": 1532,
+      "sha256": "08b5d1183fe1d6238fe76c51f24b964ad2171c01073e2353e84b4b1f5870724c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-closures-256.stdout",
+      "bytes": 6,
+      "sha256": "8cf0773ed5fb75c07a06d48185cd73ff8f1921c588db76a3df3731a557c40b15"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-list-pipeline-128.bend",
+      "bytes": 3388,
+      "sha256": "f5bdc47ec9a89047f40a11b8e81d23eb33cb949c3505d6e1525a993e93d76f5e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-list-pipeline-128.stdout",
+      "bytes": 5,
+      "sha256": "809ab2f049b9783d5e9adfb1bf8d82e182bf71399bc90f29aaee87b629a2872d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-list-pipeline-512.bend",
+      "bytes": 3389,
+      "sha256": "fbe32fc48373173da23e045061d7175418d49988c8978e1a83d5da1f9729b199"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-list-pipeline-512.stdout",
+      "bytes": 5,
+      "sha256": "44ab14762588da84f4ab2c7bf98c05ce405b5c4aaeb400a2744aece356e3de1b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-bst-32.bend",
+      "bytes": 3188,
+      "sha256": "4e12565c965dbab098c19a0afe345c3baaf0c1d7990a057cf73eccb49d009018"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-bst-32.stdout",
+      "bytes": 11,
+      "sha256": "b7a494ce750469a6fed69c06230045f5c1caba8de5ecd9436e2d103730a5f531"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-bst-64.bend",
+      "bytes": 3189,
+      "sha256": "0c884c255eba9d1701574c61a2956ec152727dfc88e66c591f94e97d618d659b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-bst-64.stdout",
+      "bytes": 10,
+      "sha256": "baf85e5e8a3c69ee0b60c4f2fc3c7d95c8f8c5c0f3bc833a0b7e08a91911e714"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-unicode-text-16.bend",
+      "bytes": 5405,
+      "sha256": "d030d98d49b4abb9f1a4aed6569f62c5486eba97be9fba364b2e21f7a4dde077"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-unicode-text-16.stdout",
+      "bytes": 289,
+      "sha256": "835a668452e7da17c4390ebeca7cc5422056349b74011e53130159d123360eaf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-unicode-text-64.bend",
+      "bytes": 5406,
+      "sha256": "5f667491a5a287234a07586f652af50c3c77317aea2b4ce5ea57c42f0727bf18"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-unicode-text-64.stdout",
+      "bytes": 1217,
+      "sha256": "aeda13750dee71bdab8ccf55cde8b155af956f8c029a34c14e0d1c8579b8bb2a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-expression-32.bend",
+      "bytes": 1660,
+      "sha256": "77dc03cf4c7f695c75c902dc6b300c516b6dfe429921e7359b4453797603891c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-expression-32.stdout",
+      "bytes": 8,
+      "sha256": "9df4cdfc83c2d0716ba30f59863b300d8417818fda1d7e456bb3c83c1929a7c7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-expression-128.bend",
+      "bytes": 1662,
+      "sha256": "3276c1370eaba8646283c86e80177de9dc21c293e47dba6e78273f9430b58c68"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-expression-128.stdout",
+      "bytes": 11,
+      "sha256": "17c0949f352d912dbd3adbf58715df4efca36ad86aac5f7935cde269d7db89d3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-map-churn-32.bend",
+      "bytes": 1815,
+      "sha256": "7d8cff63b0e5a64a215b8c1f787a187a59b9c5d8d6003a945b330247134fda97"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-map-churn-32.stdout",
+      "bytes": 11,
+      "sha256": "780a7cb6c7cd5f82e073caecb1b0f05fbcbad90380586829e3afc26683c7b474"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-map-churn-128.bend",
+      "bytes": 1817,
+      "sha256": "99892f1c473588fcc814f17594b9d173343ef195bda6378113dbf088bea01120"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-map-churn-128.stdout",
+      "bytes": 11,
+      "sha256": "f10e5e29d4f448b0f6aeef222b95d6790cf410196cd6d64d27156e08c7ecafb8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-numeric-recurrence-256.bend",
+      "bytes": 669,
+      "sha256": "edbd823a9e71440f0e54f9ef99a2d715cce570723a7baabb1d872f28e73f5584"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-numeric-recurrence-256.stdout",
+      "bytes": 11,
+      "sha256": "2b264d0566bf2985927030a3bcc6d1220830caef66eb39571c2e1545aa48f27e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-numeric-recurrence-1024.bend",
+      "bytes": 671,
+      "sha256": "8ccdf2eb956031ce72ddf2c93d6dfb3c82aa9cc74628028af6942e62edc4a8f7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-numeric-recurrence-1024.stdout",
+      "bytes": 11,
+      "sha256": "f608ef31e8a3c58b641dd85ce36b9f759bcd685e138466186e32ae709ce1a086"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-record-aggregation-64.bend",
+      "bytes": 1753,
+      "sha256": "4fbcf006955bdbd5d9603561be818f9ea03ebdf416cf5df385a6e6158c8dabc4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-record-aggregation-64.stdout",
+      "bytes": 215,
+      "sha256": "d83688ded4a47d7a93d617a687fb1e804b178378530dbcfc633910793e62270a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-record-aggregation-256.bend",
+      "bytes": 1755,
+      "sha256": "ba45a2b17ac9753d3398abfb907bd17418684b40f8da199b7d00ae9f6d58af2f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-record-aggregation-256.stdout",
+      "bytes": 215,
+      "sha256": "01cbdc92897ea7a07ec1c00311b88060caad9df5716b069898a0027a3fd07bc2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/qualification.py",
+      "bytes": 12875,
+      "sha256": "4aecaad1d946b295472e77afa0a59cb18134958af9478f9e7921388ff7127227"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/request.py",
+      "bytes": 18653,
+      "sha256": "f2638c055de2de15c80b8e36d888337a3061f8f7725c55f16ad645943562566c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/native.py",
+      "bytes": 13731,
+      "sha256": "bc53fc000d45574e913904f7e899d785e5c98050b0942d14a81118b9ab009e58"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/assets.py",
+      "bytes": 7994,
+      "sha256": "02a8b03647f5a6292502363fc1bb79147b61196a9271c21cee55a2ec6bf64dba"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/common.py",
+      "bytes": 4809,
+      "sha256": "d9a16fef18cf936499e51f8c7f36a653f2921ef9a50f846257c2e8bc460ec6d1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/manifests/assets-native.json",
+      "bytes": 18715,
+      "sha256": "e1b0d32addd09c80b8b791dd74c5bcdc93cb1e5183b115b2d1b37231ad96125e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/manifests/assets-native.json",
+      "bytes": 18715,
+      "sha256": "e1b0d32addd09c80b8b791dd74c5bcdc93cb1e5183b115b2d1b37231ad96125e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/request.py",
+      "bytes": 18653,
+      "sha256": "f2638c055de2de15c80b8e36d888337a3061f8f7725c55f16ad645943562566c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/assets.py",
+      "bytes": 7994,
+      "sha256": "02a8b03647f5a6292502363fc1bb79147b61196a9271c21cee55a2ec6bf64dba"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/common.py",
+      "bytes": 4809,
+      "sha256": "d9a16fef18cf936499e51f8c7f36a653f2921ef9a50f846257c2e8bc460ec6d1"
+    },
+    {
+      "file": "/usr/bin/python3.9",
+      "bytes": 5451288,
+      "sha256": "ca7655083b581ffe36c72dcb445857704db533ca39b03f79c97d8d0ef3bef9af"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/nt-reverse.bend",
+      "bytes": 1084,
+      "sha256": "dfb8a3f7b5c432a2a4686bb014a0c9cc74d0d56c2c16264a3427026b090169ff"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native-n2/program",
+      "bytes": 16140352,
+      "sha256": "88be8d8627ed84f5cf4ebb84bafa96c890b074fa49803056d6fd8a52fd8aaa02"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native-n2/report.json",
+      "bytes": 19111,
+      "sha256": "5672432ccb4761954c153c7b95b41c9b576ad0eaa610da216cdaf6fc40acff59"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "bytes": 75064,
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/base/base.p130",
+      "bytes": 2612691,
+      "sha256": "984fad041a0ba855ea0aaedd384485afa2153da644655c00882eb50ace33817f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/qbe",
+      "bytes": 262024,
+      "sha256": "1eca24288f9574ad57032ac88f11c3f74ced605838749226d77a9acd4443e5f4"
+    },
+    {
+      "file": "/usr/bin/x86_64-linux-gnu-as",
+      "bytes": 472248,
+      "sha256": "fac4e966afe9223dbab23aa15d27d144af81de4a44c8cad97c1dde290adb9493"
+    },
+    {
+      "file": "/usr/bin/x86_64-linux-gnu-gcc-10",
+      "bytes": 817704,
+      "sha256": "693abcb42e67fb871673f258a3644257ca69a209691ec4d8137a42442834bd19"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    }
+  ],
+  "selected": [
+    "focused/nt-reverse",
+    "focused/string-reverse-heldout",
+    "focused/higher-order-capture",
+    "focused/non-tail-list",
+    "focused/arrays-io",
+    "focused/lexer-scan",
+    "focused/negative-type",
+    "focused/negative-affine",
+    "focused/negative-foreign",
+    "focused/pure-char",
+    "focused/pure-string",
+    "focused/pure-aggregate",
+    "focused/u32-wide-wrap",
+    "focused/u32-divmod",
+    "focused/nat-native",
+    "focused/f32-literal",
+    "focused/f32-arithmetic",
+    "focused/pure-u32",
+    "focused/pure-f32",
+    "broad/mandelbrot",
+    "broad/editdist",
+    "broad/tree-bitonic",
+    "broad/lexer",
+    "broad/symreg",
+    "broad/test-morning-program",
+    "broad/test-evening-program",
+    "broad/test-rle-roundtrip",
+    "broad/test-map-set-ops",
+    "broad/raytrace",
+    "broad/local-pair",
+    "broad/local-fold",
+    "broad/scalar-region-0",
+    "broad/scalar-region-8192",
+    "broad/complete-generic-row32",
+    "broad/variation-editdist-0-17",
+    "broad/variation-editdist-3-123",
+    "broad/variation-lexer-6-17",
+    "broad/variation-lexer-10-123",
+    "broad/variation-tree-bitonic-6-17",
+    "broad/variation-tree-bitonic-9-123",
+    "broad/variation-symreg-4-17",
+    "broad/variation-symreg-7-123",
+    "broad/variation-local-fold-128-0",
+    "broad/variation-local-fold-8192-123",
+    "broad/variation-mandelbrot-grid-4-7",
+    "broad/variation-mandelbrot-grid-5-31",
+    "broad/variation-ray-active-64-2440",
+    "broad/variation-ray-active-256-2240",
+    "broad/coverage-closures-64",
+    "broad/coverage-closures-256",
+    "broad/coverage-list-pipeline-128",
+    "broad/coverage-list-pipeline-512",
+    "broad/coverage-bst-32",
+    "broad/coverage-bst-64",
+    "broad/coverage-unicode-text-16",
+    "broad/coverage-unicode-text-64",
+    "broad/coverage-expression-32",
+    "broad/coverage-expression-128",
+    "broad/coverage-map-churn-32",
+    "broad/coverage-map-churn-128",
+    "broad/coverage-numeric-recurrence-256",
+    "broad/coverage-numeric-recurrence-1024",
+    "broad/coverage-record-aggregation-64",
+    "broad/coverage-record-aggregation-256"
+  ],
+  "rows": [
+    {
+      "id": "focused/nt-reverse",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/nt-reverse.bend",
+        "bytes": 1084,
+        "sha256": "dfb8a3f7b5c432a2a4686bb014a0c9cc74d0d56c2c16264a3427026b090169ff"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "z\n|bc|a|tail\nc|b|head/b|c/head\ncd|ab\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/00-nt-reverse/emission/report.json",
+        "bytes": 11060,
+        "sha256": "64de1a198bf840ae69c577443f7c136f12797c6c85d4388fb85012bee89c80b8"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/00-nt-reverse/build/report.json",
+        "bytes": 10463,
+        "sha256": "10029bb7dca209ff06cafcd1ad3c8f2c1b0b9240a81541ac0348c5a7e3289583"
+      }
+    },
+    {
+      "id": "focused/string-reverse-heldout",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/string-reverse-heldout.bend",
+        "bytes": 463,
+        "sha256": "4a2d2e5de64d79f5c51a0e86822f7275a156992e4b653ca9807a6e8ae28f4d45"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "tail\n\u00e9\ud83d\ude42a!\n\u0301e\ncba!/abc\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/01-string-reverse-heldout/emission/report.json",
+        "bytes": 11163,
+        "sha256": "7832a85f743a779eeab53e0aa75e36e35b52799ea4fcf0fb59c9cc022e68a814"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/01-string-reverse-heldout/build/report.json",
+        "bytes": 10763,
+        "sha256": "915cf4a10a13722af64253284f1b46be16b0328efbf5bb55a2c5f7709941cead"
+      }
+    },
+    {
+      "id": "focused/higher-order-capture",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/higher-order-capture.bend",
+        "bytes": 229,
+        "sha256": "18c8832cf958215dab9cbedb66b191e0a31def3911296fc62b99c75a7b0ae715"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "captured=42\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/02-higher-order-capture/emission/report.json",
+        "bytes": 11145,
+        "sha256": "e731f76d673cfefebbbd5d5b162a092e2191591ce70e74ca9c38bba23afd4a79"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/02-higher-order-capture/build/report.json",
+        "bytes": 10725,
+        "sha256": "3dbb84794afb2557f2250a48a7c29d8f4888128abc74b48e763809dd8ef9f30a"
+      }
+    },
+    {
+      "id": "focused/non-tail-list",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/non-tail-list.bend",
+        "bytes": 422,
+        "sha256": "b8fb74a95b2c646f0f92545a4acde8e0049c01d99d647459babef56dc3700452"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "list=14\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/03-non-tail-list/emission/report.json",
+        "bytes": 11067,
+        "sha256": "38f46c514efbde0adfaa8c535c58f98a8dcefa7f27c865a2978ce19af5c2903d"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/03-non-tail-list/build/report.json",
+        "bytes": 10508,
+        "sha256": "d63ead6a3bd3cfa9dc8c1e92613eae46fad7aed24a02063fdb34c8f45d653127"
+      }
+    },
+    {
+      "id": "focused/arrays-io",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/arrays-io.bend",
+        "bytes": 878,
+        "sha256": "733e76ff92db5e4eece60e2bd2b047d67218a56a0d2b5fdac7447ef1238d1cc1"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "arrays=seed/changed/seed\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/04-arrays-io/emission/report.json",
+        "bytes": 11034,
+        "sha256": "0b4c2a094c0709f37bfa44d14b3521d019f4ae2e31bc7c9464fad7a7254ccb3f"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/04-arrays-io/build/report.json",
+        "bytes": 10429,
+        "sha256": "905a24898480c8ddb2a7dafbec46173d05186259f816becf4bbc89fb238f139e"
+      }
+    },
+    {
+      "id": "focused/lexer-scan",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/lexer-scan.bend",
+        "bytes": 2851,
+        "sha256": "c1ad42a85efe49274d0e0c5f607c6abde3d34de282299f7802eb3987d179d01f"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "abc_9.rest/+/10\n1e-3/+/4\n1e/+x/2\nx/-y/1\n/\u03bba/0\nabc/!/3\n//0\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/05-lexer-scan/emission/report.json",
+        "bytes": 11047,
+        "sha256": "1c181858fc01bb900dcb35df35619cbca0a4480262cf1c131e11172d3b6070d8"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/05-lexer-scan/build/report.json",
+        "bytes": 10463,
+        "sha256": "775bb7b02830de79f071a73eb2c24a8bd04f5445a73c6756d41867bf6e6bac83"
+      }
+    },
+    {
+      "id": "focused/negative-type",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/negative-type.bend",
+        "bytes": 54,
+        "sha256": "13576b71e13d0336b5b6ae1ad913ae8a5f636a6f292b097288c8ae3aa49ff2be"
+      },
+      "expected": {
+        "stage": "source-admission",
+        "exitNonzero": true,
+        "outputAbsent": true,
+        "exactDiagnostic": false
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/06-negative-type/emission/report.json",
+        "bytes": 11124,
+        "sha256": "2f431e2126035592dd05837afdd7676d46a74e15ce9314412676b2fc0925742f"
+      },
+      "expectedStage": "source-admission",
+      "rule": {
+        "target": "qbe",
+        "phase": "source-admission",
+        "prefix": "check: main:",
+        "exact": false
+      }
+    },
+    {
+      "id": "focused/negative-affine",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/negative-affine.bend",
+        "bytes": 115,
+        "sha256": "2fe0f07f5556ca57e97bfece4afa302524bfa20f2583f3f3a999e466ecd1c0b4"
+      },
+      "expected": {
+        "stage": "source-admission",
+        "exitNonzero": true,
+        "outputAbsent": true,
+        "exactDiagnostic": false
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/07-negative-affine/emission/report.json",
+        "bytes": 11149,
+        "sha256": "f38107c0b0e7434ff7fd18dc776e46383cb03996e1ee978117699f86ca205e0a"
+      },
+      "expectedStage": "source-admission",
+      "rule": {
+        "target": "qbe",
+        "phase": "source-admission",
+        "prefix": "check: twice:",
+        "exact": false
+      }
+    },
+    {
+      "id": "focused/negative-foreign",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/negative-foreign.bend",
+        "bytes": 260,
+        "sha256": "19a5b3686b07e311f3291e0c26a6308a76d4930f869d7f6a70249c94365ba11c"
+      },
+      "expected": {
+        "stage": "backend-admission",
+        "exitNonzero": true,
+        "outputAbsent": true,
+        "exactDiagnostic": false
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/08-negative-foreign/emission/report.json",
+        "bytes": 11156,
+        "sha256": "fc8bbb00e13cf93ef6552112ee3082e2c61968767906527af7c72bce5aedb203"
+      },
+      "expectedStage": "backend-admission",
+      "rule": {
+        "target": "qbe",
+        "phase": "backend-admission",
+        "prefix": "compile: foreign provider unavailable in fixed runtime: p108_missing",
+        "exact": true
+      }
+    },
+    {
+      "id": "focused/pure-char",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-char.bend",
+        "bytes": 126,
+        "sha256": "9fa073f6ee9a5ce3d39aad32e924f3b1d6542ebf7fc34cab875b22ab37ba1142"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "'\u00e9'\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/09-pure-char/emission/report.json",
+        "bytes": 11036,
+        "sha256": "fae1a86b36639dcd1801040b4d180b73416ff5d014954007c3ae01464ab66cae"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/09-pure-char/build/report.json",
+        "bytes": 10433,
+        "sha256": "e47c95785c78e68d0194ff4eaef0abe651def0746dba6e9bcea81674feaf4808"
+      }
+    },
+    {
+      "id": "focused/pure-string",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-string.bend",
+        "bytes": 314,
+        "sha256": "7ff5a2331d30623f4df2a317d793a749b3f88740de88d990170927fd1a0758c7"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "\"Ol\u00e1 \u65e5\u672c \ud83d\ude42\"\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/10-pure-string/emission/report.json",
+        "bytes": 11051,
+        "sha256": "fe797301413865189ad3235c18f8318055b0691e08cfbfa1e1c9391b813dd6dc"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/10-pure-string/build/report.json",
+        "bytes": 10485,
+        "sha256": "e5063e93036e63f23afaa75f7b7e82a49e5a8a5e5f13b7d409365473922b26f1"
+      }
+    },
+    {
+      "id": "focused/pure-aggregate",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-aggregate.bend",
+        "bytes": 440,
+        "sha256": "ffa6a0da942acbde8d606d276de926a4bba37279d19b4178ac6ffea8f1b90ba3"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "([7, 7, 7], (1, 2n, 'c'), [[True{}], []], [3, 3], [])\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/11-pure-aggregate/emission/report.json",
+        "bytes": 11081,
+        "sha256": "3f291cefd5b86b8e66e726460bd53bdd010209e5973f567c5af2392f0de056a0"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/11-pure-aggregate/build/report.json",
+        "bytes": 10590,
+        "sha256": "bd94417db70910137efb006b140116d9a6c7db15961c829b7b7b73ba0c9c781d"
+      }
+    },
+    {
+      "id": "focused/u32-wide-wrap",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/u32-wide-wrap.bend",
+        "bytes": 580,
+        "sha256": "437e7ee60da1a86bb62ac4bcec557ac0c3708fd9912fe840731ed33d4dc455f2"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "94 q\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/12-u32-wide-wrap/emission/report.json",
+        "bytes": 11092,
+        "sha256": "4609a956c367d8db38bbd56b19146010ca248d3a68da3a2ecba8de2caedb6571"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/12-u32-wide-wrap/build/report.json",
+        "bytes": 10514,
+        "sha256": "09c4c0481ed0dddaf32b513e06ed6fd1a5a05c00952660b04ad43b6f14976fe0"
+      }
+    },
+    {
+      "id": "focused/u32-divmod",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/u32-divmod.bend",
+        "bytes": 882,
+        "sha256": "a900f26ba8322d2b4c67aa1b2e44087694f44982610f4eef73ce08a62980330a"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "9\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/13-u32-divmod/emission/report.json",
+        "bytes": 11044,
+        "sha256": "bc84b226c901f45d683b1c14a6a1b4651f8d59c7db3dbcd4374516edcbb15b5b"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/13-u32-divmod/build/report.json",
+        "bytes": 10442,
+        "sha256": "517ebea0fa85c03fde01cb8db1df7cc39964bd6d426308896237c5b14e428869"
+      }
+    },
+    {
+      "id": "focused/nat-native",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/nat-native.bend",
+        "bytes": 1432,
+        "sha256": "aac3f56702e9fbbb7ac9867d30597f98fc989ce8c8dabb229cc49416c2b6890f"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "2084116725\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/14-nat-native/emission/report.json",
+        "bytes": 11061,
+        "sha256": "19feeebbd4de0779bcdcee90f3404c991227973d0512126131bae08bbc904353"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/14-nat-native/build/report.json",
+        "bytes": 10460,
+        "sha256": "014b183b63b713cd3a5d507687ff9bdc4674cdc94a6a0253614e36fe4d1f9431"
+      }
+    },
+    {
+      "id": "focused/f32-literal",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/f32-literal.bend",
+        "bytes": 413,
+        "sha256": "22b50936b38419fb9bfbfc480a2ac293a82cdf49109f88968b3cb5a22525e115"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "4 10\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/15-f32-literal/emission/report.json",
+        "bytes": 11052,
+        "sha256": "0d40a4e8e49a267cfa2694b7b0d3a0b0b8914d197279eb0ce753ba0cbc76ded9"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/15-f32-literal/build/report.json",
+        "bytes": 10456,
+        "sha256": "ddb10ba58cf11fa1a04fab9dc157028f11e65f0508e3b63f49ac8cdaa7f1585d"
+      }
+    },
+    {
+      "id": "focused/f32-arithmetic",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/f32-arithmetic.bend",
+        "bytes": 1380,
+        "sha256": "7516af85c298776c712a1577a053a96941d623853a47d1356f6282378a46ff57"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "8\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/16-f32-arithmetic/emission/report.json",
+        "bytes": 11085,
+        "sha256": "3bb0849067d9e49c1e2931c08036937ae58beb0924152521ab66edbe57edebe4"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/16-f32-arithmetic/build/report.json",
+        "bytes": 10541,
+        "sha256": "727ca45e39a7c3222500b397bd18cceb030924043a4feac3abd6f4ac3d7ad982"
+      }
+    },
+    {
+      "id": "focused/pure-u32",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-u32.bend",
+        "bytes": 55,
+        "sha256": "adc0caa2c7abc817f445fac6c5a04eb144553d6b7db7b10ee06dc2e689cb57d9"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "42\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/17-pure-u32/emission/report.json",
+        "bytes": 11034,
+        "sha256": "a13454362a797ae7af0d5718494f22f4787fc7117e3a09368b893be7a7a806d5"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/17-pure-u32/build/report.json",
+        "bytes": 10417,
+        "sha256": "e4543dbea60f79f9180ad4fb0648bcb914a6d0381e1c1d6fd8a11719cb32bc04"
+      }
+    },
+    {
+      "id": "focused/pure-f32",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-f32.bend",
+        "bytes": 59,
+        "sha256": "98f704e293612773d2abcae11a9be2ec77e2d7e39e9a0a91cdb406f181dd9422"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "4.0\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/18-pure-f32/emission/report.json",
+        "bytes": 11021,
+        "sha256": "63d5880488abdc9da9a499ff27faaa33f60f645d8c1cf43d177d602015fa1602"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/18-pure-f32/build/report.json",
+        "bytes": 10383,
+        "sha256": "0007490d0526d612e4f27f58d01efb14dbb780f717b2583629c9131c29574aab"
+      }
+    },
+    {
+      "id": "broad/mandelbrot",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/mandelbrot.bend",
+        "bytes": 6699,
+        "sha256": "c11d6bb0e81b5fa415166dc7cdc8c31759c4e9dda70fbdb0697cfa2d0aa025fb"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "887240761\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/19-mandelbrot/emission/report.json",
+        "bytes": 11036,
+        "sha256": "8ac3456ac40782b72f841f94d2fe88c7ffa7d427f9485bf06604cac4015dc101"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/19-mandelbrot/build/report.json",
+        "bytes": 10444,
+        "sha256": "d65e35e0e8ad279b54ae7cdfe73099b2d3b849cfd1e05e5cd9bc0a4c29148d16"
+      }
+    },
+    {
+      "id": "broad/editdist",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/editdist.bend",
+        "bytes": 5997,
+        "sha256": "114864a8db3c61d2e76bee986d636bf17b9bf022a286689fd1fbfb691d251f47"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "2065873279\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/20-editdist/emission/report.json",
+        "bytes": 11027,
+        "sha256": "e756ed673f8bfaf90fa8e4281d043ab0adab3f4a45201bacfef4741d02b0d669"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/20-editdist/build/report.json",
+        "bytes": 10436,
+        "sha256": "39def5e99351ccb39543360638849c96c7899158f0615f1b50aeac2cc01fe22a"
+      }
+    },
+    {
+      "id": "broad/tree-bitonic",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/tree-bitonic.bend",
+        "bytes": 4756,
+        "sha256": "97be00441287e3983f24b9c0f96a98f6f4bf27293a80a93bec50f21939401d60"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "971629740\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/21-tree-bitonic/emission/report.json",
+        "bytes": 11079,
+        "sha256": "4454514c9c3f14359ba4477c1c43b9ff4d5624602a7e65045bede7754111e825"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/21-tree-bitonic/build/report.json",
+        "bytes": 10525,
+        "sha256": "ff11b82bfe99357723e06607891c176c062caa73ebfa11e6fd2797d80cca79b5"
+      }
+    },
+    {
+      "id": "broad/lexer",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/lexer.bend",
+        "bytes": 7257,
+        "sha256": "f1d8e7e7e68f5c79053fadc35ba2f6e95f0115a40a5e6ce792e34d9f1faafdae"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "1822208108\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/22-lexer/emission/report.json",
+        "bytes": 10991,
+        "sha256": "e10f257a45c6bb62e70a77f4862d93b25072038b8a667658dc9b453f009c90cc"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/22-lexer/build/report.json",
+        "bytes": 10370,
+        "sha256": "a29b40e6d6e3577cc8ef602ae19d1fd90463eae31ff45d585ae518433feb960e"
+      }
+    },
+    {
+      "id": "broad/symreg",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/symreg.bend",
+        "bytes": 5530,
+        "sha256": "110281edb46376f825439d098c92821fbe27b04976c60afc274bc0750a426e21"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "2490246820\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/23-symreg/emission/report.json",
+        "bytes": 11011,
+        "sha256": "c49b782fe8567a62d40769ebba5c04a39a329ec6dc0ed3e1948f57ffc4d25e9d"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/23-symreg/build/report.json",
+        "bytes": 10362,
+        "sha256": "fb621c3fec955a1ac1948cca08fb53e1cbb73648c90217849b59b986a5eb6d4e"
+      }
+    },
+    {
+      "id": "broad/test-morning-program",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/test-morning-program.bend",
+        "bytes": 3202,
+        "sha256": "a7be6340e8ff5a1c3301600a72fae35d6e2d02be664b04f750ce6ca04c4c6546"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "a-bb-ccc 8 1877 42 lo hello 3\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/24-test-morning-program/emission/report.json",
+        "bytes": 11126,
+        "sha256": "f5e0f5c97f9c7eddd3b4bbd1bd0ce938c4cd8385d3fba62ad43b8c1ffc20eb12"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/24-test-morning-program/build/report.json",
+        "bytes": 10739,
+        "sha256": "432b7378f61d2493c666c28b039e34621d8794b959419cbd078b3653032863dc"
+      }
+    },
+    {
+      "id": "broad/test-evening-program",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/test-evening-program.bend",
+        "bytes": 2287,
+        "sha256": "e8a1ebdac1314b5a9ee0df8b81f078ff8ee69573114b78f5dab8bb6550181120"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "81111\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/25-test-evening-program/emission/report.json",
+        "bytes": 11126,
+        "sha256": "e0db4a5724d3f52a47c236d9ed97dd8583562bec78efa1d18cd223144d6e2f93"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/25-test-evening-program/build/report.json",
+        "bytes": 10699,
+        "sha256": "688c8a2a837f9cc9e289a7e3fff746cdd92eccab6ed8df43a908fbbad8f7957a"
+      }
+    },
+    {
+      "id": "broad/test-rle-roundtrip",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/test-rle-roundtrip.bend",
+        "bytes": 2878,
+        "sha256": "20187aee760181fb99e5ef7bb5a99657a8ddc280209b64bb81199f7f72f5ff45"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "11\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/26-test-rle-roundtrip/emission/report.json",
+        "bytes": 11103,
+        "sha256": "50d9bb391d695b908b1ced569fdd486d4fd3cc10bc5d457663f689b480b8c42f"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/26-test-rle-roundtrip/build/report.json",
+        "bytes": 10670,
+        "sha256": "d15bfd018c375bc3ca7067c9adc63574ad27897f22c3b4c7abc405926c6276c9"
+      }
+    },
+    {
+      "id": "broad/test-map-set-ops",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/test-map-set-ops.bend",
+        "bytes": 5401,
+        "sha256": "356b4bb2038b5c936e1bb4145fb456c5c0fead83ccdf3424f40752280d19c70d"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "11111\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/27-test-map-set-ops/emission/report.json",
+        "bytes": 11090,
+        "sha256": "1588bfb12c1a23acb52f8d00b52feba1e2609432e7cc34d36ccdfbb5263d8f67"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/27-test-map-set-ops/build/report.json",
+        "bytes": 10617,
+        "sha256": "d6f4b14fc99784baae5b3b085758e2bd8adf5e3dee010e710084e2745cc15700"
+      }
+    },
+    {
+      "id": "broad/raytrace",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/raytrace.bend",
+        "bytes": 14347,
+        "sha256": "973df11c929b3a986243480de2ddfa99d748f14bc35be047bc2776c47652149a"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "402971\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/28-raytrace/emission/report.json",
+        "bytes": 11021,
+        "sha256": "3918283c41e89170cfd826eff5af45e9f3bc459f2a12d287024b1f0f9897581f"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/28-raytrace/build/report.json",
+        "bytes": 10411,
+        "sha256": "34f4b8ac53065220b8752189d8a44b6377e9d6c44d3fd86b0920bbedd8bf770b"
+      }
+    },
+    {
+      "id": "broad/local-pair",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/local-pair.bend",
+        "bytes": 6364,
+        "sha256": "56c01dca88ff7b512ae63fedc3d121d0f48ca4a1b503a44429642fcb35ecc308"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "1866542166\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/29-local-pair/emission/report.json",
+        "bytes": 11035,
+        "sha256": "2f162d76387d12e65ab5d4f244e713ee1e1760f03a2ef1ab0b6f9db77463f205"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/29-local-pair/build/report.json",
+        "bytes": 10466,
+        "sha256": "45a3a0b1f3748c0b2a774fcfa1ec6910558b7daa2155f2543295e84bef67a4ff"
+      }
+    },
+    {
+      "id": "broad/local-fold",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/local-fold.bend",
+        "bytes": 895,
+        "sha256": "0f4debc5a89841f90bb12411ba63485655203480098abe905c10294e8f165603"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "2339999928\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/30-local-fold/emission/report.json",
+        "bytes": 11030,
+        "sha256": "772046a94b52de088cc214707857e248a7fb853653e6ef59387f030112f80739"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/30-local-fold/build/report.json",
+        "bytes": 10446,
+        "sha256": "87b75f8e0eaecb7354f7dbca5de3df0dd05b454b1b08b5b31811283fd8033ef8"
+      }
+    },
+    {
+      "id": "broad/scalar-region-0",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/scalar-region-0.bend",
+        "bytes": 1611,
+        "sha256": "9d0d65645fd1032a19407559a95a0acd4e2079fac5635b975e863f021a7ddb86"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "0\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/31-scalar-region-0/emission/report.json",
+        "bytes": 11079,
+        "sha256": "d842906bd0ef2e30d905d19a4dbbc94ab4b87c7f45663e1cb61db99319130045"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/31-scalar-region-0/build/report.json",
+        "bytes": 10555,
+        "sha256": "e7a1bb6b3beaaede4870d82d20ae37a61cc0b63ff9f80ea694968a03e3e34a8b"
+      }
+    },
+    {
+      "id": "broad/scalar-region-8192",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/scalar-region-8192.bend",
+        "bytes": 1614,
+        "sha256": "59001938cf0d45c7a2b8504a9eefddf4f55621ab86599549b86f00cf389181f7"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "8192\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/32-scalar-region-8192/emission/report.json",
+        "bytes": 11115,
+        "sha256": "b18c7181f9344f5451662717121f5bd3af47329f3eaeb6b4f3e9bbb082918a77"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/32-scalar-region-8192/build/report.json",
+        "bytes": 10673,
+        "sha256": "15fd59b824553d4cb05732914935c1a2d051ba6557039411fbd6090497027e68"
+      }
+    },
+    {
+      "id": "broad/complete-generic-row32",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/complete-generic-row32.bend",
+        "bytes": 6961,
+        "sha256": "cf526d1b4844156b13ccde18fd476b5ea0f2e573f9d2239800725dec3c03a95a"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "[[0,2,1,1,0,0,0,1,1,0,0,2,3,1,3,1,0,1,0,0,2,1,0,0,0,2,0,2,1,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,1,2,0,1,0,1,2,0,0,0,0,2,0,0,3,0,1,2,0,1,2,0,0,1,3,3,0,0,3,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,1,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/33-complete-generic-row32/emission/report.json",
+        "bytes": 11152,
+        "sha256": "a330f7af5aae1fe6e05d0fae41c51ce83318d81b4d6591dc5906b29e84abbcff"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/33-complete-generic-row32/build/report.json",
+        "bytes": 10762,
+        "sha256": "bb6f06ae1e1b59021ced9017e490b15670c23dc133c3b687dd75e15c80c683ea"
+      }
+    },
+    {
+      "id": "broad/variation-editdist-0-17",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-editdist-0-17.bend",
+        "bytes": 5998,
+        "sha256": "6009bae6b7ba1c9633e6a3a80deea4e1390f61ea9a4ef64d1b9ade9416011e38"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "226010650\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/34-variation-editdist-0-17/emission/report.json",
+        "bytes": 11161,
+        "sha256": "76531b00b1548bec8ed9cad55e183ac543a5506790f3d829a0b639c52d906468"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/34-variation-editdist-0-17/build/report.json",
+        "bytes": 10769,
+        "sha256": "bcdac6a6356f9d19bd074c60b09dd93c47be2b4e352d65efb2d38f6a08535aca"
+      }
+    },
+    {
+      "id": "broad/variation-editdist-3-123",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-editdist-3-123.bend",
+        "bytes": 5999,
+        "sha256": "e3ffde2e54888e8ea3c0206148e7d4c1fe85e04ff62faad9b3f9caada488bdbd"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "4131746436\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/35-variation-editdist-3-123/emission/report.json",
+        "bytes": 11162,
+        "sha256": "05e976a7788cbbc076331bef5f6799f0f7cbda808ac1a5390c1273e452ce0a8e"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/35-variation-editdist-3-123/build/report.json",
+        "bytes": 10829,
+        "sha256": "f15cdf09a9136d427a48022e2eb0eec52ef3360e9adb759452c2c8cde253a7b2"
+      }
+    },
+    {
+      "id": "broad/variation-lexer-6-17",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-lexer-6-17.bend",
+        "bytes": 7258,
+        "sha256": "fce7adf9cb0e86b9febea652aca13a14fb7efd8e0d719b9136fa4b1f47089c6a"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "3462121268\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/36-variation-lexer-6-17/emission/report.json",
+        "bytes": 11126,
+        "sha256": "d9c48106d5eaf979fc1aecf0f88b487a5a03e5f775fa32ab5ed60060975aff80"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/36-variation-lexer-6-17/build/report.json",
+        "bytes": 10695,
+        "sha256": "845992f9f0af4963c6c2d8bbd3aeb498e8011ea13cdf95e3215291262b97e975"
+      }
+    },
+    {
+      "id": "broad/variation-lexer-10-123",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-lexer-10-123.bend",
+        "bytes": 7260,
+        "sha256": "a1b195b4f078c7795a2397ce1f0cb62706817d2f17fb1922be6075aefc2883b5"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "3601667849\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/37-variation-lexer-10-123/emission/report.json",
+        "bytes": 11154,
+        "sha256": "3a362347dcd3f38760650385ce8fb71637cbe15c643dad8841cda07727d0cc21"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/37-variation-lexer-10-123/build/report.json",
+        "bytes": 10776,
+        "sha256": "3aefe2d47f27541ec47ef80afc651df46810c072196360338486aa0b7b749c26"
+      }
+    },
+    {
+      "id": "broad/variation-tree-bitonic-6-17",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-tree-bitonic-6-17.bend",
+        "bytes": 4757,
+        "sha256": "e974d3a2b3f058f76afe3d0d6f1b2145491fe08375dcc4aa79be8c06af31823b"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "2700561448\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/38-variation-tree-bitonic-6-17/emission/report.json",
+        "bytes": 11191,
+        "sha256": "74c00a739244d794e54240fafb8af36e3b75e1dbb959008686ec3ccdb0c8ba85"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/38-variation-tree-bitonic-6-17/build/report.json",
+        "bytes": 10860,
+        "sha256": "dc54c24047caddd8ee83ce2ee381e80209a0f4a71ce8e92ef94833680bc884af"
+      }
+    },
+    {
+      "id": "broad/variation-tree-bitonic-9-123",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-tree-bitonic-9-123.bend",
+        "bytes": 4758,
+        "sha256": "1851213548a73a0c7c0920b769bdca320054ff52edff1cd6259349dac1ef5ada"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "2950706516\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/39-variation-tree-bitonic-9-123/emission/report.json",
+        "bytes": 11207,
+        "sha256": "98ab7eeba1f34d178d0cf836a1ef2621cde84506f4f4f11ca5c6bdd4d058b116"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/39-variation-tree-bitonic-9-123/build/report.json",
+        "bytes": 10904,
+        "sha256": "b2b9f7a32e2335c48dfc413dfa39874c5fcc7f5f2c1e2dacc59623e982953651"
+      }
+    },
+    {
+      "id": "broad/variation-symreg-4-17",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-symreg-4-17.bend",
+        "bytes": 5530,
+        "sha256": "23770b9bb6942011185121a89366301398023ee6b4838c29b4730a5a88e77967"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "2759212979\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/40-variation-symreg-4-17/emission/report.json",
+        "bytes": 11134,
+        "sha256": "801db780b3dc76f63c556a12de7034afdd563fce29bf2e9b38cdaca6ee8a799d"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/40-variation-symreg-4-17/build/report.json",
+        "bytes": 10727,
+        "sha256": "fc2d13a6fdf701877ec16f81e03bdbee5c91f1a6bb682b6fc43bdebb9299900e"
+      }
+    },
+    {
+      "id": "broad/variation-symreg-7-123",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-symreg-7-123.bend",
+        "bytes": 5531,
+        "sha256": "abef37e5140f822b91538774feca5b7787372e0cd2a331b41ae6b280263e6a4c"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "3769601746\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/41-variation-symreg-7-123/emission/report.json",
+        "bytes": 11144,
+        "sha256": "50919a961456bd21633872198be5beade4f1164dd6d165617fa589ca9ba5dac6"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/41-variation-symreg-7-123/build/report.json",
+        "bytes": 10783,
+        "sha256": "c7df88618806fa9683a8a15669930af49672e85b7eccca7d3638e2e18521cc85"
+      }
+    },
+    {
+      "id": "broad/variation-local-fold-128-0",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-local-fold-128-0.bend",
+        "bytes": 893,
+        "sha256": "6b6788ddc2a50a15580b1cdbe1a7d3ec0b44f00f8c1971ab8c65c34a34c744ac"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "0\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/42-variation-local-fold-128-0/emission/report.json",
+        "bytes": 11164,
+        "sha256": "844ea4e6009f054dda6866baa964cf25689832262b8ef8a649b74dc21c2cc47f"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/42-variation-local-fold-128-0/build/report.json",
+        "bytes": 10848,
+        "sha256": "e1917c0f12e04ab05679977fea6f9fd4ce269f53308223346c80aa8d3cd59fce"
+      }
+    },
+    {
+      "id": "broad/variation-local-fold-8192-123",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-local-fold-8192-123.bend",
+        "bytes": 896,
+        "sha256": "57eae36eb5136527f981595dbe5d5c174114589b24f050943e83de7774553ca2"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "805701512\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/43-variation-local-fold-8192-123/emission/report.json",
+        "bytes": 11202,
+        "sha256": "6b9e7cd55b03b67af7151dcfd483bff318bc447511443c83b4403c3959e0da68"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/43-variation-local-fold-8192-123/build/report.json",
+        "bytes": 10941,
+        "sha256": "d8719b3fd999c74ff565d06f254ebed1dffd1ee53ef28f26f947d9386040062d"
+      }
+    },
+    {
+      "id": "broad/variation-mandelbrot-grid-4-7",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-mandelbrot-grid-4-7.bend",
+        "bytes": 7526,
+        "sha256": "babf84596971e8efefa9f0bbcfeb913865dec01eea74dfdf9e40733ca41e3acc"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "3135859970\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/44-variation-mandelbrot-grid-4-7/emission/report.json",
+        "bytes": 11207,
+        "sha256": "de47d6c7518009f0b8eb51a650520d491f9089b954197285242624f088f60353"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/44-variation-mandelbrot-grid-4-7/build/report.json",
+        "bytes": 10953,
+        "sha256": "57ec701c588d6305eacc166f68da17b6320b06875c8803d41406299f6e9917cc"
+      }
+    },
+    {
+      "id": "broad/variation-mandelbrot-grid-5-31",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-mandelbrot-grid-5-31.bend",
+        "bytes": 7527,
+        "sha256": "2f022ed26bba1f49f3394097097657edc4ab2805eb976c1b31207e6f5ac5d367"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "2471659814\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/45-variation-mandelbrot-grid-5-31/emission/report.json",
+        "bytes": 11226,
+        "sha256": "b44512e1cd04322ba81fc428b3e38e601ac0563e96e58202ed70a8c06e9bf8a9"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/45-variation-mandelbrot-grid-5-31/build/report.json",
+        "bytes": 10955,
+        "sha256": "71fd9e9fb098518dc0c5cc38f8cf4e17b376147d1de02e0cafafc1eec951e2f2"
+      }
+    },
+    {
+      "id": "broad/variation-ray-active-64-2440",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-ray-active-64-2440.bend",
+        "bytes": 14817,
+        "sha256": "990a71db072d0952e1b4da7f953c23a6527a9de7db4efdfad273285c48b14be0"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "1457676559\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/46-variation-ray-active-64-2440/emission/report.json",
+        "bytes": 11199,
+        "sha256": "92d852ad33cd771b8b2a08862f896714bd56e6ec9e3a706fa1a84dfeee2d049e"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/46-variation-ray-active-64-2440/build/report.json",
+        "bytes": 10934,
+        "sha256": "822aec8b452d599aa414274da5906749d371f4c20cfa25e8f2c5870d9351a9c4"
+      }
+    },
+    {
+      "id": "broad/variation-ray-active-256-2240",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/variation-ray-active-256-2240.bend",
+        "bytes": 14818,
+        "sha256": "df3b2a4cd2afd020421f634ebef7f5d80b422b0a2a13c4609f0350a9f94cb440"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "2166930202\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/47-variation-ray-active-256-2240/emission/report.json",
+        "bytes": 11208,
+        "sha256": "41463d5f62f1ab1194c6a4726a18514743026f6d42e2399ec34141d094bf7671"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/47-variation-ray-active-256-2240/build/report.json",
+        "bytes": 10946,
+        "sha256": "53406fbf1413e2d224caae27dd8834f68956e3182aeb8ac85c638608ee222718"
+      }
+    },
+    {
+      "id": "broad/coverage-closures-64",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-closures-64.bend",
+        "bytes": 1530,
+        "sha256": "92fa3e271d5e214fd88483ec6e589d1d387fcfc2e7c721354d6bf69713a73d6a"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "2097\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/48-coverage-closures-64/emission/report.json",
+        "bytes": 11127,
+        "sha256": "d39a75f60775e6d62c7490d00dabd4001e3eaece586aba50e6bff074d2e4f411"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/48-coverage-closures-64/build/report.json",
+        "bytes": 10707,
+        "sha256": "bc977c9e11c14af3c0a3d44dbed5415ec368d1af5331d1523937703b8acd6936"
+      }
+    },
+    {
+      "id": "broad/coverage-closures-256",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-closures-256.bend",
+        "bytes": 1532,
+        "sha256": "08b5d1183fe1d6238fe76c51f24b964ad2171c01073e2353e84b4b1f5870724c"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "33019\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/49-coverage-closures-256/emission/report.json",
+        "bytes": 11133,
+        "sha256": "407ac6440f0299ee4d79d000b27027189180dc6fbe54e74b6db8b9add76c9852"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/49-coverage-closures-256/build/report.json",
+        "bytes": 10705,
+        "sha256": "8e9df4929afab422c98f9b7ed89e4cb83d549c87b3d3914ba9805db542865e4c"
+      }
+    },
+    {
+      "id": "broad/coverage-list-pipeline-128",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-list-pipeline-128.bend",
+        "bytes": 3388,
+        "sha256": "f5bdc47ec9a89047f40a11b8e81d23eb33cb949c3505d6e1525a993e93d76f5e"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "1904\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/50-coverage-list-pipeline-128/emission/report.json",
+        "bytes": 11190,
+        "sha256": "8ff9ebd63ef210a1ae23269e2779ff55a6f182521117bdd4f16e2384aaef73f7"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/50-coverage-list-pipeline-128/build/report.json",
+        "bytes": 10855,
+        "sha256": "c6d53c9a37d76aa19b0bc76cb3cb4a4bc8cbab75496f23bf8e029b03042f3eee"
+      }
+    },
+    {
+      "id": "broad/coverage-list-pipeline-512",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-list-pipeline-512.bend",
+        "bytes": 3389,
+        "sha256": "fbe32fc48373173da23e045061d7175418d49988c8978e1a83d5da1f9729b199"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "7616\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/51-coverage-list-pipeline-512/emission/report.json",
+        "bytes": 11181,
+        "sha256": "692abe4ce349c837fe1e32cb13993608633b29a567c80c9934a1f724a4d42b26"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/51-coverage-list-pipeline-512/build/report.json",
+        "bytes": 10850,
+        "sha256": "1d12e2111ffc858813c44de4ca34b18fcc71014569c343184d5610c9bae7927d"
+      }
+    },
+    {
+      "id": "broad/coverage-bst-32",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-bst-32.bend",
+        "bytes": 3188,
+        "sha256": "4e12565c965dbab098c19a0afe345c3baaf0c1d7990a057cf73eccb49d009018"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "1802825775\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/52-coverage-bst-32/emission/report.json",
+        "bytes": 11091,
+        "sha256": "e4d31dec660807aa175d2dec40b87e7e5ac31ba7f4f3f4ca32114368fabb8a0b"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/52-coverage-bst-32/build/report.json",
+        "bytes": 10559,
+        "sha256": "12566753a9af81c94f014fd27c9a0c2121d39e2a40e8184c08ee8342fdbb847b"
+      }
+    },
+    {
+      "id": "broad/coverage-bst-64",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-bst-64.bend",
+        "bytes": 3189,
+        "sha256": "0c884c255eba9d1701574c61a2956ec152727dfc88e66c591f94e97d618d659b"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "861157620\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/53-coverage-bst-64/emission/report.json",
+        "bytes": 11093,
+        "sha256": "c2d34a1a75c16099c1c86827a5deaa0794593d079181580ac6aef5aea0b276cc"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/53-coverage-bst-64/build/report.json",
+        "bytes": 10563,
+        "sha256": "4dd05dff8f6695f27e42f366046661ccf5e2a8d09177e54447fc2661eeaee48e"
+      }
+    },
+    {
+      "id": "broad/coverage-unicode-text-16",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-unicode-text-16.bend",
+        "bytes": 5405,
+        "sha256": "d030d98d49b4abb9f1a4aed6569f62c5486eba97be9fba364b2e21f7a4dde077"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|17|\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/54-coverage-unicode-text-16/emission/report.json",
+        "bytes": 11162,
+        "sha256": "0b574b39a7ecb489e7f723e05a0dca3c681c10923db6a7d1217d3ab7151d4ec0"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/54-coverage-unicode-text-16/build/report.json",
+        "bytes": 10803,
+        "sha256": "59d1831f9004f63d343de28ca709cfef81fd626476f17e92760147b592ff490b"
+      }
+    },
+    {
+      "id": "broad/coverage-unicode-text-64",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-unicode-text-64.bend",
+        "bytes": 5406,
+        "sha256": "5f667491a5a287234a07586f652af50c3c77317aea2b4ce5ea57c42f0727bf18"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\u03b1|\u03b2|\ud83c\udf4e|\u4e2d|123|\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/55-coverage-unicode-text-64/emission/report.json",
+        "bytes": 11174,
+        "sha256": "3338d7c766cbba8d7d18c5c400a9a4f4942b9d10a03f16007a17067335a320ef"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/55-coverage-unicode-text-64/build/report.json",
+        "bytes": 10790,
+        "sha256": "0d4c7206901b9a5800a71fee9ce9f21f9ed0c6f05ff0787cdc548722162a30e7"
+      }
+    },
+    {
+      "id": "broad/coverage-expression-32",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-expression-32.bend",
+        "bytes": 1660,
+        "sha256": "77dc03cf4c7f695c75c902dc6b300c516b6dfe429921e7359b4453797603891c"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "2928000\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/56-coverage-expression-32/emission/report.json",
+        "bytes": 11141,
+        "sha256": "17f0d163e152886a970c06e07ebb4a3195cd86ec7d177d1268897b4c5b82751c"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/56-coverage-expression-32/build/report.json",
+        "bytes": 10750,
+        "sha256": "e7548b1ee2487da2f7addb754d4f7211b0ad475c3fa9ee8c6104aafc8effc5cd"
+      }
+    },
+    {
+      "id": "broad/coverage-expression-128",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-expression-128.bend",
+        "bytes": 1662,
+        "sha256": "3276c1370eaba8646283c86e80177de9dc21c293e47dba6e78273f9430b58c68"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "3393903617\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/57-coverage-expression-128/emission/report.json",
+        "bytes": 11163,
+        "sha256": "3b5aebe233e742d6814b518563bb5a37078aff2e9711881febb7deb89ece7430"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/57-coverage-expression-128/build/report.json",
+        "bytes": 10799,
+        "sha256": "36b35057050200d7f55cfd2511f9e8656f92e215241fdc9ad8aa25e968e60b66"
+      }
+    },
+    {
+      "id": "broad/coverage-map-churn-32",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-map-churn-32.bend",
+        "bytes": 1815,
+        "sha256": "7d8cff63b0e5a64a215b8c1f787a187a59b9c5d8d6003a945b330247134fda97"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "2930913555\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/58-coverage-map-churn-32/emission/report.json",
+        "bytes": 11134,
+        "sha256": "07307db9bf48aae1f176d42670502cabd87a566a83825501c35a48f8bf1b954a"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/58-coverage-map-churn-32/build/report.json",
+        "bytes": 10738,
+        "sha256": "87cf3b717e097682e42cad6a630c0a3d0b0bafd6c22f83cfc422d7cb9385345b"
+      }
+    },
+    {
+      "id": "broad/coverage-map-churn-128",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-map-churn-128.bend",
+        "bytes": 1817,
+        "sha256": "99892f1c473588fcc814f17594b9d173343ef195bda6378113dbf088bea01120"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "3714872484\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/59-coverage-map-churn-128/emission/report.json",
+        "bytes": 11156,
+        "sha256": "0e4fcc17f35ababcc902f6372eb6d3362157981493ea9d7543f5baaf19058729"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/59-coverage-map-churn-128/build/report.json",
+        "bytes": 10736,
+        "sha256": "81a0cb85ae6ec4c9f9d73f28baf4821927929bf9c2e9b6021513c2c1ffe0ee9a"
+      }
+    },
+    {
+      "id": "broad/coverage-numeric-recurrence-256",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-numeric-recurrence-256.bend",
+        "bytes": 669,
+        "sha256": "edbd823a9e71440f0e54f9ef99a2d715cce570723a7baabb1d872f28e73f5584"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "2747714257\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/60-coverage-numeric-recurrence-256/emission/report.json",
+        "bytes": 11219,
+        "sha256": "3f2d65fb9bfe7144a97ba5f5a931d71364648cc5e7d341a3888f0d960cf55293"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/60-coverage-numeric-recurrence-256/build/report.json",
+        "bytes": 10989,
+        "sha256": "7991d82aaccdd220dc7f2a3563e25efa1d96d3be916d14c06403f0dc8a665070"
+      }
+    },
+    {
+      "id": "broad/coverage-numeric-recurrence-1024",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-numeric-recurrence-1024.bend",
+        "bytes": 671,
+        "sha256": "8ccdf2eb956031ce72ddf2c93d6dfb3c82aa9cc74628028af6942e62edc4a8f7"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "1376326140\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/61-coverage-numeric-recurrence-1024/emission/report.json",
+        "bytes": 11249,
+        "sha256": "65a8ba31a46b05f6710f58b387ce03a2827226a544bbb22b0cf569e9f37cd2a3"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/61-coverage-numeric-recurrence-1024/build/report.json",
+        "bytes": 11015,
+        "sha256": "25bd306ba552e1d81db23d0f1a4d6335dcc89e24142ce1d203a7461983dca4a1"
+      }
+    },
+    {
+      "id": "broad/coverage-record-aggregation-64",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-record-aggregation-64.bend",
+        "bytes": 1753,
+        "sha256": "4fbcf006955bdbd5d9603561be818f9ea03ebdf416cf5df385a6e6158c8dabc4"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "\u90e8\u95800=1840;\u90e8\u95801=1620;\u90e8\u958010=1952;\u90e8\u958011=2100;\u90e8\u958012=1248;\u90e8\u958013=1396;\u90e8\u958014=1544;\u90e8\u958015=1692;\u90e8\u95802=1768;\u90e8\u95803=1916;\u90e8\u95804=2064;\u90e8\u95805=2212;\u90e8\u95806=2360;\u90e8\u95807=1508;\u90e8\u95808=1656;\u90e8\u95809=1804;\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/62-coverage-record-aggregation-64/emission/report.json",
+        "bytes": 11224,
+        "sha256": "edfeff8a38ff5da279fc235d5378787b55a28aeb06989ec59c1c2cdadf354eab"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/62-coverage-record-aggregation-64/build/report.json",
+        "bytes": 10969,
+        "sha256": "77ff249e2d6ee601182e86fc44872ba5a73d6b85988f443ea122f39aa702f696"
+      }
+    },
+    {
+      "id": "broad/coverage-record-aggregation-256",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/coverage-record-aggregation-256.bend",
+        "bytes": 1755,
+        "sha256": "ba45a2b17ac9753d3398abfb907bd17418684b40f8da199b7d00ae9f6d58af2f"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "\u90e8\u95800=6968;\u90e8\u95801=7560;\u90e8\u958010=7888;\u90e8\u958011=7008;\u90e8\u958012=7600;\u90e8\u958013=8192;\u90e8\u958014=7784;\u90e8\u958015=7376;\u90e8\u95802=8152;\u90e8\u95803=7744;\u90e8\u95804=7336;\u90e8\u95805=6928;\u90e8\u95806=7520;\u90e8\u95807=8112;\u90e8\u95808=8704;\u90e8\u95809=8296;\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/63-coverage-record-aggregation-256/emission/report.json",
+        "bytes": 11235,
+        "sha256": "39616ba811d088b6103a71df80a2e617d0cf6135d25bc63239ace801a95a158a"
+      },
+      "build": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/full-native64/63-coverage-record-aggregation-256/build/report.json",
+        "bytes": 10993,
+        "sha256": "e396c70da116f12e932e6f81d9345ca78da9f6faaeafbc7819978bd42db6f6a8"
+      }
+    }
+  ],
+  "scope": "Focused19/broad45 regression sources with retained independent whole-output oracles. No performance, kernel-proof, unrestricted-provider, GPU or multi-mutator qualification.",
+  "unsupportedPolicy": "Unsupported is retained and prevents passed=true; it is never a pass.",
+  "historicalPolicy": "Historical catalog fields are provenance only; no historical file is read.",
+  "changedInputs": [],
+  "counts": {
+    "pass": 64,
+    "fail": 0,
+    "unsupported": 0
+  },
+  "seconds": 67.27287198696285
+}

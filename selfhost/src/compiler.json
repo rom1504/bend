@@ -8479,6 +8479,11 @@
     ],
     [
       186,
+      "law",
+      "p175p_grow_word"
+    ],
+    [
+      186,
       "def",
       "f_grow_base"
     ],
@@ -8546,6 +8551,16 @@
       186,
       "def",
       "f_grow"
+    ],
+    [
+      186,
+      "law",
+      "p175p_grow_newline"
+    ],
+    [
+      186,
+      "law",
+      "p175p_grow_suffix"
     ],
     [
       186,
@@ -23611,6 +23626,11 @@
       174,
       "def",
       "driver_bad_names"
+    ],
+    [
+      174,
+      "law",
+      "p175rn_walk"
     ],
     [
       174,
@@ -42431,6 +42451,81 @@
       103,
       "def",
       "p171sc_retry"
+    ],
+    [
+      186,
+      "law",
+      "p175p_grow_operator"
+    ],
+    [
+      186,
+      "def",
+      "p175p_grow_word"
+    ],
+    [
+      186,
+      "law",
+      "p175p_grow_sign"
+    ],
+    [
+      186,
+      "law",
+      "p175p_grow_shift"
+    ],
+    [
+      186,
+      "def",
+      "p175p_grow_operator"
+    ],
+    [
+      186,
+      "def",
+      "p175p_grow_sign"
+    ],
+    [
+      186,
+      "law",
+      "p175p_shift_end"
+    ],
+    [
+      186,
+      "def",
+      "p175p_grow_shift"
+    ],
+    [
+      186,
+      "def",
+      "p175p_shift_end"
+    ],
+    [
+      186,
+      "def",
+      "p175p_grow_newline"
+    ],
+    [
+      186,
+      "law",
+      "p175p_grow_bang"
+    ],
+    [
+      186,
+      "def",
+      "p175p_grow_suffix"
+    ],
+    [
+      186,
+      "def",
+      "p175p_grow_bang"
+    ],
+    [
+      174,
+      "def",
+      "p175rn_name"
+    ],
+    [
+      174,
+      "def",
+      "p175rn_walk"
     ]
   ],
   "defaultProfile": "qbe",
@@ -43036,149 +43131,96 @@
     "sha256": "5905d69085d1d9475627c90120befc9758b4f38cab651b8b3c4dfe5402da8bf3"
   },
   "inventoryChange": {
+    "phase": 175,
+    "kind": "measured-parser-lookahead-and-report-membership",
     "added": [
       [
-        107,
+        "def",
+        "p175p_grow_bang"
+      ],
+      [
+        "def",
+        "p175p_grow_newline"
+      ],
+      [
+        "def",
+        "p175p_grow_operator"
+      ],
+      [
+        "def",
+        "p175p_grow_shift"
+      ],
+      [
+        "def",
+        "p175p_grow_sign"
+      ],
+      [
+        "def",
+        "p175p_grow_suffix"
+      ],
+      [
+        "def",
+        "p175p_grow_word"
+      ],
+      [
+        "def",
+        "p175p_shift_end"
+      ],
+      [
+        "def",
+        "p175rn_name"
+      ],
+      [
+        "def",
+        "p175rn_walk"
+      ],
+      [
         "law",
-        "p171ff_direct_match"
+        "p175p_grow_bang"
       ],
       [
-        109,
         "law",
-        "p171ff_product_match"
+        "p175p_grow_newline"
       ],
       [
-        103,
         "law",
-        "p171sc_retry"
+        "p175p_grow_operator"
       ],
       [
-        217,
         "law",
-        "p171s_put"
+        "p175p_grow_shift"
       ],
       [
-        217,
         "law",
-        "p171s_seed"
+        "p175p_grow_sign"
       ],
       [
-        107,
-        "def",
-        "p171ff_direct_match"
-      ],
-      [
-        109,
-        "def",
-        "p171ff_product_match"
-      ],
-      [
-        217,
-        "def",
-        "p171s_constructor_rows"
-      ],
-      [
-        217,
-        "def",
-        "p171s_seed"
-      ],
-      [
-        217,
-        "def",
-        "p171s_cached"
-      ],
-      [
-        217,
-        "def",
-        "p171s_put"
-      ],
-      [
-        103,
-        "type",
-        "P171SCPlan"
-      ],
-      [
-        103,
-        "def",
-        "p171sc_finish"
-      ],
-      [
-        103,
-        "def",
-        "p171sc_result"
-      ],
-      [
-        103,
         "law",
-        "p171sc_params"
+        "p175p_grow_suffix"
       ],
       [
-        103,
-        "def",
-        "p171sc_param"
+        "law",
+        "p175p_grow_word"
       ],
       [
-        103,
-        "def",
-        "p171sc_head"
+        "law",
+        "p175p_shift_end"
       ],
       [
-        103,
-        "def",
-        "p171sc_params"
-      ],
-      [
-        103,
-        "def",
-        "p171sc_schema"
-      ],
-      [
-        103,
-        "def",
-        "p171sc_attach"
-      ],
-      [
-        103,
-        "def",
-        "p171sc_analyzed"
-      ],
-      [
-        103,
-        "def",
-        "p171sc_cached"
-      ],
-      [
-        103,
-        "def",
-        "p171sc_catalogue"
-      ],
-      [
-        103,
-        "def",
-        "p171sc_local_ready"
-      ],
-      [
-        103,
-        "def",
-        "p171sc_ordinary"
-      ],
-      [
-        103,
-        "def",
-        "p171sc_replan"
-      ],
-      [
-        103,
-        "def",
-        "p171sc_retry_step"
-      ],
-      [
-        103,
-        "def",
-        "p171sc_retry"
+        "law",
+        "p175rn_walk"
       ]
     ],
     "removed": [],
-    "scope": "Exact Phase171 measured integration:16 replacements,28 added declarations; native source byte-identical to74cd7de3. Independent source/interface/native qualification remains required."
+    "replaced": [
+      "dr_own_names",
+      "f_grow_base",
+      "f_grow_existing"
+    ],
+    "source": {
+      "bytes": 3163584,
+      "sha256": "a0e953a84de73aa22403dde7ec2144540197633857a0f7b5b9784f9e66f5ad04"
+    },
+    "scope": "Exact measured source transport; target/image qualification is separate."
   }
 }

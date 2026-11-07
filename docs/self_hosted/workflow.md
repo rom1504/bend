@@ -29,7 +29,7 @@ selfhost/bend input.bend -o output.c
 
 The installed [current selector](../../selfhost/manifests/current.json) binds
 JS B2, public native C N1 and qualified QBE N2 to their recorded source and
-qualification evidence. Phase174 installs all three from current maintained
+qualification evidence. Phase174 installs all three from its recorded Phase171
 source, with an explicit thin profile for the public C CLI. The default
 `qbe-n2` asset points to `selfhost/dist/qbe/bend`; `qbe-api` selects the separately
 checked, cache-only B1 API at `selfhost/dist/qbe/hosted-api.mjs`. Native P140/2
@@ -37,6 +37,15 @@ positive reuse has its own gate; native error recovery and object-unit support
 are not inferred from that result. A new assembly, successful small differential run or
 moved tool does not install another release. Package availability, supported
 imports/effects and image identities change only through qualified promotion.
+
+The maintained source now includes the independently checked and native-qualified
+[Phase175 frontend changes](../../implementation/phase175/README.md). Its explicit
+N2 image and receipt are `selfhost/build/phase175/full-native-n2/program` and
+`report.json` in the same directory. Select both with `--image` and
+`--image-receipt`, `--host native --stage N2 --target qbe`; do not use the installed
+`qbe-n2` alias to measure the new compiler. The exact canonical source SHA256 is
+`a0e953a84de73aa22403dde7ec2144540197633857a0f7b5b9784f9e66f5ad04`.
+The release selectors remain unchanged.
 
 Generated program targets remain available through explicit interfaces:
 

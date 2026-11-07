@@ -1,0 +1,1561 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "scope": "Exact declaration closure of experimental pass only; excludes diagnostics and controls, keeps every canonical compiler declaration.",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-decomposition-multi-modules08/owned-decomposition-summary.bend",
+      "bytes": 15905,
+      "sha256": "090b6afa4b9bbe1a1b62cb02e27f774e28cec41952168f839f03155ccb94b4cc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-decomposition-multi-modules08/owned-decomposition-multi-summary.bend",
+      "bytes": 17643,
+      "sha256": "df79286050915e7522371594b76f28a30c57baee5fa6f1c6567e31e835021c9e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-decomposition-multi-modules08/owned-decomposition-multi-transform.bend",
+      "bytes": 17062,
+      "sha256": "6832021102a83a583aaca327802972c77962fb8201c657db2057525982a86a8c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-decomposition-multi-modules08/owned-decomposition-multi-call.bend",
+      "bytes": 4477,
+      "sha256": "aa954e5b46a7d75a0f8e955879563ffeacf73179e1060055f14ea2979046e732"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-decomposition-multi-modules08/owned-decomposition-qbe-v3.bend",
+      "bytes": 2446,
+      "sha256": "2b1a385bd94deb13b6b32d17df7d6866b8d0f8cb5b60c23ffdee274be6ec17b7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/experiments/phase147/tools/prepare.py",
+      "bytes": 7457,
+      "sha256": "f218c0b934c105592b33b48938c7de5e0353660bb0efd0033963817f1d3c6cc6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/source.py",
+      "bytes": 28941,
+      "sha256": "bb657cc05776c22f29244ae68606eb757c676b522a7052b2b32999fbc00599c7"
+    }
+  ],
+  "declarations": [
+    {
+      "name": "P173ODRow",
+      "kind": "type",
+      "source": "frozen08",
+      "bytes": 538,
+      "sha256": "d0583c3ba06f1ef6006e5c081dbd9828606d43cd73eb46ad6eeebb1a704c386b"
+    },
+    {
+      "name": "P173ODSummary",
+      "kind": "type",
+      "source": "frozen08",
+      "bytes": 124,
+      "sha256": "9c02477b4abc55796d423f8573fd9a13ff9e39b4df5fccb69752f6f60a6f2824"
+    },
+    {
+      "name": "P173ODBind",
+      "kind": "type",
+      "source": "frozen08",
+      "bytes": 85,
+      "sha256": "bb086e8f5f9a38e2d903737283954d6feb1aae29c6fbd164841982c8dfcbde82"
+    },
+    {
+      "name": "p173od_has",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 134,
+      "sha256": "bb0d1bf2cabc82ab3e39d4225a5437c803a219656dbe9fd22e0cfb181ecd8398"
+    },
+    {
+      "name": "p173od_isvar",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 60,
+      "sha256": "36a0314ed23d8f4dcb92937ac73c989d1f71ab95828af5daa73d5c07fa51ced1"
+    },
+    {
+      "name": "p173od_efq",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 43,
+      "sha256": "62eebec15edeeb253b57d292ce8a7364a8d3925b2e339f9fb0ba089287e04b7a"
+    },
+    {
+      "name": "p173od_constant",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 64,
+      "sha256": "62f8f8ffc520713aa5ae3783bbd6621305a1d7bb9cd632529c8f1f291482b61f"
+    },
+    {
+      "name": "p173od_constants",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 75,
+      "sha256": "0676aca03fae2fc42bee3b9e2401c92a0d45635aa3637f7dac2d8b9d5b8da56e"
+    },
+    {
+      "name": "p173od_fields",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 126,
+      "sha256": "b589fbd4107fdd02a843d1434436bbca9522b8f8e8970ac19de942ce6dd83110"
+    },
+    {
+      "name": "p173od_ctor_result",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 69,
+      "sha256": "95620b6f23ddb308c8ca37f047d933af0d95e571df7f09cefcd9bfee24f97ea9"
+    },
+    {
+      "name": "p173od_data",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 44,
+      "sha256": "4e6cd8807a3a5432bebb5358a6ce7f7fbfa392df0f5a11259806b74ad219c992"
+    },
+    {
+      "name": "p173od_ctor_checked",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 137,
+      "sha256": "9e1daeed5e6b8c36d175779447bc11f5eb4d407ddfe647c684e413c0bb90578b"
+    },
+    {
+      "name": "p173od_ctor_found",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 114,
+      "sha256": "e19079690f4041d219bdc86d69d9b8ab68145abd18d56885c6c212447b9f5e07"
+    },
+    {
+      "name": "p173od_ctor",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 90,
+      "sha256": "a8af136f396f3e2648a037f8a5753a6225f312ea37d331c19ea4841c728d87e4"
+    },
+    {
+      "name": "p173od_getter_value",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 81,
+      "sha256": "8c6eae3f597dbaa2805074eaddca9c36813ee4637e9bff24319e49c5ecae567f"
+    },
+    {
+      "name": "p173od_origins",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 128,
+      "sha256": "6875a21670e1aa8edd5692ec6ad6af89ebdc46da6cb8dbd97f6f9c0d2595f4f3"
+    },
+    {
+      "name": "p173od_origin_field",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 151,
+      "sha256": "948dd9bbe31737cb9a12b279e89e2a835fdd1d14e822efd09cfb1fb3cda28a78"
+    },
+    {
+      "name": "p173od_setter_value",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 160,
+      "sha256": "8f147f3cb55d0a67762eac1a71dfe1371713c4ccc80bbb63e25fdec93124f56a"
+    },
+    {
+      "name": "p173od_row_setter",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 376,
+      "sha256": "d01d39e69cfd888f44ea498126b197acb25e756f78465b22f0c814018363ca47"
+    },
+    {
+      "name": "p173od_row_getter",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 291,
+      "sha256": "c550f66e56e95f6b65aea40eb4f13e99e3a4504e24ceca9f2abcabc3f7e170bf"
+    },
+    {
+      "name": "p173od_rows",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 259,
+      "sha256": "3ab66f6f7ed328066e7eee1a6b6b70c5790a41ee6808e137a66a135eba91d94c"
+    },
+    {
+      "name": "p173od_finish",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 158,
+      "sha256": "433343e3866755976d970d1597f0241b457070a52c68088f755ccf6f875fb1ba"
+    },
+    {
+      "name": "p173od_matched",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 180,
+      "sha256": "f50d84f1650231177b867ccbb189cc3a820648e7395eba3288170f7937aa119e"
+    },
+    {
+      "name": "p173od_replacement",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 160,
+      "sha256": "5b85248c3d65d1249d95170d1aa7b4e81b1f3868517dde562994e6ed8a3f0a9e"
+    },
+    {
+      "name": "p173od_bodies",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 109,
+      "sha256": "4f63c1c7e5dfa1fd918338a96c039b9d023a52082685dbe57024880ba0ae9612"
+    },
+    {
+      "name": "p173od_definitions",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 118,
+      "sha256": "68d3af54584d48985744c7ea5988fdd615486a8dd3914ad321a4f8a4e333e421"
+    },
+    {
+      "name": "p173od_pair",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 123,
+      "sha256": "0fa745a9280499183073d942d92c654531fa8285f79197317a8048028b6a68a0"
+    },
+    {
+      "name": "p173od_row_ready",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 434,
+      "sha256": "0cf220689192e042266031eb9d11ce6ff37f3a02d2070478b6a480cd6b1209f4"
+    },
+    {
+      "name": "p173od_replace_values",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 109,
+      "sha256": "226c32fcd4e3170f671d5c9989183ab122200f35eca88ec9cc12f34821b8635e"
+    },
+    {
+      "name": "p173od_row_direct",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 389,
+      "sha256": "9881a2071a4592c0649d93b744cd56e71f0902f1a5358884232bc78083d60092"
+    },
+    {
+      "name": "p173od_direct_first",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 141,
+      "sha256": "5a2e5eadedccf03ad4460823c4276c4b403ba54289b93c1b25380393df642bbb"
+    },
+    {
+      "name": "p173od_entry_bodies",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 115,
+      "sha256": "6ce00605bc6941ae6bf51c87cb0e7adf91c71de2c65597aca81c700adda4ff0a"
+    },
+    {
+      "name": "p173od_has",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 140,
+      "sha256": "9ea9e8b3350c3b9e114acb8aa1a5f297d5ad1ada5b5cca7666f748d79d72e2d0"
+    },
+    {
+      "name": "p173od_isvar",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 124,
+      "sha256": "eb9ff55570cc700698cd44a14d45f25b6cce1603ce240c37ae7cfca0eec7fe31"
+    },
+    {
+      "name": "p173od_efq",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 92,
+      "sha256": "7db20ca52270ba2ba4019aab60265982fbb88d22f0f0868534de8f06c235b22d"
+    },
+    {
+      "name": "p173od_constant",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 403,
+      "sha256": "858edcc72129b0abc85f907c17646ed0f213df2b1295824ef6e0af222b853045"
+    },
+    {
+      "name": "p173od_constants",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 210,
+      "sha256": "e32ec8ed2a57e4d5952398e8d81cb1b23de8eb84c32cd6ad2ea2baab27efd800"
+    },
+    {
+      "name": "p173od_fields",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 476,
+      "sha256": "8a8e6aa89400dc692de2352a3d969c8a0bfebf48927c223178dece45d7d0e00e"
+    },
+    {
+      "name": "p173od_ctor_result",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 416,
+      "sha256": "7b35d32b71dbc17968f48c35b05cdd323e6d23adccb25debb61fdca4bc79ef2f"
+    },
+    {
+      "name": "p173od_data",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 292,
+      "sha256": "e1fb99ff5079897dc5e01fbc840893943ddba6f007baa4191009b5c8acfd67aa"
+    },
+    {
+      "name": "p173od_ctor_checked",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 333,
+      "sha256": "480111283e0d906915de48d86e0c6d96e6faa1491608b7acadad66a794345a11"
+    },
+    {
+      "name": "p173od_ctor_found",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 133,
+      "sha256": "e4fc8d4d78d19c5b7631900996c42ef18d17d2779aef0e57fe86e7c4105f1fca"
+    },
+    {
+      "name": "p173od_ctor",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 123,
+      "sha256": "96783534c3b75dd239f2238b7e36d3972456e52bf1c6074ea23f8a6b21eabdf2"
+    },
+    {
+      "name": "p173od_getter_value",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 217,
+      "sha256": "c48fc95f07862fac14b98bcbf91fa21497f629220dea5a3bfbf0d414fcb77fb8"
+    },
+    {
+      "name": "p173od_origins",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 444,
+      "sha256": "5a74987070c8cde22c59323c7554bc061be63d0df79b6c2236394c43f25df493"
+    },
+    {
+      "name": "p173od_origin_field",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 349,
+      "sha256": "e5e8464c26f639c73467e9c8c29f94893be18253a7d0bad28ea94bc0d336767d"
+    },
+    {
+      "name": "p173od_setter_value",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 271,
+      "sha256": "ca81e7644cc9ff0fb995bc470fb397c366130af5d068a26d245154147526b02c"
+    },
+    {
+      "name": "p173od_row_setter",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 638,
+      "sha256": "69a89d8351039fe04a4ca1105ace2fc52d8f799bce9d49aab7fa01a7de32e6fc"
+    },
+    {
+      "name": "p173od_row_getter",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 393,
+      "sha256": "5345f2b93f97c8ca4ca9043884c5729541a91bd06ae17f360c027a7d96877eed"
+    },
+    {
+      "name": "p173od_rows",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 990,
+      "sha256": "3006e3dbdad471643d34c3d3ae074d2dde775c1fcdcc9841c5f83f04dba9c7ce"
+    },
+    {
+      "name": "p173od_finish",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 195,
+      "sha256": "b1997f17c48753d66faafd5bed79649402e39699b4181553c5f0422f693b3525"
+    },
+    {
+      "name": "p173od_matched",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 482,
+      "sha256": "b5bf06d1acecba791e5111ef49d0a7551878a908776bdb80aceb332182d82b75"
+    },
+    {
+      "name": "p173od_replacement",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 352,
+      "sha256": "c403d5f4e3f02ca952dab2eec48a5f429520cf1c0fd0e0e002feaab68a50c4ce"
+    },
+    {
+      "name": "p173od_bodies",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 391,
+      "sha256": "2cc20c4a3e941bd6d874d2595a5bcf2112143f261205f0c8aafe7a9464f6e6f7"
+    },
+    {
+      "name": "p173od_definitions",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 431,
+      "sha256": "d307d0b5158b83b88845c20f3b9ed66f5906f986d1869a1f9b244a79476dea56"
+    },
+    {
+      "name": "p173od_pair",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 131,
+      "sha256": "20487ed7dd12ea006bc7e7e8312762cf9205a98e4233310e7e83a35fa9a0fc7e"
+    },
+    {
+      "name": "p173od_row_ready",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 842,
+      "sha256": "d60b259a2a85aa49619641d28706f2304ba171a99608627b10aed3b7a1ee783e"
+    },
+    {
+      "name": "p173od_replace_values",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 246,
+      "sha256": "984546ab657ef66dba1d4413f94bd2d3f3cc49a80827350d8cc367671c29e740"
+    },
+    {
+      "name": "p173od_row_direct",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 855,
+      "sha256": "568dd44050c482c14fce834d45f3f02ea5dde42cd1aca7becd7d837c4372e63a"
+    },
+    {
+      "name": "p173od_direct_first",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 395,
+      "sha256": "3f2c889cacd36c4ead51dba25d1508030ccbd3d401005e43f3734d9b2f7278de"
+    },
+    {
+      "name": "p173od_entry_bodies",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 356,
+      "sha256": "99c34e84b0fd3dc8140f6aea5c7e7bab107bc13ad77398178674c4f0ccde71da"
+    },
+    {
+      "name": "P173OMArg",
+      "kind": "type",
+      "source": "frozen08",
+      "bytes": 267,
+      "sha256": "43161e97f008284d6c3713f57d4c921a3e2a669fe199ca5d07df0b77fffd4a7c"
+    },
+    {
+      "name": "P173OMSchema",
+      "kind": "type",
+      "source": "frozen08",
+      "bytes": 101,
+      "sha256": "72e7084e075e23389394566d2577e68319f6e242697efc2657ee1ded10a38f53"
+    },
+    {
+      "name": "p173om_at",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 65,
+      "sha256": "14e0fe4a711bc60df1f067cf10dbff36404f89fe0aa25a89ce492aaf804e47e4"
+    },
+    {
+      "name": "p173om_project_var",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 112,
+      "sha256": "f26408eeeff1359672727630f340a0400abe2a2f35e3b80fde03f8aee1896576"
+    },
+    {
+      "name": "p173om_project_fields",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 100,
+      "sha256": "e77e3a0ee7b05f6c32c14eff8b36a2f0ed7eac58917f60f580948a736e353dc9"
+    },
+    {
+      "name": "p173om_project_cases",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 165,
+      "sha256": "7d77f4fc240e7f96450d8f63d70b057e155b23859434d7081039849f6f6b10ee"
+    },
+    {
+      "name": "p173om_project_definition",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 185,
+      "sha256": "5c083c48847579abfab855f2d8b47112818ae29fcd6cd5e08a5306a45e728b27"
+    },
+    {
+      "name": "p173om_project",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 170,
+      "sha256": "7ff6ccce42e425cec7d6fd1f2c6065eff8dfe04195c220a10e105ca3cc08acfc"
+    },
+    {
+      "name": "p173om_schema_params",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 106,
+      "sha256": "58ba9f38cc53c11f94392a8f71f0724dc1e8af751fa1794f58219ba5f6ceb3b8"
+    },
+    {
+      "name": "p173om_schema_fields",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 96,
+      "sha256": "9ab75b9613bafdb15c6fbeaafcc54e6aca30cb1dfc28cd031bc68c95c981a056"
+    },
+    {
+      "name": "p173om_schema",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 82,
+      "sha256": "cb5e56c0cc244da8a468dd67726fe9822e029ea4ce46d39eb0a6137f374e62e9"
+    },
+    {
+      "name": "p173om_atom_safe",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 101,
+      "sha256": "4fcf22a22ef521ef0332f310466a0de857229a50c454e6418ba9ed3f1c4e2396"
+    },
+    {
+      "name": "p173om_resolve_descriptor",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 213,
+      "sha256": "15115429a5ef48dd1f9a7b8b5f7c03c9d95a395f371380c00f9bcc679e30fc59"
+    },
+    {
+      "name": "p173om_resolve_param",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 254,
+      "sha256": "1c267d1b0fee20cf1e1cdd1009ce5c946837b673784eaffccbeb44c921431931"
+    },
+    {
+      "name": "p173om_resolve",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 253,
+      "sha256": "9942e91aaec599b6d1ba4a4e89207f4402dfe337cad12a12495998ac1dabdb9b"
+    },
+    {
+      "name": "p173om_values_cons",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 110,
+      "sha256": "c5b5b3670b6dca96bef495bf64d62534727108a4a9112e24dc0fb55f56a1614b"
+    },
+    {
+      "name": "p173om_values_first",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 305,
+      "sha256": "310e0202fe35b3a3b838741ff32f6647eb5e198671168fb5124a12081b765360"
+    },
+    {
+      "name": "p173om_values",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 271,
+      "sha256": "52873e7c9965072a7dc045fd6f9f5a1bed0cf311935aaedd7c246fb1af732074"
+    },
+    {
+      "name": "p173om_work_name",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 82,
+      "sha256": "c6bfea86a605de55720b39d1151525965a09e7252e7f4bc078453174000ab838"
+    },
+    {
+      "name": "p173om_work_descriptor",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 60,
+      "sha256": "5508c2d2cf346dbc1c0eb99706c4a3a56135c55f6bec4a08cbdc9651dc5870e6"
+    },
+    {
+      "name": "p173om_row_projection",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 187,
+      "sha256": "f21ab9b0423d4dcd2773f55a6a979292ebe31f67a3b468bda0b468a0f851df45"
+    },
+    {
+      "name": "p173om_row_values",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 224,
+      "sha256": "10552180d91787ad4b34b67c39cb5781ef2ca87628669d335e3fb9a3a3f5ee4f"
+    },
+    {
+      "name": "p173om_row_built",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 183,
+      "sha256": "1d89ec679dd064d3a2c72fe88321e9d96054ea7fd88dafff16420aa357270ce9"
+    },
+    {
+      "name": "p173om_row_schema",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 206,
+      "sha256": "5c7f7d85a95a72307101682c322a0eedb72427b24553bede9cc4cf1b3761ab6a"
+    },
+    {
+      "name": "p173om_rows_join",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 281,
+      "sha256": "ea5d90dcdcaae28b0a0d56dc8ade8d0647b565491bc89c85233edc07506aaaed"
+    },
+    {
+      "name": "p173om_rows",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 244,
+      "sha256": "2048cbe354f4ff54df55b8b430cc2bbf386ed27b39a85cf8287c1b20b7e68c8d"
+    },
+    {
+      "name": "p173om_first",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 182,
+      "sha256": "1091379a43e0269c153c3c8e37c59eb245914443ee201cb970726ff959708960"
+    },
+    {
+      "name": "p173om_body",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 143,
+      "sha256": "7d4f777b68774e878b942b0f57fe39e336ef29c85337079513884a7e23bfc3c5"
+    },
+    {
+      "name": "p173om_definition",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 154,
+      "sha256": "796fe51fac5c266969bae1900d2299a80f82d0ee41028e7ecb193438930ec4cc"
+    },
+    {
+      "name": "p173om_pair",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 146,
+      "sha256": "1291dbb09a306c67378b188d46f425cd482d9af84c7772295872b0865dcbb924"
+    },
+    {
+      "name": "p173om_descriptors",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 103,
+      "sha256": "0b5aacde0c98c06a3cc23c748f534acde8daf9e13481a9d95c750af3b515d8bf"
+    },
+    {
+      "name": "p173om_projection_valid",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 72,
+      "sha256": "762e2e0288d3f2f367f55f104be54b4d20439d1ce01beaa34a6e28501cfb90f0"
+    },
+    {
+      "name": "p173om_arg_valid",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 186,
+      "sha256": "2ebf228c8717319de92866f77549c04b9563c89d54832628caffaa53d3fde859"
+    },
+    {
+      "name": "p173om_all_args",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 195,
+      "sha256": "887ff9f3f2e6c1d23d157ba932406377430ab0761d0a9c25f27f7c308167b9de"
+    },
+    {
+      "name": "p173om_parameters",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 130,
+      "sha256": "ace96bbb3902a7d5262b71eaf7869df9cc54dcb807173f7a085f431a3e3e0324"
+    },
+    {
+      "name": "p173om_at",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 176,
+      "sha256": "be71934c428d2bed9adf8d3024fea24ec9828d6a09504b251146ca1722f76492"
+    },
+    {
+      "name": "p173om_project_var",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 255,
+      "sha256": "ebb8b50c705d710b974f39d9a628115b5a2998d311fb24c256bc40e969c193d7"
+    },
+    {
+      "name": "p173om_project_fields",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 477,
+      "sha256": "58df62e1f4583da2d9f2399219279d4ea98888be0b56351826e6c5cb11d40069"
+    },
+    {
+      "name": "p173om_project_cases",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 545,
+      "sha256": "e7a7c84a38d0ca0182687a94c9ecccdc54e180c0bf1ef866abb4de7bc1cc0a5e"
+    },
+    {
+      "name": "p173om_project_definition",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 400,
+      "sha256": "52b2f79e0088ef5bab714d5b30dc176f42ea72f0c6a13655afc12111d3d2fddb"
+    },
+    {
+      "name": "p173om_project",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 145,
+      "sha256": "5966ec336a540c1e9910b360a76786dd0603270ebf85c5f788cb567da42a25a2"
+    },
+    {
+      "name": "p173om_schema_params",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 206,
+      "sha256": "f3d12be38292c213c41cab308d939b561a2a85797facae25726e1a1cfa2405aa"
+    },
+    {
+      "name": "p173om_schema_fields",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 248,
+      "sha256": "687b0359dda75065095405a1083ed2987c5a1fe6f8e2ef1a9fff143390d32336"
+    },
+    {
+      "name": "p173om_schema",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 125,
+      "sha256": "a4221e108be15446fee4585ebb0bf5d64b70e82f897714aa397b723da69dec3c"
+    },
+    {
+      "name": "p173om_atom_safe",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 495,
+      "sha256": "18da1f66182cc1d7d302479da2d4a747ee7a7d1474b454122784ce23e5c5a98e"
+    },
+    {
+      "name": "p173om_resolve_descriptor",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 381,
+      "sha256": "c4411d696041f7956843b07f5944a8cf844c712e137ca7108ef2dcf9bbebdd35"
+    },
+    {
+      "name": "p173om_resolve_param",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 412,
+      "sha256": "188fa9bbaad91dfc883709a3193821c873ff273d3520232c2c82cf370851e9b5"
+    },
+    {
+      "name": "p173om_resolve",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 376,
+      "sha256": "8d50717919d7fc27e722125de9963e9d37fcfd611b73208f6c9efa20c6e96c62"
+    },
+    {
+      "name": "p173om_values_cons",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 132,
+      "sha256": "d25ad6205385bb2302ed659e1b882f6c71c77ec43fc7ccd8e2a102f1b3cbe023"
+    },
+    {
+      "name": "p173om_values_first",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 267,
+      "sha256": "ba067c2e681831166c0ec1b9371c9a739e95250eb2511dedd6fef076e998af46"
+    },
+    {
+      "name": "p173om_values",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 332,
+      "sha256": "50675cbac97a8c92813a9b96e8d493a501424abda77f880f17c0d78ac8121a7a"
+    },
+    {
+      "name": "p173om_work_name",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 226,
+      "sha256": "9e7fb3cb97dbed7ee458fe4e4678a0849122642c1c12a7c381a4fa295a8120e6"
+    },
+    {
+      "name": "p173om_work_descriptor",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 103,
+      "sha256": "ca631bb080b791e3702f95cfc017ed736364c35321c1df9dc0332d311ffc108c"
+    },
+    {
+      "name": "p173om_row_projection",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 206,
+      "sha256": "94423d5dd4dad97d472891bbfc62bc089a19730f41ce0cf7327615eeb3a124e9"
+    },
+    {
+      "name": "p173om_row_values",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 236,
+      "sha256": "9a57a735ea97d027b9a044586a34367e274fae083bc7fa622e3ddcaa3537f120"
+    },
+    {
+      "name": "p173om_row_built",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 318,
+      "sha256": "e2e2c51ba56dfaa30b47db742c316efdc916ae07697444d471cd327e2d6a9bfc"
+    },
+    {
+      "name": "p173om_row_schema",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 1026,
+      "sha256": "b10fd3040150d31232802786ed819aee68fcfca5b01acde5d4423dbc14b89206"
+    },
+    {
+      "name": "p173om_rows_join",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 284,
+      "sha256": "1e45e087d90ffc158ef2d82721d37191b61e3d2103b3398de2d5f847d421946a"
+    },
+    {
+      "name": "p173om_rows",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 807,
+      "sha256": "9545cf66414b66afcd33e03f9b6091d4a14b4d69d51a06375db22aced6dc81d0"
+    },
+    {
+      "name": "p173om_first",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 333,
+      "sha256": "414dda304b07ab2535288489cd703c11e439a56ef93deebaedddd244fda1fdee"
+    },
+    {
+      "name": "p173om_body",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 310,
+      "sha256": "f14d7c8fe9b6ed25a33d355f268ae422a00b38ca607646d29872c94d66676316"
+    },
+    {
+      "name": "p173om_definition",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 408,
+      "sha256": "be56caca96565cee869558f609066c4451d767bba47fc3a349fc0eb366bd27b3"
+    },
+    {
+      "name": "p173om_pair",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 405,
+      "sha256": "c543dac0387582ca038eb04e7511932150d481dff933985a3d6022fd92da3441"
+    },
+    {
+      "name": "p173om_descriptors",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 567,
+      "sha256": "b89daeb2b0917656227a47f9eec25bf2b16371d3cb779dc06e6b1b681c82345f"
+    },
+    {
+      "name": "p173om_projection_valid",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 283,
+      "sha256": "cce17f7b4aca5b379111ff5240f86173eb066173bed03edb57a3c9d3ca0b93a5"
+    },
+    {
+      "name": "p173om_arg_valid",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 374,
+      "sha256": "5e66008bb14e3aec3fd85543ac13c59b3068ac4a5c67e693f12c05827d396adc"
+    },
+    {
+      "name": "p173om_all_args",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 318,
+      "sha256": "7b84ba292b2a163015d0b5f5988b455f0207165f804e4e67d04ef8f78a223686"
+    },
+    {
+      "name": "p173om_parameters",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 734,
+      "sha256": "d1cec69eacf5336f0b683e5eed97ca46e7f2c2867d903d46ee34ce35d8189668"
+    },
+    {
+      "name": "P173OAResult",
+      "kind": "type",
+      "source": "frozen08",
+      "bytes": 391,
+      "sha256": "e0d4db134a8bcc317ffcad4b27b2a172b98391e395edf63cc06d51fd2c095266"
+    },
+    {
+      "name": "P173OAList",
+      "kind": "type",
+      "source": "frozen08",
+      "bytes": 87,
+      "sha256": "5830d31681e2d1d8606d3ba0e796cd4215c5864cf259545a8ba613b5dc2f2229"
+    },
+    {
+      "name": "P173OABook",
+      "kind": "type",
+      "source": "frozen08",
+      "bytes": 77,
+      "sha256": "b0cdcaba261d86d381c7b04ee19b2f60a4d1e9d58f3cdca2cab7ea42ce86467c"
+    },
+    {
+      "name": "p173om_application",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 152,
+      "sha256": "bbc53deee17b39b93f529f6a5e83cc1dc5f81c0a3cb921d2354beeee198df5d1"
+    },
+    {
+      "name": "p173oa_var",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 127,
+      "sha256": "fa0fb03a52903b457e7c2ba9881ec6e36048b757cc9f125fe6d489763ef20ded"
+    },
+    {
+      "name": "p173oa_atom",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 61,
+      "sha256": "3eb2220e96ffc097bd9462eb36e115f1d483ff886a7bb2f4f426be3bd7790fdc"
+    },
+    {
+      "name": "p173oa_atoms",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 71,
+      "sha256": "6a6b9f933d37101a8da6229d2afe005a54b09aa6eada4b3cd79c9d8d9434c268"
+    },
+    {
+      "name": "p173oa_user",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 89,
+      "sha256": "3adbe987519efb0aa87291c7c892d28181150e9457f0be61c330daf3f03a3275"
+    },
+    {
+      "name": "p173oa_definition",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 100,
+      "sha256": "bc7ef32a2da36fe215fc5dbdd917e9e9ea7ba33c76bcb81b436230847a72f18c"
+    },
+    {
+      "name": "p173oa_rename",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 88,
+      "sha256": "7b7cdd6436ab808cac7fde53aae4d6c4c017e1abac19567623c78317469f5522"
+    },
+    {
+      "name": "p173oa_lambdas",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 83,
+      "sha256": "3f5e374115ac24c53deb3e8ec7875e54e56e82245a7ee30ff1b0308fd88f5a35"
+    },
+    {
+      "name": "p173oa_result_fields",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 123,
+      "sha256": "884695f04d420ef87a3b9edd7cbd0d9f12dca44f5423f4955d22e259b037f7dc"
+    },
+    {
+      "name": "p173oa_row_body",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 147,
+      "sha256": "e26b0cb5137811787c3c97a09ff68c64983f4ab3692addb0fbb72c0507c9cb94"
+    },
+    {
+      "name": "p173oa_row_changed",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 84,
+      "sha256": "29f5dff0ba7fdaf89aef54c41afe700413aae533d94f52d6fefea693d3d1e3b7"
+    },
+    {
+      "name": "p173oa_row_width",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 50,
+      "sha256": "441a60045e74ef4339d3611206a4be72d06103443e0f8b1545dc7e421a83ac69"
+    },
+    {
+      "name": "p173oa_row_join",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 180,
+      "sha256": "3ba58b1e0c885ce3644775282d501dfa3e83467cbac264561666a43b775caa0e"
+    },
+    {
+      "name": "p173oa_pair_result",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 179,
+      "sha256": "2d305d2cdc8a8744769d29000e07bf8689d92e198bab85ae53fbd094a06337a9"
+    },
+    {
+      "name": "p173oa_summary_result",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 176,
+      "sha256": "8a4f03e9305e78b4a315f56e1615be4c4514299af8012ce5785fa88d506c93c0"
+    },
+    {
+      "name": "p173oa_ids_fresh",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 71,
+      "sha256": "e8218c90d4bac1df7a43ea1c20a9fed1fedf7ab7018485c77c22c08ea2a0d526"
+    },
+    {
+      "name": "p173oa_rows_fresh",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 79,
+      "sha256": "aaec4cc40b696c5c35455644f39725e686542e20839bd5db65ca683e1e0fdf71"
+    },
+    {
+      "name": "p173oa_apply_rows",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 125,
+      "sha256": "8d984bec87b0fda91ed38b8a0c7d462ce21d73658b7fbdb3f77091e2505626a2"
+    },
+    {
+      "name": "p173oa_getter",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 207,
+      "sha256": "59173de877039a7d1aeabfc2c20a46baccab75120bd58880caabaff4815b9ed7"
+    },
+    {
+      "name": "p173oa_call",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 156,
+      "sha256": "0650c0d2243848c781eac08a9d0c0bcc06a232801146ae98d80df08ade8da51f"
+    },
+    {
+      "name": "p173oa_getter_args",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 237,
+      "sha256": "76c9accbe653fa7584f966ba3b2b5fbcb5783b2358e7058ebcf3729f7624a250"
+    },
+    {
+      "name": "p173oa_call_args",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 188,
+      "sha256": "bff5a5bf26806073aedf15592282651eeb91bfb586102cb0c5b18acedf8fd6ba"
+    },
+    {
+      "name": "p173oa_try",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 95,
+      "sha256": "30867881da8058eb1b13f8a79dd6449e34a150725a182af3286243afdfc0c614"
+    },
+    {
+      "name": "p173oa_application",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 151,
+      "sha256": "b3b5373645fecfd2bf1415c8dabe099c241489c79efe31c7e11083db0b8f6c33"
+    },
+    {
+      "name": "p173oa_tried",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 124,
+      "sha256": "c4476091962b3809e1cfa86af34d667eb957ead69403a6a7e4f2f2daf0a8299f"
+    },
+    {
+      "name": "p173oa_rebuild",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 82,
+      "sha256": "c7490c710a9f002dc3dd660c77f1383ab4cd0ac42efc1868f8ba0c67d98092a3"
+    },
+    {
+      "name": "p173oa_first",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 130,
+      "sha256": "ad815e71b646a25dcc0a103c9de4691a8bda828d9b5344945fb6633a99a27605"
+    },
+    {
+      "name": "p173oa_cons",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 88,
+      "sha256": "eb19c233715bf9456436dfd8e45bffe02ea27b6e8d722e699e54c5629b74e07c"
+    },
+    {
+      "name": "p173oa_definition_done",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 210,
+      "sha256": "d20c3c0656aeefcfd5a18e1d53b523be3f1511cfb31ddde9fe06a73959c9aa84"
+    },
+    {
+      "name": "p173oa_context",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 67,
+      "sha256": "8bf6cde7467f16c3f79b9a30d17c78503208404fda81977db78a50392a60ec8f"
+    },
+    {
+      "name": "p173oa_publish",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 94,
+      "sha256": "4d3410e39f6098b878fee37842db01ecb21500a069fc34958f9dff5194bab999"
+    },
+    {
+      "name": "p173oa_walk",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 113,
+      "sha256": "cd0017b4f72b01f0e3568d9f55ba2f7675adc56ae51dafbb6a1a2ae48ddc1f8c"
+    },
+    {
+      "name": "p173oa_terms",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 121,
+      "sha256": "f7de8e753bdb117c6b702be87d0e470d0f03f1ca897622845e10d73940243fae"
+    },
+    {
+      "name": "p173oa_rows",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 182,
+      "sha256": "59f8301f29d7e03c3f191d25f3c3c7cfa42d72cca800b020569ea9612107ea38"
+    },
+    {
+      "name": "p173oa_definitions",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 178,
+      "sha256": "da8c32afb007e5a59bea067a791cd1408d080852fcc336ab64efc13b1f5de4c2"
+    },
+    {
+      "name": "p173oa_var",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 122,
+      "sha256": "924e6969da7d05cf301de397d7f2868c5e6b93bea754a4bf2e7696a223e9a7de"
+    },
+    {
+      "name": "p173oa_atom",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 366,
+      "sha256": "a0ff0f75dbfe8ed0812e0301bfd27c29ab64e789991ade30b8b2922af4646ae3"
+    },
+    {
+      "name": "p173oa_atoms",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 153,
+      "sha256": "a6ac5068c05369c80a7a0e34ee3e72aa3d24ef4300bfefbef57ab17c4f0ca68d"
+    },
+    {
+      "name": "p173oa_user",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 232,
+      "sha256": "c0607fdbaf29c9a5b85df7d635b1286651a75b6082e09ac6581d0f78df2b54bc"
+    },
+    {
+      "name": "p173oa_definition",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 210,
+      "sha256": "2f6a4e5ed6495590b6e385a27f76bb88855ac2dc5b711f0650d9298ed56bb107"
+    },
+    {
+      "name": "p173oa_rename",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 325,
+      "sha256": "aff4e055203875c938ef9247890ef06f217c242a99c77d8554ce365e2591007c"
+    },
+    {
+      "name": "p173oa_lambdas",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 189,
+      "sha256": "8b5293103931db5818a5907dd5a21a31527555af0862fc0c6ba6b04846ff7453"
+    },
+    {
+      "name": "p173oa_result_fields",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 326,
+      "sha256": "46e086e947557ea3db7d847ff4a7373e1a15cbd300ecd00020a5133754e59df2"
+    },
+    {
+      "name": "p173oa_row_body",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 351,
+      "sha256": "74538b7f42fd659c46150d699cfc13d236d220f56c86093f89cd95b43089494a"
+    },
+    {
+      "name": "p173oa_row_changed",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 311,
+      "sha256": "e9f67944aec8a76ee3d30edc81f1e268dd19823bfbb5caf673fe51582c455589"
+    },
+    {
+      "name": "p173oa_rows",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 444,
+      "sha256": "4e42948183b0a54b75c9198345f9c6fcd8113cd5c40f0f780a8203eefff24c92"
+    },
+    {
+      "name": "p173oa_row_width",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 142,
+      "sha256": "cc32603c7e99eefd33b2ffa6f3b6717125c612b39a50f927836146800e141f3f"
+    },
+    {
+      "name": "p173oa_row_join",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 375,
+      "sha256": "24a1ca6da79a6244edbf202f6c6683d081bd45cc12bbf72b8487d741f4f6f0ca"
+    },
+    {
+      "name": "p173oa_pair_result",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 215,
+      "sha256": "9b9a441b2594a22e4d4d74d0bfe81a91872ee2a8f4c2839577f8f5ba88eb46ed"
+    },
+    {
+      "name": "p173oa_summary_result",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 580,
+      "sha256": "3a01b06d0a98d6fdd2d09eb913ad803663dba6209fcf53a1463b080f22adb543"
+    },
+    {
+      "name": "p173oa_ids_fresh",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 151,
+      "sha256": "f807c79e5947138201124dd83f7e70d5755bb0bc6a8969014ccf8597f39705e2"
+    },
+    {
+      "name": "p173oa_rows_fresh",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 399,
+      "sha256": "b5afacc410c5e09244399fa7f04f34c528e6bc51c19cbc377441c2dc771e5734"
+    },
+    {
+      "name": "p173oa_apply_rows",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 260,
+      "sha256": "6274f67f7b342b5b104a72e43b9abdfd4a47ffa0ada962996c7d8b7176b02c53"
+    },
+    {
+      "name": "p173oa_getter",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 176,
+      "sha256": "d35c5ce769110d64c9c411d98d55fde0b416fc9ba08fe36b086678938a89f7c6"
+    },
+    {
+      "name": "p173oa_getter_args",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 388,
+      "sha256": "607d160bc5301c161b587774173e28a1ad381d08095a402c1554cf6c7ba41181"
+    },
+    {
+      "name": "p173oa_call",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 145,
+      "sha256": "dcd4a47f70dddf326296a5b50f9b1a2e79427cade6fdf99ee50b814ad9d9964c"
+    },
+    {
+      "name": "p173oa_call_args",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 371,
+      "sha256": "49b14973f3fd99016ce2a5e2f6830e950ab27ddb636eecf29dcbed5b72f1b3a5"
+    },
+    {
+      "name": "p173oa_try",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 234,
+      "sha256": "448d02b9e5e63facc90fba083eb83b3a2ce45b0f22b1b525bf515ee32afb42f0"
+    },
+    {
+      "name": "p173oa_application",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 353,
+      "sha256": "5252c17c4186e38ecec029a6b6ee2b01c4c5625d2c6ca20d7817273424168b15"
+    },
+    {
+      "name": "p173oa_walk",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 191,
+      "sha256": "f489ee52ec386e9380659834e240a65c2250223e47320b80bf23c7d2838c9150"
+    },
+    {
+      "name": "p173oa_tried",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 252,
+      "sha256": "3095b935777f8620d28a1b2b3ce3f6cbff48183e47367b5a57c566b6a5d34f12"
+    },
+    {
+      "name": "p173oa_rebuild",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 210,
+      "sha256": "5ab936c97967554814947840a536b31961585fafcd09fff608d86a80150c3cdf"
+    },
+    {
+      "name": "p173oa_terms",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 192,
+      "sha256": "6922999659ac3f323525c0083bee943d7cffb130af251488115bbc8b9ad96eb4"
+    },
+    {
+      "name": "p173oa_first",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 163,
+      "sha256": "095c978124c243692c838e07d1196fa1b809d3b626ac05c3de788f1d7f8332a4"
+    },
+    {
+      "name": "p173oa_cons",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 148,
+      "sha256": "d53ef1a1788d829cde093f6b9be8661434ac0e58582b3818597560a5ef019883"
+    },
+    {
+      "name": "p173oa_definitions",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 601,
+      "sha256": "33f06e2671d2cc92fa20cf9d638e3117e6c1858797a2402cabbb9c03d607c5d4"
+    },
+    {
+      "name": "p173oa_definition_done",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 427,
+      "sha256": "d5c20348ed52c1cbb95beacf121ec5e272a5e89037f0012c243e750e2c56e725"
+    },
+    {
+      "name": "p173oa_context",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 240,
+      "sha256": "a3872764f309481b747fcbfde4215b7876597d1e2b4b695b45a6f80e71da946c"
+    },
+    {
+      "name": "p173oa_publish",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 458,
+      "sha256": "75531eb9520b2220bd0276897bb05075a5aa2171a50b6e0dfac4f0a097d96e1e"
+    },
+    {
+      "name": "P173OMCall",
+      "kind": "type",
+      "source": "frozen08",
+      "bytes": 291,
+      "sha256": "8be22a4296144a8a01b77a49a22bc3c0362c918d1c603c17a0402557d0b4506d"
+    },
+    {
+      "name": "p173om_bad",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 30,
+      "sha256": "ad584600f7c3f0353e052d6ab7be25519d7c71be1ae06d325629699ab13132e3"
+    },
+    {
+      "name": "p173om_collect",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 242,
+      "sha256": "b60f69cd186039618735dd9e3eba6cdc9aa9e11f90440c45094afab35a4438be"
+    },
+    {
+      "name": "p173om_collect_call",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 312,
+      "sha256": "53f7f6e7411c779757cc8936d593dc28536ae562a8f07f369bb89f0f8d5a8d0d"
+    },
+    {
+      "name": "p173om_collect_work",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 225,
+      "sha256": "44f4ab08db71895928cdab243e2b604d5ce5508806e80a76dc3aded58734069f"
+    },
+    {
+      "name": "p173om_collect_getter",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 257,
+      "sha256": "3f29ef16fb97819fad6b7670f50b18765e1a046c6da41e6b47662447e4dbf153"
+    },
+    {
+      "name": "p173om_collected",
+      "kind": "law",
+      "source": "frozen08",
+      "bytes": 170,
+      "sha256": "9a26dca4e975ba26255e717d4dbe2b168130dac88eeb874718624e9b9faab008"
+    },
+    {
+      "name": "p173om_bad",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 72,
+      "sha256": "1d5b46ad53224f9b8dc8381d0f110bd30c425da13b68ca5bc4c83541a4b8baca"
+    },
+    {
+      "name": "p173om_collect",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 617,
+      "sha256": "4221f624ba4c16aa3128f042e061757ed18a4ca3439c5e72d4a6641853fbc8c9"
+    },
+    {
+      "name": "p173om_collect_call",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 500,
+      "sha256": "cb999692aee95b7db337b7c1a98a210105350ef33a1bdc60644925795b324b2e"
+    },
+    {
+      "name": "p173om_collect_work",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 395,
+      "sha256": "c375fe24ef80c300dc2b4ccb02db2c0b567110b5828b9d3a88dfb7927d4958d2"
+    },
+    {
+      "name": "p173om_collect_getter",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 360,
+      "sha256": "b27b8412ea0d32de881a07cd47827f1761860d6836fc306f83fecab1be3ef117"
+    },
+    {
+      "name": "p173om_collected",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 471,
+      "sha256": "20f4221191bb3320e73a0d41ca564e0d271936c4724442ea71d6ea006fdeec27"
+    },
+    {
+      "name": "p173om_application",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 536,
+      "sha256": "9690e37e82f3700c414fa3415fd754cf80272827a220a11cd6d7180709e00ea2"
+    },
+    {
+      "name": "p173op_prepared",
+      "kind": "def",
+      "source": "frozen08",
+      "bytes": 1229,
+      "sha256": "40b5e99b345b8f217d33ce1e00a1476af2e9ada42fe6dd9483365a73418cbda9"
+    }
+  ],
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-native-modules08/pass.bend",
+    "bytes": 54350,
+    "sha256": "c9484880708a6b5f85441e8b6d42f151f2d4786066e607b0f35c586773068f56"
+  }
+}

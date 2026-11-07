@@ -1,0 +1,71 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": true,
+  "started": 1794017613.897076,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "3",
+    "selfhost/.assets/bin/bun",
+    "selfhost/tests/phase173/owned-decomposition-oracle.mjs",
+    "--kind",
+    "packet-digest",
+    "--receipt",
+    "selfhost/build/phase173/owned-multi-packet-digest-oracle-api08/report.json",
+    "--out",
+    "selfhost/build/phase173/owned-multi-packet-digest-oracle08"
+  ],
+  "returncode": 0,
+  "rssLimitBytes": 3221225472,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 292200448,
+  "minimumAvailableBytes": 25174503424,
+  "diskBudgetBytes": 8388608,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 5764325376,
+  "minimumDiskFreeBytes": 5764288512,
+  "peakRunAllocatedBytes": 36864,
+  "peakFilesystemDecreaseBytes": 36864,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-multi-packet-digest-oracle08"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "3",
+    "fileLimitBytes": 134217728,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+        "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b",
+        "bytes": 88979072
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase173/owned-decomposition-oracle.mjs",
+        "sha256": "a811264379db5b601f2aafd8c9ab55929dc73af10aa47140cb95ea5b4130e9a4",
+        "bytes": 8708
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-multi-packet-digest-oracle-api08/report.json",
+        "sha256": "693951899299dcdb4eaae02c26ff6e1d773fb48744ac168fc5304f3137426793",
+        "bytes": 4720
+      }
+    ]
+  },
+  "wallSeconds": 1.594325731974095,
+  "finished": 1794017615.4911695
+}

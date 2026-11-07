@@ -1,0 +1,83 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": true,
+  "started": 1794017490.677244,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "3",
+    "selfhost/.assets/bin/bun",
+    "selfhost/tests/phase173/owned-decomposition-multi-observe.mjs",
+    "--receipt",
+    "selfhost/build/phase173/owned-decomposition-multi-api08/report.json",
+    "--assembly",
+    "selfhost/build/phase173/owned-decomposition-multi-source08/manifest.json",
+    "--source",
+    "selfhost/build/phase173/layout-digest-source01/compiler.bend",
+    "--out",
+    "selfhost/build/phase173/owned-multi-layout-observe08"
+  ],
+  "returncode": 0,
+  "rssLimitBytes": 3221225472,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 1360486400,
+  "minimumAvailableBytes": 23645470720,
+  "diskBudgetBytes": 25165824,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 5765378048,
+  "minimumDiskFreeBytes": 5765115904,
+  "peakRunAllocatedBytes": 98304,
+  "peakFilesystemDecreaseBytes": 262144,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-multi-layout-observe08"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "3",
+    "fileLimitBytes": 134217728,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+        "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b",
+        "bytes": 88979072
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase173/owned-decomposition-multi-observe.mjs",
+        "sha256": "27820b23f232e0027356fbe40c54c3e7a93b52129e457028a6b3bb60bb24bae6",
+        "bytes": 7407
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-decomposition-multi-api08/report.json",
+        "sha256": "072f2f83bc5e3d3a2e1c7a36e7a8a06ee1002bdd25d1fb1464a80a592925a3a9",
+        "bytes": 5566
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-decomposition-multi-source08/manifest.json",
+        "sha256": "6dd450408862883831c8a7ade2b914e2ab090964a0e439493deabd52f67241f5",
+        "bytes": 4006094
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/layout-digest-source01/compiler.bend",
+        "sha256": "cea5efc0ad911ea0a848ed06c1b431b31cfea0a804d52d99a19c9b6794797cf7",
+        "bytes": 11872
+      }
+    ]
+  },
+  "wallSeconds": 9.273040507920086,
+  "finished": 1794017499.9500682
+}

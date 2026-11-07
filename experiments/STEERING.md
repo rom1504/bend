@@ -31,6 +31,29 @@ Use the installed compiler for the next research cycle. The remaining cold-build
 goal is below 150 seconds for this full maintained source; this promotion itself
 does not establish a new architectural speedup. No PR comment posted.
 
+## Active Phase173 architectural experiments
+
+[Working report](../implementation/phase173/README.md) ·
+[Design](../design/phase173/README.md) · [Checkpoint](phase173/checkpoint.json).
+
+The strongest new result is early consuming decomposition of semantic parents.
+Manual pattern/layout variants save20.1%/20.8% on complete compiler computations;
+a general checked QBE prototype saves11.05% on pattern,18.85% on layout and49.95%
+on unrelated multi-argument Packet reconstruction. Independent complete values,
+62 finite controls and native/hosted exact-QBE transfer pass. These are local
+workload results, not full compiler or upstream parity. Ownership reclamation
+falls much more than allocations. Full native candidate08 is being evaluated;
+Phase170 stays installed. Its first acquisition costs201.615s using the old
+qualified producer. New optimizer generation needs N2→N3 agreement, not equality
+between old-producer N1 IR and new-optimizer N2 IR.
+
+The durable indexed representation initially regressed2.003×. General tail-SCC
+fusion, owned-argument adaptation and direct destinations recover much of this,
+but still trail original terms. Wide return lanes rebox at consumers; its shape
+gate failed before machine construction. Do not promote these representations
+or claim they establish a cold-build breakthrough. Exact negatives and evidence
+are retained. No100-second result or qualified successor is established yet.
+
 ## Current experiment — Phase171100s campaign
 
 [Checkpoint](../implementation/phase171/README.md) ·

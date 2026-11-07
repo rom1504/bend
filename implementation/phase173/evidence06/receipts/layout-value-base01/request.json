@@ -1,0 +1,134 @@
+{
+  "kind": "bend-build-request-plan",
+  "version": 1,
+  "host": "native",
+  "target": "qbe",
+  "stage": "N2",
+  "mode": "cache",
+  "image": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/bend",
+    "bytes": 16031672,
+    "sha256": "0dba3d4d19cd974e759058afbe86608fc7e1770d0c5ebf8f9d06c2697b658f4f"
+  },
+  "imageMetadata": {
+    "host": "native",
+    "stage": "N2",
+    "targets": [
+      "qbe"
+    ],
+    "protocol": "qbe-source-v1",
+    "sourceIdentity": {
+      "bytes": 3150535,
+      "sha256": "434edd1d56128f9480800573abf8a0ae21d910a547837af089f25cd1d0e89b71"
+    },
+    "linkedRuntime": {
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    "preparationModes": [
+      "cache",
+      "live"
+    ],
+    "sessionProtocols": [
+      "P140/2"
+    ],
+    "qualificationReceipt": {
+      "file": "selfhost/dist/qbe/evidence/qbe-qualified.json",
+      "bytes": 105502,
+      "sha256": "e43578805e7ced7f1389666b41def33e671a11e7fbd5293b14f6031fe4cc6c80"
+    },
+    "sessionQualification": {
+      "file": "selfhost/dist/qbe/evidence/qbe-session-bootstrap.json",
+      "bytes": 24619,
+      "sha256": "46d5fd1143c60df2b4f58d83162e5349309949778dca985364f70444ec56c4e9"
+    },
+    "sessionScope": "Qualified positive native P140/2 byte batches; no native recovery or object-unit claim.",
+    "qualification": "Installed final Phase170 native N2; exact native64 and positive session gates."
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/layout-value-source01/compiler.bend",
+    "bytes": 9349,
+    "sha256": "2368612f79cc722f988cfe4bf044015362ad7001a0b385641388cf87b03c920c"
+  },
+  "base": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+    "bytes": 75064,
+    "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+  },
+  "carrier": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/base/base.p130",
+    "bytes": 2612691,
+    "sha256": "984fad041a0ba855ea0aaedd384485afa2153da644655c00882eb50ace33817f"
+  },
+  "stamp": "p130-word-pair-v1:p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03",
+  "providers": {},
+  "workspace": "/home/ai/bend2/build/publish/bend",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/manifests/assets-native.json",
+      "bytes": 18715,
+      "sha256": "3d19a8b9f801fabc1de6dc5f484c7d20a795047776d1390a4bdea98e42b3e6b7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/request.py",
+      "bytes": 18653,
+      "sha256": "f2638c055de2de15c80b8e36d888337a3061f8f7725c55f16ad645943562566c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/assets.py",
+      "bytes": 7994,
+      "sha256": "02a8b03647f5a6292502363fc1bb79147b61196a9271c21cee55a2ec6bf64dba"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/common.py",
+      "bytes": 4809,
+      "sha256": "d9a16fef18cf936499e51f8c7f36a653f2921ef9a50f846257c2e8bc460ec6d1"
+    },
+    {
+      "file": "/usr/bin/python3.9",
+      "bytes": 5451288,
+      "sha256": "ca7655083b581ffe36c72dcb445857704db533ca39b03f79c97d8d0ef3bef9af"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/layout-value-source01/compiler.bend",
+      "bytes": 9349,
+      "sha256": "2368612f79cc722f988cfe4bf044015362ad7001a0b385641388cf87b03c920c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/bend",
+      "bytes": 16031672,
+      "sha256": "0dba3d4d19cd974e759058afbe86608fc7e1770d0c5ebf8f9d06c2697b658f4f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+      "bytes": 75064,
+      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/base/base.p130",
+      "bytes": 2612691,
+      "sha256": "984fad041a0ba855ea0aaedd384485afa2153da644655c00882eb50ace33817f"
+    }
+  ],
+  "imageRuntime": {
+    "bytes": 119096,
+    "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+  },
+  "runtimeRole": "Image linked-runtime identity is distinct from target provider/build runtime.",
+  "expected": null,
+  "outputContract": "stdout",
+  "command": [
+    "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/bend",
+    "--threads",
+    "1",
+    "--gpu",
+    "off",
+    "--",
+    "phase111",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/layout-value-source01/compiler.bend",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
+    "cache",
+    "/home/ai/bend2/build/publish/bend/selfhost/.assets/base/base.p130",
+    "p130-word-pair-v1:p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03"
+  ]
+}

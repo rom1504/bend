@@ -1,0 +1,81 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": true,
+  "started": 1794017869.1827798,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "3",
+    "python3",
+    "-B",
+    "selfhost/tests/phase173/native-pair.py",
+    "--baseline",
+    "selfhost/build/phase173/layout-value-base01/report.json",
+    "--candidate",
+    "selfhost/build/phase173/automatic-multi-layout-value-machine08/report.json",
+    "--expected",
+    "selfhost/build/phase173/layout-value-oracle-output01/0-baseline.stdout",
+    "--rounds",
+    "1",
+    "--out",
+    "selfhost/build/phase173/automatic-multi-layout-value-pair08"
+  ],
+  "returncode": 0,
+  "rssLimitBytes": 2147483648,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 18870272,
+  "minimumAvailableBytes": 25393782784,
+  "diskBudgetBytes": 8388608,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 5759594496,
+  "minimumDiskFreeBytes": 5759533056,
+  "peakRunAllocatedBytes": 61440,
+  "peakFilesystemDecreaseBytes": 61440,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-layout-value-pair08"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "3",
+    "fileLimitBytes": 134217728,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase173/native-pair.py",
+        "sha256": "219a9a447f8b85262adfa2b58eea7f1d635233c2fbe6a0083fd8e7d9651d6f9b",
+        "bytes": 3973
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/layout-value-base01/report.json",
+        "sha256": "ae5b205f0caa8d2264a5c8fc00151ce0c8e02f0f33fb18e4e7d761986ad3ff41",
+        "bytes": 16301
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-layout-value-machine08/report.json",
+        "sha256": "6142cc5ec040d2dd70e02f13e999e4dee3a92a8fdb6be6e86adf6aafae5d43c8",
+        "bytes": 9053
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/layout-value-oracle-output01/0-baseline.stdout",
+        "sha256": "576704d6a9d809ffff0a3cea49dffff090ace505f1f84f444c956d7fdfc96527",
+        "bytes": 14714
+      }
+    ]
+  },
+  "wallSeconds": 0.1664318977855146,
+  "finished": 1794017869.3489904
+}

@@ -1,0 +1,202 @@
+{
+  "kind": "phase173-multi08-completed-results",
+  "native": [
+    {
+      "name": "automatic-multi-layout-digest-pair08",
+      "medians": {
+        "baseline": 0.09226888115517795,
+        "candidate": 0.07487431564368308
+      },
+      "ratio": 0.8114796094444814,
+      "runtimeReductionFraction": 0.1885203905555186,
+      "resolved": true,
+      "rounds": 4,
+      "outputsExact": true,
+      "scope": "Four digest pairs are local runtime measurements; full-value pairs below timing floor establish correctness only."
+    },
+    {
+      "name": "automatic-multi-layout-value-pair08",
+      "medians": {
+        "baseline": 0.003727502655237913,
+        "candidate": 0.0035760882310569286
+      },
+      "ratio": null,
+      "runtimeReductionFraction": null,
+      "resolved": false,
+      "rounds": 1,
+      "outputsExact": true,
+      "scope": "Four digest pairs are local runtime measurements; full-value pairs below timing floor establish correctness only."
+    },
+    {
+      "name": "automatic-multi-packet-digest-pair08",
+      "medians": {
+        "baseline": 0.06997969001531601,
+        "candidate": 0.03502537286840379
+      },
+      "ratio": 0.500507688169782,
+      "runtimeReductionFraction": 0.499492311830218,
+      "resolved": true,
+      "rounds": 4,
+      "outputsExact": true,
+      "scope": "Four digest pairs are local runtime measurements; full-value pairs below timing floor establish correctness only."
+    },
+    {
+      "name": "automatic-multi-packet-value-pair08",
+      "medians": {
+        "baseline": 0.003127485979348421,
+        "candidate": 0.002893771044909954
+      },
+      "ratio": null,
+      "runtimeReductionFraction": null,
+      "resolved": false,
+      "rounds": 1,
+      "outputsExact": true,
+      "scope": "Four digest pairs are local runtime measurements; full-value pairs below timing floor establish correctness only."
+    }
+  ],
+  "controls": [
+    {
+      "name": "owned-multi-layout-observe08",
+      "total": 62,
+      "passed": 62,
+      "failed": 0,
+      "families": [
+        {
+          "export": "p173oa_controls",
+          "total": 16,
+          "passed": 16
+        },
+        {
+          "export": "p173op_controls",
+          "total": 16,
+          "passed": 16
+        },
+        {
+          "export": "p173om_controls",
+          "total": 30,
+          "passed": 30
+        }
+      ],
+      "owners": [
+        {
+          "owner": "nq_layout_subst",
+          "rows": 2
+        }
+      ],
+      "transformedRows": 2,
+      "runtimeAdmitted": true,
+      "observerCertificate": true,
+      "scopeAdmitted": true
+    },
+    {
+      "name": "owned-multi-packet-observe08",
+      "total": 62,
+      "passed": 62,
+      "failed": 0,
+      "families": [
+        {
+          "export": "p173oa_controls",
+          "total": 16,
+          "passed": 16
+        },
+        {
+          "export": "p173op_controls",
+          "total": 16,
+          "passed": 16
+        },
+        {
+          "export": "p173om_controls",
+          "total": 30,
+          "passed": 30
+        }
+      ],
+      "owners": [
+        {
+          "owner": "p173odw_change",
+          "rows": 1
+        }
+      ],
+      "transformedRows": 1,
+      "runtimeAdmitted": true,
+      "observerCertificate": true,
+      "scopeAdmitted": true
+    }
+  ],
+  "oracleReuse": [
+    {
+      "current": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-multi-packet-value-oracle08/value.json",
+        "bytes": 4292,
+        "sha256": "3eadda24f2b05b65acf22014cdd0966dfc7886ae460a1c65776a387142f42df9"
+      },
+      "prior": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-packet-oracle-value01/value.json",
+        "bytes": 4292,
+        "sha256": "3eadda24f2b05b65acf22014cdd0966dfc7886ae460a1c65776a387142f42df9"
+      },
+      "completeBytesEqual": true,
+      "scope": "New unchanged-source upstream observation equals the earlier complete value exactly; earlier checked constant native output authority is reused. Not a digest-only equivalence claim for the full value."
+    },
+    {
+      "current": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-multi-packet-digest-oracle08/value.json",
+        "bytes": 8,
+        "sha256": "56417d84cb4ae016e10f5e562a2ddd03b09aa160fd1234810b5a82fb2c4b1098"
+      },
+      "prior": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-packet-digest-oracle-value01/value.json",
+        "bytes": 8,
+        "sha256": "56417d84cb4ae016e10f5e562a2ddd03b09aa160fd1234810b5a82fb2c4b1098"
+      },
+      "completeBytesEqual": true,
+      "scope": "New unchanged-source upstream observation equals the earlier complete value exactly; earlier checked constant native output authority is reused. Not a digest-only equivalence claim for the full value."
+    }
+  ],
+  "nativeAcquisition": {
+    "name": "owned-native-n1-08",
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-native-source08/compiler.bend",
+      "bytes": 3205249,
+      "sha256": "8536e598ee618e401fafed82e9e75f0d32e13c697a13ddbd5f2de23639e6c3c6"
+    },
+    "producer": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/bend",
+      "bytes": 16031672,
+      "sha256": "0dba3d4d19cd974e759058afbe86608fc7e1770d0c5ebf8f9d06c2697b658f4f"
+    },
+    "producerStage": "N2",
+    "outputStage": "N1",
+    "binary": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-native-n1-08/program",
+      "bytes": 16496992,
+      "sha256": "a634d2405acee15369b050f9b931201d0662d3bae085a32989e825b29791e85a"
+    },
+    "irDigest": {
+      "bytes": 100193009,
+      "sha256": "aa7d731335ce38f51619b3a80978dbc64913e634cf58d21c4bbec9983d035614"
+    },
+    "wallSeconds": 201.61463175388053,
+    "emitAndQbeSeconds": 196.17530078394338,
+    "peakTreeRssBytes": 884563968,
+    "comparedToReference": false,
+    "expectedQbe": null,
+    "expectedStdout": null,
+    "scope": "Installed qualified Phase170 N2 built the first candidate N1. Stage=N2 describes the selected producer; imageBinding.stage=N1 describes the new image. Emission and QBE overlap in one streaming interval. No self-reproduction, semantic execution qualification or adoption claim."
+  },
+  "storage": {
+    "complete": true,
+    "targetsRun": false,
+    "selectedFiles": 3,
+    "plan": "selfhost/build-retention/phase173/capture04-p140-full-batch01/verified/plan.json",
+    "applied": "selfhost/build-retention/phase173/capture04-p140-full-batch01/applied",
+    "freeBeforeApply": 5449674752,
+    "freeAfterApply": 5768527872,
+    "freeDeltaApply": 318853120,
+    "archiveAndReceiptAllocatedBytes": 43204608,
+    "removedAllocatedBytes": 318873600,
+    "netAllocatedRecoveryBytes": 275668992,
+    "applyWallSeconds": 1.6737109990790486,
+    "scope": "Only proposal04 retired payload001/002/003, exact archived members verified independently; all unlisted products preserved."
+  },
+  "scope": "Multi08 experiments and first candidate native acquisition only; N2/N3 are outside this checkpoint."
+}

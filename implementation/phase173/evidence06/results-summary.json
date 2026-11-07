@@ -1,0 +1,872 @@
+[
+  {
+    "kind": "bend-checked-hosted-api",
+    "complete": true,
+    "checked": true,
+    "scope": "Upstream-checked B1 acquisition only; no B2/self-hosting/default promotion.",
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-decomposition-multi-source08/compiler.bend",
+      "bytes": 1610168,
+      "sha256": "5c2922a811a1c56d57fcbb3ee7d379c631fb3caa9300b61256e2c14701f4bdd9"
+    },
+    "seconds": 16.482582844,
+    "imageBinding": {
+      "kind": "bend-build-image-binding",
+      "version": 1,
+      "complete": true,
+      "host": "js",
+      "stage": "B1",
+      "image": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-decomposition-multi-api08/api.mjs",
+        "bytes": 2728181,
+        "sha256": "ce6bb2252e11f13424bc257c50a2c238c89ce8bb5bc402f5e58f24aa7fd869dc"
+      },
+      "sourceIdentity": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-decomposition-multi-source08/compiler.bend",
+        "bytes": 1610168,
+        "sha256": "5c2922a811a1c56d57fcbb3ee7d379c631fb3caa9300b61256e2c14701f4bdd9"
+      },
+      "checked": true,
+      "exports": [
+        "p88_cache_prepare",
+        "p86_prepare",
+        "p86_plan",
+        "p169np_plan",
+        "p134e_next",
+        "p173oa_controls",
+        "p173op_controls",
+        "p173od_pair",
+        "p173op_inspect_request",
+        "p173op_permission",
+        "p173om_controls",
+        "p173om_layout_summary"
+      ],
+      "protocol": "hosted-api-v1",
+      "targets": [
+        "qbe"
+      ],
+      "preparationModes": [
+        "live",
+        "cache"
+      ],
+      "scope": "Checked upstream-built API. Target capability is declared by exported public entries; behavioral qualification remains separate. JS/C accept live only; QBE supports live/cache."
+    },
+    "name": "owned-decomposition-multi-api08",
+    "priorEvidence": false
+  },
+  {
+    "kind": "phase173-qbe-owned-decomposition-multi-observation",
+    "complete": true,
+    "scope": "Checked Bend finite controls and QBE permission/owner census for one frozen source. No host optimization, native execution, full request timing, or production qualification.",
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/layout-digest-source01/compiler.bend",
+      "bytes": 11872,
+      "sha256": "cea5efc0ad911ea0a848ed06c1b431b31cfea0a804d52d99a19c9b6794797cf7"
+    },
+    "compilerSource": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-decomposition-multi-source08/compiler.bend",
+      "bytes": 1610168,
+      "sha256": "5c2922a811a1c56d57fcbb3ee7d379c631fb3caa9300b61256e2c14701f4bdd9"
+    },
+    "stages": {
+      "authenticationLoadSeconds": 2.736360878,
+      "controlsSeconds": 0.035015147999999954,
+      "baseSeconds": 0.9481023730000007,
+      "frontendSeconds": 2.2755941039999996,
+      "inspectSeconds": 0.15842014800000015,
+      "layoutSummarySeconds": 0.01298946800000067
+    },
+    "wallSeconds": 8.890483611000002,
+    "controls": [
+      {
+        "export": "p173oa_controls",
+        "rows": [
+          "owned-two-rows-exact-graph:pass",
+          "owned-identity-only-exact-fallback:pass",
+          "owned-reconstructed-identity-exact-fallback:pass",
+          "owned-missing-summary-exact-fallback:pass",
+          "owned-source-id-collision-refused:pass",
+          "owned-helper-id-collision-refused:pass",
+          "owned-replacement-id-collision-refused:pass",
+          "owned-reserved-id-limit-refused:pass",
+          "owned-unknown-worker-refused:pass",
+          "owned-root-in-extra-argument-refused:pass",
+          "owned-effectful-extra-expression-refused:pass",
+          "owned-distinct-atomic-alias-not-assumed-unique:pass",
+          "owned-rename-preserves-unreduced-application:pass",
+          "owned-rename-simultaneous-freshness-example:pass",
+          "owned-control-equality-observes-spans:pass",
+          "owned-control-equality-observes-lambda-present:pass"
+        ]
+      },
+      {
+        "export": "p173op_controls",
+        "rows": [
+          "permission-empty:pass",
+          "permission-ordinary:pass",
+          "permission-rewrite-refused:pass",
+          "permission-missing-refused:pass",
+          "permission-print:pass",
+          "permission-now:pass",
+          "permission-file-read:pass",
+          "permission-file-write:pass",
+          "permission-untrusted-file-refused:pass",
+          "permission-unfilled-file-refused:pass",
+          "permission-unknown-provider-refused:pass",
+          "permission-nativehost-old-certificate-refused:pass",
+          "permission-byte-file-old-certificate-refused:pass",
+          "permission-annotated-foreign:pass",
+          "permission-unreachable-provider-ignored:pass",
+          "permission-source-provider-not-hidden:pass"
+        ]
+      },
+      {
+        "export": "p173om_controls",
+        "rows": [
+          "multi-one-computed-slot:pass",
+          "multi-no-computed-slot-refused:pass",
+          "multi-two-computed-slots-refused:pass",
+          "multi-wrong-computed-position-refused:pass",
+          "multi-field-atom-id-collision-refused:pass",
+          "multi-result-atom-id-collision-refused:pass",
+          "multi-distinct-atom-allowed:pass",
+          "multi-static-leaf-allowed:pass",
+          "multi-static-nonleaf-refused:pass",
+          "multi-reference-is-not-atom:pass",
+          "multi-projection-field-basis:pass",
+          "multi-projection-missing-field-refused:pass",
+          "multi-projection-width-mismatch-refused:pass",
+          "multi-projection-closed-constructor:pass",
+          "multi-projection-call-refused:pass",
+          "multi-argument-origin-one-pass:pass",
+          "multi-unknown-origin-refused:pass",
+          "multi-duplicated-computed-value-refused:pass",
+          "multi-unused-call-keeps-fallback:pass",
+          "multi-existing-root-extra-refusal:pass",
+          "multi-source-projection-fixture-ready:pass",
+          "multi-unused-projection-getter-certified:pass",
+          "multi-unused-computing-getter-refused:pass",
+          "multi-affine-formal-allowed:pass",
+          "multi-erased-formal-refused:pass",
+          "multi-formal-field-collision-refused:pass",
+          "multi-unrestricted-formal-allowed:pass",
+          "multi-foreign-quantity-formal-refused:pass",
+          "multi-duplicate-formal-refused:pass",
+          "multi-unused-getter-before-call-refused:pass"
+        ]
+      }
+    ],
+    "owners": [
+      {
+        "owner": "nq_layout_subst",
+        "rows": 2
+      }
+    ],
+    "transformedRows": 2,
+    "runtimeAdmitted": true,
+    "observerCertificate": true,
+    "scopeAdmitted": true,
+    "layoutSummary": {
+      "export": "p173om_layout_summary",
+      "admitted": true,
+      "artifact": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-multi-layout-observe08/layout-summary.json",
+        "bytes": 14996,
+        "sha256": "f382f2db2785af7f0ed699fa39a637e4f28ea6eca3981c09936a4811f1b402a5"
+      }
+    },
+    "checkedTag": "P86PlanReady",
+    "verdict": "SOME PROOFS FAIL\nError: 24 defs rely on unsafe or foreign code:\n- nm\n- ix\n- qt\n- ks\n- rm\n- kb\n- ke\n- k_rebuild\n- nt_choose\n- nq_layout_subst\n- nq_layout_subst_list\n- p173bfp_tree\n- p173blc_large\n- p173bwp_terms\n- p173bwp_string\n- p173bwp_strings\n- p173bwp_term\n- p173bwp_heap\n- p173bwp_state\n- p173bwp_shared\n- p173bwp_results\n- p173bwp_report\n- p173blc_repeat\n- main\n",
+    "name": "owned-multi-layout-observe08",
+    "priorEvidence": false
+  },
+  {
+    "kind": "phase173-qbe-owned-decomposition-multi-observation",
+    "complete": true,
+    "scope": "Checked Bend finite controls and QBE permission/owner census for one frozen source. No host optimization, native execution, full request timing, or production qualification.",
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-multi-packet-source08/digest.bend",
+      "bytes": 3492,
+      "sha256": "8328d69875d1ed44bcb69c84cff87d0c6f50ff55dcfa9d87f7b09c9242ba25d0"
+    },
+    "compilerSource": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-decomposition-multi-source08/compiler.bend",
+      "bytes": 1610168,
+      "sha256": "5c2922a811a1c56d57fcbb3ee7d379c631fb3caa9300b61256e2c14701f4bdd9"
+    },
+    "stages": {
+      "authenticationLoadSeconds": 2.510011198,
+      "controlsSeconds": 0.03421053599999959,
+      "baseSeconds": 0.86124449,
+      "frontendSeconds": 0.8979874050000007,
+      "inspectSeconds": 0.024508816000000478,
+      "layoutSummarySeconds": 0.00017112100000031205
+    },
+    "wallSeconds": 6.627937969,
+    "controls": [
+      {
+        "export": "p173oa_controls",
+        "rows": [
+          "owned-two-rows-exact-graph:pass",
+          "owned-identity-only-exact-fallback:pass",
+          "owned-reconstructed-identity-exact-fallback:pass",
+          "owned-missing-summary-exact-fallback:pass",
+          "owned-source-id-collision-refused:pass",
+          "owned-helper-id-collision-refused:pass",
+          "owned-replacement-id-collision-refused:pass",
+          "owned-reserved-id-limit-refused:pass",
+          "owned-unknown-worker-refused:pass",
+          "owned-root-in-extra-argument-refused:pass",
+          "owned-effectful-extra-expression-refused:pass",
+          "owned-distinct-atomic-alias-not-assumed-unique:pass",
+          "owned-rename-preserves-unreduced-application:pass",
+          "owned-rename-simultaneous-freshness-example:pass",
+          "owned-control-equality-observes-spans:pass",
+          "owned-control-equality-observes-lambda-present:pass"
+        ]
+      },
+      {
+        "export": "p173op_controls",
+        "rows": [
+          "permission-empty:pass",
+          "permission-ordinary:pass",
+          "permission-rewrite-refused:pass",
+          "permission-missing-refused:pass",
+          "permission-print:pass",
+          "permission-now:pass",
+          "permission-file-read:pass",
+          "permission-file-write:pass",
+          "permission-untrusted-file-refused:pass",
+          "permission-unfilled-file-refused:pass",
+          "permission-unknown-provider-refused:pass",
+          "permission-nativehost-old-certificate-refused:pass",
+          "permission-byte-file-old-certificate-refused:pass",
+          "permission-annotated-foreign:pass",
+          "permission-unreachable-provider-ignored:pass",
+          "permission-source-provider-not-hidden:pass"
+        ]
+      },
+      {
+        "export": "p173om_controls",
+        "rows": [
+          "multi-one-computed-slot:pass",
+          "multi-no-computed-slot-refused:pass",
+          "multi-two-computed-slots-refused:pass",
+          "multi-wrong-computed-position-refused:pass",
+          "multi-field-atom-id-collision-refused:pass",
+          "multi-result-atom-id-collision-refused:pass",
+          "multi-distinct-atom-allowed:pass",
+          "multi-static-leaf-allowed:pass",
+          "multi-static-nonleaf-refused:pass",
+          "multi-reference-is-not-atom:pass",
+          "multi-projection-field-basis:pass",
+          "multi-projection-missing-field-refused:pass",
+          "multi-projection-width-mismatch-refused:pass",
+          "multi-projection-closed-constructor:pass",
+          "multi-projection-call-refused:pass",
+          "multi-argument-origin-one-pass:pass",
+          "multi-unknown-origin-refused:pass",
+          "multi-duplicated-computed-value-refused:pass",
+          "multi-unused-call-keeps-fallback:pass",
+          "multi-existing-root-extra-refusal:pass",
+          "multi-source-projection-fixture-ready:pass",
+          "multi-unused-projection-getter-certified:pass",
+          "multi-unused-computing-getter-refused:pass",
+          "multi-affine-formal-allowed:pass",
+          "multi-erased-formal-refused:pass",
+          "multi-formal-field-collision-refused:pass",
+          "multi-unrestricted-formal-allowed:pass",
+          "multi-foreign-quantity-formal-refused:pass",
+          "multi-duplicate-formal-refused:pass",
+          "multi-unused-getter-before-call-refused:pass"
+        ]
+      }
+    ],
+    "owners": [
+      {
+        "owner": "p173odw_change",
+        "rows": 1
+      }
+    ],
+    "transformedRows": 1,
+    "runtimeAdmitted": true,
+    "observerCertificate": true,
+    "scopeAdmitted": true,
+    "layoutSummary": {
+      "export": "p173om_layout_summary",
+      "admitted": false,
+      "artifact": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-multi-packet-observe08/layout-summary.json",
+        "bytes": 18,
+        "sha256": "78550e5d40ffbd563bab44c958d94271cc38139b0e76a3921da13ff5da1c0bc3"
+      }
+    },
+    "checkedTag": "P86PlanReady",
+    "verdict": "SOME PROOFS FAIL\nError: 9 defs rely on unsafe or foreign code:\n- p173odw_map\n- p173odw_change\n- p173odw_values\n- p173odw_make\n- p173odw_aliases\n- p173odw_repeat\n- p173odw_sum\n- p173odw_digest\n- main\n",
+    "name": "owned-multi-packet-observe08",
+    "priorEvidence": false
+  },
+  {
+    "kind": "phase171-checked-request",
+    "complete": true,
+    "scope": "Checked experimental hosted compiler request. This is not native compiler timing, generated-program execution, or promotion.",
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/layout-digest-source01/compiler.bend",
+      "bytes": 11872,
+      "sha256": "cea5efc0ad911ea0a848ed06c1b431b31cfea0a804d52d99a19c9b6794797cf7"
+    },
+    "stages": {
+      "loadSeconds": 2.455454824,
+      "baseSeconds": 0.807587149,
+      "frontendSeconds": 2.229691985,
+      "lowerVerifySeconds": 4.313744914,
+      "renderWriteSeconds": 0.7330356579999989
+    },
+    "wallSeconds": 11.725195878,
+    "ir": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-layout-digest-emission08/program.ssa",
+      "bytes": 535723,
+      "sha256": "7d63631c81f1caa657b14f2a08930bd2144e2f0c1be976e7edcaac786335a37b"
+    },
+    "name": "automatic-multi-layout-digest-emission08",
+    "priorEvidence": false
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.15324953431263566,
+    "irDigest": {
+      "bytes": 535723,
+      "sha256": "7d63631c81f1caa657b14f2a08930bd2144e2f0c1be976e7edcaac786335a37b"
+    },
+    "emitAndQbeSeconds": 0.07884333515539765,
+    "comparedToReference": false,
+    "expectedQbe": null,
+    "expectedStdout": null,
+    "name": "automatic-multi-layout-digest-machine08",
+    "priorEvidence": false
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "medians": {
+      "baseline": 0.09226888115517795,
+      "candidate": 0.07487431564368308
+    },
+    "ratio": 0.8114796094444814,
+    "resolved": true,
+    "rounds": 4,
+    "name": "automatic-multi-layout-digest-pair08",
+    "priorEvidence": false,
+    "outputChecks": {
+      "total": 8,
+      "exact": 8
+    }
+  },
+  {
+    "kind": "phase171-checked-request",
+    "complete": true,
+    "scope": "Checked experimental hosted compiler request. This is not native compiler timing, generated-program execution, or promotion.",
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/layout-value-source01/compiler.bend",
+      "bytes": 9349,
+      "sha256": "2368612f79cc722f988cfe4bf044015362ad7001a0b385641388cf87b03c920c"
+    },
+    "stages": {
+      "loadSeconds": 2.5052577969999996,
+      "baseSeconds": 0.7977108760000001,
+      "frontendSeconds": 2.114157809,
+      "lowerVerifySeconds": 3.679710586,
+      "renderWriteSeconds": 0.6172214889999995
+    },
+    "wallSeconds": 10.911198603,
+    "ir": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-layout-value-emission08/program.ssa",
+      "bytes": 426405,
+      "sha256": "267114ec82e1378182313a2ce26610956dc6c6df9d47ec0a6ee7d51e56221ce0"
+    },
+    "name": "automatic-multi-layout-value-emission08",
+    "priorEvidence": false
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.12278688233345747,
+    "irDigest": {
+      "bytes": 426405,
+      "sha256": "267114ec82e1378182313a2ce26610956dc6c6df9d47ec0a6ee7d51e56221ce0"
+    },
+    "emitAndQbeSeconds": 0.0539995850995183,
+    "comparedToReference": false,
+    "expectedQbe": null,
+    "expectedStdout": null,
+    "name": "automatic-multi-layout-value-machine08",
+    "priorEvidence": false
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "medians": {
+      "baseline": 0.003727502655237913,
+      "candidate": 0.0035760882310569286
+    },
+    "resolved": false,
+    "rounds": 1,
+    "name": "automatic-multi-layout-value-pair08",
+    "priorEvidence": false,
+    "outputChecks": {
+      "total": 2,
+      "exact": 2
+    }
+  },
+  {
+    "kind": "phase171-checked-request",
+    "complete": true,
+    "scope": "Checked experimental hosted compiler request. This is not native compiler timing, generated-program execution, or promotion.",
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-multi-packet-source08/digest.bend",
+      "bytes": 3492,
+      "sha256": "8328d69875d1ed44bcb69c84cff87d0c6f50ff55dcfa9d87f7b09c9242ba25d0"
+    },
+    "stages": {
+      "loadSeconds": 2.5327072360000003,
+      "baseSeconds": 0.826131934,
+      "frontendSeconds": 0.9036840259999999,
+      "lowerVerifySeconds": 1.0013302729999995,
+      "renderWriteSeconds": 0.1977769989999997
+    },
+    "wallSeconds": 6.755158559000001,
+    "ir": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-packet-digest-emission08/program.ssa",
+      "bytes": 100204,
+      "sha256": "a2ada7a1fc6eda0dca4a974c98920299262e73b6923a0e249bb09fc7cdf0e850"
+    },
+    "name": "automatic-multi-packet-digest-emission08",
+    "priorEvidence": false
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.06903503881767392,
+    "irDigest": {
+      "bytes": 100204,
+      "sha256": "a2ada7a1fc6eda0dca4a974c98920299262e73b6923a0e249bb09fc7cdf0e850"
+    },
+    "emitAndQbeSeconds": 0.01121192891150713,
+    "comparedToReference": false,
+    "expectedQbe": null,
+    "expectedStdout": null,
+    "name": "automatic-multi-packet-digest-machine08",
+    "priorEvidence": false
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "medians": {
+      "baseline": 0.06997969001531601,
+      "candidate": 0.03502537286840379
+    },
+    "ratio": 0.500507688169782,
+    "resolved": true,
+    "rounds": 4,
+    "name": "automatic-multi-packet-digest-pair08",
+    "priorEvidence": false,
+    "outputChecks": {
+      "total": 8,
+      "exact": 8
+    }
+  },
+  {
+    "kind": "phase171-checked-request",
+    "complete": true,
+    "scope": "Checked experimental hosted compiler request. This is not native compiler timing, generated-program execution, or promotion.",
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-multi-packet-source08/full.bend",
+      "bytes": 3309,
+      "sha256": "ab53fdc13f4bdf1b3535ff5d84f43a8c108bfe8c8294c67708c1ef9e4f5ca7b0"
+    },
+    "stages": {
+      "loadSeconds": 2.452385814,
+      "baseSeconds": 0.8188358779999999,
+      "frontendSeconds": 0.8849857179999999,
+      "lowerVerifySeconds": 0.8084182430000001,
+      "renderWriteSeconds": 0.09530203900000014
+    },
+    "wallSeconds": 6.225380889999999,
+    "ir": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-packet-value-emission08/program.ssa",
+      "bytes": 79355,
+      "sha256": "268098a9f1180c70c39705f38fb8427d0342932e5f45938607f5987e6ae868fb"
+    },
+    "name": "automatic-multi-packet-value-emission08",
+    "priorEvidence": false
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.06496513169258833,
+    "irDigest": {
+      "bytes": 79355,
+      "sha256": "268098a9f1180c70c39705f38fb8427d0342932e5f45938607f5987e6ae868fb"
+    },
+    "emitAndQbeSeconds": 0.009126164950430393,
+    "comparedToReference": false,
+    "expectedQbe": null,
+    "expectedStdout": null,
+    "name": "automatic-multi-packet-value-machine08",
+    "priorEvidence": false
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "medians": {
+      "baseline": 0.003127485979348421,
+      "candidate": 0.002893771044909954
+    },
+    "resolved": false,
+    "rounds": 1,
+    "name": "automatic-multi-packet-value-pair08",
+    "priorEvidence": false,
+    "outputChecks": {
+      "total": 2,
+      "exact": 2
+    }
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.6499713268131018,
+    "irDigest": {
+      "bytes": 98661,
+      "sha256": "6087bc665918b1ae84e3e99539529ef9de70ece6222ecca6570e4329a7a42f4d"
+    },
+    "emitAndQbeSeconds": 0.49099727300927043,
+    "comparedToReference": false,
+    "expectedQbe": null,
+    "expectedStdout": null,
+    "name": "owned-multi-packet-digest-base08",
+    "priorEvidence": false
+  },
+  {
+    "kind": "bend-checked-hosted-api",
+    "complete": true,
+    "checked": true,
+    "scope": "Upstream-checked B1 acquisition only; no B2/self-hosting/default promotion.",
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-multi-packet-source08/digest.bend",
+      "bytes": 3492,
+      "sha256": "8328d69875d1ed44bcb69c84cff87d0c6f50ff55dcfa9d87f7b09c9242ba25d0"
+    },
+    "seconds": 0.899625959,
+    "imageBinding": {
+      "kind": "bend-build-image-binding",
+      "version": 1,
+      "complete": true,
+      "host": "js",
+      "stage": "B1",
+      "image": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-multi-packet-digest-oracle-api08/api.mjs",
+        "bytes": 8916,
+        "sha256": "7348d8f555ee7736d63ce32a4349ec4aa4ec981b135c3d8920858cfa7e88725e"
+      },
+      "sourceIdentity": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-multi-packet-source08/digest.bend",
+        "bytes": 3492,
+        "sha256": "8328d69875d1ed44bcb69c84cff87d0c6f50ff55dcfa9d87f7b09c9242ba25d0"
+      },
+      "checked": true,
+      "exports": [
+        "main"
+      ],
+      "protocol": "hosted-api-v1",
+      "targets": [
+        "qbe"
+      ],
+      "preparationModes": [
+        "live"
+      ],
+      "scope": "Checked upstream-built API. Target capability is declared by exported public entries; behavioral qualification remains separate. JS/C accept live only; QBE supports live/cache."
+    },
+    "name": "owned-multi-packet-digest-oracle-api08",
+    "priorEvidence": false
+  },
+  {
+    "kind": "phase173-independent-owned-packet-value-oracle",
+    "complete": true,
+    "scope": "Unchanged workload evaluated by pinned upstream JS; complete typed value transported to a constant Bend program. The constant requires independent checking and baseline native readback before use as an execution oracle.",
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-multi-packet-source08/digest.bend",
+      "bytes": 3492,
+      "sha256": "8328d69875d1ed44bcb69c84cff87d0c6f50ff55dcfa9d87f7b09c9242ba25d0"
+    },
+    "wallSeconds": 0.640652,
+    "name": "owned-multi-packet-digest-oracle08",
+    "priorEvidence": false
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.5897465040907264,
+    "irDigest": {
+      "bytes": 77812,
+      "sha256": "8ae433e71771791439fecb5c2e1d07ef0f6f459deea32d243386f9fe24fe7bdd"
+    },
+    "emitAndQbeSeconds": 0.42514426773414016,
+    "comparedToReference": false,
+    "expectedQbe": null,
+    "expectedStdout": null,
+    "name": "owned-multi-packet-value-base08",
+    "priorEvidence": false
+  },
+  {
+    "kind": "bend-checked-hosted-api",
+    "complete": true,
+    "checked": true,
+    "scope": "Upstream-checked B1 acquisition only; no B2/self-hosting/default promotion.",
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-multi-packet-source08/full.bend",
+      "bytes": 3309,
+      "sha256": "ab53fdc13f4bdf1b3535ff5d84f43a8c108bfe8c8294c67708c1ef9e4f5ca7b0"
+    },
+    "seconds": 0.8536024569999999,
+    "imageBinding": {
+      "kind": "bend-build-image-binding",
+      "version": 1,
+      "complete": true,
+      "host": "js",
+      "stage": "B1",
+      "image": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-multi-packet-value-oracle-api08/api.mjs",
+        "bytes": 8263,
+        "sha256": "37121a6c9b525465f73445f7de5331391f7ccb2f5c0d77b53c2aac64b8d7b775"
+      },
+      "sourceIdentity": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-multi-packet-source08/full.bend",
+        "bytes": 3309,
+        "sha256": "ab53fdc13f4bdf1b3535ff5d84f43a8c108bfe8c8294c67708c1ef9e4f5ca7b0"
+      },
+      "checked": true,
+      "exports": [
+        "main"
+      ],
+      "protocol": "hosted-api-v1",
+      "targets": [
+        "qbe"
+      ],
+      "preparationModes": [
+        "live"
+      ],
+      "scope": "Checked upstream-built API. Target capability is declared by exported public entries; behavioral qualification remains separate. JS/C accept live only; QBE supports live/cache."
+    },
+    "name": "owned-multi-packet-value-oracle-api08",
+    "priorEvidence": false
+  },
+  {
+    "kind": "phase173-independent-owned-packet-value-oracle",
+    "complete": true,
+    "scope": "Unchanged workload evaluated by pinned upstream JS; complete typed value transported to a constant Bend program. The constant requires independent checking and baseline native readback before use as an execution oracle.",
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-multi-packet-source08/full.bend",
+      "bytes": 3309,
+      "sha256": "ab53fdc13f4bdf1b3535ff5d84f43a8c108bfe8c8294c67708c1ef9e4f5ca7b0"
+    },
+    "wallSeconds": 0.563116462,
+    "name": "owned-multi-packet-value-oracle08",
+    "priorEvidence": false
+  },
+  {
+    "kind": "bend-checked-hosted-api",
+    "complete": true,
+    "checked": true,
+    "scope": "Upstream-checked B1 acquisition only; no B2/self-hosting/default promotion.",
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-native-source08/compiler.bend",
+      "bytes": 3205249,
+      "sha256": "8536e598ee618e401fafed82e9e75f0d32e13c697a13ddbd5f2de23639e6c3c6"
+    },
+    "seconds": 6.7958460480000005,
+    "imageBinding": {
+      "kind": "bend-build-image-binding",
+      "version": 1,
+      "complete": true,
+      "host": "js",
+      "stage": "B1",
+      "image": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-native-source-check08/api.mjs",
+        "bytes": 3902,
+        "sha256": "85dcf298c0426e9cbaf04a6bfb9152743644ecde75ff34388d0c09d86ef2b845"
+      },
+      "sourceIdentity": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-native-source08/compiler.bend",
+        "bytes": 3205249,
+        "sha256": "8536e598ee618e401fafed82e9e75f0d32e13c697a13ddbd5f2de23639e6c3c6"
+      },
+      "checked": true,
+      "exports": [
+        "tg"
+      ],
+      "protocol": "hosted-api-v1",
+      "targets": [
+        "qbe"
+      ],
+      "preparationModes": [
+        "live",
+        "cache"
+      ],
+      "scope": "Checked upstream-built API. Target capability is declared by exported public entries; behavioral qualification remains separate. JS/C accept live only; QBE supports live/cache."
+    },
+    "name": "owned-native-source-check08",
+    "priorEvidence": false
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 201.61463175388053,
+    "imageBinding": {
+      "kind": "bend-build-image-binding",
+      "version": 1,
+      "complete": true,
+      "image": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-native-n1-08/program",
+        "bytes": 16496992,
+        "sha256": "a634d2405acee15369b050f9b931201d0662d3bae085a32989e825b29791e85a"
+      },
+      "sourceIdentity": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-native-source08/compiler.bend",
+        "bytes": 3205249,
+        "sha256": "8536e598ee618e401fafed82e9e75f0d32e13c697a13ddbd5f2de23639e6c3c6"
+      },
+      "host": "native",
+      "stage": "N1",
+      "protocol": "qbe-source-v1",
+      "targets": [
+        "qbe"
+      ],
+      "linkedRuntime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+        "bytes": 119096,
+        "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+      },
+      "producer": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/bend",
+        "bytes": 16031672,
+        "sha256": "0dba3d4d19cd974e759058afbe86608fc7e1770d0c5ebf8f9d06c2697b658f4f"
+      },
+      "producerHost": "native",
+      "producerStage": "N2",
+      "qualification": "Built; semantic/self-host qualification is separate."
+    },
+    "irDigest": {
+      "bytes": 100193009,
+      "sha256": "aa7d731335ce38f51619b3a80978dbc64913e634cf58d21c4bbec9983d035614"
+    },
+    "emitAndQbeSeconds": 196.17530078394338,
+    "comparedToReference": false,
+    "expectedQbe": null,
+    "expectedStdout": null,
+    "name": "owned-native-n1-08",
+    "priorEvidence": false
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 1.2508968538604677,
+    "irDigest": {
+      "bytes": 410107,
+      "sha256": "3cff16052821a0b3ce6f9842415c2b74c36a6bc94f7ba0178d1ffd56388f1d78"
+    },
+    "emitAndQbeSeconds": 1.0834557441994548,
+    "comparedToReference": false,
+    "expectedQbe": null,
+    "expectedStdout": null,
+    "name": "layout-value-base01",
+    "priorEvidence": true
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 1.3273775498382747,
+    "irDigest": {
+      "bytes": 519405,
+      "sha256": "0b9897a08b7d912ede50b6d33b3fce874550643f6ee78f12d2a2070a7a067fef"
+    },
+    "emitAndQbeSeconds": 1.1252321531064808,
+    "comparedToReference": false,
+    "expectedQbe": null,
+    "expectedStdout": null,
+    "name": "layout-digest-base01",
+    "priorEvidence": true
+  },
+  {
+    "kind": "bend-native-build",
+    "complete": true,
+    "scope": "Host transport and machine construction. No compiler semantics, stage promotion or installed selection change.",
+    "wallSeconds": 0.5404765652492642,
+    "irDigest": {
+      "bytes": 43254,
+      "sha256": "d371d36a8c55366d31a3d22762f3d125f09198c3fe0a4bf6ccf91934f16cabbc"
+    },
+    "emitAndQbeSeconds": 0.36154110496863723,
+    "comparedToReference": false,
+    "expectedQbe": null,
+    "expectedStdout": null,
+    "name": "owned-packet-oracle-native01",
+    "priorEvidence": true
+  },
+  {
+    "kind": "phase173-native-product-pair",
+    "complete": true,
+    "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+    "medians": {
+      "baseline": 0.003691993188112974,
+      "candidate": 0.0028211730532348156
+    },
+    "resolved": false,
+    "rounds": 1,
+    "name": "owned-packet-oracle-output01",
+    "priorEvidence": true,
+    "outputChecks": {
+      "total": 2,
+      "exact": 2
+    }
+  },
+  {
+    "kind": "phase173-independent-owned-packet-value-oracle",
+    "complete": true,
+    "scope": "Unchanged workload evaluated by pinned upstream JS; complete typed value transported to a constant Bend program. The constant requires independent checking and baseline native readback before use as an execution oracle.",
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-packet-source01/full.bend",
+      "bytes": 2251,
+      "sha256": "2f786debfc183ba62e36892409c79e2f3484f2b2b238bb6cf75c069cc5f3218a"
+    },
+    "wallSeconds": 0.548983508,
+    "name": "owned-packet-oracle-value01",
+    "priorEvidence": true
+  },
+  {
+    "kind": "phase173-independent-owned-packet-value-oracle",
+    "complete": true,
+    "scope": "Unchanged workload evaluated by pinned upstream JS; complete typed value transported to a constant Bend program. The constant requires independent checking and baseline native readback before use as an execution oracle.",
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-packet-source01/digest.bend",
+      "bytes": 2434,
+      "sha256": "7e300342bdf8a69508cf84ffb9ac4f3933a7018487493c407aa13e35c8ffffc6"
+    },
+    "wallSeconds": 0.6315951740000001,
+    "name": "owned-packet-digest-oracle-value01",
+    "priorEvidence": true
+  }
+]

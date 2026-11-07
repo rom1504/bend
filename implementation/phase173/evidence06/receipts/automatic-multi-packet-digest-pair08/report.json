@@ -1,0 +1,259 @@
+{
+  "kind": "phase173-native-product-pair",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase173/native-pair.py",
+      "bytes": 3973,
+      "sha256": "219a9a447f8b85262adfa2b58eea7f1d635233c2fbe6a0083fd8e7d9651d6f9b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-multi-packet-digest-base08/report.json",
+      "bytes": 16557,
+      "sha256": "416381424fd488745dea28302a7a36f54fac6d8600573f996cf4b8d4231713b8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-packet-digest-machine08/report.json",
+      "bytes": 9072,
+      "sha256": "0f97b7d8fcaddfe71b00822cb353451b287c8bd606c897843e1ce44688276460"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-multi-packet-digest-base08/program",
+      "bytes": 130992,
+      "sha256": "f1a2cad8ef26b6ac485986da7c16f0070d6e238af0f26a77848feb3487f65877"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-multi-packet-digest-base08/program.ssa",
+      "bytes": 98661,
+      "sha256": "6087bc665918b1ae84e3e99539529ef9de70ece6222ecca6570e4329a7a42f4d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-packet-digest-machine08/program",
+      "bytes": 131000,
+      "sha256": "4cce061c0a0b89ffc527dd9880a8b194cf7022e769a8b783d0a0f4299c731493"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-packet-digest-emission08/program.ssa",
+      "bytes": 100204,
+      "sha256": "a2ada7a1fc6eda0dca4a974c98920299262e73b6923a0e249bb09fc7cdf0e850"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-multi-packet-digest-oracle08/value.json",
+      "bytes": 8,
+      "sha256": "56417d84cb4ae016e10f5e562a2ddd03b09aa160fd1234810b5a82fb2c4b1098"
+    }
+  ],
+  "runs": [
+    {
+      "role": "baseline",
+      "cycle": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-multi-packet-digest-base08/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.07030703220516443,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-packet-digest-pair08/0-baseline.stdout",
+        "bytes": 8,
+        "sha256": "56417d84cb4ae016e10f5e562a2ddd03b09aa160fd1234810b5a82fb2c4b1098"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-packet-digest-pair08/0-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-packet-digest-machine08/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.041203787084668875,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-packet-digest-pair08/0-candidate.stdout",
+        "bytes": 8,
+        "sha256": "56417d84cb4ae016e10f5e562a2ddd03b09aa160fd1234810b5a82fb2c4b1098"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-packet-digest-pair08/0-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-packet-digest-machine08/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.034866102039813995,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-packet-digest-pair08/1-candidate.stdout",
+        "bytes": 8,
+        "sha256": "56417d84cb4ae016e10f5e562a2ddd03b09aa160fd1234810b5a82fb2c4b1098"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-packet-digest-pair08/1-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "baseline",
+      "cycle": 1,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-multi-packet-digest-base08/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.06992257526144385,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-packet-digest-pair08/1-baseline.stdout",
+        "bytes": 8,
+        "sha256": "56417d84cb4ae016e10f5e562a2ddd03b09aa160fd1234810b5a82fb2c4b1098"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-packet-digest-pair08/1-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "baseline",
+      "cycle": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-multi-packet-digest-base08/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.0698259063065052,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-packet-digest-pair08/2-baseline.stdout",
+        "bytes": 8,
+        "sha256": "56417d84cb4ae016e10f5e562a2ddd03b09aa160fd1234810b5a82fb2c4b1098"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-packet-digest-pair08/2-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 2,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-packet-digest-machine08/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.03518155217170715,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-packet-digest-pair08/2-candidate.stdout",
+        "bytes": 8,
+        "sha256": "56417d84cb4ae016e10f5e562a2ddd03b09aa160fd1234810b5a82fb2c4b1098"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-packet-digest-pair08/2-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 3,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-packet-digest-machine08/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.03486919356510043,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-packet-digest-pair08/3-candidate.stdout",
+        "bytes": 8,
+        "sha256": "56417d84cb4ae016e10f5e562a2ddd03b09aa160fd1234810b5a82fb2c4b1098"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-packet-digest-pair08/3-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "baseline",
+      "cycle": 3,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-multi-packet-digest-base08/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.07003680476918817,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-packet-digest-pair08/3-baseline.stdout",
+        "bytes": 8,
+        "sha256": "56417d84cb4ae016e10f5e562a2ddd03b09aa160fd1234810b5a82fb2c4b1098"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-packet-digest-pair08/3-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    }
+  ],
+  "rounds": 4,
+  "oracle": "fixed expected bytes",
+  "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+  "medians": {
+    "baseline": 0.06997969001531601,
+    "candidate": 0.03502537286840379
+  },
+  "resolved": true,
+  "ratio": 0.500507688169782
+}

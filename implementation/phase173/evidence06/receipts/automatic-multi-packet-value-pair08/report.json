@@ -1,0 +1,114 @@
+{
+  "kind": "phase173-native-product-pair",
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase173/native-pair.py",
+      "bytes": 3973,
+      "sha256": "219a9a447f8b85262adfa2b58eea7f1d635233c2fbe6a0083fd8e7d9651d6f9b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-multi-packet-value-base08/report.json",
+      "bytes": 16528,
+      "sha256": "0643d02c2a25c7ce80b56b48104199e2370a1fcdb9f0f2ca30ca8e98d85f155a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-packet-value-machine08/report.json",
+      "bytes": 9047,
+      "sha256": "a7ae03d0a89cfc3bba4187a42fcfbcee7ffb9ff3f033efe0df94e49be9a73234"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-multi-packet-value-base08/program",
+      "bytes": 124672,
+      "sha256": "c8fb1d08bf668266d21f2df6fca73808182e9960295470a09268a101f09ebc78"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-multi-packet-value-base08/program.ssa",
+      "bytes": 77812,
+      "sha256": "8ae433e71771791439fecb5c2e1d07ef0f6f459deea32d243386f9fe24fe7bdd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-packet-value-machine08/program",
+      "bytes": 124672,
+      "sha256": "2ea14a3332a05259419ab9540f352f5dd96cf82d22656add1768985a811e96ef"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+      "bytes": 119096,
+      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-packet-value-emission08/program.ssa",
+      "bytes": 79355,
+      "sha256": "268098a9f1180c70c39705f38fb8427d0342932e5f45938607f5987e6ae868fb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-packet-oracle-output01/0-baseline.stdout",
+      "bytes": 282,
+      "sha256": "7721aeb9f5a072ff3f723fa70d6d91436c24edc7b06d68a5ac595a727ba31db7"
+    }
+  ],
+  "runs": [
+    {
+      "role": "baseline",
+      "cycle": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/owned-multi-packet-value-base08/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.003127485979348421,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-packet-value-pair08/0-baseline.stdout",
+        "bytes": 282,
+        "sha256": "7721aeb9f5a072ff3f723fa70d6d91436c24edc7b06d68a5ac595a727ba31db7"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-packet-value-pair08/0-baseline.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 0,
+      "command": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-packet-value-machine08/program",
+        "--threads",
+        "1",
+        "--gpu",
+        "off"
+      ],
+      "seconds": 0.002893771044909954,
+      "exitCode": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-packet-value-pair08/0-candidate.stdout",
+        "bytes": 282,
+        "sha256": "7721aeb9f5a072ff3f723fa70d6d91436c24edc7b06d68a5ac595a727ba31db7"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase173/automatic-multi-packet-value-pair08/0-candidate.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "outputExact": true
+    }
+  ],
+  "rounds": 1,
+  "oracle": "fixed expected bytes",
+  "scope": "Whole process including setup/teardown; finite output check, not a proof or full compiler speed.",
+  "medians": {
+    "baseline": 0.003127485979348421,
+    "candidate": 0.002893771044909954
+  },
+  "resolved": false
+}

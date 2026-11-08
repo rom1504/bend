@@ -582,10 +582,14 @@ def nc_match_apply_slow_to(book, t, env, n, target):
 def nc_match(+book: List<&2, KDef>, +t: KTerm, +env: List<&2, NC_Binding>, +n: U32) -> NC_Code:
   nc_lambda(book, k_lam("", nc_id(n), 1, [kt("NMatch", "", 0, 0, [t, var("", nc_id(n))])], 0, 0, False{}), env, U32.inc(n))
 
+# The checked Base alias shares Array.get's ownership, arity and layout gates.
+# Keep the existing bounded read implementation; the unchecked contract only
+# permits indices below capacity. Non-native definitions still fail db admission.
 # Module: src/back/native/bridge.bend:502
 @unsafe
-def nc_primitive_name(k: String) -> String:
-  String.to_lower(nt_clean(k))
+def nc_primitive_name(+k: String) -> String:
+  nt_choose(String, p88_string_eq(k, "Array.get_unchecked"),
+    u => "array_get", u => String.to_lower(nt_clean(k)))
 
 # Module: src/back/native/bridge.bend:510
 @unsafe

@@ -88,6 +88,8 @@ law f_tuple:
 # Module: src/front/parser.bend:75
 law f_list_nodes:
   for +xs: List<&2, KTerm>
+  for +con: String
+  for +nil: String
   KTerm
 
 # Module: src/front/parser.bend:79
@@ -194,6 +196,7 @@ law f_binary_plain:
   for +opEnd: U32
   for +begin: U32
   for +end: U32
+  for +input: FInput
   KTerm
 
 # Module: src/front/parser.bend:507
@@ -438,7 +441,7 @@ def f_all_domain(name, id, q, exi, p):
 def f_all_body(name, id, q, exi, a, p):
   match p:
     case FParsed{b, ts}:
-      FParsed{f_choose(KTerm, f_context_stop(b), u => b, u => f_choose(KTerm, exi, u => f_app(kt("Ref", "Exists", 0, 1, Nil{}), [a, k_lam(name, id, q, [b], 0, 0, False{})]), u => kt("All", name, id, q, [a, b]))), ts}
+      FParsed{f_choose(KTerm, f_context_stop(b), u => b, u => f_choose(KTerm, exi, u => f_app(kt("Ref", f_context_own("Exists", ts, False{}), 0, 1, Nil{}), [a, k_lam(name, id, q, [b], 0, 0, False{})]), u => kt("All", name, id, q, [a, b]))), ts}
 
 # Module: src/front/parser.bend:324
 @unsafe
@@ -469,7 +472,7 @@ def f_group_ann(
 def f_tuple(n, p):
   match p:
     case FParsed{m, ts}:
-      FParsed{f_choose(KTerm, f_context_stop(m), u => m, u => kt("Ctr", "Tuple", 0, 1, [n, m])), ts}
+      FParsed{f_choose(KTerm, f_context_stop(m), u => m, u => kt("Ctr", f_context_own("Tuple", ts, True{}), 0, 1, [n, m])), ts}
 
 # Module: src/front/parser.bend:351
 @unsafe
@@ -478,16 +481,16 @@ def f_list(
 ) -> FParsed:
   match p:
     case FParsed{+n, ts}:
-      FParsed{f_choose(KTerm, f_eq(tg(n), "Error"), u => n, u => f_list_nodes(ks(n))), ts}
+      FParsed{f_choose(KTerm, f_eq(tg(n), "Error"), u => n, u => f_list_nodes(ks(n), f_context_own("Con", ts, True{}), f_context_own("Nil", ts, True{}))), ts}
 
 # Module: src/front/parser.bend:359
 @unsafe
-def f_list_nodes(xs):
+def f_list_nodes(xs, con, nil):
   match xs:
     case Nil{}:
-      kt("Ctr", "Nil", 0, 1, Nil{})
+      kt("Ctr", nil, 0, 1, Nil{})
     case Con{x, xt}:
-      kt("Ctr", "Con", 0, 1, [x, f_list_nodes(xt)])
+      kt("Ctr", con, 0, 1, [x, f_list_nodes(xt, con, nil)])
 
 # Module: src/front/parser.bend:367
 @unsafe
@@ -513,7 +516,7 @@ def f_equation(a, neg, opBegin, opEnd, p):
 def f_equation_type(a, b, neg, opBegin, opEnd, p):
   match p:
     case FParsed{ty, ts}:
-      FParsed{f_choose(KTerm, neg, u => kt("All", "_", 0, 1, [kt("Eql", "", 0, 1, [a, b, ty]), kt_span("FGlobal", "Empty", 0, 1, Nil{}, opBegin, opEnd)]), u => kt("Eql", "", 0, 1, [a, b, ty])), ts}
+      FParsed{f_choose(KTerm, neg, u => kt("All", "_", 0, 1, [kt("Eql", "", 0, 1, [a, b, ty]), kt_span("FGlobal", f_context_own("Empty", ts, False{}), 0, 1, Nil{}, opBegin, opEnd)]), u => kt("Eql", "", 0, 1, [a, b, ty])), ts}
 
 # Module: src/front/parser.bend:389
 @unsafe
@@ -568,12 +571,12 @@ def f_grow_args(n, op, min, p):
 
 # Module: src/front/parser.bend:441
 @unsafe
-def f_binary_plain(a, op, b, opBegin, opEnd, begin, end):
+def f_binary_plain(a, op, b, opBegin, opEnd, begin, end, input):
   f_choose(KTerm, f_eq(op, "=>"), u => f_lambda_valid(a, b, opEnd),
     u => f_choose(KTerm, f_eq(op, "->"), u => kt_span("All", "_", ix(a), 1, [a, b], begin, end),
-    u => f_choose(KTerm, f_eq(op, "<>"), u => kt_span("Ctr", "Con", 0, 1, [a, b], begin, end),
+    u => f_choose(KTerm, f_eq(op, "<>"), u => kt_span("Ctr", f_context_own("Con", input, True{}), 0, 1, [a, b], begin, end),
     u => f_choose(KTerm, f_eq(op, "<&>"), u => kt_span("Min", "", 0, 1, [a, b], begin, end),
-    u => f_app_span(kt_span("Ref", f_operator(op), 0, 1, Nil{}, f_choose(U32, f_eq(op, "&") || f_eq(op, "|"), u => begin, u => opBegin), f_choose(U32, f_eq(op, "&") || f_eq(op, "|"), u => end, u => opEnd)), [a, b], begin, end)))))
+    u => f_app_span(kt_span("Ref", f_choose(String, Char.is_eq(f_head(f_operator(op)), '.'), u => f_operator(op), u => f_context_own(f_operator(op), input, False{})), 0, 1, Nil{}, f_choose(U32, f_eq(op, "&") || f_eq(op, "|"), u => begin, u => opBegin), f_choose(U32, f_eq(op, "&") || f_eq(op, "|"), u => end, u => opEnd)), [a, b], begin, end)))))
 
 # Module: src/front/parser.bend:449
 @unsafe
@@ -587,10 +590,18 @@ def f_matcher(ts):
 
 # Module: src/front/parser.bend:457
 @unsafe
+def f_matcher_named(+term: KTerm, +input: FInput) -> FParsed:
+  match input:
+    case FInput{tokens,FParseContext{scope,env,next}}:
+      +resolved = f_context_resolve_table(term,scope,True{})
+      f_choose(FParsed,f_context_stop(resolved),u => FParsed{resolved,input},
+        u => f_matcher_arm(nm(resolved),f_expr(f_tl(input),0)))
+
+@unsafe
 def f_matcher_head(p):
   match p:
     case FParsed{+n, +ts}:
-      f_choose(FParsed, (f_eq(tg(n), "Ref") || f_eq(tg(n), "FName") || f_eq(tg(n), "Var")) && f_eq(f_tx(ts), ":"), u => f_matcher_arm(f_context_type_name(nm(n), ts), f_expr(f_tl(ts), 0)), u => f_expect(FParsed{n, ts}, "}"))
+      f_choose(FParsed, (f_eq(tg(n), "Ref") || f_eq(tg(n), "FName") || f_eq(tg(n), "Var")) && f_eq(f_tx(ts), ":"), u => f_matcher_named(n, ts), u => f_expect(FParsed{n, ts}, "}"))
 
 # Module: src/front/parser.bend:463
 @unsafe

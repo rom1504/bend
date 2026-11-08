@@ -229,7 +229,10 @@ def jd_primitive_table() -> List<&2,JDPrimitive>:
     JDPrimitive{"Bool.xor", 2, "($0 !== $1)"},
     JDPrimitive{"String.append", 2, "($0 + $1)"},
     JDPrimitive{"String.eq", 2, "($0 === $1)"},
-    JDPrimitive{"String.length", 1, "[...$0].length"},
+    JDPrimitive{"String.length", 1, "[...str_out($0)].length"},
+    JDPrimitive{"String.contains", 2, "string_contains($0, $1)"},
+    JDPrimitive{"F32.from_nat", 1, "Math.fround($0)"},
+    JDPrimitive{"Array.get_unchecked", 2, "{$: \"Tuple\", fst: $0, snd: $0[$1]}"},
     JDPrimitive{"Array.new", 2, "array_new($0, $1)"},
     JDPrimitive{"Array.set", 3, "($0[$1 % $0.length] = $2, $0)"},
     JDPrimitive{"Array.get", 2, "{$: \"Tuple\", fst: $0, snd: $0[$1 % $0.length]}"},
@@ -254,6 +257,16 @@ def jd_primitive_table() -> List<&2,JDPrimitive>:
 # Module: src/back/js/direct/primitive.bend:240
 @unsafe
 def jd_primitive_select(+name: String) -> JDPrimitive:
+  kc(JDPrimitive, p88_string_eq(name, "F32.from_nat"),
+    u => JDPrimitive{"F32.from_nat", 1, "Math.fround($0)"}, u =>
+  kc(JDPrimitive, p88_string_eq(name, "Array.get_unchecked"),
+    u => JDPrimitive{"Array.get_unchecked", 2, "{$: \"Tuple\", fst: $0, snd: $0[$1]}"}, u =>
+  kc(JDPrimitive, p88_string_eq(name, "String.contains"),
+    u => JDPrimitive{"String.contains", 2, "string_contains($0, $1)"}, u =>
+    jd_primitive_select_0(name))))
+
+@unsafe
+def jd_primitive_select_0(+name: String) -> JDPrimitive:
   kc(JDPrimitive, p88_string_eq(name, "U32.add"),
     u => JDPrimitive{"U32.add", 2, "(($0 + $1) >>> 0)"}, u =>
     kc(JDPrimitive, p88_string_eq(name, "U32.sub"),
@@ -438,7 +451,7 @@ def jd_primitive_select_7(+name: String) -> JDPrimitive:
     kc(JDPrimitive, p88_string_eq(name, "String.eq"),
     u => JDPrimitive{"String.eq", 2, "($0 === $1)"}, u =>
     kc(JDPrimitive, p88_string_eq(name, "String.length"),
-    u => JDPrimitive{"String.length", 1, "[...$0].length"}, u =>
+    u => JDPrimitive{"String.length", 1, "[...str_out($0)].length"}, u =>
     kc(JDPrimitive, p88_string_eq(name, "Array.new"),
     u => JDPrimitive{"Array.new", 2, "array_new($0, $1)"}, u =>
     kc(JDPrimitive, p88_string_eq(name, "Array.set"),

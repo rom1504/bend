@@ -1,7 +1,7 @@
 
 # Module: src/back/native/intrinsic.bend:4
 @unsafe
-def ni_template(+k: String) -> String:
+def ni_template_prior(+k: String) -> String:
   nt_choose(String, String.is_empty(k), u => "", u =>
     nt_choose(String, p88_string_eq(k, "u32_add"), u => "U32_BIN($0, +, $1)", u =>
     nt_choose(String, p88_string_eq(k, "u32_sub"), u => "U32_BIN($0, -, $1)", u =>
@@ -73,6 +73,13 @@ def ni_template(+k: String) -> String:
     nt_choose(String, p88_string_eq(k, "bool_or"), u => "(native_bool($0) | native_bool($1))", u =>
     nt_choose(String, p88_string_eq(k, "bool_xor"), u => "(native_bool($0) ^ native_bool($1))", u =>
       ""))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+
+# F32.from_nat consumes the complete 48-bit Nat; narrowing through U32 loses
+# its high word. Keep this primitive distinct from U32.to_f32.
+@unsafe
+def ni_template(+k: String) -> String:
+  nt_choose(String, p88_string_eq(k, "f32_from_nat"),
+    u => "f32_rewrap((f32)($0))", u => ni_template_prior(k))
 
 # Module: src/back/native/intrinsic.bend:78
 @unsafe

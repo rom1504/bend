@@ -1,6 +1,7 @@
 """Offline oracle/identity tests. Never launches a compiler or emitted program."""
 import argparse
 import importlib.util
+import json
 from pathlib import Path
 import sys
 import tempfile
@@ -64,6 +65,23 @@ class QualificationJudges(unittest.TestCase):
         self.assertEqual(sum('stdoutFile' in c for c in cases), 61)
         self.assertFalse(any('/performance/' in p['file'] for p in inputs))
         self.assertEqual(sum('refusal' in c for c in cases), 3)
+
+    def test_explicit_new_catalog_preserves_default_identity(self):
+        source = self.path / 'source.bend'; source.write_text('fixture')
+        catalog = self.path / 'catalog.json'
+        document = dict(kind='bend-qualification-catalog',version=1,upstream='9'*40,
+                        cases=[dict(id='new',name='new',suite='focused',source=Q.pin(source),
+                                    expect=dict(exitCode=0,stdout='42\n',stderr=''))])
+        catalog.write_text(json.dumps(document))
+        args = argparse.Namespace(catalog=catalog,suite='focused',case=None)
+        cases, inputs = Q.select(args,self.path)
+        self.assertEqual(len(cases),1)
+        self.assertEqual(Q.load_catalog(args)[0]['upstream'],'9'*40)
+        self.assertEqual(inputs[0],Q.pin(catalog))
+        self.assertEqual(Q.load_catalog(argparse.Namespace())[0]['upstream'],Q.UPSTREAM)
+        document['upstream']='unbound'; catalog.write_text(json.dumps(document))
+        with self.assertRaisesRegex(ValueError,'qualification catalog'):
+            Q.load_catalog(args)
 
     def test_host_closure_and_source_image_crossbinding(self):
         request_file = self.path / 'request.json'; request_file.write_text('{}')

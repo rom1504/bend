@@ -37,6 +37,7 @@ def main():
     document=assets.load_assets(args.assets,ROOT);clang=assets.asset(document,'clang')
     runtime=emitted['request']['providers']['runtime'];product=emitted['product']
     require(same(runtime,assets.asset(document,'c-runtime')),'Final C runtime differs')
+    convention=assets.runtime_argument_convention(assets.runtime_provider(document,'c-runtime'))
     startup=ROOT/'selfhost/src/host/native-c-start.c'
     includes=document['toolchains']['c']['includeFlags']
     require(len(includes)==2 and includes[0]=='-isystem','Explicit Clang resource include required')
@@ -54,12 +55,13 @@ def main():
         canonicalSource=profile['canonicalSource'],baseIdentity=profile['baseIdentity'],cacheStamp=profile['cacheStamp'],
         profile=pin(args.profile),bridgeProfile=pin(args.bridge_profile),bridgeBuild=pin(args.bridge_build),
         emission=pin(args.emission),runtime=runtime,startup=pin(startup),inputs=inputs,assets={},jobs=[],
-        generatedCUnmodified=True,constructionBackend='c',
+        generatedCUnmodified=True,constructionBackend='c',runtimeArgumentConvention=convention,
         scope='Bend-produced public CLI from the one canonical compiler through an exact-provider build-only bridge. '
               'The installed candidate retains ordinary admission. Independent public CLI qualification is still required.')
     start=time.monotonic();write_json(out/'BUILD.json',report)
     try:
-        command=[clang['file'],'-O2',*includes,'-DBEND_NATIVE_HOST=1','-DBEND_IMAGE_C='+json.dumps(product['file']),
+        command=[clang['file'],'-O2',*includes,'-DBEND_NATIVE_HOST=1',
+                 '-DBEND_RUNTIME_RTS='+('1' if convention=='bend-rts-v1' else '0'),'-DBEND_IMAGE_C='+json.dumps(product['file']),
                  str(startup),'-lm','-pthread','-o',str(out/'bend')]
         job=run(command,cwd=ROOT,stdout=out/'construct.stdout',stderr=out/'construct.stderr',seconds=args.seconds)
         report['jobs'].append(dict(name='construct',**job));write_json(out/'BUILD.json',report)
@@ -73,7 +75,9 @@ def main():
         report['complete']=True
         report['imageBinding']=dict(kind='bend-build-image-binding',version=1,complete=True,host='native',stage='N1',
             targets=['c'],protocol='native-public-cli-v1',image=report['image'],sourceIdentity=profile['source'],
-            linkedRuntime=runtime,producer=emitted['image'],packageAssets=report['assets'],
+            linkedRuntime=runtime,runtimeArgumentConvention=convention,
+            targetRuntimeArgumentConvention=profile.get('runtimeArgumentConvention','bend-legacy-v1'),
+            producer=emitted['image'],packageAssets=report['assets'],
             baseIdentity=profile['baseIdentity'],cacheStamp=profile['cacheStamp'],targetRuntime=runtime,
             qualification='Constructed; separate public CLI qualification required.')
     except BaseException as error:report['error']=repr(error)

@@ -30,7 +30,7 @@ const encodedCycle=abi.encode(hostCycle);
 assert.equal(encodedCycle.a[0],encodedCycle);
 const cyclic=abi.decode(encodedCycle);
 assert.equal(cyclic.value,cyclic);
-assert.throws(()=>JSON.stringify(cyclic),/circular/i);
+assert.throws(()=>JSON.stringify(cyclic),/circular|cyclic/i);
 
 const rawArray=[raw,raw];rawArray.push(rawArray);rawArray.length=5;
 const array=abi.decode(rawArray);
@@ -78,6 +78,21 @@ assert.equal(deepView.head,99999);
 assert.equal(deepView.tail.head,99998);
 
 assert.throws(()=>abi.decode(ctor('Unknown',[])),/Unknown compiler ABI constructor/);
+
+// Qualification is an exact identity, never a basename hint. Primitive Nat
+// transport does not coerce or recursively rebuild the selected API's values.
+const qualified=createCompilerAbi({fields:{Box:['value'],'left:Box':['value'],'left.Box':['value']},ctor});
+for(const tag of ['Box','left:Box','left.Box']) {
+  const value=ctor(tag,[2**53]),decoded=qualified.decode(value);
+  assert.equal(decoded.$,tag);
+  assert.equal(decoded.value,2**53);
+  assert.equal(qualified.encode(decoded),value);
+  assert.equal(qualified.encode({$:tag,value:17}).$,tag);
+}
+assert.throws(()=>qualified.decode(ctor('right:Box',[0])),/Unknown compiler ABI constructor/);
+assert.equal(qualified.encode(17),17);
+assert.equal(qualified.decode(17),17);
+assert.equal(qualified.encode(17n),17n,'transport does not silently coerce an old API scalar');
 console.log(JSON.stringify({ok:true,cases:['lazy fields','sharing','pass-through','named JSON','read-only views','mutable host inputs','cycles','arrays','sparse arrays','wrapper phases','exceptions','100000-node handoff'],stats:abi.stats()}));
 
 // Optional integration gate uses an existing self-emitted compiler, with no

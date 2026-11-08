@@ -88,7 +88,9 @@ enum P111Primitive {
   P111_OP_ARRAY_ATOMIC_EXCH = 83,
   P111_OP_ARRAY_ATOMIC_CAS = 84,
   P111_OP_ARRAY_ATOMIC_FADD = 85,
-  P111_OP_LIMIT = 86
+  /* Append-only primitive ABI: existing compiled programs keep their IDs. */
+  P182_OP_F32_FROM_NAT = 86,
+  P111_OP_LIMIT = 87
 };
 enum P111SpecialConstructor {
   P111_SPECIAL_FALSE = 1,

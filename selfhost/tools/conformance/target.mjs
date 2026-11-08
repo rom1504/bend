@@ -62,7 +62,7 @@ const pinDestination=path.join(harness,'src/compiler.json'),pinSource=fs.readFil
 if(JSON.parse(pinSource).upstream!==PIN)throw Error('Compiler upstream pin changed while freezing');
 fs.mkdirSync(path.dirname(pinDestination),{recursive:true});fs.writeFileSync(pinDestination,pinSource);
 harnessSources.push({file:'src/compiler.json',sourceSha256:sha256(pinSource),consumedSha256:hash(pinDestination)});
-for(const file of ['native-build.mjs','node-resource-args.mjs'])fs.copyFileSync(path.join(project,'tools',file),path.join(harness,'tools',file));
+for(const file of ['native-build.mjs','node-resource-args.mjs','bootstrap-config.mjs','runtime-arguments.mjs'])fs.copyFileSync(path.join(project,'tools',file),path.join(harness,'tools',file));
 if(adapter===path.join(import.meta.dirname,'adapters/native-graph.mjs')){
   const destination=path.join(harness,'tools/conformance/adapters/native-graph.mjs');fs.copyFileSync(adapter,destination);adapter=destination;
   const launcher=path.join(harness,'tools/conformance/selected-graph.mjs');fs.copyFileSync(path.join(project,'tools/conformance/selected-graph.mjs'),launcher);

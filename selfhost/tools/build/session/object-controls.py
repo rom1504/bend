@@ -6,10 +6,12 @@ import json
 from pathlib import Path
 from types import SimpleNamespace
 import sys
+import os
 sys.dont_write_bytecode = True
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent))
 from common import fresh_output, pin, require, run, verify, workspace, write_json
+import assets
 sys.path.insert(0, str(HERE))
 import objects
 
@@ -46,7 +48,10 @@ def main():
         require(noop['builtUnits'] == 0 and noop['reusedUnits'] == len(first['units']), 'No-op did not reuse every object')
         require(edit['builtUnits'] > 0 and edit['reusedUnits'] > 0, 'Real edit must exercise both hit and miss')
         for label, product, expected in [('cold', first, b'3\n'), ('noop', noop, b'3\n'), ('edit', edit, b'5\n')]:
-            process = run([product['binary']['file'], '--threads', '1', '--gpu', 'off'], cwd=root,
+            provider = product['context']
+            require(assets.runtime_argument_convention(provider) != 'bend-rts-v1' or 'BENDRTS' not in os.environ,
+                    'Explicit RTS execution requires ambient BENDRTS to be unset')
+            process = run([product['binary']['file'], *assets.runtime_arguments(provider)], cwd=root,
                           stdout=out / (label + '.stdout'), stderr=out / (label + '.stderr'), seconds=a.seconds)
             require(process['complete'] and process['stderr']['bytes'] == 0, 'Generated program failed')
             require(Path(process['stdout']['file']).read_bytes() == expected, 'Independent scalar output mismatch')

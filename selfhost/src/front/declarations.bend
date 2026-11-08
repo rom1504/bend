@@ -251,12 +251,13 @@ def f_templates(
 def f_law_bind(
   +clauses: List<&2, KTerm>,
   +ty: KTerm,
+  +exists: String,
 ) -> KTerm:
   match clauses:
     case Nil{}:
       ty
     case Con{+c, cs}:
-      f_choose(KTerm, f_eq(tg(c), "Exists"), u => f_app_span(kt_span("Ref", "Exists", 0, 1, Nil{}, kb(c), ke(c)), [kid(c, 0), k_lam(nm(c), ix(c), 1, [f_law_bind(cs, ty)], kb(c), ke(c), False{})], kb(c), ke(c)), u => kt_span("All", nm(c), ix(c), qt(c), [kid(c, 0), f_law_bind(cs, ty)], kb(c), ke(c)))
+      f_choose(KTerm, f_eq(tg(c), "Exists"), u => f_app_span(kt_span("Ref", exists, 0, 1, Nil{}, kb(c), ke(c)), [kid(c, 0), k_lam(nm(c), ix(c), 1, [f_law_bind(cs, ty, exists)], kb(c), ke(c), False{})], kb(c), ke(c)), u => kt_span("All", nm(c), ix(c), qt(c), [kid(c, 0), f_law_bind(cs, ty, exists)], kb(c), ke(c)))
 
 # Module: src/front/declarations.bend:445
 @unsafe
@@ -396,8 +397,7 @@ def f_decl_prior(+name: String, +scope: FParseScope) -> KDef:
       +own = f_choose(String, f_eq(alias, name), u => f_qual_name(name, ns), u => alias)
       +near = index_find(index, own, index_hash(own, 2166136261), 32)
       +far = index_find(index, name, index_hash(name, 2166136261), 32)
-      +found = f_choose(KDef, Bool.not(f_eq(dk(near), "Absent")) || f_eq(dk(far), "Absent"), u => near,
-        u => f_choose(KDef, f_eq(dk(f_ctor_index_find(own, ctorIndex)), "Missing"), u => far, u => missing()))
+      +found = f_choose(KDef, Bool.not(f_eq(dk(near), "Absent")) || f_eq(dk(far), "Absent"), u => near, u => far)
       f_choose(KDef, f_eq(dk(found), "Absent"), u => f_find(name, Nil{}), u => found)
 
 # Module: src/front/declarations.bend:698
@@ -414,16 +414,6 @@ def f_decl_ctor_taken(+name: String, +book: List<&2,KDef>, +scope: FParseScope) 
   match scope:
     case FParseScope{prior, index, ctorIndex, ns, aliases, +p144p_view}:
       Bool.not(f_eq(dk(f_ctor_lookup(name, book)), "Missing")) || Bool.not(f_eq(dk(f_ctor_index_find(name, ctorIndex)), "Missing")) || Bool.not(f_eq(dk(f_ctor_index_find(f_qual_name(name, ns), ctorIndex)), "Missing"))
-
-# Module: src/front/declarations.bend:710
-
-@unsafe
-def f_decl_local_ctor(+name: String, +book: List<&2,KDef>, +scope: FParseScope, +old: KDef) -> KDef:
-  match scope:
-    case FParseScope{prior, index, ctorIndex, ns, aliases, +p144p_view}:
-      f_choose(KDef, f_def_fillable(old),
-        u => f_choose(KDef, f_eq(f_alias(name, aliases), name) && Bool.not(f_eq(dk(f_ctor_lookup(name, book)), "Missing")), u => f_find(name, Nil{}), u => old),
-        u => old)
 
 # Every local declaration also publishes its mapped header in scope.index.
 # A miss proves local absence; hits retain the original first-event scan.

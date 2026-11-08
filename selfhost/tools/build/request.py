@@ -194,9 +194,14 @@ def plan(args):
     out = args.out.resolve()
     if args.host == 'native':
         require(os.access(image['file'], os.X_OK), 'Native image must be executable')
-        command = [image['file'], '--threads', '1', '--gpu', 'off', '--']
+        convention = assets.runtime_argument_convention(metadata)
+        result['runtimeArgumentConvention'] = convention
+        require(convention != 'bend-rts-v1' or 'BENDRTS' not in os.environ,
+                'Explicit RTS requests require ambient BENDRTS to be unset')
+        command = [image['file'], *assets.runtime_arguments(metadata, application=True)]
         if protocol == 'native-public-cli-v1':
             result['emittedFile'] = str(out / 'program.c')
+            # This protocol's startup wrapper owns runtime flags and argv[0].
             command = [image['file'], source['file'], '-o', result['emittedFile']]
             if args.mode == 'live':
                 command.append('--live')

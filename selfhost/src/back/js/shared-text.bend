@@ -48,7 +48,16 @@ def j_escape_char_on(c, key):
     case 0:
       "\\x00"
     case n:
-      Char.show(Char.from_u32(n))
+      kc(String, U32.is_gt(n, 1114111) || (U32.is_ge(n, 55296) && U32.is_le(n, 57343)),
+        u => "\\uDC00" ++ j_escape_unit(U32.shrn(n, 22n)) ++
+          j_escape_unit(U32.and(U32.shrn(n, 11n), 2047)) ++ j_escape_unit(U32.and(n, 2047)),
+        u => Char.show(Char.from_u32(n)))
+
+# Emit ASCII source for the three payload units of a non-scalar Char. Raw
+# non-scalars would be replaced when compiler output crosses its host boundary.
+@unsafe
+def j_escape_unit(+n: U32) -> String:
+  "\\u{" ++ kc(String, U32.is_eq(n, 0), u => "0", u => U32.hex(n)) ++ "}"
 
 # Module: src/back/js/shared-text.bend:52
 @unsafe

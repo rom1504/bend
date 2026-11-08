@@ -5,6 +5,7 @@ import copy
 import json
 import os
 from pathlib import Path
+import re
 import shutil
 import sys
 
@@ -16,19 +17,38 @@ import request
 from common import changed_inputs, fresh_output, pin, require, run, verify, workspace, write_json
 
 
+CATALOG = Path(__file__).with_name('public-cli-catalog.json')
+
+
+def load_catalog(file=None):
+    catalog_file = Path(file or CATALOG).resolve(strict=True)
+    catalog = json.loads(catalog_file.read_text())
+    cases = catalog.get('cases')
+    require(catalog.get('kind') == 'bend-public-cli-controls' and catalog.get('version') == 1
+            and re.fullmatch('[0-9a-f]{40}', catalog.get('upstream', ''))
+            and isinstance(cases, list) and 0 < len(cases) <= 256,
+            'Unknown public CLI catalog')
+    ids = [case.get('id') for case in cases]
+    require(all(isinstance(value, str) and re.fullmatch('[a-z0-9][a-z0-9_-]*', value) for value in ids)
+            and len(set(ids)) == len(ids), 'Invalid or duplicate public CLI case identity')
+    if catalog_file == CATALOG.resolve():
+        require(catalog['upstream'] == Q.UPSTREAM, 'Retained public CLI catalog upstream changed')
+    return catalog, catalog_file
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     request.arguments(parser, source_required=False)
+    parser.add_argument('--catalog', type=Path,
+                        help='Explicit versioned public CLI controls; upstream must match assets')
     args = parser.parse_args()
     require(args.host == 'js' and args.target == 'js' and args.mode == 'live',
             'Public hosted CLI requires explicit --host js --target js --mode live')
     require(not args.source and not args.expected, 'Fixed catalog owns source/oracle')
     root = workspace(args.workspace)
-    catalog_file = Path(__file__).with_name('public-cli-catalog.json')
-    catalog = json.loads(catalog_file.read_text())
-    require(catalog['upstream'] == Q.UPSTREAM and catalog['kind'] == 'bend-public-cli-controls', 'Wrong CLI catalog')
+    catalog, catalog_file = load_catalog(args.catalog)
     document = assets.load_assets(args.assets, root)
-    require(document['upstream'] == Q.UPSTREAM, 'Wrong upstream asset pin')
+    require(document['upstream'] == catalog['upstream'], 'Catalog and asset upstream differ')
     first = copy.copy(args)
     first.source = root / catalog['cases'][0]['source']['file']
     plan = request.plan(first)
@@ -38,6 +58,10 @@ def main():
     inputs += [pin(p) for p in sorted((root / 'selfhost/tools').glob('*.mjs'))]
     inputs += [pin(p) for p in sorted((root / 'selfhost/src/runtime').rglob('*')) if p.is_file()]
     inputs += [pin(root / 'selfhost/src/runtime.mjs'), pin(root / 'selfhost/src/compiler.json')]
+    template_key = document.get('providers', {}).get('c', {}).get('runtimeTemplate')
+    runtime_template = assets.asset(document, template_key) if template_key else None
+    if runtime_template:
+        inputs.append(runtime_template)
     def cache_state():
         prefix = 'base-' + plan['image']['sha256'] + '-' + plan['base']['sha256']
         return [pin(p) for name in ('cache', 'base-products')
@@ -45,7 +69,8 @@ def main():
     caches = cache_state()
     inputs += caches
     report = dict(kind='bend-public-cli-qualification', version=1, complete=False, passed=False,
-                  fullConformance=False, upstream=Q.UPSTREAM, image=plan['image'], inputs=inputs,
+                  fullConformance=False, upstream=catalog['upstream'], catalog=pin(catalog_file),
+                  image=plan['image'], inputs=inputs,
                   scope=catalog['scope'], rows=[],
                   cachePolicy='Explicit BEND_TYPED_BASE_CACHE=off; same image/Base, no cache reads or creation.',
                   cacheBefore=caches)
@@ -56,6 +81,8 @@ def main():
            and k not in ('NODE_OPTIONS', 'NODE_PATH', 'LD_PRELOAD')}
     env.update(BEND_TYPED_API=plan['image']['file'], BEND_BASE=plan['base']['file'],
                BEND_TYPED_RUNTIME=str(root / 'selfhost/src/runtime.mjs'), BEND_TYPED_BASE_CACHE='off')
+    if runtime_template:
+        env['BEND_TYPED_RUNTIME_TEMPLATE'] = runtime_template['file']
     write_json(out / 'report.json', report)
     for case in catalog['cases']:
         row = dict(id=case['id'], expected=case['expected'], passed=False)

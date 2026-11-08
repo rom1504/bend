@@ -382,7 +382,7 @@ def p147v_contract(+symbol: String, +args: List<&2,N111Arg>, +live: P147VEnv, +i
   nt_choose(Bool,String.eq(symbol,"p111_rt_reg_get"),u => U32.is_lt(id,nt_choose(U32,U32.is_gt(incoming,0),v => incoming,v => arity)),u =>
   nt_choose(Bool,String.eq(symbol,"p111_rt_stack_get"),u => U32.is_gt(incoming,0) && U32.is_lt(id,U32.sub(arity,incoming)),u =>
   nt_choose(Bool,String.eq(symbol,"p111_rt_stack_pop"),u => U32.is_gt(incoming,0) && U32.is_eq(id,U32.sub(arity,incoming)),u =>
-  nt_choose(Bool,String.eq(symbol,"p111_rt_op"),u => U32.is_gt(id,0) && U32.is_lt(id,86) && U32.is_eq(count,p111v_at(p111v_primitive_arities(),id)) && p147v_buffer(args,2,count,live),u =>
+  nt_choose(Bool,String.eq(symbol,"p111_rt_op"),u => U32.is_gt(id,0) && U32.is_lt(id,87) && U32.is_eq(count,p111v_at(p111v_primitive_arities(),id)) && p147v_buffer(args,2,count,live),u =>
   nt_choose(Bool,String.eq(symbol,"p111_rt_special_ctor"),u => U32.is_eq(count,p111v_special_arity(id)) && p147v_buffer(args,2,count,live),u =>
   nt_choose(Bool,String.eq(symbol,"p111_rt_special_take"),u => U32.is_eq(p111v_literal(p111v_arg(args,4)),p111v_special_arity(id)) && p147v_buffer(args,3,p111v_literal(p111v_arg(args,4)),live),u =>
   nt_choose(Bool,String.eq(symbol,"p111_rt_special_test"),u => U32.is_gt(id,0) && U32.is_lt(id,10),u =>

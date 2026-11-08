@@ -75,6 +75,7 @@ law f_namespace_head:
 # Module: src/front/literals_arrays.bend:138
 law f_namespace_operator:
   for +head: KTerm
+  for +input: FInput
   Bool
 
 # Module: src/front/literals_arrays.bend:61
@@ -99,7 +100,7 @@ def f_float_read(m):
 # Module: src/front/literals_arrays.bend:77
 @unsafe
 def f_array(ts):
-  f_choose(FParsed, f_eq(f_tx(ts), ";"), u => f_err(ts, "expected term; a list does not use semicolon separators"), u => f_choose(FParsed, f_eq(f_tx(ts), "]"), u => FParsed{kt("Ctr", "Nil", 0, 1, Nil{}), f_tl(ts)}, u => f_array_first(f_expr(ts, 0))))
+  f_choose(FParsed, f_eq(f_tx(ts), ";"), u => f_err(ts, "expected term; a list does not use semicolon separators"), u => f_choose(FParsed, f_eq(f_tx(ts), "]"), u => FParsed{kt("Ctr", f_context_own("Nil", ts, True{}), 0, 1, Nil{}), f_tl(ts)}, u => f_array_first(f_expr(ts, 0))))
 
 # Module: src/front/literals_arrays.bend:81
 @unsafe
@@ -133,13 +134,13 @@ def f_power_bits(n, d):
 def f_index(n, p, min):
   match p:
     case FParsed{idx, ts}:
-      f_choose(FParsed, f_context_stop(idx), u => p, u => f_index_ready(n, f_context_namespace(idx, ref("U32"), ts), ts, min))
+      f_choose(FParsed, f_context_stop(idx), u => p, u => f_index_ready(n, f_context_namespace(idx, ref(f_context_own("U32", ts, False{})), ts), ts, min))
 
 # Module: src/front/literals_arrays.bend:110
 @unsafe
 def f_index_ready(+n: KTerm, +idx: KTerm, +ts: FInput, +min: U32) -> FParsed:
   f_choose(FParsed, f_context_stop(idx), u => FParsed{idx, ts},
-    u => f_choose(FParsed, f_eq(f_tx(ts), "<-"), u => f_index_value(n, idx, f_previous_end(ts), f_expr(f_tl(ts), 2), min), u => f_grow(FParsed{f_app_span(k_with_span(ref("Array.get"), kb(n), f_previous_end(ts)), [k_with_span(ref("U32"), kb(n), f_previous_end(ts)), n, idx], kb(n), f_previous_end(ts)), ts}, min)))
+    u => f_choose(FParsed, f_eq(f_tx(ts), "<-"), u => f_index_value(n, idx, f_previous_end(ts), f_expr(f_tl(ts), 2), min), u => f_grow(FParsed{f_app_span(k_with_span(ref(f_context_own("Array.get", ts, False{})), kb(n), f_previous_end(ts)), [k_with_span(ref(f_context_own("U32", ts, False{})), kb(n), f_previous_end(ts)), n, idx], kb(n), f_previous_end(ts)), ts}, min)))
 
 # Module: src/front/literals_arrays.bend:115
 @unsafe
@@ -147,7 +148,7 @@ def f_index_value(n, idx, end, p, min):
   match p:
     case FParsed{v, ts}:
       f_choose(FParsed, f_context_stop(v), u => p,
-        u => f_grow(FParsed{f_app_span(k_with_span(ref("Array.set"), kb(n), end), [k_with_span(ref("U32"), kb(n), end), n, idx, v], kb(n), end), ts}, min))
+        u => f_grow(FParsed{f_app_span(k_with_span(ref(f_context_own("Array.set", ts, False{})), kb(n), end), [k_with_span(ref(f_context_own("U32", ts, False{})), kb(n), end), n, idx, v], kb(n), end), ts}, min))
 
 # Module: src/front/literals_arrays.bend:122
 @unsafe
@@ -177,8 +178,8 @@ def f_implicit_operator(+name: String) -> Bool:
 
 # Module: src/front/literals_arrays.bend:151
 @unsafe
-def f_namespace_operator(head):
-  f_eq(tg(head), "Ref") && (f_implicit_operator(nm(head)) || f_eq(nm(head), "Bool.and") || f_eq(nm(head), "Bool.or") || f_eq(nm(head), "String.append"))
+def f_namespace_operator(head, input):
+  f_eq(tg(head), "Ref") && (f_implicit_operator(nm(head)) || f_eq(nm(head), f_context_own("Bool.and", input, False{})) || f_eq(nm(head), f_context_own("Bool.or", input, False{})) || f_eq(nm(head), f_context_own("String.append", input, False{})))
 
 # Module: src/front/literals_arrays.bend:155
 @unsafe
@@ -202,7 +203,7 @@ def f_array_namespaced(+size: KTerm, +ty: KTerm, +count: Bool, +ts: FInput, +n: 
 # Module: src/front/literals_arrays.bend:171
 @unsafe
 def f_array_sized(+n: KTerm, +ty: KTerm, +ts: FInput, +depth: KTerm) -> FParsed:
-  f_choose(FParsed, f_context_stop(depth), u => FParsed{depth, ts}, u => FParsed{f_scope_apply_span(ref("Array.new"), [ty, depth, n], 0, 0), ts})
+  f_choose(FParsed, f_context_stop(depth), u => FParsed{depth, ts}, u => FParsed{f_scope_apply_span(ref(f_context_own("Array.new", ts, False{})), [ty, depth, n], 0, 0), ts})
 
 # Module: src/front/literals_arrays.bend:175
 @unsafe
@@ -225,7 +226,7 @@ def f_context_namespace_at(+term: KTerm, +ty: KTerm, +input: FInput, +cursor: U3
 # Module: src/front/literals_arrays.bend:190
 @unsafe
 def f_context_namespace_head(+term: KTerm, +ty: KTerm, +input: FInput, +cursor: U32, +head: KTerm) -> KTerm:
-  f_choose(KTerm, f_namespace_operator(head),
+  f_choose(KTerm, f_namespace_operator(head, input),
     u => f_choose(KTerm, f_eq(tg(term), "App"), u => f_context_namespace_app(term, f_context_namespace_at(kid(term, 0), ty, input, cursor), f_context_namespace_at(kid(term, 1), ty, input, cursor)),
       u => f_choose(KTerm, f_implicit_operator(nm(head)), u => f_context_namespace_type(term, f_namespace_head(ty), input, cursor), u => term)),
     u => term)
@@ -255,8 +256,8 @@ def f_context_namespace_resolved(+origin: KTerm, +resolved: KTerm) -> KTerm:
 
 # Module: src/front/literals_arrays.bend:216
 @unsafe
-def f_context_write(+term: KTerm, +begin: U32) -> KTerm:
-  f_choose(KTerm, f_eq(tg(term), "App") && f_eq(tg(kid(term, 0)), "App") && f_eq(tg(kid(kid(term, 0), 0)), "App") && f_eq(tg(kid(kid(kid(term, 0), 0), 0)), "App") && f_eq(tg(kid(kid(kid(kid(term, 0), 0), 0), 0)), "Ref") && f_eq(nm(kid(kid(kid(kid(term, 0), 0), 0), 0)), "Array.set"),
+def f_context_write(+term: KTerm, +begin: U32, +input: FInput) -> KTerm:
+  f_choose(KTerm, f_eq(tg(term), "App") && f_eq(tg(kid(term, 0)), "App") && f_eq(tg(kid(kid(term, 0), 0)), "App") && f_eq(tg(kid(kid(kid(term, 0), 0), 0)), "App") && f_eq(tg(kid(kid(kid(kid(term, 0), 0), 0), 0)), "Ref") && f_eq(nm(kid(kid(kid(kid(term, 0), 0), 0), 0)), f_context_own("Array.set", input, False{})),
     u => f_context_write_var(kid(kid(kid(term, 0), 0), 1), begin), u => {KTerm{"Absent", "", 0, 0, Nil{}, Nil{}, 0, 0} : KTerm})
 
 # Module: src/front/literals_arrays.bend:221

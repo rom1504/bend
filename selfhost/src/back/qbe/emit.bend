@@ -344,7 +344,7 @@ def p111q_descriptor(+program: P111Program, ids: N111Ids) -> P111QData:
   match program:
     case P111Program{segments,constructors,show,show_names,effects,pure}:
       P111QData{"p111_program",8,True{},[
-        P111QLong{11101,0},P111QLong{192,0},
+        P111QLong{11102,0},P111QLong{192,0},
         P111QLong{nt_count(N111Segment,segments),0},P111QLong{nt_count(N_Constructor,constructors),0},
         P111QLong{p111q_main_id(ids),0},P111QLong{nt_bool(pure),0},
         P111QLong{p111q_width(segments,False{},2),0},P111QLong{p111q_width(segments,True{},1),0},

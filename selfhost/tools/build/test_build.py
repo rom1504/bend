@@ -114,6 +114,47 @@ class BuildFixtures(unittest.TestCase):
             request.plan(self.args(target='js'))
         self.assertFalse(self.args().out.exists())
 
+    def test_runtime_argument_conventions_are_provider_specific(self):
+        self.assertEqual(assets.runtime_arguments(None, application=True),
+                         ['--threads','1','--gpu','off','--'])
+        rts = dict(runtimeArgumentConvention='bend-rts-v1')
+        self.assertEqual(assets.runtime_arguments(rts, application=True),
+                         ['+RTS','--threads','1','--gpu','off','-RTS','--RTS'])
+        self.assertEqual(assets.runtime_arguments(rts),
+                         ['+RTS','--threads','1','--gpu','off','-RTS'])
+        with self.assertRaisesRegex(ValueError, 'Unknown runtime argument convention'):
+            assets.runtime_arguments(dict(runtimeArgumentConvention='future'))
+        self.doc['assets']['qbe-runtime']['runtimeArgumentConvention'] = 'bend-rts-v1'
+        self.assertEqual(assets.runtime_argument_convention(assets.runtime_provider(self.doc,'qbe-runtime')),'bend-rts-v1')
+        self.doc['runtimePolicies'] = {'qbe-runtime':dict(runtimeArgumentConvention='bend-legacy-v1')}
+        with self.assertRaisesRegex(ValueError,'Conflicting'):
+            assets.runtime_provider(self.doc,'qbe-runtime')
+
+    def test_producer_cli_does_not_select_target_runtime_cli(self):
+        self.doc['images']['producer']['runtimeArgumentConvention'] = 'bend-rts-v1'
+        self.save()
+        with patch.dict(os.environ, {}, clear=True):
+            planned = native.build(self.args(plan=True))
+        self.assertEqual(planned['compilerCommand'][1:9],
+                         ['+RTS','--threads','1','--gpu','off','-RTS','--RTS','phase111'])
+        self.assertEqual(planned['runtimeArgumentConvention'],'bend-legacy-v1')
+        self.doc['images']['producer'].pop('runtimeArgumentConvention')
+        self.doc['runtimePolicies'] = {'qbe-runtime':dict(runtimeArgumentConvention='bend-rts-v1')}
+        self.save()
+        planned = native.build(self.args(plan=True))
+        self.assertEqual(planned['compilerCommand'][1:7],['--threads','1','--gpu','off','--','phase111'])
+        self.assertEqual(planned['runtimeArgumentConvention'],'bend-rts-v1')
+        planned = native.build(self.args(plan=True,runtime=self.runtime,runtime_argument_convention='bend-rts-v1'))
+        self.assertEqual(planned['runtimeArgumentConvention'],'bend-rts-v1')
+
+    def test_ambient_rts_is_rejected_only_for_rts_images(self):
+        with patch.dict(os.environ, {'BENDRTS':'--threads 8'}):
+            self.assertEqual(request.plan(self.args())['runtimeArgumentConvention'],'bend-legacy-v1')
+            self.doc['images']['producer']['runtimeArgumentConvention'] = 'bend-rts-v1'
+            self.save()
+            with self.assertRaisesRegex(ValueError, 'BENDRTS'):
+                request.plan(self.args())
+
     def test_request_keeps_full_newlines(self):
         result=request.execute(self.args())
         self.assertTrue(result['complete'],result)

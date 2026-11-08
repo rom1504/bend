@@ -1,14 +1,42 @@
 
+# Resolution selects the declaration table named by the syntax. A local def
+# named Done must not hide Base's Done constructor, or vice versa.
+@unsafe
+def f_context_known(+name: String, +scope: FParseScope, +constructor: Bool) -> Bool:
+  match scope:
+    case FParseScope{prior, index, ctorIndex, ns, aliases, view}:
+      f_choose(Bool, constructor,
+        u => Bool.not(f_eq(dk(f_ctor_index_find(name, ctorIndex)), "Missing")),
+        u => f_declared(name, prior))
+
+@unsafe
+def f_context_resolve_table(+term: KTerm, +scope: FParseScope, +constructor: Bool) -> KTerm:
+  match scope:
+    case FParseScope{prior, index, ctorIndex, ns, aliases, view}:
+      +name = nm(term)
+      +alias = f_alias(name, aliases)
+      +near = f_choose(String, p88_string_eq(alias, name), u => f_qual_name(name, ns), u => alias)
+      f_choose(KTerm, p88_string_eq(near, name),
+        u => kt_span("Ref", name, 0, 1, Nil{}, kb(term), ke(term)),
+        u => f_choose(KTerm, f_choose(Bool, p88_string_eq(alias, name), u => False{}, u => f_context_known(alias, scope, constructor) && f_context_known(name, scope, constructor)),
+          u => fpe_point_at(k_with_span(term, ke(term), ke(term)), "expected an unambiguous name (an import alias shadows " ++ name ++ ")", "an unambiguous name (the alias " ++ f_import_alias_head(name) ++ " shadows " ++ name ++ ")"),
+          u => kt_span("Ref", f_choose(String, f_context_known(near, scope, constructor) || Bool.not(f_context_known(name, scope, constructor)), u => near, u => name), 0, 1, Nil{}, kb(term), ke(term))))
+
+# Sugar uses its file's own spelling, without applying import aliases.
+@unsafe
+def f_context_own(+name: String, +input: FInput, +constructor: Bool) -> String:
+  match input:
+    case FInput{tokens,FParseContext{+scope,env,next}}:
+      match scope:
+        case FParseScope{prior,index,ctorIndex,+ns,aliases,view}:
+          +near = f_qual_name(name,ns)
+          f_choose(String,p88_string_eq(near,name),u => name,
+            u => f_choose(String,f_context_known(near,scope,constructor) || Bool.not(f_context_known(name,scope,constructor)),u => near,u => name))
+
 # Module: src/front/contextual.bend:4
 @unsafe
 def f_context_resolve(+term: KTerm, +scope: FParseScope) -> KTerm:
-  match scope:
-    case FParseScope{prior, index, ctorIndex, ns, aliases, +p144p_view}:
-      +alias = f_alias(nm(term), aliases)
-      +checked = f_alias_named(term, aliases, prior, alias)
-      +near = f_choose(String, p88_string_eq(alias, nm(term)), u => f_qual_name(nm(term), ns), u => alias)
-      f_choose(KTerm, p98_tag_eq(checked, "Error"), u => checked,
-        u => kt_span("Ref", f_choose(String, p88_string_eq(near, nm(term)), u => near, u => f_choose(String, f_declared(near, prior) || Bool.not(f_declared(nm(term), prior)), u => near, u => nm(term))), 0, 1, Nil{}, kb(term), ke(term)))
+  f_context_resolve_table(term, scope, False{})
 
 # Module: src/front/contextual.bend:14
 
@@ -108,7 +136,7 @@ def f_context_pattern(+pattern: KTerm, +input: FInput, +cursor: U32) -> FParsed:
         case FParseContext{scope, env, next}:
           +syntax = f_context_syntax(pattern)
           f_choose(FParsed, p98_tag_eq(syntax, "Var"),
-            u => f_context_pattern_named(syntax, input, cursor, f_context_resolve(k_with_span(syntax, cursor, cursor), scope)),
+            u => f_context_pattern_named(syntax, input, cursor, f_context_resolve_table(k_with_span(syntax, cursor, cursor), scope, True{})),
             u => f_choose(FParsed, core_literal(pattern), u => f_context_pattern(core_literal_step(pattern), input, cursor), u => f_choose(FParsed, p98_tag_eq(pattern, "Ctr"), u => f_context_pattern_ctor(pattern, input, cursor, scope), u => f_context_pattern_computed(pattern, input, cursor, f_context_higher(pattern)))))
 
 # Module: src/front/contextual.bend:101
@@ -194,7 +222,7 @@ def f_context_constructor(+term: KTerm, +input: FInput) -> FParsed:
   match input:
     case FInput{tokens, context}:
       match context:
-        case FParseContext{scope, env, next}: f_context_constructor_done(term, input, f_context_resolve(k_with_span(term, f_previous_end(input), f_previous_end(input)), scope))
+        case FParseContext{scope, env, next}: f_context_constructor_done(term, input, f_context_resolve_table(k_with_span(term, f_previous_end(input), f_previous_end(input)), scope, True{}))
 
 # Module: src/front/contextual.bend:173
 @unsafe
@@ -419,7 +447,7 @@ def f_context_binary(+a: KTerm, +op: String, +opBegin: U32, +opEnd: U32, +min: U
           u => f_choose(FParsed, f_eq(op, "->"),
             u => f_context_arrow(a, b, min, f_context_open(kt("Var", "_", 0, 1, Nil{}), input)),
             u => f_choose(FParsed, f_eq(op, "<"), u => f_context_less(a, b, opBegin, opEnd, min, input),
-              u => f_grow(FParsed{f_binary_plain(a, op, b, opBegin, opEnd, kb(a), f_begin(f_space(input))), input}, min))))
+              u => f_grow(FParsed{f_binary_plain(a, op, b, opBegin, opEnd, kb(a), f_begin(f_space(input)), input), input}, min))))
 
 # Module: src/front/contextual.bend:376
 @unsafe
@@ -598,7 +626,7 @@ def f_context_mark_known(+term: KTerm, +syntax: KTerm, +resolved: KTerm, +defini
 @unsafe
 def f_context_statement_more(+term: KTerm, +input: FInput, +column: U32, +begin: U32) -> FParsed:
   f_choose(FParsed, f_binding_head(input), u => f_statement_more(FParsed{term, input}),
-    u => f_context_write_more(term, input, column, f_context_write(term, begin)))
+    u => f_context_write_more(term, input, column, f_context_write(term, begin, input)))
 
 # Module: src/front/contextual.bend:536
 @unsafe
@@ -618,7 +646,7 @@ def f_context_less(+head: KTerm, +first: KTerm, +opBegin: U32, +opEnd: U32, +min
       u => f_choose(FParsed, f_eq(tg(f_context_syntax(head)), "Var") || f_eq(tg(head), "Ref"),
         u => f_context_family(f_context_call_head(head), min, f_family_range(f_args(f_choose(FInput, f_eq(token, ","), u => f_tl(spaced), u => spaced), ">", [first]), f_begin(spaced))),
         u => fpe_error(spaced, "expected a family name", "a family name before <..> (a comparison here needs parens)")),
-      u => f_grow(FParsed{f_binary_plain(head, "<", first, opBegin, opEnd, kb(head), f_begin(spaced)), input}, min)))
+      u => f_grow(FParsed{f_binary_plain(head, "<", first, opBegin, opEnd, kb(head), f_begin(spaced), input), input}, min)))
 
 # Module: src/front/contextual.bend:554
 @unsafe

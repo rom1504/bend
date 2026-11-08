@@ -178,6 +178,12 @@ law check_rfl:
   for +ty: KTerm
   KChecking
 
+law check_rfl_graph:
+  for +e: KEnv
+  for +t: KTerm
+  for +ty: KTerm
+  KChecking
+
 # Module: src/check/kernel.bend:153
 law check_let:
   for +e: KEnv
@@ -861,7 +867,7 @@ def check_node(e, ctx, t, dem, ty):
   kc(KChecking, p98_tag_eq(t, "Lam"), u => check_lam(e, ctx, t, dem, wnf(cb(e), ty)),
    u => kc(KChecking, p98_tag_eq(t, "Ctr"), u => check_ctr(e, ctx, t, dem, wnf(cb(e), ty)),
    u => kc(KChecking, p98_tag_eq(t, "Mat") || p98_tag_eq(t, "Efq"), u => check_mat(e, ctx, t, dem, wnf(cb(e), ty)),
-   u => kc(KChecking, p98_tag_eq(t, "Rfl"), u => check_rfl(e, t, wnf(cb(e), ty)),
+   u => kc(KChecking, p98_tag_eq(t, "Rfl"), u => check_rfl_graph(e, t, ty),
    u => kc(KChecking, p98_tag_eq(t, "Hol"), u => kc(KChecking, p88_string_eq(nm(t), "TODO"), u => ok(cw(e), t, ty, Nil{}), u => bad(cw(e), "unresolved hole")),
    u => kc(KChecking, p98_tag_eq(t, "Let"), u => check_let(e, ctx, ctx, ks(t), dem, ty, Nil{}, Nil{}, t, Nil{}),
    u => kc(KChecking, p98_tag_eq(t, "Rwt"), u => check_rwt(e, ctx, t, dem, ty, infer(e, ctx, kid(t, 0), dem, Nil{})),
@@ -902,6 +908,25 @@ def check_ctr_found(e, ctx, t, dem, ty, ctr):
 def check_rfl(e, t, ty):
   kc(KChecking, p98_tag_eq(ty, "Eql"), u => kc(KChecking, compare(cb(e), kid(ty, 0), kid(ty, 1), False{}), u => ok(cw(e), t, ty, Nil{}), u => dg_bad_detail(cw(e), "reflexivity endpoints differ", kid(ty, 0), kid(ty, 1))), u => bad(cw(e), "reflexivity requires equality goal"))
 
+# Expose the goal and compare its endpoints in one private graph. Ordinary wnf
+# substitutes raw let values and can expand a shared goal before comparison.
+# The result retains the original goal; no heap-local cell enters KChecking.
+@unsafe
+def check_rfl_graph_head(+e: KEnv, +t: KTerm, +ty: KTerm,
+  +fresh: U32, +r: GResult) -> KChecking:
+  match r:
+    case GResult{st, head}:
+      kc(KChecking, p98_tag_eq(head, "Eql"),
+        u => kc(KChecking, norm_convert_state(cb(e), st, kid(head, 0), kid(head, 1), False{}, fresh),
+          u => ok(cw(e), t, ty, Nil{}),
+          u => check_rfl(e, t, wnf(cb(e), ty))),
+        u => bad(cw(e), "reflexivity requires equality goal"))
+
+@unsafe
+def check_rfl_graph(e, t, ty):
+  +fresh = U32.add(1, norm_max(norm_book_bound(cb(e)), norm_max_term(ty)))
+  check_rfl_graph_head(e, t, ty, fresh, g_wnf(cb(e), GState{GEmpty{}, 1}, ty))
+
 # Module: src/check/kernel.bend:758
 @unsafe
 def check_let(e, outer, ctx, xs, dem, ty, bindings, us, site, out):
@@ -911,9 +936,13 @@ def check_let(e, outer, ctx, xs, dem, ty, bindings, us, site, out):
       kc(KChecking, p98_tag_eq(h, "Bind"), u => check_let_value(e, outer, ctx, h, rest, dem, ty, bindings, us, site, out, infer(e, outer, kid(h, 0), qdem(qt(h), dem), Nil{})), u => ki_let_finish(site, out, check_let_done(e, outer, check(e, ctx, let_cells(h, bindings), dem, ty), ki_reverse_terms(bindings, Nil{}), us, kc(KTerm, U32.is_eq(kb(site), 0), u => kid(site, 0), u => site))))
 
 # Module: src/check/kernel.bend:765
+# Inference checked the value's type at its source. Only a Data requirement
+# can add an obligation here; unsafe reusable binders retain kindq's relaxation.
 @unsafe
 def check_let_value(e, outer, ctx, h, rest, dem, ty, bindings, us, site, out, r):
-  kc(KChecking, good(r), u => check_let_kind(ke_world(e, rw(r)), outer, ctx, h, rest, dem, ty, bindings, us, site, out, r, dg_kind_at(ke_world(e, rw(r)), outer, cy(r), qt(h), nm(h), h)), u => r)
+  kc(KChecking, good(r), u => check_let_kind(ke_world(e, rw(r)), outer, ctx, h, rest, dem, ty, bindings, us, site, out, r,
+    kc(KChecking, U32.is_eq(kindq(e, qt(h)), 2),
+      u => dg_kind_at(ke_world(e, rw(r)), outer, cy(r), qt(h), nm(h), h), u => r)), u => r)
 
 # Module: src/check/kernel.bend:769
 @unsafe

@@ -15,6 +15,8 @@ import threading
 import time
 
 HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE.parent / 'build'))
+import assets as build_assets
 PRESETS = {
     20: dict(defaultSet='fast', rounds=3, warmupCalls=3, warmupMs=100, calibrationMs=20, targetMs=50),
     60: dict(defaultSet='core', rounds=3, warmupCalls=3, warmupMs=350, calibrationMs=40, targetMs=150),
@@ -22,6 +24,12 @@ PRESETS = {
     600: dict(defaultSet='full', rounds=5, warmupCalls=3, warmupMs=1000, calibrationMs=50, targetMs=300),
 }
 NAME = re.compile(r'[A-Za-z0-9_.-]+\Z')
+
+
+def native_runtime_arguments(product):
+    if build_assets.runtime_argument_convention(product) == 'bend-rts-v1' and 'BENDRTS' in os.environ:
+        raise ValueError('Explicit RTS execution requires ambient BENDRTS to be unset')
+    return build_assets.runtime_arguments(product, application=True)
 
 
 def require(ok, message):
@@ -102,7 +110,7 @@ def freeze(recipe_path, output):
     require(roles and all(NAME.fullmatch(name) for name in roles), 'Invalid roles')
     reference = recipe['reference']
     require(reference in roles, 'Reference role missing')
-    inputs = [pin(recipe_path), pin(__file__)]
+    inputs = [pin(recipe_path), pin(__file__), pin(build_assets.__file__), pin(HERE.parent / 'build/common.py')]
     bound_roles = {}
     for name, role in roles.items():
         for key in ('host', 'stage', 'target', 'preparation', 'policy', 'status'):
@@ -132,6 +140,8 @@ def freeze(recipe_path, output):
             row['products'] = {}
             for role, product in selected['products'].items():
                 product = dict(product, artifact=bind(product['artifact'], base))
+                if roles[role]['target'] != 'js':
+                    product['runtimeArgumentConvention'] = build_assets.runtime_argument_convention(product)
                 product['inputs'] = [bind(p, base) for p in product.get('inputs', [])]
                 inputs.extend([product['artifact'], *product['inputs']])
                 if 'generatedSource' in product:
@@ -406,7 +416,7 @@ def run(args):
                         row.update(result=result, metricMs=result['msPerCall'])
                     else:
                         point = dict(case['point'], repetitions=case['point']['repetitions'] * args.scale)
-                        command = [case['products'][role]['artifact']['file'], '--threads', '1', '--gpu', 'off', '--',
+                        command = [case['products'][role]['artifact']['file'], *native_runtime_arguments(case['products'][role]),
                                    str(point['repetitions']), str(point['warmups']), *map(str, point['runtimeArgs'])]
                         proc = child(command, directory / 'process', deadline, manifest['cwd'])
                         row['process'] = proc

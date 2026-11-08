@@ -52,9 +52,18 @@ def jd_host_ctor_types(+book: List<&2,KDef>, +ctors: List<&2,KDef>, +args: List<
 # Module: src/back/js/direct/host.bend:36
 @unsafe
 def jd_marshal(+book: List<&2,KDef>, +ty: KTerm, +out: Bool) -> String:
-  +status = jd_host_nat_known(book, ty)
-  kc(String, U32.is_eq(status, 2), u => jd_host_error("host type graph budget"), u =>
-    kc(String, U32.is_eq(status, 1), u => jd_host_marshal(book, ty, out, Nil{}, 0, 64), u => ""))
+  jd_host_scalar(book, wnf(book, ty), out)
+
+# The current upstream host ABI converts only a scalar at the declared edge.
+# Aggregates and functions retain their identity and native Number Nat fields.
+@unsafe
+def jd_host_scalar(+book: List<&2,KDef>, +ty: KTerm, +out: Bool) -> String:
+  kc(String, p98_tag_eq(ty, "ADT") && db(lookup(book, nm(ty))), u =>
+    kc(String, p88_string_eq(nm(ty), "Char") || p88_string_eq(nm(ty), "String"),
+      v => kc(String, out, w => "str_out", w => "str_in"), v =>
+    kc(String, Bool.not(out) && p88_string_eq(nm(ty), "Nat"), w => "nat_in", w =>
+    kc(String, Bool.not(out) && p88_string_eq(nm(ty), "F32"), z => "Math.fround", z => ""))),
+    u => "")
 
 # Module: src/back/js/direct/host.bend:42
 @unsafe
@@ -68,12 +77,7 @@ def jd_host_marshal(+book: List<&2,KDef>, +ty: KTerm, +out: Bool,
 @unsafe
 def jd_host_marshal_on(+book: List<&2,KDef>, +t: KTerm, +out: Bool,
   +seen: List<&2,KTerm>, +depth: U32, +fuel: U32) -> String:
-  kc(String, p98_tag_eq(t, "All"), u =>
-    jd_host_marshal_fun(book, t, out, seen, depth, fuel), u =>
-    kc(String, p98_tag_eq(t, "ADT"), u =>
-      kc(String, p88_string_eq(nm(t), "Nat") && db(lookup(book, nm(t))),
-        u => kc(String, out, u => "BigInt", u => "nat_host"), u =>
-        jd_host_marshal_status(book, t, out, seen, depth, fuel, jd_host_nat_known(book, t))), u => ""))
+  jd_host_scalar(book, t, out)
 
 # Module: src/back/js/direct/host.bend:59
 @unsafe
@@ -166,7 +170,7 @@ def jd_host_marshal_arm(+book: List<&2,KDef>, +c: KDef, +tel: KTerm, +out: Bool,
 @unsafe
 def jd_host_marshal_arm_fields(+c: KDef, +fields: JDHostFields) -> String:
   +work = jd_host_marshal_rows_text(fields)
-  "case " ++ j_quote(name_key(dn(c))) ++ ":r=" ++
+  "case " ++ j_quote(jd_tag(dn(c))) ++ ":r=" ++
     kc(String, p88_string_eq(work, ""), u => "v;", u => "{...v};") ++ work ++ "break;"
 
 # Module: src/back/js/direct/host.bend:144
@@ -226,9 +230,8 @@ def jd_host_signature_prepend(+head: KTerm, +signature: JDHostSignature) -> JDHo
 def jd_host(+book: List<&2,KDef>, +d: KDef) -> String:
   +arity = jd_emitted_arity(book, d)
   +live = jd_live_arity(book, dt(d), arity)
-  +marshal = Bool.not(U32.is_eq(jd_host_nat_known(book, dt(d)), 0))
   +names = jd_host_names(live, 0)
-  jd_host_signature_text(book, d, names, marshal, jd_host_signature(book, dt(d), arity))
+  jd_host_signature_text(book, d, names, True{}, jd_host_signature(book, dt(d), arity))
 
 # Module: src/back/js/direct/host.bend:199
 @unsafe
@@ -238,8 +241,7 @@ def jd_host_signature_text(+book: List<&2,KDef>, +d: KDef, +names: String,
     case JDHostSignature{result, heads}:
       "(" ++ names ++ ")=>{const r=" ++
         jd_host_convert(book, result, True{}, marshal) ++ "(run_loop(" ++ jd_name(dn(d)) ++
-        "(" ++ jd_host_signature_args(book, heads, 0, marshal) ++ ")));" ++
-        jd_host_signature_back(book, heads, 0, marshal) ++ "return r;}"
+        "(" ++ jd_host_signature_args(book, heads, 0, marshal) ++ ")));return r;}"
 
 # Module: src/back/js/direct/host.bend:209
 @unsafe
@@ -325,8 +327,8 @@ def jd_host_io_on(+book: List<&2,KDef>, +t: KTerm, +fuel: U32) -> U32:
 # Module: src/back/js/direct/host.bend:278
 @unsafe
 def jd_exports(+book: List<&2,KDef>, +defs: List<&2,KDef>) -> String:
-  "\nexport const backend={kind:\"direct-js\",representation:\"upstream-native\",prototype:true,foreign:\"upstream-cps\"};\nexport default {\n" ++
-    jd_host_exports(jd_host_native_context(book), defs) ++ "};\n"
+  "\nexport const backend={kind:\"direct-js\",representation:\"upstream-native\",prototype:true,foreign:\"upstream-cps\",hostABI:\"number-nat-scalar-text-v2\"};\nexport default {\n" ++
+    jd_host_exports(book, defs) ++ "};\n"
 
 # Module: src/back/js/direct/host.bend:283
 @unsafe
@@ -354,7 +356,7 @@ def jd_foreign_def(+book: List<&2,KDef>, +d: KDef) -> String:
 def jd_foreign_ready(+book: List<&2,KDef>, +d: KDef, +arity: U32, +live: U32) -> String:
   kc(String, U32.is_gt(live, 0), u =>
     "function " ++ jd_name(dn(d)) ++ "(" ++ jd_host_names(live, 0) ++ "){return {$:" ++
-      j_quote(name_key(dn(d))) ++ ",args:[" ++
+      j_quote(dn(d)) ++ ",args:[" ++
       jd_foreign_values(book, dt(d), arity, 0, live, False{}) ++ "],kont:" ++
       jd_foreign_values(book, dt(d), arity, 0, live, True{}) ++ "};}\n",
     u => jd_fail("foreign continuation missing"))
@@ -373,7 +375,7 @@ def jd_foreign_values_on(+book: List<&2,KDef>, +t: KTerm, +left: U32, +at: U32, 
     kc(String, U32.is_eq(qt(t), 0), u =>
       jd_foreign_values(book, j_app_type(t, {KTerm{"Absent", "", 0, 0, Nil{}, Nil{}, 0, 0} : KTerm}), U32.sub(left, 1), at, live, kont), u =>
       kc(String, U32.is_eq(U32.inc(at), live), u =>
-        kc(String, kont, u => jd_marshal(book, kid(t, 0), True{}) ++ "(a" ++ U32.show(at) ++ ")", u => ""), u =>
+        kc(String, kont, u => "(x)=>a" ++ U32.show(at) ++ "(" ++ jd_marshal(book, kid(wnf(book, kid(t, 0)), 0), False{}) ++ "(x))", u => ""), u =>
         kc(String, kont, u => "", u => jd_marshal(book, kid(t, 0), True{}) ++ "(a" ++ U32.show(at) ++ "),") ++
           jd_foreign_values(book, j_app_type(t, {KTerm{"Absent", "", 0, 0, Nil{}, Nil{}, 0, 0} : KTerm}), U32.sub(left, 1), U32.inc(at), live, kont))),
     u => jd_fail("foreign formal telescope"))
@@ -398,26 +400,34 @@ def jd_foreign_error(+defs: List<&2,KDef>) -> String:
         u => "no JavaScript effect source for " ++ name_key(dn(d)), u => jd_foreign_error(rest)), u => jd_foreign_error(rest))
 
 # Sources are the shared scanner's namespace-resolved Source/Text/CID/FID rows.
-# Both CID and FID expand to quoted display names, as c_ids(js=true).
+# Only a CID that resolves to a constructor loses its namespace.
 
 # Module: src/back/js/direct/host.bend:345
 @unsafe
 def jd_modules(+defs: List<&2,KDef>, +sources: List<&2,KTerm>) -> String:
-  jd_module_sources(sources)
+  jd_module_sources(defs, sources)
 
 # Module: src/back/js/direct/host.bend:349
 @unsafe
-def jd_module_sources(+sources: List<&2,KTerm>) -> String:
+def jd_module_sources(+defs: List<&2,KDef>, +sources: List<&2,KTerm>) -> String:
   match sources:
     case Nil{}: ""
-    case Con{source, rest}: "(()=>{\n" ++ jd_source_parts(ks(source)) ++ "\n})();\n" ++ jd_module_sources(rest)
+    case Con{source, rest}: "(()=>{\n" ++ jd_source_parts(defs, ks(source)) ++ "\n})();\n" ++ jd_module_sources(defs, rest)
 
 # Module: src/back/js/direct/host.bend:355
 @unsafe
-def jd_source_parts(+parts: List<&2,KTerm>) -> String:
+def jd_source_parts(+defs: List<&2,KDef>, +parts: List<&2,KTerm>) -> String:
   match parts:
     case Nil{}: ""
-    case Con{part, rest}: kc(String, p98_tag_eq(part, "Text"), u => nm(part), u => j_quote(name_key(nm(part)))) ++ jd_source_parts(rest)
+    case Con{part, rest}: jd_source_part(defs, part) ++ jd_source_parts(defs, rest)
+
+@unsafe
+def jd_source_part(+defs: List<&2,KDef>, +part: KTerm) -> String:
+  kc(String, p98_tag_eq(part, "Text"), u => nm(part), u =>
+    j_quote(kc(String, p98_tag_eq(part, "CID") &&
+      (p88_string_eq(dk(lookup(defs, nm(part))), "Ctr") ||
+       p88_string_eq(dk(lookup(dc(kr_resolve(defs, nm(part))), nm(part))), "Ctr")),
+      v => jd_tag(nm(part)), v => nm(part))))
 
 # Module: src/back/js/direct/host.bend:361
 @unsafe
@@ -425,7 +435,7 @@ def jd_host_ctor_tags(+ctors: List<&2,KDef>) -> String:
   match ctors:
     case Nil{}: ""
     case Con{c, rest}:
-      name_key(dn(c)) ++
+      jd_tag(dn(c)) ++
         kc(String, List.is_empty(&2,KDef, rest), u => "", u => ", ") ++ jd_host_ctor_tags(rest)
 
 # Module: src/back/js/direct/host.bend:369
@@ -441,6 +451,6 @@ def jd_host_marshal_status(+book: List<&2,KDef>, +t: KTerm, +out: Bool,
 def jd_host_export(+book: List<&2,KDef>, +d: KDef, +status: U32) -> String:
   kc(String, U32.is_eq(status, 1), u => "", u =>
     kc(String, U32.is_eq(status, 2),
-      u => j_quote(name_key(dn(d))) ++ ":" ++ jd_host_error("host result telescope budget") ++ ",\n", u =>
-      j_quote(name_key(dn(d))) ++ ":run_lib(" ++ jd_host(book, d) ++ "," ++
+      u => "[" ++ j_quote(dn(d)) ++ "]:" ++ jd_host_error("host result telescope budget") ++ ",\n", u =>
+      "[" ++ j_quote(dn(d)) ++ "]:run_lib(" ++ jd_host(book, d) ++ "," ++
         U32.show(jd_live_arity(book, dt(d), jd_emitted_arity(book, d))) ++ "),\n"))

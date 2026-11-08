@@ -6,6 +6,8 @@ Run under one outer build-retention guard. No historical implementation imports.
 import argparse
 import copy
 import json
+import os
+import re
 from pathlib import Path
 import sys
 import time
@@ -17,6 +19,7 @@ import request
 from common import (changed_inputs, fresh_output, pin, require, run, timeout,
                     verify, workspace, write_json)
 
+# Identity of the retained default catalog only, not the active compiler pin.
 UPSTREAM = '059266225b77c8ca256ac6b25ee5c21449bab151'
 CATALOG = Path(__file__).parents[1] / 'conformance/qualification-catalog.json'
 
@@ -90,10 +93,20 @@ def verify_hosted(emission, hosted, request_file):
         verify(row)
 
 
-def select(args, root):
-    catalog = json.loads(CATALOG.read_text())
+def load_catalog(args):
+    catalog_file = Path(getattr(args, 'catalog', None) or CATALOG).resolve(strict=True)
+    catalog = json.loads(catalog_file.read_text())
     require(catalog['kind'] == 'bend-qualification-catalog' and catalog['version'] == 1
-            and catalog['upstream'] == UPSTREAM, 'Unknown qualification catalog')
+            and re.fullmatch('[0-9a-f]{40}', catalog.get('upstream', ''))
+            and isinstance(catalog.get('cases'), list) and 0 < len(catalog['cases']) <= 256,
+            'Unknown qualification catalog')
+    if catalog_file == CATALOG.resolve():
+        require(catalog['upstream'] == UPSTREAM, 'Retained default catalog upstream changed')
+    return catalog, catalog_file
+
+
+def select(args, root, selected_catalog=None):
+    catalog, catalog_file = selected_catalog or load_catalog(args)
     selected = [copy.deepcopy(c) for c in catalog['cases']
                 if args.suite == 'all' or c['suite'] == args.suite]
     if args.case:
@@ -101,7 +114,7 @@ def select(args, root):
         selected = [c for c in selected if c['id'] in wanted or c['name'] in wanted]
         require(wanted <= {v for c in selected for v in (c['id'], c['name'])}, 'Unknown case selection')
     require(selected, 'Empty qualification selection')
-    inputs = [pin(CATALOG)]
+    inputs = [pin(catalog_file)]
     for case in selected:
         case['source'] = bound(case['source'], root)
         inputs.append(case['source'])
@@ -170,7 +183,16 @@ def execute_case(args, case, document, out, root):
             row.update(status='fail', failedStage='machine-build')
             return row
         row['binary'] = pin(binary)
-        command = [str(binary), '--threads', '1', '--gpu', 'off']
+        if emission['request'].get('publicPackage'):
+            provider = dict(runtimeArgumentConvention=emission['request']['imageMetadata'].get('targetRuntimeArgumentConvention','bend-legacy-v1'))
+        else:
+            runtime_key = document.get('providers', {}).get('c', {}).get('runtime')
+            require(isinstance(runtime_key, str), 'C target runtime provider required')
+            provider = assets.runtime_provider(document, runtime_key)
+        row['runtimeArgumentConvention'] = assets.runtime_argument_convention(provider)
+        require(row['runtimeArgumentConvention'] != 'bend-rts-v1' or 'BENDRTS' not in os.environ,
+                'Explicit RTS execution requires ambient BENDRTS to be unset')
+        command = [str(binary), *assets.runtime_arguments(provider)]
     child = run(command, cwd=out, stdout=out / 'execute.stdout', stderr=out / 'execute.stderr', seconds=args.execute_seconds)
     row.update(execution=child, status='pass' if output_exact(child, case['expect']) else 'fail')
     return row
@@ -182,24 +204,30 @@ def qualify(args):
     require(not args.source and not args.expected, 'Catalog owns sources and output oracles')
     timeout(args.build_seconds); timeout(args.execute_seconds)
     document = assets.load_assets(args.assets, root)
-    require(document.get('upstream') == UPSTREAM, 'Asset/reference upstream differs from catalog')
-    cases, inputs = select(args, root)
+    selected_catalog = load_catalog(args)
+    catalog, catalog_file = selected_catalog
+    require(document.get('upstream') == catalog['upstream'], 'Asset/reference upstream differs from catalog')
+    cases, inputs = select(args, root, selected_catalog)
     inputs += [pin(__file__), pin(request.__file__), pin(native.__file__), pin(assets.__file__),
                pin(Path(__file__).with_name('common.py')), document['_manifest']]
     # Authenticate the image/Base/protocol even for plan mode and unsupported-only selections.
     first = copy.copy(args)
     first.source, first.out = Path(cases[0]['source']['file']), args.out / 'preflight'
     preflight = request.plan(first)
+    image_upstream = preflight['imageMetadata'].get('upstream')
+    require(image_upstream is None or image_upstream == catalog['upstream'],
+            'Explicit image upstream differs from catalog')
     inputs += preflight['inputs']
     for key in ([args.program_engine_key] if args.target == 'js' else
                 ['qbe', 'assembler', 'linker', args.runtime_key] if args.target == 'qbe' else
                 [document['toolchains']['c']['compiler']]):
         inputs.append(assets.asset(document, key))
     report = dict(kind='bend-finite-qualification', version=1, complete=False, passed=False,
-                  fullConformance=False, upstream=UPSTREAM, host=args.host, target=args.target,
+                  fullConformance=False, upstream=catalog['upstream'], imageUpstream=image_upstream,
+                  catalog=pin(catalog_file), host=args.host, target=args.target,
                   stage=args.stage, mode=args.mode, image=preflight['image'], inputs=inputs,
                   selected=[c['id'] for c in cases], rows=[],
-                  scope='Focused19/broad45 regression sources with retained independent whole-output oracles. '
+                  scope='Explicit finite catalog sources with retained independent whole-output oracles. '
                         'No performance, kernel-proof, unrestricted-provider, GPU or multi-mutator qualification.',
                   unsupportedPolicy='Unsupported is retained and prevents passed=true; it is never a pass.',
                   historicalPolicy='Historical catalog fields are provenance only; no historical file is read.')
@@ -232,6 +260,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     request.arguments(parser, source_required=False)
     parser.add_argument('--suite', choices=['focused', 'broad', 'all'], default='focused')
+    parser.add_argument('--catalog', type=Path, help='Explicit versioned finite catalog; its upstream must match assets')
     parser.add_argument('--case', action='append')
     parser.add_argument('--program-engine-key', default='bun')
     parser.add_argument('--runtime-key', default='qbe-runtime')

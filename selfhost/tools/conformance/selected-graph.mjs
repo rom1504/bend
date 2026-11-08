@@ -5,6 +5,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {spawnSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
+import {runtimeArgumentConvention,runtimeArguments} from '../runtime-arguments.mjs';
 const MAX_FILE = 16 * 1024 * 1024, MAX_TOTAL = 128 * 1024 * 1024, MAX_RECORDS = 4096;
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const fingerprint = stat => ['dev','ino','size','mtimeNs','ctimeNs','mode'].map(key => String(stat[key])).join(':');
@@ -76,8 +77,10 @@ export function loadNativeGraphManifest(manifestFile) {
   }
   return {version: 1, main: main.name, manifest: {...manifest, sha256: sha(bytes)}, modules: unique, moduleAliases: modules.filter(source => !unique.includes(source)), assets};
 }
-export function runNativeGraph({binary, manifest, runtime, output, mode = 'program', cpu, timeoutMs = 120000}, {spawn = spawnSync} = {}) {
+export function runNativeGraph({binary, manifest, runtime, output, mode = 'program', cpu, timeoutMs = 120000, runtimeArgumentConvention:declaredConvention='bend-legacy-v1'}, {spawn = spawnSync} = {}) {
   const started = performance.now();
+  const provider={runtimeArgumentConvention:declaredConvention},convention=runtimeArgumentConvention(provider);
+  if(convention==='bend-rts-v1'&&Object.hasOwn(process.env,'BENDRTS'))throw Error('Explicit RTS execution requires ambient BENDRTS to be unset');
   if (!['program','library'].includes(mode)) throw Error('Graph mode must be program or library');
   if (cpu !== undefined && !/^\d+$/.test(String(cpu))) throw Error('CPU must be a nonnegative integer');
   if (!Number.isSafeInteger(timeoutMs) || timeoutMs <= 0) throw Error('Timeout must be a positive integer');
@@ -111,14 +114,14 @@ export function runNativeGraph({binary, manifest, runtime, output, mode = 'progr
     if (wire.length > 4 * 1024 * 1024) throw Error('Graph transport exceeds 4 MiB');
     fs.writeFileSync(wirePath, wire, {flag:'wx'});
     const preparationMs = performance.now() - started;
-    const args = ['--threads','1','--gpu','off','--','--graph',wirePath,runtimeSnapshot,temporaryOutput,mode];
+    const args = [...runtimeArguments(provider,{application:true}),'--graph',wirePath,runtimeSnapshot,temporaryOutput,mode];
     const command = cpu === undefined ? executable.path : 'taskset', commandArgs = cpu === undefined ? args : ['-c',String(cpu),executable.path,...args];
     const nativeStarted = performance.now();
     const result = spawn(command, commandArgs, {encoding:'utf8',timeout:timeoutMs,maxBuffer:16*1024*1024});
     const nativeWallMs = performance.now() - nativeStarted;
     const usedAssetIds = [...new Set([...String(result.stderr ?? '').matchAll(/^asset_used=(\d+)$/gm)].map(match => Number(match[1])))];
     const diagnostic = /(?:^|\n)phase=(\w+) checked=(True|False): ([\s\S]*)/.exec(result.stderr ?? '');
-    report = {kind:'native-graph-run', version:1, mode, cpu:cpu === undefined ? null : Number(cpu), timeoutMs,
+    report = {kind:'native-graph-run', version:1, mode, cpu:cpu === undefined ? null : Number(cpu), timeoutMs,runtimeArgumentConvention:convention,
       status:result.status, signal:result.signal ?? null, error:result.error?.message ?? null,
       phase:diagnostic?.[1] ?? (result.status === 0 ? 'compile' : 'load'), checked:diagnostic ? diagnostic[2] === 'True' : result.status === 0,
       diagnostic:diagnostic?.[3]?.trimEnd() ?? '', stdout:result.stdout ?? '', stderr:result.stderr ?? '',
@@ -159,8 +162,8 @@ export function runNativeGraph({binary, manifest, runtime, output, mode = 'progr
 }
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const [binary,manifest,runtime,output,mode,...options] = process.argv.slice(2);
-  if (![binary,manifest,runtime,output,mode].every(Boolean) || options.some(value => !/^--(?:cpu|timeout-ms)=\d+$/.test(value))) throw Error('usage: node selected-graph.mjs BINARY MANIFEST.json RUNTIME.mjs OUTPUT.mjs program|library [--cpu=N] [--timeout-ms=N]');
+  if (![binary,manifest,runtime,output,mode].every(Boolean) || options.some(value => !/^--(?:(?:cpu|timeout-ms)=\d+|runtime-argument-convention=bend-(?:legacy|rts)-v1)$/.test(value))) throw Error('usage: node selected-graph.mjs BINARY MANIFEST.json RUNTIME.mjs OUTPUT.mjs program|library [--cpu=N] [--timeout-ms=N] [--runtime-argument-convention=bend-legacy-v1|bend-rts-v1]');
   const value = key => options.find(option => option.startsWith(`--${key}=`))?.split('=')[1];
-  const report = runNativeGraph({binary,manifest,runtime,output,mode,cpu:value('cpu'),timeoutMs:Number(value('timeout-ms') ?? 120000)});
+  const report = runNativeGraph({binary,manifest,runtime,output,mode,cpu:value('cpu'),timeoutMs:Number(value('timeout-ms') ?? 120000),runtimeArgumentConvention:value('runtime-argument-convention')});
   console.log(JSON.stringify(report,null,2)); if (!report.published) process.exitCode = 1;
 }

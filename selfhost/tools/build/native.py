@@ -26,6 +26,12 @@ def build(args):
     tools = {key: assets.asset(document, key) for key in ('qbe', 'assembler', 'linker')}
     runtime = pin(args.runtime) if args.runtime else assets.asset(document, args.runtime_key)
     policy = document.get('runtimePolicies', {}).get(args.runtime_key) if not args.runtime else None
+    argument_provider = assets.runtime_provider(document, args.runtime_key) if not args.runtime else None
+    explicit_convention = getattr(args, 'runtime_argument_convention', None)
+    if explicit_convention is not None:
+        require(args.runtime is not None, '--runtime-argument-convention requires explicit --runtime')
+        argument_provider = dict(runtimeArgumentConvention=explicit_convention)
+    convention = assets.runtime_argument_convention(argument_provider)
     toolchain = document.get('toolchains', {}).get('qbe')
     require(isinstance(toolchain, dict) and toolchain.get('target') == 'amd64_sysv',
             'Explicit amd64_sysv QBE toolchain policy required')
@@ -61,6 +67,7 @@ def build(args):
                   stage=request['stage'] if request else None,
                   request=request, sourceIR=source_ir, runtime=runtime,
                   runtimePolicy=policy or 'Explicit caller-supplied object; policy is not inferred.',
+                  runtimeArgumentConvention=convention,
                   compilerCommand=request['command'] if request else None, qbeCommand=qcmd,
                   toolchain=toolchain, jobs=[], retainIR=args.retain_ir,
                   expectedQbe=expected, expectedStdout=expected_stdout,
@@ -182,7 +189,9 @@ def build(args):
                       runtime['file'], *toolchain['libraries'], '-o', out / 'program'])
         report['object'], report['binary'] = pin(out / 'program.o'), pin(out / 'program')
         if expected_stdout:
-            stage('execute', [out / 'program', '--threads', '1', '--gpu', 'off'])
+            require(convention != 'bend-rts-v1' or 'BENDRTS' not in os.environ,
+                    'Explicit RTS execution requires ambient BENDRTS to be unset')
+            stage('execute', [out / 'program', *assets.runtime_arguments(argument_provider)])
             require(same_bytes(out / 'execute.stdout', expected_stdout['file']),
                     'Independent complete execution output differs')
             report['outputExact'] = True
@@ -193,7 +202,8 @@ def build(args):
                 image=report['binary'], sourceIdentity=request['source'], host='native',
                 stage=args.output_stage, protocol=args.output_protocol,
                 targets=['c'] if args.output_protocol == 'native-c-source-v1' else ['qbe'],
-                linkedRuntime=runtime, producer=request['image'], producerHost=request['host'],
+                linkedRuntime=runtime, runtimeArgumentConvention=convention,
+                producer=request['image'], producerHost=request['host'],
                 producerStage=request['stage'], qualification='Built; semantic/self-host qualification is separate.')
             if args.output_protocol == 'native-c-source-v1':
                 report['imageBinding']['argvSentinel'] = 'compiler'
@@ -231,6 +241,8 @@ def main():
     parser.add_argument('--ir', type=Path, help='Already emitted complete QBE; no compiler executes')
     parser.add_argument('--runtime-key', default='qbe-runtime')
     parser.add_argument('--runtime', type=Path, help='Explicit alternate object; policy remains unqualified')
+    parser.add_argument('--runtime-argument-convention', choices=['bend-legacy-v1', 'bend-rts-v1'],
+                        help='Explicit alternate object CLI only; does not qualify its semantic ABI')
     parser.add_argument('--retain-ir', action='store_true')
     parser.add_argument('--expected-stdout', type=Path)
     parser.add_argument('--output-stage', help='Optional actual derived compiler generation, e.g. N1')

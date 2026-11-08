@@ -15,6 +15,7 @@ import subprocess
 import sys
 import time
 sys.dont_write_bytecode = True
+import assets as build_assets
 
 
 def require(value, message):
@@ -43,7 +44,7 @@ def main():
             'A nested worktree must be confined to the original ignored build tree')
     require((tree/'.git').is_file(), 'Actual linked Git worktree metadata required')
     require(out == out.resolve() and out.is_relative_to(tree/'selfhost/build') and not out.exists(), 'Fresh confined output required')
-    env = {k:v for k,v in os.environ.items() if not k.startswith('BEND_') and k not in ['NODE_OPTIONS','NODE_PATH','LD_PRELOAD','PYTHONPATH','PYTHONHOME']}
+    env = {k:v for k,v in os.environ.items() if not k.startswith('BEND_') and k not in ['BENDRTS','NODE_OPTIONS','NODE_PATH','LD_PRELOAD','PYTHONPATH','PYTHONHOME']}
     def git(*args):
         x = subprocess.run(['git','-C',str(tree),*args], capture_output=True, env=env, timeout=20)
         require(x.returncode == 0, 'Git inspection failed: '+x.stderr.decode()); return x.stdout.decode().strip()
@@ -60,7 +61,7 @@ def main():
     require(same(manifest_pin,pin(origin/'selfhost/manifests/assets-native.json')), 'Operational asset manifest differs')
     assets = json.loads(manifest.read_text()); out.mkdir(parents=True)
     report = dict(kind='bend-fresh-git-worktree-gate',version=1,complete=False,commit=head,
-      method=pin(__file__),worktree=str(tree),gitMetadata=git('rev-parse','--absolute-git-dir'),current=current_pin,
+      method=pin(__file__),runtimeArgumentMethod=pin(build_assets.__file__),worktree=str(tree),gitMetadata=git('rev-parse','--absolute-git-dir'),current=current_pin,
       operationalAssets=manifest_pin,copies=[],externalAssets=[],commands=[],outputs={},
       scope='Finite installed JS/C/QBE relocation qualification with explicit binary/tool inputs; no rebuild, broad conformance or bootstrap claim.')
     started = time.monotonic(); copied_bytes = 0
@@ -118,7 +119,8 @@ def main():
         run('native-c-emit',[python,'-B',tree/'selfhost/native.py',source,'-o',out/'numeric.c','--live'],b'',verdict)
         policy = assets['toolchains']['c']; clang = assets['assets'][policy['compiler']]['file']
         run('native-c-build',[clang,*policy['flags'],*policy['includeFlags'],out/'numeric.c','-o',out/'numeric-c',*policy['libraries']],b'',None)
-        run('native-c-run',[out/'numeric-c','--threads','1','--gpu','off'],b'42\n')
+        target_provider=dict(runtimeArgumentConvention=current['components']['nativeCli'].get('targetRuntimeArgumentConvention','bend-legacy-v1'))
+        run('native-c-run',[out/'numeric-c',*build_assets.runtime_arguments(target_provider)],b'42\n')
         run('qbe-live-build',[python,'-B',tools/'native.py','--assets',manifest,'--image-key','qbe-n2','--host','native',
             '--stage','N2','--target','qbe','--mode','live','--source',source,'--out',out/'qbe','--seconds','45',
             '--expected-stdout',expected],seconds=55)

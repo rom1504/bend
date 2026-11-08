@@ -5,6 +5,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import {spawnSync} from 'node:child_process';
 import {fileURLToPath,pathToFileURL} from 'node:url';
+import {readBootstrapConfig,bootstrapConfigPath} from '../bootstrap-config.mjs';
 
 export const own=fileURLToPath(import.meta.url);
 export const workspace=path.resolve(path.dirname(own),'../../..');
@@ -16,20 +17,22 @@ const save=(file,value)=>fs.writeFileSync(file,JSON.stringify(value,null,2)+'\n'
 const list=xs=>xs.reduceRight((tail,head)=>({$: 'Con',head,tail}),{$:'Nil'});
 function* items(xs){let count=0;while(xs?.$==='Con'){requireThat(++count<=1000000,'Unbounded emitted list');yield xs.head;xs=xs.tail;}requireThat(xs?.$==='Nil','Malformed emitted list');}
 export function driverInputs(root=workspace){
-  const names=['typed-driver.mjs','assemble.mjs','native-build.mjs','node-resource-args.mjs','compiler-abi.mjs','base-cache-graph.mjs'];
+  const names=['typed-driver.mjs','assemble.mjs','native-build.mjs','node-resource-args.mjs','compiler-abi.mjs','base-cache-graph.mjs','bootstrap-config.mjs','js-effect-provider.mjs','runtime-arguments.mjs'];
   return [...names.map(x=>pin(path.join(root,'selfhost/tools',x))),pin(path.join(root,'selfhost/src/compiler.json'))];
 }
 
 // This adapter deliberately uses the maintained public driver without injecting
 // a fake owned API. Live requests explicitly bypass Base cache reads and writes.
-export async function inspectHosted({image,base,source,backend='direct',mode='compile',runtime,root=workspace}){
+export async function inspectHosted({image,base,source,backend='direct',mode='compile',runtime,runtimeTemplate,root=workspace}){
   [image,base,source].forEach(verify);
   for(const key of Object.keys(process.env))if(key.startsWith('BEND_'))delete process.env[key];
   process.env.BEND_TYPED_API=image.file;process.env.BEND_BASE=base.file;
   if(runtime){verify(runtime);process.env.BEND_TYPED_RUNTIME=runtime.file;}
+  if(runtimeTemplate){verify(runtimeTemplate);process.env.BEND_TYPED_RUNTIME_TEMPLATE=runtimeTemplate.file;}
   const driver=await import(pathToFileURL(path.join(root,'selfhost/tools/typed-driver.mjs')));
   requireThat(driver.apiPath===image.file&&driver.basePath===base.file,'Driver already loaded for another image/Base');
-  const inputs=[...driverInputs(root),image,base,source];
+  if(mode==='native')requireThat(driver.nativeRuntimeTemplatePath===(runtimeTemplate?.file??path.join(root,'selfhost/src/runtime/native/runtime-template.json')),'Driver already loaded for another runtime template');
+  const inputs=[...driverInputs(root),image,base,source,...(runtimeTemplate?[runtimeTemplate]:[])];
   inputs.push(pin(own),pin(path.join(root,'selfhost/src/runtime.mjs')),pin(path.join(root,'selfhost/src/runtime/js/direct.mjs')),
     pin(path.join(root,'selfhost/src/runtime/native/runtime.c')));
   const result=await driver.inspect(source.file,{mode,backend,withReport:true,useBaseCache:false});
@@ -91,7 +94,7 @@ async function request(file,reportFile){
       const actual=pin(path.join(workspace,'selfhost',runtimeFile));
       requireThat(req.providers?.runtime&&req.providers.runtime.sha256===actual.sha256&&req.providers.runtime.bytes===actual.bytes,'Explicit runtime differs from driver runtime');
       inputs.push(actual);
-      const got=await inspectHosted({image:req.image,base:req.base,source:req.source,backend,mode:req.target==='c'?'native':(req.operation??'compile')});
+      const got=await inspectHosted({image:req.image,base:req.base,source:req.source,backend,mode:req.target==='c'?'native':(req.operation??'compile'),runtimeTemplate:req.target==='c'?req.providers.runtimeTemplate:undefined});
       inputs.push(...got.inputs);report.cache=got.cache;
       const {code:output,...observation}=got.result;report.observation=observation;
       requireThat(got.result.status==='ok'&&got.result.checked===true,got.result.diagnostic??got.result.reason??'Compiler refused');
@@ -106,7 +109,8 @@ async function request(file,reportFile){
 }
 
 async function acquire(options){
-  const source=pin(options.source),out=path.resolve(options.out),upstream=fs.realpathSync(options.upstream),engine=pin(options.engine);
+  const selection=readBootstrapConfig({manifest:options.manifest,upstream:options.upstream});
+  const source=pin(options.source),out=path.resolve(options.out),upstream=fs.realpathSync(selection.upstream),engine=pin(options.engine);
   requireThat(!fs.existsSync(out)&&out.startsWith(workspace+'/selfhost/build/'),'Fresh build output required');
   const rootFile=path.resolve(options.exports??path.join(workspace,'selfhost/tools/build/hosted-exports.json'));
   const exportManifest=read(rootFile),exports=exportManifest.exports,tool=path.join(workspace,'selfhost/tools/stage0-library.mjs');
@@ -115,19 +119,19 @@ async function acquire(options){
   requireThat(['hosted-api-v1','session-api-v1','qbe-api-v1','typed-api-v1'].includes(protocol)&&Array.isArray(targets)&&targets.length>0&&targets.every(x=>['js','c','qbe'].includes(x)),'Invalid API protocol/targets');
   const text=fs.readFileSync(source.file,'utf8');
   for(const name of exports)requireThat(new RegExp('^(?:def|law) '+name.replaceAll('.','\\.')+'(?:[(:]|\\s)','m').test(text),'Missing source API: '+name);
-  const inputs=[pin(own),pin(rootFile),source,engine,pin(tool),...['bend.ts','comp.ts','base.bend'].map(x=>pin(path.join(upstream,'bend2',x)))];
-  const config=read(path.join(workspace,'selfhost/src/compiler.json'));
+  const inputs=[pin(own),pin(bootstrapConfigPath),pin(rootFile),source,engine,pin(tool),...['bend.ts','comp.ts','base.bend'].map(x=>pin(path.join(upstream,'bend2',x)))];
+  const config=selection.config;
   const revision=spawnSync('git',['-C',upstream,'rev-parse','HEAD'],{encoding:'utf8'});
   const clean=spawnSync('git',['-C',upstream,'diff','--quiet','HEAD','--','bend2']);
   requireThat(revision.status===0&&revision.stdout.trim()===config.upstream&&clean.status===0,'Pinned upstream checkout differs');
-  inputs.push(pin(path.join(workspace,'selfhost/src/compiler.json')));
+  inputs.push(pin(selection.manifest));
   fs.mkdirSync(out,{recursive:true});
   const stdout=fs.openSync(path.join(out,'stdout'),'wx'),stderr=fs.openSync(path.join(out,'stderr'),'wx');
   const command=[engine.file,tool,source.file,path.join(out,'api.mjs'),...exports];
   const report={kind:'bend-checked-hosted-api',version:1,complete:false,checked:false,source,exports,inputs,command,upstream:{file:upstream,revision:config.upstream},scope:'Upstream-checked B1 acquisition only; no B2/self-hosting/default promotion.'};
   save(path.join(out,'report.json'),report);const start=performance.now();
   try{
-    const env={...process.env,BEND_UPSTREAM:upstream};for(const key of ['NODE_OPTIONS','NODE_PATH','LD_PRELOAD'])delete env[key];
+    const env={...process.env,BEND_UPSTREAM:upstream,BEND_BOOTSTRAP_MANIFEST:selection.manifest};for(const key of ['NODE_OPTIONS','NODE_PATH','LD_PRELOAD'])delete env[key];
     const child=spawnSync(command[0],command.slice(1),{cwd:workspace,env,stdio:['ignore',stdout,stderr],timeout:120000});
     report.status=child.status;report.signal=child.signal;report.error=child.error?.message??null;
     requireThat(child.status===0&&!child.error&&!child.signal,'Checked acquisition failed; inspect captured diagnostics');
@@ -147,6 +151,6 @@ if(process.argv[1]&&path.resolve(process.argv[1])===own){
     if(args[0]==='acquire')args.shift();
     for(let i=0;i<args.length;i+=2){requireThat(args[i].startsWith('--')&&args[i+1],'Expected --key value');options[args[i].slice(2)]=args[i+1];}
     if(options.request)await request(options.request,path.resolve(options.report));
-    else {for(const key of ['source','out','upstream','engine'])requireThat(options[key],'Missing --'+key);await acquire(options);}
+    else {for(const key of ['source','out','engine'])requireThat(options[key],'Missing --'+key);await acquire(options);}
   }catch(error){console.error(String(error.stack??error));process.exitCode=1;}
 }

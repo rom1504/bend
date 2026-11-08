@@ -95,7 +95,7 @@ def f_declared(
     case Nil{}:
       False{}
     case Con{+d, ds}:
-      f_choose(Bool, f_eq(name, dn(d)) && Bool.not(f_eq(dk(d), "ImportFill")), u => True{}, u => f_choose(Bool, f_declared(name, dc(d)), u => True{}, u => f_declared(name, ds)))
+      f_choose(Bool, f_eq(name, dn(d)) && Bool.not(f_eq(dk(d), "ImportFill") || f_eq(dk(d), "Ctr")), u => True{}, u => f_declared(name, ds))
 
 # Module: src/load/modules.bend:75
 @unsafe

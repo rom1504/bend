@@ -21,6 +21,9 @@ selection. A successful build does not change the installed compiler.
 | `assets.py` | Verify named pins or acquire exact files from explicit local inputs | Acquisition receipt; at most the declared asset bytes |
 | `request.py` | One JS-hosted or native compiler request with explicit target/stage | Raw JS/C/QBE product, command, timing and input/output pins |
 | `hosted.mjs` | IO adapter for the checked Bend API; upstream checked B1 acquisition | Raw product and worker report, or checked API with image binding |
+| `base-prepare.mjs` | Explicit checked API and Base; fresh Bend-produced mandatory preparation | Private frame4 and authenticated producer receipt |
+| `base-carrier.mjs` | Offline strict frame4 transport, with no compiler execution | P88/P130 carriers and reversible-transcoding receipt |
+| `base-verify.mjs` | Explicit checked consumer; full frame/live/P88/P130 value comparison | Complete hosted preparation/decoder equality receipt |
 | `native.py` | QBE emission/machine construction with a 64 KiB transport buffer | Assembly, object, ELF, full QBE digest; optional retained QBE |
 | `runtime.py` | Explicit maintained QBE runtime source/header recipe | Runtime object and exact comparison to its qualified reference |
 | `bootstrap.py` | Actual N1 → N2 → Q3 execution | Separate fixed-point, machine-identity and generation evidence |
@@ -83,6 +86,52 @@ Historical producer receipts and original file locations are recorded separately
 in [`assets-native-provenance.json`](../../manifests/assets-native-provenance.json).
 They explain derivation and recovery; they are not recursively read by a build.
 Generated bootstrap assets remain separate from maintained compiler source.
+
+## Prepare a new Base carrier
+
+Use an explicitly checked hosted API report and the exact canonical Base path
+that subsequent requests will use. Within one outer guard, run these commands
+in order, declaring each output directory as a run root (or their common fresh
+parent). Substitute the pinned engine for `node` where necessary.
+
+```sh
+node selfhost/tools/build/base-prepare.mjs \
+  --authority selfhost/build/example/typed-api/report.json \
+  --base /absolute/pinned/upstream/bend2/base.bend \
+  --out selfhost/build/example/base-preparation
+
+node selfhost/tools/build/base-carrier.mjs \
+  --preparation selfhost/build/example/base-preparation/report.json \
+  --out selfhost/build/example/base-carrier
+
+node selfhost/tools/build/base-verify.mjs \
+  --carrier selfhost/build/example/base-carrier/report.json \
+  --authority selfhost/build/example/qbe-api/report.json \
+  --out selfhost/build/example/base-verification
+```
+
+The producer calls maintained `prepareBase` with `backendProducts:false`, an
+explicit private cache directory, and `fresh:true`. It bypasses cache reading
+entirely: no earlier frame, global cache or optional annotation sidecar is used.
+All loading, checking and readiness construction execute the selected Bend API.
+The offline serializer authenticates the exact API, source, Base bytes/path,
+frame and current transport tools. It preserves strict term ABI1/span ABI3/world
+version3 validation, backward references and readiness/alias checks; bounds remain
+65,536 nodes, 4,096 strings and 16 MiB per native carrier.
+
+The serializer is a maintained extraction of the two transport scripts at commit
+`449b01ad25dcea16d20fb68c6a46937e4f542d91`, formerly
+`selfhost/tools/performance/phase88/base/carrier.mjs` and
+`selfhost/tools/performance/phase130/base/carrier.mjs`. It imports the maintained
+codec only and has no historical compiler or phase snapshot dependency.
+
+Verification runs `p86_prepare` and `p88_cache_prepare` from a checked API built
+from the same compiler source as the producer (the export sets may differ). It
+compares canonical bytes for every prepared root, including source spans and
+flags, and compares complete source identity for live, decimal and word-pair
+preparation. It does not sample declarations. These receipts do not grant native
+admission or installation: qualify actual native live/cache requests and bind the
+new carrier, source identity and stamp explicitly in the operational asset map.
 
 ## Assemble and preflight
 

@@ -48,7 +48,7 @@ def jd_ctor_inverse_done(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, 
       v => kc(String, p88_string_eq(nm(ty), "Char"),
         w => jd_ctor_char(book, env, t, ty, tel, j_u32(kid(t, 0))),
         w => jd_ctor_native(nm(ty), nm(t), jd_ctor_values(book, env, ks(t), tel)))), v => inverse),
-    u => "({$:" ++ j_quote(name_key(nm(t))) ++ jd_ctor_fields(book, env, ks(t), tel) ++ "})")
+    u => "({$:" ++ j_quote(jd_tag(nm(t))) ++ jd_ctor_fields(book, env, ks(t), tel) ++ "})")
 
 # Only the body emitter creates these entries for compiler-generated bare
 # native views. Retain the original scalar alongside the textual view so inverse
@@ -64,7 +64,7 @@ def jd_view_binding(+id: U32, +ty: KTerm, +value: String) -> KTerm:
 def jd_view_metadata(+value: String) -> KTerm:
   kc(KTerm, String.starts_with(value, "u32_to_word("),
     u => jd_word_metadata(String.take(String.drop(value, 12n), Nat.sub(String.length(value), 13n))),
-    u => kt("Char", String.take(value, Nat.sub(String.length(value), 15n)), 0, 0, Nil{}))
+    u => kt("Char", String.take(String.drop(value, 10n), Nat.sub(String.length(value), 11n)), 0, 0, Nil{}))
 
 # Module: src/back/js/direct/constructors.bend:60
 @unsafe

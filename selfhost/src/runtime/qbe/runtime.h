@@ -3,7 +3,8 @@
 #include <stdint.h>
 #include <stddef.h>
 
-#define P111_ABI_VERSION UINT64_C(11101)
+/* Same physical layout, new Base/RTS and appended primitive/provider contract. */
+#define P111_ABI_VERSION UINT64_C(11102)
 #define P111_REG_CAP 256u
 #define P111_RESULT_CAP 256u
 #define P111_STOP UINT32_MAX

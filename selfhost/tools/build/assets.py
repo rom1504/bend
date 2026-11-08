@@ -60,6 +60,37 @@ def image(document, key, host, stage, target):
     return asset(document, key), metadata
 
 
+def runtime_argument_convention(provider):
+    """Read the actual image/runtime binding, never the active upstream pin."""
+    require(provider is None or isinstance(provider, dict), 'Runtime provider metadata required')
+    convention = (provider or {}).get('runtimeArgumentConvention', 'bend-legacy-v1')
+    require(convention in ('bend-legacy-v1', 'bend-rts-v1'),
+            'Unknown runtime argument convention: ' + str(convention))
+    return convention
+
+
+def runtime_provider(document, key):
+    require(key in document['assets'], 'Undeclared runtime provider: ' + str(key))
+    row = document['assets'][key]
+    policy = document.get('runtimePolicies', {}).get(key, {})
+    require(isinstance(policy, dict), 'Invalid runtime provider policy')
+    field = 'runtimeArgumentConvention'
+    require(field not in row or field not in policy or row[field] == policy[field],
+            'Conflicting runtime argument conventions: ' + key)
+    provider = dict(row, **policy)
+    runtime_argument_convention(provider)
+    return provider
+
+
+def runtime_arguments(provider, *, application=False):
+    convention = runtime_argument_convention(provider)
+    options = ['--threads', '1', '--gpu', 'off']
+    if convention == 'bend-rts-v1':
+        # --RTS protects every following application token, even literal +RTS.
+        return ['+RTS', *options, '-RTS', *(['--RTS'] if application else [])]
+    return [*options, *(['--'] if application else [])]
+
+
 def prepared_base(document, mode, base_key='base', carrier_key='prepared-base'):
     base = asset(document, base_key)
     require(0 < base['bytes'] <= 16777216, 'Base exceeds bounded reader')

@@ -11,6 +11,9 @@ import {assemble} from './assemble.mjs';
 import {buildNative} from './native-build.mjs';
 import {nodeResourceArgs} from './node-resource-args.mjs';
 import {createCompilerAbi} from './compiler-abi.mjs';
+import {readBootstrapConfig,bootstrapConfigPath} from './bootstrap-config.mjs';
+import {pinnedJsEffects} from './js-effect-provider.mjs';
+import {runtimeArgumentConvention,runtimeArguments,runtimeTemplateConvention} from './runtime-arguments.mjs';
 import {encodeBaseGraph,decodeBaseGraph,encodeBaseArena,decodeBaseArena} from './base-cache-graph.mjs';
 
 export const driverPath=fileURLToPath(import.meta.url);
@@ -21,6 +24,7 @@ export const project=path.resolve(import.meta.dirname,'..');
 export const apiPath=path.resolve(process.env.BEND_TYPED_API||path.join(project,'dist/typed-api.mjs'));
 export const runtimePath=path.resolve(process.env.BEND_TYPED_RUNTIME||path.join(project,'src/runtime.mjs'));
 export const directRuntimePath=path.join(project,'src/runtime/js/direct.mjs');
+export const nativeRuntimeTemplatePath=path.resolve(process.env.BEND_TYPED_RUNTIME_TEMPLATE||path.join(project,'src/runtime/native/runtime-template.json'));
 const bundledBasePath=path.join(project,'dist/base.bend');
 export const basePath=path.resolve(process.env.BEND_BASE||bundledBasePath);
 export const baseAnnotationDirectory=path.join(project,'build/typed/base-products');
@@ -39,7 +43,7 @@ const trace=(message)=>{if(process.env.BEND_TYPED_TRACE)process.stderr.write(`[t
 // The digest binds insertion boundaries, not merely the concatenated C bytes.
 const nativeTemplateSha256='53fc42a61e6ea8d156a7b7a8a691ed753828119f2ae7ef5bb08a20db57c74793';
 function nativeTemplate(runtime,inputs) {
-  const file=path.join(project,'src/runtime/native/runtime-template.json');
+  const file=nativeRuntimeTemplatePath;
   let bytes;
   try{bytes=fs.readFileSync(file);}catch(error){if(error.code==='ENOENT')return null;throw error;}
   if(crypto.createHash('sha256').update(bytes).digest('hex')!==nativeTemplateSha256)return null;
@@ -49,8 +53,17 @@ function nativeTemplate(runtime,inputs) {
   return {$:'NE_Parts',parts:list(artifact.parts)};
 }
 
+function nativeArgumentConvention(runtime,inputs) {
+  const file=nativeRuntimeTemplatePath;
+  const artifact=JSON.parse(fs.readFileSync(file,'utf8'));
+  const convention=runtimeTemplateConvention(artifact,crypto.createHash('sha256').update(runtime).digest('hex'));
+  if(!inputs.includes(file))inputs.push(file);
+  return convention;
+}
 
-const compilerTarget=JSON.parse(fs.readFileSync(path.join(project,'src/compiler.json'),'utf8'));
+
+const bootstrapSelection=readBootstrapConfig({manifest:process.env.BEND_BOOTSTRAP_MANIFEST??path.join(project,'src/compiler.json')});
+const compilerTarget=bootstrapSelection.config;
 const bootstrapPin=compilerTarget.upstream;
 // Bootstrap is synchronous, but its subprocess output need not use pipes.
 // Some process supervisors report EPERM for pipe capture even after status 0.
@@ -76,7 +89,7 @@ function bootstrapUpstream(upstream,expectedRevision) {
   return revision;
 }
 const bootstrapInput=(file,role)=>({role,file:path.resolve(file),canonicalPath:fs.realpathSync(file),sha256:hash(file)});
-export function captureBootstrapProvenance(upstream,{expectedRevision=bootstrapPin,tools=[driverPath,path.join(project,'tools/stage0-library.mjs'),...['assemble.mjs','compiler-abi.mjs','base-cache-graph.mjs','node-resource-args.mjs','native-build.mjs'].map(name=>path.join(path.dirname(driverPath),name))]}={}) {
+export function captureBootstrapProvenance(upstream,{expectedRevision=bootstrapPin,tools=[driverPath,bootstrapConfigPath,bootstrapSelection.manifest,path.join(project,'tools/stage0-library.mjs'),...['assemble.mjs','compiler-abi.mjs','base-cache-graph.mjs','node-resource-args.mjs','native-build.mjs','js-effect-provider.mjs','runtime-arguments.mjs'].map(name=>path.join(path.dirname(driverPath),name))]}={}) {
   // The maintained source recipe delegates assembly to this shared byte linker.
   // Include it even when a development workflow provides an explicit tool list.
   if(compilerTarget.kind==='bend-maintained-source-v1'){
@@ -96,7 +109,7 @@ export function verifyBootstrapProvenance(provenance) {
   return true;
 }
 
-export function bootstrap({upstream=process.env.BEND_UPSTREAM||path.resolve(project,'.bootstrap/upstream-phase66'),timeoutMs=120000,nativeSnapshot=process.env.BEND_TYPED_NATIVE_SNAPSHOT,nativeModules}={}) {
+export function bootstrap({upstream=bootstrapSelection.upstream,timeoutMs=120000,nativeSnapshot=process.env.BEND_TYPED_NATIVE_SNAPSHOT,nativeModules}={}) {
   const selector=path.join(project,'manifests/current.json');
   if(fs.existsSync(selector)) {
     const current=JSON.parse(fs.readFileSync(selector,'utf8'));
@@ -174,7 +187,7 @@ export function bootstrap({upstream=process.env.BEND_UPSTREAM||path.resolve(proj
   fs.mkdirSync(path.dirname(apiPath),{recursive:true});
   const staged=apiPath+'.tmp-'+process.pid;
   const result=bootstrapCapture(process.execPath,[path.join(project,'tools/stage0-library.mjs'),source,staged,...exports],
-    {cwd:project,env:{...process.env,BEND_UPSTREAM:upstream},timeout:timeoutMs});
+    {cwd:project,env:{...process.env,BEND_UPSTREAM:upstream,BEND_BOOTSTRAP_MANIFEST:bootstrapSelection.manifest},timeout:timeoutMs});
   if(result.error||result.signal||result.status!==0) {fs.rmSync(staged,{force:true});throw Error(result.error?.message||result.signal||result.stderr||'Typed API bootstrap failed');}
   try{verifyBootstrapProvenance(provenance);provenance.verifiedAfterBuild=true;}catch(error){fs.rmSync(staged,{force:true});throw error;}
   fs.renameSync(staged,apiPath);
@@ -496,12 +509,12 @@ export function discoverSources(api,input,{seed=null,freshPrefixPermission=null,
       api.f_graph_trace_from_prefix(completed,supplied,seed.book,seed.freshPrefixState):api.f_graph_trace(completed,supplied)};
 }
 
-function baseCacheInfo(api) {
+function baseCacheInfo(api,cacheDirectory) {
   const compilerSha256=hash(apiPath),baseSha256=hash(basePath);
   const sourcePath=fs.realpathSync(basePath),sourceText=fs.readFileSync(basePath,'utf8');
   const termAbi=api.compiler_term_abi?.()??0;
   const version=termAbi===1?TERM_CACHE:api.compiler_span_abi?.()===SPAN_ABI?SPAN_CACHE:api.f_load_graph_seed?2:1;
-  const directory=path.join(project,'build/typed/cache');
+  const directory=cacheDirectory===undefined?path.join(project,'build/typed/cache'):path.resolve(cacheDirectory);
   const location=crypto.createHash('sha256').update(sourcePath).digest('hex');
   const graph=version>=SPAN_CACHE&&(typeof api.base_prefix_world_prepare==='function'||typeof api.f_ready_prefix_prepare==='function');
   const file=path.join(directory,`base-${compilerSha256}-${baseSha256}${version>=2?'-'+location:''}${version>=SPAN_CACHE?(graph?'-frame4':'-frame2'):''}.json`);
@@ -677,10 +690,14 @@ function prepareBaseAnnotations(api,cached,info) {
   }catch(error){trace('optional Base annotation preparation unavailable: '+error.message);return false;}
 }
 
-export async function prepareBase(api,{backendProducts=true}={}) {
+export async function prepareBase(api,{backendProducts=true,cacheDirectory,fresh=false}={}) {
   api??=await loadApi();
   requireLoaderApi(api);
-  const info=baseCacheInfo(api),prior=readBaseCache(info);
+  if(cacheDirectory!==undefined&&backendProducts)throw Error('An explicit Base cache directory requires backendProducts:false');
+  if(fresh&&cacheDirectory===undefined)throw Error('Fresh Base preparation requires an explicit cache directory');
+  const info=baseCacheInfo(api,cacheDirectory);
+  if(fresh&&fs.existsSync(info.directory))throw Error('Fresh Base cache directory already exists');
+  const prior=fresh?null:readBaseCache(info);
   const wantWorld=typeof api.base_prefix_world_prepare==='function'&&typeof api.check_program_diagnostic_world==='function';
   const wantFrontend=typeof api.f_ready_prefix_prepare==='function'&&typeof api.f_prefix_complete_ready_seed==='function';
   // Inspection accepts older frames; explicit preparation writes the selected
@@ -744,19 +761,7 @@ function foreignSources(graph,extension,required=null,api=null,book=null,scope=b
 // The resolver is request-local; no Base-content decision survives a request.
 function directForeignResolver(paths) {
   if(!paths.length)return {resolve:file=>path.resolve(file),inputs:[]};
-  const effects=path.join(project,'src/runtime/js/effs'),manifestPath=path.join(effects,'manifest.json');
-  const manifest=JSON.parse(fs.readFileSync(manifestPath,'utf8'));
-  if(manifest.kind!=='phase52-pinned-upstream-js-effects'||manifest.version!==1||
-    !/^[0-9a-f]{64}$/.test(manifest.base?.sha256??''))throw Error('Invalid pinned JS effect manifest');
-  const names=new Set(manifest.files.map(item=>item.path));
-  if(names.size!==35||manifest.files.length!==35||[...names].some(name=>! /^[a-z0-9_]+\.js$/.test(name)))
-    throw Error('Invalid pinned JS effect inventory');
-  const canonicalBase=fs.realpathSync(basePath),pinned=hash(canonicalBase)===manifest.base.sha256;
-  return {inputs:[manifestPath],resolve:file=>{
-    const resolved=path.resolve(file);
-    return pinned&&path.dirname(resolved)===path.join(path.dirname(canonicalBase),'effs')&&names.has(path.basename(resolved))
-      ?path.join(effects,path.basename(resolved)):resolved;
-  }};
+  return pinnedJsEffects({base:basePath,effects:path.join(project,'src/runtime/js/effs')});
 }
 
 export async function inspect(input,options={}) {
@@ -991,10 +996,11 @@ async function inspectWithMemo(input,{mode='check',backend,api,args=[],timeoutMs
       }).join('\n');
       trace('emit native');
       const nativeRuntime=fs.readFileSync(path.join(project,'src/runtime/native/runtime.c'),'utf8');
+      const argumentConvention=nativeArgumentConvention(nativeRuntime,nativeInputs);
       const template=nativePlan&&typeof api.nr_compile_prepared==='function'?nativeTemplate(nativeRuntime,nativeInputs):null;
       const native=template?api.nr_compile_prepared(nativePlan,template,requests,scalarEffectsSafe):nativePlan?api.nr_compile(nativePlan,nativeRuntime,requests,scalarEffectsSafe):api.nc_compile_checked?api.nc_compile_checked(book,nativeRuntime,requests,scalarEffectsSafe):api.nc_compile(book,nativeRuntime,requests);
       if(native.error)return {status:'error',phase,diagnostic:'Error: '+native.error,exitCode:1,checked:true};
-      return {status:'ok',phase,code:native.source,verdict,exitCode:0,checked:true,files:nativeInputs};
+      return {status:'ok',phase,code:native.source,verdict,exitCode:0,checked:true,files:nativeInputs,runtimeArgumentConvention:argumentConvention};
     }
     trace('emit '+mode);
     const jsPaths=backend==='direct'?array(api.jd_foreign_paths(book)):api.j_foreign_paths?array(api.j_foreign_paths(book)):null;
@@ -1039,7 +1045,11 @@ async function executeCompiled(compiled,{workdir,timeoutMs=5000,args=[],backend=
       const binary=path.join(workdir,programName);
       built=buildNative({source:compiled.code,file,binary,target:backend==='native'?'auto':backend,cwd:workdir,timeoutMs});
       if(built.status!=='ok')return built;
-      command=binary;commandArgs=[...(backend==='metal'||backend==='cuda'?['--gpu','on']:[]),...args];
+      const options=backend==='metal'||backend==='cuda'?['--gpu','on']:[];
+      const convention=runtimeArgumentConvention(compiled);
+      if(convention==='bend-rts-v1'&&Object.hasOwn(process.env,'BENDRTS'))throw Error('Explicit RTS execution requires ambient BENDRTS to be unset');
+      command=binary;commandArgs=convention==='bend-rts-v1'
+        ?[...runtimeArguments(compiled,{application:true,options}),...args]:[...options,...args];
     }
     const outputFile=path.join(workdir,'runtime-output.log');
     const fd=combinedOutput?fs.openSync(outputFile,'w'):null;

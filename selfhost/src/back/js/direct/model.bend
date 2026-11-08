@@ -55,7 +55,19 @@ def jd_var_value(+env: List<&2,KTerm>, +id: U32) -> String:
 @unsafe
 def jd_is_view(+value: String) -> Bool:
   (String.starts_with(value, "u32_to_word(") && Bool.not(String.contains(value, "["))) ||
-    (String.starts_with(value, "$match") && String.contains(value, ".codePointAt(0)"))
+    String.starts_with(value, "char_code($match")
+
+# Constructor tags are local to a datatype; effect and export names stay exact.
+# A literal dot belongs to the name and is never treated as a namespace mark.
+@unsafe
+def jd_tag(+name: String) -> String:
+  kc(String, String.contains(name, ":"), u => jd_tag_tail(name), u => name)
+
+@unsafe
+def jd_tag_tail(+name: String) -> String:
+  match name:
+    case SNil{}: ""
+    case SCon{h, rest}: kc(String, Char.is_eq(h, ':'), u => rest, u => jd_tag_tail(rest))
 
 # Module: src/back/js/direct/model.bend:52
 @unsafe

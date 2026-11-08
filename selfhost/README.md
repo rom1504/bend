@@ -12,8 +12,9 @@ generations and the distinction between current source and installed artifacts.
 The [Phase174 promotion report](../implementation/phase174/README.md) records the
 current installed artifacts and qualification. The [consolidation report](../implementation/repository-consolidation/README.md)
 retains the source migration and historical recovery record.
-The pinned upstream language is `059266225b77c8ca256ac6b25ee5c21449bab151`
-(Bend2.0.36).
+Maintained source targets upstream `9a4223d577ba56a0cb53d1fd952d2b481c38930f`
+(Bend2.0.40). See the [compatibility boundaries](../docs/self_hosted/upstream-2.0.40.md);
+historical and installed artifacts retain their own recorded pins and qualification.
 
 The current modules include [Phase175](../implementation/phase175/README.md):
 parser lookahead reuse and indexed report names. The complete frozen-source

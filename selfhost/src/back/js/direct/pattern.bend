@@ -38,10 +38,10 @@ def jd_doc_match_emit(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty
 @unsafe
 def jd_doc_match_emit_at(+book: List<&2,KDef>, +env: List<&2,KTerm>, +t: KTerm, +ty: KTerm, +domain: KTerm, +arg: String, +rest: List<&2,String>, +tel: KTerm, +value: String) -> JDText:
   +native = jd_native_layout(book, domain)
-  +condition = kc(String, native, u => jd_match_test(nm(domain), nm(t), value), u => value ++ ".$===" ++ j_quote(name_key(nm(t))))
+  +condition = kc(String, native, u => jd_match_test(nm(domain), nm(t), value), u => value ++ ".$===" ++ j_quote(jd_tag(nm(t))))
   +fields = kc(List<&2,String>, native, u => jd_match_views(nm(domain), nm(t), value), u => jd_match_fields(tel, value))
   +arm: JDText = kc(JDText, native && (p88_string_eq(nm(domain), "U32") || p88_string_eq(nm(domain), "F32")) && j_u32_native_book(book), u => jd_doc_word_start(book, env, kid(t, 0), j_arm_tel(book, tel, kid(ty, 1)), rest, value, p88_string_eq(nm(domain), "F32")), u => jd_doc_body(book, env, kid(t, 0), j_arm_tel(book, tel, kid(ty, 1)), List.append(&2,String, fields, rest)))
-  jd_text_many([jd_text_raw("{const " ++ value ++ "=" ++ arg ++ ";" ++ kc(String, p88_string_eq(nm(domain), "IO.OP"), u => "if(" ++ value ++ ".$!==\"Emit\"&&" ++ value ++ ".$!==\"Halt\")throw \"bend: runtime fail-stop\";", u => "")), kc(JDText, U32.is_eq(j_constructor_count(book, domain), 1) || p88_string_eq(condition, ""), u => arm, u => jd_text_many([jd_text_raw("if(" ++ condition ++ "){"), arm, jd_text_literal("}else{", 6), jd_doc_body(book, env, kid(t, 1), ty, Con{value, rest}), jd_text_literal("}", 1)])), jd_text_literal("}", 1)])
+  jd_text_many([jd_text_raw("{const " ++ value ++ "=" ++ arg ++ ";" ++ kc(String, p88_string_eq(nm(domain), "IO.OP"), u => "if(" ++ value ++ ".$!==\"Emit\"&&" ++ value ++ ".$!==\"Halt\"&&" ++ value ++ ".$!==\"Exit\")throw \"bend: runtime fail-stop\";", u => "")), kc(JDText, U32.is_eq(j_constructor_count(book, domain), 1) || p88_string_eq(condition, ""), u => arm, u => jd_text_many([jd_text_raw("if(" ++ condition ++ "){"), arm, jd_text_literal("}else{", 6), jd_doc_body(book, env, kid(t, 1), ty, Con{value, rest}), jd_text_literal("}", 1)])), jd_text_literal("}", 1)])
 
 # Module: src/back/js/direct/pattern.bend:36
 @unsafe
@@ -73,10 +73,10 @@ def jd_match_views(+owner: String, +name: String, +value: String) -> List<&2,Str
   kc(List<&2,String>, p88_string_eq(owner, "Bool"), u => Nil{}, u =>
   kc(List<&2,String>, p88_string_eq(owner, "U32"), u => ["u32_to_word(" ++ value ++ ")"], u =>
   kc(List<&2,String>, p88_string_eq(owner, "F32"), u => ["u32_to_word(f32_bits(" ++ value ++ "))"], u =>
-  kc(List<&2,String>, p88_string_eq(owner, "Char"), u => [value ++ ".codePointAt(0)"], u =>
+  kc(List<&2,String>, p88_string_eq(owner, "Char"), u => ["char_code(" ++ value ++ ")"], u =>
   kc(List<&2,String>, p88_string_eq(owner, "String"),
     u => kc(List<&2,String>, p88_string_eq(name, "SNil"), v => Nil{},
-      v => ["(" ++ value ++ ".codePointAt(0)>0xFFFF?" ++ value ++ ".slice(0,2):" ++ value ++ "[0])", "(" ++ value ++ ".codePointAt(0)>0xFFFF?" ++ value ++ ".slice(2):" ++ value ++ ".slice(1))"]), u =>
+      v => [value ++ ".slice(0,char_len(" ++ value ++ "))", value ++ ".slice(char_len(" ++ value ++ "))"]), u =>
   kc(List<&2,String>, p88_string_eq(owner, "Array"),
     u => kc(List<&2,String>, p88_string_eq(name, "ALeaf"), v => [value ++ "[0]"],
       v => [value ++ ".slice(0," ++ value ++ ".length>>1)", value ++ ".slice(" ++ value ++ ".length>>1)"]),

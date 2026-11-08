@@ -31,6 +31,28 @@ def or_right_identity(value):
     case False{}: {==}
     case True{}: {==}
 
+# Current Base defers the remaining scan behind List.any.if. Its Boolean
+# result agrees with or; this lemma makes that change of definition explicit.
+law or_matches_any_if:
+  for rest: Unit -> Bool
+  for hit: Bool
+  {Bool.or(hit, rest(Unit{})) == List.any.if(rest, hit) : Bool}
+
+def or_matches_any_if(rest, hit):
+  match hit:
+    case False{}: {==}
+    case True{}: {==}
+
+# Match the Boolean once so the singleton proof consumes its affine head once.
+law any_if_empty_tail:
+  for hit: Bool
+  {List.any.if(u => False{}, hit) == hit : Bool}
+
+def any_if_empty_tail(hit):
+  match hit:
+    case False{}: {==}
+    case True{}: {==}
+
 # Public semantic anchor: an always-False observer cannot satisfy this law for
 # an arbitrary comparator. No reflexivity or equality axiom is assumed.
 law contains_singleton:
@@ -41,7 +63,7 @@ law contains_singleton:
   {List.contains(~A, ~eq, Con{head, Nil{}}, key) == eq(head, key) : Bool}
 
 def contains_singleton(A, eq, head, key):
-  or_right_identity(eq(head, key))
+  any_if_empty_tail(eq(head, key))
 
 # Public: splitting a membership scan preserves the exact Boolean result.
 law contains_append:
@@ -56,7 +78,9 @@ def contains_append(A, eq, xs, ys, key):
   match xs:
     case Nil{}: {==}
     case Con{+head, +rest}:
-      %or_associative(eq(head, key), List.contains(~A, ~eq, rest, key), List.contains(~A, ~eq, ys, key)) : {List.contains(~A, ~eq, List.append(&2, A, head <> rest, ys), key) == _ : Bool}
+      %or_matches_any_if(u => List.contains(~A, ~eq, List.append(&2, A, rest, ys), key), eq(head, key)) : {_ == Bool.or(List.contains(~A, ~eq, head <> rest, key), List.contains(~A, ~eq, ys, key)) : Bool}
+      %or_matches_any_if(u => List.contains(~A, ~eq, rest, key), eq(head, key)) : {Bool.or(eq(head, key), List.contains(~A, ~eq, List.append(&2, A, rest, ys), key)) == Bool.or(_, List.contains(~A, ~eq, ys, key)) : Bool}
+      %or_associative(eq(head, key), List.contains(~A, ~eq, rest, key), List.contains(~A, ~eq, ys, key)) : {Bool.or(eq(head, key), List.contains(~A, ~eq, List.append(&2, A, rest, ys), key)) == _ : Bool}
       %contains_append(~A, ~eq, rest, ys, key) : {Bool.or(eq(head, key), List.contains(~A, ~eq, List.append(&2, A, rest, ys), key)) == Bool.or(eq(head, key), _) : Bool}
       {==}
 

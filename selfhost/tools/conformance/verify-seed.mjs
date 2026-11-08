@@ -25,7 +25,7 @@ const artifact=file=>({file,sha256:hash(file)});
 fs.mkdirSync(directory,{recursive:true});
 const output=path.join(directory,'stage3.mjs'),logFile=output+'.log',reportFile=path.join(directory,'report.json');
 if(fs.existsSync(reportFile)||fs.existsSync(output))throw Error('Use a new output directory to preserve prior verification evidence');
-const dependencies=['compiler-abi.mjs','native-build.mjs','assemble.mjs'].map(name=>path.join(path.dirname(driver),name));
+const dependencies=['compiler-abi.mjs','native-build.mjs','assemble.mjs','bootstrap-config.mjs','js-effect-provider.mjs','runtime-arguments.mjs'].map(name=>path.join(path.dirname(driver),name));
 const inputs={source:artifact(source),seed:artifact(seed),runtime:artifact(runtimePath),base:artifact(basePath),driver:artifact(driver),dependencies:dependencies.map(artifact)};
 const provenanceFile=process.env.BEND_SELFHOST_SEED_REPORT&&path.resolve(process.env.BEND_SELFHOST_SEED_REPORT);
 if(!provenanceFile)throw Error('BEND_SELFHOST_SEED_REPORT must identify the successful seed emission report');

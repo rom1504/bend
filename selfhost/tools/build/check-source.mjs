@@ -5,21 +5,22 @@ import path from 'node:path';
 import {spawnSync} from 'node:child_process';
 import {fileURLToPath,pathToFileURL} from 'node:url';
 import {pin,verify,requireThat as need,workspace} from './hosted.mjs';
+import {readBootstrapConfig,bootstrapConfigPath} from '../bootstrap-config.mjs';
 const args={};
-for(let i=2;i<process.argv.length;i+=2){need(process.argv[i]?.startsWith('--')&&process.argv[i+1],'--key value required');const key=process.argv[i].slice(2);need(['source','out'].includes(key)&&!Object.hasOwn(args,key),'unknown or duplicate argument');args[key]=process.argv[i+1];}
+for(let i=2;i<process.argv.length;i+=2){need(process.argv[i]?.startsWith('--')&&process.argv[i+1],'--key value required');const key=process.argv[i].slice(2);need(['source','out','upstream','manifest','assets'].includes(key)&&!Object.hasOwn(args,key),'unknown or duplicate argument');args[key]=process.argv[i+1];}
 need(args.source&&args.out,'--source and --out required');
 const source=pin(args.source);
 const out=path.resolve(args.out);need(out.startsWith(workspace+'/selfhost/build/')&&!fs.existsSync(out),'fresh selfhost/build output required');
-const upstream=path.join(workspace,'selfhost/.bootstrap/upstream-phase66');
-const configFile=path.join(workspace,'selfhost/src/compiler.json'),config=JSON.parse(fs.readFileSync(configFile,'utf8'));
+const selection=readBootstrapConfig({manifest:args.manifest,upstream:args.upstream});
+const upstream=fs.realpathSync(selection.upstream),configFile=selection.manifest,config=selection.config;
 const revision=spawnSync('git',['-C',upstream,'rev-parse','HEAD'],{encoding:'utf8',maxBuffer:1024*1024});
 const clean=spawnSync('git',['-C',upstream,'diff','--quiet','HEAD','--','bend2']);
 need(revision.status===0&&revision.stdout.trim()===config.upstream&&clean.status===0,'Pinned upstream differs');
-const assetsFile=path.join(workspace,'selfhost/manifests/assets-native.json'),assets=JSON.parse(fs.readFileSync(assetsFile,'utf8'));
+const assetsFile=path.resolve(args.assets??path.join(workspace,'selfhost/manifests/assets-native.json')),assets=JSON.parse(fs.readFileSync(assetsFile,'utf8'));
 const engine=pin(process.execPath),expectedEngine=assets.assets.bun;
 need(engine.bytes===expectedEngine.bytes&&engine.sha256===expectedEngine.sha256,'Expected pinned Bun engine');
 const language=path.join(upstream,'bend2/bend.ts'),base=path.join(upstream,'bend2/base.bend');
-const inputs=[pin(fileURLToPath(import.meta.url)),pin(path.join(workspace,'selfhost/tools/build/hosted.mjs')),engine,source,pin(configFile),pin(assetsFile),pin(language),pin(base),pin(path.join(workspace,'selfhost/tools/stage0-library.mjs'))];
+const inputs=[pin(fileURLToPath(import.meta.url)),pin(bootstrapConfigPath),pin(path.join(workspace,'selfhost/tools/build/hosted.mjs')),engine,source,pin(configFile),pin(assetsFile),pin(language),pin(base),pin(path.join(workspace,'selfhost/tools/stage0-library.mjs'))];
 inputs.forEach(verify);fs.mkdirSync(out,{recursive:true});
 const report={kind:'bend-independent-source-check',version:1,complete:false,checked:false,typeAccepted:false,source,inputs,upstream:config.upstream,unresolvedHoles:null,kernelChecked:false,proofSafetyAssessed:false,emittedCode:false,executedCandidate:false,phase:'load',scope:'Unmodified upstream book_load + book_valid + zero unresolved holes, matching the maintained source gates before API emission. Unsafe/foreign declarations retain their existing assumptions; no proof-safety verdict, BendTT proof, backend ownership check, emission or candidate execution is claimed.'};
 const save=()=>fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n');

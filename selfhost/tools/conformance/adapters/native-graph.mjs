@@ -11,6 +11,7 @@ const binary=required('BEND_NATIVE_BINARY'),runtime=required('BEND_NATIVE_RUNTIM
 export const name='bend-native-graph-host';
 export const capabilities={parse:false,check:false,interpreter:false,js:true,native:false,metal:false,cuda:false,modules:true,foreign:true,dependentTypes:true,affine:true,termination:true,proofs:true};
 export const artifacts={binary,runtime,launcher:path.resolve(import.meta.dirname,'../selected-graph.mjs'),nodeResources:path.resolve(import.meta.dirname,'../../node-resource-args.mjs')};
+artifacts.runtimeArguments=path.resolve(import.meta.dirname,'../../runtime-arguments.mjs');
 for(const file of walk(directory))if(file.endsWith('.json'))artifacts['manifest/'+path.relative(directory,file)]=file;
 for(const file of [binary+'.build.json',path.join(path.dirname(binary),'native-build-report.json')])if(fs.existsSync(file))artifacts['build/'+path.basename(file)]=file;
 export function inputFiles({tests}) {
@@ -46,7 +47,7 @@ export async function probe({test,lane,workdir,timeoutMs,upstream}){
   if(!manifest.startsWith(directory+path.sep)||!fs.existsSync(manifest))return {status:'unsupported',reason:'No explicit native graph manifest for '+test.id};
   const graph=loadNativeGraphManifest(manifest);validateGraphFixture(graph,test,upstream);
   const output=path.join(workdir,'program.mjs');
-  const native=runNativeGraph({binary,manifest,runtime,output,timeoutMs:Math.max(100,timeoutMs-250)});
+  const native=runNativeGraph({binary,manifest,runtime,output,timeoutMs:Math.max(100,timeoutMs-250),runtimeArgumentConvention:process.env.BEND_NATIVE_RUNTIME_ARGUMENT_CONVENTION});
   fs.writeFileSync(path.join(workdir,'native-compile.json'),JSON.stringify(native,null,2)+'\n');
   if(!native.published){
     if(native.error||native.signal)return {status:native.error?.includes('ETIMEDOUT')?'timeout':'crash',phase:native.phase,checked:native.checked,reason:native.error||native.signal,nativeProvenance:native};

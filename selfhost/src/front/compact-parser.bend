@@ -139,7 +139,7 @@ law p140p_law_end:
 def p140p_law_end(p140p_stop, name, p, book, imports, clauses, scope):
   match p:
     case FParsed{ty, ts}:
-      +signature = f_context_signature(f_law_bind(clauses, ty), ts)
+      +signature = f_context_signature(f_law_bind(clauses, ty, f_context_own("Exists", ts, False{})), ts)
       f_choose(P140PStop, f_context_stop(ty), u => p140p_result(book, ty, imports),
         u => f_choose(P140PStop, f_context_stop(signature), u => p140p_result(book, signature, imports),
           u => p140p_context_publish(p140p_stop, ts, KDef{name, "Def", f_law_arity(clauses), f_templates(clauses), signature, atom("Absent"), Nil{}, False{}, False{}}, book, imports, scope, True{})))
@@ -268,7 +268,7 @@ def p140p_law_where(p140p_stop, name, binder, ty, p, book, imports, clauses, sco
   match p:
     case FParsed{predicate, ts}:
       f_choose(P140PStop, f_context_stop(predicate), u => p140p_result(book, predicate, imports),
-        u => p140p_law(p140p_stop, name, f_skip(ts), book, imports, Con{k_with_children(binder, [f_app_span(k_with_span(ref("Exists"), kb(binder), ke(binder)), [ty, k_lam(nm(binder), ix(binder), 1, [predicate], kb(binder), ke(binder), False{})], kb(binder), ke(binder))]), clauses}, scope))
+        u => p140p_law(p140p_stop, name, f_skip(ts), book, imports, Con{k_with_children(binder, [f_app_span(k_with_span(ref(f_context_own("Exists", ts, False{})), kb(binder), ke(binder)), [ty, k_lam(nm(binder), ix(binder), 1, [predicate], kb(binder), ke(binder), False{})], kb(binder), ke(binder))]), clauses}, scope))
 
 
 law p140p_import_path:
@@ -745,7 +745,7 @@ law p177dr_taken:
 def p177dr_resolve(stop,ts,rest,book,imports,unsafe,scope,local):
   p177dr_context_header(stop,ts,rest,book,imports,unsafe,
     f_choose(KDef,f_eq(dk(local),"Missing"),
-      u => f_decl_local_ctor(f_tx(ts),book,scope,f_decl_prior(f_tx(ts),scope)),
+      u => f_decl_prior(f_tx(ts),scope),
       u => local),scope,local)
 
 @unsafe

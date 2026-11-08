@@ -1,0 +1,20 @@
+[
+  {
+    "name": "p111v_primitive_arities",
+    "before": "6f3d8fa86f335b18d90bd8699c437f1f7121a7535137de7e96962e73ec9af18e",
+    "after": "4785a17bc8bcb56dfaaa660259bd8f3826fc1cff1afa7fb4b354246e7c75fe0b",
+    "reason": "Append F32.from_nat opcode86/arity1; retain every earlier primitive and all count/buffer checks."
+  },
+  {
+    "name": "p111v_contract",
+    "before": "768190a772b81f86071e8987d05be98c63e975aa570cedb7343a8c77b6faa707",
+    "after": "6eae6cdcb34fccebce4f758b40313a56fb2deee5de91f967b1c6728184e266e0",
+    "reason": "Append F32.from_nat opcode86/arity1; retain every earlier primitive and all count/buffer checks."
+  },
+  {
+    "name": "main",
+    "before": "5f6a208befbb28a203fa52f6616fc1821fa0ce77293ed260555ef60e52a4063c",
+    "after": "cd2ca6d3b48ff183e9aeb8259f69de486c95fd4162d6d71d633fc6038151c784",
+    "reason": "Drop runtime-supplied argv0 once before unchanged internal CLI protocol. No checker or verifier removal."
+  }
+]

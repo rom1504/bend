@@ -146,6 +146,7 @@ def acquire_case(role, document, source, directory, root, seconds):
         # inside the compiler clock. Native-C telemetry requires a separate clock contract.
         replay = replay_request(plan, inputs, args.out / 'request.json')
     generated = product
+    convention = None
     if role['target'] == 'qbe':
         args = request_args(role, source, directory / 'machine', remaining(), root)
         args.ir, args.source, args.image, args.image_key = Path(product['file']), None, None, None
@@ -155,11 +156,19 @@ def acquire_case(role, document, source, directory, root, seconds):
         built = native.build(args)
         common.require(built['complete'], 'QBE machine build failed: '+str(built.get('error')))
         product = built['binary']
+        convention = built['runtimeArgumentConvention']
         inputs += [*built['inputs'], common.pin(args.out / 'report.json')]
     elif role['target'] == 'c':
         product, machine_inputs = c_build(document, product, directory, root, remaining())
         inputs += machine_inputs
-    return dict(artifact=product, generatedSource=generated, inputs=bench.unique_inputs(inputs)), replay
+        if role['provider'] == 'build' and emitted['request'].get('publicPackage'):
+            convention = assets.runtime_argument_convention(dict(runtimeArgumentConvention=emitted['request']['imageMetadata'].get('targetRuntimeArgumentConvention','bend-legacy-v1')))
+        else:
+            key = 'upstream-comp' if role['provider'] == 'upstream' else document.get('providers', {}).get('c', {}).get('runtime')
+            common.require(isinstance(key, str), 'Explicit C runtime provider required')
+            convention = assets.runtime_argument_convention(assets.runtime_provider(document, key))
+    metadata = {} if convention is None else dict(runtimeArgumentConvention=convention)
+    return dict(artifact=product, generatedSource=generated, inputs=bench.unique_inputs(inputs), **metadata), replay
 
 
 def validate_product(role, product, case, directory, root, seconds):
@@ -173,7 +182,7 @@ def validate_product(role, product, case, directory, root, seconds):
         common.require(child['complete'] and bench.read(directory / 'oracle.json').get('pass'), 'JS independent scalar oracle failed')
     else:
         point = dict(case['point'], repetitions=1, warmups=0)
-        command = [product['artifact']['file'], '--threads', '1', '--gpu', 'off', '--', '1', '0',
+        command = [product['artifact']['file'], *bench.native_runtime_arguments(product), '1', '0',
                    *map(str, point['runtimeArgs'])]
         child = common.run(command, cwd=root, stdout=directory / 'oracle.stdout', stderr=directory / 'oracle.stderr', seconds=seconds)
         common.require(child['complete'], 'Native independent oracle process failed')

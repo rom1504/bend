@@ -36,7 +36,7 @@ const verifyIdentity=(input,label)=>{
 };
 const base=identity(basePath);
 const sourceIdentity=identity(source);
-const hostHelpers=['compiler-abi.mjs','node-resource-args.mjs','native-build.mjs','assemble.mjs'].map(name=>identity(path.join(path.dirname(driver),name)));
+const hostHelpers=['compiler-abi.mjs','node-resource-args.mjs','native-build.mjs','assemble.mjs','bootstrap-config.mjs','js-effect-provider.mjs','runtime-arguments.mjs'].map(name=>identity(path.join(path.dirname(driver),name)));
 const reportFile=path.join(directory,'report.json');
 if(firstStage===2&&fs.existsSync(reportFile))throw Error('Fresh self-host attempt refuses an existing report; choose a new output directory or explicitly resume');
 fs.mkdirSync(directory,{recursive:true});

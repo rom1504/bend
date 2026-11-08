@@ -175,7 +175,7 @@ def p111_show(+book: List<&2, KDef>, ty: KTerm, constructors: List<&2, N_Constru
 # Phase111 module: selfhost/tools/performance/phase111/segment/lower-catalogue.bend
 # Finite authenticated runtime primitive catalogue. No C templates are read.
 @unsafe
-def p111_op_id(+name: String) -> U32:
+def p111_op_id_prior(+name: String) -> U32:
   nt_choose(U32, String.eq(name, "u32_add"), u => 1, u =>
   nt_choose(U32, String.eq(name, "u32_sub"), u => 2, u =>
   nt_choose(U32, String.eq(name, "u32_and"), u => 3, u =>
@@ -262,6 +262,11 @@ def p111_op_id(+name: String) -> U32:
   nt_choose(U32, String.eq(name, "array_atomic_cas"), u => 84, u =>
   nt_choose(U32, String.eq(name, "array_atomic_fadd"), u => 85, u =>
     0)))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+
+# New primitive IDs append to the frozen 1..85 catalogue.
+@unsafe
+def p111_op_id(+name: String) -> U32:
+  nt_choose(U32, String.eq(name, "f32_from_nat"), u => 86, u => p111_op_id_prior(name))
 
 @unsafe
 def p111_special(+name: String) -> U32:
@@ -692,12 +697,12 @@ def p111_lower_request(request: NR_Request) -> P111Result:
         u => p111_finish(source, names, p111_compile_defs(book, names, nc_bangs_names(book, names), 0, Nil{})),
         u => P111Result{p111_empty(), error})
 
-# Frozen capability set of runtime/effects/prepared01/catalogue.json.
+# ABI11102 capability set; original providers plus byte argv/path effects.
 # Adding a foreign provider requires a new runtime capsule and this admission
 # catalogue together. This is an internal checked-request backend boundary.
 @unsafe
 def p111_runtime_names() -> List<&2, String>:
-  ["IO.args", "IO.print", "IO.now", "IO.print_err", "File.open", "File.read", "File.read_bytes", "File.read_at", "File.size", "File.write", "File.write_bytes", "File.close", "NativeHost.read", "NativeHost.path", "NativeHost.publish"]
+  ["IO.args", "IO.args_bytes", "IO.print", "IO.now", "IO.print_err", "File.open", "File.open_bytes", "File.read", "File.read_line", "File.read_bytes", "File.read_at", "File.size", "File.write", "File.write_at", "File.write_bytes", "File.close", "NativeHost.read", "NativeHost.path", "NativeHost.publish"]
 
 @unsafe
 def p111_runtime_effects(effects: List<&2, String>, +available: List<&2, String>) -> String:

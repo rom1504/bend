@@ -3,10 +3,17 @@ import sys
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import acquire as A
 
 class AcquisitionContracts(unittest.TestCase):
+    def test_native_product_cli_is_explicit_and_old_defaults_survive(self):
+        self.assertEqual(A.bench.native_runtime_arguments({}),['--threads','1','--gpu','off','--'])
+        with patch.dict(A.os.environ, {}, clear=True):
+            self.assertEqual(A.bench.native_runtime_arguments(dict(runtimeArgumentConvention='bend-rts-v1')),
+                             ['+RTS','--threads','1','--gpu','off','-RTS','--RTS'])
+
     def test_stdout_replay_retains_native_command(self):
         command=['/image', '--threads', '1', '--gpu', 'off', '--', 'phase111', '/source', '/base', 'cache', '/carrier', 'stamp']
         plan=dict(outputContract='stdout',host='native',command=command)

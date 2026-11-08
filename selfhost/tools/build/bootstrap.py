@@ -86,6 +86,7 @@ def main():
     requests.arguments(parser)
     parser.add_argument('--runtime-key', default='qbe-runtime')
     parser.add_argument('--runtime', type=Path)
+    parser.add_argument('--runtime-argument-convention', choices=['bend-legacy-v1', 'bend-rts-v1'])
     args = parser.parse_args()
     result = chain(args)
     import json

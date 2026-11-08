@@ -94,7 +94,7 @@ def jd_show_arms(+book: List<&2,KDef>, +ctors: List<&2,KDef>, +args: List<&2,KTe
 def jd_show_arm(+book: List<&2,KDef>, +c: KDef, +rest: List<&2,KDef>, +args: List<&2,KTerm>,
   +oldNames: List<&2,String>, +d: JDShowDesc) -> JDShowDesc:
   jd_show_join(JDShowDesc{List.append(&2,String,
-    [U32.show(jd_string_len(oldNames)), j_quote(name_key(dn(c))), U32.show(da(c)),
+    [j_quote(name_key(dn(c))), j_quote(jd_tag(dn(c))), U32.show(da(c)),
       kc(String, p88_string_eq(dn(c), "Tuple"), u => "2", u =>
         kc(String, p88_string_eq(dn(c), "Con") || p88_string_eq(dn(c), "Nil"), u => "1", u => "0"))], jd_show_cells(d)),
     jd_show_types(d), jd_show_names(d), jd_show_error(d)},

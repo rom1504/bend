@@ -26,6 +26,7 @@ async function run(){
   if(!process.env.BEND_TYPED_API)process.env.BEND_TYPED_API=image;
   if(!process.env.BEND_BASE)process.env.BEND_BASE=bound(current.providers.base);
   if(!process.env.BEND_TYPED_RUNTIME)process.env.BEND_TYPED_RUNTIME=bound(current.providers.jsLegacyRuntime);
+  if(!process.env.BEND_TYPED_RUNTIME_TEMPLATE)process.env.BEND_TYPED_RUNTIME_TEMPLATE=bound(current.providers.cRuntimeTemplate);
   requireThat(bound(current.providers.jsDirectRuntime)===path.join(project,'src/runtime/js/direct.mjs'),'Current direct runtime path differs from the host contract');
   const {main}=await import('./tools/typed-driver.mjs');
   await main(process.argv.slice(2));

@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 import sys
 
-from bench import HERE, PRESETS, pin, read, require, save, select, verify
+from bench import HERE, PRESETS, pin, read, require, save, select, verify, native_runtime_arguments
 
 
 def prepare(args):
@@ -50,7 +50,7 @@ def prepare(args):
                         'Native allocation events require an explicitly instrumented generic-profiler recipe')
                 point = case['point']
                 workload = native_workloads.setdefault(case['id'], dict(name=case['id'], timeoutSeconds=args.budget, variants=[]))
-                workload['variants'].append(dict(name=role, command=[artifact['file'], '--threads', '1', '--gpu', 'off', '--',
+                workload['variants'].append(dict(name=role, command=[artifact['file'], *native_runtime_arguments(case['products'][role]),
                         str(point['repetitions']), str(point['warmups']), *map(str, point['runtimeArgs'])],
                         inputs=[case['source']['file'], *[p['file'] for p in case['products'][role].get('inputs', [])]],
                         stdout=dict(kind='prefix-integer-line', prefix=point['expectedStdout'] + str(point['warmups']) + '\n' + str(point['repetitions']) + '\n',

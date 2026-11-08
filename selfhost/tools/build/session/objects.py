@@ -35,7 +35,8 @@ def build(a):
     require(policy.get('target')=='amd64_sysv' and policy.get('assemblerFlags')==FLAGS['assembler'] and policy.get('linkerFlags')==['-no-pie'] and policy.get('libraries')==FLAGS['libraries'],'Unknown QBE toolchain policy')
     methods=[pin(__file__),pin(HERE/'protocol.py'),pin(HERE/'elf.py'),pin(HERE.parent/'common.py'),pin(assets.__file__)]
     context=dict(policy='closed-framed-generated-symbols-v1',producer=producer,runtime=runtime,tools=tools,flags=FLAGS,methods=methods,
-      policySalt=a.policy_salt,abi='amd64 SysV scalar w/l; generated symbols globalized only inside a closed non-PIE executable')
+      policySalt=a.policy_salt,runtimeArgumentConvention=assets.runtime_argument_convention(assets.runtime_provider(doc,a.runtime_key)),
+      abi='amd64 SysV scalar w/l; generated symbols globalized only inside a closed non-PIE executable')
     expected=pin(a.expected) if a.expected else None;inputs=[doc['_manifest'],source,producer,runtime,stream_pin,*tools.values(),*methods,*([expected] if expected else [])]
     cache=a.cache.absolute();out=a.out.absolute()
     require(cache==cache.resolve() and cache.is_relative_to(root/'selfhost/build') and not cache.is_symlink(),'Confined nonsymlink cache required')

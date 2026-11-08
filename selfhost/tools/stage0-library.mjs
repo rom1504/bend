@@ -2,7 +2,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {pathToFileURL} from 'node:url';
-const upstream=process.env.BEND_UPSTREAM||path.resolve(import.meta.dirname,'../.bootstrap/upstream-phase66');
+import {readBootstrapConfig} from './bootstrap-config.mjs';
+const {upstream}=readBootstrapConfig();
 const B=await import(pathToFileURL(path.join(upstream,'bend2/bend.ts')));
 const C=await import(pathToFileURL(path.join(upstream,'bend2/comp.ts')));
 // Keep canonical Base IO opaque while normalizing the candidate export type.

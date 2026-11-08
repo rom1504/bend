@@ -86,8 +86,22 @@ def dg_trace(e, ctx, t, ty, r):
 
 # Module: src/diagnostic/trace.bend:78
 @unsafe
+def dg_unqualified_name(+rest: String, +name: String) -> String:
+  match rest:
+    case SNil{}: name
+    case SCon{head,tail}: dg_unqualified_name(tail,kc(String,Char.is_eq(head,':'),u => tail,u => name))
+
+@unsafe
+def dg_datatype_braces(+book: List<&2,KDef>, +name: String) -> String:
+  +bare = dg_unqualified_name(name,name)
+  +found = kc(String,p88_string_eq(dk(lookup(book,name)),"ADT"),u => name,
+    u => kc(String,p88_string_eq(dk(lookup(book,bare)),"ADT"),v => bare,v => ""))
+  kc(String,Bool.not(String.is_empty(found)) && String.is_empty(dg_family(book,name)),
+    u => "Note: " ++ found ++ " is a datatype: write its arguments as <>",u => "")
+
+@unsafe
 def dg_trace_detail(e, ctx, t, r, detail):
-  KChecking{kt("DTrace", cn(e), 0, qt(detail), [kid(detail, 0), kid(detail, 1), kt("DCtx", "", 0, 0, ctx), t, kt("DTrail", "", 0, 0, [t]), dg_text(kc(String, p88_string_eq(ce(r), "constructor requires a datatype goal") && p88_string_eq(dk(lookup(cb(e), nm(t))), "ADT") && p88_string_eq(dg_family(cb(e), nm(t)), ""), u => "Note: " ++ nm(t) ++ " is a datatype: write its arguments as <>", u => ""))]), cy(r), cs(r), ce(r), rw(r), rx(r)}
+  KChecking{kt("DTrace", cn(e), 0, qt(detail), [kid(detail, 0), kid(detail, 1), kt("DCtx", "", 0, 0, ctx), t, kt("DTrail", "", 0, 0, [t]), dg_text(kc(String, p88_string_eq(ce(r), "constructor requires a datatype goal"), u => dg_datatype_braces(cb(e),nm(t)), u => ""))]), cy(r), cs(r), ce(r), rw(r), rx(r)}
 
 # Module: src/diagnostic/trace.bend:82
 @unsafe

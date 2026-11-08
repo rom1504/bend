@@ -1,0 +1,47 @@
+// Finite runtime controls; reads the fragment, creates no compiler artifacts.
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import vm from 'node:vm';
+import {createRequire} from 'node:module';
+const source=fs.readFileSync(new URL('../../../src/runtime/js/direct.mjs',import.meta.url),'utf8');
+const context=vm.createContext({require:createRequire(import.meta.url),process,performance,TextEncoder,TextDecoder,Buffer});
+vm.runInContext(source+'\nglobalThis.api={nat_in,nat_chk,char_new,char_code,char_len,str_in,str_out,string_contains,f32_read,f32_bits,f32_from_bits,show_chr,show_text,show_val,run_lib,run_tail,run_loop,jd_tail,io_run,io_eff,cli,getArgs:()=>cli_args,resetArgs:()=>{cli_args=[]}};',context);
+const a=context.api;
+for(const n of [0,-0,1,281474976710655,2**53])assert.equal(a.nat_in(n),n);
+for(const n of [-1,1.5,NaN,Infinity,2**53+2,0n,'1',null,undefined])assert.throws(()=>a.nat_in(n),/expected a Nat host number/);
+assert.throws(()=>a.nat_chk(2**48),/largest immediate/);
+for(const n of [0,65,0xd7ff,0xd800,0xdc00,0xdfff,0xe000,0x10ffff,0x110000,0xffffffff]) {
+  const c=a.char_new(n);
+  assert.equal(a.char_code(c),n);
+  assert.equal(a.char_len(c),c.length);
+  assert.equal(a.str_out(c),n>0x10ffff||n>=0xd800&&n<=0xdfff?'\ufffd':String.fromCodePoint(n));
+}
+const packed=a.char_new(0x110000);
+assert.equal(a.string_contains(packed,'\0'),false);
+assert.equal(a.string_contains(packed,packed),true);
+assert.equal(a.string_contains(packed+'x','x'),true);
+assert.equal(a.str_in('\ud800x\udc00😀'),'\ufffdx\ufffd😀');
+assert.equal(a.show_chr(a.char_new(0xffffffff),"'"),'\\u{ffffffff}');
+assert.equal(a.show_text('a'+packed+'😀'),'a\\u{110000}😀');
+assert.equal(a.show_val([7,1,1,'lib.C','C',0,0],0,{$:'C'},0),'lib.C{}');
+for(const s of ['1 ','\u00a01'])assert.equal(a.f32_read(s).$,'None');
+assert.equal(a.f32_read('1.').value,1);
+assert.equal(a.f32_read('1.e2').value,100);
+assert.equal(a.f32_read(' .5').value,0.5);
+assert.equal(a.f32_read('-inf').value,-Infinity);
+assert.equal(Object.is(a.f32_read('-0').value,-0),true);
+for(const bits of [0,0x80000000,0x3f800001,0x7f800000])assert.equal(a.f32_bits(a.f32_from_bits(bits)),bits);
+assert.equal(a.run_lib((x,y)=>x+y,2)(4)(5),9);
+let left=10000;const loop=n=>left--?a.jd_tail(loop,[n+1]):n;
+assert.equal(a.run_loop(loop(0)),10000);
+assert.equal(a.run_loop(a.run_tail(x=>x+1,4)),5);
+let observed;
+a.io_eff('phase182:echo',x=>{observed=x;return x});
+assert.equal(a.io_run(()=>k=>({$:'phase182:echo',args:[9],kont:k})),0);
+assert.equal(observed,9);
+a.io_eff('phase182:nested',()=>a.io_run(()=>k=>k({$:'Unit'})));
+assert.equal(a.io_run(()=>k=>({$:'phase182:nested',args:[],kont:k})),0);
+assert.equal(a.io_run(()=>_=>({$:'Exit',code:7})),7);
+a.resetArgs();a.cli(['program','--threads','9','+RTS','--threads','2','-RTS','tail','--RTS','+RTS']);
+assert.deepEqual(Array.from(a.getArgs()),['program','--threads','9','tail','+RTS']);
+console.log('phase182 direct JS runtime controls passed');

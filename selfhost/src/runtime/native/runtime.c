@@ -330,13 +330,13 @@ static bool io_gpu;
 static Stk  io_stk;
 
 static const char* CLI_HELP =
-  "usage: %s [options] [arguments]\n"
+  "usage: %s [+RTS options -RTS] [arguments]\n"
   "  --threads N       worker threads, 1 to 128 (default: the CPU count)\n"
   "  --gpu on|off|4GB  run ! calls on the GPU, over this much of its memory\n"
   "                    (default: on if present, over 2GB on Metal)\n"
   "  --gpu-build       write the GPU program and exit\n"
   "  --help            show this text\n"
-  "  --                the rest are the program's arguments (IO.args)\n";
+  "  --RTS             pass the remaining arguments literally\n";
 
 #endif
 
@@ -2361,6 +2361,7 @@ OUTLINE void io_sync(void) {
 
 // the edge is UTF-8
 static u64 io_utf8(char* buf, u64 c) {
+  c = c > 0x10FFFF || (c >= 0xD800 && c <= 0xDFFF) ? 0xFFFD : c;
   u64 k = c < 0x80 ? 1 : c < 0x800 ? 2 : c < 0x10000 ? 3 : 4;
   for (u64 i = k; i > 1; i -= 1) {
     buf[i - 1] = (char)(0x80 | (c & 0x3F));
@@ -2643,6 +2644,7 @@ static int f32_text(char* buf, f32 v) {
     memmove(buf + s + 1, buf + s + 2, p);
     memset(buf + s + 1 + p, '0', ex - p);
     n = s + 1 + ex;
+    buf[n] = 0;
   }
   return n;
 }
@@ -2805,6 +2807,9 @@ static void show_val(Env e, u32 d, const Term* w, char chain) {
 // Refuse on actual dispatch, before consuming any payload.
 static const char* io_unavailable(u32 cid) {
   switch (cid) {
+#ifdef CID_WINDOW_FULLSCREEN
+    case CID_WINDOW_FULLSCREEN: return "native Window.fullscreen is not implemented by the retained IO runtime";
+#endif
 #ifdef CID_CHAN_TRY_SEND
     case CID_CHAN_TRY_SEND: return "native Chan.try_send is not implemented by the retained IO runtime";
 #endif
@@ -2867,8 +2872,17 @@ static int io_step(Env e, IoAct* a) {
     }
     if (c == CID_HALT) {
       io_errs(e, e.mem[at + 1]);
-      return (int)(u32)e.mem[at];
+      u32 code = (u32)e.mem[at];
+      if (code > 255) err_fail("exit code must be in 0..255");
+      return (int)code;
     }
+#ifdef CID_EXIT
+    if (c == CID_EXIT) {
+      u32 code = (u32)(term_tag(req) == TAG_PAK ? term_loc(req) : e.mem[at]);
+      if (code > 255) err_fail("exit code must be in 0..255");
+      return (int)code;
+    }
+#endif
     if (io_eff_rows[c].run == NULL) {
       err_fail(io_unavailable(c));
     }
@@ -3080,14 +3094,36 @@ int main(int argc, char** argv) {
   long thr = 0;
   int  gpu = -1;
   u64  mem = 0;
-  io_argv = argv + 1;
-  for (int i = 1; i < argc; i += 1) {
-    const char* a = argv[i];
-    const char* v = i + 1 < argc ? argv[i + 1] : NULL;
-    if (strcmp(a, "--") == 0) {
-      while (i + 1 < argc) {
-        io_argv[io_argc++] = argv[++i];
-      }
+  char* env = strdup(getenv("BENDRTS") != NULL ? getenv("BENDRTS") : "");
+  if (env == NULL) cli_fail("cannot allocate runtime options", NULL);
+  char** rts = malloc(((size_t)argc + strlen(env) + 1) * sizeof(char*));
+  if (rts == NULL) cli_fail("cannot allocate runtime options", NULL);
+  int nr = 0;
+  bool in = false;
+  for (char* word = strtok(env, " \t\n"); word != NULL; word = strtok(NULL, " \t\n")) {
+    rts[nr++] = word;
+  }
+  rts[nr++] = NULL;
+  io_argv = argv;
+  io_argc = argc > 0;
+  for (int i = 1; i < argc; ++i) {
+    char* a = argv[i];
+    if (strcmp(a, "--RTS") == 0) {
+      while (++i < argc) io_argv[io_argc++] = argv[i];
+    } else if (strcmp(a, "+RTS") == 0 || strcmp(a, "-RTS") == 0) {
+      in = a[0] == '+';
+      rts[nr++] = NULL;
+    } else if (in) {
+      rts[nr++] = a;
+    } else {
+      io_argv[io_argc++] = a;
+    }
+  }
+  for (int i = 0; i < nr; ++i) {
+    const char* a = rts[i];
+    const char* v = i + 1 < nr ? rts[i + 1] : NULL;
+    if (a == NULL) {
+      continue;
     } else if (strcmp(a, "--help") == 0) {
       printf(CLI_HELP, argv[0]);
       return 0;
@@ -3099,7 +3135,7 @@ int main(int argc, char** argv) {
     } else if (strcmp(a, "--threads") == 0) {
       char* end = NULL;
       thr = v != NULL ? strtol(v, &end, 10) : 0;
-      if (thr < 1 || end == NULL || *end != '\0') {
+      if (thr < 1 || v == NULL || *v == 0 || v[strspn(v, "0123456789")] != 0) {
         cli_fail("expected a thread count of 1 or more after --threads", NULL);
       }
       i += 1;
@@ -3108,19 +3144,22 @@ int main(int argc, char** argv) {
       double n   = v != NULL ? strtod(v, &end) : 0;
       u64    mul = end == NULL ? 0 : strcmp(end, "GB") == 0 ? 1ull << 30
         : strcmp(end, "MB") == 0 ? 1ull << 20 : 0;
+      mem = (u64)(n * (double)mul);
       if (v != NULL && strcmp(v, "off") == 0) {
         gpu = 0;
-      } else if (v != NULL && (strcmp(v, "on") == 0 || (mul != 0 && n > 0))) {
+      } else if (v != NULL && (strcmp(v, "on") == 0
+        || (mem >= 16384 && end == v + strspn(v, "0123456789.")))) {
         gpu = 1;
-        mem = (u64)(n * (double)mul);
       } else {
         cli_fail("expected on, off or a size like 4GB after --gpu", NULL);
       }
       i += 1;
     } else {
-      io_argv[io_argc++] = argv[i];
+      cli_fail("unknown runtime option ", a);
     }
   }
+  free(rts);
+  free(env);
   bool dev = gpu != 0 && BANGS != 0 && gpu_probe();
   if (gpu == 1 && BANGS != 0 && !dev) {
     cli_fail("--gpu on, but this binary found no GPU device", NULL);

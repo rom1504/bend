@@ -9,9 +9,10 @@ import {selectProbes,successful} from './selection.mjs';
 import {runProbe} from './run-probe.mjs';
 import {createPersistentRunner} from './persistent-probe.mjs';
 import {judge} from './judge.mjs';
+import {readBootstrapConfig,bootstrapConfigPath} from '../bootstrap-config.mjs';
 
 const project=path.resolve(import.meta.dirname,'../..');
-const options={upstream:process.env.BEND_UPSTREAM||path.join(project,'.bootstrap/upstream-phase66'),
+const options={upstream:readBootstrapConfig().upstream,
   adapter:'',output:path.join(project,'tests/conformance/latest.json'),
   jobs:8,timeout:5000,'worker-mode':'isolated','recycle-after':'64','rss-limit-mb':'1024',lanes:'parse,check,interpreter,js,native,metal,cuda',filter:'',gpu:'','stack-kb':0,'heap-mb':0,selection:'',rerun:'',retain:'none','selected-exit':'0'};
 for(let i=2;i<process.argv.length;i++) {
@@ -60,6 +61,7 @@ const selected=selectProbes(manifest,{selection:options.selection,rerun:options.
 const {tests,jobs}=selected;
 manifest.tests.push(...selected.external);
 const inputFiles=new Set([...manifest.tests.map(test=>test.file),...walk(path.join(options.upstream,'tests')),...walk(path.join(options.upstream,'bend2/effs')),...manifest.sources.map(source=>path.join(options.upstream,source.file))]);
+inputFiles.add(bootstrapConfigPath);
 for(const test of selected.external)for(const file of walk(path.dirname(test.file)))inputFiles.add(file);
 for(const file of typeof adapter.inputFiles==='function'?await adapter.inputFiles({tests}):adapter.inputFiles||[])inputFiles.add(path.resolve(file));
 for(const test of tests)if(sha256(fs.readFileSync(test.file))!==test.sha256)throw Error('Fixture changed during selection: '+test.file);

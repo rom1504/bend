@@ -633,9 +633,23 @@ def norm_convert(book, a, b, le, fresh):
   kc(Bool, norm_cmp_loop(Nil{}, GState{GEmpty{}, 1}, Con{KNormCmp{a, b, le, fresh}, Nil{}}, Nil{}),
     u => True{}, u => norm_cmp_loop(book, GState{GEmpty{}, 1}, Con{KNormCmp{a, b, le, fresh}, Nil{}}, Nil{}))
 
-# A sharing item runs only after its EQ obligations succeed. It copies a forced
-# value, never an unproved pair or a directional LE result. Alternative worklists
-# retain their own continuation, while proven equality and evaluation may persist.
+# Endpoints exposed by graph evaluation belong to its heap. Both policies start
+# from that same immutable input; failed rigid evaluation cannot enter the retry.
+@unsafe
+def norm_convert_state(+book: List<&2,KDef>, +st: GState, +a: KTerm,
+  +b: KTerm, +le: Bool, +fresh: U32) -> Bool:
+  kc(Bool, norm_cmp_loop(Nil{}, st, Con{KNormCmp{a, b, le, fresh}, Nil{}}, Nil{}),
+    u => True{}, u => norm_cmp_loop(book, st, Con{KNormCmp{a, b, le, fresh}, Nil{}}, Nil{}))
+
+# A sharing item runs only after its EQ obligations succeed. It joins separate
+# equivalence classes; moving either value could make a cell name itself.
+# Proven EQ classes discharge both EQ and LE comparisons. Directional LE alone
+# never joins classes. Alternatives retain their continuation while proven
+# equality and evaluation may persist inside this one heap identity.
+
+@unsafe
+def norm_cmp_shared(+st: GState, +a: KTerm, +b: KTerm) -> Bool:
+  p98_tag_eq(a,"GCell") && p98_tag_eq(b,"GCell") && g_class_same(st,ix(a),ix(b))
 
 # Module: src/core/normalize.bend:555
 @unsafe
@@ -644,9 +658,9 @@ def norm_cmp_loop(book, st, todo, alts):
     case Nil{}:
       True{}
     case Con{KNormShare{left, right}, rest}:
-      norm_cmp_loop(book, GState{g_put(g_heap(st), right, g_get(g_heap(st), left)), g_next(st)}, rest, alts)
+      norm_cmp_loop(book, g_class_join(st,left,right), rest, alts)
     case Con{KNormCmp{a, b, le, fresh}, rest}:
-      kc(Bool, norm_cmp_quick(a, b), u => norm_cmp_loop(book, st, rest, alts),
+      kc(Bool, norm_cmp_quick(a, b) || norm_cmp_shared(st,a,b), u => norm_cmp_loop(book, st, rest, alts),
         u => norm_cmp_left(book, b, le, fresh,
           kc(List<&2, KNormCmp>, Bool.not(le) && p98_tag_eq(a, "GCell") && p98_tag_eq(b, "GCell"),
             u => Con{KNormShare{ix(a), ix(b)}, rest}, u => rest), alts, g_wnf(book, st, a)))

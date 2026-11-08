@@ -13,18 +13,95 @@ import sys
 sys.dont_write_bytecode = True
 from common import ROOT, fresh_output, pin, require, verify, write_json
 import source as assembly
+import assets as build_assets
 
 
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--manifest', type=Path, default=ROOT / 'selfhost/src/compiler.json')
-    parser.add_argument('--source-root', type=Path, default=ROOT / 'selfhost')
-    parser.add_argument('--package', type=Path, default=ROOT / 'selfhost/dist/native')
-    parser.add_argument('--out', type=Path, required=True)
-    args = parser.parse_args()
-    # The incumbent package supplies only checked asset bytes/cache identity.
-    # It never supplies a frontend or backend declaration to the new compiler.
-    package = args.package.resolve(strict=True)
+EFFECTS = ('args', 'print', 'print_err', 'now', 'file_open', 'file_read',
+           'file_size', 'file_write', 'file_close')
+ASSET_NAMES = {'base.bend', 'base.p88', *('runtime.c.part'+str(i) for i in range(5)),
+               *('effs/'+name+'.c' for name in EFFECTS)}
+
+
+def same_identity(actual, expected):
+    return isinstance(expected, dict) and all(actual.get(k) == expected.get(k)
+                                              for k in ('bytes', 'sha256'))
+
+
+def template_parts(template, runtime):
+    require(template['bytes'] <= 16777216 and runtime['bytes'] <= 16777216,
+            'Runtime transport exceeds bound')
+    artifact = json.loads(verify(template).read_text())
+    parts = artifact.get('parts')
+    require(artifact.get('version') == 1 and artifact.get('runtimeSha256') == runtime['sha256']
+            and isinstance(parts, list) and len(parts) == 5
+            and all(isinstance(part, str) for part in parts), 'C runtime/template mismatch')
+    encoded = [part.encode('utf8') for part in parts]
+    require(b''.join(encoded) == verify(runtime).read_bytes(),
+            'Runtime template parts do not round-trip exactly')
+    return encoded, build_assets.runtime_argument_convention(artifact)
+
+
+def fresh_assets(file, root=ROOT):
+    """Read explicit prepared data; no compiler or carrier decoding runs here."""
+    document = build_assets.load_assets(file, root)
+    mapping = document.get('publicCliAssets')
+    keys = ('base', 'decimalCarrier', 'carrierReceipt', 'runtime', 'runtimeTemplate',
+            'runtimeTemplateReceipt')
+    require(isinstance(mapping, dict) and set(mapping) == {*keys, 'effects'},
+            'Explicit publicCliAssets mapping required')
+    require(isinstance(mapping['effects'], dict) and set(mapping['effects']) == set(EFFECTS),
+            'Exactly nine public CLI effects required')
+    require(all(isinstance(mapping[k], str) for k in keys)
+            and all(isinstance(v, str) for v in mapping['effects'].values()),
+            'Public CLI asset keys must be strings')
+    rows = {key: build_assets.asset(document, mapping[key]) for key in keys}
+    effects = {name: build_assets.asset(document, mapping['effects'][name]) for name in EFFECTS}
+    inputs = [document['_manifest'], *rows.values(), *effects.values()]
+    require(all(row['bytes'] <= 16777216 for row in [*rows.values(), *effects.values()]),
+            'Public CLI asset transport exceeds bound')
+    carrier = json.loads(verify(rows['carrierReceipt']).read_text())
+    require(carrier.get('kind') == 'bend-prepared-base-carrier' and carrier.get('version') == 1
+            and carrier.get('complete') is True
+            and same_identity(rows['base'], carrier.get('base'))
+            and same_identity(rows['decimalCarrier'], carrier.get('decimalCarrier')),
+            'Prepared decimal Base receipt differs from selected assets')
+    identity = carrier.get('sourceIdentity', {})
+    base_identity = rows['base']['file']
+    require(identity.get('format') == 'p88-private-base-text-1'
+            and identity.get('path') == base_identity and identity.get('base') == rows['base']['sha256']
+            and carrier.get('sourceBegin') == identity.get('begin') == 1
+            and isinstance(identity.get('end'), int) and identity['end'] > 1
+            and carrier.get('sourceEnd') == identity['end'], 'Prepared Base source identity differs')
+    stamp = 'p88-private-base-text-1:' + hashlib.sha256(json.dumps(
+        identity, separators=(',', ':'), ensure_ascii=False).encode()).hexdigest()
+    require(carrier.get('originalStamp') == stamp, 'Prepared decimal Base stamp differs')
+    base_bytes = verify(rows['base']).read_bytes()
+    decimal = verify(rows['decimalCarrier']).read_bytes()
+    require(base_bytes and decimal.startswith((str(len(stamp))+'\n'+stamp+'\n').encode()),
+            'Prepared decimal Base header differs')
+    prepared = json.loads(verify(rows['runtimeTemplateReceipt']).read_text())
+    require(prepared.get('kind') == 'bend-native-template' and prepared.get('version') == 2
+            and prepared.get('complete') is True
+            and prepared.get('exactRoundTrip') is True and prepared.get('chunks') == 5
+            and same_identity(rows['runtimeTemplate'], prepared.get('artifact'))
+            and same_identity(rows['runtime'], prepared.get('runtime')),
+            'Runtime template receipt differs from selected assets')
+    parts, convention = template_parts(rows['runtimeTemplate'], rows['runtime'])
+    require(build_assets.runtime_argument_convention(prepared) == convention
+            and build_assets.runtime_argument_convention(
+                build_assets.runtime_provider(document, mapping['runtime'])) == convention,
+            'Runtime argument convention bindings differ')
+    payloads = {'base.bend': base_bytes, 'base.p88': decimal,
+                **{'runtime.c.part'+str(i): part for i, part in enumerate(parts)},
+                **{'effs/'+name+'.c': verify(row).read_bytes() for name, row in effects.items()}}
+    return dict(authority=document['_manifest'], inputs=inputs, payloads=payloads,
+                baseIdentity=base_identity, cacheStamp=stamp, runtimeArgumentConvention=convention,
+                receipts={key: rows[key] for key in ('carrierReceipt', 'runtimeTemplateReceipt')})
+
+
+def incumbent_assets(package):
+    # The incumbent supplies checked asset bytes, never compiler declarations.
+    package = package.resolve(strict=True)
     package_pin = pin(package / 'BUILD.json')
     old = json.loads(Path(package_pin['file']).read_text())
     if old.get('kind') == 'bend-public-cli-package':
@@ -41,12 +118,49 @@ def main():
         base_identity = old['inputs']['baseIdentity']
         cache_stamp = old['inputs']['cache']['stamp']
         cache_identity = old['inputs']['cache']['carrier']
+    require(set(authority_assets) == ASSET_NAMES, 'Unexpected public CLI asset inventory')
+    template = pin(ROOT / 'selfhost/src/runtime/native/runtime-template.json')
+    runtime = pin(ROOT / 'selfhost/src/runtime/native/runtime.c')
+    inputs = [package_pin, template, runtime]
+    payloads = {}
+    for name, expected in authority_assets.items():
+        actual = pin(package / 'assets' / name)
+        require(same_identity(actual, expected), 'Changed packaged asset: ' + name)
+        payloads[name] = verify(actual).read_bytes()
+        inputs.append(actual)
+    parts, convention = template_parts(template, runtime)
+    for index, part in enumerate(parts):
+        require(payloads['runtime.c.part'+str(index)] == part,
+                'Incumbent runtime part differs from maintained template')
+    require(pin(base_identity)['sha256'] == authority_assets['base.bend']['sha256'],
+            'Prepared Base identity bytes changed')
+    inputs.append(pin(base_identity))
+    require(cache_identity['sha256'] == authority_assets['base.p88']['sha256']
+            and cache_stamp.startswith('p88-private-base-text-1:'), 'Wrong Base carrier contract')
+    return dict(authority=package_pin, inputs=inputs, payloads=payloads, baseIdentity=base_identity,
+                cacheStamp=cache_stamp, runtimeArgumentConvention=convention, receipts={})
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--manifest', type=Path, default=ROOT / 'selfhost/src/compiler.json')
+    parser.add_argument('--source-root', type=Path, default=ROOT / 'selfhost')
+    asset_source = parser.add_mutually_exclusive_group()
+    asset_source.add_argument('--package', type=Path, default=ROOT / 'selfhost/dist/native')
+    asset_source.add_argument('--assets', type=Path,
+                              help='Operational asset manifest with explicit publicCliAssets bindings')
+    parser.add_argument('--out', type=Path, required=True)
+    args = parser.parse_args()
+    selected = fresh_assets(args.assets) if args.assets else incumbent_assets(args.package)
+    base_identity, cache_stamp = selected['baseIdentity'], selected['cacheStamp']
+    payloads = selected['payloads']
+    require(set(payloads) == ASSET_NAMES, 'Unexpected public CLI asset inventory')
+    assets = {name: dict(bytes=len(data), sha256=hashlib.sha256(data).hexdigest())
+              for name, data in payloads.items()}
     entry = ROOT / 'selfhost/src/host/native-cli.bend'
     host = ROOT / 'selfhost/src/host/native-os.c'
-    template = ROOT / 'selfhost/src/runtime/native/runtime-template.json'
-    runtime = ROOT / 'selfhost/src/runtime/native/runtime.c'
     inputs = [pin(__file__), pin(Path(assembly.__file__)), pin(args.manifest),
-              package_pin, pin(entry), pin(host), pin(template), pin(runtime)]
+              pin(build_assets.__file__), pin(entry), pin(host), *selected['inputs']]
     source = assembly.maintained_assemble(args.manifest, args.source_root, 'qbe')
     if isinstance(source, tuple):
         source = source[0]
@@ -64,29 +178,6 @@ def main():
     require(not (added & set(by_name)), 'Public entry declarations collide with shared compiler')
     config_names = {'cli_base_identity', 'cli_cache_stamp', 'cli_digest'}
     require(not (config_names & (set(by_name) | added)), 'Configuration declaration collision')
-    assets = {}
-    for name, expected in authority_assets.items():
-        file = package / 'assets' / name
-        actual = pin(file)
-        require(actual['bytes'] == expected['bytes'] and actual['sha256'] == expected['sha256'],
-                'Changed packaged asset: ' + name)
-        assets[name] = actual
-        inputs.append(actual)
-    require(set(assets) == {'base.bend', 'base.p88', *('runtime.c.part'+str(i) for i in range(5)),
-                           *('effs/'+n+'.c' for n in ['args','print','print_err','now',
-                                                    'file_open','file_read','file_size','file_write','file_close'])},
-            'Unexpected public CLI asset inventory')
-    parts = json.loads(template.read_text())
-    require(parts['runtimeSha256'] == pin(runtime)['sha256'] and len(parts['parts']) == 5,
-            'Maintained C runtime/template mismatch')
-    for index, text in enumerate(parts['parts']):
-        require(Path(assets['runtime.c.part'+str(index)]['file']).read_text() == text,
-                'Incumbent runtime part differs from maintained template')
-    require(pin(base_identity)['sha256'] == assets['base.bend']['sha256'],
-            'Prepared Base identity bytes changed')
-    inputs.append(pin(base_identity))
-    require(cache_identity['sha256'] == assets['base.p88']['sha256']
-            and cache_stamp.startswith('p88-private-base-text-1:'), 'Wrong Base carrier contract')
     config = '\n# Immutable public CLI asset identities.\n'
     for name, value in [('cli_base_identity', base_identity), ('cli_cache_stamp', cache_stamp)]:
         config += 'def '+name+'() -> String:\n  '+json.dumps(value)+'\n'
@@ -118,10 +209,10 @@ def main():
     out = fresh_output(args.out, ROOT)
     (out / 'compiler.bend').write_bytes(modified)
     (out / 'native-os.c').write_bytes(host.read_bytes())
-    for name, row in assets.items():
+    for name, data in payloads.items():
         destination = out / 'assets' / name
         destination.parent.mkdir(parents=True, exist_ok=True)
-        destination.write_bytes(Path(row['file']).read_bytes())
+        destination.write_bytes(data)
     for row in inputs:
         verify(row)
     receipt = dict(kind='bend-public-cli-source-profile', version=1, complete=True,
@@ -130,7 +221,9 @@ def main():
                    source=pin(out / 'compiler.bend'), inputs=inputs,
                    changedDeclarations=changed, addedDeclarations=sorted(added | config_names),
                    allOtherBodiesIdentical=True, versionText=version,
-                   assetAuthority=package_pin, baseIdentity=base_identity, cacheStamp=cache_stamp,
+                   assetAuthority=selected['authority'], assetReceipts=selected['receipts'],
+                   baseIdentity=base_identity, cacheStamp=cache_stamp,
+                   runtimeArgumentConvention=selected['runtimeArgumentConvention'],
                    assets={name: pin(out / 'assets' / name) for name in assets},
                    foreignProvider=pin(out / 'native-os.c'),
                    scope='One shared compiler, a public IO entry and exact effect-byte authentication. '

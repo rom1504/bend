@@ -1,5 +1,7 @@
 // Host-side views of the compiler's positional ADT ABI. Compiler phases keep
 // their original graphs; only fields inspected by the host acquire wrappers.
+// Constructor identities are exact schema keys, including ':' and '.'. Scalar
+// values pass unchanged; Nat validation belongs to the selected callable ABI.
 export function createCompilerAbi({fields,ctor,onPhase}) {
   const views=new WeakMap(),originals=new WeakMap();
   const counts={views:0,encoded:0,unwrapped:0,calls:0};

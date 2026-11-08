@@ -6,7 +6,7 @@ def p113_scalar_result_name(+name: String) -> Bool:
     "u32_add", "u32_sub", "u32_and", "u32_or", "u32_xor", "u32_mul",
     "u32_is_eq", "u32_is_ne", "u32_is_lt", "u32_is_le", "u32_is_gt", "u32_is_ge",
     "u32_inc", "u32_shl", "u32_shr", "u32_shln", "u32_shrn", "u32_div", "u32_mod", "u32_not", "u32_is_zero",
-    "u32_to_f32", "u32_from_nat",
+    "u32_to_f32", "u32_from_nat", "f32_from_nat",
     "f32_add", "f32_sub", "f32_mul", "f32_div",
     "f32_is_eq", "f32_is_ne", "f32_is_lt", "f32_is_le", "f32_is_gt", "f32_is_ge",
     "f32_sqrt", "f32_exp", "f32_log", "f32_log2", "f32_log10", "f32_sin", "f32_cos", "f32_tan",

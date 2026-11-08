@@ -335,10 +335,10 @@ def j_layout_function(book, env, t, ty, todo):
 # Module: src/back/js/validate.bend:253
 @unsafe
 def j_layout_array_name(+name: String) -> Bool:
-  kc(Bool, p88_string_eq(name, "Array.new") || p88_string_eq(name, "Array.set") || p88_string_eq(name, "Array.get") || p88_string_eq(name, "Array.swap") || p88_string_eq(name, "Array.size"),
+  kc(Bool, p88_string_eq(name, "Array.new") || p88_string_eq(name, "Array.set") || p88_string_eq(name, "Array.get") || p88_string_eq(name, "Array.get_unchecked") || p88_string_eq(name, "Array.swap") || p88_string_eq(name, "Array.size"),
     u => True{},
     u => kc(Bool, String.contains(name, "|"),
-      v => String.contains("|Array.new|Array.set|Array.get|Array.swap|Array.size|", "|" ++ name ++ "|"),
+      v => String.contains("|Array.new|Array.set|Array.get|Array.get_unchecked|Array.swap|Array.size|", "|" ++ name ++ "|"),
       v => False{}))
 
 # Module: src/back/js/validate.bend:266

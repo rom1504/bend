@@ -46,7 +46,9 @@ def plan(a):
         require('P140/2' in metadata.get('sessionProtocols',[]),'Image binding must explicitly advertise P140/2 session protocol')
         require(not a.units and not a.check_cold and not any(j['expectError'] for j in prepared),'Native batch supports success jobs only; hosted controls establish recovery/units')
         require(os.access(image['file'],os.X_OK),'Executable native image required')
-        result['command']=[image['file'],'--threads','1','--gpu','off','--','phase140-batch',logical,base['file'],carrier['file'],stamp,str(a.out.resolve()/'jobs.txt'),'v1']
+        result['runtimeArgumentConvention']=assets.runtime_argument_convention(metadata)
+        require(result['runtimeArgumentConvention']!='bend-rts-v1' or 'BENDRTS' not in os.environ,'Explicit RTS requests require ambient BENDRTS to be unset')
+        result['command']=[image['file'],*assets.runtime_arguments(metadata,application=True),'phase140-batch',logical,base['file'],carrier['file'],stamp,str(a.out.resolve()/'jobs.txt'),'v1']
     return result
 
 def execute(a,request):

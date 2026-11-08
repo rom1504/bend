@@ -1,13 +1,12 @@
 // Direct JavaScript backend runtime. Generated output embeds this fragment.
-// Ported from bend2/comp.ts NATIVE.JS, RUNTIME and RUNTIME_MAIN, and
-// bend2/bend.ts f32_round at fixed upstream commit
-// 059266225b77c8ca256ac6b25ee5c21449bab151. The reference files stay unchanged.
+// Runtime and effect scheduler ported from bend2/comp.ts at
+// 9a4223d577ba56a0cb53d1fd952d2b481c38930f (Phase182).
 // No TypeScript compiler/runtime dependency is used by ordinary compilation.
-// Number is the internal Nat representation; nat_host handles typed host input.
-// Node foreign IO requires the host emitter to provide an ESM require binding.
-// Bun/system calls remain lazy, exactly as in the pinned upstream runtime.
-// Retained local differences: NaN-payload-safe f32_bits and the compatible
-// array payload shared by unary run_tail and variadic jd_tail below.
+// Nat is Number internally and at the host edge; nat_in validates scalar input.
+// Char preserves every U32 in a packed string; str_in/out bound host text.
+// Local differences: NaN-payload-safe f32_bits, variadic direct-tail payloads,
+// typed pure-main readback, and a default one-word Array.new cell layout.
+// Foreign IO requires the host emitter to provide an ESM require binding.
 
 function word_to_u32(w) {
   let x = 0;
@@ -27,13 +26,15 @@ function u32_to_word(x) {
 }
 
 function cmp_new(a, b) {
-  return {$: a < b ? "LT"
-    : a === b ? "EQ" : "GT"};
+  return {$: a < b ? "LT" : a === b ? "EQ" : "GT"};
+}
+
+function tup_new(a, b) {
+  return {$: "Tuple", fst: a, snd: b};
 }
 
 function nat_divmod(a, b) {
-  return b === 0 ? {$: "Tuple", fst: 0, snd: a}
-    : {$: "Tuple", fst: Math.trunc(a / b), snd: a % b};
+  return tup_new(b && Math.trunc(a / b), b ? a % b : a);
 }
 
 function nat_chk(n) {
@@ -43,27 +44,19 @@ function nat_chk(n) {
   return n;
 }
 
-function nat_host(n) {
-  const int = typeof n === "bigint" || Number.isInteger(n);
-  if (int && n >= 0 && n <= 2 ** 53) {
-    return Number(n);
+function nat_in(n) {
+  if (!Number.isInteger(n) || n < 0 || n > 2 ** 53) {
+    throw "bend: expected a Nat host number: an integer from 0 to 2^53";
   }
-  return { [Symbol.toPrimitive]() { throw "bend: a Nat past the largest immediate 2^48-1"; } };
+  return n;
 }
 
 function f32_show(x) {
-  if (x !== x) {
-    return "nan";
-  }
-  if (!Number.isFinite(x) || Object.is(x, -0)) {
-    return x < 0 ? "-inf"
-      : x === 0 ? "-0" : "inf";
-  }
-  let s = "x";
-  for (let p = 1; p <= 9 && f32_round(s) !== x; p += 1) {
+  let s = "nan";
+  for (let p = 1; x === x && p <= 9 && f32_round(s) !== x; p += 1) {
     s = String(Number(x.toExponential(p - 1)));
   }
-  return s;
+  return (Object.is(x, -0) ? "-0" : s).replace("Infinity", "inf");
 }
 
 function f32_bits(x) {
@@ -80,9 +73,9 @@ function f32_from_bits(u) {
 }
 
 function f32_read(s) {
-  const re = /^[\t\n\v\f\r ]*[+-]?((\d+\.?\d*|\.\d+)(e[+-]?\d+)?|inf(inity)?|nan)$/i;
-  const v = f32_round(s.replace(/inf\w*/i, "Infinity"));
-  return re.test(s) ? {$: "Some", value: v} : {$: "None"};
+  const re = /^[\t\n\v\f\r ]*[+-]?((\d+(?:\.\d*)?|\.\d+)(e[+-]?\d+)?|inf(inity)?|nan)$/i;
+  return re.test(s) ? {$: "Some", value: f32_round(
+    s.replace(/inf\w*/i, "Infinity"))} : {$: "None"};
 }
 
 const f32_round = function f32_round(s) {
@@ -104,19 +97,46 @@ const f32_round = function f32_round(s) {
   return Math.sign(d) * (x === y || x > y !== g > f ? f : g);
 };
 
-function char_new(code) {
-  if (code > 0x10FFFF || (code >= 0xD800 && code <= 0xDFFF)) {
-    throw "bend: " + code + " is not a Unicode scalar value";
+function char_new(c) {
+  return c < 0xD800 ? String.fromCharCode(c)
+    : c >= 0xE000 && c <= 0x10FFFF ? String.fromCodePoint(c)
+    : String.fromCharCode(0xDC00, c >>> 22, c >>> 11 & 0x7FF, c & 0x7FF);
+}
+
+function char_len(s, at = 0) {
+  const c = s.codePointAt(at);
+  return c === 0xDC00 ? 4 : c > 0xFFFF ? 2 : 1;
+}
+
+function char_code(s) {
+  return s.length < 4 ? s.codePointAt(0)
+    : (s.charCodeAt(1) << 22 | s.charCodeAt(2) << 11 | s.charCodeAt(3)) >>> 0;
+}
+
+function string_contains(s, p) {
+  // A match starts at a Char, not inside a packed U32 code.
+  for (let at = 0; at <= s.length; at += char_len(s, at)) {
+    if (s.startsWith(p, at)) {
+      return true;
+    }
   }
-  return String.fromCodePoint(code);
+  return false;
+}
+
+function str_out(s) {
+  return s.replace(/\uDC00[^]{3}/gu, "\uFFFD");
+}
+
+function str_in(s) {
+  return s.replace(/\p{Cs}/gu, "\uFFFD");
 }
 
 // Array
 // =====
 
-function array_new(d, v) {
-  if (d > 31) {
-    throw "bend: an array past the deepest block class 31";
+function array_new(d, v, lgs = 0) {
+  if (d > 31 - lgs) {
+    throw "bend: an array past the deepest block class 31 (depth + log2 words per cell)";
   }
   return Array(2 ** d).fill(v);
 }
@@ -129,10 +149,9 @@ function array_node(a, b) {
 }
 
 function array_rmw(a, i, f) {
-  const at = i % a.length;
-  const old = a[at];
-  a[at] = f(old);
-  return {$: "Tuple", fst: a, snd: old};
+  const old = a[i %= a.length];
+  a[i] = f(old);
+  return tup_new(a, old);
 }
 
 // Run
@@ -158,13 +177,14 @@ function run_loop(r) {
 
 function run_lib(f, n) {
   return (...a) => a.length < n ? run_lib((...b) => f(...a, ...b), n - a.length)
-    : f(...a);
+    : run_loop(f(...a));
 }
 
 // Effect
 // ======
 
 const $0eff = Object.create(null);
+const io_file_append = new Set();
 
 function io_eff(k, run) {
   if (arguments.length > 2) {
@@ -175,24 +195,38 @@ function io_eff(k, run) {
   }
   $0eff[k] = run;
 }
+
 // Cli
 // ===
 
 let cli_args = [];
 
 function cli(argv) {
+  let rts = false;
   cli_args.push(argv[0]);
   for (let i = 1; i < argv.length; i += 1) {
-    if (argv[i] === "--") {
+    const a = argv[i];
+    if (a === "--RTS") {
       cli_args.push(...argv.slice(i + 1));
       break;
-    } else if (argv[i] === "--bend-help") {
-      io_out(1, io_bytes("usage: " + argv[0] + "\n"));
+    } else if (a === "+RTS" || a === "-RTS") {
+      rts = a === "+RTS";
+    } else if (!rts) {
+      cli_args.push(a);
+    } else if (a === "--help" || a === "--gpu-build") {
+      io_out(1, io_bytes(a === "--help" ? "usage: " + argv[0] + "\n" : ""));
       process.exit(0);
-    } else if (argv[i] === "--threads" || argv[i] === "--gpu") {
-      i += 1;
     } else {
-      cli_args.push(argv[i]);
+      const re = a === "--threads" ? /^0*[1-9]\d*$/ : a === "--gpu"
+        ? /^(on|off|(\d*(?:\.\d*)?)([GM])B)$/ : undefined;
+      const m  = re?.exec(argv[++i]);
+      if (!m || m[3]
+        && !(m[2] * 2 ** (m[3] === "G" ? 30 : 20) >= 16384)) {
+        io_errs("bend: " + (re === undefined ? "unknown runtime option " + a
+          : a === "--gpu" ? "expected on, off or a size like 4GB after --gpu"
+          : "expected a thread count of 1 or more after --threads"));
+        process.exit(1);
+      }
     }
   }
 }
@@ -204,11 +238,11 @@ function cli(argv) {
 // chain is the bracket it continues, or 0. show_chr escapes as char_show.
 
 function show_chr(s, q) {
-  const c = s.codePointAt(0);
+  const c = char_code(s);
   const k = { 10: "n", 9: "t", 13: "r", 0: "0", 92: "\\" }[c]
     ?? (s === q ? q : null);
   return k !== null ? "\\" + k : c < 32 || c === 127
-    || (c >= 0xD800 && c <= 0xDFFF) ? "\\u{" + c.toString(16) + "}" : s;
+    || c > 0x10FFFF || (c >= 0xD800 && c <= 0xDFFF) ? "\\u{" + c.toString(16) + "}" : s;
 }
 
 function show_val(D, d, v, chain) {
@@ -218,7 +252,7 @@ function show_val(D, d, v, chain) {
     let a = d + 3;
     for (; D[a + 1] !== fs[0]; a += 4 + 2 * D[a + 2]) {}
     const o = "{[("[D[a + 3]];
-    let s = o === "{" ? fs[0] + "{" : chain === o ? "" : o;
+    let s = o === "{" ? D[a] + "{" : chain === o ? "" : o;
     for (const [j, f] of fs.slice(1).entries()) {
       if (o === "[" ? j === 0 && chain === o : j > 0) {
         s += ", ";
@@ -231,21 +265,26 @@ function show_val(D, d, v, chain) {
     : D[d] === 1 ? f32_show(v).replace(/^-?\d+(?=e|$)/, "$&.0")
     : D[d] === 2 ? v + "n"
     : D[d] === 3 ? "'" + show_chr(v, "'") + "'"
-    : D[d] === 4 ? "\"" + [...v].map((c) => show_chr(c, "\"")).join("") + "\""
+    : D[d] === 4 ? "\"" + show_text(v) + "\""
     : D[d] === 5 ? "{==}"
     : "[" + v.map((x) => show_val(D, D[d + 1], x, 0)).join(", ") + "]";
+}
+
+function show_text(s) {
+  let out = "";
+  for (let at = 0; at < s.length; at += char_len(s, at)) {
+    out += show_chr(s.slice(at, at + char_len(s, at)), "\"");
+  }
+  return out;
 }
 
 // Io
 // ==
 
-// Apple arm64 passes variadic fcntl flags on the stack, so io_sys
-// binds fcntl there with the flags as the ninth fixed argument. A
-// parked effect waits for fd (a write when out) or until at
-// (performance.now()), either one undefined when unused; once due, io_wait
-// calls more at once, as C calls pack, and resumes k with its value, while
-// undefined parks it again. The waits stay in deadline order, as io_park
-// does in C.
+// Apple arm64 passes variadic fcntl flags on the stack, so io_sys passes
+// them as the ninth argument. A parked effect waits for fd (a write when
+// out) and/or until at; once due, io_wait calls more and resumes k with its
+// value, or parks it again on undefined. Waits stay in deadline order.
 
 function io_exit(main, show) {
   try {
@@ -262,13 +301,21 @@ function io_exit(main, show) {
 
 function io_out(fd, data) {
   const fs = require("fs");
-  let at = 0;
-  while (at < data.length) {
+  for (let at = 0; at < data.length;) {
     try {
-      at += fs.writeSync(fd, data, at, data.length - at);
+      const n = fs.writeSync(fd, data.subarray(at));
+      if (n === 0) {
+        throw "no progress";
+      }
+      at += n;
     } catch (e) {
       if (e.code === "EAGAIN" || e.code === "EINTR") {
         continue;
+      }
+      // Bun ignores SIGPIPE until a listener comes and goes.
+      if (e.code === "EPIPE") {
+        process.on("SIGPIPE", () => {}).removeAllListeners("SIGPIPE")
+          .kill(process.pid, "SIGPIPE");
       }
       try {
         fs.writeSync(2, "bend: a short write on a standard stream\n");
@@ -279,7 +326,31 @@ function io_out(fd, data) {
   }
 }
 
+// Non-TTY stdout flushes before waits, errors, exits, or at 64 KiB.
+
+let io_held = null;
+
+function io_std(data) {
+  io_held ??= !require("tty").isatty(1) && [];
+  if (!io_held) {
+    return io_out(1, data);
+  }
+  io_held.push(data);
+  io_held.n = (io_held.n ?? 0) + data.length;
+  if (io_held.n >= 65536) {
+    io_sync();
+  }
+}
+
+function io_sync() {
+  if (io_held?.length > 0) {
+    io_held.n = 0;
+    io_out(1, Buffer.concat(io_held.splice(0)));
+  }
+}
+
 function io_errs(message) {
+  io_sync();
   io_out(2, io_bytes(message + "\n"));
 }
 
@@ -294,17 +365,16 @@ function io_sys() {
     const vari = mac && process.arch === "arm64";
     const lib = ffi.dlopen(mac ? "libSystem.dylib" : "libc.so.6",
       Object.fromEntries(("socket:iii>i bind:ipu>i listen:ii>i connect:ipu>i"
-        + " accept:ipp>i send:ipUi>I recv:ipUi>I read:ipU>I pread:ipUI>I"
+        + " accept:ipp>i send:ipUi>I recv:ipUi>I read:ipU>I"
         + " sendto:ipUipu>I recvfrom:ipUipp>I close:i>i setsockopt:iiipu>i"
         + " " + sel + ":ipppp>i"
-        + (vari ? " fcntl:iiiiiiiii>i" : " fcntl:iii>i") + " getsockopt:iiipp>i"
+        + " fcntl:iii" + (vari ? "iiiiii" : "") + ">i getsockopt:iiipp>i"
         + " strerror:i>c " + err + ":>p").split(" ").map((s) => {
         const [name, args, ret] = s.split(/[:>]/);
         return [name, { args: [...args].map((a) => T[a]), returns: T[ret] }];
       }))).symbols;
-    const fcntl = (fd, cmd, arg) => vari
-      ? lib.fcntl(fd, cmd, 0, 0, 0, 0, 0, 0, arg)
-      : lib.fcntl(fd, cmd, arg);
+    const fcntl = vari ? (fd, cmd, arg) => lib.fcntl(fd, cmd, 0, 0, 0, 0, 0,
+      0, arg) : lib.fcntl;
     globalThis.BEND_SYS = { ...lib, fcntl, select: lib[sel],
       ptr: ffi.ptr, mac,
       errno: () => ffi.read.i32(lib[err](), 0) };
@@ -312,18 +382,14 @@ function io_sys() {
   return globalThis.BEND_SYS;
 }
 
-// strerror needs bun:ffi; a host without it (node) gets the bare errno.
-function io_strerror(code) {
-  try {
-    return String(io_sys().strerror(code));
-  } catch (_) {
-    return "errno " + code;
-  }
-}
-
+// Without bun:ffi, errors use bare errno.
 function io_fail(code, ...rest) {
-  const err = io_tup(code >>> 0, io_strerror(code));
-  return { $: "Fail", error: io_tup(err, ...rest) };
+  let text = "errno " + code;
+  try {
+    text = String(io_sys().strerror(code));
+  } catch (_) {
+  }
+  return { $: "Fail", error: io_tup(io_tup(code >>> 0, text), ...rest) };
 }
 
 function io_done(value) {
@@ -343,19 +409,19 @@ function io_ready(at, r) {
 }
 
 function io_tup(...xs) {
-  return xs.reduceRight((snd, fst) => ({ $: "Tuple", fst, snd }));
+  return xs.reduceRight((b, a) => tup_new(a, b));
 }
 
+const io_enc = new TextEncoder();
+
 function io_bytes(text) {
-  return new TextEncoder().encode(text);
+  return io_enc.encode(str_out(text));
 }
 
 function io_text(b, n) {
   return new TextDecoder("utf-8", { ignoreBOM: true }).decode(b.subarray(0, n));
 }
 
-// Bytes cross as they are (0..255), one List cell each, with no UTF-8 in
-// either direction; io_unlist answers null if a value is past 255.
 function io_list(b, n) {
   let xs = { $: "Nil" };
   while (n > 0) {
@@ -379,13 +445,14 @@ function io_addr(host, port) {
     return null;
   }
   const b = new Uint8Array(16);
-  const head = io_sys().mac ? [16, 2] : [2, 0];
-  b.set([...head, port >> 8, port & 255, ...part.map(Number)]);
+  b.set([...io_sys().mac ? [16, 2] : [2, 0], port >> 8, port & 255,
+    ...part.map(Number)]);
   return b;
 }
 
-function io_push(fun, arg, fresh) {
-  const io = globalThis.BEND_IO;
+let io_active;
+
+function io_push(fun, arg, fresh, io = io_active) {
   io.runs.push({ fun, arg });
   io.live += fresh ? 1 : 0;
 }
@@ -404,8 +471,14 @@ function io_wait(io, block) {
   }
   const tv = new BigInt64Array([BigInt(ms / 1000 | 0),
     BigInt(ms % 1000 * 1000)]);
-  const sys = io_sys();
-  if (sys.select(top + 1, sys.ptr(set), sys.ptr(set, len), null,
+  io_sync();
+  const sys = fds.length > 0 ? io_sys() : null;
+  // Timers need no FFI.
+  if (!sys && ms !== 0) {
+    Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0,
+      ms < 0 ? Infinity : ms);
+  }
+  if (sys?.select(top + 1, sys.ptr(set), sys.ptr(set, len), null,
     ms < 0 ? null : sys.ptr(tv)) < 0) {
     if (sys.errno() !== 4) {
       throw "bend: the poller failed";
@@ -420,20 +493,22 @@ function io_wait(io, block) {
   for (const w of todo.filter(due)) {
     const x = w.more();
     if (x !== undefined) {
-      io_push(w.k, x, false);
+      io_push(w.k, x, false, io);
     }
   }
 }
 
-function io_park_on(fd, out, k, more, at) {
-  const ws = globalThis.BEND_IO.waits;
-  const i = ws.findLastIndex((w) => (w.at ?? Infinity) <= (at ?? Infinity));
-  ws.splice(i + 1, 0, { fd, out, k, more, at });
+function io_park_on(fd, out, k, more, at = Infinity) {
+  const ws = io_active.waits;
+  const t = { fd, out, k, more, at };
+  ws.splice(ws.findLastIndex((w) => w.at <= at) + 1, 0, t);
+  return t;
 }
 
 function io_run(m) {
   const io = { runs: [], live: 0, waits: [] };
-  globalThis.BEND_IO = io;
+  const parent = io_active;
+  io_active = io;
   try {
     io_push(run_loop(m()), (x) => ({ $: "Emit", value: x }), true);
     let look = 0;
@@ -458,13 +533,17 @@ function io_run(m) {
       }
       const s = io.runs.shift();
       let op = s.fun(s.arg);
-      while (op !== undefined) {
+      for (let left = 64; op !== undefined; left -= 1) {
         if (op.$ === "Emit") {
           io.live -= 1;
           break;
         }
-        if (op.$ === "Halt") {
-          io_errs(op.message);
+        if (op.$ === "Halt" || op.$ === "Exit") {
+          if (op.$ === "Halt") io_errs(op.message);
+          if (op.code > 255) {
+            io_errs("bend: exit code must be in 0..255");
+            return 1;
+          }
           return op.code;
         }
         const run = $0eff[op.$];
@@ -475,11 +554,19 @@ function io_run(m) {
         if (x === undefined) {
           break;
         }
+        if (left === 1) {
+          io_push(op.kont, x, false, io);
+          break;
+        }
         op = op.kont(x);
       }
     }
   } catch (e) {
     throw e instanceof RangeError ? "bend: memory fault (machine stack overflow?)" : e;
+  } finally {
+    io_sync();
+    io.done = true;
+    io_active = parent;
   }
 }
 

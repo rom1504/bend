@@ -4,9 +4,19 @@ type GHeap is Data:
   GEmpty{}
   GNode{+value: KTerm, +left: GHeap, +right: GHeap}
 
+# Equality classes are separate from evaluation values. Absent entries are
+# singleton roots; stored roots name themselves and carry union-by-rank height.
+type GClassEntry is Data:
+  GClassEntry{+parent: U32, +rank: U32}
+
+type GClasses is Data:
+  GClassesEmpty{}
+  GClassesNode{+entry: Maybe<&2,GClassEntry>, +left: GClasses, +right: GClasses}
+
 # Module: src/core/graph.bend:10
 type GState is Data:
   GState{+heap: GHeap, +next: U32}
+  GCompared{+heap: GHeap, +next: U32, +classes: GClasses}
 
 # Module: src/core/graph.bend:13
 type GResult is Data:
@@ -242,6 +252,8 @@ def g_heap(
   match st:
     case GState{heap, next}:
       heap
+    case GCompared{heap, next, classes}:
+      heap
 
 # Module: src/core/graph.bend:217
 @unsafe
@@ -251,6 +263,95 @@ def g_next(
   match st:
     case GState{heap, next}:
       next
+    case GCompared{heap, next, classes}:
+      next
+
+# Every evaluation update preserves the comparison facts of this heap identity.
+# Fresh GState constructors still start an independent, empty class relation.
+@unsafe
+def g_with_heap(+st: GState, +heap: GHeap, +next: U32) -> GState:
+  match st:
+    case GState{oldHeap,oldNext}: GState{heap,next}
+    case GCompared{oldHeap,oldNext,classes}: GCompared{heap,next,classes}
+
+@unsafe
+def g_classes(+st: GState) -> GClasses:
+  match st:
+    case GState{heap,next}: GClassesEmpty{}
+    case GCompared{heap,next,classes}: classes
+
+@unsafe
+def g_class_get(+classes: GClasses, +id: U32) -> Maybe<&2,GClassEntry>:
+  match classes:
+    case GClassesEmpty{}: None{}
+    case GClassesNode{entry,left,right}:
+      kc(Maybe<&2,GClassEntry>,U32.is_eq(id,0),u => entry,
+        u => kc(Maybe<&2,GClassEntry>,U32.is_eq(U32.and(id,1),0),
+          u => g_class_get(left,U32.shr(id)),u => g_class_get(right,U32.shr(id))))
+
+@unsafe
+def g_class_put(+classes: GClasses, +id: U32, +entry: GClassEntry) -> GClasses:
+  match classes:
+    case GClassesEmpty{}:
+      g_class_put(GClassesNode{None{},GClassesEmpty{},GClassesEmpty{}},id,entry)
+    case GClassesNode{old,left,right}:
+      kc(GClasses,U32.is_eq(id,0),u => GClassesNode{Some{entry},left,right},
+        u => kc(GClasses,U32.is_eq(U32.and(id,1),0),
+          u => GClassesNode{old,g_class_put(left,U32.shr(id),entry),right},
+          u => GClassesNode{old,left,g_class_put(right,U32.shr(id),entry)}))
+
+law g_class_root:
+  for +classes: GClasses
+  for +id: U32
+  U32
+
+@unsafe
+def g_class_root_entry(+classes: GClasses, +id: U32, +entry: Maybe<&2,GClassEntry>) -> U32:
+  match entry:
+    case None{}: id
+    case Some{GClassEntry{parent,rank}}:
+      kc(U32,U32.is_eq(parent,id),u => id,u => g_class_root(classes,parent))
+
+@unsafe
+def g_class_root(classes,id):
+  g_class_root_entry(classes,id,g_class_get(classes,id))
+
+@unsafe
+def g_class_rank_entry(+entry: Maybe<&2,GClassEntry>) -> U32:
+  match entry:
+    case None{}: 0
+    case Some{GClassEntry{parent,rank}}: rank
+
+@unsafe
+def g_class_raise(+classes: GClasses, +id: U32, +rank: U32, +raise: Bool) -> GClasses:
+  kc(GClasses,raise,u => g_class_put(classes,id,GClassEntry{id,U32.add(rank,1)}),u => classes)
+
+# Only distinct roots are linked. Rank strictly increases along every link,
+# ruling out class cycles without inspecting or rewriting any term value.
+@unsafe
+def g_class_link(+classes: GClasses, +left: U32, +right: U32,
+  +leftRank: U32, +rightRank: U32) -> GClasses:
+  kc(GClasses,U32.is_eq(left,right),u => classes,
+    u => kc(GClasses,U32.is_lt(leftRank,rightRank),
+      u => g_class_put(classes,left,GClassEntry{right,leftRank}),
+      u => g_class_put(g_class_raise(classes,left,leftRank,U32.is_eq(leftRank,rightRank)),
+        right,GClassEntry{left,rightRank})))
+
+@unsafe
+def g_class_join_roots(+st: GState, +classes: GClasses, +left: U32, +right: U32) -> GState:
+  kc(GState,U32.is_eq(left,right),u => st,
+    u => GCompared{g_heap(st),g_next(st),g_class_link(classes,left,right,
+      g_class_rank_entry(g_class_get(classes,left)),g_class_rank_entry(g_class_get(classes,right)))})
+
+@unsafe
+def g_class_join(+st: GState, +left: U32, +right: U32) -> GState:
+  +classes = g_classes(st)
+  g_class_join_roots(st,classes,g_class_root(classes,left),g_class_root(classes,right))
+
+@unsafe
+def g_class_same(+st: GState, +left: U32, +right: U32) -> Bool:
+  +classes = g_classes(st)
+  U32.is_eq(g_class_root(classes,left),g_class_root(classes,right))
 
 # Module: src/core/graph.bend:225
 @unsafe
@@ -324,7 +425,7 @@ def g_share(
   +st: GState,
   +t: KTerm,
 ) -> GResult:
-  kc(GResult, p98_tag_eq(t, "GCell"), u => GResult{st, t}, u => GResult{GState{g_put(g_heap(st), g_next(st), kt("GThunk", "", 0, 0, Con{t, Nil{}})), U32.add(g_next(st), 1)}, kt("GCell", "", g_next(st), 0, Nil{})})
+  kc(GResult, p98_tag_eq(t, "GCell"), u => GResult{st, t}, u => GResult{g_with_heap(st, g_put(g_heap(st), g_next(st), kt("GThunk", "", 0, 0, Con{t, Nil{}})), U32.add(g_next(st), 1)), kt("GCell", "", g_next(st), 0, Nil{})})
 
 # Module: src/core/graph.bend:291
 @unsafe
@@ -365,7 +466,7 @@ def g_cache(
   +id: U32,
   +t: KTerm,
 ) -> GState:
-  GState{g_put(g_heap(st), id, kt("GValue", "", 0, 0, Con{t, Nil{}})), g_next(st)}
+  g_with_heap(st, g_put(g_heap(st), id, kt("GValue", "", 0, 0, Con{t, Nil{}})), g_next(st))
 
 # Module: src/core/graph.bend:327
 @unsafe

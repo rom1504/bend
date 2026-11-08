@@ -18,6 +18,55 @@ from common import pin, verify, run, write_json, fresh_output, timeout
 from bindings import source_binding
 
 
+# Select the name contract from authenticated source bytes, never the current
+# checkout or an environment flag. Historical assets retain their old codec.
+ELABORATION_PROVIDERS = {
+    'bf495d64c03caa7a2558aaae5e172cd7743b9aa5470c4d33ad86634e23d81ffc': {
+        'upstream': '059266225b77c8ca256ac6b25ee5c21449bab151',
+        'nameCodec': 'bendtt-name-key-v1',
+        'bendSha256': '1d133151652b597a1a035c77c172475e6de096da37f3b9e3adc23c2f75bdfe49',
+        'kernelSha256': '83cdd36e66dcd2cabcc3d10556c9c874f8d823956feab88f8bb5a81473d51be3',
+    },
+    '9c45b3cec5b931be19036ac447587c7093f86fcf64b09d104f4b657b8555ac21': {
+        'upstream': '9a4223d577ba56a0cb53d1fd952d2b481c38930f',
+        'nameCodec': 'bendtt-canonical-key-v2',
+        'bendSha256': '7e4fc845734dd6faccd620409c6232b1f02b793a0628d9636cae300580ce3035',
+        'kernelSha256': '3e9b678d00a754fc6f4281584e470f7c677093b03eccfc244085afdee8e020a6',
+    },
+}
+
+
+def elaboration_provider(pins, declared_upstream=None):
+    provider = ELABORATION_PROVIDERS.get(pins['upstream-safe']['sha256'])
+    if (provider is None or pins['upstream-bend']['sha256'] != provider['bendSha256']
+            or pins['kernel-source']['sha256'] != provider['kernelSha256']
+            or declared_upstream not in (None, provider['upstream'])):
+        raise ValueError('Unrecognized or mixed law elaboration source provider')
+    return dict(provider, safeSource=pins['upstream-safe'], languageSource=pins['upstream-bend'])
+
+
+def canonical_name_tt(key):
+    """Exact Unicode code-point codec of upstream 9a4223d safe.ts:name_tt."""
+    return ''.join('__' if c == '_' else
+                   c if (c in 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.'
+                         and not (i == 0 and c in '.0123456789')) else
+                   '_'+format(ord(c), 'x')+'_' for i, c in enumerate(key))
+
+
+def law_source_keys(rows, entry):
+    """book_load's local canonical namespace is relative to the entry directory."""
+    entry = entry.resolve()
+    result = {}
+    for row in rows:
+        source = Path(row['snapshot']['file']).resolve()
+        namespace = '' if source == entry else Path(os.path.relpath(source, entry.parent)).as_posix()[:-5]
+        for name in re.findall(r'^law\s+([^:\s]+)', source.read_text(), re.M):
+            if name in result:
+                raise ValueError('Duplicate law source key: '+name)
+            result[name] = namespace+':'+name if namespace else name
+    return result
+
+
 def freeze_closure(source, out):
     rows = []
     def visit(file):
@@ -55,12 +104,20 @@ def validate_laws(rows, allow_empty=False):
     return names
 
 
-def bind_elaboration(text, names):
+def bind_elaboration(text, names, provider=None, source_keys=None):
     definitions = re.findall(r'^(?:opaque )?(\S+) :', text, re.M)
     opaque = re.findall(r'^opaque (\S+) :', text, re.M)
     bindings = {}
     for name in names:
-        matches = [x for x in definitions if re.search(r'(?:^|\.)'+re.escape(name)+r'(?:\.q[012v]+(?:_[0-9]+)?)?$', x)]
+        if provider is None or provider['nameCodec'] == 'bendtt-name-key-v1':
+            pattern = r'(?:^|\.)'+re.escape(name)+r'(?:\.q[012v]+(?:_[0-9]+)?)?$'
+        elif provider['nameCodec'] == 'bendtt-canonical-key-v2':
+            if source_keys is None or name not in source_keys:
+                raise ValueError('Missing canonical law source key: '+name)
+            pattern = '^'+re.escape(canonical_name_tt(source_keys[name]))+r'(?:\.q[012v]+(?:_[0-9]+)?)?$'
+        else:
+            raise ValueError('Unknown law name codec')
+        matches = [x for x in definitions if re.search(pattern, x)]
         if not matches or any(x in opaque for x in matches):
             raise ValueError('Omitted or opaque law: '+name)
         bindings[name] = matches
@@ -90,6 +147,7 @@ def main():
     for key, filename in [('upstream-main','main.ts'),('upstream-bend','bend.ts'),('upstream-safe','safe.ts'),('base','base.bend')]:
         if paths[key] != front/filename:
             raise ValueError('Frontend assets must be one explicit coherent module directory')
+    provider = None if args.source_only else elaboration_provider(pins, assets.get('upstream'))
     if not args.source_only:
         kernel = paths['kernel-runner'].parent
         if paths['kernel-source'] != kernel/'BendTT.lean' or paths['kernel-olean'] != kernel/'BendTT.olean' or paths['kernel-runner'].name != 'Run.lean':
@@ -100,6 +158,7 @@ def main():
     report = dict(schema='bend-law-check-v1', complete=False, independentlyChecked=False,
                   preparedOnly=args.prepare_only, sourceOnly=args.source_only,
                   sourceBinding=binding, wholeCompilerProved=False, nativeOwnershipProved=False,
+                  elaborationProvider=provider,
                   scope='Actual extracted declarations under frozen value contracts' if binding else 'Standalone source closure; no production compiler binding claimed',
                   source=pin(source), inputs=[pin(args.assets), *pins.values(), pin(__file__), pin(HERE/'bindings.py'),
                                            pin(ROOT/'selfhost/tools/build/common.py'), pin(ROOT/'selfhost/tools/build/assets.py')], rows={})
@@ -108,6 +167,7 @@ def main():
         (out/'method.py').write_bytes(Path(__file__).read_bytes())
         report['sourceClosure'], entry = freeze_closure(source, out)
         report['lawNames'] = validate_laws(report['sourceClosure'],allow_empty=args.source_only)
+        report['lawSourceKeys'] = law_source_keys(report['sourceClosure'], entry)
         report['inputs'] += [r['origin'] for r in report['sourceClosure']] + [r['snapshot'] for r in report['sourceClosure']]
         env = dict(os.environ, BEND_NO_TELEMETRY='1')
         check = [str(paths['bun']), str(paths['upstream-main']), str(entry)]
@@ -139,7 +199,8 @@ def main():
             elif job['name']=='elaborate':
                 if stdout or stderr: raise ValueError('Unexpected elaboration diagnostic')
                 report['elaboration']=pin(tt)
-                report['definitions'],report['opaqueDefinitions'],report['lawBindings']=bind_elaboration(tt.read_text(),report['lawNames'])
+                report['definitions'],report['opaqueDefinitions'],report['lawBindings']=bind_elaboration(
+                    tt.read_text(),report['lawNames'],provider,report['lawSourceKeys'])
             elif job['name']=='kernel':
                 if stdout!='ALL PROOFS CHECK\n' or stderr: raise ValueError('Kernel rejected laws')
             elif not (stdout.startswith('SOME PROOFS FAIL\nIn phase67_false:') and 'expected: .left' in stdout and 'observed: .right' in stdout and not stderr):

@@ -1,0 +1,56 @@
+{
+  "qbe": {
+    "suite": "all",
+    "count": 64,
+    "cases": "all",
+    "scope": "Frozen 45 ordinary programs and all19 focused controls including3 native refusals"
+  },
+  "hosted-js-c": {
+    "suite": "focused",
+    "count": 18,
+    "cases": [
+      "nt-reverse",
+      "string-reverse-heldout",
+      "higher-order-capture",
+      "non-tail-list",
+      "arrays-io",
+      "lexer-scan",
+      "negative-type",
+      "negative-affine",
+      "pure-char",
+      "pure-string",
+      "pure-aggregate",
+      "u32-wide-wrap",
+      "u32-divmod",
+      "nat-native",
+      "f32-literal",
+      "f32-arithmetic",
+      "pure-u32",
+      "pure-f32"
+    ],
+    "scope": "16 positive programs and2 checked frontend refusals; foreign refusal has no independent hosted protocol oracle"
+  },
+  "public-native-c": {
+    "suite": "focused",
+    "count": 16,
+    "cases": [
+      "nt-reverse",
+      "string-reverse-heldout",
+      "higher-order-capture",
+      "non-tail-list",
+      "arrays-io",
+      "lexer-scan",
+      "pure-char",
+      "pure-string",
+      "pure-aggregate",
+      "u32-wide-wrap",
+      "u32-divmod",
+      "nat-native",
+      "f32-literal",
+      "f32-arithmetic",
+      "pure-u32",
+      "pure-f32"
+    ],
+    "scope": "16 positive programs; separate public-interface gate checks type/option/asset/publication refusal protocols"
+  }
+}

@@ -494,5 +494,62 @@
       "classification": "frozen independent challenge; provenance paths are historical data, not runtime imports"
     }
   ],
-  "supplementDerivation": "Two Phase97 independent frozen witnesses, exact expressions/expected full values as targeted-challenges.py; optional additions preserve original 226 IDs and observations."
+  "supplementDerivation": "Two Phase97 independent frozen witnesses, exact expressions/expected full values as targeted-challenges.py; optional additions preserve original 226 IDs and observations.",
+  "sourceUpdates": {
+    "kind": "compiler-law-source-updates",
+    "version": 1,
+    "scope": "Original rows remain the frozen extraction record. These explicit updates alone select subsequently checked maintained proof bytes.",
+    "rows": [
+      {
+        "id": "phase182-short-circuit-membership",
+        "path": "selfhost/proofs/compiler-laws/algebra/membership.bend",
+        "previous": {
+          "bytes": 2546,
+          "sha256": "df7096fac1a7d21529bf37f622eebc5762e247b5ee42364db8150c2ada86806a"
+        },
+        "current": {
+          "bytes": 3614,
+          "sha256": "3aa994980ab41b550f949a480441ebc87a7e0be63656dc4b0a2938a3ef65eea6"
+        },
+        "upstream": "9a4223d577ba56a0cb53d1fd952d2b481c38930f",
+        "reason": "Current Base List.contains defers its tail through List.any.if. Two Bool case proofs adapt singleton and append proof terms without changing any original theorem statement or quantity.",
+        "preservedLawStatements": {
+          "or_associative": {
+            "bytes": 128,
+            "sha256": "e4626998df5d5268728ae79594f8d250c20722798e0c81522007ae32eb00bcc2"
+          },
+          "or_idempotent": {
+            "bytes": 79,
+            "sha256": "6c2fb240b3a360b8e6e6a97ece018c249a8b2a987587be8dcd3a0297874f3040"
+          },
+          "or_right_identity": {
+            "bytes": 85,
+            "sha256": "eaa8146aa8259204a1549489444af7fbe4c1c9bfba5996af2b83dc8651b0b59b"
+          },
+          "contains_singleton": {
+            "bytes": 167,
+            "sha256": "e81de7cd19ed9b36fac778c891d18351cd2ef16cbbc39a0e0e2dd1f913e41db9"
+          },
+          "contains_append": {
+            "bytes": 266,
+            "sha256": "c7feb25c264cdc49f503de4ba2a7a73fcfd438b3e5983d78a40c5f9db4df52c1"
+          },
+          "contains_duplicate": {
+            "bytes": 204,
+            "sha256": "31923f62322b4c7eb9b86fab00303b4786ec47bc3bffee4d7ea571402997cfd9"
+          }
+        },
+        "addedSupportLaws": [
+          "or_matches_any_if",
+          "any_if_empty_tail"
+        ],
+        "proofReceipt": {
+          "file": "implementation/phase182/evidence/proof-algebra03.json",
+          "bytes": 27103,
+          "sha256": "c1d9b02b2b1cc6b615738f4ed42aba0754b32ba73f3bf2a976c9f866aa8e01ae"
+        },
+        "proofScope": "Standalone algebra closure: 23 nonopaque laws independently checked by the current kernel, with the false-law control rejected. No production compiler or native ownership theorem."
+      }
+    ]
+  }
 }

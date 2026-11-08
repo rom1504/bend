@@ -6975,3 +6975,27 @@ One bounded read-only agent audit; trials dispatched by software. Exact duplicat
 QBE hardlinks recover23.49MiB with all paths preserved. Selected source-map
 metadata reduces3,044,736→63,311 bytes without changing generated source. Keep
 actual admission plus complete-workload evidence as the next experiment gate.
+
+## Phase179 — complete checked self-build comparison with bendc
+
+[Report](../implementation/phase179/README.md) · [Metrics](../implementation/phase179/metrics.json) ·
+[Reproduce](../implementation/phase179/reproduce.md).
+
+Historical bendc's actual checked C/Clang CLI builds itself in69.470/68.098s;
+our Phase177 N1 builds its own Phase177 source in173.690/177.634s. Median
+ratio2.554×. Both use cached runtimes, fresh whole-program machine work, CPU3,
+one worker, GPU off, with warm filesystem allowed. Our prepared Base is reused;
+bendc checks its Base live. Different sources/IRs prevent an equal-work ratio.
+
+The old~9s result was C emission. Current bendc source-through-CC8.493s and
+Clang/link60.264s medians; our separate serial emission150.921s and machine
+replay13.937s. The compiler-to-different-IR ratio remains17.77×. This corrects
+the end-to-end comparison without explaining away our compiler execution cost.
+Serial diagnostic sum164.858s is a follow-up observation, not a paired policy
+speedup or a replacement for the repeated streaming-build cohort.
+
+All full IR products match independent references; repeated QBE assembly/object
+are exact. Rebuilt bendc re-emits the checked seed and our new N2 passes the
+frozen nt-reverse QBE/stdout check. No whole-ELF, full qualification, generated
+runtime-quality, ARM backend, proof, source change or installation claim.
+Nine guards/673.412s, no failures; exact evidence archived and verified.

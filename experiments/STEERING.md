@@ -1,4 +1,31 @@
-# Current frontier — Phase178 cleanup; product refactor rejected
+# Current measurement — Phase179 complete bendc/QBE self-build comparison
+
+[Report](../implementation/phase179/README.md) · [Metrics](../implementation/phase179/metrics.json).
+
+Actual checked own-source-to-executable medians: historical bendc/C68.784s,
+our Phase177 N1/QBE175.662s,2.554×. Two builds each, B/O/O/B, CPU3, fresh
+program artifacts, reusable runtime objects; filesystem caches not flushed.
+Our prepared Base is reused while bendc checks Base live. Different own sources
+(1.174MB versus3.175MB), language revisions and output abstractions prevent an
+equal-work or universal compiler-throughput interpretation.
+
+The old~9s bendc result excluded Clang. Its actual checked CLI now measures
+8.493s through source/check/emission and60.264s Clang/link medians. Our separate
+same-image/source emission takes150.921s (17.77× the different bendc workload);
+serial machine replay13.937s, including8.097s QBE. The large compiler-execution
+gap remains. Serial diagnostic sum164.858s is not a paired improvement against
+the streaming build. Do not subtract overlapped clocks or claim an ARM result.
+
+Both C products equal the independent seed; both complete QBE products equal
+the Phase175-generated oracle; repeated assembly/object agree. Rebuilt bendc
+re-emits its exact checked seed; our new N2 passes frozen QBE and stdout checks
+on nt-reverse. Bounded executable checks, no broad requalification/promotion.
+Nine sealed guards/673.412s, no failed jobs. No compiler or installed change.
+Phase178 remains the source frontier; installed Phase171 and reference images
+remain explicitly available. Investigate complete work rather than interpreting
+source size or different textual IR size as a causal speed ratio.
+
+# Current source frontier — Phase178 cleanup; product refactor rejected
 
 [Report](../implementation/phase178/README.md) · [Metrics](../implementation/phase178/metrics.json).
 

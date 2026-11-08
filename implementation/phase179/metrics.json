@@ -1,0 +1,123 @@
+{
+  "kind": "phase179-complete-checked-self-build-comparison",
+  "complete": true,
+  "scope": "Same operation, different compiler sources/IR languages. CPU3, one worker, GPU off, reusable runtime objects; filesystem caches not flushed. Ours reuses prepared Base; bendc checks Base live. Two full builds each, one separate serial diagnostic; no equal-work or universal throughput claim.",
+  "order": [
+    "bendc-build01",
+    "ours-build01",
+    "ours-build02",
+    "bendc-build02"
+  ],
+  "fullBuild": {
+    "bendcSeconds": [
+      69.47019400633872,
+      68.0984168779105
+    ],
+    "oursSeconds": [
+      173.68962753610685,
+      177.63432685192674
+    ],
+    "bendcMedianSeconds": 68.7843054421246,
+    "oursMedianSeconds": 175.6619771940168,
+    "oursOverBendc": 2.553808983966837
+  },
+  "bendc": {
+    "sourceThroughCaptureSeconds": [
+      8.499738587066531,
+      8.487098176963627
+    ],
+    "sourceThroughCaptureMedian": 8.49341838201508,
+    "clangAndLinkSeconds": [
+      60.94385529216379,
+      59.58476990181953
+    ],
+    "clangAndLinkMedian": 60.26431259699166,
+    "captureCopySeconds": [
+      0.001848347019404173,
+      0.00188527163118124
+    ],
+    "runtimeAcquisitionSeconds": 0.9666135972365737,
+    "ir": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase179/bendc-build01/program.c",
+      "bytes": 2802777,
+      "sha256": "039673e7cd0a3f8534b30b44af6256b1e957e473814a6337b43e4ba687e90db2"
+    },
+    "binary": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase179/bendc-build01/bendc",
+      "bytes": 3169648,
+      "sha256": "a8e97d62d8cdb7aefd13ecb7c78cadc257075ed95d919d3cab2f386b608b6c09"
+    }
+  },
+  "ours": {
+    "overlappedCompilerAndQbeSeconds": [
+      167.72993704630062,
+      171.6223466861993
+    ],
+    "serialEmissionSeconds": 150.92104071890935,
+    "serialEmissionCpuSeconds": 150.81026,
+    "serialMachineWallSeconds": 13.93744572903961,
+    "serialMachineStages": {
+      "qbe": 8.096549198031425,
+      "assemble": 4.656592599116266,
+      "link": 0.24260204890742898
+    },
+    "ir": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase179/ours-emission01/program.ssa",
+      "bytes": 98163162,
+      "sha256": "b0d0a124ccfee1c50eb99fd6d524d73b7ee558d5f929f787e8c76dff0c55f78a"
+    },
+    "binary": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase179/ours-build01/program",
+      "bytes": 16129616,
+      "sha256": "862b08ddef073e95d59faa1eb58ec24057e9788e275cafeabe5e12b615f66d7e"
+    }
+  },
+  "compilerToDifferentIRRatio": 17.769175369776505,
+  "validation": {
+    "bendcSeedExact": true,
+    "oursFullQbeExact": true,
+    "oursRepeatedAssemblyObjectExact": true,
+    "rebuiltBendcSeedExact": true,
+    "rebuiltOursQbeAndStdoutExact": true,
+    "rebuiltBendcEmissionSeconds": 9.018385502975434,
+    "scope": "Bounded executable checks, not a new broad qualification or installed promotion."
+  },
+  "receipts": [
+    {
+      "path": "selfhost/build/phase179/bendc-build01/report.json",
+      "sha256": "0ca3bccbbfb25ab5cab5be08fb2525d55cf01555b871fc762bd9eb08c4a44163"
+    },
+    {
+      "path": "selfhost/build/phase179/bendc-build02/report.json",
+      "sha256": "721ca98fc137c849de9cbe9edfe5438747afadaaf9c10b062e2ff74a61681890"
+    },
+    {
+      "path": "selfhost/build/phase179/ours-build01/report.json",
+      "sha256": "4cdd259d20016d1c71ac11cf6615ed34de9c1d68a790cc020cf6c364b6e28ae7"
+    },
+    {
+      "path": "selfhost/build/phase179/ours-build02/report.json",
+      "sha256": "f98296cc5b474925ab9a9f0b42294d3b23eade65d1d4117c9a62cb985ed34b45"
+    },
+    {
+      "path": "selfhost/build/phase179/ours-emission01/report.json",
+      "sha256": "8c4ac1a17755903a25068f6784fa71bb49c2c5d759a077ca0917f4778efe62cd"
+    },
+    {
+      "path": "selfhost/build/phase179/ours-machine01/report.json",
+      "sha256": "1a62cabaaaf35f65d95cb8230950b88d187aeb5ba18ee4f16c13e64b9d33a771"
+    },
+    {
+      "path": "selfhost/build/phase179/bendc-rebuilt-check01/report.json",
+      "sha256": "32cd907ad38b2cdf5fb82ba9609f2fa3b2e47ca676db31761f2bbf55f901b1d0"
+    },
+    {
+      "path": "selfhost/build/phase179/ours-rebuilt-check01/report.json",
+      "sha256": "a034e5729ae5356923fc27d0a6f1abad1f34097aa9951f72268fe05969e36e79"
+    },
+    {
+      "path": "selfhost/build/phase179/bendc-assets01/report.json",
+      "sha256": "978d506bd5c4eb8e24c31eb8f99d87e35f21b708a71c9aa7d6581a860e194502"
+    }
+  ]
+}

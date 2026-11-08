@@ -26,7 +26,10 @@ native executable and is not silently substituted.
 Run two observations each in bendc/ours/ours/bendc order if the first pair passes.
 Separate compiler work from machine construction where measurable. Our streaming
 compiler/QBE intervals overlap; report them honestly instead of subtracting an
-invented pure compiler duration. A serial diagnostic is optional only if needed.
+invented pure compiler duration. The first bendc build shows Clang dominates its
+total, so one separate serial QBE emission/machine replay is justified: measure
+our actual compiler-only request, then construct that exact IR. Keep this outside
+the repeated pipelined build cohort; do not infer its components by subtraction.
 
 Check each bendc C product against the complete historical seed and each QBE
 product against its existing oracle. After timing, execute one rebuilt compiler

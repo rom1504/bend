@@ -21,7 +21,7 @@ def main():
     if ARCHIVE.exists() or INDEX.exists():
         raise ValueError('Evidence outputs must be fresh')
     roots = [BUILD, ROOT / 'selfhost/build-retention/phase181']
-    suffixes = {'.json', '.jsonl', '.txt', '.log', '.bend', '.mjs', '.py', '.c', '.h', '.inc', '.stdout', '.stderr', '.expected'}
+    suffixes = {'.json', '.jsonl', '.txt', '.log', '.bend', '.mjs', '.py', '.c', '.h', '.inc', '.md', '.stdout', '.stderr', '.expected'}
     names = {'stdout', 'stderr', 'compiler.stderr', 'qbe.stderr', 'qbe.stdout'}
     rows = []
     excluded = []

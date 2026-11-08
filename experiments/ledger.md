@@ -7023,3 +7023,33 @@ The durable project handoff records a closed decision and named remaining
 comparison/reachability/erasure list boundaries. A successor must retire measured
 complete work rather than simply add more compact constructors. Fifteen guarded
 jobs299.223 target seconds; five source failures8.105s; evidence sealed/verified.
+
+## Phase181 — experimental Bend-written AMD64 backend and native reproduction
+
+[Report](../implementation/phase181/README.md) · [Metrics](../implementation/phase181/metrics.json) ·
+[Backend guide](../docs/self_hosted/x86-backend.md).
+
+Eight Bend modules/1,192 lines emit SysV assembly from the actual verified
+native operations, preserving private workers, runtime dispatch and data ABI.
+Four fixed register homes and direct argument placement improve the initial
+stack baseline; tail assignments retain parallel snapshots. Source checking,
+17 ABI functions,10 hygiene observations and nine source/output cases pass.
+The audit fixed hidden-local collisions without weakening semantic admission.
+
+The1,415,281-byte experimental native entry reproduces through QBE-built X0,
+assembly-built X1 and X2. Assembly/object bytes and loaded ELF sections agree;
+only the non-loaded symbol table's object path differs. Both native generations
+pass closure, aggregate and100001-loop smoke controls. No installed promotion,
+broad45-input campaign or independent end-to-end proof claim.
+
+The selected checker is2.062× QBE time (17.1355/8.310s medians). Identical-source
+compiler self-emission is2.007× (217.811/108.510s); complete builds226.417/117.811s.
+These are experimental-entry builds, not improvements against historical full
+production timings. Existing QBE late tag/borrow/constructor lowering is missing
+from x86; static hot-symbol counts pinpoint reusable structured expansions.
+Next restore those before broader register allocation or direct ELF work.
+
+The combined hosted acquisition hit the2GiB guard; small checked emitter APIs
+plus authenticated semantic preparation avoided raising the ceiling. Failed
+source/fixture/extraction attempts are retained with all exact receipts and
+bounded machine audits. Cost/retention accounting is sealed in the evidence index.

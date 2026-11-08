@@ -1,4 +1,34 @@
-# Latest decision — Phase180 compact App overlay rejected
+# Latest decision — Phase181 assembly backend self-reproduces; retain as experimental
+
+[Report](../implementation/phase181/README.md) · [Metrics](../implementation/phase181/metrics.json) ·
+[Backend guide](../docs/self_hosted/x86-backend.md) ·
+[Project handoff](../docs/self_hosted/projects/x86-backend/STATUS.md).
+
+The Bend-written AMD64 SysV backend consumes the verified native program and
+emits assembly without a QBE machine stage. Eight modules/1,192 lines; existing
+runtime, assembler and linker retained. Production manifest/assets/installation
+unchanged. Source check,17 machine functions,10 hygiene observations, nine
+QBE/literal source comparisons and three smoke cases on each native generation pass.
+
+The complete experimental x86 entry closure (1,415,281 bytes, not the full
+production multi-target profile) builds through X0(QBE-built)→X1→X2. Assembly
+and object files are identical; all loaded ELF sections match. Only the
+non-loaded symbol-table object path differs. This is bounded reproduction,
+not broad target qualification or a theorem.
+
+Generated execution is slower: same-source compiler self-emission108.510→217.811s
+(2.007×), total assembly builds117.811→226.417s. Paired real parser/checker
+8.310→17.1355s (2.062×). Do not compare the smaller experimental entry build
+with historical175–180s production source builds and claim a speedup.
+
+Machine inspection identifies missing late QBE tag extraction, guarded borrowed
+field loads and specialized take/constructor calls, beyond ordinary register
+allocation. Next test existing structured `p112a_expand` before frame placement,
+then `p128bf` guarded fields with original fallback obligations. Prefer a cheap
+checker transfer gate before another full native acquisition. Defer direct ELF
+objects and promotion; assembler removal cannot fix2× generated execution.
+
+## Prior decision — Phase180 compact App overlay rejected
 
 [Report](../implementation/phase180/README.md) · [Metrics](../implementation/phase180/metrics.json) ·
 [Authoritative project handoff](../docs/self_hosted/projects/compact-frontend/STATUS.md).

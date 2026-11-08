@@ -1,0 +1,543 @@
+{
+  "kind": "phase181-results",
+  "complete": true,
+  "compilerSource": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase181/native-source02/compiler.bend",
+    "bytes": 1415281,
+    "sha256": "6d9408c2467f4d19731271569a501b94927556037605e11af1d48dce5e775366"
+  },
+  "sourceCheck": "selfhost/build/phase181/native-check02/report.json",
+  "identicalSourceReplay": "selfhost/build/phase181/native-source03/manifest.json",
+  "scope": "Experimental x86-only compiler entry closure, not the complete production multi-target source or an installed release. Prepared Base, CPU3, one worker, GPU off. No new BendTT proof or broad 45-program qualification.",
+  "checkerInitial": [
+    {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/baseline-source03/compiler.bend",
+        "bytes": 656302,
+        "sha256": "351ad0e69554e5b12cf8367d5cdde648ab5a1787825614e23158196f5d0e851b"
+      },
+      "medians": {
+        "baseline": {
+          "seconds": 8.271040975349024,
+          "frontendSeconds": 7.923,
+          "baseSeconds": 0.212,
+          "observationSeconds": 0.108
+        },
+        "candidate": {
+          "seconds": 19.61475847265683,
+          "frontendSeconds": 18.7425,
+          "baseSeconds": 0.5315000000000001,
+          "observationSeconds": 0.3125
+        }
+      },
+      "wholeProcessRatio": 2.3714981622164095,
+      "frontendRatio": 2.365581219235138
+    }
+  ],
+  "checkerSelected": [
+    {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/baseline-source03/compiler.bend",
+        "bytes": 656302,
+        "sha256": "351ad0e69554e5b12cf8367d5cdde648ab5a1787825614e23158196f5d0e851b"
+      },
+      "medians": {
+        "baseline": {
+          "seconds": 8.672322020400316,
+          "frontendSeconds": 8.31,
+          "baseSeconds": 0.2205,
+          "observationSeconds": 0.1115
+        },
+        "candidate": {
+          "seconds": 17.91068760654889,
+          "frontendSeconds": 17.1355,
+          "baseSeconds": 0.472,
+          "observationSeconds": 0.275
+        }
+      },
+      "wholeProcessRatio": 2.0652701277024454,
+      "frontendRatio": 2.0620336943441635
+    }
+  ],
+  "frontendBuilds": {
+    "frontend-x86-build01": {
+      "receipt": "selfhost/build/phase181/frontend-x86-build01/report.json",
+      "complete": true,
+      "buildSeconds": 55.24524412723258,
+      "stages": {
+        "emit": 50.50289979437366,
+        "assemble": 4.1667611063458025,
+        "link": 0.11602737009525299
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase181/frontend-x86-build01/program",
+        "bytes": 13246320,
+        "sha256": "2f8efd449c76775a76e12d8972bb1e37d58e60c2377bb1daa9ecd160e235f326"
+      },
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase181/frontend-x86-build01/program.s",
+        "bytes": 58048566,
+        "sha256": "205642f06aca18ed0bc04ccb0e3eb450d2f5ac199aec6f1047eff1d99d4f23f0"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase180/front-base-source01/compiler.bend",
+        "bytes": 653368,
+        "sha256": "204dca8fd19eeeb8b147e1cad0a719d230867555cd79f463823f4778c3839525"
+      }
+    },
+    "frontend-x86-build02": {
+      "receipt": "selfhost/build/phase181/frontend-x86-build02/report.json",
+      "complete": true,
+      "buildSeconds": 51.60208376776427,
+      "stages": {
+        "emit": 47.77848453912884,
+        "assemble": 3.294190200045705,
+        "link": 0.10825035301968455
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase181/frontend-x86-build02/program",
+        "bytes": 11108208,
+        "sha256": "40b41c951dae5b6327376d98c27254fc94716f247984bf251fbf8d61412515ca"
+      },
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase181/frontend-x86-build02/program.s",
+        "bytes": 50242774,
+        "sha256": "4e2060212806d1c41cdf0ea29349532c285e755810049a507460a2c6e61f40cc"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase180/front-base-source01/compiler.bend",
+        "bytes": 653368,
+        "sha256": "204dca8fd19eeeb8b147e1cad0a719d230867555cd79f463823f4778c3839525"
+      }
+    }
+  },
+  "nativeCompiler": {
+    "qbeBuiltSeed": {
+      "receipt": "selfhost/build/phase181/native-build02/report.json",
+      "complete": true,
+      "buildSeconds": 119.56484280666336,
+      "stages": {
+        "assemble": 3.5185419716872275,
+        "link": 0.1832950790412724
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase181/native-build02/program",
+        "bytes": 12799552,
+        "sha256": "2c925efe387f4a3d6308a251d031b9b6578fe3530a7358fa78ca73aed3334739"
+      },
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase181/native-build02/program.s",
+        "bytes": 58465771,
+        "sha256": "2f3f43f91c4e7fad36f83976f5c048c6cbbcd6a5499ae9f3e7e6d52ba534882e"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase181/native-source03/compiler.bend",
+        "bytes": 1415281,
+        "sha256": "6d9408c2467f4d19731271569a501b94927556037605e11af1d48dce5e775366"
+      }
+    },
+    "firstAssemblyGeneration": {
+      "receipt": "selfhost/build/phase181/x86-n1/report.json",
+      "complete": true,
+      "buildSeconds": 117.8108368278481,
+      "stages": {
+        "emit": 108.50994797423482,
+        "assemble": 8.144503086805344,
+        "link": 0.23018937604501843
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase181/x86-n1/program",
+        "bytes": 24224120,
+        "sha256": "aa57051682bc431faa64405233ee75987b512ca0b07247a73b4ee709d951cc7c"
+      },
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase181/x86-n1/program.s",
+        "bytes": 110529328,
+        "sha256": "3fd887a9880af7029e99648469bf38c4c04ebb004882e1a623d276b874441950"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase181/native-source03/compiler.bend",
+        "bytes": 1415281,
+        "sha256": "6d9408c2467f4d19731271569a501b94927556037605e11af1d48dce5e775366"
+      }
+    },
+    "secondAssemblyGeneration": {
+      "receipt": "selfhost/build/phase181/x86-n2/report.json",
+      "complete": true,
+      "buildSeconds": 226.41730273794383,
+      "stages": {
+        "emit": 217.81085570715368,
+        "assemble": 7.533947018906474,
+        "link": 0.23751665512099862
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase181/x86-n2/program",
+        "bytes": 24224120,
+        "sha256": "585adb571b351dcd232f972b25b197946314586bdd93e9adf01ccd059e5ca891"
+      },
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase181/x86-n2/program.s",
+        "bytes": 110529328,
+        "sha256": "3fd887a9880af7029e99648469bf38c4c04ebb004882e1a623d276b874441950"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase181/native-source03/compiler.bend",
+        "bytes": 1415281,
+        "sha256": "6d9408c2467f4d19731271569a501b94927556037605e11af1d48dce5e775366"
+      }
+    },
+    "sameSourceCompilerEmissionRatio": 2.007289283364801,
+    "wholeBuildRatio": 1.9218716107483191,
+    "comparisonScope": "Identical compiler source executable and input, binding/runtime/output/tool policy; QBE-built executable versus assembly-built executable. One build each, no statistical interval."
+  },
+  "reproduction": {
+    "kind": "phase181-native-assembly-reproduction",
+    "complete": true,
+    "inputs": [
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase181/reproduction.py",
+        "bytes": 3162,
+        "sha256": "bedfcdcd7b884c82e0afc8063c61c3c5512a831837def9abeab3ba0b5d550e22"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase181/x86-n1/report.json",
+        "bytes": 8067,
+        "sha256": "82bc8f3d76324ee6ff3f7941cfb75bea12f9d3749b4ed3d202a28d6a5b851927"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase181/x86-n2/report.json",
+        "bytes": 8039,
+        "sha256": "c2810be8d25a204103fe478ac2d27890a6b57b35da80d75e29d5566206123769"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase181/native-source03/compiler.bend",
+        "bytes": 1415281,
+        "sha256": "6d9408c2467f4d19731271569a501b94927556037605e11af1d48dce5e775366"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase181/native-build02/program",
+        "bytes": 12799552,
+        "sha256": "2c925efe387f4a3d6308a251d031b9b6578fe3530a7358fa78ca73aed3334739"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase181/native-source03/base-binding.json",
+        "bytes": 1004,
+        "sha256": "6715b36229a84feb017b27d91479f84d2e4b020730928d76d96047aea93ab2ed"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase181/x86-n1/program.s",
+        "bytes": 110529328,
+        "sha256": "3fd887a9880af7029e99648469bf38c4c04ebb004882e1a623d276b874441950"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase181/x86-n1/program.o",
+        "bytes": 31132416,
+        "sha256": "1da27fa07c048e8a84bed970911ba42c209e71c9eb62d90ffa09d533245df873"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase181/x86-n1/program",
+        "bytes": 24224120,
+        "sha256": "aa57051682bc431faa64405233ee75987b512ca0b07247a73b4ee709d951cc7c"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+        "bytes": 119096,
+        "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase181/native-source03/compiler.bend",
+        "bytes": 1415281,
+        "sha256": "6d9408c2467f4d19731271569a501b94927556037605e11af1d48dce5e775366"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase181/x86-n1/program",
+        "bytes": 24224120,
+        "sha256": "aa57051682bc431faa64405233ee75987b512ca0b07247a73b4ee709d951cc7c"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase181/native-source03/base-binding.json",
+        "bytes": 1004,
+        "sha256": "6715b36229a84feb017b27d91479f84d2e4b020730928d76d96047aea93ab2ed"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase181/x86-n2/program.s",
+        "bytes": 110529328,
+        "sha256": "3fd887a9880af7029e99648469bf38c4c04ebb004882e1a623d276b874441950"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase181/x86-n2/program.o",
+        "bytes": 31132416,
+        "sha256": "1da27fa07c048e8a84bed970911ba42c209e71c9eb62d90ffa09d533245df873"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase181/x86-n2/program",
+        "bytes": 24224120,
+        "sha256": "585adb571b351dcd232f972b25b197946314586bdd93e9adf01ccd059e5ca891"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/native/qbe-runtime.o",
+        "bytes": 119096,
+        "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+      }
+    ],
+    "scope": "Consecutive native assembly generations on the same source, binding, runtime and machine toolchain. Byte equality is bootstrap consistency, not semantic equivalence to an independent implementation or proof.",
+    "identical": {
+      "assembly": true,
+      "object": true,
+      "binary": false
+    },
+    "sections": [
+      {
+        "name": "",
+        "allocated": false,
+        "equal": true,
+        "bytes": 0,
+        "firstSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "secondSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": ".interp",
+        "allocated": true,
+        "equal": true,
+        "bytes": 28,
+        "firstSha256": "9097c98ea70f6f3b01d50145eb72bf55ad1f4e9713bccf27bd6405d6254eed00",
+        "secondSha256": "9097c98ea70f6f3b01d50145eb72bf55ad1f4e9713bccf27bd6405d6254eed00"
+      },
+      {
+        "name": ".note.gnu.build-id",
+        "allocated": true,
+        "equal": true,
+        "bytes": 36,
+        "firstSha256": "2e527b10703f1833b89ffbbd42925c6a7c2cb5bc88bea6c807786d10c677116c",
+        "secondSha256": "2e527b10703f1833b89ffbbd42925c6a7c2cb5bc88bea6c807786d10c677116c"
+      },
+      {
+        "name": ".note.ABI-tag",
+        "allocated": true,
+        "equal": true,
+        "bytes": 32,
+        "firstSha256": "6e48317ad93a8ac2dc04321465ede06d1274543fc8ab172e68171a9d684bb313",
+        "secondSha256": "6e48317ad93a8ac2dc04321465ede06d1274543fc8ab172e68171a9d684bb313"
+      },
+      {
+        "name": ".gnu.hash",
+        "allocated": true,
+        "equal": true,
+        "bytes": 40,
+        "firstSha256": "1e07266d7e63a099c6812a5d765df520996751dae9de863b37c26ff799d9e244",
+        "secondSha256": "1e07266d7e63a099c6812a5d765df520996751dae9de863b37c26ff799d9e244"
+      },
+      {
+        "name": ".dynsym",
+        "allocated": true,
+        "equal": true,
+        "bytes": 1968,
+        "firstSha256": "78f2525a2c779ce8a8797ad0f9d5a93a2c555a944737fd0e776b8ed63d354ff6",
+        "secondSha256": "78f2525a2c779ce8a8797ad0f9d5a93a2c555a944737fd0e776b8ed63d354ff6"
+      },
+      {
+        "name": ".dynstr",
+        "allocated": true,
+        "equal": true,
+        "bytes": 736,
+        "firstSha256": "26f261d9ac5f55ef2015a92e7bc5aa06697258fb9517b0dea8360f12102d1374",
+        "secondSha256": "26f261d9ac5f55ef2015a92e7bc5aa06697258fb9517b0dea8360f12102d1374"
+      },
+      {
+        "name": ".gnu.version",
+        "allocated": true,
+        "equal": true,
+        "bytes": 164,
+        "firstSha256": "bdb6ccceada494c98d58bd9113814d9709b546fcd4411f2d0e73ce6624bb0aed",
+        "secondSha256": "bdb6ccceada494c98d58bd9113814d9709b546fcd4411f2d0e73ce6624bb0aed"
+      },
+      {
+        "name": ".gnu.version_r",
+        "allocated": true,
+        "equal": true,
+        "bytes": 208,
+        "firstSha256": "ccf40c553239a1956a7d0b1782c03225a2e87bce609f750a9d413415d9e78358",
+        "secondSha256": "ccf40c553239a1956a7d0b1782c03225a2e87bce609f750a9d413415d9e78358"
+      },
+      {
+        "name": ".rela.dyn",
+        "allocated": true,
+        "equal": true,
+        "bytes": 96,
+        "firstSha256": "a37a8240712707b783eb609eef7c7cdbc73c04e7fb6dce0714ff8eb95816174c",
+        "secondSha256": "a37a8240712707b783eb609eef7c7cdbc73c04e7fb6dce0714ff8eb95816174c"
+      },
+      {
+        "name": ".rela.plt",
+        "allocated": true,
+        "equal": true,
+        "bytes": 1848,
+        "firstSha256": "3b2fa670b8bc1563bfeb6d143748f6688cd2752efc79770abbeacf5df40bdc40",
+        "secondSha256": "3b2fa670b8bc1563bfeb6d143748f6688cd2752efc79770abbeacf5df40bdc40"
+      },
+      {
+        "name": ".init",
+        "allocated": true,
+        "equal": true,
+        "bytes": 23,
+        "firstSha256": "7701440ad97cbbd577ea882395decf617013d82a1dc0aa7229fd8bf08e367555",
+        "secondSha256": "7701440ad97cbbd577ea882395decf617013d82a1dc0aa7229fd8bf08e367555"
+      },
+      {
+        "name": ".plt",
+        "allocated": true,
+        "equal": true,
+        "bytes": 1248,
+        "firstSha256": "917255adb5423b74283e64aab9295f1dc0142b70718bf61de807578dd31b15de",
+        "secondSha256": "917255adb5423b74283e64aab9295f1dc0142b70718bf61de807578dd31b15de"
+      },
+      {
+        "name": ".text",
+        "allocated": true,
+        "equal": true,
+        "bytes": 20006833,
+        "firstSha256": "a9ea1b50cb7b7c3b9f1e477c1e7605f376244addfa9bb868db8be6ce02723ae6",
+        "secondSha256": "a9ea1b50cb7b7c3b9f1e477c1e7605f376244addfa9bb868db8be6ce02723ae6"
+      },
+      {
+        "name": ".fini",
+        "allocated": true,
+        "equal": true,
+        "bytes": 9,
+        "firstSha256": "66e6f54550612182b4ad78f30b140dd08318b968db3878de2db65fef87dc04d7",
+        "secondSha256": "66e6f54550612182b4ad78f30b140dd08318b968db3878de2db65fef87dc04d7"
+      },
+      {
+        "name": ".rodata",
+        "allocated": true,
+        "equal": true,
+        "bytes": 5048,
+        "firstSha256": "f90002feea9a22cc6df959118ef5a02b92b9f1f2651caadea0a7285f245ef2bf",
+        "secondSha256": "f90002feea9a22cc6df959118ef5a02b92b9f1f2651caadea0a7285f245ef2bf"
+      },
+      {
+        "name": ".eh_frame_hdr",
+        "allocated": true,
+        "equal": true,
+        "bytes": 1524,
+        "firstSha256": "920194b6c6542ea48d988f78febc2501aeabbbe713754f4f16524602041431c7",
+        "secondSha256": "920194b6c6542ea48d988f78febc2501aeabbbe713754f4f16524602041431c7"
+      },
+      {
+        "name": ".eh_frame",
+        "allocated": true,
+        "equal": true,
+        "bytes": 9096,
+        "firstSha256": "24499a7c0376f726f84dcb1ee217ec4ce415db9568f18d0f33de5368c5abd646",
+        "secondSha256": "24499a7c0376f726f84dcb1ee217ec4ce415db9568f18d0f33de5368c5abd646"
+      },
+      {
+        "name": ".init_array",
+        "allocated": true,
+        "equal": true,
+        "bytes": 8,
+        "firstSha256": "3df0d2e1e41e8d466a2219aee30ea47e66a170fd91fd1804b8dffe2f6d2a28bb",
+        "secondSha256": "3df0d2e1e41e8d466a2219aee30ea47e66a170fd91fd1804b8dffe2f6d2a28bb"
+      },
+      {
+        "name": ".fini_array",
+        "allocated": true,
+        "equal": true,
+        "bytes": 8,
+        "firstSha256": "5ba24af45a1f56ca3044c12f8b4c2eec22cf0cf0ac791c49c79bc151c27e985e",
+        "secondSha256": "5ba24af45a1f56ca3044c12f8b4c2eec22cf0cf0ac791c49c79bc151c27e985e"
+      },
+      {
+        "name": ".data.rel.ro",
+        "allocated": true,
+        "equal": true,
+        "bytes": 240,
+        "firstSha256": "b2a16eead7074c4b7e89257d76330e5d5e11abc0f0d783c28e746f01b81dbf29",
+        "secondSha256": "b2a16eead7074c4b7e89257d76330e5d5e11abc0f0d783c28e746f01b81dbf29"
+      },
+      {
+        "name": ".dynamic",
+        "allocated": true,
+        "equal": true,
+        "bytes": 496,
+        "firstSha256": "1daf300e1c66c049a5d537707ad96a0aa982218ec17e2f36dab2a0ed3b7cfeee",
+        "secondSha256": "1daf300e1c66c049a5d537707ad96a0aa982218ec17e2f36dab2a0ed3b7cfeee"
+      },
+      {
+        "name": ".got",
+        "allocated": true,
+        "equal": true,
+        "bytes": 16,
+        "firstSha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+        "secondSha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb"
+      },
+      {
+        "name": ".got.plt",
+        "allocated": true,
+        "equal": true,
+        "bytes": 640,
+        "firstSha256": "a5704d3199719ca6c706731ba1f107f2e8902da45ad2c25b19223d3efc5cd57c",
+        "secondSha256": "a5704d3199719ca6c706731ba1f107f2e8902da45ad2c25b19223d3efc5cd57c"
+      },
+      {
+        "name": ".data",
+        "allocated": true,
+        "equal": true,
+        "bytes": 756248,
+        "firstSha256": "b90238793ca3be6a0d6e3a586a41dad2dc1e87e0c81bdb767bc61b1a766094ac",
+        "secondSha256": "b90238793ca3be6a0d6e3a586a41dad2dc1e87e0c81bdb767bc61b1a766094ac"
+      },
+      {
+        "name": ".comment",
+        "allocated": false,
+        "equal": true,
+        "bytes": 39,
+        "firstSha256": "b0b5eb242adf04205862f7138af0b804dae204bde28316e127beb1b56c0f44d3",
+        "secondSha256": "b0b5eb242adf04205862f7138af0b804dae204bde28316e127beb1b56c0f44d3"
+      },
+      {
+        "name": ".symtab",
+        "allocated": false,
+        "equal": true,
+        "bytes": 975528,
+        "firstSha256": "bbbad67138b0806663ca72bfb43c12a12b5219245bdd1c5a2b5864c2accefb0f",
+        "secondSha256": "bbbad67138b0806663ca72bfb43c12a12b5219245bdd1c5a2b5864c2accefb0f"
+      },
+      {
+        "name": ".strtab",
+        "allocated": false,
+        "equal": false,
+        "bytes": 2451835,
+        "firstSha256": "1ba272896f902677d1a43045b52b915dbe40d12d0457a56b667d4b2195c57ef6",
+        "secondSha256": "cd01e06530c2e534fdc6bc50290dbeea873d5719bd70b9c69cc507382513a249"
+      },
+      {
+        "name": ".shstrtab",
+        "allocated": false,
+        "equal": true,
+        "bytes": 272,
+        "firstSha256": "ec7a4c125326423fbb9e0214be8027ea7700e0af344a5608b95417c9ed39fa87",
+        "secondSha256": "ec7a4c125326423fbb9e0214be8027ea7700e0af344a5608b95417c9ed39fa87"
+      }
+    ],
+    "allocatedSectionsIdentical": true,
+    "symbolStringsOnly": {
+      "first": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase181/x86-n1/program.o"
+      ],
+      "second": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase181/x86-n2/program.o"
+      ]
+    }
+  },
+  "controls": {
+    "machineFunctions": 17,
+    "hygieneObservations": 10,
+    "sourcePrograms": 9,
+    "firstNativeSmoke": 3,
+    "secondNativeSmoke": 3
+  },
+  "compilerModuleLines": 1192,
+  "productionChanged": false,
+  "installedChanged": false
+}

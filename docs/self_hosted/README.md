@@ -10,6 +10,7 @@ artifacts rather than additional editable compiler implementations.
 | Task | Guide or tool |
 | --- | --- |
 | Source, builds and actual N1/N2 reproduction | [Maintained workflow](workflow.md) · [build tools](../../selfhost/tools/build/) |
+| Experimental x86-64 assembly target | [Backend architecture and use](x86-backend.md) · [Project status](projects/x86-backend/STATUS.md) |
 | Compiler latency and generated JS/C/QBE speed | [Benchmark entry, catalogs and budgets](../../selfhost/tools/bench/README.md) |
 | Optional passes and development-build tradeoffs | [Bend optimization policies](optimization-policies.md) |
 | Prepared values across native selector expansion | [Semantic contract](prepared-constants.md) · [Phase152 evidence](../../implementation/phase152/README.md) |

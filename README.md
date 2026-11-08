@@ -41,6 +41,7 @@ to qualified references. See the report for exact inputs, timing scope and rollb
 | Task | Maintained entry |
 | --- | --- |
 | Assemble, request, build and bootstrap | [`selfhost/tools/build/`](selfhost/tools/build/) and [workflow](docs/self_hosted/workflow.md) |
+| Experimental Bend-written x86-64 assembly backend | [Architecture and use](docs/self_hosted/x86-backend.md) · [Phase181 evidence](implementation/phase181/README.md) |
 | Compiler latency and JS/C/QBE program speed | [`selfhost/tools/bench/`](selfhost/tools/bench/README.md), with explicit host/stage/target and20/60/300/600-second budgets |
 | Optional optimization cost and development-policy experiments | [Bend QBE policy switches](docs/self_hosted/optimization-policies.md) |
 | CPU, allocation, generated code and native stage analysis | [Profiling guide](docs/self_hosted/PROFILING.md), [`tools/profiler/`](selfhost/tools/profiler/README.md) and [benchmark diagnostics](selfhost/tools/bench/README.md#profiles-and-generated-code-inspection) |

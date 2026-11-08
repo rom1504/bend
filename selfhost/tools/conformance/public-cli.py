@@ -20,8 +20,12 @@ from common import changed_inputs, fresh_output, pin, require, run, verify, work
 CATALOG = Path(__file__).with_name('public-cli-catalog.json')
 
 
-def load_catalog(file=None):
-    catalog_file = Path(file or CATALOG).resolve(strict=True)
+def load_catalog(file=None, document=None):
+    declared = (document or {}).get('publicCliCatalog')
+    if not file and declared is not None:
+        catalog_file = Path(Q.bound(declared, document['_workspace'])['file'])
+    else:
+        catalog_file = Path(file or CATALOG).resolve(strict=True)
     catalog = json.loads(catalog_file.read_text())
     cases = catalog.get('cases')
     require(catalog.get('kind') == 'bend-public-cli-controls' and catalog.get('version') == 1
@@ -46,8 +50,8 @@ def main():
             'Public hosted CLI requires explicit --host js --target js --mode live')
     require(not args.source and not args.expected, 'Fixed catalog owns source/oracle')
     root = workspace(args.workspace)
-    catalog, catalog_file = load_catalog(args.catalog)
     document = assets.load_assets(args.assets, root)
+    catalog, catalog_file = load_catalog(args.catalog, document)
     require(document['upstream'] == catalog['upstream'], 'Catalog and asset upstream differ')
     first = copy.copy(args)
     first.source = root / catalog['cases'][0]['source']['file']

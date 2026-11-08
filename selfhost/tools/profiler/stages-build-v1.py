@@ -7,7 +7,7 @@ The caller owns root-lane compilation, independent output checks and qualificati
 import argparse,copy,json,sys
 from pathlib import Path
 sys.dont_write_bytecode=True
-from run import pin,verify,save
+from run import pin,verify,save,runtime_argument_convention,ARGUMENT_METHODS
 from stages_v1 import validate_spec,map_header,need,read
 
 def main():
@@ -16,6 +16,7 @@ def main():
  a=ap.parse_args();out=a.out.resolve();need(not out.exists(),'Fresh output required')
  spec=read(a.spec);owners=read(verify(spec['ownerMap']));validate_spec(spec,owners);program=verify(spec['programObject'])
  base=read(a.runtime_plan);sampler=read(a.sampler_build)
+ convention=runtime_argument_convention(base)
  need(base['schema']=='bend-native-profile-runtime-plan-v1' and base['complete'] and base['reverseExact'],'Authenticated reversible runtime plan required')
  need(sampler['complete'] and sampler['returncode']==0,'Successful sampler build required')
  for item in base['inputs']+base['outputs']+sampler['inputs']+sampler['snapshots']:verify(item)
@@ -46,8 +47,9 @@ def main():
  command=[s.replace(oldsource,str(out/'sample.c')).replace(oldheader,str(out/'unwind-table.h')) for s in command];command[command.index('-o')+1]=str(out/'sampler.so')
  need(str(out/'sample.c')in command and any(s=='-DBEND_PROFILE_UNWIND_TABLE="'+str(out/'unwind-table.h')+'"' for s in command),'Pinned CFI compile command missing')
  jobs=[dict(label='stage-ordinal-sampler',command=command),cc,link]
- inputs=[pin(__file__),pin(Path(__file__).with_name('stages_v1.py')),pin(runtime),pin(a.spec),spec['ownerMap'],spec['programObject'],spec['unwindTable'],pin(a.runtime_plan),pin(a.sampler_build),*base['inputs'],*base['outputs'],*sampler['inputs'],*sampler['snapshots']]
+ inputs=[pin(__file__),pin(Path(__file__).with_name('stages_v1.py')),pin(Path(__file__).with_name('run.py')),*map(pin,ARGUMENT_METHODS),pin(runtime),pin(a.spec),spec['ownerMap'],spec['programObject'],spec['unwindTable'],pin(a.runtime_plan),pin(a.sampler_build),*base['inputs'],*base['outputs'],*sampler['inputs'],*sampler['snapshots']]
  save(out/'stage-edits-v1.json',dict(runtime=[dict(original=x,diagnostic=y) for x,y in edits],sampler=dict(original=point,diagnostic=getter+point),signalHandlerUnchanged=True))
  plan=dict(schema='bend-native-profile-runtime-plan-v1',complete=True,compiled=False,executed=False,reverseExact=True,inputs=inputs,outputs=[pin(p) for p in out.iterdir() if p.is_file()],jobs=jobs,stageSpec=pin(a.spec),sidecarSchema='bend-native-stage-observations-v1',sidecarPath='BEND_SAMPLE_OUT + .stages-v1.json',scope='Versioned diagnostic only; signal handler and generated compiler object unchanged. Root must build, bind actual products into ordinary profiler manifest, and gate exact output/stage order on a small workload first.')
+ plan['runtimeArgumentConvention']=convention
  save(out/'plan.json',plan);print(json.dumps(dict(complete=True,targetsRun=False,plan=pin(out/'plan.json'))))
 if __name__=='__main__':main()

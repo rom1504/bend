@@ -16,6 +16,7 @@ import sys
 
 sys.dont_write_bytecode = True
 HERE = Path(__file__).resolve().parent
+from run import runtime_argument_convention, ARGUMENT_METHODS
 
 
 def pin(path):
@@ -103,6 +104,9 @@ def main():
     args = parser.parse_args()
     manifest_path = args.manifest.resolve()
     manifest = json.loads(manifest_path.read_text())
+    convention = runtime_argument_convention(manifest if 'runtimeArgumentConvention' in manifest else manifest['runtime'])
+    if 'runtimeArgumentConvention' in manifest['runtime'] and runtime_argument_convention(manifest['runtime']) != convention:
+        raise ValueError('Conflicting runtime argument conventions')
     runtime = verify(manifest['runtime'])
     headers = [verify(item) for item in manifest['headers']]
     original = runtime.read_bytes()
@@ -115,12 +119,14 @@ def main():
         raise ValueError('Manifest must pin exactly the runtime quoted headers')
     support = HERE / 'runtime-support.inc.c'
     support_bytes = support.read_bytes()
+    control_expectation = HERE / ('controls/runtime-control-argv-v1.expected.json'
+        if convention == 'bend-rts-v1' else 'controls/runtime-control.expected.json')
     extension_inputs, extension_outputs, extension = [], [], None
     if args.concat_v1:
         import concat_v1
         diagnostic, support_bytes, concat_edits = concat_v1.materialize(diagnostic, support_bytes)
         edits.extend(concat_edits)
-        extension_inputs = [pin(HERE / 'concat_v1.py'), pin(HERE / 'controls/runtime-control.expected.json')]
+        extension_inputs = [pin(HERE / 'concat_v1.py'), pin(control_expectation)]
         extension = dict(protocol='concat_v1', addedCounters=[name for _, name in concat_v1.COUNTERS],
                          positiveBranches='source-audited, not independently fixture-qualified')
     compiler = Path(shutil.which(manifest.get('compiler', 'gcc')) or '').resolve()
@@ -138,7 +144,7 @@ def main():
     (out / 'runtime.c').write_bytes(diagnostic)
     (out / support.name).write_bytes(support_bytes)
     if args.concat_v1:
-        expected = concat_v1.extend_expectation(json.loads((HERE / 'controls/runtime-control.expected.json').read_text()))
+        expected = concat_v1.extend_expectation(json.loads(control_expectation.read_text()))
         (out / 'expected-control.json').write_text(json.dumps(expected, indent=2) + '\n')
         extension_outputs.append(pin(out / 'expected-control.json'))
     for header in headers:
@@ -155,9 +161,10 @@ def main():
             '-o', str(out / 'program')]))
     report = dict(schema='bend-native-profile-runtime-plan-v1', complete=True,
         compiled=False, executed=False, reverseExact=True,
+        runtimeArgumentConvention=convention,
         inputs=[pin(manifest_path), pin(runtime), *[pin(x) for x in headers],
                 pin(support), pin(__file__), pin(compiler), pin(linker),
-                *([pin(program)] if program else []), *extension_inputs],
+                *([pin(program)] if program else []), *extension_inputs, *map(pin, ARGUMENT_METHODS), pin(HERE/'run.py')],
         outputs=[pin(out / name) for name in ['runtime.c', support.name,
                  'method.py', 'edits.json', *header_names]] + extension_outputs, jobs=jobs,
         extension=extension,

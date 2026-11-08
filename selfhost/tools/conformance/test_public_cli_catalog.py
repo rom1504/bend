@@ -39,6 +39,15 @@ class PublicCliCatalog(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, 'case identity'):
                     P.load_catalog(file)
 
+    def test_asset_default_and_explicit_historical_catalog_are_distinct(self):
+        current = ROOT / 'selfhost/tests/phase182/public-cli-catalog.json'
+        document = dict(_workspace=ROOT, publicCliCatalog=P.pin(current))
+        self.assertEqual(P.load_catalog(document=document)[0]['upstream'], '9a4223d577ba56a0cb53d1fd952d2b481c38930f')
+        self.assertEqual(P.load_catalog(P.CATALOG, document)[0]['upstream'], P.Q.UPSTREAM)
+        document['publicCliCatalog'] = dict(document['publicCliCatalog'], sha256='0'*64)
+        with self.assertRaises(ValueError):
+            P.load_catalog(document=document)
+
 
 if __name__ == '__main__':
     unittest.main()

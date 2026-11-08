@@ -4,7 +4,7 @@ import argparse
 import json
 from pathlib import Path
 
-from run import pin, save, validate_argv0
+from run import pin, save, validate_argv0, runtime_argument_convention, ARGUMENT_METHODS
 
 
 def freeze(recipe, recipe_path):
@@ -13,7 +13,7 @@ def freeze(recipe, recipe_path):
         p = Path(value)
         return p.resolve() if p.is_absolute() else (cwd/p).resolve()
     result = dict(schema='bend-native-profile-workloads-v1', cwd=str(cwd),
-                  scope=recipe.get('scope'), inputs=[pin(recipe_path)], workloads=[])
+                  scope=recipe.get('scope'), inputs=[pin(recipe_path), *map(pin, ARGUMENT_METHODS)], workloads=[])
     for key in ('sampler', 'unwindTable'):
         if recipe.get(key):
             result[key] = pin(path(recipe[key]))
@@ -48,6 +48,8 @@ def freeze(recipe, recipe_path):
                 inputs=[pin(path(p)) for p in variant.get('inputs', [])])
             if 'argv0' in variant:
                 frozen_variant['argv0'] = validate_argv0(variant['argv0'])
+            if 'runtimeArgumentConvention' in variant:
+                frozen_variant['runtimeArgumentConvention'] = runtime_argument_convention(variant)
             row['variants'].append(frozen_variant)
         if not row['variants']:
             raise ValueError('Workload has no variants')

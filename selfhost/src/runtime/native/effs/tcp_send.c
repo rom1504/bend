@@ -24,7 +24,8 @@ static Term tcp_send_with(Env e, IoWork* w, IoPack more,
 }
 
 static Term tcp_send_more(Env e, IoWork* w) {
-  return tcp_send_with(e, w, tcp_send_more, io_str);
+  // Upstream 9a4223d: a partial UTF-8 send returns its exact unsent bytes.
+  return tcp_send_with(e, w, tcp_send_more, io_list);
 }
 
 #ifdef CID_TCP_SEND

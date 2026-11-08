@@ -1,6 +1,7 @@
 # Phase182 — upstream 2.0.40 migration
 
-**Migration in progress; full bootstrap chains and release qualification are
+**Migration in progress. Snapshot07 reproduces natively and passes the finite
+64-case QBE gate; the corrected snapshot08 chain and release qualification remain
 pending.** The maintained source now targets upstream
 `9a4223d577ba56a0cb53d1fd952d2b481c38930f`, replacing the previous active pin
 `059266225b77c8ca256ac6b25ee5c21449bab151`. The upstream merge is `6c6365e`; the checked compatibility port is `10ab239`.
@@ -15,19 +16,21 @@ promote the candidate or carry old performance results onto changed products.
 ## Current source and artifact identities
 
 The current assembled source is
-[`snapshot07/compiler.bend`](../../selfhost/build/phase182/snapshot07/compiler.bend),
-3,179,064 bytes and 8,509 mapped declarations, SHA256
-`f10b51e2e96692e871c6ca2af2a27252a02f4f0f1f499d12b45670a4c550320a`.
-Both current APIs were independently checked against the new upstream before
-emission; they are upstream-built **B1**, not self-emitted B2.
+[`snapshot08/compiler.bend`](../../selfhost/build/phase182/snapshot08/compiler.bend),
+3,179,190 bytes and 8,509 mapped declarations, SHA256
+`06dcc91b2df46978607b6dd50707aca3c8ddd59dd1a91fbf71a9e6b0ed61605c`.
+API06 independently checks this source against the new upstream before emission.
+The earlier native chain and JS self-emission bind snapshot07, 3,179,064 bytes,
+SHA256 `f10b51e2e96692e871c6ca2af2a27252a02f4f0f1f499d12b45670a4c550320a`;
+their results are not silently rebound to snapshot08.
 
 | Artifact | Bytes | SHA256 |
 | --- | ---: | --- |
 | New Base | 87,698 | `ff90fb27ed19d5c7a6165170f28ad81562bf345b9a9e6134e5c2e326beff9de4` |
-| [Typed API05](../../selfhost/build/phase182/typed-api05/report.json) | 3,370,049 | `f6c39365b663143bad18c7e7e9dea7fa10eab2b7c580e86004b391536b427084` |
-| [QBE API05](../../selfhost/build/phase182/qbe-api05/report.json) | 3,440,082 | `6cec5479551dc35a98f0add12b578bba416b07e7503aaaef2d033b7cb418a893` |
+| [Checked API06, snapshot08](../../selfhost/build/phase182/typed-api06/report.json) | 5,198,207 | `f5634ca05180c6aff6abb979e121012d288e17dea3a4eab58139072f2b76e71d` |
+| [QBE API05, snapshot07](../../selfhost/build/phase182/qbe-api05/report.json) | 3,440,082 | `6cec5479551dc35a98f0add12b578bba416b07e7503aaaef2d033b7cb418a893` |
 | [Runtime object02](../../selfhost/build/phase182/runtime-build02/report.json) | 125,264 | `67141c4505a0355901d857c4ba81dfc17559329e536818a843ce68615384d13e` |
-| [Prepared Base04, P130; snapshot07 binding](../../selfhost/build/phase182/base-carrier04/report.json) | 2,827,018 | `fe48f505b53ba4596040f2395d5727858784ea32489222c7141b6523d923e38a` |
+| [Prepared Base05, P130; snapshot08 binding](../../selfhost/build/phase182/base-carrier05/report.json) | 2,827,018 | `3b1d2d23ac05818fea2ee13442a02b6ef8f57eb6b4b1842851e8900238f539b9` |
 
 Base identity includes its canonical path under
 `selfhost/.bootstrap/upstream-phase182/bend2/base.bend`. Moving the same bytes
@@ -91,6 +94,13 @@ Maintained entry mains consume the new argv[0] convention. Bootstrap selection
 is explicit manifest data, so old reference checkouts and runtime bindings are
 not silently reinterpreted as current ones.
 
+Snapshot08 changes exactly one declaration relative to snapshot07:
+`no_effect_foreign_allowed` admits seven additional supported providers:
+`IO.args_bytes`, `File.open_bytes`, `File.read_line`, `File.read_bytes`,
+`File.read_at`, `File.write_bytes` and `File.write_at`. The existing
+`trusted && filled` conditions remain. This corrects an early source-admission
+omission; runtime files, primitive IDs and verifier conditions are unchanged.
+
 ## Completed gates and their limits
 
 | Evidence | Completed observation | Boundary |
@@ -112,10 +122,14 @@ Library controls compare independently emitted functions, host conversion,
 aggregate/constructor interchange and qualified exports; mere compilation does
 not stand in for this comparison.
 
-The native controls use one worker with GPU off. They are QBE-generated
-executables from a JS-hosted checked B1 compiler. They do not establish that a
-new native compiler generation executes the same requests correctly, nor do
-they constitute emitted-C backend qualification.
+Native-controls01/02 use QBE-generated executables from a JS-hosted checked B1.
+The later [native-controls03](../../selfhost/build/phase182/native-controls03/report.json)
+runs the actual snapshot07 native N2 compiler: seven of ten cases pass, including
+numeric, both arrays, Char output and valid Exit/Halt statuses. `argv`, `files`
+and `open-errors` are refused before executable construction with
+`early scalar source permission refused`. Snapshot08's seven-name admission
+change addresses that omission; its corrected native replay remains pending.
+All these controls use one worker with GPU off and do not qualify emitted C.
 
 The earlier broader frontend gate was incomplete. `frontend02` records 21 matching
 observations before its 2 GiB process-tree guard stops the candidate during
@@ -141,10 +155,10 @@ annotations disabled. `base-carrier.mjs` authenticates frame/API/Base/path and
 transports its complete graph into P88 and P130. The P130 transcode proves exact
 inverse byte identity; hashes are provenance bindings, not semantic proofs.
 
-[Base preparation03](../../selfhost/build/phase182/base-prepare03/report.json),
-[carrier03](../../selfhost/build/phase182/base-carrier03/report.json) and
-[verification03](../../selfhost/build/phase182/base-verify03/report.json) all
-complete for snapshot06/API04. The graph has 51,566 nodes and 945 strings. Verification compares every
+[Base preparation05](../../selfhost/build/phase182/base-prepare05/report.json),
+[carrier05](../../selfhost/build/phase182/base-carrier05/report.json) and
+[verification05](../../selfhost/build/phase182/base-verify05/report.json) all
+complete for snapshot08/API06. The graph has 51,566 nodes and 945 strings. Verification compares every
 prepared root and source identity across frame, fresh `p86_prepare`, P88 and P130
 `p88_cache_prepare`; both decoded canonical products are 1,277,476 bytes with
 SHA256 `f2e12bd3eb34a338d99868742907e13d5b25c5a6dacb5fd77bb62364a4afe612`.
@@ -152,11 +166,12 @@ Term ABI1, span ABI3, world version3, source interval 1..87700, aliases and read
 are checked explicitly. Native admission and actual request qualification remain
 separate gates.
 
-Snapshot07/API05 requires a fresh producer/cache binding; Base03 is not relabeled
-as its prepared artifact. The fresh [Base04](../../selfhost/build/phase182/base-verify04/report.json) completes that binding and repeats complete-value equality for snapshot07/API05. Preparation takes13.164s and verification12.695s; node/string counts and the complete graph remain unchanged.
-
-Preparation took 13.116s and hosted full-value verification 12.290s in these
-observations. These are setup/validation clocks, not compiler latency improvements.
+Earlier [Base03](../../selfhost/build/phase182/base-verify03/report.json) and
+[Base04](../../selfhost/build/phase182/base-verify04/report.json) retain their
+snapshot06/API04 and snapshot07/API05 bindings. Each source/API update receives
+a fresh receipt; unchanged graph values do not permit relabeling an old carrier.
+Base05 preparation took 13.181s and hosted full-value verification 12.905s.
+These are setup/validation clocks, not compiler latency improvements.
 The producer keeps every write under its fresh guard roots and never falls back
 to an older frame. The [build-tool guide](../../selfhost/tools/build/README.md#prepare-a-new-base-carrier)
 records the three commands and historical transport provenance.
@@ -191,20 +206,69 @@ records the three commands and historical transport provenance.
   Current kernel acceptance and the negative control are the proof evidence;
   an accepted compiler source is not substituted for them.
 
+## Full-image acquisition boundary
+
+The first hosted full-image attempt, [native-chain02](../../selfhost/build/phase182/native-chain02-guard/process.json), stopped at the4GiB process-tree limit after360.076s before emitting QBE. No native image or fixed-point result was produced. This is retained resource evidence, not a source rejection. The whole-process peak was4.005GiB with19.75GiB available memory remaining; the guard prevented an unbounded run.
+
+A native-only bridge is prepared by [native-bridge.py](../../selfhost/tests/phase182/native-bridge.py).
+It authenticates retained Phase175 N2 and ABI11101 runtime, keeps the new
+Base/prepared carrier, and changes only the transitional compiler's `main`
+argument handling. Other canonical source bytes stay exact, including the
+ABI11102 emitter. Independent
+[bridge source acceptance](../../selfhost/build/phase182/native-bridge-check01/report.json)
+and [N0 construction](../../selfhost/build/phase182/native-bridge-n001/report.json)
+pass; construction takes 184.975s. This N0 remains linked to its old runtime and
+uses legacy arguments. It is a transition tool, not an installed candidate.
+
+[Native-chain03](../../selfhost/build/phase182/native-chain03/report.json) completes
+N0 → N1 → N2 → Q3 on canonical snapshot07 in 536.379s. The emitted QBE reaches
+an exact fixed point; N1/N2 assembly and objects also match. Whole ELF files
+differ, and that raw mismatch remains recorded. The actual N2 then passes all
+64 independent complete-output cases in
+[qbe6401](../../selfhost/build/phase182/qbe6401/report.json), with zero failures or
+unsupported cases. That is finite single-worker QBE qualification, separate from
+the seven-of-ten new IO/intrinsic controls above. Neither receipt installs the
+compiler; snapshot08's corrected native-chain04 is still pending.
+
+JS self-emission attempt [js-b201](../../selfhost/build/phase182/js-b201-guard/process.json) reached emitted reachability but stopped at the300s deadline, with a2461MiB peak. The initial bound was too short relative to the historical319.747s Phase174 B2 acquisition. This is a retained interrupted attempt, not a pass or evidence of incorrect generated JavaScript.
+
+[JS-b202](../../selfhost/build/phase182/js-b202/report.json) subsequently completes
+snapshot07 B2 self-emission in 363.153s, producing a 4,993,341-byte API, SHA256
+`640eb6ec8d872a7f3042d79df22e2696d023bff798c7a783264e58c398f59da5`.
+It inherits the exact upstream source-check authority; `freshSelfCheck:false`
+does not claim another full check during that emission. This is an actual
+Bend-generated B2 artifact, but final snapshot08 B2/B3 emission, fresh B3 checking
+and complete equality remain pending. It supplies no new B2 request-speed or
+runtime-parity result.
+
+## Profiler compatibility controls
+
+The RTS-aware instrumentation preparation reverses exactly to the original
+runtime and the instrumented object builds successfully. Both
+[normal](../../selfhost/build/phase182/profiler-rts-controls01/normal/report.json)
+and [drop](../../selfhost/build/phase182/profiler-rts-controls01/drop/report.json)
+controls pass with counters off and on: disabled counters emit zero rows;
+enabled counters match every expected per-function row and preserve output.
+The drop control positively exercises one iterative drop traversal of two uniquely
+owned Tuple cells. This validates the bounded instrumentation hooks and current
+invocation contract, not all shared-reference paths, logical ancestry attribution,
+profiler overhead or a new compiler-performance profile.
+
 ## Five metrics and remaining work
 
 | Metric | Phase182 status at this checkpoint |
 | --- | --- |
 | Compiled-program speed | No fresh performance or parity claim. Finite output/ABI controls pass in the stated lanes; changed runtimes invalidate automatic inheritance of historical timings. |
-| B1 compilation speed | Checked current APIs exist. API05 acquisition times 11.669s/13.893s are build/setup observations, not a balanced compiler-request benchmark. |
-| B2 compilation speed | Pending genuine self-emitted generation and its independently identified requests. B1 timings do not stand in for B2. |
-| Conformance | Completed focused source, sharing, JS, native and algebra gates above; the three-way resource failure is fixed, the full23 frontend corpus also passes, while integration remains pending. |
-| Simplicity | Maintained recipe contains 218 Bend modules and five entry profiles. At this checkpoint those module files total 3,179,064 bytes/68,619 physical lines; runtime/host tools and generated assembled images are separate counts. No simplicity reduction is claimed. |
+| B1 compilation speed | Checked API06 exists; its 14.455s acquisition is a build/setup observation, not a balanced compiler-request benchmark. |
+| B2 compilation speed | Snapshot07 JS B2 exists after 363.153s self-emission. Final snapshot08 B2/B3 and request benchmarks remain pending; native reproduction has its own generation/target boundary. |
+| Conformance | Snapshot07 passes the full 23-case frontend and 64-case native QBE gates. New native IO controls expose three early refusals; snapshot08 fixes their admission list and awaits the corrected native replay. |
+| Simplicity | Maintained recipe contains 218 Bend modules and five entry profiles. At this checkpoint those module files total 3,179,190 bytes/68,619 physical lines; runtime/host tools and generated assembled images are separate counts. Snapshot08 adds seven allowed names in one declaration; no simplicity reduction is claimed. |
 
-Full native generation/reproduction, JS/C self-emission chains, current-source
-integration qualification, public CLI execution and any release promotion remain
-pending. Root will append their exact receipts and outcomes; no pending chain is
-implicitly marked complete by source acceptance or prepared-Base equality.
+Snapshot08 native-chain04 and its focused replay, final JS B2/B3, C/public CLI
+construction and execution, current-source integration qualification and release
+promotion remain pending. The installed selection is unchanged. Root will append
+their exact receipts and outcomes; snapshot07's reproduction and finite gates do
+not implicitly qualify the corrected source or another backend.
 
 QBE still supports one Bend heap mutator, one CPU worker and GPU off, with its
 pinned provider table rather than arbitrary C embedding/callbacks. C GPU/device

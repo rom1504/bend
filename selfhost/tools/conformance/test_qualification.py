@@ -99,6 +99,17 @@ class QualificationJudges(unittest.TestCase):
         with self.assertRaises(ValueError):
             Q.verify_hosted(emission, hosted, request_file)
 
+    def test_asset_default_catalog_is_hash_bound_and_explicit_override_survives(self):
+        original, _ = Q.load_catalog(argparse.Namespace())
+        current = dict(original, upstream='9'*40)
+        file = self.path / 'current-catalog.json'; file.write_text(json.dumps(current))
+        document = dict(_workspace=self.path, qualificationCatalog=Q.pin(file))
+        self.assertEqual(Q.load_catalog(argparse.Namespace(), document)[0]['upstream'], '9'*40)
+        self.assertEqual(Q.load_catalog(argparse.Namespace(catalog=Q.CATALOG), document)[0]['upstream'], Q.UPSTREAM)
+        file.write_text(json.dumps(dict(current, scope='changed')))
+        with self.assertRaises(ValueError):
+            Q.load_catalog(argparse.Namespace(), document)
+
 
 if __name__ == '__main__':
     unittest.main()

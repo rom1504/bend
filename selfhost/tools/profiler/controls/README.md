@@ -44,3 +44,28 @@ correctness, profile sample attribution, logical ancestry or runtime speed.
 Changed task/allocator semantics may require re-deriving this fixture's heap
 expectations. Preserve the old oracle and justify a new one from source;
 never update it merely to match an unexpected observed count.
+
+The versioned `runtime-control-argv-v1.c` and
+`runtime-drop-control-argv-v1.c` preserve those segment bodies and forward the
+actual caller `argc`/`argv` to `p111_rt_main`. Their separate expectations retain
+the exact arithmetic and counter oracles, pin the old source/expectation as
+provenance, and record `caller-argv-v1` with `bend-rts-v1`. This entry adaptation
+does not claim current-runtime execution qualification; the ordinary control
+gate must still pass. Original C files and JSON expectations remain unchanged.
+
+`check-runtime.py` selects the argv-aware primary fixture when the diagnostic
+plan declares `runtimeArgumentConvention: bend-rts-v1` and passes options from
+that actual runtime metadata. A missing convention selects the original legacy
+fixture and invocation. Explicit control/expectation pairs must agree with the
+plan's convention. The drop control is selected explicitly:
+
+```sh
+python3 -B selfhost/tools/profiler/check-runtime.py \
+  --runtime-plan CURRENT_DIAGNOSTIC_PLAN --build-report CURRENT_BUILD_REPORT \
+  --control selfhost/tools/profiler/controls/runtime-drop-control-argv-v1.c \
+  --expected selfhost/tools/profiler/controls/runtime-drop-control-argv-v1.expected.json \
+  --out FRESH_CONTROL_ROOT
+```
+
+Run the command under the root resource guard. Ambient `BENDRTS` is refused for
+RTS-bound controls, matching compiler request and profiler workload execution.

@@ -61,6 +61,9 @@ text output, file operations, argument handling, and Halt/Exit status handling.
 get operation. Shared boxed array leaves retain their element before releasing
 the array handle. QBE keeps its pinned embedded effect-provider table; arbitrary
 C foreign embedding and callbacks are not supported by that path.
+The C environment provider rejects names containing `=`. A failed C `TCP.send`
+returns the exact unsent byte list required by current Base, including a partial
+UTF-8 sequence. These narrow corrections do not qualify the full network stack.
 
 | Contract | Current selection |
 | --- | --- |
@@ -84,6 +87,26 @@ this migration does not establish Metal/CUDA qualification. Unsupported native
 `Window.fullscreen` use refuses explicitly. Ordinary file/argument controls do
 not qualify display, audio, networking, subprocesses or broad effect scheduling;
 their platform and foreign-interface requirements remain separate.
+
+The retained C providers have concrete remaining differences from the new
+upstream, beyond unavailable hardware. This is a source audit, not an execution
+result:
+
+| Provider | Remaining compatibility limit |
+| --- | --- |
+| [Linux audio](../../selfhost/src/runtime/native/effs/audio.c#L114) | The ALSA pump advances a whole chunk after a partial write and ignores recovery failure. Upstream retains unwritten frames and stops on an unrecoverable error. |
+| [Process](../../selfhost/src/runtime/native/effs/process_run.c#L71) | The retained loop reaps the child, then drains currently available bytes; upstream drains output pipes to EOF before reaping. Later descendant output can differ. On macOS, retained `posix_spawnp` lacks upstream's explicit no-shell PATH search. |
+| [TCP send](../../selfhost/src/runtime/native/effs/tcp_send.c#L9), [receive](../../selfhost/src/runtime/native/effs/tcp_recv.c#L11), [accept](../../selfhost/src/runtime/native/effs/tcp_accept.c#L7), [connect](../../selfhost/src/runtime/native/effs/tcp_connect.c#L33) | EINTR retry/connect handling remains older. A zero-progress send lacks upstream's EIO termination. The corrected byte-list failure payload does not resolve these scheduling/error differences. |
+| [UDP receive](../../selfhost/src/runtime/native/effs/udp_recv_from.c#L7), [send](../../selfhost/src/runtime/native/effs/udp_send_to.c#L7) | EINTR retries remain absent; receive allocation caps at INT32_MAX instead of upstream's 65507-byte datagram bound. |
+| [Channel/network dispatch](../../selfhost/src/runtime/native/runtime.c#L2808) | Timed `Chan.try_*`, `TCP.try_*`, `UDP.try_*` and UDP byte operations remain explicitly unavailable. Blocking channels retain the earlier host-row ownership scheme. |
+| [Window](../../selfhost/src/runtime/native/effs/window.c#L16) | The retained five-word event buffer predates upstream's expanded pointer/tool event schema; current window-event parity is not established. |
+
+The nine [public CLI provider assets](../../selfhost/tools/build/public-cli.py#L20)
+are args, print, print_err, now, file_open, file_read, file_size, file_write and
+file_close. Their qualification does not cover the provider differences above.
+The current read/write providers already include line, byte and positioned IO;
+their two-argument registrations use the runtime's explicit compatibility
+adapter. They need no registration-arity rewrite.
 
 `Array.get_unchecked` requires an in-bounds caller. Native lowering retains the
 existing wrapping implementation; it makes no unchecked-address optimization or

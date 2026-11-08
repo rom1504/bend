@@ -93,8 +93,13 @@ def verify_hosted(emission, hosted, request_file):
         verify(row)
 
 
-def load_catalog(args):
-    catalog_file = Path(getattr(args, 'catalog', None) or CATALOG).resolve(strict=True)
+def load_catalog(args, document=None):
+    explicit = getattr(args, 'catalog', None)
+    declared = (document or {}).get('qualificationCatalog')
+    if not explicit and declared is not None:
+        catalog_file = Path(bound(declared, document['_workspace'])['file'])
+    else:
+        catalog_file = Path(explicit or CATALOG).resolve(strict=True)
     catalog = json.loads(catalog_file.read_text())
     require(catalog['kind'] == 'bend-qualification-catalog' and catalog['version'] == 1
             and re.fullmatch('[0-9a-f]{40}', catalog.get('upstream', ''))
@@ -204,7 +209,7 @@ def qualify(args):
     require(not args.source and not args.expected, 'Catalog owns sources and output oracles')
     timeout(args.build_seconds); timeout(args.execute_seconds)
     document = assets.load_assets(args.assets, root)
-    selected_catalog = load_catalog(args)
+    selected_catalog = load_catalog(args, document)
     catalog, catalog_file = selected_catalog
     require(document.get('upstream') == catalog['upstream'], 'Asset/reference upstream differs from catalog')
     cases, inputs = select(args, root, selected_catalog)

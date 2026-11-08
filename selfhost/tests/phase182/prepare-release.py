@@ -242,10 +242,96 @@ def prepare(recipe_file, output):
                       'selected':reports[role]['selected'],'upstream':UPSTREAM},{'image':images[component]}))
     for name, component, role, kind, claims, bound in specs:
         gate(name, kind, report_pins[role], claims, bound); components[component]['gates'].append(name)
+    operational_gates = ['qbe-qualified']
+    if 'hostedQbe' in recipe:
+        hosted = recipe['hostedQbe']
+        require(set(hosted) == {'acquisition','qualification','exports'}, 'Explicit hosted QBE receipt roles required')
+        acquisition_pin, acquisition = read(hosted['acquisition']); completed(acquisition,'hosted QBE acquisition')
+        qualified_pin, qualified = read(hosted['qualification']); completed(qualified,'hosted QBE qualification')
+        exports_pin, exports = read(hosted['exports'])
+        binding = acquisition['imageBinding']; hosted_image = artifact(acquisition['api'])
+        require(acquisition.get('kind') == 'bend-checked-hosted-api' and acquisition.get('checked') is True
+                and acquisition.get('status') == 0 and not acquisition.get('signal')
+                and acquisition['upstream']['revision'] == UPSTREAM
+                and binding.get('complete') is True and binding.get('checked') is True
+                and (binding['host'],binding['stage'],binding['protocol']) == ('js','B1','qbe-api-v1')
+                and binding['targets'] == ['qbe'] and binding['preparationModes'] == ['cache']
+                and release.same(binding['image'],hosted_image)
+                and release.same(acquisition['source'],canonical) and release.same(binding['sourceIdentity'],canonical),
+                'Actual current-source cache-only hosted QBE B1 required')
+        require(exports.get('kind') == 'bend-hosted-api-exports' and exports.get('version') == 1
+                and exports['protocol'] == binding['protocol'] and exports['targets'] == binding['targets']
+                and exports['exports'] == acquisition['exports'] == binding['exports']
+                and exports['preparationModes'] == binding['preparationModes']
+                and any(release.same(row,exports_pin) for row in acquisition['inputs']), 'Hosted export authority differs')
+        _, previous_hosted = read(recipe['previous'])
+        old_exports = previous_hosted['components']['qbe'].get('hostedApi',{}).get('exports',[])
+        require(set(old_exports) <= set(binding['exports']), 'Hosted QBE would lose an installed export')
+        qualification(qualified,'js','B1','qbe',hosted_image,19)
+        gate('qbe-hosted-acquisition','lineage',acquisition_pin,
+             {'checked':True,'status':0,'imageBinding.exports':binding['exports'],
+              'imageBinding.preparationModes':['cache']}, {'api':hosted_image,'source':canonical})
+        gate('qbe-hosted-qualified','qualification',qualified_pin,
+             {'passed':True,'counts':{'pass':19,'fail':0,'unsupported':0},'upstream':UPSTREAM}, {'image':hosted_image})
+        names = ['qbe-hosted-acquisition','qbe-hosted-qualified']
+        components['qbe']['gates'] += names; operational_gates += names
+        components['qbe']['hostedApi'] = dict(host='js',stage='B1',protocol='qbe-api-v1',capabilities=['qbe'],
+            image=installable('selfhost/dist/qbe/hosted-api.mjs',hosted_image),sourceIdentity=identity(canonical),
+            exports=binding['exports'],preparationModes=['cache'],gates=names)
+    if 'nativeSession' in recipe:
+        session = recipe['nativeSession']
+        require(set(session) == {'bootstrap','binding','normal'}, 'Explicit native session receipt roles required')
+        bootstrap_pin, bootstrap = read(session['bootstrap']); completed(bootstrap,'native session bootstrap')
+        binding_pin, binding = read(session['binding']); completed(binding,'native session binding')
+        normal_pin, normal = read(session['normal']); completed(normal,'native session normal adapter')
+        require(bootstrap.get('kind') == 'bend-native-session-bootstrap-qualification'
+                and all(bootstrap.get(k) is True for k in ('passed','qualified','sourceUnchanged',
+                    'realEditChangesProduct','noOpExercisesReuse'))
+                and bootstrap['protocolUnderTest'] == 'P140/2' and bootstrap['modeMatchedColdComparisons'] == 6
+                and bootstrap['generatedProgramOutputs'] == {'a':'3\n','b':'5\n'}
+                and bootstrap['runtimeArgumentConvention'] == 'bend-rts-v1'
+                and release.same(bootstrap['image'],images['qbe']) and release.same(bootstrap['source'],canonical)
+                and release.same(bootstrap['linkedRuntime'],providers['qbeRuntime'])
+                and release.same(bootstrap['targetRuntime'],providers['qbeRuntime'])
+                and release.same(bootstrap['originalImageReceipt'],report_pins['qbeN2']), 'Current N2 session gate differs')
+        require(binding.get('kind') == 'bend-build-image-binding' and binding['sessionProtocols'] == ['P140/2']
+                and (binding['host'],binding['stage'],binding['protocol']) == ('native','N2','qbe-source-v1')
+                and release.same(binding['image'],images['qbe']) and release.same(binding['sourceIdentity'],canonical)
+                and release.same(binding['linkedRuntime'],providers['qbeRuntime'])
+                and binding['runtimeArgumentConvention'] == 'bend-rts-v1'
+                and release.same(binding['sessionQualification'],bootstrap_pin), 'Qualified session binding differs')
+        require(normal.get('kind') == 'bend-experimental-session'
+                and normal['process']['complete'] is True and normal['process']['exitCode'] == 0
+                and normal['process']['stderr']['bytes'] == 0
+                and (normal['request']['host'],normal['request']['stage']) == ('native','N2')
+                and normal['request']['imageMetadata'] == binding
+                and normal['request']['runtimeArgumentConvention'] == 'bend-rts-v1'
+                and release.same(normal['request']['image'],images['qbe'])
+                and release.same(normal['request']['runtime'],providers['qbeRuntime'])
+                and len(normal['request']['jobs']) == len(normal['rows']) == 6,
+                'Normal adapter did not execute the exact qualified six-job native binding')
+        gate('qbe-session-bootstrap','qualification',bootstrap_pin,
+             {'passed':True,'qualified':True,'modeMatchedColdComparisons':6,'noOpExercisesReuse':True,
+              'realEditChangesProduct':True,'sourceUnchanged':True,'runtimeArgumentConvention':'bend-rts-v1'},
+             {'image':images['qbe'],'source':canonical,'linkedRuntime':providers['qbeRuntime']})
+        gate('qbe-session-normal','lineage',normal_pin,
+             {'process.complete':True,'process.exitCode':0,'request.host':'native','request.stage':'N2'},
+             {'request.image':images['qbe']})
+        names = ['qbe-session-bootstrap','qbe-session-normal']
+        components['qbe']['gates'] += names; operational_gates += names
+        components['qbe'].update(sessionProtocols=['P140/2'],
+            sessionScope='Qualified positive native byte sessions; no native recovery or object-unit claim.')
     for name, extra in recipe.get('extraGates', {}).items():
         receipt, _ = read(extra['report']); gate(name,extra['role'],receipt,extra['claims'],extra.get('bindings',{}))
         for key in extra['components']:
             require(key in components, 'Unknown extra-gate component'); components[key]['gates'].append(name)
+    retained = recipe.get('installedQbeGates',operational_gates)
+    require(len(retained) == len(set(retained)) and set(retained) <= set(components['qbe']['gates'])
+            and set(operational_gates) <= set(retained), 'Required operational QBE gate receipts must be retained')
+    components['qbe']['qualificationReceipts'] = {
+        name:installable('selfhost/dist/qbe/evidence/'+name+'.json',gates[name]['report']) for name in retained}
+    if 'nativeSession' in recipe:
+        components['qbe']['sessionQualification'] = components['qbe']['qualificationReceipts']['qbe-session-bootstrap']
     components['qbe']['runtimeArgumentConvention'] = qb['runtimeArgumentConvention']
     components['js'].update(exports=b2['imageBinding']['exports'], preparationModes=['live'])
     providers['base'] = installable('selfhost/dist/base.bend', providers['base'])

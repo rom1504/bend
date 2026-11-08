@@ -2,6 +2,10 @@
 // ==
 
 uint32_t io_get_env(const char* name, const char** out) {
+  // Upstream 9a4223d: "A=B" must not read part of an "A=B=C" entry.
+  if (strchr(name, '=') != NULL) {
+    return ENOENT;
+  }
   const char* value = getenv(name);
   if (value == NULL) {
     return ENOENT;

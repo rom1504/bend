@@ -1,0 +1,905 @@
+{
+  "kind": "phase182-native-positive-controls",
+  "complete": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native-controls.py",
+      "bytes": 3202,
+      "sha256": "ca6af8e0c81b558d55bb37626e627e30b18d4903245729b0d4f646c73daa78f8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/assets-candidate09.json",
+      "bytes": 29176,
+      "sha256": "cf62eac50ceeea1f6496d95017ac417cc7a689683aa0cd194baf433f245de3a3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/numeric.bend",
+      "bytes": 806,
+      "sha256": "ef45974b96f6dbeae1eeef4a46291037b077f4d60593657458a496fc11304a0e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/array-unchecked.bend",
+      "bytes": 402,
+      "sha256": "0aa380c9e12282c0ffd561fd140576104d21a114ce8e89cbf165e1dff1ca6fc7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/array-unchecked-boxed.bend",
+      "bytes": 401,
+      "sha256": "0a3ada2fe6eb9a3f3b9cb7e2eec8b79ac3d2368370ff014344f8149ac34171d7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/char-output.bend",
+      "bytes": 311,
+      "sha256": "246303530064cf11b913e86f7b413a510fa202fb8db2a5da7abd4af956485e1c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/argv.bend",
+      "bytes": 670,
+      "sha256": "8a44e660978410848c555446970d546d43d0cd114eb4691ac0994a40e34d347f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/files.bend",
+      "bytes": 1375,
+      "sha256": "5238f2e8f0aacfce9db9954b898b6a1279b68171d4914e9c5fb918f361db62dd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/open-errors.bend",
+      "bytes": 535,
+      "sha256": "8fe1e0883d25ce858f962e3b2fa512cb91f4272c343c42b0f28e3b670f0a97b9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/exit.bend",
+      "bytes": 139,
+      "sha256": "cc54e659a9e4acb382391a056fc08f7315325b3c2e74415bc02510c6105290f9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/exit-upper-valid.bend",
+      "bytes": 141,
+      "sha256": "97bc478ea3caba3393b70a78c27295fc6bd0eeac0511d5258dd49f02a29fb5d8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/halt-valid.bend",
+      "bytes": 163,
+      "sha256": "572920842ed80b11a9db82b94e44212c02e212c37e55a0307b8e07a6c1e89238"
+    }
+  ],
+  "rows": [
+    {
+      "name": "numeric",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/numeric.bend",
+        "bytes": 806,
+        "sha256": "ef45974b96f6dbeae1eeef4a46291037b077f4d60593657458a496fc11304a0e"
+      },
+      "build": {
+        "command": [
+          "/usr/bin/python3",
+          "-B",
+          "selfhost/tools/build/native.py",
+          "--assets",
+          "selfhost/build/phase182/assets-candidate09.json",
+          "--image-key",
+          "qbe-n2",
+          "--host",
+          "native",
+          "--stage",
+          "N2",
+          "--target",
+          "qbe",
+          "--mode",
+          "cache",
+          "--source",
+          "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/numeric.bend",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/numeric/build",
+          "--seconds",
+          "55",
+          "--retain-ir"
+        ],
+        "limitSeconds": 65,
+        "complete": true,
+        "started": 1794181169.485207,
+        "exitCode": 0,
+        "userSeconds": 0.844077,
+        "systemSeconds": 0.066471,
+        "peakRssKiB": 39148,
+        "timedOut": false,
+        "seconds": 1.0396479438059032,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/numeric/build.stdout",
+          "bytes": 433,
+          "sha256": "9fc40cdca71ee9c44df688c0df8c5e15c0c3ec2de302543a422e95d53d084fa6"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/numeric/build.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "expected": {
+        "stdout": "[True{}, True{}, True{}, True{}, True{}, True{}, True{}, True{}, True{}, True{}, True{}, True{}]\n",
+        "stderr": "",
+        "exitCode": 0
+      },
+      "complete": true,
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/numeric/build/report.json",
+        "bytes": 17262,
+        "sha256": "9c5639b67f70d7c612c2b00055d56677e00a97608b3c960d2cdf73946e0bc20e"
+      },
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/numeric/build/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 15,
+        "complete": true,
+        "started": 1794181170.5266201,
+        "exitCode": 0,
+        "userSeconds": 0.001084,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 9300,
+        "timedOut": false,
+        "seconds": 0.0018840520642697811,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/numeric/stdout",
+          "bytes": 97,
+          "sha256": "1f462381bbe84798f4a61ef1cd115f1b25576015abb1fa1f8880d8a0124b5927"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/numeric/stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "name": "array-unchecked",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/array-unchecked.bend",
+        "bytes": 402,
+        "sha256": "0aa380c9e12282c0ffd561fd140576104d21a114ce8e89cbf165e1dff1ca6fc7"
+      },
+      "build": {
+        "command": [
+          "/usr/bin/python3",
+          "-B",
+          "selfhost/tools/build/native.py",
+          "--assets",
+          "selfhost/build/phase182/assets-candidate09.json",
+          "--image-key",
+          "qbe-n2",
+          "--host",
+          "native",
+          "--stage",
+          "N2",
+          "--target",
+          "qbe",
+          "--mode",
+          "cache",
+          "--source",
+          "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/array-unchecked.bend",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/array-unchecked/build",
+          "--seconds",
+          "55",
+          "--retain-ir"
+        ],
+        "limitSeconds": 65,
+        "complete": true,
+        "started": 1794181170.530236,
+        "exitCode": 0,
+        "userSeconds": 0.7691319999999999,
+        "systemSeconds": 0.072586,
+        "peakRssKiB": 39108,
+        "timedOut": false,
+        "seconds": 0.8569877040572464,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/array-unchecked/build.stdout",
+          "bytes": 441,
+          "sha256": "3151acd95376804ca6be296e05e09afed1ac0ddd4f5410c9c2e8def1d834c27b"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/array-unchecked/build.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "expected": {
+        "stdout": "98\n",
+        "stderr": "",
+        "exitCode": 0
+      },
+      "complete": true,
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/array-unchecked/build/report.json",
+        "bytes": 17433,
+        "sha256": "ddd6210492231237dbc35f9c20d4941c00caaa82c22fff18d5c35ea54732af6f"
+      },
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/array-unchecked/build/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 15,
+        "complete": true,
+        "started": 1794181171.3894563,
+        "exitCode": 0,
+        "userSeconds": 0.001153,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 9340,
+        "timedOut": false,
+        "seconds": 0.0019865580834448338,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/array-unchecked/stdout",
+          "bytes": 3,
+          "sha256": "4960a9ce196ee53a9ae6f2b038ebf5bb7949312406eabe79835e766b4a3d0d88"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/array-unchecked/stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "name": "array-unchecked-boxed",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/array-unchecked-boxed.bend",
+        "bytes": 401,
+        "sha256": "0a3ada2fe6eb9a3f3b9cb7e2eec8b79ac3d2368370ff014344f8149ac34171d7"
+      },
+      "build": {
+        "command": [
+          "/usr/bin/python3",
+          "-B",
+          "selfhost/tools/build/native.py",
+          "--assets",
+          "selfhost/build/phase182/assets-candidate09.json",
+          "--image-key",
+          "qbe-n2",
+          "--host",
+          "native",
+          "--stage",
+          "N2",
+          "--target",
+          "qbe",
+          "--mode",
+          "cache",
+          "--source",
+          "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/array-unchecked-boxed.bend",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/array-unchecked-boxed/build",
+          "--seconds",
+          "55",
+          "--retain-ir"
+        ],
+        "limitSeconds": 65,
+        "complete": true,
+        "started": 1794181171.3932016,
+        "exitCode": 0,
+        "userSeconds": 0.761239,
+        "systemSeconds": 0.068711,
+        "peakRssKiB": 38984,
+        "timedOut": false,
+        "seconds": 0.8428785190917552,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/array-unchecked-boxed/build.stdout",
+          "bytes": 447,
+          "sha256": "233716658e5a155a42a908eeaf66ffaa019983468e97df8f27a151d6bb212d26"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/array-unchecked-boxed/build.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "expected": {
+        "stdout": "\"rightleft\"\n",
+        "stderr": "",
+        "exitCode": 0
+      },
+      "complete": true,
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/array-unchecked-boxed/build/report.json",
+        "bytes": 17567,
+        "sha256": "5b8e168dc14f513a81fe1a9f1700fd188a512b2765c9adf183a20c3283b5f8fb"
+      },
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/array-unchecked-boxed/build/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 15,
+        "complete": true,
+        "started": 1794181172.2848158,
+        "exitCode": 0,
+        "userSeconds": 0.0,
+        "systemSeconds": 0.001153,
+        "peakRssKiB": 9360,
+        "timedOut": false,
+        "seconds": 0.002029957715421915,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/array-unchecked-boxed/stdout",
+          "bytes": 12,
+          "sha256": "1c4dd6fa52c37452378064977d8e0d0589b0af5ec20873ba1988ce6a9cab8123"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/array-unchecked-boxed/stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "name": "char-output",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/char-output.bend",
+        "bytes": 311,
+        "sha256": "246303530064cf11b913e86f7b413a510fa202fb8db2a5da7abd4af956485e1c"
+      },
+      "build": {
+        "command": [
+          "/usr/bin/python3",
+          "-B",
+          "selfhost/tools/build/native.py",
+          "--assets",
+          "selfhost/build/phase182/assets-candidate09.json",
+          "--image-key",
+          "qbe-n2",
+          "--host",
+          "native",
+          "--stage",
+          "N2",
+          "--target",
+          "qbe",
+          "--mode",
+          "cache",
+          "--source",
+          "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/char-output.bend",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/char-output/build",
+          "--seconds",
+          "55",
+          "--retain-ir"
+        ],
+        "limitSeconds": 65,
+        "complete": true,
+        "started": 1794181172.288744,
+        "exitCode": 0,
+        "userSeconds": 0.754621,
+        "systemSeconds": 0.106058,
+        "peakRssKiB": 39432,
+        "timedOut": false,
+        "seconds": 0.8803334510885179,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/char-output/build.stdout",
+          "bytes": 437,
+          "sha256": "a496126a470a3037a37c47489db5a6cde60c13ef63547aaf5ea4284b71f0f117"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/char-output/build.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "expected": {
+        "stdout": "4294967295\n\ufffd\ufffd\ufffd\n10000000000\n",
+        "stderr": "",
+        "exitCode": 0
+      },
+      "complete": true,
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/char-output/build/report.json",
+        "bytes": 17338,
+        "sha256": "0179afdffcbc3fd292a88a557b68dea8f25b67565415f122182babba22b64280"
+      },
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/char-output/build/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 15,
+        "complete": true,
+        "started": 1794181173.1715803,
+        "exitCode": 0,
+        "userSeconds": 0.00115,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 9396,
+        "timedOut": false,
+        "seconds": 0.0019529699347913265,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/char-output/stdout",
+          "bytes": 33,
+          "sha256": "dae9ca0dfe7aa4c11e16613d3edd964ba19f42c1e0be0c8eda0e600288d40927"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/char-output/stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "name": "argv",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/argv.bend",
+        "bytes": 670,
+        "sha256": "8a44e660978410848c555446970d546d43d0cd114eb4691ac0994a40e34d347f"
+      },
+      "build": {
+        "command": [
+          "/usr/bin/python3",
+          "-B",
+          "selfhost/tools/build/native.py",
+          "--assets",
+          "selfhost/build/phase182/assets-candidate09.json",
+          "--image-key",
+          "qbe-n2",
+          "--host",
+          "native",
+          "--stage",
+          "N2",
+          "--target",
+          "qbe",
+          "--mode",
+          "cache",
+          "--source",
+          "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/argv.bend",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/argv/build",
+          "--seconds",
+          "55",
+          "--retain-ir"
+        ],
+        "limitSeconds": 65,
+        "complete": false,
+        "started": 1794181173.2263062,
+        "exitCode": 1,
+        "userSeconds": 0.690259,
+        "systemSeconds": 0.033117,
+        "peakRssKiB": 36700,
+        "timedOut": false,
+        "seconds": 0.7261892380192876,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/argv/build.stdout",
+          "bytes": 264,
+          "sha256": "c6aa68bd95bf4170c8cd403df5287a3b248a42b5fffd5cd0782d45eacceda3d8"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/argv/build.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "expected": {
+        "stdout": "True 0\nTrue 0\n",
+        "stderr": "",
+        "exitCode": 0
+      },
+      "complete": false
+    },
+    {
+      "name": "files",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/files.bend",
+        "bytes": 1375,
+        "sha256": "5238f2e8f0aacfce9db9954b898b6a1279b68171d4914e9c5fb918f361db62dd"
+      },
+      "build": {
+        "command": [
+          "/usr/bin/python3",
+          "-B",
+          "selfhost/tools/build/native.py",
+          "--assets",
+          "selfhost/build/phase182/assets-candidate09.json",
+          "--image-key",
+          "qbe-n2",
+          "--host",
+          "native",
+          "--stage",
+          "N2",
+          "--target",
+          "qbe",
+          "--mode",
+          "cache",
+          "--source",
+          "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/files.bend",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/files/build",
+          "--seconds",
+          "55",
+          "--retain-ir"
+        ],
+        "limitSeconds": 65,
+        "complete": false,
+        "started": 1794181173.9599812,
+        "exitCode": 1,
+        "userSeconds": 0.717133,
+        "systemSeconds": 0.032154999999999996,
+        "peakRssKiB": 36928,
+        "timedOut": false,
+        "seconds": 0.808976739179343,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/files/build.stdout",
+          "bytes": 263,
+          "sha256": "d43d37f057fc2541112187b186359b107179c8fea6b4f64aa7147a756449afab"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/files/build.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "expected": {
+        "stdout": "\"ab\\n\"\n\"cd\"\n\"Zb\\ncd\"\n",
+        "stderr": "",
+        "exitCode": 0
+      },
+      "complete": false
+    },
+    {
+      "name": "open-errors",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/open-errors.bend",
+        "bytes": 535,
+        "sha256": "8fe1e0883d25ce858f962e3b2fa512cb91f4272c343c42b0f28e3b670f0a97b9"
+      },
+      "build": {
+        "command": [
+          "/usr/bin/python3",
+          "-B",
+          "selfhost/tools/build/native.py",
+          "--assets",
+          "selfhost/build/phase182/assets-candidate09.json",
+          "--image-key",
+          "qbe-n2",
+          "--host",
+          "native",
+          "--stage",
+          "N2",
+          "--target",
+          "qbe",
+          "--mode",
+          "cache",
+          "--source",
+          "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/open-errors.bend",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/open-errors/build",
+          "--seconds",
+          "55",
+          "--retain-ir"
+        ],
+        "limitSeconds": 65,
+        "complete": false,
+        "started": 1794181174.7720912,
+        "exitCode": 1,
+        "userSeconds": 0.677628,
+        "systemSeconds": 0.045013,
+        "peakRssKiB": 36860,
+        "timedOut": false,
+        "seconds": 0.7559073898009956,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/open-errors/build.stdout",
+          "bytes": 264,
+          "sha256": "56309845fa4342780377f76e67c8421f012077bc4fd4aec8d9ec84fbcb6bf367"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/open-errors/build.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "expected": {
+        "stdout": "22\n84\n",
+        "stderr": "",
+        "exitCode": 0
+      },
+      "complete": false
+    },
+    {
+      "name": "exit",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/exit.bend",
+        "bytes": 139,
+        "sha256": "cc54e659a9e4acb382391a056fc08f7315325b3c2e74415bc02510c6105290f9"
+      },
+      "build": {
+        "command": [
+          "/usr/bin/python3",
+          "-B",
+          "selfhost/tools/build/native.py",
+          "--assets",
+          "selfhost/build/phase182/assets-candidate09.json",
+          "--image-key",
+          "qbe-n2",
+          "--host",
+          "native",
+          "--stage",
+          "N2",
+          "--target",
+          "qbe",
+          "--mode",
+          "cache",
+          "--source",
+          "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/exit.bend",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/exit/build",
+          "--seconds",
+          "55",
+          "--retain-ir"
+        ],
+        "limitSeconds": 65,
+        "complete": true,
+        "started": 1794181175.5305634,
+        "exitCode": 0,
+        "userSeconds": 0.780505,
+        "systemSeconds": 0.041582999999999995,
+        "peakRssKiB": 39396,
+        "timedOut": false,
+        "seconds": 0.8395722559653223,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/exit/build.stdout",
+          "bytes": 430,
+          "sha256": "b5588821fef21ad389753d71ecec022899ac6956c1dd67ffbd87ccb9a54b85ac"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/exit/build.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "expected": {
+        "stdout": "before\n",
+        "stderr": "",
+        "exitCode": 23
+      },
+      "complete": true,
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/exit/build/report.json",
+        "bytes": 17192,
+        "sha256": "0466ede1a65660b162a9565707d7975c35212f86d9ed01a92b5fc21bcf145bce"
+      },
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/exit/build/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 15,
+        "complete": false,
+        "started": 1794181176.3729308,
+        "exitCode": 23,
+        "userSeconds": 0.0,
+        "systemSeconds": 0.001171,
+        "peakRssKiB": 9456,
+        "timedOut": false,
+        "seconds": 0.001977266278117895,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/exit/stdout",
+          "bytes": 7,
+          "sha256": "9160d4be34c8695bd172a76c7c7966587ea5a4d991ad22c87b2b91af54aa9ebb"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/exit/stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "name": "exit-upper-valid",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/exit-upper-valid.bend",
+        "bytes": 141,
+        "sha256": "97bc478ea3caba3393b70a78c27295fc6bd0eeac0511d5258dd49f02a29fb5d8"
+      },
+      "build": {
+        "command": [
+          "/usr/bin/python3",
+          "-B",
+          "selfhost/tools/build/native.py",
+          "--assets",
+          "selfhost/build/phase182/assets-candidate09.json",
+          "--image-key",
+          "qbe-n2",
+          "--host",
+          "native",
+          "--stage",
+          "N2",
+          "--target",
+          "qbe",
+          "--mode",
+          "cache",
+          "--source",
+          "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/exit-upper-valid.bend",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/exit-upper-valid/build",
+          "--seconds",
+          "55",
+          "--retain-ir"
+        ],
+        "limitSeconds": 65,
+        "complete": true,
+        "started": 1794181176.3772364,
+        "exitCode": 0,
+        "userSeconds": 0.7641899999999999,
+        "systemSeconds": 0.061426999999999995,
+        "peakRssKiB": 39372,
+        "timedOut": false,
+        "seconds": 0.8419146961532533,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/exit-upper-valid/build.stdout",
+          "bytes": 442,
+          "sha256": "a11db4e5648e3846dce8f54676460af57d63f6105bf5ee3991285f3572e9608c"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/exit-upper-valid/build.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "expected": {
+        "stdout": "before\n",
+        "stderr": "",
+        "exitCode": 255
+      },
+      "complete": true,
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/exit-upper-valid/build/report.json",
+        "bytes": 17447,
+        "sha256": "1aa3db5a809aefbeeedb39bacefc645b8646b964395ef94de4d6768f7ca891e0"
+      },
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/exit-upper-valid/build/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 15,
+        "complete": false,
+        "started": 1794181177.2220228,
+        "exitCode": 255,
+        "userSeconds": 0.001143,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 9476,
+        "timedOut": false,
+        "seconds": 0.001979948952794075,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/exit-upper-valid/stdout",
+          "bytes": 7,
+          "sha256": "9160d4be34c8695bd172a76c7c7966587ea5a4d991ad22c87b2b91af54aa9ebb"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/exit-upper-valid/stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "name": "halt-valid",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/halt-valid.bend",
+        "bytes": 163,
+        "sha256": "572920842ed80b11a9db82b94e44212c02e212c37e55a0307b8e07a6c1e89238"
+      },
+      "build": {
+        "command": [
+          "/usr/bin/python3",
+          "-B",
+          "selfhost/tools/build/native.py",
+          "--assets",
+          "selfhost/build/phase182/assets-candidate09.json",
+          "--image-key",
+          "qbe-n2",
+          "--host",
+          "native",
+          "--stage",
+          "N2",
+          "--target",
+          "qbe",
+          "--mode",
+          "cache",
+          "--source",
+          "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/halt-valid.bend",
+          "--out",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/halt-valid/build",
+          "--seconds",
+          "55",
+          "--retain-ir"
+        ],
+        "limitSeconds": 65,
+        "complete": true,
+        "started": 1794181177.2265515,
+        "exitCode": 0,
+        "userSeconds": 0.7600589999999999,
+        "systemSeconds": 0.062231999999999996,
+        "peakRssKiB": 39424,
+        "timedOut": false,
+        "seconds": 0.8401762479916215,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/halt-valid/build.stdout",
+          "bytes": 436,
+          "sha256": "9e24d67094e0d0152c30bd9244deaf9033f85b8e0cf04f6849e9ea5bc319f563"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/halt-valid/build.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "expected": {
+        "stdout": "before\n",
+        "stderr": "reported\n",
+        "exitCode": 7
+      },
+      "complete": true,
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/halt-valid/build/report.json",
+        "bytes": 17346,
+        "sha256": "d783bf14ef75f2b37aade985c363bae34b1e5816ed50682b912d8617b7230b19"
+      },
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/halt-valid/build/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 15,
+        "complete": false,
+        "started": 1794181178.0698695,
+        "exitCode": 7,
+        "userSeconds": 0.001161,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 9492,
+        "timedOut": false,
+        "seconds": 0.0020089060999453068,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/halt-valid/stdout",
+          "bytes": 7,
+          "sha256": "9160d4be34c8695bd172a76c7c7966587ea5a4d991ad22c87b2b91af54aa9ebb"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-controls03/halt-valid/stderr",
+          "bytes": 9,
+          "sha256": "d57c63781596694b1d41b7826f098f87df72148a2b02e68f183b2fc2c9372c03"
+        }
+      }
+    }
+  ],
+  "scope": "Ordinary valid source/runtime behavior. Explicit exit status23/255/7 is requested by Bend IO, never a failure-runtime probe. No parallel/GPU claim.",
+  "seconds": 8.591103055980057
+}

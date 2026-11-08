@@ -3,29 +3,40 @@
   "upstream": "9a4223d577ba56a0cb53d1fd952d2b481c38930f",
   "merge": "6c6365e",
   "installedSelection": "preserved; not yet promoted",
-  "source": "selfhost/build/phase182/snapshot07/compiler.bend",
+  "source": "selfhost/build/phase182/snapshot08/compiler.bend",
+  "sourceSha256": "06dcc91b2df46978607b6dd50707aca3c8ddd59dd1a91fbf71a9e6b0ed61605c",
   "gates": {
     "sourceCheck": "source-check05",
     "sharing22": "sharing-values01",
     "jsRuntime": "js-runtime02",
     "kernelBuild": "proof-kernel02",
-    "baseCompleteValueEquivalence": "base-verify04",
+    "baseCompleteValueEquivalence": "base-verify05",
     "ordinaryQbeOutput": "nt-reverse-qbe01",
     "checkedQbeB1": "qbe-api05",
-    "checkedTypedB1": "typed-api05",
+    "checkedTypedB1": "typed-api06",
     "jsPaired": "js-paired04",
     "numericAndArray": "native-controls02",
     "algebra23IndependentKernel": "proof-algebra03",
     "sharingThreeWayFixed": "frontend-threeway03",
-    "frontend23": "frontend03"
+    "frontend23": "frontend03",
+    "nativeBridgeN0": "native-bridge-n001",
+    "nativeSnapshot07Reproduction": "native-chain03",
+    "nativeSnapshot07Qbe64": "qbe6401",
+    "nativeSnapshot07FocusedPartial": "native-controls03: 7/10; three early source-admission refusals",
+    "jsB2Snapshot07": "js-b202",
+    "profilerNormal": "profiler-rts-controls01/normal",
+    "profilerDrop": "profiler-rts-controls01/drop"
   },
   "pending": [
-    "native transitional bootstrap and N1/N2/Q3",
-    "JSB2/B3 and integration qualification",
+    "snapshot08 corrected native-chain04 and focused replay",
+    "final snapshot08 JS B2/B3 and integration qualification",
+    "C/public CLI construction, execution and release qualification",
     "documentation and publication"
   ],
   "compatibilityCommit": "10ab239",
   "retainedFailures": {
-    "native-chain02": "4 GiB guard stop after360.076s beforeIR; no candidate installed"
+    "native-chain02": "4 GiB guard stop after 360.076s before IR; no candidate installed",
+    "js-b201": "300s deadline before completed self-emission; js-b202 subsequently completed snapshot07 B2",
+    "native-controls03": "argv, files and open-errors refused early; snapshot08 adds exactly seven provider names, retaining trusted and filled admission"
   }
 }

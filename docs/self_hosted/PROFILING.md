@@ -86,7 +86,7 @@ learned from the executable being tested. An empty expected stderr file is valid
     "timeoutSeconds": 30,
     "variants": [{
       "name": "baseline",
-      "command": ["selfhost/build/example/program", "--threads", "1", "--gpu", "off"],
+      "command": ["selfhost/build/example/program"],
       "inputs": ["example.bend"],
       "stdout": "expected.stdout",
       "stderr": "expected.stderr"
@@ -94,6 +94,31 @@ learned from the executable being tested. An empty expected stderr file is valid
   }]
 }
 ```
+
+For a native compiler workload, take the exact command and runtime convention
+from its completed maintained build request plan, along with all request input
+pins. Do not reconstruct flags from the active upstream revision or copy legacy
+flags into a current-runtime workload:
+
+```python
+plan = json.loads(Path(request_file).read_text())
+variant = {
+    "name": "compiler", "command": plan["command"],
+    "runtimeArgumentConvention": plan["runtimeArgumentConvention"],
+    "inputs": [str(request_file), *[row["file"] for row in plan["inputs"]]],
+    "argv0": "compiler-work",
+    "stdout": "independent-complete-output", "stderr": "empty-stderr"
+}
+```
+
+This example assumes the native QBE request's stdout output contract. Other
+protocols need their actual output contract. The maintained request planner
+selects legacy or `+RTS ... -RTS --RTS` arguments from the image metadata; the
+profiler freezes them unchanged. For a diagnostic relink of that same object,
+replace only `command[0]` with the actual diagnostic executable and also pin its
+runtime/build receipts. Set the variant's convention from the diagnostic plan.
+RTS-bound profiling refuses ambient `BENDRTS`. A generic non-Bend workload need
+not declare a Bend runtime convention.
 
 A variant can optionally set `"argv0": "compiler-work"` without changing
 `command[0]`, which must remain the actual executable. Freezing pins that ELF;
@@ -147,9 +172,14 @@ directory; every insertion has an exact anchor and inverse reconstruction must
 recover every original byte. `build-runtime.py` executes its frozen build plan
 under the resource guard. Relink the same generated object rather than rebuilding
 the Bend compiler merely to add counters. Production runtime files stay intact.
+Declare `runtimeArgumentConvention` from the selected runtime binding, using
+`bend-rts-v1` for the current runtime. Omission preserves legacy replay. Runtime
+and stage plans carry this field forward; neither infers it from a filename or
+the active upstream revision. The existing 14 reversible runtime hooks are
+unchanged.
 
-The [Phase127 preparation tools](../../selfhost/tools/performance/phase127/README.md)
-provide concrete compiler and ordinary-program examples. The manifest marks
+Use the [maintained build workflow](workflow.md) for the actual request and
+retained object, then the profiler commands above. The manifest marks
 diagnostic variants with `dispatchInstrumentation: true`. `--modes sample`
 collects CPU plus active segment IDs with counters disabled; `--modes events`
 collects counters in a separate run. `--modes clean` on such a variant measures

@@ -20,6 +20,10 @@ import threading
 import time
 
 sys.dont_write_bytecode = True
+BUILD = Path(__file__).resolve().parents[1] / 'build'
+sys.path.append(str(BUILD))
+from assets import runtime_argument_convention, runtime_arguments
+ARGUMENT_METHODS = [BUILD/'assets.py', BUILD/'common.py']
 
 
 def pin(path):
@@ -71,6 +75,13 @@ def validate_argv0(value):
     if not isinstance(value, str) or not value or '\0' in value:
         raise ValueError('argv0 must be a nonempty string without NUL')
     return value
+
+
+def validate_runtime_environment(provider, environment=None):
+    convention = runtime_argument_convention(provider)
+    if convention == 'bend-rts-v1' and 'BENDRTS' in (os.environ if environment is None else environment):
+        raise ValueError('Explicit RTS profiling requires ambient BENDRTS to be unset')
+    return convention
 
 
 def execute(command, directory, cwd, timeout, env, argv0=None):
@@ -178,12 +189,13 @@ def main():
     inputs = {r['file']: r for r in all_pins(manifest)}
     from analyze import DEPENDENCY
     for method in [args.manifest, Path(__file__), Path(__file__).with_name('analyze.py'),
-                   DEPENDENCY, Path(sys.executable)]:
+                   DEPENDENCY, Path(sys.executable), *ARGUMENT_METHODS]:
         row = pin(method); inputs[row['file']] = row
     for item in inputs.values():
         verify(item)
     for workload in workloads:
         for variant in workload['variants']:
+            validate_runtime_environment(variant)
             if str(Path(variant['command'][0]).resolve()) != variant['binary']['file']:
                 raise ValueError('Command must directly execute pinned binary')
             if 'argv0' in variant:
@@ -244,6 +256,8 @@ def main():
                             round=iteration + 1, periodUs=setting if mode == 'sample' else None,
                             diagnosticRuntime=diagnostic,
                             timingKind='diagnostic' if diagnostic or mode != 'clean' else 'clean')
+                        if 'runtimeArgumentConvention' in variant:
+                            row['runtimeArgumentConvention'] = runtime_argument_convention(variant)
                         report['rows'].append(row)
                         save(out/'report.json', report)
                         row.update(execute(variant['command'], directory, manifest['cwd'],

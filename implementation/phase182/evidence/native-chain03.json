@@ -1,0 +1,115 @@
+{
+  "kind": "bend-native-bootstrap-chain",
+  "version": 1,
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/bootstrap.py",
+      "bytes": 4388,
+      "sha256": "7cb4356fb117246b923048cfae038b12cea9ee3b54724db941d0306439bec8aa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/assets-candidate07.json",
+      "bytes": 25316,
+      "sha256": "13f7bfc3a1bf6869822766a028847888f4e8566f6e17c5a49e31508e74a21601"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/request.py",
+      "bytes": 19022,
+      "sha256": "1b5e1e21125c65056f92f7caa9d4300c8f57f74a9ace05d13823dfe5ca3fac33"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/assets.py",
+      "bytes": 9443,
+      "sha256": "91acb7360ca47758d757255fee8a43f087313e2f6c6ddd64c931590d3519d468"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/common.py",
+      "bytes": 4809,
+      "sha256": "d9a16fef18cf936499e51f8c7f36a653f2921ef9a50f846257c2e8bc460ec6d1"
+    },
+    {
+      "file": "/usr/bin/python3.9",
+      "bytes": 5451288,
+      "sha256": "ca7655083b581ffe36c72dcb445857704db533ca39b03f79c97d8d0ef3bef9af"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/snapshot07/compiler.bend",
+      "bytes": 3179064,
+      "sha256": "f10b51e2e96692e871c6ca2af2a27252a02f4f0f1f499d12b45670a4c550320a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-bridge-n001/program",
+      "bytes": 16187904,
+      "sha256": "cbd3dce8441d41c9d9b0f5f65faebb3156a2d22f58172d4d9b0c6282b92c8e87"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-bridge-n001/report.json",
+      "bytes": 18453,
+      "sha256": "20607cf7b59d28a381301a42a78d9dadeb3b721b1f312c8bd3610eaa2a3df317"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase182/bend2/base.bend",
+      "bytes": 87698,
+      "sha256": "ff90fb27ed19d5c7a6165170f28ad81562bf345b9a9e6134e5c2e326beff9de4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/base-carrier04/base.p130",
+      "bytes": 2827018,
+      "sha256": "fe48f505b53ba4596040f2395d5727858784ea32489222c7141b6523d923e38a"
+    }
+  ],
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/snapshot07/compiler.bend",
+    "bytes": 3179064,
+    "sha256": "f10b51e2e96692e871c6ca2af2a27252a02f4f0f1f499d12b45670a4c550320a"
+  },
+  "producer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-bridge-n001/program",
+    "bytes": 16187904,
+    "sha256": "cbd3dce8441d41c9d9b0f5f65faebb3156a2d22f58172d4d9b0c6282b92c8e87"
+  },
+  "producerHost": "native",
+  "producerStage": "N0",
+  "generations": [
+    {
+      "stage": "N1",
+      "complete": true,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-chain03/n1/report.json",
+        "bytes": 18820,
+        "sha256": "2c69652cef10e1e5561a0439f4b9e5c0f1353d862780754c3370427e3369d04f"
+      }
+    },
+    {
+      "stage": "N2",
+      "complete": true,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-chain03/n2/report.json",
+        "bytes": 19981,
+        "sha256": "03e69e434bb74d94eea68e9222c53e9257e484d4a499ed1f85a931a9b2ea93a5"
+      }
+    },
+    {
+      "stage": "Q3",
+      "complete": true,
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/native-chain03/q3/report.json",
+        "bytes": 12007,
+        "sha256": "299aa893b3423515f85828bbe6cf719843f3b69cea3e8cd3e291683132011c78"
+      }
+    }
+  ],
+  "semanticsQualified": false,
+  "selected": false,
+  "scope": "Actual N1 emits N2, then actual N2 emits Q3. Byte fixed point is separate from semantic conformance.",
+  "seconds": 536.3786429888569,
+  "machineIdentity": {
+    "program.ssa": true,
+    "program.s": true,
+    "program.o": true,
+    "program": false
+  },
+  "qbeFixedPoint": true,
+  "changedInputs": []
+}

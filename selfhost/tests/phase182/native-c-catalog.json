@@ -1,0 +1,161 @@
+{
+  "kind": "bend-qualification-catalog",
+  "version": 1,
+  "upstream": "9a4223d577ba56a0cb53d1fd952d2b481c38930f",
+  "scope": "Phase182 current-language native controls. Source markers are explicit independent oracles; valid nonzero statuses are requested IO exits. For emitted C; QBE has the separate native-controls.py lane.",
+  "suites": [
+    "focused"
+  ],
+  "cases": [
+    {
+      "id": "native-current/argv",
+      "name": "argv",
+      "suite": "focused",
+      "source": {
+        "file": "selfhost/tests/phase182/native/argv.bend",
+        "bytes": 670,
+        "sha256": "8a44e660978410848c555446970d546d43d0cd114eb4691ac0994a40e34d347f"
+      },
+      "expect": {
+        "stdout": "True 0\nTrue 0\n",
+        "stderr": "",
+        "exitCode": 0
+      }
+    },
+    {
+      "id": "native-current/array-unchecked-boxed",
+      "name": "array-unchecked-boxed",
+      "suite": "focused",
+      "source": {
+        "file": "selfhost/tests/phase182/native/array-unchecked-boxed.bend",
+        "bytes": 401,
+        "sha256": "0a3ada2fe6eb9a3f3b9cb7e2eec8b79ac3d2368370ff014344f8149ac34171d7"
+      },
+      "expect": {
+        "stdout": "\"rightleft\"\n",
+        "stderr": "",
+        "exitCode": 0
+      }
+    },
+    {
+      "id": "native-current/array-unchecked",
+      "name": "array-unchecked",
+      "suite": "focused",
+      "source": {
+        "file": "selfhost/tests/phase182/native/array-unchecked.bend",
+        "bytes": 402,
+        "sha256": "0aa380c9e12282c0ffd561fd140576104d21a114ce8e89cbf165e1dff1ca6fc7"
+      },
+      "expect": {
+        "stdout": "98\n",
+        "stderr": "",
+        "exitCode": 0
+      }
+    },
+    {
+      "id": "native-current/char-output",
+      "name": "char-output",
+      "suite": "focused",
+      "source": {
+        "file": "selfhost/tests/phase182/native/char-output.bend",
+        "bytes": 311,
+        "sha256": "246303530064cf11b913e86f7b413a510fa202fb8db2a5da7abd4af956485e1c"
+      },
+      "expect": {
+        "stdout": "4294967295\n\ufffd\ufffd\ufffd\n10000000000\n",
+        "stderr": "",
+        "exitCode": 0
+      }
+    },
+    {
+      "id": "native-current/exit-upper-valid",
+      "name": "exit-upper-valid",
+      "suite": "focused",
+      "source": {
+        "file": "selfhost/tests/phase182/native/exit-upper-valid.bend",
+        "bytes": 141,
+        "sha256": "97bc478ea3caba3393b70a78c27295fc6bd0eeac0511d5258dd49f02a29fb5d8"
+      },
+      "expect": {
+        "stdout": "before\n",
+        "stderr": "",
+        "exitCode": 255
+      }
+    },
+    {
+      "id": "native-current/exit",
+      "name": "exit",
+      "suite": "focused",
+      "source": {
+        "file": "selfhost/tests/phase182/native/exit.bend",
+        "bytes": 139,
+        "sha256": "cc54e659a9e4acb382391a056fc08f7315325b3c2e74415bc02510c6105290f9"
+      },
+      "expect": {
+        "stdout": "before\n",
+        "stderr": "",
+        "exitCode": 23
+      }
+    },
+    {
+      "id": "native-current/files",
+      "name": "files",
+      "suite": "focused",
+      "source": {
+        "file": "selfhost/tests/phase182/native/files.bend",
+        "bytes": 1375,
+        "sha256": "5238f2e8f0aacfce9db9954b898b6a1279b68171d4914e9c5fb918f361db62dd"
+      },
+      "expect": {
+        "stdout": "\"ab\\n\"\n\"cd\"\n\"Zb\\ncd\"\n",
+        "stderr": "",
+        "exitCode": 0
+      }
+    },
+    {
+      "id": "native-current/halt-valid",
+      "name": "halt-valid",
+      "suite": "focused",
+      "source": {
+        "file": "selfhost/tests/phase182/native/halt-valid.bend",
+        "bytes": 163,
+        "sha256": "572920842ed80b11a9db82b94e44212c02e212c37e55a0307b8e07a6c1e89238"
+      },
+      "expect": {
+        "stdout": "before\n",
+        "stderr": "reported\n",
+        "exitCode": 7
+      }
+    },
+    {
+      "id": "native-current/numeric",
+      "name": "numeric",
+      "suite": "focused",
+      "source": {
+        "file": "selfhost/tests/phase182/native/numeric.bend",
+        "bytes": 806,
+        "sha256": "ef45974b96f6dbeae1eeef4a46291037b077f4d60593657458a496fc11304a0e"
+      },
+      "expect": {
+        "stdout": "[True{}, True{}, True{}, True{}, True{}, True{}, True{}, True{}, True{}, True{}, True{}, True{}]\n",
+        "stderr": "",
+        "exitCode": 0
+      }
+    },
+    {
+      "id": "native-current/open-errors",
+      "name": "open-errors",
+      "suite": "focused",
+      "source": {
+        "file": "selfhost/tests/phase182/native/open-errors.bend",
+        "bytes": 535,
+        "sha256": "8fe1e0883d25ce858f962e3b2fa512cb91f4272c343c42b0f28e3b670f0a97b9"
+      },
+      "expect": {
+        "stdout": "22\n84\n",
+        "stderr": "",
+        "exitCode": 0
+      }
+    }
+  ]
+}

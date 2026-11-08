@@ -10,12 +10,14 @@ import sys
 import time
 
 sys.dont_write_bytecode = True
-from run import pin, verify, save
+from run import pin, verify, save, runtime_argument_convention, runtime_arguments, validate_runtime_environment, ARGUMENT_METHODS
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 CONTROL = HERE / 'controls/runtime-control.c'
 EXPECTED = HERE / 'controls/runtime-control.expected.json'
+RTS_CONTROL = HERE / 'controls/runtime-control-argv-v1.c'
+RTS_EXPECTED = HERE / 'controls/runtime-control-argv-v1.expected.json'
 SOURCE_SHA = '41bfdd1aaf6943a0f61a6ada8365e8cd27ca21c9a85e316fbbe988339c369721'
 PROFILE_ENV = ('LD_PRELOAD', 'BEND_SAMPLE_OUT', 'BEND_SAMPLE_PERIOD_US',
     'BEND_SAMPLE_CONTEXT_OUT', 'BEND_SAMPLE_CALLERS_OUT', 'BEND_PROFILE_EVENTS_OUT', 'BEND_PROFILE_COUNTERS')
@@ -28,6 +30,20 @@ def require(ok, message):
 
 def read(path):
     return json.loads(Path(path).read_text())
+
+
+def select_control(plan, control=None, expected=None):
+    rts = runtime_argument_convention(plan) == 'bend-rts-v1'
+    return (control or (RTS_CONTROL if rts else CONTROL)).resolve(), (expected or (RTS_EXPECTED if rts else EXPECTED)).resolve()
+
+
+def control_arguments(plan, expected):
+    convention = runtime_argument_convention(plan)
+    require(runtime_argument_convention(expected) == convention, 'Control/runtime argument convention differs')
+    protocol = expected.get('argumentProtocol', 'embedded-legacy-v1')
+    require(protocol in ('embedded-legacy-v1', 'caller-argv-v1'), 'Unknown control argument protocol')
+    require(convention != 'bend-rts-v1' or protocol == 'caller-argv-v1', 'RTS control must accept actual caller argv')
+    return runtime_arguments(plan) if protocol == 'caller-argv-v1' else []
 
 
 def validate_events(document, expected, enabled):
@@ -73,12 +89,15 @@ def main():
     parser.add_argument('--runtime-plan', type=Path, required=True)
     parser.add_argument('--build-report', type=Path, required=True)
     parser.add_argument('--out', type=Path, required=True)
-    parser.add_argument('--control', type=Path, default=CONTROL)
-    parser.add_argument('--expected', type=Path, default=EXPECTED)
+    parser.add_argument('--control', type=Path)
+    parser.add_argument('--expected', type=Path)
     args = parser.parse_args()
     require(not any(key in os.environ for key in PROFILE_ENV), 'Ambient profiling environment must be unset')
-    control, expected_path = args.control.resolve(), args.expected.resolve()
-    plan, built, expected = read(args.runtime_plan), read(args.build_report), read(expected_path)
+    plan, built = read(args.runtime_plan), read(args.build_report)
+    convention = validate_runtime_environment(plan)
+    control, expected_path = select_control(plan, args.control, args.expected)
+    expected = read(expected_path)
+    arguments = control_arguments(plan, expected)
     require(plan['schema'] == 'bend-native-profile-runtime-plan-v1' and plan['complete'] and plan['reverseExact'], 'Complete reversible runtime plan required')
     require(built['complete'] and built['plan'] == pin(args.runtime_plan), 'Build receipt belongs to another/incomplete plan')
     require(expected['schema'] == 'bend-native-profile-control-expectations-v1' and expected['frozenBeforeExecution'], 'Frozen independent expectations required')
@@ -100,7 +119,7 @@ def main():
     inputs = [pin(__file__), pin(HERE / 'run.py'), pin(control), pin(expected_path), pin(original),
               pin(HERE / 'controls/migration.json'),
               pin(args.runtime_plan), pin(args.build_report), runtime_pin, pin(compiler),
-              *plan['inputs'], *plan['outputs']]
+              *plan['inputs'], *plan['outputs'], *map(pin, ARGUMENT_METHODS)]
     for item in inputs:
         verify(item)
     out = args.out.resolve()
@@ -111,6 +130,7 @@ def main():
     report = dict(schema='bend-native-profile-runtime-control-v1', complete=False,
         started=time.time(), inputs=inputs, expected=pin(out / 'expected.json'),
         source=pin(out / 'control.c'), methodSnapshot=pin(out / 'method.py'), jobs=[], checks=[],
+        runtimeArgumentConvention=convention, runtimeArguments=arguments,
         cpuAffinity=sorted(os.sched_getaffinity(0)),
         scope='Independent frozen ABI control; no compiler-generated optimization or benchmark. Source-derived expectations precede execution. Per-channel positive/negative coverage is stated by the expectation fixture.')
     report_path = out / 'report.json'
@@ -151,7 +171,7 @@ def main():
         for label, enabled in [('counters-off', False), ('counters-on', True)]:
             events = out / label / 'events.json'
             env = dict(os.environ, BEND_PROFILE_COUNTERS='1' if enabled else '0', BEND_PROFILE_EVENTS_OUT=str(events))
-            row = run(label, [str(binary)], env)
+            row = run(label, [str(binary), *arguments], env)
             row['environment'] = {key: env[key] for key in ['BEND_PROFILE_COUNTERS', 'BEND_PROFILE_EVENTS_OUT']}
             require(Path(row['stdout']['file']).read_bytes() == b'45\n' and Path(row['stderr']['file']).read_bytes() == b'',
                     'Independent output oracle failed: ' + label)

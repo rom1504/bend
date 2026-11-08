@@ -6999,3 +6999,27 @@ are exact. Rebuilt bendc re-emits the checked seed and our new N2 passes the
 frozen nt-reverse QBE/stdout check. No whole-ELF, full qualification, generated
 runtime-quality, ARM backend, proof, source change or installation claim.
 Nine guards/673.412s, no failures; exact evidence archived and verified.
+
+## Phase180 — compact canonical applications miss the transfer gate
+
+[Report](../implementation/phase180/README.md) · [Metrics](../implementation/phase180/metrics.json) ·
+[Project status](../docs/self_hosted/projects/compact-frontend/STATUS.md).
+
+The experimental KApply representation has direct fields, application construction,
+checking/rebuild adapters and fixed-arity substitution frames inside one recursive
+owner.32 declaration replacements plus three helpers/two forward laws remain an
+isolated overlay; raw quantity1 Apps and arbitrary legacy metadata stay generic.
+669 application and70 full frontend observations pass. Independent source checks,
+native construction and matching medium output digests pass.
+
+The preregistered5% expansion gate fails: median complete frontend12.2465→12.1540s,
+0.76% lower, B/C/C/B; whole-process14.8286→14.7093s. Variation exceeds the
+difference. Construction's machine body shrinks33→13 instructions, but child-list
+compatibility materialization remains and substitution grows1122→1300. Both
+retain private workers. No dynamic cost attribution from static counts.
+
+Reject broad migration. No production change, full-image campaign or installation.
+The durable project handoff records a closed decision and named remaining
+comparison/reachability/erasure list boundaries. A successor must retire measured
+complete work rather than simply add more compact constructors. Fifteen guarded
+jobs299.223 target seconds; five source failures8.105s; evidence sealed/verified.

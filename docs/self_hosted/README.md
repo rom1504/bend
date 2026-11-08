@@ -22,6 +22,7 @@ artifacts rather than additional editable compiler implementations.
 | Output/disk/process lifetime | [Build retention](build-retention.md) |
 | Historical findings and replay | [History tools](../../selfhost/tools/history/README.md) · [experiment frontier](../../experiments/STEERING.md) |
 | Compiler research | [Architecture and techniques](../../research/compilers_architecture_and_techniques/README.md) |
+| Bounded compact frontend migration | [Authoritative status](projects/compact-frontend/STATUS.md) · [Scope and completion gates](projects/compact-frontend/PLAN.md) |
 
 The old architecture and phase guides remain research records with dated
 identities and qualification scopes. They are not a second set of current build

@@ -1,4 +1,24 @@
-# Current measurement — Phase179 complete bendc/QBE self-build comparison
+# Latest decision — Phase180 compact App overlay rejected
+
+[Report](../implementation/phase180/README.md) · [Metrics](../implementation/phase180/metrics.json) ·
+[Authoritative project handoff](../docs/self_hosted/projects/compact-frontend/STATUS.md).
+
+Canonical KApply removes two child-list allocations from `app`, whose linked
+body shrinks33→13 instructions. The complete medium frontend is neutral:
+12.2465→12.1540s (0.76%, B/C/C/B), below the prespecified5% expansion gate and
+smaller than sample variation. Whole-process14.8286→14.7093s. Both versions
+retain direct workers; compatibility `ks` reboxes children and substitution's
+machine body grows1122→1300 instructions. Static sites do not attribute time.
+
+669 application and70 complete frontend observations pass, as do independent
+source acceptance and native output digests. No mathematical proof, broad
+backend qualification, full cold-build speedup or generated-user-runtime claim.
+Do not expand the partial migration without a new measured owner/consumer
+contract to retire. Fifteen guarded jobs299.223s; five source failures8.105s;
+exact evidence and bounded source deltas retained. Production/installed source
+frontiers below remain unchanged. The project is closed rather than left pending.
+
+# Current complete-build measurement — Phase179 bendc/QBE comparison
 
 [Report](../implementation/phase179/README.md) · [Metrics](../implementation/phase179/metrics.json).
 

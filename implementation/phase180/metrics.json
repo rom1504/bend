@@ -1,0 +1,400 @@
+{
+  "kind": "phase180-compact-application-result",
+  "complete": true,
+  "selected": false,
+  "decision": "Reject broad migration: medium complete frontend improvement below preregistered5% gate.",
+  "baselineSource": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase180/snapshot06/baseline.bend",
+    "bytes": 3167327,
+    "sha256": "8fd5043cd47361474ab9da6713687a2fd0825d8a7f0885192e5f70f67d7994db"
+  },
+  "candidateSource": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase180/snapshot06/candidate.bend",
+    "bytes": 3181435,
+    "sha256": "247793c89783f21a7d27e2f53587e549cef3ac52796b662e6062ff26d7e97d1d"
+  },
+  "frontend": [
+    {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase175/baseline-source03/compiler.bend",
+        "bytes": 656302,
+        "sha256": "351ad0e69554e5b12cf8367d5cdde648ab5a1787825614e23158196f5d0e851b"
+      },
+      "medians": {
+        "baseline": {
+          "seconds": 14.828568706056103,
+          "frontendSeconds": 12.2465,
+          "baseSeconds": 0.2095,
+          "observationSeconds": 2.3440000000000003
+        },
+        "candidate": {
+          "seconds": 14.709290065104142,
+          "frontendSeconds": 12.154,
+          "baseSeconds": 0.213,
+          "observationSeconds": 2.3145
+        }
+      },
+      "wholeProcessRatio": 0.9919561595379568,
+      "frontendRatio": 0.9924468215408485
+    }
+  ],
+  "rounds": [
+    {
+      "role": "baseline",
+      "cycle": 0,
+      "seconds": 14.92967353016138,
+      "frontendSeconds": 12.338,
+      "baseSeconds": 0.21,
+      "observationSeconds": 2.353,
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 0,
+      "seconds": 14.53719467902556,
+      "frontendSeconds": 11.984,
+      "baseSeconds": 0.211,
+      "observationSeconds": 2.315,
+      "outputExact": true
+    },
+    {
+      "role": "candidate",
+      "cycle": 1,
+      "seconds": 14.881385451182723,
+      "frontendSeconds": 12.324,
+      "baseSeconds": 0.215,
+      "observationSeconds": 2.314,
+      "outputExact": true
+    },
+    {
+      "role": "baseline",
+      "cycle": 1,
+      "seconds": 14.727463881950825,
+      "frontendSeconds": 12.155,
+      "baseSeconds": 0.209,
+      "observationSeconds": 2.335,
+      "outputExact": true
+    }
+  ],
+  "sourceAcceptance": {
+    "base-api01": true,
+    "compact-api06": true,
+    "front-base-check01": true,
+    "front-compact-check01": true
+  },
+  "finiteObservations": {
+    "application-values01": {
+      "complete": true,
+      "rows": 669
+    },
+    "frontend-values01": {
+      "complete": true,
+      "rows": 70
+    }
+  },
+  "nativeBuilds": {
+    "baseline": {
+      "seconds": 53.958092007786036,
+      "emitAndQbeSeconds": 52.073704309761524,
+      "irBytes": 37260458,
+      "elfBytes": 5904864,
+      "complete": true
+    },
+    "candidate": {
+      "seconds": 54.98192731104791,
+      "emitAndQbeSeconds": 53.12445193110034,
+      "irBytes": 37301083,
+      "elfBytes": 5920136,
+      "complete": true
+    }
+  },
+  "staticShapes": {
+    "baseline": {
+      "app": {
+        "privateWorker": true,
+        "bodies": [
+          {
+            "machineInstructions": 33,
+            "blocks": 2,
+            "staticRuntimeSites": {
+              "ctor2": 2,
+              "ctor": 2,
+              "take": 0,
+              "keepOrDup": 0,
+              "sink": 0,
+              "apply": 0,
+              "frame": 0,
+              "jump": 0
+            }
+          }
+        ]
+      },
+      "kid": {
+        "privateWorker": true,
+        "bodies": [
+          {
+            "machineInstructions": 16,
+            "blocks": 2,
+            "staticRuntimeSites": {
+              "ctor2": 0,
+              "ctor": 0,
+              "take": 0,
+              "keepOrDup": 0,
+              "sink": 0,
+              "apply": 0,
+              "frame": 0,
+              "jump": 0
+            }
+          }
+        ]
+      },
+      "ks": {
+        "privateWorker": true,
+        "bodies": [
+          {
+            "machineInstructions": 78,
+            "blocks": 8,
+            "staticRuntimeSites": {
+              "ctor2": 0,
+              "ctor": 0,
+              "take": 3,
+              "keepOrDup": 0,
+              "sink": 7,
+              "apply": 0,
+              "frame": 0,
+              "jump": 0
+            }
+          }
+        ]
+      },
+      "p177s_loop": {
+        "privateWorker": true,
+        "bodies": [
+          {
+            "machineInstructions": 1122,
+            "blocks": 60,
+            "staticRuntimeSites": {
+              "ctor2": 23,
+              "ctor": 31,
+              "take": 9,
+              "keepOrDup": 24,
+              "sink": 22,
+              "apply": 0,
+              "frame": 0,
+              "jump": 0
+            }
+          }
+        ]
+      },
+      "env_subst_term": {
+        "privateWorker": false,
+        "bodies": []
+      },
+      "k_apply_span": {
+        "privateWorker": false,
+        "bodies": []
+      }
+    },
+    "candidate": {
+      "app": {
+        "privateWorker": true,
+        "bodies": [
+          {
+            "machineInstructions": 13,
+            "blocks": 2,
+            "staticRuntimeSites": {
+              "ctor2": 0,
+              "ctor": 1,
+              "take": 0,
+              "keepOrDup": 0,
+              "sink": 0,
+              "apply": 0,
+              "frame": 0,
+              "jump": 0
+            }
+          }
+        ]
+      },
+      "kid": {
+        "privateWorker": true,
+        "bodies": [
+          {
+            "machineInstructions": 101,
+            "blocks": 12,
+            "staticRuntimeSites": {
+              "ctor2": 0,
+              "ctor": 0,
+              "take": 1,
+              "keepOrDup": 0,
+              "sink": 4,
+              "apply": 0,
+              "frame": 0,
+              "jump": 0
+            }
+          }
+        ]
+      },
+      "ks": {
+        "privateWorker": true,
+        "bodies": [
+          {
+            "machineInstructions": 102,
+            "blocks": 10,
+            "staticRuntimeSites": {
+              "ctor2": 2,
+              "ctor": 2,
+              "take": 4,
+              "keepOrDup": 0,
+              "sink": 7,
+              "apply": 0,
+              "frame": 0,
+              "jump": 0
+            }
+          }
+        ]
+      },
+      "p177s_loop": {
+        "privateWorker": true,
+        "bodies": [
+          {
+            "machineInstructions": 1300,
+            "blocks": 82,
+            "staticRuntimeSites": {
+              "ctor2": 12,
+              "ctor": 23,
+              "take": 16,
+              "keepOrDup": 30,
+              "sink": 35,
+              "apply": 0,
+              "frame": 0,
+              "jump": 0
+            }
+          }
+        ]
+      },
+      "env_subst_term": {
+        "privateWorker": false,
+        "bodies": []
+      },
+      "k_apply_span": {
+        "privateWorker": true,
+        "bodies": [
+          {
+            "machineInstructions": 13,
+            "blocks": 2,
+            "staticRuntimeSites": {
+              "ctor2": 0,
+              "ctor": 1,
+              "take": 0,
+              "keepOrDup": 0,
+              "sink": 0,
+              "apply": 0,
+              "frame": 0,
+              "jump": 0
+            }
+          }
+        ]
+      }
+    }
+  },
+  "cost": {
+    "jobs": 15,
+    "targetWallSeconds": 299.22275237971917,
+    "failedJobs": 5,
+    "failedWallSeconds": 8.105021654162556,
+    "peakTreeRssBytes": 1033224192
+  },
+  "guards": [
+    {
+      "name": "application-values01-guard",
+      "seconds": 2.921368157956749,
+      "exit": 0,
+      "peakRssBytes": 215195648
+    },
+    {
+      "name": "base-api01-guard",
+      "seconds": 6.92970636440441,
+      "exit": 0,
+      "peakRssBytes": 830869504
+    },
+    {
+      "name": "compact-api01-guard",
+      "seconds": 0.8436838891357183,
+      "exit": 1,
+      "peakRssBytes": 237109248
+    },
+    {
+      "name": "compact-api02-guard",
+      "seconds": 0.7819456784054637,
+      "exit": 1,
+      "peakRssBytes": 236929024
+    },
+    {
+      "name": "compact-api03-guard",
+      "seconds": 1.2968454100191593,
+      "exit": 1,
+      "peakRssBytes": 237223936
+    },
+    {
+      "name": "compact-api04-guard",
+      "seconds": 2.4279448548331857,
+      "exit": 1,
+      "peakRssBytes": 292487168
+    },
+    {
+      "name": "compact-api05-guard",
+      "seconds": 2.754601821769029,
+      "exit": 1,
+      "peakRssBytes": 309825536
+    },
+    {
+      "name": "compact-api06-guard",
+      "seconds": 7.300736024044454,
+      "exit": 0,
+      "peakRssBytes": 838688768
+    },
+    {
+      "name": "front-base-check01-guard",
+      "seconds": 3.314419390168041,
+      "exit": 0,
+      "peakRssBytes": 432926720
+    },
+    {
+      "name": "front-base-native01-guard",
+      "seconds": 54.316543800756335,
+      "exit": 0,
+      "peakRssBytes": 331468800
+    },
+    {
+      "name": "front-compact-check01-guard",
+      "seconds": 3.6827567466534674,
+      "exit": 0,
+      "peakRssBytes": 461393920
+    },
+    {
+      "name": "front-compact-native01-guard",
+      "seconds": 55.33983194315806,
+      "exit": 0,
+      "peakRssBytes": 332275712
+    },
+    {
+      "name": "front-medium01-guard",
+      "seconds": 59.59506458276883,
+      "exit": 0,
+      "peakRssBytes": 141758464
+    },
+    {
+      "name": "frontend-values01-guard",
+      "seconds": 93.73619342502207,
+      "exit": 0,
+      "peakRssBytes": 1033224192
+    },
+    {
+      "name": "inspection01-guard",
+      "seconds": 3.9811102906242013,
+      "exit": 0,
+      "peakRssBytes": 28983296
+    }
+  ],
+  "scope": "Fresh native frontend processes with same656302B input, prepared Base, CPU3, Phase175 N2 producer, runtime and QBE toolchain. Source acceptance/complete finite values/digests are distinct; no full self-build speedup, unrestricted proof, backend qualification, production or installed change. Static sites are not dynamic work counts. Build pair is unreplicated acquisition cost, not compiler throughput claim. Agent effort and quota not measured."
+}

@@ -82,12 +82,46 @@ type Image is Data:
   Pix{color: U32}
   Qua{tl: Image, tr: Image, bl: Image, br: Image}
 
+# A pointer's tool and what it measures, as W3C Pointer Events name it: a
+# force from 0 to 1, a contact's size in pixels, a pen's tilts (-90 to 90)
+# and twist (0 to 359, clockwise) in degrees and its barrel's pressure
+# (-1 to 1). A force is 0 unless pressed. A value its device does not
+# report is that standard's default: a force of 0.5, a size of 1, an angle 0.
+type Tool is Data:
+  Tool.Mouse{}
+  Tool.Finger{force: F32, width: F32, height: F32}
+  Tool.Pen{force: F32, tangential: F32, tilt_x: F32, tilt_y: F32, twist: F32}
+
+# Key is a key, pressed or let go. Text is what the keys typed, after
+# Shift, Caps Lock, the layout and any input method: never a control
+# character, so Enter or Backspace come only as Keys. A long input method
+# commit can come as several Texts.
+# Press is a pointer's button pressed or let go, and Move its motion, in
+# pixels from the window's top left (past its edge while a button holds
+# it), at the system's time in ms (it wraps: only the difference of two
+# counts): a Move with no button down is a hover. The mouse is id 0; a finger
+# or a pen takes the least free id, free again once it lifts (a finger),
+# leaves or is lost. Buttons are W3C's: 0 the main one (a finger's or a
+# pen's contact), 1 the middle, 2 the right (a pen's barrel), 3 back, 4
+# forward and 5 a pen's eraser. Leave is a pointer with no button down gone off
+# the window or out of a pen's range (W3C's pointerleave): the mouse comes
+# back as id 0. Lost is a pointer pressed taken away (W3C's pointercancel):
+# what it held ends with no Press up.
+# A window losing the focus loses its pointers pressed and lets go of its
+# keys held, then sends Focus{False}. Look is the mouse's motion while
+# Window.grab holds it, in Move's units. Scroll is a wheel or trackpad
+# under the pointer: its deltas scroll toward a page's top and left (a
+# notch is 1 on X11).
 type Event is Data:
   Key{code: U32, down: Bool}
-  Mouse{x: U32, y: U32, button: U32, down: Bool}
-  Move{x: U32, y: U32}
+  Text{text: String}
+  Press{id: U32, tool: Tool, x: F32, y: F32, time: U32, button: U32, down: Bool}
+  Move{id: U32, tool: Tool, x: F32, y: F32, time: U32}
+  Leave{id: U32}
+  Lost{id: U32}
   Look{dx: F32, dy: F32}
-  Scroll{x: U32, y: U32, dx: F32, dy: F32}
+  Scroll{x: F32, y: F32, dx: F32, dy: F32}
+  Focus{on: Bool}
   Close{}
 
 type Map<a, -V: Kind(a)> is Kind(a):
@@ -123,6 +157,7 @@ law Chan:
 type IO.OP<-R: Type> is Type:
   Emit{value: R}
   Halt{code: U32, message: String}
+  Exit{code: U32}
 
 type App<-S: Type> is Type:
   App{view: S -> Pair(S, Image), tick: List<Event> -> S -> IO(Maybe<S>)}
@@ -186,6 +221,17 @@ def IO.args() -> IO(List<String>):
   import "./effs/args.c"
   import "./effs/args.js"
 
+# IO.args as the OS hands it over: each entry's bytes (0..255), one List
+# cell each, with no UTF-8 decoding, so an argument that isn't UTF-8 (a
+# Latin-1 file name) keeps every byte, and File.open_bytes opens it. The
+# JS lanes get the arguments already decoded by the host: there, a byte
+# that isn't UTF-8 arrives as U+FFFD's UTF-8, EF BF BD.
+def IO.args_bytes() -> IO(List<List<&2, U32>>):
+  import "./effs/args.c"
+  import "./effs/args.js"
+
+# Runs an argv subprocess on C, Bun and Node, without a shell.
+# max_output bounds combined stdout/stderr bytes; timeout_ms includes pipe draining.
 def Process.run(program: String, args: List<String>, input: String,
   max_output: U32, timeout_ms: U32) ->
   IO(Result<&1, &1, U32 & String, U32 & (String & String)>):
@@ -194,6 +240,9 @@ def Process.run(program: String, args: List<String>, input: String,
 
 def IO.die(-A: Type, code: U32, msg: String) -> IO(A):
   R => k => Halt{code, msg}
+
+def IO.exit(code: U32) -> IO(Unit):
+  R => k => Exit{code}
 
 def IO.pass(-A: Type, r: Result<&1, &1, U32 & String, A>) -> IO(A):
   match r:
@@ -281,12 +330,33 @@ def IO.within(-A: Type, ms: U32, act: IO(A)) -> IO(Maybe<&1, A>):
     IO.fork.go(Maybe<&1, A>, late))
   IO.bind(Chan(Maybe<&1, A>), Maybe<&1, A>, both, c => IO.join(Maybe<&1, A>, c))
 
+# Modes: "r" reads, "r+" reads and writes without creating or truncating,
+# "w" creates or truncates, "a" appends or creates, "x" creates exclusively.
 def File.open(path: String, mode: String) ->
   IO(Result<&1, &1, U32 & String, File>):
   import "./effs/file_open.c"
   import "./effs/file_open.js"
 
+# The path as its bytes (0..255), with no UTF-8 encoding, so a name that
+# isn't UTF-8, as IO.args_bytes gives it, opens. A value past 255 fails
+# with EINVAL, and a 0 with EILSEQ, as a NUL in File.open's path does.
+# Modes are the same as File.open's.
+def File.open_bytes(path: List<&2, U32>, mode: String) ->
+  IO(Result<&1, &1, U32 & String, File>):
+  import "./effs/file_open.c"
+  import "./effs/file_open.js"
+
+# Up to max bytes. A short read or a pipe does not stop it before max
+# unless the file ends first; EINTR is retried.
 def File.read(file: File, max: U32) ->
+  IO(File & Result<&1, &1, U32 & String, String>):
+  import "./effs/file_read.c"
+  import "./effs/file_read.js"
+
+# The next line with its "\n", up to max bytes, so a terminal or a pipe
+# answers each line as it comes; "" at the end of the file, or when max
+# is 0.
+def File.read_line(file: File, max: U32) ->
   IO(File & Result<&1, &1, U32 & String, String>):
   import "./effs/file_read.c"
   import "./effs/file_read.js"
@@ -316,6 +386,14 @@ def File.write_bytes(file: File, data: List<&2, U32>) ->
   import "./effs/file_write.c"
   import "./effs/file_write.js"
 
+# Write bytes at offset without moving the position. An append handle or a
+# value past 255 fails with EINVAL before any byte is written.
+# A Fail may leave a prefix of the bytes written.
+def File.write_at(file: File, offset: U32, data: List<&2, U32>) ->
+  IO(File & Result<&1, &1, U32 & String, Unit>):
+  import "./effs/file_write.c"
+  import "./effs/file_write.js"
+
 def File.close(file: File) -> IO(Unit):
   import "./effs/file_close.c"
   import "./effs/file_close.js"
@@ -339,15 +417,17 @@ def TCP.connect(host: String, port: U32) ->
   import "./effs/tcp_connect.c"
   import "./effs/tcp_connect.js"
 
-# A failed send hands back what the kernel did not take. Sent means taken
-# by the kernel, not yet read by the peer.
+# A failed or timed-out send returns the exact unsent bytes: the kernel
+# may stop inside UTF-8. Resume with TCP.send_bytes. Sent means taken by
+# the kernel, not yet read by the peer.
 def TCP.send(sock: Socket, data: String) ->
-  IO(Socket & Result<&1, &1, (U32 & String) & String, Unit>):
+  IO(Socket & Result<&1, &1, (U32 & String) & List<&2, U32>, Unit>):
   import "./effs/tcp_send.c"
   import "./effs/tcp_send.js"
 
 def TCP.try_send(sock: Socket, data: String, ms: U32) ->
-  IO(Socket & Poll<&1, &1, Result<&1, &1, (U32 & String) & String, Unit>, String>):
+  IO(Socket & Poll<&1, &1, Result<&1, &1, (U32 & String) & List<&2, U32>, Unit>,
+    List<&2, U32>>):
   import "./effs/tcp_send.c"
   import "./effs/tcp_send.js"
 
@@ -469,6 +549,16 @@ def Window.set_title(window: Window, title: String) -> IO(Window):
 def Window.grab(window: Window, on: Bool) -> IO(Window):
   import "./effs/window.c"
   import "./effs/window_grab.js"
+
+# Request fullscreen without changing the logical drawing resolution or
+# pointer coordinates. The desktop applies the request asynchronously;
+# the handle comes back either way. A desktop without fullscreen (no
+# window manager, or no XRender) fails with ENOTSUP, and the Mac with
+# EAGAIN while the window is hidden or minimized.
+def Window.fullscreen(window: Window, on: Bool) ->
+  IO(Window & Result<&1, &1, U32 & String, Unit>):
+  import "./effs/window.c"
+  import "./effs/window_fullscreen.js"
 
 def Window.close(window: Window) -> IO(Unit):
   import "./effs/window.c"
@@ -1055,24 +1145,39 @@ def List.foldr(
     case h <> t:
       f(h, List.foldr(~a, ~A, ~B, ~f, t, z))
 
+# Searches stop at the first decisive predicate; later elements are not tested.
+def List.any.if(rest: Unit -> Bool, hit: Bool) -> Bool:
+  match hit:
+    case False{}:
+      rest(Unit{})
+    case True{}:
+      True{}
+
 def List.any(~a: Quant, ~A: Kind(a), ~f: A -> Bool, xs: List<a, A>) -> Bool:
   match xs:
     case Nil{}:
       False{}
     case h <> t:
-      Bool.or(f(h), List.any(~a, ~A, ~f, t))
+      List.any.if(u => List.any(~a, ~A, ~f, t), f(h))
+
+def List.all.if(rest: Unit -> Bool, hit: Bool) -> Bool:
+  match hit:
+    case False{}:
+      False{}
+    case True{}:
+      rest(Unit{})
 
 def List.all(~a: Quant, ~A: Kind(a), ~f: A -> Bool, xs: List<a, A>) -> Bool:
   match xs:
     case Nil{}:
       True{}
     case h <> t:
-      Bool.and(f(h), List.all(~a, ~A, ~f, t))
+      List.all.if(u => List.all(~a, ~A, ~f, t), f(h))
 
-def List.find.put(-A: Data, h: A, r: Maybe<&2, A>, hit: Bool) -> Maybe<&2, A>:
+def List.find.if(-A: Data, h: A, rest: Unit -> Maybe<&2, A>, hit: Bool) -> Maybe<&2, A>:
   match hit:
     case False{}:
-      r
+      rest(Unit{})
     case True{}:
       Some{h}
 
@@ -1081,7 +1186,7 @@ def List.find(~A: Data, ~f: A -> Bool, xs: List<&2, A>) -> Maybe<&2, A>:
     case Nil{}:
       None{}
     case +h <> t:
-      List.find.put(A, h, List.find(~A, ~f, t), f(h))
+      List.find.if(A, h, u => List.find(~A, ~f, t), f(h))
 
 def List.contains(
   ~A: Data, ~eq: A -> A -> Bool, xs: List<&2, A>, +x: A
@@ -1090,7 +1195,7 @@ def List.contains(
     case Nil{}:
       False{}
     case h <> t:
-      Bool.or(eq(h, x), List.contains(~A, ~eq, t, x))
+      List.any.if(u => List.contains(~A, ~eq, t, x), eq(h, x))
 
 def List.merge.step(
   -A: Data, acc: List<&2, A>, x: A, xt: List<&2, A>, y: A, yt: List<&2, A>,
@@ -1124,12 +1229,23 @@ def List.merge.go(
           List.merge.go(~A, ~le, f,
             List.merge.step(A, acc, x, xt, y, yt, le(x, y)))
 
-def List.sort.runs(-A: Data, xs: List<&2, A>) -> List<&2, List<&2, A>>:
+def List.sort.pair(-A: Data, x: A, y: A, le: Bool) -> List<&2, A>:
+  match le:
+    case True{}:
+      [x, y]
+    case False{}:
+      [y, x]
+
+# Start with the first pass's sorted pairs, without building singleton runs.
+def List.sort.pairs(~A: Data, ~le: A -> A -> Bool, xs: List<&2, A>) ->
+  List<&2, List<&2, A>>:
   match xs:
     case Nil{}:
       Nil{}
-    case h <> t:
-      [h] <> List.sort.runs(A, t)
+    case x <> Nil{}:
+      [[x]]
+    case +x <> +y <> t:
+      List.sort.pair(A, x, y, le(x, y)) <> List.sort.pairs(~A, ~le, t)
 
 def List.sort.pass(
   ~A: Data, ~le: A -> A -> Bool, +n: Nat, runs: List<&2, List<&2, A>>
@@ -1166,7 +1282,7 @@ def List.sort(~A: Data, ~le: A -> A -> Bool, xs: List<&2, A>) -> List<&2, A>:
     case h <> t:
       +ys = {h <> t : List<&2, A>}
       +n = List.length(&2, A, ys)
-      List.sort.go(~A, ~le, n, n, List.sort.runs(A, ys))
+      List.sort.go(~A, ~le, n, n, List.sort.pairs(~A, ~le, ys))
 
 def List.for_each(
   ~a: Quant, ~A: Kind(a), ~f: A -> IO(Unit), xs: List<a, A>
@@ -1540,6 +1656,18 @@ def U32.log2.go(+k: Nat, +n: U32, b: Nat) -> Nat:
 def U32.log2(n: U32) -> Nat:
   U32.log2.go(5n, n, 0n)
 
+def U32.popcount(n: U32) -> Nat:
+  +m = n
+  +a = U32.sub(m, U32.and(U32.shrn(m, 1n), 1431655765))
+  +b = U32.add(U32.and(a, 858993459), U32.and(U32.shrn(a, 2n), 858993459))
+  c = U32.and(U32.add(b, U32.shrn(b, 4n)), 252645135)
+  U32.to_nat(U32.shrn(U32.mul(c, 16843009), 24n))
+
+# 32 at 0
+def U32.ctz(n: U32) -> Nat:
+  +m = n
+  U32.popcount(U32.and(U32.not(m), U32.sub(m, 1)))
+
 def U32.divmod.go.fin(-p: Nat, q: Word(p), s: U32, b: U32, g: Bool) ->
   Word(1n+p) & U32:
   match g:
@@ -1775,7 +1903,7 @@ law F32.is_ge:
   Bool
 
 law F32.show:
-  for +a: F32
+  for a: F32
   String
 
 law F32.bits:
@@ -1799,32 +1927,90 @@ def F32.max(a: F32, b: F32) -> F32:
 def F32.clamp(x: F32, lo: F32, hi: F32) -> F32:
   F32.min(F32.max(x, lo), hi)
 
+# At t = 0 and t = 1 return that endpoint as is, keeping signed zero and never
+# multiplying the other one (an infinite endpoint would give NaN). Between them
+# the weighted sum avoids overflowing b - a for finite endpoints of opposite
+# signs.
 def F32.lerp(a: F32, b: F32, t: F32) -> F32:
-  match a:
-    case F32{+x}:
-      F32.add(F32{x}, F32.mul(F32.sub(b, F32{x}), t))
+  match t:
+    case F32{+z}:
+      F32.lerp.zero(a, b, F32{z}, F32.is_eq(F32{z}, 0.0))
+
+def F32.lerp.zero(a: F32, b: F32, +t: F32, zero: Bool) -> F32:
+  match zero:
+    case True{}:
+      a
+    case False{}:
+      F32.lerp.one(a, b, t, F32.is_eq(t, 1.0))
+
+def F32.lerp.one(a: F32, b: F32, +t: F32, one: Bool) -> F32:
+  match one:
+    case True{}:
+      b
+    case False{}:
+      F32.add(F32.mul(a, F32.sub(1.0, t)), F32.mul(b, t))
 
 def F32.square(a: F32) -> F32:
   match a:
     case F32{+x}:
       F32.mul(F32{x}, F32{x})
 
+# Outside [2^-60, 2^60] the squares would overflow or underflow, so scale
+# both sides by a power of two first; inside, the scale is 1 and exact.
 def F32.hypot(a: F32, b: F32) -> F32:
-  match a b:
-    case F32{+x} F32{+y}:
-      F32.sqrt(F32.add(F32.mul(F32{x}, F32{x}), F32.mul(F32{y}, F32{y})))
+  +x = F32.abs(a)
+  +y = F32.abs(b)
+  +m = F32.max(x, y)
+  +hi = F32.is_gt(m, 1.152921504606847e18)
+  +lo = F32.is_lt(m, 8.673617379884035e-19)
+  +s = Bool.pick(F32, hi, 8.470329472543003e-22,
+    Bool.pick(F32, lo, 1.2676506002282294e30, 1.0))
+  +u = Bool.pick(F32, hi, 1.1805916207174113e21,
+    Bool.pick(F32, lo, 7.888609052210118e-31, 1.0))
+  +p = F32.mul(x, s)
+  +q = F32.mul(y, s)
+  F32.mul(F32.sqrt(F32.add(F32.mul(p, p), F32.mul(q, q))), u)
+
+# A rounded zero keeps the input sign, including at the negative half.
+def F32.round.zero(a: F32, r: F32, zero: Bool) -> F32:
+  match zero:
+    case True{}:
+      F32.mul(a, 0.0)
+    case False{}:
+      r
 
 def F32.round(a: F32) -> F32:
-  F32.floor(F32.add(a, 0.5))
+  match a:
+    case F32{+x}:
+      +f = F32.floor(F32{x})
+      +r = F32.add(f, Bool.pick(F32, F32.is_ge(F32.sub(F32{x}, f), 0.5), 1.0, 0.0))
+      F32.round.zero(F32{x}, r, F32.is_eq(r, 0.0))
 
 def F32.pi() -> F32:
   3.14159265
 
-def F32.from_nat(n: Nat) -> F32:
-  U32.to_f32(U32.from_nat(n))
+# The full Nat conversion is intrinsic on every backend, like U32.to_f32.
+law F32.from_nat:
+  for n: Nat
+  F32
+
+# Preserve the direct cast below 2^32; wider Nats need both word halves.
+# Past 2^48-1 no Nat fits, so the direct cast gives 0.
+def F32.to_nat.wide(+a: F32, wide: Bool) -> Nat:
+  match wide:
+    case False{}:
+      U32.to_nat(F32.to_u32(a))
+    case True{}:
+      +hi = U32.to_nat(F32.to_u32(F32.div(a, 4294967296.0)))
+      +lo = U32.to_nat(F32.to_u32(F32.mod(a, 4294967296.0)))
+      Nat.add(Nat.mul(hi, Nat.mul(65536n, 65536n)), lo)
 
 def F32.to_nat(a: F32) -> Nat:
-  U32.to_nat(F32.to_u32(a))
+  match a:
+    case F32{+x}:
+      +wide = Bool.and(F32.is_ge(F32{x}, 4294967296.0),
+        F32.is_lt(F32{x}, 281474976710656.0))
+      F32.to_nat.wide(F32{x}, wide)
 
 # Char
 # ----
@@ -1949,8 +2135,21 @@ def String.reverse.go(s: String, acc: String) -> String:
 def String.reverse(s: String) -> String:
   String.reverse.go(s, SNil{})
 
+# c is the order of the chars so far: the walk is one tail call per char
+# and builds nothing (String.cmp rebuilds both strings for its callers).
+def String.order.go(a: String, b: String, c: Cmp) -> Cmp:
+  match a b c:
+    case SNil{} SCon{h, t} EQ{}:
+      LT{}
+    case SCon{h, t} SNil{} EQ{}:
+      GT{}
+    case SCon{Chr{x}, t1} SCon{Chr{y}, t2} EQ{}:
+      String.order.go(t1, t2, U32.cmp(x, y))
+    case _ _ o:
+      o
+
 def String.order(a: String, b: String) -> Cmp:
-  Pair.snd(String & String, Cmp, String.cmp(a, b))
+  String.order.go(a, b, EQ{})
 
 def String.is_lt(a: String, b: String) -> Bool:
   Cmp.is_lt(String.order(a, b))
@@ -1969,23 +2168,30 @@ law String.starts_with:
   for p: String
   Bool
 
-def String.starts_with.if(t: String, pt: String, same: Bool) -> Bool:
+law String.starts_with.go:
+  for p: String
+  for s: String
+  Bool
+
+def String.starts_with.go.if(pt: String, t: String, same: Bool) -> Bool:
   match same:
     case False{}:
       False{}
     case True{}:
-      String.starts_with(t, pt)
+      String.starts_with.go(pt, t)
+
+# Match the prefix first so an exhausted prefix never inspects the tail.
+def String.starts_with.go(p, s):
+  match p s:
+    case SNil{} _:
+      True{}
+    case SCon{y, yt} SNil{}:
+      False{}
+    case SCon{y, yt} SCon{x, xt}:
+      String.starts_with.go.if(yt, xt, Char.is_eq(x, y))
 
 def String.starts_with(s, p):
-  match s p:
-    case SNil{} SNil{}:
-      True{}
-    case SNil{} SCon{h, t}:
-      False{}
-    case SCon{h, t} SNil{}:
-      True{}
-    case SCon{x, xt} SCon{y, yt}:
-      String.starts_with.if(xt, yt, Char.is_eq(x, y))
+  String.starts_with.go(p, s)
 
 def String.ends_with(s: String, p: String) -> Bool:
   String.starts_with(String.reverse(s), String.reverse(p))
@@ -2285,6 +2491,81 @@ def U32.read(s: String) -> Maybe<&2, U32>:
     case SCon{h, t}:
       U32.read.go(SCon{h, t}, 0)
 
+law U32.hex.go:
+  for f   : Nat
+  for +n  : U32
+  for acc : String
+  String
+
+def U32.hex.fin(g: Nat, acc: String, +n: U32, z: Bool) -> String:
+  match z:
+    case True{}:
+      acc
+    case False{}:
+      +d = U32.and(n, 15)
+      U32.hex.go(g, U32.shrn(n, 4n),
+        SCon{Chr{(d + 48 + Bool.to_u32((d > 9 : U32)) * 39 : U32)}, acc})
+
+def U32.hex.go(f, n, acc):
+  match f:
+    case 0n:
+      acc
+    case 1n+g:
+      U32.hex.fin(g, acc, n, U32.is_zero(n))
+
+# a's hex digits, none for 0
+def U32.hex(a: U32) -> String:
+  U32.hex.go(8n, a, SNil{})
+
+def Char.quote.at(+x: U32, k: U32, plain: Bool, raw: Bool) -> String:
+  match plain raw:
+    case False{} _:
+      SCon{Chr{92}, SCon{Chr{k}, SNil{}}}
+    case True{} True{}:
+      "\\u{" ++ U32.hex(x) ++ "}"
+    case True{} False{}:
+      SCon{Chr{x}, SNil{}}
+
+# c as a quote q holds it: \n \t \r \0 \\ and q escaped; a control, a
+# surrogate or a code past Unicode as \u{hex}
+def Char.quote(+q: U32, c: Char) -> String:
+  match c:
+    case Chr{+x}:
+      +k = (Bool.to_u32(U32.is_eq(x, 10)) * 110 + Bool.to_u32(U32.is_eq(x, 9))
+        * 116 + Bool.to_u32(U32.is_eq(x, 13)) * 114 + Bool.to_u32(
+        U32.is_eq(x, 0)) * 48 + Bool.to_u32(U32.is_eq(x, 92)
+        || U32.is_eq(x, q)) * x : U32)
+      Char.quote.at(x, k, U32.is_zero(k), (x < 32 : U32) || U32.is_eq(x, 127)
+        || (x >= 55296 : U32) && (x <= 57343 : U32) || (x > 1114111 : U32))
+
+def String.quote.go(s: String, acc: String) -> String:
+  match s:
+    case SNil{}:
+      String.reverse(SCon{Chr{34}, acc})
+    case SCon{c, t}:
+      String.quote.go(t, String.reverse.go(Char.quote(34, c), acc))
+
+def String.quote(s: String) -> String:
+  String.quote.go(s, "\"")
+
+# F32.show with a point before an e, or at the end, when it has none
+def F32.show.dot(s: String) -> String:
+  match s:
+    case SNil{}:
+      ".0"
+    case SCon{Chr{+c}, t}:
+      F32.show.dot.at(c, t, U32.is_eq(c, 46) || U32.is_eq(c, 110)
+        || U32.is_eq(c, 105), U32.is_eq(c, 101))
+
+def F32.show.dot.at(+c: U32, t: String, stop: Bool, e: Bool) -> String:
+  match stop e:
+    case True{} _:
+      SCon{Chr{c}, t}
+    case False{} True{}:
+      ".0" ++ SCon{Chr{c}, t}
+    case False{} False{}:
+      SCon{Chr{c}, F32.show.dot(t)}
+
 def Bool.show(b: Bool) -> String:
   match b:
     case False{}:
@@ -2446,6 +2727,9 @@ law Array.atomic.fadd:
   for +v: F32
   Array<F32> & F32
 
+# An Array of depth d holds 2^d cells, each v: d is a depth, not a length
+# (14n holds 16384 cells, the first power of two >= 12288). Compiled, d plus
+# log2 of T's words per cell is at most 31, and a boxed v stops at depth 23.
 def Array.new(-T: Data, +d: Nat, +v: T) -> Array<T>:
   match d:
     case 0n:
@@ -2480,6 +2764,12 @@ def Array.get.at(-T: Data, i: U32, an: Array<T> & U32) -> Array<T> & T:
 def Array.get(-T: Data, a: Array<T>, +i: U32) -> Array<T> & T:
   Array.get.at(T, i, Array.size(T, a))
 
+# A read at an index the caller promises is below the block's capacity: it
+# skips the wrap mask. @unsafe, like Array.fork; only reads.
+@unsafe
+def Array.get_unchecked(-T: Data, a: Array<T>, +i: U32) -> Array<T> & T:
+  Array.get(T, a, i)
+
 def Array.to_list.go(~T: Type, a: Array<T>, acc: List<T>) -> List<T>:
   match a:
     case ALeaf{x}:
@@ -2489,6 +2779,60 @@ def Array.to_list.go(~T: Type, a: Array<T>, acc: List<T>) -> List<T>:
 
 def Array.to_list(~T: Type, a: Array<T>) -> List<T>:
   Array.to_list.go(~T, a, Nil{})
+
+# Array.write writes [x0, x1, ...], reading the array in place by index:
+# f(s, x) writes s, then x, so each element is one write. Array.show
+# returns that text, f(s, x) being s followed by x's text. A pure main
+# prints an Array with them.
+def Array.write.go(
+  ~T: Data, ~f: String -> T -> IO(Unit), n: Nat, +i: U32, s: String,
+  r: Array<T> & T
+) -> IO(Unit):
+  match n:
+    case 0n:
+      (a, x) = r
+      do IO<Unit>:
+        Unit <- f(s, x)
+        IO.write("]")
+    case 1n+p:
+      (a, x) = r
+      +j = U32.inc(i)
+      do IO<Unit>:
+        Unit <- f(s, x)
+        Array.write.go(~T, ~f, p, j, ", ", Array.get(T, a, j))
+
+def Array.write.at(
+  ~T: Data, ~f: String -> T -> IO(Unit), an: Array<T> & U32
+) -> IO(Unit):
+  (a, +n) = an
+  Array.write.go(~T, ~f, U32.to_nat(U32.sub(n, 1)), 0, "[",
+    Array.get(T, a, 0))
+
+def Array.write(~T: Data, ~f: String -> T -> IO(Unit), a: Array<T>) -> IO(Unit):
+  Array.write.at(~T, ~f, Array.size(T, a))
+
+def Array.show.go(
+  ~T: Data, ~f: String -> T -> String, n: Nat, +i: U32, s: String,
+  r: Array<T> & T
+) -> String:
+  match n:
+    case 0n:
+      (a, x) = r
+      f(s, x) ++ "]"
+    case 1n+p:
+      (a, x) = r
+      +j = U32.inc(i)
+      Array.show.go(~T, ~f, p, j, f(s, x) ++ ", ", Array.get(T, a, j))
+
+def Array.show.at(
+  ~T: Data, ~f: String -> T -> String, an: Array<T> & U32
+) -> String:
+  (a, +n) = an
+  Array.show.go(~T, ~f, U32.to_nat(U32.sub(n, 1)), 0, "[",
+    Array.get(T, a, 0))
+
+def Array.show(~T: Data, ~f: String -> T -> String, a: Array<T>) -> String:
+  Array.show.at(~T, ~f, Array.size(T, a))
 
 def Array.map.go(
   ~T: Data, ~U: Data, ~f: T -> U, +n: Nat, +i: U32, b: Array<U>,

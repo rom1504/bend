@@ -1,7 +1,9 @@
 # HTTP server: binds port 8080 and answers every connection with a
 # hello world page. Each accepted socket goes to a computation of its
 # own (IO.spawn) that reads the request, sends the response and
-# closes; the accept loop is @unsafe: it runs until killed. Try it:
+# closes. The accept loop counts down a fuel of 4294967295
+# connections, so every def here checks; in practice it runs until
+# killed. Try it:
 #
 #   bend demos/io_http_server/main.bend -o http_server && ./http_server
 #   curl http://127.0.0.1:8080
@@ -12,7 +14,7 @@ import Base
 def http_response(page: String) -> String:
   "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\nConnection: close\r\n\r\n" ++ page
 
-def http_sent(m: Socket & Result<&1, &1, (U32 & String) & String, Unit>) -> IO(Unit):
+def http_sent(m: Socket & Result<&1, &1, (U32 & String) & List<&2, U32>, Unit>) -> IO(Unit):
   (s, r) = m
   Socket.close(s)
 
@@ -21,7 +23,7 @@ def http_reply(m: Socket & Result<&1, &1, U32 & String, Maybe<&1, String>>) -> I
   match r:
     case Done{Some{req}}:
       do IO<Unit>:
-        sent : Socket & Result<&1, &1, (U32 & String) & String, Unit> <- TCP.send(s, http_response("<h1>Hello, world!</h1>"))
+        sent : Socket & Result<&1, &1, (U32 & String) & List<&2, U32>, Unit> <- TCP.send(s, http_response("<h1>Hello, world!</h1>"))
         http_sent(sent)
     case Done{None{}}:
       Socket.close(s)
@@ -40,15 +42,18 @@ def http_conn(m: Listener & Result<&1, &1, U32 & String, Socket>) -> IO(Listener
     IO.spawn(Unit, http_talk(s))
     return l
 
-@unsafe
-def http_serve(l: Listener) -> IO(Unit):
-  do IO<Unit>:
-    m  : Listener & Result<&1, &1, U32 & String, Socket> <- TCP.accept(l)
-    l2 : Listener <- http_conn(m)
-    http_serve(l2)
+def http_serve(fuel: Nat, l: Listener) -> IO(Unit):
+  match fuel:
+    case 0n:
+      Listener.close(l)
+    case 1n+fuel2:
+      do IO<Unit>:
+        m  : Listener & Result<&1, &1, U32 & String, Socket> <- TCP.accept(l)
+        l2 : Listener <- http_conn(m)
+        http_serve(fuel2, l2)
 
 def main() -> IO(Unit):
   do IO<Unit>:
     l : Listener <- IO.try(Listener, TCP.listen("127.0.0.1", 8080))
     IO.print("serving http://127.0.0.1:8080")
-    http_serve(l)
+    http_serve(4294967295n, l)

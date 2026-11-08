@@ -11,8 +11,12 @@ static Term udp_recv_from_with(Env e, IoWork* w, IoPack more,
   socklen_t alen = sizeof(at);
   char      host[16];
   int       fd = (int)w->hand;
-  w->size = io_sys_end(w, recvfrom(fd, w->data, (size_t)w->made, 0,
-    (struct sockaddr*)&at, &alen));
+  ssize_t   n;
+  do {
+    n = recvfrom(fd, w->data, (size_t)w->made, 0, (struct sockaddr*)&at,
+      &alen);
+  } while (n < 0 && errno == EINTR);
+  w->size = io_sys_end(w, n);
   if (io_again(w)) {
     return io_wait_on(w, fd, POLLIN, w->time, more);
   }
@@ -33,7 +37,8 @@ static Term udp_recv_from_start(Env e, Term* f, IoWork* w, IoPack more, u64 at) 
     return io_tup(e, io_hand(w->hand), io_poll_end(e, w,
       term_pak(CID(Unit), 0), io_fail(e, EINVAL, NULL)));
   }
-  w->made = f[1] < INT32_MAX ? (intptr_t)f[1] : INT32_MAX;
+  // IPv4's 65535-byte packet has at least 20 IP and 8 UDP header bytes.
+  w->made = f[1] < 65507 ? (intptr_t)f[1] : 65507;
   w->data = io_mem(malloc((size_t)w->made + 1));
   return io_wait_on(w, (int)w->hand, POLLIN, at, more);
 }

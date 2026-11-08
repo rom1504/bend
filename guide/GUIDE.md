@@ -371,8 +371,8 @@ def main() -> IO(Unit):
 Every bind is annotated, and `x : T = v` binds a pure value in the middle of a
 block. A fallible effect answers `Result<&1, &1, U32 & String, A>`: `IO.try`
 unwraps it or exits with the error, and `IO.die` exits with your own. `IO.args`
-answers the command line, less the runtime's own options (a `--` ends them):
-its head is the program as invoked, like C's `argv[0]`. A handle (`File`,
+answers the command line, less the runtime's options (`+RTS` to `-RTS`): its
+head is the program as invoked, like C's `argv[0]`. A handle (`File`,
 `Socket`, `Window`) is an affine, opaque value, so every effect on one hands it
 back beside its result, and no program can forge or reuse one.
 
@@ -386,22 +386,24 @@ the current directory and environment, writes UTF-8 `input` to its stdin, and
 answers `Done{(status, (stdout, stderr))}` even when the exit status is not
 zero. Both limits must be positive; failure to start, a timeout, or stdout
 and stderr exceeding `max_output` bytes together answer `Fail`. The call
-waits for the direct child and drains ready output; a descendant holding an
-inherited pipe open does not extend the wait. Timeouts do not kill descendants.
+returns once the child exits and stdout and stderr close, so a descendant
+holding a pipe open delays it, up to the timeout. Timeouts do not kill
+descendants.
 A native build runs the child on an IO helper thread; the JavaScript lane
 blocks while the child runs. On Linux, native builds need glibc 2.34 or newer
 to close inherited descriptors. It does not sandbox the child: callers must
 whether a command is trusted before executing it.
 
 A Bend program is a set of computations interleaved by one event loop, as in
-Node.js: each runs its pure code (in parallel, on every core) up to its next
-effect, and one that waits on a socket, a sleep or a channel steps aside for the
-others. `IO.fork` starts a computation and returns the channel its result will
-arrive on; `IO.join` waits for it. Underneath are `IO.spawn`, `Chan.new`,
-`Chan.send`, `Chan.recv` and `Chan.close`. `IO.within(A, ms, act)` races `act`
-against a deadline and answers `None{}` if the deadline wins; the loser is not
-cancelled. The program ends when every computation is done, or reports a
-deadlock when the remaining ones all wait.
+Node.js: one at a time, each runs its pure code, on every core through its
+[parallel calls](#parallelism), up to its next effect, and one that waits on a
+socket, a sleep or a channel steps aside for the others. `IO.fork` starts a
+computation and returns the channel its result will arrive on; `IO.join` waits
+for it. Underneath are `IO.spawn`, `Chan.new`, `Chan.send`, `Chan.recv` and
+`Chan.close`. `IO.within(A, ms, act)` races `act` against a deadline and answers
+`None{}` if the deadline wins; the loser is not cancelled. The program ends when
+every computation is done, or reports a deadlock when the remaining ones all
+wait.
 
 Every effect in Base is a def whose body is `import "./x.js"` plus a `.c` twin,
 implemented by a host function named after the def, lowercased, dots to
@@ -409,8 +411,8 @@ underscores. You can add your own effects the same way. Only the event loop runs
 them, so proofs, termination and the GPU never touch host code. In the other
 direction, a JS file may `import Game from "./game.bend"` (with `bend2/main.ts`
 preloaded), or from the `./game.mjs` that `-o game.mjs` writes, and call every
-non-IO def, with constructors as `{$: "Name", field: value}` and `Nat` as
-`BigInt`. A value crosses without a copy: an `Array`
+non-IO def, with constructors as `{$: "Name", field: value}` and `Nat` as a
+number. A value crosses without a copy: an `Array`
 argument is the caller's own array, updated in place, so copy it first if you
 keep it.
 
@@ -460,13 +462,12 @@ def main() -> IO(Unit):
 
 An `Image` is a quadtree: `Pix{color}` paints a square, and `Qua{tl, tr, bl,
 br}` splits it in four, so a frame is drawn by recursion like everything else,
-in parallel if you want. Events are `Key`, `Mouse`, `Move`, `Look`, `Scroll`
-and `Close`. `Scroll{x, y, dx, dy}` is a wheel or trackpad under the pointer;
-its signed `F32` deltas scroll toward a page's top and left (a notch is 1 on
-X11). For a first-person camera, `Window.grab(window, True{})` hides and holds
-the cursor, and the mouse's motion comes as `Look{dx, dy}` (signed `F32`, in
-`Move`'s units) until `Window.grab(window, False{})` or the window losing focus
-lets it go.
+in parallel if you want. The events are Base's `Event`, each explained in
+`bend2/base.bend`: a pointer (the mouse, a finger or a pen) comes as `Press`,
+`Move`, `Leave` and `Lost`, and a key or button held as the window loses the
+focus comes up. For a first-person camera, `Window.grab(window, True{})`
+hides and holds the cursor, and the mouse's motion comes as `Look{dx, dy}`
+until `Window.grab(window, False{})` or the window losing focus lets it go.
 `App.run` opens a window and calls `view` then `tick` once per frame, until
 `tick` answers `None`. Since the state is affine, `view` must hand it back next
 to the image. Underneath are `Window.open`, `Window.frame` and `Window.close`,
@@ -521,9 +522,9 @@ def main() -> U32:
 
 The alias is local to the importing file, and dots inside a name are just
 characters: `U32.show` needs no module. A module's path is plain names
-(letters, digits, `_` and `-`): `math.bend` is a module, `math.extra.bend` is
-refused. A law left open in one file may be filled in another as
-`def M.name(..)`, so a proof can ship separately from its claim.
+(letters, digits, `_` and `-`, no digit first): `math.bend` is a module,
+`math.extra.bend` is refused. A law left open in one file may be filled in
+another as `def M.name(..)`, so a proof can ship separately from its claim.
 `import 0x<hash>/main.bend as P` imports a package by content hash, fetched
 from the hub and checked against it; `bend main.bend --publish` uploads a file
 with everything it imports and prints that line.
@@ -551,9 +552,8 @@ bend file.bend -o file.js # emit the JS source instead
 bend file.bend -o f.mjs   # emit an ES module of its non-IO defs, for JS to import
 bend file.bend --verdict  # check; then recheck with the proven BendTT kernel
 bend page.html -o dist    # bundle a web page that imports .bend files
-./file --threads 8        # run a native binary on 8 CPU threads
-./file --gpu off          # run ! calls on the CPU (the GPU is on by default)
-./file --gpu 4GB          # cap the GPU's heap at 4GB
+./file +RTS --threads 8   # run a native binary on 8 CPU threads
+./file +RTS --gpu 4GB     # cap the GPU heap at 4GB; off runs ! calls on the CPU
 ```
 
 A `main` that returns `IO` runs compiled; one that returns a value is normalized
@@ -604,6 +604,7 @@ D<A>  +D<A>  D<&2, A>                    # a datatype; + makes it reusable
 ```python
 # Terms
 42  1.5  3n  'c'  "s"                    # U32, F32, Nat, Char, String
+3n+e                                     # e plus 3, a Nat; no spaces; e runs to the end
 [a, b]  h <> t  (a, b)                   # a list, a cons, a tuple
 K{a, b}  x => e  +x => e                 # a constructor, a lambda
 f(a, b)  f!(a)  t(~g, a)                 # a call, on the GPU, of a template
@@ -644,11 +645,11 @@ whichever chip it lands on.
 A term is one 64-bit word: small values are stored inline, everything else is a
 pointer into a single heap shared by every core and by the GPU. There is no
 garbage collector. Since values are affine, a `match` frees the node it opens
-on the spot, and only `+` values carry a reference count. There is no C stack
-either: each def compiles to a segment of a flat state machine, a call is a
-jump, and a parallel call creates a join task plus one task per call, which the
-scheduler deals across CPU or GPU lanes. `paper/BendRT.pdf` has the design and
-the benchmarks.
+on the spot, but copying any value of a datatype makes all its nodes count their
+fields. There is no C stack either: each def compiles to a segment of a flat
+state machine, a call is a jump, and a parallel call creates a join task plus
+one task per call, which the scheduler deals across CPU or GPU lanes.
+`paper/BendRT.pdf` has the design and the benchmarks.
 
 Bend's theory has one universe and no positivity check: `Type : Type` holds,
 and a datatype may recurse on the left of an arrow. What keeps this consistent

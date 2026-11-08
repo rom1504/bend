@@ -105,13 +105,21 @@ def Laws.esc_quits(pre, post, g):
       esc_arm(U32.is_eq(code, 27), Slash.Game.key(g, code, down),
         Slash.Game.cat(rest, Key{27, True{}} <> post),
         s => Laws.esc_quits(rest, post, s))
-    case Mouse{x, y, button, down} <> rest:
+    case Text{text} <> rest:
       Laws.esc_quits(rest, post, g)
-    case Move{x, y} <> rest:
+    case Press{id, tool, x, y, time, button, down} <> rest:
+      Laws.esc_quits(rest, post, g)
+    case Move{id, tool, x, y, time} <> rest:
+      Laws.esc_quits(rest, post, g)
+    case Leave{id} <> rest:
+      Laws.esc_quits(rest, post, g)
+    case Lost{id} <> rest:
       Laws.esc_quits(rest, post, g)
     case Look{dx, dy} <> rest:
       Laws.esc_quits(rest, post, g)
     case Scroll{x, y, dx, dy} <> rest:
+      Laws.esc_quits(rest, post, g)
+    case Focus{on} <> rest:
       Laws.esc_quits(rest, post, g)
     case Close{} <> rest:
       {==}

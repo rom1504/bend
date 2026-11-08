@@ -284,6 +284,7 @@ def add_zero(x):
 - Strings are linked lists of characters, so text processing is slow.
 - Base is small: expect to write helpers other languages ship built in.
 - Effects are few: print, env, time, sleep, spawn, channels, files, TCP, UDP.
+  UDP buffers fit IPv4's 65,507-byte payload limit.
 - No TLS, HTTP library, JSON or regex for now (you can add them as foreigns).
 - Targets are C, Metal, CUDA and JavaScript; Lua, Luau and Python are planned.
 - The JavaScript target runs on one core and has no graphics or audio.
@@ -296,6 +297,8 @@ def add_zero(x):
 - We don't have as many benchmarks as we'd like yet, especially for the checker.
 - The compiler (not kernel) is 99% AI-written and not yet fully audited.
 - The checker has no proof and may have bugs; `--verdict` uses a proven kernel.
+- Laws are proven about Bend's semantics. The backends can still differ, for example in F32 NaN. See WONTFIX.
+- `--verdict` checks the translated terms, the parser and translation into the kernel are not proven.
 - A binary needs clang 14+; ! needs 19+, Metal or CUDA 12.
 - No Windows (WSL works); on Linux, Window and Audio need X11 and ALSA headers.
 - A hub package is a hash, unless its author names and versions it after `bend login`.

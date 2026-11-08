@@ -2,10 +2,11 @@
 // =======
 
 #include <spawn.h>
-#include <sys/ioctl.h>
 #include <sys/wait.h>
 #ifdef __APPLE__
+#include <limits.h>
 #include <sys/event.h>
+#include <sys/stat.h>
 #else
 #include <sys/syscall.h>
 #endif
@@ -65,23 +66,6 @@ static void process_append(ProcessCall* p, bool error, const char* data,
   *len = need;
 }
 
-static void process_drain(ProcessCall* p, int fd, bool error) {
-  int left = 0;
-  if (ioctl(fd, FIONREAD, &left) != 0) {
-    p->code = errno;
-  }
-  while (left > 0 && p->code == 0) {
-    char buf[8192];
-    ssize_t n = read(fd, buf, left < 8192 ? (size_t)left : 8192);
-    if (n <= 0) {
-      p->code = n < 0 ? errno : 0;
-      break;
-    }
-    process_append(p, error, buf, (u64)n);
-    left -= (int)n;
-  }
-}
-
 // A descriptor that polls readable once the child exits.
 static int process_exitfd(pid_t child) {
 #ifdef __APPLE__
@@ -123,6 +107,59 @@ static int process_pipe(int fds[2]) {
     }
   }
   return 0;
+}
+
+// Spawns argv with no shell. macOS's posix_spawnp reruns a file the kernel
+// refuses (ENOEXEC: no #! line) with /bin/sh; Linux's and Bun's answer
+// ENOEXEC. So on macOS the PATH search is done here, with posix_spawn and
+// the rest of Libc's posix_spawnp: a name with a slash is not searched, an
+// empty entry is ".", a candidate too long for the buffer is ENAMETOOLONG
+// rather than a skip to another program, and an error from a candidate that
+// stat can't see (behind a locked directory, say) moves on, as EACCES from
+// one it can does once no later entry runs.
+static int process_spawn(pid_t* child, char** argv,
+  posix_spawn_file_actions_t* actions, posix_spawnattr_t* attrp) {
+#ifdef __APPLE__
+  const char* name = argv[0];
+  if (strchr(name, '/') != NULL) {
+    return posix_spawn(child, name, actions, attrp, argv, environ);
+  }
+  if (name[0] == 0) {
+    return ENOENT;
+  }
+  const char* path = getenv("PATH");
+  int code = ENOENT;
+  char full[PATH_MAX];
+  for (const char* dir = path != NULL ? path : "/usr/bin:/bin";; ) {
+    size_t n = strcspn(dir, ":");
+    int len = n == 0 ? snprintf(full, sizeof full, "./%s", name)
+      : snprintf(full, sizeof full, "%.*s/%s", (int)n, dir, name);
+    if (len < 0 || (size_t)len >= sizeof full) {
+      return ENAMETOOLONG;
+    }
+    int got = posix_spawn(child, full, actions, attrp, argv, environ);
+    bool next = got == ENOENT || got == ENOTDIR || got == ELOOP
+      || got == ENAMETOOLONG;
+    if (got != 0 && got != E2BIG && got != ENOMEM && got != ETXTBSY
+      && !next) {
+      struct stat st;
+      next = stat(full, &st) != 0;
+      if (!next && got == EACCES) {
+        code = EACCES;
+        next = true;
+      }
+    }
+    if (!next) {
+      return got;
+    }
+    if (dir[n] == 0) {
+      return code;
+    }
+    dir += n + 1;
+  }
+#else
+  return posix_spawnp(child, argv[0], actions, attrp, argv, environ);
+#endif
 }
 
 static void process_call(IoWork* w) {
@@ -180,8 +217,7 @@ static void process_call(IoWork* w) {
   }
 #endif
   if (p->code == 0) {
-    p->code = posix_spawnp(&child, p->argv[0], &actions, attrp, p->argv,
-      environ);
+    p->code = process_spawn(&child, p->argv, &actions, attrp);
   }
   if (attrp != NULL) {
     posix_spawnattr_destroy(attrp);
@@ -201,14 +237,10 @@ static void process_call(IoWork* w) {
   u64 deadline = io_tick() + (u64)p->timeout * 1000000ull;
   u64 written  = 0;
   while (p->code == 0) {
-    pid_t got = waitpid(child, &status, WNOHANG);
+    bool reading = pipes[1][0] >= 0 || pipes[2][0] >= 0;
+    pid_t got = reading ? 0 : waitpid(child, &status, WNOHANG);
     if (got == child) {
       child = -1;
-      for (int i = 1; i < 3; i += 1) {
-        if (pipes[i][0] >= 0) {
-          process_drain(p, pipes[i][0], i == 2);
-        }
-      }
       break;
     }
     if (got < 0 && errno != EINTR) {
@@ -224,10 +256,10 @@ static void process_call(IoWork* w) {
       {pipes[0][1], POLLOUT, 0},
       {pipes[1][0], POLLIN, 0},
       {pipes[2][0], POLLIN, 0},
-      {exitfd, POLLIN, 0}
+      {reading ? -1 : exitfd, POLLIN, 0}
     };
     u64 left = (deadline - now + 999999ull) / 1000000ull;
-    u64 most = exitfd >= 0 ? 1000000 : 50;
+    u64 most = reading || exitfd >= 0 ? 1000000 : 50;
     int ready = poll(fds, 4, (int)(left > most ? most : left));
     if (ready < 0) {
       if (errno == EINTR) {
@@ -235,9 +267,6 @@ static void process_call(IoWork* w) {
       }
       p->code = errno;
       break;
-    }
-    if (fds[3].revents != 0) {
-      continue;
     }
     for (int i = 0; i < 3 && p->code == 0; i += 1) {
       if (fds[i].revents == 0) {
@@ -316,7 +345,7 @@ Term process_run_run(Env e, Term* f, IoWork* w) {
   p->argv = io_mem(calloc(capacity, sizeof(char*)));
   p->argv[p->argc++] = command;
   Term xs = f[1];
-  while (term_aux(xs) == CID_CON) {
+  while (term_aux(xs) == CID(Con)) {
     Term pair[2];
     spare_free(e, cls_fit(2), ctr_take(e, xs, 2, pair));
     char* arg = io_cstr(e, pair[0], &len);

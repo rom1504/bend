@@ -14,6 +14,12 @@ runner. Their compiler/runtime/toolchain remain explicit role metadata.
 `migration-map.json` records original paths, hashes and new ownership; it is a
 recovery record, not an operational dependency on those paths.
 
+For handwritten C versus our maintained QBE and C backends, use the
+[runtime-only comparison workflow](handwritten-c/README.md). It preserves all45
+native inputs/oracles but calibrates repetitions per role, reporting a new
+normalized time-per-invocation metric separately from the fixed-count score
+documented below. Acquisition and timing remain separate guarded jobs.
+
 ## Catalogs and oracles
 
 | Catalog | Contract |

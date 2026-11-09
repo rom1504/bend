@@ -1,7 +1,7 @@
 # Bend2 compiler written in Bend
 
 The maintained compiler source is [`src/`](src/), ordered by
-[`src/compiler.json`](src/compiler.json). One module tree supplies the JS, C and
+[`src/compiler.json`](src/compiler.json). One module tree supplies the JS, C,
 QBE and x86 assembly algorithms; explicit entry profiles select the compiler interface. Compiler
 algorithms remain in Bend. Python/JavaScript/C host tools provide file/process
 transport, runtime support, measurement and independent validation.
@@ -9,8 +9,9 @@ transport, runtime support, measurement and independent validation.
 Start with the [maintained workflow](../docs/self_hosted/workflow.md). It explains
 source assembly, image/asset admission, native requests/builds, actual bootstrap
 generations and the distinction between current source and installed artifacts.
-The [Phase182 migration report](../implementation/phase182/README.md) records the
-current installed artifacts and qualification. The [consolidation report](../implementation/repository-consolidation/README.md)
+The [Phase182 migration report](../implementation/phase182/README.md) and
+[Phase183 assembly report](../implementation/phase183/README.md) record the
+installed artifacts and qualification. The [consolidation report](../implementation/repository-consolidation/README.md)
 retains the source migration and historical recovery record.
 Maintained source targets upstream `9a4223d577ba56a0cb53d1fd952d2b481c38930f`
 (Bend2.0.40). See the [compatibility boundaries](../docs/self_hosted/upstream-2.0.40.md);
@@ -20,11 +21,12 @@ The selected release integrates the earlier frontend improvements and cleanup,
 then ports the frontend, Base, effect interfaces and runtimes to the new upstream.
 [Phase182](../implementation/phase182/README.md) records native and JS reproduction,
 finite backend/public CLI gates, session reuse and independent BendTT checks.
-No new broad generated-program performance ratio is claimed. The maintained
-`x86` target uses AMD64 SysV and the sequential ABI11102 runtime; its build,
-bootstrap, benchmark and profiler interfaces are described in the
-[assembly guide](../docs/self_hosted/ASSEMBLY.md). Qualification belongs to the
-actual image and current release receipts, separately from target availability.
+Phase183 adds installed x86 N2 for AMD64 SysV and the sequential ABI11102 runtime.
+All 64 finite cases and ten current runtime controls pass, with actual N1/N2/S3
+assembly reproduction. Its build, bootstrap, benchmark and profiler interfaces
+are described in the [assembly guide](../docs/self_hosted/ASSEMBLY.md).
+Qualification belongs to the actual image and current release receipts;
+source acceptance with zero unresolved holes is not a kernel proof.
 
 | Task | Maintained entry |
 | --- | --- |
@@ -50,16 +52,17 @@ node selfhost/cli.mjs input.bend --run
 selfhost/bend input.bend -o output.c
 ```
 
-With a qualified x86 component installed, use `selfhost/bend --target x86
+For the installed x86 compiler, use `selfhost/bend --target x86
 input.bend -o output.s` for assembly, `-o output` for an ELF, or `--run` to
 compile and execute. The JS launcher accepts the same x86 options. Existing
 output paths are refused; append application arguments after `--` with `--run`.
 
 Run these from the repository root with their selected package assets available.
-The qualified Phase182 release is selected by [`manifests/current.json`](manifests/current.json):
-JS B2, public native C N1 and direct-QBE N2, bound to the recorded snapshot08
-canonical source (with the explicit thin public C profile). The operational QBE
-assets select the installed N2; hosted QBE remains a separately checked B1 API.
+The qualified release is selected by [`manifests/current.json`](manifests/current.json):
+JS B2, public native C N1, direct-QBE N2 and x86 N2. The first three retain their
+Phase182 snapshot08 source bindings (with the explicit thin public C profile);
+x86 N2 binds the Phase183 `x86` entry profile. Operational `qbe-n2` and `x86-n2`
+assets select the corresponding installed N2; hosted QBE remains a separately checked B1 API.
 A newly assembled profile or generated image
 must retain its actual host/stage/target and capability binding; it does not
 inherit every earlier backend/runtime qualification.

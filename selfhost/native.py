@@ -7,9 +7,25 @@ from pathlib import Path
 import sys
 
 
+HELP = """Usage:
+  bend FILE.bend -o OUTPUT.c [--live]                 Emit C (default)
+  bend --target x86 FILE.bend -o OUTPUT.s [--live]    Emit assembly
+  bend --target x86 FILE.bend -o PROGRAM [--live]     Build an ELF
+  bend --target x86 FILE.bend --run [--live] [-- ARGS]
+
+A .s output selects x86 even without --target. Compile emitted C separately.
+--live prepares Base without its cache. Existing outputs are refused;
+the output directory must already exist. Use -- before x86 program arguments.
+--help, -h show this help; --version reports the selected native C compiler.
+"""
+
+
 def main():
     root = Path(__file__).resolve().parent.parent
     args = sys.argv[1:]
+    if args in (['--help'], ['-h']):
+        print(HELP, end='')
+        return
     options = args[:args.index('--')] if '--' in args else args
     x86 = any(arg == '--target=x86' or (arg == '--target' and index+1 < len(options) and options[index+1] == 'x86')
               or (arg in ('-o','--output') and index+1 < len(options) and options[index+1].endswith('.s'))

@@ -18,11 +18,18 @@ from common import (changed_inputs, clean_environment, fresh_output, kill, pin,
                     require, run, same_bytes, timeout, verify, workspace, write_json)
 
 
+def derived_protocol(target, explicit=None):
+    # An explicit protocol describes the compiled compiler's entry contract,
+    # which can differ from the seed's machine target (e.g. QBE builds x86 N0).
+    return explicit or {'qbe':'qbe-source-v1', 'x86':'native-x86-source-v1'}[target]
+
+
 def build(args):
     root = workspace(args.workspace)
     clean_environment()
     timeout(args.seconds)
     require(args.target in ('qbe', 'x86'), 'Native pipeline accepts QBE or x86 assembly')
+    output_protocol = derived_protocol(args.target, getattr(args, 'output_protocol', None))
     document = assets.load_assets(args.assets, root)
     tools = {key: assets.asset(document, key) for key in
              (('qbe', 'assembler', 'linker') if args.target == 'qbe' else ('assembler', 'linker'))}
@@ -227,12 +234,12 @@ def build(args):
                     'Derived compiler binding requires an actual source producer and native N stage')
             report['imageBinding'] = dict(kind='bend-build-image-binding', version=1, complete=True,
                 image=report['binary'], sourceIdentity=request['source'], host='native',
-                stage=args.output_stage, protocol=args.output_protocol,
-                targets={'native-c-source-v1':['c'], 'native-x86-source-v1':['x86'], 'qbe-source-v1':['qbe']}[args.output_protocol],
+                stage=args.output_stage, protocol=output_protocol,
+                targets={'native-c-source-v1':['c'], 'native-x86-source-v1':['x86'], 'qbe-source-v1':['qbe']}[output_protocol],
                 linkedRuntime=runtime, runtimeArgumentConvention=convention,
                 producer=request['image'], producerHost=request['host'],
                 producerStage=request['stage'], qualification='Built; semantic/self-host qualification is separate.')
-            if args.output_protocol == 'native-c-source-v1':
+            if output_protocol == 'native-c-source-v1':
                 report['imageBinding']['argvSentinel'] = 'compiler'
             if runtime_abi is not None:
                 report['imageBinding']['linkedRuntimeABI'] = runtime_abi
@@ -278,7 +285,8 @@ def main():
     parser.add_argument('--retain-ir', action='store_true')
     parser.add_argument('--expected-stdout', type=Path)
     parser.add_argument('--output-stage', help='Optional actual derived compiler generation, e.g. N1')
-    parser.add_argument('--output-protocol', choices=['qbe-source-v1', 'native-c-source-v1', 'native-x86-source-v1'], default='qbe-source-v1')
+    parser.add_argument('--output-protocol', choices=['qbe-source-v1', 'native-c-source-v1', 'native-x86-source-v1'],
+                        help='Derived compiler entry protocol; defaults to the selected target (explicit seed overrides supported)')
     result = build(parser.parse_args())
     print(json.dumps(result if result.get('complete') is False and 'wallSeconds' not in result else
         {k: result.get(k) for k in ('complete', 'wallSeconds',

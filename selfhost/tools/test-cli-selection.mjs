@@ -39,6 +39,10 @@ try{
   got=run({BEND_TYPED_RUNTIME_TEMPLATE:override});
   assert.equal(got.status,0,got.stderr);
   assert.equal(JSON.parse(got.stdout).template,override);
+  got=run({},['--help']);
+  assert.equal(got.status,0,got.stderr);
+  assert.match(got.stdout,/"args":\["--help"\]/);
+  for(const text of ['Assembly target:','--target x86','OUTPUT.s','-o PROGRAM','--run','--live'])assert.ok(got.stdout.includes(text),text);
   fs.appendFileSync(template,'changed');
   got=run({});
   assert.equal(got.status,1);

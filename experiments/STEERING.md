@@ -1,4 +1,40 @@
-# Latest decision — Phase182 upstream2.0.40 installed
+# Latest decision — Phase183 first-class assembly installed
+
+[Report](../implementation/phase183/README.md) · [Evidence](../implementation/phase183/evidence/index.json) ·
+[Maintained assembly guide](../docs/self_hosted/ASSEMBLY.md).
+
+The current selector now includes native assembly N2 alongside unchanged JS/C/QBE
+images on upstream2.0.40 (`9a4223d`). Maintained x86 source profile1,416,804B;
+shared ABI11102 runtime, AMD64 SysV, one mutator/GPU off. Actual N1/N2/S3 emit
+identical111,074,856B assembly; objects match and ELF differences are confined
+to nonallocated `.strtab`. N2 passes64 current cases (no unsupported), runtime10
+and14 installed public controls including old C/JS routes. Source checking is
+not a BendTT/backend proof. No unrestricted foreign/parallel/GPU claim.
+
+Build/request/bootstrap/qualification/benchmark/profiler/release tools now carry
+real x86 target, generation, source, runtime and assembly identities. The profiler
+checks37,045 actual ELF FIDs; the199-sample integration capture is below 500 and
+remains unusable for quantitative hotspot attribution. All prior source profiles
+and selected JS/C/QBE binaries are preserved. Use fresh paths; equal historical
+assembly/object files are hardlinked and must never be rewritten in place.
+
+Performance is a major remaining deficit. Same-source prepared-Base assembly
+self-emission119.661→234.689s for QBE-built N0 versus assembly-built N1 (1.96×);
+complete builds128.527→244.027s. Single observations, not cold full-profile ratios.
+Fresh fast-five/three-role/three-round screening passes every output but finds
+assembly63.06×/89.20×/42.70× upstream C on local-pair/local-fold/scalar8192,
+about 25–50× QBE. These kernels are not the full45 score. Zero-work is excluded;
+a fourth kernel has a low-resolution upstream batch, so NO aggregate is admitted.
+The20s first attempt timed out; the unchanged300s campaign completes in 119.885s.
+
+Next investigate sharing the measured missing late QBE tag/borrow/constructor
+expansions as structured native lowering, then inspect actual machine code.
+Do not infer that first-class assembly support makes it competitive with QBE,
+replace QBE's selection, or launch a whole new backend to hide this gap.
+Nineteen guarded jobs1194.427s; three preserved harness/deadline failures, no
+semantic counterexample. Total agent effort/billing is not guard wall time.
+
+## Prior decision — Phase182 upstream2.0.40 installed
 
 [Migration report](../implementation/phase182/README.md) ·
 [Compatibility boundaries](../docs/self_hosted/upstream-2.0.40.md) ·

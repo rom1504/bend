@@ -100,7 +100,7 @@ class X86Controls(unittest.TestCase):
     def test_mocked_emission_preserves_complete_bytes_and_derived_generation(self):
         expected = self.file('expected.s', self.assembly)
         with patch('native.run', side_effect=self.fake_run):
-            result = native.build(self.xargs(expected=expected, output_stage='N1'))
+            result = native.build(self.xargs(expected=expected, output_stage='N1', output_protocol=None))
         self.assertTrue(result['complete'], result)
         self.assertTrue(result['comparedToReference'])
         self.assertEqual(Path(result['assembly']['file']).read_bytes(), self.assembly)
@@ -109,6 +109,13 @@ class X86Controls(unittest.TestCase):
         self.assertEqual(result['imageBinding']['protocol'], 'native-x86-source-v1')
         self.assertEqual(result['imageBinding']['stage'], 'N1')
         self.assertEqual(result['imageBinding']['linkedRuntimeABI'], 11102)
+
+    def test_derived_protocol_defaults_and_explicit_seed_overrides(self):
+        self.assertEqual(native.derived_protocol('qbe'), 'qbe-source-v1')
+        self.assertEqual(native.derived_protocol('x86'), 'native-x86-source-v1')
+        self.assertEqual(native.derived_protocol('qbe', 'native-x86-source-v1'), 'native-x86-source-v1')
+        self.assertEqual(native.derived_protocol('qbe', 'native-c-source-v1'), 'native-c-source-v1')
+        self.assertEqual(native.derived_protocol('x86', 'qbe-source-v1'), 'qbe-source-v1')
 
     def test_raw_assembly_does_not_need_an_emitter(self):
         assembly = self.file('supplied.s', self.assembly)

@@ -1,0 +1,40 @@
+{
+  "kind": "bend-benchmark-acquisition-v1",
+  "catalog": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/catalog.json",
+  "reference": "upstream-c",
+  "roles": {
+    "upstream-c": {
+      "assets": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/assets01.json",
+      "mode": "cache",
+      "policy": "ordinary-single-cpu",
+      "provider": "upstream",
+      "host": "typescript-bun",
+      "stage": "upstream",
+      "target": "c",
+      "status": "reference"
+    },
+    "selfhost-qbe": {
+      "assets": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/assets01.json",
+      "mode": "cache",
+      "policy": "ordinary-single-cpu",
+      "provider": "build",
+      "host": "native",
+      "stage": "N2",
+      "target": "qbe",
+      "imageKey": "qbe-n2",
+      "status": "qualified-phase182"
+    },
+    "selfhost-x86": {
+      "assets": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/assets01.json",
+      "mode": "cache",
+      "policy": "ordinary-single-cpu",
+      "provider": "build",
+      "host": "native",
+      "stage": "N2",
+      "target": "x86",
+      "image": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "imageReceipt": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/report.json",
+      "status": "qualified-phase183"
+    }
+  }
+}

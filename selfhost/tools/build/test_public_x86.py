@@ -1,6 +1,8 @@
 """Public x86 metadata/publication tests; compiler and runtime calls are mocked."""
 import argparse
+from contextlib import redirect_stdout
 import importlib.util
+import io
 import os
 from pathlib import Path
 import shutil
@@ -140,6 +142,7 @@ class PublicX86(unittest.TestCase):
         cases = [(['--target','x86','input.bend','-o','program'],True),
                  (['input.bend','-o','program.s'],True),
                  (['input.bend','-o','program'],False),
+                 (['--version'],False),
                  (['input.bend','--run','--','--target','x86'],False),
                  (['input.bend','--run','--','-o','data.s'],False)]
         for arguments, x86 in cases:
@@ -148,6 +151,15 @@ class PublicX86(unittest.TestCase):
                 with self.assertRaises(StopIteration): N.main()
             self.assertEqual(execute.call_args.args,
                 (sys.executable,[sys.executable,'-B',helper,*arguments]) if x86 else (Path(image),[image,*arguments]))
+
+    def test_combined_help_does_not_execute_a_compiler(self):
+        for flag in ['--help','-h']:
+            stream = io.StringIO()
+            with patch.object(N.sys,'argv',['native.py',flag]), patch.object(N.os,'execv') as execute, redirect_stdout(stream):
+                N.main()
+            execute.assert_not_called()
+            for text in ['OUTPUT.c','--target x86','OUTPUT.s','Build an ELF','--run','--live','--version']:
+                self.assertIn(text,stream.getvalue())
 
 
 if __name__ == '__main__': unittest.main()

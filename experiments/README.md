@@ -1,11 +1,14 @@
 # Compiler experiment workflow
 
+Current frontier: [Phase183 maintained assembly target](../implementation/phase183/README.md).
+Read [STEERING.md](STEERING.md) for selected targets, measured limitations and the next decision.
+
 For new runs, follow the [build-retention workflow](../docs/self_hosted/build-retention.md):
 declare the complete disk budget and output roots, keep the 5 GiB reserve, then
 close the run into verified evidence or a protected qualified checkpoint.
 The historical per-file guard does not prevent cumulative disk exhaustion.
 
-Latest optimization: [Phase146 retained accepted context](../implementation/phase146/README.md).
+Retained optimization example: [Phase146 retained accepted context](../implementation/phase146/README.md).
 The Phase145 witness leads to one checked Bend override: duplicate raw checking
 and metadata reconstruction disappear, while transformed bodies remain checked.
 Matched full-source compiler requests fall247.35→237.49s; native reproduction,

@@ -13,10 +13,13 @@ The helper authenticates `current.components.x86` as native N2 with protocol
 The machine path uses the explicit `toolchains.x86`, assembler and linker; no
 QBE executable is used. All compiler work is done by the selected Bend image.
 
-Ten public controls check independent literal output42, assembly syntax and an
+Fourteen public controls check independent literal output42, assembly syntax and an
 independent assemble/link/run, ELF/run, protected program arguments, both JS
 shell delegation forms, type refusal, source/output preservation and dangling
-symlink refusal. Run only after a qualified x86 selector and operational assets
+symlink refusal. They also inspect both public help routes and compile/run
+ordinary C and JavaScript output, using the authenticated C toolchain/runtime
+policy and Bun. JavaScript Base caching is disabled for these controls. Run only
+after a qualified x86 selector and operational assets
 are installed in the workspace under test:
 
 ```sh

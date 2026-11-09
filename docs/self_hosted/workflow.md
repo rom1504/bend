@@ -8,7 +8,8 @@ inputs or outputs, not editable alternative compiler sources.
 
 The [consolidation design](../../design/repository-consolidation/README.md)
 records migration boundaries; the [Phase182 report](../../implementation/phase182/README.md)
-records current installed qualification. Current tools live under
+and [Phase183 assembly report](../../implementation/phase183/README.md)
+record current installed qualification. Current tools live under
 [`tools/build/`](../../selfhost/tools/build/),
 [`tools/bench/`](../../selfhost/tools/bench/README.md),
 [`tools/profiler/`](../../selfhost/tools/profiler/README.md),
@@ -25,14 +26,19 @@ The existing public entry points are:
 ```sh
 node selfhost/cli.mjs input.bend --run
 selfhost/bend input.bend -o output.c
+selfhost/bend --target x86 input.bend -o output.s
+selfhost/bend --target x86 input.bend --run
 ```
 
 The installed [current selector](../../selfhost/manifests/current.json) binds
-JS B2, public native C N1 and qualified QBE N2 to their recorded source and
-qualification evidence. Phase182 installs all three from its recorded snapshot08
-source, with an explicit thin profile for the public C CLI. The default
+JS B2, public native C N1, qualified QBE N2 and x86 N2 to their recorded source and
+qualification evidence. Phase182 supplied the first three from its recorded snapshot08
+source, with an explicit thin profile for the public C CLI. Phase183 adds x86 N2
+from its independently checked `x86` entry profile. The default
 `qbe-n2` asset points to `selfhost/dist/qbe/bend`; `qbe-api` selects the separately
-checked, cache-only B1 API at `selfhost/dist/qbe/hosted-api.mjs`. Native P140/2
+checked, cache-only B1 API at `selfhost/dist/qbe/hosted-api.mjs`. The `x86-n2`
+asset selects `selfhost/dist/x86/bend` with `native-x86-source-v1` and ABI11102.
+Native P140/2
 positive reuse has its own gate; native error recovery and object-unit support
 are not inferred from that result. A new assembly, successful small differential run or
 moved tool does not install another release. Package availability, supported
@@ -40,9 +46,12 @@ imports/effects and image identities change only through qualified promotion.
 
 The installed source incorporates the earlier Phase175/177 frontend improvements
 and Phase178 cleanup, plus the upstream2.0.40 compatibility port. The selected
-native N2 has actual same-source N1/N2/Q3 reproduction. The JS B2 has actual B3
-self-reproduction and a fresh own-source check. These gates establish reproduction
-and finite tested behavior, not whole-compiler correctness.
+QBE N2 has actual same-source N1/N2/Q3 reproduction. The JS B2 has actual B3
+self-reproduction and a fresh own-source check. Installed x86 N2 has actual
+N1/N2/S3 assembly reproduction, all 64 finite cases with no unsupported cases,
+and ten current runtime controls. Its scope is sequential AMD64 SysV.
+These gates establish reproduction and finite tested behavior; source acceptance
+with zero unresolved holes is not a kernel proof or whole-compiler correctness.
 
 Full JS self-hosting on the pinned Bun1.4.3 required the explicitly recorded
 `BUN_JSC_maxPerThreadStackUsage=7340032` setting; default-stack emission overflowed.
@@ -59,7 +68,7 @@ Generated program targets remain available through explicit interfaces:
 | JavaScript | `node selfhost/cli.mjs input.bend -o output.mjs`; maintained `request.py --host js --target js --mode live` also accepts an explicitly checked hosted API and its binding. |
 | C | `selfhost/bend input.bend -o output.c`; maintained `request.py --host native --target c` accepts the matching native-C or public-CLI binding and `assets-c-request.json`. The pinned C toolchain builds emitted C separately. |
 | QBE/native | Maintained `request.py --target qbe` emits IR; `native.py` constructs its executable using the explicit QBE/runtime/assembler/linker assets. The public CLI is not a QBE selector. |
-| x86 assembly/native | `selfhost/bend --target x86 input.bend -o output.s` emits assembly; `-o output` builds an ELF and `--run` executes it. These public routes require a qualified installed x86 component. Maintained `request.py`, `native.py` and `bootstrap.py` accept explicit x86 images and receipts; see [assembly](ASSEMBLY.md). |
+| x86 assembly/native | `selfhost/bend --target x86 input.bend -o output.s` emits assembly; `-o output` builds an ELF and `--run` executes it using installed x86 N2. Maintained `request.py`, `native.py` and `bootstrap.py` accept explicit x86 images and receipts; see [assembly](ASSEMBLY.md). |
 
 Host and stage must match the selected image. The original 45 benchmark catalog
 uses JS callable libraries; its native 45 catalog uses the corresponding C/QBE/x86

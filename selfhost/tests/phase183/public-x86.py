@@ -2,6 +2,7 @@
 """Installed public assembly/ELF/run controls with independent literal oracles."""
 import argparse
 import importlib.util
+import json
 import os
 from pathlib import Path
 import sys
@@ -22,23 +23,46 @@ def main():
     args = parser.parse_args()
     document, provider, inputs = public.selected(ROOT)
     tools = {key:assets.asset(document,key) for key in ('assembler','linker','bun','qbe-runtime','prepared-base')}
+    current = json.loads((ROOT/'selfhost/manifests/current.json').read_text())
+    inputs += [public.installed(current['components'][key]['image'],current,ROOT) for key in ('nativeCli','js')]
+    for row in current['providers'].values():
+        inputs.append(pin(verify(dict(row,file=str(ROOT/row['file'])))))
+    c_policy = document.get('toolchains',{}).get('c')
+    require(isinstance(c_policy,dict) and all(key in c_policy for key in ('compiler','flags','libraries')),
+            'Explicit C construction policy required')
+    tools['c-compiler'] = assets.asset(document,c_policy['compiler'])
+    c_key = document['providers']['c']['runtime']
+    c_provider = assets.runtime_provider(document,c_key)
+    require(current['components']['nativeCli'].get('targetRuntimeArgumentConvention') == assets.runtime_argument_convention(c_provider),
+            'Public C image and target runtime argument convention differ')
+    for key, asset_key in [('cRuntime',c_key),('cRuntimeTemplate',document['providers']['c']['runtimeTemplate']),
+                           ('jsDirectRuntime',document['providers']['js']['runtime'])]:
+        actual = assets.asset(document,asset_key); declared = current['providers'][key]
+        require(all(actual[field] == declared[field] for field in ('bytes','sha256')),'Installed/operational provider differs: '+key)
+        inputs.append(actual)
     inputs += list(tools.values()) + [pin(__file__),pin(ROOT/'selfhost/bend'),pin(ROOT/'selfhost/native.py'),pin(ROOT/'selfhost/cli.mjs')]
     inputs += [pin(ROOT/'selfhost/tools/build'/name) for name in ('public-native.py','native.py','request.py','assets.py','common.py')]
+    inputs += [pin(p) for p in sorted((ROOT/'selfhost/tools').glob('*.mjs'))]
+    inputs += [pin(p) for p in sorted((ROOT/'selfhost/src/runtime').rglob('*')) if p.is_file()]
+    inputs += [pin(ROOT/'selfhost/src/runtime.mjs'),pin(ROOT/'selfhost/src/compiler.json')]
     fixture = Path(__file__).with_name('public')
     sources = {name:pin(fixture/(name+'.bend')) for name in ('numeric','argv','negative-type')}
     inputs += list(sources.values())
     out = fresh_output(args.out, ROOT)
     report = dict(kind='phase183-public-x86-controls',version=1,complete=False,inputs=inputs,cases=[],jobs=[],
         oracle='Independent literal 42 and exact argv text; actual assembly assembled and linked with authenticated tools.',
-        scope='Installed selector, shell transport and finite public cases; no compiler generation or performance claim.')
+        scope='Installed selector, shell transport, x86 and ordinary C/JS finite cases; no compiler generation or performance claim.',
+        cToolchain=c_policy,cRuntimeArgumentConvention=assets.runtime_argument_convention(c_provider))
     write_json(out/'report.json',report)
-    environment = dict(os.environ,BEND_PUBLIC_BUILD_ROOT=str(out/'scratch'))
+    environment = {key:value for key,value in os.environ.items() if not key.startswith('BEND_')
+                   and key not in ('NODE_OPTIONS','NODE_PATH','LD_PRELOAD')}
+    environment.update(BEND_PUBLIC_BUILD_ROOT=str(out/'scratch'),BEND_TYPED_BASE_CACHE='off')
     bend = [str(ROOT/'selfhost/bend')]
     cli = [tools['bun']['file'],str(ROOT/'selfhost/cli.mjs')]
     numeric, argv, negative = [sources[name]['file'] for name in ('numeric','argv','negative-type')]
     policy = assets.native_toolchain(document,'x86')
 
-    def child(name, command, expected=None, refusal=False):
+    def child(name, command, expected=None, refusal=False, expected_stderr=b''):
         row = run(command,cwd=ROOT,stdout=out/(name+'.stdout'),stderr=out/(name+'.stderr'),
                   seconds=args.seconds,env=environment)
         report['jobs'].append(dict(name=name,**row)); write_json(out/'report.json',report)
@@ -47,7 +71,7 @@ def main():
         if expected is not None:
             require(verify(row['stdout']).read_bytes() == expected, 'Literal stdout differs: '+name)
         if not refusal and expected is not None:
-            require(row['stderr']['bytes'] == 0, 'Unexpected program stderr: '+name)
+            require(verify(row['stderr']).read_bytes() == expected_stderr, 'Unexpected program stderr: '+name)
         return row
 
     def accepted(name, **fields):
@@ -60,6 +84,12 @@ def main():
         return pin(file)
 
     try:
+        for name, command, required in [('native-help',bend,['OUTPUT.c','OUTPUT.s','--target x86','--run','--live']),
+                                        ('js-help',cli,['.js/.mjs','Assembly target:','--target x86','OUTPUT.s','--run'])]:
+            helped = child(name,command+['--help'])
+            text = verify(helped['stdout']).read_text()
+            require(helped['stderr']['bytes'] == 0 and all(word in text for word in required),'Public help omits a route: '+name)
+            accepted(name)
         emitted, obj, linked = out/'program.s', out/'program.o', out/'linked'
         child('assembly',bend+['--target','x86',numeric,'-o',str(emitted)],b'')
         emitted_pin = assembly(emitted)
@@ -79,6 +109,18 @@ def main():
         child('js-implicit-assembly',cli+[numeric,'-o',str(implicit)],b'')
         accepted('js-implicit-assembly',assembly=assembly(implicit))
         child('js-explicit-run',cli+['--target','x86',numeric,'--run'],b'42\n'); accepted('js-explicit-run')
+        c_source, c_binary = out/'ordinary.c', out/'ordinary-c'
+        child('ordinary-c',bend+[numeric,'-o',str(c_source)],b'',
+              expected_stderr=b'ALL PROOFS CHECK\nUse --verdict for mathematical validity.\n\n')
+        require(b'#include' in c_source.read_bytes(),'Default native route did not emit C')
+        child('ordinary-c-build',[tools['c-compiler']['file'],*c_policy['flags'],*c_policy.get('includeFlags',[]),
+                                 str(c_source),'-o',str(c_binary),*c_policy['libraries']])
+        child('ordinary-c-run',[str(c_binary),*assets.runtime_arguments(c_provider,application=True)],b'42\n')
+        accepted('ordinary-c',source=pin(c_source),binary=pin(c_binary))
+        js_source = out/'ordinary.mjs'
+        child('ordinary-js',cli+[numeric,'-o',str(js_source)],b'')
+        child('ordinary-js-run',[tools['bun']['file'],str(js_source)],b'42\n')
+        accepted('ordinary-js',source=pin(js_source))
         refused = out/'refused.s'
         child('negative-type',bend+['--target','x86',negative,'-o',str(refused)],refusal=True)
         require(not refused.exists(),'Rejected source published output'); accepted('negative-type')

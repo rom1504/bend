@@ -350,6 +350,12 @@
       "bytes": 282008,
       "sha256": "85fb52114d8d29d4eae51dfd641231e88b37d6ff5b2e26da02a9c1db0a992b71",
       "executable": true
+    },
+    "x86-n2": {
+      "file": "selfhost/dist/x86/bend",
+      "bytes": 24343264,
+      "sha256": "ce78a662ea3312b38dbab294522cd26bcaa8cd932c1eaf4e9620dd4d236c897b",
+      "executable": true
     }
   },
   "images": {
@@ -441,6 +447,54 @@
         "sha256": "b13441fa32a67fe23c29e8124fcfe6f3a2fa833e3682b8fd5b53e3f4b6350af6"
       },
       "qualification": "Current-source checked cache-only hosted QBE with its own focused19 gate."
+    },
+    "x86-n2": {
+      "host": "native",
+      "stage": "N2",
+      "targets": [
+        "x86"
+      ],
+      "protocol": "native-x86-source-v1",
+      "sourceIdentity": {
+        "bytes": 1416804,
+        "sha256": "49409f730473d87b03e378ffbcfb999ffcf083a68baa707f2de65e3585a52455"
+      },
+      "sourceProfile": {
+        "recipe": {
+          "file": "selfhost/src/compiler.json",
+          "bytes": 538187,
+          "sha256": "8fab718b0c50c29e83727efdba73ce95e2fc6ed5f9d89c3e604e21add718995a"
+        },
+        "root": "selfhost",
+        "profile": "x86"
+      },
+      "linkedRuntime": {
+        "file": "selfhost/dist/qbe/runtime.o",
+        "bytes": 125264,
+        "sha256": "67141c4505a0355901d857c4ba81dfc17559329e536818a843ce68615384d13e"
+      },
+      "linkedRuntimeABI": 11102,
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "preparationModes": [
+        "cache",
+        "live"
+      ],
+      "acquisitionReceipt": {
+        "file": "selfhost/dist/x86/evidence/x86-n2.json",
+        "bytes": 19349,
+        "sha256": "d8ae7105b832fc6470c83c3c7e0b9aa2092c58997b394f88f95bcdfee190e6fc"
+      },
+      "qualificationReceipt": {
+        "file": "selfhost/dist/x86/evidence/x86-behavior.json",
+        "bytes": 105087,
+        "sha256": "e2308b27758dfea04266bfdaea954c2f8fba40edcaa731313ffed550bdf2bb15"
+      },
+      "runtimeQualification": {
+        "file": "selfhost/dist/x86/evidence/x86-runtime.json",
+        "bytes": 39705,
+        "sha256": "7c5d5e9faa447e4d5ccf9f1d841d8d939a39de3fc9b6e79ad8f337e9fd44fde7"
+      },
+      "qualification": "Actual assembly N2; exact self-reproduction, native64 and ten runtime controls. No session qualification."
     }
   },
   "providers": {
@@ -506,7 +560,8 @@
       "bendHeapMutators": 1,
       "hostIoWorkersAllowed": true,
       "providerScope": "Pinned direct-QBE foreign provider table; no arbitrary C embedding or foreign callbacks.",
-      "runtimeArgumentConvention": "bend-rts-v1"
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "runtimeABI": 11102
     },
     "c-runtime": {
       "runtimeArgumentConvention": "bend-rts-v1"
@@ -544,9 +599,22 @@
         "-lm"
       ],
       "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+    },
+    "x86": {
+      "target": "amd64_sysv",
+      "assemblerFlags": [
+        "-mbranches-within-32B-boundaries"
+      ],
+      "linkerFlags": [
+        "-no-pie"
+      ],
+      "libraries": [
+        "-pthread",
+        "-lm"
+      ]
     }
   },
-  "scope": "Phase182 ordinary operational defaults. Installed images/evidence come from the audited proposal; historical manifests remain separate replay inputs.",
+  "scope": "Phase183 additive assembly target. Existing JS/C/QBE assets and capabilities are preserved; x86 N2 has separate source-profile, generation and qualification bindings.",
   "preparedBase": {
     "base": "base",
     "carrier": "prepared-base",
@@ -597,8 +665,8 @@
     "sha256": "f7c5e25676344955d46b7fad1795f1017ed9287bda08077b7f99f65d7bf2236a"
   },
   "operationalParent": {
-    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/release-proposal01/promotion.json",
-    "bytes": 115204,
-    "sha256": "17180a8ab7fb3d3c377a0dd3e4c5cffbd586cad58793eaa3d3c37f137608b02c"
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/release-proposal01/promotion.json",
+    "bytes": 205684,
+    "sha256": "c9aefa8de7901ca746e4eb8b1aededd777b6a56236768de441e0d03256731cc3"
   }
 }

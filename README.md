@@ -24,22 +24,24 @@ installed release or qualify every host/target combination. Existing public
 entry points remain `node selfhost/cli.mjs FILE --run` and
 `selfhost/bend FILE -o OUTPUT.c`.
 
-The [Phase182 migration](implementation/phase182/README.md) installs the current
+The [Phase182 migration](implementation/phase182/README.md) qualified the
 compiler across JS B2, public C-emitting native N1 and direct-QBE N2. Native
 N1/N2/Q3 and JavaScript B2/B3 reproduce their complete emitted products. Finite
 backend, public-command, runtime, session and independent proof gates pass.
 See the [compatibility boundaries](docs/self_hosted/upstream-2.0.40.md) and the
 [JS self-hosting stack policy](implementation/phase182/js-stack.md).
 
-Complete native acquisition took about183s per generation on the recorded
+Phase182 native acquisition took about 183s per generation on the recorded
 source/toolchain. This is not a controlled speedup measurement; historical
 program-runtime scores do not transfer automatically to the new runtime.
 The [Phase175](implementation/phase175/README.md) and
 [Phase174](implementation/phase174/README.md) reports retain prior measurements.
-The maintained assembly target emits AMD64 SysV code for the sequential ABI11102
-runtime. `selfhost/bend --target x86 FILE -o OUTPUT.s`, ELF output and `--run`
-use the qualified installed x86 component when present. Development images and
-their qualification remain explicit; see the [assembly guide](docs/self_hosted/ASSEMBLY.md).
+[Phase183](implementation/phase183/README.md) installs x86 N2 as the fourth
+component: AMD64 SysV with the sequential ABI11102 runtime. All 64 finite cases
+and ten current runtime controls pass; actual N1/N2/S3 reproduce complete
+assembly. `selfhost/bend --target x86 FILE -o OUTPUT.s`, ELF output and `--run`
+use this installed compiler. See the [assembly guide](docs/self_hosted/ASSEMBLY.md)
+for commands and the separate source-check, reproduction and proof boundaries.
 
 | Task | Maintained entry |
 | --- | --- |

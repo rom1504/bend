@@ -1,0 +1,127 @@
+{
+  "kind": "phase183-first-class-assembly-metrics",
+  "complete": true,
+  "upstream": "9a4223d577ba56a0cb53d1fd952d2b481c38930f",
+  "installedTargets": [
+    "js",
+    "c",
+    "qbe",
+    "x86"
+  ],
+  "nativeAssemblyStage": "N2",
+  "qualifiedFiniteCases": 64,
+  "unsupported": 0,
+  "runtimeControls": 10,
+  "publicControls": 14,
+  "sourceBytes": 1416804,
+  "assemblyBytes": 111074856,
+  "binaryBytes": 24343264,
+  "bootstrap": {
+    "complete": true,
+    "assemblyFixedPoint": true,
+    "objectFixedPoint": true,
+    "wholeELFFixedPoint": false,
+    "allocatedELFSectionsIdentical": true,
+    "chainSeconds": 610.1413700687699,
+    "seedBuildSeconds": 127.77386335423216,
+    "n1BuildSeconds": 128.52657867595553,
+    "n2BuildSeconds": 244.0272518019192,
+    "n0AssemblyEmissionSeconds": 119.66105540795252,
+    "n1AssemblyEmissionSeconds": 234.68943626992404,
+    "scope": "Single observations, identical x86 profile, prepared Base. Not full-profile cold-build medians."
+  },
+  "programScreen": {
+    "cases": 5,
+    "observations": 45,
+    "rounds": 3,
+    "wallSeconds": 119.88451468618587,
+    "aggregateAdmitted": false,
+    "full45Score": false,
+    "rows": [
+      {
+        "case": "local-pair",
+        "allOutputsCorrect": true,
+        "upstreamRatios": {
+          "selfhost-qbe": 1.2650000000000001,
+          "selfhost-x86": 63.06
+        },
+        "assemblyOverQbePairedMedian": 49.790513833992094,
+        "timedRatioEligible": true,
+        "lowResolution": {
+          "upstream-c": false,
+          "selfhost-qbe": false,
+          "selfhost-x86": false
+        }
+      },
+      {
+        "case": "local-fold",
+        "allOutputsCorrect": true,
+        "upstreamRatios": {
+          "selfhost-qbe": 2.0,
+          "selfhost-x86": 89.20118343195266
+        },
+        "assemblyOverQbePairedMedian": 44.55029585798817,
+        "timedRatioEligible": true,
+        "lowResolution": {
+          "upstream-c": false,
+          "selfhost-qbe": false,
+          "selfhost-x86": false
+        }
+      },
+      {
+        "case": "scalar-region-0",
+        "allOutputsCorrect": true,
+        "upstreamRatios": null,
+        "assemblyOverQbePairedMedian": null,
+        "timedRatioEligible": false,
+        "lowResolution": {
+          "upstream-c": false,
+          "selfhost-qbe": false,
+          "selfhost-x86": false
+        }
+      },
+      {
+        "case": "scalar-region-8192",
+        "allOutputsCorrect": true,
+        "upstreamRatios": {
+          "selfhost-qbe": 1.71,
+          "selfhost-x86": 42.7
+        },
+        "assemblyOverQbePairedMedian": 24.961988304093566,
+        "timedRatioEligible": true,
+        "lowResolution": {
+          "upstream-c": false,
+          "selfhost-qbe": false,
+          "selfhost-x86": false
+        }
+      },
+      {
+        "case": "complete-generic-row32",
+        "allOutputsCorrect": true,
+        "upstreamRatios": null,
+        "assemblyOverQbePairedMedian": null,
+        "timedRatioEligible": true,
+        "lowResolution": {
+          "upstream-c": true,
+          "selfhost-qbe": false,
+          "selfhost-x86": false
+        }
+      }
+    ],
+    "method": "Pair role samples by round; take median x86/QBE ratio only for the fully admitted cases. Upstream ratios are the maintained benchmark summary. No partial-set aggregate."
+  },
+  "profiling": {
+    "samples": 199,
+    "sourceMappedSamples": 8,
+    "checkedFids": 37045,
+    "quantitativeProfileAdmitted": false
+  },
+  "guardCosts": {
+    "guardedJobs": 19,
+    "guardWallSeconds": 1194.4272211845964,
+    "failedJobs": 3,
+    "peakTreeRssBytes": 1618763776,
+    "minimumDiskFreeBytes": 5503504384,
+    "agentCost": "Not available; guarded wall time is not total research or billing cost."
+  }
+}

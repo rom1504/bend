@@ -1,0 +1,38 @@
+{
+  "kind": "build-retention-run-close-v1",
+  "complete": true,
+  "state": "sealed",
+  "classification": "completed",
+  "initialRetention": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/profile-controls01-guard/retention.json",
+    "bytes": 665,
+    "sha256": "8e6102fc4691265b38a37224d0c4559f4e3dc867513df0590ba061122c55ddce"
+  },
+  "process": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/profile-controls01-guard/process.json",
+    "bytes": 2026,
+    "sha256": "35ec7f798eb7299e1a0143a453553fae664b561ddf44e376348dfd6f7abc8141"
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/close.py",
+    "bytes": 13971,
+    "sha256": "7e37ec90fe3fd4a0f990cae727052e8ccdf7880f05dcc68618da15c0d76b0fef"
+  },
+  "archiveMethod": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/archive-v02.py",
+    "bytes": 18412,
+    "sha256": "3238e0774c6c21c3de6c07bcbd71e469cbb23aaba01f99da0cb1e9f51990ad9f"
+  },
+  "qualification": null,
+  "pruneRequested": false,
+  "roots": [
+    {
+      "root": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/profile-controls01",
+      "keptHot": true
+    }
+  ],
+  "started": 1794199749.1597543,
+  "guardCommitRequired": "Close is committed only when guard retention.json names this report; process.json remains immutable.",
+  "finished": 1794199749.212294,
+  "minimumDiskFreeBytes": 5552939008
+}

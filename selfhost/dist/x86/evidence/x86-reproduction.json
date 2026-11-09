@@ -1,0 +1,292 @@
+{
+  "kind": "bend-build-request",
+  "version": 1,
+  "complete": true,
+  "request": {
+    "kind": "bend-build-request-plan",
+    "version": 1,
+    "host": "native",
+    "target": "x86",
+    "stage": "N2",
+    "mode": "cache",
+    "image": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "bytes": 24343264,
+      "sha256": "ce78a662ea3312b38dbab294522cd26bcaa8cd932c1eaf4e9620dd4d236c897b"
+    },
+    "imageMetadata": {
+      "kind": "bend-build-image-binding",
+      "version": 1,
+      "complete": true,
+      "image": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+        "bytes": 24343264,
+        "sha256": "ce78a662ea3312b38dbab294522cd26bcaa8cd932c1eaf4e9620dd4d236c897b"
+      },
+      "sourceIdentity": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/source01/compiler.bend",
+        "bytes": 1416804,
+        "sha256": "49409f730473d87b03e378ffbcfb999ffcf083a68baa707f2de65e3585a52455"
+      },
+      "host": "native",
+      "stage": "N2",
+      "protocol": "native-x86-source-v1",
+      "targets": [
+        "x86"
+      ],
+      "linkedRuntime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/runtime.o",
+        "bytes": 125264,
+        "sha256": "67141c4505a0355901d857c4ba81dfc17559329e536818a843ce68615384d13e"
+      },
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "producer": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n1/program",
+        "bytes": 24343264,
+        "sha256": "2828a8ae03b90251e5ff8f785b6aa7496fbd1703ef049575657582a83a7820ef"
+      },
+      "producerHost": "native",
+      "producerStage": "N1",
+      "qualification": "Built; semantic/self-host qualification is separate.",
+      "linkedRuntimeABI": 11102
+    },
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/source01/compiler.bend",
+      "bytes": 1416804,
+      "sha256": "49409f730473d87b03e378ffbcfb999ffcf083a68baa707f2de65e3585a52455"
+    },
+    "base": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase182/bend2/base.bend",
+      "bytes": 87698,
+      "sha256": "ff90fb27ed19d5c7a6165170f28ad81562bf345b9a9e6134e5c2e326beff9de4"
+    },
+    "carrier": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/base.p130",
+      "bytes": 2827018,
+      "sha256": "3b1d2d23ac05818fea2ee13442a02b6ef8f57eb6b4b1842851e8900238f539b9"
+    },
+    "stamp": "p130-word-pair-v1:p88-private-base-text-1:2dd93239749b4f1e3ee2f4e9617e31aeb5df4cc0200a4c14054a6591e2f74212",
+    "providers": {},
+    "workspace": "/home/ai/bend2/build/publish/bend",
+    "inputs": [
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/assets01.json",
+        "bytes": 23642,
+        "sha256": "95b993e1d0d780f13b538d3125fd4adce0820e4e352bb3afe38533f5d8ed3686"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/request.py",
+        "bytes": 19481,
+        "sha256": "0c2b7c7a7ebbd266a4dcb356651605c9cd745c9e0e72cd5d3fae47adc03265c2"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/assets.py",
+        "bytes": 10497,
+        "sha256": "cc3d4aecced9b08fff7a65e9a349dfddefd5ae7876fcb4d56b16f8732bd3c2fa"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/common.py",
+        "bytes": 4809,
+        "sha256": "d9a16fef18cf936499e51f8c7f36a653f2921ef9a50f846257c2e8bc460ec6d1"
+      },
+      {
+        "file": "/usr/bin/python3.9",
+        "bytes": 5451288,
+        "sha256": "ca7655083b581ffe36c72dcb445857704db533ca39b03f79c97d8d0ef3bef9af"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/source01/compiler.bend",
+        "bytes": 1416804,
+        "sha256": "49409f730473d87b03e378ffbcfb999ffcf083a68baa707f2de65e3585a52455"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+        "bytes": 24343264,
+        "sha256": "ce78a662ea3312b38dbab294522cd26bcaa8cd932c1eaf4e9620dd4d236c897b"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/report.json",
+        "bytes": 19349,
+        "sha256": "d8ae7105b832fc6470c83c3c7e0b9aa2092c58997b394f88f95bcdfee190e6fc"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase182/bend2/base.bend",
+        "bytes": 87698,
+        "sha256": "ff90fb27ed19d5c7a6165170f28ad81562bf345b9a9e6134e5c2e326beff9de4"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/base.p130",
+        "bytes": 2827018,
+        "sha256": "3b1d2d23ac05818fea2ee13442a02b6ef8f57eb6b4b1842851e8900238f539b9"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program.s",
+        "bytes": 111074856,
+        "sha256": "217f2355dac240e1c47878e909e1919338d369bcf32900772113810487f51d60"
+      }
+    ],
+    "imageRuntime": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/runtime.o",
+      "bytes": 125264,
+      "sha256": "67141c4505a0355901d857c4ba81dfc17559329e536818a843ce68615384d13e"
+    },
+    "runtimeRole": "Image linked-runtime identity is distinct from target provider/build runtime.",
+    "expected": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program.s",
+      "bytes": 111074856,
+      "sha256": "217f2355dac240e1c47878e909e1919338d369bcf32900772113810487f51d60"
+    },
+    "runtimeArgumentConvention": "bend-rts-v1",
+    "outputContract": "stdout",
+    "command": [
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "+RTS",
+      "--threads",
+      "1",
+      "--gpu",
+      "off",
+      "-RTS",
+      "--RTS",
+      "x86",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/source01/compiler.bend",
+      "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase182/bend2/base.bend",
+      "cache",
+      "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/base.p130",
+      "p130-word-pair-v1:p88-private-base-text-1:2dd93239749b4f1e3ee2f4e9617e31aeb5df4cc0200a4c14054a6591e2f74212"
+    ]
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/assets01.json",
+      "bytes": 23642,
+      "sha256": "95b993e1d0d780f13b538d3125fd4adce0820e4e352bb3afe38533f5d8ed3686"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/request.py",
+      "bytes": 19481,
+      "sha256": "0c2b7c7a7ebbd266a4dcb356651605c9cd745c9e0e72cd5d3fae47adc03265c2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/assets.py",
+      "bytes": 10497,
+      "sha256": "cc3d4aecced9b08fff7a65e9a349dfddefd5ae7876fcb4d56b16f8732bd3c2fa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/common.py",
+      "bytes": 4809,
+      "sha256": "d9a16fef18cf936499e51f8c7f36a653f2921ef9a50f846257c2e8bc460ec6d1"
+    },
+    {
+      "file": "/usr/bin/python3.9",
+      "bytes": 5451288,
+      "sha256": "ca7655083b581ffe36c72dcb445857704db533ca39b03f79c97d8d0ef3bef9af"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/source01/compiler.bend",
+      "bytes": 1416804,
+      "sha256": "49409f730473d87b03e378ffbcfb999ffcf083a68baa707f2de65e3585a52455"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "bytes": 24343264,
+      "sha256": "ce78a662ea3312b38dbab294522cd26bcaa8cd932c1eaf4e9620dd4d236c897b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/report.json",
+      "bytes": 19349,
+      "sha256": "d8ae7105b832fc6470c83c3c7e0b9aa2092c58997b394f88f95bcdfee190e6fc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase182/bend2/base.bend",
+      "bytes": 87698,
+      "sha256": "ff90fb27ed19d5c7a6165170f28ad81562bf345b9a9e6134e5c2e326beff9de4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/base.p130",
+      "bytes": 2827018,
+      "sha256": "3b1d2d23ac05818fea2ee13442a02b6ef8f57eb6b4b1842851e8900238f539b9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program.s",
+      "bytes": 111074856,
+      "sha256": "217f2355dac240e1c47878e909e1919338d369bcf32900772113810487f51d60"
+    }
+  ],
+  "host": "native",
+  "target": "x86",
+  "stage": "N2",
+  "mode": "cache",
+  "image": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+    "bytes": 24343264,
+    "sha256": "ce78a662ea3312b38dbab294522cd26bcaa8cd932c1eaf4e9620dd4d236c897b"
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/source01/compiler.bend",
+    "bytes": 1416804,
+    "sha256": "49409f730473d87b03e378ffbcfb999ffcf083a68baa707f2de65e3585a52455"
+  },
+  "base": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase182/bend2/base.bend",
+    "bytes": 87698,
+    "sha256": "ff90fb27ed19d5c7a6165170f28ad81562bf345b9a9e6134e5c2e326beff9de4"
+  },
+  "preparedBase": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/base.p130",
+    "bytes": 2827018,
+    "sha256": "3b1d2d23ac05818fea2ee13442a02b6ef8f57eb6b4b1842851e8900238f539b9"
+  },
+  "imageRuntime": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/runtime.o",
+    "bytes": 125264,
+    "sha256": "67141c4505a0355901d857c4ba81dfc17559329e536818a843ce68615384d13e"
+  },
+  "byteContract": "Complete emitted bytes; native stdout includes every IO.print LF, without normalization.",
+  "timingScope": "Whole child request including reads/output. Preflight and post-return identity checks excluded. Outer guard owns CPU/RSS/disk.",
+  "process": {
+    "command": [
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "+RTS",
+      "--threads",
+      "1",
+      "--gpu",
+      "off",
+      "-RTS",
+      "--RTS",
+      "x86",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/source01/compiler.bend",
+      "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase182/bend2/base.bend",
+      "cache",
+      "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/base.p130",
+      "p130-word-pair-v1:p88-private-base-text-1:2dd93239749b4f1e3ee2f4e9617e31aeb5df4cc0200a4c14054a6591e2f74212"
+    ],
+    "limitSeconds": 765.0155399809591,
+    "complete": true,
+    "started": 1794199137.099676,
+    "exitCode": 0,
+    "userSeconds": 231.750041,
+    "systemSeconds": 0.891992,
+    "peakRssKiB": 608728,
+    "timedOut": false,
+    "seconds": 232.7600079602562,
+    "stdout": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/s3/program.s",
+      "bytes": 111074856,
+      "sha256": "217f2355dac240e1c47878e909e1919338d369bcf32900772113810487f51d60"
+    },
+    "stderr": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/s3/emit.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "nativeSeconds": 232.7600079602562,
+  "product": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/s3/program.s",
+    "bytes": 111074856,
+    "sha256": "217f2355dac240e1c47878e909e1919338d369bcf32900772113810487f51d60"
+  },
+  "byteExact": true,
+  "changedInputs": [],
+  "totalSeconds": 234.17963363602757
+}

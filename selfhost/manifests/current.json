@@ -154,10 +154,50 @@
       "bytes": 9583,
       "sha256": "4359eee257ae32c55520e93e164bc6402b6f7da2292af64dc08ed8b961a81bcb"
     },
+    "selfhost/dist/x86/evidence/x86-sourceCheck.json": {
+      "file": "selfhost/dist/x86/evidence/x86-sourceCheck.json",
+      "bytes": 3773,
+      "sha256": "38dff94d6e92ff3666d07fd8c87b38470245a3eb9b9b0bcd6cd53ab2af9fdc5b"
+    },
+    "selfhost/dist/x86/evidence/x86-seed.json": {
+      "file": "selfhost/dist/x86/evidence/x86-seed.json",
+      "bytes": 17692,
+      "sha256": "63292be32098e0b1f1aa62bdf12dd33a43836f94981f60a08c926d61e6a72291"
+    },
+    "selfhost/dist/x86/evidence/x86-n1.json": {
+      "file": "selfhost/dist/x86/evidence/x86-n1.json",
+      "bytes": 18119,
+      "sha256": "0a06c0f36c617f44f56dd094d2959d62d7d77e48a729c809da8bd763b14736f1"
+    },
+    "selfhost/dist/x86/evidence/x86-n2.json": {
+      "file": "selfhost/dist/x86/evidence/x86-n2.json",
+      "bytes": 19349,
+      "sha256": "d8ae7105b832fc6470c83c3c7e0b9aa2092c58997b394f88f95bcdfee190e6fc"
+    },
+    "selfhost/dist/x86/evidence/x86-reproduction.json": {
+      "file": "selfhost/dist/x86/evidence/x86-reproduction.json",
+      "bytes": 11805,
+      "sha256": "eb6be52a27223d39310c68276705bd6974247b30256f828a81fd0acc0008db7a"
+    },
+    "selfhost/dist/x86/evidence/x86-behavior.json": {
+      "file": "selfhost/dist/x86/evidence/x86-behavior.json",
+      "bytes": 105087,
+      "sha256": "e2308b27758dfea04266bfdaea954c2f8fba40edcaa731313ffed550bdf2bb15"
+    },
+    "selfhost/dist/x86/evidence/x86-runtime.json": {
+      "file": "selfhost/dist/x86/evidence/x86-runtime.json",
+      "bytes": 39705,
+      "sha256": "7c5d5e9faa447e4d5ccf9f1d841d8d939a39de3fc9b6e79ad8f337e9fd44fde7"
+    },
+    "selfhost/dist/x86/bend": {
+      "file": "selfhost/dist/x86/bend",
+      "bytes": 24343264,
+      "sha256": "ce78a662ea3312b38dbab294522cd26bcaa8cd932c1eaf4e9620dd4d236c897b"
+    },
     "selfhost/dist/current-audit.json": {
       "file": "selfhost/dist/current-audit.json",
-      "bytes": 20409,
-      "sha256": "96b53616d8cf81203fdc0db0140ee07cc15b2a8e40dad24f24e9fc613d593d16"
+      "bytes": 24992,
+      "sha256": "c70e28f8f0b160d389bb64464ef040979d300824b1a0db0bf8344ae67b46cd72"
     }
   },
   "components": {
@@ -557,6 +597,89 @@
       },
       "runtimeArgumentConvention": "bend-rts-v1",
       "targetRuntimeArgumentConvention": "bend-rts-v1"
+    },
+    "x86": {
+      "host": "native",
+      "stage": "N2",
+      "protocol": "native-x86-source-v1",
+      "capabilities": [
+        "x86"
+      ],
+      "image": {
+        "file": "selfhost/dist/x86/bend",
+        "bytes": 24343264,
+        "sha256": "ce78a662ea3312b38dbab294522cd26bcaa8cd932c1eaf4e9620dd4d236c897b"
+      },
+      "sourceIdentity": {
+        "bytes": 1416804,
+        "sha256": "49409f730473d87b03e378ffbcfb999ffcf083a68baa707f2de65e3585a52455"
+      },
+      "sourceProfile": {
+        "recipe": {
+          "file": "selfhost/src/compiler.json",
+          "bytes": 538187,
+          "sha256": "8fab718b0c50c29e83727efdba73ce95e2fc6ed5f9d89c3e604e21add718995a"
+        },
+        "root": "selfhost",
+        "profile": "x86"
+      },
+      "linkedRuntime": {
+        "file": "selfhost/dist/qbe/runtime.o",
+        "bytes": 125264,
+        "sha256": "67141c4505a0355901d857c4ba81dfc17559329e536818a843ce68615384d13e"
+      },
+      "linkedRuntimeABI": 11102,
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "preparationModes": [
+        "cache",
+        "live"
+      ],
+      "gates": [
+        "x86-sourceCheck",
+        "x86-seed",
+        "x86-n1",
+        "x86-n2",
+        "x86-reproduction",
+        "x86-behavior",
+        "x86-runtime"
+      ],
+      "qualificationReceipts": {
+        "x86-sourceCheck": {
+          "file": "selfhost/dist/x86/evidence/x86-sourceCheck.json",
+          "bytes": 3773,
+          "sha256": "38dff94d6e92ff3666d07fd8c87b38470245a3eb9b9b0bcd6cd53ab2af9fdc5b"
+        },
+        "x86-seed": {
+          "file": "selfhost/dist/x86/evidence/x86-seed.json",
+          "bytes": 17692,
+          "sha256": "63292be32098e0b1f1aa62bdf12dd33a43836f94981f60a08c926d61e6a72291"
+        },
+        "x86-n1": {
+          "file": "selfhost/dist/x86/evidence/x86-n1.json",
+          "bytes": 18119,
+          "sha256": "0a06c0f36c617f44f56dd094d2959d62d7d77e48a729c809da8bd763b14736f1"
+        },
+        "x86-n2": {
+          "file": "selfhost/dist/x86/evidence/x86-n2.json",
+          "bytes": 19349,
+          "sha256": "d8ae7105b832fc6470c83c3c7e0b9aa2092c58997b394f88f95bcdfee190e6fc"
+        },
+        "x86-reproduction": {
+          "file": "selfhost/dist/x86/evidence/x86-reproduction.json",
+          "bytes": 11805,
+          "sha256": "eb6be52a27223d39310c68276705bd6974247b30256f828a81fd0acc0008db7a"
+        },
+        "x86-behavior": {
+          "file": "selfhost/dist/x86/evidence/x86-behavior.json",
+          "bytes": 105087,
+          "sha256": "e2308b27758dfea04266bfdaea954c2f8fba40edcaa731313ffed550bdf2bb15"
+        },
+        "x86-runtime": {
+          "file": "selfhost/dist/x86/evidence/x86-runtime.json",
+          "bytes": 39705,
+          "sha256": "7c5d5e9faa447e4d5ccf9f1d841d8d939a39de3fc9b6e79ad8f337e9fd44fde7"
+        }
+      }
     }
   },
   "providers": {
@@ -864,8 +987,8 @@
   "source": {
     "recipe": {
       "file": "selfhost/src/compiler.json",
-      "bytes": 537636,
-      "sha256": "ebf70c5e0de56952e2b372b219eb016896eea8eaf87029ddc49161f35d2747bb"
+      "bytes": 538187,
+      "sha256": "8fab718b0c50c29e83727efdba73ce95e2fc6ed5f9d89c3e604e21add718995a"
     },
     "root": "selfhost",
     "profile": "qbe",
@@ -876,8 +999,8 @@
   },
   "provenance": {
     "file": "selfhost/dist/current-audit.json",
-    "bytes": 20409,
-    "sha256": "96b53616d8cf81203fdc0db0140ee07cc15b2a8e40dad24f24e9fc613d593d16"
+    "bytes": 24992,
+    "sha256": "c70e28f8f0b160d389bb64464ef040979d300824b1a0db0bf8344ae67b46cd72"
   },
   "gateStatus": {
     "qualified": true,
@@ -913,6 +1036,15 @@
         "cli-qualified",
         "base-values",
         "cli-current"
+      ],
+      "x86": [
+        "x86-sourceCheck",
+        "x86-seed",
+        "x86-n1",
+        "x86-n2",
+        "x86-reproduction",
+        "x86-behavior",
+        "x86-runtime"
       ]
     }
   }

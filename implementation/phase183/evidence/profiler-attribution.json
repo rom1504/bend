@@ -1,0 +1,1035 @@
+{
+  "schema": "bend-physical-attribution-v1",
+  "identities": {
+    "analysis": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/profile-controls01/capture/001-sample-compiler-request-x86-N2/analysis.json",
+      "bytes": 144153,
+      "sha256": "377babb7f06744b2dca2b7c6e7a86c878eeb41671d917c7bafbbbec969bd2991"
+    },
+    "capture": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/profile-controls01/capture/001-sample-compiler-request-x86-N2/samples.txt",
+      "bytes": 7774,
+      "sha256": "564edeaf31c3325e77171e79026a85b53e96c7c4c8712b9a0f56f2641888a1d9"
+    },
+    "binary": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "bytes": 24343264,
+      "sha256": "ce78a662ea3312b38dbab294522cd26bcaa8cd932c1eaf4e9620dd4d236c897b"
+    },
+    "tool": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/attribute.py",
+      "bytes": 37378,
+      "sha256": "4baed6e5f9556c06b1b2abd95ec5d407064fc52c8f3892fd387a8e6284561dce"
+    },
+    "dependencies": [
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/analyze.py",
+        "bytes": 16552,
+        "sha256": "16e92d883263577177d50ae3cc1f381ea6cb97b77be50a4157999102047a6fdc"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/elf.py",
+        "bytes": 3141,
+        "sha256": "a18cee1be520527d98b86910d2c9d075a864ccf34675d8bdfac3cb157346485a"
+      }
+    ],
+    "owners": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/profile-controls01/owners.json",
+      "bytes": 41004102,
+      "sha256": "747ea163d3d033b642edc642e153a87c937d3283e03a9c1d1fb25ca53204b2b2"
+    },
+    "events": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/profile-controls01/attribution/events.jsonl",
+      "bytes": 100579,
+      "sha256": "e3aaac903bcca9964b233710fddba1e58efb06885f12d4fd1ecc63d819fe91ec"
+    }
+  },
+  "pairing": {
+    "verified": true,
+    "receipt": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/profile-controls01/capture/report.json",
+      "bytes": 50071,
+      "sha256": "589ce9a3b2734b874ff94f3402b9b4e0761bcef5ea8e5632e2c01e3c5e983912"
+    },
+    "workload": "compiler-request",
+    "variant": "x86-N2",
+    "round": 1,
+    "correct": true
+  },
+  "unwindId": null,
+  "ownerBinding": {
+    "kind": "exact-ELF-segment-table-pointers",
+    "checkedFids": 37045,
+    "checkedFunctionSymbols": 39944,
+    "runtimeDescriptor": {
+      "capabilities": 5,
+      "registerWidth": 21,
+      "resultWidth": 1
+    },
+    "liveRegisterBank": true,
+    "ownerMapCapabilities": 5,
+    "symbolLookup": {
+      "policy": "required-role-and-allocated-section-v1",
+      "method": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/attribute.py",
+        "bytes": 37378,
+        "sha256": "4baed6e5f9556c06b1b2abd95ec5d407064fc52c8f3892fd387a8e6284561dce"
+      },
+      "dataRole": "OBJECT/NOTYPE, allocated file-backed non-executable non-TLS section",
+      "functionRole": "FUNC/NOTYPE, allocated executable non-TLS section",
+      "ambiguity": "distinct addresses in the queried role are rejected"
+    },
+    "elfType": 2,
+    "producerProvenanceVerified": true,
+    "buildProvenance": {
+      "kind": "completed-x86-native-build-receipt-v1",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/report.json",
+        "bytes": 19349,
+        "sha256": "d8ae7105b832fc6470c83c3c7e0b9aa2092c58997b394f88f95bcdfee190e6fc"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/source01/compiler.bend",
+        "bytes": 1416804,
+        "sha256": "49409f730473d87b03e378ffbcfb999ffcf083a68baa707f2de65e3585a52455"
+      },
+      "producerImage": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n1/program",
+        "bytes": 24343264,
+        "sha256": "2828a8ae03b90251e5ff8f785b6aa7496fbd1703ef049575657582a83a7820ef"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+        "bytes": 24343264,
+        "sha256": "ce78a662ea3312b38dbab294522cd26bcaa8cd932c1eaf4e9620dd4d236c897b"
+      },
+      "runtime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/runtime.o",
+        "bytes": 125264,
+        "sha256": "67141c4505a0355901d857c4ba81dfc17559329e536818a843ce68615384d13e"
+      },
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program.s",
+        "bytes": 111074856,
+        "sha256": "217f2355dac240e1c47878e909e1919338d369bcf32900772113810487f51d60"
+      },
+      "scope": "Exact completed emission/build receipt and artifact pins; lexical grouping remains conditional on the emitter contract."
+    },
+    "sourceMap": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/source01/compiler.bend.map.json",
+      "bytes": 1376534,
+      "sha256": "a9d4e06d0ffdd2f9c61e7a1a20900d63377cbab50ea43aebbd935e243561f864"
+    },
+    "lexicalOwnerConditionalOnEmitterContract": true
+  },
+  "physicalCallerAttribution": {
+    "available": false,
+    "reason": "No physical-caller sidecar/table supplied"
+  },
+  "coverage": {
+    "eligibleLeafSamples": 0,
+    "recoveredCallerSamples": 0,
+    "symbolizedCallerSamples": 0,
+    "inferredCallerSymbolSamples": 0,
+    "knownDispatchSamples": 0,
+    "allSamples": 199,
+    "unknownCallerSamples": 199,
+    "eligibleWithoutCallerSamples": 0
+  },
+  "quality": {
+    "scope": "main_thread",
+    "main_thread_cpu_fraction": 0.9948732723258413,
+    "sampled_thread_cpu_fraction": 0.9948732723258413,
+    "minimum_process_cpu_fraction": 0.95,
+    "minimum_samples": 500,
+    "enough_samples": false,
+    "thread_lifecycle_complete": true,
+    "near_complete_process_cpu_coverage": true,
+    "usable_for_process_cpu_attribution": false,
+    "limitations": [
+      "Fewer than 500 delivered samples"
+    ],
+    "zero_loss": true,
+    "handler_intact": true,
+    "main_thread_shutdown": true,
+    "expected_clock_periods": 199.572631875,
+    "delivered_per_expected_period": 0.9971307094082986,
+    "delivery_plausible": true
+  },
+  "contextHeader": null,
+  "matrix": [
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_rt_take",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 17,
+      "fractionOfAllSamples": 0.08542713567839195
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 9,
+      "fractionOfAllSamples": 0.04522613065326633
+    },
+    {
+      "leafObject": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+      "leafSymbol": null,
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 8,
+      "fractionOfAllSamples": 0.04020100502512563
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "span_fade",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 8,
+      "fractionOfAllSamples": 0.04020100502512563
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "term_drop",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 7,
+      "fractionOfAllSamples": 0.035175879396984924
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_105_110_100_101_120_95_104_97_115_104_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 7,
+      "fractionOfAllSamples": 0.035175879396984924
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_rt_ctor",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 6,
+      "fractionOfAllSamples": 0.03015075376884422
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_set_regs",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 6,
+      "fractionOfAllSamples": 0.03015075376884422
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 6,
+      "fractionOfAllSamples": 0.03015075376884422
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_95_103_111_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 6,
+      "fractionOfAllSamples": 0.03015075376884422
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p113d_FID_36_112_49_49_56_46_116_114_109_99_46_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_97_112_112_101_110_100_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 6,
+      "fractionOfAllSamples": 0.03015075376884422
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_110_117_109_98_101_114_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 5,
+      "fractionOfAllSamples": 0.02512562814070352
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_rt_reg_get",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 4,
+      "fractionOfAllSamples": 0.020100502512562814
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "work_loop.constprop.0",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 4,
+      "fractionOfAllSamples": 0.020100502512562814
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 4,
+      "fractionOfAllSamples": 0.020100502512562814
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_FID_36_112_49_49_49_46_107_46_50_54_50_49_53_50_55_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 3,
+      "fractionOfAllSamples": 0.01507537688442211
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_48_109_95_119_111_114_100_95_103_97_116_101_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 3,
+      "fractionOfAllSamples": 0.01507537688442211
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p113d_FID_36_100_105_114_101_99_116_46_66_111_111_108_46_97_110_100_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 3,
+      "fractionOfAllSamples": 0.01507537688442211
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_rt_jump",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 3,
+      "fractionOfAllSamples": 0.01507537688442211
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p118_rt_borrow_fields",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 3,
+      "fractionOfAllSamples": 0.01507537688442211
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p113d_FID_36_100_105_114_101_99_116_46_100_110_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 3,
+      "fractionOfAllSamples": 0.01507537688442211
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_83_116_114_105_110_103_46_111_114_100_101_114_46_103_111_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 3,
+      "fractionOfAllSamples": 0.01507537688442211
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "rfc_wrap",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 2,
+      "fractionOfAllSamples": 0.010050251256281407
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_FID_36_100_105_114_101_99_116_46_76_105_115_116_46_108_101_110_103_116_104_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 2,
+      "fractionOfAllSamples": 0.010050251256281407
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_48_109_95_118_97_108_105_100_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 2,
+      "fractionOfAllSamples": 0.010050251256281407
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_102_105_101_108_100_115_95_110_101_120_116_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 2,
+      "fractionOfAllSamples": 0.010050251256281407
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_rt_return",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 2,
+      "fractionOfAllSamples": 0.010050251256281407
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_FID_36_100_105_114_101_99_116_46_66_111_111_108_46_97_110_100_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 2,
+      "fractionOfAllSamples": 0.010050251256281407
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_102_105_101_108_100_95_110_117_109_98_101_114_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 2,
+      "fractionOfAllSamples": 0.010050251256281407
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": null,
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 2,
+      "fractionOfAllSamples": 0.010050251256281407
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_rt_stack_get",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 2,
+      "fractionOfAllSamples": 0.010050251256281407
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 2,
+      "fractionOfAllSamples": 0.010050251256281407
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "io_cbuf",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 2,
+      "fractionOfAllSamples": 0.010050251256281407
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_102_105_101_108_100_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_110_111_100_101_95_97_116_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p113d_FID_36_100_105_114_101_99_116_46_76_105_115_116_46_114_101_118_101_114_115_101_46_103_111_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_114_101_99_111_114_100_95_119_105_100_116_104_95_103_97_116_101_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_110_111_100_101_95_103_97_116_101_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_FID_36_100_105_114_101_99_116_46_112_49_51_48_109_95_119_111_114_100_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_FID_36_112_49_49_49_46_107_46_50_54_51_55_53_48_53_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_110_111_100_101_95_103_111_116_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_53_49_95_114_111_108_101_115_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_114_101_99_111_114_100_95_112_117_116_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_rt_special_ctor",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_114_101_99_111_114_100_95_119_105_100_116_104_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_FID_36_112_49_49_49_46_107_46_50_54_50_49_53_51_50_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_102_105_101_108_100_95_110_117_109_98_101_114_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_103_97_116_101_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_FID_36_112_49_49_49_46_107_46_50_54_52_51_56_55_50_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_rt_frame",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_FID_36_100_105_114_101_99_116_46_102_95_112_97_116_116_101_114_110_95_115_117_98_115_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_rt_keep",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p113d_FID_36_100_105_114_101_99_116_46_112_57_56_95_116_97_103_95_101_113_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_57_56_95_101_113_95_102_105_110_105_115_104_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_FID_36_112_49_49_49_46_107_46_49_53_57_57_54_48_55_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_FID_36_112_49_49_49_46_107_46_49_51_49_49_54_53_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_FID_36_100_105_114_101_99_116_46_110_109_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_114_115_116_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p113d_FID_36_100_105_114_101_99_116_46_66_111_111_108_46_116_111_95_117_51_50_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_FID_36_100_105_114_101_99_116_46_107_115_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_57_56_95_116_97_103_95_101_113_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p113d_FID_36_100_105_114_101_99_116_46_100_98_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_56_56_95_115_116_114_105_110_103_95_101_113_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_51_108_95_118_101_114_115_105_111_110_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_FID_36_100_105_114_101_99_116_46_112_49_51_49_105_95_105_110_115_101_114_116_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_FID_36_112_49_49_49_46_107_46_49_50_55_49_49_55_53_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p113d_FID_36_100_105_114_101_99_116_46_110_99_95_97_116_111_109_105_99_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_FID_36_112_49_49_49_46_107_46_49_52_48_49_53_52_55_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_FID_36_112_49_49_49_46_107_46_50_49_54_52_48_57_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p113d_FID_36_112_49_50_54_115_99_99_46_53_49_55_53_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_FID_36_112_49_49_49_46_107_46_50_51_53_54_50_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_98_117_99_107_101_116_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_FID_36_112_49_49_49_46_107_46_50_50_49_51_51_54_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_FID_36_100_105_114_101_99_116_46_112_49_49_49_118_95_103_101_116_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_106_111_105_110_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_FID_36_112_49_49_49_46_107_46_50_54_48_56_54_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p118_rt_borrow_scalar_safe",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_rt_sink",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p113d_FID_36_100_105_114_101_99_116_46_112_49_49_49_113_95_117_116_102_56_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p118_rt_extend",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_rt_special_take",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p111_rt_take.cold",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p118_destination_fill",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program",
+      "leafSymbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_83_116_114_105_110_103_46_115_116_97_114_116_115_95_119_105_116_104_46_103_111_",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/usr/lib/x86_64-linux-gnu/libpthread-2.31.so",
+      "leafSymbol": "__libc_read",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    },
+    {
+      "leafObject": "/usr/lib/x86_64-linux-gnu/libpthread-2.31.so",
+      "leafSymbol": "__pthread_cond_signal",
+      "unwindRule": null,
+      "callerObject": null,
+      "callerSymbol": null,
+      "callerLoweredOwner": null,
+      "samples": 1,
+      "fractionOfAllSamples": 0.005025125628140704
+    }
+  ],
+  "dispatchContexts": [],
+  "contextLeafMatrix": [],
+  "objectErrors": {},
+  "limitations": [
+    "All samples remain in denominators, including unsupported or unknown callers.",
+    "One physical caller only; returnaddress-1 selects the preceding call instruction's symbol.",
+    "CFI coverage and object identity are checked; raw stack memory is not retained or re-read.",
+    "Tail-erased callers and logical source ancestry cannot be reconstructed.",
+    "Active dispatch is a separate context; synchronous private calls retain the outer dispatch.",
+    "Lowered ownership assumes the recorded emitter contract; linked FID validation does not prove compiler lineage.",
+    "Short or lossy captures remain inspectable, with their original quality restrictions.",
+    "The sidecar format lacks a raw-capture hash; a matching runner receipt strengthens pairing."
+  ]
+}

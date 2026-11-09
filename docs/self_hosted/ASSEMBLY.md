@@ -13,12 +13,14 @@ policy is one mutator with GPU disabled. Other architectures, GPU execution,
 parallel policies and unrestricted foreign interfaces are outside this target's
 current scope. Target support, finite qualification, bootstrap reproduction and
 performance are separate claims. The [current selector](../../selfhost/manifests/current.json)
-and its gate receipts determine which images are installed and qualified.
+and its gate receipts bind the installed x86 N2 at `selfhost/dist/x86/bend`;
+the operational asset key is `x86-n2`. The
+[Phase183 report](../../implementation/phase183/README.md) records its source,
+actual generations, qualification and audited installation.
 
 ## Public commands
 
-When the current release contains a qualified x86 component, run from the
-repository root:
+Run the installed compiler from the repository root:
 
 ```sh
 selfhost/bend --target x86 input.bend -o output.s
@@ -205,13 +207,31 @@ whose upstream pin must agree with the selected assets. Maintained
 asset declaration or explicit `--catalog`; historical default catalogs are
 separate authorities. Machine ABI controls, namespace hygiene, the ten current
 runtime controls, live/cache agreement, public-command behavior, and actual
-bootstrap each have their own receipts. Source acceptance is independent of
-generated-program execution and BendTT proof.
+bootstrap each have their own receipts.
+
+Installed N2 passes all 64 cases with no unsupported cases and all ten current
+runtime controls. Actual N1/N2/S3 emit identical complete assembly; N1/N2
+objects also agree. Their ELF files differ only in `.strtab`, with all allocated
+sections identical. The independently checked source has zero unresolved holes.
+These are finite execution, reproduction and source-acceptance results, not a
+new kernel proof or whole-compiler correctness theorem.
 
 The [Phase183 control adapters](../../selfhost/tests/phase183/abi-audit.md)
-describe those gates without duplicating fixture oracles. Their presence does
-not mean every gate has passed. Only completed current-image receipts and an
-explicit release promotion establish installed qualification. The
+preserve the fixture oracles, and the
+[Phase183 report](../../implementation/phase183/README.md) links the completed
+current-image receipts and audited release promotion. New source edits or
+rebuilt images require their own relevant gates. The
 [Phase181 report](../../implementation/phase181/README.md) preserves historical
 ABI11101 measurements; they do not qualify the current ABI11102 target or imply
 a current speed advantage over QBE.
+
+## Current performance boundary
+
+First-class support does not imply speed parity. Phase183 native self-emission
+is about 1.96× the QBE-built seed time. The maintained fast-five screen finds
+assembly about 25–50× QBE time on three list/numeric kernels; these cases are
+not the full45 runtime score. The20s budget expires on the unchanged repetition
+counts. Use an explicit `--set fast --budget 300 --rounds 3` for this target;
+budget presets are ceilings, not a promise that every selected target finishes.
+One upstream batch remains below the resolution threshold, so this screen has
+no admitted set-wide geometric mean. See the [measured report](../../implementation/phase183/README.md).

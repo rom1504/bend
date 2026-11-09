@@ -1,0 +1,141 @@
+{
+  "kind": "bend-checked-hosted-api",
+  "version": 1,
+  "complete": true,
+  "checked": true,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/abi-source01/compiler.bend",
+    "bytes": 103297,
+    "sha256": "fcaf40e228361d7ef4eb4d288aaa929ed55e7d34ce8e6f3887caeaa976df80ab"
+  },
+  "exports": [
+    "p181c_validate",
+    "p181c_functions",
+    "p181h_validate",
+    "p181h_controls",
+    "x181_direct",
+    "missing"
+  ],
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/hosted.mjs",
+      "bytes": 13879,
+      "sha256": "8add68e4ac5b519abf9c0026d970acc653cc8911be26fb716f5966335a01e861"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bootstrap-config.mjs",
+      "bytes": 1394,
+      "sha256": "123db949331d1f01a6314e3a939681d7d3a7f8230d62cf6669c861713a8ec503"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase183/abi-exports.json",
+      "bytes": 298,
+      "sha256": "01fd8775508d487633033d895febbdce402952dc137c711fd249f7f065ad0886"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/abi-source01/compiler.bend",
+      "bytes": 103297,
+      "sha256": "fcaf40e228361d7ef4eb4d288aaa929ed55e7d34ce8e6f3887caeaa976df80ab"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+      "bytes": 88979072,
+      "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/stage0-library.mjs",
+      "bytes": 4162,
+      "sha256": "e4a24c83b732d9f141e3703881bcc84f778b565a19a8ad609b7459ac914ac0de"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase182/bend2/bend.ts",
+      "bytes": 144776,
+      "sha256": "7e4fc845734dd6faccd620409c6232b1f02b793a0628d9636cae300580ce3035"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase182/bend2/comp.ts",
+      "bytes": 190764,
+      "sha256": "d637edcd9bb6e30d82071967948fe58c0cdf75b4285414f8da07aa69a1897f32"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase182/bend2/base.bend",
+      "bytes": 87698,
+      "sha256": "ff90fb27ed19d5c7a6165170f28ad81562bf345b9a9e6134e5c2e326beff9de4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/compiler.json",
+      "bytes": 538187,
+      "sha256": "8fab718b0c50c29e83727efdba73ce95e2fc6ed5f9d89c3e604e21add718995a"
+    }
+  ],
+  "command": [
+    "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/stage0-library.mjs",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/abi-source01/compiler.bend",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/abi-api01/api.mjs",
+    "p181c_validate",
+    "p181c_functions",
+    "p181h_validate",
+    "p181h_controls",
+    "x181_direct",
+    "missing"
+  ],
+  "upstream": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase182",
+    "revision": "9a4223d577ba56a0cb53d1fd952d2b481c38930f"
+  },
+  "scope": "Upstream-checked B1 acquisition only; no B2/self-hosting/default promotion.",
+  "status": 0,
+  "signal": null,
+  "error": null,
+  "api": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/abi-api01/api.mjs",
+    "bytes": 227481,
+    "sha256": "4fee0894c976da54638ed5010e0773453a89b3fd4b7d54b80734364f998312b5"
+  },
+  "imageBinding": {
+    "kind": "bend-build-image-binding",
+    "version": 1,
+    "complete": true,
+    "host": "js",
+    "stage": "B1",
+    "image": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/abi-api01/api.mjs",
+      "bytes": 227481,
+      "sha256": "4fee0894c976da54638ed5010e0773453a89b3fd4b7d54b80734364f998312b5"
+    },
+    "sourceIdentity": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/abi-source01/compiler.bend",
+      "bytes": 103297,
+      "sha256": "fcaf40e228361d7ef4eb4d288aaa929ed55e7d34ce8e6f3887caeaa976df80ab"
+    },
+    "checked": true,
+    "exports": [
+      "p181c_validate",
+      "p181c_functions",
+      "p181h_validate",
+      "p181h_controls",
+      "x181_direct",
+      "missing"
+    ],
+    "protocol": "hosted-api-v1",
+    "targets": [
+      "js"
+    ],
+    "preparationModes": [
+      "live"
+    ],
+    "scope": "Checked upstream-built API. Target capability is declared by exported public entries; behavioral qualification remains separate. JS/C accept live only; QBE supports live/cache."
+  },
+  "seconds": 1.716926252,
+  "stdout": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/abi-api01/stdout",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stderr": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/abi-api01/stderr",
+    "bytes": 22,
+    "sha256": "bfdc520208b494c712f7b3ce73e57c8e081e9cf6426cb6f5cb37409428a2214f"
+  }
+}

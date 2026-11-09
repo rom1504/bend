@@ -1,0 +1,66 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": true,
+  "started": 1794199635.975735,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "3",
+    "python3",
+    "-B",
+    "selfhost/tools/build/release.py",
+    "install",
+    "--manifest",
+    "selfhost/build/phase183/release-proposal01/promotion.json",
+    "--out",
+    "selfhost/build/phase183/release-install01"
+  ],
+  "returncode": 0,
+  "rssLimitBytes": 2147483648,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 44662784,
+  "minimumAvailableBytes": 25207996416,
+  "diskBudgetBytes": 268435456,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 5674487808,
+  "minimumDiskFreeBytes": 5542490112,
+  "peakRunAllocatedBytes": 131977216,
+  "peakFilesystemDecreaseBytes": 131997696,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/release-install01"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "3",
+    "fileLimitBytes": 134217728,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/release.py",
+        "sha256": "fdb26569072a266bae425a80ff4890025279483ec1115fee6d0a479f6e7090ba",
+        "bytes": 20259
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/release-proposal01/promotion.json",
+        "sha256": "c9aefa8de7901ca746e4eb8b1aededd777b6a56236768de441e0d03256731cc3",
+        "bytes": 205684
+      }
+    ]
+  },
+  "wallSeconds": 5.730636346153915,
+  "finished": 1794199641.7060435
+}

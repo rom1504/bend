@@ -1,0 +1,56 @@
+{
+  "kind": "phase183-explicit-equal-product-deduplication",
+  "complete": true,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase183/deduplicate-assembly.py",
+    "bytes": 2736,
+    "sha256": "f643a0f86bb5d27abdfe923d966a0c0a6756d805112ce4bb63bd185445a4bf69"
+  },
+  "freeBefore": 5503356928,
+  "scope": "Only three explicit immutable same-generation assembly product pairs. All paths/bytes/modes retained; no compiler, runtime, receipt or source deleted. Future builds must use fresh paths, never mutate linked products.",
+  "rows": [
+    {
+      "canonical": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program.s",
+        "bytes": 111074856,
+        "sha256": "217f2355dac240e1c47878e909e1919338d369bcf32900772113810487f51d60"
+      },
+      "duplicate": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n1/program.s",
+        "bytes": 111074856,
+        "sha256": "217f2355dac240e1c47878e909e1919338d369bcf32900772113810487f51d60"
+      },
+      "allocatedRecipient": 111079424,
+      "complete": true
+    },
+    {
+      "canonical": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program.o",
+        "bytes": 31274384,
+        "sha256": "dff3e248a172419865fe6e266664d1271fe16bb2ca85bedc61ca24b30f7d6786"
+      },
+      "duplicate": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n1/program.o",
+        "bytes": 31274384,
+        "sha256": "dff3e248a172419865fe6e266664d1271fe16bb2ca85bedc61ca24b30f7d6786"
+      },
+      "allocatedRecipient": 31277056,
+      "complete": true
+    },
+    {
+      "canonical": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/n2/program.s",
+        "bytes": 111074856,
+        "sha256": "217f2355dac240e1c47878e909e1919338d369bcf32900772113810487f51d60"
+      },
+      "duplicate": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/native-chain01/s3/program.s",
+        "bytes": 111074856,
+        "sha256": "217f2355dac240e1c47878e909e1919338d369bcf32900772113810487f51d60"
+      },
+      "allocatedRecipient": 111079424,
+      "complete": true
+    }
+  ],
+  "freeAfter": 5756788736
+}

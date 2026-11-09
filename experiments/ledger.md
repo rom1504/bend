@@ -7067,3 +7067,34 @@ The combined hosted acquisition hit the2GiB guard; small checked emitter APIs
 plus authenticated semantic preparation avoided raising the ceiling. Failed
 source/fixture/extraction attempts are retained with all exact receipts and
 bounded machine audits. Cost/retention accounting is sealed in the evidence index.
+
+## Phase183 — first-class current assembly target installed
+
+[Report](../implementation/phase183/README.md) · [Evidence](../implementation/phase183/evidence/index.json).
+
+Maintained x86 source/profile, protocol, native request/build/bootstrap, finite
+qualification, public commands, benchmarks, source/ELF profiler and release
+admission now support current upstream2.0.40. N2 is installed alongside the
+unchanged JS/C/QBE components with explicit runtimeABI11102. All64 catalog
+cases and ten runtime cases pass;14 public controls cover assembly/ELF/run,
+argument boundaries, refusals and ordinary C/JS. N1/N2/S3 assembly and N1/N2
+objects are exact; only nonallocated ELF `.strtab` differs. Source checkzero holes
+is not an independently verified backend theorem.
+
+Assembly N1 self-build244.027s versus QBE-built N0's128.527s on the same smaller
+x86 profile/prepared Base; emission234.689 versus119.661s. Native chain610.141s.
+Do not compare these with full-profile cold builds. The actual profiler validates
+37,045 ELF entries and observes exact Bend owners;199 samples remain below the
+500-sample threshold, so no quantitative hotspot attribution is admitted.
+
+Fresh fast5 programs expose larger generated-code deficits: assembly63.06×,
+89.20×,42.70× upstreamC time on three admitted kernels (25–50× QBE). All45
+observations return correct outputs; zero-work and one low-resolution upstream
+batch prevent a set-wide aggregate. This is not the full45 score. Preserve the
+initial20s timeout and use the explicit300s budget for this workload; completed
+campaign119.885s. Prioritize measured shared late native lowering opportunities.
+
+Nineteen guarded jobs1194.427s, three preserved test-adapter/deadline failures;
+247 Python metadata tests plus JS shell-selection controls pass. Exact-byte
+hardlinking recovered about799MiB while retaining every path and protected
+image; one controlled lane and the 5 GiB reserve remained in force.

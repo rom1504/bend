@@ -41,7 +41,7 @@ def prepare_role(role, root, base):
         if role.get(key):
             role[key] = str((base / role[key]).resolve(strict=True))
     common.require(role.get('provider') in ('build', 'upstream'), 'Explicit build/upstream provider required')
-    common.require(role.get('target') in ('js', 'c', 'qbe'), 'Unknown target')
+    common.require(role.get('target') in ('js', 'c', 'qbe', 'x86'), 'Unknown target')
     for key in ('host', 'stage', 'policy', 'status'):
         common.require(isinstance(role.get(key), str) and role[key], 'Missing role dimension: '+key)
     document = assets.load_assets(Path(role['assets']), root)
@@ -147,14 +147,15 @@ def acquire_case(role, document, source, directory, root, seconds):
         replay = replay_request(plan, inputs, args.out / 'request.json')
     generated = product
     convention = None
-    if role['target'] == 'qbe':
+    if role['target'] in ('qbe', 'x86'):
         args = request_args(role, source, directory / 'machine', remaining(), root)
         args.ir, args.source, args.image, args.image_key = Path(product['file']), None, None, None
         args.runtime, args.runtime_key = None, role.get('runtimeKey', 'qbe-runtime')
         args.retain_ir, args.expected_stdout = True, None
-        args.output_stage, args.output_protocol = None, 'qbe-source-v1'
+        args.output_stage = None
+        args.output_protocol = 'native-x86-source-v1' if role['target'] == 'x86' else 'qbe-source-v1'
         built = native.build(args)
-        common.require(built['complete'], 'QBE machine build failed: '+str(built.get('error')))
+        common.require(built['complete'], role['target'].upper()+' machine build failed: '+str(built.get('error')))
         product = built['binary']
         convention = built['runtimeArgumentConvention']
         inputs += [*built['inputs'], common.pin(args.out / 'report.json')]

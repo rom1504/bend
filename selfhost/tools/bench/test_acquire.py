@@ -8,6 +8,47 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import acquire as A
 
 class AcquisitionContracts(unittest.TestCase):
+    def test_x86_role_has_no_upstream_emitter(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory); manifest=root/'assets.json';manifest.write_text('{}')
+            role=dict(provider='build',target='x86',host='native',stage='N1',
+                      policy='ordinary',status='fixture',assets=str(manifest))
+            with patch.object(A.assets,'load_assets',return_value={'_manifest':A.common.pin(manifest)}):
+                prepared,_,_=A.prepare_role(role,root,root)
+                self.assertEqual(prepared['target'],'x86')
+                role['provider']='upstream';role['stage']='upstream'
+                with self.assertRaisesRegex(ValueError,'Upstream emits JS/C only'):
+                    A.prepare_role(role,root,root)
+
+    def test_x86_acquisition_builds_assembly_and_preserves_native_contract(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory); source=root/'source.bend';source.write_text('source fixture')
+            role=dict(provider='build',target='x86',host='native',stage='N1',assets=str(root/'assets.json'))
+            command=['/image','+RTS','--threads','1','--gpu','off','-RTS','--RTS','x86',str(source)]
+            plan=dict(outputContract='stdout',host='native',command=command)
+            def emit(args,selected):
+                args.out.mkdir();(args.out/'program.s').write_text('.text\nentry: ret\n')
+                (args.out/'report.json').write_text('{}')
+                return dict(complete=True,product=A.common.pin(args.out/'program.s'),inputs=[])
+            def build(args):
+                self.assertEqual(args.target,'x86')
+                self.assertEqual(args.ir.name,'program.s')
+                self.assertIsNone(args.source)
+                self.assertIsNone(args.image)
+                self.assertEqual(args.output_protocol,'native-x86-source-v1')
+                args.out.mkdir();(args.out/'program').write_text('unexecuted binary fixture')
+                (args.out/'report.json').write_text('{}')
+                return dict(complete=True,binary=A.common.pin(args.out/'program'),inputs=[],
+                            runtimeArgumentConvention='bend-rts-v1')
+            with patch.object(A.request,'plan',return_value=plan), \
+                    patch.object(A.request,'execute',side_effect=emit), \
+                    patch.object(A.native,'build',side_effect=build) as machine:
+                product,replay=A.acquire_case(role,{},A.common.pin(source),root/'case',root,30)
+            self.assertEqual(machine.call_count,1)
+            self.assertEqual(product['runtimeArgumentConvention'],'bend-rts-v1')
+            self.assertTrue(product['generatedSource']['file'].endswith('/program.s'))
+            self.assertEqual(replay['command'],command)
+
     def test_native_product_cli_is_explicit_and_old_defaults_survive(self):
         self.assertEqual(A.bench.native_runtime_arguments({}),['--threads','1','--gpu','off','--'])
         with patch.dict(A.os.environ, {}, clear=True):

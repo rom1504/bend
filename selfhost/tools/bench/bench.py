@@ -115,7 +115,7 @@ def freeze(recipe_path, output):
     for name, role in roles.items():
         for key in ('host', 'stage', 'target', 'preparation', 'policy', 'status'):
             require(isinstance(role.get(key), str) and role[key], 'Missing role dimension: ' + key)
-        require(role['target'] in ('js', 'c', 'qbe'), 'Unsupported output target')
+        require(role['target'] in ('js', 'c', 'qbe', 'x86'), 'Unsupported output target')
         item = dict(role)
         for key in ('compiler', 'runtime', 'engine', 'qualification'):
             if key in item:

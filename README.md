@@ -13,8 +13,8 @@ That's Bend - and nothing else.
 ## Compiler written in Bend
 
 This fork maintains the Bend2 compiler in [`selfhost/src/`](selfhost/src), with
-one [source manifest](selfhost/src/compiler.json) and explicit JS, C and direct
-QBE interfaces. Compiler algorithms remain written in Bend. The pinned upstream
+one [source manifest](selfhost/src/compiler.json) and explicit JS, C, QBE and
+x86 assembly interfaces. Compiler algorithms remain written in Bend. The pinned upstream
 language is `9a4223d577ba56a0cb53d1fd952d2b481c38930f` (Bend2.0.40).
 
 Start with the [maintained workflow](docs/self_hosted/workflow.md). It covers
@@ -36,13 +36,16 @@ source/toolchain. This is not a controlled speedup measurement; historical
 program-runtime scores do not transfer automatically to the new runtime.
 The [Phase175](implementation/phase175/README.md) and
 [Phase174](implementation/phase174/README.md) reports retain prior measurements.
-The assembly backend remains experimental and was not requalified by this update.
+The maintained assembly target emits AMD64 SysV code for the sequential ABI11102
+runtime. `selfhost/bend --target x86 FILE -o OUTPUT.s`, ELF output and `--run`
+use the qualified installed x86 component when present. Development images and
+their qualification remain explicit; see the [assembly guide](docs/self_hosted/ASSEMBLY.md).
 
 | Task | Maintained entry |
 | --- | --- |
 | Assemble, request, build and bootstrap | [`selfhost/tools/build/`](selfhost/tools/build/) and [workflow](docs/self_hosted/workflow.md) |
-| Experimental Bend-written x86-64 assembly backend | [Architecture and use](docs/self_hosted/x86-backend.md) · [Phase181 evidence](implementation/phase181/README.md) |
-| Compiler latency and JS/C/QBE program speed | [`selfhost/tools/bench/`](selfhost/tools/bench/README.md), with explicit host/stage/target and20/60/300/600-second budgets |
+| Bend-written AMD64 SysV assembly target | [Build, bootstrap, benchmark and profile](docs/self_hosted/ASSEMBLY.md) · [Emitter architecture](docs/self_hosted/x86-backend.md) |
+| Compiler latency and JS/C/QBE/x86 program speed | [`selfhost/tools/bench/`](selfhost/tools/bench/README.md), with explicit host/stage/target and20/60/300/600-second budgets |
 | Optional optimization cost and development-policy experiments | [Bend QBE policy switches](docs/self_hosted/optimization-policies.md) |
 | CPU, allocation, generated code and native stage analysis | [Profiling guide](docs/self_hosted/PROFILING.md), [`tools/profiler/`](selfhost/tools/profiler/README.md) and [benchmark diagnostics](selfhost/tools/bench/README.md#profiles-and-generated-code-inspection) |
 | Correctness and laws | [Conformance](selfhost/CONFORMANCE.md), [compiler law boundaries](docs/self_hosted/COMPILER_LAWS.md), and [maintained workflow](docs/self_hosted/workflow.md#correctness-and-proof-boundaries) |

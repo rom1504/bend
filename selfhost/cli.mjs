@@ -3,6 +3,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import {spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 const project=path.dirname(fileURLToPath(import.meta.url));
 const root=path.dirname(project);
@@ -16,6 +17,14 @@ function bound(row){
   return file;
 }
 async function run(){
+  const args=process.argv.slice(2),end=args.indexOf('--'),options=end<0?args:args.slice(0,end);
+  if(options.some((arg,i)=>arg==='--target=x86'||(arg==='--target'&&options[i+1]==='x86')||
+      (['-o','--output'].includes(arg)&&options[i+1]?.endsWith('.s')))){
+    const child=spawnSync('python3',['-B',path.join(project,'tools/build/public-native.py'),...args],{stdio:'inherit'});
+    if(child.error)throw child.error;
+    requireThat(child.status!==null,'x86 command terminated by '+child.signal);
+    process.exitCode=child.status;return;
+  }
   const current=JSON.parse(fs.readFileSync(path.join(project,'manifests/current.json'),'utf8'));
   requireThat(current.kind==='bend-current-bindings'&&current.version===1&&current.complete===true&&current.gateStatus?.qualified===true,'No complete qualified current compiler release');
   const js=current.components.js;

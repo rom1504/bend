@@ -23,6 +23,12 @@ python3 -B selfhost/tools/profiler/owners.py \
   --qbe PATH/program.ssa --output FRESH/owners.json
 ```
 
+For maintained x86 assembly use `--assembly PATH/program.s` instead of `--qbe`.
+The same FID markers work with the resulting explicit assembly-format map;
+optional build/source-map provenance follows the main profiling guide. Do not
+infer function entries from assembler address order or reuse FIDs from another
+build.
+
 Create a `bend-native-stage-spec-v1` JSON file. `ownerMap`, `programObject` and
 `unwindTable` are ordinary `{file,bytes,sha256}` pins. Each marker names an exact
 FID and symbol from that map; IDs must not be guessed or reused after rebuilding

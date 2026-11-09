@@ -1,4 +1,10 @@
-# Experimental x86-64 backend
+# x86-64 backend architecture
+
+For the maintained `--target x86` interface, current ABI11102, source profile,
+builds, bootstrap, benchmarks and profiling, use [ASSEMBLY.md](ASSEMBLY.md).
+The Phase181 results and commands below describe the original experimental
+ABI11101 implementation. They remain historical evidence and are not the
+current build interface or qualification authority.
 
 Phase181 adds a Bend-written AMD64 SysV assembly emitter beside QBE. It reuses
 the maintained frontend, native lowering, final verification and runtime.

@@ -1,1 +1,3 @@
-dist/native/bend
+#!/bin/sh
+# Public transport launcher; compilation remains in Bend.
+exec python3 -B "$(dirname -- "$0")/native.py" "$@"

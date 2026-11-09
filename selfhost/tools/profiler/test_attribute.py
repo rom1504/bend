@@ -7,6 +7,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 import analyze
+import owners as owner_parser
 from attribute import (UNKNOWN, aggregate_events, attribute, attribute_events, bind_owners, binding_sections,
                        binding_symbols, binding_symbol, parse_callers, parse_contexts,
                        receipt_binding, validate_applied_rule, validate_table)
@@ -125,6 +126,50 @@ class AttributeTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, "mismatch at FID"):
                     bind_owners(owners, binary)
 
+    def test_qbe_and_assembly_bind_both_exact_descriptor_versions(self):
+        for assembly in [False,True]:
+            for magic in [11101,11102]:
+                with self.subTest(assembly=assembly,magic=magic),tempfile.TemporaryDirectory() as directory:
+                    binary,blob,mapping,symbols=owner_fixture(directory)
+                    mapping['descriptor'].update(magic=magic,bytes=192)
+                    if assembly:
+                        mapping['schema']=owner_parser.NATIVE_SCHEMA
+                        mapping['sourceFormat']=owner_parser.ASSEMBLY_FORMAT
+                        mapping['identities']={'assembly':mapping['identities']['qbe']}
+                    struct.pack_into('<Q',blob,0x100,magic);binary.write_bytes(blob)
+                    with patch('attribute.analyze.ELF.load_segments',return_value=[(0,0,len(blob))]), \
+                         patch('attribute.subprocess.check_output',side_effect=lambda args,**_:symbols if '-s' in args else ''):
+                        self.assertEqual(bind_owners(mapping,binary)[2]['checkedFids'],2)
+                        struct.pack_into('<Q',blob,0x100,11102 if magic==11101 else 11101);binary.write_bytes(blob)
+                        with self.assertRaisesRegex(ValueError,'descriptor does not match'):bind_owners(mapping,binary)
+                        mapping['descriptor']['magic']=11103
+                        with self.assertRaisesRegex(ValueError,'Unsupported owner-map'):bind_owners(mapping,binary)
+
+    def test_assembly_build_receipt_binds_exact_binary_not_just_same_symbol_table(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory);binary,blob,mapping,symbols=owner_fixture(directory)
+            mapping['schema']=owner_parser.NATIVE_SCHEMA;mapping['sourceFormat']=owner_parser.ASSEMBLY_FORMAT
+            mapping['identities']={'assembly':mapping['identities']['qbe']}
+            mapping['descriptor'].update(magic=11101,bytes=192)
+            for name in ['source.bend','producer','runtime.o']:(root/name).write_bytes(b'synthetic '+name.encode())
+            assembly=mapping['identities']['assembly']
+            receipt=dict(kind='bend-native-build',target='x86',complete=True,runtimeABI=11101,
+                request=dict(target='x86',source=analyze.pin(root/'source.bend'),image=analyze.pin(root/'producer')),
+                assembly=assembly,assemblyDigest={k:assembly[k] for k in ['bytes','sha256']},
+                binary=analyze.pin(binary),runtime=analyze.pin(root/'runtime.o'),
+                jobs=[dict(label=name,complete=True,exitCode=0,timedOut=False,stdout=assembly,stderr={'bytes':0})
+                      for name in ['compiler','assemble','link']])
+            report=root/'build.json';report.write_text(json.dumps(receipt))
+            mapping['buildProvenance']=owner_parser.build_provenance(report,assembly,mapping['descriptor'])
+            mapping['producer_provenance_verified']=True
+            with patch('attribute.analyze.ELF.load_segments',return_value=[(0,0,len(blob))]), \
+                 patch('attribute.subprocess.check_output',side_effect=lambda args,**_:symbols if '-s' in args else ''):
+                self.assertTrue(bind_owners(mapping,binary)[2]['producerProvenanceVerified'])
+                alternate=root/'same-symbols';alternate.write_bytes(blob+b'changed binary bytes')
+                with self.assertRaisesRegex(ValueError,'selected binary'):bind_owners(mapping,alternate)
+                (root/'source.bend').write_bytes(b'changed source')
+                with self.assertRaisesRegex(ValueError,'changed'):bind_owners(mapping,binary)
+
     def test_cross_role_duplicates_bind_actual_required_addresses(self):
         with tempfile.TemporaryDirectory() as directory:
             binary, blob, owners, symbols = owner_fixture(directory)
@@ -218,7 +263,8 @@ class AttributeTests(unittest.TestCase):
                 "identities": {"capture": analyze.pin(samples), "binary": analyze.pin(binary), "mapped_objects": []}}))
             contexts.write_text("BEND_DISPATCH_SAMPLES_V1\ncontext_available\t1\nsamples\t2\nIDS\n0\n4294967295\nEND\n")
             owners.write_text("{}")
-            row = {"symbol": "function", "lowered_owner": "factory", "owner_basis": "test"}
+            row = {"symbol": "function", "lowered_owner": "factory", "owner_basis": "test",
+                   'sourceLocation':{'file':'fixture.bend','sourceLine':4}}
             def resolved(pc):
                 return {"pc": hex(pc), "object": str(binary), "symbol": "function", "decoded": "function",
                         "elfAddress": pc, "rangeBasis": "elf_size", "objectSha256": analyze.pin(binary)["sha256"]}
@@ -233,6 +279,8 @@ class AttributeTests(unittest.TestCase):
                 self.assertEqual(result["coverage"]["unknownCallerSamples"], 2)
                 self.assertEqual(result["coverage"]["knownDispatchSamples"], 1)
                 self.assertEqual(events[0]["dispatchContext"]["loweredOwner"], "factory")
+                self.assertEqual(events[0]['dispatchContext']['sourceLocation'],row['sourceLocation'])
+                self.assertEqual(events[0]['leaf']['sourceLocation'],row['sourceLocation'])
                 self.assertEqual(sum(row["samples"] for row in result["contextLeafMatrix"]), 2)
                 # Same histogram, different order: the raw capture hash must reject it.
                 samples.write_text(samples.read_text().replace("200\n100", "100\n200"))

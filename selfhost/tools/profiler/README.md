@@ -64,3 +64,13 @@ operational dependencies. `owners.py --emitter-source PATH` accepts repeated
 explicit source pins. Omitting them leaves the assumed lowering contract
 unbound; source pins alone never prove which emitter produced an arbitrary QBE
 file. There is no fallback to a historical phase source.
+
+The maintained assembly target uses `owners.py --assembly program.s`, retaining
+the same conditional lexical grouping and exact linked-ELF table checks as QBE.
+Both ABI11101 and ABI11102 are supported. Optional `--build-receipt report.json`
+binds actual completed x86 construction; `--source-map map.json --source-root
+selfhost` additionally checks physical declaration spans against that build's
+compiled source. Assembly maps explicitly record their source format. The
+[profiling guide](../../../docs/self_hosted/PROFILING.md) shows the command and
+provenance limits; no source instrumentation or compiler execution is needed to
+prepare or validate the mapping.

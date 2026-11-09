@@ -14,6 +14,8 @@ import shutil
 from pathlib import Path
 
 HEADER = re.compile(rb'^(?:@unsafe\n)?(def|type|law) ([A-Za-z0-9_.]+)\b', re.M)
+WORDS = re.compile(r'\b[A-Za-z_][A-Za-z0-9_.]*\b')
+LITERALS = re.compile(r'''"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\#[^\n]*''')
 LIMIT = 20 * 1024 * 1024
 
 
@@ -123,6 +125,43 @@ def assemble(manifest_path, root):
     return result
 
 
+def declaration_closure(rows, roots):
+    """Select a conservative lexical closure, preserving declaration bytes/order.
+
+    This is compiler source transport, not name resolution or source checking.
+    Local names can retain extra declarations; constructors retain their type.
+    Every selected declaration still needs the ordinary Bend checking gate.
+    """
+    if (not isinstance(roots, list) or not roots or
+            any(not isinstance(name, str) or not WORDS.fullmatch(name) for name in roots) or
+            len(set(roots)) != len(roots)):
+        raise ValueError('Profile roots must be distinct explicit declaration names')
+    groups, constructors = {}, {}
+    for key, data, location in rows:
+        groups.setdefault(key[2], []).append(data)
+        if key[1] == 'type':
+            for name in re.findall(rb'^  ([A-Za-z_][A-Za-z0-9_.]*)\{', data, re.M):
+                name = name.decode()
+                if name in constructors and constructors[name] != key[2]:
+                    raise ValueError('Ambiguous constructor in profile: ' + name)
+                constructors[name] = key[2]
+    todo, needed = list(roots), set()
+    while todo:
+        name = todo.pop()
+        if name not in groups:
+            raise ValueError('Missing profile root declaration: ' + name)
+        if name in needed:
+            continue
+        needed.add(name)
+        for data in groups[name]:
+            # Strip char/string literals together: a quote character must not
+            # swallow later source, and comment/string words are not edges.
+            words = WORDS.findall(LITERALS.sub(' ', data.decode()))
+            refs = {constructors.get(word, word) for word in words}
+            todo.extend((refs & groups.keys()) - needed)
+    return [row for row in rows if row[0][2] in needed]
+
+
 def maintained_assemble(manifest_path, root, profile=None, with_map=False):
     """Assemble editable bodies using stable declaration identities, not offsets."""
     manifest = json.loads(read(manifest_path))
@@ -165,8 +204,30 @@ def maintained_assemble(manifest_path, root, profile=None, with_map=False):
         if prefix or [(x['kind'], x['name']) for x in entry_items] != [('def', 'main')]:
             raise ValueError('Entry adapter must contain exactly def main')
         replacement_location = (config['entryModule'], replacement, entry_items[0])
-    chunks = [read(safe_path(root, manifest['preamble']))]
-    source_map, generated_byte, generated_line = [], len(chunks[0]), chunks[0].count(b'\n') + 1
+    # Profile-only modules extend the maintained inventory without changing the
+    # canonical source used by other targets. Their order is explicit. Forward
+    # laws and definitions can live in separate additive modules; no additive
+    # declaration may shadow a canonical declaration, even with another kind.
+    extra_modules = config.get('modules', [])
+    if (not isinstance(extra_modules, list) or
+            any(not isinstance(name, str) for name in extra_modules) or
+            len(set(extra_modules)) != len(extra_modules)):
+        raise ValueError('Profile modules must be distinct relative paths')
+    additions, extra_owners = [], set()
+    for index, name in enumerate(extra_modules, len(manifest['modules'])):
+        if name in manifest['modules'] or name == config.get('entryModule'):
+            raise ValueError('Repeated profile module: ' + name)
+        data = read(safe_path(root, name))
+        prefix, items = blocks(data)
+        if prefix:
+            raise ValueError('Profile module has unassigned preamble bytes: ' + name)
+        for item in items:
+            global_key = (item['kind'], item['name'])
+            if item['name'] in name_owners or item['name'] == 'main' or global_key in extra_owners:
+                raise ValueError('Duplicate or shadowed profile declaration: ' + repr(global_key))
+            extra_owners.add(global_key)
+            additions.append(((index, *global_key), item['data'], (name, data, item)))
+    selected, entry = [], []
     for key in order:
         chunk, location = entries[key], locations[key]
         if key[1:] == ('def', 'main'):
@@ -174,6 +235,16 @@ def maintained_assemble(manifest_path, root, profile=None, with_map=False):
                 continue
             if replacement is not None:
                 chunk, location = replacement, replacement_location
+            if extra_modules:
+                entry.append((key, chunk, location))
+                continue
+        selected.append((key, chunk, location))
+    selected += additions + entry
+    if 'roots' in config:
+        selected = declaration_closure(selected, config['roots'])
+    chunks = [read(safe_path(root, manifest['preamble']))]
+    source_map, generated_byte, generated_line = [], len(chunks[0]), chunks[0].count(b'\n') + 1
+    for key, chunk, location in selected:
         filename, module, item = location
         header = item['headerOffset']
         if module[header:].startswith(b'@unsafe\n'):
@@ -191,6 +262,8 @@ def maintained_assemble(manifest_path, root, profile=None, with_map=False):
         generated_byte += len(chunk)
         generated_line += chunk.count(b'\n')
     result = b''.join(chunks)
+    if len(result) > LIMIT:
+        raise ValueError('Assembled source exceeds 20 MiB')
     return (result, source_map) if with_map else result
 
 

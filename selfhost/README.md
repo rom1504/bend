@@ -2,7 +2,7 @@
 
 The maintained compiler source is [`src/`](src/), ordered by
 [`src/compiler.json`](src/compiler.json). One module tree supplies the JS, C and
-QBE algorithms; explicit entry profiles select the compiler interface. Compiler
+QBE and x86 assembly algorithms; explicit entry profiles select the compiler interface. Compiler
 algorithms remain in Bend. Python/JavaScript/C host tools provide file/process
 transport, runtime support, measurement and independent validation.
 
@@ -20,18 +20,21 @@ The selected release integrates the earlier frontend improvements and cleanup,
 then ports the frontend, Base, effect interfaces and runtimes to the new upstream.
 [Phase182](../implementation/phase182/README.md) records native and JS reproduction,
 finite backend/public CLI gates, session reuse and independent BendTT checks.
-No new broad generated-program performance ratio is claimed. The assembly backend
-retains its separate experimental Phase181 scope.
+No new broad generated-program performance ratio is claimed. The maintained
+`x86` target uses AMD64 SysV and the sequential ABI11102 runtime; its build,
+bootstrap, benchmark and profiler interfaces are described in the
+[assembly guide](../docs/self_hosted/ASSEMBLY.md). Qualification belongs to the
+actual image and current release receipts, separately from target availability.
 
 | Task | Maintained entry |
 | --- | --- |
-| Assemble `qbe`, `native-c` or `js-api` source | [`tools/build/source.py`](tools/build/source.py) · [assembly recipe](../docs/self_hosted/workflow.md#assemble-before-building) |
+| Assemble `qbe`, `x86`, `native-c` or `js-api` source | [`tools/build/source.py`](tools/build/source.py) · [assembly recipe](../docs/self_hosted/workflow.md#assemble-before-building) |
 | Request/build/bootstrap | [`tools/build/`](tools/build/) · [operational assets](manifests/assets-native.json) |
-| Compiler speed and prepared JS/C/QBE program speed | [`tools/bench/`](tools/bench/README.md) |
+| Compiler speed and prepared JS/C/QBE/x86 program speed | [`tools/bench/`](tools/bench/README.md) |
 | Native sampling, source owners, callers, events and stages | [`tools/profiler/`](tools/profiler/README.md) · [guide](../docs/self_hosted/PROFILING.md) |
 | V8 CPU/allocation and generated-code inspection | [Benchmark diagnostics](tools/bench/README.md#profiles-and-generated-code-inspection) |
 | Correctness and proof boundaries | [Conformance record](CONFORMANCE.md) · [workflow](../docs/self_hosted/workflow.md#correctness-and-proof-boundaries) |
-| Finite JS/C/QBE and public CLI gates | [Qualification guide](tools/conformance/qualification.md) · [copied independent fixtures](tests/consolidation/README.md) |
+| Finite JS/C/QBE/x86 and public CLI gates | [Qualification guide](tools/conformance/qualification.md) · [copied independent fixtures](tests/consolidation/README.md) |
 | Disk/process lifecycle and historical recovery | [`tools/build-retention/`](tools/build-retention/README.md) · [`tools/history/`](tools/history/README.md) |
 
 Program execution preserves the original 45 points from 23 source programs and
@@ -46,6 +49,11 @@ Existing public entries remain:
 node selfhost/cli.mjs input.bend --run
 selfhost/bend input.bend -o output.c
 ```
+
+With a qualified x86 component installed, use `selfhost/bend --target x86
+input.bend -o output.s` for assembly, `-o output` for an ELF, or `--run` to
+compile and execute. The JS launcher accepts the same x86 options. Existing
+output paths are refused; append application arguments after `--` with `--run`.
 
 Run these from the repository root with their selected package assets available.
 The qualified Phase182 release is selected by [`manifests/current.json`](manifests/current.json):

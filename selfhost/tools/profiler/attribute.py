@@ -14,6 +14,7 @@ import struct
 import subprocess
 
 import analyze
+import owners
 
 UNKNOWN = 2**32 - 1
 
@@ -226,9 +227,28 @@ def binding_symbol(symbols, name, role, required=True):
 
 def bind_owners(owner_map, binary):
     """Validate exact dispatch order against linked ELF pointers, not ELF order."""
-    if owner_map.get("schema") != "bend-qbe-lowered-owners-v1":
-        raise ValueError("Unknown owner map schema")
-    checked_pin(owner_map["identities"]["qbe"])
+    checked_pin(owners.source_identity(owner_map))
+    provenance = owner_map.get('buildProvenance')
+    if provenance is not None:
+        if owner_map.get('schema') != owners.NATIVE_SCHEMA:
+            raise ValueError('Build provenance requires the explicit native owner schema')
+        checked_pin(provenance['receipt'])
+        actual = owners.build_provenance(provenance['receipt']['file'],owners.source_identity(owner_map),owner_map['descriptor'])
+        if actual != provenance or not owners.same(analyze.pin(binary),actual['binary']):
+            raise ValueError('Owner build provenance differs from selected binary')
+    if owner_map.get('producer_provenance_verified') and provenance is None:
+        raise ValueError('Verified owner provenance requires its explicit build receipt')
+    if owner_map.get('schema') == owners.NATIVE_SCHEMA:
+        for row in owner_map['identities'].get('emitter_contract_sources',[]):checked_pin(row)
+    source_map = owner_map.get('sourceMap')
+    if source_map is not None:
+        if provenance is None:raise ValueError('Source map requires exact build provenance')
+        checked_pin(source_map['map'])
+        actual_map = owners.source_map_provenance(source_map['map']['file'],source_map['root'],provenance['source'])
+        if actual_map != source_map:raise ValueError('Owner source-map binding changed')
+        if any(row.get('sourceLocation') != actual_map['definitions'].get(row['lowered_owner'])
+               for row in owner_map['functions']+owner_map['fids']):
+            raise ValueError('Owner source location differs from exact mapped declaration')
     segments = analyze.ELF.load_segments(binary)
     symbols = binding_symbols(subprocess.check_output(
         ["readelf", "-W", "-s", str(binary)], text=True), binding_sections(binary))
@@ -263,7 +283,13 @@ def bind_owners(owner_map, binary):
         desc = binding_symbol(symbols, "p111_program", "data")
         table = binding_symbol(symbols, "p111_segments", "data")
         abi = owner_map["descriptor"]
-        expected = {0: 11101, 8: 192, 16: abi["segment_count"], 32: abi["main_fid"], 96: table}
+        magic = abi.get('magic',11101) if owner_map['schema'] == 'bend-qbe-lowered-owners-v1' else abi.get('magic')
+        if type(magic) is not int or magic not in (11101,11102) or abi.get('bytes',192) != 192:
+            raise ValueError('Unsupported owner-map descriptor ABI')
+        expected = {0: magic, 8: 192, 16: abi["segment_count"], 32: abi["main_fid"], 96: table}
+        if owner_map['schema'] == owners.NATIVE_SCHEMA:
+            for name,offset in [('register_width',48),('result_width',56),('capabilities',88)]:
+                if name in abi:expected[offset] = abi[name]
         if any(word(desc + offset) != value for offset, value in expected.items()):
             raise ValueError("ELF descriptor does not match owner map")
         runtime_descriptor = {"capabilities": word(desc + 88),
@@ -291,7 +317,9 @@ def bind_owners(owner_map, binary):
                                                "functionRole": "FUNC/NOTYPE, allocated executable non-TLS section",
                                                "ambiguity": "distinct addresses in the queried role are rejected"},
                               "elfType": struct.unpack_from("<H", elf, 16)[0],
-                              "producerProvenanceVerified": False,
+                              "producerProvenanceVerified": provenance is not None,
+                              "buildProvenance": provenance,
+                              "sourceMap": source_map['map'] if source_map else None,
                               "lexicalOwnerConditionalOnEmitterContract": True}
 
 
@@ -376,7 +404,9 @@ def attribute(analysis_path, callers_path=None, table_path=None, contexts_path=N
 
     def ownership(resolved):
         row = functions.get(resolved.get("symbol")) if resolved.get("objectSha256") == binary["sha256"] else None
-        return {"loweredOwner": row.get("lowered_owner"), "ownerBasis": row.get("owner_basis")} if row else {}
+        result = {"loweredOwner": row.get("lowered_owner"), "ownerBasis": row.get("owner_basis")} if row else {}
+        if row and 'sourceLocation' in row:result['sourceLocation'] = row['sourceLocation']
+        return result
 
     events, matrix, contexts_matrix, context_leaves = [], collections.Counter(), collections.Counter(), collections.Counter()
     cache = {}
@@ -407,6 +437,7 @@ def attribute(analysis_path, callers_path=None, table_path=None, contexts_path=N
                 if fids and fid < len(fids):
                     context.update(symbol=fids[fid]["symbol"], loweredOwner=fids[fid]["lowered_owner"],
                                    ownerBasis=fids[fid]["owner_basis"])
+                    if 'sourceLocation' in fids[fid]:context['sourceLocation'] = fids[fid]['sourceLocation']
                 elif fids:
                     context["kind"] = "runtime_or_out_of_program_fid"
                 contexts_matrix[(fid, context.get("symbol"), context.get("loweredOwner"))] += 1

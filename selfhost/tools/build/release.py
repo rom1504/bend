@@ -52,15 +52,26 @@ def bindings(document, root, candidates=None):
     assembled = assembly.maintained_assemble(recipe, path(root, source['root']), source['profile'])
     require(same(dict(bytes=len(assembled), sha256=hashlib.sha256(assembled).hexdigest()), source['identity']), 'Maintained source differs from release source')
     components = document['components']
-    require(set(components) == {'qbe', 'js', 'nativeCli'}, 'All three maintained components required')
-    for key, host, stage, protocol in [('qbe','native','N2','qbe-source-v1'),('js','js','B2','hosted-api-v1'),('nativeCli','native','N1','native-public-cli-v1')]:
+    require(set(components) in ({'qbe', 'js', 'nativeCli'}, {'qbe', 'js', 'nativeCli', 'x86'}), 'All base components and only recognized targets required')
+    contracts = [('qbe','native','N2','qbe-source-v1'),('js','js','B2','hosted-api-v1'),('nativeCli','native','N1','native-public-cli-v1')]
+    if 'x86' in components:
+        contracts.append(('x86','native','N2','native-x86-source-v1'))
+    for key, host, stage, protocol in contracts:
         item = components[key]
         require((item['host'],item['stage'],item['protocol']) == (host,stage,protocol), 'Wrong actual component host/stage/protocol: ' + key)
         require(item.get('capabilities') and item['image']['file'] in files and same(item['image'], files[item['image']['file']]), 'Component image not bound to installed files')
-        require(set(item['capabilities']) <= ({'js','c','qbe'} if host == 'js' else {'c'} if key == 'nativeCli' else {'qbe'}), 'Unsupported capability')
+        require(set(item['capabilities']) <= ({'js','c','qbe'} if host == 'js' else {'c'} if key == 'nativeCli' else {'x86'} if key == 'x86' else {'qbe'}), 'Unsupported capability')
         if host == 'native':
             require(os.access(bound(candidates[item['image']['file']] if candidates is not None else item['image'],root),os.X_OK), 'Native component is not executable')
-        if key == 'qbe' and not same(item['sourceIdentity'], source['identity']):
+        if key == 'x86':
+            profile = item['sourceProfile']
+            require(profile['recipe'] == source['recipe'] and profile['root'] == source['root']
+                    and profile['profile'] == 'x86', 'Assembly must use the maintained x86 source profile')
+            emitted = assembly.maintained_assemble(recipe, path(root, profile['root']), 'x86')
+            require(same(dict(bytes=len(emitted), sha256=hashlib.sha256(emitted).hexdigest()), item['sourceIdentity']), 'Assembly profile differs from selected compiler source')
+            require(item.get('runtimeArgumentConvention') == 'bend-rts-v1' and item.get('linkedRuntimeABI') == 11102
+                    and same(item.get('linkedRuntime'), document['providers']['qbeRuntime']), 'Assembly runtime binding differs')
+        elif key == 'qbe' and not same(item['sourceIdentity'], source['identity']):
             require(release_bridge.shape(item,source['identity']), 'Explicit QBE canonical-source equivalence required')
         elif key != 'nativeCli':
             require(same(item['sourceIdentity'], source['identity']), 'Component does not derive from the canonical source')
@@ -104,8 +115,104 @@ def audit(file, root):
     cli = checked[promotion['nativeCliDerivation']]
     require(cli.get('kind') == 'bend-public-cli-source-profile' and cli.get('allOtherBodiesIdentical') is True and set(cli['changedDeclarations']) == {'main','p86_effect_read'}, 'Public CLI profile differs from admitted seams')
     require(same(cli['canonicalSource'], current['source']['identity']) and same(cli['source'], current['components']['nativeCli']['sourceIdentity']), 'CLI profile does not derive from canonical source')
+    if 'x86' in current['components']:
+        audit_x86(current, promotion, checked, root)
     receipt = dict(kind='bend-release-audit', version=1, complete=True, qualified=True, method=pin(__file__), bridgeMethod=pin(release_bridge.__file__), promotion=manifest, gates={k:v['report'] for k,v in gates.items()}, sourceIdentity=current['source']['identity'], components=current['components'], installed=False, mathematicalProof=False)
     return promotion, receipt
+
+
+
+def audit_x86(current, promotion, checked, root):
+    """Actual assembly generations and independent source/behavior gates."""
+    component = current['components']['x86']
+    image, source, runtime = component['image'], component['sourceIdentity'], current['providers']['qbeRuntime']
+    names = promotion['x86Qualification']
+    require(set(names) == {'sourceCheck', 'seed', 'n1', 'n2', 'reproduction', 'behavior', 'runtime'}, 'Complete explicit assembly gates required')
+    require(set(names.values()) <= set(component['gates']), 'Assembly mandatory gate not selected')
+    source_check, seed, n1, n2, reproduced, behavior, runtime_controls = (checked[names[k]] for k in
+        ['sourceCheck','seed','n1','n2','reproduction','behavior','runtime'])
+    require(source_check.get('kind') == 'bend-independent-source-check'
+            and source_check.get('checked') is True and source_check.get('typeAccepted') is True
+            and source_check.get('unresolvedHoles') == 0 and same(source_check['source'], source)
+            and source_check['upstream'] == current['upstream'], 'Independent current-upstream assembly source check required')
+    producer = current['components']['qbe']
+    for report, stage, target in [(seed,'N0','qbe'),(n1,'N1','x86'),(n2,'N2','x86')]:
+        binding, request = report['imageBinding'], report['request']
+        metadata = request['imageMetadata']
+        require(report.get('kind') == 'bend-native-build' and report.get('target') == target
+                and binding.get('complete') is True
+                and (binding['host'],binding['stage'],binding['protocol']) == ('native',stage,'native-x86-source-v1')
+                and binding['targets'] == ['x86'] and same(binding['image'],report['binary'])
+                and same(binding['sourceIdentity'],source) and same(request['source'],source)
+                and same(report['runtime'],runtime) and same(binding['linkedRuntime'],runtime)
+                and report.get('runtimeABI') == 11102
+                and report.get('runtimeArgumentConvention') == 'bend-rts-v1'
+                and binding.get('linkedRuntimeABI') == 11102
+                and binding.get('runtimeArgumentConvention') == 'bend-rts-v1', 'Actual same-source/current-runtime assembly '+stage+' required')
+        require((request['host'],request['stage'],request['target']) == ('native',producer['stage'],target)
+                and (report['host'],report['stage']) == ('native',producer['stage'])
+                and request.get('outputContract') == 'stdout' and same(request['image'],producer['image'])
+                and (metadata['host'],metadata['stage'],metadata['protocol']) ==
+                    ('native',producer['stage'],producer['protocol'])
+                and target in metadata.get('targets', [])
+                and same(metadata['sourceIdentity'],producer['sourceIdentity'])
+                and same(metadata.get('linkedRuntime'),runtime)
+                and metadata.get('runtimeArgumentConvention') == 'bend-rts-v1'
+                and same(binding['producer'],request['image'])
+                and (binding['producerHost'],binding['producerStage']) == (request['host'],request['stage']),
+                'Actual selected producer and request binding required for assembly '+stage)
+        producer = binding
+    require(same(n1['request']['image'],seed['binary']) and n1['request']['stage'] == 'N0'
+            and same(n2['request']['image'],n1['binary']) and n2['request']['stage'] == 'N1'
+            and same(n2['binary'],image) and n2.get('comparedToReference') is True
+            and same(n1['assemblyDigest'],n2['assemblyDigest'])
+            and same(n2['expectedAssembly'],n1['assemblyDigest']), 'Actual N0 to N1 to N2 assembly reproduction required')
+    process, request = reproduced['process'], reproduced['request']
+    metadata = request['imageMetadata']
+    require(reproduced.get('kind') == 'bend-build-request' and reproduced.get('byteExact') is True
+            and (reproduced['host'],reproduced['stage'],reproduced['target']) == ('native','N2','x86')
+            and same(reproduced['image'],image) and same(reproduced['source'],source)
+            and (request['host'],request['stage'],request['target']) == ('native','N2','x86')
+            and request.get('outputContract') == 'stdout'
+            and same(request['image'],image) and same(request['source'],source)
+            and (metadata['host'],metadata['stage'],metadata['protocol']) == ('native','N2','native-x86-source-v1')
+            and metadata.get('targets') == ['x86'] and same(metadata['sourceIdentity'],source)
+            and same(metadata.get('linkedRuntime'),runtime) and metadata.get('linkedRuntimeABI') == 11102
+            and metadata.get('runtimeArgumentConvention') == 'bend-rts-v1'
+            and same(reproduced['product'],n2['assemblyDigest'])
+            and same(request['expected'],reproduced['product'])
+            and same(process['stdout'],reproduced['product']) and process.get('complete') is True
+            and process.get('exitCode') == 0 and not process.get('timedOut') and not process.get('error')
+            and process['stderr']['bytes'] == 0, 'Actual N2 same-source assembly re-emission required')
+    catalog_pin = promotion['x86QualificationCatalog']
+    catalog = json.loads(bound(catalog_pin, root).read_text())
+    require(catalog.get('kind') == 'bend-qualification-catalog' and catalog.get('version') == 1
+            and catalog.get('upstream') == current['upstream']
+            and isinstance(catalog.get('cases'), list) and len(catalog['cases']) == 64
+            and all(isinstance(case.get('id'), str) and case['id'] for case in catalog['cases']),
+            'Explicit current-upstream native64 catalog required')
+    case_ids = {case['id'] for case in catalog['cases']}
+    require(len(case_ids) == 64, 'Distinct native64 catalog cases required')
+    require(behavior.get('kind') == 'bend-finite-qualification' and behavior.get('passed') is True
+            and (behavior['host'],behavior['stage'],behavior['target']) == ('native','N2','x86')
+            and behavior['upstream'] == current['upstream'] and same(behavior['image'],image)
+            and same(behavior['catalog'],catalog_pin)
+            and any(same(row,runtime) for row in behavior.get('inputs', []))
+            and behavior['counts'] == {'pass':64,'fail':0,'unsupported':0}
+            and len(behavior['selected']) == len(set(behavior['selected'])) == len(behavior['rows']) == 64
+            and {row['id'] for row in behavior['rows']} == set(behavior['selected']) == case_ids
+            and all(row['status'] == 'pass' for row in behavior['rows']), 'Actual N2 current-upstream native64 required')
+    runtime_cases = ['numeric', 'array-unchecked', 'array-unchecked-boxed', 'char-output',
+                     'argv', 'files', 'open-errors', 'exit', 'exit-upper-valid', 'halt-valid']
+    require(runtime_controls.get('kind') == 'phase183-x86-runtime-controls'
+            and runtime_controls.get('passed') is True and same(runtime_controls['image'],image)
+            and (runtime_controls['host'],runtime_controls['stage'],runtime_controls['target']) == ('native','N2','x86')
+            and same(runtime_controls.get('runtime'),runtime) and runtime_controls.get('runtimeABI') == 11102
+            and runtime_controls['selection'] == dict(all=True, count=10, total=10, names=runtime_cases)
+            and len(runtime_controls['rows']) == 10
+            and {row['name'] for row in runtime_controls['rows']} == set(runtime_cases)
+            and all(row.get('complete') is True for row in runtime_controls['rows']),
+            'Actual N2 current-runtime ten controls required')
 
 
 def installed(file, root):

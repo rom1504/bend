@@ -42794,6 +42794,23 @@
       "entryModule": "tests/phase149/main.bend",
       "omitMain": false,
       "status": "phase169-maintained-integration-pending-source-and-interface-qualification"
+    },
+    "x86": {
+      "entryModule": "src/back/x86/main.bend",
+      "omitMain": false,
+      "modules": [
+        "src/back/x86/model.bend",
+        "src/back/x86/frame.bend",
+        "src/back/x86/scalar.bend",
+        "src/back/x86/regalloc.bend",
+        "src/back/x86/function.bend",
+        "src/back/x86/program.bend",
+        "src/back/x86/stream.bend",
+        "src/back/x86/entry.bend"
+      ],
+      "roots": ["main"],
+      "protocol": "native-x86-source-v1",
+      "status": "maintained-source-requires-independent-x86-qualification"
     }
   },
   "frozenSource": {

@@ -9,6 +9,13 @@ import sys
 
 def main():
     root = Path(__file__).resolve().parent.parent
+    args = sys.argv[1:]
+    options = args[:args.index('--')] if '--' in args else args
+    x86 = any(arg == '--target=x86' or (arg == '--target' and index+1 < len(options) and options[index+1] == 'x86')
+              or (arg in ('-o','--output') and index+1 < len(options) and options[index+1].endswith('.s'))
+              for index, arg in enumerate(options))
+    if x86:
+        os.execv(sys.executable, [sys.executable, '-B', str(root/'selfhost/tools/build/public-native.py'), *args])
     selector = root / 'selfhost/manifests/current.json'
     current = json.loads(selector.read_text())
     if (current.get('kind') != 'bend-current-bindings' or current.get('version') != 1

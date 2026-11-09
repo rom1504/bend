@@ -47,7 +47,7 @@ def refusal(case, emission, hosted=None):
     if not (closed and empty and clean):
         return False
     target, host = emission['target'], emission['host']
-    if target == 'qbe':
+    if target in ('qbe', 'x86'):
         rule = case['refusal']
         if host == 'native':
             diagnostic = verify(process['stderr']).read_text()
@@ -73,7 +73,7 @@ def refusal(case, emission, hosted=None):
 
 
 def supported(case, args):
-    if 'refusal' not in case or args.target == 'qbe':
+    if 'refusal' not in case or args.target in ('qbe', 'x86'):
         return True
     return args.host == 'js' and case['name'] in ('negative-type', 'negative-affine')
 
@@ -150,19 +150,19 @@ def execute_case(args, case, document, out, root):
         verify_hosted(emission, hosted, emit_args.out / 'request.json')
     if 'refusal' in case:
         row.update(status='pass' if refusal(case, emission, hosted) else 'fail',
-                   expectedStage=case['refusal']['phase'] if args.target == 'qbe' else 'check',
-                   rule=case['refusal'] if args.target == 'qbe' else 'Checked frontend refusal')
+                   expectedStage=case['refusal']['phase'] if args.target in ('qbe', 'x86') else 'check',
+                   rule=case['refusal'] if args.target in ('qbe', 'x86') else 'Checked frontend refusal')
         return row
     if not emission['complete']:
         row.update(status='fail', failedStage='emission')
         return row
     product = emission['product']
-    if args.target == 'qbe':
+    if args.target in ('qbe', 'x86'):
         build_args = copy.copy(args)
         build_args.ir, build_args.out = Path(product['file']), out / 'build'
         build_args.source = build_args.image = build_args.image_key = build_args.runtime = None
         build_args.retain_ir, build_args.expected_stdout = True, Path(case['stdoutFile']['file'])
-        build_args.output_stage, build_args.output_protocol = None, 'qbe-source-v1'
+        build_args.output_stage, build_args.output_protocol = None, ('native-x86-source-v1' if args.target == 'x86' else 'qbe-source-v1')
         build_args.seconds = args.build_seconds + args.execute_seconds
         built = native.build(build_args)
         row['build'] = pin(build_args.out / 'report.json')
@@ -224,7 +224,7 @@ def qualify(args):
             'Explicit image upstream differs from catalog')
     inputs += preflight['inputs']
     for key in ([args.program_engine_key] if args.target == 'js' else
-                ['qbe', 'assembler', 'linker', args.runtime_key] if args.target == 'qbe' else
+                (['qbe'] if args.target == 'qbe' else []) + ['assembler', 'linker', args.runtime_key] if args.target in ('qbe', 'x86') else
                 [document['toolchains']['c']['compiler']]):
         inputs.append(assets.asset(document, key))
     report = dict(kind='bend-finite-qualification', version=1, complete=False, passed=False,

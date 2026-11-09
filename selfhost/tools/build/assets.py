@@ -74,12 +74,33 @@ def runtime_provider(document, key):
     row = document['assets'][key]
     policy = document.get('runtimePolicies', {}).get(key, {})
     require(isinstance(policy, dict), 'Invalid runtime provider policy')
-    field = 'runtimeArgumentConvention'
-    require(field not in row or field not in policy or row[field] == policy[field],
-            'Conflicting runtime argument conventions: ' + key)
+    for field in ('runtimeArgumentConvention', 'runtimeABI'):
+        label = 'runtime argument conventions' if field == 'runtimeArgumentConvention' else 'runtime ABI declarations'
+        require(field not in row or field not in policy or row[field] == policy[field],
+                'Conflicting '+label+': ' + key)
     provider = dict(row, **policy)
     runtime_argument_convention(provider)
+    runtime_abi(provider)
     return provider
+
+
+def runtime_abi(provider):
+    value = (provider or {}).get('runtimeABI')
+    require(value is None or (type(value) is int and 0 < value <= 0xffffffff),
+            'Runtime ABI must be an explicit positive integer')
+    return value
+
+
+def native_toolchain(document, target):
+    require(target in ('qbe', 'x86'), 'Unsupported native machine target')
+    policy = document.get('toolchains', {}).get(target)
+    require(isinstance(policy, dict) and policy.get('target') == 'amd64_sysv',
+            'Explicit amd64_sysv '+('QBE' if target == 'qbe' else target)+' toolchain policy required')
+    require(policy.get('assemblerFlags') == ['-mbranches-within-32B-boundaries']
+            and policy.get('linkerFlags') == ['-no-pie']
+            and policy.get('libraries') == ['-pthread', '-lm'],
+            'Unknown machine policy; qualify a separate adapter for different flags')
+    return policy
 
 
 def runtime_arguments(provider, *, application=False):

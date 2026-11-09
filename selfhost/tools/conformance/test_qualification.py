@@ -49,6 +49,17 @@ class QualificationJudges(unittest.TestCase):
         self.assertFalse(Q.refusal(case, dict(emission, process=self.child(stderr=b'compile: failed', code=1))))
         self.assertFalse(Q.refusal(case, dict(emission, process=self.child(stderr=b'check: main:', code=1))))
 
+    def test_assembly_refusals_require_the_same_specific_semantic_stage(self):
+        case = dict(name='negative-type', refusal=dict(prefix='check: main:', exact=False))
+        args = argparse.Namespace(host='native', target='x86')
+        self.assertTrue(Q.supported(case,args))
+        child = self.child(stderr=b'check: main: wrong type\n',code=1)
+        emission = dict(host='native',target='x86',process=child,changedInputs=[])
+        self.assertTrue(Q.refusal(case,emission))
+        self.assertFalse(Q.refusal(case,dict(emission,product=dict(bytes=1))))
+        self.assertFalse(Q.refusal(case,dict(emission,process=dict(child,exitCode=-9))))
+        self.assertFalse(Q.refusal(case,dict(emission,process=self.child(stderr=b'assembly: unsupported',code=1))))
+
     def test_hosted_check_is_not_crash_or_unchecked_parse(self):
         case = dict(name='negative-type')
         emission = dict(host='js', target='js', process=self.child(code=1), changedInputs=[])

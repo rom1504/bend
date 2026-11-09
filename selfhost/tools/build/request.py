@@ -121,7 +121,7 @@ def arguments(parser, *, source_required=True):
     parser.add_argument('--image-receipt', type=Path)
     parser.add_argument('--source', type=Path, required=source_required)
     parser.add_argument('--host', choices=['native', 'js'], required=source_required)
-    parser.add_argument('--target', choices=['js', 'c', 'qbe'], default='qbe')
+    parser.add_argument('--target', choices=['js', 'c', 'qbe', 'x86'], default='qbe')
     parser.add_argument('--stage', required=source_required,
                         help='Actual executing image generation, e.g. B1, B2, N1, N2')
     parser.add_argument('--mode', choices=['cache', 'live'], default='cache')
@@ -130,7 +130,7 @@ def arguments(parser, *, source_required=True):
     parser.add_argument('--engine-key', default='bun')
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--seconds', type=float, default=600)
-    parser.add_argument('--expected', '--expected-qbe', dest='expected', type=Path)
+    parser.add_argument('--expected', '--expected-qbe', '--expected-assembly', dest='expected', type=Path)
     parser.add_argument('--plan', action='store_true', help='Print the authenticated plan; execute nothing')
 
 
@@ -211,6 +211,11 @@ def plan(args):
             command += ['phase111', source['file'], base['file'], args.mode,
                         carrier['file'] if carrier else '', stamp]
             result['outputContract'] = 'stdout'
+        elif protocol == 'native-x86-source-v1':
+            require(args.target == 'x86', 'Native x86 protocol only emits assembly')
+            command += ['x86', source['file'], base['file'], args.mode,
+                        carrier['file'] if carrier else '', stamp]
+            result['outputContract'] = 'stdout'
         elif protocol == 'native-c-source-v1':
             require(args.target == 'c', 'native-c-source-v1 only emits C')
             require('runtime' in providers and 'effects' in providers, 'C providers must be declared')
@@ -236,6 +241,7 @@ def plan(args):
         else:
             raise ValueError('Unsupported explicit native protocol: ' + str(protocol))
     else:
+        require(args.target != 'x86', 'x86 assembly requires an explicit native emitter image')
         require(protocol in ('qbe-api-v1', 'typed-api-v1', 'hosted-api-v1'), 'Unsupported checked JS API protocol')
         require(metadata.get('checked') is True, 'Checked hosted API binding required')
         result['engine'] = assets.asset(document, args.engine_key)
@@ -255,7 +261,7 @@ def execute(args, request=None):
     root = Path(request['workspace'])
     out = fresh_output(args.out, root)
     write_json(out / 'request.json', request)
-    suffix = {'qbe': 'ssa', 'c': 'c', 'js': 'mjs'}[request['target']]
+    suffix = {'qbe': 'ssa', 'x86': 's', 'c': 'c', 'js': 'mjs'}[request['target']]
     product = Path(request.get('emittedFile', out / ('program.' + suffix)))
     report = dict(kind='bend-build-request', version=1, complete=False,
                   request=request, inputs=request['inputs'], host=request['host'],

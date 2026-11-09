@@ -11,28 +11,54 @@ import subprocess
 from bench import pin, require, save
 
 
+def analyze_source(path, target):
+    source = path.read_text()
+    result = dict(source=pin(path), lines=len(source.splitlines()), bytes=len(source.encode()),
+                  scope='Lexical occurrences include declarations/comments and are not parsed calls or costs.')
+    if target == 'x86':
+        symbols, instructions, calls = [], [], []
+        label = re.compile(r'^([A-Za-z_.$][A-Za-z_0-9.$]*|[0-9]+):\s*')
+        for line in source.splitlines():
+            # This is the emitted GNU assembler syntax, not disassembly or a
+            # general assembler parser. Directives do not count as instructions.
+            text = line.split('#', 1)[0].strip()
+            while (match := label.match(text)) is not None:
+                symbols.append(match[1])
+                text = text[match.end():]
+            match = re.match(r'^([A-Za-z][A-Za-z0-9.]*)\b(?:\s+(.*))?$', text)
+            if match:
+                mnemonic, operands = match[1].lower(), (match[2] or '').strip()
+                instructions.append(mnemonic)
+                if mnemonic in ('call', 'callq'):
+                    calls.append(operands)
+        result.update(lexicalCalls=dict(sorted(Counter(calls).items())),
+                      assemblySymbols=len(symbols), assemblyInstructions=len(instructions),
+                      assemblyMnemonics=dict(sorted(Counter(instructions).items())),
+                      scope='Line-oriented GNU assembly lexical counts; labels include local/data labels, '
+                            'directives and hash comments are excluded, call operands may be indirect. '
+                            'These are not parsed instructions, dynamic events or costs.')
+    else:
+        calls = (re.findall(r'\b([A-Za-z_][A-Za-z_0-9]*)\s*\(', source) if target == 'c'
+                 else re.findall(r'\bcall\s+\$([^\s(]+)', source))
+        result.update(lexicalCalls=dict(sorted(Counter(calls).items())),
+                      qbeFunctions=len(re.findall(r'(?m)^(?:export )?function\b', source)) if target == 'qbe' else None)
+    return result
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--target', choices=('c', 'qbe'), required=True)
+    parser.add_argument('--target', choices=('c', 'qbe', 'x86'), required=True)
     parser.add_argument('--source', type=Path, required=True)
     parser.add_argument('--binary', type=Path)
     parser.add_argument('--compare-source', type=Path)
     parser.add_argument('--out', type=Path, required=True)
     args = parser.parse_args()
     args.out.mkdir(parents=True, exist_ok=False)
-    def analyze(path):
-        source = path.read_text()
-        # Explicitly lexical: do not mistake these for a C/QBE parser or dynamic events.
-        calls = re.findall(r'\b([A-Za-z_][A-Za-z_0-9]*)\s*\(', source) if args.target == 'c' else re.findall(r'\bcall\s+\$([^\s(]+)', source)
-        return dict(source=pin(path), lines=len(source.splitlines()), bytes=len(source.encode()),
-                    lexicalCalls=dict(sorted(Counter(calls).items())),
-                    qbeFunctions=len(re.findall(r'(?m)^(?:export )?function\b', source)) if args.target == 'qbe' else None,
-                    scope='Lexical occurrences include declarations/comments and are not parsed calls or costs.')
     report = dict(schema='bend-generated-native-inspection-v1', complete=False, target=args.target,
-                  inputs=[pin(__file__)], sources=[analyze(args.source)], machine=[])
+                  inputs=[pin(__file__)], sources=[analyze_source(args.source, args.target)], machine=[])
     try:
         if args.compare_source:
-            report['sources'].append(analyze(args.compare_source))
+            report['sources'].append(analyze_source(args.compare_source, args.target))
         if args.binary:
             report['inputs'].append(pin(args.binary))
             for name, flags in [('objdump', ['-d', '-C', '-w']), ('readelf', ['-W', '-S', '-s']), ('size', ['-A'])]:

@@ -57,7 +57,7 @@ class Contracts(unittest.TestCase):
             for positive_ms in (99, 100):
                 with self.subTest(order=order, positive_ms=positive_ms), tempfile.TemporaryDirectory() as directory:
                     root = Path(directory)
-                    roles = dict(reference=dict(target='qbe'), candidate=dict(target='qbe'))
+                    roles = dict(reference=dict(target='qbe'), candidate=dict(target='x86'))
                     cases, commands = [], {}
                     for name in order:
                         products = {}
@@ -131,6 +131,23 @@ class Contracts(unittest.TestCase):
         self.assertEqual(len({row['sourceGroup'] for row in native['cases']}), 23)
         for row in native['cases']:
             self.assertEqual(Path(row['expectedFile']['file']).read_text(), row['point']['expectedStdout'])
+
+    def test_x86_freeze_uses_unchanged_native_catalog_and_runtime_contract(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory); binary=root/'program';binary.write_text('unexecuted fixture')
+            catalog=HERE/'catalogs/native45/catalog.json'
+            role=dict(host='native',stage='N1',target='x86',preparation='cache',policy='ordinary',status='fixture')
+            product=dict(artifact=str(binary),runtimeArgumentConvention='bend-rts-v1')
+            recipe=dict(kind='programs',catalog=str(catalog),reference='assembly',roles=dict(assembly=role),
+                        cases=[dict(id='scalar-region-0',products=dict(assembly=product))])
+            recipe_file=root/'recipe.json';recipe_file.write_text(json.dumps(recipe))
+            frozen=B.freeze(recipe_file,root/'manifest.json')
+            case=frozen['cases'][0]
+            expected=next(row for row in B.catalog(catalog)['cases'] if row['id']==case['id'])
+            self.assertEqual(case['point'],expected['point'])
+            self.assertEqual(case['expectedFile'],expected['expectedFile'])
+            self.assertFalse(case['point']['ratioEligible'])
+            self.assertEqual(case['products']['assembly']['runtimeArgumentConvention'],'bend-rts-v1')
 
     def test_partial_acquisition_does_not_shrink_selection(self):
         manifest = dict(sets=dict(fast=['a', 'b']), cases=[dict(id='a')])

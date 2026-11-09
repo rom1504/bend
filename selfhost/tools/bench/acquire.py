@@ -94,10 +94,22 @@ def c_build(document, product, directory, root, seconds):
     return receipt['binary'], [compiler, common.pin(directory / 'build.json')]
 
 
-def replay_request(plan, inputs, spec_file):
+def replay_request(plan, inputs, spec_file, stderr=None):
     """Keep the actual child compiler command, without a timed Python wrapper."""
     command = list(plan['command'])
     if plan['outputContract'] != 'stdout':
+        if plan.get('imageMetadata', {}).get('protocol') == 'native-public-cli-v1':
+            emitted = plan.get('emittedFile', '')
+            common.require(plan['host'] == 'native' and emitted.endswith('/program.c')
+                           and command.count(emitted) == 1 and command.index(emitted) > 0
+                           and command[command.index(emitted)-1] == '-o', 'Unknown public native C output contract')
+            common.require(stderr is not None, 'Successful public C acquisition stderr required')
+            # The public entry has a deterministic proof banner, not telemetry.
+            # Validate it, then preserve its exact bytes for every cold replay.
+            stderr = common.pin(common.verify(stderr))
+            request.proof_verdict(common.verify(stderr).read_bytes())
+            return dict(command=['{output}' if value == emitted else value for value in command],
+                        inputs=[*inputs, stderr], outputContract='file', stderr=stderr)
         common.require(plan.get('imageMetadata', {}).get('protocol') == 'native-c-source-v1'
                        and plan.get('emittedFile', '').endswith('/program.1.c'), 'Unknown file-output protocol')
         prefix = plan['emittedFile'][:-4]
@@ -144,7 +156,7 @@ def acquire_case(role, document, source, directory, root, seconds):
             inputs += [*hosted['inputs'], common.pin(args.out / 'hosted.json')]
         # Exact stdout protocols can be replayed without adding Python/hash work
         # inside the compiler clock. Native-C telemetry requires a separate clock contract.
-        replay = replay_request(plan, inputs, args.out / 'request.json')
+        replay = replay_request(plan, inputs, args.out / 'request.json', emitted.get('process', {}).get('stderr'))
     generated = product
     convention = None
     if role['target'] in ('qbe', 'x86'):
@@ -250,7 +262,8 @@ def execute(args):
                 validate_product(role, product, case, directory, root, left())
                 row['products'][name] = product
                 if replay:
-                    oracle = dict(product=product['generatedSource'], stdout=common.pin(empty)) if replay.get('stderrProtocol') else dict(stdout=product['generatedSource'], stderr=common.pin(empty))
+                    file_output = replay.get('stderrProtocol') or replay.get('outputContract') == 'file'
+                    oracle = dict(product=product['generatedSource'], stdout=common.pin(empty)) if file_output else dict(stdout=product['generatedSource'], stderr=common.pin(empty))
                     request_row['requests'][name] = dict(replay, scope='request', **oracle)
             recipe['cases'].append(row)
             compiler['cases'].append(request_row)

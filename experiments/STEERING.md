@@ -1,3 +1,38 @@
+# Phase186 — native program-runtime gains, 2026-11-09
+
+[Report](../implementation/phase186/README.md) · [Design](../design/phase186/README.md) ·
+[Actual native qualification/use](../implementation/phase186/native-qualification.md) ·
+[Full runtime data](../implementation/phase186/runtime-summary.md) ·
+[Final profile](../implementation/phase186/final-profile.md).
+
+Actual Phase185/186 N2 products and the same C products, five balanced rounds
+per case: QBE/C1.47131→1.34731 (8.43% less runtime); assembly/C5.53262→4.00353
+(27.64% less). All45 outputs per target pass;44 timed cases. The explicitly
+composed result retains40 complete cases from a deadline-limited run and five
+whole-case reruns, with1125 timed/731 pilot observations independently verified.
+No partial case is reused, excluded result hidden, or original report relabeled.
+
+Broad parity remains unmet: QBE32/23 cases above1.1×/2×C; assembly40/40.
+Positive-log deficits0.52689/1.45552. Four dispersion flags are preserved;
+QBE's largest observed median regressions are list128+3.64% and active-ray+1.55%.
+Shared transport/Char expansion, stacked continuations, private state cleanup,
+physical moves and F32 plans remove actual work. Both owned-take inlining
+variants regress and remain unselected; wider bounds and alignment are rejected.
+
+Both exact native chains,64/64 per target,runtime10 forassembly and8 checked
+hosted/native product identities pass. Installed Phase183 and Phase185 qualified
+references remain. Assembly adds1309 maintained lines plus shared work; its
+self-build rises257.758→290.135s across source versions. QBE N2 self-build is
+191.221s,7.15% below its same-source producer's complete build in one observation.
+Do not confuse source checks, finite gates, reproduction and kernel proofs.
+
+Next: assembly comparison/branch selection and loop-weighted fixed register
+homes, sharing analysis facts to recover compiler cost. The final fold loop
+still has66 instructions/21 frame references versus QBE17/0. Compose unary
+conversion effects with the private F32 plan; ray dispatch has fallen21.69→6.35%
+of samples. QBE should eliminate whole temporary products across real hot
+boundaries, rather than inline more ownership helpers without measured payoff.
+
 # Latest evidence — Phase185 native runtime optimization
 
 [Report](../implementation/phase185/README.md) ·

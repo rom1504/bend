@@ -1,0 +1,231 @@
+{
+  "kind": "phase186-final-five-role-runtime-plan",
+  "version": 1,
+  "targetsRun": false,
+  "qualificationPlanUnmodified": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase186/qualification-plan.json",
+    "bytes": 18413,
+    "sha256": "17e409d7189f3725a0ab0b964b9a51d8092ede6cc4173668852cff04ecec9a41"
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/release-native45-acquire01/programs.manifest.json",
+      "bytes": 710371,
+      "sha256": "03d6bf0a7d0199f8bf46ab9e7a11ff49dedb1259587d43d4342e276251e2b28a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/programs.manifest.json",
+      "bytes": 791646,
+      "sha256": "9117539ba0fa06640492c842676b756af84b892153989469a399af724b4e96e4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/catalog.json",
+      "bytes": 54895,
+      "sha256": "746fe610bfe1a5704f390b71cd5ee702e6bd874bd89a5a9363d5f69f69c0e475"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase185/runtime-loop.py",
+      "bytes": 9810,
+      "sha256": "10f86b50fa6c4a50607ae63f96361ba557603ae4d497c1eeb08431a2e1764b8a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase186/job.py",
+      "bytes": 2640,
+      "sha256": "2cc494f14aaf8ec4a1ad54fe1181c33cca0233257aee8c3ca16c3fa9d24323bb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase186/analyze-runtime.py",
+      "bytes": 9139,
+      "sha256": "00de2390521f32bbbd9bd8948c71165591f333acb792d0fb0e67dd07cb2b8565"
+    }
+  ],
+  "deferredInput": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-native45-acquire01/programs.manifest.json",
+    "requiredCompleteAcquisition": true,
+    "caseIds": [
+      "mandelbrot",
+      "editdist",
+      "tree-bitonic",
+      "lexer",
+      "symreg",
+      "test-morning-program",
+      "test-evening-program",
+      "test-rle-roundtrip",
+      "test-map-set-ops",
+      "raytrace",
+      "local-pair",
+      "local-fold",
+      "scalar-region-0",
+      "scalar-region-8192",
+      "complete-generic-row32",
+      "variation-editdist-0-17",
+      "variation-editdist-3-123",
+      "variation-lexer-6-17",
+      "variation-lexer-10-123",
+      "variation-tree-bitonic-6-17",
+      "variation-tree-bitonic-9-123",
+      "variation-symreg-4-17",
+      "variation-symreg-7-123",
+      "variation-local-fold-128-0",
+      "variation-local-fold-8192-123",
+      "variation-mandelbrot-grid-4-7",
+      "variation-mandelbrot-grid-5-31",
+      "variation-ray-active-64-2440",
+      "variation-ray-active-256-2240",
+      "coverage-closures-64",
+      "coverage-closures-256",
+      "coverage-list-pipeline-128",
+      "coverage-list-pipeline-512",
+      "coverage-bst-32",
+      "coverage-bst-64",
+      "coverage-unicode-text-16",
+      "coverage-unicode-text-64",
+      "coverage-expression-32",
+      "coverage-expression-128",
+      "coverage-map-churn-32",
+      "coverage-map-churn-128",
+      "coverage-numeric-recurrence-256",
+      "coverage-numeric-recurrence-1024",
+      "coverage-record-aggregation-64",
+      "coverage-record-aggregation-256"
+    ],
+    "roles": [
+      "phase186-qbe-n2",
+      "phase186-x86-n2"
+    ],
+    "scope": "Do not execute merge until complete authenticated actual Phase186 N2 acquisition exists. No future artifact pin invented."
+  },
+  "roles": [
+    [
+      "c",
+      "selfhost/build/phase184/bend-products01/programs.manifest.json",
+      "bend-c"
+    ],
+    [
+      "oldqbe",
+      "selfhost/build/phase185/release-native45-acquire01/programs.manifest.json",
+      "phase185-qbe-n2"
+    ],
+    [
+      "newqbe",
+      "selfhost/build/phase186/release-native45-acquire01/programs.manifest.json",
+      "phase186-qbe-n2"
+    ],
+    [
+      "oldx86",
+      "selfhost/build/phase185/release-native45-acquire01/programs.manifest.json",
+      "phase185-x86-n2"
+    ],
+    [
+      "newx86",
+      "selfhost/build/phase186/release-native45-acquire01/programs.manifest.json",
+      "phase186-x86-n2"
+    ]
+  ],
+  "reference": "c",
+  "rounds": 5,
+  "positionBalanced": true,
+  "expectedSamples": 1125,
+  "timingEligibleCases": 44,
+  "correctnessOnlyCases": 1,
+  "commands": [
+    {
+      "kind": "metadata-only",
+      "argv": [
+        "python3",
+        "-B",
+        "selfhost/tests/phase185/runtime-loop.py",
+        "merge",
+        "--role",
+        "c",
+        "selfhost/build/phase184/bend-products01/programs.manifest.json",
+        "bend-c",
+        "--role",
+        "oldqbe",
+        "selfhost/build/phase185/release-native45-acquire01/programs.manifest.json",
+        "phase185-qbe-n2",
+        "--role",
+        "newqbe",
+        "selfhost/build/phase186/release-native45-acquire01/programs.manifest.json",
+        "phase186-qbe-n2",
+        "--role",
+        "oldx86",
+        "selfhost/build/phase185/release-native45-acquire01/programs.manifest.json",
+        "phase185-x86-n2",
+        "--role",
+        "newx86",
+        "selfhost/build/phase186/release-native45-acquire01/programs.manifest.json",
+        "phase186-x86-n2",
+        "--reference",
+        "c",
+        "--cases",
+        "mandelbrot,editdist,tree-bitonic,lexer,symreg,test-morning-program,test-evening-program,test-rle-roundtrip,test-map-set-ops,raytrace,local-pair,local-fold,scalar-region-0,scalar-region-8192,complete-generic-row32,variation-editdist-0-17,variation-editdist-3-123,variation-lexer-6-17,variation-lexer-10-123,variation-tree-bitonic-6-17,variation-tree-bitonic-9-123,variation-symreg-4-17,variation-symreg-7-123,variation-local-fold-128-0,variation-local-fold-8192-123,variation-mandelbrot-grid-4-7,variation-mandelbrot-grid-5-31,variation-ray-active-64-2440,variation-ray-active-256-2240,coverage-closures-64,coverage-closures-256,coverage-list-pipeline-128,coverage-list-pipeline-512,coverage-bst-32,coverage-bst-64,coverage-unicode-text-16,coverage-unicode-text-64,coverage-expression-32,coverage-expression-128,coverage-map-churn-32,coverage-map-churn-128,coverage-numeric-recurrence-256,coverage-numeric-recurrence-1024,coverage-record-aggregation-64,coverage-record-aggregation-256",
+        "--out",
+        "selfhost/build/phase186/release-full45-five-merged01"
+      ]
+    },
+    {
+      "kind": "guarded-target-job",
+      "argv": [
+        "python3",
+        "-B",
+        "selfhost/tests/phase186/job.py",
+        "release-full45-five-runtime01",
+        "660",
+        "128",
+        "python3",
+        "-B",
+        "selfhost/tests/phase185/runtime-loop.py",
+        "run",
+        "--manifest",
+        "selfhost/build/phase186/release-full45-five-merged01/manifest.json",
+        "--out",
+        "selfhost/build/phase186/release-full45-five-runtime01",
+        "--rounds",
+        "5",
+        "--seconds",
+        "640",
+        "--target-ms",
+        "250",
+        "--guarded",
+        "--cpu",
+        "3"
+      ]
+    },
+    {
+      "kind": "metadata-only",
+      "argv": [
+        "python3",
+        "-B",
+        "selfhost/tests/phase186/analyze-runtime.py",
+        "--report",
+        "selfhost/build/phase186/release-full45-five-runtime01/report.json",
+        "--pair",
+        "oldqbe",
+        "newqbe",
+        "--pair",
+        "oldx86",
+        "newx86",
+        "--out",
+        "implementation/phase186/release-full45-five-runtime01-analysis.json"
+      ]
+    }
+  ],
+  "primaryMetrics": [
+    "newqbe/C and newx86/C geometric means, equal-family/source means and positive deficits",
+    "newqbe/oldqbe and newx86/oldx86 same-campaign ratios of per-role medians; no paired significance claim"
+  ],
+  "resourcePolicy": {
+    "cpu": 3,
+    "rssMiB": 2048,
+    "fileMiB": 128,
+    "diskReserveMiB": 5120,
+    "outerSeconds": 660,
+    "innerSeconds": 640
+  },
+  "recommendation": "Prefer this five-role five-round campaign if at least13minutes remain after native qualification and45 acquisition. Expect7\u20139minutes versus about4.3minutes for the three-role three-round campaign; allow11minutes guarded runtime plus2minutes analysis/closure. This supersedes the three-role timing step only, not source/chain/gates/acquisition; retain it as a separate named plan.",
+  "latestRecommendedStartUtc": "2026-11-09T11:58:00Z",
+  "hardDeadlineUtc": "2026-11-09T12:11:00Z",
+  "failurePolicy": "Keep original report including flagged/failed observations. Never replace cases inside it or shrink full45. Review role-specific spread: a C-only flag cautions new/C while stable new/old may remain informative. Repeat unstable cases separately if time permits. If less than13minutes remain, use the existing three-role plan and label historical comparisons normalized across campaigns.",
+  "validation": "All current old-N2/C input pins, role labels,45 catalog source/point/oracle identities validated by unchanged runtime-loop.load. New products are deliberately deferred until acquisition completes."
+}

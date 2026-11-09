@@ -20,9 +20,9 @@ actual generations, qualification and audited installation.
 
 ## Current development pipeline
 
-Phase185 adds bounded optimizations to the maintained source; the installed
+Phase186 adds bounded optimizations to the maintained source; the installed
 Phase183 image remains a separately qualified artifact until release promotion.
-See the [Phase185 report](../../implementation/phase185/README.md) for actual
+See the [Phase186 report](../../implementation/phase186/README.md) for actual
 candidate identities, runtime results and native qualification status.
 
 The assembly backend reuses checked scalar-array and late native expansions,
@@ -34,6 +34,14 @@ uses known destination registers directly, and admitted binary F32 operations
 use scalar SSE instructions under the same numeric contract as QBE. Unknown
 cases retain the original lowering. These are compiler algorithms written in
 Bend, not host-language code-generation shortcuts.
+
+Phase186 adds private-memory elimination, bounded expression reuse, direct ABI
+moves, selective saves and explicit F32 operand plans. Closed canonical F32
+regions can retain XMM values; exact U32-to-F32 calls use direct instructions.
+Unknown calls, escaped values and control-flow boundaries preserve conservative
+homes. The same verified state-transfer and Char expansions also serve QBE.
+The [qualified candidate guide](../../implementation/phase186/native-qualification.md)
+provides explicit N2 commands; source changes do not silently replace installed images.
 
 The passes operate on the existing verified native statements. They preserve
 entry setup versus loop-backedge semantics, operand snapshots, alias barriers,

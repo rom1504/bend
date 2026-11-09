@@ -43,6 +43,14 @@ assembly. `selfhost/bend --target x86 FILE -o OUTPUT.s`, ELF output and `--run`
 use this installed compiler. See the [assembly guide](docs/self_hosted/ASSEMBLY.md)
 for commands and the separate source-check, reproduction and proof boundaries.
 
+[Phase186](implementation/phase186/README.md) qualifies newer QBE and assembly N2
+candidates. On the frozen 45-point program suite, runtime falls by 8.43% and
+27.64% respectively: QBE is 1.347× and assembly 4.004× our C target. These are
+runtime comparisons, not compilation-speed claims; assembly self-build cost
+increases. See the [candidate commands](implementation/phase186/native-qualification.md)
+and [full measurements](implementation/phase186/runtime-summary.md). The installed
+Phase183 selector remains unchanged.
+
 | Task | Maintained entry |
 | --- | --- |
 | Assemble, request, build and bootstrap | [`selfhost/tools/build/`](selfhost/tools/build/) and [workflow](docs/self_hosted/workflow.md) |

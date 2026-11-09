@@ -1,7 +1,8 @@
 # P186-002: verified fixed-count register transport
 
 Hypothesis recorded during source and actual-machine inspection on 2026-11-09.
-The coordinator owns all target execution. No result is claimed here yet.
+The coordinator owns all target execution. The original hypothesis is retained
+below; measured integration findings follow at the end.
 
 The final Phase185 native tree ELF retains a roughly 27-instruction
 `p111_rt_jump` and 23-instruction `p111_rt_return`, both calling
@@ -41,3 +42,27 @@ closures and numeric cases before any acceptance claim.
 First falsifier: if the expanded machine retains transfer calls on the hot
 capability-4 path or if code growth/branch work offsets their removal, reject
 or narrow the candidate. The previous source/artifacts remain immutable.
+
+## Measured integration decision
+
+The checked first candidate passes the 30 admission rows and 2,000 independent
+machine observations. The shared expansion is selected by both QBE and x86;
+assembly consumes the structured expansion before its ordinary optimizations.
+Char identity is also enabled, so this screen does not isolate transport alone.
+The ten-case QBE screen observes 6.93% lower geometric runtime against Phase185,
+with Map 20.34%, tree 19.72%, record 11.11%, text 8.64%, and generic rows 6.72%
+lower. The other five cases vary by at most 0.61%. Exact observations and
+artifact identities are retained in
+[the first-screen analysis](../../implementation/phase186/first-screen-analysis.json).
+
+The historical physical-helper-only profile did not include all work removed
+by the composed expansion and Char identity. Its 1.08x ceiling therefore cannot
+be used as a ceiling for this bundled candidate. We retain it as the original
+limited hypothesis rather than retroactively attributing every gain to transport.
+
+The later stacked-continuation candidate improves Unicode text another 21.06%
+and generic rows 13.78%, while the same Map/tree/record controls stay within
+0.63%. This is a separate compositional capability, retaining the explicit
+continuation stack and original bounded case/capture conditions. The original
+verifier and runtime ABI are unchanged. Full native integration is reported in
+[Phase186](../../implementation/phase186/README.md).

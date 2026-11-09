@@ -1,0 +1,622 @@
+{
+  "kind": "phase186-final-ray-profile-analysis",
+  "complete": true,
+  "programsExecuted": false,
+  "sameWorkloadArguments": true,
+  "before": {
+    "role": "p186-sixth-x86",
+    "identity": {
+      "source": {
+        "cwd": "/home/ai/bend2/build/publish/bend",
+        "arguments": [
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS",
+          "--RTS",
+          "3000",
+          "4",
+          "256",
+          "2240"
+        ],
+        "inputFiles": [],
+        "argv0": {
+          "mode": "executable"
+        }
+      },
+      "binary": {
+        "bytes": 255752,
+        "sha256": "3d3c1e73dea01301af6987bf5ce9fd9ddbe078953412cd3b5d819e1b8568c6bc"
+      },
+      "argv0": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/sixth-x86-build01/variation-ray-active-256-2240/machine/program",
+      "expected": {
+        "exitCode": 0,
+        "stdout": {
+          "kind": "prefix-integer-line",
+          "prefix": "2166930202\n4\n3000\n",
+          "evidence": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/variation-ray-active-256-2240.stdout",
+            "bytes": 11,
+            "sha256": "15adde12f874e278a5e96d86c4ee20d18706611252e5cfc76a3ba63d29170dcf"
+          }
+        },
+        "stderr": {
+          "kind": "exact",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "diagnostic": false
+    },
+    "clean": {
+      "wallSeconds": {
+        "samples": [
+          7.115918547846377
+        ],
+        "count": 1,
+        "median": 7.115918547846377,
+        "minimum": 7.115918547846377,
+        "maximum": 7.115918547846377
+      },
+      "cpuSeconds": {
+        "samples": [
+          7.1144
+        ],
+        "count": 1,
+        "median": 7.1144,
+        "minimum": 7.1144,
+        "maximum": 7.1144
+      },
+      "peakRssKiB": {
+        "samples": [
+          11020
+        ],
+        "count": 1,
+        "median": 11020,
+        "minimum": 11020,
+        "maximum": 11020
+      }
+    },
+    "quality": {
+      "acceptedCaptures": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/profile-candidate-ray01/plan/capture/001-sample-variation-ray-active-256-2240-p186-sixth-x86/analysis.json",
+          "bytes": 281996,
+          "sha256": "2c8d0781662dfad59c489150b1845c91fd73bb8e1e45f7ab600e2c600233a935",
+          "samples": 866,
+          "periodUs": 8000,
+          "dropped": 0,
+          "overruns": 0,
+          "captureWindowChildCpuFraction": 0.9994447841156062,
+          "wholeChildCpuCoverageAdequate": true
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/profile-candidate-ray01/plan/capture/002-sample-variation-ray-active-256-2240-p186-sixth-x86/analysis.json",
+          "bytes": 209157,
+          "sha256": "e3837a563674b7d64b90f51e60fc3259582e8b0cc581c54580cdfdfc7c8b3990",
+          "samples": 535,
+          "periodUs": 13000,
+          "dropped": 0,
+          "overruns": 0,
+          "captureWindowChildCpuFraction": 0.9995569476935695,
+          "wholeChildCpuCoverageAdequate": true
+        }
+      ],
+      "rejectedCaptures": [],
+      "samples": 1401,
+      "sampleCountsByPeriodUs": {
+        "8000": 866,
+        "13000": 535
+      },
+      "unknownSamples": 0,
+      "captureLossTotals": {
+        "dropped": 0,
+        "overruns": 0
+      },
+      "adequate": true,
+      "wholeChildCpuCoverageAdequate": true,
+      "estimateAvailable": true
+    },
+    "sampledOverCleanWallRatio": 0.9772271077299765,
+    "functions": [
+      {
+        "object": "executable",
+        "name": "p113d_FID_36_112_114_111_100_117_99_116_46_110_101_97_114_101_115_116_",
+        "decoded": "p113d_FID_$product.nearest",
+        "samples": 515,
+        "rawFraction": 0.36759457530335476,
+        "periodWeightedMicroseconds": 5120000,
+        "periodWeightedFraction": 0.36879636966073615,
+        "lowPrecision": false,
+        "estimatedCleanCpuSeconds": 2.623764892314341
+      },
+      {
+        "object": "executable",
+        "name": "p111_rt_op",
+        "decoded": "p111_rt_op",
+        "samples": 302,
+        "rawFraction": 0.21556031406138473,
+        "periodWeightedMicroseconds": 3011000,
+        "periodWeightedFraction": 0.2168839587985306,
+        "lowPrecision": false,
+        "estimatedCleanCpuSeconds": 1.542999236476266
+      },
+      {
+        "object": "executable",
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_110_101_97_114_101_115_116_46_116_",
+        "decoded": "p113d_FID_$direct.nearest.t",
+        "samples": 208,
+        "rawFraction": 0.14846538187009278,
+        "periodWeightedMicroseconds": 2049000,
+        "periodWeightedFraction": 0.1475905784052438,
+        "lowPrecision": false,
+        "estimatedCleanCpuSeconds": 1.0500184110062665
+      },
+      {
+        "object": "executable",
+        "name": "p113d_FID_36_112_114_111_100_117_99_116_46_116_114_97_99_101_",
+        "decoded": "p113d_FID_$product.trace",
+        "samples": 91,
+        "rawFraction": 0.0649536045681656,
+        "periodWeightedMicroseconds": 883000,
+        "periodWeightedFraction": 0.06360296765828712,
+        "lowPrecision": false,
+        "estimatedCleanCpuSeconds": 0.4524969531081178
+      },
+      {
+        "object": "executable",
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_115_114_",
+        "decoded": "p113d_FID_$direct.sr",
+        "samples": 61,
+        "rawFraction": 0.04354032833690221,
+        "periodWeightedMicroseconds": 623000,
+        "periodWeightedFraction": 0.04487502701145286,
+        "lowPrecision": false,
+        "estimatedCleanCpuSeconds": 0.3192588921702802
+      },
+      {
+        "object": "executable",
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_115_122_",
+        "decoded": "p113d_FID_$direct.sz",
+        "samples": 65,
+        "rawFraction": 0.046395431834404,
+        "periodWeightedMicroseconds": 615000,
+        "periodWeightedFraction": 0.04429878268385796,
+        "lowPrecision": false,
+        "estimatedCleanCpuSeconds": 0.31515925952603907
+      },
+      {
+        "object": "executable",
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_115_120_",
+        "decoded": "p113d_FID_$direct.sx",
+        "samples": 60,
+        "rawFraction": 0.042826552462526764,
+        "periodWeightedMicroseconds": 590000,
+        "periodWeightedFraction": 0.04249801916012389,
+        "lowPrecision": false,
+        "estimatedCleanCpuSeconds": 0.3023479075127854
+      },
+      {
+        "object": "executable",
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_112_105_120_101_108_",
+        "decoded": "p113d_FID_$direct.pixel",
+        "samples": 56,
+        "rawFraction": 0.03997144896502498,
+        "periodWeightedMicroseconds": 583000,
+        "periodWeightedFraction": 0.041993805373478355,
+        "lowPrecision": false,
+        "estimatedCleanCpuSeconds": 0.2987607289490744
+      },
+      {
+        "object": "executable",
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_115_121_",
+        "decoded": "p113d_FID_$direct.sy",
+        "samples": 41,
+        "rawFraction": 0.02926481084939329,
+        "periodWeightedMicroseconds": 388000,
+        "periodWeightedFraction": 0.027947849888352663,
+        "lowPrecision": false,
+        "estimatedCleanCpuSeconds": 0.19883218324569618
+      },
+      {
+        "object": "executable",
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_99_111_118_101_114_97_103_101_46_97_99_116_105_118_101_46_108_111_111_112_",
+        "decoded": "p113d_FID_$direct.coverage.active.loop",
+        "samples": 1,
+        "rawFraction": 0.0007137758743754461,
+        "periodWeightedMicroseconds": 13000,
+        "periodWeightedFraction": 0.0009363970323417129,
+        "lowPrecision": true,
+        "estimatedCleanCpuSeconds": 0.006661903046891882
+      },
+      {
+        "object": "executable",
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_115_107_114_",
+        "decoded": "p113d_FID_$direct.skr",
+        "samples": 1,
+        "rawFraction": 0.0007137758743754461,
+        "periodWeightedMicroseconds": 8000,
+        "periodWeightedFraction": 0.0005762443275949003,
+        "lowPrecision": true,
+        "estimatedCleanCpuSeconds": 0.0040996326442411584
+      }
+    ],
+    "pins": [
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/profile-candidate-ray01/plan/comparison.json",
+        "bytes": 27756,
+        "sha256": "e7e533b3e6ade33f9a4b72016297a8b1afafb7887458d1b41c9d872fa12d1fe4"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/profile-candidate-ray01/plan/summary.md",
+        "bytes": 1865,
+        "sha256": "0d2ba376f4ab0e7e51a6bd3c57d35b9cb3451c24bc3c6987038fe6d5f1d38373"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/profile-candidate-ray01/plan/variation-ray-active-256-2240-owners.json",
+        "bytes": 80282,
+        "sha256": "c9f0221ef4069d0eff9b2c600bf6151e0a94d5c13250d0b7c741d7fcfb5c55f8"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/profile-candidate-ray01/plan/capture/001-sample-variation-ray-active-256-2240-p186-sixth-x86/analysis.json",
+        "bytes": 281996,
+        "sha256": "2c8d0781662dfad59c489150b1845c91fd73bb8e1e45f7ab600e2c600233a935"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/profile-candidate-ray01/plan/capture/002-sample-variation-ray-active-256-2240-p186-sixth-x86/analysis.json",
+        "bytes": 209157,
+        "sha256": "e3837a563674b7d64b90f51e60fc3259582e8b0cc581c54580cdfdfc7c8b3990"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/sixth-x86-build01/variation-ray-active-256-2240/machine/program",
+        "bytes": 255752,
+        "sha256": "3d3c1e73dea01301af6987bf5ce9fd9ddbe078953412cd3b5d819e1b8568c6bc"
+      }
+    ]
+  },
+  "final": {
+    "role": "newx86",
+    "identity": {
+      "source": {
+        "cwd": "/home/ai/bend2/build/publish/bend",
+        "arguments": [
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS",
+          "--RTS",
+          "3000",
+          "4",
+          "256",
+          "2240"
+        ],
+        "inputFiles": [],
+        "argv0": {
+          "mode": "executable"
+        }
+      },
+      "binary": {
+        "bytes": 243488,
+        "sha256": "3ef50ae269c1a7ab27216addcf06058960698f05654c4233508df39d0ecf2179"
+      },
+      "argv0": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-native45-acquire01/variation-ray-active-256-2240/phase186-x86-n2/machine/program",
+      "expected": {
+        "exitCode": 0,
+        "stdout": {
+          "kind": "prefix-integer-line",
+          "prefix": "2166930202\n4\n3000\n",
+          "evidence": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/variation-ray-active-256-2240.stdout",
+            "bytes": 11,
+            "sha256": "15adde12f874e278a5e96d86c4ee20d18706611252e5cfc76a3ba63d29170dcf"
+          }
+        },
+        "stderr": {
+          "kind": "exact",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "diagnostic": false
+    },
+    "clean": {
+      "wallSeconds": {
+        "samples": [
+          4.4803063459694386
+        ],
+        "count": 1,
+        "median": 4.4803063459694386,
+        "minimum": 4.4803063459694386,
+        "maximum": 4.4803063459694386
+      },
+      "cpuSeconds": {
+        "samples": [
+          4.478923
+        ],
+        "count": 1,
+        "median": 4.478923,
+        "minimum": 4.478923,
+        "maximum": 4.478923
+      },
+      "peakRssKiB": {
+        "samples": [
+          10960
+        ],
+        "count": 1,
+        "median": 10960,
+        "minimum": 10960,
+        "maximum": 10960
+      }
+    },
+    "quality": {
+      "acceptedCaptures": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-ray-profile01/plan/capture/001-sample-variation-ray-active-256-2240-newx86/analysis.json",
+          "bytes": 222736,
+          "sha256": "83448db5991f81a254d8b01e274c8dba9dbac1dab378fbd5de6afdbff9802ddb",
+          "samples": 556,
+          "periodUs": 8000,
+          "dropped": 0,
+          "overruns": 0,
+          "captureWindowChildCpuFraction": 0.9993530784627774,
+          "wholeChildCpuCoverageAdequate": true
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-ray-profile01/plan/capture/002-sample-variation-ray-active-256-2240-newx86/analysis.json",
+          "bytes": 168698,
+          "sha256": "e0a9f6ec0fe6a8ff7006d80dcdf00fb45686310798197b468718b4b1fd06a52e",
+          "samples": 343,
+          "periodUs": 13000,
+          "dropped": 0,
+          "overruns": 0,
+          "captureWindowChildCpuFraction": 0.999475711043227,
+          "wholeChildCpuCoverageAdequate": true
+        }
+      ],
+      "rejectedCaptures": [],
+      "samples": 899,
+      "sampleCountsByPeriodUs": {
+        "8000": 556,
+        "13000": 343
+      },
+      "unknownSamples": 0,
+      "captureLossTotals": {
+        "dropped": 0,
+        "overruns": 0
+      },
+      "adequate": true,
+      "wholeChildCpuCoverageAdequate": true,
+      "estimateAvailable": true
+    },
+    "sampledOverCleanWallRatio": 0.9972409864526302,
+    "functions": [
+      {
+        "object": "executable",
+        "name": "p113d_FID_36_112_114_111_100_117_99_116_46_110_101_97_114_101_115_116_",
+        "decoded": "p113d_FID_$product.nearest",
+        "samples": 355,
+        "rawFraction": 0.39488320355951056,
+        "periodWeightedMicroseconds": 3585000,
+        "periodWeightedFraction": 0.40249242169080496,
+        "lowPrecision": false,
+        "estimatedCleanCpuSeconds": 1.8027325648366452
+      },
+      {
+        "object": "executable",
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_110_101_97_114_101_115_116_46_116_",
+        "decoded": "p113d_FID_$direct.nearest.t",
+        "samples": 147,
+        "rawFraction": 0.1635150166852058,
+        "periodWeightedMicroseconds": 1416000,
+        "periodWeightedFraction": 0.15897608622431794,
+        "lowPrecision": false,
+        "estimatedCleanCpuSeconds": 0.7120416490400808
+      },
+      {
+        "object": "executable",
+        "name": "p113d_FID_36_112_114_111_100_117_99_116_46_116_114_97_99_101_",
+        "decoded": "p113d_FID_$product.trace",
+        "samples": 70,
+        "rawFraction": 0.0778642936596218,
+        "periodWeightedMicroseconds": 715000,
+        "periodWeightedFraction": 0.08027394184349389,
+        "lowPrecision": false,
+        "estimatedCleanCpuSeconds": 0.3595408044234872
+      },
+      {
+        "object": "executable",
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_115_114_",
+        "decoded": "p113d_FID_$direct.sr",
+        "samples": 59,
+        "rawFraction": 0.06562847608453838,
+        "periodWeightedMicroseconds": 577000,
+        "periodWeightedFraction": 0.06478050971146289,
+        "lowPrecision": false,
+        "estimatedCleanCpuSeconds": 0.2901469148983945
+      },
+      {
+        "object": "executable",
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_115_121_",
+        "decoded": "p113d_FID_$direct.sy",
+        "samples": 60,
+        "rawFraction": 0.06674082313681869,
+        "periodWeightedMicroseconds": 575000,
+        "periodWeightedFraction": 0.06455596721679578,
+        "lowPrecision": false,
+        "estimatedCleanCpuSeconds": 0.2891412063545526
+      },
+      {
+        "object": "executable",
+        "name": "p111_rt_op",
+        "decoded": "p111_rt_op",
+        "samples": 57,
+        "rawFraction": 0.06340378197997776,
+        "periodWeightedMicroseconds": 566000,
+        "periodWeightedFraction": 0.06354552599079376,
+        "lowPrecision": false,
+        "estimatedCleanCpuSeconds": 0.28461551790726397
+      },
+      {
+        "object": "executable",
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_115_120_",
+        "decoded": "p113d_FID_$direct.sx",
+        "samples": 55,
+        "rawFraction": 0.06117908787541713,
+        "periodWeightedMicroseconds": 550000,
+        "periodWeightedFraction": 0.06174918603345683,
+        "lowPrecision": false,
+        "estimatedCleanCpuSeconds": 0.2765698495565286
+      },
+      {
+        "object": "executable",
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_112_105_120_101_108_",
+        "decoded": "p113d_FID_$direct.pixel",
+        "samples": 45,
+        "rawFraction": 0.05005561735261402,
+        "periodWeightedMicroseconds": 445000,
+        "periodWeightedFraction": 0.04996070506343325,
+        "lowPrecision": false,
+        "estimatedCleanCpuSeconds": 0.22377015100482767
+      },
+      {
+        "object": "executable",
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_115_122_",
+        "decoded": "p113d_FID_$direct.sz",
+        "samples": 47,
+        "rawFraction": 0.05228031145717464,
+        "periodWeightedMicroseconds": 441000,
+        "periodWeightedFraction": 0.049511620074099025,
+        "lowPrecision": false,
+        "estimatedCleanCpuSeconds": 0.22175873391714382
+      },
+      {
+        "object": "executable",
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_115_107_114_",
+        "decoded": "p113d_FID_$direct.skr",
+        "samples": 2,
+        "rawFraction": 0.002224694104560623,
+        "periodWeightedMicroseconds": 21000,
+        "periodWeightedFraction": 0.0023576961940047153,
+        "lowPrecision": true,
+        "estimatedCleanCpuSeconds": 0.010559939710340182
+      },
+      {
+        "object": "executable",
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_99_111_118_101_114_97_103_101_46_97_99_116_105_118_101_46_108_111_111_112_",
+        "decoded": "p113d_FID_$direct.coverage.active.loop",
+        "samples": 2,
+        "rawFraction": 0.002224694104560623,
+        "periodWeightedMicroseconds": 16000,
+        "periodWeightedFraction": 0.001796339957336926,
+        "lowPrecision": true,
+        "estimatedCleanCpuSeconds": 0.008045668350735377
+      }
+    ],
+    "pins": [
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-ray-profile01/plan/comparison.json",
+        "bytes": 24120,
+        "sha256": "67430fd83e09ecd9f733e8a1faccd363774c7df28afb2b4c96fc3d2ab174e9b9"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-ray-profile01/plan/summary.md",
+        "bytes": 1829,
+        "sha256": "d63481a500f616823f8113f3f4fd21e59620bb4c58cd0214231970b3a770ca9e"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-ray-profile01/plan/variation-ray-active-256-2240-owners.json",
+        "bytes": 80317,
+        "sha256": "cba4070f03c0bc6754943152ada211db1ed410d53d6057164faa1930f7dbed42"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-ray-profile01/plan/capture/001-sample-variation-ray-active-256-2240-newx86/analysis.json",
+        "bytes": 222736,
+        "sha256": "83448db5991f81a254d8b01e274c8dba9dbac1dab378fbd5de6afdbff9802ddb"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-ray-profile01/plan/capture/002-sample-variation-ray-active-256-2240-newx86/analysis.json",
+        "bytes": 168698,
+        "sha256": "e0a9f6ec0fe6a8ff7006d80dcdf00fb45686310798197b468718b4b1fd06a52e"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-native45-acquire01/variation-ray-active-256-2240/phase186-x86-n2/machine/program",
+        "bytes": 243488,
+        "sha256": "3ef50ae269c1a7ab27216addcf06058960698f05654c4233508df39d0ecf2179"
+      }
+    ]
+  },
+  "cleanCpuFinalOverBefore": 0.6295573765883279,
+  "cleanCpuReductionPercent": 37.04426234116721,
+  "normalizedRemainingTotalWork": 0.6295573765883279,
+  "groups": [
+    {
+      "group": "p111_rt_op",
+      "owners": [
+        "p111_rt_op"
+      ],
+      "beforeShare": 0.2168839587985306,
+      "finalShare": 0.06354552599079376,
+      "beforeEstimatedCpuSeconds": 1.542999236476266,
+      "finalEstimatedCpuSeconds": 0.28461551790726397,
+      "finalOverBeforeEstimatedWork": 0.18445603288646986,
+      "finalWorkOverBeforeTotalCpu": 0.040005554636689526
+    },
+    {
+      "group": "nearest workers",
+      "owners": [
+        "p113d_FID_$product.nearest",
+        "p113d_FID_$direct.nearest.t"
+      ],
+      "beforeShare": 0.51638694806598,
+      "finalShare": 0.5614685079151229,
+      "beforeEstimatedCpuSeconds": 3.6737833033206075,
+      "finalEstimatedCpuSeconds": 2.514774213876726,
+      "finalOverBeforeEstimatedWork": 0.6845189294653573,
+      "finalWorkOverBeforeTotalCpu": 0.35347664088000763
+    },
+    {
+      "group": "sphere accessors",
+      "owners": [
+        "p113d_FID_$direct.sr",
+        "p113d_FID_$direct.sz",
+        "p113d_FID_$direct.sx",
+        "p113d_FID_$direct.sy"
+      ],
+      "beforeShare": 0.15961967874378738,
+      "finalShare": 0.2405972830358145,
+      "beforeEstimatedCpuSeconds": 1.135598242454801,
+      "finalEstimatedCpuSeconds": 1.0776167047266194,
+      "finalOverBeforeEstimatedWork": 0.9489418567583866,
+      "finalWorkOverBeforeTotalCpu": 0.15146979432230678
+    },
+    {
+      "group": "trace",
+      "owners": [
+        "p113d_FID_$product.trace"
+      ],
+      "beforeShare": 0.06360296765828712,
+      "finalShare": 0.08027394184349389,
+      "beforeEstimatedCpuSeconds": 0.4524969531081178,
+      "finalEstimatedCpuSeconds": 0.3595408044234872,
+      "finalOverBeforeEstimatedWork": 0.7945706638550115,
+      "finalWorkOverBeforeTotalCpu": 0.050537052235394016
+    },
+    {
+      "group": "pixel",
+      "owners": [
+        "p113d_FID_$direct.pixel"
+      ],
+      "beforeShare": 0.041993805373478355,
+      "finalShare": 0.04996070506343325,
+      "beforeEstimatedCpuSeconds": 0.2987607289490744,
+      "finalEstimatedCpuSeconds": 0.22377015100482767,
+      "finalOverBeforeEstimatedWork": 0.7489945274667296,
+      "finalWorkOverBeforeTotalCpu": 0.03145313041223823
+    }
+  ],
+  "scope": "Read-only analysis of two separate profile campaigns. One clean observation per campaign; period-weighted physical leaves scaled by their own clean CPU. No paired significance, causal ablation, full45, or per-owner regression claim. Native N2 versus checked-B1 program equivalence is coordinator-supplied context, not re-established by this profile analysis."
+}

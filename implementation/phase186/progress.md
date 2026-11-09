@@ -73,3 +73,16 @@ while both assembly roles have less than 2.4% spread. Full45 evidence is pending
 
 Both unique-take experiments are excluded. Widening old admission size limits
 also produced no new useful plans, so those limits remain unchanged.
+
+## Campaign close
+
+Both native chains reproduce text/assembly/objects. Both N2 images pass64 finite
+cases; assembly also passes runtime10. All45 outputs per target and eight exact
+hosted/native product identities pass. The final five-role comparison is complete
+as an explicitly preserved40+5 case-block composition after the original timing
+deadline: QBE runtime decreases8.43% to1.34731×C, assembly27.64% to4.00353×C.
+All1125 timed and731 retained pilot observations pass; four dispersion flags
+remain included. See [the final report](README.md), [runtime data](runtime-summary.md)
+and [final native profile](final-profile.md). Parity is not reached. The assembly
+self-build cost regression and source growth are recorded; installed selection
+is unchanged. No PR comment was posted.

@@ -1,3 +1,29 @@
+# Phase185 — QBE and assembly native runtime gains, 2026-11-09
+
+[Report](../implementation/phase185/README.md) · [Design](../design/phase185/README.md) ·
+[Qualification](../implementation/phase185/native-qualification.md) ·
+[Final derived metrics](../implementation/phase185/release-full45-runtime02-analysis.json).
+
+Three-hour campaign, one controlled CPU3 lane and bounded agents. Bend-aware
+profiles and machine inspection selected general Boolean/constructor/frame
+facts and assembly register/copy/stack/F32 lowering. Actual native N2-built45
+programs pass independent oracles;44 timed cases give1.47759×QBE/C and5.55592×
+assembly/C. Same-campaign first integration reduces QBE runtime3.84%; final
+cross-campaign C-normalized reduction5.02%, not a paired significance claim.
+Assembly four diagnostic kernels improve1.34–6.35×; broad old score unavailable.
+Parity remains unmet;32QBE/42assembly cases exceed1.1×C, and23/40 exceed2×C.
+Retain closures/numeric regressions rather than hiding them in the geometric mean.
+
+Both actual native chains reproduce, each N2 passes64/64 current finite cases,
+assembly runtime10 passes, and12 whole final hosted/native emitted products
+match. Added1,552Bend lines; compiler-build throughput gain not established.
+Source algorithms are Bend; independent host tooling remains test transport.
+Qualified candidates retained; Phase183 installation unchanged under existing
+coherent all-target release contract. No new proof/parallel/GPU claim or PR comment.
+Negative experiments, admission refusals, timing failures and precise artifact
+identities are preserved. Next remove private-memory work and preserve inline
+effect facts through assembly optimization, guided by actual hot machine code.
+
 # Phase182 — upstream2.0.40 compatibility and publication, 2026-11-09
 
 [Report](../implementation/phase182/README.md) · [Design](../design/phase182/README.md) ·

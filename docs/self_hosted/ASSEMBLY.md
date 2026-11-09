@@ -250,7 +250,16 @@ a current speed advantage over QBE.
 
 ## Current performance boundary
 
-First-class support does not imply speed parity. Phase183 native self-emission
+The maintained Phase185 source now has qualified explicit QBE and assembly N2
+candidates. On44 timed cases from native45, assembly is5.56× our C backend and
+QBE1.48×. Selected assembly kernels improve1.34–6.35× over retained Phase183
+products; there is no full45 old-assembly score. Both new native chains reproduce,
+both pass64 finite cases, and assembly passes the ten current runtime controls.
+The installed selector remains Phase183 pending coherent all-target publication.
+See the [current performance report](../../implementation/phase185/README.md) and
+[explicit candidate commands](../../implementation/phase185/native-qualification.md).
+
+For the installed Phase183 version, native self-emission
 is about 1.96× the QBE-built seed time. The maintained fast-five screen finds
 assembly about 25–50× QBE time on three list/numeric kernels; these cases are
 not the full45 runtime score. The20s budget expires on the unchanged repetition

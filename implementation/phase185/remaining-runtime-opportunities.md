@@ -196,3 +196,38 @@ candidate remains farthest behind on local-fold variants(16.10–18.60×) and
 editdist-3-123(15.14×). This full45 report measures `final-qbe-programs01` and
 `final-x86-programs01`; it cannot establish full45 performance of the later
 register candidate.
+
+## A composition gap exposed by the new F32 lowering
+
+Source observation: `x185_float_probe` recognizes binary F32 calls and emits SSE,
+but this happens in the final scalar renderer. Earlier `x185_t_scalar` still
+sees `N111Call` and conservatively ends the transient-register region and blocks
+call operands/destinations. Likewise local stack forwarding treats it as a call
+barrier. The optimizer therefore forgets that the eventual instruction sequence
+has no machine call and does not write its input buffer. This is not evidence
+that removing these boundaries is automatically safe or faster.
+
+A high-value next experiment is one shared, exact inline-operation/effect summary
+used by admission, register lifetime analysis, scratch analysis and emission.
+The summary must describe buffer reads, written result, scratch register use,
+width/NaN contracts, and the original fallback. It must become unavailable when
+the emitter cannot promise the inline path. Unknown calls retain every current
+barrier. Preserve executed FP operations and observable ordering; do not infer
+arbitrary call purity from names.
+
+Test an extracted ray/numeric loop and an unrelated numeric recurrence, using
+the existing95 numeric controls plus values live across the inline operation.
+Compare actual loads/stores and clean runtime. This could remove an entire class
+of artificial register boundaries without a new universal IR. Its runtime gain
+has not been measured. The current release candidate is frozen; this is a next
+experiment, not an implemented or qualified Phase185 optimization.
+
+The other bounded assembly experiment is parallel-move resolution on `Again`.
+The inspected fold retains four stack snapshot writes and four reads to preserve
+simultaneous loop-argument assignment. Identical source/destination homes and
+acyclic moves can potentially avoid those transfers; cycles need an explicit
+scratch rule and the existing path remains the fallback. Test permutations,
+cycles, stack/register mixtures, repeated source values, setup invariants and
+full-width words before enabling it. This is standard machine lowering, not a
+claim of a new compiler-theory result. Neither it nor dead scratch-store removal
+is implemented in Phase185.

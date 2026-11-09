@@ -1,4 +1,39 @@
-# Latest evidence — Phase184 handwritten-C runtime comparison
+# Latest evidence — Phase185 native runtime optimization
+
+[Report](../implementation/phase185/README.md) ·
+[Native qualification/use](../implementation/phase185/native-qualification.md) ·
+[Remaining machine-level opportunities](../implementation/phase185/remaining-runtime-opportunities.md).
+
+Final actual native N2 products:45 independent output checks per target,
+44 timed cases, three rotated C/QBE/x86 rounds. QBE/C geometric runtime1.47759×;
+assembly/C5.55592×. The denominator is our mature C target, not upstream or
+handwritten C. Historical retained-QBE/C1.55570 to final1.47759 is about5.02%
+less normalized runtime across campaigns; the earlier same-campaign integrated
+comparison established3.84%. Preserve the cross-campaign distinction.
+
+QBE still has32/44 cases above1.1×C and23 above2×C; assembly42/40. Positive-log
+deficits are0.60801/1.76198. QBE closures256 and numeric recurrences show
+unresolved normalized regressions of5.45–9.05%. Four assembly diagnostic kernels
+improve1.34–6.35×, but no old full45 assembly baseline exists. Broad parity is
+not achieved. Shared Boolean/constructor/frame facts and assembly copies,
+registers, stack forwarding, F32 and late structured expansions are maintained.
+Net compiler growth1,552 Bend lines/20 files is a real complexity cost.
+
+Both final native chains reproduce text/assembly/objects, both N2 images pass64
+current finite cases, assembly passes runtime10, and12 final checked-B1 products
+match native N2 byte-exactly. Installed Phase183 selection remains unchanged:
+named candidates are qualified, coherent JS/C/QBE/x86 publication is separate.
+No verifier weakening, runtime ABI change, kernel-proof or GPU/parallel claim.
+
+The next high-information assembly experiment is eliminating private dead stores
+and simultaneous loop-state transfers; a real loop still has123 instructions
+versus QBE17 despite reaching its fast path. Preserve inline F32 effect knowledge
+through allocation/forwarding instead of treating eventual inline instructions
+as machine-call barriers. For QBE, inspect ownership and caller boundaries on
+map/tree; helper counts alone do not establish a runtime ceiling. Do not start
+another backend or broad self-hosting campaign before a small machine-level win.
+
+# Prior evidence — Phase184 handwritten-C runtime comparison
 
 [Report](../implementation/phase184/README.md) ·
 [Full table](../implementation/phase184/summary.md) ·

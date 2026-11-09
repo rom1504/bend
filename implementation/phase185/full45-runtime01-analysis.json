@@ -1,0 +1,1732 @@
+{
+  "kind": "phase185-derived-runtime-and-static-analysis",
+  "version": 1,
+  "targetsRun": false,
+  "sourceReport": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/full45-runtime01/report.json",
+    "bytes": 2450329,
+    "sha256": "15d7f78beea25089f43bcddd6d90a5b00de416ff4215bddf22f2054e8b24cef5"
+  },
+  "sourceReportComplete": true,
+  "timedCases": 44,
+  "correctnessOnlyCases": [
+    "scalar-region-0"
+  ],
+  "rounds": 4,
+  "positionBalanced": true,
+  "sampleValidation": {
+    "sampleCount": 720,
+    "allSampleOutputPinsAndExactOraclesVerified": true,
+    "storedSummariesAndAggregateRecomputed": true,
+    "compilerAndProductInputsRequalified": false
+  },
+  "formulas": {
+    "ratio": "median per-invocation milliseconds for role / C",
+    "caseGeomean": "exp(mean(log(ratio))) over 44 timed cases",
+    "equalFamilyGeomean": "exp(mean of each family mean(log(ratio))) over 22 families",
+    "meanPositiveLogSlowdown": "mean(max(0, ln(ratio))) over 44 timed cases; speedups cannot cancel slowdowns",
+    "thresholds": "Strict ratio > 1.1 and > 2.0",
+    "projectedFixedBatchMs": "sum(catalog repetitions * observed median ms/invocation); a common-work projection, not observed adaptive batch wall time",
+    "projectedNetExcessMsToC": "role fixed-batch sum minus C fixed-batch sum",
+    "projectedPositiveExcessMsToC": "sum(max(0, role case fixed-batch ms - C case fixed-batch ms))"
+  },
+  "scope": "Full45 measures final-qbe-programs01 and final-x86-programs01 against retained Phase184 C/QBE. Register assembly below is a separate later candidate; no full45 runtime result for it is inferred. Static counts are instruction text counts, not retired-instruction events or speedup estimates. Four timed rounds give descriptive comparisons, not statistical confidence bounds.",
+  "roles": {
+    "c": {
+      "caseGeomeanToC": 1.0,
+      "equalFamilyGeomeanToC": 1.0,
+      "familyCount": 22,
+      "familyGeomeansToC": {
+        "mandelbrot": 1.0,
+        "editdist": 1.0,
+        "tree-bitonic": 1.0,
+        "lexer": 1.0,
+        "symreg": 1.0,
+        "test-morning-program": 1.0,
+        "test-evening-program": 1.0,
+        "test-rle-roundtrip": 1.0,
+        "test-map-set-ops": 1.0,
+        "raytrace": 1.0,
+        "local-pair": 1.0,
+        "local-fold": 1.0,
+        "scalar-region-8192": 1.0,
+        "complete-generic-row32": 1.0,
+        "closures": 1.0,
+        "list-pipeline": 1.0,
+        "bst": 1.0,
+        "unicode-text": 1.0,
+        "expression": 1.0,
+        "map-churn": 1.0,
+        "numeric-recurrence": 1.0,
+        "record-aggregation": 1.0
+      },
+      "equalSourceGeomeanToC": 1.0,
+      "sourceCount": 23,
+      "meanPositiveLogSlowdown": 0,
+      "sumPositiveLogSlowdown": 0,
+      "casesOver110": 0,
+      "casesOver200": 0,
+      "projectedFixedBatchMs": 10158.795741614726,
+      "projectedFixedBatchRatioToC": 1.0,
+      "projectedNetExcessMsToC": 0.0,
+      "projectedPositiveExcessMsToC": 0,
+      "worstSlowdownsToC": [
+        {
+          "id": "mandelbrot",
+          "ratio": 1.0
+        },
+        {
+          "id": "editdist",
+          "ratio": 1.0
+        },
+        {
+          "id": "tree-bitonic",
+          "ratio": 1.0
+        },
+        {
+          "id": "lexer",
+          "ratio": 1.0
+        },
+        {
+          "id": "symreg",
+          "ratio": 1.0
+        },
+        {
+          "id": "test-morning-program",
+          "ratio": 1.0
+        },
+        {
+          "id": "test-evening-program",
+          "ratio": 1.0
+        },
+        {
+          "id": "test-rle-roundtrip",
+          "ratio": 1.0
+        }
+      ],
+      "largestPositiveFixedBatchExcessToC": [
+        {
+          "id": "mandelbrot",
+          "excessMs": 0
+        },
+        {
+          "id": "editdist",
+          "excessMs": 0
+        },
+        {
+          "id": "tree-bitonic",
+          "excessMs": 0
+        },
+        {
+          "id": "lexer",
+          "excessMs": 0
+        },
+        {
+          "id": "symreg",
+          "excessMs": 0
+        },
+        {
+          "id": "test-morning-program",
+          "excessMs": 0
+        },
+        {
+          "id": "test-evening-program",
+          "excessMs": 0
+        },
+        {
+          "id": "test-rle-roundtrip",
+          "excessMs": 0
+        }
+      ]
+    },
+    "old-qbe": {
+      "caseGeomeanToC": 1.555698536606538,
+      "equalFamilyGeomeanToC": 1.6557107764392067,
+      "familyCount": 22,
+      "familyGeomeansToC": {
+        "mandelbrot": 1.8578268060777008,
+        "editdist": 1.2825031586702726,
+        "tree-bitonic": 3.440446679070038,
+        "lexer": 2.5725880286683975,
+        "symreg": 0.9175004564899993,
+        "test-morning-program": 3.413884007029876,
+        "test-evening-program": 3.6534957376272805,
+        "test-rle-roundtrip": 2.434142147117296,
+        "test-map-set-ops": 3.0906035633019666,
+        "raytrace": 1.136681565562862,
+        "local-pair": 1.250431137724551,
+        "local-fold": 2.125602564072826,
+        "scalar-region-8192": 1.6570932271825487,
+        "complete-generic-row32": 3.7292372198032577,
+        "closures": 0.07104839015414832,
+        "list-pipeline": 0.22058815798285106,
+        "bst": 3.339604336190869,
+        "unicode-text": 2.984427078280057,
+        "expression": 0.8993339272258366,
+        "map-churn": 3.488283863037034,
+        "numeric-recurrence": 1.509214813453672,
+        "record-aggregation": 2.621397795855822
+      },
+      "equalSourceGeomeanToC": 1.6311162622853488,
+      "sourceCount": 23,
+      "meanPositiveLogSlowdown": 0.6415203967160192,
+      "sumPositiveLogSlowdown": 28.226897455504844,
+      "casesOver110": 34,
+      "casesOver200": 22,
+      "projectedFixedBatchMs": 19581.530171673287,
+      "projectedFixedBatchRatioToC": 1.9275444324034445,
+      "projectedNetExcessMsToC": 9422.734430058561,
+      "projectedPositiveExcessMsToC": 9904.62310397053,
+      "worstSlowdownsToC": [
+        {
+          "id": "complete-generic-row32",
+          "ratio": 3.729237219803258
+        },
+        {
+          "id": "variation-tree-bitonic-6-17",
+          "ratio": 3.659191382765531
+        },
+        {
+          "id": "test-evening-program",
+          "ratio": 3.65349573762728
+        },
+        {
+          "id": "coverage-bst-32",
+          "ratio": 3.5785124362757603
+        },
+        {
+          "id": "coverage-map-churn-32",
+          "ratio": 3.5686145764937622
+        },
+        {
+          "id": "test-morning-program",
+          "ratio": 3.413884007029876
+        },
+        {
+          "id": "coverage-map-churn-128",
+          "ratio": 3.409761420937759
+        },
+        {
+          "id": "tree-bitonic",
+          "ratio": 3.3975008443093553
+        }
+      ],
+      "largestPositiveFixedBatchExcessToC": [
+        {
+          "id": "variation-tree-bitonic-6-17",
+          "excessMs": 729.5392319342704
+        },
+        {
+          "id": "test-evening-program",
+          "excessMs": 698.8448285858992
+        },
+        {
+          "id": "tree-bitonic",
+          "excessMs": 645.2202222222224
+        },
+        {
+          "id": "test-rle-roundtrip",
+          "excessMs": 600.6366827411732
+        },
+        {
+          "id": "variation-tree-bitonic-9-123",
+          "excessMs": 590.6966479718274
+        },
+        {
+          "id": "coverage-bst-32",
+          "excessMs": 547.6729109159595
+        },
+        {
+          "id": "test-map-set-ops",
+          "excessMs": 478.39490399395225
+        },
+        {
+          "id": "coverage-bst-64",
+          "excessMs": 422.9060814344047
+        }
+      ]
+    },
+    "new-qbe": {
+      "caseGeomeanToC": 1.4959861243836048,
+      "equalFamilyGeomeanToC": 1.603183523837111,
+      "familyCount": 22,
+      "familyGeomeansToC": {
+        "mandelbrot": 1.845248646806819,
+        "editdist": 1.3057054656488543,
+        "tree-bitonic": 3.05785941619347,
+        "lexer": 2.5154472895168474,
+        "symreg": 0.8443156412512645,
+        "test-morning-program": 3.374297758022088,
+        "test-evening-program": 3.6211827972730966,
+        "test-rle-roundtrip": 2.4205998073584,
+        "test-map-set-ops": 3.048192771084338,
+        "raytrace": 0.9898872217934528,
+        "local-pair": 1.252808383233533,
+        "local-fold": 2.1621081085719758,
+        "scalar-region-8192": 1.6608009696797972,
+        "complete-generic-row32": 3.751016893191326,
+        "closures": 0.07258970825397645,
+        "list-pipeline": 0.21772645194417448,
+        "bst": 2.8984514612463763,
+        "unicode-text": 3.036275875562141,
+        "expression": 0.7166993749619242,
+        "map-churn": 3.5240830243265204,
+        "numeric-recurrence": 1.5099344733960827,
+        "record-aggregation": 2.586694780899754
+      },
+      "equalSourceGeomeanToC": 1.5716500013116972,
+      "sourceCount": 23,
+      "meanPositiveLogSlowdown": 0.6197236504842255,
+      "sumPositiveLogSlowdown": 27.267840621305915,
+      "casesOver110": 32,
+      "casesOver200": 21,
+      "projectedFixedBatchMs": 18610.879026484567,
+      "projectedFixedBatchRatioToC": 1.8319965771382263,
+      "projectedNetExcessMsToC": 8452.083284869841,
+      "projectedPositiveExcessMsToC": 9177.630552681258,
+      "worstSlowdownsToC": [
+        {
+          "id": "complete-generic-row32",
+          "ratio": 3.7510168931913257
+        },
+        {
+          "id": "test-evening-program",
+          "ratio": 3.621182797273096
+        },
+        {
+          "id": "coverage-map-churn-32",
+          "ratio": 3.608883364342506
+        },
+        {
+          "id": "coverage-map-churn-128",
+          "ratio": 3.4412752944729688
+        },
+        {
+          "id": "test-morning-program",
+          "ratio": 3.3742977580220885
+        },
+        {
+          "id": "variation-tree-bitonic-6-17",
+          "ratio": 3.3151764422700154
+        },
+        {
+          "id": "coverage-unicode-text-16",
+          "ratio": 3.084996322933675
+        },
+        {
+          "id": "coverage-bst-32",
+          "ratio": 3.0740551884167604
+        }
+      ],
+      "largestPositiveFixedBatchExcessToC": [
+        {
+          "id": "test-evening-program",
+          "excessMs": 690.3346467368345
+        },
+        {
+          "id": "variation-tree-bitonic-6-17",
+          "excessMs": 635.1600168504716
+        },
+        {
+          "id": "test-rle-roundtrip",
+          "excessMs": 594.9649813371757
+        },
+        {
+          "id": "tree-bitonic",
+          "excessMs": 537.4259999999999
+        },
+        {
+          "id": "variation-tree-bitonic-9-123",
+          "excessMs": 487.42926829268293
+        },
+        {
+          "id": "test-map-set-ops",
+          "excessMs": 468.69
+        },
+        {
+          "id": "coverage-bst-32",
+          "excessMs": 440.5268039277652
+        },
+        {
+          "id": "test-morning-program",
+          "excessMs": 376.0845386206896
+        }
+      ]
+    },
+    "new-x86": {
+      "caseGeomeanToC": 5.98202955815253,
+      "equalFamilyGeomeanToC": 5.735361065810431,
+      "familyCount": 22,
+      "familyGeomeansToC": {
+        "mandelbrot": 10.666925711630881,
+        "editdist": 15.005689228212761,
+        "tree-bitonic": 7.174907374486736,
+        "lexer": 8.371605903079958,
+        "symreg": 3.5009733186494105,
+        "test-morning-program": 5.447312402163042,
+        "test-evening-program": 6.7997200000000015,
+        "test-rle-roundtrip": 4.631142296897047,
+        "test-map-set-ops": 4.736693474706389,
+        "raytrace": 7.057858200777023,
+        "local-pair": 14.72732583613261,
+        "local-fold": 17.49261854290534,
+        "scalar-region-8192": 9.97484209967624,
+        "complete-generic-row32": 5.458928535851613,
+        "closures": 0.42806597008087327,
+        "list-pipeline": 1.2639303530889912,
+        "bst": 6.989449391740227,
+        "unicode-text": 5.751787758854816,
+        "expression": 5.082819949708571,
+        "map-churn": 6.459866394243297,
+        "numeric-recurrence": 5.137076482851692,
+        "record-aggregation": 4.911361993413872
+      },
+      "equalSourceGeomeanToC": 5.835117913703032,
+      "sourceCount": 23,
+      "meanPositiveLogSlowdown": 1.8273270813585347,
+      "sumPositiveLogSlowdown": 80.40239157977555,
+      "casesOver110": 42,
+      "casesOver200": 40,
+      "projectedFixedBatchMs": 76316.88144386787,
+      "projectedFixedBatchRatioToC": 7.512394518500026,
+      "projectedNetExcessMsToC": 66158.08570225314,
+      "projectedPositiveExcessMsToC": 66227.67962563313,
+      "worstSlowdownsToC": [
+        {
+          "id": "variation-local-fold-8192-123",
+          "ratio": 18.604223737638673
+        },
+        {
+          "id": "local-fold",
+          "ratio": 17.869168524578868
+        },
+        {
+          "id": "variation-local-fold-128-0",
+          "ratio": 16.10084164359942
+        },
+        {
+          "id": "variation-editdist-3-123",
+          "ratio": 15.13803680981595
+        },
+        {
+          "id": "variation-editdist-0-17",
+          "ratio": 15.116826666666668
+        },
+        {
+          "id": "editdist",
+          "ratio": 14.765142857142857
+        },
+        {
+          "id": "local-pair",
+          "ratio": 14.727325836132612
+        },
+        {
+          "id": "variation-mandelbrot-grid-4-7",
+          "ratio": 11.70097284137007
+        }
+      ],
+      "largestPositiveFixedBatchExcessToC": [
+        {
+          "id": "variation-ray-active-64-2440",
+          "excessMs": 3893.3775494505494
+        },
+        {
+          "id": "variation-ray-active-256-2240",
+          "excessMs": 3849.243973081182
+        },
+        {
+          "id": "variation-local-fold-128-0",
+          "excessMs": 3058.3774220491223
+        },
+        {
+          "id": "variation-editdist-0-17",
+          "excessMs": 2993.719230996747
+        },
+        {
+          "id": "variation-local-fold-8192-123",
+          "excessMs": 2951.191225095941
+        },
+        {
+          "id": "variation-editdist-3-123",
+          "excessMs": 2941.9148936170213
+        },
+        {
+          "id": "local-fold",
+          "excessMs": 2933.3504149732066
+        },
+        {
+          "id": "editdist",
+          "excessMs": 2780.8369408369413
+        }
+      ]
+    }
+  },
+  "newQbeVersusOldQbe": {
+    "caseGeomean": 0.9616169773141368,
+    "caseGeomeanTimeReductionFraction": 0.038383022685863244,
+    "fixedBatchTimeReductionFraction": 0.04956972905993151,
+    "casesFaster": 25,
+    "casesSlower": 18,
+    "casesEqual": 1,
+    "casesRegressedOver105": 0,
+    "casesRegressedOver110": 0,
+    "worstRegressions": [
+      {
+        "id": "variation-editdist-3-123",
+        "ratio": 1.0484852984852986
+      },
+      {
+        "id": "coverage-closures-64",
+        "ratio": 1.0404255319148936
+      },
+      {
+        "id": "variation-local-fold-128-0",
+        "ratio": 1.0283018867924527
+      },
+      {
+        "id": "local-fold",
+        "ratio": 1.0256966581204332
+      },
+      {
+        "id": "coverage-unicode-text-64",
+        "ratio": 1.018166372971084
+      },
+      {
+        "id": "coverage-unicode-text-16",
+        "ratio": 1.0165804766949733
+      },
+      {
+        "id": "coverage-list-pipeline-512",
+        "ratio": 1.0157204636307369
+      },
+      {
+        "id": "coverage-map-churn-32",
+        "ratio": 1.0112841515903654
+      },
+      {
+        "id": "coverage-map-churn-128",
+        "ratio": 1.0092422517721322
+      },
+      {
+        "id": "editdist",
+        "ratio": 1.0059732696184578
+      }
+    ],
+    "largestImprovements": [
+      {
+        "id": "coverage-expression-128",
+        "ratio": 0.7929883138564274
+      },
+      {
+        "id": "coverage-expression-32",
+        "ratio": 0.8008760555166059
+      },
+      {
+        "id": "variation-ray-active-256-2240",
+        "ratio": 0.8506085260892953
+      },
+      {
+        "id": "coverage-bst-32",
+        "ratio": 0.8590315789473684
+      },
+      {
+        "id": "variation-ray-active-64-2440",
+        "ratio": 0.8695343240434991
+      },
+      {
+        "id": "coverage-bst-64",
+        "ratio": 0.8768653358632994
+      },
+      {
+        "id": "variation-tree-bitonic-9-123",
+        "ratio": 0.8785471698113207
+      },
+      {
+        "id": "tree-bitonic",
+        "ratio": 0.8821073558648109
+      },
+      {
+        "id": "raytrace",
+        "ratio": 0.8929440389294404
+      },
+      {
+        "id": "variation-tree-bitonic-6-17",
+        "ratio": 0.9059860760178339
+      }
+    ]
+  },
+  "cases": [
+    {
+      "id": "mandelbrot",
+      "family": "mandelbrot",
+      "sourceGroup": "cb2b9c30aceeb0f8ed0da1f999658aa8d7fb346851877da6902d1ded4cfc0656",
+      "catalogRepetitions": 9036,
+      "medianMsPerInvocation": {
+        "c": 0.026605893576425694,
+        "old-qbe": 0.069,
+        "new-qbe": 0.067375,
+        "new-x86": 0.2615
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 2.593410358565737,
+        "new-qbe": 2.5323336653386455,
+        "new-x86": 9.82864940239044
+      },
+      "projectedFixedBatchMs": {
+        "c": 240.41085435658258,
+        "old-qbe": 623.484,
+        "new-qbe": 608.8005,
+        "new-x86": 2362.914
+      },
+      "newQbeToOldQbe": 0.9764492753623188
+    },
+    {
+      "id": "editdist",
+      "family": "editdist",
+      "sourceGroup": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f",
+      "catalogRepetitions": 240,
+      "medianMsPerInvocation": {
+        "c": 0.8417508417508418,
+        "old-qbe": 1.0509259259259258,
+        "new-qbe": 1.0572033898305087,
+        "new-x86": 12.428571428571429
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 1.2484999999999997,
+        "new-qbe": 1.2559576271186441,
+        "new-x86": 14.765142857142857
+      },
+      "projectedFixedBatchMs": {
+        "c": 202.02020202020202,
+        "old-qbe": 252.2222222222222,
+        "new-qbe": 253.72881355932208,
+        "new-x86": 2982.857142857143
+      },
+      "newQbeToOldQbe": 1.0059732696184578
+    },
+    {
+      "id": "tree-bitonic",
+      "family": "tree-bitonic",
+      "sourceGroup": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+      "catalogRepetitions": 1636,
+      "medianMsPerInvocation": {
+        "c": 0.1645,
+        "old-qbe": 0.558888888888889,
+        "new-qbe": 0.493,
+        "new-x86": 1.1717171717171717
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 3.3975008443093553,
+        "new-qbe": 2.9969604863221884,
+        "new-x86": 7.1229007399220166
+      },
+      "projectedFixedBatchMs": {
+        "c": 269.122,
+        "old-qbe": 914.3422222222224,
+        "new-qbe": 806.548,
+        "new-x86": 1916.9292929292928
+      },
+      "newQbeToOldQbe": 0.8821073558648109
+    },
+    {
+      "id": "lexer",
+      "family": "lexer",
+      "sourceGroup": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+      "catalogRepetitions": 512,
+      "medianMsPerInvocation": {
+        "c": 0.383808095952024,
+        "old-qbe": 0.9882352941176471,
+        "new-qbe": 0.9625468164794008,
+        "new-x86": 3.2151898734177218
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 2.5748161764705886,
+        "new-qbe": 2.507885650749064,
+        "new-x86": 8.37707674050633
+      },
+      "projectedFixedBatchMs": {
+        "c": 196.50974512743628,
+        "old-qbe": 505.9764705882353,
+        "new-qbe": 492.8239700374532,
+        "new-x86": 1646.1772151898736
+      },
+      "newQbeToOldQbe": 0.9740057071517746
+    },
+    {
+      "id": "symreg",
+      "family": "symreg",
+      "sourceGroup": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b",
+      "catalogRepetitions": 144,
+      "medianMsPerInvocation": {
+        "c": 2.3035714285714284,
+        "old-qbe": 2.1186440677966103,
+        "new-qbe": 1.9384615384615385,
+        "new-x86": 8.078125
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 0.9197214557876758,
+        "new-qbe": 0.8415026833631486,
+        "new-x86": 3.5067829457364343
+      },
+      "projectedFixedBatchMs": {
+        "c": 331.71428571428567,
+        "old-qbe": 305.08474576271186,
+        "new-qbe": 279.1384615384615,
+        "new-x86": 1163.25
+      },
+      "newQbeToOldQbe": 0.9149538461538461
+    },
+    {
+      "id": "test-morning-program",
+      "family": "test-morning-program",
+      "sourceGroup": "9033897714291ea49c25046426457ff2753276466092ba71a4e40c1e2b48a04a",
+      "catalogRepetitions": 55676,
+      "medianMsPerInvocation": {
+        "c": 0.0028450000000000003,
+        "old-qbe": 0.009712499999999999,
+        "new-qbe": 0.009599877121572844,
+        "new-x86": 0.015497603784153855
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 3.413884007029876,
+        "new-qbe": 3.3742977580220885,
+        "new-x86": 5.447312402163042
+      },
+      "projectedFixedBatchMs": {
+        "c": 158.39822,
+        "old-qbe": 540.7531499999999,
+        "new-qbe": 534.4827586206897,
+        "new-x86": 862.84458828655
+      },
+      "newQbeToOldQbe": 0.9884043368414769
+    },
+    {
+      "id": "test-evening-program",
+      "family": "test-evening-program",
+      "sourceGroup": "b254a68ad0208b8a5f388d72095633cd8fc119adf40d45f5621e93f37e7b4f71",
+      "catalogRepetitions": 259540,
+      "medianMsPerInvocation": {
+        "c": 0.0010147476660803678,
+        "old-qbe": 0.0037073762727918543,
+        "new-qbe": 0.003674586791983252,
+        "new-x86": 0.0069
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 3.65349573762728,
+        "new-qbe": 3.621182797273096,
+        "new-x86": 6.7997200000000015
+      },
+      "projectedFixedBatchMs": {
+        "c": 263.3676092544987,
+        "old-qbe": 962.2124378403979,
+        "new-qbe": 953.7022559913332,
+        "new-x86": 1790.826
+      },
+      "newQbeToOldQbe": 0.9911556102224526
+    },
+    {
+      "id": "test-rle-roundtrip",
+      "family": "test-rle-roundtrip",
+      "sourceGroup": "ce4083dab9a8022b2c8867a30802113735917229341cecb8ce18ff9ac2e33989",
+      "catalogRepetitions": 970904,
+      "medianMsPerInvocation": {
+        "c": 0.0004313634687454441,
+        "old-qbe": 0.00105,
+        "new-qbe": 0.001044158329346673,
+        "new-x86": 0.0019977056054432535
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 2.434142147117296,
+        "new-qbe": 2.4205998073584,
+        "new-x86": 4.631142296897047
+      },
+      "projectedFixedBatchMs": {
+        "c": 418.81251725882663,
+        "old-qbe": 1019.4491999999999,
+        "new-qbe": 1013.7774985960023,
+        "new-x86": 1939.5803631472766
+      },
+      "newQbeToOldQbe": 0.9944365041396888
+    },
+    {
+      "id": "test-map-set-ops",
+      "family": "test-map-set-ops",
+      "sourceGroup": "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6",
+      "catalogRepetitions": 22056,
+      "medianMsPerInvocation": {
+        "c": 0.010374999999999999,
+        "old-qbe": 0.0320650119692579,
+        "new-qbe": 0.031625,
+        "new-x86": 0.04914319480007878
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 3.0906035633019666,
+        "new-qbe": 3.048192771084338,
+        "new-x86": 4.73669347470639
+      },
+      "projectedFixedBatchMs": {
+        "c": 228.83099999999996,
+        "old-qbe": 707.2259039939522,
+        "new-qbe": 697.521,
+        "new-x86": 1083.9023045105375
+      },
+      "newQbeToOldQbe": 0.9862775049115915
+    },
+    {
+      "id": "raytrace",
+      "family": "raytrace",
+      "sourceGroup": "4674b2580aceb5f5fe6771ce16c987b97f791b52a9e1305794c435beeebf5837",
+      "catalogRepetitions": 12,
+      "medianMsPerInvocation": {
+        "c": 29.208333333333336,
+        "old-qbe": 34.25,
+        "new-qbe": 30.583333333333336,
+        "new-x86": 230.75
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 1.172610556348074,
+        "new-qbe": 1.0470756062767475,
+        "new-x86": 7.900142653352353
+      },
+      "projectedFixedBatchMs": {
+        "c": 350.5,
+        "old-qbe": 411.0,
+        "new-qbe": 367.0,
+        "new-x86": 2769.0
+      },
+      "newQbeToOldQbe": 0.8929440389294404
+    },
+    {
+      "id": "local-pair",
+      "family": "local-pair",
+      "sourceGroup": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+      "catalogRepetitions": 956,
+      "medianMsPerInvocation": {
+        "c": 0.21032745591939547,
+        "old-qbe": 0.263,
+        "new-qbe": 0.2635,
+        "new-x86": 3.097560975609756
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 1.250431137724551,
+        "new-qbe": 1.252808383233533,
+        "new-x86": 14.727325836132612
+      },
+      "projectedFixedBatchMs": {
+        "c": 201.07304785894206,
+        "old-qbe": 251.428,
+        "new-qbe": 251.906,
+        "new-x86": 2961.268292682927
+      },
+      "newQbeToOldQbe": 1.0019011406844107
+    },
+    {
+      "id": "local-fold",
+      "family": "local-fold",
+      "sourceGroup": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+      "catalogRepetitions": 60684,
+      "medianMsPerInvocation": {
+        "c": 0.0028654713452865473,
+        "old-qbe": 0.005543286219081272,
+        "new-qbe": 0.005685730149916713,
+        "new-x86": 0.05120359037127703
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 1.934511133115848,
+        "new-qbe": 1.984221604333698,
+        "new-x86": 17.869168524578868
+      },
+      "projectedFixedBatchMs": {
+        "c": 173.88826311736884,
+        "old-qbe": 336.3887809187279,
+        "new-qbe": 345.0328484175458,
+        "new-x86": 3107.2386780905754
+      },
+      "newQbeToOldQbe": 1.0256966581204332
+    },
+    {
+      "id": "scalar-region-8192",
+      "family": "scalar-region-8192",
+      "sourceGroup": "5c1b7031be03394ea7bfc64358b6db167711765e187e32d06f65a9f06bba3c7d",
+      "catalogRepetitions": 5576,
+      "medianMsPerInvocation": {
+        "c": 0.03709773539928486,
+        "old-qbe": 0.061474406073965225,
+        "new-qbe": 0.061611954924056835,
+        "new-x86": 0.3700440528634361
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 1.6570932271825487,
+        "new-qbe": 1.6608009696797972,
+        "new-x86": 9.974842099676238
+      },
+      "projectedFixedBatchMs": {
+        "c": 206.85697258641238,
+        "old-qbe": 342.7812882684301,
+        "new-qbe": 343.5482606565409,
+        "new-x86": 2063.3656387665196
+      },
+      "newQbeToOldQbe": 1.0022374978283826
+    },
+    {
+      "id": "complete-generic-row32",
+      "family": "complete-generic-row32",
+      "sourceGroup": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+      "catalogRepetitions": 1460,
+      "medianMsPerInvocation": {
+        "c": 0.08775,
+        "old-qbe": 0.3272405660377359,
+        "new-qbe": 0.3291517323775388,
+        "new-x86": 0.479020979020979
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 3.729237219803258,
+        "new-qbe": 3.7510168931913257,
+        "new-x86": 5.458928535851613
+      },
+      "projectedFixedBatchMs": {
+        "c": 128.11499999999998,
+        "old-qbe": 477.77122641509436,
+        "new-qbe": 480.56152927120667,
+        "new-x86": 699.3706293706293
+      },
+      "newQbeToOldQbe": 1.0058402488510014
+    },
+    {
+      "id": "variation-editdist-0-17",
+      "family": "editdist",
+      "sourceGroup": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f",
+      "catalogRepetitions": 956,
+      "medianMsPerInvocation": {
+        "c": 0.22182786157941436,
+        "old-qbe": 0.29185779816513757,
+        "new-qbe": 0.292,
+        "new-x86": 3.3533333333333335
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 1.3156949541284402,
+        "new-qbe": 1.316336,
+        "new-x86": 15.116826666666668
+      },
+      "projectedFixedBatchMs": {
+        "c": 212.06743566992014,
+        "old-qbe": 279.0160550458715,
+        "new-qbe": 279.152,
+        "new-x86": 3205.786666666667
+      },
+      "newQbeToOldQbe": 1.0004872298624756
+    },
+    {
+      "id": "variation-editdist-3-123",
+      "family": "editdist",
+      "sourceGroup": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f",
+      "catalogRepetitions": 120,
+      "medianMsPerInvocation": {
+        "c": 1.7340425531914894,
+        "old-qbe": 2.226851851851852,
+        "new-qbe": 2.334821428571429,
+        "new-x86": 26.25
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 1.2841967734605773,
+        "new-qbe": 1.3464614373356707,
+        "new-x86": 15.13803680981595
+      },
+      "projectedFixedBatchMs": {
+        "c": 208.08510638297872,
+        "old-qbe": 267.22222222222223,
+        "new-qbe": 280.17857142857144,
+        "new-x86": 3150.0
+      },
+      "newQbeToOldQbe": 1.0484852984852986
+    },
+    {
+      "id": "variation-lexer-6-17",
+      "family": "lexer",
+      "sourceGroup": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+      "catalogRepetitions": 2212,
+      "medianMsPerInvocation": {
+        "c": 0.0955,
+        "old-qbe": 0.24679170779861798,
+        "new-qbe": 0.24,
+        "new-x86": 0.8025889967637541
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 2.584206364383434,
+        "new-qbe": 2.513089005235602,
+        "new-x86": 8.404073264541926
+      },
+      "projectedFixedBatchMs": {
+        "c": 211.246,
+        "old-qbe": 545.903257650543,
+        "new-qbe": 530.88,
+        "new-x86": 1775.326860841424
+      },
+      "newQbeToOldQbe": 0.9724799999999999
+    },
+    {
+      "id": "variation-lexer-10-123",
+      "family": "lexer",
+      "sourceGroup": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+      "catalogRepetitions": 128,
+      "medianMsPerInvocation": {
+        "c": 1.5449101796407185,
+        "old-qbe": 3.953125,
+        "new-qbe": 3.9015151515151514,
+        "new-x86": 12.875
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 2.5588057170542635,
+        "new-qbe": 2.5253993422598073,
+        "new-x86": 8.333817829457365
+      },
+      "projectedFixedBatchMs": {
+        "c": 197.74850299401197,
+        "old-qbe": 506.0,
+        "new-qbe": 499.3939393939394,
+        "new-x86": 1648.0
+      },
+      "newQbeToOldQbe": 0.9869445442567972
+    },
+    {
+      "id": "variation-tree-bitonic-6-17",
+      "family": "tree-bitonic",
+      "sourceGroup": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+      "catalogRepetitions": 11108,
+      "medianMsPerInvocation": {
+        "c": 0.024698079588200354,
+        "old-qbe": 0.090375,
+        "new-qbe": 0.08187849162011174,
+        "new-x86": 0.18045649072753212
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 3.659191382765531,
+        "new-qbe": 3.3151764422700154,
+        "new-x86": 7.306498875068255
+      },
+      "projectedFixedBatchMs": {
+        "c": 274.34626806572953,
+        "old-qbe": 1003.8855,
+        "new-qbe": 909.5062849162011,
+        "new-x86": 2004.5106990014267
+      },
+      "newQbeToOldQbe": 0.9059860760178339
+    },
+    {
+      "id": "variation-tree-bitonic-9-123",
+      "family": "tree-bitonic",
+      "sourceGroup": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+      "catalogRepetitions": 636,
+      "medianMsPerInvocation": {
+        "c": 0.408130081300813,
+        "old-qbe": 1.3368983957219251,
+        "new-qbe": 1.1745283018867925,
+        "new-x86": 2.896551724137931
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 3.275667383940175,
+        "new-qbe": 2.8778283094038937,
+        "new-x86": 7.097128726473416
+      },
+      "projectedFixedBatchMs": {
+        "c": 259.57073170731707,
+        "old-qbe": 850.2673796791444,
+        "new-qbe": 747.0,
+        "new-x86": 1842.2068965517242
+      },
+      "newQbeToOldQbe": 0.8785471698113207
+    },
+    {
+      "id": "variation-symreg-4-17",
+      "family": "symreg",
+      "sourceGroup": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b",
+      "catalogRepetitions": 288,
+      "medianMsPerInvocation": {
+        "c": 1.1513761467889907,
+        "old-qbe": 1.0568720379146919,
+        "new-qbe": 0.9742489270386265,
+        "new-x86": 4.008620689655173
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 0.917920734125111,
+        "new-qbe": 0.8461604226869347,
+        "new-x86": 3.4815908778678395
+      },
+      "projectedFixedBatchMs": {
+        "c": 331.5963302752293,
+        "old-qbe": 304.37914691943126,
+        "new-qbe": 280.58369098712444,
+        "new-x86": 1154.4827586206898
+      },
+      "newQbeToOldQbe": 0.9218229758078484
+    },
+    {
+      "id": "variation-symreg-7-123",
+      "family": "symreg",
+      "sourceGroup": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b",
+      "catalogRepetitions": 88,
+      "medianMsPerInvocation": {
+        "c": 3.8560606060606064,
+        "old-qbe": 3.5277777777777777,
+        "new-qbe": 3.259493670886076,
+        "new-x86": 13.552631578947368
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 0.9148657498362802,
+        "new-qbe": 0.8452910895028722,
+        "new-x86": 3.5146313721435214
+      },
+      "projectedFixedBatchMs": {
+        "c": 339.33333333333337,
+        "old-qbe": 310.44444444444446,
+        "new-qbe": 286.8354430379747,
+        "new-x86": 1192.6315789473683
+      },
+      "newQbeToOldQbe": 0.9239509618259744
+    },
+    {
+      "id": "variation-local-fold-128-0",
+      "family": "local-fold",
+      "sourceGroup": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+      "catalogRepetitions": 1895020,
+      "medianMsPerInvocation": {
+        "c": 0.00010687500000000001,
+        "old-qbe": 0.00026500000000000004,
+        "new-qbe": 0.0002725,
+        "new-x86": 0.0017207774506596881
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 2.4795321637426904,
+        "new-qbe": 2.5497076023391814,
+        "new-x86": 16.10084164359942
+      },
+      "projectedFixedBatchMs": {
+        "c": 202.53026250000002,
+        "old-qbe": 502.1803000000001,
+        "new-qbe": 516.39295,
+        "new-x86": 3260.907684549122
+      },
+      "newQbeToOldQbe": 1.0283018867924527
+    },
+    {
+      "id": "variation-local-fold-8192-123",
+      "family": "local-fold",
+      "sourceGroup": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+      "catalogRepetitions": 30516,
+      "medianMsPerInvocation": {
+        "c": 0.0054935472619462855,
+        "old-qbe": 0.010999123575810694,
+        "new-qbe": 0.010975,
+        "new-x86": 0.10220318237454101
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 2.0021896693237626,
+        "new-qbe": 1.9977984126984127,
+        "new-x86": 18.604223737638673
+      },
+      "projectedFixedBatchMs": {
+        "c": 167.64108824555285,
+        "old-qbe": 335.64925503943914,
+        "new-qbe": 334.9131,
+        "new-x86": 3118.832313341494
+      },
+      "newQbeToOldQbe": 0.9978067729083664
+    },
+    {
+      "id": "variation-mandelbrot-grid-4-7",
+      "family": "mandelbrot",
+      "sourceGroup": "f908b2daf26ab7c61e2876a91a101009b6e80ad61fbd906a34a2eb03deb80377",
+      "catalogRepetitions": 24488,
+      "medianMsPerInvocation": {
+        "c": 0.00908135150812065,
+        "old-qbe": 0.014909764551213098,
+        "new-qbe": 0.014951053099970335,
+        "new-x86": 0.10626064735945485
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 1.6418001811603278,
+        "new-qbe": 1.646346701435456,
+        "new-x86": 11.70097284137007
+      },
+      "projectedFixedBatchMs": {
+        "c": 222.38413573085847,
+        "old-qbe": 365.11031433010635,
+        "new-qbe": 366.1213883120736,
+        "new-x86": 2602.1107325383305
+      },
+      "newQbeToOldQbe": 1.0027692287571286
+    },
+    {
+      "id": "variation-mandelbrot-grid-5-31",
+      "family": "mandelbrot",
+      "sourceGroup": "f908b2daf26ab7c61e2876a91a101009b6e80ad61fbd906a34a2eb03deb80377",
+      "catalogRepetitions": 1416,
+      "medianMsPerInvocation": {
+        "c": 0.1445,
+        "old-qbe": 0.21761658031088082,
+        "new-qbe": 0.21776611694152925,
+        "new-x86": 1.525
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 1.50599709557703,
+        "new-qbe": 1.5070319511524517,
+        "new-x86": 10.55363321799308
+      },
+      "projectedFixedBatchMs": {
+        "c": 204.612,
+        "old-qbe": 308.14507772020727,
+        "new-qbe": 308.3568215892054,
+        "new-x86": 2159.4
+      },
+      "newQbeToOldQbe": 1.0006871564217892
+    },
+    {
+      "id": "variation-ray-active-64-2440",
+      "family": "raytrace",
+      "sourceGroup": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955",
+      "catalogRepetitions": 6324,
+      "medianMsPerInvocation": {
+        "c": 0.10825,
+        "old-qbe": 0.11824165491302303,
+        "new-qbe": 0.10281517747858017,
+        "new-x86": 0.7239010989010989
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 1.0923016620140695,
+        "new-qbe": 0.9497937873309946,
+        "new-x86": 6.687308072989366
+      },
+      "projectedFixedBatchMs": {
+        "c": 684.573,
+        "old-qbe": 747.7602256699577,
+        "new-qbe": 650.203182374541,
+        "new-x86": 4577.950549450549
+      },
+      "newQbeToOldQbe": 0.8695343240434991
+    },
+    {
+      "id": "variation-ray-active-256-2240",
+      "family": "raytrace",
+      "sourceGroup": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955",
+      "catalogRepetitions": 1516,
+      "medianMsPerInvocation": {
+        "c": 0.4490161001788909,
+        "old-qbe": 0.5148514851485149,
+        "new-qbe": 0.4379370629370629,
+        "new-x86": 2.988095238095238
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 1.1466214350518718,
+        "new-qbe": 0.9753259688518652,
+        "new-x86": 6.654761904761905
+      },
+      "projectedFixedBatchMs": {
+        "c": 680.7084078711986,
+        "old-qbe": 780.5148514851485,
+        "new-qbe": 663.9125874125874,
+        "new-x86": 4529.952380952381
+      },
+      "newQbeToOldQbe": 0.8506085260892953
+    },
+    {
+      "id": "coverage-closures-64",
+      "family": "closures",
+      "sourceGroup": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+      "catalogRepetitions": 76440,
+      "medianMsPerInvocation": {
+        "c": 0.0007678127540556907,
+        "old-qbe": 5.875e-05,
+        "new-qbe": 6.1125e-05,
+        "new-x86": 0.00034625
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 0.07651605119825708,
+        "new-qbe": 0.07960925326797384,
+        "new-x86": 0.45095630174291934
+      },
+      "projectedFixedBatchMs": {
+        "c": 58.691606920016994,
+        "old-qbe": 4.49085,
+        "new-qbe": 4.672395,
+        "new-x86": 26.46735
+      },
+      "newQbeToOldQbe": 1.0404255319148936
+    },
+    {
+      "id": "coverage-closures-256",
+      "family": "closures",
+      "sourceGroup": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+      "catalogRepetitions": 19600,
+      "medianMsPerInvocation": {
+        "c": 0.003211615635712698,
+        "old-qbe": 0.00021187489406255297,
+        "new-qbe": 0.00021257398554496898,
+        "new-x86": 0.001305
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 0.06597143559351717,
+        "new-qbe": 0.06618911154285627,
+        "new-x86": 0.4063375409836065
+      },
+      "projectedFixedBatchMs": {
+        "c": 62.94766645996888,
+        "old-qbe": 4.1527479236260385,
+        "new-qbe": 4.166450116681392,
+        "new-x86": 25.578
+      },
+      "newQbeToOldQbe": 1.003299548469436
+    },
+    {
+      "id": "coverage-list-pipeline-128",
+      "family": "list-pipeline",
+      "sourceGroup": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0",
+      "catalogRepetitions": 99496,
+      "medianMsPerInvocation": {
+        "c": 0.001429712915929456,
+        "old-qbe": 0.00032125,
+        "new-qbe": 0.000308125,
+        "new-x86": 0.0018071855425156598
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 0.2246954590818363,
+        "new-qbe": 0.21551529441117767,
+        "new-x86": 1.264019875864945
+      },
+      "projectedFixedBatchMs": {
+        "c": 142.25071628331716,
+        "old-qbe": 31.963089999999998,
+        "new-qbe": 30.657205,
+        "new-x86": 179.8077327381381
+      },
+      "newQbeToOldQbe": 0.9591439688715955
+    },
+    {
+      "id": "coverage-list-pipeline-512",
+      "family": "list-pipeline",
+      "sourceGroup": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0",
+      "catalogRepetitions": 25008,
+      "medianMsPerInvocation": {
+        "c": 0.005657357946221291,
+        "old-qbe": 0.0012251344449747347,
+        "new-qbe": 0.0012443941264597231,
+        "new-x86": 0.00715
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 0.2165559359370281,
+        "new-qbe": 0.21996029565194636,
+        "new-x86": 1.2638408366533864
+      },
+      "projectedFixedBatchMs": {
+        "c": 141.47920751910203,
+        "old-qbe": 30.638162199928164,
+        "new-qbe": 31.119808314504755,
+        "new-x86": 178.8072
+      },
+      "newQbeToOldQbe": 1.0157204636307369
+    },
+    {
+      "id": "coverage-bst-32",
+      "family": "bst",
+      "sourceGroup": "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f",
+      "catalogRepetitions": 35620,
+      "medianMsPerInvocation": {
+        "c": 0.00596290808278763,
+        "old-qbe": 0.021338340730624787,
+        "new-qbe": 0.018330308529945553,
+        "new-x86": 0.03929803509824509
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 3.5785124362757603,
+        "new-qbe": 3.0740551884167604,
+        "new-x86": 6.590414367057197
+      },
+      "projectedFixedBatchMs": {
+        "c": 212.3987859088954,
+        "old-qbe": 760.0716968248549,
+        "new-qbe": 652.9255898366606,
+        "new-x86": 1399.79601019949
+      },
+      "newQbeToOldQbe": 0.8590315789473684
+    },
+    {
+      "id": "coverage-bst-64",
+      "family": "bst",
+      "sourceGroup": "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f",
+      "catalogRepetitions": 27184,
+      "medianMsPerInvocation": {
+        "c": 0.0073499147409890045,
+        "old-qbe": 0.022907083716651334,
+        "new-qbe": 0.02008642765685019,
+        "new-x86": 0.054482309528977646
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 3.116646182152714,
+        "new-qbe": 2.732879001280409,
+        "new-x86": 7.412645105274582
+      },
+      "projectedFixedBatchMs": {
+        "c": 199.8000823190451,
+        "old-qbe": 622.7061637534498,
+        "new-qbe": 546.0294494238155,
+        "new-x86": 1481.0471022357283
+      },
+      "newQbeToOldQbe": 0.8768653358632994
+    },
+    {
+      "id": "coverage-unicode-text-16",
+      "family": "unicode-text",
+      "sourceGroup": "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550",
+      "catalogRepetitions": 8272,
+      "medianMsPerInvocation": {
+        "c": 0.009125000000000001,
+        "old-qbe": 0.027691453940066592,
+        "new-qbe": 0.02815059144676979,
+        "new-x86": 0.05356762513312034
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 3.0346798838429137,
+        "new-qbe": 3.084996322933675,
+        "new-x86": 5.870424672122777
+      },
+      "projectedFixedBatchMs": {
+        "c": 75.48200000000001,
+        "old-qbe": 229.06370699223083,
+        "new-qbe": 232.8616924476797,
+        "new-x86": 443.11139510117147
+      },
+      "newQbeToOldQbe": 1.0165804766949733
+    },
+    {
+      "id": "coverage-unicode-text-64",
+      "family": "unicode-text",
+      "sourceGroup": "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550",
+      "catalogRepetitions": 2024,
+      "medianMsPerInvocation": {
+        "c": 0.03997300134993251,
+        "old-qbe": 0.11732101616628177,
+        "new-qbe": 0.11945231350330501,
+        "new-x86": 0.22526978417266186
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 2.9350064344487823,
+        "new-qbe": 2.98832485600951,
+        "new-x86": 5.635548409302576
+      },
+      "projectedFixedBatchMs": {
+        "c": 80.90535473226339,
+        "old-qbe": 237.4577367205543,
+        "new-qbe": 241.77148253068935,
+        "new-x86": 455.9460431654676
+      },
+      "newQbeToOldQbe": 1.018166372971084
+    },
+    {
+      "id": "coverage-expression-32",
+      "family": "expression",
+      "sourceGroup": "62f40333fa5e7dacd2fadbd622d22033a3434de004df93a6870e4cd33df9d4a5",
+      "catalogRepetitions": 148540,
+      "medianMsPerInvocation": {
+        "c": 0.0021779308788948955,
+        "old-qbe": 0.0020295112904275396,
+        "new-qbe": 0.0016253869969040248,
+        "new-x86": 0.011052861511577108
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 0.931852938995628,
+        "new-qbe": 0.746298706104375,
+        "new-x86": 5.074936775397318
+      },
+      "projectedFixedBatchMs": {
+        "c": 323.5098527510478,
+        "old-qbe": 301.4636070801067,
+        "new-qbe": 241.43498452012383,
+        "new-x86": 1641.7920489296637
+      },
+      "newQbeToOldQbe": 0.8008760555166059
+    },
+    {
+      "id": "coverage-expression-128",
+      "family": "expression",
+      "sourceGroup": "62f40333fa5e7dacd2fadbd622d22033a3434de004df93a6870e4cd33df9d4a5",
+      "catalogRepetitions": 37732,
+      "medianMsPerInvocation": {
+        "c": 0.008626651621592108,
+        "old-qbe": 0.007487499999999999,
+        "new-qbe": 0.0059375,
+        "new-x86": 0.04391582799634035
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 0.8679497362869197,
+        "new-qbe": 0.6882739978902954,
+        "new-x86": 5.090715369381681
+      },
+      "projectedFixedBatchMs": {
+        "c": 325.50081898591344,
+        "old-qbe": 282.51835,
+        "new-qbe": 224.03375,
+        "new-x86": 1657.032021957914
+      },
+      "newQbeToOldQbe": 0.7929883138564274
+    },
+    {
+      "id": "coverage-map-churn-32",
+      "family": "map-churn",
+      "sourceGroup": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e",
+      "catalogRepetitions": 2820,
+      "medianMsPerInvocation": {
+        "c": 0.04609015639374425,
+        "old-qbe": 0.16447800393959291,
+        "new-qbe": 0.16633399866932802,
+        "new-x86": 0.30301204819277106
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 3.5686145764937622,
+        "new-qbe": 3.608883364342506,
+        "new-x86": 6.574333261188466
+      },
+      "projectedFixedBatchMs": {
+        "c": 129.9742410303588,
+        "old-qbe": 463.827971109652,
+        "new-qbe": 469.06187624750504,
+        "new-x86": 854.4939759036143
+      },
+      "newQbeToOldQbe": 1.0112841515903654
+    },
+    {
+      "id": "coverage-map-churn-128",
+      "family": "map-churn",
+      "sourceGroup": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e",
+      "catalogRepetitions": 544,
+      "medianMsPerInvocation": {
+        "c": 0.23822714681440443,
+        "old-qbe": 0.8122977346278317,
+        "new-qbe": 0.8198051948051948,
+        "new-x86": 1.5121212121212122
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 3.409761420937759,
+        "new-qbe": 3.4412752944729688,
+        "new-x86": 6.34739252995067
+      },
+      "projectedFixedBatchMs": {
+        "c": 129.595567867036,
+        "old-qbe": 441.88996763754045,
+        "new-qbe": 445.97402597402595,
+        "new-x86": 822.5939393939394
+      },
+      "newQbeToOldQbe": 1.0092422517721322
+    },
+    {
+      "id": "coverage-numeric-recurrence-256",
+      "family": "numeric-recurrence",
+      "sourceGroup": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+      "catalogRepetitions": 247876,
+      "medianMsPerInvocation": {
+        "c": 0.00080999838000324,
+        "old-qbe": 0.0012299941452278687,
+        "new-qbe": 0.0012299941452278687,
+        "new-x86": 0.004183197490081506
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 1.518514327427357,
+        "new-qbe": 1.518514327427357,
+        "new-x86": 5.164451674662329
+      },
+      "projectedFixedBatchMs": {
+        "c": 200.7791584416831,
+        "old-qbe": 304.8860287425032,
+        "new-qbe": 304.8860287425032,
+        "new-x86": 1036.9142610514434
+      },
+      "newQbeToOldQbe": 1.0
+    },
+    {
+      "id": "coverage-numeric-recurrence-1024",
+      "family": "numeric-recurrence",
+      "sourceGroup": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+      "catalogRepetitions": 61936,
+      "medianMsPerInvocation": {
+        "c": 0.00325,
+        "old-qbe": 0.004874909814168438,
+        "new-qbe": 0.0048795600650608,
+        "new-x86": 0.016607000795544946
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 1.4999722505133655,
+        "new-qbe": 1.5014030969417849,
+        "new-x86": 5.109846398629214
+      },
+      "projectedFixedBatchMs": {
+        "c": 201.292,
+        "old-qbe": 301.93241425033636,
+        "new-qbe": 302.22043218960573,
+        "new-x86": 1028.5712012728718
+      },
+      "newQbeToOldQbe": 1.000953915266052
+    },
+    {
+      "id": "coverage-record-aggregation-64",
+      "family": "record-aggregation",
+      "sourceGroup": "6b31a2cfc58fbb33376fee6bf55d2a6aa05210be40a36342a82da87364080937",
+      "catalogRepetitions": 1540,
+      "medianMsPerInvocation": {
+        "c": 0.09952324195470799,
+        "old-qbe": 0.2675,
+        "new-qbe": 0.2615,
+        "new-x86": 0.4911937377690802
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 2.687814371257485,
+        "new-qbe": 2.6275269461077846,
+        "new-x86": 4.935467616625847
+      },
+      "projectedFixedBatchMs": {
+        "c": 153.26579261025032,
+        "old-qbe": 411.95000000000005,
+        "new-qbe": 402.71000000000004,
+        "new-x86": 756.4383561643835
+      },
+      "newQbeToOldQbe": 0.9775700934579439
+    },
+    {
+      "id": "coverage-record-aggregation-256",
+      "family": "record-aggregation",
+      "sourceGroup": "6b31a2cfc58fbb33376fee6bf55d2a6aa05210be40a36342a82da87364080937",
+      "catalogRepetitions": 392,
+      "medianMsPerInvocation": {
+        "c": 0.3950524737631185,
+        "old-qbe": 1.01,
+        "new-qbe": 1.006,
+        "new-x86": 1.9307692307692308
+      },
+      "ratioToC": {
+        "c": 1.0,
+        "old-qbe": 2.5566223908918406,
+        "new-qbe": 2.5464971537001895,
+        "new-x86": 4.887374105969931
+      },
+      "projectedFixedBatchMs": {
+        "c": 154.86056971514245,
+        "old-qbe": 395.92,
+        "new-qbe": 394.352,
+        "new-x86": 756.8615384615384
+      },
+      "newQbeToOldQbe": 0.996039603960396
+    }
+  ],
+  "localFoldStatic": [
+    {
+      "emission": "final-x86-emit01",
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/final-x86-emit01/local-fold/program.s",
+        "bytes": 435137,
+        "sha256": "0bfe00995af5d2caf3b738ba8047a9b4aa83efeaaaf7d8d6005ebd603143aa6e"
+      },
+      "emissionReport": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/final-x86-emit01/report.json",
+        "bytes": 45003,
+        "sha256": "5250f97aadf1a409de39c57f2cffc4fe7c983ad2859475bf69a550ac442f2f5f"
+      },
+      "emissionComplete": true,
+      "checkedApiReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/final-api02/report.json",
+        "bytes": 8020,
+        "sha256": "062f4dd804f08d35fd60c10a77aefe4ad577c5de2334dd6ab34de8fae1119b80"
+      },
+      "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112_",
+      "positivePath": "__loop first eight test instructions, then __b2 through backedge, excluding zero-return and __b4 error paths",
+      "positiveInstructions": 150,
+      "wholeFunctionInstructions": 290,
+      "explicitFrameReferences": 33,
+      "wholeFunctionFrameReferences": 85,
+      "directFrameLoads": 8,
+      "directFrameStores": 4,
+      "scratchAddressLeas": 21,
+      "indirectScratchLoads": 10,
+      "indirectScratchStores": 11,
+      "totalStackMemoryOperations": 33,
+      "nativeArray32BitLoads": 1,
+      "nativeArray32BitStores": 1,
+      "movClassInstructions": 110,
+      "calls": 0
+    },
+    {
+      "emission": "register-x86-emit01",
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/register-x86-emit01/local-fold/program.s",
+        "bytes": 423309,
+        "sha256": "c54b2aa52ead5fd8790bc25f68e9a1636405c22f82688e60a28077b7de5762d0"
+      },
+      "emissionReport": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/register-x86-emit01/report.json",
+        "bytes": 9693,
+        "sha256": "dee0251e1ca2a06b51a48581c9bcc2f75025c0030c4e44c1048c5b0367666dc2"
+      },
+      "emissionComplete": true,
+      "checkedApiReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/register-api03/report.json",
+        "bytes": 8615,
+        "sha256": "d4a2102822030c17b98d2eec64e06322d2544c5cf7a30070739b402c4563ec99"
+      },
+      "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112_",
+      "positivePath": "__loop first eight test instructions, then __b2 through backedge, excluding zero-return and __b4 error paths",
+      "positiveInstructions": 123,
+      "wholeFunctionInstructions": 263,
+      "explicitFrameReferences": 29,
+      "wholeFunctionFrameReferences": 81,
+      "directFrameLoads": 8,
+      "directFrameStores": 4,
+      "scratchAddressLeas": 17,
+      "indirectScratchLoads": 6,
+      "indirectScratchStores": 11,
+      "totalStackMemoryOperations": 29,
+      "nativeArray32BitLoads": 1,
+      "nativeArray32BitStores": 1,
+      "movClassInstructions": 87,
+      "calls": 0
+    }
+  ]
+}

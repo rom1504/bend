@@ -1,0 +1,1984 @@
+{
+  "kind": "phase185-release-runtime-derived-analysis",
+  "version": 1,
+  "targetsRun": false,
+  "sourceReport": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/release-full45-runtime02/report.json",
+    "bytes": 1559075,
+    "sha256": "e57aa29df3568dd46f2d0554841b93555906d4accca70120d578ec66906c0006"
+  },
+  "historicalReport": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/full45-runtime01/report.json",
+    "bytes": 2450329,
+    "sha256": "15d7f78beea25089f43bcddd6d90a5b00de416ff4215bddf22f2054e8b24cef5"
+  },
+  "catalog": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/catalog.json",
+    "bytes": 54895,
+    "sha256": "746fe610bfe1a5704f390b71cd5ee702e6bd874bd89a5a9363d5f69f69c0e475"
+  },
+  "timedCases": 44,
+  "correctnessOnlyCases": [
+    "scalar-region-0"
+  ],
+  "rounds": 3,
+  "positionBalanced": true,
+  "validation": {
+    "current": {
+      "timedAndControlSamples": 405,
+      "calibrationPilots": 433,
+      "allOutputPinsVerified": true,
+      "allExactOutputCountOraclesReplayed": true,
+      "allRuntimeArgumentsVerified": true,
+      "summariesAndAggregateRecomputed": true,
+      "compilerAndProductQualificationReperformed": false
+    },
+    "historical": {
+      "timedAndControlSamples": 720,
+      "calibrationPilots": 609,
+      "allOutputPinsVerified": true,
+      "allExactOutputCountOraclesReplayed": true,
+      "allRuntimeArgumentsVerified": true,
+      "summariesAndAggregateRecomputed": true,
+      "compilerAndProductQualificationReperformed": false
+    },
+    "identicalPinnedCBinaryCases": 45
+  },
+  "formulas": {
+    "ratioToC": "role median ms/invocation divided by the C median from the same campaign",
+    "equalFamilyGeomean": "exp(mean over families of the within-family mean ln(role/C)))",
+    "positiveLogDeficit": "mean or sum of max(0, ln(role/C)); faster cases cannot cancel deficits",
+    "counts": "strictly greater than 1.1 and 2.0 over 44 timed workloads",
+    "fixedCatalogBatch": "sum(frozen catalog repetitions * observed median ms/invocation); common-work projection, not measured total wall time",
+    "positiveExcess": "sum(max(0, role projected workload milliseconds - same-campaign C projected workload milliseconds))",
+    "crossCampaign": "(final role/C_final) / (historical old-qbe/C_historical); reduction fraction is 1 minus this ratio"
+  },
+  "scope": "Final native-N2 QBE/x86 prepared-program runtime against same-campaign C. Historical comparisons normalize separately to each campaign C, even though the C artifacts are identical where recorded. These are descriptive cross-campaign comparisons, not paired significance estimates or compiler qualification. No target or compiler execution occurred in this analysis.",
+  "roles": {
+    "c": {
+      "caseGeomeanToC": 1.0,
+      "equalFamilyGeomeanToC": 1.0,
+      "familyCount": 22,
+      "equalSourceGeomeanToC": 1.0,
+      "sourceCount": 23,
+      "meanPositiveLogDeficit": 0,
+      "sumPositiveLogDeficit": 0,
+      "casesOver110": 0,
+      "casesOver200": 0,
+      "projectedFixedCatalogBatchMs": 10290.19294599298,
+      "projectedFixedCatalogBatchRatioToC": 1.0,
+      "projectedNetExcessMsToC": 0.0,
+      "projectedPositiveExcessMsToC": 0,
+      "worstSlowdownsToC": [
+        {
+          "id": "local-pair",
+          "ratio": 1.0
+        },
+        {
+          "id": "local-fold",
+          "ratio": 1.0
+        },
+        {
+          "id": "scalar-region-8192",
+          "ratio": 1.0
+        },
+        {
+          "id": "complete-generic-row32",
+          "ratio": 1.0
+        },
+        {
+          "id": "mandelbrot",
+          "ratio": 1.0
+        }
+      ]
+    },
+    "qbe": {
+      "caseGeomeanToC": 1.4775928205586326,
+      "equalFamilyGeomeanToC": 1.5859533879170888,
+      "familyCount": 22,
+      "equalSourceGeomeanToC": 1.5543939445391637,
+      "sourceCount": 23,
+      "meanPositiveLogDeficit": 0.6080056820029635,
+      "sumPositiveLogDeficit": 26.752250008130385,
+      "casesOver110": 32,
+      "casesOver200": 23,
+      "projectedFixedCatalogBatchMs": 18599.665180879205,
+      "projectedFixedCatalogBatchRatioToC": 1.8075137442512144,
+      "projectedNetExcessMsToC": 8309.472234886225,
+      "projectedPositiveExcessMsToC": 9063.960469168325,
+      "worstSlowdownsToC": [
+        {
+          "id": "complete-generic-row32",
+          "ratio": 3.671254980079681
+        },
+        {
+          "id": "test-evening-program",
+          "ratio": 3.5648877521020754
+        },
+        {
+          "id": "coverage-map-churn-32",
+          "ratio": 3.4618924302788843
+        },
+        {
+          "id": "test-morning-program",
+          "ratio": 3.3837706648220873
+        },
+        {
+          "id": "coverage-map-churn-128",
+          "ratio": 3.3573000000000004
+        }
+      ]
+    },
+    "x86": {
+      "caseGeomeanToC": 5.5559229897728635,
+      "equalFamilyGeomeanToC": 5.363963403807689,
+      "familyCount": 22,
+      "equalSourceGeomeanToC": 5.461245467950447,
+      "sourceCount": 23,
+      "meanPositiveLogDeficit": 1.7619770730055198,
+      "sumPositiveLogDeficit": 77.52699121224288,
+      "casesOver110": 42,
+      "casesOver200": 40,
+      "projectedFixedCatalogBatchMs": 70565.34607385163,
+      "projectedFixedCatalogBatchRatioToC": 6.85753381342863,
+      "projectedNetExcessMsToC": 60275.15312785865,
+      "projectedPositiveExcessMsToC": 60350.55691591636,
+      "worstSlowdownsToC": [
+        {
+          "id": "variation-local-fold-8192-123",
+          "ratio": 14.289492063492062
+        },
+        {
+          "id": "local-fold",
+          "ratio": 14.236162295470885
+        },
+        {
+          "id": "editdist",
+          "ratio": 12.643137254901962
+        },
+        {
+          "id": "variation-local-fold-128-0",
+          "ratio": 12.62910884
+        },
+        {
+          "id": "variation-editdist-3-123",
+          "ratio": 12.412162162162161
+        }
+      ]
+    }
+  },
+  "crossCampaignVersusHistoricalOldQbe": {
+    "qbe": {
+      "normalizedCaseGeomean": 0.9497937973135347,
+      "normalizedGeomeanTimeReductionFraction": 0.05020620268646525,
+      "normalizedCasesImproved": 33,
+      "normalizedCasesRegressed": 11,
+      "normalizedCasesRegressedOver105": 3,
+      "normalizedCasesRegressedOver110": 0,
+      "largestNormalizedRegressions": [
+        {
+          "id": "coverage-closures-256",
+          "normalizedRatio": 1.0904839023554174,
+          "normalizedTimeReductionFraction": -0.09048390235541737
+        },
+        {
+          "id": "coverage-numeric-recurrence-256",
+          "normalizedRatio": 1.056761102242757,
+          "normalizedTimeReductionFraction": -0.05676110224275699
+        },
+        {
+          "id": "coverage-numeric-recurrence-1024",
+          "normalizedRatio": 1.0544697974132926,
+          "normalizedTimeReductionFraction": -0.05446979741329261
+        },
+        {
+          "id": "editdist",
+          "normalizedRatio": 1.042979724556141,
+          "normalizedTimeReductionFraction": -0.042979724556140964
+        },
+        {
+          "id": "local-fold",
+          "normalizedRatio": 1.0385864869205694,
+          "normalizedTimeReductionFraction": -0.03858648692056943
+        },
+        {
+          "id": "test-rle-roundtrip",
+          "normalizedRatio": 1.0264418053641309,
+          "normalizedTimeReductionFraction": -0.026441805364130877
+        },
+        {
+          "id": "coverage-record-aggregation-256",
+          "normalizedRatio": 1.0118361210082676,
+          "normalizedTimeReductionFraction": -0.011836121008267586
+        },
+        {
+          "id": "coverage-unicode-text-16",
+          "normalizedRatio": 1.006012135691997,
+          "normalizedTimeReductionFraction": -0.0060121356919971
+        }
+      ],
+      "largestNormalizedImprovements": [
+        {
+          "id": "coverage-bst-32",
+          "normalizedRatio": 0.7598416409135216,
+          "normalizedTimeReductionFraction": 0.24015835908647842
+        },
+        {
+          "id": "coverage-expression-128",
+          "normalizedRatio": 0.792787843848752,
+          "normalizedTimeReductionFraction": 0.207212156151248
+        },
+        {
+          "id": "coverage-bst-64",
+          "normalizedRatio": 0.7997936309183347,
+          "normalizedTimeReductionFraction": 0.20020636908166534
+        },
+        {
+          "id": "coverage-expression-32",
+          "normalizedRatio": 0.8109202846548039,
+          "normalizedTimeReductionFraction": 0.18907971534519608
+        },
+        {
+          "id": "variation-ray-active-256-2240",
+          "normalizedRatio": 0.8368628311780337,
+          "normalizedTimeReductionFraction": 0.16313716882196627
+        },
+        {
+          "id": "tree-bitonic",
+          "normalizedRatio": 0.847423153387368,
+          "normalizedTimeReductionFraction": 0.15257684661263204
+        },
+        {
+          "id": "variation-tree-bitonic-9-123",
+          "normalizedRatio": 0.859393838637938,
+          "normalizedTimeReductionFraction": 0.14060616136206205
+        },
+        {
+          "id": "variation-ray-active-64-2440",
+          "normalizedRatio": 0.8690337738961489,
+          "normalizedTimeReductionFraction": 0.1309662261038511
+        }
+      ]
+    },
+    "x86": {
+      "normalizedCaseGeomean": 3.57133651478008,
+      "normalizedGeomeanTimeReductionFraction": -2.57133651478008,
+      "normalizedCasesImproved": 0,
+      "normalizedCasesRegressed": 44,
+      "normalizedCasesRegressedOver105": 44,
+      "normalizedCasesRegressedOver110": 44,
+      "largestNormalizedRegressions": [
+        {
+          "id": "editdist",
+          "normalizedRatio": 10.126661798079267,
+          "normalizedTimeReductionFraction": -9.126661798079267
+        },
+        {
+          "id": "local-pair",
+          "normalizedRatio": 9.875194527971749,
+          "normalizedTimeReductionFraction": -8.875194527971749
+        },
+        {
+          "id": "variation-editdist-3-123",
+          "normalizedRatio": 9.665311748693,
+          "normalizedTimeReductionFraction": -8.665311748693
+        },
+        {
+          "id": "variation-editdist-0-17",
+          "normalizedRatio": 9.320217794371809,
+          "normalizedTimeReductionFraction": -8.320217794371809
+        },
+        {
+          "id": "local-fold",
+          "normalizedRatio": 7.359049039196382,
+          "normalizedTimeReductionFraction": -6.359049039196382
+        },
+        {
+          "id": "variation-local-fold-8192-123",
+          "normalizedRatio": 7.136932270916333,
+          "normalizedTimeReductionFraction": -6.136932270916333
+        },
+        {
+          "id": "variation-mandelbrot-grid-4-7",
+          "normalizedRatio": 6.500778394793061,
+          "normalizedTimeReductionFraction": -5.500778394793061
+        },
+        {
+          "id": "raytrace",
+          "normalizedRatio": 6.392234090373955,
+          "normalizedTimeReductionFraction": -5.392234090373955
+        }
+      ],
+      "largestNormalizedImprovements": []
+    }
+  },
+  "broadDeficitComparison": {
+    "historicalOldQbeCasesOver110": 34,
+    "finalQbeCasesOver110": 32,
+    "historicalOldQbeCasesOver200": 22,
+    "finalQbeCasesOver200": 23,
+    "timedCases": 44,
+    "interpretation": "The normalized geometric mean improves, but broad C-relative deficits persist: the count above 2x C rises from 22 to 23. Cross-campaign threshold movements are descriptive, not paired significance claims."
+  },
+  "regressionArtifactAudit": {
+    "method": "Read-only comparison of retained QBE machine/program.s function bodies. Rename only .Lbb followed by decimal digits consistently within each function, in first-occurrence order. Preserve all instructions, operands, registers, constants, other labels and symbol references. This is normalized assembly-text identity, not linked instruction-byte identity or a claim about executed call paths.",
+    "commonFinding": "All three artifact pairs contain 195 assembly functions, 185 identical after local-label normalization, the same 10 changed support functions, and no added or removed functions. Whole executable bytes and emitted SSA differ. Shared constructor-cache expansion changes surrounding support code; inspected workload-loop bodies remain identical. Source/support-runtime/layout effects and measurement variability remain unresolved; these observations do not dismiss regressions as noise.",
+    "changedFunctionsInAllThreePairs": [
+      "p111_$direct.p93.arguments",
+      "p111_$p111.k.10471",
+      "p111_$p111.k.7330",
+      "p111_$p111.k.7333",
+      "p111_$p111.k.7334",
+      "p113d_$direct.Nat.show",
+      "p113d_$direct.Nat.show.put",
+      "p113d_$p126scc.0",
+      "p113d_$p126scc.14",
+      "p113d_$p126scc.24"
+    ],
+    "functionNameConvention": "FID decimal character encodings decoded for readability; original backend prefixes preserved.",
+    "pairs": [
+      {
+        "id": "coverage-closures-256",
+        "historicalExecutable": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-closures-256/bend-qbe/machine/program",
+          "bytes": 152904,
+          "sha256": "ecd996660c9c31e123d82784c1ff74448d942397f6204d8cf52d744d2a2dd25c"
+        },
+        "finalExecutable": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/release-native45-acquire01/coverage-closures-256/phase185-qbe-n2/machine/program",
+          "bytes": 157016,
+          "sha256": "d9f0004c344cc35cbd1e4123df1a7b2ace00de2bd5940a9c5ee5907300bb5b28"
+        },
+        "historicalGeneratedSource": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-closures-256/bend-qbe/emission/program.ssa",
+          "bytes": 248102,
+          "sha256": "5065a7ab2801417c20a1285e9030306a638be53c26edaeb1916f96dbea6eabee"
+        },
+        "finalGeneratedSource": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/release-native45-acquire01/coverage-closures-256/phase185-qbe-n2/emission/program.ssa",
+          "bytes": 271230,
+          "sha256": "fc4f0da109f005716eb02fcafc4a4e7b0798c8b20ebd26fa372385c944f85c6d"
+        },
+        "executablePinsVerified": true,
+        "wholeExecutableIdentical": false,
+        "unchangedSelectedFunctions": [
+          "p113d_$p121.callback.bench",
+          "p113d_$direct.bench",
+          "p113d_$direct.p93.loop"
+        ]
+      },
+      {
+        "id": "coverage-numeric-recurrence-256",
+        "historicalExecutable": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-numeric-recurrence-256/bend-qbe/machine/program",
+          "bytes": 152840,
+          "sha256": "a7391d04f3e9d787ee2226f2948ab966edd751b22000b5ae9db298ec864aa0bc"
+        },
+        "finalExecutable": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/release-native45-acquire01/coverage-numeric-recurrence-256/phase185-qbe-n2/machine/program",
+          "bytes": 156952,
+          "sha256": "05188c2f7c79d413ccc56a50702c42ac56bb7929c8b82a13433db753e46939c2"
+        },
+        "historicalGeneratedSource": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-numeric-recurrence-256/bend-qbe/emission/program.ssa",
+          "bytes": 259148,
+          "sha256": "75fc9594c668c128c004a1b719ac2a8d49d59f2f1280646deef011e431a0aed2"
+        },
+        "finalGeneratedSource": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/release-native45-acquire01/coverage-numeric-recurrence-256/phase185-qbe-n2/emission/program.ssa",
+          "bytes": 282276,
+          "sha256": "241ce228c520ff30f0f01f8d19522801de1cdbe0a6cf3a64fcb7d5bbb1113b65"
+        },
+        "executablePinsVerified": true,
+        "wholeExecutableIdentical": false,
+        "unchangedSelectedFunctions": [
+          "p113d_$direct.p37.numeric",
+          "p113d_$direct.bench",
+          "p113d_$direct.p93.loop"
+        ]
+      },
+      {
+        "id": "coverage-numeric-recurrence-1024",
+        "historicalExecutable": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-numeric-recurrence-1024/bend-qbe/machine/program",
+          "bytes": 152840,
+          "sha256": "04c47a5e26eada3273e5dce177b25faeab50b0fbf305aaf9c86c263c705c1f88"
+        },
+        "finalExecutable": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/release-native45-acquire01/coverage-numeric-recurrence-1024/phase185-qbe-n2/machine/program",
+          "bytes": 156952,
+          "sha256": "14833d4a5982d7182d66f5696ce9e064efec1e625e725c42f2785f5a8c50795a"
+        },
+        "historicalGeneratedSource": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-numeric-recurrence-1024/bend-qbe/emission/program.ssa",
+          "bytes": 259153,
+          "sha256": "9edbd7f646b1aa9571e27ef14891d3527148f6102818b360b943b8c317bfe254"
+        },
+        "finalGeneratedSource": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/release-native45-acquire01/coverage-numeric-recurrence-1024/phase185-qbe-n2/emission/program.ssa",
+          "bytes": 282281,
+          "sha256": "3d05c2f44b97816802c9f991ff95a785e0a795c7690987bf4c4150b65b51f991"
+        },
+        "executablePinsVerified": true,
+        "wholeExecutableIdentical": false,
+        "unchangedSelectedFunctions": [
+          "p113d_$direct.p37.numeric",
+          "p113d_$direct.bench",
+          "p113d_$direct.p93.loop"
+        ]
+      }
+    ]
+  },
+  "historicalBaseline": {
+    "caseGeomeanOldQbeToC": 1.555698536606538,
+    "projectedFixedCatalogBatchCMs": 10158.795741614726,
+    "projectedFixedCatalogBatchOldQbeMs": 19581.53017167329,
+    "projectedFixedCatalogBatchOldQbeToC": 1.927544432403445
+  },
+  "cDenominatorDrift": {
+    "currentToHistoricalCaseGeomean": 1.0095203960501402,
+    "currentToHistoricalFixedBatchRatio": 1.012934328804348
+  },
+  "cases": [
+    {
+      "id": "local-pair",
+      "family": "local-pair",
+      "sourceGroup": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+      "catalogRepetitions": 956,
+      "medianMsPerInvocation": {
+        "c": 0.2098950524737631,
+        "qbe": 0.264,
+        "x86": 2.5918367346938775
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 1.2577714285714288,
+        "x86": 12.348250728862974
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 200.65967016491754,
+        "qbe": 252.38400000000001,
+        "x86": 2477.795918367347
+      },
+      "historicalOldQbeToHistoricalC": 1.250431137724551,
+      "historicalOldQbeMedianMs": 0.263,
+      "historicalCMedianMs": 0.21032745591939547,
+      "currentCToHistoricalC": 0.9979441417016042,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 1.0058702079830124,
+          "normalizedTimeReductionFraction": -0.00587020798301241
+        },
+        "x86": {
+          "normalizedRatio": 9.875194527971749,
+          "normalizedTimeReductionFraction": -8.875194527971749
+        }
+      }
+    },
+    {
+      "id": "local-fold",
+      "family": "local-fold",
+      "sourceGroup": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+      "catalogRepetitions": 60684,
+      "medianMsPerInvocation": {
+        "c": 0.002749901397957842,
+        "qbe": 0.0055249839775464655,
+        "x86": 0.03914804259787011
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 2.0091571216515187,
+        "x86": 14.236162295470885
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 166.8750164336737,
+        "qbe": 335.2781276934297,
+        "x86": 2375.6598170091497
+      },
+      "historicalOldQbeToHistoricalC": 1.934511133115848,
+      "historicalOldQbeMedianMs": 0.005543286219081272,
+      "historicalCMedianMs": 0.0028654713452865473,
+      "currentCToHistoricalC": 0.9596680847921205,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 1.0385864869205694,
+          "normalizedTimeReductionFraction": -0.03858648692056943
+        },
+        "x86": {
+          "normalizedRatio": 7.359049039196382,
+          "normalizedTimeReductionFraction": -6.359049039196382
+        }
+      }
+    },
+    {
+      "id": "scalar-region-8192",
+      "family": "scalar-region-8192",
+      "sourceGroup": "5c1b7031be03394ea7bfc64358b6db167711765e187e32d06f65a9f06bba3c7d",
+      "catalogRepetitions": 5576,
+      "medianMsPerInvocation": {
+        "c": 0.036998668047950274,
+        "qbe": 0.061234447426201516,
+        "x86": 0.32216494845360827
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 1.6550446450353746,
+        "x86": 8.707474226804123
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 206.30457303537074,
+        "qbe": 341.44327884849963,
+        "x86": 1796.3917525773197
+      },
+      "historicalOldQbeToHistoricalC": 1.6570932271825487,
+      "historicalOldQbeMedianMs": 0.061474406073965225,
+      "historicalCMedianMs": 0.03709773539928486,
+      "currentCToHistoricalC": 0.9973295579833023,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 0.9987637496107222,
+          "normalizedTimeReductionFraction": 0.001236250389277771
+        },
+        "x86": {
+          "normalizedRatio": 5.254667681919679,
+          "normalizedTimeReductionFraction": -4.254667681919679
+        }
+      }
+    },
+    {
+      "id": "complete-generic-row32",
+      "family": "complete-generic-row32",
+      "sourceGroup": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+      "catalogRepetitions": 1460,
+      "medianMsPerInvocation": {
+        "c": 0.07980922098569157,
+        "qbe": 0.293,
+        "x86": 0.4370629370629371
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 3.671254980079681,
+        "x86": 5.476346362800546
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 116.52146263910969,
+        "qbe": 427.78,
+        "x86": 638.1118881118881
+      },
+      "historicalOldQbeToHistoricalC": 3.729237219803258,
+      "historicalOldQbeMedianMs": 0.3272405660377359,
+      "historicalCMedianMs": 0.08775,
+      "currentCToHistoricalC": 0.909506791859733,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 0.9844519840637448,
+          "normalizedTimeReductionFraction": 0.01554801593625521
+        },
+        "x86": {
+          "normalizedRatio": 1.468489677653024,
+          "normalizedTimeReductionFraction": -0.4684896776530241
+        }
+      }
+    },
+    {
+      "id": "mandelbrot",
+      "family": "mandelbrot",
+      "sourceGroup": "cb2b9c30aceeb0f8ed0da1f999658aa8d7fb346851877da6902d1ded4cfc0656",
+      "catalogRepetitions": 9036,
+      "medianMsPerInvocation": {
+        "c": 0.0267,
+        "qbe": 0.067,
+        "x86": 0.24164278892072588
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 2.5093632958801497,
+        "x86": 9.050291719877373
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 241.2612,
+        "qbe": 605.412,
+        "x86": 2183.484240687679
+      },
+      "historicalOldQbeToHistoricalC": 2.593410358565737,
+      "historicalOldQbeMedianMs": 0.069,
+      "historicalCMedianMs": 0.026605893576425694,
+      "currentCToHistoricalC": 1.0035370517928288,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 0.9675920694895085,
+          "normalizedTimeReductionFraction": 0.03240793051049151
+        },
+        "x86": {
+          "normalizedRatio": 3.489726062821218,
+          "normalizedTimeReductionFraction": -2.489726062821218
+        }
+      }
+    },
+    {
+      "id": "editdist",
+      "family": "editdist",
+      "sourceGroup": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f",
+      "catalogRepetitions": 240,
+      "medianMsPerInvocation": {
+        "c": 0.8916083916083916,
+        "qbe": 1.1610169491525424,
+        "x86": 11.272727272727273
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 1.3021601861083418,
+        "x86": 12.643137254901962
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 213.98601398601397,
+        "qbe": 278.64406779661016,
+        "x86": 2705.4545454545455
+      },
+      "historicalOldQbeToHistoricalC": 1.2484999999999997,
+      "historicalOldQbeMedianMs": 1.0509259259259258,
+      "historicalCMedianMs": 0.8417508417508418,
+      "currentCToHistoricalC": 1.0592307692307692,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 1.042979724556141,
+          "normalizedTimeReductionFraction": -0.042979724556140964
+        },
+        "x86": {
+          "normalizedRatio": 10.126661798079267,
+          "normalizedTimeReductionFraction": -9.126661798079267
+        }
+      }
+    },
+    {
+      "id": "tree-bitonic",
+      "family": "tree-bitonic",
+      "sourceGroup": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+      "catalogRepetitions": 1636,
+      "medianMsPerInvocation": {
+        "c": 0.182,
+        "qbe": 0.524,
+        "x86": 1.2559241706161137
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 2.879120879120879,
+        "x86": 6.900682256132493
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 297.752,
+        "qbe": 857.264,
+        "x86": 2054.691943127962
+      },
+      "historicalOldQbeToHistoricalC": 3.3975008443093553,
+      "historicalOldQbeMedianMs": 0.558888888888889,
+      "historicalCMedianMs": 0.1645,
+      "currentCToHistoricalC": 1.106382978723404,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 0.847423153387368,
+          "normalizedTimeReductionFraction": 0.15257684661263204
+        },
+        "x86": {
+          "normalizedRatio": 2.0311053837384003,
+          "normalizedTimeReductionFraction": -1.0311053837384003
+        }
+      }
+    },
+    {
+      "id": "lexer",
+      "family": "lexer",
+      "sourceGroup": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+      "catalogRepetitions": 512,
+      "medianMsPerInvocation": {
+        "c": 0.383808095952024,
+        "qbe": 0.9438202247191011,
+        "x86": 3.0357142857142856
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 2.4590941011235956,
+        "x86": 7.909458705357142
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 196.50974512743628,
+        "qbe": 483.23595505617976,
+        "x86": 1554.2857142857142
+      },
+      "historicalOldQbeToHistoricalC": 2.5748161764705886,
+      "historicalOldQbeMedianMs": 0.9882352941176471,
+      "historicalCMedianMs": 0.383808095952024,
+      "currentCToHistoricalC": 1.0,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 0.9550561797752808,
+          "normalizedTimeReductionFraction": 0.04494382022471921
+        },
+        "x86": {
+          "normalizedRatio": 3.071853741496598,
+          "normalizedTimeReductionFraction": -2.071853741496598
+        }
+      }
+    },
+    {
+      "id": "symreg",
+      "family": "symreg",
+      "sourceGroup": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b",
+      "catalogRepetitions": 144,
+      "medianMsPerInvocation": {
+        "c": 2.3125,
+        "qbe": 1.9242424242424243,
+        "x86": 7.818181818181818
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 0.8321048321048321,
+        "x86": 3.380835380835381
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 333.0,
+        "qbe": 277.0909090909091,
+        "x86": 1125.8181818181818
+      },
+      "historicalOldQbeToHistoricalC": 0.9197214557876758,
+      "historicalOldQbeMedianMs": 2.1186440677966103,
+      "historicalCMedianMs": 2.3035714285714284,
+      "currentCToHistoricalC": 1.003875968992248,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 0.9047356967356966,
+          "normalizedTimeReductionFraction": 0.09526430326430335
+        },
+        "x86": {
+          "normalizedRatio": 3.6759340119340114,
+          "normalizedTimeReductionFraction": -2.6759340119340114
+        }
+      }
+    },
+    {
+      "id": "test-morning-program",
+      "family": "test-morning-program",
+      "sourceGroup": "9033897714291ea49c25046426457ff2753276466092ba71a4e40c1e2b48a04a",
+      "catalogRepetitions": 55676,
+      "medianMsPerInvocation": {
+        "c": 0.002851819028790874,
+        "qbe": 0.009649901571003976,
+        "x86": 0.015435705061189348
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 3.3837706648220873,
+        "x86": 5.412582252014022
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 158.7778762469607,
+        "qbe": 537.2679198672173,
+        "x86": 859.3983149867781
+      },
+      "historicalOldQbeToHistoricalC": 3.413884007029876,
+      "historicalOldQbeMedianMs": 0.009712499999999999,
+      "historicalCMedianMs": 0.0028450000000000003,
+      "currentCToHistoricalC": 1.0023968466751754,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 0.9911791548436387,
+          "normalizedTimeReductionFraction": 0.008820845156361279
+        },
+        "x86": {
+          "normalizedRatio": 1.5854616738203238,
+          "normalizedTimeReductionFraction": -0.5854616738203238
+        }
+      }
+    },
+    {
+      "id": "test-evening-program",
+      "family": "test-evening-program",
+      "sourceGroup": "b254a68ad0208b8a5f388d72095633cd8fc119adf40d45f5621e93f37e7b4f71",
+      "catalogRepetitions": 259540,
+      "medianMsPerInvocation": {
+        "c": 0.0010349995446002004,
+        "qbe": 0.00368965719997648,
+        "x86": 0.006775
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 3.5648877521020754,
+        "x86": 6.5458966
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 268.623781805536,
+        "qbe": 957.6136296818956,
+        "x86": 1758.3835
+      },
+      "historicalOldQbeToHistoricalC": 3.65349573762728,
+      "historicalOldQbeMedianMs": 0.0037073762727918543,
+      "historicalCMedianMs": 0.0010147476660803678,
+      "currentCToHistoricalC": 1.0199575512186778,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 0.9757470674968544,
+          "normalizedTimeReductionFraction": 0.02425293250314564
+        },
+        "x86": {
+          "normalizedRatio": 1.7916803713725298,
+          "normalizedTimeReductionFraction": -0.7916803713725298
+        }
+      }
+    },
+    {
+      "id": "test-rle-roundtrip",
+      "family": "test-rle-roundtrip",
+      "sourceGroup": "ce4083dab9a8022b2c8867a30802113735917229341cecb8ce18ff9ac2e33989",
+      "catalogRepetitions": 970904,
+      "medianMsPerInvocation": {
+        "c": 0.0004332590438492813,
+        "qbe": 0.0010825,
+        "x86": 0.0020697441043652787
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 2.4985052599999995,
+        "x86": 4.777151530356247
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 420.65293870944265,
+        "qbe": 1051.0035799999998,
+        "x86": 2009.5228299046664
+      },
+      "historicalOldQbeToHistoricalC": 2.434142147117296,
+      "historicalOldQbeMedianMs": 0.00105,
+      "historicalCMedianMs": 0.0004313634687454441,
+      "currentCToHistoricalC": 1.0043943802412156,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 1.0264418053641309,
+          "normalizedTimeReductionFraction": -0.026441805364130877
+        },
+        "x86": {
+          "normalizedRatio": 1.962560623673407,
+          "normalizedTimeReductionFraction": -0.962560623673407
+        }
+      }
+    },
+    {
+      "id": "test-map-set-ops",
+      "family": "test-map-set-ops",
+      "sourceGroup": "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6",
+      "catalogRepetitions": 22056,
+      "medianMsPerInvocation": {
+        "c": 0.010875,
+        "qbe": 0.03175,
+        "x86": 0.04878526645768025
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 2.9195402298850577,
+        "x86": 4.486001513349908
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 239.85899999999998,
+        "qbe": 700.278,
+        "x86": 1076.0078369905955
+      },
+      "historicalOldQbeToHistoricalC": 3.0906035633019666,
+      "historicalOldQbeMedianMs": 0.0320650119692579,
+      "historicalCMedianMs": 0.010374999999999999,
+      "currentCToHistoricalC": 1.0481927710843375,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 0.9446505092247591,
+          "normalizedTimeReductionFraction": 0.05534949077524087
+        },
+        "x86": {
+          "normalizedRatio": 1.4514969071468726,
+          "normalizedTimeReductionFraction": -0.45149690714687263
+        }
+      }
+    },
+    {
+      "id": "raytrace",
+      "family": "raytrace",
+      "sourceGroup": "4674b2580aceb5f5fe6771ce16c987b97f791b52a9e1305794c435beeebf5837",
+      "catalogRepetitions": 12,
+      "medianMsPerInvocation": {
+        "c": 28.416666666666668,
+        "qbe": 29.083333333333332,
+        "x86": 213.0
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 1.0234604105571847,
+        "x86": 7.495601173020527
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 341.0,
+        "qbe": 349.0,
+        "x86": 2556.0
+      },
+      "historicalOldQbeToHistoricalC": 1.172610556348074,
+      "historicalOldQbeMedianMs": 34.25,
+      "historicalCMedianMs": 29.208333333333336,
+      "currentCToHistoricalC": 0.9728958630527818,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 0.8728050459861151,
+          "normalizedTimeReductionFraction": 0.12719495401388492
+        },
+        "x86": {
+          "normalizedRatio": 6.392234090373955,
+          "normalizedTimeReductionFraction": -5.392234090373955
+        }
+      }
+    },
+    {
+      "id": "variation-editdist-0-17",
+      "family": "editdist",
+      "sourceGroup": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f",
+      "catalogRepetitions": 956,
+      "medianMsPerInvocation": {
+        "c": 0.21136173767752714,
+        "qbe": 0.265,
+        "x86": 2.5918367346938775
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 1.2537747035573124,
+        "x86": 12.262563523433089
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 202.06182121971594,
+        "qbe": 253.34,
+        "x86": 2477.795918367347
+      },
+      "historicalOldQbeToHistoricalC": 1.3156949541284402,
+      "historicalOldQbeMedianMs": 0.29185779816513757,
+      "historicalCMedianMs": 0.22182786157941436,
+      "currentCToHistoricalC": 0.9528187134502923,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 0.9529372288182515,
+          "normalizedTimeReductionFraction": 0.04706277118174851
+        },
+        "x86": {
+          "normalizedRatio": 9.320217794371809,
+          "normalizedTimeReductionFraction": -8.320217794371809
+        }
+      }
+    },
+    {
+      "id": "variation-editdist-3-123",
+      "family": "editdist",
+      "sourceGroup": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f",
+      "catalogRepetitions": 120,
+      "medianMsPerInvocation": {
+        "c": 1.6818181818181819,
+        "qbe": 2.1092436974789917,
+        "x86": 20.875
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 1.2541449012037247,
+        "x86": 12.412162162162161
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 201.8181818181818,
+        "qbe": 253.109243697479,
+        "x86": 2505.0
+      },
+      "historicalOldQbeToHistoricalC": 1.2841967734605773,
+      "historicalOldQbeMedianMs": 2.226851851851852,
+      "historicalCMedianMs": 1.7340425531914894,
+      "currentCToHistoricalC": 0.969882877858338,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 0.9765987013221731,
+          "normalizedTimeReductionFraction": 0.02340129867782692
+        },
+        "x86": {
+          "normalizedRatio": 9.665311748693,
+          "normalizedTimeReductionFraction": -8.665311748693
+        }
+      }
+    },
+    {
+      "id": "variation-lexer-6-17",
+      "family": "lexer",
+      "sourceGroup": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+      "catalogRepetitions": 2212,
+      "medianMsPerInvocation": {
+        "c": 0.09581749049429658,
+        "qbe": 0.24056603773584906,
+        "x86": 0.7724550898203593
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 2.5106693620844562,
+        "x86": 8.06173367550613
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 211.94828897338402,
+        "qbe": 532.1320754716982,
+        "x86": 1708.6706586826347
+      },
+      "historicalOldQbeToHistoricalC": 2.584206364383434,
+      "historicalOldQbeMedianMs": 0.24679170779861798,
+      "historicalCMedianMs": 0.0955,
+      "currentCToHistoricalC": 1.0033245077936814,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 0.9715436803683737,
+          "normalizedTimeReductionFraction": 0.028456319631626315
+        },
+        "x86": {
+          "normalizedRatio": 3.119616833475905,
+          "normalizedTimeReductionFraction": -2.119616833475905
+        }
+      }
+    },
+    {
+      "id": "variation-lexer-10-123",
+      "family": "lexer",
+      "sourceGroup": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+      "catalogRepetitions": 128,
+      "medianMsPerInvocation": {
+        "c": 1.5460122699386503,
+        "qbe": 3.7846153846153845,
+        "x86": 12.25
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 2.447985347985348,
+        "x86": 7.923611111111112
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 197.88957055214723,
+        "qbe": 484.4307692307692,
+        "x86": 1568.0
+      },
+      "historicalOldQbeToHistoricalC": 2.5588057170542635,
+      "historicalOldQbeMedianMs": 3.953125,
+      "historicalCMedianMs": 1.5449101796407185,
+      "currentCToHistoricalC": 1.0007133685261806,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 0.9566905887655693,
+          "normalizedTimeReductionFraction": 0.04330941123443066
+        },
+        "x86": {
+          "normalizedRatio": 3.096605208555222,
+          "normalizedTimeReductionFraction": -2.096605208555222
+        }
+      }
+    },
+    {
+      "id": "variation-tree-bitonic-6-17",
+      "family": "tree-bitonic",
+      "sourceGroup": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+      "catalogRepetitions": 11108,
+      "medianMsPerInvocation": {
+        "c": 0.02469743186067106,
+        "qbe": 0.07975,
+        "x86": 0.17527932960893855
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 3.229080677290837,
+        "x86": 7.097067039106146
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 274.33907310833416,
+        "qbe": 885.863,
+        "x86": 1947.0027932960895
+      },
+      "historicalOldQbeToHistoricalC": 3.659191382765531,
+      "historicalOldQbeMedianMs": 0.090375,
+      "historicalCMedianMs": 0.024698079588200354,
+      "currentCToHistoricalC": 0.999973774174345,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 0.8824574446965311,
+          "normalizedTimeReductionFraction": 0.11754255530346891
+        },
+        "x86": {
+          "normalizedRatio": 1.939517859747021,
+          "normalizedTimeReductionFraction": -0.9395178597470211
+        }
+      }
+    },
+    {
+      "id": "variation-tree-bitonic-9-123",
+      "family": "tree-bitonic",
+      "sourceGroup": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+      "catalogRepetitions": 636,
+      "medianMsPerInvocation": {
+        "c": 0.4077961019490255,
+        "qbe": 1.147982062780269,
+        "x86": 2.8202247191011236
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 2.815088367185439,
+        "x86": 6.915771645736946
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 259.3583208395802,
+        "qbe": 730.1165919282511,
+        "x86": 1793.6629213483145
+      },
+      "historicalOldQbeToHistoricalC": 3.275667383940175,
+      "historicalOldQbeMedianMs": 1.3368983957219251,
+      "historicalCMedianMs": 0.408130081300813,
+      "currentCToHistoricalC": 0.9991816840583692,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 0.859393838637938,
+          "normalizedTimeReductionFraction": 0.14060616136206205
+        },
+        "x86": {
+          "normalizedRatio": 2.111255764136293,
+          "normalizedTimeReductionFraction": -1.1112557641362928
+        }
+      }
+    },
+    {
+      "id": "variation-symreg-4-17",
+      "family": "symreg",
+      "sourceGroup": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b",
+      "catalogRepetitions": 288,
+      "medianMsPerInvocation": {
+        "c": 1.15695067264574,
+        "qbe": 0.9550561797752809,
+        "x86": 3.876923076923077
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 0.8254942949220451,
+        "x86": 3.350983899821109
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 333.2017937219731,
+        "qbe": 275.0561797752809,
+        "x86": 1116.553846153846
+      },
+      "historicalOldQbeToHistoricalC": 0.917920734125111,
+      "historicalOldQbeMedianMs": 1.0568720379146919,
+      "historicalCMedianMs": 1.1513761467889907,
+      "currentCToHistoricalC": 1.004841620066818,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 0.8993089100540261,
+          "normalizedTimeReductionFraction": 0.10069108994597387
+        },
+        "x86": {
+          "normalizedRatio": 3.6506244768672755,
+          "normalizedTimeReductionFraction": -2.6506244768672755
+        }
+      }
+    },
+    {
+      "id": "variation-symreg-7-123",
+      "family": "symreg",
+      "sourceGroup": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b",
+      "catalogRepetitions": 88,
+      "medianMsPerInvocation": {
+        "c": 3.8484848484848486,
+        "qbe": 3.2025316455696204,
+        "x86": 13.2
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 0.8321538921558856,
+        "x86": 3.4299212598425193
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 338.6666666666667,
+        "qbe": 281.8227848101266,
+        "x86": 1161.6
+      },
+      "historicalOldQbeToHistoricalC": 0.9148657498362802,
+      "historicalOldQbeMedianMs": 3.5277777777777777,
+      "historicalCMedianMs": 3.8560606060606064,
+      "currentCToHistoricalC": 0.9980353634577602,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 0.9095912622204992,
+          "normalizedTimeReductionFraction": 0.09040873777950076
+        },
+        "x86": {
+          "normalizedRatio": 3.7490978981957963,
+          "normalizedTimeReductionFraction": -2.7490978981957963
+        }
+      }
+    },
+    {
+      "id": "variation-local-fold-128-0",
+      "family": "local-fold",
+      "sourceGroup": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+      "catalogRepetitions": 1895020,
+      "medianMsPerInvocation": {
+        "c": 0.00010649999275800049,
+        "qbe": 0.0002639397835693775,
+        "x86": 0.001345
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 2.478307995467444,
+        "x86": 12.62910884
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 201.8196162762661,
+        "qbe": 500.17116865964175,
+        "x86": 2548.8019
+      },
+      "historicalOldQbeToHistoricalC": 2.4795321637426904,
+      "historicalOldQbeMedianMs": 0.00026500000000000004,
+      "historicalCMedianMs": 0.00010687500000000001,
+      "currentCToHistoricalC": 0.9964911603087765,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 0.9995062906248418,
+          "normalizedTimeReductionFraction": 0.0004937093751582466
+        },
+        "x86": {
+          "normalizedRatio": 5.0933434236792445,
+          "normalizedTimeReductionFraction": -4.0933434236792445
+        }
+      }
+    },
+    {
+      "id": "variation-local-fold-8192-123",
+      "family": "local-fold",
+      "sourceGroup": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+      "catalogRepetitions": 30516,
+      "medianMsPerInvocation": {
+        "c": 0.0054935472619462855,
+        "qbe": 0.01100545870751893,
+        "x86": 0.0785
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 2.003342864409954,
+        "x86": 14.289492063492062
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 167.64108824555285,
+        "qbe": 335.84257791864763,
+        "x86": 2395.506
+      },
+      "historicalOldQbeToHistoricalC": 2.0021896693237626,
+      "historicalOldQbeMedianMs": 0.010999123575810694,
+      "historicalCMedianMs": 0.0054935472619462855,
+      "currentCToHistoricalC": 1.0,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 1.0005759669545098,
+          "normalizedTimeReductionFraction": -0.0005759669545097879
+        },
+        "x86": {
+          "normalizedRatio": 7.136932270916333,
+          "normalizedTimeReductionFraction": -6.136932270916333
+        }
+      }
+    },
+    {
+      "id": "variation-mandelbrot-grid-4-7",
+      "family": "mandelbrot",
+      "sourceGroup": "f908b2daf26ab7c61e2876a91a101009b6e80ad61fbd906a34a2eb03deb80377",
+      "catalogRepetitions": 24488,
+      "medianMsPerInvocation": {
+        "c": 0.009085972850678734,
+        "qbe": 0.014879702405951881,
+        "x86": 0.0969743987587277
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 1.6376564898980905,
+        "x86": 10.672979146254391
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 222.49730316742082,
+        "qbe": 364.37415251694966,
+        "x86": 2374.7090768037237
+      },
+      "historicalOldQbeToHistoricalC": 1.6418001811603278,
+      "historicalOldQbeMedianMs": 0.014909764551213098,
+      "historicalCMedianMs": 0.00908135150812065,
+      "currentCToHistoricalC": 1.0005088826871145,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 0.9974761293671507,
+          "normalizedTimeReductionFraction": 0.002523870632849312
+        },
+        "x86": {
+          "normalizedRatio": 6.500778394793061,
+          "normalizedTimeReductionFraction": -5.500778394793061
+        }
+      }
+    },
+    {
+      "id": "variation-mandelbrot-grid-5-31",
+      "family": "mandelbrot",
+      "sourceGroup": "f908b2daf26ab7c61e2876a91a101009b6e80ad61fbd906a34a2eb03deb80377",
+      "catalogRepetitions": 1416,
+      "medianMsPerInvocation": {
+        "c": 0.1440972222222222,
+        "qbe": 0.2171628721541156,
+        "x86": 1.366120218579235
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 1.5070580043466335,
+        "x86": 9.480545131345053
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 204.04166666666666,
+        "qbe": 307.50262697022765,
+        "x86": 1934.4262295081967
+      },
+      "historicalOldQbeToHistoricalC": 1.50599709557703,
+      "historicalOldQbeMedianMs": 0.21761658031088082,
+      "historicalCMedianMs": 0.1445,
+      "currentCToHistoricalC": 0.9972126105344098,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 1.000704456052883,
+          "normalizedTimeReductionFraction": -0.0007044560528830512
+        },
+        "x86": {
+          "normalizedRatio": 6.295194830845631,
+          "normalizedTimeReductionFraction": -5.295194830845631
+        }
+      }
+    },
+    {
+      "id": "variation-ray-active-64-2440",
+      "family": "raytrace",
+      "sourceGroup": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955",
+      "catalogRepetitions": 6324,
+      "medianMsPerInvocation": {
+        "c": 0.10877042132416165,
+        "qbe": 0.10325,
+        "x86": 0.6978021978021978
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 0.9492470355731225,
+        "x86": 6.415367241454198
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 687.8641444539983,
+        "qbe": 652.953,
+        "x86": 4412.9010989010985
+      },
+      "historicalOldQbeToHistoricalC": 1.0923016620140695,
+      "historicalOldQbeMedianMs": 0.11824165491302303,
+      "historicalCMedianMs": 0.10825,
+      "currentCToHistoricalC": 1.004807587290177,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 0.8690337738961489,
+          "normalizedTimeReductionFraction": 0.1309662261038511
+        },
+        "x86": {
+          "normalizedRatio": 5.873255955342091,
+          "normalizedTimeReductionFraction": -4.873255955342091
+        }
+      }
+    },
+    {
+      "id": "variation-ray-active-256-2240",
+      "family": "raytrace",
+      "sourceGroup": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955",
+      "catalogRepetitions": 1516,
+      "medianMsPerInvocation": {
+        "c": 0.44919786096256686,
+        "qbe": 0.43103448275862066,
+        "x86": 2.875
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 0.9595648604269293,
+        "x86": 6.400297619047619
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 680.9839572192514,
+        "qbe": 653.448275862069,
+        "x86": 4358.5
+      },
+      "historicalOldQbeToHistoricalC": 1.1466214350518718,
+      "historicalOldQbeMedianMs": 0.5148514851485149,
+      "historicalCMedianMs": 0.4490161001788909,
+      "currentCToHistoricalC": 1.000404797920617,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 0.8368628311780337,
+          "normalizedTimeReductionFraction": 0.16313716882196627
+        },
+        "x86": {
+          "normalizedRatio": 5.581875083957485,
+          "normalizedTimeReductionFraction": -4.581875083957485
+        }
+      }
+    },
+    {
+      "id": "coverage-closures-64",
+      "family": "closures",
+      "sourceGroup": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+      "catalogRepetitions": 76440,
+      "medianMsPerInvocation": {
+        "c": 0.0007725,
+        "qbe": 5.898498820300236e-05,
+        "x86": 0.0002727866514949469
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 0.07635597178382184,
+        "x86": 0.3531218789578601
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 59.0499,
+        "qbe": 4.508812498237501,
+        "x86": 20.85181164027374
+      },
+      "historicalOldQbeToHistoricalC": 0.07651605119825708,
+      "historicalOldQbeMedianMs": 5.875e-05,
+      "historicalCMedianMs": 0.0007678127540556907,
+      "currentCToHistoricalC": 1.0061046732026142,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 0.9979078975988911,
+          "normalizedTimeReductionFraction": 0.0020921024011089084
+        },
+        "x86": {
+          "normalizedRatio": 4.615003955743912,
+          "normalizedTimeReductionFraction": -3.615003955743912
+        }
+      }
+    },
+    {
+      "id": "coverage-closures-256",
+      "family": "closures",
+      "sourceGroup": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+      "catalogRepetitions": 19600,
+      "medianMsPerInvocation": {
+        "c": 0.0029489241671911788,
+        "qbe": 0.0002121479299029296,
+        "x86": 0.001050674182600502
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 0.07194078853000768,
+        "x86": 0.3562906751858793
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 57.7989136769471,
+        "qbe": 4.1580994260974204,
+        "x86": 20.59321397896984
+      },
+      "historicalOldQbeToHistoricalC": 0.06597143559351717,
+      "historicalOldQbeMedianMs": 0.00021187489406255297,
+      "historicalCMedianMs": 0.003211615635712698,
+      "currentCToHistoricalC": 0.9182058196502632,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 1.0904839023554174,
+          "normalizedTimeReductionFraction": -0.09048390235541737
+        },
+        "x86": {
+          "normalizedRatio": 5.400680945934894,
+          "normalizedTimeReductionFraction": -4.400680945934894
+        }
+      }
+    },
+    {
+      "id": "coverage-list-pipeline-128",
+      "family": "list-pipeline",
+      "sourceGroup": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0",
+      "catalogRepetitions": 99496,
+      "medianMsPerInvocation": {
+        "c": 0.0014306967093975684,
+        "qbe": 0.00030959975232019814,
+        "x86": 0.0016060371517027864
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 0.21639789222033162,
+        "x86": 1.1225559834963552
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 142.34859979822048,
+        "qbe": 30.803936956850436,
+        "x86": 159.79427244582044
+      },
+      "historicalOldQbeToHistoricalC": 0.2246954590818363,
+      "historicalOldQbeMedianMs": 0.00032125,
+      "historicalCMedianMs": 0.001429712915929456,
+      "currentCToHistoricalC": 1.000688105602986,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 0.9630719423729759,
+          "normalizedTimeReductionFraction": 0.03692805762702411
+        },
+        "x86": {
+          "normalizedRatio": 4.995899730610529,
+          "normalizedTimeReductionFraction": -3.995899730610529
+        }
+      }
+    },
+    {
+      "id": "coverage-list-pipeline-512",
+      "family": "list-pipeline",
+      "sourceGroup": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0",
+      "catalogRepetitions": 25008,
+      "medianMsPerInvocation": {
+        "c": 0.005624929688378895,
+        "qbe": 0.0012149959662133922,
+        "x86": 0.006375
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 0.21600198287341688,
+        "x86": 1.1333475
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 140.66824164697942,
+        "qbe": 30.384619123064514,
+        "x86": 159.426
+      },
+      "historicalOldQbeToHistoricalC": 0.2165559359370281,
+      "historicalOldQbeMedianMs": 0.0012251344449747347,
+      "historicalCMedianMs": 0.005657357946221291,
+      "currentCToHistoricalC": 0.9942679501366791,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 0.9974419862415025,
+          "normalizedTimeReductionFraction": 0.0025580137584975127
+        },
+        "x86": {
+          "normalizedRatio": 5.233509278312113,
+          "normalizedTimeReductionFraction": -4.233509278312113
+        }
+      }
+    },
+    {
+      "id": "coverage-unicode-text-16",
+      "family": "unicode-text",
+      "sourceGroup": "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550",
+      "catalogRepetitions": 8272,
+      "medianMsPerInvocation": {
+        "c": 0.008975,
+        "qbe": 0.0274,
+        "x86": 0.0517491202649555
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 3.052924791086351,
+        "x86": 5.76591869247415
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 74.2412,
+        "qbe": 226.6528,
+        "x86": 428.06872283171185
+      },
+      "historicalOldQbeToHistoricalC": 3.0346798838429137,
+      "historicalOldQbeMedianMs": 0.027691453940066592,
+      "historicalCMedianMs": 0.009125000000000001,
+      "currentCToHistoricalC": 0.9835616438356164,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 1.006012135691997,
+          "normalizedTimeReductionFraction": -0.0060121356919971
+        },
+        "x86": {
+          "normalizedRatio": 1.9000088685375869,
+          "normalizedTimeReductionFraction": -0.9000088685375869
+        }
+      }
+    },
+    {
+      "id": "coverage-unicode-text-64",
+      "family": "unicode-text",
+      "sourceGroup": "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550",
+      "catalogRepetitions": 2024,
+      "medianMsPerInvocation": {
+        "c": 0.039834289356277884,
+        "qbe": 0.11545538178472861,
+        "x86": 0.21795989537925023
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 2.898391904323827,
+        "x86": 5.471665213600698
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 80.62460165710644,
+        "qbe": 233.6816927322907,
+        "x86": 441.1508282476025
+      },
+      "historicalOldQbeToHistoricalC": 2.9350064344487823,
+      "historicalOldQbeMedianMs": 0.11732101616628177,
+      "historicalCMedianMs": 0.03997300134993251,
+      "currentCToHistoricalC": 0.9965298579298485,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 0.9875248893170376,
+          "normalizedTimeReductionFraction": 0.012475110682962365
+        },
+        "x86": {
+          "normalizedRatio": 1.8642770759813754,
+          "normalizedTimeReductionFraction": -0.8642770759813754
+        }
+      }
+    },
+    {
+      "id": "coverage-map-churn-32",
+      "family": "map-churn",
+      "sourceGroup": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e",
+      "catalogRepetitions": 2820,
+      "medianMsPerInvocation": {
+        "c": 0.04592863677950595,
+        "qbe": 0.159,
+        "x86": 0.28983833718244806
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 3.4618924302788843,
+        "x86": 6.310623556581986
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 129.51875571820676,
+        "qbe": 448.38,
+        "x86": 817.3441108545035
+      },
+      "historicalOldQbeToHistoricalC": 3.5686145764937622,
+      "historicalOldQbeMedianMs": 0.16447800393959291,
+      "historicalCMedianMs": 0.04609015639374425,
+      "currentCToHistoricalC": 0.996495572441576,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 0.9700942357524822,
+          "normalizedTimeReductionFraction": 0.029905764247517785
+        },
+        "x86": {
+          "normalizedRatio": 1.7683679257910516,
+          "normalizedTimeReductionFraction": -0.7683679257910516
+        }
+      }
+    },
+    {
+      "id": "coverage-map-churn-128",
+      "family": "map-churn",
+      "sourceGroup": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e",
+      "catalogRepetitions": 544,
+      "medianMsPerInvocation": {
+        "c": 0.23084025854108955,
+        "qbe": 0.775,
+        "x86": 1.4678362573099415
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 3.3573000000000004,
+        "x86": 6.358666666666667
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 125.57710064635272,
+        "qbe": 421.6,
+        "x86": 798.5029239766081
+      },
+      "historicalOldQbeToHistoricalC": 3.409761420937759,
+      "historicalOldQbeMedianMs": 0.8122977346278317,
+      "historicalCMedianMs": 0.23822714681440443,
+      "currentCToHistoricalC": 0.9689922480620154,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 0.9846143426294821,
+          "normalizedTimeReductionFraction": 0.015385657370517891
+        },
+        "x86": {
+          "normalizedRatio": 1.8648421052631579,
+          "normalizedTimeReductionFraction": -0.8648421052631579
+        }
+      }
+    },
+    {
+      "id": "coverage-numeric-recurrence-256",
+      "family": "numeric-recurrence",
+      "sourceGroup": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+      "catalogRepetitions": 247876,
+      "medianMsPerInvocation": {
+        "c": 0.0008149985819024674,
+        "qbe": 0.0013078338270243364,
+        "x86": 0.0044675141015957705
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 1.6047068744235526,
+        "x86": 5.4816219326016045
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 202.01858848765602,
+        "qbe": 324.18061770748443,
+        "x86": 1107.3895254471531
+      },
+      "historicalOldQbeToHistoricalC": 1.518514327427357,
+      "historicalOldQbeMedianMs": 0.0012299941452278687,
+      "historicalCMedianMs": 0.00080999838000324,
+      "currentCToHistoricalC": 1.0061731011106558,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 1.056761102242757,
+          "normalizedTimeReductionFraction": -0.05676110224275699
+        },
+        "x86": {
+          "normalizedRatio": 3.609858552924214,
+          "normalizedTimeReductionFraction": -2.609858552924214
+        }
+      }
+    },
+    {
+      "id": "coverage-numeric-recurrence-1024",
+      "family": "numeric-recurrence",
+      "sourceGroup": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+      "catalogRepetitions": 61936,
+      "medianMsPerInvocation": {
+        "c": 0.003275,
+        "qbe": 0.0051799870500323746,
+        "x86": 0.017762443294358186
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 1.5816754351243891,
+        "x86": 5.423646807437614
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 202.84040000000002,
+        "qbe": 320.8276779308051,
+        "x86": 1100.1346878793686
+      },
+      "historicalOldQbeToHistoricalC": 1.4999722505133655,
+      "historicalOldQbeMedianMs": 0.004874909814168438,
+      "historicalCMedianMs": 0.00325,
+      "currentCToHistoricalC": 1.0076923076923079,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 1.0544697974132926,
+          "normalizedTimeReductionFraction": -0.05446979741329261
+        },
+        "x86": {
+          "normalizedRatio": 3.6158314299357013,
+          "normalizedTimeReductionFraction": -2.6158314299357013
+        }
+      }
+    },
+    {
+      "id": "coverage-bst-32",
+      "family": "bst",
+      "sourceGroup": "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f",
+      "catalogRepetitions": 35620,
+      "medianMsPerInvocation": {
+        "c": 0.006675,
+        "qbe": 0.018150010933741526,
+        "x86": 0.0407979601019949
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 2.7191027616092174,
+        "x86": 6.112053947864404
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 237.76350000000002,
+        "qbe": 646.5033894598731,
+        "x86": 1453.2233388330583
+      },
+      "historicalOldQbeToHistoricalC": 3.5785124362757603,
+      "historicalOldQbeMedianMs": 0.021338340730624787,
+      "historicalCMedianMs": 0.00596290808278763,
+      "currentCToHistoricalC": 1.119420240480962,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 0.7598416409135216,
+          "normalizedTimeReductionFraction": 0.24015835908647842
+        },
+        "x86": {
+          "normalizedRatio": 1.707987342982482,
+          "normalizedTimeReductionFraction": -0.7079873429824819
+        }
+      }
+    },
+    {
+      "id": "coverage-bst-64",
+      "family": "bst",
+      "sourceGroup": "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f",
+      "catalogRepetitions": 27184,
+      "medianMsPerInvocation": {
+        "c": 0.008183573930406886,
+        "qbe": 0.02039898005099745,
+        "x86": 0.058961160505381374
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 2.4926737663116847,
+        "x86": 7.204817969115583
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 222.4622737241808,
+        "qbe": 554.5258737063147,
+        "x86": 1602.8001871782874
+      },
+      "historicalOldQbeToHistoricalC": 3.116646182152714,
+      "historicalOldQbeMedianMs": 0.022907083716651334,
+      "historicalCMedianMs": 0.0073499147409890045,
+      "currentCToHistoricalC": 1.1134243346754393,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 0.7997936309183347,
+          "normalizedTimeReductionFraction": 0.20020636908166534
+        },
+        "x86": {
+          "normalizedRatio": 2.311721494205386,
+          "normalizedTimeReductionFraction": -1.3117214942053859
+        }
+      }
+    },
+    {
+      "id": "coverage-expression-32",
+      "family": "expression",
+      "sourceGroup": "62f40333fa5e7dacd2fadbd622d22033a3434de004df93a6870e4cd33df9d4a5",
+      "catalogRepetitions": 148540,
+      "medianMsPerInvocation": {
+        "c": 0.002309192610583646,
+        "qbe": 0.0017449609101276432,
+        "x86": 0.01142959996400126
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 0.7556584505467503,
+        "x86": 4.949608755725422
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 343.0074703760948,
+        "qbe": 259.19649359036015,
+        "x86": 1697.752778652747
+      },
+      "historicalOldQbeToHistoricalC": 0.931852938995628,
+      "historicalOldQbeMedianMs": 0.0020295112904275396,
+      "historicalCMedianMs": 0.0021779308788948955,
+      "currentCToHistoricalC": 1.060269007139177,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 0.8109202846548039,
+          "normalizedTimeReductionFraction": 0.18907971534519608
+        },
+        "x86": {
+          "normalizedRatio": 5.311577126172099,
+          "normalizedTimeReductionFraction": -4.311577126172099
+        }
+      }
+    },
+    {
+      "id": "coverage-expression-128",
+      "family": "expression",
+      "sourceGroup": "62f40333fa5e7dacd2fadbd622d22033a3434de004df93a6870e4cd33df9d4a5",
+      "catalogRepetitions": 37732,
+      "medianMsPerInvocation": {
+        "c": 0.009119314053189944,
+        "qbe": 0.006275,
+        "x86": 0.04420866489832007
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 0.6881,
+        "x86": 4.847805946858014
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 344.08995785496296,
+        "qbe": 236.7683,
+        "x86": 1668.081343943413
+      },
+      "historicalOldQbeToHistoricalC": 0.8679497362869197,
+      "historicalOldQbeMedianMs": 0.007487499999999999,
+      "historicalCMedianMs": 0.008626651621592108,
+      "currentCToHistoricalC": 1.0571093459210437,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 0.792787843848752,
+          "normalizedTimeReductionFraction": 0.207212156151248
+        },
+        "x86": {
+          "normalizedRatio": 5.585353326561143,
+          "normalizedTimeReductionFraction": -4.585353326561143
+        }
+      }
+    },
+    {
+      "id": "coverage-record-aggregation-64",
+      "family": "record-aggregation",
+      "sourceGroup": "6b31a2cfc58fbb33376fee6bf55d2a6aa05210be40a36342a82da87364080937",
+      "catalogRepetitions": 1540,
+      "medianMsPerInvocation": {
+        "c": 0.111,
+        "qbe": 0.292485549132948,
+        "x86": 0.5295358649789029
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 2.635004947143676,
+        "x86": 4.770593378188314
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 170.94,
+        "qbe": 450.4277456647399,
+        "x86": 815.4852320675105
+      },
+      "historicalOldQbeToHistoricalC": 2.687814371257485,
+      "historicalOldQbeMedianMs": 0.2675,
+      "historicalCMedianMs": 0.09952324195470799,
+      "currentCToHistoricalC": 1.115317365269461,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 0.980352280024047,
+          "normalizedTimeReductionFraction": 0.01964771997595305
+        },
+        "x86": {
+          "normalizedRatio": 1.7748968936260312,
+          "normalizedTimeReductionFraction": -0.7748968936260312
+        }
+      }
+    },
+    {
+      "id": "coverage-record-aggregation-256",
+      "family": "record-aggregation",
+      "sourceGroup": "6b31a2cfc58fbb33376fee6bf55d2a6aa05210be40a36342a82da87364080937",
+      "catalogRepetitions": 392,
+      "medianMsPerInvocation": {
+        "c": 0.4370629370629371,
+        "qbe": 1.1306306306306306,
+        "x86": 2.042372881355932
+      },
+      "ratioToSameCampaignC": {
+        "c": 1.0,
+        "qbe": 2.586882882882883,
+        "x86": 4.6729491525423725
+      },
+      "projectedFixedCatalogBatchMs": {
+        "c": 171.32867132867133,
+        "qbe": 443.2072072072072,
+        "x86": 800.6101694915254
+      },
+      "historicalOldQbeToHistoricalC": 2.5566223908918406,
+      "historicalOldQbeMedianMs": 1.01,
+      "historicalCMedianMs": 0.3950524737631185,
+      "currentCToHistoricalC": 1.1063414763604518,
+      "crossCampaignVersusHistoricalOldQbe": {
+        "qbe": {
+          "normalizedRatio": 1.0118361210082676,
+          "normalizedTimeReductionFraction": -0.011836121008267586
+        },
+        "x86": {
+          "normalizedRatio": 1.8277822994862696,
+          "normalizedTimeReductionFraction": -0.8277822994862696
+        }
+      }
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 {
-  "status": "in-progress",
+  "status": "installed; fresh-worktree check pending",
   "upstream": "9a4223d577ba56a0cb53d1fd952d2b481c38930f",
   "merge": "6c6365e",
-  "installedSelection": "preserved; not yet promoted",
+  "installedSelection": "Phase182 snapshot08: JS B2, public C native N1, QBE native N2",
   "source": "selfhost/build/phase182/snapshot08/compiler.bend",
   "sourceSha256": "06dcc91b2df46978607b6dd50707aca3c8ddd59dd1a91fbf71a9e6b0ed61605c",
   "gates": {
@@ -25,18 +25,40 @@
     "nativeSnapshot07FocusedPartial": "native-controls03: 7/10; three early source-admission refusals",
     "jsB2Snapshot07": "js-b202",
     "profilerNormal": "profiler-rts-controls01/normal",
-    "profilerDrop": "profiler-rts-controls01/drop"
+    "profilerDrop": "profiler-rts-controls01/drop",
+    "nativeSnapshot08Reproduction": "native-chain04",
+    "nativeSnapshot08Qbe64": "qbe6402",
+    "nativeSnapshot08Current10": "native-controls04",
+    "nativeSessionBootstrap": "native-session-bootstrap01",
+    "nativeSessionNormal": "native-session-normal01",
+    "currentHostedQbe19": "qbe-hosted19",
+    "currentEarlyEntry4": "early-controls01",
+    "currentHostedC10": "c-current01",
+    "publicCConstruction": "cli-package01",
+    "publicCFocused16": "cli-focused01",
+    "publicCCurrent10": "cli-current01",
+    "publicCInterface": "cli-controls01",
+    "jsB2Snapshot08": "js-b203",
+    "jsB3Snapshot08FreshCheck": "js-b301: fresh check accepted; public-library emission failed, no B3 image",
+    "jsB3Snapshot08": "js-b302: fresh source check and byte-identical B2/B3 under explicit pinned-Bun7MiB cap",
+    "jsB2Focused18": "js-focused01",
+    "jsB2CFocused18": "js-c-focused01",
+    "jsPublic7": "js-public02: exact staged CLI/provider closure",
+    "release": "release-install01",
+    "operationalAssets": "operational-assets01",
+    "installedOrdinaryLive": "publication-live01: exact QBE plus execution oracle"
   },
   "pending": [
-    "snapshot08 corrected native-chain04 and focused replay",
-    "final snapshot08 JS B2/B3 and integration qualification",
-    "C/public CLI construction, execution and release qualification",
-    "documentation and publication"
+    "fresh-worktree JS/C/QBE smoke",
+    "final report/evidence commit and push"
   ],
   "compatibilityCommit": "10ab239",
   "retainedFailures": {
     "native-chain02": "4 GiB guard stop after 360.076s before IR; no candidate installed",
     "js-b201": "300s deadline before completed self-emission; js-b202 subsequently completed snapshot07 B2",
-    "native-controls03": "argv, files and open-errors refused early; snapshot08 adds exactly seven provider names, retaining trusted and filled admission"
+    "native-controls03": "argv, files and open-errors refused early; snapshot08 adds exactly seven provider names, retaining trusted and filled admission",
+    "early-api01": "Default2GiB guard stopped hosted acquisition; early-api02 passed using explicit4GiB cap",
+    "js-b301": "Snapshot08 fresh self-check accepted in 107.599s; public-library emission failed after 347.317s overall with RangeError stack overflow in $jd$index_95_remove$scc; no B3 image or equality established",
+    "js-public01": "Old installed selector correctly refused changed direct-runtime pin; exact staged candidate js-public02 passes seven controls without bypassing CLI checks"
   }
 }

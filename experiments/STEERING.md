@@ -1,4 +1,23 @@
-# Latest decision — Phase181 assembly backend self-reproduces; retain as experimental
+# Latest decision — Phase182 upstream2.0.40 installed
+
+[Migration report](../implementation/phase182/README.md) ·
+[Compatibility boundaries](../docs/self_hosted/upstream-2.0.40.md) ·
+[Workflow](../docs/self_hosted/workflow.md).
+
+The selected compiler now targets upstream `9a4223d577ba56a0cb53d1fd952d2b481c38930f`.
+Snapshot08 (3,179,190 bytes) is the canonical source. Actual native N1/N2/Q3 and
+JS B2/B3 reproduce complete products; QBE64, JS18, JS→C18, public C16/current10,
+public-command, native session and independent kernel controls pass. Full JS
+self-emission requires the recorded pinned-Bun stack allowance; ordinary finite
+JS/C qualification used its default. Native builds took about183s per generation,
+not a balanced speed comparison. No fresh broad runtime ratio, unrestricted
+foreign/GPU/parallel qualification or assembly promotion is claimed.
+
+Retain exact source/runtime identities and acquire fresh benchmark products before
+comparing performance. The earlier assembly and frontend hypotheses below remain
+research directions, not implicit capabilities of this migration.
+
+## Prior decision — Phase181 assembly backend self-reproduces; retain as experimental
 
 [Report](../implementation/phase181/README.md) · [Metrics](../implementation/phase181/metrics.json) ·
 [Backend guide](../docs/self_hosted/x86-backend.md) ·

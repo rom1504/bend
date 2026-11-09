@@ -16,6 +16,36 @@ import release
 from common import changed_inputs, fresh_output, pin, require, verify, write_json
 
 
+def installed_artifact(proposal, name, expected, root=ROOT):
+    """Verify the candidate pin, then return its audited future installed pin."""
+    row = proposal['bindings']['files'].get(name)
+    candidate = proposal['files'].get(name)
+    require(isinstance(row, dict) and row.get('file') == name
+            and name.startswith('selfhost/dist/') and '..' not in Path(name).parts
+            and release.same(row, expected) and release.same(candidate, row),
+            'Installed operational artifact differs: '+name)
+    verify(dict(candidate, file=str(root/candidate['file'])))
+    return copy.deepcopy(row)
+
+
+def portable_operational_rows(proposal, document, root=ROOT):
+    current = proposal['bindings']
+    require(document['preparedBase'] == current['components']['qbe']['preparedBase'],
+            'Prepared Base identity/stamp differs from audited release')
+    rows = {}
+    for key, name, provider in [
+        ('qbe-runtime', 'selfhost/dist/qbe/runtime.o', 'qbeRuntime'),
+        ('prepared-base', 'selfhost/dist/qbe/base.p130', None),
+        ('c-runtime-template', 'selfhost/dist/native/runtime-template.json', 'cRuntimeTemplate')]:
+        selected = assets.asset(document, key)
+        row = installed_artifact(proposal, name, selected, root)
+        if provider:
+            require(current['providers'][provider] == row, 'Release provider path differs: '+provider)
+        # Preserve provider policy attached to the asset, changing only its pin.
+        rows[key] = dict(document['assets'][key], **row)
+    return rows
+
+
 def prepare(a):
     proposal, audit = release.audit(a.promotion,ROOT)
     current = proposal['bindings']; qbe = current['components']['qbe']
@@ -47,6 +77,7 @@ def prepare(a):
     dirty = subprocess.check_output(['git','-C',str(upstream),'diff','--name-only','HEAD','--','bend2'],text=True,timeout=10).strip()
     require(revision == current['upstream'] and not dirty,'Actual reference checkout differs')
     common = {key:copy.deepcopy(value) for key,value in document.items() if not key.startswith('_')}
+    common['assets'].update(portable_operational_rows(proposal, document))
     # Candidate API rows are acquisition artifacts, not installed selectors.
     for key in common.get('images',{}): common['assets'].pop(key,None)
     common['assets']['qbe-n2'] = dict(qbe['image'],executable=True)

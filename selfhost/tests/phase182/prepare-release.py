@@ -25,6 +25,29 @@ ROLES = {'qbeN1', 'qbeN2', 'qbeQ3', 'qbeQualification', 'jsB1', 'jsB2', 'jsB3',
 PROVIDERS = {'base', 'jsLegacyRuntime', 'jsDirectRuntime', 'cRuntime', 'cRuntimeTemplate', 'qbeRuntime'}
 
 
+def installable_artifact(name, row, files, installed, inputs, root=ROOT):
+    """Bind original bytes to a prospective dist path without reading that path."""
+    relative = Path(name)
+    require(not relative.is_absolute() and '..' not in relative.parts
+            and name.startswith('selfhost/dist/') and name not in files,
+            'Invalid/duplicate installed artifact: '+name)
+    actual = pin(root/row['file'])
+    require(release.same(actual, row), 'Changed install artifact: '+row['file'])
+    inputs.append(actual)
+    files[name] = actual
+    installed[name] = dict(actual, file=name)
+    return installed[name]
+
+
+def relative_source_provider(row, root=ROOT):
+    """Relocate only maintained source pins; keep external/build identities."""
+    file = Path(row['file'])
+    if file.is_absolute() and file.is_relative_to(root/'selfhost/src'):
+        require('..' not in file.parts, 'Noncanonical source provider path')
+        return dict(row, file=str(file.relative_to(root)))
+    return dict(row)
+
+
 def identity(row):
     return {k: row[k] for k in ('bytes', 'sha256')}
 
@@ -94,6 +117,11 @@ def prepare(recipe_file, output):
     require(document.get('upstream') == UPSTREAM, 'Current provider asset map required')
     inputs.append(document['_manifest'])
     providers = {name: artifact(assets.asset(document, key)) for name, key in recipe['providers'].items()}
+    prepared_base, carrier, _, prepared_inputs = assets.prepared_base(document, 'cache')
+    require(release.same(prepared_base, providers['base'])
+            and document['preparedBase']['format'] == 'p130-word-pair-v1',
+            'Current Base and prepared P130 carrier required')
+    inputs += prepared_inputs
     for key in document.get('providers', {}).get('c', {}).get('effects', []):
         providers['cEffect:'+key] = artifact(assets.asset(document, key))
     require(providers['base']['sha256'] == 'ff90fb27ed19d5c7a6165170f28ad81562bf345b9a9e6134e5c2e326beff9de4',
@@ -205,8 +233,7 @@ def prepare(recipe_file, output):
     out = fresh_output(output, ROOT); (out/'evidence').mkdir()
     files, installed, gates = {}, {}, {}
     def installable(name, row):
-        value = artifact(row); files[name] = value; installed[name] = dict(value, file=name)
-        return installed[name]
+        return installable_artifact(name, row, files, installed, inputs)
     def gate(name, role, receipt, claims, bound):
         original, report = read(receipt['file']); completed(report, name)
         require(release.same(original, receipt), 'Gate changed before copy: '+name)
@@ -333,8 +360,13 @@ def prepare(recipe_file, output):
     if 'nativeSession' in recipe:
         components['qbe']['sessionQualification'] = components['qbe']['qualificationReceipts']['qbe-session-bootstrap']
     components['qbe']['runtimeArgumentConvention'] = qb['runtimeArgumentConvention']
+    components['qbe']['preparedBase'] = copy.deepcopy(document['preparedBase'])
     components['js'].update(exports=b2['imageBinding']['exports'], preparationModes=['live'])
+    providers['qbeRuntime'] = installable('selfhost/dist/qbe/runtime.o', providers['qbeRuntime'])
+    installable('selfhost/dist/qbe/base.p130', carrier)
+    providers['cRuntimeTemplate'] = installable('selfhost/dist/native/runtime-template.json', providers['cRuntimeTemplate'])
     providers['base'] = installable('selfhost/dist/base.bend', providers['base'])
+    providers = {name:relative_source_provider(row) for name,row in providers.items()}
     package_assets = {name:installable('selfhost/dist/native/assets/'+name,row) for name,row in pkg['assets'].items()}
     components['nativeCli'].update(preparationModes=['cache','live'], packageAssets=package_assets,
         baseIdentity=pkg['baseIdentity'], cacheStamp=pkg['cacheStamp'], targetRuntime=providers['cRuntime'],
@@ -342,7 +374,8 @@ def prepare(recipe_file, output):
         targetRuntimeArgumentConvention=pkg['imageBinding']['targetRuntimeArgumentConvention'])
     cli_binding = copy.deepcopy(pkg['imageBinding'])
     cli_binding.update(image=components['nativeCli']['image'], packageAssets=package_assets,
-                       sourceIdentity=identity(pkg['source']))
+                       sourceIdentity=identity(pkg['source']), linkedRuntime=providers['cRuntime'],
+                       targetRuntime=providers['cRuntime'])
     write_json(out/'native-BUILD.json',dict(kind='bend-public-cli-package',version=1,complete=True,operationalOnly=True,
         host='native',stage='N1',targets=['c'],protocol='native-public-cli-v1',image=components['nativeCli']['image'],
         source=identity(pkg['source']),canonicalSource=identity(canonical),assets=package_assets,

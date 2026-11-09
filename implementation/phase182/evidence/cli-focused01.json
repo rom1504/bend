@@ -1,0 +1,2135 @@
+{
+  "kind": "bend-finite-qualification",
+  "version": 1,
+  "complete": true,
+  "passed": true,
+  "fullConformance": false,
+  "upstream": "9a4223d577ba56a0cb53d1fd952d2b481c38930f",
+  "imageUpstream": null,
+  "catalog": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/qualification-catalog.json",
+    "bytes": 77408,
+    "sha256": "a5813cf2fb551136b1a8d88d8107d3ed10846b6aedaa65af8e70d17673752d47"
+  },
+  "host": "native",
+  "target": "c",
+  "stage": "N1",
+  "mode": "cache",
+  "image": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-package01/bend",
+    "bytes": 24097056,
+    "sha256": "9cdee58d7423be70fe120ddaa0eac3675674292d2a0832447907051d4cc9e607"
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/qualification-catalog.json",
+      "bytes": 77408,
+      "sha256": "a5813cf2fb551136b1a8d88d8107d3ed10846b6aedaa65af8e70d17673752d47"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/nt-reverse.bend",
+      "bytes": 1084,
+      "sha256": "dfb8a3f7b5c432a2a4686bb014a0c9cc74d0d56c2c16264a3427026b090169ff"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/nt-reverse.stdout",
+      "bytes": 37,
+      "sha256": "b1ee553a36555bd2c18ac95f178607db1be2518c17c87f19cd9750fc9f24dcdf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/string-reverse-heldout.bend",
+      "bytes": 463,
+      "sha256": "4a2d2e5de64d79f5c51a0e86822f7275a156992e4b653ca9807a6e8ae28f4d45"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/string-reverse-heldout.stdout",
+      "bytes": 27,
+      "sha256": "7ea8681162e0dd6de357fe6bd2d3a79f4e23c5c4c7a4fd6c6f962caf242827c4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/higher-order-capture.bend",
+      "bytes": 229,
+      "sha256": "18c8832cf958215dab9cbedb66b191e0a31def3911296fc62b99c75a7b0ae715"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/higher-order-capture.stdout",
+      "bytes": 12,
+      "sha256": "8ba5dba048674b02237222cf7bdcb72e35450f4afff4bcc194ddbc201b895e05"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/non-tail-list.bend",
+      "bytes": 422,
+      "sha256": "b8fb74a95b2c646f0f92545a4acde8e0049c01d99d647459babef56dc3700452"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/non-tail-list.stdout",
+      "bytes": 8,
+      "sha256": "1fd7509719d8e7fe86eeff362247da6f733d4f112c93b2a00913c14e7b167eb7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/arrays-io.bend",
+      "bytes": 878,
+      "sha256": "733e76ff92db5e4eece60e2bd2b047d67218a56a0d2b5fdac7447ef1238d1cc1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/arrays-io.stdout",
+      "bytes": 25,
+      "sha256": "37ad9e1956e1ce46a45715596e7bea089dd734d9d1183dc42163862f35c64154"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/lexer-scan.bend",
+      "bytes": 2851,
+      "sha256": "c1ad42a85efe49274d0e0c5f607c6abde3d34de282299f7802eb3987d179d01f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/lexer-scan.stdout",
+      "bytes": 59,
+      "sha256": "f745e71b95ba4ffc77e479c92034a2003d06f0639b51e2553eb216881693e245"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-char.bend",
+      "bytes": 126,
+      "sha256": "9fa073f6ee9a5ce3d39aad32e924f3b1d6542ebf7fc34cab875b22ab37ba1142"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-char.stdout",
+      "bytes": 5,
+      "sha256": "3e13534234d289337a67a0e44265a31f179902062faa91570650da282a32ac70"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-string.bend",
+      "bytes": 314,
+      "sha256": "7ff5a2331d30623f4df2a317d793a749b3f88740de88d990170927fd1a0758c7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-string.stdout",
+      "bytes": 19,
+      "sha256": "9dde57507de7eca9ddb42f3c439da4bf2125c34ca97223d6336ac00a2750d344"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-aggregate.bend",
+      "bytes": 440,
+      "sha256": "ffa6a0da942acbde8d606d276de926a4bba37279d19b4178ac6ffea8f1b90ba3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-aggregate.stdout",
+      "bytes": 54,
+      "sha256": "624521b7b1806e2de2c25bc8ae9b6bef6f37495b8d3c83b36e090fccf7dc7924"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/u32-wide-wrap.bend",
+      "bytes": 580,
+      "sha256": "437e7ee60da1a86bb62ac4bcec557ac0c3708fd9912fe840731ed33d4dc455f2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/u32-wide-wrap.stdout",
+      "bytes": 5,
+      "sha256": "26ea373847580972e5a298c73201fe5ad4a32ee3e1c23f4d754f8433900609c3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/u32-divmod.bend",
+      "bytes": 882,
+      "sha256": "a900f26ba8322d2b4c67aa1b2e44087694f44982610f4eef73ce08a62980330a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/u32-divmod.stdout",
+      "bytes": 2,
+      "sha256": "2e6d31a5983a91251bfae5aefa1c0a19d8ba3cf601d0e8a706b4cfa9661a6b8a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/nat-native.bend",
+      "bytes": 1432,
+      "sha256": "aac3f56702e9fbbb7ac9867d30597f98fc989ce8c8dabb229cc49416c2b6890f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/nat-native.stdout",
+      "bytes": 11,
+      "sha256": "1618aedff51fc552a93a684de0e5f98a546e978ac8427b544dc927c1e908df0a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/f32-literal.bend",
+      "bytes": 413,
+      "sha256": "22b50936b38419fb9bfbfc480a2ac293a82cdf49109f88968b3cb5a22525e115"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/f32-literal.stdout",
+      "bytes": 5,
+      "sha256": "b6daa603a2f9d854c9902d488a848de7099157f30f45ccddec68d70a8869f0d7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/f32-arithmetic.bend",
+      "bytes": 1380,
+      "sha256": "7516af85c298776c712a1577a053a96941d623853a47d1356f6282378a46ff57"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/f32-arithmetic.stdout",
+      "bytes": 2,
+      "sha256": "aa67a169b0bba217aa0aa88a65346920c84c42447c36ba5f7ea65f422c1fe5d8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-u32.bend",
+      "bytes": 55,
+      "sha256": "adc0caa2c7abc817f445fac6c5a04eb144553d6b7db7b10ee06dc2e689cb57d9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-u32.stdout",
+      "bytes": 3,
+      "sha256": "084c799cd551dd1d8d5c5f9a5d593b2e931f5e36122ee5c793c1d08a19839cc0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-f32.bend",
+      "bytes": 59,
+      "sha256": "98f704e293612773d2abcae11a9be2ec77e2d7e39e9a0a91cdb406f181dd9422"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-f32.stdout",
+      "bytes": 4,
+      "sha256": "5ca797740e932dd836206d2b4bea825c83bc47e25e45006d0a2b62fe71be40b6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/qualification.py",
+      "bytes": 14977,
+      "sha256": "36607481dd4601fcfe0f3a56155dd2b0cff813d15b45f59085c73b465df31a72"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/request.py",
+      "bytes": 19022,
+      "sha256": "1b5e1e21125c65056f92f7caa9d4300c8f57f74a9ace05d13823dfe5ca3fac33"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/native.py",
+      "bytes": 14695,
+      "sha256": "4ccec1d51d0c5d28b9df2f3471c3e2b148e49660628249c8c8cb15a0eb9682ff"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/assets.py",
+      "bytes": 9443,
+      "sha256": "91acb7360ca47758d757255fee8a43f087313e2f6c6ddd64c931590d3519d468"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/common.py",
+      "bytes": 4809,
+      "sha256": "d9a16fef18cf936499e51f8c7f36a653f2921ef9a50f846257c2e8bc460ec6d1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/assets-candidate12.json",
+      "bytes": 32400,
+      "sha256": "53cb153c5ff56aff318d24b963dc92926780428e6228534905dafcd84c11337c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/assets-candidate12.json",
+      "bytes": 32400,
+      "sha256": "53cb153c5ff56aff318d24b963dc92926780428e6228534905dafcd84c11337c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/request.py",
+      "bytes": 19022,
+      "sha256": "1b5e1e21125c65056f92f7caa9d4300c8f57f74a9ace05d13823dfe5ca3fac33"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/assets.py",
+      "bytes": 9443,
+      "sha256": "91acb7360ca47758d757255fee8a43f087313e2f6c6ddd64c931590d3519d468"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/common.py",
+      "bytes": 4809,
+      "sha256": "d9a16fef18cf936499e51f8c7f36a653f2921ef9a50f846257c2e8bc460ec6d1"
+    },
+    {
+      "file": "/usr/bin/python3.9",
+      "bytes": 5451288,
+      "sha256": "ca7655083b581ffe36c72dcb445857704db533ca39b03f79c97d8d0ef3bef9af"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/nt-reverse.bend",
+      "bytes": 1084,
+      "sha256": "dfb8a3f7b5c432a2a4686bb014a0c9cc74d0d56c2c16264a3427026b090169ff"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-package01/bend",
+      "bytes": 24097056,
+      "sha256": "9cdee58d7423be70fe120ddaa0eac3675674292d2a0832447907051d4cc9e607"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-package01/BUILD.json",
+      "bytes": 175208,
+      "sha256": "9a7afc683695cdc4ceb8bf55f6aabde6fe519d0859e725d690cb80ffdf29f4d3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-package01/assets/base.bend",
+      "bytes": 87698,
+      "sha256": "ff90fb27ed19d5c7a6165170f28ad81562bf345b9a9e6134e5c2e326beff9de4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-package01/assets/base.p88",
+      "bytes": 1193037,
+      "sha256": "2d0864418573b67cb384cbd07248d2b784f31ccf250ad6940db37a6cd33a437c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-package01/assets/effs/args.c",
+      "bytes": 703,
+      "sha256": "2fca06f860ca0fe1a7cf3ff6bb89498598a75c0a44bcb6d8261ca644783808a1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-package01/assets/effs/file_close.c",
+      "bytes": 243,
+      "sha256": "befd465a31b88936d772222d26b1019ea7330e59e6327d8ba90584c85e8b2fb3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-package01/assets/effs/file_open.c",
+      "bytes": 1672,
+      "sha256": "47cfeb9c7dcb62f09b6ff26268697e026e0b0609e94343e48dc036f790872916"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-package01/assets/effs/file_read.c",
+      "bytes": 3427,
+      "sha256": "dfa1245a9e97468d94d23fdd8ed716189f34517d0da3758fd2ace45182824f49"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-package01/assets/effs/file_size.c",
+      "bytes": 771,
+      "sha256": "09906f3839f0f0fba1eea944c948e35f8e03627dc2b78e8debb43e0556f5d5d8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-package01/assets/effs/file_write.c",
+      "bytes": 2372,
+      "sha256": "517608227d0c3c9aef64050e585e031277d8b3358635c2ac3331b1d198b1ffe4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-package01/assets/effs/now.c",
+      "bytes": 198,
+      "sha256": "da5fde65701c4fadc7560625c9615b4d60b2eefbd7b6bbe1aedda61887b825b9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-package01/assets/effs/print.c",
+      "bytes": 397,
+      "sha256": "709500d2ace6e2eaeec0f5f1e4373d4ec5e402b3c1e289bd70dfef7e2a635b26"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-package01/assets/effs/print_err.c",
+      "bytes": 236,
+      "sha256": "72781d2adc88a4791d5530c9deff20824c38d5aa1ba43fb05aaa6a697e19f4b6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-package01/assets/runtime.c.part0",
+      "bytes": 8749,
+      "sha256": "211c9aedb06a8ad23d143d72f2d320f03284783b122fb6fb398b2ae0fe9c01d3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-package01/assets/runtime.c.part1",
+      "bytes": 23532,
+      "sha256": "b5dc815a533624165b326c4d5f0312f7512096b8a59301cbb49f5d853ea19125"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-package01/assets/runtime.c.part2",
+      "bytes": 1093,
+      "sha256": "9808a39ea010404b4213afbd56b17d67e193da9020657d6577606b9a5bf0b41d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-package01/assets/runtime.c.part3",
+      "bytes": 48898,
+      "sha256": "ecd92dff99467518bcb3a957ff1802fc4f73857ac3b25c9e57bf3a749892ccd5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-package01/assets/runtime.c.part4",
+      "bytes": 2801,
+      "sha256": "6421951441f72c5be78693d210e254db3e6ee44135422549ac3c8f8e5db0f8f8"
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+      "bytes": 119320,
+      "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+    }
+  ],
+  "selected": [
+    "focused/nt-reverse",
+    "focused/string-reverse-heldout",
+    "focused/higher-order-capture",
+    "focused/non-tail-list",
+    "focused/arrays-io",
+    "focused/lexer-scan",
+    "focused/pure-char",
+    "focused/pure-string",
+    "focused/pure-aggregate",
+    "focused/u32-wide-wrap",
+    "focused/u32-divmod",
+    "focused/nat-native",
+    "focused/f32-literal",
+    "focused/f32-arithmetic",
+    "focused/pure-u32",
+    "focused/pure-f32"
+  ],
+  "rows": [
+    {
+      "id": "focused/nt-reverse",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/nt-reverse.bend",
+        "bytes": 1084,
+        "sha256": "dfb8a3f7b5c432a2a4686bb014a0c9cc74d0d56c2c16264a3427026b090169ff"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "z\n|bc|a|tail\nc|b|head/b|c/head\ncd|ab\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/00-nt-reverse/emission/report.json",
+        "bytes": 34502,
+        "sha256": "aa892c625ae0c41e08fc7b350d0bc9f082e891830056b03c3d3008222d4b453d"
+      },
+      "toolchain": {
+        "compiler": "clang",
+        "includeFlags": [
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+        ],
+        "flags": [
+          "-std=c11",
+          "-O3"
+        ],
+        "libraries": [
+          "-lpthread",
+          "-lm"
+        ],
+        "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+      },
+      "compiler": {
+        "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "bytes": 119320,
+        "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+      },
+      "buildProcess": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/00-nt-reverse/emission/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/00-nt-reverse/program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 90.0,
+        "complete": true,
+        "started": 1794183653.0636358,
+        "exitCode": 0,
+        "userSeconds": 0.824631,
+        "systemSeconds": 0.029231,
+        "peakRssKiB": 92916,
+        "timedOut": false,
+        "seconds": 0.8818591320887208,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/00-nt-reverse/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/00-nt-reverse/build.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/00-nt-reverse/program",
+        "bytes": 59744,
+        "sha256": "74f9b81ec8b7fba38f4ece69a30a529f3de49f5780081fd6efc812d94f1ae736"
+      },
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/00-nt-reverse/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 20.0,
+        "complete": true,
+        "started": 1794183653.9464407,
+        "exitCode": 0,
+        "userSeconds": 0.001113,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 11484,
+        "timedOut": false,
+        "seconds": 0.0020487788133323193,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/00-nt-reverse/execute.stdout",
+          "bytes": 37,
+          "sha256": "b1ee553a36555bd2c18ac95f178607db1be2518c17c87f19cd9750fc9f24dcdf"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/00-nt-reverse/execute.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "focused/string-reverse-heldout",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/string-reverse-heldout.bend",
+        "bytes": 463,
+        "sha256": "4a2d2e5de64d79f5c51a0e86822f7275a156992e4b653ca9807a6e8ae28f4d45"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "tail\n\u00e9\ud83d\ude42a!\n\u0301e\ncba!/abc\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/01-string-reverse-heldout/emission/report.json",
+        "bytes": 34544,
+        "sha256": "41f99754d3fcb835be738c2fb30458b8c71d74a8f4cb7ad94a12a8c4bbb3997d"
+      },
+      "toolchain": {
+        "compiler": "clang",
+        "includeFlags": [
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+        ],
+        "flags": [
+          "-std=c11",
+          "-O3"
+        ],
+        "libraries": [
+          "-lpthread",
+          "-lm"
+        ],
+        "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+      },
+      "compiler": {
+        "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "bytes": 119320,
+        "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+      },
+      "buildProcess": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/01-string-reverse-heldout/emission/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/01-string-reverse-heldout/program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 90.0,
+        "complete": true,
+        "started": 1794183654.4716678,
+        "exitCode": 0,
+        "userSeconds": 0.734571,
+        "systemSeconds": 0.023264,
+        "peakRssKiB": 92064,
+        "timedOut": false,
+        "seconds": 0.7904826863668859,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/01-string-reverse-heldout/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/01-string-reverse-heldout/build.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/01-string-reverse-heldout/program",
+        "bytes": 53544,
+        "sha256": "ac1042610636d9ac9793e91c2747f7d3aabacec28f69b0fe77efd8defe001920"
+      },
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/01-string-reverse-heldout/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 20.0,
+        "complete": true,
+        "started": 1794183655.2630901,
+        "exitCode": 0,
+        "userSeconds": 0.001107,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 11508,
+        "timedOut": false,
+        "seconds": 0.0020108409225940704,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/01-string-reverse-heldout/execute.stdout",
+          "bytes": 27,
+          "sha256": "7ea8681162e0dd6de357fe6bd2d3a79f4e23c5c4c7a4fd6c6f962caf242827c4"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/01-string-reverse-heldout/execute.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "focused/higher-order-capture",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/higher-order-capture.bend",
+        "bytes": 229,
+        "sha256": "18c8832cf958215dab9cbedb66b191e0a31def3911296fc62b99c75a7b0ae715"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "captured=42\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/02-higher-order-capture/emission/report.json",
+        "bytes": 34530,
+        "sha256": "c2ac0e0494c057f9c0fc20051570006de560ff896f58381b1b2f81757e7f8e9f"
+      },
+      "toolchain": {
+        "compiler": "clang",
+        "includeFlags": [
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+        ],
+        "flags": [
+          "-std=c11",
+          "-O3"
+        ],
+        "libraries": [
+          "-lpthread",
+          "-lm"
+        ],
+        "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+      },
+      "compiler": {
+        "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "bytes": 119320,
+        "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+      },
+      "buildProcess": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/02-higher-order-capture/emission/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/02-higher-order-capture/program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 90.0,
+        "complete": true,
+        "started": 1794183655.777699,
+        "exitCode": 0,
+        "userSeconds": 0.579994,
+        "systemSeconds": 0.019993999999999998,
+        "peakRssKiB": 92092,
+        "timedOut": false,
+        "seconds": 0.6175940032117069,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/02-higher-order-capture/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/02-higher-order-capture/build.stderr",
+          "bytes": 848,
+          "sha256": "7befc325dc2b52a5092a212edf5cf762e080a0e544525653b0fc94b736adb848"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/02-higher-order-capture/program",
+        "bytes": 40264,
+        "sha256": "8e071975bc87512b8e0b378b97b2923f79b54da2f28098c635cecda6c7d0ff8f"
+      },
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/02-higher-order-capture/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 20.0,
+        "complete": true,
+        "started": 1794183656.3961751,
+        "exitCode": 0,
+        "userSeconds": 0.001132,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 11512,
+        "timedOut": false,
+        "seconds": 0.0020470749586820602,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/02-higher-order-capture/execute.stdout",
+          "bytes": 12,
+          "sha256": "8ba5dba048674b02237222cf7bdcb72e35450f4afff4bcc194ddbc201b895e05"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/02-higher-order-capture/execute.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "focused/non-tail-list",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/non-tail-list.bend",
+        "bytes": 422,
+        "sha256": "b8fb74a95b2c646f0f92545a4acde8e0049c01d99d647459babef56dc3700452"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "list=14\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/03-non-tail-list/emission/report.json",
+        "bytes": 34446,
+        "sha256": "32d191c0b934215c91307456ef40b2a15860db0b7f52843e7417e84c3a219e4d"
+      },
+      "toolchain": {
+        "compiler": "clang",
+        "includeFlags": [
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+        ],
+        "flags": [
+          "-std=c11",
+          "-O3"
+        ],
+        "libraries": [
+          "-lpthread",
+          "-lm"
+        ],
+        "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+      },
+      "compiler": {
+        "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "bytes": 119320,
+        "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+      },
+      "buildProcess": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/03-non-tail-list/emission/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/03-non-tail-list/program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 90.0,
+        "complete": true,
+        "started": 1794183656.9445264,
+        "exitCode": 0,
+        "userSeconds": 0.597672,
+        "systemSeconds": 0.03095,
+        "peakRssKiB": 92152,
+        "timedOut": false,
+        "seconds": 0.6421364168636501,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/03-non-tail-list/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/03-non-tail-list/build.stderr",
+          "bytes": 827,
+          "sha256": "9f75c5598cf477c969ad4faf588a84b040da8e61d27b008b8991af05e411ed60"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/03-non-tail-list/program",
+        "bytes": 42712,
+        "sha256": "0dfe04e98cd2a7e8178e05390bd10fe9ad316af12780dd07018a90f1a223414f"
+      },
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/03-non-tail-list/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 20.0,
+        "complete": true,
+        "started": 1794183657.5875485,
+        "exitCode": 0,
+        "userSeconds": 0.001088,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 11524,
+        "timedOut": false,
+        "seconds": 0.0019999463111162186,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/03-non-tail-list/execute.stdout",
+          "bytes": 8,
+          "sha256": "1fd7509719d8e7fe86eeff362247da6f733d4f112c93b2a00913c14e7b167eb7"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/03-non-tail-list/execute.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "focused/arrays-io",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/arrays-io.bend",
+        "bytes": 878,
+        "sha256": "733e76ff92db5e4eece60e2bd2b047d67218a56a0d2b5fdac7447ef1238d1cc1"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "arrays=seed/changed/seed\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/04-arrays-io/emission/report.json",
+        "bytes": 34409,
+        "sha256": "dbc00226caf1112165cf9184d446782728e5c3f999bbe3e75265196938cd35e6"
+      },
+      "toolchain": {
+        "compiler": "clang",
+        "includeFlags": [
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+        ],
+        "flags": [
+          "-std=c11",
+          "-O3"
+        ],
+        "libraries": [
+          "-lpthread",
+          "-lm"
+        ],
+        "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+      },
+      "compiler": {
+        "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "bytes": 119320,
+        "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+      },
+      "buildProcess": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/04-arrays-io/emission/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/04-arrays-io/program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 90.0,
+        "complete": true,
+        "started": 1794183658.1382427,
+        "exitCode": 0,
+        "userSeconds": 1.068612,
+        "systemSeconds": 0.033158,
+        "peakRssKiB": 93268,
+        "timedOut": false,
+        "seconds": 1.1912357052788138,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/04-arrays-io/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/04-arrays-io/build.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/04-arrays-io/program",
+        "bytes": 73872,
+        "sha256": "1964415e93ecbadadad12522ed6dc14cd0fa7368708953dd6e1321eac5c03831"
+      },
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/04-arrays-io/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 20.0,
+        "complete": true,
+        "started": 1794183659.3305385,
+        "exitCode": 0,
+        "userSeconds": 0.0010249999999999999,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 11552,
+        "timedOut": false,
+        "seconds": 0.0019840868189930916,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/04-arrays-io/execute.stdout",
+          "bytes": 25,
+          "sha256": "37ad9e1956e1ce46a45715596e7bea089dd734d9d1183dc42163862f35c64154"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/04-arrays-io/execute.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "focused/lexer-scan",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/lexer-scan.bend",
+        "bytes": 2851,
+        "sha256": "c1ad42a85efe49274d0e0c5f607c6abde3d34de282299f7802eb3987d179d01f"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "abc_9.rest/+/10\n1e-3/+/4\n1e/+x/2\nx/-y/1\n/\u03bba/0\nabc/!/3\n//0\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/05-lexer-scan/emission/report.json",
+        "bytes": 34660,
+        "sha256": "e88078e8b3d6c3b26fedd7ef4c5f14aa2cabc061a685a7e4ed9571cba0a42724"
+      },
+      "toolchain": {
+        "compiler": "clang",
+        "includeFlags": [
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+        ],
+        "flags": [
+          "-std=c11",
+          "-O3"
+        ],
+        "libraries": [
+          "-lpthread",
+          "-lm"
+        ],
+        "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+      },
+      "compiler": {
+        "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "bytes": 119320,
+        "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+      },
+      "buildProcess": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/05-lexer-scan/emission/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/05-lexer-scan/program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 90.0,
+        "complete": true,
+        "started": 1794183659.9589202,
+        "exitCode": 0,
+        "userSeconds": 1.520814,
+        "systemSeconds": 0.038435,
+        "peakRssKiB": 97704,
+        "timedOut": false,
+        "seconds": 1.5603757030330598,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/05-lexer-scan/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/05-lexer-scan/build.stderr",
+          "bytes": 818,
+          "sha256": "cb4be4662c16d518fc05571d5a8b49fc66fa2414526698c289304de5faf311a0"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/05-lexer-scan/program",
+        "bytes": 94824,
+        "sha256": "7abcf51cbbabba0c090f82d654ac6607d0e69257873bbc0883f3cca547b6e49a"
+      },
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/05-lexer-scan/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 20.0,
+        "complete": true,
+        "started": 1794183661.520355,
+        "exitCode": 0,
+        "userSeconds": 0.001142,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 11636,
+        "timedOut": false,
+        "seconds": 0.0020958296954631805,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/05-lexer-scan/execute.stdout",
+          "bytes": 59,
+          "sha256": "f745e71b95ba4ffc77e479c92034a2003d06f0639b51e2553eb216881693e245"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/05-lexer-scan/execute.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "focused/pure-char",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-char.bend",
+        "bytes": 126,
+        "sha256": "9fa073f6ee9a5ce3d39aad32e924f3b1d6542ebf7fc34cab875b22ab37ba1142"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "'\u00e9'\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/06-pure-char/emission/report.json",
+        "bytes": 34381,
+        "sha256": "88e24c94546b197591b1cc62e1e3ed8fe15cc59015110ff2747139e2c772cfb7"
+      },
+      "toolchain": {
+        "compiler": "clang",
+        "includeFlags": [
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+        ],
+        "flags": [
+          "-std=c11",
+          "-O3"
+        ],
+        "libraries": [
+          "-lpthread",
+          "-lm"
+        ],
+        "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+      },
+      "compiler": {
+        "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "bytes": 119320,
+        "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+      },
+      "buildProcess": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/06-pure-char/emission/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/06-pure-char/program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 90.0,
+        "complete": true,
+        "started": 1794183662.0260317,
+        "exitCode": 0,
+        "userSeconds": 0.37181,
+        "systemSeconds": 0.015222999999999999,
+        "peakRssKiB": 88652,
+        "timedOut": false,
+        "seconds": 0.4278112221509218,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/06-pure-char/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/06-pure-char/build.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/06-pure-char/program",
+        "bytes": 24416,
+        "sha256": "e632497e50cafd4628a0856ed7ad9e3963b75647a51b1dd39c66cfd4e216cb10"
+      },
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/06-pure-char/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 20.0,
+        "complete": true,
+        "started": 1794183662.4547298,
+        "exitCode": 0,
+        "userSeconds": 0.001073,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 11536,
+        "timedOut": false,
+        "seconds": 0.0020182402804493904,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/06-pure-char/execute.stdout",
+          "bytes": 5,
+          "sha256": "3e13534234d289337a67a0e44265a31f179902062faa91570650da282a32ac70"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/06-pure-char/execute.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "focused/pure-string",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-string.bend",
+        "bytes": 314,
+        "sha256": "7ff5a2331d30623f4df2a317d793a749b3f88740de88d990170927fd1a0758c7"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "\"Ol\u00e1 \u65e5\u672c \ud83d\ude42\"\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/07-pure-string/emission/report.json",
+        "bytes": 34404,
+        "sha256": "d20d9fff463169f8a28b1fb28cfa9350bd67770326e96d7aa63e836bf2e951f8"
+      },
+      "toolchain": {
+        "compiler": "clang",
+        "includeFlags": [
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+        ],
+        "flags": [
+          "-std=c11",
+          "-O3"
+        ],
+        "libraries": [
+          "-lpthread",
+          "-lm"
+        ],
+        "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+      },
+      "compiler": {
+        "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "bytes": 119320,
+        "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+      },
+      "buildProcess": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/07-pure-string/emission/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/07-pure-string/program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 90.0,
+        "complete": true,
+        "started": 1794183662.9518585,
+        "exitCode": 0,
+        "userSeconds": 0.35148199999999996,
+        "systemSeconds": 0.035241999999999996,
+        "peakRssKiB": 89640,
+        "timedOut": false,
+        "seconds": 0.38785604480654,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/07-pure-string/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/07-pure-string/build.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/07-pure-string/program",
+        "bytes": 24880,
+        "sha256": "60cc593a7e87cc033d08b5513d944917e2db788e48def141ea32201814f68c8e"
+      },
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/07-pure-string/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 20.0,
+        "complete": true,
+        "started": 1794183663.3405468,
+        "exitCode": 0,
+        "userSeconds": 0.001057,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 11548,
+        "timedOut": false,
+        "seconds": 0.00199232529848814,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/07-pure-string/execute.stdout",
+          "bytes": 19,
+          "sha256": "9dde57507de7eca9ddb42f3c439da4bf2125c34ca97223d6336ac00a2750d344"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/07-pure-string/execute.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "focused/pure-aggregate",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-aggregate.bend",
+        "bytes": 440,
+        "sha256": "ffa6a0da942acbde8d606d276de926a4bba37279d19b4178ac6ffea8f1b90ba3"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "([7, 7, 7], (1, 2n, 'c'), [[True{}], []], [3, 3], [])\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/08-pure-aggregate/emission/report.json",
+        "bytes": 34456,
+        "sha256": "2cb3c40871281a9fc309f353e0d55a7506233d638050cb22e5f2918bb2742518"
+      },
+      "toolchain": {
+        "compiler": "clang",
+        "includeFlags": [
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+        ],
+        "flags": [
+          "-std=c11",
+          "-O3"
+        ],
+        "libraries": [
+          "-lpthread",
+          "-lm"
+        ],
+        "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+      },
+      "compiler": {
+        "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "bytes": 119320,
+        "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+      },
+      "buildProcess": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/08-pure-aggregate/emission/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/08-pure-aggregate/program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 90.0,
+        "complete": true,
+        "started": 1794183663.8778427,
+        "exitCode": 0,
+        "userSeconds": 0.450148,
+        "systemSeconds": 0.017938,
+        "peakRssKiB": 89192,
+        "timedOut": false,
+        "seconds": 0.46923191100358963,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/08-pure-aggregate/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/08-pure-aggregate/build.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/08-pure-aggregate/program",
+        "bytes": 37872,
+        "sha256": "429a8ef87bb7ee151213e6eb371777e55eddf3e43d914e39647f812e8cbaf4cc"
+      },
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/08-pure-aggregate/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 20.0,
+        "complete": true,
+        "started": 1794183664.3479629,
+        "exitCode": 0,
+        "userSeconds": 0.001145,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 11560,
+        "timedOut": false,
+        "seconds": 0.002066188957542181,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/08-pure-aggregate/execute.stdout",
+          "bytes": 54,
+          "sha256": "624521b7b1806e2de2c25bc8ae9b6bef6f37495b8d3c83b36e090fccf7dc7924"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/08-pure-aggregate/execute.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "focused/u32-wide-wrap",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/u32-wide-wrap.bend",
+        "bytes": 580,
+        "sha256": "437e7ee60da1a86bb62ac4bcec557ac0c3708fd9912fe840731ed33d4dc455f2"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "94 q\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/09-u32-wide-wrap/emission/report.json",
+        "bytes": 34446,
+        "sha256": "7d4cd4011c7d7db268dea839643fbf98e7138df2f33e42cde199c67767011e2c"
+      },
+      "toolchain": {
+        "compiler": "clang",
+        "includeFlags": [
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+        ],
+        "flags": [
+          "-std=c11",
+          "-O3"
+        ],
+        "libraries": [
+          "-lpthread",
+          "-lm"
+        ],
+        "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+      },
+      "compiler": {
+        "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "bytes": 119320,
+        "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+      },
+      "buildProcess": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/09-u32-wide-wrap/emission/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/09-u32-wide-wrap/program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 90.0,
+        "complete": true,
+        "started": 1794183664.9285226,
+        "exitCode": 0,
+        "userSeconds": 0.593862,
+        "systemSeconds": 0.015127999999999999,
+        "peakRssKiB": 91908,
+        "timedOut": false,
+        "seconds": 0.6336344601586461,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/09-u32-wide-wrap/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/09-u32-wide-wrap/build.stderr",
+          "bytes": 827,
+          "sha256": "9ae3c8ff33d1b09e1ef5e970120a6fcf48ccc22d85b7b66371e51a4fee4f371e"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/09-u32-wide-wrap/program",
+        "bytes": 40088,
+        "sha256": "608ed7141d75b884ada9c676f952f5c514f1928d9d32bc077c188b5e57569de3"
+      },
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/09-u32-wide-wrap/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 20.0,
+        "complete": true,
+        "started": 1794183665.5630362,
+        "exitCode": 0,
+        "userSeconds": 0.0010969999999999999,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 11556,
+        "timedOut": false,
+        "seconds": 0.002007578033953905,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/09-u32-wide-wrap/execute.stdout",
+          "bytes": 5,
+          "sha256": "26ea373847580972e5a298c73201fe5ad4a32ee3e1c23f4d754f8433900609c3"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/09-u32-wide-wrap/execute.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "focused/u32-divmod",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/u32-divmod.bend",
+        "bytes": 882,
+        "sha256": "a900f26ba8322d2b4c67aa1b2e44087694f44982610f4eef73ce08a62980330a"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "9\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/10-u32-divmod/emission/report.json",
+        "bytes": 34406,
+        "sha256": "b8e95cf3f65a9eb26c67df9669da4d250e344fcc58e808eff6cfabb30add3306"
+      },
+      "toolchain": {
+        "compiler": "clang",
+        "includeFlags": [
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+        ],
+        "flags": [
+          "-std=c11",
+          "-O3"
+        ],
+        "libraries": [
+          "-lpthread",
+          "-lm"
+        ],
+        "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+      },
+      "compiler": {
+        "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "bytes": 119320,
+        "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+      },
+      "buildProcess": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/10-u32-divmod/emission/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/10-u32-divmod/program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 90.0,
+        "complete": true,
+        "started": 1794183666.1719484,
+        "exitCode": 0,
+        "userSeconds": 0.53143,
+        "systemSeconds": 0.039986999999999995,
+        "peakRssKiB": 91900,
+        "timedOut": false,
+        "seconds": 0.6848035478033125,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/10-u32-divmod/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/10-u32-divmod/build.stderr",
+          "bytes": 818,
+          "sha256": "079a2fb36ce5d5380af378e50d425aaff567fa60363c32f23f36be5bc01405cd"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/10-u32-divmod/program",
+        "bytes": 37464,
+        "sha256": "9c66adaf89406b0af82c0d62620cb16388ede3cc3006baa91b41d5b26f8e88de"
+      },
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/10-u32-divmod/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 20.0,
+        "complete": true,
+        "started": 1794183666.8577628,
+        "exitCode": 0,
+        "userSeconds": 0.0,
+        "systemSeconds": 0.001113,
+        "peakRssKiB": 11564,
+        "timedOut": false,
+        "seconds": 0.0020654620602726936,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/10-u32-divmod/execute.stdout",
+          "bytes": 2,
+          "sha256": "2e6d31a5983a91251bfae5aefa1c0a19d8ba3cf601d0e8a706b4cfa9661a6b8a"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/10-u32-divmod/execute.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "focused/nat-native",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/nat-native.bend",
+        "bytes": 1432,
+        "sha256": "aac3f56702e9fbbb7ac9867d30597f98fc989ce8c8dabb229cc49416c2b6890f"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "2084116725\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/11-nat-native/emission/report.json",
+        "bytes": 34407,
+        "sha256": "6bc167747812f5cf1b6a37c639d3e5c1c4693b6cac1c93141b3d9203fd7047a6"
+      },
+      "toolchain": {
+        "compiler": "clang",
+        "includeFlags": [
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+        ],
+        "flags": [
+          "-std=c11",
+          "-O3"
+        ],
+        "libraries": [
+          "-lpthread",
+          "-lm"
+        ],
+        "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+      },
+      "compiler": {
+        "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "bytes": 119320,
+        "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+      },
+      "buildProcess": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/11-nat-native/emission/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/11-nat-native/program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 90.0,
+        "complete": true,
+        "started": 1794183667.6227796,
+        "exitCode": 0,
+        "userSeconds": 0.555146,
+        "systemSeconds": 0.037065,
+        "peakRssKiB": 92288,
+        "timedOut": false,
+        "seconds": 0.6061843186616898,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/11-nat-native/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/11-nat-native/build.stderr",
+          "bytes": 818,
+          "sha256": "300977926458a9065d734fbcc70f8a488cdbf8a2c731cba05f3bcc5ce576528c"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/11-nat-native/program",
+        "bytes": 38776,
+        "sha256": "e6b0ee23e35fc4854ac568233ee5bc15d061428f829e191157b6eabc3d4cd16c"
+      },
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/11-nat-native/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 20.0,
+        "complete": true,
+        "started": 1794183668.2298515,
+        "exitCode": 0,
+        "userSeconds": 0.0,
+        "systemSeconds": 0.001153,
+        "peakRssKiB": 11856,
+        "timedOut": false,
+        "seconds": 0.002072033006697893,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/11-nat-native/execute.stdout",
+          "bytes": 11,
+          "sha256": "1618aedff51fc552a93a684de0e5f98a546e978ac8427b544dc927c1e908df0a"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/11-nat-native/execute.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "focused/f32-literal",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/f32-literal.bend",
+        "bytes": 413,
+        "sha256": "22b50936b38419fb9bfbfc480a2ac293a82cdf49109f88968b3cb5a22525e115"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "4 10\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/12-f32-literal/emission/report.json",
+        "bytes": 34409,
+        "sha256": "70f600523fe00e39b34e0600867923a5eec5d109d7c391446a363d8210d2e923"
+      },
+      "toolchain": {
+        "compiler": "clang",
+        "includeFlags": [
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+        ],
+        "flags": [
+          "-std=c11",
+          "-O3"
+        ],
+        "libraries": [
+          "-lpthread",
+          "-lm"
+        ],
+        "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+      },
+      "compiler": {
+        "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "bytes": 119320,
+        "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+      },
+      "buildProcess": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/12-f32-literal/emission/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/12-f32-literal/program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 90.0,
+        "complete": true,
+        "started": 1794183668.789827,
+        "exitCode": 0,
+        "userSeconds": 0.603024,
+        "systemSeconds": 0.029685999999999997,
+        "peakRssKiB": 91524,
+        "timedOut": false,
+        "seconds": 0.6477613826282322,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/12-f32-literal/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/12-f32-literal/build.stderr",
+          "bytes": 821,
+          "sha256": "c65c461e4a93e272663396e6a70da155f52b4ce90e9fe4a541fa3d677a97d971"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/12-f32-literal/program",
+        "bytes": 42024,
+        "sha256": "d4983fc853e0d0536ab9330b18367399b00a13f53a63925dfa23ba10e01ec28e"
+      },
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/12-f32-literal/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 20.0,
+        "complete": true,
+        "started": 1794183669.4384813,
+        "exitCode": 0,
+        "userSeconds": 0.0010869999999999999,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 11864,
+        "timedOut": false,
+        "seconds": 0.00201201718300581,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/12-f32-literal/execute.stdout",
+          "bytes": 5,
+          "sha256": "b6daa603a2f9d854c9902d488a848de7099157f30f45ccddec68d70a8869f0d7"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/12-f32-literal/execute.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "focused/f32-arithmetic",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/f32-arithmetic.bend",
+        "bytes": 1380,
+        "sha256": "7516af85c298776c712a1577a053a96941d623853a47d1356f6282378a46ff57"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "8\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/13-f32-arithmetic/emission/report.json",
+        "bytes": 34459,
+        "sha256": "949e2c592c226394f4d9b1adbd5ca2326785f204ec223ae583ae2227febc0ff0"
+      },
+      "toolchain": {
+        "compiler": "clang",
+        "includeFlags": [
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+        ],
+        "flags": [
+          "-std=c11",
+          "-O3"
+        ],
+        "libraries": [
+          "-lpthread",
+          "-lm"
+        ],
+        "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+      },
+      "compiler": {
+        "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "bytes": 119320,
+        "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+      },
+      "buildProcess": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/13-f32-arithmetic/emission/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/13-f32-arithmetic/program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 90.0,
+        "complete": true,
+        "started": 1794183670.016522,
+        "exitCode": 0,
+        "userSeconds": 0.570384,
+        "systemSeconds": 0.029095,
+        "peakRssKiB": 92288,
+        "timedOut": false,
+        "seconds": 0.627758109010756,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/13-f32-arithmetic/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/13-f32-arithmetic/build.stderr",
+          "bytes": 830,
+          "sha256": "b3defa97593d19d18338e6449715005815b7bab490ec1bef33692c3f3547bebb"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/13-f32-arithmetic/program",
+        "bytes": 38216,
+        "sha256": "9529fca11a83d13a8225a590261deaf23a95e32d10e27fa274fa037007c30868"
+      },
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/13-f32-arithmetic/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 20.0,
+        "complete": true,
+        "started": 1794183670.645157,
+        "exitCode": 0,
+        "userSeconds": 0.0,
+        "systemSeconds": 0.001117,
+        "peakRssKiB": 11880,
+        "timedOut": false,
+        "seconds": 0.002051902934908867,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/13-f32-arithmetic/execute.stdout",
+          "bytes": 2,
+          "sha256": "aa67a169b0bba217aa0aa88a65346920c84c42447c36ba5f7ea65f422c1fe5d8"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/13-f32-arithmetic/execute.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "focused/pure-u32",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-u32.bend",
+        "bytes": 55,
+        "sha256": "adc0caa2c7abc817f445fac6c5a04eb144553d6b7db7b10ee06dc2e689cb57d9"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "42\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/14-pure-u32/emission/report.json",
+        "bytes": 34378,
+        "sha256": "17834a4a78abccab7a149ef868fb1c56218690e63bac7850fa2a802eff06a974"
+      },
+      "toolchain": {
+        "compiler": "clang",
+        "includeFlags": [
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+        ],
+        "flags": [
+          "-std=c11",
+          "-O3"
+        ],
+        "libraries": [
+          "-lpthread",
+          "-lm"
+        ],
+        "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+      },
+      "compiler": {
+        "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "bytes": 119320,
+        "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+      },
+      "buildProcess": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/14-pure-u32/emission/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/14-pure-u32/program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 90.0,
+        "complete": true,
+        "started": 1794183671.1487553,
+        "exitCode": 0,
+        "userSeconds": 0.33630899999999997,
+        "systemSeconds": 0.030559999999999997,
+        "peakRssKiB": 88948,
+        "timedOut": false,
+        "seconds": 0.38822742085903883,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/14-pure-u32/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/14-pure-u32/build.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/14-pure-u32/program",
+        "bytes": 23960,
+        "sha256": "a2579a17e0cceaab5b1a7b8768251725df9bc1082c0db1135af574cefe447da9"
+      },
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/14-pure-u32/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 20.0,
+        "complete": true,
+        "started": 1794183671.5378027,
+        "exitCode": 0,
+        "userSeconds": 0.001103,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 11872,
+        "timedOut": false,
+        "seconds": 0.002025516703724861,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/14-pure-u32/execute.stdout",
+          "bytes": 3,
+          "sha256": "084c799cd551dd1d8d5c5f9a5d593b2e931f5e36122ee5c793c1d08a19839cc0"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/14-pure-u32/execute.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "focused/pure-f32",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-f32.bend",
+        "bytes": 59,
+        "sha256": "98f704e293612773d2abcae11a9be2ec77e2d7e39e9a0a91cdb406f181dd9422"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "4.0\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/15-pure-f32/emission/report.json",
+        "bytes": 34369,
+        "sha256": "04fa87b85cceb3354d5fdfed0756c0f8774688975458f3c3e54eae19d761703d"
+      },
+      "toolchain": {
+        "compiler": "clang",
+        "includeFlags": [
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+        ],
+        "flags": [
+          "-std=c11",
+          "-O3"
+        ],
+        "libraries": [
+          "-lpthread",
+          "-lm"
+        ],
+        "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+      },
+      "compiler": {
+        "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "bytes": 119320,
+        "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+      },
+      "buildProcess": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/15-pure-f32/emission/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/15-pure-f32/program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 90.0,
+        "complete": true,
+        "started": 1794183672.166653,
+        "exitCode": 0,
+        "userSeconds": 0.372805,
+        "systemSeconds": 0.018581,
+        "peakRssKiB": 88952,
+        "timedOut": false,
+        "seconds": 0.3924834839999676,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/15-pure-f32/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/15-pure-f32/build.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/15-pure-f32/program",
+        "bytes": 26064,
+        "sha256": "aa3a0123e45466f68717e85a3ad8c7bd25e36b26e515c73d573f17e3581212d7"
+      },
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/15-pure-f32/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 20.0,
+        "complete": true,
+        "started": 1794183672.55997,
+        "exitCode": 0,
+        "userSeconds": 0.001073,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 11880,
+        "timedOut": false,
+        "seconds": 0.0019879918545484543,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/15-pure-f32/execute.stdout",
+          "bytes": 4,
+          "sha256": "5ca797740e932dd836206d2b4bea825c83bc47e25e45006d0a2b62fe71be40b6"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/cli-focused01/15-pure-f32/execute.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  ],
+  "scope": "Explicit finite catalog sources with retained independent whole-output oracles. No performance, kernel-proof, unrestricted-provider, GPU or multi-mutator qualification.",
+  "unsupportedPolicy": "Unsupported is retained and prevents passed=true; it is never a pass.",
+  "historicalPolicy": "Historical catalog fields are provenance only; no historical file is read.",
+  "changedInputs": [],
+  "counts": {
+    "pass": 16,
+    "fail": 0,
+    "unsupported": 0
+  },
+  "seconds": 20.160276821348816
+}

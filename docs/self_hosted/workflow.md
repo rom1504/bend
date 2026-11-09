@@ -7,7 +7,7 @@ prepared Base images, compiler executables and benchmark artifacts are explicit
 inputs or outputs, not editable alternative compiler sources.
 
 The [consolidation design](../../design/repository-consolidation/README.md)
-records migration boundaries; the [Phase174 report](../../implementation/phase174/README.md)
+records migration boundaries; the [Phase182 report](../../implementation/phase182/README.md)
 records current installed qualification. Current tools live under
 [`tools/build/`](../../selfhost/tools/build/),
 [`tools/bench/`](../../selfhost/tools/bench/README.md),
@@ -29,7 +29,7 @@ selfhost/bend input.bend -o output.c
 
 The installed [current selector](../../selfhost/manifests/current.json) binds
 JS B2, public native C N1 and qualified QBE N2 to their recorded source and
-qualification evidence. Phase174 installs all three from its recorded Phase171
+qualification evidence. Phase182 installs all three from its recorded snapshot08
 source, with an explicit thin profile for the public C CLI. The default
 `qbe-n2` asset points to `selfhost/dist/qbe/bend`; `qbe-api` selects the separately
 checked, cache-only B1 API at `selfhost/dist/qbe/hosted-api.mjs`. Native P140/2
@@ -38,20 +38,19 @@ are not inferred from that result. A new assembly, successful small differential
 moved tool does not install another release. Package availability, supported
 imports/effects and image identities change only through qualified promotion.
 
-The maintained source includes the [Phase177 frontend improvements](../../implementation/phase177/README.md)
-and [Phase178 cleanup](../../implementation/phase178/README.md). Source integration
-and image qualification are separate. Phase177 has an explicit N1 image at
-`selfhost/build/phase177/full-native-n1/program` with its separate
-`image-binding.json`; it has no new N2 reproduction chain. Phase178 checks the
-cleaned source and unchanged executable entry closures without installing or
-qualifying another native generation.
+The installed source incorporates the earlier Phase175/177 frontend improvements
+and Phase178 cleanup, plus the upstream2.0.40 compatibility port. The selected
+native N2 has actual same-source N1/N2/Q3 reproduction. The JS B2 has actual B3
+self-reproduction and a fresh own-source check. These gates establish reproduction
+and finite tested behavior, not whole-compiler correctness.
 
-The latest fully reproduced research N2 remains
-`selfhost/build/phase175/full-native-n2/program`, with `report.json` in the same
-directory. Select both using `--image` and `--image-receipt`,
-`--host native --stage N2 --target qbe`. The installed `qbe-n2` alias still selects
-Phase171. Use the explicit source identities and gate scopes in each phase report;
-do not assume a research image contains later source edits.
+Full JS self-hosting on the pinned Bun1.4.3 required the explicitly recorded
+`BUN_JSC_maxPerThreadStackUsage=7340032` setting; default-stack emission overflowed.
+This Bun debugging option is unstable and specific to the pinned host. It is not
+set automatically for ordinary commands. See the
+[diagnosis, evidence and bounded invocation](../../implementation/phase182/js-stack.md).
+Ordinary JS/C focused tests ran with the default host stack. Prefer the qualified
+native compiler for ordinary compiler-development builds.
 
 Generated program targets remain available through explicit interfaces:
 
@@ -64,7 +63,7 @@ Generated program targets remain available through explicit interfaces:
 Host and stage must match the selected image. The original 45 benchmark catalog
 uses JS callable libraries; its native 45 catalog uses the corresponding C/QBE
 repetition wrappers. The same benchmark entry can execute all three targets, but
-the current two-case migration smoke covers upstream C and N2 QBE only.
+migration correctness gates and historical performance measurements have separate scopes; Phase182 does not publish a fresh broad speed comparison.
 
 The maintained source has five entry profiles:
 

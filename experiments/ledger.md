@@ -1,3 +1,17 @@
+# Phase182 — upstream2.0.40 compatibility and publication, 2026-11-09
+
+[Report](../implementation/phase182/README.md) · [Design](../design/phase182/README.md) ·
+[Compatibility](../docs/self_hosted/upstream-2.0.40.md).
+
+Merged upstream `9a4223d` and ported semantic equality sharing, namespace/sugar
+resolution, Unicode, scalar JS host ABI, primitive/effect providers and runtime
+arguments. Selected snapshot08 derives from an independently checked B1; native
+N1/N2/Q3 and JS B2/B3 reproduce. Installed JS B2, public C-emitting N1 and QBE N2
+retain explicit finite backend, CLI and session gates. Independent BendTT23 and
+profiler runtime controls are separate evidence. Default-stack B3 failed; its
+bounded pinned-Bun7MiB retry is recorded without changing source. Historical
+failures remain retained. No new broad speed ratio or assembly qualification.
+
 # Phase178 — frontend cleanup and a neutral product, 2026-11-07
 
 [Report](../implementation/phase178/README.md) · [Design](../design/phase178/README.md) ·

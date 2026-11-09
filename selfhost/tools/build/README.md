@@ -8,9 +8,9 @@ implementation or reconstruct the compiler from a sequence of historical patches
 The operational asset map is
 [`assets-native.json`](../../manifests/assets-native.json). It binds a compiler
 image's actual host, generation, entry protocol, capabilities and source identity;
-the Base/carrier pair; runtime providers; and machine tools. Its initial native
-image is the qualified ordinary N2 image, not an installed or incremental-qualified
-selection. A successful build does not change the installed compiler.
+the Base/carrier pair; runtime providers; and machine tools. Its current native
+image is the installed Phase182 N2; native positive session reuse has its own
+explicit qualification, separate from ordinary requests. A successful build does not change the installed compiler.
 
 ## Inputs and artifacts
 

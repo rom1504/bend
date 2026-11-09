@@ -1,13 +1,14 @@
 # Phase182 — upstream 2.0.40 migration
 
-**Migration in progress. Snapshot07 reproduces natively and passes the finite
-64-case QBE gate; the corrected snapshot08 chain and release qualification remain
-pending.** The maintained source now targets upstream
-`9a4223d577ba56a0cb53d1fd952d2b481c38930f`, replacing the previous active pin
-`059266225b77c8ca256ac6b25ee5c21449bab151`. The upstream merge is `6c6365e`; the checked compatibility port is `10ab239`.
-Historical checkouts, ABI11101 images/runtime objects and the installed selection
-remain available. This report records completed migration gates; it does not
-promote the candidate or carry old performance results onto changed products.
+**Upstream2.0.40 is installed across JS B2, public C-emitting native N1 and
+QBE N2.** The maintained source and selected artifacts target upstream
+`9a4223d577ba56a0cb53d1fd952d2b481c38930f`, replacing
+`059266225b77c8ca256ac6b25ee5c21449bab151`. The upstream merge is `6c6365e`;
+the compatibility port is `10ab239`. Native and JS self-reproduction and the
+stated finite qualification gates pass. Full JS self-emission uses the explicit
+pinned-Bun7MiB stack policy described below. Historical checkouts, binaries and
+installation rollback copies are retained. Historical speed scores are not
+carried onto changed products.
 
 [Maintained workflow](../../docs/self_hosted/workflow.md) ·
 [Build tools](../../selfhost/tools/build/README.md) ·
@@ -37,6 +38,40 @@ Base identity includes its canonical path under
 requires a fresh prepared identity. The runtime object is a new explicit asset,
 built with GCC `-O2 -std=gnu11 -ffp-contract=off
 -DP144_SINGLE_MUTATOR_RFC=1`; it does not overwrite an older qualified object.
+
+## Corrected native qualification
+
+Snapshot08 now completes [N1/N2/Q3 reproduction](evidence/native-chain04.json) in
+528.642s. The two complete native builds take183.857s and183.056s; they reproduce
+identical QBE, assembly and object bytes. ELF bytes differ. These are acquisition
+observations for the new source, not a same-source speedup comparison.
+Actual N2 passes [64/64](evidence/qbe6402.json) and
+[all ten new runtime controls](evidence/native-controls04.json), including the
+three I/O paths that failed before the seven-name admission fix.
+[Early-entry controls](evidence/early-controls01.json) independently preserve
+unknown-foreign rejection.
+
+The same N2 passes the [six native session controls](evidence/native-session-bootstrap01.json)
+and the [normal session adapter](evidence/native-session-normal01.json).
+All six products match their same-mode cold references; a real edit changes the
+product, no-op requests exercise reuse, and the generated programs print `3` and
+`5`. These are finite reuse controls, not a general invalidation theorem.
+The separate current-source hosted QBE API preserves all23 installed exports and
+passes [19/19 focused controls](evidence/qbe-hosted19.json). The current hosted C
+lane also passes [ten new-language controls](evidence/c-current01.json).
+
+The [public C package](evidence/cli-package01.json) completes construction in
+444.860s from the public profile of snapshot08, retaining unmodified generated C.
+Its 24,097,056-byte executable has SHA256
+`9cdee58d7423be70fe120ddaa0eac3675674292d2a0832447907051d4cc9e607`.
+Construction itself is unqualified; the subsequent independent gates pass
+[16 focused cases](evidence/cli-focused01.json),
+[ten current-language cases](evidence/cli-current01.json) and
+[15 CLI interface controls](evidence/cli-controls01.json). The interface gate
+executes the identical image from a relocated package, checks two independent
+complete-output oracles, exact live/cache product equality and refusal controls,
+and records `qualified:true`, `installed:false`. It does not claim incumbent
+product-byte equality, universal conformance or performance parity.
 
 ## Compatibility changes
 
@@ -128,8 +163,9 @@ runs the actual snapshot07 native N2 compiler: seven of ten cases pass, includin
 numeric, both arrays, Char output and valid Exit/Halt statuses. `argv`, `files`
 and `open-errors` are refused before executable construction with
 `early scalar source permission refused`. Snapshot08's seven-name admission
-change addresses that omission; its corrected native replay remains pending.
-All these controls use one worker with GPU off and do not qualify emitted C.
+change addresses that omission; [native-controls04](evidence/native-controls04.json)
+now passes all ten on actual snapshot08 N2. These native controls use one worker
+with GPU off; the separate C gates above supply their own evidence.
 
 The earlier broader frontend gate was incomplete. `frontend02` records 21 matching
 observations before its 2 GiB process-tree guard stops the candidate during
@@ -228,7 +264,9 @@ differ, and that raw mismatch remains recorded. The actual N2 then passes all
 [qbe6401](../../selfhost/build/phase182/qbe6401/report.json), with zero failures or
 unsupported cases. That is finite single-worker QBE qualification, separate from
 the seven-of-ten new IO/intrinsic controls above. Neither receipt installs the
-compiler; snapshot08's corrected native-chain04 is still pending.
+compiler. The later snapshot08 [native-chain04](evidence/native-chain04.json)
+and [qbe6402](evidence/qbe6402.json) establish the corrected source's separate
+reproduction and 64-case result described above.
 
 JS self-emission attempt [js-b201](../../selfhost/build/phase182/js-b201-guard/process.json) reached emitted reachability but stopped at the300s deadline, with a2461MiB peak. The initial bound was too short relative to the historical319.747s Phase174 B2 acquisition. This is a retained interrupted attempt, not a pass or evidence of incorrect generated JavaScript.
 
@@ -236,10 +274,25 @@ JS self-emission attempt [js-b201](../../selfhost/build/phase182/js-b201-guard/p
 snapshot07 B2 self-emission in 363.153s, producing a 4,993,341-byte API, SHA256
 `640eb6ec8d872a7f3042d79df22e2696d023bff798c7a783264e58c398f59da5`.
 It inherits the exact upstream source-check authority; `freshSelfCheck:false`
-does not claim another full check during that emission. This is an actual
-Bend-generated B2 artifact, but final snapshot08 B2/B3 emission, fresh B3 checking
-and complete equality remain pending. It supplies no new B2 request-speed or
-runtime-parity result.
+does not claim another full check during that emission. Its source binding remains
+snapshot07.
+
+The later [JS-b203](evidence/js-b203.json) completes snapshot08 B2 self-emission
+in 367.500s, producing a 4,993,656-byte API, SHA256
+`9c90beef94e6cc4b3d892c0d0b6b9aaa581b96b8ef9fdee592cf6c5d55ba5730`.
+It inherits API06's exact source-check authority and records `freshSelfCheck:false`.
+The subsequent [JS-b301 attempt](evidence/js-b301.json) freshly checks that same
+complete source successfully (`typeAccepted:true`; 107.599s for the check), but
+fails after 347.317s overall. Its [stage receipt](evidence/js-b301-progress.jsonl)
+records a stack overflow during `public-library-emission`; the error stack repeats
+`$jd$index_95_remove$scc` in the B2 image. No B3 image or complete B2/B3 equality is
+established. The [bounded-stack retry](evidence/js-b302.json) subsequently passes in351.802s,
+including fresh own-source checking and complete B2/B3 byte equality. The same
+source and B2 image are used under an explicit pinned-Bun7MiB stack policy.
+See [the diagnostic and limits](js-stack.md). This is not a compiler speedup or
+an arbitrary-depth stack-safety result. The selected B2 independently passes
+[JS18](evidence/js-focused01.json) and [C18](evidence/js-c-focused01.json) at the
+default host stack.
 
 ## Profiler compatibility controls
 
@@ -260,15 +313,14 @@ profiler overhead or a new compiler-performance profile.
 | --- | --- |
 | Compiled-program speed | No fresh performance or parity claim. Finite output/ABI controls pass in the stated lanes; changed runtimes invalidate automatic inheritance of historical timings. |
 | B1 compilation speed | Checked API06 exists; its 14.455s acquisition is a build/setup observation, not a balanced compiler-request benchmark. |
-| B2 compilation speed | Snapshot07 JS B2 exists after 363.153s self-emission. Final snapshot08 B2/B3 and request benchmarks remain pending; native reproduction has its own generation/target boundary. |
-| Conformance | Snapshot07 passes the full 23-case frontend and 64-case native QBE gates. New native IO controls expose three early refusals; snapshot08 fixes their admission list and awaits the corrected native replay. |
+| B2 compilation speed | Snapshot08 JS B2 exists after 367.500s self-emission. B3 freshly checks its own source and reproduces B2 at the recorded7MiB host cap; clean request benchmarks remain unmeasured. Native reproduction has its own generation/target boundary. |
+| Conformance | Snapshot07 passes the 23-case frontend gate. Snapshot08 passes native QBE 64/64, current runtime 10/10 and six session controls; the separate hosted QBE 19/19 and public C 16/16, 10/10 and CLI gates pass. These remain finite gates, not full conformance. |
 | Simplicity | Maintained recipe contains 218 Bend modules and five entry profiles. At this checkpoint those module files total 3,179,190 bytes/68,619 physical lines; runtime/host tools and generated assembled images are separate counts. Snapshot08 adds seven allowed names in one declaration; no simplicity reduction is claimed. |
 
-Snapshot08 native-chain04 and its focused replay, final JS B2/B3, C/public CLI
-construction and execution, current-source integration qualification and release
-promotion remain pending. The installed selection is unchanged. Root will append
-their exact receipts and outcomes; snapshot07's reproduction and finite gates do
-not implicitly qualify the corrected source or another backend.
+Snapshot08 native and JS reproduction, the stated backend/CLI gates and audited
+release installation are complete. Earlier source bindings, failed attempts and
+finite backend scopes remain explicit. Fresh-checkout verification is recorded
+separately from promotion.
 
 QBE still supports one Bend heap mutator, one CPU worker and GPU off, with its
 pinned provider table rather than arbitrary C embedding/callbacks. C GPU/device
@@ -278,6 +330,34 @@ path. Direct JS retains the unresolved extreme-depth multiword Array.new layout
 limit. Historical experimental x86 results are not requalified by this migration.
 
 All executed evidence belongs to the root-owned guarded lane. Failure/resource
-receipts are retained. Final chain accounting, retention sealing and publication
-are still pending; no total research cost, billing estimate or new performance
-ratio is inferred from this checkpoint.
+receipts are retained. Each completed guarded run has a retention receipt. No billing estimate or new
+performance ratio is inferred from this migration.
+
+
+## Publication
+
+The [preparation receipt](evidence/release-preparation.json) binds the exact
+completed gates. The unchanged release auditor admits them, and the
+[installation transaction](evidence/release-install.json) preserves rollback
+copies before publishing the current selector. All three operational maps
+(native, session and C requests) were then published and every advertised pin
+verified. [Installed verification](evidence/installed-verification.json) confirms
+the maintained source and actual installed identities.
+
+The [seven public JS controls](evidence/js-public02.json) run unchanged CLI code
+from an exact [staged package](evidence/js-cli-stage01.json), using its default
+provider selection and an explicitly test-only JS selector. This avoids touching
+the installed selector before qualification. The initial direct attempt correctly
+refused the old selector's stale runtime pin; [that failure](evidence/js-public01.json)
+is retained. The staged selector is not an installable whole-compiler release;
+actual publication uses the independent three-component release audit above.
+
+Current C GPU/device, arbitrary QBE foreign providers, multiple heap mutators,
+and the experimental assembly backend remain outside this migration's scope.
+The public native `--version` text retains its old implementation banner; use the
+current selector and upstream pin for authoritative release identity.
+
+The [ordinary installed live QBE request](evidence/publication-live01.json) matches
+the qualified cache-mode QBE product exactly and executes its independent stdout
+oracle. This validates ordinary live preparation through the new default assets;
+it is distinct from the native session's cold-reference comparisons.

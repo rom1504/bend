@@ -9,19 +9,19 @@ transport, runtime support, measurement and independent validation.
 Start with the [maintained workflow](../docs/self_hosted/workflow.md). It explains
 source assembly, image/asset admission, native requests/builds, actual bootstrap
 generations and the distinction between current source and installed artifacts.
-The [Phase174 promotion report](../implementation/phase174/README.md) records the
+The [Phase182 migration report](../implementation/phase182/README.md) records the
 current installed artifacts and qualification. The [consolidation report](../implementation/repository-consolidation/README.md)
 retains the source migration and historical recovery record.
 Maintained source targets upstream `9a4223d577ba56a0cb53d1fd952d2b481c38930f`
 (Bend2.0.40). See the [compatibility boundaries](../docs/self_hosted/upstream-2.0.40.md);
 historical and installed artifacts retain their own recorded pins and qualification.
 
-The current modules include [Phase175](../implementation/phase175/README.md):
-parser lookahead reuse and indexed report names. The complete frozen-source
-QBE build takes 185.55→178.94s in a fresh pair, with unchanged generated products.
-Its qualified native N2 is an explicit research image; installed selectors
-remain the Phase174 publication of Phase171. See the report's reproduction
-commands to select the new image without confusing source and release versions.
+The selected release integrates the earlier frontend improvements and cleanup,
+then ports the frontend, Base, effect interfaces and runtimes to the new upstream.
+[Phase182](../implementation/phase182/README.md) records native and JS reproduction,
+finite backend/public CLI gates, session reuse and independent BendTT checks.
+No new broad generated-program performance ratio is claimed. The assembly backend
+retains its separate experimental Phase181 scope.
 
 | Task | Maintained entry |
 | --- | --- |
@@ -48,8 +48,8 @@ selfhost/bend input.bend -o output.c
 ```
 
 Run these from the repository root with their selected package assets available.
-The qualified Phase174 release is selected by [`manifests/current.json`](manifests/current.json):
-JS B2, public native C N1 and direct-QBE N2, bound to the recorded Phase171
+The qualified Phase182 release is selected by [`manifests/current.json`](manifests/current.json):
+JS B2, public native C N1 and direct-QBE N2, bound to the recorded snapshot08
 canonical source (with the explicit thin public C profile). The operational QBE
 assets select the installed N2; hosted QBE remains a separately checked B1 API.
 A newly assembled profile or generated image

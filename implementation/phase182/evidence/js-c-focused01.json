@@ -1,0 +1,2451 @@
+{
+  "kind": "bend-finite-qualification",
+  "version": 1,
+  "complete": true,
+  "passed": true,
+  "fullConformance": false,
+  "upstream": "9a4223d577ba56a0cb53d1fd952d2b481c38930f",
+  "imageUpstream": null,
+  "catalog": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/qualification-catalog.json",
+    "bytes": 77408,
+    "sha256": "a5813cf2fb551136b1a8d88d8107d3ed10846b6aedaa65af8e70d17673752d47"
+  },
+  "host": "js",
+  "target": "c",
+  "stage": "B2",
+  "mode": "live",
+  "image": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs",
+    "bytes": 4993656,
+    "sha256": "9c90beef94e6cc4b3d892c0d0b6b9aaa581b96b8ef9fdee592cf6c5d55ba5730"
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/qualification-catalog.json",
+      "bytes": 77408,
+      "sha256": "a5813cf2fb551136b1a8d88d8107d3ed10846b6aedaa65af8e70d17673752d47"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/nt-reverse.bend",
+      "bytes": 1084,
+      "sha256": "dfb8a3f7b5c432a2a4686bb014a0c9cc74d0d56c2c16264a3427026b090169ff"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/nt-reverse.stdout",
+      "bytes": 37,
+      "sha256": "b1ee553a36555bd2c18ac95f178607db1be2518c17c87f19cd9750fc9f24dcdf"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/string-reverse-heldout.bend",
+      "bytes": 463,
+      "sha256": "4a2d2e5de64d79f5c51a0e86822f7275a156992e4b653ca9807a6e8ae28f4d45"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/string-reverse-heldout.stdout",
+      "bytes": 27,
+      "sha256": "7ea8681162e0dd6de357fe6bd2d3a79f4e23c5c4c7a4fd6c6f962caf242827c4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/higher-order-capture.bend",
+      "bytes": 229,
+      "sha256": "18c8832cf958215dab9cbedb66b191e0a31def3911296fc62b99c75a7b0ae715"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/higher-order-capture.stdout",
+      "bytes": 12,
+      "sha256": "8ba5dba048674b02237222cf7bdcb72e35450f4afff4bcc194ddbc201b895e05"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/non-tail-list.bend",
+      "bytes": 422,
+      "sha256": "b8fb74a95b2c646f0f92545a4acde8e0049c01d99d647459babef56dc3700452"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/non-tail-list.stdout",
+      "bytes": 8,
+      "sha256": "1fd7509719d8e7fe86eeff362247da6f733d4f112c93b2a00913c14e7b167eb7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/arrays-io.bend",
+      "bytes": 878,
+      "sha256": "733e76ff92db5e4eece60e2bd2b047d67218a56a0d2b5fdac7447ef1238d1cc1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/arrays-io.stdout",
+      "bytes": 25,
+      "sha256": "37ad9e1956e1ce46a45715596e7bea089dd734d9d1183dc42163862f35c64154"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/lexer-scan.bend",
+      "bytes": 2851,
+      "sha256": "c1ad42a85efe49274d0e0c5f607c6abde3d34de282299f7802eb3987d179d01f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/lexer-scan.stdout",
+      "bytes": 59,
+      "sha256": "f745e71b95ba4ffc77e479c92034a2003d06f0639b51e2553eb216881693e245"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/negative-type.bend",
+      "bytes": 54,
+      "sha256": "13576b71e13d0336b5b6ae1ad913ae8a5f636a6f292b097288c8ae3aa49ff2be"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/negative-affine.bend",
+      "bytes": 115,
+      "sha256": "2fe0f07f5556ca57e97bfece4afa302524bfa20f2583f3f3a999e466ecd1c0b4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-char.bend",
+      "bytes": 126,
+      "sha256": "9fa073f6ee9a5ce3d39aad32e924f3b1d6542ebf7fc34cab875b22ab37ba1142"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-char.stdout",
+      "bytes": 5,
+      "sha256": "3e13534234d289337a67a0e44265a31f179902062faa91570650da282a32ac70"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-string.bend",
+      "bytes": 314,
+      "sha256": "7ff5a2331d30623f4df2a317d793a749b3f88740de88d990170927fd1a0758c7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-string.stdout",
+      "bytes": 19,
+      "sha256": "9dde57507de7eca9ddb42f3c439da4bf2125c34ca97223d6336ac00a2750d344"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-aggregate.bend",
+      "bytes": 440,
+      "sha256": "ffa6a0da942acbde8d606d276de926a4bba37279d19b4178ac6ffea8f1b90ba3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-aggregate.stdout",
+      "bytes": 54,
+      "sha256": "624521b7b1806e2de2c25bc8ae9b6bef6f37495b8d3c83b36e090fccf7dc7924"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/u32-wide-wrap.bend",
+      "bytes": 580,
+      "sha256": "437e7ee60da1a86bb62ac4bcec557ac0c3708fd9912fe840731ed33d4dc455f2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/u32-wide-wrap.stdout",
+      "bytes": 5,
+      "sha256": "26ea373847580972e5a298c73201fe5ad4a32ee3e1c23f4d754f8433900609c3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/u32-divmod.bend",
+      "bytes": 882,
+      "sha256": "a900f26ba8322d2b4c67aa1b2e44087694f44982610f4eef73ce08a62980330a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/u32-divmod.stdout",
+      "bytes": 2,
+      "sha256": "2e6d31a5983a91251bfae5aefa1c0a19d8ba3cf601d0e8a706b4cfa9661a6b8a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/nat-native.bend",
+      "bytes": 1432,
+      "sha256": "aac3f56702e9fbbb7ac9867d30597f98fc989ce8c8dabb229cc49416c2b6890f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/nat-native.stdout",
+      "bytes": 11,
+      "sha256": "1618aedff51fc552a93a684de0e5f98a546e978ac8427b544dc927c1e908df0a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/f32-literal.bend",
+      "bytes": 413,
+      "sha256": "22b50936b38419fb9bfbfc480a2ac293a82cdf49109f88968b3cb5a22525e115"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/f32-literal.stdout",
+      "bytes": 5,
+      "sha256": "b6daa603a2f9d854c9902d488a848de7099157f30f45ccddec68d70a8869f0d7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/f32-arithmetic.bend",
+      "bytes": 1380,
+      "sha256": "7516af85c298776c712a1577a053a96941d623853a47d1356f6282378a46ff57"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/f32-arithmetic.stdout",
+      "bytes": 2,
+      "sha256": "aa67a169b0bba217aa0aa88a65346920c84c42447c36ba5f7ea65f422c1fe5d8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-u32.bend",
+      "bytes": 55,
+      "sha256": "adc0caa2c7abc817f445fac6c5a04eb144553d6b7db7b10ee06dc2e689cb57d9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-u32.stdout",
+      "bytes": 3,
+      "sha256": "084c799cd551dd1d8d5c5f9a5d593b2e931f5e36122ee5c793c1d08a19839cc0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-f32.bend",
+      "bytes": 59,
+      "sha256": "98f704e293612773d2abcae11a9be2ec77e2d7e39e9a0a91cdb406f181dd9422"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-f32.stdout",
+      "bytes": 4,
+      "sha256": "5ca797740e932dd836206d2b4bea825c83bc47e25e45006d0a2b62fe71be40b6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/qualification.py",
+      "bytes": 14977,
+      "sha256": "36607481dd4601fcfe0f3a56155dd2b0cff813d15b45f59085c73b465df31a72"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/request.py",
+      "bytes": 19022,
+      "sha256": "1b5e1e21125c65056f92f7caa9d4300c8f57f74a9ace05d13823dfe5ca3fac33"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/native.py",
+      "bytes": 14695,
+      "sha256": "4ccec1d51d0c5d28b9df2f3471c3e2b148e49660628249c8c8cb15a0eb9682ff"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/assets.py",
+      "bytes": 9443,
+      "sha256": "91acb7360ca47758d757255fee8a43f087313e2f6c6ddd64c931590d3519d468"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/common.py",
+      "bytes": 4809,
+      "sha256": "d9a16fef18cf936499e51f8c7f36a653f2921ef9a50f846257c2e8bc460ec6d1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/assets-candidate12.json",
+      "bytes": 32400,
+      "sha256": "53cb153c5ff56aff318d24b963dc92926780428e6228534905dafcd84c11337c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/assets-candidate12.json",
+      "bytes": 32400,
+      "sha256": "53cb153c5ff56aff318d24b963dc92926780428e6228534905dafcd84c11337c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/request.py",
+      "bytes": 19022,
+      "sha256": "1b5e1e21125c65056f92f7caa9d4300c8f57f74a9ace05d13823dfe5ca3fac33"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/assets.py",
+      "bytes": 9443,
+      "sha256": "91acb7360ca47758d757255fee8a43f087313e2f6c6ddd64c931590d3519d468"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/common.py",
+      "bytes": 4809,
+      "sha256": "d9a16fef18cf936499e51f8c7f36a653f2921ef9a50f846257c2e8bc460ec6d1"
+    },
+    {
+      "file": "/usr/bin/python3.9",
+      "bytes": 5451288,
+      "sha256": "ca7655083b581ffe36c72dcb445857704db533ca39b03f79c97d8d0ef3bef9af"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/nt-reverse.bend",
+      "bytes": 1084,
+      "sha256": "dfb8a3f7b5c432a2a4686bb014a0c9cc74d0d56c2c16264a3427026b090169ff"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs",
+      "bytes": 4993656,
+      "sha256": "9c90beef94e6cc4b3d892c0d0b6b9aaa581b96b8ef9fdee592cf6c5d55ba5730"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/report.json",
+      "bytes": 16190,
+      "sha256": "aa28a1e964621a421476b8a8bbf5ef5215e25427e396cc0b340755a9ffff083d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase182/bend2/base.bend",
+      "bytes": 87698,
+      "sha256": "ff90fb27ed19d5c7a6165170f28ad81562bf345b9a9e6134e5c2e326beff9de4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/runtime.c",
+      "bytes": 85073,
+      "sha256": "d0c7d350594aa5b2d529b34f5b3f2d681f5bc8c93e172211bb973a04f67d4678"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/args.c",
+      "bytes": 703,
+      "sha256": "2fca06f860ca0fe1a7cf3ff6bb89498598a75c0a44bcb6d8261ca644783808a1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/audio.c",
+      "bytes": 6832,
+      "sha256": "049ac826d50def604c18cd4211d67573c4e27f4bc2600ce6c22e0dbe60c3783f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/audio_close.c",
+      "bytes": 5368,
+      "sha256": "c67f807f7400065f20045392d87ef7e73af209f1aa0ee34a1eb35d568d94feb5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/audio_open.c",
+      "bytes": 5606,
+      "sha256": "65df9665a396a7976b4fdfa556a73ec187e3b5e669e47888615cb0c63a42ce41"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/audio_write.c",
+      "bytes": 5898,
+      "sha256": "0eaaef9f111e40224f4adc4c8978b9e35f08613996381ac9b72641e2aeb608c4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan.c",
+      "bytes": 2108,
+      "sha256": "31257d7f71c560863d66b96ee9296cea07dd997f147a1ccd1433cc0130993696"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_close.c",
+      "bytes": 306,
+      "sha256": "d88e91ca179bfcdbf8580e75f1dbea4c5f240d3fbdb980a2ee24d1e662ff478a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_new.c",
+      "bytes": 203,
+      "sha256": "41d722added898f3a9eae186be969a7ca7f01bc3235331663b13319d14fb7ff2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_recv.c",
+      "bytes": 743,
+      "sha256": "d0de18c78d78d5a3f4890cd2423a332d3d03a7b2f85e82202561fa67b4d57b3c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_send.c",
+      "bytes": 673,
+      "sha256": "1fc9e4857c440771e66ff83b61e6012727af51e62416ad818f5122e237784afc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_close.c",
+      "bytes": 243,
+      "sha256": "befd465a31b88936d772222d26b1019ea7330e59e6327d8ba90584c85e8b2fb3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_open.c",
+      "bytes": 1672,
+      "sha256": "47cfeb9c7dcb62f09b6ff26268697e026e0b0609e94343e48dc036f790872916"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_read.c",
+      "bytes": 3427,
+      "sha256": "dfa1245a9e97468d94d23fdd8ed716189f34517d0da3758fd2ace45182824f49"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_read_at.c",
+      "bytes": 1009,
+      "sha256": "689499b396a634a3ebb21ad2cc3846f1979b8f2747c07c15a38ee2f07c904b1c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_read_bytes.c",
+      "bytes": 987,
+      "sha256": "810e08bfe4439e71dc4bae03eeae680689af8092e144b53faacd75df198ef93d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_size.c",
+      "bytes": 771,
+      "sha256": "09906f3839f0f0fba1eea944c948e35f8e03627dc2b78e8debb43e0556f5d5d8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_write.c",
+      "bytes": 2372,
+      "sha256": "517608227d0c3c9aef64050e585e031277d8b3358635c2ac3331b1d198b1ffe4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_write_bytes.c",
+      "bytes": 1320,
+      "sha256": "80784b7308c00f74ffae50ec0d8278227250edb8edd71a9e33c701482438f097"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/get_env.c",
+      "bytes": 773,
+      "sha256": "3f69e8d60e59b76ba7626c8ce10d30392934076010601ace3ff2b62ade89b298"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/listener_close.c",
+      "bytes": 267,
+      "sha256": "11247352a8311b066fff27ed85958598214ece80f23a7ac59ee981ea569351ec"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/now.c",
+      "bytes": 198,
+      "sha256": "da5fde65701c4fadc7560625c9615b4d60b2eefbd7b6bbe1aedda61887b825b9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/print.c",
+      "bytes": 397,
+      "sha256": "709500d2ace6e2eaeec0f5f1e4373d4ec5e402b3c1e289bd70dfef7e2a635b26"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/print_err.c",
+      "bytes": 236,
+      "sha256": "72781d2adc88a4791d5530c9deff20824c38d5aa1ba43fb05aaa6a697e19f4b6"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/process_run.c",
+      "bytes": 9149,
+      "sha256": "c12e5a182de9fdc5ef83d65f9f7c2c5746865d1049e5f3700438f8ac317b17c3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/random_u32.c",
+      "bytes": 741,
+      "sha256": "10ef9045dcd539bc0ff609e61c77d585fb998ceb48656944d62727716263ee2d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/sleep.c",
+      "bytes": 206,
+      "sha256": "77e212d3baeec0b3dc0a9c7f630b43094986e433c049049d354a9681719e2ecd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/socket_close.c",
+      "bytes": 255,
+      "sha256": "6e2fd1717a2fab133813af88fc0f5b5a8ce44c23bf411f269e71aac38671562e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/spawn.c",
+      "bytes": 218,
+      "sha256": "fb3dac6efa993c51f9d7a668cf8da2cac1148380b72cc18a558cba9ba70c01f3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_accept.c",
+      "bytes": 909,
+      "sha256": "e0f0cf4199c278aec722e3c9b81ff879fcec31ec96ebaf66a954db673cf535f8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_connect.c",
+      "bytes": 1294,
+      "sha256": "ae1515d0ff57215b03888e76cfe4ee485750ec226c28eed05d56e417f0f84f58"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_listen.c",
+      "bytes": 1013,
+      "sha256": "6212a0bc400e960e8b486f85a091cd4964f92b0546475481271c0f369a234d8c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_poll.c",
+      "bytes": 1386,
+      "sha256": "feb6fa3f7c04b3143c71593e2c17088394d11474bd87ca791fb71fbf9f9a8f82"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_recv.c",
+      "bytes": 1979,
+      "sha256": "8378e28f0723dbeb2635b9909b01f8dc63dcac30161f79b8b743bd8037e45b40"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_send.c",
+      "bytes": 2293,
+      "sha256": "ba18f464520a71edcf0d44eec9d4936b2f107cc9a984c61c58f67670cea7cef8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/thread_count.c",
+      "bytes": 481,
+      "sha256": "39515c611a2b42687fb670179f3d9032af1878727356754959061125d40fa7e7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_bind.c",
+      "bytes": 882,
+      "sha256": "b30150927ffde3162d62012b67d43d95c79754f9539279628d2ad5bc9c040408"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_poll.c",
+      "bytes": 913,
+      "sha256": "66504dbbc09ab346e04cca7a22c60aacc8866555ac143088603cb4b568a64f71"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_recv_from.c",
+      "bytes": 1324,
+      "sha256": "4fc0f4e4ddeaef51bc4434b64e9cfcf3888b1470e534fe6ba27f80e48d2b8aef"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_send_to.c",
+      "bytes": 1440,
+      "sha256": "71f92e41fb4cadee6714a0e066c22225d015f9e708cb58393b539cc6ee011721"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window.c",
+      "bytes": 23879,
+      "sha256": "7bda00a55917f11ff1fa532b1406ec5c1a8a7eef6f6ba2a933dd958256e0a409"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window_close.c",
+      "bytes": 916,
+      "sha256": "655afbdf8a5f7fa80963bad64b43c8dfe7ec1f80896db381792d0d6933f3be2d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window_frame.c",
+      "bytes": 11055,
+      "sha256": "01dc840b2145efb8c91b4ffe7360e3520753f59c42e122703c3a6190c50e1aa4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window_open.c",
+      "bytes": 6927,
+      "sha256": "1be9c669b47a44716b9cef1aafaafa1ed2a2268730fab475efa762cf368fc21d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window_set_title.c",
+      "bytes": 1141,
+      "sha256": "cd60a39ca4084794f3e7aef939de8c7e02ef0ae2158bf52a69f93c21a59ebba5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/write.c",
+      "bytes": 370,
+      "sha256": "c1bcd80d50c4901027c801cdd8d7464ea3029361115ac47044c992ce2235a8ac"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/runtime-template02/runtime-template.json",
+      "bytes": 88728,
+      "sha256": "2004ae0d9bd65fc0d9d5559914fc77e1d2e2ac174e9ee03b949d4bfa9ddd65ed"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+      "bytes": 88979072,
+      "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/hosted.mjs",
+      "bytes": 13879,
+      "sha256": "8add68e4ac5b519abf9c0026d970acc653cc8911be26fb716f5966335a01e861"
+    },
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+      "bytes": 119320,
+      "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+    }
+  ],
+  "selected": [
+    "focused/nt-reverse",
+    "focused/string-reverse-heldout",
+    "focused/higher-order-capture",
+    "focused/non-tail-list",
+    "focused/arrays-io",
+    "focused/lexer-scan",
+    "focused/negative-type",
+    "focused/negative-affine",
+    "focused/pure-char",
+    "focused/pure-string",
+    "focused/pure-aggregate",
+    "focused/u32-wide-wrap",
+    "focused/u32-divmod",
+    "focused/nat-native",
+    "focused/f32-literal",
+    "focused/f32-arithmetic",
+    "focused/pure-u32",
+    "focused/pure-f32"
+  ],
+  "rows": [
+    {
+      "id": "focused/nt-reverse",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/nt-reverse.bend",
+        "bytes": 1084,
+        "sha256": "dfb8a3f7b5c432a2a4686bb014a0c9cc74d0d56c2c16264a3427026b090169ff"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "z\n|bc|a|tail\nc|b|head/b|c/head\ncd|ab\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/00-nt-reverse/emission/report.json",
+        "bytes": 44905,
+        "sha256": "2ab5ef67118e27fae347e364de8c03df6626506d04700d90d7bbe80bf40c3b8a"
+      },
+      "hostedObservation": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/00-nt-reverse/emission/hosted.json",
+        "bytes": 19894,
+        "sha256": "c94e5685c45243cd81e66f4798f6a93db03abbce2a21e7f3535f23a92a218abf"
+      },
+      "toolchain": {
+        "compiler": "clang",
+        "includeFlags": [
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+        ],
+        "flags": [
+          "-std=c11",
+          "-O3"
+        ],
+        "libraries": [
+          "-lpthread",
+          "-lm"
+        ],
+        "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+      },
+      "compiler": {
+        "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "bytes": 119320,
+        "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+      },
+      "buildProcess": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/00-nt-reverse/emission/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/00-nt-reverse/program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 120.0,
+        "complete": true,
+        "started": 1794185076.6893866,
+        "exitCode": 0,
+        "userSeconds": 0.754205,
+        "systemSeconds": 0.037679,
+        "peakRssKiB": 93620,
+        "timedOut": false,
+        "seconds": 0.8164988690987229,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/00-nt-reverse/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/00-nt-reverse/build.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/00-nt-reverse/program",
+        "bytes": 58400,
+        "sha256": "42e0b77b8229f7ed310a84f3e4ed8a37417f1ae1012445c45057dd2b111ac138"
+      },
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/00-nt-reverse/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 20.0,
+        "complete": true,
+        "started": 1794185077.5069716,
+        "exitCode": 0,
+        "userSeconds": 0.001071,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 11400,
+        "timedOut": false,
+        "seconds": 0.001996296923607588,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/00-nt-reverse/execute.stdout",
+          "bytes": 37,
+          "sha256": "b1ee553a36555bd2c18ac95f178607db1be2518c17c87f19cd9750fc9f24dcdf"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/00-nt-reverse/execute.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "focused/string-reverse-heldout",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/string-reverse-heldout.bend",
+        "bytes": 463,
+        "sha256": "4a2d2e5de64d79f5c51a0e86822f7275a156992e4b653ca9807a6e8ae28f4d45"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "tail\n\u00e9\ud83d\ude42a!\n\u0301e\ncba!/abc\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/01-string-reverse-heldout/emission/report.json",
+        "bytes": 45045,
+        "sha256": "ed5765433ef7027c98ade4626059ece8306c4bd73d3a16d1197bd756cf21981d"
+      },
+      "hostedObservation": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/01-string-reverse-heldout/emission/hosted.json",
+        "bytes": 19914,
+        "sha256": "5e6c632eeabda405a8c720313b4cc6cfa01b09dd2bb4fe4c371cb864e027b4a9"
+      },
+      "toolchain": {
+        "compiler": "clang",
+        "includeFlags": [
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+        ],
+        "flags": [
+          "-std=c11",
+          "-O3"
+        ],
+        "libraries": [
+          "-lpthread",
+          "-lm"
+        ],
+        "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+      },
+      "compiler": {
+        "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "bytes": 119320,
+        "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+      },
+      "buildProcess": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/01-string-reverse-heldout/emission/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/01-string-reverse-heldout/program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 120.0,
+        "complete": true,
+        "started": 1794185086.5443497,
+        "exitCode": 0,
+        "userSeconds": 0.709708,
+        "systemSeconds": 0.023386,
+        "peakRssKiB": 92488,
+        "timedOut": false,
+        "seconds": 0.7542091961950064,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/01-string-reverse-heldout/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/01-string-reverse-heldout/build.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/01-string-reverse-heldout/program",
+        "bytes": 53000,
+        "sha256": "f9bebfe8207955e0d5bdd0926439f726fa47d355033f6088ae0c330f57b814a0"
+      },
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/01-string-reverse-heldout/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 20.0,
+        "complete": true,
+        "started": 1794185087.2995405,
+        "exitCode": 0,
+        "userSeconds": 0.001109,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 11420,
+        "timedOut": false,
+        "seconds": 0.0019999328069388866,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/01-string-reverse-heldout/execute.stdout",
+          "bytes": 27,
+          "sha256": "7ea8681162e0dd6de357fe6bd2d3a79f4e23c5c4c7a4fd6c6f962caf242827c4"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/01-string-reverse-heldout/execute.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "focused/higher-order-capture",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/higher-order-capture.bend",
+        "bytes": 229,
+        "sha256": "18c8832cf958215dab9cbedb66b191e0a31def3911296fc62b99c75a7b0ae715"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "captured=42\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/02-higher-order-capture/emission/report.json",
+        "bytes": 45023,
+        "sha256": "69c49515a733768c70d03d7e06f19975a7ade656574c6508f0fc432d15d7de31"
+      },
+      "hostedObservation": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/02-higher-order-capture/emission/hosted.json",
+        "bytes": 19900,
+        "sha256": "1f30b631fbd3c5c4a31ef6cadd5d295550212009cda12ccec7d08ba0942bf460"
+      },
+      "toolchain": {
+        "compiler": "clang",
+        "includeFlags": [
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+        ],
+        "flags": [
+          "-std=c11",
+          "-O3"
+        ],
+        "libraries": [
+          "-lpthread",
+          "-lm"
+        ],
+        "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+      },
+      "compiler": {
+        "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "bytes": 119320,
+        "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+      },
+      "buildProcess": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/02-higher-order-capture/emission/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/02-higher-order-capture/program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 120.0,
+        "complete": true,
+        "started": 1794185096.2941968,
+        "exitCode": 0,
+        "userSeconds": 0.648767,
+        "systemSeconds": 0.02122,
+        "peakRssKiB": 92544,
+        "timedOut": false,
+        "seconds": 0.7151148929260671,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/02-higher-order-capture/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/02-higher-order-capture/build.stderr",
+          "bytes": 851,
+          "sha256": "f7aeb53b8547bf81ac309cbc09cfd47c6fe920afb182f9bce636b24dc7995062"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/02-higher-order-capture/program",
+        "bytes": 49288,
+        "sha256": "af908f2af2cce816417f9c1d410c99bc163baa04f676e1bc3edcc2606b67a0dc"
+      },
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/02-higher-order-capture/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 20.0,
+        "complete": true,
+        "started": 1794185097.0102584,
+        "exitCode": 0,
+        "userSeconds": 0.001157,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 11704,
+        "timedOut": false,
+        "seconds": 0.0021237898617982864,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/02-higher-order-capture/execute.stdout",
+          "bytes": 12,
+          "sha256": "8ba5dba048674b02237222cf7bdcb72e35450f4afff4bcc194ddbc201b895e05"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/02-higher-order-capture/execute.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "focused/non-tail-list",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/non-tail-list.bend",
+        "bytes": 422,
+        "sha256": "b8fb74a95b2c646f0f92545a4acde8e0049c01d99d647459babef56dc3700452"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "list=14\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/03-non-tail-list/emission/report.json",
+        "bytes": 44938,
+        "sha256": "baf273ede161c250533bf890e94d140b83c9d7e29a11658716b948e3f9b5a9e2"
+      },
+      "hostedObservation": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/03-non-tail-list/emission/hosted.json",
+        "bytes": 19857,
+        "sha256": "e630e06edfdaeff86680db73f499e694cb0b834bc3785b7f1d7d45d7e9452a5c"
+      },
+      "toolchain": {
+        "compiler": "clang",
+        "includeFlags": [
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+        ],
+        "flags": [
+          "-std=c11",
+          "-O3"
+        ],
+        "libraries": [
+          "-lpthread",
+          "-lm"
+        ],
+        "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+      },
+      "compiler": {
+        "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "bytes": 119320,
+        "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+      },
+      "buildProcess": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/03-non-tail-list/emission/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/03-non-tail-list/program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 120.0,
+        "complete": true,
+        "started": 1794185106.0304315,
+        "exitCode": 0,
+        "userSeconds": 0.700479,
+        "systemSeconds": 0.025120999999999997,
+        "peakRssKiB": 93108,
+        "timedOut": false,
+        "seconds": 0.7589828576892614,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/03-non-tail-list/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/03-non-tail-list/build.stderr",
+          "bytes": 830,
+          "sha256": "cf63edd47dcb55a1fc80b28937e4a824eef74cc991b212693938a1e31c46962a"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/03-non-tail-list/program",
+        "bytes": 52816,
+        "sha256": "36493e6407f49a02f8287365f5154b5eae534cadd334f9df4372b9238c175237"
+      },
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/03-non-tail-list/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 20.0,
+        "complete": true,
+        "started": 1794185106.7903445,
+        "exitCode": 0,
+        "userSeconds": 0.001215,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 11708,
+        "timedOut": false,
+        "seconds": 0.0021239169873297215,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/03-non-tail-list/execute.stdout",
+          "bytes": 8,
+          "sha256": "1fd7509719d8e7fe86eeff362247da6f733d4f112c93b2a00913c14e7b167eb7"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/03-non-tail-list/execute.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "focused/arrays-io",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/arrays-io.bend",
+        "bytes": 878,
+        "sha256": "733e76ff92db5e4eece60e2bd2b047d67218a56a0d2b5fdac7447ef1238d1cc1"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "arrays=seed/changed/seed\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/04-arrays-io/emission/report.json",
+        "bytes": 44891,
+        "sha256": "fab6e22d69cbf8986e89b6115c7638d483d957b9b34ba802b80492579b5f65e7"
+      },
+      "hostedObservation": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/04-arrays-io/emission/hosted.json",
+        "bytes": 19829,
+        "sha256": "f0eeb1d43d225a9d42b8e52726459a2c728e572e4493cb8b49f2ed2844918cb2"
+      },
+      "toolchain": {
+        "compiler": "clang",
+        "includeFlags": [
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+        ],
+        "flags": [
+          "-std=c11",
+          "-O3"
+        ],
+        "libraries": [
+          "-lpthread",
+          "-lm"
+        ],
+        "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+      },
+      "compiler": {
+        "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "bytes": 119320,
+        "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+      },
+      "buildProcess": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/04-arrays-io/emission/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/04-arrays-io/program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 120.0,
+        "complete": true,
+        "started": 1794185115.9151144,
+        "exitCode": 0,
+        "userSeconds": 1.111073,
+        "systemSeconds": 0.032879,
+        "peakRssKiB": 93080,
+        "timedOut": false,
+        "seconds": 1.167199687100947,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/04-arrays-io/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/04-arrays-io/build.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/04-arrays-io/program",
+        "bytes": 74488,
+        "sha256": "0fecf6922a142c89b44a39b14da027a7fe679b8413312cbfa58d407915e8bea1"
+      },
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/04-arrays-io/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 20.0,
+        "complete": true,
+        "started": 1794185117.0833108,
+        "exitCode": 0,
+        "userSeconds": 0.001116,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 11724,
+        "timedOut": false,
+        "seconds": 0.0019969376735389233,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/04-arrays-io/execute.stdout",
+          "bytes": 25,
+          "sha256": "37ad9e1956e1ce46a45715596e7bea089dd734d9d1183dc42163862f35c64154"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/04-arrays-io/execute.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "focused/lexer-scan",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/lexer-scan.bend",
+        "bytes": 2851,
+        "sha256": "c1ad42a85efe49274d0e0c5f607c6abde3d34de282299f7802eb3987d179d01f"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "abc_9.rest/+/10\n1e-3/+/4\n1e/+x/2\nx/-y/1\n/\u03bba/0\nabc/!/3\n//0\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/05-lexer-scan/emission/report.json",
+        "bytes": 44902,
+        "sha256": "345a0e3d78f565135ad9e7ffbc28884739a1c92e7c5e6cd7b0aa8f2a090f46fc"
+      },
+      "hostedObservation": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/05-lexer-scan/emission/hosted.json",
+        "bytes": 19996,
+        "sha256": "3cb8db8fff0e9b0e9efd50f544b8f592ac450ca84973ce4ac8e4bc504378b732"
+      },
+      "toolchain": {
+        "compiler": "clang",
+        "includeFlags": [
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+        ],
+        "flags": [
+          "-std=c11",
+          "-O3"
+        ],
+        "libraries": [
+          "-lpthread",
+          "-lm"
+        ],
+        "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+      },
+      "compiler": {
+        "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "bytes": 119320,
+        "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+      },
+      "buildProcess": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/05-lexer-scan/emission/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/05-lexer-scan/program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 120.0,
+        "complete": true,
+        "started": 1794185126.6929445,
+        "exitCode": 0,
+        "userSeconds": 1.891064,
+        "systemSeconds": 0.031431,
+        "peakRssKiB": 104740,
+        "timedOut": false,
+        "seconds": 1.9478361867368221,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/05-lexer-scan/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/05-lexer-scan/build.stderr",
+          "bytes": 821,
+          "sha256": "57377b7659281744333ef1e8c6bd56d274f7b05cd10e2992d8904d91553c0da1"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/05-lexer-scan/program",
+        "bytes": 128688,
+        "sha256": "bdabb1847544f5a9cae3db04ba516b03abea878b59062dacabb04f50c849f1a0"
+      },
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/05-lexer-scan/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 20.0,
+        "complete": true,
+        "started": 1794185128.6419342,
+        "exitCode": 0,
+        "userSeconds": 0.001155,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 11724,
+        "timedOut": false,
+        "seconds": 0.002066869754344225,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/05-lexer-scan/execute.stdout",
+          "bytes": 59,
+          "sha256": "f745e71b95ba4ffc77e479c92034a2003d06f0639b51e2553eb216881693e245"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/05-lexer-scan/execute.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "focused/negative-type",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/negative-type.bend",
+        "bytes": 54,
+        "sha256": "13576b71e13d0336b5b6ae1ad913ae8a5f636a6f292b097288c8ae3aa49ff2be"
+      },
+      "expected": {
+        "stage": "source-admission",
+        "exitNonzero": true,
+        "outputAbsent": true,
+        "exactDiagnostic": false
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/06-negative-type/emission/report.json",
+        "bytes": 44738,
+        "sha256": "f1c7d58042901c5875be1b162eef006a149d724e296bb227ee8c344b9629519f"
+      },
+      "hostedObservation": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/06-negative-type/emission/hosted.json",
+        "bytes": 19454,
+        "sha256": "b247f1d00091ebb19eb2028fb743d982f4f2eaed6f78f9d11161d1e7afc6b84a"
+      },
+      "expectedStage": "check",
+      "rule": "Checked frontend refusal"
+    },
+    {
+      "id": "focused/negative-affine",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/negative-affine.bend",
+        "bytes": 115,
+        "sha256": "2fe0f07f5556ca57e97bfece4afa302524bfa20f2583f3f3a999e466ecd1c0b4"
+      },
+      "expected": {
+        "stage": "source-admission",
+        "exitNonzero": true,
+        "outputAbsent": true,
+        "exactDiagnostic": false
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/07-negative-affine/emission/report.json",
+        "bytes": 44776,
+        "sha256": "fc1878f6e6169b5b198d31ec1c670804ff1003cd0ee9065ba897f4ece8c4b9ee"
+      },
+      "hostedObservation": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/07-negative-affine/emission/hosted.json",
+        "bytes": 19536,
+        "sha256": "e7b002efea6d72a236783da527899f7252d5b6f73ba0900e8749db221418a433"
+      },
+      "expectedStage": "check",
+      "rule": "Checked frontend refusal"
+    },
+    {
+      "id": "focused/pure-char",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-char.bend",
+        "bytes": 126,
+        "sha256": "9fa073f6ee9a5ce3d39aad32e924f3b1d6542ebf7fc34cab875b22ab37ba1142"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "'\u00e9'\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/08-pure-char/emission/report.json",
+        "bytes": 44902,
+        "sha256": "85864f6dc8a84c0bc614b671002756071128a3aab7d93f65933e95685ab41961"
+      },
+      "hostedObservation": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/08-pure-char/emission/hosted.json",
+        "bytes": 19536,
+        "sha256": "f1d89b326b25cc6246db3f5812fa0a4603686ae6c2df52291553be5a796aa647"
+      },
+      "toolchain": {
+        "compiler": "clang",
+        "includeFlags": [
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+        ],
+        "flags": [
+          "-std=c11",
+          "-O3"
+        ],
+        "libraries": [
+          "-lpthread",
+          "-lm"
+        ],
+        "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+      },
+      "compiler": {
+        "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "bytes": 119320,
+        "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+      },
+      "buildProcess": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/08-pure-char/emission/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/08-pure-char/program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 120.0,
+        "complete": true,
+        "started": 1794185150.989437,
+        "exitCode": 0,
+        "userSeconds": 0.35208,
+        "systemSeconds": 0.022543999999999998,
+        "peakRssKiB": 88924,
+        "timedOut": false,
+        "seconds": 0.39113049022853374,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/08-pure-char/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/08-pure-char/build.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/08-pure-char/program",
+        "bytes": 24416,
+        "sha256": "e632497e50cafd4628a0856ed7ad9e3963b75647a51b1dd39c66cfd4e216cb10"
+      },
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/08-pure-char/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 20.0,
+        "complete": true,
+        "started": 1794185151.3814135,
+        "exitCode": 0,
+        "userSeconds": 0.001094,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 11752,
+        "timedOut": false,
+        "seconds": 0.0020037349313497543,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/08-pure-char/execute.stdout",
+          "bytes": 5,
+          "sha256": "3e13534234d289337a67a0e44265a31f179902062faa91570650da282a32ac70"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/08-pure-char/execute.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "focused/pure-string",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-string.bend",
+        "bytes": 314,
+        "sha256": "7ff5a2331d30623f4df2a317d793a749b3f88740de88d990170927fd1a0758c7"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "\"Ol\u00e1 \u65e5\u672c \ud83d\ude42\"\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/09-pure-string/emission/report.json",
+        "bytes": 44913,
+        "sha256": "27aa5351e29e6ad949140d2baef729f17b2e7ad1c849a4e2fea38c011e3de4fe"
+      },
+      "hostedObservation": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/09-pure-string/emission/hosted.json",
+        "bytes": 19544,
+        "sha256": "7fe3b8ddd4db751e743d07ccc3028cdc4715e2852cd8164f9c067bc44d532748"
+      },
+      "toolchain": {
+        "compiler": "clang",
+        "includeFlags": [
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+        ],
+        "flags": [
+          "-std=c11",
+          "-O3"
+        ],
+        "libraries": [
+          "-lpthread",
+          "-lm"
+        ],
+        "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+      },
+      "compiler": {
+        "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "bytes": 119320,
+        "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+      },
+      "buildProcess": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/09-pure-string/emission/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/09-pure-string/program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 120.0,
+        "complete": true,
+        "started": 1794185160.2104287,
+        "exitCode": 0,
+        "userSeconds": 0.34036099999999997,
+        "systemSeconds": 0.040338,
+        "peakRssKiB": 89396,
+        "timedOut": false,
+        "seconds": 0.39575355499982834,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/09-pure-string/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/09-pure-string/build.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/09-pure-string/program",
+        "bytes": 24880,
+        "sha256": "60cc593a7e87cc033d08b5513d944917e2db788e48def141ea32201814f68c8e"
+      },
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/09-pure-string/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 20.0,
+        "complete": true,
+        "started": 1794185160.607076,
+        "exitCode": 0,
+        "userSeconds": 0.001104,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 11748,
+        "timedOut": false,
+        "seconds": 0.002000116277486086,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/09-pure-string/execute.stdout",
+          "bytes": 19,
+          "sha256": "9dde57507de7eca9ddb42f3c439da4bf2125c34ca97223d6336ac00a2750d344"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/09-pure-string/execute.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "focused/pure-aggregate",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-aggregate.bend",
+        "bytes": 440,
+        "sha256": "ffa6a0da942acbde8d606d276de926a4bba37279d19b4178ac6ffea8f1b90ba3"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "([7, 7, 7], (1, 2n, 'c'), [[True{}], []], [3, 3], [])\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/10-pure-aggregate/emission/report.json",
+        "bytes": 44951,
+        "sha256": "e2f142769446577b1697948b739a4e1d6e1e3f53a1486b8589843822df478d3d"
+      },
+      "hostedObservation": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/10-pure-aggregate/emission/hosted.json",
+        "bytes": 19566,
+        "sha256": "f5147b8536d928af4a4e69bc09dc657d8bc91db61c5099738dd81d11e74934e5"
+      },
+      "toolchain": {
+        "compiler": "clang",
+        "includeFlags": [
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+        ],
+        "flags": [
+          "-std=c11",
+          "-O3"
+        ],
+        "libraries": [
+          "-lpthread",
+          "-lm"
+        ],
+        "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+      },
+      "compiler": {
+        "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "bytes": 119320,
+        "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+      },
+      "buildProcess": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/10-pure-aggregate/emission/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/10-pure-aggregate/program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 120.0,
+        "complete": true,
+        "started": 1794185169.5369756,
+        "exitCode": 0,
+        "userSeconds": 0.45939399999999997,
+        "systemSeconds": 0.027378999999999997,
+        "peakRssKiB": 89924,
+        "timedOut": false,
+        "seconds": 0.5836042519658804,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/10-pure-aggregate/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/10-pure-aggregate/build.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/10-pure-aggregate/program",
+        "bytes": 39584,
+        "sha256": "11518578e0217db1c23044255f079e0658135f78c77b63b14ef9976655fe3c04"
+      },
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/10-pure-aggregate/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 20.0,
+        "complete": true,
+        "started": 1794185170.1216483,
+        "exitCode": 0,
+        "userSeconds": 0.0,
+        "systemSeconds": 0.001135,
+        "peakRssKiB": 11752,
+        "timedOut": false,
+        "seconds": 0.0020418609492480755,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/10-pure-aggregate/execute.stdout",
+          "bytes": 54,
+          "sha256": "624521b7b1806e2de2c25bc8ae9b6bef6f37495b8d3c83b36e090fccf7dc7924"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/10-pure-aggregate/execute.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "focused/u32-wide-wrap",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/u32-wide-wrap.bend",
+        "bytes": 580,
+        "sha256": "437e7ee60da1a86bb62ac4bcec557ac0c3708fd9912fe840731ed33d4dc455f2"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "94 q\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/11-u32-wide-wrap/emission/report.json",
+        "bytes": 44951,
+        "sha256": "29efae62ef6d77b04682eb2682b1ca62e21573435a84c3bd5215fbe6d4f37e7c"
+      },
+      "hostedObservation": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/11-u32-wide-wrap/emission/hosted.json",
+        "bytes": 19851,
+        "sha256": "1e0812a3553eb79b711ec46d2132b52bc02ee918abe8548da3eeaa0417871202"
+      },
+      "toolchain": {
+        "compiler": "clang",
+        "includeFlags": [
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+        ],
+        "flags": [
+          "-std=c11",
+          "-O3"
+        ],
+        "libraries": [
+          "-lpthread",
+          "-lm"
+        ],
+        "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+      },
+      "compiler": {
+        "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "bytes": 119320,
+        "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+      },
+      "buildProcess": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/11-u32-wide-wrap/emission/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/11-u32-wide-wrap/program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 120.0,
+        "complete": true,
+        "started": 1794185179.369129,
+        "exitCode": 0,
+        "userSeconds": 0.679855,
+        "systemSeconds": 0.023039,
+        "peakRssKiB": 93240,
+        "timedOut": false,
+        "seconds": 0.7753583430312574,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/11-u32-wide-wrap/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/11-u32-wide-wrap/build.stderr",
+          "bytes": 830,
+          "sha256": "52665b9b8aea3d6614d81d4b43d61ce9d1a280a64848efb6248779c7a87478d7"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/11-u32-wide-wrap/program",
+        "bytes": 50704,
+        "sha256": "d74ab859e55561327e58ac81a08379083f9e8f5b3d134843039b1d6d964fab3a"
+      },
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/11-u32-wide-wrap/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 20.0,
+        "complete": true,
+        "started": 1794185180.1454031,
+        "exitCode": 0,
+        "userSeconds": 0.001113,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 11764,
+        "timedOut": false,
+        "seconds": 0.002022059168666601,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/11-u32-wide-wrap/execute.stdout",
+          "bytes": 5,
+          "sha256": "26ea373847580972e5a298c73201fe5ad4a32ee3e1c23f4d754f8433900609c3"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/11-u32-wide-wrap/execute.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "focused/u32-divmod",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/u32-divmod.bend",
+        "bytes": 882,
+        "sha256": "a900f26ba8322d2b4c67aa1b2e44087694f44982610f4eef73ce08a62980330a"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "9\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/12-u32-divmod/emission/report.json",
+        "bytes": 44902,
+        "sha256": "e58a15dc72ec5c3d1aef2599ea29bb8925a932617fd67924f74832a74c3e4603"
+      },
+      "hostedObservation": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/12-u32-divmod/emission/hosted.json",
+        "bytes": 19829,
+        "sha256": "9fc750608d4315c80e71756f5bc6ce0aa139456707d10e5993b0dd0ce6338404"
+      },
+      "toolchain": {
+        "compiler": "clang",
+        "includeFlags": [
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+        ],
+        "flags": [
+          "-std=c11",
+          "-O3"
+        ],
+        "libraries": [
+          "-lpthread",
+          "-lm"
+        ],
+        "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+      },
+      "compiler": {
+        "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "bytes": 119320,
+        "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+      },
+      "buildProcess": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/12-u32-divmod/emission/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/12-u32-divmod/program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 120.0,
+        "complete": true,
+        "started": 1794185189.256146,
+        "exitCode": 0,
+        "userSeconds": 0.691257,
+        "systemSeconds": 0.020770999999999998,
+        "peakRssKiB": 94976,
+        "timedOut": false,
+        "seconds": 0.7507081790827215,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/12-u32-divmod/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/12-u32-divmod/build.stderr",
+          "bytes": 821,
+          "sha256": "fe3a98edc46af33643efb63b7a7dd2c3fe0e76436bf8fa2982427d23e0379a49"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/12-u32-divmod/program",
+        "bytes": 49368,
+        "sha256": "580387802a587bbb6a97292c4cd5bc975bc2513f9cdcc114b106fcd24b221849"
+      },
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/12-u32-divmod/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 20.0,
+        "complete": true,
+        "started": 1794185190.0077891,
+        "exitCode": 0,
+        "userSeconds": 0.001176,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 11772,
+        "timedOut": false,
+        "seconds": 0.002104115206748247,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/12-u32-divmod/execute.stdout",
+          "bytes": 2,
+          "sha256": "2e6d31a5983a91251bfae5aefa1c0a19d8ba3cf601d0e8a706b4cfa9661a6b8a"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/12-u32-divmod/execute.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "focused/nat-native",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/nat-native.bend",
+        "bytes": 1432,
+        "sha256": "aac3f56702e9fbbb7ac9867d30597f98fc989ce8c8dabb229cc49416c2b6890f"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "2084116725\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/13-nat-native/emission/report.json",
+        "bytes": 44918,
+        "sha256": "30cd97878a48cd3470d3cdab94bbe9c94a45854666cb46032236a4a2eb939020"
+      },
+      "hostedObservation": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/13-nat-native/emission/hosted.json",
+        "bytes": 19834,
+        "sha256": "a2b16b5d0f313bb94f0c8f7f7b78c3c7833ba4c2a86546edff76785dbfc6ae90"
+      },
+      "toolchain": {
+        "compiler": "clang",
+        "includeFlags": [
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+        ],
+        "flags": [
+          "-std=c11",
+          "-O3"
+        ],
+        "libraries": [
+          "-lpthread",
+          "-lm"
+        ],
+        "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+      },
+      "compiler": {
+        "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "bytes": 119320,
+        "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+      },
+      "buildProcess": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/13-nat-native/emission/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/13-nat-native/program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 120.0,
+        "complete": true,
+        "started": 1794185199.1776896,
+        "exitCode": 0,
+        "userSeconds": 0.7756029999999999,
+        "systemSeconds": 0.023756,
+        "peakRssKiB": 96132,
+        "timedOut": false,
+        "seconds": 0.8408614830113947,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/13-nat-native/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/13-nat-native/build.stderr",
+          "bytes": 821,
+          "sha256": "5c31935f2e621b687143182f51b278ecf38bafa985b456fb879d7d8389e72337"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/13-nat-native/program",
+        "bytes": 57552,
+        "sha256": "3b25a12883a86f0f2b84e0ddbe7945069a57b6045aac17173defafab86562d2a"
+      },
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/13-nat-native/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 20.0,
+        "complete": true,
+        "started": 1794185200.0194967,
+        "exitCode": 0,
+        "userSeconds": 0.001137,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 11800,
+        "timedOut": false,
+        "seconds": 0.0020407079719007015,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/13-nat-native/execute.stdout",
+          "bytes": 11,
+          "sha256": "1618aedff51fc552a93a684de0e5f98a546e978ac8427b544dc927c1e908df0a"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/13-nat-native/execute.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "focused/f32-literal",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/f32-literal.bend",
+        "bytes": 413,
+        "sha256": "22b50936b38419fb9bfbfc480a2ac293a82cdf49109f88968b3cb5a22525e115"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "4 10\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/14-f32-literal/emission/report.json",
+        "bytes": 44915,
+        "sha256": "d83ef79e4a95f2a24a8e0f941886200fd89298e319ed0010aaff501b1e945a98"
+      },
+      "hostedObservation": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/14-f32-literal/emission/hosted.json",
+        "bytes": 19843,
+        "sha256": "b07d1d0bb0d20aab65aaa5dcd17f36d3ecf56527c67eb8b68a1e502d61007041"
+      },
+      "toolchain": {
+        "compiler": "clang",
+        "includeFlags": [
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+        ],
+        "flags": [
+          "-std=c11",
+          "-O3"
+        ],
+        "libraries": [
+          "-lpthread",
+          "-lm"
+        ],
+        "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+      },
+      "compiler": {
+        "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "bytes": 119320,
+        "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+      },
+      "buildProcess": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/14-f32-literal/emission/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/14-f32-literal/program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 120.0,
+        "complete": true,
+        "started": 1794185209.2393064,
+        "exitCode": 0,
+        "userSeconds": 0.6779149999999999,
+        "systemSeconds": 0.034814,
+        "peakRssKiB": 92756,
+        "timedOut": false,
+        "seconds": 0.7417424391023815,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/14-f32-literal/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/14-f32-literal/build.stderr",
+          "bytes": 824,
+          "sha256": "def2203d19ea4722d70400dbc2a94b3a7de571cb2bfd012d31b3642a009b3670"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/14-f32-literal/program",
+        "bytes": 52480,
+        "sha256": "068608526edb2aa5e626d82698461a2558b293f59c1dfb883407b9ac8b9edafc"
+      },
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/14-f32-literal/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 20.0,
+        "complete": true,
+        "started": 1794185209.981957,
+        "exitCode": 0,
+        "userSeconds": 0.001095,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 11816,
+        "timedOut": false,
+        "seconds": 0.0020108199678361416,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/14-f32-literal/execute.stdout",
+          "bytes": 5,
+          "sha256": "b6daa603a2f9d854c9902d488a848de7099157f30f45ccddec68d70a8869f0d7"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/14-f32-literal/execute.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "focused/f32-arithmetic",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/f32-arithmetic.bend",
+        "bytes": 1380,
+        "sha256": "7516af85c298776c712a1577a053a96941d623853a47d1356f6282378a46ff57"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "8\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/15-f32-arithmetic/emission/report.json",
+        "bytes": 44954,
+        "sha256": "8f81a36703aca0f762246abb9331055d9b07d7f70b9ac40a97b9ff7f59ef3891"
+      },
+      "hostedObservation": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/15-f32-arithmetic/emission/hosted.json",
+        "bytes": 19862,
+        "sha256": "64b28fb658783fc3feef1edf4c0cfd6b491125ba3cc008e185824a71d35561ba"
+      },
+      "toolchain": {
+        "compiler": "clang",
+        "includeFlags": [
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+        ],
+        "flags": [
+          "-std=c11",
+          "-O3"
+        ],
+        "libraries": [
+          "-lpthread",
+          "-lm"
+        ],
+        "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+      },
+      "compiler": {
+        "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "bytes": 119320,
+        "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+      },
+      "buildProcess": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/15-f32-arithmetic/emission/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/15-f32-arithmetic/program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 120.0,
+        "complete": true,
+        "started": 1794185219.1225727,
+        "exitCode": 0,
+        "userSeconds": 0.8817649999999999,
+        "systemSeconds": 0.026425999999999998,
+        "peakRssKiB": 97088,
+        "timedOut": false,
+        "seconds": 0.9613372841849923,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/15-f32-arithmetic/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/15-f32-arithmetic/build.stderr",
+          "bytes": 833,
+          "sha256": "08be529155b4aa46b181ad809b2be247728981b6a4a28158fa4922cc3c9f679a"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/15-f32-arithmetic/program",
+        "bytes": 64664,
+        "sha256": "45e2db7468a838130e045e9e1f183ac40aab4229e9fbc90942d8f5116ca98aef"
+      },
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/15-f32-arithmetic/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 20.0,
+        "complete": true,
+        "started": 1794185220.0848527,
+        "exitCode": 0,
+        "userSeconds": 0.0,
+        "systemSeconds": 0.0010999999999999998,
+        "peakRssKiB": 11840,
+        "timedOut": false,
+        "seconds": 0.001988849136978388,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/15-f32-arithmetic/execute.stdout",
+          "bytes": 2,
+          "sha256": "aa67a169b0bba217aa0aa88a65346920c84c42447c36ba5f7ea65f422c1fe5d8"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/15-f32-arithmetic/execute.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "focused/pure-u32",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-u32.bend",
+        "bytes": 55,
+        "sha256": "adc0caa2c7abc817f445fac6c5a04eb144553d6b7db7b10ee06dc2e689cb57d9"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "42\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/16-pure-u32/emission/report.json",
+        "bytes": 44873,
+        "sha256": "2e7fc2cee6d331bf05987ed02a5388cacfb073bf718123958348dc83eba25bcf"
+      },
+      "hostedObservation": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/16-pure-u32/emission/hosted.json",
+        "bytes": 19525,
+        "sha256": "1dc3f302cdd1326c37ca7bb0af25a140c70ac1939ec9d2707bdf84061b023c01"
+      },
+      "toolchain": {
+        "compiler": "clang",
+        "includeFlags": [
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+        ],
+        "flags": [
+          "-std=c11",
+          "-O3"
+        ],
+        "libraries": [
+          "-lpthread",
+          "-lm"
+        ],
+        "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+      },
+      "compiler": {
+        "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "bytes": 119320,
+        "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+      },
+      "buildProcess": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/16-pure-u32/emission/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/16-pure-u32/program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 120.0,
+        "complete": true,
+        "started": 1794185228.848574,
+        "exitCode": 0,
+        "userSeconds": 0.355678,
+        "systemSeconds": 0.020205,
+        "peakRssKiB": 89580,
+        "timedOut": false,
+        "seconds": 1.0182351022958755,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/16-pure-u32/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/16-pure-u32/build.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/16-pure-u32/program",
+        "bytes": 24792,
+        "sha256": "7691e1864a6ddd4e841aed6c88014059e0ccf3b9df5c71540940045ce88c5afb"
+      },
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/16-pure-u32/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 20.0,
+        "complete": true,
+        "started": 1794185229.8677752,
+        "exitCode": 0,
+        "userSeconds": 0.001103,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 11864,
+        "timedOut": false,
+        "seconds": 0.00198992807418108,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/16-pure-u32/execute.stdout",
+          "bytes": 3,
+          "sha256": "084c799cd551dd1d8d5c5f9a5d593b2e931f5e36122ee5c793c1d08a19839cc0"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/16-pure-u32/execute.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "id": "focused/pure-f32",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-focused/pure-f32.bend",
+        "bytes": 59,
+        "sha256": "98f704e293612773d2abcae11a9be2ec77e2d7e39e9a0a91cdb406f181dd9422"
+      },
+      "expected": {
+        "stage": "execute",
+        "exitCode": 0,
+        "stdout": "4.0\n",
+        "stderr": ""
+      },
+      "status": "pass",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/17-pure-f32/emission/report.json",
+        "bytes": 44873,
+        "sha256": "bde0ef78dd791caf64adaa0bbb605d7730ded58db6f27de4e269a17c2aadea4b"
+      },
+      "hostedObservation": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/17-pure-f32/emission/hosted.json",
+        "bytes": 19519,
+        "sha256": "3ce6daa61a563f7ff00bb7be13f47bc3cdf33e101675b8eb9e1cf29703ac488a"
+      },
+      "toolchain": {
+        "compiler": "clang",
+        "includeFlags": [
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+        ],
+        "flags": [
+          "-std=c11",
+          "-O3"
+        ],
+        "libraries": [
+          "-lpthread",
+          "-lm"
+        ],
+        "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+      },
+      "compiler": {
+        "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "bytes": 119320,
+        "sha256": "9fcd5fc4baeea9c449bcc9ca4b9db7714465107669498b0056a853f22f5f4def"
+      },
+      "buildProcess": {
+        "command": [
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+          "-std=c11",
+          "-O3",
+          "-isystem",
+          "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/17-pure-f32/emission/program.c",
+          "-o",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/17-pure-f32/program",
+          "-lpthread",
+          "-lm"
+        ],
+        "limitSeconds": 120.0,
+        "complete": true,
+        "started": 1794185238.7055302,
+        "exitCode": 0,
+        "userSeconds": 0.354989,
+        "systemSeconds": 0.027354,
+        "peakRssKiB": 89568,
+        "timedOut": false,
+        "seconds": 0.38349875435233116,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/17-pure-f32/build.stdout",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/17-pure-f32/build.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/17-pure-f32/program",
+        "bytes": 26944,
+        "sha256": "dccd6c89823d8db0a1a950e7553ea3704d15d76d24e685bad59d6b2c5fbbba5f"
+      },
+      "runtimeArgumentConvention": "bend-rts-v1",
+      "execution": {
+        "command": [
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/17-pure-f32/program",
+          "+RTS",
+          "--threads",
+          "1",
+          "--gpu",
+          "off",
+          "-RTS"
+        ],
+        "limitSeconds": 20.0,
+        "complete": true,
+        "started": 1794185239.089989,
+        "exitCode": 0,
+        "userSeconds": 0.001096,
+        "systemSeconds": 0.0,
+        "peakRssKiB": 11884,
+        "timedOut": false,
+        "seconds": 0.0020229043439030647,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/17-pure-f32/execute.stdout",
+          "bytes": 4,
+          "sha256": "5ca797740e932dd836206d2b4bea825c83bc47e25e45006d0a2b62fe71be40b6"
+        },
+        "stderr": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-c-focused01/17-pure-f32/execute.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  ],
+  "scope": "Explicit finite catalog sources with retained independent whole-output oracles. No performance, kernel-proof, unrestricted-provider, GPU or multi-mutator qualification.",
+  "unsupportedPolicy": "Unsupported is retained and prevents passed=true; it is never a pass.",
+  "historicalPolicy": "Historical catalog fields are provenance only; no historical file is read.",
+  "changedInputs": [],
+  "counts": {
+    "pass": 18,
+    "fail": 0,
+    "unsupported": 0
+  },
+  "seconds": 171.79613538924605
+}

@@ -1,0 +1,551 @@
+{
+  "kind": "phase182-js-export-stack-diagnostic",
+  "version": 1,
+  "complete": true,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/js-export-stack.mjs",
+      "bytes": 11912,
+      "sha256": "58028e9d7aab3304604022cbf02aa32bacbc7f47b6dbd20765b5ec8f1290a9af"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+      "bytes": 88979072,
+      "sha256": "7ce7d6b654eddeec20afddf2396317fba6dc19ab52788a27e894e1806bf8f24b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/report.json",
+      "bytes": 16190,
+      "sha256": "aa28a1e964621a421476b8a8bbf5ef5215e25427e396cc0b340755a9ffff083d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs",
+      "bytes": 4993656,
+      "sha256": "9c90beef94e6cc4b3d892c0d0b6b9aaa581b96b8ef9fdee592cf6c5d55ba5730"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/snapshot08/compiler.bend",
+      "bytes": 3179190,
+      "sha256": "06dcc91b2df46978607b6dd50707aca3c8ddd59dd1a91fbf71a9e6b0ed61605c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase182/bend2/base.bend",
+      "bytes": 87698,
+      "sha256": "ff90fb27ed19d5c7a6165170f28ad81562bf345b9a9e6134e5c2e326beff9de4"
+    }
+  ],
+  "rows": [
+    {
+      "group": "order-oracle",
+      "name": "empty",
+      "needle": "x",
+      "inputNames": [],
+      "classification": "returned",
+      "exact": true,
+      "outputNames": [],
+      "elapsedMs": 0.341534999999908
+    },
+    {
+      "group": "order-oracle",
+      "name": "miss",
+      "needle": "x",
+      "inputNames": [
+        "a",
+        "b",
+        "c"
+      ],
+      "classification": "returned",
+      "exact": true,
+      "outputNames": [
+        "a",
+        "b",
+        "c"
+      ],
+      "elapsedMs": 0.2935370000000148
+    },
+    {
+      "group": "order-oracle",
+      "name": "all-hit",
+      "needle": "x",
+      "inputNames": [
+        "x",
+        "x",
+        "x"
+      ],
+      "classification": "returned",
+      "exact": true,
+      "outputNames": [],
+      "elapsedMs": 0.023534999999924366
+    },
+    {
+      "group": "order-oracle",
+      "name": "head",
+      "needle": "x",
+      "inputNames": [
+        "x",
+        "a",
+        "b"
+      ],
+      "classification": "returned",
+      "exact": true,
+      "outputNames": [
+        "a",
+        "b"
+      ],
+      "elapsedMs": 0.10634700000002795
+    },
+    {
+      "group": "order-oracle",
+      "name": "middle",
+      "needle": "x",
+      "inputNames": [
+        "a",
+        "x",
+        "b"
+      ],
+      "classification": "returned",
+      "exact": true,
+      "outputNames": [
+        "a",
+        "b"
+      ],
+      "elapsedMs": 0.09144800000001396
+    },
+    {
+      "group": "order-oracle",
+      "name": "tail",
+      "needle": "x",
+      "inputNames": [
+        "a",
+        "b",
+        "x"
+      ],
+      "classification": "returned",
+      "exact": true,
+      "outputNames": [
+        "a",
+        "b"
+      ],
+      "elapsedMs": 0.02553699999998571
+    },
+    {
+      "group": "order-oracle",
+      "name": "duplicates-order",
+      "needle": "x",
+      "inputNames": [
+        "b",
+        "x",
+        "a",
+        "x",
+        "c",
+        "x"
+      ],
+      "classification": "returned",
+      "exact": true,
+      "outputNames": [
+        "b",
+        "a",
+        "c"
+      ],
+      "elapsedMs": 0.12017800000000989
+    },
+    {
+      "group": "order-oracle",
+      "name": "empty-name",
+      "needle": "",
+      "inputNames": [
+        "",
+        "a",
+        "",
+        "b"
+      ],
+      "classification": "returned",
+      "exact": true,
+      "outputNames": [
+        "a",
+        "b"
+      ],
+      "elapsedMs": 0.02571499999999105
+    },
+    {
+      "group": "path-oracle",
+      "name": "native-IO-shadow",
+      "classification": "returned",
+      "exact": true,
+      "value": true,
+      "elapsedMs": 2.8432730000000674
+    },
+    {
+      "group": "path-oracle",
+      "name": "single-probe",
+      "classification": "returned",
+      "exact": true,
+      "textBytes": 0,
+      "elapsedMs": 0.7331959999999071
+    },
+    {
+      "group": "export-prefix-only",
+      "bookLength": 0,
+      "exportPrefix": 0,
+      "definitionRows": 0,
+      "classification": "returned",
+      "exact": true,
+      "textBytes": 0,
+      "elapsedMs": 0.09928400000001147
+    },
+    {
+      "group": "export-prefix-only",
+      "bookLength": 0,
+      "exportPrefix": 2048,
+      "definitionRows": 2048,
+      "classification": "returned",
+      "exact": true,
+      "textBytes": 0,
+      "elapsedMs": 11.60782400000005
+    },
+    {
+      "group": "export-prefix-only",
+      "bookLength": 0,
+      "exportPrefix": 4271,
+      "definitionRows": 4271,
+      "classification": "returned",
+      "exact": true,
+      "textBytes": 0,
+      "elapsedMs": 23.852099000000067
+    },
+    {
+      "group": "export-prefix-only",
+      "bookLength": 0,
+      "exportPrefix": 4290,
+      "definitionRows": 4290,
+      "classification": "returned",
+      "exact": true,
+      "textBytes": 0,
+      "elapsedMs": 9.984327000000008
+    },
+    {
+      "group": "filter-depth",
+      "bookLength": 1,
+      "needle": "IO",
+      "classification": "returned",
+      "exact": true,
+      "outputRows": 0,
+      "elapsedMs": 0.1413750000000391
+    },
+    {
+      "group": "combined-depth",
+      "bookLength": 1,
+      "exportPrefix": 0,
+      "definitionRows": 1,
+      "ioProbes": 1,
+      "classification": "returned",
+      "exact": true,
+      "textBytes": 0,
+      "elapsedMs": 0.1560899999999492
+    },
+    {
+      "group": "combined-depth",
+      "bookLength": 1,
+      "exportPrefix": 2048,
+      "definitionRows": 2049,
+      "ioProbes": 1,
+      "classification": "returned",
+      "exact": true,
+      "textBytes": 0,
+      "elapsedMs": 6.649847999999793
+    },
+    {
+      "group": "combined-depth",
+      "bookLength": 1,
+      "exportPrefix": 4271,
+      "definitionRows": 4272,
+      "ioProbes": 1,
+      "classification": "returned",
+      "exact": true,
+      "textBytes": 0,
+      "elapsedMs": 3.3248369999998886
+    },
+    {
+      "group": "combined-depth",
+      "bookLength": 1,
+      "exportPrefix": 4290,
+      "definitionRows": 4291,
+      "ioProbes": 1,
+      "classification": "returned",
+      "exact": true,
+      "textBytes": 0,
+      "elapsedMs": 3.1225349999999708
+    },
+    {
+      "group": "filter-depth",
+      "bookLength": 4096,
+      "needle": "IO",
+      "classification": "returned",
+      "exact": true,
+      "outputRows": 4095,
+      "elapsedMs": 15.939876999999797
+    },
+    {
+      "group": "combined-depth",
+      "bookLength": 4096,
+      "exportPrefix": 0,
+      "definitionRows": 1,
+      "ioProbes": 1,
+      "classification": "returned",
+      "exact": true,
+      "textBytes": 0,
+      "elapsedMs": 0.9606519999999819
+    },
+    {
+      "group": "combined-depth",
+      "bookLength": 4096,
+      "exportPrefix": 2048,
+      "definitionRows": 2049,
+      "ioProbes": 1,
+      "classification": "returned",
+      "exact": true,
+      "textBytes": 0,
+      "elapsedMs": 6.553612000000157
+    },
+    {
+      "group": "combined-depth",
+      "bookLength": 4096,
+      "exportPrefix": 4271,
+      "definitionRows": 4272,
+      "ioProbes": 1,
+      "classification": "returned",
+      "exact": true,
+      "textBytes": 0,
+      "elapsedMs": 7.995361000000003
+    },
+    {
+      "group": "combined-depth",
+      "bookLength": 4096,
+      "exportPrefix": 4290,
+      "definitionRows": 4291,
+      "ioProbes": 1,
+      "classification": "returned",
+      "exact": true,
+      "textBytes": 0,
+      "elapsedMs": 4.041906000000154
+    },
+    {
+      "group": "filter-depth",
+      "bookLength": 8192,
+      "needle": "IO",
+      "classification": "returned",
+      "exact": true,
+      "outputRows": 8191,
+      "elapsedMs": 10.844556000000011
+    },
+    {
+      "group": "combined-depth",
+      "bookLength": 8192,
+      "exportPrefix": 0,
+      "definitionRows": 1,
+      "ioProbes": 1,
+      "classification": "returned",
+      "exact": true,
+      "textBytes": 0,
+      "elapsedMs": 1.4768169999999827
+    },
+    {
+      "group": "combined-depth",
+      "bookLength": 8192,
+      "exportPrefix": 2048,
+      "definitionRows": 2049,
+      "ioProbes": 1,
+      "classification": "returned",
+      "exact": true,
+      "textBytes": 0,
+      "elapsedMs": 3.5090099999999893
+    },
+    {
+      "group": "combined-depth",
+      "bookLength": 8192,
+      "exportPrefix": 4271,
+      "definitionRows": 4272,
+      "ioProbes": 1,
+      "classification": "returned",
+      "exact": true,
+      "textBytes": 0,
+      "elapsedMs": 5.34020200000009
+    },
+    {
+      "group": "combined-depth",
+      "bookLength": 8192,
+      "exportPrefix": 4290,
+      "definitionRows": 4291,
+      "ioProbes": 1,
+      "classification": "returned",
+      "exact": true,
+      "textBytes": 0,
+      "elapsedMs": 19.19639899999993
+    },
+    {
+      "group": "filter-depth",
+      "bookLength": 12288,
+      "needle": "IO",
+      "classification": "stack-overflow",
+      "exception": {
+        "name": "RangeError",
+        "message": "Maximum call stack size exceeded.",
+        "stack": "RangeError: Maximum call stack size exceeded.\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)"
+      },
+      "elapsedMs": 3.9418900000000576
+    },
+    {
+      "group": "combined-depth",
+      "bookLength": 12288,
+      "exportPrefix": 0,
+      "definitionRows": 1,
+      "ioProbes": 1,
+      "classification": "stack-overflow",
+      "exception": {
+        "name": "RangeError",
+        "message": "Maximum call stack size exceeded.",
+        "stack": "RangeError: Maximum call stack size exceeded.\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)"
+      },
+      "elapsedMs": 2.3136939999999413
+    },
+    {
+      "group": "combined-depth",
+      "bookLength": 12288,
+      "exportPrefix": 2048,
+      "definitionRows": 2049,
+      "ioProbes": 1,
+      "classification": "stack-overflow",
+      "exception": {
+        "name": "RangeError",
+        "message": "Maximum call stack size exceeded.",
+        "stack": "RangeError: Maximum call stack size exceeded.\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)"
+      },
+      "elapsedMs": 3.9073490000000675
+    },
+    {
+      "group": "combined-depth",
+      "bookLength": 12288,
+      "exportPrefix": 4271,
+      "definitionRows": 4272,
+      "ioProbes": 1,
+      "classification": "stack-overflow",
+      "exception": {
+        "name": "RangeError",
+        "message": "Maximum call stack size exceeded.",
+        "stack": "RangeError: Maximum call stack size exceeded.\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)"
+      },
+      "elapsedMs": 5.7796099999998205
+    },
+    {
+      "group": "combined-depth",
+      "bookLength": 12288,
+      "exportPrefix": 4290,
+      "definitionRows": 4291,
+      "ioProbes": 1,
+      "classification": "stack-overflow",
+      "exception": {
+        "name": "RangeError",
+        "message": "Maximum call stack size exceeded.",
+        "stack": "RangeError: Maximum call stack size exceeded.\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)\n    at $jd$index_95_remove$scc (/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs:1494:31)"
+      },
+      "elapsedMs": 6.104471999999987
+    }
+  ],
+  "engine": {
+    "execPath": "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+    "execArgv": [],
+    "versions": {
+      "node": "26.3.0",
+      "bun": "1.4.3",
+      "boringssl": "41bf9b59c2ebf277a7aa427e1ecad5cc80dd4d4f",
+      "openssl": "1.1.0",
+      "llhttp": "9.4.2",
+      "libarchive": "27cbc7827172698143e440801fc0ba39ccb4f1f5",
+      "mimalloc": "92ef6587c57b262f6e6abf513f7776a2f8d12aeb",
+      "picohttpparser": "f4d94b48b31e0abae029ebeafcfd9ca0680ede58",
+      "uwebsockets": "c6da4a4d3010e5553438c60f6bd76d981976867c",
+      "webkit": "0c06faadf65bf8e8c8ad3a5a8aca83e1e9ed653f",
+      "zig": "04e7f6ac1e009525bc00934f20199c68f04e0a24",
+      "zlib": "12731092979c6d07f42da27da673a9f6c7b13586",
+      "tinycc": "05f0fafaa3be31e31d7b4b5c17dc60f62c991171",
+      "lolhtml": "725ce499aa9b71e38b7a2d0a9fbb6d7294a4079e",
+      "ares": "c7a3138dcfe3bb0eaaf10c0c24c36dc66dc790ab",
+      "libdeflate": "92e6a0db9fa848d742f9eb286c92afc60f2c3dda",
+      "usockets": "c6da4a4d3010e5553438c60f6bd76d981976867c",
+      "lshpack": "cf0f70dd10b352194c97448eb5d00b4aa484f531",
+      "zstd": "f8745da6ff1ad1e7bab384bd1f9d742439278e99",
+      "v8": "14.6.202.34-node.20",
+      "uv": "1.48.0",
+      "napi": "10",
+      "icu": "78.3",
+      "unicode": "17.0",
+      "sqlite": "3.53.4",
+      "typescript": "7.0.2",
+      "modules": "147"
+    },
+    "resourceEnvironment": {
+      "BUN_JSC_maxPerThreadStackUsage": null,
+      "BUN_JSC_dumpOptions": null
+    }
+  },
+  "plan": {
+    "bookLengths": [
+      1,
+      4096,
+      8192,
+      12288
+    ],
+    "exportPrefixes": [
+      0,
+      2048,
+      4271,
+      4290
+    ],
+    "warmup": 64,
+    "order": "oracle, warmup, skip-only, each book: filter then ascending export prefixes"
+  },
+  "scope": "Finite helper diagnosis in an unchanged B2 image. Synthetic aggregate inputs are not checked Bend programs. No source acceptance, public-library completion, B3 reproduction, exact stack limit, or compiler correctness claim.",
+  "policy": "Only declared list/term/definition objects and existing exported functions. A caught stack overflow is an observation; unexpected exceptions or oracle differences fail the diagnostic. No automatic retry or stack adjustment. External host resource settings are recorded, not set.",
+  "authority": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/report.json",
+    "bytes": 16190,
+    "sha256": "aa28a1e964621a421476b8a8bbf5ef5215e25427e396cc0b340755a9ffff083d"
+  },
+  "image": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/js-b203/api.mjs",
+    "bytes": 4993656,
+    "sha256": "9c90beef94e6cc4b3d892c0d0b6b9aaa581b96b8ef9fdee592cf6c5d55ba5730"
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/snapshot08/compiler.bend",
+    "bytes": 3179190,
+    "sha256": "06dcc91b2df46978607b6dd50707aca3c8ddd59dd1a91fbf71a9e6b0ed61605c"
+  },
+  "base": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase182/bend2/base.bend",
+    "bytes": 87698,
+    "sha256": "ff90fb27ed19d5c7a6165170f28ad81562bf345b9a9e6134e5c2e326beff9de4"
+  },
+  "exports": {
+    "required": [
+      "index_remove",
+      "jd_host_exports",
+      "j_io_type"
+    ],
+    "available": [
+      "index_remove",
+      "jd_host_exports",
+      "j_io_type"
+    ],
+    "total": 4061
+  },
+  "warmup": {
+    "iterations": 64,
+    "bookLength": 16,
+    "exportPrefix": 8,
+    "elapsedMs": 15.690122999999971
+  },
+  "oraclesPassed": true,
+  "observedStackOverflow": true,
+  "unexpectedFailures": 0
+}

@@ -10,7 +10,7 @@ The release selected by [`current.json`](../../manifests/current.json) is
 installed: the qualified QBE N2, genuine JS B2, and public C-emitting native N1.
 The selector records their exact source/artifact identities and completed gates;
 the [installation audit](../../dist/current-audit.json) records the promotion
-decision. The [Phase174 report](../../../implementation/phase174/README.md)
+decision. The [Phase182 report](../../../implementation/phase182/README.md)
 records the latest promotion, exact current-source binding and rollback. Future
 candidates must pass the same audit below.
 

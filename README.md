@@ -15,7 +15,7 @@ That's Bend - and nothing else.
 This fork maintains the Bend2 compiler in [`selfhost/src/`](selfhost/src), with
 one [source manifest](selfhost/src/compiler.json) and explicit JS, C and direct
 QBE interfaces. Compiler algorithms remain written in Bend. The pinned upstream
-language is `059266225b77c8ca256ac6b25ee5c21449bab151` (Bend2.0.36).
+language is `9a4223d577ba56a0cb53d1fd952d2b481c38930f` (Bend2.0.40).
 
 Start with the [maintained workflow](docs/self_hosted/workflow.md). It covers
 source assembly, authenticated compiler assets, bootstrap generations and cold
@@ -24,19 +24,19 @@ installed release or qualify every host/target combination. Existing public
 entry points remain `node selfhost/cli.mjs FILE --run` and
 `selfhost/bend FILE -o OUTPUT.c`.
 
-The maintained source includes [Phase175 frontend improvements](implementation/phase175/README.md):
-reused parser lookahead and indexed report-name collection. A fresh fixed-source
-pair reduces complete QBE builds from 185.55s to 178.94s (3.56% less time).
-Native self-reproduction, 64 correctness cases and all 45 timed QBE product
-comparisons pass; six JS and six C products also match. The installed release
-remains Phase171; the report identifies the separately qualified new N2 image.
+The [Phase182 migration](implementation/phase182/README.md) installs the current
+compiler across JS B2, public C-emitting native N1 and direct-QBE N2. Native
+N1/N2/Q3 and JavaScript B2/B3 reproduce their complete emitted products. Finite
+backend, public-command, runtime, session and independent proof gates pass.
+See the [compatibility boundaries](docs/self_hosted/upstream-2.0.40.md) and the
+[JS self-hosting stack policy](implementation/phase182/js-stack.md).
 
-The [Phase174 publication](implementation/phase174/README.md) installs the measured
-Phase171 compiler across QBE, JS and C. A fresh same-source pair improved from
-195.1s to 188.4s; that publication-source self-build took 188.0s with prepared
-Base. Native and JS self-reproduction, cross-backend qualification and installed
-commands pass. Ordinary/timed QBE and JS/C program products remain byte-identical
-to qualified references. See the report for exact inputs, timing scope and rollback.
+Complete native acquisition took about183s per generation on the recorded
+source/toolchain. This is not a controlled speedup measurement; historical
+program-runtime scores do not transfer automatically to the new runtime.
+The [Phase175](implementation/phase175/README.md) and
+[Phase174](implementation/phase174/README.md) reports retain prior measurements.
+The assembly backend remains experimental and was not requalified by this update.
 
 | Task | Maintained entry |
 | --- | --- |

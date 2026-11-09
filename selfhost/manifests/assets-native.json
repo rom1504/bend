@@ -2,28 +2,12 @@
   "kind": "bend-build-assets",
   "version": 1,
   "complete": true,
-  "upstream": "059266225b77c8ca256ac6b25ee5c21449bab151",
+  "upstream": "9a4223d577ba56a0cb53d1fd952d2b481c38930f",
   "assets": {
-    "qbe-n2": {
-      "file": "selfhost/dist/qbe/bend",
-      "bytes": 16122328,
-      "sha256": "8214b3f3400b0d0bead3ef137e6d8b75b8c8b18f6da012dfa4673e4468d9f2ac",
-      "executable": true
-    },
-    "qbe-api": {
-      "file": "selfhost/dist/qbe/hosted-api.mjs",
-      "bytes": 2772210,
-      "sha256": "cf5721e59b37c0b966665536501e70dae7018c970b96d990dcd640c69e85a1ea"
-    },
     "qbe-runtime": {
-      "file": "selfhost/.assets/native/qbe-runtime.o",
-      "bytes": 119096,
-      "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
-    },
-    "prepared-base": {
-      "file": "selfhost/.assets/base/base.p130",
-      "bytes": 2612691,
-      "sha256": "984fad041a0ba855ea0aaedd384485afa2153da644655c00882eb50ace33817f"
+      "file": "selfhost/dist/qbe/runtime.o",
+      "bytes": 125264,
+      "sha256": "67141c4505a0355901d857c4ba81dfc17559329e536818a843ce68615384d13e"
     },
     "qbe": {
       "file": "selfhost/.assets/bin/qbe",
@@ -38,9 +22,9 @@
       "executable": true
     },
     "base": {
-      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
-      "bytes": 75064,
-      "sha256": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf"
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase182/bend2/base.bend",
+      "bytes": 87698,
+      "sha256": "ff90fb27ed19d5c7a6165170f28ad81562bf345b9a9e6134e5c2e326beff9de4"
     },
     "assembler": {
       "file": "/usr/bin/x86_64-linux-gnu-as",
@@ -61,259 +45,305 @@
       "executable": true
     },
     "js-runtime": {
-      "file": "selfhost/src/runtime/js/direct.mjs",
-      "bytes": 13862,
-      "sha256": "7fe4fbb3ddfdd3c7ea9ccd8d71cecb8f3ce51cd678a8fb7d95fd02cc70aba575"
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/js/direct.mjs",
+      "bytes": 15965,
+      "sha256": "42bb11fca4d1a2741817878b0e19a2fcda47eebe487449c047cef77e849b27bb"
     },
     "c-runtime": {
-      "file": "selfhost/src/runtime/native/runtime.c",
-      "bytes": 83683,
-      "sha256": "9e1c59078878be94052cb4d2d63a713e19e29b41ed3f94b034f2175a50efd0a9"
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/runtime.c",
+      "bytes": 85073,
+      "sha256": "d0c7d350594aa5b2d529b34f5b3f2d681f5bc8c93e172211bb973a04f67d4678"
     },
     "c-effect-args": {
-      "file": "selfhost/src/runtime/native/effs/args.c",
-      "bytes": 351,
-      "sha256": "7209a5fa11396fa8b0667a6738c913c40f554797e442c847a25e13a5f69676e0"
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/args.c",
+      "bytes": 703,
+      "sha256": "2fca06f860ca0fe1a7cf3ff6bb89498598a75c0a44bcb6d8261ca644783808a1"
     },
     "c-effect-audio": {
-      "file": "selfhost/src/runtime/native/effs/audio.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/audio.c",
       "bytes": 6832,
       "sha256": "049ac826d50def604c18cd4211d67573c4e27f4bc2600ce6c22e0dbe60c3783f"
     },
     "c-effect-audio_close": {
-      "file": "selfhost/src/runtime/native/effs/audio_close.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/audio_close.c",
       "bytes": 5368,
       "sha256": "c67f807f7400065f20045392d87ef7e73af209f1aa0ee34a1eb35d568d94feb5"
     },
     "c-effect-audio_open": {
-      "file": "selfhost/src/runtime/native/effs/audio_open.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/audio_open.c",
       "bytes": 5606,
       "sha256": "65df9665a396a7976b4fdfa556a73ec187e3b5e669e47888615cb0c63a42ce41"
     },
     "c-effect-audio_write": {
-      "file": "selfhost/src/runtime/native/effs/audio_write.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/audio_write.c",
       "bytes": 5898,
       "sha256": "0eaaef9f111e40224f4adc4c8978b9e35f08613996381ac9b72641e2aeb608c4"
     },
     "c-effect-chan": {
-      "file": "selfhost/src/runtime/native/effs/chan.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan.c",
       "bytes": 2108,
       "sha256": "31257d7f71c560863d66b96ee9296cea07dd997f147a1ccd1433cc0130993696"
     },
     "c-effect-chan_close": {
-      "file": "selfhost/src/runtime/native/effs/chan_close.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_close.c",
       "bytes": 306,
       "sha256": "d88e91ca179bfcdbf8580e75f1dbea4c5f240d3fbdb980a2ee24d1e662ff478a"
     },
     "c-effect-chan_new": {
-      "file": "selfhost/src/runtime/native/effs/chan_new.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_new.c",
       "bytes": 203,
       "sha256": "41d722added898f3a9eae186be969a7ca7f01bc3235331663b13319d14fb7ff2"
     },
     "c-effect-chan_recv": {
-      "file": "selfhost/src/runtime/native/effs/chan_recv.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_recv.c",
       "bytes": 743,
       "sha256": "d0de18c78d78d5a3f4890cd2423a332d3d03a7b2f85e82202561fa67b4d57b3c"
     },
     "c-effect-chan_send": {
-      "file": "selfhost/src/runtime/native/effs/chan_send.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/chan_send.c",
       "bytes": 673,
       "sha256": "1fc9e4857c440771e66ff83b61e6012727af51e62416ad818f5122e237784afc"
     },
     "c-effect-file_close": {
-      "file": "selfhost/src/runtime/native/effs/file_close.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_close.c",
       "bytes": 243,
       "sha256": "befd465a31b88936d772222d26b1019ea7330e59e6327d8ba90584c85e8b2fb3"
     },
     "c-effect-file_open": {
-      "file": "selfhost/src/runtime/native/effs/file_open.c",
-      "bytes": 1113,
-      "sha256": "f42a8bcc142b9003c7f6ca99287ca09c14f9efcbe15dea929c90c2fa062746e7"
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_open.c",
+      "bytes": 1672,
+      "sha256": "47cfeb9c7dcb62f09b6ff26268697e026e0b0609e94343e48dc036f790872916"
     },
     "c-effect-file_read": {
-      "file": "selfhost/src/runtime/native/effs/file_read.c",
-      "bytes": 2130,
-      "sha256": "6af44266ca83ab55b2dd3bf20c17eea6bfb7a7a678908cfbf3579adef31fb678"
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_read.c",
+      "bytes": 3427,
+      "sha256": "dfa1245a9e97468d94d23fdd8ed716189f34517d0da3758fd2ace45182824f49"
     },
     "c-effect-file_read_at": {
-      "file": "selfhost/src/runtime/native/effs/file_read_at.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_read_at.c",
       "bytes": 1009,
       "sha256": "689499b396a634a3ebb21ad2cc3846f1979b8f2747c07c15a38ee2f07c904b1c"
     },
     "c-effect-file_read_bytes": {
-      "file": "selfhost/src/runtime/native/effs/file_read_bytes.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_read_bytes.c",
       "bytes": 987,
       "sha256": "810e08bfe4439e71dc4bae03eeae680689af8092e144b53faacd75df198ef93d"
     },
     "c-effect-file_size": {
-      "file": "selfhost/src/runtime/native/effs/file_size.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_size.c",
       "bytes": 771,
       "sha256": "09906f3839f0f0fba1eea944c948e35f8e03627dc2b78e8debb43e0556f5d5d8"
     },
     "c-effect-file_write": {
-      "file": "selfhost/src/runtime/native/effs/file_write.c",
-      "bytes": 1423,
-      "sha256": "565dff20204e1e535e188b983cda6d6001d0e5dc37cfdf981960c07a9e154ee2"
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_write.c",
+      "bytes": 2372,
+      "sha256": "517608227d0c3c9aef64050e585e031277d8b3358635c2ac3331b1d198b1ffe4"
     },
     "c-effect-file_write_bytes": {
-      "file": "selfhost/src/runtime/native/effs/file_write_bytes.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/file_write_bytes.c",
       "bytes": 1320,
       "sha256": "80784b7308c00f74ffae50ec0d8278227250edb8edd71a9e33c701482438f097"
     },
     "c-effect-get_env": {
-      "file": "selfhost/src/runtime/native/effs/get_env.c",
-      "bytes": 646,
-      "sha256": "62255e46c7e0c43baea62366830c4a5badb11cba517c0aa17f952f432f46d4a3"
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/get_env.c",
+      "bytes": 773,
+      "sha256": "3f69e8d60e59b76ba7626c8ce10d30392934076010601ace3ff2b62ade89b298"
     },
     "c-effect-listener_close": {
-      "file": "selfhost/src/runtime/native/effs/listener_close.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/listener_close.c",
       "bytes": 267,
       "sha256": "11247352a8311b066fff27ed85958598214ece80f23a7ac59ee981ea569351ec"
     },
     "c-effect-now": {
-      "file": "selfhost/src/runtime/native/effs/now.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/now.c",
       "bytes": 198,
       "sha256": "da5fde65701c4fadc7560625c9615b4d60b2eefbd7b6bbe1aedda61887b825b9"
     },
     "c-effect-print": {
-      "file": "selfhost/src/runtime/native/effs/print.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/print.c",
       "bytes": 397,
       "sha256": "709500d2ace6e2eaeec0f5f1e4373d4ec5e402b3c1e289bd70dfef7e2a635b26"
     },
     "c-effect-print_err": {
-      "file": "selfhost/src/runtime/native/effs/print_err.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/print_err.c",
       "bytes": 236,
       "sha256": "72781d2adc88a4791d5530c9deff20824c38d5aa1ba43fb05aaa6a697e19f4b6"
     },
     "c-effect-process_run": {
-      "file": "selfhost/src/runtime/native/effs/process_run.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/process_run.c",
       "bytes": 9149,
       "sha256": "c12e5a182de9fdc5ef83d65f9f7c2c5746865d1049e5f3700438f8ac317b17c3"
     },
     "c-effect-random_u32": {
-      "file": "selfhost/src/runtime/native/effs/random_u32.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/random_u32.c",
       "bytes": 741,
       "sha256": "10ef9045dcd539bc0ff609e61c77d585fb998ceb48656944d62727716263ee2d"
     },
     "c-effect-sleep": {
-      "file": "selfhost/src/runtime/native/effs/sleep.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/sleep.c",
       "bytes": 206,
       "sha256": "77e212d3baeec0b3dc0a9c7f630b43094986e433c049049d354a9681719e2ecd"
     },
     "c-effect-socket_close": {
-      "file": "selfhost/src/runtime/native/effs/socket_close.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/socket_close.c",
       "bytes": 255,
       "sha256": "6e2fd1717a2fab133813af88fc0f5b5a8ce44c23bf411f269e71aac38671562e"
     },
     "c-effect-spawn": {
-      "file": "selfhost/src/runtime/native/effs/spawn.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/spawn.c",
       "bytes": 218,
       "sha256": "fb3dac6efa993c51f9d7a668cf8da2cac1148380b72cc18a558cba9ba70c01f3"
     },
     "c-effect-tcp_accept": {
-      "file": "selfhost/src/runtime/native/effs/tcp_accept.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_accept.c",
       "bytes": 909,
       "sha256": "e0f0cf4199c278aec722e3c9b81ff879fcec31ec96ebaf66a954db673cf535f8"
     },
     "c-effect-tcp_connect": {
-      "file": "selfhost/src/runtime/native/effs/tcp_connect.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_connect.c",
       "bytes": 1294,
       "sha256": "ae1515d0ff57215b03888e76cfe4ee485750ec226c28eed05d56e417f0f84f58"
     },
     "c-effect-tcp_listen": {
-      "file": "selfhost/src/runtime/native/effs/tcp_listen.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_listen.c",
       "bytes": 1013,
       "sha256": "6212a0bc400e960e8b486f85a091cd4964f92b0546475481271c0f369a234d8c"
     },
     "c-effect-tcp_poll": {
-      "file": "selfhost/src/runtime/native/effs/tcp_poll.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_poll.c",
       "bytes": 1386,
       "sha256": "feb6fa3f7c04b3143c71593e2c17088394d11474bd87ca791fb71fbf9f9a8f82"
     },
     "c-effect-tcp_recv": {
-      "file": "selfhost/src/runtime/native/effs/tcp_recv.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_recv.c",
       "bytes": 1979,
       "sha256": "8378e28f0723dbeb2635b9909b01f8dc63dcac30161f79b8b743bd8037e45b40"
     },
     "c-effect-tcp_send": {
-      "file": "selfhost/src/runtime/native/effs/tcp_send.c",
-      "bytes": 2216,
-      "sha256": "85c1c9ff20d28c33968299c738b19ff752c768c72a53e071533a6960c0329a5a"
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/tcp_send.c",
+      "bytes": 2293,
+      "sha256": "ba18f464520a71edcf0d44eec9d4936b2f107cc9a984c61c58f67670cea7cef8"
     },
     "c-effect-thread_count": {
-      "file": "selfhost/src/runtime/native/effs/thread_count.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/thread_count.c",
       "bytes": 481,
       "sha256": "39515c611a2b42687fb670179f3d9032af1878727356754959061125d40fa7e7"
     },
     "c-effect-udp_bind": {
-      "file": "selfhost/src/runtime/native/effs/udp_bind.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_bind.c",
       "bytes": 882,
       "sha256": "b30150927ffde3162d62012b67d43d95c79754f9539279628d2ad5bc9c040408"
     },
     "c-effect-udp_poll": {
-      "file": "selfhost/src/runtime/native/effs/udp_poll.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_poll.c",
       "bytes": 913,
       "sha256": "66504dbbc09ab346e04cca7a22c60aacc8866555ac143088603cb4b568a64f71"
     },
     "c-effect-udp_recv_from": {
-      "file": "selfhost/src/runtime/native/effs/udp_recv_from.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_recv_from.c",
       "bytes": 1324,
       "sha256": "4fc0f4e4ddeaef51bc4434b64e9cfcf3888b1470e534fe6ba27f80e48d2b8aef"
     },
     "c-effect-udp_send_to": {
-      "file": "selfhost/src/runtime/native/effs/udp_send_to.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/udp_send_to.c",
       "bytes": 1440,
       "sha256": "71f92e41fb4cadee6714a0e066c22225d015f9e708cb58393b539cc6ee011721"
     },
     "c-effect-window": {
-      "file": "selfhost/src/runtime/native/effs/window.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window.c",
       "bytes": 23879,
       "sha256": "7bda00a55917f11ff1fa532b1406ec5c1a8a7eef6f6ba2a933dd958256e0a409"
     },
     "c-effect-window_close": {
-      "file": "selfhost/src/runtime/native/effs/window_close.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window_close.c",
       "bytes": 916,
       "sha256": "655afbdf8a5f7fa80963bad64b43c8dfe7ec1f80896db381792d0d6933f3be2d"
     },
     "c-effect-window_frame": {
-      "file": "selfhost/src/runtime/native/effs/window_frame.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window_frame.c",
       "bytes": 11055,
       "sha256": "01dc840b2145efb8c91b4ffe7360e3520753f59c42e122703c3a6190c50e1aa4"
     },
     "c-effect-window_open": {
-      "file": "selfhost/src/runtime/native/effs/window_open.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window_open.c",
       "bytes": 6927,
       "sha256": "1be9c669b47a44716b9cef1aafaafa1ed2a2268730fab475efa762cf368fc21d"
     },
     "c-effect-window_set_title": {
-      "file": "selfhost/src/runtime/native/effs/window_set_title.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/window_set_title.c",
       "bytes": 1141,
       "sha256": "cd60a39ca4084794f3e7aef939de8c7e02ef0ae2158bf52a69f93c21a59ebba5"
     },
     "c-effect-write": {
-      "file": "selfhost/src/runtime/native/effs/write.c",
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/native/effs/write.c",
       "bytes": 370,
       "sha256": "c1bcd80d50c4901027c801cdd8d7464ea3029361115ac47044c992ce2235a8ac"
     },
     "upstream-bend": {
-      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/bend.ts",
-      "bytes": 138101,
-      "sha256": "1d133151652b597a1a035c77c172475e6de096da37f3b9e3adc23c2f75bdfe49"
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase182/bend2/bend.ts",
+      "bytes": 144776,
+      "sha256": "7e4fc845734dd6faccd620409c6232b1f02b793a0628d9636cae300580ce3035"
     },
     "upstream-comp": {
-      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/comp.ts",
-      "bytes": 185124,
-      "sha256": "2b13224ba09a9e39e37cccf06e449c1bdafe5e03a81641654f7d0e455507629c"
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase182/bend2/comp.ts",
+      "bytes": 190764,
+      "sha256": "d637edcd9bb6e30d82071967948fe58c0cdf75b4285414f8da07aa69a1897f32"
     },
     "upstream-main": {
-      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/main.ts",
-      "bytes": 35211,
-      "sha256": "407c0196a47e464640c6557cb06d230016270a40f28ea4250f00936ab79c2f8e"
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase182/bend2/main.ts",
+      "bytes": 45348,
+      "sha256": "1aabcfdf921a7a0fc971f1982787cbd385afe3441d3e2cc640c8f0e5c0b5630e"
     },
     "upstream-safe": {
-      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/safe.ts",
-      "bytes": 65468,
-      "sha256": "bf495d64c03caa7a2558aaae5e172cd7743b9aa5470c4d33ad86634e23d81ffc"
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase182/bend2/safe.ts",
+      "bytes": 71956,
+      "sha256": "9c45b3cec5b931be19036ac447587c7093f86fcf64b09d104f4b657b8555ac21"
+    },
+    "c-runtime-template": {
+      "file": "selfhost/dist/native/runtime-template.json",
+      "bytes": 88728,
+      "sha256": "2004ae0d9bd65fc0d9d5559914fc77e1d2e2ac174e9ee03b949d4bfa9ddd65ed"
+    },
+    "prepared-base": {
+      "file": "selfhost/dist/qbe/base.p130",
+      "bytes": 2827018,
+      "sha256": "3b1d2d23ac05818fea2ee13442a02b6ef8f57eb6b4b1842851e8900238f539b9"
+    },
+    "prepared-decimal-base": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/base-carrier05/base.p88",
+      "bytes": 1193037,
+      "sha256": "2d0864418573b67cb384cbd07248d2b784f31ccf250ad6940db37a6cd33a437c"
+    },
+    "base-carrier-receipt": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/base-carrier05/report.json",
+      "bytes": 9916,
+      "sha256": "e3722c00ea83e335ca700fc25e16c3162dfad394f053663a5369933448404c03"
+    },
+    "c-runtime-template-receipt": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/runtime-template02/report.json",
+      "bytes": 3083,
+      "sha256": "3ee1558361bd8365aa953976453f8f7cf5748ea108704ff49b89faf389bb7bb9"
+    },
+    "js-direct-runtime": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/js/direct.mjs",
+      "bytes": 15965,
+      "sha256": "42bb11fca4d1a2741817878b0e19a2fcda47eebe487449c047cef77e849b27bb"
+    },
+    "js-legacy-runtime": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime.mjs",
+      "bytes": 61250,
+      "sha256": "913b6a850c60377dbb13ef98db2811b6c8383ee9fa6a6fc16fcad9c68f8afc54"
+    },
+    "qbe-n2": {
+      "file": "selfhost/dist/qbe/bend",
+      "bytes": 16193152,
+      "sha256": "4f456b12bff06de9c7a980076af59984995b4b6364e85d6249bc47431e23971f",
+      "executable": true
+    },
+    "qbe-api": {
+      "file": "selfhost/dist/qbe/hosted-api.mjs",
+      "bytes": 3545490,
+      "sha256": "ca1662a40222debb9460c82fa55d83537ed77bf9cb9bbea456ad263cacac096f"
     }
   },
   "images": {
@@ -325,13 +355,15 @@
       ],
       "protocol": "qbe-source-v1",
       "sourceIdentity": {
-        "bytes": 3161409,
-        "sha256": "74cd7de3e5076490e20ba0218d4c9254853be72562946b9ef66fed6c10c7a53a"
+        "bytes": 3179190,
+        "sha256": "06dcc91b2df46978607b6dd50707aca3c8ddd59dd1a91fbf71a9e6b0ed61605c"
       },
       "linkedRuntime": {
-        "bytes": 119096,
-        "sha256": "2d07832382a11d7e993124ecc70452e4e1a3b7f753cf429343e1183cd8e493a3"
+        "file": "selfhost/dist/qbe/runtime.o",
+        "bytes": 125264,
+        "sha256": "67141c4505a0355901d857c4ba81dfc17559329e536818a843ce68615384d13e"
       },
+      "runtimeArgumentConvention": "bend-rts-v1",
       "preparationModes": [
         "cache",
         "live"
@@ -341,16 +373,16 @@
       ],
       "qualificationReceipt": {
         "file": "selfhost/dist/qbe/evidence/qbe-qualified.json",
-        "bytes": 104715,
-        "sha256": "07e6fc1ccc195d019dd57e1ea0900ed3ba1606f35bcf90f80f802cbdee36a3fb"
+        "bytes": 105055,
+        "sha256": "b1c28aecb808abd040f8b6c64d9bd162025561fb092fef503199d3389ffd4116"
       },
       "sessionQualification": {
         "file": "selfhost/dist/qbe/evidence/qbe-session-bootstrap.json",
-        "bytes": 24322,
-        "sha256": "ad04e19974a003d19c145b96ea0b9384b1e75228292cec558f3b6d23aaf189d0"
+        "bytes": 24961,
+        "sha256": "4d139f67d9ecb12bc82680f78e787d7efbc2f9917621e71ee37c59b43c049aeb"
       },
-      "sessionScope": "Qualified positive native P140/2 byte batches; no native recovery or object-unit claim.",
-      "qualification": "Installed final Phase174 native N2; exact native64 and positive session gates."
+      "sessionScope": "Qualified positive native byte sessions; no native recovery or object-unit claim.",
+      "qualification": "Current same-source N2; native64 and positive native session gates."
     },
     "qbe-api": {
       "host": "js",
@@ -361,8 +393,8 @@
       "protocol": "qbe-api-v1",
       "checked": true,
       "sourceIdentity": {
-        "bytes": 3161409,
-        "sha256": "74cd7de3e5076490e20ba0218d4c9254853be72562946b9ef66fed6c10c7a53a"
+        "bytes": 3179190,
+        "sha256": "06dcc91b2df46978607b6dd50707aca3c8ddd59dd1a91fbf71a9e6b0ed61605c"
       },
       "exports": [
         "p88_cache_prepare",
@@ -394,36 +426,16 @@
       ],
       "acquisitionReceipt": {
         "file": "selfhost/dist/qbe/evidence/qbe-hosted-acquisition.json",
-        "bytes": 6027,
-        "sha256": "808b9e37e12b9817cb380c3f5fc128cb96e0c0eaad641d98696ea01d60377289"
+        "bytes": 6332,
+        "sha256": "f7f41400921d2bab92abd5d982ed7dce8099fa5a9b2d5087bd3b878d6856c445"
       },
       "qualificationReceipt": {
         "file": "selfhost/dist/qbe/evidence/qbe-hosted-qualified.json",
-        "bytes": 38011,
-        "sha256": "25a6ca25bab929ca2e1092829374928ce594d7db8f729f8c96de2b5b83586789"
+        "bytes": 38449,
+        "sha256": "b13441fa32a67fe23c29e8124fcfe6f3a2fa833e3682b8fd5b53e3f4b6350af6"
       },
-      "qualification": "Installed upstream-checked B1 cursor API; cache-only, with its own hosted QBE gate."
+      "qualification": "Current-source checked cache-only hosted QBE with its own focused19 gate."
     }
-  },
-  "preparedBase": {
-    "format": "p130-word-pair-v1",
-    "stamp": "p130-word-pair-v1:p88-private-base-text-1:8dec5b64d3900d61a208e51d92113194b91364c4f4d35d1903edb481d678ed03",
-    "sourceIdentity": {
-      "format": "p88-private-base-text-1",
-      "cache": "97368c6813bad695800b1404af84ab13e5e34b1d5f575828f8fcb681aa2b5627",
-      "api": "098320e8f3e40894156790d740ad205e386f375195b3c6741d67cca96e94e092",
-      "base": "99ac43f2b2bb3e3f39acdcedcecbbd3cb44749ce13969c827d6973fa66f7facf",
-      "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase66/bend2/base.bend",
-      "begin": 1,
-      "end": 75066,
-      "termAbi": 1,
-      "spanAbi": 3,
-      "worldVersion": 3
-    },
-    "sourceBegin": 1,
-    "sourceEnd": 75066,
-    "base": "base",
-    "carrier": "prepared-base"
   },
   "providers": {
     "js": {
@@ -477,7 +489,8 @@
         "c-effect-window_open",
         "c-effect-window_set_title",
         "c-effect-write"
-      ]
+      ],
+      "runtimeTemplate": "c-runtime-template"
     }
   },
   "runtimePolicies": {
@@ -486,7 +499,14 @@
       "gpu": "off",
       "bendHeapMutators": 1,
       "hostIoWorkersAllowed": true,
-      "providerScope": "Pinned direct-QBE foreign provider table; no arbitrary C embedding or foreign callbacks."
+      "providerScope": "Pinned direct-QBE foreign provider table; no arbitrary C embedding or foreign callbacks.",
+      "runtimeArgumentConvention": "bend-rts-v1"
+    },
+    "c-runtime": {
+      "runtimeArgumentConvention": "bend-rts-v1"
+    },
+    "upstream-comp": {
+      "runtimeArgumentConvention": "bend-rts-v1"
     }
   },
   "toolchains": {
@@ -520,5 +540,59 @@
       "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
     }
   },
-  "scope": "Operational pins only. Historical derivation is data in assets-native-provenance.json; no tool reads it during a build."
+  "scope": "Phase182 ordinary operational defaults. Installed images/evidence come from the audited proposal; historical manifests remain separate replay inputs.",
+  "preparedBase": {
+    "base": "base",
+    "carrier": "prepared-base",
+    "format": "p130-word-pair-v1",
+    "sourceIdentity": {
+      "format": "p88-private-base-text-1",
+      "cache": "fc203423f76e5bd1a99219dc4bfa5de11c2d2d6fe3eeb812ba52e22ef491cde4",
+      "api": "f5634ca05180c6aff6abb979e121012d288e17dea3a4eab58139072f2b76e71d",
+      "base": "ff90fb27ed19d5c7a6165170f28ad81562bf345b9a9e6134e5c2e326beff9de4",
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase182/bend2/base.bend",
+      "begin": 1,
+      "end": 87700,
+      "termAbi": 1,
+      "spanAbi": 3,
+      "worldVersion": 3
+    },
+    "sourceBegin": 1,
+    "sourceEnd": 87700,
+    "stamp": "p130-word-pair-v1:p88-private-base-text-1:2dd93239749b4f1e3ee2f4e9617e31aeb5df4cc0200a4c14054a6591e2f74212"
+  },
+  "publicCliAssets": {
+    "base": "base",
+    "decimalCarrier": "prepared-decimal-base",
+    "carrierReceipt": "base-carrier-receipt",
+    "runtime": "c-runtime",
+    "runtimeTemplate": "c-runtime-template",
+    "runtimeTemplateReceipt": "c-runtime-template-receipt",
+    "effects": {
+      "args": "c-effect-args",
+      "print": "c-effect-print",
+      "print_err": "c-effect-print_err",
+      "now": "c-effect-now",
+      "file_open": "c-effect-file_open",
+      "file_read": "c-effect-file_read",
+      "file_size": "c-effect-file_size",
+      "file_write": "c-effect-file_write",
+      "file_close": "c-effect-file_close"
+    }
+  },
+  "qualificationCatalog": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/qualification-catalog.json",
+    "bytes": 77408,
+    "sha256": "a5813cf2fb551136b1a8d88d8107d3ed10846b6aedaa65af8e70d17673752d47"
+  },
+  "publicCliCatalog": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/public-cli-catalog.json",
+    "bytes": 4080,
+    "sha256": "f7c5e25676344955d46b7fad1795f1017ed9287bda08077b7f99f65d7bf2236a"
+  },
+  "operationalParent": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase182/release-proposal01/promotion.json",
+    "bytes": 115204,
+    "sha256": "17180a8ab7fb3d3c377a0dd3e4c5cffbd586cad58793eaa3d3c37f137608b02c"
+  }
 }

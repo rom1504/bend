@@ -8,19 +8,19 @@ edit that map or the shared native/request/session adapters.
 
 All target commands below run inside one `tests/phase182/job.py` guard each,
 using fresh output names. `P182=selfhost/build/phase182`, `A` is the ordinary
-current asset manifest, and `N2=$P182/native-chain03/n2`. Reasonable initial outer
+current asset manifest, and `N2=$P182/native-chain04/n2`. Reasonable initial outer
 budgets are 180 seconds/128 MiB disk for API acquisition, 900 seconds/256 MiB for
 session gates, and 1800 seconds/512 MiB for hosted focused qualification. These
 are provisioning bounds, not timing predictions.
 
-The operational hosted QBE API has **23** exports. All are present in snapshot07.
+The operational hosted QBE API has **23** exports. All are present in snapshot08.
 `qbe-operational-exports.json` preserves the exact list from the authenticated
 installed acquisition receipt; the small seven-export acquisition is a different
 API profile. Acquire and qualify the operational profile:
 
 ```sh
 selfhost/.assets/bin/bun selfhost/tools/build/hosted.mjs acquire \
-  --source "$P182/snapshot07/compiler.bend" \
+  --source "$P182/snapshot08/compiler.bend" \
   --exports selfhost/tests/phase182/qbe-operational-exports.json \
   --engine selfhost/.assets/bin/bun --out "$P182/qbe-operational-api01"
 python3 -B selfhost/tools/build/qualification.py --assets "$A" \
@@ -43,7 +43,7 @@ protocol before using the normal adapter:
 python3 -B selfhost/tools/build/session/controls.py prepare --out "$P182/session-fixtures01"
 python3 -B selfhost/tests/phase182/native-session.py --assets "$A" \
   --image "$N2/program" --image-receipt "$N2/report.json" \
-  --source "$P182/snapshot07/compiler.bend" \
+  --source "$P182/snapshot08/compiler.bend" \
   --jobs "$P182/session-fixtures01/native-jobs.json" --seconds 600 \
   --out "$P182/native-session-bootstrap01"
 python3 -B selfhost/tools/build/session/session.py --assets "$A" \
@@ -67,7 +67,7 @@ boundary declarations:
 
 ```sh
 python3 -B selfhost/tools/build/session/prepare.py \
-  --source "$P182/snapshot07/compiler.bend" --out "$P182/session-source01"
+  --source "$P182/snapshot08/compiler.bend" --out "$P182/session-source01"
 selfhost/.assets/bin/bun selfhost/tools/build/hosted.mjs acquire \
   --source "$P182/session-source01/session.bend" \
   --exports selfhost/tools/build/session/exports.json \
@@ -142,7 +142,7 @@ count and SHA256. The runners use these only when `--catalog` is absent; an
 explicit catalog wins and manifests without these fields retain the historical
 fallback. Historical catalog contents and oracles are never rewritten.
 
-Candidate07's four `upstream-*` rows still point to Phase66. The preparation helper
+Historical candidate07's four `upstream-*` rows pointed to Phase66; the final candidate12 carries the new upstream pins. The preparation helper
 refreshes `bend.ts`, `comp.ts`, `main.ts`, `safe.ts` from the clean active Git
 worktree and declares `bend-rts-v1` for `upstream-comp`. Otherwise benchmark
 reference acquisition rejects the old checkout/new manifest revision mismatch,
@@ -159,3 +159,25 @@ compared against a qualified cached product exercises the retained `live` mode;
 do not substitute a native session's cold mode for ordinary live preparation.
 The preparation helper does not modify installed defaults or claim those final
 postinstallation checks ran.
+
+Release preparation installs the exact qualified QBE runtime object and P130
+carrier as `selfhost/dist/qbe/runtime.o` and `selfhost/dist/qbe/base.p130`.
+The current QBE runtime provider and all three operational maps refer to those
+relative installed pins. The native C template is also installed at
+`selfhost/dist/native/runtime-template.json`, because the public JS shell binds
+that provider even for `--run`. These are byte-preserving copies, not regenerated
+objects or carriers. Proposal `files` retain the actual source pins; selector
+`files` contain prospective installed pins, which become valid after installation.
+Maintained source providers beneath `selfhost/src/` use repository-relative
+paths in the new selector, preserving their byte counts and hashes. This lets
+the public CLI's direct-runtime identity check select the current worktree.
+Original receipt pins remain unchanged; experimental build paths are never
+converted into relative operational providers.
+
+The operational Base stays at its authenticated absolute canonical path, and
+the prepared source identity, span, stamp, and runtime policy stay unchanged.
+Template/carrier construction receipts remain explicit historical inputs for
+fresh public-package construction; normal installed CLI/native requests and the
+fresh-worktree gate do not consume them. Their contents and original artifact
+paths are not rewritten. This finite portability fix does not claim standalone
+relocation of the upstream checkout or historical construction evidence.

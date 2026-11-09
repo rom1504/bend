@@ -5,7 +5,7 @@ QBE N2.** The maintained source and selected artifacts target upstream
 `9a4223d577ba56a0cb53d1fd952d2b481c38930f`, replacing
 `059266225b77c8ca256ac6b25ee5c21449bab151`. The upstream merge is `6c6365e`;
 the compatibility port is `10ab239`. Native and JS self-reproduction and the
-stated finite qualification gates pass. Full JS self-emission uses the explicit
+stated finite qualification gates and fresh-checkout checks pass. Full JS self-emission uses the explicit
 pinned-Bun7MiB stack policy described below. Historical checkouts, binaries and
 installation rollback copies are retained. Historical speed scores are not
 carried onto changed products.
@@ -56,7 +56,7 @@ and the [normal session adapter](evidence/native-session-normal01.json).
 All six products match their same-mode cold references; a real edit changes the
 product, no-op requests exercise reuse, and the generated programs print `3` and
 `5`. These are finite reuse controls, not a general invalidation theorem.
-The separate current-source hosted QBE API preserves all23 installed exports and
+The separate current-source hosted QBE API preserves all 23 installed exports and
 passes [19/19 focused controls](evidence/qbe-hosted19.json). The current hosted C
 lane also passes [ten new-language controls](evidence/c-current01.json).
 
@@ -319,8 +319,7 @@ profiler overhead or a new compiler-performance profile.
 
 Snapshot08 native and JS reproduction, the stated backend/CLI gates and audited
 release installation are complete. Earlier source bindings, failed attempts and
-finite backend scopes remain explicit. Fresh-checkout verification is recorded
-separately from promotion.
+finite backend scopes remain explicit. Fresh-checkout verification passes separately from promotion (below).
 
 QBE still supports one Bend heap mutator, one CPU worker and GPU off, with its
 pinned provider table rather than arbitrary C embedding/callbacks. C GPU/device
@@ -361,3 +360,31 @@ The [ordinary installed live QBE request](evidence/publication-live01.json) matc
 the qualified cache-mode QBE product exactly and executes its independent stdout
 oracle. This validates ordinary live preparation through the new default assets;
 it is distinct from the native session's cold-reference comparisons.
+
+
+## Fresh checkout and campaign closure
+
+The [fresh sparse-worktree gate](evidence/fresh-worktree02.json) passes at release
+commit `a8ab5ed`: maintained source reassembly, current selector, selected assets,
+JS execution, public native C emission/build/execution and ordinary live QBE
+build/execution all succeed. Each executable prints `42`. The gate takes16.979s
+and explicitly copies137,503,214 bytes of pinned artifacts; it retains external
+Base and machine-tool identities. It is a finite relocation check, not a standalone
+source bootstrap or broad conformance result.
+
+The first checkout omitted `selfhost/tests/compiler` and `selfhost/tests/phase149`,
+which the canonical manifest includes. Its [failure](evidence/fresh-worktree01-failed.json)
+is retained. The corrected [checkout command](evidence/fresh-worktree02.sh)
+includes those directories. Both worktrees are retained explicitly; the failed
+closure was sealed keeping the tree, because the public `selfhost/bend` symlink
+is not suitable for the archive inventory's regular-file-only policy.
+
+The final [guard accounting](evidence/guarded-costs.json) covers 102 completed
+resource-guard jobs: 78 succeeded and24 failed, with 99.5 minutes summed inside
+the guarded lane. This includes failed acquisition and diagnostic attempts;
+it excludes agent reasoning, metadata work and network/setup time. It is not
+an estimate of total research cost or consumed model quota.
+
+All requested migration and publication work is complete. Remaining performance,
+stack-safety and broad language/backend coverage limitations are listed above;
+no old benchmark score is presented as a measurement of the new release.

@@ -181,3 +181,25 @@ fresh public-package construction; normal installed CLI/native requests and the
 fresh-worktree gate do not consume them. Their contents and original artifact
 paths are not rewritten. This finite portability fix does not claim standalone
 relocation of the upstream checkout or historical construction evidence.
+
+
+## Completed publication and fresh checkout
+
+Phase182 is installed at release commit `a8ab5ed`; final receipts are in
+`implementation/phase182/evidence/`. The prepublication JS public-shell gate used
+`stage-js-cli.py` and `public-cli.py --cli-workspace`, with exact CLI/provider
+copies and a JS-only test selector qualified by JS18/C18. That selector cannot
+be installed as a whole release. B3 and the ordinary three-component release
+auditor remain mandatory. The normal installed live QBE request and the fresh
+worktree subsequently pass without the staged selector.
+
+For a sparse fresh checkout, include `selfhost/src`, `selfhost/manifests`,
+`selfhost/dist`, `selfhost/tools/build`, `selfhost/tests/compiler` and
+`selfhost/tests/phase149`; those last two directories are canonical source
+inputs. Use one guard for the entire checkout and copied artifacts. Keep the
+whole linked worktree as the guard's retained root, since its public launcher
+is an intentional symlink. The maintained `fresh-worktree.py` requires a clean
+tracked tree and authenticates source, binaries, providers and independent
+JS/C/QBE output. The corrected Phase182 run uses256MiB disk budget and finishes
+in17s, with137.5MB of explicit artifact copies. These are observations, not
+portable deadline guarantees.

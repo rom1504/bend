@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build QBE or direct x86 assembly with explicit toolchain/runtime assets."""
+"""Build QBE, x86 assembly, or opt-in x86 objects with explicit toolchain/runtime assets."""
 import argparse
 import hashlib
 import json
@@ -29,10 +29,12 @@ def build(args):
     clean_environment()
     timeout(args.seconds)
     require(args.target in ('qbe', 'x86'), 'Native pipeline accepts QBE or x86 assembly')
+    object_output = requests.object_emission(args)
     output_protocol = derived_protocol(args.target, getattr(args, 'output_protocol', None))
     document = assets.load_assets(args.assets, root)
     tools = {key: assets.asset(document, key) for key in
-             (('qbe', 'assembler', 'linker') if args.target == 'qbe' else ('assembler', 'linker'))}
+             (('linker',) if object_output else
+              ('qbe', 'assembler', 'linker') if args.target == 'qbe' else ('assembler', 'linker'))}
     runtime = pin(args.runtime) if args.runtime else assets.asset(document, args.runtime_key)
     policy = document.get('runtimePolicies', {}).get(args.runtime_key) if not args.runtime else None
     argument_provider = assets.runtime_provider(document, args.runtime_key) if not args.runtime else None
@@ -54,6 +56,8 @@ def build(args):
                 '--ir cannot be combined with a compiler request')
         source_ir, request = pin(args.ir), None
         inputs = [source_ir]
+        if object_output:
+            requests.x86_object_header(source_ir['file'])
     else:
         require(args.source and args.host and args.stage and (args.image or args.image_key),
                 'Supply a complete compiler request or --ir')
@@ -71,7 +75,7 @@ def build(args):
     out = args.out.resolve()
     qcmd = ([tools['qbe']['file'], '-t', toolchain['target'], '-o', str(out / 'program.s'),
              source_ir['file'] if source_ir else '-'] if args.target == 'qbe' else None)
-    digest_key = 'irDigest' if args.target == 'qbe' else 'assemblyDigest'
+    digest_key = 'objectDigest' if object_output else 'irDigest' if args.target == 'qbe' else 'assemblyDigest'
     report = dict(kind='bend-native-build', version=1, complete=False, inputs=inputs,
                   host=request['host'] if request else None, target=args.target,
                   stage=request['stage'] if request else None,
@@ -88,11 +92,16 @@ def build(args):
     if runtime_abi is not None:
         report['runtimeABI'] = runtime_abi
     if args.target == 'x86':
-        report['sourceAssembly'] = report.pop('sourceIR')
-        report['expectedAssembly'] = report.pop('expectedQbe')
+        report['sourceObject' if object_output else 'sourceAssembly'] = report.pop('sourceIR')
+        report['expectedObject' if object_output else 'expectedAssembly'] = report.pop('expectedQbe')
         report.pop('qbeCommand')
         report['relayLimitBytes'] = 0
         report['machineDiagnosticPolicy'] = 'Assembler/linker warnings retained on zero exit; compiler/execution stderr fails.'
+    if object_output:
+        report['emissionFormat'] = requests.X86_OBJECT_FORMAT
+        report['assemblerSkipped'] = True
+        report['objectPolicy'] = 'Bend-emitted ELF object bytes; declared assemblerFlags are not applied. Linker/runtime policy is unchanged.'
+        report['machineDiagnosticPolicy'] = 'Linker warnings retained on zero exit; compiler/execution stderr fails. No assembler executes.'
     if args.plan:
         return report
     fresh_output(out, root)
@@ -127,21 +136,25 @@ def build(args):
     save()
     try:
         if args.target == 'x86':
+            emitted_path = out / ('program.o' if object_output else 'program.s')
+            emitted_kind = 'object' if object_output else 'assembly'
             if source_ir:
-                require(source_ir['bytes'] > 0, 'Empty supplied assembly')
-                shutil.copyfile(verify(source_ir), out / 'program.s')
+                require(source_ir['bytes'] > 0, 'Empty supplied ' + emitted_kind)
+                shutil.copyfile(verify(source_ir), emitted_path)
             else:
-                emitted = stage('compiler', request['command'], stdout=out / 'program.s')
+                emitted = stage('compiler', request['command'], stdout=emitted_path)
                 report['compilerExitCode'] = emitted['exitCode']
                 report['compilerStderr'] = emitted['stderr']
-            assembly = pin(out / 'program.s')
-            require(assembly['bytes'] > 0, 'Empty emitted assembly')
+            product = pin(emitted_path)
+            require(product['bytes'] > 0, 'Empty emitted ' + emitted_kind)
             if source_ir:
-                require(all(assembly[k] == source_ir[k] for k in ('bytes', 'sha256')),
-                        'Supplied assembly copy differs')
-            report[digest_key] = {k: assembly[k] for k in ('bytes', 'sha256')}
+                require(all(product[k] == source_ir[k] for k in ('bytes', 'sha256')),
+                        'Supplied ' + emitted_kind + ' copy differs')
+            if object_output:
+                report['objectHeader'] = requests.x86_object_header(emitted_path)
+            report[digest_key] = {k: product[k] for k in ('bytes', 'sha256')}
             if args.retain_ir:
-                report['retainedAssembly'] = assembly
+                report['retainedObject' if object_output else 'retainedAssembly'] = product
         elif source_ir:
             require(source_ir['bytes'] > 0, 'Empty supplied QBE')
             stage('qbe', qcmd)
@@ -214,11 +227,12 @@ def build(args):
         report['emitAndQbeSeconds' if args.target == 'qbe' else 'emissionSeconds'] = time.monotonic() - start
         if expected:
             require(report[digest_key] == {k: expected[k] for k in ('bytes', 'sha256')},
-                    'Complete '+('QBE' if args.target == 'qbe' else 'assembly')+' digest differs from independent reference')
+                    'Complete '+('object' if object_output else 'QBE' if args.target == 'qbe' else 'assembly')+' digest differs from independent reference')
             report['comparedToReference'] = True
-        report['assembly'] = pin(out / 'program.s')
-        stage('assemble', [tools['assembler']['file'], *toolchain['assemblerFlags'],
-                          '-o', out / 'program.o', out / 'program.s'])
+        if not object_output:
+            report['assembly'] = pin(out / 'program.s')
+            stage('assemble', [tools['assembler']['file'], *toolchain['assemblerFlags'],
+                              '-o', out / 'program.o', out / 'program.s'])
         stage('link', [tools['linker']['file'], *toolchain['linkerFlags'], out / 'program.o',
                       runtime['file'], *toolchain['libraries'], '-o', out / 'program'])
         report['object'], report['binary'] = pin(out / 'program.o'), pin(out / 'program')
@@ -241,6 +255,8 @@ def build(args):
                 producerStage=request['stage'], qualification='Built; semantic/self-host qualification is separate.')
             if output_protocol == 'native-c-source-v1':
                 report['imageBinding']['argvSentinel'] = 'compiler'
+            if object_output:
+                report['imageBinding']['producerEmissionFormat'] = requests.X86_OBJECT_FORMAT
             if runtime_abi is not None:
                 report['imageBinding']['linkedRuntimeABI'] = runtime_abi
         require(args.retain_ir or not (out / 'program.ssa').exists(), 'Unexpected retained IR')
@@ -267,8 +283,10 @@ def build(args):
         for key, name in [('compilerStderr', 'compiler.stderr'), ('qbeStderr', 'qbe.stderr')]:
             if (out / name).is_file():
                 report[key] = pin(out / name)
-        if args.target == 'x86' and (out / 'program.s').is_file():
-            report['assembly'] = pin(out / 'program.s')
+        if args.target == 'x86':
+            emitted_path = out / ('program.o' if object_output else 'program.s')
+            if emitted_path.is_file():
+                report['object' if object_output else 'assembly'] = pin(emitted_path)
         save()
     return report
 
@@ -276,7 +294,7 @@ def build(args):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     requests.arguments(parser, source_required=False)
-    parser.add_argument('--ir', type=Path, help='Already emitted QBE or --target x86 assembly; no compiler executes')
+    parser.add_argument('--ir', type=Path, help='Already emitted QBE, x86 assembly, or x86 --emit object ELF; no compiler executes')
     parser.add_argument('--runtime-key', default='qbe-runtime')
     parser.add_argument('--runtime', type=Path, help='Explicit alternate object; policy remains unqualified')
     parser.add_argument('--runtime-argument-convention', choices=['bend-legacy-v1', 'bend-rts-v1'],
@@ -290,6 +308,7 @@ def main():
     result = build(parser.parse_args())
     print(json.dumps(result if result.get('complete') is False and 'wallSeconds' not in result else
         {k: result.get(k) for k in ('complete', 'wallSeconds',
+            'objectDigest' if result.get('emissionFormat') == requests.X86_OBJECT_FORMAT else
             'assemblyDigest' if result.get('target') == 'x86' else 'irDigest', 'binary', 'error')}, indent=2))
     return 0 if result['complete'] or 'wallSeconds' not in result else 1
 

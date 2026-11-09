@@ -266,6 +266,31 @@ python3 -B selfhost/tools/build/bootstrap.py \
 Wrap the preceding command in one guard with a sufficient time/disk budget;
 do not separately guard each internal generation.
 
+## Optional direct x86 object emission
+
+`request.py` and `native.py` accept `--target x86 --emit object` for native
+images implementing the `x86-object` entry. Its five source arguments remain
+SOURCE, BASE, live|cache, CARRIER_OR_EMPTY and STAMP. The existing
+`native-x86-source-v1` image binding is retained; older images reject the new
+entry. Without `--emit object`, the assembly request and build remain unchanged.
+
+`request.py` captures raw stdout as `program.o`, including every zero/high byte,
+without text decoding or newline normalization. `native.py` captures the same
+object and links it against the authenticated ABI11102 runtime. It executes no
+assembler and does not apply the toolchain's assembler flags. `--ir INPUT.o
+--target x86 --emit object` accepts an already emitted object without a compiler
+request. The adapter checks the ELF64 little-endian AMD64 ET_REL header and
+section-table extent; the maintained linker validates the full object. Host
+code neither lowers instructions nor constructs ELF bytes.
+
+Object receipts explicitly record `emissionFormat`, `objectHeader`,
+`objectDigest`, `sourceObject`, `expectedObject` and `assemblerSkipped` as
+applicable. `--expected-object` compares complete bytes. Linker/runtime identity,
+fresh-output, deadline and independent execution-output checks still apply.
+Bootstrap and catalog qualification currently refuse this option because their
+fixed-point and golden-product contracts remain textual. This opt-in transport
+does not qualify a new compiler, runtime ABI or installed selection.
+
 ## Migration and offline checks
 
 | Historical implementation | Maintained responsibility |

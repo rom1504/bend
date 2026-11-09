@@ -205,6 +205,8 @@ def execute_case(args, case, document, out, root):
 
 def qualify(args):
     root = workspace(args.workspace)
+    require(not request.object_emission(args),
+            'Object emission requires separate qualification; this catalog adapter retains textual emission')
     require(args.host and args.stage and (args.image_key or args.image), 'Explicit executing host, stage and image required')
     require(not args.source and not args.expected, 'Catalog owns sources and output oracles')
     timeout(args.build_seconds); timeout(args.execute_seconds)

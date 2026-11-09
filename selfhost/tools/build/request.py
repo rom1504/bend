@@ -6,6 +6,7 @@ import json
 import os
 from pathlib import Path
 import re
+import struct
 import sys
 import time
 
@@ -13,6 +14,38 @@ sys.dont_write_bytecode = True
 import assets
 from common import (ROOT, changed_inputs, clean_environment, fresh_output, pin,
                     require, run, same_bytes, timeout, verify, workspace, write_json)
+
+
+X86_OBJECT_FORMAT = 'elf64-le-amd64-relocatable'
+
+
+def object_emission(args):
+    value = getattr(args, 'emit', None)
+    require(value in (None, 'object'), 'Unsupported explicit emission format: ' + str(value))
+    require(value is None or args.target == 'x86', '--emit object requires --target x86')
+    return value == 'object'
+
+
+def x86_object_header(path):
+    """Check bounded binary transport/type metadata; the linker validates ELF contents."""
+    path = Path(path)
+    with path.open('rb') as stream:
+        header = stream.read(64)
+    require(len(header) == 64 and header[:7] == b'\x7fELF\x02\x01\x01',
+            'Expected ELF64 little-endian object bytes, without text/newline framing')
+    (kind, machine, version, entry, phoff, shoff, flags, ehsize,
+     phentsize, phnum, shentsize, shnum, shstrndx) = struct.unpack_from('<HHIQQQIHHHHHH', header, 16)
+    require(kind == 1 and machine == 62 and version == 1 and ehsize == 64,
+            'Expected AMD64 ET_REL object header')
+    require(entry == 0 and phoff == 0 and phnum == 0 and phentsize == 0,
+            'Relocatable object must not contain an executable entry/program-header table')
+    require(shentsize == 64 and shnum > 0 and shoff >= 64 and
+            shoff + shnum * shentsize <= path.stat().st_size and shstrndx < shnum,
+            'Truncated or unsupported relocatable section-header table')
+    return dict(format=X86_OBJECT_FORMAT, elfClass=64, byteOrder='little',
+                elfType='ET_REL', machine='EM_X86_64', sectionCount=shnum,
+                sectionTableOffset=shoff, sectionNameTableIndex=shstrndx,
+                validation='Header/type and section-table extent only; no instruction encoding or linking by this adapter.')
 
 
 def runtime_parts(template, raw):
@@ -122,6 +155,8 @@ def arguments(parser, *, source_required=True):
     parser.add_argument('--source', type=Path, required=source_required)
     parser.add_argument('--host', choices=['native', 'js'], required=source_required)
     parser.add_argument('--target', choices=['js', 'c', 'qbe', 'x86'], default='qbe')
+    parser.add_argument('--emit', choices=['object'],
+                        help='Opt-in x86-object binary stdout protocol; requires --target x86 and a supporting native image')
     parser.add_argument('--stage', required=source_required,
                         help='Actual executing image generation, e.g. B1, B2, N1, N2')
     parser.add_argument('--mode', choices=['cache', 'live'], default='cache')
@@ -130,7 +165,7 @@ def arguments(parser, *, source_required=True):
     parser.add_argument('--engine-key', default='bun')
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--seconds', type=float, default=600)
-    parser.add_argument('--expected', '--expected-qbe', '--expected-assembly', dest='expected', type=Path)
+    parser.add_argument('--expected', '--expected-qbe', '--expected-assembly', '--expected-object', dest='expected', type=Path)
     parser.add_argument('--plan', action='store_true', help='Print the authenticated plan; execute nothing')
 
 
@@ -158,6 +193,7 @@ def plan(args):
     root = workspace(args.workspace)
     timeout(args.seconds)
     clean_environment()
+    object_output = object_emission(args)
     document = assets.load_assets(args.assets, root)
     image, metadata, image_inputs = image_binding(args, document)
     source = pin(args.source)
@@ -187,6 +223,8 @@ def plan(args):
                   imageRuntime=metadata.get('linkedRuntime'),
                   runtimeRole='Image linked-runtime identity is distinct from target provider/build runtime.',
                   expected=pin(args.expected) if args.expected else None)
+    if object_output:
+        result['emissionFormat'] = X86_OBJECT_FORMAT
     if result['expected']:
         inputs.append(result['expected'])
     if public:
@@ -212,8 +250,8 @@ def plan(args):
                         carrier['file'] if carrier else '', stamp]
             result['outputContract'] = 'stdout'
         elif protocol == 'native-x86-source-v1':
-            require(args.target == 'x86', 'Native x86 protocol only emits assembly')
-            command += ['x86', source['file'], base['file'], args.mode,
+            require(args.target == 'x86', 'Native x86 protocol only supports the x86 target')
+            command += ['x86-object' if object_output else 'x86', source['file'], base['file'], args.mode,
                         carrier['file'] if carrier else '', stamp]
             result['outputContract'] = 'stdout'
         elif protocol == 'native-c-source-v1':
@@ -261,7 +299,8 @@ def execute(args, request=None):
     root = Path(request['workspace'])
     out = fresh_output(args.out, root)
     write_json(out / 'request.json', request)
-    suffix = {'qbe': 'ssa', 'x86': 's', 'c': 'c', 'js': 'mjs'}[request['target']]
+    object_output = request.get('emissionFormat') == X86_OBJECT_FORMAT
+    suffix = 'o' if object_output else {'qbe': 'ssa', 'x86': 's', 'c': 'c', 'js': 'mjs'}[request['target']]
     product = Path(request.get('emittedFile', out / ('program.' + suffix)))
     report = dict(kind='bend-build-request', version=1, complete=False,
                   request=request, inputs=request['inputs'], host=request['host'],
@@ -270,6 +309,9 @@ def execute(args, request=None):
                   preparedBase=request['carrier'], imageRuntime=request['imageRuntime'],
                   byteContract='Complete emitted bytes; native stdout includes every IO.print LF, without normalization.',
                   timingScope='Whole child request including reads/output. Preflight and post-return identity checks excluded. Outer guard owns CPU/RSS/disk.')
+    if object_output:
+        report['emissionFormat'] = X86_OBJECT_FORMAT
+        report['byteContract'] = 'Complete raw ELF bytes on stdout; no text decoding, encoding, or newline normalization.'
     start = time.monotonic()
     prepared_inputs = []
     write_json(out / 'report.json', report)
@@ -284,6 +326,8 @@ def execute(args, request=None):
         require(child['complete'], 'Compiler request failed or timed out')
         report['product'] = pin(product)
         require(report['product']['bytes'] > 0, 'Empty emitted product')
+        if object_output:
+            report['objectHeader'] = x86_object_header(product)
         if request['host'] == 'native' and request['imageMetadata']['protocol'] == 'native-c-source-v1':
             require(child['stdout']['bytes'] == 0, 'Unexpected native C stdout')
             report['telemetry'] = c_telemetry(verify(child['stderr']).read_bytes(), product.read_bytes())

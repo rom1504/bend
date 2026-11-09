@@ -15,6 +15,8 @@ from common import (changed_inputs, fresh_output, pin, require, same_bytes,
 
 def chain(args):
     require(args.target in ('qbe', 'x86'), 'Native fixed-point chain requires a QBE or x86 entry')
+    require(not requests.object_emission(args),
+            'Object bootstrap is not qualified by this textual fixed-point adapter; use native.py/request.py')
     assembly = args.target == 'x86'
     emitted = 'program.s' if assembly else 'program.ssa'
     protocol = 'native-x86-source-v1' if assembly else 'qbe-source-v1'

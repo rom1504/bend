@@ -223,7 +223,11 @@
     "src/back/qbe/cold-constructors.bend",
     "src/back/qbe/packed-take.bend",
     "src/back/qbe/continuation-frames.bend",
-    "src/back/qbe/descriptor-proof.bend"
+    "src/back/qbe/descriptor-proof.bend",
+    "src/back/qbe/register-transport.bend",
+    "src/back/qbe/char-identity.bend",
+    "src/back/qbe/stacked-frames.bend",
+    "src/back/qbe/unique-take.bend"
   ],
   "order": [
     [
@@ -31919,6 +31923,11 @@
     [
       115,
       "def",
+      "p186sf_previous_frame"
+    ],
+    [
+      115,
+      "def",
       "p114h_scan_next"
     ],
     [
@@ -43005,6 +43014,161 @@
       221,
       "def",
       "p185cb_construct"
+    ],
+    [
+      222,
+      "def",
+      "p186rt_fid"
+    ],
+    [
+      222,
+      "def",
+      "p186rt_reads"
+    ],
+    [
+      222,
+      "def",
+      "p186rt_writes"
+    ],
+    [
+      222,
+      "def",
+      "p186rt_jump"
+    ],
+    [
+      222,
+      "def",
+      "p186rt_return"
+    ],
+    [
+      222,
+      "def",
+      "p186rt_guard"
+    ],
+    [
+      222,
+      "def",
+      "p186rt_expand"
+    ],
+    [
+      222,
+      "def",
+      "p186rt_previous"
+    ],
+    [
+      222,
+      "def",
+      "p186rt_join"
+    ],
+    [
+      222,
+      "def",
+      "p186rt_word"
+    ],
+    [
+      222,
+      "def",
+      "p186rt_words"
+    ],
+    [
+      222,
+      "def",
+      "p186rt_emitted"
+    ],
+    [
+      222,
+      "def",
+      "p186rt_stmt"
+    ],
+    [
+      223,
+      "def",
+      "p186ch_expand"
+    ],
+    [
+      223,
+      "def",
+      "p186ch_emitted"
+    ],
+    [
+      223,
+      "def",
+      "p186ch_stmt"
+    ],
+    [
+      224,
+      "def",
+      "p186sf_push"
+    ],
+    [
+      224,
+      "def",
+      "p186sf_retry"
+    ],
+    [
+      224,
+      "def",
+      "p186sf_retried"
+    ],
+    [
+      224,
+      "def",
+      "p186sf_selected"
+    ],
+    [
+      224,
+      "def",
+      "p186sf_frame"
+    ],
+    [
+      225,
+      "def",
+      "p186ut_word"
+    ],
+    [
+      225,
+      "def",
+      "p186ut_fields"
+    ],
+    [
+      225,
+      "def",
+      "p186ut_fast"
+    ],
+    [
+      225,
+      "def",
+      "p186ut_cache"
+    ],
+    [
+      225,
+      "def",
+      "p186ut_heap"
+    ],
+    [
+      225,
+      "def",
+      "p186ut_arity"
+    ],
+    [
+      225,
+      "def",
+      "p186ut_guard"
+    ],
+    [
+      225,
+      "def",
+      "p186ut_expand"
+    ],
+    [
+      225,
+      "def",
+      "p186ut_emitted"
+    ],
+    [
+      225,
+      "def",
+      "p186ut_stmt"
     ]
   ],
   "defaultProfile": "qbe",
@@ -43040,13 +43204,21 @@
       "modules": [
         "src/back/x86/model.bend",
         "src/back/x86/frame.bend",
+        "src/back/x86/inline-effects.bend",
         "src/back/x86/floating.bend",
+        "src/back/x86/call-arguments.bend",
         "src/back/x86/scalar.bend",
         "src/back/x86/regalloc.bend",
         "src/back/x86/transient.bend",
         "src/back/x86/dead-assignments.bend",
         "src/back/x86/register-binary.bend",
         "src/back/x86/scratch-forward.bend",
+        "src/back/x86/callee-saves.bend",
+        "src/back/x86/private-memory.bend",
+        "src/back/x86/parallel-moves.bend",
+        "src/back/x86/physical-moves.bend",
+        "src/back/x86/expression-reuse.bend",
+        "src/back/x86/float-values.bend",
         "src/back/x86/function.bend",
         "src/back/x86/program.bend",
         "src/back/x86/stream.bend",
@@ -43636,79 +43808,54 @@
   "inventoryChange": {
     "added": [
       [
-        221,
+        225,
         "def",
-        "p185cb_items"
+        "p186ut_word"
       ],
       [
-        221,
+        225,
         "def",
-        "p185cb_unique"
+        "p186ut_fields"
       ],
       [
-        221,
+        225,
         "def",
-        "p185cb_at"
+        "p186ut_fast"
       ],
       [
-        221,
+        225,
         "def",
-        "p185cb_number"
+        "p186ut_cache"
       ],
       [
-        221,
+        225,
         "def",
-        "p185cb_ref"
+        "p186ut_heap"
       ],
       [
-        221,
+        225,
         "def",
-        "p185cb_header"
+        "p186ut_arity"
       ],
       [
-        221,
+        225,
         "def",
-        "p185cb_scan"
+        "p186ut_guard"
       ],
       [
-        221,
+        225,
         "def",
-        "p185cb_marker"
+        "p186ut_expand"
       ],
       [
-        221,
+        225,
         "def",
-        "p185cb_entry"
+        "p186ut_emitted"
       ],
       [
-        221,
+        225,
         "def",
-        "p185cb_bucket"
-      ],
-      [
-        221,
-        "def",
-        "p185cb_tree"
-      ],
-      [
-        221,
-        "def",
-        "p185cb_scanned"
-      ],
-      [
-        221,
-        "def",
-        "p185cb_bind"
-      ],
-      [
-        221,
-        "def",
-        "p185cb_known"
-      ],
-      [
-        221,
-        "def",
-        "p185cb_construct"
+        "p186ut_stmt"
       ]
     ],
     "removed": [],

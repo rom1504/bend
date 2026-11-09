@@ -170,7 +170,7 @@ def x181_call_arguments(args: List<&2,N111Arg>, +ids: N111Ids,
 
 @unsafe
 def x181_call_text(symbol,args,ids,frame):
-  x181_call_arguments(args,ids,frame,0) ++ "  xorl %eax, %eax\n  call " ++ symbol ++ "\n"
+  x186_call_arguments(args,ids,frame) ++ "  xorl %eax, %eax\n  call " ++ symbol ++ "\n"
 
 # Materialize an unsigned byte offset explicitly; x86 memory displacements are
 # signed 32-bit values, while N111Load/Store offsets are U32.
@@ -261,7 +261,24 @@ def x185_late_borrow(+stmt: N111Stmt, +ids: N111Ids, +site: U32, read: P128BFRea
 @unsafe
 def x185_late_scalar(+stmt: N111Stmt, +ids: N111Ids, +site: U32) -> List<&2,N111Stmt>:
   nt_choose(List<&2,N111Stmt>,U32.is_lt(site,4294967200),
-    u => x185_late_borrow(stmt,ids,site,p128bf_match(stmt,ids,site)),u => p112a_expand(3,stmt))
+    u => x186_late_char(stmt,ids,site,p186ch_expand(stmt)),u => p112a_expand(3,stmt))
+
+def x186_transport_enabled() -> Bool: True{}
+
+@unsafe
+def x186_late_char(+stmt: N111Stmt, +ids: N111Ids, +site: U32, expansion: P114TExpansion) -> List<&2,N111Stmt>:
+  match expansion:
+    case P114TExpansion{body,changed}:
+      nt_choose(List<&2,N111Stmt>,changed,u => x185_late_accessors(body),u =>
+        x186_late_registers(stmt,ids,site,nt_choose(P114TExpansion,x186_transport_enabled(),
+          v => p186rt_expand(stmt,ids,site),v => P114TExpansion{[stmt],False{}})))
+
+@unsafe
+def x186_late_registers(+stmt: N111Stmt, +ids: N111Ids, +site: U32, expansion: P114TExpansion) -> List<&2,N111Stmt>:
+  match expansion:
+    case P114TExpansion{body,changed}:
+      nt_choose(List<&2,N111Stmt>,changed,u => x185_late_accessors(body),
+        u => x185_late_borrow(stmt,ids,site,p128bf_match(stmt,ids,site)))
 
 @unsafe
 def x185_late_stmts(body: List<&2,P113DStmt>, +ids: N111Ids, +site: U32) -> P113ABody:
@@ -292,8 +309,7 @@ def x185_late_no(condition: N111Value, yes: List<&2,P113DStmt>, rest: List<&2,P1
 def x181_scalar(stmt,ids,frame,code):
   match stmt:
     case N111Set{name,typ,value}:
-      x181_add(x181_load(value,ids,frame,"%r10") ++ x181_mask(typ,"%r10d") ++
-        x181_store(name,frame,"%r10"),code)
+      x181_add(x186_set_text(name,typ,value,ids,frame),code)
     case N111Bin{name,typ,op,left,right}:
       x181_binary(name,typ,op,left,right,ids,frame,code)
     case N111Call{name,typ,symbol,args}:
@@ -301,12 +317,11 @@ def x181_scalar(stmt,ids,frame,code):
     case N111If{condition,yes,no}:
       x181_stmts([P113DIf{condition,x181_scalar_rows(yes),x181_scalar_rows(no)}],ids,frame,code)
     case N111Return{value}:
-      x181_return(x181_load(value,ids,frame,"%rax"),code)
+      x181_return(x181_load(value,ids,frame,"%rax"),frame,code)
     case N111Load{name,typ,base,offset}:
-      x181_add(x185_load_memory(name,typ,base,offset,ids,frame),code)
+      x181_add(x186_load_text(name,typ,base,offset,ids,frame),code)
     case N111Store{typ,base,offset,value}:
       x181_add(x185_store_memory(typ,base,offset,value,ids,frame),code)
     case N111Offset{name,base,bytes}:
-      x181_add(x181_load(base,ids,frame,"%r10") ++ x181_load(bytes,ids,frame,"%r11") ++
-        "  addq %r11, %r10\n" ++ x181_store(name,frame,"%r10"),code)
+      x181_binary(name,N111Ptr{},"add",base,bytes,ids,frame,code)
     case N111Alloca{name,bytes,align}: code

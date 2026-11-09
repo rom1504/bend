@@ -1,0 +1,1464 @@
+{
+  "kind": "phase186-first-screen-offline-analysis",
+  "scope": "Ten-case native screen only. Each target compares candidate and retained Phase185 final N2 against the same-campaign C. Three serial rotated rounds; exact output and count oracle; ratios are medians per role, not a paired significance claim. No targets executed by this analysis.",
+  "catalog": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/catalog.json",
+    "bytes": 54895,
+    "sha256": "746fe610bfe1a5704f390b71cd5ee702e6bd874bd89a5a9363d5f69f69c0e475"
+  },
+  "targets": {
+    "qbe": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-qbe-runtime01/report.json",
+        "bytes": 384448,
+        "sha256": "7dd506e3571696e1b8d8a9b215e74fcc7b5c597ed4631db15f66650b1c644249"
+      },
+      "inputsVerified": 231,
+      "oracleRevalidated": {
+        "pilots": 102,
+        "samples": 90
+      },
+      "caseCount": 10,
+      "rounds": 3,
+      "positionBalanced": true,
+      "changedInputs": [],
+      "roles": {
+        "before": {
+          "geomeanOverC": 1.5299450661341882,
+          "equalFamilyGeomeanOverC": 1.5299450661341882,
+          "equalSourceGeomeanOverC": 1.4738089451163447,
+          "meanPositiveLogDeficit": 0.6926805425497549,
+          "casesOver110": 8,
+          "casesOver2": 6,
+          "fixedCatalogProjectedMs": 3827.5994745668663,
+          "fixedCatalogCProjectedMs": 2064.446222157674,
+          "fixedCatalogTotalRatio": 1.8540562759568602,
+          "fixedCatalogPositiveExcessMs": 1848.301369670925
+        },
+        "candidate": {
+          "geomeanOverC": 1.4239152100116819,
+          "equalFamilyGeomeanOverC": 1.4239152100116819,
+          "equalSourceGeomeanOverC": 1.3659692811256472,
+          "meanPositiveLogDeficit": 0.620459567536677,
+          "casesOver110": 8,
+          "casesOver2": 6,
+          "fixedCatalogProjectedMs": 3496.866979525329,
+          "fixedCatalogCProjectedMs": 2064.446222157674,
+          "fixedCatalogTotalRatio": 1.693852298981442,
+          "fixedCatalogPositiveExcessMs": 1513.574557862007
+        }
+      },
+      "candidateOverBeforeGeomean": 0.930696952152394,
+      "timeReductionPercent": 6.930304784760599,
+      "improvedCases": 7,
+      "cases": [
+        {
+          "id": "local-pair",
+          "family": "local-pair",
+          "sourceGroup": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+          "beforeOverC": 1.2515995340671213,
+          "candidateOverC": 1.2526852589641435,
+          "candidateOverBefore": 1.0008674698795181,
+          "timeReductionPercent": -0.08674698795181346,
+          "medianMsPerIteration": {
+            "c": 0.21074727120067172,
+            "before": 0.263771186440678,
+            "candidate": 0.264
+          },
+          "fixedCatalogRepetitions": 956,
+          "roundOrder": [
+            [
+              "c",
+              "before",
+              "candidate"
+            ],
+            [
+              "before",
+              "candidate",
+              "c"
+            ],
+            [
+              "candidate",
+              "c",
+              "before"
+            ]
+          ]
+        },
+        {
+          "id": "local-fold",
+          "family": "local-fold",
+          "sourceGroup": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+          "beforeOverC": 2.019152706221201,
+          "candidateOverC": 2.014211316091447,
+          "candidateOverBefore": 0.9975527407538176,
+          "timeReductionPercent": 0.24472592461823872,
+          "medianMsPerIteration": {
+            "c": 0.002749901397957842,
+            "before": 0.00555247084952804,
+            "candidate": 0.005538882513902375
+          },
+          "fixedCatalogRepetitions": 60684,
+          "roundOrder": [
+            [
+              "before",
+              "candidate",
+              "c"
+            ],
+            [
+              "candidate",
+              "c",
+              "before"
+            ],
+            [
+              "c",
+              "before",
+              "candidate"
+            ]
+          ]
+        },
+        {
+          "id": "coverage-numeric-recurrence-256",
+          "family": "numeric-recurrence",
+          "sourceGroup": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+          "beforeOverC": 1.5123429567950235,
+          "candidateOverC": 1.5185112904047762,
+          "candidateOverBefore": 1.0040786605855756,
+          "timeReductionPercent": -0.40786605855756,
+          "medianMsPerIteration": {
+            "c": 0.00081,
+            "before": 0.001224997795003969,
+            "candidate": 0.0012299941452278687
+          },
+          "fixedCatalogRepetitions": 247876,
+          "roundOrder": [
+            [
+              "candidate",
+              "c",
+              "before"
+            ],
+            [
+              "c",
+              "before",
+              "candidate"
+            ],
+            [
+              "before",
+              "candidate",
+              "c"
+            ]
+          ]
+        },
+        {
+          "id": "tree-bitonic",
+          "family": "tree-bitonic",
+          "sourceGroup": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+          "beforeOverC": 2.9348708811586666,
+          "candidateOverC": 2.356134681663152,
+          "candidateOverBefore": 0.8028069298683992,
+          "timeReductionPercent": 19.71930701316008,
+          "medianMsPerIteration": {
+            "c": 0.16480630334865398,
+            "before": 0.4836852207293666,
+            "candidate": 0.38830584707646176
+          },
+          "fixedCatalogRepetitions": 1636,
+          "roundOrder": [
+            [
+              "c",
+              "before",
+              "candidate"
+            ],
+            [
+              "before",
+              "candidate",
+              "c"
+            ],
+            [
+              "candidate",
+              "c",
+              "before"
+            ]
+          ]
+        },
+        {
+          "id": "coverage-map-churn-128",
+          "family": "map-churn",
+          "sourceGroup": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e",
+          "beforeOverC": 3.3845361225600743,
+          "candidateOverC": 2.6961525974025973,
+          "candidateOverBefore": 0.7966091954022989,
+          "timeReductionPercent": 20.33908045977011,
+          "medianMsPerIteration": {
+            "c": 0.23088455772113944,
+            "before": 0.781437125748503,
+            "candidate": 0.6225
+          },
+          "fixedCatalogRepetitions": 544,
+          "roundOrder": [
+            [
+              "before",
+              "candidate",
+              "c"
+            ],
+            [
+              "candidate",
+              "c",
+              "before"
+            ],
+            [
+              "c",
+              "before",
+              "candidate"
+            ]
+          ]
+        },
+        {
+          "id": "coverage-unicode-text-64",
+          "family": "unicode-text",
+          "sourceGroup": "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550",
+          "beforeOverC": 2.886836027713626,
+          "candidateOverC": 2.6374999999999997,
+          "candidateOverBefore": 0.91363,
+          "timeReductionPercent": 8.636999999999995,
+          "medianMsPerIteration": {
+            "c": 0.04,
+            "before": 0.11547344110854503,
+            "candidate": 0.1055
+          },
+          "fixedCatalogRepetitions": 2024,
+          "roundOrder": [
+            [
+              "candidate",
+              "c",
+              "before"
+            ],
+            [
+              "c",
+              "before",
+              "candidate"
+            ],
+            [
+              "before",
+              "candidate",
+              "c"
+            ]
+          ]
+        },
+        {
+          "id": "coverage-record-aggregation-256",
+          "family": "record-aggregation",
+          "sourceGroup": "6b31a2cfc58fbb33376fee6bf55d2a6aa05210be40a36342a82da87364080937",
+          "beforeOverC": 2.537279367011564,
+          "candidateOverC": 2.2553594373436128,
+          "candidateOverBefore": 0.888888888888889,
+          "timeReductionPercent": 11.111111111111105,
+          "medianMsPerIteration": {
+            "c": 0.39730134932533734,
+            "before": 1.0080645161290323,
+            "candidate": 0.8960573476702509
+          },
+          "fixedCatalogRepetitions": 392,
+          "roundOrder": [
+            [
+              "c",
+              "before",
+              "candidate"
+            ],
+            [
+              "before",
+              "candidate",
+              "c"
+            ],
+            [
+              "candidate",
+              "c",
+              "before"
+            ]
+          ]
+        },
+        {
+          "id": "complete-generic-row32",
+          "family": "complete-generic-row32",
+          "sourceGroup": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+          "beforeOverC": 3.6653037383177574,
+          "candidateOverC": 3.419037199124726,
+          "candidateOverBefore": 0.9328114238886902,
+          "timeReductionPercent": 6.7188576111309795,
+          "medianMsPerIteration": {
+            "c": 0.08,
+            "before": 0.2932242990654206,
+            "candidate": 0.2735229759299781
+          },
+          "fixedCatalogRepetitions": 1460,
+          "roundOrder": [
+            [
+              "before",
+              "candidate",
+              "c"
+            ],
+            [
+              "candidate",
+              "c",
+              "before"
+            ],
+            [
+              "c",
+              "before",
+              "candidate"
+            ]
+          ]
+        },
+        {
+          "id": "variation-ray-active-256-2240",
+          "family": "raytrace",
+          "sourceGroup": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955",
+          "beforeOverC": 0.9538461538461538,
+          "candidateOverC": 0.9596551724137931,
+          "candidateOverBefore": 1.0060901001112348,
+          "timeReductionPercent": -0.6090100111234786,
+          "medianMsPerIteration": {
+            "c": 0.45454545454545453,
+            "before": 0.43356643356643354,
+            "candidate": 0.4362068965517241
+          },
+          "fixedCatalogRepetitions": 1516,
+          "roundOrder": [
+            [
+              "candidate",
+              "c",
+              "before"
+            ],
+            [
+              "c",
+              "before",
+              "candidate"
+            ],
+            [
+              "before",
+              "candidate",
+              "c"
+            ]
+          ]
+        },
+        {
+          "id": "coverage-closures-256",
+          "family": "closures",
+          "sourceGroup": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+          "beforeOverC": 0.07227809005038703,
+          "candidateOverC": 0.07212808774416087,
+          "candidateOverBefore": 0.9979246503868381,
+          "timeReductionPercent": 0.20753496131619142,
+          "medianMsPerIteration": {
+            "c": 0.0029336686097458757,
+            "before": 0.00021203996395320612,
+            "candidate": 0.00021159990689604096
+          },
+          "fixedCatalogRepetitions": 19600,
+          "roundOrder": [
+            [
+              "c",
+              "before",
+              "candidate"
+            ],
+            [
+              "before",
+              "candidate",
+              "c"
+            ],
+            [
+              "candidate",
+              "c",
+              "before"
+            ]
+          ]
+        }
+      ]
+    },
+    "x86": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02/report.json",
+        "bytes": 360550,
+        "sha256": "4c20edf62e36bd3dcf68e6624527acfa8dcbf87a584eaa0e28fc1daa9f28625c"
+      },
+      "inputsVerified": 230,
+      "oracleRevalidated": {
+        "pilots": 86,
+        "samples": 90
+      },
+      "caseCount": 10,
+      "rounds": 3,
+      "positionBalanced": true,
+      "changedInputs": [],
+      "roles": {
+        "before": {
+          "geomeanOverC": 5.180402877069769,
+          "equalFamilyGeomeanOverC": 5.180402877069769,
+          "equalSourceGeomeanOverC": 4.912006545067367,
+          "meanPositiveLogDeficit": 1.7490798134524905,
+          "casesOver110": 9,
+          "casesOver2": 9,
+          "fixedCatalogProjectedMs": 15116.28276456973,
+          "fixedCatalogCProjectedMs": 2068.9223463776034,
+          "fixedCatalogTotalRatio": 7.3063557900257825,
+          "fixedCatalogPositiveExcessMs": 13085.06003582816
+        },
+        "candidate": {
+          "geomeanOverC": 4.163241231452828,
+          "equalFamilyGeomeanOverC": 4.163241231452828,
+          "equalSourceGeomeanOverC": 3.9582754972668552,
+          "meanPositiveLogDeficit": 1.5649964558163159,
+          "casesOver110": 9,
+          "casesOver2": 9,
+          "fixedCatalogProjectedMs": 12264.326808947553,
+          "fixedCatalogCProjectedMs": 2068.9223463776034,
+          "fixedCatalogTotalRatio": 5.927881648347359,
+          "fixedCatalogPositiveExcessMs": 10239.10009679195
+        }
+      },
+      "candidateOverBeforeGeomean": 0.8036520190120261,
+      "timeReductionPercent": 19.63479809879739,
+      "improvedCases": 10,
+      "cases": [
+        {
+          "id": "local-pair",
+          "family": "local-pair",
+          "sourceGroup": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+          "beforeOverC": 12.747415730337078,
+          "candidateOverC": 9.179076923076922,
+          "candidateOverBefore": 0.7200735519460618,
+          "timeReductionPercent": 27.99264480539382,
+          "medianMsPerIteration": {
+            "c": 0.22123893805309736,
+            "before": 2.8202247191011236,
+            "candidate": 2.0307692307692307
+          },
+          "fixedCatalogRepetitions": 956,
+          "roundOrder": [
+            [
+              "c",
+              "before",
+              "candidate"
+            ],
+            [
+              "before",
+              "candidate",
+              "c"
+            ],
+            [
+              "candidate",
+              "c",
+              "before"
+            ]
+          ]
+        },
+        {
+          "id": "local-fold",
+          "family": "local-fold",
+          "sourceGroup": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+          "beforeOverC": 14.708306389237578,
+          "candidateOverC": 9.788904643131898,
+          "candidateOverBefore": 0.6655358124912788,
+          "timeReductionPercent": 33.44641875087212,
+          "medianMsPerIteration": {
+            "c": 0.00276,
+            "before": 0.04059492563429571,
+            "candidate": 0.02701737681504404
+          },
+          "fixedCatalogRepetitions": 60684,
+          "roundOrder": [
+            [
+              "before",
+              "candidate",
+              "c"
+            ],
+            [
+              "candidate",
+              "c",
+              "before"
+            ],
+            [
+              "c",
+              "before",
+              "candidate"
+            ]
+          ]
+        },
+        {
+          "id": "coverage-numeric-recurrence-256",
+          "family": "numeric-recurrence",
+          "sourceGroup": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+          "beforeOverC": 4.958389041130529,
+          "candidateOverC": 4.625239071707059,
+          "candidateOverBefore": 0.9328108450829604,
+          "timeReductionPercent": 6.718915491703958,
+          "medianMsPerIteration": {
+            "c": 0.000815,
+            "before": 0.004041087068521381,
+            "candidate": 0.0037695698434412526
+          },
+          "fixedCatalogRepetitions": 247876,
+          "roundOrder": [
+            [
+              "candidate",
+              "c",
+              "before"
+            ],
+            [
+              "c",
+              "before",
+              "candidate"
+            ],
+            [
+              "before",
+              "candidate",
+              "c"
+            ]
+          ]
+        },
+        {
+          "id": "tree-bitonic",
+          "family": "tree-bitonic",
+          "sourceGroup": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+          "beforeOverC": 6.99047129454532,
+          "candidateOverC": 5.410038169002312,
+          "candidateOverBefore": 0.7739160839160839,
+          "timeReductionPercent": 22.60839160839161,
+          "medianMsPerIteration": {
+            "c": 0.16480630334865398,
+            "before": 1.152073732718894,
+            "candidate": 0.8916083916083916
+          },
+          "fixedCatalogRepetitions": 1636,
+          "roundOrder": [
+            [
+              "c",
+              "before",
+              "candidate"
+            ],
+            [
+              "before",
+              "candidate",
+              "c"
+            ],
+            [
+              "candidate",
+              "c",
+              "before"
+            ]
+          ]
+        },
+        {
+          "id": "coverage-map-churn-128",
+          "family": "map-churn",
+          "sourceGroup": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e",
+          "beforeOverC": 6.401294498381877,
+          "candidateOverC": 5.418025889967637,
+          "candidateOverBefore": 0.8463953488372092,
+          "timeReductionPercent": 15.360465116279077,
+          "medianMsPerIteration": {
+            "c": 0.23163418290854573,
+            "before": 1.4827586206896552,
+            "candidate": 1.255
+          },
+          "fixedCatalogRepetitions": 544,
+          "roundOrder": [
+            [
+              "before",
+              "candidate",
+              "c"
+            ],
+            [
+              "candidate",
+              "c",
+              "before"
+            ],
+            [
+              "c",
+              "before",
+              "candidate"
+            ]
+          ]
+        },
+        {
+          "id": "coverage-unicode-text-64",
+          "family": "unicode-text",
+          "sourceGroup": "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550",
+          "beforeOverC": 5.596732532610099,
+          "candidateOverC": 4.339620302208446,
+          "candidateOverBefore": 0.7753846153846153,
+          "timeReductionPercent": 22.461538461538467,
+          "medianMsPerIteration": {
+            "c": 0.04004799760012,
+            "before": 0.22413793103448276,
+            "candidate": 0.17379310344827587
+          },
+          "fixedCatalogRepetitions": 2024,
+          "roundOrder": [
+            [
+              "candidate",
+              "c",
+              "before"
+            ],
+            [
+              "c",
+              "before",
+              "candidate"
+            ],
+            [
+              "before",
+              "candidate",
+              "c"
+            ]
+          ]
+        },
+        {
+          "id": "coverage-record-aggregation-256",
+          "family": "record-aggregation",
+          "sourceGroup": "6b31a2cfc58fbb33376fee6bf55d2a6aa05210be40a36342a82da87364080937",
+          "beforeOverC": 4.773874529790074,
+          "candidateOverC": 4.271039332014942,
+          "candidateOverBefore": 0.8946693729302425,
+          "timeReductionPercent": 10.533062706975748,
+          "medianMsPerIteration": {
+            "c": 0.3954983922829582,
+            "before": 1.8880597014925373,
+            "candidate": 1.6891891891891893
+          },
+          "fixedCatalogRepetitions": 392,
+          "roundOrder": [
+            [
+              "c",
+              "before",
+              "candidate"
+            ],
+            [
+              "before",
+              "candidate",
+              "c"
+            ],
+            [
+              "candidate",
+              "c",
+              "before"
+            ]
+          ]
+        },
+        {
+          "id": "complete-generic-row32",
+          "family": "complete-generic-row32",
+          "sourceGroup": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+          "beforeOverC": 5.48513986013986,
+          "candidateOverC": 4.685157421289355,
+          "candidateOverBefore": 0.8541545960087685,
+          "timeReductionPercent": 14.584540399123147,
+          "medianMsPerIteration": {
+            "c": 0.08,
+            "before": 0.4388111888111888,
+            "candidate": 0.3748125937031484
+          },
+          "fixedCatalogRepetitions": 1460,
+          "roundOrder": [
+            [
+              "before",
+              "candidate",
+              "c"
+            ],
+            [
+              "candidate",
+              "c",
+              "before"
+            ],
+            [
+              "c",
+              "before",
+              "candidate"
+            ]
+          ]
+        },
+        {
+          "id": "variation-ray-active-256-2240",
+          "family": "raytrace",
+          "sourceGroup": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955",
+          "beforeOverC": 6.472382485799901,
+          "candidateOverC": 5.919364185776968,
+          "candidateOverBefore": 0.914557228155748,
+          "timeReductionPercent": 8.544277184425198,
+          "medianMsPerIteration": {
+            "c": 0.4493006993006993,
+            "before": 2.9080459770114944,
+            "candidate": 2.6595744680851063
+          },
+          "fixedCatalogRepetitions": 1516,
+          "roundOrder": [
+            [
+              "candidate",
+              "c",
+              "before"
+            ],
+            [
+              "c",
+              "before",
+              "candidate"
+            ],
+            [
+              "before",
+              "candidate",
+              "c"
+            ]
+          ]
+        },
+        {
+          "id": "coverage-closures-256",
+          "family": "closures",
+          "sourceGroup": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+          "beforeOverC": 0.3527591155854151,
+          "candidateOverC": 0.24981730021923976,
+          "candidateOverBefore": 0.7081809914526516,
+          "timeReductionPercent": 29.18190085473484,
+          "medianMsPerIteration": {
+            "c": 0.0029717682020802376,
+            "before": 0.0010483183226906838,
+            "candidate": 0.0007423991091210691
+          },
+          "fixedCatalogRepetitions": 19600,
+          "roundOrder": [
+            [
+              "c",
+              "before",
+              "candidate"
+            ],
+            [
+              "before",
+              "candidate",
+              "c"
+            ],
+            [
+              "candidate",
+              "c",
+              "before"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "emissionDiagnostics": {
+    "scope": "Single observations, same selected ten sources, different API/compiler sources, campaign sizes and order. Historical QBE is the authenticated 44+1 recovered merge after a 180s partial deadline. These are diagnostic absolute totals, not balanced compiler-performance ratios. Preparation excludes the separately reported base stage. Product bytes are text, not native code size.",
+    "observations": {
+      "firstQbe": {
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-qbe-emit01/report.json",
+          "bytes": 11788,
+          "sha256": "f6c8ec743e6905775494b791f8e4603c409d2621be21dc0152e0b2929ac1c7bb"
+        },
+        "baseSeconds": 0.702788534,
+        "selectedCaseCount": 10,
+        "totalReportCaseCount": 10,
+        "prepareSeconds": 47.78737301999999,
+        "emitSeconds": 6.322280343999996,
+        "productTextBytes": 7463861,
+        "rows": [
+          {
+            "id": "local-pair",
+            "prepareSeconds": 7.111013465999999,
+            "emitSeconds": 1.2678148260000004,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-qbe-emit01/local-pair/program.ssa",
+              "bytes": 808971,
+              "sha256": "1c7c7d673b2b3720ae0f99f27a5025515d210840b3e8e193e1afe6ca66588ee0"
+            }
+          },
+          {
+            "id": "local-fold",
+            "prepareSeconds": 3.0631525139999987,
+            "emitSeconds": 0.3629738679999992,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-qbe-emit01/local-fold/program.ssa",
+              "bytes": 366567,
+              "sha256": "b452ab2f0f556a2af48b0ebac2ed5db32704103bd15fa17b8abcc390f00f0422"
+            }
+          },
+          {
+            "id": "coverage-numeric-recurrence-256",
+            "prepareSeconds": 2.9149586089999993,
+            "emitSeconds": 0.26779520099999843,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-qbe-emit01/coverage-numeric-recurrence-256/program.ssa",
+              "bytes": 324730,
+              "sha256": "131e000c4ff2636c7d43b8f5ecbcdcb712f5389005d20397b3ff0984fbb6da3d"
+            }
+          },
+          {
+            "id": "tree-bitonic",
+            "prepareSeconds": 4.033654814000002,
+            "emitSeconds": 0.440539035999997,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-qbe-emit01/tree-bitonic/program.ssa",
+              "bytes": 531022,
+              "sha256": "c2fd3fc855cdcb496e8cae79ec142af56be360f4fa9eff11ca97db3a0c96be8e"
+            }
+          },
+          {
+            "id": "coverage-map-churn-128",
+            "prepareSeconds": 6.093072299999999,
+            "emitSeconds": 1.4020235240000005,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-qbe-emit01/coverage-map-churn-128/program.ssa",
+              "bytes": 1723034,
+              "sha256": "4bdec24b935df1044e1d59583a3206c96f6bfe173518ddb4d13bc61ec23177e6"
+            }
+          },
+          {
+            "id": "coverage-unicode-text-64",
+            "prepareSeconds": 2.779187972999999,
+            "emitSeconds": 0.1753003030000002,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-qbe-emit01/coverage-unicode-text-64/program.ssa",
+              "bytes": 435258,
+              "sha256": "07de28c326eed1b4cbefdd2d32caaf93f01b08d86d6c8703272cee13c87d82c9"
+            }
+          },
+          {
+            "id": "coverage-record-aggregation-256",
+            "prepareSeconds": 6.257754985000002,
+            "emitSeconds": 0.8563599129999986,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-qbe-emit01/coverage-record-aggregation-256/program.ssa",
+              "bytes": 1285552,
+              "sha256": "895a92f88ed58a2dc270adbbfc47777db59a3f7419cb1589a4ad6f8121a2df42"
+            }
+          },
+          {
+            "id": "complete-generic-row32",
+            "prepareSeconds": 4.259216765000005,
+            "emitSeconds": 0.7120565730000052,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-qbe-emit01/complete-generic-row32/program.ssa",
+              "bytes": 848477,
+              "sha256": "59a1f9f5a8e882c4eb625aadf161a4cb332c12a37129fa14daf0a66b178a4dbe"
+            }
+          },
+          {
+            "id": "variation-ray-active-256-2240",
+            "prepareSeconds": 8.790630006999997,
+            "emitSeconds": 0.6774348569999944,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-qbe-emit01/variation-ray-active-256-2240/program.ssa",
+              "bytes": 826566,
+              "sha256": "046feb3b2bc287e67acf92791aca9aa411893f20abec29d4385224cbc7591f64"
+            }
+          },
+          {
+            "id": "coverage-closures-256",
+            "prepareSeconds": 2.4847315869999917,
+            "emitSeconds": 0.15998224300000174,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-qbe-emit01/coverage-closures-256/program.ssa",
+              "bytes": 313684,
+              "sha256": "4a143c5e93a68218b8201c11944d3953cfae83651f0b73cd2493ba4322bd904d"
+            }
+          }
+        ]
+      },
+      "firstX86": {
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-emit01/report.json",
+          "bytes": 11751,
+          "sha256": "e4a3c9743e1137c6c4108cea2b600eda713948d743c6f8608186039ac92feee9"
+        },
+        "baseSeconds": 0.6012725250000001,
+        "selectedCaseCount": 10,
+        "totalReportCaseCount": 10,
+        "prepareSeconds": 46.24694267699998,
+        "emitSeconds": 25.016191040000027,
+        "productTextBytes": 9121106,
+        "rows": [
+          {
+            "id": "local-pair",
+            "prepareSeconds": 7.220483595,
+            "emitSeconds": 4.075113664000002,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-emit01/local-pair/program.s",
+              "bytes": 657530,
+              "sha256": "41ddc0379cc855e7af47b10658a7da93c64bd28ccea7671e879280bef13ed92f"
+            }
+          },
+          {
+            "id": "local-fold",
+            "prepareSeconds": 3.12592184,
+            "emitSeconds": 1.276166783999999,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-emit01/local-fold/program.s",
+              "bytes": 479101,
+              "sha256": "47d1ddcf3541e25f44e1dcf2abc8ec38d39d9f0772777ca1b77142261ba58823"
+            }
+          },
+          {
+            "id": "coverage-numeric-recurrence-256",
+            "prepareSeconds": 3.0666781410000006,
+            "emitSeconds": 1.6148781090000028,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-emit01/coverage-numeric-recurrence-256/program.s",
+              "bytes": 449525,
+              "sha256": "74e49ff66de2b4870078fbea85bb31a53c1ad28eca3cf814eb403f2f2350906a"
+            }
+          },
+          {
+            "id": "tree-bitonic",
+            "prepareSeconds": 3.482377564,
+            "emitSeconds": 1.7932902849999977,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-emit01/tree-bitonic/program.s",
+              "bytes": 703510,
+              "sha256": "4838435b7057bdd32709470dc696cc0b55f0d0b13eb68d63c68b20743d185dc2"
+            }
+          },
+          {
+            "id": "coverage-map-churn-128",
+            "prepareSeconds": 5.9018985980000025,
+            "emitSeconds": 4.629289765999999,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-emit01/coverage-map-churn-128/program.s",
+              "bytes": 2082161,
+              "sha256": "43a253461ce530206a0a66da4746260f50dd5ff3ead6fffe6a1271bb657baf3c"
+            }
+          },
+          {
+            "id": "coverage-unicode-text-64",
+            "prepareSeconds": 2.9223286930000043,
+            "emitSeconds": 1.2181037909999972,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-emit01/coverage-unicode-text-64/program.s",
+              "bytes": 621059,
+              "sha256": "50415378d29fbfc398ebe8042947c4f8e2e0a23191c81ab04ea9661e047bcd42"
+            }
+          },
+          {
+            "id": "coverage-record-aggregation-256",
+            "prepareSeconds": 6.225969036999999,
+            "emitSeconds": 4.234650545000008,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-emit01/coverage-record-aggregation-256/program.s",
+              "bytes": 2065651,
+              "sha256": "f6945850190e63e1b307e93928b50480818ab4c8ec6cffa2075ac756a9386d63"
+            }
+          },
+          {
+            "id": "complete-generic-row32",
+            "prepareSeconds": 4.321635543999996,
+            "emitSeconds": 2.4965148960000008,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-emit01/complete-generic-row32/program.s",
+              "bytes": 795728,
+              "sha256": "0dcbb8d5c1623bb59fd93b346cdc338b5ab957b8d5685b6f5a9a17e143209c61"
+            }
+          },
+          {
+            "id": "variation-ray-active-256-2240",
+            "prepareSeconds": 8.055641618999992,
+            "emitSeconds": 2.8517326480000094,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-emit01/variation-ray-active-256-2240/program.s",
+              "bytes": 823929,
+              "sha256": "b6a6eacff8183d6bf663210294e98ed5ae1c5c7b89820d37675279318d8f98a1"
+            }
+          },
+          {
+            "id": "coverage-closures-256",
+            "prepareSeconds": 1.924008045999983,
+            "emitSeconds": 0.8264505520000114,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-emit01/coverage-closures-256/program.s",
+              "bytes": 442912,
+              "sha256": "a40a2dfbf5a974da2125292a686bf73d91ae37736c15c3ae34272192adc45d40"
+            }
+          }
+        ]
+      },
+      "historicalQbeSameCases": {
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/final-qbe-merged01/report.json",
+          "bytes": 73158,
+          "sha256": "cba0f188835ff7b2e5a2f1259c76db79211f35476ae7b096c6182fe6b4068dfc"
+        },
+        "baseSeconds": null,
+        "selectedCaseCount": 10,
+        "totalReportCaseCount": 45,
+        "prepareSeconds": 41.85467274900006,
+        "emitSeconds": 4.755560508999986,
+        "productTextBytes": 6946758,
+        "rows": [
+          {
+            "id": "tree-bitonic",
+            "prepareSeconds": 3.403262062000003,
+            "emitSeconds": 0.3604010410000029,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/final-qbe-emit02/tree-bitonic/program.ssa",
+              "bytes": 483052,
+              "sha256": "686bf4e4e5f88a6e4e2203048e80e343d100bfb7bb790268b5a6ec8d5a979fbb"
+            }
+          },
+          {
+            "id": "local-pair",
+            "prepareSeconds": 3.7980331610000135,
+            "emitSeconds": 0.6772857399999879,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/final-qbe-emit02/local-pair/program.ssa",
+              "bytes": 786421,
+              "sha256": "b9e8184c5e4b29ff5300560fd5097136f38bf1a7c4a5fd1bc8616a4e1658cfa1"
+            }
+          },
+          {
+            "id": "local-fold",
+            "prepareSeconds": 2.237906645000024,
+            "emitSeconds": 0.17880117299999654,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/final-qbe-emit02/local-fold/program.ssa",
+              "bytes": 339489,
+              "sha256": "31b8d73ac8b7f9609adf5a8238ace12e73312bcc8ace5ea92a5e4b25b7441e3e"
+            }
+          },
+          {
+            "id": "complete-generic-row32",
+            "prepareSeconds": 4.347333624000015,
+            "emitSeconds": 0.6224467140000058,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/final-qbe-emit02/complete-generic-row32/program.ssa",
+              "bytes": 801480,
+              "sha256": "36739bda577d90864f347146dc69636d59a9db3b13ef39a0615f32de782d53a7"
+            }
+          },
+          {
+            "id": "variation-ray-active-256-2240",
+            "prepareSeconds": 7.513223172000011,
+            "emitSeconds": 0.6654289269999936,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/final-qbe-emit02/variation-ray-active-256-2240/program.ssa",
+              "bytes": 801069,
+              "sha256": "71774196846463ffc67a0bac4f5df38ab95aaacecd482a720c4aba2141ae9152"
+            }
+          },
+          {
+            "id": "coverage-closures-256",
+            "prepareSeconds": 2.0253023719999987,
+            "emitSeconds": 0.09952120200000536,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/final-qbe-emit02/coverage-closures-256/program.ssa",
+              "bytes": 285102,
+              "sha256": "32059f9dabd884d9b11a8de817bd9d2a22fe91bec902e648c455afb39ed8db2d"
+            }
+          },
+          {
+            "id": "coverage-unicode-text-64",
+            "prepareSeconds": 2.314454353000002,
+            "emitSeconds": 0.1647647119999931,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/final-qbe-emit02/coverage-unicode-text-64/program.ssa",
+              "bytes": 380205,
+              "sha256": "80bc9ee5e4f83be5b96825f75aa56adbc507b5d8f08d83a00dcf0c302e21e754"
+            }
+          },
+          {
+            "id": "coverage-map-churn-128",
+            "prepareSeconds": 4.657459280999973,
+            "emitSeconds": 0.6424720050000019,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/final-qbe-emit02/coverage-map-churn-128/program.ssa",
+              "bytes": 1723149,
+              "sha256": "2c3d18077941d471c3506f1a42f879e84f759aae3d3079da6c1a5108d5e5c162"
+            }
+          },
+          {
+            "id": "coverage-numeric-recurrence-256",
+            "prepareSeconds": 1.6617377010000212,
+            "emitSeconds": 0.07739440299999956,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/final-qbe-emit02/coverage-numeric-recurrence-256/program.ssa",
+              "bytes": 296148,
+              "sha256": "50d19d5e8068230752f5a53e7a8e795449011c30e0f680b009b0402d09e50df1"
+            }
+          },
+          {
+            "id": "coverage-record-aggregation-256",
+            "prepareSeconds": 9.895960378000002,
+            "emitSeconds": 1.2670445919999995,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/final-qbe-tail01/coverage-record-aggregation-256/program.ssa",
+              "bytes": 1050643,
+              "sha256": "dc3a67e2d53cbcf5ca914bb0b00aa096997f4105e4a7309458760ed1e565b325"
+            }
+          }
+        ]
+      },
+      "historicalX86SameCases": {
+        "report": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/final-x86-emit01/report.json",
+          "bytes": 45003,
+          "sha256": "5250f97aadf1a409de39c57f2cffc4fe7c983ad2859475bf69a550ac442f2f5f"
+        },
+        "baseSeconds": 0.6853901240000001,
+        "selectedCaseCount": 10,
+        "totalReportCaseCount": 45,
+        "prepareSeconds": 37.52771885399998,
+        "emitSeconds": 15.23884058100008,
+        "productTextBytes": 8070664,
+        "rows": [
+          {
+            "id": "tree-bitonic",
+            "prepareSeconds": 3.3263131,
+            "emitSeconds": 1.1433142210000007,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/final-x86-emit01/tree-bitonic/program.s",
+              "bytes": 610509,
+              "sha256": "4931c76744630b03bca624ceace1862cf0cccff31d03447ca59a9faa0260c0f9"
+            }
+          },
+          {
+            "id": "local-pair",
+            "prepareSeconds": 3.8464623060000065,
+            "emitSeconds": 2.2625651980000185,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/final-x86-emit01/local-pair/program.s",
+              "bytes": 638457,
+              "sha256": "5c0c3dbb4ecc67929bd2ecb977f93bd5a4d9463b4d8a3e05a19792d2daa94871"
+            }
+          },
+          {
+            "id": "local-fold",
+            "prepareSeconds": 2.083984908000005,
+            "emitSeconds": 0.5908248230000055,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/final-x86-emit01/local-fold/program.s",
+              "bytes": 435137,
+              "sha256": "0bfe00995af5d2caf3b738ba8047a9b4aa83efeaaaf7d8d6005ebd603143aa6e"
+            }
+          },
+          {
+            "id": "complete-generic-row32",
+            "prepareSeconds": 4.022993989999989,
+            "emitSeconds": 2.382861180000006,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/final-x86-emit01/complete-generic-row32/program.s",
+              "bytes": 730497,
+              "sha256": "70797cf4f81d411e752be99fb44662399ddf186b4235b689c0571e4ed9ae26f8"
+            }
+          },
+          {
+            "id": "variation-ray-active-256-2240",
+            "prepareSeconds": 7.818497449999995,
+            "emitSeconds": 2.0939791410000055,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/final-x86-emit01/variation-ray-active-256-2240/program.s",
+              "bytes": 785588,
+              "sha256": "d509cb872d0d4bc8c3002ffb32e2d7f6afc11325a5731023f72cdbe064762121"
+            }
+          },
+          {
+            "id": "coverage-closures-256",
+            "prepareSeconds": 1.8294735009999954,
+            "emitSeconds": 0.5384735830000125,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/final-x86-emit01/coverage-closures-256/program.s",
+              "bytes": 393868,
+              "sha256": "54746e1fddde40ebdfe446de6bc1a7b23d6e36caf06f7618f3044e88019752f8"
+            }
+          },
+          {
+            "id": "coverage-unicode-text-64",
+            "prepareSeconds": 2.467076846999987,
+            "emitSeconds": 0.6612402420000194,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/final-x86-emit01/coverage-unicode-text-64/program.s",
+              "bytes": 535109,
+              "sha256": "cee005d8567bf3f612ec3c46eec8208290816ea8e3789ca8d3b70057ba4a2909"
+            }
+          },
+          {
+            "id": "coverage-map-churn-128",
+            "prepareSeconds": 5.436090731000007,
+            "emitSeconds": 2.450153857999993,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/final-x86-emit01/coverage-map-churn-128/program.s",
+              "bytes": 1777664,
+              "sha256": "065fb3dc1cd644f210b491d6799bde0fdeee9f29bd8aff18787fffac7f7e5fef"
+            }
+          },
+          {
+            "id": "coverage-numeric-recurrence-256",
+            "prepareSeconds": 1.7792515559999913,
+            "emitSeconds": 0.7206943749999937,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/final-x86-emit01/coverage-numeric-recurrence-256/program.s",
+              "bytes": 400435,
+              "sha256": "ea302555c3748a09034c28e3827f7990e7cee1c188f1798fb2fd371947cd7a14"
+            }
+          },
+          {
+            "id": "coverage-record-aggregation-256",
+            "prepareSeconds": 4.917574465000001,
+            "emitSeconds": 2.394733960000025,
+            "product": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/final-x86-emit01/coverage-record-aggregation-256/program.s",
+              "bytes": 1763400,
+              "sha256": "d0d547446ff616fff2f6c72598dc63247571c34cb50f3809241dcc7d4f1e228d"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "localFoldX86Static": {
+    "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112_",
+    "sourceFunction": "$product.fold.loop",
+    "scope": "Positive iteration only: eight loop-entry instructions through jz __b2 plus __b2 to __b4; no prologue, zero-return epilogue, or error block. Source-assembly instruction counts, not dynamic retirement counters.",
+    "artifacts": {
+      "before": {
+        "assembly": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/release-native45-acquire01/local-fold/phase185-x86-n2/emission/program.s",
+          "bytes": 423309,
+          "sha256": "c54b2aa52ead5fd8790bc25f68e9a1636405c22f82688e60a28077b7de5762d0"
+        },
+        "positivePathInstructionCount": 123,
+        "explicitFrameReferences": 29,
+        "directFrameLoads": 8,
+        "directFrameStores": 4,
+        "scratchAddressLEAs": 17,
+        "indirectScratchLoads": 6,
+        "indirectScratchStores": 11,
+        "nativeArrayLoads32": 1,
+        "nativeArrayStores32": 1,
+        "calls": 0,
+        "instructions": [
+          "movq %r15, %r10",
+          "cmpq $0, %r10",
+          "sete %r10b",
+          "movzbl %r10b, %r10d",
+          "movq %r10, -2360(%rbp)",
+          "movq -2360(%rbp), %r10",
+          "testl %r10d, %r10d",
+          "jz .Lp113d_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112__b2",
+          "movq %r15, %r10",
+          "cmpq $0, %r10",
+          "setne %r10b",
+          "movzbl %r10b, %r10d",
+          "movq %r10, -2360(%rbp)",
+          "movq -2360(%rbp), %r10",
+          "testl %r10d, %r10d",
+          "jz .Lp113d_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112__b4",
+          "movq %r15, %rdi",
+          "subq $1, %rdi",
+          "movq %rbx, %rsi",
+          "movl %esi, %esi",
+          "movq %rsi, %rdx",
+          "addq $1, %rdx",
+          "movl %edx, %edx",
+          "movq %rdx, %r10",
+          "movq %r10, %rsi",
+          "leaq -2408(%rbp), %r10",
+          "movq %r13, %r11",
+          "movq %r11, 0(%r10)",
+          "leaq -2408(%rbp), %r10",
+          "movq %rbx, %r11",
+          "movq %r11, 8(%r10)",
+          "leaq -2408(%rbp), %r10",
+          "movq 0(%r10), %r10",
+          "movq %r10, %rdx",
+          "leaq -2408(%rbp), %r10",
+          "movq 8(%r10), %r10",
+          "movq %r10, %r8",
+          "movq -2320(%rbp), %r11",
+          "andq %r11, %r8",
+          "movq %r8, %r9",
+          "imulq $4, %r9",
+          "movq -2336(%rbp), %r10",
+          "movq %r9, %r11",
+          "addq %r11, %r10",
+          "movq %r10, %r8",
+          "movq %r8, %r10",
+          "movl 0(%r10), %r10d",
+          "movq %r10, %r9",
+          "leaq -2424(%rbp), %r10",
+          "movq %rdx, %r11",
+          "movq %r11, 0(%r10)",
+          "leaq -2424(%rbp), %r10",
+          "movq %r9, %r11",
+          "movq %r11, 8(%r10)",
+          "movq -80(%rbp), %rdx",
+          "movl %edx, %edx",
+          "movq %r9, %r8",
+          "movl %r8d, %r8d",
+          "movq %r8, %r11",
+          "movq %rdx, %r14",
+          "addq %r11, %r14",
+          "movl %r14d, %r14d",
+          "movq %r14, %r10",
+          "movq %r10, %r9",
+          "movq %r9, %r10",
+          "movq %r10, %rdx",
+          "movq %rbx, %r8",
+          "movl %r8d, %r8d",
+          "movq %r8, %r11",
+          "movq %rdx, %r14",
+          "xorq %r11, %r14",
+          "movq %r14, %r10",
+          "movq %r10, %r14",
+          "movq %r14, %r10",
+          "movq %r10, %rdx",
+          "leaq -2488(%rbp), %r10",
+          "movq %r13, %r11",
+          "movq %r11, 0(%r10)",
+          "leaq -2488(%rbp), %r10",
+          "movq %rbx, %r11",
+          "movq %r11, 8(%r10)",
+          "leaq -2488(%rbp), %r10",
+          "movq %rdx, %r11",
+          "movq %r11, 16(%r10)",
+          "movq %rbx, %r10",
+          "movq %r10, %r8",
+          "movq -2320(%rbp), %r11",
+          "andq %r11, %r8",
+          "movq %r8, %r10",
+          "imulq $4, %r10",
+          "movq %r10, -2544(%rbp)",
+          "movq -2336(%rbp), %r10",
+          "movq -2544(%rbp), %r11",
+          "addq %r11, %r10",
+          "movq %r10, %r8",
+          "movq %r8, %r10",
+          "movq %rdx, %r11",
+          "movl %r11d, 0(%r10)",
+          "movq %rdi, %r10",
+          "leaq -2240(%rbp), %r11",
+          "movq %r10, 0(%r11)",
+          "movq %rsi, %r10",
+          "leaq -2240(%rbp), %r11",
+          "movq %r10, 8(%r11)",
+          "movq %r13, %r10",
+          "leaq -2240(%rbp), %r11",
+          "movq %r10, 16(%r11)",
+          "movq %r9, %r10",
+          "leaq -2240(%rbp), %r11",
+          "movq %r10, 24(%r11)",
+          "leaq -2240(%rbp), %r11",
+          "movq 0(%r11), %rax",
+          "movq %rax, %r15",
+          "leaq -2240(%rbp), %r11",
+          "movq 8(%r11), %rax",
+          "movq %rax, %rbx",
+          "leaq -2240(%rbp), %r11",
+          "movq 16(%r11), %rax",
+          "movq %rax, %r13",
+          "leaq -2240(%rbp), %r11",
+          "movq 24(%r11), %rax",
+          "movq %rax, -80(%rbp)",
+          "jmp .Lp113d_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112__loop"
+        ]
+      },
+      "candidate": {
+        "assembly": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-emit01/local-fold/program.s",
+          "bytes": 479101,
+          "sha256": "47d1ddcf3541e25f44e1dcf2abc8ec38d39d9f0772777ca1b77142261ba58823"
+        },
+        "positivePathInstructionCount": 80,
+        "explicitFrameReferences": 12,
+        "directFrameLoads": 8,
+        "directFrameStores": 4,
+        "scratchAddressLEAs": 0,
+        "indirectScratchLoads": 0,
+        "indirectScratchStores": 0,
+        "nativeArrayLoads32": 1,
+        "nativeArrayStores32": 1,
+        "calls": 0,
+        "instructions": [
+          "movq %r14, %r10",
+          "cmpq $0, %r10",
+          "sete %r10b",
+          "movzbl %r10b, %r10d",
+          "movq %r10, -2360(%rbp)",
+          "movq -2360(%rbp), %r10",
+          "testl %r10d, %r10d",
+          "jz .Lp113d_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112__b2",
+          "movq %r14, %r10",
+          "cmpq $0, %r10",
+          "setne %r10b",
+          "movzbl %r10b, %r10d",
+          "movq %r10, -2360(%rbp)",
+          "movq -2360(%rbp), %r10",
+          "testl %r10d, %r10d",
+          "jz .Lp113d_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112__b4",
+          "movq %r14, %rdi",
+          "subq $1, %rdi",
+          "movq %rbx, %rsi",
+          "movl %esi, %esi",
+          "movq %rsi, %rdx",
+          "addq $1, %rdx",
+          "movl %edx, %edx",
+          "movq %rdx, %r10",
+          "movq %r10, %rsi",
+          "movq %rbx, %r10",
+          "movq %r10, %rdx",
+          "movq -2320(%rbp), %r11",
+          "andq %r11, %rdx",
+          "movq %rdx, %r8",
+          "imulq $4, %r8",
+          "movq -2336(%rbp), %r10",
+          "movq %r8, %r11",
+          "addq %r11, %r10",
+          "movq %r10, %rdx",
+          "movq %rdx, %r10",
+          "movl 0(%r10), %r10d",
+          "movq %r10, %r8",
+          "movq -80(%rbp), %rdx",
+          "movl %edx, %edx",
+          "movq %r8, %r9",
+          "movl %r9d, %r9d",
+          "movq %r9, %r11",
+          "movq %rdx, %r13",
+          "addq %r11, %r13",
+          "movl %r13d, %r13d",
+          "movq %r13, %r10",
+          "movq %r10, %r8",
+          "movq %r8, %r10",
+          "movq %r10, %rdx",
+          "movq %rbx, %r9",
+          "movl %r9d, %r9d",
+          "movq %r9, %r11",
+          "movq %rdx, %r13",
+          "xorq %r11, %r13",
+          "movq %r13, %r10",
+          "movq %r10, %r13",
+          "movq %r13, %r10",
+          "movq %r10, %rdx",
+          "movq %rbx, %r10",
+          "movq %r10, %r9",
+          "movq -2320(%rbp), %r11",
+          "andq %r11, %r9",
+          "movq %r9, %r10",
+          "imulq $4, %r10",
+          "movq %r10, -2480(%rbp)",
+          "movq -2336(%rbp), %r10",
+          "movq -2480(%rbp), %r11",
+          "addq %r11, %r10",
+          "movq %r10, %r9",
+          "movq %r9, %r10",
+          "movq %rdx, %r11",
+          "movl %r11d, 0(%r10)",
+          "movq %rdi, %r10",
+          "movq %r10, %r14",
+          "movq %rsi, %r10",
+          "movq %r10, %rbx",
+          "movq %r8, %r10",
+          "movq %r10, -80(%rbp)",
+          "jmp .Lp113d_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112__loop"
+        ]
+      }
+    },
+    "interpretation": "Tuple and array-snapshot scratch address constructions and indirect 64-bit loads/stores vanish. One native 32-bit array load and store remain. Two Boolean materializations/checks, scalar copies, and 12 explicit frame references remain. This is consistent with the measured local-fold screen improvement, not an isolated causal attribution."
+  },
+  "validation": {
+    "distinctFilePinsVerified": 1104,
+    "measurementReportsUnmodified": true,
+    "programsExecuted": false
+  }
+}

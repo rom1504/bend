@@ -355,6 +355,7 @@ type P114RStmt is Data:
   P114RResult{+value: N111Value}
   P114RFailure{+body: List<&2,N111Stmt>}
   P114RResumeReady{+frame: List<&2,N111Stmt>, +call: List<&2,N111Stmt>, +result: N111Value}
+  P114RPushFrame{+frame: List<&2,N111Stmt>}
 
 type P114RBody is Data:
   P114RBody{+valid: Bool, +frames: List<&2,String>, +body: List<&2,P114RStmt>}

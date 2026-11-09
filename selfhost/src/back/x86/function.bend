@@ -23,13 +23,13 @@ def x181_error(text,code):
   match code:
     case X181Code{chunks,next,terminal,error}: X181Code{chunks,next,terminal,text}
 
-def x181_epilogue():
-  "  leaq -40(%rbp), %rsp\n  popq %r15\n  popq %r14\n  popq %r13\n  popq %r12\n  popq %rbx\n  popq %rbp\n  ret\n"
+def x181_epilogue(frame):
+  x186_saves_text(x186_saves_mask(frame),0,True{}) ++ "  movq %rbp, %rsp\n  popq %rbp\n  ret\n"
 
-def x181_return(text,code):
+def x181_return(text,frame,code):
   match code:
     case X181Code{chunks,next,terminal,error}:
-      X181Code{Con{text ++ x181_epilogue(),chunks},next,True{},error}
+      X181Code{Con{text ++ x181_epilogue(frame),chunks},next,True{},error}
 
 def x181_label(n: U32, frame: X181Frame) -> String:
   match frame:
@@ -112,13 +112,13 @@ def x181_load_results(names: List<&2,String>, +offset: U32, +ids: N111Ids, +fram
 @unsafe
 def x181_results(values: List<&2,N111Value>, +ids: N111Ids, +frame: X181Frame, +code: X181Code) -> X181Code:
   match values:
-    case Con{head,Nil{}}: x181_return(x181_load(head,ids,frame,"%rax"),code)
+    case Con{head,Nil{}}: x181_return(x181_load(head,ids,frame,"%rax"),frame,code)
     case _: x181_store_results(values,0,ids,frame,code)
 
 @unsafe
 def x181_store_results(values: List<&2,N111Value>, +offset: U32, +ids: N111Ids, +frame: X181Frame, code: X181Code) -> X181Code:
   match values:
-    case Nil{}: x181_return("  xorl %eax, %eax\n",code)
+    case Nil{}: x181_return("  xorl %eax, %eax\n",frame,code)
     case Con{head,rest}:
       x181_store_results(rest,U32.add(offset,8),ids,frame,x181_add(
         x181_load(head,ids,frame,"%r10") ++ x181_load(N111Local{"__x181_result_out"},ids,frame,"%r11") ++
@@ -138,8 +138,15 @@ def x181_tail_skip(params: List<&2,String>) -> List<&2,String>:
       nt_choose(List<&2,String>,String.eq(head,"__x181_result_out"),u => rest,u => params)
 
 @unsafe
-def x181_again(values: List<&2,N111Value>, +ids: N111Ids, +frame: X181Frame, code: X181Code) -> X181Code:
-  x181_tail_moves(x181_tail_args(frame),0,ids,frame,x181_tail_snapshot(values,0,ids,frame,code))
+def x181_again(+values: List<&2,N111Value>, +ids: N111Ids, +frame: X181Frame, +code: X181Code) -> X181Code:
+  x186_again_planned(values,ids,frame,code,x186_parallel(x181_tail_args(frame),values,ids,frame))
+
+@unsafe
+def x186_again_planned(values: List<&2,N111Value>, +ids: N111Ids, +frame: X181Frame,
+    code: X181Code, plan: Maybe<&2,String>) -> X181Code:
+  match plan:
+    case Some{text}: x181_tail_moves([],0,ids,frame,x181_add(text,code))
+    case None{}: x181_tail_moves(x181_tail_args(frame),0,ids,frame,x181_tail_snapshot(values,0,ids,frame,code))
 
 @unsafe
 def x181_tail_snapshot(values: List<&2,N111Value>, +offset: U32, +ids: N111Ids, +frame: X181Frame, code: X181Code) -> X181Code:
@@ -171,12 +178,13 @@ def x181_incoming(params: List<&2,String>, +n: U32, +frame: X181Frame, acc: List
         x181_store(name,frame,"%rax"),acc})
 
 @unsafe
-def x181_prologue(frame: X181Frame) -> String:
+def x181_prologue(+frame: X181Frame) -> String:
   match frame:
     case X181Frame{slots,+bytes,+calls,+params,+symbol}:
       ".text\n.globl " ++ symbol ++ "\n.type " ++ symbol ++ ", @function\n" ++ symbol ++ ":\n" ++
-      "  pushq %rbp\n  movq %rsp, %rbp\n  pushq %rbx\n  pushq %r12\n  pushq %r13\n  pushq %r14\n  pushq %r15\n  subq $" ++
-      U32.show(U32.add(U32.mul(U32.div(U32.add(U32.add(bytes,calls),15),16),16),8)) ++ ", %rsp\n" ++
+      "  pushq %rbp\n  movq %rsp, %rbp\n  subq $" ++
+      U32.show(U32.add(U32.mul(U32.div(U32.add(U32.add(bytes,calls),15),16),16),48)) ++ ", %rsp\n" ++
+      x186_saves_text(x186_saves_mask(frame),0,False{}) ++
       x181_incoming(params,0,frame,[])
 
 @unsafe
@@ -207,20 +215,28 @@ def x185_function_late_body(symbol: String, params: List<&2,String>, setup: List
 @unsafe
 def x185_function_place(+symbol: String, +params: List<&2,String>, +setup: List<&2,P113DStmt>,
     +body: List<&2,P113DStmt>, +ids: N111Ids) -> X181Output:
-  x185_function_copied(symbol,params,setup,x185_prepare_body(params,setup,x185_scratch_body(params,setup,body)),ids)
+  x186_function_memory(symbol,params,setup,x185_prepare_body(params,setup,x185_scratch_body(params,setup,body)),ids)
+
+@unsafe
+def x186_function_memory(symbol: String, +params: List<&2,String>, +setup: List<&2,P113DStmt>,
+    body: List<&2,P113DStmt>, ids: N111Ids) -> X181Output:
+  x185_function_copied(symbol,params,setup,x185_dead_body(setup,
+    x185_copy_function(params,setup,x186_expression_body(setup,x186_private_body(params,setup,body)))),ids)
 
 def x185_loop_registers_enabled() -> Bool: True{}
 
 @unsafe
 def x185_function_copied(+symbol: String, +params: List<&2,String>, +setup: List<&2,P113DStmt>,
     +body: List<&2,P113DStmt>, +ids: N111Ids) -> X181Output:
-  +all = nt_append(P113DStmt,setup,body)
-  x185_function_frame(symbol,setup,body,ids,x185_transient_frame(
-    x181_register_frame(x181_frame(symbol,params,all),
-      nt_choose(List<&2,P113DStmt>,x185_loop_registers_enabled(),u => body,u => all)),params,setup,body))
+  x186_float_function(symbol,params,setup,body,ids)
 
 @unsafe
 def x185_function_frame(+symbol: String, +setup: List<&2,P113DStmt>, +body: List<&2,P113DStmt>,
+    +ids: N111Ids, +frame: X181Frame) -> X181Output:
+  x186_function_saved(symbol,setup,body,ids,x186_saves_frame(frame))
+
+@unsafe
+def x186_function_saved(+symbol: String, +setup: List<&2,P113DStmt>, +body: List<&2,P113DStmt>,
     +ids: N111Ids, +frame: X181Frame) -> X181Output:
   x181_function_done(symbol,x181_stmts(body,ids,frame,x181_add(x181_loop_label(frame) ++ ":\n",
     x181_stmts(setup,ids,frame,X181Code{[x181_prologue(frame)],0,False{},""}))))

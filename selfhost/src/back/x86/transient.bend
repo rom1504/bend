@@ -100,6 +100,16 @@ def x185_t_cut(scan: X185TScan) -> X185TScan:
 def x185_t_if(condition: N111Value, yes: List<&2,P113DStmt>, no: List<&2,P113DStmt>, scan: X185TScan) -> X185TScan:
   x185_t_cut(x185_t_body(no,x185_t_cut(x185_t_body(yes,x185_t_cut(x185_t_read(condition,scan))))))
 
+# The shared F32 expansion only clobbers reserved selector temporaries. Its
+# buffer is read before the destination write at this same inclusive endpoint;
+# ordinary calls still exclude all arguments/results and cut the region.
+@unsafe
+def x186_t_inline_call(name: String, args: List<&2,N111Arg>, scan: X185TScan, operation: X186InlineOp) -> X185TScan:
+  match operation:
+    case X186InlineNone{}: x185_t_cut(x185_t_forbid(name,x185_t_forbid_args(args,scan)))
+    case X186InlineF32{destination,id,buffer}:
+      x185_t_next(x185_t_event(destination,True{},x185_t_read(N111Local{buffer},scan)))
+
 @unsafe
 def x185_t_scalar(stmt: N111Stmt, scan: X185TScan) -> X185TScan:
   match stmt:
@@ -111,7 +121,8 @@ def x185_t_scalar(stmt: N111Stmt, scan: X185TScan) -> X185TScan:
     case N111Offset{name,base,bytes}:
       x185_t_next(x185_t_event(name,True{},x185_t_read(bytes,x185_t_read(base,scan))))
     case N111Alloca{name,bytes,align}: x185_t_next(x185_t_forbid(name,scan))
-    case N111Call{name,typ,symbol,args}: x185_t_cut(x185_t_forbid(name,x185_t_forbid_args(args,scan)))
+    case N111Call{+name,typ,symbol,+args}:
+      x186_t_inline_call(name,args,scan,x186_inline_op(N111Call{name,typ,symbol,args}))
     case N111If{condition,yes,no}: x185_t_if(condition,x181_scalar_rows(yes),x181_scalar_rows(no),scan)
     case N111Return{value}: x185_t_cut(x185_t_read(value,scan))
 

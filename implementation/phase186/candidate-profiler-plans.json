@@ -1,0 +1,85 @@
+{
+  "kind": "phase186-candidate-profiler-extension",
+  "programsExecuted": false,
+  "adapter": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase186/profile-current.py",
+    "bytes": 6809,
+    "sha256": "6748c1c75284846a064f429b5e30d929b4acc8de3b45529505f7385e548b5bf2"
+  },
+  "tests": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase186/test_profile_current.py",
+    "bytes": 7940,
+    "sha256": "d1cd8175463064f5067a51f95578fdaa40016a1fc590761bb93f7ab8c9ef31de"
+  },
+  "offlineTestsPassed": 13,
+  "plans": [
+    {
+      "preview": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/profile-sixth-x86-ray-preview01/plan/jobs.json",
+        "bytes": 4570,
+        "sha256": "540b05042881e04308b38667edb9a3b718caa92e62759d014f2c8b849c28d37f"
+      },
+      "manifest": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/sixth-x86-build01/programs.manifest.json",
+        "bytes": 54715,
+        "sha256": "5a084742b199c400dd4f7783dad2d3537f37a34e7ae3f392f031d75257d62a2d"
+      },
+      "role": "p186-sixth-x86",
+      "case": "variation-ray-active-256-2240",
+      "repetitions": 3000
+    },
+    {
+      "preview": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/profile-stack-qbe-map-preview01/plan/jobs.json",
+        "bytes": 3176,
+        "sha256": "9ed930a953d69a043c2f04c7566aa08c1f3bcc5e03636d79c87fd4c5a532a2e0"
+      },
+      "manifest": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/stack-only-qbe-build01/programs.manifest.json",
+        "bytes": 95796,
+        "sha256": "b0d687b25cb016dd09068d0e2b4c81a3434533ea7ec3c02ee9f65cb648f96e95"
+      },
+      "role": "p186-stack-qbe",
+      "case": "coverage-map-churn-128",
+      "repetitions": 11000
+    },
+    {
+      "preview": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/profile-first-qbe-map-preview01/plan/jobs.json",
+        "bytes": 3171,
+        "sha256": "0d1c2d54ffca0b7bc82a836472eaf589e83add07ace5cd3fb5438c7f6cc01ae4"
+      },
+      "manifest": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-qbe-build01/programs.manifest.json",
+        "bytes": 214495,
+        "sha256": "fad5883e2f6c36669768dca3b3adca43298c4d4e4ac4e1aabecfaa8813a63c0e"
+      },
+      "role": "p186-first-qbe",
+      "case": "coverage-map-churn-128",
+      "repetitions": 11000
+    },
+    {
+      "preview": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/profile-baseline-receipt-check01/plan/jobs.json",
+        "bytes": 4583,
+        "sha256": "a19a086803fe69547295e2a2a616c3894a44c51d976749e42e79e7fc8dec2e05"
+      },
+      "manifest": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/reference45-01/manifest.json",
+        "bytes": 1124682,
+        "sha256": "c0a4d516c0bf0cfb6105af8592506533e8d564f95f6340a46b61d8cc146d869c"
+      },
+      "role": "p185-x86",
+      "case": "local-fold",
+      "repetitions": 1000
+    }
+  ],
+  "scope": "Preview metadata only. Root execution must use a fresh output root and one CPU3 outer guard; never reuse the preview roots for execution.",
+  "sampling": "3000 active-ray repetitions at the sixth median2.312ms gives about6.94seconds;11000 map repetitions at stack median0.6167ms gives about6.78seconds. Each aims above500samples even at13ms, with one clean and two sampled captures. Actual sample acceptance remains authoritative; duration projection is diagnostic, not a guarantee.",
+  "ownership": "Exact binary/source/receipt pins retained. Separate emission and machine receipts are recorded separately; current lexical owner mapping does not claim a combined source-emitting machine receipt.",
+  "historicalAdapterPreservation": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/profile-adapter-baseline01/preservation.json",
+    "bytes": 724,
+    "sha256": "72d0b1c50c6b277365d09b734ac93e7e4878d78441ccc01f891df3492483d2c6"
+  }
+}

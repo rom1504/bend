@@ -1,9 +1,6 @@
 # Direct register destinations for scalar binary operations. Right operands
 # are snapshotted into reserved r11 BEFORE the destination is overwritten;
 # left/right/destination may otherwise share any admitted physical home.
-type X185Physical is Data:
-  X185Physical{+wide: String, +narrow: String, +byte: String}
-  X185PhysicalNone{}
 
 def x185_register_binary_enabled() -> Bool: True{}
 

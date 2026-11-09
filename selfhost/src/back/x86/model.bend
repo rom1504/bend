@@ -1,3 +1,7 @@
+type X185Physical is Data:
+  X185Physical{+wide: String, +narrow: String, +byte: String}
+  X185PhysicalNone{}
+
 # Experimental AMD64 SysV machine selection. The checked native operations
 # remain the semantic input; this per-function frame is machine placement only.
 # slots: X181Stack da=positive rbp displacement, X181Buffer da=end displacement,
@@ -67,9 +71,11 @@ law x181_error:
   X181Code
 law x181_return:
   for +text: String
+  for +frame: X181Frame
   for +code: X181Code
   X181Code
 law x181_epilogue:
+  for +frame: X181Frame
   String
 
 law x181_call_text:

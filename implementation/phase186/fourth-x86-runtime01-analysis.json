@@ -1,0 +1,1960 @@
+{
+  "kind": "phase186-fourth-x86-screen-instability-audit",
+  "scope": "Offline analysis only. Original reports are preserved. Generic-row is contaminated and excluded only from the explicitly labeled nine-case diagnostic, not replaced or silently repaired in a ten-case result.",
+  "validation": {
+    "first-x86-runtime02": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02/report.json",
+        "bytes": 360550,
+        "sha256": "4c20edf62e36bd3dcf68e6624527acfa8dcbf87a584eaa0e28fc1daa9f28625c"
+      },
+      "oracleRevalidated": {
+        "pilots": 86,
+        "samples": 90
+      },
+      "inputsVerified": 230
+    },
+    "fourth-x86-runtime01": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/report.json",
+        "bytes": 376430,
+        "sha256": "14c5f458203f77dd373f240e1cc298b295928bef6b2e86dc482100b7318f869f"
+      },
+      "oracleRevalidated": {
+        "pilots": 89,
+        "samples": 90
+      },
+      "inputsVerified": 243
+    },
+    "third-qbe-runtime01": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/third-qbe-runtime01/report.json",
+        "bytes": 199440,
+        "sha256": "43035b91fb18adecb9ccd41a03218c2cb0f01211aaeff8531bf8697c8ca8ffeb"
+      },
+      "oracleRevalidated": {
+        "pilots": 37,
+        "samples": 45
+      },
+      "inputsVerified": 164
+    },
+    "first-qbe-runtime01": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-qbe-runtime01/report.json",
+        "bytes": 384448,
+        "sha256": "7dd506e3571696e1b8d8a9b215e74fcc7b5c597ed4631db15f66650b1c644249"
+      },
+      "oracleRevalidated": {
+        "pilots": 102,
+        "samples": 90
+      },
+      "inputsVerified": 231
+    }
+  },
+  "guards": {
+    "first-x86-runtime02": {
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02-guard/process.json",
+        "bytes": 2421,
+        "sha256": "9fa2f96d4b102f2f0be23c42344d23a3563ec51afb40065a14443b73693d99a6"
+      },
+      "retention": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02-guard/retention.json",
+        "bytes": 1059,
+        "sha256": "b57b01168610c97b07d6b6701b32c75d97255b2475dd3239d1b15377e1e9d993"
+      },
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+        "bend-build",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tests/phase185/runtime-loop.py",
+        "run",
+        "--manifest",
+        "selfhost/build/phase186/first-x86-merge01/manifest.json",
+        "--rounds",
+        "3",
+        "--seconds",
+        "80",
+        "--target-ms",
+        "250",
+        "--guarded",
+        "--cpu",
+        "3",
+        "--out",
+        "selfhost/build/phase186/first-x86-runtime02"
+      ],
+      "started": 1794218507.5052874,
+      "finished": 1794218550.9952357,
+      "returncode": 0,
+      "complete": true,
+      "peakTreeRssBytes": 33042432,
+      "minimumAvailableBytes": 25124859904,
+      "stoppedFor": null,
+      "closed": true
+    },
+    "fourth-x86-runtime01": {
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01-guard/process.json",
+        "bytes": 2425,
+        "sha256": "3e993c4a862ef3263efbc6d650fe2f46d4c892d6683a82e2af7c952a3d362193"
+      },
+      "retention": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01-guard/retention.json",
+        "bytes": 1063,
+        "sha256": "6f9687a650671fd269184549789a83c0f9a13aec3e168e6eafd8fbf3d52d8ce2"
+      },
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+        "bend-build",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tests/phase185/runtime-loop.py",
+        "run",
+        "--manifest",
+        "selfhost/build/phase186/fourth-x86-merge01/manifest.json",
+        "--rounds",
+        "3",
+        "--seconds",
+        "80",
+        "--target-ms",
+        "250",
+        "--guarded",
+        "--cpu",
+        "3",
+        "--out",
+        "selfhost/build/phase186/fourth-x86-runtime01"
+      ],
+      "started": 1794219870.9288225,
+      "finished": 1794219915.1127317,
+      "returncode": 0,
+      "complete": true,
+      "peakTreeRssBytes": 33988608,
+      "minimumAvailableBytes": 25250865152,
+      "stoppedFor": null,
+      "closed": true
+    },
+    "third-qbe-runtime01": {
+      "process": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/third-qbe-runtime01-guard/process.json",
+        "bytes": 2421,
+        "sha256": "1754545eb297b0481f11fa3b901cd7941b84046c0e9dc1022d4f2c5f6cd115a3"
+      },
+      "retention": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/third-qbe-runtime01-guard/retention.json",
+        "bytes": 1057,
+        "sha256": "72887aaeb9c0d79c5b1bc861d9e47835e4746d9dd0f69d82b40431d0e163b999"
+      },
+      "command": [
+        "bash",
+        "-c",
+        "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+        "bend-build",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "selfhost/tests/phase185/runtime-loop.py",
+        "run",
+        "--manifest",
+        "selfhost/build/phase186/third-qbe-merge01/manifest.json",
+        "--rounds",
+        "3",
+        "--seconds",
+        "80",
+        "--target-ms",
+        "250",
+        "--guarded",
+        "--cpu",
+        "3",
+        "--out",
+        "selfhost/build/phase186/third-qbe-runtime01"
+      ],
+      "started": 1794219323.3742816,
+      "finished": 1794219345.3704138,
+      "returncode": 0,
+      "complete": true,
+      "peakTreeRssBytes": 31498240,
+      "minimumAvailableBytes": 24473399296,
+      "stoppedFor": null,
+      "closed": true
+    }
+  },
+  "distinctPinsVerified": 1712,
+  "fourthX86": {
+    "cases": [
+      {
+        "id": "local-pair",
+        "candidateOverBefore": 0.9304321176831136,
+        "timeReductionPercent": 6.956788231688638,
+        "ratiosOverC": {
+          "before": 9.059361471861473,
+          "candidate": 8.429120879120878
+        },
+        "metricMsByRole": {
+          "c": [
+            0.20914542728635682,
+            0.2098950524737631,
+            0.21064467766116943
+          ],
+          "before": [
+            1.9090909090909092,
+            1.9015151515151516,
+            1.9015151515151516
+          ],
+          "candidate": [
+            1.7692307692307692,
+            1.7692307692307692,
+            1.7692307692307692
+          ]
+        },
+        "maxOverMinByRole": {
+          "c": 1.007168458781362,
+          "before": 1.00398406374502,
+          "candidate": 1.0
+        }
+      },
+      {
+        "id": "local-fold",
+        "candidateOverBefore": 0.8056441124679181,
+        "timeReductionPercent": 19.435588753208187,
+        "ratiosOverC": {
+          "before": 9.781818181818183,
+          "candidate": 7.880664227413454
+        },
+        "metricMsByRole": {
+          "c": [
+            0.00274,
+            0.00275,
+            0.00277
+          ],
+          "before": [
+            0.0268,
+            0.027,
+            0.0269
+          ],
+          "candidate": [
+            0.021671826625386997,
+            0.021757825937392502,
+            0.021327829377364983
+          ]
+        },
+        "maxOverMinByRole": {
+          "c": 1.010948905109489,
+          "before": 1.007462686567164,
+          "candidate": 1.0201612903225805
+        }
+      },
+      {
+        "id": "coverage-numeric-recurrence-256",
+        "candidateOverBefore": 0.8776939759036144,
+        "timeReductionPercent": 12.230602409638557,
+        "ratiosOverC": {
+          "before": 4.656164242547263,
+          "candidate": 4.086687306501548
+        },
+        "metricMsByRole": {
+          "c": [
+            0.0008075,
+            0.0008075,
+            0.0008075
+          ],
+          "before": [
+            0.003759852625856914,
+            0.003759852625856914,
+            0.003759852625856914
+          ],
+          "candidate": [
+            0.0033125,
+            0.0033,
+            0.0033
+          ]
+        },
+        "maxOverMinByRole": {
+          "c": 1.0,
+          "before": 1.0,
+          "candidate": 1.0037878787878787
+        }
+      },
+      {
+        "id": "tree-bitonic",
+        "candidateOverBefore": 0.9700616819617873,
+        "timeReductionPercent": 2.9938318038212675,
+        "ratiosOverC": {
+          "before": 5.367606497088568,
+          "candidate": 5.206909386674754
+        },
+        "metricMsByRole": {
+          "c": [
+            0.16480630334865398,
+            0.16414970453053185,
+            0.1654629021667761
+          ],
+          "before": [
+            0.8846153846153846,
+            0.8881118881118881,
+            0.8846153846153846
+          ],
+          "candidate": [
+            0.8581314878892734,
+            0.8546712802768166,
+            0.8823529411764706
+          ]
+        },
+        "maxOverMinByRole": {
+          "c": 1.008,
+          "before": 1.0039525691699605,
+          "candidate": 1.0323886639676114
+        }
+      },
+      {
+        "id": "coverage-map-churn-128",
+        "candidateOverBefore": 0.9553603207013469,
+        "timeReductionPercent": 4.4639679298653085,
+        "ratiosOverC": {
+          "before": 5.458147410358565,
+          "candidate": 5.214497460395385
+        },
+        "metricMsByRole": {
+          "c": [
+            0.23176361957525393,
+            0.23084025854108955,
+            0.23176361957525393
+          ],
+          "before": [
+            1.265,
+            1.255,
+            1.265
+          ],
+          "candidate": [
+            1.1943127962085307,
+            1.2132701421800949,
+            1.2085308056872037
+          ]
+        },
+        "maxOverMinByRole": {
+          "c": 1.004,
+          "before": 1.0079681274900398,
+          "candidate": 1.015873015873016
+        }
+      },
+      {
+        "id": "coverage-unicode-text-64",
+        "candidateOverBefore": 0.9907370517928287,
+        "timeReductionPercent": 0.9262948207171329,
+        "ratiosOverC": {
+          "before": 4.339357241379311,
+          "candidate": 4.299162
+        },
+        "metricMsByRole": {
+          "c": [
+            0.040210627094303494,
+            0.039891495133237594,
+            0.039891495133237594
+          ],
+          "before": [
+            0.1724137931034483,
+            0.17793103448275863,
+            0.17310344827586208
+          ],
+          "candidate": [
+            0.1715,
+            0.171,
+            0.172
+          ]
+        },
+        "maxOverMinByRole": {
+          "c": 1.008,
+          "before": 1.032,
+          "candidate": 1.0058479532163742
+        }
+      },
+      {
+        "id": "coverage-record-aggregation-256",
+        "candidateOverBefore": 0.9551282051282052,
+        "timeReductionPercent": 4.487179487179482,
+        "ratiosOverC": {
+          "before": 4.268456375838926,
+          "candidate": 4.076923076923077
+        },
+        "metricMsByRole": {
+          "c": [
+            0.3946540880503145,
+            0.3946540880503145,
+            0.39937106918238996
+          ],
+          "before": [
+            1.6778523489932886,
+            1.691275167785235,
+            1.6845637583892616
+          ],
+          "candidate": [
+            1.608974358974359,
+            1.6025641025641026,
+            1.6282051282051282
+          ]
+        },
+        "maxOverMinByRole": {
+          "c": 1.0119521912350598,
+          "before": 1.008,
+          "candidate": 1.016
+        }
+      },
+      {
+        "id": "complete-generic-row32",
+        "candidateOverBefore": 0.5360075132643972,
+        "timeReductionPercent": 46.39924867356028,
+        "ratiosOverC": {
+          "before": 8.463058190530903,
+          "candidate": 4.536262775318359
+        },
+        "metricMsByRole": {
+          "c": [
+            0.08,
+            0.08025,
+            0.15775
+          ],
+          "before": [
+            0.37631184407796103,
+            0.6806596701649176,
+            0.679160419790105
+          ],
+          "candidate": [
+            0.36403508771929827,
+            0.36257309941520466,
+            0.6213450292397661
+          ]
+        },
+        "maxOverMinByRole": {
+          "c": 1.971875,
+          "before": 1.8087649402390438,
+          "candidate": 1.713709677419355
+        }
+      },
+      {
+        "id": "variation-ray-active-256-2240",
+        "candidateOverBefore": 0.9464686707714597,
+        "timeReductionPercent": 5.353132922854032,
+        "ratiosOverC": {
+          "before": 5.888161483906164,
+          "candidate": 5.572960372960374
+        },
+        "metricMsByRole": {
+          "c": [
+            0.45058139534883723,
+            0.4563953488372093,
+            0.45348837209302323
+          ],
+          "before": [
+            2.6702127659574466,
+            2.6595744680851063,
+            2.6914893617021276
+          ],
+          "candidate": [
+            2.5454545454545454,
+            2.5272727272727273,
+            2.5272727272727273
+          ]
+        },
+        "maxOverMinByRole": {
+          "c": 1.0129032258064514,
+          "before": 1.012,
+          "candidate": 1.0071942446043165
+        }
+      },
+      {
+        "id": "coverage-closures-256",
+        "candidateOverBefore": 0.9199984360026587,
+        "timeReductionPercent": 8.000156399734127,
+        "ratiosOverC": {
+          "before": 0.2506928486055777,
+          "candidate": 0.23063702863418278
+        },
+        "metricMsByRole": {
+          "c": [
+            0.0029617917069832203,
+            0.0029499917400231277,
+            0.002997191607863498
+          ],
+          "before": [
+            0.0007425,
+            0.000745,
+            0.0007375
+          ],
+          "candidate": [
+            0.0006830988387319741,
+            0.0006830988387319741,
+            0.000685798834141982
+          ]
+        },
+        "maxOverMinByRole": {
+          "c": 1.016,
+          "before": 1.0101694915254238,
+          "candidate": 1.0039525691699607
+        }
+      }
+    ],
+    "reportedTenCaseCandidateOverBefore": 0.8770456285977821,
+    "reportedTenCaseUsableAsGainClaim": false,
+    "nineCaseDiagnostic": {
+      "excludedCase": "complete-generic-row32",
+      "caseCount": 9,
+      "candidateOverBeforeGeomean": 0.9263677876802956,
+      "timeReductionPercent": 7.36322123197044,
+      "beforeOverCGeomean": 4.104339301501099,
+      "candidateOverCGeomean": 3.8021277186208633,
+      "scope": "Remaining nine measured cases only. Generic-row must be replicated; this is not a replacement full-ten result."
+    }
+  },
+  "genericRow": {
+    "status": "contaminated; do not claim 46.4 percent improvement",
+    "firstCandidate": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-build01/complete-generic-row32/machine/program",
+      "bytes": 266176,
+      "sha256": "c25a7bb87fdc0c48d3b8626c2d9a20b5bac1c1f0a10c7a6270c54f4af24dbecf"
+    },
+    "fourthBefore": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-build01/complete-generic-row32/machine/program",
+      "bytes": 266176,
+      "sha256": "c25a7bb87fdc0c48d3b8626c2d9a20b5bac1c1f0a10c7a6270c54f4af24dbecf"
+    },
+    "identicalArtifact": true,
+    "identicalCommand": true,
+    "command": [
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-build01/complete-generic-row32/machine/program",
+      "+RTS",
+      "--threads",
+      "1",
+      "--gpu",
+      "off",
+      "-RTS",
+      "--RTS",
+      "667",
+      "4",
+      "32",
+      "17"
+    ],
+    "cArtifact": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/complete-generic-row32/bend-c/program",
+      "bytes": 137080,
+      "sha256": "2ad6059aeb2f4a98513614fef3ae5ec6a4b3d7d5bb73c06b7eaef52fe9296f95"
+    },
+    "identicalCArtifact": true,
+    "identicalOracleAndPoint": true,
+    "point": {
+      "expectedStdout": "[[0,2,1,1,0,0,0,1,1,0,0,2,3,1,3,1,0,1,0,0,2,1,0,0,0,2,0,2,1,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,1,2,0,1,0,1,2,0,0,0,0,2,0,0,3,0,1,2,0,1,2,0,0,1,3,3,0,0,3,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,1,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]\n",
+      "runtimeArgs": [
+        32,
+        17
+      ],
+      "repetitions": 1460,
+      "warmups": 4,
+      "ratioEligible": true
+    },
+    "beforeInflationOverHistorical": 1.8120000000000003,
+    "crossCampaignNormalizedCandidateRatio": 0.9682199267639506,
+    "crossCampaignCMedianRatio": 1.003125,
+    "diagnosticPerRoundRatios": [
+      {
+        "round": 0,
+        "candidateOverBefore": 0.967376109596701,
+        "candidateOverC": 4.550438596491229,
+        "beforeOverC": 4.703898050974513
+      },
+      {
+        "round": 1,
+        "candidateOverBefore": 0.532678980858902,
+        "candidateOverC": 4.5180448525259145,
+        "beforeOverC": 8.48174043819212
+      },
+      {
+        "round": 2,
+        "candidateOverBefore": 0.9148722615958587,
+        "candidateOverC": 3.9387957479541433,
+        "beforeOverC": 4.305295846529984
+      }
+    ],
+    "timeline": [
+      {
+        "report": "first-x86-runtime02",
+        "case": "complete-generic-row32",
+        "stage": "pilots",
+        "role": "before",
+        "round": 0,
+        "repetitions": 16,
+        "elapsedMs": 7,
+        "metricMs": 0.4375,
+        "wallSeconds": 0.01234660018235445,
+        "cpuSeconds": 0.010705,
+        "cpuOverWall": 0.867040305986372,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02/pilot/complete-generic-row32/0-before/stdout",
+          "bytes": 1086,
+          "sha256": "88727ba75e690b4240aaff9d7d1f9d439e2869372eab1fd8858890f104dd4be1"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:02:17.682917+00:00"
+      },
+      {
+        "report": "first-x86-runtime02",
+        "case": "complete-generic-row32",
+        "stage": "pilots",
+        "role": "before",
+        "round": 1,
+        "repetitions": 572,
+        "elapsedMs": 250,
+        "metricMs": 0.4370629370629371,
+        "wallSeconds": 0.25421805400401354,
+        "cpuSeconds": 0.252877,
+        "cpuOverWall": 0.9947247884920386,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02/pilot/complete-generic-row32/1-before/stdout",
+          "bytes": 1089,
+          "sha256": "db7c8a6e2cc7c2ff1abf0f3b685ad9095c6fb5ef5f9dcef3db71f0ac915b192e"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:02:18.130903+00:00"
+      },
+      {
+        "report": "first-x86-runtime02",
+        "case": "complete-generic-row32",
+        "stage": "pilots",
+        "role": "candidate",
+        "round": 0,
+        "repetitions": 16,
+        "elapsedMs": 6,
+        "metricMs": 0.375,
+        "wallSeconds": 0.010377801023423672,
+        "cpuSeconds": 0.009344,
+        "cpuOverWall": 0.9003834221632997,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02/pilot/complete-generic-row32/0-candidate/stdout",
+          "bytes": 1086,
+          "sha256": "c6bb10ec240ded375e1db295d93a8b86b43bf59b8bdba804eb02d56dbd170626"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:02:18.182901+00:00"
+      },
+      {
+        "report": "first-x86-runtime02",
+        "case": "complete-generic-row32",
+        "stage": "pilots",
+        "role": "candidate",
+        "round": 1,
+        "repetitions": 667,
+        "elapsedMs": 251,
+        "metricMs": 0.37631184407796103,
+        "wallSeconds": 0.2554304711520672,
+        "cpuSeconds": 0.254333,
+        "cpuOverWall": 0.995703444670805,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02/pilot/complete-generic-row32/1-candidate/stdout",
+          "bytes": 1089,
+          "sha256": "8f34148950b3d40f903c3298bd85657f149f9a19f321a35ff19dffd5359d4eb5"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:02:18.458893+00:00"
+      },
+      {
+        "report": "first-x86-runtime02",
+        "case": "complete-generic-row32",
+        "stage": "pilots",
+        "role": "c",
+        "round": 0,
+        "repetitions": 16,
+        "elapsedMs": 1,
+        "metricMs": 0.0625,
+        "wallSeconds": 0.004033859819173813,
+        "cpuSeconds": 0.003015,
+        "cpuOverWall": 0.7474230972700264,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02/pilot/complete-generic-row32/0-c/stdout",
+          "bytes": 1086,
+          "sha256": "6a556044afaaa5a0cc89029d8b387635ae34d0af07b230302d795aa7819013b9"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:02:18.486892+00:00"
+      },
+      {
+        "report": "first-x86-runtime02",
+        "case": "complete-generic-row32",
+        "stage": "pilots",
+        "role": "c",
+        "round": 1,
+        "repetitions": 4000,
+        "elapsedMs": 318,
+        "metricMs": 0.0795,
+        "wallSeconds": 0.32136736484244466,
+        "cpuSeconds": 0.320351,
+        "cpuOverWall": 0.9968373738168997,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02/pilot/complete-generic-row32/1-c/stdout",
+          "bytes": 1090,
+          "sha256": "fdc79ff856afb0ec2f242cc0cc303525d45aa12a5bd8c77d1644bce3065d8701"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:02:18.830881+00:00"
+      },
+      {
+        "report": "first-x86-runtime02",
+        "case": "complete-generic-row32",
+        "stage": "samples",
+        "role": "before",
+        "round": 0,
+        "repetitions": 572,
+        "elapsedMs": 251,
+        "metricMs": 0.4388111888111888,
+        "wallSeconds": 0.2553421277552843,
+        "cpuSeconds": 0.254221,
+        "cpuOverWall": 0.995609311455418,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02/timed/complete-generic-row32/0-before/stdout",
+          "bytes": 1089,
+          "sha256": "ac9cfaef0ead71aa6a5933e36e4473f8357e592ae15679b09dd5ac3fe5094f0b"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:02:19.138871+00:00"
+      },
+      {
+        "report": "first-x86-runtime02",
+        "case": "complete-generic-row32",
+        "stage": "samples",
+        "role": "candidate",
+        "round": 0,
+        "repetitions": 667,
+        "elapsedMs": 250,
+        "metricMs": 0.3748125937031484,
+        "wallSeconds": 0.2543955398723483,
+        "cpuSeconds": 0.253351,
+        "cpuOverWall": 0.9958940322897467,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02/timed/complete-generic-row32/0-candidate/stdout",
+          "bytes": 1089,
+          "sha256": "9f47babc21e41eef905d7336a0efa8ba287ff1cebb878d4bd0c7f98f69f35af4"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:02:19.418862+00:00"
+      },
+      {
+        "report": "first-x86-runtime02",
+        "case": "complete-generic-row32",
+        "stage": "samples",
+        "role": "c",
+        "round": 0,
+        "repetitions": 4000,
+        "elapsedMs": 318,
+        "metricMs": 0.0795,
+        "wallSeconds": 0.3215075139887631,
+        "cpuSeconds": 0.320364,
+        "cpuOverWall": 0.9964432744523567,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02/timed/complete-generic-row32/0-c/stdout",
+          "bytes": 1090,
+          "sha256": "fdc79ff856afb0ec2f242cc0cc303525d45aa12a5bd8c77d1644bce3065d8701"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:02:19.814850+00:00"
+      },
+      {
+        "report": "first-x86-runtime02",
+        "case": "complete-generic-row32",
+        "stage": "samples",
+        "role": "candidate",
+        "round": 1,
+        "repetitions": 667,
+        "elapsedMs": 250,
+        "metricMs": 0.3748125937031484,
+        "wallSeconds": 0.2544983206316829,
+        "cpuSeconds": 0.25343699999999997,
+        "cpuOverWall": 0.9958297538897364,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02/timed/complete-generic-row32/1-candidate/stdout",
+          "bytes": 1089,
+          "sha256": "9f47babc21e41eef905d7336a0efa8ba287ff1cebb878d4bd0c7f98f69f35af4"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:02:20.094841+00:00"
+      },
+      {
+        "report": "first-x86-runtime02",
+        "case": "complete-generic-row32",
+        "stage": "samples",
+        "role": "c",
+        "round": 1,
+        "repetitions": 4000,
+        "elapsedMs": 320,
+        "metricMs": 0.08,
+        "wallSeconds": 0.32287596724927425,
+        "cpuSeconds": 0.321679,
+        "cpuOverWall": 0.9962927954673376,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02/timed/complete-generic-row32/1-c/stdout",
+          "bytes": 1090,
+          "sha256": "7536edf66e29912a1df05a8412eb2c9d1599c0fa162ab739d3344aa552dd4fae"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:02:20.454829+00:00"
+      },
+      {
+        "report": "first-x86-runtime02",
+        "case": "complete-generic-row32",
+        "stage": "samples",
+        "role": "before",
+        "round": 1,
+        "repetitions": 572,
+        "elapsedMs": 261,
+        "metricMs": 0.4562937062937063,
+        "wallSeconds": 0.26564423367381096,
+        "cpuSeconds": 0.264572,
+        "cpuOverWall": 0.9959636478496741,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02/timed/complete-generic-row32/1-before/stdout",
+          "bytes": 1089,
+          "sha256": "59c345159480d21ad7f17a8e3ecf3c0597fd0597baabdc75bc9bc94107d367bb"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:02:20.774819+00:00"
+      },
+      {
+        "report": "first-x86-runtime02",
+        "case": "complete-generic-row32",
+        "stage": "samples",
+        "role": "c",
+        "round": 2,
+        "repetitions": 4000,
+        "elapsedMs": 320,
+        "metricMs": 0.08,
+        "wallSeconds": 0.32272486528381705,
+        "cpuSeconds": 0.321677,
+        "cpuOverWall": 0.996753069265687,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02/timed/complete-generic-row32/2-c/stdout",
+          "bytes": 1090,
+          "sha256": "7536edf66e29912a1df05a8412eb2c9d1599c0fa162ab739d3344aa552dd4fae"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:02:21.122808+00:00"
+      },
+      {
+        "report": "first-x86-runtime02",
+        "case": "complete-generic-row32",
+        "stage": "samples",
+        "role": "before",
+        "round": 2,
+        "repetitions": 572,
+        "elapsedMs": 250,
+        "metricMs": 0.4370629370629371,
+        "wallSeconds": 0.2543708961457014,
+        "cpuSeconds": 0.253334,
+        "cpuOverWall": 0.9959236840322035,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02/timed/complete-generic-row32/2-before/stdout",
+          "bytes": 1089,
+          "sha256": "db7c8a6e2cc7c2ff1abf0f3b685ad9095c6fb5ef5f9dcef3db71f0ac915b192e"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:02:21.422799+00:00"
+      },
+      {
+        "report": "first-x86-runtime02",
+        "case": "complete-generic-row32",
+        "stage": "samples",
+        "role": "candidate",
+        "round": 2,
+        "repetitions": 667,
+        "elapsedMs": 251,
+        "metricMs": 0.37631184407796103,
+        "wallSeconds": 0.2553887548856437,
+        "cpuSeconds": 0.25436,
+        "cpuOverWall": 0.995971808210176,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02/timed/complete-generic-row32/2-candidate/stdout",
+          "bytes": 1089,
+          "sha256": "8f34148950b3d40f903c3298bd85657f149f9a19f321a35ff19dffd5359d4eb5"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:02:21.702790+00:00"
+      },
+      {
+        "report": "first-x86-runtime02",
+        "case": "variation-ray-active-256-2240",
+        "stage": "pilots",
+        "role": "candidate",
+        "round": 0,
+        "repetitions": 16,
+        "elapsedMs": 43,
+        "metricMs": 2.6875,
+        "wallSeconds": 0.05909708794206381,
+        "cpuSeconds": 0.058013,
+        "cpuOverWall": 0.9816558145280085,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02/pilot/variation-ray-active-256-2240/0-candidate/stdout",
+          "bytes": 19,
+          "sha256": "c9df738aced933e6968ae54ed8d028fcefb015620ac4bcd676688fbf2f3991cd"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:02:21.806787+00:00"
+      },
+      {
+        "report": "first-x86-runtime02",
+        "case": "variation-ray-active-256-2240",
+        "stage": "pilots",
+        "role": "candidate",
+        "round": 1,
+        "repetitions": 94,
+        "elapsedMs": 267,
+        "metricMs": 2.8404255319148937,
+        "wallSeconds": 0.2830053251236677,
+        "cpuSeconds": 0.28196499999999997,
+        "cpuOverWall": 0.9963240086623347,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02/pilot/variation-ray-active-256-2240/1-candidate/stdout",
+          "bytes": 20,
+          "sha256": "070a45f37b34ed88a2fc72d4634adc6ac4c9dac993ba9d59dff5b257a4259e13"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:02:22.114777+00:00"
+      },
+      {
+        "report": "first-x86-runtime02",
+        "case": "variation-ray-active-256-2240",
+        "stage": "pilots",
+        "role": "c",
+        "round": 0,
+        "repetitions": 16,
+        "elapsedMs": 7,
+        "metricMs": 0.4375,
+        "wallSeconds": 0.012256661895662546,
+        "cpuSeconds": 0.011165,
+        "cpuOverWall": 0.9109331802610244,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02/pilot/variation-ray-active-256-2240/0-c/stdout",
+          "bytes": 18,
+          "sha256": "af3a124df4f5110787084d3ba49da49f6b81c0da3eda666724563695fab4c437"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:02:22.190775+00:00"
+      },
+      {
+        "report": "first-x86-runtime02",
+        "case": "variation-ray-active-256-2240",
+        "stage": "pilots",
+        "role": "c",
+        "round": 1,
+        "repetitions": 572,
+        "elapsedMs": 257,
+        "metricMs": 0.4493006993006993,
+        "wallSeconds": 0.26175141986459494,
+        "cpuSeconds": 0.260716,
+        "cpuOverWall": 0.9960442626629091,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02/pilot/variation-ray-active-256-2240/1-c/stdout",
+          "bytes": 21,
+          "sha256": "34cb1d20f097eb5ff26442810e6d3f0e58b62d451a80c85d88b841e3884a07fa"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:02:22.478766+00:00"
+      },
+      {
+        "report": "first-x86-runtime02",
+        "case": "variation-ray-active-256-2240",
+        "stage": "pilots",
+        "role": "before",
+        "round": 0,
+        "repetitions": 16,
+        "elapsedMs": 46,
+        "metricMs": 2.875,
+        "wallSeconds": 0.0630936692468822,
+        "cpuSeconds": 0.062061,
+        "cpuOverWall": 0.9836327596855808,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02/pilot/variation-ray-active-256-2240/0-before/stdout",
+          "bytes": 19,
+          "sha256": "fc5070b3e7060ec73426cd5d3d0d727103cd0f2341f8105a505fdccc284fcc75"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:02:22.594762+00:00"
+      },
+      {
+        "report": "first-x86-runtime02",
+        "case": "variation-ray-active-256-2240",
+        "stage": "pilots",
+        "role": "before",
+        "round": 1,
+        "repetitions": 87,
+        "elapsedMs": 252,
+        "metricMs": 2.896551724137931,
+        "wallSeconds": 0.26864919578656554,
+        "cpuSeconds": 0.26756599999999997,
+        "cpuOverWall": 0.9959679917023606,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02/pilot/variation-ray-active-256-2240/1-before/stdout",
+          "bytes": 20,
+          "sha256": "0832e2ffaa099f4d9719298b1a8acc5c5e922860476cb2acc091b5992bb8a60a"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:02:22.914752+00:00"
+      },
+      {
+        "report": "first-x86-runtime02",
+        "case": "variation-ray-active-256-2240",
+        "stage": "samples",
+        "role": "candidate",
+        "round": 0,
+        "repetitions": 94,
+        "elapsedMs": 249,
+        "metricMs": 2.648936170212766,
+        "wallSeconds": 0.2653519599698484,
+        "cpuSeconds": 0.263756,
+        "cpuOverWall": 0.9939854977139428,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02/timed/variation-ray-active-256-2240/0-candidate/stdout",
+          "bytes": 20,
+          "sha256": "2fe2eab43e8a92df9aad6e032dae51543a9cb7f171bdd26532ab23643d817f29"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:02:23.310739+00:00"
+      },
+      {
+        "report": "first-x86-runtime02",
+        "case": "variation-ray-active-256-2240",
+        "stage": "samples",
+        "role": "c",
+        "round": 0,
+        "repetitions": 572,
+        "elapsedMs": 257,
+        "metricMs": 0.4493006993006993,
+        "wallSeconds": 0.26129536516964436,
+        "cpuSeconds": 0.26020899999999997,
+        "cpuOverWall": 0.9958423863778101,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02/timed/variation-ray-active-256-2240/0-c/stdout",
+          "bytes": 21,
+          "sha256": "34cb1d20f097eb5ff26442810e6d3f0e58b62d451a80c85d88b841e3884a07fa"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:02:23.610730+00:00"
+      },
+      {
+        "report": "first-x86-runtime02",
+        "case": "variation-ray-active-256-2240",
+        "stage": "samples",
+        "role": "before",
+        "round": 0,
+        "repetitions": 87,
+        "elapsedMs": 253,
+        "metricMs": 2.9080459770114944,
+        "wallSeconds": 0.2700291029177606,
+        "cpuSeconds": 0.268785,
+        "cpuOverWall": 0.9953927080291805,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02/timed/variation-ray-active-256-2240/0-before/stdout",
+          "bytes": 20,
+          "sha256": "14571f3190aeb75cfe0900b0573ae303bece7a31129c0f2469476e1c06f34803"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:02:23.906721+00:00"
+      },
+      {
+        "report": "first-x86-runtime02",
+        "case": "variation-ray-active-256-2240",
+        "stage": "samples",
+        "role": "c",
+        "round": 1,
+        "repetitions": 572,
+        "elapsedMs": 270,
+        "metricMs": 0.47202797202797203,
+        "wallSeconds": 0.27455322025343776,
+        "cpuSeconds": 0.27349599999999996,
+        "cpuOverWall": 0.9961493066719018,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02/timed/variation-ray-active-256-2240/1-c/stdout",
+          "bytes": 21,
+          "sha256": "b3641cea4fcfafbacdced21e77b5ed547efe1b1eda6d3223305094ad5a5e9263"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:02:24.226711+00:00"
+      },
+      {
+        "report": "first-x86-runtime02",
+        "case": "variation-ray-active-256-2240",
+        "stage": "samples",
+        "role": "before",
+        "round": 1,
+        "repetitions": 87,
+        "elapsedMs": 254,
+        "metricMs": 2.9195402298850577,
+        "wallSeconds": 0.27145808283239603,
+        "cpuSeconds": 0.27020299999999997,
+        "cpuOverWall": 0.9953765133117404,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02/timed/variation-ray-active-256-2240/1-before/stdout",
+          "bytes": 20,
+          "sha256": "62ecd49ae46007ccec07890374a5d5063049cc387e3a268043d0d08927e993a1"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:02:24.522701+00:00"
+      },
+      {
+        "report": "first-x86-runtime02",
+        "case": "variation-ray-active-256-2240",
+        "stage": "samples",
+        "role": "candidate",
+        "round": 1,
+        "repetitions": 94,
+        "elapsedMs": 250,
+        "metricMs": 2.6595744680851063,
+        "wallSeconds": 0.26638903887942433,
+        "cpuSeconds": 0.265357,
+        "cpuOverWall": 0.9961258207778907,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02/timed/variation-ray-active-256-2240/1-candidate/stdout",
+          "bytes": 20,
+          "sha256": "2d8ce1c39f33b3a89f03beac6cc7fdba80da1cdf2dbc34b1f61c9490e3214060"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:02:24.854691+00:00"
+      },
+      {
+        "report": "first-x86-runtime02",
+        "case": "variation-ray-active-256-2240",
+        "stage": "samples",
+        "role": "before",
+        "round": 2,
+        "repetitions": 87,
+        "elapsedMs": 248,
+        "metricMs": 2.8505747126436782,
+        "wallSeconds": 0.26529211504384875,
+        "cpuSeconds": 0.264293,
+        "cpuOverWall": 0.9962339059957225,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02/timed/variation-ray-active-256-2240/2-before/stdout",
+          "bytes": 20,
+          "sha256": "bd942162916a2ade633b9c51001dadadfa70fafaaf1427c5a93afcccdeade4c5"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:02:25.146681+00:00"
+      },
+      {
+        "report": "first-x86-runtime02",
+        "case": "variation-ray-active-256-2240",
+        "stage": "samples",
+        "role": "candidate",
+        "round": 2,
+        "repetitions": 94,
+        "elapsedMs": 250,
+        "metricMs": 2.6595744680851063,
+        "wallSeconds": 0.26526070898398757,
+        "cpuSeconds": 0.264247,
+        "cpuOverWall": 0.9961784427559199,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02/timed/variation-ray-active-256-2240/2-candidate/stdout",
+          "bytes": 20,
+          "sha256": "2d8ce1c39f33b3a89f03beac6cc7fdba80da1cdf2dbc34b1f61c9490e3214060"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:02:25.438672+00:00"
+      },
+      {
+        "report": "first-x86-runtime02",
+        "case": "variation-ray-active-256-2240",
+        "stage": "samples",
+        "role": "c",
+        "round": 2,
+        "repetitions": 572,
+        "elapsedMs": 256,
+        "metricMs": 0.44755244755244755,
+        "wallSeconds": 0.2602499439381063,
+        "cpuSeconds": 0.259243,
+        "cpuOverWall": 0.9961308581939762,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/first-x86-runtime02/timed/variation-ray-active-256-2240/2-c/stdout",
+          "bytes": 21,
+          "sha256": "f887c22eb6b7478175b6c97a3de83d3860373e6782faf938d15b15a1d49a1f69"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:02:25.722663+00:00"
+      },
+      {
+        "report": "fourth-x86-runtime01",
+        "case": "complete-generic-row32",
+        "stage": "pilots",
+        "role": "before",
+        "round": 0,
+        "repetitions": 16,
+        "elapsedMs": 6,
+        "metricMs": 0.375,
+        "wallSeconds": 0.010318403132259846,
+        "cpuSeconds": 0.009282,
+        "cpuOverWall": 0.8995577979484446,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/pilot/complete-generic-row32/0-before/stdout",
+          "bytes": 1086,
+          "sha256": "c6bb10ec240ded375e1db295d93a8b86b43bf59b8bdba804eb02d56dbd170626"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:25:00.828022+00:00"
+      },
+      {
+        "report": "fourth-x86-runtime01",
+        "case": "complete-generic-row32",
+        "stage": "pilots",
+        "role": "before",
+        "round": 1,
+        "repetitions": 667,
+        "elapsedMs": 256,
+        "metricMs": 0.383808095952024,
+        "wallSeconds": 0.25997517816722393,
+        "cpuSeconds": 0.258923,
+        "cpuOverWall": 0.9959527745123916,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/pilot/complete-generic-row32/1-before/stdout",
+          "bytes": 1089,
+          "sha256": "be0f5f72e23e5887ab6d77dcebdf8802acecf739184eff8282c63eb4bb93bb2a"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:25:01.140012+00:00"
+      },
+      {
+        "report": "fourth-x86-runtime01",
+        "case": "complete-generic-row32",
+        "stage": "pilots",
+        "role": "candidate",
+        "round": 0,
+        "repetitions": 16,
+        "elapsedMs": 6,
+        "metricMs": 0.375,
+        "wallSeconds": 0.00992681086063385,
+        "cpuSeconds": 0.008974,
+        "cpuOverWall": 0.9040164183632877,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/pilot/complete-generic-row32/0-candidate/stdout",
+          "bytes": 1086,
+          "sha256": "c6bb10ec240ded375e1db295d93a8b86b43bf59b8bdba804eb02d56dbd170626"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:25:01.172011+00:00"
+      },
+      {
+        "report": "fourth-x86-runtime01",
+        "case": "complete-generic-row32",
+        "stage": "pilots",
+        "role": "candidate",
+        "round": 1,
+        "repetitions": 667,
+        "elapsedMs": 244,
+        "metricMs": 0.3658170914542729,
+        "wallSeconds": 0.24818582786247134,
+        "cpuSeconds": 0.24711999999999998,
+        "cpuOverWall": 0.9957055248816948,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/pilot/complete-generic-row32/1-candidate/stdout",
+          "bytes": 1089,
+          "sha256": "c9cef8c89385ddf7cc379bdd49078cb17f5fd47229259fbbc7c6fca70bffea85"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:25:01.444003+00:00"
+      },
+      {
+        "report": "fourth-x86-runtime01",
+        "case": "complete-generic-row32",
+        "stage": "pilots",
+        "role": "candidate",
+        "round": 2,
+        "repetitions": 684,
+        "elapsedMs": 250,
+        "metricMs": 0.3654970760233918,
+        "wallSeconds": 0.2544256770052016,
+        "cpuSeconds": 0.252907,
+        "cpuOverWall": 0.9940309601488433,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/pilot/complete-generic-row32/2-candidate/stdout",
+          "bytes": 1089,
+          "sha256": "9275056808090c819f73bc851db4f8d9d156c61afd069cc0ce316914156bc45d"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:25:01.847990+00:00"
+      },
+      {
+        "report": "fourth-x86-runtime01",
+        "case": "complete-generic-row32",
+        "stage": "pilots",
+        "role": "c",
+        "round": 0,
+        "repetitions": 16,
+        "elapsedMs": 1,
+        "metricMs": 0.0625,
+        "wallSeconds": 0.004137975163757801,
+        "cpuSeconds": 0.0030299999999999997,
+        "cpuOverWall": 0.7322421909483814,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/pilot/complete-generic-row32/0-c/stdout",
+          "bytes": 1086,
+          "sha256": "6a556044afaaa5a0cc89029d8b387635ae34d0af07b230302d795aa7819013b9"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:25:01.891989+00:00"
+      },
+      {
+        "report": "fourth-x86-runtime01",
+        "case": "complete-generic-row32",
+        "stage": "pilots",
+        "role": "c",
+        "round": 1,
+        "repetitions": 4000,
+        "elapsedMs": 320,
+        "metricMs": 0.08,
+        "wallSeconds": 0.3230320536531508,
+        "cpuSeconds": 0.32187499999999997,
+        "cpuOverWall": 0.9964181460010987,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/pilot/complete-generic-row32/1-c/stdout",
+          "bytes": 1090,
+          "sha256": "7536edf66e29912a1df05a8412eb2c9d1599c0fa162ab739d3344aa552dd4fae"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:25:02.355974+00:00"
+      },
+      {
+        "report": "fourth-x86-runtime01",
+        "case": "complete-generic-row32",
+        "stage": "samples",
+        "role": "before",
+        "round": 0,
+        "repetitions": 667,
+        "elapsedMs": 251,
+        "metricMs": 0.37631184407796103,
+        "wallSeconds": 0.2549205203540623,
+        "cpuSeconds": 0.253888,
+        "cpuOverWall": 0.9959496381357286,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/timed/complete-generic-row32/0-before/stdout",
+          "bytes": 1089,
+          "sha256": "8f34148950b3d40f903c3298bd85657f149f9a19f321a35ff19dffd5359d4eb5"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:25:02.635965+00:00"
+      },
+      {
+        "report": "fourth-x86-runtime01",
+        "case": "complete-generic-row32",
+        "stage": "samples",
+        "role": "candidate",
+        "round": 0,
+        "repetitions": 684,
+        "elapsedMs": 249,
+        "metricMs": 0.36403508771929827,
+        "wallSeconds": 0.25253868103027344,
+        "cpuSeconds": 0.251509,
+        "cpuOverWall": 0.9959226799392762,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/timed/complete-generic-row32/0-candidate/stdout",
+          "bytes": 1089,
+          "sha256": "f8f3f16d554e2df8c18a7c1d7ada7102e66ea3596076a24f433cc0b08778ea76"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:25:02.911956+00:00"
+      },
+      {
+        "report": "fourth-x86-runtime01",
+        "case": "complete-generic-row32",
+        "stage": "samples",
+        "role": "c",
+        "round": 0,
+        "repetitions": 4000,
+        "elapsedMs": 320,
+        "metricMs": 0.08,
+        "wallSeconds": 0.3227448561228812,
+        "cpuSeconds": 0.321716,
+        "cpuOverWall": 0.9968121687972327,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/timed/complete-generic-row32/0-c/stdout",
+          "bytes": 1090,
+          "sha256": "7536edf66e29912a1df05a8412eb2c9d1599c0fa162ab739d3344aa552dd4fae"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:25:03.259945+00:00"
+      },
+      {
+        "report": "fourth-x86-runtime01",
+        "case": "complete-generic-row32",
+        "stage": "samples",
+        "role": "candidate",
+        "round": 1,
+        "repetitions": 684,
+        "elapsedMs": 248,
+        "metricMs": 0.36257309941520466,
+        "wallSeconds": 0.2514737849123776,
+        "cpuSeconds": 0.25043,
+        "cpuOverWall": 0.9958493291348786,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/timed/complete-generic-row32/1-candidate/stdout",
+          "bytes": 1089,
+          "sha256": "72227a4adf266ea1a7ca2b52c933a66d045879c6c7c6bb06f2771e138d299176"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:25:03.535937+00:00"
+      },
+      {
+        "report": "fourth-x86-runtime01",
+        "case": "complete-generic-row32",
+        "stage": "samples",
+        "role": "c",
+        "round": 1,
+        "repetitions": 4000,
+        "elapsedMs": 321,
+        "metricMs": 0.08025,
+        "wallSeconds": 0.3236127528361976,
+        "cpuSeconds": 0.322551,
+        "cpuOverWall": 0.9967190636744311,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/timed/complete-generic-row32/1-c/stdout",
+          "bytes": 1090,
+          "sha256": "e1cf64e00970327c0b9757a5a25d85ae15faf247fab2dd003d21ce243d4b8d52"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:25:03.883926+00:00"
+      },
+      {
+        "report": "fourth-x86-runtime01",
+        "case": "complete-generic-row32",
+        "stage": "samples",
+        "role": "before",
+        "round": 1,
+        "repetitions": 667,
+        "elapsedMs": 454,
+        "metricMs": 0.6806596701649176,
+        "wallSeconds": 0.4599142139777541,
+        "cpuSeconds": 0.458362,
+        "cpuOverWall": 0.9966249923777541,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/timed/complete-generic-row32/1-before/stdout",
+          "bytes": 1089,
+          "sha256": "8a0bff5d8f823e7966357a46487ed463868fa44d9b30c43b2c9d4a7a57f8bd9f"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:25:04.403909+00:00"
+      },
+      {
+        "report": "fourth-x86-runtime01",
+        "case": "complete-generic-row32",
+        "stage": "samples",
+        "role": "c",
+        "round": 2,
+        "repetitions": 4000,
+        "elapsedMs": 631,
+        "metricMs": 0.15775,
+        "wallSeconds": 0.6349472869187593,
+        "cpuSeconds": 0.633531,
+        "cpuOverWall": 0.9977694417348686,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/timed/complete-generic-row32/2-c/stdout",
+          "bytes": 1090,
+          "sha256": "ea0b846e5d2600c150d01b23d9a76095d22e7a7430884331026d53703c20e038"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:25:05.103888+00:00"
+      },
+      {
+        "report": "fourth-x86-runtime01",
+        "case": "complete-generic-row32",
+        "stage": "samples",
+        "role": "before",
+        "round": 2,
+        "repetitions": 667,
+        "elapsedMs": 453,
+        "metricMs": 0.679160419790105,
+        "wallSeconds": 0.4588569379411638,
+        "cpuSeconds": 0.457497,
+        "cpuOverWall": 0.9970362484933416,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/timed/complete-generic-row32/2-before/stdout",
+          "bytes": 1089,
+          "sha256": "9b860790316862f818dac5b770e0ef6089bfecefa85d8d0cee4fa567c20a9ea5"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:25:05.647870+00:00"
+      },
+      {
+        "report": "fourth-x86-runtime01",
+        "case": "complete-generic-row32",
+        "stage": "samples",
+        "role": "candidate",
+        "round": 2,
+        "repetitions": 684,
+        "elapsedMs": 425,
+        "metricMs": 0.6213450292397661,
+        "wallSeconds": 0.4312968831509352,
+        "cpuSeconds": 0.42983099999999996,
+        "cpuOverWall": 0.9966012201613286,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/timed/complete-generic-row32/2-candidate/stdout",
+          "bytes": 1089,
+          "sha256": "eb16eea9268931242f8718dd1e9dd9993318d0b6a0c35433d2aceab57a062c93"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:25:06.131855+00:00"
+      },
+      {
+        "report": "fourth-x86-runtime01",
+        "case": "variation-ray-active-256-2240",
+        "stage": "pilots",
+        "role": "candidate",
+        "round": 0,
+        "repetitions": 16,
+        "elapsedMs": 73,
+        "metricMs": 4.5625,
+        "wallSeconds": 0.09942075377330184,
+        "cpuSeconds": 0.098049,
+        "cpuOverWall": 0.9862025410063808,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/pilot/variation-ray-active-256-2240/0-candidate/stdout",
+          "bytes": 19,
+          "sha256": "e85726f8dcc4c745fda4383fb93c475edb87a47de23481c6af79f99b2d6f7d3d"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:25:06.287850+00:00"
+      },
+      {
+        "report": "fourth-x86-runtime01",
+        "case": "variation-ray-active-256-2240",
+        "stage": "pilots",
+        "role": "candidate",
+        "round": 1,
+        "repetitions": 55,
+        "elapsedMs": 253,
+        "metricMs": 4.6,
+        "wallSeconds": 0.27891684509813786,
+        "cpuSeconds": 0.277536,
+        "cpuOverWall": 0.9950492588654801,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/pilot/variation-ray-active-256-2240/1-candidate/stdout",
+          "bytes": 20,
+          "sha256": "0e3d7c823118454804a141bf832d55e4ec34d986c63ac4e5411139056f6b4c40"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:25:06.607840+00:00"
+      },
+      {
+        "report": "fourth-x86-runtime01",
+        "case": "variation-ray-active-256-2240",
+        "stage": "pilots",
+        "role": "c",
+        "round": 0,
+        "repetitions": 16,
+        "elapsedMs": 12,
+        "metricMs": 0.75,
+        "wallSeconds": 0.018809729255735874,
+        "cpuSeconds": 0.017369,
+        "cpuOverWall": 0.9234051040210195,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/pilot/variation-ray-active-256-2240/0-c/stdout",
+          "bytes": 19,
+          "sha256": "b1d2e1cb55df10caee67e1dadbc52ff436db57983aa5b45809378c1f14f1e01b"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:25:06.707837+00:00"
+      },
+      {
+        "report": "fourth-x86-runtime01",
+        "case": "variation-ray-active-256-2240",
+        "stage": "pilots",
+        "role": "c",
+        "round": 1,
+        "repetitions": 334,
+        "elapsedMs": 243,
+        "metricMs": 0.7275449101796407,
+        "wallSeconds": 0.2497176742181182,
+        "cpuSeconds": 0.24831299999999998,
+        "cpuOverWall": 0.9943749507418074,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/pilot/variation-ray-active-256-2240/1-c/stdout",
+          "bytes": 21,
+          "sha256": "c766695c8248c46efd89144a087df97f5d000714d6a87f647750f9ade1e7c5a4"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:25:07.047826+00:00"
+      },
+      {
+        "report": "fourth-x86-runtime01",
+        "case": "variation-ray-active-256-2240",
+        "stage": "pilots",
+        "role": "c",
+        "round": 2,
+        "repetitions": 344,
+        "elapsedMs": 250,
+        "metricMs": 0.7267441860465116,
+        "wallSeconds": 0.2569007957354188,
+        "cpuSeconds": 0.255394,
+        "cpuOverWall": 0.9941347175235276,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/pilot/variation-ray-active-256-2240/2-c/stdout",
+          "bytes": 21,
+          "sha256": "8853014e3a2e02af4de5ceefac8a66d7db408e418c7d50f56f46aaab3079803c"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:25:07.387816+00:00"
+      },
+      {
+        "report": "fourth-x86-runtime01",
+        "case": "variation-ray-active-256-2240",
+        "stage": "pilots",
+        "role": "before",
+        "round": 0,
+        "repetitions": 16,
+        "elapsedMs": 48,
+        "metricMs": 3.0,
+        "wallSeconds": 0.07596176629886031,
+        "cpuSeconds": 0.074609,
+        "cpuOverWall": 0.9821914844168044,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/pilot/variation-ray-active-256-2240/0-before/stdout",
+          "bytes": 19,
+          "sha256": "4274dcde6c5dc5cf9e26bc3a003c874c68a227d88f459a0b98d19fce88389cd6"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:25:07.503812+00:00"
+      },
+      {
+        "report": "fourth-x86-runtime01",
+        "case": "variation-ray-active-256-2240",
+        "stage": "pilots",
+        "role": "before",
+        "round": 1,
+        "repetitions": 84,
+        "elapsedMs": 225,
+        "metricMs": 2.6785714285714284,
+        "wallSeconds": 0.24023489374667406,
+        "cpuSeconds": 0.239114,
+        "cpuOverWall": 0.9953341759425838,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/pilot/variation-ray-active-256-2240/1-before/stdout",
+          "bytes": 20,
+          "sha256": "e15cddd83557afbff4cb6d1218ce17ad7626a084f334679cafc7c08a54885f58"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:25:07.771804+00:00"
+      },
+      {
+        "report": "fourth-x86-runtime01",
+        "case": "variation-ray-active-256-2240",
+        "stage": "pilots",
+        "role": "before",
+        "round": 2,
+        "repetitions": 94,
+        "elapsedMs": 251,
+        "metricMs": 2.6702127659574466,
+        "wallSeconds": 0.267548989970237,
+        "cpuSeconds": 0.266424,
+        "cpuOverWall": 0.9957952000851801,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/pilot/variation-ray-active-256-2240/2-before/stdout",
+          "bytes": 20,
+          "sha256": "8078e847f38c2f68d1a3a4931f1029526aa24fed0f348d3d7b44e9e82964e7fd"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:25:08.063794+00:00"
+      },
+      {
+        "report": "fourth-x86-runtime01",
+        "case": "variation-ray-active-256-2240",
+        "stage": "samples",
+        "role": "candidate",
+        "round": 0,
+        "repetitions": 55,
+        "elapsedMs": 140,
+        "metricMs": 2.5454545454545454,
+        "wallSeconds": 0.15495274914428592,
+        "cpuSeconds": 0.153776,
+        "cpuOverWall": 0.9924057549750849,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/timed/variation-ray-active-256-2240/0-candidate/stdout",
+          "bytes": 20,
+          "sha256": "704410441cbed631a84682e5658518e8e090bcd95654d4ad6487208496d0e614"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:25:08.263788+00:00"
+      },
+      {
+        "report": "fourth-x86-runtime01",
+        "case": "variation-ray-active-256-2240",
+        "stage": "samples",
+        "role": "c",
+        "round": 0,
+        "repetitions": 344,
+        "elapsedMs": 155,
+        "metricMs": 0.45058139534883723,
+        "wallSeconds": 0.15987855195999146,
+        "cpuSeconds": 0.158492,
+        "cpuOverWall": 0.9913274673619858,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/timed/variation-ray-active-256-2240/0-c/stdout",
+          "bytes": 21,
+          "sha256": "4745b003a744f37f0ffe07abbfdfd56d21645f3db3a34a6d10ebf0e964eb7e78"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:25:08.451782+00:00"
+      },
+      {
+        "report": "fourth-x86-runtime01",
+        "case": "variation-ray-active-256-2240",
+        "stage": "samples",
+        "role": "before",
+        "round": 0,
+        "repetitions": 94,
+        "elapsedMs": 251,
+        "metricMs": 2.6702127659574466,
+        "wallSeconds": 0.26793312933295965,
+        "cpuSeconds": 0.266722,
+        "cpuOverWall": 0.9954797328125311,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/timed/variation-ray-active-256-2240/0-before/stdout",
+          "bytes": 20,
+          "sha256": "8078e847f38c2f68d1a3a4931f1029526aa24fed0f348d3d7b44e9e82964e7fd"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:25:08.747773+00:00"
+      },
+      {
+        "report": "fourth-x86-runtime01",
+        "case": "variation-ray-active-256-2240",
+        "stage": "samples",
+        "role": "c",
+        "round": 1,
+        "repetitions": 344,
+        "elapsedMs": 157,
+        "metricMs": 0.4563953488372093,
+        "wallSeconds": 0.16283433698117733,
+        "cpuSeconds": 0.16172399999999998,
+        "cpuOverWall": 0.9931811864637267,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/timed/variation-ray-active-256-2240/1-c/stdout",
+          "bytes": 21,
+          "sha256": "6e504ee7e4ac8fcd18fc665a0158f771fc7fecaa43db7a022918fdc7da6aa073"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:25:08.951766+00:00"
+      },
+      {
+        "report": "fourth-x86-runtime01",
+        "case": "variation-ray-active-256-2240",
+        "stage": "samples",
+        "role": "before",
+        "round": 1,
+        "repetitions": 94,
+        "elapsedMs": 250,
+        "metricMs": 2.6595744680851063,
+        "wallSeconds": 0.26633231388404965,
+        "cpuSeconds": 0.265202,
+        "cpuOverWall": 0.9957560017124255,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/timed/variation-ray-active-256-2240/1-before/stdout",
+          "bytes": 20,
+          "sha256": "2d8ce1c39f33b3a89f03beac6cc7fdba80da1cdf2dbc34b1f61c9490e3214060"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:25:09.267756+00:00"
+      },
+      {
+        "report": "fourth-x86-runtime01",
+        "case": "variation-ray-active-256-2240",
+        "stage": "samples",
+        "role": "candidate",
+        "round": 1,
+        "repetitions": 55,
+        "elapsedMs": 139,
+        "metricMs": 2.5272727272727273,
+        "wallSeconds": 0.15442314418032765,
+        "cpuSeconds": 0.153285,
+        "cpuOverWall": 0.9926297046574923,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/timed/variation-ray-active-256-2240/1-candidate/stdout",
+          "bytes": 20,
+          "sha256": "6db14d80a548bb9b3d91086436f9856141704c10aa69fae52e6a23b7efe9122e"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:25:09.491750+00:00"
+      },
+      {
+        "report": "fourth-x86-runtime01",
+        "case": "variation-ray-active-256-2240",
+        "stage": "samples",
+        "role": "before",
+        "round": 2,
+        "repetitions": 94,
+        "elapsedMs": 253,
+        "metricMs": 2.6914893617021276,
+        "wallSeconds": 0.26852357015013695,
+        "cpuSeconds": 0.267437,
+        "cpuOverWall": 0.9959535390151061,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/timed/variation-ray-active-256-2240/2-before/stdout",
+          "bytes": 20,
+          "sha256": "da53cb26fa247631be790a9a999d6b604e0c1ae9d114013cae09a324e08cb859"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:25:09.811739+00:00"
+      },
+      {
+        "report": "fourth-x86-runtime01",
+        "case": "variation-ray-active-256-2240",
+        "stage": "samples",
+        "role": "candidate",
+        "round": 2,
+        "repetitions": 55,
+        "elapsedMs": 139,
+        "metricMs": 2.5272727272727273,
+        "wallSeconds": 0.15379705419763923,
+        "cpuSeconds": 0.15273299999999998,
+        "cpuOverWall": 0.993081439672623,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/timed/variation-ray-active-256-2240/2-candidate/stdout",
+          "bytes": 20,
+          "sha256": "6db14d80a548bb9b3d91086436f9856141704c10aa69fae52e6a23b7efe9122e"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:25:09.991734+00:00"
+      },
+      {
+        "report": "fourth-x86-runtime01",
+        "case": "variation-ray-active-256-2240",
+        "stage": "samples",
+        "role": "c",
+        "round": 2,
+        "repetitions": 344,
+        "elapsedMs": 156,
+        "metricMs": 0.45348837209302323,
+        "wallSeconds": 0.16077172802761197,
+        "cpuSeconds": 0.15966899999999998,
+        "cpuOverWall": 0.993141032685656,
+        "stdout": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-runtime01/timed/variation-ray-active-256-2240/2-c/stdout",
+          "bytes": 21,
+          "sha256": "c812834f650ff457f5c95de36e5dc566fab8975d3a9bfbd45cf6b02fccba73f9"
+        },
+        "stdoutMtimeUtc": "2026-11-09T10:25:10.179728+00:00"
+      }
+    ],
+    "timelineCaveat": "Timestamps are retained stdout filesystem mtimes, not measured process start/end timestamps. Row order and recorded process durations establish the serial sequence independently.",
+    "finding": "Fourth generic-row first before sample is 251 ms for 667 repetitions, agreeing with historical 250/250/251 ms and its own 256 ms pilot. Later before samples are 454/453 ms; C jumps from 320/321 to 631 ms; candidate jumps from 249/248 to 425 ms. Subsequent ray candidate/C pilots are slow and recover before timed rounds. This is a transient affecting multiple unchanged products; separate role medians select different performance regimes.",
+    "resolution": "All timed intervals are well above integer-millisecond resolution and accepted minimum duration. The ~1.7\u20132x transient cannot be explained by 1 ms quantization.",
+    "environment": "Both guards use taskset CPU3 and identical runtime options. CPU time tracks wall closely during slow samples, which weighs against ordinary off-CPU descheduling. Frequency, thermal, SMT/shared-resource pressure and host scheduling telemetry are not retained, so the physical cause remains unresolved."
+  },
+  "thirdQbe": {
+    "cases": [
+      {
+        "id": "tree-bitonic",
+        "candidateOverBefore": 1.0465116279069766,
+        "timeReductionPercent": -4.6511627906976605,
+        "ratiosOverC": {
+          "before": 2.3442824042524193,
+          "candidate": 2.4533187951478803
+        },
+        "metricMsByRole": {
+          "c": [
+            0.165,
+            0.1645,
+            0.1655
+          ],
+          "before": [
+            0.3868065967016492,
+            0.3853073463268366,
+            0.38830584707646176
+          ],
+          "candidate": [
+            0.4047976011994003,
+            0.4077961019490255,
+            0.4032983508245877
+          ]
+        },
+        "maxOverMinByRole": {
+          "c": 1.006079027355623,
+          "before": 1.0077821011673151,
+          "candidate": 1.0111524163568772
+        }
+      },
+      {
+        "id": "coverage-map-churn-128",
+        "candidateOverBefore": 1.158877397112691,
+        "timeReductionPercent": -15.887739711269111,
+        "ratiosOverC": {
+          "before": 2.676672460011194,
+          "candidate": 3.101935213380996
+        },
+        "metricMsByRole": {
+          "c": [
+            0.23292797006548177,
+            0.23292797006548177,
+            0.23292797006548177
+          ],
+          "before": [
+            0.6210268948655256,
+            0.6234718826405868,
+            0.6234718826405868
+          ],
+          "candidate": [
+            0.717032967032967,
+            0.7225274725274725,
+            0.7527472527472527
+          ]
+        },
+        "maxOverMinByRole": {
+          "c": 1.0,
+          "before": 1.003937007874016,
+          "candidate": 1.049808429118774
+        }
+      },
+      {
+        "id": "coverage-unicode-text-64",
+        "candidateOverBefore": 0.884433734939759,
+        "timeReductionPercent": 11.556626506024104,
+        "ratiosOverC": {
+          "before": 2.6256500531430307,
+          "candidate": 2.3222134831460672
+        },
+        "metricMsByRole": {
+          "c": [
+            0.03989800509974501,
+            0.040197990100494976,
+            0.04004799760012
+          ],
+          "before": [
+            0.10515202702702703,
+            0.10515202702702703,
+            0.10515202702702703
+          ],
+          "candidate": [
+            0.09575,
+            0.09275,
+            0.093
+          ]
+        },
+        "maxOverMinByRole": {
+          "c": 1.0075187969924813,
+          "before": 1.0,
+          "candidate": 1.032345013477089
+        }
+      },
+      {
+        "id": "coverage-record-aggregation-256",
+        "candidateOverBefore": 1.1400806864754098,
+        "timeReductionPercent": -14.008068647540984,
+        "ratiosOverC": {
+          "before": 2.278759408530401,
+          "candidate": 2.597969590789638
+        },
+        "metricMsByRole": {
+          "c": [
+            0.39280359820089955,
+            0.4017991004497751,
+            0.39280359820089955
+          ],
+          "before": [
+            0.8951048951048951,
+            0.8986013986013986,
+            0.8916083916083916
+          ],
+          "candidate": [
+            1.0204918032786885,
+            1.0450819672131149,
+            1.0163934426229508
+          ]
+        },
+        "maxOverMinByRole": {
+          "c": 1.0229007633587786,
+          "before": 1.0078431372549022,
+          "candidate": 1.028225806451613
+        }
+      },
+      {
+        "id": "complete-generic-row32",
+        "candidateOverBefore": 0.8903926631644554,
+        "timeReductionPercent": 10.960733683554459,
+        "ratiosOverC": {
+          "before": 3.4482758620689657,
+          "candidate": 3.070319528153295
+        },
+        "metricMsByRole": {
+          "c": [
+            0.08,
+            0.07975,
+            0.0795
+          ],
+          "before": [
+            0.275,
+            0.275,
+            0.272
+          ],
+          "candidate": [
+            0.24485798237022527,
+            0.24485798237022527,
+            0.24583741429970618
+          ]
+        },
+        "maxOverMinByRole": {
+          "c": 1.0062893081761006,
+          "before": 1.0110294117647058,
+          "candidate": 1.004
+        }
+      }
+    ],
+    "candidateOverBeforeGeomean": 1.0171682656673282,
+    "runtimeIncreasePercent": 1.7168265667328209,
+    "scope": "Five-case screen versus first QBE candidate. Tree/map/record regressions are sustained across rotated samples; text/generic improve. No generic-row-like factor-of-two temporal instability is visible; this supports treating it as a mixed/negative candidate, without causal attribution to any one change."
+  },
+  "replicationManifest": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/fourth-x86-generic-recheck-merge01/manifest.json",
+    "bytes": 100340,
+    "sha256": "95e402ec4f8b3e4026dc6bf601864d89f048cdd68358955c90de03d4c260b86d"
+  },
+  "programsExecuted": false
+}

@@ -1,0 +1,501 @@
+{
+  "kind": "phase186-layout-falsifier-analysis",
+  "targetsRun": false,
+  "runtimeReport": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/layout-runtime01/report.json",
+    "bytes": 280986,
+    "sha256": "5332ab5ffa31a610fcbf9a745340db70c61edb723e926ba50cdea52e9ac7b9ca"
+  },
+  "buildReport": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/layout-probe-build01/report.json",
+    "bytes": 54085,
+    "sha256": "d48a29d2e5c2fe41dc346f132dab8b54e6498e95750a60312745ad947329f6c2"
+  },
+  "plan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/layout-probe-source01/plan.json",
+    "bytes": 99262,
+    "sha256": "6bf24d224e73012af8373de3de6ffcc72c3b05e5aea14a60a446eb09521ed80f"
+  },
+  "rounds": 5,
+  "positionBalanced": true,
+  "timedSamples": 75,
+  "allSampleAndPilotOutputOraclesRevalidated": 150,
+  "aggregateRatiosToRetainedFinalQbe": {
+    "align4": 1.0001199212553764,
+    "align5": 1.0008028685584383,
+    "align6": 0.9999682259363979
+  },
+  "cases": [
+    {
+      "id": "coverage-closures-256",
+      "parentBinary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/release-native45-acquire01/coverage-closures-256/phase185-qbe-n2/machine/program",
+        "bytes": 157016,
+        "sha256": "d9f0004c344cc35cbd1e4123df1a7b2ace00de2bd5940a9c5ee5907300bb5b28"
+      },
+      "ratiosToRetainedFinalQbe": {
+        "c": 13.897342548110805,
+        "align4": 1.0035460992907803,
+        "align5": 1.0023639579386001,
+        "align6": 1.0007091862343442
+      },
+      "medianMsPerInvocation": {
+        "c": 0.0029392864792821953,
+        "p185-qbe": 0.00021149989425005286,
+        "align4": 0.00021224989387505307,
+        "align5": 0.00021199987110407837,
+        "align6": 0.00021164988706362026
+      },
+      "samplesMs": {
+        "c": [
+          0.002951186424542447,
+          0.002963086369802699,
+          0.0029035866435014397,
+          0.0029392864792821953,
+          0.0029392864792821953
+        ],
+        "p185-qbe": [
+          0.00021149989425005286,
+          0.00021074989462505268,
+          0.00021299989350005325,
+          0.00021149989425005286,
+          0.00021224989387505307
+        ],
+        "align4": [
+          0.00021149989425005286,
+          0.000215999892000054,
+          0.00021074989462505268,
+          0.00021224989387505307,
+          0.00021224989387505307
+        ],
+        "align5": [
+          0.0002128478705884947,
+          0.00022471986337032308,
+          0.00021199987110407837,
+          0.00021115187161966205,
+          0.00021115187161966205
+        ],
+        "align6": [
+          0.00021249648661187474,
+          0.00021503628525663818,
+          0.00021164988706362026,
+          0.00021164988706362026,
+          0.00021080328751536578
+        ]
+      },
+      "variants": [
+        {
+          "role": "align4",
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/layout-probe-build01/coverage-closures-256/align4/program",
+            "bytes": 156992,
+            "sha256": "e47c1abe5cf172eee8702b76f631003095e30629a603a8fbc9a729ac0a168a79"
+          },
+          "ratioToRetainedFinalQbe": 1.0035460992907803,
+          "percentTimeChange": 0.35460992907803135,
+          "differingSections": [
+            ".note.gnu.build-id",
+            ".strtab",
+            ".symtab"
+          ],
+          "differingAllocatedSections": [
+            ".note.gnu.build-id"
+          ],
+          "textSectionIdentical": true,
+          "hotLoopBackedgeTargets": [
+            {
+              "address": 4221872,
+              "mod64": 48
+            }
+          ]
+        },
+        {
+          "role": "align5",
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/layout-probe-build01/coverage-closures-256/align5/program",
+            "bytes": 156992,
+            "sha256": "71487c37e3ae9b06d6ce344c5d6b1536aba6340ab080d0723a1e352f04e66ace"
+          },
+          "ratioToRetainedFinalQbe": 1.0023639579386001,
+          "percentTimeChange": 0.23639579386001142,
+          "differingSections": [
+            ".note.gnu.build-id",
+            ".strtab",
+            ".symtab",
+            ".text"
+          ],
+          "differingAllocatedSections": [
+            ".note.gnu.build-id",
+            ".text"
+          ],
+          "textSectionIdentical": false,
+          "hotLoopBackedgeTargets": [
+            {
+              "address": 4221888,
+              "mod64": 0
+            }
+          ]
+        },
+        {
+          "role": "align6",
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/layout-probe-build01/coverage-closures-256/align6/program",
+            "bytes": 156992,
+            "sha256": "e3db6ff47464ae250694f8f8138170f91c7c5a9a99fddef0998e42a782d8716d"
+          },
+          "ratioToRetainedFinalQbe": 1.0007091862343442,
+          "percentTimeChange": 0.0709186234344239,
+          "differingSections": [
+            ".data",
+            ".dynamic",
+            ".eh_frame",
+            ".eh_frame_hdr",
+            ".fini",
+            ".fini_array",
+            ".init_array",
+            ".note.gnu.build-id",
+            ".rodata",
+            ".strtab",
+            ".symtab",
+            ".text"
+          ],
+          "differingAllocatedSections": [
+            ".data",
+            ".dynamic",
+            ".eh_frame",
+            ".eh_frame_hdr",
+            ".fini",
+            ".fini_array",
+            ".init_array",
+            ".note.gnu.build-id",
+            ".rodata",
+            ".text"
+          ],
+          "textSectionIdentical": false,
+          "hotLoopBackedgeTargets": [
+            {
+              "address": 4221952,
+              "mod64": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "coverage-numeric-recurrence-256",
+      "parentBinary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/release-native45-acquire01/coverage-numeric-recurrence-256/phase185-qbe-n2/machine/program",
+        "bytes": 156952,
+        "sha256": "05188c2f7c79d413ccc56a50702c42ac56bb7929c8b82a13433db753e46939c2"
+      },
+      "ratiosToRetainedFinalQbe": {
+        "c": 0.6606240039840637,
+        "align4": 1.0,
+        "align5": 0.9960780338080014,
+        "align6": 1.000127553238187
+      },
+      "medianMsPerInvocation": {
+        "c": 0.0008125,
+        "p185-qbe": 0.0012298977861839849,
+        "align4": 0.0012298977861839849,
+        "align5": 0.0012250741686469573,
+        "align6": 0.0012300546636292518
+      },
+      "samplesMs": {
+        "c": [
+          0.000815,
+          0.0008125,
+          0.0008125,
+          0.00081,
+          0.0008125
+        ],
+        "p185-qbe": [
+          0.0012298977861839849,
+          0.0012298977861839849,
+          0.001224997795003969,
+          0.001224997795003969,
+          0.0012298977861839849
+        ],
+        "align4": [
+          0.001224997795003969,
+          0.0012298977861839849,
+          0.0012298977861839849,
+          0.0012347977773640008,
+          0.001224997795003969
+        ],
+        "align5": [
+          0.0012349141218087802,
+          0.0012250741686469573,
+          0.0012201541920660458,
+          0.0012250741686469573,
+          0.0012299941452278687
+        ],
+        "align6": [
+          0.0012349748822837686,
+          0.0012251344449747347,
+          0.0012202142263202176,
+          0.0012349748822837686,
+          0.0012300546636292518
+        ]
+      },
+      "variants": [
+        {
+          "role": "align4",
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/layout-probe-build01/coverage-numeric-recurrence-256/align4/program",
+            "bytes": 156928,
+            "sha256": "a161bfb3eaaff584a5623cc057f14f7df8f501cba196c6958f8bf42569012cff"
+          },
+          "ratioToRetainedFinalQbe": 1.0,
+          "percentTimeChange": 0.0,
+          "differingSections": [
+            ".note.gnu.build-id",
+            ".strtab",
+            ".symtab"
+          ],
+          "differingAllocatedSections": [
+            ".note.gnu.build-id"
+          ],
+          "textSectionIdentical": true,
+          "hotLoopBackedgeTargets": [
+            {
+              "address": 4221872,
+              "mod64": 48
+            }
+          ]
+        },
+        {
+          "role": "align5",
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/layout-probe-build01/coverage-numeric-recurrence-256/align5/program",
+            "bytes": 156928,
+            "sha256": "d05980df50a5bfd4a2ece8bb78d3d5ee1633bed13c15a855fb505570c9acadfb"
+          },
+          "ratioToRetainedFinalQbe": 0.9960780338080014,
+          "percentTimeChange": -0.39219661919985827,
+          "differingSections": [
+            ".note.gnu.build-id",
+            ".strtab",
+            ".symtab",
+            ".text"
+          ],
+          "differingAllocatedSections": [
+            ".note.gnu.build-id",
+            ".text"
+          ],
+          "textSectionIdentical": false,
+          "hotLoopBackedgeTargets": [
+            {
+              "address": 4221888,
+              "mod64": 0
+            }
+          ]
+        },
+        {
+          "role": "align6",
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/layout-probe-build01/coverage-numeric-recurrence-256/align6/program",
+            "bytes": 156928,
+            "sha256": "9c9a826aa0b1a457e7151fb554755ba217f425c4eae2c13e18de7d7b6068be21"
+          },
+          "ratioToRetainedFinalQbe": 1.000127553238187,
+          "percentTimeChange": 0.012755323818702813,
+          "differingSections": [
+            ".data",
+            ".dynamic",
+            ".eh_frame",
+            ".eh_frame_hdr",
+            ".fini",
+            ".fini_array",
+            ".init_array",
+            ".note.gnu.build-id",
+            ".rodata",
+            ".strtab",
+            ".symtab",
+            ".text"
+          ],
+          "differingAllocatedSections": [
+            ".data",
+            ".dynamic",
+            ".eh_frame",
+            ".eh_frame_hdr",
+            ".fini",
+            ".fini_array",
+            ".init_array",
+            ".note.gnu.build-id",
+            ".rodata",
+            ".text"
+          ],
+          "textSectionIdentical": false,
+          "hotLoopBackedgeTargets": [
+            {
+              "address": 4221952,
+              "mod64": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "coverage-numeric-recurrence-1024",
+      "parentBinary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/release-native45-acquire01/coverage-numeric-recurrence-1024/phase185-qbe-n2/machine/program",
+        "bytes": 156952,
+        "sha256": "14833d4a5982d7182d66f5696ce9e064efec1e625e725c42f2785f5a8c50795a"
+      },
+      "ratiosToRetainedFinalQbe": {
+        "c": 0.6666340248651407,
+        "align4": 0.9968249666040695,
+        "align5": 1.00398406374502,
+        "align6": 0.9990686303044415
+      },
+      "medianMsPerInvocation": {
+        "c": 0.0032497259655683798,
+        "p185-qbe": 0.0048748276330866785,
+        "align4": 0.004859349892552224,
+        "align5": 0.004894249257122881,
+        "align6": 0.0048702873663581505
+      },
+      "samplesMs": {
+        "c": [
+          0.0032239344896511702,
+          0.0032497259655683798,
+          0.0032626217035269843,
+          0.0032368302276097748,
+          0.0032626217035269843
+        ],
+        "p185-qbe": [
+          0.004855406009050477,
+          0.004835984385014275,
+          0.0048748276330866785,
+          0.0048748276330866785,
+          0.0049136708811590825
+        ],
+        "align4": [
+          0.004859349892552224,
+          0.004859349892552224,
+          0.004859349892552224,
+          0.004936789731477358,
+          0.00499486961067121
+        ],
+        "align5": [
+          0.0048748276330866785,
+          0.004855406009050477,
+          0.004894249257122881,
+          0.004894249257122881,
+          0.0051078871215211015
+        ],
+        "align6": [
+          0.0048702873663581505,
+          0.0048702873663581505,
+          0.0048702873663581505,
+          0.005006112113627103,
+          0.0049284979723305585
+        ]
+      },
+      "variants": [
+        {
+          "role": "align4",
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/layout-probe-build01/coverage-numeric-recurrence-1024/align4/program",
+            "bytes": 156936,
+            "sha256": "f7b0e924811607be502b39d776ae4363c29114886ab6f71d8abb7bd45255bf98"
+          },
+          "ratioToRetainedFinalQbe": 0.9968249666040695,
+          "percentTimeChange": -0.31750333959305044,
+          "differingSections": [
+            ".note.gnu.build-id",
+            ".strtab",
+            ".symtab"
+          ],
+          "differingAllocatedSections": [
+            ".note.gnu.build-id"
+          ],
+          "textSectionIdentical": true,
+          "hotLoopBackedgeTargets": [
+            {
+              "address": 4221872,
+              "mod64": 48
+            }
+          ]
+        },
+        {
+          "role": "align5",
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/layout-probe-build01/coverage-numeric-recurrence-1024/align5/program",
+            "bytes": 156936,
+            "sha256": "ad1fd6a1f0c69a234b9422b3f015bf77829b5dec383126243352380477ccf456"
+          },
+          "ratioToRetainedFinalQbe": 1.00398406374502,
+          "percentTimeChange": 0.3984063745019917,
+          "differingSections": [
+            ".note.gnu.build-id",
+            ".strtab",
+            ".symtab",
+            ".text"
+          ],
+          "differingAllocatedSections": [
+            ".note.gnu.build-id",
+            ".text"
+          ],
+          "textSectionIdentical": false,
+          "hotLoopBackedgeTargets": [
+            {
+              "address": 4221888,
+              "mod64": 0
+            }
+          ]
+        },
+        {
+          "role": "align6",
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/layout-probe-build01/coverage-numeric-recurrence-1024/align6/program",
+            "bytes": 156936,
+            "sha256": "32dd2ce1e896e525679538df3e10307a1b032dcd35a3e028a602c81047896b09"
+          },
+          "ratioToRetainedFinalQbe": 0.9990686303044415,
+          "percentTimeChange": -0.09313696955585149,
+          "differingSections": [
+            ".data",
+            ".dynamic",
+            ".eh_frame",
+            ".eh_frame_hdr",
+            ".fini",
+            ".fini_array",
+            ".init_array",
+            ".note.gnu.build-id",
+            ".rodata",
+            ".strtab",
+            ".symtab",
+            ".text"
+          ],
+          "differingAllocatedSections": [
+            ".data",
+            ".dynamic",
+            ".eh_frame",
+            ".eh_frame_hdr",
+            ".fini",
+            ".fini_array",
+            ".init_array",
+            ".note.gnu.build-id",
+            ".rodata",
+            ".text"
+          ],
+          "textSectionIdentical": false,
+          "hotLoopBackedgeTargets": [
+            {
+              "address": 4221952,
+              "mod64": 0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "Align4 .text and all executable/data sections match the parent exactly; only nonloaded symbol/string tables and the allocated GNU build-ID note differ. Whole-file identity is therefore not the right rebuild-control criterion here.",
+    "Align5 and align6 move the selected hot header from mod64=48 to0, using distinct addresses/layouts. Every per-case median is within0.40% of retained final QBE; align5/align6 geometric time changes are +0.080%/-0.003%.",
+    "This specific loop-header alignment intervention does not recover the prior5-9% normalized regressions. It does not exclude other layout effects, changing support paths or cross-campaign measurement variation."
+  ],
+  "scope": "Three-workload machine-layout diagnostic, not a compiler optimization or broad benchmark. Static insertion-only source receipts and exact independent oracles remain distinct from performance inference. No paired statistical significance estimate is claimed."
+}

@@ -1,0 +1,41 @@
+{
+  "kind": "phase186-continuation-size-caps-overlay",
+  "targetsRun": false,
+  "modules": [
+    "selfhost/tests/phase186/size-caps.bend"
+  ],
+  "replace": [
+    "p114h_plan",
+    "p112f_cont_result"
+  ],
+  "changes": [
+    {
+      "file": "selfhost/src/back/qbe/local-continuations.bend",
+      "symbol": "p114h_plan",
+      "declarationSha256": "ce1907b953abb2016901248c16b90f5389225693aa20007a49bde9d4dcd92931",
+      "old": "U32.is_le(p112f_size(body),512)",
+      "new": "U32.is_le(p112f_size(body),2048)"
+    },
+    {
+      "file": "selfhost/src/back/qbe/fused-regions.bend",
+      "symbol": "p112f_cont_result",
+      "declarationSha256": "808d570eb810d45e63aa27194289c8c71717feab940499b7791f4ee919ef9854",
+      "old": "U32.is_le(p112f_size(rest),128)",
+      "new": "U32.is_le(p112f_size(rest),1024)"
+    }
+  ],
+  "diagnosticModules": [
+    "selfhost/tests/phase186/size-caps-probe.bend"
+  ],
+  "diagnosticExports": [
+    "p186hc_probe"
+  ],
+  "scope": "Owner512\u21922048; shared continuation128\u21921024. Shared continuation parser also serves ordinary fusion. No change to arity/captures/case limit8, safety, ownership, hygiene, ready registry or verifier.",
+  "controlModules": [
+    "selfhost/tests/phase186/size-caps-controls.bend"
+  ],
+  "controlExports": [
+    "p186hc_controls"
+  ],
+  "controlInvocation": "p186hc_controls(False) under original caps; p186hc_controls(True) under overlay; all11 rows must end =1. Controls only inspect verified IR and admission; do not execute synthetic infinite owner."
+}

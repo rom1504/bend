@@ -299,6 +299,7 @@ def p114r_stmt(stmt: P114RStmt, +params: List<&2,String>, +ids: N111Ids, +code: 
       p114r_jump("@p114r_unwind",p111q_line("%p114r_value =l copy " ++ p111q_value(value,ids) ++ "\n",code))
     case P114RFailure{body}: p111q_stmts(body,ids,code)
     case P114RResumeReady{frame,call,result}: p111q_problem("ready resume outside table region",code)
+    case P114RPushFrame{frame}: p111q_problem("pending frame outside table region",code)
 
 @unsafe
 def p114r_if(+condition: N111Value, +yes: List<&2,P114RStmt>, +no: List<&2,P114RStmt>,
@@ -796,6 +797,10 @@ def p114h_scan_target(+body: List<&2,N111Stmt>, +owner: String, +arity: U32, +re
 
 @unsafe
 def p114h_scan_frame(+body: List<&2,N111Stmt>, +owner: String, +arity: U32, +ready: KDef, frame: Maybe<&2,P112FusionFrame>) -> P114GBody:
+  p186sf_frame(body,owner,arity,ready,frame)
+
+@unsafe
+def p186sf_previous_frame(+body: List<&2,N111Stmt>, +owner: String, +arity: U32, +ready: KDef, frame: Maybe<&2,P112FusionFrame>) -> P114GBody:
   match frame:
     case Some{P112FusionFrame{captures,+name,dest,+tail}}:
       +count = nt_count(N111Value,captures)
@@ -937,6 +942,7 @@ def p114h_rename_stmt(stmt: P114RStmt, +prefix: String) -> P114RStmt:
     case P114RResult{value}: P114RResult{p112f_value(value,prefix)}
     case P114RFailure{body}: P114RFailure{p112f_rename(body,prefix)}
     case P114RResumeReady{frame,call,result}: P114RResumeReady{p112f_rename(frame,prefix),p112f_rename(call,prefix),p112f_value(result,prefix)}
+    case P114RPushFrame{frame}: P114RPushFrame{p112f_rename(frame,prefix)}
 
 @unsafe
 def p114h_snapshots(+buffer: String, +count: U32, +index: U32, +code: P111QCode) -> P111QCode:
@@ -979,6 +985,8 @@ def p114h_stmt(+stmt: P114RStmt, +params: List<&2,String>, +buffer: String, +ids
     case P114RResumeReady{frame,call,result}:
       p114r_stmt(P114RResult{result},params,ids,p111q_stmts(call,ids,
         p111q_line("%p114r_depth =l add %p114r_depth, 1\n",p185fr_stmts(frame,buffer,ids,code))))
+    case P114RPushFrame{frame}:
+      p111q_line("%p114r_depth =l add %p114r_depth, 1\n",p185fr_stmts(frame,buffer,ids,code))
     case _: p114r_stmt(stmt,params,ids,code)
 
 @unsafe

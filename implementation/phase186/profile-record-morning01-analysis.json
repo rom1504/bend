@@ -1,0 +1,740 @@
+{
+  "kind": "phase186-record-morning-profile-interpretation",
+  "targetsRun": false,
+  "comparison": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/profile-record-morning01/plan/comparison.json",
+    "bytes": 124098,
+    "sha256": "08f93363e96798ca25b814b1560545be3c51d7b5598ecf782e45b2f4fa12787c"
+  },
+  "capture": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/profile-record-morning01/plan/capture/report.json",
+    "bytes": 28763,
+    "sha256": "c9ef64c607313e0946ceaa4f71543b3178b0ca47f71a0a6fdf551f7ea296bb36"
+  },
+  "workloads": {
+    "coverage-record-aggregation-256": {
+      "samples": 748,
+      "samplesByPeriodUs": {
+        "8000": 467,
+        "13000": 281
+      },
+      "adequate": true,
+      "captureLossTotals": {
+        "dropped": 0,
+        "overruns": 0
+      },
+      "minimumWholeChildCpuCoverage": 0.9993212607435774,
+      "cleanCpuSeconds": 3.633126,
+      "absoluteCpuEstimateAvailable": true,
+      "unknownPeriodWeightedFraction": 0.06915685478413859,
+      "groups": {
+        "constructors": {
+          "periodWeightedFraction": 0.15333604005954798,
+          "members": [
+            "p125_rt_ctor3",
+            "p125_rt_ctor2",
+            "p111_rt_special_ctor",
+            "p125_rt_ctor1",
+            "p111_rt_ctor",
+            "p125_rt_ctor2.cold",
+            "p125_rt_ctor3.cold"
+          ]
+        },
+        "takes": {
+          "periodWeightedFraction": 0.16145621870347815,
+          "members": [
+            "p125_rt_take3",
+            "p125_rt_take2",
+            "p125_rt_take1",
+            "p111_rt_special_take"
+          ]
+        },
+        "registerTransport": {
+          "periodWeightedFraction": 0.07091622682365678,
+          "members": [
+            "p111_set_regs",
+            "p111_rt_jump",
+            "p111_rt_return"
+          ]
+        },
+        "scheduler": {
+          "periodWeightedFraction": 0.03288672350791717,
+          "members": [
+            "work_loop.constprop.0"
+          ]
+        },
+        "closureApplicationAndDestinations": {
+          "periodWeightedFraction": 0.012856949519556096,
+          "members": [
+            "p118_destination_fill",
+            "p118_rt_extend1"
+          ]
+        },
+        "genericPrimitive": {
+          "periodWeightedFraction": 0.008255514954662336,
+          "members": [
+            "p111_rt_op"
+          ]
+        },
+        "natDivmod": {
+          "periodWeightedFraction": 0.027067262146433888,
+          "members": [
+            "p126_rt_nat_divmod"
+          ]
+        },
+        "MapNamedGeneratedLeaves": {
+          "periodWeightedFraction": 0.3012586276898092,
+          "members": [
+            "p113d_FID_$p118borrow.read.Map.bit.go",
+            "p111_FID_$direct.Map.seek.go",
+            "p111_FID_$direct.Map.get.go",
+            "p111_FID_$direct.Map.put.go",
+            "p113d_FID_$direct.Map.bit",
+            "p113d_FID_$product.Map.bit.at",
+            "p113d_FID_$product.Map.bit.go",
+            "p111_FID_$direct.Map.put",
+            "p113d_FID_$direct.Map.lo",
+            "p111_FID_$direct.Map.set.fin.go",
+            "p112w_FID_$direct.Map.hi",
+            "p111_FID_$direct.Map.get",
+            "p111_FID_$direct.Map.seek",
+            "p111_FID_$direct.Map.set.go",
+            "p112w_FID_$direct.Map.lo",
+            "p111_FID_$direct.Map.set",
+            "p113d_FID_$direct.Map.hi",
+            "p111_FID_$direct.Map.get.leaf",
+            "p111_FID_$direct.Map.set.fin",
+            "p112w_FID_$direct.Map.bit",
+            "p113d_FID_$direct.Map.get.leaf",
+            "p111_FID_$direct.Map.diff",
+            "p111_FID_$direct.Map.diff.step",
+            "p111_FID_$direct.Map.msb.u.if"
+          ]
+        },
+        "StringNamedGeneratedLeaves": {
+          "periodWeightedFraction": 0.027608607389362563,
+          "members": [
+            "p113d_FID_$p118borrow.read.String.cmp",
+            "p113d_FID_$p118.trmc.$direct.String.append",
+            "p112w_FID_$direct.String.cmp",
+            "p113d_FID_$direct.String.append",
+            "p113d_FID_$direct.String.cmp",
+            "p113d_FID_$p128borrow.owned.String.order.go"
+          ]
+        }
+      },
+      "topPhysicalFunctions": [
+        {
+          "object": "executable",
+          "name": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_77_97_112_46_98_105_116_46_103_111_",
+          "decoded": "p113d_FID_$p118borrow.read.Map.bit.go",
+          "samples": 59,
+          "rawFraction": 0.07887700534759358,
+          "periodWeightedMicroseconds": 612000,
+          "periodWeightedFraction": 0.0828258221680877,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.3009166479902558
+        },
+        {
+          "object": "executable",
+          "name": "p125_rt_ctor3",
+          "decoded": "p125_rt_ctor3",
+          "samples": 63,
+          "rawFraction": 0.08422459893048129,
+          "periodWeightedMicroseconds": 604000,
+          "periodWeightedFraction": 0.08174313168223034,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.2969830970361348
+        },
+        {
+          "object": "executable",
+          "name": "p125_rt_take3",
+          "decoded": "p125_rt_take3",
+          "samples": 59,
+          "rawFraction": 0.07887700534759358,
+          "periodWeightedMicroseconds": 582000,
+          "periodWeightedFraction": 0.07876573284612262,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.2861658319123021
+        },
+        {
+          "object": "executable",
+          "name": "p125_rt_take2",
+          "decoded": "p125_rt_take2",
+          "samples": 56,
+          "rawFraction": 0.0748663101604278,
+          "periodWeightedMicroseconds": 558000,
+          "periodWeightedFraction": 0.07551766138855055,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.2743651790499391
+        },
+        {
+          "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+          "name": "[library_unresolved]",
+          "decoded": "[library_unresolved]",
+          "samples": 52,
+          "rawFraction": 0.06951871657754011,
+          "periodWeightedMicroseconds": 511000,
+          "periodWeightedFraction": 0.06915685478413859,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.2512555671944783
+        },
+        {
+          "object": "executable",
+          "name": "p125_rt_ctor2",
+          "decoded": "p125_rt_ctor2",
+          "samples": 41,
+          "rawFraction": 0.05481283422459893,
+          "periodWeightedMicroseconds": 443000,
+          "periodWeightedFraction": 0.05995398565435106,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.21782038408444984
+        },
+        {
+          "object": "executable",
+          "name": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_115_101_101_107_46_103_111_",
+          "decoded": "p111_FID_$direct.Map.seek.go",
+          "samples": 32,
+          "rawFraction": 0.0427807486631016,
+          "periodWeightedMicroseconds": 311000,
+          "periodWeightedFraction": 0.0420895926377047,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.1529167933414535
+        },
+        {
+          "object": "executable",
+          "name": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_103_101_116_46_103_111_",
+          "decoded": "p111_FID_$direct.Map.get.go",
+          "samples": 30,
+          "rawFraction": 0.040106951871657755,
+          "periodWeightedMicroseconds": 290000,
+          "periodWeightedFraction": 0.039247530112329135,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.1425912220868859
+        },
+        {
+          "object": "executable",
+          "name": "work_loop.constprop.0",
+          "decoded": "work_loop.constprop.0",
+          "samples": 26,
+          "rawFraction": 0.034759358288770054,
+          "periodWeightedMicroseconds": 243000,
+          "periodWeightedFraction": 0.03288672350791717,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.11948161023142509
+        },
+        {
+          "object": "executable",
+          "name": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_112_117_116_46_103_111_",
+          "decoded": "p111_FID_$direct.Map.put.go",
+          "samples": 21,
+          "rawFraction": 0.02807486631016043,
+          "periodWeightedMicroseconds": 208000,
+          "periodWeightedFraction": 0.028149952632291243,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.10227232480714575
+        },
+        {
+          "object": "executable",
+          "name": "p126_rt_nat_divmod",
+          "decoded": "p126_rt_nat_divmod",
+          "samples": 20,
+          "rawFraction": 0.026737967914438502,
+          "periodWeightedMicroseconds": 200000,
+          "periodWeightedFraction": 0.027067262146433888,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.09833877385302477
+        },
+        {
+          "object": "executable",
+          "name": "p111_set_regs",
+          "decoded": "p111_set_regs",
+          "samples": 20,
+          "rawFraction": 0.026737967914438502,
+          "periodWeightedMicroseconds": 190000,
+          "periodWeightedFraction": 0.025713899039112195,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.09342183516037353
+        },
+        {
+          "object": "executable",
+          "name": "p111_rt_jump",
+          "decoded": "p111_rt_jump",
+          "samples": 18,
+          "rawFraction": 0.02406417112299465,
+          "periodWeightedMicroseconds": 189000,
+          "periodWeightedFraction": 0.025578562728380026,
+          "lowPrecision": true,
+          "estimatedCleanCpuSeconds": 0.09293014129110841
+        },
+        {
+          "object": "executable",
+          "name": "p113d_FID_36_100_105_114_101_99_116_46_77_97_112_46_98_105_116_",
+          "decoded": "p113d_FID_$direct.Map.bit",
+          "samples": 15,
+          "rawFraction": 0.020053475935828877,
+          "periodWeightedMicroseconds": 165000,
+          "periodWeightedFraction": 0.022330491270807957,
+          "lowPrecision": true,
+          "estimatedCleanCpuSeconds": 0.08112948842874543
+        },
+        {
+          "object": "executable",
+          "name": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_83_116_114_105_110_103_46_99_109_112_",
+          "decoded": "p113d_FID_$p118borrow.read.String.cmp",
+          "samples": 17,
+          "rawFraction": 0.022727272727272728,
+          "periodWeightedMicroseconds": 156000,
+          "periodWeightedFraction": 0.021112464474218433,
+          "lowPrecision": true,
+          "estimatedCleanCpuSeconds": 0.07670424360535931
+        },
+        {
+          "object": "executable",
+          "name": "p111_rt_return",
+          "decoded": "p111_rt_return",
+          "samples": 15,
+          "rawFraction": 0.020053475935828877,
+          "periodWeightedMicroseconds": 145000,
+          "periodWeightedFraction": 0.019623765056164567,
+          "lowPrecision": true,
+          "estimatedCleanCpuSeconds": 0.07129561104344295
+        },
+        {
+          "object": "executable",
+          "name": "rfc_wrap",
+          "decoded": "rfc_wrap",
+          "samples": 13,
+          "rawFraction": 0.017379679144385027,
+          "periodWeightedMicroseconds": 129000,
+          "periodWeightedFraction": 0.017458384084449857,
+          "lowPrecision": true,
+          "estimatedCleanCpuSeconds": 0.06342850913520097
+        },
+        {
+          "object": "executable",
+          "name": "heap_alloc",
+          "decoded": "heap_alloc",
+          "samples": 13,
+          "rawFraction": 0.017379679144385027,
+          "periodWeightedMicroseconds": 124000,
+          "periodWeightedFraction": 0.01678170253078901,
+          "lowPrecision": true,
+          "estimatedCleanCpuSeconds": 0.060970039788875344
+        }
+      ],
+      "lexicalOwnerFractions": {
+        "[no lexical owner]": 0.9500609013398302,
+        "Map.put": 0.00960887806198403,
+        "Map.set.fin.go": 0.007443497090269319,
+        "p37.aggregate.put": 0.0071728244688049805,
+        "Map.set": 0.005413452429286777,
+        "Map.get": 0.004601434564893761,
+        "Map.seek": 0.0039247530112329135,
+        "Map.set.go": 0.0039247530112329135,
+        "Map.msb.u.if": 0.0028420625253755584,
+        "Map.set.fin": 0.002165380971714711,
+        "Map.diff": 0.0017593720395182027,
+        "Map.diff.step": 0.0010826904858573555
+      },
+      "ownerBinding": {
+        "kind": "exact-ELF-segment-table-pointers",
+        "checkedFids": 551,
+        "checkedFunctionSymbols": 744,
+        "runtimeDescriptor": {
+          "capabilities": 5,
+          "registerWidth": 6,
+          "resultWidth": 1
+        },
+        "liveRegisterBank": true,
+        "ownerMapCapabilities": 5,
+        "symbolLookup": {
+          "policy": "required-role-and-allocated-section-v1",
+          "method": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/attribute.py",
+            "bytes": 37378,
+            "sha256": "4baed6e5f9556c06b1b2abd95ec5d407064fc52c8f3892fd387a8e6284561dce"
+          },
+          "dataRole": "OBJECT/NOTYPE, allocated file-backed non-executable non-TLS section",
+          "functionRole": "FUNC/NOTYPE, allocated executable non-TLS section",
+          "ambiguity": "distinct addresses in the queried role are rejected"
+        },
+        "elfType": 2,
+        "producerProvenanceVerified": false,
+        "buildProvenance": null,
+        "sourceMap": null,
+        "lexicalOwnerConditionalOnEmitterContract": true
+      }
+    },
+    "test-morning-program": {
+      "samples": 818,
+      "samplesByPeriodUs": {
+        "8000": 508,
+        "13000": 310
+      },
+      "adequate": true,
+      "captureLossTotals": {
+        "dropped": 0,
+        "overruns": 0
+      },
+      "minimumWholeChildCpuCoverage": 0.9993231182985778,
+      "cleanCpuSeconds": 4.124543,
+      "absoluteCpuEstimateAvailable": true,
+      "unknownPeriodWeightedFraction": 0.0748702742772424,
+      "groups": {
+        "constructors": {
+          "periodWeightedFraction": 0.04719545342228812,
+          "members": [
+            "p125_rt_ctor2",
+            "p111_rt_special_ctor",
+            "p125_rt_ctor3",
+            "p111_rt_ctor"
+          ]
+        },
+        "takes": {
+          "periodWeightedFraction": 0.138744749196936,
+          "members": [
+            "p125_rt_take2",
+            "p111_rt_special_take",
+            "p125_rt_take2.cold",
+            "p125_rt_take3",
+            "p125_rt_take1"
+          ]
+        },
+        "registerTransport": {
+          "periodWeightedFraction": 0.11168766987892265,
+          "members": [
+            "p111_rt_return",
+            "p111_rt_jump",
+            "p111_set_regs"
+          ]
+        },
+        "scheduler": {
+          "periodWeightedFraction": 0.05497899678774401,
+          "members": [
+            "work_loop.constprop.0"
+          ]
+        },
+        "closureApplicationAndDestinations": {
+          "periodWeightedFraction": 0.14887571040276748,
+          "members": [
+            "WL_BEND_CLO_APPLY",
+            "p118_destination_fill",
+            "p111_rt_closure",
+            "p118_rt_extend1",
+            "p111_rt_apply",
+            "p118_rt_finish",
+            "p118_destination_fill.cold"
+          ]
+        },
+        "genericPrimitive": {
+          "periodWeightedFraction": 0.04064739313071411,
+          "members": [
+            "p111_rt_op"
+          ]
+        },
+        "natDivmod": {
+          "periodWeightedFraction": 0.003582900914257475,
+          "members": [
+            "p126_rt_nat_divmod"
+          ]
+        },
+        "MapNamedGeneratedLeaves": {
+          "periodWeightedFraction": 0.03829997529033852,
+          "members": [
+            "p111_FID_$direct.Map.msb.u.if",
+            "p111_FID_$direct.Map.set",
+            "p111_FID_$direct.Map.set.go",
+            "p111_FID_$direct.Map.msb.u",
+            "p111_FID_$direct.Map.diff.fin",
+            "p111_FID_$direct.Map.get",
+            "p113d_FID_$direct.Map.get.leaf",
+            "p111_FID_$direct.Map.get.go",
+            "p111_FID_$direct.Map.ins",
+            "p113d_FID_$direct.Map.ins.splice",
+            "p113d_FID_$p118borrow.read.Map.bit.go",
+            "p111_FID_$direct.Map.diff",
+            "p111_FID_$direct.Map.diff.step",
+            "p111_FID_$direct.Map.set.fin",
+            "p113d_FID_$product.Map.bit"
+          ]
+        },
+        "StringNamedGeneratedLeaves": {
+          "periodWeightedFraction": 0.11415863602668644,
+          "members": [
+            "p113d_FID_$p128borrow.owned.String.order.go",
+            "p111_FID_$direct.Str.join.go",
+            "p111_FID_$direct.Str.join.fin",
+            "p113d_FID_$p118.trmc.$direct.String.append",
+            "p111_FID_$direct.Str.split",
+            "p111_FID_$direct.Str.split.fin",
+            "p113d_FID_$p118borrow.read.String.cmp",
+            "p113d_FID_$direct.String.append",
+            "p114r_FID_$direct.String.length",
+            "p113d_FID_$direct.String.order",
+            "p113d_FID_$direct.String.cmp",
+            "p113d_FID_$direct.Str.split.push",
+            "p111_FID_$direct.String.length",
+            "p112w_FID_$direct.String.append",
+            "p113d_FID_$direct.String.eq"
+          ]
+        }
+      },
+      "topPhysicalFunctions": [
+        {
+          "object": "executable",
+          "name": "p125_rt_take2",
+          "decoded": "p125_rt_take2",
+          "samples": 93,
+          "rawFraction": 0.1136919315403423,
+          "periodWeightedMicroseconds": 894000,
+          "periodWeightedFraction": 0.11045218680504076,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.45556479392142324
+        },
+        {
+          "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+          "name": "[library_unresolved]",
+          "decoded": "[library_unresolved]",
+          "samples": 62,
+          "rawFraction": 0.07579462102689487,
+          "periodWeightedMicroseconds": 606000,
+          "periodWeightedFraction": 0.0748702742772424,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.3088056656782802
+        },
+        {
+          "object": "executable",
+          "name": "work_loop.constprop.0",
+          "decoded": "work_loop.constprop.0",
+          "samples": 45,
+          "rawFraction": 0.0550122249388753,
+          "periodWeightedMicroseconds": 445000,
+          "periodWeightedFraction": 0.05497899678774401,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.22676323634791204
+        },
+        {
+          "object": "executable",
+          "name": "WL_BEND_CLO_APPLY",
+          "decoded": "WL_BEND_CLO_APPLY",
+          "samples": 37,
+          "rawFraction": 0.04523227383863081,
+          "periodWeightedMicroseconds": 376000,
+          "periodWeightedFraction": 0.04645416357795898,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.19160219520632565
+        },
+        {
+          "object": "executable",
+          "name": "p111_rt_return",
+          "decoded": "p111_rt_return",
+          "samples": 37,
+          "rawFraction": 0.04523227383863081,
+          "periodWeightedMicroseconds": 351000,
+          "periodWeightedFraction": 0.04336545589325426,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.1788626875463306
+        },
+        {
+          "object": "executable",
+          "name": "p111_rt_op",
+          "decoded": "p111_rt_op",
+          "samples": 33,
+          "rawFraction": 0.040342298288508556,
+          "periodWeightedMicroseconds": 329000,
+          "periodWeightedFraction": 0.04064739313071411,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.16765192080553498
+        },
+        {
+          "object": "executable",
+          "name": "p111_rt_jump",
+          "decoded": "p111_rt_jump",
+          "samples": 28,
+          "rawFraction": 0.034229828850855744,
+          "periodWeightedMicroseconds": 279000,
+          "periodWeightedFraction": 0.03446997776130467,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.14217290548554484
+        },
+        {
+          "object": "executable",
+          "name": "p111_set_regs",
+          "decoded": "p111_set_regs",
+          "samples": 28,
+          "rawFraction": 0.034229828850855744,
+          "periodWeightedMicroseconds": 274000,
+          "periodWeightedFraction": 0.03385223622436372,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.13962500395354582
+        },
+        {
+          "object": "executable",
+          "name": "p125_rt_ctor2",
+          "decoded": "p125_rt_ctor2",
+          "samples": 27,
+          "rawFraction": 0.03300733496332518,
+          "periodWeightedMicroseconds": 266000,
+          "periodWeightedFraction": 0.03286384976525822,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.13554836150234742
+        },
+        {
+          "object": "executable",
+          "name": "p118_destination_fill",
+          "decoded": "p118_destination_fill",
+          "samples": 23,
+          "rawFraction": 0.028117359413202935,
+          "periodWeightedMicroseconds": 234000,
+          "periodWeightedFraction": 0.028910303928836176,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.11924179169755375
+        },
+        {
+          "object": "executable",
+          "name": "p111_rt_closure",
+          "decoded": "p111_rt_closure",
+          "samples": 21,
+          "rawFraction": 0.02567237163814181,
+          "periodWeightedMicroseconds": 228000,
+          "periodWeightedFraction": 0.028169014084507043,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.11618430985915493
+        },
+        {
+          "object": "executable",
+          "name": "p118_rt_extend1",
+          "decoded": "p118_rt_extend1",
+          "samples": 22,
+          "rawFraction": 0.02689486552567237,
+          "periodWeightedMicroseconds": 211000,
+          "periodWeightedFraction": 0.026068692858907835,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.1075214446503583
+        },
+        {
+          "object": "executable",
+          "name": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_83_116_114_105_110_103_46_111_114_100_101_114_46_103_111_",
+          "decoded": "p113d_FID_$p128borrow.owned.String.order.go",
+          "samples": 20,
+          "rawFraction": 0.02444987775061125,
+          "periodWeightedMicroseconds": 200000,
+          "periodWeightedFraction": 0.024709661477637757,
+          "lowPrecision": false,
+          "estimatedCleanCpuSeconds": 0.10191606127996047
+        },
+        {
+          "object": "executable",
+          "name": "rfc_wrap",
+          "decoded": "rfc_wrap",
+          "samples": 18,
+          "rawFraction": 0.022004889975550123,
+          "periodWeightedMicroseconds": 184000,
+          "periodWeightedFraction": 0.022732888559426737,
+          "lowPrecision": true,
+          "estimatedCleanCpuSeconds": 0.09376277637756364
+        },
+        {
+          "object": "executable",
+          "name": "p111_rt_special_take",
+          "decoded": "p111_rt_special_take",
+          "samples": 17,
+          "rawFraction": 0.02078239608801956,
+          "periodWeightedMicroseconds": 166000,
+          "periodWeightedFraction": 0.020509019026439337,
+          "lowPrecision": true,
+          "estimatedCleanCpuSeconds": 0.08459033086236718
+        },
+        {
+          "object": "executable",
+          "name": "term_drop",
+          "decoded": "term_drop",
+          "samples": 17,
+          "rawFraction": 0.02078239608801956,
+          "periodWeightedMicroseconds": 161000,
+          "periodWeightedFraction": 0.019891277489498396,
+          "lowPrecision": true,
+          "estimatedCleanCpuSeconds": 0.08204242933036818
+        },
+        {
+          "object": "executable",
+          "name": "p111_FID_36_112_49_49_49_46_107_46_51_51_52_57_54_",
+          "decoded": "p111_FID_$p111.k.33496",
+          "samples": 13,
+          "rawFraction": 0.01589242053789731,
+          "periodWeightedMicroseconds": 134000,
+          "periodWeightedFraction": 0.016555473190017298,
+          "lowPrecision": true,
+          "estimatedCleanCpuSeconds": 0.06828376105757351
+        },
+        {
+          "object": "executable",
+          "name": "p111_FID_36_100_105_114_101_99_116_46_83_116_114_46_106_111_105_110_46_103_111_",
+          "decoded": "p111_FID_$direct.Str.join.go",
+          "samples": 12,
+          "rawFraction": 0.014669926650366748,
+          "periodWeightedMicroseconds": 126000,
+          "periodWeightedFraction": 0.015567086730911787,
+          "lowPrecision": true,
+          "estimatedCleanCpuSeconds": 0.0642071186063751
+        }
+      ],
+      "lexicalOwnerFractions": {
+        "[no lexical owner]": 0.8433407462317764,
+        "Str.join.go": 0.04806029157400543,
+        "Str.join.fin": 0.03249320484309365,
+        "Str.split": 0.02409191994069681,
+        "Map.msb.u.if": 0.012601927353595256,
+        "Map.set": 0.007412898443291327,
+        "String.length": 0.00716580182851495,
+        "main.out": 0.004571287373362985,
+        "Map.set.go": 0.004200642451198419,
+        "Map.diff": 0.003953545836422041,
+        "Map.msb.u": 0.0025945144551519643,
+        "Map.diff.fin": 0.0019767729182110206,
+        "Map.get": 0.0019767729182110206,
+        "Map.diff.step": 0.0019767729182110206,
+        "Map.ins": 0.0016061279960464542,
+        "Map.set.fin": 0.0009883864591055103,
+        "Map.set.fin.go": 0.0009883864591055103
+      },
+      "ownerBinding": {
+        "kind": "exact-ELF-segment-table-pointers",
+        "checkedFids": 570,
+        "checkedFunctionSymbols": 768,
+        "runtimeDescriptor": {
+          "capabilities": 5,
+          "registerWidth": 7,
+          "resultWidth": 1
+        },
+        "liveRegisterBank": true,
+        "ownerMapCapabilities": 5,
+        "symbolLookup": {
+          "policy": "required-role-and-allocated-section-v1",
+          "method": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/attribute.py",
+            "bytes": 37378,
+            "sha256": "4baed6e5f9556c06b1b2abd95ec5d407064fc52c8f3892fd387a8e6284561dce"
+          },
+          "dataRole": "OBJECT/NOTYPE, allocated file-backed non-executable non-TLS section",
+          "functionRole": "FUNC/NOTYPE, allocated executable non-TLS section",
+          "ambiguity": "distinct addresses in the queried role are rejected"
+        },
+        "elfType": 2,
+        "producerProvenanceVerified": false,
+        "buildProvenance": null,
+        "sourceMap": null,
+        "lexicalOwnerConditionalOnEmitterContract": true
+      }
+    }
+  },
+  "conclusion": "After register transport and Char lowering, inspect ownership-preserving pair/triple take/rebuild paths and continuation/closure composition. Record spends31.48% in constructor/take helpers and30.13% in Map-named generated leaves. Morning spends18.59% in constructor/take helpers plus14.89% in closure/application/destination/finish helpers. These are physical leaf budgets, not disjoint end-to-end source costs or predicted wins.",
+  "limits": [
+    "No active contexts or physical callers were captured; runtime leaf costs cannot be assigned to Map/String owners.",
+    "Formal lexical ownership is conditional; most private/composite symbols remain unowned. Exact symbol names are a separate observation.",
+    "Unknown libc samples remain in denominators. Two periods pool above500, but individual low-sample functions are not precision estimates.",
+    "One clean capture permits approximate absolute CPU budgeting; it is not a multi-round clean speed comparison.",
+    "These binaries predate Phase186 transport/Char changes; no benefit from those pending changes is assumed."
+  ]
+}

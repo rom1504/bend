@@ -122,6 +122,24 @@ def x185_sf_loaded(stmt: N111Stmt, name: String, typ: N111Type, found: Maybe<&2,
     case None{}: P113DScalar{stmt}
     case Some{value}: P113DScalar{N111Set{name,typ,value}}
 
+# A different fixed frame allocation cannot mutate remembered cells. Drop only
+# facts for the declared identity or facts that captured its previous address.
+@unsafe
+def x186_sf_allocated(facts: List<&2,X185ScratchCell>, +name: String) -> List<&2,X185ScratchCell>:
+  match facts:
+    case Nil{}: []
+    case Con{+cell,+rest}:
+      match cell:
+        case X185ScratchCell{buffer,offset,typ,value}:
+          nt_choose(List<&2,X185ScratchCell>,String.eq(buffer,name) || x185_sf_source(value,name),
+            u => x186_sf_allocated(rest,name),u => Con{cell,x186_sf_allocated(rest,name)})
+
+@unsafe
+def x186_sf_inline(effect: X186InlineOp, facts: List<&2,X185ScratchCell>) -> List<&2,X185ScratchCell>:
+  match effect:
+    case X186InlineF32{destination,id,buffer}: x185_sf_written(facts,destination)
+    case _: []
+
 @unsafe
 def x185_sf_scalar(+stmt: N111Stmt, +buffers: KDef, +facts: List<&2,X185ScratchCell>) -> X185ScratchStep:
   match stmt:
@@ -136,6 +154,8 @@ def x185_sf_scalar(+stmt: N111Stmt, +buffers: KDef, +facts: List<&2,X185ScratchC
     case N111Set{name,typ,value}: X185ScratchStep{P113DScalar{stmt},x185_sf_written(facts,name)}
     case N111Bin{name,typ,op,left,right}: X185ScratchStep{P113DScalar{stmt},x185_sf_written(facts,name)}
     case N111Offset{name,base,bytes}: X185ScratchStep{P113DScalar{stmt},x185_sf_written(facts,name)}
+    case N111Alloca{name,bytes,align}: X185ScratchStep{P113DScalar{stmt},x186_sf_allocated(facts,name)}
+    case N111Call{name,typ,symbol,args}: X185ScratchStep{P113DScalar{stmt},x186_sf_inline(x186_inline_op(stmt),facts)}
     case _: X185ScratchStep{P113DScalar{stmt},[]}
 
 law x185_sf_body:

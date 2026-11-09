@@ -1,0 +1,463 @@
+{
+  "kind": "phase186-unique-take-v1-static-audit",
+  "version": 1,
+  "method": "Read-only objdump -h/-t/-d and text parsing of retained artifacts; no target/compiler execution. All counts static, not dynamic cost attribution. QBE normalization independently removes each exact four-identical-fallback unique expansion and renames local values/labels by first occurrence within each function; constants, symbols, instructions, and control structure otherwise unchanged.",
+  "inputs": [
+    {
+      "file": "selfhost/build/phase186/third-qbe-runtime01/report.json",
+      "bytes": 199440,
+      "sha256": "43035b91fb18adecb9ccd41a03218c2cb0f01211aaeff8531bf8697c8ca8ffeb"
+    },
+    {
+      "file": "selfhost/build/phase186/second-controls01/report.json",
+      "bytes": 22873,
+      "sha256": "30ddc4e8ef489d6a579922973abf8c5c0bca83e01265349885cfc70184a4b6af"
+    }
+  ],
+  "runtime": {
+    "complete": true,
+    "rounds": 3,
+    "cpu": 3,
+    "targetMs": 250,
+    "minimumAcceptedMs": 100,
+    "positionBalanced": true,
+    "changedInputs": [],
+    "all45TimedObservationsCorrect": true,
+    "minimumTimedBatchMs": 248
+  },
+  "cases": [
+    {
+      "case": "tree-bitonic",
+      "timingUs": {
+        "c": 165.0,
+        "before": 386.8065967016492,
+        "candidate": 404.7976011994003
+      },
+      "candidateOverBefore": 1.0465116279069766,
+      "artifacts": {
+        "first": {
+          "elf": {
+            "file": "selfhost/build/phase186/first-qbe-build01/tree-bitonic/machine/program",
+            "bytes": 187104,
+            "sha256": "2008fe3342e57a01cde380418e7c19bf8f8ee77dac055587e08b97ee50b19b44"
+          },
+          "qbe": {
+            "file": "selfhost/build/phase186/first-qbe-emit01/tree-bitonic/program.ssa",
+            "bytes": 531022,
+            "sha256": "c2fd3fc855cdcb496e8cae79ec142af56be360f4fa9eff11ca97db3a0c96be8e"
+          },
+          "assembly": {
+            "file": "selfhost/build/phase186/first-qbe-build01/tree-bitonic/machine/program.s",
+            "bytes": 361705,
+            "sha256": "d3ef0879eb1f4d3ea7e566408dc3f65a37c863504e71e3dec310668dfd672ca6"
+          },
+          "textBytes": 99697,
+          "takeCallSites": 43,
+          "functionCount": 509,
+          "selectedFunctions": [
+            {
+              "owner": "$direct.warp_zip",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_122_105_112_",
+              "bytes": 928,
+              "instructions": 205,
+              "instructionsThroughFirstConditionalBranch": 29,
+              "rbpRspMemoryOperandInstructions": 26,
+              "stackSubtracts": [
+                2072
+              ],
+              "staticTakeCallSites": 6
+            },
+            {
+              "owner": "$direct.warp",
+              "symbol": "p114r_FID_36_100_105_114_101_99_116_46_119_97_114_112_",
+              "bytes": 1335,
+              "instructions": 301,
+              "instructionsThroughFirstConditionalBranch": 32,
+              "rbpRspMemoryOperandInstructions": 48,
+              "stackSubtracts": [
+                6168
+              ],
+              "staticTakeCallSites": 6
+            }
+          ],
+          "normalizedWithoutUniqueSha256": "f1f659cfaae3b55aac7d8d2f0aff6a6942868d01f0030c03bd7d35484428018e"
+        },
+        "third": {
+          "elf": {
+            "file": "selfhost/build/phase186/third-qbe-build01/tree-bitonic/machine/program",
+            "bytes": 199392,
+            "sha256": "b2610e39cda25629c012feee6e1c4477127e5bab4da6758fee3edf15b2465444"
+          },
+          "qbe": {
+            "file": "selfhost/build/phase186/third-qbe-emit01/tree-bitonic/program.ssa",
+            "bytes": 662401,
+            "sha256": "9269c955a92f25e2e7cf8ad812db6d20cc319419b78b07b4dfafbe84759f7dcf"
+          },
+          "assembly": {
+            "file": "selfhost/build/phase186/third-qbe-build01/tree-bitonic/machine/program.s",
+            "bytes": 417756,
+            "sha256": "423bfdc01a13e5de45b3e05b2506b3f457320a711cb133d99c9e85984ce790e8"
+          },
+          "textBytes": 111729,
+          "takeCallSites": 172,
+          "functionCount": 509,
+          "selectedFunctions": [
+            {
+              "owner": "$direct.warp_zip",
+              "symbol": "p113d_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_122_105_112_",
+              "bytes": 2420,
+              "instructions": 562,
+              "instructionsThroughFirstConditionalBranch": 62,
+              "rbpRspMemoryOperandInstructions": 111,
+              "stackSubtracts": [
+                2152
+              ],
+              "staticTakeCallSites": 24
+            },
+            {
+              "owner": "$direct.warp",
+              "symbol": "p114r_FID_36_100_105_114_101_99_116_46_119_97_114_112_",
+              "bytes": 3511,
+              "instructions": 791,
+              "instructionsThroughFirstConditionalBranch": 64,
+              "rbpRspMemoryOperandInstructions": 178,
+              "stackSubtracts": [
+                6328
+              ],
+              "staticTakeCallSites": 24
+            }
+          ],
+          "uniqueExpandedSites": 43,
+          "normalizedWithoutUniqueSha256": "f1f659cfaae3b55aac7d8d2f0aff6a6942868d01f0030c03bd7d35484428018e"
+        }
+      },
+      "alphaEquivalentAfterRemovingUnique": true
+    },
+    {
+      "case": "coverage-map-churn-128",
+      "timingUs": {
+        "c": 232.92797006548176,
+        "before": 623.4718826405868,
+        "candidate": 722.5274725274725
+      },
+      "candidateOverBefore": 1.158877397112691,
+      "artifacts": {
+        "first": {
+          "elf": {
+            "file": "selfhost/build/phase186/first-qbe-build01/coverage-map-churn-128/machine/program",
+            "bytes": 345640,
+            "sha256": "61c46e810ae24879271416fc905a80cb29d65c9bddee14fa1786f850ad8e9658"
+          },
+          "qbe": {
+            "file": "selfhost/build/phase186/first-qbe-emit01/coverage-map-churn-128/program.ssa",
+            "bytes": 1723034,
+            "sha256": "4bdec24b935df1044e1d59583a3206c96f6bfe173518ddb4d13bc61ec23177e6"
+          },
+          "assembly": {
+            "file": "selfhost/build/phase186/first-qbe-build01/coverage-map-churn-128/machine/program.s",
+            "bytes": 1089207,
+            "sha256": "0de48caa3ca7c674d75ec3ce07b880c3125ba9563deacff28a076a7fe93ea35d"
+          },
+          "textBytes": 219569,
+          "takeCallSites": 132,
+          "functionCount": 959,
+          "selectedFunctions": [
+            {
+              "owner": "$direct.Map.ins.go",
+              "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_105_110_115_46_103_111_",
+              "bytes": 27576,
+              "instructions": 6171,
+              "instructionsThroughFirstConditionalBranch": 24,
+              "rbpRspMemoryOperandInstructions": 1068,
+              "stackSubtracts": [
+                15144
+              ],
+              "staticTakeCallSites": 18
+            },
+            {
+              "owner": "$direct.Map.put.go",
+              "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_112_117_116_46_103_111_",
+              "bytes": 13373,
+              "instructions": 3024,
+              "instructionsThroughFirstConditionalBranch": 21,
+              "rbpRspMemoryOperandInstructions": 431,
+              "stackSubtracts": [
+                14648
+              ],
+              "staticTakeCallSites": 18
+            },
+            {
+              "owner": "$direct.Map.seek.go",
+              "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_115_101_101_107_46_103_111_",
+              "bytes": 16100,
+              "instructions": 3591,
+              "instructionsThroughFirstConditionalBranch": 24,
+              "rbpRspMemoryOperandInstructions": 455,
+              "stackSubtracts": [
+                14568
+              ],
+              "staticTakeCallSites": 19
+            },
+            {
+              "owner": "$direct.Map.pop.go",
+              "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_112_111_112_46_103_111_",
+              "bytes": 10837,
+              "instructions": 2460,
+              "instructionsThroughFirstConditionalBranch": 20,
+              "rbpRspMemoryOperandInstructions": 341,
+              "stackSubtracts": [
+                18664
+              ],
+              "staticTakeCallSites": 18
+            }
+          ],
+          "normalizedWithoutUniqueSha256": "ab5ac6db5a15da1c93ade5f95074272da9d7d1467fba7ccca3b8e93a31b724d8"
+        },
+        "third": {
+          "elf": {
+            "file": "selfhost/build/phase186/third-qbe-build01/coverage-map-churn-128/machine/program",
+            "bytes": 398888,
+            "sha256": "9b792a4559914971598c08a68840a794ed0560d5bbf29fbebcceecb55297680f"
+          },
+          "qbe": {
+            "file": "selfhost/build/phase186/third-qbe-emit01/coverage-map-churn-128/program.ssa",
+            "bytes": 2144913,
+            "sha256": "8bd3f386e4a50ba99dac074f2fabce1885a1bc31991c71b427c312fc5d2d2282"
+          },
+          "assembly": {
+            "file": "selfhost/build/phase186/third-qbe-build01/coverage-map-churn-128/machine/program.s",
+            "bytes": 1310821,
+            "sha256": "abfd0e7a934457ae7f92a6f50a062bb346ad3504c8aff591ed1f373f5d80186d"
+          },
+          "textBytes": 270417,
+          "takeCallSites": 528,
+          "functionCount": 959,
+          "selectedFunctions": [
+            {
+              "owner": "$direct.Map.ins.go",
+              "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_105_110_115_46_103_111_",
+              "bytes": 38488,
+              "instructions": 8320,
+              "instructionsThroughFirstConditionalBranch": 26,
+              "rbpRspMemoryOperandInstructions": 1962,
+              "stackSubtracts": [
+                16104
+              ],
+              "staticTakeCallSites": 72
+            },
+            {
+              "owner": "$direct.Map.put.go",
+              "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_112_117_116_46_103_111_",
+              "bytes": 21253,
+              "instructions": 4587,
+              "instructionsThroughFirstConditionalBranch": 22,
+              "rbpRspMemoryOperandInstructions": 980,
+              "stackSubtracts": [
+                15176
+              ],
+              "staticTakeCallSites": 72
+            },
+            {
+              "owner": "$direct.Map.seek.go",
+              "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_115_101_101_107_46_103_111_",
+              "bytes": 23965,
+              "instructions": 5239,
+              "instructionsThroughFirstConditionalBranch": 44,
+              "rbpRspMemoryOperandInstructions": 957,
+              "stackSubtracts": [
+                15048
+              ],
+              "staticTakeCallSites": 76
+            },
+            {
+              "owner": "$direct.Map.pop.go",
+              "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_112_111_112_46_103_111_",
+              "bytes": 18486,
+              "instructions": 4049,
+              "instructionsThroughFirstConditionalBranch": 21,
+              "rbpRspMemoryOperandInstructions": 830,
+              "stackSubtracts": [
+                19144
+              ],
+              "staticTakeCallSites": 72
+            }
+          ],
+          "uniqueExpandedSites": 132,
+          "normalizedWithoutUniqueSha256": "ab5ac6db5a15da1c93ade5f95074272da9d7d1467fba7ccca3b8e93a31b724d8"
+        }
+      },
+      "alphaEquivalentAfterRemovingUnique": true
+    },
+    {
+      "case": "coverage-unicode-text-64",
+      "timingUs": {
+        "c": 40.04799760012,
+        "before": 105.15202702702703,
+        "candidate": 93.0
+      },
+      "candidateOverBefore": 0.884433734939759,
+      "artifacts": {
+        "first": {
+          "elf": {
+            "file": "selfhost/build/phase186/first-qbe-build01/coverage-unicode-text-64/machine/program",
+            "bytes": 188672,
+            "sha256": "a8f37f5d620b2818bad5d669dc34f0299f8427573767d4eb095f911d39b6619b"
+          },
+          "qbe": {
+            "file": "selfhost/build/phase186/first-qbe-emit01/coverage-unicode-text-64/program.ssa",
+            "bytes": 435258,
+            "sha256": "07de28c326eed1b4cbefdd2d32caaf93f01b08d86d6c8703272cee13c87d82c9"
+          },
+          "assembly": {
+            "file": "selfhost/build/phase186/first-qbe-build01/coverage-unicode-text-64/machine/program.s",
+            "bytes": 341450,
+            "sha256": "8f5b774b0393158ff5673896186cbef9bfcf220ea5e56b7fe27ce8264a4e5f87"
+          },
+          "textBytes": 90929,
+          "takeCallSites": 25,
+          "functionCount": 476,
+          "selectedFunctions": [],
+          "normalizedWithoutUniqueSha256": "9cf028f6e65b86c5bac657ca6585892e7a3166b00e1cb5cc09f79835e892b1b0"
+        },
+        "third": {
+          "elf": {
+            "file": "selfhost/build/phase186/third-qbe-build01/coverage-unicode-text-64/machine/program",
+            "bytes": 196960,
+            "sha256": "81af39aa899157ba138d48ce86f29509cb35dacdd7cb1ebc4f85670ad580c0a7"
+          },
+          "qbe": {
+            "file": "selfhost/build/phase186/third-qbe-emit01/coverage-unicode-text-64/program.ssa",
+            "bytes": 513869,
+            "sha256": "dc141166144e1a09287967ee49504be12d64f82dbf199b60fe634dcd2f1b3601"
+          },
+          "assembly": {
+            "file": "selfhost/build/phase186/third-qbe-build01/coverage-unicode-text-64/machine/program.s",
+            "bytes": 376404,
+            "sha256": "74bee62a0e052148c9387bfb8d7c8dd16de0e4ca69ad7986d4992ca2b4ba7782"
+          },
+          "textBytes": 98225,
+          "takeCallSites": 100,
+          "functionCount": 477,
+          "selectedFunctions": [],
+          "uniqueExpandedSites": 25,
+          "normalizedWithoutUniqueSha256": "7796291046d85aaeb68d19aace45517d183870b865e610d3f2d9f602e5c76889"
+        }
+      },
+      "alphaEquivalentAfterRemovingUnique": false
+    },
+    {
+      "case": "coverage-record-aggregation-256",
+      "timingUs": {
+        "c": 392.80359820089956,
+        "before": 895.1048951048951,
+        "candidate": 1020.4918032786885
+      },
+      "candidateOverBefore": 1.1400806864754098,
+      "artifacts": {
+        "first": {
+          "elf": {
+            "file": "selfhost/build/phase186/first-qbe-build01/coverage-record-aggregation-256/machine/program",
+            "bytes": 322192,
+            "sha256": "20ebf449c73f15ca4e282ef6689b4719656137acb9274a992b1b6853a023b791"
+          },
+          "qbe": {
+            "file": "selfhost/build/phase186/first-qbe-emit01/coverage-record-aggregation-256/program.ssa",
+            "bytes": 1285552,
+            "sha256": "895a92f88ed58a2dc270adbbfc47777db59a3f7419cb1589a4ad6f8121a2df42"
+          },
+          "assembly": {
+            "file": "selfhost/build/phase186/first-qbe-build01/coverage-record-aggregation-256/machine/program.s",
+            "bytes": 960536,
+            "sha256": "c77b3158894f402b89e9eda22d1735e1c76cc8af7023d5b178904ba09c143695"
+          },
+          "textBytes": 192145,
+          "takeCallSites": 132,
+          "functionCount": 945,
+          "selectedFunctions": [],
+          "normalizedWithoutUniqueSha256": "c205bbda85eb39fadfab3913ea8066767722d9098bef1107f7aae100a71baded"
+        },
+        "third": {
+          "elf": {
+            "file": "selfhost/build/phase186/third-qbe-build01/coverage-record-aggregation-256/machine/program",
+            "bytes": 371448,
+            "sha256": "c04856f6be29bfc84c52c34818a4a6e8fa6ac391c47c43ac4a20801489fd12f9"
+          },
+          "qbe": {
+            "file": "selfhost/build/phase186/third-qbe-emit01/coverage-record-aggregation-256/program.ssa",
+            "bytes": 1707111,
+            "sha256": "4bfa59df7346ea14c34d005dc5ed2cb7e3bf60ce130572ec987ac74df4700f2d"
+          },
+          "assembly": {
+            "file": "selfhost/build/phase186/third-qbe-build01/coverage-record-aggregation-256/machine/program.s",
+            "bytes": 1186034,
+            "sha256": "e33f57c785318f4bbd95a6716848c00ac83d1f604cfe54c400173fa1972e7333"
+          },
+          "textBytes": 244017,
+          "takeCallSites": 528,
+          "functionCount": 946,
+          "selectedFunctions": [],
+          "uniqueExpandedSites": 132,
+          "normalizedWithoutUniqueSha256": "6cce2e6e6f4e1e8a204fc64e5c1d37892bc56d527300ccb219f3303bc4c9991c"
+        }
+      },
+      "alphaEquivalentAfterRemovingUnique": false
+    },
+    {
+      "case": "complete-generic-row32",
+      "timingUs": {
+        "c": 79.75,
+        "before": 275.0,
+        "candidate": 244.85798237022527
+      },
+      "candidateOverBefore": 0.8903926631644554,
+      "artifacts": {
+        "first": {
+          "elf": {
+            "file": "selfhost/build/phase186/first-qbe-build01/complete-generic-row32/machine/program",
+            "bytes": 207704,
+            "sha256": "885a4c8e8f896c4ce0b061195beb663c8f4a9e8db45bb4994e64bf6e932bdefe"
+          },
+          "qbe": {
+            "file": "selfhost/build/phase186/first-qbe-emit01/complete-generic-row32/program.ssa",
+            "bytes": 848477,
+            "sha256": "59a1f9f5a8e882c4eb625aadf161a4cb332c12a37129fa14daf0a66b178a4dbe"
+          },
+          "assembly": {
+            "file": "selfhost/build/phase186/first-qbe-build01/complete-generic-row32/machine/program.s",
+            "bytes": 412291,
+            "sha256": "06939e652e0fe946bb6cb77d1b8afbea0b7ad22ebe23187ecab576a61d0c8280"
+          },
+          "textBytes": 101937,
+          "takeCallSites": 30,
+          "functionCount": 493,
+          "selectedFunctions": [],
+          "normalizedWithoutUniqueSha256": "7239f41ce57e873d4d69d1bfcb609329df36dd7a629e7c2185684484d602c873"
+        },
+        "third": {
+          "elf": {
+            "file": "selfhost/build/phase186/third-qbe-build01/complete-generic-row32/machine/program",
+            "bytes": 216016,
+            "sha256": "5b239a3d6c32a851ba740e360a6f22a9b50accf86ea319a7e3d3878574ace17c"
+          },
+          "qbe": {
+            "file": "selfhost/build/phase186/third-qbe-emit01/complete-generic-row32/program.ssa",
+            "bytes": 943977,
+            "sha256": "73b454cbda7274ed0fb41994414d2c932540399d04b956e3a2b8f1347a333e95"
+          },
+          "assembly": {
+            "file": "selfhost/build/phase186/third-qbe-build01/complete-generic-row32/machine/program.s",
+            "bytes": 455078,
+            "sha256": "1afbf37c2a21a90d32fb286cddbe18989af0fb72650b36a38c5815d4be9e5105"
+          },
+          "textBytes": 110961,
+          "takeCallSites": 120,
+          "functionCount": 494,
+          "selectedFunctions": [],
+          "uniqueExpandedSites": 30,
+          "normalizedWithoutUniqueSha256": "f8db654238519bef08bc3759ed0ffc8ee0af33a55f99ff3c0f58ee51181dbc44"
+        }
+      },
+      "alphaEquivalentAfterRemovingUnique": false
+    }
+  ]
+}

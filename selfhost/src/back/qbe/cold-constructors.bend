@@ -94,10 +94,7 @@ def p185cc_expand(+stmt: N111Stmt, +ids: N111Ids, +site: U32) -> P114TExpansion:
 
 @unsafe
 def p185cc_previous(+stmt: N111Stmt, +ids: N111Ids, +code: P111QCode) -> P111QCode:
-  match code:
-    case P111QCode{chunks,next,terminal,error}:
-      nt_choose(P111QCode,Bool.not(terminal) && String.is_empty(error),
-        u => p128bf_selected(stmt,p128bf_match(stmt,ids,next),ids,code),u => p128bf_previous(stmt,ids,code))
+  p186ch_stmt(stmt,ids,code)
 
 @unsafe
 def p185cc_join(+label: U32, no: List<&2,N111Stmt>, ids: N111Ids, yes: P111QCode) -> P111QCode:

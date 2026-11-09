@@ -54,7 +54,7 @@ Phase183 selector remains unchanged.
 | Task | Maintained entry |
 | --- | --- |
 | Assemble, request, build and bootstrap | [`selfhost/tools/build/`](selfhost/tools/build/) and [workflow](docs/self_hosted/workflow.md) |
-| Bend-written AMD64 SysV assembly target | [Build, bootstrap, benchmark and profile](docs/self_hosted/ASSEMBLY.md) · [Emitter architecture](docs/self_hosted/x86-backend.md) |
+| Bend-written AMD64 SysV assembly target | [Build, bootstrap, benchmark and profile](docs/self_hosted/ASSEMBLY.md) · [Emitter architecture](docs/self_hosted/x86-backend.md) · [Optional ELF object emission](docs/self_hosted/x86-objects.md) |
 | Compiler latency and JS/C/QBE/x86 program speed | [`selfhost/tools/bench/`](selfhost/tools/bench/README.md), with explicit host/stage/target and20/60/300/600-second budgets |
 | Optional optimization cost and development-policy experiments | [Bend QBE policy switches](docs/self_hosted/optimization-policies.md) |
 | CPU, allocation, generated code and native stage analysis | [Profiling guide](docs/self_hosted/PROFILING.md), [`tools/profiler/`](selfhost/tools/profiler/README.md) and [benchmark diagnostics](selfhost/tools/bench/README.md#profiles-and-generated-code-inspection) |

@@ -275,3 +275,10 @@ counts. Use an explicit `--set fast --budget 300 --rounds 3` for this target;
 budget presets are ceilings, not a promise that every selected target finishes.
 One upstream batch remains below the resolution threshold, so this screen has
 no admitted set-wide geometric mean. See the [measured report](../../implementation/phase183/README.md).
+
+## Optional object output
+
+The experimental `--target x86 --emit object` option writes ELF64 using Bend,
+skipping the external assembler while retaining the existing selector and
+linker. See [object emission](x86-objects.md) for supported scope, limits,
+qualification and the distinction from eliminating assembly-text construction.

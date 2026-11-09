@@ -1,3 +1,25 @@
+# Phase187 — optional Bend x86 ELF output, 2026-11-09
+
+[Report](../implementation/phase187/README.md) · [Design](../design/phase187/README.md) ·
+[Usage](../docs/self_hosted/x86-objects.md) · [Evidence](../implementation/phase187/evidence.json).
+
+`--target x86 --emit object` uses a Bend encoder and ELF writer, sharing the
+existing x86 selector. Native self-compilation succeeded; the resulting N2
+passed all 45 programs in both formats, and all 45 assembly products match
+Phase186 exactly. Two balanced runtime rounds: object/assembly 0.994× across 44
+eligible points (short screen; near parity). Same-source full build 315.348s
+versus 199.112s: **1.584× slower**, not a speed win. Paired 45-program build GM 1.509×.
+The initial route still formats/parses assembly Strings and materializes object
+sections. It is experimental; default assembly and installed Phase183 remain.
+
+Priorities: typed machine fragments directly from selection; streamed section
+buffers and tail-recursive byte checks; resolve local branch fixups before ELF
+serialization. Preserve negative evidence: the extra whole-program upstream-JS
+encoder diagnostic hit its host stack in x187_elf_bytes; native full builds pass.
+No full emitted-compiler fixed point or installed promotion is claimed.
+
+---
+
 # Phase186 — native program-runtime gains, 2026-11-09
 
 [Report](../implementation/phase186/README.md) · [Design](../design/phase186/README.md) ·

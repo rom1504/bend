@@ -1,0 +1,1256 @@
+{
+  "kind": "phase187-summary",
+  "complete": true,
+  "implementationCommit": "e8438ce",
+  "receipts": {
+    "source-full05": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/source-full05/report.json",
+      "bytes": 3787,
+      "sha256": "5957cedd6e30f3bf5043dc01e2e03c0aaddb05b5200e74c1db1cde0863d46700"
+    },
+    "api12": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/api12/report.json",
+      "bytes": 5105,
+      "sha256": "b65dcd4ea1b5db49c99465750d0ccf7ae6650107dcee3678bc323534d262c8bb"
+    },
+    "object-controls12": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/object-controls12/report.json",
+      "bytes": 52235,
+      "sha256": "a1315eedd10a981b8dd61cc6d33a7225798732df401bd14a7af0d561c483ab8f"
+    },
+    "elf-controls09": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/elf-controls09/report.json",
+      "bytes": 45519,
+      "sha256": "c73f924b27d83620f0a5f1054445942a0bcb8ee98e4c5da111ba6aade679b1ea"
+    },
+    "native-image05": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native-image05/report.json",
+      "bytes": 18472,
+      "sha256": "2ca3b48fcace8d44dc220e170087bb3fbe4737e387f6f56e18ec3a5d200945f2"
+    },
+    "native-smoke04": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native-smoke04/report.json",
+      "bytes": 17304,
+      "sha256": "8fc8fca8ef62bb516296917343ca0b88b8ea16e36afedb617e141fa155578590"
+    },
+    "native-ten04": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native-ten04/report.json",
+      "bytes": 50864,
+      "sha256": "12320e6adcd1a8e0a8a12e9e1b1a4fd6699c732c9bc4ce8c31c129faaf6994e9"
+    },
+    "native-self-object05": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native-self-object05/report.json",
+      "bytes": 17225,
+      "sha256": "6548f074538f383ca4328e2a296f3c45bf5ae7cb7e6471ad0ec6cf53468b1fc5"
+    },
+    "native-self-assembly05": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native-self-assembly05/report.json",
+      "bytes": 18069,
+      "sha256": "c417a097b9f450a2bd0d38c637840f359214166800e5b5685a51f3408ce1ad6a"
+    },
+    "native45-final05": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/report.json",
+      "bytes": 173972,
+      "sha256": "50d400b1988c0e1ab6e0d691dc8374e522ce943b5e7e7499e3d9141b76c49b12"
+    },
+    "runtime-final05": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/runtime-final05/report.json",
+      "bytes": 957097,
+      "sha256": "29857f32e17b4e8c3a1eee8b13c1540dffe8bbf3be8791c1bcd1cbcf07009080"
+    }
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/source05/compiler.bend",
+    "bytes": 1652868,
+    "sha256": "165c254d4fb85c3debdee2444c23eb135ac6979d16bad4ec2aeaea50809a2b28"
+  },
+  "scope": "Bend object emission option, full native self-build and finite native45 correctness; two-round runtime screen, single paired full build, no full self-reproduction or installed promotion.",
+  "sourceChecks": {
+    "checked": true,
+    "holes": 0,
+    "kernelProof": false
+  },
+  "controls": {
+    "parser": 38,
+    "instruction": 106,
+    "assemblerRefusals": 8,
+    "elf": 27,
+    "independentMachineObservationsPerRoute": 926,
+    "elfMachineObservationsPerRoute": 27
+  },
+  "native45": {
+    "correctObject": 45,
+    "correctAssembly": 45,
+    "assemblyByteIdenticalPhase186": 45,
+    "sameProducer": true,
+    "buildGeomean": 1.5093911277796939,
+    "objectSecondsTotal": 169.06190430372953,
+    "assemblySecondsTotal": 108.57989764446393,
+    "rows": [
+      {
+        "id": "mandelbrot",
+        "objectSeconds": 4.013624948915094,
+        "assemblySeconds": 2.8559450930915773,
+        "objectOverAssembly": 1.405357882623129,
+        "objectBytes": 243096,
+        "assemblyObjectBytes": 154416,
+        "objectBinaryBytes": 307760,
+        "assemblyBinaryBytes": 231888,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/mandelbrot/object/machine/report.json",
+            "bytes": 16464,
+            "sha256": "ae46f7aabfd92ce3bb94493929d6dda56efdd60ff97ad8ca6033088e301efef1"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/mandelbrot/reference/machine/report.json",
+            "bytes": 17497,
+            "sha256": "480ceb604fde05890d0af77a5bd042c7892905795aa198be947be2886162a874"
+          }
+        }
+      },
+      {
+        "id": "editdist",
+        "objectSeconds": 3.6887304969131947,
+        "assemblySeconds": 2.5972463111393154,
+        "objectOverAssembly": 1.4202466978555783,
+        "objectBytes": 239136,
+        "assemblyObjectBytes": 150128,
+        "objectBinaryBytes": 305264,
+        "assemblyBinaryBytes": 229424,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/editdist/object/machine/report.json",
+            "bytes": 16434,
+            "sha256": "705c3963d5395e90061e74060ed87505f33a72bbf1d88668ec93155586da548e"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/editdist/reference/machine/report.json",
+            "bytes": 17420,
+            "sha256": "1d2dad5637beb1cf16f03f405a2b3787b21d3ace7f283e877ce8c408a58880ca"
+          }
+        }
+      },
+      {
+        "id": "tree-bitonic",
+        "objectSeconds": 3.029965465888381,
+        "assemblySeconds": 1.877132374793291,
+        "objectOverAssembly": 1.6141458676946208,
+        "objectBytes": 234328,
+        "assemblyObjectBytes": 151424,
+        "objectBinaryBytes": 296736,
+        "assemblyBinaryBytes": 228776,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/tree-bitonic/object/machine/report.json",
+            "bytes": 16484,
+            "sha256": "c595f53972af992d951546db099dc90c7bb4842854b878361678b12ae2401ff3"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/tree-bitonic/reference/machine/report.json",
+            "bytes": 17509,
+            "sha256": "4f52ccf11069c7a14688319e18bffaf6b3db273fe6c03b7e59aeac5863004c37"
+          }
+        }
+      },
+      {
+        "id": "lexer",
+        "objectSeconds": 3.413173846900463,
+        "assemblySeconds": 2.3157897437922657,
+        "objectOverAssembly": 1.4738703528892718,
+        "objectBytes": 246496,
+        "assemblyObjectBytes": 151568,
+        "objectBinaryBytes": 309184,
+        "assemblyBinaryBytes": 232472,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/lexer/object/machine/report.json",
+            "bytes": 16372,
+            "sha256": "c97927c965c1f086f10199423b64fd81f043ae2194fea43d5c1889dcd4e7fd1b"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/lexer/reference/machine/report.json",
+            "bytes": 17376,
+            "sha256": "616b6b3c14f8a0d34dbf0f2e29916b25349fe891b7e9c88169ca14a407c416b9"
+          }
+        }
+      },
+      {
+        "id": "symreg",
+        "objectSeconds": 3.2487382576800883,
+        "assemblySeconds": 1.9957212298177183,
+        "objectOverAssembly": 1.6278517305629985,
+        "objectBytes": 266760,
+        "assemblyObjectBytes": 173544,
+        "objectBinaryBytes": 325984,
+        "assemblyBinaryBytes": 245784,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/symreg/object/machine/report.json",
+            "bytes": 16414,
+            "sha256": "d0530d89d9b6d94988f9243f5f55422792f0a4907b9b0fa3254fd14bd2dc0e42"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/symreg/reference/machine/report.json",
+            "bytes": 17401,
+            "sha256": "ad60f8e9a7a34da9fcac098ecccafe6fde1af4fd17bf79eb4f17e84c310e9d2e"
+          }
+        }
+      },
+      {
+        "id": "test-morning-program",
+        "objectSeconds": 7.437595455907285,
+        "assemblySeconds": 4.095994330942631,
+        "objectOverAssembly": 1.8158217162853436,
+        "objectBytes": 677136,
+        "assemblyObjectBytes": 459600,
+        "objectBinaryBytes": 663368,
+        "assemblyBinaryBytes": 479088,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/test-morning-program/object/machine/report.json",
+            "bytes": 16610,
+            "sha256": "9b18aa55bdd750c127aafb1abdb4d394ca398a7d8d5ead86b9a2f2aada82ca5a"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/test-morning-program/reference/machine/report.json",
+            "bytes": 17693,
+            "sha256": "de808a0ab4ec5620134cfe2621d2be6e5128172f6fd2359cdd1f46589e038fa1"
+          }
+        }
+      },
+      {
+        "id": "test-evening-program",
+        "objectSeconds": 8.021072850562632,
+        "assemblySeconds": 4.3650840278714895,
+        "objectOverAssembly": 1.8375529083397468,
+        "objectBytes": 732888,
+        "assemblyObjectBytes": 497312,
+        "objectBinaryBytes": 709840,
+        "assemblyBinaryBytes": 506928,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/test-evening-program/object/machine/report.json",
+            "bytes": 16622,
+            "sha256": "3b58cae4230fde07bd5b26b2a45485fceffce89570247fa91b6a1932dab47616"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/test-evening-program/reference/machine/report.json",
+            "bytes": 17698,
+            "sha256": "82c6c86c3f8c354a6a1bdde253eebce4a156a27cf3d82267e25f4c678d7111f8"
+          }
+        }
+      },
+      {
+        "id": "test-rle-roundtrip",
+        "objectSeconds": 2.577961890026927,
+        "assemblySeconds": 1.7050295020453632,
+        "objectOverAssembly": 1.5119749464360523,
+        "objectBytes": 195264,
+        "assemblyObjectBytes": 127272,
+        "objectBinaryBytes": 265232,
+        "assemblyBinaryBytes": 209328,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/test-rle-roundtrip/object/machine/report.json",
+            "bytes": 16595,
+            "sha256": "b2de96f3de9c489fcf1fc621bd221535f461683f08a8f62451fa74ef62554a54"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/test-rle-roundtrip/reference/machine/report.json",
+            "bytes": 17668,
+            "sha256": "bc5180dee8cc2b54c3908c384cee72dbe2370757747a23136bb3de83a2a76a8f"
+          }
+        }
+      },
+      {
+        "id": "test-map-set-ops",
+        "objectSeconds": 10.137760579120368,
+        "assemblySeconds": 5.359900264069438,
+        "objectOverAssembly": 1.8914084366606103,
+        "objectBytes": 945544,
+        "assemblyObjectBytes": 630504,
+        "objectBinaryBytes": 887184,
+        "assemblyBinaryBytes": 618952,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/test-map-set-ops/object/machine/report.json",
+            "bytes": 16555,
+            "sha256": "6495406aedfc81fe311f2782eeabf43a27ed9fe478a498b2280c9dc7c3e15e4b"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/test-map-set-ops/reference/machine/report.json",
+            "bytes": 17613,
+            "sha256": "e7e18cd51b793234e22aaf3e893d4e19361a9c11fb6367132d6937fdeb78f882"
+          }
+        }
+      },
+      {
+        "id": "raytrace",
+        "objectSeconds": 5.238036694936454,
+        "assemblySeconds": 3.8290639529004693,
+        "objectOverAssembly": 1.3679679314232152,
+        "objectBytes": 274776,
+        "assemblyObjectBytes": 188920,
+        "objectBinaryBytes": 337840,
+        "assemblyBinaryBytes": 268032,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/raytrace/object/machine/report.json",
+            "bytes": 16422,
+            "sha256": "0dbe611e07d3261e408b96251ba8fb1e2ee2980a03f3784bacb2df57197be2b5"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/raytrace/reference/machine/report.json",
+            "bytes": 17436,
+            "sha256": "e743815895464413408cd41281c7b1532bf41feca7d7641f68f6b26380c015c1"
+          }
+        }
+      },
+      {
+        "id": "local-pair",
+        "objectSeconds": 3.6467919209972024,
+        "assemblySeconds": 2.6069322512485087,
+        "objectOverAssembly": 1.398882506152849,
+        "objectBytes": 222400,
+        "assemblyObjectBytes": 140288,
+        "objectBinaryBytes": 289336,
+        "assemblyBinaryBytes": 223160,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/local-pair/object/machine/report.json",
+            "bytes": 16455,
+            "sha256": "54e37cb580786cb560790875f578c711f66f580975c81429dbeac809c25d033f"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/local-pair/reference/machine/report.json",
+            "bytes": 17483,
+            "sha256": "313fe904b059685a0db7150734b9cfd8cb9147eaffe33f45ed08f3005b1d8d61"
+          }
+        }
+      },
+      {
+        "id": "local-fold",
+        "objectSeconds": 2.30833450704813,
+        "assemblySeconds": 1.558432555757463,
+        "objectOverAssembly": 1.481189865111733,
+        "objectBytes": 160592,
+        "assemblyObjectBytes": 105896,
+        "objectBinaryBytes": 237824,
+        "assemblyBinaryBytes": 188632,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/local-fold/object/machine/report.json",
+            "bytes": 16451,
+            "sha256": "a9b89976e2bcd247261e0d0eb65c9a929b7e6e901045b6584cfb019cb77c5194"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/local-fold/reference/machine/report.json",
+            "bytes": 17485,
+            "sha256": "8e17647b114bb7755bbd1eb90ec10addbc2bdc676e4e78680a831967c56f70a7"
+          }
+        }
+      },
+      {
+        "id": "scalar-region-0",
+        "objectSeconds": 2.358960368204862,
+        "assemblySeconds": 1.659290370065719,
+        "objectOverAssembly": 1.4216682087484371,
+        "objectBytes": 157728,
+        "assemblyObjectBytes": 102456,
+        "objectBinaryBytes": 233424,
+        "assemblyBinaryBytes": 188104,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/scalar-region-0/object/machine/report.json",
+            "bytes": 16544,
+            "sha256": "2f5a1e627f209ca3474d938d77197412a1e17b1ecdd5d84ba1e8f75094cd000f"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/scalar-region-0/reference/machine/report.json",
+            "bytes": 17573,
+            "sha256": "82ca70ec43ef26a99bf832185c8b681e9918e422cab09917b146817fdcc2aa41"
+          }
+        }
+      },
+      {
+        "id": "scalar-region-8192",
+        "objectSeconds": 2.3435601061210036,
+        "assemblySeconds": 1.663439021911472,
+        "objectOverAssembly": 1.4088644520482623,
+        "objectBytes": 157728,
+        "assemblyObjectBytes": 102456,
+        "objectBinaryBytes": 233432,
+        "assemblyBinaryBytes": 188104,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/scalar-region-8192/object/machine/report.json",
+            "bytes": 16574,
+            "sha256": "c861d88817f90983e392673c87a09ea5d114df8a9dca96dba76429f07a020a0b"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/scalar-region-8192/reference/machine/report.json",
+            "bytes": 17668,
+            "sha256": "511cbcbefe88e5ad1c65600c3726d87d2f75a76377cee82ba633e2d65b392e62"
+          }
+        }
+      },
+      {
+        "id": "complete-generic-row32",
+        "objectSeconds": 3.920030875131488,
+        "assemblySeconds": 2.715554981958121,
+        "objectOverAssembly": 1.443546862860736,
+        "objectBytes": 274208,
+        "assemblyObjectBytes": 177496,
+        "objectBinaryBytes": 336440,
+        "assemblyBinaryBytes": 253896,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/complete-generic-row32/object/machine/report.json",
+            "bytes": 16662,
+            "sha256": "37fe4b1ec82bc4cbeed573497a3698fc0b062feda0b6140a5bc51ac0b2dec990"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/complete-generic-row32/reference/machine/report.json",
+            "bytes": 17719,
+            "sha256": "40fd6f25eaf5081a6a1cb8ce98b30d2ee8bc57adc2e4a4be8bdbfc926c12095a"
+          }
+        }
+      },
+      {
+        "id": "variation-editdist-0-17",
+        "objectSeconds": 3.703366675414145,
+        "assemblySeconds": 2.638994392938912,
+        "objectOverAssembly": 1.4033249503383358,
+        "objectBytes": 239136,
+        "assemblyObjectBytes": 150128,
+        "objectBinaryBytes": 305280,
+        "assemblyBinaryBytes": 229440,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/variation-editdist-0-17/object/machine/report.json",
+            "bytes": 16657,
+            "sha256": "247fbaa0b6699142312951e02f135f7f1deac5964080bf26526ac77797f50c79"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/variation-editdist-0-17/reference/machine/report.json",
+            "bytes": 17770,
+            "sha256": "2d07e58001ea23dbd072f3c46e2af1f7278ecd93b1984d5ba9713ef74cde00a6"
+          }
+        }
+      },
+      {
+        "id": "variation-editdist-3-123",
+        "objectSeconds": 3.699586332309991,
+        "assemblySeconds": 2.6023279540240765,
+        "objectOverAssembly": 1.4216449262627269,
+        "objectBytes": 239136,
+        "assemblyObjectBytes": 150128,
+        "objectBinaryBytes": 305280,
+        "assemblyBinaryBytes": 229440,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/variation-editdist-3-123/object/machine/report.json",
+            "bytes": 16690,
+            "sha256": "36b10e33df4fafe9cbef1aad223d4846fd178ed0d9f523d4754b68d84b7623a2"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/variation-editdist-3-123/reference/machine/report.json",
+            "bytes": 17785,
+            "sha256": "2edee315cc309b22dc3466f1f82a580d5e36b96ef7572c32bdcd7b24d4db06ff"
+          }
+        }
+      },
+      {
+        "id": "variation-lexer-6-17",
+        "objectSeconds": 3.4135581799782813,
+        "assemblySeconds": 2.270192523021251,
+        "objectOverAssembly": 1.5036425965474502,
+        "objectBytes": 246496,
+        "assemblyObjectBytes": 151568,
+        "objectBinaryBytes": 309200,
+        "assemblyBinaryBytes": 232480,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/variation-lexer-6-17/object/machine/report.json",
+            "bytes": 16613,
+            "sha256": "95870436acaa6d9aabf2a9ab63e01142bc262a8f3669d3bf5c8abdc6684fb937"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/variation-lexer-6-17/reference/machine/report.json",
+            "bytes": 17706,
+            "sha256": "cbb6f87af3e150dfa67f9ce4194d95c2e2c6b851905af37f0586552288a3181e"
+          }
+        }
+      },
+      {
+        "id": "variation-lexer-10-123",
+        "objectSeconds": 3.4307812340557575,
+        "assemblySeconds": 2.3127163336612284,
+        "objectOverAssembly": 1.4834422986171143,
+        "objectBytes": 246496,
+        "assemblyObjectBytes": 151568,
+        "objectBinaryBytes": 309200,
+        "assemblyBinaryBytes": 232488,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/variation-lexer-10-123/object/machine/report.json",
+            "bytes": 16671,
+            "sha256": "f33a7aaeb30dc62cd6cabf04b4d76bcc39ffde3693717ebf59b6dea49ceb7f26"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/variation-lexer-10-123/reference/machine/report.json",
+            "bytes": 17745,
+            "sha256": "60e6485e78719463d7220bcb73cf3f1cd70f9e130389d290ccacdbcc88143049"
+          }
+        }
+      },
+      {
+        "id": "variation-tree-bitonic-6-17",
+        "objectSeconds": 2.9718342698179185,
+        "assemblySeconds": 1.910800080280751,
+        "objectOverAssembly": 1.5552826800076707,
+        "objectBytes": 234328,
+        "assemblyObjectBytes": 151424,
+        "objectBinaryBytes": 296752,
+        "assemblyBinaryBytes": 228792,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/variation-tree-bitonic-6-17/object/machine/report.json",
+            "bytes": 16719,
+            "sha256": "32af9623437dda32806129cf5960822356fdadb0c716447658833cf5a114b858"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/variation-tree-bitonic-6-17/reference/machine/report.json",
+            "bytes": 17840,
+            "sha256": "1406b0bf5913eb51ec1431442bc357127962327a92439001eb0cbe7ecc37cde3"
+          }
+        }
+      },
+      {
+        "id": "variation-tree-bitonic-9-123",
+        "objectSeconds": 2.978198471944779,
+        "assemblySeconds": 1.908476219046861,
+        "objectOverAssembly": 1.5605111775677054,
+        "objectBytes": 234328,
+        "assemblyObjectBytes": 151424,
+        "objectBinaryBytes": 296752,
+        "assemblyBinaryBytes": 228792,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/variation-tree-bitonic-9-123/object/machine/report.json",
+            "bytes": 16746,
+            "sha256": "d2695ee0a5332713ca38fc58f69afdcc3becce930c87c680662a969219cb0cf0"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/variation-tree-bitonic-9-123/reference/machine/report.json",
+            "bytes": 17862,
+            "sha256": "e9d3c2ed53f48b8e275b276a84df3733886a7d283ae0691ee6d3b55ef77b0ba7"
+          }
+        }
+      },
+      {
+        "id": "variation-symreg-4-17",
+        "objectSeconds": 3.291836769785732,
+        "assemblySeconds": 2.0166080561466515,
+        "objectOverAssembly": 1.632363195094934,
+        "objectBytes": 266760,
+        "assemblyObjectBytes": 173544,
+        "objectBinaryBytes": 326000,
+        "assemblyBinaryBytes": 245800,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/variation-symreg-4-17/object/machine/report.json",
+            "bytes": 16627,
+            "sha256": "a954616ade12f68ecb57bdac757e13a6f99b889ae25769174f929a7f767fd358"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/variation-symreg-4-17/reference/machine/report.json",
+            "bytes": 17720,
+            "sha256": "77222dcd117b64b274411d6b352651d2c72ea08497ab0972dc976407b9b387f8"
+          }
+        }
+      },
+      {
+        "id": "variation-symreg-7-123",
+        "objectSeconds": 3.2898576110601425,
+        "assemblySeconds": 2.0278169279918075,
+        "objectOverAssembly": 1.6223642113088395,
+        "objectBytes": 266760,
+        "assemblyObjectBytes": 173544,
+        "objectBinaryBytes": 326000,
+        "assemblyBinaryBytes": 245800,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/variation-symreg-7-123/object/machine/report.json",
+            "bytes": 16656,
+            "sha256": "70568ca2253d0d5f17bce0213cdcab9414d635c159452671722bb6a9be798e54"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/variation-symreg-7-123/reference/machine/report.json",
+            "bytes": 17759,
+            "sha256": "46254a8675b46fb8b92cf01e7ad9a1bd0cd886e9797b892312506997a6a029b8"
+          }
+        }
+      },
+      {
+        "id": "variation-local-fold-128-0",
+        "objectSeconds": 2.3104847711510956,
+        "assemblySeconds": 1.5731852687895298,
+        "objectOverAssembly": 1.4686666707277731,
+        "objectBytes": 160592,
+        "assemblyObjectBytes": 105896,
+        "objectBinaryBytes": 237840,
+        "assemblyBinaryBytes": 188648,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/variation-local-fold-128-0/object/machine/report.json",
+            "bytes": 16721,
+            "sha256": "8cd5c4263b74a7bbec381c5169401dfc314a869d2b33684f2f54600f8ddea744"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/variation-local-fold-128-0/reference/machine/report.json",
+            "bytes": 17819,
+            "sha256": "205dbc8f86279cfb31fd741a94c9873b49b43c539b9d1a56f8b88944e5dab034"
+          }
+        }
+      },
+      {
+        "id": "variation-local-fold-8192-123",
+        "objectSeconds": 2.297941596247256,
+        "assemblySeconds": 1.6612717639654875,
+        "objectOverAssembly": 1.3832424327504522,
+        "objectBytes": 160592,
+        "assemblyObjectBytes": 105896,
+        "objectBinaryBytes": 237848,
+        "assemblyBinaryBytes": 188656,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/variation-local-fold-8192-123/object/machine/report.json",
+            "bytes": 16750,
+            "sha256": "c1a459c255754a89c87da228e2bdcea878c40ab7568e2fbd62cde5c77634ec89"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/variation-local-fold-8192-123/reference/machine/report.json",
+            "bytes": 17876,
+            "sha256": "9682920ec07dd6fa3730f98de2f804db89f14b572fe818a433abb404543c606b"
+          }
+        }
+      },
+      {
+        "id": "variation-mandelbrot-grid-4-7",
+        "objectSeconds": 2.519804412033409,
+        "assemblySeconds": 1.8134290827438235,
+        "objectOverAssembly": 1.3895246502944567,
+        "objectBytes": 162304,
+        "assemblyObjectBytes": 105256,
+        "objectBinaryBytes": 239352,
+        "assemblyBinaryBytes": 188496,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/variation-mandelbrot-grid-4-7/object/machine/report.json",
+            "bytes": 16750,
+            "sha256": "76c80515e4321bb5b162252f10d6b421af29a964ccdbbd2465d49afa4b80a5be"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/variation-mandelbrot-grid-4-7/reference/machine/report.json",
+            "bytes": 17897,
+            "sha256": "c252bb894b206da976d47e0caa1105b730697bb471cb450dd83ec0d25902921d"
+          }
+        }
+      },
+      {
+        "id": "variation-mandelbrot-grid-5-31",
+        "objectSeconds": 2.516809321939945,
+        "assemblySeconds": 1.7959035141393542,
+        "objectOverAssembly": 1.4014167810936484,
+        "objectBytes": 162304,
+        "assemblyObjectBytes": 105256,
+        "objectBinaryBytes": 239352,
+        "assemblyBinaryBytes": 188504,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/variation-mandelbrot-grid-5-31/object/machine/report.json",
+            "bytes": 16766,
+            "sha256": "d737cd74e158e7f95609ed012a244bf80b6fa1a6524cf172a2b76bc3459d1bff"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/variation-mandelbrot-grid-5-31/reference/machine/report.json",
+            "bytes": 17928,
+            "sha256": "aedb29948c2ee891c2dc7b776a38aea66222ae22a6c3589927f4aeb5c045cc34"
+          }
+        }
+      },
+      {
+        "id": "variation-ray-active-64-2440",
+        "objectSeconds": 4.864789108745754,
+        "assemblySeconds": 3.6583359562791884,
+        "objectOverAssembly": 1.329781946460057,
+        "objectBytes": 234256,
+        "assemblyObjectBytes": 162024,
+        "objectBinaryBytes": 306320,
+        "assemblyBinaryBytes": 243472,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/variation-ray-active-64-2440/object/machine/report.json",
+            "bytes": 16764,
+            "sha256": "7a5dd4ed533adc379495176e97705ba4911ef88c4b4733ffaf8174df97f29b7c"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/variation-ray-active-64-2440/reference/machine/report.json",
+            "bytes": 17871,
+            "sha256": "0ceb8180a9c08f10e011ddaab1485919b41ba4cbaf9a222eb3a9d2bf6ca58752"
+          }
+        }
+      },
+      {
+        "id": "variation-ray-active-256-2240",
+        "objectSeconds": 4.886914425995201,
+        "assemblySeconds": 3.6718585030175745,
+        "objectOverAssembly": 1.3309103338211643,
+        "objectBytes": 234264,
+        "assemblyObjectBytes": 162024,
+        "objectBinaryBytes": 306320,
+        "assemblyBinaryBytes": 243472,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/variation-ray-active-256-2240/object/machine/report.json",
+            "bytes": 16766,
+            "sha256": "1aca34e89c99470fd36770f25b336b7ee5e700ec1068bcb721664a4e0957c111"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/variation-ray-active-256-2240/reference/machine/report.json",
+            "bytes": 17873,
+            "sha256": "fb554737bbec4378bee79854e0cc52befacaf314f247f815bff80b86a546ba2f"
+          }
+        }
+      },
+      {
+        "id": "coverage-closures-64",
+        "objectSeconds": 2.143360767979175,
+        "assemblySeconds": 1.7368859080597758,
+        "objectOverAssembly": 1.234025077889808,
+        "objectBytes": 149208,
+        "assemblyObjectBytes": 98744,
+        "objectBinaryBytes": 225464,
+        "assemblyBinaryBytes": 183800,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/coverage-closures-64/object/machine/report.json",
+            "bytes": 16626,
+            "sha256": "0d630b60151f33db1eebb08e937edba536986bd56cb6134c7882e7dcbace6b48"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/coverage-closures-64/reference/machine/report.json",
+            "bytes": 17710,
+            "sha256": "970bee467b4732297b9f6dce1b55401cd2f19f58f09cab26e099e6cb23e707bb"
+          }
+        }
+      },
+      {
+        "id": "coverage-closures-256",
+        "objectSeconds": 2.1365977777168155,
+        "assemblySeconds": 1.437671320978552,
+        "objectOverAssembly": 1.4861517695592192,
+        "objectBytes": 149208,
+        "assemblyObjectBytes": 98744,
+        "objectBinaryBytes": 225464,
+        "assemblyBinaryBytes": 183800,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/coverage-closures-256/object/machine/report.json",
+            "bytes": 16627,
+            "sha256": "82468b647b34c28b21ca97a8266daa1871622ce678510bb85b44a3d82913f820"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/coverage-closures-256/reference/machine/report.json",
+            "bytes": 17728,
+            "sha256": "295e4dbdcb85304ea59c610279f884b2d3db868358d108bf502d5cf411b354a1"
+          }
+        }
+      },
+      {
+        "id": "coverage-list-pipeline-128",
+        "objectSeconds": 2.234567661769688,
+        "assemblySeconds": 1.691993938293308,
+        "objectOverAssembly": 1.3206711981626051,
+        "objectBytes": 158032,
+        "assemblyObjectBytes": 103408,
+        "objectBinaryBytes": 233720,
+        "assemblyBinaryBytes": 188640,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/coverage-list-pipeline-128/object/machine/report.json",
+            "bytes": 16707,
+            "sha256": "f54e0fc6e1f717cb31bcaf1a7ce58465d2d0b2907a2a5412a2eaed5878989e8d"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/coverage-list-pipeline-128/reference/machine/report.json",
+            "bytes": 17805,
+            "sha256": "b937b8025332a31ce85d96e0ab80e6e1acf4b523f6a5cb7da5d6aa8be501216f"
+          }
+        }
+      },
+      {
+        "id": "coverage-list-pipeline-512",
+        "objectSeconds": 2.249696485232562,
+        "assemblySeconds": 1.5156227489933372,
+        "objectOverAssembly": 1.4843380298473283,
+        "objectBytes": 158032,
+        "assemblyObjectBytes": 103408,
+        "objectBinaryBytes": 233720,
+        "assemblyBinaryBytes": 188640,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/coverage-list-pipeline-512/object/machine/report.json",
+            "bytes": 16714,
+            "sha256": "666b9e18b39ef2f855a28d05ccc510e22d1683b54a6b347a6cc6d0859efb2708"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/coverage-list-pipeline-512/reference/machine/report.json",
+            "bytes": 17833,
+            "sha256": "669b81e779c29eff739de7cc75f284ee65a6f48b8a153e04b2d560d06da4fca4"
+          }
+        }
+      },
+      {
+        "id": "coverage-bst-32",
+        "objectSeconds": 2.4949735361151397,
+        "assemblySeconds": 1.7012526784092188,
+        "objectOverAssembly": 1.4665508350282812,
+        "objectBytes": 186368,
+        "assemblyObjectBytes": 122672,
+        "objectBinaryBytes": 260056,
+        "assemblyBinaryBytes": 203496,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/coverage-bst-32/object/machine/report.json",
+            "bytes": 16559,
+            "sha256": "a1769d9edf2b86775d7f434f301d831448062b90c1dfd354fbf9f21a2913ee8b"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/coverage-bst-32/reference/machine/report.json",
+            "bytes": 17589,
+            "sha256": "102b74b96dac65d3ced5a6989433eb8dee1ed43e9ce1668c6a0a03bdbbe04c5c"
+          }
+        }
+      },
+      {
+        "id": "coverage-bst-64",
+        "objectSeconds": 2.5134309618733823,
+        "assemblySeconds": 1.714019613340497,
+        "objectOverAssembly": 1.466395683171263,
+        "objectBytes": 186368,
+        "assemblyObjectBytes": 122672,
+        "objectBinaryBytes": 260056,
+        "assemblyBinaryBytes": 203496,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/coverage-bst-64/object/machine/report.json",
+            "bytes": 16538,
+            "sha256": "16b50c873566ecc52226cc2f1d6be4ab436a0c29e202db697a78d1624212a4dc"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/coverage-bst-64/reference/machine/report.json",
+            "bytes": 17591,
+            "sha256": "b042490c8f6050a215d4d33e16193b32a25ef81906284a714c1ae2c9b7fb183c"
+          }
+        }
+      },
+      {
+        "id": "coverage-unicode-text-16",
+        "objectSeconds": 2.6229036087170243,
+        "assemblySeconds": 1.714615828357637,
+        "objectOverAssembly": 1.529732529781555,
+        "objectBytes": 201248,
+        "assemblyObjectBytes": 132808,
+        "objectBinaryBytes": 269272,
+        "assemblyBinaryBytes": 212784,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/coverage-unicode-text-16/object/machine/report.json",
+            "bytes": 16673,
+            "sha256": "6d71b33124b9746ef6a8ea35411ac552b42c9587bcf4f5e2da0c93aaa8a4c714"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/coverage-unicode-text-16/reference/machine/report.json",
+            "bytes": 17775,
+            "sha256": "3bcab08b6acb3c66b2691eb8264674023b6c6152f87b71b2c76b6bbb93d4182e"
+          }
+        }
+      },
+      {
+        "id": "coverage-unicode-text-64",
+        "objectSeconds": 2.6685067173093557,
+        "assemblySeconds": 1.792353583034128,
+        "objectOverAssembly": 1.488828288440755,
+        "objectBytes": 210720,
+        "assemblyObjectBytes": 142280,
+        "objectBinaryBytes": 278744,
+        "assemblyBinaryBytes": 222256,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/coverage-unicode-text-64/object/machine/report.json",
+            "bytes": 16712,
+            "sha256": "b7f1e7595a81f0daec64ee7c554ca38f59b4fa6544a1e155e2dc6331a7463cc5"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/coverage-unicode-text-64/reference/machine/report.json",
+            "bytes": 17802,
+            "sha256": "001a1262d0753e68c8cf08ee2ec9f171fbb0ff13f41e8cffc9cfd13946bceb8a"
+          }
+        }
+      },
+      {
+        "id": "coverage-expression-32",
+        "objectSeconds": 2.3500682869926095,
+        "assemblySeconds": 1.5830899239517748,
+        "objectOverAssembly": 1.4844818676669178,
+        "objectBytes": 182392,
+        "assemblyObjectBytes": 119176,
+        "objectBinaryBytes": 255336,
+        "assemblyBinaryBytes": 199304,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/coverage-expression-32/object/machine/report.json",
+            "bytes": 16653,
+            "sha256": "f9fb26f398777b25be84b3a14985c04c55802534ba9b86a8e45977658b93513e"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/coverage-expression-32/reference/machine/report.json",
+            "bytes": 17727,
+            "sha256": "53a25dfaf000e2a67761e1965aa4e111a3c2ac25bd58c89af5d8ca131966a165"
+          }
+        }
+      },
+      {
+        "id": "coverage-expression-128",
+        "objectSeconds": 2.379918915219605,
+        "assemblySeconds": 1.5618828372098505,
+        "objectOverAssembly": 1.5237499628788387,
+        "objectBytes": 182392,
+        "assemblyObjectBytes": 119176,
+        "objectBinaryBytes": 255344,
+        "assemblyBinaryBytes": 199304,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/coverage-expression-128/object/machine/report.json",
+            "bytes": 16657,
+            "sha256": "ec87190cc1aecf8798af643f6e8a3b45632505459c1b8a084d0090333b6e6f3b"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/coverage-expression-128/reference/machine/report.json",
+            "bytes": 17750,
+            "sha256": "9a4d4e719d2b4b3fba563d436c1ee719ca05b16310daf90902b5abd19537dbb4"
+          }
+        }
+      },
+      {
+        "id": "coverage-map-churn-32",
+        "objectSeconds": 7.367613383103162,
+        "assemblySeconds": 4.04056451190263,
+        "objectOverAssembly": 1.823411892422399,
+        "objectBytes": 669120,
+        "assemblyObjectBytes": 449560,
+        "objectBinaryBytes": 659368,
+        "assemblyBinaryBytes": 469240,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/coverage-map-churn-32/object/machine/report.json",
+            "bytes": 16637,
+            "sha256": "57b40b483ee3b639461c9749aa2cec75de5e599e1ce9f94dc93b3d2ba5930542"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/coverage-map-churn-32/reference/machine/report.json",
+            "bytes": 17739,
+            "sha256": "383e2824e6001d7a6ba78f842e8e4e60067d5ec74ef69dfed3dc690284a0d1c4"
+          }
+        }
+      },
+      {
+        "id": "coverage-map-churn-128",
+        "objectSeconds": 7.462715226691216,
+        "assemblySeconds": 4.106442282907665,
+        "objectOverAssembly": 1.8173189131997398,
+        "objectBytes": 669120,
+        "assemblyObjectBytes": 449560,
+        "objectBinaryBytes": 659368,
+        "assemblyBinaryBytes": 469248,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/coverage-map-churn-128/object/machine/report.json",
+            "bytes": 16656,
+            "sha256": "14be8ecbb0db4704c6504dd7fc0aa589cf5c89ff85c0e0b53cca64d15d503d56"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/coverage-map-churn-128/reference/machine/report.json",
+            "bytes": 17765,
+            "sha256": "06f14a18b4cab5e18a09d3da52aa6d7380e7bcebd2e925c8e05a6a4ea31df70a"
+          }
+        }
+      },
+      {
+        "id": "coverage-numeric-recurrence-256",
+        "objectSeconds": 2.1349124256521463,
+        "assemblySeconds": 1.4720332226715982,
+        "objectOverAssembly": 1.4503153819976198,
+        "objectBytes": 150624,
+        "assemblyObjectBytes": 100008,
+        "objectBinaryBytes": 229608,
+        "assemblyBinaryBytes": 183736,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/coverage-numeric-recurrence-256/object/machine/report.json",
+            "bytes": 16785,
+            "sha256": "6c8ae9ddc15c00ba63dcf096ce742b6e020e9cd460c3e5f40f275d35e7e6252b"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/coverage-numeric-recurrence-256/reference/machine/report.json",
+            "bytes": 17928,
+            "sha256": "0ae1144e465f34a7315f72fd8b62ce923b1ab0db333b95c5f455b75dabc3f3f4"
+          }
+        }
+      },
+      {
+        "id": "coverage-numeric-recurrence-1024",
+        "objectSeconds": 2.1557753742672503,
+        "assemblySeconds": 1.5204825578257442,
+        "objectOverAssembly": 1.4178231530323904,
+        "objectBytes": 150616,
+        "assemblyObjectBytes": 100008,
+        "objectBinaryBytes": 229608,
+        "assemblyBinaryBytes": 183736,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/coverage-numeric-recurrence-1024/object/machine/report.json",
+            "bytes": 16829,
+            "sha256": "adf5c55c63fa6373a3f8c32bd772b8a73fcee3c7a13457d6ccdf37b80c8d9e3b"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/coverage-numeric-recurrence-1024/reference/machine/report.json",
+            "bytes": 17946,
+            "sha256": "d8de4b825f9ca8ac8c840cbfa98924a9876a8f2182e21df9dee29969a5f3ee19"
+          }
+        }
+      },
+      {
+        "id": "coverage-record-aggregation-64",
+        "objectSeconds": 7.35729988431558,
+        "assemblySeconds": 3.9599367710761726,
+        "objectOverAssembly": 1.8579336766319434,
+        "objectBytes": 661688,
+        "assemblyObjectBytes": 448888,
+        "objectBinaryBytes": 651168,
+        "assemblyBinaryBytes": 470736,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/coverage-record-aggregation-64/object/machine/report.json",
+            "bytes": 16781,
+            "sha256": "d738cd4b2f5ab5e9fe97127c3645c797bd7c38a1863dfe5fb925cfa4583362bf"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/coverage-record-aggregation-64/reference/machine/report.json",
+            "bytes": 17896,
+            "sha256": "30ff10b7b6a0208986ab786a218626060a772cf208e1235eacdd0a8c2610f104"
+          }
+        }
+      },
+      {
+        "id": "coverage-record-aggregation-256",
+        "objectSeconds": 7.229461845941842,
+        "assemblySeconds": 3.9685773300006986,
+        "objectOverAssembly": 1.8216759419780713,
+        "objectBytes": 661688,
+        "assemblyObjectBytes": 448888,
+        "objectBinaryBytes": 651168,
+        "assemblyBinaryBytes": 470736,
+        "assemblyExactPhase186": true,
+        "receipts": {
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/coverage-record-aggregation-256/object/machine/report.json",
+            "bytes": 16786,
+            "sha256": "c74080485648af41a25ce7c66203b675843a8e2a4fda770f4aa01fae1b10a89d"
+          },
+          "reference": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native45-final05/coverage-record-aggregation-256/reference/machine/report.json",
+            "bytes": 17942,
+            "sha256": "2203666a6bb643a1bf777e5fb5e01b633dda32cf85720bacdb2a3733ac201811"
+          }
+        }
+      }
+    ]
+  },
+  "fullBuild": {
+    "object": {
+      "seconds": 315.3478289647028,
+      "compilerSeconds": 314.14676820486784,
+      "assemblerSeconds": 0,
+      "linkSeconds": 0.41742965718731284,
+      "peakRssBytes": 2325749760,
+      "objectBytes": 46233520,
+      "binaryBytes": 39142352,
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/source05/compiler.bend",
+        "bytes": 1652868,
+        "sha256": "165c254d4fb85c3debdee2444c23eb135ac6979d16bad4ec2aeaea50809a2b28"
+      },
+      "guard": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native-self-object05-guard/process.json",
+        "bytes": 3394,
+        "sha256": "d449ffc394e39de61666c849dc9ae712424bf7c18fa8df50c12f15858621893f"
+      }
+    },
+    "assembly": {
+      "seconds": 199.1115162074566,
+      "compilerSeconds": 188.7041600588709,
+      "assemblerSeconds": 8.326804575044662,
+      "linkSeconds": 0.23683518869802356,
+      "peakRssBytes": 1716338688,
+      "objectBytes": 29649784,
+      "binaryBytes": 25025168,
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/source05/compiler.bend",
+        "bytes": 1652868,
+        "sha256": "165c254d4fb85c3debdee2444c23eb135ac6979d16bad4ec2aeaea50809a2b28"
+      },
+      "guard": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/native-self-assembly05-guard/process.json",
+        "bytes": 3372,
+        "sha256": "9f6b6e3a5a9b756199164e5337d2e614183459a03642b98108f859eb1fe96f29"
+      }
+    }
+  },
+  "fullBuildRatio": 1.5837749366346958,
+  "runtime": {
+    "aggregate": {
+      "complete": true,
+      "timedCases": 44,
+      "correctnessOnlyCases": 1,
+      "roles": {
+        "object": {
+          "geomean": 0.9939588081772631,
+          "equalSourceGeomean": 0.9967460639476752,
+          "sourceCount": 23,
+          "meanPositiveLogSlowdown": 0.006964814276453208,
+          "casesOver105": 1,
+          "families": {
+            "mandelbrot": 1.0040999723764454,
+            "editdist": 0.9093733999563149,
+            "tree-bitonic": 1.0069570881980356,
+            "lexer": 1.0154689807207464,
+            "symreg": 1.012363407176794,
+            "test-morning-program": 1.055754211672548,
+            "test-evening-program": 1.0148823395132271,
+            "test-rle-roundtrip": 0.9918375095624521,
+            "test-map-set-ops": 1.0239947671784468,
+            "raytrace": 0.9724559376574634,
+            "local-pair": 0.9374730841006501,
+            "local-fold": 0.9977131592245024,
+            "scalar-region-8192": 1.0047961630695443,
+            "complete-generic-row32": 1.0004644639120739,
+            "closures": 0.9852774774110911,
+            "list-pipeline": 1.0183798831970545,
+            "bst": 1.0044077977908827,
+            "unicode-text": 0.9778516794913709,
+            "expression": 0.9974395549976285,
+            "map-churn": 1.0124678622098193,
+            "numeric-recurrence": 0.9899989883451435,
+            "record-aggregation": 0.9987563023511641
+          }
+        }
+      }
+    },
+    "rounds": 2,
+    "positionBalanced": true,
+    "wallSeconds": 108.11762956297025,
+    "timedSamples": 180,
+    "pilotSamples": 270,
+    "worst": [
+      {
+        "id": "test-morning-program",
+        "ratio": 1.055754211672548
+      },
+      {
+        "id": "coverage-list-pipeline-128",
+        "ratio": 1.03710223880597
+      },
+      {
+        "id": "test-map-set-ops",
+        "ratio": 1.0239947671784468
+      },
+      {
+        "id": "symreg",
+        "ratio": 1.0224877450980392
+      },
+      {
+        "id": "lexer",
+        "ratio": 1.0221674876847289
+      }
+    ]
+  },
+  "canonicalQbe": {
+    "byteIdenticalPhase186": true,
+    "bytes": 3213774,
+    "sha256": "1e8a23ace83520a9d909cf20ce6168e5aa5a0f372d32991381dfc9bf0c544902"
+  },
+  "productionSelectionChanged": false,
+  "nativeFixedPointQualified": false,
+  "negativeCrossHostDiagnostic": {
+    "scope": "Optional checked upstream-JS execution of the Bend encoder on one complete program assembly",
+    "result": "Refused by upstream-generated JS RangeError in non-tail x187_elf_bytes traversal; not counted as a pass. Fully native object output passed all45 and the complete self-build.",
+    "guard": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/cross-host06-guard/process.json",
+      "bytes": 3133,
+      "sha256": "cca12faf975ea836ea633702518c6c10d1a14c904cb8f91387e10603681a7583"
+    },
+    "stderr": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase187/cross-host06-guard/stderr.log",
+      "bytes": 1508,
+      "sha256": "ae2765a4d6b27e37a82ae487051d44b755f09df88f42a6971bcd971b35570065"
+    }
+  }
+}

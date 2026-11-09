@@ -101,16 +101,16 @@ def x181_forward(+function: P113DFunction, +ready: KDef) -> X181Output:
       nt_choose(X181Output,x181_forward_selected(name,ready),
         u => nt_choose(X181Output,U32.is_eq(result,1) &&
             U32.is_eq(da(p111v_get(ready,name)),nt_count(NC_Binding,params)),
-          v => X181Output{[".text\n.type " ++ p112w_symbol(name) ++ ", @function\n" ++
-            p112w_symbol(name) ++ ":\njmp " ++ p113e_symbol(name) ++ "\n.size " ++
-            p112w_symbol(name) ++ ", .-" ++ p112w_symbol(name) ++ "\n"],""},
+          v => X181Output{[x188_many([X188One{PSection{1}},X188One{PType{p112w_symbol(name),2}},
+            x188_label(p112w_symbol(name)),x188_i1("jmp",X187Target{p113e_symbol(name)}),
+            X188One{PSize{p112w_symbol(name)}}])],""},
           v => X181Output{[],"x86 imported worker signature mismatch: " ++ name}),
         u => X181Output{[],""})
 
 @unsafe
 def x181_program_join(first: X181Output, second: X181Output) -> X181Output:
   match first second:
-    case X181Output{a,ae} X181Output{b,be}: X181Output{nt_append(String,a,b),p111_first(ae,be)}
+    case X181Output{a,ae} X181Output{b,be}: X181Output{nt_append(X188Seq,a,b),p111_first(ae,be)}
 
 # The shared cursor retains the original private bodies. Array templates were
 # previously selected only by the QBE renderer. Reuse the existing structured
@@ -204,23 +204,24 @@ def x181_program_public(+segment: N111Segment, context: P134Context, +available:
     case N111Segment{name,arity,result,incoming,flags,body} P134Context{ids,index,direct,ready,view,lookups,heap,mode}:
       x181_program_join(X181Output{[],x181_program_scalars(body,available)},x181_segment(segment,ids))
 
-def x181_program_datum(datum: P111QDatum) -> String:
-  match datum:
-    case P111QByte{value}: ".byte " ++ U32.show(value) ++ "\n"
-    case P111QWord{value}: ".long " ++ U32.show(value) ++ "\n"
-    case P111QLong{lo,hi}: ".quad " ++ p111q_u64(lo,hi) ++ "\n"
-    case P111QReloc{symbol,offset}: ".quad " ++ symbol ++ "+" ++ U32.show(offset) ++ "\n"
-    case P111QZeros{bytes}: ".zero " ++ U32.show(bytes) ++ "\n"
+def x181_program_datum(datum: P111QDatum) -> X188Seq:
+  X188One{PDatum{datum}}
+
+# Both output consumers share the complete typed table interface.
+def x188_table_head(+name: String, alignment: U32, exported: Bool) -> X188Seq:
+  x188_many([X188One{PSection{3}},X188One{PAlign{alignment}},
+    nt_choose(X188Seq,exported,u => X188One{PGlobal{name}},u => X188Empty{}),
+    X188One{PType{name,1}},x188_label(name)])
 
 @unsafe
-def x181_program_data_items(items: List<&2,P111QDatum>, +available: KDef, acc: List<&2,String>) -> X181Output:
+def x181_program_data_items(items: List<&2,P111QDatum>, +available: KDef, acc: List<&2,X188Seq>) -> X181Output:
   match items:
-    case Nil{}: X181Output{nt_reverse(String,acc,[]),""}
+    case Nil{}: X181Output{nt_reverse(X188Seq,acc,[]),""}
     case Con{+head,rest}:
       x181_program_data_item(head,rest,available,acc)
 
 @unsafe
-def x181_program_data_item(+item: P111QDatum, rest: List<&2,P111QDatum>, +available: KDef, acc: List<&2,String>) -> X181Output:
+def x181_program_data_item(+item: P111QDatum, rest: List<&2,P111QDatum>, +available: KDef, acc: List<&2,X188Seq>) -> X181Output:
   match item:
     case P111QReloc{+symbol,offset}:
       nt_choose(X181Output,String.is_empty(x181_program_symbol(symbol,available)),
@@ -232,31 +233,31 @@ def x181_program_data_item(+item: P111QDatum, rest: List<&2,P111QDatum>, +availa
 def x181_program_data(data: P111QData, +available: KDef) -> X181Output:
   match data:
     case P111QData{+name,alignment,exported,items}:
-      x181_program_join(X181Output{[".data\n.balign " ++ U32.show(alignment) ++ "\n" ++
-        nt_choose(String,exported,u => ".globl " ++ name ++ "\n",u => "") ++
-        ".type " ++ name ++ ", @object\n" ++ name ++ ":\n"],""},
+      x181_program_join(X181Output{[x188_table_head(name,alignment,exported)],""},
         x181_program_join(x181_program_data_items(items,available,[]),
-          X181Output{[".size " ++ name ++ ", .-" ++ name ++ "\n"],""}))
+          X181Output{[X188One{PSize{name}}],""}))
 
 # Tail transfer preserves argc/argv and their normal SysV return address.
 # The descriptor supplies all constructor identities, static words and effects.
-def x181_program_main() -> String:
-  ".text\n.globl main\n.type main, @function\nmain:\nleaq p111_program(%rip), %rdx\njmp p111_rt_main\n.size main, .-main\n"
+def x181_program_main() -> X188Seq:
+  x188_many([X188One{PSection{1}},X188One{PGlobal{"main"}},X188One{PType{"main",2}},
+    x188_label("main"),x188_i2("leaq",X187Rip{"p111_program",0,0},x188_reg(2,64)),
+    x188_i1("jmp",X187Target{"p111_rt_main"}),X188One{PSize{"main"}}])
 
-def x181_program_note() -> String:
-  ".section .note.GNU-stack,\"\",@progbits\n"
+def x181_program_note() -> X188Seq:
+  X188One{PSection{4}}
 
 # Accumulation is reversed once. A refusal never exposes partial assembly.
 @unsafe
-def x181_program_piece(piece: X181Output, next: P134Cursor, available: KDef, acc: List<&2,String>) -> X181Output:
+def x181_program_piece(piece: X181Output, next: P134Cursor, available: KDef, acc: List<&2,X188Seq>) -> X181Output:
   match piece:
     case X181Output{chunks,+error}:
       nt_choose(X181Output,String.is_empty(error),
-        u => x181_program_cursor(next,available,nt_reverse(String,chunks,acc)),
+        u => x181_program_cursor(next,available,nt_reverse(X188Seq,chunks,acc)),
         u => X181Output{[],error})
 
 @unsafe
-def x181_program_cursor(cursor: P134Cursor, +available: KDef, acc: List<&2,String>) -> X181Output:
+def x181_program_cursor(cursor: P134Cursor, +available: KDef, acc: List<&2,X188Seq>) -> X181Output:
   match cursor:
     case P134Private{Nil{},context,next}: x181_program_cursor(next,available,acc)
     case P134Private{Con{head,rest},+context,next}:
@@ -268,7 +269,7 @@ def x181_program_cursor(cursor: P134Cursor, +available: KDef, acc: List<&2,Strin
     case P134Tables{Nil{}}: x181_program_cursor(P134Main{},available,acc)
     case P134Tables{Con{head,rest}}:
       x181_program_piece(x181_program_data(head,available),P134Tables{rest},available,acc)
-    case P134Main{}: X181Output{nt_reverse(String,acc,[x181_program_main(),x181_program_note()]),""}
+    case P134Main{}: X181Output{nt_reverse(X188Seq,acc,[x181_program_main(),x181_program_note()]),""}
     case P134Data{items,first,rest}: X181Output{[],"x86 requires a complete data cursor"}
     case P134End{}: X181Output{[],"x86 cursor ended before program tables and entry"}
 

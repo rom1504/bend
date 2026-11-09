@@ -11,20 +11,20 @@ type X186CallPlan is Data:
 
 def x186_call_arguments_enabled() -> Bool: True{}
 
-def x186_call_reg32(index: U32) -> String:
+def x186_call_reg32(index: U32) -> X187Operand:
   match index:
-    case 0: "%edi"
-    case 1: "%esi"
-    case 2: "%edx"
-    case 3: "%ecx"
-    case 4: "%r8d"
-    case _: "%r9d"
+    case 0: x188_reg(7,32)
+    case 1: x188_reg(6,32)
+    case 2: x188_reg(2,32)
+    case 3: x188_reg(1,32)
+    case 4: x188_reg(8,32)
+    case _: x188_reg(9,32)
 
 @unsafe
-def x186_call_mask(typ: N111Type, +reg: String) -> String:
+def x186_call_mask(typ: N111Type, +reg: X187Operand) -> X188Seq:
   match typ:
-    case N111U32{}: "  movl " ++ reg ++ ", " ++ reg ++ "\n"
-    case _: ""
+    case N111U32{}: x188_i2("movl",reg,reg)
+    case _: X188Empty{}
 
 # kind 0 refuses a malformed placement, 1 uses direct loads, 2 snapshots.
 @unsafe
@@ -69,45 +69,45 @@ def x186_call_plan(args: List<&2,N111Arg>, frame: X181Frame) -> X186CallPlan:
       x186_call_capacity(x186_call_scan(args,slots,bytes,0,1),bytes,calls)
 
 @unsafe
-def x186_call_direct(args: List<&2,N111Arg>, +ids: N111Ids, +frame: X181Frame, +index: U32) -> String:
+def x186_call_direct(args: List<&2,N111Arg>, +ids: N111Ids, +frame: X181Frame, +index: U32) -> X188Seq:
   match args:
-    case Nil{}: ""
+    case Nil{}: X188Empty{}
     case Con{N111Arg{+typ,+value},rest}:
-      nt_choose(String,U32.is_lt(index,6),
-        u => x181_load(value,ids,frame,x181_argreg(index)) ++ x186_call_mask(typ,x186_call_reg32(index)),
-        u => x181_load(value,ids,frame,"%r10") ++ x186_call_mask(typ,"%r10d") ++
-          "  movq %r10, " ++ U32.show(U32.mul(U32.sub(index,6),8)) ++ "(%rsp)\n") ++
-      x186_call_direct(rest,ids,frame,U32.inc(index))
+      x188_cat(nt_choose(X188Seq,U32.is_lt(index,6),
+        u => x188_cat(x181_load(value,ids,frame,x181_argreg(index)),x186_call_mask(typ,x186_call_reg32(index))),
+        u => x188_many([x181_load(value,ids,frame,x188_reg(10,64)),x186_call_mask(typ,x188_reg(10,32)),
+          x188_i2("movq",x188_reg(10,64),X187Mem{4,U32.mul(U32.sub(index,6),8)})])),
+        x186_call_direct(rest,ids,frame,U32.inc(index)))
 
 @unsafe
 def x186_call_snapshot(args: List<&2,N111Arg>, +ids: N111Ids, +frame: X181Frame,
-    +base: U32, +index: U32) -> String:
+    +base: U32, +index: U32) -> X188Seq:
   match args:
-    case Nil{}: ""
+    case Nil{}: X188Empty{}
     case Con{N111Arg{typ,value},rest}:
-      x181_load(value,ids,frame,"%r10") ++ x186_call_mask(typ,"%r10d") ++
-        "  movq %r10, " ++ U32.show(U32.add(base,U32.mul(index,8))) ++ "(%rsp)\n" ++
-      x186_call_snapshot(rest,ids,frame,base,U32.inc(index))
+      x188_many([x181_load(value,ids,frame,x188_reg(10,64)),x186_call_mask(typ,x188_reg(10,32)),
+        x188_i2("movq",x188_reg(10,64),X187Mem{4,U32.add(base,U32.mul(index,8))}),
+        x186_call_snapshot(rest,ids,frame,base,U32.inc(index))])
 
 @unsafe
-def x186_call_place(+count: U32, +base: U32, +index: U32) -> String:
-  nt_choose(String,U32.is_eq(index,count),u => "",u =>
-    nt_choose(String,U32.is_lt(index,6),
-      v => "  movq " ++ U32.show(U32.add(base,U32.mul(index,8))) ++ "(%rsp), " ++ x181_argreg(index) ++ "\n",
-      v => "  movq " ++ U32.show(U32.add(base,U32.mul(index,8))) ++ "(%rsp), %r10\n" ++
-        "  movq %r10, " ++ U32.show(U32.mul(U32.sub(index,6),8)) ++ "(%rsp)\n") ++
-    x186_call_place(count,base,U32.inc(index)))
+def x186_call_place(+count: U32, +base: U32, +index: U32) -> X188Seq:
+  nt_choose(X188Seq,U32.is_eq(index,count),u => X188Empty{},u =>
+    x188_cat(nt_choose(X188Seq,U32.is_lt(index,6),
+      v => x188_i2("movq",X187Mem{4,U32.add(base,U32.mul(index,8))},x181_argreg(index)),
+      v => x188_cat(x188_i2("movq",X187Mem{4,U32.add(base,U32.mul(index,8))},x188_reg(10,64)),
+        x188_i2("movq",x188_reg(10,64),X187Mem{4,U32.mul(U32.sub(index,6),8)}))),
+      x186_call_place(count,base,U32.inc(index))))
 
 @unsafe
 def x186_call_selected(+enabled: Bool, +args: List<&2,N111Arg>, +ids: N111Ids,
-    +frame: X181Frame, plan: X186CallPlan) -> String:
+    +frame: X181Frame, plan: X186CallPlan) -> X188Seq:
   match plan:
     case X186CallPlan{+kind,+count}:
-      nt_choose(String,U32.is_eq(kind,0),u => ".error \"x186: invalid call argument frame\"\n",u =>
-        nt_choose(String,enabled && U32.is_eq(kind,1),u => x186_call_direct(args,ids,frame,0),
-          u => x186_call_snapshot(args,ids,frame,U32.mul(count,8),0) ++
-            x186_call_place(count,U32.mul(count,8),0)))
+      nt_choose(X188Seq,U32.is_eq(kind,0),u => x188_error("x186: invalid call argument frame"),u =>
+        nt_choose(X188Seq,enabled && U32.is_eq(kind,1),u => x186_call_direct(args,ids,frame,0),
+          u => x188_cat(x186_call_snapshot(args,ids,frame,U32.mul(count,8),0),
+            x186_call_place(count,U32.mul(count,8),0))))
 
 @unsafe
-def x186_call_arguments(+args: List<&2,N111Arg>, +ids: N111Ids, +frame: X181Frame) -> String:
+def x186_call_arguments(+args: List<&2,N111Arg>, +ids: N111Ids, +frame: X181Frame) -> X188Seq:
   x186_call_selected(x186_call_arguments_enabled(),args,ids,frame,x186_call_plan(args,frame))

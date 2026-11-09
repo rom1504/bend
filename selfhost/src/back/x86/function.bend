@@ -1,19 +1,19 @@
 def x181_reg(n):
   match n:
-    case 0: "%r12"
-    case 1: "%rbx"
-    case 2: "%r13"
-    case 3: "%r14"
-    case _: "%r15"
+    case 0: x188_reg(12,64)
+    case 1: x188_reg(3,64)
+    case 2: x188_reg(13,64)
+    case 3: x188_reg(14,64)
+    case _: x188_reg(15,64)
 
 def x181_argreg(n):
   match n:
-    case 0: "%rdi"
-    case 1: "%rsi"
-    case 2: "%rdx"
-    case 3: "%rcx"
-    case 4: "%r8"
-    case _: "%r9"
+    case 0: x188_reg(7,64)
+    case 1: x188_reg(6,64)
+    case 2: x188_reg(2,64)
+    case 3: x188_reg(1,64)
+    case 4: x188_reg(8,64)
+    case _: x188_reg(9,64)
 
 def x181_add(text,code):
   match code:
@@ -24,12 +24,13 @@ def x181_error(text,code):
     case X181Code{chunks,next,terminal,error}: X181Code{chunks,next,terminal,text}
 
 def x181_epilogue(frame):
-  x186_saves_text(x186_saves_mask(frame),0,True{}) ++ "  movq %rbp, %rsp\n  popq %rbp\n  ret\n"
+  x188_many([x186_saves_text(x186_saves_mask(frame),0,True{}),
+    x188_i2("movq",x188_reg(5,64),x188_reg(4,64)),x188_i1("popq",x188_reg(5,64)),x188_i0("ret")])
 
 def x181_return(text,frame,code):
   match code:
     case X181Code{chunks,next,terminal,error}:
-      X181Code{Con{text ++ x181_epilogue(frame),chunks},next,True{},error}
+      X181Code{Con{x188_cat(text,x181_epilogue(frame)),chunks},next,True{},error}
 
 def x181_label(n: U32, frame: X181Frame) -> String:
   match frame:
@@ -63,8 +64,9 @@ def x181_if(+condition: N111Value, +yes: List<&2,P113DStmt>, +no: List<&2,P113DS
   match code:
     case X181Code{chunks,+next,terminal,error}:
       x181_if_yes(next,no,ids,frame,x181_stmts(yes,ids,frame,
-        X181Code{Con{x181_load(condition,ids,frame,"%r10") ++ "  testl %r10d, %r10d\n  jz " ++
-          x181_label(next,frame) ++ "\n",chunks},U32.add(next,2),False{},error}))
+        X181Code{Con{x188_many([x181_load(condition,ids,frame,x188_reg(10,64)),
+          x188_i2("testl",x188_reg(10,32),x188_reg(10,32)),
+          x188_i1("jz",X187Target{x181_label(next,frame)})]),chunks},U32.add(next,2),False{},error}))
 
 @unsafe
 def x181_if_yes(+label: U32, +no: List<&2,P113DStmt>, +ids: N111Ids,
@@ -72,15 +74,16 @@ def x181_if_yes(+label: U32, +no: List<&2,P113DStmt>, +ids: N111Ids,
   match yes:
     case X181Code{chunks,next,+terminal,error}:
       x181_if_end(label,terminal,frame,x181_stmts(no,ids,frame,
-        X181Code{Con{nt_choose(String,terminal,u => "",u => "  jmp " ++ x181_label(U32.inc(label),frame) ++ "\n") ++
-          x181_label(label,frame) ++ ":\n",chunks},next,False{},error}))
+        X181Code{Con{x188_cat(nt_choose(X188Seq,terminal,u => X188Empty{},
+          u => x188_i1("jmp",X187Target{x181_label(U32.inc(label),frame)})),
+          X188One{PLabel{x181_label(label,frame)}}),chunks},next,False{},error}))
 
 @unsafe
 def x181_if_end(+label: U32, +yes_end: Bool, +frame: X181Frame, no: X181Code) -> X181Code:
   match no:
     case X181Code{chunks,next,+terminal,error}:
-      X181Code{nt_choose(List<&2,String>,yes_end && terminal,u => chunks,
-        u => Con{x181_label(U32.inc(label),frame) ++ ":\n",chunks}),next,yes_end && terminal,error}
+      X181Code{nt_choose(List<&2,X188Seq>,yes_end && terminal,u => chunks,
+        u => Con{X188One{PLabel{x181_label(U32.inc(label),frame)}},chunks}),next,yes_end && terminal,error}
 
 @unsafe
 def x181_args(values: List<&2,N111Value>) -> List<&2,N111Arg>:
@@ -93,8 +96,8 @@ def x181_call(+destinations: List<&2,String>, +target: String, +args: List<&2,N1
   +ids: N111Ids, +frame: X181Frame, +code: X181Code) -> X181Code:
   match destinations:
     case Con{name,Nil{}}:
-      x181_add(x181_call_text(p113e_symbol(target),Con{N111Arg{N111Ptr{},N111Local{"state"}},x181_args(args)},ids,frame) ++
-        x181_store(name,frame,"%rax"),code)
+      x181_add(x188_cat(x181_call_text(p113e_symbol(target),Con{N111Arg{N111Ptr{},N111Local{"state"}},x181_args(args)},ids,frame),
+        x181_store(name,frame,x188_reg(0,64))),code)
     case _:
       x181_load_results(destinations,0,ids,frame,x181_add(
         x181_call_text(p113e_symbol(target),Con{N111Arg{N111Ptr{},N111Local{"state"}},
@@ -106,23 +109,25 @@ def x181_load_results(names: List<&2,String>, +offset: U32, +ids: N111Ids, +fram
     case Nil{}: code
     case Con{name,rest}:
       x181_load_results(rest,U32.add(offset,8),ids,frame,x181_add(
-        x181_load(N111Local{"__x181_results"},ids,frame,"%r11") ++
-        "  movq " ++ U32.show(offset) ++ "(%r11), %rax\n" ++ x181_store(name,frame,"%rax"),code))
+        x188_many([x181_load(N111Local{"__x181_results"},ids,frame,x188_reg(11,64)),
+          x188_i2("movq",X187Mem{11,offset},x188_reg(0,64)),
+          x181_store(name,frame,x188_reg(0,64))]),code))
 
 @unsafe
 def x181_results(values: List<&2,N111Value>, +ids: N111Ids, +frame: X181Frame, +code: X181Code) -> X181Code:
   match values:
-    case Con{head,Nil{}}: x181_return(x181_load(head,ids,frame,"%rax"),frame,code)
+    case Con{head,Nil{}}: x181_return(x181_load(head,ids,frame,x188_reg(0,64)),frame,code)
     case _: x181_store_results(values,0,ids,frame,code)
 
 @unsafe
 def x181_store_results(values: List<&2,N111Value>, +offset: U32, +ids: N111Ids, +frame: X181Frame, code: X181Code) -> X181Code:
   match values:
-    case Nil{}: x181_return("  xorl %eax, %eax\n",frame,code)
+    case Nil{}: x181_return(x188_i2("xorl",x188_reg(0,32),x188_reg(0,32)),frame,code)
     case Con{head,rest}:
       x181_store_results(rest,U32.add(offset,8),ids,frame,x181_add(
-        x181_load(head,ids,frame,"%r10") ++ x181_load(N111Local{"__x181_result_out"},ids,frame,"%r11") ++
-        "  movq %r10, " ++ U32.show(offset) ++ "(%r11)\n",code))
+        x188_many([x181_load(head,ids,frame,x188_reg(10,64)),
+          x181_load(N111Local{"__x181_result_out"},ids,frame,x188_reg(11,64)),
+          x188_i2("movq",x188_reg(10,64),X187Mem{11,offset})]),code))
 
 @unsafe
 def x181_tail_args(frame: X181Frame) -> List<&2,String>:
@@ -143,7 +148,7 @@ def x181_again(+values: List<&2,N111Value>, +ids: N111Ids, +frame: X181Frame, +c
 
 @unsafe
 def x186_again_planned(values: List<&2,N111Value>, +ids: N111Ids, +frame: X181Frame,
-    code: X181Code, plan: Maybe<&2,String>) -> X181Code:
+    code: X181Code, plan: Maybe<&2,X188Seq>) -> X181Code:
   match plan:
     case Some{text}: x181_tail_moves([],0,ids,frame,x181_add(text,code))
     case None{}: x181_tail_moves(x181_tail_args(frame),0,ids,frame,x181_tail_snapshot(values,0,ids,frame,code))
@@ -154,38 +159,39 @@ def x181_tail_snapshot(values: List<&2,N111Value>, +offset: U32, +ids: N111Ids, 
     case Nil{}: code
     case Con{head,rest}:
       x181_tail_snapshot(rest,U32.add(offset,8),ids,frame,x181_add(
-        x181_load(head,ids,frame,"%r10") ++ x181_load(N111Local{"__x181_tail"},ids,frame,"%r11") ++
-        "  movq %r10, " ++ U32.show(offset) ++ "(%r11)\n",code))
+        x188_many([x181_load(head,ids,frame,x188_reg(10,64)),
+          x181_load(N111Local{"__x181_tail"},ids,frame,x188_reg(11,64)),
+          x188_i2("movq",x188_reg(10,64),X187Mem{11,offset})]),code))
 
 @unsafe
 def x181_tail_moves(params: List<&2,String>, +offset: U32, +ids: N111Ids, +frame: X181Frame, code: X181Code) -> X181Code:
   match params code:
     case Nil{} X181Code{chunks,next,terminal,error}:
-      X181Code{Con{"  jmp " ++ x181_loop_label(frame) ++ "\n",chunks},next,True{},error}
+      X181Code{Con{x188_i1("jmp",X187Target{x181_loop_label(frame)}),chunks},next,True{},error}
     case Con{name,rest} _:
       x181_tail_moves(rest,U32.add(offset,8),ids,frame,x181_add(
-        x181_load(N111Local{"__x181_tail"},ids,frame,"%r11") ++ "  movq " ++ U32.show(offset) ++
-        "(%r11), %rax\n" ++ x181_store(name,frame,"%rax"),code))
+        x188_many([x181_load(N111Local{"__x181_tail"},ids,frame,x188_reg(11,64)),
+          x188_i2("movq",X187Mem{11,offset},x188_reg(0,64)),
+          x181_store(name,frame,x188_reg(0,64))]),code))
 
 @unsafe
-def x181_incoming(params: List<&2,String>, +n: U32, +frame: X181Frame, acc: List<&2,String>) -> String:
+def x181_incoming(params: List<&2,String>, +n: U32, +frame: X181Frame, acc: List<&2,X188Seq>) -> X188Seq:
   match params:
-    case Nil{}: nt_text_finish(acc,"")
+    case Nil{}: x188_finish(acc)
     case Con{name,rest}:
       x181_incoming(rest,U32.inc(n),frame,Con{
-        nt_choose(String,U32.is_lt(n,6),u => "  movq " ++ x181_argreg(n) ++ ", %rax\n",
-          u => "  movq " ++ U32.show(U32.add(16,U32.mul(U32.sub(n,6),8))) ++ "(%rbp), %rax\n") ++
-        x181_store(name,frame,"%rax"),acc})
+        x188_cat(nt_choose(X188Seq,U32.is_lt(n,6),u => x188_i2("movq",x181_argreg(n),x188_reg(0,64)),
+          u => x188_i2("movq",X187Mem{5,U32.add(16,U32.mul(U32.sub(n,6),8))},x188_reg(0,64))),
+          x181_store(name,frame,x188_reg(0,64))),acc})
 
 @unsafe
-def x181_prologue(+frame: X181Frame) -> String:
+def x181_prologue(+frame: X181Frame) -> X188Seq:
   match frame:
     case X181Frame{slots,+bytes,+calls,+params,+symbol}:
-      ".text\n.globl " ++ symbol ++ "\n.type " ++ symbol ++ ", @function\n" ++ symbol ++ ":\n" ++
-      "  pushq %rbp\n  movq %rsp, %rbp\n  subq $" ++
-      U32.show(U32.add(U32.mul(U32.div(U32.add(U32.add(bytes,calls),15),16),16),48)) ++ ", %rsp\n" ++
-      x186_saves_text(x186_saves_mask(frame),0,False{}) ++
-      x181_incoming(params,0,frame,[])
+      x188_many([X188One{PSection{1}},X188One{PGlobal{symbol}},X188One{PType{symbol,2}},X188One{PLabel{symbol}},
+        x188_i1("pushq",x188_reg(5,64)),x188_i2("movq",x188_reg(4,64),x188_reg(5,64)),
+        x188_i2("subq",X187Imm{U32.add(U32.mul(U32.div(U32.add(U32.add(bytes,calls),15),16),16),48),0},x188_reg(4,64)),
+        x186_saves_text(x186_saves_mask(frame),0,False{}),x181_incoming(params,0,frame,[])])
 
 @unsafe
 def x181_function(+symbol: String, +params: List<&2,String>, +body: List<&2,P113DStmt>, +ids: N111Ids) -> X181Output:
@@ -238,7 +244,7 @@ def x185_function_frame(+symbol: String, +setup: List<&2,P113DStmt>, +body: List
 @unsafe
 def x186_function_saved(+symbol: String, +setup: List<&2,P113DStmt>, +body: List<&2,P113DStmt>,
     +ids: N111Ids, +frame: X181Frame) -> X181Output:
-  x181_function_done(symbol,x181_stmts(body,ids,frame,x181_add(x181_loop_label(frame) ++ ":\n",
+  x181_function_done(symbol,x181_stmts(body,ids,frame,x181_add(X188One{PLabel{x181_loop_label(frame)}},
     x181_stmts(setup,ids,frame,X181Code{[x181_prologue(frame)],0,False{},""}))))
 
 @unsafe
@@ -249,7 +255,7 @@ def x181_function_frame(+symbol: String, +body: List<&2,P113DStmt>, +ids: N111Id
 def x181_function_done(+symbol: String, code: X181Code) -> X181Output:
   match code:
     case X181Code{chunks,next,+terminal,+error}:
-      X181Output{[nt_text_finish(chunks,".size " ++ symbol ++ ", .-" ++ symbol ++ "\n")],
+      X181Output{[x188_cat(x188_finish(chunks),X188One{PSize{symbol}})],
         nt_choose(String,String.is_empty(error) && Bool.not(terminal),u => "x86 unterminated function",u => error)}
 
 @unsafe

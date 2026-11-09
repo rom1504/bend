@@ -63,15 +63,17 @@ def x187_elf_u64(lo: U32, hi: U32) -> List<&2,U32>:
 def x187_elf_bytes(bytes: List<&2,U32>, +count: U32) -> Bool:
   match bytes:
     case Nil{}: True{}
-    case Con{head,rest}: U32.is_le(head,255) && U32.is_lt(count,67108864) &&
-      x187_elf_bytes(rest,U32.inc(count))
+    case Con{head,rest}:
+      nt_choose(Bool,U32.is_le(head,255) && U32.is_lt(count,67108864),
+        u => x187_elf_bytes(rest,U32.inc(count)),u => False{})
 
 @unsafe
 def x187_elf_name(name: String, +count: U32) -> Bool:
   match name:
     case SNil{}: U32.is_gt(count,0)
-    case SCon{+head,rest}: U32.is_lt(count,4096) && U32.is_gt(Char.to_u32(head),0) &&
-      U32.is_lt(Char.to_u32(head),128) && x187_elf_name(rest,U32.inc(count))
+    case SCon{+head,rest}:
+      nt_choose(Bool,U32.is_lt(count,4096) && U32.is_gt(Char.to_u32(head),0) &&
+        U32.is_lt(Char.to_u32(head),128),u => x187_elf_name(rest,U32.inc(count)),u => False{})
 
 @unsafe
 def x187_elf_ascii(text: String, acc: List<&2,U32>) -> List<&2,U32>:
@@ -158,8 +160,9 @@ def x187_elf_reloc_valid(relocation: X187Relocation, +sizes: X187ElfSizes, +inde
 def x187_elf_relocs_valid(items: List<&2,X187Relocation>, +sizes: X187ElfSizes, +index: KDef, +count: U32) -> Bool:
   match items:
     case Nil{}: True{}
-    case Con{head,rest}: U32.is_lt(count,1048576) && x187_elf_reloc_valid(head,sizes,index) &&
-      x187_elf_relocs_valid(rest,sizes,index,U32.inc(count))
+    case Con{head,rest}:
+      nt_choose(Bool,U32.is_lt(count,1048576) && x187_elf_reloc_valid(head,sizes,index),
+        u => x187_elf_relocs_valid(rest,sizes,index,U32.inc(count)),u => False{})
 
 @unsafe
 def x187_elf_reloc_bytes(relocation: X187Relocation, index: KDef) -> List<&2,U32>:

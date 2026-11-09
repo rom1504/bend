@@ -6,6 +6,11 @@ The Phase181 results and commands below describe the original experimental
 ABI11101 implementation. They remain historical evidence and are not the
 current build interface or qualification authority.
 
+The current Phase188 selector now produces one typed machine sequence for both
+assembly and direct ELF output. See the [shared machine boundary](x86-objects.md)
+for architecture, retained verification and output-format details. The remainder
+of this page preserves the original Phase181 design and measurements.
+
 Phase181 adds a Bend-written AMD64 SysV assembly emitter beside QBE. It reuses
 the maintained frontend, native lowering, final verification and runtime.
 The [Phase181 report](../../implementation/phase181/README.md) owns exact source

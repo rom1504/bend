@@ -87,36 +87,37 @@ law x186_p_schedule:
   for +moves: List<&2,X186Move>
   for +ids: N111Ids
   for +frame: X181Frame
-  for chunks: List<&2,String>
+  for chunks: List<&2,X188Seq>
   for +fuel: U32
-  Maybe<&2,String>
+  Maybe<&2,X188Seq>
 
 @unsafe
 def x186_p_chosen(picked: X186Pick, +ids: N111Ids, +frame: X181Frame,
-    chunks: List<&2,String>, fuel: U32) -> Maybe<&2,String>:
+    chunks: List<&2,X188Seq>, fuel: U32) -> Maybe<&2,X188Seq>:
   match picked:
     case X186Pick{X186Move{destination,source,home,read},rest}:
-      x186_p_schedule(rest,ids,frame,Con{x181_load(source,ids,frame,"%r10") ++ x181_store(destination,frame,"%r10"),chunks},fuel)
+      x186_p_schedule(rest,ids,frame,Con{x188_cat(x181_load(source,ids,frame,x188_reg(10,64)),
+        x181_store(destination,frame,x188_reg(10,64))),chunks},fuel)
     case _: None{}
 
 @unsafe
 def x186_p_schedule(moves,ids,frame,chunks,fuel):
   match moves:
-    case Nil{}: Some{nt_text_finish(chunks,"")}
+    case Nil{}: Some{x188_finish(chunks)}
     case Con{head,rest}:
-      nt_choose(Maybe<&2,String>,U32.is_gt(fuel,0),
+      nt_choose(Maybe<&2,X188Seq>,U32.is_gt(fuel,0),
         u => x186_p_chosen(x186_p_pick(moves,moves),ids,frame,chunks,U32.sub(fuel,1)),u => None{})
 
 @unsafe
-def x186_p_ready(plan: Maybe<&2,List<&2,X186Move>>, ids: N111Ids, frame: X181Frame) -> Maybe<&2,String>:
+def x186_p_ready(plan: Maybe<&2,List<&2,X186Move>>, ids: N111Ids, frame: X181Frame) -> Maybe<&2,X188Seq>:
   match plan:
     case Some{moves}: x186_p_schedule(x186_p_self(moves),ids,frame,[],64)
     case _: None{}
 
 @unsafe
-def x186_parallel(+params: List<&2,String>, +values: List<&2,N111Value>, +ids: N111Ids, +frame: X181Frame) -> Maybe<&2,String>:
+def x186_parallel(+params: List<&2,String>, +values: List<&2,N111Value>, +ids: N111Ids, +frame: X181Frame) -> Maybe<&2,X188Seq>:
   match frame:
     case X181Frame{slots,bytes,calls,words,symbol}:
-      nt_choose(Maybe<&2,String>,x186_parallel_enabled() && U32.is_le(nt_count(String,params),64) &&
+      nt_choose(Maybe<&2,X188Seq>,x186_parallel_enabled() && U32.is_le(nt_count(String,params),64) &&
           U32.is_le(nt_count(N111Value,values),64),
         u => x186_p_ready(x186_p_zip(params,values,slots,[]),ids,frame),u => None{})

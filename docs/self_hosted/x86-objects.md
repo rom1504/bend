@@ -11,21 +11,43 @@ assembly route. It is not a separate source-language backend.
 
 ## Current architecture
 
-The selected backend still constructs assembly Strings. For each emitted
-function, a strict Bend parser turns the supported dialect into typed machine
-instructions; a Bend encoder produces bytes and explicit relocations. A Bend
-ELF writer collects sections and symbols. `File.write_bytes` sends the object
-without text decoding. Host tools authenticate, capture, inspect and link bytes;
-they do not compile instructions or create ELF records.
+Instruction selection produces typed machine sequences directly. Registers carry
+architectural indices and widths; operands retain full immediate bits, memory
+addresses and symbolic references. Instructions, labels, sections and data widths
+survive until the final consumer:
 
-The implementation is in `selfhost/src/back/x86/object-{model,parse,encode,build,elf}.bend`.
-`object-build.bend` consumes the same independently verified native cursor as
-assembly output. The original verification and semantic admission remain intact.
+```mermaid
+flowchart LR
+  A[Verified native bodies] --> B[Shared optimization and register placement]
+  B --> C[Typed x86 instructions and data]
+  C --> D[Assembly renderer]
+  C --> E[Binary encoder and local fixups]
+  D --> F[GNU assembler]
+  E --> G[ELF object writer]
+  F --> H[Existing linker and runtime]
+  G --> H
+```
 
-The current option supports Linux AMD64 SysV, integer instructions and the SSE
-subset selected by this backend, external calls, relative branches, RIP-relative
-addresses and absolute data relocations. Unsupported syntax fails explicitly.
-This parser is not a general GNU assembler replacement.
+Selection lives in the existing scalar, floating, call and function modules.
+`machine-model.bend` and `machine.bend` define sequence composition and assembly
+rendering; `object-model.bend` defines numeric operands and object records.
+`object-build.bend` consumes the same typed sequences, `object-encode.bend`
+encodes instructions, and `object-elf.bend` writes the object. The old strict
+`object-parse.bend` parser is a test/diagnostic API, absent from the selected
+production source closure. Object output never renders or parses assembly.
+
+Both consumers release typed sequences per function; assembly additionally writes
+data in slices of at most128 directives. The object writer still retains byte
+sections in memory. It resolves local relative branches and omits unescaped,
+nonglobal local symbols; address references, exported symbols and unresolved
+external relocations retain their explicit identities. The encoder still uses
+near branches and does not perform relaxation.
+
+`File.write_bytes` sends objects without text decoding. Host tools authenticate,
+capture, inspect and link bytes; instruction selection, encoding, fixups and ELF
+records are implemented in Bend. Original native verification and semantic
+admission remain intact. Supported instructions are the Linux AMD64 SysV scalar
+and SSE subset selected by this backend; invalid encodings fail explicitly.
 
 ## Build
 
@@ -62,15 +84,9 @@ runtime may differ. This option is experimental and is not the default or the
 installed compiler selection. Its initial purpose is establishing a correct
 Bend-written binary-output path, not claiming compilation or execution gains.
 
-The useful next step is to produce these typed instructions directly from the
-shared selector, eliminating text formatting/parsing, and to stream sections
-with bounded metadata. Measure those costs before promoting the option.
-
-See the [Phase187 report](../../implementation/phase187/README.md),
-[design](../../design/phase187/README.md), and
-[reproducible control plan](../../selfhost/tests/phase187/control-plan.md).
-
-The initial same-source self-build measured 315.35s for object output versus
-199.11s for assembly plus GNU as. The short 44-case runtime ratio was 0.994×.
-Therefore the object format remains experimental; use assembly for build speed.
-See the report for the 45-case checks and the hosted-JS diagnostic stack limit.
+See the [Phase188 refactor report](../../implementation/phase188/README.md),
+[design](../../design/phase188/README.md), and
+[reproducible control plan](../../selfhost/tests/phase188/control-plan.md).
+The [Phase187 report](../../implementation/phase187/README.md) preserves the
+text-parsing prototype and its315.35s versus199.11s same-source build result.
+Those timings describe the old implementation, not the typed path.

@@ -52,10 +52,10 @@ def x186_saves_offset(reg: U32) -> U32:
     case _: 40
 
 @unsafe
-def x186_saves_text(+mask: U32, +reg: U32, +restore: Bool) -> String:
-  nt_choose(String,U32.is_ge(reg,5),u => "",u =>
-    nt_choose(String,U32.is_eq(U32.and(mask,U32.shln(1,U32.to_nat(reg))),0),v => "",v =>
-      nt_choose(String,restore,
-        w => "  movq -" ++ U32.show(x186_saves_offset(reg)) ++ "(%rbp), " ++ x181_reg(reg) ++ "\n",
-        w => "  movq " ++ x181_reg(reg) ++ ", -" ++ U32.show(x186_saves_offset(reg)) ++ "(%rbp)\n")) ++
-    x186_saves_text(mask,U32.inc(reg),restore))
+def x186_saves_text(+mask: U32, +reg: U32, +restore: Bool) -> X188Seq:
+  nt_choose(X188Seq,U32.is_ge(reg,5),u => X188Empty{},u =>
+    x188_cat(nt_choose(X188Seq,U32.is_eq(U32.and(mask,U32.shln(1,U32.to_nat(reg))),0),v => X188Empty{},v =>
+      nt_choose(X188Seq,restore,
+        w => x188_i2("movq",X187Mem{5,U32.sub(0,x186_saves_offset(reg))},x181_reg(reg)),
+        w => x188_i2("movq",x181_reg(reg),X187Mem{5,U32.sub(0,x186_saves_offset(reg))}))),
+      x186_saves_text(mask,U32.inc(reg),restore)))

@@ -103,74 +103,97 @@ def x186_x_homes(params: List<&2,String>, setup: List<&2,P113DStmt>, nodes: List
     X185TScan{x185_copy_writes_names(params,x185_copy_writes(setup,missing())),[],1,0},missing()}))
 
 @unsafe
-def x186_x_home(name: String, homes: KDef) -> String:
+def x186_x_home(name: String, homes: KDef) -> Maybe<&2,X187Operand>:
   +slot = p111v_get(homes,name)
-  nt_choose(String,String.eq(dk(slot),"X186Xmm") && U32.is_lt(da(slot),14),
-    u => "%xmm" ++ U32.show(U32.add(da(slot),2)),u => "")
+  nt_choose(Maybe<&2,X187Operand>,String.eq(dk(slot),"X186Xmm") && U32.is_lt(da(slot),14),
+    u => Some{x188_xmm(U32.add(da(slot),2))},u => None{})
 
 @unsafe
-def x186_x_source(value: N111Value, homes: KDef) -> String:
+def x186_x_source(value: N111Value, homes: KDef) -> Maybe<&2,X187Operand>:
   match value:
     case N111Local{name}: x186_x_home(name,homes)
-    case _: ""
+    case _: None{}
 
 @unsafe
-def x186_x_move(+source: String, +target: String) -> String:
-  nt_choose(String,String.eq(source,target),u => "",u => "  movaps " ++ source ++ ", " ++ target ++ "\n")
+def x186_x_move(+source: X187Operand, +target: X187Operand) -> X188Seq:
+  nt_choose(X188Seq,x188_operand_same(source,target),u => X188Empty{},u => x188_i2("movaps",source,target))
 
 @unsafe
-def x186_x_load(+value: N111Value, ids: N111Ids, frame: X181Frame, homes: KDef, +target: String) -> String:
-  +source = x186_x_source(value,homes)
-  nt_choose(String,String.is_empty(source),u => x186_float_load(value,ids,frame,target),
-    u => x186_x_move(source,target))
+def x186_x_load_from(source: Maybe<&2,X187Operand>, value: N111Value, ids: N111Ids,
+    frame: X181Frame, target: X187Operand) -> X188Seq:
+  match source:
+    case Some{operand}: x186_x_move(operand,target)
+    case None{}: x186_float_load(value,ids,frame,target)
+
+@unsafe
+def x186_x_load(+value: N111Value, ids: N111Ids, frame: X181Frame, homes: KDef, target: X187Operand) -> X188Seq:
+  x186_x_load_from(x186_x_source(value,homes),value,ids,frame,target)
+
+@unsafe
+def x186_x_direct(source: Maybe<&2,X187Operand>, target: X187Operand) -> Bool:
+  match source:
+    case Some{operand}: Bool.not(x188_operand_same(operand,target))
+    case None{}: False{}
 
 # Right is snapshotted first when its home aliases the arithmetic destination.
 # The instruction still computes left OP right in the original operand order.
 @unsafe
 def x186_x_arithmetic(+name: String, id: U32, +left: N111Value, +right: N111Value,
-    +ids: N111Ids, +frame: X181Frame, +homes: KDef) -> String:
+    +ids: N111Ids, +frame: X181Frame, +homes: KDef) -> X188Seq:
   +destination = x186_x_home(name,homes)
-  +target = nt_choose(String,String.is_empty(destination),u => "%xmm0",u => destination)
+  +target = x186_float_operand(destination,x188_xmm(0))
   +source = x186_x_source(right,homes)
-  +direct = Bool.not(String.is_empty(source)) && Bool.not(String.eq(source,target))
-  nt_choose(String,direct,u => "",u => x186_x_load(right,ids,frame,homes,"%xmm1")) ++
-    x186_x_load(left,ids,frame,homes,target) ++ "  " ++ x185_float_arithmetic(id) ++ " " ++
-    nt_choose(String,direct,u => source,u => "%xmm1") ++ ", " ++ target ++ "\n" ++
-    nt_choose(String,String.is_empty(destination),u => x186_float_result(name,frame),u => "")
+  +direct = x186_x_direct(source,target)
+  x188_many([
+    nt_choose(X188Seq,direct,u => X188Empty{},u => x186_x_load(right,ids,frame,homes,x188_xmm(1))),
+    x186_x_load(left,ids,frame,homes,target),
+    x188_i2(x185_float_arithmetic(id),
+      nt_choose(X187Operand,direct,u => x186_float_operand(source,x188_xmm(1)),u => x188_xmm(1)),target),
+    nt_choose(X188Seq,x186_float_present(destination),u => X188Empty{},u => x186_float_result(name,frame))])
+
+@unsafe
+def x186_x_compare_result(destination: Maybe<&2,X187Operand>, name: String, frame: X181Frame) -> X188Seq:
+  match destination:
+    case Some{operand}: x188_i2("movd",x188_reg(10,32),operand)
+    case None{}: x181_store(name,frame,x188_reg(10,64))
 
 @unsafe
 def x186_x_compare(+name: String, id: U32, left: N111Value, right: N111Value,
-    +ids: N111Ids, +frame: X181Frame, +homes: KDef) -> String:
+    +ids: N111Ids, +frame: X181Frame, +homes: KDef) -> X188Seq:
   +destination = x186_x_home(name,homes)
-  x186_x_load(left,ids,frame,homes,"%xmm0") ++ x186_x_load(right,ids,frame,homes,"%xmm1") ++
-    "  ucomiss %xmm1, %xmm0\n" ++ x185_float_compare(id) ++ "  movzbl %r10b, %r10d\n" ++
-    nt_choose(String,String.is_empty(destination),u => x181_store(name,frame,"%r10"),
-      u => "  movd %r10d, " ++ destination ++ "\n")
+  x188_many([x186_x_load(left,ids,frame,homes,x188_xmm(0)),x186_x_load(right,ids,frame,homes,x188_xmm(1)),
+    x188_i2("ucomiss",x188_xmm(1),x188_xmm(0)),x185_float_compare(id),
+    x188_i2("movzbl",x188_reg(10,8),x188_reg(10,32)),x186_x_compare_result(destination,name,frame)])
 
 @unsafe
 def x186_x_float(+name: String, +id: U32, +left: N111Value, +right: N111Value,
-    +ids: N111Ids, +frame: X181Frame, +homes: KDef) -> String:
-  nt_choose(String,U32.is_lt(id,30),u => x186_x_arithmetic(name,id,left,right,ids,frame,homes),
+    +ids: N111Ids, +frame: X181Frame, +homes: KDef) -> X188Seq:
+  nt_choose(X188Seq,U32.is_lt(id,30),u => x186_x_arithmetic(name,id,left,right,ids,frame,homes),
     u => x186_x_compare(name,id,left,right,ids,frame,homes))
 
 @unsafe
-def x186_x_publish(+name: String, +source: String, +frame: X181Frame, homes: KDef) -> String:
-  +destination = x186_x_home(name,homes)
-  +physical = x186_float_home(name,frame,False{})
-  nt_choose(String,Bool.not(String.is_empty(destination)),u => x186_x_move(source,destination),u =>
-    nt_choose(String,String.is_empty(physical),
-      v => "  movd " ++ source ++ ", %r10d\n" ++ x181_store(name,frame,"%r10"),
-      v => "  movd " ++ source ++ ", " ++ physical ++ "\n"))
+def x186_x_publish_to(destination: Maybe<&2,X187Operand>, name: String, source: X187Operand, frame: X181Frame) -> X188Seq:
+  match destination:
+    case Some{operand}: x186_x_move(source,operand)
+    case None{}: x186_float_publish(name,source,frame)
 
 @unsafe
-def x186_x_copy(+stmt: P113DStmt, +name: String, +value: N111Value, +ids: N111Ids,
-    +frame: X181Frame, +homes: KDef, +code: X181Code) -> X181Code:
-  +source = x186_x_source(value,homes)
-  +destination = x186_x_home(name,homes)
-  nt_choose(X181Code,Bool.not(String.is_empty(source)),
-    u => x181_add(x186_x_publish(name,source,frame,homes),code),u =>
-    nt_choose(X181Code,String.is_empty(destination),v => x181_stmt(stmt,ids,frame,code),
-      v => x181_add(x186_float_load(value,ids,frame,destination),code)))
+def x186_x_publish(+name: String, source: X187Operand, frame: X181Frame, homes: KDef) -> X188Seq:
+  x186_x_publish_to(x186_x_home(name,homes),name,source,frame)
+
+@unsafe
+def x186_x_copy_homes(source: Maybe<&2,X187Operand>, destination: Maybe<&2,X187Operand>,
+    stmt: P113DStmt, name: String, value: N111Value, ids: N111Ids,
+    frame: X181Frame, homes: KDef, code: X181Code) -> X181Code:
+  match source destination:
+    case Some{operand} _: x181_add(x186_x_publish(name,operand,frame,homes),code)
+    case None{} None{}: x181_stmt(stmt,ids,frame,code)
+    case None{} Some{operand}: x181_add(x186_float_load(value,ids,frame,operand),code)
+
+@unsafe
+def x186_x_copy(stmt: P113DStmt, +name: String, +value: N111Value, ids: N111Ids,
+    frame: X181Frame, +homes: KDef, code: X181Code) -> X181Code:
+  x186_x_copy_homes(x186_x_source(value,homes),x186_x_home(name,homes),stmt,name,value,ids,frame,homes,code)
 
 law x186_x_emit_nodes:
   for nodes: List<&2,X186FloatNode>
@@ -186,8 +209,9 @@ def x186_x_emit_if(condition: N111Value, yes: List<&2,X186FloatNode>, no: List<&
   match code:
     case X181Code{chunks,+next,terminal,error}:
       x186_x_emit_yes(next,no,ids,frame,homes,x186_x_emit_nodes(yes,ids,frame,homes,
-        X181Code{Con{x181_load(condition,ids,frame,"%r10") ++ "  testl %r10d, %r10d\n  jz " ++
-          x181_label(next,frame) ++ "\n",chunks},U32.add(next,2),False{},error}))
+        X181Code{Con{x188_many([x181_load(condition,ids,frame,x188_reg(10,64)),
+          x188_i2("testl",x188_reg(10,32),x188_reg(10,32)),
+          x188_i1("jz",X187Target{x181_label(next,frame)})]),chunks},U32.add(next,2),False{},error}))
 
 @unsafe
 def x186_x_emit_yes(+label: U32, no: List<&2,X186FloatNode>, ids: N111Ids,
@@ -195,8 +219,9 @@ def x186_x_emit_yes(+label: U32, no: List<&2,X186FloatNode>, ids: N111Ids,
   match yes:
     case X181Code{chunks,next,+terminal,error}:
       x181_if_end(label,terminal,frame,x186_x_emit_nodes(no,ids,frame,homes,
-        X181Code{Con{nt_choose(String,terminal,u => "",u => "  jmp " ++ x181_label(U32.inc(label),frame) ++ "\n") ++
-          x181_label(label,frame) ++ ":\n",chunks},next,False{},error}))
+        X181Code{Con{x188_cat(nt_choose(X188Seq,terminal,u => X188Empty{},
+          u => x188_i1("jmp",X187Target{x181_label(U32.inc(label),frame)})),
+          x188_label(x181_label(label,frame))),chunks},next,False{},error}))
 
 @unsafe
 def x186_x_emit_node(+node: X186FloatNode, +ids: N111Ids, +frame: X181Frame, +homes: KDef, code: X181Code) -> X181Code:
@@ -221,7 +246,7 @@ def x186_x_emit_nodes(nodes,ids,frame,homes,code):
 def x186_x_emit_frame(+symbol: String, params: List<&2,String>, +setup: List<&2,P113DStmt>,
     +nodes: List<&2,X186FloatNode>, +ids: N111Ids, +frame: X181Frame) -> X181Output:
   x181_function_done(symbol,x186_x_emit_nodes(nodes,ids,frame,x186_x_homes(params,setup,nodes),
-    x181_add(x181_loop_label(frame) ++ ":\n",x181_stmts(setup,ids,frame,X181Code{[x181_prologue(frame)],0,False{},""}))))
+    x181_add(x188_label(x181_loop_label(frame)),x181_stmts(setup,ids,frame,X181Code{[x181_prologue(frame)],0,False{},""}))))
 
 @unsafe
 def x186_x_select_frame(+symbol: String, params: List<&2,String>, +setup: List<&2,P113DStmt>,

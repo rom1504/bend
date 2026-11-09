@@ -1,0 +1,55 @@
+[
+  {
+    "source": "selfhost/tests/phase186/call-argument-controls.bend",
+    "sourceSha256": "410e87831c6c2045b11f591a93de0a6c7e54910dbe4884f1c3dd2196d9324d1a",
+    "adapted": "selfhost/tests/phase188/call-argument-controls.bend",
+    "substitutions": {
+      "X181Output": "P188TextOutput",
+      "x181_load": "p188_test_load",
+      "x181_store": "p188_test_store",
+      "x181_prologue": "p188_test_prologue",
+      "x181_epilogue": "p188_test_epilogue",
+      "x186_call_selected": "p188_test_call_selected",
+      "x186_call_arguments": "p188_test_call_arguments"
+    }
+  },
+  {
+    "source": "selfhost/tests/phase186/u32-float-controls.bend",
+    "sourceSha256": "492a3d4280ff85bbf5a22178e30683d073e5166fcc8cd5518c06efb474e415f3",
+    "adapted": "selfhost/tests/phase188/u32-float-controls.bend",
+    "substitutions": {
+      "X181Output": "P188TextOutput",
+      "x181_load": "p188_test_load",
+      "x181_store": "p188_test_store",
+      "x181_prologue": "p188_test_prologue",
+      "x181_epilogue": "p188_test_epilogue",
+      "x186_u32_float_probe": "p188_test_u32_float_probe",
+      "x186_u32_float_probe_when": "p188_test_u32_float_probe_when"
+    }
+  },
+  {
+    "source": "selfhost/tests/phase186/xmm-controls.bend",
+    "sourceSha256": "7f7cc229484154944b87c83036877750c25cf6e37759007821a562282219e232",
+    "adapted": "selfhost/tests/phase188/xmm-controls.bend",
+    "substitutions": {
+      "x186_x_home": "p188_test_x_home"
+    }
+  },
+  {
+    "source": "selfhost/tests/phase186/callee-save-controls.bend",
+    "sourceSha256": "6446f0300a92174d21629d1554975505014cacf39ea95fd84540f6e6d1b46d3c",
+    "adapted": "selfhost/tests/phase188/callee-save-controls.bend",
+    "substitutions": {
+      "nt_append(String,a,b)": "nt_append(X188Seq,a,b)"
+    }
+  },
+  {
+    "source": "selfhost/tests/phase186/parallel-controls.bend",
+    "sourceSha256": "d6f78368053ea8b261a033d0598b1c1b5e38c4e7b1f520e12724e0275baecf9f",
+    "adapted": "selfhost/tests/phase188/parallel-controls.bend",
+    "substitutions": {
+      "Maybe<&2,String>": "Maybe<&2,X188Seq>",
+      "String.is_empty(text)": "x188_empty(text)"
+    }
+  }
+]

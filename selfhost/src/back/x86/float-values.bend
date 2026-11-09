@@ -165,9 +165,9 @@ def x186_f_ready(params: List<&2,String>, setup: List<&2,P113DStmt>, +nodes: Lis
 
 @unsafe
 def x186_f_values_text(name: String, +id: U32, left: N111Value, right: N111Value,
-    +ids: N111Ids, +frame: X181Frame) -> String:
-  x186_float_load(left,ids,frame,"%xmm0") ++ x186_float_load(right,ids,frame,"%xmm1") ++
-    x186_float_finish(name,id,frame)
+    +ids: N111Ids, +frame: X181Frame) -> X188Seq:
+  x188_many([x186_float_load(left,ids,frame,x188_xmm(0)),x186_float_load(right,ids,frame,x188_xmm(1)),
+    x186_float_finish(name,id,frame)])
 
 law x186_f_emit_nodes:
   for nodes: List<&2,X186FloatNode>
@@ -182,8 +182,9 @@ def x186_f_emit_if(condition: N111Value, yes: List<&2,X186FloatNode>, no: List<&
   match code:
     case X181Code{chunks,+next,terminal,error}:
       x186_f_emit_yes(next,no,ids,frame,x186_f_emit_nodes(yes,ids,frame,
-        X181Code{Con{x181_load(condition,ids,frame,"%r10") ++ "  testl %r10d, %r10d\n  jz " ++
-          x181_label(next,frame) ++ "\n",chunks},U32.add(next,2),False{},error}))
+        X181Code{Con{x188_many([x181_load(condition,ids,frame,x188_reg(10,64)),
+          x188_i2("testl",x188_reg(10,32),x188_reg(10,32)),
+          x188_i1("jz",X187Target{x181_label(next,frame)})]),chunks},U32.add(next,2),False{},error}))
 
 @unsafe
 def x186_f_emit_yes(+label: U32, no: List<&2,X186FloatNode>, ids: N111Ids,
@@ -191,8 +192,9 @@ def x186_f_emit_yes(+label: U32, no: List<&2,X186FloatNode>, ids: N111Ids,
   match yes:
     case X181Code{chunks,next,+terminal,error}:
       x181_if_end(label,terminal,frame,x186_f_emit_nodes(no,ids,frame,
-        X181Code{Con{nt_choose(String,terminal,u => "",u => "  jmp " ++ x181_label(U32.inc(label),frame) ++ "\n") ++
-          x181_label(label,frame) ++ ":\n",chunks},next,False{},error}))
+        X181Code{Con{x188_cat(nt_choose(X188Seq,terminal,u => X188Empty{},
+          u => x188_i1("jmp",X187Target{x181_label(U32.inc(label),frame)})),
+          x188_label(x181_label(label,frame))),chunks},next,False{},error}))
 
 @unsafe
 def x186_f_emit_node(node: X186FloatNode, ids: N111Ids, frame: X181Frame, code: X181Code) -> X181Code:
@@ -215,7 +217,7 @@ def x186_f_emit_nodes(nodes,ids,frame,code):
 @unsafe
 def x186_f_emit_frame(+symbol: String, setup: List<&2,P113DStmt>, nodes: List<&2,X186FloatNode>,
     +ids: N111Ids, +frame: X181Frame) -> X181Output:
-  x181_function_done(symbol,x186_f_emit_nodes(nodes,ids,frame,x181_add(x181_loop_label(frame) ++ ":\n",
+  x181_function_done(symbol,x186_f_emit_nodes(nodes,ids,frame,x181_add(x188_label(x181_loop_label(frame)),
     x181_stmts(setup,ids,frame,X181Code{[x181_prologue(frame)],0,False{},""}))))
 
 @unsafe

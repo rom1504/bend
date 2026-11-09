@@ -1,5 +1,5 @@
 type X185Physical is Data:
-  X185Physical{+wide: String, +narrow: String, +byte: String}
+  X185Physical{+wide: X187Operand, +narrow: X187Operand, +byte: X187Operand}
   X185PhysicalNone{}
 
 # Experimental AMD64 SysV machine selection. The checked native operations
@@ -13,23 +13,23 @@ type X181Frame is Data:
   X181Frame{+slots: KDef, +bytes: U32, +calls: U32, +params: List<&2,String>, +symbol: String}
 
 type X181Code is Data:
-  X181Code{+chunks: List<&2,String>, +next: U32, +terminal: Bool, +error: String}
+  X181Code{+chunks: List<&2,X188Seq>, +next: U32, +terminal: Bool, +error: String}
 
 type X181Output is Data:
-  X181Output{+chunks: List<&2,String>, +error: String}
+  X181Output{+chunks: List<&2,X188Seq>, +error: String}
 
 # Shared emission interfaces. Forward declarations are contracts, not proofs.
 law x181_load:
   for +value: N111Value
   for +ids: N111Ids
   for +frame: X181Frame
-  for +reg: String
-  String
+  for +reg: X187Operand
+  X188Seq
 law x181_store:
   for +name: String
   for +frame: X181Frame
-  for +reg: String
-  String
+  for +reg: X187Operand
+  X188Seq
 law x181_scalar:
   for +stmt: N111Stmt
   for +ids: N111Ids
@@ -57,12 +57,12 @@ law x181_frame:
   X181Frame
 law x181_reg:
   for +n: U32
-  String
+  X187Operand
 law x181_argreg:
   for +n: U32
-  String
+  X187Operand
 law x181_add:
-  for +text: String
+  for +text: X188Seq
   for +code: X181Code
   X181Code
 law x181_error:
@@ -70,24 +70,24 @@ law x181_error:
   for +code: X181Code
   X181Code
 law x181_return:
-  for +text: String
+  for +text: X188Seq
   for +frame: X181Frame
   for +code: X181Code
   X181Code
 law x181_epilogue:
   for +frame: X181Frame
-  String
+  X188Seq
 
 law x181_call_text:
   for +symbol: String
   for +args: List<&2,N111Arg>
   for +ids: N111Ids
   for +frame: X181Frame
-  String
+  X188Seq
 
 law x185_transient_reg:
   for +index: U32
-  String
+  X187Operand
 
 law x185_transient_frame:
   for +frame: X181Frame
@@ -109,4 +109,4 @@ law x185_physical_binary:
   for +right: N111Value
   for +ids: N111Ids
   for +frame: X181Frame
-  String
+  X188Seq

@@ -14,11 +14,11 @@ def x185_transient_enabled() -> Bool: True{}
 
 def x185_transient_reg(index):
   match index:
-    case 0: "%rdi"
-    case 1: "%rsi"
-    case 2: "%rdx"
-    case 3: "%r8"
-    case _: "%r9"
+    case 0: x188_reg(7,64)
+    case 1: x188_reg(6,64)
+    case 2: x188_reg(2,64)
+    case 3: x188_reg(8,64)
+    case _: x188_reg(9,64)
 
 @unsafe
 def x185_t_range(+name: String, first: U32, last: U32, region: U32, ranges: KDef) -> KDef:

@@ -1,19 +1,6 @@
 # Strict parser for the finite AT&T dialect emitted by this backend. Selection
 # remains shared with assembly output. No source-language semantics live here.
 # Decimal words preserve all 64 bits; no Nat/Float conversion is involved.
-type X187Parsed is Data:
-  PInst{+inst: X187Instruction}
-  PLabel{+name: String}
-  PSection{+section: U32}
-  PGlobal{+name: String}
-  PType{+name: String, +kind: U32}
-  PSize{+name: String}
-  PAlign{+alignment: U32}
-  PBytes{+bytes: List<&2,U32>}
-  PDataReloc{+symbol: String, +addendLo: U32, +addendHi: U32}
-  PEmpty{}
-  PError{+error: String}
-
 type X187Number is Data:
   X187Number{+lo: U32, +hi: U32, +negative: Bool, +error: String}
 type X187Head is Data:

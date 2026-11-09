@@ -1,5 +1,6 @@
 # Scalar selection reserves r10/r11/rax/rcx as scratch. Frame variables have
 # 64-bit homes; each U32 producer clears the upper half before publication.
+# Typed instructions are the shared product of selection; text is a renderer.
 
 @unsafe
 def x181_width(typ: N111Type, wide: String, narrow: String) -> String:
@@ -8,59 +9,66 @@ def x181_width(typ: N111Type, wide: String, narrow: String) -> String:
     case _: wide
 
 @unsafe
-def x181_mask(typ: N111Type, +reg32: String) -> String:
+def x181_mask(typ: N111Type, +reg32: X187Operand) -> X188Seq:
   match typ:
-    case N111U32{}: "  movl " ++ reg32 ++ ", " ++ reg32 ++ "\n"
-    case _: ""
+    case N111U32{}: x188_i2("movl",reg32,reg32)
+    case _: X188Empty{}
 
 @unsafe
-def x181_load_slot(+slot: KDef, +reg: String) -> String:
-  nt_choose(String,String.eq(dk(slot),"X181Stack"),
-    u => "  movq -" ++ U32.show(da(slot)) ++ "(%rbp), " ++ reg ++ "\n",u =>
-  nt_choose(String,String.eq(dk(slot),"X181Buffer"),
-    u => "  leaq -" ++ U32.show(da(slot)) ++ "(%rbp), " ++ reg ++ "\n",u =>
-  nt_choose(String,String.eq(dk(slot),"X181Register"),
-    u => "  movq " ++ x181_reg(da(slot)) ++ ", " ++ reg ++ "\n",
-    u => nt_choose(String,String.eq(dk(slot),"X185Transient"),
-      v => "  movq " ++ x185_transient_reg(da(slot)) ++ ", " ++ reg ++ "\n",
-      v => ".error \"x181: missing local slot\"\n"))))
+def x181_load_slot(+slot: KDef, +reg: X187Operand) -> X188Seq:
+  nt_choose(X188Seq,String.eq(dk(slot),"X181Stack"),
+    u => x188_i2("movq",X187Mem{5,U32.sub(0,da(slot))},reg),u =>
+  nt_choose(X188Seq,String.eq(dk(slot),"X181Buffer"),
+    u => x188_i2("leaq",X187Mem{5,U32.sub(0,da(slot))},reg),u =>
+  nt_choose(X188Seq,String.eq(dk(slot),"X181Register"),
+    u => x188_i2("movq",x181_reg(da(slot)),reg),u =>
+  nt_choose(X188Seq,String.eq(dk(slot),"X185Transient"),
+    v => x188_i2("movq",x185_transient_reg(da(slot)),reg),
+    v => x188_error("x181: missing local slot")))))
 
 @unsafe
-def x181_local_load(+name: String, frame: X181Frame, reg: String) -> String:
+def x181_local_load(+name: String, frame: X181Frame, reg: X187Operand) -> X188Seq:
   match frame:
     case X181Frame{slots,bytes,calls,params,symbol}:
       x181_load_slot(index_find(slots,name,index_hash(name,2166136261),32),reg)
 
 @unsafe
-def x181_function_id(ids: N111Ids, name: String, reg: String) -> String:
-  match ids:
-    case N111Ids{functions,constructors}:
-      "  movabsq $" ++ p111q_id(functions,name) ++ ", " ++ reg ++ "\n"
+def x188_id_found(+found: KDef, reg: X187Operand) -> X188Seq:
+  nt_choose(X188Seq,String.eq(dk(found),"N111Id"),
+    u => x188_i2("movabsq",X187Imm{da(found),0},reg),u => x188_error("x181: missing native ID"))
 
 @unsafe
-def x181_constructor_id(ids: N111Ids, name: String, reg: String) -> String:
+def x188_id_load(tree: KDef, +name: String, reg: X187Operand) -> X188Seq:
+  x188_id_found(index_find(tree,name,index_hash(name,2166136261),32),reg)
+
+@unsafe
+def x181_function_id(ids: N111Ids, name: String, reg: X187Operand) -> X188Seq:
   match ids:
-    case N111Ids{functions,constructors}:
-      "  movabsq $" ++ p111q_id(constructors,name) ++ ", " ++ reg ++ "\n"
+    case N111Ids{functions,constructors}: x188_id_load(functions,name,reg)
+
+@unsafe
+def x181_constructor_id(ids: N111Ids, name: String, reg: X187Operand) -> X188Seq:
+  match ids:
+    case N111Ids{functions,constructors}: x188_id_load(constructors,name,reg)
 
 @unsafe
 def x181_load(value,ids,frame,reg):
   match value:
     case N111Local{name}: x181_local_load(name,frame,reg)
-    case N111Const{lo,hi}: "  movabsq $" ++ p111q_u64(lo,hi) ++ ", " ++ reg ++ "\n"
-    case N111Symbol{name}: "  leaq " ++ name ++ "(%rip), " ++ reg ++ "\n"
+    case N111Const{lo,hi}: x188_i2("movabsq",X187Imm{lo,hi},reg)
+    case N111Symbol{name}: x188_i2("leaq",X187Rip{name,0,0},reg)
     case N111FuncId{name}: x181_function_id(ids,name,reg)
     case N111CtorId{name}: x181_constructor_id(ids,name,reg)
 
 @unsafe
-def x181_store_slot(+slot: KDef, +reg: String) -> String:
-  nt_choose(String,String.eq(dk(slot),"X181Stack"),
-    u => "  movq " ++ reg ++ ", -" ++ U32.show(da(slot)) ++ "(%rbp)\n",u =>
-  nt_choose(String,String.eq(dk(slot),"X181Register"),
-    u => "  movq " ++ reg ++ ", " ++ x181_reg(da(slot)) ++ "\n",
-    u => nt_choose(String,String.eq(dk(slot),"X185Transient"),
-      v => "  movq " ++ reg ++ ", " ++ x185_transient_reg(da(slot)) ++ "\n",
-      v => ".error \"x181: invalid destination slot\"\n")))
+def x181_store_slot(+slot: KDef, +reg: X187Operand) -> X188Seq:
+  nt_choose(X188Seq,String.eq(dk(slot),"X181Stack"),
+    u => x188_i2("movq",reg,X187Mem{5,U32.sub(0,da(slot))}),u =>
+  nt_choose(X188Seq,String.eq(dk(slot),"X181Register"),
+    u => x188_i2("movq",reg,x181_reg(da(slot))),u =>
+  nt_choose(X188Seq,String.eq(dk(slot),"X185Transient"),
+    v => x188_i2("movq",reg,x185_transient_reg(da(slot))),
+    v => x188_error("x181: invalid destination slot"))))
 
 @unsafe
 def x181_store(name,frame,reg):
@@ -93,112 +101,97 @@ def x181_alu(+op: String) -> String:
       u => op,u => ""))
 
 @unsafe
-def x181_bin_instruction(+typ: N111Type, +op: String) -> String:
+def x181_bin_instruction(+typ: N111Type, +op: String) -> X188Seq:
   +suffix = x181_width(typ,"q","l")
-  +left = x181_width(typ,"%r10","%r10d")
-  +right = x181_width(typ,"%r11","%r11d")
+  +left = x188_width_reg(typ,10)
+  +right = x188_width_reg(typ,11)
   +condition = x181_condition(op)
   +alu = x181_alu(op)
-  nt_choose(String,Bool.not(String.is_empty(condition)),
-    u => "  cmp" ++ suffix ++ " " ++ right ++ ", " ++ left ++ "\n  set" ++ condition ++
-      " %r10b\n  movzbl %r10b, %r10d\n",u =>
-    nt_choose(String,String.is_empty(alu),u => "",u =>
-      nt_choose(String,x181_shift(op),
-        v => "  movl %r11d, %ecx\n  " ++ alu ++ suffix ++ " %cl, " ++ left ++ "\n",
-        v => "  " ++ alu ++ suffix ++ " " ++ right ++ ", " ++ left ++ "\n")))
+  nt_choose(X188Seq,Bool.not(String.is_empty(condition)),u =>
+    x188_many([x188_i2("cmp" ++ suffix,right,left),x188_i1("set" ++ condition,x188_reg(10,8)),
+      x188_i2("movzbl",x188_reg(10,8),x188_reg(10,32))]),u =>
+    nt_choose(X188Seq,String.is_empty(alu),u => X188Empty{},u =>
+      nt_choose(X188Seq,x181_shift(op),v =>
+        x188_many([x188_i2("movl",x188_reg(11,32),x188_reg(1,32)),x188_i2(alu ++ suffix,x188_reg(1,8),left)]),
+        v => x188_i2(alu ++ suffix,right,left))))
 
 def x185_machine_enabled() -> Bool: True{}
 
-# Immediate forms keep the original operand width and comparison signedness.
-# A 64-bit arithmetic immediate must fit signed32; larger values stay on the
-# original materialization path. Shift immediates use the same x86 count mask.
+# Immediate forms keep operand width, comparison signedness and x86 shift masks.
+# Full-width constants that cannot use signed32 retain the materialization path.
 @unsafe
-def x185_immediate(+typ: N111Type, +op: String, value: N111Value) -> String:
+def x185_immediate(+typ: N111Type, +op: String, value: N111Value) -> X188Seq:
   match value:
     case N111Const{+lo,+hi}:
       +suffix = x181_width(typ,"q","l")
-      +left = x181_width(typ,"%r10","%r10d")
+      +left = x188_width_reg(typ,10)
       +condition = x181_condition(op)
       +alu = x181_alu(op)
-      nt_choose(String,x181_shift(op),
-        u => "  " ++ alu ++ suffix ++ " $" ++ U32.show(U32.mod(lo,
-          nt_choose(U32,U32.is_eq(p111v_type(typ),1),v => 32,v => 64))) ++ ", " ++ left ++ "\n",u =>
-      nt_choose(String,String.eq(op,"and") && U32.is_eq(hi,0) && U32.is_eq(lo,4294967295),
-        u => "  movl %r10d, %r10d\n",u =>
-      nt_choose(String,U32.is_eq(hi,0) &&
+      nt_choose(X188Seq,x181_shift(op),u =>
+        x188_i2(alu ++ suffix,X187Imm{U32.mod(lo,nt_choose(U32,U32.is_eq(p111v_type(typ),1),v => 32,v => 64)),0},left),u =>
+      nt_choose(X188Seq,String.eq(op,"and") && U32.is_eq(hi,0) && U32.is_eq(lo,4294967295),
+        u => x188_i2("movl",x188_reg(10,32),x188_reg(10,32)),u =>
+      nt_choose(X188Seq,U32.is_eq(hi,0) &&
           (U32.is_eq(p111v_type(typ),1) || U32.is_le(lo,2147483647)),u =>
-        nt_choose(String,Bool.not(String.is_empty(condition)),
-          v => "  cmp" ++ suffix ++ " $" ++ U32.show(lo) ++ ", " ++ left ++ "\n  set" ++ condition ++
-            " %r10b\n  movzbl %r10b, %r10d\n",
-          v => nt_choose(String,String.is_empty(alu),w => "",
-            w => "  " ++ alu ++ suffix ++ " $" ++ U32.show(lo) ++ ", " ++ left ++ "\n")),u => "")))
-    case _: ""
+        nt_choose(X188Seq,Bool.not(String.is_empty(condition)),v =>
+          x188_many([x188_i2("cmp" ++ suffix,X187Imm{lo,0},left),x188_i1("set" ++ condition,x188_reg(10,8)),
+            x188_i2("movzbl",x188_reg(10,8),x188_reg(10,32))]),v =>
+          nt_choose(X188Seq,String.is_empty(alu),w => X188Empty{},w => x188_i2(alu ++ suffix,X187Imm{lo,0},left))),u => X188Empty{})))
+    case _: X188Empty{}
 
 @unsafe
 def x181_binary(+name: String, +typ: N111Type, +op: String,
     +left: N111Value, +right: N111Value, +ids: N111Ids,
     +frame: X181Frame, +code: X181Code) -> X181Code:
   +instruction = x181_bin_instruction(typ,op)
-  +immediate = nt_choose(String,x185_machine_enabled(),u => x185_immediate(typ,op,right),u => "")
+  +immediate = nt_choose(X188Seq,x185_machine_enabled(),u => x185_immediate(typ,op,right),u => X188Empty{})
   +physical = x185_physical_binary(name,typ,op,left,right,ids,frame)
-  nt_choose(X181Code,String.is_empty(instruction),
-    u => x181_error("unsupported x181 binary operation: " ++ op,code),
-    u => nt_choose(X181Code,Bool.not(String.is_empty(physical)),v => x181_add(physical,code),
-      v => x181_add(x181_load(left,ids,frame,"%r10") ++
-        nt_choose(String,String.is_empty(immediate),
-          w => x181_load(right,ids,frame,"%r11") ++ instruction,w => immediate) ++ x181_store(name,frame,"%r10"),code)))
+  nt_choose(X181Code,x188_empty(instruction),u => x181_error("unsupported x181 binary operation: " ++ op,code),u =>
+    nt_choose(X181Code,Bool.not(x188_empty(physical)),v => x181_add(physical,code),v =>
+      x181_add(x188_many([x181_load(left,ids,frame,x188_reg(10,64)),
+        nt_choose(X188Seq,x188_empty(immediate),w => x188_cat(x181_load(right,ids,frame,x188_reg(11,64)),instruction),w => immediate),
+        x181_store(name,frame,x188_reg(10,64))]),code)))
 
-# Call argument homes are rbp-relative stack/buffer slots or callee-saved
-# registers. Transient placement excludes every call-argument local globally,
-# so these sources are disjoint from ABI registers and the outgoing rsp area.
-# Loading an N111Value only reads one such home or materializes a constant,
-# ID or symbol, so placing one argument cannot overwrite a later source.
-# Keep r10 as the only scratch and preserve U32 truncation before placement.
-# Again updates parameter homes and still requires its separate snapshot.
+# The legacy all-r10 argument path remains available to callers of this helper.
+# The selected call path uses x186_call_arguments and preserves its snapshots.
 @unsafe
 def x181_call_arguments(args: List<&2,N111Arg>, +ids: N111Ids,
-    +frame: X181Frame, +n: U32) -> String:
+    +frame: X181Frame, +n: U32) -> X188Seq:
   match args:
-    case Nil{}: ""
+    case Nil{}: X188Empty{}
     case Con{N111Arg{typ,value},rest}:
-      x181_load(value,ids,frame,"%r10") ++ x181_mask(typ,"%r10d") ++
-      nt_choose(String,U32.is_lt(n,6),
-        u => "  movq %r10, " ++ x181_argreg(n) ++ "\n",
-        u => "  movq %r10, " ++
-          U32.show(U32.mul(U32.sub(n,6),8)) ++ "(%rsp)\n") ++
-        x181_call_arguments(rest,ids,frame,U32.inc(n))
+      x188_many([x181_load(value,ids,frame,x188_reg(10,64)),x181_mask(typ,x188_reg(10,32)),
+        nt_choose(X188Seq,U32.is_lt(n,6),u => x188_i2("movq",x188_reg(10,64),x181_argreg(n)),
+          u => x188_i2("movq",x188_reg(10,64),X187Mem{4,U32.mul(U32.sub(n,6),8)})),
+        x181_call_arguments(rest,ids,frame,U32.inc(n))])
 
 @unsafe
 def x181_call_text(symbol,args,ids,frame):
-  x186_call_arguments(args,ids,frame) ++ "  xorl %eax, %eax\n  call " ++ symbol ++ "\n"
+  x188_many([x186_call_arguments(args,ids,frame),x188_i2("xorl",x188_reg(0,32),x188_reg(0,32)),
+    x188_i1("call",X187Target{symbol})])
 
-# Materialize an unsigned byte offset explicitly; x86 memory displacements are
-# signed 32-bit values, while N111Load/Store offsets are U32.
+# Unsigned offsets above INT32_MAX must not become signed displacements.
 @unsafe
-def x181_address(base: N111Value, +offset: U32, ids: N111Ids, frame: X181Frame) -> String:
-  x181_load(base,ids,frame,"%r10") ++
-    nt_choose(String,U32.is_eq(offset,0),u => "",
-      u => "  movabsq $" ++ U32.show(offset) ++ ", %r11\n  addq %r11, %r10\n")
+def x181_address(base: N111Value, +offset: U32, ids: N111Ids, frame: X181Frame) -> X188Seq:
+  x188_cat(x181_load(base,ids,frame,x188_reg(10,64)),nt_choose(X188Seq,U32.is_eq(offset,0),u => X188Empty{},u =>
+    x188_many([x188_i2("movabsq",X187Imm{offset,0},x188_reg(11,64)),x188_i2("addq",x188_reg(11,64),x188_reg(10,64))])))
 
 @unsafe
 def x185_load_memory(+name: String, +typ: N111Type, +base: N111Value, +offset: U32,
-    +ids: N111Ids, +frame: X181Frame) -> String:
-  nt_choose(String,x185_machine_enabled() && U32.is_le(offset,2147483647),
-    u => x181_load(base,ids,frame,"%r10") ++
-      x181_width(typ,"  movq ","  movl ") ++ U32.show(offset) ++
-      x181_width(typ,"(%r10), %r10\n","(%r10), %r10d\n"),
-    u => x181_address(base,offset,ids,frame) ++
-      x181_width(typ,"  movq (%r10), %r10\n","  movl (%r10), %r10d\n")) ++ x181_store(name,frame,"%r10")
+    +ids: N111Ids, +frame: X181Frame) -> X188Seq:
+  x188_cat(nt_choose(X188Seq,x185_machine_enabled() && U32.is_le(offset,2147483647),u =>
+    x188_cat(x181_load(base,ids,frame,x188_reg(10,64)),x188_i2(x181_width(typ,"movq","movl"),X187Mem{10,offset},x188_width_reg(typ,10))),u =>
+    x188_cat(x181_address(base,offset,ids,frame),x188_i2(x181_width(typ,"movq","movl"),X187Mem{10,0},x188_width_reg(typ,10)))),
+    x181_store(name,frame,x188_reg(10,64)))
 
 @unsafe
 def x185_store_memory(+typ: N111Type, +base: N111Value, +offset: U32, +value: N111Value,
-    +ids: N111Ids, +frame: X181Frame) -> String:
-  nt_choose(String,x185_machine_enabled() && U32.is_le(offset,2147483647),
-    u => x181_load(base,ids,frame,"%r10") ++ x181_load(value,ids,frame,"%r11") ++
-      x181_width(typ,"  movq %r11, ","  movl %r11d, ") ++ U32.show(offset) ++ "(%r10)\n",
-    u => x181_address(base,offset,ids,frame) ++ x181_load(value,ids,frame,"%r11") ++
-      x181_width(typ,"  movq %r11, (%r10)\n","  movl %r11d, (%r10)\n"))
-
+    +ids: N111Ids, +frame: X181Frame) -> X188Seq:
+  nt_choose(X188Seq,x185_machine_enabled() && U32.is_le(offset,2147483647),u =>
+    x188_many([x181_load(base,ids,frame,x188_reg(10,64)),x181_load(value,ids,frame,x188_reg(11,64)),
+      x188_i2(x181_width(typ,"movq","movl"),x188_width_reg(typ,11),X187Mem{10,offset})]),u =>
+    x188_many([x181_address(base,offset,ids,frame),x181_load(value,ids,frame,x188_reg(11,64)),
+      x188_i2(x181_width(typ,"movq","movl"),x188_width_reg(typ,11),X187Mem{10,0})]))
 law x181_scalar_rows:
   for +rows: List<&2,N111Stmt>
   List<&2,P113DStmt>
@@ -317,7 +310,7 @@ def x181_scalar(stmt,ids,frame,code):
     case N111If{condition,yes,no}:
       x181_stmts([P113DIf{condition,x181_scalar_rows(yes),x181_scalar_rows(no)}],ids,frame,code)
     case N111Return{value}:
-      x181_return(x181_load(value,ids,frame,"%rax"),frame,code)
+      x181_return(x181_load(value,ids,frame,x188_reg(0,64)),frame,code)
     case N111Load{name,typ,base,offset}:
       x181_add(x186_load_text(name,typ,base,offset,ids,frame),code)
     case N111Store{typ,base,offset,value}:

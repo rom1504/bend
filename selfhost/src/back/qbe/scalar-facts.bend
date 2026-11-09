@@ -623,13 +623,36 @@ def p113l_base_compare(+op: String, left: P113KFact, right: P113KFact) -> P113KF
       nt_choose(P113KFact,le && U32.is_lt(rb,lb),u => p113k_unsigned(op,False{},False{}),u => p113k_bound(1))))
 
 
+# The admitted direct IR reserves a non-reassignable 2048-byte scratch pointer.
+# Restrict this fact to that buffer and the exact primitive ABI; arbitrary local
+# pointers need capacity facts that this scalar pass deliberately does not track.
+# These runtime primitives return raw 0/1 even for NaNs or packed Bool inputs.
+@unsafe
+def p185k_bool_primitive(+id: U32, +count: U32) -> Bool:
+  (U32.is_eq(count,1) && U32.is_eq(id,21)) ||
+    (U32.is_eq(count,2) && ((U32.is_ge(id,7) && U32.is_le(id,12)) ||
+      (U32.is_ge(id,30) && U32.is_le(id,35)) || (U32.is_ge(id,67) && U32.is_le(id,69))))
+
+
+@unsafe
+def p185k_call_fact(typ: N111Type, +symbol: String, args: List<&2,N111Arg>) -> P113KFact:
+  match typ args:
+    case N111U64{} Con{N111Arg{N111Ptr{},N111Local{state}},
+      Con{N111Arg{N111U32{},N111Const{id,0}},
+      Con{N111Arg{N111Ptr{},N111Local{buffer}},
+      Con{N111Arg{N111U32{},N111Const{count,0}},Nil{}}}}}:
+      p113k_bound(nt_choose(U32,String.eq(symbol,"p111_rt_op") && String.eq(state,"state") &&
+        String.eq(buffer,"scratch") && p185k_bool_primitive(id,count),u => 1,u => 64))
+    case _ _: p113k_bound(64)
+
+
 @unsafe
 def p113l_base_scalar(stmt: N111Stmt, +facts: KDef) -> P113KScalar:
   match stmt:
     case N111Set{+name,+typ,+value}:
       P113KScalar{[N111Set{name,typ,p113k_replace(value,facts)}],p113k_put(facts,name,p113k_limit(p113k_value(value,facts),p113k_width(typ)))}
     case N111Bin{name,typ,op,+left,+right}: p113k_scalar_bin(name,typ,op,left,right,facts,p113k_value(left,facts),p113k_value(right,facts))
-    case N111Call{+name,typ,symbol,args}: P113KScalar{[N111Call{name,typ,symbol,p113k_args(args,facts)}],p113k_put(facts,name,p113k_bound(64))}
+    case N111Call{+name,+typ,+symbol,+args}: P113KScalar{[N111Call{name,typ,symbol,p113k_args(args,facts)}],p113k_put(facts,name,p185k_call_fact(typ,symbol,args))}
     case N111If{+condition,yes,no}: p113k_scalar_if(condition,yes,no,facts,p113k_value(condition,facts))
     case N111Load{+name,typ,base,offset}: P113KScalar{[N111Load{name,typ,base,offset}],p113k_put(facts,name,p113k_bound(64))}
     case N111Store{typ,base,offset,value}: P113KScalar{[N111Store{typ,base,offset,p113k_replace(value,facts)}],facts}

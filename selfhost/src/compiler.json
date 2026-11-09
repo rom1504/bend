@@ -219,7 +219,11 @@
     "src/back/qbe/early-observers.bend",
     "src/back/qbe/early-emission.bend",
     "src/host/qbe-early-entry.bend",
-    "src/check/publication-reuse.bend"
+    "src/check/publication-reuse.bend",
+    "src/back/qbe/cold-constructors.bend",
+    "src/back/qbe/packed-take.bend",
+    "src/back/qbe/continuation-frames.bend",
+    "src/back/qbe/descriptor-proof.bend"
   ],
   "order": [
     [
@@ -26500,6 +26504,21 @@
     [
       126,
       "def",
+      "p185_bool_safe_value"
+    ],
+    [
+      126,
+      "def",
+      "p185_bool_safe"
+    ],
+    [
+      126,
+      "def",
+      "p185_bool_binary"
+    ],
+    [
+      126,
+      "def",
       "p112_special_selected"
     ],
     [
@@ -30901,6 +30920,16 @@
       133,
       "def",
       "p113l_base_compare"
+    ],
+    [
+      133,
+      "def",
+      "p185k_bool_primitive"
+    ],
+    [
+      133,
+      "def",
+      "p185k_call_fact"
     ],
     [
       133,
@@ -42766,6 +42795,216 @@
       175,
       "def",
       "p177dr_body"
+    ],
+    [
+      218,
+      "def",
+      "p185cc_known"
+    ],
+    [
+      218,
+      "def",
+      "p185cc_class"
+    ],
+    [
+      218,
+      "def",
+      "p185cc_guard"
+    ],
+    [
+      218,
+      "def",
+      "p185cc_reads"
+    ],
+    [
+      218,
+      "def",
+      "p185cc_writes"
+    ],
+    [
+      218,
+      "def",
+      "p185cc_fast"
+    ],
+    [
+      218,
+      "def",
+      "p185cc_cached"
+    ],
+    [
+      218,
+      "def",
+      "p185cc_expand"
+    ],
+    [
+      218,
+      "def",
+      "p185cc_previous"
+    ],
+    [
+      218,
+      "def",
+      "p185cc_join"
+    ],
+    [
+      218,
+      "def",
+      "p185cc_word"
+    ],
+    [
+      218,
+      "def",
+      "p185cc_words"
+    ],
+    [
+      218,
+      "def",
+      "p185cc_emitted"
+    ],
+    [
+      218,
+      "def",
+      "p185cc_stmt"
+    ],
+    [
+      219,
+      "def",
+      "p185pt_previous"
+    ],
+    [
+      219,
+      "def",
+      "p185pt_word"
+    ],
+    [
+      219,
+      "def",
+      "p185pt_admitted"
+    ],
+    [
+      219,
+      "def",
+      "p185pt_name"
+    ],
+    [
+      219,
+      "def",
+      "p185pt_local"
+    ],
+    [
+      219,
+      "def",
+      "p185pt_single"
+    ],
+    [
+      219,
+      "def",
+      "p185pt_take"
+    ],
+    [
+      220,
+      "def",
+      "p185fr_buffer"
+    ],
+    [
+      220,
+      "def",
+      "p185fr_fid"
+    ],
+    [
+      220,
+      "def",
+      "p185fr_expand"
+    ],
+    [
+      220,
+      "def",
+      "p185fr_emit"
+    ],
+    [
+      220,
+      "def",
+      "p185fr_stmt"
+    ],
+    [
+      220,
+      "def",
+      "p185fr_stmts"
+    ],
+    [
+      221,
+      "def",
+      "p185cb_items"
+    ],
+    [
+      221,
+      "def",
+      "p185cb_unique"
+    ],
+    [
+      221,
+      "def",
+      "p185cb_at"
+    ],
+    [
+      221,
+      "def",
+      "p185cb_number"
+    ],
+    [
+      221,
+      "def",
+      "p185cb_ref"
+    ],
+    [
+      221,
+      "def",
+      "p185cb_header"
+    ],
+    [
+      221,
+      "def",
+      "p185cb_scan"
+    ],
+    [
+      221,
+      "def",
+      "p185cb_marker"
+    ],
+    [
+      221,
+      "def",
+      "p185cb_entry"
+    ],
+    [
+      221,
+      "def",
+      "p185cb_bucket"
+    ],
+    [
+      221,
+      "def",
+      "p185cb_tree"
+    ],
+    [
+      221,
+      "def",
+      "p185cb_scanned"
+    ],
+    [
+      221,
+      "def",
+      "p185cb_bind"
+    ],
+    [
+      221,
+      "def",
+      "p185cb_known"
+    ],
+    [
+      221,
+      "def",
+      "p185cb_construct"
     ]
   ],
   "defaultProfile": "qbe",
@@ -42801,14 +43040,21 @@
       "modules": [
         "src/back/x86/model.bend",
         "src/back/x86/frame.bend",
+        "src/back/x86/floating.bend",
         "src/back/x86/scalar.bend",
         "src/back/x86/regalloc.bend",
+        "src/back/x86/transient.bend",
+        "src/back/x86/dead-assignments.bend",
+        "src/back/x86/register-binary.bend",
+        "src/back/x86/scratch-forward.bend",
         "src/back/x86/function.bend",
         "src/back/x86/program.bend",
         "src/back/x86/stream.bend",
         "src/back/x86/entry.bend"
       ],
-      "roots": ["main"],
+      "roots": [
+        "main"
+      ],
       "protocol": "native-x86-source-v1",
       "status": "maintained-source-requires-independent-x86-qualification"
     }
@@ -43390,24 +43636,79 @@
   "inventoryChange": {
     "added": [
       [
-        151,
-        "law",
-        "check_rfl_graph"
+        221,
+        "def",
+        "p185cb_items"
       ],
       [
-        162,
+        221,
         "def",
-        "norm_convert_state"
+        "p185cb_unique"
       ],
       [
-        151,
+        221,
         "def",
-        "check_rfl_graph_head"
+        "p185cb_at"
       ],
       [
-        151,
+        221,
         "def",
-        "check_rfl_graph"
+        "p185cb_number"
+      ],
+      [
+        221,
+        "def",
+        "p185cb_ref"
+      ],
+      [
+        221,
+        "def",
+        "p185cb_header"
+      ],
+      [
+        221,
+        "def",
+        "p185cb_scan"
+      ],
+      [
+        221,
+        "def",
+        "p185cb_marker"
+      ],
+      [
+        221,
+        "def",
+        "p185cb_entry"
+      ],
+      [
+        221,
+        "def",
+        "p185cb_bucket"
+      ],
+      [
+        221,
+        "def",
+        "p185cb_tree"
+      ],
+      [
+        221,
+        "def",
+        "p185cb_scanned"
+      ],
+      [
+        221,
+        "def",
+        "p185cb_bind"
+      ],
+      [
+        221,
+        "def",
+        "p185cb_known"
+      ],
+      [
+        221,
+        "def",
+        "p185cb_construct"
       ]
     ],
     "removed": [],

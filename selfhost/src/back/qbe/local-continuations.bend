@@ -974,11 +974,11 @@ def p114h_stmt(+stmt: P114RStmt, +params: List<&2,String>, +buffer: String, +ids
   match stmt:
     case P114RIf{condition,yes,no}: p114h_if(condition,yes,no,params,buffer,ids,code)
     case P114RDescend{frame,arguments}:
-      p114h_again(arguments,params,buffer,ids,p111q_line("%p114r_depth =l add %p114r_depth, 1\n",p111q_stmts(frame,ids,code)))
+      p114h_again(arguments,params,buffer,ids,p111q_line("%p114r_depth =l add %p114r_depth, 1\n",p185fr_stmts(frame,buffer,ids,code)))
     case P114RAgain{arguments}: p114h_again(arguments,params,buffer,ids,code)
     case P114RResumeReady{frame,call,result}:
       p114r_stmt(P114RResult{result},params,ids,p111q_stmts(call,ids,
-        p111q_line("%p114r_depth =l add %p114r_depth, 1\n",p111q_stmts(frame,ids,code))))
+        p111q_line("%p114r_depth =l add %p114r_depth, 1\n",p185fr_stmts(frame,buffer,ids,code))))
     case _: p114r_stmt(stmt,params,ids,code)
 
 @unsafe

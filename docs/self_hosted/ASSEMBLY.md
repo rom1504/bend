@@ -18,6 +18,29 @@ the operational asset key is `x86-n2`. The
 [Phase183 report](../../implementation/phase183/README.md) records its source,
 actual generations, qualification and audited installation.
 
+## Current development pipeline
+
+Phase185 adds bounded optimizations to the maintained source; the installed
+Phase183 image remains a separately qualified artifact until release promotion.
+See the [Phase185 report](../../implementation/phase185/README.md) for actual
+candidate identities, runtime results and native qualification status.
+
+The assembly backend reuses checked scalar-array and late native expansions,
+then applies stable copy elimination, scalar facts, dead-assignment removal and
+local stack-cell forwarding before machine placement. Temporary values confined
+to one call-free region can use caller-saved registers; values crossing calls,
+branches or loop boundaries keep the conservative homes. Scalar binary emission
+uses known destination registers directly, and admitted binary F32 operations
+use scalar SSE instructions under the same numeric contract as QBE. Unknown
+cases retain the original lowering. These are compiler algorithms written in
+Bend, not host-language code-generation shortcuts.
+
+The passes operate on the existing verified native statements. They preserve
+entry setup versus loop-backedge semantics, operand snapshots, alias barriers,
+widths, effect order and the runtime ABI. Finite adversarial machine controls
+and native qualification are separate from the unchanged final IR verifier;
+these optimizations do not establish an end-to-end compiler theorem.
+
 ## Public commands
 
 Run the installed compiler from the repository root:

@@ -2,6 +2,8 @@
 # remain the semantic input; this per-function frame is machine placement only.
 # slots: X181Stack da=positive rbp displacement, X181Buffer da=end displacement,
 # or X181Register da=register number (0=state/r12,1=rbx,2=r13,3=r14,4=r15).
+# X185Transient da=0..4 is confined to one call-free region and maps to the
+# separate rdi/rsi/rdx/r8/r9 pool; parameters and call arguments never use it.
 # bytes is the last reserved rbp displacement; calls is maximum outgoing bytes.
 type X181Frame is Data:
   X181Frame{+slots: KDef, +bytes: U32, +calls: U32, +params: List<&2,String>, +symbol: String}
@@ -73,6 +75,32 @@ law x181_epilogue:
 law x181_call_text:
   for +symbol: String
   for +args: List<&2,N111Arg>
+  for +ids: N111Ids
+  for +frame: X181Frame
+  String
+
+law x185_transient_reg:
+  for +index: U32
+  String
+
+law x185_transient_frame:
+  for +frame: X181Frame
+  for +params: List<&2,String>
+  for +setup: List<&2,P113DStmt>
+  for +body: List<&2,P113DStmt>
+  X181Frame
+
+law x185_dead_body:
+  for +setup: List<&2,P113DStmt>
+  for +body: List<&2,P113DStmt>
+  List<&2,P113DStmt>
+
+law x185_physical_binary:
+  for name: String
+  for +typ: N111Type
+  for +op: String
+  for +left: N111Value
+  for +right: N111Value
   for +ids: N111Ids
   for +frame: X181Frame
   String

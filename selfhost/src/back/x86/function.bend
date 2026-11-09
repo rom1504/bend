@@ -177,15 +177,57 @@ def x181_prologue(frame: X181Frame) -> String:
       ".text\n.globl " ++ symbol ++ "\n.type " ++ symbol ++ ", @function\n" ++ symbol ++ ":\n" ++
       "  pushq %rbp\n  movq %rsp, %rbp\n  pushq %rbx\n  pushq %r12\n  pushq %r13\n  pushq %r14\n  pushq %r15\n  subq $" ++
       U32.show(U32.add(U32.mul(U32.div(U32.add(U32.add(bytes,calls),15),16),16),8)) ++ ", %rsp\n" ++
-      x181_incoming(params,0,frame,[]) ++ x181_loop_label(frame) ++ ":\n"
+      x181_incoming(params,0,frame,[])
 
 @unsafe
 def x181_function(+symbol: String, +params: List<&2,String>, +body: List<&2,P113DStmt>, +ids: N111Ids) -> X181Output:
-  x181_function_frame(symbol,body,ids,x181_register_frame(x181_frame(symbol,params,body),body))
+  x185_function_setup(symbol,params,[],body,ids)
+
+# Setup executes once. Again only reaches the body label, so invariant array
+# metadata is not recomputed from changing parameter homes on a backedge.
+@unsafe
+def x185_function_setup(+symbol: String, +params: List<&2,String>, +setup: List<&2,P113DStmt>,
+    +body: List<&2,P113DStmt>, +ids: N111Ids) -> X181Output:
+  nt_choose(X181Output,x185_late_enabled() && p114t_names(params) && p114t_body_names(setup) && p114t_body_names(body),
+    u => x185_function_late_setup(symbol,params,body,ids,x185_late_stmts(setup,ids,0)),
+    u => x185_function_place(symbol,params,setup,body,ids))
+
+@unsafe
+def x185_function_late_setup(symbol: String, params: List<&2,String>, body: List<&2,P113DStmt>,
+    +ids: N111Ids, setup: P113ABody) -> X181Output:
+  match setup:
+    case P113ABody{ready,next}: x185_function_late_body(symbol,params,ready,ids,x185_late_stmts(body,ids,next))
+
+@unsafe
+def x185_function_late_body(symbol: String, params: List<&2,String>, setup: List<&2,P113DStmt>,
+    ids: N111Ids, body: P113ABody) -> X181Output:
+  match body:
+    case P113ABody{ready,next}: x185_function_place(symbol,params,setup,ready,ids)
+
+@unsafe
+def x185_function_place(+symbol: String, +params: List<&2,String>, +setup: List<&2,P113DStmt>,
+    +body: List<&2,P113DStmt>, +ids: N111Ids) -> X181Output:
+  x185_function_copied(symbol,params,setup,x185_prepare_body(params,setup,x185_scratch_body(params,setup,body)),ids)
+
+def x185_loop_registers_enabled() -> Bool: True{}
+
+@unsafe
+def x185_function_copied(+symbol: String, +params: List<&2,String>, +setup: List<&2,P113DStmt>,
+    +body: List<&2,P113DStmt>, +ids: N111Ids) -> X181Output:
+  +all = nt_append(P113DStmt,setup,body)
+  x185_function_frame(symbol,setup,body,ids,x185_transient_frame(
+    x181_register_frame(x181_frame(symbol,params,all),
+      nt_choose(List<&2,P113DStmt>,x185_loop_registers_enabled(),u => body,u => all)),params,setup,body))
+
+@unsafe
+def x185_function_frame(+symbol: String, +setup: List<&2,P113DStmt>, +body: List<&2,P113DStmt>,
+    +ids: N111Ids, +frame: X181Frame) -> X181Output:
+  x181_function_done(symbol,x181_stmts(body,ids,frame,x181_add(x181_loop_label(frame) ++ ":\n",
+    x181_stmts(setup,ids,frame,X181Code{[x181_prologue(frame)],0,False{},""}))))
 
 @unsafe
 def x181_function_frame(+symbol: String, +body: List<&2,P113DStmt>, +ids: N111Ids, +frame: X181Frame) -> X181Output:
-  x181_function_done(symbol,x181_stmts(body,ids,frame,X181Code{[x181_prologue(frame)],0,False{},""}))
+  x185_function_frame(symbol,[],body,ids,frame)
 
 @unsafe
 def x181_function_done(+symbol: String, code: X181Code) -> X181Output:

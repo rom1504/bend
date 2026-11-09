@@ -112,12 +112,91 @@ def x181_program_join(first: X181Output, second: X181Output) -> X181Output:
   match first second:
     case X181Output{a,ae} X181Output{b,be}: X181Output{nt_append(String,a,b),p111_first(ae,be)}
 
+# The shared cursor retains the original private bodies. Array templates were
+# previously selected only by the QBE renderer. Reuse the existing structured
+# admission, rewrite and setup factories under that same mode=2 certificate.
+# Their fallback keeps the complete original runtime operation and ownership.
+@unsafe
+def x185_array_emit(function: P113DFunction, +symbol: String, +prelude: List<&2,N111Stmt>, +ids: N111Ids) -> X181Output:
+  match function:
+    case P113DFunction{name,+params,+result,public,body}:
+      x185_function_setup(symbol,Con{"state",nt_choose(List<&2,String>,U32.is_eq(result,1),
+        u => x181_param_names(params),u => Con{"__x181_result_out",x181_param_names(params)})},
+        x181_scalar_rows(Con{N111Load{"p113a_heap_base",N111Ptr{},N111Local{"state"},0},prelude}),body,ids)
+
+@unsafe
+def x185_array_plain(+function: P113DFunction, ids: N111Ids, heap: U32) -> X181Output:
+  match function:
+    case P113DFunction{name,params,result,public,body}:
+      x185_array_emit(p113a_function(function,heap),p113e_symbol(name),[],ids)
+
+@unsafe
+def x185_array_arguments(params: List<&2,NC_Binding>) -> List<&2,N111Arg>:
+  match params:
+    case Nil{}: []
+    case Con{NC_Binding{id,word,kind},rest}:
+      Con{N111Arg{N111U64{},N111Local{word}},x185_array_arguments(rest)}
+
+# This call is only on the entry guard's false edge, before parameter mutation.
+# Multiple results retain their incoming hidden output pointer and status.
+@unsafe
+def x185_array_dispatch(+name: String, +params: List<&2,NC_Binding>, +result: U32, +used: U32) -> List<&2,N111Stmt>:
+  nt_append(N111Stmt,Con{N111Set{"p113a_version_guard",N111U32{},N111Const{1,0}},p117v_guard(params,1,used)},
+    [N111If{N111Local{"p113a_version_guard"},[],[
+      N111Call{"__x181_fallback",N111U64{},"p117v_" ++ nt_fid(name),
+        Con{p111_state(),nt_choose(List<&2,N111Arg>,U32.is_eq(result,1),
+          u => x185_array_arguments(params),
+          u => Con{N111Arg{N111Ptr{},N111Local{"__x181_result_out"}},x185_array_arguments(params)})}},
+      N111Return{N111Local{"__x181_fallback"}}]}])
+
+@unsafe
+def x185_array_version(+function: P113DFunction, +ids: N111Ids, +heap: U32, +used: U32, sites: KDef) -> X181Output:
+  match function:
+    case P113DFunction{+name,+params,+result,public,body}:
+      x181_program_join(x185_array_emit(p113a_function(function,heap),"p117v_" ++ nt_fid(name),[],ids),
+        x185_array_emit(p113a_function_done(name,params,result,public,p117v_rewrite(body,0,heap,used,sites)),
+          p113e_symbol(name),nt_append(N111Stmt,p117h_prelude(params,1,used,heap),
+            x185_array_dispatch(name,params,result,used)),ids))
+
+@unsafe
+def x185_array_scanned(+function: P113DFunction, +ids: N111Ids, +heap: U32, scan: P117HScan) -> X181Output:
+  match function scan:
+    case P113DFunction{+name,+params,result,public,+body} P117HScan{facts,slots,+mask,+used,+again,left,+next,+sites}:
+      +used = U32.and(mask,used)
+      nt_choose(X181Output,again && U32.is_gt(used,0) && U32.is_gt(next,0) &&
+          U32.is_le(p113i_size(body),1024) && p117v_all(sites,next,used,0),
+        u => x185_array_version(function,ids,heap,used,sites),
+        u => nt_choose(X181Output,again && U32.is_gt(used,0),
+          v => x185_array_emit(p113a_function_done(name,params,result,public,p117h_rewrite(body,0,heap,used,sites)),
+            p113e_symbol(name),p117h_prelude(params,1,used,heap),ids),
+          v => x185_array_plain(function,ids,heap)))
+
+@unsafe
+def x185_array_selected(+function: P113DFunction, +ids: N111Ids, +heap: U32) -> X181Output:
+  match function:
+    case P113DFunction{name,+params,result,public,+body}:
+      +count = nt_count(NC_Binding,params)
+      nt_choose(X181Output,U32.is_gt(count,16) || Bool.not(p117h_params_clean(params)),
+        u => x185_array_plain(function,ids,heap),
+        u => x185_array_scanned(function,ids,heap,p117h_walk(body,count,
+          P117HScan{p117h_seed(params,1,missing()),missing(),U32.sub(U32.shln(1,U32.to_nat(count)),1),0,False{},8192,0,missing()})))
+
+@unsafe
+def x185_array_function(+function: P113DFunction, +ids: N111Ids, +heap: U32, +mode: U32) -> X181Output:
+  match function:
+    case P113DFunction{name,+params,result,public,+body}:
+      +error = p111_first(x181_hygiene_names(x181_param_names(params)),x181_hygiene_stmts(body))
+      nt_choose(X181Output,Bool.not(String.is_empty(error)),u => X181Output{[],error},u =>
+        nt_choose(X181Output,U32.is_eq(mode,2) && U32.is_gt(p113a_count_body(body,0),0) &&
+          p113a_params(params) && p113a_body_names(body),
+          v => x185_array_selected(function,ids,heap),v => x181_direct(function,ids)))
+
 @unsafe
 def x181_program_private(+function: P113DFunction, context: P134Context, +available: KDef) -> X181Output:
   match function context:
     case P113DFunction{name,params,result,public,body} P134Context{ids,index,direct,ready,view,lookups,heap,mode}:
       x181_program_join(X181Output{[],x181_program_stmts(body,available)},
-        x181_program_join(x181_direct(function,ids),x181_forward(function,ready)))
+        x181_program_join(x185_array_function(function,ids,heap,mode),x181_forward(function,ready)))
 
 @unsafe
 def x181_program_public(+segment: N111Segment, context: P134Context, +available: KDef) -> X181Output:

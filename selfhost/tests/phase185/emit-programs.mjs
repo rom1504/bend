@@ -7,7 +7,7 @@ const a={};for(let i=2;i<process.argv.length;i+=2){need(process.argv[i].startsWi
 const out=path.resolve(a.out);need(out.startsWith(workspace+'/selfhost/build/')&&!fs.existsSync(out),'fresh output');fs.mkdirSync(out,{recursive:true});
 const read=p=>JSON.parse(fs.readFileSync(p));const authority=read(a.api),binding=read(a.binding);
 const catalogFile=path.join(workspace,'selfhost/tools/bench/catalogs/native45/catalog.json'),catalog=read(catalogFile);
-const names=a.cases.split(',');need(new Set(names).size===names.length&&['qbe','x86'].includes(a.target),'cases/target');
+const names=a.cases==='all'?catalog.cases.map(c=>c.id):a.cases.split(',');need(new Set(names).size===names.length&&['qbe','x86'].includes(a.target),'cases/target');
 const inputs=[pin(fileURLToPath(import.meta.url)),pin(process.execPath),pin(a.api),authority.source,authority.api,pin(a.binding),binding.base,binding.carrier,pin(catalogFile)];
 const report={kind:'phase185-checked-native-emission',complete:false,target:a.target,inputs,rows:[],scope:'Checked Bend API performs source preparation and final verified native emission. Host transports bytes only; no native-image qualification claim.'};
 const save=()=>fs.writeFileSync(out+'/report.json',JSON.stringify(report,null,2)+'\n');save();

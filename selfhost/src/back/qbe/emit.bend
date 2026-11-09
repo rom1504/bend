@@ -137,10 +137,7 @@ def p111q_stmts_head(+stmt: N111Stmt, +rest: List<&2,N111Stmt>, +ids: N111Ids, +
 
 @unsafe
 def p111q_stmt(+stmt: N111Stmt, +ids: N111Ids, +code: P111QCode) -> P111QCode:
-  match code:
-    case P111QCode{chunks,next,terminal,error}:
-      nt_choose(P111QCode,Bool.not(terminal) && String.is_empty(error),
-        u => p128bf_selected(stmt,p128bf_match(stmt,ids,next),ids,code),u => p128bf_previous(stmt,ids,code))
+  p185cc_stmt(stmt,ids,code)
 
 def p111q_return(value: String, code: P111QCode) -> P111QCode:
   match code:
@@ -230,9 +227,9 @@ def p111q_function_ids(segments: List<&2,N111Segment>, +next: U32, tree: KDef) -
 def p111q_constructor_ids(constructors: List<&2,N_Constructor>, +next: U32, tree: KDef) -> KDef:
   match constructors:
     case Nil{}: tree
-    case Con{N_Constructor{+name,arity,hot},rest}:
+    case Con{N_Constructor{+name,arity,+hot},rest}:
       p111q_constructor_ids(rest,U32.inc(next),
-        index_set(tree,KDef{name,"N111Id",next,arity,{KTerm{"Absent", "", 0, 0, Nil{}, Nil{}, 0, 0} : KTerm},{KTerm{"Absent", "", 0, 0, Nil{}, Nil{}, 0, 0} : KTerm},[],False{},False{}},
+        index_set(tree,KDef{name,"N111Id",next,arity,kt("P185Constructor","",nt_choose(U32,hot,u => 1,u => 0),11102,[]),{KTerm{"Absent", "", 0, 0, Nil{}, Nil{}, 0, 0} : KTerm},[],False{},False{}},
           index_hash(name,2166136261),32))
 
 @unsafe

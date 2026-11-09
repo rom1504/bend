@@ -37,11 +37,12 @@ def p134e_prepare(+program: P111Program, +nodes: List<&2,P112SNode>, +functions:
 
 @unsafe
 def p134e_registered(+segments: List<&2,N111Segment>, +functions: List<&2,P113DFunction>, +ids: N111Ids, +index: P112FusionIndex,
-    +heap: U32, +mode: U32, tables: List<&2,P111QData>, registry: P112RegionRegistry) -> P134Cursor:
+    +heap: U32, +mode: U32, +tables: List<&2,P111QData>, registry: P112RegionRegistry) -> P134Cursor:
   match registry:
     case P112RegionRegistry{+ready,symbols,+entries,workers,fusions}:
       +direct = p113e_signatures(functions,missing())
       +lookups = nt_choose(List<&2,P126ITable>,U32.is_eq(mode,2),u => p126i_catalogue(functions,[]),u => [])
+      +ids = p185cb_bind(ids,tables)
       +context : P134Context = P134Context{ids,index,direct,ready,p124r_view(ready,direct),lookups,heap,mode}
       +public : P134Cursor = P134Public{segments,context,P134Tables{tables}}
       +legacy = nt_choose(P134Cursor,List.is_empty(&2,N111Segment,segments),u => public,

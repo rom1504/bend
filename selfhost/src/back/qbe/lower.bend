@@ -454,11 +454,7 @@ def p111_field_env(+count: U32, +i: U32, +n: U32) -> List<&2, NC_Binding>:
 
 @unsafe
 def p111_take(+name: String, +word: N111Value, +count: U32, +n: U32) -> List<&2, N111Stmt>:
-  +kind = p111_special(name)
-  nt_choose(List<&2, N111Stmt>, U32.is_eq(count, 0), u => Nil{},
-    u => Con{nt_choose(N111Stmt, U32.is_eq(kind, 0),
-      v => N111Call{"ignored", N111U64{}, "p111_rt_take", [p111_state(), p111_word(word), p111_scratch(), p111_u32(count)]},
-      v => N111Call{"ignored", N111U64{}, "p111_rt_special_take", [p111_state(), p111_u32(kind), p111_word(word), p111_scratch(), p111_u32(count)]}), p111_load_fields(count, 0, n)})
+  p185pt_take(name,word,count,n)
 
 @unsafe
 def p111_test(+name: String, +word: N111Value) -> List<&2, N111Stmt>:

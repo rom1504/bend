@@ -223,7 +223,11 @@ def p112_intrinsic(+name: String, +values: List<&2, N111Value>) -> P111ValueCode
   +arity = p112_scalar_arity(id)
   nt_choose(P111ValueCode, U32.is_gt(arity, 0) && U32.is_eq(arity, nt_count(N111Value, values)) && p112_scalar_safe(values),
     u => p112_scalar_dispatch(id, values),
-    u => p112_intrinsic_fallback(name, values))
+    u => nt_choose(P111ValueCode, (U32.is_eq(id, 68) || U32.is_eq(id, 69)) &&
+      U32.is_eq(nt_count(N111Value, values), 2) && p185_bool_safe(values),
+      v => p185_bool_binary(nt_choose(String, U32.is_eq(id, 68), w => "or", w => "xor"),
+        p111_head(values), p111_head(p111_tail(values))),
+      v => p112_intrinsic_fallback(name, values)))
 
 
 @unsafe
@@ -256,6 +260,38 @@ def p112_special_bool(+word: N111Value, invert: Bool) -> List<&2, N111Stmt>:
      N111Bin{"match_condition", N111U32{}, "or", N111Local{"p112_b_raw"}, N111Local{"p112_b_boxed"}}],
     nt_choose(List<&2, N111Stmt>, invert,
       u => [N111Bin{"match_condition", N111U32{}, "xor", N111Local{"match_condition"}, N111Const{1, 0}}], u => []))
+
+
+# Bool primitives share the special-pattern truth predicate, including packed
+# True with arbitrary location/RFC bits. Snapshot both inputs before any helper
+# writes; renaming keeps its U32 comparisons separate from the input U64 words.
+# The reserved prefix refuses synthetic IR collisions through the old runtime.
+@unsafe
+def p185_bool_safe_value(value: N111Value) -> Bool:
+  match value:
+    case N111Local{name}: Bool.not(String.starts_with(name, "p185_bool_"))
+    case _: True{}
+
+
+@unsafe
+def p185_bool_safe(values: List<&2, N111Value>) -> Bool:
+  match values:
+    case Nil{}: True{}
+    case Con{head, rest}: p185_bool_safe_value(head) && p185_bool_safe(rest)
+
+
+@unsafe
+def p185_bool_binary(op: String, a: N111Value, b: N111Value) -> P111ValueCode:
+  p112_scalar_result(nt_append(N111Stmt,
+    [N111Set{"p185_bool_a_local_input", N111U64{}, a},
+     N111Set{"p185_bool_b_local_input", N111U64{}, b}],
+    nt_append(N111Stmt, p112f_rename(p112_special_bool(N111Local{"input"}, False{}), "p185_bool_a_"),
+    nt_append(N111Stmt, p112f_rename(p112_special_bool(N111Local{"input"}, False{}), "p185_bool_b_"),
+      [N111Bin{"p185_bool_test", N111U32{}, op,
+         N111Local{"p185_bool_a_local_match_condition"}, N111Local{"p185_bool_b_local_match_condition"}},
+       N111If{N111Local{"p185_bool_test"},
+         [N111Set{"value", N111U64{}, N111Const{1, 0}}],
+         [N111Set{"value", N111U64{}, N111Const{0, 0}}]}]))))
 
 
 @unsafe

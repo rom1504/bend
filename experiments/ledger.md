@@ -1,3 +1,26 @@
+# Phase188 — shared typed x86 instructions, 2026-11-09
+
+[Report](../implementation/phase188/README.md) · [Design](../design/phase188/README.md) ·
+[Evidence](../implementation/phase188/evidence.json) · [Usage](../docs/self_hosted/x86-objects.md).
+
+Both x86 output formats now consume typed machine sequences. No assembly text
+is constructed or parsed on the object route. Local branches resolve before
+ELF; nonescaping local labels disappear; byte validation is tail recursive.
+
+Identical-source full build: objects 315.348→205.019s (**35.0% less**); assembly
+199.112→197.400s (similar). Objects remain 1.039× assembly, so assembly stays default.
+Executable size 39.142→25.517MB, with full compiler code/data byte-identical.
+Native self-build 208.552s; its N2 passes 45/45 in both formats. All 45 assembly
+objects and all 90 linked code/data products equal Phase187. Paired 45-program
+build GM object/assembly 1.509→1.071. Existing JS/C/QBE source is byte-identical.
+
+No new runtime timing claim, full bootstrap fixed point or installed promotion.
+Installed Phase183 remains. Next: measure remaining byte-list construction and
+serialization cost before further machinery. Preserve the combined-change timing
+scope and negative harness/review evidence in the report.
+
+---
+
 # Phase187 — optional Bend x86 ELF output, 2026-11-09
 
 [Report](../implementation/phase187/README.md) · [Design](../design/phase187/README.md) ·

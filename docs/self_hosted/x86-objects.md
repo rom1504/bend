@@ -90,3 +90,9 @@ See the [Phase188 refactor report](../../implementation/phase188/README.md),
 The [Phase187 report](../../implementation/phase187/README.md) preserves the
 text-parsing prototype and its315.35s versus199.11s same-source build result.
 Those timings describe the old implementation, not the typed path.
+
+Phase188's controlled same-source build takes 205.02s for direct objects versus
+197.40s for assembly. The older object route took 315.35s. Both new formats preserve
+the baseline's machine code on the full compiler and the 45-program corpus. Assembly
+remains default; direct objects avoid the assembler and are now within 4% on this
+full-build measurement. See the report for stage, source and statistical scope.

@@ -51,6 +51,11 @@ increases. See the [candidate commands](implementation/phase186/native-qualifica
 and [full measurements](implementation/phase186/runtime-summary.md). The installed
 Phase183 selector remains unchanged.
 
+[Phase188](implementation/phase188/README.md) shares typed x86 instructions between
+assembly and direct ELF output. Direct objects no longer format and reparse
+assembly; local branches resolve before ELF serialization. The native self-build
+and both 45-program output routes pass, preserving baseline machine code.
+
 | Task | Maintained entry |
 | --- | --- |
 | Assemble, request, build and bootstrap | [`selfhost/tools/build/`](selfhost/tools/build/) and [workflow](docs/self_hosted/workflow.md) |

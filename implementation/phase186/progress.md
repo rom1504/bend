@@ -36,7 +36,8 @@ Negative evidence matters. Unique-take v1 regresses tree4.65%, Map15.89% and
 record14.01% in the bundled follow-up; its production hook was removed.
 [The experiment](../../experiments/phase186/P186-004-unique-take.md) records
 actual machine growth and repeated fallback code. A single-fallback prototype
-has passed focused controls but is not selected or performance-qualified.
+also passes focused controls, but regresses tree/Map/record by 8.90–15.27%;
+it is rejected as well.
 Changing old loop alignment produced no material recovery (<0.40%).
 
 A transient disrupted one later assembly generic-row comparison, inflating an
@@ -52,3 +53,23 @@ argument cycles, inclusive lifetimes, widths, mutated/escaped buffers, F32
 NaNs and full-word results. The original verifier and runtime ABI remain.
 These finite observations are not BendTT proofs. Full integration gates and
 an honest final report follow after the remaining bounded experiments.
+
+## Frozen candidate, 11:15 UTC
+
+Both final maintained sources pass the unchanged upstream source checker with
+zero unresolved holes (6.82s QBE; 6.22s assembly). The QBE source is 3,213,774
+bytes and the assembly closure 1,589,782 bytes. Native acquisition is now in
+progress; these source checks alone do not qualify either native candidate.
+
+The final assembly candidate adds bounded XMM placement for closed canonical
+F32 regions and exact unsigned-32-to-F32 instruction selection. All focused
+controls pass, including 1,365 XMM/inherited observations and 105 unsigned
+conversion observations. The three-case ablation has 48 timed and 44 pilot
+observations, all correct, with no >10% spread flags. On active ray, full versus
+XMM-disabled is 0.95656, and full versus conversion-disabled is 0.71610. These
+are conditional contrasts, not additive gains. The earlier candidate versus
+sixth-version ray ratio is 0.65262; its dispersion flag belongs to C timing,
+while both assembly roles have less than 2.4% spread. Full45 evidence is pending.
+
+Both unique-take experiments are excluded. Widening old admission size limits
+also produced no new useful plans, so those limits remain unchanged.

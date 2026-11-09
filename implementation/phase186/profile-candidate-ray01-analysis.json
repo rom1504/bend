@@ -1,0 +1,538 @@
+{
+  "kind": "phase186-candidate-ray-physical-analysis",
+  "comparison": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/profile-candidate-ray01/plan/comparison.json",
+    "bytes": 27756,
+    "sha256": "e7e533b3e6ade33f9a4b72016297a8b1afafb7887458d1b41c9d872fa12d1fe4"
+  },
+  "capture": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/profile-candidate-ray01/plan/capture/report.json",
+    "bytes": 22904,
+    "sha256": "caabb7902eb4f9f9397a9f9fcbcb60ade864d902b03feb2282b097c32cd49526"
+  },
+  "identity": {
+    "source": {
+      "cwd": "/home/ai/bend2/build/publish/bend",
+      "arguments": [
+        "+RTS",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "-RTS",
+        "--RTS",
+        "3000",
+        "4",
+        "256",
+        "2240"
+      ],
+      "inputFiles": [],
+      "argv0": {
+        "mode": "executable"
+      }
+    },
+    "binary": {
+      "bytes": 255752,
+      "sha256": "3d3c1e73dea01301af6987bf5ce9fd9ddbe078953412cd3b5d819e1b8568c6bc"
+    },
+    "argv0": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/sixth-x86-build01/variation-ray-active-256-2240/machine/program",
+    "expected": {
+      "exitCode": 0,
+      "stdout": {
+        "kind": "prefix-integer-line",
+        "prefix": "2166930202\n4\n3000\n",
+        "evidence": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/variation-ray-active-256-2240.stdout",
+          "bytes": 11,
+          "sha256": "15adde12f874e278a5e96d86c4ee20d18706611252e5cfc76a3ba63d29170dcf"
+        }
+      },
+      "stderr": {
+        "kind": "exact",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "diagnostic": false
+  },
+  "quality": {
+    "acceptedCaptures": [
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/profile-candidate-ray01/plan/capture/001-sample-variation-ray-active-256-2240-p186-sixth-x86/analysis.json",
+        "bytes": 281996,
+        "sha256": "2c8d0781662dfad59c489150b1845c91fd73bb8e1e45f7ab600e2c600233a935",
+        "samples": 866,
+        "periodUs": 8000,
+        "dropped": 0,
+        "overruns": 0,
+        "captureWindowChildCpuFraction": 0.9994447841156062,
+        "wholeChildCpuCoverageAdequate": true
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/profile-candidate-ray01/plan/capture/002-sample-variation-ray-active-256-2240-p186-sixth-x86/analysis.json",
+        "bytes": 209157,
+        "sha256": "e3837a563674b7d64b90f51e60fc3259582e8b0cc581c54580cdfdfc7c8b3990",
+        "samples": 535,
+        "periodUs": 13000,
+        "dropped": 0,
+        "overruns": 0,
+        "captureWindowChildCpuFraction": 0.9995569476935695,
+        "wholeChildCpuCoverageAdequate": true
+      }
+    ],
+    "rejectedCaptures": [],
+    "samples": 1401,
+    "sampleCountsByPeriodUs": {
+      "8000": 866,
+      "13000": 535
+    },
+    "unknownSamples": 0,
+    "captureLossTotals": {
+      "dropped": 0,
+      "overruns": 0
+    },
+    "adequate": true,
+    "wholeChildCpuCoverageAdequate": true,
+    "estimateAvailable": true
+  },
+  "clean": {
+    "wallSeconds": {
+      "samples": [
+        7.115918547846377
+      ],
+      "count": 1,
+      "median": 7.115918547846377,
+      "minimum": 7.115918547846377,
+      "maximum": 7.115918547846377
+    },
+    "cpuSeconds": {
+      "samples": [
+        7.1144
+      ],
+      "count": 1,
+      "median": 7.1144,
+      "minimum": 7.1144,
+      "maximum": 7.1144
+    },
+    "peakRssKiB": {
+      "samples": [
+        11020
+      ],
+      "count": 1,
+      "median": 11020,
+      "minimum": 11020,
+      "maximum": 11020
+    }
+  },
+  "sampled": {
+    "wallSeconds": {
+      "samples": [
+        6.942293653730303,
+        6.965443348977715
+      ],
+      "count": 2,
+      "median": 6.953868501354009,
+      "minimum": 6.942293653730303,
+      "maximum": 6.965443348977715
+    },
+    "cpuSeconds": {
+      "samples": [
+        6.9413540000000005,
+        6.964268
+      ],
+      "count": 2,
+      "median": 6.9528110000000005,
+      "minimum": 6.9413540000000005,
+      "maximum": 6.964268
+    },
+    "peakRssKiB": {
+      "samples": [
+        11112,
+        11860
+      ],
+      "count": 2,
+      "median": 11486.0,
+      "minimum": 11112,
+      "maximum": 11860
+    }
+  },
+  "sampledOverCleanWallRatio": 0.9772271077299765,
+  "functions": [
+    {
+      "object": "executable",
+      "name": "p113d_FID_36_112_114_111_100_117_99_116_46_110_101_97_114_101_115_116_",
+      "decoded": "p113d_FID_$product.nearest",
+      "samples": 515,
+      "rawFraction": 0.36759457530335476,
+      "periodWeightedMicroseconds": 5120000,
+      "periodWeightedFraction": 0.36879636966073615,
+      "lowPrecision": false,
+      "estimatedCleanCpuSeconds": 2.623764892314341
+    },
+    {
+      "object": "executable",
+      "name": "p111_rt_op",
+      "decoded": "p111_rt_op",
+      "samples": 302,
+      "rawFraction": 0.21556031406138473,
+      "periodWeightedMicroseconds": 3011000,
+      "periodWeightedFraction": 0.2168839587985306,
+      "lowPrecision": false,
+      "estimatedCleanCpuSeconds": 1.542999236476266
+    },
+    {
+      "object": "executable",
+      "name": "p113d_FID_36_100_105_114_101_99_116_46_110_101_97_114_101_115_116_46_116_",
+      "decoded": "p113d_FID_$direct.nearest.t",
+      "samples": 208,
+      "rawFraction": 0.14846538187009278,
+      "periodWeightedMicroseconds": 2049000,
+      "periodWeightedFraction": 0.1475905784052438,
+      "lowPrecision": false,
+      "estimatedCleanCpuSeconds": 1.0500184110062665
+    },
+    {
+      "object": "executable",
+      "name": "p113d_FID_36_112_114_111_100_117_99_116_46_116_114_97_99_101_",
+      "decoded": "p113d_FID_$product.trace",
+      "samples": 91,
+      "rawFraction": 0.0649536045681656,
+      "periodWeightedMicroseconds": 883000,
+      "periodWeightedFraction": 0.06360296765828712,
+      "lowPrecision": false,
+      "estimatedCleanCpuSeconds": 0.4524969531081178
+    },
+    {
+      "object": "executable",
+      "name": "p113d_FID_36_100_105_114_101_99_116_46_115_114_",
+      "decoded": "p113d_FID_$direct.sr",
+      "samples": 61,
+      "rawFraction": 0.04354032833690221,
+      "periodWeightedMicroseconds": 623000,
+      "periodWeightedFraction": 0.04487502701145286,
+      "lowPrecision": false,
+      "estimatedCleanCpuSeconds": 0.3192588921702802
+    },
+    {
+      "object": "executable",
+      "name": "p113d_FID_36_100_105_114_101_99_116_46_115_122_",
+      "decoded": "p113d_FID_$direct.sz",
+      "samples": 65,
+      "rawFraction": 0.046395431834404,
+      "periodWeightedMicroseconds": 615000,
+      "periodWeightedFraction": 0.04429878268385796,
+      "lowPrecision": false,
+      "estimatedCleanCpuSeconds": 0.31515925952603907
+    },
+    {
+      "object": "executable",
+      "name": "p113d_FID_36_100_105_114_101_99_116_46_115_120_",
+      "decoded": "p113d_FID_$direct.sx",
+      "samples": 60,
+      "rawFraction": 0.042826552462526764,
+      "periodWeightedMicroseconds": 590000,
+      "periodWeightedFraction": 0.04249801916012389,
+      "lowPrecision": false,
+      "estimatedCleanCpuSeconds": 0.3023479075127854
+    },
+    {
+      "object": "executable",
+      "name": "p113d_FID_36_100_105_114_101_99_116_46_112_105_120_101_108_",
+      "decoded": "p113d_FID_$direct.pixel",
+      "samples": 56,
+      "rawFraction": 0.03997144896502498,
+      "periodWeightedMicroseconds": 583000,
+      "periodWeightedFraction": 0.041993805373478355,
+      "lowPrecision": false,
+      "estimatedCleanCpuSeconds": 0.2987607289490744
+    },
+    {
+      "object": "executable",
+      "name": "p113d_FID_36_100_105_114_101_99_116_46_115_121_",
+      "decoded": "p113d_FID_$direct.sy",
+      "samples": 41,
+      "rawFraction": 0.02926481084939329,
+      "periodWeightedMicroseconds": 388000,
+      "periodWeightedFraction": 0.027947849888352663,
+      "lowPrecision": false,
+      "estimatedCleanCpuSeconds": 0.19883218324569618
+    },
+    {
+      "object": "executable",
+      "name": "p113d_FID_36_100_105_114_101_99_116_46_99_111_118_101_114_97_103_101_46_97_99_116_105_118_101_46_108_111_111_112_",
+      "decoded": "p113d_FID_$direct.coverage.active.loop",
+      "samples": 1,
+      "rawFraction": 0.0007137758743754461,
+      "periodWeightedMicroseconds": 13000,
+      "periodWeightedFraction": 0.0009363970323417129,
+      "lowPrecision": true,
+      "estimatedCleanCpuSeconds": 0.006661903046891882
+    },
+    {
+      "object": "executable",
+      "name": "p113d_FID_36_100_105_114_101_99_116_46_115_107_114_",
+      "decoded": "p113d_FID_$direct.skr",
+      "samples": 1,
+      "rawFraction": 0.0007137758743754461,
+      "periodWeightedMicroseconds": 8000,
+      "periodWeightedFraction": 0.0005762443275949003,
+      "lowPrecision": true,
+      "estimatedCleanCpuSeconds": 0.0040996326442411584
+    }
+  ],
+  "groups": [
+    {
+      "name": "generated_bend",
+      "samples": 1099,
+      "rawFraction": 0.7844396859386152,
+      "periodWeightedMicroseconds": 10872000,
+      "periodWeightedFraction": 0.7831160412014694,
+      "lowPrecision": false,
+      "estimatedCleanCpuSeconds": 5.571400763523734
+    },
+    {
+      "name": "other",
+      "samples": 302,
+      "rawFraction": 0.21556031406138473,
+      "periodWeightedMicroseconds": 3011000,
+      "periodWeightedFraction": 0.2168839587985306,
+      "lowPrecision": false,
+      "estimatedCleanCpuSeconds": 1.542999236476266
+    }
+  ],
+  "attribution": [
+    {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/profile-candidate-ray01/plan/attribution-1/report.json",
+        "bytes": 9494,
+        "sha256": "9284c25845bad4545a6da089a64e95c44017de5cfb3d0bb14df74a36251d94ef"
+      },
+      "quality": {
+        "scope": "main_thread",
+        "main_thread_cpu_fraction": 1.0000000125405404,
+        "sampled_thread_cpu_fraction": 1.0000000125405404,
+        "minimum_process_cpu_fraction": 0.95,
+        "minimum_samples": 500,
+        "enough_samples": true,
+        "thread_lifecycle_complete": true,
+        "near_complete_process_cpu_coverage": true,
+        "usable_for_process_cpu_attribution": true,
+        "limitations": [],
+        "zero_loss": true,
+        "handler_intact": true,
+        "main_thread_shutdown": true,
+        "expected_clock_periods": 867.187517125,
+        "delivered_per_expected_period": 0.9986306109099252,
+        "delivery_plausible": true
+      },
+      "ownerBinding": {
+        "kind": "exact-ELF-segment-table-pointers",
+        "checkedFids": 116,
+        "checkedFunctionSymbols": 195,
+        "runtimeDescriptor": {
+          "capabilities": 15,
+          "registerWidth": 5,
+          "resultWidth": 1
+        },
+        "liveRegisterBank": true,
+        "ownerMapCapabilities": 15,
+        "symbolLookup": {
+          "policy": "required-role-and-allocated-section-v1",
+          "method": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/attribute.py",
+            "bytes": 37378,
+            "sha256": "4baed6e5f9556c06b1b2abd95ec5d407064fc52c8f3892fd387a8e6284561dce"
+          },
+          "dataRole": "OBJECT/NOTYPE, allocated file-backed non-executable non-TLS section",
+          "functionRole": "FUNC/NOTYPE, allocated executable non-TLS section",
+          "ambiguity": "distinct addresses in the queried role are rejected"
+        },
+        "elfType": 2,
+        "producerProvenanceVerified": false,
+        "buildProvenance": null,
+        "sourceMap": null,
+        "lexicalOwnerConditionalOnEmitterContract": true
+      },
+      "physicalCallerAttribution": {
+        "available": false,
+        "reason": "No physical-caller sidecar/table supplied"
+      },
+      "sampleCount": 866
+    },
+    {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/profile-candidate-ray01/plan/attribution-2/report.json",
+        "bytes": 9562,
+        "sha256": "471e722906aa346e244269e3314847db5eae77d40b8040fa7c7f98f244cf0607"
+      },
+      "quality": {
+        "scope": "main_thread",
+        "main_thread_cpu_fraction": 1.0000000603345771,
+        "sampled_thread_cpu_fraction": 1.0000000603345771,
+        "minimum_process_cpu_fraction": 0.95,
+        "minimum_samples": 500,
+        "enough_samples": true,
+        "thread_lifecycle_complete": true,
+        "near_complete_process_cpu_coverage": true,
+        "usable_for_process_cpu_attribution": true,
+        "limitations": [],
+        "zero_loss": true,
+        "handler_intact": true,
+        "main_thread_shutdown": true,
+        "expected_clock_periods": 535.4756065384615,
+        "delivered_per_expected_period": 0.9991118054069054,
+        "delivery_plausible": true
+      },
+      "ownerBinding": {
+        "kind": "exact-ELF-segment-table-pointers",
+        "checkedFids": 116,
+        "checkedFunctionSymbols": 195,
+        "runtimeDescriptor": {
+          "capabilities": 15,
+          "registerWidth": 5,
+          "resultWidth": 1
+        },
+        "liveRegisterBank": true,
+        "ownerMapCapabilities": 15,
+        "symbolLookup": {
+          "policy": "required-role-and-allocated-section-v1",
+          "method": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/attribute.py",
+            "bytes": 37378,
+            "sha256": "4baed6e5f9556c06b1b2abd95ec5d407064fc52c8f3892fd387a8e6284561dce"
+          },
+          "dataRole": "OBJECT/NOTYPE, allocated file-backed non-executable non-TLS section",
+          "functionRole": "FUNC/NOTYPE, allocated executable non-TLS section",
+          "ambiguity": "distinct addresses in the queried role are rejected"
+        },
+        "elfType": 2,
+        "producerProvenanceVerified": false,
+        "buildProvenance": null,
+        "sourceMap": null,
+        "lexicalOwnerConditionalOnEmitterContract": true
+      },
+      "physicalCallerAttribution": {
+        "available": false,
+        "reason": "No physical-caller sidecar/table supplied"
+      },
+      "sampleCount": 535
+    }
+  ],
+  "historicalReferences": [
+    {
+      "comparison": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/baseline-profile01/bend-qbe/comparison.json",
+        "bytes": 98798,
+        "sha256": "7434a146649ae556121bdb74ec93fb45714a9378708aa56daaa1e56801f6d01e"
+      },
+      "role": "bend-qbe",
+      "workload": "raytrace",
+      "identity": {
+        "source": {
+          "cwd": "/home/ai/bend2/build/publish/bend",
+          "arguments": [
+            "+RTS",
+            "--threads",
+            "1",
+            "--gpu",
+            "off",
+            "-RTS",
+            "--RTS",
+            "128",
+            "4",
+            "80",
+            "0"
+          ],
+          "inputFiles": [],
+          "argv0": {
+            "mode": "executable"
+          }
+        },
+        "binary": {
+          "bytes": 190256,
+          "sha256": "deb14bf1694a3bf6c7ff684c184c3570947c9313a6f9ef5abf1bb2870bf61928"
+        },
+        "argv0": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/raytrace/bend-qbe/machine/program",
+        "expected": {
+          "exitCode": 0,
+          "stdout": {
+            "kind": "prefix-integer-line",
+            "prefix": "402971\n4\n128\n",
+            "evidence": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/raytrace.stdout",
+              "bytes": 7,
+              "sha256": "51919f34152cd418fdf625a4841ebf64375948e001d5699d7702a206e17ac834"
+            }
+          },
+          "stderr": {
+            "kind": "exact",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "diagnostic": false
+      },
+      "compatible": false,
+      "reason": "Different target/fixture/input point: raytrace80/0 expected402971 versus assembly active-ray256/2240 expected2166930202. No direct physical-profile delta."
+    },
+    {
+      "comparison": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase185/baseline-profile01/bend-c/comparison.json",
+        "bytes": 86297,
+        "sha256": "eeb5d8a60ea0473ebf1c8f6791f429eb8afae9211fd93298ae155b3ddf655918"
+      },
+      "role": "bend-c",
+      "workload": "raytrace",
+      "identity": {
+        "source": {
+          "cwd": "/home/ai/bend2/build/publish/bend",
+          "arguments": [
+            "+RTS",
+            "--threads",
+            "1",
+            "--gpu",
+            "off",
+            "-RTS",
+            "--RTS",
+            "144",
+            "4",
+            "80",
+            "0"
+          ],
+          "inputFiles": [],
+          "argv0": {
+            "mode": "executable"
+          }
+        },
+        "binary": {
+          "bytes": 124640,
+          "sha256": "935d11f210c6dc45471fc4e1c131492a1b53095aa3b7eb16e2a8348b1ef4bd61"
+        },
+        "argv0": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/raytrace/bend-c/program",
+        "expected": {
+          "exitCode": 0,
+          "stdout": {
+            "kind": "prefix-integer-line",
+            "prefix": "402971\n4\n144\n",
+            "evidence": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/raytrace.stdout",
+              "bytes": 7,
+              "sha256": "51919f34152cd418fdf625a4841ebf64375948e001d5699d7702a206e17ac834"
+            }
+          },
+          "stderr": {
+            "kind": "exact",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "diagnostic": false
+      },
+      "compatible": false,
+      "reason": "Different target/fixture/input point: raytrace80/0 expected402971 versus assembly active-ray256/2240 expected2166930202. No direct physical-profile delta."
+    }
+  ],
+  "interpretation": "All1401 leaves resolve. Generic primitive helper has21.6884% period-weighted physical cost, a ceiling on removing that helper alone at fixed other work, not a guaranteed optimization. Product.nearest36.8796% plus direct.nearest.t14.7591% dominate generated work. No physical callers, dispatch contexts or runtime event counts: cannot assign helper cost to a particular primitive/source owner or infer allocation counts. Clean CPU7.1144s is one diagnostic observation; sampled durations were2.3%lower, so no sampling-overhead or speed-ratio claim.",
+  "programsExecuted": false,
+  "distinctPinsVerified": 79
+}

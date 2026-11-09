@@ -1,0 +1,31 @@
+{
+  "kind": "bend-benchmark-acquisition-v1",
+  "catalog": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/catalog.json",
+  "reference": "phase186-qbe-n2",
+  "roles": {
+    "phase186-qbe-n2": {
+      "assets": "/home/ai/bend2/build/publish/bend/selfhost/manifests/assets-native.json",
+      "provider": "build",
+      "host": "native",
+      "stage": "N2",
+      "target": "qbe",
+      "mode": "cache",
+      "policy": "ordinary-single-cpu",
+      "status": "explicit-native-bootstrap-candidate",
+      "image": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-qbe-chain01/n2/program",
+      "imageReceipt": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-qbe-chain01/n2/report.json"
+    },
+    "phase186-x86-n2": {
+      "assets": "/home/ai/bend2/build/publish/bend/selfhost/manifests/assets-native.json",
+      "provider": "build",
+      "host": "native",
+      "stage": "N2",
+      "target": "x86",
+      "mode": "cache",
+      "policy": "ordinary-single-cpu",
+      "status": "explicit-native-bootstrap-candidate",
+      "image": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-x86-chain01/n2/program",
+      "imageReceipt": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-x86-chain01/n2/report.json"
+    }
+  }
+}

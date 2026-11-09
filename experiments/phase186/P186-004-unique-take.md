@@ -161,3 +161,16 @@ case, threshold edge and output overlap mode. This paragraph records the
 prototype and expected controls, not their execution or a speedup. Root controls
 source checking, actual machine tests and any separate tree/map screen. V2 is
 unhooked pending those results; v1 and its negative artifacts remain unchanged.
+
+## Single-fallback v2: rejected as well
+
+The revised template retains one fallback call instead of duplicating it. The
+independent observer passes the original 4,038 checks plus 1,296 destination,
+input, state and buffer alias checks. That semantic success does not establish
+profitability. Against the continuation-only candidate, the controlled
+`unique-v2-qbe-runtime01` screen observes candidate/baseline ratios of 1.0890
+for tree, 1.1527 for Map, and 1.1301 for record aggregation. All three regress.
+Both unique-take prototypes remain unselected. The final canonical module list
+excludes v1, and v2 was never registered. Reducing fallback duplication alone
+did not overcome the remaining inline-code and register-pressure costs; no
+further ownership-template campaign was justified during this phase.

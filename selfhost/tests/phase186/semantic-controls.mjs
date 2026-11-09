@@ -86,6 +86,22 @@ const groups = {
       'p186va', 'p186vb', 'p186vc', 'p186vd', 'p186ve', 'p186vf', 'p186vh', 'p186im', 'p186in', 'p186vg'],
     stubs: ['p111_rt_op'],
     scope: 'Original IR verification and custom private F32 plan emission. Retains all590 frozen arithmetic/live-register observations plus45 mutation, observed-scratch, overlapping-store, call/branch/alias barriers, repeated loop and escaping-buffer observations. Exact93 inherited F32 label rows are authenticated against Phase112; arithmetic NaNs retain class-only/zero-upper-word policy. Isolated opcode36 stub models an arbitrary allowed buffer write, not runtime sqrt.'},
+  xmm: {fixture: 'xmm-controls.bend', dependencies: ['inline-effects-controls.bend', 'float-values-controls.bend'],
+    observer: 'xmm-controls.c', inputs: ['float-values-controls.c'], floatCatalogObserver: 'float-values-controls.c', target: 'x86',
+    validate: 'p186xm_validate', controls: 'p186xm_controls', emit: 'p186xm_emit',
+    expected: 'phase186 inline effect controls pass: 590\nphase186 float operand controls pass: 45\nphase186 XMM controls pass: 730\n',
+    rows: rows('original-ir-verified rhs-destination-home rhs-divide-destination-home assigned-comparison-homes canonical-source-home canonical-copy-home result-boundary-refused parameter-refused raw-write-refused raw-copy-refused fourteen-live-homes fifteenth-live-fallback sixteenth-live-fallback unknown-call-boundary branch-boundary again-boundary setup-definition-refused'),
+    names: ['p186ia', 'p186ib', 'p186ic', 'p186id', 'p186ie', 'p186if', 'p186ig', 'p186ih', 'p186ii', 'p186ij', 'p186ik', 'p186il', 'p186io',
+      'p186va', 'p186vb', 'p186vc', 'p186vd', 'p186ve', 'p186vf', 'p186vh',
+      'p186xa', 'p186xb', 'p186xc', 'p186xd', 'p186xe', 'p186xf', 'p186xg', 'p186xh', 'p186xi', 'p186xj', 'p186xk', 'p186xl', 'p186xm',
+      'p186im', 'p186in', 'p186vg'],
+    stubs: ['p111_rt_op'],
+    scope: 'Original IR verification and isolated XMM placement emission. Retains all635 inherited observations plus730 focused arithmetic, RHS destination alias, raw full-width copy, fourteen-register pressure, call/branch boundaries, and assigned-comparison bit-pattern checks. Included observer and its93 frozen FP catalog rows are authenticated. Isolated opcode36 stub also clobbers XMM2 through XMM15; no production-runtime or performance claim.'},
+  u32float: {fixture: 'u32-float-controls.bend', observer: 'u32-float-controls.c', target: 'x86',
+    controls: 'p186uf_controls', emit: 'p186uf_emit', expected: 'phase186 u32 float controls pass: 105/105\n',
+    rows: rows('exact-unary unsigned64-conversion fullword-publication read-before-pointer-overwrite disabled wrong-id high-id wrong-count high-count wrong-state state-buffer-refused wrong-import wrong-result nonlocal-buffer dynamic-id verified-eight-byte-buffer short-buffer-rejected conservative-call-barrier'),
+    names: ['p186uf_0', 'p186uf_1', 'p186uf_2', 'p186uf_3', 'p186uf_4'], stubs: [],
+    scope: 'Exact opcode23 admission with independent original-segment verifier rows and isolated custom machine placements, not a whole-IR machine-placement claim. Seven frozen conversion labels across five placements and three upper-word variants observe unsigned conversion, full-word publication, input/pointer destination aliases, preserved source/state and output canaries. No runtime helper or floating host oracle is linked.'},
 };
 const selected = args['--groups'] ? args['--groups'].split(',') : ['transport', 'char', 'inline', 'callee', 'private', 'parallel'];
 need(selected.length && selected.length === new Set(selected).size && selected.every(name => Object.hasOwn(groups, name)), 'Unknown, empty, or duplicate group');
@@ -164,8 +180,8 @@ try {
     need(sourceManifest.inputs.some(row => row.file === input.file && same(row, input)), 'Checked source assembly lacks exact fixture input: ' + file);
   }
   for (const name of selected) for (const file of [groups[name].observer, ...(groups[name].extra ?? []), ...(groups[name].inputs ?? [])]) report.inputs.push(pin(fixture(file)));
-  const floatGroups = selected.filter(name => ['inline', 'floatvalues'].includes(name));
-  if (floatGroups.length) {
+  const floatGroups = selected.filter(name => ['inline', 'floatvalues', 'xmm'].includes(name));
+  if (floatGroups.length || selected.includes('u32float')) {
     const catalogFile = path.join(workspace, 'selfhost/tools/performance/phase112/float/cases.json'), catalogPin = pin(catalogFile);
     need(catalogPin.sha256 === 'bde39b2e416263ae82219c601ea409afc0e14be42ddb877a4d8aa4c545ce9753', 'Frozen F32 catalog differs');
     report.inputs.push(catalogPin);
@@ -176,8 +192,18 @@ try {
       return `  {${row.op}, UINT64_C(0x${words[0]}), UINT64_C(0x${words[1]}), UINT64_C(0x${row.expectedHex}), ${row.comparison === 'nan-class' ? 1 : 0}, ${JSON.stringify(row.name)}},`;
     });
     for (const name of floatGroups) {
-      const actual = fs.readFileSync(fixture(groups[name].observer), 'utf8').split('\n').filter(line => /^  \{\d+, UINT64_C\(0x/.test(line));
+      const actual = fs.readFileSync(fixture(groups[name].floatCatalogObserver ?? groups[name].observer), 'utf8').split('\n').filter(line => /^  \{\d+, UINT64_C\(0x/.test(line));
       exact(actual, expected, name + ' independent frozen F32 observer labels');
+    }
+    if (selected.includes('u32float')) {
+      const unary = read(catalogFile).cases.filter(row => row.op === 23);
+      need(unary.length === 7 && unary.every(row => row.args.length === 1 && row.comparison === 'exact'), 'Frozen U32-to-F32 inventory differs');
+      const unaryExpected = unary.map(row => {
+        const word = row.args[0], input = ((BigInt(word.hi) << 32n) | BigInt(word.lo)).toString(16).padStart(16, '0');
+        return `  {UINT64_C(0x${input}), UINT64_C(0x${row.expectedHex}), ${JSON.stringify(row.name)}},`;
+      });
+      const unaryActual = fs.readFileSync(fixture(groups.u32float.observer), 'utf8').split('\n').filter(line => /^  \{UINT64_C\(0x/.test(line));
+      exact(unaryActual, unaryExpected, 'u32float independent frozen conversion observer labels');
     }
   }
   report.inputs.forEach(verify);

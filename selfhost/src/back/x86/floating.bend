@@ -86,7 +86,9 @@ def x186_float_operation(operation: X186InlineOp, ids: N111Ids, frame: X181Frame
 @unsafe
 def x185_float_call(+name: String, +typ: N111Type, +symbol: String, +args: List<&2,N111Arg>,
     +ids: N111Ids, +frame: X181Frame, code: X181Code) -> X181Code:
-  +text = x185_float_probe(N111Call{name,typ,symbol,args},ids,frame)
+  +floating = x185_float_probe(N111Call{name,typ,symbol,args},ids,frame)
+  +text = nt_choose(String,String.is_empty(floating),
+    u => x186_u32_float_probe(N111Call{name,typ,symbol,args},ids,frame),u => floating)
   x181_add(nt_choose(String,String.is_empty(text),
     u => x181_call_text(symbol,args,ids,frame) ++
       nt_choose(String,U32.is_eq(p111v_type(typ),1),v => "  movl %eax, %eax\n",v => "") ++

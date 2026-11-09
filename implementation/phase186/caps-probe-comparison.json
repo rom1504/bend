@@ -1,0 +1,564 @@
+{
+  "kind": "phase186-size-caps-probe-comparison",
+  "reports": {
+    "base": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/caps-base-probe01/report.json",
+      "bytes": 28776,
+      "sha256": "92bf6844e85eaaed79d22ed65daf17460b47676e1ea6a47f8bf5aa1324895f17"
+    },
+    "wide": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/caps-wide-probe01/report.json",
+      "bytes": 28760,
+      "sha256": "d8c242498fd42d5b5d7e3d5d755180cbda250327cfc6c8d29fcfb004628f69e9"
+    }
+  },
+  "checkedApis": {
+    "base": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/seventh-api03/report.json",
+      "bytes": 10936,
+      "sha256": "d0731fc70853f24ac4c72ec8ac133d7388f620d4052e01b39439103c64b291a9"
+    },
+    "wide": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/caps-api01/report.json",
+      "bytes": 5107,
+      "sha256": "d97e00da7750c9147c7069b1d8ade62cf7f0089d9425f6ec1193f54ce846bd09"
+    }
+  },
+  "allControlsEqual": true,
+  "controls": [
+    "owner-size-exact=1",
+    "continuation-size-exact=1",
+    "original-ir-verified=1",
+    "owner512=1",
+    "owner513=1",
+    "owner2048=1",
+    "owner2049-refused=1",
+    "continuation128=1",
+    "continuation129=1",
+    "continuation1024=1",
+    "continuation1025-refused=1"
+  ],
+  "widenedFlags": {
+    "base": false,
+    "wide": true
+  },
+  "cases": [
+    {
+      "id": "coverage-record-aggregation-256",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-record-aggregation-256.bend",
+        "bytes": 3806,
+        "sha256": "eb5841e7f516d2f87ef8028f83a902390c4aab439875207448ffa4c4d5c28bc1"
+      },
+      "queryNames": [
+        "$direct.Map.seek.go",
+        "$direct.Map.get.go",
+        "$direct.Map.put.go",
+        "$direct.Map.ins.go",
+        "$direct.Map.seek",
+        "$direct.Map.get",
+        "$direct.Map.set",
+        "$direct.p37.aggregate",
+        "$direct.p37.aggregate.put",
+        "$direct.Map.to_list.go"
+      ],
+      "baseStringCount": 172,
+      "wideStringCount": 172,
+      "exactStringsIdentical": true,
+      "owners": [
+        {
+          "name": "$direct.Map.seek.go",
+          "base": {
+            "arity": 2,
+            "result": 1,
+            "incoming": 0,
+            "flags": 0,
+            "owner-nodes": 1037,
+            "old512": 0,
+            "new2048": 1,
+            "callable": 0,
+            "current-H": 0
+          },
+          "wide": {
+            "arity": 2,
+            "result": 1,
+            "incoming": 0,
+            "flags": 0,
+            "owner-nodes": 1037,
+            "old512": 0,
+            "new2048": 1,
+            "callable": 0,
+            "current-H": 0
+          },
+          "scan": 1,
+          "frame-sites": 12,
+          "closure8": 0,
+          "closed-cases": 0,
+          "continuation-inventory-truncated": 1,
+          "listedContinuationCount": 32,
+          "maxListedSuffixNodes": 5,
+          "listedSuffixesAbove128": 0,
+          "listedCurrentParserRefusals": 0,
+          "hChanged": false
+        },
+        {
+          "name": "$direct.Map.get.go",
+          "base": {
+            "arity": 3,
+            "result": 1,
+            "incoming": 0,
+            "flags": 0,
+            "owner-nodes": 966,
+            "old512": 0,
+            "new2048": 1,
+            "callable": 0,
+            "current-H": 0
+          },
+          "wide": {
+            "arity": 3,
+            "result": 1,
+            "incoming": 0,
+            "flags": 0,
+            "owner-nodes": 966,
+            "old512": 0,
+            "new2048": 1,
+            "callable": 0,
+            "current-H": 0
+          },
+          "scan": 1,
+          "frame-sites": 24,
+          "closure8": 0,
+          "closed-cases": 0,
+          "continuation-inventory-truncated": 1,
+          "listedContinuationCount": 32,
+          "maxListedSuffixNodes": 5,
+          "listedSuffixesAbove128": 0,
+          "listedCurrentParserRefusals": 0,
+          "hChanged": false
+        },
+        {
+          "name": "$direct.Map.put.go",
+          "base": {
+            "arity": 3,
+            "result": 1,
+            "incoming": 0,
+            "flags": 0,
+            "owner-nodes": 946,
+            "old512": 0,
+            "new2048": 1,
+            "callable": 0,
+            "current-H": 0
+          },
+          "wide": {
+            "arity": 3,
+            "result": 1,
+            "incoming": 0,
+            "flags": 0,
+            "owner-nodes": 946,
+            "old512": 0,
+            "new2048": 1,
+            "callable": 0,
+            "current-H": 0
+          },
+          "scan": 1,
+          "frame-sites": 12,
+          "closure8": 0,
+          "closed-cases": 0,
+          "continuation-inventory-truncated": 1,
+          "listedContinuationCount": 32,
+          "maxListedSuffixNodes": 15,
+          "listedSuffixesAbove128": 0,
+          "listedCurrentParserRefusals": 0,
+          "hChanged": false
+        },
+        {
+          "name": "$direct.Map.ins.go",
+          "base": {
+            "arity": 5,
+            "result": 1,
+            "incoming": 0,
+            "flags": 0,
+            "owner-nodes": 2037,
+            "old512": 0,
+            "new2048": 1,
+            "callable": 0,
+            "current-H": 0
+          },
+          "wide": {
+            "arity": 5,
+            "result": 1,
+            "incoming": 0,
+            "flags": 0,
+            "owner-nodes": 2037,
+            "old512": 0,
+            "new2048": 1,
+            "callable": 0,
+            "current-H": 0
+          },
+          "scan": 1,
+          "frame-sites": 18,
+          "closure8": 0,
+          "closed-cases": 0,
+          "continuation-inventory-truncated": 1,
+          "listedContinuationCount": 32,
+          "maxListedSuffixNodes": 13,
+          "listedSuffixesAbove128": 0,
+          "listedCurrentParserRefusals": 0,
+          "hChanged": false
+        },
+        {
+          "name": "$direct.Map.seek",
+          "base": {
+            "arity": 2,
+            "result": 1,
+            "incoming": 0,
+            "flags": 0,
+            "owner-nodes": 83,
+            "old512": 1,
+            "new2048": 1,
+            "callable": 0,
+            "current-H": 0
+          },
+          "wide": {
+            "arity": 2,
+            "result": 1,
+            "incoming": 0,
+            "flags": 0,
+            "owner-nodes": 83,
+            "old512": 1,
+            "new2048": 1,
+            "callable": 0,
+            "current-H": 0
+          },
+          "scan": 1,
+          "frame-sites": 1,
+          "closure8": 0,
+          "closed-cases": 0,
+          "listedContinuationCount": 3,
+          "maxListedSuffixNodes": 4,
+          "listedSuffixesAbove128": 0,
+          "listedCurrentParserRefusals": 0,
+          "hChanged": false
+        },
+        {
+          "name": "$direct.Map.get",
+          "base": {
+            "arity": 3,
+            "result": 1,
+            "incoming": 0,
+            "flags": 0,
+            "owner-nodes": 72,
+            "old512": 1,
+            "new2048": 1,
+            "callable": 0,
+            "current-H": 0
+          },
+          "wide": {
+            "arity": 3,
+            "result": 1,
+            "incoming": 0,
+            "flags": 0,
+            "owner-nodes": 72,
+            "old512": 1,
+            "new2048": 1,
+            "callable": 0,
+            "current-H": 0
+          },
+          "scan": 1,
+          "frame-sites": 2,
+          "closure8": 0,
+          "closed-cases": 0,
+          "listedContinuationCount": 4,
+          "maxListedSuffixNodes": 5,
+          "listedSuffixesAbove128": 0,
+          "listedCurrentParserRefusals": 0,
+          "hChanged": false
+        },
+        {
+          "name": "$direct.Map.set",
+          "base": {
+            "arity": 3,
+            "result": 1,
+            "incoming": 0,
+            "flags": 0,
+            "owner-nodes": 13,
+            "old512": 1,
+            "new2048": 1,
+            "callable": 0,
+            "current-H": 0
+          },
+          "wide": {
+            "arity": 3,
+            "result": 1,
+            "incoming": 0,
+            "flags": 0,
+            "owner-nodes": 13,
+            "old512": 1,
+            "new2048": 1,
+            "callable": 0,
+            "current-H": 0
+          },
+          "scan": 0,
+          "frame-sites": 0,
+          "closure8": "not-scanned",
+          "listedContinuationCount": 1,
+          "maxListedSuffixNodes": 4,
+          "listedSuffixesAbove128": 0,
+          "listedCurrentParserRefusals": 0,
+          "hChanged": false
+        },
+        {
+          "name": "$direct.p37.aggregate",
+          "base": {
+            "arity": 2,
+            "result": 1,
+            "incoming": 0,
+            "flags": 0,
+            "owner-nodes": 57,
+            "old512": 1,
+            "new2048": 1,
+            "callable": 0,
+            "current-H": 0
+          },
+          "wide": {
+            "arity": 2,
+            "result": 1,
+            "incoming": 0,
+            "flags": 0,
+            "owner-nodes": 57,
+            "old512": 1,
+            "new2048": 1,
+            "callable": 0,
+            "current-H": 0
+          },
+          "scan": 1,
+          "frame-sites": 3,
+          "closure8": 0,
+          "closed-cases": 0,
+          "listedContinuationCount": 8,
+          "maxListedSuffixNodes": 11,
+          "listedSuffixesAbove128": 0,
+          "listedCurrentParserRefusals": 0,
+          "hChanged": false
+        },
+        {
+          "name": "$direct.p37.aggregate.put",
+          "base": {
+            "arity": 3,
+            "result": 1,
+            "incoming": 0,
+            "flags": 0,
+            "owner-nodes": 30,
+            "old512": 1,
+            "new2048": 1,
+            "callable": 0,
+            "current-H": 0
+          },
+          "wide": {
+            "arity": 3,
+            "result": 1,
+            "incoming": 0,
+            "flags": 0,
+            "owner-nodes": 30,
+            "old512": 1,
+            "new2048": 1,
+            "callable": 0,
+            "current-H": 0
+          },
+          "scan": 0,
+          "frame-sites": 0,
+          "closure8": "not-scanned",
+          "listedContinuationCount": 1,
+          "maxListedSuffixNodes": 3,
+          "listedSuffixesAbove128": 0,
+          "listedCurrentParserRefusals": 0,
+          "hChanged": false
+        },
+        {
+          "name": "$direct.Map.to_list.go",
+          "base": {
+            "arity": 2,
+            "result": 1,
+            "incoming": 0,
+            "flags": 0,
+            "owner-nodes": 57,
+            "old512": 1,
+            "new2048": 1,
+            "callable": 0,
+            "current-H": 1
+          },
+          "wide": {
+            "arity": 2,
+            "result": 1,
+            "incoming": 0,
+            "flags": 0,
+            "owner-nodes": 57,
+            "old512": 1,
+            "new2048": 1,
+            "callable": 0,
+            "current-H": 1
+          },
+          "scan": 1,
+          "frame-sites": 1,
+          "closure8": 1,
+          "closed-cases": 1,
+          "listedContinuationCount": 3,
+          "maxListedSuffixNodes": 4,
+          "listedSuffixesAbove128": 0,
+          "listedCurrentParserRefusals": 0,
+          "hChanged": false
+        }
+      ]
+    },
+    {
+      "id": "coverage-unicode-text-64",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-unicode-text-64.bend",
+        "bytes": 8458,
+        "sha256": "49a53fc745be33a8237b1b48f3175dbba4e20c76549374253520ae39f6b894bf"
+      },
+      "queryNames": [
+        "$direct.sjoin.go",
+        "$direct.sjoin",
+        "$p111.k.9435",
+        "$p111.k.9438"
+      ],
+      "baseStringCount": 13,
+      "wideStringCount": 13,
+      "exactStringsIdentical": true,
+      "owners": [
+        {
+          "name": "$direct.sjoin.go",
+          "base": {
+            "arity": 3,
+            "result": 1,
+            "incoming": 0,
+            "flags": 0,
+            "owner-nodes": 43,
+            "old512": 1,
+            "new2048": 1,
+            "callable": 0,
+            "current-H": 1
+          },
+          "wide": {
+            "arity": 3,
+            "result": 1,
+            "incoming": 0,
+            "flags": 0,
+            "owner-nodes": 43,
+            "old512": 1,
+            "new2048": 1,
+            "callable": 0,
+            "current-H": 1
+          },
+          "scan": 1,
+          "frame-sites": 2,
+          "closure8": 1,
+          "closed-cases": 2,
+          "listedContinuationCount": 4,
+          "maxListedSuffixNodes": 4,
+          "listedSuffixesAbove128": 0,
+          "listedCurrentParserRefusals": 0,
+          "hChanged": false
+        },
+        {
+          "name": "$direct.sjoin",
+          "base": {
+            "arity": 2,
+            "result": 1,
+            "incoming": 0,
+            "flags": 0,
+            "owner-nodes": 31,
+            "old512": 1,
+            "new2048": 1,
+            "callable": 0,
+            "current-H": 0
+          },
+          "wide": {
+            "arity": 2,
+            "result": 1,
+            "incoming": 0,
+            "flags": 0,
+            "owner-nodes": 31,
+            "old512": 1,
+            "new2048": 1,
+            "callable": 0,
+            "current-H": 0
+          },
+          "scan": 0,
+          "frame-sites": 0,
+          "closure8": "not-scanned",
+          "listedContinuationCount": 1,
+          "maxListedSuffixNodes": 3,
+          "listedSuffixesAbove128": 0,
+          "listedCurrentParserRefusals": 0,
+          "hChanged": false
+        },
+        {
+          "name": "$p111.k.9435",
+          "base": {
+            "arity": 2,
+            "result": 1,
+            "incoming": 1,
+            "flags": 0,
+            "owner-nodes": 8,
+            "old512": 1,
+            "new2048": 1,
+            "callable": 0,
+            "current-H": 0
+          },
+          "wide": {
+            "arity": 2,
+            "result": 1,
+            "incoming": 1,
+            "flags": 0,
+            "owner-nodes": 8,
+            "old512": 1,
+            "new2048": 1,
+            "callable": 0,
+            "current-H": 0
+          },
+          "prelude": "refused",
+          "listedContinuationCount": 0,
+          "maxListedSuffixNodes": null,
+          "listedSuffixesAbove128": 0,
+          "listedCurrentParserRefusals": 0,
+          "hChanged": false
+        },
+        {
+          "name": "$p111.k.9438",
+          "base": {
+            "arity": 2,
+            "result": 1,
+            "incoming": 1,
+            "flags": 0,
+            "owner-nodes": 8,
+            "old512": 1,
+            "new2048": 1,
+            "callable": 0,
+            "current-H": 0
+          },
+          "wide": {
+            "arity": 2,
+            "result": 1,
+            "incoming": 1,
+            "flags": 0,
+            "owner-nodes": 8,
+            "old512": 1,
+            "new2048": 1,
+            "callable": 0,
+            "current-H": 0
+          },
+          "prelude": "refused",
+          "listedContinuationCount": 0,
+          "maxListedSuffixNodes": null,
+          "listedSuffixesAbove128": 0,
+          "listedCurrentParserRefusals": 0,
+          "hChanged": false
+        }
+      ]
+    }
+  ],
+  "hAdmissionChanges": 0,
+  "scope": "Exact metadata probe comparison; no runtime or new target jobs. Four large Map owners pass2048 but fail512, yet all remain current-H0 under both checked APIs. Their inventory is truncated after32 continuation names: listed suffix statistics are not exhaustive. Closure/scan restrictions remain; size widening alone supplies no admission witness in these queried contexts."
+}

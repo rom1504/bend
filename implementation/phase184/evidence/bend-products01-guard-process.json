@@ -1,0 +1,72 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": true,
+  "started": 1794202523.3884745,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "3",
+    "python3",
+    "-B",
+    "selfhost/tools/bench/acquire.py",
+    "--recipe",
+    "selfhost/build/phase184/bend.recipe.json",
+    "--out",
+    "selfhost/build/phase184/bend-products01",
+    "--set",
+    "full",
+    "--budget",
+    "600",
+    "--seconds",
+    "840",
+    "--guarded"
+  ],
+  "returncode": 0,
+  "rssLimitBytes": 2147483648,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 235864064,
+  "minimumAvailableBytes": 24510664704,
+  "diskBudgetBytes": 268435456,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 5795786752,
+  "minimumDiskFreeBytes": 5703077888,
+  "peakRunAllocatedBytes": 92524544,
+  "peakFilesystemDecreaseBytes": 92708864,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "3",
+    "fileLimitBytes": 134217728,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/acquire.py",
+        "sha256": "ea444a6b11087446ee55149d69cbad4dbd45b9c111bc760904b998741e21480b",
+        "bytes": 19811
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend.recipe.json",
+        "sha256": "51036635bfca638ea179e4118e4d58032659a96efabd405cddd0ce47add82020",
+        "bytes": 999
+      }
+    ]
+  },
+  "wallSeconds": 259.52758002188057,
+  "finished": 1794202782.9158149
+}

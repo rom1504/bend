@@ -41,7 +41,10 @@ comparisons, not an experiment isolating backend instruction selection.
 - For each distinct C implementation, compare additional small inputs against
   both real Bend executables using zero timing/warmup counts to expose the
   actual value without the fixed-case repetition oracle. Start with (0,0),
-  (1,17), (3,4294967295); include focused bounds where reviews identify value.
+  (1,17), (3,31); include focused bounds where reviews identify value. Use
+  UINT32_MAX only for reviewed seed arguments, not iteration counts. The first
+  generic maximum-word grid control was interrupted and is retained as negative
+  test-design evidence; subsequent children have a30s cap.
 - Keep mismatches, failed acquisition and partial campaigns. Never label a
   missing/failed point as a pass, or silently redefine the45-case score.
 

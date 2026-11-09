@@ -1,0 +1,73 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": false,
+  "started": 1794202921.290663,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "3",
+    "python3",
+    "-B",
+    "selfhost/tests/phase184/acquire-c.py",
+    "--assets",
+    "selfhost/manifests/assets-native.json",
+    "--bend-products",
+    "selfhost/build/phase184/bend-products01/programs.manifest.json",
+    "--out",
+    "selfhost/build/phase184/c-products01",
+    "--seconds",
+    "330",
+    "--guarded"
+  ],
+  "returncode": null,
+  "rssLimitBytes": 2147483648,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 0,
+  "minimumAvailableBytes": 25093492736,
+  "diskBudgetBytes": 67108864,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 5700718592,
+  "minimumDiskFreeBytes": 5700718592,
+  "peakRunAllocatedBytes": 0,
+  "peakFilesystemDecreaseBytes": 0,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/c-products01"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "3",
+    "fileLimitBytes": 134217728,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase184/acquire-c.py",
+        "sha256": "f46e9cbee3a91850e6269fc167961670826454d114da457d1eccc8f018794523",
+        "bytes": 22505
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/manifests/assets-native.json",
+        "sha256": "b438ea553d87adf357aa7817a2fad4f9b9a36f757d616c2bae66f5aa8bac5c9a",
+        "bytes": 25542
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/programs.manifest.json",
+        "sha256": "9117539ba0fa06640492c842676b756af84b892153989469a399af724b4e96e4",
+        "bytes": 791646
+      }
+    ]
+  }
+}

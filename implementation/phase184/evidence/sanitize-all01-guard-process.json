@@ -1,0 +1,61 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": false,
+  "started": 1794202878.6189299,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "3",
+    "python3",
+    "-B",
+    "selfhost/tests/phase184/sanitize-c.py",
+    "--out",
+    "selfhost/build/phase184/sanitize-all01",
+    "--seconds",
+    "300",
+    "--guarded"
+  ],
+  "returncode": 1,
+  "rssLimitBytes": 2147483648,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 44576768,
+  "minimumAvailableBytes": 25072762880,
+  "diskBudgetBytes": 67108864,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 5701570560,
+  "minimumDiskFreeBytes": 5701210112,
+  "peakRunAllocatedBytes": 356352,
+  "peakFilesystemDecreaseBytes": 360448,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/sanitize-all01"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "3",
+    "fileLimitBytes": 134217728,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase184/sanitize-c.py",
+        "sha256": "de7a618b73ede67d6c24cd5b276c2ca004d7df43078dec3316c652e3d23efe57",
+        "bytes": 16551
+      }
+    ]
+  },
+  "wallSeconds": 1.018585339654237,
+  "finished": 1794202879.6372511
+}

@@ -1,0 +1,38 @@
+{
+  "kind": "build-retention-run-close-v1",
+  "complete": true,
+  "state": "sealed",
+  "classification": "failed",
+  "initialRetention": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/sanitize-all01-guard/retention.json",
+    "bytes": 653,
+    "sha256": "642fdd72d4d7f7d713a1234847dbf4a0c4602d7df580a56aad8d41c984ad4743"
+  },
+  "process": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/sanitize-all01-guard/process.json",
+    "bytes": 2002,
+    "sha256": "b873a3b79b84d0aeba063c2ea20d60b433ca6c3c721535b02ed5150932d7cba0"
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/close.py",
+    "bytes": 13971,
+    "sha256": "7e37ec90fe3fd4a0f990cae727052e8ccdf7880f05dcc68618da15c0d76b0fef"
+  },
+  "archiveMethod": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/archive-v02.py",
+    "bytes": 18412,
+    "sha256": "3238e0774c6c21c3de6c07bcbd71e469cbb23aaba01f99da0cb1e9f51990ad9f"
+  },
+  "qualification": null,
+  "pruneRequested": false,
+  "roots": [
+    {
+      "root": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/sanitize-all01",
+      "keptHot": true
+    }
+  ],
+  "started": 1794202879.7030907,
+  "guardCommitRequired": "Close is committed only when guard retention.json names this report; process.json remains immutable.",
+  "finished": 1794202879.8065615,
+  "minimumDiskFreeBytes": 5701201920
+}

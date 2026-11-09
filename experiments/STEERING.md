@@ -1,4 +1,29 @@
-# Latest decision — Phase183 first-class assembly installed
+# Latest evidence — Phase184 handwritten-C runtime comparison
+
+[Report](../implementation/phase184/README.md) ·
+[Full table](../implementation/phase184/summary.md) ·
+[Runnable method](../selfhost/tools/bench/handwritten-c/README.md).
+
+All45 retained programs pass;44 timed cases, three rotated rounds, runtime only.
+Relative to straightforward handwritten C with matching algorithms/oracles,
+our QBE target is1.671× geometrically and our C target1.071×. Equal-source
+ratios are1.813×/1.111×;33/23 cases exceed1.1× and25/13 exceed2×. C is the
+faster Bend backend on35/44 cases, QBE on nine. A post hoc per-case best-Bend
+envelope is0.878×, not a single configuration or broad parity claim.
+
+QBE has major closure/list wins; maps, record aggregation, tree sorting and
+rendering retain large deficits. Compare our C and QBE output on the same
+computations before treating handwritten C's different ownership/layout as
+pure backend headroom. Native C uses the installed self-hosted image, not
+upstream TypeScript. This new adaptive per-role repetition protocol is not
+the historical equal-count score or an upstream-generated-code ratio.
+
+45 ASan/UBSan cases and83 extra input pairs pass; leak detection is unavailable
+under sandbox ptrace. Retain the failed leak pilot and interrupted overlarge
+grid control. Production images/source are unchanged. Current installation
+and assembly limitations remain the Phase183 decision below.
+
+# Installed compiler — Phase183 first-class assembly installed
 
 [Report](../implementation/phase183/README.md) · [Evidence](../implementation/phase183/evidence/index.json) ·
 [Maintained assembly guide](../docs/self_hosted/ASSEMBLY.md).

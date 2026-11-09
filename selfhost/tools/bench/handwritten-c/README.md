@@ -1,5 +1,8 @@
 # Handwritten C and maintained Bend runtime comparison
 
+The [Phase184 measured report](../../../../implementation/phase184/README.md)
+contains the complete45-case result, per-case CSV, chart and retained evidence.
+
 This workflow compares prepared executables on the same45 input points and
 complete output oracles from the [native45 catalog](../catalogs/native45/catalog.json).
 It measures program execution only. Compiler acquisition and machine construction

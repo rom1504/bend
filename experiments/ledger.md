@@ -7098,3 +7098,32 @@ Nineteen guarded jobs1194.427s, three preserved test-adapter/deadline failures;
 247 Python metadata tests plus JS shell-selection controls pass. Exact-byte
 hardlinking recovered about799MiB while retaining every path and protected
 image; one controlled lane and the 5 GiB reserve remained in force.
+
+## Phase184 — full45 handwritten-C runtime comparison
+
+[Report](../implementation/phase184/README.md) · [CSV](../implementation/phase184/cases.csv) ·
+[Evidence](../implementation/phase184/evidence/index.json).
+
+Runtime only, as requested. Added24 shared handwritten C kernels for all45
+retained cases, preserving original inputs, full output oracles and source
+algorithms with documented native representation/ownership choices. Fresh
+installed QBE N2 and C N1 products pass all45;83 additional input pairs match
+all three roles. ASan/UBSan45 passes; leak checking is explicitly unavailable.
+
+Three rotated rounds, independently calibrated repetition counts,396 admitted
+nonzero observations plus nine zero-work controls. QBE/handwritten-C geometric
+ratio1.671×, our C/handwritten-C1.071×; equal-source1.813×/1.111×. C beats QBE
+on35/44 timed cases.33/23 cases remain>1.1×,25/13>2×. The post hoc per-case
+best-Bend envelope0.878× is not a single backend configuration. The historical
+fixed-count and upstream-generated-code metrics are unchanged.
+
+QBE closure/list elimination gives large wins against C retaining intermediates;
+map churn, record aggregation, tree sorting and rendering retain major gaps.
+C layout/ownership differences prevent interpreting every gap as codegen alone.
+Next compare actual QBE and our C output on identical Bend computations.
+
+Preserve initial LeakSanitizer refusal and interrupted unbounded grid test;
+reviewed bounded controls replace the latter. Runtime campaign297.798s; no
+compiler image rebuild/promotion. Exact-byte immutable hardlinks recovered305MiB
+without deleting unique artifacts or touching installed inodes. Methods,
+compressed raw observations, pins, chart and all per-case times are committed.

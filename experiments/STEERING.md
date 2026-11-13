@@ -1,3 +1,34 @@
+# Phase190 — qualified x86 register/dataflow candidate, 2026-11-13
+
+[Report](../implementation/phase190/README.md) · [Runtime table](../implementation/phase190/runtime-summary.md) ·
+[Evidence](../implementation/phase190/evidence.json) · [Experiment ladder](../selfhost/tests/phase190/README.md).
+
+Direct-object runtime across44 eligible native45 cases improves3.980427→3.083793×
+our mature C target (22.526% less time), with22.190% held-out improvement.
+All45 outputs pass;37/44 remain>2×C. Positive-log deficit1.450104→1.250028;
+fixed-work sum falls19.288%. Retain local-pair+13.393%, two edit-distance+0.5%
+observations and four dispersion flags. No <=2× or parity claim.
+
+General bounded liveness, nine-color placement, copy affinity, physical operands,
+local width/copy facts and predicate certificates compose. Fold falls66→27hot
+instructions and21→0frame references; this is not a DRAM-miss claim. Local-pair
+reveals poor placement of exit-only handles; investigate loop-sensitive lifetimes
+and scaled memory addressing before merely adding colors or benchmark exceptions.
+
+Independent full source acceptance, actual QBE-produced N1, object N2/N3
+reproduction, N2 native64/runtime10/native45 all pass. N1/N2 all45objects and
+135linked sections equal, transferring the timed products without another timing
+campaign. N1/N2 same-source self-build241.793/348.274s: no native compilation-speed
+improvement claimed. JS/C/QBE source profiles/maps are byte-identical to57dc784.
+Installed Phase189 and its bindings remain unchanged; explicit candidateN2 is
+selfhost/build/phase190/native-self01/program with its report.json.
+
+59guarded jobs consume39.582min, including54.984s failures. Source+1165lines;
+all experiments and independent oracles retained. Agent billing unavailable.
+No new BendTT proof, complete compiler correctness or recursive acceleration claim.
+
+---
+
 # Phase189 — installed direct-object x86 default, 2026-11-13
 
 [Report](../implementation/phase189/README.md) · [Design](../design/phase189/README.md) ·

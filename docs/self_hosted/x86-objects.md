@@ -54,6 +54,14 @@ nonglobal local symbols; address references, exported symbols and unresolved
 external relocations retain their explicit identities. The encoder still uses
 near branches and does not perform relaxation.
 
+The maintained source also contains the [Phase190 register/dataflow work](../../implementation/phase190/README.md).
+Bounded liveness permits joint allocation across caller and callee registers;
+copy affinities guide legal placement without weakening interference checks.
+Local width/copy facts and predicate certificates remove redundant transport
+and Boolean materialization. Both output formats share these rules. Read the
+report for the exact qualified image and performance scope; editing maintained
+source does not replace the installed Phase189 compiler automatically.
+
 `File.write_bytes` sends objects without text decoding. Host tools authenticate,
 capture, inspect and link bytes; instruction selection, encoding, fixups and ELF
 records are implemented in Bend. Original native verification and semantic

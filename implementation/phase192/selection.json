@@ -1,0 +1,21 @@
+{
+  "kind": "phase192-pre-heldout-selection",
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-source01/compiler.bend",
+    "bytes": 1803092,
+    "sha256": "301435947ae813b64eebaf30610d2be4aa3be5b7ddd772bd0e68f1b6aac48c20"
+  },
+  "selected": [
+    "native inline F32/U32 conversion and staged operand elimination",
+    "bounded shared scaled address selection",
+    "canonical Boolean predicates",
+    "original verified H recursive-region consumer"
+  ],
+  "excluded": [
+    "scoped continuation-frame expansion: mixed performance and compilation overhead",
+    "path-facts table: no measured runtime evidence",
+    "mixed floating region widening: global reused names still exclude hot path"
+  ],
+  "baseline": "Phase191 qualified native N2; installedPhase189 unchanged",
+  "scope": "Selection frozen before native45 heldout execution; independent gates remain required."
+}

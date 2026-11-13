@@ -1,0 +1,677 @@
+{
+  "kind": "phase192-static-region-coverage",
+  "complete": true,
+  "emission": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/report.json",
+    "sha256": "b43950c1a6240df457642e040ac47f4dad43b6b6fc815fc4ba7c17f68833dd99"
+  },
+  "rows": [
+    {
+      "id": "mandelbrot",
+      "workers": [
+        "$direct.String.length"
+      ],
+      "nonStringLength": [],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/mandelbrot/program.s",
+        "bytes": 548184,
+        "sha256": "8a77bbbcab0b7376914e257b0b940c94551c68c87015b1ceb31de37557b4b2cb"
+      }
+    },
+    {
+      "id": "editdist",
+      "workers": [
+        "$direct.batch",
+        "$direct.String.length"
+      ],
+      "nonStringLength": [
+        "$direct.batch"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/editdist/program.s",
+        "bytes": 559011,
+        "sha256": "626abedcab961c2215a46a9d7c3bcbf7f2ba3aaae69b9ca93b003c1f6af4faaf"
+      }
+    },
+    {
+      "id": "tree-bitonic",
+      "workers": [
+        "$direct.scan",
+        "$direct.warp",
+        "$direct.String.length"
+      ],
+      "nonStringLength": [
+        "$direct.scan",
+        "$direct.warp"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/tree-bitonic/program.s",
+        "bytes": 562857,
+        "sha256": "c92347e75e7919d51c7ea57ab94ce60b7e22f5eeb244978e8f21011dbcadd1e1"
+      }
+    },
+    {
+      "id": "lexer",
+      "workers": [
+        "$direct.gen",
+        "$direct.String.length"
+      ],
+      "nonStringLength": [
+        "$direct.gen"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/lexer/program.s",
+        "bytes": 553811,
+        "sha256": "9e847a4c761706ec02d23a5bbfc17accc79deb0cfff12f329ac6cc05f31e9154"
+      }
+    },
+    {
+      "id": "symreg",
+      "workers": [
+        "$direct.gen",
+        "$direct.eval",
+        "$direct.esize",
+        "$direct.String.length"
+      ],
+      "nonStringLength": [
+        "$direct.gen",
+        "$direct.eval",
+        "$direct.esize"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/symreg/program.s",
+        "bytes": 652238,
+        "sha256": "9320c1806726c3598255c3170bc28b22df3f0fec2c6ea1a32d68ff9fec0304e2"
+      }
+    },
+    {
+      "id": "test-morning-program",
+      "workers": [
+        "$direct.LL.length",
+        "$direct.String.length"
+      ],
+      "nonStringLength": [
+        "$direct.LL.length"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/test-morning-program/program.s",
+        "bytes": 1700309,
+        "sha256": "db64bee10faf2ff6bb8bacb0004f72ffeb138943096af8bd614620f1e729025b"
+      }
+    },
+    {
+      "id": "test-evening-program",
+      "workers": [
+        "$direct.String.length"
+      ],
+      "nonStringLength": [],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/test-evening-program/program.s",
+        "bytes": 1839705,
+        "sha256": "27b435e4fe14d74c0008374e6260592543b8c80b110a1f7212230b236d91f221"
+      }
+    },
+    {
+      "id": "test-rle-roundtrip",
+      "workers": [
+        "$direct.expand",
+        "$direct.llenp",
+        "$direct.String.length"
+      ],
+      "nonStringLength": [
+        "$direct.expand",
+        "$direct.llenp"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/test-rle-roundtrip/program.s",
+        "bytes": 472199,
+        "sha256": "4f93d3bfd18e842f9dc23b96195cc9355baae7d927efb5325b98785d8642f109"
+      }
+    },
+    {
+      "id": "test-map-set-ops",
+      "workers": [
+        "$direct.Str.join.go",
+        "$direct.Map.keys.go",
+        "$direct.Map.values.go",
+        "$direct.Map.to_list.go",
+        "$direct.String.length"
+      ],
+      "nonStringLength": [
+        "$direct.Str.join.go",
+        "$direct.Map.keys.go",
+        "$direct.Map.values.go",
+        "$direct.Map.to_list.go"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/test-map-set-ops/program.s",
+        "bytes": 2353368,
+        "sha256": "68295b6cb807c66899ed649548275803fcc8c41479283b0b3fe9557ebdc5d1be"
+      }
+    },
+    {
+      "id": "raytrace",
+      "workers": [
+        "$direct.colf",
+        "$direct.String.length"
+      ],
+      "nonStringLength": [
+        "$direct.colf"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/raytrace/program.s",
+        "bytes": 698586,
+        "sha256": "a2911a27e9c8737e7291accad37c41029ff3f52844e014035d03ccd929d68d4c"
+      }
+    },
+    {
+      "id": "local-pair",
+      "workers": [
+        "$direct.String.length"
+      ],
+      "nonStringLength": [],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/local-pair/program.s",
+        "bytes": 521652,
+        "sha256": "53c8b463e5d63ce9ef0f2a4ad8816cb9b17d825bab635eaeb4d0b2b8c44d00cd"
+      }
+    },
+    {
+      "id": "local-fold",
+      "workers": [
+        "$direct.String.length"
+      ],
+      "nonStringLength": [],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/local-fold/program.s",
+        "bytes": 390581,
+        "sha256": "8b4b5364c2b4d02db53afe32196d1b16bf3612b98dfc4daee6c2eedeccce7492"
+      }
+    },
+    {
+      "id": "scalar-region-0",
+      "workers": [
+        "$direct.String.length"
+      ],
+      "nonStringLength": [],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/scalar-region-0/program.s",
+        "bytes": 371856,
+        "sha256": "a6b854019571556195f87f2e97a22faacae4809150e9676aa4a146de322c8432"
+      }
+    },
+    {
+      "id": "scalar-region-8192",
+      "workers": [
+        "$direct.String.length"
+      ],
+      "nonStringLength": [],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/scalar-region-8192/program.s",
+        "bytes": 371865,
+        "sha256": "af9c41a56f037a6c7853dc9a74e58e4245e33876e4d8dd950967936e750d22e1"
+      }
+    },
+    {
+      "id": "complete-generic-row32",
+      "workers": [
+        "$direct.p88_row_numbers",
+        "$direct.Array.to_list.go~0",
+        "$direct.String.length"
+      ],
+      "nonStringLength": [
+        "$direct.p88_row_numbers",
+        "$direct.Array.to_list.go~0"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/complete-generic-row32/program.s",
+        "bytes": 641590,
+        "sha256": "849774ca9c9a45403eb03b48dc13da9961d42ae9c5cb787edfa695bc627acecf"
+      }
+    },
+    {
+      "id": "variation-editdist-0-17",
+      "workers": [
+        "$direct.batch",
+        "$direct.String.length"
+      ],
+      "nonStringLength": [
+        "$direct.batch"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/variation-editdist-0-17/program.s",
+        "bytes": 559012,
+        "sha256": "c9cfe0090909ad0fdd84e868d68e28cbc89032a0de2e1826fbb54cfc7283621d"
+      }
+    },
+    {
+      "id": "variation-editdist-3-123",
+      "workers": [
+        "$direct.batch",
+        "$direct.String.length"
+      ],
+      "nonStringLength": [
+        "$direct.batch"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/variation-editdist-3-123/program.s",
+        "bytes": 559036,
+        "sha256": "1d35bcf349925ab9d20fb546e1c8231e5631b3257bf6daa2bab9af7bf47935e3"
+      }
+    },
+    {
+      "id": "variation-lexer-6-17",
+      "workers": [
+        "$direct.gen",
+        "$direct.String.length"
+      ],
+      "nonStringLength": [
+        "$direct.gen"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/variation-lexer-6-17/program.s",
+        "bytes": 553834,
+        "sha256": "4bfb67581523f59519bd172a71748e33442e244ada937511176d2916f1c9cf77"
+      }
+    },
+    {
+      "id": "variation-lexer-10-123",
+      "workers": [
+        "$direct.gen",
+        "$direct.String.length"
+      ],
+      "nonStringLength": [
+        "$direct.gen"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/variation-lexer-10-123/program.s",
+        "bytes": 553838,
+        "sha256": "ef176d34b75bc8dea99f89c521e68bc31362c003492bd8bfcad3ae23a5432ba2"
+      }
+    },
+    {
+      "id": "variation-tree-bitonic-6-17",
+      "workers": [
+        "$direct.scan",
+        "$direct.warp",
+        "$direct.String.length"
+      ],
+      "nonStringLength": [
+        "$direct.scan",
+        "$direct.warp"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/variation-tree-bitonic-6-17/program.s",
+        "bytes": 562881,
+        "sha256": "0823e4a5fb984cb183bf5cf989056e6a2aba9f3f65e587ff771d3726caec7a25"
+      }
+    },
+    {
+      "id": "variation-tree-bitonic-9-123",
+      "workers": [
+        "$direct.scan",
+        "$direct.warp",
+        "$direct.String.length"
+      ],
+      "nonStringLength": [
+        "$direct.scan",
+        "$direct.warp"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/variation-tree-bitonic-9-123/program.s",
+        "bytes": 562883,
+        "sha256": "40e34f51d1140b3f203cc1514f5d1abcb7f13d4d4d6fde3ed4107a613d3b9ebb"
+      }
+    },
+    {
+      "id": "variation-symreg-4-17",
+      "workers": [
+        "$direct.gen",
+        "$direct.eval",
+        "$direct.esize",
+        "$direct.String.length"
+      ],
+      "nonStringLength": [
+        "$direct.gen",
+        "$direct.eval",
+        "$direct.esize"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/variation-symreg-4-17/program.s",
+        "bytes": 652238,
+        "sha256": "b30a425a488101484415bc85606bc4bd9ce2a22e24f2725b78d7d51bc24195ad"
+      }
+    },
+    {
+      "id": "variation-symreg-7-123",
+      "workers": [
+        "$direct.gen",
+        "$direct.eval",
+        "$direct.esize",
+        "$direct.String.length"
+      ],
+      "nonStringLength": [
+        "$direct.gen",
+        "$direct.eval",
+        "$direct.esize"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/variation-symreg-7-123/program.s",
+        "bytes": 652240,
+        "sha256": "86fab27dbd9ac659a8a2795325519deac4a5808ad44f19840914056631626147"
+      }
+    },
+    {
+      "id": "variation-local-fold-128-0",
+      "workers": [
+        "$direct.String.length"
+      ],
+      "nonStringLength": [],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/variation-local-fold-128-0/program.s",
+        "bytes": 390547,
+        "sha256": "ec108f385a587b99813e5801b02c976f82c7e3634b1e1226bc787f668871428e"
+      }
+    },
+    {
+      "id": "variation-local-fold-8192-123",
+      "workers": [
+        "$direct.String.length"
+      ],
+      "nonStringLength": [],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/variation-local-fold-8192-123/program.s",
+        "bytes": 390561,
+        "sha256": "453a3f4f24d2d94b03283c459edf89ab045779811487e39c317fd3f714938817"
+      }
+    },
+    {
+      "id": "variation-mandelbrot-grid-4-7",
+      "workers": [
+        "$direct.String.length"
+      ],
+      "nonStringLength": [],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/variation-mandelbrot-grid-4-7/program.s",
+        "bytes": 382892,
+        "sha256": "0f7996a04ad24ae7ad1686958fa313249ae1e6f9e2eef6085bfcce6edbfe9fbf"
+      }
+    },
+    {
+      "id": "variation-mandelbrot-grid-5-31",
+      "workers": [
+        "$direct.String.length"
+      ],
+      "nonStringLength": [],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/variation-mandelbrot-grid-5-31/program.s",
+        "bytes": 382894,
+        "sha256": "c5abaff345d20da31266100bd90b4537f3962c34bc402dbcd0dd9a8dec810d5d"
+      }
+    },
+    {
+      "id": "variation-ray-active-64-2440",
+      "workers": [
+        "$direct.String.length"
+      ],
+      "nonStringLength": [],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/variation-ray-active-64-2440/program.s",
+        "bytes": 601194,
+        "sha256": "35eadcc28134bc77f6c1bac8afb295c70d230114454d4230ee0736c483e2b5b7"
+      }
+    },
+    {
+      "id": "variation-ray-active-256-2240",
+      "workers": [
+        "$direct.String.length"
+      ],
+      "nonStringLength": [],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/variation-ray-active-256-2240/program.s",
+        "bytes": 601217,
+        "sha256": "4b0e3d055e96dd6e2823ac57d8c06602341cd9807eb6d8195425ca9588155413"
+      }
+    },
+    {
+      "id": "coverage-closures-64",
+      "workers": [
+        "$direct.String.length"
+      ],
+      "nonStringLength": [],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/coverage-closures-64/program.s",
+        "bytes": 362021,
+        "sha256": "99293ec6c4af5501f2df7a032c6fad42342b63aa4a3e64d46e9b4a39ef0144ce"
+      }
+    },
+    {
+      "id": "coverage-closures-256",
+      "workers": [
+        "$direct.String.length"
+      ],
+      "nonStringLength": [],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/coverage-closures-256/program.s",
+        "bytes": 362026,
+        "sha256": "d603545d6232b0509528249b5db8ae9b99336e3ab798f5931c1972a5f75b050f"
+      }
+    },
+    {
+      "id": "coverage-list-pipeline-128",
+      "workers": [
+        "$direct.String.length"
+      ],
+      "nonStringLength": [],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/coverage-list-pipeline-128/program.s",
+        "bytes": 381503,
+        "sha256": "5597f62f8f8494b7cd824e7c3057f6252db796aa2c3c1dd38fbc0c8e373180ab"
+      }
+    },
+    {
+      "id": "coverage-list-pipeline-512",
+      "workers": [
+        "$direct.String.length"
+      ],
+      "nonStringLength": [],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/coverage-list-pipeline-512/program.s",
+        "bytes": 381505,
+        "sha256": "a81eb366e0bcc690a95056bc3cb71dc3e53ae8bde5e6a70fb064c635877168a0"
+      }
+    },
+    {
+      "id": "coverage-bst-32",
+      "workers": [
+        "$direct.inorder",
+        "$direct.String.length"
+      ],
+      "nonStringLength": [
+        "$direct.inorder"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/coverage-bst-32/program.s",
+        "bytes": 450814,
+        "sha256": "02176fe7fe64a3607bb5752c2d0c1585ed647ef4b4a8a3c0488602adf6abfe5f"
+      }
+    },
+    {
+      "id": "coverage-bst-64",
+      "workers": [
+        "$direct.inorder",
+        "$direct.String.length"
+      ],
+      "nonStringLength": [
+        "$direct.inorder"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/coverage-bst-64/program.s",
+        "bytes": 450815,
+        "sha256": "410a8c5e208273c8ce62c253c8ec10543175ff0815346d5308bb420e1681275c"
+      }
+    },
+    {
+      "id": "coverage-unicode-text-16",
+      "workers": [
+        "$direct.p37.text.repeat",
+        "$direct.sjoin.go",
+        "$direct.ssplit",
+        "$direct.String.length"
+      ],
+      "nonStringLength": [
+        "$direct.p37.text.repeat",
+        "$direct.sjoin.go",
+        "$direct.ssplit"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/coverage-unicode-text-16/program.s",
+        "bytes": 491802,
+        "sha256": "595132962f85e6e50e88011bd79fa9bbff49b1b19e909c174d5c90e9f2f414cc"
+      }
+    },
+    {
+      "id": "coverage-unicode-text-64",
+      "workers": [
+        "$direct.p37.text.repeat",
+        "$direct.sjoin.go",
+        "$direct.ssplit",
+        "$direct.String.length"
+      ],
+      "nonStringLength": [
+        "$direct.p37.text.repeat",
+        "$direct.sjoin.go",
+        "$direct.ssplit"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/coverage-unicode-text-64/program.s",
+        "bytes": 512605,
+        "sha256": "1519e0d6de69f844f5ef5cc1ba7d4bdcb558ee37873ee1d8a92d297ced18a7ba"
+      }
+    },
+    {
+      "id": "coverage-expression-32",
+      "workers": [
+        "$direct.eval",
+        "$direct.p37.expr",
+        "$direct.String.length"
+      ],
+      "nonStringLength": [
+        "$direct.eval",
+        "$direct.p37.expr"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/coverage-expression-32/program.s",
+        "bytes": 441177,
+        "sha256": "4f4669d9602be0a1e87825baefc762d144030478dc76716fd39c065fdfda3af9"
+      }
+    },
+    {
+      "id": "coverage-expression-128",
+      "workers": [
+        "$direct.eval",
+        "$direct.p37.expr",
+        "$direct.String.length"
+      ],
+      "nonStringLength": [
+        "$direct.eval",
+        "$direct.p37.expr"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/coverage-expression-128/program.s",
+        "bytes": 441205,
+        "sha256": "6c49be386e33670c26a684366d89497bc0e3b4a37de6e27192fa14b940e109f3"
+      }
+    },
+    {
+      "id": "coverage-map-churn-32",
+      "workers": [
+        "$direct.Map.to_list.go",
+        "$direct.String.length"
+      ],
+      "nonStringLength": [
+        "$direct.Map.to_list.go"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/coverage-map-churn-32/program.s",
+        "bytes": 1667692,
+        "sha256": "f0337a3b23c320d8e5e2c11f9336cdd04c69f7ccbd9af29ff8d6c630e3a0852c"
+      }
+    },
+    {
+      "id": "coverage-map-churn-128",
+      "workers": [
+        "$direct.Map.to_list.go",
+        "$direct.String.length"
+      ],
+      "nonStringLength": [
+        "$direct.Map.to_list.go"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/coverage-map-churn-128/program.s",
+        "bytes": 1667696,
+        "sha256": "6071211b72625dad1df8fbf19335f8407963faa969b55cdb100a2d24a5b5ae55"
+      }
+    },
+    {
+      "id": "coverage-numeric-recurrence-256",
+      "workers": [
+        "$direct.String.length"
+      ],
+      "nonStringLength": [],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/coverage-numeric-recurrence-256/program.s",
+        "bytes": 367189,
+        "sha256": "9bd0bdc90b0af374908fb274e8a86ebb058252fb8191d3756f7930f8334df0c9"
+      }
+    },
+    {
+      "id": "coverage-numeric-recurrence-1024",
+      "workers": [
+        "$direct.String.length"
+      ],
+      "nonStringLength": [],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/coverage-numeric-recurrence-1024/program.s",
+        "bytes": 367172,
+        "sha256": "e1924b7ee47a494e587cbc159b269b3e6a34df524ffbd9e9aba35633df9b5b3e"
+      }
+    },
+    {
+      "id": "coverage-record-aggregation-64",
+      "workers": [
+        "$direct.Map.to_list.go",
+        "$direct.p37.render",
+        "$direct.String.length"
+      ],
+      "nonStringLength": [
+        "$direct.Map.to_list.go",
+        "$direct.p37.render"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/coverage-record-aggregation-64/program.s",
+        "bytes": 1667331,
+        "sha256": "ae880676a03e59ab1b541404e288d65e61b85f71c9110b819e01614e0f38a9c3"
+      }
+    },
+    {
+      "id": "coverage-record-aggregation-256",
+      "workers": [
+        "$direct.Map.to_list.go",
+        "$direct.p37.render",
+        "$direct.String.length"
+      ],
+      "nonStringLength": [
+        "$direct.Map.to_list.go",
+        "$direct.p37.render"
+      ],
+      "assembly": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-emit01/coverage-record-aggregation-256/program.s",
+        "bytes": 1667335,
+        "sha256": "0b437dae4d03ce8d6ebd35901e3ab18dcfddada8ea4f10c38af95cea161141d6"
+      }
+    }
+  ],
+  "programsWithNonStringLength": 27,
+  "scope": "Admitted emitted workers, not dynamic frequency or attribution."
+}

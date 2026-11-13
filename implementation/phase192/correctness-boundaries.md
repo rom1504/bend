@@ -100,3 +100,18 @@ oracles and complete state sentinels reduce that common-mode risk within their
 finite domains. Source acceptance, finite execution, machine identity, native
 reproduction, timing and BendTT proof remain separate claims; this phase adds
 no whole-compiler or H-consumer equivalence theorem.
+
+## Later executed gates
+
+The complete maintained selected source passes independent upstream checking in
+`source-check01`. The final corrected six-source catalog now passes together in
+`recursive-controls05`, including direct ELF and assembly routes. The correctly
+activated runtime observer in `scoped-reentry02` passes84 observations per route,
+including complete stack capture/FID contents and caller-state bytes. The
+scoped optimization is still excluded for profitability. Its original observer
+failure and missing-runtime-activation diagnosis remain retained.
+
+All45 selected hosted-emission programs pass the frozen output oracles in
+`selected-build01`; final native qualification is reported separately in the
+main report. This addendum supersedes the earlier pending status only for these
+explicitly named gates.

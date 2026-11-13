@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py", line 226, in <module>
+    raise SystemExit(main())
+  File "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py", line 212, in main
+    identities = [S.identity(file) for file in command if Path(file).is_file()]
+  File "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py", line 212, in <listcomp>
+    identities = [S.identity(file) for file in command if Path(file).is_file()]
+  File "/usr/lib/python3.9/pathlib.py", line 1439, in is_file
+    return S_ISREG(self.stat().st_mode)
+  File "/usr/lib/python3.9/pathlib.py", line 1221, in stat
+    return self._accessor.stat(self)
+OSError: [Errno 36] File name too long: 'coverage-closures-256,coverage-list-pipeline-128,coverage-list-pipeline-512,coverage-bst-32,coverage-bst-64,coverage-unicode-text-16,coverage-unicode-text-64,coverage-expression-32,coverage-expression-128,coverage-map-churn-32,coverage-map-churn-128,coverage-numeric-recurrence-256,coverage-numeric-recurrence-1024,coverage-record-aggregation-64,coverage-record-aggregation-256'

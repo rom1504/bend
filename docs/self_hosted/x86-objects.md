@@ -139,3 +139,21 @@ for measured runtime, qualification and the exact candidate image; these source
 changes do not update an already installed compiler. The
 [runtime profiling planner](../../selfhost/tools/profiler/README.md) authenticates
 machine products and prepares calibrated physical profiles for either route.
+
+Phase192 adds exact unary F32/U32 conversion selection, shared scaled-address
+selection, and pure Boolean normalization before placement. It also consumes
+the existing checked `P114HPlan` recursion regions through
+[`recursive-regions.bend`](../../selfhost/src/back/x86/recursive-regions.bend).
+The original planner remains in
+[`local-continuations.bend`](../../selfhost/src/back/qbe/local-continuations.bend);
+its semantic admission is reused without generating or parsing QBE text.
+A worker keeps descent and closed continuation resumption in a local loop,
+retains the runtime continuation stack and ownership operations, and returns to
+the existing public ABI adapter. Rejected plans retain the generic segment.
+
+The [Phase192 report](../../implementation/phase192/README.md) distinguishes
+measured program runtime, native qualification, compiler cost and remaining
+limits. An optional frame-expansion experiment remains outside the selected
+compiler after a mixed runtime result. The source changes do not replace an
+already installed compiler; select the report's explicitly qualified image and
+receipt when reproducing its results.

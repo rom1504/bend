@@ -1,3 +1,37 @@
+# Phase191 — qualified indexed x86 selection, 2026-11-13
+
+[Report](../implementation/phase191/README.md) · [Runtime table](../implementation/phase191/runtime-summary.md) ·
+[Evidence](../implementation/phase191/evidence.json) · [Research](../research/phase191/backend-research.md).
+
+Full44-case direct-object runtime improves3.076292→2.736569×our mature C target,
+0.889567×freshly timed Phase190 (11.043% less); held-out36 eligible cases improve
+7.838%. Equal-family ratio0.890850; fixed-work sum falls12.429%. Positive-log
+slowdown1.246744→1.131531;40/44 remain>1.1×C and37/44>2×. Parity remains open.
+Numeric256+8.506%, symreg+8.191% and every other regression/dispersion flag remain
+included. Local-pair takes0.333120×parent time; editdist0.369946×.
+
+Typed indexed addressing/memory ALU selection, repeated-loop register priority,
+pure conditional copies and adjacent private-frame forwarding compose. Selected
+source+629lines/+1.84%; argument-move removal and alignment attempts rejected.
+Physical profiles and exact ELF witnesses distinguish hot work from static counts.
+The maintained profiler now prepares authenticated per-role calibrated workloads.
+
+Independent full source checking, N1→N2→N3 exact-object reproduction, N2 native64,
+runtime10 and all45 outputs pass. All45 N1/N2 objects and135 linked sections equal;
+eight checked-hosted development products also agree. Native acquisition/self-build
+160.167/242.093/342.329s; no controlled cross-phase compiler-speed claim. Other
+backend source profiles/maps are byte-identical. Installed Phase189 stays intact;
+qualified candidateN2: selfhost/build/phase191/native-self01/program + report.json.
+
+Next: complete guarded F32-to-U32 inline conversion and preserve floating values;
+then shared indexed-address/accumulator selection. Final numeric profiles attribute
+35.37% of samples to the conversion runtime helper; this is not all removable
+overhead. Map needs an actually hot
+producer/consumer representation boundary, not more static call-move removal.
+No new BendTT theorem, whole-compiler proof or recursive-acceleration claim.
+
+---
+
 # Phase188 — shared typed x86 instructions, 2026-11-09
 
 [Report](../implementation/phase188/README.md) · [Design](../design/phase188/README.md) ·

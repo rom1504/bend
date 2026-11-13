@@ -110,3 +110,15 @@ law x185_physical_binary:
   for +ids: N111Ids
   for +frame: X181Frame
   X188Seq
+
+# Typed late address-selection plans, declared before emission modules.
+type X191Address is Data:
+  X191Address{+base: N111Value, +index: N111Value, +scale: U32, +disp: U32}
+type X191Operation is Data:
+  X191Load{+name: String, +typ: N111Type, +address: X191Address}
+  X191Store{+typ: N111Type, +address: X191Address, +value: N111Value}
+  X191MemoryAlu{+name: String, +typ: N111Type, +op: String, +left: N111Value, +address: X191Address}
+type X191Pick is Data:
+  X191Pick{+rest: List<&2,P113DStmt>, +operation: X191Operation}
+type X191AddressCode is Data:
+  X191AddressCode{+prefix: X188Seq, +operand: X187Operand}

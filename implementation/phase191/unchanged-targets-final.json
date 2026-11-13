@@ -1,0 +1,100 @@
+{
+  "kind": "phase191-unchanged-non-x86-profiles-v1",
+  "complete": true,
+  "targetsRun": false,
+  "observedHead": "6fb9da34cec27b6076a194fb0089899a35f8728b",
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase191/unchanged-targets.py",
+      "bytes": 6989,
+      "sha256": "1f0b5e71197868d24bd88952273a7a2eebbab55ee2377518d3901c4a717c0537"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/source.py",
+      "bytes": 32781,
+      "sha256": "de83e4ece0ae31cf43783829326a7961cd1102ae223bfcc70b2288fa8cde5551"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/compiler.json",
+      "bytes": 544097,
+      "sha256": "3a75cdc8acca40df5a28c1972bc8815807ec4ea1f640101b3e701fb47fe897e8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/unchanged-targets02/current-compiler.json",
+      "bytes": 544097,
+      "sha256": "3a75cdc8acca40df5a28c1972bc8815807ec4ea1f640101b3e701fb47fe897e8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/unchanged-targets01/audit.py",
+      "bytes": 4559,
+      "sha256": "ab3fe550b2fb2930ccdd4c2fde790f910ef037ddb216eaa6b69d2a821d541082"
+    }
+  ],
+  "method": "Authenticate every assembler-read module and the maintained assembler against each baseline Git blob; compare full assembled profile bytes and declaration maps in memory.",
+  "scope": "Metadata/source transport only; no compiler/target execution or inherited qualification claim.",
+  "baselines": [
+    {
+      "commit": "e4cdffa949940cdd3dc83da4d6a9ab00f873140f",
+      "manifest": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/unchanged-targets02/e4cdffa94994-compiler.json",
+        "bytes": 543959,
+        "sha256": "b734f525cd336ae89b68978e3859319d73bb8f676b0b7bc8063d218c8fd4b1f5"
+      },
+      "onlyManifestChange": "profiles.x86.modules",
+      "addedX86Modules": [
+        "src/back/x86/address-selection.bend",
+        "src/back/x86/frame-forward.bend",
+        "src/back/x86/conditional-select.bend"
+      ]
+    }
+  ],
+  "profiles": [
+    {
+      "baseline": "e4cdffa949940cdd3dc83da4d6a9ab00f873140f",
+      "profile": "qbe",
+      "bytes": 3213774,
+      "sha256": "1e8a23ace83520a9d909cf20ce6168e5aa5a0f372d32991381dfc9bf0c544902",
+      "sourceMapSha256": "cdaa1964ec0b717cd7a022054412d1a3b35849590e6bbb6001971507d3d48b6f",
+      "byteIdentical": true,
+      "sourceMapIdentical": true,
+      "declarations": 8578,
+      "selectedModules": 225,
+      "x86ModulesSelected": 0
+    },
+    {
+      "baseline": "e4cdffa949940cdd3dc83da4d6a9ab00f873140f",
+      "profile": "native-c",
+      "bytes": 3213858,
+      "sha256": "38d6e88197866928de2eae1161a413d57cd003a0b06614ba7dd85b911e0eaffa",
+      "sourceMapSha256": "a1de54deda0bac0219fceafdc191028670b52dd722b65fbb46e5a73c418be167",
+      "byteIdentical": true,
+      "sourceMapIdentical": true,
+      "declarations": 8578,
+      "selectedModules": 225,
+      "x86ModulesSelected": 0
+    },
+    {
+      "baseline": "e4cdffa949940cdd3dc83da4d6a9ab00f873140f",
+      "profile": "js-api",
+      "bytes": 3213640,
+      "sha256": "28277c3d8ac3623dc0cf0643423a3ffe62636add0c1d22e94ee28c5b2d73853c",
+      "sourceMapSha256": "ed573d33eb4267d2209181c430f67a68f9110a39b258068b0cf3cbe2d0e45747",
+      "byteIdentical": true,
+      "sourceMapIdentical": true,
+      "declarations": 8577,
+      "selectedModules": 224,
+      "x86ModulesSelected": 0
+    }
+  ],
+  "fullSourceCopiesRetained": false,
+  "authenticatedDependencies": {
+    "count": 227,
+    "sourceModules": 226,
+    "inventory": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/unchanged-targets02/authenticated-modules.json",
+      "bytes": 65662,
+      "sha256": "03e8fb7d06d569a28dd6b8e4f268a46c5db6a68067a55fa1b7c0ed05ad197ff3"
+    },
+    "allByteIdentical": true
+  }
+}

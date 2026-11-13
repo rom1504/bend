@@ -30,6 +30,7 @@ def x187_e_reg(value: X187Operand, +width: U32, +vector: Bool) -> Bool:
 def x187_e_rm(value: X187Operand, width: U32, vector: Bool) -> Bool:
   match value:
     case X187Mem{base,disp}: U32.is_lt(base,16)
+    case X187Indexed{base,index,scale,disp}: x191_e_indexed_valid(base,index,scale)
     case X187Rip{symbol,lo,hi}: Bool.not(String.is_empty(symbol))
     case _: x187_e_reg(value,width,vector)
 
@@ -38,6 +39,18 @@ def x187_e_index(value: X187Operand) -> U32:
   match value:
     case X187Reg{index,width,vector}: index
     case X187Mem{base,disp}: base
+    case X187Indexed{base,index,scale,disp}: base
+    case _: 0
+
+# RSP cannot be an index: SIB index4 without REX.X denotes no index.
+# R12 is a real index: SIB index4 with REX.X denotes R12.
+def x191_e_indexed_valid(base: U32, +index: U32, +scale: U32) -> Bool:
+  U32.is_lt(base,16) && U32.is_lt(index,16) && Bool.not(U32.is_eq(index,4)) &&
+    (U32.is_eq(scale,1) || U32.is_eq(scale,2) || U32.is_eq(scale,4) || U32.is_eq(scale,8))
+
+def x191_e_rex_x(value: X187Operand) -> U32:
+  match value:
+    case X187Indexed{base,index,scale,disp}: nt_choose(U32,U32.is_ge(index,8),u => 2,u => 0)
     case _: 0
 
 @unsafe
@@ -56,9 +69,10 @@ def x187_e_fits(+lo: U32, +hi: U32, +width: U32) -> Bool:
     U32.is_eq(hi,0) && nt_choose(Bool,U32.is_eq(width,8),v => U32.is_le(lo,255),v => True{}))
 
 @unsafe
-def x187_e_prefix(+legacy: U32, wide: Bool, reg: U32, operand: X187Operand, force: Bool) -> List<&2,U32>:
+def x187_e_prefix(+legacy: U32, wide: Bool, reg: U32, +operand: X187Operand, force: Bool) -> List<&2,U32>:
   +rex = U32.add(64,U32.add(nt_choose(U32,wide,u => 8,u => 0),U32.add(
-    nt_choose(U32,U32.is_ge(reg,8),u => 4,u => 0),nt_choose(U32,U32.is_ge(x187_e_index(operand),8),u => 1,u => 0))))
+    nt_choose(U32,U32.is_ge(reg,8),u => 4,u => 0),U32.add(x191_e_rex_x(operand),
+      nt_choose(U32,U32.is_ge(x187_e_index(operand),8),u => 1,u => 0)))))
   nt_append(U32,nt_choose(List<&2,U32>,U32.is_eq(legacy,0),u => [],u => [legacy]),
     nt_choose(List<&2,U32>,U32.is_gt(rex,64) || force,u => [rex],u => []))
 
@@ -72,11 +86,33 @@ def x187_e_mem(+base: U32, +disp: U32, +reg: U32) -> List<&2,U32>:
       nt_choose(List<&2,U32>,U32.is_eq(mode,0),u => [],u =>
         x187_e_le(disp,nt_choose(U32,U32.is_eq(mode,1),v => 1,v => 4))))}
 
+def x191_e_scale(scale: U32) -> U32:
+  match scale:
+    case 1: 0
+    case 2: 1
+    case 4: 2
+    case _: 3
+
+@unsafe
+def x191_e_indexed(+base: U32, index: U32, scale: U32, +disp: U32, reg: U32) -> List<&2,U32>:
+  +low = U32.mod(base,8)
+  +mode = nt_choose(U32,U32.is_eq(disp,0) && Bool.not(U32.is_eq(low,5)),u => 0,u =>
+    nt_choose(U32,U32.is_le(disp,127) || U32.is_ge(disp,4294967168),v => 1,v => 2))
+  +shift = x191_e_scale(scale)
+  Con{U32.add(U32.mul(mode,64),U32.add(U32.mul(U32.mod(reg,8),8),4)),
+    Con{U32.add(U32.mul(shift,64),U32.add(U32.mul(U32.mod(index,8),8),low)),
+      nt_choose(List<&2,U32>,U32.is_eq(mode,0),u => [],u =>
+        x187_e_le(disp,nt_choose(U32,U32.is_eq(mode,1),v => 1,v => 4)))}}
+
 @unsafe
 def x187_e_address(value: X187Operand, +reg: U32, field: U32, +trailing: U32) -> X187RM:
   match value:
     case X187Reg{index,width,vector}: X187RM{[U32.add(192,U32.add(U32.mul(U32.mod(reg,8),8),U32.mod(index,8)))],[],""}
     case X187Mem{base,disp}: X187RM{x187_e_mem(base,disp,reg),[],""}
+    case X187Indexed{+base,+index,+scale,+disp}:
+      nt_choose(X187RM,x191_e_indexed_valid(base,index,scale),u =>
+        X187RM{x191_e_indexed(base,index,scale,disp,reg),[],""},
+        u => X187RM{[],[],"invalid indexed ModRM operand"})
     case X187Rip{symbol,+lo,+hi}:
       +sub = U32.add(4,trailing)
       X187RM{[U32.add(5,U32.mul(U32.mod(reg,8),8)),0,0,0,0],
@@ -218,7 +254,8 @@ def x187_e_pair(+src: X187Operand, +dst: X187Operand, +family: U32, +width: U32,
   nt_choose(X187Encoded,U32.is_eq(family,12),u => nt_choose(X187Encoded,x187_e_reg(dst,64,False{}) &&
     x187_e_rm(src,64,False{}) && Bool.not(x187_e_reg(src,64,False{})),v =>
       x187_e_modrm(0,[141],True{},x187_e_index(dst),src,False{},[],offset),v => x187_e_error()),u =>
-  nt_choose(X187Encoded,U32.is_eq(family,13),u => x187_e_test(src,dst,width,offset),u => x187_e_error())))))))))))
+  nt_choose(X187Encoded,U32.is_eq(family,13),u => x187_e_test(src,dst,width,offset),u =>
+    nt_choose(X187Encoded,U32.is_eq(family,16),v => x191cm_pair(src,dst,width,code,offset),v => x187_e_error()))))))))))))
 
 @unsafe
 def x187_e_selected(spec: X187Op, operands: List<&2,X187Operand>, offset: U32) -> X187Encoded:
@@ -307,7 +344,7 @@ def x187_e_spec(+op: String) -> X187Op:
   nt_choose(X187Op,String.eq(op,"testl"),u => X187Op{13,32,0,0,0},u =>
   nt_choose(X187Op,String.eq(op,"testq"),u => X187Op{13,64,0,0,0},u =>
   nt_choose(X187Op,String.eq(op,"ret"),u => X187Op{14,0,195,0,0},u =>
-  X187OpNone{})))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
+  x191cm_spec(op))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))))
 
 @unsafe
 def x187_encode(inst: X187Instruction, +offset: U32) -> X187Encoded:
@@ -315,3 +352,37 @@ def x187_encode(inst: X187Instruction, +offset: U32) -> X187Encoded:
     case X187Instruction{op,operands}:
       nt_choose(X187Encoded,U32.is_le(offset,4294967280),
         u => x187_e_selected(x187_e_spec(op),operands,offset),u => x187_e_error())
+
+# Proposal only: integer CMOVcc, AT&T source first. Memory sources are read
+# unconditionally. The32-bit form zeroes destination high32 even when false.
+@unsafe
+def x191cm_pair(+src: X187Operand, +dst: X187Operand, +width: U32, +code: U32, offset: U32) -> X187Encoded:
+  nt_choose(X187Encoded,(U32.is_eq(width,32) || U32.is_eq(width,64)) &&
+      U32.is_ge(code,64) && U32.is_le(code,79) &&
+      x187_e_reg(dst,width,False{}) && x187_e_rm(src,width,False{}),u =>
+    x187_e_modrm(0,[15,code],U32.is_eq(width,64),x187_e_index(dst),src,False{},[],offset),
+    u => x187_e_error())
+
+@unsafe
+def x191cm_spec(+op: String) -> X187Op:
+  nt_choose(X187Op,String.eq(op,"cmovel"),u => X187Op{16,32,68,0,0},u =>
+  nt_choose(X187Op,String.eq(op,"cmovnel"),u => X187Op{16,32,69,0,0},u =>
+  nt_choose(X187Op,String.eq(op,"cmovbl"),u => X187Op{16,32,66,0,0},u =>
+  nt_choose(X187Op,String.eq(op,"cmovbel"),u => X187Op{16,32,70,0,0},u =>
+  nt_choose(X187Op,String.eq(op,"cmoval"),u => X187Op{16,32,71,0,0},u =>
+  nt_choose(X187Op,String.eq(op,"cmovael"),u => X187Op{16,32,67,0,0},u =>
+  nt_choose(X187Op,String.eq(op,"cmovll"),u => X187Op{16,32,76,0,0},u =>
+  nt_choose(X187Op,String.eq(op,"cmovlel"),u => X187Op{16,32,78,0,0},u =>
+  nt_choose(X187Op,String.eq(op,"cmovgl"),u => X187Op{16,32,79,0,0},u =>
+  nt_choose(X187Op,String.eq(op,"cmovgel"),u => X187Op{16,32,77,0,0},u =>
+  nt_choose(X187Op,String.eq(op,"cmoveq"),u => X187Op{16,64,68,0,0},u =>
+  nt_choose(X187Op,String.eq(op,"cmovneq"),u => X187Op{16,64,69,0,0},u =>
+  nt_choose(X187Op,String.eq(op,"cmovbq"),u => X187Op{16,64,66,0,0},u =>
+  nt_choose(X187Op,String.eq(op,"cmovbeq"),u => X187Op{16,64,70,0,0},u =>
+  nt_choose(X187Op,String.eq(op,"cmovaq"),u => X187Op{16,64,71,0,0},u =>
+  nt_choose(X187Op,String.eq(op,"cmovaeq"),u => X187Op{16,64,67,0,0},u =>
+  nt_choose(X187Op,String.eq(op,"cmovlq"),u => X187Op{16,64,76,0,0},u =>
+  nt_choose(X187Op,String.eq(op,"cmovleq"),u => X187Op{16,64,78,0,0},u =>
+  nt_choose(X187Op,String.eq(op,"cmovgq"),u => X187Op{16,64,79,0,0},u =>
+  nt_choose(X187Op,String.eq(op,"cmovgeq"),u => X187Op{16,64,77,0,0},u =>
+  X187OpNone{}))))))))))))))))))))

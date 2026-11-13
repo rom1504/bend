@@ -1,0 +1,92 @@
+"""Authenticate and recompute final physical profiles offline; no target runs."""
+import json
+import re
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[4]
+OUT = Path(__file__).resolve().parent
+BASE = ROOT / 'selfhost/build/phase191/profile-plan03'
+CAP = ROOT / 'selfhost/build/phase191/profile-capture03'
+sys.path.insert(0, str(ROOT / 'selfhost/tools/profiler'))
+import analyze as A
+import compare as C
+import run as R
+
+
+def canonical(value):
+    return json.loads(json.dumps(value))
+
+
+def main():
+    plan = json.loads((BASE / 'plan.json').read_text())
+    saved = json.loads((BASE / 'comparison.json').read_text())
+    manifest = json.loads((CAP / 'manifest.json').read_text())
+    raw = json.loads((CAP / 'report.json').read_text())
+    assert raw['complete'] and raw['passed'] and not raw['changedInputs']
+    for pin in R.all_pins(manifest):
+        R.verify(pin)
+    for pin in raw['inputs']:
+        R.verify(pin)
+    for key in ['manifest', 'programManifest', 'calibrationReport']:
+        R.verify(plan[key])
+    assert canonical(C.summarize_reports([CAP / 'report.json'])) == saved
+    assert saved['comparisons'] == []
+    result = dict(kind='phase191-final-profile-assessment', targetsRun=False,
+        method=R.pin(__file__), plan=R.pin(BASE / 'plan.json'),
+        comparison=R.pin(BASE / 'comparison.json'), captureReport=R.pin(CAP / 'report.json'),
+        exactRecomputedComparison=True, exactRawAnalysesRecomputed=0, crossRoleComparisons=0,
+        scope='Physical leaf shares within each case/role. Independent clean CPU divided by that role repetitions includes startup, warmups and validation. No cross-role pooled comparison, causal claim, logical-caller attribution, or standalone per-call latency.', roles={})
+    for e in plan['estimates']:
+        v = saved['workloads'][e['workload']][e['role']]
+        p = v['profile']
+        count = e['repetitions']
+        variant = next(w['variants'][0] for w in manifest['workloads'] if w['name'] == e['workload'])
+        assert variant['binary'] == e['binary']
+        marker = variant['command'].index('--RTS')
+        assert int(variant['command'][marker+1]) == count
+        assert int(variant['command'][marker+2]) == e['warmups']
+        assert list(map(int, variant['command'][marker+3:])) == e['runtimeArgs']
+        item = dict(case=e['case'], role=e['role'], binary=e['binary'], repetitions=count,
+            runtimeArgs=e['runtimeArgs'], warmups=e['warmups'], cleanObservations=v['clean']['cpuSeconds']['count'],
+            cleanCpuMicrosecondsPerRepetition=v['clean']['cpuSeconds']['median'] * 1e6 / count,
+            samples=p['samples'], unknownSamples=p['unknownSamples'],
+            unknownPeriodWeightedFraction=p['unknownPeriodWeightedMicroseconds'] / p['periodWeightedMicroseconds'],
+            maintainedComparatorAdequate=p['adequate'], estimateAvailable=p['estimateAvailable'],
+            estimateUnavailableReasons=p['estimateUnavailableReasons'], rejectedCaptures=p['rejectedCaptures'],
+            captureLossTotals=p['captureLossTotals'],
+            captureCpuCoverage=[c['captureWindowChildCpuFraction'] for c in p['acceptedCaptures']],
+            sampledOverCleanWallRatio=v['sampledOverCleanWallRatio'], functions=[], periods=[])
+        for f in p['functions']:
+            row = dict(decoded=f['decoded'], object=f['object'], samples=f['samples'],
+                periodWeightedFraction=f['periodWeightedFraction'], lowPrecision=f['lowPrecision'])
+            if p['estimateAvailable']:
+                row['estimatedCleanCpuMicrosecondsPerRepetition'] = f['estimatedCleanCpuSeconds'] * 1e6 / count
+            item['functions'].append(row)
+        item['runtimeOpDispatch'] = [f for f in item['functions'] if re.fullmatch(r'p\d+_rt_op', f['decoded'])]
+        for pin in p['acceptedCaptures'] + p['rejectedCaptures']:
+            a = json.loads(R.verify(pin).read_text())
+            for identity in R.all_pins(a['identities']):
+                R.verify(identity)
+            rebuilt = A.analyze_capture(a['identities']['capture']['file'], e['binary']['file'],
+                groups=a['group_rules'], clean_cpu_seconds=a['clean_cpu_seconds'])
+            if 'group_file' in a['identities']:
+                rebuilt['identities']['group_file'] = a['identities']['group_file']
+            assert canonical(rebuilt) == a, pin['file']
+            result['exactRawAnalysesRecomputed'] += 1
+            assert a['identities']['binary']['sha256'] == e['binary']['sha256']
+            q = a['quality']
+            item['periods'].append(dict(analysis=pin, periodUs=a['header']['period_us'],
+                samples=a['header']['samples'], unknownSamples=q['unknown_samples'],
+                sampledThreadCpuFraction=q['sampled_thread_cpu_fraction'],
+                lifecycleComplete=q['thread_lifecycle_complete'], reasons=C.capture_reasons(a),
+                topFunctions=[dict(decoded=f['decoded'], samples=f['samples'], fraction=f['samples']/a['header']['samples']) for f in a['top_functions'][:15]]))
+        result['roles'][e['workload']] = item
+    R.save(OUT / 'report.json', result)
+    for name, item in result['roles'].items():
+        print(name, item['samples'], item['unknownSamples'], item['cleanCpuMicrosecondsPerRepetition'])
+        print(json.dumps(item['functions'][:12]))
+
+
+if __name__ == '__main__':
+    main()

@@ -1,0 +1,3139 @@
+{
+  "kind": "phase191-final-profile-assessment",
+  "targetsRun": false,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/profile-analysis03/derive.py",
+    "bytes": 5367,
+    "sha256": "efc3c59537b79f73c1aa542cfc052ec38d0fdaff354020798b6edcf4cf188ea1"
+  },
+  "plan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/profile-plan03/plan.json",
+    "bytes": 7211,
+    "sha256": "83e2dc25343b8b18793dc156b2f1e1504e5811e6a6bb1aeaf6be93bdd1d8fda0"
+  },
+  "comparison": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/profile-plan03/comparison.json",
+    "bytes": 210797,
+    "sha256": "bccd6b8eef629813cc45d47a313c45d0443644a30683c914fc190fd2fe736acf"
+  },
+  "captureReport": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/profile-capture03/report.json",
+    "bytes": 211786,
+    "sha256": "b8981132072c44330f6d5322970747ed20ea700ec111597d19329934399f07f6"
+  },
+  "exactRecomputedComparison": true,
+  "exactRawAnalysesRecomputed": 12,
+  "crossRoleComparisons": 0,
+  "scope": "Physical leaf shares within each case/role. Independent clean CPU divided by that role repetitions includes startup, warmups and validation. No cross-role pooled comparison, causal claim, logical-caller attribution, or standalone per-call latency.",
+  "roles": {
+    "32-coverage-numeric-recurrence-1024-baseline": {
+      "case": "coverage-numeric-recurrence-1024",
+      "role": "baseline",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/coverage-numeric-recurrence-1024/machine/program",
+        "bytes": 179624,
+        "sha256": "3b55bd945e42c520e945fa9134a6f32f7e6e0fb9cf453908d872bf31278e8652"
+      },
+      "repetitions": 302276,
+      "runtimeArgs": [
+        1024,
+        123
+      ],
+      "warmups": 4,
+      "cleanObservations": 1,
+      "cleanCpuMicrosecondsPerRepetition": 9.571964032870621,
+      "samples": 584,
+      "unknownSamples": 0,
+      "unknownPeriodWeightedFraction": 0.0,
+      "maintainedComparatorAdequate": true,
+      "estimateAvailable": true,
+      "estimateUnavailableReasons": [],
+      "rejectedCaptures": [],
+      "captureLossTotals": {
+        "dropped": 0,
+        "overruns": 0
+      },
+      "captureCpuCoverage": [
+        0.9991840696900343,
+        0.9993313268600823
+      ],
+      "sampledOverCleanWallRatio": 1.0032523933757151,
+      "functions": [
+        {
+          "decoded": "p113d_FID_$direct.p37.numeric",
+          "object": "executable",
+          "samples": 367,
+          "periodWeightedFraction": 0.6288481494292633,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 6.019311868474158
+        },
+        {
+          "decoded": "p111_rt_op",
+          "object": "executable",
+          "samples": 217,
+          "periodWeightedFraction": 0.3711518505707368,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 3.552652164396464
+        }
+      ],
+      "periods": [
+        {
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/profile-capture03/006-sample-32-coverage-numeric-recurrence-1024-baseline-baseline/analysis.json",
+            "bytes": 46641,
+            "sha256": "34800aacfefb868a73d64705d6faca740d344a746f437b5fd29e972e74f72cde",
+            "samples": 362,
+            "periodUs": 8000,
+            "dropped": 0,
+            "overruns": 0,
+            "captureWindowChildCpuFraction": 0.9991840696900343,
+            "wholeChildCpuCoverageAdequate": true
+          },
+          "periodUs": 8000,
+          "samples": 362,
+          "unknownSamples": 0,
+          "sampledThreadCpuFraction": 0.9999963924113737,
+          "lifecycleComplete": true,
+          "reasons": [],
+          "topFunctions": [
+            {
+              "decoded": "p113d_FID_$direct.p37.numeric",
+              "samples": 227,
+              "fraction": 0.6270718232044199
+            },
+            {
+              "decoded": "p111_rt_op",
+              "samples": 135,
+              "fraction": 0.3729281767955801
+            }
+          ]
+        },
+        {
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/profile-capture03/017-sample-32-coverage-numeric-recurrence-1024-baseline-baseline/analysis.json",
+            "bytes": 42668,
+            "sha256": "036f60f0f42025e0b2d457157b4b78b61795864fee1e07c3bbc95ba6a354ef84",
+            "samples": 222,
+            "periodUs": 13000,
+            "dropped": 0,
+            "overruns": 0,
+            "captureWindowChildCpuFraction": 0.9993313268600823,
+            "wholeChildCpuCoverageAdequate": true
+          },
+          "periodUs": 13000,
+          "samples": 222,
+          "unknownSamples": 0,
+          "sampledThreadCpuFraction": 0.9999964334396207,
+          "lifecycleComplete": true,
+          "reasons": [],
+          "topFunctions": [
+            {
+              "decoded": "p113d_FID_$direct.p37.numeric",
+              "samples": 140,
+              "fraction": 0.6306306306306306
+            },
+            {
+              "decoded": "p111_rt_op",
+              "samples": 82,
+              "fraction": 0.36936936936936937
+            }
+          ]
+        }
+      ],
+      "runtimeOpDispatch": [
+        {
+          "decoded": "p111_rt_op",
+          "object": "executable",
+          "samples": 217,
+          "periodWeightedFraction": 0.3711518505707368,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 3.552652164396464
+        }
+      ]
+    },
+    "32-coverage-numeric-recurrence-1024-candidate": {
+      "case": "coverage-numeric-recurrence-1024",
+      "role": "candidate",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/coverage-numeric-recurrence-1024/machine/program",
+        "bytes": 179624,
+        "sha256": "73b5944afbb44f4ee754fe48dae1737354c818b2f5ad51e8730df5381759dcf3"
+      },
+      "repetitions": 292995,
+      "runtimeArgs": [
+        1024,
+        123
+      ],
+      "warmups": 4,
+      "cleanObservations": 1,
+      "cleanCpuMicrosecondsPerRepetition": 9.848195361695591,
+      "samples": 581,
+      "unknownSamples": 0,
+      "unknownPeriodWeightedFraction": 0.0,
+      "maintainedComparatorAdequate": true,
+      "estimateAvailable": true,
+      "estimateUnavailableReasons": [],
+      "rejectedCaptures": [],
+      "captureLossTotals": {
+        "dropped": 0,
+        "overruns": 0
+      },
+      "captureCpuCoverage": [
+        0.9992035781385594,
+        0.9993236276684345
+      ],
+      "sampledOverCleanWallRatio": 1.0000298995023293,
+      "functions": [
+        {
+          "decoded": "p113d_FID_$direct.p37.numeric",
+          "object": "executable",
+          "samples": 375,
+          "periodWeightedFraction": 0.644880931687815,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 6.350913400293872
+        },
+        {
+          "decoded": "p111_rt_op",
+          "object": "executable",
+          "samples": 205,
+          "periodWeightedFraction": 0.35372848948374763,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 3.4835872694334316
+        },
+        {
+          "decoded": "p113d_FID_$direct.p93.loop",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.0013905788284373371,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.013694691968288673
+        }
+      ],
+      "periods": [
+        {
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/profile-capture03/007-sample-32-coverage-numeric-recurrence-1024-candidate-candidate/analysis.json",
+            "bytes": 42388,
+            "sha256": "8df296303fb0ef14bfe941d69af25a711088f41b77bc21ead79d5fe28ccf7956",
+            "samples": 360,
+            "periodUs": 8000,
+            "dropped": 0,
+            "overruns": 0,
+            "captureWindowChildCpuFraction": 0.9992035781385594,
+            "wholeChildCpuCoverageAdequate": true
+          },
+          "periodUs": 8000,
+          "samples": 360,
+          "unknownSamples": 0,
+          "sampledThreadCpuFraction": 0.9999964805640253,
+          "lifecycleComplete": true,
+          "reasons": [],
+          "topFunctions": [
+            {
+              "decoded": "p113d_FID_$direct.p37.numeric",
+              "samples": 233,
+              "fraction": 0.6472222222222223
+            },
+            {
+              "decoded": "p111_rt_op",
+              "samples": 126,
+              "fraction": 0.35
+            },
+            {
+              "decoded": "p113d_FID_$direct.p93.loop",
+              "samples": 1,
+              "fraction": 0.002777777777777778
+            }
+          ]
+        },
+        {
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/profile-capture03/012-sample-32-coverage-numeric-recurrence-1024-candidate-candidate/analysis.json",
+            "bytes": 41940,
+            "sha256": "02555d11a1277e4b2c3dd917fb12d9466c34ba6cdca40ad76246476843d9c0fa",
+            "samples": 221,
+            "periodUs": 13000,
+            "dropped": 0,
+            "overruns": 0,
+            "captureWindowChildCpuFraction": 0.9993236276684345,
+            "wholeChildCpuCoverageAdequate": true
+          },
+          "periodUs": 13000,
+          "samples": 221,
+          "unknownSamples": 0,
+          "sampledThreadCpuFraction": 0.9999417113487099,
+          "lifecycleComplete": true,
+          "reasons": [],
+          "topFunctions": [
+            {
+              "decoded": "p113d_FID_$direct.p37.numeric",
+              "samples": 142,
+              "fraction": 0.6425339366515838
+            },
+            {
+              "decoded": "p111_rt_op",
+              "samples": 79,
+              "fraction": 0.3574660633484163
+            }
+          ]
+        }
+      ],
+      "runtimeOpDispatch": [
+        {
+          "decoded": "p111_rt_op",
+          "object": "executable",
+          "samples": 205,
+          "periodWeightedFraction": 0.35372848948374763,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 3.4835872694334316
+        }
+      ]
+    },
+    "32-coverage-numeric-recurrence-1024-c": {
+      "case": "coverage-numeric-recurrence-1024",
+      "role": "c",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-numeric-recurrence-1024/bend-c/program",
+        "bytes": 90352,
+        "sha256": "a072c9056b658888b15023ecd52a8733dd9b0bc516f60f2150d6d5174efb953e"
+      },
+      "repetitions": 888800,
+      "runtimeArgs": [
+        1024,
+        123
+      ],
+      "warmups": 4,
+      "cleanObservations": 1,
+      "cleanCpuMicrosecondsPerRepetition": 3.2368046804680466,
+      "samples": 582,
+      "unknownSamples": 0,
+      "unknownPeriodWeightedFraction": 0.0,
+      "maintainedComparatorAdequate": true,
+      "estimateAvailable": true,
+      "estimateUnavailableReasons": [],
+      "rejectedCaptures": [],
+      "captureLossTotals": {
+        "dropped": 0,
+        "overruns": 0
+      },
+      "captureCpuCoverage": [
+        0.9991848277465692,
+        0.9993331862801076
+      ],
+      "sampledOverCleanWallRatio": 1.004514100427388,
+      "functions": [
+        {
+          "decoded": "WL_FID_native_k_5236",
+          "object": "executable",
+          "samples": 582,
+          "periodWeightedFraction": 1.0,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 3.2368046804680466
+        }
+      ],
+      "periods": [
+        {
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/profile-capture03/008-sample-32-coverage-numeric-recurrence-1024-c-c/analysis.json",
+            "bytes": 28298,
+            "sha256": "75b35f08880866ae98534349b029fabe86bbf8b8f30342fea0abadc74efb668c",
+            "samples": 361,
+            "periodUs": 8000,
+            "dropped": 0,
+            "overruns": 0,
+            "captureWindowChildCpuFraction": 0.9991848277465692,
+            "wholeChildCpuCoverageAdequate": true
+          },
+          "periodUs": 8000,
+          "samples": 361,
+          "unknownSamples": 0,
+          "sampledThreadCpuFraction": 0.999996403618096,
+          "lifecycleComplete": true,
+          "reasons": [],
+          "topFunctions": [
+            {
+              "decoded": "WL_FID_native_k_5236",
+              "samples": 361,
+              "fraction": 1.0
+            }
+          ]
+        },
+        {
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/profile-capture03/013-sample-32-coverage-numeric-recurrence-1024-c-c/analysis.json",
+            "bytes": 28860,
+            "sha256": "f5e61e089b4de49cb5414bf18247a788925b59b783f31e5b1f7609a38cee13c0",
+            "samples": 221,
+            "periodUs": 13000,
+            "dropped": 0,
+            "overruns": 0,
+            "captureWindowChildCpuFraction": 0.9993331862801076,
+            "wholeChildCpuCoverageAdequate": true
+          },
+          "periodUs": 13000,
+          "samples": 221,
+          "unknownSamples": 0,
+          "sampledThreadCpuFraction": 0.999996335688298,
+          "lifecycleComplete": true,
+          "reasons": [],
+          "topFunctions": [
+            {
+              "decoded": "WL_FID_native_k_5236",
+              "samples": 221,
+              "fraction": 1.0
+            }
+          ]
+        }
+      ],
+      "runtimeOpDispatch": []
+    },
+    "21-coverage-map-churn-32-baseline": {
+      "case": "coverage-map-churn-32",
+      "role": "baseline",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/coverage-map-churn-32/machine/program",
+        "bytes": 440560,
+        "sha256": "8864f6e9011a9e981e10f1c8b85491889e73fd8cdab4df11c775a90bef9d52ae"
+      },
+      "repetitions": 13311,
+      "runtimeArgs": [
+        32,
+        17
+      ],
+      "warmups": 4,
+      "cleanObservations": 1,
+      "cleanCpuMicrosecondsPerRepetition": 217.00112688753663,
+      "samples": 614,
+      "unknownSamples": 17,
+      "unknownPeriodWeightedFraction": 0.02511643379906853,
+      "maintainedComparatorAdequate": true,
+      "estimateAvailable": true,
+      "estimateUnavailableReasons": [],
+      "rejectedCaptures": [],
+      "captureLossTotals": {
+        "dropped": 0,
+        "overruns": 0
+      },
+      "captureCpuCoverage": [
+        0.9992338535601916,
+        0.9993304689867839
+      ],
+      "sampledOverCleanWallRatio": 1.044773638421711,
+      "functions": [
+        {
+          "decoded": "p113d_FID_$p118borrow.read.Map.bit.go",
+          "object": "executable",
+          "samples": 70,
+          "periodWeightedFraction": 0.11560212907518297,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 25.085792279913168
+        },
+        {
+          "decoded": "p125_rt_take2",
+          "object": "executable",
+          "samples": 35,
+          "periodWeightedFraction": 0.056553559547571526,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 12.272186151324426
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.seek.go",
+          "object": "executable",
+          "samples": 34,
+          "periodWeightedFraction": 0.05605455755156354,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 12.163902155871565
+        },
+        {
+          "decoded": "p125_rt_ctor2",
+          "object": "executable",
+          "samples": 31,
+          "periodWeightedFraction": 0.05289421157684631,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 11.478103518003435
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.ins.go",
+          "object": "executable",
+          "samples": 26,
+          "periodWeightedFraction": 0.04291417165668663,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 9.312423608946183
+        },
+        {
+          "decoded": "p111_rt_op",
+          "object": "executable",
+          "samples": 24,
+          "periodWeightedFraction": 0.04025282767797738,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 8.734908966530915
+        },
+        {
+          "decoded": "p125_rt_ctor3",
+          "object": "executable",
+          "samples": 22,
+          "periodWeightedFraction": 0.03675981370592149,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 7.976920998360876
+        },
+        {
+          "decoded": "work_loop.constprop.0",
+          "object": "executable",
+          "samples": 24,
+          "periodWeightedFraction": 0.03609447771124418,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 7.832542337757061
+        },
+        {
+          "decoded": "p113d_FID_$p118borrow.read.String.cmp",
+          "object": "executable",
+          "samples": 22,
+          "periodWeightedFraction": 0.03592814371257485,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 7.796447672606106
+        },
+        {
+          "decoded": "p125_rt_take3",
+          "object": "executable",
+          "samples": 16,
+          "periodWeightedFraction": 0.027944111776447105,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 6.063903745360304
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.diff",
+          "object": "executable",
+          "samples": 15,
+          "periodWeightedFraction": 0.025781769793745843,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 5.5946730983979
+        },
+        {
+          "decoded": "[library_unresolved]",
+          "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+          "samples": 16,
+          "periodWeightedFraction": 0.023785761809713906,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 5.161537116586449
+        },
+        {
+          "decoded": "p126_rt_nat_divmod",
+          "object": "executable",
+          "samples": 14,
+          "periodWeightedFraction": 0.021124417831004657,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 4.584022474171182
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.bit",
+          "object": "executable",
+          "samples": 11,
+          "periodWeightedFraction": 0.018795741849634066,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 4.078697162057824
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.put.go",
+          "object": "executable",
+          "samples": 11,
+          "periodWeightedFraction": 0.017964071856287425,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 3.898223836303053
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.diff.fin",
+          "object": "executable",
+          "samples": 11,
+          "periodWeightedFraction": 0.017132401862940787,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 3.717750510548283
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.diff.step",
+          "object": "executable",
+          "samples": 11,
+          "periodWeightedFraction": 0.017132401862940787,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 3.717750510548283
+        },
+        {
+          "decoded": "p111_FID_$p111.k.17696",
+          "object": "executable",
+          "samples": 11,
+          "periodWeightedFraction": 0.017132401862940787,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 3.717750510548283
+        },
+        {
+          "decoded": "p113d_FID_$direct.Map.bit",
+          "object": "executable",
+          "samples": 10,
+          "periodWeightedFraction": 0.0166333998669328,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 3.6094665150954195
+        },
+        {
+          "decoded": "p113d_FID_$product.Map.bit.at",
+          "object": "executable",
+          "samples": 10,
+          "periodWeightedFraction": 0.014138389886892882,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 3.0680465378311066
+        },
+        {
+          "decoded": "p113d_FID_$p126scc.98",
+          "object": "executable",
+          "samples": 10,
+          "periodWeightedFraction": 0.014138389886892882,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 3.0680465378311066
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.msb.u",
+          "object": "executable",
+          "samples": 8,
+          "periodWeightedFraction": 0.013972055888223553,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 3.031951872680152
+        },
+        {
+          "decoded": "p111_FID_$p111.k.15598",
+          "object": "executable",
+          "samples": 8,
+          "periodWeightedFraction": 0.013140385894876913,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 2.8514785469253816
+        },
+        {
+          "decoded": "p111_rt_return",
+          "object": "executable",
+          "samples": 8,
+          "periodWeightedFraction": 0.013140385894876913,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 2.8514785469253816
+        },
+        {
+          "decoded": "term_drop",
+          "object": "executable",
+          "samples": 8,
+          "periodWeightedFraction": 0.013140385894876913,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 2.8514785469253816
+        },
+        {
+          "decoded": "span_fade",
+          "object": "executable",
+          "samples": 6,
+          "periodWeightedFraction": 0.010479041916167664,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 2.273963904510114
+        },
+        {
+          "decoded": "p111_set_regs",
+          "object": "executable",
+          "samples": 7,
+          "periodWeightedFraction": 0.010146373918829008,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 2.2017745742082058
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.msb.u.if",
+          "object": "executable",
+          "samples": 6,
+          "periodWeightedFraction": 0.009647371922821025,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 2.0934905787553433
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.pop.go",
+          "object": "executable",
+          "samples": 6,
+          "periodWeightedFraction": 0.009647371922821025,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 2.0934905787553433
+        },
+        {
+          "decoded": "p111_FID_$p111.k.7378",
+          "object": "executable",
+          "samples": 5,
+          "periodWeightedFraction": 0.009148369926813041,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.9852065833024808
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.set",
+          "object": "executable",
+          "samples": 4,
+          "periodWeightedFraction": 0.007817697937458417,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.696449262094847
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.set.fin.go",
+          "object": "executable",
+          "samples": 5,
+          "periodWeightedFraction": 0.0074850299401197605,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.624259931792939
+        },
+        {
+          "decoded": "p113d_FID_$product.Map.bit.go",
+          "object": "executable",
+          "samples": 5,
+          "periodWeightedFraction": 0.0074850299401197605,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.624259931792939
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.diff.chr",
+          "object": "executable",
+          "samples": 4,
+          "periodWeightedFraction": 0.006986027944111776,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.515975936340076
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.hi",
+          "object": "executable",
+          "samples": 4,
+          "periodWeightedFraction": 0.006986027944111776,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.515975936340076
+        },
+        {
+          "decoded": "p113d_FID_$p118.trmc.$direct.String.append",
+          "object": "executable",
+          "samples": 4,
+          "periodWeightedFraction": 0.006986027944111776,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.515975936340076
+        },
+        {
+          "decoded": "p111_FID_$p111.k.25737",
+          "object": "executable",
+          "samples": 4,
+          "periodWeightedFraction": 0.006154357950765137,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.3355026105853052
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.set.fin",
+          "object": "executable",
+          "samples": 3,
+          "periodWeightedFraction": 0.005655355954757153,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.2272186151324427
+        },
+        {
+          "decoded": "p111_FID_$direct.p37.map.fill",
+          "object": "executable",
+          "samples": 3,
+          "periodWeightedFraction": 0.004823685961410512,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.0467452893776716
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.lo",
+          "object": "executable",
+          "samples": 3,
+          "periodWeightedFraction": 0.004823685961410512,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.0467452893776716
+        },
+        {
+          "decoded": "p111_FID_$p111.k.18740",
+          "object": "executable",
+          "samples": 3,
+          "periodWeightedFraction": 0.004823685961410512,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.0467452893776716
+        },
+        {
+          "decoded": "p118_destination_fill",
+          "object": "executable",
+          "samples": 3,
+          "periodWeightedFraction": 0.004823685961410512,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.0467452893776716
+        },
+        {
+          "decoded": "heap_alloc",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.004324683965402528,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.9384612939248089
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.to_list.go",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.004324683965402528,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.9384612939248089
+        },
+        {
+          "decoded": "p118_rt_extend1",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.004324683965402528,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.9384612939248089
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.set.go",
+          "object": "executable",
+          "samples": 3,
+          "periodWeightedFraction": 0.003992015968063872,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.8662719636229006
+        },
+        {
+          "decoded": "p111_FID_$p111.k.10532",
+          "object": "executable",
+          "samples": 3,
+          "periodWeightedFraction": 0.003992015968063872,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.8662719636229006
+        },
+        {
+          "decoded": "p111_FID_$p111.k.14396",
+          "object": "executable",
+          "samples": 3,
+          "periodWeightedFraction": 0.003992015968063872,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.8662719636229006
+        },
+        {
+          "decoded": "p111_FID_$direct.p37.map.key",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.003493013972055888,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.757987968170038
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.del",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.003493013972055888,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.757987968170038
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.ins.splice",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.003493013972055888,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.757987968170038
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.pop.lo",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.003493013972055888,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.757987968170038
+        },
+        {
+          "decoded": "p111_FID_$p111.k.23136",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.003493013972055888,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.757987968170038
+        },
+        {
+          "decoded": "p111_FID_$p111.k.25618",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.003493013972055888,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.757987968170038
+        },
+        {
+          "decoded": "p111_FID_$p111.k.32196",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.003493013972055888,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.757987968170038
+        },
+        {
+          "decoded": "p111_FID_$p111.k.8431",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.003493013972055888,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.757987968170038
+        },
+        {
+          "decoded": "p113d_FID_$product.Map.ins.splice.bit",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.003493013972055888,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.757987968170038
+        },
+        {
+          "decoded": "p125_rt_take2.cold",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.003493013972055888,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.757987968170038
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.seek",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.0026613439787092482,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.5775146424152672
+        },
+        {
+          "decoded": "p111_FID_$p111.k.14502",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.0026613439787092482,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.5775146424152672
+        },
+        {
+          "decoded": "p111_FID_$p111.k.25743",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.0026613439787092482,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.5775146424152672
+        },
+        {
+          "decoded": "p113d_FID_$p128borrow.owned.p37.map.string",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.0026613439787092482,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.5775146424152672
+        },
+        {
+          "decoded": "p111_FID_$p111.k.14366",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.002162341982701264,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.46923064696240446
+        },
+        {
+          "decoded": "p111_FID_$p111.k.14493",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.002162341982701264,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.46923064696240446
+        },
+        {
+          "decoded": "p111_FID_$p111.k.23268",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.002162341982701264,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.46923064696240446
+        },
+        {
+          "decoded": "p111_FID_$p111.k.25624",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.002162341982701264,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.46923064696240446
+        },
+        {
+          "decoded": "p111_FID_$p111.k.28926",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.002162341982701264,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.46923064696240446
+        },
+        {
+          "decoded": "p111_FID_$p111.k.6322",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.002162341982701264,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.46923064696240446
+        },
+        {
+          "decoded": "p111_rt_ctor",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.002162341982701264,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.46923064696240446
+        },
+        {
+          "decoded": "p111_rt_keep",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.002162341982701264,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.46923064696240446
+        },
+        {
+          "decoded": "p113d_FID_$direct.Map.ins.splice",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.002162341982701264,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.46923064696240446
+        },
+        {
+          "decoded": "[executable_unresolved]",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.0013306719893546241,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2887573212076336
+        },
+        {
+          "decoded": "p111_FID_$direct.p37.map.remove",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.0013306719893546241,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2887573212076336
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.ins",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.0013306719893546241,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2887573212076336
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.pop.hi",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.0013306719893546241,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2887573212076336
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.put",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.0013306719893546241,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2887573212076336
+        },
+        {
+          "decoded": "p111_FID_$direct.String.cmp",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.0013306719893546241,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2887573212076336
+        },
+        {
+          "decoded": "p111_FID_$p111.k.12667",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.0013306719893546241,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2887573212076336
+        },
+        {
+          "decoded": "p111_FID_$p111.k.14192",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.0013306719893546241,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2887573212076336
+        },
+        {
+          "decoded": "p111_FID_$p111.k.14355",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.0013306719893546241,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2887573212076336
+        },
+        {
+          "decoded": "p111_FID_$p111.k.16649",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.0013306719893546241,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2887573212076336
+        },
+        {
+          "decoded": "p111_FID_$p111.k.20825",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.0013306719893546241,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2887573212076336
+        },
+        {
+          "decoded": "p111_FID_$p111.k.23275",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.0013306719893546241,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2887573212076336
+        },
+        {
+          "decoded": "p111_FID_$p111.k.25753",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.0013306719893546241,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2887573212076336
+        },
+        {
+          "decoded": "p111_FID_$p111.k.32363",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.0013306719893546241,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2887573212076336
+        },
+        {
+          "decoded": "p111_FID_$p111.k.7374",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.0013306719893546241,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2887573212076336
+        },
+        {
+          "decoded": "p111_rt_special_ctor",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.0013306719893546241,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2887573212076336
+        },
+        {
+          "decoded": "p113d_FID_$direct.p37.map.digest",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.0013306719893546241,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2887573212076336
+        },
+        {
+          "decoded": "p113d_FID_$direct.Map.lo",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.0013306719893546241,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2887573212076336
+        },
+        {
+          "decoded": "p113d_FID_$direct.Map.pop.lo",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.0013306719893546241,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2887573212076336
+        },
+        {
+          "decoded": "p113d_FID_$direct.String.cmp",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.0013306719893546241,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2887573212076336
+        },
+        {
+          "decoded": "p125_rt_ctor1",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.0013306719893546241,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2887573212076336
+        }
+      ],
+      "periods": [
+        {
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/profile-capture03/009-sample-21-coverage-map-churn-32-baseline-baseline/analysis.json",
+            "bytes": 214647,
+            "sha256": "d1b7faa13b19e76714392d7ecc0719e8803e6ce2b4b6a27446172ba684bd6359",
+            "samples": 394,
+            "periodUs": 8000,
+            "dropped": 0,
+            "overruns": 0,
+            "captureWindowChildCpuFraction": 0.9992338535601916,
+            "wholeChildCpuCoverageAdequate": true
+          },
+          "periodUs": 8000,
+          "samples": 394,
+          "unknownSamples": 14,
+          "sampledThreadCpuFraction": 0.9999967977335119,
+          "lifecycleComplete": true,
+          "reasons": [],
+          "topFunctions": [
+            {
+              "decoded": "p113d_FID_$p118borrow.read.Map.bit.go",
+              "samples": 43,
+              "fraction": 0.10913705583756345
+            },
+            {
+              "decoded": "p125_rt_take2",
+              "samples": 23,
+              "fraction": 0.0583756345177665
+            },
+            {
+              "decoded": "p111_FID_$direct.Map.seek.go",
+              "samples": 21,
+              "fraction": 0.0532994923857868
+            },
+            {
+              "decoded": "work_loop.constprop.0",
+              "samples": 19,
+              "fraction": 0.048223350253807105
+            },
+            {
+              "decoded": "p125_rt_ctor2",
+              "samples": 17,
+              "fraction": 0.04314720812182741
+            },
+            {
+              "decoded": "p111_FID_$direct.Map.ins.go",
+              "samples": 16,
+              "fraction": 0.04060913705583756
+            },
+            {
+              "decoded": "p113d_FID_$p118borrow.read.String.cmp",
+              "samples": 14,
+              "fraction": 0.03553299492385787
+            },
+            {
+              "decoded": "p111_rt_op",
+              "samples": 14,
+              "fraction": 0.03553299492385787
+            },
+            {
+              "decoded": "p125_rt_ctor3",
+              "samples": 13,
+              "fraction": 0.03299492385786802
+            },
+            {
+              "decoded": "[library_unresolved]",
+              "samples": 13,
+              "fraction": 0.03299492385786802
+            },
+            {
+              "decoded": "p126_rt_nat_divmod",
+              "samples": 11,
+              "fraction": 0.027918781725888325
+            },
+            {
+              "decoded": "p113d_FID_$product.Map.bit.at",
+              "samples": 9,
+              "fraction": 0.02284263959390863
+            },
+            {
+              "decoded": "p113d_FID_$p126scc.98",
+              "samples": 9,
+              "fraction": 0.02284263959390863
+            },
+            {
+              "decoded": "p111_FID_$direct.Map.diff",
+              "samples": 8,
+              "fraction": 0.02030456852791878
+            },
+            {
+              "decoded": "p111_FID_$direct.Map.diff.fin",
+              "samples": 8,
+              "fraction": 0.02030456852791878
+            }
+          ]
+        },
+        {
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/profile-capture03/014-sample-21-coverage-map-churn-32-baseline-baseline/analysis.json",
+            "bytes": 144045,
+            "sha256": "76fee506aa07ca56bbdfe5a01ba06bdd1bc7c97114fd42aa1f65f29c103c2b61",
+            "samples": 220,
+            "periodUs": 13000,
+            "dropped": 0,
+            "overruns": 0,
+            "captureWindowChildCpuFraction": 0.9993304689867839,
+            "wholeChildCpuCoverageAdequate": true
+          },
+          "periodUs": 13000,
+          "samples": 220,
+          "unknownSamples": 3,
+          "sampledThreadCpuFraction": 0.9999962165711405,
+          "lifecycleComplete": true,
+          "reasons": [],
+          "topFunctions": [
+            {
+              "decoded": "p113d_FID_$p118borrow.read.Map.bit.go",
+              "samples": 27,
+              "fraction": 0.12272727272727273
+            },
+            {
+              "decoded": "p125_rt_ctor2",
+              "samples": 14,
+              "fraction": 0.06363636363636363
+            },
+            {
+              "decoded": "p111_FID_$direct.Map.seek.go",
+              "samples": 13,
+              "fraction": 0.05909090909090909
+            },
+            {
+              "decoded": "p125_rt_take2",
+              "samples": 12,
+              "fraction": 0.05454545454545454
+            },
+            {
+              "decoded": "p111_FID_$direct.Map.ins.go",
+              "samples": 10,
+              "fraction": 0.045454545454545456
+            },
+            {
+              "decoded": "p111_rt_op",
+              "samples": 10,
+              "fraction": 0.045454545454545456
+            },
+            {
+              "decoded": "p125_rt_ctor3",
+              "samples": 9,
+              "fraction": 0.04090909090909091
+            },
+            {
+              "decoded": "p113d_FID_$p118borrow.read.String.cmp",
+              "samples": 8,
+              "fraction": 0.03636363636363636
+            },
+            {
+              "decoded": "p125_rt_take3",
+              "samples": 8,
+              "fraction": 0.03636363636363636
+            },
+            {
+              "decoded": "p111_FID_$direct.Map.diff",
+              "samples": 7,
+              "fraction": 0.031818181818181815
+            },
+            {
+              "decoded": "work_loop.constprop.0",
+              "samples": 5,
+              "fraction": 0.022727272727272728
+            },
+            {
+              "decoded": "p111_FID_$direct.Map.bit",
+              "samples": 5,
+              "fraction": 0.022727272727272728
+            },
+            {
+              "decoded": "p113d_FID_$direct.Map.bit",
+              "samples": 4,
+              "fraction": 0.01818181818181818
+            },
+            {
+              "decoded": "p111_FID_$direct.Map.msb.u",
+              "samples": 4,
+              "fraction": 0.01818181818181818
+            },
+            {
+              "decoded": "p111_FID_$direct.Map.put.go",
+              "samples": 4,
+              "fraction": 0.01818181818181818
+            }
+          ]
+        }
+      ],
+      "runtimeOpDispatch": [
+        {
+          "decoded": "p111_rt_op",
+          "object": "executable",
+          "samples": 24,
+          "periodWeightedFraction": 0.04025282767797738,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 8.734908966530915
+        }
+      ]
+    },
+    "21-coverage-map-churn-32-candidate": {
+      "case": "coverage-map-churn-32",
+      "role": "candidate",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/coverage-map-churn-32/machine/program",
+        "bytes": 436464,
+        "sha256": "17b61918034650c1a547d7abbc3853bfd50f1b510c1addcfe3ce0fdcad1cc23b"
+      },
+      "repetitions": 13660,
+      "runtimeArgs": [
+        32,
+        17
+      ],
+      "warmups": 4,
+      "cleanObservations": 1,
+      "cleanCpuMicrosecondsPerRepetition": 210.01010248901903,
+      "samples": 593,
+      "unknownSamples": 11,
+      "unknownPeriodWeightedFraction": 0.018433179723502304,
+      "maintainedComparatorAdequate": true,
+      "estimateAvailable": true,
+      "estimateUnavailableReasons": [],
+      "rejectedCaptures": [],
+      "captureLossTotals": {
+        "dropped": 0,
+        "overruns": 0
+      },
+      "captureCpuCoverage": [
+        0.9990831746018921,
+        0.9993312609508336
+      ],
+      "sampledOverCleanWallRatio": 1.0240796787768047,
+      "functions": [
+        {
+          "decoded": "p113d_FID_$p118borrow.read.Map.bit.go",
+          "object": "executable",
+          "samples": 64,
+          "periodWeightedFraction": 0.10957501280081926,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 23.011859668535624
+        },
+        {
+          "decoded": "work_loop.constprop.0",
+          "object": "executable",
+          "samples": 41,
+          "periodWeightedFraction": 0.06963645673323093,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 14.624359415517967
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.ins.go",
+          "object": "executable",
+          "samples": 34,
+          "periodWeightedFraction": 0.057518347840928484,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 12.079434125072437
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.seek.go",
+          "object": "executable",
+          "samples": 31,
+          "periodWeightedFraction": 0.052568697729988054,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 11.039957597989053
+        },
+        {
+          "decoded": "p125_rt_ctor2",
+          "object": "executable",
+          "samples": 31,
+          "periodWeightedFraction": 0.05000853387950162,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 10.502297325359713
+        },
+        {
+          "decoded": "p125_rt_take2",
+          "object": "executable",
+          "samples": 28,
+          "periodWeightedFraction": 0.046765659668885476,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 9.821260980029223
+        },
+        {
+          "decoded": "p125_rt_take3",
+          "object": "executable",
+          "samples": 27,
+          "periodWeightedFraction": 0.0445468509984639,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 9.355288743750464
+        },
+        {
+          "decoded": "p111_rt_op",
+          "object": "executable",
+          "samples": 16,
+          "periodWeightedFraction": 0.027820447175285885,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 5.8425749625721295
+        },
+        {
+          "decoded": "p113d_FID_$product.Map.bit.at",
+          "object": "executable",
+          "samples": 16,
+          "periodWeightedFraction": 0.02696705922512374,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 5.663354871695683
+        },
+        {
+          "decoded": "p125_rt_ctor3",
+          "object": "executable",
+          "samples": 15,
+          "periodWeightedFraction": 0.025601638504864313,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 5.376602726293371
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.put.go",
+          "object": "executable",
+          "samples": 13,
+          "periodWeightedFraction": 0.02457757296466974,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 5.161538617241635
+        },
+        {
+          "decoded": "term_drop",
+          "object": "executable",
+          "samples": 14,
+          "periodWeightedFraction": 0.023382829834442738,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 4.910630490014611
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.bit",
+          "object": "executable",
+          "samples": 12,
+          "periodWeightedFraction": 0.021505376344086023,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 4.516346290086431
+        },
+        {
+          "decoded": "p113d_FID_$direct.Map.bit",
+          "object": "executable",
+          "samples": 12,
+          "periodWeightedFraction": 0.019798600443761735,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 4.15790610833354
+        },
+        {
+          "decoded": "[library_unresolved]",
+          "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+          "samples": 11,
+          "periodWeightedFraction": 0.018433179723502304,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 3.8711539629312264
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.diff.step",
+          "object": "executable",
+          "samples": 8,
+          "periodWeightedFraction": 0.015190305512886158,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 3.190117617600733
+        },
+        {
+          "decoded": "p113d_FID_$p118borrow.read.String.cmp",
+          "object": "executable",
+          "samples": 9,
+          "periodWeightedFraction": 0.014848950332821301,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 3.1184295812501546
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.msb.u.if",
+          "object": "executable",
+          "samples": 9,
+          "periodWeightedFraction": 0.013995562382659157,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 2.939209490373709
+        },
+        {
+          "decoded": "p111_FID_$p111.k.17696",
+          "object": "executable",
+          "samples": 7,
+          "periodWeightedFraction": 0.012118108892302441,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 2.5449252904455286
+        },
+        {
+          "decoded": "p126_rt_nat_divmod",
+          "object": "executable",
+          "samples": 7,
+          "periodWeightedFraction": 0.011264720942140297,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 2.3657051995690828
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.diff.fin",
+          "object": "executable",
+          "samples": 6,
+          "periodWeightedFraction": 0.010752688172043012,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 2.2581731450432154
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.diff",
+          "object": "executable",
+          "samples": 6,
+          "periodWeightedFraction": 0.009899300221880868,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 2.07895305416677
+        },
+        {
+          "decoded": "p111_FID_$p111.k.18740",
+          "object": "executable",
+          "samples": 6,
+          "periodWeightedFraction": 0.009899300221880868,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 2.07895305416677
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.set.fin.go",
+          "object": "executable",
+          "samples": 5,
+          "periodWeightedFraction": 0.008533879501621437,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.7922009087644568
+        },
+        {
+          "decoded": "p111_rt_return",
+          "object": "executable",
+          "samples": 5,
+          "periodWeightedFraction": 0.008533879501621437,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.7922009087644568
+        },
+        {
+          "decoded": "p113d_FID_$product.Map.bit.go",
+          "object": "executable",
+          "samples": 5,
+          "periodWeightedFraction": 0.008533879501621437,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.7922009087644568
+        },
+        {
+          "decoded": "p111_FID_$p111.k.25618",
+          "object": "executable",
+          "samples": 4,
+          "periodWeightedFraction": 0.008021846731524151,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.6846688542385895
+        },
+        {
+          "decoded": "p111_FID_$p111.k.25743",
+          "object": "executable",
+          "samples": 4,
+          "periodWeightedFraction": 0.008021846731524151,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.6846688542385895
+        },
+        {
+          "decoded": "p113d_FID_$p118.trmc.$direct.String.append",
+          "object": "executable",
+          "samples": 5,
+          "periodWeightedFraction": 0.007680491551459293,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.6129808178880112
+        },
+        {
+          "decoded": "p113d_FID_$p126scc.98",
+          "object": "executable",
+          "samples": 5,
+          "periodWeightedFraction": 0.007680491551459293,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.6129808178880112
+        },
+        {
+          "decoded": "p118_destination_fill",
+          "object": "executable",
+          "samples": 5,
+          "periodWeightedFraction": 0.007680491551459293,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.6129808178880112
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.ins",
+          "object": "executable",
+          "samples": 4,
+          "periodWeightedFraction": 0.007168458781362007,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.5054487633621436
+        },
+        {
+          "decoded": "p111_FID_$p111.k.32363",
+          "object": "executable",
+          "samples": 4,
+          "periodWeightedFraction": 0.007168458781362007,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.5054487633621436
+        },
+        {
+          "decoded": "p111_FID_$p111.k.14201",
+          "object": "executable",
+          "samples": 3,
+          "periodWeightedFraction": 0.006656426011264721,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.3979167088362763
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.diff.chr",
+          "object": "executable",
+          "samples": 3,
+          "periodWeightedFraction": 0.005803038061102577,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.2186966179598304
+        },
+        {
+          "decoded": "p111_FID_$direct.String.cmp",
+          "object": "executable",
+          "samples": 3,
+          "periodWeightedFraction": 0.005803038061102577,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.2186966179598304
+        },
+        {
+          "decoded": "p111_FID_$p111.k.14462",
+          "object": "executable",
+          "samples": 3,
+          "periodWeightedFraction": 0.005803038061102577,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.2186966179598304
+        },
+        {
+          "decoded": "p111_FID_$p111.k.23248",
+          "object": "executable",
+          "samples": 3,
+          "periodWeightedFraction": 0.005803038061102577,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.2186966179598304
+        },
+        {
+          "decoded": "p113d_FID_$direct.Map.hi",
+          "object": "executable",
+          "samples": 3,
+          "periodWeightedFraction": 0.005803038061102577,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.2186966179598304
+        },
+        {
+          "decoded": "p111_FID_$direct.p37.map.fill",
+          "object": "executable",
+          "samples": 4,
+          "periodWeightedFraction": 0.00546168288103772,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.1470085816092523
+        },
+        {
+          "decoded": "p111_FID_$p111.k.25737",
+          "object": "executable",
+          "samples": 4,
+          "periodWeightedFraction": 0.00546168288103772,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.1470085816092523
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.del",
+          "object": "executable",
+          "samples": 3,
+          "periodWeightedFraction": 0.004949650110940434,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.039476527083385
+        },
+        {
+          "decoded": "p111_FID_$p111.k.15598",
+          "object": "executable",
+          "samples": 3,
+          "periodWeightedFraction": 0.004949650110940434,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.039476527083385
+        },
+        {
+          "decoded": "p111_rt_ctor",
+          "object": "executable",
+          "samples": 3,
+          "periodWeightedFraction": 0.004949650110940434,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.039476527083385
+        },
+        {
+          "decoded": "p111_set_regs",
+          "object": "executable",
+          "samples": 3,
+          "periodWeightedFraction": 0.004949650110940434,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.039476527083385
+        },
+        {
+          "decoded": "p113d_FID_$product.Map.ins.splice.bit",
+          "object": "executable",
+          "samples": 3,
+          "periodWeightedFraction": 0.004949650110940434,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.039476527083385
+        },
+        {
+          "decoded": "p125_rt_ctor1",
+          "object": "executable",
+          "samples": 3,
+          "periodWeightedFraction": 0.004949650110940434,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.039476527083385
+        },
+        {
+          "decoded": "rfc_wrap",
+          "object": "executable",
+          "samples": 3,
+          "periodWeightedFraction": 0.004949650110940434,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.039476527083385
+        },
+        {
+          "decoded": "p111_rt_keep",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.004437617340843148,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.9319444725575176
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.seek",
+          "object": "executable",
+          "samples": 3,
+          "periodWeightedFraction": 0.00409626216077829,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.8602564362069393
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.set.fin",
+          "object": "executable",
+          "samples": 3,
+          "periodWeightedFraction": 0.00409626216077829,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.8602564362069393
+        },
+        {
+          "decoded": "p111_FID_$p111.k.10532",
+          "object": "executable",
+          "samples": 3,
+          "periodWeightedFraction": 0.00409626216077829,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.8602564362069393
+        },
+        {
+          "decoded": "p118_rt_extend1",
+          "object": "executable",
+          "samples": 3,
+          "periodWeightedFraction": 0.00409626216077829,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.8602564362069393
+        },
+        {
+          "decoded": "p111_FID_$direct.p37.map.key",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.0035842293906810036,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.7527243816810718
+        },
+        {
+          "decoded": "p111_FID_$p111.k.12667",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.0035842293906810036,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.7527243816810718
+        },
+        {
+          "decoded": "p111_FID_$p111.k.16649",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.0035842293906810036,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.7527243816810718
+        },
+        {
+          "decoded": "p111_FID_$p111.k.25699",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.0035842293906810036,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.7527243816810718
+        },
+        {
+          "decoded": "p111_FID_$p111.k.27869",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.0035842293906810036,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.7527243816810718
+        },
+        {
+          "decoded": "p111_FID_$p111.k.7374",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.0035842293906810036,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.7527243816810718
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.hi",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.00273084144051886,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.5735042908046262
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.pop.hi",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.00273084144051886,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.5735042908046262
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.put",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.00273084144051886,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.5735042908046262
+        },
+        {
+          "decoded": "p111_FID_$p111.k.14450",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.00273084144051886,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.5735042908046262
+        },
+        {
+          "decoded": "p111_FID_$p111.k.14502",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.00273084144051886,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.5735042908046262
+        },
+        {
+          "decoded": "p111_FID_$p111.k.23258",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.00273084144051886,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.5735042908046262
+        },
+        {
+          "decoded": "p113d_FID_$direct.Map.ins.splice",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.00273084144051886,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.5735042908046262
+        },
+        {
+          "decoded": "p113d_FID_$p128borrow.owned.p37.map.string",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.00273084144051886,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.5735042908046262
+        },
+        {
+          "decoded": "span_fade",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.00273084144051886,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.5735042908046262
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.msb.u",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.002218808670421574,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.4659722362787588
+        },
+        {
+          "decoded": "p111_FID_$p111.k.14396",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.002218808670421574,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.4659722362787588
+        },
+        {
+          "decoded": "p111_FID_$p111.k.20825",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.002218808670421574,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.4659722362787588
+        },
+        {
+          "decoded": "p111_FID_$p111.k.25753",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.002218808670421574,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.4659722362787588
+        },
+        {
+          "decoded": "p111_FID_$p111.k.25759",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.002218808670421574,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.4659722362787588
+        },
+        {
+          "decoded": "p111_FID_$p111.k.32320",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.002218808670421574,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.4659722362787588
+        },
+        {
+          "decoded": "p111_FID_$p111.k.32379",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.002218808670421574,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.4659722362787588
+        },
+        {
+          "decoded": "p113d_FID_$direct.Map.lo",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.002218808670421574,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.4659722362787588
+        },
+        {
+          "decoded": "p113d_FID_$direct.Map.pop.hi",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.002218808670421574,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.4659722362787588
+        },
+        {
+          "decoded": "p113d_FID_$direct.String.cmp",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.002218808670421574,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.4659722362787588
+        },
+        {
+          "decoded": "p118_destination_fill.cold",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.002218808670421574,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.4659722362787588
+        },
+        {
+          "decoded": "p125_rt_ctor2.cold",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.002218808670421574,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.4659722362787588
+        },
+        {
+          "decoded": "p125_rt_take2.cold",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.002218808670421574,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.4659722362787588
+        },
+        {
+          "decoded": "heap_alloc",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.00136542072025943,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2867521454023131
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.lo",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.00136542072025943,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2867521454023131
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.pop",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.00136542072025943,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2867521454023131
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.set.go",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.00136542072025943,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2867521454023131
+        },
+        {
+          "decoded": "p111_FID_$direct.Map.to_list.go",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.00136542072025943,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2867521454023131
+        },
+        {
+          "decoded": "p111_FID_$p111.k.11586",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.00136542072025943,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2867521454023131
+        },
+        {
+          "decoded": "p111_FID_$p111.k.14192",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.00136542072025943,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2867521454023131
+        },
+        {
+          "decoded": "p111_FID_$p111.k.14366",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.00136542072025943,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2867521454023131
+        },
+        {
+          "decoded": "p111_FID_$p111.k.14493",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.00136542072025943,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2867521454023131
+        },
+        {
+          "decoded": "p111_FID_$p111.k.23136",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.00136542072025943,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2867521454023131
+        },
+        {
+          "decoded": "p111_FID_$p111.k.23275",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.00136542072025943,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2867521454023131
+        },
+        {
+          "decoded": "p111_FID_$p111.k.24362",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.00136542072025943,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2867521454023131
+        },
+        {
+          "decoded": "p111_FID_$p111.k.32244",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.00136542072025943,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2867521454023131
+        },
+        {
+          "decoded": "p111_FID_$p111.k.33456",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.00136542072025943,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2867521454023131
+        },
+        {
+          "decoded": "p111_FID_$p111.k.8431",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.00136542072025943,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2867521454023131
+        },
+        {
+          "decoded": "p111_rt_sink",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.00136542072025943,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2867521454023131
+        },
+        {
+          "decoded": "p111_rt_special_ctor",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.00136542072025943,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2867521454023131
+        },
+        {
+          "decoded": "p113d_FID_$direct.Map.pop.lo",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.00136542072025943,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2867521454023131
+        },
+        {
+          "decoded": "p118_rt_borrow_scalar_safe",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.00136542072025943,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2867521454023131
+        },
+        {
+          "decoded": "p118_rt_finish",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.00136542072025943,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2867521454023131
+        }
+      ],
+      "periods": [
+        {
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/profile-capture03/010-sample-21-coverage-map-churn-32-candidate-candidate/analysis.json",
+            "bytes": 212221,
+            "sha256": "59d73f110d3f3cc70cd9cf30a6d99e49d777fe7d7f0a2d74fba008fac4bc5380",
+            "samples": 370,
+            "periodUs": 8000,
+            "dropped": 0,
+            "overruns": 0,
+            "captureWindowChildCpuFraction": 0.9990831746018921,
+            "wholeChildCpuCoverageAdequate": true
+          },
+          "periodUs": 8000,
+          "samples": 370,
+          "unknownSamples": 7,
+          "sampledThreadCpuFraction": 0.9999955251581375,
+          "lifecycleComplete": true,
+          "reasons": [],
+          "topFunctions": [
+            {
+              "decoded": "p113d_FID_$p118borrow.read.Map.bit.go",
+              "samples": 38,
+              "fraction": 0.10270270270270271
+            },
+            {
+              "decoded": "work_loop.constprop.0",
+              "samples": 25,
+              "fraction": 0.06756756756756757
+            },
+            {
+              "decoded": "p125_rt_ctor2",
+              "samples": 22,
+              "fraction": 0.05945945945945946
+            },
+            {
+              "decoded": "p111_FID_$direct.Map.ins.go",
+              "samples": 21,
+              "fraction": 0.05675675675675676
+            },
+            {
+              "decoded": "p111_FID_$direct.Map.seek.go",
+              "samples": 19,
+              "fraction": 0.051351351351351354
+            },
+            {
+              "decoded": "p125_rt_take2",
+              "samples": 18,
+              "fraction": 0.04864864864864865
+            },
+            {
+              "decoded": "p125_rt_take3",
+              "samples": 18,
+              "fraction": 0.04864864864864865
+            },
+            {
+              "decoded": "p113d_FID_$product.Map.bit.at",
+              "samples": 10,
+              "fraction": 0.02702702702702703
+            },
+            {
+              "decoded": "term_drop",
+              "samples": 9,
+              "fraction": 0.024324324324324326
+            },
+            {
+              "decoded": "p111_rt_op",
+              "samples": 9,
+              "fraction": 0.024324324324324326
+            },
+            {
+              "decoded": "p125_rt_ctor3",
+              "samples": 9,
+              "fraction": 0.024324324324324326
+            },
+            {
+              "decoded": "p113d_FID_$direct.Map.bit",
+              "samples": 8,
+              "fraction": 0.021621621621621623
+            },
+            {
+              "decoded": "p111_FID_$direct.Map.msb.u.if",
+              "samples": 7,
+              "fraction": 0.01891891891891892
+            },
+            {
+              "decoded": "[library_unresolved]",
+              "samples": 7,
+              "fraction": 0.01891891891891892
+            },
+            {
+              "decoded": "p113d_FID_$p118borrow.read.String.cmp",
+              "samples": 6,
+              "fraction": 0.016216216216216217
+            }
+          ]
+        },
+        {
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/profile-capture03/015-sample-21-coverage-map-churn-32-candidate-candidate/analysis.json",
+            "bytes": 147147,
+            "sha256": "e8c369cd9ea8110ce86d9547a2e33bcf3faddbfbb57f592e2e2cf26b2be5dadb",
+            "samples": 223,
+            "periodUs": 13000,
+            "dropped": 0,
+            "overruns": 0,
+            "captureWindowChildCpuFraction": 0.9993312609508336,
+            "wholeChildCpuCoverageAdequate": true
+          },
+          "periodUs": 13000,
+          "samples": 223,
+          "unknownSamples": 4,
+          "sampledThreadCpuFraction": 0.9999963404476243,
+          "lifecycleComplete": true,
+          "reasons": [],
+          "topFunctions": [
+            {
+              "decoded": "p113d_FID_$p118borrow.read.Map.bit.go",
+              "samples": 26,
+              "fraction": 0.11659192825112108
+            },
+            {
+              "decoded": "work_loop.constprop.0",
+              "samples": 16,
+              "fraction": 0.07174887892376682
+            },
+            {
+              "decoded": "p111_FID_$direct.Map.ins.go",
+              "samples": 13,
+              "fraction": 0.05829596412556054
+            },
+            {
+              "decoded": "p111_FID_$direct.Map.seek.go",
+              "samples": 12,
+              "fraction": 0.053811659192825115
+            },
+            {
+              "decoded": "p125_rt_take2",
+              "samples": 10,
+              "fraction": 0.04484304932735426
+            },
+            {
+              "decoded": "p125_rt_ctor2",
+              "samples": 9,
+              "fraction": 0.04035874439461883
+            },
+            {
+              "decoded": "p125_rt_take3",
+              "samples": 9,
+              "fraction": 0.04035874439461883
+            },
+            {
+              "decoded": "p111_FID_$direct.Map.put.go",
+              "samples": 8,
+              "fraction": 0.03587443946188341
+            },
+            {
+              "decoded": "p111_rt_op",
+              "samples": 7,
+              "fraction": 0.03139013452914798
+            },
+            {
+              "decoded": "p113d_FID_$product.Map.bit.at",
+              "samples": 6,
+              "fraction": 0.026905829596412557
+            },
+            {
+              "decoded": "p111_FID_$direct.Map.bit",
+              "samples": 6,
+              "fraction": 0.026905829596412557
+            },
+            {
+              "decoded": "p125_rt_ctor3",
+              "samples": 6,
+              "fraction": 0.026905829596412557
+            },
+            {
+              "decoded": "p111_FID_$direct.Map.diff.step",
+              "samples": 5,
+              "fraction": 0.02242152466367713
+            },
+            {
+              "decoded": "term_drop",
+              "samples": 5,
+              "fraction": 0.02242152466367713
+            },
+            {
+              "decoded": "p113d_FID_$direct.Map.bit",
+              "samples": 4,
+              "fraction": 0.017937219730941704
+            }
+          ]
+        }
+      ],
+      "runtimeOpDispatch": [
+        {
+          "decoded": "p111_rt_op",
+          "object": "executable",
+          "samples": 16,
+          "periodWeightedFraction": 0.027820447175285885,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 5.8425749625721295
+        }
+      ]
+    },
+    "21-coverage-map-churn-32-c": {
+      "case": "coverage-map-churn-32",
+      "role": "c",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-map-churn-32/bend-c/program",
+        "bytes": 285080,
+        "sha256": "287f716a811ab642cf26554d1946edb7d7e164e9ba916ec3f4137aea505489fb"
+      },
+      "repetitions": 62331,
+      "runtimeArgs": [
+        32,
+        17
+      ],
+      "warmups": 4,
+      "cleanObservations": 1,
+      "cleanCpuMicrosecondsPerRepetition": 46.12032535977283,
+      "samples": 578,
+      "unknownSamples": 0,
+      "unknownPeriodWeightedFraction": 0.0,
+      "maintainedComparatorAdequate": true,
+      "estimateAvailable": true,
+      "estimateUnavailableReasons": [],
+      "rejectedCaptures": [],
+      "captureLossTotals": {
+        "dropped": 0,
+        "overruns": 0
+      },
+      "captureCpuCoverage": [
+        0.9991562616377453,
+        0.9993002620154963
+      ],
+      "sampledOverCleanWallRatio": 0.9984460587283741,
+      "functions": [
+        {
+          "decoded": "WL_FID_$direct.Map.bit.go",
+          "object": "executable",
+          "samples": 95,
+          "periodWeightedFraction": 0.16684136967155835,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 7.694778252722405
+        },
+        {
+          "decoded": "term_drop",
+          "object": "executable",
+          "samples": 81,
+          "periodWeightedFraction": 0.13417190775681342,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 6.188052039885662
+        },
+        {
+          "decoded": "WL_FID_$direct.Map.seek.go",
+          "object": "executable",
+          "samples": 52,
+          "periodWeightedFraction": 0.09189378057302586,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 4.238171058567524
+        },
+        {
+          "decoded": "span_fade",
+          "object": "executable",
+          "samples": 43,
+          "periodWeightedFraction": 0.0749475890985325,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 3.4566071941548815
+        },
+        {
+          "decoded": "WL_FID_$direct.Map.ins.go",
+          "object": "executable",
+          "samples": 37,
+          "periodWeightedFraction": 0.0639412997903564,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 2.948993550258011
+        },
+        {
+          "decoded": "WL_FID_$direct.Map.put.go",
+          "object": "executable",
+          "samples": 24,
+          "periodWeightedFraction": 0.04315164220824598,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.9901677784528105
+        },
+        {
+          "decoded": "WL_FID_$direct.Map.lo",
+          "object": "executable",
+          "samples": 16,
+          "periodWeightedFraction": 0.030223619846261356,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.3939231808596606
+        },
+        {
+          "decoded": "rfc_wrap",
+          "object": "executable",
+          "samples": 14,
+          "periodWeightedFraction": 0.023934311670160725,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.1038582414900204
+        },
+        {
+          "decoded": "WL_FID_$direct.Map.bit.at",
+          "object": "executable",
+          "samples": 14,
+          "periodWeightedFraction": 0.023060796645702306,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.063571444355348
+        },
+        {
+          "decoded": "WL_FID_$direct.String.append",
+          "object": "executable",
+          "samples": 12,
+          "periodWeightedFraction": 0.02113906359189378,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.9749404906590691
+        },
+        {
+          "decoded": "WL_FID_$direct.Map.pop.go",
+          "object": "executable",
+          "samples": 13,
+          "periodWeightedFraction": 0.02078965758211041,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.9588257718052002
+        },
+        {
+          "decoded": "WL_FID_$direct.U32.show.fin",
+          "object": "executable",
+          "samples": 11,
+          "periodWeightedFraction": 0.02061495457721873,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.9507684123782658
+        },
+        {
+          "decoded": "term_keep",
+          "object": "executable",
+          "samples": 10,
+          "periodWeightedFraction": 0.020090845562543674,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.9265963340974624
+        },
+        {
+          "decoded": "WL_FID_$direct.Map.set.go",
+          "object": "executable",
+          "samples": 11,
+          "periodWeightedFraction": 0.017994409503843466,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.829908020974249
+        },
+        {
+          "decoded": "WL_FID_$direct.Map.diff",
+          "object": "executable",
+          "samples": 9,
+          "periodWeightedFraction": 0.01607267645003494,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.7412770672779699
+        },
+        {
+          "decoded": "WL_FID_native_k_34625",
+          "object": "executable",
+          "samples": 8,
+          "periodWeightedFraction": 0.013801537386443047,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.6365313947278219
+        },
+        {
+          "decoded": "WL_FID_$direct.Map.set.fin",
+          "object": "executable",
+          "samples": 9,
+          "periodWeightedFraction": 0.013452131376659678,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.6204166758739531
+        },
+        {
+          "decoded": "WL_FID_$direct.Map.diff.fin",
+          "object": "executable",
+          "samples": 8,
+          "periodWeightedFraction": 0.012054507337526206,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.5559578004584774
+        },
+        {
+          "decoded": "WL_FID_native_k_20065",
+          "object": "executable",
+          "samples": 5,
+          "periodWeightedFraction": 0.010482180293501049,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.4834415656160673
+        },
+        {
+          "decoded": "WL_FID_$direct.Map.msb.u.if",
+          "object": "executable",
+          "samples": 5,
+          "periodWeightedFraction": 0.010482180293501049,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.4834415656160673
+        },
+        {
+          "decoded": "WL_FID_$direct.Map.ins",
+          "object": "executable",
+          "samples": 6,
+          "periodWeightedFraction": 0.01013277428371768,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.4673268467621985
+        },
+        {
+          "decoded": "WL_FID_$direct.Map.hi",
+          "object": "executable",
+          "samples": 5,
+          "periodWeightedFraction": 0.009608665269042627,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.44315476848139507
+        },
+        {
+          "decoded": "WL_FID_$direct.Map.to_list.go",
+          "object": "executable",
+          "samples": 5,
+          "periodWeightedFraction": 0.008735150244584208,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.40286797134672286
+        },
+        {
+          "decoded": "WL_FID_$direct.Map.bit",
+          "object": "executable",
+          "samples": 5,
+          "periodWeightedFraction": 0.008735150244584208,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.40286797134672286
+        },
+        {
+          "decoded": "WL_FID_$direct.p37.map.digest",
+          "object": "executable",
+          "samples": 4,
+          "periodWeightedFraction": 0.008211041229909155,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.37869589306591944
+        },
+        {
+          "decoded": "WL_FID_native_k_35666",
+          "object": "executable",
+          "samples": 5,
+          "periodWeightedFraction": 0.007861635220125786,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.3625811742120505
+        },
+        {
+          "decoded": "WL_FID_native_k_32159",
+          "object": "executable",
+          "samples": 4,
+          "periodWeightedFraction": 0.007337526205450734,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.3384090959312472
+        },
+        {
+          "decoded": "WL_FID_native_k_38782",
+          "object": "executable",
+          "samples": 5,
+          "periodWeightedFraction": 0.0069881201956673656,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.3222943770773782
+        },
+        {
+          "decoded": "WL_FID_$direct.Map.seek",
+          "object": "executable",
+          "samples": 5,
+          "periodWeightedFraction": 0.0069881201956673656,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.3222943770773782
+        },
+        {
+          "decoded": "WL_FID_native_k_32433",
+          "object": "executable",
+          "samples": 4,
+          "periodWeightedFraction": 0.006464011180992313,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2981222987965748
+        },
+        {
+          "decoded": "WL_FID_native_k_45237",
+          "object": "executable",
+          "samples": 4,
+          "periodWeightedFraction": 0.006464011180992313,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2981222987965748
+        },
+        {
+          "decoded": "WL_FID_native_k_20189",
+          "object": "executable",
+          "samples": 3,
+          "periodWeightedFraction": 0.005939902166317261,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2739502205157715
+        },
+        {
+          "decoded": "WL_FID_native_k_45363",
+          "object": "executable",
+          "samples": 4,
+          "periodWeightedFraction": 0.005590496156533892,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.25783550166190256
+        },
+        {
+          "decoded": "WL_FID_native_k_32492",
+          "object": "executable",
+          "samples": 3,
+          "periodWeightedFraction": 0.00506638714185884,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.23366342338109924
+        },
+        {
+          "decoded": "WL_FID_native_k_33582",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.004542278127183787,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.20949134510029585
+        },
+        {
+          "decoded": "WL_FID_native_k_13575",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.003668763102725367,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.1692045479656236
+        },
+        {
+          "decoded": "WL_FID_native_k_28550",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.003668763102725367,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.1692045479656236
+        },
+        {
+          "decoded": "WL_FID_native_k_32376",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.003668763102725367,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.1692045479656236
+        },
+        {
+          "decoded": "WL_FID_$direct.p37.map.fill",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.003668763102725367,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.1692045479656236
+        },
+        {
+          "decoded": "WL_FID_$direct.Map.set.fin.go",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.003668763102725367,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.1692045479656236
+        },
+        {
+          "decoded": "WL_FID_native_k_17754",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.002795248078266946,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.12891775083095128
+        },
+        {
+          "decoded": "WL_FID_native_k_20212",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.002795248078266946,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.12891775083095128
+        },
+        {
+          "decoded": "WL_FID_native_k_32448",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.002795248078266946,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.12891775083095128
+        },
+        {
+          "decoded": "WL_FID_$direct.Map.ins.splice.bit",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.002795248078266946,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.12891775083095128
+        },
+        {
+          "decoded": "WL_FID_$direct.Map.pop.lo",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.002795248078266946,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.12891775083095128
+        },
+        {
+          "decoded": "WL_FID_native_k_36709",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.0022711390635918936,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.10474567255014793
+        },
+        {
+          "decoded": "WL_FID_native_k_58013",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.0022711390635918936,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.10474567255014793
+        },
+        {
+          "decoded": "WL_FID_$direct.p37.map.key",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.0022711390635918936,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.10474567255014793
+        },
+        {
+          "decoded": "WL_FID_$direct.p37.map.remove",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.0022711390635918936,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.10474567255014793
+        },
+        {
+          "decoded": "WL_FID_$direct.p37.map.update",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.0022711390635918936,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.10474567255014793
+        },
+        {
+          "decoded": "WL_FID_$direct.Map.msb.u",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.0022711390635918936,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.10474567255014793
+        },
+        {
+          "decoded": "WL_FID_$direct.Map.put",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.0022711390635918936,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.10474567255014793
+        },
+        {
+          "decoded": "WL_FID_native_k_14626",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.001397624039133473,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.06445887541547564
+        },
+        {
+          "decoded": "WL_FID_native_k_29599",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.001397624039133473,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.06445887541547564
+        },
+        {
+          "decoded": "WL_FID_native_k_32481",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.001397624039133473,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.06445887541547564
+        },
+        {
+          "decoded": "WL_FID_native_k_43955",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.001397624039133473,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.06445887541547564
+        },
+        {
+          "decoded": "WL_FID_native_k_55776",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.001397624039133473,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.06445887541547564
+        },
+        {
+          "decoded": "WL_FID_$direct.p93.loop",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.001397624039133473,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.06445887541547564
+        },
+        {
+          "decoded": "WL_FID_$direct.Map.pop",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.001397624039133473,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.06445887541547564
+        },
+        {
+          "decoded": "WL_FID_$direct.Map.pop.hi",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.001397624039133473,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.06445887541547564
+        },
+        {
+          "decoded": "WL_FID_$direct.Map.set",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.001397624039133473,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.06445887541547564
+        },
+        {
+          "decoded": "WL_FID_$direct.U32.show.go",
+          "object": "executable",
+          "samples": 1,
+          "periodWeightedFraction": 0.001397624039133473,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.06445887541547564
+        }
+      ],
+      "periods": [
+        {
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/profile-capture03/011-sample-21-coverage-map-churn-32-c-c/analysis.json",
+            "bytes": 173164,
+            "sha256": "a8dc98f7bbfe4956d0b5cf51d834320126e5a210989b2bac1fd66b69a4831aa5",
+            "samples": 358,
+            "periodUs": 8000,
+            "dropped": 0,
+            "overruns": 0,
+            "captureWindowChildCpuFraction": 0.9991562616377453,
+            "wholeChildCpuCoverageAdequate": true
+          },
+          "periodUs": 8000,
+          "samples": 358,
+          "unknownSamples": 0,
+          "sampledThreadCpuFraction": 0.9999964504293987,
+          "lifecycleComplete": true,
+          "reasons": [],
+          "topFunctions": [
+            {
+              "decoded": "term_drop",
+              "samples": 57,
+              "fraction": 0.15921787709497207
+            },
+            {
+              "decoded": "WL_FID_$direct.Map.bit.go",
+              "samples": 56,
+              "fraction": 0.1564245810055866
+            },
+            {
+              "decoded": "WL_FID_$direct.Map.seek.go",
+              "samples": 30,
+              "fraction": 0.08379888268156424
+            },
+            {
+              "decoded": "span_fade",
+              "samples": 26,
+              "fraction": 0.07262569832402235
+            },
+            {
+              "decoded": "WL_FID_$direct.Map.ins.go",
+              "samples": 23,
+              "fraction": 0.06424581005586592
+            },
+            {
+              "decoded": "WL_FID_$direct.Map.put.go",
+              "samples": 13,
+              "fraction": 0.036312849162011177
+            },
+            {
+              "decoded": "WL_FID_$direct.Map.bit.at",
+              "samples": 10,
+              "fraction": 0.027932960893854747
+            },
+            {
+              "decoded": "WL_FID_$direct.Map.pop.go",
+              "samples": 10,
+              "fraction": 0.027932960893854747
+            },
+            {
+              "decoded": "rfc_wrap",
+              "samples": 9,
+              "fraction": 0.025139664804469275
+            },
+            {
+              "decoded": "WL_FID_$direct.Map.set.go",
+              "samples": 8,
+              "fraction": 0.0223463687150838
+            },
+            {
+              "decoded": "WL_FID_$direct.Map.set.fin",
+              "samples": 8,
+              "fraction": 0.0223463687150838
+            },
+            {
+              "decoded": "WL_FID_$direct.Map.diff.fin",
+              "samples": 7,
+              "fraction": 0.019553072625698324
+            },
+            {
+              "decoded": "WL_FID_$direct.Map.lo",
+              "samples": 7,
+              "fraction": 0.019553072625698324
+            },
+            {
+              "decoded": "WL_FID_$direct.String.append",
+              "samples": 7,
+              "fraction": 0.019553072625698324
+            },
+            {
+              "decoded": "WL_FID_$direct.U32.show.fin",
+              "samples": 5,
+              "fraction": 0.013966480446927373
+            }
+          ]
+        },
+        {
+          "analysis": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/profile-capture03/016-sample-21-coverage-map-churn-32-c-c/analysis.json",
+            "bytes": 128201,
+            "sha256": "03f9ceaa63501157c6f9b1d7a68cf025dfc3a5f38928a90bfe4ceb42bae41a83",
+            "samples": 220,
+            "periodUs": 13000,
+            "dropped": 0,
+            "overruns": 0,
+            "captureWindowChildCpuFraction": 0.9993002620154963,
+            "wholeChildCpuCoverageAdequate": true
+          },
+          "periodUs": 13000,
+          "samples": 220,
+          "unknownSamples": 0,
+          "sampledThreadCpuFraction": 0.9999962834203949,
+          "lifecycleComplete": true,
+          "reasons": [],
+          "topFunctions": [
+            {
+              "decoded": "WL_FID_$direct.Map.bit.go",
+              "samples": 39,
+              "fraction": 0.17727272727272728
+            },
+            {
+              "decoded": "term_drop",
+              "samples": 24,
+              "fraction": 0.10909090909090909
+            },
+            {
+              "decoded": "WL_FID_$direct.Map.seek.go",
+              "samples": 22,
+              "fraction": 0.1
+            },
+            {
+              "decoded": "span_fade",
+              "samples": 17,
+              "fraction": 0.07727272727272727
+            },
+            {
+              "decoded": "WL_FID_$direct.Map.ins.go",
+              "samples": 14,
+              "fraction": 0.06363636363636363
+            },
+            {
+              "decoded": "WL_FID_$direct.Map.put.go",
+              "samples": 11,
+              "fraction": 0.05
+            },
+            {
+              "decoded": "WL_FID_$direct.Map.lo",
+              "samples": 9,
+              "fraction": 0.04090909090909091
+            },
+            {
+              "decoded": "term_keep",
+              "samples": 7,
+              "fraction": 0.031818181818181815
+            },
+            {
+              "decoded": "WL_FID_$direct.U32.show.fin",
+              "samples": 6,
+              "fraction": 0.02727272727272727
+            },
+            {
+              "decoded": "WL_FID_$direct.String.append",
+              "samples": 5,
+              "fraction": 0.022727272727272728
+            },
+            {
+              "decoded": "rfc_wrap",
+              "samples": 5,
+              "fraction": 0.022727272727272728
+            },
+            {
+              "decoded": "WL_FID_native_k_20065",
+              "samples": 4,
+              "fraction": 0.01818181818181818
+            },
+            {
+              "decoded": "WL_FID_$direct.Map.bit.at",
+              "samples": 4,
+              "fraction": 0.01818181818181818
+            },
+            {
+              "decoded": "WL_FID_$direct.Map.diff",
+              "samples": 4,
+              "fraction": 0.01818181818181818
+            },
+            {
+              "decoded": "WL_FID_$direct.Map.msb.u.if",
+              "samples": 4,
+              "fraction": 0.01818181818181818
+            }
+          ]
+        }
+      ],
+      "runtimeOpDispatch": []
+    }
+  }
+}

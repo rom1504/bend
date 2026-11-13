@@ -215,6 +215,7 @@ def x187p_instruction(+op: String, +tail: String) -> X187Parsed:
     "xorq","xorl","xorb","shlq","shll","shrq","shrl","sarq","sarl","cmpq","cmpl","cmpb",
     "testq","testl","testb","sete","setne","setb","setbe","seta","setae","setl","setle","setg","setge","setp","setnp",
     "pushq","popq","ret","call","jmp","jz","jnz","je","jne","ja","jae","jb","jbe","jl","jle","jg","jge",
+    "cmovel","cmovnel","cmovbl","cmovbel","cmoval","cmovael","cmovll","cmovlel","cmovgl","cmovgel","cmoveq","cmovneq","cmovbq","cmovbeq","cmovaq","cmovaeq","cmovlq","cmovleq","cmovgq","cmovgeq",
     "movd","movaps","pxor","addss","subss","mulss","divss","ucomiss","cvtsi2ssq"]),
     u => x187p_instruction_done(op,nt_choose(X187Operands,String.is_empty(tail),
       v => X187Operands{[],""},v => x187p_operands(String.split(tail,','),[]))),

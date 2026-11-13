@@ -231,11 +231,13 @@ def x186_f_place(+symbol: String, +params: List<&2,String>, +setup: List<&2,P113
 
 @unsafe
 def x186_f_ordinary(+symbol: String, +params: List<&2,String>, +setup: List<&2,P113DStmt>,
-    +body: List<&2,P113DStmt>, ids: N111Ids) -> X181Output:
+    +body: List<&2,P113DStmt>, +ids: N111Ids) -> X181Output:
   +all = nt_append(P113DStmt,setup,body)
-  x185_function_frame(symbol,setup,body,ids,x190_allocate_frame(
+  nt_choose(X181Output,x191_address_enabled() || x191_memory_alu_enabled(),
+    u => x191_ordinary(symbol,params,setup,body,ids),
+    u => x185_function_frame(symbol,setup,body,ids,x190_allocate_frame(
     x181_frame(symbol,params,all),params,setup,body,
-      nt_choose(List<&2,P113DStmt>,x185_loop_registers_enabled(),u => body,u => all)))
+      nt_choose(List<&2,P113DStmt>,x185_loop_registers_enabled(),u => body,u => all))))
 
 @unsafe
 def x186_float_function(+symbol: String, +params: List<&2,String>, +setup: List<&2,P113DStmt>,

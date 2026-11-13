@@ -80,6 +80,8 @@ def x188_operand_text(operand: X187Operand) -> String:
     case X187Mem{base,disp}: x188_signed32(disp) ++ "(" ++ x188_gpr_text(base,64) ++ ")"
     case X187Rip{symbol,+lo,+hi}: symbol ++ nt_choose(String,U32.is_eq(lo,0) && U32.is_eq(hi,0),u => "",u => "+" ++ p111q_u64(lo,hi)) ++ "(%rip)"
     case X187Target{symbol}: symbol
+    case X187Indexed{base,index,scale,disp}:
+      x188_signed32(disp) ++ "(" ++ x188_gpr_text(base,64) ++ "," ++ x188_gpr_text(index,64) ++ "," ++ U32.show(scale) ++ ")"
 
 @unsafe
 def x188_operands_text(operands: List<&2,X187Operand>, separator: String) -> String:

@@ -67,12 +67,12 @@ def x190_branch_counted(reads: X181ReadCounts, writes: KDef, pairs: KDef, protec
 @unsafe
 def x190_branch_facts_when(+reuse: Bool, +params: List<&2,String>, +setup: List<&2,P113DStmt>,
     +body: List<&2,P113DStmt>) -> X190BranchFacts:
-  nt_choose(X190BranchFacts,x190_branch_enabled(),u =>
+  nt_choose(X190BranchFacts,x190_branch_enabled() || x191_address_enabled() || x191_memory_alu_enabled(),u =>
     x190_branch_counted(x181_reads_stmts(body,x181_reads_stmts(setup,X181ReadCounts{missing(),[]})),
       x185_copy_writes(body,x185_copy_writes(setup,x185_copy_writes_names(params,missing()))),
       nt_choose(KDef,reuse && U32.is_lt(p113i_size(body),4096),
         v => x190_branch_pairs(body,missing()),v => missing()),
-      nt_choose(KDef,reuse,v => x185_copy_writes(setup,x185_copy_writes_names(params,missing())),v => missing())),
+      nt_choose(KDef,reuse || x191_address_enabled() || x191_memory_alu_enabled(),v => x185_copy_writes(setup,x185_copy_writes_names(params,missing())),v => missing())),
     u => X190BranchFacts{missing(),missing(),missing(),missing()})
 
 @unsafe
@@ -184,7 +184,7 @@ def x190_if_yes(+label: U32, no: List<&2,P113DStmt>, facts: X190BranchFacts,
           x188_label(x181_label(label,frame))),chunks},next,False{},error}))
 
 @unsafe
-def x190_if(condition: N111Value, yes: List<&2,P113DStmt>, no: List<&2,P113DStmt>,
+def x191_if_fallback(condition: N111Value, yes: List<&2,P113DStmt>, no: List<&2,P113DStmt>,
     facts: X190BranchFacts, +ids: N111Ids, +frame: X181Frame, +code: X181Code) -> X181Code:
   match code:
     case X181Code{chunks,next,terminal,error}:
@@ -261,7 +261,7 @@ def x190_plain_step(body: List<&2,P113DStmt>, +facts: X190BranchFacts,
     case Con{head,rest}: x190_stmts(rest,facts,ids,frame,x190_stmt(head,facts,ids,frame,code))
 
 @unsafe
-def x190_step(+body: List<&2,P113DStmt>, +facts: X190BranchFacts,
+def x191_branch_step(+body: List<&2,P113DStmt>, +facts: X190BranchFacts,
     +ids: N111Ids, +frame: X181Frame, +code: X181Code) -> X181Code:
   match body:
     case Con{P113DScalar{N111Bin{name,+typ,+op,left,right}},Con{P113DIf{condition,yes,no},rest}}:
@@ -276,6 +276,21 @@ def x190_step(+body: List<&2,P113DStmt>, +facts: X190BranchFacts,
     case _: x190_plain_step(body,facts,ids,frame,code)
 
 @unsafe
+def x191_selected_step(pick: Maybe<&2,X191Pick>, body: List<&2,P113DStmt>, +facts: X190BranchFacts,
+    +ids: N111Ids, +frame: X181Frame, code: X181Code) -> X181Code:
+  match pick:
+    case Some{X191Pick{rest,operation}}:
+      x190_stmts(rest,facts,ids,frame,x181_add(x191_emit(operation,ids,frame),code))
+    case None{}: x191_branch_step(body,facts,ids,frame,code)
+
+@unsafe
+def x190_step(+body: List<&2,P113DStmt>, +facts: X190BranchFacts,
+    +ids: N111Ids, +frame: X181Frame, +code: X181Code) -> X181Code:
+  nt_choose(X181Code,x191_address_enabled() || x191_memory_alu_enabled(),
+    u => x191_selected_step(x191_pick(body,facts),body,facts,ids,frame,code),
+    u => x191_branch_step(body,facts,ids,frame,code))
+
+@unsafe
 def x190_stmts(body,facts,ids,frame,code):
   match body code:
     case Nil{} _: code
@@ -283,3 +298,16 @@ def x190_stmts(body,facts,ids,frame,code):
       nt_choose(X181Code,String.is_empty(error),u =>
         nt_choose(X181Code,terminal,u => x181_error("x86 statement after terminal",code),
           u => x190_step(body,facts,ids,frame,code)),u => code)
+
+@unsafe
+def x191_if_selected(selected: Maybe<&2,X188Seq>, condition: N111Value,
+    yes: List<&2,P113DStmt>, no: List<&2,P113DStmt>, facts: X190BranchFacts,
+    ids: N111Ids, frame: X181Frame, code: X181Code) -> X181Code:
+  match selected:
+    case Some{sequence}: x181_add(sequence,code)
+    case None{}: x191_if_fallback(condition,yes,no,facts,ids,frame,code)
+
+@unsafe
+def x190_if(+condition: N111Value, +yes: List<&2,P113DStmt>, +no: List<&2,P113DStmt>,
+    facts: X190BranchFacts, +ids: N111Ids, +frame: X181Frame, code: X181Code) -> X181Code:
+  x191_if_selected(x191_conditional_select(condition,yes,no,ids,frame),condition,yes,no,facts,ids,frame,code)

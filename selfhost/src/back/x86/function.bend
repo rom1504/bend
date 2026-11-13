@@ -256,7 +256,7 @@ def x181_function_frame(+symbol: String, +body: List<&2,P113DStmt>, +ids: N111Id
 def x181_function_done(+symbol: String, code: X181Code) -> X181Output:
   match code:
     case X181Code{chunks,next,+terminal,+error}:
-      X181Output{[x188_cat(x188_finish(chunks),X188One{PSize{symbol}})],
+      X181Output{[x188_cat(x191_frame_forward(x188_finish(chunks)),X188One{PSize{symbol}})],
         nt_choose(String,String.is_empty(error) && Bool.not(terminal),u => "x86 unterminated function",u => error)}
 
 @unsafe

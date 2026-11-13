@@ -44,6 +44,50 @@ exact-output and profile-quality gates; sampling is diagnostic, not clean timing
 All target execution belongs in a resource guard. The offline tools never run
 the target. Installed compiler selections and historical evidence are untouched.
 
+`plan-runtime.py` prepares physical profiles from an explicit frozen
+`bend-benchmark-manifest-v1` program manifest and its complete adaptive runtime
+report. It rechecks selected calibration commands, executable identities,
+independent complete-output/count observations, source/oracle pins and the
+all-thread sampler build receipt. It does not compile, sample or run programs.
+
+```sh
+python3 -B selfhost/tools/profiler/plan-runtime.py \
+  --manifest /absolute/runtime-products/manifest.json \
+  --timing /absolute/runtime-measurements/report.json \
+  --cases local-pair,editdist --roles parent,candidate \
+  --sampler /absolute/thread-sampler/sampler.so \
+  --sampler-receipt /absolute/thread-sampler/report.json \
+  --seconds-per-run 2.9 --periods-us 8000,13000 --clean-rounds 1 \
+  --out selfhost/build/runtime-profile-plan01 \
+  --capture-out selfhost/build/runtime-profile-capture01 \
+  --guard-out selfhost/build/runtime-profile-guard01
+```
+
+Roles must already exist under those exact names in the merged program manifest
+and calibration report. The planner prints a guarded `run.py` command followed
+by offline `compare.py`/`render.py` commands; root executes the capture separately
+on the chosen lane. `--cpu` defaults to 3. Output directories must be fresh,
+distinct and nonnested. The plan uses a 128 MiB disk budget and derives its
+whole-run time ceiling from workload count and individual capture timeouts.
+
+Each case/role receives its own workload name, one variant and an independently
+calibrated repetition count. This lets the ordinary comparator pool identical
+commands within that role, while producing **no cross-role total-CPU ratios**.
+`plan.json` records the mapping, exact products, repetition/warmup counts and
+sample estimates. Its per-repetition calibration includes process startup and
+warmups; estimates do not guarantee profile admission. Keep the normal pooled
+sample, period, coverage, loss/overrun and unknown-symbol gates. If interpreting
+admitted physical-owner estimates across roles, divide each role's clean CPU
+and estimated owner CPU by that role's recorded repetitions. Such descriptive
+normalization includes startup/warmups and does not replace matched runtime
+qualification or establish source ownership.
+
+`--clean-rounds` changes clean captures only. To collect additional sampled
+captures, repeat the period list, for example `8000,13000,8000,13000`; keep at
+least two distinct periods. Metadata-only controls are in
+`test_plan_runtime.py`, including rejection of mismatched commands, binary pins,
+samplers, manifest bindings and count oracles.
+
 Versioned [exact stage observations](STAGES.md) add data-defined FID/order/
 multiplicity plans and delivered-sample ordinal association. Preparation and
 observation are offline; generic runtime packaging still needs a small native

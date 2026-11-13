@@ -583,13 +583,123 @@ def x190_j_weighted(reads: X181ReadCounts) -> X181ReadCounts:
     case X181ReadCounts{counts,+names}:
       X181ReadCounts{x190_register_scores(names,missing(),[],1,counts),names}
 
+# Profitability only: a syntactic read on a path to Again receives seven
+# extra votes (eight total). Exit-only and setup reads keep one vote. Identity
+# backedge transports receive no bonus; they do not consume their own home.
+# This walk never changes liveness, graph edges, call clobbers or validation.
+# It runs only inside the existing 256-statement / 64-parameter joint bound.
+def x191_loop_profitability_enabled() -> Bool: True{}
+
+type X191LoopReads is Data:
+  X191LoopReads{+reads: X181ReadCounts, +reaches: Bool, +falls: Bool}
+
+@unsafe
+def x191_reads_merge_names(names: List<&2,String>, +source: KDef, +target: X181ReadCounts) -> X181ReadCounts:
+  match names target:
+    case Nil{} _: target
+    case Con{+name,rest} X181ReadCounts{+counts,+reversed}:
+      +old = p111v_get(counts,name)
+      +a = da(p111v_get(source,name))
+      +b = da(old)
+      x191_reads_merge_names(rest,source,X181ReadCounts{p111v_put(counts,name,"X181Reads",
+        nt_choose(U32,U32.is_gt(a,U32.sub(4294967295,b)),u => 4294967295,u => U32.add(a,b)),0),
+        nt_choose(List<&2,String>,String.eq(dk(old),"Absent"),u => Con{name,reversed},u => reversed)})
+
+# Summary names stay unique. Final scores retain the original static-read
+# encounter list, so summary traversal order cannot perturb priority ties.
+@unsafe
+def x191_reads_merge(left: X181ReadCounts, right: X181ReadCounts) -> X181ReadCounts:
+  match left:
+    case X181ReadCounts{counts,names}: x191_reads_merge_names(names,counts,right)
+
+@unsafe
+def x191_again_identity(parameter: String, value: N111Value) -> Bool:
+  match value:
+    case N111Local{name}: String.eq(parameter,name)
+    case _: False{}
+
+@unsafe
+def x191_again_reads(params: List<&2,String>, values: List<&2,N111Value>, +counts: X181ReadCounts) -> X181ReadCounts:
+  match params values:
+    case Con{parameter,rest} Con{+value,more}:
+      x191_again_reads(rest,more,nt_choose(X181ReadCounts,x191_again_identity(parameter,value),
+        u => counts,u => x181_reads_value(value,counts)))
+    case _ _: counts
+
+law x191_loop_reads:
+  for body: List<&2,P113DStmt>
+  for +params: List<&2,String>
+  for after: Bool
+  X191LoopReads
+
+@unsafe
+def x191_loop_join(condition: N111Value, yes: X191LoopReads, no: X191LoopReads) -> X191LoopReads:
+  match yes no:
+    case X191LoopReads{+a,+hotA,fallA} X191LoopReads{+b,+hotB,fallB}:
+      X191LoopReads{nt_choose(X181ReadCounts,hotA || hotB,
+        u => x181_reads_value(condition,x191_reads_merge(a,b)),u => x191_reads_merge(a,b)),hotA || hotB,fallA || fallB}
+
+@unsafe
+def x191_loop_stmt(+stmt: P113DStmt, +params: List<&2,String>, +after: Bool) -> X191LoopReads:
+  match stmt:
+    case P113DAgain{values}: X191LoopReads{x191_again_reads(params,values,X181ReadCounts{missing(),[]}),True{},False{}}
+    case P113DResult{values}: X191LoopReads{X181ReadCounts{missing(),[]},False{},False{}}
+    case P113DScalar{N111Return{value}}: X191LoopReads{X181ReadCounts{missing(),[]},False{},False{}}
+    case P113DIf{condition,yes,no}:
+      x191_loop_join(condition,x191_loop_reads(yes,params,after),x191_loop_reads(no,params,after))
+    case P113DScalar{N111If{condition,yes,no}}:
+      x191_loop_join(condition,x191_loop_reads(x181_scalar_rows(yes),params,after),x191_loop_reads(x181_scalar_rows(no),params,after))
+    case _: X191LoopReads{nt_choose(X181ReadCounts,after,
+      u => x181_reads_stmt(stmt,X181ReadCounts{missing(),[]}),u => X181ReadCounts{missing(),[]}),after,True{}}
+
+@unsafe
+def x191_loop_cons(head: X191LoopReads, rest: X191LoopReads) -> X191LoopReads:
+  match head rest:
+    case X191LoopReads{+a,hot,+falls} X191LoopReads{b,restHot,restFalls}:
+      X191LoopReads{nt_choose(X181ReadCounts,falls,u => x191_reads_merge(a,b),u => a),hot,falls && restFalls}
+
+@unsafe
+def x191_loop_head(head: P113DStmt, params: List<&2,String>, +rest: X191LoopReads) -> X191LoopReads:
+  match rest:
+    case X191LoopReads{reads,hot,falls}: x191_loop_cons(x191_loop_stmt(head,params,hot),rest)
+
+@unsafe
+def x191_loop_reads(body,params,after):
+  match body:
+    case Nil{}: X191LoopReads{X181ReadCounts{missing(),[]},after,True{}}
+    case Con{head,rest}: x191_loop_head(head,params,x191_loop_reads(rest,params,after))
+
+@unsafe
+def x191_loop_scores(names: List<&2,String>, +repeated: KDef, +counts: KDef) -> KDef:
+  match names:
+    case Nil{}: counts
+    case Con{+name,rest}:
+      +a = da(p111v_get(counts,name))
+      +b = da(p111v_get(repeated,name))
+      x191_loop_scores(rest,repeated,p111v_put(counts,name,"X181Reads",
+        nt_choose(U32,U32.is_gt(b,U32.div(U32.sub(4294967295,a),7)),
+          u => 4294967295,u => U32.add(a,U32.mul(b,7))),0))
+
+@unsafe
+def x191_loop_counted(all: X181ReadCounts, repeated: X191LoopReads) -> X181ReadCounts:
+  match all repeated:
+    case X181ReadCounts{counts,+names} X191LoopReads{X181ReadCounts{hot,hotNames},reaches,falls}:
+      X181ReadCounts{x191_loop_scores(names,hot,counts),names}
+
+@unsafe
+def x191_joint_reads(+setup: List<&2,P113DStmt>, +body: List<&2,P113DStmt>, params: List<&2,String>) -> X181ReadCounts:
+  nt_choose(X181ReadCounts,x191_loop_profitability_enabled(),
+    u => x191_loop_counted(x181_reads_stmts(setup,x181_reads_stmts(body,X181ReadCounts{missing(),[]})),
+      x191_loop_reads(body,params,False{})),
+    u => x181_reads_stmts(setup,x190_j_weighted(x181_reads_stmts(body,X181ReadCounts{missing(),[]}))))
+
 @unsafe
 def x190_joint_frame(+frame: X181Frame, +params: List<&2,String>, +setup: List<&2,P113DStmt>,
     +body: List<&2,P113DStmt>, +registerBody: List<&2,P113DStmt>) -> X181Frame:
   nt_choose(X181Frame,U32.is_le(p113i_add(p113i_size(setup),p113i_size(body)),256) &&
       U32.is_le(nt_count(String,params),64) && x190_l_safe_body(setup) && x190_l_safe_body(body),
     u => x190_j_counted(frame,params,setup,body,registerBody,
-      x181_reads_stmts(setup,x190_j_weighted(x181_reads_stmts(body,X181ReadCounts{missing(),[]})))),
+      x191_joint_reads(setup,body,x181_tail_args(frame))),
     u => x190_allocate_legacy(frame,params,setup,body,registerBody))
 
 @unsafe

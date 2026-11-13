@@ -129,3 +129,13 @@ the corresponding baseline's machine code on the full compiler and the
 while improving 35.0% over the previous object path. See the report for stage,
 source and statistical scope; the Phase189 default change is a separate release
 decision.
+
+The maintained source also selects scaled indexed memory operands, folds
+eligible adjacent memory/arithmetic operations, prioritizes repeated loop uses
+for register placement, selects pure copy branches with conditional moves, and
+forwards adjacent private frame reloads. Both output formats consume these same
+typed instructions. See the [Phase191 report](../../implementation/phase191/README.md)
+for measured runtime, qualification and the exact candidate image; these source
+changes do not update an already installed compiler. The
+[runtime profiling planner](../../selfhost/tools/profiler/README.md) authenticates
+machine products and prepares calibrated physical profiles for either route.

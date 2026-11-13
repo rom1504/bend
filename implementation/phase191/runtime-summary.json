@@ -1,0 +1,4673 @@
+{
+  "kind": "phase190-authenticated-runtime-summary",
+  "version": 1,
+  "programsExecuted": false,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase191/summarize.py",
+    "bytes": 13443,
+    "sha256": "b9f5b6a7b76071848252d2e765b65af310b1be722a4c2ab0f7f9a91d3f627933"
+  },
+  "analyzer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase186/analyze-runtime.py",
+    "bytes": 9139,
+    "sha256": "00de2390521f32bbbd9bd8948c71165591f333acb792d0fb0e67dd07cb2b8565"
+  },
+  "report": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/runtime01/report.json",
+    "bytes": 2105256,
+    "sha256": "35a988cb7e8e74255e87cc35af65257622f093dab6ce578dc6666c126c42888b"
+  },
+  "references": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/references01/manifest.json",
+    "bytes": 369210,
+    "sha256": "b53a5c51df3a9497313ba2dd81d7db6a0c734926c20cebde2ae5b8042ef551a2"
+  },
+  "partition": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase191/cases.json",
+    "bytes": 1763,
+    "sha256": "c8889cbabb65a60c370de31b3886b972b2326915ca81abb0c37b2bbdcab98c55"
+  },
+  "roles": [
+    "c",
+    "baseline",
+    "candidate"
+  ],
+  "cRole": "c",
+  "baselineRole": "baseline",
+  "rounds": 6,
+  "positionBalanced": true,
+  "oracleRevalidated": {
+    "pilots": 445,
+    "samples": 810
+  },
+  "inputPinsVerified": 568,
+  "subsets": {
+    "all": {
+      "caseCount": 45,
+      "expectedCount": 45,
+      "missingCaseIds": [],
+      "ratioEligibleCount": 44,
+      "roles": {
+        "c": {
+          "overC": {
+            "caseCount": 44,
+            "geomean": 1.0,
+            "meanPositiveLogSlowdown": 0,
+            "casesOver110": 0,
+            "casesOver2": 0,
+            "fixedEquivalentMs": 10243.934008183547,
+            "referenceFixedEquivalentMs": 10243.934008183547,
+            "fixedEquivalentRatio": 1.0,
+            "worstRegressions": []
+          },
+          "overBaseline": {
+            "caseCount": 44,
+            "geomean": 0.32506663018123727,
+            "meanPositiveLogSlowdown": 0.12301843275095449,
+            "casesOver110": 4,
+            "casesOver2": 2,
+            "fixedEquivalentMs": 10243.934008183547,
+            "referenceFixedEquivalentMs": 38940.15010978455,
+            "fixedEquivalentRatio": 0.26306868307653336,
+            "worstRegressions": [
+              {
+                "id": "coverage-closures-256",
+                "ratio": 12.78262143678161,
+                "flagged": true
+              },
+              {
+                "id": "coverage-closures-64",
+                "ratio": 10.603435021568291,
+                "flagged": false
+              },
+              {
+                "id": "coverage-list-pipeline-512",
+                "ratio": 1.286989543373345,
+                "flagged": false
+              },
+              {
+                "id": "coverage-list-pipeline-128",
+                "ratio": 1.285619472361809,
+                "flagged": false
+              }
+            ]
+          }
+        },
+        "baseline": {
+          "overC": {
+            "caseCount": 44,
+            "geomean": 3.07629238794047,
+            "meanPositiveLogSlowdown": 1.246743534473982,
+            "casesOver110": 40,
+            "casesOver2": 37,
+            "fixedEquivalentMs": 38940.15010978455,
+            "referenceFixedEquivalentMs": 10243.934008183547,
+            "fixedEquivalentRatio": 3.8012886532338572,
+            "worstRegressions": [
+              {
+                "id": "local-pair",
+                "ratio": 8.5192133726647,
+                "flagged": false
+              },
+              {
+                "id": "editdist",
+                "ratio": 7.764027855599135,
+                "flagged": false
+              },
+              {
+                "id": "variation-editdist-0-17",
+                "ratio": 7.657107980469063,
+                "flagged": false
+              },
+              {
+                "id": "variation-editdist-3-123",
+                "ratio": 7.6302729528535975,
+                "flagged": false
+              },
+              {
+                "id": "variation-lexer-6-17",
+                "ratio": 5.173404866832726,
+                "flagged": false
+              },
+              {
+                "id": "lexer",
+                "ratio": 5.171292967064577,
+                "flagged": false
+              },
+              {
+                "id": "variation-lexer-10-123",
+                "ratio": 5.121488083704708,
+                "flagged": true
+              },
+              {
+                "id": "test-evening-program",
+                "ratio": 5.029122155355395,
+                "flagged": false
+              },
+              {
+                "id": "mandelbrot",
+                "ratio": 4.994806034482758,
+                "flagged": false
+              },
+              {
+                "id": "variation-mandelbrot-grid-4-7",
+                "ratio": 4.9550458818263206,
+                "flagged": false
+              }
+            ]
+          },
+          "overBaseline": {
+            "caseCount": 44,
+            "geomean": 1.0,
+            "meanPositiveLogSlowdown": 0,
+            "casesOver110": 0,
+            "casesOver2": 0,
+            "fixedEquivalentMs": 38940.15010978455,
+            "referenceFixedEquivalentMs": 38940.15010978455,
+            "fixedEquivalentRatio": 1.0,
+            "worstRegressions": []
+          }
+        },
+        "candidate": {
+          "overC": {
+            "caseCount": 44,
+            "geomean": 2.7365686110897567,
+            "meanPositiveLogSlowdown": 1.131531004161181,
+            "casesOver110": 40,
+            "casesOver2": 37,
+            "fixedEquivalentMs": 34100.1697344181,
+            "referenceFixedEquivalentMs": 10243.934008183547,
+            "fixedEquivalentRatio": 3.3288158345394043,
+            "worstRegressions": [
+              {
+                "id": "lexer",
+                "ratio": 5.109507240925334,
+                "flagged": false
+              },
+              {
+                "id": "variation-lexer-6-17",
+                "ratio": 5.109312547117477,
+                "flagged": false
+              },
+              {
+                "id": "variation-lexer-10-123",
+                "ratio": 5.071885293547762,
+                "flagged": true
+              },
+              {
+                "id": "test-evening-program",
+                "ratio": 5.0379939309718385,
+                "flagged": false
+              },
+              {
+                "id": "variation-tree-bitonic-6-17",
+                "ratio": 4.8573455461503565,
+                "flagged": false
+              },
+              {
+                "id": "variation-tree-bitonic-9-123",
+                "ratio": 4.808999999999999,
+                "flagged": true
+              },
+              {
+                "id": "tree-bitonic",
+                "ratio": 4.752033687434205,
+                "flagged": true
+              },
+              {
+                "id": "mandelbrot",
+                "ratio": 4.702901785714285,
+                "flagged": false
+              },
+              {
+                "id": "coverage-bst-32",
+                "ratio": 4.6034308629140055,
+                "flagged": true
+              },
+              {
+                "id": "coverage-map-churn-128",
+                "ratio": 4.599660526978823,
+                "flagged": false
+              }
+            ]
+          },
+          "overBaseline": {
+            "caseCount": 44,
+            "geomean": 0.889567136666696,
+            "meanPositiveLogSlowdown": 0.007679411468166801,
+            "casesOver110": 0,
+            "casesOver2": 0,
+            "fixedEquivalentMs": 34100.1697344181,
+            "referenceFixedEquivalentMs": 38940.15010978455,
+            "fixedEquivalentRatio": 0.8757071977965926,
+            "worstRegressions": [
+              {
+                "id": "coverage-numeric-recurrence-256",
+                "ratio": 1.0850639353505909,
+                "flagged": false
+              },
+              {
+                "id": "symreg",
+                "ratio": 1.0819140308191404,
+                "flagged": true
+              },
+              {
+                "id": "coverage-list-pipeline-512",
+                "ratio": 1.0429925036085115,
+                "flagged": false
+              },
+              {
+                "id": "coverage-bst-32",
+                "ratio": 1.0364998459236416,
+                "flagged": true
+              },
+              {
+                "id": "coverage-numeric-recurrence-1024",
+                "ratio": 1.028226202166746,
+                "flagged": false
+              },
+              {
+                "id": "coverage-bst-64",
+                "ratio": 1.0206413343454965,
+                "flagged": true
+              },
+              {
+                "id": "variation-symreg-4-17",
+                "ratio": 1.018506278916061,
+                "flagged": false
+              },
+              {
+                "id": "test-rle-roundtrip",
+                "ratio": 1.0176890536105119,
+                "flagged": false
+              },
+              {
+                "id": "variation-symreg-7-123",
+                "ratio": 1.01,
+                "flagged": false
+              },
+              {
+                "id": "coverage-expression-32",
+                "ratio": 1.0037361642181526,
+                "flagged": false
+              }
+            ]
+          }
+        }
+      }
+    },
+    "development": {
+      "caseCount": 8,
+      "expectedCount": 8,
+      "missingCaseIds": [],
+      "ratioEligibleCount": 8,
+      "roles": {
+        "c": {
+          "overC": {
+            "caseCount": 8,
+            "geomean": 1.0,
+            "meanPositiveLogSlowdown": 0,
+            "casesOver110": 0,
+            "casesOver2": 0,
+            "fixedEquivalentMs": 2186.451952090417,
+            "referenceFixedEquivalentMs": 2186.451952090417,
+            "fixedEquivalentRatio": 1.0,
+            "worstRegressions": []
+          },
+          "overBaseline": {
+            "caseCount": 8,
+            "geomean": 0.23939041896518595,
+            "meanPositiveLogSlowdown": 0,
+            "casesOver110": 0,
+            "casesOver2": 0,
+            "fixedEquivalentMs": 2186.451952090417,
+            "referenceFixedEquivalentMs": 9055.340177253649,
+            "fixedEquivalentRatio": 0.2414544246037961,
+            "worstRegressions": []
+          }
+        },
+        "baseline": {
+          "overC": {
+            "caseCount": 8,
+            "geomean": 4.177276619184279,
+            "meanPositiveLogSlowdown": 1.4296595076900964,
+            "casesOver110": 8,
+            "casesOver2": 8,
+            "fixedEquivalentMs": 9055.340177253649,
+            "referenceFixedEquivalentMs": 2186.451952090417,
+            "fixedEquivalentRatio": 4.141568337962353,
+            "worstRegressions": [
+              {
+                "id": "local-pair",
+                "ratio": 8.5192133726647,
+                "flagged": false
+              },
+              {
+                "id": "editdist",
+                "ratio": 7.764027855599135,
+                "flagged": false
+              },
+              {
+                "id": "tree-bitonic",
+                "ratio": 4.772367873491469,
+                "flagged": true
+              },
+              {
+                "id": "coverage-map-churn-32",
+                "ratio": 4.661433926897844,
+                "flagged": false
+              },
+              {
+                "id": "coverage-numeric-recurrence-256",
+                "ratio": 2.994083917579812,
+                "flagged": false
+              },
+              {
+                "id": "local-fold",
+                "ratio": 2.8473804100227795,
+                "flagged": false
+              },
+              {
+                "id": "variation-ray-active-64-2440",
+                "ratio": 2.7736131934032984,
+                "flagged": true
+              },
+              {
+                "id": "coverage-expression-32",
+                "ratio": 2.6647133576593465,
+                "flagged": false
+              }
+            ]
+          },
+          "overBaseline": {
+            "caseCount": 8,
+            "geomean": 1.0,
+            "meanPositiveLogSlowdown": 0,
+            "casesOver110": 0,
+            "casesOver2": 0,
+            "fixedEquivalentMs": 9055.340177253649,
+            "referenceFixedEquivalentMs": 9055.340177253649,
+            "fixedEquivalentRatio": 1.0,
+            "worstRegressions": []
+          }
+        },
+        "candidate": {
+          "overC": {
+            "caseCount": 8,
+            "geomean": 3.1688475170250565,
+            "meanPositiveLogSlowdown": 1.153367962487396,
+            "casesOver110": 8,
+            "casesOver2": 8,
+            "fixedEquivalentMs": 6846.355318147181,
+            "referenceFixedEquivalentMs": 2186.451952090417,
+            "fixedEquivalentRatio": 3.131262642932325,
+            "worstRegressions": [
+              {
+                "id": "tree-bitonic",
+                "ratio": 4.752033687434205,
+                "flagged": true
+              },
+              {
+                "id": "coverage-map-churn-32",
+                "ratio": 4.549645855194124,
+                "flagged": false
+              },
+              {
+                "id": "coverage-numeric-recurrence-256",
+                "ratio": 3.2487724783790646,
+                "flagged": false
+              },
+              {
+                "id": "editdist",
+                "ratio": 2.8722675174288077,
+                "flagged": false
+              },
+              {
+                "id": "local-pair",
+                "ratio": 2.837923611111111,
+                "flagged": false
+              },
+              {
+                "id": "variation-ray-active-64-2440",
+                "ratio": 2.7368663291472153,
+                "flagged": true
+              },
+              {
+                "id": "coverage-expression-32",
+                "ratio": 2.674669164357866,
+                "flagged": false
+              },
+              {
+                "id": "local-fold",
+                "ratio": 2.425968109339408,
+                "flagged": false
+              }
+            ]
+          },
+          "overBaseline": {
+            "caseCount": 8,
+            "geomean": 0.7585917347374176,
+            "meanPositiveLogSlowdown": 0.010671014242381816,
+            "casesOver110": 0,
+            "casesOver2": 0,
+            "fixedEquivalentMs": 6846.355318147181,
+            "referenceFixedEquivalentMs": 9055.340177253649,
+            "fixedEquivalentRatio": 0.7560572197325864,
+            "worstRegressions": [
+              {
+                "id": "coverage-numeric-recurrence-256",
+                "ratio": 1.0850639353505909,
+                "flagged": false
+              },
+              {
+                "id": "coverage-expression-32",
+                "ratio": 1.0037361642181526,
+                "flagged": false
+              }
+            ]
+          }
+        }
+      }
+    },
+    "heldout": {
+      "caseCount": 37,
+      "expectedCount": 37,
+      "missingCaseIds": [],
+      "ratioEligibleCount": 36,
+      "roles": {
+        "c": {
+          "overC": {
+            "caseCount": 36,
+            "geomean": 1.0,
+            "meanPositiveLogSlowdown": 0,
+            "casesOver110": 0,
+            "casesOver2": 0,
+            "fixedEquivalentMs": 8057.482056093127,
+            "referenceFixedEquivalentMs": 8057.482056093127,
+            "fixedEquivalentRatio": 1.0,
+            "worstRegressions": []
+          },
+          "overBaseline": {
+            "caseCount": 36,
+            "geomean": 0.34793497219579345,
+            "meanPositiveLogSlowdown": 0.1503558622511666,
+            "casesOver110": 4,
+            "casesOver2": 2,
+            "fixedEquivalentMs": 8057.482056093127,
+            "referenceFixedEquivalentMs": 29884.80993253088,
+            "fixedEquivalentRatio": 0.26961797897607565,
+            "worstRegressions": [
+              {
+                "id": "coverage-closures-256",
+                "ratio": 12.78262143678161,
+                "flagged": true
+              },
+              {
+                "id": "coverage-closures-64",
+                "ratio": 10.603435021568291,
+                "flagged": false
+              },
+              {
+                "id": "coverage-list-pipeline-512",
+                "ratio": 1.286989543373345,
+                "flagged": false
+              },
+              {
+                "id": "coverage-list-pipeline-128",
+                "ratio": 1.285619472361809,
+                "flagged": false
+              }
+            ]
+          }
+        },
+        "baseline": {
+          "overC": {
+            "caseCount": 36,
+            "geomean": 2.8741002770979573,
+            "meanPositiveLogSlowdown": 1.2060955404259566,
+            "casesOver110": 32,
+            "casesOver2": 29,
+            "fixedEquivalentMs": 29884.80993253088,
+            "referenceFixedEquivalentMs": 8057.482056093127,
+            "fixedEquivalentRatio": 3.7089514719963623,
+            "worstRegressions": [
+              {
+                "id": "variation-editdist-0-17",
+                "ratio": 7.657107980469063,
+                "flagged": false
+              },
+              {
+                "id": "variation-editdist-3-123",
+                "ratio": 7.6302729528535975,
+                "flagged": false
+              },
+              {
+                "id": "variation-lexer-6-17",
+                "ratio": 5.173404866832726,
+                "flagged": false
+              },
+              {
+                "id": "lexer",
+                "ratio": 5.171292967064577,
+                "flagged": false
+              },
+              {
+                "id": "variation-lexer-10-123",
+                "ratio": 5.121488083704708,
+                "flagged": true
+              },
+              {
+                "id": "test-evening-program",
+                "ratio": 5.029122155355395,
+                "flagged": false
+              },
+              {
+                "id": "mandelbrot",
+                "ratio": 4.994806034482758,
+                "flagged": false
+              },
+              {
+                "id": "variation-mandelbrot-grid-4-7",
+                "ratio": 4.9550458818263206,
+                "flagged": false
+              },
+              {
+                "id": "variation-tree-bitonic-6-17",
+                "ratio": 4.883176691729323,
+                "flagged": false
+              },
+              {
+                "id": "variation-tree-bitonic-9-123",
+                "ratio": 4.845157894736841,
+                "flagged": true
+              }
+            ]
+          },
+          "overBaseline": {
+            "caseCount": 36,
+            "geomean": 1.0,
+            "meanPositiveLogSlowdown": 0,
+            "casesOver110": 0,
+            "casesOver2": 0,
+            "fixedEquivalentMs": 29884.80993253088,
+            "referenceFixedEquivalentMs": 29884.80993253088,
+            "fixedEquivalentRatio": 1.0,
+            "worstRegressions": []
+          }
+        },
+        "candidate": {
+          "overC": {
+            "caseCount": 36,
+            "geomean": 2.6488166439953824,
+            "meanPositiveLogSlowdown": 1.1266783467553556,
+            "casesOver110": 32,
+            "casesOver2": 29,
+            "fixedEquivalentMs": 27253.814416270914,
+            "referenceFixedEquivalentMs": 8057.482056093127,
+            "fixedEquivalentRatio": 3.382423221862639,
+            "worstRegressions": [
+              {
+                "id": "lexer",
+                "ratio": 5.109507240925334,
+                "flagged": false
+              },
+              {
+                "id": "variation-lexer-6-17",
+                "ratio": 5.109312547117477,
+                "flagged": false
+              },
+              {
+                "id": "variation-lexer-10-123",
+                "ratio": 5.071885293547762,
+                "flagged": true
+              },
+              {
+                "id": "test-evening-program",
+                "ratio": 5.0379939309718385,
+                "flagged": false
+              },
+              {
+                "id": "variation-tree-bitonic-6-17",
+                "ratio": 4.8573455461503565,
+                "flagged": false
+              },
+              {
+                "id": "variation-tree-bitonic-9-123",
+                "ratio": 4.808999999999999,
+                "flagged": true
+              },
+              {
+                "id": "mandelbrot",
+                "ratio": 4.702901785714285,
+                "flagged": false
+              },
+              {
+                "id": "coverage-bst-32",
+                "ratio": 4.6034308629140055,
+                "flagged": true
+              },
+              {
+                "id": "coverage-map-churn-128",
+                "ratio": 4.599660526978823,
+                "flagged": false
+              },
+              {
+                "id": "complete-generic-row32",
+                "ratio": 4.271815256483058,
+                "flagged": false
+              }
+            ]
+          },
+          "overBaseline": {
+            "caseCount": 36,
+            "geomean": 0.9216159453802882,
+            "meanPositiveLogSlowdown": 0.007014610851674576,
+            "casesOver110": 0,
+            "casesOver2": 0,
+            "fixedEquivalentMs": 27253.814416270914,
+            "referenceFixedEquivalentMs": 29884.80993253088,
+            "fixedEquivalentRatio": 0.9119621131203509,
+            "worstRegressions": [
+              {
+                "id": "symreg",
+                "ratio": 1.0819140308191404,
+                "flagged": true
+              },
+              {
+                "id": "coverage-list-pipeline-512",
+                "ratio": 1.0429925036085115,
+                "flagged": false
+              },
+              {
+                "id": "coverage-bst-32",
+                "ratio": 1.0364998459236416,
+                "flagged": true
+              },
+              {
+                "id": "coverage-numeric-recurrence-1024",
+                "ratio": 1.028226202166746,
+                "flagged": false
+              },
+              {
+                "id": "coverage-bst-64",
+                "ratio": 1.0206413343454965,
+                "flagged": true
+              },
+              {
+                "id": "variation-symreg-4-17",
+                "ratio": 1.018506278916061,
+                "flagged": false
+              },
+              {
+                "id": "test-rle-roundtrip",
+                "ratio": 1.0176890536105119,
+                "flagged": false
+              },
+              {
+                "id": "variation-symreg-7-123",
+                "ratio": 1.01,
+                "flagged": false
+              },
+              {
+                "id": "test-evening-program",
+                "ratio": 1.0017640803588348,
+                "flagged": false
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cases": [
+    {
+      "id": "local-fold",
+      "partition": "development",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.0027437499999999997,
+        "baseline": 0.0078125,
+        "candidate": 0.00665625
+      },
+      "fixedEquivalentMs": {
+        "c": 166.501725,
+        "baseline": 474.09375,
+        "candidate": 403.927875
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.35119999999999996
+        },
+        "baseline": {
+          "overC": 2.8473804100227795,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 2.425968109339408,
+          "overBaseline": 0.852
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.0027375,
+            0.0027375,
+            0.00275,
+            0.0027375,
+            0.00275,
+            0.0027625
+          ],
+          "medianMs": 0.0027437499999999997,
+          "maxOverMin": 1.0091324200913243,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.0078125,
+            0.007890625,
+            0.0077734375,
+            0.0078125,
+            0.0078125,
+            0.0077734375
+          ],
+          "medianMs": 0.0078125,
+          "maxOverMin": 1.015075376884422,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.0066875,
+            0.006625,
+            0.006625,
+            0.00671875,
+            0.00665625,
+            0.00665625
+          ],
+          "medianMs": 0.00665625,
+          "maxOverMin": 1.0141509433962264,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/local-fold/bend-c/program",
+          "bytes": 93664,
+          "sha256": "ddf9f48cb789b857115946cc18a79796f344e747094b6ceff2e6f1229c8a0ffc"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/local-fold/machine/program",
+          "bytes": 180424,
+          "sha256": "c109a9a3e4f0693f904457ee40c1a52675aa3e26b2b07598685e65f19665c351"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/local-fold/machine/program",
+          "bytes": 180424,
+          "sha256": "a22ad444066068b5276013cf150adf377b3daf3ef4817cd08babc9197b37653d"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "coverage-numeric-recurrence-256",
+      "partition": "development",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.0008079703541704634,
+        "baseline": 0.0024191310433030492,
+        "candidate": 0.002624911849975187
+      },
+      "fixedEquivalentMs": {
+        "c": 200.2764595103578,
+        "baseline": 599.6445264897866,
+        "candidate": 650.6526497244495
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.3339919746833026
+        },
+        "baseline": {
+          "overC": 2.994083917579812,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 3.2487724783790646,
+          "overBaseline": 1.0850639353505909
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.0008059453658141465,
+            0.0008140453192394144,
+            0.0008099953425267805,
+            0.0008099953425267805,
+            0.0008018953891015127,
+            0.0008059453658141465
+          ],
+          "medianMs": 0.0008079703541704634,
+          "maxOverMin": 1.0151515151515151,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.002425163789046947,
+            0.0024372292805347425,
+            0.002413098297559151,
+            0.002425163789046947,
+            0.002413098297559151,
+            0.002413098297559151
+          ],
+          "medianMs": 0.0024191310433030492,
+          "maxOverMin": 1.01,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.002624911849975187,
+            0.002624911849975187,
+            0.002624911849975187,
+            0.0026379711129103874,
+            0.0026118525870399874,
+            0.0026118525870399874
+          ],
+          "medianMs": 0.002624911849975187,
+          "maxOverMin": 1.01,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-numeric-recurrence-256/bend-c/program",
+          "bytes": 90352,
+          "sha256": "b6c3e8cf8c9c36ef81bd03a32a9d8aaa3838c03537cba2dea45baa5e7ba748e3"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/coverage-numeric-recurrence-256/machine/program",
+          "bytes": 179624,
+          "sha256": "8d0788b8df7403eda43b5f333f14b8a230b088ab6363146634dff7be0b9aae42"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/coverage-numeric-recurrence-256/machine/program",
+          "bytes": 179624,
+          "sha256": "ab6d45fa7c49e0538226783a84304f48e6917a6eedc0673196af81bbe3046084"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "variation-ray-active-64-2440",
+      "partition": "development",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.10864864864864865,
+        "baseline": 0.30134932533733133,
+        "candidate": 0.2973568281938326
+      },
+      "fixedEquivalentMs": {
+        "c": 687.094054054054,
+        "baseline": 1905.7331334332832,
+        "candidate": 1880.4845814977973
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.3605405405405405
+        },
+        "baseline": {
+          "overC": 2.7736131934032984,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 2.7368663291472153,
+          "overBaseline": 0.9867512656979419
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.10864864864864865,
+            0.11081081081081082,
+            0.10810810810810811,
+            0.10864864864864865,
+            0.10810810810810811,
+            0.10864864864864865
+          ],
+          "medianMs": 0.10864864864864865,
+          "maxOverMin": 1.025,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.30134932533733133,
+            0.30134932533733133,
+            0.3328335832083958,
+            0.29985007496251875,
+            0.29985007496251875,
+            0.30134932533733133
+          ],
+          "medianMs": 0.30134932533733133,
+          "maxOverMin": 1.1099999999999999,
+          "flagged": true
+        },
+        "candidate": {
+          "samplesMs": [
+            0.2966226138032305,
+            0.302496328928047,
+            0.29955947136563876,
+            0.29515418502202645,
+            0.2966226138032305,
+            0.29809104258443464
+          ],
+          "medianMs": 0.2973568281938326,
+          "maxOverMin": 1.0248756218905473,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/variation-ray-active-64-2440/bend-c/program",
+          "bytes": 117512,
+          "sha256": "0773207fa78b116d4cc486950a8cbffdf4fed8b26778be9b1cec1ecfbcd13d9c"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/variation-ray-active-64-2440/machine/program",
+          "bytes": 235264,
+          "sha256": "82d6ac6e8b0ae816e9c53ad8e87d4ac21bd96296c1dcd8a411e210afe271a148"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/variation-ray-active-64-2440/machine/program",
+          "bytes": 231168,
+          "sha256": "9c76ab69621e2ba84fba3853d286edd14c0c9adf13ad9b36b93b104a7340fb8d"
+        }
+      },
+      "flagged": true
+    },
+    {
+      "id": "coverage-map-churn-32",
+      "partition": "development",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.046242774566473986,
+        "baseline": 0.2155576382380506,
+        "candidate": 0.21038824763903463
+      },
+      "fixedEquivalentMs": {
+        "c": 130.40462427745663,
+        "baseline": 607.8725398313027,
+        "candidate": 593.2948583420776
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.21452626288012064
+        },
+        "baseline": {
+          "overC": 4.661433926897844,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 4.549645855194124,
+          "overBaseline": 0.9760185227428259
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.046242774566473986,
+            0.045780346820809246,
+            0.048092485549132945,
+            0.046473988439306356,
+            0.046242774566473986,
+            0.046011560693641616
+          ],
+          "medianMs": 0.046242774566473986,
+          "maxOverMin": 1.0505050505050504,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.2155576382380506,
+            0.2155576382380506,
+            0.22305529522024367,
+            0.2155576382380506,
+            0.2155576382380506,
+            0.2155576382380506
+          ],
+          "medianMs": 0.2155576382380506,
+          "maxOverMin": 1.0347826086956522,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.21091290661070305,
+            0.21406086044071354,
+            0.2098635886673662,
+            0.21196222455403987,
+            0.2088142707240294,
+            0.2098635886673662
+          ],
+          "medianMs": 0.21038824763903463,
+          "maxOverMin": 1.0251256281407035,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-map-churn-32/bend-c/program",
+          "bytes": 285080,
+          "sha256": "287f716a811ab642cf26554d1946edb7d7e164e9ba916ec3f4137aea505489fb"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/coverage-map-churn-32/machine/program",
+          "bytes": 440560,
+          "sha256": "8864f6e9011a9e981e10f1c8b85491889e73fd8cdab4df11c775a90bef9d52ae"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/coverage-map-churn-32/machine/program",
+          "bytes": 436464,
+          "sha256": "17b61918034650c1a547d7abbc3853bfd50f1b510c1addcfe3ce0fdcad1cc23b"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "coverage-expression-32",
+      "partition": "development",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.00218202102177646,
+        "baseline": 0.0058144605634212285,
+        "candidate": 0.005836184342926142
+      },
+      "fixedEquivalentMs": {
+        "c": 324.1174025746754,
+        "baseline": 863.6799720905893,
+        "candidate": 866.9068222982492
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.37527488543022447
+        },
+        "baseline": {
+          "overC": 2.6647133576593465,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 2.674669164357866,
+          "overBaseline": 1.0037361642181526
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.0021765522974111057,
+            0.002187489746141815,
+            0.0021765522974111057,
+            0.002187489746141815,
+            0.0021765522974111057,
+            0.002187489746141815
+          ],
+          "medianMs": 0.00218202102177646,
+          "maxOverMin": 1.0050251256281408,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.0058144605634212285,
+            0.0058144605634212285,
+            0.005785388260604122,
+            0.005843532866238335,
+            0.006076111288775184,
+            0.005785388260604122
+          ],
+          "medianMs": 0.0058144605634212285,
+          "maxOverMin": 1.050251256281407,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.005864934019492281,
+            0.005749935313227726,
+            0.005922433372624558,
+            0.005807434666360004,
+            0.006008682402322974,
+            0.005778684989793865
+          ],
+          "medianMs": 0.005836184342926142,
+          "maxOverMin": 1.045,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-expression-32/bend-c/program",
+          "bytes": 95560,
+          "sha256": "08db3f74caa46be376818140e2a712677cf98e540ec546f24cf8fccdcd578aa1"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/coverage-expression-32/machine/program",
+          "bytes": 191096,
+          "sha256": "5e378a68256e8c093be659517b9ed8b9876d8cd5258ebd66b1eff3f47403a43f"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/coverage-expression-32/machine/program",
+          "bytes": 191096,
+          "sha256": "d130f9b0fe7c7455de8bc790ec7db01e7f0aa5eed288383a21ad8d1a6597f457"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "tree-bitonic",
+      "partition": "development",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.16598360655737704,
+        "baseline": 0.7921348314606742,
+        "candidate": 0.7887596899224806
+      },
+      "fixedEquivalentMs": {
+        "c": 271.54918032786884,
+        "baseline": 1295.932584269663,
+        "candidate": 1290.4108527131782
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.20953958841995116
+        },
+        "baseline": {
+          "overC": 4.772367873491469,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 4.752033687434205,
+          "overBaseline": 0.9957391830227059
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.16721311475409836,
+            0.16557377049180327,
+            0.16475409836065574,
+            0.17131147540983607,
+            0.16639344262295083,
+            0.16557377049180327
+          ],
+          "medianMs": 0.16598360655737704,
+          "maxOverMin": 1.0398009950248757,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.9962546816479401,
+            0.7902621722846442,
+            0.8202247191011236,
+            0.7940074906367042,
+            0.7902621722846442,
+            0.7865168539325843
+          ],
+          "medianMs": 0.7921348314606742,
+          "maxOverMin": 1.2666666666666666,
+          "flagged": true
+        },
+        "candidate": {
+          "samplesMs": [
+            0.810077519379845,
+            0.7945736434108527,
+            0.7790697674418605,
+            0.7868217054263565,
+            0.7906976744186046,
+            0.7868217054263565
+          ],
+          "medianMs": 0.7887596899224806,
+          "maxOverMin": 1.0398009950248754,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/tree-bitonic/bend-c/program",
+          "bytes": 115744,
+          "sha256": "19550d9d4c7b770e374ac234d09c6860458807a6f7ff1d0c4153f1f1cf8d513a"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/tree-bitonic/machine/program",
+          "bytes": 216472,
+          "sha256": "febed3197e866856071a9b9a4ff69b9ea77e5537a28e9bfee0beb9dd2ee86326"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/tree-bitonic/machine/program",
+          "bytes": 216472,
+          "sha256": "85e0c1bcb328e96ec7d941c31613b8056ba03cd20b48ef90b44e35a119aad14a"
+        }
+      },
+      "flagged": true
+    },
+    {
+      "id": "local-pair",
+      "partition": "development",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.21087160262417995,
+        "baseline": 1.7964601769911503,
+        "candidate": 0.5984375
+      },
+      "fixedEquivalentMs": {
+        "c": 201.59325210871603,
+        "baseline": 1717.4159292035397,
+        "candidate": 572.1062499999999
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.11738172953956816
+        },
+        "baseline": {
+          "overC": 8.5192133726647,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 2.837923611111111,
+          "overBaseline": 0.33312038177339903
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.2099343955014058,
+            0.21087160262417995,
+            0.2211808809746954,
+            0.2099343955014058,
+            0.21087160262417995,
+            0.21087160262417995
+          ],
+          "medianMs": 0.21087160262417995,
+          "maxOverMin": 1.0535714285714286,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            1.7964601769911503,
+            1.8053097345132743,
+            1.7876106194690264,
+            1.7964601769911503,
+            1.7876106194690264,
+            1.7964601769911503
+          ],
+          "medianMs": 1.7964601769911503,
+          "maxOverMin": 1.00990099009901,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.596875,
+            0.596875,
+            0.6,
+            0.603125,
+            0.596875,
+            0.6
+          ],
+          "medianMs": 0.5984375,
+          "maxOverMin": 1.0104712041884816,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/local-pair/bend-c/program",
+          "bytes": 101688,
+          "sha256": "95794267e4da3ffcb036b6407755ea111e58efda65e1fbd1bfc22f9e259988dd"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/local-pair/machine/program",
+          "bytes": 210864,
+          "sha256": "0d38645e69802d96a8bdd3c474e0c34a60db7e055e5a782414d2fd361e458140"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/local-pair/machine/program",
+          "bytes": 210864,
+          "sha256": "75f0ff7829dd3eb7183943982442c896172036649e66177fa9a4aa77f021e39a"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "editdist",
+      "partition": "development",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.853813559322034,
+        "baseline": 6.629032258064516,
+        "candidate": 2.4523809523809526
+      },
+      "fixedEquivalentMs": {
+        "c": 204.91525423728814,
+        "baseline": 1590.967741935484,
+        "candidate": 588.5714285714287
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.1287991257371438
+        },
+        "baseline": {
+          "overC": 7.764027855599135,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 2.8722675174288077,
+          "overBaseline": 0.3699455451280269
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.8389830508474576,
+            0.8728813559322034,
+            0.8432203389830508,
+            0.8432203389830508,
+            0.864406779661017,
+            0.8940677966101694
+          ],
+          "medianMs": 0.853813559322034,
+          "maxOverMin": 1.0656565656565655,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            6.774193548387097,
+            6.451612903225806,
+            6.483870967741935,
+            6.451612903225806,
+            6.967741935483871,
+            6.838709677419355
+          ],
+          "medianMs": 6.629032258064516,
+          "maxOverMin": 1.08,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            2.392857142857143,
+            2.380952380952381,
+            2.5476190476190474,
+            2.392857142857143,
+            2.511904761904762,
+            2.5952380952380953
+          ],
+          "medianMs": 2.4523809523809526,
+          "maxOverMin": 1.09,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/editdist/bend-c/program",
+          "bytes": 105568,
+          "sha256": "a3fcaf7bbf53a4081e671623b136fa2d4fbd511b4e0154c429bb8e3a93e19b8c"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/editdist/machine/program",
+          "bytes": 217120,
+          "sha256": "a1e0f3255ef081ae2ecdb6bc523d2a156cddf9ba944c9f1b324e417b91fbdf32"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/editdist/machine/program",
+          "bytes": 217120,
+          "sha256": "346b9336ca195dc9212659ac3b9bb7fb40d3d5262cf7a97ecb232955d82fc4ed"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "mandelbrot",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.02890502634201908,
+        "baseline": 0.14437499999999998,
+        "candidate": 0.1359375
+      },
+      "fixedEquivalentMs": {
+        "c": 261.1858180264844,
+        "baseline": 1304.5724999999998,
+        "candidate": 1228.33125
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.20020797466333565
+        },
+        "baseline": {
+          "overC": 4.994806034482758,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 4.702901785714285,
+          "overBaseline": 0.9415584415584416
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.02890502634201908,
+            0.029047415634344296,
+            0.028762637049693864,
+            0.028335469172718213,
+            0.02890502634201908,
+            0.02890502634201908
+          ],
+          "medianMs": 0.02890502634201908,
+          "maxOverMin": 1.0251256281407035,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.145,
+            0.143125,
+            0.143125,
+            0.146875,
+            0.14375,
+            0.145625
+          ],
+          "medianMs": 0.14437499999999998,
+          "maxOverMin": 1.0262008733624455,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.13625,
+            0.135625,
+            0.13625,
+            0.13625,
+            0.135,
+            0.135625
+          ],
+          "medianMs": 0.1359375,
+          "maxOverMin": 1.0092592592592593,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/mandelbrot/bend-c/program",
+          "bytes": 108744,
+          "sha256": "be22d29a00ccb433be39cae20507eba454ce8f75b80885cef635f3823e215d41"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/mandelbrot/machine/program",
+          "bytes": 215488,
+          "sha256": "87c7067ac86c1d0b56b074c28138ec550ec0b03fce1b52364f5bf78a75408f24"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/mandelbrot/machine/program",
+          "bytes": 215488,
+          "sha256": "18b35c767915511ebf22f85e8a0f396d9cdaa60e6e97981bd11a2bd8bb2c42d5"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "lexer",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.38295880149812733,
+        "baseline": 1.9803921568627452,
+        "candidate": 1.9567307692307692
+      },
+      "fixedEquivalentMs": {
+        "c": 196.0749063670412,
+        "baseline": 1013.9607843137255,
+        "candidate": 1001.8461538461538
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.19337523640004448
+        },
+        "baseline": {
+          "overC": 5.171292967064577,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 5.109507240925334,
+          "overBaseline": 0.9880521706016755
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.3838951310861423,
+            0.38202247191011235,
+            0.3838951310861423,
+            0.38202247191011235,
+            0.38202247191011235,
+            0.3838951310861423
+          ],
+          "medianMs": 0.38295880149812733,
+          "maxOverMin": 1.0049019607843137,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            1.9803921568627452,
+            1.9705882352941178,
+            1.9705882352941178,
+            2.019607843137255,
+            1.9803921568627452,
+            1.9901960784313726
+          ],
+          "medianMs": 1.9803921568627452,
+          "maxOverMin": 1.0248756218905473,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            1.9423076923076923,
+            1.9519230769230769,
+            1.9519230769230769,
+            1.9615384615384615,
+            2.0288461538461537,
+            1.9615384615384615
+          ],
+          "medianMs": 1.9567307692307692,
+          "maxOverMin": 1.0445544554455446,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/lexer/bend-c/program",
+          "bytes": 112744,
+          "sha256": "5a1476d223c4229054c2858187ad3b22cca2236920963082698eb399ac6a07c9"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/lexer/machine/program",
+          "bytes": 216072,
+          "sha256": "7ef6b2520deeca9dc024c035054ca7d7fc05112f949cd47eeb5131a0ae8f8c6e"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/lexer/machine/program",
+          "bytes": 216072,
+          "sha256": "02d352af9e03b885fe694f3bf299642d3d29b11b830ec1ea89087e0b623fec50"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "symreg",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 2.4540229885057467,
+        "baseline": 4.467391304347826,
+        "candidate": 4.833333333333334
+      },
+      "fixedEquivalentMs": {
+        "c": 353.37931034482756,
+        "baseline": 643.304347826087,
+        "candidate": 696.0000000000001
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.5493190144587073
+        },
+        "baseline": {
+          "overC": 1.820435800834946,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 1.9695550351288063,
+          "overBaseline": 1.0819140308191404
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            2.3448275862068964,
+            2.4482758620689653,
+            2.310344827586207,
+            2.4827586206896552,
+            2.471264367816092,
+            2.4597701149425286
+          ],
+          "medianMs": 2.4540229885057467,
+          "maxOverMin": 1.0746268656716418,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            4.434782608695652,
+            4.456521739130435,
+            4.456521739130435,
+            4.478260869565218,
+            4.8478260869565215,
+            4.8478260869565215
+          ],
+          "medianMs": 4.467391304347826,
+          "maxOverMin": 1.0931372549019607,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            4.622222222222222,
+            4.711111111111111,
+            4.7555555555555555,
+            4.955555555555556,
+            4.911111111111111,
+            5.2444444444444445
+          ],
+          "medianMs": 4.833333333333334,
+          "maxOverMin": 1.1346153846153848,
+          "flagged": true
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/symreg/bend-c/program",
+          "bytes": 115800,
+          "sha256": "4bb308af5effa4329d264c39638c0134708a2b7885c54e152377c65661aa787b"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/symreg/machine/program",
+          "bytes": 229384,
+          "sha256": "4a6737892cf0baa6895316d1ba678b017c92381fa8ba114d670d827cad2f9073"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/symreg/machine/program",
+          "bytes": 229384,
+          "sha256": "71ec459984ca6210b27cb7f2406fe2cae41206ea4928a6d269c075659f7223b6"
+        }
+      },
+      "flagged": true
+    },
+    {
+      "id": "test-morning-program",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.002859375,
+        "baseline": 0.011353792847419875,
+        "candidate": 0.011241446725317693
+      },
+      "fixedEquivalentMs": {
+        "c": 159.1985625,
+        "baseline": 632.133770572949,
+        "candidate": 625.8787878787879
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.25184315395095364
+        },
+        "baseline": {
+          "overC": 3.970725367403672,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 3.9314349203296852,
+          "overBaseline": 0.9901049698887441
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.003125,
+            0.003203125,
+            0.002859375,
+            0.002859375,
+            0.002859375,
+            0.002859375
+          ],
+          "medianMs": 0.002859375,
+          "maxOverMin": 1.1202185792349726,
+          "flagged": true
+        },
+        "baseline": {
+          "samplesMs": [
+            0.01249845316173741,
+            0.012436579631233758,
+            0.01132285608216805,
+            0.011199109021160747,
+            0.01132285608216805,
+            0.0113847296126717
+          ],
+          "medianMs": 0.011353792847419875,
+          "maxOverMin": 1.1160220994475138,
+          "flagged": true
+        },
+        "candidate": {
+          "samplesMs": [
+            0.012218963831867057,
+            0.012157869012707722,
+            0.011119257086999023,
+            0.011302541544477029,
+            0.011180351906158358,
+            0.011180351906158358
+          ],
+          "medianMs": 0.011241446725317693,
+          "maxOverMin": 1.0989010989010988,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/test-morning-program/bend-c/program",
+          "bytes": 341872,
+          "sha256": "29b8f5ae48d220498b354b63bc368559eff87a717124f7f0f61693ea2b9f736b"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/test-morning-program/machine/program",
+          "bytes": 446304,
+          "sha256": "eacffdb3ba5d4f44fe0a89f3f12b73a19538d5a293ff6e63a41673035d4e45ca"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/test-morning-program/machine/program",
+          "bytes": 446304,
+          "sha256": "4b2d78b066caec4b68f9c8e631fef859db9f1df1219c8fcc7766d7982403a2ad"
+        }
+      },
+      "flagged": true
+    },
+    {
+      "id": "test-evening-program",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.0010325,
+        "baseline": 0.005192568625404446,
+        "candidate": 0.005201728733728424
+      },
+      "fixedEquivalentMs": {
+        "c": 267.97505,
+        "baseline": 1347.6792610374698,
+        "candidate": 1350.056675551875
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.19884185929648243
+        },
+        "baseline": {
+          "overC": 5.029122155355395,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 5.0379939309718385,
+          "overBaseline": 1.0017640803588348
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.001015,
+            0.00103,
+            0.001025,
+            0.001035,
+            0.00104,
+            0.001045
+          ],
+          "medianMs": 0.0010325,
+          "maxOverMin": 1.0295566502463054,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.005166475315729047,
+            0.005244755244755245,
+            0.005192568625404446,
+            0.005192568625404446,
+            0.0052186619350798455,
+            0.005166475315729047
+          ],
+          "medianMs": 0.005192568625404446,
+          "maxOverMin": 1.0151515151515151,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.005175849486296938,
+            0.005201728733728424,
+            0.005201728733728424,
+            0.005201728733728424,
+            0.005201728733728424,
+            0.005279366476022877
+          ],
+          "medianMs": 0.005201728733728424,
+          "maxOverMin": 1.02,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/test-evening-program/bend-c/program",
+          "bytes": 373768,
+          "sha256": "e1a9d47da81a048c5ab1c3ba7c9bbff89ee73d5a11ebbd17d99279606fa28ad4"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/test-evening-program/machine/program",
+          "bytes": 478240,
+          "sha256": "d59e5aee372447a0b3147e345680460725ea8ed26f97ab5d7c3a74f588440d2c"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/test-evening-program/machine/program",
+          "bytes": 474144,
+          "sha256": "5f78d921fe5284ed2401b290c804fe876488e865d21ec62eaef09d58cb29e873"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "test-rle-roundtrip",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.00043124917793125456,
+        "baseline": 0.0014195707675694232,
+        "candidate": 0.001444681630980874
+      },
+      "fixedEquivalentMs": {
+        "c": 418.70155185016677,
+        "baseline": 1378.2669365162233,
+        "candidate": 1402.6471742458546
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.30378843223831364
+        },
+        "baseline": {
+          "overC": 3.291764576524519,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 3.349992776591845,
+          "overBaseline": 1.0176890536105119
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.00043124917793125456,
+            0.00043124917793125456,
+            0.00043340542382091086,
+            0.00043124917793125456,
+            0.00043124917793125456,
+            0.00043124917793125456
+          ],
+          "medianMs": 0.00043124917793125456,
+          "maxOverMin": 1.0050000000000001,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.001415995022562951,
+            0.0014231465125758953,
+            0.001415995022562951,
+            0.0014231465125758953,
+            0.001415995022562951,
+            0.0014374494926017835
+          ],
+          "medianMs": 0.0014195707675694232,
+          "maxOverMin": 1.0151515151515151,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.001444681630980874,
+            0.001444681630980874,
+            0.0014374941601799742,
+            0.001444681630980874,
+            0.001516556338989873,
+            0.0014374941601799742
+          ],
+          "medianMs": 0.001444681630980874,
+          "maxOverMin": 1.0550000000000002,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/test-rle-roundtrip/bend-c/program",
+          "bytes": 113328,
+          "sha256": "1c4c9a06b719f6d4fe9b793651074d80f2b09e314cf943167f42587fca03c373"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/test-rle-roundtrip/machine/program",
+          "bytes": 197024,
+          "sha256": "ca13fbfd6ee5d5e5b64bd1b99197479b5bd01e417e3052f3f4d066dd086ba1d6"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/test-rle-roundtrip/machine/program",
+          "bytes": 197024,
+          "sha256": "f0387faaf3b7e87e34866f6c9fbf6a85d344dff1de4d59d4a00ed6c719acc257"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "test-map-set-ops",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.010322647577549538,
+        "baseline": 0.036729420450350686,
+        "candidate": 0.036110117983553805
+      },
+      "fixedEquivalentMs": {
+        "c": 227.67631497043263,
+        "baseline": 810.1040974529348,
+        "candidate": 796.4447622452627
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.28104575163398693
+        },
+        "baseline": {
+          "overC": 3.558139534883721,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 3.4981449974218606,
+          "overBaseline": 0.983138790125098
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.01027077497665733,
+            0.010322647577549538,
+            0.01021890237576512,
+            0.010374520178441747,
+            0.010322647577549538,
+            0.010374520178441747
+          ],
+          "medianMs": 0.010322647577549538,
+          "maxOverMin": 1.0152284263959392,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.036360280546327055,
+            0.036729420450350686,
+            0.036729420450350686,
+            0.036544850498338874,
+            0.03728313030638612,
+            0.036729420450350686
+          ],
+          "medianMs": 0.036729420450350686,
+          "maxOverMin": 1.0253807106598987,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.03628888094386843,
+            0.036110117983553805,
+            0.036110117983553805,
+            0.035931355023239187,
+            0.035931355023239187,
+            0.036110117983553805
+          ],
+          "medianMs": 0.036110117983553805,
+          "maxOverMin": 1.0099502487562189,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/test-map-set-ops/bend-c/program",
+          "bytes": 454368,
+          "sha256": "ef7c70323a7a59218c17b6f0749fab5cd9673a538fe4359257b1030c98442164"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/test-map-set-ops/machine/program",
+          "bytes": 577976,
+          "sha256": "ea2f5702d299513e29348efe9a1973b8895ebe87d9c26bc76bc112634718ca43"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/test-map-set-ops/machine/program",
+          "bytes": 573880,
+          "sha256": "48e59389a09ed0e79737edc0f621c78ee51cd11d898ba1831aa6f2ee8a1ed148"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "raytrace",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 28.375,
+        "baseline": 115.75,
+        "candidate": 114.0
+      },
+      "fixedEquivalentMs": {
+        "c": 340.5,
+        "baseline": 1389.0,
+        "candidate": 1368.0
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.2451403887688985
+        },
+        "baseline": {
+          "overC": 4.079295154185022,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 4.0176211453744495,
+          "overBaseline": 0.9848812095032398
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            28.25,
+            28.416666666666668,
+            28.333333333333332,
+            28.416666666666668,
+            28.333333333333332,
+            28.833333333333332
+          ],
+          "medianMs": 28.375,
+          "maxOverMin": 1.0206489675516224,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            115.5,
+            116.0,
+            117.5,
+            115.5,
+            115.5,
+            116.5
+          ],
+          "medianMs": 115.75,
+          "maxOverMin": 1.0173160173160174,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            115.0,
+            113.0,
+            113.5,
+            114.0,
+            114.0,
+            116.5
+          ],
+          "medianMs": 114.0,
+          "maxOverMin": 1.0309734513274336,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/raytrace/bend-c/program",
+          "bytes": 124640,
+          "sha256": "935d11f210c6dc45471fc4e1c131492a1b53095aa3b7eb16e2a8348b1ef4bd61"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/raytrace/machine/program",
+          "bytes": 251632,
+          "sha256": "171b9069fb532e80991581968968497fc14dacd8e02bea5cc861f900e391325e"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/raytrace/machine/program",
+          "bytes": 251632,
+          "sha256": "4a5447ad8fc98373cdd7bbf4ed33d14ab251991dbf411f789fc602dc26e73b4d"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "scalar-region-0",
+      "partition": "heldout",
+      "ratioEligible": false,
+      "medianMs": {
+        "c": 0.0,
+        "baseline": 0.0,
+        "candidate": 0.0
+      },
+      "fixedEquivalentMs": null,
+      "ratios": null,
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "medianMs": 0.0,
+          "maxOverMin": null,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "medianMs": 0.0,
+          "maxOverMin": null,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "medianMs": 0.0,
+          "maxOverMin": null,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/scalar-region-0/bend-c/program",
+          "bytes": 90176,
+          "sha256": "114d9c3f7063332215971c2b1ca9532db38309c93f50cb21e6bbb7610e1454b4"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/scalar-region-0/machine/program",
+          "bytes": 179896,
+          "sha256": "48e49990a69933dbf3c86340c257bd12ceab2e5bb988e3248fd3b198b0ef0b34"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/scalar-region-0/machine/program",
+          "bytes": 179896,
+          "sha256": "c7d4f1ef9c63369b3979c5cc6b0fa9e168a653497ee965322d2c61967c3a02be"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "scalar-region-8192",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.03717403366007028,
+        "baseline": 0.13125,
+        "candidate": 0.11616454229432213
+      },
+      "fixedEquivalentMs": {
+        "c": 207.28241168855186,
+        "baseline": 731.85,
+        "candidate": 647.7334878331402
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.2832307326481545
+        },
+        "baseline": {
+          "overC": 3.530690298507463,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 3.1248839810218896,
+          "overBaseline": 0.8850631793853114
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.036989088218975404,
+            0.03717403366007028,
+            0.03717403366007028,
+            0.036989088218975404,
+            0.03735897910116515,
+            0.03717403366007028
+          ],
+          "medianMs": 0.03717403366007028,
+          "maxOverMin": 1.0099999999999998,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.130625,
+            0.13125,
+            0.13125,
+            0.130625,
+            0.13125,
+            0.131875
+          ],
+          "medianMs": 0.13125,
+          "maxOverMin": 1.0095693779904307,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.11645422943221322,
+            0.11587485515643106,
+            0.11587485515643106,
+            0.11587485515643106,
+            0.11645422943221322,
+            0.11645422943221322
+          ],
+          "medianMs": 0.11616454229432213,
+          "maxOverMin": 1.005,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/scalar-region-8192/bend-c/program",
+          "bytes": 90160,
+          "sha256": "9153c746352a3a02ee7d6290d6c34e8cf64516f282c4c66f9b99e4e8f0f9ed87"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/scalar-region-8192/machine/program",
+          "bytes": 179904,
+          "sha256": "8b72dfa7887ccc6044c4935d4669ab1954f98e449cd6bfe357feb8c1f6116c49"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/scalar-region-8192/machine/program",
+          "bytes": 179904,
+          "sha256": "188dd67b7c48ef5901c2d8c58601db3af2cd1d8d749f1cfcfcdf7126e444faec"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "complete-generic-row32",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.08035714285714286,
+        "baseline": 0.34582623509369675,
+        "candidate": 0.3432708688245315
+      },
+      "fixedEquivalentMs": {
+        "c": 117.32142857142858,
+        "baseline": 504.90630323679727,
+        "candidate": 501.175468483816
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.23236277269528505
+        },
+        "baseline": {
+          "overC": 4.303615370054892,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 4.271815256483058,
+          "overBaseline": 0.9926108374384236
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.07976190476190476,
+            0.08412698412698413,
+            0.08333333333333333,
+            0.08015873015873017,
+            0.08055555555555556,
+            0.07976190476190476
+          ],
+          "medianMs": 0.08035714285714286,
+          "maxOverMin": 1.054726368159204,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.3424190800681431,
+            0.3441226575809199,
+            0.3543441226575809,
+            0.34582623509369675,
+            0.34582623509369675,
+            0.34582623509369675
+          ],
+          "medianMs": 0.34582623509369675,
+          "maxOverMin": 1.0348258706467661,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.3424190800681431,
+            0.3390119250425894,
+            0.34582623509369675,
+            0.3424190800681431,
+            0.34582623509369675,
+            0.3441226575809199
+          ],
+          "medianMs": 0.3432708688245315,
+          "maxOverMin": 1.020100502512563,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/complete-generic-row32/bend-c/program",
+          "bytes": 137080,
+          "sha256": "2ad6059aeb2f4a98513614fef3ae5ec6a4b3d7d5bb73c06b7eaef52fe9296f95"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/complete-generic-row32/machine/program",
+          "bytes": 245688,
+          "sha256": "e401a8e0a286866b1ae1b2e1d642b7567d357a998dfb944fda6040448cc09ec7"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/complete-generic-row32/machine/program",
+          "bytes": 241592,
+          "sha256": "7e6e26793c778d6b5716db18e4c3c02a22dd5f729e46d6ab2b48bdb28af1fd61"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "variation-editdist-0-17",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.21011470281543274,
+        "baseline": 1.6088709677419355,
+        "candidate": 0.5961538461538461
+      },
+      "fixedEquivalentMs": {
+        "c": 200.8696558915537,
+        "baseline": 1538.0806451612902,
+        "candidate": 569.9230769230769
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.13059760976999327
+        },
+        "baseline": {
+          "overC": 7.657107980469063,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 2.837278106508876,
+          "overBaseline": 0.3705417389627916
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.20855057351407716,
+            0.21063607924921793,
+            0.2116788321167883,
+            0.20959332638164754,
+            0.21063607924921793,
+            0.20959332638164754
+          ],
+          "medianMs": 0.21011470281543274,
+          "maxOverMin": 1.015,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            1.653225806451613,
+            1.6048387096774193,
+            1.6451612903225807,
+            1.6048387096774193,
+            1.6129032258064515,
+            1.6048387096774193
+          ],
+          "medianMs": 1.6088709677419355,
+          "maxOverMin": 1.0301507537688444,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.5961538461538461,
+            0.592948717948718,
+            0.6089743589743589,
+            0.5961538461538461,
+            0.5961538461538461,
+            0.6025641025641025
+          ],
+          "medianMs": 0.5961538461538461,
+          "maxOverMin": 1.027027027027027,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/variation-editdist-0-17/bend-c/program",
+          "bytes": 105568,
+          "sha256": "2d34276116f19942a26cdb0b98239123ed5c65afca06ba64b98037bc09366301"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/variation-editdist-0-17/machine/program",
+          "bytes": 217136,
+          "sha256": "bb8296f8082cfff0591f95459f2eb7b8daec90338d65b3204d27fc84fbf523f7"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/variation-editdist-0-17/machine/program",
+          "bytes": 217136,
+          "sha256": "323a1b30e788f1892957912991f50f0481b01fba0f46b88d9c473ff2b09043b0"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "variation-editdist-3-123",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 1.6791666666666667,
+        "baseline": 12.8125,
+        "candidate": 4.75
+      },
+      "fixedEquivalentMs": {
+        "c": 201.5,
+        "baseline": 1537.5,
+        "candidate": 570.0
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.1310569105691057
+        },
+        "baseline": {
+          "overC": 7.6302729528535975,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 2.8287841191067,
+          "overBaseline": 0.37073170731707317
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            1.6833333333333333,
+            1.6833333333333333,
+            1.675,
+            1.675,
+            1.675,
+            1.6833333333333333
+          ],
+          "medianMs": 1.6791666666666667,
+          "maxOverMin": 1.0049751243781095,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            12.8125,
+            12.875,
+            12.8125,
+            12.8125,
+            12.8125,
+            12.875
+          ],
+          "medianMs": 12.8125,
+          "maxOverMin": 1.0048780487804878,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            4.738095238095238,
+            4.738095238095238,
+            4.904761904761905,
+            4.761904761904762,
+            4.738095238095238,
+            4.857142857142857
+          ],
+          "medianMs": 4.75,
+          "maxOverMin": 1.035175879396985,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/variation-editdist-3-123/bend-c/program",
+          "bytes": 105568,
+          "sha256": "82148875dbf48d936a5fdcfe02a512964c0ea8bdbfe1e789a744d77df758e531"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/variation-editdist-3-123/machine/program",
+          "bytes": 217136,
+          "sha256": "0ea6c345bde4fc822d7640f5270e2761b9ec1341e2b69e0fe535acf798a21e0e"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/variation-editdist-3-123/machine/program",
+          "bytes": 217136,
+          "sha256": "33406110deb1be1a8f4260a0645f82fded98867b9e0deb85aaf1bdb5f6646516"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "variation-lexer-6-17",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.09593750000000001,
+        "baseline": 0.4963235294117647,
+        "candidate": 0.490174672489083
+      },
+      "fixedEquivalentMs": {
+        "c": 212.21375000000003,
+        "baseline": 1097.8676470588236,
+        "candidate": 1084.2663755458516
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.1932962962962963
+        },
+        "baseline": {
+          "overC": 5.173404866832726,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 5.109312547117477,
+          "overBaseline": 0.9876111919780042
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.09625,
+            0.095625,
+            0.095625,
+            0.0975,
+            0.095625,
+            0.1015625
+          ],
+          "medianMs": 0.09593750000000001,
+          "maxOverMin": 1.0620915032679739,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.5024509803921569,
+            0.4950980392156863,
+            0.4950980392156863,
+            0.5049019607843137,
+            0.49264705882352944,
+            0.49754901960784315
+          ],
+          "medianMs": 0.4963235294117647,
+          "maxOverMin": 1.0248756218905473,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.49344978165938863,
+            0.4912663755458515,
+            0.49344978165938863,
+            0.4890829694323144,
+            0.4868995633187773,
+            0.4868995633187773
+          ],
+          "medianMs": 0.490174672489083,
+          "maxOverMin": 1.013452914798206,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/variation-lexer-6-17/bend-c/program",
+          "bytes": 112744,
+          "sha256": "459721e2ba85c5bbe75627a35a5ea1f67f87457621a07add656c69fb92820df3"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/variation-lexer-6-17/machine/program",
+          "bytes": 216088,
+          "sha256": "32461cc5943c706b4ad722dc0ee50fb5b13e7215e649aec987534e69725925d4"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/variation-lexer-6-17/machine/program",
+          "bytes": 216088,
+          "sha256": "e246fbac046df81a12f772568dffcb6c8a49ffafb3ddbff14903d3a7cecac7c4"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "variation-lexer-10-123",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 1.55078125,
+        "baseline": 7.9423076923076925,
+        "candidate": 7.865384615384615
+      },
+      "fixedEquivalentMs": {
+        "c": 198.5,
+        "baseline": 1016.6153846153846,
+        "candidate": 1006.7692307692307
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.19525575060532688
+        },
+        "baseline": {
+          "overC": 5.121488083704708,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 5.071885293547762,
+          "overBaseline": 0.9903147699757868
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            1.8125,
+            1.5546875,
+            1.671875,
+            1.546875,
+            1.53125,
+            1.5390625
+          ],
+          "medianMs": 1.55078125,
+          "maxOverMin": 1.183673469387755,
+          "flagged": true
+        },
+        "baseline": {
+          "samplesMs": [
+            7.961538461538462,
+            9.461538461538462,
+            7.923076923076923,
+            8.0,
+            7.923076923076923,
+            7.923076923076923
+          ],
+          "medianMs": 7.9423076923076925,
+          "maxOverMin": 1.1941747572815533,
+          "flagged": true
+        },
+        "candidate": {
+          "samplesMs": [
+            7.846153846153846,
+            7.884615384615385,
+            7.884615384615385,
+            7.8076923076923075,
+            8.192307692307692,
+            7.846153846153846
+          ],
+          "medianMs": 7.865384615384615,
+          "maxOverMin": 1.0492610837438423,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/variation-lexer-10-123/bend-c/program",
+          "bytes": 112744,
+          "sha256": "33e145bb5ac89fc073ba3c420104475620f7a8389c74a6ad65bb6b3e2ef27d78"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/variation-lexer-10-123/machine/program",
+          "bytes": 216088,
+          "sha256": "896605dc913a7583df52844e2a193bfc0707959fa1d996e562969f57d63e477e"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/variation-lexer-10-123/machine/program",
+          "bytes": 216088,
+          "sha256": "5faecccac0db04eae78c60846b3860dfc5c96e70310035d21cc04c2ca617b99e"
+        }
+      },
+      "flagged": true
+    },
+    {
+      "id": "variation-tree-bitonic-6-17",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.02649402390438247,
+        "baseline": 0.129375,
+        "candidate": 0.12869062901155326
+      },
+      "fixedEquivalentMs": {
+        "c": 294.2956175298805,
+        "baseline": 1437.0974999999999,
+        "candidate": 1429.4955070603337
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.20478472583097562
+        },
+        "baseline": {
+          "overC": 4.883176691729323,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 4.8573455461503565,
+          "overBaseline": 0.9947101759347112
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.026693227091633465,
+            0.026693227091633465,
+            0.026294820717131476,
+            0.027224435590969456,
+            0.026294820717131476,
+            0.026162018592297477
+          ],
+          "medianMs": 0.02649402390438247,
+          "maxOverMin": 1.0406091370558375,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.12875,
+            0.129375,
+            0.128125,
+            0.133125,
+            0.129375,
+            0.13
+          ],
+          "medianMs": 0.129375,
+          "maxOverMin": 1.0390243902439025,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.12901155327342748,
+            0.12965340179717585,
+            0.12644415917843388,
+            0.12836970474967907,
+            0.12901155327342748,
+            0.1258023106546855
+          ],
+          "medianMs": 0.12869062901155326,
+          "maxOverMin": 1.030612244897959,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/variation-tree-bitonic-6-17/bend-c/program",
+          "bytes": 115744,
+          "sha256": "93a7264e6ee8db8a1058d2a232dccb07712cfbba4939cb7eae922b391fe2fdfd"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/variation-tree-bitonic-6-17/machine/program",
+          "bytes": 216488,
+          "sha256": "4edab3869c752a670f3e58af8e097bd973da19e868f9b85b9459314b4a05e486"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/variation-tree-bitonic-6-17/machine/program",
+          "bytes": 216488,
+          "sha256": "d5773470e760b833ba7e71441873c3d220ca16a642cb227521e2f4e80c6f3d0b"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "variation-tree-bitonic-9-123",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.4366812227074236,
+        "baseline": 2.1157894736842104,
+        "candidate": 2.0999999999999996
+      },
+      "fixedEquivalentMs": {
+        "c": 277.72925764192144,
+        "baseline": 1345.6421052631579,
+        "candidate": 1335.5999999999997
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.2063916226726629
+        },
+        "baseline": {
+          "overC": 4.845157894736841,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 4.808999999999999,
+          "overBaseline": 0.9925373134328357
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.4410480349344978,
+            0.4344978165938865,
+            0.4388646288209607,
+            0.4388646288209607,
+            0.4104803493449782,
+            0.40611353711790393
+          ],
+          "medianMs": 0.4366812227074236,
+          "maxOverMin": 1.086021505376344,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            2.1157894736842104,
+            2.126315789473684,
+            2.1157894736842104,
+            2.136842105263158,
+            2.0526315789473686,
+            1.9473684210526316
+          ],
+          "medianMs": 2.1157894736842104,
+          "maxOverMin": 1.0972972972972972,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            2.094736842105263,
+            2.1473684210526316,
+            2.136842105263158,
+            2.1052631578947367,
+            1.9157894736842105,
+            1.9157894736842105
+          ],
+          "medianMs": 2.0999999999999996,
+          "maxOverMin": 1.120879120879121,
+          "flagged": true
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/variation-tree-bitonic-9-123/bend-c/program",
+          "bytes": 115744,
+          "sha256": "57629c319c152187084449d99a7c647b3419f4563efe6856b6ab9894d46c52de"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/variation-tree-bitonic-9-123/machine/program",
+          "bytes": 216488,
+          "sha256": "fc1df0da8033ada51df48807a2b9d028741d1ad0cbd3b9d26e53f1d5e0e4ac4b"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/variation-tree-bitonic-9-123/machine/program",
+          "bytes": 216488,
+          "sha256": "ad31ab9ce820e69deff9450a2a8152db426ef6be65173c146c0d3066bf82fbef"
+        }
+      },
+      "flagged": true
+    },
+    {
+      "id": "variation-symreg-4-17",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 1.146067415730337,
+        "baseline": 2.217391304347826,
+        "candidate": 2.2584269662921352
+      },
+      "fixedEquivalentMs": {
+        "c": 330.0674157303371,
+        "baseline": 638.608695652174,
+        "candidate": 650.4269662921349
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.5168539325842696
+        },
+        "baseline": {
+          "overC": 1.9347826086956523,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 1.9705882352941182,
+          "overBaseline": 1.018506278916061
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            1.146067415730337,
+            1.146067415730337,
+            1.1573033707865168,
+            1.146067415730337,
+            1.146067415730337,
+            1.1685393258426966
+          ],
+          "medianMs": 1.146067415730337,
+          "maxOverMin": 1.019607843137255,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            2.2282608695652173,
+            2.217391304347826,
+            2.2282608695652173,
+            2.217391304347826,
+            2.217391304347826,
+            2.217391304347826
+          ],
+          "medianMs": 2.217391304347826,
+          "maxOverMin": 1.0049019607843137,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            2.235955056179775,
+            2.247191011235955,
+            2.235955056179775,
+            2.269662921348315,
+            2.2808988764044944,
+            2.269662921348315
+          ],
+          "medianMs": 2.2584269662921352,
+          "maxOverMin": 1.020100502512563,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/variation-symreg-4-17/bend-c/program",
+          "bytes": 115800,
+          "sha256": "dad76faef24f8dde4f6759174040f3bf9e69c4451524e6714e7cd33f30e5da07"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/variation-symreg-4-17/machine/program",
+          "bytes": 229400,
+          "sha256": "4cbc25705a99aa9ed7f5240fdfed3ba82dc87cfe614047e57db5ccff048afe0f"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/variation-symreg-4-17/machine/program",
+          "bytes": 229400,
+          "sha256": "d2188fef2de6c84657fcdff80dd07dacf99783aba2fd97592aef6bf6f3508592"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "variation-symreg-7-123",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 3.849056603773585,
+        "baseline": 7.407407407407407,
+        "candidate": 7.481481481481482
+      },
+      "fixedEquivalentMs": {
+        "c": 338.7169811320755,
+        "baseline": 651.8518518518518,
+        "candidate": 658.3703703703704
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.5196226415094339
+        },
+        "baseline": {
+          "overC": 1.9244734931009442,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 1.9437182280319536,
+          "overBaseline": 1.01
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            3.830188679245283,
+            3.8867924528301887,
+            3.849056603773585,
+            3.8679245283018866,
+            3.830188679245283,
+            3.849056603773585
+          ],
+          "medianMs": 3.849056603773585,
+          "maxOverMin": 1.0147783251231528,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            7.444444444444445,
+            7.62962962962963,
+            7.481481481481482,
+            7.37037037037037,
+            7.37037037037037,
+            7.37037037037037
+          ],
+          "medianMs": 7.407407407407407,
+          "maxOverMin": 1.035175879396985,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            7.518518518518518,
+            7.481481481481482,
+            7.518518518518518,
+            7.481481481481482,
+            7.444444444444445,
+            7.481481481481482
+          ],
+          "medianMs": 7.481481481481482,
+          "maxOverMin": 1.0099502487562189,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/variation-symreg-7-123/bend-c/program",
+          "bytes": 115800,
+          "sha256": "f368b118888e6e327e4c2909e39a989e04d653ccf7948e0ddcd4d192c8d08741"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/variation-symreg-7-123/machine/program",
+          "bytes": 229400,
+          "sha256": "82f516d7f5652596066e36578c6ced16da1c42ff8209ba2fde5dc81c039f0ca6"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/variation-symreg-7-123/machine/program",
+          "bytes": 229400,
+          "sha256": "4ee4b2fe83c731baac0d921f3c07d93d5c6bb8789fdea6ad70a3ee3c03aceb5d"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "variation-local-fold-128-0",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.0001062499966796876,
+        "baseline": 0.00035262473553144836,
+        "candidate": 0.0003265625
+      },
+      "fixedEquivalentMs": {
+        "c": 201.3458687079416,
+        "baseline": 668.2309263268053,
+        "candidate": 618.84246875
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.301311808201872
+        },
+        "baseline": {
+          "overC": 3.318821144009142,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 3.0735295078125,
+          "overBaseline": 0.926090733560794
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.00010890624659667979,
+            0.0001062499966796876,
+            0.0001062499966796876,
+            0.0001062499966796876,
+            0.0001062499966796876,
+            0.0001062499966796876
+          ],
+          "medianMs": 0.0001062499966796876,
+          "maxOverMin": 1.0250000000000001,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.0003517497361876979,
+            0.00035349973487519885,
+            0.0003552497335626998,
+            0.0003517497361876979,
+            0.0003517497361876979,
+            0.0003552497335626998
+          ],
+          "medianMs": 0.00035262473553144836,
+          "maxOverMin": 1.0099502487562189,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.0003265625,
+            0.0003265625,
+            0.000328125,
+            0.000325,
+            0.0003265625,
+            0.0003265625
+          ],
+          "medianMs": 0.0003265625,
+          "maxOverMin": 1.0096153846153848,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/variation-local-fold-128-0/bend-c/program",
+          "bytes": 93696,
+          "sha256": "7f90956c9845356efa4496bdd0849d3d9c4f0f6c89a66ded22eecd13dd197a1f"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/variation-local-fold-128-0/machine/program",
+          "bytes": 180440,
+          "sha256": "c76674adbb404addad499ecedb4d4dc5cd4df6af9fcf301c9180cc3664a7a524"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/variation-local-fold-128-0/machine/program",
+          "bytes": 180440,
+          "sha256": "766eafbca36ed78d5dfb45e2280d1709ddf4c318d0150207c8dce2914ded8a7b"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "variation-local-fold-8192-123",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.005468664552116373,
+        "baseline": 0.015625,
+        "candidate": 0.0131875
+      },
+      "fixedEquivalentMs": {
+        "c": 166.88176747238325,
+        "baseline": 476.8125,
+        "candidate": 402.42975
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.3499945313354479
+        },
+        "baseline": {
+          "overC": 2.8571874999999998,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 2.4114662499999997,
+          "overBaseline": 0.844
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.005523351197637537,
+            0.005468664552116373,
+            0.005441321229355791,
+            0.005468664552116373,
+            0.005441321229355791,
+            0.005468664552116373
+          ],
+          "medianMs": 0.005468664552116373,
+          "maxOverMin": 1.015075376884422,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.015625,
+            0.015625,
+            0.015546875,
+            0.015546875,
+            0.015625,
+            0.015703125
+          ],
+          "medianMs": 0.015625,
+          "maxOverMin": 1.0100502512562812,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.01325,
+            0.0131875,
+            0.01325,
+            0.0131875,
+            0.0131875,
+            0.013125
+          ],
+          "medianMs": 0.0131875,
+          "maxOverMin": 1.0095238095238095,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/variation-local-fold-8192-123/bend-c/program",
+          "bytes": 93664,
+          "sha256": "ec063f10d4a88807eef90fb065a28275b91d7dbc7ab4c7a33eb32375a77b1aea"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/variation-local-fold-8192-123/machine/program",
+          "bytes": 180448,
+          "sha256": "ffccb67463270f675d0e30e2891af8f18480899bf48897d1e582b4ce5d226c87"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/variation-local-fold-8192-123/machine/program",
+          "bytes": 180448,
+          "sha256": "ca4b8204714362b8dc2005536e9085e91116956131d96de5c3bbb10f0aee0050"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "variation-mandelbrot-grid-4-7",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.009078941395433292,
+        "baseline": 0.04498657117278424,
+        "candidate": 0.03343363423604146
+      },
+      "fixedEquivalentMs": {
+        "c": 222.32511689137047,
+        "baseline": 1101.6311548791405,
+        "candidate": 818.7228351721833
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.2018144783820694
+        },
+        "baseline": {
+          "overC": 4.9550458818263206,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 3.6825476429287867,
+          "overBaseline": 0.7431914316747923
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.009124336102410459,
+            0.009033546688456125,
+            0.009078941395433292,
+            0.009078941395433292,
+            0.009078941395433292,
+            0.009124336102410459
+          ],
+          "medianMs": 0.009078941395433292,
+          "maxOverMin": 1.0100502512562815,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.045658012533572066,
+            0.04498657117278424,
+            0.04498657117278424,
+            0.044762757385854966,
+            0.045210384959713516,
+            0.04498657117278424
+          ],
+          "medianMs": 0.04498657117278424,
+          "maxOverMin": 1.02,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.03343363423604146,
+            0.03393513874958208,
+            0.03326646606486125,
+            0.03326646606486125,
+            0.03343363423604146,
+            0.03343363423604146
+          ],
+          "medianMs": 0.03343363423604146,
+          "maxOverMin": 1.020100502512563,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/variation-mandelbrot-grid-4-7/bend-c/program",
+          "bytes": 92240,
+          "sha256": "051c9806b6b6bb186dc89773644d3404560ada98725c9cf4f8e24c3883eb3d7d"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/variation-mandelbrot-grid-4-7/machine/program",
+          "bytes": 180296,
+          "sha256": "b5f6895a23fe056c49e5c18fd03d434367c9e8dad28640ef84cc1efe4dfe345d"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/variation-mandelbrot-grid-4-7/machine/program",
+          "bytes": 180296,
+          "sha256": "c4a42a6843853b310f3fd91bf3560b558fbcfa4383b95a912a3bd552284064e3"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "variation-mandelbrot-grid-5-31",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.1446875,
+        "baseline": 0.5730337078651685,
+        "candidate": 0.4847161572052402
+      },
+      "fixedEquivalentMs": {
+        "c": 204.8775,
+        "baseline": 811.4157303370786,
+        "candidate": 686.3580786026201
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.2524938725490196
+        },
+        "baseline": {
+          "overC": 3.9604921493920933,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 3.3500900713969086,
+          "overBaseline": 0.845877215515027
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.144375,
+            0.145,
+            0.145,
+            0.144375,
+            0.145,
+            0.144375
+          ],
+          "medianMs": 0.1446875,
+          "maxOverMin": 1.0043290043290043,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.5702247191011236,
+            0.5730337078651685,
+            0.5702247191011236,
+            0.5730337078651685,
+            0.5730337078651685,
+            0.5730337078651685
+          ],
+          "medianMs": 0.5730337078651685,
+          "maxOverMin": 1.0049261083743841,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.48253275109170307,
+            0.4847161572052402,
+            0.4847161572052402,
+            0.48253275109170307,
+            0.4868995633187773,
+            0.4847161572052402
+          ],
+          "medianMs": 0.4847161572052402,
+          "maxOverMin": 1.009049773755656,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/variation-mandelbrot-grid-5-31/bend-c/program",
+          "bytes": 92240,
+          "sha256": "33fac46ca66b5a74f5d66a2b6aa6420fdd69f8fd147a2194edcbbfda6c5f67c8"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/variation-mandelbrot-grid-5-31/machine/program",
+          "bytes": 180296,
+          "sha256": "9593a8a8091d4fc569da33b192cf63c8ff02c2e3d494171c2ba7c1f662532742"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/variation-mandelbrot-grid-5-31/machine/program",
+          "bytes": 180296,
+          "sha256": "654945a45dbc69e290f010ce6381dd81ddf90a23ef2ab71a32c197fa8233d7f5"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "variation-ray-active-256-2240",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.4497816593886463,
+        "baseline": 1.2376543209876543,
+        "candidate": 1.2177914110429449
+      },
+      "fixedEquivalentMs": {
+        "c": 681.8689956331878,
+        "baseline": 1876.2839506172838,
+        "candidate": 1846.1717791411045
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.36341460758583893
+        },
+        "baseline": {
+          "overC": 2.7516780534579888,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 2.7075168264935376,
+          "overBaseline": 0.9839511650322049
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.4497816593886463,
+            0.4497816593886463,
+            0.44759825327510916,
+            0.4497816593886463,
+            0.45633187772925765,
+            0.44759825327510916
+          ],
+          "medianMs": 0.4497816593886463,
+          "maxOverMin": 1.0195121951219512,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            1.2407407407407407,
+            1.2345679012345678,
+            1.2407407407407407,
+            1.2345679012345678,
+            1.2345679012345678,
+            1.2407407407407407
+          ],
+          "medianMs": 1.2376543209876543,
+          "maxOverMin": 1.0050000000000001,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            1.2147239263803682,
+            1.2208588957055215,
+            1.2147239263803682,
+            1.2208588957055215,
+            1.2147239263803682,
+            1.2208588957055215
+          ],
+          "medianMs": 1.2177914110429449,
+          "maxOverMin": 1.005050505050505,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/variation-ray-active-256-2240/bend-c/program",
+          "bytes": 117512,
+          "sha256": "a1362c00b6efab27c290796cf25ce7117f260f7447cb9c43389aabc973c476f3"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/variation-ray-active-256-2240/machine/program",
+          "bytes": 235264,
+          "sha256": "648803914b092fcfc94156082ab3b42249118f45a83aa5cb459043150fcdc449"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/variation-ray-active-256-2240/machine/program",
+          "bytes": 231168,
+          "sha256": "23e60c250f37fa8026f46a4fe41ba46242b82bcdf96a6f53cf6fd8000ee98211"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "coverage-closures-64",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.0007687490390637012,
+        "baseline": 7.25e-05,
+        "candidate": 7e-05
+      },
+      "fixedEquivalentMs": {
+        "c": 58.763176546029314,
+        "baseline": 5.5419,
+        "candidate": 5.3508
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 10.603435021568291
+        },
+        "baseline": {
+          "overC": 0.09430906097560976,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 0.09105702439024389,
+          "overBaseline": 0.9655172413793103
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.0007687490390637012,
+            0.0007612490484386894,
+            0.0007687490390637012,
+            0.0007687490390637012,
+            0.0007649990437511953,
+            0.0007687490390637012
+          ],
+          "medianMs": 0.0007687490390637012,
+          "maxOverMin": 1.0098522167487685,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            7.25e-05,
+            7.25e-05,
+            7.25e-05,
+            7.25e-05,
+            7.28125e-05,
+            7.28125e-05
+          ],
+          "medianMs": 7.25e-05,
+          "maxOverMin": 1.0043103448275863,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            7e-05,
+            7.03125e-05,
+            7e-05,
+            7e-05,
+            7e-05,
+            7.03125e-05
+          ],
+          "medianMs": 7e-05,
+          "maxOverMin": 1.0044642857142858,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-closures-64/bend-c/program",
+          "bytes": 92968,
+          "sha256": "29e46e2c50d1c80800fc035f9ed532bb31ff9d65ff56c78542ff3a0bdf39282d"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/coverage-closures-64/machine/program",
+          "bytes": 175592,
+          "sha256": "9b0ce64b0a01cd6956e36d1659e778b9f3359cb22d5531239a5ff920a521580e"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/coverage-closures-64/machine/program",
+          "bytes": 175592,
+          "sha256": "beb38aa82041a4fcc516f57cf24345cfe1ead3fafc014554196b39bce67b86f5"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "coverage-closures-256",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.0031625,
+        "baseline": 0.00024740621598164526,
+        "candidate": 0.00023394928785389028
+      },
+      "fixedEquivalentMs": {
+        "c": 61.985,
+        "baseline": 4.849161833240247,
+        "candidate": 4.58540604193625
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 12.78262143678161
+        },
+        "baseline": {
+          "overC": 0.07823121453965068,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 0.07397605940043961,
+          "overBaseline": 0.9456079627006893
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.0029375,
+            0.0029375,
+            0.0031625,
+            0.0031625,
+            0.0032,
+            0.0031625
+          ],
+          "medianMs": 0.0031625,
+          "maxOverMin": 1.0893617021276596,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.0002274999687187543,
+            0.00022636246887516054,
+            0.0002468374660598484,
+            0.00024797496590344217,
+            0.0002513874654342235,
+            0.00025366246512141104
+          ],
+          "medianMs": 0.00024740621598164526,
+          "maxOverMin": 1.1206030150753767,
+          "flagged": true
+        },
+        "candidate": {
+          "samplesMs": [
+            0.00022387491660659357,
+            0.0002227555420235606,
+            0.00022387491660659357,
+            0.000244023659101187,
+            0.00024850115743331886,
+            0.0002507399065993848
+          ],
+          "medianMs": 0.00023394928785389028,
+          "maxOverMin": 1.1256281407035176,
+          "flagged": true
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-closures-256/bend-c/program",
+          "bytes": 92968,
+          "sha256": "ec663f56931902478a75059fdcf561705f7f4db271c2179d05e0cf2a0273648e"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/coverage-closures-256/machine/program",
+          "bytes": 175592,
+          "sha256": "06cebe40dbeb7c2a58ad50342dac7a4a1fc3f2c43c261646d549365ec4a1285c"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/coverage-closures-256/machine/program",
+          "bytes": 175592,
+          "sha256": "1783176359c73f1645608729e796226b4db5e86b2b43b1d66104a86ad2545b94"
+        }
+      },
+      "flagged": true
+    },
+    {
+      "id": "coverage-list-pipeline-128",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.001575,
+        "baseline": 0.0012250903427174842,
+        "candidate": 0.0011881498636944826
+      },
+      "fixedEquivalentMs": {
+        "c": 156.7062,
+        "baseline": 121.89158873901881,
+        "candidate": 118.21615883814624
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 1.285619472361809
+        },
+        "baseline": {
+          "overC": 0.7778351382333233,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 0.7543808658377668,
+          "overBaseline": 0.9698467306981944
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.001575,
+            0.001575,
+            0.00158125,
+            0.001575,
+            0.001575,
+            0.00158125
+          ],
+          "medianMs": 0.001575,
+          "maxOverMin": 1.003968253968254,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.0012312465755954616,
+            0.0012066216440835523,
+            0.0012250903427174842,
+            0.0012374028084734389,
+            0.0012250903427174842,
+            0.0012250903427174842
+          ],
+          "medianMs": 0.0012250903427174842,
+          "maxOverMin": 1.0255102040816326,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.0011941810812766882,
+            0.0011700562109478662,
+            0.0012484620395165375,
+            0.0011760874285300716,
+            0.0012484620395165375,
+            0.0011821186461122772
+          ],
+          "medianMs": 0.0011881498636944826,
+          "maxOverMin": 1.0670103092783503,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-list-pipeline-128/bend-c/program",
+          "bytes": 94344,
+          "sha256": "b6f07fbcddd8974e7788ab657f16f1eb510bb371ee2498fd006e742c3cc27dd7"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/coverage-list-pipeline-128/machine/program",
+          "bytes": 180432,
+          "sha256": "56d8579ace42b346ca5b58ac65f078f89c633cdb4b685b31cb056b2c39ee67f9"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/coverage-list-pipeline-128/machine/program",
+          "bytes": 180432,
+          "sha256": "b2fc7a2e090f509499d8d241cc8902279d92f2b7e155355cda66d7e7fe0493aa"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "coverage-list-pipeline-512",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.005630491275832199,
+        "baseline": 0.004374931641693098,
+        "candidate": 0.00456302090608558
+      },
+      "fixedEquivalentMs": {
+        "c": 140.80732582601163,
+        "baseline": 109.408290495461,
+        "candidate": 114.11202681938818
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 1.286989543373345
+        },
+        "baseline": {
+          "overC": 0.777007090033449,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 0.810412570155551,
+          "overBaseline": 1.0429925036085115
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.005599554510580374,
+            0.005723301571587675,
+            0.005630491275832199,
+            0.005630491275832199,
+            0.005630491275832199,
+            0.005661428041084025
+          ],
+          "medianMs": 0.005630491275832199,
+          "maxOverMin": 1.022099447513812,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.004549928907360823,
+            0.004374931641693098,
+            0.004374931641693098,
+            0.004396806299901564,
+            0.004374931641693098,
+            0.004374931641693098
+          ],
+          "medianMs": 0.004374931641693098,
+          "maxOverMin": 1.04,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.00453974018717698,
+            0.00456302090608558,
+            0.00453974018717698,
+            0.00456302090608558,
+            0.00456302090608558,
+            0.004702705219537179
+          ],
+          "medianMs": 0.00456302090608558,
+          "maxOverMin": 1.0358974358974358,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-list-pipeline-512/bend-c/program",
+          "bytes": 94344,
+          "sha256": "6ba4de0d7b07389cd5aed735ace0ee689debc961d9748eb242458125e9e8d4fb"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/coverage-list-pipeline-512/machine/program",
+          "bytes": 180432,
+          "sha256": "d2adb4be5457647834d1886f3b36095f63bef872edccd4c56774b9bf1fb9b949"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/coverage-list-pipeline-512/machine/program",
+          "bytes": 180432,
+          "sha256": "e2f161208d5d45e0c7a1c9f258143e1edbb0d6c4c08416d103f5d33275a56e8d"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "coverage-bst-32",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.0059687238868329955,
+        "baseline": 0.02650903216331326,
+        "candidate": 0.027476607752859053
+      },
+      "fixedEquivalentMs": {
+        "c": 212.6059448489913,
+        "baseline": 944.2517256572183,
+        "candidate": 978.7167681568395
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.22515812158141754
+        },
+        "baseline": {
+          "overC": 4.4413232486415035,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 4.6034308629140055,
+          "overBaseline": 1.0364998459236416
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.00665512713381879,
+            0.00599856750626716,
+            0.0059687238868329955,
+            0.0059687238868329955,
+            0.0059687238868329955,
+            0.00593888026739883
+          ],
+          "medianMs": 0.0059687238868329955,
+          "maxOverMin": 1.120603015075377,
+          "flagged": true
+        },
+        "baseline": {
+          "samplesMs": [
+            0.029079159935379646,
+            0.029226024379497725,
+            0.0265824643853723,
+            0.026288735497136142,
+            0.02643559994125422,
+            0.026288735497136142
+          ],
+          "medianMs": 0.02650903216331326,
+          "maxOverMin": 1.111731843575419,
+          "flagged": true
+        },
+        "candidate": {
+          "samplesMs": [
+            0.029704440813901677,
+            0.028961829793554137,
+            0.026436952324372494,
+            0.026585474528442003,
+            0.028367740977276103,
+            0.026436952324372494
+          ],
+          "medianMs": 0.027476607752859053,
+          "maxOverMin": 1.1235955056179774,
+          "flagged": true
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-32/bend-c/program",
+          "bytes": 105128,
+          "sha256": "1ec0ebebf1cfaf5c9c5d38cecd61188d529ca1956e090f3d4fee0d84a4168fc8"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/coverage-bst-32/machine/program",
+          "bytes": 195288,
+          "sha256": "e4022283dd4a5deaff85c0994f375bae3c0f130e9126d10cd150832124fe43a7"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/coverage-bst-32/machine/program",
+          "bytes": 195288,
+          "sha256": "c3e852af5eadb987f2b6f9265a9a838a44f80f0a25b099c51bdad0070c1d5cf8"
+        }
+      },
+      "flagged": true
+    },
+    {
+      "id": "coverage-bst-64",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.007732806844356697,
+        "baseline": 0.03100836357898059,
+        "candidate": 0.03164841757912105
+      },
+      "fixedEquivalentMs": {
+        "c": 210.20862125699244,
+        "baseline": 842.9313555310083,
+        "candidate": 860.3305834708266
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.24937810164218008
+        },
+        "baseline": {
+          "overC": 4.009975187937107,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 4.092746426508462,
+          "overBaseline": 1.0206413343454965
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.007312346897736828,
+            0.007385470366714197,
+            0.007312346897736828,
+            0.008189828525465247,
+            0.008080143321999196,
+            0.008189828525465247
+          ],
+          "medianMs": 0.007732806844356697,
+          "maxOverMin": 1.1199999999999999,
+          "flagged": true
+        },
+        "baseline": {
+          "samplesMs": [
+            0.030456051759507653,
+            0.03061385513649992,
+            0.031087265267476724,
+            0.030929461890484455,
+            0.033612119299353004,
+            0.03345431592236074
+          ],
+          "medianMs": 0.03100836357898059,
+          "maxOverMin": 1.1036269430051813,
+          "flagged": true
+        },
+        "candidate": {
+          "samplesMs": [
+            0.030598470076496177,
+            0.02984850757462127,
+            0.030148492575371232,
+            0.032698365081745916,
+            0.03314834258287085,
+            0.03344832758362082
+          ],
+          "medianMs": 0.03164841757912105,
+          "maxOverMin": 1.1206030150753767,
+          "flagged": true
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+          "bytes": 105128,
+          "sha256": "de4601ec006bbdffaf3295e1a1877db48f3395c83529f8c2577178f820d08a18"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/coverage-bst-64/machine/program",
+          "bytes": 195288,
+          "sha256": "84238a3b1b20dd1678666f8e42c18619083f5618e5dc86b331dba5c3fbb58f2f"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/coverage-bst-64/machine/program",
+          "bytes": 195288,
+          "sha256": "79b31ffb154f44a2d4aa9f8ea2ad2c6638f9ef7c52ae66c2e4fcc3a4e333bfbb"
+        }
+      },
+      "flagged": true
+    },
+    {
+      "id": "coverage-unicode-text-16",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.00903125,
+        "baseline": 0.03777280358142138,
+        "candidate": 0.03720457902511078
+      },
+      "fixedEquivalentMs": {
+        "c": 74.70649999999999,
+        "baseline": 312.45663122551764,
+        "candidate": 307.7562776957164
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.23909398148148145
+        },
+        "baseline": {
+          "overC": 4.182455759880568,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 4.119538161949984,
+          "overBaseline": 0.9849567810055254
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.00903125,
+            0.00915625,
+            0.00909375,
+            0.00903125,
+            0.009,
+            0.009
+          ],
+          "medianMs": 0.00903125,
+          "maxOverMin": 1.0173611111111112,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.03749300503637381,
+            0.03842566685319903,
+            0.0378660697631039,
+            0.03767953739973885,
+            0.03767953739973885,
+            0.0378660697631039
+          ],
+          "medianMs": 0.03777280358142138,
+          "maxOverMin": 1.0248756218905473,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.0371122599704579,
+            0.0371122599704579,
+            0.03729689807976366,
+            0.03729689807976366,
+            0.03785081240768094,
+            0.03692762186115214
+          ],
+          "medianMs": 0.03720457902511078,
+          "maxOverMin": 1.025,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-unicode-text-16/bend-c/program",
+          "bytes": 107728,
+          "sha256": "d1769299190670cabfd9659d7b3363ee57a3556259f16d329d57c583ddbe7ad7"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/coverage-unicode-text-16/machine/program",
+          "bytes": 200480,
+          "sha256": "e18bb1cb1139f7151339f04566d7d3a8e0d9a3f6b7b1c427f5bb5d0b8ba89bfa"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/coverage-unicode-text-16/machine/program",
+          "bytes": 200480,
+          "sha256": "741a1ab11a7b9f5831bab36abd3696b5d520d15ff5c70d415a484ccebbedfad2"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "coverage-unicode-text-64",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.0405,
+        "baseline": 0.15954077593032462,
+        "candidate": 0.15866141732283465
+      },
+      "fixedEquivalentMs": {
+        "c": 81.97200000000001,
+        "baseline": 322.91053048297704,
+        "candidate": 321.1307086614173
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.2538535980148883
+        },
+        "baseline": {
+          "overC": 3.9392784180327065,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 3.9175658598230774,
+          "overBaseline": 0.994488188976378
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.0402,
+            0.0414,
+            0.0408,
+            0.0402,
+            0.04,
+            0.0408
+          ],
+          "medianMs": 0.0405,
+          "maxOverMin": 1.035,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.15756136183689629,
+            0.15993665874901028,
+            0.18368962787015045,
+            0.15914489311163896,
+            0.15993665874901028,
+            0.15914489311163896
+          ],
+          "medianMs": 0.15954077593032462,
+          "maxOverMin": 1.1658291457286432,
+          "flagged": true
+        },
+        "candidate": {
+          "samplesMs": [
+            0.15748031496062992,
+            0.15590551181102363,
+            0.16062992125984252,
+            0.1700787401574803,
+            0.15669291338582678,
+            0.15984251968503937
+          ],
+          "medianMs": 0.15866141732283465,
+          "maxOverMin": 1.0909090909090908,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-unicode-text-64/bend-c/program",
+          "bytes": 117136,
+          "sha256": "6c0b2a83665b476eb7d9173b0e143f20b757152238259fdd63b5c0e17225c7bd"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/coverage-unicode-text-64/machine/program",
+          "bytes": 209952,
+          "sha256": "af5a47559fb09e94e06943c562575b2bf5ccfc8d58a50e1769843c6acdfae6b6"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/coverage-unicode-text-64/machine/program",
+          "bytes": 209952,
+          "sha256": "fae2d4f8e48a17ef3d0532a2ebbaee58490d561e9f8c4731327bbcd581707c6b"
+        }
+      },
+      "flagged": true
+    },
+    {
+      "id": "coverage-expression-128",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.00862477899003838,
+        "baseline": 0.022622397298818233,
+        "candidate": 0.022546170432173995
+      },
+      "fixedEquivalentMs": {
+        "c": 325.4301608521282,
+        "baseline": 853.5882948790096,
+        "candidate": 850.7121027467892
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.3812495588382637
+        },
+        "baseline": {
+          "overC": 2.6229538548114797,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 2.6141157307584137,
+          "overBaseline": 0.9966304691038107
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.00862477899003838,
+            0.008581655095088188,
+            0.00862477899003838,
+            0.00862477899003838,
+            0.00862477899003838,
+            0.00862477899003838
+          ],
+          "medianMs": 0.00862477899003838,
+          "maxOverMin": 1.0050251256281408,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.022509848058525603,
+            0.022734946539110863,
+            0.022397298818232977,
+            0.022622397298818233,
+            0.022960045019696118,
+            0.022622397298818233
+          ],
+          "medianMs": 0.022622397298818233,
+          "maxOverMin": 1.0251256281407035,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.02249929689697197,
+            0.02371800881222462,
+            0.02259304396737602,
+            0.02240554982656792,
+            0.02249929689697197,
+            0.02259304396737602
+          ],
+          "medianMs": 0.022546170432173995,
+          "maxOverMin": 1.0585774058577406,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-expression-128/bend-c/program",
+          "bytes": 95560,
+          "sha256": "9efb7aad9583b53366c0e194a5dceaddde3ea5f14bf7307ca273c636e4682b0c"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/coverage-expression-128/machine/program",
+          "bytes": 191096,
+          "sha256": "e1db76eb9ef98e104a621c9ceef8dd8a31323bafdf4c5b223b2dc041bf1745fb"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/coverage-expression-128/machine/program",
+          "bytes": 191096,
+          "sha256": "325e533f7518d50104f1cc36fc14e378e4c4f08d3c577245ed481adb5bd94908"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "coverage-map-churn-128",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.230635838150289,
+        "baseline": 1.0869565217391304,
+        "candidate": 1.060846560846561
+      },
+      "fixedEquivalentMs": {
+        "c": 125.46589595375723,
+        "baseline": 591.3043478260869,
+        "candidate": 577.1005291005291
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.2121849710982659
+        },
+        "baseline": {
+          "overC": 4.712869129345102,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 4.599660526978823,
+          "overBaseline": 0.9759788359788361
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.22890173410404624,
+            0.2300578034682081,
+            0.2300578034682081,
+            0.23121387283236994,
+            0.23121387283236994,
+            0.2323699421965318
+          ],
+          "medianMs": 0.230635838150289,
+          "maxOverMin": 1.0151515151515151,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            1.0923913043478262,
+            1.0923913043478262,
+            1.0869565217391304,
+            1.0815217391304348,
+            1.0869565217391304,
+            1.0869565217391304
+          ],
+          "medianMs": 1.0869565217391304,
+          "maxOverMin": 1.0100502512562815,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            1.052910052910053,
+            1.0582010582010581,
+            1.0582010582010581,
+            1.0634920634920635,
+            1.0634920634920635,
+            1.0634920634920635
+          ],
+          "medianMs": 1.060846560846561,
+          "maxOverMin": 1.0100502512562812,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-map-churn-128/bend-c/program",
+          "bytes": 285080,
+          "sha256": "dd26891f79683cd4263037a215f156044ef52eb30f03489fba05e45a5723ca14"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/coverage-map-churn-128/machine/program",
+          "bytes": 440560,
+          "sha256": "c003f4741ffd7b52347dab6c65c21447f1b74e387309ce89c7d202721fe51e65"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/coverage-map-churn-128/machine/program",
+          "bytes": 436464,
+          "sha256": "ae68c3e77f2f609ee58d9b370ad8fe5371bd25fbc0e5bb89663a353e0d00fe18"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "coverage-numeric-recurrence-1024",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.003242886571391786,
+        "baseline": 0.0095625,
+        "candidate": 0.009832413058219509
+      },
+      "fixedEquivalentMs": {
+        "c": 200.85142268572164,
+        "baseline": 592.263,
+        "candidate": 608.9803351738835
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.3391253930867227
+        },
+        "baseline": {
+          "overC": 2.948761786600496,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 3.0319941329306572,
+          "overBaseline": 1.028226202166746
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.0032509334363332045,
+            0.0032509334363332045,
+            0.0032348397064503667,
+            0.0032509334363332045,
+            0.0032348397064503667,
+            0.0032348397064503667
+          ],
+          "medianMs": 0.003242886571391786,
+          "maxOverMin": 1.0049751243781095,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.0095625,
+            0.00959375,
+            0.0095625,
+            0.00959375,
+            0.00953125,
+            0.00953125
+          ],
+          "medianMs": 0.0095625,
+          "maxOverMin": 1.0065573770491802,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.00988084859052601,
+            0.009832413058219509,
+            0.009832413058219509,
+            0.009832413058219509,
+            0.009832413058219509,
+            0.009832413058219509
+          ],
+          "medianMs": 0.009832413058219509,
+          "maxOverMin": 1.0049261083743843,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-numeric-recurrence-1024/bend-c/program",
+          "bytes": 90352,
+          "sha256": "a072c9056b658888b15023ecd52a8733dd9b0bc516f60f2150d6d5174efb953e"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/coverage-numeric-recurrence-1024/machine/program",
+          "bytes": 179624,
+          "sha256": "3b55bd945e42c520e945fa9134a6f32f7e6e0fb9cf453908d872bf31278e8652"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/coverage-numeric-recurrence-1024/machine/program",
+          "bytes": 179624,
+          "sha256": "73b5944afbb44f4ee754fe48dae1737354c818b2f5ad51e8730df5381759dcf3"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "coverage-record-aggregation-64",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.09921875,
+        "baseline": 0.3768518518518519,
+        "candidate": 0.3720073664825046
+      },
+      "fixedEquivalentMs": {
+        "c": 152.796875,
+        "baseline": 580.3518518518518,
+        "candidate": 572.8913443830571
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.2632831695331695
+        },
+        "baseline": {
+          "overC": 3.7981918926800824,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 3.749365583445716,
+          "overBaseline": 0.9871448545481694
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.0996875,
+            0.0990625,
+            0.0990625,
+            0.099375,
+            0.099375,
+            0.0990625
+          ],
+          "medianMs": 0.09921875,
+          "maxOverMin": 1.0063091482649842,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.37962962962962965,
+            0.37222222222222223,
+            0.37962962962962965,
+            0.39444444444444443,
+            0.37407407407407406,
+            0.37407407407407406
+          ],
+          "medianMs": 0.3768518518518519,
+          "maxOverMin": 1.0597014925373134,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.3720073664825046,
+            0.3812154696132597,
+            0.3720073664825046,
+            0.3701657458563536,
+            0.3720073664825046,
+            0.3701657458563536
+          ],
+          "medianMs": 0.3720073664825046,
+          "maxOverMin": 1.0298507462686568,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-record-aggregation-64/bend-c/program",
+          "bytes": 336168,
+          "sha256": "cd2262165511e07c836b1bbfa479af14cbf4667f60936e15c875f7e42e5d2cb3"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/coverage-record-aggregation-64/machine/program",
+          "bytes": 442048,
+          "sha256": "e4340d6e09c0403354e4e531c7f86a681feaf77efad1175ec58c5f5551aa5195"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/coverage-record-aggregation-64/machine/program",
+          "bytes": 437952,
+          "sha256": "27c8267800749f818352599722335a6814e32e17884ee8075435f3624b0c5bf4"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "coverage-record-aggregation-256",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.44565217391304346,
+        "baseline": 1.657258064516129,
+        "candidate": 1.6286764705882353
+      },
+      "fixedEquivalentMs": {
+        "c": 174.69565217391303,
+        "baseline": 649.6451612903226,
+        "candidate": 638.4411764705882
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.268909340949963
+        },
+        "baseline": {
+          "overC": 3.7187254130605822,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 3.654591104734577,
+          "overBaseline": 0.9827536854157721
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.4391304347826087,
+            0.44782608695652176,
+            0.44565217391304346,
+            0.4391304347826087,
+            0.44782608695652176,
+            0.44565217391304346
+          ],
+          "medianMs": 0.44565217391304346,
+          "maxOverMin": 1.0198019801980198,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            1.6612903225806452,
+            1.6612903225806452,
+            1.653225806451613,
+            2.0725806451612905,
+            1.653225806451613,
+            1.653225806451613
+          ],
+          "medianMs": 1.657258064516129,
+          "maxOverMin": 1.2536585365853659,
+          "flagged": true
+        },
+        "candidate": {
+          "samplesMs": [
+            1.6323529411764706,
+            1.6470588235294117,
+            1.625,
+            1.6176470588235294,
+            1.6176470588235294,
+            1.6397058823529411
+          ],
+          "medianMs": 1.6286764705882353,
+          "maxOverMin": 1.018181818181818,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-record-aggregation-256/bend-c/program",
+          "bytes": 336168,
+          "sha256": "5b6b8a6d7df0616624c964d3b3df4e1e4756a2d3e53c01d321573ed9357d649e"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase190/native45-02/coverage-record-aggregation-256/machine/program",
+          "bytes": 442048,
+          "sha256": "bbbd819eaf97afdce8889609398b71c70e9f6f3d284d06f40db2d3584cda5770"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-01/coverage-record-aggregation-256/machine/program",
+          "bytes": 437952,
+          "sha256": "bc6151fd486691aab1d9cffd453909f6ea9303beba47074618dd0149fb5da645"
+        }
+      },
+      "flagged": true
+    }
+  ],
+  "compilerApiCosts": [],
+  "dispersionThreshold": 1.1,
+  "warnings": [
+    "Dispersion exceeds threshold: variation-ray-active-64-2440, tree-bitonic, symreg, test-morning-program, variation-lexer-10-123, variation-tree-bitonic-9-123, coverage-closures-256, coverage-bst-32, coverage-bst-64, coverage-unicode-text-64, coverage-record-aggregation-256"
+  ],
+  "scope": "Ratios are ratios of role medians from this runtime report. Frozen baseline means authenticated executable identities, freshly timed in the same report. All eligible cases remain included, including dispersion flags. Fixed-equivalent sums use original catalog repetitions, never adaptive calibration counts; zero-work cases remain correctness-only. Partial development/heldout coverage is explicit; no unseen results, significance or promotion claim."
+}

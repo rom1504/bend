@@ -1,0 +1,24 @@
+diff --git a/selfhost/src/back/x86/call-arguments.bend b/selfhost/src/back/x86/call-arguments.bend
+index b160f70..a70e5c0 100644
+--- a/selfhost/src/back/x86/call-arguments.bend
++++ b/selfhost/src/back/x86/call-arguments.bend
+@@ -105,9 +105,17 @@ def x186_call_selected(+enabled: Bool, +args: List<&2,N111Arg>, +ids: N111Ids,
+     case X186CallPlan{+kind,+count}:
+       nt_choose(X188Seq,U32.is_eq(kind,0),u => x188_error("x186: invalid call argument frame"),u =>
+         nt_choose(X188Seq,enabled && U32.is_eq(kind,1),u => x186_call_direct(args,ids,frame,0),
+-          u => x188_cat(x186_call_snapshot(args,ids,frame,U32.mul(count,8),0),
+-            x186_call_place(count,U32.mul(count,8),0))))
++          u => x191_call_fallback(nt_choose(Maybe<&2,X188Seq>,enabled && x191_call_moves_enabled(),
++            v => x191_cm_admitted(X186CallPlan{kind,count},args,ids,frame),v => None{}),args,ids,frame,count)))
+ 
+ @unsafe
+ def x186_call_arguments(+args: List<&2,N111Arg>, +ids: N111Ids, +frame: X181Frame) -> X188Seq:
+   x186_call_selected(x186_call_arguments_enabled(),args,ids,frame,x186_call_plan(args,frame))
++
++@unsafe
++def x191_call_fallback(selected: Maybe<&2,X188Seq>, args: List<&2,N111Arg>,
++    +ids: N111Ids, +frame: X181Frame, +count: U32) -> X188Seq:
++  match selected:
++    case Some{sequence}: sequence
++    case None{}: x188_cat(x186_call_snapshot(args,ids,frame,U32.mul(count,8),0),
++      x186_call_place(count,U32.mul(count,8),0))

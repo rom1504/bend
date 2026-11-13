@@ -67,3 +67,19 @@ All new jobs declare full disk/RSS/time budgets,16GiB available-memory floor and
 5GiB disk reserve. Archive/verify before any explicit historical pruning; never
 delete hardlink groups or the shared execution-lock inode opportunistically.
 Commit the design and validated results/report; do not post PR comments.
+
+## Bounded follow-up after machine inspection
+
+The first exact-product inspection finds row paths of97–102instructions after
+indexed selection, versus142–147in Phase190 and26in mature C. Seven conditional
+branches remain versusone in C. This justifies two additional independent,
+default-off experiments: pure one-to-four-copy branch selection with CMOV,
+including elimination of empty arms; and adjacent64-bit private-frame store/load
+forwarding that preserves stores and clears state at every intervening item.
+The finite CMOV encoder has independent byte and C oracles. Selection never
+speculates a user memory load. Neither rule changes source verification,
+ownership, stack layout, or the final interference validator.
+
+A failed ablation exposed a harness dependency on the mutable project manifest.
+Subsequent API acquisition explicitly uses the frozen toolchain01.json snapshot.
+Earlier receipts remain preserved; they are not relabeled as current evidence.

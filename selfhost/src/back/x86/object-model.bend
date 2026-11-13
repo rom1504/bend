@@ -7,6 +7,10 @@ type X187Operand is Data:
   X187Mem{+base: U32, +disp: U32}
   X187Rip{+symbol: String, +addendLo: U32, +addendHi: U32}
   X187Target{+symbol: String}
+  # Address size is64, scale is1/2/4/8, and disp is signed32 bits.
+  # Both registers are mandatory GPRs0..15. RSP(index4) is forbidden;
+  # R12(index12) is valid and requires REX.X, even though its low bits are4.
+  X187Indexed{+base: U32, +index: U32, +scale: U32, +disp: U32}
 
 type X187Instruction is Data:
   X187Instruction{+op: String, +operands: List<&2,X187Operand>}

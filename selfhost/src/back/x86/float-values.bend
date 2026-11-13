@@ -225,17 +225,17 @@ def x186_f_place(+symbol: String, +params: List<&2,String>, +setup: List<&2,P113
     +nodes: List<&2,X186FloatNode>, ids: N111Ids) -> X181Output:
   +placement = x186_f_placement_rows(nodes)
   +all = nt_append(P113DStmt,setup,placement)
-  x186_x_select_frame(symbol,params,setup,nodes,ids,x186_saves_frame(x185_transient_frame(
-    x181_register_frame(x181_frame(symbol,params,all),
-      nt_choose(List<&2,P113DStmt>,x185_loop_registers_enabled(),u => placement,u => all)),params,setup,placement)))
+  x186_x_select_frame(symbol,params,setup,nodes,ids,x186_saves_frame(x190_allocate_frame(
+    x181_frame(symbol,params,all),params,setup,placement,
+      nt_choose(List<&2,P113DStmt>,x185_loop_registers_enabled(),u => placement,u => all))))
 
 @unsafe
 def x186_f_ordinary(+symbol: String, +params: List<&2,String>, +setup: List<&2,P113DStmt>,
     +body: List<&2,P113DStmt>, ids: N111Ids) -> X181Output:
   +all = nt_append(P113DStmt,setup,body)
-  x185_function_frame(symbol,setup,body,ids,x185_transient_frame(
-    x181_register_frame(x181_frame(symbol,params,all),
-      nt_choose(List<&2,P113DStmt>,x185_loop_registers_enabled(),u => body,u => all)),params,setup,body))
+  x185_function_frame(symbol,setup,body,ids,x190_allocate_frame(
+    x181_frame(symbol,params,all),params,setup,body,
+      nt_choose(List<&2,P113DStmt>,x185_loop_registers_enabled(),u => body,u => all)))
 
 @unsafe
 def x186_float_function(+symbol: String, +params: List<&2,String>, +setup: List<&2,P113DStmt>,

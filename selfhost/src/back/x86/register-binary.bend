@@ -1,8 +1,8 @@
-# Direct register destinations for scalar binary operations. Right operands
-# are snapshotted into reserved r11 BEFORE the destination is overwritten;
-# left/right/destination may otherwise share any admitted physical home.
+# Direct register destinations for scalar binary operations. The default path
+# snapshots right into r11 before overwriting any aliased destination.
 
 def x185_register_binary_enabled() -> Bool: True{}
+def x190_operands_enabled() -> Bool: True{}
 
 @unsafe
 def x188_physical(+index: U32) -> X185Physical:
@@ -57,11 +57,10 @@ def x185_physical_load(+value: N111Value, +ids: N111Ids, +frame: X181Frame, +reg
   nt_choose(X188Seq,x185_physical_source(value,frame,reg),u => X188Empty{},u => x181_load(value,ids,frame,reg))
 
 @unsafe
-def x185_physical_instruction(+typ: N111Type, +op: String,
-    +wide: X187Operand, +narrow: X187Operand, +byte: X187Operand) -> X188Seq:
+def x190_operand_instruction(+typ: N111Type, +op: String,
+    +wide: X187Operand, +narrow: X187Operand, +byte: X187Operand, +right: X187Operand) -> X188Seq:
   +suffix = x181_width(typ,"q","l")
   +left = x188_physical_width(typ,wide,narrow)
-  +right = x188_width_reg(typ,11)
   +condition = x181_condition(op)
   +alu = x181_alu(op)
   nt_choose(X188Seq,Bool.not(String.is_empty(condition)),u =>
@@ -70,6 +69,31 @@ def x185_physical_instruction(+typ: N111Type, +op: String,
       nt_choose(X188Seq,x181_shift(op),w =>
         x188_many([x188_i2("movl",x188_reg(11,32),x188_reg(1,32)),x188_i2(alu ++ suffix,x188_reg(1,8),left)]),
         w => x188_i2(alu ++ suffix,right,left))))
+
+@unsafe
+def x185_physical_instruction(+typ: N111Type, op: String,
+    wide: X187Operand, narrow: X187Operand, byte: X187Operand) -> X188Seq:
+  x190_operand_instruction(typ,op,wide,narrow,byte,x188_width_reg(typ,11))
+
+@unsafe
+def x190_value_home(value: N111Value, frame: X181Frame) -> X185Physical:
+  match value:
+    case N111Local{name}: x185_physical_home(name,frame)
+    case _: X185PhysicalNone{}
+
+# A direct right operand survives the left move only when its home differs
+# from the destination, or when that move is itself absent. Shifts keep r11/rcx.
+@unsafe
+def x190_binary_direct(+typ: N111Type, +op: String, +left: N111Value,
+    +ids: N111Ids, +frame: X181Frame, +wide: X187Operand,
+    narrow: X187Operand, byte: X187Operand, right: X185Physical) -> X188Seq:
+  match right:
+    case X185Physical{+rw,rn,rb}:
+      nt_choose(X188Seq,Bool.not(x181_shift(op)) &&
+          (Bool.not(x188_operand_same(rw,wide)) || x185_physical_source(left,frame,wide)),u =>
+        x188_cat(x185_physical_load(left,ids,frame,wide),
+          x190_operand_instruction(typ,op,wide,narrow,byte,x188_physical_width(typ,rw,rn))),u => X188Empty{})
+    case _: X188Empty{}
 
 @unsafe
 def x185_physical_immediate(+typ: N111Type, +op: String, value: N111Value,
@@ -97,11 +121,14 @@ def x185_physical_selected(+typ: N111Type, +op: String, +left: N111Value, +right
   match reg:
     case X185Physical{+wide,+narrow,+byte}:
       +instruction = x185_physical_instruction(typ,op,wide,narrow,byte)
+      +direct = nt_choose(X188Seq,x190_operands_enabled(),
+        u => x190_binary_direct(typ,op,left,ids,frame,wide,narrow,byte,x190_value_home(right,frame)),u => X188Empty{})
       +immediate = nt_choose(X188Seq,x185_machine_enabled(),
         u => x185_physical_immediate(typ,op,right,wide,narrow,byte),u => X188Empty{})
       nt_choose(X188Seq,x188_empty(instruction),u => X188Empty{},u =>
         nt_choose(X188Seq,x188_empty(immediate),v =>
-          x188_many([x181_load(right,ids,frame,x188_reg(11,64)),x185_physical_load(left,ids,frame,wide),instruction]),
+          nt_choose(X188Seq,x188_empty(direct),w =>
+            x188_many([x181_load(right,ids,frame,x188_reg(11,64)),x185_physical_load(left,ids,frame,wide),instruction]),w => direct),
           v => x188_cat(x185_physical_load(left,ids,frame,wide),immediate)))
     case _: X188Empty{}
 

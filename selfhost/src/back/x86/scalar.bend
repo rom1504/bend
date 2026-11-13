@@ -314,7 +314,7 @@ def x181_scalar(stmt,ids,frame,code):
     case N111Load{name,typ,base,offset}:
       x181_add(x186_load_text(name,typ,base,offset,ids,frame),code)
     case N111Store{typ,base,offset,value}:
-      x181_add(x185_store_memory(typ,base,offset,value,ids,frame),code)
+      x181_add(x190_store_memory(typ,base,offset,value,ids,frame),code)
     case N111Offset{name,base,bytes}:
       x181_binary(name,N111Ptr{},"add",base,bytes,ids,frame,code)
     case N111Alloca{name,bytes,align}: code

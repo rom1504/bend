@@ -259,9 +259,9 @@ def x186_x_place(+symbol: String, +params: List<&2,String>, +setup: List<&2,P113
     +nodes: List<&2,X186FloatNode>, ids: N111Ids) -> X181Output:
   +placement = x186_f_placement_rows(nodes)
   +all = nt_append(P113DStmt,setup,placement)
-  x186_x_emit_frame(symbol,params,setup,nodes,ids,x186_saves_frame(x185_transient_frame(
-    x181_register_frame(x181_frame(symbol,params,all),
-      nt_choose(List<&2,P113DStmt>,x185_loop_registers_enabled(),u => placement,u => all)),params,setup,placement)))
+  x186_x_emit_frame(symbol,params,setup,nodes,ids,x186_saves_frame(x190_allocate_frame(
+    x181_frame(symbol,params,all),params,setup,placement,
+      nt_choose(List<&2,P113DStmt>,x185_loop_registers_enabled(),u => placement,u => all))))
 
 @unsafe
 def x186_x_function(+symbol: String, +params: List<&2,String>, +setup: List<&2,P113DStmt>,

@@ -174,3 +174,140 @@ def x186_expression_body(+setup: List<&2,P113DStmt>, +body: List<&2,P113DStmt>) 
   nt_choose(List<&2,P113DStmt>,x186_expression_enabled() &&
       U32.is_lt(p113i_add(p113i_size(setup),p113i_size(body)),4096),
     u => x186_e_body(body,x186_e_empty()),u => body)
+
+# Optional local word facts. Original snapshots remain until the existing
+# backward dead-write pass proves them unused. Aliases are flattened on insert;
+# every write kills both its own alias and aliases of the overwritten source.
+type X190Values is Data:
+  X190Values{+aliases: List<&2,X186Alias>, +widths: KDef}
+type X190ValueStep is Data:
+  X190ValueStep{+stmt: P113DStmt, +state: X190Values}
+
+def x190_local_values_enabled() -> Bool: True{}
+def x190_v_empty() -> X190Values: X190Values{[],missing()}
+
+@unsafe
+def x190_v_value(value: N111Value, state: X190Values) -> N111Value:
+  match state:
+    case X190Values{aliases,widths}: x186_e_value(value,aliases)
+
+@unsafe
+def x190_v_values(values: List<&2,N111Value>, +state: X190Values) -> List<&2,N111Value>:
+  match values:
+    case Nil{}: []
+    case Con{head,rest}: Con{x190_v_value(head,state),x190_v_values(rest,state)}
+
+@unsafe
+def x190_v_args(args: List<&2,N111Arg>, +state: X190Values) -> List<&2,N111Arg>:
+  match args:
+    case Nil{}: []
+    case Con{N111Arg{typ,value},rest}: Con{N111Arg{typ,x190_v_value(value,state)},x190_v_args(rest,state)}
+
+@unsafe
+def x190_v_zero(value: N111Value, state: X190Values) -> Bool:
+  match value state:
+    case N111Const{lo,hi} _: U32.is_eq(hi,0)
+    case N111Local{name} X190Values{aliases,widths}: U32.is_gt(da(p111v_get(widths,name)),0)
+    case _ _: False{}
+
+@unsafe
+def x190_v_written(+name: String, known: Bool, state: X190Values) -> X190Values:
+  match state:
+    case X190Values{aliases,widths}:
+      X190Values{x186_e_kill_aliases(aliases,name),p111v_put(widths,name,"X190Zero32",nt_choose(U32,known,u => 1,u => 0),0)}
+
+@unsafe
+def x190_v_alias(+name: String, +value: N111Value, state: X190Values) -> X190Values:
+  match state:
+    case X190Values{+aliases,widths}:
+      X190Values{nt_choose(List<&2,X186Alias>,Bool.not(x185_sf_source(value,name)) && U32.is_lt(nt_count(X186Alias,aliases),32),
+        u => Con{X186Alias{name,value},aliases},u => aliases),widths}
+
+@unsafe
+def x190_v_set(+name: String, +typ: N111Type, +value: N111Value, +state: X190Values) -> X190ValueStep:
+  +zero = x190_v_zero(value,state)
+  +narrow = U32.is_eq(p111v_type(typ),1)
+  +outType = nt_choose(N111Type,narrow && zero,u => N111U64{},u => typ)
+  +written = x190_v_written(name,narrow || zero,state)
+  X190ValueStep{P113DScalar{N111Set{name,outType,value}},nt_choose(X190Values,Bool.not(narrow) || zero,
+    u => x190_v_alias(name,value,written),u => written)}
+
+def x190_v_mask(value: N111Value) -> Bool:
+  match value:
+    case N111Const{lo,hi}: U32.is_eq(lo,4294967295) && U32.is_eq(hi,0)
+    case _: False{}
+
+# For any word, x & 0xffffffff equals its zero-extended U32 copy. If x is
+# already canonical the copy is full-width and requires no extra truncation.
+@unsafe
+def x190_v_binary(+name: String, +typ: N111Type, +op: String, +left: N111Value, +right: N111Value, +state: X190Values) -> X190ValueStep:
+  nt_choose(X190ValueStep,String.eq(op,"and") && x190_v_mask(right),
+    u => x190_v_set(name,N111U32{},left,state),u =>
+      X190ValueStep{P113DScalar{N111Bin{name,typ,op,left,right}},
+        x190_v_written(name,U32.is_eq(p111v_type(typ),1) || p111v_comparison(op),state)})
+
+@unsafe
+def x190_v_scalar(stmt: N111Stmt, +state: X190Values) -> X190ValueStep:
+  match stmt:
+    case N111Set{name,typ,value}: x190_v_set(name,typ,x190_v_value(value,state),state)
+    case N111Bin{name,typ,op,left,right}: x190_v_binary(name,typ,op,x190_v_value(left,state),x190_v_value(right,state),state)
+    case N111Offset{+name,base,bytes}:
+      X190ValueStep{P113DScalar{N111Offset{name,x190_v_value(base,state),x190_v_value(bytes,state)}},x190_v_written(name,False{},state)}
+    case N111Load{+name,+typ,base,offset}:
+      X190ValueStep{P113DScalar{N111Load{name,typ,x190_v_value(base,state),offset}},x190_v_written(name,U32.is_eq(p111v_type(typ),1),state)}
+    case N111Store{typ,base,offset,value}:
+      X190ValueStep{P113DScalar{N111Store{typ,x190_v_value(base,state),offset,x190_v_value(value,state)}},state}
+    case N111Call{name,typ,symbol,args}:
+      X190ValueStep{P113DScalar{N111Call{name,typ,symbol,x190_v_args(args,state)}},x190_v_empty()}
+    case N111Alloca{+name,bytes,align}:
+      X190ValueStep{P113DScalar{N111Alloca{name,bytes,align}},x190_v_written(name,False{},state)}
+    case N111Return{value}: X190ValueStep{P113DScalar{N111Return{x190_v_value(value,state)}},x190_v_empty()}
+    case _: X190ValueStep{P113DScalar{stmt},x190_v_empty()}
+
+# Modulo-2^32 arithmetic commutes with truncation for these operations only.
+# In particular, shifts keep the original 64-bit count and intermediate bits.
+@unsafe
+def x190_v_narrow_op(+op: String) -> Bool:
+  String.eq(op,"add") || String.eq(op,"sub") || String.eq(op,"mul") ||
+    String.eq(op,"and") || String.eq(op,"or") || String.eq(op,"xor")
+
+law x190_v_body:
+  for +body: List<&2,P113DStmt>
+  for +state: X190Values
+  List<&2,P113DStmt>
+
+@unsafe
+def x190_v_after(rest: List<&2,P113DStmt>, step: X190ValueStep) -> List<&2,P113DStmt>:
+  match step:
+    case X190ValueStep{stmt,state}: Con{stmt,x190_v_body(rest,state)}
+
+@unsafe
+def x190_v_if(condition: N111Value, yes: List<&2,P113DStmt>, no: List<&2,P113DStmt>, rest: List<&2,P113DStmt>) -> List<&2,P113DStmt>:
+  Con{P113DIf{condition,x190_v_body(yes,x190_v_empty()),x190_v_body(no,x190_v_empty())},x190_v_body(rest,x190_v_empty())}
+
+@unsafe
+def x190_v_plain(body: List<&2,P113DStmt>, +state: X190Values) -> List<&2,P113DStmt>:
+  match body:
+    case Nil{}: []
+    case Con{P113DIf{condition,yes,no},rest}: x190_v_if(x190_v_value(condition,state),yes,no,rest)
+    case Con{P113DScalar{N111If{condition,yes,no}},rest}:
+      x190_v_if(x190_v_value(condition,state),x181_scalar_rows(yes),x181_scalar_rows(no),rest)
+    case Con{P113DScalar{stmt},rest}: x190_v_after(rest,x190_v_scalar(stmt,state))
+    case Con{P113DCall{names,target,args},rest}:
+      Con{P113DCall{names,target,x190_v_values(args,state)},x190_v_body(rest,x190_v_empty())}
+    case Con{P113DResult{values},rest}: Con{P113DResult{x190_v_values(values,state)},x190_v_body(rest,x190_v_empty())}
+    case Con{P113DAgain{values},rest}: Con{P113DAgain{x190_v_values(values,state)},x190_v_body(rest,x190_v_empty())}
+
+@unsafe
+def x190_v_body(body,state):
+  match body:
+    case Con{P113DScalar{N111Bin{+name,N111U64{},+op,left,right}},
+      Con{P113DScalar{N111Bin{other,N111U64{},maskOp,N111Local{source},N111Const{4294967295,0}}},rest}}:
+        nt_choose(List<&2,P113DStmt>,String.eq(maskOp,"and") && String.eq(name,other) && String.eq(name,source) && x190_v_narrow_op(op),
+          u => x190_v_after(rest,x190_v_scalar(N111Bin{name,N111U32{},op,left,right},state)),u => x190_v_plain(body,state))
+    case _: x190_v_plain(body,state)
+
+@unsafe
+def x190_local_values_body(+setup: List<&2,P113DStmt>, +body: List<&2,P113DStmt>) -> List<&2,P113DStmt>:
+  nt_choose(List<&2,P113DStmt>,x190_local_values_enabled() && U32.is_le(p113i_add(p113i_size(setup),p113i_size(body)),512),
+    u => x190_v_body(body,x190_v_empty()),u => body)

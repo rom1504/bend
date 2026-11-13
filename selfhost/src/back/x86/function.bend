@@ -227,7 +227,8 @@ def x185_function_place(+symbol: String, +params: List<&2,String>, +setup: List<
 def x186_function_memory(symbol: String, +params: List<&2,String>, +setup: List<&2,P113DStmt>,
     body: List<&2,P113DStmt>, ids: N111Ids) -> X181Output:
   x185_function_copied(symbol,params,setup,x185_dead_body(setup,
-    x185_copy_function(params,setup,x186_expression_body(setup,x186_private_body(params,setup,body)))),ids)
+    x185_copy_function(params,setup,x186_expression_body(setup,
+      x190_local_values_body(setup,x186_private_body(params,setup,body))))),ids)
 
 def x185_loop_registers_enabled() -> Bool: True{}
 
@@ -244,7 +245,7 @@ def x185_function_frame(+symbol: String, +setup: List<&2,P113DStmt>, +body: List
 @unsafe
 def x186_function_saved(+symbol: String, +setup: List<&2,P113DStmt>, +body: List<&2,P113DStmt>,
     +ids: N111Ids, +frame: X181Frame) -> X181Output:
-  x181_function_done(symbol,x181_stmts(body,ids,frame,x181_add(X188One{PLabel{x181_loop_label(frame)}},
+  x181_function_done(symbol,x190_stmts(body,x190_branch_facts(x190_frame_params(frame),setup,body),ids,frame,x181_add(X188One{PLabel{x181_loop_label(frame)}},
     x181_stmts(setup,ids,frame,X181Code{[x181_prologue(frame)],0,False{},""}))))
 
 @unsafe
@@ -336,3 +337,8 @@ def x181_segment(segment,ids):
       nt_choose(X181Output,String.is_empty(error),
         u => x181_function(p111q_symbol(name),["state"],x181_scalar_rows(body),ids),
         u => X181Output{[],error})
+
+# The branch plan sees setup and incoming definitions as well as the loop body.
+def x190_frame_params(frame: X181Frame) -> List<&2,String>:
+  match frame:
+    case X181Frame{slots,bytes,calls,params,symbol}: params

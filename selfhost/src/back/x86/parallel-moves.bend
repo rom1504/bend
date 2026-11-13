@@ -20,7 +20,7 @@ def x186_p_word_home(+slot: KDef, +destination: Bool) -> Bool:
   (String.eq(dk(slot),"X181Stack") && U32.is_ge(da(slot),48) && U32.is_eq(U32.mod(da(slot),8),0) && U32.is_eq(dx(slot),8)) ||
   (String.eq(dk(slot),"X181Register") && U32.is_le(da(slot),4) &&
     (Bool.not(destination) || U32.is_gt(da(slot),0))) ||
-  (Bool.not(destination) && String.eq(dk(slot),"X185Transient") && U32.is_lt(da(slot),5))
+  (String.eq(dk(slot),"X185Transient") && U32.is_lt(da(slot),5))
 
 @unsafe
 def x186_p_source(value: N111Value, slots: KDef) -> KDef:
@@ -96,8 +96,7 @@ def x186_p_chosen(picked: X186Pick, +ids: N111Ids, +frame: X181Frame,
     chunks: List<&2,X188Seq>, fuel: U32) -> Maybe<&2,X188Seq>:
   match picked:
     case X186Pick{X186Move{destination,source,home,read},rest}:
-      x186_p_schedule(rest,ids,frame,Con{x188_cat(x181_load(source,ids,frame,x188_reg(10,64)),
-        x181_store(destination,frame,x188_reg(10,64))),chunks},fuel)
+      x186_p_schedule(rest,ids,frame,Con{x190_move(destination,source,ids,frame),chunks},fuel)
     case _: None{}
 
 @unsafe

@@ -167,9 +167,56 @@ def x181_register_counted(frame: X181Frame, reads: X181ReadCounts) -> X181Frame:
     case X181ReadCounts{counts,reversedNames}:
       x181_register_place(nt_reverse(String,reversedNames,[]),counts,frame,1)
 
+# Bounded selection-policy experiment. Zero retains the original static-read
+# threshold; one weights reads in functions with a backedge; two additionally
+# favors parameter and setup-only homes. Physical placement remains unchanged.
+def x190_register_policy() -> U32: 2
+
+@unsafe
+def x190_register_loop(body: List<&2,P113DStmt>) -> Bool:
+  match body:
+    case Nil{}: False{}
+    case Con{P113DAgain{values},rest}: True{}
+    case Con{P113DIf{condition,yes,no},rest}:
+      x190_register_loop(yes) || x190_register_loop(no) || x190_register_loop(rest)
+    case Con{head,rest}: x190_register_loop(rest)
+
+# Assume eight loop traversals when valuing a single syntactic read against
+# a saved-register pair; no minimum trip count is asserted. The second policy
+# favors homes excluded by transient allocation. Scores saturate at overflow.
+def x190_register_score(+reads: U32, loopState: Bool, policy: U32) -> U32:
+  +weight = nt_choose(U32,U32.is_eq(policy,2) && loopState,u => 32,u => 8)
+  nt_choose(U32,U32.is_gt(reads,U32.div(4294967295,weight)),
+    u => 4294967295,u => U32.mul(reads,weight))
+
+@unsafe
+def x190_register_scores(names: List<&2,String>, +writes: KDef,
+    +params: List<&2,String>, +policy: U32, +counts: KDef) -> KDef:
+  match names:
+    case Nil{}: counts
+    case Con{+name,rest}:
+      x190_register_scores(rest,writes,params,policy,
+        p111v_put(counts,name,"X181Reads",x190_register_score(da(p111v_get(counts,name)),
+          nb_contains(params,name) || U32.is_eq(da(p111v_get(writes,name)),0),policy),0))
+
+@unsafe
+def x190_register_counted(+frame: X181Frame, reads: X181ReadCounts,
+    writes: KDef, policy: U32) -> X181Frame:
+  match frame reads:
+    case X181Frame{slots,bytes,calls,+params,symbol} X181ReadCounts{counts,+reversedNames}:
+      x181_register_counted(frame,X181ReadCounts{
+        x190_register_scores(reversedNames,writes,params,policy,counts),reversedNames})
+
+@unsafe
+def x190_register_frame(+frame: X181Frame, +body: List<&2,P113DStmt>, +policy: U32) -> X181Frame:
+  nt_choose(X181Frame,U32.is_ge(policy,1) && U32.is_le(policy,2) && x190_register_loop(body),
+    u => x190_register_counted(frame,x181_reads_stmts(body,X181ReadCounts{missing(),[]}),
+      nt_choose(KDef,U32.is_eq(policy,2),v => x185_copy_writes(body,missing()),v => missing()),policy),
+    u => x181_register_counted(frame,x181_reads_stmts(body,X181ReadCounts{missing(),[]})))
+
 @unsafe
 def x181_register_frame(frame: X181Frame, body: List<&2,P113DStmt>) -> X181Frame:
-  x181_register_counted(frame,x181_reads_stmts(body,X181ReadCounts{missing(),[]}))
+  x190_register_frame(frame,body,x190_register_policy())
 
 # Whole-body stable copies. Parameters count as definitions, so a parameter
 # source is stable only with zero explicit assignments. Every branch and call

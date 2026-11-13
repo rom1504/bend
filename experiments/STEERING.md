@@ -1,3 +1,33 @@
+# Phase192 — qualified composed x86 regions, 2026-11-13
+
+[Report](../implementation/phase192/README.md) · [Runtime table](../implementation/phase192/runtime-summary.md) ·
+[Evidence](../implementation/phase192/evidence.json) · [Architectural survey](../research/phase192/architectural-survey.md).
+
+Full 44-case direct-object runtime improves 2.749665→2.208723× mature selfhost C,
+0.803270× freshly timed Phase191 (19.673% less); 35 held-out cases improve 18.586%.
+Equal-family ratio 0.826964; positive-log slowdown 1.134097→0.907716;
+36/44 remain >1.1× C and 32/44 >2×. QBE reference 1.350141× C. Parity remains open.
+All regressions and nine dispersion flags remain: closure256+26.367%, closure64
++9.643%; their hot callback bytes are identical, placement changed, causation
+unproved. Fixed-work sum 34.255→27.570s.
+
+Direct x86 now consumes the original checked P114H recursive plans, keeping
+closed continuation resumption in a stack-safe local loop. No new recognizer.
+Exact numeric conversion/value composition, shared addresses and Boolean facts
+also compose. Optional scoped frames/path-facts/XMM widening remain excluded.
+Post-change profiles expose constructor/take and recursive-worker costs; use
+actual whole-computation evidence before adding more passes or global SSA.
+
+Independent source checking, native N1→N2→N3 qualification and N2/N3 object equality, native64,
+runtime10 and native45 pass. All 45 hosted/N1 and N1/N2 objects and 135 linked
+sections agree. N2 compiler requests are 0.97173× Phase191 on three paired inputs;
+full self-build 354.521s uses a 3.26% larger source, no cold-build speedup claim.
+Five other source profiles remain byte-identical. Installed Phase189 unchanged.
+Qualified N2: selfhost/build/phase192/native-self01/program + report.json.
+No whole-compiler proof or recursive-acceleration claim.
+
+---
+
 # Phase191 — qualified indexed x86 selection, 2026-11-13
 
 [Report](../implementation/phase191/README.md) · [Runtime table](../implementation/phase191/runtime-summary.md) ·

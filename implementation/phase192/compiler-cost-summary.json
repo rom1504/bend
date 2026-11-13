@@ -1,0 +1,139 @@
+{
+  "kind": "phase192-paired-compiler-cost-summary",
+  "complete": true,
+  "report": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/compiler-cost01/report.json",
+    "bytes": 29446,
+    "sha256": "8e45ec819249ba3003a098df0edd58744fa7b4fb526873adde8d13432480ce78"
+  },
+  "aggregate": {
+    "complete": true,
+    "timedCases": 3,
+    "correctnessOnlyCases": 0,
+    "roles": {
+      "candidate": {
+        "geomean": 0.9717284769772468,
+        "equalSourceGeomean": 0.9717284769772468,
+        "sourceCount": 3,
+        "meanPositiveLogSlowdown": 0.0001488578193439316,
+        "casesOver105": 0,
+        "families": {
+          "coverage-numeric-recurrence-256": 0.9661424054374667,
+          "coverage-expression-32": 0.9492917392044125,
+          "tree-bitonic": 1.0004466731868034
+        }
+      }
+    }
+  },
+  "rows": [
+    {
+      "case": "coverage-numeric-recurrence-256",
+      "roles": {
+        "baseline": {
+          "wallSeconds": [
+            1.32577463099733,
+            1.3169162599369884
+          ],
+          "medianWallSeconds": 1.3213454454671592,
+          "cpuSeconds": [
+            1.2989739999999999,
+            1.298004
+          ],
+          "peakRssBytes": [
+            42487808,
+            44580864
+          ]
+        },
+        "candidate": {
+          "wallSeconds": [
+            1.3087239852175117,
+            1.2444917489774525
+          ],
+          "medianWallSeconds": 1.276607867097482,
+          "cpuSeconds": [
+            1.218469,
+            1.226119
+          ],
+          "peakRssBytes": [
+            43134976,
+            43266048
+          ]
+        }
+      },
+      "wallRatio": 0.9661424054374667
+    },
+    {
+      "case": "coverage-expression-32",
+      "roles": {
+        "baseline": {
+          "wallSeconds": [
+            1.4607538189738989,
+            1.4376877872273326
+          ],
+          "medianWallSeconds": 1.4492208031006157,
+          "cpuSeconds": [
+            1.422806,
+            1.40993
+          ],
+          "peakRssBytes": [
+            42737664,
+            42852352
+          ]
+        },
+        "candidate": {
+          "wallSeconds": [
+            1.3714643879793584,
+            1.3800022853538394
+          ],
+          "medianWallSeconds": 1.375733336666599,
+          "cpuSeconds": [
+            1.370245,
+            1.364075
+          ],
+          "peakRssBytes": [
+            43274240,
+            43155456
+          ]
+        }
+      },
+      "wallRatio": 0.9492917392044125
+    },
+    {
+      "case": "tree-bitonic",
+      "roles": {
+        "baseline": {
+          "wallSeconds": [
+            1.8814132222905755,
+            1.8023669379763305
+          ],
+          "medianWallSeconds": 1.841890080133453,
+          "cpuSeconds": [
+            1.793298,
+            1.783011
+          ],
+          "peakRssBytes": [
+            43192320,
+            43212800
+          ]
+        },
+        "candidate": {
+          "wallSeconds": [
+            1.749953132122755,
+            1.9354724739678204
+          ],
+          "medianWallSeconds": 1.8427128030452877,
+          "cpuSeconds": [
+            1.731197,
+            1.7305479999999998
+          ],
+          "peakRssBytes": [
+            43487232,
+            45699072
+          ]
+        }
+      },
+      "wallRatio": 1.0004466731868034
+    }
+  ],
+  "scope": "Three fixed source-to-object requests; two balanced rounds; each role exactly reproduces its own frozen object. No linking/program runtime, broad-throughput or significance claim."
+}

@@ -62,6 +62,13 @@ def inventory(out):
             allowed = path.name != 'source-map.json' and (top_implementation or top_build or stream or json_receipt)
             if not allowed:
                 continue
+            if stream:
+                with path.open('rb') as probe:
+                    binary_product = probe.read(4) == b'\x7fELF'
+                if binary_product:
+                    excluded.append(dict(file=str(path), bytes=path.stat().st_size,
+                        reason='ELF product transported as stdout; retained hot, receipt hashes preserved.'))
+                    continue
             maximum = MAX_STREAM if stream else MAX_JSON
             if path.stat().st_size > maximum:
                 excluded.append(dict(file=str(path), bytes=path.stat().st_size,

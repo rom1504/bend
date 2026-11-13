@@ -14,7 +14,7 @@ That's Bend - and nothing else.
 
 This fork maintains the Bend2 compiler in [`selfhost/src/`](selfhost/src), with
 one [source manifest](selfhost/src/compiler.json) and explicit JS, C, QBE and
-x86 assembly interfaces. Compiler algorithms remain written in Bend. The pinned upstream
+x86 assembly/object interfaces. Compiler algorithms remain written in Bend. The pinned upstream
 language is `9a4223d577ba56a0cb53d1fd952d2b481c38930f` (Bend2.0.40).
 
 Start with the [maintained workflow](docs/self_hosted/workflow.md). It covers
@@ -36,30 +36,37 @@ source/toolchain. This is not a controlled speedup measurement; historical
 program-runtime scores do not transfer automatically to the new runtime.
 The [Phase175](implementation/phase175/README.md) and
 [Phase174](implementation/phase174/README.md) reports retain prior measurements.
-[Phase183](implementation/phase183/README.md) installs x86 N2 as the fourth
-component: AMD64 SysV with the sequential ABI11102 runtime. All 64 finite cases
-and ten current runtime controls pass; actual N1/N2/S3 reproduce complete
-assembly. `selfhost/bend --target x86 FILE -o OUTPUT.s`, ELF output and `--run`
-use this installed compiler. See the [assembly guide](docs/self_hosted/ASSEMBLY.md)
-for commands and the separate source-check, reproduction and proof boundaries.
+[Phase183](implementation/phase183/README.md) added x86 N2 as the fourth
+component: AMD64 SysV with the sequential ABI11102 runtime. See the
+[x86 guide](docs/self_hosted/ASSEMBLY.md) for public commands and the separate
+source-check, reproduction and proof boundaries.
 
 [Phase186](implementation/phase186/README.md) qualifies newer QBE and assembly N2
 candidates. On the frozen 45-point program suite, runtime falls by 8.43% and
 27.64% respectively: QBE is 1.347× and assembly 4.004× our C target. These are
 runtime comparisons, not compilation-speed claims; assembly self-build cost
 increases. See the [candidate commands](implementation/phase186/native-qualification.md)
-and [full measurements](implementation/phase186/runtime-summary.md). The installed
-Phase183 selector remains unchanged.
+and [full measurements](implementation/phase186/runtime-summary.md).
 
 [Phase188](implementation/phase188/README.md) shares typed x86 instructions between
 assembly and direct ELF output. Direct objects no longer format and reparse
 assembly; local branches resolve before ELF serialization. The native self-build
 and both 45-program output routes pass, preserving baseline machine code.
 
+[Phase189](implementation/phase189/README.md) makes direct ELF objects the x86
+executable-build and `--run` default. Explicit `.s` output remains assembly.
+Its installed x86 N2 uses the checked Phase188 source and actual QBE-built N1 →
+object-built N2 → object-built N3 lineage, with complete object-byte reproduction.
+The JS/C/QBE components retain their exact Phase182 identities; x86 qualifies
+independently. All 64 finite catalog cases and ten runtime controls pass through
+objects, and all 14 installed public-command controls pass. The previous
+Phase183 image and selector remain available for rollback.
+This default change makes no claim that objects build faster than assembly.
+
 | Task | Maintained entry |
 | --- | --- |
 | Assemble, request, build and bootstrap | [`selfhost/tools/build/`](selfhost/tools/build/) and [workflow](docs/self_hosted/workflow.md) |
-| Bend-written AMD64 SysV assembly target | [Build, bootstrap, benchmark and profile](docs/self_hosted/ASSEMBLY.md) · [Emitter architecture](docs/self_hosted/x86-backend.md) · [Optional ELF object emission](docs/self_hosted/x86-objects.md) |
+| Bend-written AMD64 SysV target | [Build, bootstrap, benchmark and profile](docs/self_hosted/ASSEMBLY.md) · [Emitter architecture](docs/self_hosted/x86-backend.md) · [Direct ELF object emission](docs/self_hosted/x86-objects.md) |
 | Compiler latency and JS/C/QBE/x86 program speed | [`selfhost/tools/bench/`](selfhost/tools/bench/README.md), with explicit host/stage/target and20/60/300/600-second budgets |
 | Optional optimization cost and development-policy experiments | [Bend QBE policy switches](docs/self_hosted/optimization-policies.md) |
 | CPU, allocation, generated code and native stage analysis | [Profiling guide](docs/self_hosted/PROFILING.md), [`tools/profiler/`](selfhost/tools/profiler/README.md) and [benchmark diagnostics](selfhost/tools/bench/README.md#profiles-and-generated-code-inspection) |

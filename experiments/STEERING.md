@@ -1,3 +1,27 @@
+# Phase189 — installed direct-object x86 default, 2026-11-13
+
+[Report](../implementation/phase189/README.md) · [Design](../design/phase189/README.md) ·
+[Evidence](../implementation/phase189/evidence.json) · [Usage](../docs/self_hosted/x86-objects.md).
+
+Public x86 executables and --run now use direct ELF objects. Explicit .s retains
+assembly. Actual Phase188 N2 reproduces its complete input object through N3
+(331.693s); all 64 object cases, ten runtime controls and 14 installed public
+controls pass. Native fixed point, finite semantics and independent source
+checking are separate claims. No compiler/runtime source changes in this phase.
+
+The release audit checks actual successful producer jobs, qualified QBE N2 →
+x86 N1 → object N2 → object N3, exact source/Base/runtime and final object identity.
+JS/C/QBE components retain their exact artifacts and original canonical source;
+x86 has an independently checked source profile. Old installed files/selector
+and operational maps remain available for rollback. 139 metadata/transport cases pass.
+
+No new runtime-speed claim. Phase188's direct-object full build was 1.039× assembly;
+this default removes the assembler dependency, not all serialization overhead.
+Next optimization opportunities remain byte-section construction/serialization.
+Keep explicit assembly acquisition for source-owner profiling.
+
+---
+
 # Phase188 — shared typed x86 instructions, 2026-11-09
 
 [Report](../implementation/phase188/README.md) · [Design](../design/phase188/README.md) ·

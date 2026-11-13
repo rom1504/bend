@@ -39,6 +39,6 @@ async function run(){
   requireThat(bound(current.providers.jsDirectRuntime)===path.join(project,'src/runtime/js/direct.mjs'),'Current direct runtime path differs from the host contract');
   const {main}=await import('./tools/typed-driver.mjs');
   await main(process.argv.slice(2));
-  if(options.includes('--help')||options.includes('-h'))console.log('\nAssembly target:\n  node cli.mjs --target x86 FILE.bend -o OUTPUT.s [--live]\n  node cli.mjs --target x86 FILE.bend -o PROGRAM [--live]\n  node cli.mjs --target x86 FILE.bend --run [--live] [-- ARGS]\nA .s output also selects x86. --live prepares Base without its cache.\nExisting x86 outputs are refused; the output directory must already exist.');
+  if(options.includes('--help')||options.includes('-h'))console.log('\nAssembly target:\n  node cli.mjs --target x86 FILE.bend -o OUTPUT.s [--live]\n  node cli.mjs --target x86 FILE.bend -o PROGRAM [--live]\n  node cli.mjs --target x86 FILE.bend --run [--live] [-- ARGS]\nA .s output also selects x86. Executable builds and --run use the installed release\'s emission default.\n--live prepares Base without its cache.\nExisting x86 outputs are refused; the output directory must already exist.');
 }
 run().catch(error=>{console.error(error.message);process.exitCode=1;});

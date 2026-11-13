@@ -1,8 +1,10 @@
-# Direct assembly target
+# Direct x86 target
 
-The maintained `x86` target emits GNU-style AMD64 SysV assembly from Bend's
-checked native program, then uses the declared assembler and linker to build
-a Linux ELF. Compiler algorithms live in
+The maintained `x86` target emits ELF64 objects or GNU-style AMD64 SysV assembly
+from Bend's checked native program. Direct objects are the executable-build
+default; assembly remains an explicit output. Both use the declared linker to
+build a Linux ELF, and only the assembly route runs an assembler. Compiler
+algorithms live in
 [`selfhost/src/back/x86/`](../../selfhost/src/back/x86/). The target shares the
 frontend, native lowering, verifier and sequential runtime with QBE; it does
 not invoke QBE's machine-code stage. The runtime contract is ABI11102.
@@ -15,15 +17,19 @@ current scope. Target support, finite qualification, bootstrap reproduction and
 performance are separate claims. The [current selector](../../selfhost/manifests/current.json)
 and its gate receipts bind the installed x86 N2 at `selfhost/dist/x86/bend`;
 the operational asset key is `x86-n2`. The
-[Phase183 report](../../implementation/phase183/README.md) records its source,
-actual generations, qualification and audited installation.
+[Phase189 report](../../implementation/phase189/README.md) records the newer
+Phase188 x86 source, actual object generations, qualification and completed
+installation. Its operational asset maps are published. The previous Phase183
+image and selector remain available for rollback.
 
 ## Current development pipeline
 
-Phase186 adds bounded optimizations to the maintained source; the installed
-Phase183 image remains a separately qualified artifact until release promotion.
-See the [Phase186 report](../../implementation/phase186/README.md) for actual
-candidate identities, runtime results and native qualification status.
+The Phase189 release selects the checked Phase188 source, including the bounded
+Phase186 optimizations and the shared typed machine boundary. JS/C/QBE retain
+their exact Phase182 image and source identities; x86 qualification belongs to
+its own source and image. See the [Phase186 report](../../implementation/phase186/README.md)
+for its original candidate runtime measurements and the
+[Phase188 report](../../implementation/phase188/README.md) for the typed refactor.
 
 The assembly backend reuses checked scalar-array and late native expansions,
 then applies stable copy elimination, scalar facts, dead-assignment removal and
@@ -61,7 +67,11 @@ selfhost/bend --target x86 input.bend --run -- first-argument second-argument
 ```
 
 An output ending in `.s` selects assembly emission; any other output name with
-`--target x86` selects a linked ELF. `--run` builds a temporary executable,
+`--target x86`, including `.o`, selects a linked ELF. In the Phase189 release,
+ELF builds and `--run` use direct Bend-emitted objects without an assembler.
+The authenticated selector records `defaultEmission: object`; a previous
+selector without that field retains assembly behavior for rollback. `--run`
+builds a temporary executable,
 preserves application arguments after `--`, and returns the program's status.
 `--live` selects live Base preparation; the default uses the authenticated
 prepared Base. The wrapper supplies the selected runtime's sequential arguments.
@@ -108,7 +118,9 @@ python3 -B selfhost/tools/build/request.py \
 ```
 
 Remove `--plan` and execute inside one [resource guard](build-retention.md) to
-capture `program.s`. To assemble and link in the same request, use `native.py`:
+capture `program.s`. Raw requests remain assembly by default; add `--emit object`
+to capture `program.o`. To emit an object and link in the same request, use
+`native.py`, whose x86 source-build default is object:
 
 ```sh
 python3 -B selfhost/tools/build-retention/guard.py \
@@ -122,24 +134,29 @@ python3 -B selfhost/tools/build-retention/guard.py \
     --source input.bend --out selfhost/build/current-x86-build --seconds 120
 ```
 
-Choose fresh paths and resource limits appropriate to the workload. The build
-retains `program.s`, `program.o`, `program` and its report. `--expected-assembly`
-checks complete emitted bytes against an existing independent reference;
+Choose fresh paths and resource limits appropriate to the workload. The default
+build retains `program.o`, `program` and its report. It records the emission
+format and skipped assembler. Use `--expected-object` to check complete object
+bytes against an existing independent reference. For the assembly route, add
+`--emit assembly --retain-ir` and choose fresh output and guard paths; that build
+also retains `program.s`, and `--expected-assembly` checks complete assembly bytes.
 `--expected-stdout` additionally executes the program and compares complete
 stdout. `--ir existing.s --target x86` constructs machine products from retained
-assembly without a compiler request. An alternate runtime needs explicit
+assembly without a compiler request; `--ir existing.o --target x86 --emit object`
+links retained object bytes. An alternate runtime needs explicit
 `--runtime`, `--runtime-abi 11102` and its actual
 `--runtime-argument-convention bend-rts-v1`; filenames do not establish an ABI.
 
-## Bootstrap the assembly compiler
+## Bootstrap the x86 compiler
 
 First acquire N0 from the checked x86 profile with a qualified QBE producer.
 Under the resource guard, use `native.py --target qbe` with that source and
 `--output-stage N0 --output-protocol native-x86-source-v1`. For example, select
 `--image-key qbe-n2 --host native --stage N2`, retain the source map above, and
 write to `selfhost/build/current-x86-seed`. N0's machine construction uses QBE;
-its executed compiler entry emits x86 assembly. The output protocol describes
-the acquired executable's interface, separately from the backend that built it.
+its executed compiler entry supports x86 assembly and object emission. The output
+protocol describes the acquired executable's interface, separately from the
+backend that built it.
 
 Then run the maintained chain on the **same** x86 source:
 
@@ -157,13 +174,21 @@ python3 -B selfhost/tools/build-retention/guard.py \
     --out selfhost/build/current-x86-chain --seconds 1800
 ```
 
-Actual N0 emits N1, actual N1 emits N2, and actual N2 emits S3. The chain compares
+The generic bootstrap deliberately retains assembly as its default. Actual N0
+emits N1, actual N1 emits N2, and actual N2 emits S3. The chain compares
 complete `n1/program.s`, `n2/program.s` and `s3/program.s`; S3 is emission, not
 another claimed executable generation. The `bend-native-bootstrap-chain` report
 records `target: x86` and `assemblyFixedPoint`. `machineIdentity` separately
 records assembly, object and ELF equality between N1 and N2. Object or ELF
 differences cannot skip N2 execution. A fixed point neither installs an image
 nor establishes semantic conformance.
+
+For an object chain, add `--emit object` and choose fresh output/guard paths.
+The tool compares `n1/program.o`, `n2/program.o` and `o3/program.o`, recording
+`objectFixedPoint`; O3 is an emission, not an executable generation. This generic
+recipe does not rename the release's real lineage: Phase189 reused a QBE-built
+N1 and object-built N2, then built an actual N3 from the same source and required
+complete object-byte equality with the object that produced N2.
 
 ## Benchmark and profile
 
@@ -175,6 +200,10 @@ with its paths resolved, and set the candidate role to `target: "x86"` with
 for a development image. Preserve its actual `host`, `stage`, `policy` and
 qualification status. Keep the upstream C role for independent comparison; do
 not reuse historical runtime measurements as a fresh denominator.
+This acquisition adapter currently uses raw requests and therefore selects
+assembly; it does not inherit `native.py`'s object default. Use explicitly
+recorded `--emit object` native builds for object comparisons, and consume the
+actual output format recorded in each receipt.
 
 ```sh
 python3 -B selfhost/tools/bench/acquire.py \
@@ -198,12 +227,14 @@ Use the compiler manifest for compiler-request timing. Program execution,
 compiler emission, complete source-to-executable construction and profiling
 have separate clocks and budgets. See the [benchmark guide](../../selfhost/tools/bench/README.md)
 for 20/60/300/600-second ceilings, rotation, larger case sets and quality gates.
-Static inspection accepts assembly directly:
+Static inspection accepts assembly directly. Use the assembly bootstrap above,
+or an explicit `native.py --emit assembly --retain-ir` build with its own receipt;
+the default object build has no `program.s`:
 
 ```sh
 python3 -B selfhost/tools/bench/inspect.py --target x86 \
-  --source selfhost/build/current-x86-build/program.s \
-  --binary selfhost/build/current-x86-build/program \
+  --source selfhost/build/current-x86-chain/n2/program.s \
+  --binary selfhost/build/current-x86-chain/n2/program \
   --out selfhost/build/current-x86-inspection
 ```
 
@@ -234,23 +265,25 @@ it does not reconstruct every inlined origin or turn source counts into time.
 The current finite source/output authority is the
 [64-case catalog](../../selfhost/tests/phase182/qualification-catalog.json),
 whose upstream pin must agree with the selected assets. Maintained
-`qualification.py --target x86 --suite all` uses this catalog through the
+`qualification.py --target x86 --emit object --suite all` uses this catalog through the
 asset declaration or explicit `--catalog`; historical default catalogs are
 separate authorities. Machine ABI controls, namespace hygiene, the ten current
 runtime controls, live/cache agreement, public-command behavior, and actual
-bootstrap each have their own receipts.
+bootstrap each have their own receipts. Qualification defaults to assembly for
+compatibility; always select `--emit object` explicitly for the object release gate.
 
-Installed N2 passes all 64 cases with no unsupported cases and all ten current
-runtime controls. Actual N1/N2/S3 emit identical complete assembly; N1/N2
-objects also agree. Their ELF files differ only in `.strtab`, with all allocated
-sections identical. The independently checked source has zero unresolved holes.
-These are finite execution, reproduction and source-acceptance results, not a
-new kernel proof or whole-compiler correctness theorem.
+The installed Phase189 x86 N2 has complete object-byte reproduction from its actual
+QBE-built N1 → object-built N2 → object-built N3 lineage. Its independently
+checked Phase188 source has zero unresolved holes. All 64 finite catalog cases
+and ten runtime controls pass through direct objects. All 14 installed
+public-command controls pass, with separate receipts in the Phase189 report.
+These are finite execution, reproduction and source-acceptance boundaries, not
+a new kernel proof or whole-compiler correctness theorem.
 
 The [Phase183 control adapters](../../selfhost/tests/phase183/abi-audit.md)
 preserve the fixture oracles, and the
-[Phase183 report](../../implementation/phase183/README.md) links the completed
-current-image receipts and audited release promotion. New source edits or
+[Phase189 report](../../implementation/phase189/README.md) links the current
+image receipts and completed release installation. New source edits or
 rebuilt images require their own relevant gates. The
 [Phase181 report](../../implementation/phase181/README.md) preserves historical
 ABI11101 measurements; they do not qualify the current ABI11102 target or imply
@@ -258,27 +291,24 @@ a current speed advantage over QBE.
 
 ## Current performance boundary
 
-The maintained Phase185 source now has qualified explicit QBE and assembly N2
-candidates. On44 timed cases from native45, assembly is5.56× our C backend and
-QBE1.48×. Selected assembly kernels improve1.34–6.35× over retained Phase183
-products; there is no full45 old-assembly score. Both new native chains reproduce,
-both pass64 finite cases, and assembly passes the ten current runtime controls.
-The installed selector remains Phase183 pending coherent all-target publication.
-See the [current performance report](../../implementation/phase185/README.md) and
-[explicit candidate commands](../../implementation/phase185/native-qualification.md).
+Phase188's controlled identical-source compiler build takes 205.019s through
+objects versus 197.400s through assembly. The previous object implementation
+took 315.348s: a 35.0% reduction, but the new object route still takes 1.039×
+assembly time. These are single controlled build observations, not confidence
+intervals or generated-program runtime measurements. The Phase189 default
+change does not claim a speed advantage over assembly.
 
-For the installed Phase183 version, native self-emission
-is about 1.96× the QBE-built seed time. The maintained fast-five screen finds
-assembly about 25–50× QBE time on three list/numeric kernels; these cases are
-not the full45 runtime score. The20s budget expires on the unchanged repetition
-counts. Use an explicit `--set fast --budget 300 --rounds 3` for this target;
-budget presets are ceilings, not a promise that every selected target finishes.
-One upstream batch remains below the resolution threshold, so this screen has
-no admitted set-wide geometric mean. See the [measured report](../../implementation/phase183/README.md).
+Phase188 preserves the corresponding Phase187 machine code and data on the full
+compiler and both routes of the 45-program corpus. The object and assembly
+formats still have different branch-relaxation/alignment policies. See the
+[Phase188 measurements](../../implementation/phase188/README.md) for exact scope;
+older [Phase186 runtime results](../../implementation/phase186/runtime-summary.md)
+retain their original image and workload identities.
 
-## Optional object output
+## Direct object output
 
-The experimental `--target x86 --emit object` option writes ELF64 using Bend,
-skipping the external assembler while retaining the existing selector and
-linker. See [object emission](x86-objects.md) for supported scope, limits,
-qualification and the distinction from eliminating assembly-text construction.
+The default native executable route writes ELF64 using Bend, skipping the
+external assembler while retaining the authenticated linker and runtime. Shared
+typed instructions feed both consumers; the object route never constructs or
+parses assembly text. See [object emission](x86-objects.md) for supported scope,
+limits, qualification and explicit assembly comparisons.

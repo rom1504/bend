@@ -7233,3 +7233,22 @@ reviewed bounded controls replace the latter. Runtime campaign297.798s; no
 compiler image rebuild/promotion. Exact-byte immutable hardlinks recovered305MiB
 without deleting unique artifacts or touching installed inodes. Methods,
 compressed raw observations, pins, chart and all per-case times are committed.
+
+
+## Phase189 — installed direct-object x86 default
+
+[Report](../implementation/phase189/README.md) ·
+[Evidence](../implementation/phase189/evidence.json).
+
+Actual N2→N3 complete object reproduction in331.693s; all64 direct-object cases
+(109.821s), runtime10 (12.131s) and14 installed public controls pass.139 mocked
+metadata/transport controls pass. Audited installation and operational asset
+publication select Phase188 object-built N2 with an explicit object default;
+.s remains assembly and older selectors retain their assembly default.
+JS/C/QBE component records are exactly preserved, with their canonical source
+snapshot authenticated independently of the new x86 source profile.
+
+No compiler algorithm change or new performance campaign. N2/N3 objects are
+identical; linked code/data match, while symbol metadata/build-id differ.
+Retained rollback and all image/source evidence. Verified archival reclaimed
+1.036GB before the gates; shared lock and 5GiB reserve preserved for target jobs.

@@ -17,13 +17,39 @@ from common import (ROOT, changed_inputs, clean_environment, fresh_output, pin,
 
 
 X86_OBJECT_FORMAT = 'elf64-le-amd64-relocatable'
+X86_ASSEMBLY_FORMAT = 'x86-64-att-assembly'
+
+
+class ExpectedArtifact(argparse.Action):
+    """Retain a typed reference option instead of losing it through aliases."""
+    def __call__(self, parser, namespace, value, option_string=None):
+        setattr(namespace, self.dest, value)
+        namespace.expected_emission = {
+            '--expected-assembly': 'assembly', '--expected-object': 'object',
+            '--expected-qbe': 'qbe',
+        }.get(option_string)
 
 
 def object_emission(args):
     value = getattr(args, 'emit', None)
-    require(value in (None, 'object'), 'Unsupported explicit emission format: ' + str(value))
-    require(value is None or args.target == 'x86', '--emit object requires --target x86')
+    require(value in (None, 'assembly', 'object'), 'Unsupported explicit emission format: ' + str(value))
+    require(value is None or args.target == 'x86', '--emit ' + str(value) + ' requires --target x86')
+    expected = getattr(args, 'expected_emission', None)
+    if expected in ('assembly', 'object'):
+        require(args.target == 'x86', '--expected-' + expected + ' requires --target x86')
+        require(expected == (value or 'assembly'),
+                '--expected-' + expected + ' requires --emit ' + expected)
+    elif expected == 'qbe':
+        require(args.target == 'qbe', '--expected-qbe requires --target qbe')
     return value == 'object'
+
+
+def x86_assembly_header(path):
+    """Refuse binary transport on the assembly path; the assembler checks syntax."""
+    with Path(path).open('rb') as stream:
+        header = stream.read(64)
+    require(header and not header.startswith(b'\x7fELF') and b'\x00' not in header,
+            'Expected x86 assembly text; binary bytes require --emit object')
 
 
 def x86_object_header(path):
@@ -155,8 +181,8 @@ def arguments(parser, *, source_required=True):
     parser.add_argument('--source', type=Path, required=source_required)
     parser.add_argument('--host', choices=['native', 'js'], required=source_required)
     parser.add_argument('--target', choices=['js', 'c', 'qbe', 'x86'], default='qbe')
-    parser.add_argument('--emit', choices=['object'],
-                        help='Opt-in x86-object binary stdout protocol; requires --target x86 and a supporting native image')
+    parser.add_argument('--emit', choices=['assembly', 'object'],
+                        help='x86 output format; request-only emission defaults to assembly, executable builds default to object')
     parser.add_argument('--stage', required=source_required,
                         help='Actual executing image generation, e.g. B1, B2, N1, N2')
     parser.add_argument('--mode', choices=['cache', 'live'], default='cache')
@@ -165,7 +191,8 @@ def arguments(parser, *, source_required=True):
     parser.add_argument('--engine-key', default='bun')
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--seconds', type=float, default=600)
-    parser.add_argument('--expected', '--expected-qbe', '--expected-assembly', '--expected-object', dest='expected', type=Path)
+    parser.add_argument('--expected', '--expected-qbe', '--expected-assembly', '--expected-object',
+                        dest='expected', type=Path, action=ExpectedArtifact)
     parser.add_argument('--plan', action='store_true', help='Print the authenticated plan; execute nothing')
 
 
@@ -223,9 +250,12 @@ def plan(args):
                   imageRuntime=metadata.get('linkedRuntime'),
                   runtimeRole='Image linked-runtime identity is distinct from target provider/build runtime.',
                   expected=pin(args.expected) if args.expected else None)
-    if object_output:
-        result['emissionFormat'] = X86_OBJECT_FORMAT
+    if args.target == 'x86':
+        result['emit'] = 'object' if object_output else 'assembly'
+        result['emissionFormat'] = X86_OBJECT_FORMAT if object_output else X86_ASSEMBLY_FORMAT
     if result['expected']:
+        if args.target == 'x86':
+            (x86_object_header if object_output else x86_assembly_header)(result['expected']['file'])
         inputs.append(result['expected'])
     if public:
         result['publicPackage'] = public
@@ -279,7 +309,7 @@ def plan(args):
         else:
             raise ValueError('Unsupported explicit native protocol: ' + str(protocol))
     else:
-        require(args.target != 'x86', 'x86 assembly requires an explicit native emitter image')
+        require(args.target != 'x86', 'x86 emission requires an explicit native emitter image')
         require(protocol in ('qbe-api-v1', 'typed-api-v1', 'hosted-api-v1'), 'Unsupported checked JS API protocol')
         require(metadata.get('checked') is True, 'Checked hosted API binding required')
         result['engine'] = assets.asset(document, args.engine_key)
@@ -309,8 +339,10 @@ def execute(args, request=None):
                   preparedBase=request['carrier'], imageRuntime=request['imageRuntime'],
                   byteContract='Complete emitted bytes; native stdout includes every IO.print LF, without normalization.',
                   timingScope='Whole child request including reads/output. Preflight and post-return identity checks excluded. Outer guard owns CPU/RSS/disk.')
+    if request['target'] == 'x86':
+        report['emit'] = 'object' if object_output else 'assembly'
+        report['emissionFormat'] = X86_OBJECT_FORMAT if object_output else X86_ASSEMBLY_FORMAT
     if object_output:
-        report['emissionFormat'] = X86_OBJECT_FORMAT
         report['byteContract'] = 'Complete raw ELF bytes on stdout; no text decoding, encoding, or newline normalization.'
     start = time.monotonic()
     prepared_inputs = []
@@ -328,6 +360,8 @@ def execute(args, request=None):
         require(report['product']['bytes'] > 0, 'Empty emitted product')
         if object_output:
             report['objectHeader'] = x86_object_header(product)
+        elif request['target'] == 'x86':
+            x86_assembly_header(product)
         if request['host'] == 'native' and request['imageMetadata']['protocol'] == 'native-c-source-v1':
             require(child['stdout']['bytes'] == 0, 'Unexpected native C stdout')
             report['telemetry'] = c_telemetry(verify(child['stderr']).read_bytes(), product.read_bytes())

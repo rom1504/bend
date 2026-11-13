@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Public x86 transport: selected Bend emitter, explicit machine tools, no codegen."""
+"""Public x86 transport: qualified release emission default, explicit .s assembly."""
 import argparse
 import json
 import os
@@ -21,7 +21,7 @@ ROOT = Path(__file__).resolve().parents[3]
 
 def options(argv):
     parser = argparse.ArgumentParser(prog='bend --target x86',
-        description='Emit .s assembly, build an ELF with -o, or build and --run. Existing outputs are refused.')
+        description='Emit .s assembly, or build an ELF with -o or --run using the installed emission default. Existing outputs are refused.')
     parser.add_argument('--target', choices=['x86'], default='x86')
     parser.add_argument('source', type=Path)
     destination = parser.add_mutually_exclusive_group(required=True)
@@ -55,6 +55,8 @@ def selected(root):
     require(isinstance(item, dict) and (item['host'], item['stage'], item['protocol']) ==
             ('native', 'N2', 'native-x86-source-v1') and item.get('capabilities') == ['x86'],
             'No qualified installed x86 N2 component')
+    default_emission = item.get('defaultEmission', 'assembly')
+    require(default_emission in ('assembly', 'object'), 'Unsupported installed x86 emission default')
     image = installed(item['image'], current, root)
     require(os.access(image['file'], os.X_OK), 'Installed x86 compiler is not executable')
     runtime = installed(current['providers']['qbeRuntime'], current, root)
@@ -64,6 +66,7 @@ def selected(root):
     declared_image, metadata = assets.image(document, 'x86-n2', 'native', 'N2', 'x86')
     require(declared_image == image and metadata.get('protocol') == item['protocol']
             and all(metadata['sourceIdentity'][k] == item['sourceIdentity'][k] for k in ('bytes','sha256'))
+            and metadata.get('defaultEmission', 'assembly') == default_emission
             and assets.runtime_argument_convention(metadata) == assets.runtime_argument_convention(item),
             'Installed x86 image/source/protocol binding differs from operational assets')
     provider = assets.runtime_provider(document, 'qbe-runtime')
@@ -122,7 +125,11 @@ def main(argv=None, root=ROOT):
     clean_environment()
     source = pin(args.source)
     output = output_path(args.output) if args.output else None
+    assembly = output is not None and output.suffix == '.s'
     document, provider, inputs = selected(root)
+    # A pre-object qualified release has no defaultEmission field. Keeping its
+    # assembly route also makes restoring the old selector/assets a rollback.
+    emission = 'assembly' if assembly else document['images']['x86-n2'].get('defaultEmission', 'assembly')
     inputs += [source, pin(__file__), pin(root/'selfhost/native.py'), pin(root/'selfhost/cli.mjs')]
     build_root = Path(os.path.abspath(os.environ.get('BEND_PUBLIC_BUILD_ROOT', root/'selfhost/build')))
     require(build_root.is_relative_to(root/'selfhost/build'), 'Public build directory must remain inside selfhost/build')
@@ -132,12 +139,12 @@ def main(argv=None, root=ROOT):
         work = Path(folder)
         options_ = argparse.Namespace(workspace=root, assets=Path(document['_manifest']['file']),
             image_key='x86-n2', image=None, image_receipt=None, source=Path(source['file']), host='native',
-            stage='N2', target='x86', mode='live' if args.live else 'cache', base_key='base',
+            stage='N2', target='x86', emit=emission,
+            mode='live' if args.live else 'cache', base_key='base',
             carrier_key='prepared-base', engine_key='bun', out=work/'build', seconds=600,
             expected=None, plan=False, ir=None, runtime_key='qbe-runtime', runtime=None,
             runtime_argument_convention=None, runtime_abi=None, retain_ir=False, expected_stdout=None,
             output_stage=None, output_protocol='native-x86-source-v1')
-        assembly = output is not None and output.suffix == '.s'
         report = request.execute(options_) if assembly else native.build(options_)
         diagnostics(report)
         if not report.get('complete'): return 1

@@ -48,9 +48,21 @@ def bindings(document, root, candidates=None):
         else:
             bound(row, root)
     source = document['source']
-    recipe = bound(source['recipe'], root)
-    assembled = assembly.maintained_assemble(recipe, path(root, source['root']), source['profile'])
-    require(same(dict(bytes=len(assembled), sha256=hashlib.sha256(assembled).hexdigest()), source['identity']), 'Maintained source differs from release source')
+    if source.get('kind') == 'bend-frozen-release-source-v1':
+        snapshot = source['snapshot']
+        require(snapshot['file'] in files and same(snapshot, files[snapshot['file']])
+                and same(snapshot, source['identity']), 'Frozen canonical source must be an exact installed artifact')
+        bound(candidates[snapshot['file']] if candidates is not None else snapshot, root)
+        require(same(source['origin']['identity'], source['identity'])
+                and source['origin']['recipe'] == source['recipe']
+                and source['origin']['root'] == source['root']
+                and source['origin']['profile'] == source['profile'], 'Frozen source provenance differs')
+        recipe = None
+    else:
+        require('snapshot' not in source and 'kind' not in source, 'Unknown canonical source contract')
+        recipe = bound(source['recipe'], root)
+        assembled = assembly.maintained_assemble(recipe, path(root, source['root']), source['profile'])
+        require(same(dict(bytes=len(assembled), sha256=hashlib.sha256(assembled).hexdigest()), source['identity']), 'Maintained source differs from release source')
     components = document['components']
     require(set(components) in ({'qbe', 'js', 'nativeCli'}, {'qbe', 'js', 'nativeCli', 'x86'}), 'All base components and only recognized targets required')
     contracts = [('qbe','native','N2','qbe-source-v1'),('js','js','B2','hosted-api-v1'),('nativeCli','native','N1','native-public-cli-v1')]
@@ -65,9 +77,21 @@ def bindings(document, root, candidates=None):
             require(os.access(bound(candidates[item['image']['file']] if candidates is not None else item['image'],root),os.X_OK), 'Native component is not executable')
         if key == 'x86':
             profile = item['sourceProfile']
-            require(profile['recipe'] == source['recipe'] and profile['root'] == source['root']
-                    and profile['profile'] == 'x86', 'Assembly must use the maintained x86 source profile')
-            emitted = assembly.maintained_assemble(recipe, path(root, profile['root']), 'x86')
+            variant = item.get('qualificationVariant')
+            require(variant in (None, 'direct-object-v1'), 'Unknown x86 qualification variant')
+            require(item.get('defaultEmission', 'assembly') in ('assembly', 'object'), 'Unknown x86 default output')
+            require(item.get('defaultEmission', 'assembly') != 'object' or variant == 'direct-object-v1',
+                    'Object default requires explicit object qualification')
+            require(profile['profile'] == 'x86', 'Assembly must use the maintained x86 source profile')
+            if variant == 'direct-object-v1':
+                x86_recipe = bound(profile['recipe'], root)
+                require(json.loads(x86_recipe.read_text()).get('upstream') == document['upstream'],
+                        'Independent x86 recipe upstream differs')
+            else:
+                require(recipe is not None and profile['recipe'] == source['recipe'] and profile['root'] == source['root'],
+                        'Legacy assembly must use the canonical maintained source recipe')
+                x86_recipe = recipe
+            emitted = assembly.maintained_assemble(x86_recipe, path(root, profile['root']), 'x86')
             require(same(dict(bytes=len(emitted), sha256=hashlib.sha256(emitted).hexdigest()), item['sourceIdentity']), 'Assembly profile differs from selected compiler source')
             require(item.get('runtimeArgumentConvention') == 'bend-rts-v1' and item.get('linkedRuntimeABI') == 11102
                     and same(item.get('linkedRuntime'), document['providers']['qbeRuntime']), 'Assembly runtime binding differs')
@@ -124,6 +148,8 @@ def audit(file, root):
 
 def audit_x86(current, promotion, checked, root):
     """Actual assembly generations and independent source/behavior gates."""
+    if current['components']['x86'].get('qualificationVariant') == 'direct-object-v1':
+        return audit_x86_object(current, promotion, checked, root)
     component = current['components']['x86']
     image, source, runtime = component['image'], component['sourceIdentity'], current['providers']['qbeRuntime']
     names = promotion['x86Qualification']
@@ -184,6 +210,165 @@ def audit_x86(current, promotion, checked, root):
             and same(process['stdout'],reproduced['product']) and process.get('complete') is True
             and process.get('exitCode') == 0 and not process.get('timedOut') and not process.get('error')
             and process['stderr']['bytes'] == 0, 'Actual N2 same-source assembly re-emission required')
+    audit_x86_semantics(current, promotion, behavior, runtime_controls, root)
+
+
+X86_OBJECT = 'elf64-le-amd64-relocatable'
+
+
+def clean(report):
+    require(report.get('complete') is True and not report.get('error')
+            and not report.get('changedInputs'), 'Incomplete or changed nested evidence')
+
+
+def source_checked(report, source, upstream):
+    require(report.get('kind') == 'bend-independent-source-check' and report.get('version') == 1
+            and report.get('phase') == 'complete' and report.get('emittedCode') is False
+            and report.get('executedCandidate') is False
+            and report.get('checked') is True and report.get('typeAccepted') is True
+            and report.get('unresolvedHoles') == 0 and same(report['source'], source)
+            and report['upstream'] == upstream, 'Independent same-source/upstream check required')
+
+
+def native_generation(report, producer, source, runtime, stage, target):
+    """Authenticate an executed producer; generation labels never imply lineage."""
+    clean(report)
+    binding, request = report['imageBinding'], report['request']
+    metadata = request['imageMetadata']
+    require(report.get('kind') == 'bend-native-build' and report.get('target') == target
+            and binding.get('complete') is True
+            and (binding['host'], binding['stage'], binding['protocol']) ==
+                ('native', stage, 'native-x86-source-v1')
+            and binding['targets'] == ['x86'] and same(binding['image'], report['binary'])
+            and same(binding['sourceIdentity'], source) and same(request['source'], source)
+            and same(report['runtime'], runtime) and same(binding['linkedRuntime'], runtime)
+            and report.get('runtimeABI') == binding.get('linkedRuntimeABI') == 11102
+            and report.get('runtimeArgumentConvention') == binding.get('runtimeArgumentConvention') == 'bend-rts-v1',
+            'Actual same-source/current-runtime object generation required: '+stage)
+    require((request['host'], request['stage'], request['target']) == ('native', producer['stage'], target)
+            and (report['host'], report['stage']) == ('native', producer['stage'])
+            and request.get('outputContract') == 'stdout' and same(request['image'], producer['image'])
+            and (metadata['host'], metadata['stage'], metadata['protocol']) ==
+                ('native', producer['stage'], producer['protocol'])
+            and target in metadata.get('targets', []) and same(metadata['sourceIdentity'], producer['sourceIdentity'])
+            and same(metadata.get('linkedRuntime'), runtime) and metadata.get('linkedRuntimeABI') == 11102
+            and metadata.get('runtimeArgumentConvention') == 'bend-rts-v1'
+            and same(binding['producer'], request['image'])
+            and (binding['producerHost'], binding['producerStage']) == (request['host'], request['stage']),
+            'Actual producer binding differs: '+stage)
+    require(report.get('compilerCommand') == request.get('command')
+            and request['command'][0] == request['image']['file'], 'Actual compiler command differs')
+    if target == 'qbe':
+        processes = [row for row in report.get('processes', []) if row.get('command') == request['command']]
+        require(len(processes) == 1 and processes[0].get('status') == 0
+                and report.get('compilerExitCode') == report.get('qbeExitCode') == 0
+                and report['compilerStderr']['bytes'] == report['qbeStderr']['bytes'] == 0,
+                'Actual successful QBE producer process required')
+    if target == 'x86':
+        jobs = [row for row in report.get('jobs', []) if row.get('label') == 'compiler']
+        require(len(jobs) == 1 and jobs[0].get('command') == request['command']
+                and isinstance(jobs[0].get('started'), (int, float))
+                and jobs[0].get('complete') is True and jobs[0].get('exitCode') == 0
+                and not jobs[0].get('timedOut') and not jobs[0].get('error')
+                and jobs[0]['stderr']['bytes'] == 0 and same(jobs[0]['stdout'], report['object']),
+                'Actual successful object compiler process required')
+        require(report.get('emissionFormat') == request.get('emissionFormat') ==
+                binding.get('producerEmissionFormat') == X86_OBJECT
+                and report.get('assemblerSkipped') is True and report.get('compilerExitCode') == 0
+                and report['compilerStderr']['bytes'] == 0
+                and same(report['object'], report['objectDigest']), 'Direct-object execution evidence required')
+    return binding
+
+
+def finite_catalog(report, image, runtime, catalog_pin, catalog, target):
+    ids = {case['id'] for case in catalog['cases']}
+    require(report.get('kind') == 'bend-finite-qualification' and report.get('passed') is True
+            and (report['host'], report['stage'], report['target']) == ('native', 'N2', target)
+            and report['upstream'] == catalog['upstream'] and same(report['image'], image)
+            and same(report['catalog'], catalog_pin) and any(same(row, runtime) for row in report['inputs'])
+            and report['counts'] == {'pass': 64, 'fail': 0, 'unsupported': 0}
+            and len(report['rows']) == len(report['selected']) == len(set(report['selected'])) == 64
+            and {row['id'] for row in report['rows']} == set(report['selected']) == ids
+            and all(row['status'] == 'pass' for row in report['rows']), 'Complete actual producer native64 required')
+
+
+def audit_x86_object(current, promotion, checked, root):
+    component = current['components']['x86']
+    image, source, runtime = component['image'], component['sourceIdentity'], current['providers']['qbeRuntime']
+    names = promotion['x86Qualification']
+    roles = ['producerSource', 'producerBuild', 'producerReproduction', 'producerBehavior',
+             'sourceCheck', 'n1', 'n2', 'reproduction', 'behavior', 'runtime']
+    require(set(names) == set(roles) and set(names.values()) <= set(component['gates']),
+            'Complete explicit direct-object mandatory gates required')
+    qcheck, qbuild, qrepeat, qbehavior, check, n1, n2, n3, behavior, controls = (checked[names[k]] for k in roles)
+    producer = qbuild['imageBinding']
+    require(qbuild.get('kind') == 'bend-native-build' and qbuild.get('target') == 'qbe'
+            and producer.get('complete') is True
+            and (producer['host'], producer['stage'], producer['protocol']) == ('native', 'N2', 'qbe-source-v1')
+            and producer.get('targets') == ['qbe'] and same(producer['image'], qbuild['binary'])
+            and same(qbuild['runtime'], runtime) and same(producer['linkedRuntime'], runtime)
+            and qbuild.get('runtimeABI') == producer.get('linkedRuntimeABI') == 11102
+            and qbuild.get('comparedToReference') is True and qbuild.get('sourceIR') is None
+            and same(qbuild['request']['source'], producer['sourceIdentity']), 'Qualified actual QBE N2 producer required')
+    source_checked(qcheck, producer['sourceIdentity'], current['upstream'])
+    process, request = qrepeat['process'], qrepeat['request']
+    require(qrepeat.get('kind') == 'bend-build-request' and qrepeat.get('byteExact') is True
+            and (qrepeat['host'], qrepeat['stage'], qrepeat['target']) == ('native', 'N2', 'qbe')
+            and same(qrepeat['image'], producer['image']) and same(qrepeat['source'], producer['sourceIdentity'])
+            and same(request['image'], producer['image']) and same(request['source'], producer['sourceIdentity'])
+            and same(qrepeat['product'], qbuild['irDigest']) and same(request['expected'], qrepeat['product'])
+            and process.get('command') == request.get('command') and isinstance(process.get('command'), list)
+            and process.get('complete') is True and process.get('exitCode') == 0
+            and not process.get('error') and not process.get('timedOut')
+            and process['stderr']['bytes'] == 0 and same(process['stdout'], qrepeat['product']),
+            'Actual QBE producer same-source reproduction required')
+    catalog_pin = promotion['x86QualificationCatalog']
+    catalog = json.loads(bound(catalog_pin, root).read_text())
+    finite_catalog(qbehavior, producer['image'], runtime, catalog_pin, catalog, 'qbe')
+    source_checked(check, source, current['upstream'])
+    for report, stage, target in [(n1, 'N1', 'qbe'), (n2, 'N2', 'x86'), (n3, 'N3', 'x86')]:
+        producer = native_generation(report, producer, source, runtime, stage, target)
+        # Base/carrier/source-mode must be identical across the actual chain.
+        req, first = report['request'], n1['request']
+        require(req['mode'] == first['mode'] and same(req['base'], first['base'])
+                and same(req['carrier'], first['carrier']) and req['stamp'] == first['stamp'],
+                'Native generation preparation differs')
+        bound(report['binary'], root)
+    require(same(n2['binary'], image) and n3.get('comparedToReference') is True
+            and same(n3['expectedObject'], n2['object']) and same(n3['request']['expected'], n2['object'])
+            and same(n3['objectDigest'], n2['objectDigest']), 'Actual N2 to N3 exact object reproduction required')
+    bound(n2['object'], root); bound(n3['object'], root)
+    audit_x86_semantics(current, promotion, behavior, controls, root, object_output=True)
+    require(behavior.get('emit') == 'object' and behavior.get('emissionFormat') == X86_OBJECT,
+            'Object-emitting finite gate required')
+    cases = {case['id']: case for case in catalog['cases']}
+    for row in behavior['rows']:
+        case = cases[row['id']]
+        require(same(row['source'], case['source']) and row['expected'] == case['expect'],
+                'Finite gate source/oracle differs')
+        emission = json.loads(bound(row['emission'], root).read_text())
+        require(emission['request'].get('emissionFormat') == X86_OBJECT
+                and same(emission['image'], image) and same(emission['source'], row['source']),
+                'Finite object-emission binding differs')
+        if 'refusal' in case:
+            require(row.get('expectedStage') == case['refusal']['phase'] and row.get('rule') == case['refusal'],
+                    'Finite refusal stage/rule differs')
+        else:
+            build = json.loads(bound(row['build'], root).read_text()); clean(build)
+            require(build.get('emissionFormat') == X86_OBJECT and build.get('assemblerSkipped') is True
+                    and same(build['sourceObject'], emission['product']) and same(build['runtime'], runtime),
+                    'Finite executed object build differs')
+    for row in controls['rows']:
+        build = json.loads(bound(row['receipt'], root).read_text()); clean(build)
+        require(build.get('emissionFormat') == X86_OBJECT and build.get('assemblerSkipped') is True
+                and (build['host'], build['stage'], build['target']) == ('native', 'N2', 'x86')
+                and same(build['request']['image'], image) and same(build['request']['source'], row['source'])
+                and same(build['runtime'], runtime), 'Runtime control must build direct object with selected N2')
+
+
+def audit_x86_semantics(current, promotion, behavior, runtime_controls, root, object_output=False):
+    component = current['components']['x86']
+    image, runtime = component['image'], current['providers']['qbeRuntime']
     catalog_pin = promotion['x86QualificationCatalog']
     catalog = json.loads(bound(catalog_pin, root).read_text())
     require(catalog.get('kind') == 'bend-qualification-catalog' and catalog.get('version') == 1

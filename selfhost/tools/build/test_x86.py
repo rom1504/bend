@@ -35,7 +35,7 @@ class X86Controls(unittest.TestCase):
         self.assembly = b'.text\n# exact assembly fixture\n\n'
 
     def xargs(self, **changes):
-        values = dict(target='x86', output_protocol='native-x86-source-v1')
+        values = dict(target='x86', emit='assembly', output_protocol='native-x86-source-v1')
         values.update(changes)
         return self.args(**values)
 
@@ -182,9 +182,9 @@ class X86ObjectControls(unittest.TestCase):
         self.assertEqual(live['command'], prefix + [str(self.source), str(self.base), 'live', '', ''])
         self.assertEqual(cached['emissionFormat'], request.X86_OBJECT_FORMAT)
         self.assertEqual(cached['imageMetadata']['protocol'], 'native-x86-source-v1')
-        default = request.plan(self.xargs())
+        default = request.plan(self.xargs(emit=None))
         self.assertEqual(default['command'][-6], 'x86')
-        self.assertNotIn('emissionFormat', default)
+        self.assertEqual(default['emissionFormat'], request.X86_ASSEMBLY_FORMAT)
 
     def test_object_plan_does_not_require_or_pin_assembler(self):
         self.doc['assets'].pop('assembler'); self.save()
@@ -239,7 +239,7 @@ class X86ObjectControls(unittest.TestCase):
         self.assertEqual(Path(result['object']['file']).read_bytes(), self.object_bytes)
         self.assertNotIn('retainedObject', result)
 
-    def test_object_mode_is_explicit_and_target_bound(self):
+    def test_object_mode_is_target_bound_and_reference_option_keeps_type(self):
         for function in (request.plan, native.build):
             with self.assertRaisesRegex(ValueError, 'requires --target x86'):
                 function(self.oargs(target='qbe', plan=True))
@@ -249,10 +249,10 @@ class X86ObjectControls(unittest.TestCase):
                                     '--target', 'x86', '--emit', 'object', '--expected-object', 'reference.o'])
         self.assertEqual(parsed.emit, 'object')
         self.assertEqual(parsed.expected, Path('reference.o'))
+        self.assertEqual(parsed.expected_emission, 'object')
         raw = self.file('object-named.s', self.object_bytes)
-        result = native.build(self.xargs(plan=True, ir=raw, source=None, image_key=None, host=None, stage=None))
-        self.assertIn('sourceAssembly', result)
-        self.assertNotIn('emissionFormat', result)
+        with self.assertRaisesRegex(ValueError, 'Expected x86 assembly text'):
+            native.build(self.xargs(emit=None, plan=True, ir=raw, source=None, image_key=None, host=None, stage=None))
 
     def test_elf_header_rejects_wrong_architecture_kind_and_truncation(self):
         cases = [b'.text\n', self.object_bytes[:63]]
@@ -314,12 +314,54 @@ class X86ObjectControls(unittest.TestCase):
         self.assertIn('Unexpected compiler stderr', result['error'])
         self.assertEqual(Path(result['product']['file']).read_bytes(), self.object_bytes)
 
-    def test_textual_qualification_and_bootstrap_decline_object_mode(self):
-        with self.assertRaisesRegex(ValueError, 'Object bootstrap'):
-            bootstrap.chain(self.oargs())
-        with self.assertRaisesRegex(ValueError, 'Object emission requires separate qualification'):
-            qualification.qualify(self.oargs())
-        self.assertFalse(self.oargs().out.exists())
+    def test_executable_default_is_object_and_does_not_mutate_request_args(self):
+        self.doc['assets'].pop('assembler'); self.save()
+        args = self.xargs(emit=None)
+        with patch('native.run', side_effect=self.fake_run):
+            result = native.build(args)
+        self.assertTrue(result['complete'], result)
+        self.assertEqual(result['emit'], 'object')
+        self.assertEqual(result['emissionSelection'], 'executable default')
+        self.assertEqual([row['label'] for row in result['jobs']], ['compiler', 'link'])
+        self.assertEqual(result['request']['command'][-6], 'x86-object')
+        self.assertIsNone(args.emit)
+
+    def test_assembly_reference_route_is_preserved_without_emit(self):
+        self.assembly = b'.text\n# exact assembly\n\n'
+        expected = self.file('expected.s', self.assembly)
+        with patch('native.run', side_effect=self.fake_run):
+            result = native.build(self.xargs(emit=None, expected=expected))
+        self.assertTrue(result['complete'], result)
+        self.assertEqual(result['emit'], 'assembly')
+        self.assertEqual(result['emissionSelection'], 'assembly input/reference')
+        self.assertEqual([row['label'] for row in result['jobs']], ['compiler', 'assemble', 'link'])
+
+    def test_typed_assembly_reference_does_not_depend_on_filename(self):
+        expected = self.file('reference.bytes', b'.text\n')
+        result = native.build(self.xargs(emit=None, plan=True, expected=expected, expected_emission='assembly'))
+        self.assertEqual(result['emit'], 'assembly')
+        with self.assertRaisesRegex(ValueError, 'requires --emit assembly'):
+            native.build(self.oargs(plan=True, expected=expected, expected_emission='assembly'))
+
+    def test_request_requires_explicit_object_for_typed_object_reference(self):
+        expected = self.file('reference.o', self.object_bytes)
+        with self.assertRaisesRegex(ValueError, 'requires --emit object'):
+            request.plan(self.xargs(emit=None, expected=expected, expected_emission='object'))
+
+    def test_supplied_object_uses_default_without_assembler(self):
+        self.doc['assets'].pop('assembler'); self.save()
+        source = self.file('supplied.o', self.object_bytes)
+        with patch('native.run', side_effect=self.fake_run):
+            result = native.build(self.xargs(emit=None, ir=source, source=None, image_key=None, host=None, stage=None))
+        self.assertTrue(result['complete'], result)
+        self.assertEqual([row['label'] for row in result['jobs']], ['link'])
+
+    def test_binary_assembly_reference_is_rejected_before_execution(self):
+        expected = self.file('wrong.s', self.object_bytes)
+        with self.assertRaisesRegex(ValueError, 'Expected x86 assembly text'):
+            native.build(self.xargs(emit=None, expected=expected))
+        self.assertFalse(self.calls)
+        self.assertFalse(self.xargs().out.exists())
 
 
 if __name__ == '__main__': unittest.main()

@@ -205,8 +205,7 @@ def execute_case(args, case, document, out, root):
 
 def qualify(args):
     root = workspace(args.workspace)
-    require(not request.object_emission(args),
-            'Object emission requires separate qualification; this catalog adapter retains textual emission')
+    object_output = request.object_emission(args)
     require(args.host and args.stage and (args.image_key or args.image), 'Explicit executing host, stage and image required')
     require(not args.source and not args.expected, 'Catalog owns sources and output oracles')
     timeout(args.build_seconds); timeout(args.execute_seconds)
@@ -226,7 +225,8 @@ def qualify(args):
             'Explicit image upstream differs from catalog')
     inputs += preflight['inputs']
     for key in ([args.program_engine_key] if args.target == 'js' else
-                (['qbe'] if args.target == 'qbe' else []) + ['assembler', 'linker', args.runtime_key] if args.target in ('qbe', 'x86') else
+                (['qbe'] if args.target == 'qbe' else []) +
+                ([] if object_output else ['assembler']) + ['linker', args.runtime_key] if args.target in ('qbe', 'x86') else
                 [document['toolchains']['c']['compiler']]):
         inputs.append(assets.asset(document, key))
     report = dict(kind='bend-finite-qualification', version=1, complete=False, passed=False,
@@ -238,6 +238,9 @@ def qualify(args):
                         'No performance, kernel-proof, unrestricted-provider, GPU or multi-mutator qualification.',
                   unsupportedPolicy='Unsupported is retained and prevents passed=true; it is never a pass.',
                   historicalPolicy='Historical catalog fields are provenance only; no historical file is read.')
+    if args.target == 'x86':
+        report['emit'] = 'object' if object_output else 'assembly'
+        report['emissionFormat'] = request.X86_OBJECT_FORMAT if object_output else request.X86_ASSEMBLY_FORMAT
     if args.plan:
         report['planOnly'] = True
         report['supported'] = [c['id'] for c in cases if supported(c, args)]

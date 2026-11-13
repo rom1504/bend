@@ -14,6 +14,7 @@ HELP = """Usage:
   bend --target x86 FILE.bend --run [--live] [-- ARGS]
 
 A .s output selects x86 even without --target. Compile emitted C separately.
+Executable builds and --run use the installed release's emission default.
 --live prepares Base without its cache. Existing outputs are refused;
 the output directory must already exist. Use -- before x86 program arguments.
 --help, -h show this help; --version reports the selected native C compiler.

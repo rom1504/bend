@@ -6,8 +6,11 @@ maintained build/request adapters and copied fixtures. The original source and
 oracle hashes remain in [the lineage record](consolidation-lineage.json).
 Historical paths there are provenance, not executable dependencies.
 
-The reference revision is `059266225b77c8ca256ac6b25ee5c21449bab151`.
-The catalog has 61 whole-output positives and three stage-specific refusals.
+The checked-in default catalog retains reference revision
+`059266225b77c8ca256ac6b25ee5c21449bab151`; current release assets select the
+[Phase182 64-case catalog](../../tests/phase182/qualification-catalog.json) at
+`9a4223d577ba56a0cb53d1fd952d2b481c38930f`. The selected catalog's upstream revision
+must match the assets. Each has 61 whole-output positives and three stage-specific refusals.
 Expected output is independent of the candidate: retained hand-written or
 previously authenticated reference oracles are identified per case. These are
 regression controls, not fresh held-out observations or a full-language proof.
@@ -57,6 +60,18 @@ the manifest's explicit C compiler, flags, include paths and libraries. QBE uses
 the bounded maintained relay, aligned assembler and exact runtime object.
 Native executions use one Bend mutator and GPU off. This does not qualify
 parallel, GPU, arbitrary foreign-provider or callback behavior.
+
+For the Phase189 x86 release, use `--image-key x86-n2 --host native --stage N2
+--target x86 --emit object --mode cache --suite all` with the current assets and
+a fresh output under the outer guard. During candidate qualification, substitute
+the candidate's explicit `--image` and `--image-receipt`. Object cases emit and
+link `program.o` without running the assembler. Qualification still defaults to
+assembly, even though x86 `native.py` source builds and the Phase189 public ELF
+and `--run` routes default to objects. Always record `--emit object` or
+`--emit assembly` explicitly when comparing or qualifying formats; exact object
+bytes are binary artifacts, not assembly text. The ten current runtime controls,
+public-command gates and actual reproduction remain separate gates described in
+the [Phase189 report](../../../implementation/phase189/README.md).
 
 ## Result meaning
 

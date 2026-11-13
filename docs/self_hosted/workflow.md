@@ -8,8 +8,8 @@ inputs or outputs, not editable alternative compiler sources.
 
 The [consolidation design](../../design/repository-consolidation/README.md)
 records migration boundaries; the [Phase182 report](../../implementation/phase182/README.md)
-and [Phase183 assembly report](../../implementation/phase183/README.md)
-record current installed qualification. Current tools live under
+and [Phase189 object-default report](../../implementation/phase189/README.md)
+record component identities and qualification. Current tools live under
 [`tools/build/`](../../selfhost/tools/build/),
 [`tools/bench/`](../../selfhost/tools/bench/README.md),
 [`tools/profiler/`](../../selfhost/tools/profiler/README.md),
@@ -33,11 +33,17 @@ selfhost/bend --target x86 input.bend --run
 The installed [current selector](../../selfhost/manifests/current.json) binds
 JS B2, public native C N1, qualified QBE N2 and x86 N2 to their recorded source and
 qualification evidence. Phase182 supplied the first three from its recorded snapshot08
-source, with an explicit thin profile for the public C CLI. Phase183 adds x86 N2
-from its independently checked `x86` entry profile. The default
+source, with an explicit thin profile for the public C CLI. Phase189 installs x86
+N2 from the independently checked Phase188 `x86` entry profile, without rebinding
+the JS/C/QBE artifacts to that newer source. Its installation and authenticated
+operational asset publication are complete. The default
 `qbe-n2` asset points to `selfhost/dist/qbe/bend`; `qbe-api` selects the separately
 checked, cache-only B1 API at `selfhost/dist/qbe/hosted-api.mjs`. The `x86-n2`
 asset selects `selfhost/dist/x86/bend` with `native-x86-source-v1` and ABI11102.
+The Phase189 x86 release records `defaultEmission: object` for ELF builds and
+`--run`; explicit `.s` output stays assembly. An older selector without that
+field retains assembly behavior. The previous Phase183 image and selector remain
+available for rollback.
 Native P140/2
 positive reuse has its own gate; native error recovery and object-unit support
 are not inferred from that result. A new assembly, successful small differential run or
@@ -47,9 +53,11 @@ imports/effects and image identities change only through qualified promotion.
 The installed source incorporates the earlier Phase175/177 frontend improvements
 and Phase178 cleanup, plus the upstream2.0.40 compatibility port. The selected
 QBE N2 has actual same-source N1/N2/Q3 reproduction. The JS B2 has actual B3
-self-reproduction and a fresh own-source check. Installed x86 N2 has actual
-N1/N2/S3 assembly reproduction, all 64 finite cases with no unsupported cases,
-and ten current runtime controls. Its scope is sequential AMD64 SysV.
+self-reproduction and a fresh own-source check. The installed Phase189 x86 N2 has
+actual QBE-built N1 → object-built N2 → object-built N3 reproduction with complete
+object-byte equality. All 64 finite catalog cases and ten runtime controls pass
+through objects, and all 14 installed public-command controls pass. Its scope
+is sequential AMD64 SysV.
 These gates establish reproduction and finite tested behavior; source acceptance
 with zero unresolved holes is not a kernel proof or whole-compiler correctness.
 
@@ -68,7 +76,7 @@ Generated program targets remain available through explicit interfaces:
 | JavaScript | `node selfhost/cli.mjs input.bend -o output.mjs`; maintained `request.py --host js --target js --mode live` also accepts an explicitly checked hosted API and its binding. |
 | C | `selfhost/bend input.bend -o output.c`; maintained `request.py --host native --target c` accepts the matching native-C or public-CLI binding and `assets-c-request.json`. The pinned C toolchain builds emitted C separately. |
 | QBE/native | Maintained `request.py --target qbe` emits IR; `native.py` constructs its executable using the explicit QBE/runtime/assembler/linker assets. The public CLI is not a QBE selector. |
-| x86 assembly/native | `selfhost/bend --target x86 input.bend -o output.s` emits assembly; `-o output` builds an ELF and `--run` executes it using installed x86 N2. Maintained `request.py`, `native.py` and `bootstrap.py` accept explicit x86 images and receipts; see [assembly](ASSEMBLY.md). |
+| x86 object/assembly/native | `selfhost/bend --target x86 input.bend -o output.s` emits assembly; `-o output` builds an ELF and `--run` executes it using installed x86 N2. The Phase189 release defaults executable construction to direct objects. Maintained `request.py`, `native.py` and `bootstrap.py` accept explicit x86 images and receipts; see [x86 usage](ASSEMBLY.md). |
 
 Host and stage must match the selected image. The original 45 benchmark catalog
 uses JS callable libraries; its native 45 catalog uses the corresponding C/QBE/x86
@@ -80,7 +88,7 @@ The maintained source has six entry profiles:
 | Profile | Entry/API purpose | Qualification boundary |
 | --- | --- | --- |
 | `qbe` | Ordinary direct-QBE compiler entry | Exact extraction can inherit its frozen source identity; edits require fresh checking and relevant native gates. |
-| `x86` | Direct AMD64 SysV assembly entry, `native-x86-source-v1` | Explicit maintained backend modules and reachable entry closure; independent source checks, ABI/runtime controls and native qualification bind this profile's own bytes. |
+| `x86` | Direct AMD64 SysV assembly/object entry, `native-x86-source-v1` | Explicit maintained backend modules and reachable entry closure; independent source checks, ABI/runtime controls and native qualification bind this profile's own bytes. |
 | `native-c` | The same source with the native C request entry | Shared source does not by itself inherit the older installed C compiler's full qualification. |
 | `js-api` | The same source without a CLI main, for checked hosted APIs | Exports and the executing JS engine are separate authenticated image inputs. |
 | `qbe-policy` | QBE entry with explicit optimization-policy selection | Experimental policy behavior requires its own gates; it does not replace the ordinary installed entry. |
@@ -172,22 +180,35 @@ checker and exact optional output oracle remain separate from independent source
 checking. `--mode live` selects live Base only when the image advertises it;
 prepared and live modes must stay distinct in results.
 
-`native.py` adds bounded QBE→assembly→object→link construction, or direct
-x86 assembly→object→link construction, using the manifest's explicit runtime/toolchain
-policy. It accepts an authenticated compiler request or a retained `--ir` input
-(QBE text or, with `--target x86`, assembly). Use `--expected` for an independent
-complete emitted-source reference and `--expected-stdout` for a complete program-output reference.
+`native.py` adds bounded QBE→assembly→object→link construction, or direct x86
+object→link construction, using the manifest's explicit runtime/toolchain policy.
+For x86 source builds it defaults to `--emit object`; use `--emit assembly` for
+assembly→object→link. Raw `request.py --target x86` requests still default to
+assembly; add `--emit object` for binary output. Both formats consume the same
+typed machine instructions, and the object path neither renders nor parses
+assembly.
+
+The native builder accepts an authenticated compiler request or retained `--ir`
+(QBE text, x86 assembly or an x86 object). With x86, `.s`/`.asm` IR selects assembly
+and other IR filenames select objects; explicit `--emit` sets the format.
+Use `--expected-assembly` or `--expected-object` for complete format-specific byte
+comparison and `--expected-stdout` for a complete program-output reference.
 The x86 route requires runtime ABI11102 and an explicit AMD64 SysV toolchain;
 it does not invoke QBE. An alternate runtime object needs its own
 `--runtime-abi` and `--runtime-argument-convention` bindings.
-Retaining textual IR is optional for ordinary work and explicit when qualification
-requires it. Existing objects may be reused only under the separately documented
+Use `--emit assembly --retain-ir` when an ownership map or text inspection needs
+`program.s`; object builds retain `program.o` and produce no assembly text.
+Existing objects may be reused only under the separately documented
 identity-based cache policy; a cold-build comparison must construct fresh objects.
 
 `bootstrap.py` runs actual parent→N1→N2 generations and executes N2 to observe
-Q3 for QBE or S3 for x86. The x86 chain compares complete `program.s` products
-and reports `assemblyFixedPoint`; assembly, object and ELF identities remain
-separate. See the [x86 seed and bootstrap commands](ASSEMBLY.md#bootstrap-the-assembly-compiler).
+Q3 for QBE or S3 for x86. Its x86 default remains assembly for compatibility:
+complete `program.s` products establish `assemblyFixedPoint`. Explicit
+`--target x86 --emit object` compares complete `program.o` products and reports
+`objectFixedPoint`; its final O3 is emission only, not an executable N3. Phase189
+separately built an actual N3 from the already acquired N1/N2 lineage. Never
+rename existing generations to fit a generic chain. Assembly, object and ELF
+identities remain separate. See the [x86 seed and bootstrap commands](ASSEMBLY.md#bootstrap-the-x86-compiler).
 Complete source/output identities, machine products and semantic gates are
 separate evidence. Matching an ELF early is not permission to skip the next
 generation; matching a fixed point is not a proof of compiler soundness. Budget
@@ -208,7 +229,8 @@ a checked B1 API and require explicit `--source`, `--out`, `--upstream` and
 `--engine`. `bootstrap:self` selects the genuine hosted self-bootstrap workflow;
 `bootstrap:native` selects the native generation workflow. Neither installs its
 result. `build` / `build:native` select native construction, defaulting to QBE;
-`--target x86` selects direct assembly with explicit request/runtime/assets.
+`--target x86` selects direct objects with explicit request/runtime/assets;
+`--emit assembly` retains assembly construction.
 Release installation and verification are separate from
 construction: `release` forwards to `release.py install --manifest PROMOTION --out
 FRESH_TRANSACTION`, `release:audit` forwards to `audit --manifest PROMOTION --out
@@ -230,7 +252,7 @@ a real bootstrap, independent output qualification or compiler/program speed mea
 | --- | --- |
 | Compiler host | JS under a pinned Node/Bun engine, or a native executable. |
 | Generation | Actual checked B1/genuine B2 or native N1/N2 lineage; names are not interchangeable. |
-| Output target | Direct JS, generated C, direct QBE, or direct x86 assembly. |
+| Output target | Direct JS, generated C, direct QBE, or x86 with explicit assembly/object format. |
 | Preparation | Live Base or authenticated prepared Base/carrier; ordinary or session state. |
 | Runtime/toolchain | Executing compiler runtime and generated-program runtime, with exact machine flags and threading policy. |
 | Clock | Compiler request, source-to-executable construction, complete research loop, or generated-program execution. |
@@ -265,8 +287,8 @@ request ratio across different targets measures different backend work.
 ## Choose an iteration depth
 
 Before broad generated-program acquisition, compare the candidate's complete
-emitted QBE or assembly with retained qualified references for that same target
-(`request.py --expected`). If
+emitted QBE, assembly or object bytes with retained qualified references for that
+same target and format (`request.py --expected`, with `--emit object` for objects). If
 source, output, runtime, machine toolchain and flags are identical, preserve the
 identity receipt and reuse the qualified product. Build/time changed products
 first; do not manufacture empirical timing ratios for unchanged products or

@@ -353,8 +353,8 @@
     },
     "x86-n2": {
       "file": "selfhost/dist/x86/bend",
-      "bytes": 24343264,
-      "sha256": "ce78a662ea3312b38dbab294522cd26bcaa8cd932c1eaf4e9620dd4d236c897b",
+      "bytes": 25489240,
+      "sha256": "942b88c7f3049113ddeb9a3e6d2f502c73c36675508f42a3652ced53da3ae098",
       "executable": true
     }
   },
@@ -455,15 +455,16 @@
         "x86"
       ],
       "protocol": "native-x86-source-v1",
+      "defaultEmission": "object",
       "sourceIdentity": {
-        "bytes": 1416804,
-        "sha256": "49409f730473d87b03e378ffbcfb999ffcf083a68baa707f2de65e3585a52455"
+        "bytes": 1657315,
+        "sha256": "83e9714d63565fee22f7daec69f1c71779000dc8e59674588d66e52522cb7ae2"
       },
       "sourceProfile": {
         "recipe": {
           "file": "selfhost/src/compiler.json",
-          "bytes": 538187,
-          "sha256": "8fab718b0c50c29e83727efdba73ce95e2fc6ed5f9d89c3e604e21add718995a"
+          "bytes": 543870,
+          "sha256": "5d7d22cff7b9e8a452e71928fd60084dbf5c7ed692aa1b7ba3bbc3758b520d9b"
         },
         "root": "selfhost",
         "profile": "x86"
@@ -481,20 +482,20 @@
       ],
       "acquisitionReceipt": {
         "file": "selfhost/dist/x86/evidence/x86-n2.json",
-        "bytes": 19349,
-        "sha256": "d8ae7105b832fc6470c83c3c7e0b9aa2092c58997b394f88f95bcdfee190e6fc"
+        "bytes": 17236,
+        "sha256": "816b9fdcd1f2070117559a826c97b1e539d41a2ef107e79c90353df5042954c1"
       },
       "qualificationReceipt": {
         "file": "selfhost/dist/x86/evidence/x86-behavior.json",
-        "bytes": 105087,
-        "sha256": "e2308b27758dfea04266bfdaea954c2f8fba40edcaa731313ffed550bdf2bb15"
+        "bytes": 105384,
+        "sha256": "0b2cc316bf7d201fadb66fce62e9b4accdadfbd969a37ddd90ddbb845b98fcaf"
       },
       "runtimeQualification": {
         "file": "selfhost/dist/x86/evidence/x86-runtime.json",
-        "bytes": 39705,
-        "sha256": "7c5d5e9faa447e4d5ccf9f1d841d8d939a39de3fc9b6e79ad8f337e9fd44fde7"
+        "bytes": 39787,
+        "sha256": "c2f8878e764ff33dadc5944f38518f2e4eaa46d3ce53a57675a6bf26eaffce0e"
       },
-      "qualification": "Actual assembly N2; exact self-reproduction, native64 and ten runtime controls. No session qualification."
+      "qualification": "Actual direct-object N2; exact N2-to-N3 object reproduction, native64 and ten runtime controls. No session qualification."
     }
   },
   "providers": {
@@ -614,7 +615,7 @@
       ]
     }
   },
-  "scope": "Phase183 additive assembly target. Existing JS/C/QBE assets and capabilities are preserved; x86 N2 has separate source-profile, generation and qualification bindings.",
+  "scope": "Phase189 direct-object target. Existing JS/C/QBE assets and capabilities are preserved; x86 N2 has separate source-profile, generation and qualification bindings.",
   "preparedBase": {
     "base": "base",
     "carrier": "prepared-base",
@@ -665,8 +666,8 @@
     "sha256": "f7c5e25676344955d46b7fad1795f1017ed9287bda08077b7f99f65d7bf2236a"
   },
   "operationalParent": {
-    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase183/release-proposal01/promotion.json",
-    "bytes": 205684,
-    "sha256": "c9aefa8de7901ca746e4eb8b1aededd777b6a56236768de441e0d03256731cc3"
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase189/release-proposal01/promotion.json",
+    "bytes": 223591,
+    "sha256": "a4266f584d6a3f72a1031d16462989cab0550f404e94d0b301958fe58c79a654"
   }
 }

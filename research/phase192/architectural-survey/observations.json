@@ -1,0 +1,3292 @@
+{
+  "kind": "phase192-architectural-survey-offline",
+  "targetsRun": false,
+  "compilersRun": false,
+  "sourceScope": "Dirty active source at HEAD 0e2a9d0; hashes identify inspected bytes, not qualification.",
+  "sources": [
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/src/back/x86/function.bend",
+      "sha256": "a568fdb8727f8027a6addaedd56d70515ad057e03fd7686534593a8b2f380b18"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/src/back/x86/program.bend",
+      "sha256": "678db9bfde9a5cce4a52215c25ce79ab81bcfe772ef24870d0af4cb22430a81d"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/src/back/x86/expression-reuse.bend",
+      "sha256": "116e834fa858487a150049f3c7d145b0c3a845cfd1ebe294146ec42e6bc529ce"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/src/back/x86/float-registers.bend",
+      "sha256": "98e81fba65daae61fbf9bc745d58e3ad1f9ce504a5094a827af50eacbd747802"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/src/back/x86/loop-liveness.bend",
+      "sha256": "f2b16a6a05642ca1a4dbdde9a7212398eacbe5021f490956764509d3b7f81489"
+    },
+    {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/src/back/x86/transient.bend",
+      "sha256": "fa3d3e8ebe00877bd3dc9caf2b6d11226c4153de5001737f7d43680d781d22aa"
+    }
+  ],
+  "ir": [
+    {
+      "case": "local-fold",
+      "name": "p113d_$product.fold.loop",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/diagnostic01/local-fold/preselection.json",
+        "bytes": 1392150,
+        "sha256": "5a4cdf63bc99805bfb2e60996546ed9e80b8e337755cb79b7d29cf29a84a8058"
+      },
+      "valueDefinitions": [
+        {
+          "at": "body/1/no/1/yes/2",
+          "row": [
+            "N111Bin",
+            "value",
+            "N111U32",
+            "add",
+            [
+              "N111Local",
+              "p112_s_a"
+            ],
+            [
+              "N111Const",
+              1,
+              0
+            ]
+          ]
+        }
+      ],
+      "existingHoistDefinitions": [
+        {
+          "at": "setup/1",
+          "row": [
+            "N111Set",
+            "p113a_3_hoist_array",
+            "N111U64",
+            [
+              "N111Local",
+              "v_4294967292"
+            ]
+          ]
+        },
+        {
+          "at": "setup/2",
+          "row": [
+            "N111Bin",
+            "p113a_3_hoist_tag",
+            "N111U64",
+            "shr",
+            [
+              "N111Local",
+              "p113a_3_hoist_array"
+            ],
+            [
+              "N111Const",
+              56,
+              0
+            ]
+          ]
+        },
+        {
+          "at": "setup/3",
+          "row": [
+            "N111Bin",
+            "p113a_3_hoist_raw",
+            "N111U64",
+            "eq",
+            [
+              "N111Local",
+              "p113a_3_hoist_tag"
+            ],
+            [
+              "N111Const",
+              4,
+              0
+            ]
+          ]
+        },
+        {
+          "at": "setup/4",
+          "row": [
+            "N111Bin",
+            "p113a_3_hoist_location",
+            "N111U64",
+            "and",
+            [
+              "N111Local",
+              "p113a_3_hoist_array"
+            ],
+            [
+              "N111Const",
+              4294967295,
+              255
+            ]
+          ]
+        },
+        {
+          "at": "setup/5",
+          "row": [
+            "N111Bin",
+            "p113a_3_hoist_dynamic",
+            "N111U64",
+            "uge",
+            [
+              "N111Local",
+              "p113a_3_hoist_location"
+            ],
+            [
+              "N111Const",
+              51413632,
+              0
+            ]
+          ]
+        },
+        {
+          "at": "setup/6",
+          "row": [
+            "N111Bin",
+            "p113a_3_hoist_admitted",
+            "N111U32",
+            "and",
+            [
+              "N111Local",
+              "p113a_3_hoist_raw"
+            ],
+            [
+              "N111Local",
+              "p113a_3_hoist_dynamic"
+            ]
+          ]
+        },
+        {
+          "at": "setup/7",
+          "row": [
+            "N111Bin",
+            "p113a_3_hoist_class",
+            "N111U64",
+            "shr",
+            [
+              "N111Local",
+              "p113a_3_hoist_array"
+            ],
+            [
+              "N111Const",
+              40,
+              0
+            ]
+          ]
+        },
+        {
+          "at": "setup/8",
+          "row": [
+            "N111Bin",
+            "p113a_3_hoist_class",
+            "N111U64",
+            "and",
+            [
+              "N111Local",
+              "p113a_3_hoist_class"
+            ],
+            [
+              "N111Const",
+              31,
+              0
+            ]
+          ]
+        },
+        {
+          "at": "setup/9",
+          "row": [
+            "N111Bin",
+            "p113a_3_hoist_size",
+            "N111U64",
+            "shl",
+            [
+              "N111Const",
+              1,
+              0
+            ],
+            [
+              "N111Local",
+              "p113a_3_hoist_class"
+            ]
+          ]
+        },
+        {
+          "at": "setup/10",
+          "row": [
+            "N111Bin",
+            "p113a_3_hoist_mask",
+            "N111U64",
+            "sub",
+            [
+              "N111Local",
+              "p113a_3_hoist_size"
+            ],
+            [
+              "N111Const",
+              1,
+              0
+            ]
+          ]
+        },
+        {
+          "at": "setup/11",
+          "row": [
+            "N111Bin",
+            "p113a_3_hoist_bytes",
+            "N111U64",
+            "shl",
+            [
+              "N111Local",
+              "p113a_3_hoist_location"
+            ],
+            [
+              "N111Const",
+              3,
+              0
+            ]
+          ]
+        },
+        {
+          "at": "setup/12",
+          "row": [
+            "N111Offset",
+            "p113a_3_hoist_base",
+            [
+              "N111Local",
+              "p113a_heap_base"
+            ],
+            [
+              "N111Local",
+              "p113a_3_hoist_bytes"
+            ]
+          ]
+        }
+      ],
+      "positiveBody": [
+        [
+          "P113DScalar",
+          [
+            "N111Bin",
+            "v_4294967271",
+            "N111U64",
+            "sub",
+            [
+              "N111Local",
+              "v_4294967295"
+            ],
+            [
+              "N111Const",
+              1,
+              0
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Set",
+            "p112_s_a",
+            "N111U32",
+            [
+              "N111Local",
+              "v_4294967294"
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Bin",
+            "value",
+            "N111U32",
+            "add",
+            [
+              "N111Local",
+              "p112_s_a"
+            ],
+            [
+              "N111Const",
+              1,
+              0
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Bin",
+            "p113a_0_index",
+            "N111U64",
+            "and",
+            [
+              "N111Local",
+              "v_4294967294"
+            ],
+            [
+              "N111Local",
+              "p113a_3_hoist_mask"
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Bin",
+            "p113a_0_bytes",
+            "N111U64",
+            "mul",
+            [
+              "N111Local",
+              "p113a_0_index"
+            ],
+            [
+              "N111Const",
+              4,
+              0
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Offset",
+            "p113a_0_cell",
+            [
+              "N111Local",
+              "p113a_3_hoist_base"
+            ],
+            [
+              "N111Local",
+              "p113a_0_bytes"
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Load",
+            "p113a_0_old",
+            "N111U32",
+            [
+              "N111Local",
+              "p113a_0_cell"
+            ],
+            0
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Set",
+            "p113i_0_local_p113i_0_local_p112_s_a",
+            "N111U32",
+            [
+              "N111Local",
+              "v_4294967291"
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Bin",
+            "p113i_0_local_p113i_0_local_value",
+            "N111U32",
+            "add",
+            [
+              "N111Local",
+              "p113i_0_local_p113i_0_local_p112_s_a"
+            ],
+            [
+              "N111Local",
+              "p113a_0_old"
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Set",
+            "p113i_0_local_p113i_0_local_p113p_move_14_0",
+            "N111U64",
+            [
+              "N111Local",
+              "p113i_0_local_p113i_0_local_value"
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Set",
+            "p113i_0_local_p113i_0_local_p112_s_b",
+            "N111U32",
+            [
+              "N111Local",
+              "v_4294967294"
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Bin",
+            "p113i_0_local_p113i_0_local_value",
+            "N111U64",
+            "xor",
+            [
+              "N111Local",
+              "p113i_0_local_p113i_0_local_value"
+            ],
+            [
+              "N111Local",
+              "p113i_0_local_p113i_0_local_p112_s_b"
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Set",
+            "p113i_0_local_p113i_0_local_value",
+            "N111U64",
+            [
+              "N111Local",
+              "p113i_0_local_p113i_0_local_value"
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Offset",
+            "p113a_1_cell",
+            [
+              "N111Local",
+              "p113a_3_hoist_base"
+            ],
+            [
+              "N111Local",
+              "p113a_0_bytes"
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Store",
+            "N111U32",
+            [
+              "N111Local",
+              "p113a_1_cell"
+            ],
+            0,
+            [
+              "N111Local",
+              "p113i_0_local_p113i_0_local_value"
+            ]
+          ]
+        ],
+        [
+          "P113DAgain",
+          [
+            [
+              "N111Local",
+              "v_4294967271"
+            ],
+            [
+              "N111Local",
+              "value"
+            ],
+            [
+              "N111Local",
+              "v_4294967292"
+            ],
+            [
+              "N111Local",
+              "p113i_0_local_p113i_0_local_p113p_move_14_0"
+            ]
+          ]
+        ]
+      ]
+    },
+    {
+      "case": "coverage-numeric-recurrence-256",
+      "name": "p113d_$direct.p37.numeric",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/diagnostic01/coverage-numeric-recurrence-256/preselection.json",
+        "bytes": 1290746,
+        "sha256": "723d679a9903418349cfe4074312413ffb6243cb235dcbd553c8325f47e9afd0"
+      },
+      "valueDefinitions": [
+        {
+          "at": "body/1/no/1/yes/3",
+          "row": [
+            "N111Call",
+            "value",
+            "N111U64",
+            "p111_rt_op",
+            [
+              [
+                "N111Arg",
+                "N111Ptr",
+                [
+                  "N111Local",
+                  "state"
+                ]
+              ],
+              [
+                "N111Arg",
+                "N111U32",
+                [
+                  "N111Const",
+                  28,
+                  0
+                ]
+              ],
+              [
+                "N111Arg",
+                "N111Ptr",
+                [
+                  "N111Local",
+                  "scratch"
+                ]
+              ],
+              [
+                "N111Arg",
+                "N111U32",
+                [
+                  "N111Const",
+                  2,
+                  0
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "at": "body/1/no/1/yes/7",
+          "row": [
+            "N111Call",
+            "value",
+            "N111U64",
+            "p111_rt_op",
+            [
+              [
+                "N111Arg",
+                "N111Ptr",
+                [
+                  "N111Local",
+                  "state"
+                ]
+              ],
+              [
+                "N111Arg",
+                "N111U32",
+                [
+                  "N111Const",
+                  27,
+                  0
+                ]
+              ],
+              [
+                "N111Arg",
+                "N111Ptr",
+                [
+                  "N111Local",
+                  "scratch"
+                ]
+              ],
+              [
+                "N111Arg",
+                "N111U32",
+                [
+                  "N111Const",
+                  2,
+                  0
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "at": "body/1/no/1/yes/10",
+          "row": [
+            "N111Call",
+            "value",
+            "N111U64",
+            "p111_rt_op",
+            [
+              [
+                "N111Arg",
+                "N111Ptr",
+                [
+                  "N111Local",
+                  "state"
+                ]
+              ],
+              [
+                "N111Arg",
+                "N111U32",
+                [
+                  "N111Const",
+                  28,
+                  0
+                ]
+              ],
+              [
+                "N111Arg",
+                "N111Ptr",
+                [
+                  "N111Local",
+                  "scratch"
+                ]
+              ],
+              [
+                "N111Arg",
+                "N111U32",
+                [
+                  "N111Const",
+                  2,
+                  0
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "at": "body/1/no/1/yes/13",
+          "row": [
+            "N111Bin",
+            "value",
+            "N111U32",
+            "mul",
+            [
+              "N111Local",
+              "p112_s_a"
+            ],
+            [
+              "N111Const",
+              16777619,
+              0
+            ]
+          ]
+        },
+        {
+          "at": "body/1/no/1/yes/17",
+          "row": [
+            "N111Call",
+            "value",
+            "N111U64",
+            "p111_rt_op",
+            [
+              [
+                "N111Arg",
+                "N111Ptr",
+                [
+                  "N111Local",
+                  "state"
+                ]
+              ],
+              [
+                "N111Arg",
+                "N111U32",
+                [
+                  "N111Const",
+                  28,
+                  0
+                ]
+              ],
+              [
+                "N111Arg",
+                "N111Ptr",
+                [
+                  "N111Local",
+                  "scratch"
+                ]
+              ],
+              [
+                "N111Arg",
+                "N111U32",
+                [
+                  "N111Const",
+                  2,
+                  0
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "at": "body/1/no/1/yes/19",
+          "row": [
+            "N111Call",
+            "value",
+            "N111U64",
+            "p111_rt_op",
+            [
+              [
+                "N111Arg",
+                "N111Ptr",
+                [
+                  "N111Local",
+                  "state"
+                ]
+              ],
+              [
+                "N111Arg",
+                "N111U32",
+                [
+                  "N111Const",
+                  58,
+                  0
+                ]
+              ],
+              [
+                "N111Arg",
+                "N111Ptr",
+                [
+                  "N111Local",
+                  "scratch"
+                ]
+              ],
+              [
+                "N111Arg",
+                "N111U32",
+                [
+                  "N111Const",
+                  1,
+                  0
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "at": "body/1/no/1/yes/21",
+          "row": [
+            "N111Bin",
+            "value",
+            "N111U64",
+            "xor",
+            [
+              "N111Local",
+              "p113p_move_44_0"
+            ],
+            [
+              "N111Local",
+              "p112_s_b"
+            ]
+          ]
+        },
+        {
+          "at": "body/1/no/1/yes/22",
+          "row": [
+            "N111Set",
+            "value",
+            "N111U64",
+            [
+              "N111Local",
+              "value"
+            ]
+          ]
+        }
+      ],
+      "existingHoistDefinitions": [],
+      "positiveBody": [
+        [
+          "P113DScalar",
+          [
+            "N111Bin",
+            "v_4294967280",
+            "N111U64",
+            "sub",
+            [
+              "N111Local",
+              "v_4294967295"
+            ],
+            [
+              "N111Const",
+              1,
+              0
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Store",
+            "N111U64",
+            [
+              "N111Local",
+              "scratch"
+            ],
+            0,
+            [
+              "N111Const",
+              1081081856,
+              0
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Store",
+            "N111U64",
+            [
+              "N111Local",
+              "scratch"
+            ],
+            8,
+            [
+              "N111Local",
+              "v_4294967294"
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Call",
+            "value",
+            "N111U64",
+            "p111_rt_op",
+            [
+              [
+                "N111Arg",
+                "N111Ptr",
+                [
+                  "N111Local",
+                  "state"
+                ]
+              ],
+              [
+                "N111Arg",
+                "N111U32",
+                [
+                  "N111Const",
+                  28,
+                  0
+                ]
+              ],
+              [
+                "N111Arg",
+                "N111Ptr",
+                [
+                  "N111Local",
+                  "scratch"
+                ]
+              ],
+              [
+                "N111Arg",
+                "N111U32",
+                [
+                  "N111Const",
+                  2,
+                  0
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Set",
+            "p113p_move_23_0",
+            "N111U64",
+            [
+              "N111Local",
+              "value"
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Store",
+            "N111U64",
+            [
+              "N111Local",
+              "scratch"
+            ],
+            0,
+            [
+              "N111Const",
+              1065353216,
+              0
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Store",
+            "N111U64",
+            [
+              "N111Local",
+              "scratch"
+            ],
+            8,
+            [
+              "N111Local",
+              "v_4294967294"
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Call",
+            "value",
+            "N111U64",
+            "p111_rt_op",
+            [
+              [
+                "N111Arg",
+                "N111Ptr",
+                [
+                  "N111Local",
+                  "state"
+                ]
+              ],
+              [
+                "N111Arg",
+                "N111U32",
+                [
+                  "N111Const",
+                  27,
+                  0
+                ]
+              ],
+              [
+                "N111Arg",
+                "N111Ptr",
+                [
+                  "N111Local",
+                  "scratch"
+                ]
+              ],
+              [
+                "N111Arg",
+                "N111U32",
+                [
+                  "N111Const",
+                  2,
+                  0
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Store",
+            "N111U64",
+            [
+              "N111Local",
+              "scratch"
+            ],
+            0,
+            [
+              "N111Local",
+              "p113p_move_23_0"
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Store",
+            "N111U64",
+            [
+              "N111Local",
+              "scratch"
+            ],
+            8,
+            [
+              "N111Local",
+              "value"
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Call",
+            "value",
+            "N111U64",
+            "p111_rt_op",
+            [
+              [
+                "N111Arg",
+                "N111Ptr",
+                [
+                  "N111Local",
+                  "state"
+                ]
+              ],
+              [
+                "N111Arg",
+                "N111U32",
+                [
+                  "N111Const",
+                  28,
+                  0
+                ]
+              ],
+              [
+                "N111Arg",
+                "N111Ptr",
+                [
+                  "N111Local",
+                  "scratch"
+                ]
+              ],
+              [
+                "N111Arg",
+                "N111U32",
+                [
+                  "N111Const",
+                  2,
+                  0
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Set",
+            "p113p_move_31_0",
+            "N111U64",
+            [
+              "N111Local",
+              "value"
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Set",
+            "p112_s_a",
+            "N111U32",
+            [
+              "N111Local",
+              "v_4294967293"
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Bin",
+            "value",
+            "N111U32",
+            "mul",
+            [
+              "N111Local",
+              "p112_s_a"
+            ],
+            [
+              "N111Const",
+              16777619,
+              0
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Set",
+            "p113p_move_44_0",
+            "N111U64",
+            [
+              "N111Local",
+              "value"
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Store",
+            "N111U64",
+            [
+              "N111Local",
+              "scratch"
+            ],
+            0,
+            [
+              "N111Local",
+              "p113p_move_31_0"
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Store",
+            "N111U64",
+            [
+              "N111Local",
+              "scratch"
+            ],
+            8,
+            [
+              "N111Const",
+              1232348160,
+              0
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Call",
+            "value",
+            "N111U64",
+            "p111_rt_op",
+            [
+              [
+                "N111Arg",
+                "N111Ptr",
+                [
+                  "N111Local",
+                  "state"
+                ]
+              ],
+              [
+                "N111Arg",
+                "N111U32",
+                [
+                  "N111Const",
+                  28,
+                  0
+                ]
+              ],
+              [
+                "N111Arg",
+                "N111Ptr",
+                [
+                  "N111Local",
+                  "scratch"
+                ]
+              ],
+              [
+                "N111Arg",
+                "N111U32",
+                [
+                  "N111Const",
+                  2,
+                  0
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Store",
+            "N111U64",
+            [
+              "N111Local",
+              "scratch"
+            ],
+            0,
+            [
+              "N111Local",
+              "value"
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Call",
+            "value",
+            "N111U64",
+            "p111_rt_op",
+            [
+              [
+                "N111Arg",
+                "N111Ptr",
+                [
+                  "N111Local",
+                  "state"
+                ]
+              ],
+              [
+                "N111Arg",
+                "N111U32",
+                [
+                  "N111Const",
+                  58,
+                  0
+                ]
+              ],
+              [
+                "N111Arg",
+                "N111Ptr",
+                [
+                  "N111Local",
+                  "scratch"
+                ]
+              ],
+              [
+                "N111Arg",
+                "N111U32",
+                [
+                  "N111Const",
+                  1,
+                  0
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Set",
+            "p112_s_b",
+            "N111U32",
+            [
+              "N111Local",
+              "value"
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Bin",
+            "value",
+            "N111U64",
+            "xor",
+            [
+              "N111Local",
+              "p113p_move_44_0"
+            ],
+            [
+              "N111Local",
+              "p112_s_b"
+            ]
+          ]
+        ],
+        [
+          "P113DScalar",
+          [
+            "N111Set",
+            "value",
+            "N111U64",
+            [
+              "N111Local",
+              "value"
+            ]
+          ]
+        ],
+        [
+          "P113DAgain",
+          [
+            [
+              "N111Local",
+              "v_4294967280"
+            ],
+            [
+              "N111Local",
+              "p113p_move_31_0"
+            ],
+            [
+              "N111Local",
+              "value"
+            ]
+          ]
+        ]
+      ]
+    }
+  ],
+  "machine": [
+    {
+      "case": "tree-bitonic",
+      "role": "baseline",
+      "artifact": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-02/tree-bitonic/machine/program",
+        "bytes": 216472,
+        "sha256": "efc059c07ae4742b62f3ce3ec63946ecd461ccb33f421498de3725a1856ef795"
+      },
+      "functions": [
+        {
+          "name": "p111_$direct.flow",
+          "address": "0x410161",
+          "counts": {
+            "instructions": 483,
+            "instruction_bytes": 2359,
+            "frame_reference_instructions": 126,
+            "frame_reference_operands": 126,
+            "frame_memory_instructions": 82,
+            "frame_address_only_instructions": 44,
+            "stack_reference_instructions": 0,
+            "moves": 321,
+            "calls": 16,
+            "branches": 21,
+            "conditional_branches": 13,
+            "returns": 6
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/tree-bitonic/baseline.0.asm",
+            "bytes": 40088,
+            "sha256": "98be9718d2e5343cf12448a8ccfc91d259b3cc1aa6106f3906ef91cc2f6ae7c2"
+          }
+        },
+        {
+          "name": "p111_$direct.scan",
+          "address": "0x40e863",
+          "counts": {
+            "instructions": 205,
+            "instruction_bytes": 967,
+            "frame_reference_instructions": 29,
+            "frame_reference_operands": 29,
+            "frame_memory_instructions": 10,
+            "frame_address_only_instructions": 19,
+            "stack_reference_instructions": 20,
+            "moves": 134,
+            "calls": 8,
+            "branches": 8,
+            "conditional_branches": 5,
+            "returns": 3
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/tree-bitonic/baseline.1.asm",
+            "bytes": 17053,
+            "sha256": "b234ed8045f3b0c44a76fa4f24a75166e83c8a9d72028f45afddc2a7f403c16c"
+          }
+        },
+        {
+          "name": "p111_$direct.warp",
+          "address": "0x411d4d",
+          "counts": {
+            "instructions": 596,
+            "instruction_bytes": 2902,
+            "frame_reference_instructions": 164,
+            "frame_reference_operands": 164,
+            "frame_memory_instructions": 114,
+            "frame_address_only_instructions": 50,
+            "stack_reference_instructions": 12,
+            "moves": 413,
+            "calls": 21,
+            "branches": 20,
+            "conditional_branches": 13,
+            "returns": 7
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/tree-bitonic/baseline.2.asm",
+            "bytes": 49105,
+            "sha256": "bd02a1803438aca8b9ebd5349bff86e0be6be1ef0b2fdbd8946c1b2bd27f063f"
+          }
+        },
+        {
+          "name": "p111_$direct.warp_zip",
+          "address": "0x412e39",
+          "counts": {
+            "instructions": 35,
+            "instruction_bytes": 137,
+            "frame_reference_instructions": 4,
+            "frame_reference_operands": 4,
+            "frame_memory_instructions": 2,
+            "frame_address_only_instructions": 2,
+            "stack_reference_instructions": 6,
+            "moves": 25,
+            "calls": 2,
+            "branches": 0,
+            "conditional_branches": 0,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/tree-bitonic/baseline.3.asm",
+            "bytes": 3150,
+            "sha256": "18e98db52cdcbb62d7526fe200ecf648c7808b054f31df2eabbf99e7d48a04f9"
+          }
+        },
+        {
+          "name": "p111_$direct.bsort",
+          "address": "0x40f3a6",
+          "counts": {
+            "instructions": 143,
+            "instruction_bytes": 686,
+            "frame_reference_instructions": 25,
+            "frame_reference_operands": 25,
+            "frame_memory_instructions": 9,
+            "frame_address_only_instructions": 16,
+            "stack_reference_instructions": 4,
+            "moves": 98,
+            "calls": 3,
+            "branches": 5,
+            "conditional_branches": 3,
+            "returns": 2
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/tree-bitonic/baseline.4.asm",
+            "bytes": 12005,
+            "sha256": "3ea4baa5ea6ce09003de0db4dd892b76059dbf01ec0b0fd27a97935e6630399e"
+          }
+        },
+        {
+          "name": "p112w_$direct.warp_zip",
+          "address": "0x40893d",
+          "counts": {
+            "instructions": 1,
+            "instruction_bytes": 5,
+            "frame_reference_instructions": 0,
+            "frame_reference_operands": 0,
+            "frame_memory_instructions": 0,
+            "frame_address_only_instructions": 0,
+            "stack_reference_instructions": 0,
+            "moves": 0,
+            "calls": 0,
+            "branches": 1,
+            "conditional_branches": 0,
+            "returns": 0
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/tree-bitonic/baseline.5.asm",
+            "bytes": 490,
+            "sha256": "f396a3260c0ead87a7916f6c787aabd95365fd49b3b455bd02146e8a50cb78b5"
+          }
+        },
+        {
+          "name": "p113d_$direct.warp_leaf.go",
+          "address": "0x408942",
+          "counts": {
+            "instructions": 186,
+            "instruction_bytes": 843,
+            "frame_reference_instructions": 27,
+            "frame_reference_operands": 27,
+            "frame_memory_instructions": 13,
+            "frame_address_only_instructions": 14,
+            "stack_reference_instructions": 0,
+            "moves": 105,
+            "calls": 7,
+            "branches": 10,
+            "conditional_branches": 6,
+            "returns": 3
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/tree-bitonic/baseline.6.asm",
+            "bytes": 15756,
+            "sha256": "be0e53be29ead77a7fdbad6e59fbc4064232baffc1a9d7d036d010306c54ab7d"
+          }
+        },
+        {
+          "name": "p113d_$direct.warp_zip",
+          "address": "0x4083db",
+          "counts": {
+            "instructions": 298,
+            "instruction_bytes": 1378,
+            "frame_reference_instructions": 75,
+            "frame_reference_operands": 75,
+            "frame_memory_instructions": 48,
+            "frame_address_only_instructions": 27,
+            "stack_reference_instructions": 16,
+            "moves": 178,
+            "calls": 16,
+            "branches": 12,
+            "conditional_branches": 9,
+            "returns": 7
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/tree-bitonic/baseline.7.asm",
+            "bytes": 24838,
+            "sha256": "c7ec32b0683b9e1c392032851a3cc8bfc4afa1efa61ba17937ba38fad27a88a2"
+          }
+        }
+      ]
+    },
+    {
+      "case": "tree-bitonic",
+      "role": "qbe",
+      "artifact": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-native45-acquire01/tree-bitonic/phase186-qbe-n2/machine/program",
+        "bytes": 187128,
+        "sha256": "82ac09159ffea013e77cfcae4e8c7778869fe0dfb47320ff79dfded3b6977154"
+      },
+      "functions": [
+        {
+          "name": "p111_$direct.flow",
+          "address": "0x40bbd0",
+          "counts": {
+            "instructions": 280,
+            "instruction_bytes": 1307,
+            "frame_reference_instructions": 39,
+            "frame_reference_operands": 39,
+            "frame_memory_instructions": 28,
+            "frame_address_only_instructions": 11,
+            "stack_reference_instructions": 0,
+            "moves": 160,
+            "calls": 16,
+            "branches": 32,
+            "conditional_branches": 16,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/tree-bitonic/qbe.0.asm",
+            "bytes": 24752,
+            "sha256": "d61f743eef8fca36ba2716c993793a2874a7821bccb7c735e315fafeedd3a9f5"
+          }
+        },
+        {
+          "name": "p111_$direct.scan",
+          "address": "0x40acb0",
+          "counts": {
+            "instructions": 20,
+            "instruction_bytes": 64,
+            "frame_reference_instructions": 2,
+            "frame_reference_operands": 2,
+            "frame_memory_instructions": 1,
+            "frame_address_only_instructions": 1,
+            "stack_reference_instructions": 0,
+            "moves": 9,
+            "calls": 3,
+            "branches": 0,
+            "conditional_branches": 0,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/tree-bitonic/qbe.1.asm",
+            "bytes": 1933,
+            "sha256": "91329fe773a0da951d588e32710c6ca3ad3dfe2ca0be28d064e52e6f0ccaff43"
+          }
+        },
+        {
+          "name": "p111_$direct.warp",
+          "address": "0x40cb70",
+          "counts": {
+            "instructions": 39,
+            "instruction_bytes": 125,
+            "frame_reference_instructions": 2,
+            "frame_reference_operands": 2,
+            "frame_memory_instructions": 1,
+            "frame_address_only_instructions": 1,
+            "stack_reference_instructions": 0,
+            "moves": 22,
+            "calls": 5,
+            "branches": 0,
+            "conditional_branches": 0,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/tree-bitonic/qbe.2.asm",
+            "bytes": 3389,
+            "sha256": "8ff8b36a144bae78f7724e2b19f6f05309c4ac57b46234a2d3a593b65c4cd8de"
+          }
+        },
+        {
+          "name": "p111_$direct.warp_zip",
+          "address": "0x40d3a0",
+          "counts": {
+            "instructions": 29,
+            "instruction_bytes": 93,
+            "frame_reference_instructions": 2,
+            "frame_reference_operands": 2,
+            "frame_memory_instructions": 1,
+            "frame_address_only_instructions": 1,
+            "stack_reference_instructions": 0,
+            "moves": 15,
+            "calls": 4,
+            "branches": 0,
+            "conditional_branches": 0,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/tree-bitonic/qbe.3.asm",
+            "bytes": 2654,
+            "sha256": "0378ae1e8885ebed1859e0b4ebe01551c1110520b5d5c0cbfddfb01dfa452a25"
+          }
+        },
+        {
+          "name": "p111_$direct.bsort",
+          "address": "0x40b370",
+          "counts": {
+            "instructions": 116,
+            "instruction_bytes": 524,
+            "frame_reference_instructions": 14,
+            "frame_reference_operands": 14,
+            "frame_memory_instructions": 11,
+            "frame_address_only_instructions": 3,
+            "stack_reference_instructions": 0,
+            "moves": 67,
+            "calls": 5,
+            "branches": 10,
+            "conditional_branches": 5,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/tree-bitonic/qbe.4.asm",
+            "bytes": 10289,
+            "sha256": "235a6cefa327743967ebf79a844b77382b62f4189c75fbe853fe5303fc6c3efe"
+          }
+        },
+        {
+          "name": "p112w_$direct.warp_zip",
+          "address": "0x405330",
+          "counts": {
+            "instructions": 6,
+            "instruction_bytes": 15,
+            "frame_reference_instructions": 0,
+            "frame_reference_operands": 0,
+            "frame_memory_instructions": 0,
+            "frame_address_only_instructions": 0,
+            "stack_reference_instructions": 0,
+            "moves": 1,
+            "calls": 1,
+            "branches": 0,
+            "conditional_branches": 0,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/tree-bitonic/qbe.5.asm",
+            "bytes": 870,
+            "sha256": "d26b541de1ccfabfeff02d4a94509b893e294af9a5ff5fe833348510eee02119"
+          }
+        },
+        {
+          "name": "p113d_$direct.warp_leaf.go",
+          "address": "0x406e10",
+          "counts": {
+            "instructions": 194,
+            "instruction_bytes": 846,
+            "frame_reference_instructions": 14,
+            "frame_reference_operands": 14,
+            "frame_memory_instructions": 8,
+            "frame_address_only_instructions": 6,
+            "stack_reference_instructions": 0,
+            "moves": 109,
+            "calls": 7,
+            "branches": 20,
+            "conditional_branches": 12,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/tree-bitonic/qbe.6.asm",
+            "bytes": 17491,
+            "sha256": "47c004fd848137018b16cad5ad07ffb230eca859c158946bf345f7bcdbc33600"
+          }
+        },
+        {
+          "name": "p113d_$direct.warp_zip",
+          "address": "0x406a70",
+          "counts": {
+            "instructions": 205,
+            "instruction_bytes": 928,
+            "frame_reference_instructions": 26,
+            "frame_reference_operands": 26,
+            "frame_memory_instructions": 18,
+            "frame_address_only_instructions": 8,
+            "stack_reference_instructions": 0,
+            "moves": 105,
+            "calls": 16,
+            "branches": 24,
+            "conditional_branches": 12,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/tree-bitonic/qbe.7.asm",
+            "bytes": 18405,
+            "sha256": "0190e519270fba29a38ac97b87443a3a5bf71bb0516cb9377f012ff369c4a511"
+          }
+        },
+        {
+          "name": "p114r_$direct.scan",
+          "address": "0x40acf0",
+          "counts": {
+            "instructions": 141,
+            "instruction_bytes": 617,
+            "frame_reference_instructions": 18,
+            "frame_reference_operands": 18,
+            "frame_memory_instructions": 15,
+            "frame_address_only_instructions": 3,
+            "stack_reference_instructions": 0,
+            "moves": 77,
+            "calls": 8,
+            "branches": 14,
+            "conditional_branches": 7,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/tree-bitonic/qbe.8.asm",
+            "bytes": 12381,
+            "sha256": "6cba8bf7e5c758450211244d64b15c429a6424b1f181240984eef706929eb179"
+          }
+        },
+        {
+          "name": "p114r_$direct.warp",
+          "address": "0x40cbf0",
+          "counts": {
+            "instructions": 301,
+            "instruction_bytes": 1335,
+            "frame_reference_instructions": 48,
+            "frame_reference_operands": 48,
+            "frame_memory_instructions": 42,
+            "frame_address_only_instructions": 6,
+            "stack_reference_instructions": 0,
+            "moves": 185,
+            "calls": 20,
+            "branches": 24,
+            "conditional_branches": 12,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/tree-bitonic/qbe.9.asm",
+            "bytes": 25742,
+            "sha256": "3abbee16a51a9f6151e72eb18dce3636a80c24089e87d5fffb5e1e2f3b35a0c0"
+          }
+        }
+      ]
+    },
+    {
+      "case": "tree-bitonic",
+      "role": "c",
+      "artifact": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/tree-bitonic/bend-c/program",
+        "bytes": 115744,
+        "sha256": "19550d9d4c7b770e374ac234d09c6860458807a6f7ff1d0c4153f1f1cf8d513a"
+      },
+      "functions": [
+        {
+          "name": "WL_$direct.flow",
+          "address": "0xbbf0",
+          "counts": {
+            "instructions": 559,
+            "instruction_bytes": 2507,
+            "frame_reference_instructions": 0,
+            "frame_reference_operands": 0,
+            "frame_memory_instructions": 0,
+            "frame_address_only_instructions": 0,
+            "stack_reference_instructions": 8,
+            "moves": 284,
+            "calls": 26,
+            "branches": 89,
+            "conditional_branches": 62,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/tree-bitonic/c.0.asm",
+            "bytes": 49992,
+            "sha256": "4cd16a0bf176fa7f24bc20cf0e1213477e7535ec26aaa7c5ee0db34b483d9284"
+          }
+        },
+        {
+          "name": "WL_$direct.scan",
+          "address": "0xa950",
+          "counts": {
+            "instructions": 272,
+            "instruction_bytes": 1223,
+            "frame_reference_instructions": 0,
+            "frame_reference_operands": 0,
+            "frame_memory_instructions": 0,
+            "frame_address_only_instructions": 0,
+            "stack_reference_instructions": 0,
+            "moves": 140,
+            "calls": 13,
+            "branches": 41,
+            "conditional_branches": 27,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/tree-bitonic/c.1.asm",
+            "bytes": 24417,
+            "sha256": "77caa3aaeb688ee2c6c31e2b56b103c0a122fc2bcdd37935b784f2a225aae670"
+          }
+        },
+        {
+          "name": "WL_$direct.warp",
+          "address": "0xce60",
+          "counts": {
+            "instructions": 790,
+            "instruction_bytes": 3521,
+            "frame_reference_instructions": 0,
+            "frame_reference_operands": 0,
+            "frame_memory_instructions": 0,
+            "frame_address_only_instructions": 0,
+            "stack_reference_instructions": 17,
+            "moves": 405,
+            "calls": 37,
+            "branches": 109,
+            "conditional_branches": 76,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/tree-bitonic/c.2.asm",
+            "bytes": 69226,
+            "sha256": "43e95d6882e6342914ee4534adb7905353c1ed4eb622ad1c928520f1e4225c2b"
+          }
+        },
+        {
+          "name": "WL_$direct.warp_leaf.go",
+          "address": "0xded0",
+          "counts": {
+            "instructions": 52,
+            "instruction_bytes": 195,
+            "frame_reference_instructions": 0,
+            "frame_reference_operands": 0,
+            "frame_memory_instructions": 0,
+            "frame_address_only_instructions": 0,
+            "stack_reference_instructions": 0,
+            "moves": 31,
+            "calls": 2,
+            "branches": 7,
+            "conditional_branches": 3,
+            "returns": 0
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/tree-bitonic/c.3.asm",
+            "bytes": 5007,
+            "sha256": "37dd84a77b9d5e7373c77c84f0ac9b5a7cc8e287a4a0e684042369b52f85c12d"
+          }
+        },
+        {
+          "name": "WL_$direct.warp_zip",
+          "address": "0xdfa0",
+          "counts": {
+            "instructions": 642,
+            "instruction_bytes": 2731,
+            "frame_reference_instructions": 0,
+            "frame_reference_operands": 0,
+            "frame_memory_instructions": 0,
+            "frame_address_only_instructions": 0,
+            "stack_reference_instructions": 8,
+            "moves": 311,
+            "calls": 25,
+            "branches": 97,
+            "conditional_branches": 67,
+            "returns": 0
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/tree-bitonic/c.4.asm",
+            "bytes": 57855,
+            "sha256": "d454ea91809f3039172096d8a446f89fce6b7fe6daedf00f605de8c74cc41a89"
+          }
+        },
+        {
+          "name": "WL_$direct.bsort",
+          "address": "0xb490",
+          "counts": {
+            "instructions": 204,
+            "instruction_bytes": 853,
+            "frame_reference_instructions": 0,
+            "frame_reference_operands": 0,
+            "frame_memory_instructions": 0,
+            "frame_address_only_instructions": 0,
+            "stack_reference_instructions": 0,
+            "moves": 97,
+            "calls": 7,
+            "branches": 28,
+            "conditional_branches": 20,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/tree-bitonic/c.5.asm",
+            "bytes": 18081,
+            "sha256": "a768325c1b90bb7f239080aad4efb47bfd45c1ffcb754f8af04ed48e4d638a29"
+          }
+        }
+      ]
+    },
+    {
+      "case": "lexer",
+      "role": "baseline",
+      "artifact": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-02/lexer/machine/program",
+        "bytes": 216072,
+        "sha256": "2e16936fb1b57473b8928f7948f52136881c94482ecba7385e5960310c73576e"
+      },
+      "functions": [
+        {
+          "name": "p111_$direct.gen.at",
+          "address": "0x412be7",
+          "counts": {
+            "instructions": 39,
+            "instruction_bytes": 155,
+            "frame_reference_instructions": 4,
+            "frame_reference_operands": 4,
+            "frame_memory_instructions": 2,
+            "frame_address_only_instructions": 2,
+            "stack_reference_instructions": 8,
+            "moves": 29,
+            "calls": 2,
+            "branches": 0,
+            "conditional_branches": 0,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/lexer/baseline.0.asm",
+            "bytes": 3449,
+            "sha256": "27c7241514f880fde8dc34163ac05e5bc82dd1faf1e9d9ca34616094e08d8aba"
+          }
+        },
+        {
+          "name": "p111_$direct.lex",
+          "address": "0x412d82",
+          "counts": {
+            "instructions": 35,
+            "instruction_bytes": 137,
+            "frame_reference_instructions": 4,
+            "frame_reference_operands": 4,
+            "frame_memory_instructions": 2,
+            "frame_address_only_instructions": 2,
+            "stack_reference_instructions": 6,
+            "moves": 25,
+            "calls": 2,
+            "branches": 0,
+            "conditional_branches": 0,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/lexer/baseline.1.asm",
+            "bytes": 3107,
+            "sha256": "4d277969e1840099fe5701f3f9f061f8fc4fc07e82ee52605b0e254a1b15e4b0"
+          }
+        },
+        {
+          "name": "p112w_$direct.gen.at",
+          "address": "0x40aae1",
+          "counts": {
+            "instructions": 1,
+            "instruction_bytes": 5,
+            "frame_reference_instructions": 0,
+            "frame_reference_operands": 0,
+            "frame_memory_instructions": 0,
+            "frame_address_only_instructions": 0,
+            "stack_reference_instructions": 0,
+            "moves": 0,
+            "calls": 0,
+            "branches": 1,
+            "conditional_branches": 0,
+            "returns": 0
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/lexer/baseline.2.asm",
+            "bytes": 467,
+            "sha256": "fa5d818ebb84a61a0725e74b782426b45c25cbceda3b42fcd07d9c90f339de3b"
+          }
+        },
+        {
+          "name": "p112w_$direct.lex",
+          "address": "0x40cef7",
+          "counts": {
+            "instructions": 1,
+            "instruction_bytes": 5,
+            "frame_reference_instructions": 0,
+            "frame_reference_operands": 0,
+            "frame_memory_instructions": 0,
+            "frame_address_only_instructions": 0,
+            "stack_reference_instructions": 0,
+            "moves": 0,
+            "calls": 0,
+            "branches": 1,
+            "conditional_branches": 0,
+            "returns": 0
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/lexer/baseline.3.asm",
+            "bytes": 447,
+            "sha256": "93b1c60487815ca6f0513ca3102aa348633d0987f8df87dc2477ef4ad4d5f5af"
+          }
+        },
+        {
+          "name": "p113d_$direct.gen.at",
+          "address": "0x40a5dc",
+          "counts": {
+            "instructions": 271,
+            "instruction_bytes": 1285,
+            "frame_reference_instructions": 19,
+            "frame_reference_operands": 19,
+            "frame_memory_instructions": 9,
+            "frame_address_only_instructions": 10,
+            "stack_reference_instructions": 24,
+            "moves": 169,
+            "calls": 6,
+            "branches": 16,
+            "conditional_branches": 8,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/lexer/baseline.4.asm",
+            "bytes": 22627,
+            "sha256": "3752052837b74123be92794aed4b55603bedcebca305e6761de9c0ac1a0d6e8c"
+          }
+        },
+        {
+          "name": "p113d_$direct.lex",
+          "address": "0x40cb78",
+          "counts": {
+            "instructions": 205,
+            "instruction_bytes": 895,
+            "frame_reference_instructions": 49,
+            "frame_reference_operands": 49,
+            "frame_memory_instructions": 36,
+            "frame_address_only_instructions": 13,
+            "stack_reference_instructions": 30,
+            "moves": 138,
+            "calls": 11,
+            "branches": 5,
+            "conditional_branches": 5,
+            "returns": 6
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/lexer/baseline.5.asm",
+            "bytes": 16953,
+            "sha256": "2c1650740a0675ddf01f7cb4b0c24b0271acff045a581980f99ce45859eeef19"
+          }
+        },
+        {
+          "name": "p113d_$direct.step.at",
+          "address": "0x40aae6",
+          "counts": {
+            "instructions": 716,
+            "instruction_bytes": 3272,
+            "frame_reference_instructions": 154,
+            "frame_reference_operands": 154,
+            "frame_memory_instructions": 103,
+            "frame_address_only_instructions": 51,
+            "stack_reference_instructions": 50,
+            "moves": 459,
+            "calls": 33,
+            "branches": 25,
+            "conditional_branches": 20,
+            "returns": 16
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/lexer/baseline.6.asm",
+            "bytes": 59063,
+            "sha256": "9d4ab99c4e52168e1487dc135040668027988410c0398e68b8d218d268603e8f"
+          }
+        },
+        {
+          "name": "p113d_$product.lex",
+          "address": "0x40c73d",
+          "counts": {
+            "instructions": 245,
+            "instruction_bytes": 1083,
+            "frame_reference_instructions": 26,
+            "frame_reference_operands": 26,
+            "frame_memory_instructions": 19,
+            "frame_address_only_instructions": 7,
+            "stack_reference_instructions": 18,
+            "moves": 158,
+            "calls": 5,
+            "branches": 10,
+            "conditional_branches": 6,
+            "returns": 3
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/lexer/baseline.7.asm",
+            "bytes": 20048,
+            "sha256": "89cf8f69f1a575724358a1b130d20bcda0c50a3391b7f8ad5ebddb422a5c4a25"
+          }
+        },
+        {
+          "name": "p113d_$product.step.at",
+          "address": "0x40b7ae",
+          "counts": {
+            "instructions": 652,
+            "instruction_bytes": 2922,
+            "frame_reference_instructions": 162,
+            "frame_reference_operands": 162,
+            "frame_memory_instructions": 150,
+            "frame_address_only_instructions": 12,
+            "stack_reference_instructions": 12,
+            "moves": 439,
+            "calls": 6,
+            "branches": 19,
+            "conditional_branches": 17,
+            "returns": 16
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/lexer/baseline.8.asm",
+            "bytes": 53124,
+            "sha256": "47b8ad1d8f916f5a9862fc9968f3d16162cf5916de6d7152d3b41c5de01b5d2c"
+          }
+        }
+      ]
+    },
+    {
+      "case": "lexer",
+      "role": "qbe",
+      "artifact": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-native45-acquire01/lexer/phase186-qbe-n2/machine/program",
+        "bytes": 186224,
+        "sha256": "615ab606eb19f7e7355b08b81a1a239837fdc5e047ca37e70c0b8e6c71715208"
+      },
+      "functions": [
+        {
+          "name": "p111_$direct.gen.at",
+          "address": "0x40c970",
+          "counts": {
+            "instructions": 39,
+            "instruction_bytes": 125,
+            "frame_reference_instructions": 2,
+            "frame_reference_operands": 2,
+            "frame_memory_instructions": 1,
+            "frame_address_only_instructions": 1,
+            "stack_reference_instructions": 0,
+            "moves": 22,
+            "calls": 5,
+            "branches": 0,
+            "conditional_branches": 0,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/lexer/qbe.0.asm",
+            "bytes": 3396,
+            "sha256": "4c843416ac346a861d2a931e47961d9535847464e729e54b0766e883a186b7d9"
+          }
+        },
+        {
+          "name": "p111_$direct.lex",
+          "address": "0x40ca90",
+          "counts": {
+            "instructions": 29,
+            "instruction_bytes": 93,
+            "frame_reference_instructions": 2,
+            "frame_reference_operands": 2,
+            "frame_memory_instructions": 1,
+            "frame_address_only_instructions": 1,
+            "stack_reference_instructions": 0,
+            "moves": 15,
+            "calls": 4,
+            "branches": 0,
+            "conditional_branches": 0,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/lexer/qbe.1.asm",
+            "bytes": 2611,
+            "sha256": "13cbafecd3f689c9893efe2978c2e3ea2a50eba5b0555760a2624d8fe2f2ca51"
+          }
+        },
+        {
+          "name": "p112w_$direct.gen.at",
+          "address": "0x405370",
+          "counts": {
+            "instructions": 6,
+            "instruction_bytes": 15,
+            "frame_reference_instructions": 0,
+            "frame_reference_operands": 0,
+            "frame_memory_instructions": 0,
+            "frame_address_only_instructions": 0,
+            "stack_reference_instructions": 0,
+            "moves": 1,
+            "calls": 1,
+            "branches": 0,
+            "conditional_branches": 0,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/lexer/qbe.2.asm",
+            "bytes": 847,
+            "sha256": "6669ea4a5e4aa4731e7d483e161648ea94c26edbbd2c9d123c8c5bf3209edca4"
+          }
+        },
+        {
+          "name": "p112w_$direct.lex",
+          "address": "0x405380",
+          "counts": {
+            "instructions": 6,
+            "instruction_bytes": 15,
+            "frame_reference_instructions": 0,
+            "frame_reference_operands": 0,
+            "frame_memory_instructions": 0,
+            "frame_address_only_instructions": 0,
+            "stack_reference_instructions": 0,
+            "moves": 1,
+            "calls": 1,
+            "branches": 0,
+            "conditional_branches": 0,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/lexer/qbe.3.asm",
+            "bytes": 827,
+            "sha256": "00d8a721024a0fb3a3719ab52a3520b8efbf76b42aa16eb78e6ab45062d02247"
+          }
+        },
+        {
+          "name": "p113d_$direct.gen.at",
+          "address": "0x4076c0",
+          "counts": {
+            "instructions": 116,
+            "instruction_bytes": 462,
+            "frame_reference_instructions": 9,
+            "frame_reference_operands": 9,
+            "frame_memory_instructions": 7,
+            "frame_address_only_instructions": 2,
+            "stack_reference_instructions": 0,
+            "moves": 51,
+            "calls": 5,
+            "branches": 14,
+            "conditional_branches": 7,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/lexer/qbe.4.asm",
+            "bytes": 10378,
+            "sha256": "378ee8e47503965730c1ff70bb66e8ac6fdf0b5fcec2a2ac841b6b686b98fa1b"
+          }
+        },
+        {
+          "name": "p113d_$direct.lex",
+          "address": "0x408d90",
+          "counts": {
+            "instructions": 85,
+            "instruction_bytes": 339,
+            "frame_reference_instructions": 13,
+            "frame_reference_operands": 13,
+            "frame_memory_instructions": 9,
+            "frame_address_only_instructions": 4,
+            "stack_reference_instructions": 0,
+            "moves": 41,
+            "calls": 10,
+            "branches": 8,
+            "conditional_branches": 4,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/lexer/qbe.5.asm",
+            "bytes": 7580,
+            "sha256": "981fb2a55b78543567400caa29e7ae185cf2ca74e5f58ec422af1ec9e2900157"
+          }
+        },
+        {
+          "name": "p113d_$direct.step.at",
+          "address": "0x407890",
+          "counts": {
+            "instructions": 720,
+            "instruction_bytes": 3289,
+            "frame_reference_instructions": 56,
+            "frame_reference_operands": 56,
+            "frame_memory_instructions": 38,
+            "frame_address_only_instructions": 18,
+            "stack_reference_instructions": 0,
+            "moves": 433,
+            "calls": 36,
+            "branches": 82,
+            "conditional_branches": 41,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/lexer/qbe.6.asm",
+            "bytes": 63758,
+            "sha256": "283b8d395f8210a8f35ed979789534ef65c2d90d1085f58af989e298ef59a22c"
+          }
+        },
+        {
+          "name": "p113d_$product.lex",
+          "address": "0x408bf0",
+          "counts": {
+            "instructions": 102,
+            "instruction_bytes": 408,
+            "frame_reference_instructions": 7,
+            "frame_reference_operands": 7,
+            "frame_memory_instructions": 5,
+            "frame_address_only_instructions": 2,
+            "stack_reference_instructions": 0,
+            "moves": 46,
+            "calls": 4,
+            "branches": 8,
+            "conditional_branches": 4,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/lexer/qbe.7.asm",
+            "bytes": 8787,
+            "sha256": "4ef86f2352508c55de68d85cf03cd27fdb04fcf063f706e139eb7b8720aee923"
+          }
+        },
+        {
+          "name": "p113d_$product.step.at",
+          "address": "0x408570",
+          "counts": {
+            "instructions": 270,
+            "instruction_bytes": 1185,
+            "frame_reference_instructions": 31,
+            "frame_reference_operands": 31,
+            "frame_memory_instructions": 29,
+            "frame_address_only_instructions": 2,
+            "stack_reference_instructions": 0,
+            "moves": 158,
+            "calls": 6,
+            "branches": 34,
+            "conditional_branches": 17,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/lexer/qbe.8.asm",
+            "bytes": 24028,
+            "sha256": "b1564a3985ca608785d71d7623bff1dbbe1a606390ede22ed06e11c035df383b"
+          }
+        }
+      ]
+    },
+    {
+      "case": "lexer",
+      "role": "c",
+      "artifact": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/lexer/bend-c/program",
+        "bytes": 112744,
+        "sha256": "5a1476d223c4229054c2858187ad3b22cca2236920963082698eb399ac6a07c9"
+      },
+      "functions": [
+        {
+          "name": "NF_$product.step.at",
+          "address": "0x13190",
+          "counts": {
+            "instructions": 315,
+            "instruction_bytes": 1383,
+            "frame_reference_instructions": 0,
+            "frame_reference_operands": 0,
+            "frame_memory_instructions": 0,
+            "frame_address_only_instructions": 0,
+            "stack_reference_instructions": 1,
+            "moves": 114,
+            "calls": 9,
+            "branches": 50,
+            "conditional_branches": 29,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/lexer/c.0.asm",
+            "bytes": 28709,
+            "sha256": "98c239198b023009f1edc28b848acbd9037b9f7280e001af93e5fe05c1001358"
+          }
+        },
+        {
+          "name": "WL_$direct.gen.at",
+          "address": "0xcec0",
+          "counts": {
+            "instructions": 336,
+            "instruction_bytes": 1375,
+            "frame_reference_instructions": 5,
+            "frame_reference_operands": 5,
+            "frame_memory_instructions": 4,
+            "frame_address_only_instructions": 1,
+            "stack_reference_instructions": 16,
+            "moves": 149,
+            "calls": 10,
+            "branches": 34,
+            "conditional_branches": 19,
+            "returns": 0
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/lexer/c.1.asm",
+            "bytes": 29029,
+            "sha256": "0cb8ba1e2738192d49480aeef6c86b6d92c861e1e75b17b743e0b730d34b5a0e"
+          }
+        },
+        {
+          "name": "WL_$direct.lex",
+          "address": "0xaaf0",
+          "counts": {
+            "instructions": 884,
+            "instruction_bytes": 3930,
+            "frame_reference_instructions": 0,
+            "frame_reference_operands": 0,
+            "frame_memory_instructions": 0,
+            "frame_address_only_instructions": 0,
+            "stack_reference_instructions": 27,
+            "moves": 360,
+            "calls": 33,
+            "branches": 159,
+            "conditional_branches": 109,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/lexer/c.2.asm",
+            "bytes": 78724,
+            "sha256": "8f75ff74140c0c21f06079df7978bb28a4b783aa8e7e77b7546598eed39b1664"
+          }
+        },
+        {
+          "name": "WL_$direct.step.at",
+          "address": "0xbef0",
+          "counts": {
+            "instructions": 347,
+            "instruction_bytes": 1531,
+            "frame_reference_instructions": 0,
+            "frame_reference_operands": 0,
+            "frame_memory_instructions": 0,
+            "frame_address_only_instructions": 0,
+            "stack_reference_instructions": 0,
+            "moves": 144,
+            "calls": 10,
+            "branches": 54,
+            "conditional_branches": 31,
+            "returns": 0
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/lexer/c.3.asm",
+            "bytes": 31317,
+            "sha256": "041af769f60f63dd554f7917be9de60c84aae28b94a9a2a6171495fb3b58f34f"
+          }
+        }
+      ]
+    },
+    {
+      "case": "coverage-expression-32",
+      "role": "baseline",
+      "artifact": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-02/coverage-expression-32/machine/program",
+        "bytes": 191096,
+        "sha256": "be6677b1baf69fd72cc3341669f5395fe8c590b996f3d9e2996d3f9c7a87cec5"
+      },
+      "functions": [
+        {
+          "name": "p111_$direct.eval",
+          "address": "0x40d0f7",
+          "counts": {
+            "instructions": 302,
+            "instruction_bytes": 1475,
+            "frame_reference_instructions": 43,
+            "frame_reference_operands": 43,
+            "frame_memory_instructions": 15,
+            "frame_address_only_instructions": 28,
+            "stack_reference_instructions": 24,
+            "moves": 196,
+            "calls": 9,
+            "branches": 14,
+            "conditional_branches": 9,
+            "returns": 5
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/coverage-expression-32/baseline.0.asm",
+            "bytes": 25123,
+            "sha256": "db7a424f56ff9c76759e9e8d808e2013610432c5e39648dd2121f16b51a80f0b"
+          }
+        },
+        {
+          "name": "p111_$direct.p37.expr",
+          "address": "0x40dfe0",
+          "counts": {
+            "instructions": 149,
+            "instruction_bytes": 722,
+            "frame_reference_instructions": 26,
+            "frame_reference_operands": 26,
+            "frame_memory_instructions": 9,
+            "frame_address_only_instructions": 17,
+            "stack_reference_instructions": 0,
+            "moves": 96,
+            "calls": 4,
+            "branches": 7,
+            "conditional_branches": 4,
+            "returns": 2
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/coverage-expression-32/baseline.1.asm",
+            "bytes": 12679,
+            "sha256": "caa6e27c14ee478188e056dbbaa6825ff4a031d74dbdf149a283d339b7d07fcf"
+          }
+        },
+        {
+          "name": "p111_$direct.p37.expr.pick",
+          "address": "0x40e4c2",
+          "counts": {
+            "instructions": 39,
+            "instruction_bytes": 155,
+            "frame_reference_instructions": 4,
+            "frame_reference_operands": 4,
+            "frame_memory_instructions": 2,
+            "frame_address_only_instructions": 2,
+            "stack_reference_instructions": 8,
+            "moves": 29,
+            "calls": 2,
+            "branches": 0,
+            "conditional_branches": 0,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/coverage-expression-32/baseline.2.asm",
+            "bytes": 3516,
+            "sha256": "432c389a44ce53e436f2be7f51958ef81ee5693a5cfcc989c068b3fe7930a441"
+          }
+        },
+        {
+          "name": "p112w_$direct.p37.expr.pick",
+          "address": "0x408761",
+          "counts": {
+            "instructions": 1,
+            "instruction_bytes": 5,
+            "frame_reference_instructions": 0,
+            "frame_reference_operands": 0,
+            "frame_memory_instructions": 0,
+            "frame_address_only_instructions": 0,
+            "stack_reference_instructions": 0,
+            "moves": 0,
+            "calls": 0,
+            "branches": 1,
+            "conditional_branches": 0,
+            "returns": 0
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/coverage-expression-32/baseline.3.asm",
+            "bytes": 534,
+            "sha256": "fb09c35b63f0925efab3074365e21e4e88df7d3a83a235c85fe9d71540c74180"
+          }
+        },
+        {
+          "name": "p113d_$direct.p37.expr.pick",
+          "address": "0x4083db",
+          "counts": {
+            "instructions": 194,
+            "instruction_bytes": 902,
+            "frame_reference_instructions": 39,
+            "frame_reference_operands": 39,
+            "frame_memory_instructions": 12,
+            "frame_address_only_instructions": 27,
+            "stack_reference_instructions": 0,
+            "moves": 116,
+            "calls": 10,
+            "branches": 8,
+            "conditional_branches": 5,
+            "returns": 3
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/coverage-expression-32/baseline.4.asm",
+            "bytes": 16410,
+            "sha256": "ce92ed2a708beba4fc69bbfcf20ec684bdb24c8732be1a69378d0d141c78e4aa"
+          }
+        }
+      ]
+    },
+    {
+      "case": "coverage-expression-32",
+      "role": "qbe",
+      "artifact": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-native45-acquire01/coverage-expression-32/phase186-qbe-n2/machine/program",
+        "bytes": 169344,
+        "sha256": "9591537881730b9aaa04a73f7673bbb19a1ce18fd41eb8bae4f68d665bc47bca"
+      },
+      "functions": [
+        {
+          "name": "p111_$direct.eval",
+          "address": "0x409cd0",
+          "counts": {
+            "instructions": 20,
+            "instruction_bytes": 64,
+            "frame_reference_instructions": 2,
+            "frame_reference_operands": 2,
+            "frame_memory_instructions": 1,
+            "frame_address_only_instructions": 1,
+            "stack_reference_instructions": 0,
+            "moves": 9,
+            "calls": 3,
+            "branches": 0,
+            "conditional_branches": 0,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/coverage-expression-32/qbe.0.asm",
+            "bytes": 1945,
+            "sha256": "6e42695eff4d40f98a4c81c6275466c9be1bfe237bc88ae5ea15b1a5cf75c842"
+          }
+        },
+        {
+          "name": "p111_$direct.p37.expr",
+          "address": "0x40a5f0",
+          "counts": {
+            "instructions": 29,
+            "instruction_bytes": 93,
+            "frame_reference_instructions": 2,
+            "frame_reference_operands": 2,
+            "frame_memory_instructions": 1,
+            "frame_address_only_instructions": 1,
+            "stack_reference_instructions": 0,
+            "moves": 15,
+            "calls": 4,
+            "branches": 0,
+            "conditional_branches": 0,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/coverage-expression-32/qbe.1.asm",
+            "bytes": 2662,
+            "sha256": "a7cd7634146dfb01deedae4a9e472c64ff3c11da0ae118d25bfa7cbae13e4027"
+          }
+        },
+        {
+          "name": "p111_$direct.p37.expr.pick",
+          "address": "0x40a8d0",
+          "counts": {
+            "instructions": 39,
+            "instruction_bytes": 125,
+            "frame_reference_instructions": 2,
+            "frame_reference_operands": 2,
+            "frame_memory_instructions": 1,
+            "frame_address_only_instructions": 1,
+            "stack_reference_instructions": 0,
+            "moves": 22,
+            "calls": 5,
+            "branches": 0,
+            "conditional_branches": 0,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/coverage-expression-32/qbe.2.asm",
+            "bytes": 3463,
+            "sha256": "8331eaacab53eb97fa2233464624be1dc04d60bbb005a54f7bd2347809737b55"
+          }
+        },
+        {
+          "name": "p112w_$direct.p37.expr.pick",
+          "address": "0x405330",
+          "counts": {
+            "instructions": 6,
+            "instruction_bytes": 15,
+            "frame_reference_instructions": 0,
+            "frame_reference_operands": 0,
+            "frame_memory_instructions": 0,
+            "frame_address_only_instructions": 0,
+            "stack_reference_instructions": 0,
+            "moves": 1,
+            "calls": 1,
+            "branches": 0,
+            "conditional_branches": 0,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/coverage-expression-32/qbe.3.asm",
+            "bytes": 914,
+            "sha256": "a3f27f593bc8f5350b9a79586c6101c6e78e4e79ee25b09a650925597508009c"
+          }
+        },
+        {
+          "name": "p113d_$direct.p37.expr.pick",
+          "address": "0x406a30",
+          "counts": {
+            "instructions": 265,
+            "instruction_bytes": 1227,
+            "frame_reference_instructions": 26,
+            "frame_reference_operands": 26,
+            "frame_memory_instructions": 17,
+            "frame_address_only_instructions": 9,
+            "stack_reference_instructions": 0,
+            "moves": 162,
+            "calls": 9,
+            "branches": 28,
+            "conditional_branches": 14,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/coverage-expression-32/qbe.4.asm",
+            "bytes": 24103,
+            "sha256": "8e791fae1c8b1bca105ab261fafd1d03c4040d3bc6cce5ebdedf82236fde4bf4"
+          }
+        },
+        {
+          "name": "p114r_$direct.eval",
+          "address": "0x409d10",
+          "counts": {
+            "instructions": 204,
+            "instruction_bytes": 906,
+            "frame_reference_instructions": 25,
+            "frame_reference_operands": 25,
+            "frame_memory_instructions": 21,
+            "frame_address_only_instructions": 4,
+            "stack_reference_instructions": 0,
+            "moves": 106,
+            "calls": 6,
+            "branches": 24,
+            "conditional_branches": 12,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/coverage-expression-32/qbe.5.asm",
+            "bytes": 17846,
+            "sha256": "8606000a23d6bf87d7c278c41a633521295d21c59dda21a9a356683cb8bdc40e"
+          }
+        },
+        {
+          "name": "p114r_$direct.p37.expr",
+          "address": "0x40a650",
+          "counts": {
+            "instructions": 100,
+            "instruction_bytes": 428,
+            "frame_reference_instructions": 13,
+            "frame_reference_operands": 13,
+            "frame_memory_instructions": 12,
+            "frame_address_only_instructions": 1,
+            "stack_reference_instructions": 0,
+            "moves": 56,
+            "calls": 3,
+            "branches": 9,
+            "conditional_branches": 5,
+            "returns": 1
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/coverage-expression-32/qbe.6.asm",
+            "bytes": 8974,
+            "sha256": "b6966028692c6dbbd04a19624ac5c8e3d5d9cfb510c0da102e69c2c3d1acc427"
+          }
+        }
+      ]
+    },
+    {
+      "case": "coverage-expression-32",
+      "role": "c",
+      "artifact": {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-expression-32/bend-c/program",
+        "bytes": 95560,
+        "sha256": "08db3f74caa46be376818140e2a712677cf98e540ec546f24cf8fccdcd578aa1"
+      },
+      "functions": [
+        {
+          "name": "WL_$direct.eval",
+          "address": "0x9c10",
+          "counts": {
+            "instructions": 413,
+            "instruction_bytes": 1953,
+            "frame_reference_instructions": 0,
+            "frame_reference_operands": 0,
+            "frame_memory_instructions": 0,
+            "frame_address_only_instructions": 0,
+            "stack_reference_instructions": 4,
+            "moves": 197,
+            "calls": 18,
+            "branches": 72,
+            "conditional_branches": 45,
+            "returns": 0
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/coverage-expression-32/c.0.asm",
+            "bytes": 37652,
+            "sha256": "2282d935c20db8d162432f80353d0ecc8bf80e6ace6a9785edeba993ccdb6f55"
+          }
+        },
+        {
+          "name": "WL_$direct.p37.expr",
+          "address": "0xa660",
+          "counts": {
+            "instructions": 125,
+            "instruction_bytes": 510,
+            "frame_reference_instructions": 0,
+            "frame_reference_operands": 0,
+            "frame_memory_instructions": 0,
+            "frame_address_only_instructions": 0,
+            "stack_reference_instructions": 2,
+            "moves": 60,
+            "calls": 2,
+            "branches": 12,
+            "conditional_branches": 7,
+            "returns": 0
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/coverage-expression-32/c.1.asm",
+            "bytes": 11094,
+            "sha256": "519a442f0653ae11fcc0dd02c248539b523fced2a85191daa8eb20e1b83bc5b2"
+          }
+        },
+        {
+          "name": "WL_$direct.p37.expr.pick",
+          "address": "0xa8c0",
+          "counts": {
+            "instructions": 168,
+            "instruction_bytes": 707,
+            "frame_reference_instructions": 0,
+            "frame_reference_operands": 0,
+            "frame_memory_instructions": 0,
+            "frame_address_only_instructions": 0,
+            "stack_reference_instructions": 2,
+            "moves": 95,
+            "calls": 7,
+            "branches": 18,
+            "conditional_branches": 9,
+            "returns": 0
+          },
+          "disassembly": {
+            "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/parity-audit01/coverage-expression-32/c.2.asm",
+            "bytes": 15274,
+            "sha256": "362c17a1d06b2c9cca354bc2298a833d96ffaf52d6a6ff2535d6dc951e356470"
+          }
+        }
+      ]
+    }
+  ],
+  "physical": [
+    {
+      "case": "tree-bitonic",
+      "role": "baseline",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-02/tree-bitonic/machine/program",
+        "bytes": 216472,
+        "sha256": "efc059c07ae4742b62f3ce3ec63946ecd461ccb33f421498de3725a1856ef795"
+      },
+      "samples": 558,
+      "unknown": 0.04662088904951211,
+      "cleanCpuUs": 784.0302430751838,
+      "leadingLeaves": [
+        {
+          "decoded": "p111_FID_$direct.warp",
+          "object": "executable",
+          "samples": 74,
+          "periodWeightedFraction": 0.13408023129743404,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 105.12295633570407
+        },
+        {
+          "decoded": "p125_rt_ctor2",
+          "object": "executable",
+          "samples": 59,
+          "periodWeightedFraction": 0.100650524033249,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 78.91305482343283
+        },
+        {
+          "decoded": "work_loop.constprop.0",
+          "object": "executable",
+          "samples": 46,
+          "periodWeightedFraction": 0.08276111311890133,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 64.88721563578498
+        },
+        {
+          "decoded": "p125_rt_take2",
+          "object": "executable",
+          "samples": 47,
+          "periodWeightedFraction": 0.07968919407300325,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 62.478738199522226
+        },
+        {
+          "decoded": "p111_FID_$direct.warp_leaf",
+          "object": "executable",
+          "samples": 40,
+          "periodWeightedFraction": 0.07137694253704373,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 55.96168160728182
+        },
+        {
+          "decoded": "p111_FID_$p111.k.11614",
+          "object": "executable",
+          "samples": 34,
+          "periodWeightedFraction": 0.06270328876039032,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 49.161274728422256
+        },
+        {
+          "decoded": "p111_FID_$p111.k.11613",
+          "object": "executable",
+          "samples": 31,
+          "periodWeightedFraction": 0.05655945066859414,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 44.34431985589673
+        },
+        {
+          "decoded": "[library_unresolved]",
+          "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+          "samples": 25,
+          "periodWeightedFraction": 0.04517528008673654,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 35.418785827393556
+        }
+      ]
+    },
+    {
+      "case": "tree-bitonic",
+      "role": "c",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/tree-bitonic/bend-c/program",
+        "bytes": 115744,
+        "sha256": "19550d9d4c7b770e374ac234d09c6860458807a6f7ff1d0c4153f1f1cf8d513a"
+      },
+      "samples": 580,
+      "unknown": 0,
+      "cleanCpuUs": 165.63574634595466,
+      "leadingLeaves": [
+        {
+          "decoded": "WL_FID_$direct.warp_zip",
+          "object": "executable",
+          "samples": 134,
+          "periodWeightedFraction": 0.22924281984334205,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 37.970805559203185
+        },
+        {
+          "decoded": "WL_FID_$direct.warp",
+          "object": "executable",
+          "samples": 92,
+          "periodWeightedFraction": 0.1524804177545692,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 25.25620779792102
+        },
+        {
+          "decoded": "WL_FID_native_k_22984",
+          "object": "executable",
+          "samples": 76,
+          "periodWeightedFraction": 0.1380330722367276,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 22.863210940355447
+        },
+        {
+          "decoded": "WL_FID_$direct.warp_leaf",
+          "object": "executable",
+          "samples": 71,
+          "periodWeightedFraction": 0.11801566579634465,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 19.547612884692295
+        },
+        {
+          "decoded": "WL_FID_$direct.flow",
+          "object": "executable",
+          "samples": 50,
+          "periodWeightedFraction": 0.0835509138381201,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 13.839017971463575
+        },
+        {
+          "decoded": "WL_FID_native_k_22985",
+          "object": "executable",
+          "samples": 33,
+          "periodWeightedFraction": 0.0546562228024369,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 9.05302425633242
+        },
+        {
+          "decoded": "WL_FID_native_k_20831",
+          "object": "executable",
+          "samples": 21,
+          "periodWeightedFraction": 0.037075718015665796,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 6.141064224836961
+        },
+        {
+          "decoded": "WL_FID_native_k_20832",
+          "object": "executable",
+          "samples": 18,
+          "periodWeightedFraction": 0.03289817232375979,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 5.449113326263783
+        }
+      ]
+    },
+    {
+      "case": "coverage-expression-32",
+      "role": "baseline",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-02/coverage-expression-32/machine/program",
+        "bytes": 191096,
+        "sha256": "be6677b1baf69fd72cc3341669f5395fe8c590b996f3d9e2996d3f9c7a87cec5"
+      },
+      "samples": 540,
+      "unknown": 0.020560747663551402,
+      "cleanCpuUs": 5.790352750506738,
+      "leadingLeaves": [
+        {
+          "decoded": "p111_FID_$direct.eval",
+          "object": "executable",
+          "samples": 109,
+          "periodWeightedFraction": 0.20130841121495327,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.165646712578646
+        },
+        {
+          "decoded": "work_loop.constprop.0",
+          "object": "executable",
+          "samples": 54,
+          "periodWeightedFraction": 0.09570093457943925,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.5541421697681215
+        },
+        {
+          "decoded": "p111_FID_$p111.k.8399",
+          "object": "executable",
+          "samples": 40,
+          "periodWeightedFraction": 0.07102803738317758,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.41127739162477767
+        },
+        {
+          "decoded": "p111_FID_$p111.k.7333",
+          "object": "executable",
+          "samples": 34,
+          "periodWeightedFraction": 0.06579439252336448,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.38097274171558354
+        },
+        {
+          "decoded": "p111_FID_$direct.p37.expr.pick",
+          "object": "executable",
+          "samples": 32,
+          "periodWeightedFraction": 0.06093457943925234,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.3528327096570461
+        },
+        {
+          "decoded": "p125_rt_ctor2",
+          "object": "executable",
+          "samples": 32,
+          "periodWeightedFraction": 0.05719626168224299,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.33118653115047886
+        },
+        {
+          "decoded": "p111_FID_$p111.k.7332",
+          "object": "executable",
+          "samples": 29,
+          "periodWeightedFraction": 0.055514018691588785,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.3214457508225236
+        },
+        {
+          "decoded": "p111_FID_$p111.k.7342",
+          "object": "executable",
+          "samples": 30,
+          "periodWeightedFraction": 0.05514018691588785,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.3192811329718669
+        }
+      ]
+    },
+    {
+      "case": "coverage-expression-32",
+      "role": "c",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-expression-32/bend-c/program",
+        "bytes": 95560,
+        "sha256": "08db3f74caa46be376818140e2a712677cf98e540ec546f24cf8fccdcd578aa1"
+      },
+      "samples": 552,
+      "unknown": 0,
+      "cleanCpuUs": 2.188611010610236,
+      "leadingLeaves": [
+        {
+          "decoded": "WL_FID_$direct.eval",
+          "object": "executable",
+          "samples": 290,
+          "periodWeightedFraction": 0.5200512726606848,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.1381899414270409
+        },
+        {
+          "decoded": "WL_FID_native_k_13538",
+          "object": "executable",
+          "samples": 55,
+          "periodWeightedFraction": 0.10895440395531954,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.2384588081510878
+        },
+        {
+          "decoded": "WL_FID_native_k_13537",
+          "object": "executable",
+          "samples": 46,
+          "periodWeightedFraction": 0.08386742354880058,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.18355316661041715
+        },
+        {
+          "decoded": "WL_FID_$direct.p37.expr.pick",
+          "object": "executable",
+          "samples": 42,
+          "periodWeightedFraction": 0.07434535799304157,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.1627130690913305
+        },
+        {
+          "decoded": "WL_FID_native_k_13546",
+          "object": "executable",
+          "samples": 38,
+          "periodWeightedFraction": 0.06665445889031313,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.14588068263360665
+        },
+        {
+          "decoded": "WL_FID_$direct.p37.expr",
+          "object": "executable",
+          "samples": 20,
+          "periodWeightedFraction": 0.03845449551364219,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.0841619322886192
+        },
+        {
+          "decoded": "WL_FID_native_k_13545",
+          "object": "executable",
+          "samples": 22,
+          "periodWeightedFraction": 0.03772202893242996,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.0825588478640741
+        },
+        {
+          "decoded": "WL_FID_native_k_13554",
+          "object": "executable",
+          "samples": 18,
+          "periodWeightedFraction": 0.03094671305621681,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 0.06773031693703166
+        }
+      ]
+    },
+    {
+      "case": "lexer",
+      "role": "baseline",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-02/lexer/machine/program",
+        "bytes": 216072,
+        "sha256": "2e16936fb1b57473b8928f7948f52136881c94482ecba7385e5960310c73576e"
+      },
+      "samples": 528,
+      "unknown": 0.04788039364118092,
+      "cleanCpuUs": 1967.5274980635168,
+      "leadingLeaves": [
+        {
+          "decoded": "p111_FID_$direct.gen",
+          "object": "executable",
+          "samples": 48,
+          "periodWeightedFraction": 0.09443603330809992,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 185.80549234172875
+        },
+        {
+          "decoded": "p111_FID_$p111.k.9436",
+          "object": "executable",
+          "samples": 48,
+          "periodWeightedFraction": 0.08970476911430735,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 176.49659993983857
+        },
+        {
+          "decoded": "p113d_FID_$product.lex",
+          "object": "executable",
+          "samples": 45,
+          "periodWeightedFraction": 0.08610900832702498,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 169.42184171440195
+        },
+        {
+          "decoded": "p111_FID_$direct.gen.at",
+          "object": "executable",
+          "samples": 38,
+          "periodWeightedFraction": 0.0755109765329296,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 148.56992273416787
+        },
+        {
+          "decoded": "p113d_FID_$direct.gen.at",
+          "object": "executable",
+          "samples": 34,
+          "periodWeightedFraction": 0.06188493565480697,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 121.76031261672406
+        },
+        {
+          "decoded": "p125_rt_take2",
+          "object": "executable",
+          "samples": 34,
+          "periodWeightedFraction": 0.060938682816048445,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 119.898534136346
+        },
+        {
+          "decoded": "p113d_FID_$product.step.at",
+          "object": "executable",
+          "samples": 32,
+          "periodWeightedFraction": 0.06074943224829674,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 119.5261784402704
+        },
+        {
+          "decoded": "p111_FID_$p111.k.9435",
+          "object": "executable",
+          "samples": 33,
+          "periodWeightedFraction": 0.06037093111279334,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 118.78146704811917
+        }
+      ]
+    },
+    {
+      "case": "lexer",
+      "role": "c",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/lexer/bend-c/program",
+        "bytes": 112744,
+        "sha256": "5a1476d223c4229054c2858187ad3b22cca2236920963082698eb399ac6a07c9"
+      },
+      "samples": 553,
+      "unknown": 0,
+      "cleanCpuUs": 385.77372154892106,
+      "leadingLeaves": [
+        {
+          "decoded": "WL_FID_$direct.lex",
+          "object": "executable",
+          "samples": 163,
+          "periodWeightedFraction": 0.291044776119403,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 112.27742642095465
+        },
+        {
+          "decoded": "NF_FID_$product.step.at",
+          "object": "executable",
+          "samples": 154,
+          "periodWeightedFraction": 0.2779395704404805,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 107.22178245453267
+        },
+        {
+          "decoded": "WL_FID_$direct.gen.at",
+          "object": "executable",
+          "samples": 125,
+          "periodWeightedFraction": 0.2247906807426283,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 86.71833747959911
+        },
+        {
+          "decoded": "rfc_wrap",
+          "object": "executable",
+          "samples": 64,
+          "periodWeightedFraction": 0.11594466690935566,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 44.72840564737217
+        },
+        {
+          "decoded": "WL_FID_$direct.gen",
+          "object": "executable",
+          "samples": 32,
+          "periodWeightedFraction": 0.0620677102293411,
+          "lowPrecision": false,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 23.944091563192956
+        },
+        {
+          "decoded": "WL_FID_native_k_24889",
+          "object": "executable",
+          "samples": 7,
+          "periodWeightedFraction": 0.01383327266108482,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 5.3365130756676376
+        },
+        {
+          "decoded": "WL_FID_native_k_13537",
+          "object": "executable",
+          "samples": 3,
+          "periodWeightedFraction": 0.005278485620677102,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 2.0363010420310723
+        },
+        {
+          "decoded": "WL_FID_native_k_13538",
+          "object": "executable",
+          "samples": 2,
+          "periodWeightedFraction": 0.004732435384055333,
+          "lowPrecision": true,
+          "estimatedCleanCpuMicrosecondsPerRepetition": 1.8256492100968233
+        }
+      ]
+    }
+  ]
+}

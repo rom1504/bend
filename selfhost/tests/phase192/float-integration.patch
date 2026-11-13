@@ -1,0 +1,144 @@
+--- a/selfhost/src/back/x86/inline-effects.bend
++++ b/selfhost/src/back/x86/inline-effects.bend
+@@ -12,9 +12,11 @@
+ def x186_inline_op_when(enabled: Bool, stmt: N111Stmt) -> X186InlineOp:
+   match stmt:
+     case N111Call{name,N111U64{},symbol,
+-      Con{N111Arg{N111Ptr{},N111Local{state}},Con{N111Arg{N111U32{},N111Const{+id,0}},Con{N111Arg{N111Ptr{},N111Local{buffer}},Con{N111Arg{N111U32{},N111Const{count,0}},Nil{}}}}}}:
++      Con{N111Arg{N111Ptr{},N111Local{state}},Con{N111Arg{N111U32{},N111Const{+id,0}},Con{N111Arg{N111Ptr{},N111Local{+buffer}},Con{N111Arg{N111U32{},N111Const{+count,0}},Nil{}}}}}}:
+       nt_choose(X186InlineOp,enabled && String.eq(symbol,"p111_rt_op") && String.eq(state,"state") &&
+-          U32.is_ge(id,26) && p112fp_supported(id,count),
++          (nt_choose(Bool,x192_float_unary(id),
++            v => x192_float_conversions_enabled() && U32.is_eq(count,1) && Bool.not(String.eq(buffer,"state")),
++            v => U32.is_ge(id,26) && p112fp_supported(id,count))),
+         u => X186InlineF32{name,id,buffer},u => X186InlineNone{})
+     case _: X186InlineNone{}
+ 
+--- a/selfhost/src/back/x86/private-memory.bend
++++ b/selfhost/src/back/x86/private-memory.bend
+@@ -66,10 +66,12 @@
+     case _: scan
+ 
+ @unsafe
+-def x186_m_call(stmt: N111Stmt, scan: X186Memory, effect: X186InlineOp) -> X186Memory:
++def x186_m_call(stmt: N111Stmt, +scan: X186Memory, effect: X186InlineOp) -> X186Memory:
+   match effect:
+-    case X186InlineF32{destination,id,+buffer}:
+-      x186_m_read(buffer,8,N111U64{},x186_m_read(buffer,0,N111U64{},scan))
++    case X186InlineF32{destination,+id,+buffer}:
++      nt_choose(X186Memory,x192_float_unary(id),
++        u => x186_m_read(buffer,0,N111U64{},scan),
++        u => x186_m_read(buffer,8,N111U64{},x186_m_read(buffer,0,N111U64{},scan)))
+     case _: x186_m_unknown_call(stmt,scan)
+ 
+ law x186_m_scan:
+--- a/selfhost/src/back/x86/floating.bend
++++ b/selfhost/src/back/x86/floating.bend
+@@ -102,9 +102,12 @@
+   x186_float_operation(x186_inline_op(stmt),ids,frame)
+ 
+ @unsafe
+-def x186_float_operation(operation: X186InlineOp, ids: N111Ids, frame: X181Frame) -> X188Seq:
++def x186_float_operation(operation: X186InlineOp, +ids: N111Ids, +frame: X181Frame) -> X188Seq:
+   match operation:
+-    case X186InlineF32{name,id,buffer}: x185_float_text(name,id,buffer,ids,frame)
++    case X186InlineF32{+name,+id,+buffer}:
++      nt_choose(X188Seq,x192_float_unary(id),
++        u => x192_float_conversion_buffer(name,id,buffer,ids,frame),
++        u => x185_float_text(name,id,buffer,ids,frame))
+     case X186InlineNone{}: X188Empty{}
+ 
+ @unsafe
+--- a/selfhost/src/back/x86/float-values.bend
++++ b/selfhost/src/back/x86/float-values.bend
+@@ -63,8 +63,9 @@
+ @unsafe
+ def x186_f_operation(stmt: N111Stmt, +facts: List<&2,X185ScratchCell>, operation: X186InlineOp) -> X186FloatNode:
+   match operation:
+-    case X186InlineF32{destination,id,+buffer}:
+-      x186_f_values(stmt,destination,id,x185_sf_find(facts,buffer,0,N111U64{}),x185_sf_find(facts,buffer,8,N111U64{}))
++    case X186InlineF32{destination,+id,+buffer}:
++      x186_f_values(stmt,destination,id,x185_sf_find(facts,buffer,0,N111U64{}),
++        x185_sf_find(facts,buffer,nt_choose(U32,x192_float_unary(id),u => 0,u => 8),N111U64{}))
+     case X186InlineNone{}: X186FloatPlain{P113DScalar{stmt}}
+ 
+ def x186_f_facts(step: X185ScratchStep) -> List<&2,X185ScratchCell>:
+@@ -164,10 +165,12 @@
+   nt_choose(List<&2,X186FloatNode>,x186_private_enabled(),u => x186_f_prune(nodes,x186_f_read_scan(params,setup,nodes)),u => nodes)
+ 
+ @unsafe
+-def x186_f_values_text(name: String, +id: U32, left: N111Value, right: N111Value,
++def x186_f_values_text(+name: String, +id: U32, +left: N111Value, +right: N111Value,
+     +ids: N111Ids, +frame: X181Frame) -> X188Seq:
+-  x188_many([x186_float_load(left,ids,frame,x188_xmm(0)),x186_float_load(right,ids,frame,x188_xmm(1)),
+-    x186_float_finish(name,id,frame)])
++  nt_choose(X188Seq,x192_float_unary(id),
++    u => x192_float_conversion(name,id,left,ids,frame,missing()),
++    u => x188_many([x186_float_load(left,ids,frame,x188_xmm(0)),x186_float_load(right,ids,frame,x188_xmm(1)),
++      x186_float_finish(name,id,frame)]))
+ 
+ law x186_f_emit_nodes:
+   for nodes: List<&2,X186FloatNode>
+--- a/selfhost/src/back/x86/float-registers.bend
++++ b/selfhost/src/back/x86/float-registers.bend
+@@ -168,8 +168,9 @@
+ @unsafe
+ def x186_x_float(+name: String, +id: U32, +left: N111Value, +right: N111Value,
+     +ids: N111Ids, +frame: X181Frame, +homes: KDef) -> X188Seq:
+-  nt_choose(X188Seq,U32.is_lt(id,30),u => x186_x_arithmetic(name,id,left,right,ids,frame,homes),
+-    u => x186_x_compare(name,id,left,right,ids,frame,homes))
++  nt_choose(X188Seq,x192_float_unary(id),u => x192_float_conversion(name,id,left,ids,frame,homes),
++    u => nt_choose(X188Seq,U32.is_lt(id,30),v => x186_x_arithmetic(name,id,left,right,ids,frame,homes),
++      v => x186_x_compare(name,id,left,right,ids,frame,homes)))
+ 
+ @unsafe
+ def x186_x_publish_to(destination: Maybe<&2,X187Operand>, name: String, source: X187Operand, frame: X181Frame) -> X188Seq:
+--- a/selfhost/src/back/x86/object-encode.bend
++++ b/selfhost/src/back/x86/object-encode.bend
+@@ -349,9 +349,11 @@
+ @unsafe
+ def x187_encode(inst: X187Instruction, +offset: U32) -> X187Encoded:
+   match inst:
+-    case X187Instruction{op,operands}:
++    case X187Instruction{+op,+operands}:
+       nt_choose(X187Encoded,U32.is_le(offset,4294967280),
+-        u => x187_e_selected(x187_e_spec(op),operands,offset),u => x187_e_error())
++        u => nt_choose(X187Encoded,String.eq(op,"cvttss2siq"),
++          v => x192_float_cvtt_operands(operands,offset),
++          v => x187_e_selected(x187_e_spec(op),operands,offset)),u => x187_e_error())
+ 
+ # Proposal only: integer CMOVcc, AT&T source first. Memory sources are read
+ # unconditionally. The32-bit form zeroes destination high32 even when false.
+--- a/selfhost/src/back/x86/object-parse.bend
++++ b/selfhost/src/back/x86/object-parse.bend
+@@ -216,7 +216,7 @@
+     "testq","testl","testb","sete","setne","setb","setbe","seta","setae","setl","setle","setg","setge","setp","setnp",
+     "pushq","popq","ret","call","jmp","jz","jnz","je","jne","ja","jae","jb","jbe","jl","jle","jg","jge",
+     "cmovel","cmovnel","cmovbl","cmovbel","cmoval","cmovael","cmovll","cmovlel","cmovgl","cmovgel","cmoveq","cmovneq","cmovbq","cmovbeq","cmovaq","cmovaeq","cmovlq","cmovleq","cmovgq","cmovgeq",
+-    "movd","movaps","pxor","addss","subss","mulss","divss","ucomiss","cvtsi2ssq"]),
++    "movd","movaps","pxor","addss","subss","mulss","divss","ucomiss","comiss","cvtsi2ssq","cvttss2siq"]),
+     u => x187p_instruction_done(op,nt_choose(X187Operands,String.is_empty(tail),
+       v => X187Operands{[],""},v => x187p_operands(String.split(tail,','),[]))),
+     u => PError{"unsupported instruction: " ++ op})
+--- a/selfhost/src/compiler.json
++++ b/selfhost/src/compiler.json
+@@ -43158,6 +43158,7 @@
+         "src/back/x86/frame.bend",
+         "src/back/x86/inline-effects.bend",
+         "src/back/x86/u32-float.bend",
++        "src/back/x86/float-conversions.bend",
+         "src/back/x86/floating.bend",
+         "src/back/x86/call-arguments.bend",
+         "src/back/x86/scalar.bend",
+--- a/selfhost/src/back/x86/object-encode.bend
++++ b/selfhost/src/back/x86/object-encode.bend
+@@ -316,7 +316,8 @@
+   nt_choose(X187Op,String.eq(op,"subss"),u => X187Op{7,128,92,0,243},u =>
+   nt_choose(X187Op,String.eq(op,"mulss"),u => X187Op{7,128,89,0,243},u =>
+   nt_choose(X187Op,String.eq(op,"divss"),u => X187Op{7,128,94,0,243},u =>
+-  nt_choose(X187Op,String.eq(op,"ucomiss"),u => X187Op{7,128,46,0,0},u =>
++  nt_choose(X187Op,String.eq(op,"ucomiss") || String.eq(op,"comiss"),
++    u => X187Op{7,128,nt_choose(U32,String.eq(op,"comiss"),v => 47,v => 46),0,0},u =>
+   nt_choose(X187Op,String.eq(op,"movaps"),u => X187Op{7,128,40,0,0},u =>
+   nt_choose(X187Op,String.eq(op,"pxor"),u => X187Op{7,128,239,0,102},u =>
+   nt_choose(X187Op,String.eq(op,"pushq"),u => X187Op{8,64,80,0,0},u =>

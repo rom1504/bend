@@ -1,0 +1,11 @@
+--- a/selfhost/src/back/x86/function.bend
++++ b/selfhost/src/back/x86/function.bend
+@@ -228,7 +228,7 @@
+     body: List<&2,P113DStmt>, ids: N111Ids) -> X181Output:
+   x185_function_copied(symbol,params,setup,x185_dead_body(setup,
+     x185_copy_function(params,setup,x186_expression_body(setup,
+-      x190_local_values_body(setup,x192_predicate_body(x186_private_body(params,setup,body)))))),ids)
++      x190_local_values_body(setup,x192_path_facts_body(x192_predicate_body(x186_private_body(params,setup,body))))))),ids)
+ 
+ def x185_loop_registers_enabled() -> Bool: True{}
+ 

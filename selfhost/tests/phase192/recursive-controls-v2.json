@@ -1,0 +1,105 @@
+{
+  "kind": "phase192-recursive-source-controls",
+  "version": 2,
+  "cases": [
+    {
+      "id": "one",
+      "source": "selfhost/tests/phase192/recursive-controls-one.bend",
+      "bytes": 651,
+      "sha256": "b2a59900622e2003d95b0a86f40ac651e7d22871a778f11e757fc4fcb1ea8719",
+      "expectedStdout": "2779096482\n2779096453\n2765750876\n",
+      "querySourceNames": [
+        "recur.one",
+        "recur.outside"
+      ],
+      "purpose": "Single scalar continuation, depth zero external caller, 4096 nested descents."
+    },
+    {
+      "id": "two",
+      "source": "selfhost/tests/phase192/recursive-controls-two.bend",
+      "bytes": 653,
+      "sha256": "ec4f67fe9d544453eaeb16fc099f6bc866454b248f521696bc1f0bfea360df03",
+      "expectedStdout": "4294967295\n707\n13214\n",
+      "querySourceNames": [
+        "recur.two"
+      ],
+      "purpose": "Two alternating continuation cases with noncommuting arithmetic and captured seeds."
+    },
+    {
+      "id": "tree",
+      "source": "selfhost/tests/phase192/recursive-controls-tree.bend",
+      "bytes": 955,
+      "sha256": "4d61afbbb40c5bee07c2cf614d18789780a4cfa81ccb44aec33bcfd09abc6213",
+      "expectedStdout": "13\n723\n18755\n",
+      "querySourceNames": [
+        "recur.tree.make",
+        "recur.tree.eval"
+      ],
+      "purpose": "Two recursive calls per node, owned right subtree and first result captures."
+    },
+    {
+      "id": "ready",
+      "source": "selfhost/tests/phase192/recursive-controls-ready.bend",
+      "bytes": 884,
+      "sha256": "1e3581bfc013465637ad4869e00269df5d968225c9fcae61dea1ab4d46fe63af",
+      "expectedStdout": "2784056245\n3208607490\n2048823751\n",
+      "querySourceNames": [
+        "recur.ready.helper",
+        "recur.ready.owner",
+        "recur.ready.outside"
+      ],
+      "purpose": "Separate ready scalar helper returns under region captures and external caller."
+    },
+    {
+      "id": "sharing",
+      "source": "selfhost/tests/phase192/recursive-controls-sharing-v2.bend",
+      "bytes": 1074,
+      "sha256": "c8ca4912ed9b45390706e22cb78748f19d7a2694a5b9b5566a40b64fd5ce9b6e",
+      "expectedStdout": "zero\n73q|73q|73q|73q|end\n73q!?73q!?73q!\n73q\n",
+      "querySourceNames": [
+        "recur.sharing.repeat",
+        "recur.sharing.alternate"
+      ],
+      "purpose": "Repeated shared heap-string captures, owned tail and post-return shared read."
+    },
+    {
+      "id": "fallback",
+      "source": "selfhost/tests/phase192/recursive-controls-fallback.bend",
+      "bytes": 789,
+      "sha256": "cc721f19b0f5ac9ed24007370b1023626cb43574448c76b075d28ea2f6254e82",
+      "expectedStdout": "1431655689\n1431656337\n1431655525\n",
+      "querySourceNames": [
+        "recur.fallback",
+        "recur.fallback.outside"
+      ],
+      "purpose": "Indirect call refusal or independently evidenced specialization; external caller continuation."
+    }
+  ],
+  "oracle": {
+    "file": "selfhost/tests/phase192/recursive-controls-oracle.py",
+    "bytes": 2212,
+    "sha256": "480c9cdd3ee98693ff65ed39d21f0e0c80b062c48b3455767693b11fb3fd181a",
+    "method": "Independent Python finite unsigned-word arithmetic and literal string oracle; no Bend compiler or generated target invoked."
+  },
+  "programsExecuted": false,
+  "admissionVerified": false,
+  "predecessor": {
+    "file": "selfhost/tests/phase192/recursive-controls.json",
+    "bytes": 3262,
+    "sha256": "e4305b4d72950f3d54909e6e03be2c1312645ea3a39c453ddcb1b4444b686ff8"
+  },
+  "sourceCorrection": {
+    "case": "sharing",
+    "oldSource": {
+      "file": "selfhost/tests/phase192/recursive-controls-sharing.bend",
+      "bytes": 1076,
+      "sha256": "d54091ba5c6a63052c0c2d351020b3edc618b568d80cd0b615d55e1cf83e3cc3"
+    },
+    "newSource": {
+      "file": "selfhost/tests/phase192/recursive-controls-sharing-v2.bend",
+      "bytes": 1074,
+      "sha256": "c8ca4912ed9b45390706e22cb78748f19d7a2694a5b9b5566a40b64fd5ce9b6e"
+    },
+    "reason": "Move ordinary +shared local binding before do IO block; original syntax failed source parsing. Independent expected output and all other sources unchanged."
+  }
+}

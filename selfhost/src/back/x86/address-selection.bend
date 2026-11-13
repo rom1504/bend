@@ -154,7 +154,7 @@ def x191_placement_pick(pick: Maybe<&2,X191Pick>, body: List<&2,P113DStmt>, +fac
 
 @unsafe
 def x191_placement(body,facts):
-  x191_placement_pick(x191_pick(body,facts),body,facts)
+  x192_shared_placement(x192_shared_pick(body,facts),body,facts)
 
 # Frame homes never use reserved r10/r11/rax. Evaluate both address components
 # before writing any destination. A load may alias either address register;

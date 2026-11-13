@@ -67,12 +67,12 @@ def x190_branch_counted(reads: X181ReadCounts, writes: KDef, pairs: KDef, protec
 @unsafe
 def x190_branch_facts_when(+reuse: Bool, +params: List<&2,String>, +setup: List<&2,P113DStmt>,
     +body: List<&2,P113DStmt>) -> X190BranchFacts:
-  nt_choose(X190BranchFacts,x190_branch_enabled() || x191_address_enabled() || x191_memory_alu_enabled(),u =>
+  nt_choose(X190BranchFacts,x190_branch_enabled() || x191_address_enabled() || x191_memory_alu_enabled() || x192_shared_address_enabled(),u =>
     x190_branch_counted(x181_reads_stmts(body,x181_reads_stmts(setup,X181ReadCounts{missing(),[]})),
       x185_copy_writes(body,x185_copy_writes(setup,x185_copy_writes_names(params,missing()))),
       nt_choose(KDef,reuse && U32.is_lt(p113i_size(body),4096),
         v => x190_branch_pairs(body,missing()),v => missing()),
-      nt_choose(KDef,reuse || x191_address_enabled() || x191_memory_alu_enabled(),v => x185_copy_writes(setup,x185_copy_writes_names(params,missing())),v => missing())),
+      nt_choose(KDef,reuse || x191_address_enabled() || x191_memory_alu_enabled() || x192_shared_address_enabled(),v => x185_copy_writes(setup,x185_copy_writes_names(params,missing())),v => missing())),
     u => X190BranchFacts{missing(),missing(),missing(),missing()})
 
 @unsafe
@@ -286,8 +286,8 @@ def x191_selected_step(pick: Maybe<&2,X191Pick>, body: List<&2,P113DStmt>, +fact
 @unsafe
 def x190_step(+body: List<&2,P113DStmt>, +facts: X190BranchFacts,
     +ids: N111Ids, +frame: X181Frame, +code: X181Code) -> X181Code:
-  nt_choose(X181Code,x191_address_enabled() || x191_memory_alu_enabled(),
-    u => x191_selected_step(x191_pick(body,facts),body,facts,ids,frame,code),
+  nt_choose(X181Code,x191_address_enabled() || x191_memory_alu_enabled() || x192_shared_address_enabled(),
+    u => x192_shared_step(x192_shared_pick(body,facts),body,facts,ids,frame,code),
     u => x191_branch_step(body,facts,ids,frame,code))
 
 @unsafe

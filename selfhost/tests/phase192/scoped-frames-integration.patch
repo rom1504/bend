@@ -1,0 +1,47 @@
+--- a/selfhost/src/back/x86/function.bend
++++ b/selfhost/src/back/x86/function.bend
+@@ -202,9 +202,7 @@
+ @unsafe
+ def x185_function_setup(+symbol: String, +params: List<&2,String>, +setup: List<&2,P113DStmt>,
+     +body: List<&2,P113DStmt>, +ids: N111Ids) -> X181Output:
+-  nt_choose(X181Output,x185_late_enabled() && p114t_names(params) && p114t_body_names(setup) && p114t_body_names(body),
+-    u => x185_function_late_setup(symbol,params,body,ids,x185_late_stmts(setup,ids,0)),
+-    u => x185_function_place(symbol,params,setup,body,ids))
++  x192hf_function_setup(symbol,params,setup,body,ids,[])
+ 
+ @unsafe
+ def x185_function_late_setup(symbol: String, params: List<&2,String>, body: List<&2,P113DStmt>,
+--- a/selfhost/src/back/x86/scalar.bend
++++ b/selfhost/src/back/x86/scalar.bend
+@@ -275,28 +275,17 @@
+ 
+ @unsafe
+ def x185_late_stmts(body: List<&2,P113DStmt>, +ids: N111Ids, +site: U32) -> P113ABody:
+-  match body:
+-    case Nil{}: P113ABody{[],site}
+-    case Con{P113DScalar{N111If{condition,yes,no}},rest}:
+-      x185_late_yes(condition,x181_scalar_rows(no),rest,ids,x185_late_stmts(x181_scalar_rows(yes),ids,site))
+-    case Con{P113DScalar{stmt},rest}:
+-      p113a_prefix(x181_scalar_rows(x185_late_scalar(stmt,ids,site)),
+-        x185_late_stmts(rest,ids,nt_choose(U32,U32.is_lt(site,4294967200),u => U32.inc(site),u => site)))
+-    case Con{P113DIf{condition,yes,no},rest}:
+-      x185_late_yes(condition,no,rest,ids,x185_late_stmts(yes,ids,site))
+-    case Con{head,rest}: p113a_prefix([head],x185_late_stmts(rest,ids,site))
++  x192hf_late_stmts(body,ids,site,[])
+ 
+ @unsafe
+ def x185_late_yes(condition: N111Value, no: List<&2,P113DStmt>, rest: List<&2,P113DStmt>,
+     +ids: N111Ids, yes: P113ABody) -> P113ABody:
+-  match yes:
+-    case P113ABody{body,next}: x185_late_no(condition,body,rest,ids,x185_late_stmts(no,ids,next))
++  x192hf_late_yes(condition,no,rest,ids,yes,[])
+ 
+ @unsafe
+ def x185_late_no(condition: N111Value, yes: List<&2,P113DStmt>, rest: List<&2,P113DStmt>,
+     +ids: N111Ids, no: P113ABody) -> P113ABody:
+-  match no:
+-    case P113ABody{body,next}: p113a_prefix([P113DIf{condition,yes,body}],x185_late_stmts(rest,ids,next))
++  x192hf_late_no(condition,yes,rest,ids,no,[])
+ 
+ @unsafe
+ def x181_scalar(stmt,ids,frame,code):

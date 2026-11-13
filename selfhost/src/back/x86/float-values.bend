@@ -63,8 +63,9 @@ def x186_f_values(stmt: N111Stmt, destination: String, id: U32,
 @unsafe
 def x186_f_operation(stmt: N111Stmt, +facts: List<&2,X185ScratchCell>, operation: X186InlineOp) -> X186FloatNode:
   match operation:
-    case X186InlineF32{destination,id,+buffer}:
-      x186_f_values(stmt,destination,id,x185_sf_find(facts,buffer,0,N111U64{}),x185_sf_find(facts,buffer,8,N111U64{}))
+    case X186InlineF32{destination,+id,+buffer}:
+      x186_f_values(stmt,destination,id,x185_sf_find(facts,buffer,0,N111U64{}),
+        x185_sf_find(facts,buffer,nt_choose(U32,x192_float_unary(id),u => 0,u => 8),N111U64{}))
     case X186InlineNone{}: X186FloatPlain{P113DScalar{stmt}}
 
 def x186_f_facts(step: X185ScratchStep) -> List<&2,X185ScratchCell>:
@@ -164,10 +165,12 @@ def x186_f_ready(params: List<&2,String>, setup: List<&2,P113DStmt>, +nodes: Lis
   nt_choose(List<&2,X186FloatNode>,x186_private_enabled(),u => x186_f_prune(nodes,x186_f_read_scan(params,setup,nodes)),u => nodes)
 
 @unsafe
-def x186_f_values_text(name: String, +id: U32, left: N111Value, right: N111Value,
+def x186_f_values_text(+name: String, +id: U32, +left: N111Value, +right: N111Value,
     +ids: N111Ids, +frame: X181Frame) -> X188Seq:
-  x188_many([x186_float_load(left,ids,frame,x188_xmm(0)),x186_float_load(right,ids,frame,x188_xmm(1)),
-    x186_float_finish(name,id,frame)])
+  nt_choose(X188Seq,x192_float_unary(id),
+    u => x192_float_conversion(name,id,left,ids,frame,missing()),
+    u => x188_many([x186_float_load(left,ids,frame,x188_xmm(0)),x186_float_load(right,ids,frame,x188_xmm(1)),
+      x186_float_finish(name,id,frame)]))
 
 law x186_f_emit_nodes:
   for nodes: List<&2,X186FloatNode>
@@ -233,7 +236,7 @@ def x186_f_place(+symbol: String, +params: List<&2,String>, +setup: List<&2,P113
 def x186_f_ordinary(+symbol: String, +params: List<&2,String>, +setup: List<&2,P113DStmt>,
     +body: List<&2,P113DStmt>, +ids: N111Ids) -> X181Output:
   +all = nt_append(P113DStmt,setup,body)
-  nt_choose(X181Output,x191_address_enabled() || x191_memory_alu_enabled(),
+  nt_choose(X181Output,x191_address_enabled() || x191_memory_alu_enabled() || x192_shared_address_enabled(),
     u => x191_ordinary(symbol,params,setup,body,ids),
     u => x185_function_frame(symbol,setup,body,ids,x190_allocate_frame(
     x181_frame(symbol,params,all),params,setup,body,

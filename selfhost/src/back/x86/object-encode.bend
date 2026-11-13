@@ -316,7 +316,8 @@ def x187_e_spec(+op: String) -> X187Op:
   nt_choose(X187Op,String.eq(op,"subss"),u => X187Op{7,128,92,0,243},u =>
   nt_choose(X187Op,String.eq(op,"mulss"),u => X187Op{7,128,89,0,243},u =>
   nt_choose(X187Op,String.eq(op,"divss"),u => X187Op{7,128,94,0,243},u =>
-  nt_choose(X187Op,String.eq(op,"ucomiss"),u => X187Op{7,128,46,0,0},u =>
+  nt_choose(X187Op,String.eq(op,"ucomiss") || String.eq(op,"comiss"),
+    u => X187Op{7,128,nt_choose(U32,String.eq(op,"comiss"),v => 47,v => 46),0,0},u =>
   nt_choose(X187Op,String.eq(op,"movaps"),u => X187Op{7,128,40,0,0},u =>
   nt_choose(X187Op,String.eq(op,"pxor"),u => X187Op{7,128,239,0,102},u =>
   nt_choose(X187Op,String.eq(op,"pushq"),u => X187Op{8,64,80,0,0},u =>
@@ -349,9 +350,11 @@ def x187_e_spec(+op: String) -> X187Op:
 @unsafe
 def x187_encode(inst: X187Instruction, +offset: U32) -> X187Encoded:
   match inst:
-    case X187Instruction{op,operands}:
+    case X187Instruction{+op,+operands}:
       nt_choose(X187Encoded,U32.is_le(offset,4294967280),
-        u => x187_e_selected(x187_e_spec(op),operands,offset),u => x187_e_error())
+        u => nt_choose(X187Encoded,String.eq(op,"cvttss2siq"),
+          v => x192_float_cvtt_operands(operands,offset),
+          v => x187_e_selected(x187_e_spec(op),operands,offset)),u => x187_e_error())
 
 # Proposal only: integer CMOVcc, AT&T source first. Memory sources are read
 # unconditionally. The32-bit form zeroes destination high32 even when false.

@@ -12,9 +12,11 @@ type X186InlineOp is Data:
 def x186_inline_op_when(enabled: Bool, stmt: N111Stmt) -> X186InlineOp:
   match stmt:
     case N111Call{name,N111U64{},symbol,
-      Con{N111Arg{N111Ptr{},N111Local{state}},Con{N111Arg{N111U32{},N111Const{+id,0}},Con{N111Arg{N111Ptr{},N111Local{buffer}},Con{N111Arg{N111U32{},N111Const{count,0}},Nil{}}}}}}:
+      Con{N111Arg{N111Ptr{},N111Local{state}},Con{N111Arg{N111U32{},N111Const{+id,0}},Con{N111Arg{N111Ptr{},N111Local{+buffer}},Con{N111Arg{N111U32{},N111Const{+count,0}},Nil{}}}}}}:
       nt_choose(X186InlineOp,enabled && String.eq(symbol,"p111_rt_op") && String.eq(state,"state") &&
-          U32.is_ge(id,26) && p112fp_supported(id,count),
+          (nt_choose(Bool,x192_float_unary(id),
+            v => x192_float_conversions_enabled() && U32.is_eq(count,1) && Bool.not(String.eq(buffer,"state")),
+            v => U32.is_ge(id,26) && p112fp_supported(id,count))),
         u => X186InlineF32{name,id,buffer},u => X186InlineNone{})
     case _: X186InlineNone{}
 

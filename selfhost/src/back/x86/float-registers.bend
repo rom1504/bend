@@ -168,8 +168,9 @@ def x186_x_compare(+name: String, id: U32, left: N111Value, right: N111Value,
 @unsafe
 def x186_x_float(+name: String, +id: U32, +left: N111Value, +right: N111Value,
     +ids: N111Ids, +frame: X181Frame, +homes: KDef) -> X188Seq:
-  nt_choose(X188Seq,U32.is_lt(id,30),u => x186_x_arithmetic(name,id,left,right,ids,frame,homes),
-    u => x186_x_compare(name,id,left,right,ids,frame,homes))
+  nt_choose(X188Seq,x192_float_unary(id),u => x192_float_conversion(name,id,left,ids,frame,homes),
+    u => nt_choose(X188Seq,U32.is_lt(id,30),v => x186_x_arithmetic(name,id,left,right,ids,frame,homes),
+      v => x186_x_compare(name,id,left,right,ids,frame,homes)))
 
 @unsafe
 def x186_x_publish_to(destination: Maybe<&2,X187Operand>, name: String, source: X187Operand, frame: X181Frame) -> X188Seq:

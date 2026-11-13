@@ -66,10 +66,12 @@ def x186_m_unknown_call(stmt: N111Stmt, scan: X186Memory) -> X186Memory:
     case _: scan
 
 @unsafe
-def x186_m_call(stmt: N111Stmt, scan: X186Memory, effect: X186InlineOp) -> X186Memory:
+def x186_m_call(stmt: N111Stmt, +scan: X186Memory, effect: X186InlineOp) -> X186Memory:
   match effect:
-    case X186InlineF32{destination,id,+buffer}:
-      x186_m_read(buffer,8,N111U64{},x186_m_read(buffer,0,N111U64{},scan))
+    case X186InlineF32{destination,+id,+buffer}:
+      nt_choose(X186Memory,x192_float_unary(id),
+        u => x186_m_read(buffer,0,N111U64{},scan),
+        u => x186_m_read(buffer,8,N111U64{},x186_m_read(buffer,0,N111U64{},scan)))
     case _: x186_m_unknown_call(stmt,scan)
 
 law x186_m_scan:

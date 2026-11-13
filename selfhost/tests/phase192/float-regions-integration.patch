@@ -1,0 +1,12 @@
+--- a/selfhost/src/back/x86/float-registers.bend
++++ b/selfhost/src/back/x86/float-registers.bend
+@@ -99,8 +99,7 @@
+ 
+ @unsafe
+ def x186_x_homes(params: List<&2,String>, setup: List<&2,P113DStmt>, nodes: List<&2,X186FloatNode>) -> KDef:
+-  x186_x_scanned(x186_x_scan(nodes,X186XScan{
+-    X185TScan{x185_copy_writes_names(params,x185_copy_writes(setup,missing())),[],1,0},missing()}))
++  x192fr_homes(params,setup,nodes)
+ 
+ @unsafe
+ def x186_x_home(name: String, homes: KDef) -> Maybe<&2,X187Operand>:

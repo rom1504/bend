@@ -102,9 +102,12 @@ def x185_float_probe(stmt: N111Stmt, ids: N111Ids, frame: X181Frame) -> X188Seq:
   x186_float_operation(x186_inline_op(stmt),ids,frame)
 
 @unsafe
-def x186_float_operation(operation: X186InlineOp, ids: N111Ids, frame: X181Frame) -> X188Seq:
+def x186_float_operation(operation: X186InlineOp, +ids: N111Ids, +frame: X181Frame) -> X188Seq:
   match operation:
-    case X186InlineF32{name,id,buffer}: x185_float_text(name,id,buffer,ids,frame)
+    case X186InlineF32{+name,+id,+buffer}:
+      nt_choose(X188Seq,x192_float_unary(id),
+        u => x192_float_conversion_buffer(name,id,buffer,ids,frame),
+        u => x185_float_text(name,id,buffer,ids,frame))
     case X186InlineNone{}: X188Empty{}
 
 @unsafe

@@ -1,0 +1,458 @@
+{
+  "kind": "phase194-heldout-offline-machine",
+  "targetExecuted": false,
+  "manifests": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/references01/manifest.json",
+      "bytes": 1695983,
+      "sha256": "d51e0155bb41b7a8694455e608c3310925c3084520776ccda59323bf87092ed2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/native45-02/programs.manifest.json",
+      "bytes": 1593718,
+      "sha256": "fbf32bdb2e9ccbd58fc4146d626ae3a99059a63d07638075332bbffd61ecbfc2"
+    }
+  ],
+  "cases": {
+    "scalar-region-8192": {
+      "baseline": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase193/budget-native45-02/scalar-region-8192/machine/program",
+          "bytes": 180024,
+          "sha256": "eb6e5602df17994f6f4a94540e60fdff79f15d6fa44cebbaa1ca68b0ca88e592"
+        },
+        "textBytes": 102545,
+        "functions": [
+          {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_109_105_116_",
+            "decoded": "$direct.mit",
+            "bytes": 813,
+            "codeSha256": "c0094f9860c8ea5035b4ec94aaa63b23314bb2117dcaa74f36a3e76ca02c0c72",
+            "address": "0x408670",
+            "frameReservation": 2688,
+            "wholeFunction": {
+              "instructions": 192,
+              "moves": 135,
+              "setcc": 7,
+              "test": 7,
+              "cmov": 7,
+              "explicit_stack": 36,
+              "calls": 0
+            },
+            "assembly": {
+              "file": "/home/ai/bend2/build/publish/bend/research/phase194/heldout-machine-witnesses/scalar-region-8192-baseline-0.asm",
+              "bytes": 5885,
+              "sha256": "99b1704b0e0c4fc1109601965a838ed9ac457f5b8b493c60e1b7c290007b4ee6"
+            },
+            "positiveLoops": [
+              {
+                "header": "0x4086c2",
+                "headerMod64": 2,
+                "backedge": "0x408998",
+                "metrics": {
+                  "instructions": 159,
+                  "moves": 106,
+                  "setcc": 7,
+                  "test": 7,
+                  "cmov": 7,
+                  "explicit_stack": 23,
+                  "calls": 0
+                }
+              }
+            ]
+          },
+          {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_98_101_110_99_104_",
+            "decoded": "$direct.bench",
+            "bytes": 241,
+            "codeSha256": "2fc07827f694bd234c7ca0a5d12a0df24411e074a5f0e28ac9879b6f3426ae45",
+            "address": "0x40899d",
+            "frameReservation": 2416,
+            "wholeFunction": {
+              "instructions": 54,
+              "moves": 43,
+              "setcc": 0,
+              "test": 0,
+              "cmov": 0,
+              "explicit_stack": 22,
+              "calls": 1
+            },
+            "assembly": {
+              "file": "/home/ai/bend2/build/publish/bend/research/phase194/heldout-machine-witnesses/scalar-region-8192-baseline-1.asm",
+              "bytes": 1973,
+              "sha256": "e05668412b86b8e27e4010ebcafac23ded84539cd05b7117de014e794298457a"
+            },
+            "positiveLoops": []
+          },
+          {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_57_51_46_108_111_111_112_",
+            "decoded": "$direct.p93.loop",
+            "bytes": 374,
+            "codeSha256": "18f91f39f408c40191d39d24e85b4f51557fbc571461a984f23cdcdeb8538c3e",
+            "address": "0x409240",
+            "frameReservation": 2528,
+            "wholeFunction": {
+              "instructions": 85,
+              "moves": 64,
+              "setcc": 1,
+              "test": 1,
+              "cmov": 1,
+              "explicit_stack": 28,
+              "calls": 1
+            },
+            "assembly": {
+              "file": "/home/ai/bend2/build/publish/bend/research/phase194/heldout-machine-witnesses/scalar-region-8192-baseline-2.asm",
+              "bytes": 3008,
+              "sha256": "0898bac2991121e288a51413e17f386514b4f205c6e967ef8544bf140e013740"
+            },
+            "positiveLoops": [
+              {
+                "header": "0x40927d",
+                "headerMod64": 61,
+                "backedge": "0x4093b1",
+                "metrics": {
+                  "instructions": 58,
+                  "moves": 41,
+                  "setcc": 1,
+                  "test": 1,
+                  "cmov": 1,
+                  "explicit_stack": 18,
+                  "calls": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "current": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/native45-02/scalar-region-8192/machine/program",
+          "bytes": 180016,
+          "sha256": "9a957a2082c0503eb6ace8873b82b0e9effa9a2be179361abfdab18c3a92b9ed"
+        },
+        "textBytes": 102241,
+        "functions": [
+          {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_109_105_116_",
+            "decoded": "$direct.mit",
+            "bytes": 689,
+            "codeSha256": "3a465fe1bacda6c13d39acd51c4754573b01d7876cf6dcaedd90844dbd665d5e",
+            "address": "0x4085f2",
+            "frameReservation": 2688,
+            "wholeFunction": {
+              "instructions": 154,
+              "moves": 113,
+              "setcc": 0,
+              "test": 0,
+              "cmov": 7,
+              "explicit_stack": 31,
+              "calls": 0
+            },
+            "assembly": {
+              "file": "/home/ai/bend2/build/publish/bend/research/phase194/heldout-machine-witnesses/scalar-region-8192-current-0.asm",
+              "bytes": 4838,
+              "sha256": "1a52ac1fc6b42860f28828a0bde58a8d9522a9a99cfe51a6bfa09d2c7b8e7e33"
+            },
+            "positiveLoops": [
+              {
+                "header": "0x408644",
+                "headerMod64": 4,
+                "backedge": "0x40889e",
+                "metrics": {
+                  "instructions": 121,
+                  "moves": 84,
+                  "setcc": 0,
+                  "test": 0,
+                  "cmov": 7,
+                  "explicit_stack": 18,
+                  "calls": 0
+                }
+              }
+            ]
+          },
+          {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_98_101_110_99_104_",
+            "decoded": "$direct.bench",
+            "bytes": 241,
+            "codeSha256": "73c14b98d480399c648af2d6cf17b7805c16f36d667023d5bd9f2907f83508ec",
+            "address": "0x4088a3",
+            "frameReservation": 2416,
+            "wholeFunction": {
+              "instructions": 54,
+              "moves": 43,
+              "setcc": 0,
+              "test": 0,
+              "cmov": 0,
+              "explicit_stack": 22,
+              "calls": 1
+            },
+            "assembly": {
+              "file": "/home/ai/bend2/build/publish/bend/research/phase194/heldout-machine-witnesses/scalar-region-8192-current-1.asm",
+              "bytes": 1966,
+              "sha256": "01992dac527c5d815ed6349035d76694009719697d48b27e173462f4f10e9698"
+            },
+            "positiveLoops": []
+          },
+          {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_57_51_46_108_111_111_112_",
+            "decoded": "$direct.p93.loop",
+            "bytes": 362,
+            "codeSha256": "66a9fd61c2f8482668eb311d641cc9c9e13045efa716a4c6f6e86820f2cbe2e0",
+            "address": "0x40912e",
+            "frameReservation": 2528,
+            "wholeFunction": {
+              "instructions": 81,
+              "moves": 63,
+              "setcc": 0,
+              "test": 0,
+              "cmov": 1,
+              "explicit_stack": 28,
+              "calls": 1
+            },
+            "assembly": {
+              "file": "/home/ai/bend2/build/publish/bend/research/phase194/heldout-machine-witnesses/scalar-region-8192-current-2.asm",
+              "bytes": 2898,
+              "sha256": "7a9750a23f907b1f5346957bee489a6bc4b673350bde0f6209d999f2e0f3e88e"
+            },
+            "positiveLoops": [
+              {
+                "header": "0x40916b",
+                "headerMod64": 43,
+                "backedge": "0x409293",
+                "metrics": {
+                  "instructions": 54,
+                  "moves": 40,
+                  "setcc": 0,
+                  "test": 0,
+                  "cmov": 1,
+                  "explicit_stack": 18,
+                  "calls": 1
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "coverage-closures-256": {
+      "baseline": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase193/budget-native45-02/coverage-closures-256/machine/program",
+          "bytes": 175712,
+          "sha256": "156c48f347a9fa7fa14fb1e06a4c2d12f52c5704c2f9ada574418ab0695b73dd"
+        },
+        "textBytes": 100577,
+        "functions": [
+          {
+            "symbol": "p113d_FID_36_112_49_50_49_46_99_97_108_108_98_97_99_107_46_98_101_110_99_104_",
+            "decoded": "$p121.callback.bench",
+            "bytes": 102,
+            "codeSha256": "88558e5bc67ffc65834a02f37353074e3ec2e40476dda0279fe89de0dd1bb9f6",
+            "address": "0x408358",
+            "frameReservation": 2288,
+            "wholeFunction": {
+              "instructions": 28,
+              "moves": 18,
+              "setcc": 0,
+              "test": 0,
+              "cmov": 0,
+              "explicit_stack": 2,
+              "calls": 0
+            },
+            "assembly": {
+              "file": "/home/ai/bend2/build/publish/bend/research/phase194/heldout-machine-witnesses/coverage-closures-256-baseline-0.asm",
+              "bytes": 1288,
+              "sha256": "59ab11b602d25feb74a0fd7259d8ffebeea0886771334f4cfda74701fc81acdd"
+            },
+            "positiveLoops": [
+              {
+                "header": "0x408379",
+                "headerMod64": 57,
+                "backedge": "0x4083ad",
+                "metrics": {
+                  "instructions": 13,
+                  "moves": 7,
+                  "setcc": 0,
+                  "test": 0,
+                  "cmov": 0,
+                  "explicit_stack": 0,
+                  "calls": 0
+                }
+              }
+            ]
+          },
+          {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_98_101_110_99_104_",
+            "decoded": "$direct.bench",
+            "bytes": 94,
+            "codeSha256": "251ebb1154c24ef9a06c36d178f20419731d58502bb78770e43f2f55c1d94fb7",
+            "address": "0x4083be",
+            "frameReservation": 2304,
+            "wholeFunction": {
+              "instructions": 27,
+              "moves": 21,
+              "setcc": 0,
+              "test": 0,
+              "cmov": 0,
+              "explicit_stack": 8,
+              "calls": 1
+            },
+            "assembly": {
+              "file": "/home/ai/bend2/build/publish/bend/research/phase194/heldout-machine-witnesses/coverage-closures-256-baseline-1.asm",
+              "bytes": 1188,
+              "sha256": "df7a98262ca6a435b0dad78e34118657be23d5c28428352d1903d583eb83db28"
+            },
+            "positiveLoops": []
+          },
+          {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_57_51_46_108_111_111_112_",
+            "decoded": "$direct.p93.loop",
+            "bytes": 203,
+            "codeSha256": "49db263a305a0b208d36fe7ea782c26ebe70360e640b7c79be7127c1b407afae",
+            "address": "0x408b3b",
+            "frameReservation": 2416,
+            "wholeFunction": {
+              "instructions": 54,
+              "moves": 38,
+              "setcc": 1,
+              "test": 1,
+              "cmov": 1,
+              "explicit_stack": 10,
+              "calls": 1
+            },
+            "assembly": {
+              "file": "/home/ai/bend2/build/publish/bend/research/phase194/heldout-machine-witnesses/coverage-closures-256-baseline-2.asm",
+              "bytes": 2089,
+              "sha256": "375ea7d3933b3d1b249d6433398fb05ce02ac1be0b6f1d24443c96aa506fb0ab"
+            },
+            "positiveLoops": [
+              {
+                "header": "0x408b78",
+                "headerMod64": 56,
+                "backedge": "0x408c01",
+                "metrics": {
+                  "instructions": 27,
+                  "moves": 15,
+                  "setcc": 1,
+                  "test": 1,
+                  "cmov": 1,
+                  "explicit_stack": 0,
+                  "calls": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "current": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/native45-02/coverage-closures-256/machine/program",
+          "bytes": 175704,
+          "sha256": "e5da15e0f6d4c1130379d9c81f84ba039e7be7e56f8e8e0ece1cfe8f6b475160"
+        },
+        "textBytes": 100433,
+        "functions": [
+          {
+            "symbol": "p113d_FID_36_112_49_50_49_46_99_97_108_108_98_97_99_107_46_98_101_110_99_104_",
+            "decoded": "$p121.callback.bench",
+            "bytes": 95,
+            "codeSha256": "e39fe344df5957a259774554875357692223849d8cd777ac7588653fa844a0a0",
+            "address": "0x408304",
+            "frameReservation": 2288,
+            "wholeFunction": {
+              "instructions": 26,
+              "moves": 16,
+              "setcc": 0,
+              "test": 0,
+              "cmov": 0,
+              "explicit_stack": 2,
+              "calls": 0
+            },
+            "assembly": {
+              "file": "/home/ai/bend2/build/publish/bend/research/phase194/heldout-machine-witnesses/coverage-closures-256-current-0.asm",
+              "bytes": 1226,
+              "sha256": "bd15ff161e6ee07c99ed44ac2475d791aaf47e311888bb92ca2ad0008029bea3"
+            },
+            "positiveLoops": [
+              {
+                "header": "0x408325",
+                "headerMod64": 37,
+                "backedge": "0x408352",
+                "metrics": {
+                  "instructions": 11,
+                  "moves": 5,
+                  "setcc": 0,
+                  "test": 0,
+                  "cmov": 0,
+                  "explicit_stack": 0,
+                  "calls": 0
+                }
+              }
+            ]
+          },
+          {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_98_101_110_99_104_",
+            "decoded": "$direct.bench",
+            "bytes": 94,
+            "codeSha256": "d72c6a33678628035fd91c574bc19fa9086af0bc58dba5ed1e2c90be5a118a24",
+            "address": "0x408363",
+            "frameReservation": 2304,
+            "wholeFunction": {
+              "instructions": 27,
+              "moves": 21,
+              "setcc": 0,
+              "test": 0,
+              "cmov": 0,
+              "explicit_stack": 8,
+              "calls": 1
+            },
+            "assembly": {
+              "file": "/home/ai/bend2/build/publish/bend/research/phase194/heldout-machine-witnesses/coverage-closures-256-current-1.asm",
+              "bytes": 1181,
+              "sha256": "6ad2a53877218d78c794a5610a8a6150f4ffbe94da35d020e371b817c358aac4"
+            },
+            "positiveLoops": []
+          },
+          {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_57_51_46_108_111_111_112_",
+            "decoded": "$direct.p93.loop",
+            "bytes": 191,
+            "codeSha256": "78436683d84e1ba3e858412b1fe0bfed3bed52631d47a4ab5fe6d71893333b19",
+            "address": "0x408ac8",
+            "frameReservation": 2416,
+            "wholeFunction": {
+              "instructions": 50,
+              "moves": 37,
+              "setcc": 0,
+              "test": 0,
+              "cmov": 1,
+              "explicit_stack": 10,
+              "calls": 1
+            },
+            "assembly": {
+              "file": "/home/ai/bend2/build/publish/bend/research/phase194/heldout-machine-witnesses/coverage-closures-256-current-2.asm",
+              "bytes": 1979,
+              "sha256": "50309f438c8fa5b92a6c3a9c8bd8ec1a5db4136bec65e19a44f00b4dc36ee65d"
+            },
+            "positiveLoops": [
+              {
+                "header": "0x408b05",
+                "headerMod64": 5,
+                "backedge": "0x408b82",
+                "metrics": {
+                  "instructions": 23,
+                  "moves": 14,
+                  "setcc": 0,
+                  "test": 0,
+                  "cmov": 1,
+                  "explicit_stack": 0,
+                  "calls": 1
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

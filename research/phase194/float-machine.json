@@ -1,0 +1,641 @@
+{
+  "scope": "Read-only objdump comparison; static counts are not dynamic hotness or measured runtime. Absolute code targets and RIP-relative references normalized to symbol labels; internal target offsets retained. Stack-memory instructions count any explicit RBP/RSP memory operand, not classified spills.",
+  "workloads": [
+    {
+      "case": "coverage-numeric-recurrence-256",
+      "baseline": {
+        "path": "selfhost/build/phase193/budget-native45-02/coverage-numeric-recurrence-256/machine/program",
+        "sha256": "392b2edea06a22fe2fc26335dc66b6e0514bdf1a9def925a574530c90a57f498",
+        "bytes": 179744,
+        "text_section_bytes": 101633,
+        "text_section_sha256": "daad0bda6ca44bc1534e3f0ae1de75adb813c1d5bc9442d4f2c085f3eb41f2ee"
+      },
+      "candidate": {
+        "path": "selfhost/build/phase194/float-dev-build01/coverage-numeric-recurrence-256/machine/program",
+        "sha256": "4e1eb7ba4c5c3e432474e2f2813dff55a2f63ff6fbc1a74c00424f977372f61a",
+        "bytes": 179744,
+        "text_section_bytes": 101617,
+        "text_section_sha256": "92a5344efa8cd0e86309820ce9d6d1dd1253482145ebc0de07b6f0cb220a0ea7"
+      },
+      "common_functions": 457,
+      "normalized_changed_functions": 3,
+      "changed": [
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_51_55_46_110_117_109_101_114_105_99_",
+          "decoded": "$direct.p37.numeric",
+          "baseline": {
+            "instructions": 90,
+            "adjacent_crossbank_pairs": 3,
+            "movd_instructions": 15,
+            "frame_sub_bytes": [
+              2368
+            ],
+            "stack_memory_instructions": 7
+          },
+          "candidate": {
+            "instructions": 86,
+            "adjacent_crossbank_pairs": 0,
+            "movd_instructions": 9,
+            "frame_sub_bytes": [
+              2384
+            ],
+            "stack_memory_instructions": 7
+          }
+        },
+        {
+          "symbol": "main",
+          "decoded": "main",
+          "baseline": {
+            "instructions": 3,
+            "adjacent_crossbank_pairs": 0,
+            "movd_instructions": 0,
+            "frame_sub_bytes": [],
+            "stack_memory_instructions": 0
+          },
+          "candidate": {
+            "instructions": 3,
+            "adjacent_crossbank_pairs": 0,
+            "movd_instructions": 0,
+            "frame_sub_bytes": [],
+            "stack_memory_instructions": 0
+          }
+        },
+        {
+          "symbol": "_start",
+          "decoded": "_start",
+          "baseline": {
+            "instructions": 13,
+            "adjacent_crossbank_pairs": 0,
+            "movd_instructions": 0,
+            "frame_sub_bytes": [],
+            "stack_memory_instructions": 0
+          },
+          "candidate": {
+            "instructions": 13,
+            "adjacent_crossbank_pairs": 0,
+            "movd_instructions": 0,
+            "frame_sub_bytes": [],
+            "stack_memory_instructions": 0
+          }
+        }
+      ],
+      "totals": {
+        "baseline": {
+          "instructions": 24590,
+          "adjacent_crossbank_pairs": 3,
+          "movd_instructions": 67,
+          "stack_memory_instructions": 3353
+        },
+        "candidate": {
+          "instructions": 24586,
+          "adjacent_crossbank_pairs": 0,
+          "movd_instructions": 61,
+          "stack_memory_instructions": 3353
+        }
+      },
+      "text_identical": false
+    },
+    {
+      "case": "editdist",
+      "baseline": {
+        "path": "selfhost/build/phase193/budget-native45-02/editdist/machine/program",
+        "sha256": "db7a102244d704cfbe8f94774fbdbd8c64c4854ce2a34d3da4b62b0b2aa7db64",
+        "bytes": 217320,
+        "text_section_bytes": 135665,
+        "text_section_sha256": "d87a7bdc41a51b28b013a4fa5cb046277e36ae8e397c7b6b2ba2cfa2cb252482"
+      },
+      "candidate": {
+        "path": "selfhost/build/phase194/float-dev-build01/editdist/machine/program",
+        "sha256": "ad66d6d7698ef4548e021241c18b3c095c53de19d60be4cda4709c541e1ef360",
+        "bytes": 217320,
+        "text_section_bytes": 135665,
+        "text_section_sha256": "d87a7bdc41a51b28b013a4fa5cb046277e36ae8e397c7b6b2ba2cfa2cb252482"
+      },
+      "common_functions": 514,
+      "normalized_changed_functions": 0,
+      "changed": [],
+      "totals": {
+        "baseline": {
+          "instructions": 32004,
+          "adjacent_crossbank_pairs": 0,
+          "movd_instructions": 34,
+          "stack_memory_instructions": 5429
+        },
+        "candidate": {
+          "instructions": 32004,
+          "adjacent_crossbank_pairs": 0,
+          "movd_instructions": 34,
+          "stack_memory_instructions": 5429
+        }
+      },
+      "text_identical": true
+    },
+    {
+      "case": "lexer",
+      "baseline": {
+        "path": "selfhost/build/phase193/budget-native45-02/lexer/machine/program",
+        "sha256": "59b1f2c0577b7f54e0c9f201e0f711439e3a69d3cae860c0d3d7debc35b95670",
+        "bytes": 216264,
+        "text_section_bytes": 130465,
+        "text_section_sha256": "cb432f20028b705dd443541386a052bf184307b78ecc007dfa22b9eae479ed48"
+      },
+      "candidate": {
+        "path": "selfhost/build/phase194/float-dev-build01/lexer/machine/program",
+        "sha256": "c3da798cdf7bfdb8276ae07518291e76e02007169d3783fe8b0dd4761d76fb5d",
+        "bytes": 216264,
+        "text_section_bytes": 130465,
+        "text_section_sha256": "cb432f20028b705dd443541386a052bf184307b78ecc007dfa22b9eae479ed48"
+      },
+      "common_functions": 535,
+      "normalized_changed_functions": 0,
+      "changed": [],
+      "totals": {
+        "baseline": {
+          "instructions": 31055,
+          "adjacent_crossbank_pairs": 0,
+          "movd_instructions": 34,
+          "stack_memory_instructions": 4693
+        },
+        "candidate": {
+          "instructions": 31055,
+          "adjacent_crossbank_pairs": 0,
+          "movd_instructions": 34,
+          "stack_memory_instructions": 4693
+        }
+      },
+      "text_identical": true
+    },
+    {
+      "case": "local-pair",
+      "baseline": {
+        "path": "selfhost/build/phase193/budget-native45-02/local-pair/machine/program",
+        "sha256": "01eea34af5950c9e9c9defb3d59e6e4de9924cbf81430378dd2952718b5b654d",
+        "bytes": 210984,
+        "text_section_bytes": 130785,
+        "text_section_sha256": "1c2b40d41a0c7795371267dec8c79f9ef5e38ef65950f11622582ed4b81c637b"
+      },
+      "candidate": {
+        "path": "selfhost/build/phase194/float-dev-build01/local-pair/machine/program",
+        "sha256": "331d4c2358803262b7c3ac2d3850d9c208922debe98239e5be8569f72135f5f1",
+        "bytes": 210984,
+        "text_section_bytes": 130785,
+        "text_section_sha256": "1c2b40d41a0c7795371267dec8c79f9ef5e38ef65950f11622582ed4b81c637b"
+      },
+      "common_functions": 487,
+      "normalized_changed_functions": 0,
+      "changed": [],
+      "totals": {
+        "baseline": {
+          "instructions": 30912,
+          "adjacent_crossbank_pairs": 0,
+          "movd_instructions": 34,
+          "stack_memory_instructions": 5358
+        },
+        "candidate": {
+          "instructions": 30912,
+          "adjacent_crossbank_pairs": 0,
+          "movd_instructions": 34,
+          "stack_memory_instructions": 5358
+        }
+      },
+      "text_identical": true
+    },
+    {
+      "case": "tree-bitonic",
+      "baseline": {
+        "path": "selfhost/build/phase193/budget-native45-02/tree-bitonic/machine/program",
+        "sha256": "ee678e273a129cb2877e3165e833c401209a77f8d22eabd54ba4107032a06fc6",
+        "bytes": 216752,
+        "text_section_bytes": 131569,
+        "text_section_sha256": "f7d08f09f7ed32851a58fcf2e6da9e781ebaa4df0a88ce99f5a344ad514c09e8"
+      },
+      "candidate": {
+        "path": "selfhost/build/phase194/float-dev-build01/tree-bitonic/machine/program",
+        "sha256": "9c7a726a749f580883f6a88f56e637c58a852a1b5523f99bd89567774a37d537",
+        "bytes": 216752,
+        "text_section_bytes": 131569,
+        "text_section_sha256": "f7d08f09f7ed32851a58fcf2e6da9e781ebaa4df0a88ce99f5a344ad514c09e8"
+      },
+      "common_functions": 550,
+      "normalized_changed_functions": 0,
+      "changed": [],
+      "totals": {
+        "baseline": {
+          "instructions": 31137,
+          "adjacent_crossbank_pairs": 0,
+          "movd_instructions": 34,
+          "stack_memory_instructions": 4744
+        },
+        "candidate": {
+          "instructions": 31137,
+          "adjacent_crossbank_pairs": 0,
+          "movd_instructions": 34,
+          "stack_memory_instructions": 4744
+        }
+      },
+      "text_identical": true
+    },
+    {
+      "case": "variation-ray-active-64-2440",
+      "baseline": {
+        "path": "selfhost/build/phase193/budget-native45-02/variation-ray-active-64-2440/machine/program",
+        "sha256": "cc676008ed8cee847c06517e6d5cb516c2fef0eafc13861b61c7f970572ad3db",
+        "bytes": 227192,
+        "text_section_bytes": 149249,
+        "text_section_sha256": "9612b681c272838c84f1a66282a406cf8ce60882d387dfc127a3e6b1d9617704"
+      },
+      "candidate": {
+        "path": "selfhost/build/phase194/float-dev-build01/variation-ray-active-64-2440/machine/program",
+        "sha256": "765714f6219e3ff41f43a43af0866af50d8c7ffdd726456c17c44931a48e6204",
+        "bytes": 227192,
+        "text_section_bytes": 148785,
+        "text_section_sha256": "f335f1f6f043c3b24551bf6aaee6a26c797808141e9e6195d2f5fd2648680a17"
+      },
+      "common_functions": 482,
+      "normalized_changed_functions": 17,
+      "changed": [
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_105_120_101_108_",
+          "decoded": "$direct.pixel",
+          "baseline": {
+            "instructions": 1612,
+            "adjacent_crossbank_pairs": 42,
+            "movd_instructions": 414,
+            "frame_sub_bytes": [
+              4064
+            ],
+            "stack_memory_instructions": 470
+          },
+          "candidate": {
+            "instructions": 1594,
+            "adjacent_crossbank_pairs": 25,
+            "movd_instructions": 380,
+            "frame_sub_bytes": [
+              4448
+            ],
+            "stack_memory_instructions": 456
+          }
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_116_114_97_99_101_",
+          "decoded": "$direct.trace",
+          "baseline": {
+            "instructions": 2060,
+            "adjacent_crossbank_pairs": 26,
+            "movd_instructions": 455,
+            "frame_sub_bytes": [
+              4320
+            ],
+            "stack_memory_instructions": 730
+          },
+          "candidate": {
+            "instructions": 2060,
+            "adjacent_crossbank_pairs": 26,
+            "movd_instructions": 455,
+            "frame_sub_bytes": [
+              4496
+            ],
+            "stack_memory_instructions": 730
+          }
+        },
+        {
+          "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_110_101_97_114_101_115_116_",
+          "decoded": "$product.nearest",
+          "baseline": {
+            "instructions": 791,
+            "adjacent_crossbank_pairs": 6,
+            "movd_instructions": 92,
+            "frame_sub_bytes": [
+              3072
+            ],
+            "stack_memory_instructions": 211
+          },
+          "candidate": {
+            "instructions": 775,
+            "adjacent_crossbank_pairs": 8,
+            "movd_instructions": 92,
+            "frame_sub_bytes": [
+              3376
+            ],
+            "stack_memory_instructions": 201
+          }
+        },
+        {
+          "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_116_114_97_99_101_",
+          "decoded": "$product.trace",
+          "baseline": {
+            "instructions": 1978,
+            "adjacent_crossbank_pairs": 26,
+            "movd_instructions": 455,
+            "frame_sub_bytes": [
+              4288
+            ],
+            "stack_memory_instructions": 690
+          },
+          "candidate": {
+            "instructions": 1978,
+            "adjacent_crossbank_pairs": 26,
+            "movd_instructions": 455,
+            "frame_sub_bytes": [
+              4464
+            ],
+            "stack_memory_instructions": 690
+          }
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_115_101_99_116_46_103_111_50_",
+          "decoded": "$direct.isect.go2",
+          "baseline": {
+            "instructions": 174,
+            "adjacent_crossbank_pairs": 3,
+            "movd_instructions": 26,
+            "frame_sub_bytes": [
+              2448
+            ],
+            "stack_memory_instructions": 21
+          },
+          "candidate": {
+            "instructions": 171,
+            "adjacent_crossbank_pairs": 3,
+            "movd_instructions": 26,
+            "frame_sub_bytes": [
+              2464
+            ],
+            "stack_memory_instructions": 21
+          }
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_115_101_99_116_46_103_111_",
+          "decoded": "$direct.isect.go",
+          "baseline": {
+            "instructions": 135,
+            "adjacent_crossbank_pairs": 3,
+            "movd_instructions": 31,
+            "frame_sub_bytes": [
+              2432
+            ],
+            "stack_memory_instructions": 12
+          },
+          "candidate": {
+            "instructions": 132,
+            "adjacent_crossbank_pairs": 4,
+            "movd_instructions": 31,
+            "frame_sub_bytes": [
+              2448
+            ],
+            "stack_memory_instructions": 12
+          }
+        },
+        {
+          "symbol": "main",
+          "decoded": "main",
+          "baseline": {
+            "instructions": 4,
+            "adjacent_crossbank_pairs": 0,
+            "movd_instructions": 0,
+            "frame_sub_bytes": [],
+            "stack_memory_instructions": 0
+          },
+          "candidate": {
+            "instructions": 3,
+            "adjacent_crossbank_pairs": 0,
+            "movd_instructions": 0,
+            "frame_sub_bytes": [],
+            "stack_memory_instructions": 0
+          }
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_99_108_97_109_112_48_49_46_104_105_",
+          "decoded": "$direct.clamp01.hi",
+          "baseline": {
+            "instructions": 44,
+            "adjacent_crossbank_pairs": 1,
+            "movd_instructions": 10,
+            "frame_sub_bytes": [
+              2256
+            ],
+            "stack_memory_instructions": 2
+          },
+          "candidate": {
+            "instructions": 43,
+            "adjacent_crossbank_pairs": 2,
+            "movd_instructions": 10,
+            "frame_sub_bytes": [
+              2272
+            ],
+            "stack_memory_instructions": 2
+          }
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_115_101_99_116_46_116_",
+          "decoded": "$direct.isect.t",
+          "baseline": {
+            "instructions": 55,
+            "adjacent_crossbank_pairs": 3,
+            "movd_instructions": 14,
+            "frame_sub_bytes": [
+              2272
+            ],
+            "stack_memory_instructions": 2
+          },
+          "candidate": {
+            "instructions": 53,
+            "adjacent_crossbank_pairs": 3,
+            "movd_instructions": 14,
+            "frame_sub_bytes": [
+              2288
+            ],
+            "stack_memory_instructions": 2
+          }
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_99_108_97_109_112_48_49_",
+          "decoded": "$direct.clamp01",
+          "baseline": {
+            "instructions": 73,
+            "adjacent_crossbank_pairs": 2,
+            "movd_instructions": 20,
+            "frame_sub_bytes": [
+              2288
+            ],
+            "stack_memory_instructions": 2
+          },
+          "candidate": {
+            "instructions": 73,
+            "adjacent_crossbank_pairs": 4,
+            "movd_instructions": 20,
+            "frame_sub_bytes": [
+              2304
+            ],
+            "stack_memory_instructions": 2
+          }
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_101_97_114_101_115_116_46_116_",
+          "decoded": "$direct.nearest.t",
+          "baseline": {
+            "instructions": 626,
+            "adjacent_crossbank_pairs": 6,
+            "movd_instructions": 92,
+            "frame_sub_bytes": [
+              3008
+            ],
+            "stack_memory_instructions": 140
+          },
+          "candidate": {
+            "instructions": 602,
+            "adjacent_crossbank_pairs": 8,
+            "movd_instructions": 92,
+            "frame_sub_bytes": [
+              3312
+            ],
+            "stack_memory_instructions": 128
+          }
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_99_108_97_109_112_48_49_46_103_111_",
+          "decoded": "$direct.clamp01.go",
+          "baseline": {
+            "instructions": 109,
+            "adjacent_crossbank_pairs": 1,
+            "movd_instructions": 13,
+            "frame_sub_bytes": [
+              2368
+            ],
+            "stack_memory_instructions": 9
+          },
+          "candidate": {
+            "instructions": 109,
+            "adjacent_crossbank_pairs": 2,
+            "movd_instructions": 13,
+            "frame_sub_bytes": [
+              2384
+            ],
+            "stack_memory_instructions": 9
+          }
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_102_109_97_120_48_",
+          "decoded": "$direct.fmax0",
+          "baseline": {
+            "instructions": 43,
+            "adjacent_crossbank_pairs": 1,
+            "movd_instructions": 10,
+            "frame_sub_bytes": [
+              2256
+            ],
+            "stack_memory_instructions": 2
+          },
+          "candidate": {
+            "instructions": 43,
+            "adjacent_crossbank_pairs": 2,
+            "movd_instructions": 10,
+            "frame_sub_bytes": [
+              2272
+            ],
+            "stack_memory_instructions": 2
+          }
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_102_108_",
+          "decoded": "$direct.fl",
+          "baseline": {
+            "instructions": 32,
+            "adjacent_crossbank_pairs": 0,
+            "movd_instructions": 9,
+            "frame_sub_bytes": [
+              2272
+            ],
+            "stack_memory_instructions": 2
+          },
+          "candidate": {
+            "instructions": 31,
+            "adjacent_crossbank_pairs": 2,
+            "movd_instructions": 9,
+            "frame_sub_bytes": [
+              2288
+            ],
+            "stack_memory_instructions": 2
+          }
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_110_101_97_114_101_115_116_",
+          "decoded": "$direct.nearest",
+          "baseline": {
+            "instructions": 875,
+            "adjacent_crossbank_pairs": 6,
+            "movd_instructions": 92,
+            "frame_sub_bytes": [
+              3280
+            ],
+            "stack_memory_instructions": 295
+          },
+          "candidate": {
+            "instructions": 858,
+            "adjacent_crossbank_pairs": 8,
+            "movd_instructions": 92,
+            "frame_sub_bytes": [
+              3584
+            ],
+            "stack_memory_instructions": 285
+          }
+        },
+        {
+          "symbol": "_start",
+          "decoded": "_start",
+          "baseline": {
+            "instructions": 13,
+            "adjacent_crossbank_pairs": 0,
+            "movd_instructions": 0,
+            "frame_sub_bytes": [],
+            "stack_memory_instructions": 0
+          },
+          "candidate": {
+            "instructions": 13,
+            "adjacent_crossbank_pairs": 0,
+            "movd_instructions": 0,
+            "frame_sub_bytes": [],
+            "stack_memory_instructions": 0
+          }
+        },
+        {
+          "symbol": "p113d_FID_36_100_105_114_101_99_116_46_105_115_101_99_116_53_",
+          "decoded": "$direct.isect5",
+          "baseline": {
+            "instructions": 221,
+            "adjacent_crossbank_pairs": 3,
+            "movd_instructions": 44,
+            "frame_sub_bytes": [
+              2656
+            ],
+            "stack_memory_instructions": 31
+          },
+          "candidate": {
+            "instructions": 213,
+            "adjacent_crossbank_pairs": 4,
+            "movd_instructions": 44,
+            "frame_sub_bytes": [
+              2800
+            ],
+            "stack_memory_instructions": 35
+          }
+        }
+      ],
+      "totals": {
+        "baseline": {
+          "instructions": 34284,
+          "adjacent_crossbank_pairs": 130,
+          "movd_instructions": 1890,
+          "stack_memory_instructions": 6153
+        },
+        "candidate": {
+          "instructions": 34190,
+          "adjacent_crossbank_pairs": 128,
+          "movd_instructions": 1856,
+          "stack_memory_instructions": 6111
+        }
+      },
+      "text_identical": false
+    }
+  ]
+}

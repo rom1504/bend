@@ -1,0 +1,33 @@
+--- a/selfhost/src/back/x86/branch-selection.bend
++++ b/selfhost/src/back/x86/branch-selection.bend
+@@ -29,7 +29,8 @@
+ # descending into both arms; counting a pair never skips the branch's body.
+ @unsafe
+ def x190_branch_pair_record(+name: String, +pairs: KDef) -> KDef:
+-  p111v_put(pairs,name,"X190BranchPairs",x181_read_increment(da(p111v_get(pairs,name))),0)
++  +old = p111v_get(pairs,name)
++  p111v_put(pairs,name,"X190BranchPairs",x181_read_increment(da(old)),dx(old))
+ 
+ @unsafe
+ def x190_branch_pair(body: List<&2,P113DStmt>, +pairs: KDef) -> KDef:
+@@ -57,7 +58,8 @@
+ def x190_branch_pairs(body,pairs):
+   match body:
+     case Nil{}: pairs
+-    case Con{head,rest}: x190_branch_pairs(rest,x190_branch_pairs_stmt(head,x190_branch_pair(body,pairs)))
++    case Con{head,rest}: x190_branch_pairs(rest,x190_branch_pairs_stmt(head,
++      x194_ps_count_pick(x194_ps_pick(body),x190_branch_pair(body,pairs))))
+ 
+ @unsafe
+ def x190_branch_counted(reads: X181ReadCounts, writes: KDef, pairs: KDef, protected: KDef) -> X190BranchFacts:
+@@ -286,9 +288,7 @@
+ @unsafe
+ def x190_step(+body: List<&2,P113DStmt>, +facts: X190BranchFacts,
+     +ids: N111Ids, +frame: X181Frame, +code: X181Code) -> X181Code:
+-  nt_choose(X181Code,x191_address_enabled() || x191_memory_alu_enabled() || x192_shared_address_enabled(),
+-    u => x192_shared_step(x192_shared_pick(body,facts),body,facts,ids,frame,code),
+-    u => x191_branch_step(body,facts,ids,frame,code))
++  x194_ps_step(x194_ps_pick(body),body,facts,ids,frame,code)
+ 
+ @unsafe
+ def x190_stmts(body,facts,ids,frame,code):

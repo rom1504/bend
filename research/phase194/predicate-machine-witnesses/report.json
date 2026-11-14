@@ -1,0 +1,631 @@
+{
+  "kind": "phase194-offline-predicate-machine",
+  "targetExecuted": false,
+  "method": "nm exact symbol; objdump no raw bytes; counts include every instruction row; frame counts exclude LEA",
+  "cases": {
+    "local-pair": {
+      "baseline": {
+        "binary": {
+          "file": "selfhost/build/phase193/budget-native45-02/local-pair/machine/program",
+          "bytes": 210984,
+          "sha256": "01eea34af5950c9e9c9defb3d59e6e4de9924cbf81430378dd2952718b5b654d"
+        },
+        "text_bytes": 130785,
+        "functions": [
+          {
+            "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_114_111_119_",
+            "decoded": "$product.row",
+            "address": "0x40c961",
+            "symbol_bytes": 1535,
+            "frame_reservation": 3136,
+            "assembly": {
+              "file": "research/phase194/predicate-machine-witnesses/local-pair-baseline-0.asm",
+              "bytes": 10232,
+              "sha256": "9a616c7161aea607f1b4991807633345daf9b12875b266719ceb8ef71a038af3"
+            },
+            "metrics": {
+              "instructions": 314,
+              "frame_memory_instructions": 122,
+              "setcc": 9,
+              "cmov": 3,
+              "test": 4,
+              "calls": 1
+            },
+            "positive_loop": {
+              "header": "0x40cd7a",
+              "positive": "0x40cdd1",
+              "backedge": "0x40cf5b",
+              "metrics": {
+                "instructions": 93,
+                "frame_memory_instructions": 21,
+                "setcc": 3,
+                "cmov": 3,
+                "test": 3,
+                "calls": 0
+              }
+            }
+          }
+        ]
+      },
+      "predicate": {
+        "binary": {
+          "file": "selfhost/build/phase194/predicate-dev-build01/local-pair/machine/program",
+          "bytes": 210984,
+          "sha256": "e4295cff6291d2d40154c46dd8e594212203d933c90f0c9b557b548164affb9f"
+        },
+        "text_bytes": 130097,
+        "functions": [
+          {
+            "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_114_111_119_",
+            "decoded": "$product.row",
+            "address": "0x40c70e",
+            "symbol_bytes": 1479,
+            "frame_reservation": 3136,
+            "assembly": {
+              "file": "research/phase194/predicate-machine-witnesses/local-pair-predicate-0.asm",
+              "bytes": 9808,
+              "sha256": "f9e57c15c4a4856ad882e1913823b9088ae22e00b892d73939b5f561216a636c"
+            },
+            "metrics": {
+              "instructions": 298,
+              "frame_memory_instructions": 121,
+              "setcc": 6,
+              "cmov": 3,
+              "test": 1,
+              "calls": 1
+            },
+            "positive_loop": {
+              "header": "0x40cb27",
+              "positive": "0x40cb7e",
+              "backedge": "0x40ccd0",
+              "metrics": {
+                "instructions": 77,
+                "frame_memory_instructions": 20,
+                "setcc": 0,
+                "cmov": 3,
+                "test": 0,
+                "calls": 0
+              }
+            }
+          }
+        ]
+      }
+    },
+    "editdist": {
+      "baseline": {
+        "binary": {
+          "file": "selfhost/build/phase193/budget-native45-02/editdist/machine/program",
+          "bytes": 217320,
+          "sha256": "db7a102244d704cfbe8f94774fbdbd8c64c4854ce2a34d3da4b62b0b2aa7db64"
+        },
+        "text_bytes": 135665,
+        "functions": [
+          {
+            "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_114_111_119_",
+            "decoded": "$product.row",
+            "address": "0x40c966",
+            "symbol_bytes": 1535,
+            "frame_reservation": 3136,
+            "assembly": {
+              "file": "research/phase194/predicate-machine-witnesses/editdist-baseline-0.asm",
+              "bytes": 10230,
+              "sha256": "6b83ca64a1f725a7b6a583e2d23fdfb91090d5b097a58e70c6176df417fe8450"
+            },
+            "metrics": {
+              "instructions": 314,
+              "frame_memory_instructions": 122,
+              "setcc": 9,
+              "cmov": 3,
+              "test": 4,
+              "calls": 1
+            },
+            "positive_loop": {
+              "header": "0x40cd7f",
+              "positive": "0x40cdd6",
+              "backedge": "0x40cf60",
+              "metrics": {
+                "instructions": 93,
+                "frame_memory_instructions": 21,
+                "setcc": 3,
+                "cmov": 3,
+                "test": 3,
+                "calls": 0
+              }
+            }
+          }
+        ]
+      },
+      "predicate": {
+        "binary": {
+          "file": "selfhost/build/phase194/predicate-dev-build01/editdist/machine/program",
+          "bytes": 217328,
+          "sha256": "8b2125d3daf1ddd1db524547f0d8224d663b3d25cffb27e578e519797db6f34b"
+        },
+        "text_bytes": 135009,
+        "functions": [
+          {
+            "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_114_111_119_",
+            "decoded": "$product.row",
+            "address": "0x40c713",
+            "symbol_bytes": 1479,
+            "frame_reservation": 3136,
+            "assembly": {
+              "file": "research/phase194/predicate-machine-witnesses/editdist-predicate-0.asm",
+              "bytes": 9806,
+              "sha256": "e54f4b13ce4b409d1caa466bbd6c46816ea9d3067cfbbbaab21873988d324fd0"
+            },
+            "metrics": {
+              "instructions": 298,
+              "frame_memory_instructions": 121,
+              "setcc": 6,
+              "cmov": 3,
+              "test": 1,
+              "calls": 1
+            },
+            "positive_loop": {
+              "header": "0x40cb2c",
+              "positive": "0x40cb83",
+              "backedge": "0x40ccd5",
+              "metrics": {
+                "instructions": 77,
+                "frame_memory_instructions": 20,
+                "setcc": 0,
+                "cmov": 3,
+                "test": 0,
+                "calls": 0
+              }
+            }
+          }
+        ]
+      }
+    },
+    "coverage-numeric-recurrence-256": {
+      "baseline": {
+        "binary": {
+          "file": "selfhost/build/phase193/budget-native45-02/coverage-numeric-recurrence-256/machine/program",
+          "bytes": 179744,
+          "sha256": "392b2edea06a22fe2fc26335dc66b6e0514bdf1a9def925a574530c90a57f498"
+        },
+        "text_bytes": 101633,
+        "functions": [
+          {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_51_55_46_110_117_109_101_114_105_99_",
+            "decoded": "$direct.p37.numeric",
+            "address": "0x408358",
+            "symbol_bytes": 366,
+            "frame_reservation": 2368,
+            "assembly": {
+              "file": "research/phase194/predicate-machine-witnesses/coverage-numeric-recurrence-256-baseline-0.asm",
+              "bytes": 3167,
+              "sha256": "7fc5e5536ed166bb2966d3de80173450eff3457238b37ccf08ed2811118d9667"
+            },
+            "metrics": {
+              "instructions": 90,
+              "frame_memory_instructions": 7,
+              "setcc": 2,
+              "cmov": 1,
+              "test": 2,
+              "calls": 1
+            }
+          }
+        ]
+      },
+      "predicate": {
+        "binary": {
+          "file": "selfhost/build/phase194/predicate-dev-build01/coverage-numeric-recurrence-256/machine/program",
+          "bytes": 179752,
+          "sha256": "d5d56ce89553e4632bddd83946dbe4ed5473ccbd31a17b041471ba7f7843414a"
+        },
+        "text_bytes": 101633,
+        "functions": [
+          {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_112_51_55_46_110_117_109_101_114_105_99_",
+            "decoded": "$direct.p37.numeric",
+            "address": "0x408358",
+            "symbol_bytes": 366,
+            "frame_reservation": 2368,
+            "assembly": {
+              "file": "research/phase194/predicate-machine-witnesses/coverage-numeric-recurrence-256-predicate-0.asm",
+              "bytes": 3170,
+              "sha256": "007c6aac2c1ca6cadd81d6af21fd2a738bdf97a863d4a6ea19bd872bc5bfbff6"
+            },
+            "metrics": {
+              "instructions": 90,
+              "frame_memory_instructions": 7,
+              "setcc": 2,
+              "cmov": 1,
+              "test": 2,
+              "calls": 1
+            }
+          }
+        ]
+      }
+    },
+    "variation-ray-active-64-2440": {
+      "baseline": {
+        "binary": {
+          "file": "selfhost/build/phase193/budget-native45-02/variation-ray-active-64-2440/machine/program",
+          "bytes": 227192,
+          "sha256": "cc676008ed8cee847c06517e6d5cb516c2fef0eafc13861b61c7f970572ad3db"
+        },
+        "text_bytes": 149249,
+        "functions": [
+          {
+            "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_116_114_97_99_101_",
+            "decoded": "$product.trace",
+            "address": "0x40bcf1",
+            "symbol_bytes": 10027,
+            "frame_reservation": 4288,
+            "assembly": {
+              "file": "research/phase194/predicate-machine-witnesses/variation-ray-active-64-2440-baseline-0.asm",
+              "bytes": 62673,
+              "sha256": "32db8d1a3cca39ee0bfe828c0ef70ca4b045bc53d110b84ffc5e21dc8435c534"
+            },
+            "metrics": {
+              "instructions": 1978,
+              "frame_memory_instructions": 462,
+              "setcc": 22,
+              "cmov": 0,
+              "test": 10,
+              "calls": 17
+            }
+          },
+          {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_115_117_98_114_97_121_",
+            "decoded": "$direct.subray",
+            "address": "0x40f4a2",
+            "symbol_bytes": 1839,
+            "frame_reservation": 2624,
+            "assembly": {
+              "file": "research/phase194/predicate-machine-witnesses/variation-ray-active-64-2440-baseline-1.asm",
+              "bytes": 10996,
+              "sha256": "231264bc82b4dc1f5dbd41ac1b35e424a83f38a7582aa860ee23871fa500ec45"
+            },
+            "metrics": {
+              "instructions": 351,
+              "frame_memory_instructions": 14,
+              "setcc": 0,
+              "cmov": 0,
+              "test": 0,
+              "calls": 3
+            }
+          },
+          {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_116_114_97_99_101_",
+            "decoded": "$direct.trace",
+            "address": "0x412170",
+            "symbol_bytes": 10425,
+            "frame_reservation": 4320,
+            "assembly": {
+              "file": "research/phase194/predicate-machine-witnesses/variation-ray-active-64-2440-baseline-2.asm",
+              "bytes": 65282,
+              "sha256": "d8a76639378bba19a7721af32c67f3a72aa53e7f8fbea40221293336070cc5ea"
+            },
+            "metrics": {
+              "instructions": 2060,
+              "frame_memory_instructions": 487,
+              "setcc": 24,
+              "cmov": 0,
+              "test": 12,
+              "calls": 22
+            }
+          }
+        ]
+      },
+      "predicate": {
+        "binary": {
+          "file": "selfhost/build/phase194/predicate-dev-build01/variation-ray-active-64-2440/machine/program",
+          "bytes": 227200,
+          "sha256": "061f29703aa34c0d6197685a05ac2166d53e62f7355397f15034b7ac9c1fc49d"
+        },
+        "text_bytes": 149233,
+        "functions": [
+          {
+            "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_116_114_97_99_101_",
+            "decoded": "$product.trace",
+            "address": "0x40bcf1",
+            "symbol_bytes": 10027,
+            "frame_reservation": 4288,
+            "assembly": {
+              "file": "research/phase194/predicate-machine-witnesses/variation-ray-active-64-2440-predicate-0.asm",
+              "bytes": 62676,
+              "sha256": "adce16fb260e2561ed0a9d5247c36fddb6ca735a0943547dfcc082d87f106df1"
+            },
+            "metrics": {
+              "instructions": 1978,
+              "frame_memory_instructions": 462,
+              "setcc": 22,
+              "cmov": 0,
+              "test": 10,
+              "calls": 17
+            }
+          },
+          {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_115_117_98_114_97_121_",
+            "decoded": "$direct.subray",
+            "address": "0x40f4a2",
+            "symbol_bytes": 1839,
+            "frame_reservation": 2624,
+            "assembly": {
+              "file": "research/phase194/predicate-machine-witnesses/variation-ray-active-64-2440-predicate-1.asm",
+              "bytes": 10999,
+              "sha256": "4f1eb93aaaeea04532b0484e970a20bb163ce8ff75156e04a1e56bbb800f9f6c"
+            },
+            "metrics": {
+              "instructions": 351,
+              "frame_memory_instructions": 14,
+              "setcc": 0,
+              "cmov": 0,
+              "test": 0,
+              "calls": 3
+            }
+          },
+          {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_116_114_97_99_101_",
+            "decoded": "$direct.trace",
+            "address": "0x412164",
+            "symbol_bytes": 10425,
+            "frame_reservation": 4320,
+            "assembly": {
+              "file": "research/phase194/predicate-machine-witnesses/variation-ray-active-64-2440-predicate-2.asm",
+              "bytes": 65285,
+              "sha256": "bcb0d9f3e8df716635d95f26be07910e3404716678dde9afcfe3fa51455cb2a9"
+            },
+            "metrics": {
+              "instructions": 2060,
+              "frame_memory_instructions": 487,
+              "setcc": 24,
+              "cmov": 0,
+              "test": 12,
+              "calls": 22
+            }
+          }
+        ]
+      }
+    },
+    "lexer": {
+      "baseline": {
+        "binary": {
+          "file": "selfhost/build/phase193/budget-native45-02/lexer/machine/program",
+          "bytes": 216264,
+          "sha256": "59b1f2c0577b7f54e0c9f201e0f711439e3a69d3cae860c0d3d7debc35b95670"
+        },
+        "text_bytes": 130465,
+        "functions": [
+          {
+            "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_108_101_120_",
+            "decoded": "$product.lex",
+            "address": "0x40c341",
+            "symbol_bytes": 848,
+            "frame_reservation": 2544,
+            "assembly": {
+              "file": "research/phase194/predicate-machine-witnesses/lexer-baseline-0.asm",
+              "bytes": 6598,
+              "sha256": "8d4bae0781f5362bb1550e529a11b80a33187b98943c127e6158162dd755f47e"
+            },
+            "metrics": {
+              "instructions": 197,
+              "frame_memory_instructions": 19,
+              "setcc": 8,
+              "cmov": 4,
+              "test": 6,
+              "calls": 5
+            }
+          },
+          {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_99_108_115_",
+            "decoded": "$direct.cls",
+            "address": "0x40916e",
+            "symbol_bytes": 389,
+            "frame_reservation": 2352,
+            "assembly": {
+              "file": "research/phase194/predicate-machine-witnesses/lexer-baseline-1.asm",
+              "bytes": 3062,
+              "sha256": "7d36267cd5a2fc6c8b712d49b8079addad5a85432ad8d7c8a890ca867cc44244"
+            },
+            "metrics": {
+              "instructions": 92,
+              "frame_memory_instructions": 2,
+              "setcc": 8,
+              "cmov": 4,
+              "test": 6,
+              "calls": 0
+            }
+          }
+        ]
+      },
+      "predicate": {
+        "binary": {
+          "file": "selfhost/build/phase194/predicate-dev-build01/lexer/machine/program",
+          "bytes": 216272,
+          "sha256": "1b879c4125645828d441545559481a60c31b0da42d086a12442a8fb0d3d7917b"
+        },
+        "text_bytes": 130481,
+        "functions": [
+          {
+            "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_108_101_120_",
+            "decoded": "$product.lex",
+            "address": "0x40c351",
+            "symbol_bytes": 848,
+            "frame_reservation": 2544,
+            "assembly": {
+              "file": "research/phase194/predicate-machine-witnesses/lexer-predicate-0.asm",
+              "bytes": 6601,
+              "sha256": "68441a43a80a127eeca26b01978be2558aebc758f94b660e756c94763f76977a"
+            },
+            "metrics": {
+              "instructions": 197,
+              "frame_memory_instructions": 19,
+              "setcc": 8,
+              "cmov": 4,
+              "test": 6,
+              "calls": 5
+            }
+          },
+          {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_99_108_115_",
+            "decoded": "$direct.cls",
+            "address": "0x409176",
+            "symbol_bytes": 389,
+            "frame_reservation": 2352,
+            "assembly": {
+              "file": "research/phase194/predicate-machine-witnesses/lexer-predicate-1.asm",
+              "bytes": 3065,
+              "sha256": "daf05c617f57bf4038a34c624e2ad16c55d5e66cf1072ee6315fb82abad5e588"
+            },
+            "metrics": {
+              "instructions": 92,
+              "frame_memory_instructions": 2,
+              "setcc": 8,
+              "cmov": 4,
+              "test": 6,
+              "calls": 0
+            }
+          }
+        ]
+      }
+    },
+    "tree-bitonic": {
+      "baseline": {
+        "binary": {
+          "file": "selfhost/build/phase193/budget-native45-02/tree-bitonic/machine/program",
+          "bytes": 216752,
+          "sha256": "ee678e273a129cb2877e3165e833c401209a77f8d22eabd54ba4107032a06fc6"
+        },
+        "text_bytes": 131569,
+        "functions": [
+          {
+            "symbol": "p114r_FID_36_100_105_114_101_99_116_46_115_99_97_110_",
+            "decoded": "$direct.scan",
+            "address": "0x40e8a5",
+            "symbol_bytes": 1118,
+            "frame_reservation": 6720,
+            "assembly": {
+              "file": "research/phase194/predicate-machine-witnesses/tree-bitonic-baseline-0.asm",
+              "bytes": 8256,
+              "sha256": "b7dd1b96984ebe81d69e7530680fae349ad6314c63354f692ea5d80752eea5b3"
+            },
+            "metrics": {
+              "instructions": 238,
+              "frame_memory_instructions": 28,
+              "setcc": 0,
+              "cmov": 0,
+              "test": 1,
+              "calls": 9
+            }
+          },
+          {
+            "symbol": "p114r_FID_36_100_105_114_101_99_116_46_119_97_114_112_",
+            "decoded": "$direct.warp",
+            "address": "0x411f63",
+            "symbol_bytes": 2806,
+            "frame_reservation": 7008,
+            "assembly": {
+              "file": "research/phase194/predicate-machine-witnesses/tree-bitonic-baseline-1.asm",
+              "bytes": 19127,
+              "sha256": "429d9efbed9f9cc032fc5d1c9e338df0d0f4c7072a2d96441aedc4fa122ae7ec"
+            },
+            "metrics": {
+              "instructions": 557,
+              "frame_memory_instructions": 144,
+              "setcc": 0,
+              "cmov": 0,
+              "test": 1,
+              "calls": 21
+            }
+          },
+          {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_108_101_97_102_46_103_111_",
+            "decoded": "$direct.warp_leaf.go",
+            "address": "0x4088c4",
+            "symbol_bytes": 843,
+            "frame_reservation": 2400,
+            "assembly": {
+              "file": "research/phase194/predicate-machine-witnesses/tree-bitonic-baseline-2.asm",
+              "bytes": 6649,
+              "sha256": "1b7dfe500def4a04953a7be0853f39824fab03083f22ee67d50a66b2830b8fa9"
+            },
+            "metrics": {
+              "instructions": 186,
+              "frame_memory_instructions": 13,
+              "setcc": 4,
+              "cmov": 0,
+              "test": 2,
+              "calls": 7
+            }
+          }
+        ]
+      },
+      "predicate": {
+        "binary": {
+          "file": "selfhost/build/phase194/predicate-dev-build01/tree-bitonic/machine/program",
+          "bytes": 216760,
+          "sha256": "bd6c9d2a866df9e9057bb227456903671fee4ccce220d0725f3f665933dbe2c6"
+        },
+        "text_bytes": 131569,
+        "functions": [
+          {
+            "symbol": "p114r_FID_36_100_105_114_101_99_116_46_115_99_97_110_",
+            "decoded": "$direct.scan",
+            "address": "0x40e8a5",
+            "symbol_bytes": 1118,
+            "frame_reservation": 6720,
+            "assembly": {
+              "file": "research/phase194/predicate-machine-witnesses/tree-bitonic-predicate-0.asm",
+              "bytes": 8259,
+              "sha256": "378c5e99e8f07f23b6d00ee8eb32cbd7adc93ce934a0b5fd8018904ba57f6cf5"
+            },
+            "metrics": {
+              "instructions": 238,
+              "frame_memory_instructions": 28,
+              "setcc": 0,
+              "cmov": 0,
+              "test": 1,
+              "calls": 9
+            }
+          },
+          {
+            "symbol": "p114r_FID_36_100_105_114_101_99_116_46_119_97_114_112_",
+            "decoded": "$direct.warp",
+            "address": "0x411f63",
+            "symbol_bytes": 2806,
+            "frame_reservation": 7008,
+            "assembly": {
+              "file": "research/phase194/predicate-machine-witnesses/tree-bitonic-predicate-1.asm",
+              "bytes": 19130,
+              "sha256": "81f7b2d16178ff35013fb6974ac24730888ccecc724a0ad56c33e1f84007be09"
+            },
+            "metrics": {
+              "instructions": 557,
+              "frame_memory_instructions": 144,
+              "setcc": 0,
+              "cmov": 0,
+              "test": 1,
+              "calls": 21
+            }
+          },
+          {
+            "symbol": "p113d_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_108_101_97_102_46_103_111_",
+            "decoded": "$direct.warp_leaf.go",
+            "address": "0x4088c4",
+            "symbol_bytes": 843,
+            "frame_reservation": 2400,
+            "assembly": {
+              "file": "research/phase194/predicate-machine-witnesses/tree-bitonic-predicate-2.asm",
+              "bytes": 6652,
+              "sha256": "f3c5df9815dc8b98d7e7d87876575b20c29840787390ae2feb0e8c3343d0129f"
+            },
+            "metrics": {
+              "instructions": 186,
+              "frame_memory_instructions": 13,
+              "setcc": 4,
+              "cmov": 0,
+              "test": 2,
+              "calls": 7
+            }
+          }
+        ]
+      }
+    }
+  }
+}

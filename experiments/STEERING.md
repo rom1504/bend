@@ -1,3 +1,42 @@
+# Phase194 — qualified x86 value/selection composition, 2026-11-14
+
+[Report](../implementation/phase194/README.md) ·
+[Runtime table](../implementation/phase194/runtime-summary.md) ·
+[Compiler costs](../implementation/phase194/compiler-cost.md) ·
+[Evidence](../implementation/phase194/evidence.json).
+
+Fresh native45 direct-object runtime improves **2.102761→1.971034× mature Bend C**,
+0.937355× Phase193 (6.26% less); 34 eligible held-out cases improve 6.52%.
+Equal-family ratio 0.940527; positive-log slowdown 0.860694→0.808492;
+36/44 remain >1.1× C and 32/44 >2×. Fixed-work sum 25.889→24.463s.
+All regressions remain, led by expression128 +2.90%; twelve dispersion flags.
+QBE reference 1.348552× C. Parity remains open; separate diagnostics do not enter
+this score. Historical Phase193 timing is not the paired baseline denominator.
+
+Closed F32 definition identities, compare/copy/select composition and commutative
+right-home instruction selection remove bank transfers, Boolean materialization
+and redundant MOVs. The third mechanism was discovered using twelve new paired
+diagnostics with independent two-point outputs. Many-live spills, shared-product
+reconstruction, F32 backedge conversions and C vectorization remain concrete gaps.
+Source +332 lines / +0.905% bytes; five other canonical profiles byte-identical.
+
+Four paired compiler requests cost 1.007781× for QBE-built N1 and 0.985722× for
+x86-built N2; these two-round screens are guardrails, not confidence intervals.
+N2 executable 24,963,272 bytes (+0.641%). Source acceptance, finite controls,
+native64/runtime10, six exact B1/N1 objects, all45 N1/N2 objects/135 linked
+sections, and N2/N3 exact compiler-object reproduction pass. Qualified N2:
+`selfhost/build/phase194/native-self01/program` + `report.json`.
+Installed Phase189 unchanged. No new theorem or recursive acceleration claim.
+
+Next: compose integer compare/branch selection with original float nodes, then
+preserve loop-carried F32 state; separately falsify wider leaf register pools and
+shared-product escape boundaries. Do not blindly send XMM-only plain nodes
+through the integer selector or extend allocation without matching clobber facts.
+Use the paired diagnostics before another full qualification. Guarded cost50.08min,
+65jobs including9failures; exact errors, negative evidence and cost boundaries retained.
+
+---
+
 # Phase193 — qualified shared x86 helper composition, 2026-11-13
 
 [Report](../implementation/phase193/README.md) ·

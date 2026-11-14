@@ -1,0 +1,1085 @@
+{
+  "kind": "phase194-outer-guard-cost",
+  "complete": true,
+  "programsExecuted": false,
+  "capturedUTC": "2026-11-14T01:40:33.835085+00:00",
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase194/campaign-cost.py",
+    "bytes": 4643,
+    "sha256": "cacd1017ce4ea3425c116232f38d83a16c973f97d8599a2dc1faefb8f38b60b3"
+  },
+  "predecessor": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase193/campaign-cost.py",
+    "bytes": 2650,
+    "sha256": "32361b238408605774dcb1394ba6f537bc643d9e6c53455a619e9f9d1ed391c1"
+  },
+  "total": {
+    "jobs": 65,
+    "failed": 9,
+    "wallSeconds": 3004.9570779195055,
+    "peakRssBytes": 2227662848,
+    "peakRunAllocatedBytes": 122413056,
+    "minimumDiskFreeBytes": 5464748032
+  },
+  "byCategory": {
+    "adversarial-controls": {
+      "jobs": 7,
+      "failed": 0,
+      "wallSeconds": 63.052865537349135,
+      "peakRssBytes": 1253924864,
+      "peakRunAllocatedBytes": 180224,
+      "minimumDiskFreeBytes": 5837152256
+    },
+    "checked-api-acquisition": {
+      "jobs": 13,
+      "failed": 4,
+      "wallSeconds": 153.12278985371813,
+      "peakRssBytes": 2227662848,
+      "peakRunAllocatedBytes": 4018176,
+      "minimumDiskFreeBytes": 5475794944
+    },
+    "compiler-image-builds": {
+      "jobs": 3,
+      "failed": 0,
+      "wallSeconds": 794.5463218223304,
+      "peakRssBytes": 1726078976,
+      "peakRunAllocatedBytes": 122413056,
+      "minimumDiskFreeBytes": 5589843968
+    },
+    "compiler-request-planning": {
+      "jobs": 2,
+      "failed": 0,
+      "wallSeconds": 7.739615361671895,
+      "peakRssBytes": 20017152,
+      "peakRunAllocatedBytes": 151552,
+      "minimumDiskFreeBytes": 5564538880
+    },
+    "compiler-request-timing": {
+      "jobs": 3,
+      "failed": 1,
+      "wallSeconds": 67.85190897015855,
+      "peakRssBytes": 71913472,
+      "peakRunAllocatedBytes": 4104192,
+      "minimumDiskFreeBytes": 5560377344
+    },
+    "development-products": {
+      "jobs": 22,
+      "failed": 3,
+      "wallSeconds": 764.4483808143996,
+      "peakRssBytes": 944590848,
+      "peakRunAllocatedBytes": 15626240,
+      "minimumDiskFreeBytes": 5729517568
+    },
+    "native-oracle-and-qualification": {
+      "jobs": 6,
+      "failed": 0,
+      "wallSeconds": 332.21685894811526,
+      "peakRssBytes": 75272192,
+      "peakRunAllocatedBytes": 24330240,
+      "minimumDiskFreeBytes": 5564370944
+    },
+    "offline-or-other": {
+      "jobs": 1,
+      "failed": 0,
+      "wallSeconds": 37.77396709518507,
+      "peakRssBytes": 745476096,
+      "peakRunAllocatedBytes": 9310208,
+      "minimumDiskFreeBytes": 5464748032
+    },
+    "program-runtime": {
+      "jobs": 6,
+      "failed": 1,
+      "wallSeconds": 768.7295126607642,
+      "peakRssBytes": 73318400,
+      "peakRunAllocatedBytes": 19054592,
+      "minimumDiskFreeBytes": 5529083904
+    },
+    "source-checking": {
+      "jobs": 2,
+      "failed": 0,
+      "wallSeconds": 15.474856855813414,
+      "peakRssBytes": 881917952,
+      "peakRunAllocatedBytes": 24576,
+      "minimumDiskFreeBytes": 5782626304
+    }
+  },
+  "jobs": [
+    {
+      "job": "ablation-runtime01",
+      "category": "program-runtime",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/ablation-runtime01-guard/process.json",
+        "bytes": 2431,
+        "sha256": "30e880816be7991ba7395ffa9b3b30e20ed93123d71e47417c3a385bb4b392c1"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 63.69762964500114,
+      "peakTreeRssBytes": 35500032,
+      "peakRunAllocatedBytes": 3465216,
+      "minimumDiskFreeBytes": 5946667008
+    },
+    {
+      "job": "baseline-api01",
+      "category": "checked-api-acquisition",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/baseline-api01-guard/process.json",
+        "bytes": 3139,
+        "sha256": "db6535c3b40ffc0be02082d1cd2212d88d6c06aab7dc03d6de19bf8ba21f7508"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 14.286597948987037,
+      "peakTreeRssBytes": 2157121536,
+      "peakRunAllocatedBytes": 3952640,
+      "minimumDiskFreeBytes": 5904777216
+    },
+    {
+      "job": "combined-api01",
+      "category": "checked-api-acquisition",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/combined-api01-guard/process.json",
+        "bytes": 3136,
+        "sha256": "0f049d43c2fdd574e88807b5d8139d857e0151617acb5825d6ebe9c9b1c55121"
+      },
+      "complete": false,
+      "returncode": 1,
+      "wallSeconds": 6.8337351572699845,
+      "peakTreeRssBytes": 741646336,
+      "peakRunAllocatedBytes": 32768,
+      "minimumDiskFreeBytes": 5934997504
+    },
+    {
+      "job": "combined-api02",
+      "category": "checked-api-acquisition",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/combined-api02-guard/process.json",
+        "bytes": 3135,
+        "sha256": "425706651358e7d4779c03664b8c595eef37d5fea85ffc664705e447dba9836b"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 13.82061896706,
+      "peakTreeRssBytes": 2026758144,
+      "peakRunAllocatedBytes": 4018176,
+      "minimumDiskFreeBytes": 5925928960
+    },
+    {
+      "job": "combined-float-controls02",
+      "category": "adversarial-controls",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/combined-float-controls02-guard/process.json",
+        "bytes": 2819,
+        "sha256": "15818e8c923e686418827262bfc8e775c456d0fe6354af1a33bfdddca4274518"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 8.850214558187872,
+      "peakTreeRssBytes": 443068416,
+      "peakRunAllocatedBytes": 151552,
+      "minimumDiskFreeBytes": 5925539840
+    },
+    {
+      "job": "combined-predicate-controls02",
+      "category": "adversarial-controls",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/combined-predicate-controls02-guard/process.json",
+        "bytes": 2823,
+        "sha256": "d2d31b01cfe9c51514103d1d8508ff73fa1889f7263e3153bebc65dca41f8a35"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 9.69678687909618,
+      "peakTreeRssBytes": 1253924864,
+      "peakRunAllocatedBytes": 180224,
+      "minimumDiskFreeBytes": 5925236736
+    },
+    {
+      "job": "combined-stress-controls02",
+      "category": "adversarial-controls",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/combined-stress-controls02-guard/process.json",
+        "bytes": 2831,
+        "sha256": "59ac24d0852b8d598542aa8c0e1db91ab7d6d35bbd499876ee3aa4884dab2818"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 8.769204058218747,
+      "peakTreeRssBytes": 383590400,
+      "peakRunAllocatedBytes": 131072,
+      "minimumDiskFreeBytes": 5924962304
+    },
+    {
+      "job": "commutative-api01",
+      "category": "checked-api-acquisition",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/commutative-api01-guard/process.json",
+        "bytes": 3157,
+        "sha256": "300c311b96638806e84a8d0ad41e07be1080245861c026b1735fe9302cf8820f"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 15.157082952093333,
+      "peakTreeRssBytes": 2227662848,
+      "peakRunAllocatedBytes": 3989504,
+      "minimumDiskFreeBytes": 5838262272
+    },
+    {
+      "job": "commutative-controls01",
+      "category": "adversarial-controls",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/commutative-controls01-guard/process.json",
+        "bytes": 2814,
+        "sha256": "f5b33dd0d8e09874a5d1d324b6e29e0197b4b616725d76cdec9dcd590a8fe85b"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 8.809947926085442,
+      "peakTreeRssBytes": 358825984,
+      "peakRunAllocatedBytes": 139264,
+      "minimumDiskFreeBytes": 5837152256
+    },
+    {
+      "job": "commutative-dev-build01",
+      "category": "development-products",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/commutative-dev-build01-guard/process.json",
+        "bytes": 2657,
+        "sha256": "d46291b6616254877e3b68c8969b96d9770e618dbd92931ba4a3b9ee4964b61a"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 4.82637498062104,
+      "peakTreeRssBytes": 32813056,
+      "peakRunAllocatedBytes": 2531328,
+      "minimumDiskFreeBytes": 5802676224
+    },
+    {
+      "job": "commutative-dev-emit01",
+      "category": "development-products",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/commutative-dev-emit01-guard/process.json",
+        "bytes": 3353,
+        "sha256": "f61773ace80a749ed04e36b4bf50eccce93e964a89976bb54dd94b73aaefb904"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 64.08823284786195,
+      "peakTreeRssBytes": 872517632,
+      "peakRunAllocatedBytes": 4046848,
+      "minimumDiskFreeBytes": 5805273088
+    },
+    {
+      "job": "compiler-cost-n1-01",
+      "category": "compiler-request-timing",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/compiler-cost-n1-01-guard/process.json",
+        "bytes": 2433,
+        "sha256": "4913c70ae8269a22c17c68d79d67989293b66b1948adb953368b4f44c67a5a23"
+      },
+      "complete": false,
+      "returncode": 2,
+      "wallSeconds": 0.08523600175976753,
+      "peakTreeRssBytes": 17399808,
+      "peakRunAllocatedBytes": 16384,
+      "minimumDiskFreeBytes": 5631578112
+    },
+    {
+      "job": "compiler-cost-n1-02",
+      "category": "compiler-request-timing",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/compiler-cost-n1-02-guard/process.json",
+        "bytes": 2454,
+        "sha256": "498a02b39cd213c92f88fccf8d473bcb8aee7a1423150999bf26b3b7ae85a305"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 30.705225265119225,
+      "peakTreeRssBytes": 64761856,
+      "peakRunAllocatedBytes": 4104192,
+      "minimumDiskFreeBytes": 5627056128
+    },
+    {
+      "job": "compiler-cost-n1-plan01",
+      "category": "compiler-request-planning",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/compiler-cost-n1-plan01-guard/process.json",
+        "bytes": 2809,
+        "sha256": "0cfa2c76aa75bd3bb1564063f239f01491485caf6af9cc4dcd74a5e62c24fa77"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 3.4338140399195254,
+      "peakTreeRssBytes": 20017152,
+      "peakRunAllocatedBytes": 151552,
+      "minimumDiskFreeBytes": 5631614976
+    },
+    {
+      "job": "compiler-cost-n2-01",
+      "category": "compiler-request-timing",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/compiler-cost-n2-01-guard/process.json",
+        "bytes": 2453,
+        "sha256": "57fcabf76f3a4f3e0c982ec49ab5e19a6b6407f2cce659a41c2f6f7cb046ba88"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 37.061447703279555,
+      "peakTreeRssBytes": 71913472,
+      "peakRunAllocatedBytes": 4104192,
+      "minimumDiskFreeBytes": 5560377344
+    },
+    {
+      "job": "compiler-cost-n2-plan01",
+      "category": "compiler-request-planning",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/compiler-cost-n2-plan01-guard/process.json",
+        "bytes": 2808,
+        "sha256": "90f854ed21198399b21e3d7cede9a6881755f6a4a08616621d8aaa9c40062745"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 4.305801321752369,
+      "peakTreeRssBytes": 19947520,
+      "peakRunAllocatedBytes": 151552,
+      "minimumDiskFreeBytes": 5564538880
+    },
+    {
+      "job": "composition-dev-runtime01",
+      "category": "program-runtime",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/composition-dev-runtime01-guard/process.json",
+        "bytes": 2459,
+        "sha256": "4d6c3aab8a1a5088226cec236a45c3c2115ddf75cfa5240e9a53784e2a0a38ac"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 63.32456366997212,
+      "peakTreeRssBytes": 35909632,
+      "peakRunAllocatedBytes": 3473408,
+      "minimumDiskFreeBytes": 5789843456
+    },
+    {
+      "job": "diag-baseline-build04",
+      "category": "development-products",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/diag-baseline-build04-guard/process.json",
+        "bytes": 2983,
+        "sha256": "9d533c114e70b9a058500ddadafeb538407a0b4b65224c1960e17aff634ad0dc"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 7.704046011902392,
+      "peakTreeRssBytes": 32731136,
+      "peakRunAllocatedBytes": 4399104,
+      "minimumDiskFreeBytes": 5874003968
+    },
+    {
+      "job": "diag-baseline-emit01",
+      "category": "development-products",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/diag-baseline-emit01-guard/process.json",
+        "bytes": 3553,
+        "sha256": "d2642978852394e6cf1d2a32fee7e5e689050930e481a3cc004c77fd9deaa650"
+      },
+      "complete": false,
+      "returncode": 1,
+      "wallSeconds": 58.26574526168406,
+      "peakTreeRssBytes": 720748544,
+      "peakRunAllocatedBytes": 4820992,
+      "minimumDiskFreeBytes": 5935828992
+    },
+    {
+      "job": "diag-baseline-emit02",
+      "category": "development-products",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/diag-baseline-emit02-guard/process.json",
+        "bytes": 3553,
+        "sha256": "d3a08fc7bf90e7b55c5f32c89f6649edac0c0b9e876edbf3eebb7790f1235a2b"
+      },
+      "complete": false,
+      "returncode": 1,
+      "wallSeconds": 1.45257728965953,
+      "peakTreeRssBytes": 297889792,
+      "peakRunAllocatedBytes": 40960,
+      "minimumDiskFreeBytes": 5921124352
+    },
+    {
+      "job": "diag-baseline-emit03",
+      "category": "development-products",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/diag-baseline-emit03-guard/process.json",
+        "bytes": 3570,
+        "sha256": "8f2db41097d919b98b4715b078eee213e8d02fda363a57c8702a6422e089a7bf"
+      },
+      "complete": false,
+      "returncode": 1,
+      "wallSeconds": 59.174467561766505,
+      "peakTreeRssBytes": 720027648,
+      "peakRunAllocatedBytes": 4820992,
+      "minimumDiskFreeBytes": 5890883584
+    },
+    {
+      "job": "diag-baseline-emit04",
+      "category": "development-products",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/diag-baseline-emit04-guard/process.json",
+        "bytes": 3574,
+        "sha256": "47d8baaec4db65c1c8427280144ac04b14d600b0b67c8657675cab580e157b76"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 67.98444303311408,
+      "peakTreeRssBytes": 838103040,
+      "peakRunAllocatedBytes": 5799936,
+      "minimumDiskFreeBytes": 5878497280
+    },
+    {
+      "job": "diag-commutative-build01",
+      "category": "development-products",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/diag-commutative-build01-guard/process.json",
+        "bytes": 2997,
+        "sha256": "0c6dc366cac9a090ec09394c8c6c77f086e14efb1348b557f65e839eea934a9b"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 7.436741786077619,
+      "peakTreeRssBytes": 33980416,
+      "peakRunAllocatedBytes": 4395008,
+      "minimumDiskFreeBytes": 5826490368
+    },
+    {
+      "job": "diag-commutative-emit01",
+      "category": "development-products",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/diag-commutative-emit01-guard/process.json",
+        "bytes": 3599,
+        "sha256": "67633109e91bb836c7105d3f7acbf6651fb87bb677835d27e2ba362e21a8da66"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 66.93900373764336,
+      "peakTreeRssBytes": 828170240,
+      "peakRunAllocatedBytes": 5787648,
+      "minimumDiskFreeBytes": 5830991872
+    },
+    {
+      "job": "diag-memory-build01",
+      "category": "development-products",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/diag-memory-build01-guard/process.json",
+        "bytes": 2974,
+        "sha256": "4f546a6ef4c63d07539da88f01fccff2fad3cb8aa531178d538e0fbd88ccc116"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 2.7019733036868274,
+      "peakTreeRssBytes": 24952832,
+      "peakRunAllocatedBytes": 806912,
+      "minimumDiskFreeBytes": 5887676416
+    },
+    {
+      "job": "diag-memory-emit01",
+      "category": "development-products",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/diag-memory-emit01-guard/process.json",
+        "bytes": 3620,
+        "sha256": "53c5cf3581f2cf7687c06e4d86c44f832713ee96e48f927aa93247c2ec412e3a"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 18.91654804488644,
+      "peakTreeRssBytes": 545411072,
+      "peakRunAllocatedBytes": 1028096,
+      "minimumDiskFreeBytes": 5888544768
+    },
+    {
+      "job": "diag-references02",
+      "category": "development-products",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/diag-references02-guard/process.json",
+        "bytes": 2344,
+        "sha256": "740ebd5d412d6e704a1258847e79a6c1751512c288c4c56bc46be48a78481832"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 55.759005695581436,
+      "peakTreeRssBytes": 172412928,
+      "peakRunAllocatedBytes": 15626240,
+      "minimumDiskFreeBytes": 5843562496
+    },
+    {
+      "job": "diag-selected-build02",
+      "category": "development-products",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/diag-selected-build02-guard/process.json",
+        "bytes": 2984,
+        "sha256": "792eca35f813febcf2eba838ca40a8f1a7a4e513110d29fc2d16adf71a0211ef"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 7.437594966031611,
+      "peakTreeRssBytes": 32542720,
+      "peakRunAllocatedBytes": 4399104,
+      "minimumDiskFreeBytes": 5863190528
+    },
+    {
+      "job": "diag-selected-emit02",
+      "category": "development-products",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/diag-selected-emit02-guard/process.json",
+        "bytes": 3574,
+        "sha256": "1b324265435d2904cb97db4a05694dfa8d8621fe4a0c70d89e948ae9dfd9cec8"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 67.51441571023315,
+      "peakTreeRssBytes": 882167808,
+      "peakRunAllocatedBytes": 5804032,
+      "minimumDiskFreeBytes": 5867687936
+    },
+    {
+      "job": "diagnostic-api01",
+      "category": "checked-api-acquisition",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/diagnostic-api01-guard/process.json",
+        "bytes": 3150,
+        "sha256": "4c468a2b62f3d8d2daf8e9f199c783e8ef5d360b57711913c5c376d742c3d699"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 13.099378400016576,
+      "peakTreeRssBytes": 2005950464,
+      "peakRunAllocatedBytes": 3612672,
+      "minimumDiskFreeBytes": 5475794944
+    },
+    {
+      "job": "diagnostic-commutative-runtime01",
+      "category": "program-runtime",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/diagnostic-commutative-runtime01-guard/process.json",
+        "bytes": 2824,
+        "sha256": "811b58e0a6ea60a6476b6b69f56822d1327f8f50f864dcb30c9540dbb74914cf"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 98.85155787970871,
+      "peakTreeRssBytes": 45228032,
+      "peakRunAllocatedBytes": 7327744,
+      "minimumDiskFreeBytes": 5793222656
+    },
+    {
+      "job": "diagnostic-ir01",
+      "category": "offline-or-other",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/diagnostic-ir01-guard/process.json",
+        "bytes": 3253,
+        "sha256": "96fed19f0f957331876e86856b0b6b597fdbeac817536f925117302913b36e2a"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 37.77396709518507,
+      "peakTreeRssBytes": 745476096,
+      "peakRunAllocatedBytes": 9310208,
+      "minimumDiskFreeBytes": 5464748032
+    },
+    {
+      "job": "diagnostic-runtime01",
+      "category": "program-runtime",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/diagnostic-runtime01-guard/process.json",
+        "bytes": 2778,
+        "sha256": "087e24830ec889851e52c78a3c8d7b912cab9ddb5231b38c49035802273e5d0e"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 101.74618388200179,
+      "peakTreeRssBytes": 44171264,
+      "peakRunAllocatedBytes": 7442432,
+      "minimumDiskFreeBytes": 5816799232
+    },
+    {
+      "job": "final-api01",
+      "category": "checked-api-acquisition",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/final-api01-guard/process.json",
+        "bytes": 3120,
+        "sha256": "04d44d73fbb9b1e0a9a913a75aabcaf113689aa54c4f549e4ee64cb3c9b9ca31"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 14.267385897692293,
+      "peakTreeRssBytes": 2060754944,
+      "peakRunAllocatedBytes": 3985408,
+      "minimumDiskFreeBytes": 5736333312
+    },
+    {
+      "job": "final-dev-build01",
+      "category": "development-products",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/final-dev-build01-guard/process.json",
+        "bytes": 2632,
+        "sha256": "1d5a1077bcd20ed0a2eaebe4f16c8c8b7a41c31ba78128174f98f158703864ef"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 4.423634696286172,
+      "peakTreeRssBytes": 34902016,
+      "peakRunAllocatedBytes": 2531328,
+      "minimumDiskFreeBytes": 5729517568
+    },
+    {
+      "job": "final-dev-emit01",
+      "category": "development-products",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/final-dev-emit01-guard/process.json",
+        "bytes": 3304,
+        "sha256": "ae33abf2d9d008c5b1711e8ffde715c39b84ee71f6bdc97945c9acc6ab960501"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 64.0766022480093,
+      "peakTreeRssBytes": 944590848,
+      "peakRunAllocatedBytes": 4046848,
+      "minimumDiskFreeBytes": 5732077568
+    },
+    {
+      "job": "float-api01",
+      "category": "checked-api-acquisition",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/float-api01-guard/process.json",
+        "bytes": 3116,
+        "sha256": "7f805b7db1940e705791a8c4d3c7b926ce29d889f7362feb36b1994d421f04ca"
+      },
+      "complete": false,
+      "returncode": 1,
+      "wallSeconds": 6.727265912108123,
+      "peakTreeRssBytes": 679092224,
+      "peakRunAllocatedBytes": 32768,
+      "minimumDiskFreeBytes": 5993914368
+    },
+    {
+      "job": "float-api02",
+      "category": "checked-api-acquisition",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/float-api02-guard/process.json",
+        "bytes": 3121,
+        "sha256": "eeb630a80d0131979fedade78fb3626b74f305aa3f85583967a72d92ef476119"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 13.813419512007385,
+      "peakTreeRssBytes": 2069680128,
+      "peakRunAllocatedBytes": 3981312,
+      "minimumDiskFreeBytes": 5979525120
+    },
+    {
+      "job": "float-controls01",
+      "category": "adversarial-controls",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/float-controls01-guard/process.json",
+        "bytes": 2794,
+        "sha256": "8f9aa64712f35bd7bfe3edc8034a605bd697536c63d5c3091311eef00d857105"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 8.994895106647164,
+      "peakTreeRssBytes": 443437056,
+      "peakRunAllocatedBytes": 151552,
+      "minimumDiskFreeBytes": 5976166400
+    },
+    {
+      "job": "float-dev-build01",
+      "category": "development-products",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/float-dev-build01-guard/process.json",
+        "bytes": 2628,
+        "sha256": "40b5704a088b318632d2ed080fc2662cb701881b5425b880af5b663485250bea"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 4.470539684873074,
+      "peakTreeRssBytes": 32755712,
+      "peakRunAllocatedBytes": 2531328,
+      "minimumDiskFreeBytes": 5965086720
+    },
+    {
+      "job": "float-dev-emit01",
+      "category": "development-products",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/float-dev-emit01-guard/process.json",
+        "bytes": 3305,
+        "sha256": "4ea54d11357049ae48b5458751abf61f95148de0d9d96ff615843fbc14162c61"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 63.46919705392793,
+      "peakTreeRssBytes": 824860672,
+      "peakRunAllocatedBytes": 4063232,
+      "minimumDiskFreeBytes": 5967675392
+    },
+    {
+      "job": "hosted-native-compare01",
+      "category": "native-oracle-and-qualification",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/hosted-native-compare01-guard/process.json",
+        "bytes": 2647,
+        "sha256": "01930a02fae1f15aa9fcb409447e1ef5e4cff24de19418912e1e005d2971d37a"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 1.7973090959712863,
+      "peakTreeRssBytes": 53764096,
+      "peakRunAllocatedBytes": 159744,
+      "minimumDiskFreeBytes": 5729206272
+    },
+    {
+      "job": "native-generations-compare01",
+      "category": "native-oracle-and-qualification",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/native-generations-compare01-guard/process.json",
+        "bytes": 2676,
+        "sha256": "465413cad4ddbae037f0cdcbd21b97618573b5ed703ad7ddc2e62402acd2e513"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 2.57999518327415,
+      "peakTreeRssBytes": 28684288,
+      "peakRunAllocatedBytes": 364544,
+      "minimumDiskFreeBytes": 5564370944
+    },
+    {
+      "job": "native-image01",
+      "category": "compiler-image-builds",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/native-image01-guard/process.json",
+        "bytes": 3471,
+        "sha256": "87fbb719073ccbfb793812427df761a6583767ccf3de5174da4c569249c2d51b"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 170.77028582477942,
+      "peakTreeRssBytes": 1043763200,
+      "peakRunAllocatedBytes": 122413056,
+      "minimumDiskFreeBytes": 5656334336
+    },
+    {
+      "job": "native-reproduction01",
+      "category": "compiler-image-builds",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/native-reproduction01-guard/process.json",
+        "bytes": 3783,
+        "sha256": "2fe832dab6de43160ff6b62d3f363df3cd32612f5b84371e784db43e3d11f228"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 342.9144309624098,
+      "peakTreeRssBytes": 1726078976,
+      "peakRunAllocatedBytes": 55615488,
+      "minimumDiskFreeBytes": 5589843968
+    },
+    {
+      "job": "native-self01",
+      "category": "compiler-image-builds",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/native-self01-guard/process.json",
+        "bytes": 3459,
+        "sha256": "5b79b868adc9108b6fcc845690844c302347d52725602ab91ad0d13256fde46d"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 280.8616050351411,
+      "peakTreeRssBytes": 1719541760,
+      "peakRunAllocatedBytes": 55615488,
+      "minimumDiskFreeBytes": 5673037824
+    },
+    {
+      "job": "native45-01",
+      "category": "native-oracle-and-qualification",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/native45-01-guard/process.json",
+        "bytes": 3120,
+        "sha256": "544e2f39df6347a60165d580ab5e5818a7e746d1aac91e654708d14db6c75852"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 101.31387527706102,
+      "peakTreeRssBytes": 65994752,
+      "peakRunAllocatedBytes": 24322048,
+      "minimumDiskFreeBytes": 5631643648
+    },
+    {
+      "job": "native45-02",
+      "category": "native-oracle-and-qualification",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/native45-02-guard/process.json",
+        "bytes": 3115,
+        "sha256": "7ee8a85d83041f2efd1de586c192c7e992338a8060b0368b7c27c42b141a4c8f"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 123.4140325137414,
+      "peakTreeRssBytes": 72994816,
+      "peakRunAllocatedBytes": 24330240,
+      "minimumDiskFreeBytes": 5564952576
+    },
+    {
+      "job": "native64-01",
+      "category": "native-oracle-and-qualification",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/native64-01-guard/process.json",
+        "bytes": 3428,
+        "sha256": "b04eca80be19d58db4f7b8c2f69be94ff29a61ecd9e252a4968af7a91112583f"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 92.44021185394377,
+      "peakTreeRssBytes": 67788800,
+      "peakRunAllocatedBytes": 24031232,
+      "minimumDiskFreeBytes": 5648789504
+    },
+    {
+      "job": "predicate-api01",
+      "category": "checked-api-acquisition",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/predicate-api01-guard/process.json",
+        "bytes": 3140,
+        "sha256": "1727505c9d9871793744cfe2c26e196e3005bbd22a5ada7dfcbf56c08c3c752f"
+      },
+      "complete": false,
+      "returncode": 1,
+      "wallSeconds": 3.2712278701364994,
+      "peakTreeRssBytes": 416849920,
+      "peakRunAllocatedBytes": 32768,
+      "minimumDiskFreeBytes": 5990121472
+    },
+    {
+      "job": "predicate-api02",
+      "category": "checked-api-acquisition",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/predicate-api02-guard/process.json",
+        "bytes": 3140,
+        "sha256": "b3cc5ac19e4565c3be08a1ba7c776ec5b884d67aa9d62e63a7a39aad3e76cbda"
+      },
+      "complete": false,
+      "returncode": 1,
+      "wallSeconds": 6.681273113936186,
+      "peakTreeRssBytes": 691765248,
+      "peakRunAllocatedBytes": 32768,
+      "minimumDiskFreeBytes": 5975724032
+    },
+    {
+      "job": "predicate-api03",
+      "category": "checked-api-acquisition",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/predicate-api03-guard/process.json",
+        "bytes": 3144,
+        "sha256": "134ff29b6442c7e88b4f017541a91677fb14bd4404181ea1373d7fd13a13d394"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 15.171616211999208,
+      "peakTreeRssBytes": 2071285760,
+      "peakRunAllocatedBytes": 3977216,
+      "minimumDiskFreeBytes": 5960835072
+    },
+    {
+      "job": "predicate-controls01",
+      "category": "adversarial-controls",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/predicate-controls01-guard/process.json",
+        "bytes": 2808,
+        "sha256": "4d3c70a923c33dca2ea71c01cbe57a57fe815c84a81900fbf7624b974754f853"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 9.143102989997715,
+      "peakTreeRssBytes": 396476416,
+      "peakRunAllocatedBytes": 180224,
+      "minimumDiskFreeBytes": 5959000064
+    },
+    {
+      "job": "predicate-dev-build01",
+      "category": "development-products",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/predicate-dev-build01-guard/process.json",
+        "bytes": 2648,
+        "sha256": "e4af770359fb344999109e6d688a43585260916a18e4551254cc9588577a7ef9"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 4.450322666671127,
+      "peakTreeRssBytes": 28061696,
+      "peakRunAllocatedBytes": 2531328,
+      "minimumDiskFreeBytes": 5951967232
+    },
+    {
+      "job": "predicate-dev-emit01",
+      "category": "development-products",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/predicate-dev-emit01-guard/process.json",
+        "bytes": 3338,
+        "sha256": "9a4c3dfece550ff96819fe90c60f6a472ccebe022c6a70179761a167817c8fd2"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 63.731896037235856,
+      "peakTreeRssBytes": 914452480,
+      "peakRunAllocatedBytes": 4055040,
+      "minimumDiskFreeBytes": 5954543616
+    },
+    {
+      "job": "runtime01",
+      "category": "program-runtime",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/runtime01-guard/process.json",
+        "bytes": 2160,
+        "sha256": "7d44eaddf48fee6829fb7fa743dc97f3fd34559447eb56316708c4ae29387735"
+      },
+      "complete": false,
+      "returncode": 1,
+      "wallSeconds": 0.10507446387782693,
+      "peakTreeRssBytes": 16818176,
+      "peakRunAllocatedBytes": 16384,
+      "minimumDiskFreeBytes": 5555556352
+    },
+    {
+      "job": "runtime02",
+      "category": "program-runtime",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/runtime02-guard/process.json",
+        "bytes": 2399,
+        "sha256": "4fdf2e122108ec16064e304a67e678d5dd99e5184ab3d98d6754e2aec2d1a5c5"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 441.00450312020257,
+      "peakTreeRssBytes": 73318400,
+      "peakRunAllocatedBytes": 19054592,
+      "minimumDiskFreeBytes": 5529083904
+    },
+    {
+      "job": "runtime10-01",
+      "category": "native-oracle-and-qualification",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/runtime10-01-guard/process.json",
+        "bytes": 2959,
+        "sha256": "6202a047c34a0cb1441a607abd59d29d3d0d8ab9cfe8c1fb9d363209057cf480"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 10.671435024123639,
+      "peakTreeRssBytes": 75272192,
+      "peakRunAllocatedBytes": 2347008,
+      "minimumDiskFreeBytes": 5646413824
+    },
+    {
+      "job": "selected-api01",
+      "category": "checked-api-acquisition",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/selected-api01-guard/process.json",
+        "bytes": 3138,
+        "sha256": "fd0baf966baaa76e2dc3a16158383d93f7cf36e87079b143bda627765e37355b"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 14.563954437617213,
+      "peakTreeRssBytes": 2187505664,
+      "peakRunAllocatedBytes": 3981312,
+      "minimumDiskFreeBytes": 5900726272
+    },
+    {
+      "job": "selected-dev-build01",
+      "category": "development-products",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/selected-dev-build01-guard/process.json",
+        "bytes": 2642,
+        "sha256": "fbfedfa22ea967a63930d44c656dac6913eaf390b144c28494874b62c5ef9026"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 4.439987422898412,
+      "peakTreeRssBytes": 28618752,
+      "peakRunAllocatedBytes": 2531328,
+      "minimumDiskFreeBytes": 5809422336
+    },
+    {
+      "job": "selected-dev-emit01",
+      "category": "development-products",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/selected-dev-emit01-guard/process.json",
+        "bytes": 3329,
+        "sha256": "5fc943ee8038531679880d73d66a7fe4ee9500e6973f94035b0d1f910df7ee29"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 65.18503077374771,
+      "peakTreeRssBytes": 916459520,
+      "peakRunAllocatedBytes": 4055040,
+      "minimumDiskFreeBytes": 5811998720
+    },
+    {
+      "job": "selected-source-check02",
+      "category": "source-checking",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/selected-source-check02-guard/process.json",
+        "bytes": 2502,
+        "sha256": "1199cbbda0685658a099cded8ac9669a0e33df5f11f33ab88387a9a7e5d17ee8"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 8.020644533913583,
+      "peakTreeRssBytes": 881917952,
+      "peakRunAllocatedBytes": 24576,
+      "minimumDiskFreeBytes": 5889605632
+    },
+    {
+      "job": "selected-source-check03",
+      "category": "source-checking",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/selected-source-check03-guard/process.json",
+        "bytes": 2501,
+        "sha256": "b4f32febee06cba2beacec58ae795883ad4185c7f9148c420f2c0a18b7c67a3c"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 7.454212321899831,
+      "peakTreeRssBytes": 857690112,
+      "peakRunAllocatedBytes": 24576,
+      "minimumDiskFreeBytes": 5782626304
+    },
+    {
+      "job": "stress-api01",
+      "category": "checked-api-acquisition",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/stress-api01-guard/process.json",
+        "bytes": 3127,
+        "sha256": "92cdf049005ef3a3a1397e6afc19f3a8cd599d5ca50b7d2a4994e2fcfcfcaad8"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 15.429233472794294,
+      "peakTreeRssBytes": 2226913280,
+      "peakRunAllocatedBytes": 3989504,
+      "minimumDiskFreeBytes": 5896613888
+    },
+    {
+      "job": "stress-controls03",
+      "category": "adversarial-controls",
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/stress-controls03-guard/process.json",
+        "bytes": 2809,
+        "sha256": "fc1a0718b91b69230a0660468de31abb5dbc8c80c611d1b8dcb82a3cc1f4d640"
+      },
+      "complete": true,
+      "returncode": 0,
+      "wallSeconds": 8.788714019116014,
+      "peakTreeRssBytes": 380141568,
+      "peakRunAllocatedBytes": 139264,
+      "minimumDiskFreeBytes": 5896335360
+    }
+  ],
+  "unfinished": [],
+  "scope": "Each top-level outer guard once; nested process receipts excluded. Finished failures are included even when complete=false. Guard wall is not total research time, agent compute, billed quota or a compiler throughput measurement. Unguarded metadata analysis, retention and orchestration are excluded. Resource fields are maxima/minima, not cumulative storage."
+}

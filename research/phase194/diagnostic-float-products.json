@@ -1,0 +1,873 @@
+{
+  "kind": "phase194-diagnostic-float-product-machine-audit",
+  "complete": true,
+  "scope": "Read-only linked ELF inspection. All12 rows complete in each acquisition report; only6 cases analyzed here. No target execution or timing performed by auditor. Static whole-function counts include padding/prologue/failure paths and are not directly comparable across unrolling.",
+  "reports": [
+    {
+      "file": "selfhost/build/phase194/diag-baseline-build04/report.json",
+      "bytes": 53098,
+      "sha256": "d0eb667da5973e1cfb6af3d7dba7a400ebfac7e2211ed449f6e236c8324bc5cb"
+    },
+    {
+      "file": "selfhost/build/phase194/diag-selected-build02/report.json",
+      "bytes": 53099,
+      "sha256": "7b3a37374202fdae9f852b1459bd5063cfed05eb25390b3b3515bea41ad2edc7"
+    },
+    {
+      "file": "selfhost/build/phase194/diag-references02/report.json",
+      "bytes": 11603,
+      "sha256": "ef9328499dcd9d180b227f557b553b9048e4733d9c32be06b4ec636aaefe502e"
+    }
+  ],
+  "cases": {
+    "f32-region-closed": {
+      "baseline": {
+        "binary": {
+          "file": "selfhost/build/phase194/diag-baseline-build04/f32-region-closed/machine/program",
+          "bytes": 179896,
+          "sha256": "3c2b9461d66ef7f280c870788f06f65aad4baf7062737720464f2587cf23572a"
+        },
+        "functions": {
+          "$direct.p194.floop": {
+            "address": "00000000004083c5",
+            "instructionCount": 59,
+            "movd": 9,
+            "setcc": 2,
+            "cmov": 0,
+            "floatArithmetic": 3,
+            "conversions": [],
+            "frameBytes": [
+              2320
+            ],
+            "stackMemoryOperands": 4,
+            "calls": [
+              "callq  <p111_rt_fail>"
+            ]
+          }
+        }
+      },
+      "selected": {
+        "binary": {
+          "file": "selfhost/build/phase194/diag-selected-build02/f32-region-closed/machine/program",
+          "bytes": 179896,
+          "sha256": "91aedea266debc27a1994e23224523a2ec1c5f7df59a6b8884590de0606613ee"
+        },
+        "functions": {
+          "$direct.p194.floop": {
+            "address": "00000000004083bb",
+            "instructionCount": 56,
+            "movd": 5,
+            "setcc": 2,
+            "cmov": 0,
+            "floatArithmetic": 3,
+            "conversions": [],
+            "frameBytes": [
+              2336
+            ],
+            "stackMemoryOperands": 4,
+            "calls": [
+              "callq  <p111_rt_fail>"
+            ]
+          }
+        }
+      },
+      "c": {
+        "binary": {
+          "file": "selfhost/build/phase194/diag-references02/f32-region-closed/c/program",
+          "bytes": 90432,
+          "sha256": "be843463374229f1d65a8bc710cb899d2da2a97b2a9e5e9c09fb07cbdf21990f"
+        },
+        "functions": {
+          "$direct.p194.floop": {
+            "address": "0000000000009c90",
+            "instructionCount": 52,
+            "movd": 2,
+            "setcc": 0,
+            "cmov": 0,
+            "floatArithmetic": 15,
+            "conversions": [],
+            "frameBytes": [],
+            "stackMemoryOperands": 0,
+            "calls": []
+          }
+        }
+      },
+      "qbe": {
+        "binary": {
+          "file": "selfhost/build/phase194/diag-references02/f32-region-closed/qbe/machine/program",
+          "bytes": 157088,
+          "sha256": "8369b08732747da04bc0d4b9e5e3ea0679dc1a12977b1433a55a70c3ab6bf6bb"
+        },
+        "functions": {
+          "$direct.p194.floop": {
+            "address": "0000000000406a30",
+            "instructionCount": 21,
+            "movd": 0,
+            "setcc": 0,
+            "cmov": 0,
+            "floatArithmetic": 3,
+            "conversions": [],
+            "frameBytes": [],
+            "stackMemoryOperands": 0,
+            "calls": []
+          }
+        }
+      }
+    },
+    "f32-region-mixed": {
+      "baseline": {
+        "binary": {
+          "file": "selfhost/build/phase194/diag-baseline-build04/f32-region-mixed/machine/program",
+          "bytes": 179896,
+          "sha256": "56f5447ac37aa037a144b8ea35e43ff598598ebb1d9e193e011d857c1655d00e"
+        },
+        "functions": {
+          "$direct.p194.floop": {
+            "address": "00000000004083c5",
+            "instructionCount": 81,
+            "movd": 15,
+            "setcc": 2,
+            "cmov": 1,
+            "floatArithmetic": 5,
+            "conversions": [
+              "cvttss2si %xmm0,%r10",
+              "cvtsi2ss %r10,%xmm0"
+            ],
+            "frameBytes": [
+              2320
+            ],
+            "stackMemoryOperands": 4,
+            "calls": [
+              "callq  <p111_rt_fail>"
+            ]
+          }
+        }
+      },
+      "selected": {
+        "binary": {
+          "file": "selfhost/build/phase194/diag-selected-build02/f32-region-mixed/machine/program",
+          "bytes": 179896,
+          "sha256": "4edfe68c621bfd3726d0c5b112f10baa4f4d1bb7f1409c627c75fdd1076fb617"
+        },
+        "functions": {
+          "$direct.p194.floop": {
+            "address": "00000000004083bb",
+            "instructionCount": 81,
+            "movd": 13,
+            "setcc": 2,
+            "cmov": 1,
+            "floatArithmetic": 5,
+            "conversions": [
+              "cvttss2si %xmm0,%r10",
+              "cvtsi2ss %r10,%xmm0"
+            ],
+            "frameBytes": [
+              2368
+            ],
+            "stackMemoryOperands": 4,
+            "calls": [
+              "callq  <p111_rt_fail>"
+            ]
+          }
+        }
+      },
+      "c": {
+        "binary": {
+          "file": "selfhost/build/phase194/diag-references02/f32-region-mixed/c/program",
+          "bytes": 89168,
+          "sha256": "3da9a3c552c6fb60dc709dc95a3121ebf88bf77ae60da7f8568e361dcea78b5d"
+        },
+        "functions": {
+          "$direct.p194.floop": {
+            "address": "0000000000009940",
+            "instructionCount": 34,
+            "movd": 2,
+            "setcc": 0,
+            "cmov": 2,
+            "floatArithmetic": 5,
+            "conversions": [
+              "cvttss2si %xmm5,%rcx",
+              "cvtsi2ss %rcx,%xmm4"
+            ],
+            "frameBytes": [],
+            "stackMemoryOperands": 0,
+            "calls": []
+          }
+        }
+      },
+      "qbe": {
+        "binary": {
+          "file": "selfhost/build/phase194/diag-references02/f32-region-mixed/qbe/machine/program",
+          "bytes": 157088,
+          "sha256": "f576a084e0318f554943df753490d08c98e992f26660b65df989dfbf43332970"
+        },
+        "functions": {
+          "$direct.p194.floop": {
+            "address": "0000000000406a30",
+            "instructionCount": 37,
+            "movd": 0,
+            "setcc": 2,
+            "cmov": 1,
+            "floatArithmetic": 5,
+            "conversions": [
+              "cvttss2si %xmm0,%rax",
+              "cvtsi2ss %rax,%xmm0"
+            ],
+            "frameBytes": [],
+            "stackMemoryOperands": 0,
+            "calls": []
+          }
+        }
+      }
+    },
+    "predicate-flow-branch": {
+      "baseline": {
+        "binary": {
+          "file": "selfhost/build/phase194/diag-baseline-build04/predicate-flow-branch/machine/program",
+          "bytes": 180000,
+          "sha256": "e3cbcaafcdba0f2d58a2c3297958253b31f79fc5974c4f4458598e987ddb5a03"
+        },
+        "functions": {
+          "$direct.p194.kernel": {
+            "address": "0000000000408518",
+            "instructionCount": 45,
+            "movd": 0,
+            "setcc": 1,
+            "cmov": 0,
+            "floatArithmetic": 0,
+            "conversions": [],
+            "frameBytes": [
+              2400
+            ],
+            "stackMemoryOperands": 4,
+            "calls": []
+          }
+        }
+      },
+      "selected": {
+        "binary": {
+          "file": "selfhost/build/phase194/diag-selected-build02/predicate-flow-branch/machine/program",
+          "bytes": 180000,
+          "sha256": "e5043e73170c6d3d3710e7a39ce2d71bd0e5e303531b0441a1ed6b8ea22dcfa9"
+        },
+        "functions": {
+          "$direct.p194.kernel": {
+            "address": "0000000000408518",
+            "instructionCount": 45,
+            "movd": 0,
+            "setcc": 1,
+            "cmov": 0,
+            "floatArithmetic": 0,
+            "conversions": [],
+            "frameBytes": [
+              2400
+            ],
+            "stackMemoryOperands": 4,
+            "calls": []
+          }
+        }
+      },
+      "c": {
+        "binary": {
+          "file": "selfhost/build/phase194/diag-references02/predicate-flow-branch/c/program",
+          "bytes": 89592,
+          "sha256": "ef9dee6bdb026844fa620d9790c6d143610fc2cd93f539ea3c155937027400fb"
+        },
+        "functions": {
+          "$direct.p194.kernel": {
+            "address": "00000000000099b0",
+            "instructionCount": 45,
+            "movd": 0,
+            "setcc": 0,
+            "cmov": 3,
+            "floatArithmetic": 0,
+            "conversions": [],
+            "frameBytes": [],
+            "stackMemoryOperands": 0,
+            "calls": []
+          }
+        }
+      },
+      "qbe": {
+        "binary": {
+          "file": "selfhost/build/phase194/diag-references02/predicate-flow-branch/qbe/machine/program",
+          "bytes": 153104,
+          "sha256": "d171167bc89832f6850d0dbc348504cf9035459936e42a5978494f3b61046939"
+        },
+        "functions": {
+          "$direct.p194.kernel": {
+            "address": "0000000000406a90",
+            "instructionCount": 28,
+            "movd": 0,
+            "setcc": 0,
+            "cmov": 0,
+            "floatArithmetic": 0,
+            "conversions": [],
+            "frameBytes": [],
+            "stackMemoryOperands": 0,
+            "calls": []
+          }
+        }
+      }
+    },
+    "predicate-flow-mask": {
+      "baseline": {
+        "binary": {
+          "file": "selfhost/build/phase194/diag-baseline-build04/predicate-flow-mask/machine/program",
+          "bytes": 179896,
+          "sha256": "fd3bb2224f683ffa1d82bab3a90d1589d9e8de4dde2548c21df439fb597ae978"
+        },
+        "functions": {
+          "$direct.p194.kernel": {
+            "address": "0000000000408426",
+            "instructionCount": 69,
+            "movd": 0,
+            "setcc": 1,
+            "cmov": 1,
+            "floatArithmetic": 0,
+            "conversions": [],
+            "frameBytes": [
+              2416
+            ],
+            "stackMemoryOperands": 6,
+            "calls": []
+          }
+        }
+      },
+      "selected": {
+        "binary": {
+          "file": "selfhost/build/phase194/diag-selected-build02/predicate-flow-mask/machine/program",
+          "bytes": 179896,
+          "sha256": "0600e4987a7f4f3658b96ddfb9ca3baf53b9255eb3c496f5130a59fd15e23940"
+        },
+        "functions": {
+          "$direct.p194.kernel": {
+            "address": "000000000040841a",
+            "instructionCount": 65,
+            "movd": 0,
+            "setcc": 0,
+            "cmov": 1,
+            "floatArithmetic": 0,
+            "conversions": [],
+            "frameBytes": [
+              2416
+            ],
+            "stackMemoryOperands": 6,
+            "calls": []
+          }
+        }
+      },
+      "c": {
+        "binary": {
+          "file": "selfhost/build/phase194/diag-references02/predicate-flow-mask/c/program",
+          "bytes": 89376,
+          "sha256": "200fdd2dbe398e973320b7b75426599fd5b15fd84a9e9010a9e12fe4e57c136d"
+        },
+        "functions": {
+          "$direct.p194.kernel": {
+            "address": "0000000000009970",
+            "instructionCount": 46,
+            "movd": 0,
+            "setcc": 0,
+            "cmov": 3,
+            "floatArithmetic": 0,
+            "conversions": [],
+            "frameBytes": [],
+            "stackMemoryOperands": 0,
+            "calls": []
+          }
+        }
+      },
+      "qbe": {
+        "binary": {
+          "file": "selfhost/build/phase194/diag-references02/predicate-flow-mask/qbe/machine/program",
+          "bytes": 153000,
+          "sha256": "6d96c615d22b3f45756e90139a92df4fda16efcfc26ec47101ca6d26c993ebc1"
+        },
+        "functions": {
+          "$direct.p194.kernel": {
+            "address": "0000000000406a60",
+            "instructionCount": 41,
+            "movd": 0,
+            "setcc": 1,
+            "cmov": 1,
+            "floatArithmetic": 0,
+            "conversions": [],
+            "frameBytes": [],
+            "stackMemoryOperands": 0,
+            "calls": []
+          }
+        }
+      }
+    },
+    "product-ownership-unique": {
+      "baseline": {
+        "binary": {
+          "file": "selfhost/build/phase194/diag-baseline-build04/product-ownership-unique/machine/program",
+          "bytes": 180512,
+          "sha256": "ce9bc47133949ad6e3d98aacd3eb4fa5c37d3d8b2503e41b46b91ccdd0e542aa"
+        },
+        "functions": {
+          "$direct.p194.kernel": {
+            "address": "0000000000408773",
+            "instructionCount": 43,
+            "movd": 0,
+            "setcc": 0,
+            "cmov": 0,
+            "floatArithmetic": 0,
+            "conversions": [],
+            "frameBytes": [
+              2384
+            ],
+            "stackMemoryOperands": 4,
+            "calls": []
+          }
+        }
+      },
+      "selected": {
+        "binary": {
+          "file": "selfhost/build/phase194/diag-selected-build02/product-ownership-unique/machine/program",
+          "bytes": 180512,
+          "sha256": "3fe023bc5147e0f9c04730c6643426819f87d42332cb62e3dd2b0c465d18b156"
+        },
+        "functions": {
+          "$direct.p194.kernel": {
+            "address": "0000000000408773",
+            "instructionCount": 43,
+            "movd": 0,
+            "setcc": 0,
+            "cmov": 0,
+            "floatArithmetic": 0,
+            "conversions": [],
+            "frameBytes": [
+              2384
+            ],
+            "stackMemoryOperands": 4,
+            "calls": []
+          }
+        }
+      },
+      "c": {
+        "binary": {
+          "file": "selfhost/build/phase194/diag-references02/product-ownership-unique/c/program",
+          "bytes": 90528,
+          "sha256": "d43c74e43489e8aa43c80666ed031071b102491272e683f68e76cb4720c8eac5"
+        },
+        "functions": {
+          "$direct.p194.kernel": {
+            "address": "0000000000009b40",
+            "instructionCount": 51,
+            "movd": 0,
+            "setcc": 0,
+            "cmov": 0,
+            "floatArithmetic": 0,
+            "conversions": [],
+            "frameBytes": [],
+            "stackMemoryOperands": 0,
+            "calls": []
+          }
+        }
+      },
+      "qbe": {
+        "binary": {
+          "file": "selfhost/build/phase194/diag-references02/product-ownership-unique/qbe/machine/program",
+          "bytes": 157704,
+          "sha256": "77e1e768a0a2ddae9c2d20c031056e1a924329e3d03ef3ca7e54af7eaefd3887"
+        },
+        "functions": {
+          "$direct.p194.kernel": {
+            "address": "0000000000406c00",
+            "instructionCount": 26,
+            "movd": 0,
+            "setcc": 0,
+            "cmov": 0,
+            "floatArithmetic": 0,
+            "conversions": [],
+            "frameBytes": [],
+            "stackMemoryOperands": 0,
+            "calls": []
+          }
+        }
+      }
+    },
+    "product-ownership-shared": {
+      "baseline": {
+        "binary": {
+          "file": "selfhost/build/phase194/diag-baseline-build04/product-ownership-shared/machine/program",
+          "bytes": 181432,
+          "sha256": "41280da8646f6f6e14a6f1c964ed2b9693888139d811cf68ece6be4fd33e873e"
+        },
+        "functions": {
+          "$direct.p194.kernel": {
+            "address": "0000000000408fbc",
+            "instructionCount": 45,
+            "movd": 0,
+            "setcc": 0,
+            "cmov": 0,
+            "floatArithmetic": 0,
+            "conversions": [],
+            "frameBytes": [
+              2352
+            ],
+            "stackMemoryOperands": 14,
+            "calls": [
+              "callq  <$direct.p194.step>"
+            ]
+          },
+          "$direct.p194.step": {
+            "address": "0000000000408f51",
+            "instructionCount": 32,
+            "movd": 0,
+            "setcc": 0,
+            "cmov": 0,
+            "floatArithmetic": 0,
+            "conversions": [],
+            "frameBytes": [
+              2336
+            ],
+            "stackMemoryOperands": 8,
+            "calls": [
+              "callq  <$product.p194.observe>"
+            ]
+          },
+          "$product.p194.observe": {
+            "address": "0000000000408e87",
+            "instructionCount": 56,
+            "movd": 0,
+            "setcc": 0,
+            "cmov": 0,
+            "floatArithmetic": 0,
+            "conversions": [],
+            "frameBytes": [
+              2352
+            ],
+            "stackMemoryOperands": 13,
+            "calls": [
+              "callq  <p125_rt_ctor2>",
+              "callq  <p111_rt_keep>",
+              "callq  <$direct.p194.left>",
+              "callq  <$direct.p194.right>"
+            ]
+          },
+          "$direct.p194.observe": {
+            "address": "0000000000408dd5",
+            "instructionCount": 49,
+            "movd": 0,
+            "setcc": 0,
+            "cmov": 0,
+            "floatArithmetic": 0,
+            "conversions": [],
+            "frameBytes": [
+              2336
+            ],
+            "stackMemoryOperands": 10,
+            "calls": [
+              "callq  <p118_rt_borrow_scalar_safe>",
+              "callq  <$p118borrow.read.p194.observe>",
+              "callq  <p111_rt_sink>",
+              "callq  <$p128borrow.owned.p194.observe>"
+            ]
+          }
+        }
+      },
+      "selected": {
+        "binary": {
+          "file": "selfhost/build/phase194/diag-selected-build02/product-ownership-shared/machine/program",
+          "bytes": 181432,
+          "sha256": "66d800897646f3362accbb7030c667f33fb6c9f273f654031089fa661539e559"
+        },
+        "functions": {
+          "$direct.p194.kernel": {
+            "address": "0000000000408fbc",
+            "instructionCount": 45,
+            "movd": 0,
+            "setcc": 0,
+            "cmov": 0,
+            "floatArithmetic": 0,
+            "conversions": [],
+            "frameBytes": [
+              2352
+            ],
+            "stackMemoryOperands": 14,
+            "calls": [
+              "callq  <$direct.p194.step>"
+            ]
+          },
+          "$direct.p194.step": {
+            "address": "0000000000408f51",
+            "instructionCount": 32,
+            "movd": 0,
+            "setcc": 0,
+            "cmov": 0,
+            "floatArithmetic": 0,
+            "conversions": [],
+            "frameBytes": [
+              2336
+            ],
+            "stackMemoryOperands": 8,
+            "calls": [
+              "callq  <$product.p194.observe>"
+            ]
+          },
+          "$product.p194.observe": {
+            "address": "0000000000408e87",
+            "instructionCount": 56,
+            "movd": 0,
+            "setcc": 0,
+            "cmov": 0,
+            "floatArithmetic": 0,
+            "conversions": [],
+            "frameBytes": [
+              2352
+            ],
+            "stackMemoryOperands": 13,
+            "calls": [
+              "callq  <p125_rt_ctor2>",
+              "callq  <p111_rt_keep>",
+              "callq  <$direct.p194.left>",
+              "callq  <$direct.p194.right>"
+            ]
+          },
+          "$direct.p194.observe": {
+            "address": "0000000000408dd5",
+            "instructionCount": 49,
+            "movd": 0,
+            "setcc": 0,
+            "cmov": 0,
+            "floatArithmetic": 0,
+            "conversions": [],
+            "frameBytes": [
+              2336
+            ],
+            "stackMemoryOperands": 10,
+            "calls": [
+              "callq  <p118_rt_borrow_scalar_safe>",
+              "callq  <$p118borrow.read.p194.observe>",
+              "callq  <p111_rt_sink>",
+              "callq  <$p128borrow.owned.p194.observe>"
+            ]
+          }
+        }
+      },
+      "c": {
+        "binary": {
+          "file": "selfhost/build/phase194/diag-references02/product-ownership-shared/c/program",
+          "bytes": 92944,
+          "sha256": "0735083458cf277ad1359348bf7cc95893016a885bec67874d4d85de79af7a20"
+        },
+        "functions": {
+          "$direct.p194.kernel": {
+            "address": "00000000000097e0",
+            "instructionCount": 21,
+            "movd": 0,
+            "setcc": 0,
+            "cmov": 0,
+            "floatArithmetic": 0,
+            "conversions": [],
+            "frameBytes": [],
+            "stackMemoryOperands": 1,
+            "calls": [
+              "callq  <p194.kernel>"
+            ]
+          },
+          "$direct.p194.step": {
+            "address": "0000000000009820",
+            "instructionCount": 205,
+            "movd": 0,
+            "setcc": 0,
+            "cmov": 0,
+            "floatArithmetic": 0,
+            "conversions": [],
+            "frameBytes": [],
+            "stackMemoryOperands": 0,
+            "calls": [
+              "callq  <rfc_wrap>",
+              "callq  <heap_alloc_miss>",
+              "callq  <heap_hand>",
+              "callq  <span_fade>",
+              "callq  <heap_hand>",
+              "callq  <span_fade>",
+              "callq  <heap_hand>",
+              "callq  <heap_hand>",
+              "callq  <term_drop>",
+              "callq  <err_fail>",
+              "callq  <err_fail>"
+            ]
+          },
+          "$direct.p194.observe": {
+            "address": "0000000000009b90",
+            "instructionCount": 189,
+            "movd": 0,
+            "setcc": 0,
+            "cmov": 0,
+            "floatArithmetic": 0,
+            "conversions": [],
+            "frameBytes": [],
+            "stackMemoryOperands": 0,
+            "calls": [
+              "callq  <rfc_wrap>",
+              "callq  <heap_hand>",
+              "callq  <span_fade>",
+              "callq  <heap_hand>",
+              "callq  <span_fade>",
+              "callq  <heap_hand>",
+              "callq  <heap_hand>",
+              "callq  <term_drop>",
+              "callq  <err_fail>",
+              "callq  <err_fail>"
+            ]
+          },
+          "p194.kernel": {
+            "address": "000000000000f400",
+            "instructionCount": 208,
+            "movd": 0,
+            "setcc": 0,
+            "cmov": 0,
+            "floatArithmetic": 0,
+            "conversions": [],
+            "frameBytes": [],
+            "stackMemoryOperands": 2,
+            "calls": [
+              "callq  <span_fade>",
+              "callq  <rfc_wrap>",
+              "callq  <heap_alloc_miss>",
+              "callq  <heap_hand>",
+              "callq  <span_fade>",
+              "callq  <heap_hand>",
+              "callq  <heap_hand>",
+              "callq  <heap_hand>",
+              "callq  <term_drop>",
+              "callq  <err_fail>",
+              "callq  <err_fail>"
+            ]
+          }
+        }
+      },
+      "qbe": {
+        "binary": {
+          "file": "selfhost/build/phase194/diag-references02/product-ownership-shared/qbe/machine/program",
+          "bytes": 158632,
+          "sha256": "54b33057665f2871da4191355ff3730718bf36ea439bdb544c7747102b25a296"
+        },
+        "functions": {
+          "$direct.p194.kernel": {
+            "address": "0000000000406fd0",
+            "instructionCount": 32,
+            "movd": 0,
+            "setcc": 0,
+            "cmov": 0,
+            "floatArithmetic": 0,
+            "conversions": [],
+            "frameBytes": [
+              8
+            ],
+            "stackMemoryOperands": 0,
+            "calls": [
+              "callq  <$direct.p194.step>"
+            ]
+          },
+          "$direct.p194.step": {
+            "address": "0000000000406fb0",
+            "instructionCount": 11,
+            "movd": 0,
+            "setcc": 0,
+            "cmov": 0,
+            "floatArithmetic": 0,
+            "conversions": [],
+            "frameBytes": [],
+            "stackMemoryOperands": 0,
+            "calls": [
+              "callq  <$product.p194.observe>"
+            ]
+          },
+          "$product.p194.observe": {
+            "address": "0000000000406f30",
+            "instructionCount": 36,
+            "movd": 0,
+            "setcc": 0,
+            "cmov": 0,
+            "floatArithmetic": 0,
+            "conversions": [],
+            "frameBytes": [
+              2048
+            ],
+            "stackMemoryOperands": 3,
+            "calls": [
+              "callq  <p125_rt_ctor2>",
+              "callq  <p111_rt_keep>",
+              "callq  <$direct.p194.left>",
+              "callq  <$direct.p194.right>"
+            ]
+          },
+          "$direct.p194.observe": {
+            "address": "0000000000406ed0",
+            "instructionCount": 30,
+            "movd": 0,
+            "setcc": 0,
+            "cmov": 0,
+            "floatArithmetic": 0,
+            "conversions": [],
+            "frameBytes": [],
+            "stackMemoryOperands": 0,
+            "calls": [
+              "callq  <p118_rt_borrow_scalar_safe>",
+              "callq  <$p128borrow.owned.p194.observe>",
+              "callq  <$p118borrow.read.p194.observe>",
+              "callq  <p111_rt_sink>"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "f32ClosedSteadyPaths": {
+    "baseline": {
+      "ranges": [
+        [
+          "0x4083e6",
+          "0x4083fc"
+        ],
+        [
+          "0x40840e",
+          "0x408480"
+        ]
+      ],
+      "instructions": 33,
+      "iterations": 1
+    },
+    "selected": {
+      "ranges": [
+        [
+          "0x4083dc",
+          "0x4083f2"
+        ],
+        [
+          "0x408404",
+          "0x408469"
+        ]
+      ],
+      "instructions": 30,
+      "iterations": 1
+    },
+    "qbe": {
+      "ranges": [
+        [
+          "0x406a40",
+          "0x406a6e"
+        ]
+      ],
+      "instructions": 11,
+      "iterations": 1
+    },
+    "c": {
+      "ranges": [
+        [
+          "0x9cf0",
+          "0x9d30"
+        ]
+      ],
+      "instructions": 18,
+      "iterations": 4
+    }
+  }
+}

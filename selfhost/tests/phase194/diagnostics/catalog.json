@@ -1,0 +1,606 @@
+{
+  "schema": "bend-benchmark-native-catalog-v1",
+  "assetRoot": ".",
+  "kind": "phase194-independent-paired-diagnostics",
+  "version": 1,
+  "diagnosticOnly": true,
+  "native45Membership": false,
+  "targetExecuted": false,
+  "checked": false,
+  "oracle": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase194/diagnostics/oracle.py",
+    "bytes": 6913,
+    "sha256": "4fee92cddcb18e596d9a87e8ff01282074dcccdd8d7d91a02bda3502ec8771fc"
+  },
+  "sets": {
+    "first3": [
+      "value-identity-rebind",
+      "value-identity-helpers",
+      "register-pressure-few",
+      "register-pressure-many",
+      "f32-region-closed",
+      "f32-region-mixed"
+    ],
+    "full": [
+      "value-identity-rebind",
+      "value-identity-helpers",
+      "register-pressure-few",
+      "register-pressure-many",
+      "f32-region-closed",
+      "f32-region-mixed",
+      "predicate-flow-branch",
+      "predicate-flow-mask",
+      "product-ownership-unique",
+      "product-ownership-shared",
+      "memory-dependence-sequential",
+      "memory-dependence-dependent"
+    ]
+  },
+  "scope": "Twelve diagnostic programs only. No native45 score inclusion or universal compiler correctness claim. Source check and compiled executions remain required.",
+  "cases": [
+    {
+      "id": "value-identity-rebind",
+      "family": "value-identity",
+      "variant": "rebind",
+      "source": {
+        "file": "value-identity-rebind.bend",
+        "bytes": 2708,
+        "sha256": "6ee729c002a042860f098645776620ddfad87248ab5ea52fed4db4a02ba27fde"
+      },
+      "expectedFile": {
+        "file": "expected/value-identity-1024.stdout",
+        "bytes": 11,
+        "sha256": "f520b55bac0fb85e2de9e3324e882c7b9ab837df00d545990e1ad1f278707d84"
+      },
+      "point": {
+        "expectedStdout": "2670254722\n",
+        "runtimeArgs": [
+          1024,
+          17
+        ],
+        "repetitions": 256,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "correctness": {
+        "expectedFile": {
+          "file": "expected/value-identity-32.stdout",
+          "bytes": 11,
+          "sha256": "a47acba37399d89c2206e1e28905ff602072f90a89de71f05998db97435a4c00"
+        },
+        "expectedStdout": "2670255714\n",
+        "runtimeArgs": [
+          32,
+          17
+        ],
+        "repetitions": 1,
+        "warmups": 0
+      },
+      "lineage": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-expression-32.bend",
+        "bytes": 3497,
+        "sha256": "e1667f5fb6802cda5d062bf0bb97c3f5057fc3ab02d4cd5778e9198cd1439998"
+      },
+      "workComparison": "Same operations/results; lexical rebindings versus helper arguments. Observe saved old value after subsequent writes. Helpers may inline.",
+      "oracleProvenance": "Independent fixed-point/wrapping-integer mathematics in oracle.py; not obtained from compiler output.",
+      "diagnosticOnly": true
+    },
+    {
+      "id": "value-identity-helpers",
+      "family": "value-identity",
+      "variant": "helpers",
+      "source": {
+        "file": "value-identity-helpers.bend",
+        "bytes": 2803,
+        "sha256": "640a65973ea03d7123ca22d07be7f863110f50b860b7c71a2fa85a45fa24869d"
+      },
+      "expectedFile": {
+        "file": "expected/value-identity-1024.stdout",
+        "bytes": 11,
+        "sha256": "f520b55bac0fb85e2de9e3324e882c7b9ab837df00d545990e1ad1f278707d84"
+      },
+      "point": {
+        "expectedStdout": "2670254722\n",
+        "runtimeArgs": [
+          1024,
+          17
+        ],
+        "repetitions": 256,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "correctness": {
+        "expectedFile": {
+          "file": "expected/value-identity-32.stdout",
+          "bytes": 11,
+          "sha256": "a47acba37399d89c2206e1e28905ff602072f90a89de71f05998db97435a4c00"
+        },
+        "expectedStdout": "2670255714\n",
+        "runtimeArgs": [
+          32,
+          17
+        ],
+        "repetitions": 1,
+        "warmups": 0
+      },
+      "lineage": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-expression-32.bend",
+        "bytes": 3497,
+        "sha256": "e1667f5fb6802cda5d062bf0bb97c3f5057fc3ab02d4cd5778e9198cd1439998"
+      },
+      "workComparison": "Same operations/results; lexical rebindings versus helper arguments. Observe saved old value after subsequent writes. Helpers may inline.",
+      "oracleProvenance": "Independent fixed-point/wrapping-integer mathematics in oracle.py; not obtained from compiler output.",
+      "diagnosticOnly": true
+    },
+    {
+      "id": "register-pressure-few",
+      "family": "register-pressure",
+      "variant": "few",
+      "source": {
+        "file": "register-pressure-few.bend",
+        "bytes": 3174,
+        "sha256": "1bc44645a64bd4d0a86bc7b021291646cf5fae72c9455a3994a23d71fd8f6f10"
+      },
+      "expectedFile": {
+        "file": "expected/register-pressure-1024.stdout",
+        "bytes": 10,
+        "sha256": "de33b9aa1e3024c2f32096624c921ff962e5488a922959dc9af33faf641d6c59"
+      },
+      "point": {
+        "expectedStdout": "343597400\n",
+        "runtimeArgs": [
+          1024,
+          17
+        ],
+        "repetitions": 256,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "correctness": {
+        "expectedFile": {
+          "file": "expected/register-pressure-32.stdout",
+          "bytes": 10,
+          "sha256": "de33b9aa1e3024c2f32096624c921ff962e5488a922959dc9af33faf641d6c59"
+        },
+        "expectedStdout": "343597400\n",
+        "runtimeArgs": [
+          32,
+          17
+        ],
+        "repetitions": 1,
+        "warmups": 0
+      },
+      "lineage": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/scalar-region-8192.bend",
+        "bytes": 3454,
+        "sha256": "ee300ddfdeda2e89e2f52550ec10d9f22842276cef737fbd19578bed095133f7"
+      },
+      "workComparison": "Same twelve multiply/add terms and XOR reduction order; calculate-and-reduce versus all terms live before reduction. Final machine schedules may converge.",
+      "oracleProvenance": "Independent fixed-point/wrapping-integer mathematics in oracle.py; not obtained from compiler output.",
+      "diagnosticOnly": true
+    },
+    {
+      "id": "register-pressure-many",
+      "family": "register-pressure",
+      "variant": "many",
+      "source": {
+        "file": "register-pressure-many.bend",
+        "bytes": 3174,
+        "sha256": "72c829a3e7a946098a20af832a5f6fca57bde0fe7ca9d28b674ea01e8762b8b5"
+      },
+      "expectedFile": {
+        "file": "expected/register-pressure-1024.stdout",
+        "bytes": 10,
+        "sha256": "de33b9aa1e3024c2f32096624c921ff962e5488a922959dc9af33faf641d6c59"
+      },
+      "point": {
+        "expectedStdout": "343597400\n",
+        "runtimeArgs": [
+          1024,
+          17
+        ],
+        "repetitions": 256,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "correctness": {
+        "expectedFile": {
+          "file": "expected/register-pressure-32.stdout",
+          "bytes": 10,
+          "sha256": "de33b9aa1e3024c2f32096624c921ff962e5488a922959dc9af33faf641d6c59"
+        },
+        "expectedStdout": "343597400\n",
+        "runtimeArgs": [
+          32,
+          17
+        ],
+        "repetitions": 1,
+        "warmups": 0
+      },
+      "lineage": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/scalar-region-8192.bend",
+        "bytes": 3454,
+        "sha256": "ee300ddfdeda2e89e2f52550ec10d9f22842276cef737fbd19578bed095133f7"
+      },
+      "workComparison": "Same twelve multiply/add terms and XOR reduction order; calculate-and-reduce versus all terms live before reduction. Final machine schedules may converge.",
+      "oracleProvenance": "Independent fixed-point/wrapping-integer mathematics in oracle.py; not obtained from compiler output.",
+      "diagnosticOnly": true
+    },
+    {
+      "id": "f32-region-closed",
+      "family": "f32-region",
+      "variant": "closed",
+      "source": {
+        "file": "f32-region-closed.bend",
+        "bytes": 2664,
+        "sha256": "79374173fec5a7cfc9f2b1ce1dbe7660e048e1bc26ceca3cddec967bc51b8a30"
+      },
+      "expectedFile": {
+        "file": "expected/f32-region-1024.stdout",
+        "bytes": 5,
+        "sha256": "6599ba2d7cb9d8bcb24528c08f8d7764d891ff034eb4238cf0cfd228867b4c9d"
+      },
+      "point": {
+        "expectedStdout": "2065\n",
+        "runtimeArgs": [
+          1024,
+          17
+        ],
+        "repetitions": 256,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "correctness": {
+        "expectedFile": {
+          "file": "expected/f32-region-32.stdout",
+          "bytes": 3,
+          "sha256": "ce516e29a2ccfe4bab40e4e6adab7661cd695680482c00b1faa738fc0df62698"
+        },
+        "expectedStdout": "81\n",
+        "runtimeArgs": [
+          32,
+          17
+        ],
+        "repetitions": 1,
+        "warmups": 0
+      },
+      "lineage": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-numeric-recurrence-256.bend",
+        "bytes": 2510,
+        "sha256": "4b9a0ee2ab80c844b74e44e5ce94d17669e70ed5d8f6da3cebe7354e1db9f293"
+      },
+      "workComparison": "Same exact binary-fraction recurrence/result in declared range. Mixed adds per-step F32/U32 roundtrip and scaling work; this is not equal instruction work.",
+      "oracleProvenance": "Independent fixed-point/wrapping-integer mathematics in oracle.py; not obtained from compiler output.",
+      "diagnosticOnly": true
+    },
+    {
+      "id": "f32-region-mixed",
+      "family": "f32-region",
+      "variant": "mixed",
+      "source": {
+        "file": "f32-region-mixed.bend",
+        "bytes": 2717,
+        "sha256": "39eefad6c95190e15031e571613647e9569c9172c0e716c4922ffa1676495a9d"
+      },
+      "expectedFile": {
+        "file": "expected/f32-region-1024.stdout",
+        "bytes": 5,
+        "sha256": "6599ba2d7cb9d8bcb24528c08f8d7764d891ff034eb4238cf0cfd228867b4c9d"
+      },
+      "point": {
+        "expectedStdout": "2065\n",
+        "runtimeArgs": [
+          1024,
+          17
+        ],
+        "repetitions": 256,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "correctness": {
+        "expectedFile": {
+          "file": "expected/f32-region-32.stdout",
+          "bytes": 3,
+          "sha256": "ce516e29a2ccfe4bab40e4e6adab7661cd695680482c00b1faa738fc0df62698"
+        },
+        "expectedStdout": "81\n",
+        "runtimeArgs": [
+          32,
+          17
+        ],
+        "repetitions": 1,
+        "warmups": 0
+      },
+      "lineage": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-numeric-recurrence-256.bend",
+        "bytes": 2510,
+        "sha256": "4b9a0ee2ab80c844b74e44e5ce94d17669e70ed5d8f6da3cebe7354e1db9f293"
+      },
+      "workComparison": "Same exact binary-fraction recurrence/result in declared range. Mixed adds per-step F32/U32 roundtrip and scaling work; this is not equal instruction work.",
+      "oracleProvenance": "Independent fixed-point/wrapping-integer mathematics in oracle.py; not obtained from compiler output.",
+      "diagnosticOnly": true
+    },
+    {
+      "id": "predicate-flow-branch",
+      "family": "predicate-flow",
+      "variant": "branch",
+      "source": {
+        "file": "predicate-flow-branch.bend",
+        "bytes": 2787,
+        "sha256": "68957d8949b8d9592984be8c46e97903fdcf2c8e0536052c8605cda1d472f61c"
+      },
+      "expectedFile": {
+        "file": "expected/predicate-flow-1024.stdout",
+        "bytes": 11,
+        "sha256": "ad04b67fd62070d8672480c074f87f2338bb91b9b33f3f583fe17e868c00c5f7"
+      },
+      "point": {
+        "expectedStdout": "1000953875\n",
+        "runtimeArgs": [
+          1024,
+          17
+        ],
+        "repetitions": 256,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "correctness": {
+        "expectedFile": {
+          "file": "expected/predicate-flow-32.stdout",
+          "bytes": 8,
+          "sha256": "4e7892eccf92980979d2914ffe55be82a8636016c6ec5ea130c4393031c62708"
+        },
+        "expectedStdout": "8509331\n",
+        "runtimeArgs": [
+          32,
+          17
+        ],
+        "repetitions": 1,
+        "warmups": 0
+      },
+      "lineage": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/scalar-region-8192.bend",
+        "bytes": 3454,
+        "sha256": "ee300ddfdeda2e89e2f52550ec10d9f22842276cef737fbd19578bed095133f7"
+      },
+      "workComparison": "Same selected result. Mask computes both alternatives plus mask operations; branch computes only selected arm. Extra work is intentional.",
+      "oracleProvenance": "Independent fixed-point/wrapping-integer mathematics in oracle.py; not obtained from compiler output.",
+      "diagnosticOnly": true
+    },
+    {
+      "id": "predicate-flow-mask",
+      "family": "predicate-flow",
+      "variant": "mask",
+      "source": {
+        "file": "predicate-flow-mask.bend",
+        "bytes": 2776,
+        "sha256": "86db91ebcd6ac5a58c96c9b60f3ebf8b21261bed2a94ea2d6e49aea43007673c"
+      },
+      "expectedFile": {
+        "file": "expected/predicate-flow-1024.stdout",
+        "bytes": 11,
+        "sha256": "ad04b67fd62070d8672480c074f87f2338bb91b9b33f3f583fe17e868c00c5f7"
+      },
+      "point": {
+        "expectedStdout": "1000953875\n",
+        "runtimeArgs": [
+          1024,
+          17
+        ],
+        "repetitions": 256,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "correctness": {
+        "expectedFile": {
+          "file": "expected/predicate-flow-32.stdout",
+          "bytes": 8,
+          "sha256": "4e7892eccf92980979d2914ffe55be82a8636016c6ec5ea130c4393031c62708"
+        },
+        "expectedStdout": "8509331\n",
+        "runtimeArgs": [
+          32,
+          17
+        ],
+        "repetitions": 1,
+        "warmups": 0
+      },
+      "lineage": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/scalar-region-8192.bend",
+        "bytes": 3454,
+        "sha256": "ee300ddfdeda2e89e2f52550ec10d9f22842276cef737fbd19578bed095133f7"
+      },
+      "workComparison": "Same selected result. Mask computes both alternatives plus mask operations; branch computes only selected arm. Extra work is intentional.",
+      "oracleProvenance": "Independent fixed-point/wrapping-integer mathematics in oracle.py; not obtained from compiler output.",
+      "diagnosticOnly": true
+    },
+    {
+      "id": "product-ownership-unique",
+      "family": "product-ownership",
+      "variant": "unique",
+      "source": {
+        "file": "product-ownership-unique.bend",
+        "bytes": 2856,
+        "sha256": "aeff1861381ed7d2e3224662f2d4f8aafe82e27551fcc58659318dd888b4e0b5"
+      },
+      "expectedFile": {
+        "file": "expected/product-ownership-1024.stdout",
+        "bytes": 11,
+        "sha256": "7e579c6d546d586ca501ebfc495a84ad6c0de88408a7a75498f74bc528a9bb0f"
+      },
+      "point": {
+        "expectedStdout": "3222628714\n",
+        "runtimeArgs": [
+          1024,
+          17
+        ],
+        "repetitions": 256,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "correctness": {
+        "expectedFile": {
+          "file": "expected/product-ownership-32.stdout",
+          "bytes": 10,
+          "sha256": "213da83673b2d5c8765f88913d40c57ad5863228429cd4a7fee94dd11ca8c2e1"
+        },
+        "expectedStdout": "359317514\n",
+        "runtimeArgs": [
+          32,
+          17
+        ],
+        "repetitions": 1,
+        "warmups": 0
+      },
+      "lineage": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-record-aggregation-64.bend",
+        "bytes": 3802,
+        "sha256": "36ad15032712bd62a88a3fae13105880db1a0ecde3fc98e43791c4f21876c2c9"
+      },
+      "workComparison": "Same one product construction and scalar result. Shared uses two observations of one borrowed product; unique destructures once. Physical allocation/sharing may disappear.",
+      "oracleProvenance": "Independent fixed-point/wrapping-integer mathematics in oracle.py; not obtained from compiler output.",
+      "diagnosticOnly": true
+    },
+    {
+      "id": "product-ownership-shared",
+      "family": "product-ownership",
+      "variant": "shared",
+      "source": {
+        "file": "product-ownership-shared.bend",
+        "bytes": 3013,
+        "sha256": "f23cf137b951762a8f324b7f293c4ec8b5397949e8430652c5326ef8b3d56f82"
+      },
+      "expectedFile": {
+        "file": "expected/product-ownership-1024.stdout",
+        "bytes": 11,
+        "sha256": "7e579c6d546d586ca501ebfc495a84ad6c0de88408a7a75498f74bc528a9bb0f"
+      },
+      "point": {
+        "expectedStdout": "3222628714\n",
+        "runtimeArgs": [
+          1024,
+          17
+        ],
+        "repetitions": 256,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "correctness": {
+        "expectedFile": {
+          "file": "expected/product-ownership-32.stdout",
+          "bytes": 10,
+          "sha256": "213da83673b2d5c8765f88913d40c57ad5863228429cd4a7fee94dd11ca8c2e1"
+        },
+        "expectedStdout": "359317514\n",
+        "runtimeArgs": [
+          32,
+          17
+        ],
+        "repetitions": 1,
+        "warmups": 0
+      },
+      "lineage": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-record-aggregation-64.bend",
+        "bytes": 3802,
+        "sha256": "36ad15032712bd62a88a3fae13105880db1a0ecde3fc98e43791c4f21876c2c9"
+      },
+      "workComparison": "Same one product construction and scalar result. Shared uses two observations of one borrowed product; unique destructures once. Physical allocation/sharing may disappear.",
+      "oracleProvenance": "Independent fixed-point/wrapping-integer mathematics in oracle.py; not obtained from compiler output.",
+      "diagnosticOnly": true
+    },
+    {
+      "id": "memory-dependence-sequential",
+      "family": "memory-dependence",
+      "variant": "sequential",
+      "source": {
+        "file": "memory-dependence-sequential.bend",
+        "bytes": 3087,
+        "sha256": "6068261379a40dd2098d0a2086ad920ed1ff08d81f5ef4b77bc0cdd7d8c45d9d"
+      },
+      "expectedFile": {
+        "file": "expected/memory-dependence-1024.stdout",
+        "bytes": 7,
+        "sha256": "e30d6bc17282158e0f5070885eb5ee168701d44f77b49ba7a9fc182d9f05896b"
+      },
+      "point": {
+        "expectedStdout": "130560\n",
+        "runtimeArgs": [
+          1024,
+          17
+        ],
+        "repetitions": 256,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "correctness": {
+        "expectedFile": {
+          "file": "expected/memory-dependence-32.stdout",
+          "bytes": 5,
+          "sha256": "4a740d87f621cf18f36fa482e027c423077d40d341948ffe73c2a2f60462ad71"
+        },
+        "expectedStdout": "1072\n",
+        "runtimeArgs": [
+          32,
+          17
+        ],
+        "repetitions": 1,
+        "warmups": 0
+      },
+      "lineage": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/local-fold.bend",
+        "bytes": 2737,
+        "sha256": "2252256562cc415348f3aa53c960b318f87c4a8b5fd118a0a2f115d446723125"
+      },
+      "workComparison": "Same 256-word initialization, loaded values, read count and checksum. Sequential advances an independent index; dependent uses loaded successor as next index. Cache-resident, not a DRAM claim.",
+      "oracleProvenance": "Independent fixed-point/wrapping-integer mathematics in oracle.py; not obtained from compiler output.",
+      "diagnosticOnly": true
+    },
+    {
+      "id": "memory-dependence-dependent",
+      "family": "memory-dependence",
+      "variant": "dependent",
+      "source": {
+        "file": "memory-dependence-dependent.bend",
+        "bytes": 3068,
+        "sha256": "004301a727fe78aa83bfc2d0f192a38c061b3238d5a26695a651109de9e4bb78"
+      },
+      "expectedFile": {
+        "file": "expected/memory-dependence-1024.stdout",
+        "bytes": 7,
+        "sha256": "e30d6bc17282158e0f5070885eb5ee168701d44f77b49ba7a9fc182d9f05896b"
+      },
+      "point": {
+        "expectedStdout": "130560\n",
+        "runtimeArgs": [
+          1024,
+          17
+        ],
+        "repetitions": 256,
+        "warmups": 4,
+        "ratioEligible": true
+      },
+      "correctness": {
+        "expectedFile": {
+          "file": "expected/memory-dependence-32.stdout",
+          "bytes": 5,
+          "sha256": "4a740d87f621cf18f36fa482e027c423077d40d341948ffe73c2a2f60462ad71"
+        },
+        "expectedStdout": "1072\n",
+        "runtimeArgs": [
+          32,
+          17
+        ],
+        "repetitions": 1,
+        "warmups": 0
+      },
+      "lineage": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/local-fold.bend",
+        "bytes": 2737,
+        "sha256": "2252256562cc415348f3aa53c960b318f87c4a8b5fd118a0a2f115d446723125"
+      },
+      "workComparison": "Same 256-word initialization, loaded values, read count and checksum. Sequential advances an independent index; dependent uses loaded successor as next index. Cache-resident, not a DRAM claim.",
+      "oracleProvenance": "Independent fixed-point/wrapping-integer mathematics in oracle.py; not obtained from compiler output.",
+      "diagnosticOnly": true
+    }
+  ]
+}

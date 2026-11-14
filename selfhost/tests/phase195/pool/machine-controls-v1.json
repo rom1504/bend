@@ -1,0 +1,31 @@
+{
+  "kind": "phase195-pool-machine-controls-contract",
+  "version": 1,
+  "controls": [
+    "calls-fourth-rcx",
+    "calls-carry-r12",
+    "calls-state-stack",
+    "calls-rcx-argument-snapshot",
+    "again-a-r12",
+    "again-b-rcx",
+    "again-cycle-snapshot",
+    "right64-count-rcx",
+    "right64-result-r12",
+    "right32-count-rcx",
+    "right32-result-r12",
+    "left64-value-rcx",
+    "left64-result-r12",
+    "shift-destination-rcx-refused",
+    "shift-liveout-rcx-refused",
+    "refusals-retain-state"
+  ],
+  "exports": [
+    "p195pm_controls",
+    "p195pm_emit"
+  ],
+  "expectedStdout": "phase195 pool machine controls: checks=1200 failures=0\n",
+  "workers": 7,
+  "installedFrameAndRefusalAssertions": 16,
+  "observationsPerRoute": 1200,
+  "scope": "Forced actual homes validated against real fixed-point graphs and shift masks. Independent C result/effect/R12 checks. These controls do not certify profitability or automatic greedy-color admission."
+}

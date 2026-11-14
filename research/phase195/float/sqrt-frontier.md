@@ -1,0 +1,20 @@
+# Scalar square-root call specialization (unselected)
+
+The frozen candidate specializes the exact ABI11102 `p111_rt_op(state,36,buffer,1)` scalar call. It changes emission only. `x186_inline_op` remains unchanged and returns `X186InlineNone` for opcode 36, retaining conservative unknown-call effects, scratch retention, call-clobber liveness, XMM cuts, and stack alignment. No fast-math or pure FloatValues admission is introduced.
+
+The qualified runtime at `0x4218e0` checks count 1, loads the low 32-bit input, executes `pxor xmm1,xmm1; ucomiss xmm1,xmm0` in Intel operand order, branches with ordered `ja` to `sqrtf` for negative finite/infinite values, and otherwise executes scalar `sqrtss`. The candidate reproduces this order, including the comparison before arithmetic. Negative zero and unordered NaNs stay on the hardware path. It publishes the result through the existing full-word F32 publisher. Input high words are ignored; output high words are zero. Label exhaustion refuses specialization and preserves the original call. Valid runtime state and buffer pointers remain prerequisites; invalid-pointer fault equivalence is not claimed.
+
+This is a pinned-runtime compatibility experiment: C runtime source spells `(f32)sqrt(f32_unbox(args[0]))`, while the admitted runtime object physically uses the sequence above. A different runtime build must requalify the sequence. Runtime object's asset hash is retained by the driver, rather than assuming arbitrary host libm behavior. The cold call uses the same linked `sqrtf` as the original runtime.
+
+Files under `selfhost/tests/phase195/float/`:
+
+- `sqrt-call.bend`: new definitions; the previous float scalar behavior is copied exactly as `x195s_previous`.
+- `sqrt-hook.bend`: replaces `x185_float_call` only.
+- `sqrt-encoding-hook.bend`: replaces `x187_encode` only, admitting SQRTSS through the existing checked SSE operand/modrm encoder. Text parsing is unchanged; both native typed emission and GNU-as rendering are exercised.
+- `sqrt-controls.bend`: 17 structural controls and eight machine functions (four baseline/candidate pairs).
+- `sqrt-controls.c`: 8,192 observations per route, against the pinned real runtime through an integer-only baseline wrapper. Tests 128 raw inputs including signed zero, infinities, signaling/quiet NaN payloads, subnormals and high-word junk; all four rounding modes and DAZ/FTZ combinations; existing sticky flags, errno, full state/buffer effects, destination rebinding, private scratch and values live across two calls. Independent literal assertions cover exact squares, signed zero and negative-input errno. Exceptions are masked; unmasked-trap equivalence is not executed.
+- `sqrt-driver.mjs`, `sqrt-controls-argv.json`: checked-API transport and parent-lane invocation template, linking the pinned `qbe-runtime` asset in both routes. This is not a standalone compiler or evaluator.
+
+API preparation: append `sqrt-call.bend` and `sqrt-controls.bend`; replace declarations from both hook files; expose `p195sc_controls`, `p195sc_emit`, `x188_many`, `x188_render`, `x188_assemble` in addition to the standard seven product roots. The source-preflight JSON records frozen file hashes, no missing or forward function references against Phase194 selected-source02, balanced delimiters, and no target execution. C syntax checking passed. Bend checking and machine observations are still required; no correctness pass is claimed here.
+
+The existing ray profile assigns 29.289 microseconds/invocation (10.39%) to `p111_rt_op`; this includes real SQRTSS arithmetic and other dispatches and is not a removable-overhead estimate. This candidate deliberately retains caller spill/cut costs, so its complete-workload ceiling is below that attribution absent secondary code effects. Cheapest falsifier: run these finite controls, compile the already frozen ray/numeric cases, establish that opcode-36 calls became exactly this sequence while other operations and outputs remain unchanged, then parent-balanced timing. If the isolated gain is negligible, defer it; table selection has the larger current measured witness.

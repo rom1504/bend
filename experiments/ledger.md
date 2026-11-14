@@ -7424,3 +7424,8 @@ selfhost/build/phase190/native-self01/program with its report.json.
 59guarded jobs consume39.582min, including54.984s failures. Source+1165lines;
 all experiments and independent oracles retained. Agent billing unavailable.
 No new BendTT proof, complete compiler correctness or recursive acceleration claim.
+
+
+## Phase195 paused checkpoint — 2026-11-14
+
+[Results and exact resume order](../implementation/phase195/README.md). Experimental only; qualified194/installed189 unchanged. Six-case call/branch facts screen0.886927×baseline; tables/sqrt/composition controls and negative allocation/selection evidence retained. Residual-cycle and memory-recurrence experiments prepared, unexecuted. Hardware-model investigation started; no simulator claims. Paused at user request before integration/native qualification.

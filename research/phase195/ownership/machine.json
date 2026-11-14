@@ -1,0 +1,650 @@
+{
+  "kind": "phase195-ownership-static-witness",
+  "programsExecuted": false,
+  "method": {
+    "file": "research/phase195/ownership/derive.py",
+    "bytes": 2880,
+    "sha256": "787785cdc6bd79077c888b0962af7d1d52c9547422128ff0d4861e3883b2284e"
+  },
+  "source": {
+    "file": "selfhost/build/phase194/selected-source02/compiler.bend",
+    "bytes": 1835600,
+    "sha256": "4b29752fec8fbdb593a86b80f99ea18b7705dfc9fe56a364280bebb1f46c5e63"
+  },
+  "baselineRuntime": {
+    "file": "implementation/phase194/runtime-summary.json",
+    "bytes": 183465,
+    "sha256": "63bde68ca1ca90053558c0c0dc2104c27e3189aec1b8f9641c9715848da2dc0f"
+  },
+  "functions": [
+    {
+      "case": "coverage-map-churn-128",
+      "role": "candidate",
+      "artifact": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/native45-02/coverage-map-churn-128/machine/program",
+        "bytes": 440784,
+        "sha256": "719343acd8ebd88bce4c4dcd944862501ab04e4ad00600a3133f9c82fa6141b2"
+      },
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_115_101_101_107_46_103_111_",
+      "decoded": "p111:$direct.Map.seek.go",
+      "address": "000000000042fea6",
+      "bytes": 20824,
+      "instructions": 4194,
+      "staticCalls": {
+        "p125_rt_take3": 5,
+        "p125_rt_take2": 14,
+        "p125_rt_ctor3": 24,
+        "p125_rt_ctor2": 38,
+        "p111_rt_return": 13,
+        "p111_rt_sink": 98,
+        "p111_rt_fail": 23,
+        "p111_rt_keep": 12,
+        "p125_rt_ctor1": 6,
+        "p112w:$direct.Map.bit": 6,
+        "p111_rt_jump": 6
+      },
+      "evidence": {
+        "file": "research/phase195/ownership/coverage-map-churn-128-candidate-p111-direct.Map.seek.go.asm.gz",
+        "bytes": 20854,
+        "sha256": "bee5688bd91da90b9a75da5c3a7c72a47b449ae5197d22132bd31b5804bcfed6"
+      }
+    },
+    {
+      "case": "coverage-map-churn-128",
+      "role": "candidate",
+      "artifact": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/native45-02/coverage-map-churn-128/machine/program",
+        "bytes": 440784,
+        "sha256": "719343acd8ebd88bce4c4dcd944862501ab04e4ad00600a3133f9c82fa6141b2"
+      },
+      "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+      "decoded": "p113d:$product.Map.bit.go",
+      "address": "0000000000407351",
+      "bytes": 148,
+      "instructions": 42,
+      "staticCalls": {
+        "p113d:$p118borrow.read.Map.bit.go": 1
+      },
+      "evidence": {
+        "file": "research/phase195/ownership/coverage-map-churn-128-candidate-p113d-product.Map.bit.go.asm.gz",
+        "bytes": 583,
+        "sha256": "479cf7787228df75cc404cc1025c905951efd02d7d2ec997f925e0d52e96bcd5"
+      }
+    },
+    {
+      "case": "coverage-map-churn-128",
+      "role": "candidate",
+      "artifact": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/native45-02/coverage-map-churn-128/machine/program",
+        "bytes": 440784,
+        "sha256": "719343acd8ebd88bce4c4dcd944862501ab04e4ad00600a3133f9c82fa6141b2"
+      },
+      "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_77_97_112_46_98_105_116_46_103_111_",
+      "decoded": "p113d:$p118borrow.read.Map.bit.go",
+      "address": "0000000000406ef3",
+      "bytes": 938,
+      "instructions": 211,
+      "staticCalls": {
+        "p111_rt_special_ctor": 2,
+        "p118_rt_borrow_fields": 1,
+        "p111_rt_op": 1,
+        "p111_rt_fail": 2
+      },
+      "evidence": {
+        "file": "research/phase195/ownership/coverage-map-churn-128-candidate-p113d-p118borrow.read.Map.bit.go.asm.gz",
+        "bytes": 1697,
+        "sha256": "731d03e238026c2d575b79619e4e040e06585ccf4a897191ce2727301b165daa"
+      }
+    },
+    {
+      "case": "coverage-map-churn-128",
+      "role": "qbe",
+      "artifact": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-native45-acquire01/coverage-map-churn-128/phase186-qbe-n2/machine/program",
+        "bytes": 345664,
+        "sha256": "d602d4cb6b9bdf1693b0876b0a7f4fe081623906640e1477448f86be6b8727eb"
+      },
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_115_101_101_107_46_103_111_",
+      "decoded": "p111:$direct.Map.seek.go",
+      "address": "0000000000420590",
+      "bytes": 16100,
+      "instructions": 3591,
+      "staticCalls": {
+        "p111_rt_sink": 98,
+        "p111_rt_fail": 23,
+        "p125_rt_take2": 14,
+        "p125_rt_ctor2": 38,
+        "p111_rt_return": 13,
+        "p125_rt_take3": 5,
+        "p125_rt_ctor3": 24,
+        "p111_rt_keep": 12,
+        "p112w:$direct.Map.bit": 6,
+        "p111_rt_jump": 6,
+        "p125_rt_ctor1": 6
+      },
+      "evidence": {
+        "file": "research/phase195/ownership/coverage-map-churn-128-qbe-p111-direct.Map.seek.go.asm.gz",
+        "bytes": 19648,
+        "sha256": "f59931f33fdf478fa8b19d47090dea0e4ea347f4348b58dcfc2bd2135d33ee36"
+      }
+    },
+    {
+      "case": "coverage-map-churn-128",
+      "role": "qbe",
+      "artifact": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-native45-acquire01/coverage-map-churn-128/phase186-qbe-n2/machine/program",
+        "bytes": 345664,
+        "sha256": "d602d4cb6b9bdf1693b0876b0a7f4fe081623906640e1477448f86be6b8727eb"
+      },
+      "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+      "decoded": "p113d:$product.Map.bit.go",
+      "address": "0000000000406380",
+      "bytes": 54,
+      "instructions": 20,
+      "staticCalls": {
+        "p113d:$p118borrow.read.Map.bit.go": 1
+      },
+      "evidence": {
+        "file": "research/phase195/ownership/coverage-map-churn-128-qbe-p113d-product.Map.bit.go.asm.gz",
+        "bytes": 446,
+        "sha256": "4cc2d4680a58e8c18dc6838dc6f56f07e9811d02a5163a3523dc3411dcc5b5e0"
+      }
+    },
+    {
+      "case": "coverage-map-churn-128",
+      "role": "qbe",
+      "artifact": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-native45-acquire01/coverage-map-churn-128/phase186-qbe-n2/machine/program",
+        "bytes": 345664,
+        "sha256": "d602d4cb6b9bdf1693b0876b0a7f4fe081623906640e1477448f86be6b8727eb"
+      },
+      "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_77_97_112_46_98_105_116_46_103_111_",
+      "decoded": "p113d:$p118borrow.read.Map.bit.go",
+      "address": "0000000000406120",
+      "bytes": 437,
+      "instructions": 108,
+      "staticCalls": {
+        "p118_rt_borrow_fields": 1,
+        "p111_rt_op": 1,
+        "p111_rt_special_ctor": 2,
+        "p111_rt_fail": 1
+      },
+      "evidence": {
+        "file": "research/phase195/ownership/coverage-map-churn-128-qbe-p113d-p118borrow.read.Map.bit.go.asm.gz",
+        "bytes": 1198,
+        "sha256": "71d955340ed6fd116b2f31ec842b13f63a19e160e8d9ab35ffbdf8301751b804"
+      }
+    },
+    {
+      "case": "coverage-map-churn-128",
+      "role": "c",
+      "artifact": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-map-churn-128/bend-c/program",
+        "bytes": 285080,
+        "sha256": "dd26891f79683cd4263037a215f156044ef52eb30f03489fba05e45a5723ca14"
+      },
+      "symbol": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_115_101_101_107_46_103_111_",
+      "decoded": "WL:$direct.Map.seek.go",
+      "address": "0000000000022570",
+      "bytes": 19995,
+      "instructions": 4539,
+      "staticCalls": {
+        "term_drop": 50,
+        "heap_alloc_miss": 61,
+        "term_keep": 8,
+        "heap_hand": 38,
+        "span_fade": 19,
+        "task_node": 31,
+        "rfc_wrap": 4,
+        "err_fail": 17
+      },
+      "evidence": {
+        "file": "research/phase195/ownership/coverage-map-churn-128-c-WL-direct.Map.seek.go.asm.gz",
+        "bytes": 26921,
+        "sha256": "7c78a36338e49690a1be66641f31125e1ae667d0956b3cefc0a428ab8baef7e7"
+      }
+    },
+    {
+      "case": "coverage-record-aggregation-256",
+      "role": "candidate",
+      "artifact": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/native45-02/coverage-record-aggregation-256/machine/program",
+        "bytes": 442376,
+        "sha256": "59532285c98cee39bdce18d5fdf322fcc88de445facbdbf193a9ea585db81486"
+      },
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_115_101_101_107_46_103_111_",
+      "decoded": "p111:$direct.Map.seek.go",
+      "address": "000000000042fa26",
+      "bytes": 20824,
+      "instructions": 4194,
+      "staticCalls": {
+        "p125_rt_take3": 5,
+        "p125_rt_take2": 14,
+        "p125_rt_ctor3": 24,
+        "p125_rt_ctor2": 38,
+        "p111_rt_return": 13,
+        "p111_rt_sink": 98,
+        "p111_rt_fail": 23,
+        "p111_rt_keep": 12,
+        "p125_rt_ctor1": 6,
+        "p112w:$direct.Map.bit": 6,
+        "p111_rt_jump": 6
+      },
+      "evidence": {
+        "file": "research/phase195/ownership/coverage-record-aggregation-256-candidate-p111-direct.Map.seek.go.asm.gz",
+        "bytes": 20886,
+        "sha256": "639e2b7ac7a74122643e05ea0946b1aed770629b1456072ed7ce32fca0fba141"
+      }
+    },
+    {
+      "case": "coverage-record-aggregation-256",
+      "role": "candidate",
+      "artifact": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/native45-02/coverage-record-aggregation-256/machine/program",
+        "bytes": 442376,
+        "sha256": "59532285c98cee39bdce18d5fdf322fcc88de445facbdbf193a9ea585db81486"
+      },
+      "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+      "decoded": "p113d:$product.Map.bit.go",
+      "address": "0000000000406ef2",
+      "bytes": 148,
+      "instructions": 42,
+      "staticCalls": {
+        "p113d:$p118borrow.read.Map.bit.go": 1
+      },
+      "evidence": {
+        "file": "research/phase195/ownership/coverage-record-aggregation-256-candidate-p113d-product.Map.bit.go.asm.gz",
+        "bytes": 589,
+        "sha256": "c9d41a6ca257872b0cd79a08d5d7b9409992ab278a63d96585587c4cf60ba4d6"
+      }
+    },
+    {
+      "case": "coverage-record-aggregation-256",
+      "role": "candidate",
+      "artifact": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/native45-02/coverage-record-aggregation-256/machine/program",
+        "bytes": 442376,
+        "sha256": "59532285c98cee39bdce18d5fdf322fcc88de445facbdbf193a9ea585db81486"
+      },
+      "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_77_97_112_46_98_105_116_46_103_111_",
+      "decoded": "p113d:$p118borrow.read.Map.bit.go",
+      "address": "0000000000406a94",
+      "bytes": 938,
+      "instructions": 211,
+      "staticCalls": {
+        "p111_rt_special_ctor": 2,
+        "p118_rt_borrow_fields": 1,
+        "p111_rt_op": 1,
+        "p111_rt_fail": 2
+      },
+      "evidence": {
+        "file": "research/phase195/ownership/coverage-record-aggregation-256-candidate-p113d-p118borrow.read.Map.bit.go.asm.gz",
+        "bytes": 1710,
+        "sha256": "8a52432d6583318b7f481e3cdcd8f404f10ac11261acb2270035f0043cbc114e"
+      }
+    },
+    {
+      "case": "coverage-record-aggregation-256",
+      "role": "qbe",
+      "artifact": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-native45-acquire01/coverage-record-aggregation-256/phase186-qbe-n2/machine/program",
+        "bytes": 322320,
+        "sha256": "28bce9a12ae6c39c2bf98931762a729f974f5666d03d9628f3530a3c4933c0d1"
+      },
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_77_97_112_46_115_101_101_107_46_103_111_",
+      "decoded": "p111:$direct.Map.seek.go",
+      "address": "000000000041bc30",
+      "bytes": 10447,
+      "instructions": 2328,
+      "staticCalls": {
+        "p111_rt_sink": 98,
+        "p111_rt_fail": 23,
+        "p125_rt_take2": 14,
+        "p125_rt_ctor2": 38,
+        "p111_rt_return": 13,
+        "p125_rt_take3": 5,
+        "p125_rt_ctor3": 24,
+        "p111_rt_keep": 12,
+        "p112w:$direct.Map.bit": 6,
+        "p111_rt_jump": 6,
+        "p125_rt_ctor1": 6
+      },
+      "evidence": {
+        "file": "research/phase195/ownership/coverage-record-aggregation-256-qbe-p111-direct.Map.seek.go.asm.gz",
+        "bytes": 12396,
+        "sha256": "7bea8c6ed2a3c8b0aca5b0c03fa73269b855444897bb6c7cfd93aff6cdfda68f"
+      }
+    },
+    {
+      "case": "coverage-record-aggregation-256",
+      "role": "qbe",
+      "artifact": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-native45-acquire01/coverage-record-aggregation-256/phase186-qbe-n2/machine/program",
+        "bytes": 322320,
+        "sha256": "28bce9a12ae6c39c2bf98931762a729f974f5666d03d9628f3530a3c4933c0d1"
+      },
+      "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_77_97_112_46_98_105_116_46_103_111_",
+      "decoded": "p113d:$product.Map.bit.go",
+      "address": "0000000000406070",
+      "bytes": 54,
+      "instructions": 20,
+      "staticCalls": {
+        "p113d:$p118borrow.read.Map.bit.go": 1
+      },
+      "evidence": {
+        "file": "research/phase195/ownership/coverage-record-aggregation-256-qbe-p113d-product.Map.bit.go.asm.gz",
+        "bytes": 453,
+        "sha256": "950d6508ea8054af714f413580f25637c370f5f52ded9affd340eaa31f0997bb"
+      }
+    },
+    {
+      "case": "coverage-record-aggregation-256",
+      "role": "qbe",
+      "artifact": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-native45-acquire01/coverage-record-aggregation-256/phase186-qbe-n2/machine/program",
+        "bytes": 322320,
+        "sha256": "28bce9a12ae6c39c2bf98931762a729f974f5666d03d9628f3530a3c4933c0d1"
+      },
+      "symbol": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_77_97_112_46_98_105_116_46_103_111_",
+      "decoded": "p113d:$p118borrow.read.Map.bit.go",
+      "address": "0000000000405e60",
+      "bytes": 437,
+      "instructions": 108,
+      "staticCalls": {
+        "p118_rt_borrow_fields": 1,
+        "p111_rt_op": 1,
+        "p111_rt_special_ctor": 2,
+        "p111_rt_fail": 1
+      },
+      "evidence": {
+        "file": "research/phase195/ownership/coverage-record-aggregation-256-qbe-p113d-p118borrow.read.Map.bit.go.asm.gz",
+        "bytes": 1205,
+        "sha256": "8948d0b28f932e0c3b9e70475486c7ab9555b4b571a1c9cb1730adce1082cb2b"
+      }
+    },
+    {
+      "case": "coverage-record-aggregation-256",
+      "role": "c",
+      "artifact": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-record-aggregation-256/bend-c/program",
+        "bytes": 336168,
+        "sha256": "5b6b8a6d7df0616624c964d3b3df4e1e4756a2d3e53c01d321573ed9357d649e"
+      },
+      "symbol": "WL_FID_36_100_105_114_101_99_116_46_77_97_112_46_115_101_101_107_46_103_111_",
+      "decoded": "WL:$direct.Map.seek.go",
+      "address": "000000000002afc0",
+      "bytes": 27927,
+      "instructions": 6559,
+      "staticCalls": {
+        "term_drop": 50,
+        "heap_alloc_miss": 65,
+        "rfc_wrap": 131,
+        "term_keep": 8,
+        "heap_hand": 38,
+        "span_fade": 19,
+        "task_node": 31,
+        "err_fail": 20
+      },
+      "evidence": {
+        "file": "research/phase195/ownership/coverage-record-aggregation-256-c-WL-direct.Map.seek.go.asm.gz",
+        "bytes": 37551,
+        "sha256": "167c7faba5328e62758ef7bc674cb0fc907163f3e1f2b79fa1e10c9c387db098"
+      }
+    },
+    {
+      "case": "tree-bitonic",
+      "role": "candidate",
+      "artifact": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/native45-02/tree-bitonic/machine/program",
+        "bytes": 216744,
+        "sha256": "d61d5589ddbb3c8a7a006bca0c5650ae620dab1e7849a3d420476cac957f784d"
+      },
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_119_97_114_112_",
+      "decoded": "p111:$direct.warp",
+      "address": "000000000041293d",
+      "bytes": 219,
+      "instructions": 49,
+      "staticCalls": {
+        "p114r:$direct.warp": 1,
+        "p111_rt_return": 1
+      },
+      "evidence": {
+        "file": "research/phase195/ownership/tree-bitonic-candidate-p111-direct.warp.asm.gz",
+        "bytes": 618,
+        "sha256": "9a1059b0bf1f5a1073183972df09d65d3a8bb71fa44e288e69e562f63e7330c5"
+      }
+    },
+    {
+      "case": "tree-bitonic",
+      "role": "candidate",
+      "artifact": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/native45-02/tree-bitonic/machine/program",
+        "bytes": 216744,
+        "sha256": "d61d5589ddbb3c8a7a006bca0c5650ae620dab1e7849a3d420476cac957f784d"
+      },
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_122_105_112_",
+      "decoded": "p111:$direct.warp_zip",
+      "address": "0000000000412fde",
+      "bytes": 137,
+      "instructions": 35,
+      "staticCalls": {
+        "p113d:$direct.warp_zip": 1,
+        "p111_rt_return": 1
+      },
+      "evidence": {
+        "file": "research/phase195/ownership/tree-bitonic-candidate-p111-direct.warp_zip.asm.gz",
+        "bytes": 550,
+        "sha256": "69d7cae108a725184cdd684a3101e1312553351bc98391c8316831a424c897fa"
+      }
+    },
+    {
+      "case": "tree-bitonic",
+      "role": "candidate",
+      "artifact": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/native45-02/tree-bitonic/machine/program",
+        "bytes": 216744,
+        "sha256": "d61d5589ddbb3c8a7a006bca0c5650ae620dab1e7849a3d420476cac957f784d"
+      },
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_122_105_112_",
+      "decoded": "p113d:$direct.warp_zip",
+      "address": "0000000000408309",
+      "bytes": 1378,
+      "instructions": 298,
+      "staticCalls": {
+        "p125_rt_take2": 3,
+        "p125_rt_ctor2": 3,
+        "p111_rt_sink": 4,
+        "p125_rt_take1": 3,
+        "p111_rt_fail": 3
+      },
+      "evidence": {
+        "file": "research/phase195/ownership/tree-bitonic-candidate-p113d-direct.warp_zip.asm.gz",
+        "bytes": 1921,
+        "sha256": "c85d428e11ff30f4f6bb646ae165f8a3ac6186571a4c8094d051a7555482fe5d"
+      }
+    },
+    {
+      "case": "tree-bitonic",
+      "role": "candidate",
+      "artifact": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/native45-02/tree-bitonic/machine/program",
+        "bytes": 216744,
+        "sha256": "d61d5589ddbb3c8a7a006bca0c5650ae620dab1e7849a3d420476cac957f784d"
+      },
+      "symbol": "p114r_FID_36_100_105_114_101_99_116_46_119_97_114_112_",
+      "decoded": "p114r:$direct.warp",
+      "address": "0000000000411e47",
+      "bytes": 2806,
+      "instructions": 557,
+      "staticCalls": {
+        "p111_rt_frame": 1,
+        "p112w:$direct.warp_zip": 1,
+        "p111_rt_fail": 4,
+        "p125_rt_take1": 3,
+        "p112w:$direct.warp_leaf": 1,
+        "p111_rt_sink": 8,
+        "p125_rt_take2": 3
+      },
+      "evidence": {
+        "file": "research/phase195/ownership/tree-bitonic-candidate-p114r-direct.warp.asm.gz",
+        "bytes": 3455,
+        "sha256": "10f82704954f5d4f5fec731d735cee2ed6dcba99a9101b7a6c6f74e32c889e7f"
+      }
+    },
+    {
+      "case": "tree-bitonic",
+      "role": "qbe",
+      "artifact": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-native45-acquire01/tree-bitonic/phase186-qbe-n2/machine/program",
+        "bytes": 187128,
+        "sha256": "82ac09159ffea013e77cfcae4e8c7778869fe0dfb47320ff79dfded3b6977154"
+      },
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_119_97_114_112_",
+      "decoded": "p111:$direct.warp",
+      "address": "000000000040cb70",
+      "bytes": 125,
+      "instructions": 39,
+      "staticCalls": {
+        "p111_rt_reg_get": 3,
+        "p114r:$direct.warp": 1,
+        "p111_rt_return": 1
+      },
+      "evidence": {
+        "file": "research/phase195/ownership/tree-bitonic-qbe-p111-direct.warp.asm.gz",
+        "bytes": 531,
+        "sha256": "549ffe0f7d641cb17e675a885dc9069ad88775b86c3aa864d665446aab93488b"
+      }
+    },
+    {
+      "case": "tree-bitonic",
+      "role": "qbe",
+      "artifact": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-native45-acquire01/tree-bitonic/phase186-qbe-n2/machine/program",
+        "bytes": 187128,
+        "sha256": "82ac09159ffea013e77cfcae4e8c7778869fe0dfb47320ff79dfded3b6977154"
+      },
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_122_105_112_",
+      "decoded": "p111:$direct.warp_zip",
+      "address": "000000000040d3a0",
+      "bytes": 93,
+      "instructions": 29,
+      "staticCalls": {
+        "p111_rt_reg_get": 2,
+        "p113d:$direct.warp_zip": 1,
+        "p111_rt_return": 1
+      },
+      "evidence": {
+        "file": "research/phase195/ownership/tree-bitonic-qbe-p111-direct.warp_zip.asm.gz",
+        "bytes": 492,
+        "sha256": "ea204189093cff5550c2a883436202997ad1da00737f6415b6f9da90a18b88ed"
+      }
+    },
+    {
+      "case": "tree-bitonic",
+      "role": "qbe",
+      "artifact": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-native45-acquire01/tree-bitonic/phase186-qbe-n2/machine/program",
+        "bytes": 187128,
+        "sha256": "82ac09159ffea013e77cfcae4e8c7778869fe0dfb47320ff79dfded3b6977154"
+      },
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_122_105_112_",
+      "decoded": "p113d:$direct.warp_zip",
+      "address": "0000000000406a70",
+      "bytes": 928,
+      "instructions": 205,
+      "staticCalls": {
+        "p111_rt_fail": 3,
+        "p125_rt_take1": 3,
+        "p125_rt_take2": 3,
+        "p111_rt_sink": 4,
+        "p125_rt_ctor2": 3
+      },
+      "evidence": {
+        "file": "research/phase195/ownership/tree-bitonic-qbe-p113d-direct.warp_zip.asm.gz",
+        "bytes": 1722,
+        "sha256": "edbc444f2c054b272a06a02b9e0d6ce749e789a1bd800b94401b246f55ff596d"
+      }
+    },
+    {
+      "case": "tree-bitonic",
+      "role": "qbe",
+      "artifact": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-native45-acquire01/tree-bitonic/phase186-qbe-n2/machine/program",
+        "bytes": 187128,
+        "sha256": "82ac09159ffea013e77cfcae4e8c7778869fe0dfb47320ff79dfded3b6977154"
+      },
+      "symbol": "p114r_FID_36_100_105_114_101_99_116_46_119_97_114_112_",
+      "decoded": "p114r:$direct.warp",
+      "address": "000000000040cbf0",
+      "bytes": 1335,
+      "instructions": 301,
+      "staticCalls": {
+        "p125_rt_take2": 3,
+        "p111_rt_sink": 8,
+        "p111_rt_fail": 4,
+        "p125_rt_take1": 3,
+        "p112w:$direct.warp_leaf": 1,
+        "p112w:$direct.warp_zip": 1
+      },
+      "evidence": {
+        "file": "research/phase195/ownership/tree-bitonic-qbe-p114r-direct.warp.asm.gz",
+        "bytes": 2270,
+        "sha256": "185cffe19e99b6903c64d41fd1791d87d1214dd7133645a6d16d72038ebf44d6"
+      }
+    },
+    {
+      "case": "tree-bitonic",
+      "role": "c",
+      "artifact": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/tree-bitonic/bend-c/program",
+        "bytes": 115744,
+        "sha256": "19550d9d4c7b770e374ac234d09c6860458807a6f7ff1d0c4153f1f1cf8d513a"
+      },
+      "symbol": "WL_FID_36_100_105_114_101_99_116_46_119_97_114_112_",
+      "decoded": "WL:$direct.warp",
+      "address": "000000000000ce60",
+      "bytes": 3521,
+      "instructions": 790,
+      "staticCalls": {
+        "heap_hand": 12,
+        "span_fade": 6,
+        "term_drop": 5,
+        "heap_alloc_miss": 3,
+        "task_node": 7,
+        "err_fail": 4
+      },
+      "evidence": {
+        "file": "research/phase195/ownership/tree-bitonic-c-WL-direct.warp.asm.gz",
+        "bytes": 5305,
+        "sha256": "19bf5ee4acb6a1bc8ae2132bd004d8676f72f0c00b2fc482597a81e73c76b269"
+      }
+    },
+    {
+      "case": "tree-bitonic",
+      "role": "c",
+      "artifact": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/tree-bitonic/bend-c/program",
+        "bytes": 115744,
+        "sha256": "19550d9d4c7b770e374ac234d09c6860458807a6f7ff1d0c4153f1f1cf8d513a"
+      },
+      "symbol": "WL_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_122_105_112_",
+      "decoded": "WL:$direct.warp_zip",
+      "address": "000000000000dfa0",
+      "bytes": 2731,
+      "instructions": 642,
+      "staticCalls": {
+        "term_drop": 6,
+        "heap_alloc_miss": 3,
+        "heap_hand": 10,
+        "span_fade": 5,
+        "err_fail": 1
+      },
+      "evidence": {
+        "file": "research/phase195/ownership/tree-bitonic-c-WL-direct.warp_zip.asm.gz",
+        "bytes": 4359,
+        "sha256": "a3e0dd2ffa7d52a02b1c9a592885d1d70af578e0e78feb2cdf13dd9e66071711"
+      }
+    }
+  ],
+  "scope": "Bounded whole-function disassemblies, including cold/error paths. Static call counts are not invocation frequencies or removable dynamic-cost estimates. References are retained mature C/QBE products authenticated by current runtime report."
+}

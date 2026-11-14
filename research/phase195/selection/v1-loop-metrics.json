@@ -1,0 +1,73 @@
+{
+  "scope": "Static instructions on positive row-loop path, including header CMP/JNE and backedge, excluding exit arm. Explicit RBP references count instructions, not dynamic memory transactions. No timing inference.",
+  "rows": [
+    {
+      "case": "editdist",
+      "role": "baseline",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/native45-02/editdist/machine/program",
+        "bytes": 217312,
+        "sha256": "7dcee5ba5c2be4bd0dfb4a0d80ed7607b9898cd50ae0dadbc3bf2b2409ff8506"
+      },
+      "disassembly": "research/phase195/selection/editdist-baseline-row.asm",
+      "header": "0x40cac0",
+      "positive": "0x40cb17",
+      "backedge": "0x40cc69",
+      "instructions": 77,
+      "mov": 56,
+      "frame_accesses": 20,
+      "frame_bytes": 3136
+    },
+    {
+      "case": "editdist",
+      "role": "selection",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/selection-dev-build01/editdist/machine/program",
+        "bytes": 217328,
+        "sha256": "cdda21fe6581fc3b8191ae2647b71c13ec75b15c133e261a92dcca938d85aae7"
+      },
+      "disassembly": "research/phase195/selection/editdist-selection-row.asm",
+      "header": "0x40c9b4",
+      "positive": "0x40ca0b",
+      "backedge": "0x40cb4f",
+      "instructions": 74,
+      "mov": 53,
+      "frame_accesses": 19,
+      "frame_bytes": 3136
+    },
+    {
+      "case": "local-pair",
+      "role": "baseline",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/native45-02/local-pair/machine/program",
+        "bytes": 210976,
+        "sha256": "dd403d8cfffc14e44bc3c2b6fb81adaa3c2c29c90b5871266648c2e05fad2211"
+      },
+      "disassembly": "research/phase195/selection/local-pair-baseline-row.asm",
+      "header": "0x40cabb",
+      "positive": "0x40cb12",
+      "backedge": "0x40cc64",
+      "instructions": 77,
+      "mov": 56,
+      "frame_accesses": 20,
+      "frame_bytes": 3136
+    },
+    {
+      "case": "local-pair",
+      "role": "selection",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/selection-dev-build01/local-pair/machine/program",
+        "bytes": 206888,
+        "sha256": "b960c93b7bd906f98fe8d18e4b5b1123790ed98798287fed5b1ba0f6163950e8"
+      },
+      "disassembly": "research/phase195/selection/local-pair-selection-row.asm",
+      "header": "0x40c9af",
+      "positive": "0x40ca06",
+      "backedge": "0x40cb4a",
+      "instructions": 74,
+      "mov": 53,
+      "frame_accesses": 19,
+      "frame_bytes": 3136
+    }
+  ]
+}

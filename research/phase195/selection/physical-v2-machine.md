@@ -1,0 +1,15 @@
+# Physical v2 machine audit
+
+Both `physical-dev-build01` row kernels have the same positive-path change from final Phase194: **77→65 instructions, 56→44 MOV-family instructions, 20→20 explicit RBP references, 3136→3136 frame bytes**. This includes the loop header CMP/JNE and backedge, excluding the exit arm. Exact binary hashes and boundaries are in `physical-v2-loop-metrics.json`; bounded disassemblies are `editdist-physical-v2-row.asm` and `local-pair-physical-v2-row.asm`. Root-produced oracle process receipts for both are complete with exit code zero and empty stderr. These are finite correctness observations; runtime screening is separate.
+
+All intended physical selection changes admitted: three comparisons lose six register snapshots, Boolean constant selection becomes SETNE/MOVZX, and the first minimum computes directly into R8. The second minimum retains a stack result. Register allocation and frame size remain unchanged by design. Compared with rejected placement v1 (74 instructions), this is a larger and causally different machine change.
+
+## Remaining concrete dependency
+
+At editdist `0x40ca42`, RSI is stored to `-0xb10(%rbp)`; CMP at `0x40ca49` already reads RSI, yet CMOV at `0x40ca4c` rereads that saved frame word. Similarly, the second minimum stores RSI to `-0xb40` at `0x40ca71`, compares RSI at `0x40ca78`, then reloads the saved word at `0x40ca7b`. These two copy aliases induce unnecessary memory dependencies despite their source still residing in a compare operand register. Actual source has adjacent `N111Set(saved,U64,current)` before each certified predicate corridor. A bounded exact-copy witness could preserve that write and substitute current only in selected choices, provided current is also an original comparison operand and the existing corridor certificate protects it. This requires no general SSA or additional allocated lifetime before CMP. Independent U32-copy/U64-select truncation must refuse unless separately certified; aliases overwritten inside the corridor must refuse.
+
+A third frame reread (`-0xb30`, the first minimum result) needs a longer identity witness across intervening arithmetic, so it is outside that adjacent-copy rule. Eliminating its store additionally needs complete-use evidence. Do not infer equality merely because two names currently share a physical register.
+
+`physical-moves.bend:x186_set_selected` also snapshots register sources through R10 for stack destinations. Four U64 copies in this row could directly store their source register, removing four MOVs but no frame traffic. These are smaller follow-ups, recorded rather than implemented pending the physical v2 runtime decision.
+
+Physical v2 does not make RAX/R10/R11 globally allocatable. Other emitted instructions still clobber them; admitting additional homes needs explicit allocation clobber contracts. Register-pool/region work owns that separate larger investigation. Static instruction reductions do not predict a runtime ratio, and memory-source CMOV latency may still matter.

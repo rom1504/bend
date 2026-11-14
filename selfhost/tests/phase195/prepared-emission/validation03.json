@@ -1,0 +1,84 @@
+{
+  "kind": "phase195-prepared-fast-stage-accounting",
+  "complete": true,
+  "targetsRunByThisAudit": false,
+  "batch": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/prepared-fast01/report.json",
+    "bytes": 71556,
+    "sha256": "007ea06c2290b813cd5800bf342dfb4568468fb319cb1a30fb239695e66f3e5f"
+  },
+  "guard": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/prepared-fast01-guard/process.json",
+    "bytes": 2513,
+    "sha256": "82f5f15525db6f8d3a402736dc3e1df55df0910c613c9b6426b8cea795b15bf5"
+  },
+  "roles": [
+    {
+      "name": "rcx",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/prepared-fast01/rcx/report.json",
+        "bytes": 75916,
+        "sha256": "89e1653e408088a6bc386d73e539d5a69d6c90f4cc9f38570c04a23ee87c44c7"
+      },
+      "cases": 6,
+      "selectSeconds": 27.50074015799998,
+      "renderSeconds": 0.5171408170000227,
+      "objectSeconds": 5.91889706000001
+    },
+    {
+      "name": "call",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/prepared-fast01/call/report.json",
+        "bytes": 75936,
+        "sha256": "62d736c618abe4646d0246cfa6bdf799149ead1e792c289b88c8825b6613c8ff"
+      },
+      "cases": 6,
+      "selectSeconds": 22.555458667000014,
+      "renderSeconds": 0.5531645649999533,
+      "objectSeconds": 6.381975592
+    },
+    {
+      "name": "compose",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/prepared-fast01/compose/report.json",
+        "bytes": 75985,
+        "sha256": "5016d439356c7dbe2a5328e5ea935be9b09d67f5102fef6cb6f70c1f075829b4"
+      },
+      "cases": 6,
+      "selectSeconds": 23.42041492500002,
+      "renderSeconds": 0.5085993580000547,
+      "objectSeconds": 6.162407229000003
+    },
+    {
+      "name": "adaptive",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/prepared-fast01/adaptive/report.json",
+        "bytes": 75987,
+        "sha256": "df749b2464d5b7f89a6918be9627db05adb33bdc88cc6eacf1e0bd516fa2610c"
+      },
+      "cases": 6,
+      "selectSeconds": 26.67114408400002,
+      "renderSeconds": 0.43145509500003953,
+      "objectSeconds": 5.724062545999956
+    }
+  ],
+  "caseRoleEmissions": 24,
+  "wallSeconds": 163.61533362604678,
+  "peakTreeRssBytes": 1395519488,
+  "baseSeconds": 0.6184672259999995,
+  "sourcePrepareSeconds": 33.107461065999985,
+  "sharedPreparationSeconds": 33.725928291999985,
+  "freezeSeconds": 0.19943225899999106,
+  "transportObjects": 332290,
+  "emissionSeconds": 126.34546009600007,
+  "recordedStageSeconds": 160.27082064700005,
+  "unattributedWallSeconds": 3.3445129790467263,
+  "projection": {
+    "kind": "accounting-only-not-observed-ordinary-runtime",
+    "ordinaryStageSecondsIfSamePreparationAndEmissionCosts": 261.249173264,
+    "netStageSecondsAvoidedIfAssumptionsHold": 100.97835261699993,
+    "relativeStageReductionIfAssumptionsHold": 0.3865212331790169,
+    "assumptions": "Four independent preparations each cost the observed shared preparation; emitter costs held fixed; omits different cold/warm states, load and process overhead. No matched ordinary run exists for these four APIs."
+  },
+  "scope": "Actual single fast batch with four variants and six inputs. No controlled speedup, native compiler gain, full45 result or final runtime headline claim."
+}

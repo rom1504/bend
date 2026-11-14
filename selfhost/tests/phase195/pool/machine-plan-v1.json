@@ -1,0 +1,135 @@
+{
+  "kind": "phase195-pool-machine-control-plan",
+  "version": 1,
+  "targetsRun": false,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase195/pool/allocator-v1.bend",
+      "bytes": 10338,
+      "sha256": "e226b0e47a52faa25703e5c6b02cd2e55ccde97e94e2d2eb8d5d195a0c728112"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase195/pool/physical-hooks.bend",
+      "bytes": 2405,
+      "sha256": "48980628f17dca7b1bbaa840a2d5654523bd849f6326df9beae0d9bba9e99ae3"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase195/pool/allocator-controls-v1.bend",
+      "bytes": 4303,
+      "sha256": "4668b7487e50ec321ddfcce045eca69a73b59a826fb2c204b67ab84efe093ff0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase195/pool/physical-controls.bend",
+      "bytes": 2101,
+      "sha256": "e7764d997df8a3ef620fdff0135af6eb00bb07943adf0e41c3837d1c5261035a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase195/pool/machine-controls-v1.bend",
+      "bytes": 7849,
+      "sha256": "8a83ed0cf9df39f16e37218a7e62e372482dccab05d9f9ad748d58fe6c2e89df"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase195/pool/machine-controls-v1.c",
+      "bytes": 3944,
+      "sha256": "8a0a561db87933be6c04441d214f3f7ced628ce23a9ce80e3b1554860c581943"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase195/pool/machine-driver-v1.mjs",
+      "bytes": 12200,
+      "sha256": "7302d2ddbe7202f9fe1e3716e7bb3bd2b9c9f12db489b1a51564bbd4eb52e358"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase195/pool/machine-controls-v1.json",
+      "bytes": 962,
+      "sha256": "7e2ec0d0770c311bd1715eeeaec0465bb660af2a421ba69a01d9dc742efb6d58"
+    }
+  ],
+  "prepare": [
+    "python3",
+    "-B",
+    "selfhost/tests/phase190/prepare-api.py",
+    "--parent-source",
+    "selfhost/build/phase194/selected-source02/compiler.bend",
+    "--assets",
+    "selfhost/build/phase194/assets.json",
+    "--out",
+    "selfhost/build/phase195/pool-machine-api-source01",
+    "--module",
+    "selfhost/tests/phase195/pool/allocator-v1.bend",
+    "--module",
+    "selfhost/tests/phase195/pool/physical-hooks.bend",
+    "--module",
+    "selfhost/tests/phase195/pool/allocator-controls-v1.bend",
+    "--module",
+    "selfhost/tests/phase195/pool/physical-controls.bend",
+    "--module",
+    "selfhost/tests/phase195/pool/machine-controls-v1.bend",
+    "--replace",
+    "x190_j_solved",
+    "--replace",
+    "x190_l_abi",
+    "--replace",
+    "x185_transient_reg",
+    "--replace",
+    "x185_physical_transient",
+    "--replace",
+    "x186_call_slot",
+    "--replace",
+    "x186_float_home",
+    "--replace",
+    "x186_p_word_home",
+    "--export",
+    "p195p_controls",
+    "--export",
+    "p195ph_controls",
+    "--export",
+    "p195pm_controls",
+    "--export",
+    "p195pm_emit"
+  ],
+  "acquire": [
+    "python3",
+    "-B",
+    "selfhost/tests/phase195/job.py",
+    "--rss-mib",
+    "3072",
+    "pool-machine-api01",
+    "180",
+    "48",
+    "selfhost/.assets/bin/bun",
+    "selfhost/tools/build/hosted.mjs",
+    "acquire",
+    "--source",
+    "selfhost/build/phase195/pool-machine-api-source01/compiler.bend",
+    "--exports",
+    "selfhost/build/phase195/pool-machine-api-source01/exports.json",
+    "--out",
+    "selfhost/build/phase195/pool-machine-api01",
+    "--engine",
+    "selfhost/.assets/bin/bun",
+    "--upstream",
+    "selfhost/.bootstrap/upstream-phase182"
+  ],
+  "gate": [
+    "python3",
+    "-B",
+    "selfhost/tests/phase195/job.py",
+    "pool-machine-controls01",
+    "210",
+    "32",
+    "selfhost/.assets/bin/bun",
+    "selfhost/tests/phase195/pool/machine-driver-v1.mjs",
+    "--api",
+    "selfhost/build/phase195/pool-machine-api01/report.json",
+    "--assets",
+    "selfhost/build/phase194/assets.json",
+    "--out",
+    "selfhost/build/phase195/pool-machine-controls01",
+    "--source-manifest",
+    "selfhost/build/phase195/pool-machine-api-source01/manifest.json",
+    "--groups",
+    "pool",
+    "--seconds",
+    "180"
+  ]
+}

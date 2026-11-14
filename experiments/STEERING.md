@@ -1,3 +1,9 @@
+# Phase195 — paused experimental checkpoint, 2026-11-14
+
+[Resume state](../implementation/phase195/README.md). No maintained-source or installed-image change; Phase194 remains the qualified frontier. Balanced six-case branch/call candidate improves11.31%; full native45 unmeasured. Prioritize prepared residual-cycle prototype, combined runtime and independent loop-carry ceiling before qualification. Hardware-model retrospective remains pending. User paused for quota; no jobs remain running.
+
+---
+
 # Phase194 — qualified x86 value/selection composition, 2026-11-14
 
 [Report](../implementation/phase194/README.md) ·

@@ -1,0 +1,671 @@
+{
+  "c": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/variation-ray-active-64-2440/bend-c/program",
+    "sha256": "0773207fa78b116d4cc486950a8cbffdf4fed8b26778be9b1cec1ecfbcd13d9c",
+    "functions": {
+      "$direct.pixel": {
+        "instructions": 24,
+        "stackOperands": 3,
+        "movd": 0,
+        "setcc": 0,
+        "cmp": 0,
+        "test": 1,
+        "branches": 2,
+        "movabs": 0,
+        "fp": 0,
+        "calls": [
+          "callq  <pixel>"
+        ],
+        "frame": [
+          24
+        ]
+      },
+      "$direct.nearest": {
+        "instructions": 909,
+        "stackOperands": 187,
+        "movd": 14,
+        "setcc": 36,
+        "cmp": 33,
+        "test": 31,
+        "branches": 92,
+        "movabs": 32,
+        "fp": 28,
+        "calls": [
+          "callq  <rfc_wrap>",
+          "callq  <rfc_wrap>",
+          "callq  <term_drop>",
+          "callq  <rfc_wrap>",
+          "callq  <term_drop>",
+          "callq  <rfc_wrap>",
+          "callq  <term_drop>",
+          "callq  <rfc_wrap>",
+          "callq  <term_drop>",
+          "callq  <rfc_wrap>",
+          "callq  <heap_alloc_miss>",
+          "callq  <term_drop>",
+          "callq  <term_drop>",
+          "callq  <sqrtf@plt>",
+          "callq  <rfc_wrap>",
+          "callq  <$product.nearest>",
+          "callq  <term_drop>",
+          "callq  <term_drop>",
+          "callq  <sqrtf@plt>",
+          "callq  <rfc_wrap>",
+          "callq  <$product.nearest>",
+          "callq  <heap_alloc_miss>",
+          "callq  <err_fail>"
+        ],
+        "frame": [
+          192,
+          8,
+          8
+        ]
+      },
+      "$direct.isect5": {
+        "instructions": 59,
+        "stackOperands": 6,
+        "movd": 7,
+        "setcc": 0,
+        "cmp": 0,
+        "test": 0,
+        "branches": 6,
+        "movabs": 0,
+        "fp": 21,
+        "calls": [
+          "callq  <sqrtf@plt>"
+        ],
+        "frame": []
+      },
+      "$direct.trace": {
+        "instructions": 710,
+        "stackOperands": 141,
+        "movd": 24,
+        "setcc": 10,
+        "cmp": 29,
+        "test": 11,
+        "branches": 79,
+        "movabs": 6,
+        "fp": 83,
+        "calls": [
+          "callq  <term_drop>",
+          "callq  <heap_hand>",
+          "callq  <nearest.t>",
+          "callq  <$product.nearest>",
+          "callq  <$product.trace>",
+          "callq  <span_fade>",
+          "callq  <heap_hand>",
+          "callq  <heap_hand>",
+          "callq  <nearest.t>",
+          "callq  <span_fade>",
+          "callq  <heap_hand>",
+          "callq  <term_drop>",
+          "callq  <term_drop>",
+          "callq  <err_fail>"
+        ],
+        "frame": [
+          320
+        ]
+      },
+      "$direct.nearest.t": {
+        "instructions": 40,
+        "stackOperands": 10,
+        "movd": 0,
+        "setcc": 0,
+        "cmp": 0,
+        "test": 1,
+        "branches": 2,
+        "movabs": 0,
+        "fp": 0,
+        "calls": [
+          "callq  <nearest.t>"
+        ],
+        "frame": [
+          32,
+          8
+        ]
+      },
+      "pixel": {
+        "instructions": 332,
+        "stackOperands": 111,
+        "movd": 19,
+        "setcc": 0,
+        "cmp": 0,
+        "test": 8,
+        "branches": 11,
+        "movabs": 0,
+        "fp": 37,
+        "calls": [
+          "callq  <$product.nearest>",
+          "callq  <$product.trace>",
+          "callq  <$product.nearest>",
+          "callq  <$product.trace>",
+          "callq  <$product.nearest>",
+          "callq  <$product.trace>",
+          "callq  <$product.nearest>",
+          "callq  <$product.trace>"
+        ],
+        "frame": [
+          216,
+          80,
+          8,
+          80,
+          8,
+          80,
+          8,
+          80,
+          8
+        ]
+      },
+      "$product.nearest": {
+        "instructions": 758,
+        "stackOperands": 167,
+        "movd": 42,
+        "setcc": 34,
+        "cmp": 29,
+        "test": 28,
+        "branches": 83,
+        "movabs": 30,
+        "fp": 38,
+        "calls": [
+          "callq  <rfc_wrap>",
+          "callq  <rfc_wrap>",
+          "callq  <term_drop>",
+          "callq  <term_drop>",
+          "callq  <term_drop>",
+          "callq  <rfc_wrap>",
+          "callq  <term_drop>",
+          "callq  <rfc_wrap>",
+          "callq  <term_drop>",
+          "callq  <term_drop>",
+          "callq  <sqrtf@plt>",
+          "callq  <term_drop>",
+          "callq  <term_drop>",
+          "callq  <sqrtf@plt>",
+          "callq  <rfc_wrap>",
+          "callq  <rfc_wrap>",
+          "callq  <rfc_wrap>",
+          "callq  <err_fail>"
+        ],
+        "frame": [
+          56
+        ]
+      },
+      "$product.trace": {
+        "instructions": 465,
+        "stackOperands": 97,
+        "movd": 21,
+        "setcc": 0,
+        "cmp": 12,
+        "test": 6,
+        "branches": 46,
+        "movabs": 2,
+        "fp": 79,
+        "calls": [
+          "callq  <nearest.t>",
+          "callq  <$product.nearest>",
+          "callq  <term_drop>",
+          "callq  <nearest.t>"
+        ],
+        "frame": [
+          280
+        ]
+      },
+      "nearest.t": {
+        "instructions": 726,
+        "stackOperands": 139,
+        "movd": 40,
+        "setcc": 30,
+        "cmp": 24,
+        "test": 24,
+        "branches": 77,
+        "movabs": 25,
+        "fp": 38,
+        "calls": [
+          "callq  <rfc_wrap>",
+          "callq  <rfc_wrap>",
+          "callq  <term_drop>",
+          "callq  <term_drop>",
+          "callq  <term_drop>",
+          "callq  <rfc_wrap>",
+          "callq  <term_drop>",
+          "callq  <rfc_wrap>",
+          "callq  <sqrtf@plt>",
+          "callq  <term_drop>",
+          "callq  <term_drop>",
+          "callq  <sqrtf@plt>",
+          "callq  <term_drop>",
+          "callq  <term_drop>",
+          "callq  <rfc_wrap>",
+          "callq  <rfc_wrap>",
+          "callq  <err_fail>"
+        ],
+        "frame": [
+          40
+        ]
+      }
+    }
+  },
+  "qbe": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-native45-acquire01/variation-ray-active-64-2440/phase186-qbe-n2/machine/program",
+    "sha256": "9ef49e0b6d44a6ebed2a5660bfea470200b7db91128028c9e74fe4e1ea90a564",
+    "functions": {
+      "$direct.isect5": {
+        "instructions": 79,
+        "stackOperands": 7,
+        "movd": 0,
+        "setcc": 2,
+        "cmp": 2,
+        "test": 0,
+        "branches": 2,
+        "movabs": 0,
+        "fp": 19,
+        "calls": [
+          "callq  <sqrt@plt>"
+        ],
+        "frame": [
+          24
+        ]
+      },
+      "$product.nearest": {
+        "instructions": 315,
+        "stackOperands": 49,
+        "movd": 0,
+        "setcc": 11,
+        "cmp": 18,
+        "test": 0,
+        "branches": 14,
+        "movabs": 0,
+        "fp": 38,
+        "calls": [
+          "callq  <sqrt@plt>",
+          "callq  <p111_rt_fail>",
+          "callq  <sqrt@plt>",
+          "callq  <p111_rt_fail>"
+        ],
+        "frame": [
+          136
+        ]
+      },
+      "$direct.nearest.t": {
+        "instructions": 262,
+        "stackOperands": 22,
+        "movd": 0,
+        "setcc": 9,
+        "cmp": 16,
+        "test": 0,
+        "branches": 13,
+        "movabs": 0,
+        "fp": 38,
+        "calls": [
+          "callq  <sqrt@plt>",
+          "callq  <p111_rt_fail>",
+          "callq  <sqrt@plt>",
+          "callq  <p111_rt_fail>"
+        ],
+        "frame": [
+          56
+        ]
+      },
+      "$product.trace": {
+        "instructions": 497,
+        "stackOperands": 76,
+        "movd": 0,
+        "setcc": 7,
+        "cmp": 17,
+        "test": 0,
+        "branches": 9,
+        "movabs": 0,
+        "fp": 77,
+        "calls": [
+          "callq  <sqrt@plt>",
+          "callq  <$direct.nearest.t>",
+          "callq  <$product.nearest>",
+          "callq  <p111_rt_fail>",
+          "callq  <p111_rt_fail>",
+          "callq  <sqrt@plt>",
+          "callq  <$direct.nearest.t>"
+        ],
+        "frame": [
+          216,
+          48,
+          18446744073709551568,
+          64,
+          18446744073709551552,
+          48,
+          18446744073709551568
+        ]
+      },
+      "$direct.nearest": {
+        "instructions": 452,
+        "stackOperands": 68,
+        "movd": 0,
+        "setcc": 11,
+        "cmp": 21,
+        "test": 0,
+        "branches": 22,
+        "movabs": 4,
+        "fp": 38,
+        "calls": [
+          "callq  <p111_rt_fail>",
+          "callq  <sqrt@plt>",
+          "callq  <p111_rt_op>",
+          "callq  <$product.nearest>",
+          "callq  <p125_rt_ctor3>",
+          "callq  <sqrt@plt>",
+          "callq  <p111_rt_op>",
+          "callq  <$product.nearest>",
+          "callq  <p125_rt_ctor3>",
+          "callq  <p111_rt_fail>",
+          "callq  <p125_rt_ctor3>",
+          "callq  <p125_rt_ctor3>"
+        ],
+        "frame": [
+          2200,
+          64,
+          18446744073709551552,
+          64,
+          18446744073709551552
+        ]
+      },
+      "$direct.pixel": {
+        "instructions": 353,
+        "stackOperands": 50,
+        "movd": 0,
+        "setcc": 4,
+        "cmp": 2,
+        "test": 1,
+        "branches": 2,
+        "movabs": 0,
+        "fp": 49,
+        "calls": [
+          "callq  <sqrt@plt>",
+          "callq  <$product.nearest>",
+          "callq  <$product.trace>",
+          "callq  <sqrt@plt>",
+          "callq  <$product.nearest>",
+          "callq  <$product.trace>",
+          "callq  <sqrt@plt>",
+          "callq  <$product.nearest>",
+          "callq  <$product.trace>",
+          "callq  <sqrt@plt>",
+          "callq  <$product.nearest>",
+          "callq  <$product.trace>"
+        ],
+        "frame": [
+          152,
+          64,
+          18446744073709551552,
+          64,
+          18446744073709551552,
+          64,
+          18446744073709551552,
+          64,
+          18446744073709551552,
+          64,
+          18446744073709551552,
+          64,
+          18446744073709551552,
+          64,
+          18446744073709551552,
+          64,
+          18446744073709551552
+        ]
+      },
+      "$direct.trace": {
+        "instructions": 1050,
+        "stackOperands": 375,
+        "movd": 0,
+        "setcc": 9,
+        "cmp": 21,
+        "test": 0,
+        "branches": 13,
+        "movabs": 0,
+        "fp": 91,
+        "calls": [
+          "callq  <p111_rt_fail>",
+          "callq  <p125_rt_take3>",
+          "callq  <p111_rt_fail>",
+          "callq  <p111_rt_op>",
+          "callq  <$direct.nearest.t>",
+          "callq  <$product.nearest>",
+          "callq  <$product.trace>",
+          "callq  <p111_rt_fail>",
+          "callq  <p125_rt_take3>",
+          "callq  <p111_rt_fail>",
+          "callq  <p111_rt_op>",
+          "callq  <$direct.nearest.t>"
+        ],
+        "frame": [
+          2552,
+          48,
+          18446744073709551568,
+          64,
+          18446744073709551552,
+          64,
+          18446744073709551552,
+          48,
+          18446744073709551568
+        ]
+      }
+    }
+  },
+  "x86": {
+    "file": "selfhost/build/phase194/native45-02/variation-ray-active-64-2440/machine/program",
+    "sha256": "696724b875af784f67fc2002e93efeae2bc5296e55677d889cbb08c6f0574db4",
+    "functions": {
+      "$direct.isect5": {
+        "instructions": 213,
+        "stackOperands": 35,
+        "movd": 44,
+        "setcc": 6,
+        "cmp": 2,
+        "test": 2,
+        "branches": 4,
+        "movabs": 10,
+        "fp": 20,
+        "calls": [
+          "callq  <p111_rt_op>"
+        ],
+        "frame": [
+          2800
+        ]
+      },
+      "$product.nearest": {
+        "instructions": 767,
+        "stackOperands": 201,
+        "movd": 92,
+        "setcc": 28,
+        "cmp": 16,
+        "test": 10,
+        "branches": 16,
+        "movabs": 40,
+        "fp": 40,
+        "calls": [
+          "callq  <p111_rt_fail>",
+          "callq  <$direct.sx>",
+          "callq  <$direct.sy>",
+          "callq  <$direct.sz>",
+          "callq  <$direct.sr>",
+          "callq  <p111_rt_op>",
+          "callq  <p111_rt_op>",
+          "callq  <$direct.sx>",
+          "callq  <$direct.sy>",
+          "callq  <$direct.sz>",
+          "callq  <$direct.sr>",
+          "callq  <p111_rt_op>",
+          "callq  <p111_rt_op>",
+          "callq  <p111_rt_fail>",
+          "callq  <p111_rt_fail>"
+        ],
+        "frame": [
+          3376
+        ]
+      },
+      "$direct.nearest.t": {
+        "instructions": 594,
+        "stackOperands": 128,
+        "movd": 92,
+        "setcc": 26,
+        "cmp": 14,
+        "test": 10,
+        "branches": 16,
+        "movabs": 30,
+        "fp": 40,
+        "calls": [
+          "callq  <p111_rt_fail>",
+          "callq  <$direct.sx>",
+          "callq  <$direct.sy>",
+          "callq  <$direct.sz>",
+          "callq  <$direct.sr>",
+          "callq  <p111_rt_op>",
+          "callq  <$direct.sx>",
+          "callq  <$direct.sy>",
+          "callq  <$direct.sz>",
+          "callq  <$direct.sr>",
+          "callq  <p111_rt_op>",
+          "callq  <p111_rt_fail>",
+          "callq  <p111_rt_fail>"
+        ],
+        "frame": [
+          3312
+        ]
+      },
+      "$product.trace": {
+        "instructions": 1978,
+        "stackOperands": 690,
+        "movd": 455,
+        "setcc": 22,
+        "cmp": 14,
+        "test": 10,
+        "branches": 15,
+        "movabs": 80,
+        "fp": 103,
+        "calls": [
+          "callq  <$direct.sr>",
+          "callq  <$direct.sx>",
+          "callq  <$direct.sy>",
+          "callq  <$direct.sz>",
+          "callq  <p111_rt_op>",
+          "callq  <$direct.nearest.t>",
+          "callq  <p111_rt_fail>",
+          "callq  <$direct.sr>",
+          "callq  <$direct.sx>",
+          "callq  <$direct.sy>",
+          "callq  <$direct.sz>",
+          "callq  <p111_rt_op>",
+          "callq  <$direct.nearest.t>",
+          "callq  <$direct.skr>",
+          "callq  <$product.nearest>",
+          "callq  <p111_rt_fail>",
+          "callq  <p111_rt_fail>"
+        ],
+        "frame": [
+          4464
+        ]
+      },
+      "$direct.nearest": {
+        "instructions": 850,
+        "stackOperands": 285,
+        "movd": 92,
+        "setcc": 28,
+        "cmp": 16,
+        "test": 10,
+        "branches": 14,
+        "movabs": 38,
+        "fp": 40,
+        "calls": [
+          "callq  <p125_rt_ctor3>",
+          "callq  <p125_rt_ctor3>",
+          "callq  <p111_rt_fail>",
+          "callq  <$direct.sx>",
+          "callq  <$direct.sy>",
+          "callq  <$direct.sz>",
+          "callq  <$direct.sr>",
+          "callq  <p111_rt_op>",
+          "callq  <p111_rt_op>",
+          "callq  <$product.nearest>",
+          "callq  <p125_rt_ctor3>",
+          "callq  <$direct.sx>",
+          "callq  <$direct.sy>",
+          "callq  <$direct.sz>",
+          "callq  <$direct.sr>",
+          "callq  <p111_rt_op>",
+          "callq  <p111_rt_op>",
+          "callq  <$product.nearest>",
+          "callq  <p125_rt_ctor3>",
+          "callq  <p111_rt_fail>",
+          "callq  <p111_rt_fail>"
+        ],
+        "frame": [
+          3584
+        ]
+      },
+      "$direct.pixel": {
+        "instructions": 1594,
+        "stackOperands": 456,
+        "movd": 380,
+        "setcc": 6,
+        "cmp": 3,
+        "test": 2,
+        "branches": 4,
+        "movabs": 147,
+        "fp": 66,
+        "calls": [
+          "callq  <p111_rt_op>",
+          "callq  <$product.nearest>",
+          "callq  <$product.trace>",
+          "callq  <p111_rt_op>",
+          "callq  <$product.nearest>",
+          "callq  <$product.trace>",
+          "callq  <p111_rt_op>",
+          "callq  <$product.nearest>",
+          "callq  <$product.trace>",
+          "callq  <p111_rt_op>",
+          "callq  <$product.nearest>",
+          "callq  <$product.trace>"
+        ],
+        "frame": [
+          4448
+        ]
+      },
+      "$direct.trace": {
+        "instructions": 2060,
+        "stackOperands": 730,
+        "movd": 455,
+        "setcc": 24,
+        "cmp": 16,
+        "test": 12,
+        "branches": 16,
+        "movabs": 86,
+        "fp": 103,
+        "calls": [
+          "callq  <p125_rt_take3>",
+          "callq  <$direct.sr>",
+          "callq  <$direct.sx>",
+          "callq  <$direct.sy>",
+          "callq  <$direct.sz>",
+          "callq  <p111_rt_op>",
+          "callq  <$direct.nearest.t>",
+          "callq  <p111_rt_fail>",
+          "callq  <p111_rt_fail>",
+          "callq  <p125_rt_take3>",
+          "callq  <$direct.sr>",
+          "callq  <$direct.sx>",
+          "callq  <$direct.sy>",
+          "callq  <$direct.sz>",
+          "callq  <p111_rt_op>",
+          "callq  <$direct.nearest.t>",
+          "callq  <$direct.skr>",
+          "callq  <$product.nearest>",
+          "callq  <$product.trace>",
+          "callq  <p111_rt_fail>",
+          "callq  <p111_rt_fail>",
+          "callq  <p111_rt_fail>"
+        ],
+        "frame": [
+          4496
+        ]
+      }
+    }
+  }
+}

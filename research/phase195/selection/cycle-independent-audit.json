@@ -1,0 +1,99 @@
+{
+  "kind": "phase195-cycle-independent-source-audit",
+  "targetsRun": false,
+  "maintainedSourceEdited": false,
+  "verdict": "No valid-canonical-frame semantic blocker found; source acceptance and machine qualification remain root-owned.",
+  "reviewedInputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase195/selection/parallel-cycle-v2.bend",
+      "bytes": 3526,
+      "sha256": "ffe5331587940c62d7c62c4f049ee9ec1feec0becd55ec845ff2fd36f8ae7b51"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase195/selection/parallel-cycle-hook-v2.bend",
+      "bytes": 145,
+      "sha256": "01525d19423c470c17877e0b7989890ec49f3f09141d71c816340773a1355853"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase195/selection/parallel-cycle-controls-v2.bend",
+      "bytes": 5447,
+      "sha256": "67446d0a190c451fbb7e3d5a3576b775e46684e16acbe262f41d418488e6f8ef"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase195/selection/parallel-cycle-controls-v1.c",
+      "bytes": 2176,
+      "sha256": "00a437221f0cb4c708c31b8d43f902997abed0986ebc664483ceafe5aa947de0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase195/selection/parallel-cycle-driver-v2.mjs",
+      "bytes": 12030,
+      "sha256": "e07d31dcebf877b6344de4bae1af0b076a852de0e89311fb9467627a4fcb16a9"
+    }
+  ],
+  "apiSources": [
+    {
+      "manifest": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/cycle-api-source02/manifest.json",
+        "bytes": 1149669,
+        "sha256": "3988bea383555c9cb995cb3001e6b5be53f2d9891a25f0deaaecafa71eff52da"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/cycle-api-source02/compiler.bend",
+        "bytes": 1823854,
+        "sha256": "920d5092b9f17eaf8975fa3869dffeec6bdf8339de25646983812c06628f91d0"
+      },
+      "parentSnapshot": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/selected-source02/compiler.bend",
+        "bytes": 1835600,
+        "sha256": "4b29752fec8fbdb593a86b80f99ea18b7705dfc9fe56a364280bebb1f46c5e63"
+      },
+      "protectedUnchanged": true,
+      "exports": [
+        "p88_cache_prepare",
+        "p86_plan",
+        "p169np_plan",
+        "x181_prepared",
+        "x188_many",
+        "x188_render",
+        "x188_assemble",
+        "p195cy_controls",
+        "p195cy_emit"
+      ],
+      "replacementNames": [
+        "x186_p_ready"
+      ]
+    },
+    {
+      "manifest": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/combined-cycle-api-source02/manifest.json",
+        "bytes": 1158851,
+        "sha256": "23c7a2a6ef6402c810c7dabe20737a77fb36a8892d8882f8febce34fe1e7ef95"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/combined-cycle-api-source02/compiler.bend",
+        "bytes": 1848976,
+        "sha256": "2a6f77ad8751128219a870d8d4eac9cd5a87ddf10a8c77a7c99193ff3df30b38"
+      },
+      "parentSnapshot": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/combined-api-source01/compiler.bend",
+        "bytes": 1846991,
+        "sha256": "c682629a7c1177ff62c7932edbfee4d6213ac65a80ab96be89ad0ab5a0b1965c"
+      },
+      "protectedUnchanged": true,
+      "exports": [
+        "p88_cache_prepare",
+        "p86_plan",
+        "p169np_plan",
+        "x181_prepared",
+        "x188_many",
+        "x188_render",
+        "x188_assemble",
+        "p195cy_controls",
+        "p195cy_emit"
+      ],
+      "replacementNames": [
+        "x186_p_ready"
+      ]
+    }
+  ]
+}

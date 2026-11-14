@@ -1,0 +1,101 @@
+{
+  "kind": "phase195-prepared-emission-validation",
+  "complete": true,
+  "targetsRunByThisAudit": false,
+  "batch": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/prepared-emission-check01/report.json",
+    "bytes": 60257,
+    "sha256": "916f5e4b90457976bdef9e54572a3d52bb70031e8ecd15a7e93185027ea6460a"
+  },
+  "guard": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/prepared-emission-check01-guard/process.json",
+    "bytes": 2539,
+    "sha256": "38a4d17b3e44b76db634c884cc33799f2d747e87330dc958643824a7f2cf560f"
+  },
+  "wallSeconds": 113.72983205504715,
+  "peakTreeRssBytes": 1318297600,
+  "baseSeconds": 0.6043443970000002,
+  "sharedPrepareSeconds": 14.582960963999994,
+  "freezeSeconds": 0.10753513099997569,
+  "transportObjects": 157593,
+  "roles": [
+    {
+      "role": "baseline",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/prepared-emission-check01/baseline/report.json",
+        "bytes": 65360,
+        "sha256": "671f1ccca46d41db8adb4f7d4e1d46918e09461ea2493538f8015127474d496f"
+      },
+      "cases": [
+        "local-pair",
+        "editdist",
+        "tree-bitonic"
+      ],
+      "assemblyEqualPairs": 3,
+      "objectEqualPairs": 3,
+      "ordinaryBaseSeconds": 0.4823909020000001,
+      "ordinaryPrepareSeconds": 12.621061296000008,
+      "sharedEmitSeconds": 17.511017516000003,
+      "ordinaryEmitSeconds": 14.977980622000008,
+      "standardBuildMetadataAdmission": true
+    },
+    {
+      "role": "pool",
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/prepared-emission-check01/pool/report.json",
+        "bytes": 65361,
+        "sha256": "fe504a93bfc73b1462ded37b72da102e3c32bb116b3029b9bd777e1b41a7e446"
+      },
+      "cases": [
+        "local-pair",
+        "editdist",
+        "tree-bitonic"
+      ],
+      "assemblyEqualPairs": 3,
+      "objectEqualPairs": 3,
+      "ordinaryBaseSeconds": 0.6295005439999999,
+      "ordinaryPrepareSeconds": 14.952061120000003,
+      "sharedEmitSeconds": 19.34755641999999,
+      "ordinaryEmitSeconds": 16.126375001000014,
+      "standardBuildMetadataAdmission": true
+    }
+  ],
+  "machineOracleStatus": "pending separate guarded builds",
+  "performanceStatus": "comparison mode only; no fast-mode speedup claimed",
+  "buildSteps": [
+    {
+      "role": "baseline",
+      "argv": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/prepared-baseline-build01-argv.json",
+        "bytes": 477,
+        "sha256": "feedfbe8e3299edacd715bea5901c0bee0f1dd1bc9d146325f441741be0105b7"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/prepared-emission-check01/baseline/report.json",
+        "bytes": 65360,
+        "sha256": "671f1ccca46d41db8adb4f7d4e1d46918e09461ea2493538f8015127474d496f"
+      },
+      "runRoot": "selfhost/build/phase195/prepared-baseline-build01",
+      "outerSeconds": 60,
+      "innerSeconds": 50,
+      "diskMiB": 96
+    },
+    {
+      "role": "pool",
+      "argv": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/prepared-pool-build01-argv.json",
+        "bytes": 461,
+        "sha256": "343d1d5c47502f65112409078c40a41a64e21374d8041affa5b4aad7d2617541"
+      },
+      "emission": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/prepared-emission-check01/pool/report.json",
+        "bytes": 65361,
+        "sha256": "fe504a93bfc73b1462ded37b72da102e3c32bb116b3029b9bd777e1b41a7e446"
+      },
+      "runRoot": "selfhost/build/phase195/prepared-pool-build01",
+      "outerSeconds": 60,
+      "innerSeconds": 50,
+      "diskMiB": 96
+    }
+  ]
+}

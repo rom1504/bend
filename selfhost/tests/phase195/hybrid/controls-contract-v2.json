@@ -1,0 +1,86 @@
+{
+  "kind": "phase195-hybrid-controls-contract",
+  "version": 2,
+  "export": "p195h_controls",
+  "labels": [
+    "silent-live-through-mask",
+    "dead-global-write-mask",
+    "branch-live-through-mask",
+    "branch-position-alignment",
+    "again-header-and-parameter-mask",
+    "inline-buffer-and-destination-mask",
+    "inclusive-local-endpoint",
+    "expired-local-home-reusable",
+    "all-global-colors-blocked",
+    "first-read-refused",
+    "cross-branch-local-refused",
+    "real-call-local-refused",
+    "setup-name-refused",
+    "silent-live-through-admission",
+    "dead-write-admission",
+    "loop-invariant-admission",
+    "unused-global-color-reused",
+    "existing-global-home-unchanged"
+  ],
+  "expectedRows": [
+    "silent-live-through-mask=1",
+    "dead-global-write-mask=1",
+    "branch-live-through-mask=1",
+    "branch-position-alignment=1",
+    "again-header-and-parameter-mask=1",
+    "inline-buffer-and-destination-mask=1",
+    "inclusive-local-endpoint=1",
+    "expired-local-home-reusable=1",
+    "all-global-colors-blocked=1",
+    "first-read-refused=1",
+    "cross-branch-local-refused=1",
+    "real-call-local-refused=1",
+    "setup-name-refused=1",
+    "silent-live-through-admission=1",
+    "dead-write-admission=1",
+    "loop-invariant-admission=1",
+    "unused-global-color-reused=1",
+    "existing-global-home-unchanged=1"
+  ],
+  "assertions": 18,
+  "installedHomeAssertions": [
+    "silent-live-through-admission",
+    "dead-write-admission",
+    "loop-invariant-admission",
+    "unused-global-color-reused",
+    "existing-global-home-unchanged"
+  ],
+  "analysisAssertions": [
+    "silent-live-through-mask",
+    "dead-global-write-mask",
+    "branch-live-through-mask",
+    "branch-position-alignment",
+    "again-header-and-parameter-mask",
+    "inline-buffer-and-destination-mask",
+    "inclusive-local-endpoint",
+    "expired-local-home-reusable",
+    "all-global-colors-blocked",
+    "first-read-refused",
+    "cross-branch-local-refused",
+    "real-call-local-refused",
+    "setup-name-refused"
+  ],
+  "fixture": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase195/hybrid/controls-v2.bend",
+    "bytes": 4923,
+    "sha256": "d77f77aa7c8f9fa3ce6f5e4e0410a7f1f861cdfcfe089edf9ba8711b50d0ec23"
+  },
+  "overlay": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase195/hybrid/overlay-v2.bend",
+    "bytes": 7936,
+    "sha256": "d1ea85894d17c9e3c70acdbd93e859f075418e8f15b204b2af7a9dc188822bcf"
+  },
+  "snapshot": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/selected-source02/compiler.bend",
+    "bytes": 1835600,
+    "sha256": "4b29752fec8fbdb593a86b80f99ea18b7705dfc9fe56a364280bebb1f46c5e63"
+  },
+  "requiredReplacement": "x190_j_checked",
+  "replacementSha256": "7369fa5d7bc5ee083029fcf827dafb9748f6b8c12771e1116f09d90326f3a412",
+  "scope": "Finite compiler-data assertions; five installed-home assertions, thirteen masks/eligibility/position assertions. No generated program execution."
+}

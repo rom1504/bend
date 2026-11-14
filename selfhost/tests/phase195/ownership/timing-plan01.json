@@ -1,0 +1,106 @@
+{
+  "kind": "phase195-owned-projection-timing-plan",
+  "executed": false,
+  "cwd": "/home/ai/bend2/build/publish/bend",
+  "argv": [
+    "python3",
+    "-B",
+    "selfhost/tests/phase195/job.py",
+    "ownership-timing01",
+    "100",
+    "16",
+    "python3",
+    "-B",
+    "selfhost/tests/phase195/ownership/timing.py",
+    "--controls",
+    "selfhost/build/phase195/ownership-controls02/report.json",
+    "--out",
+    "selfhost/build/phase195/ownership-timing01",
+    "--rounds",
+    "4",
+    "--repetitions",
+    "20000",
+    "--depth",
+    "8",
+    "--seconds",
+    "90"
+  ],
+  "group": "hot",
+  "sharing": [
+    0,
+    1
+  ],
+  "pairedBlocksPerSharing": 4,
+  "processInvocations": 16,
+  "repetitionsPerProcess": 20000,
+  "controls": [
+    {
+      "group": "hot",
+      "route": "direct",
+      "checks": 360,
+      "failures": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/ownership-controls02/hot/direct-execute.stdout",
+        "bytes": 58,
+        "sha256": "d67b164aa30d835e64aa49389c2b473872e7577aa2529fba163d6d8e6b5e7629"
+      }
+    },
+    {
+      "group": "hot",
+      "route": "assembly",
+      "checks": 360,
+      "failures": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/ownership-controls02/hot/assembly-execute.stdout",
+        "bytes": 58,
+        "sha256": "d67b164aa30d835e64aa49389c2b473872e7577aa2529fba163d6d8e6b5e7629"
+      }
+    },
+    {
+      "group": "cold",
+      "route": "direct",
+      "checks": 360,
+      "failures": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/ownership-controls02/cold/direct-execute.stdout",
+        "bytes": 58,
+        "sha256": "80b276f3246ac4b1542df1cb98f8e3b91f62fca94bfba6fa57d76b38b9bd2a88"
+      }
+    },
+    {
+      "group": "cold",
+      "route": "assembly",
+      "checks": 360,
+      "failures": 0,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/ownership-controls02/cold/assembly-execute.stdout",
+        "bytes": 58,
+        "sha256": "80b276f3246ac4b1542df1cb98f8e3b91f62fca94bfba6fa57d76b38b9bd2a88"
+      }
+    }
+  ],
+  "machineControlObservations": 1440,
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/ownership-controls02/report.json",
+      "bytes": 41530,
+      "sha256": "07569eb3615f850ff65754c49ebcbbb8129c4005aecc873b40ec30e572ee7d6d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase195/ownership/timing.py",
+      "bytes": 6291,
+      "sha256": "83698debc00f484d476098334c0c8267c30de6709e3df092ee43dfcc81027446"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase195/job.py",
+      "bytes": 2712,
+      "sha256": "94afe7df2b26ce90463bc8581a8033cfee7432c5083c10c25e6d07b43c5b8fb1"
+    }
+  ],
+  "product": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/ownership-controls02/hot/direct",
+    "bytes": 126144,
+    "sha256": "2e4ed8cbec589fca0daa6c9ef96b5abc1ff3ccaa5c27fb5ef57c25dcf5d08ae3"
+  },
+  "scope": "Bounded mechanism ceiling; no actual Map, generic admission, compiler throughput, or end-to-end application claim."
+}

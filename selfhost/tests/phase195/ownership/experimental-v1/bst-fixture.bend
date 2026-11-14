@@ -1,0 +1,50 @@
+# Independent ordinary source: binary search, numeric pivots, stored text.
+type ODTree is Data:
+  ODVacant{}
+  ODLeaf{key: U32, text: String}
+  ODBranch{pivot: U32, left: ODTree, right: ODTree}
+
+def od_left(pivot: U32, right: ODTree, result: ODTree & Maybe<&2,String>) -> ODTree & Maybe<&2,String>:
+  (left, found) = result
+  (ODBranch{pivot,left,right},found)
+
+def od_right(pivot: U32, left: ODTree, result: ODTree & Maybe<&2,String>) -> ODTree & Maybe<&2,String>:
+  (right, found) = result
+  (ODBranch{pivot,left,right},found)
+
+def od_find(tree: ODTree, key: U32) -> ODTree & Maybe<&2,String>:
+  match tree:
+    case ODVacant{}: (ODVacant{},None{})
+    case ODLeaf{+stored,+text}:
+      match U32.is_eq(stored,key):
+        case True{}: (ODLeaf{stored,text},Some{text})
+        case False{}: (ODLeaf{stored,text},None{})
+    case ODBranch{+pivot,left,right}:
+      match U32.is_lt(key,pivot):
+        case True{}: od_left(pivot,right,od_find(left,key))
+        case False{}: od_right(pivot,left,od_find(right,key))
+
+# A changed root must not receive a retained-root certificate.
+def od_mutate(tree: ODTree, key: U32) -> ODTree & Maybe<&2,String>:
+  match tree:
+    case ODVacant{}: (ODVacant{},None{})
+    case ODLeaf{stored,+text}: (ODLeaf{U32.add(stored,1),text},Some{text})
+    case ODBranch{+pivot,left,right}: od_left(pivot,right,od_find(left,key))
+
+# A fresh non-descendant escape is outside the optional borrowed-field contract.
+def od_fresh(tree: ODTree, key: U32) -> ODTree & Maybe<&2,String>:
+  (tree,Some{"fresh"})
+
+def od_discard(tree: ODTree, key: U32) -> ODTree & Maybe<&2,String>:
+  match tree:
+    case ODVacant{}: (ODVacant{},None{})
+    case ODLeaf{stored,+text}: (ODLeaf{stored,text},Some{text})
+    case ODBranch{+pivot,left,right}:
+      (left, found) = od_discard(left,key)
+      (ODBranch{pivot,left,right},None{})
+
+def main() -> U32:
+  (tree, found) = od_find(ODBranch{8,ODLeaf{3,"left"},ODLeaf{11,"right"}},3)
+  match found:
+    case None{}: 0
+    case Some{text}: 1

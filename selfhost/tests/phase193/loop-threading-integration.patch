@@ -1,0 +1,9 @@
+--- a/selfhost/src/back/x86/function.bend
++++ b/selfhost/src/back/x86/function.bend
+@@ -256,5 +256,5 @@
+ def x181_function_done(+symbol: String, code: X181Code) -> X181Output:
+   match code:
+     case X181Code{chunks,next,+terminal,+error}:
+-      X181Output{[x188_cat(x191_frame_forward(x188_finish(chunks)),X188One{PSize{symbol}})],
++      X181Output{[x188_cat(x193lt_thread(symbol,x191_frame_forward(x188_finish(chunks))),X188One{PSize{symbol}})],
+         nt_choose(String,String.is_empty(error) && Bool.not(terminal),u => "x86 unterminated function",u => error)}

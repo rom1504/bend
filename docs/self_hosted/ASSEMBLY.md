@@ -312,3 +312,21 @@ external assembler while retaining the authenticated linker and runtime. Shared
 typed instructions feed both consumers; the object route never constructs or
 parses assembly text. See [object emission](x86-objects.md) for supported scope,
 limits, qualification and explicit assembly comparisons.
+
+
+## Qualified research source after the installed release
+
+[Phase193](../../implementation/phase193/README.md) qualifies the maintained x86
+source through direct-object N1→N2→N3 reproduction, independent source checking,
+native64/runtime10 and all45 ordinary outputs. Four checked-hosted products and
+all45 N1/N2 products agree exactly. It composes the existing verified helper and
+continuation plans with a bounded code-growth policy; the common runtime and
+final verifier are unchanged.
+
+Fresh native45 timing is2.117890×mature Bend C, 4.16% less than Phase192. Four native
+compiler requests take9.32% less time, while the same-producer source-cost screen
+is2.94% slower. These are separate program/compiler metrics; full-source builds
+and all regressions are in the report. Current qualified research N2 is
+`selfhost/build/phase193/budget-native-self01/program` with its `report.json`.
+Installed Phase189 remains the default; selecting this research image is explicit.
+Finite qualification and reproduction do not establish whole-compiler correctness.

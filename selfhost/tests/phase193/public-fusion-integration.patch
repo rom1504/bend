@@ -1,0 +1,11 @@
+--- a/selfhost/src/back/x86/program.bend
++++ b/selfhost/src/back/x86/program.bend
+@@ -206,7 +206,7 @@
+       x181_program_join(X181Output{[],x181_program_scalars(body,available)},
+         nt_choose(X181Output,Bool.not(U32.is_eq(mode,0)) &&
+           Bool.not(String.eq(dk(function),"P113Direct") && U32.is_eq(ix(dv(function)),1)),
+-          u => x192h_public(segment,index,ids,ready,available),u => x181_segment(segment,ids)))
++          u => x193f_public(segment,index,ids,ready,available),u => x181_segment(segment,ids)))
+ 
+ 
+ def x181_program_datum(datum: P111QDatum) -> X188Seq:

@@ -1,3 +1,42 @@
+# Phase193 — qualified shared x86 helper composition, 2026-11-13
+
+[Report](../implementation/phase193/README.md) ·
+[Selected runtime table](../implementation/phase193/runtime-budget-summary.md) ·
+[Compiler costs](../implementation/phase193/budget-compiler-cost.md) ·
+[Evidence](../implementation/phase193/evidence.json).
+
+Direct-object native45 runtime improves **2.209895→2.117890× mature selfhost C**,
+0.958367× freshly timed Phase192 (4.16% less); 34 eligible held-out cases improve
+4.24%. Equal-family ratio0.946786; positive-log slowdown0.908674→0.866163;
+37/44 remain>1.1×C and32/44>2×. The >1.1 count rises from36 because one symreg
+variation crosses the threshold. Fixed-work sum27.539→26.198s. All regressions
+remain, including numeric1024+3.55% and expression32+2.35% (both dispersion-flagged).
+QBE reference1.349626×C. Parity remains open; uncapped earlier results are separate.
+
+x86 now consumes the original checked public closed-continuation fusion and
+ready-tail plans below existing direct/H precedence. A2×original+16 statement
+budget controls copied continuation growth without relaxing semantic admission.
+The actual compiler-helper kernel improves6.96%; unrelated Map/record/evening
+workloads improve20–22%. Maintained adapter190lines; canonical source+359lines,
++0.89%bytes. Five other source profiles/maps remain byte-identical.
+
+Four paired native N2 compiler requests take0.906848×Phase192 time (9.32% less).
+Same-QBE-producer N1 requests cost1.029446×. Full self-reproduction341.379s versus
+historical354.521s uses different source; no controlled cold-build gain claimed.
+The budget compiler is24.804MB versus23.759MB Phase192 and26.805MB uncapped.
+Independent source checking, native64/runtime10, all45 oracles, four B1/N1 products,
+all45 N1/N2 objects/135linked sections and exact N2/N3 compiler objects pass.
+Qualified N2: `selfhost/build/phase193/budget-native-self01/program` +report.json.
+Installed Phase189 remains unchanged. No new theorem or recursive acceleration.
+
+Next: borrowed String traversal/value lifetime and early rejection of excessive
+continuation copying, using exact compiler closures before full images. Avoid
+repeating blanket take inlining or adding broad scratch promotion without an
+actual escaping/lifetime witness. Total guarded cost55.34min,57jobs; failures
+retained. Use the final report for independent proof, runtime and build boundaries.
+
+---
+
 # Phase192 — qualified composed x86 regions, 2026-11-13
 
 [Report](../implementation/phase192/README.md) · [Runtime table](../implementation/phase192/runtime-summary.md) ·

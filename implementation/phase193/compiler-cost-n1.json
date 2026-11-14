@@ -1,0 +1,51 @@
+{
+  "kind": "phase193-n1-cost-summary",
+  "complete": true,
+  "scope": "Two balanced rounds/four requests; same QBE producer, changed compiler source; no self-optimized N2 gain measured here",
+  "aggregate": {
+    "complete": true,
+    "timedCases": 4,
+    "correctnessOnlyCases": 0,
+    "roles": {
+      "candidate": {
+        "geomean": 1.0157295530225774,
+        "equalSourceGeomean": 1.0157295530225774,
+        "sourceCount": 4,
+        "meanPositiveLogSlowdown": 0.018303417405937588,
+        "casesOver105": 0,
+        "families": {
+          "coverage-numeric-recurrence-256": 1.009639964547248,
+          "coverage-expression-32": 1.016346543935977,
+          "tree-bitonic": 0.9892727847684756,
+          "test-map-set-ops": 1.0485471040358099
+        }
+      }
+    }
+  },
+  "cases": [
+    {
+      "case": "coverage-numeric-recurrence-256",
+      "baseline": 0.9686823405791074,
+      "candidate": 0.9780204039998353,
+      "ratio": 1.009639964547248
+    },
+    {
+      "case": "coverage-expression-32",
+      "baseline": 1.0656952601857483,
+      "candidate": 1.083115694578737,
+      "ratio": 1.016346543935977
+    },
+    {
+      "case": "tree-bitonic",
+      "baseline": 1.425066459691152,
+      "candidate": 1.4097794650588185,
+      "ratio": 0.9892727847684756
+    },
+    {
+      "case": "test-map-set-ops",
+      "baseline": 4.131755932001397,
+      "candidate": 4.332340717082843,
+      "ratio": 1.0485471040358099
+    }
+  ]
+}

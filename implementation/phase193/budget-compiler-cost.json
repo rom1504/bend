@@ -1,0 +1,724 @@
+{
+  "kind": "phase193-budget-authenticated-compiler-cost-summary",
+  "version": 1,
+  "programsExecuted": false,
+  "complete": true,
+  "analyzer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/bench.py",
+    "bytes": 26736,
+    "sha256": "67b38c1425092f674d1939d3ed1d6f569da76df5e077ce283488287e74edea48"
+  },
+  "screens": {
+    "n1": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase193/budget-compiler-cost-n1-01/report.json",
+        "bytes": 38422,
+        "sha256": "158503b3c3877af93a73c1f92276ed7d53ec6040185cd9467a437a857f28924a"
+      },
+      "manifest": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase193/budget-compiler-cost-n1-plan01/manifest.json",
+        "bytes": 66806,
+        "sha256": "67315bff82640c44e8f46cfe15fa1e4356d5202a9e123d72ce4ceab824c8ffa5"
+      },
+      "rounds": 2,
+      "positionBalanced": true,
+      "caseCount": 4,
+      "observationsRevalidated": 16,
+      "geomeanCandidateOverBaseline": 1.0294460835115136,
+      "timeChangePercent": 2.9446083511513566,
+      "peakRssBytesRange": [
+        36466688,
+        45969408
+      ],
+      "compilerBindings": {
+        "baseline": {
+          "receipt": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/native-image01/report.json",
+            "bytes": 18526,
+            "sha256": "62342c7e560b9b9fd5a3e5ea6f49a7205899f95ec5f66c5eb8c74a5b35350936"
+          },
+          "wallSeconds": 167.90424949722365,
+          "timingScope": "Whole emission/machine pipeline after preflight, under one outer disk/process guard.",
+          "producedStage": "N1",
+          "image": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/native-image01/program",
+            "bytes": 17536200,
+            "sha256": "4060b6b71d857d8eed473c80d3584f5b621faf7275eeb1ee74d765bb3418db65"
+          },
+          "compilerSource": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-source01/compiler.bend",
+            "bytes": 1803092,
+            "sha256": "301435947ae813b64eebaf30610d2be4aa3be5b7ddd772bd0e68f1b6aac48c20"
+          },
+          "producer": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-qbe-chain01/n2/program",
+            "bytes": 18574424,
+            "sha256": "b9c1a847465308b19f97baa505900b1536e0623b1b64885bbfd222f2f3c874c5"
+          },
+          "emitAndQbeSeconds": 161.579962965101
+        },
+        "candidate": {
+          "receipt": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase193/budget-native-image01/report.json",
+            "bytes": 18647,
+            "sha256": "a09c44f730da5aafd6d812f8eceb75ea2bcb611dae7006c2e24565cfd4959057"
+          },
+          "wallSeconds": 170.5988771300763,
+          "timingScope": "Whole emission/machine pipeline after preflight, under one outer disk/process guard.",
+          "producedStage": "N1",
+          "image": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase193/budget-native-image01/program",
+            "bytes": 17662440,
+            "sha256": "e559d4464263bf01038457ea3414e9dfda8978054208e5f42e3b42b01c6fa4d2"
+          },
+          "compilerSource": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase193/selected-source02/compiler.bend",
+            "bytes": 1819134,
+            "sha256": "fd95adc1bdc210bc3827c9dd3536b8e7289fb60c4e983f0e008714665239428a"
+          },
+          "producer": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-qbe-chain01/n2/program",
+            "bytes": 18574424,
+            "sha256": "b9c1a847465308b19f97baa505900b1536e0623b1b64885bbfd222f2f3c874c5"
+          },
+          "emitAndQbeSeconds": 164.07362864585593
+        }
+      },
+      "rows": [
+        {
+          "id": "coverage-numeric-recurrence-256",
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-numeric-recurrence-256.bend",
+            "bytes": 2510,
+            "sha256": "4b9a0ee2ab80c844b74e44e5ce94d17669e70ed5d8f6da3cebe7354e1db9f293"
+          },
+          "baselineSeconds": 0.9342469072435051,
+          "candidateSeconds": 0.9138127979822457,
+          "candidateOverBaseline": 0.978127720731182,
+          "timeChangePercent": -2.1872279268817962,
+          "samplesSeconds": {
+            "baseline": [
+              0.9667662782594562,
+              0.9017275362275541
+            ],
+            "candidate": [
+              0.9170696553774178,
+              0.9105559405870736
+            ]
+          },
+          "maxOverMin": {
+            "baseline": 1.0721268225921066,
+            "candidate": 1.00715355806272
+          },
+          "outputOracles": {
+            "baseline": {
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/native45-01/coverage-numeric-recurrence-256/machine/program.o",
+                "bytes": 92648,
+                "sha256": "74d878946e0703863c3252ed63e922edc534eeca4e6dbae7af9928fc041cb816"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/examples/expected-empty.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            "candidate": {
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase193/budget-native45-01/coverage-numeric-recurrence-256/machine/program.o",
+                "bytes": 93544,
+                "sha256": "2125a92099ae4dd968b3051fe9ff51ce3c577f0709f7e471497dfdc4baffc614"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/examples/expected-empty.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          }
+        },
+        {
+          "id": "coverage-expression-32",
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-expression-32.bend",
+            "bytes": 3497,
+            "sha256": "e1667f5fb6802cda5d062bf0bb97c3f5057fc3ab02d4cd5778e9198cd1439998"
+          },
+          "baselineSeconds": 1.0063871280290186,
+          "candidateSeconds": 1.0763653628528118,
+          "candidateOverBaseline": 1.0695341115509334,
+          "timeChangePercent": 6.953411155093336,
+          "samplesSeconds": {
+            "baseline": [
+              1.0109309870749712,
+              1.001843268983066
+            ],
+            "candidate": [
+              1.0812568333931267,
+              1.071473892312497
+            ]
+          },
+          "maxOverMin": {
+            "baseline": 1.0090709978030095,
+            "candidate": 1.0091303587990519
+          },
+          "outputOracles": {
+            "baseline": {
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/native45-01/coverage-expression-32/machine/program.o",
+                "bytes": 110512,
+                "sha256": "68e9ddf2a04df31c672911a96b95dc46df1fe6207fe8c15110efdd05e818a69f"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/examples/expected-empty.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            "candidate": {
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase193/budget-native45-01/coverage-expression-32/machine/program.o",
+                "bytes": 111608,
+                "sha256": "a016101d204f0cab2cd93f2165e507b0e312a2c098883008c0da10745004637e"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/examples/expected-empty.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          }
+        },
+        {
+          "id": "tree-bitonic",
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/tree-bitonic.bend",
+            "bytes": 6593,
+            "sha256": "405f8d8fb2066e6fedd8baa45943bcdf92b59cb40e23ce2ad3ea4bd3eeb53ae0"
+          },
+          "baselineSeconds": 1.2605486032553017,
+          "candidateSeconds": 1.284200762398541,
+          "candidateOverBaseline": 1.018763385308713,
+          "timeChangePercent": 1.876338530871302,
+          "samplesSeconds": {
+            "baseline": [
+              1.258343008812517,
+              1.2627541976980865
+            ],
+            "candidate": [
+              1.3032362507656217,
+              1.2651652740314603
+            ]
+          },
+          "maxOverMin": {
+            "baseline": 1.0035055536166824,
+            "candidate": 1.0300917022586684
+          },
+          "outputOracles": {
+            "baseline": {
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/native45-01/tree-bitonic/machine/program.o",
+                "bytes": 138792,
+                "sha256": "666b2f958d2dc1472d11faba7245e0dfc43695dbdf53ce30c2a4ac04b16e277f"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/examples/expected-empty.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            "candidate": {
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase193/budget-native45-01/tree-bitonic/machine/program.o",
+                "bytes": 140176,
+                "sha256": "a0c1d9a08cc44ad3fb3f47b8711436358cf2f4021b85d54eb804c444a4d1a01a"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/examples/expected-empty.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          }
+        },
+        {
+          "id": "test-map-set-ops",
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/test-map-set-ops.bend",
+            "bytes": 7234,
+            "sha256": "e93dc56e4c91670bb831c329e9ced90a0e17126bc02f4d7709131a516f0eb0ca"
+          },
+          "baselineSeconds": 3.984728865325451,
+          "candidateSeconds": 4.19903662847355,
+          "candidateOverBaseline": 1.053782269858553,
+          "timeChangePercent": 5.378226985855306,
+          "samplesSeconds": {
+            "baseline": [
+              3.9929406568408012,
+              3.9765170738101006
+            ],
+            "candidate": [
+              4.1724199200980365,
+              4.225653336849064
+            ]
+          },
+          "maxOverMin": {
+            "baseline": 1.0041301427168183,
+            "candidate": 1.012758403461408
+          },
+          "outputOracles": {
+            "baseline": {
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/native45-01/test-map-set-ops/machine/program.o",
+                "bytes": 587720,
+                "sha256": "8f72c7a3e386b4e1f2e21437e23e1858294b36c25a1a3825d2e5e7ea675c8e98"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/examples/expected-empty.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            "candidate": {
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase193/budget-native45-01/test-map-set-ops/machine/program.o",
+                "bytes": 598440,
+                "sha256": "d4082ea4a8ee36d88f31c4dc5137e79db568b9d5e6e4702c7445da1dfed6be59"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/examples/expected-empty.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "n2": {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase193/budget-compiler-cost-n2-01/report.json",
+        "bytes": 38394,
+        "sha256": "b2f2c6a2780b015c2f0a6f50e8b70239234b4ef17c30cf43a32948a9b6b1a270"
+      },
+      "manifest": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase193/budget-compiler-cost-n2-plan01/manifest.json",
+        "bytes": 66700,
+        "sha256": "e2287282e507a582e5594dae254f5248ee4c6cd4ebad222a88a2e33e2b2f7239"
+      },
+      "rounds": 2,
+      "positionBalanced": true,
+      "caseCount": 4,
+      "observationsRevalidated": 16,
+      "geomeanCandidateOverBaseline": 0.9068483245643454,
+      "timeChangePercent": -9.315167543565462,
+      "peakRssBytesRange": [
+        43274240,
+        55513088
+      ],
+      "compilerBindings": {
+        "baseline": {
+          "receipt": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/native-self01/report.json",
+            "bytes": 17317,
+            "sha256": "f10604b2fa82a20cb252f13e939cd95594fc033fcfa857a9ce387aaf39174918"
+          },
+          "wallSeconds": 254.87509373901412,
+          "timingScope": "Whole emission/machine pipeline after preflight, under one outer disk/process guard.",
+          "producedStage": "N2",
+          "image": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/native-self01/program",
+            "bytes": 23759472,
+            "sha256": "8065c04b7005e0d942653ffe330fb5e7a3ac396227dd38f02160dea631685b01"
+          },
+          "compilerSource": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-source01/compiler.bend",
+            "bytes": 1803092,
+            "sha256": "301435947ae813b64eebaf30610d2be4aa3be5b7ddd772bd0e68f1b6aac48c20"
+          },
+          "producer": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/native-image01/program",
+            "bytes": 17536200,
+            "sha256": "4060b6b71d857d8eed473c80d3584f5b621faf7275eeb1ee74d765bb3418db65"
+          },
+          "emissionSeconds": 254.26342439698055
+        },
+        "candidate": {
+          "receipt": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase193/budget-native-self01/report.json",
+            "bytes": 17447,
+            "sha256": "6d504b492736c4d8f0f9abe2ff815ea2709bc8ee5143d6904e5fca544aea6699"
+          },
+          "wallSeconds": 278.2143210293725,
+          "timingScope": "Whole emission/machine pipeline after preflight, under one outer disk/process guard.",
+          "producedStage": "N2",
+          "image": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase193/budget-native-self01/program",
+            "bytes": 24804208,
+            "sha256": "d518efb62f7500681288dedb19979a5aa3bbd1b71a71e509546f64059af8d177"
+          },
+          "compilerSource": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase193/selected-source02/compiler.bend",
+            "bytes": 1819134,
+            "sha256": "fd95adc1bdc210bc3827c9dd3536b8e7289fb60c4e983f0e008714665239428a"
+          },
+          "producer": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase193/budget-native-image01/program",
+            "bytes": 17662440,
+            "sha256": "e559d4464263bf01038457ea3414e9dfda8978054208e5f42e3b42b01c6fa4d2"
+          },
+          "emissionSeconds": 277.6018941840157
+        }
+      },
+      "rows": [
+        {
+          "id": "coverage-numeric-recurrence-256",
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-numeric-recurrence-256.bend",
+            "bytes": 2510,
+            "sha256": "4b9a0ee2ab80c844b74e44e5ce94d17669e70ed5d8f6da3cebe7354e1db9f293"
+          },
+          "baselineSeconds": 1.277696596691385,
+          "candidateSeconds": 1.1413495654705912,
+          "candidateOverBaseline": 0.8932868479309827,
+          "timeChangePercent": -10.671315206901733,
+          "samplesSeconds": {
+            "baseline": [
+              1.3297231984324753,
+              1.2256699949502945
+            ],
+            "candidate": [
+              1.155893302988261,
+              1.1268058279529214
+            ]
+          },
+          "maxOverMin": {
+            "baseline": 1.0848949586029482,
+            "candidate": 1.0258140970819996
+          },
+          "outputOracles": {
+            "baseline": {
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/native45-02/coverage-numeric-recurrence-256/machine/program.o",
+                "bytes": 92648,
+                "sha256": "74d878946e0703863c3252ed63e922edc534eeca4e6dbae7af9928fc041cb816"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/examples/expected-empty.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            "candidate": {
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase193/budget-native45-02/coverage-numeric-recurrence-256/machine/program.o",
+                "bytes": 93544,
+                "sha256": "2125a92099ae4dd968b3051fe9ff51ce3c577f0709f7e471497dfdc4baffc614"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/examples/expected-empty.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          }
+        },
+        {
+          "id": "coverage-expression-32",
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-expression-32.bend",
+            "bytes": 3497,
+            "sha256": "e1667f5fb6802cda5d062bf0bb97c3f5057fc3ab02d4cd5778e9198cd1439998"
+          },
+          "baselineSeconds": 1.3895949118304998,
+          "candidateSeconds": 1.2615871347952634,
+          "candidateOverBaseline": 0.9078812278704929,
+          "timeChangePercent": -9.211877212950714,
+          "samplesSeconds": {
+            "baseline": [
+              1.380421550013125,
+              1.3987682736478746
+            ],
+            "candidate": [
+              1.253932407591492,
+              1.2692418619990349
+            ]
+          },
+          "maxOverMin": {
+            "baseline": 1.0132906673577902,
+            "candidate": 1.0122091544287852
+          },
+          "outputOracles": {
+            "baseline": {
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/native45-02/coverage-expression-32/machine/program.o",
+                "bytes": 110512,
+                "sha256": "68e9ddf2a04df31c672911a96b95dc46df1fe6207fe8c15110efdd05e818a69f"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/examples/expected-empty.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            "candidate": {
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase193/budget-native45-02/coverage-expression-32/machine/program.o",
+                "bytes": 111608,
+                "sha256": "a016101d204f0cab2cd93f2165e507b0e312a2c098883008c0da10745004637e"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/examples/expected-empty.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          }
+        },
+        {
+          "id": "tree-bitonic",
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/tree-bitonic.bend",
+            "bytes": 6593,
+            "sha256": "405f8d8fb2066e6fedd8baa45943bcdf92b59cb40e23ce2ad3ea4bd3eeb53ae0"
+          },
+          "baselineSeconds": 1.755860781064257,
+          "candidateSeconds": 1.5893520060926676,
+          "candidateOverBaseline": 0.9051697168891342,
+          "timeChangePercent": -9.483028311086583,
+          "samplesSeconds": {
+            "baseline": [
+              1.76411408232525,
+              1.7476074798032641
+            ],
+            "candidate": [
+              1.5913116289302707,
+              1.5873923832550645
+            ]
+          },
+          "maxOverMin": {
+            "baseline": 1.0094452574235055,
+            "candidate": 1.0024689835459393
+          },
+          "outputOracles": {
+            "baseline": {
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/native45-02/tree-bitonic/machine/program.o",
+                "bytes": 138792,
+                "sha256": "666b2f958d2dc1472d11faba7245e0dfc43695dbdf53ce30c2a4ac04b16e277f"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/examples/expected-empty.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            "candidate": {
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase193/budget-native45-02/tree-bitonic/machine/program.o",
+                "bytes": 140176,
+                "sha256": "a0c1d9a08cc44ad3fb3f47b8711436358cf2f4021b85d54eb804c444a4d1a01a"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/examples/expected-empty.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          }
+        },
+        {
+          "id": "test-map-set-ops",
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/test-map-set-ops.bend",
+            "bytes": 7234,
+            "sha256": "e93dc56e4c91670bb831c329e9ced90a0e17126bc02f4d7709131a516f0eb0ca"
+          },
+          "baselineSeconds": 5.6130546850617975,
+          "candidateSeconds": 5.1711591156199574,
+          "candidateOverBaseline": 0.9212736033700383,
+          "timeChangePercent": -7.872639662996173,
+          "samplesSeconds": {
+            "baseline": [
+              5.605129675008357,
+              5.620979695115238
+            ],
+            "candidate": [
+              5.162486019078642,
+              5.179832212161273
+            ]
+          },
+          "maxOverMin": {
+            "baseline": 1.0028277704577564,
+            "candidate": 1.003360046500567
+          },
+          "outputOracles": {
+            "baseline": {
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/native45-02/test-map-set-ops/machine/program.o",
+                "bytes": 587720,
+                "sha256": "8f72c7a3e386b4e1f2e21437e23e1858294b36c25a1a3825d2e5e7ea675c8e98"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/examples/expected-empty.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            },
+            "candidate": {
+              "stdout": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase193/budget-native45-02/test-map-set-ops/machine/program.o",
+                "bytes": 598440,
+                "sha256": "d4082ea4a8ee36d88f31c4dc5137e79db568b9d5e6e4702c7445da1dfed6be59"
+              },
+              "stderr": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/examples/expected-empty.stderr",
+                "bytes": 0,
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "fullBuildObservations": {
+    "phase192/native-image01": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/native-image01/report.json",
+        "bytes": 18526,
+        "sha256": "62342c7e560b9b9fd5a3e5ea6f49a7205899f95ec5f66c5eb8c74a5b35350936"
+      },
+      "wallSeconds": 167.90424949722365,
+      "timingScope": "Whole emission/machine pipeline after preflight, under one outer disk/process guard.",
+      "producedStage": "N1",
+      "image": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/native-image01/program",
+        "bytes": 17536200,
+        "sha256": "4060b6b71d857d8eed473c80d3584f5b621faf7275eeb1ee74d765bb3418db65"
+      },
+      "compilerSource": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-source01/compiler.bend",
+        "bytes": 1803092,
+        "sha256": "301435947ae813b64eebaf30610d2be4aa3be5b7ddd772bd0e68f1b6aac48c20"
+      },
+      "producer": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-qbe-chain01/n2/program",
+        "bytes": 18574424,
+        "sha256": "b9c1a847465308b19f97baa505900b1536e0623b1b64885bbfd222f2f3c874c5"
+      },
+      "emitAndQbeSeconds": 161.579962965101
+    },
+    "phase192/native-self01": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/native-self01/report.json",
+        "bytes": 17317,
+        "sha256": "f10604b2fa82a20cb252f13e939cd95594fc033fcfa857a9ce387aaf39174918"
+      },
+      "wallSeconds": 254.87509373901412,
+      "timingScope": "Whole emission/machine pipeline after preflight, under one outer disk/process guard.",
+      "producedStage": "N2",
+      "image": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/native-self01/program",
+        "bytes": 23759472,
+        "sha256": "8065c04b7005e0d942653ffe330fb5e7a3ac396227dd38f02160dea631685b01"
+      },
+      "compilerSource": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-source01/compiler.bend",
+        "bytes": 1803092,
+        "sha256": "301435947ae813b64eebaf30610d2be4aa3be5b7ddd772bd0e68f1b6aac48c20"
+      },
+      "producer": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/native-image01/program",
+        "bytes": 17536200,
+        "sha256": "4060b6b71d857d8eed473c80d3584f5b621faf7275eeb1ee74d765bb3418db65"
+      },
+      "emissionSeconds": 254.26342439698055
+    },
+    "phase192/native-reproduction01": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/native-reproduction01/report.json",
+        "bytes": 18500,
+        "sha256": "6e13ef76d989cc0fa6f6c99c79d29c12c59fe4552b910a145d618f98b787e87d"
+      },
+      "wallSeconds": 354.5210952120833,
+      "timingScope": "Whole emission/machine pipeline after preflight, under one outer disk/process guard.",
+      "producedStage": "N3",
+      "image": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/native-reproduction01/program",
+        "bytes": 23759480,
+        "sha256": "be5606c83cccc8c671ee3ffa7a46511fc7cf73854cb8102ff954fb57f5ae25fc"
+      },
+      "compilerSource": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-source01/compiler.bend",
+        "bytes": 1803092,
+        "sha256": "301435947ae813b64eebaf30610d2be4aa3be5b7ddd772bd0e68f1b6aac48c20"
+      },
+      "producer": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/native-self01/program",
+        "bytes": 23759472,
+        "sha256": "8065c04b7005e0d942653ffe330fb5e7a3ac396227dd38f02160dea631685b01"
+      },
+      "emissionSeconds": 353.72527563618496
+    },
+    "phase193/native-image01": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase193/budget-native-image01/report.json",
+        "bytes": 18647,
+        "sha256": "a09c44f730da5aafd6d812f8eceb75ea2bcb611dae7006c2e24565cfd4959057"
+      },
+      "wallSeconds": 170.5988771300763,
+      "timingScope": "Whole emission/machine pipeline after preflight, under one outer disk/process guard.",
+      "producedStage": "N1",
+      "image": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase193/budget-native-image01/program",
+        "bytes": 17662440,
+        "sha256": "e559d4464263bf01038457ea3414e9dfda8978054208e5f42e3b42b01c6fa4d2"
+      },
+      "compilerSource": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase193/selected-source02/compiler.bend",
+        "bytes": 1819134,
+        "sha256": "fd95adc1bdc210bc3827c9dd3536b8e7289fb60c4e983f0e008714665239428a"
+      },
+      "producer": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-qbe-chain01/n2/program",
+        "bytes": 18574424,
+        "sha256": "b9c1a847465308b19f97baa505900b1536e0623b1b64885bbfd222f2f3c874c5"
+      },
+      "emitAndQbeSeconds": 164.07362864585593
+    },
+    "phase193/native-self01": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase193/budget-native-self01/report.json",
+        "bytes": 17447,
+        "sha256": "6d504b492736c4d8f0f9abe2ff815ea2709bc8ee5143d6904e5fca544aea6699"
+      },
+      "wallSeconds": 278.2143210293725,
+      "timingScope": "Whole emission/machine pipeline after preflight, under one outer disk/process guard.",
+      "producedStage": "N2",
+      "image": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase193/budget-native-self01/program",
+        "bytes": 24804208,
+        "sha256": "d518efb62f7500681288dedb19979a5aa3bbd1b71a71e509546f64059af8d177"
+      },
+      "compilerSource": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase193/selected-source02/compiler.bend",
+        "bytes": 1819134,
+        "sha256": "fd95adc1bdc210bc3827c9dd3536b8e7289fb60c4e983f0e008714665239428a"
+      },
+      "producer": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase193/budget-native-image01/program",
+        "bytes": 17662440,
+        "sha256": "e559d4464263bf01038457ea3414e9dfda8978054208e5f42e3b42b01c6fa4d2"
+      },
+      "emissionSeconds": 277.6018941840157
+    }
+  },
+  "validation": "Manifest input pins verified; exact commands, balanced two-round schedule, process clocks and complete role-specific stdout/stderr oracles revalidated; summaries and aggregates recomputed using maintained bench.py. N1/N2 compiler bindings and identical input source/preparation checked.",
+  "requestScope": "Fresh process startup, checking, lowering, optimization and direct-object emission to stdout. Cached Base preparation is identical. Linking and generated-program execution are excluded. Same input source, not same compiler source: Phase192 source is 1,803,092 bytes; selected Phase193 budget source is 1,819,134 bytes.",
+  "interpretation": {
+    "n1": "Both compiler executables are built by the same frozen QBE seed producer and QBE backend. This screens the cost of the changed compiler implementation under the common producer; it is not an isolated optimizer-pass attribution.",
+    "n2": "Net direct-x86 compiler request cost includes the changed compiler algorithms and the machine-code improvements generated into that compiler. Two rounds on four development requests do not establish significance, broad throughput, cold-build gains or research acceleration.",
+    "builds": "Historical single acquisition observations on different compiler input sources. Whole pipeline includes machine construction after preflight and uses cached Base. Not controlled paired cold-build comparisons. Current budget N3 is omitted because it was in progress at the requested cutoff; no wait or completed N3 claim."
+  }
+}

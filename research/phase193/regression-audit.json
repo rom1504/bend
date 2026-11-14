@@ -1,0 +1,720 @@
+{
+  "kind": "phase193-offline-regression-machine-audit",
+  "targetsRun": false,
+  "scope": "Bounded existing ELF disassembly; no causal timing attribution. Symbol body ranges follow objdump labels. Normalization preserves operands and symbolic targets but removes absolute target addresses and RIP displacements with symbolic comments.",
+  "cases": [
+    {
+      "id": "local-fold",
+      "inputs": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/native45-02/local-fold/machine/program",
+          "bytes": 180544,
+          "sha256": "9d96568866193119bb8d90c5ee8f2d5eedcc69b22f09e049eb44648d3883cd8b"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase193/native45-01/local-fold/machine/program",
+          "bytes": 184640,
+          "sha256": "3afba791d3bd94862ca99ef83b176a9c1d495bbf7fe16dba0a8ead113ec4b6d6"
+        }
+      ],
+      "symbols": [
+        {
+          "name": "p113d_FID_$product.fold.loop",
+          "exactBytesEqual": true,
+          "normalizedInstructionsEqual": true,
+          "baseline": {
+            "address": "0x409022",
+            "bytes": 469,
+            "instructions": 122,
+            "sha256": "79deb5de6f630ecff98f2e4b19c092353c2f16368282085fa8696441ab3d3962",
+            "calls": [
+              "callq  <p117v_FID_$product.fold.loop>"
+            ]
+          },
+          "candidate": {
+            "address": "0x409022",
+            "bytes": 469,
+            "instructions": 122,
+            "sha256": "79deb5de6f630ecff98f2e4b19c092353c2f16368282085fa8696441ab3d3962",
+            "calls": [
+              "callq  <p117v_FID_$product.fold.loop>"
+            ]
+          }
+        },
+        {
+          "name": "p113d_FID_$direct.fold.loop",
+          "exactBytesEqual": true,
+          "normalizedInstructionsEqual": true,
+          "baseline": {
+            "address": "0x408c58",
+            "bytes": 170,
+            "instructions": 45,
+            "sha256": "747cb02a3b25ef90332834838073d859c392ece1f701eb57b4fcf007780d60f9",
+            "calls": [
+              "callq  <p113d_FID_$direct.fold.cell>"
+            ]
+          },
+          "candidate": {
+            "address": "0x408c58",
+            "bytes": 170,
+            "instructions": 45,
+            "sha256": "747cb02a3b25ef90332834838073d859c392ece1f701eb57b4fcf007780d60f9",
+            "calls": [
+              "callq  <p113d_FID_$direct.fold.cell>"
+            ]
+          }
+        },
+        {
+          "name": "p113d_FID_$direct.p93.loop",
+          "exactBytesEqual": false,
+          "normalizedInstructionsEqual": true,
+          "baseline": {
+            "address": "0x409c69",
+            "bytes": 453,
+            "instructions": 101,
+            "sha256": "5d080a65b9e05dca79d9288161a7b9a24d81403020032e2945106bd405d27391",
+            "calls": [
+              "callq  <p111_rt_op>",
+              "callq  <p113d_FID_$product.fold.loop>",
+              "callq  <p111_rt_sink>"
+            ]
+          },
+          "candidate": {
+            "address": "0x409c69",
+            "bytes": 453,
+            "instructions": 101,
+            "sha256": "0057d310036e069172035e26a816e44c8c0f5a241e928d46919731b1a8a4e93c",
+            "calls": [
+              "callq  <p111_rt_op>",
+              "callq  <p113d_FID_$product.fold.loop>",
+              "callq  <p111_rt_sink>"
+            ]
+          }
+        },
+        {
+          "name": "p111_FID_$direct.p93.loop",
+          "exactBytesEqual": false,
+          "normalizedInstructionsEqual": true,
+          "baseline": {
+            "address": "0x40d813",
+            "bytes": 173,
+            "instructions": 43,
+            "sha256": "dc1b58ed6d214d4fe803ebad76c64acde89bfe10d1b5cd98e40c403bafd6c760",
+            "calls": [
+              "callq  <p113d_FID_$direct.p93.loop>",
+              "callq  <p111_rt_return>"
+            ]
+          },
+          "candidate": {
+            "address": "0x40d84a",
+            "bytes": 173,
+            "instructions": 43,
+            "sha256": "7e4a3e255146fd8f48d552156cc4a414d48b5afdd391131c27e5720fd3fb6176",
+            "calls": [
+              "callq  <p113d_FID_$direct.p93.loop>",
+              "callq  <p111_rt_return>"
+            ]
+          }
+        },
+        {
+          "name": "p113d_FID_$direct.bench",
+          "exactBytesEqual": false,
+          "normalizedInstructionsEqual": true,
+          "baseline": {
+            "address": "0x40934e",
+            "bytes": 301,
+            "instructions": 67,
+            "sha256": "51be89eb33eba305db5500be50c4683461c4f3538f54590c3380523144cb5094",
+            "calls": [
+              "callq  <p111_rt_op>",
+              "callq  <p113d_FID_$product.fold.loop>",
+              "callq  <p111_rt_sink>"
+            ]
+          },
+          "candidate": {
+            "address": "0x40934e",
+            "bytes": 301,
+            "instructions": 67,
+            "sha256": "01c35f537ef9c66fbc369e572c4d10cb2e90843581a47a89f20fbc0bd2fa1aad",
+            "calls": [
+              "callq  <p111_rt_op>",
+              "callq  <p113d_FID_$product.fold.loop>",
+              "callq  <p111_rt_sink>"
+            ]
+          }
+        }
+      ],
+      "sections": [
+        {
+          "role": "baseline",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/native45-02/local-fold/machine/program",
+          "bytes": 180544,
+          "sha256": "9d96568866193119bb8d90c5ee8f2d5eedcc69b22f09e049eb44648d3883cd8b",
+          "sections": [
+            {
+              "name": ".text",
+              "bytes": 104833,
+              "sha256": "5f9527ba6f451ad1a3a6c9d340f974e5f6fe4f864ea0bb65bbacc6e7565124b8"
+            },
+            {
+              "name": ".rodata",
+              "bytes": 5264,
+              "sha256": "9a66b43f30ca2b58dfb96695d66647f8fa44fb23056edc14c49a0563012e42a6"
+            },
+            {
+              "name": ".eh_frame",
+              "bytes": 9408,
+              "sha256": "647ba100572001b9de1e75172ce0f0afa01fa8bbfe7ec60484de447b4fb4097d"
+            },
+            {
+              "name": ".data.rel.ro",
+              "bytes": 240,
+              "sha256": "d9452f76813560a3aedc5753e81994875cf5a170bce0b1862ba9c094b3bd092e"
+            },
+            {
+              "name": ".data",
+              "bytes": 5100,
+              "sha256": "b71e5e9faed03800a95b71f6b7fcc193d20de8cab0ee00e91a3effeec1f66c9d"
+            },
+            {
+              "name": ".bss",
+              "bytes": 1148544,
+              "sha256": null
+            }
+          ]
+        },
+        {
+          "role": "candidate",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase193/native45-01/local-fold/machine/program",
+          "bytes": 184640,
+          "sha256": "3afba791d3bd94862ca99ef83b176a9c1d495bbf7fe16dba0a8ead113ec4b6d6",
+          "sections": [
+            {
+              "name": ".text",
+              "bytes": 105217,
+              "sha256": "28f2f63edad3d8dfb6067e48749d7aaced0c15068ee2ef48747c8efbc1b096f4"
+            },
+            {
+              "name": ".rodata",
+              "bytes": 5264,
+              "sha256": "0c9e473bda41206f60b129e7156013a2cb72df88499e4b65b2ad03eb41c04b28"
+            },
+            {
+              "name": ".eh_frame",
+              "bytes": 9408,
+              "sha256": "1d794bb03855b40d545014fb7f2498bd97d0be1c15858448a0a7b454c4bcb7fe"
+            },
+            {
+              "name": ".data.rel.ro",
+              "bytes": 240,
+              "sha256": "25ec23ecea5a4a2ab200ba5850ec440ed3dd9f629661858f02d256b08afd0a63"
+            },
+            {
+              "name": ".data",
+              "bytes": 5100,
+              "sha256": "12795f065acb86a9848e9e06adb4d5a7df0b8cedc3b0c3e8e641bf4594887920"
+            },
+            {
+              "name": ".bss",
+              "bytes": 1148544,
+              "sha256": null
+            }
+          ]
+        },
+        {
+          "role": "baseline",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/native45-02/local-fold/machine/program.o",
+          "bytes": 97600,
+          "sha256": "c8c1760d3814ff60556708c14660dd7a20010cc11e217a00deb6f3301a051837",
+          "sections": [
+            {
+              "name": ".text",
+              "bytes": 49875,
+              "sha256": "e1dc637ca594c71cf99928a131aec99c300bab6ec3242a7bc8c48b90820de34c"
+            },
+            {
+              "name": ".rodata",
+              "bytes": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            {
+              "name": ".data",
+              "bytes": 5080,
+              "sha256": "51afb4212485ee65fc861be3b1227e783b70420962e145a7072c00063f397314"
+            }
+          ]
+        },
+        {
+          "role": "candidate",
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase193/native45-01/local-fold/machine/program.o",
+          "bytes": 98496,
+          "sha256": "9034ad44911a503286ef72b8e3398091b4dd8de06b7bf591de0e4aaf4224a282",
+          "sections": [
+            {
+              "name": ".text",
+              "bytes": 50267,
+              "sha256": "8386e724463d46a1f44c8c637eee1a1fb797c8bbcf17ec88f611a92047b1b0e3"
+            },
+            {
+              "name": ".rodata",
+              "bytes": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            {
+              "name": ".data",
+              "bytes": 5080,
+              "sha256": "51afb4212485ee65fc861be3b1227e783b70420962e145a7072c00063f397314"
+            }
+          ]
+        }
+      ],
+      "changedGeneratedBodiesAfterRelocationNormalization": [
+        {
+          "name": "p111_FID_$direct.Nat.read",
+          "baselineInstructions": 145,
+          "candidateInstructions": 158,
+          "baselineCalls": [
+            "callq  <p111_rt_return>",
+            "callq  <p125_rt_take2>",
+            "callq  <p125_rt_ctor2>",
+            "callq  <p111_rt_jump>",
+            "callq  <p111_rt_fail>"
+          ],
+          "candidateCalls": [
+            "callq  <p111_rt_return>",
+            "callq  <p125_rt_take2>",
+            "callq  <p125_rt_ctor2>",
+            "callq  <p112w_FID_$direct.Nat.read.trim>",
+            "callq  <p111_rt_return>",
+            "callq  <p111_rt_fail>"
+          ]
+        },
+        {
+          "name": "p111_FID_$p111.k.10466",
+          "baselineInstructions": 92,
+          "candidateInstructions": 94,
+          "baselineCalls": [
+            "callq  <p111_rt_op>",
+            "callq  <p111_rt_jump>"
+          ],
+          "candidateCalls": [
+            "callq  <p111_rt_op>",
+            "callq  <p112w_FID_$direct.Nat.is_eq>",
+            "callq  <p112w_FID_$direct.String.is_le>",
+            "callq  <p111_rt_jump>"
+          ]
+        },
+        {
+          "name": "p111_FID_$p111.k.10474",
+          "baselineInstructions": 63,
+          "candidateInstructions": 67,
+          "baselineCalls": [
+            "callq  <p111_rt_jump>"
+          ],
+          "candidateCalls": [
+            "callq  <p112w_FID_$direct.String.is_le>",
+            "callq  <p111_rt_jump>"
+          ]
+        },
+        {
+          "name": "p111_FID_$p111.k.10475",
+          "baselineInstructions": 53,
+          "candidateInstructions": 66,
+          "baselineCalls": [
+            "callq  <p111_rt_jump>"
+          ],
+          "candidateCalls": [
+            "callq  <p112w_FID_$direct.Bool.and>",
+            "callq  <p111_rt_return>"
+          ]
+        },
+        {
+          "name": "p111_FID_$p111.k.4178",
+          "baselineInstructions": 74,
+          "candidateInstructions": 87,
+          "baselineCalls": [
+            "callq  <p111_rt_op>",
+            "callq  <p111_rt_jump>"
+          ],
+          "candidateCalls": [
+            "callq  <p111_rt_op>",
+            "callq  <p112w_FID_$direct.Nat.show>",
+            "callq  <p111_rt_return>"
+          ]
+        },
+        {
+          "name": "p111_FID_$p111.k.4193",
+          "baselineInstructions": 85,
+          "candidateInstructions": 76,
+          "baselineCalls": [
+            "callq  <p111_rt_jump>"
+          ],
+          "candidateCalls": [
+            "callq  <p112w_FID_$direct.p93.loop>",
+            "callq  <p111_rt_jump>"
+          ]
+        },
+        {
+          "name": "p111_FID_$p111.k.4196",
+          "baselineInstructions": 41,
+          "candidateInstructions": 54,
+          "baselineCalls": [
+            "callq  <p111_rt_jump>"
+          ],
+          "candidateCalls": [
+            "callq  <p112w_FID_$direct.U32.show>",
+            "callq  <p111_rt_return>"
+          ]
+        },
+        {
+          "name": "p111_FID_$p111.k.4211",
+          "baselineInstructions": 85,
+          "candidateInstructions": 76,
+          "baselineCalls": [
+            "callq  <p111_rt_jump>"
+          ],
+          "candidateCalls": [
+            "callq  <p112w_FID_$direct.p93.loop>",
+            "callq  <p111_rt_jump>"
+          ]
+        },
+        {
+          "name": "p111_FID_$p111.k.4214",
+          "baselineInstructions": 41,
+          "candidateInstructions": 54,
+          "baselineCalls": [
+            "callq  <p111_rt_jump>"
+          ],
+          "candidateCalls": [
+            "callq  <p112w_FID_$direct.U32.show>",
+            "callq  <p111_rt_return>"
+          ]
+        },
+        {
+          "name": "p111_FID_$p111.k.4225",
+          "baselineInstructions": 71,
+          "candidateInstructions": 68,
+          "baselineCalls": [
+            "callq  <p111_rt_jump>"
+          ],
+          "candidateCalls": [
+            "callq  <p112w_FID_$direct.p93.value>",
+            "callq  <p111_rt_jump>"
+          ]
+        },
+        {
+          "name": "p111_FID_$p111.k.4228",
+          "baselineInstructions": 41,
+          "candidateInstructions": 54,
+          "baselineCalls": [
+            "callq  <p111_rt_jump>"
+          ],
+          "candidateCalls": [
+            "callq  <p112w_FID_$direct.U32.show>",
+            "callq  <p111_rt_return>"
+          ]
+        },
+        {
+          "name": "p111_FID_$p111.k.7330",
+          "baselineInstructions": 90,
+          "candidateInstructions": 109,
+          "baselineCalls": [
+            "callq  <p125_rt_ctor2>",
+            "callq  <p111_rt_jump>"
+          ],
+          "candidateCalls": [
+            "callq  <p125_rt_ctor2>",
+            "callq  <p112w_FID_$direct.p93.word>",
+            "callq  <p112w_FID_$direct.p93.word>",
+            "callq  <p125_rt_ctor2>",
+            "callq  <p125_rt_ctor2>",
+            "callq  <p111_rt_return>"
+          ]
+        },
+        {
+          "name": "p111_FID_$p111.k.7333",
+          "baselineInstructions": 71,
+          "candidateInstructions": 92,
+          "baselineCalls": [
+            "callq  <p111_rt_jump>"
+          ],
+          "candidateCalls": [
+            "callq  <p112w_FID_$direct.p93.word>",
+            "callq  <p125_rt_ctor2>",
+            "callq  <p125_rt_ctor2>",
+            "callq  <p111_rt_return>"
+          ]
+        },
+        {
+          "name": "p111_FID_$p111.k.8395",
+          "baselineInstructions": 53,
+          "candidateInstructions": 66,
+          "baselineCalls": [
+            "callq  <p111_rt_jump>"
+          ],
+          "candidateCalls": [
+            "callq  <p112w_FID_$direct.p93.parsed>",
+            "callq  <p111_rt_return>"
+          ]
+        },
+        {
+          "name": "p111_FID_$p111.k.9431",
+          "baselineInstructions": 53,
+          "candidateInstructions": 66,
+          "baselineCalls": [
+            "callq  <p111_rt_jump>"
+          ],
+          "candidateCalls": [
+            "callq  <p112w_FID_$direct.Nat.read.gate>",
+            "callq  <p111_rt_return>"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "coverage-unicode-text-64",
+      "inputs": [
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/native45-02/coverage-unicode-text-64/machine/program",
+          "bytes": 214464,
+          "sha256": "cd96d870d89185ef1ceb03717b335c6fbb7e0ae720fdb9ea308be87b04657342"
+        },
+        {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase193/native45-01/coverage-unicode-text-64/machine/program",
+          "bytes": 214464,
+          "sha256": "125f800f138851d0a80065a8d12a6de58774886005007d63c769d1a2578680c0"
+        }
+      ],
+      "symbols": [
+        {
+          "name": "p114r_FID_$direct.p37.text.repeat",
+          "exactBytesEqual": false,
+          "normalizedInstructionsEqual": true,
+          "baseline": {
+            "address": "0x40db05",
+            "bytes": 646,
+            "instructions": 147,
+            "sha256": "59622e712bd657bb1e6846ac62493767c17fa829ee7d1d4e518a4aa4335aa715",
+            "calls": [
+              "callq  <p112w_FID_$direct.String.append>",
+              "callq  <p111_rt_fail>",
+              "callq  <p111_rt_sink>",
+              "callq  <p111_rt_keep>",
+              "callq  <p111_rt_fail>"
+            ]
+          },
+          "candidate": {
+            "address": "0x40dc0c",
+            "bytes": 646,
+            "instructions": 147,
+            "sha256": "03538b5feaeb0e5faafd386f2cf6a8e1f75d001365ed58856b758c3d03c0c3b1",
+            "calls": [
+              "callq  <p112w_FID_$direct.String.append>",
+              "callq  <p111_rt_fail>",
+              "callq  <p111_rt_sink>",
+              "callq  <p111_rt_keep>",
+              "callq  <p111_rt_fail>"
+            ]
+          }
+        },
+        {
+          "name": "p114r_FID_$direct.sjoin.go",
+          "exactBytesEqual": false,
+          "normalizedInstructionsEqual": true,
+          "baseline": {
+            "address": "0x40ea2f",
+            "bytes": 1043,
+            "instructions": 227,
+            "sha256": "096e58613145caef8d485da379e62fd039445bd0b9582a0a1f698e0c105bfe56",
+            "calls": [
+              "callq  <p112w_FID_$direct.String.append>",
+              "callq  <p112w_FID_$direct.String.append>",
+              "callq  <p111_rt_fail>",
+              "callq  <p111_rt_sink>",
+              "callq  <p125_rt_take2>",
+              "callq  <p111_rt_keep>",
+              "callq  <p111_rt_sink>",
+              "callq  <p111_rt_fail>"
+            ]
+          },
+          "candidate": {
+            "address": "0x40eb66",
+            "bytes": 1043,
+            "instructions": 227,
+            "sha256": "0037d6bff23944622e2c082b2dc68158daa51b77e57928c80729e773ee516136",
+            "calls": [
+              "callq  <p112w_FID_$direct.String.append>",
+              "callq  <p112w_FID_$direct.String.append>",
+              "callq  <p111_rt_fail>",
+              "callq  <p111_rt_sink>",
+              "callq  <p125_rt_take2>",
+              "callq  <p111_rt_keep>",
+              "callq  <p111_rt_sink>",
+              "callq  <p111_rt_fail>"
+            ]
+          }
+        },
+        {
+          "name": "p114r_FID_$direct.ssplit",
+          "exactBytesEqual": false,
+          "normalizedInstructionsEqual": true,
+          "baseline": {
+            "address": "0x40f4ca",
+            "bytes": 1093,
+            "instructions": 240,
+            "sha256": "912070ae4f2f972586f49893502be6e1370aff58557e179b0ceee54e2664cd08",
+            "calls": [
+              "callq  <p112w_FID_$direct.ssplit.pick>",
+              "callq  <p111_rt_fail>",
+              "callq  <p125_rt_take2>",
+              "callq  <p111_rt_keep>",
+              "callq  <p111_rt_fail>",
+              "callq  <p111_rt_fail>"
+            ]
+          },
+          "candidate": {
+            "address": "0x40f661",
+            "bytes": 1093,
+            "instructions": 240,
+            "sha256": "52149dacf90201f6445eedee88c6e1d341b85e97e5908b6246c5809d1190a730",
+            "calls": [
+              "callq  <p112w_FID_$direct.ssplit.pick>",
+              "callq  <p111_rt_fail>",
+              "callq  <p125_rt_take2>",
+              "callq  <p111_rt_keep>",
+              "callq  <p111_rt_fail>",
+              "callq  <p111_rt_fail>"
+            ]
+          }
+        },
+        {
+          "name": "p113d_FID_$direct.ssplit.pick",
+          "exactBytesEqual": false,
+          "normalizedInstructionsEqual": true,
+          "baseline": {
+            "address": "0x408495",
+            "bytes": 463,
+            "instructions": 111,
+            "sha256": "8cadf3f25ca5d5fa85276ca65d7e4170d8d4f9091886311c1ecfe69ffd9514b6",
+            "calls": [
+              "callq  <p125_rt_ctor2>",
+              "callq  <p113d_FID_$direct.ssplit.push>",
+              "callq  <p111_rt_sink>",
+              "callq  <p111_rt_fail>"
+            ]
+          },
+          "candidate": {
+            "address": "0x408495",
+            "bytes": 463,
+            "instructions": 111,
+            "sha256": "41d6b5c8b050a96634ab52424d4c251c0b061955b24bb0dfc83ac08cc65b6695",
+            "calls": [
+              "callq  <p125_rt_ctor2>",
+              "callq  <p113d_FID_$direct.ssplit.push>",
+              "callq  <p111_rt_sink>",
+              "callq  <p111_rt_fail>"
+            ]
+          }
+        },
+        {
+          "name": "p111_FID_$direct.bench",
+          "exactBytesEqual": false,
+          "normalizedInstructionsEqual": false,
+          "baseline": {
+            "address": "0x40d12f",
+            "bytes": 383,
+            "instructions": 76,
+            "sha256": "6f8a898d50ce62eaae7cf0d4384408a0b8579b044589347eb34f611389d9ac9e",
+            "calls": [
+              "callq  <p111_rt_jump>"
+            ]
+          },
+          "candidate": {
+            "address": "0x40d1c8",
+            "bytes": 390,
+            "instructions": 79,
+            "sha256": "70925000cfc342ccb58fdc2816970fdb6f6879607ac9228a5b98bd1cd10e72f4",
+            "calls": [
+              "callq  <p112w_FID_$direct.U32.show>",
+              "callq  <p111_rt_jump>"
+            ]
+          }
+        },
+        {
+          "name": "p111_FID_$direct.p93.loop",
+          "exactBytesEqual": false,
+          "normalizedInstructionsEqual": true,
+          "baseline": {
+            "address": "0x4102c0",
+            "bytes": 575,
+            "instructions": 119,
+            "sha256": "93a6005161d63685c0abe763ccde0100fc353bfb882a307de4e58d99124c980b",
+            "calls": [
+              "callq  <p111_rt_return>",
+              "callq  <p111_rt_jump>"
+            ]
+          },
+          "candidate": {
+            "address": "0x410483",
+            "bytes": 575,
+            "instructions": 119,
+            "sha256": "edb0fd7531b6c5efd3cc8aabe6a26f72e9980c361cf84e2f0cdcd038b9e0ca7f",
+            "calls": [
+              "callq  <p111_rt_return>",
+              "callq  <p111_rt_jump>"
+            ]
+          }
+        },
+        {
+          "name": "p111_FID_$p111.k.11547",
+          "exactBytesEqual": false,
+          "normalizedInstructionsEqual": false,
+          "baseline": {
+            "address": "0x4104ff",
+            "bytes": 424,
+            "instructions": 87,
+            "sha256": "9b38030ae719a3dd94690866a2a11e38fb90d56ba97fe67f36a8f59c9e6f3c83",
+            "calls": [
+              "callq  <p111_rt_jump>"
+            ]
+          },
+          "candidate": {
+            "address": "0x4106c2",
+            "bytes": 477,
+            "instructions": 105,
+            "sha256": "44c1d6ced8fe14fff70533b9916daf182884e0ad7afa344e3f5d6a11e17ec68c",
+            "calls": [
+              "callq  <p112w_FID_$direct.String.eq>",
+              "callq  <p112w_FID_$direct.Bool.to_u32>",
+              "callq  <p111_rt_jump>"
+            ]
+          }
+        },
+        {
+          "name": "p111_FID_$p111.k.11548",
+          "exactBytesEqual": false,
+          "normalizedInstructionsEqual": false,
+          "baseline": {
+            "address": "0x4106a7",
+            "bytes": 395,
+            "instructions": 83,
+            "sha256": "6c5b3d88f86b78cd9d294f1aac531b8c266af3fe9d1cd7c0f190ed4cea11a871",
+            "calls": [
+              "callq  <p111_rt_jump>"
+            ]
+          },
+          "candidate": {
+            "address": "0x41089f",
+            "bytes": 421,
+            "instructions": 93,
+            "sha256": "72074488f3687c9b539928f3afca133723ff08922f0173afa09b797214177ea0",
+            "calls": [
+              "callq  <p112w_FID_$direct.Bool.to_u32>",
+              "callq  <p111_rt_jump>"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

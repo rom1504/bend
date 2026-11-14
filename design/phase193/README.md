@@ -59,3 +59,65 @@ Keep a concise experiment ledger, costs and report in implementation/phase193.
 Commit and push useful validated changes and negative evidence. Prefer one shared
 capability to several overlapping passes, and do not claim recursive acceleration
 without a controlled research-throughput experiment.
+
+Phase193 held-out accounting excludes `test-map-set-ops`, whose compiler request
+was used for profiling: ten development and 35 held-out programs, with the full
+native45 definition unchanged. The separately extracted compiler kernel is a
+development workload and does not enter the historical geometric mean.
+
+## Selected experiment after the profile screen
+
+The same-source x86 compiler takes 1.3795× the QBE compiler's request time on
+Map-set-ops. Inspection identifies a missing general public fallback route:
+ready helpers exist, but H-region refusal leaves their public caller on the
+scheduler. QBE already consumes the original bounded closed-continuation fusion
+and public-tail plans. Adapt those same verified plans into x86 structured scalar
+instructions, below existing direct/H precedence, with whole-segment rollback.
+Keep scratch argument snapshots, capture order and the pending caller return.
+Do not change admission or the original final verifier.
+
+The 17.8 KB extracted workload uses actual compiler KDef/index routines, collision
+keys, persistent overwrite/read behavior and an independent digest oracle.
+Its 7.7% paired runtime improvement and gains on four unrelated development
+programs justify the next gate: freeze source, acquire N1 with the unchanged
+qualified QBE seed, and measure same-producer compiler request overhead. Only
+then pay for native self-reproduction and the complete unchanged native45 suite.
+This distinguishes extra optimizer cost from faster execution of that optimizer.
+
+The selected source is SHA256
+`6a3c990b2a28454cae16c81757675162b92acaa5f0df2e94b8b202698f2a44ec`.
+The adversarial controls execute its exact 24 adapter definitions through both
+ELF-object and GNU-as routes; their source acceptance and finite observations
+are not an end-to-end proof. The installed release remains unchanged.
+
+## Cost gate and final policy refinement
+
+The first full N1→N2 build costs302.204s versus the previous254.875s observation
+and produces a12.8% larger compiler binary. Source growth alone is0.82%; public
+bodies account for99.45% of measured text growth. The four small N1 requests had
+shown only1.6% extra cost, demonstrating why their screen cannot certify scale.
+Conversely, the resulting N2 executes those requests10.3% faster than Phase192.
+These are distinct acquisition and execution results, not a contradiction.
+
+Before qualifying N3, separate fusion-only and tail-only policies on the real
+compiler kernel. Both contribute; combined runtime is0.9254×baseline, fusion-only
+0.9324×, tail-only0.9489× in a fresh20-round four-role comparison. Then test a
+profitability-only consumer cap: permit the original complete fusion result when
+its existing structured statement count is at most2×original+16. Rejection still
+allows ready-tail conversion on the entire original segment. Keep original
+legality, final verification, effect ordering and fallback intact.
+
+The budgeted kernel object is200,552bytes versus218,048 for the first candidate;
+its runtime0.93039×baseline preserves most of the first candidate's0.92466×gain
+in a fresh18-round three-role screen. Four development programs stay within1%
+of the first candidate. These measured results justify final native qualification
+of source SHA256`fd95adc1bdc210bc3827c9dd3536b8e7289fb60c4e983f0e008714665239428a`
+at selected-source02. All source01 artifacts remain frozen. No binary-size or
+full-build benefit is claimed until this second native acquisition measures it.
+
+
+Final outcome: the budgeted source passes native qualification and the complete
+runtime campaign. It reduces native compiler request time9.32% and program
+runtime4.16%, with explicit source/build costs and remaining regressions.
+See [Phase193 report](../../implementation/phase193/README.md) for final identities,
+metrics, rejected attempts and limits. The installed release remains unchanged.

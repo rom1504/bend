@@ -1,6 +1,6 @@
 # Compiler experiment workflow
 
-Current frontier: [Phase191 qualified indexed x86 selection](../implementation/phase191/README.md).
+Current frontier: [Phase193 qualified shared x86 helper composition](../implementation/phase193/README.md).
 Read [STEERING.md](STEERING.md) for selected targets, measured limitations and the next decision.
 
 For new runs, follow the [build-retention workflow](../docs/self_hosted/build-retention.md):

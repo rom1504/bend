@@ -1,0 +1,20 @@
+[
+  "python3",
+  "-B",
+  "selfhost/tests/phase185/runtime-loop.py",
+  "merge",
+  "--role",
+  "off",
+  "selfhost/build/phase195/ctor-off-build01/programs.manifest.json",
+  "off",
+  "--role",
+  "on",
+  "selfhost/build/phase195/ctor-on-build01/programs.manifest.json",
+  "on",
+  "--reference",
+  "off",
+  "--cases",
+  "coverage-bst-64,tree-bitonic,coverage-map-churn-128",
+  "--out",
+  "selfhost/build/phase195/ctor-gate-runtime-plan01"
+]

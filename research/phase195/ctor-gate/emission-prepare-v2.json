@@ -1,0 +1,17 @@
+[
+  "python3",
+  "-B",
+  "selfhost/tests/phase195/prepared-emission/prepare.py",
+  "--producer",
+  "selfhost/build/phase195/ctor-off-api02/report.json",
+  "--emitter",
+  "off=selfhost/build/phase195/ctor-off-api02/report.json",
+  "--emitter",
+  "on=selfhost/build/phase195/ctor-on-api02/report.json",
+  "--cases",
+  "coverage-bst-64,tree-bitonic,coverage-map-churn-128",
+  "--assets",
+  "selfhost/build/phase194/assets.json",
+  "--out",
+  "selfhost/build/phase195/ctor-gate-emission-plan01.json"
+]

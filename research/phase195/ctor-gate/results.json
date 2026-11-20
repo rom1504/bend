@@ -1,0 +1,340 @@
+{
+  "complete": true,
+  "head": "3137580a04919bce3712f742128ac3f62221dbd7",
+  "sourceDifferenceOnly": "x185_ctor_enabled False/True",
+  "baselineExactN1Objects": 3,
+  "ordinaryCorrectnessCases": 6,
+  "structuralControls": 24,
+  "independentCChecksPerRoute": 221,
+  "routes": [
+    "direct",
+    "assembly"
+  ],
+  "timing": [
+    {
+      "case": "coverage-bst-64",
+      "onOverOff": 0.9869867148649261,
+      "stats": {
+        "off": {
+          "medianMs": 0.02775,
+          "samplesMs": [
+            0.02775,
+            0.02775,
+            0.02775,
+            0.027625,
+            0.027625,
+            0.02775
+          ],
+          "minimumMs": 0.027625,
+          "maximumMs": 0.02775,
+          "lowResolution": false
+        },
+        "on": {
+          "medianMs": 0.027388881337501697,
+          "samplesMs": [
+            0.02732091885279326,
+            0.02732091885279326,
+            0.02732091885279326,
+            0.02745684382221014,
+            0.02745684382221014,
+            0.027864618730460786
+          ],
+          "minimumMs": 0.02732091885279326,
+          "maximumMs": 0.027864618730460786,
+          "lowResolution": false
+        }
+      },
+      "allCorrect": true,
+      "samples": 12
+    },
+    {
+      "case": "tree-bitonic",
+      "onOverOff": 0.9591642924976258,
+      "stats": {
+        "off": {
+          "medianMs": 0.52,
+          "samplesMs": [
+            0.53,
+            0.5175,
+            0.52,
+            0.52,
+            0.5525,
+            0.5175
+          ],
+          "minimumMs": 0.5175,
+          "maximumMs": 0.5525,
+          "lowResolution": false
+        },
+        "on": {
+          "medianMs": 0.49876543209876545,
+          "samplesMs": [
+            0.49876543209876545,
+            0.49876543209876545,
+            0.49382716049382713,
+            0.5061728395061729,
+            0.49382716049382713,
+            0.49876543209876545
+          ],
+          "minimumMs": 0.49382716049382713,
+          "maximumMs": 0.5061728395061729,
+          "lowResolution": false
+        }
+      },
+      "allCorrect": true,
+      "samples": 12
+    },
+    {
+      "case": "coverage-map-churn-128",
+      "onOverOff": 1.0877970639222312,
+      "stats": {
+        "off": {
+          "medianMs": 0.8189300411522634,
+          "samplesMs": [
+            0.823045267489712,
+            0.8271604938271605,
+            0.8189300411522634,
+            0.8189300411522634,
+            0.8189300411522634,
+            0.8189300411522634
+          ],
+          "minimumMs": 0.8189300411522634,
+          "maximumMs": 0.8271604938271605,
+          "lowResolution": false
+        },
+        "on": {
+          "medianMs": 0.8908296943231441,
+          "samplesMs": [
+            0.8951965065502183,
+            0.8864628820960698,
+            0.8908296943231441,
+            0.8864628820960698,
+            0.8908296943231441,
+            0.8908296943231441
+          ],
+          "minimumMs": 0.8864628820960698,
+          "maximumMs": 0.8951965065502183,
+          "lowResolution": false
+        }
+      },
+      "allCorrect": true,
+      "samples": 12
+    }
+  ],
+  "aggregate": {
+    "complete": true,
+    "timedCases": 3,
+    "correctnessOnlyCases": 0,
+    "roles": {
+      "on": {
+        "geomean": 1.0098357248393324,
+        "equalSourceGeomean": 1.0098357248393324,
+        "sourceCount": 3,
+        "meanPositiveLogSlowdown": 0.028051536302010918,
+        "casesOver105": 1,
+        "families": {
+          "bst": 0.9869867148649261,
+          "tree-bitonic": 0.9591642924976258,
+          "map-churn": 1.0877970639222312
+        }
+      }
+    }
+  },
+  "costs": [
+    {
+      "job": "ctor-off-api01",
+      "seconds": 6.831479757092893,
+      "returncode": 1,
+      "peakRSS": 711311360
+    },
+    {
+      "job": "ctor-off-api02",
+      "seconds": 6.6930031683295965,
+      "returncode": 1,
+      "peakRSS": 701386752
+    },
+    {
+      "job": "ctor-off-api03",
+      "seconds": 14.752481069415808,
+      "returncode": 0,
+      "peakRSS": 2143518720
+    },
+    {
+      "job": "ctor-on-api03",
+      "seconds": 14.710581411607563,
+      "returncode": 0,
+      "peakRSS": 2302517248
+    },
+    {
+      "job": "ctor-gate-controls01",
+      "seconds": 9.253835630603135,
+      "returncode": 0,
+      "peakRSS": 728162304
+    },
+    {
+      "job": "ctor-gate-emit01",
+      "seconds": 65.92493210639805,
+      "returncode": 0,
+      "peakRSS": 1163952128
+    },
+    {
+      "job": "ctor-off-build01",
+      "seconds": 3.762278067879379,
+      "returncode": 0,
+      "peakRSS": 32186368
+    },
+    {
+      "job": "ctor-on-build01",
+      "seconds": 3.7676260573789477,
+      "returncode": 0,
+      "peakRSS": 32559104
+    },
+    {
+      "job": "ctor-gate-runtime01",
+      "seconds": 12.791315527632833,
+      "returncode": 0,
+      "peakRSS": 33497088
+    }
+  ],
+  "totalGuardSeconds": 138.4875327963382,
+  "failedSeconds": 13.52448292542249,
+  "pins": [
+    {
+      "file": "selfhost/build/phase195/ctor-off-api01-guard/process.json",
+      "bytes": 3394,
+      "sha256": "678adf19c798f35bb74a30127ee2987f718fc5269dd94387da031c907264f6e7"
+    },
+    {
+      "file": "selfhost/build/phase195/ctor-off-api01/report.json",
+      "bytes": 4283,
+      "sha256": "099da82cf3d5985466c030607a7408919911d6e65c6cdd121ba07b5c27415f1a"
+    },
+    {
+      "file": "selfhost/build-retention/phase195/ctor-off-api01-close/report.json",
+      "bytes": 1439,
+      "sha256": "35ead9f4c4eb65e6fb94ea0015fb1c55a8bc08e68a0f2a32b4b3b30f999ed9f6"
+    },
+    {
+      "file": "selfhost/build/phase195/ctor-off-api02-guard/process.json",
+      "bytes": 3395,
+      "sha256": "873a56470123428ea27c8286e6ac5d75ad35577f90cc88804396e1c11a7f0c85"
+    },
+    {
+      "file": "selfhost/build/phase195/ctor-off-api02/report.json",
+      "bytes": 4290,
+      "sha256": "770797dda4300ab7d10da232cdab674928edeb3dc2b1476ac4ee03f3e99c1713"
+    },
+    {
+      "file": "selfhost/build-retention/phase195/ctor-off-api02-close/report.json",
+      "bytes": 1438,
+      "sha256": "e2ca418080875a614dfd0fb9c6bda5bf2ad7a2ce10667ae33adc8d360838887d"
+    },
+    {
+      "file": "selfhost/build/phase195/ctor-off-api03-guard/process.json",
+      "bytes": 3399,
+      "sha256": "cf2cc9c2d3b0d1d8df559c2b30061cf0df2a705c4ca409ac3bb59ce193cdcf48"
+    },
+    {
+      "file": "selfhost/build/phase195/ctor-off-api03/report.json",
+      "bytes": 5351,
+      "sha256": "f0ba2a035f9fb28fe81b0fbd352d15d3aae73afd4ad70503bea858829487976f"
+    },
+    {
+      "file": "selfhost/build-retention/phase195/ctor-off-api03-close/report.json",
+      "bytes": 1441,
+      "sha256": "9e5b4e147372ac0b04f87db5a8d572657a2b20a188e9812cf933969619e0b51a"
+    },
+    {
+      "file": "selfhost/build/phase195/ctor-on-api03-guard/process.json",
+      "bytes": 3393,
+      "sha256": "994f2d86fdb0c8a1cb911d191713dad1e59078ba4de355d2e984b57c15a59878"
+    },
+    {
+      "file": "selfhost/build/phase195/ctor-on-api03/report.json",
+      "bytes": 5347,
+      "sha256": "17a92ce0faad87d3abd0f5cfc0c3ed55c03413f6d03e84b4ffa0ad70ca73f5e5"
+    },
+    {
+      "file": "selfhost/build-retention/phase195/ctor-on-api03-close/report.json",
+      "bytes": 1437,
+      "sha256": "eeadccf6c75f2e331b0d1058c8ea8a02e0f3b4da63c05f812a458530d5a4ac59"
+    },
+    {
+      "file": "selfhost/build/phase195/ctor-gate-controls01-guard/process.json",
+      "bytes": 3122,
+      "sha256": "6de365e5ce97238f3097cff4c723e33f2ac4e0ae8ce19eea60f2f3adaf9ce658"
+    },
+    {
+      "file": "selfhost/build/phase195/ctor-gate-controls01/report.json",
+      "bytes": 23683,
+      "sha256": "ffbb8b160156d812645029c893af96221f519e8cce4fbf6e7d3b4db147a62987"
+    },
+    {
+      "file": "selfhost/build-retention/phase195/ctor-gate-controls01-close/report.json",
+      "bytes": 1459,
+      "sha256": "ad2f1c26b8599dc1f79ceef7018d058e3af1588ccea47e2460449aaf154fc531"
+    },
+    {
+      "file": "selfhost/build/phase195/ctor-gate-emit01-guard/process.json",
+      "bytes": 2520,
+      "sha256": "e28a1893191562bea59c4f63b1820cf33edc50c0184878b11285ef13f1b1752e"
+    },
+    {
+      "file": "selfhost/build/phase195/ctor-gate-emit01/report.json",
+      "bytes": 59648,
+      "sha256": "9481634011d5ceeeb40db7d8f71b9c90c00b4c218b78513f41e40b9016d995c6"
+    },
+    {
+      "file": "selfhost/build-retention/phase195/ctor-gate-emit01-close/report.json",
+      "bytes": 1448,
+      "sha256": "b4cbc10ec54a8f242b1e34e38b6b75df0ccac6471c8569153ec53c458d5eb0c0"
+    },
+    {
+      "file": "selfhost/build/phase195/ctor-off-build01-guard/process.json",
+      "bytes": 2632,
+      "sha256": "97649b4c140d5493cb2b6162452918f332abdbbf6c46dcf4efd9bcd8f73dcb5a"
+    },
+    {
+      "file": "selfhost/build/phase195/ctor-off-build01/report.json",
+      "bytes": 127244,
+      "sha256": "48f61703fe71a74a0dfb2ca9b12fb411eeb592e033623992f3ebb198b5d36d68"
+    },
+    {
+      "file": "selfhost/build-retention/phase195/ctor-off-build01-close/report.json",
+      "bytes": 1447,
+      "sha256": "738bd1c06af3cbcb3a48097dfe382526f89c4d976d0b8d5a7d5c1b6717c84d7a"
+    },
+    {
+      "file": "selfhost/build/phase195/ctor-on-build01-guard/process.json",
+      "bytes": 2628,
+      "sha256": "47e91ee79303d68a8f93a4b41e8cd36e7296350078a8fa74d154b94c0ba7f469"
+    },
+    {
+      "file": "selfhost/build/phase195/ctor-on-build01/report.json",
+      "bytes": 127214,
+      "sha256": "8c501985ea0e48b168b8fe6672027263b45dd4b6a26a0f980e2629dd79dbcf33"
+    },
+    {
+      "file": "selfhost/build-retention/phase195/ctor-on-build01-close/report.json",
+      "bytes": 1444,
+      "sha256": "03a2b8a0ba9d114c04ca98fb0e9b8bc45db4ff23a6e828ed7bbfbaf92933d074"
+    },
+    {
+      "file": "selfhost/build/phase195/ctor-gate-runtime01-guard/process.json",
+      "bytes": 2433,
+      "sha256": "85365aa221291944814864b222571739f2e14e39d209b2b63d0aaf066c905227"
+    },
+    {
+      "file": "selfhost/build/phase195/ctor-gate-runtime01/report.json",
+      "bytes": 281733,
+      "sha256": "17f57bfe7d503d8e73a44a1c72d19478495f006ba6a0ce6d6ed1a7cfb27cdaaf"
+    },
+    {
+      "file": "selfhost/build-retention/phase195/ctor-gate-runtime01-close/report.json",
+      "bytes": 1456,
+      "sha256": "45315257640d0a9644a75eaea724055933e5f89f37c5b16f38d569a0fc12c9be"
+    }
+  ],
+  "scope": "Isolated existing switch, no maintained/installed/native qualification change. Six balanced200ms-target rounds; finite ordinary and cold-cache correctness. Two preserved API preparation failures exposed historical QBE-only fixture dependencies.",
+  "decision": "Reject global constructor gate; Map128 transfer control regresses8.78%, preserve maintained false gate.",
+  "laneReleased": true
+}

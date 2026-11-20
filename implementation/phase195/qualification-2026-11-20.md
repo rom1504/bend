@@ -39,8 +39,16 @@ On four paired development requests, source-to-object latency was **1.01285×** 
 
 Eight maintained source files now contain the qualified composition. Reassembling the live x86 profile reproduced the checked 1,849,936-byte source exactly. Phase195 is available from source and as the explicitly qualified N2 at `selfhost/build/phase195/native-self01/program`. The installed selector still points to Phase189. The compressed evidence archive includes timing observations and failed calibration and source-check receipts. [Promotion receipt](maintained-promotion01.json) · [Evidence verification](qualification-evidence/verification.json)
 
-## Next experiment
+## Testing the constructor fast path
 
 The remaining families have different causes. A 56.3 s controlled capture profiled tree-bitonic and BST64 through all three backends on the exact benchmark binaries. BST64 took 27.88 µs per x86 invocation and 18.58 µs on QBE in the clean profiling batches. Physical time in the named lookup/descent worker was already comparable (8.66 and 8.99 µs). Named ownership helpers accumulated 13.65 and 5.51 µs respectively. QBE inlines free-list constructor fast paths into the worker and calls a helper on fallback. That difference in where the work runs prevents treating the 8.14 µs difference as removable overhead.
 
-The existing Bend predicate `x185_ctor_enabled` disables a shared constructor expansion in the x86 backend. An earlier QBE experiment gave mixed tree and Map outcomes. The next x86 test can reuse the same implementation and compare the exact machine output and whole-program times on BST, tree sort and Map. If the result is mixed, count fast-path hits and fallback calls at the hot private sites before changing the policy. Preserve ownership, publication and the existing runtime fallback. Matching QBE on *all five* tree and BST inputs would improve the suite geomean only 3.75%. That counterfactual gives scale for the hypothesis. [Exact-machine comparison](../../research/phase195/hardware-models/tree-bst-followup.md) · [Capture, quality and hot-PC evidence](../../research/phase195/hardware-models/tree-bst-profile-results.md)
+The existing Bend predicate `x185_ctor_enabled` disables a shared constructor expansion in the x86 backend. A controlled off/on build from the new source isolated that one flag. All three off objects matched the qualified N1 products byte for byte. Both settings passed ordinary outputs, and the experiment passed 24 structural controls and 221 independent C observations per machine route. Machine inspection found the free-list fast path and the original fallback.
+
+| Whole-program runtime, six paired rounds | Gate on versus off |
+| --- | ---: |
+| BST64 | 1.30% less |
+| Tree-bitonic | 4.08% less |
+| Map128 | 8.78% more |
+
+Enabling the switch globally would have raised the three-case geometric runtime by 0.98%. Map’s seek worker grew from 4,194 to 7,040 instructions. This is evidence of code growth alongside a regression. It does not isolate code layout, spilling or cache behavior as its cause. Keep the gate off in the qualified compiler. Before designing a selective policy, measure per-site execution, constructor-cache hits and fallback calls in tree and Map to distinguish high-frequency small expansions from cold or repeatedly duplicated ones. [Hot-PC evidence](../../research/phase195/hardware-models/tree-bst-profile-results.md) · [Controlled gate experiment](../../research/phase195/ctor-gate/README.md)

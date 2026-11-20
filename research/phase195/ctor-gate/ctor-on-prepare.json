@@ -1,0 +1,21 @@
+[
+  "python3",
+  "-B",
+  "selfhost/tests/phase190/prepare-api.py",
+  "--parent-source",
+  "selfhost/build/phase195/selected-source02/compiler.bend",
+  "--assets",
+  "selfhost/build/phase194/assets.json",
+  "--set",
+  "x185_ctor_enabled=true",
+  "--module",
+  "selfhost/tests/phase185/cold-ctor-controls.bend",
+  "--module",
+  "research/phase195/ctor-gate/controls.bend",
+  "--export",
+  "p185ct_controls",
+  "--export",
+  "p195cg_emit",
+  "--out",
+  "selfhost/build/phase195/ctor-on-api-source01"
+]

@@ -1,0 +1,94 @@
+[
+  {
+    "worker": 0,
+    "description": "packed constructor predicate",
+    "baselineAsm": "3fa79edebe238f247448616f3040125838301e7850db196ae6f5f96191712597",
+    "candidateAsm": "cfd9caa11f7ccca9121d1f810b9408c414333c8ca1a26cbf1ef749b2aa4232f1",
+    "normalizedIdentical": false,
+    "difference": [
+      "--- ",
+      "+++ ",
+      "@@ -42,4 +42,5 @@",
+      "   jne .Lworker0_b2",
+      "   movabsq $72247809549533184, %rsi",
+      "+  movabsq $0, %r8",
+      "   jmp .Lworker0_b3",
+      " .Lworker0_b2:"
+    ]
+  },
+  {
+    "worker": 1,
+    "description": "64-bit scalar terminal code",
+    "baselineAsm": "b9d9041693ec636eeaef4d8de7df46a00622c50968c19135d0e1f1e4a765f870",
+    "candidateAsm": "a46f4e8a728741bc04854a5d0b6234a1df1915d93bd0cccea8d3c61d5766f242",
+    "normalizedIdentical": false,
+    "difference": [
+      "--- ",
+      "+++ ",
+      "@@ -39,4 +39,5 @@",
+      "   jne .Lworker1_b2",
+      "   movabsq $18364758544493064720, %rdi",
+      "+  movabsq $0, %r8",
+      "   jmp .Lworker1_b3",
+      " .Lworker1_b2:"
+    ]
+  },
+  {
+    "worker": 2,
+    "description": "canonicalizing false arm",
+    "baselineAsm": "b8ad2a9d30e1dd084889a97c273f69c919748dc9e657234a3724b9795706951d",
+    "candidateAsm": "a2cf6e9baf7f758e3d6c1f5c7bd691897a5ad490e79b0101bcdb1c8e621b53c9",
+    "normalizedIdentical": false,
+    "difference": [
+      "--- ",
+      "+++ ",
+      "@@ -41,4 +41,5 @@",
+      " .Lworker2_b2:",
+      "   movabsq $9, %rdi",
+      "+  movabsq $0, %r8",
+      " .Lworker2_b3:",
+      "   movq %r8, %rdx"
+    ]
+  },
+  {
+    "worker": 3,
+    "description": "alternate fuel position",
+    "baselineAsm": "38b6cfd26b0224ecdaeeb9befbb09b543bc8a38f4021c8788e699a58041717fd",
+    "candidateAsm": "2b070fa78d6395e11dbe8dc749366daf023e775f58b9456150a8d46f55322a0c",
+    "normalizedIdentical": false,
+    "difference": [
+      "--- ",
+      "+++ ",
+      "@@ -39,4 +39,5 @@",
+      "   jne .Lworker3_b2",
+      "   movabsq $18364758544493064720, %rdi",
+      "+  movabsq $0, %r8",
+      "   jmp .Lworker3_b3",
+      " .Lworker3_b2:"
+    ]
+  },
+  {
+    "worker": 4,
+    "description": "machine refusal: next tag leaves the arm",
+    "baselineAsm": "89a295c16f9847adba1703d59f5fb3fd13145cf464c1fcd6438b587a79d4a206",
+    "candidateAsm": "8420e25dd0b123dbfeb431f0a530713c6784082e3ecd2f1f181909a0dd6b4703",
+    "normalizedIdentical": true,
+    "difference": []
+  },
+  {
+    "worker": 5,
+    "description": "machine refusal: mutation on each absorbing visit",
+    "baselineAsm": "6ac7386656850ae28114a72e10cc63a0133e5971b40ccb7c359fd65abf14ce9a",
+    "candidateAsm": "34f72ba787026b4dde96cee09f02696e9f72b0e1951ebb482883bafebdc28b32",
+    "normalizedIdentical": true,
+    "difference": []
+  },
+  {
+    "worker": 6,
+    "description": "machine refusal: crossed parameter stabilizes only on the next trip",
+    "baselineAsm": "46854098cbb5b544db5556adb571b7328205e4e8c78aef71071884e25358b054",
+    "candidateAsm": "5a9818716374933ed2f3fb682e50b38c088bae30fa886b04ad0dbe0eb110e05e",
+    "normalizedIdentical": true,
+    "difference": []
+  }
+]

@@ -1,0 +1,57 @@
+{
+  "coverage-bst-64": {
+    "functionsCompared": 207,
+    "changed": [
+      {
+        "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_98_115_116_46_100_111_119_110_",
+        "display": "p113d_FID_$product.bst.down",
+        "beforeLines": 165,
+        "afterLines": 167,
+        "diff": [
+          "--- base",
+          "+++ candidate",
+          "@@ -48,8 +48,10 @@",
+          "   movabsq $164, %r11",
+          "   cmpq %r11, %rdi",
+          "   jne .Lp113d_FID_$product.bst.down_b2",
+          "   movabsq $72237913944883200, %r13",
+          "+  movabsq $0, %r10",
+          "+  movq %r10, -2256(%rbp)",
+          "   jmp .Lp113d_FID_$product.bst.down_b3",
+          " .Lp113d_FID_$product.bst.down_b2:",
+          "   movq %rsi, %rdi",
+          "   shrq $40, %rdi"
+        ]
+      }
+    ],
+    "baselineObject": "13cd8df333db1341bc6b5e10e1d96d6695cccf4799cc478670da0dda53ebbb43",
+    "candidateObject": "f2a56e77bf1a87882c92350e32133f2b7e67cf5979b0cae19d370d752efe276c"
+  },
+  "drain": {
+    "functionsCompared": 178,
+    "changed": [
+      {
+        "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_100_114_97_105_110_46_116_105_99_107_115_",
+        "display": "p113d_FID_$product.drain.ticks",
+        "beforeLines": 124,
+        "afterLines": 125,
+        "diff": [
+          "--- base",
+          "+++ candidate",
+          "@@ -45,8 +45,9 @@",
+          "   movabsq $164, %r11",
+          "   cmpq %r11, %rsi",
+          "   jne .Lp113d_FID_$product.drain.ticks_b2",
+          "   movabsq $72237913944883200, %rdi",
+          "+  movabsq $0, %r14",
+          "   jmp .Lp113d_FID_$product.drain.ticks_b3",
+          " .Lp113d_FID_$product.drain.ticks_b2:",
+          "   movq %rdi, %rsi",
+          "   shrq $40, %rsi"
+        ]
+      }
+    ],
+    "baselineObject": "a36823233b2ea2cd55ee6214eb475abd533a4c8ae244234f399e03f2c6f1eeb7",
+    "candidateObject": "0b7b91b50b86c3f35a173c94f340fa189806a619e4adca67e1a2f60c6e604f3c"
+  }
+}

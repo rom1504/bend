@@ -8,6 +8,16 @@ See [results, limits and cost](results-2026-11-20.md) and
 [machine-readable comparison](comparison.json). The roughly ten-pair study and
 profile-weighted ranking remain incomplete.
 
+A separate [prospective remainder26 projection](prospective-remainder26.md)
+supports cheaper arithmetic before candidate execution: model cycles0.095690×,
+block throughput0.20×. The checked candidate subsequently eliminated four lexer calls and reduced measured
+lexer runtime by 3.17%. Active-ray runtime moved +0.48% with substantial dispersion.
+[Emitted-code checks and paired results](../prospective/README.md).
+
+[Current tree/BST follow-up](tree-bst-followup.md) authenticates the N1 products
+and retained C/QBE references. It recommends exact-product dynamic attribution
+before another model, with explicit missing ownership/path frequencies.
+
 The following is the preserved pre-run checkpoint and frozen protocol.
 
 Status at the user's request to conclude: four authenticated before/after pairs

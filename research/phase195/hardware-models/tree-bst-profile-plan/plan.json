@@ -1,0 +1,196 @@
+{
+  "schema": "bend-native-runtime-profile-plan-v1",
+  "targetsRun": false,
+  "manifest": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst-plan01/manifest.json",
+    "bytes": 215852,
+    "sha256": "6a736debf250532cba46c0bfc111866756db5e5c5b4469708918f91f261fa8f9"
+  },
+  "programManifest": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/broad-runtime-plan01/manifest.json",
+    "bytes": 3206224,
+    "sha256": "a4f8c972d18199890a741795932173e4924050a598327d486cb112bb82b48662"
+  },
+  "calibrationReport": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/broad-runtime02/report.json",
+    "bytes": 2354983,
+    "sha256": "28d3183510b9fe3ea8cd892de0846d02f44bce17dc5a640983f6a1f06560f16e"
+  },
+  "estimates": [
+    {
+      "workload": "12-tree-bitonic-candidate",
+      "case": "tree-bitonic",
+      "role": "candidate",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/native45-01/tree-bitonic/machine/program",
+        "bytes": 216744,
+        "sha256": "9e4faa35c600a2c30d41b6c8104871cfd8a6c69381780bb8585885ec4a03197a"
+      },
+      "repetitions": 5730,
+      "warmups": 4,
+      "runtimeArgs": [
+        8,
+        0
+      ],
+      "calibratedCpuSecondsPerRepetition": 0.0005236399176954732,
+      "estimatedCpuSecondsPerRun": 3.0004567283950614,
+      "estimatedPooledSamples": 605.8614547720797
+    },
+    {
+      "workload": "12-tree-bitonic-c",
+      "case": "tree-bitonic",
+      "role": "c",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/tree-bitonic/bend-c/program",
+        "bytes": 115744,
+        "sha256": "19550d9d4c7b770e374ac234d09c6860458807a6f7ff1d0c4153f1f1cf8d513a"
+      },
+      "repetitions": 18010,
+      "warmups": 4,
+      "runtimeArgs": [
+        8,
+        0
+      ],
+      "calibratedCpuSecondsPerRepetition": 0.00016657486807387863,
+      "estimatedCpuSecondsPerRun": 3.000013374010554,
+      "estimatedPooledSamples": 605.7719312905926
+    },
+    {
+      "workload": "12-tree-bitonic-qbe",
+      "case": "tree-bitonic",
+      "role": "qbe",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-native45-acquire01/tree-bitonic/phase186-qbe-n2/machine/program",
+        "bytes": 187128,
+        "sha256": "82ac09159ffea013e77cfcae4e8c7778869fe0dfb47320ff79dfded3b6977154"
+      },
+      "repetitions": 7573,
+      "warmups": 4,
+      "runtimeArgs": [
+        8,
+        0
+      ],
+      "calibratedCpuSecondsPerRepetition": 0.0003961484257871064,
+      "estimatedCpuSecondsPerRun": 3.000032028485757,
+      "estimatedPooledSamples": 605.7756980596239
+    },
+    {
+      "workload": "15-coverage-bst-64-candidate",
+      "case": "coverage-bst-64",
+      "role": "candidate",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/native45-01/coverage-bst-64/machine/program",
+        "bytes": 195496,
+        "sha256": "092dce5036f64b4b0331ca0bcdcd809b83846fb6515fcfd79c17ad0ea83d524c"
+      },
+      "repetitions": 106557,
+      "warmups": 4,
+      "runtimeArgs": [
+        64,
+        17
+      ],
+      "calibratedCpuSecondsPerRepetition": 2.815416204217536e-05,
+      "estimatedCpuSecondsPerRun": 3.00002304472808,
+      "estimatedPooledSamples": 605.7738840316315
+    },
+    {
+      "workload": "15-coverage-bst-64-c",
+      "case": "coverage-bst-64",
+      "role": "c",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+        "bytes": 105128,
+        "sha256": "de4601ec006bbdffaf3295e1a1877db48f3395c83529f8c2577178f820d08a18"
+      },
+      "repetitions": 405660,
+      "warmups": 4,
+      "runtimeArgs": [
+        64,
+        17
+      ],
+      "calibratedCpuSecondsPerRepetition": 7.395363097497591e-06,
+      "estimatedCpuSecondsPerRun": 3.0000029941308726,
+      "estimatedPooledSamples": 605.7698353533492
+    },
+    {
+      "workload": "15-coverage-bst-64-qbe",
+      "case": "coverage-bst-64",
+      "role": "qbe",
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-native45-acquire01/coverage-bst-64/phase186-qbe-n2/machine/program",
+        "bytes": 173408,
+        "sha256": "6aa818a86a7fe427edda90ccd904e8c519170a64f0c3c7c2e5b4f5f7ae0e6f8b"
+      },
+      "repetitions": 161751,
+      "warmups": 4,
+      "runtimeArgs": [
+        64,
+        17
+      ],
+      "calibratedCpuSecondsPerRepetition": 1.8547034614536634e-05,
+      "estimatedCpuSecondsPerRun": 3.000001395935915,
+      "estimatedPooledSamples": 605.7695126409059
+    }
+  ],
+  "samplePeriodsUs": [
+    8000,
+    13000
+  ],
+  "cleanRounds": 1,
+  "estimatedTargetCpuSeconds": 54.00158869705872,
+  "captureCommand": [
+    "/usr/bin/python3.9",
+    "-B",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+    "--out",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01-guard",
+    "--run-root",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01",
+    "--seconds",
+    "174",
+    "--disk-mib",
+    "128",
+    "--rss-mib",
+    "2048",
+    "--available-mib",
+    "16384",
+    "--cpu",
+    "3",
+    "--",
+    "/usr/bin/python3.9",
+    "-B",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/run.py",
+    "--manifest",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst-plan01/manifest.json",
+    "--out",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01",
+    "--modes",
+    "clean,sample",
+    "--rounds",
+    "1",
+    "--periods-us",
+    "8000,13000"
+  ],
+  "offlineCommands": [
+    [
+      "/usr/bin/python3.9",
+      "-B",
+      "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/compare.py",
+      "--report",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/report.json",
+      "--out",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst-plan01/comparison.json"
+    ],
+    [
+      "/usr/bin/python3.9",
+      "-B",
+      "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/render.py",
+      "--comparison",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst-plan01/comparison.json",
+      "--out",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst-plan01/summary.md"
+    ]
+  ],
+  "acceptance": "Require complete unchanged exact-output captures and existing >=500 pooled sample, multiple period, coverage, unknown-symbol and zero-loss/overrun gates. Estimates do not guarantee admission.",
+  "interpretation": "Pool only identical role commands. No cross-role total-CPU ratio: counts differ. Divide each role clean CPU or admitted estimated owner CPU by its own repetitions for descriptive per-repetition attribution. Startup/warmups remain included; this is not paired runtime qualification or source-owner proof."
+}

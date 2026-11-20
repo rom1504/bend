@@ -1,0 +1,23 @@
+[
+  "python3",
+  "-B",
+  "selfhost/tests/phase190/prepare-api.py",
+  "--parent-source",
+  "selfhost/build/phase195/combined-api-source01/compiler.bend",
+  "--assets",
+  "selfhost/build/phase194/assets.json",
+  "--out",
+  "selfhost/build/phase195/remainder-api-source01",
+  "--module",
+  "research/phase195/prospective/constant-remainder.bend",
+  "--module",
+  "research/phase195/prospective/remainder-hook.bend",
+  "--module",
+  "research/phase195/prospective/remainder-controls.bend",
+  "--replace",
+  "x185_function_place",
+  "--export",
+  "p195rc_controls",
+  "--export",
+  "p195rc_emit"
+]

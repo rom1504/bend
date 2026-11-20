@@ -122,3 +122,8 @@ type X191Pick is Data:
   X191Pick{+rest: List<&2,P113DStmt>, +operation: X191Operation}
 type X191AddressCode is Data:
   X191AddressCode{+prefix: X188Seq, +operand: X187Operand}
+
+law x181_label:
+  for n: U32
+  for frame: X181Frame
+  String

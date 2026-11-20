@@ -1,0 +1,19 @@
+{
+  "runs": [
+    {
+      "run": 1,
+      "status": "rejected",
+      "reason": "LLVM11 exit0 with error stderr; every block omitted one direct jump. Original complete:true is insufficient and superseded by this disposition.",
+      "report": "research/phase195/hardware-models/evidence/run01/report.json",
+      "sha256": "14a46eb57e360fd94c64cbab77a2e49376104a0c64ec519b22e354ad0c5c3add"
+    },
+    {
+      "run": 2,
+      "status": "accepted",
+      "reason": "All ten calls exit0, empty stderr and exact expected instruction counts after one direct jmpq -> jmp spelling correction per input.",
+      "report": "research/phase195/hardware-models/evidence/run02/report.json",
+      "sha256": "3c8225709f442bee361ef39918941f12bf79849178951e5b30c77d8a3360a751"
+    }
+  ],
+  "targetsExecuted": false
+}

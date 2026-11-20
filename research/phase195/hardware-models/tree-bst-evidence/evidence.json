@@ -1,0 +1,969 @@
+{
+  "targetsRun": false,
+  "simulatorsRun": false,
+  "functions": [
+    {
+      "case": "tree-bitonic",
+      "role": "c",
+      "decoded": "WL:$direct.warp",
+      "symbol": "WL_FID_36_100_105_114_101_99_116_46_119_97_114_112_",
+      "address": "000000000000ce60",
+      "instructions": 791,
+      "branches": 109,
+      "calls": {
+        "heap_hand": 12,
+        "span_fade": 6,
+        "term_drop": 5,
+        "heap_alloc_miss": 3,
+        "task_node": 7,
+        "err_fail": 4
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/tree-bitonic-c-WL__direct.warp.asm.gz",
+        "bytes": 5270,
+        "sha256": "791f3532b9caf81b0999a7dc741da65feb8460f791cf66c03d107c7582c10b27"
+      }
+    },
+    {
+      "case": "tree-bitonic",
+      "role": "c",
+      "decoded": "WL:$direct.warp_zip",
+      "symbol": "WL_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_122_105_112_",
+      "address": "000000000000dfa0",
+      "instructions": 643,
+      "branches": 97,
+      "calls": {
+        "term_drop": 6,
+        "heap_alloc_miss": 3,
+        "heap_hand": 10,
+        "span_fade": 5,
+        "err_fail": 1
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/tree-bitonic-c-WL__direct.warp_zip.asm.gz",
+        "bytes": 4322,
+        "sha256": "07885ff198f5c6d64d7a5872ee6520de3fae6fc0101f1c5ac62908818c00cb3c"
+      }
+    },
+    {
+      "case": "tree-bitonic",
+      "role": "qbe",
+      "decoded": "p113d:$direct.warp_zip",
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_122_105_112_",
+      "address": "0000000000406a70",
+      "instructions": 205,
+      "branches": 24,
+      "calls": {
+        "p111_rt_fail": 3,
+        "p125_rt_take1": 3,
+        "p125_rt_take2": 3,
+        "p111_rt_sink": 4,
+        "p125_rt_ctor2": 3
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/tree-bitonic-qbe-p113d__direct.warp_zip.asm.gz",
+        "bytes": 1610,
+        "sha256": "b61c85cdfe0cb7a60609d1bc3c2e6af1d4a07919ce4ad080533b29827d912986"
+      }
+    },
+    {
+      "case": "tree-bitonic",
+      "role": "qbe",
+      "decoded": "p114r:$direct.warp",
+      "symbol": "p114r_FID_36_100_105_114_101_99_116_46_119_97_114_112_",
+      "address": "000000000040cbf0",
+      "instructions": 302,
+      "branches": 24,
+      "calls": {
+        "p125_rt_take2": 3,
+        "p111_rt_sink": 8,
+        "p111_rt_fail": 4,
+        "p125_rt_take1": 3,
+        "p112w:$direct.warp_leaf": 1,
+        "p112w:$direct.warp_zip": 1
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/tree-bitonic-qbe-p114r__direct.warp.asm.gz",
+        "bytes": 2129,
+        "sha256": "8dda05d0cdcf3c345ff2e6c51a9d37c0ad75db8235991ffcab73ec6754f064fc"
+      }
+    },
+    {
+      "case": "tree-bitonic",
+      "role": "baseline",
+      "decoded": "p113d:$direct.warp_zip",
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_122_105_112_",
+      "address": "0000000000408309",
+      "instructions": 298,
+      "branches": 12,
+      "calls": {
+        "p125_rt_take2": 3,
+        "p125_rt_ctor2": 3,
+        "p111_rt_sink": 4,
+        "p125_rt_take1": 3,
+        "p111_rt_fail": 3
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/tree-bitonic-baseline-p113d__direct.warp_zip.asm.gz",
+        "bytes": 1815,
+        "sha256": "3a95a9ef5364bef45c88e80cbcb917a1cfc7aa6845f536ee6f03e292468da2ee"
+      }
+    },
+    {
+      "case": "tree-bitonic",
+      "role": "baseline",
+      "decoded": "p114r:$direct.warp",
+      "symbol": "p114r_FID_36_100_105_114_101_99_116_46_119_97_114_112_",
+      "address": "0000000000411e47",
+      "instructions": 557,
+      "branches": 22,
+      "calls": {
+        "p111_rt_frame": 1,
+        "p112w:$direct.warp_zip": 1,
+        "p111_rt_fail": 4,
+        "p125_rt_take1": 3,
+        "p112w:$direct.warp_leaf": 1,
+        "p111_rt_sink": 8,
+        "p125_rt_take2": 3
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/tree-bitonic-baseline-p114r__direct.warp.asm.gz",
+        "bytes": 3361,
+        "sha256": "bdbfd7fa66f0bc47b53a5fc0ba7df8d7ead6dd21424cf586ede7c7216302b25a"
+      }
+    },
+    {
+      "case": "tree-bitonic",
+      "role": "candidate",
+      "decoded": "p113d:$direct.warp_zip",
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_122_105_112_",
+      "address": "0000000000408309",
+      "instructions": 298,
+      "branches": 12,
+      "calls": {
+        "p125_rt_take2": 3,
+        "p125_rt_ctor2": 3,
+        "p111_rt_sink": 4,
+        "p125_rt_take1": 3,
+        "p111_rt_fail": 3
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/tree-bitonic-candidate-p113d__direct.warp_zip.asm.gz",
+        "bytes": 1814,
+        "sha256": "81aed4c3c9a83238edc53d2aee42eed861822ec9a73044348f13d2032095acd2"
+      }
+    },
+    {
+      "case": "tree-bitonic",
+      "role": "candidate",
+      "decoded": "p114r:$direct.warp",
+      "symbol": "p114r_FID_36_100_105_114_101_99_116_46_119_97_114_112_",
+      "address": "0000000000411e32",
+      "instructions": 557,
+      "branches": 22,
+      "calls": {
+        "p111_rt_frame": 1,
+        "p112w:$direct.warp_zip": 1,
+        "p111_rt_fail": 4,
+        "p125_rt_take1": 3,
+        "p112w:$direct.warp_leaf": 1,
+        "p111_rt_sink": 8,
+        "p125_rt_take2": 3
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/tree-bitonic-candidate-p114r__direct.warp.asm.gz",
+        "bytes": 3348,
+        "sha256": "5c5dde64fb282b697960beaffb3f1f65ac8e1f155ac66d8809b4d7972d39c651"
+      }
+    },
+    {
+      "case": "coverage-bst-64",
+      "role": "c",
+      "decoded": "WL:$direct.inorder",
+      "symbol": "WL_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_",
+      "address": "0000000000009bf0",
+      "instructions": 273,
+      "branches": 39,
+      "calls": {
+        "heap_hand": 4,
+        "span_fade": 2,
+        "heap_alloc_miss": 2,
+        "task_node": 2,
+        "err_fail": 2
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/coverage-bst-64-c-WL__direct.inorder.asm.gz",
+        "bytes": 2176,
+        "sha256": "34c11c537cc400995d35168d1a4577f4f3bc6e4561b8600c2cc7755ddfeeceb8"
+      }
+    },
+    {
+      "case": "coverage-bst-64",
+      "role": "c",
+      "decoded": "WL:$direct.bst.up",
+      "symbol": "WL_FID_36_100_105_114_101_99_116_46_98_115_116_46_117_112_",
+      "address": "000000000000ae80",
+      "instructions": 275,
+      "branches": 41,
+      "calls": {
+        "heap_alloc_miss": 2,
+        "heap_hand": 4,
+        "span_fade": 2,
+        "term_drop": 3,
+        "err_fail": 1
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/coverage-bst-64-c-WL__direct.bst.up.asm.gz",
+        "bytes": 2229,
+        "sha256": "ace6fc007ee0827131313989ec75e5347e8678e9334f30039720ae2daf52b778"
+      }
+    },
+    {
+      "case": "coverage-bst-64",
+      "role": "c",
+      "decoded": "WL:$direct.bst.down",
+      "symbol": "WL_FID_36_100_105_114_101_99_116_46_98_115_116_46_100_111_119_110_",
+      "address": "000000000000b360",
+      "instructions": 338,
+      "branches": 52,
+      "calls": {
+        "heap_alloc_miss": 6,
+        "heap_hand": 4,
+        "span_fade": 2,
+        "term_drop": 2,
+        "err_fail": 1
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/coverage-bst-64-c-WL__direct.bst.down.asm.gz",
+        "bytes": 2607,
+        "sha256": "f98c000cc20edc6910f489c26405d0177c68c488ef68fb2230afe982e5aede07"
+      }
+    },
+    {
+      "case": "coverage-bst-64",
+      "role": "c",
+      "decoded": "WL:$direct.bst.step",
+      "symbol": "WL_FID_36_100_105_114_101_99_116_46_98_115_116_46_115_116_101_112_",
+      "address": "000000000000b990",
+      "instructions": 308,
+      "branches": 49,
+      "calls": {
+        "heap_alloc_miss": 6,
+        "heap_hand": 4,
+        "span_fade": 2,
+        "term_drop": 2,
+        "err_fail": 1
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/coverage-bst-64-c-WL__direct.bst.step.asm.gz",
+        "bytes": 2414,
+        "sha256": "b27b0c4322b99d6fbe8c8ae94c0115d240610cfe05a93825e44c5a813f326580"
+      }
+    },
+    {
+      "case": "coverage-bst-64",
+      "role": "qbe",
+      "decoded": "p113d:$direct.bst.step",
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_98_115_116_46_115_116_101_112_",
+      "address": "0000000000407080",
+      "instructions": 120,
+      "branches": 10,
+      "calls": {
+        "p111_rt_fail": 2,
+        "p125_rt_take2": 1,
+        "p125_rt_take3": 1,
+        "p113d:$product.bst.pick": 1,
+        "p125_rt_ctor2": 2
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/coverage-bst-64-qbe-p113d__direct.bst.step.asm.gz",
+        "bytes": 1101,
+        "sha256": "f91e9c85409c8ed91dcb01ef983e20df2506f5d828724e8c0283890d6852e4c9"
+      }
+    },
+    {
+      "case": "coverage-bst-64",
+      "role": "qbe",
+      "decoded": "p113d:$product.bst.step",
+      "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_98_115_116_46_115_116_101_112_",
+      "address": "0000000000407290",
+      "instructions": 181,
+      "branches": 14,
+      "calls": {
+        "p111_rt_fail": 1,
+        "p125_rt_take3": 1,
+        "p125_rt_ctor3": 2,
+        "p125_rt_ctor2": 2
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/coverage-bst-64-qbe-p113d__product.bst.step.asm.gz",
+        "bytes": 1444,
+        "sha256": "07a8e71b8d272ee5876bad0270ca440a4f56c38c0af4a98bccf3fc9ebe514e22"
+      }
+    },
+    {
+      "case": "coverage-bst-64",
+      "role": "qbe",
+      "decoded": "p113d:$direct.bst.down",
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_98_115_116_46_100_111_119_110_",
+      "address": "0000000000407580",
+      "instructions": 31,
+      "branches": 2,
+      "calls": {
+        "p113d:$direct.bst.step": 1
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/coverage-bst-64-qbe-p113d__direct.bst.down.asm.gz",
+        "bytes": 383,
+        "sha256": "00fa6e4c2751e40ed90648b753e69aee232942cc4d55c28f57f99ae501b8eda6"
+      }
+    },
+    {
+      "case": "coverage-bst-64",
+      "role": "qbe",
+      "decoded": "p113d:$product.bst.down",
+      "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_98_115_116_46_100_111_119_110_",
+      "address": "00000000004075e0",
+      "instructions": 214,
+      "branches": 16,
+      "calls": {
+        "p111_rt_fail": 1,
+        "p125_rt_take3": 1,
+        "p125_rt_ctor3": 2,
+        "p125_rt_ctor2": 2
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/coverage-bst-64-qbe-p113d__product.bst.down.asm.gz",
+        "bytes": 1624,
+        "sha256": "190287078dd3439ce11065ca1386b83bdee04455008e298f29ae6dce84593352"
+      }
+    },
+    {
+      "case": "coverage-bst-64",
+      "role": "qbe",
+      "decoded": "p113d:$direct.bst.up",
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_98_115_116_46_117_112_",
+      "address": "0000000000407930",
+      "instructions": 140,
+      "branches": 14,
+      "calls": {
+        "p125_rt_take2": 1,
+        "p125_rt_take3": 1,
+        "p125_rt_ctor3": 2,
+        "p111_rt_sink": 1,
+        "p111_rt_fail": 3
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/coverage-bst-64-qbe-p113d__direct.bst.up.asm.gz",
+        "bytes": 1202,
+        "sha256": "fab36bc3db24269bbf06f38adc8bb90e1d9dad936ed7eefe28db7a5c73c77ca7"
+      }
+    },
+    {
+      "case": "coverage-bst-64",
+      "role": "qbe",
+      "decoded": "p112w:inorder",
+      "symbol": "p112w_FID_105_110_111_114_100_101_114_",
+      "address": "00000000004085e0",
+      "instructions": 12,
+      "branches": 0,
+      "calls": {
+        "p111_rt_closure": 1
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/coverage-bst-64-qbe-p112w_inorder.asm.gz",
+        "bytes": 233,
+        "sha256": "e5c98dfab3041e59ecdfe791faca91fb589af6d7cd1ca8e8358fd4da72a6d568"
+      }
+    },
+    {
+      "case": "coverage-bst-64",
+      "role": "qbe",
+      "decoded": "p111:inorder",
+      "symbol": "p111_FID_105_110_111_114_100_101_114_",
+      "address": "000000000040adf0",
+      "instructions": 32,
+      "branches": 2,
+      "calls": {
+        "p111_rt_closure": 1,
+        "p111_rt_return": 1
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/coverage-bst-64-qbe-p111_inorder.asm.gz",
+        "bytes": 447,
+        "sha256": "0202b0f1499190fdabe3708a8bafa0f2dfb8586a31bc1c27d8627a11f79b344d"
+      }
+    },
+    {
+      "case": "coverage-bst-64",
+      "role": "qbe",
+      "decoded": "p111:$direct.inorder",
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_",
+      "address": "000000000040af70",
+      "instructions": 30,
+      "branches": 0,
+      "calls": {
+        "p111_rt_reg_get": 2,
+        "p114r:$direct.inorder": 1,
+        "p111_rt_return": 1
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/coverage-bst-64-qbe-p111__direct.inorder.asm.gz",
+        "bytes": 363,
+        "sha256": "1f62bc11a3848f5e9f829b2f25a4d0822ece0c1ba6930509638e70beb12bc94d"
+      }
+    },
+    {
+      "case": "coverage-bst-64",
+      "role": "qbe",
+      "decoded": "p114r:$direct.inorder",
+      "symbol": "p114r_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_",
+      "address": "000000000040afd0",
+      "instructions": 98,
+      "branches": 8,
+      "calls": {
+        "p125_rt_take3": 1,
+        "p111_rt_fail": 2
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/coverage-bst-64-qbe-p114r__direct.inorder.asm.gz",
+        "bytes": 878,
+        "sha256": "647b7813696a69133e78767a5c5404a1be153ce9e7d911dd9155d8d6bda3349b"
+      }
+    },
+    {
+      "case": "coverage-bst-64",
+      "role": "baseline",
+      "decoded": "p113d:$direct.bst.step",
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_98_115_116_46_115_116_101_112_",
+      "address": "000000000040891c",
+      "instructions": 167,
+      "branches": 3,
+      "calls": {
+        "p125_rt_take2": 1,
+        "p125_rt_ctor2": 2,
+        "p125_rt_take3": 1,
+        "p113d:$product.bst.pick": 1,
+        "p111_rt_fail": 2
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/coverage-bst-64-baseline-p113d__direct.bst.step.asm.gz",
+        "bytes": 1200,
+        "sha256": "777d24947d55729ad2f4b1094e76548c45f54c07f1e5edbc08ccf794e8a9f6a2"
+      }
+    },
+    {
+      "case": "coverage-bst-64",
+      "role": "baseline",
+      "decoded": "p113d:$product.bst.step",
+      "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_98_115_116_46_115_116_101_112_",
+      "address": "0000000000408bff",
+      "instructions": 170,
+      "branches": 4,
+      "calls": {
+        "p125_rt_take3": 1,
+        "p125_rt_ctor3": 2,
+        "p125_rt_ctor2": 2,
+        "p111_rt_fail": 1
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/coverage-bst-64-baseline-p113d__product.bst.step.asm.gz",
+        "bytes": 1217,
+        "sha256": "e8069cf88c6c3a12a5efaa4d9b933e768a9b043efad9732b7d71bafa4cb74c6a"
+      }
+    },
+    {
+      "case": "coverage-bst-64",
+      "role": "baseline",
+      "decoded": "p113d:$direct.bst.down",
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_98_115_116_46_100_111_119_110_",
+      "address": "0000000000408edc",
+      "instructions": 39,
+      "branches": 2,
+      "calls": {
+        "p113d:$direct.bst.step": 1
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/coverage-bst-64-baseline-p113d__direct.bst.down.asm.gz",
+        "bytes": 451,
+        "sha256": "4e7a47c545aa57cf09b6554aba36180b5ae0e44699865fb94ec3710f2bc3b760"
+      }
+    },
+    {
+      "case": "coverage-bst-64",
+      "role": "baseline",
+      "decoded": "p113d:$product.bst.down",
+      "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_98_115_116_46_100_111_119_110_",
+      "address": "0000000000408f6f",
+      "instructions": 155,
+      "branches": 8,
+      "calls": {
+        "p125_rt_take3": 1,
+        "p125_rt_ctor3": 2,
+        "p125_rt_ctor2": 2,
+        "p111_rt_fail": 1
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/coverage-bst-64-baseline-p113d__product.bst.down.asm.gz",
+        "bytes": 1179,
+        "sha256": "795c58e20b7ae1da377eb9a6fb07939ce98017fd4257f1fc0f1214c156e7551b"
+      }
+    },
+    {
+      "case": "coverage-bst-64",
+      "role": "baseline",
+      "decoded": "p113d:$direct.bst.up",
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_98_115_116_46_117_112_",
+      "address": "0000000000409232",
+      "instructions": 205,
+      "branches": 7,
+      "calls": {
+        "p125_rt_take2": 1,
+        "p125_rt_take3": 1,
+        "p125_rt_ctor3": 2,
+        "p111_rt_sink": 1,
+        "p111_rt_fail": 3
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/coverage-bst-64-baseline-p113d__direct.bst.up.asm.gz",
+        "bytes": 1366,
+        "sha256": "2b78c8f7de150d07d767fd535af1897cd2670d8bf828474a488715da0d8364c4"
+      }
+    },
+    {
+      "case": "coverage-bst-64",
+      "role": "baseline",
+      "decoded": "p111:inorder",
+      "symbol": "p111_FID_105_110_111_114_100_101_114_",
+      "address": "000000000040e6a1",
+      "instructions": 50,
+      "branches": 2,
+      "calls": {
+        "p111_rt_closure": 1,
+        "p111_rt_return": 1
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/coverage-bst-64-baseline-p111_inorder.asm.gz",
+        "bytes": 572,
+        "sha256": "7eb67bccc04b0a5bb8f735ca326eab63bfae1d2f8199cbadc367702823680b74"
+      }
+    },
+    {
+      "case": "coverage-bst-64",
+      "role": "baseline",
+      "decoded": "p114r:$direct.inorder",
+      "symbol": "p114r_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_",
+      "address": "000000000040e968",
+      "instructions": 171,
+      "branches": 8,
+      "calls": {
+        "p111_rt_fail": 2,
+        "p125_rt_take3": 1
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/coverage-bst-64-baseline-p114r__direct.inorder.asm.gz",
+        "bytes": 1243,
+        "sha256": "5381d85b89bc21df4116ff918fea547746469a30b66140b615f262279c44c58a"
+      }
+    },
+    {
+      "case": "coverage-bst-64",
+      "role": "baseline",
+      "decoded": "p111:$direct.inorder",
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_",
+      "address": "000000000040ec70",
+      "instructions": 44,
+      "branches": 0,
+      "calls": {
+        "p114r:$direct.inorder": 1,
+        "p111_rt_return": 1
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/coverage-bst-64-baseline-p111__direct.inorder.asm.gz",
+        "bytes": 482,
+        "sha256": "a15a7590e4d869bdff979f4c7804ab91b029e77103e692ca73163edbb5a481e4"
+      }
+    },
+    {
+      "case": "coverage-bst-64",
+      "role": "candidate",
+      "decoded": "p113d:$direct.bst.step",
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_98_115_116_46_115_116_101_112_",
+      "address": "000000000040891c",
+      "instructions": 167,
+      "branches": 3,
+      "calls": {
+        "p125_rt_take2": 1,
+        "p125_rt_ctor2": 2,
+        "p125_rt_take3": 1,
+        "p113d:$product.bst.pick": 1,
+        "p111_rt_fail": 2
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/coverage-bst-64-candidate-p113d__direct.bst.step.asm.gz",
+        "bytes": 1200,
+        "sha256": "777d24947d55729ad2f4b1094e76548c45f54c07f1e5edbc08ccf794e8a9f6a2"
+      }
+    },
+    {
+      "case": "coverage-bst-64",
+      "role": "candidate",
+      "decoded": "p113d:$product.bst.step",
+      "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_98_115_116_46_115_116_101_112_",
+      "address": "0000000000408bff",
+      "instructions": 169,
+      "branches": 4,
+      "calls": {
+        "p125_rt_take3": 1,
+        "p125_rt_ctor3": 2,
+        "p125_rt_ctor2": 2,
+        "p111_rt_fail": 1
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/coverage-bst-64-candidate-p113d__product.bst.step.asm.gz",
+        "bytes": 1200,
+        "sha256": "7b1ac9bc257d728c38f0d6686bab6e914168535a06b1f9347eec1c879c01b3d7"
+      }
+    },
+    {
+      "case": "coverage-bst-64",
+      "role": "candidate",
+      "decoded": "p113d:$direct.bst.down",
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_98_115_116_46_100_111_119_110_",
+      "address": "0000000000408eda",
+      "instructions": 39,
+      "branches": 2,
+      "calls": {
+        "p113d:$direct.bst.step": 1
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/coverage-bst-64-candidate-p113d__direct.bst.down.asm.gz",
+        "bytes": 453,
+        "sha256": "07f0266eb587ca43b77cc18b34d350f260c006d376b9e7e76d4fbfad0783b41e"
+      }
+    },
+    {
+      "case": "coverage-bst-64",
+      "role": "candidate",
+      "decoded": "p113d:$product.bst.down",
+      "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_98_115_116_46_100_111_119_110_",
+      "address": "0000000000408f6d",
+      "instructions": 154,
+      "branches": 8,
+      "calls": {
+        "p125_rt_take3": 1,
+        "p125_rt_ctor3": 2,
+        "p125_rt_ctor2": 2,
+        "p111_rt_fail": 1
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/coverage-bst-64-candidate-p113d__product.bst.down.asm.gz",
+        "bytes": 1178,
+        "sha256": "ff0ed9a57d446b635133ee791e3231ff09a51ebebffe900081ae8d12c89a53f9"
+      }
+    },
+    {
+      "case": "coverage-bst-64",
+      "role": "candidate",
+      "decoded": "p113d:$direct.bst.up",
+      "symbol": "p113d_FID_36_100_105_114_101_99_116_46_98_115_116_46_117_112_",
+      "address": "000000000040922e",
+      "instructions": 205,
+      "branches": 7,
+      "calls": {
+        "p125_rt_take2": 1,
+        "p125_rt_take3": 1,
+        "p125_rt_ctor3": 2,
+        "p111_rt_sink": 1,
+        "p111_rt_fail": 3
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/coverage-bst-64-candidate-p113d__direct.bst.up.asm.gz",
+        "bytes": 1372,
+        "sha256": "b0b381290660bac0edfb9d7accda56f0704995a0e9fcff0aace20f48bf2af424"
+      }
+    },
+    {
+      "case": "coverage-bst-64",
+      "role": "candidate",
+      "decoded": "p111:inorder",
+      "symbol": "p111_FID_105_110_111_114_100_101_114_",
+      "address": "000000000040e69f",
+      "instructions": 50,
+      "branches": 2,
+      "calls": {
+        "p111_rt_closure": 1,
+        "p111_rt_return": 1
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/coverage-bst-64-candidate-p111_inorder.asm.gz",
+        "bytes": 574,
+        "sha256": "8d1e2b7ad59fbdb0291a260cfeeb90a06d11dbe97e53cabbda0a979a886deb5e"
+      }
+    },
+    {
+      "case": "coverage-bst-64",
+      "role": "candidate",
+      "decoded": "p114r:$direct.inorder",
+      "symbol": "p114r_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_",
+      "address": "000000000040e966",
+      "instructions": 171,
+      "branches": 8,
+      "calls": {
+        "p111_rt_fail": 2,
+        "p125_rt_take3": 1
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/coverage-bst-64-candidate-p114r__direct.inorder.asm.gz",
+        "bytes": 1248,
+        "sha256": "168f8c52ff269d355c9cb1d94471ad4c77ba88be3f24a950a06e0756a09cff78"
+      }
+    },
+    {
+      "case": "coverage-bst-64",
+      "role": "candidate",
+      "decoded": "p111:$direct.inorder",
+      "symbol": "p111_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_",
+      "address": "000000000040ec6e",
+      "instructions": 44,
+      "branches": 0,
+      "calls": {
+        "p114r:$direct.inorder": 1,
+        "p111_rt_return": 1
+      },
+      "assembly": {
+        "file": "research/phase195/hardware-models/tree-bst-evidence/coverage-bst-64-candidate-p111__direct.inorder.asm.gz",
+        "bytes": 483,
+        "sha256": "2aa4ce262517fd63243b72c71360c2716b1d2d549d08dbb61f4dba8db1b7b423"
+      }
+    }
+  ],
+  "runtime": [
+    {
+      "case": "tree-bitonic",
+      "summary": {
+        "complete": true,
+        "pairedRounds": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "stats": {
+          "c": {
+            "medianMs": 0.16490765171503957,
+            "samplesMs": [
+              0.16424802110817943,
+              0.16556728232189974,
+              0.16490765171503957,
+              0.16490765171503957
+            ],
+            "minimumMs": 0.16424802110817943,
+            "maximumMs": 0.16556728232189974,
+            "lowResolution": false
+          },
+          "qbe": {
+            "medianMs": 0.39055472263868063,
+            "samplesMs": [
+              0.38980509745127434,
+              0.4197901049475262,
+              0.38830584707646176,
+              0.391304347826087
+            ],
+            "minimumMs": 0.38830584707646176,
+            "maximumMs": 0.4197901049475262,
+            "lowResolution": false
+          },
+          "baseline": {
+            "medianMs": 0.518,
+            "samplesMs": [
+              0.518,
+              0.52,
+              0.516,
+              0.518
+            ],
+            "minimumMs": 0.516,
+            "maximumMs": 0.52,
+            "lowResolution": false
+          },
+          "candidate": {
+            "medianMs": 0.5154320987654322,
+            "samplesMs": [
+              0.51440329218107,
+              0.5267489711934157,
+              0.51440329218107,
+              0.5164609053497943
+            ],
+            "minimumMs": 0.51440329218107,
+            "maximumMs": 0.5267489711934157,
+            "lowResolution": false
+          }
+        },
+        "ratios": {
+          "qbe": 2.3683238380809595,
+          "baseline": 3.1411520000000004,
+          "candidate": 3.125580246913581
+        },
+        "ratioEligible": true,
+        "admitted": true
+      }
+    },
+    {
+      "case": "coverage-bst-64",
+      "summary": {
+        "complete": true,
+        "pairedRounds": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "stats": {
+          "c": {
+            "medianMs": 0.007343708938009169,
+            "samplesMs": [
+              0.007329109119046924,
+              0.007329109119046924,
+              0.007387508394895903,
+              0.0073583087569714135
+            ],
+            "minimumMs": 0.007329109119046924,
+            "maximumMs": 0.007387508394895903,
+            "lowResolution": false
+          },
+          "qbe": {
+            "medianMs": 0.018446387888586758,
+            "samplesMs": [
+              0.018446387888586758,
+              0.018372896303373264,
+              0.018593371059013743,
+              0.018446387888586758
+            ],
+            "minimumMs": 0.018372896303373264,
+            "maximumMs": 0.018593371059013743,
+            "lowResolution": false
+          },
+          "baseline": {
+            "medianMs": 0.027450000000000002,
+            "samplesMs": [
+              0.0274,
+              0.0274,
+              0.0275,
+              0.0276
+            ],
+            "minimumMs": 0.0274,
+            "maximumMs": 0.0276,
+            "lowResolution": false
+          },
+          "candidate": {
+            "medianMs": 0.027968923418423976,
+            "samplesMs": [
+              0.028190899001109878,
+              0.027635960044395117,
+              0.029411764705882353,
+              0.02774694783573807
+            ],
+            "minimumMs": 0.027635960044395117,
+            "maximumMs": 0.029411764705882353,
+            "lowResolution": false
+          }
+        },
+        "ratios": {
+          "qbe": 2.511862608431136,
+          "baseline": 3.7378932405566605,
+          "candidate": 3.8085555479553315
+        },
+        "ratioEligible": true,
+        "admitted": true
+      }
+    }
+  ],
+  "pins": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/tree-bitonic/bend-c/program",
+      "bytes": 115744,
+      "sha256": "19550d9d4c7b770e374ac234d09c6860458807a6f7ff1d0c4153f1f1cf8d513a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-native45-acquire01/tree-bitonic/phase186-qbe-n2/machine/program",
+      "bytes": 187128,
+      "sha256": "82ac09159ffea013e77cfcae4e8c7778869fe0dfb47320ff79dfded3b6977154"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/native45-02/tree-bitonic/machine/program",
+      "bytes": 216744,
+      "sha256": "d61d5589ddbb3c8a7a006bca0c5650ae620dab1e7849a3d420476cac957f784d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/native45-01/tree-bitonic/machine/program",
+      "bytes": 216744,
+      "sha256": "9e4faa35c600a2c30d41b6c8104871cfd8a6c69381780bb8585885ec4a03197a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "bytes": 105128,
+      "sha256": "de4601ec006bbdffaf3295e1a1877db48f3395c83529f8c2577178f820d08a18"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-native45-acquire01/coverage-bst-64/phase186-qbe-n2/machine/program",
+      "bytes": 173408,
+      "sha256": "6aa818a86a7fe427edda90ccd904e8c519170a64f0c3c7c2e5b4f5f7ae0e6f8b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/native45-02/coverage-bst-64/machine/program",
+      "bytes": 195496,
+      "sha256": "a21abffc7bac6ee8ec919ceafc7820dc9cadc56bfbad46d0b3317948dfd11fae"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/native45-01/coverage-bst-64/machine/program",
+      "bytes": 195496,
+      "sha256": "092dce5036f64b4b0331ca0bcdcd809b83846fb6515fcfd79c17ad0ea83d524c"
+    },
+    {
+      "file": "selfhost/build/phase195/broad-runtime02/report.json",
+      "bytes": 2354983,
+      "sha256": "28d3183510b9fe3ea8cd892de0846d02f44bce17dc5a640983f6a1f06560f16e"
+    },
+    {
+      "file": "selfhost/build/phase195/native45-01/report.json",
+      "bytes": 142445,
+      "sha256": "1e05aef5f6096a084675ad45fb7ce3bdbff59062447f380ce101f14145c949a2"
+    },
+    {
+      "file": "selfhost/build/phase195/profile-remaining-plan01/per-invocation02.json",
+      "bytes": 309953,
+      "sha256": "afd9bed681b0eae172e5bbfc61b4ad39506a98bb5994ea1ddc34cb827d004934"
+    },
+    {
+      "file": "research/phase195/ownership/machine.json",
+      "bytes": 24931,
+      "sha256": "3ee62b3eb164d75ebf1de67d8bf33917a45fb2a5b6eb74114c0c17ab4e75ff19"
+    }
+  ],
+  "suiteCounterfactuals": {
+    "qbe": {
+      "multiplier": 0.96254437947738,
+      "changedCases": [
+        "tree-bitonic",
+        "variation-tree-bitonic-6-17",
+        "variation-tree-bitonic-9-123",
+        "coverage-bst-32",
+        "coverage-bst-64"
+      ],
+      "eligibleCases": 44,
+      "scope": "Oracle full-workload reference substitution only, not a predicted compiler improvement or removable ownership ceiling"
+    },
+    "c": {
+      "multiplier": 0.8680351019012806,
+      "changedCases": [
+        "tree-bitonic",
+        "variation-tree-bitonic-6-17",
+        "variation-tree-bitonic-9-123",
+        "coverage-bst-32",
+        "coverage-bst-64"
+      ],
+      "eligibleCases": 44,
+      "scope": "Oracle full-workload reference substitution only, not a predicted compiler improvement or removable ownership ceiling"
+    }
+  }
+}

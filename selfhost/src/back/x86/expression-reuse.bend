@@ -285,16 +285,92 @@ def x190_v_after(rest: List<&2,P113DStmt>, step: X190ValueStep) -> List<&2,P113D
 def x190_v_if(condition: N111Value, yes: List<&2,P113DStmt>, no: List<&2,P113DStmt>, rest: List<&2,P113DStmt>) -> List<&2,P113DStmt>:
   Con{P113DIf{condition,x190_v_body(yes,x190_v_empty()),x190_v_body(no,x190_v_empty())},x190_v_body(rest,x190_v_empty())}
 
+# Incoming scalar facts only. Original Set snapshots and all effects stay.
+# The existing <=512-row x190_local_values_body gate bounds this experiment.
+# Join analysis kills facts for writes in either original arm; it never adds a
+# fact learned inside an arm. Calls and terminal/backedge operations clear all.
+def x195bf_enabled() -> Bool: True{}
+
+law x195bf_kill_body:
+  for body: List<&2,P113DStmt>
+  for state: X190Values
+  X190Values
+
+@unsafe
+def x195bf_kill_scalar(stmt: N111Stmt, state: X190Values) -> X190Values:
+  match stmt:
+    case N111Set{name,typ,value}: x190_v_written(name,False{},state)
+    case N111Bin{name,typ,op,left,right}: x190_v_written(name,False{},state)
+    case N111Offset{name,base,bytes}: x190_v_written(name,False{},state)
+    case N111Load{name,typ,base,offset}: x190_v_written(name,False{},state)
+    case N111Alloca{name,bytes,align}: x190_v_written(name,False{},state)
+    case N111Store{typ,base,offset,value}: state
+    case N111If{condition,yes,no}:
+      x195bf_kill_body(x181_scalar_rows(no),x195bf_kill_body(x181_scalar_rows(yes),state))
+    case _: x190_v_empty()
+
+@unsafe
+def x195bf_kill_stmt(stmt: P113DStmt, state: X190Values) -> X190Values:
+  match stmt:
+    case P113DScalar{scalar}: x195bf_kill_scalar(scalar,state)
+    case P113DIf{condition,yes,no}: x195bf_kill_body(no,x195bf_kill_body(yes,state))
+    case _: x190_v_empty()
+
+@unsafe
+def x195bf_kill_body(body,state):
+  match body:
+    case Nil{}: state
+    case Con{head,rest}: x195bf_kill_body(rest,x195bf_kill_stmt(head,state))
+
+@unsafe
+def x195bf_join(yes: List<&2,P113DStmt>, no: List<&2,P113DStmt>, state: X190Values) -> X190Values:
+  x195bf_kill_body(no,x195bf_kill_body(yes,state))
+
+@unsafe
+def x195bf_if(+condition: N111Value, +yes: List<&2,P113DStmt>, +no: List<&2,P113DStmt>,
+    +rest: List<&2,P113DStmt>, +state: X190Values) -> List<&2,P113DStmt>:
+  nt_choose(List<&2,P113DStmt>,x195bf_enabled(),
+    u => Con{P113DIf{condition,x190_v_body(yes,state),x190_v_body(no,state)},
+      x190_v_body(rest,x195bf_join(yes,no,state))},
+    u => x190_v_if(condition,yes,no,rest))
+
+
+# Optional local-word facts across calls; no memory facts or result-width inference.
+# Compose with branch-facts-v2.bend, replacing only x190_v_plain via hook-v1.bend.
+def x195cf_enabled() -> Bool: True{}
+
+@unsafe
+def x195cf_kill_names(names: List<&2,String>, state: X190Values) -> X190Values:
+  match names:
+    case Nil{}: state
+    case Con{name,rest}: x195cf_kill_names(rest,x190_v_written(name,False{},state))
+
+@unsafe
+def x195cf_after_call(names: List<&2,String>, state: X190Values) -> X190Values:
+  nt_choose(X190Values,x195cf_enabled(),
+    u => x195cf_kill_names(names,state),u => x190_v_empty())
+
+@unsafe
+def x195cf_scalar(stmt: N111Stmt, +state: X190Values) -> X190ValueStep:
+  match stmt:
+    case N111Call{+name,typ,symbol,args}:
+      X190ValueStep{P113DScalar{N111Call{name,typ,symbol,x190_v_args(args,state)}},
+        x195cf_after_call([name],state)}
+    case _: x190_v_scalar(stmt,state)
+
+
+# Sole replacement; the original matcher, Set/width logic and per-write kills
+# remain authoritative. Only call transfer differs from the branch-only hook.
 @unsafe
 def x190_v_plain(body: List<&2,P113DStmt>, +state: X190Values) -> List<&2,P113DStmt>:
   match body:
     case Nil{}: []
-    case Con{P113DIf{condition,yes,no},rest}: x190_v_if(x190_v_value(condition,state),yes,no,rest)
+    case Con{P113DIf{condition,yes,no},rest}: x195bf_if(x190_v_value(condition,state),yes,no,rest,state)
     case Con{P113DScalar{N111If{condition,yes,no}},rest}:
-      x190_v_if(x190_v_value(condition,state),x181_scalar_rows(yes),x181_scalar_rows(no),rest)
-    case Con{P113DScalar{stmt},rest}: x190_v_after(rest,x190_v_scalar(stmt,state))
-    case Con{P113DCall{names,target,args},rest}:
-      Con{P113DCall{names,target,x190_v_values(args,state)},x190_v_body(rest,x190_v_empty())}
+      x195bf_if(x190_v_value(condition,state),x181_scalar_rows(yes),x181_scalar_rows(no),rest,state)
+    case Con{P113DScalar{stmt},rest}: x190_v_after(rest,x195cf_scalar(stmt,state))
+    case Con{P113DCall{+names,target,args},rest}:
+      Con{P113DCall{names,target,x190_v_values(args,state)},x190_v_body(rest,x195cf_after_call(names,state))}
     case Con{P113DResult{values},rest}: Con{P113DResult{x190_v_values(values,state)},x190_v_body(rest,x190_v_empty())}
     case Con{P113DAgain{values},rest}: Con{P113DAgain{x190_v_values(values,state)},x190_v_body(rest,x190_v_empty())}
 

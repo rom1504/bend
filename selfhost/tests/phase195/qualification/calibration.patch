@@ -1,0 +1,11 @@
+--- selfhost/tests/phase185/runtime-loop.py
++++ selfhost/build/phase195/runtime-calibration.py
+@@ -132,7 +132,7 @@
+                 if not case['point']['ratioEligible']:
+                     item['calibration'][role] = count
+                     continue
+-                for attempt in range(8):
++                for attempt in range(20):
+                     row = sample(case, item, role, count, 'pilot', attempt)
+                     B.require(row['correct'], 'Calibration child failed')
+                     if row['elapsedMs'] >= a.target_ms and (row['elapsedMs'] <= 2 * a.target_ms or count == 1):

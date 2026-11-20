@@ -1,0 +1,19 @@
+{
+  "steps": [
+    "research/phase195/prospective/acquire-v3-argv.json",
+    "research/phase195/prospective/controls-v3-argv.json",
+    "research/phase195/prospective/emit-v3-argv.json",
+    "research/phase195/prospective/build-argv.json",
+    "research/phase195/prospective/runtime-prepare-argv.json",
+    "research/phase195/prospective/runtime-argv.json"
+  ],
+  "cases": [
+    "lexer",
+    "variation-ray-active-64-2440"
+  ],
+  "baseline": "retained combined-dev-build01 products, freshly paired timed",
+  "comparison": "six balanced rounds with ordinary full-result and repetition-count oracles",
+  "scope": "Lexer profile-backed literal6/10/26, plus unrelated ray literal80 site (hotness unknown). Arithmetic-control worker is separately independent; no synthetic timing claim.",
+  "state": "Executed; all complete; roots occupied. Use new roots for replay.",
+  "requires": "No automatic new execution; exact selected source/API and normal resource guards."
+}

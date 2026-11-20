@@ -32,7 +32,7 @@ def x181_return(text,frame,code):
     case X181Code{chunks,next,terminal,error}:
       X181Code{Con{x188_cat(text,x181_epilogue(frame)),chunks},next,True{},error}
 
-def x181_label(n: U32, frame: X181Frame) -> String:
+def x181_label(n,frame):
   match frame:
     case X181Frame{slots,bytes,calls,params,symbol}: ".L" ++ symbol ++ "_b" ++ U32.show(n)
 

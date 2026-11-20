@@ -1,0 +1,317 @@
+{
+  "complete": true,
+  "experimentalOnly": true,
+  "candidate": "remainder-api03",
+  "source": "selfhost/build/phase195/remainder-api-source03/compiler.bend",
+  "sourceSha256": "86e55f9e2bf261591b9e862f5e75653f28e8271ce5597699adbee56683cfe8c5",
+  "controls": {
+    "structural": 17,
+    "cIndependentObservationsPerRoute": 2640,
+    "routes": [
+      "direct",
+      "assembly"
+    ],
+    "ordinaryCases": 2,
+    "pythonArithmeticObservations": 294712,
+    "timedObservations": 24
+  },
+  "timing": [
+    {
+      "case": "lexer",
+      "afterBefore": 0.9682893941507417,
+      "beforeMedianMs": 1.0255102040816326,
+      "afterMedianMs": 0.9929906542056075,
+      "beforeSamplesMs": [
+        1.0561224489795917,
+        1.0255102040816326,
+        1.030612244897959,
+        1.0255102040816326,
+        1.0204081632653061,
+        1.0153061224489797
+      ],
+      "afterSamplesMs": [
+        0.9906542056074766,
+        1.0,
+        0.985981308411215,
+        0.9953271028037384,
+        0.985981308411215,
+        1.0046728971962617
+      ],
+      "allObservedCorrect": true,
+      "maxOverMin": {
+        "combined": 1.0402010050251254,
+        "remainder": 1.018957345971564
+      },
+      "pairedRounds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "timedObservationCount": 12
+    },
+    {
+      "case": "variation-ray-active-64-2440",
+      "afterBefore": 1.0047580255313056,
+      "beforeMedianMs": 0.18447488584474886,
+      "afterMedianMs": 0.18535262206148284,
+      "beforeSamplesMs": [
+        0.18356164383561643,
+        0.18356164383561643,
+        0.18447488584474886,
+        0.18447488584474886,
+        0.25388127853881276,
+        0.2502283105022831
+      ],
+      "afterSamplesMs": [
+        0.18625678119349007,
+        0.18264014466546113,
+        0.18264014466546113,
+        0.1844484629294756,
+        0.20524412296564196,
+        0.244122965641953
+      ],
+      "allObservedCorrect": true,
+      "maxOverMin": {
+        "combined": 1.3830845771144278,
+        "remainder": 1.3366336633663365
+      },
+      "pairedRounds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "timedObservationCount": 12
+    }
+  ],
+  "aggregateDescriptiveOnly": {
+    "complete": true,
+    "timedCases": 2,
+    "correctnessOnlyCases": 0,
+    "roles": {
+      "remainder": {
+        "geomean": 0.9863551793394727,
+        "equalSourceGeomean": 0.9863551793394727,
+        "sourceCount": 2,
+        "meanPositiveLogSlowdown": 0.0023733709527623335,
+        "casesOver105": 0,
+        "families": {
+          "lexer": 0.9682893941507417,
+          "raytrace": 1.0047580255313056
+        }
+      }
+    }
+  },
+  "costs": [
+    {
+      "job": "remainder-api01",
+      "wallSeconds": 6.549247701652348,
+      "returncode": 1,
+      "peakTreeRssBytes": 734978048,
+      "peakRunAllocatedBytes": 32768
+    },
+    {
+      "job": "remainder-api02",
+      "wallSeconds": 6.529423038475215,
+      "returncode": 1,
+      "peakTreeRssBytes": 713125888,
+      "peakRunAllocatedBytes": 32768
+    },
+    {
+      "job": "remainder-api03",
+      "wallSeconds": 15.304341599345207,
+      "returncode": 0,
+      "peakTreeRssBytes": 2225967104,
+      "peakRunAllocatedBytes": 4042752
+    },
+    {
+      "job": "remainder-controls01",
+      "wallSeconds": 9.567380230873823,
+      "returncode": 0,
+      "peakTreeRssBytes": 1394171904,
+      "peakRunAllocatedBytes": 331776
+    },
+    {
+      "job": "remainder-dev-emit01",
+      "wallSeconds": 33.19737787824124,
+      "returncode": 0,
+      "peakTreeRssBytes": 647061504,
+      "peakRunAllocatedBytes": 1519616
+    },
+    {
+      "job": "remainder-dev-build01",
+      "wallSeconds": 2.6574604148045182,
+      "returncode": 0,
+      "peakTreeRssBytes": 31973376,
+      "peakRunAllocatedBytes": 921600
+    },
+    {
+      "job": "remainder-runtime01",
+      "wallSeconds": 10.067383117042482,
+      "returncode": 0,
+      "peakTreeRssBytes": 23261184,
+      "peakRunAllocatedBytes": 700416
+    }
+  ],
+  "totalGuardedWallSeconds": 83.87261398043483,
+  "failedGuardedWallSeconds": 13.078670740127563,
+  "inputPins": [
+    {
+      "file": "selfhost/build/phase195/remainder-api01/report.json",
+      "bytes": 4290,
+      "sha256": "5543555393a14f4cc8b3f84ea823c79f2f6f0971c85573652f2e98c3db21a7c0"
+    },
+    {
+      "file": "selfhost/build/phase195/remainder-api01-guard/process.json",
+      "bytes": 3398,
+      "sha256": "ebc7b43a43668797a379bba69c0479f3a4b7fb6d6480388ca530658f5b8e1a67"
+    },
+    {
+      "file": "selfhost/build-retention/phase195/remainder-api01-close/report.json",
+      "bytes": 1442,
+      "sha256": "f0479e4b4181533f4ae78e7bcad1b0ccab19bdc8aeb9367cc9eb3f35377f7798"
+    },
+    {
+      "file": "selfhost/build/phase195/remainder-api02/report.json",
+      "bytes": 4290,
+      "sha256": "81dc39f91f8f3b95669715328ed49b3d4004e429f9816c7a895f0a5e9445ba2b"
+    },
+    {
+      "file": "selfhost/build/phase195/remainder-api02-guard/process.json",
+      "bytes": 3400,
+      "sha256": "91076ddddf7904ba2f77c562041fecef4b119eaea2e5d79c052c4ccc8c347f5e"
+    },
+    {
+      "file": "selfhost/build-retention/phase195/remainder-api02-close/report.json",
+      "bytes": 1441,
+      "sha256": "2554e2744c04a856054f847b6fea5aa3fb8c07f46752513c3771fc8e9dfaa693"
+    },
+    {
+      "file": "selfhost/build/phase195/remainder-api03/report.json",
+      "bytes": 5360,
+      "sha256": "4e243b3fcd928f553a5627796ce8522339bb10ec7c22535ff67956a64d39f8d5"
+    },
+    {
+      "file": "selfhost/build/phase195/remainder-api03-guard/process.json",
+      "bytes": 3405,
+      "sha256": "0d410b85ac9d0ea683bd43fb79d1df5e59841ff92f6caf6ccaf2dffdbb38b195"
+    },
+    {
+      "file": "selfhost/build-retention/phase195/remainder-api03-close/report.json",
+      "bytes": 1444,
+      "sha256": "2b701fa9df598c1e1867d86c476c40f41654e9b24cc830f9d3fe36da15f403a6"
+    },
+    {
+      "file": "selfhost/build/phase195/remainder-controls01/report.json",
+      "bytes": 24069,
+      "sha256": "b57d9878fe1ef60d644c4236a42b7d3e5acc0f54b2b99fa72339e641fd103119"
+    },
+    {
+      "file": "selfhost/build/phase195/remainder-controls01-guard/process.json",
+      "bytes": 3150,
+      "sha256": "5697f94cd0276c8a59cd4d8b38317df861b28e8046cad93bf93d0dc9acbc787a"
+    },
+    {
+      "file": "selfhost/build-retention/phase195/remainder-controls01-close/report.json",
+      "bytes": 1460,
+      "sha256": "22c98a15b670e6b8c8d8479a3e24104b1405943b71ef1e8a579fe8c6dffda66e"
+    },
+    {
+      "file": "selfhost/build/phase195/remainder-dev-emit01/report.json",
+      "bytes": 11203,
+      "sha256": "fa602f4d3426014b9389f70dbfe4a3abb39c38a1644145ef5f1f1664464483d4"
+    },
+    {
+      "file": "selfhost/build/phase195/remainder-dev-emit01-guard/process.json",
+      "bytes": 3272,
+      "sha256": "9e290a757ffdef57d8eb04f5007e0581b043160f1c7cc9fb12ad04ca80376531"
+    },
+    {
+      "file": "selfhost/build-retention/phase195/remainder-dev-emit01-close/report.json",
+      "bytes": 1459,
+      "sha256": "1763c0132164995998c64aa3472d83d0894dadd336155da6fbbd1f39f32af372"
+    },
+    {
+      "file": "selfhost/build/phase195/remainder-dev-build01/report.json",
+      "bytes": 20238,
+      "sha256": "8824e69503d9723c6d1ed81a9576b288e12feadd6a4e5af7ecf18779e18fdf86"
+    },
+    {
+      "file": "selfhost/build/phase195/remainder-dev-build01-guard/process.json",
+      "bytes": 2646,
+      "sha256": "4054b2bfb0b580ec98eb9547b2f53924f426d87f5fb9f96a0a34bbb94950985d"
+    },
+    {
+      "file": "selfhost/build-retention/phase195/remainder-dev-build01-close/report.json",
+      "bytes": 1463,
+      "sha256": "f40364146681eb5de32129e701bad8b21e6b260a17fb57793ef173778dfaa975"
+    },
+    {
+      "file": "selfhost/build/phase195/remainder-runtime01/report.json",
+      "bytes": 211621,
+      "sha256": "1fb14cf04bf47d27b89511b8348f109ac68dbe2df4a1ef683b7e98ff1a60b3eb"
+    },
+    {
+      "file": "selfhost/build/phase195/remainder-runtime01-guard/process.json",
+      "bytes": 2433,
+      "sha256": "eb59930115865d07dfa2f1a7258bf5404cc5e1f5229c7ff3d361ce1ea31c724e"
+    },
+    {
+      "file": "selfhost/build-retention/phase195/remainder-runtime01-close/report.json",
+      "bytes": 1457,
+      "sha256": "c30ce34e2c2a55b6bfff35e3e11ef2ac5ac2bf1a4e25794d2c27ab1adae32f1f"
+    },
+    {
+      "file": "research/phase195/prospective/constant-remainder-v3.bend",
+      "bytes": 5174,
+      "sha256": "858ee7303b1c06c76bdd11c698a3cebf692d988cad2a4eb2e9b715ee11b707e7"
+    },
+    {
+      "file": "research/phase195/prospective/remainder-hook.bend",
+      "bytes": 313,
+      "sha256": "e6250123e767f87b5e416966b8ae2fb7d774099e66c2fbda710a5a17533e55e0"
+    },
+    {
+      "file": "research/phase195/prospective/remainder-controls.bend",
+      "bytes": 4443,
+      "sha256": "6ff64e365dae56fdeb03cc39ded67e707373d2d5866d1e7ec61522012df26b99"
+    },
+    {
+      "file": "research/phase195/prospective/remainder-controls.c",
+      "bytes": 2688,
+      "sha256": "ed34e3febc8aa1eace73961fafa4625bd4fa436cc1bf53cd0c07b941dc0a868e"
+    },
+    {
+      "file": "research/phase195/prospective/remainder-driver.mjs",
+      "bytes": 11955,
+      "sha256": "9ea044496eaffa59ebf6a94f167bbcc903e1bc9fcd950d5e29f9b97859b06086"
+    },
+    {
+      "file": "research/phase195/prospective/certificate-check.json",
+      "bytes": 476,
+      "sha256": "df0e687ac4937192066fb9f3f82d356ae1998c062aeac4d2ad61fe49a8cafd7c"
+    },
+    {
+      "file": "research/phase195/prospective/emitted-machine-audit.json",
+      "bytes": 12269,
+      "sha256": "4fe495c1aff921d8cbae2eee49bec53658f8b78a59e8763044759a2b7b36476a"
+    },
+    {
+      "file": "selfhost/build/phase195/remainder-api-source03/manifest.json",
+      "bytes": 1157780,
+      "sha256": "727da6fa55e31196e40e3e46a1c0b429976bbb9d11145a83336ac99a65f5e2e7"
+    }
+  ],
+  "failures": [
+    "api01 affine shift/power thunk capture",
+    "api02 affine shared facts capture",
+    "initial offline machine audit overrequired elimination of cold formatter remainder; actual coverage4/5 lexer and1/2 ray retained"
+  ],
+  "decision": "Small positive lexer screen, no measured ray transfer and large late ray dispersion. Keep isolated; no broad/native integration or parity claim. Model supports arithmetic mechanism direction only.",
+  "laneReleased": true
+}

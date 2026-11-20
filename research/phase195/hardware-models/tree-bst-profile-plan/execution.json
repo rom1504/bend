@@ -1,0 +1,225 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "authorizedToExecute": false,
+  "authorization": "Wait for root GO after native qualification and cost screens",
+  "plan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst-plan01/plan.json",
+    "bytes": 7064,
+    "sha256": "86b6ff5d98eb575f7a40a569df298badb60221e20f963aef6cdf3c1bdaedfb78"
+  },
+  "manifest": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst-plan01/manifest.json",
+    "bytes": 215852,
+    "sha256": "6a736debf250532cba46c0bfc111866756db5e5c5b4469708918f91f261fa8f9"
+  },
+  "bindings": [
+    {
+      "case": "tree-bitonic",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/tree-bitonic.bend",
+        "bytes": 6593,
+        "sha256": "405f8d8fb2066e6fedd8baa45943bcdf92b59cb40e23ce2ad3ea4bd3eeb53ae0"
+      },
+      "expectedFile": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/tree-bitonic.stdout",
+        "bytes": 10,
+        "sha256": "4d9faad3bd6736bd6b3be55577bba89ff3064588775afe8959dd2f709ca6aa21"
+      },
+      "expectedStdout": "971629740\n",
+      "runtimeArgs": [
+        8,
+        0
+      ],
+      "nativeOracleReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/native45-01/tree-bitonic/oracle-process.json",
+        "bytes": 931,
+        "sha256": "2bff9eb362c6fef5a18d5afaace3aa2ab721136249191ceceb84427a216a9032"
+      },
+      "nativeBuildReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/native45-01/tree-bitonic/machine/report.json",
+        "bytes": 16341,
+        "sha256": "61cd3d0ee901a2ec4ce83511bec0a7e46ec3d78c09f14bdc5716b621bd1e5cc1"
+      },
+      "products": {
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/native45-01/tree-bitonic/machine/program",
+          "bytes": 216744,
+          "sha256": "9e4faa35c600a2c30d41b6c8104871cfd8a6c69381780bb8585885ec4a03197a"
+        },
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/tree-bitonic/bend-c/program",
+          "bytes": 115744,
+          "sha256": "19550d9d4c7b770e374ac234d09c6860458807a6f7ff1d0c4153f1f1cf8d513a"
+        },
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-native45-acquire01/tree-bitonic/phase186-qbe-n2/machine/program",
+          "bytes": 187128,
+          "sha256": "82ac09159ffea013e77cfcae4e8c7778869fe0dfb47320ff79dfded3b6977154"
+        }
+      }
+    },
+    {
+      "case": "coverage-bst-64",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-bst-64.bend",
+        "bytes": 5028,
+        "sha256": "474ffc3a68c1fcd4947cfe49fe117c15aae0a66dab99ed50d6c17bfcf6563d65"
+      },
+      "expectedFile": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/coverage-bst-64.stdout",
+        "bytes": 10,
+        "sha256": "baf85e5e8a3c69ee0b60c4f2fc3c7d95c8f8c5c0f3bc833a0b7e08a91911e714"
+      },
+      "expectedStdout": "861157620\n",
+      "runtimeArgs": [
+        64,
+        17
+      ],
+      "nativeOracleReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/native45-01/coverage-bst-64/oracle-process.json",
+        "bytes": 954,
+        "sha256": "42055e88ddb9915084218842b7272ad1839706eab306aa457991848624a915ed"
+      },
+      "nativeBuildReceipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/native45-01/coverage-bst-64/machine/report.json",
+        "bytes": 16394,
+        "sha256": "bfd82f44e6173cdef29fe8c2fe5a36cd4c77b4c89ea2c42bcc0e14c2ef2ea02a"
+      },
+      "products": {
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/native45-01/coverage-bst-64/machine/program",
+          "bytes": 195496,
+          "sha256": "092dce5036f64b4b0331ca0bcdcd809b83846fb6515fcfd79c17ad0ea83d524c"
+        },
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+          "bytes": 105128,
+          "sha256": "de4601ec006bbdffaf3295e1a1877db48f3395c83529f8c2577178f820d08a18"
+        },
+        "qbe": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-native45-acquire01/coverage-bst-64/phase186-qbe-n2/machine/program",
+          "bytes": 173408,
+          "sha256": "6aa818a86a7fe427edda90ccd904e8c519170a64f0c3c7c2e5b4f5f7ae0e6f8b"
+        }
+      }
+    }
+  ],
+  "captureCommand": [
+    "/usr/bin/python3.9",
+    "-B",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+    "--out",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01-guard",
+    "--run-root",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01",
+    "--seconds",
+    "60",
+    "--disk-mib",
+    "64",
+    "--rss-mib",
+    "2048",
+    "--available-mib",
+    "16384",
+    "--cpu",
+    "3",
+    "--",
+    "/usr/bin/python3.9",
+    "-B",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/run.py",
+    "--manifest",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst-plan01/manifest.json",
+    "--out",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01",
+    "--modes",
+    "clean,sample",
+    "--rounds",
+    "1",
+    "--periods-us",
+    "8000,13000"
+  ],
+  "offlineCommands": [
+    [
+      "/usr/bin/python3.9",
+      "-B",
+      "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/compare.py",
+      "--report",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/report.json",
+      "--out",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst-plan01/comparison.json"
+    ],
+    [
+      "/usr/bin/python3.9",
+      "-B",
+      "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/render.py",
+      "--comparison",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst-plan01/comparison.json",
+      "--out",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst-plan01/summary.md"
+    ],
+    [
+      "python3",
+      "-B",
+      "selfhost/tests/phase195/profiles/normalize.py",
+      "--plan",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst-plan01/plan.json",
+      "--report",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/report.json",
+      "--out",
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst-plan01/per-invocation.json"
+    ]
+  ],
+  "closeOnSuccess": [
+    "python3",
+    "-B",
+    "selfhost/tools/build-retention/close.py",
+    "--run",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01-guard",
+    "--classification",
+    "completed",
+    "--keep-root",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01",
+    "--out",
+    "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase195/profile-tree-bst01-close"
+  ],
+  "guardSeconds": 60,
+  "genericGuardSeconds": 174,
+  "diskMiB": 64,
+  "estimatedTargetCpuSeconds": 54.00158869705872,
+  "checkOnly": {
+    "valid": true,
+    "workloads": 6,
+    "inputs": 832,
+    "targetsRun": false
+  },
+  "independentInputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/native45-01/report.json",
+      "bytes": 142445,
+      "sha256": "1e05aef5f6096a084675ad45fb7ce3bdbff59062447f380ce101f14145c949a2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/native45-01/programs.manifest.json",
+      "bytes": 1593812,
+      "sha256": "c5bd35ffd03ae7af66b026f9863bb108b04a8aa68febb47deb95bad644da5cba"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/references01/manifest.json",
+      "bytes": 1695983,
+      "sha256": "d51e0155bb41b7a8694455e608c3310925c3084520776ccda59323bf87092ed2"
+    }
+  ],
+  "costJustification": {
+    "priorEquivalent18ProcessGuard": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-priority02-guard/process.json",
+      "bytes": 2658,
+      "sha256": "de1b97f9b8d534cabfb4a063e9ab9c10dd9508f035a08d37b6c5cc1edb498552"
+    },
+    "priorGuardWallSeconds": 59.658546038903296,
+    "priorEstimatedTargetCpuSeconds": 57.61,
+    "plannedProcesses": 18,
+    "secondsPerRun": 3.0,
+    "expectedPooledSamplesPerRole": 605.77,
+    "note": "60s cap includes6s nominal margin over54s CPU estimate; no timing or sample-count guarantee. Preserve partial/refusal evidence; no automatic retry or relaxed gates."
+  }
+}

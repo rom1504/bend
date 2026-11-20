@@ -1,0 +1,1773 @@
+{
+  "inputs": [
+    {
+      "path": "selfhost/build/phase194/native45-02/lexer/machine/program",
+      "sha256": "da19e4c08293d6859a26377b820297ecef389f142583bb73fa0fd695a57b1d4d"
+    },
+    {
+      "path": "selfhost/build/phase194/native45-02/tree-bitonic/machine/program",
+      "sha256": "d61d5589ddbb3c8a7a006bca0c5650ae620dab1e7849a3d420476cac957f784d"
+    },
+    {
+      "path": "selfhost/build/phase194/native45-02/editdist/machine/program",
+      "sha256": "7dcee5ba5c2be4bd0dfb4a0d80ed7607b9898cd50ae0dadbc3bf2b2409ff8506"
+    },
+    {
+      "path": "selfhost/build/phase194/native45-02/local-pair/machine/program",
+      "sha256": "dd403d8cfffc14e44bc3c2b6fb81adaa3c2c29c90b5871266648c2e05fad2211"
+    },
+    {
+      "path": "selfhost/build/phase194/native45-02/coverage-numeric-recurrence-256/machine/program",
+      "sha256": "6ba7097397a3cd160ceb13c745ffe6a6b8e919288a61719b583251f4e1defc00"
+    },
+    {
+      "path": "selfhost/build/phase194/native45-02/variation-ray-active-64-2440/machine/program",
+      "sha256": "696724b875af784f67fc2002e93efeae2bc5296e55677d889cbb08c6f0574db4"
+    },
+    {
+      "path": "selfhost/build/phase195/combined-dev-build01/lexer/machine/program",
+      "sha256": "ba9bb11606df28433633f97557a4cd57d81af7ca428473fdc5527741cbb61fa2"
+    },
+    {
+      "path": "selfhost/build/phase195/combined-dev-build01/tree-bitonic/machine/program",
+      "sha256": "f53dde6d6d88101784cbee72358ee31730c4503d254b7be4303d1aeb46c34968"
+    },
+    {
+      "path": "selfhost/build/phase195/combined-dev-build01/editdist/machine/program",
+      "sha256": "47e5eb2c20e479de63ea567fcc76f3247f54351466838a69fd8339c87172d5c9"
+    },
+    {
+      "path": "selfhost/build/phase195/combined-dev-build01/local-pair/machine/program",
+      "sha256": "1d8c74ba3056465c7597d58862bf9885917dc0bd0436039fe5a2957b9d8dcabf"
+    },
+    {
+      "path": "selfhost/build/phase195/combined-dev-build01/coverage-numeric-recurrence-256/machine/program",
+      "sha256": "1eeea1c617d41a5d77b8558961c6a513e98d7548d456d79103f9d1e065553994"
+    },
+    {
+      "path": "selfhost/build/phase195/combined-dev-build01/variation-ray-active-64-2440/machine/program",
+      "sha256": "ca9d6b8790457fe13669f9a52826dcb9d753850f4d3426bc7336c349d1426343"
+    }
+  ],
+  "staticCallCensus": {
+    "baseline/lexer": 5,
+    "baseline/tree-bitonic": 1,
+    "baseline/editdist": 1,
+    "baseline/local-pair": 1,
+    "baseline/coverage-numeric-recurrence-256": 4,
+    "baseline/variation-ray-active-64-2440": 2,
+    "combined/lexer": 5,
+    "combined/tree-bitonic": 1,
+    "combined/editdist": 1,
+    "combined/local-pair": 1,
+    "combined/coverage-numeric-recurrence-256": 4,
+    "combined/variation-ray-active-64-2440": 2
+  },
+  "cases": {
+    "baseline/lexer": [
+      {
+        "symbol": "0000000000408a60 <p113d_FID_36_112_49_49_56_46_116_114_109_99_46_36_100_105_114_101_99_116_46_105_100_101_110_116_>:",
+        "call": "  408b5d:\tcall   41c2a0 <p111_rt_op>",
+        "window": [
+          "  408b11:\txor    rdi,rsi",
+          "  408b14:\tmov    r15,rdi",
+          "  408b17:\tlea    r10,[rbp-0x850]",
+          "  408b1e:\tmov    r11,rdi",
+          "  408b21:\tmov    QWORD PTR [r10],r11",
+          "  408b24:\tlea    r10,[rbp-0x850]",
+          "  408b2b:\tmovabs r11,0x1a",
+          "  408b35:\tmov    QWORD PTR [r10+0x8],r11",
+          "  408b39:\tmov    rdi,r12",
+          "  408b3c:\tmovabs rsi,0x13",
+          "  408b46:\tmov    esi,esi",
+          "  408b48:\tlea    rdx,[rbp-0x850]",
+          "  408b4f:\tmovabs rcx,0x2",
+          "  408b59:\tmov    ecx,ecx",
+          "  408b5b:\txor    eax,eax",
+          "  408b5d:\tcall   41c2a0 <p111_rt_op>",
+          "  408b62:\tmov    rdi,rax",
+          "  408b65:\tmov    edi,edi",
+          "  408b67:\tmov    r11,rdi",
+          "  408b6a:\tmovabs rdi,0x61"
+        ]
+      },
+      {
+        "symbol": "000000000040951c <p113d_FID_36_112_49_50_54_115_99_99_46_54_48_>:",
+        "call": "  4096bb:\tcall   41c2a0 <p111_rt_op>",
+        "window": [
+          "  40966f:\tmov    rdi,rax",
+          "  409672:\tmov    r15,rdi",
+          "  409675:\tlea    r10,[rbp-0x8d0]",
+          "  40967c:\tmov    r11,r13",
+          "  40967f:\tmov    QWORD PTR [r10],r11",
+          "  409682:\tlea    r10,[rbp-0x8d0]",
+          "  409689:\tmovabs r11,0xa",
+          "  409693:\tmov    QWORD PTR [r10+0x8],r11",
+          "  409697:\tmov    rdi,r12",
+          "  40969a:\tmovabs rsi,0x13",
+          "  4096a4:\tmov    esi,esi",
+          "  4096a6:\tlea    rdx,[rbp-0x8d0]",
+          "  4096ad:\tmovabs rcx,0x2",
+          "  4096b7:\tmov    ecx,ecx",
+          "  4096b9:\txor    eax,eax",
+          "  4096bb:\tcall   41c2a0 <p111_rt_op>",
+          "  4096c0:\tmov    rdi,rax",
+          "  4096c3:\tmov    edi,edi",
+          "  4096c5:\tmov    r11,rdi",
+          "  4096c8:\tmovabs rdi,0x30"
+        ]
+      },
+      {
+        "symbol": "0000000000409c8b <p113d_FID_36_112_49_49_56_46_116_114_109_99_46_36_100_105_114_101_99_116_46_110_117_109_>:",
+        "call": "  409d88:\tcall   41c2a0 <p111_rt_op>",
+        "window": [
+          "  409d3c:\txor    rdi,rsi",
+          "  409d3f:\tmov    r15,rdi",
+          "  409d42:\tlea    r10,[rbp-0x850]",
+          "  409d49:\tmov    r11,rdi",
+          "  409d4c:\tmov    QWORD PTR [r10],r11",
+          "  409d4f:\tlea    r10,[rbp-0x850]",
+          "  409d56:\tmovabs r11,0xa",
+          "  409d60:\tmov    QWORD PTR [r10+0x8],r11",
+          "  409d64:\tmov    rdi,r12",
+          "  409d67:\tmovabs rsi,0x13",
+          "  409d71:\tmov    esi,esi",
+          "  409d73:\tlea    rdx,[rbp-0x850]",
+          "  409d7a:\tmovabs rcx,0x2",
+          "  409d84:\tmov    ecx,ecx",
+          "  409d86:\txor    eax,eax",
+          "  409d88:\tcall   41c2a0 <p111_rt_op>",
+          "  409d8d:\tmov    rdi,rax",
+          "  409d90:\tmov    edi,edi",
+          "  409d92:\tmov    r11,rdi",
+          "  409d95:\tmovabs rdi,0x30"
+        ]
+      },
+      {
+        "symbol": "0000000000409ea3 <p113d_FID_36_100_105_114_101_99_116_46_101_120_112_97_110_100_>:",
+        "call": "  409ff3:\tcall   41c2a0 <p111_rt_op>",
+        "window": [
+          "  409fa4:\tcmp    rdi,r11",
+          "  409fa7:\tjne    40a087 <p113d_FID_36_100_105_114_101_99_116_46_101_120_112_97_110_100_+0x1e4>",
+          "  409fad:\tlea    r10,[rbp-0x850]",
+          "  409fb4:\tmov    r11,rbx",
+          "  409fb7:\tmov    QWORD PTR [r10],r11",
+          "  409fba:\tlea    r10,[rbp-0x850]",
+          "  409fc1:\tmovabs r11,0x6",
+          "  409fcb:\tmov    QWORD PTR [r10+0x8],r11",
+          "  409fcf:\tmov    rdi,r12",
+          "  409fd2:\tmovabs rsi,0x13",
+          "  409fdc:\tmov    esi,esi",
+          "  409fde:\tlea    rdx,[rbp-0x850]",
+          "  409fe5:\tmovabs rcx,0x2",
+          "  409fef:\tmov    ecx,ecx",
+          "  409ff1:\txor    eax,eax",
+          "  409ff3:\tcall   41c2a0 <p111_rt_op>",
+          "  409ff8:\tmov    rdi,rax",
+          "  409ffb:\tmov    edi,edi",
+          "  409ffd:\tmov    r11,rdi",
+          "  40a000:\tmovabs rdi,0x1"
+        ]
+      },
+      {
+        "symbol": "000000000040a255 <p113d_FID_36_100_105_114_101_99_116_46_103_101_110_46_97_116_>:",
+        "call": "  40a464:\tcall   41c2a0 <p111_rt_op>",
+        "window": [
+          "  40a415:\tcmp    rdi,r11",
+          "  40a418:\tjne    40a4e9 <p113d_FID_36_100_105_114_101_99_116_46_103_101_110_46_97_116_+0x294>",
+          "  40a41e:\tlea    r10,[rbp-0x8e8]",
+          "  40a425:\tmov    r11,rbx",
+          "  40a428:\tmov    QWORD PTR [r10],r11",
+          "  40a42b:\tlea    r10,[rbp-0x8e8]",
+          "  40a432:\tmovabs r11,0x6",
+          "  40a43c:\tmov    QWORD PTR [r10+0x8],r11",
+          "  40a440:\tmov    rdi,r12",
+          "  40a443:\tmovabs rsi,0x13",
+          "  40a44d:\tmov    esi,esi",
+          "  40a44f:\tlea    rdx,[rbp-0x8e8]",
+          "  40a456:\tmovabs rcx,0x2",
+          "  40a460:\tmov    ecx,ecx",
+          "  40a462:\txor    eax,eax",
+          "  40a464:\tcall   41c2a0 <p111_rt_op>",
+          "  40a469:\tmov    rdi,rax",
+          "  40a46c:\tmov    edi,edi",
+          "  40a46e:\tmov    r11,rdi",
+          "  40a471:\tmovabs rdi,0x1"
+        ]
+      }
+    ],
+    "baseline/tree-bitonic": [
+      {
+        "symbol": "0000000000409c34 <p113d_FID_36_112_49_50_54_115_99_99_46_52_57_>:",
+        "call": "  409dd3:\tcall   41c750 <p111_rt_op>",
+        "window": [
+          "  409d87:\tmov    rdi,rax",
+          "  409d8a:\tmov    r15,rdi",
+          "  409d8d:\tlea    r10,[rbp-0x8d0]",
+          "  409d94:\tmov    r11,r13",
+          "  409d97:\tmov    QWORD PTR [r10],r11",
+          "  409d9a:\tlea    r10,[rbp-0x8d0]",
+          "  409da1:\tmovabs r11,0xa",
+          "  409dab:\tmov    QWORD PTR [r10+0x8],r11",
+          "  409daf:\tmov    rdi,r12",
+          "  409db2:\tmovabs rsi,0x13",
+          "  409dbc:\tmov    esi,esi",
+          "  409dbe:\tlea    rdx,[rbp-0x8d0]",
+          "  409dc5:\tmovabs rcx,0x2",
+          "  409dcf:\tmov    ecx,ecx",
+          "  409dd1:\txor    eax,eax",
+          "  409dd3:\tcall   41c750 <p111_rt_op>",
+          "  409dd8:\tmov    rdi,rax",
+          "  409ddb:\tmov    edi,edi",
+          "  409ddd:\tmov    r11,rdi",
+          "  409de0:\tmovabs rdi,0x30"
+        ]
+      }
+    ],
+    "baseline/editdist": [
+      {
+        "symbol": "000000000040ed17 <p113d_FID_36_112_49_50_54_115_99_99_46_54_50_>:",
+        "call": "  40eeb6:\tcall   41d530 <p111_rt_op>",
+        "window": [
+          "  40ee6a:\tmov    rdi,rax",
+          "  40ee6d:\tmov    r15,rdi",
+          "  40ee70:\tlea    r10,[rbp-0x8d0]",
+          "  40ee77:\tmov    r11,r13",
+          "  40ee7a:\tmov    QWORD PTR [r10],r11",
+          "  40ee7d:\tlea    r10,[rbp-0x8d0]",
+          "  40ee84:\tmovabs r11,0xa",
+          "  40ee8e:\tmov    QWORD PTR [r10+0x8],r11",
+          "  40ee92:\tmov    rdi,r12",
+          "  40ee95:\tmovabs rsi,0x13",
+          "  40ee9f:\tmov    esi,esi",
+          "  40eea1:\tlea    rdx,[rbp-0x8d0]",
+          "  40eea8:\tmovabs rcx,0x2",
+          "  40eeb2:\tmov    ecx,ecx",
+          "  40eeb4:\txor    eax,eax",
+          "  40eeb6:\tcall   41d530 <p111_rt_op>",
+          "  40eebb:\tmov    rdi,rax",
+          "  40eebe:\tmov    edi,edi",
+          "  40eec0:\tmov    r11,rdi",
+          "  40eec3:\tmovabs rdi,0x30"
+        ]
+      }
+    ],
+    "baseline/local-pair": [
+      {
+        "symbol": "000000000040f240 <p113d_FID_36_112_49_50_54_115_99_99_46_54_48_>:",
+        "call": "  40f3df:\tcall   41c210 <p111_rt_op>",
+        "window": [
+          "  40f393:\tmov    rdi,rax",
+          "  40f396:\tmov    r15,rdi",
+          "  40f399:\tlea    r10,[rbp-0x8d0]",
+          "  40f3a0:\tmov    r11,r13",
+          "  40f3a3:\tmov    QWORD PTR [r10],r11",
+          "  40f3a6:\tlea    r10,[rbp-0x8d0]",
+          "  40f3ad:\tmovabs r11,0xa",
+          "  40f3b7:\tmov    QWORD PTR [r10+0x8],r11",
+          "  40f3bb:\tmov    rdi,r12",
+          "  40f3be:\tmovabs rsi,0x13",
+          "  40f3c8:\tmov    esi,esi",
+          "  40f3ca:\tlea    rdx,[rbp-0x8d0]",
+          "  40f3d1:\tmovabs rcx,0x2",
+          "  40f3db:\tmov    ecx,ecx",
+          "  40f3dd:\txor    eax,eax",
+          "  40f3df:\tcall   41c210 <p111_rt_op>",
+          "  40f3e4:\tmov    rdi,rax",
+          "  40f3e7:\tmov    edi,edi",
+          "  40f3e9:\tmov    r11,rdi",
+          "  40f3ec:\tmovabs rdi,0x30"
+        ]
+      }
+    ],
+    "baseline/coverage-numeric-recurrence-256": [
+      {
+        "symbol": "000000000040845a <p113d_FID_36_100_105_114_101_99_116_46_98_101_110_99_104_>:",
+        "call": "  4084c9:\tcall   415300 <p111_rt_op>",
+        "window": [
+          "  40847d:\tmov    rax,rdx",
+          "  408480:\tmov    rbx,rax",
+          "  408483:\tlea    r10,[rbp-0x840]",
+          "  40848a:\tmov    r11,rbx",
+          "  40848d:\tmov    QWORD PTR [r10],r11",
+          "  408490:\tlea    r10,[rbp-0x840]",
+          "  408497:\tmovabs r11,0x61",
+          "  4084a1:\tmov    QWORD PTR [r10+0x8],r11",
+          "  4084a5:\tmov    rdi,r12",
+          "  4084a8:\tmovabs rsi,0x13",
+          "  4084b2:\tmov    esi,esi",
+          "  4084b4:\tlea    rdx,[rbp-0x840]",
+          "  4084bb:\tmovabs rcx,0x2",
+          "  4084c5:\tmov    ecx,ecx",
+          "  4084c7:\txor    eax,eax",
+          "  4084c9:\tcall   415300 <p111_rt_op>",
+          "  4084ce:\tmov    rdi,rax",
+          "  4084d1:\tmov    edi,edi",
+          "  4084d3:\tadd    edi,0x1",
+          "  4084d9:\tlea    r10,[rbp-0x840]"
+        ]
+      },
+      {
+        "symbol": "000000000040858f <p113d_FID_36_100_105_114_101_99_116_46_112_57_51_46_118_97_108_117_101_>:",
+        "call": "  4085fe:\tcall   415300 <p111_rt_op>",
+        "window": [
+          "  4085b2:\tmov    rax,rdx",
+          "  4085b5:\tmov    rbx,rax",
+          "  4085b8:\tlea    r10,[rbp-0x8a8]",
+          "  4085bf:\tmov    r11,rbx",
+          "  4085c2:\tmov    QWORD PTR [r10],r11",
+          "  4085c5:\tlea    r10,[rbp-0x8a8]",
+          "  4085cc:\tmovabs r11,0x61",
+          "  4085d6:\tmov    QWORD PTR [r10+0x8],r11",
+          "  4085da:\tmov    rdi,r12",
+          "  4085dd:\tmovabs rsi,0x13",
+          "  4085e7:\tmov    esi,esi",
+          "  4085e9:\tlea    rdx,[rbp-0x8a8]",
+          "  4085f0:\tmovabs rcx,0x2",
+          "  4085fa:\tmov    ecx,ecx",
+          "  4085fc:\txor    eax,eax",
+          "  4085fe:\tcall   415300 <p111_rt_op>",
+          "  408603:\tmov    rdi,rax",
+          "  408606:\tmov    edi,edi",
+          "  408608:\tadd    edi,0x1",
+          "  40860e:\tlea    r10,[rbp-0x8a8]"
+        ]
+      },
+      {
+        "symbol": "00000000004086c9 <p113d_FID_36_112_49_50_54_115_99_99_46_51_51_>:",
+        "call": "  408868:\tcall   415300 <p111_rt_op>",
+        "window": [
+          "  40881c:\tmov    rdi,rax",
+          "  40881f:\tmov    r15,rdi",
+          "  408822:\tlea    r10,[rbp-0x8d0]",
+          "  408829:\tmov    r11,r13",
+          "  40882c:\tmov    QWORD PTR [r10],r11",
+          "  40882f:\tlea    r10,[rbp-0x8d0]",
+          "  408836:\tmovabs r11,0xa",
+          "  408840:\tmov    QWORD PTR [r10+0x8],r11",
+          "  408844:\tmov    rdi,r12",
+          "  408847:\tmovabs rsi,0x13",
+          "  408851:\tmov    esi,esi",
+          "  408853:\tlea    rdx,[rbp-0x8d0]",
+          "  40885a:\tmovabs rcx,0x2",
+          "  408864:\tmov    ecx,ecx",
+          "  408866:\txor    eax,eax",
+          "  408868:\tcall   415300 <p111_rt_op>",
+          "  40886d:\tmov    rdi,rax",
+          "  408870:\tmov    edi,edi",
+          "  408872:\tmov    r11,rdi",
+          "  408875:\tmovabs rdi,0x30"
+        ]
+      },
+      {
+        "symbol": "0000000000408d6d <p113d_FID_36_100_105_114_101_99_116_46_112_57_51_46_108_111_111_112_>:",
+        "call": "  408e52:\tcall   415300 <p111_rt_op>",
+        "window": [
+          "  408e02:\tmov    r15,rdi",
+          "  408e05:\tsub    r15,0x1",
+          "  408e0c:\tlea    r10,[rbp-0x8d8]",
+          "  408e13:\tmov    r11,rbx",
+          "  408e16:\tmov    QWORD PTR [r10],r11",
+          "  408e19:\tlea    r10,[rbp-0x8d8]",
+          "  408e20:\tmovabs r11,0x61",
+          "  408e2a:\tmov    QWORD PTR [r10+0x8],r11",
+          "  408e2e:\tmov    rdi,r12",
+          "  408e31:\tmovabs rsi,0x13",
+          "  408e3b:\tmov    esi,esi",
+          "  408e3d:\tlea    rdx,[rbp-0x8d8]",
+          "  408e44:\tmovabs rcx,0x2",
+          "  408e4e:\tmov    ecx,ecx",
+          "  408e50:\txor    eax,eax",
+          "  408e52:\tcall   415300 <p111_rt_op>",
+          "  408e57:\tmov    rdi,rax",
+          "  408e5a:\tmov    edi,edi",
+          "  408e5c:\tadd    edi,0x1",
+          "  408e62:\tlea    r10,[rbp-0x8d8]"
+        ]
+      }
+    ],
+    "baseline/variation-ray-active-64-2440": [
+      {
+        "symbol": "000000000040a941 <p113d_FID_36_112_49_50_54_115_99_99_46_53_56_>:",
+        "call": "  40aae0:\tcall   420ab0 <p111_rt_op>",
+        "window": [
+          "  40aa94:\tmov    rdi,rax",
+          "  40aa97:\tmov    r15,rdi",
+          "  40aa9a:\tlea    r10,[rbp-0x8d0]",
+          "  40aaa1:\tmov    r11,r13",
+          "  40aaa4:\tmov    QWORD PTR [r10],r11",
+          "  40aaa7:\tlea    r10,[rbp-0x8d0]",
+          "  40aaae:\tmovabs r11,0xa",
+          "  40aab8:\tmov    QWORD PTR [r10+0x8],r11",
+          "  40aabc:\tmov    rdi,r12",
+          "  40aabf:\tmovabs rsi,0x13",
+          "  40aac9:\tmov    esi,esi",
+          "  40aacb:\tlea    rdx,[rbp-0x8d0]",
+          "  40aad2:\tmovabs rcx,0x2",
+          "  40aadc:\tmov    ecx,ecx",
+          "  40aade:\txor    eax,eax",
+          "  40aae0:\tcall   420ab0 <p111_rt_op>",
+          "  40aae5:\tmov    rdi,rax",
+          "  40aae8:\tmov    edi,edi",
+          "  40aaea:\tmov    r11,rdi",
+          "  40aaed:\tmovabs rdi,0x30"
+        ]
+      },
+      {
+        "symbol": "0000000000411a8b <p113d_FID_36_100_105_114_101_99_116_46_99_111_118_101_114_97_103_101_46_97_99_116_105_118_101_46_108_111_111_112_>:",
+        "call": "  411b6a:\tcall   420ab0 <p111_rt_op>",
+        "window": [
+          "  411b1a:\tmov    r15,rdi",
+          "  411b1d:\tsub    r15,0x1",
+          "  411b24:\tlea    r10,[rbp-0x840]",
+          "  411b2b:\tmov    r11,rbx",
+          "  411b2e:\tmov    QWORD PTR [r10],r11",
+          "  411b31:\tlea    r10,[rbp-0x840]",
+          "  411b38:\tmovabs r11,0x50",
+          "  411b42:\tmov    QWORD PTR [r10+0x8],r11",
+          "  411b46:\tmov    rdi,r12",
+          "  411b49:\tmovabs rsi,0x13",
+          "  411b53:\tmov    esi,esi",
+          "  411b55:\tlea    rdx,[rbp-0x840]",
+          "  411b5c:\tmovabs rcx,0x2",
+          "  411b66:\tmov    ecx,ecx",
+          "  411b68:\txor    eax,eax",
+          "  411b6a:\tcall   420ab0 <p111_rt_op>",
+          "  411b6f:\tmov    rdi,rax",
+          "  411b72:\tmov    r14,rdi",
+          "  411b75:\tlea    r10,[rbp-0x840]",
+          "  411b7c:\tmov    r11,rbx"
+        ]
+      }
+    ],
+    "combined/lexer": [
+      {
+        "symbol": "0000000000408a32 <p113d_FID_36_112_49_49_56_46_116_114_109_99_46_36_100_105_114_101_99_116_46_105_100_101_110_116_>:",
+        "call": "  408b2c:\tcall   41c170 <p111_rt_op>",
+        "window": [
+          "  408ae1:\tmov    ebx,ebx",
+          "  408ae3:\txor    rbx,rdi",
+          "  408ae6:\tlea    r10,[rbp-0x850]",
+          "  408aed:\tmov    r11,rbx",
+          "  408af0:\tmov    QWORD PTR [r10],r11",
+          "  408af3:\tlea    r10,[rbp-0x850]",
+          "  408afa:\tmovabs r11,0x1a",
+          "  408b04:\tmov    QWORD PTR [r10+0x8],r11",
+          "  408b08:\tmov    rdi,r12",
+          "  408b0b:\tmovabs rsi,0x13",
+          "  408b15:\tmov    esi,esi",
+          "  408b17:\tlea    rdx,[rbp-0x850]",
+          "  408b1e:\tmovabs rcx,0x2",
+          "  408b28:\tmov    ecx,ecx",
+          "  408b2a:\txor    eax,eax",
+          "  408b2c:\tcall   41c170 <p111_rt_op>",
+          "  408b31:\tmov    rdi,rax",
+          "  408b34:\tmov    edi,edi",
+          "  408b36:\tmov    r11,rdi",
+          "  408b39:\tmovabs rdi,0x61"
+        ]
+      },
+      {
+        "symbol": "00000000004094ac <p113d_FID_36_112_49_50_54_115_99_99_46_54_48_>:",
+        "call": "  40964b:\tcall   41c170 <p111_rt_op>",
+        "window": [
+          "  4095ff:\tmov    rdi,rax",
+          "  409602:\tmov    r15,rdi",
+          "  409605:\tlea    r10,[rbp-0x8d0]",
+          "  40960c:\tmov    r11,r13",
+          "  40960f:\tmov    QWORD PTR [r10],r11",
+          "  409612:\tlea    r10,[rbp-0x8d0]",
+          "  409619:\tmovabs r11,0xa",
+          "  409623:\tmov    QWORD PTR [r10+0x8],r11",
+          "  409627:\tmov    rdi,r12",
+          "  40962a:\tmovabs rsi,0x13",
+          "  409634:\tmov    esi,esi",
+          "  409636:\tlea    rdx,[rbp-0x8d0]",
+          "  40963d:\tmovabs rcx,0x2",
+          "  409647:\tmov    ecx,ecx",
+          "  409649:\txor    eax,eax",
+          "  40964b:\tcall   41c170 <p111_rt_op>",
+          "  409650:\tmov    rdi,rax",
+          "  409653:\tmov    edi,edi",
+          "  409655:\tmov    r11,rdi",
+          "  409658:\tmovabs rdi,0x30"
+        ]
+      },
+      {
+        "symbol": "0000000000409c19 <p113d_FID_36_112_49_49_56_46_116_114_109_99_46_36_100_105_114_101_99_116_46_110_117_109_>:",
+        "call": "  409d13:\tcall   41c170 <p111_rt_op>",
+        "window": [
+          "  409cc8:\tmov    ebx,ebx",
+          "  409cca:\txor    rbx,rdi",
+          "  409ccd:\tlea    r10,[rbp-0x850]",
+          "  409cd4:\tmov    r11,rbx",
+          "  409cd7:\tmov    QWORD PTR [r10],r11",
+          "  409cda:\tlea    r10,[rbp-0x850]",
+          "  409ce1:\tmovabs r11,0xa",
+          "  409ceb:\tmov    QWORD PTR [r10+0x8],r11",
+          "  409cef:\tmov    rdi,r12",
+          "  409cf2:\tmovabs rsi,0x13",
+          "  409cfc:\tmov    esi,esi",
+          "  409cfe:\tlea    rdx,[rbp-0x850]",
+          "  409d05:\tmovabs rcx,0x2",
+          "  409d0f:\tmov    ecx,ecx",
+          "  409d11:\txor    eax,eax",
+          "  409d13:\tcall   41c170 <p111_rt_op>",
+          "  409d18:\tmov    rdi,rax",
+          "  409d1b:\tmov    edi,edi",
+          "  409d1d:\tmov    r11,rdi",
+          "  409d20:\tmovabs rdi,0x30"
+        ]
+      },
+      {
+        "symbol": "0000000000409e2e <p113d_FID_36_100_105_114_101_99_116_46_101_120_112_97_110_100_>:",
+        "call": "  409f7e:\tcall   41c170 <p111_rt_op>",
+        "window": [
+          "  409f2f:\tcmp    rdi,r11",
+          "  409f32:\tjne    40a012 <p113d_FID_36_100_105_114_101_99_116_46_101_120_112_97_110_100_+0x1e4>",
+          "  409f38:\tlea    r10,[rbp-0x850]",
+          "  409f3f:\tmov    r11,rbx",
+          "  409f42:\tmov    QWORD PTR [r10],r11",
+          "  409f45:\tlea    r10,[rbp-0x850]",
+          "  409f4c:\tmovabs r11,0x6",
+          "  409f56:\tmov    QWORD PTR [r10+0x8],r11",
+          "  409f5a:\tmov    rdi,r12",
+          "  409f5d:\tmovabs rsi,0x13",
+          "  409f67:\tmov    esi,esi",
+          "  409f69:\tlea    rdx,[rbp-0x850]",
+          "  409f70:\tmovabs rcx,0x2",
+          "  409f7a:\tmov    ecx,ecx",
+          "  409f7c:\txor    eax,eax",
+          "  409f7e:\tcall   41c170 <p111_rt_op>",
+          "  409f83:\tmov    rdi,rax",
+          "  409f86:\tmov    edi,edi",
+          "  409f88:\tmov    r11,rdi",
+          "  409f8b:\tmovabs rdi,0x1"
+        ]
+      },
+      {
+        "symbol": "000000000040a1e2 <p113d_FID_36_100_105_114_101_99_116_46_103_101_110_46_97_116_>:",
+        "call": "  40a3ca:\tcall   41c170 <p111_rt_op>",
+        "window": [
+          "  40a37b:\tcmp    rdi,r11",
+          "  40a37e:\tjne    40a44f <p113d_FID_36_100_105_114_101_99_116_46_103_101_110_46_97_116_+0x26d>",
+          "  40a384:\tlea    r10,[rbp-0x8e0]",
+          "  40a38b:\tmov    r11,rbx",
+          "  40a38e:\tmov    QWORD PTR [r10],r11",
+          "  40a391:\tlea    r10,[rbp-0x8e0]",
+          "  40a398:\tmovabs r11,0x6",
+          "  40a3a2:\tmov    QWORD PTR [r10+0x8],r11",
+          "  40a3a6:\tmov    rdi,r12",
+          "  40a3a9:\tmovabs rsi,0x13",
+          "  40a3b3:\tmov    esi,esi",
+          "  40a3b5:\tlea    rdx,[rbp-0x8e0]",
+          "  40a3bc:\tmovabs rcx,0x2",
+          "  40a3c6:\tmov    ecx,ecx",
+          "  40a3c8:\txor    eax,eax",
+          "  40a3ca:\tcall   41c170 <p111_rt_op>",
+          "  40a3cf:\tmov    rdi,rax",
+          "  40a3d2:\tmov    edi,edi",
+          "  40a3d4:\tmov    r11,rdi",
+          "  40a3d7:\tmovabs rdi,0x1"
+        ]
+      }
+    ],
+    "combined/tree-bitonic": [
+      {
+        "symbol": "0000000000409c18 <p113d_FID_36_112_49_50_54_115_99_99_46_52_57_>:",
+        "call": "  409db7:\tcall   41c740 <p111_rt_op>",
+        "window": [
+          "  409d6b:\tmov    rdi,rax",
+          "  409d6e:\tmov    r15,rdi",
+          "  409d71:\tlea    r10,[rbp-0x8d0]",
+          "  409d78:\tmov    r11,r13",
+          "  409d7b:\tmov    QWORD PTR [r10],r11",
+          "  409d7e:\tlea    r10,[rbp-0x8d0]",
+          "  409d85:\tmovabs r11,0xa",
+          "  409d8f:\tmov    QWORD PTR [r10+0x8],r11",
+          "  409d93:\tmov    rdi,r12",
+          "  409d96:\tmovabs rsi,0x13",
+          "  409da0:\tmov    esi,esi",
+          "  409da2:\tlea    rdx,[rbp-0x8d0]",
+          "  409da9:\tmovabs rcx,0x2",
+          "  409db3:\tmov    ecx,ecx",
+          "  409db5:\txor    eax,eax",
+          "  409db7:\tcall   41c740 <p111_rt_op>",
+          "  409dbc:\tmov    rdi,rax",
+          "  409dbf:\tmov    edi,edi",
+          "  409dc1:\tmov    r11,rdi",
+          "  409dc4:\tmovabs rdi,0x30"
+        ]
+      }
+    ],
+    "combined/editdist": [
+      {
+        "symbol": "000000000040eaac <p113d_FID_36_112_49_50_54_115_99_99_46_54_50_>:",
+        "call": "  40ec4b:\tcall   41d290 <p111_rt_op>",
+        "window": [
+          "  40ebff:\tmov    rdi,rax",
+          "  40ec02:\tmov    r15,rdi",
+          "  40ec05:\tlea    r10,[rbp-0x8d0]",
+          "  40ec0c:\tmov    r11,r13",
+          "  40ec0f:\tmov    QWORD PTR [r10],r11",
+          "  40ec12:\tlea    r10,[rbp-0x8d0]",
+          "  40ec19:\tmovabs r11,0xa",
+          "  40ec23:\tmov    QWORD PTR [r10+0x8],r11",
+          "  40ec27:\tmov    rdi,r12",
+          "  40ec2a:\tmovabs rsi,0x13",
+          "  40ec34:\tmov    esi,esi",
+          "  40ec36:\tlea    rdx,[rbp-0x8d0]",
+          "  40ec3d:\tmovabs rcx,0x2",
+          "  40ec47:\tmov    ecx,ecx",
+          "  40ec49:\txor    eax,eax",
+          "  40ec4b:\tcall   41d290 <p111_rt_op>",
+          "  40ec50:\tmov    rdi,rax",
+          "  40ec53:\tmov    edi,edi",
+          "  40ec55:\tmov    r11,rdi",
+          "  40ec58:\tmovabs rdi,0x30"
+        ]
+      }
+    ],
+    "combined/local-pair": [
+      {
+        "symbol": "000000000040efd5 <p113d_FID_36_112_49_50_54_115_99_99_46_54_48_>:",
+        "call": "  40f174:\tcall   41bfa0 <p111_rt_op>",
+        "window": [
+          "  40f128:\tmov    rdi,rax",
+          "  40f12b:\tmov    r15,rdi",
+          "  40f12e:\tlea    r10,[rbp-0x8d0]",
+          "  40f135:\tmov    r11,r13",
+          "  40f138:\tmov    QWORD PTR [r10],r11",
+          "  40f13b:\tlea    r10,[rbp-0x8d0]",
+          "  40f142:\tmovabs r11,0xa",
+          "  40f14c:\tmov    QWORD PTR [r10+0x8],r11",
+          "  40f150:\tmov    rdi,r12",
+          "  40f153:\tmovabs rsi,0x13",
+          "  40f15d:\tmov    esi,esi",
+          "  40f15f:\tlea    rdx,[rbp-0x8d0]",
+          "  40f166:\tmovabs rcx,0x2",
+          "  40f170:\tmov    ecx,ecx",
+          "  40f172:\txor    eax,eax",
+          "  40f174:\tcall   41bfa0 <p111_rt_op>",
+          "  40f179:\tmov    rdi,rax",
+          "  40f17c:\tmov    edi,edi",
+          "  40f17e:\tmov    r11,rdi",
+          "  40f181:\tmovabs rdi,0x30"
+        ]
+      }
+    ],
+    "combined/coverage-numeric-recurrence-256": [
+      {
+        "symbol": "000000000040845a <p113d_FID_36_100_105_114_101_99_116_46_98_101_110_99_104_>:",
+        "call": "  4084c9:\tcall   415300 <p111_rt_op>",
+        "window": [
+          "  40847d:\tmov    rax,rdx",
+          "  408480:\tmov    rbx,rax",
+          "  408483:\tlea    r10,[rbp-0x840]",
+          "  40848a:\tmov    r11,rbx",
+          "  40848d:\tmov    QWORD PTR [r10],r11",
+          "  408490:\tlea    r10,[rbp-0x840]",
+          "  408497:\tmovabs r11,0x61",
+          "  4084a1:\tmov    QWORD PTR [r10+0x8],r11",
+          "  4084a5:\tmov    rdi,r12",
+          "  4084a8:\tmovabs rsi,0x13",
+          "  4084b2:\tmov    esi,esi",
+          "  4084b4:\tlea    rdx,[rbp-0x840]",
+          "  4084bb:\tmovabs rcx,0x2",
+          "  4084c5:\tmov    ecx,ecx",
+          "  4084c7:\txor    eax,eax",
+          "  4084c9:\tcall   415300 <p111_rt_op>",
+          "  4084ce:\tmov    rdi,rax",
+          "  4084d1:\tmov    edi,edi",
+          "  4084d3:\tadd    edi,0x1",
+          "  4084d9:\tlea    r10,[rbp-0x840]"
+        ]
+      },
+      {
+        "symbol": "000000000040858f <p113d_FID_36_100_105_114_101_99_116_46_112_57_51_46_118_97_108_117_101_>:",
+        "call": "  4085fe:\tcall   415300 <p111_rt_op>",
+        "window": [
+          "  4085b2:\tmov    rax,rdx",
+          "  4085b5:\tmov    rbx,rax",
+          "  4085b8:\tlea    r10,[rbp-0x8a8]",
+          "  4085bf:\tmov    r11,rbx",
+          "  4085c2:\tmov    QWORD PTR [r10],r11",
+          "  4085c5:\tlea    r10,[rbp-0x8a8]",
+          "  4085cc:\tmovabs r11,0x61",
+          "  4085d6:\tmov    QWORD PTR [r10+0x8],r11",
+          "  4085da:\tmov    rdi,r12",
+          "  4085dd:\tmovabs rsi,0x13",
+          "  4085e7:\tmov    esi,esi",
+          "  4085e9:\tlea    rdx,[rbp-0x8a8]",
+          "  4085f0:\tmovabs rcx,0x2",
+          "  4085fa:\tmov    ecx,ecx",
+          "  4085fc:\txor    eax,eax",
+          "  4085fe:\tcall   415300 <p111_rt_op>",
+          "  408603:\tmov    rdi,rax",
+          "  408606:\tmov    edi,edi",
+          "  408608:\tadd    edi,0x1",
+          "  40860e:\tlea    r10,[rbp-0x8a8]"
+        ]
+      },
+      {
+        "symbol": "00000000004086c9 <p113d_FID_36_112_49_50_54_115_99_99_46_51_51_>:",
+        "call": "  408868:\tcall   415300 <p111_rt_op>",
+        "window": [
+          "  40881c:\tmov    rdi,rax",
+          "  40881f:\tmov    r15,rdi",
+          "  408822:\tlea    r10,[rbp-0x8d0]",
+          "  408829:\tmov    r11,r13",
+          "  40882c:\tmov    QWORD PTR [r10],r11",
+          "  40882f:\tlea    r10,[rbp-0x8d0]",
+          "  408836:\tmovabs r11,0xa",
+          "  408840:\tmov    QWORD PTR [r10+0x8],r11",
+          "  408844:\tmov    rdi,r12",
+          "  408847:\tmovabs rsi,0x13",
+          "  408851:\tmov    esi,esi",
+          "  408853:\tlea    rdx,[rbp-0x8d0]",
+          "  40885a:\tmovabs rcx,0x2",
+          "  408864:\tmov    ecx,ecx",
+          "  408866:\txor    eax,eax",
+          "  408868:\tcall   415300 <p111_rt_op>",
+          "  40886d:\tmov    rdi,rax",
+          "  408870:\tmov    edi,edi",
+          "  408872:\tmov    r11,rdi",
+          "  408875:\tmovabs rdi,0x30"
+        ]
+      },
+      {
+        "symbol": "0000000000408d6b <p113d_FID_36_100_105_114_101_99_116_46_112_57_51_46_108_111_111_112_>:",
+        "call": "  408e50:\tcall   415300 <p111_rt_op>",
+        "window": [
+          "  408e00:\tmov    r15,rdi",
+          "  408e03:\tsub    r15,0x1",
+          "  408e0a:\tlea    r10,[rbp-0x8d8]",
+          "  408e11:\tmov    r11,rbx",
+          "  408e14:\tmov    QWORD PTR [r10],r11",
+          "  408e17:\tlea    r10,[rbp-0x8d8]",
+          "  408e1e:\tmovabs r11,0x61",
+          "  408e28:\tmov    QWORD PTR [r10+0x8],r11",
+          "  408e2c:\tmov    rdi,r12",
+          "  408e2f:\tmovabs rsi,0x13",
+          "  408e39:\tmov    esi,esi",
+          "  408e3b:\tlea    rdx,[rbp-0x8d8]",
+          "  408e42:\tmovabs rcx,0x2",
+          "  408e4c:\tmov    ecx,ecx",
+          "  408e4e:\txor    eax,eax",
+          "  408e50:\tcall   415300 <p111_rt_op>",
+          "  408e55:\tmov    rdi,rax",
+          "  408e58:\tmov    edi,edi",
+          "  408e5a:\tadd    edi,0x1",
+          "  408e60:\tlea    r10,[rbp-0x8d8]"
+        ]
+      }
+    ],
+    "combined/variation-ray-active-64-2440": [
+      {
+        "symbol": "000000000040aae6 <p113d_FID_36_112_49_50_54_115_99_99_46_53_56_>:",
+        "call": "  40ac85:\tcall   421630 <p111_rt_op>",
+        "window": [
+          "  40ac39:\tmov    rdi,rax",
+          "  40ac3c:\tmov    r15,rdi",
+          "  40ac3f:\tlea    r10,[rbp-0x8d0]",
+          "  40ac46:\tmov    r11,r13",
+          "  40ac49:\tmov    QWORD PTR [r10],r11",
+          "  40ac4c:\tlea    r10,[rbp-0x8d0]",
+          "  40ac53:\tmovabs r11,0xa",
+          "  40ac5d:\tmov    QWORD PTR [r10+0x8],r11",
+          "  40ac61:\tmov    rdi,r12",
+          "  40ac64:\tmovabs rsi,0x13",
+          "  40ac6e:\tmov    esi,esi",
+          "  40ac70:\tlea    rdx,[rbp-0x8d0]",
+          "  40ac77:\tmovabs rcx,0x2",
+          "  40ac81:\tmov    ecx,ecx",
+          "  40ac83:\txor    eax,eax",
+          "  40ac85:\tcall   421630 <p111_rt_op>",
+          "  40ac8a:\tmov    rdi,rax",
+          "  40ac8d:\tmov    edi,edi",
+          "  40ac8f:\tmov    r11,rdi",
+          "  40ac92:\tmovabs rdi,0x30"
+        ]
+      },
+      {
+        "symbol": "00000000004122d0 <p113d_FID_36_100_105_114_101_99_116_46_99_111_118_101_114_97_103_101_46_97_99_116_105_118_101_46_108_111_111_112_>:",
+        "call": "  4123af:\tcall   421630 <p111_rt_op>",
+        "window": [
+          "  41235f:\tmov    r15,rdi",
+          "  412362:\tsub    r15,0x1",
+          "  412369:\tlea    r10,[rbp-0x840]",
+          "  412370:\tmov    r11,rbx",
+          "  412373:\tmov    QWORD PTR [r10],r11",
+          "  412376:\tlea    r10,[rbp-0x840]",
+          "  41237d:\tmovabs r11,0x50",
+          "  412387:\tmov    QWORD PTR [r10+0x8],r11",
+          "  41238b:\tmov    rdi,r12",
+          "  41238e:\tmovabs rsi,0x13",
+          "  412398:\tmov    esi,esi",
+          "  41239a:\tlea    rdx,[rbp-0x840]",
+          "  4123a1:\tmovabs rcx,0x2",
+          "  4123ab:\tmov    ecx,ecx",
+          "  4123ad:\txor    eax,eax",
+          "  4123af:\tcall   421630 <p111_rt_op>",
+          "  4123b4:\tmov    rdi,rax",
+          "  4123b7:\tmov    r14,rdi",
+          "  4123ba:\tlea    r10,[rbp-0x840]",
+          "  4123c1:\tmov    r11,rbx"
+        ]
+      }
+    ]
+  },
+  "certificate": {
+    "description": "ceil reciprocal; endpoints bound every complete quotient interval and final partial interval",
+    "admitted": [
+      {
+        "d": 2,
+        "magic": 2147483648,
+        "shift": 32
+      },
+      {
+        "d": 3,
+        "magic": 2863311531,
+        "shift": 33
+      },
+      {
+        "d": 4,
+        "magic": 1073741824,
+        "shift": 32
+      },
+      {
+        "d": 5,
+        "magic": 3435973837,
+        "shift": 34
+      },
+      {
+        "d": 6,
+        "magic": 2863311531,
+        "shift": 34
+      },
+      {
+        "d": 8,
+        "magic": 536870912,
+        "shift": 32
+      },
+      {
+        "d": 9,
+        "magic": 954437177,
+        "shift": 33
+      },
+      {
+        "d": 10,
+        "magic": 3435973837,
+        "shift": 35
+      },
+      {
+        "d": 11,
+        "magic": 3123612579,
+        "shift": 35
+      },
+      {
+        "d": 12,
+        "magic": 2863311531,
+        "shift": 35
+      },
+      {
+        "d": 13,
+        "magic": 1321528399,
+        "shift": 34
+      },
+      {
+        "d": 15,
+        "magic": 2290649225,
+        "shift": 35
+      },
+      {
+        "d": 16,
+        "magic": 268435456,
+        "shift": 32
+      },
+      {
+        "d": 17,
+        "magic": 4042322161,
+        "shift": 36
+      },
+      {
+        "d": 18,
+        "magic": 954437177,
+        "shift": 34
+      },
+      {
+        "d": 20,
+        "magic": 3435973837,
+        "shift": 36
+      },
+      {
+        "d": 22,
+        "magic": 3123612579,
+        "shift": 36
+      },
+      {
+        "d": 23,
+        "magic": 2987803337,
+        "shift": 36
+      },
+      {
+        "d": 24,
+        "magic": 2863311531,
+        "shift": 36
+      },
+      {
+        "d": 25,
+        "magic": 1374389535,
+        "shift": 35
+      },
+      {
+        "d": 26,
+        "magic": 1321528399,
+        "shift": 35
+      },
+      {
+        "d": 29,
+        "magic": 2369637129,
+        "shift": 36
+      },
+      {
+        "d": 30,
+        "magic": 2290649225,
+        "shift": 36
+      },
+      {
+        "d": 32,
+        "magic": 134217728,
+        "shift": 32
+      },
+      {
+        "d": 33,
+        "magic": 1041204193,
+        "shift": 35
+      },
+      {
+        "d": 34,
+        "magic": 4042322161,
+        "shift": 37
+      },
+      {
+        "d": 36,
+        "magic": 954437177,
+        "shift": 35
+      },
+      {
+        "d": 40,
+        "magic": 3435973837,
+        "shift": 37
+      },
+      {
+        "d": 41,
+        "magic": 3352169597,
+        "shift": 37
+      },
+      {
+        "d": 43,
+        "magic": 799063683,
+        "shift": 35
+      },
+      {
+        "d": 44,
+        "magic": 3123612579,
+        "shift": 37
+      },
+      {
+        "d": 46,
+        "magic": 2987803337,
+        "shift": 37
+      },
+      {
+        "d": 47,
+        "magic": 2924233053,
+        "shift": 37
+      },
+      {
+        "d": 48,
+        "magic": 2863311531,
+        "shift": 37
+      },
+      {
+        "d": 49,
+        "magic": 1402438301,
+        "shift": 36
+      },
+      {
+        "d": 50,
+        "magic": 1374389535,
+        "shift": 36
+      },
+      {
+        "d": 51,
+        "magic": 2694881441,
+        "shift": 37
+      },
+      {
+        "d": 52,
+        "magic": 1321528399,
+        "shift": 36
+      },
+      {
+        "d": 58,
+        "magic": 2369637129,
+        "shift": 37
+      },
+      {
+        "d": 59,
+        "magic": 582368447,
+        "shift": 35
+      },
+      {
+        "d": 60,
+        "magic": 2290649225,
+        "shift": 37
+      },
+      {
+        "d": 61,
+        "magic": 1126548799,
+        "shift": 36
+      },
+      {
+        "d": 64,
+        "magic": 67108864,
+        "shift": 32
+      },
+      {
+        "d": 65,
+        "magic": 4228890877,
+        "shift": 38
+      },
+      {
+        "d": 66,
+        "magic": 1041204193,
+        "shift": 36
+      },
+      {
+        "d": 67,
+        "magic": 128207979,
+        "shift": 33
+      },
+      {
+        "d": 68,
+        "magic": 4042322161,
+        "shift": 38
+      },
+      {
+        "d": 69,
+        "magic": 1991868891,
+        "shift": 37
+      },
+      {
+        "d": 71,
+        "magic": 3871519817,
+        "shift": 38
+      },
+      {
+        "d": 72,
+        "magic": 954437177,
+        "shift": 36
+      },
+      {
+        "d": 75,
+        "magic": 458129845,
+        "shift": 35
+      },
+      {
+        "d": 77,
+        "magic": 892460737,
+        "shift": 36
+      },
+      {
+        "d": 79,
+        "magic": 3479467177,
+        "shift": 38
+      },
+      {
+        "d": 80,
+        "magic": 3435973837,
+        "shift": 38
+      },
+      {
+        "d": 81,
+        "magic": 3393554407,
+        "shift": 38
+      },
+      {
+        "d": 82,
+        "magic": 3352169597,
+        "shift": 38
+      },
+      {
+        "d": 83,
+        "magic": 827945503,
+        "shift": 36
+      },
+      {
+        "d": 85,
+        "magic": 3233857729,
+        "shift": 38
+      },
+      {
+        "d": 86,
+        "magic": 799063683,
+        "shift": 36
+      },
+      {
+        "d": 87,
+        "magic": 789879043,
+        "shift": 36
+      },
+      {
+        "d": 88,
+        "magic": 3123612579,
+        "shift": 38
+      },
+      {
+        "d": 89,
+        "magic": 3088515809,
+        "shift": 38
+      },
+      {
+        "d": 92,
+        "magic": 2987803337,
+        "shift": 38
+      },
+      {
+        "d": 93,
+        "magic": 2955676419,
+        "shift": 38
+      },
+      {
+        "d": 94,
+        "magic": 2924233053,
+        "shift": 38
+      },
+      {
+        "d": 96,
+        "magic": 2863311531,
+        "shift": 38
+      },
+      {
+        "d": 98,
+        "magic": 1402438301,
+        "shift": 37
+      },
+      {
+        "d": 99,
+        "magic": 2776544515,
+        "shift": 38
+      },
+      {
+        "d": 100,
+        "magic": 1374389535,
+        "shift": 37
+      },
+      {
+        "d": 102,
+        "magic": 2694881441,
+        "shift": 38
+      },
+      {
+        "d": 104,
+        "magic": 1321528399,
+        "shift": 37
+      },
+      {
+        "d": 116,
+        "magic": 2369637129,
+        "shift": 38
+      },
+      {
+        "d": 118,
+        "magic": 582368447,
+        "shift": 36
+      },
+      {
+        "d": 119,
+        "magic": 1154949189,
+        "shift": 37
+      },
+      {
+        "d": 120,
+        "magic": 2290649225,
+        "shift": 38
+      },
+      {
+        "d": 122,
+        "magic": 1126548799,
+        "shift": 37
+      },
+      {
+        "d": 125,
+        "magic": 274877907,
+        "shift": 35
+      },
+      {
+        "d": 128,
+        "magic": 33554432,
+        "shift": 32
+      },
+      {
+        "d": 129,
+        "magic": 266354561,
+        "shift": 35
+      },
+      {
+        "d": 130,
+        "magic": 4228890877,
+        "shift": 39
+      },
+      {
+        "d": 131,
+        "magic": 4196609267,
+        "shift": 39
+      },
+      {
+        "d": 132,
+        "magic": 1041204193,
+        "shift": 37
+      },
+      {
+        "d": 133,
+        "magic": 4133502361,
+        "shift": 39
+      },
+      {
+        "d": 134,
+        "magic": 128207979,
+        "shift": 34
+      },
+      {
+        "d": 135,
+        "magic": 4072265289,
+        "shift": 39
+      },
+      {
+        "d": 136,
+        "magic": 4042322161,
+        "shift": 39
+      },
+      {
+        "d": 137,
+        "magic": 125400505,
+        "shift": 34
+      },
+      {
+        "d": 138,
+        "magic": 1991868891,
+        "shift": 38
+      },
+      {
+        "d": 139,
+        "magic": 1977538899,
+        "shift": 38
+      },
+      {
+        "d": 141,
+        "magic": 974744351,
+        "shift": 37
+      },
+      {
+        "d": 142,
+        "magic": 3871519817,
+        "shift": 39
+      },
+      {
+        "d": 143,
+        "magic": 3844446251,
+        "shift": 39
+      },
+      {
+        "d": 144,
+        "magic": 954437177,
+        "shift": 37
+      },
+      {
+        "d": 145,
+        "magic": 3791419407,
+        "shift": 39
+      },
+      {
+        "d": 147,
+        "magic": 3739835469,
+        "shift": 39
+      },
+      {
+        "d": 149,
+        "magic": 3689636335,
+        "shift": 39
+      },
+      {
+        "d": 150,
+        "magic": 458129845,
+        "shift": 36
+      },
+      {
+        "d": 151,
+        "magic": 910191745,
+        "shift": 37
+      },
+      {
+        "d": 153,
+        "magic": 3593175255,
+        "shift": 39
+      },
+      {
+        "d": 154,
+        "magic": 892460737,
+        "shift": 37
+      },
+      {
+        "d": 155,
+        "magic": 3546811703,
+        "shift": 39
+      },
+      {
+        "d": 157,
+        "magic": 875407347,
+        "shift": 37
+      },
+      {
+        "d": 158,
+        "magic": 3479467177,
+        "shift": 39
+      },
+      {
+        "d": 160,
+        "magic": 3435973837,
+        "shift": 39
+      },
+      {
+        "d": 161,
+        "magic": 3414632385,
+        "shift": 39
+      },
+      {
+        "d": 162,
+        "magic": 3393554407,
+        "shift": 39
+      },
+      {
+        "d": 163,
+        "magic": 3372735055,
+        "shift": 39
+      },
+      {
+        "d": 164,
+        "magic": 3352169597,
+        "shift": 39
+      },
+      {
+        "d": 165,
+        "magic": 1665926709,
+        "shift": 38
+      },
+      {
+        "d": 166,
+        "magic": 827945503,
+        "shift": 37
+      },
+      {
+        "d": 167,
+        "magic": 1645975491,
+        "shift": 38
+      },
+      {
+        "d": 169,
+        "magic": 1626496491,
+        "shift": 38
+      },
+      {
+        "d": 170,
+        "magic": 3233857729,
+        "shift": 39
+      },
+      {
+        "d": 172,
+        "magic": 799063683,
+        "shift": 37
+      },
+      {
+        "d": 174,
+        "magic": 789879043,
+        "shift": 37
+      },
+      {
+        "d": 175,
+        "magic": 1570730897,
+        "shift": 38
+      },
+      {
+        "d": 176,
+        "magic": 3123612579,
+        "shift": 39
+      },
+      {
+        "d": 178,
+        "magic": 3088515809,
+        "shift": 39
+      },
+      {
+        "d": 181,
+        "magic": 3037324939,
+        "shift": 39
+      },
+      {
+        "d": 183,
+        "magic": 3004130131,
+        "shift": 39
+      },
+      {
+        "d": 184,
+        "magic": 2987803337,
+        "shift": 39
+      },
+      {
+        "d": 186,
+        "magic": 2955676419,
+        "shift": 39
+      },
+      {
+        "d": 187,
+        "magic": 2939870663,
+        "shift": 39
+      },
+      {
+        "d": 188,
+        "magic": 2924233053,
+        "shift": 39
+      },
+      {
+        "d": 191,
+        "magic": 2878302691,
+        "shift": 39
+      },
+      {
+        "d": 192,
+        "magic": 2863311531,
+        "shift": 39
+      },
+      {
+        "d": 193,
+        "magic": 356059465,
+        "shift": 36
+      },
+      {
+        "d": 196,
+        "magic": 1402438301,
+        "shift": 38
+      },
+      {
+        "d": 198,
+        "magic": 2776544515,
+        "shift": 39
+      },
+      {
+        "d": 199,
+        "magic": 1381296015,
+        "shift": 38
+      },
+      {
+        "d": 200,
+        "magic": 1374389535,
+        "shift": 38
+      },
+      {
+        "d": 201,
+        "magic": 42735993,
+        "shift": 33
+      },
+      {
+        "d": 203,
+        "magic": 2708156719,
+        "shift": 39
+      },
+      {
+        "d": 204,
+        "magic": 2694881441,
+        "shift": 39
+      },
+      {
+        "d": 205,
+        "magic": 1340867839,
+        "shift": 38
+      },
+      {
+        "d": 207,
+        "magic": 663956297,
+        "shift": 37
+      },
+      {
+        "d": 208,
+        "magic": 1321528399,
+        "shift": 38
+      },
+      {
+        "d": 209,
+        "magic": 2630410593,
+        "shift": 39
+      },
+      {
+        "d": 211,
+        "magic": 2605477791,
+        "shift": 39
+      },
+      {
+        "d": 213,
+        "magic": 2581013211,
+        "shift": 39
+      },
+      {
+        "d": 215,
+        "magic": 1278501893,
+        "shift": 38
+      },
+      {
+        "d": 225,
+        "magic": 2443359173,
+        "shift": 39
+      },
+      {
+        "d": 229,
+        "magic": 1200340205,
+        "shift": 38
+      },
+      {
+        "d": 232,
+        "magic": 2369637129,
+        "shift": 39
+      },
+      {
+        "d": 236,
+        "magic": 582368447,
+        "shift": 37
+      },
+      {
+        "d": 238,
+        "magic": 1154949189,
+        "shift": 38
+      },
+      {
+        "d": 239,
+        "magic": 2300233531,
+        "shift": 39
+      },
+      {
+        "d": 240,
+        "magic": 2290649225,
+        "shift": 39
+      },
+      {
+        "d": 241,
+        "magic": 285143057,
+        "shift": 36
+      },
+      {
+        "d": 243,
+        "magic": 2262369605,
+        "shift": 39
+      },
+      {
+        "d": 244,
+        "magic": 1126548799,
+        "shift": 38
+      },
+      {
+        "d": 250,
+        "magic": 274877907,
+        "shift": 36
+      },
+      {
+        "d": 251,
+        "magic": 2190262207,
+        "shift": 39
+      },
+      {
+        "d": 253,
+        "magic": 2172947881,
+        "shift": 39
+      },
+      {
+        "d": 255,
+        "magic": 2155905153,
+        "shift": 39
+      },
+      {
+        "d": 256,
+        "magic": 16777216,
+        "shift": 32
+      },
+      {
+        "d": 65535,
+        "magic": 2147516417,
+        "shift": 47
+      },
+      {
+        "d": 65536,
+        "magic": 65536,
+        "shift": 32
+      },
+      {
+        "d": 65537,
+        "magic": 4294901761,
+        "shift": 48
+      },
+      {
+        "d": 2147483648,
+        "magic": 2,
+        "shift": 32
+      },
+      {
+        "d": 2147483649,
+        "magic": 4294967295,
+        "shift": 63
+      },
+      {
+        "d": 4294967295,
+        "magic": 2147483649,
+        "shift": 63
+      }
+    ],
+    "refused": [
+      7,
+      14,
+      19,
+      21,
+      27,
+      28,
+      31,
+      35,
+      37,
+      38,
+      39,
+      42,
+      45,
+      53,
+      54,
+      55,
+      56,
+      57,
+      62,
+      63,
+      70,
+      73,
+      74,
+      76,
+      78,
+      84,
+      90,
+      91,
+      95,
+      97,
+      101,
+      103,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      117,
+      121,
+      123,
+      124,
+      126,
+      127,
+      140,
+      146,
+      148,
+      152,
+      156,
+      159,
+      168,
+      171,
+      173,
+      177,
+      179,
+      180,
+      182,
+      185,
+      189,
+      190,
+      194,
+      195,
+      197,
+      202,
+      206,
+      210,
+      212,
+      214,
+      216,
+      217,
+      218,
+      219,
+      220,
+      221,
+      222,
+      223,
+      224,
+      226,
+      227,
+      228,
+      230,
+      231,
+      233,
+      234,
+      235,
+      237,
+      242,
+      245,
+      246,
+      247,
+      248,
+      249,
+      252,
+      254,
+      2147483647
+    ],
+    "zeroOneRefused": true
+  },
+  "independentPythonModuloChecks": 110125,
+  "mutantsRejected": [
+    {
+      "kind": "wrong-shift",
+      "counterexample": {
+        "n": 25,
+        "got": 4294967295,
+        "want": 25
+      }
+    },
+    {
+      "kind": "wrong-magic",
+      "counterexample": {
+        "n": 26,
+        "got": 26,
+        "want": 0
+      }
+    },
+    {
+      "kind": "no-input-truncation",
+      "counterexample": {
+        "n": 0,
+        "got": 22,
+        "want": 0
+      }
+    }
+  ],
+  "targetExecutions": 0,
+  "compilerExecutions": 0,
+  "modelExecuted": false,
+  "frozenPrediction": "Arithmetic model should improve versus DIV for26; whole-lexer improvement expected positive, magnitude unknown. Runtime/profile percentage is not removable share. Model omits real calls, dispatch, packing and code layout; do not treat model ratio as program ratio.",
+  "projectionPins": {
+    "remainder26-before.s": "8c312940aefca5f23cf46df5f34ec48f9054f2f45ef6cdce16223e314c5b2215",
+    "remainder26-after.s": "facc760067b086c6497ab78ac323fefe9aa4fd0b9c8c185ed2bfd5dcf1d0783b"
+  }
+}

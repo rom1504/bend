@@ -194,9 +194,13 @@ def x185_array_function(+function: P113DFunction, +ids: N111Ids, +heap: U32, +mo
 @unsafe
 def x181_program_private(+function: P113DFunction, context: P134Context, +available: KDef) -> X181Output:
   match function context:
-    case P113DFunction{name,params,result,public,body} P134Context{ids,index,direct,ready,view,lookups,heap,mode}:
+    case P113DFunction{name,params,result,public,body} P134Context{+ids,index,direct,ready,view,+lookups,+heap,+mode}:
+      +enabled = x195t_enabled() && U32.is_eq(mode,2)
       x181_program_join(X181Output{[],x181_program_stmts(body,available)},
-        x181_program_join(x185_array_function(function,ids,heap,mode),x181_forward(function,ready)))
+        x181_program_join(nt_choose(X181Output,enabled,
+          u => x195t_data(function,lookups,available),u => X181Output{[],""}),
+          x181_program_join(x185_array_function(x195t_when(enabled,function,lookups),ids,heap,mode),
+            x181_forward(function,ready))))
 
 @unsafe
 def x181_program_public(+segment: N111Segment, context: P134Context, +available: KDef) -> X181Output:
@@ -235,7 +239,7 @@ def x181_program_data_item(+item: P111QDatum, rest: List<&2,P111QDatum>, +availa
     case _: x181_program_data_items(rest,available,Con{x181_program_datum(item),acc})
 
 @unsafe
-def x181_program_data(data: P111QData, +available: KDef) -> X181Output:
+def x181_program_data(data,available):
   match data:
     case P111QData{+name,alignment,exported,items}:
       x181_program_join(X181Output{[x188_table_head(name,alignment,exported)],""},

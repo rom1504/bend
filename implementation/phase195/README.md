@@ -1,3 +1,11 @@
+# Qualified Phase195 direct x86 compiler
+
+Across 44 timed native45 cases, Phase195 takes **1.86457× mature Bend C runtime**, down from 1.97723× for Phase194 in the same run. Geometric runtime falls 5.70% overall and 4.30% on the 34 timed held-out cases. The original fixed-work batch falls from 24.55 s to 22.42 s. All 45 ordinary outputs, 64 conformance cases and 10 runtime controls pass. N2 reproduces its compiler object exactly. Four paired compiler requests take 1.28% longer with N1 and 0.36% longer with N2. The installed Phase189 image remains available.
+
+The hardware-model experiment also produced a separate checked remainder optimization. Its lexer gain was 3.17% and its ray result was inconclusive. It remains experimental. [Qualification and experiments](qualification-2026-11-20.md) · [Runtime by case](broad-runtime-summary02.md) · [Compiler costs](compiler-cost.md).
+
+---
+
 # Latest continuation
 
 [2026-11-20 results](resume-2026-11-20.md): combined candidate17.38% less runtime on six development cases. Cycle and memory-carry hypotheses tested; insufficient additional benefit. Next: broad evaluation of the simpler combination. Qualified compiler unchanged.

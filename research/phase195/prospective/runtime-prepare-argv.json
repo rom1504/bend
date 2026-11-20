@@ -1,0 +1,20 @@
+[
+  "python3",
+  "-B",
+  "selfhost/tests/phase185/runtime-loop.py",
+  "merge",
+  "--role",
+  "combined",
+  "selfhost/build/phase195/combined-dev-build01/programs.manifest.json",
+  "combined",
+  "--role",
+  "remainder",
+  "selfhost/build/phase195/remainder-dev-build01/programs.manifest.json",
+  "remainder",
+  "--reference",
+  "combined",
+  "--cases",
+  "lexer,variation-ray-active-64-2440",
+  "--out",
+  "selfhost/build/phase195/remainder-runtime-plan01"
+]

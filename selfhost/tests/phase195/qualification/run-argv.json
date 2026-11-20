@@ -1,0 +1,148 @@
+{
+  "kind": "phase195-qualification-metrics-argv",
+  "cwd": "/home/ai/bend2/build/publish/bend",
+  "executed": false,
+  "notes": "Run each step only after its dependencies complete. Target measurement steps are supplied for the campaign owner; this preparation launches no targets. Fresh output roots; original Phase194 baselines and receipts unchanged.",
+  "steps": [
+    {
+      "id": "prepare-n1",
+      "targetsRun": false,
+      "requires": [
+        "selfhost/build/phase195/native45-01/report.json",
+        "research/phase195/maintained-integration-audit.json"
+      ],
+      "argv": [
+        "python3",
+        "selfhost/tests/phase195/qualification/compiler-cost-plan.py",
+        "--stage",
+        "N1",
+        "--source",
+        "selfhost/build/phase195/selected-source02/compiler.bend",
+        "--candidate-build",
+        "selfhost/build/phase195/native45-01",
+        "--source-audit",
+        "research/phase195/maintained-integration-audit.json",
+        "--out",
+        "selfhost/build/phase195/compiler-cost-n1-plan01"
+      ]
+    },
+    {
+      "id": "measure-n1",
+      "targetsRun": true,
+      "requires": [
+        "selfhost/build/phase195/compiler-cost-n1-plan01/manifest.json"
+      ],
+      "argv": [
+        "python3",
+        "-B",
+        "selfhost/tests/phase195/job.py",
+        "--cpu",
+        "3",
+        "--rss-mib",
+        "2048",
+        "compiler-cost-n1-01",
+        "90",
+        "128",
+        "python3",
+        "-B",
+        "selfhost/tools/bench/bench.py",
+        "run",
+        "--manifest",
+        "selfhost/build/phase195/compiler-cost-n1-plan01/manifest.json",
+        "--set",
+        "full",
+        "--rounds",
+        "2",
+        "--budget",
+        "60",
+        "--out",
+        "selfhost/build/phase195/compiler-cost-n1-01",
+        "--cpu",
+        "3",
+        "--guarded"
+      ]
+    },
+    {
+      "id": "prepare-n2",
+      "targetsRun": false,
+      "requires": [
+        "selfhost/build/phase195/native45-02/report.json",
+        "research/phase195/maintained-integration-audit.json"
+      ],
+      "argv": [
+        "python3",
+        "selfhost/tests/phase195/qualification/compiler-cost-plan.py",
+        "--stage",
+        "N2",
+        "--source",
+        "selfhost/build/phase195/selected-source02/compiler.bend",
+        "--candidate-build",
+        "selfhost/build/phase195/native45-02",
+        "--source-audit",
+        "research/phase195/maintained-integration-audit.json",
+        "--out",
+        "selfhost/build/phase195/compiler-cost-n2-plan01"
+      ]
+    },
+    {
+      "id": "measure-n2",
+      "targetsRun": true,
+      "requires": [
+        "selfhost/build/phase195/compiler-cost-n2-plan01/manifest.json"
+      ],
+      "argv": [
+        "python3",
+        "-B",
+        "selfhost/tests/phase195/job.py",
+        "--cpu",
+        "3",
+        "--rss-mib",
+        "2048",
+        "compiler-cost-n2-01",
+        "90",
+        "128",
+        "python3",
+        "-B",
+        "selfhost/tools/bench/bench.py",
+        "run",
+        "--manifest",
+        "selfhost/build/phase195/compiler-cost-n2-plan01/manifest.json",
+        "--set",
+        "full",
+        "--rounds",
+        "2",
+        "--budget",
+        "60",
+        "--out",
+        "selfhost/build/phase195/compiler-cost-n2-01",
+        "--cpu",
+        "3",
+        "--guarded"
+      ]
+    },
+    {
+      "id": "compare-hosted-six-n1",
+      "targetsRun": false,
+      "requires": [
+        "selfhost/build/phase195/native45-01/report.json",
+        "research/phase195/maintained-integration-audit.json"
+      ],
+      "argv": [
+        "python3",
+        "selfhost/tests/phase195/qualification/compare-hosted-subset.py",
+        "--left",
+        "selfhost/build/phase195/combined-dev-build01/programs.manifest.json",
+        "--left-role",
+        "combined",
+        "--right",
+        "selfhost/build/phase195/native45-01/programs.manifest.json",
+        "--right-role",
+        "candidate",
+        "--source-audit",
+        "research/phase195/maintained-integration-audit.json",
+        "--out",
+        "selfhost/build/phase195/hosted-native-compare01"
+      ]
+    }
+  ]
+}

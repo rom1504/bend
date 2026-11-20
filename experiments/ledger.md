@@ -7429,3 +7429,7 @@ No new BendTT proof, complete compiler correctness or recursive acceleration cla
 ## Phase195 paused checkpoint — 2026-11-14
 
 [Results and exact resume order](../implementation/phase195/README.md). Experimental only; qualified194/installed189 unchanged. Six-case call/branch facts screen0.886927×baseline; tables/sqrt/composition controls and negative allocation/selection evidence retained. Residual-cycle and memory-recurrence experiments prepared, unexecuted. Hardware-model investigation started; no simulator claims. Paused at user request before integration/native qualification.
+
+## Phase195 resumed — 2026-11-20
+
+[Controlled results](../implementation/phase195/resume-2026-11-20.md): combination17.38% less runtime across six development cases; cycles fail incremental-profitability test; recurrence diagnostic0.9–1.6%. Independent finite controls pass. No broad/native/default promotion.

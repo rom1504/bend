@@ -1,3 +1,9 @@
+# Phase195 resumed — 2026-11-20
+
+[New results](../implementation/phase195/resume-2026-11-20.md). Combined table/call/sqrt candidate0.826158×baseline on six cases. Residual cycles add no aggregate benefit; carry diagnostic only0.9–1.6%. Do not integrate these extra passes. Next broad45 testing of simpler combination, then native qualification if supported. Phase194 remains qualified; installed189 unchanged.
+
+---
+
 # Phase195 — paused experimental checkpoint, 2026-11-14
 
 [Resume state](../implementation/phase195/README.md). No maintained-source or installed-image change; Phase194 remains the qualified frontier. Balanced six-case branch/call candidate improves11.31%; full native45 unmeasured. Prioritize prepared residual-cycle prototype, combined runtime and independent loop-carry ceiling before qualification. Hardware-model retrospective remains pending. User paused for quota; no jobs remain running.

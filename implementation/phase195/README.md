@@ -1,3 +1,7 @@
+# Latest continuation
+
+[2026-11-20 results](resume-2026-11-20.md): combined candidate17.38% less runtime on six development cases. Cycle and memory-carry hypotheses tested; insufficient additional benefit. Next: broad evaluation of the simpler combination. Qualified compiler unchanged.
+
 # Phase195 checkpoint — paused at user request
 
 No maintained compiler changes, native qualification, installed-image promotion or parity claim. The qualified Phase194 full-suite result remains **1.971034× mature Bend C**. User requested stopping on 2026-11-14 because quota was exhausted. All execution jobs are terminal.

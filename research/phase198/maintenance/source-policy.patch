@@ -1,0 +1,82 @@
+--- a/selfhost/tools/build/source.py
++++ b/selfhost/tools/build/source.py
+@@ -162,0 +163,72 @@
++
++
++"""Narrow source-transport helper proposed for tools/build/source.py.
++
++Not Bend parsing/checking: accepts only a byte-identical, one-line def header.
++Policy helpers still require the ordinary checked compiler qualification.
++"""
++def profile_policy_block(manifest, config, profile, root, entries, locations,
++                         name_owners, additions):
++    if 'policyBlock' not in config:
++        return None, []
++    spec = config['policyBlock']
++    if (profile != 'x86' or config.get('protocol') != 'native-x86-source-v1' or
++            not isinstance(spec, dict) or set(spec) != {'replace', 'module'}):
++        raise ValueError('Policy block requires the x86 profile and exact replace/module selectors')
++    target, filename = spec['replace'], spec['module']
++    if (not isinstance(target, str) or not WORDS.fullmatch(target) or target == 'main' or
++            target in manifest.get('protectedDeclarations', {})):
++        raise ValueError('Policy replacement must select one nonprotected definition')
++    keys = [key for key in entries if key[2] == target]
++    if len(keys) != 1 or keys[0][1] != 'def':
++        raise ValueError('Policy replacement requires a unique existing def without a law pair')
++    if (not isinstance(filename, str) or not filename or
++            filename in manifest['modules'] or filename in config.get('modules', []) or
++            filename == config.get('entryModule')):
++        raise ValueError('Policy block must have a separate confined module owner')
++    data = read(safe_path(root, filename))
++    prefix, items = blocks(data)
++    if prefix:
++        raise ValueError('Policy block has unassigned preamble bytes')
++    chosen = [item for item in items if item['name'] == target]
++    if len(chosen) != 1 or chosen[0]['kind'] != 'def':
++        raise ValueError('Policy block must contain exactly its selected replacement def')
++
++    def signature(module, item):
++        # Deliberately reject multiline/inline-body signatures rather than
++        # pretending source transport can parse arbitrary Bend signatures.
++        start = item['headerOffset']
++        stop = module.find(b'\n', start)
++        if module[start:stop] == b'@unsafe':
++            stop = module.find(b'\n', stop + 1)
++        header = module[start:stop]
++        if stop < 0 or not header.endswith(b':'):
++            raise ValueError('Policy def requires a standalone one-line signature')
++        return header
++
++    old_file, old_module, old_item = locations[keys[0]]
++    if signature(old_module, old_item) != signature(data, chosen[0]):
++        raise ValueError('Policy replacement changed original signature/quantities/unsafe marker')
++    # All original and additive declarations remain occupied, even if closure
++    # pruning would hide them. Constructors are names too, not spare aliases.
++    occupied = set(name_owners) | {row[0][2] for row in additions} | {'main'}
++    constructors = re.compile(rb'^  ([A-Za-z_][A-Za-z0-9_.]*)\{', re.M)
++    type_chunks = [chunk for key, chunk in entries.items() if key[1] == 'type']
++    type_chunks += [row[1] for row in additions if row[0][1] == 'type']
++    for chunk in type_chunks:
++        occupied.update(name.decode() for name in constructors.findall(chunk))
++    seen = set()
++    index = len(manifest['modules']) + len(config.get('modules', []))
++    answer = []
++    for item in items:
++        name = item['name']
++        names = [name]
++        if item['kind'] == 'type':
++            names += [x.decode() for x in constructors.findall(item['data'])]
++        if any(n in seen or (n in occupied and n != target) for n in names):
++            raise ValueError('Duplicate or shadowed policy declaration/constructor: ' + name)
++        if target in names and name != target:
++            raise ValueError('Policy constructor shadows replacement')
++        seen.update(names)
++        answer.append(((index, item['kind'], name), item['data'], (filename, data, item)))
++    return keys[0], answer
+@@ -229,0 +302,2 @@
++    policy_key, policy_rows = profile_policy_block(manifest, config, profile, root,
++        entries, locations, name_owners, additions)
+@@ -231,0 +306,3 @@
++        if key == policy_key:
++            selected += policy_rows
++            continue

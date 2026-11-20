@@ -27,7 +27,7 @@ GROUPS = {
     'absorb': ('absorb-api05', [('x185_function_copied',['absorbing/absorbing.bend','absorbing/hook.bend'])]),
     'permute': ('reuse-api02', [('x185_function_copied',['reuse/recognize.bend','reuse/select.bend','reuse/hook.bend'])]),
     'pairs': ('loops-api02', [('x190_j_graphed',['loops/paired-v3.bend','loops/hook-v3.bend'])]),
-    'tree': ('reuse-fusion-api04', [('x192h_emit_checked',['reuse/pairwise/machine.bend','reuse/pairwise/proof.bend','reuse/pairwise/attach.bend','reuse/pairwise/hook.bend']),
+    'tree': ('reuse-fusion-api05', [('x192h_emit_checked',['reuse/pairwise/machine.bend','reuse/pairwise/proof.bend','reuse/pairwise/attach.bend','reuse/pairwise/hook.bend']),
                                    ('x181_request',['reuse/pairwise/entry.bend'])]),
     'register': ('allocation-api01', [('x191_function_saved',['allocation/frame-register.bend','allocation/hook.bend'])]),
 }

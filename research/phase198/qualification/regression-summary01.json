@@ -1,0 +1,237 @@
+{
+  "kind": "phase198-authenticated-regression-followup",
+  "complete": true,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase198/qualification/summarize-regression.py",
+    "bytes": 1992,
+    "sha256": "a0c4ef9b367bc22d757fef34f81146fd5ff54eb3f88cae1406f6ca0ee4259218"
+  },
+  "analyzer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase186/analyze-runtime.py",
+    "bytes": 9139,
+    "sha256": "00de2390521f32bbbd9bd8948c71165591f333acb792d0fb0e67dd07cb2b8565"
+  },
+  "report": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/regression-runtime01/report.json",
+    "bytes": 252367,
+    "sha256": "261ba853592c85a12fb96759bc5221c2880dd183aaf9162863e4158c6f57e197"
+  },
+  "oracleRevalidated": {
+    "pilots": 37,
+    "samples": 60
+  },
+  "inputPinsVerified": 175,
+  "cases": [
+    {
+      "id": "coverage-list-pipeline-128",
+      "ratio": 1.0056239366410604,
+      "pairedRatios": [
+        1.2097357257612757,
+        1.2057779483868716,
+        0.9765916195441068,
+        1.0006456003210553,
+        1.0006456003210553,
+        1.0315934023928404
+      ],
+      "candidateWins": 1,
+      "flagged": true,
+      "stats": {
+        "baseline": {
+          "samplesMs": [
+            0.0011683057822417522,
+            0.001162493315663435,
+            0.0012089930482899723,
+            0.0011683057822417522,
+            0.0011683057822417522,
+            0.0011276185161935319
+          ],
+          "medianMs": 0.0011683057822417522,
+          "maxOverMin": 1.0721649484536082,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.001413341243391321,
+            0.0014017088051741086,
+            0.0011806924790470706,
+            0.0011690600408298581,
+            0.0011690600408298581,
+            0.0011632438217212518
+          ],
+          "medianMs": 0.0011748762599384645,
+          "maxOverMin": 1.215,
+          "flagged": true
+        }
+      }
+    },
+    {
+      "id": "variation-lexer-6-17",
+      "ratio": 0.9975728155339805,
+      "pairedRatios": [
+        0.9951923076923076,
+        1.0145631067961165,
+        1.0,
+        1.0049261083743843,
+        0.9902912621359223,
+        0.9859154929577466
+      ],
+      "candidateWins": 3,
+      "flagged": false,
+      "stats": {
+        "baseline": {
+          "samplesMs": [
+            0.26,
+            0.2575,
+            0.25375,
+            0.25375,
+            0.2575,
+            0.26625
+          ],
+          "medianMs": 0.2575,
+          "maxOverMin": 1.0492610837438423,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.25875,
+            0.26125,
+            0.25375,
+            0.255,
+            0.255,
+            0.2625
+          ],
+          "medianMs": 0.25687499999999996,
+          "maxOverMin": 1.0344827586206897,
+          "flagged": false
+        }
+      }
+    },
+    {
+      "id": "variation-local-fold-128-0",
+      "ratio": 1.0599987948506164,
+      "pairedRatios": [
+        1.0653254219604185,
+        1.0599987948506164,
+        1.0158321783985074,
+        1.0463507416980333,
+        1.0639236779841548,
+        1.058550326075144
+      ],
+      "candidateWins": 0,
+      "flagged": false,
+      "stats": {
+        "baseline": {
+          "samplesMs": [
+            0.0002875,
+            0.0002875,
+            0.0003,
+            0.00029125,
+            0.000285,
+            0.000285
+          ],
+          "medianMs": 0.0002875,
+          "maxOverMin": 1.0526315789473684,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.0003062810588136203,
+            0.0003047496535195522,
+            0.0003047496535195522,
+            0.0003047496535195522,
+            0.0003032182482254841,
+            0.00030168684293141603
+          ],
+          "medianMs": 0.0003047496535195522,
+          "maxOverMin": 1.015228426395939,
+          "flagged": false
+        }
+      }
+    },
+    {
+      "id": "symreg",
+      "ratio": 1.0471385542168676,
+      "pairedRatios": [
+        1.041768292682927,
+        1.0729166666666667,
+        1.0367111650485439,
+        1.3166866028708133,
+        1.0353558394160582,
+        0.8697076612903226
+      ],
+      "candidateWins": 1,
+      "flagged": true,
+      "stats": {
+        "baseline": {
+          "samplesMs": [
+            2.411764705882353,
+            2.4,
+            2.4235294117647057,
+            2.458823529411765,
+            3.223529411764706,
+            2.9176470588235293
+          ],
+          "medianMs": 2.4411764705882355,
+          "maxOverMin": 1.343137254901961,
+          "flagged": true
+        },
+        "candidate": {
+          "samplesMs": [
+            2.5125,
+            2.575,
+            2.5125,
+            3.2375,
+            3.3375,
+            2.5375
+          ],
+          "medianMs": 2.5562500000000004,
+          "maxOverMin": 1.3283582089552237,
+          "flagged": true
+        }
+      }
+    },
+    {
+      "id": "local-pair",
+      "ratio": 0.8603134844807107,
+      "pairedRatios": [
+        0.8925280071259721,
+        0.8581573103341424,
+        0.8496180067833773,
+        0.8667820069204152,
+        0.853844962041006,
+        0.8624696586272788
+      ],
+      "candidateWins": 6,
+      "flagged": false,
+      "stats": {
+        "baseline": {
+          "samplesMs": [
+            0.4031936127744511,
+            0.40119760479041916,
+            0.4031936127744511,
+            0.3992015968063872,
+            0.40119760479041916,
+            0.40119760479041916
+          ],
+          "medianMs": 0.40119760479041916,
+          "maxOverMin": 1.01,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.35986159169550175,
+            0.34429065743944637,
+            0.34256055363321797,
+            0.3460207612456747,
+            0.34256055363321797,
+            0.3460207612456747
+          ],
+          "medianMs": 0.34515570934256057,
+          "maxOverMin": 1.0505050505050506,
+          "flagged": false
+        }
+      }
+    }
+  ],
+  "scope": "Separate five-case six-round position-balanced follow-up selected before measurement; primary all45 result is retained unchanged. Ratios use role medians; paired ratios and every observation retained. No significance or promotion claim."
+}

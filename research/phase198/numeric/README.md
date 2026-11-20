@@ -144,3 +144,20 @@ not actual broad results, predictions of portfolio04, or attribution of its
 unmeasured gains. They establish neither broad orbit incidence nor fixed-work or
 other-family improvement. The later composed compiler and live runtime still
 need their own unchanged-input broad measurements.
+
+## Collision-free composition name
+
+The absorbing-state portfolio already uses some `x198a_*` names. The numeric
+copy now uses **`numeric-orbit.bend` + `orbit.bend` + unchanged `hook.bend`**.
+`rename-orbit.py` and `orbit-alpha.json` prove a reversible lexical bijection for
+all 19 helper names, exact equality of every other token, exact whole-source
+alpha identity, and corresponding API export identity. The authenticated old
+modules and measured products remain unchanged.
+
+Fresh `numeric-api05` independently checked source10 (SHA256
+`fee0fd8330fc1936d2e695324ef35bd5e124b953981cd78c08bb668435ae8def`) and repeated
+all 31/1,121/9,720 controls, in 17.160 seconds including acquisition. The emitted
+normalized IR is exactly the same 213,594 bytes as the measured version, SHA256
+`4492b10242a99671cde0f0c6b133963051f084a88ecc00b25fdf87ad8b780084`.
+[Combined receipt](evidence/orbit-check.json). No new timing is attributed to this
+rename; actual portfolio integration remains a separate gate.

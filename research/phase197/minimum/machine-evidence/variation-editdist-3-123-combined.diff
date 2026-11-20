@@ -1,0 +1,36 @@
+--- baseline
++++ combined
+@@ -1,5 +1,4 @@
+-mov r10,rsi
+-sub r10,0x1
++lea r10,[rsi-0x1]
+ mov QWORD PTR [rbp-0xa28],r10
+ mov esi,edi
+ mov r10,rsi
+@@ -34,22 +33,14 @@
+ mov r8,rsi
+ mov rsi,r14
+ add esi,0x1
+-mov r10,r8
+-mov r11,rsi
+-cmp r10,r11
+-mov rax,r8
+-mov r11,rsi
+-cmovb r11,rax
+-mov r8,r11
++cmp r8,rsi
++cmovae r8,rsi
+ mov r11,QWORD PTR [rbp-0xa78]
+ mov rsi,QWORD PTR [rbp-0xa98]
+ add esi,r11d
+-mov r10,r8
++cmp r8,rsi
+ mov r11,rsi
+-cmp r10,r11
+-mov rax,r8
+-mov r11,rsi
+-cmovb r11,rax
++cmovb r11,r8
+ mov QWORD PTR [rbp-0xb18],r11
+ mov edi,edi
+ mov rsi,rdi

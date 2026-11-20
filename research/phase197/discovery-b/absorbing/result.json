@@ -1,0 +1,1550 @@
+{
+  "freeze": "40b69388d532c4e7fb53daba14fbd931e314d917181f49ebfaa9cd503274642c",
+  "script": "c0cbd14be088f49e4d35c1e8337006e7e6ac4fe7b92d7a00bd2a8be9d2615823",
+  "model": [
+    {
+      "fuel": 1,
+      "before": {
+        "Total Cycles": 140.0,
+        "Instructions": 500.0,
+        "Block RThroughput": 1.3
+      },
+      "after": {
+        "Total Cycles": 37.0,
+        "Instructions": 100.0,
+        "Block RThroughput": 0.3
+      }
+    },
+    {
+      "fuel": 8,
+      "before": {
+        "Total Cycles": 2706.0,
+        "Instructions": 9600.0,
+        "Block RThroughput": 24.7
+      },
+      "after": {
+        "Total Cycles": 37.0,
+        "Instructions": 100.0,
+        "Block RThroughput": 0.3
+      }
+    },
+    {
+      "fuel": 32,
+      "before": {
+        "Total Cycles": 11506.0,
+        "Instructions": 40800.0,
+        "Block RThroughput": 104.7
+      },
+      "after": {
+        "Total Cycles": 37.0,
+        "Instructions": 100.0,
+        "Block RThroughput": 0.3
+      }
+    }
+  ],
+  "cases": {
+    "coverage-bst-64": {
+      "sourceSha": "5b57eee59a13249ceea21407a5303867b04c413540fbe2048eb11c177ad4419b",
+      "checks": [
+        {
+          "args": [
+            64,
+            17
+          ],
+          "c": {
+            "stdout": "861157620\n0\n1\n0\n",
+            "elapsedMs": 0,
+            "wall": 0.0033085905015468597
+          },
+          "oracles": {
+            "direct": {
+              "stdout": "861157620\n0\n1\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0030037574470043182
+            },
+            "project-baseline": {
+              "stdout": "861157620\n0\n1\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0031004371121525764
+            },
+            "default-baseline": {
+              "stdout": "861157620\n0\n1\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.003001871518790722
+            },
+            "project-candidate": {
+              "stdout": "861157620\n0\n1\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0030018044635653496
+            },
+            "default-candidate": {
+              "stdout": "861157620\n0\n1\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0029827579855918884
+            }
+          }
+        },
+        {
+          "args": [
+            0,
+            17
+          ],
+          "c": {
+            "stdout": "0\n0\n0\n0\n",
+            "elapsedMs": 0,
+            "wall": 0.0028267279267311096
+          },
+          "oracles": {
+            "direct": {
+              "stdout": "0\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.002868291921913624
+            },
+            "project-baseline": {
+              "stdout": "0\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0029529668390750885
+            },
+            "default-baseline": {
+              "stdout": "0\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.003092242404818535
+            },
+            "project-candidate": {
+              "stdout": "0\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.003221535123884678
+            },
+            "default-candidate": {
+              "stdout": "0\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.002968315966427326
+            }
+          }
+        },
+        {
+          "args": [
+            1,
+            3
+          ],
+          "c": {
+            "stdout": "3\n0\n0\n0\n",
+            "elapsedMs": 0,
+            "wall": 0.002863433212041855
+          },
+          "oracles": {
+            "direct": {
+              "stdout": "3\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.002919195219874382
+            },
+            "project-baseline": {
+              "stdout": "3\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0029958337545394897
+            },
+            "default-baseline": {
+              "stdout": "3\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0030190255492925644
+            },
+            "project-candidate": {
+              "stdout": "3\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0029416289180517197
+            },
+            "default-candidate": {
+              "stdout": "3\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0029264725744724274
+            }
+          }
+        },
+        {
+          "args": [
+            32,
+            0
+          ],
+          "c": {
+            "stdout": "1802825775\n0\n0\n0\n",
+            "elapsedMs": 0,
+            "wall": 0.0028703054413199425
+          },
+          "oracles": {
+            "direct": {
+              "stdout": "1802825775\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0029387185350060463
+            },
+            "project-baseline": {
+              "stdout": "1802825775\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.002936321310698986
+            },
+            "default-baseline": {
+              "stdout": "1802825775\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.002963867038488388
+            },
+            "project-candidate": {
+              "stdout": "1802825775\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0028937142342329025
+            },
+            "default-candidate": {
+              "stdout": "1802825775\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0028948932886123657
+            }
+          }
+        },
+        {
+          "args": [
+            61,
+            123
+          ],
+          "c": {
+            "stdout": "499437544\n0\n0\n0\n",
+            "elapsedMs": 0,
+            "wall": 0.002846558578312397
+          },
+          "oracles": {
+            "direct": {
+              "stdout": "499437544\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.002910654991865158
+            },
+            "project-baseline": {
+              "stdout": "499437544\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0028695184737443924
+            },
+            "default-baseline": {
+              "stdout": "499437544\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0031032459810376167
+            },
+            "project-candidate": {
+              "stdout": "499437544\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0031049977988004684
+            },
+            "default-candidate": {
+              "stdout": "499437544\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.003114791586995125
+            }
+          }
+        },
+        {
+          "args": [
+            64,
+            17
+          ],
+          "c": {
+            "stdout": "861157620\n0\n0\n0\n",
+            "elapsedMs": 0,
+            "wall": 0.0028550243005156517
+          },
+          "oracles": {
+            "direct": {
+              "stdout": "861157620\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.002998076379299164
+            },
+            "project-baseline": {
+              "stdout": "861157620\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0029848292469978333
+            },
+            "default-baseline": {
+              "stdout": "861157620\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0028955433517694473
+            },
+            "project-candidate": {
+              "stdout": "861157620\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.002935384400188923
+            },
+            "default-candidate": {
+              "stdout": "861157620\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0029546301811933517
+            }
+          }
+        }
+      ],
+      "boundaries": {
+        "project-baseline": {
+          "checks": 72,
+          "sha": "e46cf8f34eb6c785b30ff299de3075af73b3f863392b703a4c256fa27c42f6e2"
+        },
+        "project-candidate": {
+          "checks": 72,
+          "sha": "53556c204522d2a5ee1ee8a07ffb4bf92e1fa71f74e21e324629cd01fc681dcb"
+        }
+      },
+      "counters": [
+        {
+          "args": [
+            64,
+            17
+          ],
+          "baseline": {
+            "calls": 64,
+            "steps": 4160,
+            "leaves": 3795
+          },
+          "candidate": {
+            "calls": 64,
+            "steps": 429,
+            "leaves": 64
+          }
+        },
+        {
+          "args": [
+            0,
+            17
+          ],
+          "baseline": {
+            "calls": 0,
+            "steps": 0,
+            "leaves": 0
+          },
+          "candidate": {
+            "calls": 0,
+            "steps": 0,
+            "leaves": 0
+          }
+        },
+        {
+          "args": [
+            1,
+            3
+          ],
+          "baseline": {
+            "calls": 1,
+            "steps": 2,
+            "leaves": 2
+          },
+          "candidate": {
+            "calls": 1,
+            "steps": 1,
+            "leaves": 1
+          }
+        },
+        {
+          "args": [
+            32,
+            0
+          ],
+          "baseline": {
+            "calls": 32,
+            "steps": 1056,
+            "leaves": 560
+          },
+          "candidate": {
+            "calls": 32,
+            "steps": 528,
+            "leaves": 32
+          }
+        },
+        {
+          "args": [
+            61,
+            123
+          ],
+          "baseline": {
+            "calls": 61,
+            "steps": 3782,
+            "leaves": 3331
+          },
+          "candidate": {
+            "calls": 61,
+            "steps": 512,
+            "leaves": 61
+          }
+        },
+        {
+          "args": [
+            64,
+            17
+          ],
+          "baseline": {
+            "calls": 64,
+            "steps": 4160,
+            "leaves": 3795
+          },
+          "candidate": {
+            "calls": 64,
+            "steps": 429,
+            "leaves": 64
+          }
+        }
+      ],
+      "products": {
+        "project-baseline": {
+          "path": "selfhost/build/phase197/discoveryBAbsorb01/coverage-bst-64/project-baseline",
+          "sha": "fdecd1359e3e3ce1d9cdf65d9f7be999eb0839f3b8b3a2ce12bee9a0dc912e25",
+          "objectSha": "57ceff5915e3973ed3abbed8e760ed67969e0d298c2179df235c8b6c993d45ca",
+          "sourceSha": "5b57eee59a13249ceea21407a5303867b04c413540fbe2048eb11c177ad4419b",
+          "flags": [
+            "-mbranches-within-32B-boundaries"
+          ]
+        },
+        "default-baseline": {
+          "path": "selfhost/build/phase197/discoveryBAbsorb01/coverage-bst-64/default-baseline",
+          "sha": "163c11fe251512c07c1437411412b36d38f83f59f51ec2b7aa7af1118b8830cd",
+          "objectSha": "ecf0d4fb36d052bd917f9309050be9cc606bce9dd2ef82d0247c272dc432649a",
+          "sourceSha": "5b57eee59a13249ceea21407a5303867b04c413540fbe2048eb11c177ad4419b",
+          "flags": []
+        },
+        "counts-baseline": {
+          "path": "selfhost/build/phase197/discoveryBAbsorb01/coverage-bst-64/counts-baseline",
+          "sha": "fb1bf279805c0990484d7e3b93fb78e54718604734f54783d38e2f4ce162bb11",
+          "objectSha": "8496e3a92c9873c27c67aa55efc490833aad50494dc4cb4f03db9e60fe348cb4",
+          "sourceSha": "3b725758ad19c79c599161ce1cbc8929bf139f4ef65d458f8471613cf7477338",
+          "flags": [
+            "-mbranches-within-32B-boundaries"
+          ]
+        },
+        "project-candidate": {
+          "path": "selfhost/build/phase197/discoveryBAbsorb01/coverage-bst-64/project-candidate",
+          "sha": "7002fff30f4e236aa6cca441f6491ae89344ca7d25b17c5a7150921f946018d7",
+          "objectSha": "eb2a51adcf15128417e087fcd16888f2ef4e9da6e54c939db9ca95c8545b7fe0",
+          "sourceSha": "afbf305584081a4844faab2b07628d4d757e425b05eb001163fa7dc2ac04695c",
+          "flags": [
+            "-mbranches-within-32B-boundaries"
+          ]
+        },
+        "default-candidate": {
+          "path": "selfhost/build/phase197/discoveryBAbsorb01/coverage-bst-64/default-candidate",
+          "sha": "67e0416fea0ef07217a88afa8b85a568f04b6a1f39a692f73f9ddb62eac55e3b",
+          "objectSha": "1fabb35427298ba6bf188febdc76697dc766e750f67dbaf7d6da7b45bb47db6d",
+          "sourceSha": "afbf305584081a4844faab2b07628d4d757e425b05eb001163fa7dc2ac04695c",
+          "flags": []
+        },
+        "counts-candidate": {
+          "path": "selfhost/build/phase197/discoveryBAbsorb01/coverage-bst-64/counts-candidate",
+          "sha": "fb3de894e4b3d2db8f0ee5e5ccfc468a8beac10fc590d392188a76527df2deb1",
+          "objectSha": "e234ec4658157657d5558501b85f4211f1480412bdefaab214fe3e12d9300a81",
+          "sourceSha": "2eb7b1123b047dd7e104e1b212cf38ba0980f95e2fecdbee9643cdd15781a9ba",
+          "flags": [
+            "-mbranches-within-32B-boundaries"
+          ]
+        }
+      },
+      "samples": [
+        {
+          "session": 0,
+          "round": 0,
+          "layout": "project",
+          "role": "baseline",
+          "stdout": "861157620\n4\n8099\n222\n",
+          "elapsedMs": 222,
+          "wall": 0.2252248665317893
+        },
+        {
+          "session": 0,
+          "round": 0,
+          "layout": "project",
+          "role": "candidate",
+          "stdout": "861157620\n4\n8099\n172\n",
+          "elapsedMs": 172,
+          "wall": 0.1762689184397459
+        },
+        {
+          "session": 0,
+          "round": 0,
+          "layout": "default",
+          "role": "candidate",
+          "stdout": "861157620\n4\n8099\n171\n",
+          "elapsedMs": 171,
+          "wall": 0.17469393648207188
+        },
+        {
+          "session": 0,
+          "round": 0,
+          "layout": "default",
+          "role": "baseline",
+          "stdout": "861157620\n4\n8099\n223\n",
+          "elapsedMs": 223,
+          "wall": 0.22629579342901707
+        },
+        {
+          "session": 0,
+          "round": 1,
+          "layout": "default",
+          "role": "baseline",
+          "stdout": "861157620\n4\n8099\n223\n",
+          "elapsedMs": 223,
+          "wall": 0.22575487848371267
+        },
+        {
+          "session": 0,
+          "round": 1,
+          "layout": "default",
+          "role": "candidate",
+          "stdout": "861157620\n4\n8099\n169\n",
+          "elapsedMs": 169,
+          "wall": 0.1717935437336564
+        },
+        {
+          "session": 0,
+          "round": 1,
+          "layout": "project",
+          "role": "candidate",
+          "stdout": "861157620\n4\n8099\n168\n",
+          "elapsedMs": 168,
+          "wall": 0.17161767650395632
+        },
+        {
+          "session": 0,
+          "round": 1,
+          "layout": "project",
+          "role": "baseline",
+          "stdout": "861157620\n4\n8099\n221\n",
+          "elapsedMs": 221,
+          "wall": 0.2242625430226326
+        },
+        {
+          "session": 0,
+          "round": 2,
+          "layout": "project",
+          "role": "baseline",
+          "stdout": "861157620\n4\n8099\n235\n",
+          "elapsedMs": 235,
+          "wall": 0.23853490781039
+        },
+        {
+          "session": 0,
+          "round": 2,
+          "layout": "project",
+          "role": "candidate",
+          "stdout": "861157620\n4\n8099\n168\n",
+          "elapsedMs": 168,
+          "wall": 0.17187687009572983
+        },
+        {
+          "session": 0,
+          "round": 2,
+          "layout": "default",
+          "role": "candidate",
+          "stdout": "861157620\n4\n8099\n168\n",
+          "elapsedMs": 168,
+          "wall": 0.17193610314279795
+        },
+        {
+          "session": 0,
+          "round": 2,
+          "layout": "default",
+          "role": "baseline",
+          "stdout": "861157620\n4\n8099\n222\n",
+          "elapsedMs": 222,
+          "wall": 0.22609373461455107
+        },
+        {
+          "session": 0,
+          "round": 3,
+          "layout": "default",
+          "role": "baseline",
+          "stdout": "861157620\n4\n8099\n226\n",
+          "elapsedMs": 226,
+          "wall": 0.22928042896091938
+        },
+        {
+          "session": 0,
+          "round": 3,
+          "layout": "default",
+          "role": "candidate",
+          "stdout": "861157620\n4\n8099\n185\n",
+          "elapsedMs": 185,
+          "wall": 0.1892656348645687
+        },
+        {
+          "session": 0,
+          "round": 3,
+          "layout": "project",
+          "role": "candidate",
+          "stdout": "861157620\n4\n8099\n181\n",
+          "elapsedMs": 181,
+          "wall": 0.18459621723741293
+        },
+        {
+          "session": 0,
+          "round": 3,
+          "layout": "project",
+          "role": "baseline",
+          "stdout": "861157620\n4\n8099\n225\n",
+          "elapsedMs": 225,
+          "wall": 0.22834425792098045
+        },
+        {
+          "session": 1,
+          "round": 0,
+          "layout": "default",
+          "role": "baseline",
+          "stdout": "861157620\n4\n8099\n225\n",
+          "elapsedMs": 225,
+          "wall": 0.22884852439165115
+        },
+        {
+          "session": 1,
+          "round": 0,
+          "layout": "default",
+          "role": "candidate",
+          "stdout": "861157620\n4\n8099\n172\n",
+          "elapsedMs": 172,
+          "wall": 0.17582991439849138
+        },
+        {
+          "session": 1,
+          "round": 0,
+          "layout": "project",
+          "role": "candidate",
+          "stdout": "861157620\n4\n8099\n175\n",
+          "elapsedMs": 175,
+          "wall": 0.1790877776220441
+        },
+        {
+          "session": 1,
+          "round": 0,
+          "layout": "project",
+          "role": "baseline",
+          "stdout": "861157620\n4\n8099\n226\n",
+          "elapsedMs": 226,
+          "wall": 0.2292358847334981
+        },
+        {
+          "session": 1,
+          "round": 1,
+          "layout": "project",
+          "role": "baseline",
+          "stdout": "861157620\n4\n8099\n228\n",
+          "elapsedMs": 228,
+          "wall": 0.23250132612884045
+        },
+        {
+          "session": 1,
+          "round": 1,
+          "layout": "project",
+          "role": "candidate",
+          "stdout": "861157620\n4\n8099\n172\n",
+          "elapsedMs": 172,
+          "wall": 0.17563786171376705
+        },
+        {
+          "session": 1,
+          "round": 1,
+          "layout": "default",
+          "role": "candidate",
+          "stdout": "861157620\n4\n8099\n170\n",
+          "elapsedMs": 170,
+          "wall": 0.1744405683130026
+        },
+        {
+          "session": 1,
+          "round": 1,
+          "layout": "default",
+          "role": "baseline",
+          "stdout": "861157620\n4\n8099\n223\n",
+          "elapsedMs": 223,
+          "wall": 0.22658180352300406
+        },
+        {
+          "session": 1,
+          "round": 2,
+          "layout": "default",
+          "role": "baseline",
+          "stdout": "861157620\n4\n8099\n228\n",
+          "elapsedMs": 228,
+          "wall": 0.23169417772442102
+        },
+        {
+          "session": 1,
+          "round": 2,
+          "layout": "default",
+          "role": "candidate",
+          "stdout": "861157620\n4\n8099\n170\n",
+          "elapsedMs": 170,
+          "wall": 0.17352635599672794
+        },
+        {
+          "session": 1,
+          "round": 2,
+          "layout": "project",
+          "role": "candidate",
+          "stdout": "861157620\n4\n8099\n169\n",
+          "elapsedMs": 169,
+          "wall": 0.17253712192177773
+        },
+        {
+          "session": 1,
+          "round": 2,
+          "layout": "project",
+          "role": "baseline",
+          "stdout": "861157620\n4\n8099\n221\n",
+          "elapsedMs": 221,
+          "wall": 0.22431911807507277
+        },
+        {
+          "session": 1,
+          "round": 3,
+          "layout": "project",
+          "role": "baseline",
+          "stdout": "861157620\n4\n8099\n221\n",
+          "elapsedMs": 221,
+          "wall": 0.2240325938910246
+        },
+        {
+          "session": 1,
+          "round": 3,
+          "layout": "project",
+          "role": "candidate",
+          "stdout": "861157620\n4\n8099\n168\n",
+          "elapsedMs": 168,
+          "wall": 0.17151661776006222
+        },
+        {
+          "session": 1,
+          "round": 3,
+          "layout": "default",
+          "role": "candidate",
+          "stdout": "861157620\n4\n8099\n170\n",
+          "elapsedMs": 170,
+          "wall": 0.17313530202955008
+        },
+        {
+          "session": 1,
+          "round": 3,
+          "layout": "default",
+          "role": "baseline",
+          "stdout": "861157620\n4\n8099\n223\n",
+          "elapsedMs": 223,
+          "wall": 0.22579437866806984
+        }
+      ],
+      "pilots": [
+        {
+          "count": 27184,
+          "stdout": "861157620\n4\n27184\n772\n",
+          "elapsedMs": 772,
+          "wall": 0.7756613595411181
+        },
+        {
+          "count": 8099,
+          "stdout": "861157620\n4\n8099\n232\n",
+          "elapsedMs": 232,
+          "wall": 0.23509796615689993
+        }
+      ],
+      "cells": [
+        {
+          "session": 0,
+          "layout": "project",
+          "median": 0.767477885124944,
+          "faster": 4,
+          "ratios": [
+            0.7747747747747747,
+            0.7601809954751131,
+            0.7148936170212766,
+            0.8044444444444444
+          ],
+          "count": 8099
+        },
+        {
+          "session": 0,
+          "layout": "default",
+          "median": 0.7623318385650224,
+          "faster": 4,
+          "ratios": [
+            0.7668161434977578,
+            0.757847533632287,
+            0.7567567567567568,
+            0.8185840707964602
+          ],
+          "count": 8099
+        },
+        {
+          "session": 1,
+          "layout": "project",
+          "median": 0.7624434389140271,
+          "faster": 4,
+          "ratios": [
+            0.7743362831858407,
+            0.7543859649122807,
+            0.7647058823529411,
+            0.7601809954751131
+          ],
+          "count": 8099
+        },
+        {
+          "session": 1,
+          "layout": "default",
+          "median": 0.7623318385650224,
+          "faster": 4,
+          "ratios": [
+            0.7644444444444445,
+            0.7623318385650224,
+            0.7456140350877193,
+            0.7623318385650224
+          ],
+          "count": 8099
+        }
+      ]
+    },
+    "coverage-bst-32": {
+      "sourceSha": "eaa12d25e15712a55634fbdda4532dde51a9f5156f8bb307f86e0b0d82969282",
+      "checks": [
+        {
+          "args": [
+            32,
+            0
+          ],
+          "c": {
+            "stdout": "1802825775\n0\n1\n0\n",
+            "elapsedMs": 0,
+            "wall": 0.0033990265801548958
+          },
+          "oracles": {
+            "direct": {
+              "stdout": "1802825775\n0\n1\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.003130517899990082
+            },
+            "project-baseline": {
+              "stdout": "1802825775\n0\n1\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.003073025494813919
+            },
+            "default-baseline": {
+              "stdout": "1802825775\n0\n1\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.003094904124736786
+            },
+            "project-candidate": {
+              "stdout": "1802825775\n0\n1\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.00312722846865654
+            },
+            "default-candidate": {
+              "stdout": "1802825775\n0\n1\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0030430397018790245
+            }
+          }
+        },
+        {
+          "args": [
+            0,
+            17
+          ],
+          "c": {
+            "stdout": "0\n0\n0\n0\n",
+            "elapsedMs": 0,
+            "wall": 0.0029523130506277084
+          },
+          "oracles": {
+            "direct": {
+              "stdout": "0\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.003032066859304905
+            },
+            "project-baseline": {
+              "stdout": "0\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.002985001541674137
+            },
+            "default-baseline": {
+              "stdout": "0\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0030040843412280083
+            },
+            "project-candidate": {
+              "stdout": "0\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.003025861456990242
+            },
+            "default-candidate": {
+              "stdout": "0\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0030559105798602104
+            }
+          }
+        },
+        {
+          "args": [
+            1,
+            3
+          ],
+          "c": {
+            "stdout": "3\n0\n0\n0\n",
+            "elapsedMs": 0,
+            "wall": 0.0030138827860355377
+          },
+          "oracles": {
+            "direct": {
+              "stdout": "3\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0030182069167494774
+            },
+            "project-baseline": {
+              "stdout": "3\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.003054847940802574
+            },
+            "default-baseline": {
+              "stdout": "3\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0031024618074297905
+            },
+            "project-candidate": {
+              "stdout": "3\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0031754393130540848
+            },
+            "default-candidate": {
+              "stdout": "3\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0030546560883522034
+            }
+          }
+        },
+        {
+          "args": [
+            32,
+            0
+          ],
+          "c": {
+            "stdout": "1802825775\n0\n0\n0\n",
+            "elapsedMs": 0,
+            "wall": 0.0030287541449069977
+          },
+          "oracles": {
+            "direct": {
+              "stdout": "1802825775\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0031953342258930206
+            },
+            "project-baseline": {
+              "stdout": "1802825775\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.003056176006793976
+            },
+            "default-baseline": {
+              "stdout": "1802825775\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0029504839330911636
+            },
+            "project-candidate": {
+              "stdout": "1802825775\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.002976628951728344
+            },
+            "default-candidate": {
+              "stdout": "1802825775\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.003071737475693226
+            }
+          }
+        },
+        {
+          "args": [
+            61,
+            123
+          ],
+          "c": {
+            "stdout": "499437544\n0\n0\n0\n",
+            "elapsedMs": 0,
+            "wall": 0.0029529929161071777
+          },
+          "oracles": {
+            "direct": {
+              "stdout": "499437544\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0029510613530874252
+            },
+            "project-baseline": {
+              "stdout": "499437544\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0029851961880922318
+            },
+            "default-baseline": {
+              "stdout": "499437544\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0029486753046512604
+            },
+            "project-candidate": {
+              "stdout": "499437544\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0030741170048713684
+            },
+            "default-candidate": {
+              "stdout": "499437544\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0030153775587677956
+            }
+          }
+        },
+        {
+          "args": [
+            64,
+            17
+          ],
+          "c": {
+            "stdout": "861157620\n0\n0\n0\n",
+            "elapsedMs": 0,
+            "wall": 0.003011835739016533
+          },
+          "oracles": {
+            "direct": {
+              "stdout": "861157620\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0030615264549851418
+            },
+            "project-baseline": {
+              "stdout": "861157620\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.0031325174495577812
+            },
+            "default-baseline": {
+              "stdout": "861157620\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.003110353834927082
+            },
+            "project-candidate": {
+              "stdout": "861157620\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.003195791505277157
+            },
+            "default-candidate": {
+              "stdout": "861157620\n0\n0\n0\n",
+              "elapsedMs": 0,
+              "wall": 0.003169383853673935
+            }
+          }
+        }
+      ],
+      "boundaries": {
+        "project-baseline": {
+          "checks": 72,
+          "sha": "36491cde7a02afe4937b727f734d72fd7bc4bbd00e25f23a2ed337658cd7389f"
+        },
+        "project-candidate": {
+          "checks": 72,
+          "sha": "21ece95685d7a61d865c438915e7ea2b0069a1f663e6e358a428979063f3e3d2"
+        }
+      },
+      "counters": [
+        {
+          "args": [
+            32,
+            0
+          ],
+          "baseline": {
+            "calls": 32,
+            "steps": 1056,
+            "leaves": 560
+          },
+          "candidate": {
+            "calls": 32,
+            "steps": 528,
+            "leaves": 32
+          }
+        },
+        {
+          "args": [
+            0,
+            17
+          ],
+          "baseline": {
+            "calls": 0,
+            "steps": 0,
+            "leaves": 0
+          },
+          "candidate": {
+            "calls": 0,
+            "steps": 0,
+            "leaves": 0
+          }
+        },
+        {
+          "args": [
+            1,
+            3
+          ],
+          "baseline": {
+            "calls": 1,
+            "steps": 2,
+            "leaves": 2
+          },
+          "candidate": {
+            "calls": 1,
+            "steps": 1,
+            "leaves": 1
+          }
+        },
+        {
+          "args": [
+            32,
+            0
+          ],
+          "baseline": {
+            "calls": 32,
+            "steps": 1056,
+            "leaves": 560
+          },
+          "candidate": {
+            "calls": 32,
+            "steps": 528,
+            "leaves": 32
+          }
+        },
+        {
+          "args": [
+            61,
+            123
+          ],
+          "baseline": {
+            "calls": 61,
+            "steps": 3782,
+            "leaves": 3331
+          },
+          "candidate": {
+            "calls": 61,
+            "steps": 512,
+            "leaves": 61
+          }
+        },
+        {
+          "args": [
+            64,
+            17
+          ],
+          "baseline": {
+            "calls": 64,
+            "steps": 4160,
+            "leaves": 3795
+          },
+          "candidate": {
+            "calls": 64,
+            "steps": 429,
+            "leaves": 64
+          }
+        }
+      ],
+      "products": {
+        "project-baseline": {
+          "path": "selfhost/build/phase197/discoveryBAbsorb01/coverage-bst-32/project-baseline",
+          "sha": "7957f4a5057628919011e0fdfccb41a22de5358280b91c11a2486242a62adf1f",
+          "objectSha": "94d34dc65b0d2b8e453c7feaad6c5a6399986b20c4c3bdcf872a1d1fd0086f9f",
+          "sourceSha": "eaa12d25e15712a55634fbdda4532dde51a9f5156f8bb307f86e0b0d82969282",
+          "flags": [
+            "-mbranches-within-32B-boundaries"
+          ]
+        },
+        "default-baseline": {
+          "path": "selfhost/build/phase197/discoveryBAbsorb01/coverage-bst-32/default-baseline",
+          "sha": "e78001f7c2e7ed2335fecdf052acd74561df082a54d79e4b337858fc73dbdb1d",
+          "objectSha": "40b6f03fd629137ac23f620415bbf886acf6358ade39b8be9726f362981fbb23",
+          "sourceSha": "eaa12d25e15712a55634fbdda4532dde51a9f5156f8bb307f86e0b0d82969282",
+          "flags": []
+        },
+        "counts-baseline": {
+          "path": "selfhost/build/phase197/discoveryBAbsorb01/coverage-bst-32/counts-baseline",
+          "sha": "e020d0a0827c91f1884034fe450640aa2c5c2d697390d8f925f726e5dddbcba3",
+          "objectSha": "3b15e303a051cce60fbf209091ee4bbf3ae2a4a9ca3d1fc9aff6ac0c30ed30dd",
+          "sourceSha": "926be15485223c5a4359dc7aca4ac8edf7a8acc326f1350ddafaa976784eb2ce",
+          "flags": [
+            "-mbranches-within-32B-boundaries"
+          ]
+        },
+        "project-candidate": {
+          "path": "selfhost/build/phase197/discoveryBAbsorb01/coverage-bst-32/project-candidate",
+          "sha": "71b0d727c7f0eb69298074acd66d845eafff92c720c75962ce50ddeb0cda6610",
+          "objectSha": "e48a2a745c230a86feee72af5664a628d6dae2bbac6c33e2782d841c7673cb3f",
+          "sourceSha": "36f6fafc38adf4beba20c17ca833dbd38152d38c31c2e7a7fa5c5f553f5ea118",
+          "flags": [
+            "-mbranches-within-32B-boundaries"
+          ]
+        },
+        "default-candidate": {
+          "path": "selfhost/build/phase197/discoveryBAbsorb01/coverage-bst-32/default-candidate",
+          "sha": "f599aabc282306da6ed64ea772b5dd2e46130bdc5367a009c016e60b5627aebf",
+          "objectSha": "d5868d9dfc057597d9cbe6a14fde506700059ebb5114c5f9715ca28c2f4157cb",
+          "sourceSha": "36f6fafc38adf4beba20c17ca833dbd38152d38c31c2e7a7fa5c5f553f5ea118",
+          "flags": []
+        },
+        "counts-candidate": {
+          "path": "selfhost/build/phase197/discoveryBAbsorb01/coverage-bst-32/counts-candidate",
+          "sha": "1752df238aa72995acf29e6bc94d0cb9d6c9f3dd9568e9c9b33b9fadb46552d3",
+          "objectSha": "71036351817fe5908910a61ba18bb5f30708b667dd83d0c2044190fca36a7c0c",
+          "sourceSha": "f85d81b5ffc37c6951bd5e7a7962c4987be4f1328e756ef0f1929df7e5b3df51",
+          "flags": [
+            "-mbranches-within-32B-boundaries"
+          ]
+        }
+      },
+      "samples": [
+        {
+          "session": 0,
+          "round": 0,
+          "layout": "project",
+          "role": "baseline",
+          "stdout": "1802825775\n4\n9093\n233\n",
+          "elapsedMs": 233,
+          "wall": 0.23671154398471117
+        },
+        {
+          "session": 0,
+          "round": 0,
+          "layout": "project",
+          "role": "candidate",
+          "stdout": "1802825775\n4\n9093\n224\n",
+          "elapsedMs": 224,
+          "wall": 0.2279685167595744
+        },
+        {
+          "session": 0,
+          "round": 0,
+          "layout": "default",
+          "role": "candidate",
+          "stdout": "1802825775\n4\n9093\n221\n",
+          "elapsedMs": 221,
+          "wall": 0.22455261461436749
+        },
+        {
+          "session": 0,
+          "round": 0,
+          "layout": "default",
+          "role": "baseline",
+          "stdout": "1802825775\n4\n9093\n253\n",
+          "elapsedMs": 253,
+          "wall": 0.2563548078760505
+        },
+        {
+          "session": 0,
+          "round": 1,
+          "layout": "default",
+          "role": "baseline",
+          "stdout": "1802825775\n4\n9093\n250\n",
+          "elapsedMs": 250,
+          "wall": 0.2529863901436329
+        },
+        {
+          "session": 0,
+          "round": 1,
+          "layout": "default",
+          "role": "candidate",
+          "stdout": "1802825775\n4\n9093\n236\n",
+          "elapsedMs": 236,
+          "wall": 0.23970450554043055
+        },
+        {
+          "session": 0,
+          "round": 1,
+          "layout": "project",
+          "role": "candidate",
+          "stdout": "1802825775\n4\n9093\n221\n",
+          "elapsedMs": 221,
+          "wall": 0.22458584606647491
+        },
+        {
+          "session": 0,
+          "round": 1,
+          "layout": "project",
+          "role": "baseline",
+          "stdout": "1802825775\n4\n9093\n231\n",
+          "elapsedMs": 231,
+          "wall": 0.23500421456992626
+        },
+        {
+          "session": 0,
+          "round": 2,
+          "layout": "project",
+          "role": "baseline",
+          "stdout": "1802825775\n4\n9093\n231\n",
+          "elapsedMs": 231,
+          "wall": 0.23496959917247295
+        },
+        {
+          "session": 0,
+          "round": 2,
+          "layout": "project",
+          "role": "candidate",
+          "stdout": "1802825775\n4\n9093\n219\n",
+          "elapsedMs": 219,
+          "wall": 0.22293097618967295
+        },
+        {
+          "session": 0,
+          "round": 2,
+          "layout": "default",
+          "role": "candidate",
+          "stdout": "1802825775\n4\n9093\n220\n",
+          "elapsedMs": 220,
+          "wall": 0.2239777920767665
+        },
+        {
+          "session": 0,
+          "round": 2,
+          "layout": "default",
+          "role": "baseline",
+          "stdout": "1802825775\n4\n9093\n239\n",
+          "elapsedMs": 239,
+          "wall": 0.24256186932325363
+        },
+        {
+          "session": 0,
+          "round": 3,
+          "layout": "default",
+          "role": "baseline",
+          "stdout": "1802825775\n4\n9093\n235\n",
+          "elapsedMs": 235,
+          "wall": 0.23809796385467052
+        },
+        {
+          "session": 0,
+          "round": 3,
+          "layout": "default",
+          "role": "candidate",
+          "stdout": "1802825775\n4\n9093\n221\n",
+          "elapsedMs": 221,
+          "wall": 0.22431115340441465
+        },
+        {
+          "session": 0,
+          "round": 3,
+          "layout": "project",
+          "role": "candidate",
+          "stdout": "1802825775\n4\n9093\n221\n",
+          "elapsedMs": 221,
+          "wall": 0.22511861193925142
+        },
+        {
+          "session": 0,
+          "round": 3,
+          "layout": "project",
+          "role": "baseline",
+          "stdout": "1802825775\n4\n9093\n231\n",
+          "elapsedMs": 231,
+          "wall": 0.23412788566201925
+        },
+        {
+          "session": 1,
+          "round": 0,
+          "layout": "default",
+          "role": "baseline",
+          "stdout": "1802825775\n4\n9093\n233\n",
+          "elapsedMs": 233,
+          "wall": 0.23618147894740105
+        },
+        {
+          "session": 1,
+          "round": 0,
+          "layout": "default",
+          "role": "candidate",
+          "stdout": "1802825775\n4\n9093\n220\n",
+          "elapsedMs": 220,
+          "wall": 0.2235743636265397
+        },
+        {
+          "session": 1,
+          "round": 0,
+          "layout": "project",
+          "role": "candidate",
+          "stdout": "1802825775\n4\n9093\n223\n",
+          "elapsedMs": 223,
+          "wall": 0.22661765199154615
+        },
+        {
+          "session": 1,
+          "round": 0,
+          "layout": "project",
+          "role": "baseline",
+          "stdout": "1802825775\n4\n9093\n246\n",
+          "elapsedMs": 246,
+          "wall": 0.2500916700810194
+        },
+        {
+          "session": 1,
+          "round": 1,
+          "layout": "project",
+          "role": "baseline",
+          "stdout": "1802825775\n4\n9093\n238\n",
+          "elapsedMs": 238,
+          "wall": 0.24211478140205145
+        },
+        {
+          "session": 1,
+          "round": 1,
+          "layout": "project",
+          "role": "candidate",
+          "stdout": "1802825775\n4\n9093\n220\n",
+          "elapsedMs": 220,
+          "wall": 0.22376364655792713
+        },
+        {
+          "session": 1,
+          "round": 1,
+          "layout": "default",
+          "role": "candidate",
+          "stdout": "1802825775\n4\n9093\n221\n",
+          "elapsedMs": 221,
+          "wall": 0.2244607675820589
+        },
+        {
+          "session": 1,
+          "round": 1,
+          "layout": "default",
+          "role": "baseline",
+          "stdout": "1802825775\n4\n9093\n233\n",
+          "elapsedMs": 233,
+          "wall": 0.23630653880536556
+        },
+        {
+          "session": 1,
+          "round": 2,
+          "layout": "default",
+          "role": "baseline",
+          "stdout": "1802825775\n4\n9093\n240\n",
+          "elapsedMs": 240,
+          "wall": 0.24421533104032278
+        },
+        {
+          "session": 1,
+          "round": 2,
+          "layout": "default",
+          "role": "candidate",
+          "stdout": "1802825775\n4\n9093\n221\n",
+          "elapsedMs": 221,
+          "wall": 0.22462686896324158
+        },
+        {
+          "session": 1,
+          "round": 2,
+          "layout": "project",
+          "role": "candidate",
+          "stdout": "1802825775\n4\n9093\n219\n",
+          "elapsedMs": 219,
+          "wall": 0.2229629522189498
+        },
+        {
+          "session": 1,
+          "round": 2,
+          "layout": "project",
+          "role": "baseline",
+          "stdout": "1802825775\n4\n9093\n232\n",
+          "elapsedMs": 232,
+          "wall": 0.2356600696220994
+        },
+        {
+          "session": 1,
+          "round": 3,
+          "layout": "project",
+          "role": "baseline",
+          "stdout": "1802825775\n4\n9093\n235\n",
+          "elapsedMs": 235,
+          "wall": 0.24037840776145458
+        },
+        {
+          "session": 1,
+          "round": 3,
+          "layout": "project",
+          "role": "candidate",
+          "stdout": "1802825775\n4\n9093\n228\n",
+          "elapsedMs": 228,
+          "wall": 0.23139449022710323
+        },
+        {
+          "session": 1,
+          "round": 3,
+          "layout": "default",
+          "role": "candidate",
+          "stdout": "1802825775\n4\n9093\n223\n",
+          "elapsedMs": 223,
+          "wall": 0.2270133038982749
+        },
+        {
+          "session": 1,
+          "round": 3,
+          "layout": "default",
+          "role": "baseline",
+          "stdout": "1802825775\n4\n9093\n231\n",
+          "elapsedMs": 231,
+          "wall": 0.23455043975263834
+        }
+      ],
+      "pilots": [
+        {
+          "count": 35620,
+          "stdout": "1802825775\n4\n35620\n901\n",
+          "elapsedMs": 901,
+          "wall": 0.9044199464842677
+        },
+        {
+          "count": 9093,
+          "stdout": "1802825775\n4\n9093\n230\n",
+          "elapsedMs": 230,
+          "wall": 0.2340554352849722
+        }
+      ],
+      "cells": [
+        {
+          "session": 0,
+          "layout": "project",
+          "median": 0.9567099567099567,
+          "faster": 4,
+          "ratios": [
+            0.9613733905579399,
+            0.9567099567099567,
+            0.948051948051948,
+            0.9567099567099567
+          ],
+          "count": 9093
+        },
+        {
+          "session": 0,
+          "layout": "default",
+          "median": 0.9304638119825515,
+          "faster": 4,
+          "ratios": [
+            0.8735177865612648,
+            0.944,
+            0.9205020920502092,
+            0.9404255319148936
+          ],
+          "count": 9093
+        },
+        {
+          "session": 1,
+          "layout": "project",
+          "median": 0.9341676325702695,
+          "faster": 4,
+          "ratios": [
+            0.9065040650406504,
+            0.9243697478991597,
+            0.9439655172413793,
+            0.9702127659574468
+          ],
+          "count": 9093
+        },
+        {
+          "session": 1,
+          "layout": "default",
+          "median": 0.946351931330472,
+          "faster": 4,
+          "ratios": [
+            0.944206008583691,
+            0.9484978540772532,
+            0.9208333333333333,
+            0.9653679653679653
+          ],
+          "count": 9093
+        }
+      ]
+    }
+  },
+  "complete": true
+}

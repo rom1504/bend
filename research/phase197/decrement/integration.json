@@ -1,0 +1,54 @@
+{
+  "kind": "phase197-decrement-maintained-integration-recipe",
+  "complete": true,
+  "applied": false,
+  "baselineCommit": "c07b44a1e13916a7f96b7d31925a4e156e987fc1",
+  "module": {
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase197/decrement/select-v2.bend",
+      "bytes": 4599,
+      "sha256": "6c0bbf1f92d4183434948eaf189cce7b9630f5f43fceb51b878751806e40e555"
+    },
+    "destination": "selfhost/src/back/x86/copy-immediate.bend"
+  },
+  "manifest": {
+    "file": "selfhost/src/compiler.json",
+    "profile": "x86",
+    "module": "src/back/x86/copy-immediate.bend",
+    "insertAfter": "src/back/x86/frame-forward.bend",
+    "otherProfilesUnchanged": true
+  },
+  "replacement": {
+    "file": "selfhost/src/back/x86/frame-forward.bend",
+    "declaration": "x191_frame_forward",
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase197/decrement/hook.bend",
+      "bytes": 133,
+      "sha256": "40cdc3ddf17075e33ec8de2d64a1c2a492721d73a4942c34b1a2de14d77f55e7"
+    }
+  },
+  "evidence": {
+    "sourceCheck": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase197/decrement-api02/report.json",
+      "bytes": 5361,
+      "sha256": "71453f7aa7da6cb4d01f2ef5d02a3ef48916d364f7d9c08fff41012a524867aa"
+    },
+    "combinedSourceCheck": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase197/combined-api02/report.json",
+      "bytes": 5611,
+      "sha256": "bd04d7b4395771bef334ad4d1ecb9f9a860ca0138e17c8b3dad1c448a2d7cade"
+    },
+    "activation": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase197/decrement-activation01/report.json",
+      "bytes": 47086,
+      "sha256": "120d91ee1805325dfee779b1a95b0ca5f5defeccefa23fc3e3e91df03b57f4b8"
+    }
+  },
+  "requirements": [
+    "Retain original frame-forward helpers and switch",
+    "Exact selected-source executable-body match against checked API",
+    "Unchanged non-x86 canonical sources and maps",
+    "Ordinary product oracles and runtime decision before promotion",
+    "Full native qualification is a separate justified gate"
+  ]
+}

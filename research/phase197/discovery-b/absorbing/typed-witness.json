@@ -1,0 +1,245 @@
+{
+  "positive": {
+    "symbol": "p113d_FID_$product.bst.down",
+    "params": [
+      "state",
+      "__x181_result_out",
+      "v_4294967295",
+      "v_4294967294",
+      "v_4294967292",
+      "v_4294967291"
+    ],
+    "initialComparison": {
+      "$": "P113DScalar",
+      "stmt": {
+        "$": "N111Bin",
+        "name": "match_condition",
+        "typ": {
+          "$": "N111U64"
+        },
+        "op": "eq",
+        "left": {
+          "$": "N111Local",
+          "name": "v_4294967295"
+        },
+        "right": {
+          "$": "N111Const",
+          "lo": 0,
+          "hi": 0
+        }
+      }
+    },
+    "baseResult": [
+      {
+        "$": "P113DResult",
+        "values": [
+          {
+            "$": "N111Local",
+            "name": "v_4294967292"
+          },
+          {
+            "$": "N111Local",
+            "name": "v_4294967291"
+          }
+        ]
+      }
+    ],
+    "positiveComparison": {
+      "$": "P113DScalar",
+      "stmt": {
+        "$": "N111Bin",
+        "name": "match_condition",
+        "typ": {
+          "$": "N111U64"
+        },
+        "op": "ne",
+        "left": {
+          "$": "N111Local",
+          "name": "v_4294967295"
+        },
+        "right": {
+          "$": "N111Const",
+          "lo": 0,
+          "hi": 0
+        }
+      }
+    },
+    "positivePrefix": [
+      {
+        "$": "P113DScalar",
+        "stmt": {
+          "$": "N111Bin",
+          "name": "v_4294967271",
+          "typ": {
+            "$": "N111U64"
+          },
+          "op": "sub",
+          "left": {
+            "$": "N111Local",
+            "name": "v_4294967295"
+          },
+          "right": {
+            "$": "N111Const",
+            "lo": 1,
+            "hi": 0
+          }
+        }
+      },
+      {
+        "$": "P113DScalar",
+        "stmt": {
+          "$": "N111Alloca",
+          "name": "p113i_0_local_scratch",
+          "bytes": 24,
+          "align": 8
+        }
+      },
+      {
+        "$": "P113DScalar",
+        "stmt": {
+          "$": "N111Bin",
+          "name": "p113i_0_local_tag",
+          "typ": {
+            "$": "N111U64"
+          },
+          "op": "shr",
+          "left": {
+            "$": "N111Local",
+            "name": "v_4294967292"
+          },
+          "right": {
+            "$": "N111Const",
+            "lo": 40,
+            "hi": 0
+          }
+        }
+      },
+      {
+        "$": "P113DScalar",
+        "stmt": {
+          "$": "N111Bin",
+          "name": "p113i_0_local_tag",
+          "typ": {
+            "$": "N111U64"
+          },
+          "op": "and",
+          "left": {
+            "$": "N111Local",
+            "name": "p113i_0_local_tag"
+          },
+          "right": {
+            "$": "N111Const",
+            "lo": 65535,
+            "hi": 0
+          }
+        }
+      },
+      {
+        "$": "P113DScalar",
+        "stmt": {
+          "$": "N111Bin",
+          "name": "p113i_0_local_match_condition",
+          "typ": {
+            "$": "N111U64"
+          },
+          "op": "eq",
+          "left": {
+            "$": "N111Local",
+            "name": "p113i_0_local_tag"
+          },
+          "right": {
+            "$": "N111CtorId",
+            "name": "$ctor.66_76_101_97_102_"
+          }
+        }
+      }
+    ],
+    "guard": {
+      "$": "N111Local",
+      "name": "p113i_0_local_match_condition"
+    },
+    "absorbingAssignments": [
+      {
+        "$": "P113DScalar",
+        "stmt": {
+          "$": "N111Set",
+          "name": "p113p_call_41_0",
+          "typ": {
+            "$": "N111U64"
+          },
+          "value": {
+            "$": "N111Const",
+            "lo": 0,
+            "hi": 16819200
+          }
+        }
+      },
+      {
+        "$": "P113DScalar",
+        "stmt": {
+          "$": "N111Set",
+          "name": "p113p_call_41_1",
+          "typ": {
+            "$": "N111U64"
+          },
+          "value": {
+            "$": "N111Local",
+            "name": "v_4294967291"
+          }
+        }
+      }
+    ],
+    "commonBackedge": {
+      "$": "P113DAgain",
+      "values": [
+        {
+          "$": "N111Local",
+          "name": "v_4294967271"
+        },
+        {
+          "$": "N111Local",
+          "name": "v_4294967294"
+        },
+        {
+          "$": "N111Local",
+          "name": "p113p_call_41_0"
+        },
+        {
+          "$": "N111Local",
+          "name": "p113p_call_41_1"
+        }
+      ]
+    }
+  },
+  "refused": {
+    "symbol": "p111_FID_$direct.occurs.go",
+    "counts": {
+      "P113DScalar": 156,
+      "N111Alloca": 1,
+      "N111Load": 28,
+      "N111U64": 126,
+      "N111Local": 227,
+      "N111Bin": 25,
+      "N111Const": 42,
+      "P113DIf": 9,
+      "N111Call": 23,
+      "call p111_rt_sink": 10,
+      "N111Arg": 55,
+      "N111Ptr": 48,
+      "N111Store": 60,
+      "N111Symbol": 3,
+      "N111U32": 20,
+      "N111Offset": 9,
+      "N111Set": 3,
+      "call p111_rt_return": 1,
+      "N111Return": 7,
+      "N111CtorId": 6,
+      "call p125_rt_take2": 2,
+      "call p111_rt_keep": 2,
+      "N111FuncId": 12,
+      "call p111_rt_jump": 2,
+      "call p125_rt_ctor2": 2,
+      "call p111_rt_fail": 4
+    }
+  }
+}

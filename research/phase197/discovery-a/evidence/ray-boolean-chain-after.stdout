@@ -1,0 +1,181 @@
+Iterations:        100
+Instructions:      7100
+Total Cycles:      2919
+Total uOps:        7400
+
+Dispatch Width:    4
+uOps Per Cycle:    2.54
+IPC:               2.43
+Block RThroughput: 28.0
+
+
+Instruction Info:
+[1]: #uOps
+[2]: Latency
+[3]: RThroughput
+[4]: MayLoad
+[5]: MayStore
+[6]: HasSideEffects (U)
+
+[1]    [2]    [3]    [4]    [5]    [6]    Instructions:
+ 1      6     0.50    *                   movd	-2480(%rbp), %xmm1
+ 1      1     1.00                        movd	%r15d, %xmm2
+ 1      3     1.00                        subss	%xmm1, %xmm2
+ 1      1     1.00                        movaps	%xmm2, %xmm3
+ 1      6     0.50    *                   movd	-2488(%rbp), %xmm1
+ 1      6     0.50    *                   movd	-72(%rbp), %xmm2
+ 1      3     1.00                        subss	%xmm1, %xmm2
+ 1      1     1.00                        movaps	%xmm2, %xmm4
+ 1      6     0.50    *                   movd	-2496(%rbp), %xmm1
+ 1      6     0.50    *                   movd	-80(%rbp), %xmm2
+ 1      3     1.00                        subss	%xmm1, %xmm2
+ 1      1     1.00                        movaps	%xmm2, %xmm5
+ 1      6     0.50    *                   movd	-88(%rbp), %xmm1
+ 1      1     1.00                        movaps	%xmm3, %xmm2
+ 1      5     1.00                        mulss	%xmm1, %xmm2
+ 1      1     1.00                        movaps	%xmm2, %xmm6
+ 1      6     0.50    *                   movd	-96(%rbp), %xmm1
+ 1      1     1.00                        movaps	%xmm4, %xmm2
+ 1      5     1.00                        mulss	%xmm1, %xmm2
+ 1      1     1.00                        movaps	%xmm6, %xmm7
+ 1      3     1.00                        addss	%xmm2, %xmm7
+ 1      1     1.00                        movaps	%xmm7, %xmm2
+ 1      6     0.50    *                   movd	-104(%rbp), %xmm1
+ 1      1     1.00                        movaps	%xmm5, %xmm6
+ 1      5     1.00                        mulss	%xmm1, %xmm6
+ 1      1     1.00                        movaps	%xmm2, %xmm7
+ 1      3     1.00                        addss	%xmm6, %xmm7
+ 1      2     1.00                        movd	%xmm7, %r10d
+ 1      1     1.00           *            movq	%r10, -2616(%rbp)
+ 1      1     1.00                        movaps	%xmm7, %xmm2
+ 1      5     1.00                        mulss	%xmm7, %xmm2
+ 1      1     1.00                        movaps	%xmm2, %xmm6
+ 1      1     1.00                        movaps	%xmm3, %xmm2
+ 1      5     1.00                        mulss	%xmm3, %xmm2
+ 1      1     1.00                        movaps	%xmm2, %xmm3
+ 1      1     1.00                        movaps	%xmm4, %xmm2
+ 1      5     1.00                        mulss	%xmm4, %xmm2
+ 1      1     1.00                        movaps	%xmm3, %xmm4
+ 1      3     1.00                        addss	%xmm2, %xmm4
+ 1      1     1.00                        movaps	%xmm4, %xmm2
+ 1      1     1.00                        movaps	%xmm5, %xmm3
+ 1      5     1.00                        mulss	%xmm5, %xmm3
+ 1      1     1.00                        movaps	%xmm2, %xmm4
+ 1      3     1.00                        addss	%xmm3, %xmm4
+ 1      1     1.00                        movaps	%xmm4, %xmm2
+ 1      6     0.50    *                   movd	-2504(%rbp), %xmm1
+ 1      6     0.50    *                   movd	-2504(%rbp), %xmm3
+ 1      5     1.00                        mulss	%xmm1, %xmm3
+ 1      1     1.00                        movaps	%xmm2, %xmm4
+ 1      3     1.00                        subss	%xmm3, %xmm4
+ 1      1     1.00                        movaps	%xmm6, %xmm0
+ 1      3     1.00                        subss	%xmm4, %xmm0
+ 1      2     1.00                        movd	%xmm0, %r10d
+ 1      1     1.00           *            movq	%r10, -2720(%rbp)
+ 1      1     0.33                        movabsq	$0, %r10
+ 1      1     1.00                        movd	%r10d, %xmm0
+ 1      2     1.00                        movd	%xmm0, %r10d
+ 1      0     0.25                        pxor	%xmm0, %xmm0
+ 3      5     2.00                        cvtsi2ss	%r10, %xmm0
+ 1      2     1.00                        movd	%xmm0, %r10d
+ 1      1     1.00                        movd	%r10d, %xmm2
+ 1      6     0.50    *                   movd	-2720(%rbp), %xmm0
+ 1      1     1.00                        movaps	%xmm2, %xmm1
+ 2      2     1.00                        ucomiss	%xmm1, %xmm0
+ 1      1     0.50                        setb	%r10b
+ 1      1     0.50                        setnp	%r11b
+ 1      1     0.33                        andb	%r11b, %r10b
+ 1      1     0.33                        movzbl	%r10b, %r10d
+ 1      1     1.00           *            movq	%r10, -2736(%rbp)
+ 1      1     1.00           *            movq	%r10, -2760(%rbp)
+ 1      1     0.33                        testl	%r10d, %r10d
+
+
+Resources:
+[0]   - SBDivider
+[1]   - SBFPDivider
+[2]   - SBPort0
+[3]   - SBPort1
+[4]   - SBPort4
+[5]   - SBPort5
+[6.0] - SBPort23
+[6.1] - SBPort23
+
+
+Resource pressure per iteration:
+[0]    [1]    [2]    [3]    [4]    [5]    [6.0]  [6.1]  
+ -      -     15.00  13.99  4.00   29.01  7.50   7.50   
+
+Resource pressure by instruction:
+[0]    [1]    [2]    [3]    [4]    [5]    [6.0]  [6.1]  Instructions:
+ -      -      -      -      -      -     0.50   0.50   movd	-2480(%rbp), %xmm1
+ -      -      -      -      -     1.00    -      -     movd	%r15d, %xmm2
+ -      -      -     1.00    -      -      -      -     subss	%xmm1, %xmm2
+ -      -      -      -      -     1.00    -      -     movaps	%xmm2, %xmm3
+ -      -      -      -      -      -     0.50   0.50   movd	-2488(%rbp), %xmm1
+ -      -      -      -      -      -     0.50   0.50   movd	-72(%rbp), %xmm2
+ -      -      -     1.00    -      -      -      -     subss	%xmm1, %xmm2
+ -      -      -      -      -     1.00    -      -     movaps	%xmm2, %xmm4
+ -      -      -      -      -      -     0.50   0.50   movd	-2496(%rbp), %xmm1
+ -      -      -      -      -      -     0.50   0.50   movd	-80(%rbp), %xmm2
+ -      -      -     1.00    -      -      -      -     subss	%xmm1, %xmm2
+ -      -      -      -      -     1.00    -      -     movaps	%xmm2, %xmm5
+ -      -      -      -      -      -     0.50   0.50   movd	-88(%rbp), %xmm1
+ -      -      -      -      -     1.00    -      -     movaps	%xmm3, %xmm2
+ -      -     1.00    -      -      -      -      -     mulss	%xmm1, %xmm2
+ -      -      -      -      -     1.00    -      -     movaps	%xmm2, %xmm6
+ -      -      -      -      -      -     0.50   0.50   movd	-96(%rbp), %xmm1
+ -      -      -      -      -     1.00    -      -     movaps	%xmm4, %xmm2
+ -      -     1.00    -      -      -      -      -     mulss	%xmm1, %xmm2
+ -      -      -      -      -     1.00    -      -     movaps	%xmm6, %xmm7
+ -      -      -     1.00    -      -      -      -     addss	%xmm2, %xmm7
+ -      -      -      -      -     1.00    -      -     movaps	%xmm7, %xmm2
+ -      -      -      -      -      -     0.50   0.50   movd	-104(%rbp), %xmm1
+ -      -      -      -      -     1.00    -      -     movaps	%xmm5, %xmm6
+ -      -     1.00    -      -      -      -      -     mulss	%xmm1, %xmm6
+ -      -      -      -      -     1.00    -      -     movaps	%xmm2, %xmm7
+ -      -      -     1.00    -      -      -      -     addss	%xmm6, %xmm7
+ -      -     1.00    -      -      -      -      -     movd	%xmm7, %r10d
+ -      -      -      -     1.00    -     0.50   0.50   movq	%r10, -2616(%rbp)
+ -      -      -      -      -     1.00    -      -     movaps	%xmm7, %xmm2
+ -      -     1.00    -      -      -      -      -     mulss	%xmm7, %xmm2
+ -      -      -      -      -     1.00    -      -     movaps	%xmm2, %xmm6
+ -      -      -      -      -     1.00    -      -     movaps	%xmm3, %xmm2
+ -      -     1.00    -      -      -      -      -     mulss	%xmm3, %xmm2
+ -      -      -      -      -     1.00    -      -     movaps	%xmm2, %xmm3
+ -      -      -      -      -     1.00    -      -     movaps	%xmm4, %xmm2
+ -      -     1.00    -      -      -      -      -     mulss	%xmm4, %xmm2
+ -      -      -      -      -     1.00    -      -     movaps	%xmm3, %xmm4
+ -      -      -     1.00    -      -      -      -     addss	%xmm2, %xmm4
+ -      -      -      -      -     1.00    -      -     movaps	%xmm4, %xmm2
+ -      -      -      -      -     1.00    -      -     movaps	%xmm5, %xmm3
+ -      -     1.00    -      -      -      -      -     mulss	%xmm5, %xmm3
+ -      -      -      -      -     1.00    -      -     movaps	%xmm2, %xmm4
+ -      -      -     1.00    -      -      -      -     addss	%xmm3, %xmm4
+ -      -      -      -      -     1.00    -      -     movaps	%xmm4, %xmm2
+ -      -      -      -      -      -     0.49   0.51   movd	-2504(%rbp), %xmm1
+ -      -      -      -      -      -     0.51   0.49   movd	-2504(%rbp), %xmm3
+ -      -     1.00    -      -      -      -      -     mulss	%xmm1, %xmm3
+ -      -      -      -      -     1.00    -      -     movaps	%xmm2, %xmm4
+ -      -      -     1.00    -      -      -      -     subss	%xmm3, %xmm4
+ -      -      -      -      -     1.00    -      -     movaps	%xmm6, %xmm0
+ -      -      -     1.00    -      -      -      -     subss	%xmm4, %xmm0
+ -      -     1.00    -      -      -      -      -     movd	%xmm0, %r10d
+ -      -      -      -     1.00    -     0.51   0.49   movq	%r10, -2720(%rbp)
+ -      -     0.99   0.01    -      -      -      -     movabsq	$0, %r10
+ -      -      -      -      -     1.00    -      -     movd	%r10d, %xmm0
+ -      -     1.00    -      -      -      -      -     movd	%xmm0, %r10d
+ -      -      -      -      -      -      -      -     pxor	%xmm0, %xmm0
+ -      -      -     1.00    -     2.00    -      -     cvtsi2ss	%r10, %xmm0
+ -      -     1.00    -      -      -      -      -     movd	%xmm0, %r10d
+ -      -      -      -      -     1.00    -      -     movd	%r10d, %xmm2
+ -      -      -      -      -      -     0.49   0.51   movd	-2720(%rbp), %xmm0
+ -      -      -      -      -     1.00    -      -     movaps	%xmm2, %xmm1
+ -      -     1.00   1.00    -      -      -      -     ucomiss	%xmm1, %xmm0
+ -      -     0.99    -      -     0.01    -      -     setb	%r10b
+ -      -     0.01    -      -     0.99    -      -     setnp	%r11b
+ -      -      -     0.99    -     0.01    -      -     andb	%r11b, %r10b
+ -      -      -     1.00    -      -      -      -     movzbl	%r10b, %r10d
+ -      -      -      -     1.00    -     0.49   0.51   movq	%r10, -2736(%rbp)
+ -      -      -      -     1.00    -     0.51   0.49   movq	%r10, -2760(%rbp)
+ -      -     0.01   0.99    -      -      -      -     testl	%r10d, %r10d

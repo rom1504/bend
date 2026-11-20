@@ -1,0 +1,7 @@
+# Test machine-code discoveries through the Bend compiler
+
+Keep Phase195 as the qualified baseline. Test two independently selectable Bend changes on its normal hosted x86 emitter, build real direct objects, and compare with the existing qualified compiler's outputs and timings. One change reuses physical operand homes for a certified compare/select. The other encodes copy plus immediate arithmetic as an address calculation when flags are dead. Compare the actual emitted instructions, including spills and additional changes outside the original witness. An assembly experiment's speedup is a hypothesis for this compiler experiment.
+
+Use the edit-distance row, local-pair and BST along with independently frozen held-out inputs and an unrelated sentinel. Retain all regressions. Compare switch-specific results where available and determine whether the combination earns a broader qualification. Independently differential-test different seeds and sizes against the mature C backend. Candidate source, structural checks, executable output checks and self-reproduction are distinct evidence.
+
+Run two parallel discovery investigations on separate instruction families. Freeze legal alternatives, inputs, loop or owner weights and predictions before timing. Use a single guarded CPU for performance work. Benchmark high- and low-ranked cases when feasible. Keep machine diagnostics and measured compiler changes separately identifiable.

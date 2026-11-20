@@ -1,0 +1,347 @@
+{
+  "profiles": {
+    "coverage-bst-64": {
+      "source": "selfhost/build/phase195/ctor-gate-emit01/off/coverage-bst-64/program.s",
+      "sha": "5b57eee59a13249ceea21407a5303867b04c413540fbe2048eb11c177ad4419b",
+      "elf": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/native45-01/coverage-bst-64/machine/program",
+        "bytes": 195496,
+        "sha256": "092dce5036f64b4b0331ca0bcdcd809b83846fb6515fcfd79c17ad0ea83d524c"
+      },
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/native45-01/coverage-bst-64/machine/program.o",
+        "bytes": 113608,
+        "sha256": "13cd8df333db1341bc6b5e10e1d96d6695cccf4799cc478670da0dda53ebbb43"
+      },
+      "captures": [
+        {
+          "path": "selfhost/build/phase195/profile-tree-bst01/009-sample-15-coverage-bst-64-candidate-candidate/analysis.json",
+          "sha": "da455a14005b1a3ce274e3be9adcdfc160a3e3f93a30b1a7184ab2f49d90baa4"
+        },
+        {
+          "path": "selfhost/build/phase195/profile-tree-bst01/014-sample-15-coverage-bst-64-candidate-candidate/analysis.json",
+          "sha": "2b0a2f70f8a7e3f72dc891acd16d9a6291e5eabeeaf96c22e46a75bf9e0c45f5"
+        }
+      ]
+    },
+    "tree-bitonic": {
+      "source": "selfhost/build/phase195/ctor-gate-emit01/off/tree-bitonic/program.s",
+      "sha": "cff945285617f74a49e16d558f1c79e363651cb244b0748b986e2459ca5f2dca",
+      "elf": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/native45-01/tree-bitonic/machine/program",
+        "bytes": 216744,
+        "sha256": "9e4faa35c600a2c30d41b6c8104871cfd8a6c69381780bb8585885ec4a03197a"
+      },
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/native45-01/tree-bitonic/machine/program.o",
+        "bytes": 139848,
+        "sha256": "466dc1f26295a96afa80a5c10cc3e9d7c5c9949c990b4232b18b5da71d77a6ad"
+      },
+      "captures": [
+        {
+          "path": "selfhost/build/phase195/profile-tree-bst01/006-sample-12-tree-bitonic-candidate-candidate/analysis.json",
+          "sha": "e567ae9bd67b5b2b10cfe103aa02c513eae66868b30894650f488dcfa5641ef8"
+        },
+        {
+          "path": "selfhost/build/phase195/profile-tree-bst01/017-sample-12-tree-bitonic-candidate-candidate/analysis.json",
+          "sha": "0c5d97eb86f6144d4552d360e8fdd4c83689df8a7fd9d4ea3c4463ac1c6b9c64"
+        }
+      ]
+    }
+  },
+  "candidates": [
+    {
+      "name": "tag-width",
+      "case": "coverage-bst-64",
+      "legality": "The only branch consumer is JNE. Equality on low 16 bits after shifting agrees for any packed word. The unmasked upper register bits and r11 die on both successors before first use; neither register is a live argument to the take call.",
+      "sites": [
+        {
+          "line": 4012,
+          "symbol": "p113d_FID_$product.bst.down",
+          "address": "0x408fee",
+          "weight": 0.12396972245584524,
+          "before": [
+            "movq %rdi, %r10",
+            "subq $1, %r10",
+            "movq %r10, -2256(%rbp)",
+            "movq %rsi, %rdi",
+            "shrq $40, %rdi",
+            "andq $65535, %rdi",
+            "movabsq $164, %r11",
+            "cmpq %r11, %rdi"
+          ],
+          "after": [
+            "movq %rdi, %r10",
+            "subq $1, %r10",
+            "movq %r10, -2256(%rbp)",
+            "movq %rsi, %rdi",
+            "shrq $40, %rdi",
+            "cmpw $164, %di"
+          ]
+        },
+        {
+          "line": 4024,
+          "symbol": "p113d_FID_$product.bst.down",
+          "address": "0x40902f",
+          "weight": 0.00656013456686291,
+          "before": [
+            "movq %rsi, %rdi",
+            "shrq $40, %rdi",
+            "andq $65535, %rdi",
+            "movabsq $165, %r11",
+            "cmpq %r11, %rdi"
+          ],
+          "after": [
+            "movq %rsi, %rdi",
+            "shrq $40, %rdi",
+            "cmpw $165, %di"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "complement-edge",
+      "case": "coverage-bst-64",
+      "legality": "The immediately dominating JZ arrived with the same OR predicate zero; both inputs are unchanged and this label has only that predecessor. Recomputed r9 and r8 equal incoming values. Restore rdi and r10 to one and recreate the terminal TEST flags.",
+      "sites": [
+        {
+          "line": 4262,
+          "symbol": "p113d_FID_$direct.bst.up",
+          "address": "0x409443",
+          "weight": 0.018671152228763664,
+          "before": [
+            "movq %rsi, %r9",
+            "cmpq $1, %r9",
+            "sete %r9b",
+            "movzbl %r9b, %r9d",
+            "movq %rsi, %rdi",
+            "shrq $40, %rdi",
+            "andq $8388607, %rdi",
+            "movabsq $2, %r8",
+            "orq $65536, %r8",
+            "cmpq %r8, %rdi",
+            "sete %dil",
+            "movzbl %dil, %edi",
+            "orl %r9d, %edi",
+            "xorl $1, %edi",
+            "movq %rdi, %r10",
+            "testl %r10d, %r10d"
+          ],
+          "after": [
+            "movl $1, %edi",
+            "movq %rdi, %r10",
+            "testl %r10d, %r10d"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "direct-ctor-stores",
+      "case": "coverage-bst-64",
+      "legality": "Each field write uses the same width, address and order in the allocated local array. All literals fit sign-extended imm32. R10 and r11 are unused until overwritten or the SysV call; they are neither helper arguments nor preserved registers.",
+      "sites": [
+        {
+          "line": 4056,
+          "symbol": "p113d_FID_$product.bst.down",
+          "address": "0x4090c5",
+          "weight": 0.010597140454163162,
+          "before": [
+            "leaq -2392(%rbp), %r10",
+            "movq %rdi, %r11",
+            "movq %r11, 0(%r10)",
+            "leaq -2392(%rbp), %r10",
+            "movq %r13, %r11",
+            "movq %r11, 8(%r10)",
+            "leaq -2392(%rbp), %r10",
+            "movabsq $1, %r11",
+            "movq %r11, 16(%r10)",
+            "movq %r12, %rdi",
+            "movabsq $166, %rsi",
+            "movl %esi, %esi",
+            "leaq -2392(%rbp), %rdx",
+            "xorl %eax, %eax"
+          ],
+          "after": [
+            "movq %rdi, -2392(%rbp)",
+            "movq %r13, -2384(%rbp)",
+            "movq $1, -2376(%rbp)",
+            "movq %r12, %rdi",
+            "movabsq $166, %rsi",
+            "movl %esi, %esi",
+            "leaq -2392(%rbp), %rdx",
+            "xorl %eax, %eax"
+          ]
+        },
+        {
+          "line": 4071,
+          "symbol": "p113d_FID_$product.bst.down",
+          "address": "0x409112",
+          "weight": 0.003532380151387721,
+          "before": [
+            "movq %rax, %rdi",
+            "leaq -2392(%rbp), %r10",
+            "movq %rdi, %r11",
+            "movq %r11, 0(%r10)",
+            "leaq -2392(%rbp), %r10",
+            "movq %rbx, %r11",
+            "movq %r11, 8(%r10)",
+            "movq %r12, %rdi",
+            "movabsq $18, %rsi",
+            "movl %esi, %esi",
+            "leaq -2392(%rbp), %rdx",
+            "xorl %eax, %eax"
+          ],
+          "after": [
+            "movq %rax, %rdi",
+            "movq %rdi, -2392(%rbp)",
+            "movq %rbx, -2384(%rbp)",
+            "movq %r12, %rdi",
+            "movabsq $18, %rsi",
+            "movl %esi, %esi",
+            "leaq -2392(%rbp), %rdx",
+            "xorl %eax, %eax"
+          ]
+        },
+        {
+          "line": 4088,
+          "symbol": "p113d_FID_$product.bst.down",
+          "address": "0x409158",
+          "weight": 0.007569386038687973,
+          "before": [
+            "leaq -2392(%rbp), %r10",
+            "movq %rdi, %r11",
+            "movq %r11, 0(%r10)",
+            "leaq -2392(%rbp), %r10",
+            "movq %r14, %r11",
+            "movq %r11, 8(%r10)",
+            "leaq -2392(%rbp), %r10",
+            "movabsq $0, %r11",
+            "movq %r11, 16(%r10)",
+            "movq %r12, %rdi",
+            "movabsq $166, %rsi",
+            "movl %esi, %esi",
+            "leaq -2392(%rbp), %rdx",
+            "xorl %eax, %eax"
+          ],
+          "after": [
+            "movq %rdi, -2392(%rbp)",
+            "movq %r14, -2384(%rbp)",
+            "movq $0, -2376(%rbp)",
+            "movq %r12, %rdi",
+            "movabsq $166, %rsi",
+            "movl %esi, %esi",
+            "leaq -2392(%rbp), %rdx",
+            "xorl %eax, %eax"
+          ]
+        },
+        {
+          "line": 4103,
+          "symbol": "p113d_FID_$product.bst.down",
+          "address": "0x4091a5",
+          "weight": 0.006223717409587889,
+          "before": [
+            "movq %rax, %rdi",
+            "leaq -2392(%rbp), %r10",
+            "movq %rdi, %r11",
+            "movq %r11, 0(%r10)",
+            "leaq -2392(%rbp), %r10",
+            "movq %rbx, %r11",
+            "movq %r11, 8(%r10)",
+            "movq %r12, %rdi",
+            "movabsq $18, %rsi",
+            "movl %esi, %esi",
+            "leaq -2392(%rbp), %rdx",
+            "xorl %eax, %eax"
+          ],
+          "after": [
+            "movq %rax, %rdi",
+            "movq %rdi, -2392(%rbp)",
+            "movq %rbx, -2384(%rbp)",
+            "movq %r12, %rdi",
+            "movabsq $18, %rsi",
+            "movl %esi, %esi",
+            "leaq -2392(%rbp), %rdx",
+            "xorl %eax, %eax"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "packed-header",
+      "case": "tree-bitonic",
+      "legality": "Constant tag and arity bits combine exactly modulo 2^64. Preserve the last payload OR and its flags. r11 is overwritten before any use along every outgoing path.",
+      "sites": [
+        {
+          "line": 3759,
+          "symbol": "p113d_FID_$direct.warp_leaf",
+          "address": "0x408c81",
+          "weight": 0.0,
+          "before": [
+            "movabsq $164, %rdi",
+            "shlq $40, %rdi",
+            "movabsq $72057594037927936, %r11",
+            "orq %r11, %rdi",
+            "orq %rbx, %rdi"
+          ],
+          "after": [
+            "movabsq $72237913944883200, %rdi",
+            "orq %rbx, %rdi"
+          ]
+        },
+        {
+          "line": 3781,
+          "symbol": "p113d_FID_$direct.warp_leaf",
+          "address": "0x408ce7",
+          "weight": 0.004394861392832995,
+          "before": [
+            "movabsq $164, %rdi",
+            "shlq $40, %rdi",
+            "movabsq $72057594037927936, %r11",
+            "orq %r11, %rdi",
+            "orq %r13, %rdi"
+          ],
+          "after": [
+            "movabsq $72237913944883200, %rdi",
+            "orq %r13, %rdi"
+          ]
+        },
+        {
+          "line": 3817,
+          "symbol": "p113d_FID_$direct.warp_leaf",
+          "address": "0x408d8a",
+          "weight": 0.0035496957403651115,
+          "before": [
+            "movabsq $164, %rdi",
+            "shlq $40, %rdi",
+            "movabsq $72057594037927936, %r11",
+            "orq %r11, %rdi",
+            "orq %r13, %rdi"
+          ],
+          "after": [
+            "movabsq $72237913944883200, %rdi",
+            "orq %r13, %rdi"
+          ]
+        },
+        {
+          "line": 3839,
+          "symbol": "p113d_FID_$direct.warp_leaf",
+          "address": "0x408df0",
+          "weight": 0.0,
+          "before": [
+            "movabsq $164, %rdi",
+            "shlq $40, %rdi",
+            "movabsq $72057594037927936, %r11",
+            "orq %r11, %rdi",
+            "orq %rbx, %rdi"
+          ],
+          "after": [
+            "movabsq $72237913944883200, %rdi",
+            "orq %rbx, %rdi"
+          ]
+        }
+      ]
+    }
+  ],
+  "policy": "Run all four alternatives. Rank by sum of disjoint block sample share times fractional 100-iteration cycle decrease. Each case uses two layouts, two separately seeded balanced role orders, eight paired observations per layout. Diagnostic advancement requires median <=0.98 and >=3/4 favorable pairs in each of four layout/session cells.",
+  "freezeMethod": "49977112d86eb91a7a037249050c4f8f6f1a976c63ab7bcf92165dee3108083e"
+}

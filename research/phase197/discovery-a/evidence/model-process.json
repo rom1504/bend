@@ -1,0 +1,58 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": true,
+  "started": 1795210131.1986055,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "2",
+    "python3",
+    "-B",
+    "research/phase197/discovery-a/model.py",
+    "--out",
+    "selfhost/build/phase197/discovery-a-model01"
+  ],
+  "returncode": 0,
+  "rssLimitBytes": 2147483648,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 99729408,
+  "minimumAvailableBytes": 27614244864,
+  "diskBudgetBytes": 16777216,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 8238616576,
+  "minimumDiskFreeBytes": 8238379008,
+  "peakRunAllocatedBytes": 237568,
+  "peakFilesystemDecreaseBytes": 237568,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase197/discovery-a-model01"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "2",
+    "fileLimitBytes": 134217728,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/research/phase197/discovery-a/model.py",
+        "sha256": "7c7f5b232fb339ef5d5b5990bb9a1797e15059a5fe4bb37b4160b4fd22cbe784",
+        "bytes": 3735
+      }
+    ]
+  },
+  "wallSeconds": 0.9694303637370467,
+  "finished": 1795210132.1678514
+}

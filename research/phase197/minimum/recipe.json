@@ -1,0 +1,29 @@
+{
+  "modules": [
+    "research/phase197/minimum/select.bend",
+    "research/phase197/minimum/hook.bend",
+    "selfhost/tests/phase194/predicate-controls-v3.bend",
+    "research/phase197/minimum/controls.bend"
+  ],
+  "replace": [
+    "x194_ps_emit"
+  ],
+  "exports": [
+    "p194pc_controls",
+    "p194pc_emit",
+    "p197ms_controls",
+    "p197ms_emit"
+  ],
+  "switch": "x197ms_enabled",
+  "offSetting": "x197ms_enabled=false",
+  "driver": "research/phase197/minimum/driver.mjs",
+  "groups": [
+    "predicate",
+    "minimum"
+  ],
+  "expectedPerRoute": {
+    "predicate": 7260,
+    "minimum": 38720
+  },
+  "targetRunsByAuthor": 0
+}

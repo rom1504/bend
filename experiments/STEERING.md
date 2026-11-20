@@ -1,3 +1,11 @@
+# Phase197 checked x86 optimization candidates
+
+Two Bend rules reduce generated-program runtime by 8.8% geometrically on six selected workloads versus qualified Phase195. The independent C-reference screen on those same six moves from 2.696× to 2.485× C. All 18 direct products pass their catalog oracles and 90 additional case/input/role comparisons agree with C. Phase195 remains the most recent full native qualification at 1.865× C across 44 timed workloads.
+
+Ten new local hardware-model candidates failed the two-layout 2% screen. Following a BST tag check through its loop revealed repeated visits to an absorbing leaf. A machine experiment removed 23–24% on BST64 and 4–7% on BST32. A general compiler rule still needs to prove the branch-defined state at its common backedge. [Report, numbers and reproducible evidence](../implementation/phase197/README.md)
+
+---
+
 # Phase196 prospective hardware-model screen
 
 Two of 15 candidates passed both whole-program timing sessions. Instruction count found both in its top four. LLVM-MCA local cycles and profile-weighted cycles each found one; weighting picked the largest win first. Reusing live registers in a minimum calculation reduced current Phase195 edit-distance and local-pair runtime by about 16% under two assembler layouts. A BST decrement reduced runtime by 3–4%. These are generated-assembly diagnostics. The qualified Phase195 compiler remains at 1.865× mature Bend C runtime. [Experiment and decisions](../implementation/phase196/README.md).

@@ -1,0 +1,56 @@
+00 754c: mov r10,rsi
+01 754f: sub r10,0x1
+02 7556: mov QWORD PTR [rbp-0xa28],r10
+03 755d: mov esi,edi
+04 755f: mov r10,rsi
+05 7562: add r10d,0x1
+06 7569: mov QWORD PTR [rbp-0xa38],r10
+07 7570: mov r11,QWORD PTR [rbp-0x948]
+08 7577: mov rsi,rdi
+09 757a: and rsi,r11
+10 757d: mov r10,QWORD PTR [rbp-0x958]
+11 7584: mov r8d,DWORD PTR [r10+rsi*4]
+12 7588: mov esi,r15d
+13 758b: mov r10,rsi
+14 758e: mov r11,r8
+15 7591: cmp r10,r11
+16 7594: movabs rax,0x1
+17 759e: movabs r11,0x0
+18 75a8: cmovne r11,rax
+19 75ac: mov QWORD PTR [rbp-0xa78],r11
+20 75b3: mov rsi,rdi
+21 75b6: and rsi,r9
+22 75b9: mov eax,DWORD PTR [rbx+rsi*4]
+23 75bc: mov QWORD PTR [rbp-0xa98],rax
+24 75c3: mov esi,edi
+25 75c5: add esi,0x1
+26 75cb: and rsi,r9
+27 75ce: mov r8d,DWORD PTR [rbx+rsi*4]
+28 75d2: mov rsi,rdi
+29 75d5: and rsi,r13
+30 75d8: mov r14d,DWORD PTR [rdx+rsi*4]
+31 75dc: mov rsi,r8
+32 75df: add esi,0x1
+33 75e5: mov r8,rsi
+34 75e8: mov rsi,r14
+35 75eb: add esi,0x1
+36 75f1: cmp r8,rsi
+37 75f4: cmovae r8,rsi
+38 75f8: mov r11,QWORD PTR [rbp-0xa78]
+39 75ff: mov rsi,QWORD PTR [rbp-0xa98]
+40 7606: add esi,r11d
+41 7609: cmp r8,rsi
+42 760c: mov r11,rsi
+43 760f: cmovb r11,r8
+44 7613: mov QWORD PTR [rbp-0xb18],r11
+45 761a: mov edi,edi
+46 761c: mov rsi,rdi
+47 761f: add esi,0x1
+48 7625: mov rdi,rsi
+49 7628: and rdi,r13
+50 762b: mov rax,QWORD PTR [rbp-0xb18]
+51 7632: mov DWORD PTR [rdx+rdi*4],eax
+52 7635: mov r10,QWORD PTR [rbp-0xa28]
+53 763c: mov rsi,r10
+54 763f: mov r10,QWORD PTR [rbp-0xa38]
+55 7646: mov rdi,r10

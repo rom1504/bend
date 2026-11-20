@@ -1,0 +1,30 @@
+{
+  "kind": "phase197-decrement-overlay",
+  "baseline": "c07b44a",
+  "modules": [
+    "research/phase197/decrement/select.bend",
+    "research/phase197/decrement/controls.bend"
+  ],
+  "replacements": {
+    "x191_frame_forward": "research/phase197/decrement/hook.bend"
+  },
+  "exports": [
+    "p197d_controls",
+    "p197d_emit"
+  ],
+  "controlDriver": "research/phase197/decrement/driver.mjs",
+  "controls": "research/phase197/decrement/controls.json",
+  "observer": "research/phase197/decrement/observer.c",
+  "witness": {
+    "case": "coverage-bst-64",
+    "symbol": "p113d_FID_$product.bst.down",
+    "before": [
+      "movq %rdi, %r10",
+      "subq $1, %r10"
+    ],
+    "after": [
+      "leaq -1(%rdi), %r10"
+    ]
+  },
+  "scope": "Typed adjacent register copy and full-width signed32 add/sub only. Sixteen-item no-flags-read path to CMP/ADD/SUB; labels, directives, calls and unknown instructions refuse. No live source edits."
+}

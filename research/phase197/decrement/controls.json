@@ -1,0 +1,37 @@
+{
+  "controls": [
+    "sub-one",
+    "add-one",
+    "add-int32-max",
+    "add-int32-min",
+    "sub-negative-one",
+    "sub-negative-max",
+    "sub-int32-min-refused",
+    "positive-high-bit-refused",
+    "high-word-refused",
+    "u32-refused",
+    "rsp-source-refused",
+    "rbp-destination-refused",
+    "same-register-refused",
+    "memory-source-refused",
+    "different-destination-refused",
+    "carry-consumer-refused",
+    "cmov-consumer-refused",
+    "branch-consumer-refused",
+    "carry-arithmetic-refused",
+    "zero-shift-refused",
+    "label-refused",
+    "call-refused",
+    "directive-refused",
+    "empty-item-refused",
+    "end-refused",
+    "window-bound-refused",
+    "partial-flags-until-cmp",
+    "structural-empty-crossed"
+  ],
+  "exports": [
+    "p197d_controls",
+    "p197d_emit"
+  ],
+  "expectedStdout": "phase197 decrement machine controls: checks=2120 failures=0\n"
+}

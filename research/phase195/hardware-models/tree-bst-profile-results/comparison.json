@@ -1,0 +1,3302 @@
+{
+  "schema": "bend-native-profile-comparison-v1",
+  "complete": true,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/compare.py",
+    "bytes": 23983,
+    "sha256": "daedd52f4a7f4ba68e9f0e82720e11e2bb100b15a224fb3c1787f4d34a190843"
+  },
+  "runs": [
+    {
+      "report": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/report.json",
+        "bytes": 252494,
+        "sha256": "4b8bb7840cbfd0fa0e39294f81a931aacfc5fad1299a7d38759a14237dc83ff8"
+      },
+      "manifest": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/manifest.json",
+        "bytes": 215852,
+        "sha256": "6a736debf250532cba46c0bfc111866756db5e5c5b4469708918f91f261fa8f9"
+      },
+      "elapsedSeconds": 55.632039308547974,
+      "observations": 18,
+      "childWallSeconds": 53.79766927752644,
+      "childCpuSeconds": 53.779715
+    }
+  ],
+  "reference": null,
+  "baselineVariants": {},
+  "workloads": {
+    "12-tree-bitonic-candidate": {
+      "candidate": {
+        "identity": {
+          "source": {
+            "cwd": "/home/ai/bend2/build/publish/bend",
+            "arguments": [
+              "+RTS",
+              "--threads",
+              "1",
+              "--gpu",
+              "off",
+              "-RTS",
+              "--RTS",
+              "5730",
+              "4",
+              "8",
+              "0"
+            ],
+            "inputFiles": [],
+            "argv0": {
+              "mode": "executable"
+            }
+          },
+          "binary": {
+            "bytes": 216744,
+            "sha256": "9e4faa35c600a2c30d41b6c8104871cfd8a6c69381780bb8585885ec4a03197a"
+          },
+          "argv0": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/native45-01/tree-bitonic/machine/program",
+          "expected": {
+            "exitCode": 0,
+            "stdout": {
+              "kind": "prefix-integer-line",
+              "evidence": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/tree-bitonic.stdout",
+                "bytes": 10,
+                "sha256": "4d9faad3bd6736bd6b3be55577bba89ff3064588775afe8959dd2f709ca6aa21"
+              },
+              "prefix": "971629740\n4\n5730\n"
+            },
+            "stderr": {
+              "kind": "exact",
+              "bytes": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            }
+          },
+          "diagnostic": false
+        },
+        "clean": {
+          "wallSeconds": {
+            "samples": [
+              3.0085722617805004
+            ],
+            "count": 1,
+            "median": 3.0085722617805004,
+            "minimum": 3.0085722617805004,
+            "maximum": 3.0085722617805004
+          },
+          "cpuSeconds": {
+            "samples": [
+              3.007139
+            ],
+            "count": 1,
+            "median": 3.007139,
+            "minimum": 3.007139,
+            "maximum": 3.007139
+          },
+          "peakRssKiB": {
+            "samples": [
+              11684
+            ],
+            "count": 1,
+            "median": 11684,
+            "minimum": 11684,
+            "maximum": 11684
+          }
+        },
+        "diagnosticUnsampled": {
+          "wallSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "cpuSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "peakRssKiB": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          }
+        },
+        "diagnosticModes": [],
+        "contextOnlyUnsampled": {
+          "wallSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "cpuSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "peakRssKiB": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          }
+        },
+        "counterEnabled": {
+          "wallSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "cpuSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "peakRssKiB": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          }
+        },
+        "sampled": {
+          "wallSeconds": {
+            "samples": [
+              2.958437734283507,
+              2.979382644407451
+            ],
+            "count": 2,
+            "median": 2.968910189345479,
+            "minimum": 2.958437734283507,
+            "maximum": 2.979382644407451
+          },
+          "cpuSeconds": {
+            "samples": [
+              2.957506,
+              2.978467
+            ],
+            "count": 2,
+            "median": 2.9679865000000003,
+            "minimum": 2.957506,
+            "maximum": 2.978467
+          },
+          "peakRssKiB": {
+            "samples": [
+              11680,
+              13640
+            ],
+            "count": 2,
+            "median": 12660.0,
+            "minimum": 11680,
+            "maximum": 13640
+          }
+        },
+        "baselineVariant": "candidate",
+        "profile": {
+          "acceptedCaptures": [
+            {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/006-sample-12-tree-bitonic-candidate-candidate/analysis.json",
+              "bytes": 138824,
+              "sha256": "e567ae9bd67b5b2b10cfe103aa02c513eae66868b30894650f488dcfa5641ef8",
+              "samples": 369,
+              "periodUs": 8000,
+              "dropped": 0,
+              "overruns": 0,
+              "captureWindowChildCpuFraction": 0.9991553335817408,
+              "wholeChildCpuCoverageAdequate": true
+            },
+            {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/017-sample-12-tree-bitonic-candidate-candidate/analysis.json",
+              "bytes": 109529,
+              "sha256": "0c5d97eb86f6144d4552d360e8fdd4c83689df8a7fd9d4ea3c4463ac1c6b9c64",
+              "samples": 228,
+              "periodUs": 13000,
+              "dropped": 0,
+              "overruns": 0,
+              "captureWindowChildCpuFraction": 0.9993087309679778,
+              "wholeChildCpuCoverageAdequate": true
+            }
+          ],
+          "rejectedCaptures": [],
+          "samples": 597,
+          "periodWeightedMicroseconds": 5916000,
+          "sampleCountsByPeriodUs": {
+            "8000": 369,
+            "13000": 228
+          },
+          "unknownSamples": 10,
+          "unknownPeriodWeightedMicroseconds": 105000,
+          "captureLossTotals": {
+            "dropped": 0,
+            "overruns": 0
+          },
+          "minimumSamples": 500,
+          "adequate": true,
+          "cleanCpuSeconds": 3.007139,
+          "wholeChildCpuCoverageAdequate": true,
+          "estimateAvailable": true,
+          "estimateUnavailableReasons": [],
+          "functions": [
+            {
+              "object": "executable",
+              "name": "p114r_FID_36_100_105_114_101_99_116_46_119_97_114_112_",
+              "decoded": "p114r_FID_$direct.warp",
+              "samples": 128,
+              "rawFraction": 0.21440536013400335,
+              "periodWeightedMicroseconds": 1259000,
+              "periodWeightedFraction": 0.2128127112914131,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.6399574038201488
+            },
+            {
+              "object": "executable",
+              "name": "p125_rt_ctor2",
+              "decoded": "p125_rt_ctor2",
+              "samples": 92,
+              "rawFraction": 0.1541038525963149,
+              "periodWeightedMicroseconds": 931000,
+              "periodWeightedFraction": 0.15736984448951993,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.4732329967883705
+            },
+            {
+              "object": "executable",
+              "name": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "samples": 90,
+              "rawFraction": 0.1507537688442211,
+              "periodWeightedMicroseconds": 900000,
+              "periodWeightedFraction": 0.15212981744421908,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.4574755070993915
+            },
+            {
+              "object": "executable",
+              "name": "p113d_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_108_101_97_102_",
+              "decoded": "p113d_FID_$direct.warp_leaf",
+              "samples": 46,
+              "rawFraction": 0.07705192629815745,
+              "periodWeightedMicroseconds": 463000,
+              "periodWeightedFraction": 0.07826233941852603,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.23534573309668697
+            },
+            {
+              "object": "executable",
+              "name": "p111_FID_36_100_105_114_101_99_116_46_102_108_111_119_",
+              "decoded": "p111_FID_$direct.flow",
+              "samples": 34,
+              "rawFraction": 0.05695142378559464,
+              "periodWeightedMicroseconds": 322000,
+              "periodWeightedFraction": 0.05442866801893171,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.1636745703177823
+            },
+            {
+              "object": "executable",
+              "name": "p113d_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_122_105_112_",
+              "decoded": "p113d_FID_$direct.warp_zip",
+              "samples": 23,
+              "rawFraction": 0.038525963149078725,
+              "periodWeightedMicroseconds": 259000,
+              "periodWeightedFraction": 0.04377958079783638,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.1316512848208249
+            },
+            {
+              "object": "executable",
+              "name": "work_loop.constprop.0",
+              "decoded": "work_loop.constprop.0",
+              "samples": 26,
+              "rawFraction": 0.04355108877721943,
+              "periodWeightedMicroseconds": 258000,
+              "periodWeightedFraction": 0.0436105476673428,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.13114297870182556
+            },
+            {
+              "object": "executable",
+              "name": "p111_FID_36_100_105_114_101_99_116_46_119_97_114_112_",
+              "decoded": "p111_FID_$direct.warp",
+              "samples": 26,
+              "rawFraction": 0.04355108877721943,
+              "periodWeightedMicroseconds": 253000,
+              "periodWeightedFraction": 0.04276538201487492,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.12860144810682894
+            },
+            {
+              "object": "executable",
+              "name": "p111_FID_36_112_49_49_49_46_107_46_57_52_55_51_",
+              "decoded": "p111_FID_$p111.k.9473",
+              "samples": 22,
+              "rawFraction": 0.03685092127303183,
+              "periodWeightedMicroseconds": 226000,
+              "periodWeightedFraction": 0.03820148749154834,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.1148771828938472
+            },
+            {
+              "object": "executable",
+              "name": "p111_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_110_111_100_101_",
+              "decoded": "p111_FID_$direct.warp_node",
+              "samples": 18,
+              "rawFraction": 0.03015075376884422,
+              "periodWeightedMicroseconds": 164000,
+              "periodWeightedFraction": 0.027721433400946585,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.08336220351588912
+            },
+            {
+              "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+              "name": "[library_unresolved]",
+              "decoded": "[library_unresolved]",
+              "samples": 10,
+              "rawFraction": 0.01675041876046901,
+              "periodWeightedMicroseconds": 105000,
+              "periodWeightedFraction": 0.017748478701825558,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.053372142494929005
+            },
+            {
+              "object": "executable",
+              "name": "p111_FID_36_112_49_49_49_46_107_46_57_52_55_52_",
+              "decoded": "p111_FID_$p111.k.9474",
+              "samples": 10,
+              "rawFraction": 0.01675041876046901,
+              "periodWeightedMicroseconds": 90000,
+              "periodWeightedFraction": 0.015212981744421906,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.04574755070993915
+            },
+            {
+              "object": "executable",
+              "name": "p111_rt_frame",
+              "decoded": "p111_rt_frame",
+              "samples": 9,
+              "rawFraction": 0.01507537688442211,
+              "periodWeightedMicroseconds": 82000,
+              "periodWeightedFraction": 0.013860716700473293,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.04168110175794456
+            },
+            {
+              "object": "executable",
+              "name": "p111_FID_36_100_105_114_101_99_116_46_98_115_111_114_116_",
+              "decoded": "p111_FID_$direct.bsort",
+              "samples": 8,
+              "rawFraction": 0.01340033500837521,
+              "periodWeightedMicroseconds": 79000,
+              "periodWeightedFraction": 0.013353617308992562,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.040156183400946587
+            },
+            {
+              "object": "executable",
+              "name": "p111_set_regs",
+              "decoded": "p111_set_regs",
+              "samples": 8,
+              "rawFraction": 0.01340033500837521,
+              "periodWeightedMicroseconds": 79000,
+              "periodWeightedFraction": 0.013353617308992562,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.040156183400946587
+            },
+            {
+              "object": "executable",
+              "name": "p113d_FID_36_112_114_111_100_117_99_116_46_115_116_97_116_95_106_111_105_110_46_103_111_",
+              "decoded": "p113d_FID_$product.stat_join.go",
+              "samples": 5,
+              "rawFraction": 0.008375209380234505,
+              "periodWeightedMicroseconds": 55000,
+              "periodWeightedFraction": 0.00929682217714672,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.027956836544962813
+            },
+            {
+              "object": "executable",
+              "name": "p111_FID_36_112_49_49_49_46_107_46_57_52_56_48_",
+              "decoded": "p111_FID_$p111.k.9480",
+              "samples": 5,
+              "rawFraction": 0.008375209380234505,
+              "periodWeightedMicroseconds": 50000,
+              "periodWeightedFraction": 0.008451656524678837,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.02541530594996619
+            },
+            {
+              "object": "executable",
+              "name": "p111_rt_return",
+              "decoded": "p111_rt_return",
+              "samples": 5,
+              "rawFraction": 0.008375209380234505,
+              "periodWeightedMicroseconds": 45000,
+              "periodWeightedFraction": 0.007606490872210953,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.022873775354969574
+            },
+            {
+              "object": "executable",
+              "name": "p113d_FID_36_100_105_114_101_99_116_46_115_116_97_116_95_106_111_105_110_",
+              "decoded": "p113d_FID_$direct.stat_join",
+              "samples": 4,
+              "rawFraction": 0.006700167504187605,
+              "periodWeightedMicroseconds": 42000,
+              "periodWeightedFraction": 0.007099391480730223,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.0213488569979716
+            },
+            {
+              "object": "executable",
+              "name": "p111_FID_36_112_49_49_49_46_107_46_56_51_57_48_",
+              "decoded": "p111_FID_$p111.k.8390",
+              "samples": 5,
+              "rawFraction": 0.008375209380234505,
+              "periodWeightedMicroseconds": 40000,
+              "periodWeightedFraction": 0.0067613252197430695,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.020332244759972955
+            },
+            {
+              "object": "executable",
+              "name": "p111_FID_36_112_49_49_49_46_107_46_56_51_57_52_",
+              "decoded": "p111_FID_$p111.k.8394",
+              "samples": 4,
+              "rawFraction": 0.006700167504187605,
+              "periodWeightedMicroseconds": 37000,
+              "periodWeightedFraction": 0.006254225828262339,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.018807326402974982
+            },
+            {
+              "object": "executable",
+              "name": "p112w_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_108_101_97_102_",
+              "decoded": "p112w_FID_$direct.warp_leaf",
+              "samples": 3,
+              "rawFraction": 0.005025125628140704,
+              "periodWeightedMicroseconds": 29000,
+              "periodWeightedFraction": 0.004901960784313725,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.014740877450980391
+            },
+            {
+              "object": "executable",
+              "name": "p114r_FID_36_100_105_114_101_99_116_46_115_99_97_110_",
+              "decoded": "p114r_FID_$direct.scan",
+              "samples": 3,
+              "rawFraction": 0.005025125628140704,
+              "periodWeightedMicroseconds": 29000,
+              "periodWeightedFraction": 0.004901960784313725,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.014740877450980391
+            },
+            {
+              "object": "executable",
+              "name": "p125_rt_ctor4",
+              "decoded": "p125_rt_ctor4",
+              "samples": 2,
+              "rawFraction": 0.0033500837520938024,
+              "periodWeightedMicroseconds": 26000,
+              "periodWeightedFraction": 0.004394861392832995,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.01321595909398242
+            },
+            {
+              "object": "executable",
+              "name": "p111_FID_36_112_49_49_49_46_107_46_56_51_56_57_",
+              "decoded": "p111_FID_$p111.k.8389",
+              "samples": 3,
+              "rawFraction": 0.005025125628140704,
+              "periodWeightedMicroseconds": 24000,
+              "periodWeightedFraction": 0.004056795131845842,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.012199346855983773
+            },
+            {
+              "object": "executable",
+              "name": "p111_FID_36_112_49_49_49_46_107_46_57_52_56_54_",
+              "decoded": "p111_FID_$p111.k.9486",
+              "samples": 3,
+              "rawFraction": 0.005025125628140704,
+              "periodWeightedMicroseconds": 24000,
+              "periodWeightedFraction": 0.004056795131845842,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.012199346855983773
+            },
+            {
+              "object": "executable",
+              "name": "p111_rt_keep",
+              "decoded": "p111_rt_keep",
+              "samples": 2,
+              "rawFraction": 0.0033500837520938024,
+              "periodWeightedMicroseconds": 21000,
+              "periodWeightedFraction": 0.0035496957403651115,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.0106744284989858
+            },
+            {
+              "object": "executable",
+              "name": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "samples": 2,
+              "rawFraction": 0.0033500837520938024,
+              "periodWeightedMicroseconds": 16000,
+              "periodWeightedFraction": 0.002704530087897228,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.008132897903989182
+            },
+            {
+              "object": "executable",
+              "name": "p112w_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_122_105_112_",
+              "decoded": "p112w_FID_$direct.warp_zip",
+              "samples": 1,
+              "rawFraction": 0.0016750418760469012,
+              "periodWeightedMicroseconds": 8000,
+              "periodWeightedFraction": 0.001352265043948614,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.004066448951994591
+            }
+          ],
+          "groups": [
+            {
+              "name": "generated_bend",
+              "samples": 351,
+              "rawFraction": 0.5879396984924623,
+              "periodWeightedMicroseconds": 3453000,
+              "periodWeightedFraction": 0.5836713995943205,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 1.7551810289046652
+            },
+            {
+              "name": "ownership_and_products",
+              "samples": 188,
+              "rawFraction": 0.3149078726968174,
+              "periodWeightedMicroseconds": 1894000,
+              "periodWeightedFraction": 0.3201487491548343,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.9627317893847194
+            },
+            {
+              "name": "scheduler",
+              "samples": 26,
+              "rawFraction": 0.04355108877721943,
+              "periodWeightedMicroseconds": 258000,
+              "periodWeightedFraction": 0.0436105476673428,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.13114297870182556
+            },
+            {
+              "name": "other",
+              "samples": 22,
+              "rawFraction": 0.03685092127303183,
+              "periodWeightedMicroseconds": 206000,
+              "periodWeightedFraction": 0.03482082488167681,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.10471106051386071
+            },
+            {
+              "name": "unresolved",
+              "samples": 10,
+              "rawFraction": 0.01675041876046901,
+              "periodWeightedMicroseconds": 105000,
+              "periodWeightedFraction": 0.017748478701825558,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.053372142494929005
+            }
+          ],
+          "categories": [
+            {
+              "name": "executable",
+              "samples": 587,
+              "rawFraction": 0.983249581239531,
+              "periodWeightedMicroseconds": 5811000,
+              "periodWeightedFraction": 0.9822515212981744,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 2.953766857505071
+            },
+            {
+              "name": "library_unresolved",
+              "samples": 10,
+              "rawFraction": 0.01675041876046901,
+              "periodWeightedMicroseconds": 105000,
+              "periodWeightedFraction": 0.017748478701825558,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.053372142494929005
+            }
+          ],
+          "groupRules": {
+            "reclamation": "^(term_drop|span_fade|blk_free|free)([.@]|$)",
+            "allocation": "^(heap_alloc|blk_new|malloc|calloc|realloc)([.@]|$)",
+            "ownership_and_products": "^(term_keep|rfc_|p\\d+_(?:p\\d+_)?rt_(?:keep|take|ctor|extend)|root_take)",
+            "memory_copy": "^(memcpy|memmove|memset|blk_copy|__mem)",
+            "scheduler": "^(WL_|task_|pool_|work_|p111_run)",
+            "generated_bend": "_FID_"
+          },
+          "weighting": "rawFraction pools counts; periodWeightedFraction weights each sample by its capture period. Approximate CPU costs multiply period-weighted fractions by independent clean median CPU time.",
+          "limitations": [
+            "A sample count threshold is not a confidence interval.",
+            "Repeated periods may alias; retain period-specific captures and compare them.",
+            "Unknown samples remain in denominators. Rejected captures remain visible but are excluded.",
+            "Fractions describe the captured interval. Absolute CPU estimates additionally require its process CPU to cover 95% of whole-child CPU; unavailable lifetime coverage preserves fractions only.",
+            "Physical leaf costs do not identify logical callers or ownership origins.",
+            "Diagnostic-runtime samples may distort the clean distribution even with an explicit baseline."
+          ]
+        },
+        "eventCounts": {},
+        "maximumChildRssKiB": 13640,
+        "sampledOverCleanWallRatio": 0.9868169786250874,
+        "diagnosticOverCleanWallRatio": null,
+        "contextOnlyOverCleanWallRatio": null,
+        "countersOverCleanWallRatio": null
+      }
+    },
+    "12-tree-bitonic-c": {
+      "c": {
+        "identity": {
+          "source": {
+            "cwd": "/home/ai/bend2/build/publish/bend",
+            "arguments": [
+              "+RTS",
+              "--threads",
+              "1",
+              "--gpu",
+              "off",
+              "-RTS",
+              "--RTS",
+              "18010",
+              "4",
+              "8",
+              "0"
+            ],
+            "inputFiles": [],
+            "argv0": {
+              "mode": "executable"
+            }
+          },
+          "binary": {
+            "bytes": 115744,
+            "sha256": "19550d9d4c7b770e374ac234d09c6860458807a6f7ff1d0c4153f1f1cf8d513a"
+          },
+          "argv0": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/tree-bitonic/bend-c/program",
+          "expected": {
+            "exitCode": 0,
+            "stdout": {
+              "kind": "prefix-integer-line",
+              "evidence": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/tree-bitonic.stdout",
+                "bytes": 10,
+                "sha256": "4d9faad3bd6736bd6b3be55577bba89ff3064588775afe8959dd2f709ca6aa21"
+              },
+              "prefix": "971629740\n4\n18010\n"
+            },
+            "stderr": {
+              "kind": "exact",
+              "bytes": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            }
+          },
+          "diagnostic": false
+        },
+        "clean": {
+          "wallSeconds": {
+            "samples": [
+              3.0033401902765036
+            ],
+            "count": 1,
+            "median": 3.0033401902765036,
+            "minimum": 3.0033401902765036,
+            "maximum": 3.0033401902765036
+          },
+          "cpuSeconds": {
+            "samples": [
+              3.002384
+            ],
+            "count": 1,
+            "median": 3.002384,
+            "minimum": 3.002384,
+            "maximum": 3.002384
+          },
+          "peakRssKiB": {
+            "samples": [
+              11820
+            ],
+            "count": 1,
+            "median": 11820,
+            "minimum": 11820,
+            "maximum": 11820
+          }
+        },
+        "diagnosticUnsampled": {
+          "wallSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "cpuSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "peakRssKiB": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          }
+        },
+        "diagnosticModes": [],
+        "contextOnlyUnsampled": {
+          "wallSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "cpuSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "peakRssKiB": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          }
+        },
+        "counterEnabled": {
+          "wallSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "cpuSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "peakRssKiB": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          }
+        },
+        "sampled": {
+          "wallSeconds": {
+            "samples": [
+              2.978757919743657,
+              2.973068220540881
+            ],
+            "count": 2,
+            "median": 2.975913070142269,
+            "minimum": 2.973068220540881,
+            "maximum": 2.978757919743657
+          },
+          "cpuSeconds": {
+            "samples": [
+              2.977617,
+              2.972188
+            ],
+            "count": 2,
+            "median": 2.9749025,
+            "minimum": 2.972188,
+            "maximum": 2.977617
+          },
+          "peakRssKiB": {
+            "samples": [
+              13136,
+              13548
+            ],
+            "count": 2,
+            "median": 13342.0,
+            "minimum": 13136,
+            "maximum": 13548
+          }
+        },
+        "baselineVariant": "c",
+        "profile": {
+          "acceptedCaptures": [
+            {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/007-sample-12-tree-bitonic-c-c/analysis.json",
+              "bytes": 111150,
+              "sha256": "2f347a53f6fca353b0671be1ae5c9a9d2d0790649de60d889e40f856d50f94b2",
+              "samples": 371,
+              "periodUs": 8000,
+              "dropped": 0,
+              "overruns": 0,
+              "captureWindowChildCpuFraction": 0.9991392936029047,
+              "wholeChildCpuCoverageAdequate": true
+            },
+            {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/012-sample-12-tree-bitonic-c-c/analysis.json",
+              "bytes": 87839,
+              "sha256": "db6e0a125de4af30625a1fd84805258ed9241ee19f09bbbc9ee760d8b18af3c4",
+              "samples": 228,
+              "periodUs": 13000,
+              "dropped": 0,
+              "overruns": 0,
+              "captureWindowChildCpuFraction": 0.999333309333057,
+              "wholeChildCpuCoverageAdequate": true
+            }
+          ],
+          "rejectedCaptures": [],
+          "samples": 599,
+          "periodWeightedMicroseconds": 5932000,
+          "sampleCountsByPeriodUs": {
+            "8000": 371,
+            "13000": 228
+          },
+          "unknownSamples": 0,
+          "unknownPeriodWeightedMicroseconds": 0,
+          "captureLossTotals": {
+            "dropped": 0,
+            "overruns": 0
+          },
+          "minimumSamples": 500,
+          "adequate": true,
+          "cleanCpuSeconds": 3.002384,
+          "wholeChildCpuCoverageAdequate": true,
+          "estimateAvailable": true,
+          "estimateUnavailableReasons": [],
+          "functions": [
+            {
+              "object": "executable",
+              "name": "WL_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_122_105_112_",
+              "decoded": "WL_FID_$direct.warp_zip",
+              "samples": 165,
+              "rawFraction": 0.27545909849749584,
+              "periodWeightedMicroseconds": 1610000,
+              "periodWeightedFraction": 0.27140930546190156,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.8148749561699259
+            },
+            {
+              "object": "executable",
+              "name": "WL_FID_36_100_105_114_101_99_116_46_119_97_114_112_",
+              "decoded": "WL_FID_$direct.warp",
+              "samples": 89,
+              "rawFraction": 0.14858096828046743,
+              "periodWeightedMicroseconds": 927000,
+              "periodWeightedFraction": 0.1562710721510452,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.4691857666891437
+            },
+            {
+              "object": "executable",
+              "name": "WL_FID_110_97_116_105_118_101_95_107_95_50_50_57_56_52_",
+              "decoded": "WL_FID_native_k_22984",
+              "samples": 67,
+              "rawFraction": 0.11185308848080133,
+              "periodWeightedMicroseconds": 706000,
+              "periodWeightedFraction": 0.11901550910316926,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.35733026028320974
+            },
+            {
+              "object": "executable",
+              "name": "WL_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_108_101_97_102_",
+              "decoded": "WL_FID_$direct.warp_leaf",
+              "samples": 64,
+              "rawFraction": 0.10684474123539232,
+              "periodWeightedMicroseconds": 622000,
+              "periodWeightedFraction": 0.10485502360080917,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.31481504517869185
+            },
+            {
+              "object": "executable",
+              "name": "WL_FID_110_97_116_105_118_101_95_107_95_50_50_57_56_53_",
+              "decoded": "WL_FID_native_k_22985",
+              "samples": 58,
+              "rawFraction": 0.09682804674457429,
+              "periodWeightedMicroseconds": 549000,
+              "periodWeightedFraction": 0.09254888739042481,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.2778672987188132
+            },
+            {
+              "object": "executable",
+              "name": "WL_FID_36_100_105_114_101_99_116_46_102_108_111_119_",
+              "decoded": "WL_FID_$direct.flow",
+              "samples": 37,
+              "rawFraction": 0.06176961602671119,
+              "periodWeightedMicroseconds": 346000,
+              "periodWeightedFraction": 0.05832771409305462,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.1751221955495617
+            },
+            {
+              "object": "executable",
+              "name": "WL_FID_110_97_116_105_118_101_95_107_95_50_48_56_51_49_",
+              "decoded": "WL_FID_native_k_20831",
+              "samples": 26,
+              "rawFraction": 0.04340567612687813,
+              "periodWeightedMicroseconds": 273000,
+              "periodWeightedFraction": 0.046021577882670264,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.1381744490896831
+            },
+            {
+              "object": "executable",
+              "name": "WL_FID_110_97_116_105_118_101_95_107_95_50_48_56_51_50_",
+              "decoded": "WL_FID_native_k_20832",
+              "samples": 25,
+              "rawFraction": 0.041736227045075125,
+              "periodWeightedMicroseconds": 250000,
+              "periodWeightedFraction": 0.04214430209035738,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.12653337828725555
+            },
+            {
+              "object": "executable",
+              "name": "WL_FID_36_100_105_114_101_99_116_46_115_116_97_116_95_106_111_105_110_",
+              "decoded": "WL_FID_$direct.stat_join",
+              "samples": 11,
+              "rawFraction": 0.018363939899833055,
+              "periodWeightedMicroseconds": 118000,
+              "periodWeightedFraction": 0.019892110586648686,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.05972375455158463
+            },
+            {
+              "object": "executable",
+              "name": "WL_FID_110_97_116_105_118_101_95_107_95_50_48_56_51_57_",
+              "decoded": "WL_FID_native_k_20839",
+              "samples": 11,
+              "rawFraction": 0.018363939899833055,
+              "periodWeightedMicroseconds": 108000,
+              "periodWeightedFraction": 0.01820633850303439,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.05466241942009441
+            },
+            {
+              "object": "executable",
+              "name": "WL_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_110_111_100_101_",
+              "decoded": "WL_FID_$direct.warp_node",
+              "samples": 10,
+              "rawFraction": 0.01669449081803005,
+              "periodWeightedMicroseconds": 100000,
+              "periodWeightedFraction": 0.016857720836142953,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.05061335131490223
+            },
+            {
+              "object": "executable",
+              "name": "WL_FID_110_97_116_105_118_101_95_107_95_49_55_54_56_51_",
+              "decoded": "WL_FID_native_k_17683",
+              "samples": 9,
+              "rawFraction": 0.015025041736227046,
+              "periodWeightedMicroseconds": 82000,
+              "periodWeightedFraction": 0.013823331085637222,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.04150294807821983
+            },
+            {
+              "object": "executable",
+              "name": "WL_FID_36_100_105_114_101_99_116_46_115_99_97_110_",
+              "decoded": "WL_FID_$direct.scan",
+              "samples": 6,
+              "rawFraction": 0.01001669449081803,
+              "periodWeightedMicroseconds": 53000,
+              "periodWeightedFraction": 0.008934592043155765,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.02682507619689818
+            },
+            {
+              "object": "executable",
+              "name": "WL_FID_110_97_116_105_118_101_95_107_95_50_48_56_52_53_",
+              "decoded": "WL_FID_native_k_20845",
+              "samples": 6,
+              "rawFraction": 0.01001669449081803,
+              "periodWeightedMicroseconds": 48000,
+              "periodWeightedFraction": 0.008091706001348618,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.02429440863115307
+            },
+            {
+              "object": "executable",
+              "name": "WL_FID_110_97_116_105_118_101_95_107_95_49_52_53_54_56_",
+              "decoded": "WL_FID_native_k_14568",
+              "samples": 4,
+              "rawFraction": 0.00667779632721202,
+              "periodWeightedMicroseconds": 37000,
+              "periodWeightedFraction": 0.006237356709372893,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.018726939986513827
+            },
+            {
+              "object": "executable",
+              "name": "WL_FID_110_97_116_105_118_101_95_107_95_49_55_54_56_50_",
+              "decoded": "WL_FID_native_k_17682",
+              "samples": 4,
+              "rawFraction": 0.00667779632721202,
+              "periodWeightedMicroseconds": 37000,
+              "periodWeightedFraction": 0.006237356709372893,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.018726939986513827
+            },
+            {
+              "object": "executable",
+              "name": "WL_FID_110_97_116_105_118_101_95_107_95_49_52_53_54_57_",
+              "decoded": "WL_FID_native_k_14569",
+              "samples": 4,
+              "rawFraction": 0.00667779632721202,
+              "periodWeightedMicroseconds": 32000,
+              "periodWeightedFraction": 0.005394470667565745,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.016196272420768713
+            },
+            {
+              "object": "executable",
+              "name": "WL_FID_36_100_105_114_101_99_116_46_98_115_111_114_116_",
+              "decoded": "WL_FID_$direct.bsort",
+              "samples": 2,
+              "rawFraction": 0.00333889816360601,
+              "periodWeightedMicroseconds": 21000,
+              "periodWeightedFraction": 0.0035401213755900203,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.010628803776129467
+            },
+            {
+              "object": "executable",
+              "name": "WL_FID_110_97_116_105_118_101_95_107_95_50_55_49_52_48_",
+              "decoded": "WL_FID_native_k_27140",
+              "samples": 1,
+              "rawFraction": 0.001669449081803005,
+              "periodWeightedMicroseconds": 13000,
+              "periodWeightedFraction": 0.002191503708698584,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.006579735670937289
+            }
+          ],
+          "groups": [
+            {
+              "name": "scheduler",
+              "samples": 599,
+              "rawFraction": 1.0,
+              "periodWeightedMicroseconds": 5932000,
+              "periodWeightedFraction": 1.0,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 3.002384
+            }
+          ],
+          "categories": [
+            {
+              "name": "executable",
+              "samples": 599,
+              "rawFraction": 1.0,
+              "periodWeightedMicroseconds": 5932000,
+              "periodWeightedFraction": 1.0,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 3.002384
+            }
+          ],
+          "groupRules": {
+            "reclamation": "^(term_drop|span_fade|blk_free|free)([.@]|$)",
+            "allocation": "^(heap_alloc|blk_new|malloc|calloc|realloc)([.@]|$)",
+            "ownership_and_products": "^(term_keep|rfc_|p\\d+_(?:p\\d+_)?rt_(?:keep|take|ctor|extend)|root_take)",
+            "memory_copy": "^(memcpy|memmove|memset|blk_copy|__mem)",
+            "scheduler": "^(WL_|task_|pool_|work_|p111_run)",
+            "generated_bend": "_FID_"
+          },
+          "weighting": "rawFraction pools counts; periodWeightedFraction weights each sample by its capture period. Approximate CPU costs multiply period-weighted fractions by independent clean median CPU time.",
+          "limitations": [
+            "A sample count threshold is not a confidence interval.",
+            "Repeated periods may alias; retain period-specific captures and compare them.",
+            "Unknown samples remain in denominators. Rejected captures remain visible but are excluded.",
+            "Fractions describe the captured interval. Absolute CPU estimates additionally require its process CPU to cover 95% of whole-child CPU; unavailable lifetime coverage preserves fractions only.",
+            "Physical leaf costs do not identify logical callers or ownership origins.",
+            "Diagnostic-runtime samples may distort the clean distribution even with an explicit baseline."
+          ]
+        },
+        "eventCounts": {},
+        "maximumChildRssKiB": 13548,
+        "sampledOverCleanWallRatio": 0.990867794390049,
+        "diagnosticOverCleanWallRatio": null,
+        "contextOnlyOverCleanWallRatio": null,
+        "countersOverCleanWallRatio": null
+      }
+    },
+    "12-tree-bitonic-qbe": {
+      "qbe": {
+        "identity": {
+          "source": {
+            "cwd": "/home/ai/bend2/build/publish/bend",
+            "arguments": [
+              "+RTS",
+              "--threads",
+              "1",
+              "--gpu",
+              "off",
+              "-RTS",
+              "--RTS",
+              "7573",
+              "4",
+              "8",
+              "0"
+            ],
+            "inputFiles": [],
+            "argv0": {
+              "mode": "executable"
+            }
+          },
+          "binary": {
+            "bytes": 187128,
+            "sha256": "82ac09159ffea013e77cfcae4e8c7778869fe0dfb47320ff79dfded3b6977154"
+          },
+          "argv0": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-native45-acquire01/tree-bitonic/phase186-qbe-n2/machine/program",
+          "expected": {
+            "exitCode": 0,
+            "stdout": {
+              "kind": "prefix-integer-line",
+              "evidence": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/tree-bitonic.stdout",
+                "bytes": 10,
+                "sha256": "4d9faad3bd6736bd6b3be55577bba89ff3064588775afe8959dd2f709ca6aa21"
+              },
+              "prefix": "971629740\n4\n7573\n"
+            },
+            "stderr": {
+              "kind": "exact",
+              "bytes": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            }
+          },
+          "diagnostic": false
+        },
+        "clean": {
+          "wallSeconds": {
+            "samples": [
+              3.004385309293866
+            ],
+            "count": 1,
+            "median": 3.004385309293866,
+            "minimum": 3.004385309293866,
+            "maximum": 3.004385309293866
+          },
+          "cpuSeconds": {
+            "samples": [
+              3.00352
+            ],
+            "count": 1,
+            "median": 3.00352,
+            "minimum": 3.00352,
+            "maximum": 3.00352
+          },
+          "peakRssKiB": {
+            "samples": [
+              11844
+            ],
+            "count": 1,
+            "median": 11844,
+            "minimum": 11844,
+            "maximum": 11844
+          }
+        },
+        "diagnosticUnsampled": {
+          "wallSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "cpuSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "peakRssKiB": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          }
+        },
+        "diagnosticModes": [],
+        "contextOnlyUnsampled": {
+          "wallSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "cpuSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "peakRssKiB": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          }
+        },
+        "counterEnabled": {
+          "wallSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "cpuSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "peakRssKiB": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          }
+        },
+        "sampled": {
+          "wallSeconds": {
+            "samples": [
+              2.978905774652958,
+              3.0122818164527416
+            ],
+            "count": 2,
+            "median": 2.9955937955528498,
+            "minimum": 2.978905774652958,
+            "maximum": 3.0122818164527416
+          },
+          "cpuSeconds": {
+            "samples": [
+              2.977912,
+              3.011273
+            ],
+            "count": 2,
+            "median": 2.9945925,
+            "minimum": 2.977912,
+            "maximum": 3.011273
+          },
+          "peakRssKiB": {
+            "samples": [
+              13248,
+              13556
+            ],
+            "count": 2,
+            "median": 13402.0,
+            "minimum": 13248,
+            "maximum": 13556
+          }
+        },
+        "baselineVariant": "qbe",
+        "profile": {
+          "acceptedCaptures": [
+            {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/008-sample-12-tree-bitonic-qbe-qbe/analysis.json",
+              "bytes": 146329,
+              "sha256": "01c774374e25376201e89c722d869f2cc33e2c958581ada0f2e7606fb0a03b65",
+              "samples": 371,
+              "periodUs": 8000,
+              "dropped": 0,
+              "overruns": 0,
+              "captureWindowChildCpuFraction": 0.9991768742662644,
+              "wholeChildCpuCoverageAdequate": true
+            },
+            {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/013-sample-12-tree-bitonic-qbe-qbe/analysis.json",
+              "bytes": 108551,
+              "sha256": "c67b0cb07a9ebaf3722c776e1a0728821cf40e9058e58576e143311ae7bb625d",
+              "samples": 231,
+              "periodUs": 13000,
+              "dropped": 0,
+              "overruns": 0,
+              "captureWindowChildCpuFraction": 0.9993243754385603,
+              "wholeChildCpuCoverageAdequate": true
+            }
+          ],
+          "rejectedCaptures": [],
+          "samples": 602,
+          "periodWeightedMicroseconds": 5971000,
+          "sampleCountsByPeriodUs": {
+            "8000": 371,
+            "13000": 231
+          },
+          "unknownSamples": 18,
+          "unknownPeriodWeightedMicroseconds": 184000,
+          "captureLossTotals": {
+            "dropped": 0,
+            "overruns": 0
+          },
+          "minimumSamples": 500,
+          "adequate": true,
+          "cleanCpuSeconds": 3.00352,
+          "wholeChildCpuCoverageAdequate": true,
+          "estimateAvailable": true,
+          "estimateUnavailableReasons": [],
+          "functions": [
+            {
+              "object": "executable",
+              "name": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "samples": 106,
+              "rawFraction": 0.1760797342192691,
+              "periodWeightedMicroseconds": 1068000,
+              "periodWeightedFraction": 0.1788645118070675,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.5372231385027634
+            },
+            {
+              "object": "executable",
+              "name": "p114r_FID_36_100_105_114_101_99_116_46_119_97_114_112_",
+              "decoded": "p114r_FID_$direct.warp",
+              "samples": 92,
+              "rawFraction": 0.15282392026578073,
+              "periodWeightedMicroseconds": 901000,
+              "periodWeightedFraction": 0.15089599732038184,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.45321914587171325
+            },
+            {
+              "object": "executable",
+              "name": "p113d_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_122_105_112_",
+              "decoded": "p113d_FID_$direct.warp_zip",
+              "samples": 66,
+              "rawFraction": 0.10963455149501661,
+              "periodWeightedMicroseconds": 618000,
+              "periodWeightedFraction": 0.10350025121420198,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.3108650745268799
+            },
+            {
+              "object": "executable",
+              "name": "p113d_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_108_101_97_102_",
+              "decoded": "p113d_FID_$direct.warp_leaf",
+              "samples": 58,
+              "rawFraction": 0.09634551495016612,
+              "periodWeightedMicroseconds": 589000,
+              "periodWeightedFraction": 0.09864344330932842,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.2962775548484341
+            },
+            {
+              "object": "executable",
+              "name": "p111_FID_36_100_105_114_101_99_116_46_102_108_111_119_",
+              "decoded": "p111_FID_$direct.flow",
+              "samples": 46,
+              "rawFraction": 0.07641196013289037,
+              "periodWeightedMicroseconds": 478000,
+              "periodWeightedFraction": 0.08005359236308826,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.24044256573438286
+            },
+            {
+              "object": "executable",
+              "name": "work_loop.constprop.0",
+              "decoded": "work_loop.constprop.0",
+              "samples": 45,
+              "rawFraction": 0.07475083056478406,
+              "periodWeightedMicroseconds": 455000,
+              "periodWeightedFraction": 0.07620164126611957,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.22887315357561544
+            },
+            {
+              "object": "executable",
+              "name": "p111_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_110_111_100_101_",
+              "decoded": "p111_FID_$direct.warp_node",
+              "samples": 29,
+              "rawFraction": 0.04817275747508306,
+              "periodWeightedMicroseconds": 282000,
+              "periodWeightedFraction": 0.047228269971529055,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.14185105342488694
+            },
+            {
+              "object": "executable",
+              "name": "p111_FID_36_100_105_114_101_99_116_46_119_97_114_112_",
+              "decoded": "p111_FID_$direct.warp",
+              "samples": 22,
+              "rawFraction": 0.036544850498338874,
+              "periodWeightedMicroseconds": 211000,
+              "periodWeightedFraction": 0.035337464411321386,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.10613678110869201
+            },
+            {
+              "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+              "name": "[library_unresolved]",
+              "decoded": "[library_unresolved]",
+              "samples": 18,
+              "rawFraction": 0.029900332225913623,
+              "periodWeightedMicroseconds": 184000,
+              "periodWeightedFraction": 0.030815608775749456,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.092555297270139
+            },
+            {
+              "object": "executable",
+              "name": "p111_FID_36_112_49_49_49_46_107_46_57_52_55_51_",
+              "decoded": "p111_FID_$p111.k.9473",
+              "samples": 17,
+              "rawFraction": 0.02823920265780731,
+              "periodWeightedMicroseconds": 156000,
+              "periodWeightedFraction": 0.02612627700552671,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.07847079551163959
+            },
+            {
+              "object": "executable",
+              "name": "p111_FID_36_112_49_49_49_46_107_46_57_52_56_54_",
+              "decoded": "p111_FID_$p111.k.9486",
+              "samples": 13,
+              "rawFraction": 0.02159468438538206,
+              "periodWeightedMicroseconds": 119000,
+              "periodWeightedFraction": 0.01992966002344666,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.05985913247362251
+            },
+            {
+              "object": "executable",
+              "name": "p112w_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_108_101_97_102_",
+              "decoded": "p112w_FID_$direct.warp_leaf",
+              "samples": 11,
+              "rawFraction": 0.018272425249169437,
+              "periodWeightedMicroseconds": 118000,
+              "periodWeightedFraction": 0.019762183888795845,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.05935611455367609
+            },
+            {
+              "object": "executable",
+              "name": "p111_rt_return",
+              "decoded": "p111_rt_return",
+              "samples": 11,
+              "rawFraction": 0.018272425249169437,
+              "periodWeightedMicroseconds": 108000,
+              "periodWeightedFraction": 0.018087422542287724,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.05432593535421203
+            },
+            {
+              "object": "executable",
+              "name": "p111_set_regs",
+              "decoded": "p111_set_regs",
+              "samples": 9,
+              "rawFraction": 0.014950166112956811,
+              "periodWeightedMicroseconds": 87000,
+              "periodWeightedFraction": 0.014570423714620667,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.04376255903533747
+            },
+            {
+              "object": "executable",
+              "name": "p111_FID_36_112_49_49_49_46_107_46_56_51_57_48_",
+              "decoded": "p111_FID_$p111.k.8390",
+              "samples": 7,
+              "rawFraction": 0.011627906976744186,
+              "periodWeightedMicroseconds": 81000,
+              "periodWeightedFraction": 0.013565566906715794,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.04074445151565902
+            },
+            {
+              "object": "executable",
+              "name": "p111_FID_36_100_105_114_101_99_116_46_98_115_111_114_116_",
+              "decoded": "p111_FID_$direct.bsort",
+              "samples": 7,
+              "rawFraction": 0.011627906976744186,
+              "periodWeightedMicroseconds": 76000,
+              "periodWeightedFraction": 0.012728186233461732,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.038229361915926977
+            },
+            {
+              "object": "executable",
+              "name": "p111_FID_36_112_49_49_49_46_107_46_57_52_56_48_",
+              "decoded": "p111_FID_$p111.k.9480",
+              "samples": 8,
+              "rawFraction": 0.013289036544850499,
+              "periodWeightedMicroseconds": 74000,
+              "periodWeightedFraction": 0.012393233964160108,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.037223326076034166
+            },
+            {
+              "object": "executable",
+              "name": "p111_FID_36_112_49_49_49_46_107_46_56_51_56_57_",
+              "decoded": "p111_FID_$p111.k.8389",
+              "samples": 7,
+              "rawFraction": 0.011627906976744186,
+              "periodWeightedMicroseconds": 71000,
+              "periodWeightedFraction": 0.011890805560207671,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.035714272316194944
+            },
+            {
+              "object": "executable",
+              "name": "p112w_FID_36_100_105_114_101_99_116_46_119_97_114_112_95_122_105_112_",
+              "decoded": "p112w_FID_$direct.warp_zip",
+              "samples": 5,
+              "rawFraction": 0.008305647840531562,
+              "periodWeightedMicroseconds": 55000,
+              "periodWeightedFraction": 0.009211187405794675,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.027665985597052422
+            },
+            {
+              "object": "executable",
+              "name": "p125_rt_take4",
+              "decoded": "p125_rt_take4",
+              "samples": 5,
+              "rawFraction": 0.008305647840531562,
+              "periodWeightedMicroseconds": 55000,
+              "periodWeightedFraction": 0.009211187405794675,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.027665985597052422
+            },
+            {
+              "object": "executable",
+              "name": "p111_FID_36_112_49_49_49_46_107_46_57_52_55_52_",
+              "decoded": "p111_FID_$p111.k.9474",
+              "samples": 4,
+              "rawFraction": 0.006644518272425249,
+              "periodWeightedMicroseconds": 37000,
+              "periodWeightedFraction": 0.006196616982080054,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.018611663038017083
+            },
+            {
+              "object": "executable",
+              "name": "p114r_FID_36_100_105_114_101_99_116_46_115_99_97_110_",
+              "decoded": "p114r_FID_$direct.scan",
+              "samples": 4,
+              "rawFraction": 0.006644518272425249,
+              "periodWeightedMicroseconds": 37000,
+              "periodWeightedFraction": 0.006196616982080054,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.018611663038017083
+            },
+            {
+              "object": "executable",
+              "name": "p111_FID_36_112_49_49_49_46_107_46_56_51_57_52_",
+              "decoded": "p111_FID_$p111.k.8394",
+              "samples": 4,
+              "rawFraction": 0.006644518272425249,
+              "periodWeightedMicroseconds": 32000,
+              "periodWeightedFraction": 0.005359236308825992,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.016096573438285043
+            },
+            {
+              "object": "executable",
+              "name": "p113d_FID_36_100_105_114_101_99_116_46_115_116_97_116_95_106_111_105_110_",
+              "decoded": "p113d_FID_$direct.stat_join",
+              "samples": 3,
+              "rawFraction": 0.0049833887043189366,
+              "periodWeightedMicroseconds": 29000,
+              "periodWeightedFraction": 0.004856807904873556,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.014587519678445822
+            },
+            {
+              "object": "executable",
+              "name": "p113d_FID_36_112_114_111_100_117_99_116_46_115_116_97_116_95_106_111_105_110_46_103_111_",
+              "decoded": "p113d_FID_$product.stat_join.go",
+              "samples": 3,
+              "rawFraction": 0.0049833887043189366,
+              "periodWeightedMicroseconds": 29000,
+              "periodWeightedFraction": 0.004856807904873556,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.014587519678445822
+            },
+            {
+              "object": "executable",
+              "name": "p111_rt_reg_get",
+              "decoded": "p111_rt_reg_get",
+              "samples": 2,
+              "rawFraction": 0.0033222591362126247,
+              "periodWeightedMicroseconds": 21000,
+              "periodWeightedFraction": 0.0035169988276670576,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.010563376318874561
+            }
+          ],
+          "groups": [
+            {
+              "name": "generated_bend",
+              "samples": 406,
+              "rawFraction": 0.6744186046511628,
+              "periodWeightedMicroseconds": 3993000,
+              "periodWeightedFraction": 0.6687322056606934,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 2.0085505543460056
+            },
+            {
+              "name": "ownership_and_products",
+              "samples": 111,
+              "rawFraction": 0.18438538205980065,
+              "periodWeightedMicroseconds": 1123000,
+              "periodWeightedFraction": 0.18807569921286216,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.5648891240998157
+            },
+            {
+              "name": "scheduler",
+              "samples": 45,
+              "rawFraction": 0.07475083056478406,
+              "periodWeightedMicroseconds": 455000,
+              "periodWeightedFraction": 0.07620164126611957,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.22887315357561544
+            },
+            {
+              "name": "other",
+              "samples": 22,
+              "rawFraction": 0.036544850498338874,
+              "periodWeightedMicroseconds": 216000,
+              "periodWeightedFraction": 0.03617484508457545,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.10865187070842405
+            },
+            {
+              "name": "unresolved",
+              "samples": 18,
+              "rawFraction": 0.029900332225913623,
+              "periodWeightedMicroseconds": 184000,
+              "periodWeightedFraction": 0.030815608775749456,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.092555297270139
+            }
+          ],
+          "categories": [
+            {
+              "name": "executable",
+              "samples": 584,
+              "rawFraction": 0.9700996677740864,
+              "periodWeightedMicroseconds": 5787000,
+              "periodWeightedFraction": 0.9691843912242506,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 2.9109647027298613
+            },
+            {
+              "name": "library_unresolved",
+              "samples": 18,
+              "rawFraction": 0.029900332225913623,
+              "periodWeightedMicroseconds": 184000,
+              "periodWeightedFraction": 0.030815608775749456,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.092555297270139
+            }
+          ],
+          "groupRules": {
+            "reclamation": "^(term_drop|span_fade|blk_free|free)([.@]|$)",
+            "allocation": "^(heap_alloc|blk_new|malloc|calloc|realloc)([.@]|$)",
+            "ownership_and_products": "^(term_keep|rfc_|p\\d+_(?:p\\d+_)?rt_(?:keep|take|ctor|extend)|root_take)",
+            "memory_copy": "^(memcpy|memmove|memset|blk_copy|__mem)",
+            "scheduler": "^(WL_|task_|pool_|work_|p111_run)",
+            "generated_bend": "_FID_"
+          },
+          "weighting": "rawFraction pools counts; periodWeightedFraction weights each sample by its capture period. Approximate CPU costs multiply period-weighted fractions by independent clean median CPU time.",
+          "limitations": [
+            "A sample count threshold is not a confidence interval.",
+            "Repeated periods may alias; retain period-specific captures and compare them.",
+            "Unknown samples remain in denominators. Rejected captures remain visible but are excluded.",
+            "Fractions describe the captured interval. Absolute CPU estimates additionally require its process CPU to cover 95% of whole-child CPU; unavailable lifetime coverage preserves fractions only.",
+            "Physical leaf costs do not identify logical callers or ownership origins.",
+            "Diagnostic-runtime samples may distort the clean distribution even with an explicit baseline."
+          ]
+        },
+        "eventCounts": {},
+        "maximumChildRssKiB": 13556,
+        "sampledOverCleanWallRatio": 0.997073772889975,
+        "diagnosticOverCleanWallRatio": null,
+        "contextOnlyOverCleanWallRatio": null,
+        "countersOverCleanWallRatio": null
+      }
+    },
+    "15-coverage-bst-64-candidate": {
+      "candidate": {
+        "identity": {
+          "source": {
+            "cwd": "/home/ai/bend2/build/publish/bend",
+            "arguments": [
+              "+RTS",
+              "--threads",
+              "1",
+              "--gpu",
+              "off",
+              "-RTS",
+              "--RTS",
+              "106557",
+              "4",
+              "64",
+              "17"
+            ],
+            "inputFiles": [],
+            "argv0": {
+              "mode": "executable"
+            }
+          },
+          "binary": {
+            "bytes": 195496,
+            "sha256": "092dce5036f64b4b0331ca0bcdcd809b83846fb6515fcfd79c17ad0ea83d524c"
+          },
+          "argv0": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/native45-01/coverage-bst-64/machine/program",
+          "expected": {
+            "exitCode": 0,
+            "stdout": {
+              "kind": "prefix-integer-line",
+              "evidence": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/coverage-bst-64.stdout",
+                "bytes": 10,
+                "sha256": "baf85e5e8a3c69ee0b60c4f2fc3c7d95c8f8c5c0f3bc833a0b7e08a91911e714"
+              },
+              "prefix": "861157620\n4\n106557\n"
+            },
+            "stderr": {
+              "kind": "exact",
+              "bytes": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            }
+          },
+          "diagnostic": false
+        },
+        "clean": {
+          "wallSeconds": {
+            "samples": [
+              2.972341923043132
+            ],
+            "count": 1,
+            "median": 2.972341923043132,
+            "minimum": 2.972341923043132,
+            "maximum": 2.972341923043132
+          },
+          "cpuSeconds": {
+            "samples": [
+              2.971212
+            ],
+            "count": 1,
+            "median": 2.971212,
+            "minimum": 2.971212,
+            "maximum": 2.971212
+          },
+          "peakRssKiB": {
+            "samples": [
+              11844
+            ],
+            "count": 1,
+            "median": 11844,
+            "minimum": 11844,
+            "maximum": 11844
+          }
+        },
+        "diagnosticUnsampled": {
+          "wallSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "cpuSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "peakRssKiB": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          }
+        },
+        "diagnosticModes": [],
+        "contextOnlyUnsampled": {
+          "wallSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "cpuSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "peakRssKiB": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          }
+        },
+        "counterEnabled": {
+          "wallSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "cpuSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "peakRssKiB": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          }
+        },
+        "sampled": {
+          "wallSeconds": {
+            "samples": [
+              2.981403741054237,
+              2.9864096008241177
+            ],
+            "count": 2,
+            "median": 2.9839066709391773,
+            "minimum": 2.981403741054237,
+            "maximum": 2.9864096008241177
+          },
+          "cpuSeconds": {
+            "samples": [
+              2.98045,
+              2.985343
+            ],
+            "count": 2,
+            "median": 2.9828965,
+            "minimum": 2.98045,
+            "maximum": 2.985343
+          },
+          "peakRssKiB": {
+            "samples": [
+              13500,
+              13576
+            ],
+            "count": 2,
+            "median": 13538.0,
+            "minimum": 13500,
+            "maximum": 13576
+          }
+        },
+        "baselineVariant": "candidate",
+        "profile": {
+          "acceptedCaptures": [
+            {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/009-sample-15-coverage-bst-64-candidate-candidate/analysis.json",
+              "bytes": 109241,
+              "sha256": "da455a14005b1a3ce274e3be9adcdfc160a3e3f93a30b1a7184ab2f49d90baa4",
+              "samples": 371,
+              "periodUs": 8000,
+              "dropped": 0,
+              "overruns": 0,
+              "captureWindowChildCpuFraction": 0.9991702632152862,
+              "wholeChildCpuCoverageAdequate": true
+            },
+            {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/014-sample-15-coverage-bst-64-candidate-candidate/analysis.json",
+              "bytes": 81204,
+              "sha256": "2b0a2f70f8a7e3f72dc891acd16d9a6291e5eabeeaf96c22e46a75bf9e0c45f5",
+              "samples": 229,
+              "periodUs": 13000,
+              "dropped": 0,
+              "overruns": 0,
+              "captureWindowChildCpuFraction": 0.9993122585913914,
+              "wholeChildCpuCoverageAdequate": true
+            }
+          ],
+          "rejectedCaptures": [],
+          "samples": 600,
+          "periodWeightedMicroseconds": 5945000,
+          "sampleCountsByPeriodUs": {
+            "8000": 371,
+            "13000": 229
+          },
+          "unknownSamples": 0,
+          "unknownPeriodWeightedMicroseconds": 0,
+          "captureLossTotals": {
+            "dropped": 0,
+            "overruns": 0
+          },
+          "minimumSamples": 500,
+          "adequate": true,
+          "cleanCpuSeconds": 2.971212,
+          "wholeChildCpuCoverageAdequate": true,
+          "estimateAvailable": true,
+          "estimateUnavailableReasons": [],
+          "functions": [
+            {
+              "object": "executable",
+              "name": "p113d_FID_36_112_114_111_100_117_99_116_46_98_115_116_46_100_111_119_110_",
+              "decoded": "p113d_FID_$product.bst.down",
+              "samples": 187,
+              "rawFraction": 0.31166666666666665,
+              "periodWeightedMicroseconds": 1846000,
+              "periodWeightedFraction": 0.3105130361648444,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.9226000592094196
+            },
+            {
+              "object": "executable",
+              "name": "p125_rt_ctor3",
+              "decoded": "p125_rt_ctor3",
+              "samples": 117,
+              "rawFraction": 0.195,
+              "periodWeightedMicroseconds": 1186000,
+              "periodWeightedFraction": 0.19949537426408748,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.5927430499579479
+            },
+            {
+              "object": "executable",
+              "name": "p125_rt_take3",
+              "decoded": "p125_rt_take3",
+              "samples": 97,
+              "rawFraction": 0.16166666666666665,
+              "periodWeightedMicroseconds": 966000,
+              "periodWeightedFraction": 0.16248948696383517,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.4827907135407906
+            },
+            {
+              "object": "executable",
+              "name": "p113d_FID_36_100_105_114_101_99_116_46_98_115_116_46_117_112_",
+              "decoded": "p113d_FID_$direct.bst.up",
+              "samples": 74,
+              "rawFraction": 0.12333333333333334,
+              "periodWeightedMicroseconds": 717000,
+              "periodWeightedFraction": 0.12060555088309503,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.35834466005046256
+            },
+            {
+              "object": "executable",
+              "name": "p125_rt_ctor2",
+              "decoded": "p125_rt_ctor2",
+              "samples": 41,
+              "rawFraction": 0.06833333333333333,
+              "periodWeightedMicroseconds": 403000,
+              "periodWeightedFraction": 0.06778805719091674,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.2014126889823381
+            },
+            {
+              "object": "executable",
+              "name": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "samples": 37,
+              "rawFraction": 0.06166666666666667,
+              "periodWeightedMicroseconds": 356000,
+              "periodWeightedFraction": 0.05988225399495374,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.1779228716568545
+            },
+            {
+              "object": "executable",
+              "name": "p111_rt_op",
+              "decoded": "p111_rt_op",
+              "samples": 14,
+              "rawFraction": 0.023333333333333334,
+              "periodWeightedMicroseconds": 137000,
+              "periodWeightedFraction": 0.02304457527333894,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.06847031858704794
+            },
+            {
+              "object": "executable",
+              "name": "p114r_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_",
+              "decoded": "p114r_FID_$direct.inorder",
+              "samples": 13,
+              "rawFraction": 0.021666666666666667,
+              "periodWeightedMicroseconds": 134000,
+              "periodWeightedFraction": 0.02253994953742641,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.06697096854499579
+            },
+            {
+              "object": "executable",
+              "name": "p113d_FID_36_112_114_111_100_117_99_116_46_105_110_115_101_114_116_46_102_105_110_",
+              "decoded": "p113d_FID_$product.insert.fin",
+              "samples": 9,
+              "rawFraction": 0.015,
+              "periodWeightedMicroseconds": 87000,
+              "periodWeightedFraction": 0.014634146341463415,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.043481151219512196
+            },
+            {
+              "object": "executable",
+              "name": "p113d_FID_36_100_105_114_101_99_116_46_112_51_55_46_98_115_116_46_98_117_105_108_100_",
+              "decoded": "p113d_FID_$direct.p37.bst.build",
+              "samples": 7,
+              "rawFraction": 0.011666666666666667,
+              "periodWeightedMicroseconds": 71000,
+              "periodWeightedFraction": 0.011942809083263246,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.03548461766190075
+            },
+            {
+              "object": "executable",
+              "name": "p111_FID_36_100_105_114_101_99_116_46_98_101_110_99_104_",
+              "decoded": "p111_FID_$direct.bench",
+              "samples": 1,
+              "rawFraction": 0.0016666666666666668,
+              "periodWeightedMicroseconds": 13000,
+              "periodWeightedFraction": 0.002186711522287637,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.006497183515559294
+            },
+            {
+              "object": "executable",
+              "name": "p111_FID_36_112_49_49_49_46_107_46_54_50_57_53_",
+              "decoded": "p111_FID_$p111.k.6295",
+              "samples": 1,
+              "rawFraction": 0.0016666666666666668,
+              "periodWeightedMicroseconds": 13000,
+              "periodWeightedFraction": 0.002186711522287637,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.006497183515559294
+            },
+            {
+              "object": "executable",
+              "name": "p111_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_",
+              "decoded": "p111_FID_$direct.inorder",
+              "samples": 1,
+              "rawFraction": 0.0016666666666666668,
+              "periodWeightedMicroseconds": 8000,
+              "periodWeightedFraction": 0.001345668629100084,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.003998266778805719
+            },
+            {
+              "object": "executable",
+              "name": "p113d_FID_36_100_105_114_101_99_116_46_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+              "decoded": "p113d_FID_$direct.p37.bst.insert",
+              "samples": 1,
+              "rawFraction": 0.0016666666666666668,
+              "periodWeightedMicroseconds": 8000,
+              "periodWeightedFraction": 0.001345668629100084,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.003998266778805719
+            }
+          ],
+          "groups": [
+            {
+              "name": "ownership_and_products",
+              "samples": 292,
+              "rawFraction": 0.4866666666666667,
+              "periodWeightedMicroseconds": 2911000,
+              "periodWeightedFraction": 0.4896551724137931,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 1.454869324137931
+            },
+            {
+              "name": "generated_bend",
+              "samples": 294,
+              "rawFraction": 0.49,
+              "periodWeightedMicroseconds": 2897000,
+              "periodWeightedFraction": 0.48730025231286794,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 1.447872357275021
+            },
+            {
+              "name": "other",
+              "samples": 14,
+              "rawFraction": 0.023333333333333334,
+              "periodWeightedMicroseconds": 137000,
+              "periodWeightedFraction": 0.02304457527333894,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.06847031858704794
+            }
+          ],
+          "categories": [
+            {
+              "name": "executable",
+              "samples": 600,
+              "rawFraction": 1.0,
+              "periodWeightedMicroseconds": 5945000,
+              "periodWeightedFraction": 1.0,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 2.971212
+            }
+          ],
+          "groupRules": {
+            "reclamation": "^(term_drop|span_fade|blk_free|free)([.@]|$)",
+            "allocation": "^(heap_alloc|blk_new|malloc|calloc|realloc)([.@]|$)",
+            "ownership_and_products": "^(term_keep|rfc_|p\\d+_(?:p\\d+_)?rt_(?:keep|take|ctor|extend)|root_take)",
+            "memory_copy": "^(memcpy|memmove|memset|blk_copy|__mem)",
+            "scheduler": "^(WL_|task_|pool_|work_|p111_run)",
+            "generated_bend": "_FID_"
+          },
+          "weighting": "rawFraction pools counts; periodWeightedFraction weights each sample by its capture period. Approximate CPU costs multiply period-weighted fractions by independent clean median CPU time.",
+          "limitations": [
+            "A sample count threshold is not a confidence interval.",
+            "Repeated periods may alias; retain period-specific captures and compare them.",
+            "Unknown samples remain in denominators. Rejected captures remain visible but are excluded.",
+            "Fractions describe the captured interval. Absolute CPU estimates additionally require its process CPU to cover 95% of whole-child CPU; unavailable lifetime coverage preserves fractions only.",
+            "Physical leaf costs do not identify logical callers or ownership origins.",
+            "Diagnostic-runtime samples may distort the clean distribution even with an explicit baseline."
+          ]
+        },
+        "eventCounts": {},
+        "maximumChildRssKiB": 13576,
+        "sampledOverCleanWallRatio": 1.0038907865230409,
+        "diagnosticOverCleanWallRatio": null,
+        "contextOnlyOverCleanWallRatio": null,
+        "countersOverCleanWallRatio": null
+      }
+    },
+    "15-coverage-bst-64-c": {
+      "c": {
+        "identity": {
+          "source": {
+            "cwd": "/home/ai/bend2/build/publish/bend",
+            "arguments": [
+              "+RTS",
+              "--threads",
+              "1",
+              "--gpu",
+              "off",
+              "-RTS",
+              "--RTS",
+              "405660",
+              "4",
+              "64",
+              "17"
+            ],
+            "inputFiles": [],
+            "argv0": {
+              "mode": "executable"
+            }
+          },
+          "binary": {
+            "bytes": 105128,
+            "sha256": "de4601ec006bbdffaf3295e1a1877db48f3395c83529f8c2577178f820d08a18"
+          },
+          "argv0": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+          "expected": {
+            "exitCode": 0,
+            "stdout": {
+              "kind": "prefix-integer-line",
+              "evidence": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/coverage-bst-64.stdout",
+                "bytes": 10,
+                "sha256": "baf85e5e8a3c69ee0b60c4f2fc3c7d95c8f8c5c0f3bc833a0b7e08a91911e714"
+              },
+              "prefix": "861157620\n4\n405660\n"
+            },
+            "stderr": {
+              "kind": "exact",
+              "bytes": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            }
+          },
+          "diagnostic": false
+        },
+        "clean": {
+          "wallSeconds": {
+            "samples": [
+              2.986339131370187
+            ],
+            "count": 1,
+            "median": 2.986339131370187,
+            "minimum": 2.986339131370187,
+            "maximum": 2.986339131370187
+          },
+          "cpuSeconds": {
+            "samples": [
+              2.985455
+            ],
+            "count": 1,
+            "median": 2.985455,
+            "minimum": 2.985455,
+            "maximum": 2.985455
+          },
+          "peakRssKiB": {
+            "samples": [
+              11876
+            ],
+            "count": 1,
+            "median": 11876,
+            "minimum": 11876,
+            "maximum": 11876
+          }
+        },
+        "diagnosticUnsampled": {
+          "wallSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "cpuSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "peakRssKiB": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          }
+        },
+        "diagnosticModes": [],
+        "contextOnlyUnsampled": {
+          "wallSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "cpuSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "peakRssKiB": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          }
+        },
+        "counterEnabled": {
+          "wallSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "cpuSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "peakRssKiB": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          }
+        },
+        "sampled": {
+          "wallSeconds": {
+            "samples": [
+              2.9804102294147015,
+              3.0199281089007854
+            ],
+            "count": 2,
+            "median": 3.0001691691577435,
+            "minimum": 2.9804102294147015,
+            "maximum": 3.0199281089007854
+          },
+          "cpuSeconds": {
+            "samples": [
+              2.979382,
+              3.01899
+            ],
+            "count": 2,
+            "median": 2.999186,
+            "minimum": 2.979382,
+            "maximum": 3.01899
+          },
+          "peakRssKiB": {
+            "samples": [
+              13520,
+              13612
+            ],
+            "count": 2,
+            "median": 13566.0,
+            "minimum": 13520,
+            "maximum": 13612
+          }
+        },
+        "baselineVariant": "c",
+        "profile": {
+          "acceptedCaptures": [
+            {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/010-sample-15-coverage-bst-64-c-c/analysis.json",
+              "bytes": 84412,
+              "sha256": "af929264aa1ac4efefebc4174393e21ac89c3499fa95acc6f1709e8dc58ea23e",
+              "samples": 371,
+              "periodUs": 8000,
+              "dropped": 0,
+              "overruns": 0,
+              "captureWindowChildCpuFraction": 0.9991603688281664,
+              "wholeChildCpuCoverageAdequate": true
+            },
+            {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/015-sample-15-coverage-bst-64-c-c/analysis.json",
+              "bytes": 69904,
+              "sha256": "9e0dbe8d7b4b82897867e52e04e4e8a0d5b74e7df348016cf8a7942b9e517c6e",
+              "samples": 231,
+              "periodUs": 13000,
+              "dropped": 0,
+              "overruns": 0,
+              "captureWindowChildCpuFraction": 0.9993247393996005,
+              "wholeChildCpuCoverageAdequate": true
+            }
+          ],
+          "rejectedCaptures": [],
+          "samples": 602,
+          "periodWeightedMicroseconds": 5971000,
+          "sampleCountsByPeriodUs": {
+            "8000": 371,
+            "13000": 231
+          },
+          "unknownSamples": 0,
+          "unknownPeriodWeightedMicroseconds": 0,
+          "captureLossTotals": {
+            "dropped": 0,
+            "overruns": 0
+          },
+          "minimumSamples": 500,
+          "adequate": true,
+          "cleanCpuSeconds": 2.985455,
+          "wholeChildCpuCoverageAdequate": true,
+          "estimateAvailable": true,
+          "estimateUnavailableReasons": [],
+          "functions": [
+            {
+              "object": "executable",
+              "name": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+              "decoded": "NF_FID_p37.bst.insert",
+              "samples": 549,
+              "rawFraction": 0.9119601328903655,
+              "periodWeightedMicroseconds": 5467000,
+              "periodWeightedFraction": 0.9155920281359906,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 2.733458798358734
+            },
+            {
+              "object": "executable",
+              "name": "WL_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_",
+              "decoded": "WL_FID_$direct.inorder",
+              "samples": 28,
+              "rawFraction": 0.046511627906976744,
+              "periodWeightedMicroseconds": 254000,
+              "periodWeightedFraction": 0.04253893820130632,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.12699808574778096
+            },
+            {
+              "object": "executable",
+              "name": "NF_FID_112_51_55_46_98_115_116_46_98_117_105_108_100_",
+              "decoded": "NF_FID_p37.bst.build",
+              "samples": 18,
+              "rawFraction": 0.029900332225913623,
+              "periodWeightedMicroseconds": 184000,
+              "periodWeightedFraction": 0.030815608775749456,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.09199861329760509
+            },
+            {
+              "object": "executable",
+              "name": "WL_FID_110_97_116_105_118_101_95_107_95_49_51_53_53_51_",
+              "decoded": "WL_FID_native_k_13553",
+              "samples": 7,
+              "rawFraction": 0.011627906976744186,
+              "periodWeightedMicroseconds": 66000,
+              "periodWeightedFraction": 0.011053424886953609,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.03299950259588009
+            }
+          ],
+          "groups": [
+            {
+              "name": "generated_bend",
+              "samples": 567,
+              "rawFraction": 0.9418604651162791,
+              "periodWeightedMicroseconds": 5651000,
+              "periodWeightedFraction": 0.9464076369117401,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 2.825457411656339
+            },
+            {
+              "name": "scheduler",
+              "samples": 35,
+              "rawFraction": 0.05813953488372093,
+              "periodWeightedMicroseconds": 320000,
+              "periodWeightedFraction": 0.053592363088259924,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.15999758834366104
+            }
+          ],
+          "categories": [
+            {
+              "name": "executable",
+              "samples": 602,
+              "rawFraction": 1.0,
+              "periodWeightedMicroseconds": 5971000,
+              "periodWeightedFraction": 1.0,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 2.985455
+            }
+          ],
+          "groupRules": {
+            "reclamation": "^(term_drop|span_fade|blk_free|free)([.@]|$)",
+            "allocation": "^(heap_alloc|blk_new|malloc|calloc|realloc)([.@]|$)",
+            "ownership_and_products": "^(term_keep|rfc_|p\\d+_(?:p\\d+_)?rt_(?:keep|take|ctor|extend)|root_take)",
+            "memory_copy": "^(memcpy|memmove|memset|blk_copy|__mem)",
+            "scheduler": "^(WL_|task_|pool_|work_|p111_run)",
+            "generated_bend": "_FID_"
+          },
+          "weighting": "rawFraction pools counts; periodWeightedFraction weights each sample by its capture period. Approximate CPU costs multiply period-weighted fractions by independent clean median CPU time.",
+          "limitations": [
+            "A sample count threshold is not a confidence interval.",
+            "Repeated periods may alias; retain period-specific captures and compare them.",
+            "Unknown samples remain in denominators. Rejected captures remain visible but are excluded.",
+            "Fractions describe the captured interval. Absolute CPU estimates additionally require its process CPU to cover 95% of whole-child CPU; unavailable lifetime coverage preserves fractions only.",
+            "Physical leaf costs do not identify logical callers or ownership origins.",
+            "Diagnostic-runtime samples may distort the clean distribution even with an explicit baseline."
+          ]
+        },
+        "eventCounts": {},
+        "maximumChildRssKiB": 13612,
+        "sampledOverCleanWallRatio": 1.004631100882776,
+        "diagnosticOverCleanWallRatio": null,
+        "contextOnlyOverCleanWallRatio": null,
+        "countersOverCleanWallRatio": null
+      }
+    },
+    "15-coverage-bst-64-qbe": {
+      "qbe": {
+        "identity": {
+          "source": {
+            "cwd": "/home/ai/bend2/build/publish/bend",
+            "arguments": [
+              "+RTS",
+              "--threads",
+              "1",
+              "--gpu",
+              "off",
+              "-RTS",
+              "--RTS",
+              "161751",
+              "4",
+              "64",
+              "17"
+            ],
+            "inputFiles": [],
+            "argv0": {
+              "mode": "executable"
+            }
+          },
+          "binary": {
+            "bytes": 173408,
+            "sha256": "6aa818a86a7fe427edda90ccd904e8c519170a64f0c3c7c2e5b4f5f7ae0e6f8b"
+          },
+          "argv0": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-native45-acquire01/coverage-bst-64/phase186-qbe-n2/machine/program",
+          "expected": {
+            "exitCode": 0,
+            "stdout": {
+              "kind": "prefix-integer-line",
+              "evidence": {
+                "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/coverage-bst-64.stdout",
+                "bytes": 10,
+                "sha256": "baf85e5e8a3c69ee0b60c4f2fc3c7d95c8f8c5c0f3bc833a0b7e08a91911e714"
+              },
+              "prefix": "861157620\n4\n161751\n"
+            },
+            "stderr": {
+              "kind": "exact",
+              "bytes": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            }
+          },
+          "diagnostic": false
+        },
+        "clean": {
+          "wallSeconds": {
+            "samples": [
+              3.0065176971256733
+            ],
+            "count": 1,
+            "median": 3.0065176971256733,
+            "minimum": 3.0065176971256733,
+            "maximum": 3.0065176971256733
+          },
+          "cpuSeconds": {
+            "samples": [
+              3.005593
+            ],
+            "count": 1,
+            "median": 3.005593,
+            "minimum": 3.005593,
+            "maximum": 3.005593
+          },
+          "peakRssKiB": {
+            "samples": [
+              11900
+            ],
+            "count": 1,
+            "median": 11900,
+            "minimum": 11900,
+            "maximum": 11900
+          }
+        },
+        "diagnosticUnsampled": {
+          "wallSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "cpuSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "peakRssKiB": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          }
+        },
+        "diagnosticModes": [],
+        "contextOnlyUnsampled": {
+          "wallSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "cpuSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "peakRssKiB": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          }
+        },
+        "counterEnabled": {
+          "wallSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "cpuSeconds": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          },
+          "peakRssKiB": {
+            "samples": [],
+            "count": 0,
+            "median": null,
+            "minimum": null,
+            "maximum": null
+          }
+        },
+        "sampled": {
+          "wallSeconds": {
+            "samples": [
+              2.9805271551012993,
+              2.9866598192602396
+            ],
+            "count": 2,
+            "median": 2.9835934871807694,
+            "minimum": 2.9805271551012993,
+            "maximum": 2.9866598192602396
+          },
+          "cpuSeconds": {
+            "samples": [
+              2.979577,
+              2.985707
+            ],
+            "count": 2,
+            "median": 2.9826420000000002,
+            "minimum": 2.979577,
+            "maximum": 2.985707
+          },
+          "peakRssKiB": {
+            "samples": [
+              13532,
+              13628
+            ],
+            "count": 2,
+            "median": 13580.0,
+            "minimum": 13532,
+            "maximum": 13628
+          }
+        },
+        "baselineVariant": "qbe",
+        "profile": {
+          "acceptedCaptures": [
+            {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/011-sample-15-coverage-bst-64-qbe-qbe/analysis.json",
+              "bytes": 116173,
+              "sha256": "990b09beba556d01c264e8dd5f18ad2be05d89607900cdc7010177c3d4941cdb",
+              "samples": 372,
+              "periodUs": 8000,
+              "dropped": 0,
+              "overruns": 0,
+              "captureWindowChildCpuFraction": 0.9991679412883104,
+              "wholeChildCpuCoverageAdequate": true
+            },
+            {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/016-sample-15-coverage-bst-64-qbe-qbe/analysis.json",
+              "bytes": 92382,
+              "sha256": "7a8223ffffca3d63364f469d7c153e2c1a50970916abc504ecf29ce8095a6689",
+              "samples": 229,
+              "periodUs": 13000,
+              "dropped": 0,
+              "overruns": 0,
+              "captureWindowChildCpuFraction": 0.9993435189722233,
+              "wholeChildCpuCoverageAdequate": true
+            }
+          ],
+          "rejectedCaptures": [],
+          "samples": 601,
+          "periodWeightedMicroseconds": 5953000,
+          "sampleCountsByPeriodUs": {
+            "8000": 372,
+            "13000": 229
+          },
+          "unknownSamples": 0,
+          "unknownPeriodWeightedMicroseconds": 0,
+          "captureLossTotals": {
+            "dropped": 0,
+            "overruns": 0
+          },
+          "minimumSamples": 500,
+          "adequate": true,
+          "cleanCpuSeconds": 3.005593,
+          "wholeChildCpuCoverageAdequate": true,
+          "estimateAvailable": true,
+          "estimateUnavailableReasons": [],
+          "functions": [
+            {
+              "object": "executable",
+              "name": "p113d_FID_36_112_114_111_100_117_99_116_46_98_115_116_46_100_111_119_110_",
+              "decoded": "p113d_FID_$product.bst.down",
+              "samples": 290,
+              "rawFraction": 0.4825291181364393,
+              "periodWeightedMicroseconds": 2880000,
+              "periodWeightedFraction": 0.48378968587266924,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 1.4540748933310936
+            },
+            {
+              "object": "executable",
+              "name": "p125_rt_take3",
+              "decoded": "p125_rt_take3",
+              "samples": 123,
+              "rawFraction": 0.20465890183028287,
+              "periodWeightedMicroseconds": 1229000,
+              "periodWeightedFraction": 0.20645052914496892,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.6205062652444147
+            },
+            {
+              "object": "executable",
+              "name": "p113d_FID_36_100_105_114_101_99_116_46_98_115_116_46_117_112_",
+              "decoded": "p113d_FID_$direct.bst.up",
+              "samples": 84,
+              "rawFraction": 0.13976705490848584,
+              "periodWeightedMicroseconds": 817000,
+              "periodWeightedFraction": 0.1372417268604065,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.4124927735595498
+            },
+            {
+              "object": "executable",
+              "name": "p125_rt_take2",
+              "decoded": "p125_rt_take2",
+              "samples": 54,
+              "rawFraction": 0.08985024958402663,
+              "periodWeightedMicroseconds": 537000,
+              "periodWeightedFraction": 0.09020661851167479,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.2711243811523602
+            },
+            {
+              "object": "executable",
+              "name": "p113d_FID_36_112_114_111_100_117_99_116_46_105_110_115_101_114_116_46_102_105_110_",
+              "decoded": "p113d_FID_$product.insert.fin",
+              "samples": 15,
+              "rawFraction": 0.024958402662229616,
+              "periodWeightedMicroseconds": 155000,
+              "periodWeightedFraction": 0.02603729212161935,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.07825750293969427
+            },
+            {
+              "object": "executable",
+              "name": "p114r_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_",
+              "decoded": "p114r_FID_$direct.inorder",
+              "samples": 11,
+              "rawFraction": 0.018302828618968387,
+              "periodWeightedMicroseconds": 98000,
+              "periodWeightedFraction": 0.016462287922056108,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.049478937342516384
+            },
+            {
+              "object": "executable",
+              "name": "p113d_FID_36_100_105_114_101_99_116_46_112_51_55_46_98_115_116_46_98_117_105_108_100_",
+              "decoded": "p113d_FID_$direct.p37.bst.build",
+              "samples": 10,
+              "rawFraction": 0.016638935108153077,
+              "periodWeightedMicroseconds": 95000,
+              "periodWeightedFraction": 0.01595834033260541,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.04796427599529649
+            },
+            {
+              "object": "executable",
+              "name": "p113d_FID_36_100_105_114_101_99_116_46_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+              "decoded": "p113d_FID_$direct.p37.bst.insert",
+              "samples": 9,
+              "rawFraction": 0.014975041597337771,
+              "periodWeightedMicroseconds": 92000,
+              "periodWeightedFraction": 0.015454392743154712,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.046449614648076606
+            },
+            {
+              "object": "executable",
+              "name": "p111_FID_36_112_49_49_49_46_107_46_56_52_48_50_",
+              "decoded": "p111_FID_$p111.k.8402",
+              "samples": 3,
+              "rawFraction": 0.004991680532445923,
+              "periodWeightedMicroseconds": 34000,
+              "periodWeightedFraction": 0.005711406013774567,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.017166161935158745
+            },
+            {
+              "object": "executable",
+              "name": "p111_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_",
+              "decoded": "p111_FID_$direct.inorder",
+              "samples": 1,
+              "rawFraction": 0.0016638935108153079,
+              "periodWeightedMicroseconds": 8000,
+              "periodWeightedFraction": 0.0013438602385351924,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.0040390969259197045
+            },
+            {
+              "object": "executable",
+              "name": "p111_rt_return",
+              "decoded": "p111_rt_return",
+              "samples": 1,
+              "rawFraction": 0.0016638935108153079,
+              "periodWeightedMicroseconds": 8000,
+              "periodWeightedFraction": 0.0013438602385351924,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.0040390969259197045
+            }
+          ],
+          "groups": [
+            {
+              "name": "generated_bend",
+              "samples": 423,
+              "rawFraction": 0.7038269550748752,
+              "periodWeightedMicroseconds": 4179000,
+              "periodWeightedFraction": 0.7019989921048211,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 2.109923256677306
+            },
+            {
+              "name": "ownership_and_products",
+              "samples": 177,
+              "rawFraction": 0.2945091514143095,
+              "periodWeightedMicroseconds": 1766000,
+              "periodWeightedFraction": 0.2966571476566437,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 0.8916306463967747
+            },
+            {
+              "name": "other",
+              "samples": 1,
+              "rawFraction": 0.0016638935108153079,
+              "periodWeightedMicroseconds": 8000,
+              "periodWeightedFraction": 0.0013438602385351924,
+              "lowPrecision": true,
+              "estimatedCleanCpuSeconds": 0.0040390969259197045
+            }
+          ],
+          "categories": [
+            {
+              "name": "executable",
+              "samples": 601,
+              "rawFraction": 1.0,
+              "periodWeightedMicroseconds": 5953000,
+              "periodWeightedFraction": 1.0,
+              "lowPrecision": false,
+              "estimatedCleanCpuSeconds": 3.005593
+            }
+          ],
+          "groupRules": {
+            "reclamation": "^(term_drop|span_fade|blk_free|free)([.@]|$)",
+            "allocation": "^(heap_alloc|blk_new|malloc|calloc|realloc)([.@]|$)",
+            "ownership_and_products": "^(term_keep|rfc_|p\\d+_(?:p\\d+_)?rt_(?:keep|take|ctor|extend)|root_take)",
+            "memory_copy": "^(memcpy|memmove|memset|blk_copy|__mem)",
+            "scheduler": "^(WL_|task_|pool_|work_|p111_run)",
+            "generated_bend": "_FID_"
+          },
+          "weighting": "rawFraction pools counts; periodWeightedFraction weights each sample by its capture period. Approximate CPU costs multiply period-weighted fractions by independent clean median CPU time.",
+          "limitations": [
+            "A sample count threshold is not a confidence interval.",
+            "Repeated periods may alias; retain period-specific captures and compare them.",
+            "Unknown samples remain in denominators. Rejected captures remain visible but are excluded.",
+            "Fractions describe the captured interval. Absolute CPU estimates additionally require its process CPU to cover 95% of whole-child CPU; unavailable lifetime coverage preserves fractions only.",
+            "Physical leaf costs do not identify logical callers or ownership origins.",
+            "Diagnostic-runtime samples may distort the clean distribution even with an explicit baseline."
+          ]
+        },
+        "eventCounts": {},
+        "maximumChildRssKiB": 13628,
+        "sampledOverCleanWallRatio": 0.9923751621462863,
+        "diagnosticOverCleanWallRatio": null,
+        "contextOnlyOverCleanWallRatio": null,
+        "countersOverCleanWallRatio": null
+      }
+    }
+  },
+  "comparisons": [],
+  "evidence": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/report.json",
+      "bytes": 252494,
+      "sha256": "4b8bb7840cbfd0fa0e39294f81a931aacfc5fad1299a7d38759a14237dc83ff8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/manifest.json",
+      "bytes": 215852,
+      "sha256": "6a736debf250532cba46c0bfc111866756db5e5c5b4469708918f91f261fa8f9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/native45-01/tree-bitonic/machine/program",
+      "bytes": 216744,
+      "sha256": "9e4faa35c600a2c30d41b6c8104871cfd8a6c69381780bb8585885ec4a03197a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/broad-runtime-plan01/manifest.json",
+      "bytes": 3206224,
+      "sha256": "a4f8c972d18199890a741795932173e4924050a598327d486cb112bb82b48662"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/tree-bitonic.bend",
+      "bytes": 6593,
+      "sha256": "405f8d8fb2066e6fedd8baa45943bcdf92b59cb40e23ce2ad3ea4bd3eeb53ae0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/000-clean-12-tree-bitonic-candidate-candidate/stdout",
+      "bytes": 22,
+      "sha256": "515b1e41587ca38acfd5be0bd92731d6f5e4c4ded41d753c2d3906a50b3528ad"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/000-clean-12-tree-bitonic-candidate-candidate/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/tree-bitonic/bend-c/program",
+      "bytes": 115744,
+      "sha256": "19550d9d4c7b770e374ac234d09c6860458807a6f7ff1d0c4153f1f1cf8d513a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/001-clean-12-tree-bitonic-c-c/stdout",
+      "bytes": 23,
+      "sha256": "4d2ca3291175355e55453c0a4146724fee2af2878c54518e5646428d66c5b3cb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/001-clean-12-tree-bitonic-c-c/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-native45-acquire01/tree-bitonic/phase186-qbe-n2/machine/program",
+      "bytes": 187128,
+      "sha256": "82ac09159ffea013e77cfcae4e8c7778869fe0dfb47320ff79dfded3b6977154"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/002-clean-12-tree-bitonic-qbe-qbe/stdout",
+      "bytes": 22,
+      "sha256": "8461a28c033ed56a6796d271c460a20ed16167cf246653cacc4dab810b4f499c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/002-clean-12-tree-bitonic-qbe-qbe/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/native45-01/coverage-bst-64/machine/program",
+      "bytes": 195496,
+      "sha256": "092dce5036f64b4b0331ca0bcdcd809b83846fb6515fcfd79c17ad0ea83d524c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-bst-64.bend",
+      "bytes": 5028,
+      "sha256": "474ffc3a68c1fcd4947cfe49fe117c15aae0a66dab99ed50d6c17bfcf6563d65"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/003-clean-15-coverage-bst-64-candidate-candidate/stdout",
+      "bytes": 24,
+      "sha256": "2e5d531f3a574a20b2f6408830cada57fa36e642e44ecbc186bb26bf120b41f0"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/003-clean-15-coverage-bst-64-candidate-candidate/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "bytes": 105128,
+      "sha256": "de4601ec006bbdffaf3295e1a1877db48f3395c83529f8c2577178f820d08a18"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/004-clean-15-coverage-bst-64-c-c/stdout",
+      "bytes": 24,
+      "sha256": "46c9d3b4ee4755c74463b0c9b563d1532ecd6bdeb32b2478922e1583959d30fb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/004-clean-15-coverage-bst-64-c-c/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-native45-acquire01/coverage-bst-64/phase186-qbe-n2/machine/program",
+      "bytes": 173408,
+      "sha256": "6aa818a86a7fe427edda90ccd904e8c519170a64f0c3c7c2e5b4f5f7ae0e6f8b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/005-clean-15-coverage-bst-64-qbe-qbe/stdout",
+      "bytes": 24,
+      "sha256": "6dfc6c4a269997d9dcb6dc6119558c9481c02a4abe69219b7fe47abc019c7bd8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/005-clean-15-coverage-bst-64-qbe-qbe/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/006-sample-12-tree-bitonic-candidate-candidate/stdout",
+      "bytes": 22,
+      "sha256": "ee6a27476412f09f1425edc5eeee8e9dbd0c55f0f5cba9eddd85e68b6ed80b28"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/006-sample-12-tree-bitonic-candidate-candidate/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/006-sample-12-tree-bitonic-candidate-candidate/analysis.json",
+      "bytes": 138824,
+      "sha256": "e567ae9bd67b5b2b10cfe103aa02c513eae66868b30894650f488dcfa5641ef8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/006-sample-12-tree-bitonic-candidate-candidate/samples.txt",
+      "bytes": 9017,
+      "sha256": "e5f40606bdffe2bbcbca548de74b509d9a35c43fdd3103b9b4b483a661d75128"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/007-sample-12-tree-bitonic-c-c/stdout",
+      "bytes": 23,
+      "sha256": "b00704372875214731b2c6a7e0744096096955a54dea989e871e07e7e044e1b7"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/007-sample-12-tree-bitonic-c-c/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/007-sample-12-tree-bitonic-c-c/analysis.json",
+      "bytes": 111150,
+      "sha256": "2f347a53f6fca353b0671be1ae5c9a9d2d0790649de60d889e40f856d50f94b2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/007-sample-12-tree-bitonic-c-c/samples.txt",
+      "bytes": 11078,
+      "sha256": "6fcd24c550bed5eec653cff7ddbb8af74f7325e072a8c168ea4511638e47569f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/008-sample-12-tree-bitonic-qbe-qbe/stdout",
+      "bytes": 22,
+      "sha256": "117a4cff530ebf89cc5bab0fd68f503bfb45aa97e95494ba3b9be86d4697dc7c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/008-sample-12-tree-bitonic-qbe-qbe/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/008-sample-12-tree-bitonic-qbe-qbe/analysis.json",
+      "bytes": 146329,
+      "sha256": "01c774374e25376201e89c722d869f2cc33e2c958581ada0f2e7606fb0a03b65"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/008-sample-12-tree-bitonic-qbe-qbe/samples.txt",
+      "bytes": 9247,
+      "sha256": "90b29ac2f5901d729cc0bc6f7dad03db0dd3ba5059744d925656e7c97ad79f3b"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/009-sample-15-coverage-bst-64-candidate-candidate/stdout",
+      "bytes": 24,
+      "sha256": "29f5727cfe679bf218eb66a3e43f35bec8d528db85ee98b384dfebed893fb185"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/009-sample-15-coverage-bst-64-candidate-candidate/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/009-sample-15-coverage-bst-64-candidate-candidate/analysis.json",
+      "bytes": 109241,
+      "sha256": "da455a14005b1a3ce274e3be9adcdfc160a3e3f93a30b1a7184ab2f49d90baa4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/009-sample-15-coverage-bst-64-candidate-candidate/samples.txt",
+      "bytes": 9019,
+      "sha256": "a3f81a80fc0f8595a0b65154544f37d3b9bb5995613db561f4a020083d8da6c9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/010-sample-15-coverage-bst-64-c-c/stdout",
+      "bytes": 24,
+      "sha256": "01559e183ca4e90095edd7e6f5c748660e9b7c2d540bff25fb25345731c3ba3f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/010-sample-15-coverage-bst-64-c-c/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/010-sample-15-coverage-bst-64-c-c/analysis.json",
+      "bytes": 84412,
+      "sha256": "af929264aa1ac4efefebc4174393e21ac89c3499fa95acc6f1709e8dc58ea23e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/010-sample-15-coverage-bst-64-c-c/samples.txt",
+      "bytes": 11093,
+      "sha256": "bd93c0df40f5ae83eb59edb43551832afbca75cc674d99224b797d3ca0bbcebb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/011-sample-15-coverage-bst-64-qbe-qbe/stdout",
+      "bytes": 24,
+      "sha256": "3f274d2f9b405c0dba96c7c1f25932deda9f8f9d23e70a29ea8319ad0800fd9a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/011-sample-15-coverage-bst-64-qbe-qbe/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/011-sample-15-coverage-bst-64-qbe-qbe/analysis.json",
+      "bytes": 116173,
+      "sha256": "990b09beba556d01c264e8dd5f18ad2be05d89607900cdc7010177c3d4941cdb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/011-sample-15-coverage-bst-64-qbe-qbe/samples.txt",
+      "bytes": 9212,
+      "sha256": "b27fe1a959011d78e41edc00dfdbbf70de743a0b06a2892d3172b734fb75c39c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/012-sample-12-tree-bitonic-c-c/stdout",
+      "bytes": 23,
+      "sha256": "49653b61e4127834f03c756ddf83e056079b2a9f71b92db4118b194e945cb0ae"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/012-sample-12-tree-bitonic-c-c/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/012-sample-12-tree-bitonic-c-c/analysis.json",
+      "bytes": 87839,
+      "sha256": "db6e0a125de4af30625a1fd84805258ed9241ee19f09bbbc9ee760d8b18af3c4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/012-sample-12-tree-bitonic-c-c/samples.txt",
+      "bytes": 9220,
+      "sha256": "9bf6201c0a60d7c4d15d491cc52a64defc0310b3cdf760d3b73d86a83b9142b5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/013-sample-12-tree-bitonic-qbe-qbe/stdout",
+      "bytes": 22,
+      "sha256": "c744626ec7f06e2ee95c25ab02aa2787022b4447874b8fdb6836e9f8d63908eb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/013-sample-12-tree-bitonic-qbe-qbe/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/013-sample-12-tree-bitonic-qbe-qbe/analysis.json",
+      "bytes": 108551,
+      "sha256": "c67b0cb07a9ebaf3722c776e1a0728821cf40e9058e58576e143311ae7bb625d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/013-sample-12-tree-bitonic-qbe-qbe/samples.txt",
+      "bytes": 8256,
+      "sha256": "9478246b132fd199def5af196dca739f8dc82940606c4c8533b44b09fde7c856"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/014-sample-15-coverage-bst-64-candidate-candidate/stdout",
+      "bytes": 24,
+      "sha256": "5aa5fe605b66b6ad6ee2411be91d4939eec43556ee6c86d0848b68abcf6dc13e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/014-sample-15-coverage-bst-64-candidate-candidate/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/014-sample-15-coverage-bst-64-candidate-candidate/analysis.json",
+      "bytes": 81204,
+      "sha256": "2b0a2f70f8a7e3f72dc891acd16d9a6291e5eabeeaf96c22e46a75bf9e0c45f5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/014-sample-15-coverage-bst-64-candidate-candidate/samples.txt",
+      "bytes": 8026,
+      "sha256": "a5bbc3aca8f9194b5dafbad26f95278d638f653f4451b04f66a8e7bb4eabf869"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/015-sample-15-coverage-bst-64-c-c/stdout",
+      "bytes": 24,
+      "sha256": "b86beab812339702e1110776492f80d1c96fed16adffe7356cbda77e6e9a0810"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/015-sample-15-coverage-bst-64-c-c/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/015-sample-15-coverage-bst-64-c-c/analysis.json",
+      "bytes": 69904,
+      "sha256": "9e0dbe8d7b4b82897867e52e04e4e8a0d5b74e7df348016cf8a7942b9e517c6e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/015-sample-15-coverage-bst-64-c-c/samples.txt",
+      "bytes": 9274,
+      "sha256": "f9eef6ac9502557dba927666ccbb58e56de16296b44b2aaf7015ae645940ede2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/016-sample-15-coverage-bst-64-qbe-qbe/stdout",
+      "bytes": 24,
+      "sha256": "5a6c9c151fbac9becb0a0d2c8a6eee9ce7088d1bc3df0f8f4ee7187bcf81a22c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/016-sample-15-coverage-bst-64-qbe-qbe/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/016-sample-15-coverage-bst-64-qbe-qbe/analysis.json",
+      "bytes": 92382,
+      "sha256": "7a8223ffffca3d63364f469d7c153e2c1a50970916abc504ecf29ce8095a6689"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/016-sample-15-coverage-bst-64-qbe-qbe/samples.txt",
+      "bytes": 8212,
+      "sha256": "a4e0331084c068705f3fd0343e36ad1dc19a9b3eb6e5e73445b118c586f661c1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/017-sample-12-tree-bitonic-candidate-candidate/stdout",
+      "bytes": 22,
+      "sha256": "27e347388d29db34c5b488008cf84791115dd8d5ef050ba8b1a42062997053c2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/017-sample-12-tree-bitonic-candidate-candidate/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/017-sample-12-tree-bitonic-candidate-candidate/analysis.json",
+      "bytes": 109529,
+      "sha256": "0c5d97eb86f6144d4552d360e8fdd4c83689df8a7fd9d4ea3c4463ac1c6b9c64"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/017-sample-12-tree-bitonic-candidate-candidate/samples.txt",
+      "bytes": 8031,
+      "sha256": "c77989f5444d62237f49839376497a3e85ba4f2da9063af2bb1fba7f64059649"
+    }
+  ],
+  "limitations": [
+    "No confidence intervals or causal speedup estimates are implied.",
+    "Event counts overlap and are not CPU percentages or guaranteed machine memory traffic.",
+    "Anonymous generated segment names are excluded from cross-version function deltas.",
+    "Clean timings exclude diagnostic runtimes; explicit baseline mapping is required to scale their profiles.",
+    "Complete run elapsed time includes harness analysis; summed child time is reported separately."
+  ]
+}

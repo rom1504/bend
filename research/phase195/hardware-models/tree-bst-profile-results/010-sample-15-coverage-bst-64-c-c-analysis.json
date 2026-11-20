@@ -1,0 +1,2424 @@
+{
+  "schema": "bend-native-profile-v1",
+  "header": {
+    "exe": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+    "pid": 47,
+    "tid": 47,
+    "period_us": 8000,
+    "capacity": 800000,
+    "signal": 40,
+    "sampler_scope": "all_created_threads",
+    "max_threads": 32,
+    "thread_capacity": 25000,
+    "final_tid": 47,
+    "main_thread_cpu_ns": 2976869967,
+    "process_cpu_ns": 2976880418,
+    "sampled_thread_cpu_ns": 2976869967,
+    "wall_ns": 2976931613,
+    "threads_allocated": 1,
+    "threads_ready": 1,
+    "threads_ended": 0,
+    "thread_overflow": 0,
+    "thread_clock_failures": 0,
+    "timer_disarm_failures": 0,
+    "samples": 371,
+    "dropped": 0,
+    "overruns": 0,
+    "handler_intact": 1
+  },
+  "quality": {
+    "scope": "all_created_threads",
+    "main_thread_cpu_fraction": 0.9999964892778572,
+    "sampled_thread_cpu_fraction": 0.9999964892778572,
+    "minimum_process_cpu_fraction": 0.95,
+    "minimum_samples": 500,
+    "enough_samples": false,
+    "thread_lifecycle_complete": true,
+    "near_complete_process_cpu_coverage": true,
+    "usable_for_process_cpu_attribution": false,
+    "limitations": [
+      "Fewer than 500 delivered samples"
+    ],
+    "zero_loss": true,
+    "handler_intact": true,
+    "main_thread_shutdown": true,
+    "expected_clock_periods": 372.108745875,
+    "delivered_per_expected_period": 0.9970203713637721,
+    "delivery_plausible": true,
+    "resolved_sample_fraction": 1.0,
+    "unknown_samples": 0,
+    "inferred_symbol_range_samples": 0,
+    "resolved_symbol_coverage_is_not_logical_attribution": true
+  },
+  "coverage": {
+    "scope": "all_created_threads",
+    "main_thread_cpu_fraction": 0.9999964892778572,
+    "sampled_thread_cpu_fraction": 0.9999964892778572,
+    "minimum_process_cpu_fraction": 0.95,
+    "minimum_samples": 500,
+    "enough_samples": false,
+    "thread_lifecycle_complete": true,
+    "near_complete_process_cpu_coverage": true,
+    "usable_for_process_cpu_attribution": false,
+    "limitations": [
+      "Fewer than 500 delivered samples"
+    ],
+    "zero_loss": true,
+    "handler_intact": true,
+    "main_thread_shutdown": true,
+    "expected_clock_periods": 372.108745875,
+    "delivered_per_expected_period": 0.9970203713637721,
+    "delivery_plausible": true,
+    "resolved_sample_fraction": 1.0,
+    "unknown_samples": 0,
+    "inferred_symbol_range_samples": 0,
+    "resolved_symbol_coverage_is_not_logical_attribution": true
+  },
+  "usable": false,
+  "zeroLoss": true,
+  "top_functions": [
+    {
+      "name": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "decoded": "NF_FID_p37.bst.insert",
+      "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "samples": 334,
+      "fraction": 0.9002695417789758,
+      "percent": 90.02695417789758
+    },
+    {
+      "name": "WL_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_",
+      "decoded": "WL_FID_$direct.inorder",
+      "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "samples": 22,
+      "fraction": 0.05929919137466307,
+      "percent": 5.929919137466308
+    },
+    {
+      "name": "NF_FID_112_51_55_46_98_115_116_46_98_117_105_108_100_",
+      "decoded": "NF_FID_p37.bst.build",
+      "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "samples": 10,
+      "fraction": 0.026954177897574125,
+      "percent": 2.6954177897574128
+    },
+    {
+      "name": "WL_FID_110_97_116_105_118_101_95_107_95_49_51_53_53_51_",
+      "decoded": "WL_FID_native_k_13553",
+      "object": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "samples": 5,
+      "fraction": 0.013477088948787063,
+      "percent": 1.3477088948787064
+    }
+  ],
+  "groups": [
+    {
+      "name": "generated_bend",
+      "samples": 344,
+      "fraction": 0.9272237196765498,
+      "percent": 92.72237196765498
+    },
+    {
+      "name": "scheduler",
+      "samples": 27,
+      "fraction": 0.07277628032345014,
+      "percent": 7.277628032345014
+    }
+  ],
+  "group_rules": {
+    "reclamation": "^(term_drop|span_fade|blk_free|free)([.@]|$)",
+    "allocation": "^(heap_alloc|blk_new|malloc|calloc|realloc)([.@]|$)",
+    "ownership_and_products": "^(term_keep|rfc_|p\\d+_(?:p\\d+_)?rt_(?:keep|take|ctor|extend)|root_take)",
+    "memory_copy": "^(memcpy|memmove|memset|blk_copy|__mem)",
+    "scheduler": "^(WL_|task_|pool_|work_|p111_run)",
+    "generated_bend": "_FID_"
+  },
+  "categories": [
+    {
+      "name": "executable",
+      "samples": 371,
+      "fraction": 1.0,
+      "percent": 100.0
+    }
+  ],
+  "libraries": [],
+  "pcs": [
+    {
+      "pc": "0x559ac3134c1a",
+      "samples": 3,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "WL_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_",
+      "elf_address": "0x9c1a",
+      "decoded": "WL_FID_$direct.inorder",
+      "offset": 42,
+      "range_basis": "elf_size",
+      "aliases": [
+        "WL_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_"
+      ],
+      "group": "scheduler"
+    },
+    {
+      "pc": "0x559ac3134c34",
+      "samples": 2,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "WL_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_",
+      "elf_address": "0x9c34",
+      "decoded": "WL_FID_$direct.inorder",
+      "offset": 68,
+      "range_basis": "elf_size",
+      "aliases": [
+        "WL_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_"
+      ],
+      "group": "scheduler"
+    },
+    {
+      "pc": "0x559ac3134c39",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "WL_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_",
+      "elf_address": "0x9c39",
+      "decoded": "WL_FID_$direct.inorder",
+      "offset": 73,
+      "range_basis": "elf_size",
+      "aliases": [
+        "WL_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_"
+      ],
+      "group": "scheduler"
+    },
+    {
+      "pc": "0x559ac3134c3e",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "WL_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_",
+      "elf_address": "0x9c3e",
+      "decoded": "WL_FID_$direct.inorder",
+      "offset": 78,
+      "range_basis": "elf_size",
+      "aliases": [
+        "WL_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_"
+      ],
+      "group": "scheduler"
+    },
+    {
+      "pc": "0x559ac3134cca",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "WL_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_",
+      "elf_address": "0x9cca",
+      "decoded": "WL_FID_$direct.inorder",
+      "offset": 218,
+      "range_basis": "elf_size",
+      "aliases": [
+        "WL_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_"
+      ],
+      "group": "scheduler"
+    },
+    {
+      "pc": "0x559ac3134cce",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "WL_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_",
+      "elf_address": "0x9cce",
+      "decoded": "WL_FID_$direct.inorder",
+      "offset": 222,
+      "range_basis": "elf_size",
+      "aliases": [
+        "WL_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_"
+      ],
+      "group": "scheduler"
+    },
+    {
+      "pc": "0x559ac3134cd2",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "WL_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_",
+      "elf_address": "0x9cd2",
+      "decoded": "WL_FID_$direct.inorder",
+      "offset": 226,
+      "range_basis": "elf_size",
+      "aliases": [
+        "WL_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_"
+      ],
+      "group": "scheduler"
+    },
+    {
+      "pc": "0x559ac3134cd9",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "WL_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_",
+      "elf_address": "0x9cd9",
+      "decoded": "WL_FID_$direct.inorder",
+      "offset": 233,
+      "range_basis": "elf_size",
+      "aliases": [
+        "WL_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_"
+      ],
+      "group": "scheduler"
+    },
+    {
+      "pc": "0x559ac3134ce4",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "WL_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_",
+      "elf_address": "0x9ce4",
+      "decoded": "WL_FID_$direct.inorder",
+      "offset": 244,
+      "range_basis": "elf_size",
+      "aliases": [
+        "WL_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_"
+      ],
+      "group": "scheduler"
+    },
+    {
+      "pc": "0x559ac3134ceb",
+      "samples": 3,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "WL_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_",
+      "elf_address": "0x9ceb",
+      "decoded": "WL_FID_$direct.inorder",
+      "offset": 251,
+      "range_basis": "elf_size",
+      "aliases": [
+        "WL_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_"
+      ],
+      "group": "scheduler"
+    },
+    {
+      "pc": "0x559ac3134d0e",
+      "samples": 2,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "WL_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_",
+      "elf_address": "0x9d0e",
+      "decoded": "WL_FID_$direct.inorder",
+      "offset": 286,
+      "range_basis": "elf_size",
+      "aliases": [
+        "WL_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_"
+      ],
+      "group": "scheduler"
+    },
+    {
+      "pc": "0x559ac3134fb9",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "WL_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_",
+      "elf_address": "0x9fb9",
+      "decoded": "WL_FID_$direct.inorder",
+      "offset": 969,
+      "range_basis": "elf_size",
+      "aliases": [
+        "WL_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_"
+      ],
+      "group": "scheduler"
+    },
+    {
+      "pc": "0x559ac3134fcc",
+      "samples": 4,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "WL_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_",
+      "elf_address": "0x9fcc",
+      "decoded": "WL_FID_$direct.inorder",
+      "offset": 988,
+      "range_basis": "elf_size",
+      "aliases": [
+        "WL_FID_36_100_105_114_101_99_116_46_105_110_111_114_100_101_114_"
+      ],
+      "group": "scheduler"
+    },
+    {
+      "pc": "0x559ac31350bb",
+      "samples": 2,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "WL_FID_110_97_116_105_118_101_95_107_95_49_51_53_53_51_",
+      "elf_address": "0xa0bb",
+      "decoded": "WL_FID_native_k_13553",
+      "offset": 11,
+      "range_basis": "elf_size",
+      "aliases": [
+        "WL_FID_110_97_116_105_118_101_95_107_95_49_51_53_53_51_"
+      ],
+      "group": "scheduler"
+    },
+    {
+      "pc": "0x559ac31350c1",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "WL_FID_110_97_116_105_118_101_95_107_95_49_51_53_53_51_",
+      "elf_address": "0xa0c1",
+      "decoded": "WL_FID_native_k_13553",
+      "offset": 17,
+      "range_basis": "elf_size",
+      "aliases": [
+        "WL_FID_110_97_116_105_118_101_95_107_95_49_51_53_53_51_"
+      ],
+      "group": "scheduler"
+    },
+    {
+      "pc": "0x559ac31350c7",
+      "samples": 2,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "WL_FID_110_97_116_105_118_101_95_107_95_49_51_53_53_51_",
+      "elf_address": "0xa0c7",
+      "decoded": "WL_FID_native_k_13553",
+      "offset": 23,
+      "range_basis": "elf_size",
+      "aliases": [
+        "WL_FID_110_97_116_105_118_101_95_107_95_49_51_53_53_51_"
+      ],
+      "group": "scheduler"
+    },
+    {
+      "pc": "0x559ac313c260",
+      "samples": 2,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_98_117_105_108_100_",
+      "elf_address": "0x11260",
+      "decoded": "NF_FID_p37.bst.build",
+      "offset": 128,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_98_117_105_108_100_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c272",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_98_117_105_108_100_",
+      "elf_address": "0x11272",
+      "decoded": "NF_FID_p37.bst.build",
+      "offset": 146,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_98_117_105_108_100_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c284",
+      "samples": 4,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_98_117_105_108_100_",
+      "elf_address": "0x11284",
+      "decoded": "NF_FID_p37.bst.build",
+      "offset": 164,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_98_117_105_108_100_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c2b4",
+      "samples": 2,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_98_117_105_108_100_",
+      "elf_address": "0x112b4",
+      "decoded": "NF_FID_p37.bst.build",
+      "offset": 212,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_98_117_105_108_100_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c2ec",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_98_117_105_108_100_",
+      "elf_address": "0x112ec",
+      "decoded": "NF_FID_p37.bst.build",
+      "offset": 268,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_98_117_105_108_100_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c390",
+      "samples": 2,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x11390",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 0,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c393",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x11393",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 3,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c395",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x11395",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 5,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c3f0",
+      "samples": 34,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x113f0",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 96,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c3f3",
+      "samples": 2,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x113f3",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 99,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c3fc",
+      "samples": 32,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x113fc",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 108,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c3ff",
+      "samples": 6,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x113ff",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 111,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c403",
+      "samples": 16,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x11403",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 115,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c406",
+      "samples": 13,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x11406",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 118,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c40d",
+      "samples": 2,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x1140d",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 125,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c41b",
+      "samples": 2,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x1141b",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 139,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c423",
+      "samples": 3,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x11423",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 147,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c434",
+      "samples": 2,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x11434",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 164,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c4c6",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x114c6",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 310,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c4ca",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x114ca",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 314,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c4ce",
+      "samples": 2,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x114ce",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 318,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c4d9",
+      "samples": 4,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x114d9",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 329,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c4e4",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x114e4",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 340,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c4eb",
+      "samples": 2,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x114eb",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 347,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c4f1",
+      "samples": 3,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x114f1",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 353,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c4fd",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x114fd",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 365,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c501",
+      "samples": 2,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x11501",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 369,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c506",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x11506",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 374,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c513",
+      "samples": 3,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x11513",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 387,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c51f",
+      "samples": 4,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x1151f",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 399,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c531",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x11531",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 417,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c53e",
+      "samples": 4,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x1153e",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 430,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c542",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x11542",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 434,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c550",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x11550",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 448,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c55d",
+      "samples": 2,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x1155d",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 461,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c561",
+      "samples": 2,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x11561",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 465,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c569",
+      "samples": 3,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x11569",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 473,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c56d",
+      "samples": 3,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x1156d",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 477,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c572",
+      "samples": 2,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x11572",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 482,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c57b",
+      "samples": 3,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x1157b",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 491,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c58c",
+      "samples": 5,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x1158c",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 508,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c590",
+      "samples": 5,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x11590",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 512,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c598",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x11598",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 520,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c59b",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x1159b",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 523,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c59e",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x1159e",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 526,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c5a2",
+      "samples": 5,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x115a2",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 530,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c5a7",
+      "samples": 4,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x115a7",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 535,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c5b1",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x115b1",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 545,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c5b4",
+      "samples": 5,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x115b4",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 548,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c737",
+      "samples": 10,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x11737",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 935,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c73a",
+      "samples": 4,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x1173a",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 938,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c73e",
+      "samples": 2,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x1173e",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 942,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c741",
+      "samples": 3,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x11741",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 945,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c757",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x11757",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 967,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c75e",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x1175e",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 974,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c76b",
+      "samples": 2,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x1176b",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 987,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c76f",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x1176f",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 991,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c78b",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x1178b",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1019,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c799",
+      "samples": 3,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x11799",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1033,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c7c0",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x117c0",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1072,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c7c9",
+      "samples": 2,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x117c9",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1081,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c7cd",
+      "samples": 3,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x117cd",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1085,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c7d1",
+      "samples": 3,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x117d1",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1089,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c7d9",
+      "samples": 6,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x117d9",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1097,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c7e3",
+      "samples": 2,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x117e3",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1107,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c7ed",
+      "samples": 7,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x117ed",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1117,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c7f0",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x117f0",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1120,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c7fa",
+      "samples": 6,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x117fa",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1130,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c807",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x11807",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1143,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c80f",
+      "samples": 3,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x1180f",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1151,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c813",
+      "samples": 2,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x11813",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1155,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c818",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x11818",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1160,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c8ad",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x118ad",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1309,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c8b1",
+      "samples": 2,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x118b1",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1313,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c8ca",
+      "samples": 5,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x118ca",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1338,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c8e0",
+      "samples": 3,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x118e0",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1360,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c8ed",
+      "samples": 2,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x118ed",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1373,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c8f9",
+      "samples": 2,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x118f9",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1385,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c905",
+      "samples": 3,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x11905",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1397,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c912",
+      "samples": 2,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x11912",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1410,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c994",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x11994",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1540,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c998",
+      "samples": 2,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x11998",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1544,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c99c",
+      "samples": 6,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x1199c",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1548,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c9a0",
+      "samples": 2,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x119a0",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1552,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c9a7",
+      "samples": 2,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x119a7",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1559,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c9ab",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x119ab",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1563,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c9b2",
+      "samples": 3,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x119b2",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1570,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c9b9",
+      "samples": 7,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x119b9",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1577,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c9bf",
+      "samples": 5,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x119bf",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1583,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c9cf",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x119cf",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1599,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c9d9",
+      "samples": 2,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x119d9",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1609,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c9de",
+      "samples": 3,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x119de",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1614,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c9e2",
+      "samples": 4,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x119e2",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1618,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c9e6",
+      "samples": 2,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x119e6",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1622,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313c9ee",
+      "samples": 5,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x119ee",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 1630,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313d025",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x12025",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 3221,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313d028",
+      "samples": 3,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x12028",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 3224,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313d036",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x12036",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 3238,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313d039",
+      "samples": 2,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x12039",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 3241,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313d043",
+      "samples": 1,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x12043",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 3251,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    },
+    {
+      "pc": "0x559ac313d04b",
+      "samples": 3,
+      "mapping": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "category": "executable",
+      "symbol": "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_",
+      "elf_address": "0x1204b",
+      "decoded": "NF_FID_p37.bst.insert",
+      "offset": 3259,
+      "range_basis": "elf_size",
+      "aliases": [
+        "NF_FID_112_51_55_46_98_115_116_46_105_110_115_101_114_116_"
+      ],
+      "group": "generated_bend"
+    }
+  ],
+  "maps": [
+    {
+      "start": 35184372088832,
+      "end": 35192962023424,
+      "permissions": "rw-p",
+      "offset": 0,
+      "device": "00:00",
+      "inode": 0,
+      "path": ""
+    },
+    {
+      "start": 94123186106368,
+      "end": 94123186126848,
+      "permissions": "r--p",
+      "offset": 0,
+      "device": "09:02",
+      "inode": 79718517,
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program"
+    },
+    {
+      "start": 94123186126848,
+      "end": 94123186196480,
+      "permissions": "r-xp",
+      "offset": 16384,
+      "device": "09:02",
+      "inode": 79718517,
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program"
+    },
+    {
+      "start": 94123186196480,
+      "end": 94123186200576,
+      "permissions": "r--p",
+      "offset": 81920,
+      "device": "09:02",
+      "inode": 79718517,
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program"
+    },
+    {
+      "start": 94123186200576,
+      "end": 94123186204672,
+      "permissions": "rw-p",
+      "offset": 81920,
+      "device": "09:02",
+      "inode": 79718517,
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program"
+    },
+    {
+      "start": 94123186204672,
+      "end": 94123187355648,
+      "permissions": "rw-p",
+      "offset": 0,
+      "device": "00:00",
+      "inode": 0,
+      "path": ""
+    },
+    {
+      "start": 94124131786752,
+      "end": 94124131921920,
+      "permissions": "rw-p",
+      "offset": 0,
+      "device": "00:00",
+      "inode": 0,
+      "path": "[heap]"
+    },
+    {
+      "start": 140021245378560,
+      "end": 140023392862208,
+      "permissions": "rw-p",
+      "offset": 0,
+      "device": "00:00",
+      "inode": 0,
+      "path": ""
+    },
+    {
+      "start": 140023392862208,
+      "end": 140023392878592,
+      "permissions": "---p",
+      "offset": 0,
+      "device": "00:00",
+      "inode": 0,
+      "path": ""
+    },
+    {
+      "start": 140023392878592,
+      "end": 140023392886784,
+      "permissions": "rw-p",
+      "offset": 0,
+      "device": "00:00",
+      "inode": 0,
+      "path": ""
+    },
+    {
+      "start": 140023392886784,
+      "end": 140023392907264,
+      "permissions": "rw-p",
+      "offset": 0,
+      "device": "00:00",
+      "inode": 0,
+      "path": ""
+    },
+    {
+      "start": 140023392907264,
+      "end": 140023392911360,
+      "permissions": "r--p",
+      "offset": 0,
+      "device": "09:02",
+      "inode": 56105577,
+      "path": "/usr/lib/x86_64-linux-gnu/libdl-2.31.so"
+    },
+    {
+      "start": 140023392911360,
+      "end": 140023392919552,
+      "permissions": "r-xp",
+      "offset": 4096,
+      "device": "09:02",
+      "inode": 56105577,
+      "path": "/usr/lib/x86_64-linux-gnu/libdl-2.31.so"
+    },
+    {
+      "start": 140023392919552,
+      "end": 140023392923648,
+      "permissions": "r--p",
+      "offset": 12288,
+      "device": "09:02",
+      "inode": 56105577,
+      "path": "/usr/lib/x86_64-linux-gnu/libdl-2.31.so"
+    },
+    {
+      "start": 140023392923648,
+      "end": 140023392927744,
+      "permissions": "r--p",
+      "offset": 12288,
+      "device": "09:02",
+      "inode": 56105577,
+      "path": "/usr/lib/x86_64-linux-gnu/libdl-2.31.so"
+    },
+    {
+      "start": 140023392927744,
+      "end": 140023392931840,
+      "permissions": "rw-p",
+      "offset": 16384,
+      "device": "09:02",
+      "inode": 56105577,
+      "path": "/usr/lib/x86_64-linux-gnu/libdl-2.31.so"
+    },
+    {
+      "start": 140023392931840,
+      "end": 140023392940032,
+      "permissions": "r--p",
+      "offset": 0,
+      "device": "09:02",
+      "inode": 56105600,
+      "path": "/usr/lib/x86_64-linux-gnu/librt-2.31.so"
+    },
+    {
+      "start": 140023392940032,
+      "end": 140023392956416,
+      "permissions": "r-xp",
+      "offset": 8192,
+      "device": "09:02",
+      "inode": 56105600,
+      "path": "/usr/lib/x86_64-linux-gnu/librt-2.31.so"
+    },
+    {
+      "start": 140023392956416,
+      "end": 140023392964608,
+      "permissions": "r--p",
+      "offset": 24576,
+      "device": "09:02",
+      "inode": 56105600,
+      "path": "/usr/lib/x86_64-linux-gnu/librt-2.31.so"
+    },
+    {
+      "start": 140023392964608,
+      "end": 140023392968704,
+      "permissions": "r--p",
+      "offset": 28672,
+      "device": "09:02",
+      "inode": 56105600,
+      "path": "/usr/lib/x86_64-linux-gnu/librt-2.31.so"
+    },
+    {
+      "start": 140023392968704,
+      "end": 140023392972800,
+      "permissions": "rw-p",
+      "offset": 32768,
+      "device": "09:02",
+      "inode": 56105600,
+      "path": "/usr/lib/x86_64-linux-gnu/librt-2.31.so"
+    },
+    {
+      "start": 140023392972800,
+      "end": 140023393112064,
+      "permissions": "r--p",
+      "offset": 0,
+      "device": "09:02",
+      "inode": 56105575,
+      "path": "/usr/lib/x86_64-linux-gnu/libc-2.31.so"
+    },
+    {
+      "start": 140023393112064,
+      "end": 140023394525184,
+      "permissions": "r-xp",
+      "offset": 139264,
+      "device": "09:02",
+      "inode": 56105575,
+      "path": "/usr/lib/x86_64-linux-gnu/libc-2.31.so"
+    },
+    {
+      "start": 140023394525184,
+      "end": 140023394848768,
+      "permissions": "r--p",
+      "offset": 1552384,
+      "device": "09:02",
+      "inode": 56105575,
+      "path": "/usr/lib/x86_64-linux-gnu/libc-2.31.so"
+    },
+    {
+      "start": 140023394848768,
+      "end": 140023394865152,
+      "permissions": "r--p",
+      "offset": 1871872,
+      "device": "09:02",
+      "inode": 56105575,
+      "path": "/usr/lib/x86_64-linux-gnu/libc-2.31.so"
+    },
+    {
+      "start": 140023394865152,
+      "end": 140023394873344,
+      "permissions": "rw-p",
+      "offset": 1888256,
+      "device": "09:02",
+      "inode": 56105575,
+      "path": "/usr/lib/x86_64-linux-gnu/libc-2.31.so"
+    },
+    {
+      "start": 140023394873344,
+      "end": 140023394889728,
+      "permissions": "rw-p",
+      "offset": 0,
+      "device": "00:00",
+      "inode": 0,
+      "path": ""
+    },
+    {
+      "start": 140023394889728,
+      "end": 140023394942976,
+      "permissions": "r--p",
+      "offset": 0,
+      "device": "09:02",
+      "inode": 56105579,
+      "path": "/usr/lib/x86_64-linux-gnu/libm-2.31.so"
+    },
+    {
+      "start": 140023394942976,
+      "end": 140023395573760,
+      "permissions": "r-xp",
+      "offset": 53248,
+      "device": "09:02",
+      "inode": 56105579,
+      "path": "/usr/lib/x86_64-linux-gnu/libm-2.31.so"
+    },
+    {
+      "start": 140023395573760,
+      "end": 140023396208640,
+      "permissions": "r--p",
+      "offset": 684032,
+      "device": "09:02",
+      "inode": 56105579,
+      "path": "/usr/lib/x86_64-linux-gnu/libm-2.31.so"
+    },
+    {
+      "start": 140023396208640,
+      "end": 140023396212736,
+      "permissions": "r--p",
+      "offset": 1314816,
+      "device": "09:02",
+      "inode": 56105579,
+      "path": "/usr/lib/x86_64-linux-gnu/libm-2.31.so"
+    },
+    {
+      "start": 140023396212736,
+      "end": 140023396216832,
+      "permissions": "rw-p",
+      "offset": 1318912,
+      "device": "09:02",
+      "inode": 56105579,
+      "path": "/usr/lib/x86_64-linux-gnu/libm-2.31.so"
+    },
+    {
+      "start": 140023396216832,
+      "end": 140023396241408,
+      "permissions": "r--p",
+      "offset": 0,
+      "device": "09:02",
+      "inode": 56105597,
+      "path": "/usr/lib/x86_64-linux-gnu/libpthread-2.31.so"
+    },
+    {
+      "start": 140023396241408,
+      "end": 140023396306944,
+      "permissions": "r-xp",
+      "offset": 24576,
+      "device": "09:02",
+      "inode": 56105597,
+      "path": "/usr/lib/x86_64-linux-gnu/libpthread-2.31.so"
+    },
+    {
+      "start": 140023396306944,
+      "end": 140023396331520,
+      "permissions": "r--p",
+      "offset": 90112,
+      "device": "09:02",
+      "inode": 56105597,
+      "path": "/usr/lib/x86_64-linux-gnu/libpthread-2.31.so"
+    },
+    {
+      "start": 140023396331520,
+      "end": 140023396335616,
+      "permissions": "r--p",
+      "offset": 110592,
+      "device": "09:02",
+      "inode": 56105597,
+      "path": "/usr/lib/x86_64-linux-gnu/libpthread-2.31.so"
+    },
+    {
+      "start": 140023396335616,
+      "end": 140023396339712,
+      "permissions": "rw-p",
+      "offset": 114688,
+      "device": "09:02",
+      "inode": 56105597,
+      "path": "/usr/lib/x86_64-linux-gnu/libpthread-2.31.so"
+    },
+    {
+      "start": 140023396339712,
+      "end": 140023396356096,
+      "permissions": "rw-p",
+      "offset": 0,
+      "device": "00:00",
+      "inode": 0,
+      "path": ""
+    },
+    {
+      "start": 140023396392960,
+      "end": 140023396397056,
+      "permissions": "r--p",
+      "offset": 0,
+      "device": "09:02",
+      "inode": 79575735,
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase159/thread-sampler01/sampler.so"
+    },
+    {
+      "start": 140023396397056,
+      "end": 140023396401152,
+      "permissions": "r-xp",
+      "offset": 4096,
+      "device": "09:02",
+      "inode": 79575735,
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase159/thread-sampler01/sampler.so"
+    },
+    {
+      "start": 140023396401152,
+      "end": 140023396405248,
+      "permissions": "r--p",
+      "offset": 8192,
+      "device": "09:02",
+      "inode": 79575735,
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase159/thread-sampler01/sampler.so"
+    },
+    {
+      "start": 140023396405248,
+      "end": 140023396409344,
+      "permissions": "r--p",
+      "offset": 8192,
+      "device": "09:02",
+      "inode": 79575735,
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase159/thread-sampler01/sampler.so"
+    },
+    {
+      "start": 140023396409344,
+      "end": 140023396413440,
+      "permissions": "rw-p",
+      "offset": 12288,
+      "device": "09:02",
+      "inode": 79575735,
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase159/thread-sampler01/sampler.so"
+    },
+    {
+      "start": 140023396413440,
+      "end": 140023402823680,
+      "permissions": "rw-p",
+      "offset": 0,
+      "device": "00:00",
+      "inode": 0,
+      "path": ""
+    },
+    {
+      "start": 140023402823680,
+      "end": 140023402827776,
+      "permissions": "r--p",
+      "offset": 0,
+      "device": "09:02",
+      "inode": 56100053,
+      "path": "/usr/lib/x86_64-linux-gnu/ld-2.31.so"
+    },
+    {
+      "start": 140023402827776,
+      "end": 140023402958848,
+      "permissions": "r-xp",
+      "offset": 4096,
+      "device": "09:02",
+      "inode": 56100053,
+      "path": "/usr/lib/x86_64-linux-gnu/ld-2.31.so"
+    },
+    {
+      "start": 140023402958848,
+      "end": 140023402991616,
+      "permissions": "r--p",
+      "offset": 135168,
+      "device": "09:02",
+      "inode": 56100053,
+      "path": "/usr/lib/x86_64-linux-gnu/ld-2.31.so"
+    },
+    {
+      "start": 140023402995712,
+      "end": 140023402999808,
+      "permissions": "r--p",
+      "offset": 167936,
+      "device": "09:02",
+      "inode": 56100053,
+      "path": "/usr/lib/x86_64-linux-gnu/ld-2.31.so"
+    },
+    {
+      "start": 140023402999808,
+      "end": 140023403003904,
+      "permissions": "rw-p",
+      "offset": 172032,
+      "device": "09:02",
+      "inode": 56100053,
+      "path": "/usr/lib/x86_64-linux-gnu/ld-2.31.so"
+    },
+    {
+      "start": 140023403003904,
+      "end": 140023403008000,
+      "permissions": "rw-p",
+      "offset": 0,
+      "device": "00:00",
+      "inode": 0,
+      "path": ""
+    },
+    {
+      "start": 140731326078976,
+      "end": 140731326218240,
+      "permissions": "rw-p",
+      "offset": 0,
+      "device": "00:00",
+      "inode": 0,
+      "path": "[stack]"
+    },
+    {
+      "start": 140731326865408,
+      "end": 140731326881792,
+      "permissions": "r--p",
+      "offset": 0,
+      "device": "00:00",
+      "inode": 0,
+      "path": "[vvar]"
+    },
+    {
+      "start": 140731326881792,
+      "end": 140731326889984,
+      "permissions": "r-xp",
+      "offset": 0,
+      "device": "00:00",
+      "inode": 0,
+      "path": "[vdso]"
+    }
+  ],
+  "object_errors": {},
+  "identities": {
+    "capture": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01/010-sample-15-coverage-bst-64-c-c/samples.txt",
+      "bytes": 11093,
+      "sha256": "bd93c0df40f5ae83eb59edb43551832afbca75cc674d99224b797d3ca0bbcebb"
+    },
+    "binary": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+      "bytes": 105128,
+      "sha256": "de4601ec006bbdffaf3295e1a1877db48f3395c83529f8c2577178f820d08a18"
+    },
+    "analyzer": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/analyze.py",
+      "bytes": 16552,
+      "sha256": "16e92d883263577177d50ae3cc1f381ea6cb97b77be50a4157999102047a6fdc"
+    },
+    "dependencies": [
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/elf.py",
+        "bytes": 3141,
+        "sha256": "a18cee1be520527d98b86910d2c9d075a864ccf34675d8bdfac3cb157346485a"
+      }
+    ],
+    "mapped_objects": [
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+        "bytes": 105128,
+        "sha256": "de4601ec006bbdffaf3295e1a1877db48f3395c83529f8c2577178f820d08a18"
+      }
+    ]
+  },
+  "clean_cpu_seconds": 2.985455,
+  "absolute_cost_method": "Approximate: physical sample fraction times independently measured clean process CPU; only emitted for usable captures.",
+  "limitations": [
+    "Physical instruction leaves, not inclusive stacks, logical callers, or allocation counts.",
+    "Decoded generated names are symbol identities, not verified source-file/line mappings.",
+    "Zero-sized symbols infer extent only up to the next symbol in the same executable section; padding may be attributed. Last unsized symbols resolve only at entry.",
+    "Library symbols can be absent or hidden; unresolved samples remain in every denominator.",
+    "Mapped device/inode is checked and current files are hashed; in-place mutation since capture is not ruled out without runner identity pins.",
+    "Fixed-period sampling can alias; compare periods and repeats. Instrumented clocks are diagnostic, never clean performance.",
+    "Runtime groups classify physical helper names only and do not identify which source computation caused their work.",
+    "Raw sample order remains in the hashed capture file; pcs is a lossless address histogram, not a timeline."
+  ]
+}

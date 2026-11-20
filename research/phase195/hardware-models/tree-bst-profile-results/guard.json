@@ -1,0 +1,76 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": true,
+  "started": 1795198569.5562801,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "3",
+    "/usr/bin/python3.9",
+    "-B",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/run.py",
+    "--manifest",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst-plan01/manifest.json",
+    "--out",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01",
+    "--modes",
+    "clean,sample",
+    "--rounds",
+    "1",
+    "--periods-us",
+    "8000,13000"
+  ],
+  "returncode": 0,
+  "rssLimitBytes": 2147483648,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 24293376,
+  "minimumAvailableBytes": 27662438400,
+  "diskBudgetBytes": 67108864,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 8383479808,
+  "minimumDiskFreeBytes": 8377376768,
+  "peakRunAllocatedBytes": 2265088,
+  "peakFilesystemDecreaseBytes": 6103040,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst01"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "3",
+    "fileLimitBytes": 134217728,
+    "commandFiles": [
+      {
+        "path": "/usr/bin/python3.9",
+        "sha256": "ca7655083b581ffe36c72dcb445857704db533ca39b03f79c97d8d0ef3bef9af",
+        "bytes": 5451288
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/profiler/run.py",
+        "sha256": "9b6213431708b939e065ad16f9d20db6d8912bfaa7cd02f68bbffbd6e8bf38a1",
+        "bytes": 16632
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/profile-tree-bst-plan01/manifest.json",
+        "sha256": "6a736debf250532cba46c0bfc111866756db5e5c5b4469708918f91f261fa8f9",
+        "bytes": 215852
+      }
+    ]
+  },
+  "wallSeconds": 56.29901522863656,
+  "finished": 1795198625.8551395
+}

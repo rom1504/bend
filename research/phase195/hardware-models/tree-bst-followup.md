@@ -1,5 +1,10 @@
 # Tree/BST follow-up: measure the path before selecting another model
 
+This pre-capture assessment led to the authorized
+[current-product profiles](tree-bst-profile-results.md), which now identify
+constructor inlining boundaries and a small inorder share. The original
+missing-observation assessment below is preserved as the decision trail.
+
 Offline inspection of the actual Phase195 N1-produced `native45-01` products
 finds no newly established hot straight-line kernel for a useful simulator A/B.
 Tree's existing resume-transport hypothesis survives in the new machine code;

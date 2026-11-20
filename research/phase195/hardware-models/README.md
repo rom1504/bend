@@ -18,6 +18,12 @@ lexer runtime by 3.17%. Active-ray runtime moved +0.48% with substantial dispers
 and retained C/QBE references. It recommends exact-product dynamic attribution
 before another model, with explicit missing ownership/path frequencies.
 
+The authorized [current tree/BST capture](tree-bst-profile-results.md) now
+completes in56.299s. All six pooled profiles pass; preserved tree unknown shares
+and individual sample-count flags remain explicit. BST constructor inlining
+boundaries and the disabled existing x86 constructor gate provide the next
+bounded falsifier; inorder is only2.25% of current BST CPU.
+
 The following is the preserved pre-run checkpoint and frozen protocol.
 
 Status at the user's request to conclude: four authenticated before/after pairs

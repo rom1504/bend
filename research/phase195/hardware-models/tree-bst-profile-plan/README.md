@@ -1,4 +1,8 @@
-# Prepared current N1 tree/BST capture — not executed
+# Prepared current N1 tree/BST capture
+
+Executed once after root's GO: [results and quality](../tree-bst-profile-results.md).
+The following preserves the pre-run plan; `authorizedToExecute:false` in its
+frozen execution receipt records preparation status, superseded by that GO.
 
 The existing maintained profiler can acquire these two cases without a new
 harness, build, runtime relink or independence waiver. Metadata preparation and

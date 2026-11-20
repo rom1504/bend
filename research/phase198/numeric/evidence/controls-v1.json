@@ -1,0 +1,144 @@
+{
+  "complete": true,
+  "api": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-api03/report.json",
+    "bytes": 5562,
+    "sha256": "807f9ce47fedf60df2db7fd7567d5c1f1e98a3e1f750dd5ec72a3009457315d7"
+  },
+  "capture": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-followup02/capture/capture.json",
+    "bytes": 1970,
+    "sha256": "2f0e9e1e596add360949ab8723e72a02ae4f6bb0c74d4f7513b1d3101f40dd81"
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase198/numeric/controls.mjs",
+    "bytes": 11308,
+    "sha256": "66a99d027dc9108439a673ff18c3cc49f7afb5d7982c80582f8fb9ba84c9baf9"
+  },
+  "seed": 198,
+  "checks": [
+    {
+      "name": "actual-current-mit",
+      "accept": true
+    },
+    {
+      "name": "refuse-noncanonical-param-1",
+      "accept": false
+    },
+    {
+      "name": "refuse-noncanonical-param-2",
+      "accept": false
+    },
+    {
+      "name": "refuse-noncanonical-param-3",
+      "accept": false
+    },
+    {
+      "name": "refuse-noncanonical-param-4",
+      "accept": false
+    },
+    {
+      "name": "refuse-noncanonical-param-5",
+      "accept": false
+    },
+    {
+      "name": "refuse-noncanonical-param-6",
+      "accept": false
+    },
+    {
+      "name": "refuse-boxed-fuel",
+      "accept": false
+    },
+    {
+      "name": "refuse-low32-fuel-test",
+      "accept": false
+    },
+    {
+      "name": "refuse-fuel-step-two",
+      "accept": false
+    },
+    {
+      "name": "refuse-mode-not-absorbing",
+      "accept": false
+    },
+    {
+      "name": "refuse-observable-fuel",
+      "accept": false
+    },
+    {
+      "name": "refuse-observable-mode",
+      "accept": false
+    },
+    {
+      "name": "refuse-changing-other-state",
+      "accept": false
+    },
+    {
+      "name": "refuse-arity-mismatch",
+      "accept": false
+    },
+    {
+      "name": "refuse-fresh-name-collision",
+      "accept": false
+    },
+    {
+      "name": "refuse-call-effect",
+      "accept": false
+    },
+    {
+      "name": "refuse-load-effect",
+      "accept": false
+    },
+    {
+      "name": "refuse-store-effect",
+      "accept": false
+    },
+    {
+      "name": "refuse-trapping-division",
+      "accept": false
+    },
+    {
+      "name": "refuse-parameter-reassignment",
+      "accept": false
+    },
+    {
+      "name": "refuse-body-budget",
+      "accept": false
+    },
+    {
+      "name": "accept-systematic-renaming",
+      "accept": true
+    }
+  ],
+  "interpretations": 1031,
+  "abstractObservations": 9720,
+  "negativeTransfer": {
+    "case": "scalar-region-8192",
+    "seed": 524800,
+    "coordinates": [
+      0,
+      0
+    ],
+    "result": "8192",
+    "beforeIterations": 8192,
+    "afterIterations": 8192,
+    "scope": "Independent IR interpretation; no claim of unchanged machine time. Added guard may regress."
+  },
+  "fullWidthLivePrefix": [
+    {
+      "fuel": "4294967296",
+      "result": "1",
+      "completedBackedges": 2
+    },
+    {
+      "fuel": "9223372036854775809",
+      "result": "1",
+      "completedBackedges": 2
+    },
+    {
+      "fuel": "18446744073709551615",
+      "result": "1",
+      "completedBackedges": 2
+    }
+  ]
+}

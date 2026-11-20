@@ -1,0 +1,113 @@
+
+selfhost/build/phase186/release-native45-acquire01/mandelbrot/phase186-qbe-n2/machine/program:     file format elf64-x86-64
+
+
+Disassembly of section .init:
+
+Disassembly of section .plt:
+
+Disassembly of section .text:
+
+00000000004073d0 <p113d_FID_36_100_105_114_101_99_116_46_109_105_116_>:
+  4073d0:	endbr64 
+  4073d4:	push   %rbp
+  4073d5:	mov    %rsp,%rbp
+  4073d8:	sub    $0x8,%rsp
+  4073dc:	push   %rbx
+  4073dd:	push   %r12
+  4073df:	push   %r13
+  4073e1:	push   %r14
+  4073e3:	push   %r15
+  4073e5:	mov    0x18(%rbp),%rax
+  4073e9:	mov    %rax,%r10
+  4073ec:	mov    0x10(%rbp),%rax
+  4073f0:	mov    %r9,%rdi
+  4073f3:	xchg   %r8,%rsi
+  4073f6:	nopw   %cs:0x0(%rax,%rax,1)
+  407400:	cmp    $0x0,%r8
+  407404:	je     407525 <p113d_FID_36_100_105_114_101_99_116_46_109_105_116_+0x155>
+  40740a:	mov    %esi,%r11d
+  40740d:	mov    %r11d,%r9d
+  407410:	imul   %r11d,%r9d
+  407414:	mov    %r9d,%r9d
+  407417:	mov    %r9,%rbx
+  40741a:	shr    $0x1f,%rbx
+  40741e:	cmp    $0x0,%rbx
+  407422:	mov    $0xff000000,%r12d
+  407428:	mov    $0x0,%ebx
+  40742d:	mov    %rbx,%r13
+  407430:	cmovne %r12,%r13
+  407434:	mov    %edi,%ebx
+  407436:	mov    %ebx,%r12d
+  407439:	imul   %ebx,%r12d
+  40743d:	mov    %r12d,%r12d
+  407440:	mov    %r12,%r14
+  407443:	shr    $0x1f,%r14
+  407447:	cmp    $0x0,%r14
+  40744b:	mov    $0xff000000,%r15d
+  407451:	mov    $0x0,%r14d
+  407457:	cmovne %r15,%r14
+  40745b:	shr    $0x8,%r12
+  40745f:	or     %r14,%r12
+  407462:	shr    $0x8,%r9
+  407466:	or     %r9,%r13
+  407469:	mov    %r13d,%r9d
+  40746c:	add    %r12d,%r9d
+  40746f:	mov    %r9d,%r9d
+  407472:	cmp    $0x400,%r9
+  407479:	seta   %r9b
+  40747d:	movzbl %r9b,%r9d
+  407481:	xor    $0x1,%r9d
+  407485:	mov    $0x1,%r14d
+  40748b:	mov    $0x0,%r9d
+  407491:	cmove  %r14,%r9
+  407495:	imul   %ebx,%r11d
+  407499:	mov    %r11d,%r11d
+  40749c:	imul   $0x2,%r11d,%r11d
+  4074a0:	mov    %r11d,%r11d
+  4074a3:	mov    %r11,%rbx
+  4074a6:	shr    $0x1f,%rbx
+  4074aa:	cmp    $0x0,%rbx
+  4074ae:	mov    $0xff000000,%r14d
+  4074b4:	mov    $0x0,%ebx
+  4074b9:	cmovne %r14,%rbx
+  4074bd:	mov    %eax,%eax
+  4074bf:	or     %r9,%rax
+  4074c2:	cmp    $0x0,%rax
+  4074c6:	sete   %r9b
+  4074ca:	movzbl %r9b,%r9d
+  4074ce:	jne    4074e3 <p113d_FID_36_100_105_114_101_99_116_46_109_105_116_+0x113>
+  4074d0:	mov    %r13,%rsi
+  4074d3:	neg    %r12d
+  4074d6:	add    %esi,%r12d
+  4074d9:	mov    %edx,%esi
+  4074db:	mov    %r12d,%r12d
+  4074de:	add    %r12d,%esi
+  4074e1:	mov    %esi,%esi
+  4074e3:	cmp    $0x0,%rax
+  4074e7:	jne    4074fc <p113d_FID_36_100_105_114_101_99_116_46_109_105_116_+0x12c>
+  4074e9:	cs cs cs cs cs mov %ecx,%edi
+  4074f0:	shr    $0x8,%r11
+  4074f4:	or     %rbx,%r11
+  4074f7:	add    %r11d,%edi
+  4074fa:	mov    %edi,%edi
+  4074fc:	xor    $0x1,%r9d
+  407500:	mov    %r10,%r11
+  407503:	mov    $0x1,%r10d
+  407509:	mov    $0x0,%r9d
+  40750f:	cmovne %r9,%r10
+  407513:	mov    %r11d,%r9d
+  407516:	add    %r10d,%r9d
+  407519:	mov    %r9d,%r10d
+  40751c:	sub    $0x1,%r8
+  407520:	jmpq   407400 <p113d_FID_36_100_105_114_101_99_116_46_109_105_116_+0x30>
+  407525:	mov    %r10,%rax
+  407528:	pop    %r15
+  40752a:	pop    %r14
+  40752c:	pop    %r13
+  40752e:	pop    %r12
+  407530:	pop    %rbx
+  407531:	leaveq 
+  407532:	retq   
+
+Disassembly of section .fini:

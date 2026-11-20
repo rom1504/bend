@@ -1,0 +1,53 @@
+{
+  "kind": "phase198-numeric-rule-plan-v1",
+  "source": "selfhost/build/phase198/numeric-api-source05/compiler.bend",
+  "apiArgv": [
+    "python3",
+    "-B",
+    "research/phase198/numeric/job.py",
+    "--rss-mib",
+    "3072",
+    "numeric-api03",
+    "45",
+    "96",
+    "selfhost/.assets/bin/bun",
+    "selfhost/tools/build/hosted.mjs",
+    "acquire",
+    "--source",
+    "selfhost/build/phase198/numeric-api-source05/compiler.bend",
+    "--exports",
+    "selfhost/build/phase198/numeric-api-source05/exports.json",
+    "--out",
+    "selfhost/build/phase198/numeric-api03",
+    "--engine",
+    "selfhost/.assets/bin/bun",
+    "--upstream",
+    "selfhost/.bootstrap/upstream-phase182"
+  ],
+  "prediction": "A general typed nonzero-mode guard should recover at least20% ordinary Mandelbrot time, potentially near the30.11% machine escape-only result. The remaining arithmetic of the escape-detecting body and the extra header guard can reduce that gain. Grid timing and whole-suite improvement remain unmeasured.",
+  "legality": "Verified NC_Binding N_W32 fields; full U64 zero/sub1 fuel with N_Imm64 or N_W64 kind; pure bounded scalar path; nonzero low-word mode invariant; identical all-other backedge fields; return excludes mode/fuel; unchanged fallback. No name or benchmark ID admission.",
+  "limits": {
+    "parameters": 8,
+    "bodyNodes": 256
+  },
+  "status": "two-independent-check-refusals-repaired; fresh-api03-awaits-incumbent-gates",
+  "controls": [
+    "actual captured normalized IR admission",
+    "all six noncanonical field refusals",
+    "effects and trapping-operation refusals",
+    "fuel/mode-output refusals",
+    "backedge mutation and arity refusals",
+    "fresh-name and body-budget refusals",
+    "systematic renaming admission",
+    "1024 independent modular IR before/after interpretations",
+    "three large full-width fuel exits with stable mode",
+    "9720 independent abstract fact observations"
+  ],
+  "firstFailedReceipt": "selfhost/build/phase198/numeric-api01/report.json",
+  "algorithmChangesSinceFirstCheck": false,
+  "failedReceipts": [
+    "selfhost/build/phase198/numeric-api01/report.json",
+    "selfhost/build/phase198/numeric-api02/report.json"
+  ],
+  "sourcePreflight": "research/phase198/numeric/source-preflight.json"
+}

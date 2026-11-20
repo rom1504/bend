@@ -1,0 +1,1422 @@
+{
+  "complete": true,
+  "freeze": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase198/numeric/frozen.json",
+    "bytes": 45293,
+    "sha256": "c6e723cea1870703610e9891c5742cc5f9d1fd39e9d9422bfa132ea96da822a8"
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase198/numeric/screen.py",
+    "bytes": 7085,
+    "sha256": "2f68dfed77b9152ffd5cbabc4214ee73801842cd307fb38dbc7e56b60709b4ca"
+  },
+  "commands": [
+    {
+      "argv": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/hardware-tool01/llvm-mca",
+        "-mtriple=x86_64-unknown-linux-gnu",
+        "-mcpu=ivybridge",
+        "-iterations=100",
+        "-noalias=true",
+        "selfhost/build/phase198/numeric-screen01/before-model.s"
+      ],
+      "exit": 0,
+      "stdout": "Iterations:        100\nInstructions:      10900\nTotal Cycles:      3576\nTotal uOps:        11700\n\nDispatch Width:    4\nuOps Per Cycle:    3.27\nIPC:               3.05\nBlock RThroughput: 29.7\n\n\nInstruction Info:\n[1]: #uOps\n[2]: Latency\n[3]: RThroughput\n[4]: MayLoad\n[5]: MayStore\n[6]: HasSideEffects (U)\n\n[1]    [2]    [3]    [4]    [5]    [6]    Instructions:\n 1      1     0.33                        movq\t%rdi, %r10\n 1      1     0.33                        subq\t$1, %r10\n 1      1     1.00           *            movq\t%r10, -2288(%rbp)\n 1      1     0.33                        movl\t%r8d, %edi\n 1      1     0.33                        movl\t%r8d, %edx\n 1      3     1.00                        imull\t%edx, %edi\n 1      1     0.33                        movq\t%rdi, %rsi\n 1      1     0.50                        shrq\t$8, %rsi\n 1      1     0.33                        movq\t%rsi, %rdx\n 1      1     0.33                        movq\t%rdi, %rsi\n 1      1     0.50                        shrq\t$31, %rsi\n 1      1     0.33                        movq\t%rsi, %r10\n 1      1     0.33                        movabsq\t$0, %r11\n 1      1     0.33                        cmpq\t%r11, %r10\n 1      1     0.33                        movabsq\t$0, %rax\n 1      1     0.33                        movabsq\t$4278190080, %r11\n 2      2     0.67                        cmoveq\t%rax, %r11\n 1      1     0.33                        movq\t%r11, %rdi\n 1      1     0.33                        movq\t%rdx, %rsi\n 1      1     0.33                        orq\t%rdi, %rsi\n 1      1     0.33                        movl\t%r9d, %edi\n 1      1     0.33                        movl\t%r9d, %edx\n 1      3     1.00                        imull\t%edx, %edi\n 1      1     0.33                        movq\t%rdi, %rdx\n 1      1     0.50                        shrq\t$8, %rdx\n 1      1     0.33                        movq\t%rdx, %rbx\n 1      1     0.33                        movq\t%rdi, %rdx\n 1      1     0.50                        shrq\t$31, %rdx\n 1      1     0.33                        movq\t%rdx, %r10\n 1      1     0.33                        movabsq\t$0, %r11\n 1      1     0.33                        cmpq\t%r11, %r10\n 1      1     0.33                        movabsq\t$0, %rax\n 1      1     0.33                        movabsq\t$4278190080, %r11\n 2      2     0.67                        cmoveq\t%rax, %r11\n 1      1     0.33                        movq\t%r11, %rdi\n 1      1     0.33                        movq\t%rbx, %rdx\n 1      1     0.33                        orq\t%rdi, %rdx\n 1      1     0.33                        movq\t%rsi, %rdi\n 1      1     0.33                        addl\t%edx, %edi\n 1      1     0.33                        movq\t%rdi, %r10\n 1      1     0.33                        movabsq\t$1024, %r11\n 1      1     0.33                        cmpq\t%r11, %r10\n 1      1     0.33                        movabsq\t$1, %rax\n 1      1     0.33                        movabsq\t$0, %r11\n 3      3     1.00                        cmovaq\t%rax, %r11\n 1      1     0.33                        movq\t%r11, %rbx\n 1      5     0.50    *                   movl\t-88(%rbp), %edi\n 1      1     0.33                        orq\t%rbx, %rdi\n 1      1     0.33                        movq\t%rdi, %rbx\n 1      1     0.33                        movq\t%rsi, %rdi\n 1      1     0.33                        subl\t%edx, %edi\n 1      1     0.33                        movl\t%r14d, %edx\n 1      1     0.33                        addl\t%edx, %edi\n 1      1     0.33                        movq\t%rdi, %r10\n 1      1     1.00           *            movq\t%r10, -2416(%rbp)\n 1      1     0.33                        movl\t%r8d, %edi\n 1      1     0.33                        movl\t%r9d, %edx\n 1      3     1.00                        imull\t%edx, %edi\n 1      1     0.33                        movq\t%rdi, %r11\n 1      1     0.33                        movabsq\t$2, %rdi\n 1      3     1.00                        imull\t%r11d, %edi\n 1      1     0.33                        movq\t%rdi, %rsi\n 1      1     0.50                        shrq\t$8, %rsi\n 1      1     0.33                        movq\t%rsi, %rdx\n 1      1     0.33                        movq\t%rdi, %rsi\n 1      1     0.50                        shrq\t$31, %rsi\n 1      1     0.33                        movq\t%rsi, %r10\n 1      1     0.33                        movabsq\t$0, %r11\n 1      1     0.33                        cmpq\t%r11, %r10\n 1      1     0.33                        movabsq\t$0, %rax\n 1      1     0.33                        movabsq\t$4278190080, %r11\n 2      2     0.67                        cmoveq\t%rax, %r11\n 1      1     0.33                        movq\t%r11, %rdi\n 1      1     0.33                        movq\t%rdx, %rsi\n 1      1     0.33                        orq\t%rdi, %rsi\n 1      1     0.33                        movl\t%r15d, %edx\n 1      1     0.33                        movq\t%rsi, %rdi\n 1      1     0.33                        addl\t%edx, %edi\n 1      1     0.33                        movq\t%rbx, %r10\n 1      1     0.33                        movabsq\t$0, %r11\n 1      1     0.33                        cmpq\t%r11, %r10\n 1      5     0.50    *                   movq\t-2416(%rbp), %rax\n 1      1     0.33                        movq\t%r8, %r11\n 2      2     0.67                        cmoveq\t%rax, %r11\n 1      1     1.00           *            movq\t%r11, -2464(%rbp)\n 1      1     0.33                        movq\t%rbx, %r10\n 1      1     0.33                        movabsq\t$0, %r11\n 1      1     0.33                        cmpq\t%r11, %r10\n 1      1     0.33                        movq\t%rdi, %rax\n 1      1     0.33                        movq\t%r9, %r11\n 2      2     0.67                        cmoveq\t%rax, %r11\n 1      1     1.00           *            movq\t%r11, -2480(%rbp)\n 1      1     0.33                        movq\t%rbx, %r10\n 1      1     0.33                        movabsq\t$0, %r11\n 1      1     0.33                        cmpq\t%r11, %r10\n 1      1     0.33                        movabsq\t$1, %rax\n 1      1     0.33                        movabsq\t$0, %r11\n 2      2     0.67                        cmoveq\t%rax, %r11\n 1      1     0.33                        movq\t%r11, %rsi\n 1      1     0.33                        movl\t%r13d, %edi\n 1      1     0.33                        addl\t%esi, %edi\n 1      5     0.50    *                   movq\t-2464(%rbp), %r10\n 1      1     0.33                        movq\t%r10, %r8\n 1      5     0.50    *                   movq\t-2480(%rbp), %r10\n 1      1     0.33                        movq\t%r10, %r9\n 1      1     1.00           *            movq\t%rbx, -88(%rbp)\n 1      1     0.33                        movq\t%rdi, %r13\n 1      5     0.50    *                   movq\t-2288(%rbp), %r10\n 1      1     0.33                        movq\t%r10, %rdi\n\n\nResources:\n[0]   - SBDivider\n[1]   - SBFPDivider\n[2]   - SBPort0\n[3]   - SBPort1\n[4]   - SBPort4\n[5]   - SBPort5\n[6.0] - SBPort23\n[6.1] - SBPort23\n\n\nResource pressure per iteration:\n[0]    [1]    [2]    [3]    [4]    [5]    [6.0]  [6.1]  \n -      -     35.66  35.67  5.00   35.67  5.00   5.00   \n\nResource pressure by instruction:\n[0]    [1]    [2]    [3]    [4]    [5]    [6.0]  [6.1]  Instructions:\n -      -     0.32   0.67    -     0.01    -      -     movq\t%rdi, %r10\n -      -     0.66   0.34    -      -      -      -     subq\t$1, %r10\n -      -      -      -     1.00    -     0.98   0.02   movq\t%r10, -2288(%rbp)\n -      -     0.33   0.02    -     0.65    -      -     movl\t%r8d, %edi\n -      -     0.01   0.65    -     0.34    -      -     movl\t%r8d, %edx\n -      -      -     1.00    -      -      -      -     imull\t%edx, %edi\n -      -     1.00    -      -      -      -      -     movq\t%rdi, %rsi\n -      -     0.01    -      -     0.99    -      -     shrq\t$8, %rsi\n -      -     1.00    -      -      -      -      -     movq\t%rsi, %rdx\n -      -      -      -      -     1.00    -      -     movq\t%rdi, %rsi\n -      -     0.99    -      -     0.01    -      -     shrq\t$31, %rsi\n -      -      -      -      -     1.00    -      -     movq\t%rsi, %r10\n -      -     0.34   0.33    -     0.33    -      -     movabsq\t$0, %r11\n -      -     1.00    -      -      -      -      -     cmpq\t%r11, %r10\n -      -     0.65   0.01    -     0.34    -      -     movabsq\t$0, %rax\n -      -     0.34   0.01    -     0.65    -      -     movabsq\t$4278190080, %r11\n -      -     1.00    -      -     1.00    -      -     cmoveq\t%rax, %r11\n -      -     1.00    -      -      -      -      -     movq\t%r11, %rdi\n -      -      -      -      -     1.00    -      -     movq\t%rdx, %rsi\n -      -     1.00    -      -      -      -      -     orq\t%rdi, %rsi\n -      -     0.33   0.33    -     0.34    -      -     movl\t%r9d, %edi\n -      -     0.33   0.34    -     0.33    -      -     movl\t%r9d, %edx\n -      -      -     1.00    -      -      -      -     imull\t%edx, %edi\n -      -     0.01   0.99    -      -      -      -     movq\t%rdi, %rdx\n -      -      -      -      -     1.00    -      -     shrq\t$8, %rdx\n -      -      -      -      -     1.00    -      -     movq\t%rdx, %rbx\n -      -      -     0.99    -     0.01    -      -     movq\t%rdi, %rdx\n -      -     1.00    -      -      -      -      -     shrq\t$31, %rdx\n -      -     0.01   0.99    -      -      -      -     movq\t%rdx, %r10\n -      -     0.33   0.34    -     0.33    -      -     movabsq\t$0, %r11\n -      -     0.01    -      -     0.99    -      -     cmpq\t%r11, %r10\n -      -     0.33   0.34    -     0.33    -      -     movabsq\t$0, %rax\n -      -     0.01   0.66    -     0.33    -      -     movabsq\t$4278190080, %r11\n -      -     1.00    -      -     1.00    -      -     cmoveq\t%rax, %r11\n -      -     0.99    -      -     0.01    -      -     movq\t%r11, %rdi\n -      -      -     0.99    -     0.01    -      -     movq\t%rbx, %rdx\n -      -     1.00    -      -      -      -      -     orq\t%rdi, %rdx\n -      -      -     1.00    -      -      -      -     movq\t%rsi, %rdi\n -      -     0.99   0.01    -      -      -      -     addl\t%edx, %edi\n -      -     0.99   0.01    -      -      -      -     movq\t%rdi, %r10\n -      -      -     0.99    -     0.01    -      -     movabsq\t$1024, %r11\n -      -     0.99   0.01    -      -      -      -     cmpq\t%r11, %r10\n -      -      -     1.00    -      -      -      -     movabsq\t$1, %rax\n -      -     0.32   0.67    -     0.01    -      -     movabsq\t$0, %r11\n -      -     0.99   0.01    -     2.00    -      -     cmovaq\t%rax, %r11\n -      -     1.00    -      -      -      -      -     movq\t%r11, %rbx\n -      -      -      -      -      -     0.02   0.98   movl\t-88(%rbp), %edi\n -      -     1.00    -      -      -      -      -     orq\t%rbx, %rdi\n -      -     1.00    -      -      -      -      -     movq\t%rdi, %rbx\n -      -     0.67   0.01    -     0.32    -      -     movq\t%rsi, %rdi\n -      -     0.01    -      -     0.99    -      -     subl\t%edx, %edi\n -      -      -     0.66    -     0.34    -      -     movl\t%r14d, %edx\n -      -     0.01    -      -     0.99    -      -     addl\t%edx, %edi\n -      -     0.01    -      -     0.99    -      -     movq\t%rdi, %r10\n -      -      -      -     1.00    -     0.02   0.98   movq\t%r10, -2416(%rbp)\n -      -      -     0.35    -     0.65    -      -     movl\t%r8d, %edi\n -      -      -     0.66    -     0.34    -      -     movl\t%r9d, %edx\n -      -      -     1.00    -      -      -      -     imull\t%edx, %edi\n -      -      -     0.99    -     0.01    -      -     movq\t%rdi, %r11\n -      -     0.01   0.34    -     0.65    -      -     movabsq\t$2, %rdi\n -      -      -     1.00    -      -      -      -     imull\t%r11d, %edi\n -      -     0.34    -      -     0.66    -      -     movq\t%rdi, %rsi\n -      -      -      -      -     1.00    -      -     shrq\t$8, %rsi\n -      -     0.01    -      -     0.99    -      -     movq\t%rsi, %rdx\n -      -      -     0.66    -     0.34    -      -     movq\t%rdi, %rsi\n -      -      -      -      -     1.00    -      -     shrq\t$31, %rsi\n -      -     1.00    -      -      -      -      -     movq\t%rsi, %r10\n -      -     0.01   0.32    -     0.67    -      -     movabsq\t$0, %r11\n -      -     1.00    -      -      -      -      -     cmpq\t%r11, %r10\n -      -      -     0.99    -     0.01    -      -     movabsq\t$0, %rax\n -      -     0.32   0.67    -     0.01    -      -     movabsq\t$4278190080, %r11\n -      -     1.00    -      -     1.00    -      -     cmoveq\t%rax, %r11\n -      -     1.00    -      -      -      -      -     movq\t%r11, %rdi\n -      -     0.65   0.34    -     0.01    -      -     movq\t%rdx, %rsi\n -      -     1.00    -      -      -      -      -     orq\t%rdi, %rsi\n -      -     0.33   0.66    -     0.01    -      -     movl\t%r15d, %edx\n -      -     1.00    -      -      -      -      -     movq\t%rsi, %rdi\n -      -     1.00    -      -      -      -      -     addl\t%edx, %edi\n -      -      -     0.66    -     0.34    -      -     movq\t%rbx, %r10\n -      -     0.65   0.34    -     0.01    -      -     movabsq\t$0, %r11\n -      -      -     0.01    -     0.99    -      -     cmpq\t%r11, %r10\n -      -      -      -      -      -      -     1.00   movq\t-2416(%rbp), %rax\n -      -     0.35   0.33    -     0.32    -      -     movq\t%r8, %r11\n -      -     0.34   0.66    -     1.00    -      -     cmoveq\t%rax, %r11\n -      -      -      -     1.00    -     1.00    -     movq\t%r11, -2464(%rbp)\n -      -      -     1.00    -      -      -      -     movq\t%rbx, %r10\n -      -     0.01   0.66    -     0.33    -      -     movabsq\t$0, %r11\n -      -     0.01   0.99    -      -      -      -     cmpq\t%r11, %r10\n -      -     1.00    -      -      -      -      -     movq\t%rdi, %rax\n -      -      -     0.99    -     0.01    -      -     movq\t%r9, %r11\n -      -     1.00    -      -     1.00    -      -     cmoveq\t%rax, %r11\n -      -      -      -     1.00    -     0.98   0.02   movq\t%r11, -2480(%rbp)\n -      -     0.65   0.34    -     0.01    -      -     movq\t%rbx, %r10\n -      -      -     1.00    -      -      -      -     movabsq\t$0, %r11\n -      -      -     0.34    -     0.66    -      -     cmpq\t%r11, %r10\n -      -      -     0.34    -     0.66    -      -     movabsq\t$1, %rax\n -      -      -     0.66    -     0.34    -      -     movabsq\t$0, %r11\n -      -      -     1.00    -     1.00    -      -     cmoveq\t%rax, %r11\n -      -      -      -      -     1.00    -      -     movq\t%r11, %rsi\n -      -      -     0.67    -     0.33    -      -     movl\t%r13d, %edi\n -      -      -      -      -     1.00    -      -     addl\t%esi, %edi\n -      -      -      -      -      -     0.99   0.01   movq\t-2464(%rbp), %r10\n -      -      -     0.67    -     0.33    -      -     movq\t%r10, %r8\n -      -      -      -      -      -     0.01   0.99   movq\t-2480(%rbp), %r10\n -      -      -     0.67    -     0.33    -      -     movq\t%r10, %r9\n -      -      -      -     1.00    -     0.02   0.98   movq\t%rbx, -88(%rbp)\n -      -      -     1.00    -      -      -      -     movq\t%rdi, %r13\n -      -      -      -      -      -     0.98   0.02   movq\t-2288(%rbp), %r10\n -      -      -     0.99    -     0.01    -      -     movq\t%r10, %rdi\n",
+      "stderr": "",
+      "wall": 0.03695619385689497
+    },
+    {
+      "argv": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/hardware-tool01/llvm-mca",
+        "-mtriple=x86_64-unknown-linux-gnu",
+        "-mcpu=ivybridge",
+        "-iterations=100",
+        "-noalias=true",
+        "selfhost/build/phase198/numeric-screen01/typed-model.s"
+      ],
+      "exit": 0,
+      "stdout": "Iterations:        100\nInstructions:      2700\nTotal Cycles:      1505\nTotal uOps:        3000\n\nDispatch Width:    4\nuOps Per Cycle:    1.99\nIPC:               1.79\nBlock RThroughput: 7.5\n\n\nInstruction Info:\n[1]: #uOps\n[2]: Latency\n[3]: RThroughput\n[4]: MayLoad\n[5]: MayStore\n[6]: HasSideEffects (U)\n\n[1]    [2]    [3]    [4]    [5]    [6]    Instructions:\n 1      1     0.33                        movl\t%r8d, %r10d\n 1      3     1.00                        imull\t%r8d, %r10d\n 1      1     0.50                        sarl\t$8, %r10d\n 1      1     0.33                        movl\t%r9d, %r11d\n 1      3     1.00                        imull\t%r9d, %r11d\n 1      1     0.50                        sarl\t$8, %r11d\n 1      1     0.33                        movl\t%r10d, %eax\n 1      1     0.33                        addl\t%r11d, %eax\n 1      1     0.33                        cmpl\t$1024, %eax\n 2      2     1.00                        seta\t%r13b\n 1      1     0.33                        movzbl\t%r13b, %r13d\n 1      1     0.33                        orl\t%r13d, %ebx\n 1      1     0.33                        movl\t%r10d, %r12d\n 1      1     0.33                        subl\t%r11d, %r12d\n 1      1     0.33                        addl\t%edx, %r12d\n 1      1     0.33                        movl\t%r8d, %eax\n 1      3     1.00                        imull\t%r9d, %eax\n 1      1     0.33                        addl\t%eax, %eax\n 1      1     0.50                        sarl\t$8, %eax\n 1      1     0.33                        addl\t%ecx, %eax\n 1      1     0.33                        testl\t%ebx, %ebx\n 2      2     0.67                        cmovel\t%r12d, %r8d\n 2      2     0.67                        cmovel\t%eax, %r9d\n 1      1     0.50                        sete\t%r13b\n 1      1     0.33                        movzbl\t%r13b, %r13d\n 1      1     0.33                        addl\t%r13d, %edi\n 1      1     0.33                        subq\t$1, %rsi\n\n\nResources:\n[0]   - SBDivider\n[1]   - SBFPDivider\n[2]   - SBPort0\n[3]   - SBPort1\n[4]   - SBPort4\n[5]   - SBPort5\n[6.0] - SBPort23\n[6.1] - SBPort23\n\n\nResource pressure per iteration:\n[0]    [1]    [2]    [3]    [4]    [5]    [6.0]  [6.1]  \n -      -     9.99   10.02   -     9.99    -      -     \n\nResource pressure by instruction:\n[0]    [1]    [2]    [3]    [4]    [5]    [6.0]  [6.1]  Instructions:\n -      -     0.98   0.01    -     0.01    -      -     movl\t%r8d, %r10d\n -      -      -     1.00    -      -      -      -     imull\t%r8d, %r10d\n -      -     0.50    -      -     0.50    -      -     sarl\t$8, %r10d\n -      -     0.98   0.01    -     0.01    -      -     movl\t%r9d, %r11d\n -      -      -     1.00    -      -      -      -     imull\t%r9d, %r11d\n -      -     0.50    -      -     0.50    -      -     sarl\t$8, %r11d\n -      -     0.50    -      -     0.50    -      -     movl\t%r10d, %eax\n -      -     1.00    -      -      -      -      -     addl\t%r11d, %eax\n -      -     1.00    -      -      -      -      -     cmpl\t$1024, %eax\n -      -     1.00    -      -     1.00    -      -     seta\t%r13b\n -      -     0.01   0.99    -      -      -      -     movzbl\t%r13b, %r13d\n -      -     0.98    -      -     0.02    -      -     orl\t%r13d, %ebx\n -      -      -     1.00    -      -      -      -     movl\t%r10d, %r12d\n -      -      -      -      -     1.00    -      -     subl\t%r11d, %r12d\n -      -      -      -      -     1.00    -      -     addl\t%edx, %r12d\n -      -     0.01    -      -     0.99    -      -     movl\t%r8d, %eax\n -      -      -     1.00    -      -      -      -     imull\t%r9d, %eax\n -      -      -     0.99    -     0.01    -      -     addl\t%eax, %eax\n -      -     0.51    -      -     0.49    -      -     sarl\t$8, %eax\n -      -      -     1.00    -      -      -      -     addl\t%ecx, %eax\n -      -     0.01   0.01    -     0.98    -      -     testl\t%ebx, %ebx\n -      -     0.49   0.99    -     0.52    -      -     cmovel\t%r12d, %r8d\n -      -     0.49   1.00    -     0.51    -      -     cmovel\t%eax, %r9d\n -      -     0.51    -      -     0.49    -      -     sete\t%r13b\n -      -     0.51   0.01    -     0.48    -      -     movzbl\t%r13b, %r13d\n -      -      -     0.99    -     0.01    -      -     addl\t%r13d, %edi\n -      -     0.01   0.02    -     0.97    -      -     subq\t$1, %rsi\n",
+      "stderr": "",
+      "wall": 0.01954591181129217
+    },
+    {
+      "argv": [
+        "/usr/bin/x86_64-linux-gnu-as",
+        "-mbranches-within-32B-boundaries",
+        "-o",
+        "selfhost/build/phase198/numeric-screen01/baseline/program.o",
+        "selfhost/build/phase198/numeric-screen01/baseline/program.s"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "wall": 0.03252427000552416
+    },
+    {
+      "argv": [
+        "/usr/bin/x86_64-linux-gnu-gcc-10",
+        "-no-pie",
+        "selfhost/build/phase198/numeric-screen01/baseline/program.o",
+        "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/runtime.o",
+        "-pthread",
+        "-lm",
+        "-o",
+        "selfhost/build/phase198/numeric-screen01/baseline/program"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "wall": 0.022152098827064037
+    },
+    {
+      "argv": [
+        "/usr/bin/x86_64-linux-gnu-as",
+        "-mbranches-within-32B-boundaries",
+        "-o",
+        "selfhost/build/phase198/numeric-screen01/typed-scalar/program.o",
+        "selfhost/build/phase198/numeric-screen01/typed-scalar/program.s"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "wall": 0.0324577996507287
+    },
+    {
+      "argv": [
+        "/usr/bin/x86_64-linux-gnu-gcc-10",
+        "-no-pie",
+        "selfhost/build/phase198/numeric-screen01/typed-scalar/program.o",
+        "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/runtime.o",
+        "-pthread",
+        "-lm",
+        "-o",
+        "selfhost/build/phase198/numeric-screen01/typed-scalar/program"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "wall": 0.022376880049705505
+    },
+    {
+      "argv": [
+        "/usr/bin/x86_64-linux-gnu-as",
+        "-mbranches-within-32B-boundaries",
+        "-o",
+        "selfhost/build/phase198/numeric-screen01/typed-escape/program.o",
+        "selfhost/build/phase198/numeric-screen01/typed-escape/program.s"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "wall": 0.032726931385695934
+    },
+    {
+      "argv": [
+        "/usr/bin/x86_64-linux-gnu-gcc-10",
+        "-no-pie",
+        "selfhost/build/phase198/numeric-screen01/typed-escape/program.o",
+        "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/runtime.o",
+        "-pthread",
+        "-lm",
+        "-o",
+        "selfhost/build/phase198/numeric-screen01/typed-escape/program"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "wall": 0.022699746303260326
+    },
+    {
+      "argv": [
+        "/usr/bin/objcopy",
+        "--redefine-sym",
+        "main=p198_original_main",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-screen01/baseline/program.o",
+        "selfhost/build/phase198/numeric-screen01/finite-original.o"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "wall": 0.01653237547725439
+    },
+    {
+      "argv": [
+        "/usr/bin/x86_64-linux-gnu-as",
+        "-o",
+        "selfhost/build/phase198/numeric-screen01/typed_scalar-finite.o",
+        "selfhost/build/phase198/numeric-screen01/typed_scalar-finite.s"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "wall": 0.005537556484341621
+    },
+    {
+      "argv": [
+        "/usr/bin/x86_64-linux-gnu-as",
+        "-o",
+        "selfhost/build/phase198/numeric-screen01/typed_escape-finite.o",
+        "selfhost/build/phase198/numeric-screen01/typed_escape-finite.s"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "wall": 0.00565766915678978
+    },
+    {
+      "argv": [
+        "/usr/bin/x86_64-linux-gnu-gcc-10",
+        "-O2",
+        "-no-pie",
+        "selfhost/build/phase198/numeric-screen01/finite.c",
+        "selfhost/build/phase198/numeric-screen01/finite-original.o",
+        "selfhost/build/phase198/numeric-screen01/typed_scalar-finite.o",
+        "selfhost/build/phase198/numeric-screen01/typed_escape-finite.o",
+        "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/runtime.o",
+        "-pthread",
+        "-lm",
+        "-o",
+        "selfhost/build/phase198/numeric-screen01/finite"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "wall": 0.07400893233716488
+    },
+    {
+      "argv": [
+        "selfhost/build/phase198/numeric-screen01/finite"
+      ],
+      "exit": 0,
+      "stdout": "PASS 3072 exact loop observations\n",
+      "stderr": "",
+      "wall": 0.003401271067559719
+    }
+  ],
+  "model": {
+    "before": {
+      "cycles": 3576.0,
+      "throughput": 29.7,
+      "instructions": 10900.0
+    },
+    "typed": {
+      "cycles": 1505.0,
+      "throughput": 7.5,
+      "instructions": 2700.0
+    }
+  },
+  "products": {
+    "direct": {
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/native45-01/mandelbrot/machine/program",
+        "bytes": 215600,
+        "sha256": "fc20d55641b3e0581c4a571c3a3fac8fc5ca773c5848605b996ae2bbfdf3e345"
+      },
+      "convention": "bend-rts-v1"
+    },
+    "baseline": {
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-screen01/baseline/program",
+        "bytes": 215560,
+        "sha256": "ef3248df09d53c8fa2a87a60f0142f2d48d880b575e78e9967758359e935a19d"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-screen01/baseline/program.s",
+        "bytes": 548046,
+        "sha256": "645ba142ca28e145c35fd586c00f6f3eb3a2cc7e7d623596ccc2f617a0427ee5"
+      },
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-screen01/baseline/program.o",
+        "bytes": 135384,
+        "sha256": "a982b43e05260204709c1cb46098d050836da4c5fa6b8a8960e8303501180381"
+      },
+      "convention": "bend-rts-v1"
+    },
+    "typed-scalar": {
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-screen01/typed-scalar/program",
+        "bytes": 211472,
+        "sha256": "9774870235da05965a7db11971a75b59a2405a19691fd80a3df720261eacfc18"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-screen01/typed-scalar/program.s",
+        "bytes": 545799,
+        "sha256": "7cc563f3f039be36c67cacbe7950dafdc87e96030b8f8c1c90c7aff2b148b3cc"
+      },
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-screen01/typed-scalar/program.o",
+        "bytes": 134904,
+        "sha256": "54edf4a19fa0b83bcabec5d62baa00b707bfe81c982c0e2b11d2089dae4e1ba8"
+      },
+      "convention": "bend-rts-v1"
+    },
+    "typed-escape": {
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-screen01/typed-escape/program",
+        "bytes": 211472,
+        "sha256": "6261dfbe411fcffd6f92ba1a6d17d47d1050928eb49a5a029932449804b28ba8"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-screen01/typed-escape/program.s",
+        "bytes": 545775,
+        "sha256": "2a4ff7beae0867a9061d172fae4407fd6e59b722767c8eb63fca1119aa9141cc"
+      },
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-screen01/typed-escape/program.o",
+        "bytes": 134872,
+        "sha256": "ca5c83dd00086596b59135a61443f54a6676b73cf66896b01862c435b95834e1"
+      },
+      "convention": "bend-rts-v1"
+    },
+    "c": {
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/mandelbrot/bend-c/program",
+        "bytes": 108744,
+        "sha256": "be22d29a00ccb433be39cae20507eba454ce8f75b80885cef635f3823e215d41"
+      },
+      "convention": "bend-rts-v1"
+    },
+    "qbe": {
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-native45-acquire01/mandelbrot/phase186-qbe-n2/machine/program",
+        "bytes": 186512,
+        "sha256": "118279a98ea26339765a3fc85950af32900fe3124ddf6027fa9707f48934e3b0"
+      },
+      "convention": "bend-rts-v1"
+    }
+  },
+  "checks": [
+    {
+      "role": "direct",
+      "args": [
+        2,
+        0
+      ],
+      "expected": "887240761\n",
+      "observation": {
+        "stdout": "887240761\n0\n1\n0\n",
+        "elapsedMs": 0,
+        "wall": 0.0031171878799796104
+      }
+    },
+    {
+      "role": "baseline",
+      "args": [
+        2,
+        0
+      ],
+      "expected": "887240761\n",
+      "observation": {
+        "stdout": "887240761\n0\n1\n0\n",
+        "elapsedMs": 0,
+        "wall": 0.0030934643000364304
+      }
+    },
+    {
+      "role": "typed-scalar",
+      "args": [
+        2,
+        0
+      ],
+      "expected": "887240761\n",
+      "observation": {
+        "stdout": "887240761\n0\n1\n0\n",
+        "elapsedMs": 0,
+        "wall": 0.0031013749539852142
+      }
+    },
+    {
+      "role": "typed-escape",
+      "args": [
+        2,
+        0
+      ],
+      "expected": "887240761\n",
+      "observation": {
+        "stdout": "887240761\n0\n1\n0\n",
+        "elapsedMs": 0,
+        "wall": 0.0030606649816036224
+      }
+    },
+    {
+      "role": "c",
+      "args": [
+        2,
+        0
+      ],
+      "expected": "887240761\n",
+      "observation": {
+        "stdout": "887240761\n0\n1\n0\n",
+        "elapsedMs": 0,
+        "wall": 0.0030423887073993683
+      }
+    },
+    {
+      "role": "qbe",
+      "args": [
+        2,
+        0
+      ],
+      "expected": "887240761\n",
+      "observation": {
+        "stdout": "887240761\n0\n1\n0\n",
+        "elapsedMs": 0,
+        "wall": 0.0031362026929855347
+      }
+    },
+    {
+      "role": "direct",
+      "args": [
+        0,
+        0
+      ],
+      "expected": "2747870681\n",
+      "observation": {
+        "stdout": "2747870681\n0\n0\n0\n",
+        "elapsedMs": 0,
+        "wall": 0.003018079325556755
+      }
+    },
+    {
+      "role": "baseline",
+      "args": [
+        0,
+        0
+      ],
+      "expected": "2747870681\n",
+      "observation": {
+        "stdout": "2747870681\n0\n0\n0\n",
+        "elapsedMs": 0,
+        "wall": 0.0029772520065307617
+      }
+    },
+    {
+      "role": "typed-scalar",
+      "args": [
+        0,
+        0
+      ],
+      "expected": "2747870681\n",
+      "observation": {
+        "stdout": "2747870681\n0\n0\n0\n",
+        "elapsedMs": 0,
+        "wall": 0.002983327955007553
+      }
+    },
+    {
+      "role": "typed-escape",
+      "args": [
+        0,
+        0
+      ],
+      "expected": "2747870681\n",
+      "observation": {
+        "stdout": "2747870681\n0\n0\n0\n",
+        "elapsedMs": 0,
+        "wall": 0.00324375182390213
+      }
+    },
+    {
+      "role": "c",
+      "args": [
+        0,
+        0
+      ],
+      "expected": "2747870681\n",
+      "observation": {
+        "stdout": "2747870681\n0\n0\n0\n",
+        "elapsedMs": 0,
+        "wall": 0.0028500063344836235
+      }
+    },
+    {
+      "role": "qbe",
+      "args": [
+        0,
+        0
+      ],
+      "expected": "2747870681\n",
+      "observation": {
+        "stdout": "2747870681\n0\n0\n0\n",
+        "elapsedMs": 0,
+        "wall": 0.002918592654168606
+      }
+    },
+    {
+      "role": "direct",
+      "args": [
+        1,
+        17
+      ],
+      "expected": "2964450297\n",
+      "observation": {
+        "stdout": "2964450297\n0\n0\n0\n",
+        "elapsedMs": 0,
+        "wall": 0.0029502809047698975
+      }
+    },
+    {
+      "role": "baseline",
+      "args": [
+        1,
+        17
+      ],
+      "expected": "2964450297\n",
+      "observation": {
+        "stdout": "2964450297\n0\n0\n0\n",
+        "elapsedMs": 0,
+        "wall": 0.002970629371702671
+      }
+    },
+    {
+      "role": "typed-scalar",
+      "args": [
+        1,
+        17
+      ],
+      "expected": "2964450297\n",
+      "observation": {
+        "stdout": "2964450297\n0\n0\n0\n",
+        "elapsedMs": 0,
+        "wall": 0.002872900106012821
+      }
+    },
+    {
+      "role": "typed-escape",
+      "args": [
+        1,
+        17
+      ],
+      "expected": "2964450297\n",
+      "observation": {
+        "stdout": "2964450297\n0\n0\n0\n",
+        "elapsedMs": 0,
+        "wall": 0.002910458482801914
+      }
+    },
+    {
+      "role": "c",
+      "args": [
+        1,
+        17
+      ],
+      "expected": "2964450297\n",
+      "observation": {
+        "stdout": "2964450297\n0\n0\n0\n",
+        "elapsedMs": 0,
+        "wall": 0.002918526530265808
+      }
+    },
+    {
+      "role": "qbe",
+      "args": [
+        1,
+        17
+      ],
+      "expected": "2964450297\n",
+      "observation": {
+        "stdout": "2964450297\n0\n0\n0\n",
+        "elapsedMs": 0,
+        "wall": 0.0030659567564725876
+      }
+    },
+    {
+      "role": "direct",
+      "args": [
+        4,
+        7
+      ],
+      "expected": "2757640160\n",
+      "observation": {
+        "stdout": "2757640160\n0\n0\n0\n",
+        "elapsedMs": 0,
+        "wall": 0.004096026532351971
+      }
+    },
+    {
+      "role": "baseline",
+      "args": [
+        4,
+        7
+      ],
+      "expected": "2757640160\n",
+      "observation": {
+        "stdout": "2757640160\n0\n0\n0\n",
+        "elapsedMs": 0,
+        "wall": 0.0037339022383093834
+      }
+    },
+    {
+      "role": "typed-scalar",
+      "args": [
+        4,
+        7
+      ],
+      "expected": "2757640160\n",
+      "observation": {
+        "stdout": "2757640160\n0\n0\n0\n",
+        "elapsedMs": 0,
+        "wall": 0.0035799816250801086
+      }
+    },
+    {
+      "role": "typed-escape",
+      "args": [
+        4,
+        7
+      ],
+      "expected": "2757640160\n",
+      "observation": {
+        "stdout": "2757640160\n0\n0\n0\n",
+        "elapsedMs": 0,
+        "wall": 0.0033768899738788605
+      }
+    },
+    {
+      "role": "c",
+      "args": [
+        4,
+        7
+      ],
+      "expected": "2757640160\n",
+      "observation": {
+        "stdout": "2757640160\n0\n0\n0\n",
+        "elapsedMs": 0,
+        "wall": 0.003000629134476185
+      }
+    },
+    {
+      "role": "qbe",
+      "args": [
+        4,
+        7
+      ],
+      "expected": "2757640160\n",
+      "observation": {
+        "stdout": "2757640160\n0\n0\n0\n",
+        "elapsedMs": 0,
+        "wall": 0.0032972339540719986
+      }
+    },
+    {
+      "role": "direct",
+      "args": [
+        5,
+        31
+      ],
+      "expected": "1637251455\n",
+      "observation": {
+        "stdout": "1637251455\n0\n0\n0\n",
+        "elapsedMs": 0,
+        "wall": 0.0040019191801548
+      }
+    },
+    {
+      "role": "baseline",
+      "args": [
+        5,
+        31
+      ],
+      "expected": "1637251455\n",
+      "observation": {
+        "stdout": "1637251455\n0\n0\n0\n",
+        "elapsedMs": 0,
+        "wall": 0.003837677650153637
+      }
+    },
+    {
+      "role": "typed-scalar",
+      "args": [
+        5,
+        31
+      ],
+      "expected": "1637251455\n",
+      "observation": {
+        "stdout": "1637251455\n0\n0\n0\n",
+        "elapsedMs": 0,
+        "wall": 0.003596789203584194
+      }
+    },
+    {
+      "role": "typed-escape",
+      "args": [
+        5,
+        31
+      ],
+      "expected": "1637251455\n",
+      "observation": {
+        "stdout": "1637251455\n0\n0\n0\n",
+        "elapsedMs": 0,
+        "wall": 0.0035800589248538017
+      }
+    },
+    {
+      "role": "c",
+      "args": [
+        5,
+        31
+      ],
+      "expected": "1637251455\n",
+      "observation": {
+        "stdout": "1637251455\n0\n0\n0\n",
+        "elapsedMs": 0,
+        "wall": 0.0031321169808506966
+      }
+    },
+    {
+      "role": "qbe",
+      "args": [
+        5,
+        31
+      ],
+      "expected": "1637251455\n",
+      "observation": {
+        "stdout": "1637251455\n0\n0\n0\n",
+        "elapsedMs": 0,
+        "wall": 0.003528713248670101
+      }
+    }
+  ],
+  "samples": [
+    {
+      "round": 0,
+      "role": "direct",
+      "repetitions": 1777,
+      "observation": {
+        "stdout": "887240761\n4\n1777\n165\n",
+        "elapsedMs": 165,
+        "wall": 0.16885796561837196
+      },
+      "nsPerWork": 92853.12324141811
+    },
+    {
+      "round": 0,
+      "role": "baseline",
+      "repetitions": 1600,
+      "observation": {
+        "stdout": "887240761\n4\n1600\n149\n",
+        "elapsedMs": 149,
+        "wall": 0.15265411790460348
+      },
+      "nsPerWork": 93125.0
+    },
+    {
+      "round": 0,
+      "role": "typed-scalar",
+      "repetitions": 2285,
+      "observation": {
+        "stdout": "887240761\n4\n2285\n163\n",
+        "elapsedMs": 163,
+        "wall": 0.1666167937219143
+      },
+      "nsPerWork": 71334.79212253829
+    },
+    {
+      "round": 0,
+      "role": "typed-escape",
+      "repetitions": 2666,
+      "observation": {
+        "stdout": "887240761\n4\n2666\n157\n",
+        "elapsedMs": 157,
+        "wall": 0.16082785092294216
+      },
+      "nsPerWork": 58889.72243060765
+    },
+    {
+      "round": 0,
+      "role": "c",
+      "repetitions": 5333,
+      "observation": {
+        "stdout": "887240761\n4\n5333\n155\n",
+        "elapsedMs": 155,
+        "wall": 0.1581813981756568
+      },
+      "nsPerWork": 29064.316519782486
+    },
+    {
+      "round": 0,
+      "role": "qbe",
+      "repetitions": 2666,
+      "observation": {
+        "stdout": "887240761\n4\n2666\n171\n",
+        "elapsedMs": 171,
+        "wall": 0.17425706516951323
+      },
+      "nsPerWork": 64141.03525881471
+    },
+    {
+      "round": 1,
+      "role": "direct",
+      "repetitions": 1777,
+      "observation": {
+        "stdout": "887240761\n4\n1777\n165\n",
+        "elapsedMs": 165,
+        "wall": 0.1688698437064886
+      },
+      "nsPerWork": 92853.12324141811
+    },
+    {
+      "round": 1,
+      "role": "qbe",
+      "repetitions": 2666,
+      "observation": {
+        "stdout": "887240761\n4\n2666\n172\n",
+        "elapsedMs": 172,
+        "wall": 0.17579544987529516
+      },
+      "nsPerWork": 64516.12903225807
+    },
+    {
+      "round": 1,
+      "role": "c",
+      "repetitions": 5333,
+      "observation": {
+        "stdout": "887240761\n4\n5333\n142\n",
+        "elapsedMs": 142,
+        "wall": 0.14482123963534832
+      },
+      "nsPerWork": 26626.664166510407
+    },
+    {
+      "round": 1,
+      "role": "typed-escape",
+      "repetitions": 2666,
+      "observation": {
+        "stdout": "887240761\n4\n2666\n159\n",
+        "elapsedMs": 159,
+        "wall": 0.1618874240666628
+      },
+      "nsPerWork": 59639.909977494375
+    },
+    {
+      "round": 1,
+      "role": "typed-scalar",
+      "repetitions": 2285,
+      "observation": {
+        "stdout": "887240761\n4\n2285\n163\n",
+        "elapsedMs": 163,
+        "wall": 0.16664643958210945
+      },
+      "nsPerWork": 71334.79212253829
+    },
+    {
+      "round": 1,
+      "role": "baseline",
+      "repetitions": 1600,
+      "observation": {
+        "stdout": "887240761\n4\n1600\n149\n",
+        "elapsedMs": 149,
+        "wall": 0.15252677630633116
+      },
+      "nsPerWork": 93125.0
+    },
+    {
+      "round": 2,
+      "role": "typed-scalar",
+      "repetitions": 2285,
+      "observation": {
+        "stdout": "887240761\n4\n2285\n161\n",
+        "elapsedMs": 161,
+        "wall": 0.16556992381811142
+      },
+      "nsPerWork": 70459.51859956236
+    },
+    {
+      "round": 2,
+      "role": "typed-escape",
+      "repetitions": 2666,
+      "observation": {
+        "stdout": "887240761\n4\n2666\n158\n",
+        "elapsedMs": 158,
+        "wall": 0.16130725760012865
+      },
+      "nsPerWork": 59264.816204051014
+    },
+    {
+      "round": 2,
+      "role": "c",
+      "repetitions": 5333,
+      "observation": {
+        "stdout": "887240761\n4\n5333\n146\n",
+        "elapsedMs": 146,
+        "wall": 0.1486004814505577
+      },
+      "nsPerWork": 27376.71104444028
+    },
+    {
+      "round": 2,
+      "role": "qbe",
+      "repetitions": 2666,
+      "observation": {
+        "stdout": "887240761\n4\n2666\n171\n",
+        "elapsedMs": 171,
+        "wall": 0.17471870314329863
+      },
+      "nsPerWork": 64141.03525881471
+    },
+    {
+      "round": 2,
+      "role": "direct",
+      "repetitions": 1777,
+      "observation": {
+        "stdout": "887240761\n4\n1777\n166\n",
+        "elapsedMs": 166,
+        "wall": 0.16992688179016113
+      },
+      "nsPerWork": 93415.86944288126
+    },
+    {
+      "round": 2,
+      "role": "baseline",
+      "repetitions": 1600,
+      "observation": {
+        "stdout": "887240761\n4\n1600\n151\n",
+        "elapsedMs": 151,
+        "wall": 0.15433963481336832
+      },
+      "nsPerWork": 94375.0
+    },
+    {
+      "round": 3,
+      "role": "typed-scalar",
+      "repetitions": 2285,
+      "observation": {
+        "stdout": "887240761\n4\n2285\n161\n",
+        "elapsedMs": 161,
+        "wall": 0.16511535551398993
+      },
+      "nsPerWork": 70459.51859956236
+    },
+    {
+      "round": 3,
+      "role": "baseline",
+      "repetitions": 1600,
+      "observation": {
+        "stdout": "887240761\n4\n1600\n169\n",
+        "elapsedMs": 169,
+        "wall": 0.1731829857453704
+      },
+      "nsPerWork": 105625.0
+    },
+    {
+      "round": 3,
+      "role": "direct",
+      "repetitions": 1777,
+      "observation": {
+        "stdout": "887240761\n4\n1777\n166\n",
+        "elapsedMs": 166,
+        "wall": 0.17010164819657803
+      },
+      "nsPerWork": 93415.86944288126
+    },
+    {
+      "round": 3,
+      "role": "qbe",
+      "repetitions": 2666,
+      "observation": {
+        "stdout": "887240761\n4\n2666\n171\n",
+        "elapsedMs": 171,
+        "wall": 0.17496151849627495
+      },
+      "nsPerWork": 64141.03525881471
+    },
+    {
+      "round": 3,
+      "role": "c",
+      "repetitions": 5333,
+      "observation": {
+        "stdout": "887240761\n4\n5333\n142\n",
+        "elapsedMs": 142,
+        "wall": 0.1454125801101327
+      },
+      "nsPerWork": 26626.664166510407
+    },
+    {
+      "round": 3,
+      "role": "typed-escape",
+      "repetitions": 2666,
+      "observation": {
+        "stdout": "887240761\n4\n2666\n157\n",
+        "elapsedMs": 157,
+        "wall": 0.16080437693744898
+      },
+      "nsPerWork": 58889.72243060765
+    },
+    {
+      "round": 4,
+      "role": "c",
+      "repetitions": 5333,
+      "observation": {
+        "stdout": "887240761\n4\n5333\n141\n",
+        "elapsedMs": 141,
+        "wall": 0.1446873163804412
+      },
+      "nsPerWork": 26439.15244702794
+    },
+    {
+      "round": 4,
+      "role": "qbe",
+      "repetitions": 2666,
+      "observation": {
+        "stdout": "887240761\n4\n2666\n172\n",
+        "elapsedMs": 172,
+        "wall": 0.1765094054862857
+      },
+      "nsPerWork": 64516.12903225807
+    },
+    {
+      "round": 4,
+      "role": "direct",
+      "repetitions": 1777,
+      "observation": {
+        "stdout": "887240761\n4\n1777\n164\n",
+        "elapsedMs": 164,
+        "wall": 0.16813921835273504
+      },
+      "nsPerWork": 92290.37703995498
+    },
+    {
+      "round": 4,
+      "role": "baseline",
+      "repetitions": 1600,
+      "observation": {
+        "stdout": "887240761\n4\n1600\n150\n",
+        "elapsedMs": 150,
+        "wall": 0.15312979090958834
+      },
+      "nsPerWork": 93750.0
+    },
+    {
+      "round": 4,
+      "role": "typed-scalar",
+      "repetitions": 2285,
+      "observation": {
+        "stdout": "887240761\n4\n2285\n160\n",
+        "elapsedMs": 160,
+        "wall": 0.16430097818374634
+      },
+      "nsPerWork": 70021.8818380744
+    },
+    {
+      "round": 4,
+      "role": "typed-escape",
+      "repetitions": 2666,
+      "observation": {
+        "stdout": "887240761\n4\n2666\n157\n",
+        "elapsedMs": 157,
+        "wall": 0.16082859504967928
+      },
+      "nsPerWork": 58889.72243060765
+    },
+    {
+      "round": 5,
+      "role": "c",
+      "repetitions": 5333,
+      "observation": {
+        "stdout": "887240761\n4\n5333\n141\n",
+        "elapsedMs": 141,
+        "wall": 0.14501553494483232
+      },
+      "nsPerWork": 26439.15244702794
+    },
+    {
+      "round": 5,
+      "role": "typed-escape",
+      "repetitions": 2666,
+      "observation": {
+        "stdout": "887240761\n4\n2666\n158\n",
+        "elapsedMs": 158,
+        "wall": 0.16137626022100449
+      },
+      "nsPerWork": 59264.816204051014
+    },
+    {
+      "round": 5,
+      "role": "typed-scalar",
+      "repetitions": 2285,
+      "observation": {
+        "stdout": "887240761\n4\n2285\n166\n",
+        "elapsedMs": 166,
+        "wall": 0.16910146083682775
+      },
+      "nsPerWork": 72647.70240700219
+    },
+    {
+      "round": 5,
+      "role": "baseline",
+      "repetitions": 1600,
+      "observation": {
+        "stdout": "887240761\n4\n1600\n151\n",
+        "elapsedMs": 151,
+        "wall": 0.15483574755489826
+      },
+      "nsPerWork": 94375.0
+    },
+    {
+      "round": 5,
+      "role": "direct",
+      "repetitions": 1777,
+      "observation": {
+        "stdout": "887240761\n4\n1777\n172\n",
+        "elapsedMs": 172,
+        "wall": 0.17611206229776144
+      },
+      "nsPerWork": 96792.3466516601
+    },
+    {
+      "round": 5,
+      "role": "qbe",
+      "repetitions": 2666,
+      "observation": {
+        "stdout": "887240761\n4\n2666\n173\n",
+        "elapsedMs": 173,
+        "wall": 0.17618230264633894
+      },
+      "nsPerWork": 64891.22280570142
+    }
+  ],
+  "pilots": [
+    {
+      "role": "direct",
+      "n": 100,
+      "observation": {
+        "stdout": "887240761\n0\n100\n9\n",
+        "elapsedMs": 9,
+        "wall": 0.012548808008432388
+      }
+    },
+    {
+      "role": "direct",
+      "n": 1777,
+      "observation": {
+        "stdout": "887240761\n0\n1777\n167\n",
+        "elapsedMs": 167,
+        "wall": 0.1705225110054016
+      }
+    },
+    {
+      "role": "baseline",
+      "n": 100,
+      "observation": {
+        "stdout": "887240761\n0\n100\n10\n",
+        "elapsedMs": 10,
+        "wall": 0.013259384781122208
+      }
+    },
+    {
+      "role": "baseline",
+      "n": 1600,
+      "observation": {
+        "stdout": "887240761\n0\n1600\n155\n",
+        "elapsedMs": 155,
+        "wall": 0.15898413117974997
+      }
+    },
+    {
+      "role": "typed-scalar",
+      "n": 100,
+      "observation": {
+        "stdout": "887240761\n0\n100\n7\n",
+        "elapsedMs": 7,
+        "wall": 0.010290597565472126
+      }
+    },
+    {
+      "role": "typed-scalar",
+      "n": 2285,
+      "observation": {
+        "stdout": "887240761\n0\n2285\n160\n",
+        "elapsedMs": 160,
+        "wall": 0.16334283258765936
+      }
+    },
+    {
+      "role": "typed-escape",
+      "n": 100,
+      "observation": {
+        "stdout": "887240761\n0\n100\n6\n",
+        "elapsedMs": 6,
+        "wall": 0.009276368655264378
+      }
+    },
+    {
+      "role": "typed-escape",
+      "n": 2666,
+      "observation": {
+        "stdout": "887240761\n0\n2666\n168\n",
+        "elapsedMs": 168,
+        "wall": 0.171153724193573
+      }
+    },
+    {
+      "role": "c",
+      "n": 100,
+      "observation": {
+        "stdout": "887240761\n0\n100\n3\n",
+        "elapsedMs": 3,
+        "wall": 0.005774226970970631
+      }
+    },
+    {
+      "role": "c",
+      "n": 5333,
+      "observation": {
+        "stdout": "887240761\n0\n5333\n142\n",
+        "elapsedMs": 142,
+        "wall": 0.14464595448225737
+      }
+    },
+    {
+      "role": "qbe",
+      "n": 100,
+      "observation": {
+        "stdout": "887240761\n0\n100\n6\n",
+        "elapsedMs": 6,
+        "wall": 0.010355270467698574
+      }
+    },
+    {
+      "role": "qbe",
+      "n": 2666,
+      "observation": {
+        "stdout": "887240761\n0\n2666\n173\n",
+        "elapsedMs": 173,
+        "wall": 0.17696911375969648
+      }
+    }
+  ],
+  "started": 4411555.707112963,
+  "assets": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/assets.json",
+    "bytes": 25589,
+    "sha256": "767986fb99bd450f7f83e9abd4a05361c7c3fd502a6a724717eb77abc1f76597"
+  },
+  "acquisition": {
+    "kind": "authenticated-llvm-mca-acquisition-v1",
+    "dateUtc": "2026-11-20T17:34:30Z",
+    "source": "https://deb.debian.org/debian/pool/main/l/llvm-toolchain-11/llvm-11_11.0.1-2_amd64.deb",
+    "packageVersion": "1:11.0.1-2",
+    "package": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/hardware-tool01/llvm-11_11.0.1-2_amd64.deb",
+      "resolved": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/hardware-tool01/llvm-11_11.0.1-2_amd64.deb",
+      "bytes": 8463020,
+      "sha256": "1dd51ffbda01aa2440dca7336d11a8b1410655151ccaf9fbe135c6f41e0d947a"
+    },
+    "member": "./usr/lib/llvm-11/bin/llvm-mca",
+    "sha256VerifiedBeforeExtraction": true,
+    "tool": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/hardware-tool01/llvm-mca",
+      "resolved": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/hardware-tool01/llvm-mca",
+      "bytes": 151912,
+      "sha256": "dd815d11faca9d348fc2aedcbe958a74f8b4b6a70fe166f8a1fd6f560f1fdb24"
+    },
+    "libraries": [
+      {
+        "file": "/lib/x86_64-linux-gnu/libLLVM-11.so.1",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libLLVM-11.so.1",
+        "bytes": 84483096,
+        "sha256": "cad61c5cd6ac4e9192c5912623ea8d76568e6b87b5cd8457e1b1ea1e74042799"
+      },
+      {
+        "file": "/lib/x86_64-linux-gnu/libbsd.so.0",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libbsd.so.0.11.3",
+        "bytes": 84064,
+        "sha256": "a0afc72213bf6e59d98e218abc721d4e9dea15487cc634e0a736531dc8643891"
+      },
+      {
+        "file": "/lib/x86_64-linux-gnu/libc.so.6",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+        "bytes": 1901536,
+        "sha256": "d13f170ab30a0f91d9713e0c2196efa5fe0bc42f0f2737cf0e56380df8051159"
+      },
+      {
+        "file": "/lib/x86_64-linux-gnu/libdl.so.2",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libdl-2.31.so",
+        "bytes": 18688,
+        "sha256": "df5973c718b4ee540cdd4400e19e90182ab5f3bac2148c0c9f3bb92eb6af3121"
+      },
+      {
+        "file": "/lib/x86_64-linux-gnu/libedit.so.2",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libedit.so.2.0.63",
+        "bytes": 212520,
+        "sha256": "6dfc7513bb5d3a0c2d0f4ef9a22aa0eedaf1d749cc8b6f88af46e579c3e02b20"
+      },
+      {
+        "file": "/lib/x86_64-linux-gnu/libffi.so.7",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libffi.so.7.1.0",
+        "bytes": 43496,
+        "sha256": "d7ce7e96311388ad35a34835c0db7738c869c8e1c88c071e9af5971e6765d89e"
+      },
+      {
+        "file": "/lib/x86_64-linux-gnu/libgcc_s.so.1",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1",
+        "bytes": 100736,
+        "sha256": "2d771c2e232fce107c7ec7f9a64b9a804e6d6737063088a2d8096b149a0af8cd"
+      },
+      {
+        "file": "/lib/x86_64-linux-gnu/libm.so.6",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libm-2.31.so",
+        "bytes": 1321344,
+        "sha256": "5461e535328078fb72f25f7ca2bf36bc71c415bbf573ccdfa289a7b796ddfdd3"
+      },
+      {
+        "file": "/lib/x86_64-linux-gnu/libmd.so.0",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libmd.so.0.0.4",
+        "bytes": 47312,
+        "sha256": "3e8acc749b960c0ce4ecfeaa9427f190e4d2915c5a32c98b93ca3fb451bda642"
+      },
+      {
+        "file": "/lib/x86_64-linux-gnu/libpthread.so.0",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libpthread-2.31.so",
+        "bytes": 149520,
+        "sha256": "7048cb46bda23f790af92e5f92975d84816a6de0a074a1624d46ac3c74dcdc3b"
+      },
+      {
+        "file": "/lib/x86_64-linux-gnu/librt.so.1",
+        "resolved": "/usr/lib/x86_64-linux-gnu/librt-2.31.so",
+        "bytes": 35808,
+        "sha256": "a24ccd19ad1dc82d78d825553c4ad8332e25f879970fe602d230312d93b5ce23"
+      },
+      {
+        "file": "/lib/x86_64-linux-gnu/libstdc++.so.6",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28",
+        "bytes": 1870824,
+        "sha256": "0e83d02a0144c726f05de850b71165691e380bd90205d22dd04bc8f788625507"
+      },
+      {
+        "file": "/lib/x86_64-linux-gnu/libtinfo.so.6",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libtinfo.so.6.2",
+        "bytes": 187792,
+        "sha256": "26d250890dc52618c47ddc30dcabc542423f17aa7519be28660be89adcfd825d"
+      },
+      {
+        "file": "/lib/x86_64-linux-gnu/libz.so.1",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libz.so.1.2.11",
+        "bytes": 113088,
+        "sha256": "062372f2053424d8bafd9378ebdcc29a08d7e1850342b3fd5a0e73462ed84901"
+      },
+      {
+        "file": "/lib/x86_64-linux-gnu/libz3.so.4",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libz3.so.4",
+        "bytes": 22910144,
+        "sha256": "4e6ac2c899c4fd9df0420813cee95d855c89399c6e381a17c9e88f87f973d0ab"
+      },
+      {
+        "file": "/lib64/ld-linux-x86-64.so.2",
+        "resolved": "/usr/lib/x86_64-linux-gnu/ld-2.31.so",
+        "bytes": 177928,
+        "sha256": "1c654e88d721c9ac659b48400d20b5310ead8c6d15eeaf695d507d00d59ef490"
+      }
+    ],
+    "inspection": [
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/hardware-tool01/ldd.txt",
+        "resolved": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/hardware-tool01/ldd.txt",
+        "bytes": 1165,
+        "sha256": "e17e813542c32b443acf5fc05f3c3aff5692402ca15b473957ee07b42a0205a4"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/hardware-tool01/readelf-dynamic.txt",
+        "resolved": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/hardware-tool01/readelf-dynamic.txt",
+        "bytes": 1743,
+        "sha256": "8229f7a0e72c0ee4759caa43203e468f0baa9b2c4815a3884a16b42b55f21464"
+      }
+    ],
+    "usesLibpfm": false,
+    "installation": "Single workspace binary; existing system libraries; no system installation or configuration changes",
+    "download": "First sandbox attempt DNS failure; approved network escalation succeeded (curl reported 0.2s transfer); command wall duration unavailable"
+  },
+  "modelCycleRatio": 0.4208612975391499,
+  "finite": {
+    "observations": 3072,
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-screen01/finite.c",
+      "bytes": 95251,
+      "sha256": "f3a9eeb24a957f8ffefb582d688bfc923da3a5fa36799397b28ec068366f1204"
+    },
+    "inputs": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-screen01/finite-inputs.json",
+      "bytes": 77208,
+      "sha256": "3abeccedc2f3f1cc03553c1c719efaa6cae80f0ed70f49630d7bb3e0d6555f3a"
+    },
+    "stdout": "PASS 3072 exact loop observations\n"
+  },
+  "buildAndCheckWall": 1.0074673667550087,
+  "counts": {
+    "direct": 1777,
+    "baseline": 1600,
+    "typed-scalar": 2285,
+    "typed-escape": 2666,
+    "c": 5333,
+    "qbe": 2666
+  },
+  "ratios": {
+    "direct": {
+      "median": 0.9934587726189944,
+      "pairs": [
+        0.9970805180286509,
+        0.9970805180286509,
+        0.9898370272093379,
+        0.8844105982757989,
+        0.9844306884261865,
+        1.0256142691566634
+      ]
+    },
+    "baseline": {
+      "median": 1.0,
+      "pairs": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "typed-scalar": {
+      "median": 0.7564556317585264,
+      "pairs": [
+        0.7660111905775924,
+        0.7660111905775924,
+        0.7465909255582767,
+        0.6670723654396437,
+        0.7469000729394604,
+        0.769776979147043
+      ]
+    },
+    "typed-escape": {
+      "median": 0.6280643008434228,
+      "pairs": [
+        0.6323728583152499,
+        0.6404285635167182,
+        0.6279715624270306,
+        0.5575358336625577,
+        0.6281570392598149,
+        0.6279715624270306
+      ]
+    },
+    "c": {
+      "median": 0.2839707683072474,
+      "pairs": [
+        0.31210004316544954,
+        0.2859239105128634,
+        0.2900843554377778,
+        0.2520867613397435,
+        0.28201762610163134,
+        0.2801499597036073
+      ]
+    },
+    "qbe": {
+      "median": 0.6878805794163773,
+      "pairs": [
+        0.688762794725527,
+        0.6927906473262612,
+        0.6796401087026724,
+        0.6072524048171807,
+        0.6881720430107527,
+        0.6875891158220018
+      ]
+    }
+  },
+  "wall": 8.030508205294609
+}

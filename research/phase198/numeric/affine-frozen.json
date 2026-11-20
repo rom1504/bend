@@ -1,0 +1,52 @@
+{
+  "kind": "phase198-stable-orbit-prospective",
+  "sourcePins": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase198/numeric/numeric-affine.bend",
+      "bytes": 14916,
+      "sha256": "315ecb910e575b0a480c122f52d6266656398a2094514acadf124a749ab2705a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase198/numeric/affine.bend",
+      "bytes": 8244,
+      "sha256": "523d828cc5f14470a7e0ec1b111fc7d6163051781c1972ea8ebf207d5bdc1f6d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase198/numeric/hook.bend",
+      "bytes": 1843,
+      "sha256": "a4b1145eba62a223fc1699ad2b96b3c964cc4a6c67193e2a9fe602da7f8c14fd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase198/numeric/controls-affine.mjs",
+      "bytes": 14055,
+      "sha256": "b5d458df69cc8b1f54bccbec4db8d0df20f769b3e1ed4918b000036c4d8779ca"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-api-source09/compiler.bend",
+      "bytes": 1862877,
+      "sha256": "550b513b446c5b45ed1fdf0e7fcab11e9f45b7b15a582baa4251a50c6fffb875"
+    }
+  ],
+  "legality": "Canonical N_W32 state/counter; full-width positive countdown and decrement by one; pure integer transitions; all state and branch conditions independent of fuel and counter; counter update has coefficient one modulo U32. Runtime equality of every other next/current state proves a fixed transition; delta is invariant thereafter. Execute ordinary prefix then exact modular remaining count.",
+  "expected": {
+    "scalar-region-8192": "Transform actual zero orbit after one prefix; over99% worker-work removal expected; whole-program remains overhead limited, measure not infer.",
+    "mandelbrot": "Existing escape guard remains. New fixed-state checks may regress live steps; redundant positive-fuel test removal can offset some cost. No whole-program gain assumed.",
+    "grid": "Same worker, mixed orbit incidence. All four real products will be tested if slot permits."
+  },
+  "before": "source06 checked escape rule, retained numeric-products02; actual native45-02 also measured",
+  "after": "source09 independently checked; controls and actual product timing pending",
+  "wholeSuiteClaim": false,
+  "admission": "Frozen before new API/model/target execution; no production edits",
+  "controlsUpdate": "Added explicit counter-dependent-state/control, fullword-counter-arithmetic, and fresh-name refusal controls before API execution.",
+  "cases": [
+    "mandelbrot",
+    "scalar-region-8192"
+  ],
+  "scope": "Two actual current-source products plus independent synthetic controls; no source ceiling needed if the checked general rule works.",
+  "independentCheck": {
+    "receipt": "selfhost/build/phase198/numeric-api04/report.json",
+    "complete": true,
+    "checked": true,
+    "seconds": 14.876123923
+  }
+}

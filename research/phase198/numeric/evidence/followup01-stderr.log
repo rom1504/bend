@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/home/ai/bend2/build/publish/bend/research/phase198/numeric/followup.py", line 4, in <module>
+    subprocess.run(['selfhost/.assets/bin/bun','research/phase198/numeric/capture.mjs','--out',str(a.out/'capture')],check=True,timeout=12)
+  File "/usr/lib/python3.9/subprocess.py", line 507, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.9/subprocess.py", line 1134, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.9/subprocess.py", line 2007, in _communicate
+    self.wait(timeout=self._remaining_time(endtime))
+  File "/usr/lib/python3.9/subprocess.py", line 1189, in wait
+    return self._wait(timeout=timeout)
+  File "/usr/lib/python3.9/subprocess.py", line 1911, in _wait
+    raise TimeoutExpired(self.args, timeout)
+subprocess.TimeoutExpired: Command '['selfhost/.assets/bin/bun', 'research/phase198/numeric/capture.mjs', '--out', 'selfhost/build/phase198/numeric-followup01/capture']' timed out after 11.999934022314847 seconds

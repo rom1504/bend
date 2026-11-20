@@ -1,0 +1,156 @@
+.text
+.globl p113d_FID_36_100_105_114_101_99_116_46_109_105_116_
+.type p113d_FID_36_100_105_114_101_99_116_46_109_105_116_, @function
+p113d_FID_36_100_105_114_101_99_116_46_109_105_116_:
+  pushq %rbp
+  movq %rsp, %rbp
+  subq $2592, %rsp
+  movq %r12, -16(%rbp)
+  movq %rbx, -8(%rbp)
+  movq %r13, -24(%rbp)
+  movq %r14, -32(%rbp)
+  movq %r15, -40(%rbp)
+  movq %rdi, %rax
+  movq %rax, %r12
+  movq %rsi, %rax
+  movq %rax, %rdi
+  movq %rdx, %rax
+  movq %rax, %r14
+  movq %rcx, %rax
+  movq %rax, %r15
+  movq %r8, %rax
+  movq %rax, %r8
+  movq %r9, %rax
+  movq %rax, %r9
+  movq 16(%rbp), %rax
+  movq %rax, -88(%rbp)
+  movq 24(%rbp), %rax
+  movq %rax, %r13
+.Lp113d_FID_36_100_105_114_101_99_116_46_109_105_116__loop:
+  cmpq $0, %rdi
+  jne .Lp113d_FID_36_100_105_114_101_99_116_46_109_105_116__b0
+.Lp198_original_escape_done:
+  movq %r13, %rax
+  movq -16(%rbp), %r12
+  movq -8(%rbp), %rbx
+  movq -24(%rbp), %r13
+  movq -32(%rbp), %r14
+  movq -40(%rbp), %r15
+  movq %rbp, %rsp
+  popq %rbp
+  ret
+.Lp113d_FID_36_100_105_114_101_99_116_46_109_105_116__b0:
+  movq %rdi, %r10
+  subq $1, %r10
+  movq %r10, -2288(%rbp)
+  movl %r8d, %edi
+  movl %r8d, %edx
+  imull %edx, %edi
+  movq %rdi, %rsi
+  shrq $8, %rsi
+  movq %rsi, %rdx
+  movq %rdi, %rsi
+  shrq $31, %rsi
+  movq %rsi, %r10
+  movabsq $0, %r11
+  cmpq %r11, %r10
+  movabsq $0, %rax
+  movabsq $4278190080, %r11
+  cmoveq %rax, %r11
+  movq %r11, %rdi
+  movq %rdx, %rsi
+  orq %rdi, %rsi
+  movl %r9d, %edi
+  movl %r9d, %edx
+  imull %edx, %edi
+  movq %rdi, %rdx
+  shrq $8, %rdx
+  movq %rdx, %rbx
+  movq %rdi, %rdx
+  shrq $31, %rdx
+  movq %rdx, %r10
+  movabsq $0, %r11
+  cmpq %r11, %r10
+  movabsq $0, %rax
+  movabsq $4278190080, %r11
+  cmoveq %rax, %r11
+  movq %r11, %rdi
+  movq %rbx, %rdx
+  orq %rdi, %rdx
+  movq %rsi, %rdi
+  addl %edx, %edi
+  movq %rdi, %r10
+  movabsq $1024, %r11
+  cmpq %r11, %r10
+  movabsq $1, %rax
+  movabsq $0, %r11
+  cmovaq %rax, %r11
+  movq %r11, %rbx
+  movl -88(%rbp), %edi
+  orq %rbx, %rdi
+  movq %rdi, %rbx
+  testl %ebx, %ebx
+  jnz .Lp198_original_escape_done
+  movq %rsi, %rdi
+  subl %edx, %edi
+  movl %r14d, %edx
+  addl %edx, %edi
+  movq %rdi, %r10
+  movq %r10, -2416(%rbp)
+  movl %r8d, %edi
+  movl %r9d, %edx
+  imull %edx, %edi
+  movq %rdi, %r11
+  movabsq $2, %rdi
+  imull %r11d, %edi
+  movq %rdi, %rsi
+  shrq $8, %rsi
+  movq %rsi, %rdx
+  movq %rdi, %rsi
+  shrq $31, %rsi
+  movq %rsi, %r10
+  movabsq $0, %r11
+  cmpq %r11, %r10
+  movabsq $0, %rax
+  movabsq $4278190080, %r11
+  cmoveq %rax, %r11
+  movq %r11, %rdi
+  movq %rdx, %rsi
+  orq %rdi, %rsi
+  movl %r15d, %edx
+  movq %rsi, %rdi
+  addl %edx, %edi
+  movq %rbx, %r10
+  movabsq $0, %r11
+  cmpq %r11, %r10
+  movq -2416(%rbp), %rax
+  movq %r8, %r11
+  cmoveq %rax, %r11
+  movq %r11, -2464(%rbp)
+  movq %rbx, %r10
+  movabsq $0, %r11
+  cmpq %r11, %r10
+  movq %rdi, %rax
+  movq %r9, %r11
+  cmoveq %rax, %r11
+  movq %r11, -2480(%rbp)
+  movq %rbx, %r10
+  movabsq $0, %r11
+  cmpq %r11, %r10
+  movabsq $1, %rax
+  movabsq $0, %r11
+  cmoveq %rax, %r11
+  movq %r11, %rsi
+  movl %r13d, %edi
+  addl %esi, %edi
+  movq -2464(%rbp), %r10
+  movq %r10, %r8
+  movq -2480(%rbp), %r10
+  movq %r10, %r9
+  movq %rbx, -88(%rbp)
+  movq %rdi, %r13
+  movq -2288(%rbp), %r10
+  movq %r10, %rdi
+  jmp .Lp113d_FID_36_100_105_114_101_99_116_46_109_105_116__loop
+.size p113d_FID_36_100_105_114_101_99_116_46_109_105_116_, .-p113d_FID_36_100_105_114_101_99_116_46_109_105_116_
+.section .note.GNU-stack,"",@progbits

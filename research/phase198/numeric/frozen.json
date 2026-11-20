@@ -1,0 +1,1087 @@
+{
+  "kind": "phase198-numeric-frozen-v1",
+  "case": "mandelbrot",
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase197/shared-emission01/combined/mandelbrot/program.s",
+    "bytes": 548046,
+    "sha256": "645ba142ca28e145c35fd586c00f6f3eb3a2cc7e7d623596ccc2f617a0427ee5"
+  },
+  "object": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase197/shared-emission01/combined/mandelbrot/program.o",
+    "bytes": 137608,
+    "sha256": "a425b2d6a372bc118f51053f4da2bf51655ca723aaac8c23adf44e423e7077e5"
+  },
+  "direct": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/native45-01/mandelbrot/machine/program",
+    "bytes": 215600,
+    "sha256": "fc20d55641b3e0581c4a571c3a3fac8fc5ca773c5848605b996ae2bbfdf3e345"
+  },
+  "reference": {
+    "id": "mandelbrot",
+    "family": "mandelbrot",
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/mandelbrot.bend",
+      "bytes": 8536,
+      "sha256": "7d47d183cf02b3e943e0e35532eb8ba12c683eafd9b2031bbc25983181174897"
+    },
+    "expectedFile": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/mandelbrot.stdout",
+      "bytes": 10,
+      "sha256": "1529134f8bd7e9d3989167e1dca0726ea4b01b5dba6e8e3407e966f8f37c7758"
+    },
+    "point": {
+      "expectedStdout": "887240761\n",
+      "runtimeArgs": [
+        2,
+        0
+      ],
+      "repetitions": 9036,
+      "warmups": 4,
+      "ratioEligible": true
+    },
+    "oracleProvenance": "Exact Phase93 complete expected output, authenticated against preserved independent Phase92/105 evidence in Phase111 full45; reused historical regression oracle.",
+    "sourceGroup": "cb2b9c30aceeb0f8ed0da1f999658aa8d7fb346851877da6902d1ded4cfc0656",
+    "products": {
+      "c": {
+        "artifact": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/mandelbrot/bend-c/program",
+          "bytes": 108744,
+          "sha256": "be22d29a00ccb433be39cae20507eba454ce8f75b80885cef635f3823e215d41"
+        },
+        "runtimeArgumentConvention": "bend-rts-v1",
+        "inputs": [
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/programs.manifest.json",
+            "bytes": 791646,
+            "sha256": "9117539ba0fa06640492c842676b756af84b892153989469a399af724b4e96e4"
+          }
+        ]
+      },
+      "qbe": {
+        "artifact": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-native45-acquire01/mandelbrot/phase186-qbe-n2/machine/program",
+          "bytes": 186512,
+          "sha256": "118279a98ea26339765a3fc85950af32900fe3124ddf6027fa9707f48934e3b0"
+        },
+        "runtimeArgumentConvention": "bend-rts-v1",
+        "inputs": [
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-native45-acquire01/programs.manifest.json",
+            "bytes": 710369,
+            "sha256": "e205a9d835769bfebd12ad820dcd6031d87701ad5fec1459a7c365d9caf1c505"
+          }
+        ]
+      },
+      "baseline": {
+        "artifact": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/native45-02/mandelbrot/machine/program",
+          "bytes": 215600,
+          "sha256": "e77c6698173ed08656ab90551ee36f8123c75cdd74141520a112990be65a9158"
+        },
+        "generatedSource": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/native45-02/mandelbrot/machine/program.o",
+          "bytes": 138216,
+          "sha256": "6ddc2cac42164ec749df27ce4189db17fffd76fad9f1189d28e366201d1a3ef7"
+        },
+        "runtimeArgumentConvention": "bend-rts-v1",
+        "inputs": [
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/assets.json",
+            "bytes": 25589,
+            "sha256": "767986fb99bd450f7f83e9abd4a05361c7c3fd502a6a724717eb77abc1f76597"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/request.py",
+            "bytes": 23782,
+            "sha256": "946140eee097421446ca1d2173237307342829694ccc83d21aa8172acae3e2ac"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/assets.py",
+            "bytes": 10497,
+            "sha256": "cc3d4aecced9b08fff7a65e9a349dfddefd5ae7876fcb4d56b16f8732bd3c2fa"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/common.py",
+            "bytes": 4809,
+            "sha256": "d9a16fef18cf936499e51f8c7f36a653f2921ef9a50f846257c2e8bc460ec6d1"
+          },
+          {
+            "file": "/usr/bin/python3.9",
+            "bytes": 5451288,
+            "sha256": "ca7655083b581ffe36c72dcb445857704db533ca39b03f79c97d8d0ef3bef9af"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/mandelbrot.bend",
+            "bytes": 8536,
+            "sha256": "7d47d183cf02b3e943e0e35532eb8ba12c683eafd9b2031bbc25983181174897"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/native-self01/program",
+            "bytes": 24963272,
+            "sha256": "5148debe7f21391ed784ba487840fd501693aafd161f231d004f29846151c982"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/native-self01/report.json",
+            "bytes": 17306,
+            "sha256": "844c245d313f4d7cb20e22493ea5a4b6ee14847eabf63f1d128f63e9e9c4a760"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase182/bend2/base.bend",
+            "bytes": 87698,
+            "sha256": "ff90fb27ed19d5c7a6165170f28ad81562bf345b9a9e6134e5c2e326beff9de4"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/base.p130",
+            "bytes": 2827018,
+            "sha256": "3b1d2d23ac05818fea2ee13442a02b6ef8f57eb6b4b1842851e8900238f539b9"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/selected-source02/compiler.bend",
+            "bytes": 1835600,
+            "sha256": "4b29752fec8fbdb593a86b80f99ea18b7705dfc9fe56a364280bebb1f46c5e63"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/runtime.o",
+            "bytes": 125264,
+            "sha256": "67141c4505a0355901d857c4ba81dfc17559329e536818a843ce68615384d13e"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/catalog.json",
+            "bytes": 54895,
+            "sha256": "746fe610bfe1a5704f390b71cd5ee702e6bd874bd89a5a9363d5f69f69c0e475"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase190/cases.json",
+            "bytes": 1768,
+            "sha256": "44df093f3d140ac33617b5fb1d94f3abe0302c032ada4cf7ede6aa8c40272095"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase190/native-programs.py",
+            "bytes": 10713,
+            "sha256": "0e26295f8961fa55c0dd4fbf827aafdd68e0f9ff464b1d0c51e68883e415f82f"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/bench.py",
+            "bytes": 26736,
+            "sha256": "67b38c1425092f674d1939d3ed1d6f569da76df5e077ce283488287e74edea48"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/native.py",
+            "bytes": 20178,
+            "sha256": "c587ac5a3699d3718dc9f17be117700e6783fef0e9effc73a5d9d12da401489f"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/mandelbrot.stdout",
+            "bytes": 10,
+            "sha256": "1529134f8bd7e9d3989167e1dca0726ea4b01b5dba6e8e3407e966f8f37c7758"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/editdist.bend",
+            "bytes": 7835,
+            "sha256": "759d82e26789e55187d175cb8416d6ebe4266a53f73a53ca6d32b69d4f71e988"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/editdist.stdout",
+            "bytes": 11,
+            "sha256": "cc6e43baccd95c4f6e49e8df91d27c77ab7d18524070d83af32977422f0b1280"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/tree-bitonic.bend",
+            "bytes": 6593,
+            "sha256": "405f8d8fb2066e6fedd8baa45943bcdf92b59cb40e23ce2ad3ea4bd3eeb53ae0"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/tree-bitonic.stdout",
+            "bytes": 10,
+            "sha256": "4d9faad3bd6736bd6b3be55577bba89ff3064588775afe8959dd2f709ca6aa21"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/lexer.bend",
+            "bytes": 9095,
+            "sha256": "bfb62870600b63fd6ec6088471a2d805fabb819a7f2e9d47c9b0ef3c368d169a"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/lexer.stdout",
+            "bytes": 11,
+            "sha256": "ce7ae380f780c64e26dc0b2fd2f547364c4e837bdecd61714cf04150768acf0a"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/symreg.bend",
+            "bytes": 7369,
+            "sha256": "3c8afa94641531b0e88a51e228cc5e5479db3e36ea244362fcaea5b7705b56a2"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/symreg.stdout",
+            "bytes": 11,
+            "sha256": "f05c8aaefce9db36f5dba04e256b126cfb0a89ae25f972c7471b1c0208dd6611"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/test-morning-program.bend",
+            "bytes": 5064,
+            "sha256": "740992084d3171460f394dfdd2574a3def860de3260d818b2a99fb9c8e945746"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/test-morning-program.stdout",
+            "bytes": 30,
+            "sha256": "9e5fd72ad28164f5db0a3ed002f64f949589ec8fdd6edab70c75b470c2e8f106"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/test-evening-program.bend",
+            "bytes": 4120,
+            "sha256": "4d568aa3230e4383a930c7008e9b64c51fcc9326a61edd9532716114f1c2ae9c"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/test-evening-program.stdout",
+            "bytes": 6,
+            "sha256": "cf851cececb82500a8e12ff58941a08d2b8f3c22a142ed09052a9b43e43658c4"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/test-rle-roundtrip.bend",
+            "bytes": 4708,
+            "sha256": "b46580acb1656502d0e37a0115d172529e648719acb75eadb3b9ad45db5b078d"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/test-rle-roundtrip.stdout",
+            "bytes": 3,
+            "sha256": "25d4f2a86deb5e2574bb3210b67bb24fcc4afb19f93a7b65a057daa874a9d18e"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/test-map-set-ops.bend",
+            "bytes": 7234,
+            "sha256": "e93dc56e4c91670bb831c329e9ced90a0e17126bc02f4d7709131a516f0eb0ca"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/test-map-set-ops.stdout",
+            "bytes": 6,
+            "sha256": "32c66107f0f4f2053128e519681fc8e88806d0d2b17607ce9f2362aff66ad6c7"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/raytrace.bend",
+            "bytes": 16182,
+            "sha256": "17e96389638b1a6a12bf9a4f7cabaf00184f1974e75d8363d699aef6b318fd34"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/raytrace.stdout",
+            "bytes": 7,
+            "sha256": "51919f34152cd418fdf625a4841ebf64375948e001d5699d7702a206e17ac834"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/local-pair.bend",
+            "bytes": 8202,
+            "sha256": "acb8a8bc1d8ed6fd5c3a57e08c154042e0524a8d4f3f12ddcec9da75a327e78c"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/local-pair.stdout",
+            "bytes": 11,
+            "sha256": "4a736bfb1ff7d70ef494f46a67ca008db9fb990a30e28898d56d21583bf734fe"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/local-fold.bend",
+            "bytes": 2737,
+            "sha256": "2252256562cc415348f3aa53c960b318f87c4a8b5fd118a0a2f115d446723125"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/local-fold.stdout",
+            "bytes": 11,
+            "sha256": "c07893fbab1330de5e1c73495d24da59ca965c977e89fa9ea508b2f316ab3e20"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/scalar-region-0.bend",
+            "bytes": 3445,
+            "sha256": "4f20060ec4dce1625914d1bca3a6e07390e3b6bffe001a09bae4ac92a386dc2e"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/scalar-region-0.stdout",
+            "bytes": 2,
+            "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/scalar-region-8192.bend",
+            "bytes": 3454,
+            "sha256": "ee300ddfdeda2e89e2f52550ec10d9f22842276cef737fbd19578bed095133f7"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/scalar-region-8192.stdout",
+            "bytes": 5,
+            "sha256": "131e490ede5d344e5a8539d4a5335ccc70db7eacb397b876cffc72578b1331bf"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/complete-generic-row32.bend",
+            "bytes": 9874,
+            "sha256": "10e093925d81b26d82fc5071ef22c4b76dc9e55b3dbb9b47cbbb03110d29aba1"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/complete-generic-row32.stdout",
+            "bytes": 1079,
+            "sha256": "4a46fa4ae7c3a221cb96234de88bbcb734def182978a6bb808c59f97607615bd"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-editdist-0-17.bend",
+            "bytes": 7836,
+            "sha256": "04626f081fd3ef709c7d5d7daf4b5ead6262b7b2c792e6fb347c68e4dda3a582"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/variation-editdist-0-17.stdout",
+            "bytes": 10,
+            "sha256": "21b9be437c896d87aa31e79362f67bd1be2412475608c78db32faf94276acf78"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-editdist-3-123.bend",
+            "bytes": 7839,
+            "sha256": "a4e09e8b7c9a23cf0eb7ab4604993438f97184b5f30c98d693042461349272fd"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/variation-editdist-3-123.stdout",
+            "bytes": 11,
+            "sha256": "ac6d1585d80481772f899f026dd6916441268f40ac62652bfb2b9e31cb35f151"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-lexer-6-17.bend",
+            "bytes": 9097,
+            "sha256": "2e3de72111f28e34b22bef4f0433506da55edaaa888d4df0d665d08b41a70887"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/variation-lexer-6-17.stdout",
+            "bytes": 11,
+            "sha256": "277e42c734c5a92d99527e42cc5d3bb80d51f5f72f5e454855397c2f70d9e9e3"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-lexer-10-123.bend",
+            "bytes": 9101,
+            "sha256": "513ae3729efd7f312c610e9136b7e8f3f2767cbcafe3bd9da2d2f04c92d59139"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/variation-lexer-10-123.stdout",
+            "bytes": 11,
+            "sha256": "5d310e186595597765446008b87ca55c4ecd369896021c968b942a1ff31060d0"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-tree-bitonic-6-17.bend",
+            "bytes": 6596,
+            "sha256": "da4d24d043f90bc7dec87cde76de317e88db22e27d315172eb08567aac8fb3af"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/variation-tree-bitonic-6-17.stdout",
+            "bytes": 11,
+            "sha256": "7db94831fc6984f4a54b78a6f704e45531675ca0ac60999021cdbed1153de90e"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-tree-bitonic-9-123.bend",
+            "bytes": 6598,
+            "sha256": "a641ba273024691024829018b0f494935e2e8c038ae6e8708ed58b410f0171b6"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/variation-tree-bitonic-9-123.stdout",
+            "bytes": 11,
+            "sha256": "dcaa9bb22003955b251b474fb7bb9c5f0db22c8591442bc3179841fc4dc677b9"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-symreg-4-17.bend",
+            "bytes": 7369,
+            "sha256": "6e2e51bf436713ead1b06822a97d03dc853d1849aaa7749c018ff6db2b8a6400"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/variation-symreg-4-17.stdout",
+            "bytes": 11,
+            "sha256": "143d53cf55a4bb7e2c520fccada27265408f3569de6e180e61d1cb6ee7238095"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-symreg-7-123.bend",
+            "bytes": 7371,
+            "sha256": "fb8dee79917f21fc6f621cdc8201d33a662ba4505b22d54895e39fd62c363546"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/variation-symreg-7-123.stdout",
+            "bytes": 11,
+            "sha256": "553d5d7a53135c492d7e7bacd94b3251b65415f3f329d2fcdb6f4fd96d27e6a2"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-local-fold-128-0.bend",
+            "bytes": 2724,
+            "sha256": "73ce97cc78fd63446fe943dc3b8cc5604d8a95a49ac9b1b6d51853adee583bea"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/variation-local-fold-128-0.stdout",
+            "bytes": 2,
+            "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-local-fold-8192-123.bend",
+            "bytes": 2738,
+            "sha256": "40cd23bfd2931023132a077a33ba1e638ad8870e344ff9310945dc357b5abae5"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/variation-local-fold-8192-123.stdout",
+            "bytes": 10,
+            "sha256": "f775b02cdd5c72ac32b98b6762df5e8044b2e2762d343117e9dfc0619ae47a90"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-mandelbrot-grid-4-7.bend",
+            "bytes": 9364,
+            "sha256": "793feefdc1dec5425bddfc1cd50ca0746569b7fc5c327a41edb313125c545846"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/variation-mandelbrot-grid-4-7.stdout",
+            "bytes": 11,
+            "sha256": "cafe8262db90e367b89b3f2c255c8744aff6b347dc1670030ac7c1593bfe706e"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-mandelbrot-grid-5-31.bend",
+            "bytes": 9366,
+            "sha256": "898cb66cad62cd20615d3e100ee2638f695efd071ee8290b5e0da03b89f702c4"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/variation-mandelbrot-grid-5-31.stdout",
+            "bytes": 11,
+            "sha256": "89edfcb7ef2677c2dfd4f1fdd6ef159952e6e075f23428b7b1d5274731b55b32"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-ray-active-64-2440.bend",
+            "bytes": 16659,
+            "sha256": "2e01d6027b6b046e38d8c34b4397f5df45f2d912d2f86f273aaa4e3a336f4296"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/variation-ray-active-64-2440.stdout",
+            "bytes": 11,
+            "sha256": "6bbe11f3e34f9de410ad15166630aac90dc832b59a96cd7afa70dda0b76b3b57"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/variation-ray-active-256-2240.bend",
+            "bytes": 16661,
+            "sha256": "7099448e301e2cab7cb5ab47e2a4892dbf44ac246676b4f950282c7a57007669"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/variation-ray-active-256-2240.stdout",
+            "bytes": 11,
+            "sha256": "15adde12f874e278a5e96d86c4ee20d18706611252e5cfc76a3ba63d29170dcf"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-closures-64.bend",
+            "bytes": 3364,
+            "sha256": "d5a0e144805beec3aafdfa5a5bf0ae1579659caff90d42fc178f0ac17b9db60a"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/coverage-closures-64.stdout",
+            "bytes": 5,
+            "sha256": "802ecf9f67ccf8fda5913f286bd0b3236043f5f4b0c2ae7e7bf3d05f1758f865"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-closures-256.bend",
+            "bytes": 3369,
+            "sha256": "d0e35c8343fcbe86b45211f7738d293a27a0a5184060e0136b0275fc9556cef4"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/coverage-closures-256.stdout",
+            "bytes": 6,
+            "sha256": "8cf0773ed5fb75c07a06d48185cd73ff8f1921c588db76a3df3731a557c40b15"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-list-pipeline-128.bend",
+            "bytes": 5223,
+            "sha256": "5a6bb5b6e3e4549ceae238b40485aa6d00facdab6bb8382790a486b165a1cd97"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/coverage-list-pipeline-128.stdout",
+            "bytes": 5,
+            "sha256": "809ab2f049b9783d5e9adfb1bf8d82e182bf71399bc90f29aaee87b629a2872d"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-list-pipeline-512.bend",
+            "bytes": 5225,
+            "sha256": "c4eba973b7176ba8a0bc7c07aa69f32c7f8ed8b09fd32d8d3b92fa2a343e0fe9"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/coverage-list-pipeline-512.stdout",
+            "bytes": 5,
+            "sha256": "44ab14762588da84f4ab2c7bf98c05ce405b5c4aaeb400a2744aece356e3de1b"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-bst-32.bend",
+            "bytes": 5027,
+            "sha256": "5b2e60b5e1435882bcdd25329194073c64df8d88d21f98ba2c3290384738c1c2"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/coverage-bst-32.stdout",
+            "bytes": 11,
+            "sha256": "b7a494ce750469a6fed69c06230045f5c1caba8de5ecd9436e2d103730a5f531"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-bst-64.bend",
+            "bytes": 5028,
+            "sha256": "474ffc3a68c1fcd4947cfe49fe117c15aae0a66dab99ed50d6c17bfcf6563d65"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/coverage-bst-64.stdout",
+            "bytes": 10,
+            "sha256": "baf85e5e8a3c69ee0b60c4f2fc3c7d95c8f8c5c0f3bc833a0b7e08a91911e714"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-unicode-text-16.bend",
+            "bytes": 7528,
+            "sha256": "1e44705513750680563a8939e46120e4fbb5e9ffbfabe1f3d22b773a6eada3c5"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/coverage-unicode-text-16.stdout",
+            "bytes": 289,
+            "sha256": "835a668452e7da17c4390ebeca7cc5422056349b74011e53130159d123360eaf"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-unicode-text-64.bend",
+            "bytes": 8458,
+            "sha256": "49a53fc745be33a8237b1b48f3175dbba4e20c76549374253520ae39f6b894bf"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/coverage-unicode-text-64.stdout",
+            "bytes": 1217,
+            "sha256": "aeda13750dee71bdab8ccf55cde8b155af956f8c029a34c14e0d1c8579b8bb2a"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-expression-32.bend",
+            "bytes": 3497,
+            "sha256": "e1667f5fb6802cda5d062bf0bb97c3f5057fc3ab02d4cd5778e9198cd1439998"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/coverage-expression-32.stdout",
+            "bytes": 8,
+            "sha256": "9df4cdfc83c2d0716ba30f59863b300d8417818fda1d7e456bb3c83c1929a7c7"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-expression-128.bend",
+            "bytes": 3504,
+            "sha256": "32ae9cc5bdaeff023b08403b357b7e8a3f03e06d37c461feb4a8930ad51c5a2c"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/coverage-expression-128.stdout",
+            "bytes": 11,
+            "sha256": "17c0949f352d912dbd3adbf58715df4efca36ad86aac5f7935cde269d7db89d3"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-map-churn-32.bend",
+            "bytes": 3655,
+            "sha256": "ada0bc78c19c9ed252c779190144fa1155d2ff44fa12602166429140238870d9"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/coverage-map-churn-32.stdout",
+            "bytes": 11,
+            "sha256": "780a7cb6c7cd5f82e073caecb1b0f05fbcbad90380586829e3afc26683c7b474"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-map-churn-128.bend",
+            "bytes": 3659,
+            "sha256": "cd22c831c180c0de12d84aeb80debf4881d08cbd18fcf8f6d634153fba2feb03"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/coverage-map-churn-128.stdout",
+            "bytes": 11,
+            "sha256": "f10e5e29d4f448b0f6aeef222b95d6790cf410196cd6d64d27156e08c7ecafb8"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-numeric-recurrence-256.bend",
+            "bytes": 2510,
+            "sha256": "4b9a0ee2ab80c844b74e44e5ce94d17669e70ed5d8f6da3cebe7354e1db9f293"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/coverage-numeric-recurrence-256.stdout",
+            "bytes": 11,
+            "sha256": "2b264d0566bf2985927030a3bcc6d1220830caef66eb39571c2e1545aa48f27e"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-numeric-recurrence-1024.bend",
+            "bytes": 2514,
+            "sha256": "39c7c7be54d5a47b6042b0d8f70b124610ea5a2fee28866d85599b7f0f5bbb46"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/coverage-numeric-recurrence-1024.stdout",
+            "bytes": 11,
+            "sha256": "f608ef31e8a3c58b641dd85ce36b9f759bcd685e138466186e32ae709ce1a086"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-record-aggregation-64.bend",
+            "bytes": 3802,
+            "sha256": "36ad15032712bd62a88a3fae13105880db1a0ecde3fc98e43791c4f21876c2c9"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/coverage-record-aggregation-64.stdout",
+            "bytes": 215,
+            "sha256": "d83688ded4a47d7a93d617a687fb1e804b178378530dbcfc633910793e62270a"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-record-aggregation-256.bend",
+            "bytes": 3806,
+            "sha256": "eb5841e7f516d2f87ef8028f83a902390c4aab439875207448ffa4c4d5c28bc1"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/expected/coverage-record-aggregation-256.stdout",
+            "bytes": 215,
+            "sha256": "01cbdc92897ea7a07ec1c00311b88060caad9df5716b069898a0027a3fd07bc2"
+          },
+          {
+            "file": "/usr/bin/x86_64-linux-gnu-gcc-10",
+            "bytes": 817704,
+            "sha256": "693abcb42e67fb871673f258a3644257ca69a209691ec4d8137a42442834bd19"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/native45-02/mandelbrot/machine/report.json",
+            "bytes": 16346,
+            "sha256": "53d4138fb77fc09c6f4f61c88c51557619ca039a6a576185812382ba12ada7f0"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/native45-02/mandelbrot/oracle-process.json",
+            "bytes": 925,
+            "sha256": "05e1bc4c20740dd2f271d9a630c65e68b6067fc3d04da1fb711db440717067f9"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/native45-02/mandelbrot/oracle.stdout",
+            "bytes": 16,
+            "sha256": "88f976f53976d741ceb5789d7e7fb933ac379187be80c62bdbfc425dcf2c19da"
+          },
+          {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/native45-02/mandelbrot/oracle.stderr",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        ]
+      }
+    }
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase198/numeric/prepare.py",
+    "bytes": 4114,
+    "sha256": "f923f4e85d522b69b9ca8a4117ecf27d902f81df50c314dcea59de56b492669c"
+  },
+  "symbol": "p113d_FID_36_100_105_114_101_99_116_46_109_105_116_",
+  "start": 4258,
+  "end": 4406,
+  "before": [
+    "p113d_FID_36_100_105_114_101_99_116_46_109_105_116_:",
+    "  pushq %rbp",
+    "  movq %rsp, %rbp",
+    "  subq $2592, %rsp",
+    "  movq %r12, -16(%rbp)",
+    "  movq %rbx, -8(%rbp)",
+    "  movq %r13, -24(%rbp)",
+    "  movq %r14, -32(%rbp)",
+    "  movq %r15, -40(%rbp)",
+    "  movq %rdi, %rax",
+    "  movq %rax, %r12",
+    "  movq %rsi, %rax",
+    "  movq %rax, %rdi",
+    "  movq %rdx, %rax",
+    "  movq %rax, %r14",
+    "  movq %rcx, %rax",
+    "  movq %rax, %r15",
+    "  movq %r8, %rax",
+    "  movq %rax, %r8",
+    "  movq %r9, %rax",
+    "  movq %rax, %r9",
+    "  movq 16(%rbp), %rax",
+    "  movq %rax, -88(%rbp)",
+    "  movq 24(%rbp), %rax",
+    "  movq %rax, %r13",
+    ".Lp113d_FID_36_100_105_114_101_99_116_46_109_105_116__loop:",
+    "  cmpq $0, %rdi",
+    "  jne .Lp113d_FID_36_100_105_114_101_99_116_46_109_105_116__b0",
+    "  movq %r13, %rax",
+    "  movq -16(%rbp), %r12",
+    "  movq -8(%rbp), %rbx",
+    "  movq -24(%rbp), %r13",
+    "  movq -32(%rbp), %r14",
+    "  movq -40(%rbp), %r15",
+    "  movq %rbp, %rsp",
+    "  popq %rbp",
+    "  ret",
+    ".Lp113d_FID_36_100_105_114_101_99_116_46_109_105_116__b0:",
+    "  movq %rdi, %r10",
+    "  subq $1, %r10",
+    "  movq %r10, -2288(%rbp)",
+    "  movl %r8d, %edi",
+    "  movl %r8d, %edx",
+    "  imull %edx, %edi",
+    "  movq %rdi, %rsi",
+    "  shrq $8, %rsi",
+    "  movq %rsi, %rdx",
+    "  movq %rdi, %rsi",
+    "  shrq $31, %rsi",
+    "  movq %rsi, %r10",
+    "  movabsq $0, %r11",
+    "  cmpq %r11, %r10",
+    "  movabsq $0, %rax",
+    "  movabsq $4278190080, %r11",
+    "  cmoveq %rax, %r11",
+    "  movq %r11, %rdi",
+    "  movq %rdx, %rsi",
+    "  orq %rdi, %rsi",
+    "  movl %r9d, %edi",
+    "  movl %r9d, %edx",
+    "  imull %edx, %edi",
+    "  movq %rdi, %rdx",
+    "  shrq $8, %rdx",
+    "  movq %rdx, %rbx",
+    "  movq %rdi, %rdx",
+    "  shrq $31, %rdx",
+    "  movq %rdx, %r10",
+    "  movabsq $0, %r11",
+    "  cmpq %r11, %r10",
+    "  movabsq $0, %rax",
+    "  movabsq $4278190080, %r11",
+    "  cmoveq %rax, %r11",
+    "  movq %r11, %rdi",
+    "  movq %rbx, %rdx",
+    "  orq %rdi, %rdx",
+    "  movq %rsi, %rdi",
+    "  addl %edx, %edi",
+    "  movq %rdi, %r10",
+    "  movabsq $1024, %r11",
+    "  cmpq %r11, %r10",
+    "  movabsq $1, %rax",
+    "  movabsq $0, %r11",
+    "  cmovaq %rax, %r11",
+    "  movq %r11, %rbx",
+    "  movl -88(%rbp), %edi",
+    "  orq %rbx, %rdi",
+    "  movq %rdi, %rbx",
+    "  movq %rsi, %rdi",
+    "  subl %edx, %edi",
+    "  movl %r14d, %edx",
+    "  addl %edx, %edi",
+    "  movq %rdi, %r10",
+    "  movq %r10, -2416(%rbp)",
+    "  movl %r8d, %edi",
+    "  movl %r9d, %edx",
+    "  imull %edx, %edi",
+    "  movq %rdi, %r11",
+    "  movabsq $2, %rdi",
+    "  imull %r11d, %edi",
+    "  movq %rdi, %rsi",
+    "  shrq $8, %rsi",
+    "  movq %rsi, %rdx",
+    "  movq %rdi, %rsi",
+    "  shrq $31, %rsi",
+    "  movq %rsi, %r10",
+    "  movabsq $0, %r11",
+    "  cmpq %r11, %r10",
+    "  movabsq $0, %rax",
+    "  movabsq $4278190080, %r11",
+    "  cmoveq %rax, %r11",
+    "  movq %r11, %rdi",
+    "  movq %rdx, %rsi",
+    "  orq %rdi, %rsi",
+    "  movl %r15d, %edx",
+    "  movq %rsi, %rdi",
+    "  addl %edx, %edi",
+    "  movq %rbx, %r10",
+    "  movabsq $0, %r11",
+    "  cmpq %r11, %r10",
+    "  movq -2416(%rbp), %rax",
+    "  movq %r8, %r11",
+    "  cmoveq %rax, %r11",
+    "  movq %r11, -2464(%rbp)",
+    "  movq %rbx, %r10",
+    "  movabsq $0, %r11",
+    "  cmpq %r11, %r10",
+    "  movq %rdi, %rax",
+    "  movq %r9, %r11",
+    "  cmoveq %rax, %r11",
+    "  movq %r11, -2480(%rbp)",
+    "  movq %rbx, %r10",
+    "  movabsq $0, %r11",
+    "  cmpq %r11, %r10",
+    "  movabsq $1, %rax",
+    "  movabsq $0, %r11",
+    "  cmoveq %rax, %r11",
+    "  movq %r11, %rsi",
+    "  movl %r13d, %edi",
+    "  addl %esi, %edi",
+    "  movq -2464(%rbp), %r10",
+    "  movq %r10, %r8",
+    "  movq -2480(%rbp), %r10",
+    "  movq %r10, %r9",
+    "  movq %rbx, -88(%rbp)",
+    "  movq %rdi, %r13",
+    "  movq -2288(%rbp), %r10",
+    "  movq %r10, %rdi",
+    "  jmp .Lp113d_FID_36_100_105_114_101_99_116_46_109_105_116__loop"
+  ],
+  "beforeModel": [
+    "movq %rdi, %r10",
+    "subq $1, %r10",
+    "movq %r10, -2288(%rbp)",
+    "movl %r8d, %edi",
+    "movl %r8d, %edx",
+    "imull %edx, %edi",
+    "movq %rdi, %rsi",
+    "shrq $8, %rsi",
+    "movq %rsi, %rdx",
+    "movq %rdi, %rsi",
+    "shrq $31, %rsi",
+    "movq %rsi, %r10",
+    "movabsq $0, %r11",
+    "cmpq %r11, %r10",
+    "movabsq $0, %rax",
+    "movabsq $4278190080, %r11",
+    "cmoveq %rax, %r11",
+    "movq %r11, %rdi",
+    "movq %rdx, %rsi",
+    "orq %rdi, %rsi",
+    "movl %r9d, %edi",
+    "movl %r9d, %edx",
+    "imull %edx, %edi",
+    "movq %rdi, %rdx",
+    "shrq $8, %rdx",
+    "movq %rdx, %rbx",
+    "movq %rdi, %rdx",
+    "shrq $31, %rdx",
+    "movq %rdx, %r10",
+    "movabsq $0, %r11",
+    "cmpq %r11, %r10",
+    "movabsq $0, %rax",
+    "movabsq $4278190080, %r11",
+    "cmoveq %rax, %r11",
+    "movq %r11, %rdi",
+    "movq %rbx, %rdx",
+    "orq %rdi, %rdx",
+    "movq %rsi, %rdi",
+    "addl %edx, %edi",
+    "movq %rdi, %r10",
+    "movabsq $1024, %r11",
+    "cmpq %r11, %r10",
+    "movabsq $1, %rax",
+    "movabsq $0, %r11",
+    "cmovaq %rax, %r11",
+    "movq %r11, %rbx",
+    "movl -88(%rbp), %edi",
+    "orq %rbx, %rdi",
+    "movq %rdi, %rbx",
+    "movq %rsi, %rdi",
+    "subl %edx, %edi",
+    "movl %r14d, %edx",
+    "addl %edx, %edi",
+    "movq %rdi, %r10",
+    "movq %r10, -2416(%rbp)",
+    "movl %r8d, %edi",
+    "movl %r9d, %edx",
+    "imull %edx, %edi",
+    "movq %rdi, %r11",
+    "movabsq $2, %rdi",
+    "imull %r11d, %edi",
+    "movq %rdi, %rsi",
+    "shrq $8, %rsi",
+    "movq %rsi, %rdx",
+    "movq %rdi, %rsi",
+    "shrq $31, %rsi",
+    "movq %rsi, %r10",
+    "movabsq $0, %r11",
+    "cmpq %r11, %r10",
+    "movabsq $0, %rax",
+    "movabsq $4278190080, %r11",
+    "cmoveq %rax, %r11",
+    "movq %r11, %rdi",
+    "movq %rdx, %rsi",
+    "orq %rdi, %rsi",
+    "movl %r15d, %edx",
+    "movq %rsi, %rdi",
+    "addl %edx, %edi",
+    "movq %rbx, %r10",
+    "movabsq $0, %r11",
+    "cmpq %r11, %r10",
+    "movq -2416(%rbp), %rax",
+    "movq %r8, %r11",
+    "cmoveq %rax, %r11",
+    "movq %r11, -2464(%rbp)",
+    "movq %rbx, %r10",
+    "movabsq $0, %r11",
+    "cmpq %r11, %r10",
+    "movq %rdi, %rax",
+    "movq %r9, %r11",
+    "cmoveq %rax, %r11",
+    "movq %r11, -2480(%rbp)",
+    "movq %rbx, %r10",
+    "movabsq $0, %r11",
+    "cmpq %r11, %r10",
+    "movabsq $1, %rax",
+    "movabsq $0, %r11",
+    "cmoveq %rax, %r11",
+    "movq %r11, %rsi",
+    "movl %r13d, %edi",
+    "addl %esi, %edi",
+    "movq -2464(%rbp), %r10",
+    "movq %r10, %r8",
+    "movq -2480(%rbp), %r10",
+    "movq %r10, %r9",
+    "movq %rbx, -88(%rbp)",
+    "movq %rdi, %r13",
+    "movq -2288(%rbp), %r10",
+    "movq %r10, %rdi"
+  ],
+  "variants": [
+    {
+      "name": "typed-scalar",
+      "after": [
+        "p113d_FID_36_100_105_114_101_99_116_46_109_105_116_:",
+        "  pushq %rbx",
+        "  pushq %r12",
+        "  pushq %r13",
+        "  movl 32(%rsp), %ebx",
+        "  movl 40(%rsp), %edi",
+        "  testq %rsi, %rsi",
+        "  jz .Lp198_done",
+        ".Lp198_loop:",
+        "  movl %r8d, %r10d",
+        "  imull %r8d, %r10d",
+        "  sarl $8, %r10d",
+        "  movl %r9d, %r11d",
+        "  imull %r9d, %r11d",
+        "  sarl $8, %r11d",
+        "  movl %r10d, %eax",
+        "  addl %r11d, %eax",
+        "  cmpl $1024, %eax",
+        "  seta %r13b",
+        "  movzbl %r13b, %r13d",
+        "  orl %r13d, %ebx",
+        "  movl %r10d, %r12d",
+        "  subl %r11d, %r12d",
+        "  addl %edx, %r12d",
+        "  movl %r8d, %eax",
+        "  imull %r9d, %eax",
+        "  addl %eax, %eax",
+        "  sarl $8, %eax",
+        "  addl %ecx, %eax",
+        "  testl %ebx, %ebx",
+        "  cmovzl %r12d, %r8d",
+        "  cmovzl %eax, %r9d",
+        "  setz %r13b",
+        "  movzbl %r13b, %r13d",
+        "  addl %r13d, %edi",
+        "  subq $1, %rsi",
+        "  jne .Lp198_loop",
+        ".Lp198_done:",
+        "  movl %edi, %eax",
+        "  popq %r13",
+        "  popq %r12",
+        "  popq %rbx",
+        "  ret"
+      ],
+      "model": [
+        "movl %r8d, %r10d",
+        "imull %r8d, %r10d",
+        "sarl $8, %r10d",
+        "movl %r9d, %r11d",
+        "imull %r9d, %r11d",
+        "sarl $8, %r11d",
+        "movl %r10d, %eax",
+        "addl %r11d, %eax",
+        "cmpl $1024, %eax",
+        "seta %r13b",
+        "movzbl %r13b, %r13d",
+        "orl %r13d, %ebx",
+        "movl %r10d, %r12d",
+        "subl %r11d, %r12d",
+        "addl %edx, %r12d",
+        "movl %r8d, %eax",
+        "imull %r9d, %eax",
+        "addl %eax, %eax",
+        "sarl $8, %eax",
+        "addl %ecx, %eax",
+        "testl %ebx, %ebx",
+        "cmovzl %r12d, %r8d",
+        "cmovzl %eax, %r9d",
+        "setz %r13b",
+        "movzbl %r13b, %r13d",
+        "addl %r13d, %edi",
+        "subq $1, %rsi"
+      ]
+    },
+    {
+      "name": "typed-escape",
+      "after": [
+        "p113d_FID_36_100_105_114_101_99_116_46_109_105_116_:",
+        "  pushq %rbx",
+        "  pushq %r12",
+        "  pushq %r13",
+        "  movl 32(%rsp), %ebx",
+        "  movl 40(%rsp), %edi",
+        "  testq %rsi, %rsi",
+        "  jz .Lp198_done",
+        ".Lp198_loop:",
+        "  movl %r8d, %r10d",
+        "  imull %r8d, %r10d",
+        "  sarl $8, %r10d",
+        "  movl %r9d, %r11d",
+        "  imull %r9d, %r11d",
+        "  sarl $8, %r11d",
+        "  movl %r10d, %eax",
+        "  addl %r11d, %eax",
+        "  cmpl $1024, %eax",
+        "  seta %r13b",
+        "  movzbl %r13b, %r13d",
+        "  orl %r13d, %ebx",
+        "  testl %ebx, %ebx",
+        "  jnz .Lp198_done",
+        "  movl %r10d, %r12d",
+        "  subl %r11d, %r12d",
+        "  addl %edx, %r12d",
+        "  movl %r8d, %eax",
+        "  imull %r9d, %eax",
+        "  addl %eax, %eax",
+        "  sarl $8, %eax",
+        "  addl %ecx, %eax",
+        "  movl %r12d, %r8d",
+        "  movl %eax, %r9d",
+        "  addl $1, %edi",
+        "  subq $1, %rsi",
+        "  jne .Lp198_loop",
+        ".Lp198_done:",
+        "  movl %edi, %eax",
+        "  popq %r13",
+        "  popq %r12",
+        "  popq %rbx",
+        "  ret"
+      ],
+      "model": null
+    }
+  ],
+  "legality": "All scalar fields are zero-extended U32; n is an unboxed Nat count. SAR is exact sign-filled low32 shift. All products/add/sub wrap32 before shifting/comparison. No allocation, calls or externally visible effects occur in mit. Callee-saved registers and SysV stack args preserved. Esc is absorbing under bitwise OR; if nonzero all subsequent z/it states are unchanged, hence early return preserves result for every remaining n. Numeric loop only, not arbitrary effectful loop law.",
+  "prediction": "Closed U32 loop eliminates expanded sign reconstruction and stack-carried state. Expect substantial local gain and potentially >25% whole-work gain; current dynamic mit weight unknown. Early escape may dominate low-iteration viewport cases. Neither is a SIMD compiler implementation.",
+  "points": [
+    [
+      2,
+      0
+    ],
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      17
+    ],
+    [
+      4,
+      7
+    ],
+    [
+      5,
+      31
+    ]
+  ],
+  "screen": {
+    "rounds": 6,
+    "targetMs": 160,
+    "roles": [
+      "direct",
+      "baseline",
+      "typed-scalar",
+      "typed-escape",
+      "c",
+      "qbe"
+    ],
+    "timedPoints": [
+      [
+        2,
+        0
+      ]
+    ],
+    "finiteMitCases": 1024
+  },
+  "exclusions": "Phase120 already tested signed-shift recognition in QBE; no claim of new shift-only idea. This explicitly tests full typed state and an absorbing escape state, distinct from Phase197 local MOV edits. No current profile block weight is invented."
+}

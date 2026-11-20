@@ -1,0 +1,205 @@
+Iterations:        100
+Instructions:      8300
+Total Cycles:      3206
+Total uOps:        8300
+
+Dispatch Width:    4
+uOps Per Cycle:    2.59
+IPC:               2.59
+Block RThroughput: 20.8
+
+
+Instruction Info:
+[1]: #uOps
+[2]: Latency
+[3]: RThroughput
+[4]: MayLoad
+[5]: MayStore
+[6]: HasSideEffects (U)
+
+[1]    [2]    [3]    [4]    [5]    [6]    Instructions:
+ 1      1     0.33                        cmpq	$0, %rdi
+ 1      1     1.00                        jne	.Lpc_40852e
+ 1      1     0.33                        movq	%rdi, %r10
+ 1      1     0.33                        subq	$1, %r10
+ 1      1     1.00           *            movq	%r10, -2224(%rbp)
+ 1      1     0.33                        movl	%ebx, %ebx
+ 1      1     0.33                        movq	%rbx, %r10
+ 1      1     0.33                        addl	$1, %r10d
+ 1      1     1.00           *            movq	%r10, -2240(%rbp)
+ 1      1     0.33                        movl	%esi, %edi
+ 1      1     0.33                        addl	$1, %edi
+ 1      3     1.00                        imull	$3, %edi, %edi
+ 1      1     0.33                        movq	%rdi, %rdx
+ 1      1     0.33                        movl	%esi, %edi
+ 1      1     0.33                        addl	$2, %edi
+ 1      3     1.00                        imull	$5, %edi, %edi
+ 1      1     0.33                        movq	%rdi, %r8
+ 1      1     0.33                        movl	%esi, %edi
+ 1      1     0.33                        addl	$3, %edi
+ 1      3     1.00                        imull	$7, %edi, %edi
+ 1      1     0.33                        movq	%rdi, %r9
+ 1      1     0.33                        movl	%esi, %edi
+ 1      1     0.33                        addl	$4, %edi
+ 1      3     1.00                        imull	$9, %edi, %edi
+ 1      1     0.33                        movq	%rdi, %rbx
+ 1      1     0.33                        movl	%esi, %edi
+ 1      1     0.33                        addl	$5, %edi
+ 1      3     1.00                        imull	$11, %edi, %edi
+ 1      1     0.33                        movq	%rdi, %r13
+ 1      1     0.33                        movl	%esi, %edi
+ 1      1     0.33                        addl	$6, %edi
+ 1      3     1.00                        imull	$13, %edi, %edi
+ 1      1     0.33                        movq	%rdi, %r14
+ 1      1     0.33                        movl	%esi, %edi
+ 1      1     0.33                        addl	$7, %edi
+ 1      3     1.00                        imull	$15, %edi, %edi
+ 1      1     0.33                        movq	%rdi, %r15
+ 1      1     0.33                        movl	%esi, %edi
+ 1      1     0.33                        addl	$8, %edi
+ 1      3     1.00                        imull	$17, %edi, %edi
+ 1      1     0.33                        movq	%rdi, %r10
+ 1      1     1.00           *            movq	%r10, -2320(%rbp)
+ 1      1     0.33                        movl	%esi, %edi
+ 1      1     0.33                        addl	$9, %edi
+ 1      3     1.00                        imull	$19, %edi, %edi
+ 1      1     0.33                        movq	%rdi, %r10
+ 1      1     1.00           *            movq	%r10, -2328(%rbp)
+ 1      1     0.33                        movl	%esi, %edi
+ 1      1     0.33                        addl	$10, %edi
+ 1      3     1.00                        imull	$21, %edi, %edi
+ 1      1     0.33                        movq	%rdi, %r10
+ 1      1     1.00           *            movq	%r10, -2336(%rbp)
+ 1      1     0.33                        movl	%esi, %edi
+ 1      1     0.33                        addl	$11, %edi
+ 1      3     1.00                        imull	$23, %edi, %edi
+ 1      1     0.33                        movq	%rdi, %r10
+ 1      1     1.00           *            movq	%r10, -2344(%rbp)
+ 1      1     0.33                        movl	%esi, %edi
+ 1      1     0.33                        addl	$12, %edi
+ 1      3     1.00                        imull	$25, %edi, %edi
+ 1      1     0.33                        movq	%rdi, %rsi
+ 1      1     0.33                        movq	%rdx, %rdi
+ 1      1     0.33                        xorq	%r8, %rdi
+ 1      1     0.33                        xorq	%r9, %rdi
+ 1      1     0.33                        xorq	%rbx, %rdi
+ 1      1     0.33                        xorq	%r13, %rdi
+ 1      1     0.33                        xorq	%r14, %rdi
+ 1      1     0.33                        xorq	%r15, %rdi
+ 1      5     0.50    *                   movq	-2320(%rbp), %r11
+ 1      1     0.33                        xorq	%r11, %rdi
+ 1      5     0.50    *                   movq	-2328(%rbp), %r11
+ 1      1     0.33                        xorq	%r11, %rdi
+ 1      5     0.50    *                   movq	-2336(%rbp), %r11
+ 1      1     0.33                        xorq	%r11, %rdi
+ 1      5     0.50    *                   movq	-2344(%rbp), %r11
+ 1      1     0.33                        xorq	%r11, %rdi
+ 1      1     0.33                        xorq	%rsi, %rdi
+ 1      5     0.50    *                   movq	-2240(%rbp), %r10
+ 1      1     0.33                        movq	%r10, %rbx
+ 1      1     0.33                        movq	%rdi, %rsi
+ 1      5     0.50    *                   movq	-2224(%rbp), %r10
+ 1      1     0.33                        movq	%r10, %rdi
+ 1      1     1.00                        jmp	.Lpc_408505
+
+
+Resources:
+[0]   - SBDivider
+[1]   - SBFPDivider
+[2]   - SBPort0
+[3]   - SBPort1
+[4]   - SBPort4
+[5]   - SBPort5
+[6.0] - SBPort23
+[6.1] - SBPort23
+
+
+Resource pressure per iteration:
+[0]    [1]    [2]    [3]    [4]    [5]    [6.0]  [6.1]  
+ -      -     23.50  24.00  6.00   23.50  6.00   6.00   
+
+Resource pressure by instruction:
+[0]    [1]    [2]    [3]    [4]    [5]    [6.0]  [6.1]  Instructions:
+ -      -      -     0.49    -     0.51    -      -     cmpq	$0, %rdi
+ -      -      -      -      -     1.00    -      -     jne	.Lpc_40852e
+ -      -     0.49   0.51    -      -      -      -     movq	%rdi, %r10
+ -      -     0.01   0.99    -      -      -      -     subq	$1, %r10
+ -      -      -      -     1.00    -      -     1.00   movq	%r10, -2224(%rbp)
+ -      -     0.49   0.01    -     0.50    -      -     movl	%ebx, %ebx
+ -      -     0.01   0.99    -      -      -      -     movq	%rbx, %r10
+ -      -     0.49   0.51    -      -      -      -     addl	$1, %r10d
+ -      -      -      -     1.00    -     1.00    -     movq	%r10, -2240(%rbp)
+ -      -     0.50   0.49    -     0.01    -      -     movl	%esi, %edi
+ -      -     1.00    -      -      -      -      -     addl	$1, %edi
+ -      -      -     1.00    -      -      -      -     imull	$3, %edi, %edi
+ -      -     0.49   0.51    -      -      -      -     movq	%rdi, %rdx
+ -      -      -      -      -     1.00    -      -     movl	%esi, %edi
+ -      -     0.50    -      -     0.50    -      -     addl	$2, %edi
+ -      -      -     1.00    -      -      -      -     imull	$5, %edi, %edi
+ -      -     0.49   0.51    -      -      -      -     movq	%rdi, %r8
+ -      -     0.50   0.49    -     0.01    -      -     movl	%esi, %edi
+ -      -     0.51    -      -     0.49    -      -     addl	$3, %edi
+ -      -      -     1.00    -      -      -      -     imull	$7, %edi, %edi
+ -      -     0.49   0.51    -      -      -      -     movq	%rdi, %r9
+ -      -     0.49    -      -     0.51    -      -     movl	%esi, %edi
+ -      -     0.50    -      -     0.50    -      -     addl	$4, %edi
+ -      -      -     1.00    -      -      -      -     imull	$9, %edi, %edi
+ -      -     0.49   0.50    -     0.01    -      -     movq	%rdi, %rbx
+ -      -     0.50    -      -     0.50    -      -     movl	%esi, %edi
+ -      -     0.51    -      -     0.49    -      -     addl	$5, %edi
+ -      -      -     1.00    -      -      -      -     imull	$11, %edi, %edi
+ -      -     0.49   0.50    -     0.01    -      -     movq	%rdi, %r13
+ -      -      -      -      -     1.00    -      -     movl	%esi, %edi
+ -      -     0.01    -      -     0.99    -      -     addl	$6, %edi
+ -      -      -     1.00    -      -      -      -     imull	$13, %edi, %edi
+ -      -     0.49   0.50    -     0.01    -      -     movq	%rdi, %r14
+ -      -     0.50    -      -     0.50    -      -     movl	%esi, %edi
+ -      -     0.51    -      -     0.49    -      -     addl	$7, %edi
+ -      -      -     1.00    -      -      -      -     imull	$15, %edi, %edi
+ -      -     0.99    -      -     0.01    -      -     movq	%rdi, %r15
+ -      -      -     0.49    -     0.51    -      -     movl	%esi, %edi
+ -      -     0.01    -      -     0.99    -      -     addl	$8, %edi
+ -      -      -     1.00    -      -      -      -     imull	$17, %edi, %edi
+ -      -     0.99    -      -     0.01    -      -     movq	%rdi, %r10
+ -      -      -      -     1.00    -      -     1.00   movq	%r10, -2320(%rbp)
+ -      -     0.50    -      -     0.50    -      -     movl	%esi, %edi
+ -      -     1.00    -      -      -      -      -     addl	$9, %edi
+ -      -      -     1.00    -      -      -      -     imull	$19, %edi, %edi
+ -      -     0.99    -      -     0.01    -      -     movq	%rdi, %r10
+ -      -      -      -     1.00    -     1.00    -     movq	%r10, -2328(%rbp)
+ -      -      -      -      -     1.00    -      -     movl	%esi, %edi
+ -      -     0.01    -      -     0.99    -      -     addl	$10, %edi
+ -      -      -     1.00    -      -      -      -     imull	$21, %edi, %edi
+ -      -     0.49    -      -     0.51    -      -     movq	%rdi, %r10
+ -      -      -      -     1.00    -      -     1.00   movq	%r10, -2336(%rbp)
+ -      -     0.51   0.49    -      -      -      -     movl	%esi, %edi
+ -      -     0.51    -      -     0.49    -      -     addl	$11, %edi
+ -      -      -     1.00    -      -      -      -     imull	$23, %edi, %edi
+ -      -     1.00    -      -      -      -      -     movq	%rdi, %r10
+ -      -      -      -     1.00    -     1.00    -     movq	%r10, -2344(%rbp)
+ -      -     0.50    -      -     0.50    -      -     movl	%esi, %edi
+ -      -     0.01    -      -     0.99    -      -     addl	$12, %edi
+ -      -      -     1.00    -      -      -      -     imull	$25, %edi, %edi
+ -      -     0.49   0.01    -     0.50    -      -     movq	%rdi, %rsi
+ -      -     0.51    -      -     0.49    -      -     movq	%rdx, %rdi
+ -      -     0.51   0.49    -      -      -      -     xorq	%r8, %rdi
+ -      -      -     0.01    -     0.99    -      -     xorq	%r9, %rdi
+ -      -     0.50    -      -     0.50    -      -     xorq	%rbx, %rdi
+ -      -     0.01   0.49    -     0.50    -      -     xorq	%r13, %rdi
+ -      -      -     0.50    -     0.50    -      -     xorq	%r14, %rdi
+ -      -     0.50    -      -     0.50    -      -     xorq	%r15, %rdi
+ -      -      -      -      -      -      -     1.00   movq	-2320(%rbp), %r11
+ -      -      -     0.50    -     0.50    -      -     xorq	%r11, %rdi
+ -      -      -      -      -      -     1.00    -     movq	-2328(%rbp), %r11
+ -      -     0.50   0.50    -      -      -      -     xorq	%r11, %rdi
+ -      -      -      -      -      -      -     1.00   movq	-2336(%rbp), %r11
+ -      -     0.50    -      -     0.50    -      -     xorq	%r11, %rdi
+ -      -      -      -      -      -     1.00    -     movq	-2344(%rbp), %r11
+ -      -     0.50    -      -     0.50    -      -     xorq	%r11, %rdi
+ -      -     0.50   0.01    -     0.49    -      -     xorq	%rsi, %rdi
+ -      -      -      -      -      -      -     1.00   movq	-2240(%rbp), %r10
+ -      -      -     0.50    -     0.50    -      -     movq	%r10, %rbx
+ -      -     0.51    -      -     0.49    -      -     movq	%rdi, %rsi
+ -      -      -      -      -      -     1.00    -     movq	-2224(%rbp), %r10
+ -      -     0.50   0.50    -      -      -      -     movq	%r10, %rdi
+ -      -      -      -      -     1.00    -      -     jmp	.Lpc_408505

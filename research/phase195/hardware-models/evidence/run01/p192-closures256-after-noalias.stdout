@@ -1,0 +1,63 @@
+Iterations:        100
+Instructions:      1200
+Total Cycles:      406
+Total uOps:        1200
+
+Dispatch Width:    4
+uOps Per Cycle:    2.96
+IPC:               2.96
+Block RThroughput: 3.7
+
+
+Instruction Info:
+[1]: #uOps
+[2]: Latency
+[3]: RThroughput
+[4]: MayLoad
+[5]: MayStore
+[6]: HasSideEffects (U)
+
+[1]    [2]    [3]    [4]    [5]    [6]    Instructions:
+ 1      1     0.33                        cmpq	$0, %rdi
+ 1      1     1.00                        je	.Lpc_408386
+ 1      1     0.33                        subq	$1, %rdi
+ 1      1     0.33                        movl	%edi, %esi
+ 1      1     0.33                        movq	%rsi, %r11
+ 1      1     0.33                        movabsq	$1, %rsi
+ 1      1     0.33                        addl	%r11d, %esi
+ 1      1     0.33                        movl	%edx, %edx
+ 1      1     0.33                        movq	%rsi, %r11
+ 1      1     0.33                        movq	%rdx, %rsi
+ 1      1     0.33                        addl	%r11d, %esi
+ 1      1     0.33                        movq	%rsi, %rdx
+
+
+Resources:
+[0]   - SBDivider
+[1]   - SBFPDivider
+[2]   - SBPort0
+[3]   - SBPort1
+[4]   - SBPort4
+[5]   - SBPort5
+[6.0] - SBPort23
+[6.1] - SBPort23
+
+
+Resource pressure per iteration:
+[0]    [1]    [2]    [3]    [4]    [5]    [6.0]  [6.1]  
+ -      -     4.00   4.00    -     4.00    -      -     
+
+Resource pressure by instruction:
+[0]    [1]    [2]    [3]    [4]    [5]    [6.0]  [6.1]  Instructions:
+ -      -      -      -      -     1.00    -      -     cmpq	$0, %rdi
+ -      -      -      -      -     1.00    -      -     je	.Lpc_408386
+ -      -     0.01   0.01    -     0.98    -      -     subq	$1, %rdi
+ -      -     1.00    -      -      -      -      -     movl	%edi, %esi
+ -      -     1.00    -      -      -      -      -     movq	%rsi, %r11
+ -      -      -     0.01    -     0.99    -      -     movabsq	$1, %rsi
+ -      -      -     0.99    -     0.01    -      -     addl	%r11d, %esi
+ -      -     0.98   0.01    -     0.01    -      -     movl	%edx, %edx
+ -      -     0.01   0.99    -      -      -      -     movq	%rsi, %r11
+ -      -     0.99    -      -     0.01    -      -     movq	%rdx, %rsi
+ -      -      -     1.00    -      -      -      -     addl	%r11d, %esi
+ -      -     0.01   0.99    -      -      -      -     movq	%rsi, %rdx

@@ -1,4 +1,14 @@
-# Hardware-aware prediction: bounded retrospective, stopped before modeling
+# Hardware-aware prediction: four-pair retrospective executed
+
+Resumed2026-11-20: authenticated LLVM-MCA11 on Ivy Bridge now models all four
+pairs. Pressure-few cycle ratio0.773976 agrees with historical0.774167; the
+other three tie despite differing runtime outcomes. One parser-error attempt
+was rejected and preserved before a validated rerun. No target workloads ran.
+See [results, limits and cost](results-2026-11-20.md) and
+[machine-readable comparison](comparison.json). The roughly ten-pair study and
+profile-weighted ranking remain incomplete.
+
+The following is the preserved pre-run checkpoint and frozen protocol.
 
 Status at the user's request to conclude: four authenticated before/after pairs
 prepared; no model tool acquired, installed or executed; no benchmark or hardware

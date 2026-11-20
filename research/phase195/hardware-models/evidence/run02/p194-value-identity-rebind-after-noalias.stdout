@@ -1,0 +1,77 @@
+Iterations:        100
+Instructions:      1900
+Total Cycles:      805
+Total uOps:        1900
+
+Dispatch Width:    4
+uOps Per Cycle:    2.36
+IPC:               2.36
+Block RThroughput: 5.3
+
+
+Instruction Info:
+[1]: #uOps
+[2]: Latency
+[3]: RThroughput
+[4]: MayLoad
+[5]: MayStore
+[6]: HasSideEffects (U)
+
+[1]    [2]    [3]    [4]    [5]    [6]    Instructions:
+ 1      1     0.33                        cmpq	$0, %rdi
+ 1      1     1.00                        jne	.Lpc_408396
+ 1      1     0.33                        movq	%rdi, %rdx
+ 1      1     0.33                        subq	$1, %rdx
+ 1      1     0.33                        movl	%ebx, %edi
+ 1      1     0.33                        movq	%rdi, %r8
+ 1      1     0.33                        addl	$1, %r8d
+ 1      1     0.33                        movl	%esi, %edi
+ 1      1     0.33                        movl	%ebx, %ebx
+ 1      1     0.33                        addl	%ebx, %edi
+ 1      1     0.33                        movabsq	$2654435769, %r11
+ 1      1     0.33                        xorq	%r11, %rdi
+ 1      3     1.00                        imull	$1664525, %edi, %edi
+ 1      1     0.33                        movl	%esi, %ebx
+ 1      1     0.33                        addl	%ebx, %edi
+ 1      1     0.33                        movq	%r8, %rbx
+ 1      1     0.33                        movq	%rdi, %rsi
+ 1      1     0.33                        movq	%rdx, %rdi
+ 1      1     1.00                        jmp	.Lpc_408379
+
+
+Resources:
+[0]   - SBDivider
+[1]   - SBFPDivider
+[2]   - SBPort0
+[3]   - SBPort1
+[4]   - SBPort4
+[5]   - SBPort5
+[6.0] - SBPort23
+[6.1] - SBPort23
+
+
+Resource pressure per iteration:
+[0]    [1]    [2]    [3]    [4]    [5]    [6.0]  [6.1]  
+ -      -     6.33   6.33    -     6.34    -      -     
+
+Resource pressure by instruction:
+[0]    [1]    [2]    [3]    [4]    [5]    [6.0]  [6.1]  Instructions:
+ -      -     0.86   0.08    -     0.06    -      -     cmpq	$0, %rdi
+ -      -      -      -      -     1.00    -      -     jne	.Lpc_408396
+ -      -     0.37   0.55    -     0.08    -      -     movq	%rdi, %rdx
+ -      -     0.65   0.32    -     0.03    -      -     subq	$1, %rdx
+ -      -     0.34   0.29    -     0.37    -      -     movl	%ebx, %edi
+ -      -     0.38   0.32    -     0.30    -      -     movq	%rdi, %r8
+ -      -     0.43   0.29    -     0.28    -      -     addl	$1, %r8d
+ -      -     0.29   0.42    -     0.29    -      -     movl	%esi, %edi
+ -      -     0.29   0.28    -     0.43    -      -     movl	%ebx, %ebx
+ -      -     0.30   0.42    -     0.28    -      -     addl	%ebx, %edi
+ -      -     0.33   0.28    -     0.39    -      -     movabsq	$2654435769, %r11
+ -      -     0.31   0.41    -     0.28    -      -     xorq	%r11, %rdi
+ -      -      -     1.00    -      -      -      -     imull	$1664525, %edi, %edi
+ -      -     0.42   0.28    -     0.30    -      -     movl	%esi, %ebx
+ -      -     0.34   0.40    -     0.26    -      -     addl	%ebx, %edi
+ -      -     0.37   0.32    -     0.31    -      -     movq	%r8, %rbx
+ -      -     0.30   0.40    -     0.30    -      -     movq	%rdi, %rsi
+ -      -     0.35   0.27    -     0.38    -      -     movq	%rdx, %rdi
+ -      -      -      -      -     1.00    -      -     jmp	.Lpc_408379

@@ -1,0 +1,774 @@
+{
+  "kind": "phase195-llvm-mca-retrospective-v1",
+  "targetsRun": false,
+  "cpu": "ivybridge",
+  "iterations": 100,
+  "hostAffinity": [
+    2
+  ],
+  "inputManifest": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase195/hardware-models/pairs-v1.json",
+    "bytes": 191595,
+    "sha256": "7ac3eded3740b0c5656a6825cc784e89bcb27799657453caf790fb3fe6ca74c1"
+  },
+  "runner": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase195/hardware-models/run-retrospective.py",
+    "bytes": 4789,
+    "sha256": "042acff83b2a066b26a5cf0145b1b9713e801fa2fdd59204769a2964b28f7801"
+  },
+  "acquisition": {
+    "kind": "authenticated-llvm-mca-acquisition-v1",
+    "dateUtc": "2026-11-20T17:34:30Z",
+    "source": "https://deb.debian.org/debian/pool/main/l/llvm-toolchain-11/llvm-11_11.0.1-2_amd64.deb",
+    "packageVersion": "1:11.0.1-2",
+    "package": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/hardware-tool01/llvm-11_11.0.1-2_amd64.deb",
+      "resolved": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/hardware-tool01/llvm-11_11.0.1-2_amd64.deb",
+      "bytes": 8463020,
+      "sha256": "1dd51ffbda01aa2440dca7336d11a8b1410655151ccaf9fbe135c6f41e0d947a"
+    },
+    "member": "./usr/lib/llvm-11/bin/llvm-mca",
+    "sha256VerifiedBeforeExtraction": true,
+    "tool": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/hardware-tool01/llvm-mca",
+      "resolved": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/hardware-tool01/llvm-mca",
+      "bytes": 151912,
+      "sha256": "dd815d11faca9d348fc2aedcbe958a74f8b4b6a70fe166f8a1fd6f560f1fdb24"
+    },
+    "libraries": [
+      {
+        "file": "/lib/x86_64-linux-gnu/libLLVM-11.so.1",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libLLVM-11.so.1",
+        "bytes": 84483096,
+        "sha256": "cad61c5cd6ac4e9192c5912623ea8d76568e6b87b5cd8457e1b1ea1e74042799"
+      },
+      {
+        "file": "/lib/x86_64-linux-gnu/libbsd.so.0",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libbsd.so.0.11.3",
+        "bytes": 84064,
+        "sha256": "a0afc72213bf6e59d98e218abc721d4e9dea15487cc634e0a736531dc8643891"
+      },
+      {
+        "file": "/lib/x86_64-linux-gnu/libc.so.6",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+        "bytes": 1901536,
+        "sha256": "d13f170ab30a0f91d9713e0c2196efa5fe0bc42f0f2737cf0e56380df8051159"
+      },
+      {
+        "file": "/lib/x86_64-linux-gnu/libdl.so.2",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libdl-2.31.so",
+        "bytes": 18688,
+        "sha256": "df5973c718b4ee540cdd4400e19e90182ab5f3bac2148c0c9f3bb92eb6af3121"
+      },
+      {
+        "file": "/lib/x86_64-linux-gnu/libedit.so.2",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libedit.so.2.0.63",
+        "bytes": 212520,
+        "sha256": "6dfc7513bb5d3a0c2d0f4ef9a22aa0eedaf1d749cc8b6f88af46e579c3e02b20"
+      },
+      {
+        "file": "/lib/x86_64-linux-gnu/libffi.so.7",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libffi.so.7.1.0",
+        "bytes": 43496,
+        "sha256": "d7ce7e96311388ad35a34835c0db7738c869c8e1c88c071e9af5971e6765d89e"
+      },
+      {
+        "file": "/lib/x86_64-linux-gnu/libgcc_s.so.1",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1",
+        "bytes": 100736,
+        "sha256": "2d771c2e232fce107c7ec7f9a64b9a804e6d6737063088a2d8096b149a0af8cd"
+      },
+      {
+        "file": "/lib/x86_64-linux-gnu/libm.so.6",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libm-2.31.so",
+        "bytes": 1321344,
+        "sha256": "5461e535328078fb72f25f7ca2bf36bc71c415bbf573ccdfa289a7b796ddfdd3"
+      },
+      {
+        "file": "/lib/x86_64-linux-gnu/libmd.so.0",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libmd.so.0.0.4",
+        "bytes": 47312,
+        "sha256": "3e8acc749b960c0ce4ecfeaa9427f190e4d2915c5a32c98b93ca3fb451bda642"
+      },
+      {
+        "file": "/lib/x86_64-linux-gnu/libpthread.so.0",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libpthread-2.31.so",
+        "bytes": 149520,
+        "sha256": "7048cb46bda23f790af92e5f92975d84816a6de0a074a1624d46ac3c74dcdc3b"
+      },
+      {
+        "file": "/lib/x86_64-linux-gnu/librt.so.1",
+        "resolved": "/usr/lib/x86_64-linux-gnu/librt-2.31.so",
+        "bytes": 35808,
+        "sha256": "a24ccd19ad1dc82d78d825553c4ad8332e25f879970fe602d230312d93b5ce23"
+      },
+      {
+        "file": "/lib/x86_64-linux-gnu/libstdc++.so.6",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28",
+        "bytes": 1870824,
+        "sha256": "0e83d02a0144c726f05de850b71165691e380bd90205d22dd04bc8f788625507"
+      },
+      {
+        "file": "/lib/x86_64-linux-gnu/libtinfo.so.6",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libtinfo.so.6.2",
+        "bytes": 187792,
+        "sha256": "26d250890dc52618c47ddc30dcabc542423f17aa7519be28660be89adcfd825d"
+      },
+      {
+        "file": "/lib/x86_64-linux-gnu/libz.so.1",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libz.so.1.2.11",
+        "bytes": 113088,
+        "sha256": "062372f2053424d8bafd9378ebdcc29a08d7e1850342b3fd5a0e73462ed84901"
+      },
+      {
+        "file": "/lib/x86_64-linux-gnu/libz3.so.4",
+        "resolved": "/usr/lib/x86_64-linux-gnu/libz3.so.4",
+        "bytes": 22910144,
+        "sha256": "4e6ac2c899c4fd9df0420813cee95d855c89399c6e381a17c9e88f87f973d0ab"
+      },
+      {
+        "file": "/lib64/ld-linux-x86-64.so.2",
+        "resolved": "/usr/lib/x86_64-linux-gnu/ld-2.31.so",
+        "bytes": 177928,
+        "sha256": "1c654e88d721c9ac659b48400d20b5310ead8c6d15eeaf695d507d00d59ef490"
+      }
+    ],
+    "inspection": [
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/hardware-tool01/ldd.txt",
+        "resolved": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/hardware-tool01/ldd.txt",
+        "bytes": 1165,
+        "sha256": "e17e813542c32b443acf5fc05f3c3aff5692402ca15b473957ee07b42a0205a4"
+      },
+      {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/hardware-tool01/readelf-dynamic.txt",
+        "resolved": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/hardware-tool01/readelf-dynamic.txt",
+        "bytes": 1743,
+        "sha256": "8229f7a0e72c0ee4759caa43203e468f0baa9b2c4815a3884a16b42b55f21464"
+      }
+    ],
+    "usesLibpfm": false,
+    "installation": "Single workspace binary; existing system libraries; no system installation or configuration changes",
+    "download": "First sandbox attempt DNS failure; approved network escalation succeeded (curl reported 0.2s transfer); command wall duration unavailable"
+  },
+  "acquisitionManifest": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/hardware-tool01/acquisition.json",
+    "bytes": 5713,
+    "sha256": "545fe603e9327f44d60e5838462e69e6a0c6423dd3ecb33927af53eda72490ab"
+  },
+  "verifiedInputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/hardware-tool01/llvm-mca",
+      "bytes": 151912,
+      "sha256": "dd815d11faca9d348fc2aedcbe958a74f8b4b6a70fe166f8a1fd6f560f1fdb24"
+    },
+    {
+      "file": "/lib/x86_64-linux-gnu/libLLVM-11.so.1",
+      "bytes": 84483096,
+      "sha256": "cad61c5cd6ac4e9192c5912623ea8d76568e6b87b5cd8457e1b1ea1e74042799"
+    },
+    {
+      "file": "/lib/x86_64-linux-gnu/libbsd.so.0",
+      "bytes": 84064,
+      "sha256": "a0afc72213bf6e59d98e218abc721d4e9dea15487cc634e0a736531dc8643891"
+    },
+    {
+      "file": "/lib/x86_64-linux-gnu/libc.so.6",
+      "bytes": 1901536,
+      "sha256": "d13f170ab30a0f91d9713e0c2196efa5fe0bc42f0f2737cf0e56380df8051159"
+    },
+    {
+      "file": "/lib/x86_64-linux-gnu/libdl.so.2",
+      "bytes": 18688,
+      "sha256": "df5973c718b4ee540cdd4400e19e90182ab5f3bac2148c0c9f3bb92eb6af3121"
+    },
+    {
+      "file": "/lib/x86_64-linux-gnu/libedit.so.2",
+      "bytes": 212520,
+      "sha256": "6dfc7513bb5d3a0c2d0f4ef9a22aa0eedaf1d749cc8b6f88af46e579c3e02b20"
+    },
+    {
+      "file": "/lib/x86_64-linux-gnu/libffi.so.7",
+      "bytes": 43496,
+      "sha256": "d7ce7e96311388ad35a34835c0db7738c869c8e1c88c071e9af5971e6765d89e"
+    },
+    {
+      "file": "/lib/x86_64-linux-gnu/libgcc_s.so.1",
+      "bytes": 100736,
+      "sha256": "2d771c2e232fce107c7ec7f9a64b9a804e6d6737063088a2d8096b149a0af8cd"
+    },
+    {
+      "file": "/lib/x86_64-linux-gnu/libm.so.6",
+      "bytes": 1321344,
+      "sha256": "5461e535328078fb72f25f7ca2bf36bc71c415bbf573ccdfa289a7b796ddfdd3"
+    },
+    {
+      "file": "/lib/x86_64-linux-gnu/libmd.so.0",
+      "bytes": 47312,
+      "sha256": "3e8acc749b960c0ce4ecfeaa9427f190e4d2915c5a32c98b93ca3fb451bda642"
+    },
+    {
+      "file": "/lib/x86_64-linux-gnu/libpthread.so.0",
+      "bytes": 149520,
+      "sha256": "7048cb46bda23f790af92e5f92975d84816a6de0a074a1624d46ac3c74dcdc3b"
+    },
+    {
+      "file": "/lib/x86_64-linux-gnu/librt.so.1",
+      "bytes": 35808,
+      "sha256": "a24ccd19ad1dc82d78d825553c4ad8332e25f879970fe602d230312d93b5ce23"
+    },
+    {
+      "file": "/lib/x86_64-linux-gnu/libstdc++.so.6",
+      "bytes": 1870824,
+      "sha256": "0e83d02a0144c726f05de850b71165691e380bd90205d22dd04bc8f788625507"
+    },
+    {
+      "file": "/lib/x86_64-linux-gnu/libtinfo.so.6",
+      "bytes": 187792,
+      "sha256": "26d250890dc52618c47ddc30dcabc542423f17aa7519be28660be89adcfd825d"
+    },
+    {
+      "file": "/lib/x86_64-linux-gnu/libz.so.1",
+      "bytes": 113088,
+      "sha256": "062372f2053424d8bafd9378ebdcc29a08d7e1850342b3fd5a0e73462ed84901"
+    },
+    {
+      "file": "/lib/x86_64-linux-gnu/libz3.so.4",
+      "bytes": 22910144,
+      "sha256": "4e6ac2c899c4fd9df0420813cee95d855c89399c6e381a17c9e88f87f973d0ab"
+    },
+    {
+      "file": "/lib64/ld-linux-x86-64.so.2",
+      "bytes": 177928,
+      "sha256": "1c654e88d721c9ac659b48400d20b5310ead8c6d15eeaf695d507d00d59ef490"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase195/hardware-models/prepare-retrospective.py",
+      "bytes": 5928,
+      "sha256": "ef7768336b56fe66f0535cb48993f00b71506cbcf4f0ecfcef718c76a961b651"
+    },
+    {
+      "file": "/usr/bin/objdump",
+      "bytes": 464664,
+      "sha256": "0a5231844dd50b01c5161cd8857c61fc6c56704c8553d61a20264e8227561930"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/diag-selected-build02/register-pressure-few/machine/program",
+      "bytes": 179896,
+      "sha256": "25bdfa63ee2f9f02c78a63e883637facd87f7f2dfe34b66765c7c3f8c14a0640"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase195/hardware-models/inputs/p194-register-pressure-few-before.s",
+      "bytes": 3103,
+      "sha256": "810fa26392e88852cdb990f71dd3b44b0c4e3e4c4e970d4163201730ff32d9a5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase195/hardware-models/inputs/p194-register-pressure-few-before.objdump",
+      "bytes": 3529,
+      "sha256": "b6e0f800c42f721c2ad25197edec1674292fe03ffce8ddb377fa807a83269fc5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/diag-commutative-build01/register-pressure-few/machine/program",
+      "bytes": 179904,
+      "sha256": "59d2aa6ab140a2d3e033fdecf04caba62ee2de03356bafa669a3ca2dd2deb878"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase195/hardware-models/inputs/p194-register-pressure-few-after.s",
+      "bytes": 2399,
+      "sha256": "b9fe7f67b722f1b592b73af5781c451526b4ed6016f093e1499094367590b80f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase195/hardware-models/inputs/p194-register-pressure-few-after.objdump",
+      "bytes": 2938,
+      "sha256": "c4093ed4b3d3d2eee052fa94f78fcd2d6913da36efe59d6f13761709b4314e50"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/diagnostic-commutative-runtime01/timing/report.json",
+      "bytes": 785104,
+      "sha256": "443e5eb937e053292f8cd49a15445a4db57d2eac70af4b808af48da7a4d05c3d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase194/diagnostic-machine-witnesses/report.json",
+      "bytes": 48757,
+      "sha256": "9b2f1f135b4871b869b56f4aa0789ca0d5195783bf88c7285724e8b79c2f7d48"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/diag-selected-build02/register-pressure-many/machine/program",
+      "bytes": 179904,
+      "sha256": "e5224d36cdbc6b1a6beb9e210f146f07ef29f519ca61e8468bffe8dbbd7c9eb5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase195/hardware-models/inputs/p194-register-pressure-many-before.s",
+      "bytes": 3007,
+      "sha256": "044934f3fe372253ebec027fb14719d76b2472311ea6de0ca32f10141457cb1a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase195/hardware-models/inputs/p194-register-pressure-many-before.objdump",
+      "bytes": 3668,
+      "sha256": "e797311220a2cd76f579110706bce26524cb2ff566e0f9ab38bea40c3b4c7598"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/diag-commutative-build01/register-pressure-many/machine/program",
+      "bytes": 179904,
+      "sha256": "86362e4df2640653cf01eadd9a39d9fa470dc383f260d1a5d3e8f9510d7cdbfd"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase195/hardware-models/inputs/p194-register-pressure-many-after.s",
+      "bytes": 3007,
+      "sha256": "b8d41f03556623ff140a69a61ef2e3ec295421f1e9672eaee29d15cc27ee6195"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase195/hardware-models/inputs/p194-register-pressure-many-after.objdump",
+      "bytes": 3671,
+      "sha256": "3e1fd5fab605a67a6cc12b3ccdd0a2a064f0d12debdf33783cb42f1c2cd778e2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/diagnostic-commutative-runtime01/timing/report.json",
+      "bytes": 785104,
+      "sha256": "443e5eb937e053292f8cd49a15445a4db57d2eac70af4b808af48da7a4d05c3d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase194/diagnostic-machine-witnesses/report.json",
+      "bytes": 48757,
+      "sha256": "9b2f1f135b4871b869b56f4aa0789ca0d5195783bf88c7285724e8b79c2f7d48"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/diag-selected-build02/value-identity-rebind/machine/program",
+      "bytes": 175800,
+      "sha256": "8d823e9ac61fac87c9370076b916d35df392503e56c7afe25fee79ebd02efd30"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase195/hardware-models/inputs/p194-value-identity-rebind-before.s",
+      "bytes": 816,
+      "sha256": "8ee8abe4ea1981997316c02795f6c20b819e4f9968fde5d658687cf4fb02d3cc"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase195/hardware-models/inputs/p194-value-identity-rebind-before.objdump",
+      "bytes": 1592,
+      "sha256": "9d7364fa8b7910eb6a33a083c994e90eeea76d21895043de31da51c711c47bdb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/diag-commutative-build01/value-identity-rebind/machine/program",
+      "bytes": 175808,
+      "sha256": "366ef297460c43c0511b3d858aacf17edfda0b23b200924dab22cd27e2f8f08c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase195/hardware-models/inputs/p194-value-identity-rebind-after.s",
+      "bytes": 816,
+      "sha256": "7286d8486302baad64d1b6925748cc9d9bb8d59b4f3fb1831d5899dcdb8250f1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase195/hardware-models/inputs/p194-value-identity-rebind-after.objdump",
+      "bytes": 1595,
+      "sha256": "3eb8322104c2fb86f32246bd1bf0429364b7abc4dd7d12c3a29aa5a231872ab1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/diagnostic-commutative-runtime01/timing/report.json",
+      "bytes": 785104,
+      "sha256": "443e5eb937e053292f8cd49a15445a4db57d2eac70af4b808af48da7a4d05c3d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase194/diagnostic-machine-witnesses/report.json",
+      "bytes": 48757,
+      "sha256": "9b2f1f135b4871b869b56f4aa0789ca0d5195783bf88c7285724e8b79c2f7d48"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase191/native45-02/coverage-closures-256/machine/program",
+      "bytes": 175592,
+      "sha256": "a8168b4f56a445630e858fe246a0579d742a38b70c2294e37b8d2515969de0bb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase195/hardware-models/inputs/p192-closures256-before.s",
+      "bytes": 610,
+      "sha256": "97de66a8db3546502da98d5005d28b65b5312b60a4f653bb6138c6c44ea6eaef"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase195/hardware-models/inputs/p192-closures256-before.objdump",
+      "bytes": 1281,
+      "sha256": "132af5101de73771a66be190810746005ea7ca8d8e94180cab0c438de998c3b2"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/selected-build01/coverage-closures-256/machine/program",
+      "bytes": 175712,
+      "sha256": "4054b332d67cff7ba47900e48dbd48f6ba277301d6277b110d9305170075d8b5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase195/hardware-models/inputs/p192-closures256-after.s",
+      "bytes": 610,
+      "sha256": "8b0198e18f025685afe5ea55a34c44611bb4ada285231d14e47b15270d5c89fe"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase195/hardware-models/inputs/p192-closures256-after.objdump",
+      "bytes": 1286,
+      "sha256": "48db2e8e5f842cb492d209a5cbf2fada2bcf2c7d9e4aa4ae9a551917de7968ef"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/runtime-combined01/report.json",
+      "bytes": 2252332,
+      "sha256": "80f9c0071eeb57de644490ac75731ef2e56bd18cf00b263327e63c985d89551d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase192/runtime-summary01.json",
+      "bytes": 190893,
+      "sha256": "e9d46195dfce470f84ec488c04b1ea47eb2a99e472082a125b8950eaea582326"
+    }
+  ],
+  "nonblind": true,
+  "profileWeighted": false,
+  "runs": [
+    {
+      "pair": "p194-register-pressure-few",
+      "role": "before",
+      "noalias": true,
+      "argv": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/hardware-tool01/llvm-mca",
+        "-mtriple=x86_64-unknown-linux-gnu",
+        "-mcpu=ivybridge",
+        "-iterations=100",
+        "-noalias=true",
+        "/home/ai/bend2/build/publish/bend/research/phase195/hardware-models/inputs/p194-register-pressure-few-before.s"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "wallSeconds": 0.040116822347044945,
+      "cpuSeconds": 0.03746,
+      "cumulativeChildPeakRssKiB": 35668,
+      "metrics": {
+        "iterations": 100.0,
+        "instructions": 8800.0,
+        "totalCycles": 4196.0,
+        "totalUops": 8800.0,
+        "blockReciprocalThroughput": 25.0
+      },
+      "stdout": {
+        "file": "selfhost/build/phase195/hardware-mca01/p194-register-pressure-few-before-noalias.stdout",
+        "bytes": 12277,
+        "sha256": "b7aba909ddf159be2877596edeb02f4a50b6e77f1291449b501d71e780afeeda"
+      },
+      "stderr": {
+        "file": "selfhost/build/phase195/hardware-mca01/p194-register-pressure-few-before-noalias.stderr",
+        "bytes": 195,
+        "sha256": "82b17c893b197c774ace6f6d981baed708e3a1a004301616733ad30e3edb16bd"
+      }
+    },
+    {
+      "pair": "p194-register-pressure-few",
+      "role": "after",
+      "noalias": true,
+      "argv": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/hardware-tool01/llvm-mca",
+        "-mtriple=x86_64-unknown-linux-gnu",
+        "-mcpu=ivybridge",
+        "-iterations=100",
+        "-noalias=true",
+        "/home/ai/bend2/build/publish/bend/research/phase195/hardware-models/inputs/p194-register-pressure-few-after.s"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "wallSeconds": 0.03637016657739878,
+      "cpuSeconds": 0.033497,
+      "cumulativeChildPeakRssKiB": 35668,
+      "metrics": {
+        "iterations": 100.0,
+        "instructions": 6600.0,
+        "totalCycles": 2805.0,
+        "totalUops": 6600.0,
+        "blockReciprocalThroughput": 17.7
+      },
+      "stdout": {
+        "file": "selfhost/build/phase195/hardware-mca01/p194-register-pressure-few-after-noalias.stdout",
+        "bytes": 9417,
+        "sha256": "dc1a2f16f9bf482ac4e0d4ba831aadf66a56a52d497257fabfe3fa67be661524"
+      },
+      "stderr": {
+        "file": "selfhost/build/phase195/hardware-mca01/p194-register-pressure-few-after-noalias.stderr",
+        "bytes": 194,
+        "sha256": "fbdfe3b7fc4c3811290a1344e10c11c9e46bf8300ebdbb01f266cf64b1dcf28b"
+      }
+    },
+    {
+      "pair": "p194-register-pressure-many",
+      "role": "before",
+      "noalias": true,
+      "argv": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/hardware-tool01/llvm-mca",
+        "-mtriple=x86_64-unknown-linux-gnu",
+        "-mcpu=ivybridge",
+        "-iterations=100",
+        "-noalias=true",
+        "/home/ai/bend2/build/publish/bend/research/phase195/hardware-models/inputs/p194-register-pressure-many-before.s"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "wallSeconds": 0.039042302407324314,
+      "cpuSeconds": 0.036193,
+      "cumulativeChildPeakRssKiB": 35668,
+      "metrics": {
+        "iterations": 100.0,
+        "instructions": 8200.0,
+        "totalCycles": 2798.0,
+        "totalUops": 8200.0,
+        "blockReciprocalThroughput": 20.5
+      },
+      "stdout": {
+        "file": "selfhost/build/phase195/hardware-mca01/p194-register-pressure-many-before-noalias.stdout",
+        "bytes": 11665,
+        "sha256": "8d064fe2bed79f46e95e9972d9faec51da92a61cc38ad9f7baaa912e5b505da4"
+      },
+      "stderr": {
+        "file": "selfhost/build/phase195/hardware-mca01/p194-register-pressure-many-before-noalias.stderr",
+        "bytes": 196,
+        "sha256": "4cde478db78edf6af34c1fc3dddfeae5bf279ad394df001fbdfeb5bd9a2b4b11"
+      }
+    },
+    {
+      "pair": "p194-register-pressure-many",
+      "role": "after",
+      "noalias": true,
+      "argv": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/hardware-tool01/llvm-mca",
+        "-mtriple=x86_64-unknown-linux-gnu",
+        "-mcpu=ivybridge",
+        "-iterations=100",
+        "-noalias=true",
+        "/home/ai/bend2/build/publish/bend/research/phase195/hardware-models/inputs/p194-register-pressure-many-after.s"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "wallSeconds": 0.046092201955616474,
+      "cpuSeconds": 0.04320100000000002,
+      "cumulativeChildPeakRssKiB": 35672,
+      "metrics": {
+        "iterations": 100.0,
+        "instructions": 8200.0,
+        "totalCycles": 2798.0,
+        "totalUops": 8200.0,
+        "blockReciprocalThroughput": 20.5
+      },
+      "stdout": {
+        "file": "selfhost/build/phase195/hardware-mca01/p194-register-pressure-many-after-noalias.stdout",
+        "bytes": 11665,
+        "sha256": "1c0ad071b620f25897456aacb5d26e017e25798cca3b51dffc7c7c7e07a0dfa6"
+      },
+      "stderr": {
+        "file": "selfhost/build/phase195/hardware-mca01/p194-register-pressure-many-after-noalias.stderr",
+        "bytes": 195,
+        "sha256": "024be53eff93b58a03fd78ccb5ec4efa1956815f254b2adf52c6798ab02fe2d5"
+      }
+    },
+    {
+      "pair": "p194-value-identity-rebind",
+      "role": "before",
+      "noalias": true,
+      "argv": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/hardware-tool01/llvm-mca",
+        "-mtriple=x86_64-unknown-linux-gnu",
+        "-mcpu=ivybridge",
+        "-iterations=100",
+        "-noalias=true",
+        "/home/ai/bend2/build/publish/bend/research/phase195/hardware-models/inputs/p194-value-identity-rebind-before.s"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "wallSeconds": 0.016623116098344326,
+      "cpuSeconds": 0.014264999999999986,
+      "cumulativeChildPeakRssKiB": 35672,
+      "metrics": {
+        "iterations": 100.0,
+        "instructions": 1800.0,
+        "totalCycles": 805.0,
+        "totalUops": 1800.0,
+        "blockReciprocalThroughput": 5.3
+      },
+      "stdout": {
+        "file": "selfhost/build/phase195/hardware-mca01/p194-value-identity-rebind-before-noalias.stdout",
+        "bytes": 3125,
+        "sha256": "e6141f3c9a86ffa9be70db9998576155f7689d9f969f353035e58f522c936a45"
+      },
+      "stderr": {
+        "file": "selfhost/build/phase195/hardware-mca01/p194-value-identity-rebind-before-noalias.stderr",
+        "bytes": 194,
+        "sha256": "51d2f0eddb3b4b6e92ea244b7978540f91706017bc276f818d8227131ea5ddc8"
+      }
+    },
+    {
+      "pair": "p194-value-identity-rebind",
+      "role": "after",
+      "noalias": true,
+      "argv": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/hardware-tool01/llvm-mca",
+        "-mtriple=x86_64-unknown-linux-gnu",
+        "-mcpu=ivybridge",
+        "-iterations=100",
+        "-noalias=true",
+        "/home/ai/bend2/build/publish/bend/research/phase195/hardware-models/inputs/p194-value-identity-rebind-after.s"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "wallSeconds": 0.020112739875912666,
+      "cpuSeconds": 0.017512999999999987,
+      "cumulativeChildPeakRssKiB": 35924,
+      "metrics": {
+        "iterations": 100.0,
+        "instructions": 1800.0,
+        "totalCycles": 805.0,
+        "totalUops": 1800.0,
+        "blockReciprocalThroughput": 5.3
+      },
+      "stdout": {
+        "file": "selfhost/build/phase195/hardware-mca01/p194-value-identity-rebind-after-noalias.stdout",
+        "bytes": 3125,
+        "sha256": "544d872fe414b19cb84cee263411fca0c7142207e505e9ec21b7b18c9acb1596"
+      },
+      "stderr": {
+        "file": "selfhost/build/phase195/hardware-mca01/p194-value-identity-rebind-after-noalias.stderr",
+        "bytes": 193,
+        "sha256": "5921b66935aedac32ff38f702efdad37031f809c7a51abf401e8fa6a516e51c1"
+      }
+    },
+    {
+      "pair": "p192-closures256",
+      "role": "before",
+      "noalias": true,
+      "argv": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/hardware-tool01/llvm-mca",
+        "-mtriple=x86_64-unknown-linux-gnu",
+        "-mcpu=ivybridge",
+        "-iterations=100",
+        "-noalias=true",
+        "/home/ai/bend2/build/publish/bend/research/phase195/hardware-models/inputs/p192-closures256-before.s"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "wallSeconds": 0.0211943406611681,
+      "cpuSeconds": 0.018399,
+      "cumulativeChildPeakRssKiB": 35924,
+      "metrics": {
+        "iterations": 100.0,
+        "instructions": 1200.0,
+        "totalCycles": 406.0,
+        "totalUops": 1200.0,
+        "blockReciprocalThroughput": 3.7
+      },
+      "stdout": {
+        "file": "selfhost/build/phase195/hardware-mca01/p192-closures256-before-noalias.stdout",
+        "bytes": 2315,
+        "sha256": "26c1b7649154e83957f39d056b45ee902a26ee4b7df794f23d1d1fab0d507bf8"
+      },
+      "stderr": {
+        "file": "selfhost/build/phase195/hardware-mca01/p192-closures256-before-noalias.stderr",
+        "bytes": 184,
+        "sha256": "15df5ac5d4162290ec75fc63224e5de71e59d8cfde14ef47d984f073ba38728a"
+      }
+    },
+    {
+      "pair": "p192-closures256",
+      "role": "after",
+      "noalias": true,
+      "argv": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/hardware-tool01/llvm-mca",
+        "-mtriple=x86_64-unknown-linux-gnu",
+        "-mcpu=ivybridge",
+        "-iterations=100",
+        "-noalias=true",
+        "/home/ai/bend2/build/publish/bend/research/phase195/hardware-models/inputs/p192-closures256-after.s"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "wallSeconds": 0.01723438035696745,
+      "cpuSeconds": 0.014706999999999984,
+      "cumulativeChildPeakRssKiB": 35924,
+      "metrics": {
+        "iterations": 100.0,
+        "instructions": 1200.0,
+        "totalCycles": 406.0,
+        "totalUops": 1200.0,
+        "blockReciprocalThroughput": 3.7
+      },
+      "stdout": {
+        "file": "selfhost/build/phase195/hardware-mca01/p192-closures256-after-noalias.stdout",
+        "bytes": 2315,
+        "sha256": "53b90b43c5a169fda296cda5cf0b138b4ce6f8dda66aedbe5e935d19c6f27d08"
+      },
+      "stderr": {
+        "file": "selfhost/build/phase195/hardware-mca01/p192-closures256-after-noalias.stderr",
+        "bytes": 183,
+        "sha256": "d69f1fa783aaed7ca57f9f654a408eb1015b4919f38b0a0f908791b9aea66c07"
+      }
+    },
+    {
+      "pair": "p194-register-pressure-many",
+      "role": "before",
+      "noalias": false,
+      "argv": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/hardware-tool01/llvm-mca",
+        "-mtriple=x86_64-unknown-linux-gnu",
+        "-mcpu=ivybridge",
+        "-iterations=100",
+        "-noalias=false",
+        "/home/ai/bend2/build/publish/bend/research/phase195/hardware-models/inputs/p194-register-pressure-many-before.s"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "wallSeconds": 0.0368487685918808,
+      "cpuSeconds": 0.034417,
+      "cumulativeChildPeakRssKiB": 35924,
+      "metrics": {
+        "iterations": 100.0,
+        "instructions": 8200.0,
+        "totalCycles": 3105.0,
+        "totalUops": 8200.0,
+        "blockReciprocalThroughput": 20.5
+      },
+      "stdout": {
+        "file": "selfhost/build/phase195/hardware-mca01/p194-register-pressure-many-before-mayalias.stdout",
+        "bytes": 11665,
+        "sha256": "a39aecbf60740a6b13bc71e5065204f5c08f73b9eda4b89993f86c32637ba935"
+      },
+      "stderr": {
+        "file": "selfhost/build/phase195/hardware-mca01/p194-register-pressure-many-before-mayalias.stderr",
+        "bytes": 196,
+        "sha256": "4cde478db78edf6af34c1fc3dddfeae5bf279ad394df001fbdfeb5bd9a2b4b11"
+      }
+    },
+    {
+      "pair": "p194-register-pressure-many",
+      "role": "after",
+      "noalias": false,
+      "argv": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/hardware-tool01/llvm-mca",
+        "-mtriple=x86_64-unknown-linux-gnu",
+        "-mcpu=ivybridge",
+        "-iterations=100",
+        "-noalias=false",
+        "/home/ai/bend2/build/publish/bend/research/phase195/hardware-models/inputs/p194-register-pressure-many-after.s"
+      ],
+      "exitCode": 0,
+      "timedOut": false,
+      "wallSeconds": 0.04109928943216801,
+      "cpuSeconds": 0.03828199999999997,
+      "cumulativeChildPeakRssKiB": 35924,
+      "metrics": {
+        "iterations": 100.0,
+        "instructions": 8200.0,
+        "totalCycles": 3105.0,
+        "totalUops": 8200.0,
+        "blockReciprocalThroughput": 20.5
+      },
+      "stdout": {
+        "file": "selfhost/build/phase195/hardware-mca01/p194-register-pressure-many-after-mayalias.stdout",
+        "bytes": 11665,
+        "sha256": "79d2d8f20537f18d7f6a8551c1817444619ebefbf76d2cbe1bd3212a8492cd4b"
+      },
+      "stderr": {
+        "file": "selfhost/build/phase195/hardware-mca01/p194-register-pressure-many-after-mayalias.stderr",
+        "bytes": 195,
+        "sha256": "024be53eff93b58a03fd78ccb5ec4efa1956815f254b2adf52c6798ab02fe2d5"
+      }
+    }
+  ],
+  "wallSeconds": 0.9297658102586865,
+  "modelProcessWallSeconds": 0.31473412830382586,
+  "modelProcessCpuSeconds": 0.2879339999999999,
+  "complete": true
+}

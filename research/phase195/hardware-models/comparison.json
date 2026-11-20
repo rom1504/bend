@@ -1,0 +1,64 @@
+{
+  "kind": "phase195-hardware-retrospective-comparison-v1",
+  "scope": "Four nonblind historical pairs, no target executions, no measured profile fractions or workload prediction",
+  "rows": [
+    {
+      "pair": "p194-register-pressure-few",
+      "measuredRatio": 0.7741673490938086,
+      "totalCyclesBefore": 4004.0,
+      "totalCyclesAfter": 3099.0,
+      "cycleRatio": 0.7739760239760239,
+      "blockThroughputBefore": 25.0,
+      "blockThroughputAfter": 17.7,
+      "blockThroughputRatio": 0.708
+    },
+    {
+      "pair": "p194-register-pressure-many",
+      "measuredRatio": 0.999561519694629,
+      "totalCyclesBefore": 2737.0,
+      "totalCyclesAfter": 2737.0,
+      "cycleRatio": 1.0,
+      "blockThroughputBefore": 20.8,
+      "blockThroughputAfter": 20.8,
+      "blockThroughputRatio": 1.0
+    },
+    {
+      "pair": "p194-value-identity-rebind",
+      "measuredRatio": 0.9135862089613855,
+      "totalCyclesBefore": 805.0,
+      "totalCyclesAfter": 805.0,
+      "cycleRatio": 1.0,
+      "blockThroughputBefore": 5.3,
+      "blockThroughputAfter": 5.3,
+      "blockThroughputRatio": 1.0
+    },
+    {
+      "pair": "p192-closures256",
+      "measuredRatio": 1.2636702796449384,
+      "totalCyclesBefore": 439.0,
+      "totalCyclesAfter": 439.0,
+      "cycleRatio": 1.0,
+      "blockThroughputBefore": 3.7,
+      "blockThroughputAfter": 3.7,
+      "blockThroughputRatio": 1.0
+    }
+  ],
+  "modelRanking": [
+    "p194-register-pressure-few",
+    [
+      "p194-register-pressure-many",
+      "p194-value-identity-rebind",
+      "p192-closures256"
+    ]
+  ],
+  "measuredRanking": [
+    "p194-register-pressure-few",
+    "p194-value-identity-rebind",
+    "p194-register-pressure-many",
+    "p192-closures256"
+  ],
+  "strictModelComparisons": 3,
+  "strictModelComparisonsAgree": 3,
+  "modelTiedComparisons": 3,
+  "warning": "Three comparisons are all the same winning pair; the model cannot rank the remaining three. Neither correlation nor predictive validation is claimed."
+}

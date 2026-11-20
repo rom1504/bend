@@ -1,0 +1,7 @@
+# Lowering unsigned division and remainder by a constant
+
+Authenticated lexer profiles in Phase195 found a hot hardware divide and runtime dispatch on literal divisors 26, 10 and 6. Source arithmetic, parsing, hashing and formatting also contain divisors. Experiment on actual compiler output before expanding the domain.
+
+For 2 ≤ d ≤ 65,535 choose s and a 32-bit integer m such that m = ceil(2^(32+s)/d) and 0 ≤ m*d - 2^(32+s) ≤ 2^s. Then for 0 ≤ x < 2^32 the error of x*m/2^(32+s) relative to x/d is less than 1/d. Its floor is always floor(x/d). The 64-bit product x*m fits exactly, and r=x-floor(x/d)*d. Use shifts/masks alone on powers of two. If no representable m is found, retain the original primitive. Preserve the original division-by-zero behavior by refusing zero. The runtime's modulo-zero returns the full incoming word, which a blanket zero-divisor canonicalization could change. Normalize even a noncanonical incoming dividend to its low 32 bits on every admitted nonzero path.
+
+Only the compiler algorithm and independently verified scalar IR change; use shared direct/generic lowering and retain final verification. Compare both actual source-to-object selection and ordinary x86 runtime. Start with lexer and a distinct text/records or modular numerical workload; run original upstream outputs and additional edge cases. Other backends may benefit if they share this emitter, but their speed needs separate measurement.

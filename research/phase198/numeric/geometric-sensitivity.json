@@ -1,0 +1,47 @@
+{
+  "kind": "phase198-geometric-score-sensitivity",
+  "programsExecuted": false,
+  "actualBroadResult": false,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase198/numeric/geometric-sensitivity.py",
+    "bytes": 2267,
+    "sha256": "ac9cc7af268778a520b96bf452aa7aba549c5e201f957e94077a9a9c9188eb24"
+  },
+  "focused": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase198/numeric/stable-orbit-results.json",
+    "bytes": 12240,
+    "sha256": "26313329a4ea49c2854724d0b5f39d9c24998b6ed0fbb06c37c53f8dd80e89bc"
+  },
+  "caseUniverse": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase198/runtime-broad/summary.json",
+    "bytes": 221642,
+    "sha256": "3fc830d90d3693b17b631667f19f8c56429787c60e244e226b32513a3e4b60ab"
+  },
+  "eligibleCases": 44,
+  "formula": "G=exp(sum(log(case_ratio))/44). All unmeasured case ratios set to1 only for this arithmetic sensitivity, not as an empirical claim.",
+  "caveat": "Focused ratios are median paired ratios against frozen native45-02 or same-session escape products. They do not measure later portfolio N1, the live runtime, cross-pass interaction, or other42cases. Actual broad gains and shares require the full portfolio run.",
+  "scenarios": {
+    "versusFrozenIncumbent": {
+      "scalarRatio": 0.00022743467125712897,
+      "mandelbrotRatio": 0.7558475640046497,
+      "scalarAloneScoreFactor": 0.8264208926262583,
+      "scalarAlonePercentReduction": 17.357910737374173,
+      "mandelbrotAloneScoreFactor": 0.9936584756515247,
+      "twoMeasuredCasesOnlyScoreFactor": 0.8211801244135801,
+      "twoMeasuredCasesOnlyPercentReduction": 17.88198755864199,
+      "scalarShareOfTwoCaseLogGain": 0.9677091167793326,
+      "meaning": "A share above1 means Mandelbrot offsets part of the scalar gain; no measured broad gain is being attributed."
+    },
+    "versusEscapeOnly": {
+      "scalarRatio": 0.00020082057680691586,
+      "mandelbrotRatio": 1.0130284624641652,
+      "scalarAloneScoreFactor": 0.824086716665865,
+      "scalarAlonePercentReduction": 17.591328333413504,
+      "mandelbrotAloneScoreFactor": 1.000294232415877,
+      "twoMeasuredCasesOnlyScoreFactor": 0.8243291896914017,
+      "twoMeasuredCasesOnlyPercentReduction": 17.567081030859832,
+      "scalarShareOfTwoCaseLogGain": 1.0015228337621822,
+      "meaning": "A share above1 means Mandelbrot offsets part of the scalar gain; no measured broad gain is being attributed."
+    }
+  }
+}

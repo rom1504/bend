@@ -94,7 +94,53 @@ The stable-orbit extension passed independent checking as `numeric-api04` in
 Use `numeric-affine.bend`, `affine.bend`, and unchanged `hook.bend` for this
 version; `numeric.bend` and `controls.mjs` were restored byte-for-byte to the
 measured escape version so old audit pins remain valid. The new controls live in
-`controls-affine.mjs` and are not yet executed. The two-case plan02 has unchanged
+`controls-affine.mjs`; their subsequent pass is recorded below. The two-case plan02 has unchanged
 preparation closure (4,081 declarations / 1,367,502 bytes), with actual ordinary
-Mandelbrot and scalar8192 products queued after the shared qualification window.
-No stable-orbit performance or semantic-control pass is claimed yet.
+Mandelbrot and scalar8192 products measured after the shared qualification window.
+
+## Stable-orbit actual transfer
+
+`numeric-products03` passed in **39.469 seconds**: 31 admission/refusal controls,
+1,121 independently interpreted IR cases, 9,720 abstract-fact observations, two
+actual source emissions, 40 complete-output checks across five roles, and 60
+timed observations. The independent scalar8192 interpretation executes the same
+first prefix and returns without a backedge, versus 8,192 backedges originally.
+Generic controls include arbitrary affine deltas, full-width fuel through 2^64-1,
+wraparound, state that becomes fixed later, and refusal of counter-dependent
+state/control or full-word counter arithmetic. [Compact results](stable-orbit-results.json).
+
+| Case | Stable-orbit / frozen incumbent | Escape-only / incumbent | C / incumbent | QBE / incumbent |
+|---|---:|---:|---:|---:|
+| Mandelbrot | 0.755848 | 0.748483 | 0.286801 | 0.695472 |
+| Scalar8192 | 0.000227435 | 1.129010 | 0.465517 | 0.773778 |
+
+The denominator is explicitly `native45-02`, not the later portfolio N1. Both
+new-candidate cases beat this denominator in all six pairs. Against escape-only
+in the same pairs, the new rule is **1.30% slower on ordinary Mandelbrot** and
+about **99.980% less time on scalar8192**. The new rule removes that point's loop
+by a general runtime equality certificate; no function or seed is recognized.
+The scalar result uses 8,904,347 calibrated repetitions per sample, so this is
+not a sub-timer-resolution single call. Changing-state inputs are checked too.
+
+The emitted [worker](evidence/affine-mit.disassembly) contains three full-word
+state comparisons and the exact low32(predecessor) multiply/add return path.
+Mandelbrot/scalar selection took 5.668/2.078 seconds and object encoding
+1.331/0.772 seconds; these are single compiler observations, not a compiler-cost
+performance claim. The source-level fixed-state ceiling was repaired offline in
+`streams/fixed-state.py` but was unnecessary and was not executed. Composition
+into the broader compiler and qualification remain separate gates.
+
+The 44-case broad geometric score gives every eligible point the same logarithmic
+weight. [Mechanical sensitivity](geometric-sensitivity.json), calculated by
+[the offline script](geometric-sensitivity.py), shows how strongly this one scalar
+point can dominate a score: its observed ratio alone would multiply the score by
+**0.826421** (17.3579% lower) *if all other 43 ratios were exactly one*. Applying
+only the two measured ratios and setting the remaining 42 to one gives 0.821180;
+scalar supplies **96.7709% of that hypothetical two-case logarithmic gain**.
+Incrementally over escape-only, the corresponding factors are 0.824087 for scalar
+alone and 0.824329 for both points; scalar contributes 100.1523% of net log gain
+because Mandelbrot offsets a little of it. These are arithmetic sensitivities,
+not actual broad results, predictions of portfolio04, or attribution of its
+unmeasured gains. They establish neither broad orbit incidence nor fixed-work or
+other-family improvement. The later composed compiler and live runtime still
+need their own unchanged-input broad measurements.

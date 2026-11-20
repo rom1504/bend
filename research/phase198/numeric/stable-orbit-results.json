@@ -1,0 +1,346 @@
+{
+  "kind": "phase198-checked-stable-orbit-actual-products",
+  "complete": true,
+  "scope": "Two exact ordinary-source cases; independent controls and focused runtime transfer, not broad qualification. Baseline is frozen native45-02, not later portfolio N1.",
+  "report": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-products03/report.json",
+    "bytes": 53220,
+    "sha256": "2fbb6c7cd124601aa1ed4b6faf1187abfa3b558a54ba2a4314792dd407033701"
+  },
+  "api": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-api04/report.json",
+    "bytes": 5745,
+    "sha256": "6e97e4750831b44083faae98dcb4f9d5cc36129ac4ea249d899ce242d410de16"
+  },
+  "plan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-emission-plan02.json",
+    "bytes": 183361,
+    "sha256": "7c33032192be6d371009782724a458e90b633e6ff0802ba79a8ddf58af264c00"
+  },
+  "baseline": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/native45-02/report.json",
+    "bytes": 142488,
+    "sha256": "225da3b6564ed0059a69034d4a0ecfda325c63c6787a81415a1b36add18c0fcf"
+  },
+  "controls": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-products03/controls/controls.json",
+    "bytes": 4546,
+    "sha256": "059b6a5f40f0ac0e983760663de09a0c016fcec2c219ba01cfc502dc4895f1f1"
+  },
+  "controlCounts": {
+    "checks": 31,
+    "interpretations": 1121,
+    "abstractObservations": 9720
+  },
+  "stableOrbitTransfer": {
+    "case": "scalar-region-8192",
+    "seed": 524800,
+    "coordinates": [
+      0,
+      0
+    ],
+    "result": "8192",
+    "beforeIterations": 8192,
+    "afterIterations": 0,
+    "scope": "Independent IR interpretation; stable state returns after the first prefix, no backedge."
+  },
+  "wholeRunSeconds": 39.468638193793595,
+  "buildChecksSeconds": 28.297967195510864,
+  "observations": 60,
+  "cases": {
+    "mandelbrot": {
+      "runtimeArgs": [
+        2,
+        0
+      ],
+      "expected": "887240761\n",
+      "checks": 15,
+      "ratios": {
+        "baseline": {
+          "median": 1.0,
+          "pairs": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "numeric": {
+          "median": 0.7558475640046497,
+          "pairs": [
+            0.7583925052975946,
+            0.7635516379866939,
+            0.7533026227117048,
+            0.7509572846574223,
+            0.7583925052975946,
+            0.7409445208619899
+          ]
+        },
+        "escape": {
+          "median": 0.7484831770546057,
+          "pairs": [
+            0.745945945945946,
+            0.7510204081632653,
+            0.7409395973154362,
+            0.7513513513513513,
+            0.7513513513513513,
+            0.7413333333333333
+          ]
+        },
+        "c": {
+          "median": 0.2868008814809061,
+          "pairs": [
+            0.28785582882713956,
+            0.2877730878588075,
+            0.2939781051751976,
+            0.28582867510300475,
+            0.28582867510300475,
+            0.28201762610163134
+          ]
+        },
+        "qbe": {
+          "median": 0.6954715176034338,
+          "pairs": [
+            0.7333372760068603,
+            0.6954554250584261,
+            0.6955193632238262,
+            0.6907564019161394,
+            0.6954876101484417,
+            0.6908825674690008
+          ]
+        }
+      },
+      "numericOverEscapeMedian": 1.0130284624641652,
+      "counts": {
+        "baseline": 1600,
+        "numeric": 1454,
+        "escape": 2000,
+        "c": 5333,
+        "qbe": 2285
+      },
+      "products": {
+        "baseline": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/native45-02/mandelbrot/machine/program",
+            "bytes": 215600,
+            "sha256": "45b81046c7f44476cbb275cbcfec4a2ebeff9af9e97ebbf9bf92d2f146308f10"
+          },
+          "convention": "bend-rts-v1"
+        },
+        "numeric": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-products03/mandelbrot-numeric",
+            "bytes": 215616,
+            "sha256": "102b1f9cae31b4d494ff17360a647ec30bbb9b0445014094da9f28c97a7ab448"
+          },
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-products03/emission/numeric/mandelbrot/program.o",
+            "bytes": 137832,
+            "sha256": "3b445ebcdcde1cb5d5e4f527a5e9a57e8ece3905e6138030d2401386295b535a"
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-products03/emission/numeric/mandelbrot/program.s",
+            "bytes": 549327,
+            "sha256": "ebbd4870cfce7de946ce4a313d011542c0eba3f5cd0f6d7ef39abcc6fb870865"
+          },
+          "convention": "bend-rts-v1"
+        },
+        "escape": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-products02/mandelbrot-numeric",
+            "bytes": 215616,
+            "sha256": "913fc4c58c3107337952e365843a5893865c0c99eb56c24985064d5f162cb95b"
+          },
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-products01/emission/numeric/mandelbrot/program.o",
+            "bytes": 137776,
+            "sha256": "bc09e36e5505517a8caba7046a31ce341d5c8ece46b2bb4acfcd94f72c799362"
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-products01/emission/numeric/mandelbrot/program.s",
+            "bytes": 548837,
+            "sha256": "c231bc0f572dc6f17d31670e139854f75092aa6fab4af9be48dd3080f9834ba4"
+          },
+          "convention": "bend-rts-v1"
+        },
+        "c": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/mandelbrot/bend-c/program",
+            "bytes": 108744,
+            "sha256": "be22d29a00ccb433be39cae20507eba454ce8f75b80885cef635f3823e215d41"
+          },
+          "convention": "bend-rts-v1"
+        },
+        "qbe": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-native45-acquire01/mandelbrot/phase186-qbe-n2/machine/program",
+            "bytes": 186512,
+            "sha256": "118279a98ea26339765a3fc85950af32900fe3124ddf6027fa9707f48934e3b0"
+          },
+          "convention": "bend-rts-v1"
+        }
+      }
+    },
+    "scalar-region-8192": {
+      "runtimeArgs": [
+        8192,
+        524800
+      ],
+      "expected": "8192\n",
+      "checks": 25,
+      "ratios": {
+        "baseline": {
+          "median": 1.0,
+          "pairs": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "numeric": {
+          "median": 0.00022743467125712897,
+          "pairs": [
+            0.0002288473089668006,
+            0.0002330322481817027,
+            0.00022602203354745736,
+            0.00021784405258965965,
+            0.00022602203354745736,
+            0.0002288473089668006
+          ]
+        },
+        "escape": {
+          "median": 1.1290095666854247,
+          "pairs": [
+            1.1891995200730507,
+            1.1325267304445694,
+            1.1254924029262803,
+            1.08481195462774,
+            1.1254924029262803,
+            1.1325709714981436
+          ]
+        },
+        "c": {
+          "median": 0.4655169025157233,
+          "pairs": [
+            0.5188679245283019,
+            0.465625,
+            0.46855345911949686,
+            0.44879518072289154,
+            0.46540880503144655,
+            0.46540880503144655
+          ]
+        },
+        "qbe": {
+          "median": 0.7737783502479394,
+          "pairs": [
+            0.7784965109201829,
+            0.8064516129032259,
+            0.7737783502479394,
+            0.7411491427073637,
+            0.7737783502479394,
+            0.7737783502479394
+          ]
+        }
+      },
+      "numericOverEscapeMedian": 0.00020082057680691586,
+      "counts": {
+        "baseline": 2000,
+        "numeric": 8904347,
+        "escape": 1777,
+        "c": 4000,
+        "qbe": 2666
+      },
+      "products": {
+        "baseline": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/native45-02/scalar-region-8192/machine/program",
+            "bytes": 180016,
+            "sha256": "511b58488f288a3028dd135da1caa4bf2223727d73ba580d8ce8d69da29cbd99"
+          },
+          "convention": "bend-rts-v1"
+        },
+        "numeric": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-products03/scalar-region-8192-numeric",
+            "bytes": 180032,
+            "sha256": "bfe5519ba0af5e5e71d1e26e5532cfa95445487477baaf6492e5472f7d069854"
+          },
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-products03/emission/numeric/scalar-region-8192/program.o",
+            "bytes": 94504,
+            "sha256": "6bf21e798f4b90ba54f9316ac8b857ee3fc93934f933e5b1da872b7877eb403d"
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-products03/emission/numeric/scalar-region-8192/program.s",
+            "bytes": 374926,
+            "sha256": "99dd061e53725dc636022924e19e2c4245839d1fa05fb8f9f8f84ab4da09b65c"
+          },
+          "convention": "bend-rts-v1"
+        },
+        "escape": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-products02/scalar-region-8192-numeric",
+            "bytes": 180032,
+            "sha256": "e19c97f43430a26d3055ce8360db1a81149757c0cd1eec77fb198adfcfd09f7c"
+          },
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-products01/emission/numeric/scalar-region-8192/program.o",
+            "bytes": 94456,
+            "sha256": "2b769f1266a8d1b1e01ce33585ed89e50edda9d78fda5f73d4b3ce4f1a041820"
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-products01/emission/numeric/scalar-region-8192/program.s",
+            "bytes": 374436,
+            "sha256": "26f26195b7bc228cb1f5d77906d83387e13dd67ec77299acaf614f57ce494533"
+          },
+          "convention": "bend-rts-v1"
+        },
+        "c": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/scalar-region-8192/bend-c/program",
+            "bytes": 90160,
+            "sha256": "9153c746352a3a02ee7d6290d6c34e8cf64516f282c4c66f9b99e4e8f0f9ed87"
+          },
+          "convention": "bend-rts-v1"
+        },
+        "qbe": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase186/release-native45-acquire01/scalar-region-8192/phase186-qbe-n2/machine/program",
+            "bytes": 161328,
+            "sha256": "f715488e81d655279e98fa3a903539fa264a19ea0ff38491a09368d7f0a142a9"
+          },
+          "convention": "bend-rts-v1"
+        }
+      }
+    }
+  },
+  "selectionCost": [
+    {
+      "id": "mandelbrot",
+      "selectSeconds": 5.667799248,
+      "renderSeconds": 0.16884289300000077,
+      "objectSeconds": 1.3310711930000032,
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-products03/emission/numeric/mandelbrot/program.o",
+        "bytes": 137832,
+        "sha256": "3b445ebcdcde1cb5d5e4f527a5e9a57e8ece3905e6138030d2401386295b535a"
+      }
+    },
+    {
+      "id": "scalar-region-8192",
+      "selectSeconds": 2.0779182710000015,
+      "renderSeconds": 0.04769530299999758,
+      "objectSeconds": 0.7716130979999996,
+      "product": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-products03/emission/numeric/scalar-region-8192/program.o",
+        "bytes": 94504,
+        "sha256": "6bf21e798f4b90ba54f9316ac8b857ee3fc93934f933e5b1da872b7877eb403d"
+      }
+    }
+  ]
+}

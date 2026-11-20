@@ -1,0 +1,207 @@
+{
+  "complete": true,
+  "api": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-api04/report.json",
+    "bytes": 5745,
+    "sha256": "6e97e4750831b44083faae98dcb4f9d5cc36129ac4ea249d899ce242d410de16"
+  },
+  "capture": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-followup02/capture/capture.json",
+    "bytes": 1970,
+    "sha256": "2f0e9e1e596add360949ab8723e72a02ae4f6bb0c74d4f7513b1d3101f40dd81"
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase198/numeric/controls-affine.mjs",
+    "bytes": 14055,
+    "sha256": "b5d458df69cc8b1f54bccbec4db8d0df20f769b3e1ed4918b000036c4d8779ca"
+  },
+  "seed": 198,
+  "checks": [
+    {
+      "name": "actual-current-mit",
+      "accept": true,
+      "affine": true
+    },
+    {
+      "name": "refuse-noncanonical-param-1",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-noncanonical-param-2",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-noncanonical-param-3",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-noncanonical-param-4",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-noncanonical-param-5",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-noncanonical-param-6",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-boxed-fuel",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-low32-fuel-test",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-fuel-step-two",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-mode-not-absorbing",
+      "accept": false,
+      "affine": true
+    },
+    {
+      "name": "refuse-observable-fuel",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-observable-mode",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-changing-other-state",
+      "accept": false,
+      "affine": true
+    },
+    {
+      "name": "refuse-arity-mismatch",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-fresh-name-collision",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-call-effect",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-load-effect",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-store-effect",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-trapping-division",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-parameter-reassignment",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-body-budget",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "accept-systematic-renaming",
+      "accept": true,
+      "affine": true
+    },
+    {
+      "name": "independent-affine-variable-delta",
+      "accept": false,
+      "affine": true
+    },
+    {
+      "name": "refuse-multiplicative-counter",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-fullword-counter-arithmetic",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-affine-fresh-local-collision",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-counter-dependent-control",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-counter-dependent-state",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-fuel-dependent-state",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "accept-state-becomes-fixed",
+      "accept": false,
+      "affine": true
+    }
+  ],
+  "interpretations": 1121,
+  "abstractObservations": 9720,
+  "stableOrbitTransfer": {
+    "case": "scalar-region-8192",
+    "seed": 524800,
+    "coordinates": [
+      0,
+      0
+    ],
+    "result": "8192",
+    "beforeIterations": 8192,
+    "afterIterations": 0,
+    "scope": "Independent IR interpretation; stable state returns after the first prefix, no backedge."
+  },
+  "fullWidthLivePrefix": [
+    {
+      "fuel": "4294967296",
+      "result": "1",
+      "completedBackedges": 2
+    },
+    {
+      "fuel": "9223372036854775809",
+      "result": "1",
+      "completedBackedges": 2
+    },
+    {
+      "fuel": "18446744073709551615",
+      "result": "1",
+      "completedBackedges": 2
+    }
+  ]
+}

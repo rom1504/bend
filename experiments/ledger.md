@@ -1,3 +1,9 @@
+# Phase196 prospective hardware-model screen
+
+Two of 15 candidates passed both whole-program timing sessions. Instruction count found both in its top four. LLVM-MCA local cycles and profile-weighted cycles each found one; weighting picked the largest win first. Reusing live registers in a minimum calculation reduced current Phase195 edit-distance and local-pair runtime by about 16% under two assembler layouts. A BST decrement reduced runtime by 3–4%. These are generated-assembly diagnostics. The qualified Phase195 compiler remains at 1.865× mature Bend C runtime. [Experiment and decisions](../implementation/phase196/README.md).
+
+---
+
 # Qualified Phase195 direct x86 compiler
 
 Across 44 timed native45 cases, Phase195 takes **1.86457× mature Bend C runtime**, down from 1.97723× for Phase194 in the same run. Geometric runtime falls 5.70% overall and 4.30% on the 34 timed held-out cases. The original fixed-work batch falls from 24.55 s to 22.42 s. All 45 ordinary outputs, 64 conformance cases and 10 runtime controls pass. N2 reproduces its compiler object exactly. Four paired compiler requests take 1.28% longer with N1 and 0.36% longer with N2. The installed Phase189 image remains available.

@@ -1,0 +1,65 @@
+{
+  "parameters": [
+    "prefix",
+    "source"
+  ],
+  "roles": [
+    "c",
+    "phase197",
+    "candidate",
+    "live"
+  ],
+  "prepare": [
+    "python3",
+    "-B",
+    "research/phase198/qualification/job.py",
+    "{{prefix}}-live-plan01",
+    "120",
+    "140",
+    "python3",
+    "-B",
+    "research/phase198/runtime-broad/portfolio.py",
+    "--native",
+    "selfhost/build/phase198/{{prefix}}-native45-01/programs.manifest.json",
+    "--source",
+    "{{source}}",
+    "--out",
+    "selfhost/build/phase198/{{prefix}}-live-plan01"
+  ],
+  "timing": [
+    "python3",
+    "-B",
+    "research/phase198/qualification/job.py",
+    "{{prefix}}-live-broad01",
+    "800",
+    "150",
+    "python3",
+    "-B",
+    "selfhost/build/phase195/runtime-calibration.py",
+    "run",
+    "--manifest",
+    "selfhost/build/phase198/{{prefix}}-live-plan01/manifest.json",
+    "--out",
+    "selfhost/build/phase198/{{prefix}}-live-broad01",
+    "--rounds",
+    "4",
+    "--target-ms",
+    "250",
+    "--cpu",
+    "3",
+    "--seconds",
+    "750",
+    "--guarded"
+  ],
+  "summarize": [
+    "python3",
+    "-B",
+    "research/phase198/runtime-broad/portfolio-summary.py",
+    "--plan",
+    "selfhost/build/phase198/{{prefix}}-live-plan01",
+    "--run",
+    "selfhost/build/phase198/{{prefix}}-live-broad01",
+    "--out",
+    "research/phase198/runtime-broad/{{prefix}}-summary.json"
+  ]
+}

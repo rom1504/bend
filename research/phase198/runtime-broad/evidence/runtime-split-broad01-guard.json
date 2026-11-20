@@ -1,0 +1,75 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": true,
+  "started": 1795217006.104584,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "3",
+    "python3",
+    "-B",
+    "selfhost/build/phase195/runtime-calibration.py",
+    "run",
+    "--manifest",
+    "selfhost/build/phase198/runtime-split-prepare01/manifest.json",
+    "--out",
+    "selfhost/build/phase198/runtime-split-broad01",
+    "--rounds",
+    "4",
+    "--target-ms",
+    "250",
+    "--cpu",
+    "3",
+    "--seconds",
+    "750",
+    "--guarded"
+  ],
+  "returncode": 0,
+  "rssLimitBytes": 2147483648,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 77926400,
+  "minimumAvailableBytes": 26611564544,
+  "diskBudgetBytes": 134217728,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 7202312192,
+  "minimumDiskFreeBytes": 7156428800,
+  "peakRunAllocatedBytes": 19263488,
+  "peakFilesystemDecreaseBytes": 45883392,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-broad01"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "3",
+    "fileLimitBytes": 134217728,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/runtime-calibration.py",
+        "sha256": "e325f78026e84b99a445b2a4a7c4fc841df51b6899dd4574c7edfa7dd2d4c89b",
+        "bytes": 9811
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-prepare01/manifest.json",
+        "sha256": "a6d6c7a479ce290fa782f540b24e542dca3fd8da32ebdeff485b264e3e7f401a",
+        "bytes": 4560291
+      }
+    ]
+  },
+  "wallSeconds": 472.0191523581743,
+  "finished": 1795217478.1234794
+}

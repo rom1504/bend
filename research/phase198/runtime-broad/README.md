@@ -1,0 +1,32 @@
+# Constructor runtime split on current direct objects
+
+Both experimental libraries separate fast raw constructor takes and cold-constructor free-list hits from the parent helpers. The cached library also moves the heap boundary and per-constructor metadata into process globals during binding. The live variant reads each predicate and heap boundary from the bound descriptor. It keeps the original source of every metadata value.
+
+## ABI boundary
+
+Binding checks the ABI/version, descriptor dimensions, supported capability combination, pointers, segment metadata, constructor count and hot flags. A second binding in the same process fails before initialization. The cached library fills a zero-initialized 65,536-entry table, then publishes the same process descriptor as the incumbent. Bound constructor count is at most 65,536, and both term extraction implementations mask the constructor ID to 16 bits. An unsigned byte arity plus one fits in the low nine bits, including byte arity 255. Zero remains distinct from every valid index entry. Bit nine records that capability 8 is present and the constructor is cold. Rejection of missing core identities and unavailable effects still follows descriptor publication. Rejection terminates the process.
+
+The raw take path tests the complete upper byte against the unshared constructor tag. Its copy order, returned count and shell release match the original raw branch. A shared term retains its reference-counted slow path. The constructor hit path reads the same allocator class, copies fields in order, and preserves sealing on hot constructors or when capability 8 is absent. The runtime admits one compute thread with GPU disabled. The live version retains current metadata semantics for C-owned descriptors throughout these paths.
+
+The C header makes the metadata pointers const to the runtime and requires backing storage to remain live until exit. It gives no explicit promise that a separate owner cannot change those tables. The current direct executable places its descriptor in writable data. A foreign-owner control changes the hot flag or capability after binding and before making a valid, correctly sized constructor call. It then takes the object, observes the field's ownership representation and independently checks its payload. An immutable-descriptor result alone cannot establish compatibility for that C API use.
+
+## Frozen measurements
+
+The three runtime objects use the same pinned GCC at O2, disabled floating-point contraction, serial RFC configuration and maintained public header. The test compares public symbol names and types. A separate C program exercises constructor IDs through 65,535, supported capability combinations, zero and nonzero static images, cold and hot fields, two uses of a shared owner, free-list reuse, static takes, packed values, rejected descriptors, reentry and unsupported runtime modes. The runtime-owned ten finite fixtures also check exact stdout, stderr and exit status with the same Phase195 fixture objects linked to each library. [C observer](observer.c) · [Original runtime change](../runtime/bind-facts.py) · [Live-descriptor change](live.py)
+
+All 45 current Phase197 native objects are reused without modification. Each incumbent relink must match its earlier executable byte for byte. Four roles rotate over four rounds with the original 250 ms adaptive calibration target, CPU3, independent mature C products, original catalog inputs and original result/count checks. Forty-four nonzero cases enter ratios. The fixed-equivalent total uses the catalog's original repetitions, separately from each role's timing repetitions. All members of the seven development families are classified together. The other 29 points form a held-out set for the runtime change. A difference greater than 2% between the cached and live median is flagged descriptively. [Partition](partition.json) · [Preparation](prepare.py) · [Broad runtime recipe](runtime-split-broad01-argv.json) · [Summary method](summarize.py)
+
+## Results on current objects
+
+All 720 measured observations and 625 calibration pilots passed the count and complete-output checks. The 176 eligible measured intervals per role had medians of 253–255 ms. The shortest was 191 ms and the longest was 533 ms. The original direct executable took 1.86974 times mature C in the all-case geometric mean. [Authenticated summary](summary.json) · [Raw observations](evidence/runtime-split-broad01-report.json.gz)
+
+| Runtime | All 44 vs original | Development 16 vs original | Held-out 28 vs original | Fixed catalog work vs original | All 44 vs mature C |
+|---|---:|---:|---:|---:|---:|
+| Cached | 0.97572 | 0.96931 | 0.97941 | 0.96401 | 1.82435 |
+| Live metadata | 0.98188 | 0.97779 | 0.98423 | 0.96900 | 1.83586 |
+
+The live version ran tree-bitonic in 0.826 times the incumbent time and BST32 and BST64 in 0.827 and 0.899 times the incumbent time. Each of their four live samples beat its same-round incumbent. Closure64 was 1.151 times slower by the median ratio and all four rounds ran slower. Local-fold gave a 1.425 median ratio, with individual round ratios of 0.989, 1.405, 0.998 and 1.477. Dispersion exceeded 10% for at least one role on 22 cases. The cached and live medians differed by more than 2% on 22 of the 44 ratio-eligible cases. Eight of those differences had the same direction in all four paired rounds. [Case table](summary.md)
+
+The follow-up plan accepts a frozen composed native compiler source and its all45 program manifest. It verifies the exact N1 object and original linker recipe per case, checks each original relink against the production executable and checks all four outputs on the catalog input. The four roles are mature C, Phase197, the portfolio using the original runtime, and the same portfolio objects using the live-metadata runtime. [Manifest and timing templates](portfolio-template.json) · [Relink method](portfolio.py) · [Pinned inputs](portfolio-pins.json)
+
+The replay bundle contains all 2,690 pilot and measured stdout/stderr streams, acquisition manifests, generated runtime sources, original and candidate runtime objects, and the guard and retention receipts. A benchmark rerun also requires the pinned emitted program objects, toolchain and historical build inputs listed in the manifests. The bundle contains 2,717 files, stored under their checkout-relative paths. [Bundle](evidence/baseline-replay.tar.gz) · [Archive hash and scope](evidence/baseline-replay.json)

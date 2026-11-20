@@ -1,0 +1,1968 @@
+{
+  "complete": true,
+  "liveRuntime": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime-live.o",
+    "bytes": 128176,
+    "sha256": "cdc641eb706178f549f775aaf86211c08d788778e8300502e48566e7870930ab"
+  },
+  "liveSource": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime-live.c",
+    "bytes": 157703,
+    "sha256": "ce2e4aa7990f54c6c092cfaa550a2c338d55bb7f6301c18ebeab98c7d6eab7f6"
+  },
+  "liveCommand": [
+    "/usr/bin/x86_64-linux-gnu-gcc-10",
+    "-O2",
+    "-std=gnu11",
+    "-ffp-contract=off",
+    "-DP144_SINGLE_MUTATOR_RFC=1",
+    "-I",
+    "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/qbe",
+    "-c",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime-live.c",
+    "-o",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime-live.o"
+  ],
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase198/runtime-broad/prepare.py",
+      "bytes": 11347,
+      "sha256": "ed51664e5a0be01a7e11ef13de3b7ae67e5857cb1fa3c21ac4645a357d7a4dc4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase198/runtime-broad/observer.c",
+      "bytes": 5442,
+      "sha256": "d9ad6980248b0376167402d7e2fe6cd0d10aa46b74e1743d0cd01ab3038b8239"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase198/runtime-broad/live.py",
+      "bytes": 1350,
+      "sha256": "aad2d64d4c7ae865829b8fea4466a2bd2b849ec25cf6b5658a85f5cf301e80b9"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-screen01/report.json",
+      "bytes": 95188,
+      "sha256": "f9feccaccfcd94d60136611e24571bfce7d43e45d734ddf5fa69d6f72fa5c434"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase198/runtime/bind-facts.py",
+      "bytes": 2924,
+      "sha256": "67f133a0bf58f01489e786c6bd14b50dc8d802ea3407fbd3efdad68607dbd93c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/qbe/runtime.c",
+      "bytes": 156750,
+      "sha256": "27e2baff91b03252d66062235208cd2a17ab0038b17003ac76fbb7c8a7e30dca"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/qbe/runtime.h",
+      "bytes": 4601,
+      "sha256": "84c3470bd64f926e3c67900eadfefb49fc97ccfec8790a9a772e1ced44328039"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/qbe/primitives.h",
+      "bytes": 3174,
+      "sha256": "4b4c5bf330859352ea2dabc7bf5ee13b727952307ffd76e3d266ab925b59c497"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase183/abi-contract.c",
+      "bytes": 825,
+      "sha256": "d10c8e3a8dbf516b0e887e24272f74618091e83fd46941bbd79b69c34b3284f4"
+    }
+  ],
+  "runtime": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-screen01/split/runtime.o",
+    "bytes": 127040,
+    "sha256": "90b2f95dff3c01aec53d713b48db5166a0252e1ee1f6e26874d4d76269fe975e"
+  },
+  "baseline": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/runtime.o",
+    "bytes": 125264,
+    "sha256": "67141c4505a0355901d857c4ba81dfc17559329e536818a843ce68615384d13e"
+  },
+  "exported": [
+    "T file_close_run",
+    "T file_open_bytes_run",
+    "T file_open_run",
+    "T file_read_at_run",
+    "T file_read_bytes_run",
+    "T file_read_line_run",
+    "T file_read_run",
+    "T file_size_run",
+    "T file_write_at_run",
+    "T file_write_bytes_run",
+    "T file_write_run",
+    "T io_args_bytes_run",
+    "T io_args_run",
+    "T io_now_run",
+    "T io_print",
+    "T io_print_err_run",
+    "T io_print_run",
+    "T native_host_path_run",
+    "T native_host_publish_run",
+    "T native_host_read_run",
+    "T p111_rt_apply",
+    "T p111_rt_closure",
+    "T p111_rt_ctor",
+    "T p111_rt_fail",
+    "T p111_rt_frame",
+    "T p111_rt_jump",
+    "T p111_rt_keep",
+    "T p111_rt_main",
+    "T p111_rt_op",
+    "T p111_rt_reg_get",
+    "T p111_rt_return",
+    "T p111_rt_sink",
+    "T p111_rt_special_ctor",
+    "T p111_rt_special_take",
+    "T p111_rt_special_test",
+    "T p111_rt_stack_get",
+    "T p111_rt_stack_pop",
+    "T p111_rt_tag",
+    "T p111_rt_take",
+    "T p113_rt_array_pair",
+    "T p118_p111_rt_ctor1",
+    "T p118_p111_rt_ctor2",
+    "T p118_p111_rt_ctor3",
+    "T p118_p111_rt_ctor4",
+    "T p118_p111_rt_take1",
+    "T p118_p111_rt_take2",
+    "T p118_p111_rt_take3",
+    "T p118_p111_rt_take4",
+    "T p118_rt_borrow_fields",
+    "T p118_rt_borrow_scalar_safe",
+    "T p118_rt_extend",
+    "T p118_rt_extend1",
+    "T p118_rt_extend2",
+    "T p118_rt_extend3",
+    "T p118_rt_extend4",
+    "T p118_rt_extend5",
+    "T p118_rt_extend6",
+    "T p118_rt_extend7",
+    "T p118_rt_finish",
+    "T p125_rt_concat_typed",
+    "T p125_rt_ctor1",
+    "T p125_rt_ctor2",
+    "T p125_rt_ctor3",
+    "T p125_rt_ctor4",
+    "T p125_rt_take1",
+    "T p125_rt_take2",
+    "T p125_rt_take3",
+    "T p125_rt_take4",
+    "T p126_rt_nat_divmod"
+  ],
+  "cases": {},
+  "sections": {
+    "baseline": {
+      ".text": 43256,
+      ".data": 4,
+      ".bss": 1148416,
+      ".text.unlikely": 11331,
+      ".rodata.str1.1": 1000,
+      ".rodata.str1.8": 3231,
+      ".rodata": 945,
+      ".data.rel.ro.local": 240,
+      ".rodata.cst4": 16,
+      ".rodata.cst16": 32,
+      ".rodata.cst8": 32,
+      ".comment": 40,
+      ".note.GNU-stack": 0,
+      ".eh_frame": 9208
+    },
+    "candidate": {
+      ".text": 43592,
+      ".data": 4,
+      ".bss": 1279496,
+      ".text.unlikely": 11288,
+      ".rodata.str1.1": 1000,
+      ".rodata.str1.8": 3231,
+      ".rodata": 945,
+      ".data.rel.ro.local": 240,
+      ".rodata.cst4": 16,
+      ".rodata.cst16": 32,
+      ".rodata.cst8": 32,
+      ".comment": 40,
+      ".note.GNU-stack": 0,
+      ".eh_frame": 9328
+    },
+    "live": {
+      ".text": 44568,
+      ".data": 4,
+      ".bss": 1148416,
+      ".text.unlikely": 11412,
+      ".rodata.str1.1": 1000,
+      ".rodata.str1.8": 3231,
+      ".rodata": 945,
+      ".data.rel.ro.local": 240,
+      ".rodata.cst4": 16,
+      ".rodata.cst16": 32,
+      ".rodata.cst8": 32,
+      ".comment": 40,
+      ".note.GNU-stack": 0,
+      ".eh_frame": 9488
+    }
+  },
+  "abi": {
+    "baseline": {
+      "elf": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/baseline/probe",
+        "bytes": 108008,
+        "sha256": "9636171aca6b2304b91e98c88ff89fd9f94b27558b47ac0a4ff362c023f5bf01"
+      },
+      "rows": [
+        {
+          "mode": "valid",
+          "capabilities": 1,
+          "constructorCount": 65536,
+          "staticWords": 0,
+          "stdout": "checks 33\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 1,
+          "constructorCount": 65536,
+          "staticWords": 129,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 1,
+          "constructorCount": 65536,
+          "staticWords": 257,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 3,
+          "constructorCount": 26,
+          "staticWords": 0,
+          "stdout": "checks 33\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 3,
+          "constructorCount": 26,
+          "staticWords": 129,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 3,
+          "constructorCount": 26,
+          "staticWords": 257,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 5,
+          "constructorCount": 26,
+          "staticWords": 0,
+          "stdout": "checks 33\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 5,
+          "constructorCount": 26,
+          "staticWords": 129,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 5,
+          "constructorCount": 26,
+          "staticWords": 257,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 7,
+          "constructorCount": 26,
+          "staticWords": 0,
+          "stdout": "checks 33\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 7,
+          "constructorCount": 26,
+          "staticWords": 129,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 7,
+          "constructorCount": 26,
+          "staticWords": 257,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 0,
+          "stdout": "checks 33\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 129,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 257,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 11,
+          "constructorCount": 26,
+          "staticWords": 0,
+          "stdout": "checks 33\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 11,
+          "constructorCount": 26,
+          "staticWords": 129,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 11,
+          "constructorCount": 26,
+          "staticWords": 257,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 13,
+          "constructorCount": 26,
+          "staticWords": 0,
+          "stdout": "checks 33\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 13,
+          "constructorCount": 26,
+          "staticWords": 129,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 13,
+          "constructorCount": 26,
+          "staticWords": 257,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 15,
+          "constructorCount": 65536,
+          "staticWords": 0,
+          "stdout": "checks 33\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 15,
+          "constructorCount": 65536,
+          "staticWords": 129,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 15,
+          "constructorCount": 65536,
+          "staticWords": 257,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "bad-cap",
+          "capabilities": 16,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: unsupported capabilities\n",
+          "status": 1
+        },
+        {
+          "mode": "zero-count",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: program identifier capacity exceeded\n",
+          "status": 1
+        },
+        {
+          "mode": "over-count",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: program identifier capacity exceeded\n",
+          "status": 1
+        },
+        {
+          "mode": "bad-hot",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: invalid constructor metadata\n",
+          "status": 1
+        },
+        {
+          "mode": "bad-name",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: invalid constructor metadata\n",
+          "status": 1
+        },
+        {
+          "mode": "no-arity",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: missing program tables\n",
+          "status": 1
+        },
+        {
+          "mode": "no-static",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: static image exceeds initial corpus\n",
+          "status": 1
+        },
+        {
+          "mode": "bad-abi",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: descriptor ABI mismatch\n",
+          "status": 1
+        },
+        {
+          "mode": "bad-size",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: descriptor ABI mismatch\n",
+          "status": 1
+        },
+        {
+          "mode": "bad-core",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: missing core constructor identity\n",
+          "status": 1
+        },
+        {
+          "mode": "rebind",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: one program per process\n",
+          "status": 1
+        },
+        {
+          "mode": "bad-take-id",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase118: take arity mismatch\n",
+          "status": 1
+        },
+        {
+          "mode": "bad-arity",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase118: take arity mismatch\n",
+          "status": 1
+        },
+        {
+          "mode": "max-arity",
+          "capabilities": 9,
+          "constructorCount": 65536,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase118: take arity mismatch\n",
+          "status": 1
+        },
+        {
+          "mode": "bad-owner",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase118: expected constructor owner\n",
+          "status": 1
+        },
+        {
+          "mode": "bad-checked-ctor",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: constructor arity mismatch\n",
+          "status": 1
+        },
+        {
+          "mode": "two-threads",
+          "capabilities": 15,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: Phase111 ABI v1 requires --threads 1 --gpu off\n",
+          "status": 1
+        },
+        {
+          "mode": "gpu-on",
+          "capabilities": 15,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: Phase111 ABI v1 requires --threads 1 --gpu off\n",
+          "status": 1
+        },
+        {
+          "mode": "bad-cap",
+          "capabilities": 0,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: unsupported capabilities\n",
+          "status": 1
+        },
+        {
+          "mode": "bad-cap",
+          "capabilities": 2,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: unsupported capabilities\n",
+          "status": 1
+        }
+      ],
+      "foreignMutableMetadata": [
+        {
+          "mode": "owner-hot",
+          "stdout": "sealed 1 field 13\n",
+          "status": 0
+        },
+        {
+          "mode": "owner-cap",
+          "stdout": "sealed 1 field 13\n",
+          "status": 0
+        }
+      ]
+    },
+    "candidate": {
+      "elf": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/candidate/probe",
+        "bytes": 108496,
+        "sha256": "574e4276701f307f04ae53765a4f97fbf1dcaa2a4a4a0ea8dbdb6269179f3fdf"
+      },
+      "rows": [
+        {
+          "mode": "valid",
+          "capabilities": 1,
+          "constructorCount": 65536,
+          "staticWords": 0,
+          "stdout": "checks 33\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 1,
+          "constructorCount": 65536,
+          "staticWords": 129,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 1,
+          "constructorCount": 65536,
+          "staticWords": 257,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 3,
+          "constructorCount": 26,
+          "staticWords": 0,
+          "stdout": "checks 33\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 3,
+          "constructorCount": 26,
+          "staticWords": 129,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 3,
+          "constructorCount": 26,
+          "staticWords": 257,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 5,
+          "constructorCount": 26,
+          "staticWords": 0,
+          "stdout": "checks 33\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 5,
+          "constructorCount": 26,
+          "staticWords": 129,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 5,
+          "constructorCount": 26,
+          "staticWords": 257,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 7,
+          "constructorCount": 26,
+          "staticWords": 0,
+          "stdout": "checks 33\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 7,
+          "constructorCount": 26,
+          "staticWords": 129,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 7,
+          "constructorCount": 26,
+          "staticWords": 257,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 0,
+          "stdout": "checks 33\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 129,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 257,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 11,
+          "constructorCount": 26,
+          "staticWords": 0,
+          "stdout": "checks 33\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 11,
+          "constructorCount": 26,
+          "staticWords": 129,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 11,
+          "constructorCount": 26,
+          "staticWords": 257,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 13,
+          "constructorCount": 26,
+          "staticWords": 0,
+          "stdout": "checks 33\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 13,
+          "constructorCount": 26,
+          "staticWords": 129,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 13,
+          "constructorCount": 26,
+          "staticWords": 257,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 15,
+          "constructorCount": 65536,
+          "staticWords": 0,
+          "stdout": "checks 33\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 15,
+          "constructorCount": 65536,
+          "staticWords": 129,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 15,
+          "constructorCount": 65536,
+          "staticWords": 257,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "bad-cap",
+          "capabilities": 16,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: unsupported capabilities\n",
+          "status": 1
+        },
+        {
+          "mode": "zero-count",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: program identifier capacity exceeded\n",
+          "status": 1
+        },
+        {
+          "mode": "over-count",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: program identifier capacity exceeded\n",
+          "status": 1
+        },
+        {
+          "mode": "bad-hot",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: invalid constructor metadata\n",
+          "status": 1
+        },
+        {
+          "mode": "bad-name",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: invalid constructor metadata\n",
+          "status": 1
+        },
+        {
+          "mode": "no-arity",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: missing program tables\n",
+          "status": 1
+        },
+        {
+          "mode": "no-static",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: static image exceeds initial corpus\n",
+          "status": 1
+        },
+        {
+          "mode": "bad-abi",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: descriptor ABI mismatch\n",
+          "status": 1
+        },
+        {
+          "mode": "bad-size",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: descriptor ABI mismatch\n",
+          "status": 1
+        },
+        {
+          "mode": "bad-core",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: missing core constructor identity\n",
+          "status": 1
+        },
+        {
+          "mode": "rebind",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: one program per process\n",
+          "status": 1
+        },
+        {
+          "mode": "bad-take-id",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase118: take arity mismatch\n",
+          "status": 1
+        },
+        {
+          "mode": "bad-arity",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase118: take arity mismatch\n",
+          "status": 1
+        },
+        {
+          "mode": "max-arity",
+          "capabilities": 9,
+          "constructorCount": 65536,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase118: take arity mismatch\n",
+          "status": 1
+        },
+        {
+          "mode": "bad-owner",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase118: expected constructor owner\n",
+          "status": 1
+        },
+        {
+          "mode": "bad-checked-ctor",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: constructor arity mismatch\n",
+          "status": 1
+        },
+        {
+          "mode": "two-threads",
+          "capabilities": 15,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: Phase111 ABI v1 requires --threads 1 --gpu off\n",
+          "status": 1
+        },
+        {
+          "mode": "gpu-on",
+          "capabilities": 15,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: Phase111 ABI v1 requires --threads 1 --gpu off\n",
+          "status": 1
+        },
+        {
+          "mode": "bad-cap",
+          "capabilities": 0,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: unsupported capabilities\n",
+          "status": 1
+        },
+        {
+          "mode": "bad-cap",
+          "capabilities": 2,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: unsupported capabilities\n",
+          "status": 1
+        }
+      ],
+      "foreignMutableMetadata": [
+        {
+          "mode": "owner-hot",
+          "stdout": "sealed 0 field 13\n",
+          "status": 0
+        },
+        {
+          "mode": "owner-cap",
+          "stdout": "sealed 0 field 13\n",
+          "status": 0
+        }
+      ]
+    },
+    "live": {
+      "elf": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/live/probe",
+        "bytes": 108520,
+        "sha256": "22a1948a595edf5c89806599f91d091f957a1bfb56ccd279a892c85950e03ac6"
+      },
+      "rows": [
+        {
+          "mode": "valid",
+          "capabilities": 1,
+          "constructorCount": 65536,
+          "staticWords": 0,
+          "stdout": "checks 33\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 1,
+          "constructorCount": 65536,
+          "staticWords": 129,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 1,
+          "constructorCount": 65536,
+          "staticWords": 257,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 3,
+          "constructorCount": 26,
+          "staticWords": 0,
+          "stdout": "checks 33\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 3,
+          "constructorCount": 26,
+          "staticWords": 129,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 3,
+          "constructorCount": 26,
+          "staticWords": 257,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 5,
+          "constructorCount": 26,
+          "staticWords": 0,
+          "stdout": "checks 33\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 5,
+          "constructorCount": 26,
+          "staticWords": 129,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 5,
+          "constructorCount": 26,
+          "staticWords": 257,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 7,
+          "constructorCount": 26,
+          "staticWords": 0,
+          "stdout": "checks 33\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 7,
+          "constructorCount": 26,
+          "staticWords": 129,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 7,
+          "constructorCount": 26,
+          "staticWords": 257,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 0,
+          "stdout": "checks 33\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 129,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 257,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 11,
+          "constructorCount": 26,
+          "staticWords": 0,
+          "stdout": "checks 33\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 11,
+          "constructorCount": 26,
+          "staticWords": 129,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 11,
+          "constructorCount": 26,
+          "staticWords": 257,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 13,
+          "constructorCount": 26,
+          "staticWords": 0,
+          "stdout": "checks 33\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 13,
+          "constructorCount": 26,
+          "staticWords": 129,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 13,
+          "constructorCount": 26,
+          "staticWords": 257,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 15,
+          "constructorCount": 65536,
+          "staticWords": 0,
+          "stdout": "checks 33\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 15,
+          "constructorCount": 65536,
+          "staticWords": 129,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "valid",
+          "capabilities": 15,
+          "constructorCount": 65536,
+          "staticWords": 257,
+          "stdout": "checks 35\n",
+          "stderr": "",
+          "status": 0
+        },
+        {
+          "mode": "bad-cap",
+          "capabilities": 16,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: unsupported capabilities\n",
+          "status": 1
+        },
+        {
+          "mode": "zero-count",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: program identifier capacity exceeded\n",
+          "status": 1
+        },
+        {
+          "mode": "over-count",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: program identifier capacity exceeded\n",
+          "status": 1
+        },
+        {
+          "mode": "bad-hot",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: invalid constructor metadata\n",
+          "status": 1
+        },
+        {
+          "mode": "bad-name",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: invalid constructor metadata\n",
+          "status": 1
+        },
+        {
+          "mode": "no-arity",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: missing program tables\n",
+          "status": 1
+        },
+        {
+          "mode": "no-static",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: static image exceeds initial corpus\n",
+          "status": 1
+        },
+        {
+          "mode": "bad-abi",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: descriptor ABI mismatch\n",
+          "status": 1
+        },
+        {
+          "mode": "bad-size",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: descriptor ABI mismatch\n",
+          "status": 1
+        },
+        {
+          "mode": "bad-core",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: missing core constructor identity\n",
+          "status": 1
+        },
+        {
+          "mode": "rebind",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: one program per process\n",
+          "status": 1
+        },
+        {
+          "mode": "bad-take-id",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase118: take arity mismatch\n",
+          "status": 1
+        },
+        {
+          "mode": "bad-arity",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase118: take arity mismatch\n",
+          "status": 1
+        },
+        {
+          "mode": "max-arity",
+          "capabilities": 9,
+          "constructorCount": 65536,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase118: take arity mismatch\n",
+          "status": 1
+        },
+        {
+          "mode": "bad-owner",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase118: expected constructor owner\n",
+          "status": 1
+        },
+        {
+          "mode": "bad-checked-ctor",
+          "capabilities": 9,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: constructor arity mismatch\n",
+          "status": 1
+        },
+        {
+          "mode": "two-threads",
+          "capabilities": 15,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: Phase111 ABI v1 requires --threads 1 --gpu off\n",
+          "status": 1
+        },
+        {
+          "mode": "gpu-on",
+          "capabilities": 15,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: Phase111 ABI v1 requires --threads 1 --gpu off\n",
+          "status": 1
+        },
+        {
+          "mode": "bad-cap",
+          "capabilities": 0,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: unsupported capabilities\n",
+          "status": 1
+        },
+        {
+          "mode": "bad-cap",
+          "capabilities": 2,
+          "constructorCount": 26,
+          "staticWords": 4,
+          "stdout": "",
+          "stderr": "bend: phase111: unsupported capabilities\n",
+          "status": 1
+        }
+      ],
+      "foreignMutableMetadata": [
+        {
+          "mode": "owner-hot",
+          "stdout": "sealed 1 field 13\n",
+          "status": 0
+        },
+        {
+          "mode": "owner-cap",
+          "stdout": "sealed 1 field 13\n",
+          "status": 0
+        }
+      ]
+    }
+  },
+  "runtime10": {
+    "source": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/runtime10-01/report.json",
+      "bytes": 39952,
+      "sha256": "1fcd18e67cd43aadfa3344d03465c162f34d68d5033daea23bee7145fde7b9cc"
+    },
+    "rows": [
+      {
+        "name": "numeric",
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/numeric.bend",
+          "bytes": 806,
+          "sha256": "ef45974b96f6dbeae1eeef4a46291037b077f4d60593657458a496fc11304a0e"
+        },
+        "object": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/runtime10-01/numeric/build/program.o",
+          "bytes": 38480,
+          "sha256": "b702db74cc79492a08caebc6321dd672ac61dbfcd6f4d2198575cd16641d41de"
+        },
+        "expected": {
+          "stdout": "[True{}, True{}, True{}, True{}, True{}, True{}, True{}, True{}, True{}, True{}, True{}, True{}]\n",
+          "stderr": "",
+          "exitCode": 0
+        },
+        "results": {
+          "baseline": {
+            "exe": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime10/numeric/baseline/program",
+              "bytes": 133720,
+              "sha256": "4ac25205ade7b5fdf32129efff8d6eb8302d39f29928e636e354be4c65495a19"
+            },
+            "stdout": "[True{}, True{}, True{}, True{}, True{}, True{}, True{}, True{}, True{}, True{}, True{}, True{}]\n",
+            "stderr": "",
+            "status": 0
+          },
+          "candidate": {
+            "exe": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime10/numeric/candidate/program",
+              "bytes": 134216,
+              "sha256": "5a6dc5f5e96516a9201959938c1d6bbd416df33b3656e4f1ca7adf5b8ddb7863"
+            },
+            "stdout": "[True{}, True{}, True{}, True{}, True{}, True{}, True{}, True{}, True{}, True{}, True{}, True{}]\n",
+            "stderr": "",
+            "status": 0
+          },
+          "live": {
+            "exe": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime10/numeric/live/program",
+              "bytes": 134232,
+              "sha256": "99a857f10ecffb833faa486e7c13e4b2b984502311656bb604e5d14f9cb8d7e3"
+            },
+            "stdout": "[True{}, True{}, True{}, True{}, True{}, True{}, True{}, True{}, True{}, True{}, True{}, True{}]\n",
+            "stderr": "",
+            "status": 0
+          }
+        }
+      },
+      {
+        "name": "array-unchecked",
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/array-unchecked.bend",
+          "bytes": 402,
+          "sha256": "0aa380c9e12282c0ffd561fd140576104d21a114ce8e89cbf165e1dff1ca6fc7"
+        },
+        "object": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/runtime10-01/array-unchecked/build/program.o",
+          "bytes": 33536,
+          "sha256": "72c65250972b9bc4eba18cb31685b5ed7b5087b81bb07cfd2d7c2d5652cdea62"
+        },
+        "expected": {
+          "stdout": "98\n",
+          "stderr": "",
+          "exitCode": 0
+        },
+        "results": {
+          "baseline": {
+            "exe": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime10/array-unchecked/baseline/program",
+              "bytes": 128896,
+              "sha256": "282aebf4f48bb77fcd13b328ea7b56a7f36c7c2379e9c3806035b1b198a9865e"
+            },
+            "stdout": "98\n",
+            "stderr": "",
+            "status": 0
+          },
+          "candidate": {
+            "exe": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime10/array-unchecked/candidate/program",
+              "bytes": 129392,
+              "sha256": "dff10e77e32731056ad4d6c98399b0a1dc3aeef69f95b60a562106cfd747c963"
+            },
+            "stdout": "98\n",
+            "stderr": "",
+            "status": 0
+          },
+          "live": {
+            "exe": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime10/array-unchecked/live/program",
+              "bytes": 129408,
+              "sha256": "bfd25dab7a50870c577eb6d104beb5cd3c1543e26c8e9ccb12ba71403160400f"
+            },
+            "stdout": "98\n",
+            "stderr": "",
+            "status": 0
+          }
+        }
+      },
+      {
+        "name": "array-unchecked-boxed",
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/array-unchecked-boxed.bend",
+          "bytes": 401,
+          "sha256": "0a3ada2fe6eb9a3f3b9cb7e2eec8b79ac3d2368370ff014344f8149ac34171d7"
+        },
+        "object": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/runtime10-01/array-unchecked-boxed/build/program.o",
+          "bytes": 34016,
+          "sha256": "bb23219cd7721bddcd88720f85b454ee54ae4fb8bbb92c64c87e29fa17a5381b"
+        },
+        "expected": {
+          "stdout": "\"rightleft\"\n",
+          "stderr": "",
+          "exitCode": 0
+        },
+        "results": {
+          "baseline": {
+            "exe": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime10/array-unchecked-boxed/baseline/program",
+              "bytes": 129344,
+              "sha256": "7c0fd16a9ba7f16dca7dcdd6ca504dbcc27738176ac4dca9c5dc3c2402359120"
+            },
+            "stdout": "\"rightleft\"\n",
+            "stderr": "",
+            "status": 0
+          },
+          "candidate": {
+            "exe": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime10/array-unchecked-boxed/candidate/program",
+              "bytes": 129832,
+              "sha256": "5a2f93def866a8b1353f461e767ba87ccbafbb40ba41282350bfab68816a694a"
+            },
+            "stdout": "\"rightleft\"\n",
+            "stderr": "",
+            "status": 0
+          },
+          "live": {
+            "exe": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime10/array-unchecked-boxed/live/program",
+              "bytes": 129856,
+              "sha256": "baf47733904c55785c01ac20ac639c4193d20fae53b53b86a0eaeaf9f371ed86"
+            },
+            "stdout": "\"rightleft\"\n",
+            "stderr": "",
+            "status": 0
+          }
+        }
+      },
+      {
+        "name": "char-output",
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/char-output.bend",
+          "bytes": 311,
+          "sha256": "246303530064cf11b913e86f7b413a510fa202fb8db2a5da7abd4af956485e1c"
+        },
+        "object": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/runtime10-01/char-output/build/program.o",
+          "bytes": 33216,
+          "sha256": "c0965ac766adba300047de1601eb4c50d207e4c5ac31be771e395baecacb37b6"
+        },
+        "expected": {
+          "stdout": "4294967295\n\ufffd\ufffd\ufffd\n10000000000\n",
+          "stderr": "",
+          "exitCode": 0
+        },
+        "results": {
+          "baseline": {
+            "exe": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime10/char-output/baseline/program",
+              "bytes": 130640,
+              "sha256": "0883a92c190eb416d82be386f81f32ad77ee55864c0a57362e88b8e8dcc64e99"
+            },
+            "stdout": "4294967295\n\ufffd\ufffd\ufffd\n10000000000\n",
+            "stderr": "",
+            "status": 0
+          },
+          "candidate": {
+            "exe": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime10/char-output/candidate/program",
+              "bytes": 131136,
+              "sha256": "be95aaac3787f6d788de871e404db4e0c52b9e2112f26bc9c6caa2075d0ac014"
+            },
+            "stdout": "4294967295\n\ufffd\ufffd\ufffd\n10000000000\n",
+            "stderr": "",
+            "status": 0
+          },
+          "live": {
+            "exe": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime10/char-output/live/program",
+              "bytes": 131160,
+              "sha256": "be4423a7231a329e5b2c73a426fcce52ea6ba5e5516b0d7149a0737bf1f891a8"
+            },
+            "stdout": "4294967295\n\ufffd\ufffd\ufffd\n10000000000\n",
+            "stderr": "",
+            "status": 0
+          }
+        }
+      },
+      {
+        "name": "argv",
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/argv.bend",
+          "bytes": 670,
+          "sha256": "8a44e660978410848c555446970d546d43d0cd114eb4691ac0994a40e34d347f"
+        },
+        "object": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/runtime10-01/argv/build/program.o",
+          "bytes": 54216,
+          "sha256": "6b679db52bb3eddd3cd143982aa520d00a4307cd783733d5a2ebb6d1bfb4c8c4"
+        },
+        "expected": {
+          "stdout": "True 0\nTrue 0\n",
+          "stderr": "",
+          "exitCode": 0
+        },
+        "results": {
+          "baseline": {
+            "exe": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime10/argv/baseline/program",
+              "bytes": 143880,
+              "sha256": "a39af23b2e5c244b18d81d1ad50f232a9145955e7e718a9daa0c45ac98e0596a"
+            },
+            "stdout": "True 0\nTrue 0\n",
+            "stderr": "",
+            "status": 0
+          },
+          "candidate": {
+            "exe": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime10/argv/candidate/program",
+              "bytes": 148464,
+              "sha256": "9e656d6cb505e3d6f0c8c6bee887a9847b29fed3d966fdd4980f77ffcad2351c"
+            },
+            "stdout": "True 0\nTrue 0\n",
+            "stderr": "",
+            "status": 0
+          },
+          "live": {
+            "exe": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime10/argv/live/program",
+              "bytes": 148488,
+              "sha256": "b6220bc308005ec4a8d4a4494f9b733bdff56188a68c3e91b828a59869869b1a"
+            },
+            "stdout": "True 0\nTrue 0\n",
+            "stderr": "",
+            "status": 0
+          }
+        }
+      },
+      {
+        "name": "files",
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/files.bend",
+          "bytes": 1375,
+          "sha256": "5238f2e8f0aacfce9db9954b898b6a1279b68171d4914e9c5fb918f361db62dd"
+        },
+        "object": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/runtime10-01/files/build/program.o",
+          "bytes": 99416,
+          "sha256": "44437dbbf064c590d55499939af5a314832ec0e6cb9ff4677d2139d03f7be0ae"
+        },
+        "expected": {
+          "stdout": "\"ab\\n\"\n\"cd\"\n\"Zb\\ncd\"\n",
+          "stderr": "",
+          "exitCode": 0
+        },
+        "results": {
+          "baseline": {
+            "exe": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime10/files/baseline/program",
+              "bytes": 183320,
+              "sha256": "92baf6a1298447c58d8433ed0d64e584b93ef1b6635dfcd808965dd301aa3f17"
+            },
+            "stdout": "\"ab\\n\"\n\"cd\"\n\"Zb\\ncd\"\n",
+            "stderr": "",
+            "status": 0
+          },
+          "candidate": {
+            "exe": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime10/files/candidate/program",
+              "bytes": 183816,
+              "sha256": "65ad309a751e692345b4294d3b43bf8866be992776bed25d975c57fdfba21f54"
+            },
+            "stdout": "\"ab\\n\"\n\"cd\"\n\"Zb\\ncd\"\n",
+            "stderr": "",
+            "status": 0
+          },
+          "live": {
+            "exe": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime10/files/live/program",
+              "bytes": 183832,
+              "sha256": "c2f953196bf196c4ab8791b15850389b2fd871523dee8b85b8c94a3aadb3ae66"
+            },
+            "stdout": "\"ab\\n\"\n\"cd\"\n\"Zb\\ncd\"\n",
+            "stderr": "",
+            "status": 0
+          }
+        }
+      },
+      {
+        "name": "open-errors",
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/open-errors.bend",
+          "bytes": 535,
+          "sha256": "8fe1e0883d25ce858f962e3b2fa512cb91f4272c343c42b0f28e3b670f0a97b9"
+        },
+        "object": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/runtime10-01/open-errors/build/program.o",
+          "bytes": 40592,
+          "sha256": "ceb60b2a0c790b84161b98926a694f474a6158c6ccfddac679f0d42474416c2d"
+        },
+        "expected": {
+          "stdout": "22\n84\n",
+          "stderr": "",
+          "exitCode": 0
+        },
+        "results": {
+          "baseline": {
+            "exe": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime10/open-errors/baseline/program",
+              "bytes": 136488,
+              "sha256": "2ff874dd8d8479d99b21b47d9a952bbf8415e6eff52bf88d6a7105d852158b76"
+            },
+            "stdout": "22\n84\n",
+            "stderr": "",
+            "status": 0
+          },
+          "candidate": {
+            "exe": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime10/open-errors/candidate/program",
+              "bytes": 136984,
+              "sha256": "110d5f1277c698683437c60f0265b1a848a7ca39ea13d0127312d5c79bcac0aa"
+            },
+            "stdout": "22\n84\n",
+            "stderr": "",
+            "status": 0
+          },
+          "live": {
+            "exe": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime10/open-errors/live/program",
+              "bytes": 137000,
+              "sha256": "db53e695615f8556521a3ffa8ae7378f865c8604b2a75e06808e8fc5e23c457c"
+            },
+            "stdout": "22\n84\n",
+            "stderr": "",
+            "status": 0
+          }
+        }
+      },
+      {
+        "name": "exit",
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/exit.bend",
+          "bytes": 139,
+          "sha256": "cc54e659a9e4acb382391a056fc08f7315325b3c2e74415bc02510c6105290f9"
+        },
+        "object": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/runtime10-01/exit/build/program.o",
+          "bytes": 28016,
+          "sha256": "02c024c8a351d64e14e778aa99751f33b556e72f565a83da6b7d43c9258ab615"
+        },
+        "expected": {
+          "stdout": "before\n",
+          "stderr": "",
+          "exitCode": 23
+        },
+        "results": {
+          "baseline": {
+            "exe": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime10/exit/baseline/program",
+              "bytes": 125472,
+              "sha256": "6acd99e9b4125727925116adb9c5c45ce991f322c3e8c29b5d8d7cccc9ccfea2"
+            },
+            "stdout": "before\n",
+            "stderr": "",
+            "status": 23
+          },
+          "candidate": {
+            "exe": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime10/exit/candidate/program",
+              "bytes": 125968,
+              "sha256": "cdb8168629995bf01173cc6406a28e88bf8f5b07908c59c432693df8b23b22de"
+            },
+            "stdout": "before\n",
+            "stderr": "",
+            "status": 23
+          },
+          "live": {
+            "exe": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime10/exit/live/program",
+              "bytes": 125984,
+              "sha256": "6c02268b33dce643ef6640f94ad608b89f02047acdaff06ac8c98803a9f00151"
+            },
+            "stdout": "before\n",
+            "stderr": "",
+            "status": 23
+          }
+        }
+      },
+      {
+        "name": "exit-upper-valid",
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/exit-upper-valid.bend",
+          "bytes": 141,
+          "sha256": "97bc478ea3caba3393b70a78c27295fc6bd0eeac0511d5258dd49f02a29fb5d8"
+        },
+        "object": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/runtime10-01/exit-upper-valid/build/program.o",
+          "bytes": 28016,
+          "sha256": "bf472bf0f8fd3152d8d98260d75bfdc47439634969f7e5c72a9c0d4f30177ec2"
+        },
+        "expected": {
+          "stdout": "before\n",
+          "stderr": "",
+          "exitCode": 255
+        },
+        "results": {
+          "baseline": {
+            "exe": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime10/exit-upper-valid/baseline/program",
+              "bytes": 125488,
+              "sha256": "12028268f5377669aa9c2041b2c37fed85d5a8be36035bf751957881211ffa20"
+            },
+            "stdout": "before\n",
+            "stderr": "",
+            "status": 255
+          },
+          "candidate": {
+            "exe": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime10/exit-upper-valid/candidate/program",
+              "bytes": 125976,
+              "sha256": "6a08ed5f88daad8c8c00bb8bcf54c4de9e9cafedd3df63e8b84d22e5eaa1adf0"
+            },
+            "stdout": "before\n",
+            "stderr": "",
+            "status": 255
+          },
+          "live": {
+            "exe": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime10/exit-upper-valid/live/program",
+              "bytes": 126000,
+              "sha256": "90d173ee6d1ad68e344830df83a84bb8d6273b70eda31357a6769c61c8070bb5"
+            },
+            "stdout": "before\n",
+            "stderr": "",
+            "status": 255
+          }
+        }
+      },
+      {
+        "name": "halt-valid",
+        "source": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase182/native/halt-valid.bend",
+          "bytes": 163,
+          "sha256": "572920842ed80b11a9db82b94e44212c02e212c37e55a0307b8e07a6c1e89238"
+        },
+        "object": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase195/runtime10-01/halt-valid/build/program.o",
+          "bytes": 28880,
+          "sha256": "00d4dc7e20f3d1c06ee8900d9be0d77274f65a323d7d3c55444ab5c700a60b4b"
+        },
+        "expected": {
+          "stdout": "before\n",
+          "stderr": "reported\n",
+          "exitCode": 7
+        },
+        "results": {
+          "baseline": {
+            "exe": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime10/halt-valid/baseline/program",
+              "bytes": 125760,
+              "sha256": "953fb4cd20e9c5ed3e1ecc69a9854c4568f57786d1fef2ab428787d0b888b5ae"
+            },
+            "stdout": "before\n",
+            "stderr": "reported\n",
+            "status": 7
+          },
+          "candidate": {
+            "exe": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime10/halt-valid/candidate/program",
+              "bytes": 126248,
+              "sha256": "a5b7bf9aa4b99fe88e5b842da178d2969252aa3bc64a0ac169a0bd75237a4ec3"
+            },
+            "stdout": "before\n",
+            "stderr": "reported\n",
+            "status": 7
+          },
+          "live": {
+            "exe": {
+              "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-controls01/runtime10/halt-valid/live/program",
+              "bytes": 126272,
+              "sha256": "219e868e32a727616bd603dc89bbe18ef4b2272f45d7555534d72506fbe49e5d"
+            },
+            "stdout": "before\n",
+            "stderr": "reported\n",
+            "status": 7
+          }
+        }
+      }
+    ]
+  },
+  "controlsOnly": true
+}

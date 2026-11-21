@@ -7468,3 +7468,7 @@ The integrated experimental N1 passed all 45 programs. A matched three-role runt
 ## Phase200 direct x86 and staged fusion
 
 The ordinary N1 took 1.0041× mature C on the 44 eligible programs, compared with 1.0188× for the same-session Phase199 reference. A separately staged lexer took 0.198× mature C on its primary input. These have different coverage. [Results and evidence](../implementation/phase200/README.md)
+
+## Phase205 · Direct x86 fixed-batch runtime
+
+A native experimental compiler reduced fixed native45 runtime from 1.607× to 1.547× mature Bend C in the same run. The geometric mean moved from 0.996× to 0.941×. Five changed inputs accounted for 0.543 seconds saved. Two independent packet workloads confirmed transfer, and the zero-count control exposed and validated a strictness repair. The existing installed compiler remains selected. [Experiments, independent checks and scope](../implementation/phase205/README.md)

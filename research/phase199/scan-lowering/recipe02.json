@@ -1,0 +1,45 @@
+{
+  "baseline": "selfhost/build/phase198/progress-portfolio01/compiler.bend",
+  "modules": [
+    "research/phase199/scan-lowering/recognizer.bend",
+    "research/phase199/scan-lowering/pipeline.bend",
+    "research/phase199/scan-lowering/hook.bend"
+  ],
+  "replace": [
+    "x185_array_version"
+  ],
+  "exports": [
+    "x199s_select"
+  ],
+  "switch": "x199s_enabled=false",
+  "runtime_symbol": "p199_rt_u32_scan4",
+  "signature": "uint64_t (uint32_t *data, uint64_t mask, uint64_t fuel, uint64_t index, uint64_t carry)",
+  "pins": [
+    {
+      "file": "research/phase199/scan-lowering/recognizer.bend",
+      "bytes": 7539,
+      "sha256": "94525f90f4c266102512b14ad3281a342239e0e563cbc2eed307c57699be5450"
+    },
+    {
+      "file": "research/phase199/scan-lowering/pipeline.bend",
+      "bytes": 2620,
+      "sha256": "3f9892cf662dc858e143a390eb00d6511ebef8ae0ddf58c3d0af7e1b46ef8084"
+    },
+    {
+      "file": "research/phase199/scan-lowering/hook.bend",
+      "bytes": 711,
+      "sha256": "b6c1513f4fe06afe9e667c5d692a915c500740ae1bcd1eed317fa105ee287918"
+    },
+    {
+      "file": "selfhost/build/phase198/progress-portfolio01/compiler.bend",
+      "bytes": 1947566,
+      "sha256": "72061fa57c75993b59eaf42e18c6b923eebea640c352d0f7b9cd1d27ce7be91d"
+    },
+    {
+      "file": "selfhost/build/phase199/scan-source02/compiler.bend",
+      "bytes": 1923095,
+      "sha256": "ff6e25fad55ac65b9ca40900a50f62c0fb95db441e19436054ae391cefbc916b"
+    }
+  ],
+  "note": "source02 adds explicit unrestricted binders before any acquisition; behavior unchanged."
+}

@@ -1,5 +1,15 @@
 # Cold native x86 builds, Phase204
 
+**Cold self-compilation took 286.56s, versus 292.31s for Phase203 on the identical source.** The measured saving was 5.75s (1.97%). These are one complete native build per producer with fresh source products, fixed prepared Base, the same runtime and one CPU. The new compiler reproduced its 32,668,224-byte object and linked executable exactly. The installed compiler remains the qualified reference. [Fixed-point receipt](self.json) · [Raw native and correctness receipts](native.json.gz)
+
+| Producer | Verifier observation 1 | Verifier observation 2 | Cold build of identical compiler source |
+| --- | ---: | ---: | ---: |
+| Phase203 | 7.549s | 7.477s | 292.308s |
+| Canonicalize register-zero read for continuation matching | 7.432s | 7.364s | 286.561s |
+
+The verifier got 1.53% faster in reversed role order. The object, linked program and stdout 768 matched on all four compilations. Twelve additional ordinary programs had byte-identical objects and passed their independent execution oracles. The emitted code on these cases therefore has the same machine instructions. Runtime itself was not rebenchmarked. The matcher passed two positive cases and ten independently mutated near misses.
+
+
 The incumbent is the byte-reproducing Phase203 direct-object compiler. Each native comparison uses one pinned CPU, the same prepared Base and runtime, fresh source compilation and linking, and a digest of the complete product. Generated-program execution speed and compiler execution speed are separate measurements. [Phase203 baseline and profiles](../phase203/README.md)
 
 ## What the real verifier revealed
@@ -32,3 +42,9 @@ Two independently source-checked versions of the relevant functions agreed on 12
 A direct native program visited 120 pairs of compiler identifiers, short strings, long common prefixes and Unicode strings for 5,000 rounds. Independent checksums covered every execution. In five alternating pairs, processing two characters per FNV recurrence took **1.103×** the original runtime. Both variants still emitted the borrowed hash worker. Rewriting equality to return directly on a mismatching character took **3.109×** the original runtime and lost the borrowed-reader worker. Both proposals were rejected before a full compiler build. This input distribution measures the local observers. It cannot predict their whole-build share. [Microbenchmark](../../research/phase204/strings.py) · [Machine worker identities and timings](strings.json.gz)
 
 The first hash fixture used an unsupported match position, and the first equality candidate from Phase202 matched a computed expression. The corrected native sources produced the expected independent results. The initial hosted segment census also needed the host's absolute Node executable path to run under the build supervisor.
+
+## Time spent and next experiment
+
+The guarded trials used 23.0 minutes of wall time in the single native lane, including 19.5 minutes acquiring three trial compilers and running the same-source self-build. Corpus analysis, the Lean gate and report preparation are outside this subtotal. The alternate compiler that passed the liveness controls has no measured full self-build improvement. Its small-run timings alone do not justify combining it with the continuation change. [All guard receipts, including failures](guards.json.gz)
+
+Next, measure time **before** the final segment emitter for these repeated families. Compute a structural key over the already-verified body, with the function identity and relocation targets supplied separately. Start with the 1,531-member private-helper/return family. Reuse is justified only when all ABI, ownership, optimization-policy and fallback inputs agree. Compare exact relocatable objects and measure eliminated lowering time. The observed 7.74× remaining distance to 37s calls for removing repeated planning as well as instruction selection. The body census alone cannot predict the wall-time gain.

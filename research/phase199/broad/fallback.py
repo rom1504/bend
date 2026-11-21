@@ -12,12 +12,20 @@ A=module('analysis',ROOT/'selfhost/tests/phase186/analyze-runtime.py')
 def summarize(plan,out):
  shared=B.read(plan/'manifest.json');prep=B.read(plan/'report.json');raw=B.read(out/'timing/report.json');r=A.analyze(out/'timing/report.json')
  assert prep['complete'] and prep['manifest']==B.pin(plan/'manifest.json')
+ config=B.read(HERE/'integrated-pins.json')
+ for pin in config.values():B.verify(pin)
+ for pin in prep['inputs']:B.verify(pin)
+ assert prep['source']==config['source'] and prep['bundle']==config['bundle'] and prep['originalRuntime']==config['original'] and prep['liveRuntime']==config['live']
+ native=B.read(B.verify(prep['native']));original={c['id']:c for c in native['cases']}
+ assert shared['roles']['candidate']['compilerSource']==config['source'] and shared['roles']['candidate']['runtime']==config['live']
  assert r['roles']==['baseline','candidate'] and r['rounds']==2 and r['positionBalanced']
  assert r['caseCount']==45 and r['ratioEligibleCount']==44 and r['oracleRevalidated']['samples']==180
  assert raw['targetMs']==140 and raw['minimumAcceptedMs']==100
  cases={c['id']:c for c in shared['cases']};c_observations=0
  for case in r['cases']:
-  fixed=cases[case['id']]
+  fixed=cases[case['id']];receipt=prep['cases'][case['id']];product=original[case['id']]['products']['candidate']
+  assert fixed['products']['candidate']==dict(product,artifact=receipt['live']) and receipt['default']==product['artifact'] and receipt['object']==product['generatedSource']
+  assert all(receipt['verifiedDefaultRelink'][k]==product['artifact'][k] for k in ('bytes','sha256'))
   for role in r['roles']:assert case['artifacts'][role]==fixed['products'][role]['artifact']
   check=prep['cases'][case['id']]['oracles']['c'];proc=check['process'];point=dict(fixed['point'],repetitions=int(fixed['point']['repetitions']>0),warmups=0)
   assert not proc['timedOut'] and proc['command'][0]==fixed['products']['c']['artifact']['file']

@@ -1,0 +1,62 @@
+{
+  "kind": "phase198-selective-fixed-state-freeze",
+  "targetsRun": false,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-api-source13/compiler.bend",
+    "bytes": 1867564,
+    "sha256": "7d6679d0758ed027c09f49f08d226b3e4316afef61228290f1c966e595077ae5"
+  },
+  "modules": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase198/numeric/numeric-orbit.bend",
+      "bytes": 14916,
+      "sha256": "e2dfe408cc5a6ab8f0bccd8b0edbf924cd815321927e4405f0e895b304f23ef5"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase198/numeric/orbit-selective.bend",
+      "bytes": 8307,
+      "sha256": "618e86baee275bb7c5cbcfe462c2abb85bc05b697edc59b8b398f334bc062585"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase198/numeric/progress.bend",
+      "bytes": 4594,
+      "sha256": "cec48f39edee85a1144456ee50944a1be321560f97ba7a758703eb805c655c7e"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase198/numeric/hook.bend",
+      "bytes": 1843,
+      "sha256": "a4b1145eba62a223fc1699ad2b96b3c964cc4a6c67193e2a9fe602da7f8c14fd"
+    }
+  ],
+  "controls": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase198/numeric/controls-selective.mjs",
+    "bytes": 15627,
+    "sha256": "2a38b1c63941bbf85a878690329769d9921dec7eabceba693c259ed8f14548e6"
+  },
+  "trial": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase198/numeric/selective-trial.py",
+    "bytes": 670,
+    "sha256": "be4bb428d5c2d1a6d5be5158c3420e9f477cb88e3a4e75a6d73b8ba02ea214e0"
+  },
+  "products": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase198/numeric/selective-products.py",
+    "bytes": 6018,
+    "sha256": "e551151cc3d81884e1292e1a5acf2043096640a42765344552c6ed5965522741"
+  },
+  "negativeResult": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase198/numeric/heldout/results.json",
+    "bytes": 7536,
+    "sha256": "ee531cc08ff086b29a0c9e9bfd320eee35b4052bca7e2df94b1f7803d21b25b0"
+  },
+  "legality": "For a canonical U32 field, adding/subtracting a proved low-word nonzero operand or XORing such an operand cannot leave that field unchanged. Propagate only exact aliases, pure scalar facts and canonical copies. If any non-counter state backedge proves this relation to its own parameter, return original loop without dynamic fixed-state guard. Unknown branches yield no refusal proof. No benchmark/function/seed recognition.",
+  "expected": {
+    "mandelbrot": "exact old orbit object, similar time",
+    "scalar-region-8192": "exact old orbit object, retained large gain",
+    "orbit-converging": "exact old orbit object, retained transfer gain",
+    "orbit-cycling": "exact escape-only baseline object, remove65.9% added overhead"
+  },
+  "extraControls": "Add/sub/XOR; constant1, maxword, runtime odd operand; commuted add/XOR; zero/unknown/high-only nonzero counterexamples.",
+  "limitation": "Conservative straight-line proof; unknown recurrences may still carry dynamic-guard overhead. This is not a universal no-regression guarantee.",
+  "scope": "Fresh API and expanded controls before four actual emissions/timing. Original measured source/API05 remains immutable.",
+  "preDispatchCorrection": "Added required affine multiplicity annotation to the different-name field before any target execution. Source12 remains retained; authenticated candidate will be source13."
+}

@@ -161,3 +161,40 @@ normalized IR is exactly the same 213,594 bytes as the measured version, SHA256
 `4492b10242a99671cde0f0c6b133963051f084a88ecc00b25fdf87ad8b780084`.
 [Combined receipt](evidence/orbit-check.json). No new timing is attributed to this
 rename; actual portfolio integration remains a separate gate.
+
+## Static refusal for a state that cannot be fixed
+
+The independent source controls exposed a 65.90% regression on the cycling
+recurrence; commit 3929084 published that negative before any correction. The
+versioned correction is `numeric-orbit.bend` + `orbit-selective.bend` +
+`progress.bend` + unchanged `hook.bend`. Its new compile-time proof leaves the
+original loop untouched if any noncounter state field provably changes by a
+nonzero U32 add/subtract/XOR operand. This includes runtime-derived odd operands.
+It tracks canonical aliases and copies, with low-word nonzero facts; unknown
+control flow gives no proof. It adds no runtime code to rejected loops. The
+underlying modular laws are `s+k != s`, `s-k != s`, and `s xor k != s` for
+nonzero U32 k. Unknown recurrences may still incur the dynamic guard's cost.
+
+`numeric-api06` independently checked immutable source13, SHA256
+`7d6679d0758ed027c09f49f08d226b3e4316afef61228290f1c966e595077ae5`, then passed
+45 admission/refusal controls, 1,346 independent interpretations and 9,720 fact
+observations in 17.172 seconds. Controls include three operators, constant 1,
+maximum word, runtime odd operands, commuted forms, and zero/unknown/high-only
+nonzero counterexamples. The extra operator variants are IR controls, not extra
+ordinary source timing cases.
+
+`numeric-products04` then passed 80 full-output checks and 96 timing observations
+in 57.431 seconds. [Pinned results](selective-results.json).
+
+| Case | Corrected / baseline | Prior orbit / baseline | Exact corrected object |
+|---|---:|---:|---|
+| Mandelbrot | 0.756414 | 0.758713 | Prior orbit |
+| Scalar8192 | 0.000226363 | 0.000227165 | Prior orbit |
+| Authored converging | 0.00688635 | 0.00684358 | Prior orbit |
+| Authored cycling | 1.002107 | 1.659218 | Original baseline |
+
+Object equality was required before timing. Cycling's exact baseline bytes
+remove the adverse generated checks; the fresh six-pair median is within 0.3%.
+The other three objects preserve the earlier gains exactly. These focused
+denominators remain native45-02 / API03, as specified in the raw report; later
+portfolio object identity and broad qualification are separate decisions.

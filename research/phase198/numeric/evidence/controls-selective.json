@@ -1,0 +1,277 @@
+{
+  "complete": true,
+  "api": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-api06/report.json",
+    "bytes": 5890,
+    "sha256": "3d75d20b01b626aa141d13c1ebb9125921346b5f825c897eed4482a062ad2424"
+  },
+  "capture": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-followup02/capture/capture.json",
+    "bytes": 1970,
+    "sha256": "2f0e9e1e596add360949ab8723e72a02ae4f6bb0c74d4f7513b1d3101f40dd81"
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase198/numeric/controls-selective.mjs",
+    "bytes": 15627,
+    "sha256": "2a38b1c63941bbf85a878690329769d9921dec7eabceba693c259ed8f14548e6"
+  },
+  "seed": 198,
+  "checks": [
+    {
+      "name": "actual-current-mit",
+      "accept": true,
+      "affine": true
+    },
+    {
+      "name": "refuse-noncanonical-param-1",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-noncanonical-param-2",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-noncanonical-param-3",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-noncanonical-param-4",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-noncanonical-param-5",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-noncanonical-param-6",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-boxed-fuel",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-low32-fuel-test",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-fuel-step-two",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-mode-not-absorbing",
+      "accept": false,
+      "affine": true
+    },
+    {
+      "name": "refuse-observable-fuel",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-observable-mode",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-changing-other-state",
+      "accept": false,
+      "affine": true
+    },
+    {
+      "name": "refuse-arity-mismatch",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-fresh-name-collision",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-call-effect",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-load-effect",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-store-effect",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-trapping-division",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-parameter-reassignment",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-body-budget",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "accept-systematic-renaming",
+      "accept": true,
+      "affine": true
+    },
+    {
+      "name": "independent-affine-variable-delta",
+      "accept": false,
+      "affine": true
+    },
+    {
+      "name": "refuse-multiplicative-counter",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-fullword-counter-arithmetic",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-affine-fresh-local-collision",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-counter-dependent-control",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-counter-dependent-state",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-fuel-dependent-state",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "accept-state-becomes-fixed",
+      "accept": false,
+      "affine": true
+    },
+    {
+      "name": "refuse-never-fixed-add-one",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-never-fixed-add-max",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-never-fixed-add-runtime-odd",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-never-fixed-sub-one",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-never-fixed-sub-max",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-never-fixed-sub-runtime-odd",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-never-fixed-xor-one",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-never-fixed-xor-max",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-never-fixed-xor-runtime-odd",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-commuted-never-fixed-add",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "refuse-commuted-never-fixed-xor",
+      "accept": false,
+      "affine": false
+    },
+    {
+      "name": "allow-possible-fixed-zero",
+      "accept": false,
+      "affine": true
+    },
+    {
+      "name": "allow-possible-fixed-low-zero-high-nonzero",
+      "accept": false,
+      "affine": true
+    },
+    {
+      "name": "allow-possible-fixed-unknown",
+      "accept": false,
+      "affine": true
+    }
+  ],
+  "interpretations": 1346,
+  "abstractObservations": 9720,
+  "stableOrbitTransfer": {
+    "case": "scalar-region-8192",
+    "seed": 524800,
+    "coordinates": [
+      0,
+      0
+    ],
+    "result": "8192",
+    "beforeIterations": 8192,
+    "afterIterations": 0,
+    "scope": "Independent IR interpretation; stable state returns after the first prefix, no backedge."
+  },
+  "fullWidthLivePrefix": [
+    {
+      "fuel": "4294967296",
+      "result": "1",
+      "completedBackedges": 2
+    },
+    {
+      "fuel": "9223372036854775809",
+      "result": "1",
+      "completedBackedges": 2
+    },
+    {
+      "fuel": "18446744073709551615",
+      "result": "1",
+      "completedBackedges": 2
+    }
+  ]
+}

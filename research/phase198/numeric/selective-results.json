@@ -1,0 +1,351 @@
+{
+  "complete": true,
+  "scope": "Four focused actual programs; original API05 products preserved. Broad composed-compiler qualification remains separate.",
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-api-source13/compiler.bend",
+    "bytes": 1867564,
+    "sha256": "7d6679d0758ed027c09f49f08d226b3e4316afef61228290f1c966e595077ae5"
+  },
+  "api": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-api06/report.json",
+    "bytes": 5890,
+    "sha256": "3d75d20b01b626aa141d13c1ebb9125921346b5f825c897eed4482a062ad2424"
+  },
+  "controls": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-api06/controls/controls.json",
+    "bytes": 6025,
+    "sha256": "d0cc00e0ec3de378cbafdf95521a5d8873baf393c01f024a107fed7be306e798"
+  },
+  "apiCheck": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-api06/selective-check.json",
+    "bytes": 1638,
+    "sha256": "9c77df58b5037adf67253d347e6251e4bbd3ae1193d444bf1c8a027797da33ac"
+  },
+  "report": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-products04/report.json",
+    "bytes": 85412,
+    "sha256": "484d3386b8bb3866598bb754903861d1d7d07fefef2ebc05b48e02240cfe44b2"
+  },
+  "seconds": 57.43092529755086,
+  "observations": 96,
+  "checks": 80,
+  "cases": {
+    "mandelbrot": {
+      "point": [
+        2,
+        0
+      ],
+      "expected": "887240761\n",
+      "ratios": {
+        "baseline": {
+          "median": 1.0,
+          "pairs": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "old": {
+          "median": 0.7587127074771842,
+          "pairs": [
+            0.8104742822493475,
+            0.7541144486439892,
+            0.7587127074771842,
+            0.7587127074771842,
+            0.7541144486439892,
+            0.758827663948014
+          ]
+        },
+        "c": {
+          "median": 0.2869401884700665,
+          "pairs": [
+            0.2983968373493976,
+            0.2867431818181818,
+            0.28713719512195124,
+            0.2884916158536585,
+            0.2840507575757576,
+            0.2867431818181818
+          ]
+        },
+        "selective": {
+          "median": 0.7564135780605867,
+          "pairs": [
+            0.7683108802826185,
+            0.7541144486439892,
+            0.7587127074771842,
+            0.7634546618989165,
+            0.7541144486439892,
+            0.7541144486439892
+          ]
+        }
+      },
+      "newOverOldMedian": 1.0,
+      "objectBytesExact": true,
+      "exactObjectRole": "old",
+      "exactObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-products03/emission/numeric/mandelbrot/program.o",
+        "bytes": 137832,
+        "sha256": "3b445ebcdcde1cb5d5e4f527a5e9a57e8ece3905e6138030d2401386295b535a"
+      },
+      "newProduct": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-products04/mandelbrot-selective",
+          "bytes": 215616,
+          "sha256": "333b8f187e47d1bbb65110667430ca07c8f0a66944ef989cd56e400f89e3676a"
+        },
+        "object": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-products04/emission/selective/mandelbrot/program.o",
+          "bytes": 137832,
+          "sha256": "3b445ebcdcde1cb5d5e4f527a5e9a57e8ece3905e6138030d2401386295b535a"
+        },
+        "assembly": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-products04/emission/selective/mandelbrot/program.s",
+          "bytes": 549327,
+          "sha256": "ebbd4870cfce7de946ce4a313d011542c0eba3f5cd0f6d7ef39abcc6fb870865"
+        },
+        "convention": "bend-rts-v1"
+      }
+    },
+    "scalar-region-8192": {
+      "point": [
+        8192,
+        524800
+      ],
+      "expected": "8192\n",
+      "ratios": {
+        "baseline": {
+          "median": 1.0,
+          "pairs": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "old": {
+          "median": 0.00022716492508085504,
+          "pairs": [
+            0.0002262678673274753,
+            0.00023188942924865484,
+            0.0002262678673274753,
+            0.0002278726039751879,
+            0.00022645724618652218,
+            0.0002278726039751879
+          ]
+        },
+        "c": {
+          "median": 0.4679095634966547,
+          "pairs": [
+            0.46696096322921593,
+            0.47634711324387347,
+            0.46461442572555145,
+            0.4679095634966547,
+            0.4702727431102742,
+            0.4679095634966547
+          ]
+        },
+        "selective": {
+          "median": 0.00022636255675699874,
+          "pairs": [
+            0.0002262678673274753,
+            0.0002262678673274753,
+            0.0002262678673274753,
+            0.0002292879617638537,
+            0.0002278726039751879,
+            0.00022645724618652218
+          ]
+        }
+      },
+      "newOverOldMedian": 1.0,
+      "objectBytesExact": true,
+      "exactObjectRole": "old",
+      "exactObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-products03/emission/numeric/scalar-region-8192/program.o",
+        "bytes": 94504,
+        "sha256": "6bf21e798f4b90ba54f9316ac8b857ee3fc93934f933e5b1da872b7877eb403d"
+      },
+      "newProduct": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-products04/scalar-region-8192-selective",
+          "bytes": 180032,
+          "sha256": "d0305b50a19a7b6f5eab30232b0032d72eea59a29ea67bf1a820d478c3847469"
+        },
+        "object": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-products04/emission/selective/scalar-region-8192/program.o",
+          "bytes": 94504,
+          "sha256": "6bf21e798f4b90ba54f9316ac8b857ee3fc93934f933e5b1da872b7877eb403d"
+        },
+        "assembly": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-products04/emission/selective/scalar-region-8192/program.s",
+          "bytes": 374926,
+          "sha256": "99dd061e53725dc636022924e19e2c4245839d1fa05fb8f9f8f84ab4da09b65c"
+        },
+        "convention": "bend-rts-v1"
+      }
+    },
+    "orbit-converging": {
+      "point": [
+        8192,
+        305419896
+      ],
+      "expected": "382881820\n",
+      "ratios": {
+        "baseline": {
+          "median": 1.0,
+          "pairs": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "old": {
+          "median": 0.006843575418994413,
+          "pairs": [
+            0.006952247191011236,
+            0.006843575418994413,
+            0.006956214689265537,
+            0.006843575418994413,
+            0.006839005235602094,
+            0.006790540540540541
+          ]
+        },
+        "c": {
+          "median": 0.29979600686060953,
+          "pairs": [
+            0.3033412433129423,
+            0.29979600686060953,
+            0.30318353236185935,
+            0.29979600686060953,
+            0.28096065564423617,
+            0.29186346653893913
+          ]
+        },
+        "selective": {
+          "median": 0.006886350791591504,
+          "pairs": [
+            0.006925038155589208,
+            0.006886350791591504,
+            0.007007418333669173,
+            0.006886350791591504,
+            0.006694211056975214,
+            0.006621624531515214
+          ]
+        }
+      },
+      "newOverOldMedian": 1.0011683692594977,
+      "objectBytesExact": true,
+      "exactObjectRole": "old",
+      "exactObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/emission/orbit/orbit-converging/program.o",
+        "bytes": 92504,
+        "sha256": "a72de7ddc6581eab72461fd1278c53c22fa267e0fb76fd627d76060c56a36aaf"
+      },
+      "newProduct": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-products04/orbit-converging-selective",
+          "bytes": 175624,
+          "sha256": "041dfc9ef3c7a48344881326a0bdc2712f9c2b8460ed7199461c6bdad6d5f4f9"
+        },
+        "object": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-products04/emission/selective/orbit-converging/program.o",
+          "bytes": 92504,
+          "sha256": "a72de7ddc6581eab72461fd1278c53c22fa267e0fb76fd627d76060c56a36aaf"
+        },
+        "assembly": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-products04/emission/selective/orbit-converging/program.s",
+          "bytes": 366134,
+          "sha256": "912535051776a1d93886b7844f0a2a56a09868f02e0596f5547d5e4a66e0f89a"
+        },
+        "convention": "bend-rts-v1"
+      }
+    },
+    "orbit-cycling": {
+      "point": [
+        8192,
+        305419896
+      ],
+      "expected": "382910401\n",
+      "ratios": {
+        "baseline": {
+          "median": 1.0,
+          "pairs": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "old": {
+          "median": 1.6592178770949721,
+          "pairs": [
+            1.664804469273743,
+            1.6741573033707866,
+            1.6536312849162011,
+            1.664804469273743,
+            1.6065573770491803,
+            1.6284153005464481
+          ]
+        },
+        "c": {
+          "median": 0.07353354827711492,
+          "pairs": [
+            0.07398745906894896,
+            0.07394665809889647,
+            0.07353354827711492,
+            0.07353354827711492,
+            0.0719262576043911,
+            0.0728142360933342
+          ]
+        },
+        "selective": {
+          "median": 1.0021067068156682,
+          "pairs": [
+            1.0056023047147822,
+            0.9986111089165542,
+            0.9867472615013799,
+            1.018172333523717,
+            1.0205077487122622,
+            0.977474289429215
+          ]
+        }
+      },
+      "newOverOldMedian": 0.6021486703179402,
+      "objectBytesExact": true,
+      "exactObjectRole": "baseline",
+      "exactObject": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/emission/baseline/orbit-cycling/program.o",
+        "bytes": 92448,
+        "sha256": "baa98b9f2fbc5e5bf325d436ae290108af01326de1e0ae88a18cea7ec7c73dcb"
+      },
+      "newProduct": {
+        "binary": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-products04/orbit-cycling-selective",
+          "bytes": 175624,
+          "sha256": "67cf12765b5749b9eb1ff802e84c0e5b64ab2937a8a8c39448aa15455cc55185"
+        },
+        "object": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-products04/emission/selective/orbit-cycling/program.o",
+          "bytes": 92448,
+          "sha256": "baa98b9f2fbc5e5bf325d436ae290108af01326de1e0ae88a18cea7ec7c73dcb"
+        },
+        "assembly": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-products04/emission/selective/orbit-cycling/program.s",
+          "bytes": 365665,
+          "sha256": "72d15c707e0f473e9c7b3d854e5f2992c70f153a12e3c585283eb89cc0e46e16"
+        },
+        "convention": "bend-rts-v1"
+      }
+    }
+  },
+  "limitation": "Only a conservative straight-line no-fixed-state certificate. Unknown recurrences can still incur dynamic-guard overhead; no universal performance guarantee. Extra runtime-odd XOR/add/sub cases are independent IR controls, not additional source timings."
+}

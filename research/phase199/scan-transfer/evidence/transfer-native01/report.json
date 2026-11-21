@@ -1,0 +1,294 @@
+{
+  "complete": true,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase199/scan-transfer/packet-window.bend",
+    "bytes": 4007,
+    "sha256": "33405919f30f9b7903a4ab4190ad908b62da7c8676655f609975cfab623c9319"
+  },
+  "compiler": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-native-image01/program",
+    "bytes": 19068032,
+    "sha256": "4c5ef960f02e803826801dcc47f12b1cbed2261708440a02d6707d1739cab0de"
+  },
+  "compilerReceipt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-native-image01/report.json",
+    "bytes": 18813,
+    "sha256": "e3fcaf1d5072bffdfc1c2f109f451df722bdba65e3dae8d81bbda5f63a965131"
+  },
+  "sourceCheck": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/transfer-base02/upstream/report.json",
+    "bytes": 3781,
+    "sha256": "78e6eb908451267176e9e88078ca9591d9d57de9767e8fee84f7f6e57aa9e0fa"
+  },
+  "steps": {
+    "baseline": {
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/transfer-base02/native.o",
+        "bytes": 119336,
+        "sha256": "34372546c1b773b83d220d9f60d6e581a1c760fc4060c083c6c56b2cc24d342f"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/transfer-native01/baseline",
+        "bytes": 204496,
+        "sha256": "70f446de44b952cd0092b763b076f8a6fd2ebb944cbac48c21b43421b90a3ee2"
+      },
+      "worker": {
+        "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_102_114_97_109_101_46_115_101_103_109_101_110_116_",
+        "decoded": "p113d_FID_$product.frame.segment",
+        "address": 17975,
+        "bytes": 445,
+        "bodySha256": "235b0011bba106f46ace90128eda4c9416a052ee5bcc2359faf26752d9fc6df5",
+        "helperReferences": []
+      },
+      "checkedInputs": 10
+    },
+    "integrated": {
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/transfer-native01/integrated.o",
+        "bytes": 120680,
+        "sha256": "9dc21a5f5ec41698532b826934a6f6c97e810e3b3a3108c0ad5bf40279e87dcc"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/transfer-native01/integrated",
+        "bytes": 204504,
+        "sha256": "adf87927acfe47c428254f9fb2aa8ca82d2eaf02a9cc2c9b9e90b80d14a588ef"
+      },
+      "worker": {
+        "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_102_114_97_109_101_46_115_101_103_109_101_110_116_",
+        "decoded": "p113d_FID_$product.frame.segment",
+        "address": 17865,
+        "bytes": 511,
+        "bodySha256": "2762967cef7f6f67a4033229977f1c4e994c3e15518ac8238839ac2c260b878a",
+        "helperReferences": [
+          "4791: R_X86_64_PLT32\tp199_rt_u32_scan4-0x4"
+        ]
+      },
+      "checkedInputs": 10
+    }
+  },
+  "linkedRuntime": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/runtime-bundle01/runtime-live-scan.o",
+    "bytes": 128872,
+    "sha256": "1c819e63386e8bf7c392f3fa13509699b0f4d99867cf26d8777042350522cda8"
+  },
+  "actualCalls": [
+    {
+      "inputs": [
+        6147,
+        305419899
+      ],
+      "fields": [
+        "mask",
+        "fuel",
+        "index",
+        "carry",
+        "result"
+      ],
+      "calls": [
+        [
+          63,
+          6147,
+          4294967295,
+          3079795678,
+          1704506432
+        ],
+        [
+          63,
+          1232,
+          3989547403,
+          1704506432,
+          157497327
+        ]
+      ]
+    },
+    {
+      "inputs": [
+        263,
+        4294967293
+      ],
+      "fields": [
+        "mask",
+        "fuel",
+        "index",
+        "carry",
+        "result"
+      ],
+      "calls": [
+        [
+          63,
+          263,
+          4294967293,
+          1515870808,
+          2462858250
+        ],
+        [
+          63,
+          55,
+          13,
+          2462858250,
+          4060901472
+        ]
+      ]
+    }
+  ],
+  "timing": [
+    {
+      "inputs": [
+        6147,
+        305419899
+      ],
+      "pairs": [
+        {
+          "baseline": {
+            "count": 14848,
+            "warmups": 3,
+            "elapsedMs": 198,
+            "wall": 0.20223658252507448,
+            "nsPerPacket": 13335.129310344828
+          },
+          "integrated": {
+            "count": 49493,
+            "warmups": 3,
+            "elapsedMs": 184,
+            "wall": 0.18776898365467787,
+            "nsPerPacket": 3717.6974521649527
+          }
+        },
+        {
+          "integrated": {
+            "count": 49493,
+            "warmups": 3,
+            "elapsedMs": 196,
+            "wall": 0.19852858874946833,
+            "nsPerPacket": 3960.155981653971
+          },
+          "baseline": {
+            "count": 14848,
+            "warmups": 3,
+            "elapsedMs": 205,
+            "wall": 0.20798355992883444,
+            "nsPerPacket": 13806.573275862069
+          }
+        },
+        {
+          "integrated": {
+            "count": 49493,
+            "warmups": 3,
+            "elapsedMs": 177,
+            "wall": 0.17995767202228308,
+            "nsPerPacket": 3576.263309963025
+          },
+          "baseline": {
+            "count": 14848,
+            "warmups": 3,
+            "elapsedMs": 202,
+            "wall": 0.20644614100456238,
+            "nsPerPacket": 13604.525862068966
+          }
+        },
+        {
+          "baseline": {
+            "count": 14848,
+            "warmups": 3,
+            "elapsedMs": 205,
+            "wall": 0.20819533430039883,
+            "nsPerPacket": 13806.573275862069
+          },
+          "integrated": {
+            "count": 49493,
+            "warmups": 3,
+            "elapsedMs": 196,
+            "wall": 0.19977544900029898,
+            "nsPerPacket": 3960.155981653971
+          }
+        }
+      ],
+      "integratedOverBaseline": [
+        0.27878975641285464,
+        0.2868312000760886,
+        0.262873057556094,
+        0.2868312000760886
+      ],
+      "median": 0.2828104782444716
+    },
+    {
+      "inputs": [
+        263,
+        4294967293
+      ],
+      "pairs": [
+        {
+          "baseline": {
+            "count": 148480,
+            "warmups": 3,
+            "elapsedMs": 141,
+            "wall": 0.14362542144954205,
+            "nsPerPacket": 949.6228448275862
+          },
+          "integrated": {
+            "count": 290941,
+            "warmups": 3,
+            "elapsedMs": 147,
+            "wall": 0.14986308198422194,
+            "nsPerPacket": 505.2570796140798
+          }
+        },
+        {
+          "integrated": {
+            "count": 290941,
+            "warmups": 3,
+            "elapsedMs": 147,
+            "wall": 0.15015725698322058,
+            "nsPerPacket": 505.2570796140798
+          },
+          "baseline": {
+            "count": 148480,
+            "warmups": 3,
+            "elapsedMs": 140,
+            "wall": 0.14302851539105177,
+            "nsPerPacket": 942.8879310344828
+          }
+        },
+        {
+          "integrated": {
+            "count": 290941,
+            "warmups": 3,
+            "elapsedMs": 148,
+            "wall": 0.15064062364399433,
+            "nsPerPacket": 508.6942026046518
+          },
+          "baseline": {
+            "count": 148480,
+            "warmups": 3,
+            "elapsedMs": 140,
+            "wall": 0.14302043244242668,
+            "nsPerPacket": 942.8879310344828
+          }
+        },
+        {
+          "baseline": {
+            "count": 148480,
+            "warmups": 3,
+            "elapsedMs": 140,
+            "wall": 0.143489645794034,
+            "nsPerPacket": 942.8879310344828
+          },
+          "integrated": {
+            "count": 290941,
+            "warmups": 3,
+            "elapsedMs": 149,
+            "wall": 0.1523666400462389,
+            "nsPerPacket": 512.1313255952238
+          }
+        }
+      ],
+      "integratedOverBaseline": [
+        0.5320607885184296,
+        0.5358612227221327,
+        0.5395065371624193,
+        0.5431518516027058
+      ],
+      "median": 0.537683879942276
+    }
+  ]
+}

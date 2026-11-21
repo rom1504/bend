@@ -1,0 +1,38 @@
+{
+  "kind": "build-retention-run-close-v1",
+  "complete": true,
+  "state": "sealed",
+  "classification": "completed",
+  "initialRetention": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/transfer-base03-guard/retention.json",
+    "bytes": 657,
+    "sha256": "4b135997d809a5407a32750210a1b5155f1203b2ad14c2181d026573fcc7466d"
+  },
+  "process": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/transfer-base03-guard/process.json",
+    "bytes": 1994,
+    "sha256": "32fdc6c6273292f5c9d3e8fd9fad0500030e33c804b0ff96af4502180750ef51"
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/close.py",
+    "bytes": 13971,
+    "sha256": "7e37ec90fe3fd4a0f990cae727052e8ccdf7880f05dcc68618da15c0d76b0fef"
+  },
+  "archiveMethod": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/archive-v02.py",
+    "bytes": 18412,
+    "sha256": "3238e0774c6c21c3de6c07bcbd71e469cbb23aaba01f99da0cb1e9f51990ad9f"
+  },
+  "qualification": null,
+  "pruneRequested": false,
+  "roots": [
+    {
+      "root": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/transfer-base03",
+      "keptHot": true
+    }
+  ],
+  "started": 1795227112.5106063,
+  "guardCommitRequired": "Close is committed only when guard retention.json names this report; process.json remains immutable.",
+  "finished": 1795227112.5896885,
+  "minimumDiskFreeBytes": 5410369536
+}

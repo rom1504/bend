@@ -1,20 +1,22 @@
 {
   "version": 1,
   "inputs": {
-    "history-research.json": "4576ed7caafe79daec42bec9b416e0619f74e09eaa2244dbba4e62f4496ffa8a",
+    "history-research.json": "7ea0ec7503085af76e50454cad24db060c0875bb2b3b30aa7af571d5bc40af13",
     "conformance-research.json": "2f1643243454195f9833a88a68af347bd80f4d77f812e5218a99d23aaba6cb8c",
     "runtime-research.json": "eefd3a3c1c8c8945c336fd95e3f7269907f4cae47ac141e3afc292c6599ef20f",
     "runtime-average-research.json": "2968b7fb727a103acd0fd8e8c9c0c21da67a68fbaa6d10920d31a4c482627c9f",
     "compilation-average-research.json": "f336c3bdaa172832975db098d4cddd382681e055610e67e284abe82d7c8b811a",
     "second-stage-research.json": "bbfa905a05503a419ae01caf2aca394ea1d1e24ec5e178b4d2a54a8df7b00caf",
     "native-research.json": "853125248dfd20dc956bde9afab0390c477de309e74ddf9a431b63a973ea75a4",
-    "scripts/charts.py": "eac69501a12ab9ef014b66694b2daabe6fc4e0f04d85bec817d93cfc8ca031b8",
-    "scripts/native_charts.py": "b7aad8000044f4396e2c7f68497c10e4dce8cec87c6e1ca1e117db458b13474a",
+    "targets-research.json": "58aaa8ddeb584aaa03e57d7ee2036bca2e5dc4b20dbec527c8f576073cf1c4c8",
+    "scripts/charts.py": "d3e24dca6b04f5d78520ccc4cf791091d16ae45744113e49faed225e8eeda0c2",
+    "scripts/native_charts.py": "c6bc08ec9a7331ab9a69e933e5639e30a233b0ea698dff42438499835b095b71",
+    "scripts/target_charts.py": "0d51660a3729ac91bed798b6f24e181a3ff9ee489e5cb68b750895010f72a025",
     "requirements-charts.txt": "b11763e0d5b4ca14f6a4cca69c3afe353f1d927f0b5f4a95039916ae69d4fa59"
   },
   "outputs": {
-    "simplicity.svg": "74168b5ea0170a98d0c84ed8afd7df78974ba8950ee4d259a04875ba705456b8",
-    "simplicity.png": "f860f6108650b43b23cd8f52bf6571222d13641582ca04531790536b87d6b2f1",
+    "simplicity.svg": "3c481ed189e71c7465e43ef79b0f57fc0927794f78482552ff7f433b5256e194",
+    "simplicity.png": "5a6e0b9ba9cb18b0ad9013b6a263ab7e4c4394ce0790bfa2733b58b6736d1b69",
     "compilation.svg": "3eb28a02298fb68ad17be9a4684c84ac2bd268768ccf03a507017ec52cf295ec",
     "compilation.png": "c935f2ae1ac9bec9338453376d5f6e64af8d7d5e97f6afd79c94dda908e63e79",
     "conformance.svg": "32c67969b1398ac9bb8f01c094f4f626fc09f1bc0000a2feaf3669effaacf114",
@@ -56,6 +58,24 @@
     "native-second-stage-previous-programs.svg": "88d2bf7e8f35e52c59e42d3b8119d927e7743b1489ad3e93abf0d5cc74ed7186",
     "native-second-stage-previous-programs.png": "2640fa096d86d10decd62a04dc765fe5f13aeac6ec27933d6b39df51172e979a",
     "native-compilation-previous-programs.svg": "6b532204c9489ca3b1ec75e7c96892aeb8b3471040d0d8464d63a948f59800fe",
-    "native-compilation-previous-programs.png": "c6dcc964894a6d32bc156664446ec624d6961f71f1aed724e3a126b5e15302d0"
+    "native-compilation-previous-programs.png": "c6dcc964894a6d32bc156664446ec624d6961f71f1aed724e3a126b5e15302d0",
+    "target-runtime.svg": "644df6ea8788296a05885833ab1b94325523f27d09a92ee86b8526f755bd43a5",
+    "target-runtime.png": "1fba9e7deac90f6fef906cae561736e9638e37df54fe5da23299c5c112ebb846",
+    "target-programs.svg": "82cb6f2752492d1661f3bf6a4c2e2478bae18f49f98860d770ed23c923f26233",
+    "target-programs.png": "d67cb029c10ce01848a1d882b9f462fb2449b02a8a4528bc204cc9520b454c56",
+    "qbe-runtime.svg": "e27bdf9c3f5d4a5b40de840a1e7eaa30f43e5ba33c0c6151b84a4ae5f262a386",
+    "qbe-runtime.png": "e4d3cd1c74f0cd748a424c4d84215438ae42995218925b87459ecf07cf0ddeb6",
+    "x86-self-build.svg": "6283d9e4effdb2e960dab137fb5f7ac4bf3a7fc7ae1835f17ded492c38e99b8e",
+    "x86-self-build.png": "6a72c12420af7bb5ccfa4b5c842832da423f6f9d41015a33fabddd4126d40ef6",
+    "x86-scan.svg": "188945b9bf1485abdb781e76ce8595090de9ef93f2e1b9bc981ca7bc1884d4f7",
+    "x86-scan.png": "bdcdfd0cc4e0ac070ca3084df82960d68b4f010fb69db40451e7204467c1ec1d",
+    "source-transforms.svg": "7e45da2c4d182cbc11f9d99e71e66301fba3fd27bf1e9028de6b79c5bf318fa0",
+    "source-transforms.png": "bf466ec74b4e0e03ed6076939239cf4c38b3b8bb549fcfd48551a5c3c4afc59b",
+    "compiler-work.svg": "92a687797a8c83075b8ba8e1d52d1681c3d8a11ac4df61181f6888b7e2c0be91",
+    "compiler-work.png": "b5b30651a0c944883d562d9ac2e148634308113b2ef355f6acdc7c9d0dd88394",
+    "qbe-requests.svg": "40d8a6fe6b0ce77e96a1feb6137690d95075e8f575aa5ddcaa5ec179cbf4c6b3",
+    "qbe-requests.png": "bbfcdf29d7681994fc209f01d19edca4c34fbc31abb4e9e3f803892a7ef689ac",
+    "bootstrap-builds.svg": "b03a5f46620f249cf0cd4bb91c24aa1f6c6c88ac76ebeb570a5c7d638616e8e7",
+    "bootstrap-builds.png": "9817f09870cd936f198ebbbb456379618c5b14e834a3077087673945a29f2bc5"
   }
 }

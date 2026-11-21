@@ -12,11 +12,12 @@ from string import Template
 import subprocess
 import sys
 import native_report
+import target_charts
 from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / 'site'
-RESEARCH = ('history', 'conformance', 'runtime', 'runtime-average', 'second-stage', 'compilation-average', 'native', 'applications')
+RESEARCH = ('history', 'conformance', 'runtime', 'runtime-average', 'second-stage', 'compilation-average', 'native', 'applications', 'targets')
 METRICS = {'execution': 'Program speed', 'second-stage': 'Second-stage compilation', 'compilation': 'First-stage compilation', 'conformance': 'Conformance', 'simplicity': 'Simplicity'}
 
 
@@ -226,9 +227,11 @@ def render_findings(config):
         flow = '<span class="flow-arrow" aria-hidden="true">→</span>'.join(f'<span class="flow-step">{e(step)}</span>' for step in item['flow'])
         stats = ''.join(f'<div class="impact-stat"><strong>{e(s["value"])}</strong><span>{e(s["label"])}</span></div>' for s in item['stats'])
         sources = ''.join(link(source['url'], source['title']) for source in item['sources'])
+        chart = item.get('impact_chart')
+        plot = native_report.figure(chart, item['title'], '', 360) if chart else ''
         sections.append(f'''<article class="finding" id="finding-{e(item['id'])}" data-metrics="{e(' '.join(item['metrics']))}" aria-labelledby="finding-title-{e(item['id'])}">
 <div class="finding-copy"><div class="finding-kicker"><span>{i:02d} / {e(item['phase'])}</span><div class="finding-tags">{tags}</div></div><h3 id="finding-title-{e(item['id'])}">{e(item['title'])}</h3>{paragraphs}<div class="finding-sources">{sources}</div></div>
-<div class="finding-visual"><span class="mini-label">THE MECHANISM → THE IMPACT</span><div class="flow">{flow}</div><div class="impact-grid">{stats}</div><p class="visual-note">{e(item['note'])}</p></div></article>''')
+<div class="finding-visual"><span class="mini-label">THE MECHANISM → THE IMPACT</span><div class="flow">{flow}</div>{plot}<div class="impact-grid">{stats}</div><p class="visual-note">{e(item['note'])}</p></div></article>''')
     return '\n'.join(sections)
 
 
@@ -239,9 +242,14 @@ def render(config, research):
         values[key] = url(meta[key])
     values['collected_iso'] = e(meta['collected_at'])
     values['collected_date'] = date.fromisoformat(meta['collected_at']).strftime('%d %b %Y')
+    targets = research['targets']
+    latest = targets['history'][-1]
+    values.update(x86_geometric=f"{latest['geometric']:.3f}", x86_fixed=f"{latest['fixed']:.3f}",
+                  self_seconds=f"{targets['coldBuilds'][-1]['selfSeconds']:.2f}")
     values['chart_cards'] = render_cards(config, research)
-    values['findings'] = render_findings(research['recent-findings'])
-    values['historical_findings'] = render_findings(config)
+    recent = research['recent-findings']['findings']
+    values['findings'] = render_findings({'findings': recent[:3]})
+    values['historical_findings'] = render_findings({'findings': recent[3:] + config['findings']})
     values['applications'] = native_report.render_applications(research['applications'])
     values['research_outlook'] = native_report.render_outlook(research['recent-findings']['outlook'], research['native']['audit104'])
     values['sources'] = ''.join(link(s['url'], s['title']) for s in config['sources'])
@@ -259,6 +267,7 @@ def main():
         research['recent-findings'] = json.loads((ROOT / 'recent-findings.json').read_text(encoding='utf-8'))
         validate(config, research)
         native_report.validate(research)
+        target_charts.validate(research["targets"])
         outputs = {
             SITE / 'index.html': render(config, research),
             SITE / 'progress.json': json.dumps({'site': config, 'research': research}, ensure_ascii=False, indent=2) + '\n',

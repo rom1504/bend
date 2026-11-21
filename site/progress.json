@@ -6,17 +6,17 @@
       "repository_url": "https://github.com/rom1504/bend/tree/selfhost/bootstrap",
       "pr_url": "https://github.com/bendlang/bend/pull/1207",
       "issue_url": "https://github.com/rom1504/bend/issues/1",
-      "checkpoint": "c2ef383c35847df62d0643e3fdeb2c2899687ca5",
-      "checkpoint_url": "https://github.com/rom1504/bend/commit/c2ef383c35847df62d0643e3fdeb2c2899687ca5",
-      "upstream_url": "https://github.com/bendlang/bend/commit/059266225b77c8ca256ac6b25ee5c21449bab151",
-      "collected_at": "2026-10-17",
+      "checkpoint": "2dec06c6138c2597e1843f5c14a5c4c614bf9924",
+      "checkpoint_url": "https://github.com/rom1504/bend/commit/2dec06c6138c2597e1843f5c14a5c4c614bf9924",
+      "upstream_url": "https://github.com/bendlang/bend/commit/9a4223d577ba56a0cb53d1fd952d2b481c38930f",
+      "collected_at": "2026-11-21",
       "runtime_source": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase102/default-promotion.md",
-      "report_phase": "Phase 105",
+      "report_phase": "Phase 203",
       "installed_commit": "f0303013067f08ff9b07d452201a5c89bb1db039",
       "installed_url": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase103/README.md",
-      "latest_reviewed_commit": "c2ef383c35847df62d0643e3fdeb2c2899687ca5",
-      "latest_reviewed_url": "https://github.com/rom1504/bend/commit/c2ef383c35847df62d0643e3fdeb2c2899687ca5",
-      "upstream_short": "0592662"
+      "latest_reviewed_commit": "2dec06c6138c2597e1843f5c14a5c4c614bf9924",
+      "latest_reviewed_url": "https://github.com/rom1504/bend/commit/2dec06c6138c2597e1843f5c14a5c4c614bf9924",
+      "upstream_short": "9a4223d"
     },
     "cards": [
       {
@@ -1433,6 +1433,22 @@
     ],
     "sources": [
       {
+        "url": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase182/README.md",
+        "title": "Bend 2.0.40 migration"
+      },
+      {
+        "url": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase189/README.md",
+        "title": "Installed direct-object route"
+      },
+      {
+        "url": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase200/README.md",
+        "title": "Complete x86 runtime comparison"
+      },
+      {
+        "url": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase203/README.md",
+        "title": "Cold x86 self-build"
+      },
+      {
         "title": "Current native compilation versus upstream",
         "url": "https://github.com/rom1504/bend/blob/c2ef383c35847df62d0643e3fdeb2c2899687ca5/implementation/phase105/README.md"
       },
@@ -2818,6 +2834,28 @@
             "laws": null,
             "types": null,
             "scope": "Manifest-listed maintained Bend modules only; host/runtime, proofs/tests/tools and assembled native source counted separately. Missing unreported counts remain null. Canonical inventory is distinct from installed Phase90 JS source; later native profiles do not replace it. Reported unchanged through current native/public-CLI work."
+          },
+          {
+            "phase": 182,
+            "chartLabel": "P182",
+            "label": "P182 maintained manifest",
+            "modules": 218,
+            "physicalLines": 68619,
+            "nonblankLines": null,
+            "codeLines": null,
+            "sourceLink": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase182/README.md",
+            "scope": "Manifest module entries counted once, including explicitly listed control modules. Excludes assembled profiles and external tooling."
+          },
+          {
+            "phase": 203,
+            "chartLabel": "P203",
+            "label": "P203 maintained manifest",
+            "modules": 225,
+            "physicalLines": 69265,
+            "nonblankLines": null,
+            "codeLines": null,
+            "sourceLink": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/selfhost/src/compiler.json",
+            "scope": "Manifest module entries counted once, including explicitly listed control modules. Excludes assembled profiles and external tooling."
           }
         ],
         "baseline": {
@@ -2841,7 +2879,7 @@
           "physicalLines": "len(decoded UTF-8 text.splitlines()), includes comments and blank lines",
           "nonblankLines": "Nonempty str.strip() lines",
           "declarations": "Anchored ^def, ^law, ^type heads, not concept counts",
-          "historyScope": "Historical immutable Git-blob counts through P36; selected installed releases from frozen manifest accounting for P45 and later. Diagnostic-only phases do not add compiler-size observations. P73–90 counts come from frozen release reports; P98 is a separately identified canonical inventory observation, carried unchanged through P104. Native assembly is a separate series.",
+          "historyScope": "Historical immutable Git-blob counts through P36; selected installed releases from frozen manifest accounting for P45 and later. Diagnostic-only phases do not add compiler-size observations. P73–90 counts come from frozen release reports; P98 is a separately identified canonical inventory observation, carried unchanged through P104. Native assembly is a separate series. P182 uses the migration report inventory. P203 counts the pinned manifest module list, including its four listed control modules.",
           "dates": "Commit committer dates; many phases share one day; use phases/commit order for chart.",
           "scriptSha256": "07580351981df7bb8449c9fce86a5bfc3668f473b29e9f0f42918617ed5f176c",
           "codeLines": "P45 and later accounting reports: nonblank, noncomment lines; not interchangeable with historical nonblankLines. Unreported nonblank counts remain null.",
@@ -2855,27 +2893,15 @@
           "bytesReductionPercent": 7.82077158550675
         },
         "latest": {
-          "phase": 98,
-          "commit": "795ad056f09d0c43627cb70094387b05d3108326",
-          "shortCommit": "795ad05",
-          "date": "2026-10-15",
-          "commitDate": "2026-10-15T23:04:20Z",
-          "subject": "Report Phase98 gains, matched native profiles and preserved experiment evidence",
-          "label": "P98 canonical source inventory",
-          "chartLabel": "P98",
-          "upstream": "059266225b77c8ca256ac6b25ee5c21449bab151",
-          "modules": 134,
-          "sourceLink": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase98/README.md",
-          "physicalLines": 34231,
+          "phase": 203,
+          "chartLabel": "P203",
+          "label": "P203 maintained manifest",
+          "modules": 225,
+          "physicalLines": 69265,
           "nonblankLines": null,
           "codeLines": null,
-          "bytes": null,
-          "defs": null,
-          "laws": null,
-          "types": null,
-          "scope": "Manifest-listed maintained Bend modules only; host/runtime, proofs/tests/tools and assembled native source counted separately. Missing unreported counts remain null. Canonical inventory is distinct from installed Phase90 JS source; later native profiles do not replace it. Reported unchanged through current native/public-CLI work.",
-          "observedAtCommit": "8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71",
-          "observedAtPhase": 104
+          "sourceLink": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/selfhost/src/compiler.json",
+          "scope": "Manifest module entries counted once, including explicitly listed control modules. Excludes assembled profiles and external tooling."
         },
         "notes": [
           "The series is not monotonic: scope and conformance work added code after the dedicated cleanup.",
@@ -40783,10 +40809,1148 @@
         "note": "Historical application delivery covers 50 independent oracle inputs; current candidate04 timing separately checks 72 complete outputs over six performance points. These counts describe different campaigns and are not added."
       }
     },
+    "targets": {
+      "commit": "2dec06c6138c2597e1843f5c14a5c4c614bf9924",
+      "reference": "Mature self-hosted Bend C",
+      "history": [
+        {
+          "phase": 185,
+          "geometric": 5.532622,
+          "fixed": 6.844313803802096,
+          "source": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase186/README.md"
+        },
+        {
+          "phase": 186,
+          "geometric": 4.003531,
+          "fixed": 4.771328919036018,
+          "source": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase186/README.md"
+        },
+        {
+          "phase": 190,
+          "geometric": 3.0837925889958875,
+          "fixed": 3.8187574854073754,
+          "source": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase190/README.md"
+        },
+        {
+          "phase": 191,
+          "geometric": 2.7365686110897567,
+          "fixed": 3.3288158345394043,
+          "source": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase191/README.md"
+        },
+        {
+          "phase": 192,
+          "geometric": 2.2087229355117888,
+          "fixed": 2.688467044234088,
+          "source": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase192/README.md"
+        },
+        {
+          "phase": 193,
+          "geometric": 2.1025935945168905,
+          "fixed": 2.5501271485728236,
+          "source": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase193/README.md"
+        },
+        {
+          "phase": 194,
+          "geometric": 1.9710340093384986,
+          "fixed": 2.4063206730441538,
+          "source": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase194/README.md"
+        },
+        {
+          "phase": 195,
+          "geometric": 1.8645654186967024,
+          "fixed": 2.202709049313571,
+          "source": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase195/README.md"
+        },
+        {
+          "phase": 197,
+          "geometric": 1.84264,
+          "fixed": 2.188,
+          "source": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase198/README.md"
+        },
+        {
+          "phase": 198,
+          "geometric": 1.27813,
+          "fixed": 1.871,
+          "source": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase198/README.md"
+        },
+        {
+          "phase": 199,
+          "geometric": 1.0007,
+          "fixed": 1.625,
+          "source": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase199/README.md"
+        },
+        {
+          "phase": 200,
+          "geometric": 1.0040724893536412,
+          "fixed": 1.627766863908231,
+          "source": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase200/README.md"
+        }
+      ],
+      "cases": [
+        {
+          "id": "mandelbrot",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.026785714285714284,
+            "baseline": 0.05431067223699203,
+            "candidate": 0.055772230889235566
+          },
+          "fixedEquivalentMs": {
+            "c": 242.03571428571428,
+            "baseline": 490.75123433345993,
+            "candidate": 503.9578783151326
+          }
+        },
+        {
+          "id": "editdist",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.838150289017341,
+            "baseline": 1.3823529411764706,
+            "candidate": 1.2857142857142858
+          },
+          "fixedEquivalentMs": {
+            "c": 201.15606936416185,
+            "baseline": 331.7647058823529,
+            "candidate": 308.5714285714286
+          }
+        },
+        {
+          "id": "tree-bitonic",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.1669642857142857,
+            "baseline": 0.21153846153846154,
+            "candidate": 0.2094081942336874
+          },
+          "fixedEquivalentMs": {
+            "c": 273.1535714285714,
+            "baseline": 346.0769230769231,
+            "candidate": 342.5918057663126
+          }
+        },
+        {
+          "id": "lexer",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.3850267379679144,
+            "baseline": 0.9929577464788732,
+            "candidate": 0.9933333333333333
+          },
+          "fixedEquivalentMs": {
+            "c": 197.13368983957218,
+            "baseline": 508.3943661971831,
+            "candidate": 508.58666666666664
+          }
+        },
+        {
+          "id": "symreg",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 2.3114754098360657,
+            "baseline": 2.3728813559322033,
+            "candidate": 2.4655172413793105
+          },
+          "fixedEquivalentMs": {
+            "c": 332.8524590163935,
+            "baseline": 341.6949152542373,
+            "candidate": 355.0344827586207
+          }
+        },
+        {
+          "id": "test-morning-program",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.002836734693877551,
+            "baseline": 0.00875,
+            "candidate": 0.008705357142857143
+          },
+          "fixedEquivalentMs": {
+            "c": 157.93804081632652,
+            "baseline": 487.165,
+            "candidate": 484.6794642857143
+          }
+        },
+        {
+          "id": "test-evening-program",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.0010194502302930735,
+            "baseline": 0.0036015306505264738,
+            "candidate": 0.0035714285714285713
+          },
+          "fixedEquivalentMs": {
+            "c": 264.58811277026433,
+            "baseline": 934.741265037641,
+            "candidate": 926.9285714285714
+          }
+        },
+        {
+          "id": "test-rle-roundtrip",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.0004330356728601078,
+            "baseline": 0.0010178006843085453,
+            "candidate": 0.0010044642857142856
+          },
+          "fixedEquivalentMs": {
+            "c": 420.43606692257015,
+            "baseline": 988.1867555979038,
+            "candidate": 975.2383928571428
+          }
+        },
+        {
+          "id": "test-map-set-ops",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.010634314386280236,
+            "baseline": 0.026784006122058543,
+            "candidate": 0.02727811820517889
+          },
+          "fixedEquivalentMs": {
+            "c": 234.5504381037969,
+            "baseline": 590.7480390281232,
+            "candidate": 601.6461751334256
+          }
+        },
+        {
+          "id": "raytrace",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 28.4,
+            "baseline": 47.333333333333336,
+            "candidate": 47.0
+          },
+          "fixedEquivalentMs": {
+            "c": 340.79999999999995,
+            "baseline": 568.0,
+            "candidate": 564.0
+          }
+        },
+        {
+          "id": "local-pair",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.2101740294511379,
+            "baseline": 0.34474327628361856,
+            "candidate": 0.3169642857142857
+          },
+          "fixedEquivalentMs": {
+            "c": 200.92637215528782,
+            "baseline": 329.57457212713933,
+            "candidate": 303.0178571428571
+          }
+        },
+        {
+          "id": "local-fold",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.0027686688789836434,
+            "baseline": 0.0014891167742139893,
+            "candidate": 0.0014910714285714286
+          },
+          "fixedEquivalentMs": {
+            "c": 168.0139022522434,
+            "baseline": 90.36556232640173,
+            "candidate": 90.48417857142857
+          }
+        },
+        {
+          "id": "scalar-region-0",
+          "ratioEligible": false,
+          "medianMs": {
+            "c": 0.0,
+            "baseline": 0.0,
+            "candidate": 0.0
+          },
+          "fixedEquivalentMs": null
+        },
+        {
+          "id": "scalar-region-8192",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.037840698597512566,
+            "baseline": 1.8344466185077062e-05,
+            "candidate": 1.8214284552660425e-05
+          },
+          "fixedEquivalentMs": {
+            "c": 210.99973537973008,
+            "baseline": 0.1022887434479897,
+            "candidate": 0.10156285066563453
+          }
+        },
+        {
+          "id": "complete-generic-row32",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.07974756167527251,
+            "baseline": 0.25535714285714284,
+            "candidate": 0.2571428571428571
+          },
+          "fixedEquivalentMs": {
+            "c": 116.43144004589787,
+            "baseline": 372.82142857142856,
+            "candidate": 375.4285714285714
+          }
+        },
+        {
+          "id": "variation-editdist-0-17",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.21151271753681392,
+            "baseline": 0.3448275862068966,
+            "candidate": 0.3236607142857143
+          },
+          "fixedEquivalentMs": {
+            "c": 202.2061579651941,
+            "baseline": 329.65517241379314,
+            "candidate": 309.4196428571429
+          }
+        },
+        {
+          "id": "variation-editdist-3-123",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 1.6785714285714286,
+            "baseline": 2.7547169811320753,
+            "candidate": 2.5636363636363635
+          },
+          "fixedEquivalentMs": {
+            "c": 201.42857142857144,
+            "baseline": 330.566037735849,
+            "candidate": 307.6363636363636
+          }
+        },
+        {
+          "id": "variation-lexer-6-17",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.10491071428571429,
+            "baseline": 0.3251318101933216,
+            "candidate": 0.33158813263525305
+          },
+          "fixedEquivalentMs": {
+            "c": 232.0625,
+            "baseline": 719.1915641476273,
+            "candidate": 733.4729493891798
+          }
+        },
+        {
+          "id": "variation-lexer-10-123",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 1.9871794871794872,
+            "baseline": 5.285714285714286,
+            "candidate": 5.285714285714286
+          },
+          "fixedEquivalentMs": {
+            "c": 254.35897435897436,
+            "baseline": 676.5714285714286,
+            "candidate": 676.5714285714286
+          }
+        },
+        {
+          "id": "variation-tree-bitonic-6-17",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.024823943661971833,
+            "baseline": 0.03723404255319149,
+            "candidate": 0.036989795918367346
+          },
+          "fixedEquivalentMs": {
+            "c": 275.7443661971831,
+            "baseline": 413.59574468085106,
+            "candidate": 410.88265306122446
+          }
+        },
+        {
+          "id": "variation-tree-bitonic-9-123",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.4117647058823529,
+            "baseline": 0.47959183673469385,
+            "candidate": 0.4809688581314879
+          },
+          "fixedEquivalentMs": {
+            "c": 261.88235294117646,
+            "baseline": 305.0204081632653,
+            "candidate": 305.8961937716263
+          }
+        },
+        {
+          "id": "variation-symreg-4-17",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 1.168,
+            "baseline": 1.1932773109243697,
+            "candidate": 1.2457627118644068
+          },
+          "fixedEquivalentMs": {
+            "c": 336.38399999999996,
+            "baseline": 343.66386554621846,
+            "candidate": 358.77966101694915
+          }
+        },
+        {
+          "id": "variation-symreg-7-123",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 3.8378378378378377,
+            "baseline": 3.9166666666666665,
+            "candidate": 4.057142857142857
+          },
+          "fixedEquivalentMs": {
+            "c": 337.72972972972974,
+            "baseline": 344.66666666666663,
+            "candidate": 357.0285714285714
+          }
+        },
+        {
+          "id": "variation-local-fold-128-0",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.00019464285714285715,
+            "baseline": 0.00028035714285714285,
+            "candidate": 0.0002797193699158565
+          },
+          "fixedEquivalentMs": {
+            "c": 368.85210714285716,
+            "baseline": 531.2823928571429,
+            "candidate": 530.0738003779464
+          }
+        },
+        {
+          "id": "variation-local-fold-8192-123",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.010414374770810414,
+            "baseline": 0.00566962297007249,
+            "candidate": 0.005665153280565712
+          },
+          "fixedEquivalentMs": {
+            "c": 317.8050605060506,
+            "baseline": 173.01421455473212,
+            "candidate": 172.87781750974327
+          }
+        },
+        {
+          "id": "variation-mandelbrot-grid-4-7",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.011155801775821508,
+            "baseline": 0.023247921262514848,
+            "candidate": 0.022951349604008405
+          },
+          "fixedEquivalentMs": {
+            "c": 273.18327388631707,
+            "baseline": 569.2950958764636,
+            "candidate": 562.0326491029579
+          }
+        },
+        {
+          "id": "variation-mandelbrot-grid-5-31",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.17023959646910466,
+            "baseline": 0.14332247557003258,
+            "candidate": 0.11758241758241758
+          },
+          "fixedEquivalentMs": {
+            "c": 241.0592686002522,
+            "baseline": 202.94462540716614,
+            "candidate": 166.4967032967033
+          }
+        },
+        {
+          "id": "variation-ray-active-64-2440",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.1088646967340591,
+            "baseline": 0.167458432304038,
+            "candidate": 0.1669642857142857
+          },
+          "fixedEquivalentMs": {
+            "c": 688.4603421461898,
+            "baseline": 1059.0071258907365,
+            "candidate": 1055.8821428571428
+          }
+        },
+        {
+          "id": "variation-ray-active-256-2240",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.575,
+            "baseline": 0.9754901960784313,
+            "candidate": 0.9704433497536946
+          },
+          "fixedEquivalentMs": {
+            "c": 871.6999999999999,
+            "baseline": 1478.8431372549019,
+            "candidate": 1471.192118226601
+          }
+        },
+        {
+          "id": "coverage-closures-64",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.000963623223319682,
+            "baseline": 7.901785714285714e-05,
+            "candidate": 8.038264485891379e-05
+          },
+          "fixedEquivalentMs": {
+            "c": 73.65935919055649,
+            "baseline": 6.040125,
+            "candidate": 6.14444937301537
+          }
+        },
+        {
+          "id": "coverage-closures-256",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.003703032343268509,
+            "baseline": 0.00028188695125167874,
+            "candidate": 0.00028190978886756237
+          },
+          "fixedEquivalentMs": {
+            "c": 72.57943392806277,
+            "baseline": 5.524984244532903,
+            "candidate": 5.525431861804222
+          }
+        },
+        {
+          "id": "coverage-list-pipeline-128",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.0014591836734693879,
+            "baseline": 0.0003794634386976815,
+            "candidate": 0.00038217389183123633
+          },
+          "fixedEquivalentMs": {
+            "c": 145.18293877551022,
+            "baseline": 37.75509429666452,
+            "candidate": 38.02477354164069
+          }
+        },
+        {
+          "id": "coverage-list-pipeline-512",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.00566962297007249,
+            "baseline": 0.001483726362976292,
+            "candidate": 0.0014910714285714286
+          },
+          "fixedEquivalentMs": {
+            "c": 141.78593123557283,
+            "baseline": 37.10502888531111,
+            "candidate": 37.288714285714285
+          }
+        },
+        {
+          "id": "coverage-bst-32",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.005979897366300522,
+            "baseline": 0.01978114478114478,
+            "candidate": 0.019535673839184597
+          },
+          "fixedEquivalentMs": {
+            "c": 213.00394418762457,
+            "baseline": 704.6043771043771,
+            "candidate": 695.8607021517554
+          }
+        },
+        {
+          "id": "coverage-bst-64",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.007410714285714286,
+            "baseline": 0.01707870536247462,
+            "candidate": 0.01685796269727403
+          },
+          "fixedEquivalentMs": {
+            "c": 201.45285714285714,
+            "baseline": 464.26752657351005,
+            "candidate": 458.26685796269726
+          }
+        },
+        {
+          "id": "coverage-unicode-text-16",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.009151785714285715,
+            "baseline": 0.023252032520325202,
+            "candidate": 0.023045267489711935
+          },
+          "fixedEquivalentMs": {
+            "c": 75.70357142857144,
+            "baseline": 192.34081300813008,
+            "candidate": 190.63045267489713
+          }
+        },
+        {
+          "id": "coverage-unicode-text-64",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.04030655691172296,
+            "baseline": 0.09821428571428571,
+            "candidate": 0.09776785714285714
+          },
+          "fixedEquivalentMs": {
+            "c": 81.58047118932727,
+            "baseline": 198.78571428571428,
+            "candidate": 197.88214285714287
+          }
+        },
+        {
+          "id": "coverage-expression-32",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.0021875,
+            "baseline": 0.00012053566047515158,
+            "candidate": 0.00012053566047515158
+          },
+          "fixedEquivalentMs": {
+            "c": 324.93125000000003,
+            "baseline": 17.904367006979015,
+            "candidate": 17.904367006979015
+          }
+        },
+        {
+          "id": "coverage-expression-128",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.008705357142857143,
+            "baseline": 0.0004786979415988511,
+            "candidate": 0.0004786979415988511
+          },
+          "fixedEquivalentMs": {
+            "c": 328.47053571428575,
+            "baseline": 18.06223073240785,
+            "candidate": 18.06223073240785
+          }
+        },
+        {
+          "id": "coverage-map-churn-32",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.06338259441707718,
+            "baseline": 0.1876777251184834,
+            "candidate": 0.1711281070745698
+          },
+          "fixedEquivalentMs": {
+            "c": 178.73891625615764,
+            "baseline": 529.2511848341233,
+            "candidate": 482.58126195028683
+          }
+        },
+        {
+          "id": "coverage-map-churn-128",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.3008298755186722,
+            "baseline": 0.8902439024390244,
+            "candidate": 0.8959537572254336
+          },
+          "fixedEquivalentMs": {
+            "c": 163.65145228215766,
+            "baseline": 484.2926829268293,
+            "candidate": 487.39884393063585
+          }
+        },
+        {
+          "id": "coverage-numeric-recurrence-256",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.0008265269223925658,
+            "baseline": 0.0015178571428571428,
+            "candidate": 0.0012709455165724607
+          },
+          "fixedEquivalentMs": {
+            "c": 204.87618741497965,
+            "baseline": 376.24035714285714,
+            "candidate": 315.03689086591527
+          }
+        },
+        {
+          "id": "coverage-numeric-recurrence-1024",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.0032562006373839545,
+            "baseline": 0.0046875,
+            "candidate": 0.004735168774944193
+          },
+          "fixedEquivalentMs": {
+            "c": 201.67604267701262,
+            "baseline": 290.325,
+            "candidate": 293.27741324494355
+          }
+        },
+        {
+          "id": "coverage-record-aggregation-64",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.09978768577494693,
+            "baseline": 0.26195028680688337,
+            "candidate": 0.2634508348794063
+          },
+          "fixedEquivalentMs": {
+            "c": 153.67303609341826,
+            "baseline": 403.4034416826004,
+            "candidate": 405.71428571428567
+          }
+        },
+        {
+          "id": "coverage-record-aggregation-256",
+          "ratioEligible": true,
+          "medianMs": {
+            "c": 0.39943342776203966,
+            "baseline": 1.0285714285714285,
+            "candidate": 1.0254237288135593
+          },
+          "fixedEquivalentMs": {
+            "c": 156.57790368271955,
+            "baseline": 403.19999999999993,
+            "candidate": 401.9661016949152
+          }
+        }
+      ],
+      "groups": [
+        {
+          "label": "Mandelbrot",
+          "pointIds": [
+            "mandelbrot"
+          ]
+        },
+        {
+          "label": "Editdist",
+          "pointIds": [
+            "editdist",
+            "variation-editdist-0-17",
+            "variation-editdist-3-123"
+          ]
+        },
+        {
+          "label": "Tree bitonic",
+          "pointIds": [
+            "tree-bitonic",
+            "variation-tree-bitonic-6-17",
+            "variation-tree-bitonic-9-123"
+          ]
+        },
+        {
+          "label": "Lexer",
+          "pointIds": [
+            "lexer",
+            "variation-lexer-6-17",
+            "variation-lexer-10-123"
+          ]
+        },
+        {
+          "label": "Symreg",
+          "pointIds": [
+            "symreg",
+            "variation-symreg-4-17",
+            "variation-symreg-7-123"
+          ]
+        },
+        {
+          "label": "Test morning program",
+          "pointIds": [
+            "test-morning-program"
+          ]
+        },
+        {
+          "label": "Test evening program",
+          "pointIds": [
+            "test-evening-program"
+          ]
+        },
+        {
+          "label": "Test rle roundtrip",
+          "pointIds": [
+            "test-rle-roundtrip"
+          ]
+        },
+        {
+          "label": "Test map set ops",
+          "pointIds": [
+            "test-map-set-ops"
+          ]
+        },
+        {
+          "label": "Raytrace",
+          "pointIds": [
+            "raytrace"
+          ]
+        },
+        {
+          "label": "Local row",
+          "pointIds": [
+            "local-pair",
+            "complete-generic-row32"
+          ]
+        },
+        {
+          "label": "Local fold",
+          "pointIds": [
+            "local-fold",
+            "variation-local-fold-128-0",
+            "variation-local-fold-8192-123"
+          ]
+        },
+        {
+          "label": "Scalar region",
+          "pointIds": [
+            "scalar-region-8192"
+          ]
+        },
+        {
+          "label": "Mandelbrot grid",
+          "pointIds": [
+            "variation-mandelbrot-grid-4-7",
+            "variation-mandelbrot-grid-5-31"
+          ]
+        },
+        {
+          "label": "Raytrace active",
+          "pointIds": [
+            "variation-ray-active-64-2440",
+            "variation-ray-active-256-2240"
+          ]
+        },
+        {
+          "label": "Closures",
+          "pointIds": [
+            "coverage-closures-64",
+            "coverage-closures-256"
+          ]
+        },
+        {
+          "label": "List pipeline",
+          "pointIds": [
+            "coverage-list-pipeline-128",
+            "coverage-list-pipeline-512"
+          ]
+        },
+        {
+          "label": "Bst",
+          "pointIds": [
+            "coverage-bst-32",
+            "coverage-bst-64"
+          ]
+        },
+        {
+          "label": "Unicode text",
+          "pointIds": [
+            "coverage-unicode-text-16",
+            "coverage-unicode-text-64"
+          ]
+        },
+        {
+          "label": "Expression",
+          "pointIds": [
+            "coverage-expression-32",
+            "coverage-expression-128"
+          ]
+        },
+        {
+          "label": "Map churn",
+          "pointIds": [
+            "coverage-map-churn-32",
+            "coverage-map-churn-128"
+          ]
+        },
+        {
+          "label": "Numeric recurrence",
+          "pointIds": [
+            "coverage-numeric-recurrence-256",
+            "coverage-numeric-recurrence-1024"
+          ]
+        },
+        {
+          "label": "Record aggregation",
+          "pointIds": [
+            "coverage-record-aggregation-64",
+            "coverage-record-aggregation-256"
+          ]
+        }
+      ],
+      "caseSource": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/research/phase200/measure/recovered-summary01.json",
+      "coldBuilds": [
+        {
+          "phase": 202,
+          "sourceSha256": "42dbbd2c900b9f51c79c337e4226a219b2bc83aaed06692d601bb9e17e373aa8",
+          "objectBytes": 32661488,
+          "baselineSeconds": 330.6839426420629,
+          "selfLinkSeconds": 0.2768174558877945,
+          "selfSeconds": 318.2420650003478,
+          "source": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase202/README.md"
+        },
+        {
+          "phase": 203,
+          "sourceSha256": "ae66e5be0e03ee39a55e429a9d81d52c68aa31238c393e3209e0de1f36094d68",
+          "objectBytes": 32659344,
+          "baselineSeconds": 316.18661962263286,
+          "selfLinkSeconds": 0.2760695153847337,
+          "selfSeconds": 292.705965696834,
+          "source": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase203/README.md"
+        }
+      ],
+      "qbeUpstream": [
+        [
+          113,
+          7.088
+        ],
+        [
+          114,
+          5.386
+        ],
+        [
+          118,
+          3.0089
+        ],
+        [
+          121,
+          2.14395
+        ],
+        [
+          124,
+          1.92014
+        ],
+        [
+          125,
+          1.89221
+        ],
+        [
+          126,
+          1.75263
+        ],
+        [
+          131,
+          1.6627
+        ]
+      ],
+      "qbeVsC": [
+        [
+          185,
+          1.47131
+        ],
+        [
+          186,
+          1.347307
+        ]
+      ],
+      "bootstrap": [
+        {
+          "phase": 199,
+          "producer": "Qualified native QBE compiler",
+          "product": "QBE-built native N1 with x86 output",
+          "seconds": 188.31,
+          "source": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase199/README.md"
+        },
+        {
+          "phase": 200,
+          "producer": "Qualified native QBE compiler",
+          "product": "QBE-built native N1 with x86 output",
+          "seconds": 178.52,
+          "source": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase200/README.md"
+        },
+        {
+          "phase": 201,
+          "producer": "QBE-built producer",
+          "product": "First direct-x86 image",
+          "seconds": 304,
+          "source": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase201/README.md"
+        }
+      ],
+      "requestHistory": [
+        {
+          "phase": 128,
+          "n1": 1.93696,
+          "n2": 1.91912
+        },
+        {
+          "phase": 131,
+          "n1": 1.5966,
+          "n2": 1.4268
+        },
+        {
+          "phase": 134,
+          "n1": 1.41736,
+          "n2": 1.41377
+        }
+      ],
+      "experiments": [
+        {
+          "name": "x86-scan",
+          "labels": [
+            "128 cells",
+            "4,096 cells",
+            "8,192 cells"
+          ],
+          "values": [
+            1.434,
+            0.545,
+            0.523
+          ],
+          "axis": "Execution time ÷ mature Bend C time",
+          "description": "Same guarded scan at three input sizes. First link order."
+        },
+        {
+          "name": "compiler-work",
+          "labels": [
+            "QBE full build · P175",
+            "ELF writer only · P202",
+            "x86 full build · P203"
+          ],
+          "values": [
+            0.9643600107787659,
+            0.739,
+            0.9257379899446002
+          ],
+          "axis": "Time ÷ matched predecessor time",
+          "description": "Each row uses its own input, clock and predecessor."
+        },
+        {
+          "name": "source-transforms",
+          "labels": [
+            "Lexer · 256 lines",
+            "BST64 · private frames",
+            "Unicode · 64 blocks"
+          ],
+          "values": [
+            0.0822,
+            0.795,
+            0.411
+          ],
+          "axis": "Transformed source time ÷ original x86 time",
+          "description": "Separate source experiments. BST64 uses the smaller measured reduction."
+        }
+      ]
+    },
     "recent-findings": {
       "schema_version": 1,
-      "source_commit": "c2ef383c35847df62d0643e3fdeb2c2899687ca5",
+      "source_commit": "2dec06c6138c2597e1843f5c14a5c4c614bf9924",
       "findings": [
+        {
+          "id": "four-lane-scan",
+          "phase": "Phases 186–200",
+          "title": "Four cells at a time brought x86 close to C.",
+          "paragraphs": [
+            "The compiler recognizes a prefix sum over four adjacent unsigned integers. The generated object calls a 367-byte SSE2 helper. Short or unsupported array layouts retain scalar ordering.",
+            "For the 4,096-cell fold, changing only the helper from scalar to SIMD cut runtime to 0.440×. An independent packet-window program exercised the same rule and checked all 65 output words. The whole-suite average includes the other compiler rules too."
+          ],
+          "flow": [
+            "Recognize the recurrence",
+            "Scan four adjacent cells",
+            "Carry the sum forward"
+          ],
+          "stats": [
+            {
+              "value": "0.545×",
+              "label": "mature C time · 4,096 cells"
+            },
+            {
+              "value": "1.434×",
+              "label": "mature C time · 128 cells"
+            }
+          ],
+          "note": "Measured whole programs, first link order. Both link orders preserve the direction.",
+          "metrics": [
+            "execution"
+          ],
+          "sources": [
+            {
+              "url": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase199/README.md",
+              "title": "Scan controls and complete programs"
+            },
+            {
+              "url": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase200/README.md",
+              "title": "Broad benchmark"
+            }
+          ],
+          "impact_chart": "x86-scan"
+        },
+        {
+          "id": "cold-build-work",
+          "phase": "Phases 175–203",
+          "title": "Removing repeated work speeds up the compiler itself.",
+          "paragraphs": [
+            "Sharing token lookahead cut frontend time by 10.56% in the QBE experiment. A matched full build took 178.94 seconds, down from 185.55.",
+            "The direct ELF writer streams validated sections to the output handle. In Phase 203 the register allocator ranks eligible names once and preserves the original tie order. On the same trial source this cut the full x86 rebuild from 316.19 to 292.71 seconds and reproduced the exact executable."
+          ],
+          "flow": [
+            "Reuse parser observations",
+            "Stream object sections",
+            "Rank register candidates once"
+          ],
+          "stats": [
+            {
+              "value": "0.739×",
+              "label": "focused writer time vs Phase 201"
+            },
+            {
+              "value": "292.71 s",
+              "label": "complete Phase 203 self-build"
+            }
+          ],
+          "note": "Parser, writer and register ranking were measured in separate experiments. The full x86 pairs each have one observation per role.",
+          "metrics": [
+            "compilation",
+            "second-stage",
+            "simplicity"
+          ],
+          "sources": [
+            {
+              "url": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase175/README.md",
+              "title": "Parser and full QBE build"
+            },
+            {
+              "url": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase202/README.md",
+              "title": "Sized ELF writer"
+            },
+            {
+              "url": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase203/README.md",
+              "title": "Register ranking and fixed point"
+            }
+          ],
+          "impact_chart": "compiler-work"
+        },
+        {
+          "id": "staged-source",
+          "phase": "Phase 200",
+          "title": "Which gains can a source transformation unlock?",
+          "paragraphs": [
+            "The lexer sends tokens directly into the consumer and avoids building an intermediate string. A guarded staging tool recognized all three catalog lexers and refused the other 42 sources.",
+            "Encoding tree direction in one frame removed an allocation per descent. For Unicode text, moving replacement before repetition avoided scanning identical blocks again. These staged programs were measured independently of the ordinary compiler suite."
+          ],
+          "flow": [
+            "Original source",
+            "Checked transformation",
+            "Compare complete outputs"
+          ],
+          "stats": [
+            {
+              "value": "0.187–0.200×",
+              "label": "three staged lexers vs mature C"
+            },
+            {
+              "value": "22–25%",
+              "label": "less BST64 time in the external tree pass"
+            }
+          ],
+          "note": "The plot compares each transformed program with its own original x86 program. The lexer ratios above use mature C.",
+          "metrics": [
+            "execution"
+          ],
+          "sources": [
+            {
+              "url": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase200/README.md",
+              "title": "Transformations and independent controls"
+            }
+          ],
+          "impact_chart": "source-transforms"
+        },
         {
           "id": "prepared-workflows-and-full-source",
           "phase": "PHASE 105 · COMPARING THE SAME WORK",

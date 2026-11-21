@@ -408,3 +408,30 @@ h1 { font-size:clamp(39px,4.5vw,61px); }
  .metric-section-heading { padding-inline:21px; }
  .history-charts h5,.history-charts .historical-note { margin-left:21px; margin-right:21px; }
 }
+
+.target-panel { padding:clamp(16px,3vw,32px); border-block-start:1px solid var(--line); }
+.target-panel h4 { font-size:clamp(21px,2.2vw,30px); margin:0 0 15px; letter-spacing:-.035em; }
+.target-panel h5 { font-size:17px; margin:18px 0 10px; }
+.target-panel p { max-width:85ch; line-height:1.55; }
+.target-panel figure,.finding-visual figure { margin:12px 0; }
+.target-panel img,.finding-visual img { display:block; width:100%; height:auto; }
+.target-panel > figure { max-width:740px; }
+.target-scores { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(185px,100%),1fr)); gap:12px; margin:12px 0; }
+.target-scores > * { display:flex; flex-direction:column; gap:4px; padding:14px 16px; border-left:3px solid #398675; background:#edf4ee; color:#20382d; font-weight:600; }
+.target-scores strong { font-size:clamp(28px,3.2vw,48px); letter-spacing:-.055em; line-height:1.15; font-variant-numeric:tabular-nums; }
+.target-scores small { font-weight:400; }
+.overview-scores a { text-decoration:none; }
+.overview-scores a:hover { background:#dfede2; }
+.target-duo { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.target-duo > * { min-width:0; }
+.target-route,.migration-note { display:flex; align-items:center; flex-wrap:wrap; gap:12px; }
+.target-route { padding:0; list-style:none; }
+.target-route li { font-weight:650; }
+.target-route li + li::before { content:"→"; margin-right:12px; color:#427267; }
+.migration-note { margin:12px 0 22px; border-left:3px solid #ac7948; background:#f4ede1; padding:14px 18px; font-size:.9rem; }
+.migration-note span { flex:1 1 360px; }
+.target-overview .stage-guide-heading { margin-bottom:10px; }
+@media(max-width:760px){.target-duo { grid-template-columns:1fr; }.target-panel .table-scroll { max-width:100%; }.target-route { align-items:flex-start; }}
+
+.target-panel .chart-frame img,.finding-visual .chart-frame img { min-width:min(100%,440px); }
+@media(min-width:761px){.target-panel .chart-frame::after,.finding-visual .chart-frame::after { display:none; }}

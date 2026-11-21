@@ -1,7 +1,126 @@
 {
   "schema_version": 1,
-  "source_commit": "c2ef383c35847df62d0643e3fdeb2c2899687ca5",
+  "source_commit": "2dec06c6138c2597e1843f5c14a5c4c614bf9924",
   "findings": [
+    {
+      "id": "four-lane-scan",
+      "phase": "Phases 186–200",
+      "title": "Four cells at a time brought x86 close to C.",
+      "paragraphs": [
+        "The compiler recognizes a prefix sum over four adjacent unsigned integers. The generated object calls a 367-byte SSE2 helper. Short or unsupported array layouts retain scalar ordering.",
+        "For the 4,096-cell fold, changing only the helper from scalar to SIMD cut runtime to 0.440×. An independent packet-window program exercised the same rule and checked all 65 output words. The whole-suite average includes the other compiler rules too."
+      ],
+      "flow": [
+        "Recognize the recurrence",
+        "Scan four adjacent cells",
+        "Carry the sum forward"
+      ],
+      "stats": [
+        {
+          "value": "0.545×",
+          "label": "mature C time · 4,096 cells"
+        },
+        {
+          "value": "1.434×",
+          "label": "mature C time · 128 cells"
+        }
+      ],
+      "note": "Measured whole programs, first link order. Both link orders preserve the direction.",
+      "metrics": [
+        "execution"
+      ],
+      "sources": [
+        {
+          "url": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase199/README.md",
+          "title": "Scan controls and complete programs"
+        },
+        {
+          "url": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase200/README.md",
+          "title": "Broad benchmark"
+        }
+      ],
+      "impact_chart": "x86-scan"
+    },
+    {
+      "id": "cold-build-work",
+      "phase": "Phases 175–203",
+      "title": "Removing repeated work speeds up the compiler itself.",
+      "paragraphs": [
+        "Sharing token lookahead cut frontend time by 10.56% in the QBE experiment. A matched full build took 178.94 seconds, down from 185.55.",
+        "The direct ELF writer streams validated sections to the output handle. In Phase 203 the register allocator ranks eligible names once and preserves the original tie order. On the same trial source this cut the full x86 rebuild from 316.19 to 292.71 seconds and reproduced the exact executable."
+      ],
+      "flow": [
+        "Reuse parser observations",
+        "Stream object sections",
+        "Rank register candidates once"
+      ],
+      "stats": [
+        {
+          "value": "0.739×",
+          "label": "focused writer time vs Phase 201"
+        },
+        {
+          "value": "292.71 s",
+          "label": "complete Phase 203 self-build"
+        }
+      ],
+      "note": "Parser, writer and register ranking were measured in separate experiments. The full x86 pairs each have one observation per role.",
+      "metrics": [
+        "compilation",
+        "second-stage",
+        "simplicity"
+      ],
+      "sources": [
+        {
+          "url": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase175/README.md",
+          "title": "Parser and full QBE build"
+        },
+        {
+          "url": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase202/README.md",
+          "title": "Sized ELF writer"
+        },
+        {
+          "url": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase203/README.md",
+          "title": "Register ranking and fixed point"
+        }
+      ],
+      "impact_chart": "compiler-work"
+    },
+    {
+      "id": "staged-source",
+      "phase": "Phase 200",
+      "title": "Which gains can a source transformation unlock?",
+      "paragraphs": [
+        "The lexer sends tokens directly into the consumer and avoids building an intermediate string. A guarded staging tool recognized all three catalog lexers and refused the other 42 sources.",
+        "Encoding tree direction in one frame removed an allocation per descent. For Unicode text, moving replacement before repetition avoided scanning identical blocks again. These staged programs were measured independently of the ordinary compiler suite."
+      ],
+      "flow": [
+        "Original source",
+        "Checked transformation",
+        "Compare complete outputs"
+      ],
+      "stats": [
+        {
+          "value": "0.187–0.200×",
+          "label": "three staged lexers vs mature C"
+        },
+        {
+          "value": "22–25%",
+          "label": "less BST64 time in the external tree pass"
+        }
+      ],
+      "note": "The plot compares each transformed program with its own original x86 program. The lexer ratios above use mature C.",
+      "metrics": [
+        "execution"
+      ],
+      "sources": [
+        {
+          "url": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase200/README.md",
+          "title": "Transformations and independent controls"
+        }
+      ],
+      "impact_chart": "source-transforms"
+    },
     {
       "id": "prepared-workflows-and-full-source",
       "phase": "PHASE 105 · COMPARING THE SAME WORK",

@@ -1305,6 +1305,28 @@
         "laws": null,
         "types": null,
         "scope": "Manifest-listed maintained Bend modules only; host/runtime, proofs/tests/tools and assembled native source counted separately. Missing unreported counts remain null. Canonical inventory is distinct from installed Phase90 JS source; later native profiles do not replace it. Reported unchanged through current native/public-CLI work."
+      },
+      {
+        "phase": 182,
+        "chartLabel": "P182",
+        "label": "P182 maintained manifest",
+        "modules": 218,
+        "physicalLines": 68619,
+        "nonblankLines": null,
+        "codeLines": null,
+        "sourceLink": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase182/README.md",
+        "scope": "Manifest module entries counted once, including explicitly listed control modules. Excludes assembled profiles and external tooling."
+      },
+      {
+        "phase": 203,
+        "chartLabel": "P203",
+        "label": "P203 maintained manifest",
+        "modules": 225,
+        "physicalLines": 69265,
+        "nonblankLines": null,
+        "codeLines": null,
+        "sourceLink": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/selfhost/src/compiler.json",
+        "scope": "Manifest module entries counted once, including explicitly listed control modules. Excludes assembled profiles and external tooling."
       }
     ],
     "baseline": {
@@ -1328,7 +1350,7 @@
       "physicalLines": "len(decoded UTF-8 text.splitlines()), includes comments and blank lines",
       "nonblankLines": "Nonempty str.strip() lines",
       "declarations": "Anchored ^def, ^law, ^type heads, not concept counts",
-      "historyScope": "Historical immutable Git-blob counts through P36; selected installed releases from frozen manifest accounting for P45 and later. Diagnostic-only phases do not add compiler-size observations. P73–90 counts come from frozen release reports; P98 is a separately identified canonical inventory observation, carried unchanged through P104. Native assembly is a separate series.",
+      "historyScope": "Historical immutable Git-blob counts through P36; selected installed releases from frozen manifest accounting for P45 and later. Diagnostic-only phases do not add compiler-size observations. P73–90 counts come from frozen release reports; P98 is a separately identified canonical inventory observation, carried unchanged through P104. Native assembly is a separate series. P182 uses the migration report inventory. P203 counts the pinned manifest module list, including its four listed control modules.",
       "dates": "Commit committer dates; many phases share one day; use phases/commit order for chart.",
       "scriptSha256": "07580351981df7bb8449c9fce86a5bfc3668f473b29e9f0f42918617ed5f176c",
       "codeLines": "P45 and later accounting reports: nonblank, noncomment lines; not interchangeable with historical nonblankLines. Unreported nonblank counts remain null.",
@@ -1342,27 +1364,15 @@
       "bytesReductionPercent": 7.82077158550675
     },
     "latest": {
-      "phase": 98,
-      "commit": "795ad056f09d0c43627cb70094387b05d3108326",
-      "shortCommit": "795ad05",
-      "date": "2026-10-15",
-      "commitDate": "2026-10-15T23:04:20Z",
-      "subject": "Report Phase98 gains, matched native profiles and preserved experiment evidence",
-      "label": "P98 canonical source inventory",
-      "chartLabel": "P98",
-      "upstream": "059266225b77c8ca256ac6b25ee5c21449bab151",
-      "modules": 134,
-      "sourceLink": "https://github.com/rom1504/bend/blob/8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71/implementation/phase98/README.md",
-      "physicalLines": 34231,
+      "phase": 203,
+      "chartLabel": "P203",
+      "label": "P203 maintained manifest",
+      "modules": 225,
+      "physicalLines": 69265,
       "nonblankLines": null,
       "codeLines": null,
-      "bytes": null,
-      "defs": null,
-      "laws": null,
-      "types": null,
-      "scope": "Manifest-listed maintained Bend modules only; host/runtime, proofs/tests/tools and assembled native source counted separately. Missing unreported counts remain null. Canonical inventory is distinct from installed Phase90 JS source; later native profiles do not replace it. Reported unchanged through current native/public-CLI work.",
-      "observedAtCommit": "8d6f9b495ad7e4de72c63bc104a16ec90cbc3b71",
-      "observedAtPhase": 104
+      "sourceLink": "https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/selfhost/src/compiler.json",
+      "scope": "Manifest module entries counted once, including explicitly listed control modules. Excludes assembled profiles and external tooling."
     },
     "notes": [
       "The series is not monotonic: scope and conformance work added code after the dedicated cleanup.",

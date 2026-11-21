@@ -1,20 +1,8 @@
 # Bend compiler progress
 
-A visual GitHub Pages report maintained in an independent website checkout. The five metric sections retain this order: compiled program speed, second stage compiler compilation speed, first stage compiler compilation speed, conformance, simplicity. Native and JavaScript summaries, histories and per-program charts are always visible. Headlines compare with upstream; earlier release improvements remain in the graphs. Three application previews and seven recent findings explain the practical results; 31 earlier findings remain in an expandable archive.
+The static report follows program runtime, second-stage and first-stage compilation, conformance and maintained source size. Its November 21 snapshot covers [Phase 203](https://github.com/rom1504/bend/blob/2dec06c6138c2597e1843f5c14a5c4c614bf9924/implementation/phase203/README.md).
 
-The snapshot reaches **Phase 105**, committed evidence [`c2ef383`](https://github.com/rom1504/bend/commit/c2ef383c35847df62d0643e3fdeb2c2899687ca5), collected October 17, 2026. The current native core is **Phase 102 candidate04**; Phase 103 adds its public Bend CLI. Phase 104 authenticated the native lineage; Phase 105 now measures both native stages against upstream, with 693 timed compiler requests, 45 upstream reference acquisitions and 12 generated-product execution checks. The compiler core, installed release and generated-program runtime measurements are unchanged. The upstream compiler reference remains `059266225b77c8ca256ac6b25ee5c21449bab151`.
-
-## Current measurement boundaries
-
-- Native generated-program time: **1.043461× upstream-generated C**, geometric mean across 44 positive-work points. Equal-source weighting gives **1.065286×**. One zero-work control has no timing ratio.
-- Native B2 compilation: **0.517445× upstream time with prepared Base**, **2.230599× with Base checked from source**. Native B1: **0.499396× prepared**, **2.383954× live**. Each headline equally weights 23 original source programs, derived from 45 closed points, with two samples per role/point/mode. The shared clock is complete child-process wall time through C output and exit; internal request clocks differ and are excluded from cross-implementation ratios.
-- Full compiler source is separate: prepared B2 **143.646 s / 2.965306× upstream**, B1 **126.051 s / 2.602091×**, upstream **48.442 s**; two samples each. Live controls have one sample and stay explicitly labeled. Clang, outer launcher/authentication and offline Base-carrier creation are excluded.
-- Prepared native mode reuses an authenticated standard-library carrier; upstream checks source Base in both modes. This compares configured workflows, not identical internal algorithms. The equal-point broad means (B2 0.477026×, B1 0.455512× prepared) are preserved as a distinct weighting, not the headline.
-- JavaScript-hosted Phase91: B2 **1.306596×**, B1 **1.408445×** upstream request time over 23 sources; import/API-inclusive **0.981387× / 0.969726×**. The separate C3 output cohort is still a JavaScript-hosted compiler. JavaScript program runtime **1.049×** retains earlier timing through output-identity evidence.
-- Native conformance: 69 eligible fixtures and 3 expected rejections per stage, 31 exclusions, 45 native semantic catalog points, 70 backend obligations. CLI controls: 41/41 and 6/6 complete C/verdict pairs. JS frontend: 3,173/3,174 exact; an invalid proof is rejected with shortened B2 diagnostics after deep rendering overflows the JS stack. Historical JS execution retains 1,045 passes and its original exemptions/failures/deferral.
-- Canonical source: **34,231 physical lines / 134 modules**. Assembled native core **39,372**, public CLI compiler **39,545**: a separate counting boundary. Public CLI policy is 152 Bend lines; OS provider 246 C lines; startup 19 C lines.
-
-Native B1/B2 emit identical complete self-C. B3 C exists but its executable was not built; there is no B3 timing. Historical C emission and Clang construction remain separate clocks. The public Phase103 bridge and CLI entries differ, so its packaging is not a new matched-source fixed-point claim. Ordinary native requests need no interpreter, while build and development tools retain their dependencies.
+The upstream version changed to Bend 2.0.40 in Phase 182. JS and C upstream timings keep their historical pins. The x86 target compares generated programs with mature self-hosted C. Full cold builds include linking, and each trial names its source and producer. Phase 200 supplies the latest complete x86 runtime suite. Phase 203 supplies the latest measured x86 self-build. Finite qualification and research observations are identified separately.
 
 ## Update and preview
 
@@ -32,7 +20,8 @@ Edit the source data and templates; commit them together with generated HTML, JS
 ## Source files
 
 - `progress.json`: snapshot metadata, retained JavaScript card descriptions and earlier findings.
-- `recent-findings.json`: seven current mechanism/impact stories and the separate Phase104 research outlook.
+- `recent-findings.json`: current and earlier mechanism/impact stories and the separate Phase104 research outlook.
+- `targets-research.json`: pinned backend campaigns, all 45 x86 cases, historical QBE comparisons, cold-build pairs and experiment figures.
 - `native-research.json`: native runtime, historical paired B1/B2 changes, Phase105 upstream process-time comparisons, 45-point/23-source breakdowns, separate full-source measurements and the Phase104 audit/screen.
 - `applications-research.json`: three application cards, six current full-process comparisons, actual preview provenance and historical scaling.
 - `history-research.json`: canonical source-size history, separate assembled profiles and earlier paired compiler-checking results.

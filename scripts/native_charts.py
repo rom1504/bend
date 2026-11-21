@@ -371,7 +371,7 @@ def simplicity(plt, data, save):
                          for i in ticks], fontsize=10.5)
     ax.set_xlim(-.4, len(points) - .5)
     ax.set_ylim(0, max(40000, latest["physicalLines"] * 1.15))
-    ax.set_yticks([0, 10000, 20000, 30000, 40000])
+    ax.set_yticks(range(0, int(latest["physicalLines"] * 1.15), 10000))
     ax.yaxis.set_major_formatter(FuncFormatter(lambda n, _: f"{n / 1000:g}k"))
     ax.grid(axis="y")
     ax.set_ylabel("Source lines · zero-based axis", fontsize=11)

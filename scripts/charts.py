@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import target_charts
 import argparse
 import hashlib
 import json
@@ -17,7 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DEST = ROOT / "site" / "charts"
 INPUTS = ("history-research.json", "conformance-research.json", "runtime-research.json",
           "runtime-average-research.json", "compilation-average-research.json",
-          "second-stage-research.json", "native-research.json")
+          "second-stage-research.json", "native-research.json", "targets-research.json")
 NAMES = ("simplicity", "compilation", "conformance", "runtime-gains", "runtime-gaps",
          "runtime-average-history", "runtime-programs", "compilation-average-history",
          "compilation-programs", "second-stage-average-history", "second-stage-programs",
@@ -25,7 +26,7 @@ NAMES = ("simplicity", "compilation", "conformance", "runtime-gains", "runtime-g
          "native-second-stage-history", "native-second-stage-programs",
          "native-compilation-history", "native-compilation-programs",
          "native-second-stage-upstream", "native-compilation-upstream",
-         "native-second-stage-previous-programs", "native-compilation-previous-programs")
+         "native-second-stage-previous-programs", "native-compilation-previous-programs") + target_charts.TITLES
 INK = "#202d29"
 MUTED = "#586660"
 PAPER = "#f6f7f2"
@@ -819,10 +820,11 @@ def render():
     compiler_programs(plt, data["second-stage-research.json"], "B2")
     second_stage_self_emission(plt, data["second-stage-research.json"])
     native_charts.render(plt, data["native-research.json"], save)
+    target_charts.render(plt, data["targets-research.json"], save)
     manifest = {
         "version": 1,
         "inputs": {name: digest(ROOT / name)
-                   for name in (*INPUTS, "scripts/charts.py", "scripts/native_charts.py", "requirements-charts.txt")},
+                   for name in (*INPUTS, "scripts/charts.py", "scripts/native_charts.py", "scripts/target_charts.py", "requirements-charts.txt")},
         "outputs": {f"{name}.{ext}": digest(DEST / f"{name}.{ext}")
                     for name in NAMES for ext in ("svg", "png")},
     }

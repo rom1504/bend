@@ -1,0 +1,37 @@
+{
+  "baseline": "selfhost/build/phase197/full-source01/compiler.bend",
+  "modules": [
+    "research/phase198/loops/paired-v2.bend",
+    "research/phase198/loops/hook.bend",
+    "selfhost/tests/phase190/liveness-controls.bend",
+    "selfhost/tests/phase190/joint-caller-controls.bend",
+    "research/phase198/loops/controls.bend"
+  ],
+  "replace": [
+    "x190_j_graphed",
+    "x190_j_counted"
+  ],
+  "exports": [
+    "p198lp_controls",
+    "p190j_controls",
+    "p190j_outputs"
+  ],
+  "switch": "x198lp_enabled",
+  "offSetting": "x198lp_enabled=false",
+  "driver": "research/phase198/loops/controls.mjs",
+  "groups": [
+    "loops",
+    "joint"
+  ],
+  "devCases": [
+    "editdist",
+    "local-fold",
+    "local-pair"
+  ],
+  "heldout": [
+    "variation-local-fold-8192-123",
+    "variation-editdist-3-123"
+  ],
+  "status": "prepared not checked",
+  "revisionReason": "Mark the tail lists copied into both nt_choose closures as reusable before checking; no algorithm change."
+}

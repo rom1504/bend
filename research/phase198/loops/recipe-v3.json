@@ -1,0 +1,28 @@
+{
+  "baseline": "selfhost/build/phase197/full-source01/compiler.bend",
+  "productionModules": [
+    "research/phase198/loops/paired-v3.bend",
+    "research/phase198/loops/hook-v3.bend"
+  ],
+  "controlModules": [
+    "selfhost/tests/phase190/liveness-controls.bend",
+    "selfhost/tests/phase190/joint-caller-controls.bend",
+    "research/phase198/loops/controls-v3.bend"
+  ],
+  "replace": [
+    "x190_j_graphed"
+  ],
+  "exports": [
+    "p198lp_controls",
+    "p190j_controls",
+    "p190j_outputs"
+  ],
+  "switch": "x198lp_enabled",
+  "offSetting": "x198lp_enabled=false",
+  "driver": "research/phase198/loops/controls-v3.mjs",
+  "groups": [
+    "loops",
+    "joint"
+  ],
+  "change": "Reserve only pre-existing candidate pairs; original read scores and candidate membership untouched. No-pair lookup returns immediately. No second allocation."
+}

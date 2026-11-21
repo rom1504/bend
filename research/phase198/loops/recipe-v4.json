@@ -1,0 +1,28 @@
+{
+  "baseline": "selfhost/build/phase197/full-source01/compiler.bend",
+  "productionModules": [
+    "research/phase198/loops/paired-v4.bend",
+    "research/phase198/loops/hook-v4.bend"
+  ],
+  "controlModules": [
+    "selfhost/tests/phase190/liveness-controls.bend",
+    "selfhost/tests/phase190/joint-caller-controls.bend",
+    "research/phase198/loops/controls-v4.bend"
+  ],
+  "replace": [
+    "x190_j_counted"
+  ],
+  "exports": [
+    "p198lp_controls",
+    "p190j_controls",
+    "p190j_outputs"
+  ],
+  "switch": "x198lp_enabled",
+  "offSetting": "x198lp_enabled=false",
+  "driver": "research/phase198/loops/controls-v4.mjs",
+  "groups": [
+    "loops",
+    "joint"
+  ],
+  "change": "Full eligible pool <=32, V1 scores+paired coloring, complete register-coverage certificate; original counted path fallback."
+}

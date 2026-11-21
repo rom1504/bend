@@ -1,0 +1,149 @@
+{
+  "complete": true,
+  "targetsExecuted": false,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase198/loops/audit-emission.py",
+    "bytes": 2779,
+    "sha256": "d021c952ae93baffe944cb17635e89c6db1a5bd78cd64bfd8c78819c7ba08825"
+  },
+  "rows": [
+    {
+      "case": "editdist",
+      "objects": {
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/native45-01/editdist/machine/program.o",
+          "bytes": 135664,
+          "sha256": "286f43061b18e1541e01399eb8b8a6b586af2351ec910a882dc0c5665d75a0bc"
+        },
+        "loops": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/loops-emission01/loops/editdist/program.o",
+          "bytes": 135640,
+          "sha256": "872eaa048168f3d9d077d0ff84478790b7b32c797b0a087b7e1c088a2d843511"
+        }
+      },
+      "loop": {
+        "baseline": {
+          "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_114_111_119_",
+          "start": "0x752e",
+          "backedge": "0x7625",
+          "header": "0x74d7",
+          "bodyInstructions": 55,
+          "bodyBytes": 247,
+          "iterationInstructions": 58,
+          "frameOperands": 12,
+          "headerCompare": "cmp rsi,0x0"
+        },
+        "loops": {
+          "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_114_111_119_",
+          "start": "0x7512",
+          "backedge": "0x7610",
+          "header": "0x74bb",
+          "bodyInstructions": 55,
+          "bodyBytes": 254,
+          "iterationInstructions": 58,
+          "frameOperands": 13,
+          "headerCompare": "cmp rbx,0x0"
+        }
+      },
+      "objectIdentical": false
+    },
+    {
+      "case": "local-fold",
+      "objects": {
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/native45-01/local-fold/machine/program.o",
+          "bytes": 98248,
+          "sha256": "69a7c43e3379703fcf5a13f49b7098cbb7b2021d156ca5ae550433e5d7358d1c"
+        },
+        "loops": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/loops-emission01/loops/local-fold/program.o",
+          "bytes": 98160,
+          "sha256": "e8a3854206a5d3cc4ffa29e6f0a937c2afcfee1388af8bc16f5c260f8dc6dcf0"
+        }
+      },
+      "loop": {
+        "baseline": {
+          "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112_",
+          "start": "0x3e70",
+          "backedge": "0x3ea2",
+          "header": "0x3e33",
+          "bodyInstructions": 15,
+          "bodyBytes": 50,
+          "iterationInstructions": 18,
+          "frameOperands": 0,
+          "headerCompare": "cmp rdi,0x0"
+        },
+        "loops": {
+          "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112_",
+          "start": "0x3e25",
+          "backedge": "0x3e52",
+          "header": "0x3de8",
+          "bodyInstructions": 13,
+          "bodyBytes": 45,
+          "iterationInstructions": 16,
+          "frameOperands": 0,
+          "headerCompare": "cmp rdi,0x0"
+        }
+      },
+      "objectIdentical": false
+    },
+    {
+      "case": "variation-local-fold-8192-123",
+      "objects": {
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/native45-01/variation-local-fold-8192-123/machine/program.o",
+          "bytes": 98248,
+          "sha256": "276f1278ec1c7a6548e6084b6b77f944a69513a3703ef52384d0bc9257409249"
+        },
+        "loops": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/loops-emission01/loops/variation-local-fold-8192-123/program.o",
+          "bytes": 98160,
+          "sha256": "fc17bded6f4f6491798efea463e3f6855521d6df8332cd077158e7654bb0218d"
+        }
+      },
+      "loop": {
+        "baseline": {
+          "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112_",
+          "start": "0x3e70",
+          "backedge": "0x3ea2",
+          "header": "0x3e33",
+          "bodyInstructions": 15,
+          "bodyBytes": 50,
+          "iterationInstructions": 18,
+          "frameOperands": 0,
+          "headerCompare": "cmp rdi,0x0"
+        },
+        "loops": {
+          "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112_",
+          "start": "0x3e25",
+          "backedge": "0x3e52",
+          "header": "0x3de8",
+          "bodyInstructions": 13,
+          "bodyBytes": 45,
+          "iterationInstructions": 16,
+          "frameOperands": 0,
+          "headerCompare": "cmp rdi,0x0"
+        }
+      },
+      "objectIdentical": false
+    },
+    {
+      "case": "mandelbrot",
+      "objects": {
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/native45-01/mandelbrot/machine/program.o",
+          "bytes": 137608,
+          "sha256": "a425b2d6a372bc118f51053f4da2bf51655ca723aaac8c23adf44e423e7077e5"
+        },
+        "loops": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/loops-emission01/loops/mandelbrot/program.o",
+          "bytes": 137424,
+          "sha256": "72eaa1e12c0c708448d2820364fa7375e1999cc9c514ba95de7525f7d6daafbb"
+        }
+      },
+      "loop": {},
+      "objectIdentical": false
+    }
+  ],
+  "scope": "Actual ELF positive loop body, final backedge excluded from body but included with header CMP/JNE in iteration count. Frame operands are not cache misses."
+}

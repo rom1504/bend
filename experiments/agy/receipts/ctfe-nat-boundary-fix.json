@@ -1,0 +1,74 @@
+{
+  "kind": "agy-ctfe-nat-boundary-v1",
+  "cases": {
+    "nat_succ_u32max_overflow": {
+      "expected": "False\n",
+      "upstream": "False\n",
+      "p205": {
+        "objSha256": "1750395103c5d5ea81669ca0e7b266211faa43320547175e978c917224b30fa8",
+        "objBytes": 22040,
+        "p205_rt": "False\n",
+        "agy_rt": "False\n"
+      },
+      "agy": {
+        "objSha256": "0bd1c0a8a74176b1154fd88514ac0888aec72d8eaa1cc9b6e6b4360a85cc0413",
+        "objBytes": 21864,
+        "p205_rt": "False\n",
+        "agy_rt": "False\n"
+      },
+      "passed": true
+    },
+    "nat_succ_u32max_adjacent_representable": {
+      "expected": "True,False\n",
+      "upstream": "True,False\n",
+      "p205": {
+        "objSha256": "fc43697c2bad443baeeca6117a4dde13ef7f92c7ea370fd9cc3188fec1cd5413",
+        "objBytes": 26232,
+        "p205_rt": "True,False\n",
+        "agy_rt": "True,False\n"
+      },
+      "agy": {
+        "objSha256": "c16195b5ef2b7efd0e064cc0c531fe7da4666e4e4496f122db75bbe98c7f47b0",
+        "objBytes": 24584,
+        "p205_rt": "True,False\n",
+        "agy_rt": "True,False\n"
+      },
+      "passed": true
+    },
+    "nat_nested_succ_overflow_and_representable": {
+      "expected": "False,False,True\n",
+      "upstream": "False,False,True\n",
+      "p205": {
+        "objSha256": "75dd5af2294c7b59a47c13dff003e3c51481bdc36ef0b0b4a229c4c0e09850a6",
+        "objBytes": 29400,
+        "p205_rt": "False,False,True\n",
+        "agy_rt": "False,False,True\n"
+      },
+      "agy": {
+        "objSha256": "371ea17067363571b9c408a11bf085115e6b9699cd2c44740cc120ffdac82f77",
+        "objBytes": 28504,
+        "p205_rt": "False,False,True\n",
+        "agy_rt": "False,False,True\n"
+      },
+      "passed": true
+    },
+    "nat_return_reify_overflow": {
+      "expected": "False\n",
+      "upstream": "False\n",
+      "p205": {
+        "objSha256": "c24296860855d3aacdfcef8ec2c6e35b369fa83e1372ef4585486cdc1a5c1cb3",
+        "objBytes": 22728,
+        "p205_rt": "False\n",
+        "agy_rt": "False\n"
+      },
+      "agy": {
+        "objSha256": "ec4dc49c71b895355b5cba74727da55eefe664a02febe0a2aeae7cf92bc6f13d",
+        "objBytes": 22520,
+        "p205_rt": "False\n",
+        "agy_rt": "False\n"
+      },
+      "passed": true
+    }
+  },
+  "allPassed": true
+}

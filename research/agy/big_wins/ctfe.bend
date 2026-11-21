@@ -89,17 +89,29 @@ law ctfe_as_nat:
   Maybe<&2, U32>
 
 @unsafe
+def ctfe_as_nat_zero(fields: List<&2, CtfeVal>, +acc: U32) -> Maybe<&2, U32>:
+  match fields:
+    case Nil{}: Some{acc}
+    case _: None{}
+
+@unsafe
 def ctfe_as_nat_succ(fields: List<&2, CtfeVal>, +acc: U32) -> Maybe<&2, U32>:
   match fields:
-    case Con{inner, Nil{}}: ctfe_as_nat(inner, U32.inc(acc))
+    case Con{inner, Nil{}}:
+      kc(Maybe<&2, U32>, U32.is_lt(acc, 4294967295),
+        u => ctfe_as_nat(inner, U32.inc(acc)),
+        u => None{})
     case _: None{}
 
 @unsafe
 def ctfe_as_nat(v, acc):
   match v:
-    case CVNat{n}: Some{U32.add(acc, n)}
+    case CVNat{n}:
+      kc(Maybe<&2, U32>, U32.is_le(acc, U32.sub(4294967295, n)),
+        u => Some{U32.add(acc, n)},
+        u => None{})
     case CVCtr{name, fields}:
-      kc(Maybe<&2, U32>, String.eq(name, "Zero"), u => Some{acc},
+      kc(Maybe<&2, U32>, String.eq(name, "Zero"), u => ctfe_as_nat_zero(fields, acc),
         u => kc(Maybe<&2, U32>, String.eq(name, "Succ"), v => ctfe_as_nat_succ(fields, acc), v => None{}))
     case _: None{}
 

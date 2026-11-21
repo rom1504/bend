@@ -32,3 +32,14 @@ The answer follows the emitted object across both links. The Agy API and runtime
 In [the evaluator](../../research/agy/big_wins/ctfe.bend), `ctfe_as_nat_succ` increments a U32 accumulator. At a `CVNat{n}` leaf, `ctfe_as_nat` returns `Some{U32.add(acc, n)}`. For this input the leaf adds 1 to 4,294,967,295 in U32 arithmetic and returns zero as a successful conversion. The resulting Boolean literal passes type checking.
 
 The smallest repair is to decline the fold whenever either accumulating a successor or adding the leaf would overflow, then evaluate the original checked expression at runtime. Add the program above as a permanent differential test. Check the adjacent representable case and a nested-successor case, and require equal outputs from upstream, Phase205 and the repaired Agy compiler before promoting CTFE. The binary-fork linearization and runtime fast paths can be evaluated independently.
+
+## Resolution (repaired on `selfhost/agy`)
+
+- **Fix**: Updated `ctfe_as_nat` and `ctfe_as_nat_succ` (plus `ctfe_as_nat_zero`) in [ctfe.bend](../../research/agy/big_wins/ctfe.bend) to guard both `U32.inc(acc)` (`U32.is_lt(acc, 4294967295)`) and `U32.add(acc, n)` (`U32.is_le(acc, U32.sub(4294967295, n))`), returning `None{}` (declining the fold to runtime evaluation) on any 32-bit overflow.
+- **Permanent differential test**: Added [test_ctfe_nat_boundary.py](../../research/agy/test_ctfe_nat_boundary.py) covering:
+  1. `nat_succ_u32max_overflow` (`Succ{U32.to_nat(4294967295)} == 0n` → `False`)
+  2. `nat_succ_u32max_adjacent_representable` (`Succ{U32.to_nat(4294967294)} == U32.to_nat(4294967295)` → `True`, `== 0n` → `False`)
+  3. `nat_nested_succ_overflow_and_representable` (`Succ{Succ{4294967294n}} == 0n` → `False`, `Succ{Succ{4294967295n}} == 1n` → `False`, `Succ{Succ{4294967293n}} == 4294967295n` → `True`)
+  4. `nat_return_reify_overflow` (`def big() -> Nat: Succ{U32.to_nat(4294967295)}`, `big() == 0n` → `False`)
+- **Verification**: All 4 cases match **upstream Bend (`bend2/main.ts`) == Phase 205 == repaired Agy** across both Phase 205 and Agy runtimes ([ctfe-nat-boundary-fix.json](receipts/ctfe-nat-boundary-fix.json)). Hosted `B1` (`stage0-library.mjs`) checked all 5,197 API exports, and all 4 CTFE-accelerated `native45` benchmarks (`test-morning-program`, `test-evening-program`, `test-rle-roundtrip`, `test-map-set-ops`) plus `raytrace` emit byte-identical `.o` files to pre-fix.
+- **Note**: The earlier native self-build checkpoint at `7cb80c34` predates this fix and should be re-run to refresh the self-compiled native `N2`/`N3` binary.

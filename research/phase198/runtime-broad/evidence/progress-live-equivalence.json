@@ -1,0 +1,78 @@
+{
+  "complete": true,
+  "report": {
+    "path": "selfhost/build/phase198/progress-compare-live01/report.json",
+    "bytes": 1191247,
+    "sha256": "9e8271ce6548e5c877529d35fe5cfc170bda0c9c2c73b8774acb6fadae7c5da1"
+  },
+  "method": {
+    "path": "research/phase198/runtime-broad/compare-live.py",
+    "bytes": 12307,
+    "sha256": "141c5e4df40702bb1b69d9f01b4249fd952e3262ea768407c30ca95d8b572263"
+  },
+  "ordinaryComparison": {
+    "path": "selfhost/build/phase198/progress-compare-orbit01/report.json",
+    "bytes": 668690,
+    "sha256": "89c35a6f5d369e3b9d7cd0334273af163be1544dd5a6400e9841b28c9d6ee17a"
+  },
+  "measuredSummary": {
+    "path": "research/phase198/runtime-broad/orbit-summary.json",
+    "bytes": 194978,
+    "sha256": "7f16d16724bae1338a2ae478630d7cd1932f0b5ec86f1e1d1f28cb87607790d3"
+  },
+  "measuredReport": {
+    "path": "selfhost/build/phase198/orbit-live-broad01/report.json",
+    "bytes": 2379293,
+    "sha256": "9d21730f022f65da0b021673c2c48b0841a2678f93210281e3c53ee883cda316"
+  },
+  "liveRuntime": {
+    "path": "selfhost/build/phase198/runtime-split-prepare01/runtime-live.o",
+    "bytes": 128176,
+    "sha256": "cdc641eb706178f549f775aaf86211c08d788778e8300502e48566e7870930ab"
+  },
+  "compilerSources": [
+    {
+      "path": "selfhost/build/phase198/orbit-portfolio03/compiler.bend",
+      "bytes": 1942906,
+      "sha256": "b2c9aade19ae7a205ec61bb9358ae68b31f9d25de2eb6256c56e093fccc4edff"
+    },
+    {
+      "path": "selfhost/build/phase198/progress-portfolio01/compiler.bend",
+      "bytes": 1947566,
+      "sha256": "72061fa57c75993b59eaf42e18c6b923eebea640c352d0f7b9cd1d27ce7be91d"
+    }
+  ],
+  "preflightObservations": 360,
+  "stableInputs": 1914,
+  "objectsIdentical": 45,
+  "liveAllocatedLayoutsIdentical": 45,
+  "wholeLiveElfsIdentical": 0,
+  "mappedImageDiagnostics": {
+    "candidate": {
+      "programHeadersIdentical": 45,
+      "rawLoadFileBytesIdentical": 0,
+      "normalizedLoadFileBytesIdentical": 45
+    },
+    "live": {
+      "programHeadersIdentical": 45,
+      "rawLoadFileBytesIdentical": 0,
+      "normalizedLoadFileBytesIdentical": 45
+    }
+  },
+  "differingExcludedFields": {
+    "candidate": {
+      "GNU build-ID descriptor": 25,
+      "e_shoff and GNU build-ID descriptor": 20
+    },
+    "live": {
+      "GNU build-ID descriptor": 21,
+      "e_shoff and GNU build-ID descriptor": 24
+    }
+  },
+  "scope": "This transfers the existing orbit fixed45 measurement for equivalent native program objects and allocated code/data layouts. Raw ELF headers and GNU build identifiers can differ. No corrected-source timing was run. The complete comparison and preflight receipts are in the progress native-qualification replay.",
+  "guard": {
+    "path": "selfhost/build/phase198/progress-compare-live01-guard/process.json",
+    "bytes": 2777,
+    "sha256": "12d25c803eb26b99f2af5b4da98f29553970dc5a8fa523bffc32823d8b703a20"
+  }
+}

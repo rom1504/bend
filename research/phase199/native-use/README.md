@@ -38,3 +38,9 @@ The pinned GNU linker combines each pair of ELF64 x86-64 objects with `ld -m elf
 | `runtime-original-scan.o` | 125920 | `f6b444f3e2d5c1e9e1f3a495ab97dd8731ebb93eb2b7ef3baebd12a20ea8dd8c` |
 
 The [package receipt](evidence/bundle-report.json.gz) records the input provenance, system linker identity, both argv lists and each ELF symbol checked. The [guard](evidence/bundle-process.json) and [retention closure](evidence/bundle-close.json) record the bounded execution. The [runtime leaf controls](../scan-runtime/README.md) describe the independent state checks, generated-worker contract and SysV ABI.
+
+## Acquired N1 and ordinary inputs
+
+The [ordinary IO recipe](evidence/ordinary-io-recipe.json) binds the 19,068,032-byte scan-enabled N1, SHA-256 `4c5ef960f02e803826801dcc47f12b1cbed2261708440a02d6707d1739cab0de`. The native driver's [accepted build plan](evidence/ordinary-io-plan.json.gz) authenticates the ordinary IO fixture, direct-object protocol and explicit live runtime. This plan performed zero compiler, linker or execution jobs.
+
+The existing native45 acquisition separately compiled the catalog's `local-fold.bend` with that N1, linked the original-plus-scan bundle and ran the independent observation. Its 99,400-byte emitted object contains one `R_X86_64_PLT32` text relocation to `p199_rt_u32_scan4` at offset `0x3e44`. The executable returned zero and printed `2339999928`, followed by the three expected catalog counters. The [catalog execution evidence](evidence/native45-local-fold.json) identifies the distinct source entry, generated object, runtime, complete output and acquisition receipts.

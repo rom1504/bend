@@ -1,0 +1,194 @@
+{
+  "kind": "phase199-ordinary-native-program",
+  "inputs": [
+    {
+      "file": "research/phase199/native-use/program.py",
+      "bytes": 6528,
+      "sha256": "30bddfecc3c6905ec3d8debd9f231c0e5ae2a2d9eaed2101bf3894973af8a24a"
+    },
+    {
+      "file": "selfhost/tools/build/native.py",
+      "bytes": 20178,
+      "sha256": "c587ac5a3699d3718dc9f17be117700e6783fef0e9effc73a5d9d12da401489f"
+    },
+    {
+      "file": "research/phase199/screen/job.py",
+      "bytes": 2712,
+      "sha256": "e35efdb91b1afd6b045a9161561d7345ed999cdbb453be73167eca61da7dd608"
+    },
+    {
+      "file": "selfhost/build/phase194/assets.json",
+      "bytes": 25589,
+      "sha256": "767986fb99bd450f7f83e9abd4a05361c7c3fd502a6a724717eb77abc1f76597"
+    },
+    {
+      "file": "selfhost/build/phase198/p199-integrated-native-image01/report.json",
+      "bytes": 18813,
+      "sha256": "e3fcaf1d5072bffdfc1c2f109f451df722bdba65e3dae8d81bbda5f63a965131"
+    },
+    {
+      "file": "selfhost/build/phase199/runtime-bundle01/report.json",
+      "bytes": 60050,
+      "sha256": "71ce5dfd9d69de14c3090fbc3d0f34eb54de5cb569aeb7bcc9e40b7a00090cdb"
+    },
+    {
+      "file": "selfhost/build/phase198/p199-integrated01/report.json",
+      "bytes": 2970,
+      "sha256": "52223c2a55c72825182da797340056be1eb3f8cb4d3e63f998dd32cb2aa1ed34"
+    },
+    {
+      "file": "selfhost/build/phase199/scan-api01/report.json",
+      "bytes": 5223,
+      "sha256": "49e6cf670f6e99da5e6e27198bcb906c8d14fce5ebb75b305f7d4740003ec819"
+    },
+    {
+      "file": "research/phase199/scan-lowering/recognizer.bend",
+      "bytes": 7539,
+      "sha256": "94525f90f4c266102512b14ad3281a342239e0e563cbc2eed307c57699be5450"
+    },
+    {
+      "file": "research/phase199/scan-lowering/pipeline.bend",
+      "bytes": 2620,
+      "sha256": "3f9892cf662dc858e143a390eb00d6511ebef8ae0ddf58c3d0af7e1b46ef8084"
+    },
+    {
+      "file": "research/phase199/scan-lowering/hook.bend",
+      "bytes": 711,
+      "sha256": "b6c1513f4fe06afe9e667c5d692a915c500740ae1bcd1eed317fa105ee287918"
+    },
+    {
+      "file": "selfhost/build/phase198/p199-integrated-native-image01/program",
+      "bytes": 19068032,
+      "sha256": "4c5ef960f02e803826801dcc47f12b1cbed2261708440a02d6707d1739cab0de"
+    },
+    {
+      "file": "selfhost/build/phase198/p199-integrated01/compiler.bend",
+      "bytes": 1969124,
+      "sha256": "a48b1532ec45ac23cb972796f0101a8bf1864ed8769c6a2daee114ee268ce313"
+    },
+    {
+      "file": "selfhost/build/phase199/runtime-bundle01/runtime-live-scan.o",
+      "bytes": 128872,
+      "sha256": "1c819e63386e8bf7c392f3fa13509699b0f4d99867cf26d8777042350522cda8"
+    },
+    {
+      "file": "selfhost/tests/consolidation/native-broad/local-fold.bend",
+      "bytes": 895,
+      "sha256": "0f4debc5a89841f90bb12411ba63485655203480098abe905c10294e8f165603"
+    },
+    {
+      "file": "selfhost/tests/consolidation/native-broad/local-fold.stdout",
+      "bytes": 11,
+      "sha256": "c07893fbab1330de5e1c73495d24da59ca965c977e89fa9ea508b2f316ab3e20"
+    }
+  ],
+  "runtime": {
+    "file": "selfhost/build/phase199/runtime-bundle01/runtime-live-scan.o",
+    "bytes": 128872,
+    "sha256": "1c819e63386e8bf7c392f3fa13509699b0f4d99867cf26d8777042350522cda8"
+  },
+  "image": {
+    "file": "selfhost/build/phase198/p199-integrated-native-image01/program",
+    "bytes": 19068032,
+    "sha256": "4c5ef960f02e803826801dcc47f12b1cbed2261708440a02d6707d1739cab0de"
+  },
+  "compilerSource": {
+    "file": "selfhost/build/phase198/p199-integrated01/compiler.bend",
+    "bytes": 1969124,
+    "sha256": "a48b1532ec45ac23cb972796f0101a8bf1864ed8769c6a2daee114ee268ce313"
+  },
+  "programSource": {
+    "file": "selfhost/tests/consolidation/native-broad/local-fold.bend",
+    "bytes": 895,
+    "sha256": "0f4debc5a89841f90bb12411ba63485655203480098abe905c10294e8f165603"
+  },
+  "output": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/native-use-local-fold01",
+  "runtimeABI": 11102,
+  "runtimeArgumentConvention": "bend-rts-v1",
+  "variant": "live",
+  "nativeCommand": [
+    "/usr/bin/python3",
+    "-B",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/build/native.py",
+    "--workspace",
+    "/home/ai/bend2/build/publish/bend",
+    "--assets",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/assets.json",
+    "--image",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-native-image01/program",
+    "--image-receipt",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-native-image01/report.json",
+    "--host",
+    "native",
+    "--stage",
+    "N1",
+    "--target",
+    "x86",
+    "--mode",
+    "cache",
+    "--emit",
+    "object",
+    "--source",
+    "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/local-fold.bend",
+    "--runtime",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/runtime-bundle01/runtime-live-scan.o",
+    "--runtime-abi",
+    "11102",
+    "--runtime-argument-convention",
+    "bend-rts-v1",
+    "--seconds",
+    "24",
+    "--out",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/native-use-local-fold01",
+    "--expected-stdout",
+    "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/local-fold.stdout"
+  ],
+  "guardedCommand": [
+    "/usr/bin/python3",
+    "-B",
+    "/home/ai/bend2/build/publish/bend/research/phase199/screen/job.py",
+    "native-use-local-fold01",
+    "28",
+    "48",
+    "/usr/bin/python3",
+    "-B",
+    "/home/ai/bend2/build/publish/bend/selfhost/tools/build/native.py",
+    "--workspace",
+    "/home/ai/bend2/build/publish/bend",
+    "--assets",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/assets.json",
+    "--image",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-native-image01/program",
+    "--image-receipt",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-native-image01/report.json",
+    "--host",
+    "native",
+    "--stage",
+    "N1",
+    "--target",
+    "x86",
+    "--mode",
+    "cache",
+    "--emit",
+    "object",
+    "--source",
+    "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/local-fold.bend",
+    "--runtime",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/runtime-bundle01/runtime-live-scan.o",
+    "--runtime-abi",
+    "11102",
+    "--runtime-argument-convention",
+    "bend-rts-v1",
+    "--seconds",
+    "24",
+    "--out",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/native-use-local-fold01",
+    "--expected-stdout",
+    "/home/ai/bend2/build/publish/bend/selfhost/tests/consolidation/native-broad/local-fold.stdout"
+  ],
+  "expectedStdout": {
+    "file": "selfhost/tests/consolidation/native-broad/local-fold.stdout",
+    "bytes": 11,
+    "sha256": "c07893fbab1330de5e1c73495d24da59ca965c977e89fa9ea508b2f316ab3e20"
+  }
+}

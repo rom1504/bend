@@ -1,0 +1,57 @@
+{
+  "recovery": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/heap-tail-auth01/report.json",
+    "bytes": 172227,
+    "sha256": "4f9c9f3c01469a051a4443a349c8c6d284368c674fed0143f445afe1e7625860"
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase198/reuse/tail/function-delta.py",
+    "bytes": 2885,
+    "sha256": "1ed33e4914616ea097a0901d59aa7ea317fc1d605062728a2d0e93a15d69067e"
+  },
+  "rows": [
+    {
+      "id": "test-map-set-ops",
+      "baseline": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/native45-01/test-map-set-ops/machine/program.o",
+        "bytes": 597560,
+        "sha256": "5b9cd99a8b02064fe997c10fb095af4d828ce931bc73cd8492f945ba56add2a1"
+      },
+      "candidate": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/heap-pair-emission01/heap/test-map-set-ops/program.o",
+        "bytes": 606904,
+        "sha256": "692361dc5ae0389b5f00e72cef18fc8599ddb9880369980ff08b34ebb37667d4"
+      },
+      "symbols": 957,
+      "unchangedExactBytes": 729,
+      "changed": 228,
+      "changedOutsideTailCallers": 0,
+      "newOrRemovedSymbols": 0,
+      "baselineFunctionBytes": 376971,
+      "candidateFunctionBytes": 379791,
+      "functionTableSha256": "b6c48d354f64fed388ea1d6fd4ba90558c200f5d70cdf5a7dd2032609f062c2e"
+    },
+    {
+      "id": "lexer",
+      "baseline": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/native45-01/lexer/machine/program.o",
+        "bytes": 136072,
+        "sha256": "c24b741533f6e7075a41fce193b15073cc09111231238a52312c741179c0e3d2"
+      },
+      "candidate": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/heap-pair-emission01/heap/lexer/program.o",
+        "bytes": 138032,
+        "sha256": "8480008b21dc26996a539c3d3bde9910c1259ee6af90d8ccc66612416b42aa0e"
+      },
+      "symbols": 249,
+      "unchangedExactBytes": 198,
+      "changed": 51,
+      "changedOutsideTailCallers": 0,
+      "newOrRemovedSymbols": 0,
+      "baselineFunctionBytes": 74796,
+      "candidateFunctionBytes": 75412,
+      "functionTableSha256": "be880955cd031defa513968dca9bd87c6ab92693aefc8c943bea47ac6346bf64"
+    }
+  ],
+  "scope": "Defined ELF STT_FUNC symbol payload bytes in the two relocatable objects. External relocation resolutions and linked addresses are outside this comparison."
+}

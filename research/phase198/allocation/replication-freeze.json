@@ -1,0 +1,38 @@
+{
+  "method": "502f39112ae5a2ef7de4d23c4f06f0289d55aa574f75a589fd22bc7500b4963f",
+  "projection": "3ec7878ce3c8c1d1cedaa7202a30df21040d6edf9828784fb21c4979dfbaf55b",
+  "cases": {
+    "coverage-bst-32": {
+      "source": "f2409cdddb4f48df22fd1dfd4e94d11b7c9d0e4cf8d0c1e55a904ae53a20835e",
+      "object": "67946e5fb0e4fa57ad451e1ba886990704d5746c1fde4da2a4d7c00e9cfdc16e",
+      "direct": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase197/combined-build01/coverage-bst-32/machine/program",
+        "bytes": 195504,
+        "sha256": "c3701cc3c8dee6bc7b8f5e285f44c4e7d2aab146bfa64123438f260e44b19b05"
+      },
+      "variants": {
+        "baseline": "f2409cdddb4f48df22fd1dfd4e94d11b7c9d0e4cf8d0c1e55a904ae53a20835e",
+        "rebase": "e82a9722c21d187ccfbf26ce39c787f927bae74e0fe4a9f96f35931b5f0e0041",
+        "rbp": "447c5a23353d00d67247ffc6eea39e1982068a94aabcce10e9734985bcde0d77",
+        "down-only": "c21f686b49b68d0cf3470a69b7e014d2990e7ffbaea06aada69f6903526f7e95"
+      }
+    },
+    "coverage-bst-64": {
+      "source": "66282b15b41a268d757e777e2eef275a5659e9d9a9959d76758fab8d4ba41983",
+      "object": "4d24fed6dd865c6e17324b02a83ac6213baa31e4262e765155acfcccd9140335",
+      "direct": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase197/combined-build01/coverage-bst-64/machine/program",
+        "bytes": 195504,
+        "sha256": "550fc1654115249bc8ce1df15a2cd8e4354fdf29b454c2419859e8c279a8411b"
+      },
+      "variants": {
+        "baseline": "66282b15b41a268d757e777e2eef275a5659e9d9a9959d76758fab8d4ba41983",
+        "rebase": "838dc577d9874c64de89db35b0d74192a7d7408acbd40e4d5c570392e212cb34",
+        "rbp": "dd45d30904836763d9044b06281a2201caae227601311a4b7a8ddb6180e74007",
+        "down-only": "d4424de7167384fa8ee8b057ff436251aeace486e8d1a44b25041d29d4633636"
+      }
+    }
+  },
+  "criteria": "For a source prototype, require rbp/baseline <=0.98 with >=3/4 favorable pairs in both layouts at BST64, and improvement over rebase in both layouts. Report BST32 transfer and hot-owner-only outcomes separately. Treat failure as a negative.",
+  "sharedModel": "63bb24335cb5287b6ea584eac9a57a43dec708ec9002e9fee05bba68829a87d9"
+}

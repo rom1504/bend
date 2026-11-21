@@ -1,0 +1,180 @@
+{
+  "scope": "New Phase198 N1 products; compiler rows use Phase195 qualified x86 N2. Explicit scalar-slot machine references exclude save/restore area, LEA, and implicit/indirect accesses; owner totals include alternate paths.",
+  "tools": {},
+  "cases": {
+    "coverage-closures-256": {
+      "binary": "selfhost/build/phase198/native45-01/coverage-closures-256/machine/program",
+      "sha": "99e8a4f7dd6ef8c9cb5fc599d00108d554b8dfe7151d6dcdebf79c088f36318f",
+      "owners": {
+        "p113d_FID_$p121.callback.bench": {
+          "start": "0x408304",
+          "bytes": 95,
+          "instructions": 26,
+          "frame": 2288,
+          "calls": 0,
+          "stackReferences": 0,
+          "distinctScalarSlots": 0
+        }
+      }
+    },
+    "coverage-expression-32": {
+      "binary": "selfhost/build/phase198/native45-01/coverage-expression-32/machine/program",
+      "sha": "2fde568baee7bb482464959bacc2e8690f6b845c191a44b50534aa7d6887c04e",
+      "owners": {
+        "p114r_FID_$direct.eval": {
+          "start": "0x40d0b1",
+          "bytes": 2065,
+          "instructions": 410,
+          "frame": 15168,
+          "calls": 9,
+          "stackReferences": 63,
+          "distinctScalarSlots": 38
+        }
+      }
+    },
+    "variation-ray-active-64-2440": {
+      "binary": "selfhost/build/phase198/native45-01/variation-ray-active-64-2440/machine/program",
+      "sha": "3bc9c1cbe1adeeb530a1791350997a626e64c457367e88e90427e3b87f682812",
+      "owners": {
+        "p113d_FID_$product.nearest": {
+          "start": "0x409b55",
+          "bytes": 3985,
+          "instructions": 855,
+          "frame": 3360,
+          "calls": 7,
+          "stackReferences": 112,
+          "distinctScalarSlots": 37
+        },
+        "p113d_FID_$product.trace": {
+          "start": "0x40bea2",
+          "bytes": 10839,
+          "instructions": 2114,
+          "frame": 4496,
+          "calls": 8,
+          "stackReferences": 472,
+          "distinctScalarSlots": 88
+        }
+      }
+    },
+    "coverage-map-churn-32": {
+      "binary": "selfhost/build/phase198/native45-01/coverage-map-churn-32/machine/program",
+      "sha": "deacaff8719a37069f75598a584b91c12bf9128981f4dfe3f92e158b9d935add",
+      "owners": {
+        "p111_FID_$direct.Map.ins.go": {
+          "start": "0x416324",
+          "bytes": 42239,
+          "instructions": 8362,
+          "frame": 19456,
+          "calls": 447,
+          "stackReferences": 1828,
+          "distinctScalarSlots": 110
+        },
+        "p113d_FID_$p118borrow.read.Map.bit.go": {
+          "start": "0x406eef",
+          "bytes": 941,
+          "instructions": 212,
+          "frame": 2592,
+          "calls": 6,
+          "stackReferences": 3,
+          "distinctScalarSlots": 2
+        }
+      }
+    },
+    "coverage-bst-64": {
+      "binary": "selfhost/build/phase198/native45-01/coverage-bst-64/machine/program",
+      "sha": "28a5101dadacd8d7748749de7c23d7b9433f68ca88869b1ad4e17300a8cfe7b0",
+      "owners": {
+        "p113d_FID_$product.bst.down": {
+          "start": "0x408f6d",
+          "bytes": 699,
+          "instructions": 153,
+          "frame": 2528,
+          "calls": 6,
+          "stackReferences": 7,
+          "distinctScalarSlots": 3
+        }
+      }
+    },
+    "phase195-compiler": {
+      "binary": "selfhost/build/phase195/native-self01/program",
+      "sha": "a3f20a7af314ddbb96a2e128b49be41f24b279b27e8df23c670003c036fb7c7f",
+      "owners": {
+        "p113d_FID_$p118borrow.read.index_hash": {
+          "start": "0x40643a",
+          "bytes": 578,
+          "instructions": 132,
+          "frame": 2576,
+          "calls": 3,
+          "stackReferences": 3,
+          "distinctScalarSlots": 2
+        },
+        "p113d_FID_$p118borrow.read.p88_string_eq_go": {
+          "start": "0x406c8e",
+          "bytes": 2490,
+          "instructions": 523,
+          "frame": 2992,
+          "calls": 12,
+          "stackReferences": 80,
+          "distinctScalarSlots": 44
+        },
+        "p113d_FID_$p118borrow.read.String.order.go": {
+          "start": "0x4081bb",
+          "bytes": 2141,
+          "instructions": 448,
+          "frame": 2928,
+          "calls": 10,
+          "stackReferences": 65,
+          "distinctScalarSlots": 37
+        }
+      }
+    }
+  },
+  "method": "ce966ed9eb89662aed6094c9c609286a0b7fad76c99faec2ba70676f65d36770",
+  "historicalPhase195BST": {
+    "captures": [
+      {
+        "path": "selfhost/build/phase195/profile-tree-bst01/009-sample-15-coverage-bst-64-candidate-candidate/analysis.json",
+        "sha": "da455a14005b1a3ce274e3be9adcdfc160a3e3f93a30b1a7184ab2f49d90baa4"
+      },
+      {
+        "path": "selfhost/build/phase195/profile-tree-bst01/014-sample-15-coverage-bst-64-candidate-candidate/analysis.json",
+        "sha": "2b0a2f70f8a7e3f72dc891acd16d9a6291e5eabeeaf96c22e46a75bf9e0c45f5"
+      }
+    ],
+    "weightedSamples": 5945000,
+    "owners": {
+      "p113d_FID_$p118borrow.read.String.order.go": {
+        "promotedStaticReferences": 2,
+        "historicalOwnerWeight": 0.0
+      },
+      "p113d_FID_$product.Nat.show.put": {
+        "promotedStaticReferences": 3,
+        "historicalOwnerWeight": 0.0
+      },
+      "p113d_FID_$p126scc.24": {
+        "promotedStaticReferences": 2,
+        "historicalOwnerWeight": 0.0
+      },
+      "p113d_FID_$product.bst.pick": {
+        "promotedStaticReferences": 7,
+        "historicalOwnerWeight": 0.0
+      },
+      "p113d_FID_$product.bst.step": {
+        "promotedStaticReferences": 7,
+        "historicalOwnerWeight": 0.0
+      },
+      "p113d_FID_$product.bst.down": {
+        "promotedStaticReferences": 2,
+        "historicalOwnerWeight": 0.3105130361648444
+      },
+      "p113d_FID_$direct.p37.bst.build": {
+        "promotedStaticReferences": 2,
+        "historicalOwnerWeight": 0.011942809083263246
+      },
+      "p111_FID_$direct.p93.arguments": {
+        "promotedStaticReferences": 3,
+        "historicalOwnerWeight": 0.0
+      }
+    }
+  }
+}

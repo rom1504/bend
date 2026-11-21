@@ -1,0 +1,246 @@
+{
+  "policy": "Separate discard, pack and fixed-RSP RBP promotion arms; require median <=0.98 and >=3/4 favorable pairs in both layouts to justify acquiring a source candidate. This first screen is one session.",
+  "implementation": "3ec7878ce3c8c1d1cedaa7202a30df21040d6edf9828784fb21c4979dfbaf55b",
+  "cases": {
+    "coverage-bst-64": {
+      "source": "selfhost/build/phase197/shared-emission01/combined/coverage-bst-64/program.s",
+      "sourceSha": "66282b15b41a268d757e777e2eef275a5659e9d9a9959d76758fab8d4ba41983",
+      "objectSha": "4d24fed6dd865c6e17324b02a83ac6213baa31e4262e765155acfcccd9140335",
+      "roles": {
+        "baseline": {
+          "sha": "66282b15b41a268d757e777e2eef275a5659e9d9a9959d76758fab8d4ba41983",
+          "functions": 195,
+          "totals": {
+            "bytes": 475888,
+            "new": 475888,
+            "scalars": 94,
+            "buffers": 154,
+            "dead": 129,
+            "shortBefore": 22,
+            "shortAfter": 22
+          }
+        },
+        "discard": {
+          "sha": "604eb95da258714bc33ec9981448ad41a7782cce09fbeba8efb1e049c92226d0",
+          "functions": 195,
+          "totals": {
+            "bytes": 475888,
+            "new": 475888,
+            "scalars": 94,
+            "buffers": 154,
+            "dead": 129,
+            "shortBefore": 22,
+            "shortAfter": 22
+          }
+        },
+        "pack": {
+          "sha": "c5c472f771677c52322de01aca6fdcf9c1bfe61f4369f2cdadf2aa13fa5cc45d",
+          "functions": 195,
+          "totals": {
+            "bytes": 475888,
+            "new": 318448,
+            "scalars": 94,
+            "buffers": 154,
+            "dead": 129,
+            "shortAfter": 172,
+            "shortBefore": 22
+          }
+        },
+        "rbp": {
+          "sha": "dd45d30904836763d9044b06281a2201caae227601311a4b7a8ddb6180e74007",
+          "functions": 195,
+          "totals": {
+            "bytes": 475888,
+            "new": 475888,
+            "scalars": 94,
+            "buffers": 154,
+            "dead": 129,
+            "promoted": 28,
+            "shortBefore": 22,
+            "shortAfter": 22
+          }
+        }
+      }
+    },
+    "editdist": {
+      "source": "selfhost/build/phase197/shared-emission01/combined/editdist/program.s",
+      "sourceSha": "35a8a61e11cf7a421d216c9d2c10545d8ed7f21683461223c557f52624f416f2",
+      "objectSha": "286f43061b18e1541e01399eb8b8a6b586af2351ec910a882dc0c5665d75a0bc",
+      "roles": {
+        "baseline": {
+          "sha": "35a8a61e11cf7a421d216c9d2c10545d8ed7f21683461223c557f52624f416f2",
+          "functions": 216,
+          "totals": {
+            "bytes": 536592,
+            "new": 536592,
+            "scalars": 517,
+            "buffers": 222,
+            "dead": 286,
+            "shortBefore": 161,
+            "shortAfter": 161
+          }
+        },
+        "discard": {
+          "sha": "8ced6a45d1aa0607cce2dab43238dece75dc531060dabd8b7038e7c6ab6a588d",
+          "functions": 216,
+          "totals": {
+            "bytes": 536592,
+            "new": 536592,
+            "scalars": 517,
+            "buffers": 222,
+            "dead": 286,
+            "shortBefore": 161,
+            "shortAfter": 161
+          }
+        },
+        "pack": {
+          "sha": "38bd802aa13c6580bc9fcaf8dea5e09961d5792b63def69bb7243f453871d659",
+          "functions": 216,
+          "totals": {
+            "bytes": 536592,
+            "new": 357776,
+            "scalars": 517,
+            "buffers": 222,
+            "dead": 286,
+            "shortAfter": 458,
+            "shortBefore": 161
+          }
+        },
+        "rbp": {
+          "sha": "372110def677050524a3459836ee5cf56025d46526cb2f3c392e352766a0041c",
+          "functions": 216,
+          "totals": {
+            "bytes": 536592,
+            "new": 536592,
+            "scalars": 517,
+            "buffers": 222,
+            "dead": 286,
+            "promoted": 79,
+            "shortBefore": 161,
+            "shortAfter": 161
+          }
+        }
+      }
+    },
+    "variation-ray-active-64-2440": {
+      "source": "selfhost/build/phase195/prepared-combined01/combined/variation-ray-active-64-2440/program.s",
+      "sourceSha": "ac842b862d7c34c1c32ac1744c571f50a87de4f9949396150ab98e15db476ef5",
+      "objectSha": "70afd8230f7b71cb8575216cfbeae27d762387a8410e13c20ff665c98fcdee46",
+      "roles": {
+        "baseline": {
+          "sha": "ac842b862d7c34c1c32ac1744c571f50a87de4f9949396150ab98e15db476ef5",
+          "functions": 184,
+          "totals": {
+            "bytes": 460608,
+            "new": 460608,
+            "scalars": 476,
+            "buffers": 143,
+            "dead": 224,
+            "shortBefore": 246,
+            "shortAfter": 246
+          }
+        },
+        "discard": {
+          "sha": "2e06b816cb4d46b6a5155a12aae9cbed3fa2aafe882a2380ca7a4a0ba24a2a48",
+          "functions": 184,
+          "totals": {
+            "bytes": 460608,
+            "new": 460608,
+            "scalars": 476,
+            "buffers": 143,
+            "dead": 224,
+            "shortBefore": 246,
+            "shortAfter": 246
+          }
+        },
+        "pack": {
+          "sha": "61ac663c12e2714d333251815e48867bc7b219ac8110af365f8f51985c6a9b23",
+          "functions": 184,
+          "totals": {
+            "bytes": 460608,
+            "new": 281600,
+            "scalars": 476,
+            "buffers": 143,
+            "dead": 224,
+            "shortAfter": 612,
+            "shortBefore": 246
+          }
+        },
+        "rbp": {
+          "sha": "8f5451b9c66c1ada5b78657702892d21be56deb72823bc9ac8030ee297c4dc58",
+          "functions": 184,
+          "totals": {
+            "bytes": 460608,
+            "new": 460608,
+            "scalars": 476,
+            "buffers": 143,
+            "dead": 224,
+            "promoted": 96,
+            "shortBefore": 246,
+            "shortAfter": 246
+          }
+        }
+      }
+    },
+    "mandelbrot": {
+      "source": "selfhost/build/phase197/shared-emission01/combined/mandelbrot/program.s",
+      "sourceSha": "645ba142ca28e145c35fd586c00f6f3eb3a2cc7e7d623596ccc2f617a0427ee5",
+      "objectSha": "a425b2d6a372bc118f51053f4da2bf51655ca723aaac8c23adf44e423e7077e5",
+      "roles": {
+        "baseline": {
+          "sha": "645ba142ca28e145c35fd586c00f6f3eb3a2cc7e7d623596ccc2f617a0427ee5",
+          "functions": 241,
+          "totals": {
+            "bytes": 585120,
+            "new": 585120,
+            "scalars": 228,
+            "buffers": 185,
+            "dead": 109,
+            "shortBefore": 102,
+            "shortAfter": 102
+          }
+        },
+        "discard": {
+          "sha": "a1d8276787da3443787035f41650d4cb69feab2c2c899767b0c0402352f06b1f",
+          "functions": 241,
+          "totals": {
+            "bytes": 585120,
+            "new": 585120,
+            "scalars": 228,
+            "buffers": 185,
+            "dead": 109,
+            "shortBefore": 102,
+            "shortAfter": 102
+          }
+        },
+        "pack": {
+          "sha": "973ef4a311493aca4268a4dec9f4483fd444c0f27ce44cc13fb6b1084e194484",
+          "functions": 241,
+          "totals": {
+            "bytes": 585120,
+            "new": 382528,
+            "scalars": 228,
+            "buffers": 185,
+            "dead": 109,
+            "shortAfter": 407,
+            "shortBefore": 102
+          }
+        },
+        "rbp": {
+          "sha": "f7819753db8a6cc857b0407581359d25d975ee46815cf343f720a1ef49e2f19f",
+          "functions": 241,
+          "totals": {
+            "bytes": 585120,
+            "new": 585120,
+            "scalars": 228,
+            "buffers": 185,
+            "dead": 109,
+            "promoted": 48,
+            "shortBefore": 102,
+            "shortAfter": 102
+          }
+        }
+      }
+    }
+  }
+}

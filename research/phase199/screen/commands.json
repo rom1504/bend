@@ -1,0 +1,246 @@
+{
+  "targetsRun": false,
+  "commands": [
+    {
+      "name": "baseline-api01",
+      "recordedCommand": [
+        "bash",
+        "-c",
+        "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+        "bend-build",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/.assets/bin/bun",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase199/baseline-source01/compiler.bend",
+        "--exports",
+        "selfhost/build/phase199/baseline-source01/exports.json",
+        "--out",
+        "selfhost/build/phase199/baseline-api01",
+        "--engine",
+        "selfhost/.assets/bin/bun",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase182"
+      ],
+      "rssLimitBytes": 3221225472,
+      "diskBudgetBytes": 100663296,
+      "guard": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/baseline-api01-guard/process.json",
+        "bytes": 3125,
+        "sha256": "6b742a6cef98afdf6abe0d2f952d887750a39d3f9a2a36b3f475f5ad8e5f6b14"
+      }
+    },
+    {
+      "name": "baseline-capture01",
+      "recordedCommand": [
+        "bash",
+        "-c",
+        "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+        "bend-build",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/.assets/bin/bun",
+        "research/phase199/scan-lowering/capture.mjs",
+        "selfhost/build/phase199/baseline-api01",
+        "selfhost/build/phase199/baseline-capture01"
+      ],
+      "rssLimitBytes": 3221225472,
+      "diskBudgetBytes": 100663296,
+      "guard": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/baseline-capture01-guard/process.json",
+        "bytes": 2225,
+        "sha256": "a8730dd822dc87fb9c92d8ca5a79eeaa807a9af59a92770e253214f4fa82b912"
+      }
+    },
+    {
+      "name": "focused-emission01",
+      "recordedCommand": [
+        "bash",
+        "-c",
+        "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+        "bend-build",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/.assets/bin/bun",
+        "selfhost/tests/phase195/prepared-emission/driver.mjs",
+        "--plan",
+        "selfhost/build/phase199/focused-plan01/emission.json",
+        "--out",
+        "selfhost/build/phase199/focused-emission01"
+      ],
+      "rssLimitBytes": 3221225472,
+      "diskBudgetBytes": 134217728,
+      "guard": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/focused-emission01-guard/process.json",
+        "bytes": 2520,
+        "sha256": "698a790658312a65076c3acc568724a92d795fcb61b9938f9af0a4ce50f33f91"
+      }
+    },
+    {
+      "name": "focused-products01",
+      "recordedCommand": [
+        "bash",
+        "-c",
+        "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+        "bend-build",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "research/phase199/screen/products.py",
+        "--study",
+        "selfhost/build/phase199/focused-plan01/study.json",
+        "--emission",
+        "selfhost/build/phase199/focused-emission01/scan/report.json",
+        "--out",
+        "selfhost/build/phase199/focused-products01"
+      ],
+      "rssLimitBytes": 2147483648,
+      "diskBudgetBytes": 134217728,
+      "guard": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/focused-products01-guard/process.json",
+        "bytes": 2592,
+        "sha256": "dd73859f6026bddd2b18b3931e8654218b1c09a576f489dd5b71dee9b459d68a"
+      }
+    },
+    {
+      "name": "focused-runtime01",
+      "recordedCommand": [
+        "bash",
+        "-c",
+        "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+        "bend-build",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "research/phase199/screen/measure.py",
+        "--products",
+        "selfhost/build/phase199/focused-products01/report.json",
+        "--only-folds",
+        "--out",
+        "selfhost/build/phase199/focused-runtime01"
+      ],
+      "rssLimitBytes": 2147483648,
+      "diskBudgetBytes": 67108864,
+      "guard": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/focused-runtime01-guard/process.json",
+        "bytes": 2295,
+        "sha256": "55f5d86f90a0ab9c75a0f365bf616e0ba101dfd79720c10c423d32b1fd8630b1"
+      }
+    },
+    {
+      "name": "scan-controls-old01",
+      "recordedCommand": [
+        "bash",
+        "-c",
+        "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+        "bend-build",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "research/phase199/scan-controls/worker.py",
+        "--object",
+        "selfhost/build/phase198/progress-native45-01/local-fold/machine/program.o",
+        "--out",
+        "selfhost/build/phase199/scan-controls-old01"
+      ],
+      "rssLimitBytes": 2147483648,
+      "diskBudgetBytes": 10485760,
+      "guard": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/scan-controls-old01-guard/process.json",
+        "bytes": 2325,
+        "sha256": "722727811e1a0c5bea05ee3b988482be6d7f02703ca0dfbcfd850ce8b32db475"
+      }
+    },
+    {
+      "name": "scan-selector-controls01",
+      "recordedCommand": [
+        "bash",
+        "-c",
+        "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+        "bend-build",
+        "taskset",
+        "-c",
+        "3",
+        "selfhost/.assets/bin/bun",
+        "research/phase199/scan-controls/selector.mjs",
+        "--api",
+        "selfhost/build/phase199/scan-api01/report.json",
+        "--capture",
+        "selfhost/build/phase199/baseline-capture01/capture.json",
+        "--out",
+        "selfhost/build/phase199/scan-selector-controls01"
+      ],
+      "rssLimitBytes": 2147483648,
+      "diskBudgetBytes": 8388608,
+      "guard": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/scan-selector-controls01-guard/process.json",
+        "bytes": 2806,
+        "sha256": "97b646a6d03c8565292a0b8316be929d83500a387d950bde3124f0b83c4972ee"
+      }
+    },
+    {
+      "name": "scan-controls-new01",
+      "recordedCommand": [
+        "bash",
+        "-c",
+        "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+        "bend-build",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "research/phase199/scan-controls/worker.py",
+        "--object",
+        "selfhost/build/phase199/focused-emission01/scan/local-fold/program.o",
+        "--helper",
+        "selfhost/build/phase198/p199-scan-runtime01/scan.o",
+        "--out",
+        "selfhost/build/phase199/scan-controls-new01"
+      ],
+      "rssLimitBytes": 2147483648,
+      "diskBudgetBytes": 10485760,
+      "guard": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/scan-controls-new01-guard/process.json",
+        "bytes": 2618,
+        "sha256": "34b52166f8bd71f777be18990eb75e645428f6d248b65c4303df77ecd67379b6"
+      }
+    },
+    {
+      "name": "runtime-bundle01",
+      "recordedCommand": [
+        "bash",
+        "-c",
+        "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+        "bend-build",
+        "taskset",
+        "-c",
+        "3",
+        "python3",
+        "-B",
+        "research/phase199/native-use/bundle.py",
+        "--out",
+        "selfhost/build/phase199/runtime-bundle01"
+      ],
+      "rssLimitBytes": 2147483648,
+      "diskBudgetBytes": 3145728,
+      "guard": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/runtime-bundle01-guard/process.json",
+        "bytes": 1961,
+        "sha256": "049a2bc7a012cb4f9718ca960939d455088bc02233d99ad48ee54f07fefe283b"
+      }
+    }
+  ],
+  "replay": "Use existing Phase199 job.py with fresh artifact names and consistent dependent paths. Commands below record the exact guarded process argv, including CPU and file limits."
+}

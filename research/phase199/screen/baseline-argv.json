@@ -1,0 +1,39 @@
+{
+  "acquire": [
+    "python3",
+    "-B",
+    "research/phase199/screen/job.py",
+    "--rss-mib",
+    "3072",
+    "baseline-api01",
+    "45",
+    "96",
+    "selfhost/.assets/bin/bun",
+    "selfhost/tools/build/hosted.mjs",
+    "acquire",
+    "--source",
+    "selfhost/build/phase199/baseline-source01/compiler.bend",
+    "--exports",
+    "selfhost/build/phase199/baseline-source01/exports.json",
+    "--out",
+    "selfhost/build/phase199/baseline-api01",
+    "--engine",
+    "selfhost/.assets/bin/bun",
+    "--upstream",
+    "selfhost/.bootstrap/upstream-phase182"
+  ],
+  "capture": [
+    "python3",
+    "-B",
+    "research/phase199/screen/job.py",
+    "--rss-mib",
+    "3072",
+    "baseline-capture01",
+    "45",
+    "96",
+    "selfhost/.assets/bin/bun",
+    "research/phase199/scan-lowering/capture.mjs",
+    "selfhost/build/phase199/baseline-api01",
+    "selfhost/build/phase199/baseline-capture01"
+  ]
+}

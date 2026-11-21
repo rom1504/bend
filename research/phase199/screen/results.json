@@ -1,0 +1,747 @@
+{
+  "complete": true,
+  "targetsRun": false,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase199/screen/summarize.py",
+    "bytes": 4365,
+    "sha256": "3a8480292fadddb038d9b90cb41c3fc6720d4f28c276ae494a7c1febb8bca6fa"
+  },
+  "measurement": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/focused-runtime01/report.json",
+    "bytes": 130406,
+    "sha256": "a96741cb101dbd00e4aef10ff3b9ecfb4eba56b7a03702fb10968626912e100f"
+  },
+  "products": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/focused-products01/report.json",
+    "bytes": 320183,
+    "sha256": "d93d793f74d987f6618a5219bddecf083862223cbd7d00e31e86ed3abd06e410"
+  },
+  "groups": [
+    {
+      "case": "local-fold",
+      "arm": "original/program-helper-runtime",
+      "nsPerWork": {
+        "c": 2801.601897526684,
+        "stored": 5625.140628515713,
+        "baseline": 5695.401490648292,
+        "delegate": 3459.018154474165,
+        "simd": 1556.2597266232915
+      },
+      "againstMatchedBaseline": {
+        "c": {
+          "median": 0.49352213565266295,
+          "pairs": [
+            0.4981708109067753,
+            0.4858702970572252,
+            0.4949612693990621,
+            0.41156398277156897,
+            0.49352213565266295
+          ]
+        },
+        "stored": {
+          "median": 0.9937981368788879,
+          "pairs": [
+            1.005916603611293,
+            0.9876635804784007,
+            0.9937981368788879,
+            0.8163341838648007,
+            0.9959019117658036
+          ]
+        },
+        "baseline": {
+          "median": 1.0,
+          "pairs": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "delegate": {
+          "median": 0.6149752995263873,
+          "pairs": [
+            0.6149752995263873,
+            0.6526024861112768,
+            0.6111075303469761,
+            0.5019811856421589,
+            0.6197962630059378
+          ]
+        },
+        "simd": {
+          "median": 0.27298322273281983,
+          "pairs": [
+            0.28016614977261334,
+            0.2748945421649626,
+            0.2666641666510416,
+            0.22040609692586088,
+            0.27298322273281983
+          ]
+        }
+      },
+      "simdOverC": 0.5531326824313779,
+      "simdOverDelegate": 0.4390724258796804
+    },
+    {
+      "case": "local-fold",
+      "arm": "live/program-helper-runtime",
+      "nsPerWork": {
+        "c": 2887.5406060397722,
+        "stored": 5617.9775280898875,
+        "baseline": 5597.274370741205,
+        "delegate": 3438.3107979834203,
+        "simd": 1582.03125
+      },
+      "againstMatchedBaseline": {
+        "c": {
+          "median": 0.49747812859868346,
+          "pairs": [
+            0.48824673398211893,
+            0.5158833415660125,
+            0.5281662782699651,
+            0.49747812859868346,
+            0.496720222156426
+          ]
+        },
+        "stored": {
+          "median": 1.0036987926582455,
+          "pairs": [
+            1.0036987926582455,
+            1.0036987926582455,
+            1.010258915486077,
+            1.003370786516854,
+            1.0163239347042612
+          ]
+        },
+        "baseline": {
+          "median": 1.0,
+          "pairs": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "delegate": {
+          "median": 0.6142830546161187,
+          "pairs": [
+            0.6029772315250244,
+            0.6142830546161187,
+            0.6142830546161187,
+            0.6181223237074694,
+            0.6725720387602978
+          ]
+        },
+        "simd": {
+          "median": 0.2742734743514151,
+          "pairs": [
+            0.2651960403726708,
+            0.28264314829192544,
+            0.28787728066770185,
+            0.268609130859375,
+            0.2742734743514151
+          ]
+        }
+      },
+      "simdOverC": 0.5450504746547965,
+      "simdOverDelegate": 0.43981103515625
+    },
+    {
+      "case": "local-fold",
+      "arm": "live/program-runtime-helper",
+      "nsPerWork": {
+        "c": 2767.196147487961,
+        "stored": 5906.342286598228,
+        "baseline": 5589.931092673323,
+        "delegate": 3437.5335696637662,
+        "simd": 1509.3844336527104
+      },
+      "againstMatchedBaseline": {
+        "c": {
+          "median": 0.491817751553115,
+          "pairs": [
+            0.5239627026350181,
+            0.485708214266741,
+            0.4770310740554397,
+            0.5239627026350181,
+            0.491817751553115
+          ]
+        },
+        "stored": {
+          "median": 1.018181818181818,
+          "pairs": [
+            1.0062893081761006,
+            1.0745341614906831,
+            1.018181818181818,
+            1.0062893081761006,
+            1.3081761006289307
+          ]
+        },
+        "baseline": {
+          "median": 1.0,
+          "pairs": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "delegate": {
+          "median": 0.6072640867598882,
+          "pairs": [
+            0.7187239507854372,
+            0.603516132454467,
+            0.5999964843406673,
+            0.6072640867598882,
+            0.614950973934064
+          ]
+        },
+        "simd": {
+          "median": 0.268341299774633,
+          "pairs": [
+            0.27840409851618175,
+            0.265007867479296,
+            0.2601995807928345,
+            0.268341299774633,
+            0.2767269653925903
+          ]
+        }
+      },
+      "simdOverC": 0.5454562500106536,
+      "simdOverDelegate": 0.43910651800064315
+    },
+    {
+      "case": "variation-local-fold-128-0",
+      "arm": "original/program-helper-runtime",
+      "nsPerWork": {
+        "c": 107.8125,
+        "stored": 302.734375,
+        "baseline": 283.203125,
+        "delegate": 210.9375,
+        "simd": 150.0000937500586
+      },
+      "againstMatchedBaseline": {
+        "c": {
+          "median": 0.38055555555555554,
+          "pairs": [
+            0.37880794701986753,
+            0.38055555555555554,
+            0.37027027027027026,
+            0.38333333333333336,
+            0.383448275862069
+          ]
+        },
+        "stored": {
+          "median": 1.0689655172413792,
+          "pairs": [
+            1.0198675496688743,
+            1.0694444444444444,
+            1.054054054054054,
+            1.0763888888888888,
+            1.0689655172413792
+          ]
+        },
+        "baseline": {
+          "median": 1.0,
+          "pairs": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "delegate": {
+          "median": 0.7444444444444445,
+          "pairs": [
+            0.7152317880794702,
+            0.75,
+            0.7297297297297297,
+            0.7444444444444445,
+            0.7503448275862069
+          ]
+        },
+        "simd": {
+          "median": 0.5296555034484828,
+          "pairs": [
+            0.5086095894041722,
+            0.543333672916879,
+            0.525405733783989,
+            0.533333666666875,
+            0.5296555034484828
+          ]
+        }
+      },
+      "simdOverC": 1.3913052173918479,
+      "simdOverDelegate": 0.716418358209235
+    },
+    {
+      "case": "variation-local-fold-128-0",
+      "arm": "live/program-helper-runtime",
+      "nsPerWork": {
+        "c": 107.03125,
+        "stored": 285.15625,
+        "baseline": 279.296875,
+        "delegate": 207.42195602420156,
+        "simd": 152.3438095093006
+      },
+      "againstMatchedBaseline": {
+        "c": {
+          "median": 0.3804195804195804,
+          "pairs": [
+            0.38055555555555554,
+            0.36778523489932885,
+            0.3832167832167832,
+            0.3804195804195804,
+            0.3804195804195804
+          ]
+        },
+        "stored": {
+          "median": 1.013986013986014,
+          "pairs": [
+            1.0138888888888888,
+            0.9798657718120806,
+            1.020979020979021,
+            1.020979020979021,
+            1.013986013986014
+          ]
+        },
+        "baseline": {
+          "median": 1.0,
+          "pairs": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "delegate": {
+          "median": 0.7384618269231896,
+          "pairs": [
+            0.7333336197917786,
+            0.7328861923239374,
+            0.7426576327579805,
+            0.7930073027754706,
+            0.7384618269231896
+          ]
+        },
+        "simd": {
+          "median": 0.5454547585228106,
+          "pairs": [
+            0.5666668880209198,
+            0.5637586094799518,
+            0.5454547585228106,
+            0.5454547585228106,
+            0.5454547585228106
+          ]
+        }
+      },
+      "simdOverC": 1.4338240894992997,
+      "simdOverDelegate": 0.7386363636363636
+    },
+    {
+      "case": "variation-local-fold-128-0",
+      "arm": "live/program-runtime-helper",
+      "nsPerWork": {
+        "c": 106.5210041556424,
+        "stored": 285.9375,
+        "baseline": 285.15625,
+        "delegate": 212.5,
+        "simd": 155.85943588259215
+      },
+      "againstMatchedBaseline": {
+        "c": {
+          "median": 0.37123290480856913,
+          "pairs": [
+            0.37123290480856913,
+            0.37355311046362266,
+            0.37355311046362266,
+            0.37101193284142114,
+            0.37123290480856913
+          ]
+        },
+        "stored": {
+          "median": 1.0027397260273974,
+          "pairs": [
+            1.0027397260273974,
+            1.0027397260273974,
+            0.9972602739726028,
+            1.0231292517006803,
+            0.9972602739726028
+          ]
+        },
+        "baseline": {
+          "median": 1.0,
+          "pairs": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "delegate": {
+          "median": 0.7452054794520548,
+          "pairs": [
+            0.7506849315068493,
+            0.7726027397260274,
+            0.7452054794520548,
+            0.7401360544217687,
+            0.7452054794520548
+          ]
+        },
+        "simd": {
+          "median": 0.54657555597183,
+          "pairs": [
+            0.54657555597183,
+            0.5589043279110443,
+            0.5630139185574489,
+            0.5428573549107971,
+            0.54657555597183
+          ]
+        }
+      },
+      "simdOverC": 1.4723251869434326,
+      "simdOverDelegate": 0.7334561688592571
+    },
+    {
+      "case": "variation-local-fold-8192-123",
+      "arm": "original/program-helper-runtime",
+      "nsPerWork": {
+        "c": 5505.522514868309,
+        "stored": 11039.234988046688,
+        "baseline": 11062.5,
+        "delegate": 6687.565308254963,
+        "simd": 2865.2791449866404
+      },
+      "againstMatchedBaseline": {
+        "c": {
+          "median": 0.4974125279987642,
+          "pairs": [
+            0.4843285002623136,
+            0.4974125279987642,
+            0.49767435162651386,
+            0.4974125279987642,
+            0.5084846954005833
+          ]
+        },
+        "stored": {
+          "median": 0.9915409165556348,
+          "pairs": [
+            0.977474289429215,
+            1.0035668170951535,
+            0.9915409165556348,
+            1.0035668170951535,
+            0.9851505281121369
+          ]
+        },
+        "baseline": {
+          "median": 1.0,
+          "pairs": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "delegate": {
+          "median": 0.607960482568633,
+          "pairs": [
+            0.5847051635632755,
+            0.607960482568633,
+            0.615860534037039,
+            0.607960482568633,
+            0.581998926826513
+          ]
+        },
+        "simd": {
+          "median": 0.2604799222715128,
+          "pairs": [
+            0.25051620939773905,
+            0.2604799222715128,
+            0.2621863000507688,
+            0.2604799222715128,
+            0.24932822007776304
+          ]
+        }
+      },
+      "simdOverC": 0.5236698064672789,
+      "simdOverDelegate": 0.4284487721487836
+    },
+    {
+      "case": "variation-local-fold-8192-123",
+      "arm": "live/program-helper-runtime",
+      "nsPerWork": {
+        "c": 5568.924028875902,
+        "stored": 11062.5,
+        "baseline": 11000.0,
+        "delegate": 6896.551724137931,
+        "simd": 2875.0089844030763
+      },
+      "againstMatchedBaseline": {
+        "c": {
+          "median": 0.5000156254882966,
+          "pairs": [
+            0.5125160161255039,
+            0.4968905278289946,
+            0.4950154692334135,
+            0.5000156254882966,
+            0.5093637437039472
+          ]
+        },
+        "stored": {
+          "median": 1.0056818181818181,
+          "pairs": [
+            1.0113636363636365,
+            1.0056818181818181,
+            0.9833333333333333,
+            1.0056818181818181,
+            1.0739130434782609
+          ]
+        },
+        "baseline": {
+          "median": 1.0,
+          "pairs": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "delegate": {
+          "median": 0.6269592476489029,
+          "pairs": [
+            0.607960482568633,
+            0.6269592476489029,
+            0.6947637292464879,
+            0.607960482568633,
+            0.6338648857389487
+          ]
+        },
+        "simd": {
+          "median": 0.2613644531275524,
+          "pairs": [
+            0.2613644531275524,
+            0.2809667871121188,
+            0.25555635416916234,
+            0.2613644531275524,
+            0.27250085156516113
+          ]
+        }
+      },
+      "simdOverC": 0.5227125709767843,
+      "simdOverDelegate": 0.4299036871990225
+    },
+    {
+      "case": "variation-local-fold-8192-123",
+      "arm": "live/program-runtime-helper",
+      "nsPerWork": {
+        "c": 5492.977332777083,
+        "stored": 11062.5,
+        "baseline": 11062.5,
+        "delegate": 6729.362591431557,
+        "simd": 2875.0089844030763
+      },
+      "againstMatchedBaseline": {
+        "c": {
+          "median": 0.4965403238668549,
+          "pairs": [
+            0.4965403238668549,
+            0.4993615757070075,
+            0.4810818327714448,
+            0.4965403238668549,
+            0.4931467789452035
+          ]
+        },
+        "stored": {
+          "median": 1.0,
+          "pairs": [
+            1.0,
+            1.0,
+            0.9621621621621622,
+            1.0,
+            0.9831932773109243
+          ]
+        },
+        "baseline": {
+          "median": 1.0,
+          "pairs": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "delegate": {
+          "median": 0.6045256775823695,
+          "pairs": [
+            0.6083039630672594,
+            0.604160729552579,
+            0.6000734276596346,
+            0.6045256775823695,
+            0.6069387002449882
+          ]
+        },
+        "simd": {
+          "median": 0.25988781779914816,
+          "pairs": [
+            0.25988781779914816,
+            0.2613644531275524,
+            0.2517575434990802,
+            0.25988781779914816,
+            0.26454914604381247
+          ]
+        }
+      },
+      "simdOverC": 0.5233972052365196,
+      "simdOverDelegate": 0.4299036871990225
+    }
+  ],
+  "sampleCount": 225,
+  "pilotCount": 132,
+  "positionBalanced": true,
+  "minimumSampleMs": 130,
+  "unchangedControlObjects": [
+    "editdist",
+    "mandelbrot"
+  ],
+  "gates": [
+    {
+      "name": "baseline-api01",
+      "guard": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/baseline-api01-guard/process.json",
+        "bytes": 3125,
+        "sha256": "6b742a6cef98afdf6abe0d2f952d887750a39d3f9a2a36b3f475f5ad8e5f6b14"
+      },
+      "close": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase199/baseline-api01-close/report.json",
+        "bytes": 1442,
+        "sha256": "444ab00a11facce8b6bdd31c361405dd08b2a554c69bc9f2df42b6e04ad164a2"
+      },
+      "seconds": 15.934327174909413
+    },
+    {
+      "name": "baseline-capture01",
+      "guard": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/baseline-capture01-guard/process.json",
+        "bytes": 2225,
+        "sha256": "a8730dd822dc87fb9c92d8ca5a79eeaa807a9af59a92770e253214f4fa82b912"
+      },
+      "close": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase199/baseline-capture01-close/report.json",
+        "bytes": 1454,
+        "sha256": "0a3ada39f7ab583aab8e953c50fff1ccf2e83a9a0bc5bd50e037e892fa2b3141"
+      },
+      "seconds": 9.772984521463513
+    },
+    {
+      "name": "focused-emission01",
+      "guard": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/focused-emission01-guard/process.json",
+        "bytes": 2520,
+        "sha256": "698a790658312a65076c3acc568724a92d795fcb61b9938f9af0a4ce50f33f91"
+      },
+      "close": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase199/focused-emission01-close/report.json",
+        "bytes": 1454,
+        "sha256": "a54ac337f9bd653458666e9ed592e4b897b03b7462e5406a91c09b067b9f4df2"
+      },
+      "seconds": 45.78080802038312
+    },
+    {
+      "name": "focused-products01",
+      "guard": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/focused-products01-guard/process.json",
+        "bytes": 2592,
+        "sha256": "dd73859f6026bddd2b18b3931e8654218b1c09a576f489dd5b71dee9b459d68a"
+      },
+      "close": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase199/focused-products01-close/report.json",
+        "bytes": 1453,
+        "sha256": "cde96da1890b3aa3cd0634c8889e8d50ceaa360f62301b0e97954686c8c4b121"
+      },
+      "seconds": 5.980207701213658
+    },
+    {
+      "name": "focused-runtime01",
+      "guard": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/focused-runtime01-guard/process.json",
+        "bytes": 2295,
+        "sha256": "55f5d86f90a0ab9c75a0f365bf616e0ba101dfd79720c10c423d32b1fd8630b1"
+      },
+      "close": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase199/focused-runtime01-close/report.json",
+        "bytes": 1451,
+        "sha256": "08c830c7b6a46348f4c90c0fb0e6c255b20dfa08fcf5a73acad6e8c1416c1ab1"
+      },
+      "seconds": 51.04039771668613
+    },
+    {
+      "name": "scan-controls-old01",
+      "guard": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/scan-controls-old01-guard/process.json",
+        "bytes": 2325,
+        "sha256": "722727811e1a0c5bea05ee3b988482be6d7f02703ca0dfbcfd850ce8b32db475"
+      },
+      "close": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase199/scan-controls-old01-close/report.json",
+        "bytes": 1455,
+        "sha256": "1f7c9db653175699a53f4359e8b6688130b3c43afb106f4003a16867a8c4ef81"
+      },
+      "seconds": 0.27230781968683004
+    },
+    {
+      "name": "scan-selector-controls01",
+      "guard": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/scan-selector-controls01-guard/process.json",
+        "bytes": 2806,
+        "sha256": "97b646a6d03c8565292a0b8316be929d83500a387d950bde3124f0b83c4972ee"
+      },
+      "close": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase199/scan-selector-controls01-close/report.json",
+        "bytes": 1471,
+        "sha256": "e19a8545a1d9581ab92614a8dcd3d292a867d3fa102baf1a6347b187329fa901"
+      },
+      "seconds": 0.515614633448422
+    },
+    {
+      "name": "scan-controls-new01",
+      "guard": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/scan-controls-new01-guard/process.json",
+        "bytes": 2618,
+        "sha256": "34b52166f8bd71f777be18990eb75e645428f6d248b65c4303df77ecd67379b6"
+      },
+      "close": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase199/scan-controls-new01-close/report.json",
+        "bytes": 1456,
+        "sha256": "a631a3ca46f49ae7689b80cb90916ddadf2ff69a4410e6aef88c9eeb73309fe2"
+      },
+      "seconds": 0.27224879059940577
+    },
+    {
+      "name": "runtime-bundle01",
+      "guard": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/runtime-bundle01-guard/process.json",
+        "bytes": 1961,
+        "sha256": "049a2bc7a012cb4f9718ca960939d455088bc02233d99ad48ee54f07fefe283b"
+      },
+      "close": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build-retention/phase199/runtime-bundle01-close/report.json",
+        "bytes": 1447,
+        "sha256": "eddab8a201221af54b74b21732402c9858a29c05bdfe97ffae396674e5f8d323"
+      },
+      "seconds": 0.1255830256268382
+    }
+  ],
+  "projection": {
+    "computed": false,
+    "reason": "Only5catalogobjects emitted in this screen; remaining40not certified unchanged. project.py requires an authenticated all45 object set."
+  },
+  "scope": "Actual complete-program paired timings from checked Bend lowering plus real C/SSE2 helper; no assembly patch. Original/live runtime and scalar delegate denominators retained. No native self-reproduction or full-suite speed claim for this isolated experiment."
+}

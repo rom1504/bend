@@ -1,7 +1,7 @@
 {
   "kind": "build-retention-disk-guard-v1",
   "complete": true,
-  "started": 1795293192.9038928,
+  "started": 1795298444.2291348,
   "command": [
     "bash",
     "-c",
@@ -10,24 +10,23 @@
     "taskset",
     "-c",
     "2",
-    "python3",
-    "-B",
-    "/home/ai/bend2_agy/research/agy/native_selfbuild.py",
-    "/home/ai/bend2_agy/selfhost/build/agy/native-self"
+    "bash",
+    "-c",
+    "python3 -B /home/ai/bend2_agy/research/agy/native_selfbuild.py /home/ai/bend2_agy/selfhost/build/agy/native-self-v2 && python3 -B /home/ai/bend2_agy/research/agy/qualify_native_n2.py /home/ai/bend2_agy/selfhost/build/agy/native-self-v2/n2 /home/ai/bend2_agy/selfhost/build/agy/native-self-v2/n2-qual-report.json"
   ],
   "returncode": 0,
   "rssLimitBytes": 3221225472,
   "availableFloorBytes": 4294967296,
-  "peakTreeRssBytes": 2074214400,
-  "minimumAvailableBytes": 24024256512,
+  "peakTreeRssBytes": 2073665536,
+  "minimumAvailableBytes": 24029220864,
   "diskBudgetBytes": 268435456,
   "diskReserveBytes": 5368709120,
-  "initialDiskFreeBytes": 8303513600,
-  "minimumDiskFreeBytes": 8200511488,
-  "peakRunAllocatedBytes": 93396992,
-  "peakFilesystemDecreaseBytes": 103002112,
+  "initialDiskFreeBytes": 8285151232,
+  "minimumDiskFreeBytes": 8189870080,
+  "peakRunAllocatedBytes": 98172928,
+  "peakFilesystemDecreaseBytes": 95281152,
   "artifactRoots": [
-    "/home/ai/bend2_agy/selfhost/build/agy/native-self"
+    "/home/ai/bend2_agy/selfhost/build/agy/native-self-v2"
   ],
   "lockPath": "/home/ai/bend2_agy/selfhost/build/phase32/execution.lock",
   "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
@@ -44,14 +43,8 @@
     },
     "cpu": "2",
     "fileLimitBytes": 134217728,
-    "commandFiles": [
-      {
-        "path": "/home/ai/bend2_agy/research/agy/native_selfbuild.py",
-        "sha256": "5a2c7b84cafe30b702d90136a5c85564d6b4cd66f158de42ef7b48f2076ef6e6",
-        "bytes": 6708
-      }
-    ]
+    "commandFiles": []
   },
-  "wallSeconds": 948.9530366240069,
-  "finished": 1795294141.8567035
+  "wallSeconds": 1224.7657687077299,
+  "finished": 1795299668.9947693
 }

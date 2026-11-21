@@ -1,0 +1,78 @@
+{
+  "kind": "agy-boundary-audit-v1",
+  "cases": {
+    "nat_arith_boundaries": {
+      "upstream": "False,True,False,0,0,5\n",
+      "p205": "False,True,False,0,0,5\n",
+      "agy": "False,True,False,0,0,5\n",
+      "p205EmitSec": 1.465,
+      "agyEmitSec": 1.552,
+      "passed": true
+    },
+    "nat_div_mod_zero": {
+      "upstream": "0,7\n",
+      "p205": "0,7\n",
+      "agy": "0,7\n",
+      "p205EmitSec": 1.313,
+      "agyEmitSec": 1.308,
+      "passed": true
+    },
+    "u32_wrap_and_div0": {
+      "upstream": "0,1,4294967295,0,0,7\n",
+      "p205": "0,1,4294967295,0,0,7\n",
+      "agy": "0,1,4294967295,0,0,7\n",
+      "p205EmitSec": 1.324,
+      "agyEmitSec": 1.416,
+      "passed": true
+    },
+    "u32_shift_boundaries": {
+      "upstream": "1,2147483648,0,0,1,0,0\n",
+      "p205": "1,2147483648,0,0,1,0,0\n",
+      "agy": "1,2147483648,0,0,1,0,0\n",
+      "p205EmitSec": 1.366,
+      "agyEmitSec": 1.395,
+      "passed": true
+    },
+    "f32_to_u32_edges": {
+      "upstream": "0,42,0,0,0,0\n",
+      "p205": "0,42,0,0,0,0\n",
+      "agy": "0,42,0,0,0,0\n",
+      "p205EmitSec": 1.424,
+      "agyEmitSec": 1.382,
+      "passed": true
+    },
+    "f32_zero_nan_bits": {
+      "upstream": "2147483648,True,False,True\n",
+      "p205": "2147483648,True,False,True\n",
+      "agy": "2147483648,True,False,True\n",
+      "p205EmitSec": 1.31,
+      "agyEmitSec": 1.335,
+      "passed": true
+    },
+    "string_unicode_and_long": {
+      "upstream": "0,h\u00e9llo,300\n",
+      "p205": "0,h\u00e9llo,300\n",
+      "agy": "0,h\u00e9llo,300\n",
+      "p205EmitSec": 1.393,
+      "agyEmitSec": 1.446,
+      "passed": true
+    },
+    "bf_linearize_wrap_boundary": {
+      "upstream": "4294967278,15,24720\n",
+      "p205": "4294967278,15,24720\n",
+      "agy": "4294967278,15,24720\n",
+      "p205EmitSec": 1.334,
+      "agyEmitSec": 1.488,
+      "passed": true
+    },
+    "ctfe_adverse_fuel_exhaust": {
+      "upstream": "300000\n",
+      "p205": "300000\n",
+      "agy": "300000\n",
+      "p205EmitSec": 1.097,
+      "agyEmitSec": 1.731,
+      "passed": true
+    }
+  },
+  "mismatches": []
+}

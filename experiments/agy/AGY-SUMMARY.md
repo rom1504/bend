@@ -2,12 +2,14 @@
 
 - **Branch**: `selfhost/agy` (branched off `selfhost/bootstrap` at `8f5caabf`, Phase 205)
 - **Goal**: Drive direct x86-64 ELF compiled program speed under **`0.50×` mature Bend C** with general, verified compiler & runtime optimizations and full qualification.
-- **Unified composer**: `research/agy/compose_all.py` → `selfhost/build/agy/unified/compiler.bend` (`2,115,381` bytes)
+- **Unified composer**: `research/agy/compose_all.py` → `selfhost/build/agy/unified/compiler.bend` (`2,115,737` bytes, post-CTFE-fix `9c185a1c`)
 - **Unified runtime**: `selfhost/build/agy/unified/runtime-agy.o` (`runtime-opt.o` + `sqrt-keep.o`, `132` KiB)
 - **Receipts**:
   - Full 45-case `native45` timing & oracle summary: `experiments/agy/receipts/unified-full44-summary.json`
-  - Independent 4-gate qualification report: `experiments/agy/receipts/unified-qual-report.json`
-  - Guarded native `N0 → N1 → N2 → N3` self-build & transfer receipt: `experiments/agy/receipts/unified-native-selfbuild.json` (`unified-native-selfbuild-guard.json`)
+  - Independent 4-gate hosted-B1 qualification report: `experiments/agy/receipts/unified-qual-report.json`
+  - Guarded native `N0 → N1 → N2 → N3` self-build receipt: `experiments/agy/receipts/unified-native-selfbuild.json` (`unified-native-selfbuild-guard.json`)
+  - Full native `N2` qualification (`64/64 native64` + `10/10 runtime10` + `45/45 native45 B1==N2` + `13/13 boundary`): `experiments/agy/receipts/unified-native-n2-qual.json`
+  - Differential boundary & adverse-perf receipts: `experiments/agy/receipts/ctfe-nat-boundary-fix.json`, `experiments/agy/receipts/boundary-audit.json`
   - `AGY-002` runtime benchmark receipt: `experiments/agy/receipts/agy002-rt-results.json`
 
 ## Headline Results (`native45`, CPU 2, 3 alternating rounds, 45/45 oracles PASS)
@@ -18,6 +20,7 @@
 | **Fixed-work batch vs C** | `1.547×` (`15.667 s`) | **`1.0862×`** (`10.997 s`) | **−4.670 s** (`10.125 s` C reference) |
 | **Cases > 2× slower than C** | `15 / 44` | **`6 / 44`** | **−9 cases** |
 | **Cases > 1.1× slower than C** | `30 / 44` | **`23 / 44`** | **−7 cases** |
+| **Non-CTFE ablated (40 timed, excl. 4 CTFE cases)** | `0.844×` | **`0.7514×`** (`1.2118×` fixed batch) | **0.8906×** cand/base (**−10.94%** without CTFE) |
 
 *(Note: For the 3 CTFE-folded cases that measured `0 ms` over `500,000` repetitions on the millisecond `IO.now()` clock — `test-evening-program`, `test-rle-roundtrip`, `test-map-set-ops` — `bench_all44.py` applies a conservative `0.5 ms` upper bound floor and flags `zero_clamped: true` explicitly in the receipt.)*
 
@@ -52,17 +55,21 @@
 | **3. Broad x86 Conformance (`native64` + `runtime10`)** | **74 / 74 PASS** | `64/64` `native64` (19 focused + 45 broad incl. 3 refusal controls) + `10/10` `runtime10` |
 | **4. Independent Source Check** | **PASS** | Unmodified `bend2/bend.ts` (`book_load` + `book_valid`), `typeAccepted: true`, **`unresolvedHoles: 0`**, `6,687` declaration events |
 | **5. Full `native45` Suite** | **45 / 45 PASS** | `44/44` timed + `1/1` zero-work oracle (`scalar-region-0`) |
-| **6. Native Self-Build (`N0 → N1 → N2 → N3`)** | **PASS (Exact Fixed-Point)** | `SHA-256(n2.o) == SHA-256(n3.o)` (`3d4058cd...`), `N2 == B1` byte-identical on `5/5` `native45` transfer programs with passing oracles |
+| **6. Native Self-Build (`N0 → N1 → N2 → N3`)** | **PASS (Exact Fixed-Point)** | `SHA-256(n2.o) == SHA-256(n3.o)` (`94389266...`) on repaired source |
+| **7. Full Native `N2` Qualification** | **PASS (132 / 132)** | Direct on native `N2`: `64/64 native64`, `10/10 runtime10`, `45/45 native45` (`B1 == N2` byte-identical + oracles), `13/13` boundary & adverse-perf controls |
 
-## Native Self-Build & Fixed-Point Verification (`experiments/agy/receipts/unified-native-selfbuild.json`)
+## Native Self-Build & Full `N2` Qualification (`unified-native-selfbuild.json`, `unified-native-n2-qual.json`)
 
-Executed under `selfhost/tools/build-retention/guard.py` on CPU 2 (`wallSeconds: 948.95 s`, `peakTreeRssBytes: 1.93 GiB`, `peakRunAllocatedBytes: 89.1 MiB`):
+Executed under `selfhost/tools/build-retention/guard.py` on CPU 2 (`wallSeconds: 1224.77 s`, `peakTreeRssBytes: 1.93 GiB`, `peakRunAllocatedBytes: 93.6 MiB`):
 
-| Stage | Producer → Target | Emit Time | Object Size | Executable Size | Notes |
-|---|---|---:|---:|---:|---|
-| **Stage 1** | `N0` (Phase 205) → `N1` | `326.02 s` | `35,986,320 B` | `28,980,144 B` | Phase 205 compiling unified `compiler.bend` + `runtime-agy.o` |
-| **Stage 2** | `N1` → `N2` | `307.20 s` | `35,044,896 B` | `28,042,160 B` | **−5.8%** faster emit, **−941 KiB (−2.62%)** smaller `.o` |
-| **Stage 3** | `N2` → `N3` | **`300.35 s`** | `35,044,896 B` | — | **−7.87%** faster than `N0`, **`exactFixedPoint: true`** (`SHA-256: 3d4058cdc10e6c7913737c41d53d7025ada816ccb98fd2913f2459591f65df4b`) |
-| **Stage 4** | `N2` vs Hosted `B1` (`5` programs) | `2.15–3.78 s` | — | — | **5 / 5 `sameAsHostedB1: true`** & **5 / 5 `oracleOk: true`** (`raytrace`, `mandelbrot`, `coverage-bst-64`, `test-morning-program`, `test-evening-program`) |
+| Stage / Gate | Producer → Target | Time | Result |
+|---|---|---:|---|
+| **Stage 1** | `N0` (Phase 205) → `N1` | `326.27 s` | `n1.o = 35,986,776 B`, `n1 = 28,980,272 B` |
+| **Stage 2** | `N1` → `N2` | `310.24 s` | `n2.o = 35,045,304 B` (**−941 KiB / −2.62%**), `n2 = 28,042,288 B` |
+| **Stage 3** | `N2` → `N3` | **`300.22 s`** | **−7.98%** faster than `N0`, **`exactFixedPoint: true`** (`SHA-256: 9438926629544fa84148e7e2f882d5d7e6fb82e42b2895c593686e5c71a0939f`) |
+| **Native `N2` `native64`** | `N2` + `runtime-agy.o` | `119.84 s` | **64 / 64 PASS** (19 focused + 45 broad incl. 3 refusals) |
+| **Native `N2` `runtime10`** | `N2` + `runtime-agy.o` | `15.40 s` | **10 / 10 PASS** |
+| **Native `N2` `native45`** | `N2` vs Hosted `B1` | `114.96 s` (`live`) | **45 / 45 `sameAsHostedB1: true`** & **45 / 45 `oracleOk: true`** |
+| **Native `N2` `boundary13`** | `N2` vs Upstream & `B1` | `19.98 s` | **13 / 13 PASS** (4 CTFE `U32`/`Nat` overflow + 9 `Nat`/`U32`/`F32`/`String`/`bf_linearize`/fuel-exhaust) |
 
 *(Distinction preserved per `AGENTS.md`: source checking, hosted-B1 qualification, native `N0→N1→N2→N3` byte-exact self-reproduction, and independent Lean BendTT kernel proofs are reported distinctly; BendTT kernel proofs remain a separate downstream gate.)*

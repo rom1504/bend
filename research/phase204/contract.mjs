@@ -1,0 +1,31 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {pathToFileURL} from 'node:url';
+import {verify} from '../../selfhost/tools/build/hosted.mjs';
+const [out, corpus]=process.argv.slice(2);
+const cert=JSON.parse(fs.readFileSync(path.join(out,'api/report.json')));
+verify(cert.api);verify(cert.source);
+const api=(await import(pathToFileURL(cert.api.file))).default;
+const census=JSON.parse(fs.readFileSync(corpus));
+const body=census.examples[0].body;
+const list=a=>a.reduceRight((tail,head)=>({$:'Con',head,tail}),{$:'Nil'});
+const trials=[];
+function test(name,change,expected){
+ const rows=structuredClone(body);change(rows);
+ assert.equal(api.x202k_shape(list(rows)),expected,name);
+ trials.push({name,expected});
+}
+test('exact prepared body',()=>{},true);
+test('canonical load',r=>{r[3]={$:'N111Load',name:r[3].name,typ:{$:'N111U64'},base:{$:'N111Local',name:'state'},offset:40};},true);
+test('different register',r=>r[3].args.tail.head.value.lo=1,false);
+test('high word on index',r=>r[3].args.tail.head.value.hi=1,false);
+test('wide index',r=>r[3].args.tail.head.typ={$:'N111U64'},false);
+test('wrong context',r=>r[3].args.head.value.name='other',false);
+test('different call',r=>r[3].symbol='p111_rt_stack_get',false);
+test('getter result width',r=>r[3].typ={$:'N111U32'},false);
+test('getter aliases saved value',r=>r[3].name=r[2].name,false);
+test('reversed apply',r=>{const a=r[5].args.tail;[a.head.value,a.tail.head.value]=[a.tail.head.value,a.head.value]},false);
+test('extra effect',r=>r.splice(5,0,structuredClone(r[1])),false);
+test('wrong reply',r=>r[6].value.name='other',false);
+fs.writeFileSync(path.join(out,'checks.json'),JSON.stringify({complete:true,compilerSource:cert.source.sha256,trials},null,2)+'\n');

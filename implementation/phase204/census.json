@@ -1,0 +1,212 @@
+{
+  "compiler": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase203/candidate01/compiler.bend",
+    "bytes": 1975328,
+    "sha256": "ae66e5be0e03ee39a55e429a9d81d52c68aa31238c393e3209e0de1f36094d68"
+  },
+  "sourceSha256": "ff6b4083aa2f3e034f3b4f8e43dfb25d93a4f524685934e0ee13845278033ef3",
+  "rows": 983,
+  "selected": 0,
+  "applies": 161,
+  "shapes": [
+    [
+      "N111Alloca/p111_rt_stack_pop/p111_rt_stack_get/p111_rt_reg_get/N111Set/p111_rt_apply/N111Return",
+      161
+    ]
+  ],
+  "examples": [
+    {
+      "name": "$p111.k.5091",
+      "body": [
+        {
+          "$": "N111Alloca",
+          "name": "scratch",
+          "bytes": 2048,
+          "align": 8
+        },
+        {
+          "$": "N111Call",
+          "name": "ignored",
+          "typ": {
+            "$": "N111U64"
+          },
+          "symbol": "p111_rt_stack_pop",
+          "args": {
+            "$": "Con",
+            "head": {
+              "$": "N111Arg",
+              "typ": {
+                "$": "N111Ptr"
+              },
+              "value": {
+                "$": "N111Local",
+                "name": "state"
+              }
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "N111Arg",
+                "typ": {
+                  "$": "N111U32"
+                },
+                "value": {
+                  "$": "N111Const",
+                  "lo": 1,
+                  "hi": 0
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          }
+        },
+        {
+          "$": "N111Call",
+          "name": "v_4294962236",
+          "typ": {
+            "$": "N111U64"
+          },
+          "symbol": "p111_rt_stack_get",
+          "args": {
+            "$": "Con",
+            "head": {
+              "$": "N111Arg",
+              "typ": {
+                "$": "N111Ptr"
+              },
+              "value": {
+                "$": "N111Local",
+                "name": "state"
+              }
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "N111Arg",
+                "typ": {
+                  "$": "N111U32"
+                },
+                "value": {
+                  "$": "N111Const",
+                  "lo": 0,
+                  "hi": 0
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          }
+        },
+        {
+          "$": "N111Call",
+          "name": "v_4294962206",
+          "typ": {
+            "$": "N111U64"
+          },
+          "symbol": "p111_rt_reg_get",
+          "args": {
+            "$": "Con",
+            "head": {
+              "$": "N111Arg",
+              "typ": {
+                "$": "N111Ptr"
+              },
+              "value": {
+                "$": "N111Local",
+                "name": "state"
+              }
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "N111Arg",
+                "typ": {
+                  "$": "N111U32"
+                },
+                "value": {
+                  "$": "N111Const",
+                  "lo": 0,
+                  "hi": 0
+                }
+              },
+              "tail": {
+                "$": "Nil"
+              }
+            }
+          }
+        },
+        {
+          "$": "N111Set",
+          "name": "v_4294962205",
+          "typ": {
+            "$": "N111U64"
+          },
+          "value": {
+            "$": "N111Local",
+            "name": "v_4294962236"
+          }
+        },
+        {
+          "$": "N111Call",
+          "name": "reply",
+          "typ": {
+            "$": "N111U64"
+          },
+          "symbol": "p111_rt_apply",
+          "args": {
+            "$": "Con",
+            "head": {
+              "$": "N111Arg",
+              "typ": {
+                "$": "N111Ptr"
+              },
+              "value": {
+                "$": "N111Local",
+                "name": "state"
+              }
+            },
+            "tail": {
+              "$": "Con",
+              "head": {
+                "$": "N111Arg",
+                "typ": {
+                  "$": "N111U64"
+                },
+                "value": {
+                  "$": "N111Local",
+                  "name": "v_4294962206"
+                }
+              },
+              "tail": {
+                "$": "Con",
+                "head": {
+                  "$": "N111Arg",
+                  "typ": {
+                    "$": "N111U64"
+                  },
+                  "value": {
+                    "$": "N111Local",
+                    "name": "v_4294962205"
+                  }
+                },
+                "tail": {
+                  "$": "Nil"
+                }
+              }
+            }
+          }
+        },
+        {
+          "$": "N111Return",
+          "value": {
+            "$": "N111Local",
+            "name": "reply"
+          }
+        }
+      ]
+    }
+  ]
+}

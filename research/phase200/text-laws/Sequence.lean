@@ -41,22 +41,22 @@ theorem join_split [DecidableEq α] (d : α) (s xs : List α) :
     · simp [split, h, replacement, join_cut, ih]
     · simp [split, h, replacement, join_push, ih]
 
-def repeat (xs : List α) : Nat → List α
+def repeatSeq (xs : List α) : Nat → List α
   | 0 => []
-  | n + 1 => xs ++ repeat xs n
+  | n + 1 => xs ++ repeatSeq xs n
 
 theorem flatMap_repeat (f : α → List β) (xs : List α) (n : Nat) :
-    (repeat xs n).flatMap f = repeat (xs.flatMap f) n := by
+    (repeatSeq xs n).flatMap f = repeatSeq (xs.flatMap f) n := by
   induction n with
   | zero => rfl
-  | succ n ih => simp [repeat, List.flatMap_append, ih]
+  | succ n ih => simp [repeatSeq, List.flatMap_append, ih]
 
 theorem join_split_append [DecidableEq α] (d : α) (s xs ys : List α) :
     join s (split d (xs ++ ys)) = join s (split d xs) ++ join s (split d ys) := by
   simp only [join_split, List.flatMap_append]
 
 theorem join_split_repeat [DecidableEq α] (d : α) (s xs : List α) (n : Nat) :
-    join s (split d (repeat xs n)) = repeat (join s (split d xs)) n := by
+    join s (split d (repeatSeq xs n)) = repeatSeq (join s (split d xs)) n := by
   rw [join_split, flatMap_repeat, join_split]
 
 #print axioms join_split

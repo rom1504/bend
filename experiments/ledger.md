@@ -7464,3 +7464,7 @@ Incremental complete-program measurements against mature Bend C moved from 1.842
 ## Phase199 direct x86 reaches 1.0007× mature C on the native45 geometric mean
 
 The integrated experimental N1 passed all 45 programs. A matched three-role runtime screen found 1.625× C on fixed work and 17/44 programs above 2× C. The prior Phase198 native compiler remains the qualified release. [Results, limits and reproduction](../implementation/phase199/README.md)
+
+## Phase200 direct x86 and staged fusion
+
+The ordinary N1 took 1.0041× mature C on the 44 eligible programs, compared with 1.0188× for the same-session Phase199 reference. A separately staged lexer took 0.198× mature C on its primary input. These have different coverage. [Results and evidence](../implementation/phase200/README.md)

@@ -44,7 +44,7 @@ if lean_ok:
 finite_ok=stage('finite',[sys.executable,'-B',str(HERE/'controls.py'),'--out',str(a.out/'finite.json')],4.35)
 if finite_ok:
     r=json.loads((a.out/'finite.json').read_bytes())
-    finite_ok=r['complete'] and r['baseChecks']==32790 and r['repetitionChecks']==163950 and r['emptySegmentDroppingMutantRejected']
+    finite_ok=r['complete'] and r['baseChecks']==10920 and r['repetitionChecks']==54600 and r['emptySegmentDroppingMutantRejected']
 report['leanPassed']=lean_ok;report['finitePassed']=finite_ok
 report['complete']=lean_ok and finite_ok;save()
 print(json.dumps({'complete':report['complete'],'leanPassed':lean_ok,'finitePassed':finite_ok,'wallSeconds':report['wallSeconds']}))

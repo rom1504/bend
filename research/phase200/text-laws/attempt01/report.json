@@ -1,0 +1,63 @@
+{
+  "complete": false,
+  "scope": "Generic list sequence theorem and finite semantic controls only; no compiler or machine equivalence.",
+  "inputs": [
+    {
+      "file": "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean",
+      "bytes": 9024,
+      "sha256": "e8baaa71855a616dc351028f3ad2200051b0671f423a1696a100e809302d5550"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase200/text-laws/Sequence.lean",
+      "bytes": 2261,
+      "sha256": "e6387a99ad95aa691bbc3c3679e3c5ddb85000c947deb384b0a9782aa4307f50"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase200/text-laws/controls.py",
+      "bytes": 2433,
+      "sha256": "4f2dcd5b6cf17496233d7dbd3c5f4a05c32663e76f406f75096ed823464206d1"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase200/text-laws/check.py",
+      "bytes": 2884,
+      "sha256": "1af916642f2fd81426741a2a3d4b8289e0aa87d95c7f6fa5ff4d60ce811ce368"
+    }
+  ],
+  "stages": [
+    {
+      "name": "lean",
+      "argv": [
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/lean",
+        "-j1",
+        "/home/ai/bend2/build/publish/bend/research/phase200/text-laws/Sequence.lean"
+      ],
+      "budgetSeconds": 3.0,
+      "complete": false,
+      "returncode": 1,
+      "wallSeconds": 0.467078129760921,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/text-laws01/lean.stdout",
+        "bytes": 837,
+        "sha256": "b9b2e1b7e2bd58155274ae59d71914eca6bdc4e4772ebff772377174dccce370"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/text-laws01/lean.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "finite",
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/ai/bend2/build/publish/bend/research/phase200/text-laws/controls.py",
+        "--out",
+        "selfhost/build/phase200/text-laws01/finite.json"
+      ],
+      "budgetSeconds": 3.8726326366886497,
+      "complete": false
+    }
+  ],
+  "wallSeconds": 0.47737134899944067
+}

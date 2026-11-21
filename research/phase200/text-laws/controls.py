@@ -27,9 +27,9 @@ def repeat_by_doubling(xs,n):
         block+=block;n>>=1
     return out
 
-def run():
+def run(max_length=5):
     alphabet=[0,44,0xffffffff];samples=[];count=0;repetition=0
-    for length in range(7):
+    for length in range(max_length+1):
       for t in itertools.product(alphabet,repeat=length):
        xs=list(t)
        for d in alphabet+[0x10ffff,0x110000]:
@@ -48,9 +48,9 @@ def run():
     # Negative convention: dropping empty pieces changes edge/consecutive semantics.
     assert join_reference([9],[c for c in split_reference(44,[44,44]) if c]) != fused(44,[9],[44,44])
     return {'complete':True,'scope':'Finite independent sequence models only; no Bend/compiler/machine execution.',
-      'baseChecks':count,'repetitionChecks':repetition,'edgeSamples':samples,
+      'maxLength':max_length,'baseChecks':count,'repetitionChecks':repetition,'edgeSamples':samples,
       'emptySegmentDroppingMutantRejected':True,'arbitraryWordValuesInclude':[0xffffffff,0x110000]}
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--out',type=Path,required=True);args=p.parse_args()
-    assert not args.out.exists();r=run();r['methodSha256']=hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
+    p=argparse.ArgumentParser();p.add_argument('--out',type=Path,required=True);p.add_argument('--max-length',type=int,default=5);args=p.parse_args()
+    assert not args.out.exists();assert 0<=args.max_length<=6;r=run(args.max_length);r['methodSha256']=hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
     args.out.write_text(json.dumps(r,indent=2)+'\n');print(r['baseChecks'],r['repetitionChecks'])

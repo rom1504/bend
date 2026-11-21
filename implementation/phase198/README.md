@@ -67,3 +67,9 @@ The 1.2781× runtime configuration uses the same compiler-produced object and th
   selfhost/build/phase198/runtime-split-prepare01/runtime-live.o \
   -pthread -lm -o selfhost/build/phase198/progress-hello01/program-live
 ```
+
+## Cost of the corrected version
+
+The corrected N1 emitted the 45 objects from the identical source requests in **79.40 s** versus **77.30 s** for Phase197 (+2.72% wall, +2.05% process CPU). Maximum per-request compiler RSS was 57,644 KiB versus 57,216 KiB. QBE-to-N1 acquisition took 180.32 s. N1 built N2 in 312.70 s and N2 built N3 in 373.57 s. Phase197 took 288.06 s and 352.85 s on its own smaller compiler source. The latter comparisons include the cost of compiling the additional implementation. N2 and N3 emitted exactly the same 32,448,072-byte compiler object, SHA-256 beginning `b3a382d4600dcbb`. [Full per-request cost](progress-compiler-cost.json)
+
+The fixed-point transformation applies to verified private word computations with a full-width countdown and a canonical 32-bit accumulator. Once the other fields repeat, the state-dependent accumulator delta repeats as well. The emitter computes the remaining contribution modulo 2³². Recognition rejects effectful operations, floating-point operations, division, incompatible exit shapes and temporary name collisions. The nonconvergence filter can decline an optimization whenever it finds evidence of changing state. Independent finite checks, source checking and native reproduction establish different properties; end-to-end correctness for arbitrary programs remains open.

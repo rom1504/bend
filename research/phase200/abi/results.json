@@ -1,0 +1,216 @@
+{
+  "complete": true,
+  "completeDistinctCases": 2,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/p200-ownership-source02/compiler.bend",
+    "bytes": 1936422,
+    "sha256": "73d5a837d5f0252ecedd7973805d57e6acfacc961d538b39c61281e0a572ee23"
+  },
+  "api": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/p200-ownership-api01/api.mjs",
+    "bytes": 4283488,
+    "sha256": "54475d6dcfb517476fb6741c7af7d6dfe4e688242c965191f3b0701224780552"
+  },
+  "emission": {
+    "bytes": 4066,
+    "sha256": "e92070246ae6d6daac9b3df7b2cf216d9a17234b6e5f2ab3da310454104bb0ff"
+  },
+  "guardOutcomes": {
+    "p200-ownership-api01": {
+      "returncode": 0,
+      "wallSeconds": 16.587052015587687
+    },
+    "p200-ownership-focus01": {
+      "returncode": -9,
+      "wallSeconds": 70.45109742507339,
+      "stoppedFor": "disk-budget"
+    },
+    "p200-ownership-focus02": {
+      "returncode": 1,
+      "wallSeconds": 11.168891250155866
+    }
+  },
+  "archive": {
+    "bytes": 7422,
+    "sha256": "ab3cf0511d75cb9eca03fb4f42ceb1c905b0ae57325fdf4e459752c44d0523cb"
+  },
+  "archived": {
+    "p200-ownership-api01/report.json": {
+      "bytes": 5261,
+      "sha256": "5a68ee5318dff17ae68960fc328dfa1526d3242f51a04061af4841ca998b097d"
+    },
+    "p200-ownership-api01-guard/process.json": {
+      "bytes": 3159,
+      "sha256": "5ccfdc9806e08271a2e85d8fb06a8c2d33f44a5530165f60d25433b891345334"
+    },
+    "p200-ownership-api01-guard/retention.json": {
+      "bytes": 1061,
+      "sha256": "0536feacc2e33040efcd7648879dc6a9db2be7c004e4f1177be16039b135f291"
+    },
+    "p200-ownership-api01-guard/stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "p200-ownership-api01-guard/stdout.log": {
+      "bytes": 120,
+      "sha256": "f40cc9ba6463b14b14915a125bf53b314121f05c78c448e094b0becf0be021ba"
+    },
+    "p200-ownership-focus01/emission/report.json": {
+      "bytes": 4066,
+      "sha256": "e92070246ae6d6daac9b3df7b2cf216d9a17234b6e5f2ab3da310454104bb0ff"
+    },
+    "p200-ownership-focus01/report.json": {
+      "bytes": 9187,
+      "sha256": "0f11837cffa95e0467eb25357b740a3714e83291bad463bf028a156d724bf8bc"
+    },
+    "p200-ownership-focus01-guard/process.json": {
+      "bytes": 1996,
+      "sha256": "3c163965a65d0fe594d9290e85958020cc51279afb8aced7f6c4dc878455250e"
+    },
+    "p200-ownership-focus01-guard/retention.json": {
+      "bytes": 1073,
+      "sha256": "602851473db6358e9443e90362db76119155339ba35073de4275068e88305f4f"
+    },
+    "p200-ownership-focus01-guard/stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "p200-ownership-focus01-guard/stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "p200-ownership-focus02/report.json": {
+      "bytes": 17358,
+      "sha256": "dc3b4dce22a085e75970c7426b22aff6ad68d5e0cb919acf5d5b7dc1acec490d"
+    },
+    "p200-ownership-focus02-guard/process.json": {
+      "bytes": 2302,
+      "sha256": "5401824f489ccea589e01e0b0b33b803813c99d4bececacb40a3462523bda993"
+    },
+    "p200-ownership-focus02-guard/retention.json": {
+      "bytes": 1064,
+      "sha256": "f1a445fa29d037e8819392584eb63bf48181b5e428dd62737058fa7ea53cbe32"
+    },
+    "p200-ownership-focus02-guard/stderr.log": {
+      "bytes": 603,
+      "sha256": "5883753da05f2dc3b7ba52f9fcc3cd7a9342dbb5570b6b97bc9d49d6587385ff"
+    },
+    "p200-ownership-focus02-guard/stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "rows": [
+    {
+      "id": "raytrace",
+      "objects": {
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-native45-01/raytrace/machine/program.o",
+          "bytes": 173696,
+          "sha256": "c292c67c14e8fe52b9c1561aaac1046ea234be6fb580a5265accf19b0ac9816d"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/p200-ownership-focus01/emission/raytrace.o",
+          "bytes": 174264,
+          "sha256": "00e3def11eb85ad9b626aa520a0464ea1e6061b635a25dd44fd0181a38a0a7af"
+        }
+      },
+      "counts": {
+        "baseline": {
+          "keep 0": 4194300,
+          "keep 1": 2,
+          "keep 2": 1,
+          "keep 130": 1,
+          "sink 0": 1,
+          "sink 1": 6,
+          "sink 2": 3,
+          "sink 130": 1
+        },
+        "candidate": {
+          "keep 2": 1,
+          "keep 130": 1,
+          "sink 2": 3,
+          "sink 130": 1
+        }
+      },
+      "skippedImmediateCalls": 4194309,
+      "candidateOverBaseline": 0.9682539682539683,
+      "candidateOverC": 1.6099706744868034,
+      "run": "p200-ownership-focus01"
+    },
+    {
+      "id": "raytrace",
+      "objects": {
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-native45-01/raytrace/machine/program.o",
+          "bytes": 173696,
+          "sha256": "c292c67c14e8fe52b9c1561aaac1046ea234be6fb580a5265accf19b0ac9816d"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/p200-ownership-focus01/emission/raytrace.o",
+          "bytes": 174264,
+          "sha256": "00e3def11eb85ad9b626aa520a0464ea1e6061b635a25dd44fd0181a38a0a7af"
+        }
+      },
+      "counts": {
+        "baseline": {
+          "keep 0": 4194300,
+          "keep 1": 2,
+          "keep 2": 1,
+          "keep 130": 1,
+          "sink 0": 1,
+          "sink 1": 6,
+          "sink 2": 3,
+          "sink 130": 1
+        },
+        "candidate": {
+          "keep 2": 1,
+          "keep 130": 1,
+          "sink 2": 3,
+          "sink 130": 1
+        }
+      },
+      "skippedImmediateCalls": 4194309,
+      "candidateOverBaseline": 1.0211640211640212,
+      "candidateOverC": 1.6734104046242775,
+      "run": "p200-ownership-focus02"
+    },
+    {
+      "id": "coverage-map-churn-128",
+      "objects": {
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-native45-01/coverage-map-churn-128/machine/program.o",
+          "bytes": 426984,
+          "sha256": "7826375b7a61760d116ef382d1b8ccc87b4c654625af9639e83b60cb1975d177"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/p200-ownership-focus01/emission/coverage-map-churn-128.o",
+          "bytes": 439432,
+          "sha256": "cac01ce24388dba1ab52453dbbe3a07e46ec5f5efa9e4500504fe430674e2908"
+        }
+      },
+      "counts": {
+        "baseline": {
+          "keep 0": 9550,
+          "keep 1": 2,
+          "keep 2": 343,
+          "keep 130": 339,
+          "sink 0": 1355,
+          "sink 1": 746,
+          "sink 2": 131,
+          "sink 130": 323
+        },
+        "candidate": {
+          "keep 2": 343,
+          "keep 130": 339,
+          "sink 2": 131,
+          "sink 130": 323
+        }
+      },
+      "skippedImmediateCalls": 11653,
+      "candidateOverBaseline": 1.0075187969924813,
+      "candidateOverC": 2.878791208791209,
+      "run": "p200-ownership-focus02"
+    }
+  ]
+}

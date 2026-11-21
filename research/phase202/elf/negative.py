@@ -11,8 +11,8 @@ def main() -> IO(U32):
     [X187Relocation{1,16380,4,"missing_symbol",4294967292,4294967295}]})
 '''
 
-def prepare(out):
-    data,counts=standalone.slice_source(apply(BASE.read_bytes()),HARNESS)
+def prepare(out, transform=None):
+    data,counts=standalone.slice_source((transform or apply)(BASE.read_bytes()),HARNESS)
     out.mkdir(parents=True,exist_ok=False);p=out/'late-invalid.bend';p.write_bytes(data)
     (out/'recipe.json').write_text(json.dumps(dict(source=source.pin(p),parent=source.pin(BASE),declarations=counts,
         oracle=dict(exitCode=1,stdoutBytes=0,diagnostic='invalid ELF relocation'),reason='16 KiB valid text and in-bounds PC32 relocation whose symbol is absent.'),indent=2)+'\n')
@@ -26,4 +26,11 @@ def run(out,fixture):
     r['complete']=q.returncode==1 and q.stdout==b'' and b'invalid ELF relocation' in q.stderr;(out/'report.json').write_text(json.dumps(r,indent=2)+'\n');print(r);assert r['complete']
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--out',type=Path,required=True);p.add_argument('--fixture',type=Path);p.add_argument('--prepare',action='store_true');a=p.parse_args();prepare(a.out) if a.prepare else run(a.out,a.fixture)
+    p=argparse.ArgumentParser();p.add_argument('--out',type=Path,required=True);p.add_argument('--fixture',type=Path);p.add_argument('--prepare',action='store_true');p.add_argument('--sized',action='store_true');a=p.parse_args()
+    if a.prepare and a.sized:
+        from sized import apply as sized
+        prepare(a.out,sized)
+    elif a.prepare:
+        prepare(a.out)
+    else:
+        run(a.out,a.fixture)

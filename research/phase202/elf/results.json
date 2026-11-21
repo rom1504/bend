@@ -217,5 +217,250 @@
       "selfhost/build/phase201/p202bad01-guard/process.json": "c7e3088b27e6b1ddee401342b1695e4d33fd422d6b41429e7e7df5d2b2d09d50",
       "selfhost/build-retention/phase201/p202bad01-close/report.json": "954dbe2bb6b5b10e16ff4959f4c7150579e39ca904ea72dd7e6bf2564184611b"
     }
+  },
+  "p202sized01": {
+    "result": {
+      "complete": false,
+      "stage": "native fixture compile",
+      "diagnostic": "parse: Error:\n- message  : 'section' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n1157 |     case Con{+section,rest} Con{+size,sizesRest}:\n1158>|       match section:\n     |             ^^^^^^^\n1159 |         case X187ElfSection{name,kind,flags,+alignment,entry,link,info,bytes}:\n"
+    },
+    "guardSeconds": 9.056158225052059,
+    "rawReceipts": {
+      "selfhost/build/phase201/p202sized01/new/compiler.stderr": "09389ea1a8b4c0efe321c322f55f86cd4b88897b96bbe999719eda02ec78aac5",
+      "selfhost/build/phase201/p202sized01-guard/process.json": "95dcdd5c523d124fd624bfae523d241bceff873134692fab7c92e383ba1e28b4",
+      "selfhost/build-retention/phase201/p202sized01-close/report.json": "b474a5d1e331285c2c2fadb115a2e4dca9db466259fca46dd7710041b8f4a1d7"
+    }
+  },
+  "p202invalid01": {
+    "result": {
+      "complete": false,
+      "stage": "native fixture compile",
+      "diagnostic": "parse: Error:\n- message  : 'section' can't be matched in this position (it is matched after a local statement or after a match on a later binder, it was already matched, or it is a def)\nLocation:\n796 |     case Con{+section,rest} Con{+size,sizesRest}:\n797>|       match section:\n    |             ^^^^^^^\n798 |         case X187ElfSection{name,kind,flags,+alignment,entry,link,info,bytes}:\n"
+    },
+    "guardSeconds": 0.9690358256921172,
+    "rawReceipts": {
+      "selfhost/build/phase201/p202invalid01/machine/compiler.stderr": "dac9f101237836f65913487119817d11c5f59cac00dd798e1c1765ee43421d96",
+      "selfhost/build/phase201/p202invalid01-guard/process.json": "5546e977a82644e5f56177a694112e5d82cd50094bbf75b296a5c46f35ebe1a5",
+      "selfhost/build-retention/phase201/p202invalid01-close/report.json": "f594f811052ea551ef9088fef95220768e822875f4c5a32b1935aeea8c777f9c"
+    }
+  },
+  "p202sized02": {
+    "result": {
+      "complete": true,
+      "prepared": {
+        "old": {
+          "parentSha256": "a68ba12c823fff623c58f31154ddca5de8d80cce9a207f3f14b04e95c20836d0",
+          "standalone": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase202/elfsizedfixture02/old.bend",
+            "bytes": 48338,
+            "sha256": "488adaef6ea5f651d84014b507766cf7fea8bd8ae006441336a1b7c2a96754eb"
+          },
+          "declarations": 139
+        },
+        "new": {
+          "parentSha256": "14374ac57fb115d6f2d45a03ca449341b3091e96ac82ce7bcc4c1d2c8ad5232a",
+          "standalone": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase202/elfsizedfixture02/new.bend",
+            "bytes": 48535,
+            "sha256": "9faab827ebd15d798cbb9fdfbc2d5867f27413ac1ed65061f6b6f4da8797da8f"
+          },
+          "declarations": 137
+        }
+      },
+      "builds": {
+        "old": {
+          "compiler": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-native-image01/program",
+            "bytes": 18901904,
+            "sha256": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase202/elfsizedfixture02/old.bend",
+            "bytes": 48338,
+            "sha256": "488adaef6ea5f651d84014b507766cf7fea8bd8ae006441336a1b7c2a96754eb"
+          },
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase201/p202sized02/old/program",
+            "bytes": 671632,
+            "sha256": "27d5d97f99d086fc345eab9d280fb5be49e94ee949257e6a1d436bfad1a0d89a"
+          },
+          "runtime": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/runtime.o",
+            "bytes": 125264,
+            "sha256": "67141c4505a0355901d857c4ba81dfc17559329e536818a843ce68615384d13e"
+          },
+          "argv": [
+            "/usr/bin/python3",
+            "-B",
+            "/home/ai/bend2/build/publish/bend/selfhost/tools/build/native.py",
+            "--assets",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/assets.json",
+            "--host",
+            "native",
+            "--stage",
+            "N1",
+            "--target",
+            "x86",
+            "--mode",
+            "cache",
+            "--emit",
+            "object",
+            "--image",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-native-image01/program",
+            "--image-receipt",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-native-image01/report.json",
+            "--source",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase202/elfsizedfixture02/old.bend",
+            "--out",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase201/p202sized02/old",
+            "--seconds",
+            "35"
+          ]
+        },
+        "new": {
+          "compiler": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-native-image01/program",
+            "bytes": 18901904,
+            "sha256": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase202/elfsizedfixture02/new.bend",
+            "bytes": 48535,
+            "sha256": "9faab827ebd15d798cbb9fdfbc2d5867f27413ac1ed65061f6b6f4da8797da8f"
+          },
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase201/p202sized02/new/program",
+            "bytes": 692704,
+            "sha256": "4f58179b5734d809375d3896feeaf0733f48b6a9e457926f16d8a0f829d70ddd"
+          },
+          "runtime": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/runtime.o",
+            "bytes": 125264,
+            "sha256": "67141c4505a0355901d857c4ba81dfc17559329e536818a843ce68615384d13e"
+          },
+          "argv": [
+            "/usr/bin/python3",
+            "-B",
+            "/home/ai/bend2/build/publish/bend/selfhost/tools/build/native.py",
+            "--assets",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/assets.json",
+            "--host",
+            "native",
+            "--stage",
+            "N1",
+            "--target",
+            "x86",
+            "--mode",
+            "cache",
+            "--emit",
+            "object",
+            "--image",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-native-image01/program",
+            "--image-receipt",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-native-image01/report.json",
+            "--source",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase202/elfsizedfixture02/new.bend",
+            "--out",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase201/p202sized02/new",
+            "--seconds",
+            "35"
+          ]
+        }
+      },
+      "pairs": [
+        0.7434686532320123,
+        0.7303029027248025,
+        0.7361416987126297,
+        0.7427945575361594
+      ],
+      "observations": [
+        {
+          "role": "old",
+          "seconds": 0.05467254854738712,
+          "objectBytes": 361376,
+          "sha256": "ed17d22bb62df8e1501e58372c2875208f4041eabd243d8a451fbec8d6b3f8cb"
+        },
+        {
+          "role": "new",
+          "seconds": 0.04064732603728771,
+          "objectBytes": 361376,
+          "sha256": "ed17d22bb62df8e1501e58372c2875208f4041eabd243d8a451fbec8d6b3f8cb"
+        },
+        {
+          "role": "new",
+          "seconds": 0.040355718694627285,
+          "objectBytes": 361376,
+          "sha256": "ed17d22bb62df8e1501e58372c2875208f4041eabd243d8a451fbec8d6b3f8cb"
+        },
+        {
+          "role": "old",
+          "seconds": 0.05525887757539749,
+          "objectBytes": 361376,
+          "sha256": "ed17d22bb62df8e1501e58372c2875208f4041eabd243d8a451fbec8d6b3f8cb"
+        },
+        {
+          "role": "old",
+          "seconds": 0.05475006625056267,
+          "objectBytes": 361376,
+          "sha256": "ed17d22bb62df8e1501e58372c2875208f4041eabd243d8a451fbec8d6b3f8cb"
+        },
+        {
+          "role": "new",
+          "seconds": 0.04030380677431822,
+          "objectBytes": 361376,
+          "sha256": "ed17d22bb62df8e1501e58372c2875208f4041eabd243d8a451fbec8d6b3f8cb"
+        },
+        {
+          "role": "new",
+          "seconds": 0.04055781103670597,
+          "objectBytes": 361376,
+          "sha256": "ed17d22bb62df8e1501e58372c2875208f4041eabd243d8a451fbec8d6b3f8cb"
+        },
+        {
+          "role": "old",
+          "seconds": 0.05460165347903967,
+          "objectBytes": 361376,
+          "sha256": "ed17d22bb62df8e1501e58372c2875208f4041eabd243d8a451fbec8d6b3f8cb"
+        }
+      ],
+      "inputs": {},
+      "scope": "Real standalone writer outputs under the same pinned native compiler and runtime. Fixture construction, writer, output and startup all included.",
+      "medianPairedNewOverOld": 0.7394681281243946
+    },
+    "guardSeconds": 16.566930510103703,
+    "rawReceipts": {
+      "selfhost/build/phase201/p202sized02/report.json": "db216578464fb0a57dde407cb09ebd76a898d1fe9ca51b89e54e3982a228e68c",
+      "selfhost/build/phase201/p202sized02-guard/process.json": "c71887ecffd7c7523be1ddf3db50e0d247a14e325bb30dbf5074d18b96e2db0c",
+      "selfhost/build-retention/phase201/p202sized02-close/report.json": "febccfafb27b5b0b69dc9d3147bd4cce1d4a22b67cf8c03708768ef71016d5e9"
+    }
+  },
+  "p202invalid02": {
+    "result": {
+      "complete": true,
+      "fixture": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase202/elfsizednegative02/late-invalid.bend",
+        "bytes": 29130,
+        "sha256": "a9acc1f27be57ccaf4eb672d6f28013115f88e9b39caea12e71da6d4397d43ae"
+      },
+      "image": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-native-image01/program",
+        "bytes": 18901904,
+        "sha256": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase201/p202invalid02/machine/program",
+        "bytes": 391960,
+        "sha256": "100c5a700a7ba944bb9256ef18a460bbdc6f182497fe4fc9d809c163c4d8d814"
+      },
+      "exitCode": 1,
+      "stdoutBytes": 0,
+      "stderr": "invalid ELF relocation\n"
+    },
+    "guardSeconds": 4.0547215808182955,
+    "rawReceipts": {
+      "selfhost/build/phase201/p202invalid02/report.json": "51d12b45c94c0a4e704f778b451afb7931d897b2027bad8d3d326aff5fff9069",
+      "selfhost/build/phase201/p202invalid02-guard/process.json": "76ff3f0c4365e5d4dbc7821e85a5354dcf49285d4ec2be23509b7beb9e1cd3c2",
+      "selfhost/build-retention/phase201/p202invalid02-close/report.json": "42f6aa065c08ee4a1e54dc1a55eb474710dcded84d0d851f41537e73fd442c27"
+    }
   }
 }

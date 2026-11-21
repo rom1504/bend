@@ -15,8 +15,11 @@ The source preparation and fixtures are metadata operations. Use fresh output pa
 ```sh
 python3 -B research/phase202/elf/prepare.py --out selfhost/build/phase202/elfsource02
 python3 -B research/phase202/elf/focus.py --out selfhost/build/phase202/elffixture01
-python3 -B research/phase202/elf/sized.py --out selfhost/build/phase202/elfsized01 --fixture selfhost/build/phase202/elfsizedfixture01
+python3 -B research/phase202/elf/sized.py --out selfhost/build/phase202/elfsized02 --fixture selfhost/build/phase202/elfsizedfixture02
 python3 -B research/phase202/elf/negative.py --prepare --out selfhost/build/phase202/elfnegativefixture01
+python3 -B research/phase202/elf/negative.py --prepare --sized --out selfhost/build/phase202/elfsizednegative02
 ```
 
 Use the existing CPU 3 disk guard to invoke `screen.py --fixture <prepared fixture> --out <fresh declared root>` or `negative.py --fixture <prepared negative fixture> --out <fresh declared root>`. The whole compiler's cold self-build is a separate observation. [Native focus and negative case](results.json)
+
+The segmented producer measured 0.85553 paired new/old time, and the producer using validated section sizes measured 0.73947, each against the frozen Phase201 baseline. Both sets of eight executions produced the same independently validated 361,376 bytes. Both late-invalid controls failed before publishing any payload. The first sized fixture was refused for matching a field after a later binder. The second version matched both list/record patterns together and passed its two controls. [Receipts](results.json)

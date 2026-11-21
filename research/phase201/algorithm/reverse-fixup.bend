@@ -17,13 +17,13 @@ def x201f_apply(+raw: List<&2,U32>, +patches: List<&2,X187Relocation>, end: U32,
   match patches:
     case Nil{}: X187Encoded{nt_reverse(U32,raw,acc),[],""}
     case Con{X187Relocation{s,+offset,k,n,word,hi},rest}:
-      x201f_span(raw,U32.sub(U32.sub(end,offset),4),rest,offset,word,acc)
+      x201f_span(U32.sub(U32.sub(end,offset),4),raw,rest,offset,word,acc)
 
 # end is the first byte above the unconsumed raw prefix. The descending input
 # list supplies ordinary bytes high-address first. Consing each byte produces
 # the final forward-order suffix and consumes each original cell once.
 @unsafe
-def x201f_span(raw: List<&2,U32>, +count: U32, +patches: List<&2,X187Relocation>,
+def x201f_span(+count: U32, raw: List<&2,U32>, +patches: List<&2,X187Relocation>,
     +offset: U32, +word: U32, +acc: List<&2,U32>) -> X187Encoded:
   match count:
     case 0:
@@ -34,7 +34,7 @@ def x201f_span(raw: List<&2,U32>, +count: U32, +patches: List<&2,X187Relocation>
     case _:
       match raw:
         case Nil{}: X187Encoded{[],[],"local branch fixup outside text"}
-        case Con{head,rest}: x201f_span(rest,U32.sub(count,1),patches,offset,word,Con{head,acc})
+        case Con{head,rest}: x201f_span(U32.sub(count,1),rest,patches,offset,word,Con{head,acc})
 
 @unsafe
 def x201f_selected(+raw: List<&2,U32>, patches: List<&2,X187Relocation>, +size: U32,
@@ -46,8 +46,8 @@ def x201f_selected(+raw: List<&2,U32>, patches: List<&2,X187Relocation>, +size: 
 @unsafe
 def x201f_fixups(names: List<&2,String>, index: KDef, +sizes: X187ElfSizes,
     +raw: List<&2,U32>, rodata: List<&2,U32>, data: List<&2,U32>, state: X188Fixups) -> X187ObjectResult:
-  match state sizes:
-    case X188Fixups{+patches,relocations,escaped,+error} X187ElfSizes{+ts,rs,ds}:
+  match sizes state:
+    case X187ElfSizes{+ts,rs,ds} X188Fixups{+patches,relocations,escaped,+error}:
       nt_choose(X187ObjectResult,String.is_empty(error),u =>
         x188_build_patched(names,index,escaped,sizes,rodata,data,relocations,
           x201f_selected(raw,patches,ts,x201f_plan(patches,ts,0,[]))),u => X187ObjectResult{[],error})

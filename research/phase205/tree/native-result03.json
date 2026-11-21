@@ -1,0 +1,91 @@
+{
+  "campaign": "combined03",
+  "aggregateMethod": "ratios of role medians, fresh paired images",
+  "source": "selfhost/build/phase205/combined-focus03/summary.json",
+  "sourceSha256": "d8cf86a791c72d4136fa22e02b1ea23e269394073215ea3bafc87abf581860f6",
+  "guard": "selfhost/build/phase205/combined-focus03-guard/process.json",
+  "rows": [
+    {
+      "case": "coverage-bst-64",
+      "role": "c",
+      "overC": 1.0,
+      "overBaseline": 0.412867,
+      "highDispersion": true
+    },
+    {
+      "case": "coverage-bst-64",
+      "role": "baseline",
+      "overC": 2.42209,
+      "overBaseline": 1.0,
+      "highDispersion": true
+    },
+    {
+      "case": "coverage-bst-64",
+      "role": "candidate",
+      "overC": 2.62036,
+      "overBaseline": 1.08186,
+      "highDispersion": true
+    },
+    {
+      "case": "coverage-bst-32",
+      "role": "c",
+      "overC": 1.0,
+      "overBaseline": 0.292981,
+      "highDispersion": false
+    },
+    {
+      "case": "coverage-bst-32",
+      "role": "baseline",
+      "overC": 3.41319,
+      "overBaseline": 1.0,
+      "highDispersion": false
+    },
+    {
+      "case": "coverage-bst-32",
+      "role": "candidate",
+      "overC": 3.42316,
+      "overBaseline": 1.00292,
+      "highDispersion": false
+    }
+  ],
+  "oracle32": {
+    "candidate": [
+      "1802825775",
+      "0",
+      "1",
+      "0"
+    ],
+    "baseline": [
+      "1802825775",
+      "0",
+      "1",
+      "0"
+    ],
+    "c": [
+      "1802825775",
+      "0",
+      "1",
+      "0"
+    ]
+  },
+  "oracle64": {
+    "candidate": [
+      "861157620",
+      "0",
+      "1",
+      "0"
+    ],
+    "baseline": [
+      "861157620",
+      "0",
+      "1",
+      "0"
+    ],
+    "c": [
+      "861157620",
+      "0",
+      "1",
+      "0"
+    ]
+  }
+}

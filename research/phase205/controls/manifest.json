@@ -1,0 +1,148 @@
+{
+  "scope": "Authored source/expected-output metadata only. No source checking, compilation, target execution or admission observation has occurred.",
+  "fixtures": [
+    {
+      "id": "packet-baseline",
+      "source": "packet-baseline.bend",
+      "expected": "packet-baseline.stdout",
+      "kind": "positive-heldout",
+      "admissionExpectation": "Same full sequence for all roles; structural rule may admit baseline join/split and invariant repeat.",
+      "sourceSha256": "9ec83a8191ab7e51208594db7aa05a9e146aca1323707f15c88e840deab56237",
+      "expectedSha256": "5ef177740564fbc64287c007c24a5da50a9978849e49b1afaff52d6c64d4d8dd",
+      "checked": false,
+      "executed": false
+    },
+    {
+      "id": "packet-onepass",
+      "source": "packet-onepass.bend",
+      "expected": "packet-onepass.stdout",
+      "kind": "positive-heldout",
+      "admissionExpectation": "Same full sequence for all roles; structural rule may admit baseline join/split and invariant repeat.",
+      "sourceSha256": "4924817231427af59935258e5fb5d8ef9739931481463213d254484dbf0502ba",
+      "expectedSha256": "5ef177740564fbc64287c007c24a5da50a9978849e49b1afaff52d6c64d4d8dd",
+      "checked": false,
+      "executed": false
+    },
+    {
+      "id": "packet-distributed",
+      "source": "packet-distributed.bend",
+      "expected": "packet-distributed.stdout",
+      "kind": "positive-heldout",
+      "admissionExpectation": "Same full sequence for all roles; structural rule may admit baseline join/split and invariant repeat.",
+      "sourceSha256": "5001f99a30ad4476fc957680d8666b19fc840cf845890ecdb941f6a949c37705",
+      "expectedSha256": "5ef177740564fbc64287c007c24a5da50a9978849e49b1afaff52d6c64d4d8dd",
+      "checked": false,
+      "executed": false
+    },
+    {
+      "id": "word-boundaries-baseline",
+      "source": "word-boundaries-baseline.bend",
+      "expected": "word-boundaries-baseline.stdout",
+      "kind": "positive-boundary",
+      "admissionExpectation": "Arbitrary U32 character words; replacements may be empty or contain the delimiter.",
+      "sourceSha256": "6a20ec176520c2126a6ac337177f4d9d54a124a595ee7cffee70fe4a1f500fc8",
+      "expectedSha256": "abe9497f00d002e37659eed44e7711f2489bf0a0c0f9d8f9e8c1bf7cb4d586cb",
+      "checked": false,
+      "executed": false
+    },
+    {
+      "id": "word-boundaries-onepass",
+      "source": "word-boundaries-onepass.bend",
+      "expected": "word-boundaries-onepass.stdout",
+      "kind": "positive-boundary",
+      "admissionExpectation": "Arbitrary U32 character words; replacements may be empty or contain the delimiter.",
+      "sourceSha256": "de325c1eb359d65ac7a464c3da7bb13bed2b6e2314388a7e6e98cd0c1e102799",
+      "expectedSha256": "abe9497f00d002e37659eed44e7711f2489bf0a0c0f9d8f9e8c1bf7cb4d586cb",
+      "checked": false,
+      "executed": false
+    },
+    {
+      "id": "alias-baseline",
+      "source": "alias-baseline.bend",
+      "expected": "alias-baseline.stdout",
+      "kind": "positive-shared",
+      "admissionExpectation": "Fusion allowed only if both separately observed aliases retain original data and lifetime.",
+      "sourceSha256": "dac3aab7ec7a67803a5834a668a2e6c2341c99ff96ea4b36b8ba3af33c4cf1d5",
+      "expectedSha256": "206788afbf27c90d22308e37d953a1a3a86ae7638cf864e9921991d0d1617318",
+      "checked": false,
+      "executed": false
+    },
+    {
+      "id": "alias-onepass",
+      "source": "alias-onepass.bend",
+      "expected": "alias-onepass.stdout",
+      "kind": "positive-shared",
+      "admissionExpectation": "Fusion allowed only if both separately observed aliases retain original data and lifetime.",
+      "sourceSha256": "326e87e20d65b43a96a4d1b5da0a0b506dd7d6f2d02eb66167e705e070f2d80f",
+      "expectedSha256": "206788afbf27c90d22308e37d953a1a3a86ae7638cf864e9921991d0d1617318",
+      "checked": false,
+      "executed": false
+    },
+    {
+      "id": "observed-parts",
+      "source": "observed-parts.bend",
+      "expected": "observed-parts.stdout",
+      "kind": "negative-single-use",
+      "admissionExpectation": "Must retain chunk observation; cannot delete split producer as a single-use fusion.",
+      "sourceSha256": "53256ae708e4ca598cbb789f8ded780f6e2e98ba046737dc6867b3ed1872d143",
+      "expectedSha256": "253f803929b1174544730ffb4cb2e1387cc839af38d912c81fd4adeff82c06dd",
+      "checked": false,
+      "executed": false
+    },
+    {
+      "id": "drop-empty-nearmiss",
+      "source": "drop-empty-nearmiss.bend",
+      "expected": "drop-empty-nearmiss.stdout",
+      "kind": "negative-semantics",
+      "admissionExpectation": "Cannot bypass trim.parts: ordinary replacement would incorrectly yield |a||b|.",
+      "sourceSha256": "7a35029e5a2d6c725462d6f080d99d7afd699623d7f0899c895f3ddb804b02d0",
+      "expectedSha256": "6239284c81e23847b3bddaaa3f259e8f3f1e5ad7bc558cac0dd97def54119bd9",
+      "checked": false,
+      "executed": false
+    },
+    {
+      "id": "varying-separator",
+      "source": "varying-separator.bend",
+      "expected": "varying-separator.stdout",
+      "kind": "negative-hoist",
+      "admissionExpectation": "Local join/split fusion allowed; replacement varies by iteration, so replace-once then repeat must refuse.",
+      "sourceSha256": "32de37a995a3eeebe92a78add45f200ee3c4aca07693612c332269a3ede03b8e",
+      "expectedSha256": "e758cf5d3d4cbfa36a66796a251df0f670019c583229f0e3f06e5989e260c250",
+      "checked": false,
+      "executed": false
+    },
+    {
+      "id": "effect-boundary",
+      "source": "effect-boundary.bend",
+      "expected": "effect-boundary.stdout",
+      "kind": "negative-effect-motion",
+      "admissionExpectation": "May fuse the pure consumer after IO; cannot remove/hoist/deduplicate three observable reads.",
+      "sourceSha256": "27585c6f7ba969629b041325cd87a0978db27f99d171962a35372b74fc805b09",
+      "expectedSha256": "4a744fea264b2a66a8e07df9ac800341dbccc9ab1b5d6df8e33d7b24c5c2d9a8",
+      "checked": false,
+      "executed": false
+    },
+    {
+      "id": "escape-baseline",
+      "source": "escape-baseline.bend",
+      "expected": "escape-baseline.stdout",
+      "kind": "independent-pure-homomorphism",
+      "admissionExpectation": "Only distributed role moves pure fixed character expansion before repeat; requires separate generic homomorphism certificate.",
+      "sourceSha256": "a62c8e3b5c4cecfe76dd8fdd66d16ca9d915b717c3bc219ba36fadf4976d5195",
+      "expectedSha256": "bfab61a0366c2301df36b5381f204ed49740bf184124c5255f15c844255156e5",
+      "checked": false,
+      "executed": false
+    },
+    {
+      "id": "escape-distributed",
+      "source": "escape-distributed.bend",
+      "expected": "escape-distributed.stdout",
+      "kind": "independent-pure-homomorphism",
+      "admissionExpectation": "Only distributed role moves pure fixed character expansion before repeat; requires separate generic homomorphism certificate.",
+      "sourceSha256": "8e2051dd7b96e285b7b371c8092a375830ba4dfeb75e9932f2f34a6b4823c4bd",
+      "expectedSha256": "bfab61a0366c2301df36b5381f204ed49740bf184124c5255f15c844255156e5",
+      "checked": false,
+      "executed": false
+    }
+  ]
+}

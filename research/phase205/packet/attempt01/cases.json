@@ -1,0 +1,155 @@
+{
+  "kind": "phase205-packet-independent-oracle",
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase205/packet/packet.bend",
+    "bytes": 5081,
+    "sha256": "75f7aa91b26d6ab51a6c7b8d259fd2de7caae59adee2ed653070a41cc3601d04"
+  },
+  "cases": [
+    {
+      "id": "packet-16-17",
+      "args": [
+        16,
+        16,
+        17
+      ],
+      "point": {
+        "expectedStdout": "384:4015054021:1809949829\n",
+        "repetitions": 100,
+        "warmups": 2,
+        "runtimeArgs": [
+          16,
+          16,
+          17
+        ],
+        "ratioEligible": true
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/research/phase205/packet/packet-16-17.stdout",
+        "bytes": 26,
+        "sha256": "c5be554d2d468de9a448fda291537740e74efbe5103ac3b760a041d1dc89a76c"
+      }
+    },
+    {
+      "id": "packet-128-17",
+      "args": [
+        128,
+        16,
+        17
+      ],
+      "point": {
+        "expectedStdout": "3072:1306518981:4201419013\n",
+        "repetitions": 100,
+        "warmups": 2,
+        "runtimeArgs": [
+          128,
+          16,
+          17
+        ],
+        "ratioEligible": true
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/research/phase205/packet/packet-128-17.stdout",
+        "bytes": 27,
+        "sha256": "ad1a9a1cc5437dc93d0e9404feaaa071d3e03790eb326e469208f2b6f6a2a018"
+      }
+    },
+    {
+      "id": "packet-16-123",
+      "args": [
+        16,
+        31,
+        123
+      ],
+      "point": {
+        "expectedStdout": "752:1357779269:34389957\n",
+        "repetitions": 100,
+        "warmups": 2,
+        "runtimeArgs": [
+          16,
+          31,
+          123
+        ],
+        "ratioEligible": true
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/research/phase205/packet/packet-16-123.stdout",
+        "bytes": 24,
+        "sha256": "ad718adf5691404a71a6de6e36397c0d71e2269efe242b8ece8eeb716665af0e"
+      }
+    },
+    {
+      "id": "packet-128-123",
+      "args": [
+        128,
+        31,
+        123
+      ],
+      "point": {
+        "expectedStdout": "6016:1088698821:2643159813\n",
+        "repetitions": 100,
+        "warmups": 2,
+        "runtimeArgs": [
+          128,
+          31,
+          123
+        ],
+        "ratioEligible": true
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/research/phase205/packet/packet-128-123.stdout",
+        "bytes": 27,
+        "sha256": "bc1747fc78f094db38d3bac86aa5a1b6d1a08964d41fac9fa2d37c0cee996719"
+      }
+    },
+    {
+      "id": "packet-zero-long-17",
+      "args": [
+        0,
+        65536,
+        17
+      ],
+      "point": {
+        "expectedStdout": "0:2166136261:5381\n",
+        "repetitions": 100,
+        "warmups": 2,
+        "runtimeArgs": [
+          0,
+          65536,
+          17
+        ],
+        "ratioEligible": true
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/research/phase205/packet/packet-zero-long-17.stdout",
+        "bytes": 18,
+        "sha256": "2b6d8f5ef5e5766d5c30af276864b97ed184fb30c460d224e2b37091bfab823d"
+      }
+    },
+    {
+      "id": "packet-zero-long-max",
+      "args": [
+        0,
+        65536,
+        4294967295
+      ],
+      "point": {
+        "expectedStdout": "0:2166136261:5381\n",
+        "repetitions": 100,
+        "warmups": 2,
+        "runtimeArgs": [
+          0,
+          65536,
+          4294967295
+        ],
+        "ratioEligible": true
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/research/phase205/packet/packet-zero-long-max.stdout",
+        "bytes": 18,
+        "sha256": "2b6d8f5ef5e5766d5c30af276864b97ed184fb30c460d224e2b37091bfab823d"
+      }
+    }
+  ],
+  "scope": "Authored scalar oracle; no Bend source check or target execution yet. Long dynamic block is precomputed before timed packet.render, including n=0."
+}

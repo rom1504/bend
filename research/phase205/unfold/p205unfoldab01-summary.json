@@ -1,0 +1,1269 @@
+{
+  "run": "p205unfoldab01",
+  "guardWallSeconds": 30.48776108585298,
+  "nativeImage": "9cb68bf23c6c8ea41045548438c75e26ebeded1b8569174042f296300bed8bd1",
+  "runtime": "1c819e63386e8bf7c392f3fa13509699b0f4d99867cf26d8777042350522cda8",
+  "sampledCases": {
+    "lexer": {
+      "mediansMs": {
+        "original": 1.0342857142857143,
+        "staged": 0.8153153153153153,
+        "c": 0.38513513513513514
+      },
+      "stagedOverOriginal": 0.7882882882882883,
+      "stagedOverC": 2.116959064327485,
+      "oracleInputs": [
+        [
+          8,
+          0
+        ],
+        [
+          0,
+          4294967295
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          123
+        ]
+      ],
+      "acceptedTimedObservations": 9,
+      "machine": {
+        "original": {
+          "textBytes": 74796,
+          "functions": 249,
+          "tracked": {
+            "p113d:$direct.slot.go": {
+              "logical": "slot.go",
+              "bytes": 749,
+              "calls": {}
+            },
+            "p113d:$direct.slot": {
+              "logical": "slot",
+              "bytes": 212,
+              "calls": {}
+            },
+            "p113d:$direct.op": {
+              "logical": "op",
+              "bytes": 286,
+              "calls": {
+                "p125_rt_ctor2": 1
+              }
+            },
+            "p113d:$direct.prng": {
+              "logical": "prng",
+              "bytes": 77,
+              "calls": {}
+            },
+            "p113d:$p118.trmc.$direct.ident": {
+              "logical": "ident",
+              "bytes": 380,
+              "calls": {
+                "p118_rt_finish": 1,
+                "p111_rt_op": 1,
+                "p118_rt_extend1": 1
+              }
+            },
+            "p113d:$direct.ident": {
+              "logical": "ident",
+              "bytes": 153,
+              "calls": {
+                "p113d:$p118.trmc.$direct.ident": 1
+              }
+            },
+            "p113d:$direct.salt": {
+              "logical": "salt",
+              "bytes": 103,
+              "calls": {}
+            },
+            "p112w:$direct.salt": {
+              "logical": "salt",
+              "bytes": 5,
+              "calls": {}
+            },
+            "p113d:$p118.trmc.$direct.num": {
+              "logical": "num",
+              "bytes": 380,
+              "calls": {
+                "p118_rt_finish": 1,
+                "p111_rt_op": 1,
+                "p118_rt_extend1": 1
+              }
+            },
+            "p113d:$direct.num": {
+              "logical": "num",
+              "bytes": 153,
+              "calls": {
+                "p113d:$p118.trmc.$direct.num": 1
+              }
+            },
+            "p113d:$direct.expand": {
+              "logical": "expand",
+              "bytes": 948,
+              "calls": {
+                "p113d:$p118.trmc.$direct.ident": 1,
+                "p111_rt_op": 1,
+                "p113d:$p118.trmc.$direct.num": 1,
+                "p125_rt_ctor2": 2,
+                "p111_rt_fail": 1
+              }
+            },
+            "p113d:$direct.gen.at": {
+              "logical": "gen.at",
+              "bytes": 1058,
+              "calls": {
+                "p113d:$p118.trmc.$direct.ident": 1,
+                "p111_rt_op": 1,
+                "p113d:$p118.trmc.$direct.num": 1,
+                "p125_rt_ctor2": 2,
+                "p111_rt_fail": 1
+              }
+            },
+            "p112w:$direct.gen.at": {
+              "logical": "gen.at",
+              "bytes": 5,
+              "calls": {}
+            },
+            "p113d:$product.lex": {
+              "logical": "lex",
+              "bytes": 791,
+              "calls": {
+                "p113d:$direct.flush": 1,
+                "p125_rt_take2": 1,
+                "p113d:$product.step.at": 1,
+                "p111_rt_fail": 2
+              }
+            },
+            "p113d:$direct.lex": {
+              "logical": "lex",
+              "bytes": 895,
+              "calls": {
+                "p125_rt_take2": 3,
+                "p113d:$direct.flush": 1,
+                "p111_rt_fail": 4,
+                "p113d:$product.step": 1,
+                "p113d:$product.lex": 1,
+                "p111_rt_sink": 1
+              }
+            },
+            "p112w:$direct.lex": {
+              "logical": "lex",
+              "bytes": 5,
+              "calls": {}
+            },
+            "p111:line": {
+              "logical": "line",
+              "bytes": 233,
+              "calls": {
+                "p111_rt_closure": 1,
+                "p111_rt_return": 1
+              }
+            },
+            "p111:$direct.line": {
+              "logical": "line",
+              "bytes": 337,
+              "calls": {
+                "p112w:tpl": 1,
+                "p112w:$direct.seed": 1,
+                "p111_rt_jump": 1
+              }
+            },
+            "p111:gen": {
+              "logical": "gen",
+              "bytes": 233,
+              "calls": {
+                "p111_rt_closure": 1,
+                "p111_rt_return": 1
+              }
+            },
+            "p114r:$direct.gen": {
+              "logical": "gen",
+              "bytes": 1740,
+              "calls": {
+                "p111_rt_frame": 1,
+                "p112w:$direct.gen.at": 1,
+                "p111_rt_fail": 3,
+                "p125_rt_take2": 1,
+                "p112w:$direct.salt": 1
+              }
+            },
+            "p111:$direct.gen": {
+              "logical": "gen",
+              "bytes": 219,
+              "calls": {
+                "p114r:$direct.gen": 1,
+                "p111_rt_return": 1
+              }
+            },
+            "p111:$direct.gen.at": {
+              "logical": "gen.at",
+              "bytes": 155,
+              "calls": {
+                "p113d:$direct.gen.at": 1,
+                "p111_rt_return": 1
+              }
+            },
+            "p111:$direct.salt": {
+              "logical": "salt",
+              "bytes": 137,
+              "calls": {
+                "p113d:$direct.salt": 1,
+                "p111_rt_return": 1
+              }
+            },
+            "p111:$direct.lex": {
+              "logical": "lex",
+              "bytes": 137,
+              "calls": {
+                "p113d:$direct.lex": 1,
+                "p111_rt_return": 1
+              }
+            }
+          },
+          "logicalIncomingRelocatedCalls": {
+            "ident": 3,
+            "num": 3,
+            "lex": 3,
+            "gen.at": 3,
+            "salt": 2,
+            "gen": 1
+          }
+        },
+        "staged": {
+          "textBytes": 74195,
+          "functions": 222,
+          "tracked": {
+            "p113d:$direct.slot.go": {
+              "logical": "slot.go",
+              "bytes": 749,
+              "calls": {}
+            },
+            "p113d:$direct.slot": {
+              "logical": "slot",
+              "bytes": 212,
+              "calls": {}
+            },
+            "p113d:$direct.op": {
+              "logical": "op",
+              "bytes": 286,
+              "calls": {
+                "p125_rt_ctor2": 1
+              }
+            },
+            "p113d:$direct.prng": {
+              "logical": "prng",
+              "bytes": 77,
+              "calls": {}
+            },
+            "p113d:$direct.salt": {
+              "logical": "salt",
+              "bytes": 103,
+              "calls": {}
+            },
+            "p113d:$p118.trmc.$direct.num": {
+              "logical": "num",
+              "bytes": 380,
+              "calls": {
+                "p118_rt_finish": 1,
+                "p111_rt_op": 1,
+                "p118_rt_extend1": 1
+              }
+            },
+            "p113d:$direct.num": {
+              "logical": "num",
+              "bytes": 153,
+              "calls": {
+                "p113d:$p118.trmc.$direct.num": 1
+              }
+            },
+            "p113d:$p118.trmc.$direct.ident": {
+              "logical": "ident",
+              "bytes": 380,
+              "calls": {
+                "p118_rt_finish": 1,
+                "p111_rt_op": 1,
+                "p118_rt_extend1": 1
+              }
+            },
+            "p113d:$direct.ident": {
+              "logical": "ident",
+              "bytes": 153,
+              "calls": {
+                "p113d:$p118.trmc.$direct.ident": 1
+              }
+            },
+            "p113d:$direct.expand": {
+              "logical": "expand",
+              "bytes": 948,
+              "calls": {
+                "p113d:$p118.trmc.$direct.ident": 1,
+                "p111_rt_op": 1,
+                "p113d:$p118.trmc.$direct.num": 1,
+                "p125_rt_ctor2": 2,
+                "p111_rt_fail": 1
+              }
+            },
+            "p113d:$direct.gen.at": {
+              "logical": "gen.at",
+              "bytes": 1058,
+              "calls": {
+                "p113d:$p118.trmc.$direct.ident": 1,
+                "p111_rt_op": 1,
+                "p113d:$p118.trmc.$direct.num": 1,
+                "p125_rt_ctor2": 2,
+                "p111_rt_fail": 1
+              }
+            },
+            "p113d:$direct.p205unfold_fn0": {
+              "logical": "p205unfold_fn0",
+              "bytes": 5583,
+              "calls": {
+                "p113d:$direct.salt": 27,
+                "p113d:$direct.gen.at": 39
+              }
+            },
+            "p113d:$product.lex": {
+              "logical": "lex",
+              "bytes": 791,
+              "calls": {
+                "p113d:$direct.flush": 1,
+                "p125_rt_take2": 1,
+                "p113d:$product.step.at": 1,
+                "p111_rt_fail": 2
+              }
+            },
+            "p113d:$direct.lex": {
+              "logical": "lex",
+              "bytes": 895,
+              "calls": {
+                "p125_rt_take2": 3,
+                "p113d:$direct.flush": 1,
+                "p111_rt_fail": 4,
+                "p113d:$product.step": 1,
+                "p113d:$product.lex": 1,
+                "p111_rt_sink": 1
+              }
+            },
+            "p113d:$direct.line": {
+              "logical": "line",
+              "bytes": 202,
+              "calls": {
+                "p113d:$direct.p205unfold_fn0": 1,
+                "p113d:$direct.lex": 1
+              }
+            },
+            "p112w:$direct.line": {
+              "logical": "line",
+              "bytes": 5,
+              "calls": {}
+            },
+            "p111:$direct.line": {
+              "logical": "line",
+              "bytes": 119,
+              "calls": {
+                "p113d:$direct.line": 1,
+                "p111_rt_return": 1
+              }
+            }
+          },
+          "logicalIncomingRelocatedCalls": {
+            "num": 3,
+            "ident": 3,
+            "salt": 27,
+            "gen.at": 39,
+            "lex": 2,
+            "p205unfold_fn0": 1,
+            "line": 2
+          }
+        }
+      }
+    },
+    "variation-lexer-6-17": {
+      "mediansMs": {
+        "original": 0.25972222222222224,
+        "staged": 0.20208333333333334,
+        "c": 0.09583333333333334
+      },
+      "stagedOverOriginal": 0.7780748663101604,
+      "stagedOverC": 2.108695652173913,
+      "oracleInputs": [
+        [
+          6,
+          17
+        ],
+        [
+          0,
+          4294967295
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          123
+        ]
+      ],
+      "acceptedTimedObservations": 9,
+      "machine": {
+        "original": {
+          "textBytes": 74802,
+          "functions": 249,
+          "tracked": {
+            "p113d:$direct.slot.go": {
+              "logical": "slot.go",
+              "bytes": 749,
+              "calls": {}
+            },
+            "p113d:$direct.slot": {
+              "logical": "slot",
+              "bytes": 212,
+              "calls": {}
+            },
+            "p113d:$direct.op": {
+              "logical": "op",
+              "bytes": 286,
+              "calls": {
+                "p125_rt_ctor2": 1
+              }
+            },
+            "p113d:$direct.prng": {
+              "logical": "prng",
+              "bytes": 77,
+              "calls": {}
+            },
+            "p113d:$p118.trmc.$direct.ident": {
+              "logical": "ident",
+              "bytes": 380,
+              "calls": {
+                "p118_rt_finish": 1,
+                "p111_rt_op": 1,
+                "p118_rt_extend1": 1
+              }
+            },
+            "p113d:$direct.ident": {
+              "logical": "ident",
+              "bytes": 153,
+              "calls": {
+                "p113d:$p118.trmc.$direct.ident": 1
+              }
+            },
+            "p113d:$direct.salt": {
+              "logical": "salt",
+              "bytes": 103,
+              "calls": {}
+            },
+            "p112w:$direct.salt": {
+              "logical": "salt",
+              "bytes": 5,
+              "calls": {}
+            },
+            "p113d:$p118.trmc.$direct.num": {
+              "logical": "num",
+              "bytes": 380,
+              "calls": {
+                "p118_rt_finish": 1,
+                "p111_rt_op": 1,
+                "p118_rt_extend1": 1
+              }
+            },
+            "p113d:$direct.num": {
+              "logical": "num",
+              "bytes": 153,
+              "calls": {
+                "p113d:$p118.trmc.$direct.num": 1
+              }
+            },
+            "p113d:$direct.expand": {
+              "logical": "expand",
+              "bytes": 948,
+              "calls": {
+                "p113d:$p118.trmc.$direct.ident": 1,
+                "p111_rt_op": 1,
+                "p113d:$p118.trmc.$direct.num": 1,
+                "p125_rt_ctor2": 2,
+                "p111_rt_fail": 1
+              }
+            },
+            "p113d:$direct.gen.at": {
+              "logical": "gen.at",
+              "bytes": 1058,
+              "calls": {
+                "p113d:$p118.trmc.$direct.ident": 1,
+                "p111_rt_op": 1,
+                "p113d:$p118.trmc.$direct.num": 1,
+                "p125_rt_ctor2": 2,
+                "p111_rt_fail": 1
+              }
+            },
+            "p112w:$direct.gen.at": {
+              "logical": "gen.at",
+              "bytes": 5,
+              "calls": {}
+            },
+            "p113d:$product.lex": {
+              "logical": "lex",
+              "bytes": 791,
+              "calls": {
+                "p113d:$direct.flush": 1,
+                "p125_rt_take2": 1,
+                "p113d:$product.step.at": 1,
+                "p111_rt_fail": 2
+              }
+            },
+            "p113d:$direct.lex": {
+              "logical": "lex",
+              "bytes": 895,
+              "calls": {
+                "p125_rt_take2": 3,
+                "p113d:$direct.flush": 1,
+                "p111_rt_fail": 4,
+                "p113d:$product.step": 1,
+                "p113d:$product.lex": 1,
+                "p111_rt_sink": 1
+              }
+            },
+            "p112w:$direct.lex": {
+              "logical": "lex",
+              "bytes": 5,
+              "calls": {}
+            },
+            "p111:line": {
+              "logical": "line",
+              "bytes": 233,
+              "calls": {
+                "p111_rt_closure": 1,
+                "p111_rt_return": 1
+              }
+            },
+            "p111:$direct.line": {
+              "logical": "line",
+              "bytes": 337,
+              "calls": {
+                "p112w:tpl": 1,
+                "p112w:$direct.seed": 1,
+                "p111_rt_jump": 1
+              }
+            },
+            "p111:gen": {
+              "logical": "gen",
+              "bytes": 233,
+              "calls": {
+                "p111_rt_closure": 1,
+                "p111_rt_return": 1
+              }
+            },
+            "p114r:$direct.gen": {
+              "logical": "gen",
+              "bytes": 1740,
+              "calls": {
+                "p111_rt_frame": 1,
+                "p112w:$direct.gen.at": 1,
+                "p111_rt_fail": 3,
+                "p125_rt_take2": 1,
+                "p112w:$direct.salt": 1
+              }
+            },
+            "p111:$direct.gen": {
+              "logical": "gen",
+              "bytes": 219,
+              "calls": {
+                "p114r:$direct.gen": 1,
+                "p111_rt_return": 1
+              }
+            },
+            "p111:$direct.gen.at": {
+              "logical": "gen.at",
+              "bytes": 155,
+              "calls": {
+                "p113d:$direct.gen.at": 1,
+                "p111_rt_return": 1
+              }
+            },
+            "p111:$direct.salt": {
+              "logical": "salt",
+              "bytes": 137,
+              "calls": {
+                "p113d:$direct.salt": 1,
+                "p111_rt_return": 1
+              }
+            },
+            "p111:$direct.lex": {
+              "logical": "lex",
+              "bytes": 137,
+              "calls": {
+                "p113d:$direct.lex": 1,
+                "p111_rt_return": 1
+              }
+            }
+          },
+          "logicalIncomingRelocatedCalls": {
+            "ident": 3,
+            "num": 3,
+            "lex": 3,
+            "gen.at": 3,
+            "salt": 2,
+            "gen": 1
+          }
+        },
+        "staged": {
+          "textBytes": 74201,
+          "functions": 222,
+          "tracked": {
+            "p113d:$direct.slot.go": {
+              "logical": "slot.go",
+              "bytes": 749,
+              "calls": {}
+            },
+            "p113d:$direct.slot": {
+              "logical": "slot",
+              "bytes": 212,
+              "calls": {}
+            },
+            "p113d:$direct.op": {
+              "logical": "op",
+              "bytes": 286,
+              "calls": {
+                "p125_rt_ctor2": 1
+              }
+            },
+            "p113d:$direct.prng": {
+              "logical": "prng",
+              "bytes": 77,
+              "calls": {}
+            },
+            "p113d:$direct.salt": {
+              "logical": "salt",
+              "bytes": 103,
+              "calls": {}
+            },
+            "p113d:$p118.trmc.$direct.num": {
+              "logical": "num",
+              "bytes": 380,
+              "calls": {
+                "p118_rt_finish": 1,
+                "p111_rt_op": 1,
+                "p118_rt_extend1": 1
+              }
+            },
+            "p113d:$direct.num": {
+              "logical": "num",
+              "bytes": 153,
+              "calls": {
+                "p113d:$p118.trmc.$direct.num": 1
+              }
+            },
+            "p113d:$p118.trmc.$direct.ident": {
+              "logical": "ident",
+              "bytes": 380,
+              "calls": {
+                "p118_rt_finish": 1,
+                "p111_rt_op": 1,
+                "p118_rt_extend1": 1
+              }
+            },
+            "p113d:$direct.ident": {
+              "logical": "ident",
+              "bytes": 153,
+              "calls": {
+                "p113d:$p118.trmc.$direct.ident": 1
+              }
+            },
+            "p113d:$direct.expand": {
+              "logical": "expand",
+              "bytes": 948,
+              "calls": {
+                "p113d:$p118.trmc.$direct.ident": 1,
+                "p111_rt_op": 1,
+                "p113d:$p118.trmc.$direct.num": 1,
+                "p125_rt_ctor2": 2,
+                "p111_rt_fail": 1
+              }
+            },
+            "p113d:$direct.gen.at": {
+              "logical": "gen.at",
+              "bytes": 1058,
+              "calls": {
+                "p113d:$p118.trmc.$direct.ident": 1,
+                "p111_rt_op": 1,
+                "p113d:$p118.trmc.$direct.num": 1,
+                "p125_rt_ctor2": 2,
+                "p111_rt_fail": 1
+              }
+            },
+            "p113d:$direct.p205unfold_fn0": {
+              "logical": "p205unfold_fn0",
+              "bytes": 5583,
+              "calls": {
+                "p113d:$direct.salt": 27,
+                "p113d:$direct.gen.at": 39
+              }
+            },
+            "p113d:$product.lex": {
+              "logical": "lex",
+              "bytes": 791,
+              "calls": {
+                "p113d:$direct.flush": 1,
+                "p125_rt_take2": 1,
+                "p113d:$product.step.at": 1,
+                "p111_rt_fail": 2
+              }
+            },
+            "p113d:$direct.lex": {
+              "logical": "lex",
+              "bytes": 895,
+              "calls": {
+                "p125_rt_take2": 3,
+                "p113d:$direct.flush": 1,
+                "p111_rt_fail": 4,
+                "p113d:$product.step": 1,
+                "p113d:$product.lex": 1,
+                "p111_rt_sink": 1
+              }
+            },
+            "p113d:$direct.line": {
+              "logical": "line",
+              "bytes": 202,
+              "calls": {
+                "p113d:$direct.p205unfold_fn0": 1,
+                "p113d:$direct.lex": 1
+              }
+            },
+            "p112w:$direct.line": {
+              "logical": "line",
+              "bytes": 5,
+              "calls": {}
+            },
+            "p111:$direct.line": {
+              "logical": "line",
+              "bytes": 119,
+              "calls": {
+                "p113d:$direct.line": 1,
+                "p111_rt_return": 1
+              }
+            }
+          },
+          "logicalIncomingRelocatedCalls": {
+            "num": 3,
+            "ident": 3,
+            "salt": 27,
+            "gen.at": 39,
+            "lex": 2,
+            "p205unfold_fn0": 1,
+            "line": 2
+          }
+        }
+      }
+    },
+    "variation-lexer-10-123": {
+      "mediansMs": {
+        "original": 4.136363636363637,
+        "staged": 3.232142857142857,
+        "c": 1.5508474576271187
+      },
+      "stagedOverOriginal": 0.7813971742543171,
+      "stagedOverC": 2.0841139734582357,
+      "oracleInputs": [
+        [
+          10,
+          123
+        ],
+        [
+          0,
+          4294967295
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          123
+        ]
+      ],
+      "acceptedTimedObservations": 9,
+      "machine": {
+        "original": {
+          "textBytes": 74802,
+          "functions": 249,
+          "tracked": {
+            "p113d:$direct.slot.go": {
+              "logical": "slot.go",
+              "bytes": 749,
+              "calls": {}
+            },
+            "p113d:$direct.slot": {
+              "logical": "slot",
+              "bytes": 212,
+              "calls": {}
+            },
+            "p113d:$direct.op": {
+              "logical": "op",
+              "bytes": 286,
+              "calls": {
+                "p125_rt_ctor2": 1
+              }
+            },
+            "p113d:$direct.prng": {
+              "logical": "prng",
+              "bytes": 77,
+              "calls": {}
+            },
+            "p113d:$p118.trmc.$direct.ident": {
+              "logical": "ident",
+              "bytes": 380,
+              "calls": {
+                "p118_rt_finish": 1,
+                "p111_rt_op": 1,
+                "p118_rt_extend1": 1
+              }
+            },
+            "p113d:$direct.ident": {
+              "logical": "ident",
+              "bytes": 153,
+              "calls": {
+                "p113d:$p118.trmc.$direct.ident": 1
+              }
+            },
+            "p113d:$direct.salt": {
+              "logical": "salt",
+              "bytes": 103,
+              "calls": {}
+            },
+            "p112w:$direct.salt": {
+              "logical": "salt",
+              "bytes": 5,
+              "calls": {}
+            },
+            "p113d:$p118.trmc.$direct.num": {
+              "logical": "num",
+              "bytes": 380,
+              "calls": {
+                "p118_rt_finish": 1,
+                "p111_rt_op": 1,
+                "p118_rt_extend1": 1
+              }
+            },
+            "p113d:$direct.num": {
+              "logical": "num",
+              "bytes": 153,
+              "calls": {
+                "p113d:$p118.trmc.$direct.num": 1
+              }
+            },
+            "p113d:$direct.expand": {
+              "logical": "expand",
+              "bytes": 948,
+              "calls": {
+                "p113d:$p118.trmc.$direct.ident": 1,
+                "p111_rt_op": 1,
+                "p113d:$p118.trmc.$direct.num": 1,
+                "p125_rt_ctor2": 2,
+                "p111_rt_fail": 1
+              }
+            },
+            "p113d:$direct.gen.at": {
+              "logical": "gen.at",
+              "bytes": 1058,
+              "calls": {
+                "p113d:$p118.trmc.$direct.ident": 1,
+                "p111_rt_op": 1,
+                "p113d:$p118.trmc.$direct.num": 1,
+                "p125_rt_ctor2": 2,
+                "p111_rt_fail": 1
+              }
+            },
+            "p112w:$direct.gen.at": {
+              "logical": "gen.at",
+              "bytes": 5,
+              "calls": {}
+            },
+            "p113d:$product.lex": {
+              "logical": "lex",
+              "bytes": 791,
+              "calls": {
+                "p113d:$direct.flush": 1,
+                "p125_rt_take2": 1,
+                "p113d:$product.step.at": 1,
+                "p111_rt_fail": 2
+              }
+            },
+            "p113d:$direct.lex": {
+              "logical": "lex",
+              "bytes": 895,
+              "calls": {
+                "p125_rt_take2": 3,
+                "p113d:$direct.flush": 1,
+                "p111_rt_fail": 4,
+                "p113d:$product.step": 1,
+                "p113d:$product.lex": 1,
+                "p111_rt_sink": 1
+              }
+            },
+            "p112w:$direct.lex": {
+              "logical": "lex",
+              "bytes": 5,
+              "calls": {}
+            },
+            "p111:line": {
+              "logical": "line",
+              "bytes": 233,
+              "calls": {
+                "p111_rt_closure": 1,
+                "p111_rt_return": 1
+              }
+            },
+            "p111:$direct.line": {
+              "logical": "line",
+              "bytes": 337,
+              "calls": {
+                "p112w:tpl": 1,
+                "p112w:$direct.seed": 1,
+                "p111_rt_jump": 1
+              }
+            },
+            "p111:gen": {
+              "logical": "gen",
+              "bytes": 233,
+              "calls": {
+                "p111_rt_closure": 1,
+                "p111_rt_return": 1
+              }
+            },
+            "p114r:$direct.gen": {
+              "logical": "gen",
+              "bytes": 1740,
+              "calls": {
+                "p111_rt_frame": 1,
+                "p112w:$direct.gen.at": 1,
+                "p111_rt_fail": 3,
+                "p125_rt_take2": 1,
+                "p112w:$direct.salt": 1
+              }
+            },
+            "p111:$direct.gen": {
+              "logical": "gen",
+              "bytes": 219,
+              "calls": {
+                "p114r:$direct.gen": 1,
+                "p111_rt_return": 1
+              }
+            },
+            "p111:$direct.gen.at": {
+              "logical": "gen.at",
+              "bytes": 155,
+              "calls": {
+                "p113d:$direct.gen.at": 1,
+                "p111_rt_return": 1
+              }
+            },
+            "p111:$direct.salt": {
+              "logical": "salt",
+              "bytes": 137,
+              "calls": {
+                "p113d:$direct.salt": 1,
+                "p111_rt_return": 1
+              }
+            },
+            "p111:$direct.lex": {
+              "logical": "lex",
+              "bytes": 137,
+              "calls": {
+                "p113d:$direct.lex": 1,
+                "p111_rt_return": 1
+              }
+            }
+          },
+          "logicalIncomingRelocatedCalls": {
+            "ident": 3,
+            "num": 3,
+            "lex": 3,
+            "gen.at": 3,
+            "salt": 2,
+            "gen": 1
+          }
+        },
+        "staged": {
+          "textBytes": 74201,
+          "functions": 222,
+          "tracked": {
+            "p113d:$direct.slot.go": {
+              "logical": "slot.go",
+              "bytes": 749,
+              "calls": {}
+            },
+            "p113d:$direct.slot": {
+              "logical": "slot",
+              "bytes": 212,
+              "calls": {}
+            },
+            "p113d:$direct.op": {
+              "logical": "op",
+              "bytes": 286,
+              "calls": {
+                "p125_rt_ctor2": 1
+              }
+            },
+            "p113d:$direct.prng": {
+              "logical": "prng",
+              "bytes": 77,
+              "calls": {}
+            },
+            "p113d:$direct.salt": {
+              "logical": "salt",
+              "bytes": 103,
+              "calls": {}
+            },
+            "p113d:$p118.trmc.$direct.num": {
+              "logical": "num",
+              "bytes": 380,
+              "calls": {
+                "p118_rt_finish": 1,
+                "p111_rt_op": 1,
+                "p118_rt_extend1": 1
+              }
+            },
+            "p113d:$direct.num": {
+              "logical": "num",
+              "bytes": 153,
+              "calls": {
+                "p113d:$p118.trmc.$direct.num": 1
+              }
+            },
+            "p113d:$p118.trmc.$direct.ident": {
+              "logical": "ident",
+              "bytes": 380,
+              "calls": {
+                "p118_rt_finish": 1,
+                "p111_rt_op": 1,
+                "p118_rt_extend1": 1
+              }
+            },
+            "p113d:$direct.ident": {
+              "logical": "ident",
+              "bytes": 153,
+              "calls": {
+                "p113d:$p118.trmc.$direct.ident": 1
+              }
+            },
+            "p113d:$direct.expand": {
+              "logical": "expand",
+              "bytes": 948,
+              "calls": {
+                "p113d:$p118.trmc.$direct.ident": 1,
+                "p111_rt_op": 1,
+                "p113d:$p118.trmc.$direct.num": 1,
+                "p125_rt_ctor2": 2,
+                "p111_rt_fail": 1
+              }
+            },
+            "p113d:$direct.gen.at": {
+              "logical": "gen.at",
+              "bytes": 1058,
+              "calls": {
+                "p113d:$p118.trmc.$direct.ident": 1,
+                "p111_rt_op": 1,
+                "p113d:$p118.trmc.$direct.num": 1,
+                "p125_rt_ctor2": 2,
+                "p111_rt_fail": 1
+              }
+            },
+            "p113d:$direct.p205unfold_fn0": {
+              "logical": "p205unfold_fn0",
+              "bytes": 5583,
+              "calls": {
+                "p113d:$direct.salt": 27,
+                "p113d:$direct.gen.at": 39
+              }
+            },
+            "p113d:$product.lex": {
+              "logical": "lex",
+              "bytes": 791,
+              "calls": {
+                "p113d:$direct.flush": 1,
+                "p125_rt_take2": 1,
+                "p113d:$product.step.at": 1,
+                "p111_rt_fail": 2
+              }
+            },
+            "p113d:$direct.lex": {
+              "logical": "lex",
+              "bytes": 895,
+              "calls": {
+                "p125_rt_take2": 3,
+                "p113d:$direct.flush": 1,
+                "p111_rt_fail": 4,
+                "p113d:$product.step": 1,
+                "p113d:$product.lex": 1,
+                "p111_rt_sink": 1
+              }
+            },
+            "p113d:$direct.line": {
+              "logical": "line",
+              "bytes": 202,
+              "calls": {
+                "p113d:$direct.p205unfold_fn0": 1,
+                "p113d:$direct.lex": 1
+              }
+            },
+            "p112w:$direct.line": {
+              "logical": "line",
+              "bytes": 5,
+              "calls": {}
+            },
+            "p111:$direct.line": {
+              "logical": "line",
+              "bytes": 119,
+              "calls": {
+                "p113d:$direct.line": 1,
+                "p111_rt_return": 1
+              }
+            }
+          },
+          "logicalIncomingRelocatedCalls": {
+            "num": 3,
+            "ident": 3,
+            "salt": 27,
+            "gen.at": 39,
+            "lex": 2,
+            "p205unfold_fn0": 1,
+            "line": 2
+          }
+        }
+      }
+    },
+    "packet": {
+      "mediansMs": {
+        "original": 0.05625,
+        "staged": 0.015503173164097914
+      },
+      "stagedOverOriginal": 0.2756119673617407,
+      "stagedOverC": null,
+      "oracleInputs": [
+        [
+          512,
+          17
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          3,
+          123
+        ],
+        [
+          17,
+          4294967295
+        ]
+      ],
+      "acceptedTimedObservations": 8,
+      "machine": {
+        "original": {
+          "textBytes": 47276,
+          "functions": 177,
+          "tracked": {
+            "p113d:$p128borrow.owned.packet.fold": {
+              "logical": "packet.fold",
+              "bytes": 404,
+              "calls": {
+                "p125_rt_take2": 1,
+                "p111_rt_fail": 2
+              }
+            },
+            "p113d:$p118borrow.read.packet.fold": {
+              "logical": "packet.fold",
+              "bytes": 618,
+              "calls": {
+                "p118_rt_borrow_fields": 1,
+                "p111_rt_fail": 2
+              }
+            },
+            "p113d:$direct.packet.fold": {
+              "logical": "packet.fold",
+              "bytes": 190,
+              "calls": {
+                "p118_rt_borrow_scalar_safe": 1,
+                "p113d:$p118borrow.read.packet.fold": 1,
+                "p111_rt_sink": 1,
+                "p113d:$p128borrow.owned.packet.fold": 1
+              }
+            },
+            "p113d:$direct.packet.choose": {
+              "logical": "packet.choose",
+              "bytes": 334,
+              "calls": {
+                "p111_rt_fail": 1
+              }
+            },
+            "p113d:$direct.packet.step": {
+              "logical": "packet.step",
+              "bytes": 112,
+              "calls": {}
+            },
+            "p113d:$direct.packet.apply": {
+              "logical": "packet.apply",
+              "bytes": 95,
+              "calls": {
+                "p113d:$direct.packet.fold": 1
+              }
+            }
+          },
+          "logicalIncomingRelocatedCalls": {
+            "packet.fold": 4
+          }
+        },
+        "staged": {
+          "textBytes": 46505,
+          "functions": 175,
+          "tracked": {
+            "p113d:$direct.packet.choose": {
+              "logical": "packet.choose",
+              "bytes": 334,
+              "calls": {
+                "p111_rt_fail": 1
+              }
+            },
+            "p113d:$direct.packet.step": {
+              "logical": "packet.step",
+              "bytes": 112,
+              "calls": {}
+            },
+            "p113d:$direct.p205unfold_fn0": {
+              "logical": "p205unfold_fn0",
+              "bytes": 481,
+              "calls": {
+                "p113d:$direct.packet.step": 5
+              }
+            },
+            "p113d:$direct.packet.apply": {
+              "logical": "packet.apply",
+              "bytes": 75,
+              "calls": {
+                "p113d:$direct.p205unfold_fn0": 1
+              }
+            }
+          },
+          "logicalIncomingRelocatedCalls": {
+            "packet.step": 5,
+            "p205unfold_fn0": 2
+          }
+        }
+      }
+    }
+  },
+  "projectedSecondsSavedOnPhase200Weights": 0.41835026220933613,
+  "actualThreeRowFixedSeconds": {
+    "original": 1.6335143867243866,
+    "staged": 1.2781640604890605,
+    "c": 0.6076809970987938
+  },
+  "actualThreeRowStagedOverC": 2.103347095912665
+}

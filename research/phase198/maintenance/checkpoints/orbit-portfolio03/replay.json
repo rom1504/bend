@@ -1,0 +1,187 @@
+{
+  "kind": "phase198-maintenance-offline-replay",
+  "version": 1,
+  "baselineArchive": {
+    "file": "research/phase198/qualification/native-replay01.tar.gz",
+    "bytes": 1992220,
+    "sha256": "1c0e09135fb7b5be50c39e86e36193696b3d3ba9a6e6d101f82ec19102f71db2"
+  },
+  "baselinePrefix": "selfhost/build/phase198/selected-source01/",
+  "portfolioPatch": {
+    "file": "research/phase198/maintenance/checkpoints/orbit-portfolio03/portfolio.patch.gz",
+    "bytes": 20500,
+    "sha256": "8140196e35853860a6a90772e0272adf11ae7766ac85f7de385d84ec215ec385"
+  },
+  "portfolioEvidence": {
+    "file": "research/phase198/maintenance/checkpoints/orbit-portfolio03/source-evidence.json.gz",
+    "bytes": 3032,
+    "sha256": "d8102b31a5ff0fbb4b6a601d32127dac8710d303affc0994f92854ab36a1489e"
+  },
+  "originalTool": {
+    "file": "selfhost/tools/build/source.py",
+    "bytes": 32781,
+    "sha256": "de83e4ece0ae31cf43783829326a7961cd1102ae223bfcc70b2288fa8cde5551"
+  },
+  "proposedTool": {
+    "file": "research/phase198/maintenance/source-proposed.py",
+    "bytes": 36929,
+    "sha256": "301dd4c222b24729aa0673fb44f90d99ac1905469a59910b9b5d2b3b5bf6e585"
+  },
+  "toolPatch": {
+    "file": "research/phase198/maintenance/source-policy.patch",
+    "bytes": 4360,
+    "sha256": "356059b32bc4365efa1272b935bf49b848bf80eaccc28a267e0f3f6e9f25087f"
+  },
+  "changedStageFiles": [
+    {
+      "file": "src/back/qbe/construction-elimination.bend",
+      "before": {
+        "bytes": 12814,
+        "sha256": "e42bd4d40eb1282361b3189745f659894d8ac0e1d3abecd530dd5a6c49095317"
+      },
+      "after": {
+        "bytes": 26539,
+        "sha256": "1d4158ef014aebb158cdb0a7cb41e8d38e6c395fbefb398e81e455aa76dfcddd"
+      }
+    },
+    {
+      "file": "src/back/x86/entry.bend",
+      "before": {
+        "bytes": 1592,
+        "sha256": "eedf0ab07687db4861e31843e8f6a3f834f2bfff1b705e5e68275bcca08fcac0"
+      },
+      "after": {
+        "bytes": 2746,
+        "sha256": "f780438f80c98d53893e27feef356bfdd37eeb130e14d78808583bf822a48ce8"
+      }
+    },
+    {
+      "file": "src/back/x86/function.bend",
+      "before": {
+        "bytes": 15279,
+        "sha256": "48f75a91370925a73f546d84e6c204ff8752e92d090b37368bde61bc7591a940"
+      },
+      "after": {
+        "bytes": 60112,
+        "sha256": "11376ce009c94da8a46098b95a34e792861d6fd7d652393b93f33c13292e7d54"
+      }
+    },
+    {
+      "file": "src/back/x86/recursive-regions.bend",
+      "before": {
+        "bytes": 10701,
+        "sha256": "1cba37c82dfa052b5a1bc772c8ae26560a0e562e5d1f5c1f21518128aad9da9c"
+      },
+      "after": {
+        "bytes": 36733,
+        "sha256": "309d931282d5e0b5a387ee715a4b05f2ff4cbf15f6a1c6a10b5138e261f0b958"
+      }
+    },
+    {
+      "file": "src/compiler.json",
+      "before": {
+        "bytes": 544475,
+        "sha256": "0038902e48f109c445c37020456c006bc7e0333b68dda85440156c3b3bc48b16"
+      },
+      "after": {
+        "bytes": 546486,
+        "sha256": "4a7d3e8d49bb1b3e44cae6fdbbb602c56e0775ce9e8f3a81f368fe90d77309a9"
+      }
+    }
+  ],
+  "expectedSource": {
+    "bytes": 1942906,
+    "sha256": "b2c9aade19ae7a205ec61bb9358ae68b31f9d25de2eb6256c56e093fccc4edff"
+  },
+  "expectedMap": {
+    "bytes": 1839270,
+    "sha256": "d7faa6725f78cb3b807d6572bf947418c46f929ebd3d5fcb3dc8468ea63cd7ee"
+  },
+  "profiles": [
+    {
+      "profile": "qbe",
+      "bytesIdenticalToBaseline": true,
+      "mapsIdenticalToBaseline": true,
+      "source": {
+        "bytes": 3213774,
+        "sha256": "1e8a23ace83520a9d909cf20ce6168e5aa5a0f372d32991381dfc9bf0c544902"
+      },
+      "map": {
+        "bytes": 2790267,
+        "sha256": "346bc6b738ab36c430b87c90fbb588ae21d2cf5cc14ef4fb34a6f84d757da780"
+      },
+      "mapEntries": 8578
+    },
+    {
+      "profile": "native-c",
+      "bytesIdenticalToBaseline": true,
+      "mapsIdenticalToBaseline": true,
+      "source": {
+        "bytes": 3213858,
+        "sha256": "38d6e88197866928de2eae1161a413d57cd003a0b06614ba7dd85b911e0eaffa"
+      },
+      "map": {
+        "bytes": 2790274,
+        "sha256": "6ca2eb7f3f8e18bc3c65ef9d09642552c95ecf76567b672c65d39a3a0d1531f9"
+      },
+      "mapEntries": 8578
+    },
+    {
+      "profile": "js-api",
+      "bytesIdenticalToBaseline": true,
+      "mapsIdenticalToBaseline": true,
+      "source": {
+        "bytes": 3213640,
+        "sha256": "28277c3d8ac3623dc0cf0643423a3ffe62636add0c1d22e94ee28c5b2d73853c"
+      },
+      "map": {
+        "bytes": 2789965,
+        "sha256": "85c6ed5f3dd819d159f0f48ad263ea5d36071b65a52038ddeba00ee63d7d4b90"
+      },
+      "mapEntries": 8577
+    },
+    {
+      "profile": "qbe-policy",
+      "bytesIdenticalToBaseline": true,
+      "mapsIdenticalToBaseline": true,
+      "source": {
+        "bytes": 3213773,
+        "sha256": "cb2ab36dbce228f5085a9706e05dc1ec15576b6738d80fcb0ef33437cb377616"
+      },
+      "map": {
+        "bytes": 2790274,
+        "sha256": "04534c2586b40c32d8f31ff33f0ac5aa754ea00d75ea310a0c40dbe2cfdfe766"
+      },
+      "mapEntries": 8578
+    },
+    {
+      "profile": "qbe-policy-test",
+      "bytesIdenticalToBaseline": true,
+      "mapsIdenticalToBaseline": true,
+      "source": {
+        "bytes": 3213746,
+        "sha256": "151b3da6947b82338062be146c9935f6e427cf65afb9a0662b25e551aab0c468"
+      },
+      "map": {
+        "bytes": 2790268,
+        "sha256": "9d1801510e40aef9a6ae71f553f10f7e885ee443e9055b2014e61a300fe21f13"
+      },
+      "mapEntries": 8578
+    },
+    {
+      "profile": "x86",
+      "bytesIdenticalToBaseline": false,
+      "mapsIdenticalToBaseline": false,
+      "source": {
+        "bytes": 1942906,
+        "sha256": "b2c9aade19ae7a205ec61bb9358ae68b31f9d25de2eb6256c56e093fccc4edff"
+      },
+      "map": {
+        "bytes": 1839270,
+        "sha256": "d7faa6725f78cb3b807d6572bf947418c46f929ebd3d5fcb3dc8468ea63cd7ee"
+      },
+      "mapEntries": 5685
+    }
+  ],
+  "scope": "Replay byte transport only. Retained complete checked-source receipt does not rerun the checker or transfer native qualification."
+}

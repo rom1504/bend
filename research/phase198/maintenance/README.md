@@ -2,6 +2,18 @@
 
 This unapplied proposal reconstructs the checked `portfolio03` source **byte-for-byte**: 1,934,272 bytes, SHA256 `732735cf661f45a5bb12e930e1aa1e90fe5a263eda74103958434c295acd9830`. All five other maintained profiles preserve their complete source bytes and serialized maps relative to the qualified Phase197 composition (`phase198/selected-source01`). Every generated map span is verified against its module bytes and line offsets. No live maintained files are changed.
 
+## Checked orbit source checkpoint
+
+The later [orbit-portfolio03 checkpoint](checkpoints/orbit-portfolio03/summary.json) reconstructs source SHA256 `b2c9aade19ae7a205ec61bb9358ae68b31f9d25de2eb6256c56e093fccc4edff` (1,942,906 bytes), with its successful zero-hole independent source-check receipt. It remains a source-only checkpoint: native qualification and installed selection are separate.
+
+```sh
+python3 research/phase198/maintenance/replay.py \
+  --recipe research/phase198/maintenance/checkpoints/orbit-portfolio03/replay.json \
+  --out research/phase198/maintenance/replay-output-orbit
+```
+
+See [candidate operation and installation boundaries](CANDIDATE.md) for using an actual published image without replacing the installed compiler. `prepare-checkpoint.py` creates the same compact checkpoint for a future explicitly frozen and checked portfolio.
+
 ## Replay from a clean checkout
 
 Only Python 3 and `patch` are needed. From the repository root, select a fresh output path:

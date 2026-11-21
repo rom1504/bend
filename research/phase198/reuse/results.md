@@ -36,3 +36,15 @@ The x86 entry calls the original checked native planner once. On success it scan
 The expanded checked transport also exported `x181_request`, binding the CLI-only live/cache preparation and both dispatches to the staged x86 source. Its complete independent receipt is `reuse-fusion-api05/report.json`, with source SHA-256 `a4cb224e32ef081609aacc8a7b431253345ffcf8700eda0b70ff34e22ea8bd72`.
 
 The combined frozen `portfolio03` source grew to 4,746 definitions, including 830 arity-three definitions. The same two matching telescopes remained and again scrutinize the third argument. A full ELF symbol-range audit of its first native compiler's 45 program objects found the fusion worker in the canonical tree benchmark and both tree variants only. All three active wrappers are 725 bytes and match the independently timed hosted wrapper byte-for-byte (`201d0d0b0f37089b064465c3f10d8550368aed07d635db924f4bde797b040cb9`). Each original H fallback remains present. `pairwise/native-witness.json` binds all 45 input object hashes and retained symbol payloads.
+
+## Final native compiler cost
+
+The final progress portfolio has 4,778 definitions. Of 835 arity-three definitions, only the same two compiler functions have the type needed by the tree matcher, and both begin by inspecting their final Boolean argument. The first native compiler generated the identical checked 725-byte worker in all three measured tree programs. The remaining 42 catalog objects have no fused worker. [Final source and object audit](pairwise/final-portfolio.json)
+
+| Compiler generation | Incumbent guard seconds | Final guard seconds | Incumbent peak RSS, GB | Final peak RSS, GB |
+| --- | ---: | ---: | ---: | ---: |
+| First native image | 177.70 | 180.72 | 1.055 | 1.108 |
+| Native self-compilation | 288.64 | 313.23 | 1.751 | 1.834 |
+| Native reproduction | 353.75 | 374.59 | 1.759 | 1.841 |
+
+The full candidate source grows from 1,858,809 to 1,947,566 bytes. Both native self-compilations stay within the 3 GiB guard. The recorded timings and memory peaks include every portfolio change. The static source census separately establishes the number of functions eligible for detailed tree matching. [Reproducible audit](pairwise/final-portfolio.py)

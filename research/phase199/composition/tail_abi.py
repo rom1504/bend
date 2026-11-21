@@ -70,13 +70,26 @@ def main():
         assert set(kinds) == {(".data", 1)}, (case["id"], kinds)
         rows.append(dict(case=case["id"], sha256=product["sha256"], publicDataPointers=kinds[(".data", 1)]))
     assert len(rows) == 45
+    compilers = []
+    for stage in ("progress-native-image01", "progress-native-self01", "progress-native-reproduction01"):
+        receipt = tail.BUILD / stage / "report.json"
+        machine = json.loads(receipt.read_text())
+        product = machine["object"]
+        path = Path(product["file"])
+        assert machine["complete"] and not machine.get("changedInputs")
+        assert path.stat().st_size == product["bytes"] and tail.digest(path.read_bytes()) == product["sha256"]
+        kinds = relocations(path)
+        assert set(kinds) == {(".data", 1)}, (stage, kinds)
+        compilers.append(dict(stage=stage, receiptSha256=tail.digest(receipt.read_bytes()),
+                              objectSha256=product["sha256"], objectBytes=product["bytes"],
+                              publicDataPointers=kinds[(".data", 1)]))
     runtime = tail.ROOT / "selfhost/src/runtime/qbe/runtime.c"
     report = dict(
         kind="phase199-tail-public-abi-source-and-object-audit", targetsRun=False,
         checkedSource=tail.digest(checked_path.read_bytes()), progressSource=tail.digest(progress_path.read_bytes()),
         native45Manifest=tail.digest(native.read_bytes()), runtimeSource=tail.digest(runtime.read_bytes()),
         unchangedBodies=identical, rows=rows, publicDataPointers=sum(x["publicDataPointers"] for x in rows),
-        publicTextRelocations=0, nativeCallsFromCustomForeignCodeExamined=False,
+        publicTextRelocations=0, nativeCompilers=compilers, nativeCallsFromCustomForeignCodeExamined=False,
     )
     (tail.HERE/"tail-abi.json").write_text(json.dumps(report, indent=2)+"\n")
 

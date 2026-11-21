@@ -26,5 +26,6 @@ caller-clobbered registers, stack alignment and live values.
 The guarded array version is the authorization boundary: mode 2 and existing
 raw dynamic packed-array admission have already been checked by the unchanged
 compiler factories. Matching local spellings alone would not be such a proof.
-The source is under development until a checked API, independent mutation
-controls, actual-object activation and complete program oracles are recorded.
+The first checked API, independent mutation controls, emitted-worker ABI
+checks and complete-program screen passed; see [RESULTS.md](RESULTS.md).
+This does not constitute native self-reproduction, all45 coverage or installation.

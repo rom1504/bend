@@ -1,0 +1,248 @@
+{
+  "complete": true,
+  "scope": "Read-only actual ELF audit, no target execution or correctness inference.",
+  "plan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/focused-plan01/study.json",
+    "bytes": 69594,
+    "sha256": "2512408e5d6d6ca2849f964beca8dd6f850b0ef6a8f6989613c7d6ec646c76dc"
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase199/scan-lowering/audit.py",
+    "bytes": 3398,
+    "sha256": "9e0c7723f65e55597a3949dc3655d2c8c6c65717b8f9e020014014a519f66cf3"
+  },
+  "cases": [
+    {
+      "id": "local-fold",
+      "baseline": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-native45-02/local-fold/machine/program.o",
+        "bytes": 98248,
+        "sha256": "69a7c43e3379703fcf5a13f49b7098cbb7b2021d156ca5ae550433e5d7358d1c"
+      },
+      "candidate": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/focused-emission01/scan/local-fold/program.o",
+        "bytes": 98376,
+        "sha256": "b92817084d5cd479e7ef4347c6c2e691213a47458b9bc90c95a1405a10aea00a"
+      },
+      "identical": false,
+      "baselineWorker": {
+        "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112_",
+        "start": 15594,
+        "bytes": 445,
+        "instructions": 116,
+        "codeSha256": "235b0011bba106f46ace90128eda4c9416a052ee5bcc2359faf26752d9fc6df5",
+        "helperCalls": [],
+        "relocations": [
+          {
+            "offset": "0x3e0f",
+            "text": "R_X86_64_PLT32\tp117v_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112_-0x4"
+          }
+        ],
+        "command": [
+          "objdump",
+          "-dr",
+          "-M",
+          "intel",
+          "--no-show-raw-insn",
+          "--disassemble=p113d_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112_",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-native45-02/local-fold/machine/program.o"
+        ]
+      },
+      "candidateWorker": {
+        "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112_",
+        "start": 15594,
+        "bytes": 511,
+        "instructions": 132,
+        "codeSha256": "2762967cef7f6f67a4033229977f1c4e994c3e15518ac8238839ac2c260b878a",
+        "helperCalls": [
+          "0x3eb1"
+        ],
+        "relocations": [
+          {
+            "offset": "0x3e0d",
+            "text": "R_X86_64_PLT32\tp117v_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112_-0x4"
+          },
+          {
+            "offset": "0x3eb2",
+            "text": "R_X86_64_PLT32\tp199_rt_u32_scan4-0x4"
+          }
+        ],
+        "command": [
+          "objdump",
+          "-dr",
+          "-M",
+          "intel",
+          "--no-show-raw-insn",
+          "--disassemble=p113d_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112_",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/focused-emission01/scan/local-fold/program.o"
+        ]
+      },
+      "witness": {
+        "file": "/home/ai/bend2/build/publish/bend/research/phase199/scan-lowering/machine-evidence/local-fold-worker.txt",
+        "bytes": 4739,
+        "sha256": "b8e8a9d98f90d27aece12a8377a4c35afb3a6d87473f65b0984ec17e65aa8959"
+      }
+    },
+    {
+      "id": "variation-local-fold-128-0",
+      "baseline": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-native45-02/variation-local-fold-128-0/machine/program.o",
+        "bytes": 98248,
+        "sha256": "89460a5122642a8b704237a8050116ddc7b9bf7ad67d229cec26b7cc409a694d"
+      },
+      "candidate": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/focused-emission01/scan/variation-local-fold-128-0/program.o",
+        "bytes": 98376,
+        "sha256": "115639f9e53c343da0d1435a2a6c3b33638ad831a16df19fa1bec6139f80525f"
+      },
+      "identical": false,
+      "baselineWorker": {
+        "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112_",
+        "start": 15594,
+        "bytes": 445,
+        "instructions": 116,
+        "codeSha256": "235b0011bba106f46ace90128eda4c9416a052ee5bcc2359faf26752d9fc6df5",
+        "helperCalls": [],
+        "relocations": [
+          {
+            "offset": "0x3e0f",
+            "text": "R_X86_64_PLT32\tp117v_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112_-0x4"
+          }
+        ],
+        "command": [
+          "objdump",
+          "-dr",
+          "-M",
+          "intel",
+          "--no-show-raw-insn",
+          "--disassemble=p113d_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112_",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-native45-02/variation-local-fold-128-0/machine/program.o"
+        ]
+      },
+      "candidateWorker": {
+        "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112_",
+        "start": 15594,
+        "bytes": 511,
+        "instructions": 132,
+        "codeSha256": "2762967cef7f6f67a4033229977f1c4e994c3e15518ac8238839ac2c260b878a",
+        "helperCalls": [
+          "0x3eb1"
+        ],
+        "relocations": [
+          {
+            "offset": "0x3e0d",
+            "text": "R_X86_64_PLT32\tp117v_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112_-0x4"
+          },
+          {
+            "offset": "0x3eb2",
+            "text": "R_X86_64_PLT32\tp199_rt_u32_scan4-0x4"
+          }
+        ],
+        "command": [
+          "objdump",
+          "-dr",
+          "-M",
+          "intel",
+          "--no-show-raw-insn",
+          "--disassemble=p113d_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112_",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/focused-emission01/scan/variation-local-fold-128-0/program.o"
+        ]
+      }
+    },
+    {
+      "id": "variation-local-fold-8192-123",
+      "baseline": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-native45-02/variation-local-fold-8192-123/machine/program.o",
+        "bytes": 98248,
+        "sha256": "276f1278ec1c7a6548e6084b6b77f944a69513a3703ef52384d0bc9257409249"
+      },
+      "candidate": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/focused-emission01/scan/variation-local-fold-8192-123/program.o",
+        "bytes": 98376,
+        "sha256": "9a258c967ac217c6f4352d53cf14a3b42ded317658f7d17dfa385af0ec301a7b"
+      },
+      "identical": false,
+      "baselineWorker": {
+        "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112_",
+        "start": 15594,
+        "bytes": 445,
+        "instructions": 116,
+        "codeSha256": "235b0011bba106f46ace90128eda4c9416a052ee5bcc2359faf26752d9fc6df5",
+        "helperCalls": [],
+        "relocations": [
+          {
+            "offset": "0x3e0f",
+            "text": "R_X86_64_PLT32\tp117v_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112_-0x4"
+          }
+        ],
+        "command": [
+          "objdump",
+          "-dr",
+          "-M",
+          "intel",
+          "--no-show-raw-insn",
+          "--disassemble=p113d_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112_",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-native45-02/variation-local-fold-8192-123/machine/program.o"
+        ]
+      },
+      "candidateWorker": {
+        "symbol": "p113d_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112_",
+        "start": 15594,
+        "bytes": 511,
+        "instructions": 132,
+        "codeSha256": "2762967cef7f6f67a4033229977f1c4e994c3e15518ac8238839ac2c260b878a",
+        "helperCalls": [
+          "0x3eb1"
+        ],
+        "relocations": [
+          {
+            "offset": "0x3e0d",
+            "text": "R_X86_64_PLT32\tp117v_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112_-0x4"
+          },
+          {
+            "offset": "0x3eb2",
+            "text": "R_X86_64_PLT32\tp199_rt_u32_scan4-0x4"
+          }
+        ],
+        "command": [
+          "objdump",
+          "-dr",
+          "-M",
+          "intel",
+          "--no-show-raw-insn",
+          "--disassemble=p113d_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112_",
+          "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/focused-emission01/scan/variation-local-fold-8192-123/program.o"
+        ]
+      }
+    },
+    {
+      "id": "editdist",
+      "baseline": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-native45-02/editdist/machine/program.o",
+        "bytes": 135664,
+        "sha256": "286f43061b18e1541e01399eb8b8a6b586af2351ec910a882dc0c5665d75a0bc"
+      },
+      "candidate": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/focused-emission01/scan/editdist/program.o",
+        "bytes": 135664,
+        "sha256": "286f43061b18e1541e01399eb8b8a6b586af2351ec910a882dc0c5665d75a0bc"
+      },
+      "identical": true
+    },
+    {
+      "id": "mandelbrot",
+      "baseline": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-native45-02/mandelbrot/machine/program.o",
+        "bytes": 137832,
+        "sha256": "3b445ebcdcde1cb5d5e4f527a5e9a57e8ece3905e6138030d2401386295b535a"
+      },
+      "candidate": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/focused-emission01/scan/mandelbrot/program.o",
+        "bytes": 137832,
+        "sha256": "3b445ebcdcde1cb5d5e4f527a5e9a57e8ece3905e6138030d2401386295b535a"
+      },
+      "identical": true
+    }
+  ],
+  "interpretation": "The guarded nonzero worker snapshots payload/mask/fuel/index/carry into SysV RDI/RSI/RDX/RCX/R8 before the helper call. Original owner is live in callee-saved RBX and result-out pointer at rbp-0x30; RAX carry is written to output slot1 after owner slot0. Scalar guard fallback and zero result remain. Independent execution is required to validate this static ABI witness."
+}

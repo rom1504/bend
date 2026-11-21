@@ -20,8 +20,11 @@ The selector checks the complete two-level countdown shape: U64 fuel equals
 zero, returning the original owner and full-width carry; otherwise fuel is
 unequal to zero. Both guards, the zero result and the second guard's failure arm
 remain exactly as supplied. It changes only the positive branch after proving
-all its statements, including the sole terminal backedge. At most 64 scalar
-statements are visited. No unknown expression or effect is admitted.
+all its statements, including the sole terminal backedge. Acceptance requires
+at most 64 scalar statements. The hosted Boolean conjunction is eager, so
+this acceptance budget is not an early traversal cutoff; the existing array
+version already bounds its source body to 1024 structural units. No unknown
+expression or effect is admitted.
 
 Semantic tokens track initial fuel, index, owner, carry, and authenticated
 metadata base/mask. They additionally represent exact fuel minus one; low32

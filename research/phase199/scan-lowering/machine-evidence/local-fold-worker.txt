@@ -1,0 +1,134 @@
+    3cea:	push   rbp
+    3ceb:	mov    rbp,rsp
+    3cee:	sub    rsp,0x9d0
+    3cf5:	mov    QWORD PTR [rbp-0x10],r12
+    3cf9:	mov    QWORD PTR [rbp-0x8],rbx
+    3cfd:	mov    QWORD PTR [rbp-0x18],r13
+    3d01:	mov    QWORD PTR [rbp-0x20],r14
+    3d05:	mov    QWORD PTR [rbp-0x28],r15
+    3d09:	mov    rax,rdi
+    3d0c:	mov    r12,rax
+    3d0f:	mov    rax,rsi
+    3d12:	mov    QWORD PTR [rbp-0x30],rax
+    3d16:	mov    rax,rdx
+    3d19:	mov    rdi,rax
+    3d1c:	mov    rax,rcx
+    3d1f:	mov    r13,rax
+    3d22:	mov    rax,r8
+    3d25:	mov    rbx,rax
+    3d28:	mov    rax,r9
+    3d2b:	mov    rsi,rax
+    3d2e:	mov    r15,QWORD PTR [r12]
+    3d32:	mov    rdx,rbx
+    3d35:	mov    r8,rdx
+    3d38:	shr    r8,0x38
+    3d3c:	mov    r9,r8
+    3d3f:	cmp    r9,0x4
+    3d46:	sete   r9b
+    3d4a:	movzx  r9d,r9b
+    3d4e:	movabs r11,0xffffffffff
+    3d58:	mov    r8,rdx
+    3d5b:	and    r8,r11
+    3d5e:	mov    r14,r8
+    3d61:	cmp    r14,0x3108280
+    3d68:	setae  r14b
+    3d6c:	movzx  r14d,r14b
+    3d70:	and    r14d,r9d
+    3d73:	shr    rdx,0x28
+    3d77:	and    rdx,0x1f
+    3d7e:	mov    r11,rdx
+    3d81:	movabs rdx,0x1
+    3d8b:	mov    ecx,r11d
+    3d8e:	shl    rdx,cl
+    3d91:	lea    r9,[rdx-0x1]
+    3d95:	mov    rdx,r8
+    3d98:	shl    rdx,0x3
+    3d9c:	mov    r8,r15
+    3d9f:	add    r8,rdx
+    3da2:	mov    edx,0x1
+    3da7:	and    edx,r14d
+    3daa:	mov    r10,rdx
+    3dad:	test   r10d,r10d
+    3db0:	je     3dbb <p113d_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112_+0xd1>
+    3db6:	jmp    3e31 <p113d_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112_+0x147>
+    3dbb:	mov    r10,r12
+    3dbe:	mov    QWORD PTR [rsp+0x30],r10
+    3dc3:	mov    r10,QWORD PTR [rbp-0x30]
+    3dc7:	mov    QWORD PTR [rsp+0x38],r10
+    3dcc:	mov    r10,rdi
+    3dcf:	mov    QWORD PTR [rsp+0x40],r10
+    3dd4:	mov    r10,r13
+    3dd7:	mov    QWORD PTR [rsp+0x48],r10
+    3ddc:	mov    r10,rbx
+    3ddf:	mov    QWORD PTR [rsp+0x50],r10
+    3de4:	mov    r10,rsi
+    3de7:	mov    QWORD PTR [rsp+0x58],r10
+    3dec:	mov    rdi,QWORD PTR [rsp+0x30]
+    3df1:	mov    rsi,QWORD PTR [rsp+0x38]
+    3df6:	mov    rdx,QWORD PTR [rsp+0x40]
+    3dfb:	mov    rcx,QWORD PTR [rsp+0x48]
+    3e00:	mov    r8,QWORD PTR [rsp+0x50]
+    3e05:	mov    r9,QWORD PTR [rsp+0x58]
+    3e0a:	xor    eax,eax
+    3e0c:	call   3e11 <p113d_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112_+0x127>
+			3e0d: R_X86_64_PLT32	p117v_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112_-0x4
+    3e11:	mov    QWORD PTR [rbp-0x930],rax
+    3e18:	mov    r12,QWORD PTR [rbp-0x10]
+    3e1c:	mov    rbx,QWORD PTR [rbp-0x8]
+    3e20:	mov    r13,QWORD PTR [rbp-0x18]
+    3e24:	mov    r14,QWORD PTR [rbp-0x20]
+    3e28:	mov    r15,QWORD PTR [rbp-0x28]
+    3e2c:	mov    rsp,rbp
+    3e2f:	pop    rbp
+    3e30:	ret    
+    3e31:	cmp    rdi,0x0
+    3e38:	jne    3e6e <p113d_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112_+0x184>
+    3e3e:	mov    r10,rbx
+    3e41:	mov    r11,QWORD PTR [rbp-0x30]
+    3e45:	mov    QWORD PTR [r11],r10
+    3e48:	mov    r10,rsi
+    3e4b:	mov    r11,QWORD PTR [rbp-0x30]
+    3e4f:	mov    QWORD PTR [r11+0x8],r10
+    3e53:	xor    eax,eax
+    3e55:	mov    r12,QWORD PTR [rbp-0x10]
+    3e59:	mov    rbx,QWORD PTR [rbp-0x8]
+    3e5d:	mov    r13,QWORD PTR [rbp-0x18]
+    3e61:	mov    r14,QWORD PTR [rbp-0x20]
+    3e65:	mov    r15,QWORD PTR [rbp-0x28]
+    3e69:	mov    rsp,rbp
+    3e6c:	pop    rbp
+    3e6d:	ret    
+    3e6e:	mov    r10,r8
+    3e71:	mov    QWORD PTR [rsp+0x28],r10
+    3e76:	mov    r10,r9
+    3e79:	mov    QWORD PTR [rsp+0x30],r10
+    3e7e:	mov    r10,rdi
+    3e81:	mov    QWORD PTR [rsp+0x38],r10
+    3e86:	mov    r10,r13
+    3e89:	mov    QWORD PTR [rsp+0x40],r10
+    3e8e:	mov    r10,rsi
+    3e91:	mov    QWORD PTR [rsp+0x48],r10
+    3e96:	mov    rdi,QWORD PTR [rsp+0x28]
+    3e9b:	mov    rsi,QWORD PTR [rsp+0x30]
+    3ea0:	mov    rdx,QWORD PTR [rsp+0x38]
+    3ea5:	mov    rcx,QWORD PTR [rsp+0x40]
+    3eaa:	mov    r8,QWORD PTR [rsp+0x48]
+    3eaf:	xor    eax,eax
+    3eb1:	call   3eb6 <p113d_FID_36_112_114_111_100_117_99_116_46_102_111_108_100_46_108_111_111_112_+0x1cc>
+			3eb2: R_X86_64_PLT32	p199_rt_u32_scan4-0x4
+    3eb6:	mov    rsi,rax
+    3eb9:	mov    r10,rbx
+    3ebc:	mov    r11,QWORD PTR [rbp-0x30]
+    3ec0:	mov    QWORD PTR [r11],r10
+    3ec3:	mov    r10,rsi
+    3ec6:	mov    r11,QWORD PTR [rbp-0x30]
+    3eca:	mov    QWORD PTR [r11+0x8],r10
+    3ece:	xor    eax,eax
+    3ed0:	mov    r12,QWORD PTR [rbp-0x10]
+    3ed4:	mov    rbx,QWORD PTR [rbp-0x8]
+    3ed8:	mov    r13,QWORD PTR [rbp-0x18]
+    3edc:	mov    r14,QWORD PTR [rbp-0x20]
+    3ee0:	mov    r15,QWORD PTR [rbp-0x28]
+    3ee4:	mov    rsp,rbp
+    3ee7:	pop    rbp
+    3ee8:	ret    

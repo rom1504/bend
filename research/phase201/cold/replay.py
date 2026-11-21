@@ -104,6 +104,13 @@ def run(args):
                                          pass_fds=(elf,),capture_output=True,timeout=20)
                 assert (checked.returncode,checked.stdout,checked.stderr) == (0,b"768\n",b"")
                 run["verifierStdout"] = "768"
+            if args.full and not args.source and not args.product_runtime:
+                from load_sections import image
+                historical=image(REF["binary"]["file"])
+                current=image(fdpath(elf))
+                changed=sorted(k for k in historical.keys() | current.keys() if historical.get(k)!=current.get(k))
+                run["differentAllocatedSectionsFromQualifiedN3"]=changed
+                assert not (set(changed)-{".note.gnu.build-id"}),changed
             report["runs"].append(run)
             (args.out/"results.json").write_text(json.dumps(report,indent=2)+"\n")
             print(json.dumps(run),flush=True)

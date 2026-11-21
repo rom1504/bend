@@ -29,7 +29,12 @@ def run(args):
         shutil.copyfileobj(src,dst)
     assert sha(fdpath(image))==receipt["elfSha256"]
     report={"catalogSha256":sha(catalog_path),"producerSha256":receipt["elfSha256"],"rows":[],"complete":False}
-    for row in catalog["rows"]:
+    selected=args.cases or [row["id"] for row in catalog["rows"]]
+    by_id={row["id"]:row for row in catalog["rows"]}
+    assert len(set(selected))==len(selected) and set(selected)<=set(by_id)
+    report["selected"]=selected
+    for key in selected:
+        row=by_id[key]
         assert row["complete"] and row["status"]=="executed-independent-oracle-pass"
         source=verified(row["source"])
         oracle=json.loads(verified(row["oracleReceipt"]).read_text())
@@ -64,4 +69,5 @@ if __name__=="__main__":
     p=argparse.ArgumentParser()
     p.add_argument("--out",required=True,type=Path)
     p.add_argument("--image",required=True,type=Path)
+    p.add_argument("--cases",nargs="+")
     run(p.parse_args())

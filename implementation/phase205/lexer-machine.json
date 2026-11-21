@@ -1,0 +1,335 @@
+{
+  "baseline": {
+    "objectSha256": "d41e4533d161845e1d4f32aa587c327e2510dac580049533a84991e5bbd256ed",
+    "textBytes": 75433,
+    "functions": 249,
+    "tracked": {
+      "p113d:$direct.slot.go": {
+        "logical": "slot.go",
+        "bytes": 749,
+        "calls": {}
+      },
+      "p113d:$direct.slot": {
+        "logical": "slot",
+        "bytes": 212,
+        "calls": {}
+      },
+      "p113d:$direct.op": {
+        "logical": "op",
+        "bytes": 286,
+        "calls": {
+          "p125_rt_ctor2": 1
+        }
+      },
+      "p113d:$direct.prng": {
+        "logical": "prng",
+        "bytes": 77,
+        "calls": {}
+      },
+      "p113d:$p118.trmc.$direct.ident": {
+        "logical": "ident",
+        "bytes": 419,
+        "calls": {
+          "p118_rt_finish": 1,
+          "p118_rt_extend1": 1
+        }
+      },
+      "p113d:$direct.ident": {
+        "logical": "ident",
+        "bytes": 153,
+        "calls": {
+          "p113d:$p118.trmc.$direct.ident": 1
+        }
+      },
+      "p113d:$direct.salt": {
+        "logical": "salt",
+        "bytes": 103,
+        "calls": {}
+      },
+      "p112w:$direct.salt": {
+        "logical": "salt",
+        "bytes": 5,
+        "calls": {}
+      },
+      "p113d:$p118.trmc.$direct.num": {
+        "logical": "num",
+        "bytes": 419,
+        "calls": {
+          "p118_rt_finish": 1,
+          "p118_rt_extend1": 1
+        }
+      },
+      "p113d:$direct.num": {
+        "logical": "num",
+        "bytes": 153,
+        "calls": {
+          "p113d:$p118.trmc.$direct.num": 1
+        }
+      },
+      "p113d:$direct.expand": {
+        "logical": "expand",
+        "bytes": 987,
+        "calls": {
+          "p113d:$p118.trmc.$direct.ident": 1,
+          "p113d:$p118.trmc.$direct.num": 1,
+          "p125_rt_ctor2": 2,
+          "p111_rt_fail": 1
+        }
+      },
+      "p113d:$direct.gen.at": {
+        "logical": "gen.at",
+        "bytes": 1097,
+        "calls": {
+          "p113d:$p118.trmc.$direct.ident": 1,
+          "p113d:$p118.trmc.$direct.num": 1,
+          "p125_rt_ctor2": 2,
+          "p111_rt_fail": 1
+        }
+      },
+      "p112w:$direct.gen.at": {
+        "logical": "gen.at",
+        "bytes": 5,
+        "calls": {}
+      },
+      "p113d:$product.lex": {
+        "logical": "lex",
+        "bytes": 791,
+        "calls": {
+          "p113d:$direct.flush": 1,
+          "p125_rt_take2": 1,
+          "p113d:$product.step.at": 1,
+          "p111_rt_fail": 2
+        }
+      },
+      "p113d:$direct.lex": {
+        "logical": "lex",
+        "bytes": 895,
+        "calls": {
+          "p125_rt_take2": 3,
+          "p113d:$direct.flush": 1,
+          "p111_rt_fail": 4,
+          "p113d:$product.step": 1,
+          "p113d:$product.lex": 1,
+          "p111_rt_sink": 1
+        }
+      },
+      "p112w:$direct.lex": {
+        "logical": "lex",
+        "bytes": 5,
+        "calls": {}
+      },
+      "p111:line": {
+        "logical": "line",
+        "bytes": 233,
+        "calls": {
+          "p111_rt_closure": 1,
+          "p111_rt_return": 1
+        }
+      },
+      "p111:$direct.line": {
+        "logical": "line",
+        "bytes": 348,
+        "calls": {
+          "p112w:tpl": 1,
+          "p112w:$direct.seed": 1,
+          "p111_rt_jump": 1
+        }
+      },
+      "p111:gen": {
+        "logical": "gen",
+        "bytes": 233,
+        "calls": {
+          "p111_rt_closure": 1,
+          "p111_rt_return": 1
+        }
+      },
+      "p114r:$direct.gen": {
+        "logical": "gen",
+        "bytes": 1718,
+        "calls": {
+          "p111_rt_frame": 1,
+          "p112w:$direct.gen.at": 1,
+          "p111_rt_fail": 3,
+          "p125_rt_take2": 1,
+          "p112w:$direct.salt": 1
+        }
+      },
+      "p111:$direct.gen": {
+        "logical": "gen",
+        "bytes": 219,
+        "calls": {
+          "p114r:$direct.gen": 1,
+          "p111_rt_return": 1
+        }
+      },
+      "p111:$direct.gen.at": {
+        "logical": "gen.at",
+        "bytes": 155,
+        "calls": {
+          "p113d:$direct.gen.at": 1,
+          "p111_rt_return": 1
+        }
+      },
+      "p111:$direct.salt": {
+        "logical": "salt",
+        "bytes": 137,
+        "calls": {
+          "p113d:$direct.salt": 1,
+          "p111_rt_return": 1
+        }
+      },
+      "p111:$direct.lex": {
+        "logical": "lex",
+        "bytes": 137,
+        "calls": {
+          "p113d:$direct.lex": 1,
+          "p111_rt_return": 1
+        }
+      }
+    },
+    "logicalIncomingRelocatedCalls": {
+      "ident": 3,
+      "num": 3,
+      "lex": 3,
+      "gen.at": 3,
+      "salt": 2,
+      "gen": 1
+    }
+  },
+  "candidate": {
+    "objectSha256": "064eeab1c63fb2f8b50dc290241d49c85c45038aea8c045059af668048ea7d49",
+    "textBytes": 74158,
+    "functions": 221,
+    "tracked": {
+      "p113d:$direct.slot.go": {
+        "logical": "slot.go",
+        "bytes": 749,
+        "calls": {}
+      },
+      "p113d:$direct.slot": {
+        "logical": "slot",
+        "bytes": 212,
+        "calls": {}
+      },
+      "p113d:$direct.op": {
+        "logical": "op",
+        "bytes": 286,
+        "calls": {
+          "p125_rt_ctor2": 1
+        }
+      },
+      "p113d:$direct.prng": {
+        "logical": "prng",
+        "bytes": 77,
+        "calls": {}
+      },
+      "p113d:$direct.salt": {
+        "logical": "salt",
+        "bytes": 103,
+        "calls": {}
+      },
+      "p113d:$p118.trmc.$direct.num": {
+        "logical": "num",
+        "bytes": 419,
+        "calls": {
+          "p118_rt_finish": 1,
+          "p118_rt_extend1": 1
+        }
+      },
+      "p113d:$direct.num": {
+        "logical": "num",
+        "bytes": 153,
+        "calls": {
+          "p113d:$p118.trmc.$direct.num": 1
+        }
+      },
+      "p113d:$p118.trmc.$direct.ident": {
+        "logical": "ident",
+        "bytes": 419,
+        "calls": {
+          "p118_rt_finish": 1,
+          "p118_rt_extend1": 1
+        }
+      },
+      "p113d:$direct.ident": {
+        "logical": "ident",
+        "bytes": 153,
+        "calls": {
+          "p113d:$p118.trmc.$direct.ident": 1
+        }
+      },
+      "p113d:$direct.expand": {
+        "logical": "expand",
+        "bytes": 987,
+        "calls": {
+          "p113d:$p118.trmc.$direct.ident": 1,
+          "p113d:$p118.trmc.$direct.num": 1,
+          "p125_rt_ctor2": 2,
+          "p111_rt_fail": 1
+        }
+      },
+      "p113d:$direct.gen.at": {
+        "logical": "gen.at",
+        "bytes": 1097,
+        "calls": {
+          "p113d:$p118.trmc.$direct.ident": 1,
+          "p113d:$p118.trmc.$direct.num": 1,
+          "p125_rt_ctor2": 2,
+          "p111_rt_fail": 1
+        }
+      },
+      "p113d:$product.lex": {
+        "logical": "lex",
+        "bytes": 791,
+        "calls": {
+          "p113d:$direct.flush": 1,
+          "p125_rt_take2": 1,
+          "p113d:$product.step.at": 1,
+          "p111_rt_fail": 2
+        }
+      },
+      "p113d:$direct.lex": {
+        "logical": "lex",
+        "bytes": 895,
+        "calls": {
+          "p125_rt_take2": 3,
+          "p113d:$direct.flush": 1,
+          "p111_rt_fail": 4,
+          "p113d:$product.step": 1,
+          "p113d:$product.lex": 1,
+          "p111_rt_sink": 1
+        }
+      },
+      "p113d:$direct.line": {
+        "logical": "line",
+        "bytes": 5177,
+        "calls": {
+          "p113d:$direct.salt": 28,
+          "p113d:$direct.gen.at": 39,
+          "p113d:$direct.lex": 1
+        }
+      },
+      "p112w:$direct.line": {
+        "logical": "line",
+        "bytes": 5,
+        "calls": {}
+      },
+      "p111:$direct.line": {
+        "logical": "line",
+        "bytes": 119,
+        "calls": {
+          "p113d:$direct.line": 1,
+          "p111_rt_return": 1
+        }
+      }
+    },
+    "logicalIncomingRelocatedCalls": {
+      "num": 3,
+      "ident": 3,
+      "lex": 2,
+      "salt": 28,
+      "gen.at": 39,
+      "line": 2
+    }
+  }
+}

@@ -1,0 +1,215 @@
+{
+  "kind": "phase205-unmodified-packet-native-transfer",
+  "packet": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase205/unfold/packet.bend",
+    "bytes": 2909,
+    "sha256": "fc1c775bab1fe3def7beaf75622a0f3fdff417d9fa83cac8ef11df1e3677050d"
+  },
+  "roles": {
+    "baseline": {
+      "name": "p205parent01",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase205/merge01/compiler.bend",
+        "bytes": 2005820,
+        "sha256": "4bf2e99f71d1dc771e083a9533f880f0df72c16662bbe340cfe5d0ecffacb496"
+      },
+      "image": "/home/ai/bend2/build/publish/bend/selfhost/build/phase201/p205parent01/program.gz",
+      "receipt": "/home/ai/bend2/build/publish/bend/selfhost/build/phase201/p205parent01/results.json",
+      "process": "/home/ai/bend2/build/publish/bend/selfhost/build/phase201/p205parent01-guard/process.json",
+      "retention": "/home/ai/bend2/build/publish/bend/selfhost/build/phase201/p205parent01-guard/retention.json"
+    },
+    "candidate": {
+      "name": "p205image06",
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase205/selected06/compiler.bend",
+        "bytes": 2036053,
+        "sha256": "d8d613fb2bf0363a48b662bb6a8c01df56c72328c03bd61d91c5fcbb04422abc"
+      },
+      "image": "/home/ai/bend2/build/publish/bend/selfhost/build/phase201/p205image06/program.gz",
+      "receipt": "/home/ai/bend2/build/publish/bend/selfhost/build/phase201/p205image06/results.json",
+      "process": "/home/ai/bend2/build/publish/bend/selfhost/build/phase201/p205image06-guard/process.json",
+      "retention": "/home/ai/bend2/build/publish/bend/selfhost/build/phase201/p205image06-guard/retention.json"
+    }
+  },
+  "knownParentReceipt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase201/p205parent01/results.json",
+    "bytes": 776,
+    "sha256": "7e48edcb9bbe41c1a0d415e3fccb0eb8e4ad3f72b5f952b062dee355a74a7f24"
+  },
+  "producerELF": "9cb68bf23c6c8ea41045548438c75e26ebeded1b8569174042f296300bed8bd1",
+  "compilerRuntime": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase201/runtime01/runtime.o",
+    "bytes": 126056,
+    "sha256": "401987ab81c5e9c66d9bfd9ae884f996461cd55002f52b040a610e5b449b3b87"
+  },
+  "runtime": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/runtime-bundle01/runtime-live-scan.o",
+    "bytes": 128872,
+    "sha256": "1c819e63386e8bf7c392f3fa13509699b0f4d99867cf26d8777042350522cda8"
+  },
+  "compilerCommand": [
+    "{image}",
+    "+RTS",
+    "--threads",
+    "1",
+    "--gpu",
+    "off",
+    "-RTS",
+    "--RTS",
+    "x86-object",
+    "{source}",
+    "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase182/bend2/base.bend",
+    "cache",
+    "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/base.p130",
+    "p130-word-pair-v1:p88-private-base-text-1:2dd93239749b4f1e3ee2f4e9617e31aeb5df4cc0200a4c14054a6591e2f74212"
+  ],
+  "linkCommand": [
+    "/usr/bin/x86_64-linux-gnu-gcc-10",
+    "-no-pie",
+    "{object}",
+    "{runtime}",
+    "-pthread",
+    "-lm",
+    "-o",
+    "{output}"
+  ],
+  "points": [
+    {
+      "args": [
+        512,
+        17
+      ],
+      "expected": "4274317329\n"
+    },
+    {
+      "args": [
+        512,
+        123
+      ],
+      "expected": "4122372219\n"
+    },
+    {
+      "args": [
+        512,
+        4294967295
+      ],
+      "expected": "3031066623\n"
+    }
+  ],
+  "extra": [
+    {
+      "args": [
+        0,
+        0
+      ],
+      "expected": "0\n"
+    },
+    {
+      "args": [
+        1,
+        7
+      ],
+      "expected": "2659511635\n"
+    },
+    {
+      "args": [
+        3,
+        123
+      ],
+      "expected": "1988017663\n"
+    },
+    {
+      "args": [
+        17,
+        4294967295
+      ],
+      "expected": "703832715\n"
+    }
+  ],
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase205/unfold/packet.bend",
+      "bytes": 2909,
+      "sha256": "fc1c775bab1fe3def7beaf75622a0f3fdff417d9fa83cac8ef11df1e3677050d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/runtime-bundle01/runtime-live-scan.o",
+      "bytes": 128872,
+      "sha256": "1c819e63386e8bf7c392f3fa13509699b0f4d99867cf26d8777042350522cda8"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase201/runtime01/runtime.o",
+      "bytes": 126056,
+      "sha256": "401987ab81c5e9c66d9bfd9ae884f996461cd55002f52b040a610e5b449b3b87"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase201/p204image03/results.json",
+      "bytes": 779,
+      "sha256": "b8105ef58014d07276329e2b221c62687011bce7f83a42a5039a026e60af815c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase205/unfold/native-transfer.py",
+      "bytes": 7265,
+      "sha256": "520898bf08ba9a4d79e9fe73e9bfcb6f2c8cab65b112bdabdd25ee8725bd6609"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase205/unfold/measure.py",
+      "bytes": 8436,
+      "sha256": "26bd997f6c640b89d6fb01f25067043f9a83f496aa834d4dcdddd9a6f1342f47"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase205/unfold/make_fixtures.py",
+      "bytes": 2241,
+      "sha256": "78291da1ebf22e719b0396a9f070b7da9f4b4e656e972c3efa098d668160222d"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase205/unfold/summarize.py",
+      "bytes": 5282,
+      "sha256": "2af461a68e0f267d154eb438ff18fb427793617539f99a8f6e136ccda561bad4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase205/measure/screen.py",
+      "bytes": 11246,
+      "sha256": "2339dfb9662a2a4988b63d329ba26cf23ae425406c91a357ff8f1958b2e9992a"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase205/measure/support.py",
+      "bytes": 2011,
+      "sha256": "54781982bd22369760928bae54ea9125373601fe04ad90a3ec1664f1b2412515"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase205/unfold/plan.json",
+      "bytes": 14459,
+      "sha256": "fbab2ac43375fd9b0f4839856ecda9e130b317e2aeb5247f207cbe2100d1a601"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase182/bend2/base.bend",
+      "bytes": 87698,
+      "sha256": "ff90fb27ed19d5c7a6165170f28ad81562bf345b9a9e6134e5c2e326beff9de4"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/base.p130",
+      "bytes": 2827018,
+      "sha256": "3b1d2d23ac05818fea2ee13442a02b6ef8f57eb6b4b1842851e8900238f539b9"
+    },
+    {
+      "file": "/usr/bin/x86_64-linux-gnu-gcc-10",
+      "bytes": 817704,
+      "sha256": "693abcb42e67fb871673f258a3644257ca69a209691ec4d8137a42442834bd19"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase205/merge01/compiler.bend",
+      "bytes": 2005820,
+      "sha256": "4bf2e99f71d1dc771e083a9533f880f0df72c16662bbe340cfe5d0ecffacb496"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase205/selected06/compiler.bend",
+      "bytes": 2036053,
+      "sha256": "d8d613fb2bf0363a48b662bb6a8c01df56c72328c03bd61d91c5fcbb04422abc"
+    }
+  ],
+  "minimumSampleMs": 100,
+  "pilotMinimumMs": 145,
+  "targetMs": 180,
+  "rounds": 4
+}

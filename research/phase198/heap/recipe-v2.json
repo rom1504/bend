@@ -1,0 +1,27 @@
+{
+  "kind": "phase198-public-static-tail-overlay",
+  "baseline": "aff3683350a5bcc691b2db75e44a18dff90aef2f",
+  "modules": [
+    "research/phase198/heap/select.bend",
+    "research/phase198/heap/controls-v2.bend"
+  ],
+  "replacements": {
+    "x190_step": "research/phase198/heap/hook.bend"
+  },
+  "exports": [
+    "p198h_controls",
+    "p198h_emit"
+  ],
+  "scope": "Public ABI11102 verified <=8-word terminal static jump transports only; existing full transport remains. Reset next to P111_STOP and restore native frame before direct jmp. No live edits.",
+  "controlDriver": "research/phase198/heap/driver-v2.mjs",
+  "observer": "research/phase198/heap/observer.c",
+  "concreteParent": {
+    "file": "selfhost/build/phase198/selected-source01/compiler.bend",
+    "bytes": 1858809,
+    "sha256": "e0b08475a80ee226d032e4554e88468e82df2559ae767ed2b7f4cea9f56e0b53"
+  },
+  "preparedAPI": "selfhost/build/phase198/heap-api-source02/manifest.json",
+  "baselineAncestor": "c07b44a",
+  "previous": "research/phase198/heap/recipe.json",
+  "revision": 2
+}

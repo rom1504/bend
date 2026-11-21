@@ -1,0 +1,143 @@
+{
+  "kind": "phase198-public-tail-investigation",
+  "complete": false,
+  "architectureComplete": true,
+  "selectionImplemented": true,
+  "checkedCompiler": true,
+  "machineControlsPassed": true,
+  "runtimeMeasured": false,
+  "liveSourcesChanged": false,
+  "architecture": {
+    "file": "research/phase198/heap/architecture.json",
+    "bytes": 153576,
+    "sha256": "7083210f1fa5fc22de4f9940dac5438da4b8f8ca233324d81d5572b309604a04"
+  },
+  "currentRecipe": {
+    "file": "research/phase198/heap/recipe-v2.json",
+    "bytes": 1045,
+    "sha256": "dc6804a1a1f3387a7970532d94d1b37db510a1dc68e50ba135d63662b802bf01"
+  },
+  "currentSource": {
+    "file": "selfhost/build/phase198/heap-api-source02/compiler.bend",
+    "bytes": 1844684,
+    "sha256": "f17f55abf43db6a11c981bcc90bb209598d91dd54e5352133d84f56712195694"
+  },
+  "attempts": [
+    {
+      "receipt": {
+        "file": "selfhost/build/phase198/heap-api01/report.json",
+        "bytes": 4250,
+        "sha256": "b2cd8e7f74275777a101d1bf9fe076a8c26fdbca0d28f7225ebfc700bf61bf61"
+      },
+      "guard": {
+        "file": "selfhost/build/phase198/heap-api01-guard/process.json",
+        "bytes": 3112,
+        "sha256": "0e34d70341650f99517aef6df0830f5ff32223b54ff4fd7ff4a6e9ead4ee62cc"
+      },
+      "result": "Source-check refusal: test fixture computed match scrutinee; selection untested.",
+      "wallSeconds": 3.3196583911776543
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase198/heap-api02/report.json",
+        "bytes": 3432,
+        "sha256": "2a54951cd8a98ba4de552b049676b7e8ba8860c0e9180c34d98c52a1afbf31ae"
+      },
+      "guard": {
+        "file": "selfhost/build/phase198/heap-api02-guard/process.json",
+        "bytes": 3148,
+        "sha256": "ded795e52eb10d95cae5031f0814ff1a3269dd714ac9d138fd02918be94d4912"
+      },
+      "result": "Guard stopped checked acquisition at2GiB tree-RSS; no compiler diagnostic; controls not run.",
+      "wallSeconds": 14.557853463105857,
+      "peakTreeRssBytes": 2157334528
+    },
+    {
+      "receipt": {
+        "file": "selfhost/build/phase198/heap-api03/report.json",
+        "bytes": 5305,
+        "sha256": "d7912a39c02590294e4241fd2f5cb06d824721ba86d4d95307421b622903abe8"
+      },
+      "guard": {
+        "file": "selfhost/build/phase198/heap-api03-guard/process.json",
+        "bytes": 3113,
+        "sha256": "11496e07a88e1457b97b7af1803b3841c25ee7163cca3b3586e87baeae839ccb"
+      },
+      "result": "Checked API acquired; API-only slot, no machine controls yet.",
+      "wallSeconds": 15.28979545366019,
+      "peakTreeRssBytes": 2170155008
+    }
+  ],
+  "finding": "C already uses musttail public worker transfers and inline heap fast paths. x86/QBE share runtime boundaries. Prototype removes public static scheduler bounce only; unrelated ownership and heap boundaries unchanged.",
+  "retryArgv": {
+    "file": "research/phase198/heap/run-argv-v3.json",
+    "bytes": 1021,
+    "sha256": "7309e588274b5eb26fed2883334f4a8f0b63f3a45d55480cf5626b55ee6ad5f6"
+  },
+  "rssPrecedent": {
+    "file": "selfhost/build/phase197/combined-api02-guard/process.json",
+    "bytes": 3140,
+    "sha256": "d4033bacc4a3d5a8f3150daedae94ca3c4dc02f70dc90b93a59eb3c381d192d7"
+  },
+  "checkedAPI": {
+    "file": "selfhost/build/phase198/heap-api03/report.json",
+    "bytes": 5305,
+    "sha256": "d7912a39c02590294e4241fd2f5cb06d824721ba86d4d95307421b622903abe8"
+  },
+  "transferPrecedent": {
+    "file": "research/phase198/heap/transfer-precedent.json",
+    "bytes": 3814,
+    "sha256": "19566822089245c5a547aadf3cc31e1fd2df7dbff07534f47246466b1211ed3f"
+  },
+  "machineControls": {
+    "receipt": {
+      "file": "selfhost/build/phase198/heap-controls03/report.json",
+      "bytes": 23080,
+      "sha256": "76bcf1a1d10346ef365ff1622cb8caac97ae82b6aa421d3eacd0f51e1b1ecd88"
+    },
+    "guard": {
+      "file": "selfhost/build/phase198/heap-controls03-guard/process.json",
+      "bytes": 2791,
+      "sha256": "9b0702d1e24905bcc97248696de5c49deeab059091e61610e2a35a376b6d4e40"
+    },
+    "admissionRefusalRows": 13,
+    "independentCObservationsPerRoute": 769,
+    "routes": [
+      "direct ELF",
+      "rendered GNU assembly"
+    ]
+  },
+  "actualPair": {
+    "receipt": {
+      "file": "selfhost/build/phase198/heap-pair-emission01/heap/report.json",
+      "bytes": 62935,
+      "sha256": "fb3ace5b6f39ecc4c7c47eccb6638b87b68cab0b65f8cdb35b26559421723124"
+    },
+    "guard": {
+      "file": "selfhost/build/phase198/heap-pair-emission01-guard/process.json",
+      "bytes": 2540,
+      "sha256": "8799776ad43757c96952ecc45f89be6c2830464cfbc451814318b67af8a51ec7"
+    },
+    "complete": false,
+    "stopReason": "45 second deadline during final input authentication; original failed receipt retained",
+    "completeCaseRows": 2,
+    "performanceClaim": false,
+    "products": [
+      {
+        "file": "selfhost/build/phase198/heap-pair-emission01/heap/lexer/program.o",
+        "bytes": 138032,
+        "sha256": "8480008b21dc26996a539c3d3bde9910c1259ee6af90d8ccc66612416b42aa0e"
+      },
+      {
+        "file": "selfhost/build/phase198/heap-pair-emission01/heap/test-map-set-ops/program.o",
+        "bytes": 606904,
+        "sha256": "692361dc5ae0389b5f00e72cef18fc8599ddb9880369980ff08b34ebb37667d4"
+      }
+    ]
+  },
+  "independentFusionReview": {
+    "file": "research/phase198/heap/fusion-review.json",
+    "bytes": 1833,
+    "sha256": "33d86db37ff4f9b50a48514f165842e48cfcc6c54e6ddb5e9471c1d3a292ea97"
+  }
+}

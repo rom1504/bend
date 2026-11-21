@@ -1,0 +1,82 @@
+{
+  "kind": "phase198-heap-native-baseline-mapping",
+  "complete": true,
+  "targetsRun": false,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase198/heap/audit-overlay.py",
+    "bytes": 3359,
+    "sha256": "a361aff6e7d6ac454dddec298785b1201d7f353d92333a4281f989e71fbed6af"
+  },
+  "sourceMethod": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/build/source.py",
+    "bytes": 32781,
+    "sha256": "de83e4ece0ae31cf43783829326a7961cd1102ae223bfcc70b2288fa8cde5551"
+  },
+  "nativeBaselineSourceAudit": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase198/qualification/source-audit.json",
+    "bytes": 3105,
+    "sha256": "469e6fa6ef8f84f891ea8359405e323264b6fb1b0d796a7b4a13e80f3e9d0d17"
+  },
+  "nativeBaselineSource": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/selected-source01/compiler.bend",
+    "bytes": 1858809,
+    "sha256": "e0b08475a80ee226d032e4554e88468e82df2559ae767ed2b7f4cea9f56e0b53"
+  },
+  "checkedBaselineApiReceipt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase197/combined-api02/report.json",
+    "bytes": 5611,
+    "sha256": "bd04d7b4395771bef334ad4d1ecb9f9a860ca0138e17c8b3dad1c448a2d7cade"
+  },
+  "checkedCandidateApiReceipt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/heap-api03/report.json",
+    "bytes": 5305,
+    "sha256": "d7912a39c02590294e4241fd2f5cb06d824721ba86d4d95307421b622903abe8"
+  },
+  "candidatePreparation": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/heap-api-source02/manifest.json",
+    "bytes": 1161481,
+    "sha256": "19429fe109e4cadf48794bd4d77e82b855ceaa89c79da686db465ce578b98b8c"
+  },
+  "sameSevenRoots": [
+    "p88_cache_prepare",
+    "p86_plan",
+    "p169np_plan",
+    "x181_prepared",
+    "x188_many",
+    "x188_render",
+    "x188_assemble"
+  ],
+  "baselineClosureDeclarations": 5382,
+  "candidateClosureDeclarations": 5387,
+  "addedDeclarations": [
+    [
+      "def",
+      "x198h_finish"
+    ],
+    [
+      "def",
+      "x198h_public"
+    ],
+    [
+      "def",
+      "x198h_selected"
+    ],
+    [
+      "def",
+      "x198h_tail"
+    ],
+    [
+      "def",
+      "x198h_target"
+    ]
+  ],
+  "removedDeclarations": [],
+  "changedDeclarations": [
+    [
+      "def",
+      "x190_step"
+    ]
+  ],
+  "otherSharedDeclarationsByteIdentical": true,
+  "claim": "Native198 N1 baseline is authenticated by existing exact seven-root source audit and native45 products. Candidate differs in precisely x190_step plus five reachable tail-transfer helpers; preparation closure is independently shared-plan matched. No redundant baseline emission required; actual paired objects and independent output oracles remain required."
+}

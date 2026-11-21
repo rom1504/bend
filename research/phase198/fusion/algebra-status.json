@@ -1,0 +1,45 @@
+{
+  "kind": "phase198-word-algebra-status",
+  "complete": false,
+  "leanAccepted": false,
+  "attempts": [
+    {
+      "name": "word-algebra01",
+      "result": "12 second timeout",
+      "evidence": {
+        "file": "research/phase198/fusion/evidence/word-algebra-timeout01.json.gz",
+        "bytes": 2648,
+        "sha256": "8e5163e13b01d772a0994bd01a1eaf0274f2e649497c0a4255a44f88d2edb8ed"
+      }
+    },
+    {
+      "name": "word-algebra02",
+      "result": "12 second timeout; no Lean diagnostics",
+      "evidence": {
+        "file": "research/phase198/fusion/evidence/word-algebra-timeout02.json.gz",
+        "bytes": 3724,
+        "sha256": "8b05c1b1623e29385ce05f5f47b81c1a28dd1bfac6ac4875b47c8c39ac21491b"
+      }
+    }
+  ],
+  "nextAttempt": {
+    "name": "word-algebra03",
+    "executed": false,
+    "argv": {
+      "file": "research/phase198/fusion/algebra-argv.json",
+      "bytes": 344,
+      "sha256": "d7cd011c106a37399062af7520e59fd92188f93bca067e096ed93d867268a937"
+    },
+    "proof": {
+      "file": "research/phase198/fusion/Affine.lean",
+      "bytes": 2105,
+      "sha256": "f9fad804d7ed8e09a6d9b98b4e149f2391d6e52d7e2e29f9cd85943a5ddbd401"
+    },
+    "method": {
+      "file": "research/phase198/fusion/check-algebra.py",
+      "bytes": 4626,
+      "sha256": "71df62e0e66c775b7eeb0238171a56877a8df68dc8454d9a08182ad95c62ed89"
+    }
+  },
+  "scope": "Arithmetic model only, not compiler/recognizer/runtime correctness. Next run remains optional in parent execution queue."
+}

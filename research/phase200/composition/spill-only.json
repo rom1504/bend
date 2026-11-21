@@ -1,0 +1,83 @@
+{
+  "kind": "phase200-maintained-x86-source-replay",
+  "scope": "Source assembly and accepted declaration identity; no independent whole-source check or compiler execution.",
+  "parent": {
+    "file": "selfhost/build/phase198/p199-integrated01/compiler.bend",
+    "bytes": 1969124,
+    "sha256": "a48b1532ec45ac23cb972796f0101a8bf1864ed8769c6a2daee114ee268ce313"
+  },
+  "parentCheck": {
+    "file": "selfhost/build/phase198/p199-integrated-check01/report.json",
+    "bytes": 3851,
+    "sha256": "8ec0ff81b0df9bbf5cb05a072cf4968d261601852897eff387e3a1946ddc8c3e"
+  },
+  "method": {
+    "file": "research/phase200/composition/assemble.py",
+    "bytes": 8028,
+    "sha256": "1a77d9e3a4b10b38e9c62d846db1aa92a68f32b7966e1f8aefa79c4fbb61c737"
+  },
+  "selectedSource": {
+    "bytes": 1977250,
+    "sha256": "c8b1b8a30d08e15e37d92cd6ed65ccc33b9bff484957e21ebeb903069ef106d7"
+  },
+  "patch": {
+    "bytes": 10125,
+    "sha256": "45c2646d6586230b698ec4061582cffdb6b725a7b331896bfa667473e5a25009"
+  },
+  "rows": {
+    "spill": {
+      "module": {
+        "file": "research/phase200/spill/spill.bend",
+        "bytes": 8723,
+        "sha256": "f1202b017aa421703cc6f1dfd6a02197a14c6126e76c896ec2e286e75fae6726"
+      },
+      "apiReceipt": {
+        "file": "selfhost/build/phase199/p200-spill-api01/report.json",
+        "bytes": 5407,
+        "sha256": "7e48bce64df3b5c7f9a026578d400b0fc4ca83fb9690549cc61373ab3d9c3bd6"
+      },
+      "checkedSource": "dae4cc725ca29436c24fd5036c81fb7218bb07ec28c745cc146be5f65bc5238d",
+      "checkedAPI": "c1e562884cb0c2da7c50b07a26aa12f54a399778b7c9799c388f4e9ef47705ea",
+      "measurements": {
+        "file": "selfhost/build/phase199/p200-spill-runtime03/report.json",
+        "bytes": 89272,
+        "sha256": "1ee3d5ebfe07e5c715566debd7142d3386097a89ddab555156ffea58f891ed25"
+      },
+      "incumbentRatios": {
+        "editdist": 0.9361788617886179,
+        "local-pair": 0.9123950346841914,
+        "complete-generic-row32": 0.9939209164818921,
+        "mandelbrot": 1.0
+      }
+    }
+  },
+  "replacements": [
+    "x191_function_saved"
+  ],
+  "additions": [
+    "x199s_add",
+    "x199s_apply",
+    "x199s_bucket",
+    "x199s_check",
+    "x199s_count",
+    "x199s_count_arg",
+    "x199s_count_args",
+    "x199s_done",
+    "x199s_emit",
+    "x199s_finish",
+    "x199s_flat",
+    "x199s_frame",
+    "x199s_item",
+    "x199s_load",
+    "x199s_lookup",
+    "x199s_owned",
+    "x199s_plain",
+    "x199s_scan",
+    "x199s_tail",
+    "x199s_touches",
+    "x199s_window",
+    "x200s_canonical",
+    "x200s_regnum"
+  ],
+  "patchDryRun": "checking file src/back/x86/address-selection.bend\nchecking file src/back/x86/frame-forward.bend\n"
+}

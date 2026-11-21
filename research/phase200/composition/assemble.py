@@ -115,6 +115,12 @@ def assemble(args):
         base=args.record
         base.with_suffix('.json').write_text(json.dumps(info,indent=2)+'\n')
         base.with_suffix('.patch.gz').write_bytes(gzip.compress(combined,mtime=0))
+    if args.source_only:
+        destination=args.source_only.resolve()
+        destination.mkdir(parents=True,exist_ok=False)
+        cli=destination/'compiler.bend';cli.write_bytes(result)
+        (destination/'report.json').write_text(json.dumps({'source':src.pin(cli),'composition':info,
+            'manifest':src.pin(cfg),'sourceOnly':True},indent=2)+'\n')
     if args.out:
         out=args.out.resolve()
         out.mkdir(parents=True,exist_ok=False)
@@ -130,5 +136,5 @@ if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--parent',type=Path,default=PARENT);p.add_argument('--check',type=Path,default=CHECK)
     p.add_argument('--spill-api',type=Path,default=P199/'p200-spill-api01/report.json');p.add_argument('--spill-focus',type=Path,default=P199/'p200-spill-runtime03/report.json')
     p.add_argument('--tag-api',type=Path,default=P199/'p200-ownership-api01/report.json');p.add_argument('--tag-focus',type=Path,default=P199/'p200-ownership-focus01/report.json')
-    p.add_argument('--with-tag',action='store_true');p.add_argument('--record',type=Path);p.add_argument('--out',type=Path)
+    p.add_argument('--with-tag',action='store_true');p.add_argument('--record',type=Path);p.add_argument('--out',type=Path);p.add_argument('--source-only',type=Path)
     assemble(p.parse_args())

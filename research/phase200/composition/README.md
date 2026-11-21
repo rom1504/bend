@@ -19,3 +19,9 @@ python3 -B research/phase200/composition/replay.py \
 ```
 
 The optional ownership-tag rule has a different hook. Including it requires a separately checked API and completed focused measurements of its skipped immediate calls and runtime transfer. [Spill measurements](../spill/RESULTS.md) · [Complete-state stencil opportunity](stencil.md).
+
+The [acquisition argv](acquisition-argv.json) freeze the source-only materialization, independent whole-source check and raw N1 build. The 1,977,250-byte spill-only source can be emitted without copying the maintained tree by overlaying the two changed modules in memory. The manifest is inherited byte-for-byte from the integrated parent's maintained tree. The full checker uses that manifest, the pinned Phase182 upstream and the upstream book/hole checks. Before N1 generation, run the source/receipt comparison in [validate.py](validate.py). The new N1 is built by the release Phase186 QBE N2 with Phase194 QBE assets and ordinary native cache mode. The streaming runner preserves the normal native x86 image binding and writes its native ELF to the candidate acquisition root.
+
+The standard fallback argv are deliberately held outside the automatic sequence. Its previous integrated acquisition used 125.14 MiB of declared artifacts and the sampled filesystem decrease reached 139.10 MiB. The fallback reserves 144 MiB, before the separately required suite artifacts. It requires a new disk decision if the lower-disk stream parity fails.
+
+Native program acquisition uses the unchanged Phase199 integrated asset manifest, linking the frozen ABI11102 original-plus-scan runtime. Broad timing relinks the same emitted objects against the live-plus-scan bundle. The two runtime provider identities are distinct and both come from the sealed Phase199 runtime-bundle01 receipt. The current portfolio comparison measures the native45 catalog against its frozen integrated reference and mature C products.

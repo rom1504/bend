@@ -1,0 +1,132 @@
+{
+  "selfhost/tools/bench/catalogs/native45/fixtures": {
+    "scanned": 45,
+    "eligibleRecords": [
+      {
+        "file": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-bst-32.bend",
+        "frameCandidates": [
+          "BFrame"
+        ],
+        "admitted": {
+          "frame": "BFrame",
+          "group": [
+            "bst.down",
+            "bst.pick",
+            "bst.step",
+            "bst.up",
+            "insert.fin"
+          ],
+          "counts": {
+            "push": 2,
+            "pop": 2,
+            "emptyMatch": 1,
+            "entry": 2
+          }
+        }
+      },
+      {
+        "file": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-bst-64.bend",
+        "frameCandidates": [
+          "BFrame"
+        ],
+        "admitted": {
+          "frame": "BFrame",
+          "group": [
+            "bst.down",
+            "bst.pick",
+            "bst.step",
+            "bst.up",
+            "insert.fin"
+          ],
+          "counts": {
+            "push": 2,
+            "pop": 2,
+            "emptyMatch": 1,
+            "entry": 2
+          }
+        }
+      },
+      {
+        "file": "selfhost/tools/bench/catalogs/native45/fixtures/raytrace.bend",
+        "frameCandidates": [
+          "Hit"
+        ],
+        "refusal": "Hit: missing a definition for a private-spine law"
+      },
+      {
+        "file": "selfhost/tools/bench/catalogs/native45/fixtures/variation-ray-active-256-2240.bend",
+        "frameCandidates": [
+          "Hit"
+        ],
+        "refusal": "Hit: missing a definition for a private-spine law"
+      },
+      {
+        "file": "selfhost/tools/bench/catalogs/native45/fixtures/variation-ray-active-64-2440.bend",
+        "frameCandidates": [
+          "Hit"
+        ],
+        "refusal": "Hit: missing a definition for a private-spine law"
+      }
+    ]
+  },
+  "bench/runtime": {
+    "scanned": 17,
+    "eligibleRecords": [
+      {
+        "file": "bench/runtime/raytrace/main.bend",
+        "frameCandidates": [
+          "Hit"
+        ],
+        "refusal": "Hit: missing a definition for a private-spine law"
+      }
+    ]
+  },
+  "tests": {
+    "scanned": 1860,
+    "eligibleRecords": [
+      {
+        "file": "tests/import/binder_named_def_lib.bend",
+        "frameCandidates": [
+          "P"
+        ],
+        "refusal": "P: missing a definition for a private-spine law"
+      },
+      {
+        "file": "tests/parse/plus_binder_row.bend",
+        "frameCandidates": [
+          "Kon"
+        ],
+        "refusal": "Kon: missing a definition for a private-spine law"
+      },
+      {
+        "file": "tests/run/bst_insert.bend",
+        "frameCandidates": [
+          "BFrame"
+        ],
+        "admitted": {
+          "frame": "BFrame",
+          "group": [
+            "bst.down",
+            "bst.pick",
+            "bst.step",
+            "bst.up",
+            "insert.fin"
+          ],
+          "counts": {
+            "push": 2,
+            "pop": 2,
+            "emptyMatch": 1,
+            "entry": 1
+          }
+        }
+      },
+      {
+        "file": "tests/show/array_elements.bend",
+        "frameCandidates": [
+          "P"
+        ],
+        "refusal": "P: missing a definition for a private-spine law"
+      }
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": true,
+  "started": 1795232865.060687,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "3",
+    "python3",
+    "-B",
+    "research/phase200/tree/screen.py",
+    "--source",
+    "selfhost/build/phase200/tree-source01/report.json",
+    "--out",
+    "selfhost/build/phase200/tree-screen01"
+  ],
+  "returncode": 0,
+  "rssLimitBytes": 2147483648,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 277168128,
+  "minimumAvailableBytes": 27045003264,
+  "diskBudgetBytes": 2097152,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 5370818560,
+  "minimumDiskFreeBytes": 5369909248,
+  "peakRunAllocatedBytes": 765952,
+  "peakFilesystemDecreaseBytes": 909312,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/tree-screen01"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "3",
+    "fileLimitBytes": 134217728,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/research/phase200/tree/screen.py",
+        "sha256": "8a95b2165f495c96bdfc8f70b318ae838a3c9219e0d2c5786410fda02ea395c9",
+        "bytes": 4731
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/tree-source01/report.json",
+        "sha256": "71f4eb86431401701d4da06be66b7a2de9451524ffb0d3bd0417de67f0888b7e",
+        "bytes": 2188
+      }
+    ]
+  },
+  "wallSeconds": 9.560002234764397,
+  "finished": 1795232874.620362
+}

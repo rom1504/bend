@@ -24,6 +24,7 @@ GROUPS = {
     'quotient': ('quotient-api01', [('p125i_previous_fallback',['quotient/rule.bend'])]),
     'numeric': ('numeric-api03', [('x181_direct',['numeric/evidence/numeric-v1.bend','numeric/hook.bend'])]),
     'orbit': ('numeric-api05', [('x181_direct',['numeric/numeric-orbit.bend','numeric/orbit.bend','numeric/hook.bend'])]),
+    'progress': ('numeric-api06', [('x181_direct',['numeric/numeric-orbit.bend','numeric/orbit-selective.bend','numeric/progress.bend','numeric/hook.bend'])]),
     'absorb': ('absorb-api05', [('x185_function_copied',['absorbing/absorbing.bend','absorbing/hook.bend'])]),
     'permute': ('reuse-api02', [('x185_function_copied',['reuse/recognize.bend','reuse/select.bend','reuse/hook.bend'])]),
     'pairs': ('loops-api02', [('x190_j_graphed',['loops/paired-v3.bend','loops/hook-v3.bend'])]),
@@ -50,7 +51,7 @@ def assemble(out, groups, api_names):
     assert src.digest(original)=='e0b08475a80ee226d032e4554e88468e82df2559ae767ed2b7f4cea9f56e0b53'
     assert original==(parent/'compiler.bend').read_bytes()
     assert len(set(groups))==len(groups) and groups
-    assert not {'orbit','numeric'} <= set(groups)
+    assert len({'orbit','progress','numeric'}.intersection(groups)) <= 1
     out.mkdir(parents=True,exist_ok=False)
     stage = out/'maintained'
     shutil.copytree(reference,stage)

@@ -1,0 +1,173 @@
+{
+  "complete": true,
+  "method": {
+    "file": "research/phase198/quotient-machine/package.py",
+    "bytes": 3895,
+    "sha256": "b2ce76156295df32062976f49e6b45d66dd1cf9f1ddb4b9e9c74e1ab79139eb8"
+  },
+  "archive": {
+    "file": "research/phase198/quotient-machine/evidence/focused-replay.tar.gz",
+    "bytes": 2031710,
+    "sha256": "3bf5153b94e71d4aedfdefe61cbd9075035511b1c05c3bcb6c046cee7b68e8a8"
+  },
+  "members": 47,
+  "cases": {
+    "lexer": {
+      "candidateOverOriginal": 0.964234734337827,
+      "candidateOverC": 2.5596021343832565,
+      "paired": [
+        0.964234734337827,
+        0.969205016473589,
+        1.0191911181601903,
+        0.9742268041237112,
+        0.9448531316375692,
+        0.969205016473589
+      ],
+      "roundsFaster": 5,
+      "extraOracleInputs": 3,
+      "countedBoundary": {
+        "first": {
+          "divisor 18 10": {
+            "before": 1,
+            "after": 0
+          },
+          "divisor 19 10": {
+            "before": 2634,
+            "after": 0
+          },
+          "divisor 19 26": {
+            "before": 4578,
+            "after": 0
+          },
+          "divisor 19 6": {
+            "before": 768,
+            "after": 0
+          },
+          "op 18": {
+            "before": 1,
+            "after": 0
+          },
+          "op 19": {
+            "before": 7980,
+            "after": 0
+          }
+        },
+        "second": {
+          "divisor 19 10": {
+            "before": 2633,
+            "after": 0
+          },
+          "divisor 19 26": {
+            "before": 4578,
+            "after": 0
+          },
+          "divisor 19 6": {
+            "before": 768,
+            "after": 0
+          },
+          "op 19": {
+            "before": 7979,
+            "after": 0
+          }
+        }
+      },
+      "inputBucketNote": "Divisor index 256 groups powers of two above 255 and 257 groups other divisors above 255."
+    },
+    "coverage-record-aggregation-256": {
+      "candidateOverOriginal": 0.9555555555555555,
+      "candidateOverC": 2.718754423213022,
+      "paired": [
+        0.9555555555555555,
+        0.9555555555555555,
+        0.9604558404558403,
+        0.9555555555555555,
+        0.9604308390022677,
+        0.9653061224489796
+      ],
+      "roundsFaster": 6,
+      "extraOracleInputs": 4,
+      "countedBoundary": {
+        "first": {
+          "divisor 18 10": {
+            "before": 1869,
+            "after": 0
+          },
+          "divisor 19 10": {
+            "before": 1135,
+            "after": 0
+          },
+          "divisor 19 16": {
+            "before": 256,
+            "after": 0
+          },
+          "divisor 19 257": {
+            "before": 256,
+            "after": 0
+          },
+          "op 18": {
+            "before": 1869,
+            "after": 0
+          },
+          "op 19": {
+            "before": 1647,
+            "after": 0
+          }
+        },
+        "second": {
+          "divisor 18 10": {
+            "before": 1868,
+            "after": 0
+          },
+          "divisor 19 10": {
+            "before": 1134,
+            "after": 0
+          },
+          "divisor 19 16": {
+            "before": 256,
+            "after": 0
+          },
+          "divisor 19 257": {
+            "before": 256,
+            "after": 0
+          },
+          "op 18": {
+            "before": 1868,
+            "after": 0
+          },
+          "op 19": {
+            "before": 1646,
+            "after": 0
+          }
+        }
+      },
+      "inputBucketNote": "Divisor index 256 groups powers of two above 255 and 257 groups other divisors above 255."
+    }
+  },
+  "checkedSource": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/quotient-machine-source02/api/compiler.bend",
+    "bytes": 1843118,
+    "sha256": "19d0f30f329090f56e4b2e3196ac5c96574276dde4027706c9af6ace4e1d90cf"
+  },
+  "controls": {
+    "negative": 13,
+    "publicOperationWordChecks": 5200,
+    "functions": 26
+  },
+  "timing": {
+    "file": "selfhost/build/phase198/quotient-machine-focused01/timing/report.json",
+    "bytes": 22668,
+    "sha256": "a8c0427e9febf715fa5a6b090cfb5abb32711c6be27801a0c67d40e99da1a272"
+  },
+  "emission": {
+    "file": "selfhost/build/phase198/quotient-machine-focused01/emission/report.json",
+    "bytes": 3103,
+    "sha256": "9a5bf6c19699216563daa609c1f643b56b3d087bc700c7225116e822e0037a9b"
+  },
+  "counter": {
+    "file": "selfhost/build/phase198/quotient-machine-focused-count01/comparison.json",
+    "bytes": 3134,
+    "sha256": "461fe643987cad8421233dc35a8072c2dec904e455c1e3be6595d71065e2a3fd"
+  },
+  "dependencies": "Runtime/compiler dependencies and independent C/reference ELF files are addressed by the archived manifests. Only the focused candidate objects and executables are included.",
+  "scope": "Checked hosted API operating on the ordinary frontend plan. These two targeted cases establish reach, verified outputs and observed hardware benefit. They do not establish a portfolio all45 gain or a self-hosted compiler chain."
+}

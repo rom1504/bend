@@ -1,0 +1,237 @@
+{
+  "kind": "phase201-sliced-native-elf-control",
+  "complete": true,
+  "scope": "Shared native progress compiler. Measures fixture creation, symbol operations, positive local fixup plan, ELF layout/serialization, IO and process startup together. This is a synthetic writer control, distinct from complete compiler self-build time.",
+  "fixture": {
+    "rawTextBytes": 262144,
+    "positiveLocalFixups": 4096,
+    "externalRELA": 4096,
+    "relocationsAscendingByConstruction": true,
+    "localTargetOffset": 0,
+    "independentExpectedELFSections": [
+      ".text",
+      ".rela.text",
+      ".strtab",
+      ".symtab-size",
+      ".rodata",
+      ".data",
+      ".rela.rodata",
+      ".rela.data"
+    ],
+    "fullOldNewELFIdentical": true
+  },
+  "preparation": {
+    "old": {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-portfolio01/compiler.bend",
+        "bytes": 1947566,
+        "sha256": "72061fa57c75993b59eaf42e18c6b923eebea640c352d0f7b9cd1d27ce7be91d"
+      },
+      "standalone": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase201/elfstandalone03/old.bend",
+        "bytes": 42360,
+        "sha256": "e24ba5bc4b74c936978f63c9c0d4796d624940c435adb45af50acdb04415a579"
+      },
+      "declarations": 128,
+      "finish": "x187_build_finish"
+    },
+    "new": {
+      "parent": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase201/source02/compiler.bend",
+        "bytes": 1955199,
+        "sha256": "a68ba12c823fff623c58f31154ddca5de8d80cce9a207f3f14b04e95c20836d0"
+      },
+      "standalone": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase201/elfstandalone03/new.bend",
+        "bytes": 48338,
+        "sha256": "488adaef6ea5f651d84014b507766cf7fea8bd8ae006441336a1b7c2a96754eb"
+      },
+      "declarations": 139,
+      "finish": "x201f_finish"
+    }
+  },
+  "builds": {
+    "old": {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase201/elfstandalone03/old.bend",
+        "bytes": 42360,
+        "sha256": "e24ba5bc4b74c936978f63c9c0d4796d624940c435adb45af50acdb04415a579"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase201/elfscreen01/old/program",
+        "bytes": 594968,
+        "sha256": "43e1997201d428ed57790ddc0183e5957ec45a85601bc14fb4622aab0ff24268"
+      },
+      "compiler": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-native-image01/program",
+        "bytes": 18901904,
+        "sha256": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      },
+      "runtime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/runtime.o",
+        "bytes": 125264,
+        "sha256": "67141c4505a0355901d857c4ba81dfc17559329e536818a843ce68615384d13e"
+      }
+    },
+    "new": {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase201/elfstandalone03/new.bend",
+        "bytes": 48338,
+        "sha256": "488adaef6ea5f651d84014b507766cf7fea8bd8ae006441336a1b7c2a96754eb"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase201/elfscreen01/new/program",
+        "bytes": 671632,
+        "sha256": "37cb363869bf34a4fa88561d2784d88e6413ccfa91ba73197e5a663e31d808ed"
+      },
+      "compiler": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-native-image01/program",
+        "bytes": 18901904,
+        "sha256": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      },
+      "runtime": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/runtime.o",
+        "bytes": 125264,
+        "sha256": "67141c4505a0355901d857c4ba81dfc17559329e536818a843ce68615384d13e"
+      }
+    }
+  },
+  "balancedPairs": [
+    0.4643974758342438,
+    0.4637522208530433,
+    0.46118054612224985,
+    0.46025767068717627
+  ],
+  "medianNewOverOld": 0.46246638348764657,
+  "medianSpeedup": 2.1623193289393154,
+  "physicalObservations": [
+    {
+      "role": "old",
+      "seconds": 0.1176214162260294,
+      "objectBytes": 361376,
+      "sha256": "ed17d22bb62df8e1501e58372c2875208f4041eabd243d8a451fbec8d6b3f8cb"
+    },
+    {
+      "role": "new",
+      "seconds": 0.05462308879941702,
+      "objectBytes": 361376,
+      "sha256": "ed17d22bb62df8e1501e58372c2875208f4041eabd243d8a451fbec8d6b3f8cb"
+    },
+    {
+      "role": "new",
+      "seconds": 0.054926623590290546,
+      "objectBytes": 361376,
+      "sha256": "ed17d22bb62df8e1501e58372c2875208f4041eabd243d8a451fbec8d6b3f8cb"
+    },
+    {
+      "role": "old",
+      "seconds": 0.11843959148973227,
+      "objectBytes": 361376,
+      "sha256": "ed17d22bb62df8e1501e58372c2875208f4041eabd243d8a451fbec8d6b3f8cb"
+    },
+    {
+      "role": "old",
+      "seconds": 0.11876728665083647,
+      "objectBytes": 361376,
+      "sha256": "ed17d22bb62df8e1501e58372c2875208f4041eabd243d8a451fbec8d6b3f8cb"
+    },
+    {
+      "role": "new",
+      "seconds": 0.05477316211909056,
+      "objectBytes": 361376,
+      "sha256": "ed17d22bb62df8e1501e58372c2875208f4041eabd243d8a451fbec8d6b3f8cb"
+    },
+    {
+      "role": "new",
+      "seconds": 0.05464968364685774,
+      "objectBytes": 361376,
+      "sha256": "ed17d22bb62df8e1501e58372c2875208f4041eabd243d8a451fbec8d6b3f8cb"
+    },
+    {
+      "role": "old",
+      "seconds": 0.11873714905232191,
+      "objectBytes": 361376,
+      "sha256": "ed17d22bb62df8e1501e58372c2875208f4041eabd243d8a451fbec8d6b3f8cb"
+    }
+  ],
+  "wholeGuardSeconds": 15.28455838188529,
+  "sourceCheck": {
+    "file": "selfhost/build/phase201/check02/report.json",
+    "bytes": 3827,
+    "sha256": "2d107eb005d24577d33817f00d5e52166a083371d50450080bf404e690e394c0"
+  },
+  "inputs": [
+    {
+      "file": "research/phase201/elf/standalone.py",
+      "bytes": 2836,
+      "sha256": "b949ab13b61ddd3b85e4f4c78265e8f378d0455ad749efaecae19ecfb246971e"
+    },
+    {
+      "file": "research/phase201/elf/screen.py",
+      "bytes": 3903,
+      "sha256": "74c1469b2ec3ee21cba6202685d47e79df87f0afd75abda77a366794184ba4bb"
+    },
+    {
+      "file": "research/phase201/elf/screen-argv.json",
+      "bytes": 170,
+      "sha256": "8b5fd944bbb7c0b642cf322ed73d668bdf3dc9605119713cd968d0ee30299170"
+    },
+    {
+      "file": "research/phase201/elf/audit.py",
+      "bytes": 3981,
+      "sha256": "a80400c86676a4365c3e7a1acc88fe9ff69729d01cf20c54976ebcdc5b75d712"
+    },
+    {
+      "file": "research/phase201/elf/checked-size.bend",
+      "bytes": 1631,
+      "sha256": "db1d6a123d676f70289504b5e53650b6ca695c35b1ef45787d715948f1f04025"
+    },
+    {
+      "file": "research/phase201/elf/layout.bend",
+      "bytes": 1018,
+      "sha256": "eb8334d7c3dbeed7fc674d771ee65c5176a485bc7f89be3ecd052baee6c10368"
+    },
+    {
+      "file": "research/phase201/elf/relocations.bend",
+      "bytes": 648,
+      "sha256": "65eb763496efdcfa5d7ef0ca81dbf6f7702fdc2bf4740bc29f26f2586f2ca23b"
+    },
+    {
+      "file": "research/phase201/elf/compose.py",
+      "bytes": 2637,
+      "sha256": "64e3d27ceeef362291cfd0e22a706d1b547a2024303808a46f9d414d5c6b2a2b"
+    }
+  ],
+  "receipts": [
+    {
+      "file": "selfhost/build/phase201/elfscreen01/report.json",
+      "bytes": 6799,
+      "sha256": "d3f2b432845403cacc813bd12454de7c2c72ec56b41e4065d75d9de80393ac93"
+    },
+    {
+      "file": "selfhost/build/phase201/elfscreen01-guard/process.json",
+      "bytes": 1939,
+      "sha256": "1a17d55050bf250177fa26ffcc6d0f41c1f27ce0918f64b442ac815459a9e63f"
+    },
+    {
+      "file": "selfhost/build-retention/phase201/elfscreen01-close/report.json",
+      "bytes": 1432,
+      "sha256": "c325ba643a69ef5cb64b33becef787bbb7b8c96d50ec3c4097fbe41097bf7e28"
+    },
+    {
+      "file": "selfhost/build/phase201/elfscreen01/old/report.json",
+      "bytes": 15935,
+      "sha256": "8deb848dd25692dc876846a75b6025c81e3dc693b787fc3efd171a09c124c4eb"
+    },
+    {
+      "file": "selfhost/build/phase201/elfscreen01/new/report.json",
+      "bytes": 15914,
+      "sha256": "0f1b6f41ce8b9d0a88f04276acb772eed1abf811492771db8207158f207ded9d"
+    },
+    {
+      "file": "selfhost/build/phase201/elfscreen01/oracle.o",
+      "bytes": 361376,
+      "sha256": "ed17d22bb62df8e1501e58372c2875208f4041eabd243d8a451fbec8d6b3f8cb"
+    }
+  ]
+}

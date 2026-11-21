@@ -1,0 +1,17 @@
+# Checked word primitives improved three ordinary products in one timing session
+
+The generic primitive rule reduced measured raytrace time by 2.28%, Map churn by 3.94%, and Unicode text by 3.88% against the native Phase198 N1 incumbent. Every candidate, incumbent and mature Bend C product returned the expected outputs. The denominator is three of the 45 native catalog programs, with no selection by the resulting timings. Each role received six timing observations in a rotating order with its own calibrated repetition count. This single session does not establish independent replication or broad performance. [Raw timing, calibration, executable pins and output checks](word-runtime01.json.gz).
+
+| Ordinary product | Candidate / incumbent | Candidate / mature Bend C | Selected ABI call sites before → after |
+|---|---:|---:|---:|
+| Raytrace | 0.97718 | 1.65748 | 9 → 0 |
+| Map churn, size 32 | 0.96065 | 3.43318 | 23 → 0 |
+| Unicode text, size 64 | 0.96122 | 2.48953 | 5 → 0 |
+
+Both word25 calls disappeared from the ray nearest-surface function. The ordinary initial observer run had recorded 344,460 executions of one site and 9,024 of the other. The emitted owner retained two square-root instructions, two scalar divisions and eight floating-point comparisons. It shrank from 855 to 760 disassembled instructions, including 198 to 162 instructions referencing RBP-relative memory. The emitted effect includes placement savings enabled by replacing verified ABI calls before register allocation. The measured total is for all admitted opcodes and both lowering stages. [Typed object disassembly census](discharge.json) · [Caller/callee path and frequency](../allocation/ray-word25.md) · [Actual compiler emissions](word-products01.json.gz).
+
+The independent C driver tested four operations on 4,105 operand pairs, including upper-word-sensitive and random inputs. Both the direct assembler artifact and the rendered-assembly artifact passed all 16,420 scalar checks. Checked admission tests covered all 352 combinations of 88 primitive IDs and four arities plus six malformed call shapes. The runtime-driver controls compared two additional inputs per program with the mature C output. ID24 had zero static calls in the three ordinary programs and passed the machine fixture only. [Admission and machine-control receipt](word-controls01.json.gz) · [Independent oracle](observer.c).
+
+Two prior source acquisitions failed. The first used an opaque constructor in an early hook before its declaration. The second matched a computed scratch lookup, which the bootstrap front end requires to be a parameter or field. The successful input passes computed scrutinees through typed helper parameters. Checked source 6791b6105f8d1a6851f8638e3178bed7c1bcbb2f89648912dcab607781cd65ba produced the measured objects. The six guards consumed 92.17 seconds in total, including both failures. The original artifacts and each sealed guard have explicit paths, digests, timings and launch arguments. [Receipts and execution plan](runs.json) · [Guard commands, source-check diagnostics and retention closures](guards.json.gz).
+
+The candidate was measured against the previous qualified source on the same target. The separate orbit portfolio source check occurred between the emission and timing guards, outside all timed samples. The rule has not yet been combined with that portfolio or run through broad qualification here.

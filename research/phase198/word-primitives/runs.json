@@ -1,0 +1,152 @@
+{
+  "runs": {
+    "word-api01": {
+      "report": "selfhost/build/phase198/word-api01/report.json",
+      "sha256": "8cc0483b26e085c8d8ad3b74ccd199407bd89eb1dff8ce8b383d370550b589af",
+      "guard": "selfhost/build/phase198/word-api01-guard/process.json",
+      "returncode": 1,
+      "wallSeconds": 2.962516114115715,
+      "retention": "selfhost/build-retention/phase198/word-api01-close"
+    },
+    "word-api02": {
+      "report": "selfhost/build/phase198/word-api02/report.json",
+      "sha256": "a40fbf7620f29ef107cb7859cbee4dec0633f6132cac35cdd49ee7cd02088fa3",
+      "guard": "selfhost/build/phase198/word-api02-guard/process.json",
+      "returncode": 1,
+      "wallSeconds": 3.3592513483017683,
+      "retention": "selfhost/build-retention/phase198/word-api02-close"
+    },
+    "word-api03": {
+      "report": "selfhost/build/phase198/word-api03/report.json",
+      "sha256": "431ebc6be139e357d461aa45a0c2ad9dc2a8332765047fc7af6da48a9fca9cdc",
+      "guard": "selfhost/build/phase198/word-api03-guard/process.json",
+      "returncode": 0,
+      "wallSeconds": 15.447132444940507,
+      "retention": "selfhost/build-retention/phase198/word-api03-close"
+    },
+    "word-controls01": {
+      "report": "selfhost/build/phase198/word-controls01/report.json",
+      "sha256": "047e0e9357fbde587414f5028f0b1f38e1ddfbc3ba32a940bb8bdc426f544657",
+      "guard": "selfhost/build/phase198/word-controls01-guard/process.json",
+      "returncode": 0,
+      "wallSeconds": 0.7412969525903463,
+      "retention": "selfhost/build-retention/phase198/word-controls01-close"
+    },
+    "word-products01": {
+      "report": "selfhost/build/phase198/word-products01/report.json",
+      "sha256": "8a744f6cf4975f4c72cad76e3da57a90aabc2e8a5c23c218fb4cae58c06b5ad8",
+      "guard": "selfhost/build/phase198/word-products01-guard/process.json",
+      "returncode": 0,
+      "wallSeconds": 49.544728830456734,
+      "retention": "selfhost/build-retention/phase198/word-products01-close"
+    },
+    "word-runtime01": {
+      "report": "selfhost/build/phase198/word-runtime01/report.json",
+      "sha256": "b1c54aefa1a1c2d1027a79eb1a7d8333e918d55c3c9c4fc3355f0beecc966e4c",
+      "guard": "selfhost/build/phase198/word-runtime01-guard/process.json",
+      "returncode": 0,
+      "wallSeconds": 20.11958080343902,
+      "retention": "selfhost/build-retention/phase198/word-runtime01-close"
+    }
+  },
+  "argv": {
+    "inputs": [
+      {
+        "path": "selfhost/build/phase198/word-source05/compiler.bend",
+        "sha256": "6791b6105f8d1a6851f8638e3178bed7c1bcbb2f89648912dcab607781cd65ba"
+      },
+      {
+        "path": "research/phase198/word-primitives/controls.mjs",
+        "sha256": "4d4a703b575884176d16b07cbdbe432c6b28e93a6c33cfc773b393acd64d5e8d"
+      },
+      {
+        "path": "research/phase198/word-primitives/observer.c",
+        "sha256": "698ae056d61ac17e24d5c5f0bd9a8ed6bd3dd78726866c5a26ac4ecd5a7a91e9"
+      },
+      {
+        "path": "research/phase198/quotient/emit.mjs",
+        "sha256": "265b9ba018973d894cf64b9b652d9950a885550f5765718b7b44e8f71dc99895"
+      },
+      {
+        "path": "research/phase198/fusion/time-products.py",
+        "sha256": "ddf8b92d1d7179871cb5a677fdf7685371d57142d65d511f2ba6587ad229aae4"
+      }
+    ],
+    "jobs": [
+      [
+        "python3",
+        "-B",
+        "research/phase198/qualification/job.py",
+        "--rss-mib",
+        "4096",
+        "word-api03",
+        "60",
+        "96",
+        "selfhost/.assets/bin/bun",
+        "selfhost/tools/build/hosted.mjs",
+        "acquire",
+        "--source",
+        "selfhost/build/phase198/word-source05/compiler.bend",
+        "--exports",
+        "selfhost/build/phase198/word-source05/exports.json",
+        "--out",
+        "selfhost/build/phase198/word-api03",
+        "--engine",
+        "selfhost/.assets/bin/bun",
+        "--upstream",
+        "selfhost/.bootstrap/upstream-phase182"
+      ],
+      [
+        "python3",
+        "-B",
+        "research/phase198/qualification/job.py",
+        "--rss-mib",
+        "4096",
+        "word-controls01",
+        "20",
+        "16",
+        "selfhost/.assets/bin/bun",
+        "research/phase198/word-primitives/controls.mjs",
+        "--api",
+        "selfhost/build/phase198/word-api03/report.json",
+        "--out",
+        "selfhost/build/phase198/word-controls01"
+      ],
+      [
+        "python3",
+        "-B",
+        "research/phase198/qualification/job.py",
+        "--rss-mib",
+        "4096",
+        "word-products01",
+        "100",
+        "96",
+        "selfhost/.assets/bin/bun",
+        "research/phase198/quotient/emit.mjs",
+        "--api",
+        "selfhost/build/phase198/word-api03/report.json",
+        "--cases",
+        "raytrace,coverage-map-churn-32,coverage-unicode-text-64",
+        "--out",
+        "selfhost/build/phase198/word-products01"
+      ],
+      [
+        "python3",
+        "-B",
+        "research/phase198/qualification/job.py",
+        "--rss-mib",
+        "4096",
+        "word-runtime01",
+        "60",
+        "64",
+        "python3",
+        "-B",
+        "research/phase198/fusion/time-products.py",
+        "--emission",
+        "selfhost/build/phase198/word-products01/report.json",
+        "--out",
+        "selfhost/build/phase198/word-runtime01"
+      ]
+    ]
+  }
+}

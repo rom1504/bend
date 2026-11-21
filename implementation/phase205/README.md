@@ -44,6 +44,19 @@ Two additional prototypes were kept outside the selected image. A checked one-pa
 
 The selected N1 compiled its own source to a fresh N2 in **305.03 s**, including a 0.29 s link. The N1 and N2 compiler objects have different hashes and sizes (33,641,872 and 34,280,136 bytes). They have different producers. The result establishes a successful native compiler build; a fixed point requires a further generation and an independent release decision. N2 independently emitted byte-identical objects and executables to N1 for the lexer and both Unicode programs, with 27 fresh checked timing observations. Eight additional finite controls passed mature upstream JS and both baseline and treatment N1, including observed intermediates and effect ordering. The installed compiler was preserved. [Native self-build](evidence/p205self06.json.gz) · [Successor comparison](evidence/successor-smoke06.json.gz) · [Independent controls](evidence/final-controls06.json.gz)
 
+## Further specialization on two real programs
+
+A stronger compiler variant inlines safe bounded helpers with a known scalar operand and folds a whitelist of total literal operations. Both compiler APIs were independently source-checked. For each original program the stage-1 API had to emit the exact object previously produced by native N1 before a stage-2 result could enter the screen. All four objects used the same runtime. Each case had four alternating timing rounds and full output checks at additional inputs. The first two harness launches failed during Python imports before timing. [Raw results](evidence/p205scalarperf10.json.gz) · [Exact stronger compiler delta](../../research/phase205/snapshots/scalar.json)
+
+| Original program | Additional runtime reduction vs selected stage 1 | Machine evidence |
+|---|---:|---|
+| Lexer, 8/0 | 8.9% | All 39 relocated calls to `gen.at` disappeared. Machine text fell from 74,158 to 71,641 bytes. |
+| Packet header fold, 512/17 | 46.2% | Five `packet.step` calls and the remaining `packet.apply` call disappeared. |
+
+Hosted source-to-linked-program time increased from 16.69 to 19.32 s on the lexer and from 9.70 to 10.52 s on the packet. These four builds include fresh hosted API execution. The stronger compiler has a focused native program result and no full native45 or native self-build result. All broad numbers above refer solely to stage 1. [Machine census](scalar-machine.json)
+
+On two additional lexer inputs the same stronger executable took 0.910× stage 1 at [3, 7], 0.910× stage 1 at [4, 123]. A first fixed-repetition attempt fell below the 100 ms floor; the retained retry calibrated each role before the four alternating rounds. [Alternate measurements](evidence/p205scalaralt02.json.gz)
+
 ## What to try next
 
 It takes another 0.479 s of fixed work to reach 1.5× on this run. The largest remaining family gaps to C are ray tracing (0.947 s), BST (0.739 s), evening (0.643 s) and lexer (0.623 s). These are measured differences, not forecasts. The lexer is the best short experiment because the partial evaluator already admits it and independently written packet code benefits from the same mechanism. The larger opportunity is to remove intermediate character lists and classify the residual token stream directly. Test two unrelated token consumers with altered separators, escaped characters, dynamic seeds and observed intermediate results before acquiring another image. Ray tracing provides the next independent family and already has a staged instruction-level experiment. [Repriced opportunities](opportunities.json) · [Ray screen](../../research/phase200/ray/README.md)

@@ -255,80 +255,80 @@ def agy_bf_add_def(+context: List<&2,KDef>, +d: KDef) -> List<&2,KDef>:
   book_cached(raw_list,norm_max_defs([d],norm_book_bound(context)))
 
 @unsafe
-def agy_bf_commit_call(+orig_ctx: List<&2,KDef>, +ctx3: List<&2,KDef>, +raw: KDef, +rest: List<&2,KDef>, +dname: String, +arity: U32, +bid: U32, +chk_orig: KDef, +chk_loop: KDef, +chk_dh: KDef) -> AgyBFResult:
+def agy_bf_commit_call(+orig_ctx: List<&2,KDef>, +ctx3: List<&2,KDef>, +orig_d: KDef, +raw: KDef, +rest: List<&2,KDef>, +dname: String, +arity: U32, +bid: U32, +chk_orig: KDef, +chk_loop: KDef, +chk_dh: KDef) -> AgyBFResult:
   +disp_def = agy_bf_build_dispatch(raw,dname,arity,bid)
   +ctx4 = p205z_advance(ctx3,disp_def)
   +chk_disp = agy_bf_check_one(ctx4,disp_def)
   kc(AgyBFResult,String.eq(dk(chk_disp),"Absent"),
-    u => AgyBFResult{orig_ctx,Con{raw,rest},False{}},
+    u => AgyBFResult{orig_ctx,Con{orig_d,rest},False{}},
     u => AgyBFResult{p205z_advance(ctx4,chk_disp),Con{chk_orig,Con{chk_loop,Con{chk_dh,Con{chk_disp,rest}}}},True{}})
 
 @unsafe
-def agy_bf_commit_disp(+orig_ctx: List<&2,KDef>, +ctx2: List<&2,KDef>, +raw: KDef, +rest: List<&2,KDef>, +hname: String, +oname: String, +dname: String, +arity: U32, +bid: U32, +chk_orig: KDef, +chk_loop: KDef) -> AgyBFResult:
+def agy_bf_commit_disp(+orig_ctx: List<&2,KDef>, +ctx2: List<&2,KDef>, +orig_d: KDef, +raw: KDef, +rest: List<&2,KDef>, +hname: String, +oname: String, +dname: String, +arity: U32, +bid: U32, +chk_orig: KDef, +chk_loop: KDef) -> AgyBFResult:
   +dh_def = agy_bf_build_disp_helper(dname,dt(raw),hname,oname,arity,bid)
   +ctx3 = agy_bf_add_def(ctx2,dh_def)
   +chk_dh = agy_bf_check_one(ctx3,dh_def)
   kc(AgyBFResult,String.eq(dk(chk_dh),"Absent"),
-    u => AgyBFResult{orig_ctx,Con{raw,rest},False{}},
-    u => agy_bf_commit_call(orig_ctx,agy_bf_add_def(ctx2,chk_dh),raw,rest,dname,arity,bid,chk_orig,chk_loop,chk_dh))
+    u => AgyBFResult{orig_ctx,Con{orig_d,rest},False{}},
+    u => agy_bf_commit_call(orig_ctx,agy_bf_add_def(ctx2,chk_dh),orig_d,raw,rest,dname,arity,bid,chk_orig,chk_loop,chk_dh))
 
 @unsafe
-def agy_bf_commit_loop(+orig_ctx: List<&2,KDef>, +ctx1: List<&2,KDef>, +raw: KDef, +rest: List<&2,KDef>, +hname: String, +oname: String, +dname: String, +arity: U32, +lams0: List<&2,KTerm>, +base_expr: KTerm, +step: U32, +bid: U32, +chk_orig: KDef) -> AgyBFResult:
+def agy_bf_commit_loop(+orig_ctx: List<&2,KDef>, +ctx1: List<&2,KDef>, +orig_d: KDef, +raw: KDef, +rest: List<&2,KDef>, +hname: String, +oname: String, +dname: String, +arity: U32, +lams0: List<&2,KTerm>, +base_expr: KTerm, +step: U32, +bid: U32, +chk_orig: KDef) -> AgyBFResult:
   +loop_def = agy_bf_build_loop(hname,dt(raw),arity,lams0,base_expr,step,bid)
   +ctx2 = agy_bf_add_def(ctx1,loop_def)
   +chk_loop = agy_bf_check_one(ctx2,loop_def)
   kc(AgyBFResult,String.eq(dk(chk_loop),"Absent"),
-    u => AgyBFResult{orig_ctx,Con{raw,rest},False{}},
-    u => agy_bf_commit_disp(orig_ctx,agy_bf_add_def(ctx1,chk_loop),raw,rest,hname,oname,dname,arity,bid,chk_orig,chk_loop))
+    u => AgyBFResult{orig_ctx,Con{orig_d,rest},False{}},
+    u => agy_bf_commit_disp(orig_ctx,agy_bf_add_def(ctx1,chk_loop),orig_d,raw,rest,hname,oname,dname,arity,bid,chk_orig,chk_loop))
 
 @unsafe
-def agy_bf_commit(+context: List<&2,KDef>, +raw: KDef, +rest: List<&2,KDef>, +fname: String, +hname: String, +oname: String, +dname: String, +arity: U32, +clean: KTerm, +lams0: List<&2,KTerm>, +base_expr: KTerm, +step: U32, +bid: U32) -> AgyBFResult:
+def agy_bf_commit(+context: List<&2,KDef>, +orig_d: KDef, +raw: KDef, +rest: List<&2,KDef>, +fname: String, +hname: String, +oname: String, +dname: String, +arity: U32, +clean: KTerm, +lams0: List<&2,KTerm>, +base_expr: KTerm, +step: U32, +bid: U32) -> AgyBFResult:
   +orig_def = {KDef{oname,"Def",arity,0,dt(raw),agy_bf_rename_ref(clean,fname,oname),[],False{},False{}} : KDef}
   +ctx1 = agy_bf_add_def(context,orig_def)
   +chk_orig = agy_bf_check_one(ctx1,orig_def)
   kc(AgyBFResult,String.eq(dk(chk_orig),"Absent"),
-    u => AgyBFResult{context,Con{raw,rest},False{}},
-    u => agy_bf_commit_loop(context,agy_bf_add_def(context,chk_orig),raw,rest,hname,oname,dname,arity,lams0,base_expr,step,bid,chk_orig))
+    u => AgyBFResult{context,Con{orig_d,rest},False{}},
+    u => agy_bf_commit_loop(context,agy_bf_add_def(context,chk_orig),orig_d,raw,rest,hname,oname,dname,arity,lams0,base_expr,step,bid,chk_orig))
 
 @unsafe
-def agy_bf_emit(+context: List<&2,KDef>, +raw: KDef, +rest: List<&2,KDef>, +fname: String, +arity: U32, +clean: KTerm, +lams0: List<&2,KTerm>, +base_expr: KTerm, +st: AgyStep) -> AgyBFResult:
+def agy_bf_emit(+context: List<&2,KDef>, +orig_d: KDef, +raw: KDef, +rest: List<&2,KDef>, +fname: String, +arity: U32, +clean: KTerm, +lams0: List<&2,KTerm>, +base_expr: KTerm, +st: AgyStep) -> AgyBFResult:
   match st:
     case AgyStep{step,ok}:
       +hname = fname ++ "$agy_bf"
       +oname = fname ++ "$agy_orig"
       +dname = fname ++ "$agy_disp"
       kc(AgyBFResult,ok && String.eq(dk(lookup(context,hname)),"Absent") && String.eq(dk(lookup(context,oname)),"Absent") && String.eq(dk(lookup(context,dname)),"Absent"),
-        u => agy_bf_commit(context,raw,rest,fname,hname,oname,dname,arity,clean,lams0,base_expr,step,U32.inc(norm_book_bound(context))),
-        u => AgyBFResult{context,Con{raw,rest},False{}})
+        u => agy_bf_commit(context,orig_d,raw,rest,fname,hname,oname,dname,arity,clean,lams0,base_expr,step,U32.inc(norm_book_bound(context))),
+        u => AgyBFResult{context,Con{orig_d,rest},False{}})
 
 @unsafe
-def agy_bf_match_peels(+context: List<&2,KDef>, +raw: KDef, +rest: List<&2,KDef>, +fname: String, +arity: U32, +clean: KTerm, +zp: AgyPeel, +sp: AgyPeel) -> AgyBFResult:
+def agy_bf_match_peels(+context: List<&2,KDef>, +orig_d: KDef, +raw: KDef, +rest: List<&2,KDef>, +fname: String, +arity: U32, +clean: KTerm, +zp: AgyPeel, +sp: AgyPeel) -> AgyBFResult:
   match zp sp:
     case AgyPeel{lams0,base_expr,ok0} AgyPeel{lams1,succ_body,ok1}:
       kc(AgyBFResult,ok0 && ok1 && U32.is_eq(p205u_refs(base_expr,fname),0),
-        u => agy_bf_emit(context,raw,rest,fname,arity,clean,lams0,base_expr,agy_bf_check_succ(succ_body,fname,lams1)),
-        u => AgyBFResult{context,Con{raw,rest},False{}})
+        u => agy_bf_emit(context,orig_d,raw,rest,fname,arity,clean,lams0,base_expr,agy_bf_check_succ(succ_body,fname,lams1)),
+        u => AgyBFResult{context,Con{orig_d,rest},False{}})
 
 @unsafe
-def agy_bf_match_succ(+context: List<&2,KDef>, +raw: KDef, +rest: List<&2,KDef>, +fname: String, +arity: U32, +clean: KTerm, +zbr: KTerm, +msucc: KTerm) -> AgyBFResult:
+def agy_bf_match_succ(+context: List<&2,KDef>, +orig_d: KDef, +raw: KDef, +rest: List<&2,KDef>, +fname: String, +arity: U32, +clean: KTerm, +zbr: KTerm, +msucc: KTerm) -> AgyBFResult:
   kc(AgyBFResult,p98_tag_eq(msucc,"Mat") && String.eq(nm(msucc),"Succ") && U32.is_eq(terms_len(ks(msucc)),2) && p98_tag_eq(kid(msucc,1),"Efq"),
-    u => agy_bf_match_peels(context,raw,rest,fname,arity,clean,agy_bf_peel(zbr,U32.sub(arity,1)),agy_bf_peel(kid(msucc,0),arity)),
-    u => AgyBFResult{context,Con{raw,rest},False{}})
+    u => agy_bf_match_peels(context,orig_d,raw,rest,fname,arity,clean,agy_bf_peel(zbr,U32.sub(arity,1)),agy_bf_peel(kid(msucc,0),arity)),
+    u => AgyBFResult{context,Con{orig_d,rest},False{}})
 
 @unsafe
-def agy_bf_match_body(+context: List<&2,KDef>, +raw: KDef, +rest: List<&2,KDef>, +fname: String, +arity: U32, +clean: KTerm) -> AgyBFResult:
+def agy_bf_match_body(+context: List<&2,KDef>, +orig_d: KDef, +raw: KDef, +rest: List<&2,KDef>, +fname: String, +arity: U32, +clean: KTerm) -> AgyBFResult:
   kc(AgyBFResult,p98_tag_eq(clean,"Mat") && String.eq(nm(clean),"Zero") && U32.is_eq(terms_len(ks(clean)),2),
-    u => agy_bf_match_succ(context,raw,rest,fname,arity,clean,kid(clean,0),kid(clean,1)),
-    u => AgyBFResult{context,Con{raw,rest},False{}})
+    u => agy_bf_match_succ(context,orig_d,raw,rest,fname,arity,clean,kid(clean,0),kid(clean,1)),
+    u => AgyBFResult{context,Con{orig_d,rest},False{}})
 
 @unsafe
-def agy_bf_try_def(+context: List<&2,KDef>, +raw: KDef, +rest: List<&2,KDef>) -> AgyBFResult:
+def agy_bf_try_def(+context: List<&2,KDef>, +orig_d: KDef, +raw: KDef, +rest: List<&2,KDef>) -> AgyBFResult:
   +fname = dn(raw)
   +arity = kc(U32,String.eq(dk(raw),"Def") && Bool.not(db(raw) || du(raw)) && U32.is_eq(dx(raw),0),
     u => agy_bf_type_arity(dt(raw)),u => 0)
   kc(AgyBFResult,U32.is_ge(arity,2),
-    u => agy_bf_match_body(context,raw,rest,fname,arity,p205u_clean(dv(raw))),
-    u => AgyBFResult{context,Con{raw,rest},False{}})
+    u => agy_bf_match_body(context,orig_d,raw,rest,fname,arity,p205u_clean(dv(raw))),
+    u => AgyBFResult{context,Con{orig_d,rest},False{}})
 
 @unsafe
 def agy_bf_join(+ch1: Bool, +step_res: AgyBFResult) -> AgyBFResult:
@@ -341,7 +341,7 @@ def agy_bf_pass_step(+d: KDef, +tail_res: AgyBFResult) -> AgyBFResult:
     case AgyBFResult{ctx1,out1,ch1}:
       +raw = lookup(ctx1,dn(d))
       agy_bf_join(ch1,kc(AgyBFResult,String.eq(dk(d),"Def") && Bool.not(db(d) || du(d)) && U32.is_eq(dx(d),0),
-        u => agy_bf_try_def(ctx1,raw,out1),
+        u => agy_bf_try_def(ctx1,d,raw,out1),
         u => AgyBFResult{ctx1,Con{d,out1},False{}}))
 
 @unsafe

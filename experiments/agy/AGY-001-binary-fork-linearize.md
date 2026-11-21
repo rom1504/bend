@@ -1,12 +1,26 @@
 # AGY-001 · General Binary-Fork `Nat`-Depth `U32.add` Reduction Linearization
 
-- **Status**: **In progress (source-checked & matching `colf`/`rowf`; 1 remaining emitter bug)**
-- **Motivation**: SIGPROF profiling of Phase 205 direct x86 executables revealed:
-  - `raytrace` (`+0.947 s` gap to C, #1 fixed-batch deficit): **49.2%** in `p114r_$direct.colf` + **6.2%** in `p111_rt_frame` (**55.4% total**) due to continuation-frame bouncing over `2^14` columns.
-  - `mandelbrot` (`+0.399 s` gap to C): **28.8%** in `p111_$direct.rcol` + **11.5%** in `work_loop` + **7.7%** in `p111_$p111.k.9516` (**48.0% total**) on the exact same binary-fork `U32.add` reduction pattern.
-- **Mechanism** (`research/agy/bf_linearize.bend`, `research/agy/apply_bf.py`):
-  - Recognizes checked Bend functions `f(d: Nat, x: U32, a_1..a_k) -> U32` where `0n => BASE` and `1n+p => let a = f(p, x, a...); b = f(p, x + (STEP << p), a...) in a + b`.
-  - Generates checked tail-recursive loop `f$agy_bf(rem: Nat, x: U32, acc: U32, a...) -> U32` and a `d <= 31n` guarded dispatcher falling back to `f$agy_orig` for `d >= 32n`.
-- **Current state**:
-  - Pass compiles cleanly through upstream Bend (`Checked 4 API exports`), matches `colf` and `rowf` in `raytrace.bend`, and passes `check_definition_body` + `jl_checked_error`.
-  - **Remaining blocker**: `p144o_prepare_annotated` / `p111_effects` reports `foreign provider unavailable in fixed runtime: Nat` because `"Nat"` enters `plan.request.names` when new helper defs are added to `annotated`/`context`. Next step: inspect `p144o_build` to see why newly added defs pull `Nat` into `names`, fix it, and run `research/agy/bench_compare.py` across all 6 `raytrace` + `mandelbrot` cases (expected ~`-45–50%` on `raytrace`, ~`-40%` on `mandelbrot`).
+- **Status**: **Verified & measured win (all 45/45 `native45` oracles pass)**
+- **Artifacts**:
+  - Bend pass: `research/agy/bf_linearize.bend`
+  - Applier: `research/agy/apply_bf.py`
+  - Full 45-case benchmark harness: `research/agy/bench_all44.py`
+  - Full 45-case results (`AGY-001` + `AGY-002`): `selfhost/build/agy/full44-bf01-rt01/summary.json`
+
+## Mechanism
+Recognizes any pure, safe checked Bend definition `f(d: Nat, x: U32, a_1..a_k) -> U32` where `0n => BASE` and `1n+p => let a = f(p, x, a...); b = f(p, x + (STEP << p), a...) in a + b`, and rewrites it into:
+1. `f$agy_orig`: renamed original fallback for `d >= 32n`.
+2. `f$agy_bf(rem: Nat, x: U32, acc: U32, a...) -> U32`: checked tail-recursive `Nat` loop (lowers to a flat `p113d` register loop with zero continuation frames or scheduler transitions).
+3. `f$agy_disp` + `f`: guarded by `Nat.sub(d, U32.to_nat(31))` so `d <= 31n` runs `f$agy_bf` and `d >= 32n` falls back to `f$agy_orig`.
+All generated definitions pass `check_definition_body`, `ka_def`, and `jl_checked_error`.
+
+## Measurements (CPU 2, alternating rounds, exact stdout verified on 45/45 cases)
+- **Isolated `AGY-001` (`bf01-screen7`, same `runtime-live-scan.o`, 4 rounds)**:
+  - `raytrace`: `959.0 ms → 307.5 ms` (**0.321×**, **3.12× faster**)
+  - `mandelbrot`: `540.0 ms → 288.5 ms` (**0.534×**, **1.87× faster**)
+- **Combined `AGY-001` + `AGY-002` (`runtime-opt.o`), full 45-case `native45` suite (3 rounds)**:
+  - **All 45 / 45 oracles PASSED** (including `scalar-region-0` zero-work control).
+  - **Geomean cand/base (44 timed)**: **0.9045× (−9.55%)**
+  - **Geomean vs mature Bend C**: `0.941×` → **0.8514× C**
+  - **Fixed-work batch vs C**: `1.547×` (`15.667 s`) → **1.3930× C** (`14.103 s` vs `10.125 s` C, **−1.564 s**)
+  - **Cases > 2× C**: `15 / 44` → **10 / 44** (`raytrace` `1.643× → 0.501× C`, `mandelbrot` `2.010× → 1.097× C`, `lexer` `2.014× → 1.734× C`, `test-rle-roundtrip` `2.309× → 1.965× C`, `coverage-unicode-text-16/64` `0.965× / 0.908× C`).

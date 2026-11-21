@@ -1,0 +1,135 @@
+{
+  "kind": "agy-unified-full-qualification",
+  "version": 1,
+  "passed": true,
+  "artifacts": {
+    "api": {
+      "file": "/home/ai/bend2_agy/selfhost/build/agy/unified/api.mjs",
+      "bytes": 4670487,
+      "sha256": "e07a41e1040fe7ff38c0b35c4d83621fce38e6305e7372fa3b453786411f850b"
+    },
+    "source": {
+      "file": "/home/ai/bend2_agy/selfhost/build/agy/unified/compiler.bend",
+      "bytes": 2115381,
+      "sha256": "481e4912a7abbbd1979d0c1c3d41eb20d4ac5d14c18d79119e2def7b684ba065"
+    },
+    "runtime": {
+      "file": "/home/ai/bend2_agy/selfhost/build/agy/unified/runtime-agy.o",
+      "bytes": 132832,
+      "sha256": "afdcbaa790b85f55548fc0dc7ab50dc11241765ff547fc98a13e0e45ea6bbeaf"
+    }
+  },
+  "gate1_runtime_abi_and_sqrt": {
+    "abi_pass": 44,
+    "abi_total": 44,
+    "observer_pass": 2,
+    "observer_total": 2,
+    "sqrt_exported": true,
+    "sqrt_check": {
+      "complete": true,
+      "runtimeDifferentials": 65888,
+      "registerPreservationCases": 1024,
+      "mxcsrModes": 16,
+      "errnoAndStickyFlags": true
+    },
+    "failures": [],
+    "passed": true
+  },
+  "gate2_adverse_and_soundness": {
+    "pass": 7,
+    "total": 7,
+    "passed": true,
+    "rows": [
+      {
+        "name": "ctfe/fuel_exhaust",
+        "pass": true,
+        "got": "50000",
+        "exp": "50000",
+        "ms": 3.43
+      },
+      {
+        "name": "ctfe/dynamic_arg",
+        "pass": true,
+        "got": [
+          "10",
+          "16"
+        ],
+        "exp": [
+          "10",
+          "16"
+        ]
+      },
+      {
+        "name": "ctfe/io_order",
+        "pass": true,
+        "got": "first\nsecond",
+        "exp": "first\nsecond",
+        "ms": 4.16
+      },
+      {
+        "name": "ctfe/div_zero_safe",
+        "pass": true,
+        "got": "42",
+        "exp": "42",
+        "ms": 3.47
+      },
+      {
+        "name": "absorbing/test_adverse",
+        "pass": true,
+        "got": "110107",
+        "exp": "110107",
+        "ms": 3.99
+      },
+      {
+        "name": "absorbing/test_general_pos",
+        "pass": true,
+        "got": "73",
+        "exp": "73 (<15ms)",
+        "ms": 3.36
+      },
+      {
+        "name": "bf_linearize/step3_d0_d1_d5_nonzero_x",
+        "pass": true,
+        "got": "82\n185\n13040\n234960",
+        "exp": "82\n185\n13040\n234960",
+        "ms": 3.78
+      }
+    ]
+  },
+  "gate3_conformance": {
+    "prepSeconds": 0.73,
+    "native64": {
+      "pass": 64,
+      "total": 64,
+      "passed": true,
+      "failures": []
+    },
+    "runtime10": {
+      "pass": 10,
+      "total": 10,
+      "passed": true,
+      "failures": []
+    },
+    "passed": true
+  },
+  "gate4_independent_source_check": {
+    "complete": true,
+    "checked": true,
+    "typeAccepted": true,
+    "unresolvedHoles": 0,
+    "declarationEvents": 6687,
+    "directUnsafeDeclarations": 4893,
+    "nonBaseForeignDeclarations": 0,
+    "seconds": 8.18,
+    "language": {
+      "file": "/home/ai/bend2_agy/bend2/bend.ts",
+      "bytes": 144776,
+      "sha256": "7e4fc845734dd6faccd620409c6232b1f02b793a0628d9636cae300580ce3035"
+    },
+    "base": {
+      "file": "/home/ai/bend2_agy/bend2/base.bend",
+      "bytes": 87698,
+      "sha256": "ff90fb27ed19d5c7a6165170f28ad81562bf345b9a9e6134e5c2e326beff9de4"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+# Dynamic work at the generated-object ABI
+
+The operation counter authenticates each compiler-generated ELF object, relinks only its external ABI calls through a C observer and runs the whole program. Counts at repetitions 0, 1 and 2 give two independent integer differences and identify setup/formatting traffic. The uninstrumented binaries supply performance timings. Compare the two deltas for each site. The harness itself formats counts, so a change of one or two operations between deltas can be real. Reported work must be tied to the decoded caller and its actual data.
+
+The optional ownership mode counts keep/sink operands by their complete high byte, borrow-fields by arity and high byte, and the scalar borrow guard by arity and its original decision. It does not infer private ownership from a sample or assume a heap boundary. An output-linked ABI call can be rare despite many static sites, and successful dynamic counts alone do not establish time.
+
+Use `--catalog-dir` to select a different authenticated native45 build. Both modes share the exact complete-output checks. Compiler profiling and hardware scheduling models measure different quantities.
+
+All 45 ordinary programs passed the ownership-observer run on orbit N1 objects. The first repeated invocation of Map128 added 4,775 external keeps with high byte zero and 172 with high byte two. Record-256 added 4,177 and 767 respectively for high bytes zero and 130. Counts identify which ABI paths execute; most high-byte-zero calls return cheaply, so counts alone do not establish a time budget. The two independently differenced observations and all identities are retained. Run `count.py --ownership --catalog-dir selfhost/build/phase198/orbit-native45-01 --out selfhost/build/phase198/FRESH` under the standard CPU3 job guard. [Ownership receipts](evidence/screen.json.gz)

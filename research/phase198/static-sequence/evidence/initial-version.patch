@@ -1,0 +1,28 @@
+--- ceiling.py
++++ ceiling.py
+@@ -20,10 +20,10 @@
+     # identifier/number lengths remain derived from the live line argument.
+     old=(HERE.parent/'streams/lexer.bend').read_text()
+     if stream:
+-        helpers=old.split('def line(i: U32)')[0]+'def seq.finish(st: Mode & U32) -> U32:\n  (m, a) = st\n  flush(m, a)\n\n'
++        helpers=old.split('def line(i: U32)')[0]
+         expr=['  +s = seed(i)','  v0 = {(Gap{}, 0) : Mode & U32}']
+     else:
+-        helpers='def seq.literal(c: U32, s: String) -> String:\n  SCon{Chr{c}, s}\n\n';expr=['  +s = seed(i)','  v0 = {SNil{} : String}']
++        helpers='';expr=['  +s = seed(i)','  v0 = {SNil{} : String}']
+     for j,k in enumerate(range(len(chars)) if stream else reversed(range(len(chars)))):
+         c=chars[k];arg='v'+str(j);a='t'+str(j);b='v'+str(j+1)
+         if c in 'ino':expr.append(f'  +{a} = salt(s, {k})')
+@@ -36,10 +36,10 @@
+         elif c=='o':
+             call=(f'stream.char(op.pick(U32.is_ne(U32.and({a},2),0), U32.is_ne(U32.and({a},1),0)),{arg})' if stream else f'op({a},{arg})')
+         else:
+-            call=f'stream.word({ord(c)}, {arg})' if stream else f'seq.literal({ord(c)}, {arg})'
++            call=f'stream.word({ord(c)}, {arg})' if stream else f'SCon{{Chr{{{ord(c)}}}, {arg}}}'
+         expr.append(f'  {b} = {call}')
+     last='v'+str(len(chars))
+-    if stream:expr.append(f'  seq.finish({last})')
++    if stream:expr.extend([f'  (mode, acc) = {last}','  flush(mode, acc)'])
+     else:expr.append(f'  lex({last}, (Gap{{}}, 0))')
+     return text.replace(ORIGINAL,helpers+'def line(i: U32) -> U32:\n'+'\n'.join(expr))
+ def run(a):

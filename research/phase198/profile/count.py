@@ -14,21 +14,22 @@ sys.path.insert(0,str(HERE.parent/'fusion'))
 from screen import read,pin,checked_tool,BUILD,bench
 spec=importlib.util.spec_from_file_location('physical_profiler',BUILD.parent/'tools/profiler/analyze.py')
 prof=importlib.util.module_from_spec(spec);spec.loader.exec_module(prof)
-p=argparse.ArgumentParser();p.add_argument('--out',type=Path,required=True);p.add_argument('--cases',default='all')
+p=argparse.ArgumentParser();p.add_argument('--out',type=Path,required=True);p.add_argument('--cases',default='all');p.add_argument('--ownership',action='store_true');p.add_argument('--catalog-dir',type=Path,default=BUILD/'phase198/native45-01')
 a=p.parse_args();assert os.sched_getaffinity(0)=={3}
 out=a.out;out.mkdir(parents=True,exist_ok=False)
-manifest=BUILD/'phase198/native45-01/programs.manifest.json'
+manifest=a.catalog_dir/'programs.manifest.json'
 m=read(manifest);nc=BUILD/'phase194/assets.json'
 asset=read(nc);cc=checked_tool(asset['assets']['linker'])
-probe=HERE/'operations.c';obj=out/'observer.o'
+probe=HERE/('ownership.c' if a.ownership else 'operations.c');obj=out/'observer.o'
 subprocess.run([cc,'-O2','-c',probe,'-o',obj],capture_output=True,check=True,timeout=15)
 symbols=['p111_rt_op',*[f'p125_rt_{name}{i}' for name in ['ctor','take'] for i in range(1,5)]]
-r={'complete':False,'scope':'Generated-object calls to external ABI only. Exact integer deltas between repetitions 2 and 1; independent repeat verifies linearity. 0 reps separately observes setup and first result. Loader/runtime-internal calls and inlined work excluded; these are operation counts, not cycle or latency samples.',
+if a.ownership:symbols=['p111_rt_keep','p111_rt_sink','p118_rt_borrow_fields','p118_rt_borrow_scalar_safe']
+r={'complete':False,'symbols':symbols,'scope':'Generated-object calls to external ABI only. Exact integer deltas between repetitions 2 and 1; independent repeat verifies linearity. 0 reps separately observes setup and first result. Loader/runtime-internal calls and inlined work excluded; these are operation counts, not cycle or latency samples.',
    'inputs':[pin(p) for p in [manifest,probe,__file__,obj,nc]],'cases':[]}
 def save():(out/'report.json').write_text(json.dumps(r,indent=2)+'\n')
 for c in m['cases']:
     if a.cases!='all' and c['id'] not in a.cases.split(','):continue
-    role=c['products']['candidate'];q=read(BUILD/'phase198/native45-01'/c['id']/'machine/report.json');assert q['complete']
+    role=c['products']['candidate'];q=read(a.catalog_dir/c['id']/'machine/report.json');assert q['complete']
     exe=(out/c['id']).resolve();cmd=next(j['command'][:] for j in q['jobs'] if j['label']=='link')
     cmd[cmd.index(role['artifact']['file'])]=str(exe)
     cmd[1:1]=[*['-Wl,--wrap='+s for s in symbols],str(obj)]
@@ -48,7 +49,8 @@ for c in m['cases']:
         bench.observation(p1.stdout,b''.join(left),p1.returncode,dict(expectedStdout=point['expectedStdout'],repetitions=reps,warmups=0),time.monotonic()-t)
         rows.append(counts)
     assert all('lost' not in z for z in rows)
-    _,symbol_index=prof.load_object(exe)
+    if not a.ownership:
+        _,symbol_index=prof.load_object(exe)
     site_names={}
     for k in set().union(*rows):
         if k.startswith('site '):

@@ -1,0 +1,11 @@
+# Separating a static input sequence from its dynamic transitions
+
+The previous lexer projection removed the intermediate string but only saved about 9% on the ordinary input. Its producer still iterates over the same immutable 39-character template at every line, classifies each character and computes dynamic placeholder values. This is a source-level test of bounded partial evaluation over a constant sequence with dynamic state. An eventual compiler would need to establish from checked definitions that template traversal and the slot classifier are pure and total, and cap specialization size. It would preserve all dynamic random draws, seed-dependent repetitions, the token state machine and output.
+
+Try two independent versions. One expands only the static template traversal, builds the same string in reverse construction order, then runs the ordinary lexer. The other passes the live token state through the same statically ordered sequence, carrying the dynamic seed. Compare both to the original in the existing complete-result harness. Derive characters and positions from the original template. This fixture tests the ceiling on one family and is separate from the selected compiler and broad score.
+
+## Results on the complete original lexer program
+
+The source with only the static template expanded took **0.7063×** the original x86 time and **1.8746×** mature Bend C. Passing token state through that expanded sequence took **0.6899×** original x86 and **1.8260×** C. Both used the unchanged dynamic seed, token checksum, input parser and measured harness. The native compiler took the published Phase197 source-to-object route. Two independent alternate-input C comparisons preceded six rotated timing observations per role. The first two generated sources failed ordinary source checks; explicit typed helpers fixed synthesis. Frozen reports and the initial-method patch preserve both failures.
+
+This is a source-level ceiling on one actual program. A compiler candidate would need to specialize short pure constant traversals under a code-growth budget and preserve dynamic input and effect order. Requiring a second unrelated producer/fold to benefit would test whether that compiler work generalizes. Reproduce with `sh research/phase198/static-sequence/run.sh seq-repeat-01` from the repository root. [Raw results](evidence/screen.json.gz)

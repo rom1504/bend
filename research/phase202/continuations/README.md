@@ -14,3 +14,5 @@ python3 -B research/phase201/cold/job.py p202contpaired01 40 12 \
 ```
 
 `prepare.py --out FRESH/compiler.bend` overlays Phase201 `source02`; `--source` accepts a composed input containing the original segment hook. `standalone.py --out FRESH` stages optional native paired fixtures with 127 admitted continuations, one swapped-argument refusal, and increasing function/local IDs. `screen.py --fixture FRESH --out OUT` uses the existing guarded Phase201 native oracle/timing procedure. This heavier pair remains subject to the inherited 35-second per-image compilation limit. The selector gate alone does not measure cold self-build transfer.
+
+The coordinator ran `p202cont02`. The focused source checked, the admitted fixture reproduced every byte and its symbol/relocation, and three near misses refused; the guard closed successfully in 3.43 seconds. The independent whole-source check also accepted the fixed matcher in stack05. The archive retains the first binder-order refusal and the initial missing diagnostic bridge alongside the accepted results. [Check and physical receipts](receipts.json.gz).

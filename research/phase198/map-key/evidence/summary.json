@@ -1,0 +1,496 @@
+{
+  "map-snapshot01": {
+    "complete": false,
+    "error": "No experiment receipt before host import refusal"
+  },
+  "map-pivot01": {
+    "complete": false,
+    "pins": {
+      "report": {
+        "file": "selfhost/build/phase198/map-pivot01/report.json",
+        "sha256": "d63ac0a9d59880aa6f50b62eaffd251ee9c31fd606c373f1e1a4878462476fa4",
+        "bytes": 472
+      },
+      "guard": {
+        "file": "selfhost/build/phase198/map-pivot01-guard/process.json",
+        "sha256": "c5cd4473d107187d6d38e12269dcc9570e488e9b8988d8c4b4bed88446b58aa4",
+        "bytes": 2395
+      },
+      "retention": {
+        "file": "selfhost/build/phase198/map-pivot01-guard/retention.json",
+        "sha256": "9c426b51eb3487f2f8a307acaf14fc236baa52856e41b3a1a8fcc1eb65bd3cca",
+        "bytes": 1018
+      },
+      "close": {
+        "file": "selfhost/build-retention/phase198/map-pivot01-close/report.json",
+        "sha256": "a45fdb5cd87de3e1aea9f79667390a4990b09ccbc79bfb9fb1448c8971fcbb48",
+        "bytes": 1430
+      }
+    },
+    "cases": {},
+    "refusal": {
+      "case": "coverage-map-churn-128",
+      "role": "cached",
+      "stage": "upstream source check",
+      "detail": {
+        "kind": "Err",
+        "definition": "kw.set.ready",
+        "expected": "a def whose body is implemented before the def is used (defs are checked in file order, and an unfilled law has none)",
+        "observed": "Ref"
+      }
+    }
+  },
+  "map-pivot02": {
+    "complete": true,
+    "pins": {
+      "report": {
+        "file": "selfhost/build/phase198/map-pivot02/report.json",
+        "sha256": "d43b6e1142d9b795afbec13db8335a4fc6353be043b589782847a25a0a10b9cb",
+        "bytes": 31603
+      },
+      "guard": {
+        "file": "selfhost/build/phase198/map-pivot02-guard/process.json",
+        "sha256": "115cde5ca9bc9e2d2f49d9e83c98e3d0154d043527923f99536d74dc5e257dd3",
+        "bytes": 2397
+      },
+      "retention": {
+        "file": "selfhost/build/phase198/map-pivot02-guard/retention.json",
+        "sha256": "bc6747914317751c411e380c7a78c014ff0e73a544edb00d44cac97a73e88338",
+        "bytes": 1025
+      },
+      "close": {
+        "file": "selfhost/build-retention/phase198/map-pivot02-close/report.json",
+        "sha256": "5ec93a9371ef953c4214ac4b2ebba317d79bbf9e50117a1e68f4de5e2d44693a",
+        "bytes": 1432
+      }
+    },
+    "cases": {
+      "coverage-map-churn-128": {
+        "products": {
+          "cached": {
+            "executable": "166e810474cdda073cc27eaf4481609619662658b02fa7eb2ee4a03fb5200475",
+            "object": "943e4ed774858622432b5d35a79c89c278c8563a014a04ec055a7543988bf181",
+            "source": "9188f2c3bc2563e31aedae516d3e4bd570910c9eb056a6bf38bb0d989af761e6",
+            "checker": "2d7d21f21385052cc636c6b538c6eafd06262f7cf89d3f8be060e52f368f95de",
+            "typeAccepted": true,
+            "holes": 0
+          },
+          "stock": {
+            "executable": "7c19ccabba9036e0ae4f2601feaef82f2c53469b293de517f00e2d1dd880c9f4",
+            "object": "d2a8046bd114bc5efca9d19ed5bc4cacd7885f47c872b73d50f2249914c879d5"
+          }
+        },
+        "checks": [
+          {
+            "inputs": [
+              128,
+              123
+            ],
+            "expected": "3714872484\n",
+            "roles": [
+              "cached",
+              "stock"
+            ],
+            "matureC": true
+          },
+          {
+            "inputs": [
+              0,
+              0
+            ],
+            "expected": "2166136261\n",
+            "roles": [
+              "cached",
+              "stock"
+            ],
+            "matureC": true
+          },
+          {
+            "inputs": [
+              1,
+              17
+            ],
+            "expected": "2166136261\n",
+            "roles": [
+              "cached",
+              "stock"
+            ],
+            "matureC": true
+          },
+          {
+            "inputs": [
+              4,
+              17
+            ],
+            "expected": "405107455\n",
+            "roles": [
+              "cached",
+              "stock"
+            ],
+            "matureC": true
+          },
+          {
+            "inputs": [
+              23,
+              99
+            ],
+            "expected": "4024668609\n",
+            "roles": [
+              "cached",
+              "stock"
+            ],
+            "matureC": true
+          },
+          {
+            "inputs": [
+              64,
+              0
+            ],
+            "expected": "2083387461\n",
+            "roles": [
+              "cached",
+              "stock"
+            ],
+            "matureC": true
+          }
+        ],
+        "sessions": [
+          {
+            "session": 0,
+            "against": "stock",
+            "ratios": [
+              1.358744394618834,
+              1.3818181818181818,
+              1.3772727272727272,
+              1.407239819004525
+            ],
+            "median": 1.3795454545454544
+          },
+          {
+            "session": 1,
+            "against": "stock",
+            "ratios": [
+              1.3665158371040724,
+              1.336283185840708,
+              1.3789954337899544,
+              1.2863070539419088
+            ],
+            "median": 1.3513995114723902
+          }
+        ],
+        "timings": [
+          {
+            "session": 0,
+            "round": 0,
+            "repetitions": 265,
+            "milliseconds": {
+              "stock": 223,
+              "cached": 303
+            }
+          },
+          {
+            "session": 0,
+            "round": 1,
+            "repetitions": 265,
+            "milliseconds": {
+              "cached": 304,
+              "stock": 220
+            }
+          },
+          {
+            "session": 0,
+            "round": 2,
+            "repetitions": 265,
+            "milliseconds": {
+              "stock": 220,
+              "cached": 303
+            }
+          },
+          {
+            "session": 0,
+            "round": 3,
+            "repetitions": 265,
+            "milliseconds": {
+              "cached": 311,
+              "stock": 221
+            }
+          },
+          {
+            "session": 1,
+            "round": 0,
+            "repetitions": 265,
+            "milliseconds": {
+              "cached": 302,
+              "stock": 221
+            }
+          },
+          {
+            "session": 1,
+            "round": 1,
+            "repetitions": 265,
+            "milliseconds": {
+              "stock": 226,
+              "cached": 302
+            }
+          },
+          {
+            "session": 1,
+            "round": 2,
+            "repetitions": 265,
+            "milliseconds": {
+              "cached": 302,
+              "stock": 219
+            }
+          },
+          {
+            "session": 1,
+            "round": 3,
+            "repetitions": 265,
+            "milliseconds": {
+              "stock": 241,
+              "cached": 310
+            }
+          }
+        ]
+      },
+      "coverage-record-aggregation-256": {
+        "products": {
+          "cached": {
+            "executable": "e252d412769cc5eb1b1933fa93cc8647be666da3995dc672aacb80df35d5214b",
+            "object": "780cd3f3fccd6f8807daa2734914e008bb3d51fe5444a14caaf7c64f9a5e612b",
+            "source": "f04a4450fc3312976d18a49dd3eb62c127b4c9b6c18aae0ae5512e9b14874ad2",
+            "checker": "7dd7b5e384579d4402e6fbb07b992fb64618c8943930f8daf3a61e780b1b1097",
+            "typeAccepted": true,
+            "holes": 0
+          },
+          "stock": {
+            "executable": "ee2f0beec33c751020fd12a4ce1800f1323acd46e1e79cc694849984be78168b",
+            "object": "b7ab77a1ad0a48784a3cec4e7a3502ea3fd089ee411b15f9041b141bf72de291"
+          }
+        },
+        "checks": [
+          {
+            "inputs": [
+              256,
+              123
+            ],
+            "expected": "部門0=6968;部門1=7560;部門10=7888;部門11=7008;部門12=7600;部門13=8192;部門14=7784;部門15=7376;部門2=8152;部門3=7744;部門4=7336;部門5=6928;部門6=7520;部門7=8112;部門8=8704;部門9=8296;\n",
+            "roles": [
+              "cached",
+              "stock"
+            ],
+            "matureC": true
+          },
+          {
+            "inputs": [
+              0,
+              0
+            ],
+            "expected": "\n",
+            "roles": [
+              "cached",
+              "stock"
+            ],
+            "matureC": true
+          },
+          {
+            "inputs": [
+              1,
+              17
+            ],
+            "expected": "部門1=17;\n",
+            "roles": [
+              "cached",
+              "stock"
+            ],
+            "matureC": true
+          },
+          {
+            "inputs": [
+              4,
+              17
+            ],
+            "expected": "部門1=17;部門2=54;部門3=91;部門4=128;\n",
+            "roles": [
+              "cached",
+              "stock"
+            ],
+            "matureC": true
+          },
+          {
+            "inputs": [
+              23,
+              99
+            ],
+            "expected": "部門0=580;部門1=617;部門10=358;部門11=395;部門12=432;部門13=469;部門14=506;部門15=543;部門2=654;部門3=790;部門4=864;部門5=938;部門6=1012;部門7=1086;部門8=1160;部門9=1234;\n",
+            "roles": [
+              "cached",
+              "stock"
+            ],
+            "matureC": true
+          },
+          {
+            "inputs": [
+              64,
+              0
+            ],
+            "expected": "部門0=1552;部門1=1700;部門10=2032;部門11=2180;部門12=1328;部門13=1476;部門14=1624;部門15=1772;部門2=1848;部門3=1996;部門4=2144;部門5=2292;部門6=2440;部門7=1588;部門8=1736;部門9=1884;\n",
+            "roles": [
+              "cached",
+              "stock"
+            ],
+            "matureC": true
+          }
+        ],
+        "sessions": [
+          {
+            "session": 0,
+            "against": "stock",
+            "ratios": [
+              1.3302752293577982,
+              1.3066666666666666,
+              1.3454545454545455,
+              1.3508771929824561
+            ],
+            "median": 1.3378648874061718
+          },
+          {
+            "session": 1,
+            "against": "stock",
+            "ratios": [
+              1.2831858407079646,
+              1.3231441048034935,
+              1.3423423423423424,
+              1.293859649122807
+            ],
+            "median": 1.3085018769631502
+          }
+        ],
+        "timings": [
+          {
+            "session": 0,
+            "round": 0,
+            "repetitions": 195,
+            "milliseconds": {
+              "stock": 218,
+              "cached": 290
+            }
+          },
+          {
+            "session": 0,
+            "round": 1,
+            "repetitions": 195,
+            "milliseconds": {
+              "cached": 294,
+              "stock": 225
+            }
+          },
+          {
+            "session": 0,
+            "round": 2,
+            "repetitions": 195,
+            "milliseconds": {
+              "stock": 220,
+              "cached": 296
+            }
+          },
+          {
+            "session": 0,
+            "round": 3,
+            "repetitions": 195,
+            "milliseconds": {
+              "cached": 308,
+              "stock": 228
+            }
+          },
+          {
+            "session": 1,
+            "round": 0,
+            "repetitions": 195,
+            "milliseconds": {
+              "cached": 290,
+              "stock": 226
+            }
+          },
+          {
+            "session": 1,
+            "round": 1,
+            "repetitions": 195,
+            "milliseconds": {
+              "stock": 229,
+              "cached": 303
+            }
+          },
+          {
+            "session": 1,
+            "round": 2,
+            "repetitions": 195,
+            "milliseconds": {
+              "cached": 298,
+              "stock": 222
+            }
+          },
+          {
+            "session": 1,
+            "round": 3,
+            "repetitions": 195,
+            "milliseconds": {
+              "stock": 228,
+              "cached": 295
+            }
+          }
+        ]
+      }
+    }
+  },
+  "map-pivot-edge01": {
+    "complete": false,
+    "pins": {
+      "report": {
+        "file": "selfhost/build/phase198/map-pivot-edge01/report.json",
+        "sha256": "38ae81b82401095654a3317e28d28c9e4e8bd20bd73164be6d3c8de904e699dc",
+        "bytes": 2031
+      },
+      "guard": {
+        "file": "selfhost/build/phase198/map-pivot-edge01-guard/process.json",
+        "sha256": "d783eb55c27c28c6bcd0a1d22cd0dc18bb45979c46a06be50efcaf08cdd1c4a9",
+        "bytes": 2349
+      },
+      "retention": {
+        "file": "selfhost/build/phase198/map-pivot-edge01-guard/retention.json",
+        "sha256": "f777e966d0d01d2bf968252159d7729ea82a0a38f49af4ad10df8a57c5a6ef40",
+        "bytes": 1039
+      },
+      "close": {
+        "file": "selfhost/build-retention/phase198/map-pivot-edge01-close/report.json",
+        "sha256": "b1b8043576f5be521d8d0851f56dcc598a90c6a85a8601204c5c80e51b89a0be",
+        "bytes": 1442
+      }
+    },
+    "cases": {
+      "map-edges": {
+        "products": {
+          "cached": {
+            "executable": "314f7d30e8dddf52eb6367ffbfdf15f34873e25b70f142c85c439482621f4617",
+            "object": "3147b2e05f9f04834b89277545fde004cf500c5e409f70214d4a9a00989a5cb3",
+            "source": "2a1a4d1271dbdb16bed348fd690f6b771cb23bbb13bae9dd6c9159957fb485b2",
+            "checker": "f2e424f36d8bae5146aa11ced0c7a814b26915295b87844fa31244b56c536d03",
+            "typeAccepted": true,
+            "holes": 0
+          }
+        },
+        "checks": [],
+        "sessions": [],
+        "timings": []
+      }
+    },
+    "refusal": {
+      "case": "map-edges",
+      "role": "stock",
+      "stage": "native source/codegen",
+      "code": 1,
+      "stdout": "",
+      "stderr": "adapter renderer original final IR: invalid/reserved local name: p113i_0_local_p113i_0_local_p113i_0_local_p113i_0_local_p113i_0_local_p113i_0_local_p113i_0_local_p113i_0_local_p113i_0_local_v_4294967295\n"
+    }
+  }
+}

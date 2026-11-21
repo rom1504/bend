@@ -1,0 +1,136 @@
+{
+  "inputs": [
+    {
+      "path": "research/phase198/qualification/broad-runtime-summary01.json",
+      "sha256": "5308fea2dcbb8b60557311bf00eadd69f24b94c955db979740d5817e09a618a5"
+    },
+    {
+      "path": "selfhost/build/phase195/profile-remaining-plan01/per-invocation02.json",
+      "sha256": "afd9bed681b0eae172e5bbfc61b4ad39506a98bb5994ea1ddc34cb827d004934"
+    },
+    {
+      "path": "selfhost/build/phase198/runtime-count01/report.json",
+      "sha256": "25007771966fe995b3a81f877d8e21adb991faada2c4fe15e8f6cde78f00cb23"
+    },
+    {
+      "path": "selfhost/.bootstrap/upstream-phase182/bend2/base.bend",
+      "sha256": "ff90fb27ed19d5c7a6165170f28ad81562bf345b9a9e6134e5c2e326beff9de4"
+    },
+    {
+      "path": "selfhost/build/phase198/native45-02/report.json",
+      "sha256": "225da3b6564ed0059a69034d4a0ecfda325c63c6787a81415a1b36add18c0fcf"
+    }
+  ],
+  "physical": {
+    "candidate": [
+      {
+        "function": "p113d_FID_$p118borrow.read.Map.bit.go",
+        "samples": 17,
+        "share": 0.02439405785770133,
+        "us": 0.743813158734354
+      },
+      {
+        "function": "p113d_FID_$product.Map.bit.at",
+        "samples": 9,
+        "share": 0.013604378420641126,
+        "us": 0.41481887698646663
+      },
+      {
+        "function": "p113d_FID_$direct.Map.bit",
+        "samples": 7,
+        "share": 0.011102423768569195,
+        "us": 0.3385303478855072
+      },
+      {
+        "function": "p113d_FID_$product.Map.bit.go",
+        "samples": 6,
+        "share": 0.009851446442533229,
+        "us": 0.30038608333502753
+      },
+      {
+        "function": "p113d_FID_$product.Map.bit",
+        "samples": 4,
+        "share": 0.006567630961688819,
+        "us": 0.20025738889001837
+      }
+    ],
+    "c": [
+      {
+        "function": "WL_FID_$direct.Map.bit.go",
+        "samples": 22,
+        "share": 0.03361344537815126,
+        "us": 0.35157263249170556
+      },
+      {
+        "function": "WL_FID_$direct.Map.bit",
+        "samples": 10,
+        "share": 0.01556178026766262,
+        "us": 0.16276510763504887
+      },
+      {
+        "function": "WL_FID_$direct.Map.bit.at",
+        "samples": 8,
+        "share": 0.011515717398070339,
+        "us": 0.12044617964993615
+      }
+    ],
+    "qbe": [
+      {
+        "function": "p113d_FID_$p118borrow.read.Map.bit.go",
+        "samples": 11,
+        "share": 0.014127297584687832,
+        "us": 0.3570385006360546
+      },
+      {
+        "function": "p113d_FID_$product.Map.bit.at",
+        "samples": 3,
+        "share": 0.004405286343612335,
+        "us": 0.111334586219845
+      },
+      {
+        "function": "p112w_FID_$direct.Map.bit",
+        "samples": 2,
+        "share": 0.0024305028102688743,
+        "us": 0.061425978604052404
+      },
+      {
+        "function": "p113d_FID_$product.Map.bit.go",
+        "samples": 2,
+        "share": 0.0024305028102688743,
+        "us": 0.061425978604052404
+      },
+      {
+        "function": "p113d_FID_$direct.Map.bit",
+        "samples": 1,
+        "share": 0.0012152514051344372,
+        "us": 0.030712989302026202
+      }
+    ]
+  },
+  "elapsed": {
+    "test-map-set-ops": {
+      "medianMs": {
+        "c": 0.010548788145171418,
+        "baseline": 0.030622243998040175,
+        "candidate": 0.030435841246652058
+      },
+      "overC": 2.8852452838939326
+    },
+    "coverage-map-churn-32": {
+      "medianMs": {
+        "c": 0.048268238761974946,
+        "baseline": 0.1686656671664168,
+        "candidate": 0.1701649175412294
+      },
+      "overC": 3.5254014214266913
+    },
+    "coverage-map-churn-128": {
+      "medianMs": {
+        "c": 0.23191094619666047,
+        "baseline": 0.8246753246753247,
+        "candidate": 0.8327868852459016
+      },
+      "overC": 3.590977049180328
+    }
+  }
+}

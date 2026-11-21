@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/ai/bend2/build/publish/bend/research/phase198/map-key/snapshot-run.py", line 105, in <module>
+    main(p.parse_args())
+  File "/home/ai/bend2/build/publish/bend/research/phase198/map-key/snapshot-run.py", line 50, in main
+    raise RuntimeError(str(detail.get('error',detail) if isinstance(detail,dict) else detail)[-1500:])
+RuntimeError: {'kind': 'Err', 'definition': 'kw.set.ready', 'expected': 'a def whose body is implemented before the def is used (defs are checked in file order, and an unfilled law has none)', 'observed': 'Ref'}

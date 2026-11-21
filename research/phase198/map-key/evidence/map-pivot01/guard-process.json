@@ -1,0 +1,70 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": false,
+  "started": 1795220577.1049256,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "3",
+    "python3",
+    "-B",
+    "research/phase198/map-key/snapshot-run.py",
+    "--source",
+    "selfhost/build/phase198/map-pivot-source04/report.json",
+    "--cases",
+    "coverage-map-churn-128,coverage-record-aggregation-256",
+    "--roles",
+    "cached,stock",
+    "--time",
+    "--out",
+    "selfhost/build/phase198/map-pivot01"
+  ],
+  "returncode": 1,
+  "rssLimitBytes": 3221225472,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 191836160,
+  "minimumAvailableBytes": 27205189632,
+  "diskBudgetBytes": 62914560,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 6436495360,
+  "minimumDiskFreeBytes": 6436413440,
+  "peakRunAllocatedBytes": 45056,
+  "peakFilesystemDecreaseBytes": 81920,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/map-pivot01"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "3",
+    "fileLimitBytes": 134217728,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/research/phase198/map-key/snapshot-run.py",
+        "sha256": "fdd747c3af14cdc977b5d3a01251460adf7a549c580054172b3c6f48567c43d1",
+        "bytes": 6707
+      },
+      {
+        "path": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/map-pivot-source04/report.json",
+        "sha256": "d9856f4f5698d14ca862e2114cce4c617123ece26a26c7bc0f907dbb11e7ef5e",
+        "bytes": 5710
+      }
+    ]
+  },
+  "wallSeconds": 1.6058155540376902,
+  "finished": 1795220578.7104213
+}

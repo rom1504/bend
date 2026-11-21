@@ -1,0 +1,58 @@
+{
+  "kind": "build-retention-disk-guard-v1",
+  "complete": true,
+  "started": 1795222586.397831,
+  "command": [
+    "bash",
+    "-c",
+    "ulimit -f 131072; ulimit -c 0; exec \"$@\"",
+    "bend-build",
+    "taskset",
+    "-c",
+    "3",
+    "python3",
+    "-B",
+    "research/phase198/map-key/edge-repair.py",
+    "--out",
+    "selfhost/build/phase198/map-pivot-edge-oracle01"
+  ],
+  "returncode": 0,
+  "rssLimitBytes": 2147483648,
+  "availableFloorBytes": 17179869184,
+  "peakTreeRssBytes": 17281024,
+  "minimumAvailableBytes": 27354890240,
+  "diskBudgetBytes": 10485760,
+  "diskReserveBytes": 5368709120,
+  "initialDiskFreeBytes": 5868740608,
+  "minimumDiskFreeBytes": 5868720128,
+  "peakRunAllocatedBytes": 20480,
+  "peakFilesystemDecreaseBytes": 20480,
+  "artifactRoots": [
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/map-pivot-edge-oracle01"
+  ],
+  "lockPath": "/home/ai/bend2/build/publish/bend/selfhost/build/phase32/execution.lock",
+  "diskAccounting": "Sampled declared-root allocated blocks plus conservative net filesystem free decrease; external writers can cause refusal. Hardlinks counted once within roots. Not a filesystem quota.",
+  "method": {
+    "guard": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/build-retention/guard.py",
+      "sha256": "edef4f80d84612c7d469f51b9b100cbb7b469203f79f73d653c88d7d4e1dff00",
+      "bytes": 11957
+    },
+    "support": {
+      "path": "/home/ai/bend2/build/publish/bend/selfhost/tools/execution.py",
+      "sha256": "6abd924714a0ab55bc5ed823cf2be157376121e5d724d9afb4d9c46f73c75dbe",
+      "bytes": 6779
+    },
+    "cpu": "3",
+    "fileLimitBytes": 134217728,
+    "commandFiles": [
+      {
+        "path": "/home/ai/bend2/build/publish/bend/research/phase198/map-key/edge-repair.py",
+        "sha256": "1d4ebe50d78f1ec388d3aaad0c5ae2721822fea6b186aefbb06d20f5ac6fffbc",
+        "bytes": 1546
+      }
+    ]
+  },
+  "wallSeconds": 0.16699087247252464,
+  "finished": 1795222586.564498
+}

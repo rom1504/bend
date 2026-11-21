@@ -1,3 +1,11 @@
+# Phase198 direct x86 program runtime
+
+Direct x86 takes **1.2781× mature Bend C runtime** on the 44 timed native45 cases. Phase197 took 1.8426× in the same run. Excluding the one input whose loop reaches a fixed point, the ratios are 1.5337× and 1.8361×. The original fixed-work batch takes 19.31 seconds versus 10.32 seconds for C. The source transformations changed 12 of 45 objects. The largest remaining time budgets are in lexical analysis, Map, scalar array folds, record aggregation and BST. Ray tracing leads when weighting by excess batch time.
+
+A deliberately nonconverging held-out loop uncovered a 65.9% cost from dynamically testing for a fixed point. A checked static progress filter restored the original object on that program while preserving all 45 catalog objects and their loaded layouts. The revised N1 compiled the catalog to objects in 79.40 seconds versus 77.30 seconds for Phase197. [Integrated results and operating instructions](../implementation/phase198/README.md) · [Independent adverse test](../research/phase198/numeric/selective-results.json)
+
+---
+
 # Phase197 checked x86 optimization candidates
 
 Two Bend rules reduce generated-program runtime by 8.8% geometrically on six selected workloads versus qualified Phase195. The independent C-reference screen on those same six moves from 2.696× to 2.485× C. All 18 direct products pass their catalog oracles and 90 additional case/input/role comparisons agree with C. Phase195 remains the most recent full native qualification at 1.865× C across 44 timed workloads.

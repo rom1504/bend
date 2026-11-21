@@ -7455,3 +7455,8 @@ No new BendTT proof, complete compiler correctness or recursive acceleration cla
 ## Phase195 resumed — 2026-11-20
 
 [Controlled results](../implementation/phase195/resume-2026-11-20.md): combination17.38% less runtime across six development cases; cycles fail incremental-profitability test; recurrence diagnostic0.9–1.6%. Independent finite controls pass. No broad/native/default promotion.
+
+
+## Phase198 direct x86 portfolio and independent profitability control — 2026-11-21
+
+Incremental complete-program measurements against mature Bend C moved from 1.8426× for the incumbent to 1.2781× for the new compiler and live constructor runtime in a same-session four-way comparison. Removing scalar-8192 gives 1.8361× to 1.5337×. A separately authored cycling loop forced a change to fixed-point admission. The corrected native compiler emitted the same 45 measured program objects and full loaded layouts and recovered baseline bytes on that adverse input. [Full report, qualification status and scope](../implementation/phase198/README.md) · [Machine-code attribution](../implementation/phase198/identical-machines.json) · [Runtime measurements](../research/phase198/runtime-broad/orbit-summary.md)

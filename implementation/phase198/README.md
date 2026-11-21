@@ -44,3 +44,26 @@ The revised selected source has 44,408 lines and 1,947,566 bytes, 229 additional
 Reaching geometric parity from 1.2781× takes another **21.8%** reduction across this set. Reaching fixed-batch parity from 1.871× takes **46.6%**. The lexer accounts for 10.5% of the remaining positive log-slowdown across all programs. Map churn accounts for 9.0%, scalar array folds for 8.6%, record aggregation for 7.9% and BST for 7.7%. As a counterfactual, bringing every slower member of those five families exactly to C and holding everything else fixed would put the geometric ratio around 0.97×, but the fixed batch would still take about 1.50× C time. Ray tracing contributes the largest share of positive excess *batch time* (11.8%). [Per-family time budget and assumptions](orbit-opportunities.json)
 
 Several independent backend changes now have real localized timing evidence. A verified tail transfer removes 417 scheduler transitions and saves 12.3% on Map; the same transformation removes 1,026 transitions in the lexer and saves only 0.4%. Native constant-division lowering saves 3.6% on the lexer and 4.4% on record aggregation. Direct word operations save 2–4% on ray, Map and Unicode. These candidates were measured individually. Their effects can overlap when composed. General runtime PGO achieved only a 0.3% geometric difference across six evaluation programs. [Tail transfer](../../research/phase198/reuse/) · [Constant division](../../research/phase198/quotient-machine/README.md) · [Word operations](../../research/phase198/word-primitives/RESULTS.md) · [Ord selection](../../research/phase198/ordering/results.md) · [PGO ablation](../../research/phase198/reference-counts/results.md)
+
+## Using the corrected compiler on the research machine
+
+The actual native N2 is `selfhost/build/phase198/progress-native-self01/program`, SHA-256 `c32559bfa6a455c43dbba8ca4cf13a342229505aa0fd95a03df791c2625a3e4b`. From the repository root, the following builds a direct ELF object and links a program with the original runtime. Use a fresh output directory for each run.
+
+```sh
+python3 -B research/phase198/qualification/job.py progress-hello01 90 32 \
+  python3 -B selfhost/tools/build/native.py \
+  --assets selfhost/build/phase194/assets.json \
+  --image selfhost/build/phase198/progress-native-self01/program \
+  --image-receipt selfhost/build/phase198/progress-native-self01/report.json \
+  --host native --stage N2 --target x86 --mode cache --emit object \
+  --source selfhost/tests/fixtures/hello.bend --out selfhost/build/phase198/progress-hello01 --seconds 60
+```
+
+The 1.2781× runtime configuration uses the same compiler-produced object and the ABI11102 live-constructor runtime. The equivalent final link on this machine is shown below. The checked object, runtime and toolchain were pinned during the benchmark. The installed public launcher selects Phase189; these commands select the experimental image explicitly. The repository contains the source checkpoint and reproduction evidence. The materialized compiler and runtime are local build artifacts.
+
+```sh
+/usr/bin/x86_64-linux-gnu-gcc-10 -no-pie \
+  selfhost/build/phase198/progress-hello01/program.o \
+  selfhost/build/phase198/runtime-split-prepare01/runtime-live.o \
+  -pthread -lm -o selfhost/build/phase198/progress-hello01/program-live
+```

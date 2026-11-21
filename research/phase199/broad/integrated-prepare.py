@@ -23,7 +23,8 @@ def prepare(native,source,out):
  config=B.read(HERE/'integrated-pins.json')
  for item in config.values():B.verify(item)
  bundle=B.read(config['bundle']['file']);assert bundle['complete'] and bundle['runtimeABI']==11102
- for item in bundle['inputs']:B.verify(item)
+ bundle_inputs = [dict(item, file=str((ROOT / item['file']).resolve())) for item in bundle['inputs']]
+ for item in bundle_inputs:B.verify(item)
  original_runtime,live_runtime=config['original'],config['live']
  source=B.pin(source);assert source==config['source'] and source['sha256']==SOURCE_SHA
  candidate=read_manifest(native);role=candidate['roles']['candidate']
@@ -35,7 +36,7 @@ def prepare(native,source,out):
  assert incumbent['roles']['live']['runtime']==held['live']
  mature=read_manifest(held['matureC']['file'])
  refs,old,new,ordinary=map(keyed,[mature,incumbent,candidate,original]);assert refs.keys()==old.keys()==new.keys()==ordinary.keys()
- input_pins=[B.pin(HERE/'integrated-pins.json'),*config.values(),*bundle['inputs'],B.pin(__file__),B.pin(L.__file__),B.pin(native),B.pin(BASE/'manifest.json'),B.pin(BASE/'report.json'),*held.values()]
+ input_pins=[B.pin(HERE/'integrated-pins.json'),*config.values(),*bundle_inputs,B.pin(__file__),B.pin(L.__file__),B.pin(native),B.pin(BASE/'manifest.json'),B.pin(BASE/'report.json'),*held.values()]
  inputs=B.unique_inputs(input_pins)
  live_role=dict(role,runtime=live_runtime,policy='ordinary-serial-split-live-descriptor',status='phase199-native-N1-same-object-live-runtime',inputs=[*role['inputs'],*inputs])
  recipe=dict(kind='programs',cwd=str(ROOT),catalog=str(ROOT/'selfhost/tools/bench/catalogs/native45/catalog.json'),reference='c',roles=dict(c=mature['roles']['c'],baseline=incumbent['roles']['live'],candidate=live_role),cases=[])

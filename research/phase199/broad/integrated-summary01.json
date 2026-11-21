@@ -1,0 +1,4345 @@
+{
+  "kind": "phase199-integrated-three-role-authenticated-summary",
+  "version": 1,
+  "programsExecuted": false,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase199/broad/integrated-summary.py",
+    "bytes": 6470,
+    "sha256": "9c0f3d62108b717a33294416698b0172fbac68415a1f608d236c8889b9b10cf2"
+  },
+  "analyzer": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase186/analyze-runtime.py",
+    "bytes": 9139,
+    "sha256": "00de2390521f32bbbd9bd8948c71165591f333acb792d0fb0e67dd07cb2b8565"
+  },
+  "report": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-broad01/report.json",
+    "bytes": 1640357,
+    "sha256": "2eca3924e5dadf77ba2b843d2eb9e7c0ef6989bc9f870f62b7e7d95a01730540"
+  },
+  "references": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/manifest.json",
+    "bytes": 3183859,
+    "sha256": "c567f54ff68e95b447ce76db7523c738552c942988ab6840c017ed89b86917dc"
+  },
+  "partition": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase198/runtime-broad/partition.json",
+    "bytes": 2034,
+    "sha256": "f78f9300c4168fbdf14ab0bd3bd0795aea4a30f97d7c9ed2ba7f6b8863943b8d"
+  },
+  "roles": [
+    "c",
+    "baseline",
+    "candidate"
+  ],
+  "cRole": "c",
+  "baselineRole": "baseline",
+  "rounds": 3,
+  "positionBalanced": true,
+  "oracleRevalidated": {
+    "pilots": 461,
+    "samples": 405
+  },
+  "inputPinsVerified": 741,
+  "subsets": {
+    "all": {
+      "caseCount": 45,
+      "expectedCount": 45,
+      "missingCaseIds": [],
+      "ratioEligibleCount": 44,
+      "roles": {
+        "c": {
+          "overC": {
+            "caseCount": 44,
+            "geomean": 1.0,
+            "meanPositiveLogSlowdown": 0,
+            "casesOver110": 0,
+            "casesOver2": 0,
+            "fixedEquivalentMs": 10316.817747893518,
+            "referenceFixedEquivalentMs": 10316.817747893518,
+            "fixedEquivalentRatio": 1.0,
+            "worstRegressions": [],
+            "familyCount": 22,
+            "equalFamilyGeomeanOverReference": 1.0,
+            "fixedCatalogPositiveExcessMs": 0
+          },
+          "overBaseline": {
+            "caseCount": 44,
+            "geomean": 0.7839489418837485,
+            "meanPositiveLogSlowdown": 0.38712829664802206,
+            "casesOver110": 7,
+            "casesOver2": 5,
+            "fixedEquivalentMs": 10316.817747893518,
+            "referenceFixedEquivalentMs": 19393.06263565961,
+            "fixedEquivalentRatio": 0.5319849650216227,
+            "worstRegressions": [
+              {
+                "id": "scalar-region-8192",
+                "ratio": 2048.3403885772,
+                "flagged": true
+              },
+              {
+                "id": "coverage-closures-256",
+                "ratio": 13.268060231931809,
+                "flagged": false
+              },
+              {
+                "id": "coverage-closures-64",
+                "ratio": 11.096774193548388,
+                "flagged": false
+              },
+              {
+                "id": "coverage-expression-32",
+                "ratio": 6.950704225352112,
+                "flagged": false
+              },
+              {
+                "id": "coverage-expression-128",
+                "ratio": 6.850946109693877,
+                "flagged": false
+              },
+              {
+                "id": "coverage-list-pipeline-128",
+                "ratio": 1.2804910714285715,
+                "flagged": true
+              },
+              {
+                "id": "coverage-list-pipeline-512",
+                "ratio": 1.2727309253083692,
+                "flagged": false
+              },
+              {
+                "id": "variation-mandelbrot-grid-5-31",
+                "ratio": 1.067380416489243,
+                "flagged": false
+              }
+            ],
+            "familyCount": 22,
+            "equalFamilyGeomeanOverReference": 0.8839093035317072,
+            "fixedCatalogPositiveExcessMs": 947.1663897125769
+          }
+        },
+        "baseline": {
+          "overC": {
+            "caseCount": 44,
+            "geomean": 1.2755932772829606,
+            "meanPositiveLogSlowdown": 0.6305396825487657,
+            "casesOver110": 33,
+            "casesOver2": 21,
+            "fixedEquivalentMs": 19393.06263565961,
+            "referenceFixedEquivalentMs": 10316.817747893518,
+            "fixedEquivalentRatio": 1.8797523722486302,
+            "worstRegressions": [
+              {
+                "id": "test-evening-program",
+                "ratio": 3.9865801292003367,
+                "flagged": true
+              },
+              {
+                "id": "coverage-bst-32",
+                "ratio": 3.4780917532747058,
+                "flagged": false
+              },
+              {
+                "id": "test-morning-program",
+                "ratio": 3.458375074756049,
+                "flagged": false
+              },
+              {
+                "id": "coverage-map-churn-32",
+                "ratio": 3.423775510204081,
+                "flagged": false
+              },
+              {
+                "id": "coverage-map-churn-128",
+                "ratio": 3.3743016759776534,
+                "flagged": false
+              },
+              {
+                "id": "complete-generic-row32",
+                "ratio": 3.1999999999999993,
+                "flagged": false
+              },
+              {
+                "id": "coverage-record-aggregation-256",
+                "ratio": 3.001381802721088,
+                "flagged": true
+              },
+              {
+                "id": "test-map-set-ops",
+                "ratio": 2.9618435630401065,
+                "flagged": false
+              },
+              {
+                "id": "coverage-record-aggregation-64",
+                "ratio": 2.9453882330358003,
+                "flagged": false
+              },
+              {
+                "id": "variation-lexer-10-123",
+                "ratio": 2.7144347100542343,
+                "flagged": false
+              }
+            ],
+            "familyCount": 22,
+            "equalFamilyGeomeanOverReference": 1.1313377922423107,
+            "fixedCatalogPositiveExcessMs": 10023.411277478668
+          },
+          "overBaseline": {
+            "caseCount": 44,
+            "geomean": 1.0,
+            "meanPositiveLogSlowdown": 0,
+            "casesOver110": 0,
+            "casesOver2": 0,
+            "fixedEquivalentMs": 19393.06263565961,
+            "referenceFixedEquivalentMs": 19393.06263565961,
+            "fixedEquivalentRatio": 1.0,
+            "worstRegressions": [],
+            "familyCount": 22,
+            "equalFamilyGeomeanOverReference": 1.0,
+            "fixedCatalogPositiveExcessMs": 0
+          }
+        },
+        "candidate": {
+          "overC": {
+            "caseCount": 44,
+            "geomean": 1.0006747312167377,
+            "meanPositiveLogSlowdown": 0.5184944600796323,
+            "casesOver110": 31,
+            "casesOver2": 17,
+            "fixedEquivalentMs": 16768.792446461244,
+            "referenceFixedEquivalentMs": 10316.817747893518,
+            "fixedEquivalentRatio": 1.6253841888294565,
+            "worstRegressions": [
+              {
+                "id": "test-evening-program",
+                "ratio": 3.4396769679628174,
+                "flagged": true
+              },
+              {
+                "id": "coverage-bst-32",
+                "ratio": 3.268512885266601,
+                "flagged": false
+              },
+              {
+                "id": "complete-generic-row32",
+                "ratio": 3.177777777777777,
+                "flagged": false
+              },
+              {
+                "id": "test-morning-program",
+                "ratio": 3.081196043165468,
+                "flagged": false
+              },
+              {
+                "id": "coverage-map-churn-128",
+                "ratio": 2.876190476190476,
+                "flagged": false
+              },
+              {
+                "id": "coverage-map-churn-32",
+                "ratio": 2.865969387755102,
+                "flagged": false
+              },
+              {
+                "id": "coverage-record-aggregation-256",
+                "ratio": 2.6562499999999996,
+                "flagged": true
+              },
+              {
+                "id": "variation-lexer-10-123",
+                "ratio": 2.563632781717888,
+                "flagged": false
+              },
+              {
+                "id": "coverage-unicode-text-16",
+                "ratio": 2.5434608307958975,
+                "flagged": false
+              },
+              {
+                "id": "test-map-set-ops",
+                "ratio": 2.53912378037115,
+                "flagged": false
+              }
+            ],
+            "familyCount": 22,
+            "equalFamilyGeomeanOverReference": 0.9138248748807444,
+            "fixedCatalogPositiveExcessMs": 7803.539885055566
+          },
+          "overBaseline": {
+            "caseCount": 44,
+            "geomean": 0.784477896707166,
+            "meanPositiveLogSlowdown": 0.0007762096468981096,
+            "casesOver110": 0,
+            "casesOver2": 0,
+            "fixedEquivalentMs": 16768.792446461244,
+            "referenceFixedEquivalentMs": 19393.06263565961,
+            "fixedEquivalentRatio": 0.864679950841137,
+            "worstRegressions": [
+              {
+                "id": "lexer",
+                "ratio": 1.018024229291835,
+                "flagged": true
+              },
+              {
+                "id": "coverage-numeric-recurrence-1024",
+                "ratio": 1.0161588782237971,
+                "flagged": true
+              },
+              {
+                "id": "coverage-numeric-recurrence-256",
+                "ratio": 1.0002598263560476,
+                "flagged": false
+              }
+            ],
+            "familyCount": 22,
+            "equalFamilyGeomeanOverReference": 0.8077383087057882,
+            "fixedCatalogPositiveExcessMs": 16.072355218787386
+          }
+        }
+      }
+    },
+    "development": {
+      "caseCount": 16,
+      "expectedCount": 16,
+      "missingCaseIds": [],
+      "ratioEligibleCount": 16,
+      "roles": {
+        "c": {
+          "overC": {
+            "caseCount": 16,
+            "geomean": 1.0,
+            "meanPositiveLogSlowdown": 0,
+            "casesOver110": 0,
+            "casesOver2": 0,
+            "fixedEquivalentMs": 3766.4094712640176,
+            "referenceFixedEquivalentMs": 3766.4094712640176,
+            "fixedEquivalentRatio": 1.0,
+            "worstRegressions": [],
+            "familyCount": 7,
+            "equalFamilyGeomeanOverReference": 1.0,
+            "fixedCatalogPositiveExcessMs": 0
+          },
+          "overBaseline": {
+            "caseCount": 16,
+            "geomean": 0.5910092100404742,
+            "meanPositiveLogSlowdown": 0.24145185892327498,
+            "casesOver110": 2,
+            "casesOver2": 2,
+            "fixedEquivalentMs": 3766.4094712640176,
+            "referenceFixedEquivalentMs": 7567.667030374072,
+            "fixedEquivalentRatio": 0.4976975673145919,
+            "worstRegressions": [
+              {
+                "id": "coverage-expression-32",
+                "ratio": 6.950704225352112,
+                "flagged": false
+              },
+              {
+                "id": "coverage-expression-128",
+                "ratio": 6.850946109693877,
+                "flagged": false
+              }
+            ],
+            "familyCount": 7,
+            "equalFamilyGeomeanOverReference": 0.6039757547386997,
+            "fixedCatalogPositiveExcessMs": 557.8183852057889
+          }
+        },
+        "baseline": {
+          "overC": {
+            "caseCount": 16,
+            "geomean": 1.6920210091675505,
+            "meanPositiveLogSlowdown": 0.767375536795911,
+            "casesOver110": 14,
+            "casesOver2": 11,
+            "fixedEquivalentMs": 7567.667030374072,
+            "referenceFixedEquivalentMs": 3766.4094712640176,
+            "fixedEquivalentRatio": 2.009252336505606,
+            "worstRegressions": [
+              {
+                "id": "coverage-bst-32",
+                "ratio": 3.4780917532747058,
+                "flagged": false
+              },
+              {
+                "id": "coverage-map-churn-32",
+                "ratio": 3.423775510204081,
+                "flagged": false
+              },
+              {
+                "id": "coverage-map-churn-128",
+                "ratio": 3.3743016759776534,
+                "flagged": false
+              },
+              {
+                "id": "variation-lexer-10-123",
+                "ratio": 2.7144347100542343,
+                "flagged": false
+              },
+              {
+                "id": "variation-local-fold-128-0",
+                "ratio": 2.7107512978357846,
+                "flagged": false
+              },
+              {
+                "id": "variation-lexer-6-17",
+                "ratio": 2.6486486486486487,
+                "flagged": true
+              },
+              {
+                "id": "coverage-bst-64",
+                "ratio": 2.473867595818815,
+                "flagged": false
+              },
+              {
+                "id": "test-rle-roundtrip",
+                "ratio": 2.466847810364357,
+                "flagged": true
+              },
+              {
+                "id": "variation-tree-bitonic-6-17",
+                "ratio": 2.178367276662731,
+                "flagged": true
+              },
+              {
+                "id": "lexer",
+                "ratio": 2.1694444444444447,
+                "flagged": true
+              }
+            ],
+            "familyCount": 7,
+            "equalFamilyGeomeanOverReference": 1.6556956006166732,
+            "fixedCatalogPositiveExcessMs": 4359.075944315843
+          },
+          "overBaseline": {
+            "caseCount": 16,
+            "geomean": 1.0,
+            "meanPositiveLogSlowdown": 0,
+            "casesOver110": 0,
+            "casesOver2": 0,
+            "fixedEquivalentMs": 7567.667030374072,
+            "referenceFixedEquivalentMs": 7567.667030374072,
+            "fixedEquivalentRatio": 1.0,
+            "worstRegressions": [],
+            "familyCount": 7,
+            "equalFamilyGeomeanOverReference": 1.0,
+            "fixedCatalogPositiveExcessMs": 0
+          }
+        },
+        "candidate": {
+          "overC": {
+            "caseCount": 16,
+            "geomean": 1.1153255172931558,
+            "meanPositiveLogSlowdown": 0.5525854828810807,
+            "casesOver110": 12,
+            "casesOver2": 8,
+            "fixedEquivalentMs": 6085.589235379805,
+            "referenceFixedEquivalentMs": 3766.4094712640176,
+            "fixedEquivalentRatio": 1.615753486658864,
+            "worstRegressions": [
+              {
+                "id": "coverage-bst-32",
+                "ratio": 3.268512885266601,
+                "flagged": false
+              },
+              {
+                "id": "coverage-map-churn-128",
+                "ratio": 2.876190476190476,
+                "flagged": false
+              },
+              {
+                "id": "coverage-map-churn-32",
+                "ratio": 2.865969387755102,
+                "flagged": false
+              },
+              {
+                "id": "variation-lexer-10-123",
+                "ratio": 2.563632781717888,
+                "flagged": false
+              },
+              {
+                "id": "variation-lexer-6-17",
+                "ratio": 2.518089266771165,
+                "flagged": true
+              },
+              {
+                "id": "test-rle-roundtrip",
+                "ratio": 2.3960238610280493,
+                "flagged": true
+              },
+              {
+                "id": "coverage-bst-64",
+                "ratio": 2.316677082324775,
+                "flagged": false
+              },
+              {
+                "id": "lexer",
+                "ratio": 2.2085470085470087,
+                "flagged": true
+              },
+              {
+                "id": "variation-tree-bitonic-6-17",
+                "ratio": 1.4891307674649934,
+                "flagged": true
+              },
+              {
+                "id": "variation-local-fold-128-0",
+                "ratio": 1.4100969604863223,
+                "flagged": false
+              }
+            ],
+            "familyCount": 7,
+            "equalFamilyGeomeanOverReference": 1.1358342676276294,
+            "fixedCatalogPositiveExcessMs": 3103.3495584126185
+          },
+          "overBaseline": {
+            "caseCount": 16,
+            "geomean": 0.6591676529134112,
+            "meanPositiveLogSlowdown": 0.0011164824200725221,
+            "casesOver110": 0,
+            "casesOver2": 0,
+            "fixedEquivalentMs": 6085.589235379805,
+            "referenceFixedEquivalentMs": 7567.667030374072,
+            "fixedEquivalentRatio": 0.8041565796901866,
+            "worstRegressions": [
+              {
+                "id": "lexer",
+                "ratio": 1.018024229291835,
+                "flagged": true
+              }
+            ],
+            "familyCount": 7,
+            "equalFamilyGeomeanOverReference": 0.6860163590484758,
+            "fixedCatalogPositiveExcessMs": 9.635540929658532
+          }
+        }
+      }
+    },
+    "heldout": {
+      "caseCount": 29,
+      "expectedCount": 29,
+      "missingCaseIds": [],
+      "ratioEligibleCount": 28,
+      "roles": {
+        "c": {
+          "overC": {
+            "caseCount": 28,
+            "geomean": 1.0,
+            "meanPositiveLogSlowdown": 0,
+            "casesOver110": 0,
+            "casesOver2": 0,
+            "fixedEquivalentMs": 6550.4082766295,
+            "referenceFixedEquivalentMs": 6550.4082766295,
+            "fixedEquivalentRatio": 1.0,
+            "worstRegressions": [],
+            "familyCount": 15,
+            "equalFamilyGeomeanOverReference": 1.0,
+            "fixedCatalogPositiveExcessMs": 0
+          },
+          "overBaseline": {
+            "caseCount": 28,
+            "geomean": 0.9212942625106537,
+            "meanPositiveLogSlowdown": 0.4703719753478775,
+            "casesOver110": 5,
+            "casesOver2": 3,
+            "fixedEquivalentMs": 6550.4082766295,
+            "referenceFixedEquivalentMs": 11825.395605285541,
+            "fixedEquivalentRatio": 0.5539272000085727,
+            "worstRegressions": [
+              {
+                "id": "scalar-region-8192",
+                "ratio": 2048.3403885772,
+                "flagged": true
+              },
+              {
+                "id": "coverage-closures-256",
+                "ratio": 13.268060231931809,
+                "flagged": false
+              },
+              {
+                "id": "coverage-closures-64",
+                "ratio": 11.096774193548388,
+                "flagged": false
+              },
+              {
+                "id": "coverage-list-pipeline-128",
+                "ratio": 1.2804910714285715,
+                "flagged": true
+              },
+              {
+                "id": "coverage-list-pipeline-512",
+                "ratio": 1.2727309253083692,
+                "flagged": false
+              },
+              {
+                "id": "variation-mandelbrot-grid-5-31",
+                "ratio": 1.067380416489243,
+                "flagged": false
+              }
+            ],
+            "familyCount": 15,
+            "equalFamilyGeomeanOverReference": 1.0558175216873769,
+            "fixedCatalogPositiveExcessMs": 389.3480045067881
+          }
+        },
+        "baseline": {
+          "overC": {
+            "caseCount": 28,
+            "geomean": 1.0854295317924398,
+            "meanPositiveLogSlowdown": 0.5523477658361113,
+            "casesOver110": 19,
+            "casesOver2": 10,
+            "fixedEquivalentMs": 11825.395605285541,
+            "referenceFixedEquivalentMs": 6550.4082766295,
+            "fixedEquivalentRatio": 1.8052913812221605,
+            "worstRegressions": [
+              {
+                "id": "test-evening-program",
+                "ratio": 3.9865801292003367,
+                "flagged": true
+              },
+              {
+                "id": "test-morning-program",
+                "ratio": 3.458375074756049,
+                "flagged": false
+              },
+              {
+                "id": "complete-generic-row32",
+                "ratio": 3.1999999999999993,
+                "flagged": false
+              },
+              {
+                "id": "coverage-record-aggregation-256",
+                "ratio": 3.001381802721088,
+                "flagged": true
+              },
+              {
+                "id": "test-map-set-ops",
+                "ratio": 2.9618435630401065,
+                "flagged": false
+              },
+              {
+                "id": "coverage-record-aggregation-64",
+                "ratio": 2.9453882330358003,
+                "flagged": false
+              },
+              {
+                "id": "mandelbrot",
+                "ratio": 2.6342281879194633,
+                "flagged": false
+              },
+              {
+                "id": "coverage-unicode-text-16",
+                "ratio": 2.544973038362825,
+                "flagged": false
+              },
+              {
+                "id": "variation-mandelbrot-grid-4-7",
+                "ratio": 2.450980392156863,
+                "flagged": false
+              },
+              {
+                "id": "coverage-unicode-text-64",
+                "ratio": 2.439420900402414,
+                "flagged": false
+              }
+            ],
+            "familyCount": 15,
+            "equalFamilyGeomeanOverReference": 0.9471333629715002,
+            "fixedCatalogPositiveExcessMs": 5664.335333162827
+          },
+          "overBaseline": {
+            "caseCount": 28,
+            "geomean": 1.0,
+            "meanPositiveLogSlowdown": 0,
+            "casesOver110": 0,
+            "casesOver2": 0,
+            "fixedEquivalentMs": 11825.395605285541,
+            "referenceFixedEquivalentMs": 11825.395605285541,
+            "fixedEquivalentRatio": 1.0,
+            "worstRegressions": [],
+            "familyCount": 15,
+            "equalFamilyGeomeanOverReference": 1.0,
+            "fixedCatalogPositiveExcessMs": 0
+          }
+        },
+        "candidate": {
+          "overC": {
+            "caseCount": 28,
+            "geomean": 0.9405322097197617,
+            "meanPositiveLogSlowdown": 0.4990138756216618,
+            "casesOver110": 19,
+            "casesOver2": 9,
+            "fixedEquivalentMs": 10683.203211081442,
+            "referenceFixedEquivalentMs": 6550.4082766295,
+            "fixedEquivalentRatio": 1.6309217318860716,
+            "worstRegressions": [
+              {
+                "id": "test-evening-program",
+                "ratio": 3.4396769679628174,
+                "flagged": true
+              },
+              {
+                "id": "complete-generic-row32",
+                "ratio": 3.177777777777777,
+                "flagged": false
+              },
+              {
+                "id": "test-morning-program",
+                "ratio": 3.081196043165468,
+                "flagged": false
+              },
+              {
+                "id": "coverage-record-aggregation-256",
+                "ratio": 2.6562499999999996,
+                "flagged": true
+              },
+              {
+                "id": "coverage-unicode-text-16",
+                "ratio": 2.5434608307958975,
+                "flagged": false
+              },
+              {
+                "id": "test-map-set-ops",
+                "ratio": 2.53912378037115,
+                "flagged": false
+              },
+              {
+                "id": "coverage-record-aggregation-64",
+                "ratio": 2.5298013245033113,
+                "flagged": false
+              },
+              {
+                "id": "coverage-unicode-text-64",
+                "ratio": 2.4274539241056434,
+                "flagged": false
+              },
+              {
+                "id": "mandelbrot",
+                "ratio": 2.027287245241164,
+                "flagged": false
+              },
+              {
+                "id": "coverage-numeric-recurrence-1024",
+                "ratio": 1.967925126598699,
+                "flagged": true
+              }
+            ],
+            "familyCount": 15,
+            "equalFamilyGeomeanOverReference": 0.8256298376952809,
+            "fixedCatalogPositiveExcessMs": 4700.19032664295
+          },
+          "overBaseline": {
+            "caseCount": 28,
+            "geomean": 0.8665069285212834,
+            "meanPositiveLogSlowdown": 0.0005817680622270166,
+            "casesOver110": 0,
+            "casesOver2": 0,
+            "fixedEquivalentMs": 10683.203211081442,
+            "referenceFixedEquivalentMs": 11825.395605285541,
+            "fixedEquivalentRatio": 0.9034119083767836,
+            "worstRegressions": [
+              {
+                "id": "coverage-numeric-recurrence-1024",
+                "ratio": 1.0161588782237971,
+                "flagged": true
+              },
+              {
+                "id": "coverage-numeric-recurrence-256",
+                "ratio": 1.0002598263560476,
+                "flagged": false
+              }
+            ],
+            "familyCount": 15,
+            "equalFamilyGeomeanOverReference": 0.8717144490665826,
+            "fixedCatalogPositiveExcessMs": 6.436814289128854
+          }
+        }
+      }
+    }
+  },
+  "cases": [
+    {
+      "id": "mandelbrot",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.026607142857142857,
+        "baseline": 0.07008928571428572,
+        "candidate": 0.05394032134659526
+      },
+      "fixedEquivalentMs": {
+        "c": 240.42214285714286,
+        "baseline": 633.3267857142857,
+        "candidate": 487.40474368783475
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.37961783439490443
+        },
+        "baseline": {
+          "overC": 2.6342281879194633,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 2.027287245241164,
+          "overBaseline": 0.7695943937348623
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.026607142857142857,
+            0.026607142857142857,
+            0.027321428571428573
+          ],
+          "medianMs": 0.026607142857142857,
+          "maxOverMin": 1.0268456375838926,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.07008928571428572,
+            0.06964285714285715,
+            0.07544642857142857
+          ],
+          "medianMs": 0.07008928571428572,
+          "maxOverMin": 1.0833333333333333,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.05394032134659526,
+            0.0531752104055088,
+            0.05470543228768172
+          ],
+          "medianMs": 0.05394032134659526,
+          "maxOverMin": 1.0287769784172662,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/mandelbrot/bend-c/program",
+          "bytes": 108744,
+          "sha256": "be22d29a00ccb433be39cae20507eba454ce8f75b80885cef635f3823e215d41"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/mandelbrot/live",
+          "bytes": 216120,
+          "sha256": "90410978821275b1fc074dfb32bc7497d020d25ece2aa3e824701b66ddbd6212"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/mandelbrot/live",
+          "bytes": 216200,
+          "sha256": "df0273368cd14730e4f28734b54aabf856c0c8b8a44c568741283c7b16d99934"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "editdist",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.8392857142857143,
+        "baseline": 1.3725490196078431,
+        "candidate": 1.3725490196078431
+      },
+      "fixedEquivalentMs": {
+        "c": 201.42857142857144,
+        "baseline": 329.4117647058824,
+        "candidate": 329.4117647058824
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.6114795918367347
+        },
+        "baseline": {
+          "overC": 1.6353775552774301,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 1.6353775552774301,
+          "overBaseline": 1.0
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.8392857142857143,
+            0.8392857142857143,
+            0.8392857142857143
+          ],
+          "medianMs": 0.8392857142857143,
+          "maxOverMin": 1.0,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            1.3627450980392157,
+            1.3725490196078431,
+            1.3823529411764706
+          ],
+          "medianMs": 1.3725490196078431,
+          "maxOverMin": 1.014388489208633,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            1.3725490196078431,
+            1.3725490196078431,
+            1.3823529411764706
+          ],
+          "medianMs": 1.3725490196078431,
+          "maxOverMin": 1.0071428571428571,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/editdist/bend-c/program",
+          "bytes": 105568,
+          "sha256": "a3fcaf7bbf53a4081e671623b136fa2d4fbd511b4e0154c429bb8e3a93e19b8c"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/editdist/live",
+          "bytes": 217840,
+          "sha256": "8786490af5d202127f7201c31ab1a61c9910558be8e6b0ea83e6f5b7fda82a71"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/editdist/live",
+          "bytes": 217920,
+          "sha256": "b95d7614f814132b97db8b69440a287bc7da95abe3933201fe2d840b1ea08d5e"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "tree-bitonic",
+      "partition": "development",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.16568742655699178,
+        "baseline": 0.2732142857142857,
+        "candidate": 0.20883534136546184
+      },
+      "fixedEquivalentMs": {
+        "c": 271.06462984723856,
+        "baseline": 446.9785714285714,
+        "candidate": 341.65461847389554
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.6064376396857216
+        },
+        "baseline": {
+          "overC": 1.6489741641337383,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 1.2604175567518299,
+          "overBaseline": 0.7643646481350238
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.1645123384253819,
+            0.16568742655699178,
+            0.16568742655699178
+          ],
+          "medianMs": 0.16568742655699178,
+          "maxOverMin": 1.0071428571428571,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.2839285714285714,
+            0.2732142857142857,
+            0.2732142857142857
+          ],
+          "medianMs": 0.2732142857142857,
+          "maxOverMin": 1.0392156862745099,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.2074966532797858,
+            0.20883534136546184,
+            0.2289156626506024
+          ],
+          "medianMs": 0.20883534136546184,
+          "maxOverMin": 1.103225806451613,
+          "flagged": true
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/tree-bitonic/bend-c/program",
+          "bytes": 115744,
+          "sha256": "19550d9d4c7b770e374ac234d09c6860458807a6f7ff1d0c4153f1f1cf8d513a"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/tree-bitonic/live",
+          "bytes": 217344,
+          "sha256": "6b57c4dbc3afd7b19a0d8119d15e09fe3a5f6e9f87c19f4c492dc4bbfa71d7fe"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/tree-bitonic/live",
+          "bytes": 221520,
+          "sha256": "3ca298bc7d43f20fedf0f969a29c8239142a52a402586ccba84f4f9f36a251e4"
+        }
+      },
+      "flagged": true
+    },
+    {
+      "id": "lexer",
+      "partition": "development",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.48128342245989303,
+        "baseline": 1.0441176470588236,
+        "candidate": 1.062937062937063
+      },
+      "fixedEquivalentMs": {
+        "c": 246.41711229946523,
+        "baseline": 534.5882352941177,
+        "candidate": 544.2237762237762
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.4609475032010243
+        },
+        "baseline": {
+          "overC": 2.1694444444444447,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 2.2085470085470087,
+          "overBaseline": 1.018024229291835
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.3850267379679144,
+            0.48128342245989303,
+            0.4946524064171123
+          ],
+          "medianMs": 0.48128342245989303,
+          "maxOverMin": 1.2847222222222223,
+          "flagged": true
+        },
+        "baseline": {
+          "samplesMs": [
+            1.0220588235294117,
+            1.0441176470588236,
+            1.3823529411764706
+          ],
+          "medianMs": 1.0441176470588236,
+          "maxOverMin": 1.3525179856115108,
+          "flagged": true
+        },
+        "candidate": {
+          "samplesMs": [
+            0.993006993006993,
+            1.062937062937063,
+            1.2657342657342658
+          ],
+          "medianMs": 1.062937062937063,
+          "maxOverMin": 1.2746478873239437,
+          "flagged": true
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/lexer/bend-c/program",
+          "bytes": 112744,
+          "sha256": "5a1476d223c4229054c2858187ad3b22cca2236920963082698eb399ac6a07c9"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/lexer/live",
+          "bytes": 216784,
+          "sha256": "be6b6bc4f5241ea0a400e448d6669b211c6befb116e7e8fe944a1db0a5cf22a3"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/lexer/live",
+          "bytes": 216864,
+          "sha256": "091743d07cb156e56885159cdc3578bd2f0fdefa2811b5be72e9b257f39e4555"
+        }
+      },
+      "flagged": true
+    },
+    {
+      "id": "symreg",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 2.314814814814815,
+        "baseline": 2.4444444444444446,
+        "candidate": 2.3877551020408165
+      },
+      "fixedEquivalentMs": {
+        "c": 333.33333333333337,
+        "baseline": 352.0,
+        "candidate": 343.8367346938776
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.9469696969696969
+        },
+        "baseline": {
+          "overC": 1.056,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 1.0315102040816326,
+          "overBaseline": 0.9768089053803339
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            2.3703703703703702,
+            2.314814814814815,
+            2.2962962962962963
+          ],
+          "medianMs": 2.314814814814815,
+          "maxOverMin": 1.032258064516129,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            3.388888888888889,
+            2.425925925925926,
+            2.4444444444444446
+          ],
+          "medianMs": 2.4444444444444446,
+          "maxOverMin": 1.3969465648854962,
+          "flagged": true
+        },
+        "candidate": {
+          "samplesMs": [
+            3.204081632653061,
+            2.36734693877551,
+            2.3877551020408165
+          ],
+          "medianMs": 2.3877551020408165,
+          "maxOverMin": 1.353448275862069,
+          "flagged": true
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/symreg/bend-c/program",
+          "bytes": 115800,
+          "sha256": "4bb308af5effa4329d264c39638c0134708a2b7885c54e152377c65661aa787b"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/symreg/live",
+          "bytes": 238456,
+          "sha256": "e3a88df3985d63dd42286e7622f288f0c99b8360264b2c8c653975be1f8581dc"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/symreg/live",
+          "bytes": 238536,
+          "sha256": "a2530e2ce1048ce40565963c5421887af4512c4b7bdb33421f6101bed493d6ce"
+        }
+      },
+      "flagged": true
+    },
+    {
+      "id": "test-morning-program",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.0028398063211228473,
+        "baseline": 0.009821115398105928,
+        "candidate": 0.00875
+      },
+      "fixedEquivalentMs": {
+        "c": 158.10905673483566,
+        "baseline": 546.8004209049457,
+        "candidate": 487.165
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.2891531364829013
+        },
+        "baseline": {
+          "overC": 3.458375074756049,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 3.081196043165468,
+          "overBaseline": 0.8909375
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.0028398063211228473,
+            0.0028398063211228473,
+            0.0029419576276380577
+          ],
+          "medianMs": 0.0028398063211228473,
+          "maxOverMin": 1.0359712230215827,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.009821115398105928,
+            0.009821115398105928,
+            0.009821115398105928
+          ],
+          "medianMs": 0.009821115398105928,
+          "maxOverMin": 1.0,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.00875,
+            0.00875,
+            0.009375
+          ],
+          "medianMs": 0.00875,
+          "maxOverMin": 1.0714285714285714,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/test-morning-program/bend-c/program",
+          "bytes": 341872,
+          "sha256": "29b8f5ae48d220498b354b63bc368559eff87a717124f7f0f61693ea2b9f736b"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/test-morning-program/live",
+          "bytes": 451136,
+          "sha256": "3a041ccdd85c76f12a4800dff0f527c0b3814ea92e99f5071e1d3f9db782c02c"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/test-morning-program/live",
+          "bytes": 451216,
+          "sha256": "dd012cd02aaf70e18a1e9101e2e828a9cb8ad8a573062d03dd4ae8afbfb66e3e"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "test-evening-program",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.0010267857142857142,
+        "baseline": 0.004093363525518203,
+        "candidate": 0.0035318111724618215
+      },
+      "fixedEquivalentMs": {
+        "c": 266.4919642857143,
+        "baseline": 1062.3915694129944,
+        "candidate": 916.6462717007412
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.25084156534954405
+        },
+        "baseline": {
+          "overC": 3.9865801292003367,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 3.4396769679628174,
+          "overBaseline": 0.8628139549405666
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.0010401785714285715,
+            0.0010223214285714286,
+            0.0010267857142857142
+          ],
+          "medianMs": 0.0010267857142857142,
+          "maxOverMin": 1.017467248908297,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.0046449515183185274,
+            0.004093363525518203,
+            0.004093363525518203
+          ],
+          "medianMs": 0.004093363525518203,
+          "maxOverMin": 1.1347517730496453,
+          "flagged": true
+        },
+        "candidate": {
+          "samplesMs": [
+            0.0035318111724618215,
+            0.0035318111724618215,
+            0.0035318111724618215
+          ],
+          "medianMs": 0.0035318111724618215,
+          "maxOverMin": 1.0,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/test-evening-program/bend-c/program",
+          "bytes": 373768,
+          "sha256": "e1a9d47da81a048c5ab1c3ba7c9bbff89ee73d5a11ebbd17d99279606fa28ad4"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/test-evening-program/live",
+          "bytes": 478880,
+          "sha256": "7ff53355dc2c8835569638a601074d19de7849027eea38460bf98e92bdd776c1"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/test-evening-program/live",
+          "bytes": 483056,
+          "sha256": "17b54bef631e77a651a6320e8c0856506365ed82205838ec93f264b02bb835d1"
+        }
+      },
+      "flagged": true
+    },
+    {
+      "id": "test-rle-roundtrip",
+      "partition": "development",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.0004343299305688182,
+        "baseline": 0.0010714258381993923,
+        "candidate": 0.0010406648772015444
+      },
+      "fixedEquivalentMs": {
+        "c": 421.69266690898786,
+        "baseline": 1040.2516320111426,
+        "candidate": 1010.3856919344882
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.40537563598311266
+        },
+        "baseline": {
+          "overC": 2.466847810364357,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 2.3960238610280493,
+          "overBaseline": 0.9712896964949587
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.0004343299305688182,
+            0.00043124957645130886,
+            0.0004343299305688182
+          ],
+          "medianMs": 0.0004343299305688182,
+          "maxOverMin": 1.0071428571428571,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.0010714258381993923,
+            0.0010714258381993923,
+            0.0010637727964979682
+          ],
+          "medianMs": 0.0010714258381993923,
+          "maxOverMin": 1.0071942446043163,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.0011339658661920278,
+            0.001011956880589088,
+            0.0010406648772015444
+          ],
+          "medianMs": 0.0010406648772015444,
+          "maxOverMin": 1.1205673758865249,
+          "flagged": true
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/test-rle-roundtrip/bend-c/program",
+          "bytes": 113328,
+          "sha256": "1c4c9a06b719f6d4fe9b793651074d80f2b09e314cf943167f42587fca03c373"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/test-rle-roundtrip/live",
+          "bytes": 201928,
+          "sha256": "2959d38371b41fa1c2b9162cf6f718dbdf48247d46b36308cd87d7b08a1565af"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/test-rle-roundtrip/live",
+          "bytes": 202008,
+          "sha256": "0a2b11be293be33a73fc014f5959535252428b77d0e718e0487935db22d576e6"
+        }
+      },
+      "flagged": true
+    },
+    {
+      "id": "test-map-set-ops",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.010548523206751054,
+        "baseline": 0.031243075559494793,
+        "candidate": 0.026784006122058543
+      },
+      "fixedEquivalentMs": {
+        "c": 232.65822784810126,
+        "baseline": 689.0972745402172,
+        "candidate": 590.7480390281232
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.33762755483735823
+        },
+        "baseline": {
+          "overC": 2.9618435630401065,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 2.53912378037115,
+          "overBaseline": 0.8572781533961007
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.010548523206751054,
+            0.01047317661241712,
+            0.01122664255575648
+          ],
+          "medianMs": 0.010548523206751054,
+          "maxOverMin": 1.0719424460431652,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.031907821847994684,
+            0.031021493463328165,
+            0.031243075559494793
+          ],
+          "medianMs": 0.031243075559494793,
+          "maxOverMin": 1.0285714285714287,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.026784006122058543,
+            0.02697532045150182,
+            0.026784006122058543
+          ],
+          "medianMs": 0.026784006122058543,
+          "maxOverMin": 1.0071428571428571,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/test-map-set-ops/bend-c/program",
+          "bytes": 454368,
+          "sha256": "ef7c70323a7a59218c17b6f0749fab5cd9673a538fe4359257b1030c98442164"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/test-map-set-ops/live",
+          "bytes": 583144,
+          "sha256": "200ba6209e8e5ea043a728b5ef16d52f520c94e2a06c1c10bf3f8199617c842d"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/test-map-set-ops/live",
+          "bytes": 583224,
+          "sha256": "848e115e67d922a12b20bb7ed1ab76ab2eba39c3c3c7071bb28245bf3cad8d80"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "raytrace",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 28.2,
+        "baseline": 48.333333333333336,
+        "candidate": 47.0
+      },
+      "fixedEquivalentMs": {
+        "c": 338.4,
+        "baseline": 580.0,
+        "candidate": 564.0
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.5834482758620689
+        },
+        "baseline": {
+          "overC": 1.7139479905437354,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 1.6666666666666667,
+          "overBaseline": 0.9724137931034482
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            30.4,
+            28.2,
+            28.2
+          ],
+          "medianMs": 28.2,
+          "maxOverMin": 1.0780141843971631,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            48.333333333333336,
+            48.0,
+            48.666666666666664
+          ],
+          "medianMs": 48.333333333333336,
+          "maxOverMin": 1.0138888888888888,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            47.0,
+            47.0,
+            47.333333333333336
+          ],
+          "medianMs": 47.0,
+          "maxOverMin": 1.0070921985815604,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/raytrace/bend-c/program",
+          "bytes": 124640,
+          "sha256": "935d11f210c6dc45471fc4e1c131492a1b53095aa3b7eb16e2a8348b1ef4bd61"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/raytrace/live",
+          "bytes": 253096,
+          "sha256": "f23d85e4b9a915c2ac8e4fe6bac9a61b06d9c0e052b0efbafdc06792c212fdca"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/raytrace/live",
+          "bytes": 253176,
+          "sha256": "8b1e63f7f9666374fbd668fb72324edaa33e68b0b7a2e49425bfb7e79ae69d62"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "local-pair",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.2101740294511379,
+        "baseline": 0.3439024390243902,
+        "candidate": 0.34236453201970446
+      },
+      "fixedEquivalentMs": {
+        "c": 200.92637215528782,
+        "baseline": 328.77073170731705,
+        "candidate": 327.30049261083747
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.6111443409572095
+        },
+        "baseline": {
+          "overC": 1.6362746621096782,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 1.6289573593548996,
+          "overBaseline": 0.9955280718303464
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.2101740294511379,
+            0.21151271753681392,
+            0.2101740294511379
+          ],
+          "medianMs": 0.2101740294511379,
+          "maxOverMin": 1.0063694267515924,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.3463414634146341,
+            0.3439024390243902,
+            0.3439024390243902
+          ],
+          "medianMs": 0.3439024390243902,
+          "maxOverMin": 1.0070921985815602,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.34236453201970446,
+            0.3399014778325123,
+            0.34236453201970446
+          ],
+          "medianMs": 0.34236453201970446,
+          "maxOverMin": 1.0072463768115945,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/local-pair/bend-c/program",
+          "bytes": 101688,
+          "sha256": "95794267e4da3ffcb036b6407755ea111e58efda65e1fbd1bfc22f9e259988dd"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/local-pair/live",
+          "bytes": 211496,
+          "sha256": "de2fd082259ce2137e541758959282170abd6a45bf16177eb1782628f79e2a25"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/local-pair/live",
+          "bytes": 211576,
+          "sha256": "e6b7ae2ecd6159c96379efbbbfc522a40251f3b8ce99f733c78c6aec4f62f96a"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "local-fold",
+      "partition": "development",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.002785714285714286,
+        "baseline": 0.005620216836734694,
+        "candidate": 0.001496158079787973
+      },
+      "fixedEquivalentMs": {
+        "c": 169.04828571428573,
+        "baseline": 341.05723852040813,
+        "candidate": 90.79285691385334
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.4956595744680852
+        },
+        "baseline": {
+          "overC": 2.017513736263736,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 0.5370823876161954,
+          "overBaseline": 0.26621002770014657
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.00275,
+            0.002785714285714286,
+            0.0028035714285714287
+          ],
+          "medianMs": 0.002785714285714286,
+          "maxOverMin": 1.0194805194805197,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.005580357142857143,
+            0.005899234693877551,
+            0.005620216836734694
+          ],
+          "medianMs": 0.005620216836734694,
+          "maxOverMin": 1.057142857142857,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.001485471236360916,
+            0.0015282186100691439,
+            0.001496158079787973
+          ],
+          "medianMs": 0.001496158079787973,
+          "maxOverMin": 1.0287769784172662,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/local-fold/bend-c/program",
+          "bytes": 93664,
+          "sha256": "ddf9f48cb789b857115946cc18a79796f344e747094b6ceff2e6f1229c8a0ffc"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/local-fold/live",
+          "bytes": 185160,
+          "sha256": "7290722d1852584c736db6ae61796479119cb5b390974f74ee17e046650f8119"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/local-fold/live",
+          "bytes": 185240,
+          "sha256": "045438d60c191cc8d8979406ae10775db828de5500bb3c3a49a23740c6983187"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "scalar-region-0",
+      "partition": "heldout",
+      "ratioEligible": false,
+      "medianMs": {
+        "c": 0.0,
+        "baseline": 0.0,
+        "candidate": 0.0
+      },
+      "fixedEquivalentMs": null,
+      "ratios": null,
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "medianMs": 0.0,
+          "maxOverMin": null,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "medianMs": 0.0,
+          "maxOverMin": null,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "medianMs": 0.0,
+          "maxOverMin": null,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/scalar-region-0/bend-c/program",
+          "bytes": 90176,
+          "sha256": "114d9c3f7063332215971c2b1ca9532db38309c93f50cb21e6bbb7610e1454b4"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/scalar-region-0/live",
+          "bytes": 180536,
+          "sha256": "9c7803c3e5cae9071f0a62c4812ad0ea56542d6ab0e145dc6ee019e83984c65b"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/scalar-region-0/live",
+          "bytes": 180616,
+          "sha256": "c7515a532d7e6810364c34b0fe1e8b056547f9491159c2c2ee7c8bc457df82e5"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "scalar-region-8192",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.03722414251528849,
+        "baseline": 1.8172830415722455e-05,
+        "candidate": 1.8172828531963864e-05
+      },
+      "fixedEquivalentMs": {
+        "c": 207.5618186652486,
+        "baseline": 0.10133170239806841,
+        "candidate": 0.1013316918942305
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 2048.3403885772
+        },
+        "baseline": {
+          "overC": 0.00048820010852522965,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 0.00048820005791940066,
+          "overBaseline": 0.9999998963420366
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.03722414251528849,
+            0.03722414251528849,
+            0.037490029247540545
+          ],
+          "medianMs": 0.03722414251528849,
+          "maxOverMin": 1.0071428571428571,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            1.8303570202885922e-05,
+            1.8172830415722455e-05,
+            1.8172830415722455e-05
+          ],
+          "medianMs": 1.8172830415722455e-05,
+          "maxOverMin": 1.0071942446043163,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            1.8172828531963864e-05,
+            1.8172828531963864e-05,
+            2.0119917303245707e-05
+          ],
+          "medianMs": 1.8172828531963864e-05,
+          "maxOverMin": 1.1071428571428572,
+          "flagged": true
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/scalar-region-8192/bend-c/program",
+          "bytes": 90160,
+          "sha256": "9153c746352a3a02ee7d6290d6c34e8cf64516f282c4c66f9b99e4e8f0f9ed87"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/scalar-region-8192/live",
+          "bytes": 180536,
+          "sha256": "08477439cd5564f643251364c6201768d518eb1bcca310714b08c52257b8efad"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/scalar-region-8192/live",
+          "bytes": 180616,
+          "sha256": "6ec850c94f6743c1ef0d301e19d5dd4d2130d6121e494cdb5be7b5555e8bcd27"
+        }
+      },
+      "flagged": true
+    },
+    {
+      "id": "complete-generic-row32",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.08035714285714286,
+        "baseline": 0.2571428571428571,
+        "candidate": 0.25535714285714284
+      },
+      "fixedEquivalentMs": {
+        "c": 117.32142857142858,
+        "baseline": 375.4285714285714,
+        "candidate": 372.82142857142856
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.31250000000000006
+        },
+        "baseline": {
+          "overC": 3.1999999999999993,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 3.177777777777777,
+          "overBaseline": 0.9930555555555556
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.07991071428571428,
+            0.08125,
+            0.08035714285714286
+          ],
+          "medianMs": 0.08035714285714286,
+          "maxOverMin": 1.016759776536313,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.2571428571428571,
+            0.26071428571428573,
+            0.2571428571428571
+          ],
+          "medianMs": 0.2571428571428571,
+          "maxOverMin": 1.013888888888889,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.25535714285714284,
+            0.25535714285714284,
+            0.2571428571428571
+          ],
+          "medianMs": 0.25535714285714284,
+          "maxOverMin": 1.0069930069930069,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/complete-generic-row32/bend-c/program",
+          "bytes": 137080,
+          "sha256": "2ad6059aeb2f4a98513614fef3ae5ec6a4b3d7d5bb73c06b7eaef52fe9296f95"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/complete-generic-row32/live",
+          "bytes": 242480,
+          "sha256": "8d1b208c7d1f8b8b04c3cbe87889cfffbbf83b5cc6ecff353d96da6d2cf8fca2"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/complete-generic-row32/live",
+          "bytes": 242560,
+          "sha256": "a3989599046b95c86d503d60a252208201afeaf5fd42b39a26d72f09bdb104cc"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "variation-editdist-0-17",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.21052631578947367,
+        "baseline": 0.3448275862068966,
+        "candidate": 0.34375
+      },
+      "fixedEquivalentMs": {
+        "c": 201.26315789473682,
+        "baseline": 329.65517241379314,
+        "candidate": 328.625
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.6105263157894736
+        },
+        "baseline": {
+          "overC": 1.637931034482759,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 1.6328125,
+          "overBaseline": 0.996875
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.21052631578947367,
+            0.21052631578947367,
+            0.21203007518796993
+          ],
+          "medianMs": 0.21052631578947367,
+          "maxOverMin": 1.0071428571428571,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.34236453201970446,
+            0.3472906403940887,
+            0.3448275862068966
+          ],
+          "medianMs": 0.3448275862068966,
+          "maxOverMin": 1.014388489208633,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.35267857142857145,
+            0.34375,
+            0.34375
+          ],
+          "medianMs": 0.34375,
+          "maxOverMin": 1.025974025974026,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/variation-editdist-0-17/bend-c/program",
+          "bytes": 105568,
+          "sha256": "2d34276116f19942a26cdb0b98239123ed5c65afca06ba64b98037bc09366301"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/variation-editdist-0-17/live",
+          "bytes": 217856,
+          "sha256": "9029446ab3123556187b4b2a1827f66ad59c8d633192aeb33ed3f74149bda0c2"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/variation-editdist-0-17/live",
+          "bytes": 217936,
+          "sha256": "be0081ffe12e5ac54fe823a2cb3873f90fdfcdf989bc9d60c86db22dc6e4fe76"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "variation-editdist-3-123",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 1.6867469879518073,
+        "baseline": 2.764705882352941,
+        "candidate": 2.7450980392156863
+      },
+      "fixedEquivalentMs": {
+        "c": 202.40963855421688,
+        "baseline": 331.7647058823529,
+        "candidate": 329.4117647058824
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.6100999743655473
+        },
+        "baseline": {
+          "overC": 1.6390756302521008,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 1.6274509803921569,
+          "overBaseline": 0.9929078014184397
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            1.6987951807228916,
+            1.6867469879518073,
+            1.6867469879518073
+          ],
+          "medianMs": 1.6867469879518073,
+          "maxOverMin": 1.0071428571428571,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            2.823529411764706,
+            2.7450980392156863,
+            2.764705882352941
+          ],
+          "medianMs": 2.764705882352941,
+          "maxOverMin": 1.0285714285714287,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            2.764705882352941,
+            2.7450980392156863,
+            2.7450980392156863
+          ],
+          "medianMs": 2.7450980392156863,
+          "maxOverMin": 1.0071428571428571,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/variation-editdist-3-123/bend-c/program",
+          "bytes": 105568,
+          "sha256": "82148875dbf48d936a5fdcfe02a512964c0ea8bdbfe1e789a744d77df758e531"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/variation-editdist-3-123/live",
+          "bytes": 217856,
+          "sha256": "d03479c9eee1581504ba7208d559c82bed1d271eb61625074264e4a410c33a2a"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/variation-editdist-3-123/live",
+          "bytes": 217936,
+          "sha256": "744854ddb9f44fa0e68cfed63c2b1ac152dadeca0ab9f7673da7fc06aec02e9e"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "variation-lexer-6-17",
+      "partition": "development",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.09910714285714285,
+        "baseline": 0.2625,
+        "candidate": 0.24956063268892795
+      },
+      "fixedEquivalentMs": {
+        "c": 219.225,
+        "baseline": 580.65,
+        "candidate": 552.0281195079086
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.37755102040816324
+        },
+        "baseline": {
+          "overC": 2.6486486486486487,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 2.518089266771165,
+          "overBaseline": 0.9507071721482969
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.10223214285714285,
+            0.09821428571428571,
+            0.09910714285714285
+          ],
+          "medianMs": 0.09910714285714285,
+          "maxOverMin": 1.040909090909091,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.2892857142857143,
+            0.2625,
+            0.2625
+          ],
+          "medianMs": 0.2625,
+          "maxOverMin": 1.1020408163265307,
+          "flagged": true
+        },
+        "candidate": {
+          "samplesMs": [
+            0.2460456942003515,
+            0.29349736379613356,
+            0.24956063268892795
+          ],
+          "medianMs": 0.24956063268892795,
+          "maxOverMin": 1.1928571428571428,
+          "flagged": true
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/variation-lexer-6-17/bend-c/program",
+          "bytes": 112744,
+          "sha256": "459721e2ba85c5bbe75627a35a5ea1f67f87457621a07add656c69fb92820df3"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/variation-lexer-6-17/live",
+          "bytes": 216800,
+          "sha256": "7f2296f438480274dcf1ac297ef5942c24ba47f25e392fcdbf4e01cad40a9f06"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/variation-lexer-6-17/live",
+          "bytes": 216880,
+          "sha256": "278b81896bc5b7ca7a4a743df9ca77b7fca0cc6f93e2cef2225e32e99468dbdb"
+        }
+      },
+      "flagged": true
+    },
+    {
+      "id": "variation-lexer-10-123",
+      "partition": "development",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 1.5494505494505495,
+        "baseline": 4.205882352941177,
+        "candidate": 3.9722222222222223
+      },
+      "fixedEquivalentMs": {
+        "c": 198.32967032967034,
+        "baseline": 538.3529411764706,
+        "candidate": 508.44444444444446
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.36840082993929146
+        },
+        "baseline": {
+          "overC": 2.7144347100542343,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 2.563632781717888,
+          "overBaseline": 0.9444444444444444
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            1.5494505494505495,
+            1.5494505494505495,
+            1.5494505494505495
+          ],
+          "medianMs": 1.5494505494505495,
+          "maxOverMin": 1.0,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            4.147058823529412,
+            4.205882352941177,
+            4.205882352941177
+          ],
+          "medianMs": 4.205882352941177,
+          "maxOverMin": 1.0141843971631206,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            3.9722222222222223,
+            3.9722222222222223,
+            4.0
+          ],
+          "medianMs": 3.9722222222222223,
+          "maxOverMin": 1.0069930069930069,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/variation-lexer-10-123/bend-c/program",
+          "bytes": 112744,
+          "sha256": "33e145bb5ac89fc073ba3c420104475620f7a8389c74a6ad65bb6b3e2ef27d78"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/variation-lexer-10-123/live",
+          "bytes": 216800,
+          "sha256": "706722a5aeba3c0f016d380cb03ed2e0599af03fb7f7a7af378e27dc5078a3c9"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/variation-lexer-10-123/live",
+          "bytes": 216880,
+          "sha256": "942d1f8e003560ec99abd12fc00ac27152360ab1eb13016810d716402890b5f0"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "variation-tree-bitonic-6-17",
+      "partition": "development",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.02481829462861195,
+        "baseline": 0.0540633608815427,
+        "candidate": 0.036957686127477234
+      },
+      "fixedEquivalentMs": {
+        "c": 275.6816167346215,
+        "baseline": 600.5358126721762,
+        "candidate": 410.52597750401713
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.4590594114744529
+        },
+        "baseline": {
+          "overC": 2.178367276662731,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 1.4891307674649934,
+          "overBaseline": 0.6835994937209802
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.02481829462861195,
+            0.02481829462861195,
+            0.02481829462861195
+          ],
+          "medianMs": 0.02481829462861195,
+          "maxOverMin": 1.0,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.0540633608815427,
+            0.05440771349862259,
+            0.04855371900826446
+          ],
+          "medianMs": 0.0540633608815427,
+          "maxOverMin": 1.1205673758865249,
+          "flagged": true
+        },
+        "candidate": {
+          "samplesMs": [
+            0.036957686127477234,
+            0.036957686127477234,
+            0.03722549544724156
+          ],
+          "medianMs": 0.036957686127477234,
+          "maxOverMin": 1.0072463768115942,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/variation-tree-bitonic-6-17/bend-c/program",
+          "bytes": 115744,
+          "sha256": "93a7264e6ee8db8a1058d2a232dccb07712cfbba4939cb7eae922b391fe2fdfd"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/variation-tree-bitonic-6-17/live",
+          "bytes": 217360,
+          "sha256": "dc26cf1ccbe9af43fe750bcdc4195743a1a3df48e57d99a7339839859cbaae2c"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/variation-tree-bitonic-6-17/live",
+          "bytes": 221536,
+          "sha256": "75046f117fc84eeec81dc556e4313bd56d07b3861fcea004cd111d43f400792b"
+        }
+      },
+      "flagged": true
+    },
+    {
+      "id": "variation-tree-bitonic-9-123",
+      "partition": "development",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.41228070175438597,
+        "baseline": 0.6205357142857143,
+        "candidate": 0.5051546391752577
+      },
+      "fixedEquivalentMs": {
+        "c": 262.2105263157895,
+        "baseline": 394.6607142857143,
+        "candidate": 321.2783505154639
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.6643947999495141
+        },
+        "baseline": {
+          "overC": 1.505129179331307,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 1.225268699276157,
+          "overBaseline": 0.8140621523399836
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.41812865497076024,
+            0.41228070175438597,
+            0.4064327485380117
+          ],
+          "medianMs": 0.41228070175438597,
+          "maxOverMin": 1.0287769784172662,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.6383928571428571,
+            0.6205357142857143,
+            0.6205357142857143
+          ],
+          "medianMs": 0.6205357142857143,
+          "maxOverMin": 1.028776978417266,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.5910652920962199,
+            0.5051546391752577,
+            0.4742268041237113
+          ],
+          "medianMs": 0.5051546391752577,
+          "maxOverMin": 1.2463768115942029,
+          "flagged": true
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/variation-tree-bitonic-9-123/bend-c/program",
+          "bytes": 115744,
+          "sha256": "57629c319c152187084449d99a7c647b3419f4563efe6856b6ab9894d46c52de"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/variation-tree-bitonic-9-123/live",
+          "bytes": 217360,
+          "sha256": "30f8d6925fd3f53860f12fd2906ecd70b934dee4ca81bfbbf7d1df32eb54bdef"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/variation-tree-bitonic-9-123/live",
+          "bytes": 221536,
+          "sha256": "f173807a74593b80ece62a373d4316e81ff1e704eb72da019825bd3c7542199a"
+        }
+      },
+      "flagged": true
+    },
+    {
+      "id": "variation-symreg-4-17",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 1.1475409836065573,
+        "baseline": 1.2033898305084745,
+        "candidate": 1.1864406779661016
+      },
+      "fixedEquivalentMs": {
+        "c": 330.4918032786885,
+        "baseline": 346.57627118644064,
+        "candidate": 341.6949152542373
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.9535903948279844
+        },
+        "baseline": {
+          "overC": 1.0486682808716707,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 1.0338983050847457,
+          "overBaseline": 0.9859154929577465
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            1.1475409836065573,
+            1.1557377049180328,
+            1.1475409836065573
+          ],
+          "medianMs": 1.1475409836065573,
+          "maxOverMin": 1.0071428571428573,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            1.2033898305084745,
+            1.2203389830508475,
+            1.2033898305084745
+          ],
+          "medianMs": 1.2033898305084745,
+          "maxOverMin": 1.0140845070422537,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            1.2203389830508475,
+            1.1864406779661016,
+            1.1864406779661016
+          ],
+          "medianMs": 1.1864406779661016,
+          "maxOverMin": 1.0285714285714287,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/variation-symreg-4-17/bend-c/program",
+          "bytes": 115800,
+          "sha256": "dad76faef24f8dde4f6759174040f3bf9e69c4451524e6714e7cd33f30e5da07"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/variation-symreg-4-17/live",
+          "bytes": 238472,
+          "sha256": "e04c2d0ee4af4a693cf88cc11ee02935d4fcf761c3cddfe09e76012d3fa4acb3"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/variation-symreg-4-17/live",
+          "bytes": 238552,
+          "sha256": "659aebcf7b8b101f78c7250aea5e003dd1234e7e860ec8f91030e94b2c7ad963"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "variation-symreg-7-123",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 3.8378378378378377,
+        "baseline": 4.057142857142857,
+        "candidate": 3.9444444444444446
+      },
+      "fixedEquivalentMs": {
+        "c": 337.72972972972974,
+        "baseline": 357.0285714285714,
+        "candidate": 347.11111111111114
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.9459459459459459
+        },
+        "baseline": {
+          "overC": 1.0571428571428572,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 1.027777777777778,
+          "overBaseline": 0.9722222222222223
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            3.8378378378378377,
+            3.8378378378378377,
+            3.864864864864865
+          ],
+          "medianMs": 3.8378378378378377,
+          "maxOverMin": 1.0070422535211268,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            4.057142857142857,
+            4.457142857142857,
+            4.057142857142857
+          ],
+          "medianMs": 4.057142857142857,
+          "maxOverMin": 1.0985915492957747,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            3.9444444444444446,
+            3.9166666666666665,
+            3.9722222222222223
+          ],
+          "medianMs": 3.9444444444444446,
+          "maxOverMin": 1.0141843971631206,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/variation-symreg-7-123/bend-c/program",
+          "bytes": 115800,
+          "sha256": "f368b118888e6e327e4c2909e39a989e04d653ccf7948e0ddcd4d192c8d08741"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/variation-symreg-7-123/live",
+          "bytes": 238472,
+          "sha256": "4576fcb5a0537137b2b195938ed884acc3e330de35639f700986a4865a829b0d"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/variation-symreg-7-123/live",
+          "bytes": 238552,
+          "sha256": "be19c7414f57e443f14bc0b9d630fa17861fd3965aa63e8ada21a4ba731202dd"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "variation-local-fold-128-0",
+      "partition": "development",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.00010700885213653419,
+        "baseline": 0.0002900743848090276,
+        "candidate": 0.00015089285714285714
+      },
+      "fixedEquivalentMs": {
+        "c": 202.78391497577502,
+        "baseline": 549.6967607008035,
+        "candidate": 285.94498214285716
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.3689014188791064
+        },
+        "baseline": {
+          "overC": 2.7107512978357846,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 1.4100969604863223,
+          "overBaseline": 0.5201867694805195
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.00010700885213653419,
+            0.00010700885213653419,
+            0.00010700885213653419
+          ],
+          "medianMs": 0.00010700885213653419,
+          "maxOverMin": 1.0,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.0002860174004061041,
+            0.0002900743848090276,
+            0.0002900743848090276
+          ],
+          "medianMs": 0.0002900743848090276,
+          "maxOverMin": 1.0141843971631206,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.00015089285714285714,
+            0.00015089285714285714,
+            0.00015982142857142858
+          ],
+          "medianMs": 0.00015089285714285714,
+          "maxOverMin": 1.0591715976331362,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/variation-local-fold-128-0/bend-c/program",
+          "bytes": 93696,
+          "sha256": "7f90956c9845356efa4496bdd0849d3d9c4f0f6c89a66ded22eecd13dd197a1f"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/variation-local-fold-128-0/live",
+          "bytes": 185176,
+          "sha256": "049b62933aa6a74c640d47d8569d70be0ea6b8ac014e9bf03b7845637ebbf18b"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/variation-local-fold-128-0/live",
+          "bytes": 185256,
+          "sha256": "b75a14388a5acbfb704be90fb3cfff2c5d5ce90e0e161a23d17cae7b0cc11171"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "variation-local-fold-8192-123",
+      "partition": "development",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.005849330663840144,
+        "baseline": 0.011116071428571428,
+        "candidate": 0.0029015330795349316
+      },
+      "fixedEquivalentMs": {
+        "c": 178.49817453774583,
+        "baseline": 339.2180357142857,
+        "candidate": 88.54318345508797
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.5262048468675471
+        },
+        "baseline": {
+          "overC": 1.9004005872483223,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 0.49604531634223703,
+          "overBaseline": 0.2610214497252308
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.006477446708279355,
+            0.005496015388843089,
+            0.005849330663840144
+          ],
+          "medianMs": 0.005849330663840144,
+          "maxOverMin": 1.1785714285714286,
+          "flagged": true
+        },
+        "baseline": {
+          "samplesMs": [
+            0.011116071428571428,
+            0.01107142857142857,
+            0.011160714285714286
+          ],
+          "medianMs": 0.011116071428571428,
+          "maxOverMin": 1.0080645161290323,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.0029015330795349316,
+            0.0028809548307439036,
+            0.0029221113283259595
+          ],
+          "medianMs": 0.0029015330795349316,
+          "maxOverMin": 1.0142857142857145,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/variation-local-fold-8192-123/bend-c/program",
+          "bytes": 93664,
+          "sha256": "ec063f10d4a88807eef90fb065a28275b91d7dbc7ab4c7a33eb32375a77b1aea"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/variation-local-fold-8192-123/live",
+          "bytes": 185176,
+          "sha256": "341091e9d278645843bf5b99afc418dc7aefa9584feaae23e2d2cfbe6dd23aa9"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/variation-local-fold-8192-123/live",
+          "bytes": 185256,
+          "sha256": "65de99bc022d280bce51270afed0caa7672ec36d802c6c28dfede40c2c24dcf6"
+        }
+      },
+      "flagged": true
+    },
+    {
+      "id": "variation-mandelbrot-grid-4-7",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.009107142857142857,
+        "baseline": 0.022321428571428572,
+        "candidate": 0.01720586453410881
+      },
+      "fixedEquivalentMs": {
+        "c": 223.0157142857143,
+        "baseline": 546.6071428571429,
+        "candidate": 421.33721071125655
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.408
+        },
+        "baseline": {
+          "overC": 2.450980392156863,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 1.8892713998237125,
+          "overBaseline": 0.7708227311280746
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.009151785714285715,
+            0.009107142857142857,
+            0.009107142857142857
+          ],
+          "medianMs": 0.009107142857142857,
+          "maxOverMin": 1.0049019607843137,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.022321428571428572,
+            0.022321428571428572,
+            0.022321428571428572
+          ],
+          "medianMs": 0.022321428571428572,
+          "maxOverMin": 1.0,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.017327032594208168,
+            0.01720586453410881,
+            0.01720586453410881
+          ],
+          "medianMs": 0.01720586453410881,
+          "maxOverMin": 1.0070422535211268,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/variation-mandelbrot-grid-4-7/bend-c/program",
+          "bytes": 92240,
+          "sha256": "051c9806b6b6bb186dc89773644d3404560ada98725c9cf4f8e24c3883eb3d7d"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/variation-mandelbrot-grid-4-7/live",
+          "bytes": 185024,
+          "sha256": "f1592e2cac5dd7c7b49347e0d4f0f0375b31fda1dc63b52fd9915727557b6df4"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/variation-mandelbrot-grid-4-7/live",
+          "bytes": 185104,
+          "sha256": "b7c73ee55f779e179dfac66a0d4d02a928988984996568d2ef2be592e730fe2d"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "variation-mandelbrot-grid-5-31",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.14581178903826267,
+        "baseline": 0.13660714285714284,
+        "candidate": 0.115990057995029
+      },
+      "fixedEquivalentMs": {
+        "c": 206.46949327817993,
+        "baseline": 193.43571428571425,
+        "candidate": 164.24192212096105
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 1.067380416489243
+        },
+        "baseline": {
+          "overC": 0.9368731003039513,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 0.7954779154694542,
+          "overBaseline": 0.849077548721781
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.14581178903826267,
+            0.1468459152016546,
+            0.14581178903826267
+          ],
+          "medianMs": 0.14581178903826267,
+          "maxOverMin": 1.0070921985815602,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.13660714285714284,
+            0.1392857142857143,
+            0.13660714285714284
+          ],
+          "medianMs": 0.13660714285714284,
+          "maxOverMin": 1.019607843137255,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.115990057995029,
+            0.115990057995029,
+            0.115990057995029
+          ],
+          "medianMs": 0.115990057995029,
+          "maxOverMin": 1.0,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/variation-mandelbrot-grid-5-31/bend-c/program",
+          "bytes": 92240,
+          "sha256": "33fac46ca66b5a74f5d66a2b6aa6420fdd69f8fd147a2194edcbbfda6c5f67c8"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/variation-mandelbrot-grid-5-31/live",
+          "bytes": 185024,
+          "sha256": "9d526e87315309e91eb0da2e09e95cca93c71647399fbc630d9e23d0d456afb3"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/variation-mandelbrot-grid-5-31/live",
+          "bytes": 185104,
+          "sha256": "8886a049ab8a386baea76bb25e7ea200f1b948f67aa55af37d9c482416ff9868"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "variation-ray-active-64-2440",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.1095679012345679,
+        "baseline": 0.18205461638491546,
+        "candidate": 0.16587677725118483
+      },
+      "fixedEquivalentMs": {
+        "c": 692.9074074074074,
+        "baseline": 1151.3133940182054,
+        "candidate": 1049.0047393364928
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.6018408289241624
+        },
+        "baseline": {
+          "overC": 1.661568893203172,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 1.513917628996729,
+          "overBaseline": 0.9111374407582938
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.1095679012345679,
+            0.10802469135802469,
+            0.1095679012345679
+          ],
+          "medianMs": 0.1095679012345679,
+          "maxOverMin": 1.0142857142857145,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.18075422626788037,
+            0.18205461638491546,
+            0.1859557867360208
+          ],
+          "medianMs": 0.18205461638491546,
+          "maxOverMin": 1.0287769784172662,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.16587677725118483,
+            0.16587677725118483,
+            0.1670616113744076
+          ],
+          "medianMs": 0.16587677725118483,
+          "maxOverMin": 1.0071428571428571,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/variation-ray-active-64-2440/bend-c/program",
+          "bytes": 117512,
+          "sha256": "0773207fa78b116d4cc486950a8cbffdf4fed8b26778be9b1cec1ecfbcd13d9c"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/variation-ray-active-64-2440/live",
+          "bytes": 232560,
+          "sha256": "403cf87dffd514c25c425cfd132927a713618764e935f103880afb2f8437f03e"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/variation-ray-active-64-2440/live",
+          "bytes": 232640,
+          "sha256": "5aebfda5b753b4be06f555daf1f998dd2e0acbd43d050a358f0f2a26a54cbea9"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "variation-ray-active-256-2240",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.4519230769230769,
+        "baseline": 0.7540106951871658,
+        "candidate": 0.6945812807881774
+      },
+      "fixedEquivalentMs": {
+        "c": 685.1153846153846,
+        "baseline": 1143.0802139037432,
+        "candidate": 1052.9852216748768
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.5993589743589743
+        },
+        "baseline": {
+          "overC": 1.6684491978609626,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 1.536945812807882,
+          "overBaseline": 0.9211822660098522
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.4775641025641026,
+            0.44871794871794873,
+            0.4519230769230769
+          ],
+          "medianMs": 0.4519230769230769,
+          "maxOverMin": 1.0642857142857143,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.7647058823529411,
+            0.7486631016042781,
+            0.7540106951871658
+          ],
+          "medianMs": 0.7540106951871658,
+          "maxOverMin": 1.0214285714285714,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.6995073891625616,
+            0.6896551724137931,
+            0.6945812807881774
+          ],
+          "medianMs": 0.6945812807881774,
+          "maxOverMin": 1.0142857142857142,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/variation-ray-active-256-2240/bend-c/program",
+          "bytes": 117512,
+          "sha256": "a1362c00b6efab27c290796cf25ce7117f260f7447cb9c43389aabc973c476f3"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/variation-ray-active-256-2240/live",
+          "bytes": 232560,
+          "sha256": "c61016370ca22c13a472140ff75d7eb4e142cf987cac5a3a4dd076374e0902ee"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/variation-ray-active-256-2240/live",
+          "bytes": 232640,
+          "sha256": "f2441268100305c27cc9eb0a74ce75fdc566c3420114ac39d8a3e767556c439c"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "coverage-closures-64",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.0007678571428571428,
+        "baseline": 6.919642857142857e-05,
+        "candidate": 6.0714285714285715e-05
+      },
+      "fixedEquivalentMs": {
+        "c": 58.695,
+        "baseline": 5.289375,
+        "candidate": 4.641
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 11.096774193548388
+        },
+        "baseline": {
+          "overC": 0.09011627906976744,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 0.07906976744186046,
+          "overBaseline": 0.8774193548387097
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.0007767857142857142,
+            0.0007633928571428571,
+            0.0007678571428571428
+          ],
+          "medianMs": 0.0007678571428571428,
+          "maxOverMin": 1.0175438596491229,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            6.919642857142857e-05,
+            6.919642857142857e-05,
+            6.964285714285715e-05
+          ],
+          "medianMs": 6.919642857142857e-05,
+          "maxOverMin": 1.006451612903226,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            6.0714285714285715e-05,
+            6.116071428571428e-05,
+            6.026785714285714e-05
+          ],
+          "medianMs": 6.0714285714285715e-05,
+          "maxOverMin": 1.0148148148148146,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-closures-64/bend-c/program",
+          "bytes": 92968,
+          "sha256": "29e46e2c50d1c80800fc035f9ed532bb31ff9d65ff56c78542ff3a0bdf39282d"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/coverage-closures-64/live",
+          "bytes": 180328,
+          "sha256": "4bcfa116f05a273fb0f2518e36c78896ff46bc7cf3e8b9936935ac9b5931d260"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/coverage-closures-64/live",
+          "bytes": 180408,
+          "sha256": "abad9d99c1353417d2349928b6147886daf8fc43b165afa1b7f0380b56f6b0b3"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "coverage-closures-256",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.0029675425038639875,
+        "baseline": 0.0002236606144372257,
+        "candidate": 0.00021428549562704528
+      },
+      "fixedEquivalentMs": {
+        "c": 58.16383307573415,
+        "baseline": 4.383748042969623,
+        "candidate": 4.199995714290087
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 13.268060231931809
+        },
+        "baseline": {
+          "overC": 0.07536896746921096,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 0.07220974774515536,
+          "overBaseline": 0.9580832824153235
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.0029675425038639875,
+            0.0029675425038639875,
+            0.0029263266357547656
+          ],
+          "medianMs": 0.0029675425038639875,
+          "maxOverMin": 1.0140845070422535,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.0002236606144372257,
+            0.00022232132932083513,
+            0.00022633918467000684
+          ],
+          "medianMs": 0.0002236606144372257,
+          "maxOverMin": 1.0180722891566265,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.00021734671699314591,
+            0.00021428549562704528,
+            0.00021428549562704528
+          ],
+          "medianMs": 0.00021428549562704528,
+          "maxOverMin": 1.0142857142857142,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-closures-256/bend-c/program",
+          "bytes": 92968,
+          "sha256": "ec663f56931902478a75059fdcf561705f7f4db271c2179d05e0cf2a0273648e"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/coverage-closures-256/live",
+          "bytes": 180328,
+          "sha256": "98dd42420af8d0919096138b63eecc3a36df9fe798c64c8a509bc639f03d0939"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/coverage-closures-256/live",
+          "bytes": 180408,
+          "sha256": "4539b03996107a658987f5193179e598027bcd112d9ffd5bb18d9a8919b9e713"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "coverage-list-pipeline-128",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.0014464285714285714,
+        "baseline": 0.0011295889551302164,
+        "candidate": 0.0003794634386976815
+      },
+      "fixedEquivalentMs": {
+        "c": 143.91385714285713,
+        "baseline": 112.389582679636,
+        "candidate": 37.75509429666452
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 1.2804910714285715
+        },
+        "baseline": {
+          "overC": 0.7809503887320015,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 0.26234509342061935,
+          "overBaseline": 0.3359305497581975
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.0014285714285714286,
+            0.0014464285714285714,
+            0.0014642857142857142
+          ],
+          "medianMs": 0.0014464285714285714,
+          "maxOverMin": 1.025,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.0011609664261060559,
+            0.0011295889551302164,
+            0.0010433009099466582
+          ],
+          "medianMs": 0.0011295889551302164,
+          "maxOverMin": 1.1127819548872182,
+          "flagged": true
+        },
+        "candidate": {
+          "samplesMs": [
+            0.0003794634386976815,
+            0.0003794634386976815,
+            0.00038217389183123633
+          ],
+          "medianMs": 0.0003794634386976815,
+          "maxOverMin": 1.0071428571428571,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-list-pipeline-128/bend-c/program",
+          "bytes": 94344,
+          "sha256": "b6f07fbcddd8974e7788ab657f16f1eb510bb371ee2498fd006e742c3cc27dd7"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/coverage-list-pipeline-128/live",
+          "bytes": 181072,
+          "sha256": "1b029639a188342ce0299ec0e2edca4bdb757a5ea47875cfd46c760b4473bc77"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/coverage-list-pipeline-128/live",
+          "bytes": 181152,
+          "sha256": "aa9447b3b69eafaa92edb0bd5eeaf3c504fa164ee27f04748e3e2cbea5a8bba9"
+        }
+      },
+      "flagged": true
+    },
+    {
+      "id": "coverage-list-pipeline-512",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.005624974888504962,
+        "baseline": 0.0044196104429081035,
+        "candidate": 0.0014850703038601296
+      },
+      "fixedEquivalentMs": {
+        "c": 140.6693720117321,
+        "baseline": 110.52561795624585,
+        "candidate": 37.13863815893412
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 1.2727309253083692
+        },
+        "baseline": {
+          "overC": 0.7857120308109985,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 0.26401367709124834,
+          "overBaseline": 0.33601837153840947
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.005665153280565712,
+            0.005624974888504962,
+            0.005624974888504962
+          ],
+          "medianMs": 0.005624974888504962,
+          "maxOverMin": 1.0071428571428573,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.004103923982700382,
+            0.0044196104429081035,
+            0.0044196104429081035
+          ],
+          "medianMs": 0.0044196104429081035,
+          "maxOverMin": 1.0769230769230769,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.0014850703038601296,
+            0.0014956027173626838,
+            0.0014745378903575754
+          ],
+          "medianMs": 0.0014850703038601296,
+          "maxOverMin": 1.0142857142857145,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-list-pipeline-512/bend-c/program",
+          "bytes": 94344,
+          "sha256": "6ba4de0d7b07389cd5aed735ace0ee689debc961d9748eb242458125e9e8d4fb"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/coverage-list-pipeline-512/live",
+          "bytes": 181072,
+          "sha256": "870ea77f63bd0dceec4c895ecec340e471a494cf7936383232e17c48a1fa65cd"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/coverage-list-pipeline-512/live",
+          "bytes": 181152,
+          "sha256": "bec77af96debfdb84c3ec635c8ede5211012a1ca88f6c7bc466afcce07cc621c"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "coverage-bst-32",
+      "partition": "development",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.005982139042003162,
+        "baseline": 0.02080642846893385,
+        "candidate": 0.01955269854024374
+      },
+      "fixedEquivalentMs": {
+        "c": 213.08379267615263,
+        "baseline": 741.1249820634237,
+        "candidate": 696.467122003482
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.28751397919806926
+        },
+        "baseline": {
+          "overC": 3.4780917532747058,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 3.268512885266601,
+          "overBaseline": 0.939743145703163
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.005982139042003162,
+            0.005982139042003162,
+            0.005982139042003162
+          ],
+          "medianMs": 0.005982139042003162,
+          "maxOverMin": 1.0,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.020519443248672692,
+            0.021093413689195005,
+            0.02080642846893385
+          ],
+          "medianMs": 0.02080642846893385,
+          "maxOverMin": 1.027972027972028,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.01955269854024374,
+            0.020222311503950718,
+            0.01955269854024374
+          ],
+          "medianMs": 0.01955269854024374,
+          "maxOverMin": 1.034246575342466,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-32/bend-c/program",
+          "bytes": 105128,
+          "sha256": "1ec0ebebf1cfaf5c9c5d38cecd61188d529ca1956e090f3d4fee0d84a4168fc8"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/coverage-bst-32/live",
+          "bytes": 196016,
+          "sha256": "045d59907f8a6f55692b4b19957b3d0f2e66bace0d097ebf1844157573996171"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/coverage-bst-32/live",
+          "bytes": 196096,
+          "sha256": "3d9d7cbc800d056223d4c82a2c79dd338983a56691561a2ccf2eba560877aa0d"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "coverage-bst-64",
+      "partition": "development",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.007321428571428572,
+        "baseline": 0.018112244897959182,
+        "candidate": 0.016961385781306387
+      },
+      "fixedEquivalentMs": {
+        "c": 199.0257142857143,
+        "baseline": 492.3632653061224,
+        "candidate": 461.0783110790328
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.4042253521126761
+        },
+        "baseline": {
+          "overC": 2.473867595818815,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 2.316677082324775,
+          "overBaseline": 0.9364596093340992
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.007366071428571428,
+            0.007321428571428572,
+            0.007321428571428572
+          ],
+          "medianMs": 0.007321428571428572,
+          "maxOverMin": 1.0060975609756098,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.01798469387755102,
+            0.018112244897959182,
+            0.018112244897959182
+          ],
+          "medianMs": 0.018112244897959182,
+          "maxOverMin": 1.0070921985815602,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.016961385781306387,
+            0.018404907975460124,
+            0.01684109226512691
+          ],
+          "medianMs": 0.016961385781306387,
+          "maxOverMin": 1.092857142857143,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-bst-64/bend-c/program",
+          "bytes": 105128,
+          "sha256": "de4601ec006bbdffaf3295e1a1877db48f3395c83529f8c2577178f820d08a18"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/coverage-bst-64/live",
+          "bytes": 196016,
+          "sha256": "296da800016c89a540cda89d64dd59806d1effc8b0140e1c1a5c0a85097941f2"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/coverage-bst-64/live",
+          "bytes": 196096,
+          "sha256": "f229ea419c44cea51470c8cd71f8106c96c6e96d4529938b60ac896170ea97f7"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "coverage-unicode-text-16",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.009056122448979591,
+        "baseline": 0.02304758746476538,
+        "candidate": 0.02303389272787101
+      },
+      "fixedEquivalentMs": {
+        "c": 74.91224489795918,
+        "baseline": 190.6496435085392,
+        "candidate": 190.53636064494899
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.39293147114961086
+        },
+        "baseline": {
+          "overC": 2.544973038362825,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 2.5434608307958975,
+          "overBaseline": 0.9994058060560436
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.009056122448979591,
+            0.009056122448979591,
+            0.009247448979591837
+          ],
+          "medianMs": 0.009056122448979591,
+          "maxOverMin": 1.0211267605633803,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.024208257337091692,
+            0.02304758746476538,
+            0.02304758746476538
+          ],
+          "medianMs": 0.02304758746476538,
+          "maxOverMin": 1.0503597122302157,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.02303389272787101,
+            0.02286936492267193,
+            0.02303389272787101
+          ],
+          "medianMs": 0.02303389272787101,
+          "maxOverMin": 1.0071942446043165,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-unicode-text-16/bend-c/program",
+          "bytes": 107728,
+          "sha256": "d1769299190670cabfd9659d7b3363ee57a3556259f16d329d57c583ddbe7ad7"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/coverage-unicode-text-16/live",
+          "bytes": 205512,
+          "sha256": "9cf3630ee0e9cd9c43ec1e1e9a0bafa718d755cb82410a6f624bf457762bb937"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/coverage-unicode-text-16/live",
+          "bytes": 205592,
+          "sha256": "667f39c05eb9f37dcd1de7abebafc1a72a2baccfeda6a3d8d96e30ecfc82ae06"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "coverage-unicode-text-64",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.04044431785816007,
+        "baseline": 0.09866071428571428,
+        "candidate": 0.09817671809256662
+      },
+      "fixedEquivalentMs": {
+        "c": 81.85929934491598,
+        "baseline": 199.68928571428572,
+        "candidate": 198.70967741935485
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.4099333574763736
+        },
+        "baseline": {
+          "overC": 2.439420900402414,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 2.4274539241056434,
+          "overBaseline": 0.9950943372278246
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.04044431785816007,
+            0.04015949871831387,
+            0.04044431785816007
+          ],
+          "medianMs": 0.04044431785816007,
+          "maxOverMin": 1.0070921985815604,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.09821428571428571,
+            0.09866071428571428,
+            0.09866071428571428
+          ],
+          "medianMs": 0.09866071428571428,
+          "maxOverMin": 1.0045454545454546,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.09817671809256662,
+            0.09747545582047686,
+            0.09887798036465638
+          ],
+          "medianMs": 0.09817671809256662,
+          "maxOverMin": 1.014388489208633,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-unicode-text-64/bend-c/program",
+          "bytes": 117136,
+          "sha256": "6c0b2a83665b476eb7d9173b0e143f20b757152238259fdd63b5c0e17225c7bd"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/coverage-unicode-text-64/live",
+          "bytes": 214984,
+          "sha256": "3805341d94e9c37fa74032abe823e7071ad23ba04de2ea791c1296c7acfe3a12"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/coverage-unicode-text-64/live",
+          "bytes": 215064,
+          "sha256": "50c462c0d7417477248a45e1f39dff21ad76cd4a4274adaef310f006b3657ee5"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "coverage-expression-32",
+      "partition": "development",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.002203125,
+        "baseline": 0.0003169642857142857,
+        "candidate": 0.00012230266637038416
+      },
+      "fixedEquivalentMs": {
+        "c": 327.2521875,
+        "baseline": 47.081875,
+        "candidate": 18.166838062656865
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 6.950704225352112
+        },
+        "baseline": {
+          "overC": 0.14387031408308004,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 0.05551326700499707,
+          "overBaseline": 0.38585629953473316
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.0023125,
+            0.002171875,
+            0.002203125
+          ],
+          "medianMs": 0.002203125,
+          "maxOverMin": 1.0647482014388487,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.0003169642857142857,
+            0.0003169642857142857,
+            0.00031919642857142856
+          ],
+          "medianMs": 0.0003169642857142857,
+          "maxOverMin": 1.0070422535211268,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.00012230266637038416,
+            0.00012230266637038416,
+            0.00012058009360460409
+          ],
+          "medianMs": 0.00012230266637038416,
+          "maxOverMin": 1.0142857142857145,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-expression-32/bend-c/program",
+          "bytes": 95560,
+          "sha256": "08db3f74caa46be376818140e2a712677cf98e540ec546f24cf8fccdcd578aa1"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/coverage-expression-32/live",
+          "bytes": 180648,
+          "sha256": "4758233e067d871c2bb7e2b0895f01870ffd84d57d7726b4c0bc0c916d1bac47"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/coverage-expression-32/live",
+          "bytes": 180728,
+          "sha256": "aea434ca1541b35717b3dfc798b5ffb20dd6899de65ff7b043d4db88555ed2a3"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "coverage-expression-128",
+      "partition": "development",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.008616071428571428,
+        "baseline": 0.0012576469425704508,
+        "candidate": 0.0004830802015917664
+      },
+      "fixedEquivalentMs": {
+        "c": 325.1016071428571,
+        "baseline": 47.45353443706825,
+        "candidate": 18.22758216646053
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 6.850946109693877
+        },
+        "baseline": {
+          "overC": 0.14596524100299535,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 0.05606733945935528,
+          "overBaseline": 0.384114321149956
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.008616071428571428,
+            0.008616071428571428,
+            0.008616071428571428
+          ],
+          "medianMs": 0.008616071428571428,
+          "maxOverMin": 1.0,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.0012576469425704508,
+            0.0012576469425704508,
+            0.0012666301350173824
+          ],
+          "medianMs": 0.0012576469425704508,
+          "maxOverMin": 1.007142857142857,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.0004830802015917664,
+            0.0004830802015917664,
+            0.0004830802015917664
+          ],
+          "medianMs": 0.0004830802015917664,
+          "maxOverMin": 1.0,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-expression-128/bend-c/program",
+          "bytes": 95560,
+          "sha256": "9efb7aad9583b53366c0e194a5dceaddde3ea5f14bf7307ca273c636e4682b0c"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/coverage-expression-128/live",
+          "bytes": 180648,
+          "sha256": "4409683c1606d1ab8f6b61c3dda1b06f0636d11d3c683809a62e056b9b84bca9"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/coverage-expression-128/live",
+          "bytes": 180728,
+          "sha256": "d30a80180c243ca783523d7bad6bd93cb223e73d1b11d1034786c6dfdc699425"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "coverage-map-churn-32",
+      "partition": "development",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.046419098143236075,
+        "baseline": 0.15892857142857142,
+        "candidate": 0.13303571428571428
+      },
+      "fixedEquivalentMs": {
+        "c": 130.90185676392574,
+        "baseline": 448.1785714285714,
+        "candidate": 375.1607142857143
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.29207522427204724
+        },
+        "baseline": {
+          "overC": 3.423775510204081,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 2.865969387755102,
+          "overBaseline": 0.8370786516853933
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.046419098143236075,
+            0.046087533156498675,
+            0.046750663129973474
+          ],
+          "medianMs": 0.046419098143236075,
+          "maxOverMin": 1.014388489208633,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.15892857142857142,
+            0.15892857142857142,
+            0.1669642857142857
+          ],
+          "medianMs": 0.15892857142857142,
+          "maxOverMin": 1.050561797752809,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.13303571428571428,
+            0.13214285714285715,
+            0.13392857142857142
+          ],
+          "medianMs": 0.13303571428571428,
+          "maxOverMin": 1.0135135135135134,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-map-churn-32/bend-c/program",
+          "bytes": 285080,
+          "sha256": "287f716a811ab642cf26554d1946edb7d7e164e9ba916ec3f4137aea505489fb"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/coverage-map-churn-32/live",
+          "bytes": 441304,
+          "sha256": "1b50a8debddc16d3bc0c3676d26190a184cb125086a11351e8f207fb638d6ad7"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/coverage-map-churn-32/live",
+          "bytes": 445480,
+          "sha256": "45747687f79958b6ef9ba73ac91528bda15f9df6c6c14a91212e468eaa5df766"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "coverage-map-churn-128",
+      "partition": "development",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.23178807947019867,
+        "baseline": 0.7821229050279329,
+        "candidate": 0.6666666666666666
+      },
+      "fixedEquivalentMs": {
+        "c": 126.09271523178808,
+        "baseline": 425.4748603351955,
+        "candidate": 362.66666666666663
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.29635761589403975
+        },
+        "baseline": {
+          "overC": 3.3743016759776534,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 2.876190476190476,
+          "overBaseline": 0.8523809523809524
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.23013245033112584,
+            0.23178807947019867,
+            0.23344370860927152
+          ],
+          "medianMs": 0.23178807947019867,
+          "maxOverMin": 1.014388489208633,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.7877094972067039,
+            0.7821229050279329,
+            0.7821229050279329
+          ],
+          "medianMs": 0.7821229050279329,
+          "maxOverMin": 1.0071428571428571,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.6666666666666666,
+            0.6714285714285714,
+            0.6666666666666666
+          ],
+          "medianMs": 0.6666666666666666,
+          "maxOverMin": 1.0071428571428571,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-map-churn-128/bend-c/program",
+          "bytes": 285080,
+          "sha256": "dd26891f79683cd4263037a215f156044ef52eb30f03489fba05e45a5723ca14"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/coverage-map-churn-128/live",
+          "bytes": 441312,
+          "sha256": "743d9d81873a1757260507039fed98e18ca2de6c7bb7b1011d5e9c979f9a8eb2"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/coverage-map-churn-128/live",
+          "bytes": 445488,
+          "sha256": "ee10ef2efdac252a3f18d8af0d31373d6654bc1eeecb28b08f8641642fe4ddf4"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "coverage-numeric-recurrence-256",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.0008231788616943572,
+        "baseline": 0.0011964278084006324,
+        "candidate": 0.0011967386718783632
+      },
+      "fixedEquivalentMs": {
+        "c": 204.0462835213505,
+        "baseline": 296.5657394351152,
+        "candidate": 296.64279503052114
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.68803053215118
+        },
+        "baseline": {
+          "overC": 1.4534238718642667,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 1.453801509692686,
+          "overBaseline": 1.0002598263560476
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.0008231788616943572,
+            0.0008231788616943572,
+            0.000817381827457073
+          ],
+          "medianMs": 0.0008231788616943572,
+          "maxOverMin": 1.0070921985815604,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.0011964278084006324,
+            0.0011964278084006324,
+            0.0011964278084006324
+          ],
+          "medianMs": 0.0011964278084006324,
+          "maxOverMin": 1.0,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.0011967386718783632,
+            0.0011881290411454252,
+            0.0011967386718783632
+          ],
+          "medianMs": 0.0011967386718783632,
+          "maxOverMin": 1.0072463768115942,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-numeric-recurrence-256/bend-c/program",
+          "bytes": 90352,
+          "sha256": "b6c3e8cf8c9c36ef81bd03a32a9d8aaa3838c03537cba2dea45baa5e7ba748e3"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/coverage-numeric-recurrence-256/live",
+          "bytes": 180264,
+          "sha256": "1fa09180021e9cccdf9e30c7e858547de7c19995a940794b3cfc7fd51de5f456"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/coverage-numeric-recurrence-256/live",
+          "bytes": 180344,
+          "sha256": "e229dcfa536a5640c9de6ee45aaaa396654dbae34785361c5038d8c965dff750"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "coverage-numeric-recurrence-1024",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.00328125,
+        "baseline": 0.006354571573432483,
+        "candidate": 0.006457254321651981
+      },
+      "fixedEquivalentMs": {
+        "c": 203.2275,
+        "baseline": 393.5767449721142,
+        "candidate": 399.9365036658371
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.5163605385638298
+        },
+        "baseline": {
+          "overC": 1.9366313366651378,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 1.967925126598699,
+          "overBaseline": 1.0161588782237971
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.00328125,
+            0.0032589285714285715,
+            0.0033035714285714287
+          ],
+          "medianMs": 0.00328125,
+          "maxOverMin": 1.0136986301369864,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.006658779787054251,
+            0.006354571573432483,
+            0.006084164272435356
+          ],
+          "medianMs": 0.006354571573432483,
+          "maxOverMin": 1.0944444444444446,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.006928095782605771,
+            0.006457254321651981,
+            0.006289096657025628
+          ],
+          "medianMs": 0.006457254321651981,
+          "maxOverMin": 1.1016042780748663,
+          "flagged": true
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-numeric-recurrence-1024/bend-c/program",
+          "bytes": 90352,
+          "sha256": "a072c9056b658888b15023ecd52a8733dd9b0bc516f60f2150d6d5174efb953e"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/coverage-numeric-recurrence-1024/live",
+          "bytes": 180264,
+          "sha256": "b65626ca7b066dafc265f460e55fc50a4b11cfe5f2a823ec18c5a2c697888894"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/coverage-numeric-recurrence-1024/live",
+          "bytes": 180344,
+          "sha256": "f3731ddaa59b7ee2940bfbaa89f21f9c0ebbe0c2c7080169c7ab32ee68f440c8"
+        }
+      },
+      "flagged": true
+    },
+    {
+      "id": "coverage-record-aggregation-64",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.13482142857142856,
+        "baseline": 0.39710144927536234,
+        "candidate": 0.3410714285714286
+      },
+      "fixedEquivalentMs": {
+        "c": 207.625,
+        "baseline": 611.536231884058,
+        "candidate": 525.25
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.3395138164754953
+        },
+        "baseline": {
+          "overC": 2.9453882330358003,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 2.5298013245033113,
+          "overBaseline": 0.8589025026068822
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.13482142857142856,
+            0.14107142857142857,
+            0.13125
+          ],
+          "medianMs": 0.13482142857142856,
+          "maxOverMin": 1.074829931972789,
+          "flagged": false
+        },
+        "baseline": {
+          "samplesMs": [
+            0.39710144927536234,
+            0.37681159420289856,
+            0.4115942028985507
+          ],
+          "medianMs": 0.39710144927536234,
+          "maxOverMin": 1.0923076923076922,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            0.3375,
+            0.36607142857142855,
+            0.3410714285714286
+          ],
+          "medianMs": 0.3410714285714286,
+          "maxOverMin": 1.0846560846560844,
+          "flagged": false
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-record-aggregation-64/bend-c/program",
+          "bytes": 336168,
+          "sha256": "cd2262165511e07c836b1bbfa479af14cbf4667f60936e15c875f7e42e5d2cb3"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/coverage-record-aggregation-64/live",
+          "bytes": 442896,
+          "sha256": "1594fe1a8abbfa8a051573fbc7fd2fa524a82cbffe8e8d3f46b4f678b9680c52"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/coverage-record-aggregation-64/live",
+          "bytes": 447072,
+          "sha256": "2f8d7e03bbf9a27eb9c354130d2abb463d057b8f60b246d6cb265141dfabdb56"
+        }
+      },
+      "flagged": false
+    },
+    {
+      "id": "coverage-record-aggregation-256",
+      "partition": "heldout",
+      "ratioEligible": true,
+      "medianMs": {
+        "c": 0.5133689839572193,
+        "baseline": 1.5408163265306123,
+        "candidate": 1.3636363636363635
+      },
+      "fixedEquivalentMs": {
+        "c": 201.24064171122996,
+        "baseline": 604.0,
+        "candidate": 534.5454545454545
+      },
+      "ratios": {
+        "c": {
+          "overC": 1.0,
+          "overBaseline": 0.3331798703828311
+        },
+        "baseline": {
+          "overC": 3.001381802721088,
+          "overBaseline": 1.0
+        },
+        "candidate": {
+          "overC": 2.6562499999999996,
+          "overBaseline": 0.8850090307043949
+        }
+      },
+      "dispersion": {
+        "c": {
+          "samplesMs": [
+            0.5721925133689839,
+            0.5133689839572193,
+            0.3983957219251337
+          ],
+          "medianMs": 0.5133689839572193,
+          "maxOverMin": 1.436241610738255,
+          "flagged": true
+        },
+        "baseline": {
+          "samplesMs": [
+            1.5408163265306123,
+            1.5408163265306123,
+            1.5612244897959184
+          ],
+          "medianMs": 1.5408163265306123,
+          "maxOverMin": 1.0132450331125828,
+          "flagged": false
+        },
+        "candidate": {
+          "samplesMs": [
+            1.4166666666666667,
+            1.3636363636363635,
+            1.2348484848484849
+          ],
+          "medianMs": 1.3636363636363635,
+          "maxOverMin": 1.147239263803681,
+          "flagged": true
+        }
+      },
+      "artifacts": {
+        "c": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/coverage-record-aggregation-256/bend-c/program",
+          "bytes": 336168,
+          "sha256": "5b6b8a6d7df0616624c964d3b3df4e1e4756a2d3e53c01d321573ed9357d649e"
+        },
+        "baseline": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-live-plan01/cases/coverage-record-aggregation-256/live",
+          "bytes": 442896,
+          "sha256": "25cf0de3f0e41291359402cb49434ff77008322937d69f78b1118b1a9a930002"
+        },
+        "candidate": {
+          "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/coverage-record-aggregation-256/live",
+          "bytes": 447072,
+          "sha256": "a9b1e2ce22a1168597bea4e7e9dbf6d985d0d82ca93195418194cdfcf09110aa"
+        }
+      },
+      "flagged": true
+    }
+  ],
+  "compilerApiCosts": [],
+  "dispersionThreshold": 1.1,
+  "warnings": [
+    "Dispersion exceeds threshold: tree-bitonic, lexer, symreg, test-evening-program, test-rle-roundtrip, scalar-region-8192, variation-lexer-6-17, variation-tree-bitonic-6-17, variation-tree-bitonic-9-123, variation-local-fold-8192-123, coverage-list-pipeline-128, coverage-numeric-recurrence-1024, coverage-record-aggregation-256"
+  ],
+  "scope": "Ratios are ratios of role medians from this runtime report. Frozen baseline means authenticated executable identities, freshly timed in the same report. All eligible cases remain included, including dispersion flags. Fixed-equivalent sums use original catalog repetitions, never adaptive calibration counts; zero-work cases remain correctness-only. Partial development/heldout coverage is explicit; no unseen results, significance or promotion claim. Three roles and three position-balanced rounds at 140 ms calibration target replace the historical four-role/four-round/250 ms screen; the 100 ms acceptance floor, original catalog workloads, outputs, fixed-work weights and dispersion checks are unchanged. Development/heldout labels reuse the Phase198 partition and do not assert fresh unseen transfer. All 45 cases are timed, including byte-identical products. Candidate uses the authenticated live-plus-scan runtime bundle; incumbent remains the original qualified live runtime. Bundle addition may affect layout; separate placement controls must be reported separately. This is an N1 candidate screen, not N2/N3 reproduction or installed release qualification.",
+  "inheritedMethod": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase192/summarize.py",
+    "bytes": 13443,
+    "sha256": "baae0a06e9e2214efb1bf5ae00f57379005f250c9b0356b284320e9154f0ea3e"
+  },
+  "preparation": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/report.json",
+    "bytes": 254548,
+    "sha256": "45bdf1ff120b6b6bf9a4666f07e65045b8282143478f51fbfcee78d5a3c047a3"
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated01/compiler.bend",
+    "bytes": 1969124,
+    "sha256": "a48b1532ec45ac23cb972796f0101a8bf1864ed8769c6a2daee114ee268ce313"
+  },
+  "bundle": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/runtime-bundle01/report.json",
+    "bytes": 60050,
+    "sha256": "71ce5dfd9d69de14c3090fbc3d0f34eb54de5cb569aeb7bcc9e40b7a00090cdb"
+  },
+  "originalRuntime": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/runtime-bundle01/runtime-original-scan.o",
+    "bytes": 125920,
+    "sha256": "f6b444f3e2d5c1e9e1f3a495ab97dd8731ebb93eb2b7ef3baebd12a20ea8dd8c"
+  },
+  "liveRuntime": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/runtime-bundle01/runtime-live-scan.o",
+    "bytes": 128872,
+    "sha256": "1c819e63386e8bf7c392f3fa13509699b0f4d99867cf26d8777042350522cda8"
+  },
+  "incumbentRuntime": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/runtime-split-prepare01/runtime-live.o",
+    "bytes": 128176,
+    "sha256": "cdc641eb706178f549f775aaf86211c08d788778e8300502e48566e7870930ab"
+  },
+  "preflightObservations": 135,
+  "unchangedCases": []
+}

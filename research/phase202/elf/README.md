@@ -1,0 +1,22 @@
+# Write validated ELF sections directly to the compiler's output
+
+The Phase201 object CLI builds a reverse list of all section payload bytes and then reverses it to construct the full object byte list consumed by `File.write_bytes`. The segmented producer validates the same program, calculates the section headers, opens `/dev/stdout` once and writes the ELF header, nonempty section payloads and padding, and final section headers in file order. The 32,448,072-byte retained self-object requires ten nonempty writes. Reconstructing the original file from these segments produces its exact SHA-256. The two aggregate-list passes would construct 64,894,594 byte-list cells for its section payloads alone. [Layout replay](layout-audit.json)
+
+The only replaced existing declaration is `x187_print`. `prepare.py` lifts the existing production cursor, symbol, relocation, local fixup and error propagation bodies to an IO-returning path. The pure `x187_elf`, `x187_prepared`, `x187_assemble` and object result remain callable as before. The overlay introduces no data constructor or foreign effect. The generated producer accepts the same complete source and cached Base inputs.
+
+**Validation and ownership.** A successful byte-range, section-capacity, symbol/name, duplicate, relocation and fixup validation precedes `x202e_open`. The source text/rodata/data bytes are checked before writing, and every metadata byte comes from a fixed ASCII string or a bounded word encoder. An invalid relocation in otherwise valid 16 KiB text failed with exit 1, empty stdout and `invalid ELF relocation` on stderr. One affine `File` is passed through successive `File.write_bytes` operations. Both success and write failure close it. The registered runtime consumes each list and frees its host buffer upon operation completion. Production `.text`, `.rodata` and `.data` each cap at 32 MiB, the range checker for general object inputs permits 64 MiB per raw section, string tables cap at 64 MiB, and symbol/RELA tables cap at 24 MiB each. Host buffer growth uses powers of two and reserves room for five bytes, yielding up to 128 MiB for a maximal 64 MiB section. The largest historical self-object section and its whole file both occupied the runtime's 32 MiB allocation bucket. The writer primarily removes aggregate Bend list construction.
+
+**Output contract.** The compiler command owns its binary stdout, and the build transport separately checks compiler exit status before accepting the complete output. A system write failure can leave previously written bytes visible; the original runtime's single whole-object call also allowed a prefix when its OS write loop failed. Shared writers can interleave at the additional section boundaries. Whole-file atomic publication would require a separate destination/rename contract.
+
+The **sized** overlay additionally derives the ten section lengths from validated raw byte counts, one small walk of the RELA records, the null-inclusive symbol count times 24, the validated string-table size and the fixed section-name string. This removes 32,447,297 per-byte length-count steps on the historical self-object in exchange for walking 255,251 relocation records. The producer still emits the exact existing section bytes. The generic plan remains the fallback for an unexpected number of sizes.
+
+The source preparation and fixtures are metadata operations. Use fresh output paths. The native focus fixture contains 4,096 sorted local branch patches and 4,096 external relocations in 262,144 raw bytes. The existing independent Phase201 screen checks the bytes at every patch and relocation, the section identities, and complete output equality before recording each balanced timing. The compiled standalone programs include fixture construction, ELF processing, IO and process startup.
+
+```sh
+python3 -B research/phase202/elf/prepare.py --out selfhost/build/phase202/elfsource02
+python3 -B research/phase202/elf/focus.py --out selfhost/build/phase202/elffixture01
+python3 -B research/phase202/elf/sized.py --out selfhost/build/phase202/elfsized01 --fixture selfhost/build/phase202/elfsizedfixture01
+python3 -B research/phase202/elf/negative.py --prepare --out selfhost/build/phase202/elfnegativefixture01
+```
+
+Use the existing CPU 3 disk guard to invoke `screen.py --fixture <prepared fixture> --out <fresh declared root>` or `negative.py --fixture <prepared negative fixture> --out <fresh declared root>`. The whole compiler's cold self-build is a separate observation. [Native focus and negative case](results.json)

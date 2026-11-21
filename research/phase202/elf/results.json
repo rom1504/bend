@@ -1,0 +1,221 @@
+{
+  "p202stream01": {
+    "result": {
+      "complete": true,
+      "prepared": {
+        "old": {
+          "parentSha256": "a68ba12c823fff623c58f31154ddca5de8d80cce9a207f3f14b04e95c20836d0",
+          "standalone": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase202/elffixture01/old.bend",
+            "bytes": 48338,
+            "sha256": "488adaef6ea5f651d84014b507766cf7fea8bd8ae006441336a1b7c2a96754eb"
+          },
+          "declarations": 139
+        },
+        "new": {
+          "parentSha256": "adf07dcc26e83e7b2e4019175eda250eee38d441783c399fc1ae4c5a1772f4f5",
+          "standalone": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase202/elffixture01/new.bend",
+            "bytes": 46991,
+            "sha256": "685707139b295efa368eb7e488d915dca9bc239b074bfea0f498bc87676ad736"
+          },
+          "declarations": 134
+        }
+      },
+      "builds": {
+        "old": {
+          "compiler": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-native-image01/program",
+            "bytes": 18901904,
+            "sha256": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase202/elffixture01/old.bend",
+            "bytes": 48338,
+            "sha256": "488adaef6ea5f651d84014b507766cf7fea8bd8ae006441336a1b7c2a96754eb"
+          },
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase201/p202stream01/old/program",
+            "bytes": 671632,
+            "sha256": "a214b48b31ba707f1bf5691c2a7e8c70966a60af1384136ddf5824335f6c0bba"
+          },
+          "runtime": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/runtime.o",
+            "bytes": 125264,
+            "sha256": "67141c4505a0355901d857c4ba81dfc17559329e536818a843ce68615384d13e"
+          },
+          "argv": [
+            "/usr/bin/python3",
+            "-B",
+            "/home/ai/bend2/build/publish/bend/selfhost/tools/build/native.py",
+            "--assets",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/assets.json",
+            "--host",
+            "native",
+            "--stage",
+            "N1",
+            "--target",
+            "x86",
+            "--mode",
+            "cache",
+            "--emit",
+            "object",
+            "--image",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-native-image01/program",
+            "--image-receipt",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-native-image01/report.json",
+            "--source",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase202/elffixture01/old.bend",
+            "--out",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase201/p202stream01/old",
+            "--seconds",
+            "35"
+          ]
+        },
+        "new": {
+          "compiler": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-native-image01/program",
+            "bytes": 18901904,
+            "sha256": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase202/elffixture01/new.bend",
+            "bytes": 46991,
+            "sha256": "685707139b295efa368eb7e488d915dca9bc239b074bfea0f498bc87676ad736"
+          },
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase201/p202stream01/new/program",
+            "bytes": 673384,
+            "sha256": "a2dc49f9e8fe7abd8954c9c28e565fe03a15f53686df81be5d52c704dbe0e6fb"
+          },
+          "runtime": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/runtime.o",
+            "bytes": 125264,
+            "sha256": "67141c4505a0355901d857c4ba81dfc17559329e536818a843ce68615384d13e"
+          },
+          "argv": [
+            "/usr/bin/python3",
+            "-B",
+            "/home/ai/bend2/build/publish/bend/selfhost/tools/build/native.py",
+            "--assets",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase194/assets.json",
+            "--host",
+            "native",
+            "--stage",
+            "N1",
+            "--target",
+            "x86",
+            "--mode",
+            "cache",
+            "--emit",
+            "object",
+            "--image",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-native-image01/program",
+            "--image-receipt",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-native-image01/report.json",
+            "--source",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase202/elffixture01/new.bend",
+            "--out",
+            "/home/ai/bend2/build/publish/bend/selfhost/build/phase201/p202stream01/new",
+            "--seconds",
+            "35"
+          ]
+        }
+      },
+      "pairs": [
+        0.852545557596338,
+        0.8585055666222516,
+        0.847056480967629,
+        0.8589254829555868
+      ],
+      "observations": [
+        {
+          "role": "old",
+          "seconds": 0.056085094809532166,
+          "objectBytes": 361376,
+          "sha256": "ed17d22bb62df8e1501e58372c2875208f4041eabd243d8a451fbec8d6b3f8cb"
+        },
+        {
+          "role": "new",
+          "seconds": 0.04781509842723608,
+          "objectBytes": 361376,
+          "sha256": "ed17d22bb62df8e1501e58372c2875208f4041eabd243d8a451fbec8d6b3f8cb"
+        },
+        {
+          "role": "new",
+          "seconds": 0.04721962567418814,
+          "objectBytes": 361376,
+          "sha256": "ed17d22bb62df8e1501e58372c2875208f4041eabd243d8a451fbec8d6b3f8cb"
+        },
+        {
+          "role": "old",
+          "seconds": 0.0550021193921566,
+          "objectBytes": 361376,
+          "sha256": "ed17d22bb62df8e1501e58372c2875208f4041eabd243d8a451fbec8d6b3f8cb"
+        },
+        {
+          "role": "old",
+          "seconds": 0.05481263808906078,
+          "objectBytes": 361376,
+          "sha256": "ed17d22bb62df8e1501e58372c2875208f4041eabd243d8a451fbec8d6b3f8cb"
+        },
+        {
+          "role": "new",
+          "seconds": 0.04642940033227205,
+          "objectBytes": 361376,
+          "sha256": "ed17d22bb62df8e1501e58372c2875208f4041eabd243d8a451fbec8d6b3f8cb"
+        },
+        {
+          "role": "new",
+          "seconds": 0.04692192655056715,
+          "objectBytes": 361376,
+          "sha256": "ed17d22bb62df8e1501e58372c2875208f4041eabd243d8a451fbec8d6b3f8cb"
+        },
+        {
+          "role": "old",
+          "seconds": 0.054628634825348854,
+          "objectBytes": 361376,
+          "sha256": "ed17d22bb62df8e1501e58372c2875208f4041eabd243d8a451fbec8d6b3f8cb"
+        }
+      ],
+      "inputs": {},
+      "scope": "Real standalone writer outputs under the same pinned native compiler and runtime. Fixture construction, writer, output and startup all included.",
+      "medianPairedNewOverOld": 0.8555255621092948
+    },
+    "guardSeconds": 16.244591706432402,
+    "rawReceipts": {
+      "selfhost/build/phase201/p202stream01/report.json": "12b2a52eff3b6f6d03f4203d1e45de9144a5cafa069ac3607867010c82bfb63b",
+      "selfhost/build/phase201/p202stream01-guard/process.json": "4c37ae20d2334a0c67ddb3c7c0bba68b5ce4e827ec1055f7151e3661ce96b1b8",
+      "selfhost/build-retention/phase201/p202stream01-close/report.json": "568971ffb5ad509989e426fd49b6c28fdedff52876a077481de02ea392a1cdb1"
+    }
+  },
+  "p202bad01": {
+    "result": {
+      "complete": true,
+      "fixture": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase202/elfnegativefixture01/late-invalid.bend",
+        "bytes": 27586,
+        "sha256": "75dc7db45acc39e03720642eb78cda151ec145b59d4b84b6ce53d1b1711a964f"
+      },
+      "image": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/progress-native-image01/program",
+        "bytes": 18901904,
+        "sha256": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      },
+      "binary": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase201/p202bad01/machine/program",
+        "bytes": 372624,
+        "sha256": "38c449bde2c005b315535b716303a41d87728be7b0ec801d724dc5487984c3ae"
+      },
+      "exitCode": 1,
+      "stdoutBytes": 0,
+      "stderr": "invalid ELF relocation\n"
+    },
+    "guardSeconds": 3.7488993061706424,
+    "rawReceipts": {
+      "selfhost/build/phase201/p202bad01/report.json": "128528a2c8a8a8b1b059942601a194466da7036a338f567941b816bbc31a5f3f",
+      "selfhost/build/phase201/p202bad01-guard/process.json": "c7e3088b27e6b1ddee401342b1695e4d33fd422d6b41429e7e7df5d2b2d09d50",
+      "selfhost/build-retention/phase201/p202bad01-close/report.json": "954dbe2bb6b5b10e16ff4959f4c7150579e39ca904ea72dd7e6bf2564184611b"
+    }
+  }
+}

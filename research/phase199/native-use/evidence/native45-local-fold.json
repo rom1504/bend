@@ -65,5 +65,52 @@
   "textRelocations": [
     "0000000000003e44  000000f300000004 R_X86_64_PLT32         0000000000000000 p199_rt_u32_scan4 - 4"
   ],
-  "scope": "Existing native45 catalog job, using its catalog source entry, one independent observation and the original-plus-scan bundle. The separate ordinary IO recipe and explicit live-runtime plan use the same actual N1."
+  "scope": "Existing native45 catalog job, using its catalog source entry, one independent observation and the original-plus-scan bundle. The separate ordinary IO recipe and explicit live-runtime plan use the same actual N1.",
+  "liveRuntimeAcceptance": {
+    "preparation": {
+      "file": "selfhost/build/phase198/p199-integrated-live-plan02/report.json",
+      "bytes": 254548,
+      "sha256": "45bdf1ff120b6b6bf9a4666f07e65045b8282143478f51fbfcee78d5a3c047a3"
+    },
+    "closure": {
+      "file": "selfhost/build-retention/phase198/p199-integrated-live-plan02-close/report.json",
+      "bytes": 1481,
+      "sha256": "73ded52f08ddb91b5035fea809bbe0b973d8a3a4662eaea2b6065537e69a13e8"
+    },
+    "runtime": {
+      "file": "selfhost/build/phase199/runtime-bundle01/runtime-live-scan.o",
+      "bytes": 128872,
+      "sha256": "1c819e63386e8bf7c392f3fa13509699b0f4d99867cf26d8777042350522cda8"
+    },
+    "binary": {
+      "file": "selfhost/build/phase198/p199-integrated-live-plan02/cases/local-fold/live",
+      "bytes": 185240,
+      "sha256": "045438d60c191cc8d8979406ae10775db828de5500bb3c3a49a23740c6983187"
+    },
+    "command": [
+      "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/local-fold/live",
+      "+RTS",
+      "--threads",
+      "1",
+      "--gpu",
+      "off",
+      "-RTS",
+      "--RTS",
+      "1",
+      "0",
+      "4096",
+      "17"
+    ],
+    "stdout": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/local-fold/oracle-candidate/stdout",
+      "bytes": 17,
+      "sha256": "5f4df38587f46b697cd3acaa9223fbc9374f39564aac3cad81127b4101040075"
+    },
+    "stderr": {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-integrated-live-plan02/cases/local-fold/oracle-candidate/stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "exitCode": 0
+  }
 }

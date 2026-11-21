@@ -1,3 +1,9 @@
+## Phase199 direct x86 reaches 1.0007× mature C on the native45 geometric mean
+
+The integrated experimental N1 passed all 45 programs. A matched three-role runtime screen found 1.625× C on fixed work and 17/44 programs above 2× C. The prior Phase198 native compiler remains the qualified release. [Results, limits and reproduction](../implementation/phase199/README.md)
+
+---
+
 # Phase198 direct x86 program runtime
 
 Direct x86 takes **1.2781× mature Bend C runtime** on the 44 timed native45 cases. Phase197 took 1.8426× in the same run. Excluding the one input whose loop reaches a fixed point, the ratios are 1.5337× and 1.8361×. The original fixed-work batch takes 19.31 seconds versus 10.32 seconds for C. The source transformations changed 12 of 45 objects. The largest remaining time budgets are in lexical analysis, Map, scalar array folds, record aggregation and BST. Ray tracing leads when weighting by excess batch time.

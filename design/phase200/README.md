@@ -1,0 +1,7 @@
+# Direct x86 after geometric parity
+
+The reference is the independently checked Phase199 N1, its live-plus-scan runtime, the frozen native45 catalog and the mature C products. Phase199 measured 1.0007× C geometrically and 1.625× on the fixed-work batch. The research target is 0.5× C. A candidate has to earn a new score on the same workloads.
+
+Start with independent short trials on three kinds of work. Test whether direct x86 can use the previous result register across edit-distance spills, avoid a runtime call on an immediate owned term, and retain floating-point register values across square root. Check emitted machines, positive and refused cases, complete outputs and costs separately. In parallel, test opportunities before instruction selection: combine token generation and lexing, flatten a private stack of tagged tree frames, and fuse string splitting with joining. Keep transformed-source observations distinct from gains made automatically on unchanged catalog programs.
+
+Only combine compiler rules demonstrated on the current Phase199 input. Build an independently checked N1, compile the original catalog, and time it against the current N1 and mature C. Report the complete-program geometric mean, threshold counts, fixed-equivalent seconds, noise and material regressions. Use one guarded physical lane, maintain the 5 GiB reserve, and keep installed selections intact. A faster algorithm on a transformed workload is evidence for compiler design and has no weight in a headline score until the compiler selects it.

@@ -1,0 +1,53 @@
+{
+  "status": "frozen before model",
+  "cases": [
+    {
+      "role": "direct",
+      "program": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/orbit-native45-01/local-fold/machine/program.o",
+        "bytes": 98248,
+        "sha256": "69a7c43e3379703fcf5a13f49b7098cbb7b2021d156ca5ae550433e5d7358d1c"
+      },
+      "disassembly": {
+        "file": "/home/ai/bend2/build/publish/bend/research/phase198/loops/unroll-two/direct-model.objdump",
+        "bytes": 4189,
+        "sha256": "0dc5a1600c2ad0da382d202ae9ed7f28ed6014afcc78227131e4edf71085681b"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/research/phase198/loops/unroll-two/direct-model.s",
+        "bytes": 331,
+        "sha256": "e77641df3b8629e151b4bc10a41a492eefb43b2f71163d1f28387b655d585657"
+      },
+      "instructions": 18,
+      "cellsPerIteration": 1
+    },
+    {
+      "role": "c",
+      "program": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase184/bend-products01/local-fold/bend-c/program",
+        "bytes": 93664,
+        "sha256": "ddf9f48cb789b857115946cc18a79796f344e747094b6ceff2e6f1229c8a0ffc"
+      },
+      "disassembly": {
+        "file": "/home/ai/bend2/build/publish/bend/research/phase198/loops/unroll-two/c-model.objdump",
+        "bytes": 8941,
+        "sha256": "219160b78053630a79412dc9cf670cf75756f9e8024ef3610e8d07c9ad2e333a"
+      },
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/research/phase198/loops/unroll-two/c-model.s",
+        "bytes": 329,
+        "sha256": "5b631388c3a2062c5daf462e059a87ecf3b9b6cf6b4430140cfcbf4cbab70697"
+      },
+      "instructions": 15,
+      "cellsPerIteration": 2
+    }
+  ],
+  "cpu": "ivybridge, family6/model58 physical guard from existing tree MCA",
+  "iterations": 100,
+  "aliasModes": [
+    false,
+    true
+  ],
+  "prediction": "C fewer instructions/control per cell should have lower normalized reciprocal throughput. Numerical agreement with retained ~2.027 incremental wall-time ratio is unproven and may fail.",
+  "scope": "Actual steady taken path, original register recurrences/load/store retained; cold setup/exit/layout excluded. C processes2 cells/block, direct1; normalize cycles and throughput per cell. noalias=false conservatively serializes potentially aliasing accesses; noalias=true relaxes unknown store/load aliases. Neither encodes exact circular128-cell dependence. Branch prediction and measured whole-program timing are not modeled."
+}

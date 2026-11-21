@@ -1,0 +1,961 @@
+{
+  "reference": {
+    "manifest": {
+      "file": "selfhost/build/phase198/native45-01/programs.manifest.json",
+      "sha256": "d4ae6f6bec7f4976cb2e214ec0ec6f909aab90983d0fa607cc06ecd7d3372f67",
+      "bytes": 1593812
+    },
+    "main": {
+      "file": "selfhost/build/phase198/native45-01/report.json",
+      "sha256": "23875e3cdaf78803903cfc77f03594e22383fbecf2c94e6510d1deaa513fab07",
+      "bytes": 142445
+    },
+    "wholeCatalogSeconds": 105.84491301048547
+  },
+  "candidate": {
+    "manifest": {
+      "file": "selfhost/build/phase198/progress-native45-01/programs.manifest.json",
+      "sha256": "16a689c5f893e47108c36d1ab5b680c8816ac645e7e037c0921a4f86dbf09a19",
+      "bytes": 1599713
+    },
+    "main": {
+      "file": "selfhost/build/phase198/progress-native45-01/report.json",
+      "sha256": "c8e0b54b9ca106af202fdea8c28b352eb381510f9a7b2ffa430042f2f586418e",
+      "bytes": 144197
+    },
+    "wholeCatalogSeconds": 105.77882777899504
+  },
+  "referenceTotals": {
+    "outputBytes": 7889464,
+    "compileSeconds": 77.30339920893312,
+    "compileCpu": 76.236573,
+    "linkSeconds": 1.0427126558497548,
+    "maximumCompilerRssKiB": 57216,
+    "medianCompilerRssKiB": 44556
+  },
+  "candidateTotals": {
+    "outputBytes": 7861168,
+    "compileSeconds": 79.40299747698009,
+    "compileCpu": 77.79830600000003,
+    "linkSeconds": 1.0494649717584252,
+    "maximumCompilerRssKiB": 57644,
+    "medianCompilerRssKiB": 44956
+  },
+  "candidateOverReference": {
+    "outputBytes": 0.9964134445635343,
+    "compileSeconds": 1.027160490864991,
+    "compileCpu": 1.0204853515647931,
+    "linkSeconds": 1.006475720679891,
+    "maximumCompilerRssKiB": 1.0074804250559284,
+    "medianCompilerRssKiB": 1.008977466558937
+  },
+  "geometricEmitWallRatio": 1.0342301964333198,
+  "scope": "45 complete identical sources with prepared Base, one fresh native N1 compiler process per source. Wall and process CPU pertain only to compiler-to-object. Link and total catalog have their own intervals. One pass per image, separate clock times. No randomized repeated compiler-time significance claim.",
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase198/composition/compile-cost.py",
+    "sha256": "e963f040c8834025792f2ec2828225f2c3513009a091fec107787c7f12ef373d",
+    "bytes": 3364
+  },
+  "perCase": {
+    "mandelbrot": {
+      "before": {
+        "compileSeconds": 1.9042760012671351,
+        "compileCpu": 1.866057,
+        "linkSeconds": 0.022197093814611435,
+        "maxRssKiB": 44696,
+        "outputBytes": 137608,
+        "source": "7d47d183cf02b3e943e0e35532eb8ba12c683eafd9b2031bbc25983181174897",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 2.029702989384532,
+        "compileCpu": 1.982199,
+        "linkSeconds": 0.027733237482607365,
+        "maxRssKiB": 45048,
+        "outputBytes": 137832,
+        "source": "7d47d183cf02b3e943e0e35532eb8ba12c683eafd9b2031bbc25983181174897",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "editdist": {
+      "before": {
+        "compileSeconds": 1.7979581281542778,
+        "compileCpu": 1.773007,
+        "linkSeconds": 0.022417036816477776,
+        "maxRssKiB": 44696,
+        "outputBytes": 135664,
+        "source": "759d82e26789e55187d175cb8416d6ebe4266a53f73a53ca6d32b69d4f71e988",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 2.420381912961602,
+        "compileCpu": 2.3896159999999997,
+        "linkSeconds": 0.02761513739824295,
+        "maxRssKiB": 45024,
+        "outputBytes": 135664,
+        "source": "759d82e26789e55187d175cb8416d6ebe4266a53f73a53ca6d32b69d4f71e988",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "tree-bitonic": {
+      "before": {
+        "compileSeconds": 1.3125341031700373,
+        "compileCpu": 1.290752,
+        "linkSeconds": 0.022845717146992683,
+        "maxRssKiB": 44640,
+        "outputBytes": 139832,
+        "source": "405f8d8fb2066e6fedd8baa45943bcdf92b59cb40e23ce2ad3ea4bd3eeb53ae0",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 1.357680163346231,
+        "compileCpu": 1.3565909999999999,
+        "linkSeconds": 0.02238432690501213,
+        "maxRssKiB": 44812,
+        "outputBytes": 141464,
+        "source": "405f8d8fb2066e6fedd8baa45943bcdf92b59cb40e23ce2ad3ea4bd3eeb53ae0",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "lexer": {
+      "before": {
+        "compileSeconds": 1.510282602161169,
+        "compileCpu": 1.497479,
+        "linkSeconds": 0.02319973986595869,
+        "maxRssKiB": 44480,
+        "outputBytes": 136072,
+        "source": "bfb62870600b63fd6ec6088471a2d805fabb819a7f2e9d47c9b0ef3c368d169a",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 1.660287369042635,
+        "compileCpu": 1.5695709999999998,
+        "linkSeconds": 0.025945572182536125,
+        "maxRssKiB": 44796,
+        "outputBytes": 136072,
+        "source": "bfb62870600b63fd6ec6088471a2d805fabb819a7f2e9d47c9b0ef3c368d169a",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "symreg": {
+      "before": {
+        "compileSeconds": 1.476966792717576,
+        "compileCpu": 1.441448,
+        "linkSeconds": 0.022827647626399994,
+        "maxRssKiB": 44660,
+        "outputBytes": 161624,
+        "source": "3c8afa94641531b0e88a51e228cc5e5479db3e36ea244362fcaea5b7705b56a2",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 1.5275966236367822,
+        "compileCpu": 1.488688,
+        "linkSeconds": 0.0240844264626503,
+        "maxRssKiB": 44940,
+        "outputBytes": 161624,
+        "source": "3c8afa94641531b0e88a51e228cc5e5479db3e36ea244362fcaea5b7705b56a2",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "test-morning-program": {
+      "before": {
+        "compileSeconds": 3.449505303055048,
+        "compileCpu": 3.4322269999999997,
+        "linkSeconds": 0.02459021657705307,
+        "maxRssKiB": 51072,
+        "outputBytes": 434096,
+        "source": "740992084d3171460f394dfdd2574a3def860de3260d818b2a99fb9c8e945746",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 3.3087991569191217,
+        "compileCpu": 3.307664,
+        "linkSeconds": 0.02465461939573288,
+        "maxRssKiB": 51344,
+        "outputBytes": 434096,
+        "source": "740992084d3171460f394dfdd2574a3def860de3260d818b2a99fb9c8e945746",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "test-evening-program": {
+      "before": {
+        "compileSeconds": 3.435430054552853,
+        "compileCpu": 3.390154,
+        "linkSeconds": 0.024402638897299767,
+        "maxRssKiB": 51060,
+        "outputBytes": 472064,
+        "source": "4d568aa3230e4383a930c7008e9b64c51fcc9326a61edd9532716114f1c2ae9c",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 3.541855104267597,
+        "compileCpu": 3.510557,
+        "linkSeconds": 0.024698538705706596,
+        "maxRssKiB": 51492,
+        "outputBytes": 472064,
+        "source": "4d568aa3230e4383a930c7008e9b64c51fcc9326a61edd9532716114f1c2ae9c",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "test-rle-roundtrip": {
+      "before": {
+        "compileSeconds": 1.1358201680704951,
+        "compileCpu": 1.108127,
+        "linkSeconds": 0.022618494927883148,
+        "maxRssKiB": 42520,
+        "outputBytes": 118992,
+        "source": "b46580acb1656502d0e37a0115d172529e648719acb75eadb3b9ad45db5b078d",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 1.1561721889302135,
+        "compileCpu": 1.1402700000000001,
+        "linkSeconds": 0.022653154097497463,
+        "maxRssKiB": 42728,
+        "outputBytes": 118992,
+        "source": "b46580acb1656502d0e37a0115d172529e648719acb75eadb3b9ad45db5b078d",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "test-map-set-ops": {
+      "before": {
+        "compileSeconds": 4.32855810970068,
+        "compileCpu": 4.327445,
+        "linkSeconds": 0.025672703981399536,
+        "maxRssKiB": 57216,
+        "outputBytes": 597560,
+        "source": "e93dc56e4c91670bb831c329e9ced90a0e17126bc02f4d7709131a516f0eb0ca",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 4.44574414100498,
+        "compileCpu": 4.429069999999999,
+        "linkSeconds": 0.025620626285672188,
+        "maxRssKiB": 57644,
+        "outputBytes": 597560,
+        "source": "e93dc56e4c91670bb831c329e9ced90a0e17126bc02f4d7709131a516f0eb0ca",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "raytrace": {
+      "before": {
+        "compileSeconds": 2.5845723347738385,
+        "compileCpu": 2.566406,
+        "linkSeconds": 0.02263768296688795,
+        "maxRssKiB": 44632,
+        "outputBytes": 172904,
+        "source": "17e96389638b1a6a12bf9a4f7cabaf00184f1974e75d8363d699aef6b318fd34",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 2.645772443152964,
+        "compileCpu": 2.609928,
+        "linkSeconds": 0.022686765529215336,
+        "maxRssKiB": 45016,
+        "outputBytes": 172904,
+        "source": "17e96389638b1a6a12bf9a4f7cabaf00184f1974e75d8363d699aef6b318fd34",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "local-pair": {
+      "before": {
+        "compileSeconds": 1.7786434134468436,
+        "compileCpu": 1.7594329999999998,
+        "linkSeconds": 0.022467617876827717,
+        "maxRssKiB": 44684,
+        "outputBytes": 126888,
+        "source": "acb8a8bc1d8ed6fd5c3a57e08c154042e0524a8d4f3f12ddcec9da75a327e78c",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 1.9424975523725152,
+        "compileCpu": 1.849323,
+        "linkSeconds": 0.022723033092916012,
+        "maxRssKiB": 44960,
+        "outputBytes": 126888,
+        "source": "acb8a8bc1d8ed6fd5c3a57e08c154042e0524a8d4f3f12ddcec9da75a327e78c",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "local-fold": {
+      "before": {
+        "compileSeconds": 1.007926351390779,
+        "compileCpu": 0.9858309999999999,
+        "linkSeconds": 0.02256389893591404,
+        "maxRssKiB": 42620,
+        "outputBytes": 98248,
+        "source": "2252256562cc415348f3aa53c960b318f87c4a8b5fd118a0a2f115d446723125",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 1.0851777587085962,
+        "compileCpu": 1.011851,
+        "linkSeconds": 0.022372834384441376,
+        "maxRssKiB": 42956,
+        "outputBytes": 98248,
+        "source": "2252256562cc415348f3aa53c960b318f87c4a8b5fd118a0a2f115d446723125",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "scalar-region-0": {
+      "before": {
+        "compileSeconds": 1.0252205673605204,
+        "compileCpu": 1.024054,
+        "linkSeconds": 0.022236807271838188,
+        "maxRssKiB": 44528,
+        "outputBytes": 94288,
+        "source": "4f20060ec4dce1625914d1bca3a6e07390e3b6bffe001a09bae4ac92a386dc2e",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 1.1312885973602533,
+        "compileCpu": 1.11286,
+        "linkSeconds": 0.022467362694442272,
+        "maxRssKiB": 44916,
+        "outputBytes": 94504,
+        "source": "4f20060ec4dce1625914d1bca3a6e07390e3b6bffe001a09bae4ac92a386dc2e",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "scalar-region-8192": {
+      "before": {
+        "compileSeconds": 1.0636398876085877,
+        "compileCpu": 1.0625280000000001,
+        "linkSeconds": 0.0233090678229928,
+        "maxRssKiB": 44404,
+        "outputBytes": 94288,
+        "source": "ee300ddfdeda2e89e2f52550ec10d9f22842276cef737fbd19578bed095133f7",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 1.186717507429421,
+        "compileCpu": 1.170204,
+        "linkSeconds": 0.02235661167651415,
+        "maxRssKiB": 44936,
+        "outputBytes": 94504,
+        "source": "ee300ddfdeda2e89e2f52550ec10d9f22842276cef737fbd19578bed095133f7",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "complete-generic-row32": {
+      "before": {
+        "compileSeconds": 1.8832605881616473,
+        "compileCpu": 1.8529239999999998,
+        "linkSeconds": 0.02277127280831337,
+        "maxRssKiB": 44608,
+        "outputBytes": 164648,
+        "source": "10e093925d81b26d82fc5071ef22c4b76dc9e55b3dbb9b47cbbb03110d29aba1",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 1.9205443570390344,
+        "compileCpu": 1.8939050000000002,
+        "linkSeconds": 0.022613736800849438,
+        "maxRssKiB": 45184,
+        "outputBytes": 164648,
+        "source": "10e093925d81b26d82fc5071ef22c4b76dc9e55b3dbb9b47cbbb03110d29aba1",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "variation-editdist-0-17": {
+      "before": {
+        "compileSeconds": 2.0303183551877737,
+        "compileCpu": 2.011097,
+        "linkSeconds": 0.022329569794237614,
+        "maxRssKiB": 44704,
+        "outputBytes": 135664,
+        "source": "04626f081fd3ef709c7d5d7daf4b5ead6262b7b2c792e6fb347c68e4dda3a582",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 1.8458978533744812,
+        "compileCpu": 1.81682,
+        "linkSeconds": 0.022570008412003517,
+        "maxRssKiB": 44956,
+        "outputBytes": 135664,
+        "source": "04626f081fd3ef709c7d5d7daf4b5ead6262b7b2c792e6fb347c68e4dda3a582",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "variation-editdist-3-123": {
+      "before": {
+        "compileSeconds": 1.9176941122859716,
+        "compileCpu": 1.8996229999999998,
+        "linkSeconds": 0.02233979105949402,
+        "maxRssKiB": 44752,
+        "outputBytes": 135672,
+        "source": "a4e09e8b7c9a23cf0eb7ab4604993438f97184b5f30c98d693042461349272fd",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 1.911329209804535,
+        "compileCpu": 1.812826,
+        "linkSeconds": 0.02317884098738432,
+        "maxRssKiB": 44984,
+        "outputBytes": 135672,
+        "source": "a4e09e8b7c9a23cf0eb7ab4604993438f97184b5f30c98d693042461349272fd",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "variation-lexer-6-17": {
+      "before": {
+        "compileSeconds": 1.513694440945983,
+        "compileCpu": 1.512552,
+        "linkSeconds": 0.02245966996997595,
+        "maxRssKiB": 44576,
+        "outputBytes": 136080,
+        "source": "2e3de72111f28e34b22bef4f0433506da55edaaa888d4df0d665d08b41a70887",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 1.589761134237051,
+        "compileCpu": 1.5416439999999998,
+        "linkSeconds": 0.022167565301060677,
+        "maxRssKiB": 44896,
+        "outputBytes": 136080,
+        "source": "2e3de72111f28e34b22bef4f0433506da55edaaa888d4df0d665d08b41a70887",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "variation-lexer-10-123": {
+      "before": {
+        "compileSeconds": 1.4997061658650637,
+        "compileCpu": 1.498561,
+        "linkSeconds": 0.02272762358188629,
+        "maxRssKiB": 44636,
+        "outputBytes": 136080,
+        "source": "513ae3729efd7f312c610e9136b7e8f3f2767cbcafe3bd9da2d2f04c92d59139",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 1.5677440203726292,
+        "compileCpu": 1.547803,
+        "linkSeconds": 0.02243561390787363,
+        "maxRssKiB": 44960,
+        "outputBytes": 136080,
+        "source": "513ae3729efd7f312c610e9136b7e8f3f2767cbcafe3bd9da2d2f04c92d59139",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "variation-tree-bitonic-6-17": {
+      "before": {
+        "compileSeconds": 1.3613759707659483,
+        "compileCpu": 1.3294279999999998,
+        "linkSeconds": 0.02231435477733612,
+        "maxRssKiB": 44696,
+        "outputBytes": 139840,
+        "source": "da4d24d043f90bc7dec87cde76de317e88db22e27d315172eb08567aac8fb3af",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 1.3766968986019492,
+        "compileCpu": 1.347923,
+        "linkSeconds": 0.022409094497561455,
+        "maxRssKiB": 44968,
+        "outputBytes": 141464,
+        "source": "da4d24d043f90bc7dec87cde76de317e88db22e27d315172eb08567aac8fb3af",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "variation-tree-bitonic-9-123": {
+      "before": {
+        "compileSeconds": 1.5582715859636664,
+        "compileCpu": 1.557145,
+        "linkSeconds": 0.022873849608004093,
+        "maxRssKiB": 44456,
+        "outputBytes": 139840,
+        "source": "a641ba273024691024829018b0f494935e2e8c038ae6e8708ed58b410f0171b6",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 1.387449186295271,
+        "compileCpu": 1.3509499999999999,
+        "linkSeconds": 0.022615578956902027,
+        "maxRssKiB": 44928,
+        "outputBytes": 141464,
+        "source": "a641ba273024691024829018b0f494935e2e8c038ae6e8708ed58b410f0171b6",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "variation-symreg-4-17": {
+      "before": {
+        "compileSeconds": 1.4565066415816545,
+        "compileCpu": 1.455019,
+        "linkSeconds": 0.023113424889743328,
+        "maxRssKiB": 44620,
+        "outputBytes": 161624,
+        "source": "6e2e51bf436713ead1b06822a97d03dc853d1849aaa7749c018ff6db2b8a6400",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 1.4714610194787383,
+        "compileCpu": 1.470359,
+        "linkSeconds": 0.022616778500378132,
+        "maxRssKiB": 44980,
+        "outputBytes": 161624,
+        "source": "6e2e51bf436713ead1b06822a97d03dc853d1849aaa7749c018ff6db2b8a6400",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "variation-symreg-7-123": {
+      "before": {
+        "compileSeconds": 1.445833413861692,
+        "compileCpu": 1.427886,
+        "linkSeconds": 0.0230404082685709,
+        "maxRssKiB": 44620,
+        "outputBytes": 161624,
+        "source": "fb8dee79917f21fc6f621cdc8201d33a662ba4505b22d54895e39fd62c363546",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 1.5117289805784822,
+        "compileCpu": 1.510629,
+        "linkSeconds": 0.023818292655050755,
+        "maxRssKiB": 45040,
+        "outputBytes": 161624,
+        "source": "fb8dee79917f21fc6f621cdc8201d33a662ba4505b22d54895e39fd62c363546",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "variation-local-fold-128-0": {
+      "before": {
+        "compileSeconds": 0.9986108876764774,
+        "compileCpu": 0.973346,
+        "linkSeconds": 0.022553185932338238,
+        "maxRssKiB": 42600,
+        "outputBytes": 98248,
+        "source": "73ce97cc78fd63446fe943dc3b8cc5604d8a95a49ac9b1b6d51853adee583bea",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 1.0283431019634008,
+        "compileCpu": 1.027233,
+        "linkSeconds": 0.023572334088385105,
+        "maxRssKiB": 43004,
+        "outputBytes": 98248,
+        "source": "73ce97cc78fd63446fe943dc3b8cc5604d8a95a49ac9b1b6d51853adee583bea",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "variation-local-fold-8192-123": {
+      "before": {
+        "compileSeconds": 1.0066265380010009,
+        "compileCpu": 0.99166,
+        "linkSeconds": 0.022677532397210598,
+        "maxRssKiB": 42600,
+        "outputBytes": 98248,
+        "source": "40cd23bfd2931023132a077a33ba1e638ad8870e344ff9310945dc357b5abae5",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 1.0468941200524569,
+        "compileCpu": 1.013889,
+        "linkSeconds": 0.02274950034916401,
+        "maxRssKiB": 43056,
+        "outputBytes": 98248,
+        "source": "40cd23bfd2931023132a077a33ba1e638ad8870e344ff9310945dc357b5abae5",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "variation-mandelbrot-grid-4-7": {
+      "before": {
+        "compileSeconds": 1.1571635138243437,
+        "compileCpu": 1.118176,
+        "linkSeconds": 0.024857436306774616,
+        "maxRssKiB": 44548,
+        "outputBytes": 96648,
+        "source": "793feefdc1dec5425bddfc1cd50ca0746569b7fc5c327a41edb313125c545846",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 1.2087547983974218,
+        "compileCpu": 1.189495,
+        "linkSeconds": 0.022085203789174557,
+        "maxRssKiB": 45004,
+        "outputBytes": 96872,
+        "source": "793feefdc1dec5425bddfc1cd50ca0746569b7fc5c327a41edb313125c545846",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "variation-mandelbrot-grid-5-31": {
+      "before": {
+        "compileSeconds": 1.1350472392514348,
+        "compileCpu": 1.11477,
+        "linkSeconds": 0.022994779981672764,
+        "maxRssKiB": 44556,
+        "outputBytes": 96648,
+        "source": "898cb66cad62cd20615d3e100ee2638f695efd071ee8290b5e0da03b89f702c4",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 1.2124944236129522,
+        "compileCpu": 1.1834369999999999,
+        "linkSeconds": 0.022185695357620716,
+        "maxRssKiB": 44984,
+        "outputBytes": 96872,
+        "source": "898cb66cad62cd20615d3e100ee2638f695efd071ee8290b5e0da03b89f702c4",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "variation-ray-active-64-2440": {
+      "before": {
+        "compileSeconds": 2.395573329180479,
+        "compileCpu": 2.3814,
+        "linkSeconds": 0.023530264385044575,
+        "maxRssKiB": 44548,
+        "outputBytes": 149296,
+        "source": "2e01d6027b6b046e38d8c34b4397f5df45f2d912d2f86f273aaa4e3a336f4296",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 2.4380862778052688,
+        "compileCpu": 2.4207650000000003,
+        "linkSeconds": 0.0226855194196105,
+        "maxRssKiB": 44988,
+        "outputBytes": 149296,
+        "source": "2e01d6027b6b046e38d8c34b4397f5df45f2d912d2f86f273aaa4e3a336f4296",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "variation-ray-active-256-2240": {
+      "before": {
+        "compileSeconds": 2.3857068410143256,
+        "compileCpu": 2.367987,
+        "linkSeconds": 0.023112875409424305,
+        "maxRssKiB": 44504,
+        "outputBytes": 149296,
+        "source": "7099448e301e2cab7cb5ab47e2a4892dbf44ac246676b4f950282c7a57007669",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 2.42776061501354,
+        "compileCpu": 2.426643,
+        "linkSeconds": 0.022935863584280014,
+        "maxRssKiB": 45000,
+        "outputBytes": 149296,
+        "source": "7099448e301e2cab7cb5ab47e2a4892dbf44ac246676b4f950282c7a57007669",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "coverage-closures-64": {
+      "before": {
+        "compileSeconds": 0.9131511682644486,
+        "compileCpu": 0.912079,
+        "linkSeconds": 0.023221652954816818,
+        "maxRssKiB": 42544,
+        "outputBytes": 92312,
+        "source": "d5a0e144805beec3aafdfa5a5bf0ae1579659caff90d42fc178f0ac17b9db60a",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 0.9602912645787001,
+        "compileCpu": 0.9351200000000001,
+        "linkSeconds": 0.022739985026419163,
+        "maxRssKiB": 43064,
+        "outputBytes": 92312,
+        "source": "d5a0e144805beec3aafdfa5a5bf0ae1579659caff90d42fc178f0ac17b9db60a",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "coverage-closures-256": {
+      "before": {
+        "compileSeconds": 0.9356277557089925,
+        "compileCpu": 0.9115269999999999,
+        "linkSeconds": 0.022917086258530617,
+        "maxRssKiB": 42628,
+        "outputBytes": 92312,
+        "source": "d0e35c8343fcbe86b45211f7738d293a27a0a5184060e0136b0275fc9556cef4",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 0.9592065988108516,
+        "compileCpu": 0.937542,
+        "linkSeconds": 0.022528480738401413,
+        "maxRssKiB": 43124,
+        "outputBytes": 92312,
+        "source": "d0e35c8343fcbe86b45211f7738d293a27a0a5184060e0136b0275fc9556cef4",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "coverage-list-pipeline-128": {
+      "before": {
+        "compileSeconds": 0.9898098725825548,
+        "compileCpu": 0.974074,
+        "linkSeconds": 0.02294851839542389,
+        "maxRssKiB": 42736,
+        "outputBytes": 96208,
+        "source": "5a6bb5b6e3e4549ceae238b40485aa6d00facdab6bb8382790a486b165a1cd97",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 1.001217338256538,
+        "compileCpu": 1.000109,
+        "linkSeconds": 0.022544164210557938,
+        "maxRssKiB": 42996,
+        "outputBytes": 96208,
+        "source": "5a6bb5b6e3e4549ceae238b40485aa6d00facdab6bb8382790a486b165a1cd97",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "coverage-list-pipeline-512": {
+      "before": {
+        "compileSeconds": 1.0290103498846292,
+        "compileCpu": 0.992404,
+        "linkSeconds": 0.024013287387788296,
+        "maxRssKiB": 42740,
+        "outputBytes": 96208,
+        "source": "c4eba973b7176ba8a0bc7c07aa69f32c7f8ed8b09fd32d8d3b92fa2a343e0fe9",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 1.0137539794668555,
+        "compileCpu": 1.0126190000000002,
+        "linkSeconds": 0.022655746899545193,
+        "maxRssKiB": 43192,
+        "outputBytes": 96208,
+        "source": "c4eba973b7176ba8a0bc7c07aa69f32c7f8ed8b09fd32d8d3b92fa2a343e0fe9",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "coverage-bst-32": {
+      "before": {
+        "compileSeconds": 1.1102466136217117,
+        "compileCpu": 1.096463,
+        "linkSeconds": 0.022889897227287292,
+        "maxRssKiB": 42408,
+        "outputBytes": 113600,
+        "source": "5b2e60b5e1435882bcdd25329194073c64df8d88d21f98ba2c3290384738c1c2",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 1.3990410063415766,
+        "compileCpu": 1.3786990000000001,
+        "linkSeconds": 0.02360432129353285,
+        "maxRssKiB": 42768,
+        "outputBytes": 113616,
+        "source": "5b2e60b5e1435882bcdd25329194073c64df8d88d21f98ba2c3290384738c1c2",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "coverage-bst-64": {
+      "before": {
+        "compileSeconds": 1.1214808747172356,
+        "compileCpu": 1.074832,
+        "linkSeconds": 0.022186645306646824,
+        "maxRssKiB": 42576,
+        "outputBytes": 113600,
+        "source": "474ffc3a68c1fcd4947cfe49fe117c15aae0a66dab99ed50d6c17bfcf6563d65",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 1.227986135520041,
+        "compileCpu": 1.145017,
+        "linkSeconds": 0.022308596409857273,
+        "maxRssKiB": 42828,
+        "outputBytes": 113616,
+        "source": "474ffc3a68c1fcd4947cfe49fe117c15aae0a66dab99ed50d6c17bfcf6563d65",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "coverage-unicode-text-16": {
+      "before": {
+        "compileSeconds": 1.1511010406538844,
+        "compileCpu": 1.130909,
+        "linkSeconds": 0.022648755460977554,
+        "maxRssKiB": 42580,
+        "outputBytes": 124864,
+        "source": "1e44705513750680563a8939e46120e4fbb5e9ffbfabe1f3d22b773a6eada3c5",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 1.1731702517718077,
+        "compileCpu": 1.172019,
+        "linkSeconds": 0.022996672429144382,
+        "maxRssKiB": 42864,
+        "outputBytes": 124864,
+        "source": "1e44705513750680563a8939e46120e4fbb5e9ffbfabe1f3d22b773a6eada3c5",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "coverage-unicode-text-64": {
+      "before": {
+        "compileSeconds": 1.1982584213837981,
+        "compileCpu": 1.1971669999999999,
+        "linkSeconds": 0.022963719442486763,
+        "maxRssKiB": 44736,
+        "outputBytes": 134336,
+        "source": "49a53fc745be33a8237b1b48f3175dbba4e20c76549374253520ae39f6b894bf",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 1.2349695228040218,
+        "compileCpu": 1.194632,
+        "linkSeconds": 0.022470653988420963,
+        "maxRssKiB": 45060,
+        "outputBytes": 134336,
+        "source": "49a53fc745be33a8237b1b48f3175dbba4e20c76549374253520ae39f6b894bf",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "coverage-expression-32": {
+      "before": {
+        "compileSeconds": 1.109290980733931,
+        "compileCpu": 1.0594620000000001,
+        "linkSeconds": 0.023402840830385685,
+        "maxRssKiB": 42516,
+        "outputBytes": 111440,
+        "source": "e1667f5fb6802cda5d062bf0bb97c3f5057fc3ab02d4cd5778e9198cd1439998",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 1.0072493068873882,
+        "compileCpu": 0.964874,
+        "linkSeconds": 0.02294079400599003,
+        "maxRssKiB": 42936,
+        "outputBytes": 94288,
+        "source": "e1667f5fb6802cda5d062bf0bb97c3f5057fc3ab02d4cd5778e9198cd1439998",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "coverage-expression-128": {
+      "before": {
+        "compileSeconds": 1.0631131501868367,
+        "compileCpu": 1.047631,
+        "linkSeconds": 0.023120914585888386,
+        "maxRssKiB": 42444,
+        "outputBytes": 111448,
+        "source": "32ae9cc5bdaeff023b08403b357b7e8a3f03e06d37c461feb4a8930ad51c5a2c",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 0.975038948468864,
+        "compileCpu": 0.9489329999999999,
+        "linkSeconds": 0.02289394848048687,
+        "maxRssKiB": 42936,
+        "outputBytes": 94288,
+        "source": "32ae9cc5bdaeff023b08403b357b7e8a3f03e06d37c461feb4a8930ad51c5a2c",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "coverage-map-churn-32": {
+      "before": {
+        "compileSeconds": 3.8700018199160695,
+        "compileCpu": 3.839936,
+        "linkSeconds": 0.024555951356887817,
+        "maxRssKiB": 50996,
+        "outputBytes": 422920,
+        "source": "ada0bc78c19c9ed252c779190144fa1155d2ff44fa12602166429140238870d9",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 3.2506261887028813,
+        "compileCpu": 3.208263,
+        "linkSeconds": 0.023922285996377468,
+        "maxRssKiB": 51156,
+        "outputBytes": 422920,
+        "source": "ada0bc78c19c9ed252c779190144fa1155d2ff44fa12602166429140238870d9",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "coverage-map-churn-128": {
+      "before": {
+        "compileSeconds": 3.1804013680666685,
+        "compileCpu": 3.065208,
+        "linkSeconds": 0.02689058892428875,
+        "maxRssKiB": 51052,
+        "outputBytes": 422920,
+        "source": "cd22c831c180c0de12d84aeb80debf4881d08cbd18fcf8f6d634153fba2feb03",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 3.277364581823349,
+        "compileCpu": 3.18026,
+        "linkSeconds": 0.024043181911110878,
+        "maxRssKiB": 51276,
+        "outputBytes": 422920,
+        "source": "cd22c831c180c0de12d84aeb80debf4881d08cbd18fcf8f6d634153fba2feb03",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "coverage-numeric-recurrence-256": {
+      "before": {
+        "compileSeconds": 0.9141872450709343,
+        "compileCpu": 0.913098,
+        "linkSeconds": 0.0225581219419837,
+        "maxRssKiB": 42548,
+        "outputBytes": 93392,
+        "source": "4b9a0ee2ab80c844b74e44e5ce94d17669e70ed5d8f6da3cebe7354e1db9f293",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 1.0314255449920893,
+        "compileCpu": 0.935209,
+        "linkSeconds": 0.0225436482578516,
+        "maxRssKiB": 42988,
+        "outputBytes": 93392,
+        "source": "4b9a0ee2ab80c844b74e44e5ce94d17669e70ed5d8f6da3cebe7354e1db9f293",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "coverage-numeric-recurrence-1024": {
+      "before": {
+        "compileSeconds": 0.9354127524420619,
+        "compileCpu": 0.9050339999999999,
+        "linkSeconds": 0.022553627379238605,
+        "maxRssKiB": 42436,
+        "outputBytes": 93392,
+        "source": "39c7c7be54d5a47b6042b0d8f70b124610ea5a2fee28866d85599b7f0f5bbb46",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 0.9937136676162481,
+        "compileCpu": 0.935275,
+        "linkSeconds": 0.023634829558432102,
+        "maxRssKiB": 43064,
+        "outputBytes": 93392,
+        "source": "39c7c7be54d5a47b6042b0d8f70b124610ea5a2fee28866d85599b7f0f5bbb46",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "coverage-record-aggregation-64": {
+      "before": {
+        "compileSeconds": 3.0812510177493095,
+        "compileCpu": 3.0314609999999997,
+        "linkSeconds": 0.024369044229388237,
+        "maxRssKiB": 51052,
+        "outputBytes": 425464,
+        "source": "36ad15032712bd62a88a3fae13105880db1a0ecde3fc98e43791c4f21876c2c9",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 3.25493536144495,
+        "compileCpu": 3.176348,
+        "linkSeconds": 0.024622841738164425,
+        "maxRssKiB": 51280,
+        "outputBytes": 425464,
+        "source": "36ad15032712bd62a88a3fae13105880db1a0ecde3fc98e43791c4f21876c2c9",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    },
+    "coverage-record-aggregation-256": {
+      "before": {
+        "compileSeconds": 3.144331336952746,
+        "compileCpu": 3.068766,
+        "linkSeconds": 0.023789600469172,
+        "maxRssKiB": 50952,
+        "outputBytes": 425464,
+        "source": "eb5841e7f516d2f87ef8028f83a902390c4aab439875207448ffa4c4d5c28bc1",
+        "compiler": "24bb1754de77b0bd140f50e2b9781ef17151c68ea503591ff42be40ea2577753"
+      },
+      "after": {
+        "compileSeconds": 3.2583882743492723,
+        "compileCpu": 3.190674,
+        "linkSeconds": 0.024378947913646698,
+        "maxRssKiB": 51268,
+        "outputBytes": 425464,
+        "source": "eb5841e7f516d2f87ef8028f83a902390c4aab439875207448ffa4c4d5c28bc1",
+        "compiler": "a68aca113a2a7279db3e74bd76a1818a872539ee3a121fe88a9e85e8596296ea"
+      }
+    }
+  }
+}

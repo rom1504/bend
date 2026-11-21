@@ -1,0 +1,236 @@
+{
+  "kind": "phase200-physical-campaign-cost-summary",
+  "complete": true,
+  "targetsRun": false,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase200/measure/summarize-campaign.py",
+    "bytes": 3679,
+    "sha256": "e9a4f840c2b500305dbf967a7c32d1a4f8386ab672419c4bd6997767564541ff"
+  },
+  "strictSummary": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/candidate-broad02-recovery01/summary.json",
+    "bytes": 144564,
+    "sha256": "e61335fecf06077f9a2580e47e34056f1af1193e3e7ea59177517f80ef676981"
+  },
+  "recoveredAfterFailedGuard": true,
+  "acquisitionPlan": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase200/measure/plans/candidate-native45-01.json",
+    "bytes": 2833,
+    "sha256": "9ce3bd354abdafa7d5f9b8d4e9e29a566250dcc40941d68fbcf72dcaeb30e0ce"
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/p200-candidate-source01/compiler.bend",
+    "bytes": 1977250,
+    "sha256": "c8b1b8a30d08e15e37d92cd6ed65ccc33b9bff484957e21ebeb903069ef106d7"
+  },
+  "sourceCheck": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/p200-candidate-check01/report.json",
+    "bytes": 3877,
+    "sha256": "cd0bc8b867c8dcdeb29c180c26ea3f01987488f5ce254882b85d40082a69d7b1"
+  },
+  "image": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/p200-candidate-native-image01/program",
+    "bytes": 19130712,
+    "sha256": "be33a613b00c93b7d02762742a49f7fa23d4dedf409dac9ce197cadc7f1defd5"
+  },
+  "imageReceipt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/p200-candidate-native-image01/report.json",
+    "bytes": 16030,
+    "sha256": "40e92707aafac40b836ff6fbc0a87b33cc4326ecff4cf22fe37253f1d6247b93"
+  },
+  "native45Seconds": 108.72815240640193,
+  "nativeEmissionSeconds": 80.01961719058454,
+  "nativeLinkSeconds": 1.155909264460206,
+  "imageReportedWallSeconds": 178.52364297024906,
+  "objectsChangedFromPhase199": [
+    "editdist",
+    "tree-bitonic",
+    "lexer",
+    "symreg",
+    "raytrace",
+    "local-pair",
+    "complete-generic-row32",
+    "variation-editdist-0-17",
+    "variation-editdist-3-123",
+    "variation-lexer-6-17",
+    "variation-lexer-10-123",
+    "variation-tree-bitonic-6-17",
+    "variation-tree-bitonic-9-123",
+    "variation-symreg-4-17",
+    "variation-symreg-7-123",
+    "coverage-record-aggregation-64",
+    "coverage-record-aggregation-256"
+  ],
+  "objectsObserved": 45,
+  "runtimeCounts": {
+    "pilots": 476,
+    "samples": 405
+  },
+  "runtimeProcessSeconds": {
+    "pilots": 39.98610152117908,
+    "samples": 64.76190173439682
+  },
+  "runtimeHarnessWallSeconds": null,
+  "runtimeOtherHarnessSeconds": null,
+  "physicalGuards": {
+    "native45": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/candidate-native45-01-guard/process.json",
+        "bytes": 3496,
+        "sha256": "8f3789a05a7098373ff748dda16a2bfedbd8efeb58e0443c79634582ce29f487"
+      },
+      "wallSeconds": 108.85628342814744,
+      "guardSucceeded": true,
+      "stoppedFor": null,
+      "peakRunAllocatedBytes": 24432640
+    },
+    "broad": {
+      "receipt": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/candidate-broad02-guard/process.json",
+        "bytes": 2577,
+        "sha256": "4c401519dcfb6d133208683ef89e7a5cfff08c29d0481ef703baadb0c4fba455"
+      },
+      "wallSeconds": 127.3231240324676,
+      "guardSucceeded": false,
+      "stoppedFor": "disk-budget",
+      "peakRunAllocatedBytes": 32608256
+    }
+  },
+  "candidate": {
+    "overC": {
+      "caseCount": 44,
+      "geomean": 1.0040724893536412,
+      "meanPositiveLogSlowdown": 0.5215761777218013,
+      "casesOver110": 31,
+      "casesOver2": 18,
+      "fixedEquivalentMs": 17810.07465072916,
+      "referenceFixedEquivalentMs": 10941.41614848184,
+      "fixedEquivalentRatio": 1.627766863908231,
+      "worstRegressions": [
+        {
+          "id": "test-evening-program",
+          "ratio": 3.503288797533402,
+          "flagged": false
+        },
+        {
+          "id": "coverage-bst-32",
+          "ratio": 3.2668911592491745,
+          "flagged": false
+        },
+        {
+          "id": "complete-generic-row32",
+          "ratio": 3.224460431654676,
+          "flagged": false
+        },
+        {
+          "id": "variation-lexer-6-17",
+          "ratio": 3.1606698600126246,
+          "flagged": true
+        },
+        {
+          "id": "test-morning-program",
+          "ratio": 3.0687949640287773,
+          "flagged": false
+        },
+        {
+          "id": "coverage-map-churn-128",
+          "ratio": 2.9782738688459243,
+          "flagged": false
+        },
+        {
+          "id": "coverage-map-churn-32",
+          "ratio": 2.6999227256065543,
+          "flagged": true
+        },
+        {
+          "id": "variation-lexer-10-123",
+          "ratio": 2.659907834101382,
+          "flagged": false
+        },
+        {
+          "id": "coverage-record-aggregation-64",
+          "ratio": 2.6401136857063907,
+          "flagged": false
+        },
+        {
+          "id": "lexer",
+          "ratio": 2.5799074074074073,
+          "flagged": false
+        }
+      ],
+      "familyCount": 22,
+      "equalFamilyGeomeanOverReference": 0.9120385632919984,
+      "fixedCatalogPositiveExcessMs": 8340.235688799476
+    },
+    "overBaseline": {
+      "caseCount": 44,
+      "geomean": 0.9855793259460397,
+      "meanPositiveLogSlowdown": 0.005547443114776933,
+      "casesOver110": 0,
+      "casesOver2": 0,
+      "fixedEquivalentMs": 17810.07465072916,
+      "referenceFixedEquivalentMs": 18026.80746366713,
+      "fixedEquivalentRatio": 0.9879771937779447,
+      "worstRegressions": [
+        {
+          "id": "variation-symreg-4-17",
+          "ratio": 1.0439842444497494,
+          "flagged": false
+        },
+        {
+          "id": "symreg",
+          "ratio": 1.0390394088669952,
+          "flagged": true
+        },
+        {
+          "id": "variation-symreg-7-123",
+          "ratio": 1.0358662613981762,
+          "flagged": true
+        },
+        {
+          "id": "mandelbrot",
+          "ratio": 1.0269110764430576,
+          "flagged": true
+        },
+        {
+          "id": "variation-lexer-6-17",
+          "ratio": 1.0198575538889676,
+          "flagged": true
+        },
+        {
+          "id": "test-map-set-ops",
+          "ratio": 1.0184480275605003,
+          "flagged": false
+        },
+        {
+          "id": "coverage-closures-64",
+          "ratio": 1.017271889739926,
+          "flagged": true
+        },
+        {
+          "id": "coverage-numeric-recurrence-1024",
+          "ratio": 1.0101693386547612,
+          "flagged": false
+        },
+        {
+          "id": "coverage-list-pipeline-128",
+          "ratio": 1.0071428571428571,
+          "flagged": true
+        },
+        {
+          "id": "complete-generic-row32",
+          "ratio": 1.0069930069930069,
+          "flagged": false
+        }
+      ],
+      "familyCount": 22,
+      "equalFamilyGeomeanOverReference": 0.9856419214577383,
+      "fixedCatalogPositiveExcessMs": 91.9248331616619
+    }
+  },
+  "warnings": [
+    "Physical guard failed disk-budget after all405 timed observations were checkpointed; this is independent offline recovery, not a successful physical-run receipt.",
+    "Dispersion exceeds threshold: mandelbrot, tree-bitonic, symreg, test-rle-roundtrip, variation-lexer-6-17, variation-symreg-7-123, variation-local-fold-128-0, variation-mandelbrot-grid-5-31, variation-ray-active-64-2440, variation-ray-active-256-2240, coverage-closures-64, coverage-closures-256, coverage-list-pipeline-128, coverage-bst-64, coverage-map-churn-32, coverage-numeric-recurrence-256"
+  ],
+  "scope": "Single actual source/acquisition observations. Native emission/link, complete acquisition, and harness wall seconds are separate quantities; role performance ratios come only from fresh normalized program intervals. No historical C/incumbent timing substitution and no compiler-throughput significance claim."
+}

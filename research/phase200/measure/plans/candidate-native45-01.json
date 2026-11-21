@@ -1,0 +1,80 @@
+{
+  "kind": "phase200-ordinary-native45-plan",
+  "targetsRun": false,
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/p200-candidate-source01/compiler.bend",
+    "bytes": 1977250,
+    "sha256": "c8b1b8a30d08e15e37d92cd6ed65ccc33b9bff484957e21ebeb903069ef106d7"
+  },
+  "sourceCheck": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/p200-candidate-check01/report.json",
+    "bytes": 3877,
+    "sha256": "cd0bc8b867c8dcdeb29c180c26ea3f01987488f5ce254882b85d40082a69d7b1"
+  },
+  "image": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/p200-candidate-native-image01/program",
+    "bytes": 19130712,
+    "sha256": "be33a613b00c93b7d02762742a49f7fa23d4dedf409dac9ce197cadc7f1defd5"
+  },
+  "imageReceipt": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/p200-candidate-native-image01/report.json",
+    "bytes": 16030,
+    "sha256": "40e92707aafac40b836ff6fbc0a87b33cc4326ecff4cf22fe37253f1d6247b93"
+  },
+  "assets": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase199/broad/integrated-assets.json",
+    "bytes": 26510,
+    "sha256": "353fea512769422f5d50a6a24a21d95eba5a35bc8d1c0f592096d260f78d97fd"
+  },
+  "runtime": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/runtime-bundle01/runtime-original-scan.o",
+    "bytes": 125920,
+    "sha256": "f6b444f3e2d5c1e9e1f3a495ab97dd8731ebb93eb2b7ef3baebd12a20ea8dd8c"
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase200/measure/prepare-native.py",
+    "bytes": 2422,
+    "sha256": "4c74a5f9d55cff879a8b492efd4e66d5e986a69b7c392fcebc0bc60c092c20bc"
+  },
+  "driver": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tests/phase190/native-programs.py",
+    "bytes": 10713,
+    "sha256": "0e26295f8961fa55c0dd4fbf827aafdd68e0f9ff464b1d0c51e68883e415f82f"
+  },
+  "argv": [
+    "/usr/bin/python3",
+    "-B",
+    "/home/ai/bend2/build/publish/bend/research/phase200/measure/job.py",
+    "candidate-native45-01",
+    "150",
+    "32",
+    "/usr/bin/python3",
+    "-B",
+    "selfhost/tests/phase190/native-programs.py",
+    "--assets",
+    "/home/ai/bend2/build/publish/bend/research/phase199/broad/integrated-assets.json",
+    "--image",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/p200-candidate-native-image01/program",
+    "--image-receipt",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/p200-candidate-native-image01/report.json",
+    "--host",
+    "native",
+    "--stage",
+    "N1",
+    "--target",
+    "x86",
+    "--emit",
+    "object",
+    "--mode",
+    "cache",
+    "--role",
+    "candidate",
+    "--cases",
+    "all",
+    "--out",
+    "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/candidate-native45-01",
+    "--seconds",
+    "140",
+    "--guarded"
+  ]
+}

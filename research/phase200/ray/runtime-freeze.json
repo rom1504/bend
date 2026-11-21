@@ -1,0 +1,41 @@
+{
+  "compiler": {
+    "file": "/usr/bin/x86_64-linux-gnu-gcc-10",
+    "bytes": 817704,
+    "sha256": "693abcb42e67fb871673f258a3644257ca69a209691ec4d8137a42442834bd19",
+    "executable": true
+  },
+  "runtime": {
+    "file": "selfhost/dist/qbe/runtime.o",
+    "bytes": 125264,
+    "sha256": "67141c4505a0355901d857c4ba81dfc17559329e536818a843ce68615384d13e"
+  },
+  "inputs": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase200/ray/sqrt-keep.s",
+      "bytes": 1190,
+      "sha256": "21ce867e39dd2c009d15d9271893994816d3d62c9c3b84e2dbaf022ed9fe50eb"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase200/ray/register-check.s",
+      "bytes": 2519,
+      "sha256": "100bac553970b7c745028dcf80f84b3de04f28385a9e8bc464d73e6a46ae0f2f"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase200/ray/sqrt-check.c",
+      "bytes": 2421,
+      "sha256": "0f98f704dd520219da68a52a8bf4c2cd750bd1ff7ef34f9ee3f4fcdbe3db7efa"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase200/ray/check.py",
+      "bytes": 1464,
+      "sha256": "68f1fc1d3763cb884f6699a754b652b0df7106be663ee8baa3e0e32b2f0a8574"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/selfhost/src/runtime/qbe/runtime.h",
+      "bytes": 4601,
+      "sha256": "84c3470bd64f926e3c67900eadfefb49fc97ccfec8790a9a772e1ced44328039"
+    }
+  ],
+  "scope": "Custom known-effect sqrt ABI preserves all allocated GPR/XMM homes; same ordered zero compare, SQRTSS fast path and negative sqrtf path as current physical lowering. No FP reassociation or fast-math. Masked exceptions tested in16 MXCSR rounding/DAZ/FTZ modes; errno and sticky flags compared to actual baseline runtime."
+}

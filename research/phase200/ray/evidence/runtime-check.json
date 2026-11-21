@@ -1,0 +1,71 @@
+{
+  "complete": true,
+  "freeze": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase200/ray/runtime-freeze.json",
+    "bytes": 1729,
+    "sha256": "a1b82286e50781ca08a4dae8b5a9bab00aa66734943e06aa03dd2867690aea80"
+  },
+  "commands": [
+    {
+      "argv": [
+        "/usr/bin/x86_64-linux-gnu-gcc-10",
+        "-c",
+        "-msse2",
+        "-mno-avx",
+        "/home/ai/bend2/build/publish/bend/research/phase200/ray/sqrt-keep.s",
+        "-o",
+        "selfhost/build/phase198/p200-ray-runtime01/sqrt-keep.o"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/usr/bin/x86_64-linux-gnu-gcc-10",
+        "-O2",
+        "-std=c11",
+        "-msse2",
+        "-mno-avx",
+        "-no-pie",
+        "/home/ai/bend2/build/publish/bend/research/phase200/ray/sqrt-check.c",
+        "/home/ai/bend2/build/publish/bend/research/phase200/ray/register-check.s",
+        "selfhost/build/phase198/p200-ray-runtime01/sqrt-keep.o",
+        "selfhost/dist/qbe/runtime.o",
+        "-pthread",
+        "-lm",
+        "-o",
+        "selfhost/build/phase198/p200-ray-runtime01/check"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "selfhost/build/phase198/p200-ray-runtime01/check"
+      ],
+      "exit": 0,
+      "stdout": "{\"complete\":true,\"runtimeDifferentials\":65888,\"registerPreservationCases\":1024,\"mxcsrModes\":16,\"errnoAndStickyFlags\":true}\n",
+      "stderr": ""
+    }
+  ],
+  "helper": {
+    "file": "selfhost/build/phase198/p200-ray-runtime01/sqrt-keep.o",
+    "bytes": 1256,
+    "sha256": "3ebd7e3ea0b76f577e9d7b5e3db4f033de4dce4c0cd9b4c64e1cb35ae5d25ee3"
+  },
+  "test": {
+    "file": "selfhost/build/phase198/p200-ray-runtime01/check",
+    "bytes": 107560,
+    "sha256": "20a57f9a5d95f08a0102ff1aa417d87b4ad60ce7f73d848c8f2af261d3029b6c"
+  },
+  "result": {
+    "complete": true,
+    "runtimeDifferentials": 65888,
+    "registerPreservationCases": 1024,
+    "mxcsrModes": 16,
+    "errnoAndStickyFlags": true
+  },
+  "seconds": 0.18120317440479994
+}

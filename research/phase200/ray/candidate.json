@@ -1,0 +1,19 @@
+{
+  "object": {
+    "file": "selfhost/build/phase198/p199-integrated-native45-01/raytrace/machine/program.o",
+    "bytes": 173696,
+    "sha256": "c292c67c14e8fe52b9c1561aaac1046ea234be6fb580a5265accf19b0ac9816d"
+  },
+  "owner": "p113d_FID_36_112_114_111_100_117_99_116_46_110_101_97_114_101_115_116_",
+  "disassembly": {
+    "file": "research/phase200/ray/current-nearest.asm",
+    "bytes": 26571,
+    "sha256": "376d68e60da36af03a121826a457be664fe9a0c7f12ef39db6d0fb4e984f4563"
+  },
+  "instructions": 760,
+  "rbpMemoryOperands": 162,
+  "sqrtInstructions": 2,
+  "historicalOwnerHotness": 0.382969,
+  "weightScope": "Historical Phase194 nearest-owner proxy; not current measured block weight. Current Phase199 exact machine shape inspected independently.",
+  "hypothesis": "Remove false sqrt call boundaries in F32 home allocation and private argument buffers; keep SQRTSS fast path inline and preserve the cold libc path. No numerical whole-program gain promised."
+}

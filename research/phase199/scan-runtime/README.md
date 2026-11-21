@@ -82,3 +82,8 @@ in git. This result qualifies the leaf against the retained worker under its
 stated entry conditions. It does not establish the new recognizer, fallback
 selection, complete-runtime allocation behavior or whole-program performance.
 Those belong to the separate candidate product and initialized-runtime tests.
+
+Those subsequent acquisitions are independently reviewed in
+[TRANSFER.md](TRANSFER.md), including actual generated calls, entry counts,
+paired complete-program timing, and an explicitly projected scan-only
+contribution to the historical fixed-work catalog.

@@ -1,0 +1,89 @@
+{
+  "kind": "independent-offline-entry-count-audit",
+  "input": {
+    "file": "selfhost/build/phase199/scan-controls-new01/report.json",
+    "bytes": 3115,
+    "sha256": "658578ce96a792ba939a883326410e74d2b84248716100ad265dc6c557089fbe"
+  },
+  "object": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase199/focused-emission01/scan/local-fold/program.o",
+    "bytes": 98376,
+    "sha256": "b92817084d5cd479e7ef4347c6c2e691213a47458b9bc90c95a1405a10aea00a"
+  },
+  "helper": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/p199-scan-runtime01/scan.o",
+    "bytes": 1888,
+    "sha256": "3c32b17c57eb1e2e331e7b0a7e881f2f9f477aae71ee942c258decc2b9b30d5a"
+  },
+  "checks": [
+    {
+      "trials": 327,
+      "checkedCells": 19873,
+      "calls": 275,
+      "longRawCalls": 80,
+      "uniform": 0
+    },
+    {
+      "trials": 322,
+      "checkedCells": 19826,
+      "calls": 0,
+      "longRawCalls": 0,
+      "uniform": 1
+    }
+  ],
+  "derivation": [
+    {
+      "class_": 0,
+      "capacity": 1,
+      "rawTrials": 45,
+      "zeroFuelTrials": 10
+    },
+    {
+      "class_": 1,
+      "capacity": 2,
+      "rawTrials": 45,
+      "zeroFuelTrials": 5
+    },
+    {
+      "class_": 2,
+      "capacity": 4,
+      "rawTrials": 45,
+      "zeroFuelTrials": 5
+    },
+    {
+      "class_": 3,
+      "capacity": 8,
+      "rawTrials": 45,
+      "zeroFuelTrials": 5
+    },
+    {
+      "class_": 5,
+      "capacity": 32,
+      "rawTrials": 45,
+      "zeroFuelTrials": 5
+    },
+    {
+      "class_": 7,
+      "capacity": 128,
+      "rawTrials": 45,
+      "zeroFuelTrials": 5
+    },
+    {
+      "class_": 8,
+      "capacity": 256,
+      "rawTrials": 45,
+      "zeroFuelTrials": 5
+    }
+  ],
+  "rawTrials": 315,
+  "zeroFuelTrials": 40,
+  "expectedNonzeroRawCalls": 275,
+  "totalTrials": 649,
+  "checkedCells": 39699,
+  "findings": [
+    "275 observed calls exactly match the 315 raw trials minus 40 empty trials.",
+    "The additional seven shared and five static packed trials contribute no calls.",
+    "All 322 uniform-array trials have zero helper calls."
+  ],
+  "scope": "Derived from retained actual execution receipts and the pinned control-case definitions; this audit executes no target."
+}

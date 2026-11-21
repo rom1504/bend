@@ -1,0 +1,67 @@
+{
+  "kind": "offline-physical-ABI-review",
+  "objects": [
+    {
+      "case": "editdist",
+      "object": {
+        "file": "selfhost/build/phase199/focused-emission01/scan/editdist/program.o",
+        "bytes": 135664,
+        "sha256": "286f43061b18e1541e01399eb8b8a6b586af2351ec910a882dc0c5665d75a0bc"
+      },
+      "leafRelocations": 0
+    },
+    {
+      "case": "local-fold",
+      "object": {
+        "file": "selfhost/build/phase199/focused-emission01/scan/local-fold/program.o",
+        "bytes": 98376,
+        "sha256": "b92817084d5cd479e7ef4347c6c2e691213a47458b9bc90c95a1405a10aea00a"
+      },
+      "leafRelocations": 1
+    },
+    {
+      "case": "mandelbrot",
+      "object": {
+        "file": "selfhost/build/phase199/focused-emission01/scan/mandelbrot/program.o",
+        "bytes": 137832,
+        "sha256": "3b445ebcdcde1cb5d5e4f527a5e9a57e8ece3905e6138030d2401386295b535a"
+      },
+      "leafRelocations": 0
+    },
+    {
+      "case": "variation-local-fold-128-0",
+      "object": {
+        "file": "selfhost/build/phase199/focused-emission01/scan/variation-local-fold-128-0/program.o",
+        "bytes": 98376,
+        "sha256": "115639f9e53c343da0d1435a2a6c3b33638ad831a16df19fa1bec6139f80525f"
+      },
+      "leafRelocations": 1
+    },
+    {
+      "case": "variation-local-fold-8192-123",
+      "object": {
+        "file": "selfhost/build/phase199/focused-emission01/scan/variation-local-fold-8192-123/program.o",
+        "bytes": 98376,
+        "sha256": "9a258c967ac217c6f4352d53cf14a3b42ded317658f7d17dfa385af0ec301a7b"
+      },
+      "leafRelocations": 1
+    }
+  ],
+  "disassembler": {
+    "file": "/usr/bin/objdump",
+    "bytes": 464664,
+    "sha256": "0a5231844dd50b01c5161cd8857c61fc6c56704c8553d61a20264e8227561930"
+  },
+  "decode": {
+    "file": "research/phase199/scan-runtime/evidence/candidate-worker.asm",
+    "bytes": 7783,
+    "sha256": "0e1d728779d27605bd5257f2e6744561124719815eda254bf4c39a1c709b8bf2"
+  },
+  "findings": [
+    "Three fold objects contain one helper relocation each; editdist and Mandelbrot contain none.",
+    "The local-fold call stages payload, mask, full-width fuel, index and carry in the agreed SysV registers.",
+    "Owner is preserved in callee-saved RBX; after call out[0]=owner, out[1]=RAX carry, EAX return zero.",
+    "Zero-count and existing guard/fallback branches remain present."
+  ],
+  "scope": "Static decoded machine evidence only; dynamic entry counts, initialized-runtime fallback and performance belong to separate acquisitions."
+}

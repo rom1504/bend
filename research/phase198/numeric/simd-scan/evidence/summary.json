@@ -1,0 +1,91 @@
+{
+  "kind": "source-kernel-ceiling",
+  "complete": true,
+  "mediansNs": {
+    "scalar": 3367.566362288564,
+    "simd4": 1406.7392731417358,
+    "c": 2766.0660096140937,
+    "current": 5625.0
+  },
+  "paired": [
+    {
+      "round": 0,
+      "simdOverScalar": 0.41685279943376463,
+      "simdOverMatureC": 0.505241516335139
+    },
+    {
+      "round": 1,
+      "simdOverScalar": 0.4105389159363621,
+      "simdOverMatureC": 0.5142319648494785
+    },
+    {
+      "round": 2,
+      "simdOverScalar": 0.4358540457635947,
+      "simdOverMatureC": 0.5316561066008548
+    },
+    {
+      "round": 3,
+      "simdOverScalar": 0.417987667901221,
+      "simdOverMatureC": 0.5079013612942799
+    },
+    {
+      "round": 4,
+      "simdOverScalar": 0.41935333087354204,
+      "simdOverMatureC": 0.5074124908904942
+    },
+    {
+      "round": 5,
+      "simdOverScalar": 0.4190389079857057,
+      "simdOverMatureC": 0.5067953094137722
+    }
+  ],
+  "passedCases": 22080,
+  "independentFullStateChecks": 6,
+  "actualProgramBindings": 10,
+  "timedObservations": 24,
+  "sourceRecords": [
+    {
+      "file": "selfhost/build/phase198/simd-scan01/report.json",
+      "bytes": 1185,
+      "sha256": "7751695e689e81e0e9503393444f27632732e2d2d7506f3c56b0c1330febf7c6"
+    },
+    {
+      "file": "selfhost/build/phase198/simd-scan02/report.json",
+      "bytes": 43535,
+      "sha256": "bbeb41d80f502836ee43025d006af30f61d9defca3f7c5da1f2afd55ecd5abd3"
+    },
+    {
+      "file": "selfhost/build/phase198/simd-scan02/checks.jsonl",
+      "bytes": 17076,
+      "sha256": "852b68a28fb1f40c17bb547bae5f90edb63dafe19c25499ba40b339e3a15d30b"
+    },
+    {
+      "file": "selfhost/build-retention/phase198/simd-scan01-close/report.json",
+      "bytes": 1429,
+      "sha256": "f61d1c43a9f268acdcfee1a19dd11f9479187324b56c9895e3ecdbd1c745bba0"
+    },
+    {
+      "file": "selfhost/build-retention/phase198/simd-scan02-close/report.json",
+      "bytes": 1432,
+      "sha256": "2afdcceca7d08176c33df727c0fdb6e79fc9e484063f733ef34ce39ac7ca1b26"
+    }
+  ],
+  "originalDisassembly": {
+    "file": "selfhost/build/phase198/simd-scan02/disassembly.txt",
+    "bytes": 42019,
+    "sha256": "0b14b623dd54d722f7852c03e982a6497e5a489261e9f115b3fe6dd1e98947bc"
+  },
+  "omittedArtifacts": [
+    {
+      "file": "selfhost/build/phase198/simd-scan02/kernel.o",
+      "bytes": 8064,
+      "sha256": "0fa2722efd2744e8363214a6e1adaa18a2109cc9015716b9e3b5a067ce00160c"
+    },
+    {
+      "file": "selfhost/build/phase198/simd-scan02/program",
+      "bytes": 17032,
+      "sha256": "efcd5eaf3c41dcddd175a7b924192034e4aa7a97bfc600a99a31cb79eb32d250"
+    }
+  ],
+  "scope": "Source-level flat-array kernel ceiling only; no Bend lowering change or qualified whole-program transfer. All final 128 cells and carry checked. Scalar and SIMD use the same pinned GCC10 -O3 policy, with SSE2 and no AVX."
+}

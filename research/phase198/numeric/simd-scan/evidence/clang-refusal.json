@@ -1,0 +1,14 @@
+{
+  "complete": false,
+  "freeze": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase198/numeric/simd-scan/frozen.json",
+    "bytes": 4536,
+    "sha256": "0271ca35ff8bac7f7615b438f906aced905f75fac9bbf083f5048e1f5639b273"
+  },
+  "scope": "Source-level flat-array kernel ceiling only; no Bend lowering change or qualified whole-program transfer. All final 128 cells and carry checked. Scalar and SIMD use the same pinned Clang -O3 policy, with SSE2 and no AVX.",
+  "observations": [],
+  "pilots": [],
+  "binding": [],
+  "error": "AssertionError((['/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang', '-std=c11', '-O3', '-isystem', '/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang', '-msse2', '-mno-avx', '-c', PosixPath('/home/ai/bend2/build/publish/bend/research/phase198/numeric/simd-scan/kernel.c'), '-o', PosixPath('selfhost/build/phase198/simd-scan01/kernel.o')], 1, '', \"/home/ai/bend2/build/publish/bend/research/phase198/numeric/simd-scan/kernel.c:2:10: fatal error: 'emmintrin.h' file not found\\n    2 | #include <emmintrin.h>\\n      |          ^~~~~~~~~~~~~\\n1 error generated.\\n\"))",
+  "wallSeconds": 0.04621493071317673
+}

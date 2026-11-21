@@ -1,0 +1,199 @@
+{
+  "complete": true,
+  "scope": "Independently authored ordinary sources, not abstract controls or native45 catalog cases. Baseline API03 and orbit API05 target ELF products; independent handwritten C. No later portfolio/compiler/runtime claim.",
+  "seconds": 33.71220579277724,
+  "samples": 36,
+  "cases": {
+    "orbit-converging": {
+      "point": [
+        8192,
+        305419896
+      ],
+      "expected": "382881820\n",
+      "checks": 18,
+      "ratios": {
+        "baseline": {
+          "median": 1.0,
+          "pairs": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "orbit": {
+          "median": 0.006800718253746018,
+          "pairs": [
+            0.006703201641613924,
+            0.006803180459104939,
+            0.006832941028225807,
+            0.00692226051879085,
+            0.006789140124198718,
+            0.006798256048387096
+          ]
+        },
+        "c": {
+          "median": 0.29872987335465573,
+          "pairs": [
+            0.3101903962467428,
+            0.28846014741406834,
+            0.29964904219574695,
+            0.2998412866592432,
+            0.2959016615359134,
+            0.29781070451356445
+          ]
+        }
+      },
+      "orbitOverC": 0.022885673466435184,
+      "products": {
+        "baseline": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/orbit-converging-baseline",
+            "bytes": 175624,
+            "sha256": "189f34bf58a570837475a0ebfbcbd9234daa36c847776ab102fd50519b57c411"
+          },
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/emission/baseline/orbit-converging/program.o",
+            "bytes": 92440,
+            "sha256": "3761c83aa588cfaf224709cd5e0555dd347d86fd1ca0a91220d9a88e6a05be80"
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/emission/baseline/orbit-converging/program.s",
+            "bytes": 365665,
+            "sha256": "4d68bf0825ea3a87fff10cb325606d2db85f8098a1835401b06d23a95a95cf67"
+          }
+        },
+        "orbit": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/orbit-converging-orbit",
+            "bytes": 175624,
+            "sha256": "7ec91d284867b9ff38e9f87015c50140e2f16e3c33b497ee2af8b53ec0ac333a"
+          },
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/emission/orbit/orbit-converging/program.o",
+            "bytes": 92504,
+            "sha256": "a72de7ddc6581eab72461fd1278c53c22fa267e0fb76fd627d76060c56a36aaf"
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/emission/orbit/orbit-converging/program.s",
+            "bytes": 366134,
+            "sha256": "912535051776a1d93886b7844f0a2a56a09868f02e0596f5547d5e4a66e0f89a"
+          }
+        },
+        "c": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/orbit-converging-c",
+            "bytes": 7352,
+            "sha256": "d3d3736146cfae85d14ca5eb909b99345b9588ff93a7eb83bc4dbd1c57ee0fce"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/research/phase198/numeric/heldout/oracle.c",
+            "bytes": 1192,
+            "sha256": "bfb75337f3a2567f45cd654ef6c74824f380099afd44000d31cefc8c425b58c7"
+          },
+          "scope": "Independent handwritten C, same unsigned iterative semantics, no fixed-state shortcut; not a mature Bend C-backend product."
+        }
+      }
+    },
+    "orbit-cycling": {
+      "point": [
+        8192,
+        305419896
+      ],
+      "expected": "382910401\n",
+      "checks": 18,
+      "ratios": {
+        "baseline": {
+          "median": 1.0,
+          "pairs": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "orbit": {
+          "median": 1.6589667167404596,
+          "pairs": [
+            1.6537798387096774,
+            1.6645186688311686,
+            1.6533474025974024,
+            1.677365625,
+            1.6641535947712418,
+            1.6537798387096774
+          ]
+        },
+        "c": {
+          "median": 0.07373612923814876,
+          "pairs": [
+            0.07349750098818712,
+            0.07397475748811042,
+            0.07397475748811042,
+            0.07338477475967764,
+            0.07400145353917073,
+            0.07349750098818712
+          ]
+        }
+      },
+      "orbitOverC": 22.50117101226994,
+      "products": {
+        "baseline": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/orbit-cycling-baseline",
+            "bytes": 175624,
+            "sha256": "13df4095c830792558ef4206a9bd7e46598afadf01261b91761bfc47dc34988e"
+          },
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/emission/baseline/orbit-cycling/program.o",
+            "bytes": 92448,
+            "sha256": "baa98b9f2fbc5e5bf325d436ae290108af01326de1e0ae88a18cea7ec7c73dcb"
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/emission/baseline/orbit-cycling/program.s",
+            "bytes": 365665,
+            "sha256": "72d15c707e0f473e9c7b3d854e5f2992c70f153a12e3c585283eb89cc0e46e16"
+          }
+        },
+        "orbit": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/orbit-cycling-orbit",
+            "bytes": 175616,
+            "sha256": "9194a83372e44659d79477fd647150fd97bb5b022877fcf97f7a5fd2b486c05b"
+          },
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/emission/orbit/orbit-cycling/program.o",
+            "bytes": 92504,
+            "sha256": "f3c0978ed1e9324e422d674acabc736c76ff8e170191a90f72723670da4f6df8"
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/emission/orbit/orbit-cycling/program.s",
+            "bytes": 366134,
+            "sha256": "7c8a3c7bfb3bf9a3eeb21b579ff16e15896c9e05e6fac3126f6daf4c23b602b0"
+          }
+        },
+        "c": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/orbit-cycling-c",
+            "bytes": 7496,
+            "sha256": "4e6d7d6a356960e79aa54aaad81e3650d0e858de9bb16784472d8682a1d785a0"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/research/phase198/numeric/heldout/oracle.c",
+            "bytes": 1192,
+            "sha256": "bfb75337f3a2567f45cd654ef6c74824f380099afd44000d31cefc8c425b58c7"
+          },
+          "scope": "Independent handwritten C, same unsigned iterative semantics, no fixed-state shortcut; not a mature Bend C-backend product."
+        }
+      }
+    }
+  },
+  "report": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/report.json",
+    "bytes": 33955,
+    "sha256": "e348633f46edfd6f09323e4d02a8effe6dd6f1767575010b52b8586f7294cece"
+  }
+}

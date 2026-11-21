@@ -1,0 +1,65 @@
+
+/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/orbit-cycling-c:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000001a70 <work>:
+    1a70:	mov    %esi,%eax
+    1a72:	xor    $0x9e3779b9,%eax
+    1a77:	test   %edi,%edi
+    1a79:	je     1b3f <work+0xcf>
+    1a7f:	mov    %esi,%ecx
+    1a81:	or     $0x1,%ecx
+    1a84:	xor    %edx,%edx
+    1a86:	cmp    $0x8,%edi
+    1a89:	jb     1b23 <work+0xb3>
+    1a8f:	mov    %edi,%edx
+    1a91:	and    $0xfffffff8,%edx
+    1a94:	movd   %eax,%xmm0
+    1a98:	movd   %ecx,%xmm1
+    1a9c:	pshufd $0x0,%xmm1,%xmm1
+    1aa1:	movd   %esi,%xmm2
+    1aa5:	add    %edx,%esi
+    1aa7:	pshufd $0x0,%xmm2,%xmm3
+    1aac:	paddd  -0x1444(%rip),%xmm3        # 670 <_IO_stdin_used+0x20>
+    1ab4:	pxor   %xmm2,%xmm2
+    1ab8:	movdqa -0x1430(%rip),%xmm4        # 690 <_IO_stdin_used+0x40>
+    1ac0:	movdqa -0x1448(%rip),%xmm5        # 680 <_IO_stdin_used+0x30>
+    1ac8:	movdqa -0x1470(%rip),%xmm6        # 660 <_IO_stdin_used+0x10>
+    1ad0:	mov    %edx,%eax
+    1ad2:	data16 data16 data16 data16 nopw %cs:0x0(%rax,%rax,1)
+    1ae0:	movdqa %xmm3,%xmm7
+    1ae4:	pand   %xmm4,%xmm7
+    1ae8:	paddd  %xmm1,%xmm0
+    1aec:	paddd  %xmm7,%xmm0
+    1af0:	pxor   %xmm5,%xmm7
+    1af4:	paddd  %xmm1,%xmm2
+    1af8:	paddd  %xmm7,%xmm2
+    1afc:	paddd  %xmm6,%xmm3
+    1b00:	add    $0xfffffff8,%eax
+    1b03:	jne    1ae0 <work+0x70>
+    1b05:	paddd  %xmm0,%xmm2
+    1b09:	pshufd $0xee,%xmm2,%xmm0
+    1b0e:	paddd  %xmm2,%xmm0
+    1b12:	pshufd $0x55,%xmm0,%xmm1
+    1b17:	paddd  %xmm0,%xmm1
+    1b1b:	movd   %xmm1,%eax
+    1b1f:	cmp    %edx,%edi
+    1b21:	je     1b3f <work+0xcf>
+    1b23:	sub    %edx,%edi
+    1b25:	data16 nopw %cs:0x0(%rax,%rax,1)
+    1b30:	mov    %esi,%edx
+    1b32:	and    $0x7,%edx
+    1b35:	add    %ecx,%eax
+    1b37:	add    %edx,%eax
+    1b39:	inc    %esi
+    1b3b:	dec    %edi
+    1b3d:	jne    1b30 <work+0xc0>
+    1b3f:	retq   
+
+Disassembly of section .init:
+
+Disassembly of section .fini:
+
+Disassembly of section .plt:

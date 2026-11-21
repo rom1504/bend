@@ -1,0 +1,1249 @@
+{
+  "complete": true,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase198/numeric/heldout/screen.py",
+    "bytes": 5235,
+    "sha256": "c7e9333fa21230214c101e72847473a17faa37e36b3ea4a030a103a4fdcada83"
+  },
+  "freeze": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase198/numeric/heldout/frozen.json",
+    "bytes": 4426,
+    "sha256": "6165ffe8e5b568761b41b4c2ac3d106e9ecdbe3ceac24ec4aa6ce39fbf206583"
+  },
+  "plan": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout-plan01.json",
+    "bytes": 247543,
+    "sha256": "080cc11adcbbed102e588d6070dfe778db49b7a8a15f933bd9d8ba0f7461c86b"
+  },
+  "commands": [
+    {
+      "argv": [
+        "/home/ai/bend2/build/publish/bend/selfhost/.assets/bin/bun",
+        "/home/ai/bend2/build/publish/bend/selfhost/tests/phase195/prepared-emission/driver.mjs",
+        "--plan",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout-plan01.json",
+        "--out",
+        "selfhost/build/phase198/numeric-heldout01/emission"
+      ],
+      "exit": 0,
+      "seconds": 25.62705592624843,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/0-stdout",
+        "bytes": 498,
+        "sha256": "decdfbbd3d1eb256e5e24677b767c3ba216de235944adf9b6412372edd6b7290"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/0-stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/usr/bin/x86_64-linux-gnu-gcc-10",
+        "-no-pie",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/emission/baseline/orbit-converging/program.o",
+        "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/runtime.o",
+        "-pthread",
+        "-lm",
+        "-o",
+        "selfhost/build/phase198/numeric-heldout01/orbit-converging-baseline"
+      ],
+      "exit": 0,
+      "seconds": 0.022251159884035587,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/1-stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/1-stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/usr/bin/x86_64-linux-gnu-gcc-10",
+        "-no-pie",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/emission/orbit/orbit-converging/program.o",
+        "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/runtime.o",
+        "-pthread",
+        "-lm",
+        "-o",
+        "selfhost/build/phase198/numeric-heldout01/orbit-converging-orbit"
+      ],
+      "exit": 0,
+      "seconds": 0.022939196787774563,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/2-stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/2-stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "-isystem",
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+        "-std=c11",
+        "-O3",
+        "-D_POSIX_C_SOURCE=200809L",
+        "-DCYCLING=0",
+        "/home/ai/bend2/build/publish/bend/research/phase198/numeric/heldout/oracle.c",
+        "-o",
+        "selfhost/build/phase198/numeric-heldout01/orbit-converging-c"
+      ],
+      "exit": 0,
+      "seconds": 0.25595190469175577,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/3-stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/3-stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/usr/bin/x86_64-linux-gnu-gcc-10",
+        "-no-pie",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/emission/baseline/orbit-cycling/program.o",
+        "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/runtime.o",
+        "-pthread",
+        "-lm",
+        "-o",
+        "selfhost/build/phase198/numeric-heldout01/orbit-cycling-baseline"
+      ],
+      "exit": 0,
+      "seconds": 0.02258043736219406,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/4-stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/4-stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/usr/bin/x86_64-linux-gnu-gcc-10",
+        "-no-pie",
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/emission/orbit/orbit-cycling/program.o",
+        "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/runtime.o",
+        "-pthread",
+        "-lm",
+        "-o",
+        "selfhost/build/phase198/numeric-heldout01/orbit-cycling-orbit"
+      ],
+      "exit": 0,
+      "seconds": 0.023331886157393456,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/5-stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/5-stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/bin/clang",
+        "-isystem",
+        "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang",
+        "-std=c11",
+        "-O3",
+        "-D_POSIX_C_SOURCE=200809L",
+        "-DCYCLING=1",
+        "/home/ai/bend2/build/publish/bend/research/phase198/numeric/heldout/oracle.c",
+        "-o",
+        "selfhost/build/phase198/numeric-heldout01/orbit-cycling-c"
+      ],
+      "exit": 0,
+      "seconds": 0.06357718165963888,
+      "stdout": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/6-stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/6-stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "cases": {
+    "orbit-converging": {
+      "point": [
+        8192,
+        305419896
+      ],
+      "expected": "382881820\n",
+      "products": {
+        "baseline": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/orbit-converging-baseline",
+            "bytes": 175624,
+            "sha256": "189f34bf58a570837475a0ebfbcbd9234daa36c847776ab102fd50519b57c411"
+          },
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/emission/baseline/orbit-converging/program.o",
+            "bytes": 92440,
+            "sha256": "3761c83aa588cfaf224709cd5e0555dd347d86fd1ca0a91220d9a88e6a05be80"
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/emission/baseline/orbit-converging/program.s",
+            "bytes": 365665,
+            "sha256": "4d68bf0825ea3a87fff10cb325606d2db85f8098a1835401b06d23a95a95cf67"
+          }
+        },
+        "orbit": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/orbit-converging-orbit",
+            "bytes": 175624,
+            "sha256": "7ec91d284867b9ff38e9f87015c50140e2f16e3c33b497ee2af8b53ec0ac333a"
+          },
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/emission/orbit/orbit-converging/program.o",
+            "bytes": 92504,
+            "sha256": "a72de7ddc6581eab72461fd1278c53c22fa267e0fb76fd627d76060c56a36aaf"
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/emission/orbit/orbit-converging/program.s",
+            "bytes": 366134,
+            "sha256": "912535051776a1d93886b7844f0a2a56a09868f02e0596f5547d5e4a66e0f89a"
+          }
+        },
+        "c": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/orbit-converging-c",
+            "bytes": 7352,
+            "sha256": "d3d3736146cfae85d14ca5eb909b99345b9588ff93a7eb83bc4dbd1c57ee0fce"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/research/phase198/numeric/heldout/oracle.c",
+            "bytes": 1192,
+            "sha256": "bfb75337f3a2567f45cd654ef6c74824f380099afd44000d31cefc8c425b58c7"
+          },
+          "scope": "Independent handwritten C, same unsigned iterative semantics, no fixed-state shortcut; not a mature Bend C-backend product."
+        }
+      },
+      "checks": [
+        {
+          "role": "baseline",
+          "args": [
+            8192,
+            305419896
+          ],
+          "expected": "382881820\n"
+        },
+        {
+          "role": "orbit",
+          "args": [
+            8192,
+            305419896
+          ],
+          "expected": "382881820\n"
+        },
+        {
+          "role": "c",
+          "args": [
+            8192,
+            305419896
+          ],
+          "expected": "382881820\n"
+        },
+        {
+          "role": "baseline",
+          "args": [
+            0,
+            0
+          ],
+          "expected": "2654435769\n"
+        },
+        {
+          "role": "orbit",
+          "args": [
+            0,
+            0
+          ],
+          "expected": "2654435769\n"
+        },
+        {
+          "role": "c",
+          "args": [
+            0,
+            0
+          ],
+          "expected": "2654435769\n"
+        },
+        {
+          "role": "baseline",
+          "args": [
+            1,
+            4294967295
+          ],
+          "expected": "1640531532\n"
+        },
+        {
+          "role": "orbit",
+          "args": [
+            1,
+            4294967295
+          ],
+          "expected": "1640531532\n"
+        },
+        {
+          "role": "c",
+          "args": [
+            1,
+            4294967295
+          ],
+          "expected": "1640531532\n"
+        },
+        {
+          "role": "baseline",
+          "args": [
+            33,
+            1
+          ],
+          "expected": "2654435802\n"
+        },
+        {
+          "role": "orbit",
+          "args": [
+            33,
+            1
+          ],
+          "expected": "2654435802\n"
+        },
+        {
+          "role": "c",
+          "args": [
+            33,
+            1
+          ],
+          "expected": "2654435802\n"
+        },
+        {
+          "role": "baseline",
+          "args": [
+            65,
+            2147483648
+          ],
+          "expected": "2654435841\n"
+        },
+        {
+          "role": "orbit",
+          "args": [
+            65,
+            2147483648
+          ],
+          "expected": "2654435841\n"
+        },
+        {
+          "role": "c",
+          "args": [
+            65,
+            2147483648
+          ],
+          "expected": "2654435841\n"
+        },
+        {
+          "role": "baseline",
+          "args": [
+            1024,
+            17
+          ],
+          "expected": "2654453168\n"
+        },
+        {
+          "role": "orbit",
+          "args": [
+            1024,
+            17
+          ],
+          "expected": "2654453168\n"
+        },
+        {
+          "role": "c",
+          "args": [
+            1024,
+            17
+          ],
+          "expected": "2654453168\n"
+        }
+      ],
+      "counts": {
+        "baseline": 13763,
+        "orbit": 2560000,
+        "c": 48301
+      },
+      "ratios": {
+        "baseline": {
+          "median": 1.0,
+          "pairs": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "orbit": {
+          "median": 0.006800718253746018,
+          "pairs": [
+            0.006703201641613924,
+            0.006803180459104939,
+            0.006832941028225807,
+            0.00692226051879085,
+            0.006789140124198718,
+            0.006798256048387096
+          ]
+        },
+        "c": {
+          "median": 0.29872987335465573,
+          "pairs": [
+            0.3101903962467428,
+            0.28846014741406834,
+            0.29964904219574695,
+            0.2998412866592432,
+            0.2959016615359134,
+            0.29781070451356445
+          ]
+        }
+      }
+    },
+    "orbit-cycling": {
+      "point": [
+        8192,
+        305419896
+      ],
+      "expected": "382910401\n",
+      "products": {
+        "baseline": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/orbit-cycling-baseline",
+            "bytes": 175624,
+            "sha256": "13df4095c830792558ef4206a9bd7e46598afadf01261b91761bfc47dc34988e"
+          },
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/emission/baseline/orbit-cycling/program.o",
+            "bytes": 92448,
+            "sha256": "baa98b9f2fbc5e5bf325d436ae290108af01326de1e0ae88a18cea7ec7c73dcb"
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/emission/baseline/orbit-cycling/program.s",
+            "bytes": 365665,
+            "sha256": "72d15c707e0f473e9c7b3d854e5f2992c70f153a12e3c585283eb89cc0e46e16"
+          }
+        },
+        "orbit": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/orbit-cycling-orbit",
+            "bytes": 175616,
+            "sha256": "9194a83372e44659d79477fd647150fd97bb5b022877fcf97f7a5fd2b486c05b"
+          },
+          "object": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/emission/orbit/orbit-cycling/program.o",
+            "bytes": 92504,
+            "sha256": "f3c0978ed1e9324e422d674acabc736c76ff8e170191a90f72723670da4f6df8"
+          },
+          "assembly": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/emission/orbit/orbit-cycling/program.s",
+            "bytes": 366134,
+            "sha256": "7c8a3c7bfb3bf9a3eeb21b579ff16e15896c9e05e6fac3126f6daf4c23b602b0"
+          }
+        },
+        "c": {
+          "binary": {
+            "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/orbit-cycling-c",
+            "bytes": 7496,
+            "sha256": "4e6d7d6a356960e79aa54aaad81e3650d0e858de9bb16784472d8682a1d785a0"
+          },
+          "source": {
+            "file": "/home/ai/bend2/build/publish/bend/research/phase198/numeric/heldout/oracle.c",
+            "bytes": 1192,
+            "sha256": "bfb75337f3a2567f45cd654ef6c74824f380099afd44000d31cefc8c425b58c7"
+          },
+          "scope": "Independent handwritten C, same unsigned iterative semantics, no fixed-state shortcut; not a mature Bend C-backend product."
+        }
+      },
+      "checks": [
+        {
+          "role": "baseline",
+          "args": [
+            8192,
+            305419896
+          ],
+          "expected": "382910401\n"
+        },
+        {
+          "role": "orbit",
+          "args": [
+            8192,
+            305419896
+          ],
+          "expected": "382910401\n"
+        },
+        {
+          "role": "c",
+          "args": [
+            8192,
+            305419896
+          ],
+          "expected": "382910401\n"
+        },
+        {
+          "role": "baseline",
+          "args": [
+            0,
+            0
+          ],
+          "expected": "2654435769\n"
+        },
+        {
+          "role": "orbit",
+          "args": [
+            0,
+            0
+          ],
+          "expected": "2654435769\n"
+        },
+        {
+          "role": "c",
+          "args": [
+            0,
+            0
+          ],
+          "expected": "2654435769\n"
+        },
+        {
+          "role": "baseline",
+          "args": [
+            1,
+            4294967295
+          ],
+          "expected": "1640531532\n"
+        },
+        {
+          "role": "orbit",
+          "args": [
+            1,
+            4294967295
+          ],
+          "expected": "1640531532\n"
+        },
+        {
+          "role": "c",
+          "args": [
+            1,
+            4294967295
+          ],
+          "expected": "1640531532\n"
+        },
+        {
+          "role": "baseline",
+          "args": [
+            33,
+            1
+          ],
+          "expected": "2654435914\n"
+        },
+        {
+          "role": "orbit",
+          "args": [
+            33,
+            1
+          ],
+          "expected": "2654435914\n"
+        },
+        {
+          "role": "c",
+          "args": [
+            33,
+            1
+          ],
+          "expected": "2654435914\n"
+        },
+        {
+          "role": "baseline",
+          "args": [
+            65,
+            2147483648
+          ],
+          "expected": "2654436058\n"
+        },
+        {
+          "role": "orbit",
+          "args": [
+            65,
+            2147483648
+          ],
+          "expected": "2654436058\n"
+        },
+        {
+          "role": "c",
+          "args": [
+            65,
+            2147483648
+          ],
+          "expected": "2654436058\n"
+        },
+        {
+          "role": "baseline",
+          "args": [
+            1024,
+            17
+          ],
+          "expected": "2654456744\n"
+        },
+        {
+          "role": "orbit",
+          "args": [
+            1024,
+            17
+          ],
+          "expected": "2654456744\n"
+        },
+        {
+          "role": "c",
+          "args": [
+            1024,
+            17
+          ],
+          "expected": "2654456744\n"
+        }
+      ],
+      "counts": {
+        "baseline": 13763,
+        "orbit": 8000,
+        "c": 196923
+      },
+      "ratios": {
+        "baseline": {
+          "median": 1.0,
+          "pairs": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "orbit": {
+          "median": 1.6589667167404596,
+          "pairs": [
+            1.6537798387096774,
+            1.6645186688311686,
+            1.6533474025974024,
+            1.677365625,
+            1.6641535947712418,
+            1.6537798387096774
+          ]
+        },
+        "c": {
+          "median": 0.07373612923814876,
+          "pairs": [
+            0.07349750098818712,
+            0.07397475748811042,
+            0.07397475748811042,
+            0.07338477475967764,
+            0.07400145353917073,
+            0.07349750098818712
+          ]
+        }
+      }
+    }
+  },
+  "samples": [
+    {
+      "case": "orbit-converging",
+      "role": "baseline",
+      "round": 0,
+      "repetitions": 13763,
+      "nsPerWork": 11480.055220518781,
+      "observation": {
+        "stdout": "382881820\n4\n13763\n158\n",
+        "elapsedMs": 158,
+        "wall": 0.16056449711322784
+      }
+    },
+    {
+      "case": "orbit-converging",
+      "role": "orbit",
+      "round": 0,
+      "repetitions": 2560000,
+      "nsPerWork": 76.953125,
+      "observation": {
+        "stdout": "382881820\n4\n2560000\n197\n",
+        "elapsedMs": 197,
+        "wall": 0.2000501761212945
+      }
+    },
+    {
+      "case": "orbit-converging",
+      "role": "c",
+      "round": 0,
+      "repetitions": 48301,
+      "nsPerWork": 3561.0028777872094,
+      "observation": {
+        "stdout": "382881820\n4\n48301\n172\n",
+        "elapsedMs": 172,
+        "wall": 0.17473236098885536
+      }
+    },
+    {
+      "case": "orbit-cycling",
+      "role": "orbit",
+      "round": 0,
+      "repetitions": 8000,
+      "nsPerWork": 18625.0,
+      "observation": {
+        "stdout": "382910401\n4\n8000\n149\n",
+        "elapsedMs": 149,
+        "wall": 0.1520613757893443
+      }
+    },
+    {
+      "case": "orbit-cycling",
+      "role": "c",
+      "round": 0,
+      "repetitions": 196923,
+      "nsPerWork": 827.7346983338665,
+      "observation": {
+        "stdout": "382910401\n4\n196923\n163\n",
+        "elapsedMs": 163,
+        "wall": 0.16609408985823393
+      }
+    },
+    {
+      "case": "orbit-cycling",
+      "role": "baseline",
+      "round": 0,
+      "repetitions": 13763,
+      "nsPerWork": 11262.079488483616,
+      "observation": {
+        "stdout": "382910401\n4\n13763\n155\n",
+        "elapsedMs": 155,
+        "wall": 0.15836988855153322
+      }
+    },
+    {
+      "case": "orbit-cycling",
+      "role": "baseline",
+      "round": 1,
+      "repetitions": 13763,
+      "nsPerWork": 11189.42091113856,
+      "observation": {
+        "stdout": "382910401\n4\n13763\n154\n",
+        "elapsedMs": 154,
+        "wall": 0.15775236766785383
+      }
+    },
+    {
+      "case": "orbit-cycling",
+      "role": "c",
+      "round": 1,
+      "repetitions": 196923,
+      "nsPerWork": 827.7346983338665,
+      "observation": {
+        "stdout": "382910401\n4\n196923\n163\n",
+        "elapsedMs": 163,
+        "wall": 0.16580413095653057
+      }
+    },
+    {
+      "case": "orbit-cycling",
+      "role": "orbit",
+      "round": 1,
+      "repetitions": 8000,
+      "nsPerWork": 18625.0,
+      "observation": {
+        "stdout": "382910401\n4\n8000\n149\n",
+        "elapsedMs": 149,
+        "wall": 0.1527731865644455
+      }
+    },
+    {
+      "case": "orbit-converging",
+      "role": "orbit",
+      "round": 1,
+      "repetitions": 2560000,
+      "nsPerWork": 80.078125,
+      "observation": {
+        "stdout": "382881820\n4\n2560000\n205\n",
+        "elapsedMs": 205,
+        "wall": 0.20799871813505888
+      }
+    },
+    {
+      "case": "orbit-converging",
+      "role": "baseline",
+      "round": 1,
+      "repetitions": 13763,
+      "nsPerWork": 11770.689529899004,
+      "observation": {
+        "stdout": "382881820\n4\n13763\n162\n",
+        "elapsedMs": 162,
+        "wall": 0.16466502472758293
+      }
+    },
+    {
+      "case": "orbit-converging",
+      "role": "c",
+      "round": 1,
+      "repetitions": 48301,
+      "nsPerWork": 3395.3748369598975,
+      "observation": {
+        "stdout": "382881820\n4\n48301\n164\n",
+        "elapsedMs": 164,
+        "wall": 0.16709245927631855
+      }
+    },
+    {
+      "case": "orbit-converging",
+      "role": "c",
+      "round": 2,
+      "repetitions": 48301,
+      "nsPerWork": 3374.6713318564834,
+      "observation": {
+        "stdout": "382881820\n4\n48301\n163\n",
+        "elapsedMs": 163,
+        "wall": 0.1659616632387042
+      }
+    },
+    {
+      "case": "orbit-converging",
+      "role": "baseline",
+      "round": 2,
+      "repetitions": 13763,
+      "nsPerWork": 11262.079488483616,
+      "observation": {
+        "stdout": "382881820\n4\n13763\n155\n",
+        "elapsedMs": 155,
+        "wall": 0.15746930241584778
+      }
+    },
+    {
+      "case": "orbit-converging",
+      "role": "orbit",
+      "round": 2,
+      "repetitions": 2560000,
+      "nsPerWork": 76.953125,
+      "observation": {
+        "stdout": "382881820\n4\n2560000\n197\n",
+        "elapsedMs": 197,
+        "wall": 0.20031534414738417
+      }
+    },
+    {
+      "case": "orbit-cycling",
+      "role": "baseline",
+      "round": 2,
+      "repetitions": 13763,
+      "nsPerWork": 11189.42091113856,
+      "observation": {
+        "stdout": "382910401\n4\n13763\n154\n",
+        "elapsedMs": 154,
+        "wall": 0.15717627573758364
+      }
+    },
+    {
+      "case": "orbit-cycling",
+      "role": "orbit",
+      "round": 2,
+      "repetitions": 8000,
+      "nsPerWork": 18500.0,
+      "observation": {
+        "stdout": "382910401\n4\n8000\n148\n",
+        "elapsedMs": 148,
+        "wall": 0.15170515049248934
+      }
+    },
+    {
+      "case": "orbit-cycling",
+      "role": "c",
+      "round": 2,
+      "repetitions": 196923,
+      "nsPerWork": 827.7346983338665,
+      "observation": {
+        "stdout": "382910401\n4\n196923\n163\n",
+        "elapsedMs": 163,
+        "wall": 0.16598335560411215
+      }
+    },
+    {
+      "case": "orbit-cycling",
+      "role": "c",
+      "round": 3,
+      "repetitions": 196923,
+      "nsPerWork": 853.1253332520834,
+      "observation": {
+        "stdout": "382910401\n4\n196923\n168\n",
+        "elapsedMs": 168,
+        "wall": 0.1716836839914322
+      }
+    },
+    {
+      "case": "orbit-cycling",
+      "role": "orbit",
+      "round": 3,
+      "repetitions": 8000,
+      "nsPerWork": 19500.0,
+      "observation": {
+        "stdout": "382910401\n4\n8000\n156\n",
+        "elapsedMs": 156,
+        "wall": 0.1596316695213318
+      }
+    },
+    {
+      "case": "orbit-cycling",
+      "role": "baseline",
+      "round": 3,
+      "repetitions": 13763,
+      "nsPerWork": 11625.372375208894,
+      "observation": {
+        "stdout": "382910401\n4\n13763\n160\n",
+        "elapsedMs": 160,
+        "wall": 0.16326848417520523
+      }
+    },
+    {
+      "case": "orbit-converging",
+      "role": "baseline",
+      "round": 3,
+      "repetitions": 13763,
+      "nsPerWork": 11116.762333793504,
+      "observation": {
+        "stdout": "382881820\n4\n13763\n153\n",
+        "elapsedMs": 153,
+        "wall": 0.1559810908511281
+      }
+    },
+    {
+      "case": "orbit-converging",
+      "role": "c",
+      "round": 3,
+      "repetitions": 48301,
+      "nsPerWork": 3333.2643216496554,
+      "observation": {
+        "stdout": "382881820\n4\n48301\n161\n",
+        "elapsedMs": 161,
+        "wall": 0.16468151286244392
+      }
+    },
+    {
+      "case": "orbit-converging",
+      "role": "orbit",
+      "round": 3,
+      "repetitions": 2560000,
+      "nsPerWork": 76.953125,
+      "observation": {
+        "stdout": "382881820\n4\n2560000\n197\n",
+        "elapsedMs": 197,
+        "wall": 0.1996059464290738
+      }
+    },
+    {
+      "case": "orbit-converging",
+      "role": "orbit",
+      "round": 4,
+      "repetitions": 2560000,
+      "nsPerWork": 76.953125,
+      "observation": {
+        "stdout": "382881820\n4\n2560000\n197\n",
+        "elapsedMs": 197,
+        "wall": 0.1997336084023118
+      }
+    },
+    {
+      "case": "orbit-converging",
+      "role": "c",
+      "round": 4,
+      "repetitions": 48301,
+      "nsPerWork": 3353.9678267530694,
+      "observation": {
+        "stdout": "382881820\n4\n48301\n162\n",
+        "elapsedMs": 162,
+        "wall": 0.165127232670784
+      }
+    },
+    {
+      "case": "orbit-converging",
+      "role": "baseline",
+      "round": 4,
+      "repetitions": 13763,
+      "nsPerWork": 11334.738065828671,
+      "observation": {
+        "stdout": "382881820\n4\n13763\n156\n",
+        "elapsedMs": 156,
+        "wall": 0.15882070176303387
+      }
+    },
+    {
+      "case": "orbit-cycling",
+      "role": "c",
+      "round": 4,
+      "repetitions": 196923,
+      "nsPerWork": 822.6565713502232,
+      "observation": {
+        "stdout": "382910401\n4\n196923\n162\n",
+        "elapsedMs": 162,
+        "wall": 0.16511918418109417
+      }
+    },
+    {
+      "case": "orbit-cycling",
+      "role": "baseline",
+      "round": 4,
+      "repetitions": 13763,
+      "nsPerWork": 11116.762333793504,
+      "observation": {
+        "stdout": "382910401\n4\n13763\n153\n",
+        "elapsedMs": 153,
+        "wall": 0.15558307152241468
+      }
+    },
+    {
+      "case": "orbit-cycling",
+      "role": "orbit",
+      "round": 4,
+      "repetitions": 8000,
+      "nsPerWork": 18500.0,
+      "observation": {
+        "stdout": "382910401\n4\n8000\n148\n",
+        "elapsedMs": 148,
+        "wall": 0.15120490733534098
+      }
+    },
+    {
+      "case": "orbit-cycling",
+      "role": "orbit",
+      "round": 5,
+      "repetitions": 8000,
+      "nsPerWork": 18625.0,
+      "observation": {
+        "stdout": "382910401\n4\n8000\n149\n",
+        "elapsedMs": 149,
+        "wall": 0.1516427118331194
+      }
+    },
+    {
+      "case": "orbit-cycling",
+      "role": "baseline",
+      "round": 5,
+      "repetitions": 13763,
+      "nsPerWork": 11262.079488483616,
+      "observation": {
+        "stdout": "382910401\n4\n13763\n155\n",
+        "elapsedMs": 155,
+        "wall": 0.1585008716210723
+      }
+    },
+    {
+      "case": "orbit-cycling",
+      "role": "c",
+      "round": 5,
+      "repetitions": 196923,
+      "nsPerWork": 827.7346983338665,
+      "observation": {
+        "stdout": "382910401\n4\n196923\n163\n",
+        "elapsedMs": 163,
+        "wall": 0.16645408980548382
+      }
+    },
+    {
+      "case": "orbit-converging",
+      "role": "c",
+      "round": 5,
+      "repetitions": 48301,
+      "nsPerWork": 3353.9678267530694,
+      "observation": {
+        "stdout": "382881820\n4\n48301\n162\n",
+        "elapsedMs": 162,
+        "wall": 0.1649540588259697
+      }
+    },
+    {
+      "case": "orbit-converging",
+      "role": "orbit",
+      "round": 5,
+      "repetitions": 2560000,
+      "nsPerWork": 76.5625,
+      "observation": {
+        "stdout": "382881820\n4\n2560000\n196\n",
+        "elapsedMs": 196,
+        "wall": 0.19948758091777563
+      }
+    },
+    {
+      "case": "orbit-converging",
+      "role": "baseline",
+      "round": 5,
+      "repetitions": 13763,
+      "nsPerWork": 11262.079488483616,
+      "observation": {
+        "stdout": "382881820\n4\n13763\n155\n",
+        "elapsedMs": 155,
+        "wall": 0.15772487316280603
+      }
+    }
+  ],
+  "pilots": [
+    {
+      "case": "orbit-converging",
+      "role": "baseline",
+      "repetitions": 100,
+      "stdout": "382881820\n0\n100\n2\n",
+      "elapsedMs": 2,
+      "wall": 0.004356438294053078
+    },
+    {
+      "case": "orbit-converging",
+      "role": "baseline",
+      "repetitions": 8000,
+      "stdout": "382881820\n0\n8000\n93\n",
+      "elapsedMs": 93,
+      "wall": 0.09621996991336346
+    },
+    {
+      "case": "orbit-converging",
+      "role": "baseline",
+      "repetitions": 13763,
+      "stdout": "382881820\n0\n13763\n154\n",
+      "elapsedMs": 154,
+      "wall": 0.15783578902482986
+    },
+    {
+      "case": "orbit-converging",
+      "role": "orbit",
+      "repetitions": 100,
+      "stdout": "382881820\n0\n100\n0\n",
+      "elapsedMs": 0,
+      "wall": 0.003038056194782257
+    },
+    {
+      "case": "orbit-converging",
+      "role": "orbit",
+      "repetitions": 16000,
+      "stdout": "382881820\n0\n16000\n1\n",
+      "elapsedMs": 1,
+      "wall": 0.003995235078036785
+    },
+    {
+      "case": "orbit-converging",
+      "role": "orbit",
+      "repetitions": 2560000,
+      "stdout": "382881820\n0\n2560000\n197\n",
+      "elapsedMs": 197,
+      "wall": 0.19938651844859123
+    },
+    {
+      "case": "orbit-converging",
+      "role": "c",
+      "repetitions": 100,
+      "stdout": "382881820\n0\n100\n0\n",
+      "elapsedMs": 0,
+      "wall": 0.0029774531722068787
+    },
+    {
+      "case": "orbit-converging",
+      "role": "c",
+      "repetitions": 16000,
+      "stdout": "382881820\n0\n16000\n53\n",
+      "elapsedMs": 53,
+      "wall": 0.05631113983690739
+    },
+    {
+      "case": "orbit-converging",
+      "role": "c",
+      "repetitions": 48301,
+      "stdout": "382881820\n0\n48301\n162\n",
+      "elapsedMs": 162,
+      "wall": 0.1646032389253378
+    },
+    {
+      "case": "orbit-cycling",
+      "role": "baseline",
+      "repetitions": 100,
+      "stdout": "382910401\n0\n100\n2\n",
+      "elapsedMs": 2,
+      "wall": 0.004299054853618145
+    },
+    {
+      "case": "orbit-cycling",
+      "role": "baseline",
+      "repetitions": 8000,
+      "stdout": "382910401\n0\n8000\n93\n",
+      "elapsedMs": 93,
+      "wall": 0.09593186900019646
+    },
+    {
+      "case": "orbit-cycling",
+      "role": "baseline",
+      "repetitions": 13763,
+      "stdout": "382910401\n0\n13763\n157\n",
+      "elapsedMs": 157,
+      "wall": 0.15940603241324425
+    },
+    {
+      "case": "orbit-cycling",
+      "role": "orbit",
+      "repetitions": 100,
+      "stdout": "382910401\n0\n100\n2\n",
+      "elapsedMs": 2,
+      "wall": 0.005011611618101597
+    },
+    {
+      "case": "orbit-cycling",
+      "role": "orbit",
+      "repetitions": 8000,
+      "stdout": "382910401\n0\n8000\n148\n",
+      "elapsedMs": 148,
+      "wall": 0.1513954559341073
+    },
+    {
+      "case": "orbit-cycling",
+      "role": "c",
+      "repetitions": 100,
+      "stdout": "382910401\n0\n100\n0\n",
+      "elapsedMs": 0,
+      "wall": 0.0027417102828621864
+    },
+    {
+      "case": "orbit-cycling",
+      "role": "c",
+      "repetitions": 16000,
+      "stdout": "382910401\n0\n16000\n13\n",
+      "elapsedMs": 13,
+      "wall": 0.015587701462209225
+    },
+    {
+      "case": "orbit-cycling",
+      "role": "c",
+      "repetitions": 196923,
+      "stdout": "382910401\n0\n196923\n162\n",
+      "elapsedMs": 162,
+      "wall": 0.16470788605511189
+    }
+  ],
+  "seconds": 33.71220579277724
+}

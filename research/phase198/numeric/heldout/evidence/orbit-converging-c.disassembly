@@ -1,0 +1,58 @@
+
+/home/ai/bend2/build/publish/bend/selfhost/build/phase198/numeric-heldout01/orbit-converging-c:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000001a30 <work>:
+    1a30:	mov    %esi,%eax
+    1a32:	xor    $0x9e3779b9,%eax
+    1a37:	test   %edi,%edi
+    1a39:	je     1aaf <work+0x7f>
+    1a3b:	mov    %esi,%ecx
+    1a3d:	or     $0x1,%ecx
+    1a40:	mov    %edi,%edx
+    1a42:	and    $0x3,%edx
+    1a45:	cmp    $0x4,%edi
+    1a48:	jb     1aa0 <work+0x70>
+    1a4a:	and    $0xfffffffc,%edi
+    1a4d:	nopl   (%rax)
+    1a50:	mov    %esi,%r8d
+    1a53:	and    $0x7,%r8d
+    1a57:	add    %ecx,%eax
+    1a59:	add    %r8d,%eax
+    1a5c:	mov    %esi,%r8d
+    1a5f:	shr    %r8d
+    1a62:	and    $0x7,%r8d
+    1a66:	add    %ecx,%eax
+    1a68:	add    %ecx,%r8d
+    1a6b:	add    %eax,%r8d
+    1a6e:	mov    %esi,%eax
+    1a70:	shr    $0x2,%eax
+    1a73:	and    $0x7,%eax
+    1a76:	mov    %esi,%r9d
+    1a79:	shr    $0x3,%r9d
+    1a7d:	and    $0x7,%r9d
+    1a81:	add    %ecx,%eax
+    1a83:	add    %r9d,%eax
+    1a86:	add    %r8d,%eax
+    1a89:	shr    $0x4,%esi
+    1a8c:	add    $0xfffffffc,%edi
+    1a8f:	jne    1a50 <work+0x20>
+    1a91:	test   %edx,%edx
+    1a93:	je     1aaf <work+0x7f>
+    1a95:	data16 nopw %cs:0x0(%rax,%rax,1)
+    1aa0:	mov    %esi,%edi
+    1aa2:	and    $0x7,%edi
+    1aa5:	add    %ecx,%eax
+    1aa7:	add    %edi,%eax
+    1aa9:	shr    %esi
+    1aab:	dec    %edx
+    1aad:	jne    1aa0 <work+0x70>
+    1aaf:	retq   
+
+Disassembly of section .init:
+
+Disassembly of section .fini:
+
+Disassembly of section .plt:

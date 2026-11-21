@@ -44,6 +44,26 @@ def group(name):
         return "native runtime helpers"
     return "other named functions"
 
+def phase_markers(names, meta):
+    # The sampling stream stores each thread separately. Secondary CPU time is
+    # below one sampling period here, so all PCs are from the main thread.
+    period = int(meta["period_us"]) / 1_000_000
+    if int(meta["sampled_thread_cpu_ns"]) - int(meta["main_thread_cpu_ns"]) >= period * 1e9 or int(meta["overruns"]):
+        return {}
+    root = Path(__file__).resolve().parents[3] / "selfhost/build/phase198/progress-portfolio01/maintained/src"
+    out = {}
+    for label, pattern in [("front","front/*.bend"),("check","check/*.bend"),("sharedNative","back/native/*.bend"),("qbePlanning","back/qbe/*.bend"),("x86","back/x86/*.bend"),
+                           ("objectEncoding","back/x86/object-encode.bend"),("elfWriter","back/x86/object-elf.bend")]:
+        declared = set()
+        for f in root.glob(pattern):
+            declared.update(re.findall(r"(?m)^def ([\w.]+)\(", f.read_text()))
+        seen = [(i, n) for i, n in enumerate(names) if n.split("$direct.")[-1] in declared or
+                n.rsplit(".read.",1)[-1] in declared or n.rsplit(".owned.",1)[-1] in declared]
+        if seen:
+            out[label] = {"samples":len(seen), "firstApproxCpuSecond":round((seen[0][0]+1)*period,3),
+                          "first":seen[0][1], "lastApproxCpuSecond":round((seen[-1][0]+1)*period,3), "last":seen[-1][1]}
+    return out
+
 def analyze(sample, image, expected):
     raw, pcs = sample.read_text().split("\nPCS\n")
     metadata, maps = raw.split("\nMAPS\n")
@@ -77,6 +97,7 @@ def analyze(sample, image, expected):
         names.append(name)
     n = len(names)
     return {"sampleSha256":sha(sample),"imageSha256":expected,"metadata":meta,
+            "namedSourceMarkers":phase_markers(names,meta),
             "topLeaves":Counter(names).most_common(35),"groups":Counter(map(group,names)),
             "sampleOrderQuintiles":[Counter(names[n*i//5:n*(i+1)//5]).most_common(7) for i in range(5)],
             "groupQuintiles":[Counter(map(group,names[n*i//5:n*(i+1)//5])) for i in range(5)]}

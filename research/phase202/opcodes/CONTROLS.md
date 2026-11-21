@@ -65,3 +65,5 @@ the candidate slice has5 declarations, the old slice4. Its receipt now pins all
 four preparation/screen methods. Use `--fixture selfhost/build/phase202/opcodefixture04`.
 The latest generator SHA256 is
 d405318e8a0d3d1dff792abd49c014f34175ce542fd44f3178d8323dfa27a04e.
+
+[Checked Bend decoder](decoder.bend) contains the exact replacement declarations from the integrated source. Its focused native test took 0.1973× the original median paired time on the mixed corpus. All four candidate observations were below 100 ms. The whole-build comparison is reported separately.

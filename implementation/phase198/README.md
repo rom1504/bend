@@ -1,0 +1,32 @@
+# Direct x86 program runtime against mature Bend C
+
+The target is the runtime of complete Bend programs compiled to direct x86 ELF. The reference is the mature self-hosted Bend C backend. Both execute the original benchmark source and inputs. Native45 contains 45 correctness cases, of which 44 do nonzero work and count toward the geometric mean. Each measured program reports its full expected output, completed warmups, repetitions and elapsed time. Calibration and linking sit outside program runtime.
+
+## Full native45 result
+
+The fastest measured configuration took **1.27813× mature Bend C runtime**. Against the incumbent on the same CPU in the same session, geometric program time fell **30.64%**. The native45 result alone would overstate the breadth of the progress. Excluding the single benchmark whose fixed point dramatically shortens execution, geometric time fell **16.47%**, from 1.83610× to 1.53373× C. The families outside the studied compiler transformations changed by 0.15% collectively.
+
+| Full suite measure | Phase197 | New compiler, original runtime | New compiler, live constructor runtime |
+|---|---:|---:|---:|
+| Geometric runtime / C | 1.84264× | 1.28731× | **1.27813×** |
+| Geometric runtime / C, omit scalar-8192 | 1.83610× | 1.54620× | **1.53373×** |
+| Original fixed-batch runtime | 22.59 s | 19.55 s | **19.31 s** |
+| Fixed batch / C | 2.188× | 1.894× | **1.871×** |
+| Above 1.1× C | 37 / 44 | 35 / 44 | **34 / 44** |
+| Above 2× C | 26 / 44 | 22 / 44 | **21 / 44** |
+| Mean positive log-slowdown | 0.7390 | 0.6402 | **0.6318** |
+
+All four roles passed complete-output checks in 624 pilot and 720 timed observations. The same-object live runtime saved 0.71% geometrically in this run. Four rounds and dispersion above 10% on 23 cases limit individual small timing claims. [Per-case, independent reference and raw evidence](../../research/phase198/runtime-broad/orbit-summary.md) · [Family split and denominator audit](orbit-breadth.json)
+
+## What removed work
+
+- A checked affine consumer can accumulate a recursively generated expression as a pair of modular coefficients. At expression depth 128 it eliminated the intermediate tree entirely and used 14.0% of the previous x86 time. A separate invoice datatype, with different constructors and arithmetic, used 21.2%. [Recognition, transfer and limits](../../research/phase198/fusion/results.md)
+- A checked pairwise tree worker carries pending child pairs locally and eliminates continuation-scheduler round trips. The real native object dropped from 48 instructions to nine for scheduling an internal-node pair. Ivy Bridge LLVM-MCA modeled reciprocal throughput of 14 and four cycles respectively. Independent dynamic counts found 2,815 relevant descents. The fully generated tree sort took 51.3% of incumbent x86 time and 1.709× C time. [Hardware model and literal machine bytes](../../research/phase198/reuse/mca/results.md)
+- Two countdown rules recover information lost at backedges. One recognizes an absorbing value under a checked branch, eliminating work in BST search and an unrelated queue. The other uses an invariant state and a word accumulator to skip the remaining iterations after an observed fixed point. It admits only the supported pure operations and verifies the induction and return shape. Ordinary Mandelbrot gains principally from escape recognition. The 8,192-step scalar case actually stabilizes, so it is unusually favorable. [BST and queue](../../research/phase198/absorbing/) · [Numeric rule and controls](../../research/phase198/numeric/)
+- The serial constructor fast path keeps live descriptor reads and separates common raw construction from shared/packed cases. Caching descriptor fields at bind time was faster on the benchmark but failed a foreign metadata mutation control. The live variant passed that control. It can be linked independently with the same compiler-emitted program objects. [Runtime comparison](../../research/phase198/runtime-broad/summary.md)
+
+## Intermediate broad result and cost
+
+Before the fixed-point extension, the independent native compiler and the constructor runtime together took **1.54663× C time**. The first five-rule compiler with the original runtime took 1.57487×, versus 1.87495× for Phase197 in the same four-way run. The fixed batch fell from 22.90 to 19.72 seconds versus 10.31 seconds for C. Source-rule gains were concentrated in the studied semantic families. [All cases and transfer partition](checkpoint.md)
+
+The frozen fixed-point source contains 44,321 lines and 1,942,906 bytes in its selected direct x86 profile. Phase197 had 42,690 lines and 1,858,809 bytes. The new source adds 214 reachable declarations and changes five original definitions. Across the 45 identical source files, compiler-to-object wall time was 77.47 seconds versus 77.30 seconds for Phase197. Process CPU time was 75.57 versus 76.24 seconds; the maximum per-request RSS was 57,680 versus 57,216 KiB. These are one-pass cost observations from separate catalog runs. QBE-to-N1 cold compiler acquisition took 179.36 seconds versus 177.17 seconds for the earlier source. [Same-request compiler cost](orbit-compiler-cost.json) · [Clean source replay](../../research/phase198/maintenance/checkpoints/orbit-portfolio03/replay.json)

@@ -1,0 +1,1211 @@
+{
+  "role": "live",
+  "baseline": 1.278128310741931,
+  "fixedBatchRatio": 1.8711362027502607,
+  "source": "selfhost/build/phase198/orbit-live-broad01/report.json",
+  "assumption": "Counterfactual upper bound. Bring only the above-C members of each chosen family down to the C reference and preserve every other measured runtime and already-fast result. Assumes independent costs; provides no implementation forecast.",
+  "families": {
+    "mandelbrot": {
+      "programs": [
+        {
+          "id": "mandelbrot",
+          "ratio": 2.8582908878504676
+        },
+        {
+          "id": "variation-mandelbrot-grid-4-7",
+          "ratio": 2.4361984000997867
+        },
+        {
+          "id": "variation-mandelbrot-grid-5-31",
+          "ratio": 1.1303157894736842
+        }
+      ],
+      "positiveLog": 2.0631596994998405,
+      "positiveExcessMs": 820.9031750506958,
+      "fixedCostMs": 1525.351620767227,
+      "referenceMs": 704.4484457165313,
+      "ifEverySlowMemberReachedC": 1.219580268561965,
+      "shareOfRemainingPositiveLog": 0.0742133029358465,
+      "shareOfPositiveBatchExcess": 0.08259973410818001
+    },
+    "editdist": {
+      "programs": [
+        {
+          "id": "editdist",
+          "ratio": 1.6336149399733215
+        },
+        {
+          "id": "variation-editdist-0-17",
+          "ratio": 1.6350927561837456
+        },
+        {
+          "id": "variation-editdist-3-123",
+          "ratio": 1.6221374045801527
+        }
+      ],
+      "positiveLog": 1.4662395133299686,
+      "positiveExcessMs": 383.9377699324663,
+      "fixedCostMs": 993.1110014985014,
+      "referenceMs": 609.1732315660352,
+      "ifEverySlowMemberReachedC": 1.236238282012007,
+      "shareOfRemainingPositiveLog": 0.05274166474153424,
+      "shareOfPositiveBatchExcess": 0.03863203197935107
+    },
+    "tree-bitonic": {
+      "programs": [
+        {
+          "id": "tree-bitonic",
+          "ratio": 1.6856282828282831
+        },
+        {
+          "id": "variation-tree-bitonic-6-17",
+          "ratio": 1.95405521667951
+        },
+        {
+          "id": "variation-tree-bitonic-9-123",
+          "ratio": 1.4060881647088543
+        }
+      ],
+      "positiveLog": 1.5328566714295022,
+      "positiveExcessMs": 562.0226152625642,
+      "fixedCostMs": 1389.050752710128,
+      "referenceMs": 827.0281374475638,
+      "ifEverySlowMemberReachedC": 1.2343680008993827,
+      "shareOfRemainingPositiveLog": 0.055137930690294476,
+      "shareOfPositiveBatchExcess": 0.05655102817772004
+    },
+    "lexer": {
+      "programs": [
+        {
+          "id": "lexer",
+          "ratio": 2.686903153953698
+        },
+        {
+          "id": "variation-lexer-6-17",
+          "ratio": 2.685673163911506
+        },
+        {
+          "id": "variation-lexer-10-123",
+          "ratio": 2.6004647949249415
+        }
+      ],
+      "positiveLog": 2.9320108922231993,
+      "positiveExcessMs": 1026.466652193455,
+      "fixedCostMs": 1645.6167799725883,
+      "referenceMs": 619.1501277791335,
+      "ifEverySlowMemberReachedC": 1.1957339002817287,
+      "shareOfRemainingPositiveLog": 0.10546649035870173,
+      "shareOfPositiveBatchExcess": 0.10328364552476853
+    },
+    "symreg": {
+      "programs": [
+        {
+          "id": "symreg",
+          "ratio": 1.0498535983972874
+        },
+        {
+          "id": "variation-symreg-4-17",
+          "ratio": 1.0538772405267913
+        },
+        {
+          "id": "variation-symreg-7-123",
+          "ratio": 1.0517435320584927
+        }
+      ],
+      "positiveLog": 0.15157599137268307,
+      "positiveExcessMs": 51.96856256886484,
+      "fixedCostMs": 1054.8172344192235,
+      "referenceMs": 1002.8486718503586,
+      "ifEverySlowMemberReachedC": 1.2737328504824783,
+      "shareOfRemainingPositiveLog": 0.0054522948312092385,
+      "shareOfPositiveBatchExcess": 0.005229105673647149
+    },
+    "test-morning-program": {
+      "programs": [
+        {
+          "id": "test-morning-program",
+          "ratio": 3.3971931683168317
+        }
+      ],
+      "positiveLog": 1.2229495519470195,
+      "positiveExcessMs": 385.99650688833657,
+      "fixedCostMs": 547.0167,
+      "referenceMs": 161.02019311166345,
+      "ifEverySlowMemberReachedC": 1.2430927685887094,
+      "shareOfRemainingPositiveLog": 0.043990354016659065,
+      "shareOfPositiveBatchExcess": 0.03883918323704119
+    },
+    "test-evening-program": {
+      "programs": [
+        {
+          "id": "test-evening-program",
+          "ratio": 3.3676848390122296
+        }
+      ],
+      "positiveLog": 1.2142255168865224,
+      "positiveExcessMs": 740.4832523562669,
+      "fixedCostMs": 1053.228952356267,
+      "referenceMs": 312.7457,
+      "ifEverySlowMemberReachedC": 1.2433392654088125,
+      "shareOfRemainingPositiveLog": 0.043676544350386225,
+      "shareOfPositiveBatchExcess": 0.07450783675238042
+    },
+    "test-rle-roundtrip": {
+      "programs": [
+        {
+          "id": "test-rle-roundtrip",
+          "ratio": 2.426038311725563
+        }
+      ],
+      "positiveLog": 0.8862596025346589,
+      "positiveExcessMs": 615.5055348000623,
+      "fixedCostMs": 1047.1247484909456,
+      "referenceMs": 431.6192136908834,
+      "ifEverySlowMemberReachedC": 1.2526414564275539,
+      "shareOfRemainingPositiveLog": 0.0318793801462157,
+      "shareOfPositiveBatchExcess": 0.0619325092919254
+    },
+    "test-map-set-ops": {
+      "programs": [
+        {
+          "id": "test-map-set-ops",
+          "ratio": 3.010579438986535
+        }
+      ],
+      "positiveLog": 1.1021325648808318,
+      "positiveExcessMs": 477.8835972421257,
+      "fixedCostMs": 715.5681114551084,
+      "referenceMs": 237.68451421298263,
+      "ifEverySlowMemberReachedC": 1.2465107937296591,
+      "shareOfRemainingPositiveLog": 0.03964448216625753,
+      "shareOfPositiveBatchExcess": 0.04808491338143803
+    },
+    "raytrace": {
+      "programs": [
+        {
+          "id": "raytrace",
+          "ratio": 1.6590909090909092
+        },
+        {
+          "id": "variation-ray-active-64-2440",
+          "ratio": 1.6794019529062265
+        },
+        {
+          "id": "variation-ray-active-256-2240",
+          "ratio": 1.6959801327577404
+        }
+      ],
+      "positiveLog": 1.5529683799815084,
+      "positiveExcessMs": 1174.668851047913,
+      "fixedCostMs": 2897.4815930269638,
+      "referenceMs": 1722.8127419790508,
+      "ifEverySlowMemberReachedC": 1.2338039196100954,
+      "shareOfRemainingPositiveLog": 0.05586136296734473,
+      "shareOfPositiveBatchExcess": 0.11819583321227486
+    },
+    "local-pair": {
+      "programs": [
+        {
+          "id": "local-pair",
+          "ratio": 1.6377304964539008
+        }
+      ],
+      "positiveLog": 0.4933114398145646,
+      "positiveExcessMs": 128.8808395802099,
+      "fixedCostMs": 330.9737931034483,
+      "referenceMs": 202.09295352323838,
+      "ifEverySlowMemberReachedC": 1.2638784484821248,
+      "shareOfRemainingPositiveLog": 0.01774475884419035,
+      "shareOfPositiveBatchExcess": 0.012968061769656225
+    },
+    "local-fold": {
+      "programs": [
+        {
+          "id": "local-fold",
+          "ratio": 2.016196281487348
+        },
+        {
+          "id": "variation-local-fold-128-0",
+          "ratio": 2.6813439383410764
+        },
+        {
+          "id": "variation-local-fold-8192-123",
+          "ratio": 2.021416417444092
+        }
+      ],
+      "positiveLog": 2.3913293081218705,
+      "positiveExcessMs": 680.9617475192495,
+      "fixedCostMs": 1218.111455484807,
+      "referenceMs": 537.1497079655576,
+      "ifEverySlowMemberReachedC": 1.210517987915287,
+      "shareOfRemainingPositiveLog": 0.08601779416592871,
+      "shareOfPositiveBatchExcess": 0.06851874982632147
+    },
+    "scalar-region-8192": {
+      "programs": [
+        {
+          "id": "scalar-region-8192",
+          "ratio": 0.0005035122069577539
+        }
+      ],
+      "positiveLog": 0,
+      "positiveExcessMs": 0,
+      "fixedCostMs": 0.10436415739959932,
+      "referenceMs": 207.27234803337305,
+      "ifEverySlowMemberReachedC": 1.278128310741931,
+      "shareOfRemainingPositiveLog": 0.0,
+      "shareOfPositiveBatchExcess": 0.0
+    },
+    "complete-generic-row32": {
+      "programs": [
+        {
+          "id": "complete-generic-row32",
+          "ratio": 3.791090629800307
+        }
+      ],
+      "positiveLog": 1.3326537428167091,
+      "positiveExcessMs": 331.60249999999996,
+      "fixedCostMs": 450.40999999999997,
+      "referenceMs": 118.8075,
+      "ifEverySlowMemberReachedC": 1.2399972544895872,
+      "shareOfRemainingPositiveLog": 0.04793649078557613,
+      "shareOfPositiveBatchExcess": 0.033366028006794154
+    },
+    "closures": {
+      "programs": [
+        {
+          "id": "coverage-closures-64",
+          "ratio": 0.09241935483870967
+        },
+        {
+          "id": "coverage-closures-256",
+          "ratio": 0.07643538213046439
+        }
+      ],
+      "positiveLog": 0,
+      "positiveExcessMs": 0,
+      "fixedCostMs": 9.872036792437093,
+      "referenceMs": 116.767,
+      "ifEverySlowMemberReachedC": 1.278128310741931,
+      "shareOfRemainingPositiveLog": 0.0,
+      "shareOfPositiveBatchExcess": 0.0
+    },
+    "list-pipeline": {
+      "programs": [
+        {
+          "id": "coverage-list-pipeline-128",
+          "ratio": 0.7419889915693653
+        },
+        {
+          "id": "coverage-list-pipeline-512",
+          "ratio": 0.7430437673905815
+        }
+      ],
+      "positiveLog": 0,
+      "positiveExcessMs": 0,
+      "fixedCostMs": 219.07401459407276,
+      "referenceMs": 295.04264300884955,
+      "ifEverySlowMemberReachedC": 1.278128310741931,
+      "shareOfRemainingPositiveLog": 0.0,
+      "shareOfPositiveBatchExcess": 0.0
+    },
+    "bst": {
+      "programs": [
+        {
+          "id": "coverage-bst-32",
+          "ratio": 3.5031910596648617
+        },
+        {
+          "id": "coverage-bst-64",
+          "ratio": 2.4410167422663354
+        }
+      ],
+      "positiveLog": 2.1460889346145207,
+      "positiveExcessMs": 823.6977332620145,
+      "fixedCostMs": 1237.9880916088666,
+      "referenceMs": 414.2903583468521,
+      "ifEverySlowMemberReachedC": 1.217283822932838,
+      "shareOfRemainingPositiveLog": 0.0771963257475541,
+      "shareOfPositiveBatchExcess": 0.08288092410990036
+    },
+    "unicode-text": {
+      "programs": [
+        {
+          "id": "coverage-unicode-text-16",
+          "ratio": 2.659985567010309
+        },
+        {
+          "id": "coverage-unicode-text-64",
+          "ratio": 2.456511952191235
+        }
+      ],
+      "positiveLog": 1.8770631349944775,
+      "positiveExcessMs": 243.3240153056767,
+      "fixedCostMs": 399.8918,
+      "referenceMs": 156.56778469432328,
+      "ifEverySlowMemberReachedC": 1.224749367080391,
+      "shareOfRemainingPositiveLog": 0.06751927885215347,
+      "shareOfPositiveBatchExcess": 0.024483397771171263
+    },
+    "expression": {
+      "programs": [
+        {
+          "id": "coverage-expression-32",
+          "ratio": 0.14510515548783753
+        },
+        {
+          "id": "coverage-expression-128",
+          "ratio": 0.14506160714285712
+        }
+      ],
+      "positiveLog": 0,
+      "positiveExcessMs": 0,
+      "fixedCostMs": 94.51509168376509,
+      "referenceMs": 651.4540129932216,
+      "ifEverySlowMemberReachedC": 1.278128310741931,
+      "shareOfRemainingPositiveLog": 0.0,
+      "shareOfPositiveBatchExcess": 0.0
+    },
+    "map-churn": {
+      "programs": [
+        {
+          "id": "coverage-map-churn-32",
+          "ratio": 3.5515707399551326
+        },
+        {
+          "id": "coverage-map-churn-128",
+          "ratio": 3.3959060902896083
+        }
+      ],
+      "positiveLog": 2.4899605826197972,
+      "positiveExcessMs": 685.3089908565412,
+      "fixedCostMs": 962.8863405336722,
+      "referenceMs": 277.5773496771311,
+      "ifEverySlowMemberReachedC": 1.2078075058048552,
+      "shareOfRemainingPositiveLog": 0.08956563035865667,
+      "shareOfPositiveBatchExcess": 0.06895617186911195
+    },
+    "numeric-recurrence": {
+      "programs": [
+        {
+          "id": "coverage-numeric-recurrence-256",
+          "ratio": 1.4831881431648968
+        },
+        {
+          "id": "coverage-numeric-recurrence-1024",
+          "ratio": 1.437144745538665
+        }
+      ],
+      "positiveLog": 0.7568522513154745,
+      "positiveExcessMs": 186.22634307043052,
+      "fixedCostMs": 590.9869465325351,
+      "referenceMs": 404.76060346210454,
+      "ifEverySlowMemberReachedC": 1.256330993302142,
+      "shareOfRemainingPositiveLog": 0.02722450686593449,
+      "shareOfPositiveBatchExcess": 0.01873819822978066
+    },
+    "record-aggregation": {
+      "programs": [
+        {
+          "id": "coverage-record-aggregation-64",
+          "ratio": 3.071339862719288
+        },
+        {
+          "id": "coverage-record-aggregation-256",
+          "ratio": 2.9056319709225673
+        }
+      ],
+      "positiveLog": 2.1887648163286504,
+      "positiveExcessMs": 618.48840229525,
+      "fixedCostMs": 929.5882373777088,
+      "referenceMs": 311.09983508245875,
+      "ifEverySlowMemberReachedC": 1.2161037439347995,
+      "shareOfRemainingPositiveLog": 0.07873140717555642,
+      "shareOfPositiveBatchExcess": 0.06223264707853735
+    }
+  },
+  "logDeficitOrder": [
+    {
+      "families": [],
+      "geomean": 1.278128310741931,
+      "fixedBatchRatio": 1.8711362027502607
+    },
+    {
+      "families": [
+        "lexer"
+      ],
+      "geomean": 1.1957339002817287,
+      "fixedBatchRatio": 1.7716859971611532
+    },
+    {
+      "families": [
+        "lexer",
+        "map-churn"
+      ],
+      "geomean": 1.1299463188224383,
+      "fixedBatchRatio": 1.7052891786311908
+    },
+    {
+      "families": [
+        "lexer",
+        "map-churn",
+        "local-fold"
+      ],
+      "geomean": 1.070174514418844,
+      "fixedBatchRatio": 1.6393135469393159
+    },
+    {
+      "families": [
+        "lexer",
+        "map-churn",
+        "local-fold",
+        "record-aggregation"
+      ],
+      "geomean": 1.0182414572234122,
+      "fixedBatchRatio": 1.5793907051876592
+    },
+    {
+      "families": [
+        "lexer",
+        "map-churn",
+        "local-fold",
+        "record-aggregation",
+        "bst"
+      ],
+      "geomean": 0.9697687182894161,
+      "fixedBatchRatio": 1.4995859606875424
+    },
+    {
+      "families": [
+        "lexer",
+        "map-churn",
+        "local-fold",
+        "record-aggregation",
+        "bst",
+        "mandelbrot"
+      ],
+      "geomean": 0.925345901467323,
+      "fixedBatchRatio": 1.420051969638648
+    },
+    {
+      "families": [
+        "lexer",
+        "map-churn",
+        "local-fold",
+        "record-aggregation",
+        "bst",
+        "mandelbrot",
+        "unicode-text"
+      ],
+      "geomean": 0.8867003395728454,
+      "fixedBatchRatio": 1.3964772891605177
+    },
+    {
+      "families": [
+        "lexer",
+        "map-churn",
+        "local-fold",
+        "record-aggregation",
+        "bst",
+        "mandelbrot",
+        "unicode-text",
+        "raytrace"
+      ],
+      "geomean": 0.8559503340079552,
+      "fixedBatchRatio": 1.2826683714658211
+    },
+    {
+      "families": [
+        "lexer",
+        "map-churn",
+        "local-fold",
+        "record-aggregation",
+        "bst",
+        "mandelbrot",
+        "unicode-text",
+        "raytrace",
+        "tree-bitonic"
+      ],
+      "geomean": 0.8266444720602781,
+      "fixedBatchRatio": 1.2282162716200526
+    },
+    {
+      "families": [
+        "lexer",
+        "map-churn",
+        "local-fold",
+        "record-aggregation",
+        "bst",
+        "mandelbrot",
+        "unicode-text",
+        "raytrace",
+        "tree-bitonic",
+        "editdist"
+      ],
+      "geomean": 0.7995516047847406,
+      "fixedBatchRatio": 1.1910180927297647
+    },
+    {
+      "families": [
+        "lexer",
+        "map-churn",
+        "local-fold",
+        "record-aggregation",
+        "bst",
+        "mandelbrot",
+        "unicode-text",
+        "raytrace",
+        "tree-bitonic",
+        "editdist",
+        "complete-generic-row32"
+      ],
+      "geomean": 0.7756981724161227,
+      "fixedBatchRatio": 1.158890466636514
+    },
+    {
+      "families": [
+        "lexer",
+        "map-churn",
+        "local-fold",
+        "record-aggregation",
+        "bst",
+        "mandelbrot",
+        "unicode-text",
+        "raytrace",
+        "tree-bitonic",
+        "editdist",
+        "complete-generic-row32",
+        "test-morning-program"
+      ],
+      "geomean": 0.7544350443017894,
+      "fixedBatchRatio": 1.1214928250427105
+    },
+    {
+      "families": [
+        "lexer",
+        "map-churn",
+        "local-fold",
+        "record-aggregation",
+        "bst",
+        "mandelbrot",
+        "unicode-text",
+        "raytrace",
+        "tree-bitonic",
+        "editdist",
+        "complete-generic-row32",
+        "test-morning-program",
+        "test-evening-program"
+      ],
+      "geomean": 0.7339002711209396,
+      "fixedBatchRatio": 1.0497503952962028
+    },
+    {
+      "families": [
+        "lexer",
+        "map-churn",
+        "local-fold",
+        "record-aggregation",
+        "bst",
+        "mandelbrot",
+        "unicode-text",
+        "raytrace",
+        "tree-bitonic",
+        "editdist",
+        "complete-generic-row32",
+        "test-morning-program",
+        "test-evening-program",
+        "test-map-set-ops"
+      ],
+      "geomean": 0.7157455177112388,
+      "fixedBatchRatio": 1.0034501848686803
+    },
+    {
+      "families": [
+        "lexer",
+        "map-churn",
+        "local-fold",
+        "record-aggregation",
+        "bst",
+        "mandelbrot",
+        "unicode-text",
+        "raytrace",
+        "tree-bitonic",
+        "editdist",
+        "complete-generic-row32",
+        "test-morning-program",
+        "test-evening-program",
+        "test-map-set-ops",
+        "test-rle-roundtrip"
+      ],
+      "geomean": 0.7014730056459316,
+      "fixedBatchRatio": 0.943816341093731
+    },
+    {
+      "families": [
+        "lexer",
+        "map-churn",
+        "local-fold",
+        "record-aggregation",
+        "bst",
+        "mandelbrot",
+        "unicode-text",
+        "raytrace",
+        "tree-bitonic",
+        "editdist",
+        "complete-generic-row32",
+        "test-morning-program",
+        "test-evening-program",
+        "test-map-set-ops",
+        "test-rle-roundtrip",
+        "numeric-recurrence"
+      ],
+      "geomean": 0.6895100206693829,
+      "fixedBatchRatio": 0.9257736233250767
+    },
+    {
+      "families": [
+        "lexer",
+        "map-churn",
+        "local-fold",
+        "record-aggregation",
+        "bst",
+        "mandelbrot",
+        "unicode-text",
+        "raytrace",
+        "tree-bitonic",
+        "editdist",
+        "complete-generic-row32",
+        "test-morning-program",
+        "test-evening-program",
+        "test-map-set-ops",
+        "test-rle-roundtrip",
+        "numeric-recurrence",
+        "local-pair"
+      ],
+      "geomean": 0.6818226682035017,
+      "fixedBatchRatio": 0.9132868796346124
+    },
+    {
+      "families": [
+        "lexer",
+        "map-churn",
+        "local-fold",
+        "record-aggregation",
+        "bst",
+        "mandelbrot",
+        "unicode-text",
+        "raytrace",
+        "tree-bitonic",
+        "editdist",
+        "complete-generic-row32",
+        "test-morning-program",
+        "test-evening-program",
+        "test-map-set-ops",
+        "test-rle-roundtrip",
+        "numeric-recurrence",
+        "local-pair",
+        "symreg"
+      ],
+      "geomean": 0.6794778923176259,
+      "fixedBatchRatio": 0.9082518556320304
+    },
+    {
+      "families": [
+        "lexer",
+        "map-churn",
+        "local-fold",
+        "record-aggregation",
+        "bst",
+        "mandelbrot",
+        "unicode-text",
+        "raytrace",
+        "tree-bitonic",
+        "editdist",
+        "complete-generic-row32",
+        "test-morning-program",
+        "test-evening-program",
+        "test-map-set-ops",
+        "test-rle-roundtrip",
+        "numeric-recurrence",
+        "local-pair",
+        "symreg",
+        "scalar-region-8192"
+      ],
+      "geomean": 0.6794778923176259,
+      "fixedBatchRatio": 0.9082518556320304
+    },
+    {
+      "families": [
+        "lexer",
+        "map-churn",
+        "local-fold",
+        "record-aggregation",
+        "bst",
+        "mandelbrot",
+        "unicode-text",
+        "raytrace",
+        "tree-bitonic",
+        "editdist",
+        "complete-generic-row32",
+        "test-morning-program",
+        "test-evening-program",
+        "test-map-set-ops",
+        "test-rle-roundtrip",
+        "numeric-recurrence",
+        "local-pair",
+        "symreg",
+        "scalar-region-8192",
+        "closures"
+      ],
+      "geomean": 0.6794778923176259,
+      "fixedBatchRatio": 0.9082518556320304
+    },
+    {
+      "families": [
+        "lexer",
+        "map-churn",
+        "local-fold",
+        "record-aggregation",
+        "bst",
+        "mandelbrot",
+        "unicode-text",
+        "raytrace",
+        "tree-bitonic",
+        "editdist",
+        "complete-generic-row32",
+        "test-morning-program",
+        "test-evening-program",
+        "test-map-set-ops",
+        "test-rle-roundtrip",
+        "numeric-recurrence",
+        "local-pair",
+        "symreg",
+        "scalar-region-8192",
+        "closures",
+        "list-pipeline"
+      ],
+      "geomean": 0.6794778923176259,
+      "fixedBatchRatio": 0.9082518556320304
+    },
+    {
+      "families": [
+        "lexer",
+        "map-churn",
+        "local-fold",
+        "record-aggregation",
+        "bst",
+        "mandelbrot",
+        "unicode-text",
+        "raytrace",
+        "tree-bitonic",
+        "editdist",
+        "complete-generic-row32",
+        "test-morning-program",
+        "test-evening-program",
+        "test-map-set-ops",
+        "test-rle-roundtrip",
+        "numeric-recurrence",
+        "local-pair",
+        "symreg",
+        "scalar-region-8192",
+        "closures",
+        "list-pipeline",
+        "expression"
+      ],
+      "geomean": 0.6794778923176259,
+      "fixedBatchRatio": 0.9082518556320304
+    }
+  ],
+  "fixedExcessOrder": [
+    {
+      "families": [],
+      "geomean": 1.278128310741931,
+      "fixedBatchRatio": 1.8711362027502607
+    },
+    {
+      "families": [
+        "raytrace"
+      ],
+      "geomean": 1.2338039196100954,
+      "fixedBatchRatio": 1.7573272850555641
+    },
+    {
+      "families": [
+        "raytrace",
+        "lexer"
+      ],
+      "geomean": 1.1542668764780568,
+      "fixedBatchRatio": 1.6578770794664568
+    },
+    {
+      "families": [
+        "raytrace",
+        "lexer",
+        "bst"
+      ],
+      "geomean": 1.0993187337101828,
+      "fixedBatchRatio": 1.5780723349663397
+    },
+    {
+      "families": [
+        "raytrace",
+        "lexer",
+        "bst",
+        "mandelbrot"
+      ],
+      "geomean": 1.0489615363540512,
+      "fixedBatchRatio": 1.4985383439174453
+    },
+    {
+      "families": [
+        "raytrace",
+        "lexer",
+        "bst",
+        "mandelbrot",
+        "test-evening-program"
+      ],
+      "geomean": 1.0204101224355726,
+      "fixedBatchRatio": 1.4267959141709379
+    },
+    {
+      "families": [
+        "raytrace",
+        "lexer",
+        "bst",
+        "mandelbrot",
+        "test-evening-program",
+        "map-churn"
+      ],
+      "geomean": 0.9642686063041004,
+      "fixedBatchRatio": 1.3603990956409755
+    },
+    {
+      "families": [
+        "raytrace",
+        "lexer",
+        "bst",
+        "mandelbrot",
+        "test-evening-program",
+        "map-churn",
+        "local-fold"
+      ],
+      "geomean": 0.9132608074658335,
+      "fixedBatchRatio": 1.2944234639491006
+    },
+    {
+      "families": [
+        "raytrace",
+        "lexer",
+        "bst",
+        "mandelbrot",
+        "test-evening-program",
+        "map-churn",
+        "local-fold",
+        "record-aggregation"
+      ],
+      "geomean": 0.8689424041498798,
+      "fixedBatchRatio": 1.2345006221974437
+    },
+    {
+      "families": [
+        "raytrace",
+        "lexer",
+        "bst",
+        "mandelbrot",
+        "test-evening-program",
+        "map-churn",
+        "local-fold",
+        "record-aggregation",
+        "test-rle-roundtrip"
+      ],
+      "geomean": 0.85161502920949,
+      "fixedBatchRatio": 1.1748667784224944
+    },
+    {
+      "families": [
+        "raytrace",
+        "lexer",
+        "bst",
+        "mandelbrot",
+        "test-evening-program",
+        "map-churn",
+        "local-fold",
+        "record-aggregation",
+        "test-rle-roundtrip",
+        "tree-bitonic"
+      ],
+      "geomean": 0.8224575985888152,
+      "fixedBatchRatio": 1.120414678576726
+    },
+    {
+      "families": [
+        "raytrace",
+        "lexer",
+        "bst",
+        "mandelbrot",
+        "test-evening-program",
+        "map-churn",
+        "local-fold",
+        "record-aggregation",
+        "test-rle-roundtrip",
+        "tree-bitonic",
+        "test-map-set-ops"
+      ],
+      "geomean": 0.8021121709062382,
+      "fixedBatchRatio": 1.0741144681492032
+    },
+    {
+      "families": [
+        "raytrace",
+        "lexer",
+        "bst",
+        "mandelbrot",
+        "test-evening-program",
+        "map-churn",
+        "local-fold",
+        "record-aggregation",
+        "test-rle-roundtrip",
+        "tree-bitonic",
+        "test-map-set-ops",
+        "test-morning-program"
+      ],
+      "geomean": 0.7801249928277831,
+      "fixedBatchRatio": 1.0367168265553997
+    },
+    {
+      "families": [
+        "raytrace",
+        "lexer",
+        "bst",
+        "mandelbrot",
+        "test-evening-program",
+        "map-churn",
+        "local-fold",
+        "record-aggregation",
+        "test-rle-roundtrip",
+        "tree-bitonic",
+        "test-map-set-ops",
+        "test-morning-program",
+        "editdist"
+      ],
+      "geomean": 0.754556778676015,
+      "fixedBatchRatio": 0.9995186476651116
+    },
+    {
+      "families": [
+        "raytrace",
+        "lexer",
+        "bst",
+        "mandelbrot",
+        "test-evening-program",
+        "map-churn",
+        "local-fold",
+        "record-aggregation",
+        "test-rle-roundtrip",
+        "tree-bitonic",
+        "test-map-set-ops",
+        "test-morning-program",
+        "editdist",
+        "complete-generic-row32"
+      ],
+      "geomean": 0.7320456999905106,
+      "fixedBatchRatio": 0.9673910215718611
+    },
+    {
+      "families": [
+        "raytrace",
+        "lexer",
+        "bst",
+        "mandelbrot",
+        "test-evening-program",
+        "map-churn",
+        "local-fold",
+        "record-aggregation",
+        "test-rle-roundtrip",
+        "tree-bitonic",
+        "test-map-set-ops",
+        "test-morning-program",
+        "editdist",
+        "complete-generic-row32",
+        "unicode-text"
+      ],
+      "geomean": 0.7014730056459316,
+      "fixedBatchRatio": 0.943816341093731
+    },
+    {
+      "families": [
+        "raytrace",
+        "lexer",
+        "bst",
+        "mandelbrot",
+        "test-evening-program",
+        "map-churn",
+        "local-fold",
+        "record-aggregation",
+        "test-rle-roundtrip",
+        "tree-bitonic",
+        "test-map-set-ops",
+        "test-morning-program",
+        "editdist",
+        "complete-generic-row32",
+        "unicode-text",
+        "numeric-recurrence"
+      ],
+      "geomean": 0.6895100206693829,
+      "fixedBatchRatio": 0.9257736233250767
+    },
+    {
+      "families": [
+        "raytrace",
+        "lexer",
+        "bst",
+        "mandelbrot",
+        "test-evening-program",
+        "map-churn",
+        "local-fold",
+        "record-aggregation",
+        "test-rle-roundtrip",
+        "tree-bitonic",
+        "test-map-set-ops",
+        "test-morning-program",
+        "editdist",
+        "complete-generic-row32",
+        "unicode-text",
+        "numeric-recurrence",
+        "local-pair"
+      ],
+      "geomean": 0.6818226682035017,
+      "fixedBatchRatio": 0.9132868796346124
+    },
+    {
+      "families": [
+        "raytrace",
+        "lexer",
+        "bst",
+        "mandelbrot",
+        "test-evening-program",
+        "map-churn",
+        "local-fold",
+        "record-aggregation",
+        "test-rle-roundtrip",
+        "tree-bitonic",
+        "test-map-set-ops",
+        "test-morning-program",
+        "editdist",
+        "complete-generic-row32",
+        "unicode-text",
+        "numeric-recurrence",
+        "local-pair",
+        "symreg"
+      ],
+      "geomean": 0.6794778923176259,
+      "fixedBatchRatio": 0.9082518556320304
+    },
+    {
+      "families": [
+        "raytrace",
+        "lexer",
+        "bst",
+        "mandelbrot",
+        "test-evening-program",
+        "map-churn",
+        "local-fold",
+        "record-aggregation",
+        "test-rle-roundtrip",
+        "tree-bitonic",
+        "test-map-set-ops",
+        "test-morning-program",
+        "editdist",
+        "complete-generic-row32",
+        "unicode-text",
+        "numeric-recurrence",
+        "local-pair",
+        "symreg",
+        "scalar-region-8192"
+      ],
+      "geomean": 0.6794778923176259,
+      "fixedBatchRatio": 0.9082518556320304
+    },
+    {
+      "families": [
+        "raytrace",
+        "lexer",
+        "bst",
+        "mandelbrot",
+        "test-evening-program",
+        "map-churn",
+        "local-fold",
+        "record-aggregation",
+        "test-rle-roundtrip",
+        "tree-bitonic",
+        "test-map-set-ops",
+        "test-morning-program",
+        "editdist",
+        "complete-generic-row32",
+        "unicode-text",
+        "numeric-recurrence",
+        "local-pair",
+        "symreg",
+        "scalar-region-8192",
+        "closures"
+      ],
+      "geomean": 0.6794778923176259,
+      "fixedBatchRatio": 0.9082518556320304
+    },
+    {
+      "families": [
+        "raytrace",
+        "lexer",
+        "bst",
+        "mandelbrot",
+        "test-evening-program",
+        "map-churn",
+        "local-fold",
+        "record-aggregation",
+        "test-rle-roundtrip",
+        "tree-bitonic",
+        "test-map-set-ops",
+        "test-morning-program",
+        "editdist",
+        "complete-generic-row32",
+        "unicode-text",
+        "numeric-recurrence",
+        "local-pair",
+        "symreg",
+        "scalar-region-8192",
+        "closures",
+        "list-pipeline"
+      ],
+      "geomean": 0.6794778923176259,
+      "fixedBatchRatio": 0.9082518556320304
+    },
+    {
+      "families": [
+        "raytrace",
+        "lexer",
+        "bst",
+        "mandelbrot",
+        "test-evening-program",
+        "map-churn",
+        "local-fold",
+        "record-aggregation",
+        "test-rle-roundtrip",
+        "tree-bitonic",
+        "test-map-set-ops",
+        "test-morning-program",
+        "editdist",
+        "complete-generic-row32",
+        "unicode-text",
+        "numeric-recurrence",
+        "local-pair",
+        "symreg",
+        "scalar-region-8192",
+        "closures",
+        "list-pipeline",
+        "expression"
+      ],
+      "geomean": 0.6794778923176259,
+      "fixedBatchRatio": 0.9082518556320304
+    }
+  ]
+}

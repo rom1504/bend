@@ -1,0 +1,597 @@
+{
+  "complete": true,
+  "script": "8122ef0987f205d83a078b9a6f269a97adb6c0649acf1994f90ab6f6d39e2ee7",
+  "freeze": "aaba89c1f07c077d62367c97241ac3236feb445bbffcba424b4c0951627e03b8",
+  "cases": {
+    "lexer": {
+      "compiler": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/native-image01/program",
+        "+RTS",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "-RTS",
+        "--RTS",
+        "x86",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/lexer.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase182/bend2/base.bend",
+        "cache",
+        "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/base.p130",
+        "p130-word-pair-v1:p88-private-base-text-1:2dd93239749b4f1e3ee2f4e9617e31aeb5df4cc0200a4c14054a6591e2f74212"
+      ],
+      "nativeReceipt": "f50429906155a4dd879e0dd1cad9f2d02333874343adbe52cc95359ba118ae79",
+      "object": "c24b741533f6e7075a41fce193b15073cc09111231238a52312c741179c0e3d2",
+      "asm": "f189efcdaaace9a65359cf9786551b42a118865883e80305d3609a6638e611ff",
+      "candidate": "d7cccbad389e9aef0943145b1930b340ae22fc88d1447ba6532e4b33f3cd99e6",
+      "sites": {
+        "workers": 3,
+        "return_paths": 18,
+        "calls": 5
+      },
+      "checks": [
+        {
+          "args": [
+            8,
+            0
+          ],
+          "c": {
+            "stdout": "1822208108\n0\n1\n1\n",
+            "elapsedMs": 1,
+            "wall": 0.003705371171236038
+          },
+          "observations": {
+            "current_direct": "1822208108\n0\n1\n1\n",
+            "project-baseline": "1822208108\n0\n1\n1\n",
+            "project-register": "1822208108\n0\n1\n1\n",
+            "default-baseline": "1822208108\n0\n1\n1\n",
+            "default-register": "1822208108\n0\n1\n1\n"
+          }
+        },
+        {
+          "args": [
+            2,
+            3
+          ],
+          "c": {
+            "stdout": "828160994\n0\n0\n0\n",
+            "elapsedMs": 0,
+            "wall": 0.003166741691529751
+          },
+          "observations": {
+            "current_direct": "828160994\n0\n0\n0\n",
+            "project-baseline": "828160994\n0\n0\n0\n",
+            "project-register": "828160994\n0\n0\n0\n",
+            "default-baseline": "828160994\n0\n0\n0\n",
+            "default-register": "828160994\n0\n0\n0\n"
+          }
+        },
+        {
+          "args": [
+            6,
+            17
+          ],
+          "c": {
+            "stdout": "3462121268\n0\n0\n0\n",
+            "elapsedMs": 0,
+            "wall": 0.003420962020754814
+          },
+          "observations": {
+            "current_direct": "3462121268\n0\n0\n0\n",
+            "project-baseline": "3462121268\n0\n0\n0\n",
+            "project-register": "3462121268\n0\n0\n0\n",
+            "default-baseline": "3462121268\n0\n0\n0\n",
+            "default-register": "3462121268\n0\n0\n0\n"
+          }
+        },
+        {
+          "args": [
+            10,
+            123
+          ],
+          "c": {
+            "stdout": "3601667849\n0\n0\n0\n",
+            "elapsedMs": 0,
+            "wall": 0.004707496613264084
+          },
+          "observations": {
+            "current_direct": "3601667849\n0\n0\n0\n",
+            "project-baseline": "3601667849\n0\n0\n0\n",
+            "project-register": "3601667849\n0\n0\n0\n",
+            "default-baseline": "3601667849\n0\n0\n0\n",
+            "default-register": "3601667849\n0\n0\n0\n"
+          }
+        }
+      ],
+      "products": {
+        "project-baseline": {
+          "elf": "5cc6f105d442a1776d54affca68d0c67744ebbadb395a74982e5a2bce0f4d0b4",
+          "object": "3977fd2308cba10d6b2bc6f89662b0ac5706f025affd3bd941d1147ea4847d91"
+        },
+        "project-register": {
+          "elf": "1182e9133a9bcb5a974eb6ff258cd1a9a6907608c637d3e11acb671a2ddcabe8",
+          "object": "464d9371af2e9b7aa67f754bc58649bd784dffe9573319b31acf5366f318579a"
+        },
+        "default-baseline": {
+          "elf": "2c23abad0fcfca330fd846c7927d93ca33eed1147c1f538b439db9d17808452a",
+          "object": "a3f713d251af0eef3bb6f48bba88d490b4ffe5eef73d7ad2013c871715714f6b"
+        },
+        "default-register": {
+          "elf": "ce2f7b0ed93cdad4e206df86317578d54f66439e13cfb166a65e23ae867bf707",
+          "object": "160358d32f3e7ee482e0c5ee87f23400dfec839a0c9177fbbc8c5ce002ef6860"
+        }
+      },
+      "calibration": [
+        170,
+        177
+      ],
+      "pairs": [
+        {
+          "layout": "project",
+          "order": [
+            "baseline",
+            "register"
+          ],
+          "layoutPosition": 0,
+          "round": 0,
+          "reps": 154,
+          "times": {
+            "baseline": 157,
+            "register": 152
+          },
+          "ratio": 0.9681528662420382
+        },
+        {
+          "layout": "default",
+          "order": [
+            "register",
+            "baseline"
+          ],
+          "layoutPosition": 1,
+          "round": 0,
+          "reps": 154,
+          "times": {
+            "register": 155,
+            "baseline": 161
+          },
+          "ratio": 0.9627329192546584
+        },
+        {
+          "layout": "default",
+          "order": [
+            "baseline",
+            "register"
+          ],
+          "layoutPosition": 0,
+          "round": 1,
+          "reps": 154,
+          "times": {
+            "baseline": 162,
+            "register": 152
+          },
+          "ratio": 0.9382716049382716
+        },
+        {
+          "layout": "project",
+          "order": [
+            "register",
+            "baseline"
+          ],
+          "layoutPosition": 1,
+          "round": 1,
+          "reps": 154,
+          "times": {
+            "register": 152,
+            "baseline": 158
+          },
+          "ratio": 0.9620253164556962
+        },
+        {
+          "layout": "project",
+          "order": [
+            "baseline",
+            "register"
+          ],
+          "layoutPosition": 0,
+          "round": 2,
+          "reps": 154,
+          "times": {
+            "baseline": 158,
+            "register": 152
+          },
+          "ratio": 0.9620253164556962
+        },
+        {
+          "layout": "default",
+          "order": [
+            "register",
+            "baseline"
+          ],
+          "layoutPosition": 1,
+          "round": 2,
+          "reps": 154,
+          "times": {
+            "register": 153,
+            "baseline": 156
+          },
+          "ratio": 0.9807692307692307
+        },
+        {
+          "layout": "default",
+          "order": [
+            "baseline",
+            "register"
+          ],
+          "layoutPosition": 0,
+          "round": 3,
+          "reps": 154,
+          "times": {
+            "baseline": 167,
+            "register": 154
+          },
+          "ratio": 0.9221556886227545
+        },
+        {
+          "layout": "project",
+          "order": [
+            "register",
+            "baseline"
+          ],
+          "layoutPosition": 1,
+          "round": 3,
+          "reps": 154,
+          "times": {
+            "register": 157,
+            "baseline": 157
+          },
+          "ratio": 1.0
+        }
+      ],
+      "results": {
+        "default": {
+          "ratios": [
+            0.9627329192546584,
+            0.9382716049382716,
+            0.9807692307692307,
+            0.9221556886227545
+          ],
+          "median": 0.9505022620964649,
+          "faster": 4
+        },
+        "project": {
+          "ratios": [
+            0.9681528662420382,
+            0.9620253164556962,
+            0.9620253164556962,
+            1.0
+          ],
+          "median": 0.9650890913488672,
+          "faster": 3
+        }
+      },
+      "callCounts": {
+        "targets": [
+          "$product.Nat.show.put",
+          "$product.step.at",
+          "$product.step.at",
+          "$product.step.at",
+          "$product.step"
+        ],
+        "zeroTimed": [
+          0,
+          0,
+          256,
+          15147,
+          256
+        ],
+        "oneTimed": [
+          0,
+          0,
+          512,
+          30294,
+          512
+        ],
+        "difference": [
+          0,
+          0,
+          256,
+          15147,
+          256
+        ],
+        "instrument": "5c19405538350f99177fe6ff18de26af1242c8f4202ab2bf4db44a54c09ddb76",
+        "binary": "2afd3da8094abeaebf0bad49cf8022412ad63c7ea2a0f2c59a4f604606ee6d0b"
+      }
+    },
+    "coverage-bst-64": {
+      "compiler": [
+        "/home/ai/bend2/build/publish/bend/selfhost/build/phase198/native-image01/program",
+        "+RTS",
+        "--threads",
+        "1",
+        "--gpu",
+        "off",
+        "-RTS",
+        "--RTS",
+        "x86",
+        "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/coverage-bst-64.bend",
+        "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase182/bend2/base.bend",
+        "cache",
+        "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/base.p130",
+        "p130-word-pair-v1:p88-private-base-text-1:2dd93239749b4f1e3ee2f4e9617e31aeb5df4cc0200a4c14054a6591e2f74212"
+      ],
+      "nativeReceipt": "29e970605f42a1b885735f1440eda8d77a8f53246168ba183ddd63363e9a6cbc",
+      "object": "4d24fed6dd865c6e17324b02a83ac6213baa31e4262e765155acfcccd9140335",
+      "asm": "66282b15b41a268d757e777e2eef275a5659e9d9a9959d76758fab8d4ba41983",
+      "candidate": "1f92d99f6f4c1c7e3ee6573f33c6b2d2fd526fb7445e191cfc2ea9a832b03562",
+      "sites": {
+        "workers": 3,
+        "return_paths": 5,
+        "calls": 3
+      },
+      "checks": [
+        {
+          "args": [
+            64,
+            17
+          ],
+          "c": {
+            "stdout": "861157620\n0\n1\n0\n",
+            "elapsedMs": 0,
+            "wall": 0.0030099069699645042
+          },
+          "observations": {
+            "current_direct": "861157620\n0\n1\n0\n",
+            "project-baseline": "861157620\n0\n1\n0\n",
+            "project-register": "861157620\n0\n1\n0\n",
+            "default-baseline": "861157620\n0\n1\n0\n",
+            "default-register": "861157620\n0\n1\n0\n"
+          }
+        },
+        {
+          "args": [
+            2,
+            3
+          ],
+          "c": {
+            "stdout": "40\n0\n0\n0\n",
+            "elapsedMs": 0,
+            "wall": 0.0030521154403686523
+          },
+          "observations": {
+            "current_direct": "40\n0\n0\n0\n",
+            "project-baseline": "40\n0\n0\n0\n",
+            "project-register": "40\n0\n0\n0\n",
+            "default-baseline": "40\n0\n0\n0\n",
+            "default-register": "40\n0\n0\n0\n"
+          }
+        },
+        {
+          "args": [
+            6,
+            17
+          ],
+          "c": {
+            "stdout": "2320962\n0\n0\n0\n",
+            "elapsedMs": 0,
+            "wall": 0.0027978746220469475
+          },
+          "observations": {
+            "current_direct": "2320962\n0\n0\n0\n",
+            "project-baseline": "2320962\n0\n0\n0\n",
+            "project-register": "2320962\n0\n0\n0\n",
+            "default-baseline": "2320962\n0\n0\n0\n",
+            "default-register": "2320962\n0\n0\n0\n"
+          }
+        },
+        {
+          "args": [
+            10,
+            123
+          ],
+          "c": {
+            "stdout": "3541496185\n0\n0\n0\n",
+            "elapsedMs": 0,
+            "wall": 0.0029961466789245605
+          },
+          "observations": {
+            "current_direct": "3541496185\n0\n0\n0\n",
+            "project-baseline": "3541496185\n0\n0\n0\n",
+            "project-register": "3541496185\n0\n0\n0\n",
+            "default-baseline": "3541496185\n0\n0\n0\n",
+            "default-register": "3541496185\n0\n0\n0\n"
+          }
+        }
+      ],
+      "products": {
+        "project-baseline": {
+          "elf": "21ba77bceca76dd80150c2215062287e55cd9f82d6346c81353b58257d9470e0",
+          "object": "a2560bb5e04dc61a2d55dc2902e9814e36803a8e2c1a4e7894673e5848a4ea2c"
+        },
+        "project-register": {
+          "elf": "3077882452b85301e2ec74f59f518d60f6f4e3bf085ea5726ba8057fd5b14e47",
+          "object": "ac9d2165dbc92d1f1bbc28cf027cc97d0a26fe29dcb9d3288d2efae2ff7282ec"
+        },
+        "default-baseline": {
+          "elf": "7db29636cf302735081566c7d4885851994b5974830b4ed6b1fdad3fd5054d77",
+          "object": "4f749db6bece1bc0a82e920c5434a3ac68d6397ac457fd50a372996b44848828"
+        },
+        "default-register": {
+          "elf": "5b16e0702f9c37577bb8c2153fa1d2251442aebaf5fe57904eb9dd0bbc78d7ff",
+          "object": "34b76c0e4bea93ad3e351d9c2cf0f5d8b7abe9d013b104efffb8a07c05bc91cf"
+        }
+      },
+      "calibration": [
+        9061,
+        259
+      ],
+      "pairs": [
+        {
+          "layout": "default",
+          "order": [
+            "baseline",
+            "register"
+          ],
+          "layoutPosition": 0,
+          "round": 0,
+          "reps": 5598,
+          "times": {
+            "baseline": 148,
+            "register": 161
+          },
+          "ratio": 1.087837837837838
+        },
+        {
+          "layout": "project",
+          "order": [
+            "register",
+            "baseline"
+          ],
+          "layoutPosition": 1,
+          "round": 0,
+          "reps": 5598,
+          "times": {
+            "register": 151,
+            "baseline": 157
+          },
+          "ratio": 0.9617834394904459
+        },
+        {
+          "layout": "project",
+          "order": [
+            "baseline",
+            "register"
+          ],
+          "layoutPosition": 0,
+          "round": 1,
+          "reps": 5598,
+          "times": {
+            "baseline": 148,
+            "register": 150
+          },
+          "ratio": 1.0135135135135136
+        },
+        {
+          "layout": "default",
+          "order": [
+            "register",
+            "baseline"
+          ],
+          "layoutPosition": 1,
+          "round": 1,
+          "reps": 5598,
+          "times": {
+            "register": 158,
+            "baseline": 147
+          },
+          "ratio": 1.0748299319727892
+        },
+        {
+          "layout": "default",
+          "order": [
+            "baseline",
+            "register"
+          ],
+          "layoutPosition": 0,
+          "round": 2,
+          "reps": 5598,
+          "times": {
+            "baseline": 147,
+            "register": 157
+          },
+          "ratio": 1.0680272108843538
+        },
+        {
+          "layout": "project",
+          "order": [
+            "register",
+            "baseline"
+          ],
+          "layoutPosition": 1,
+          "round": 2,
+          "reps": 5598,
+          "times": {
+            "register": 153,
+            "baseline": 151
+          },
+          "ratio": 1.0132450331125828
+        },
+        {
+          "layout": "project",
+          "order": [
+            "baseline",
+            "register"
+          ],
+          "layoutPosition": 0,
+          "round": 3,
+          "reps": 5598,
+          "times": {
+            "baseline": 149,
+            "register": 158
+          },
+          "ratio": 1.0604026845637584
+        },
+        {
+          "layout": "default",
+          "order": [
+            "register",
+            "baseline"
+          ],
+          "layoutPosition": 1,
+          "round": 3,
+          "reps": 5598,
+          "times": {
+            "register": 156,
+            "baseline": 147
+          },
+          "ratio": 1.0612244897959184
+        }
+      ],
+      "results": {
+        "project": {
+          "ratios": [
+            0.9617834394904459,
+            1.0135135135135136,
+            1.0132450331125828,
+            1.0604026845637584
+          ],
+          "median": 1.0133792733130482,
+          "faster": 1
+        },
+        "default": {
+          "ratios": [
+            1.087837837837838,
+            1.0748299319727892,
+            1.0680272108843538,
+            1.0612244897959184
+          ],
+          "median": 1.0714285714285716,
+          "faster": 0
+        }
+      },
+      "callCounts": {
+        "targets": [
+          "$product.Nat.show.put",
+          "$product.bst.pick",
+          "$product.bst.down"
+        ],
+        "zeroTimed": [
+          0,
+          0,
+          64
+        ],
+        "oneTimed": [
+          0,
+          0,
+          128
+        ],
+        "difference": [
+          0,
+          0,
+          64
+        ],
+        "instrument": "41cd0a4795351dbab18e62759a942a4a12e2a6e2692474544b4defe8636210ee",
+        "binary": "59cf1334d8521c13cc5aa56ee369dc0d1dbf1999a583c8e25c7317b9fb59df37"
+      }
+    }
+  }
+}

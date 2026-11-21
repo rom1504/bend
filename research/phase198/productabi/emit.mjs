@@ -1,0 +1,34 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {pathToFileURL} from 'node:url';
+import {pin,verify} from '../../../selfhost/tools/build/hosted.mjs';
+const [apiFile,where]=process.argv.slice(2);
+if(!/^Cpus_allowed_list:\s*3$/m.test(fs.readFileSync('/proc/self/status','utf8')))throw Error('CPU3');
+const read=p=>JSON.parse(fs.readFileSync(p));
+const current=read(apiFile);
+if(!current.complete||!current.checked)throw Error('checked API required');
+verify(current.source);verify(current.api);
+const api=(await import(pathToFileURL(current.api.file))).default;
+const binding=read('selfhost/build/phase195/ctor-gate-emission-plan01.json').producer.bindingValue;
+for(const p of [binding.engine,binding.base,binding.carrier])verify(p);
+if(fs.realpathSync(binding.engine.file)!==fs.realpathSync(process.execPath))throw Error('engine');
+const prep=api.p88_cache_prepare(binding.base.file,fs.readFileSync(binding.base.file,'utf8'),fs.readFileSync(binding.carrier.file,'utf8'),binding.stamp);
+if(prep.$!=='P86PreparationReady')throw Error('base');
+const native=read('selfhost/build/phase198/native45-01/programs.manifest.json');
+const out=path.resolve(where);fs.mkdirSync(out);
+const report={complete:false,source:current.source,api:current.api,rows:{}},save=()=>fs.writeFileSync(out+'/report.json',JSON.stringify(report,null,2)+'\n');
+for(const id of ['lexer','coverage-bst-64','variation-lexer-6-17','coverage-map-churn-32']){
+  const r=native.cases.find(c=>c.id===id),dir=out+'/'+id;fs.mkdirSync(dir);verify(r.source);verify(r.products.candidate.generatedSource);
+  const plan=api.p86_plan(prep.seed,r.source.file,fs.readFileSync(r.source.file,'utf8'));if(plan.$!=='P86PlanReady')throw Error(id+' plan '+plan.error);
+  const p=api.p169np_plan(plan);if(p.error)throw Error(id+' lower '+p.error);
+  const asm=api.x181_prepared(p);if(asm.error)throw Error(id+' select '+asm.error);
+  const sequence=api.x188_many(asm.chunks),o=api.x188_assemble(sequence),s=api.x188_render(sequence);
+  if(o.error)throw Error(id+' machine '+o.error);
+  const bytes=[];for(let v=o.bytes;v.$==='Con';v=v.tail)bytes.push(v.head);
+  fs.writeFileSync(dir+'/program.o',Buffer.from(bytes));fs.writeFileSync(dir+'/program.s',s);
+  const count=(s.match(/^  call p198r_/gm)||[]).length,original=r.products.candidate.generatedSource,object=pin(dir+'/program.o');
+  if((id.includes('lexer')&&!count)||(id==='coverage-bst-64'&&(count||original.sha256!==object.sha256)))throw Error(id+' selection '+count);
+  report.rows[id]={source:r.source,object,asm:pin(dir+'/program.s'),original,calls:count,workers:(s.match(/^p198r_[^:]+:$/gm)||[]).length,exact:original.sha256===object.sha256};
+  save();
+}
+report.complete=true;save();

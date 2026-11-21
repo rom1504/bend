@@ -8,8 +8,11 @@ from pathlib import Path
 import shutil
 import subprocess
 import time
+import sys
 
-from replay import REF, P198, sha, fdpath
+from replay import REF, P198, ROOT, sha, fdpath
+sys.path.insert(0,str(ROOT/"selfhost/tools/bench"))
+import bench
 
 def verified(pin):
     f=Path(pin["file"])
@@ -52,10 +55,15 @@ def run(args):
             link[2],link[-1]=fdpath(obj),fdpath(elf)
             subprocess.run(link,capture_output=True,check=True,pass_fds=(obj,elf))
             cmd=[fdpath(elf),*oracle["command"][1:]]
+            run_start=time.monotonic()
             actual=subprocess.run(cmd,capture_output=True,pass_fds=(elf,),timeout=30)
-            assert actual.returncode==0 and not actual.stderr and hashlib.sha256(actual.stdout).hexdigest()==oracle["stdout"]["sha256"],row["id"]
+            wall=time.monotonic()-run_start
+            expected=verified(row["expectedFile"]).read_text()
+            assert cmd[-5:-2]==["--RTS","1","0"]
+            point=dict(expectedStdout=expected,warmups=0,repetitions=1)
+            bench.observation(actual.stdout,actual.stderr,actual.returncode,point,wall)
             report["rows"].append(dict(id=row["id"],seconds=time.monotonic()-begin,
-                objectSha256=row["object"]["sha256"],stdoutSha256=oracle["stdout"]["sha256"]))
+                objectSha256=row["object"]["sha256"],stdoutSha256=hashlib.sha256(actual.stdout).hexdigest(),expectedResultSha256=row["expectedFile"]["sha256"]))
             (args.out/"results.json").write_text(json.dumps(report,indent=2)+'\n')
         finally:
             os.close(obj)

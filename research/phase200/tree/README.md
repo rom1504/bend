@@ -81,7 +81,7 @@ emission, persistent-shape and unrelated-transfer controls.
 ```sh
 python3 -B research/phase200/tree/prepare.py --out selfhost/build/phase200/tree-source01
 python3 -B research/phase200/measure/job.py tree-screen01 20 2 python3 -B research/phase200/tree/screen.py --source selfhost/build/phase200/tree-source01/report.json --out selfhost/build/phase200/tree-screen01
-python3 -B research/phase200/measure/job.py tree-auto01 23 2 python3 -B research/phase200/tree/automatic.py --out selfhost/build/phase200/tree-auto01
+python3 -B research/phase200/measure/job.py tree-auto02 23 2 python3 -B research/phase200/tree/automatic.py --out selfhost/build/phase200/tree-auto02
 ```
 
 Machine-specific input hashes, both control session orders and raw timings
@@ -108,3 +108,23 @@ The first automatic emission failed upstream source checking because its
 cloned helper bodies were appended after the first caller. The generator
 now inserts them before the redirected calls, preserving original
 dependency order. [First refusal](evidence/auto-first-refusal.json)
+
+## Automatic native result
+
+The corrected generator transformed the original BST64 source and produced
+a checked native executable. Across forward and reverse balanced orders its
+elapsed ratios against the ordinary Phase199 incumbent were **0.77617** and
+**0.74909**, corresponding to 22.38% and 25.09% less time. All four candidate
+rows were below every incumbent row; each observation ran 8,192 validated
+invocations. Eight input digests also matched the independent reference.
+[Source, executable hashes and raw timings](evidence/automatic.json)
+
+A separate generated native executable matched all 44 exact pairs of original
+and updated trees. The independent scalar transcript and its stock source
+each compiled with zero holes and produced the same eight oracle values.
+Seven rejected source mutations and the two positive admissions are in the
+same receipt. The guarded four-product run used 12.0 seconds. The unrelated
+transcript establishes semantic transfer; its runtime was not measured.
+[Persistent output](evidence/persistent-shapes.txt) ·
+[Transcript output](evidence/transcript.txt) ·
+[Guard receipt](evidence/automatic-guard.json)

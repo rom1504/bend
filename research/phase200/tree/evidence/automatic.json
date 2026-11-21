@@ -1,0 +1,450 @@
+{
+  "complete": true,
+  "passSource": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase200/tree/private_spine.py",
+    "bytes": 8845,
+    "sha256": "b4d070072f8d24c76bc854baca1fa586b0c8ee07455a8dbb6fddbe2ad6929499"
+  },
+  "admissions": {
+    "negatives": {
+      "nonliteral-direction": "BFrame: data-dependent flag",
+      "observable-list-helper": "BFrame: external or polymorphic operation on the closed component",
+      "empty-in-unproven-position": "BFrame: unscoped empty list",
+      "wrong-list-multiplicity": "BFrame: missing a definition for a private-spine law",
+      "untyped-field": "no single-constructor product with one Bool field",
+      "independently-used-frame": "BFrame: an unmatched list or independent frame escapes",
+      "unknown-entry": "BFrame: no closed empty-spine entry returning an unrelated type"
+    },
+    "positive": [
+      {
+        "frame": "BFrame",
+        "group": [
+          "bst.down",
+          "bst.pick",
+          "bst.step",
+          "bst.up",
+          "insert.fin"
+        ],
+        "counts": {
+          "push": 2,
+          "pop": 2,
+          "emptyMatch": 1,
+          "entry": 2
+        }
+      },
+      {
+        "frame": "Audit",
+        "group": [
+          "audit.advance",
+          "audit.check",
+          "audit.collect",
+          "audit.emit",
+          "audit.reverse"
+        ],
+        "counts": {
+          "push": 2,
+          "pop": 2,
+          "emptyMatch": 1,
+          "entry": 1
+        }
+      }
+    ]
+  },
+  "roles": {
+    "bst": {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/tree-auto02/bst/input.bend",
+        "bytes": 6490,
+        "sha256": "0c1386d0ba3604c066ff6adcbffc84d7b7fe051011c2bac62c85e694520cbbf1"
+      },
+      "admission": {
+        "frame": "BFrame",
+        "group": [
+          "bst.down",
+          "bst.pick",
+          "bst.step",
+          "bst.up",
+          "insert.fin"
+        ],
+        "counts": {
+          "push": 2,
+          "pop": 2,
+          "emptyMatch": 1,
+          "entry": 2
+        }
+      },
+      "check": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/tree-auto02/bst/upstream/report.json",
+        "bytes": 3781,
+        "sha256": "9a4e140e40dacfc69a91ff0e0c2a91fd2bf1e3b0dfe952a5f3fbb303b6584a09"
+      },
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/tree-auto02/bst/p.o",
+        "bytes": 114296,
+        "sha256": "6bd35150626f8cd8ca23bde33e277eb10808820c013bf68ea033438a2592fea9"
+      },
+      "executable": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/tree-auto02/bst/program",
+        "bytes": 196424,
+        "sha256": "9222cada3588a2dfe4b6b44678337758611bebafa4618c3f3308be7102927f77"
+      },
+      "oracles": [
+        {
+          "stdout": [
+            "861157620",
+            "0",
+            "1",
+            "1"
+          ],
+          "elapsedMs": 1,
+          "seconds": 0.0035023875534534454,
+          "repetitions": 1,
+          "nsPerInvocation": 1000000.0
+        },
+        {
+          "stdout": [
+            "1802825775",
+            "0",
+            "0",
+            "0"
+          ],
+          "elapsedMs": 0,
+          "seconds": 0.0031243283301591873,
+          "repetitions": 0,
+          "nsPerInvocation": null
+        },
+        {
+          "stdout": [
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "elapsedMs": 0,
+          "seconds": 0.0030658021569252014,
+          "repetitions": 0,
+          "nsPerInvocation": null
+        },
+        {
+          "stdout": [
+            "17",
+            "0",
+            "0",
+            "0"
+          ],
+          "elapsedMs": 0,
+          "seconds": 0.003092421218752861,
+          "repetitions": 0,
+          "nsPerInvocation": null
+        },
+        {
+          "stdout": [
+            "699408398",
+            "0",
+            "0",
+            "0"
+          ],
+          "elapsedMs": 0,
+          "seconds": 0.003044753335416317,
+          "repetitions": 0,
+          "nsPerInvocation": null
+        },
+        {
+          "stdout": [
+            "3262148630",
+            "0",
+            "0",
+            "0"
+          ],
+          "elapsedMs": 0,
+          "seconds": 0.00306853000074625,
+          "repetitions": 0,
+          "nsPerInvocation": null
+        },
+        {
+          "stdout": [
+            "2386092928",
+            "0",
+            "0",
+            "0"
+          ],
+          "elapsedMs": 0,
+          "seconds": 0.003271819092333317,
+          "repetitions": 0,
+          "nsPerInvocation": null
+        },
+        {
+          "stdout": [
+            "1802825750",
+            "0",
+            "0",
+            "0"
+          ],
+          "elapsedMs": 0,
+          "seconds": 0.00322649534791708,
+          "repetitions": 0,
+          "nsPerInvocation": null
+        }
+      ],
+      "samples": [
+        [
+          [
+            "old",
+            {
+              "stdout": [
+                "861157620",
+                "3",
+                "8192",
+                "138"
+              ],
+              "elapsedMs": 138,
+              "seconds": 0.1412884322926402,
+              "repetitions": 8192,
+              "nsPerInvocation": 16845.703125
+            }
+          ],
+          [
+            "new",
+            {
+              "stdout": [
+                "861157620",
+                "3",
+                "8192",
+                "101"
+              ],
+              "elapsedMs": 101,
+              "seconds": 0.10527955926954746,
+              "repetitions": 8192,
+              "nsPerInvocation": 12329.1015625
+            }
+          ],
+          [
+            "new",
+            {
+              "stdout": [
+                "861157620",
+                "3",
+                "8192",
+                "114"
+              ],
+              "elapsedMs": 114,
+              "seconds": 0.11830066237598658,
+              "repetitions": 8192,
+              "nsPerInvocation": 13916.015625
+            }
+          ],
+          [
+            "old",
+            {
+              "stdout": [
+                "861157620",
+                "3",
+                "8192",
+                "139"
+              ],
+              "elapsedMs": 139,
+              "seconds": 0.142428295686841,
+              "repetitions": 8192,
+              "nsPerInvocation": 16967.7734375
+            }
+          ]
+        ],
+        [
+          [
+            "new",
+            {
+              "stdout": [
+                "861157620",
+                "3",
+                "8192",
+                "101"
+              ],
+              "elapsedMs": 101,
+              "seconds": 0.10537100955843925,
+              "repetitions": 8192,
+              "nsPerInvocation": 12329.1015625
+            }
+          ],
+          [
+            "old",
+            {
+              "stdout": [
+                "861157620",
+                "3",
+                "8192",
+                "137"
+              ],
+              "elapsedMs": 137,
+              "seconds": 0.14091337844729424,
+              "repetitions": 8192,
+              "nsPerInvocation": 16723.6328125
+            }
+          ],
+          [
+            "old",
+            {
+              "stdout": [
+                "861157620",
+                "3",
+                "8192",
+                "138"
+              ],
+              "elapsedMs": 138,
+              "seconds": 0.14138783141970634,
+              "repetitions": 8192,
+              "nsPerInvocation": 16845.703125
+            }
+          ],
+          [
+            "new",
+            {
+              "stdout": [
+                "861157620",
+                "3",
+                "8192",
+                "105"
+              ],
+              "elapsedMs": 105,
+              "seconds": 0.10963424667716026,
+              "repetitions": 8192,
+              "nsPerInvocation": 12817.3828125
+            }
+          ]
+        ]
+      ],
+      "newOverOld": [
+        0.776173285198556,
+        0.7490909090909091
+      ]
+    },
+    "shape": {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/tree-auto02/shape/input.bend",
+        "bytes": 9170,
+        "sha256": "242987d49dd98a9387231c36dee35e759f34b67eaa8a1e5cd79d061cdfc46477"
+      },
+      "admission": {
+        "frame": "BFrame",
+        "group": [
+          "bst.down",
+          "bst.pick",
+          "bst.step",
+          "bst.up",
+          "insert.fin"
+        ],
+        "counts": {
+          "push": 2,
+          "pop": 2,
+          "emptyMatch": 1,
+          "entry": 2
+        }
+      },
+      "check": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/tree-auto02/shape/upstream/report.json",
+        "bytes": 3794,
+        "sha256": "36df5a1c8479bffbb2964294792eee3e6f272ca2f31e99ee1839d2b1b29bc506"
+      },
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/tree-auto02/shape/p.o",
+        "bytes": 163168,
+        "sha256": "e322a4fcd92beab342c7b3e8286cee7823a10f931941df46a455b01fc430fc39"
+      },
+      "executable": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/tree-auto02/shape/program",
+        "bytes": 232888,
+        "sha256": "56618b03b80c8184cf2842c6ae8a74a19d93bae4b77dcbabe723ae13b78ea043"
+      },
+      "observations": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/tree-auto02/shape/observed",
+        "bytes": 1915,
+        "sha256": "9f0f1e01f0437f8adac2fe79aa0bfa642b517050b94b41bec18b15e1cd0a25bd"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/tree-auto02/shape/expected",
+        "bytes": 1915,
+        "sha256": "9f0f1e01f0437f8adac2fe79aa0bfa642b517050b94b41bec18b15e1cd0a25bd"
+      }
+    },
+    "audit": {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/tree-auto02/audit/input.bend",
+        "bytes": 3533,
+        "sha256": "1fd2152a435c3f26e569c8ea7835fcd0fbe5d1a458e3a9349912634673b8da7f"
+      },
+      "admission": {
+        "frame": "Audit",
+        "group": [
+          "audit.advance",
+          "audit.check",
+          "audit.collect",
+          "audit.emit",
+          "audit.reverse"
+        ],
+        "counts": {
+          "push": 2,
+          "pop": 2,
+          "emptyMatch": 1,
+          "entry": 1
+        }
+      },
+      "check": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/tree-auto02/audit/upstream/report.json",
+        "bytes": 3795,
+        "sha256": "29619c143a22fcaa6ca899fc6d3c88ec07f81f0d2bb0fd22e236168ab613d489"
+      },
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/tree-auto02/audit/p.o",
+        "bytes": 53128,
+        "sha256": "358344f21922579a11c68f6e7c890d927b0be880e57a473f63e030911b22ef64"
+      },
+      "executable": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/tree-auto02/audit/program",
+        "bytes": 147872,
+        "sha256": "534675bf91ea74af56071aacf4a42242d8fa62f27b1d0c3befff813c601ee029"
+      },
+      "observations": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/tree-auto02/audit/observed",
+        "bytes": 80,
+        "sha256": "e999e460b69778f2b403e5c103c0b7d35632b05775fbbe4255e4c473b6fcf223"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/tree-auto02/audit/expected",
+        "bytes": 80,
+        "sha256": "e999e460b69778f2b403e5c103c0b7d35632b05775fbbe4255e4c473b6fcf223"
+      }
+    },
+    "audit-stock": {
+      "source": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/tree-auto02/audit-stock/input.bend",
+        "bytes": 2026,
+        "sha256": "1cb7b3e783015acdc413729b237f5b6a96e17e2166663e52cdbfdd785ea02f46"
+      },
+      "admission": null,
+      "check": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/tree-auto02/audit-stock/upstream/report.json",
+        "bytes": 3805,
+        "sha256": "46ae42ce2b0eeffde7b58b357c2222adf0d70df4521062d842795b73525c8713"
+      },
+      "object": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/tree-auto02/audit-stock/p.o",
+        "bytes": 56152,
+        "sha256": "1fcbeed97e703f27331468815aa2d7b0a020f73b9dd85cd4aebccda84e9dc4c7"
+      },
+      "executable": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/tree-auto02/audit-stock/program",
+        "bytes": 147800,
+        "sha256": "addbea7f161de58642949b50bb48a606934bf91b0cc7e92a1a49d370d7dfacaa"
+      },
+      "observations": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/tree-auto02/audit-stock/observed",
+        "bytes": 80,
+        "sha256": "e999e460b69778f2b403e5c103c0b7d35632b05775fbbe4255e4c473b6fcf223"
+      },
+      "expected": {
+        "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/tree-auto02/audit-stock/expected",
+        "bytes": 80,
+        "sha256": "e999e460b69778f2b403e5c103c0b7d35632b05775fbbe4255e4c473b6fcf223"
+      }
+    }
+  }
+}

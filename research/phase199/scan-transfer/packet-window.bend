@@ -26,27 +26,27 @@ def frame.packet(+size: U32, +seed: U32) -> Array<U32> & U32:
   left = frame.segment(U32.to_nat(size), U32.sub(2, U32.and(seed, 7)), (ring, U32.xor(seed, 2779096485)))
   frame.segment(U32.to_nat(U32.add(U32.div(size, 5), 3)), U32.xor(seed, 4294967280), left)
 
-def frame.hash(length: Nat, +slot: U32, ring: Array<U32>, hash: U32) -> U32:
+def frame.hash(length: Nat, +slot: U32, read: Array<U32> & U32, hash: U32) -> U32:
   match length:
     case 0n: hash
     case 1n+rest:
-      (next, sample) = Array.get(U32, ring, slot)
-      frame.hash(rest, U32.inc(slot), next, U32.mul(U32.xor(hash, sample), 16777619))
+      (ring, sample) = read
+      frame.hash(rest, U32.inc(slot), Array.get(U32, ring, U32.inc(slot)), U32.mul(U32.xor(hash, sample), 16777619))
 
 def frame.value(state: Array<U32> & U32) -> U32:
   (ring, carry) = state
-  frame.hash(64n, 0, ring, U32.xor(carry, 2166136261))
+  frame.hash(64n, 0, Array.get(U32, ring, 0), U32.xor(carry, 2166136261))
 
-def frame.words(length: Nat, +slot: U32, ring: Array<U32>) -> String:
+def frame.words(length: Nat, +slot: U32, read: Array<U32> & U32) -> String:
   match length:
     case 0n: SNil{}
     case 1n+rest:
-      (next, sample) = Array.get(U32, ring, slot)
-      String.append(",", String.append(U32.show(sample), frame.words(rest, U32.inc(slot), next)))
+      (ring, sample) = read
+      String.append(",", String.append(U32.show(sample), frame.words(rest, U32.inc(slot), Array.get(U32, ring, U32.inc(slot)))))
 
 def frame.render(state: Array<U32> & U32) -> String:
   (ring, carry) = state
-  String.append(U32.show(carry), frame.words(64n, 0, ring))
+  String.append(U32.show(carry), frame.words(64n, 0, Array.get(U32, ring, 0)))
 
 def frame.goal(alternate: Bool) -> U32:
   match alternate:

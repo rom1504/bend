@@ -10,7 +10,7 @@ import time
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 SOURCE = HERE / 'packet-window.bend'
-EXPECTED_SOURCE = '62f91b9f53e3f094414549368432cabe6cae4253d457ad22cc93db216b78877a'
+EXPECTED_SOURCE = '33405919f30f9b7903a4ab4190ad908b62da7c8676655f609975cfab623c9319'
 EXPECTED_ORACLES = 'ddea827a138db0006e377f4e67b112d4d9699f1d41499695be4947c6e55180d5'
 
 
@@ -116,6 +116,24 @@ def main(out, roles):
         command(out, 'c-link', ccargs)
         summary['products']['c'] = dict(binary=pin(binary), emittedSource=pin(src),
             compiler=pin(image), cCompiler=pin(clang), checks=checks(out,'c',binary,rows))
+    original = read(oracle)['original'][1]
+    in_tree = read(ROOT/'selfhost/build/phase198/progress-native45-02/report.json')['rows']
+    references = read(ROOT/'selfhost/build/phase195/references01/manifest.json')['cases']
+    selected = {
+        'native': next(r for r in in_tree if r['id']=='local-fold')['artifact'],
+        'c': next(r for r in references if r['id']=='local-fold')['products']['c']['artifact'],
+    }
+    summary['originalAlternate'] = {}
+    for role, item in selected.items():
+        if role not in roles:
+            continue
+        exe = authenticate(item)
+        argv = [exe,'+RTS','--threads','1','--gpu','off','-RTS','--RTS','0','0',*map(str,original['inputs'])]
+        result = command(out,'original-alternate-'+role,argv)
+        raw = (out/('original-alternate-'+role+'.stdout')).read_text().splitlines()
+        assert len(raw)==4 and raw[:3]==[str(original['carry']),'0','0'] and raw[3].isdecimal()
+        summary['originalAlternate'][role] = dict(binary=item, inputs=original['inputs'], stdout=raw,
+                                                  process=result)
     summary['complete'] = True
     write(out/'report.json', summary)
 

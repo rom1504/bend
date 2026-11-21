@@ -1,0 +1,158 @@
+{
+  "kind": "phase198-new-source-heldout-freeze",
+  "targetsRun": false,
+  "cases": [
+    {
+      "id": "orbit-converging",
+      "source": "converging.bend",
+      "expectedFile": "converging.expected",
+      "point": [
+        8192,
+        305419896
+      ],
+      "expected": 382881820,
+      "oracle": [
+        {
+          "args": [
+            8192,
+            305419896
+          ],
+          "expected": 382881820
+        },
+        {
+          "args": [
+            0,
+            0
+          ],
+          "expected": 2654435769
+        },
+        {
+          "args": [
+            1,
+            4294967295
+          ],
+          "expected": 1640531532
+        },
+        {
+          "args": [
+            33,
+            1
+          ],
+          "expected": 2654435802
+        },
+        {
+          "args": [
+            65,
+            2147483648
+          ],
+          "expected": 2654435841
+        },
+        {
+          "args": [
+            1024,
+            17
+          ],
+          "expected": 2654453168
+        }
+      ],
+      "prediction": "Fixed state reached after at most32 transitions; expect strong gain for8192, but measure C/native separately."
+    },
+    {
+      "id": "orbit-cycling",
+      "source": "cycling.bend",
+      "expectedFile": "cycling.expected",
+      "point": [
+        8192,
+        305419896
+      ],
+      "expected": 382910401,
+      "oracle": [
+        {
+          "args": [
+            8192,
+            305419896
+          ],
+          "expected": 382910401
+        },
+        {
+          "args": [
+            0,
+            0
+          ],
+          "expected": 2654435769
+        },
+        {
+          "args": [
+            1,
+            4294967295
+          ],
+          "expected": 1640531532
+        },
+        {
+          "args": [
+            33,
+            1
+          ],
+          "expected": 2654435914
+        },
+        {
+          "args": [
+            65,
+            2147483648
+          ],
+          "expected": 2654436058
+        },
+        {
+          "args": [
+            1024,
+            17
+          ],
+          "expected": 2654456744
+        }
+      ],
+      "prediction": "Every consecutive state differs including wraparound; no shortcut, possible guard overhead."
+    }
+  ],
+  "scaffold": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/tools/bench/catalogs/native45/fixtures/scalar-region-8192.bend",
+    "bytes": 3454,
+    "sha256": "ee300ddfdeda2e89e2f52550ec10d9f22842276cef737fbd19578bed095133f7"
+  },
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase198/numeric/heldout/prepare-fixtures.py",
+    "bytes": 3077,
+    "sha256": "2eeaf01a3d9ae4b26601b7954f48be6de0fc7d57e1089a810f175ad2a005db70"
+  },
+  "sourcePins": [
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase198/numeric/heldout/converging.bend",
+      "bytes": 2437,
+      "sha256": "2cb18b8ecf3add4f1cfbb704b7e79f031dc4683fdd66a8b06a09c6752203439c"
+    },
+    {
+      "file": "/home/ai/bend2/build/publish/bend/research/phase198/numeric/heldout/cycling.bend",
+      "bytes": 2432,
+      "sha256": "29520475d2472db58c9a9156acce86ab59946ba26189dcb286cd020e88fd0d96"
+    }
+  ],
+  "partition": "New independently authored heldout cases, not members of native45. Source-level output oracles and physical emissions are distinct from IR rule controls.",
+  "before": "numeric-api03 checked escape-only, no stable-orbit rule",
+  "after": "numeric-api05 checked collision-free stable-orbit, pending",
+  "scope": "Fixed point versus cycling state; no zero seed specialization; unsigned modulo32 arithmetic throughout.",
+  "cOracle": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase198/numeric/heldout/oracle.c",
+    "bytes": 1192,
+    "sha256": "bfb75337f3a2567f45cd654ef6c74824f380099afd44000d31cefc8c425b58c7"
+  },
+  "transportMethod": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase198/numeric/heldout/prepare-plan.py",
+    "bytes": 2085,
+    "sha256": "42067074c2e5d1f20ee1b22eeab1eb6f651f81277576c78901a8be41b99ab7d2"
+  },
+  "screenMethod": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase198/numeric/heldout/screen.py",
+    "bytes": 5235,
+    "sha256": "c7e9333fa21230214c101e72847473a17faa37e36b3ea4a030a103a4fdcada83"
+  },
+  "cPolicy": "Pinned Phase194 clang, O3 C11, independent iterative oracle; volatile runtime arguments prevent whole-work hoisting across timed calls."
+}

@@ -66,3 +66,19 @@ python3 -B research/phase198/numeric/job.py p199-scan-runtime01 15 32 python3 -B
 
 The intended artifact is `selfhost/build/phase198/p199-scan-runtime01/scan.o`.
 No performance result is inferred from the earlier source-kernel ceiling.
+
+## Actual leaf acquisition
+
+The root-dispatched acquisition **passed in 3.380 seconds** (guard 3.445 s,
+44.6 MB peak process-tree RSS), and its retention close is sealed. All 59,136
+actual-worker state comparisons, 2,816 split cases, 256 long-mask cases, nine
+Python full-state vectors and the full-width fuel case passed. Decoded code
+retains 64-bit fuel subtraction/comparisons, zero-fuel full-width return,
+32-bit arithmetic and SSE2 scan instructions. The helper is 1,888 bytes with
+SHA256 `3c32b17c57eb1e2e331e7b0a7e881f2f9f477aae71ee942c258decc2b9b30d5a`.
+
+Compact exact evidence is retained in `evidence/`; no ELF or object is stored
+in git. This result qualifies the leaf against the retained worker under its
+stated entry conditions. It does not establish the new recognizer, fallback
+selection, complete-runtime allocation behavior or whole-program performance.
+Those belong to the separate candidate product and initialized-runtime tests.

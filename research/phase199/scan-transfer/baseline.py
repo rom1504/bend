@@ -28,8 +28,9 @@ def pin(path):
 
 
 def authenticate(row):
-    assert pin(row['file']) == row, row['file']
-    return row['file']
+    file = Path(row['file']).resolve()
+    assert pin(file)['sha256'] == row['sha256'] and file.stat().st_size == row['bytes'], file
+    return str(file)
 
 
 def command(out, name, argv, binary_stdout=None):
@@ -125,7 +126,7 @@ def main(out, roles):
     }
     summary['originalAlternate'] = {}
     for role, item in selected.items():
-        if role not in roles:
+        if role not in roles and 'c' not in roles:
             continue
         exe = authenticate(item)
         argv = [exe,'+RTS','--threads','1','--gpu','off','-RTS','--RTS','0','0',*map(str,original['inputs'])]

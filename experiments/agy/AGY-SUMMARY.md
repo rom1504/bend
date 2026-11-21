@@ -7,6 +7,7 @@
 - **Receipts**:
   - Full 45-case `native45` timing & oracle summary: `experiments/agy/receipts/unified-full44-summary.json`
   - Independent 4-gate qualification report: `experiments/agy/receipts/unified-qual-report.json`
+  - Guarded native `N0 → N1 → N2 → N3` self-build & transfer receipt: `experiments/agy/receipts/unified-native-selfbuild.json` (`unified-native-selfbuild-guard.json`)
   - `AGY-002` runtime benchmark receipt: `experiments/agy/receipts/agy002-rt-results.json`
 
 ## Headline Results (`native45`, CPU 2, 3 alternating rounds, 45/45 oracles PASS)
@@ -51,5 +52,17 @@
 | **3. Broad x86 Conformance (`native64` + `runtime10`)** | **74 / 74 PASS** | `64/64` `native64` (19 focused + 45 broad incl. 3 refusal controls) + `10/10` `runtime10` |
 | **4. Independent Source Check** | **PASS** | Unmodified `bend2/bend.ts` (`book_load` + `book_valid`), `typeAccepted: true`, **`unresolvedHoles: 0`**, `6,687` declaration events |
 | **5. Full `native45` Suite** | **45 / 45 PASS** | `44/44` timed + `1/1` zero-work oracle (`scalar-region-0`) |
+| **6. Native Self-Build (`N0 → N1 → N2 → N3`)** | **PASS (Exact Fixed-Point)** | `SHA-256(n2.o) == SHA-256(n3.o)` (`3d4058cd...`), `N2 == B1` byte-identical on `5/5` `native45` transfer programs with passing oracles |
 
-*(Distinction preserved per `AGENTS.md`: this qualifies the composed hosted-B1 x86 compiler API + unified runtime on `native45`, `native64`, `runtime10`, ABI/live-metadata, adverse controls, and upstream source checking; native N1→N2→N3 byte-exact self-reproduction and independent Lean BendTT kernel proofs remain separate downstream gates.)*
+## Native Self-Build & Fixed-Point Verification (`experiments/agy/receipts/unified-native-selfbuild.json`)
+
+Executed under `selfhost/tools/build-retention/guard.py` on CPU 2 (`wallSeconds: 948.95 s`, `peakTreeRssBytes: 1.93 GiB`, `peakRunAllocatedBytes: 89.1 MiB`):
+
+| Stage | Producer → Target | Emit Time | Object Size | Executable Size | Notes |
+|---|---|---:|---:|---:|---|
+| **Stage 1** | `N0` (Phase 205) → `N1` | `326.02 s` | `35,986,320 B` | `28,980,144 B` | Phase 205 compiling unified `compiler.bend` + `runtime-agy.o` |
+| **Stage 2** | `N1` → `N2` | `307.20 s` | `35,044,896 B` | `28,042,160 B` | **−5.8%** faster emit, **−941 KiB (−2.62%)** smaller `.o` |
+| **Stage 3** | `N2` → `N3` | **`300.35 s`** | `35,044,896 B` | — | **−7.87%** faster than `N0`, **`exactFixedPoint: true`** (`SHA-256: 3d4058cdc10e6c7913737c41d53d7025ada816ccb98fd2913f2459591f65df4b`) |
+| **Stage 4** | `N2` vs Hosted `B1` (`5` programs) | `2.15–3.78 s` | — | — | **5 / 5 `sameAsHostedB1: true`** & **5 / 5 `oracleOk: true`** (`raytrace`, `mandelbrot`, `coverage-bst-64`, `test-morning-program`, `test-evening-program`) |
+
+*(Distinction preserved per `AGENTS.md`: source checking, hosted-B1 qualification, native `N0→N1→N2→N3` byte-exact self-reproduction, and independent Lean BendTT kernel proofs are reported distinctly; BendTT kernel proofs remain a separate downstream gate.)*

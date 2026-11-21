@@ -1,4 +1,20 @@
-# Next 30 minutes on direct x86
+# Where to look next for direct x86 runtime gains
+
+**Spend the next 20 minutes looking for one useful fact that direct x86 loses at a hot call in two unrelated programs.** Start with ray tracing and record aggregation. Together they took 1.44 s more than mature Bend C on the fixed batch. That measures the opportunity across those families. The share attributable to any one mechanism is unknown. [Phase205 workload timings](../../implementation/phase205/opportunities.json)
+
+## Ranked ideas from the literature
+
+1. **Preserve known values and shapes across calls and loops.** When callers agree on a constructor, scalar constant or tuple shape, a specialized worker can use that information on subsequent iterations. Phase205 already removed 39 calls to `gen.at` and cut another 9% from lexer runtime and 46% from an independent packet workload. The open question is whether the same reasoning keeps numeric or record fields unboxed across a recursive loop. OCaml’s Flambda propagates specialized arguments through recursive groups and limits unboxing when extra arguments would compromise tail calls. [Phase205 machine evidence](../../implementation/phase205/scalar-machine.json) · [Flambda manual, §21.9](https://ocaml.org/manual/4.11/flambda.html)
+2. **Preserve ownership across recursive updates.** BST and Map churn together account for 1.22 s of excess time. Trace a consumed node through a helper and its caller. Does the compiler still know it can reuse that node when reconstructing the result? Perceus shows how control-flow and liveness information can guide reuse and eliminate reference-count operations. Bend already has reuse rules, so look for a specific point where an existing rule loses its justification. [Perceus paper](https://www.microsoft.com/en-us/research/publication/perceus-garbage-free-reference-counting-with-reuse/)
+3. **Fuse a producer with its consumer.** Bringing lexer and RLE both to C speed would save 1.17 s of the 5.54 s needed for fixed-batch parity. The historical lexer experiment removed the generated string, character classification and token-state reconstruction together. Its timing leaves the contribution of each open. Stream fusion suggests a precise machine-code check: after simplification, do allocations for intermediate stream steps actually disappear? [Stream Fusion paper](https://www.cs.tufts.edu/~nr/cs257/archive/duncan-coutts/stream-fusion.pdf) · [Phase200 lexer experiment](../../implementation/phase200/README.md)
+
+## The 20-minute decision test
+
+Use the existing profiles to pick one hot loop in ray tracing and one in record aggregation. For each, compare the direct x86 and mature C machine code on the same input. Record the source fact known before the call, whether it holds on every loop backedge, and which repeated box, tag check or field reload it would eliminate. Use the profile to distinguish work on the hot path from instructions that merely appear in the binary.
+
+If the same fact would eliminate measurable work in both loops, prototype the narrowest rule that preserves it and time both programs. If the two loops have different bottlenecks, record the finding and return to the fusion experiment below. Defer a wider literature survey until a specific mechanism needs investigation.
+
+## Fallback experiment: 30 minutes on fusion
 
 **Decision to make:** Would eliminating a single-use intermediate sequence pay for a reusable compiler rule? Phase205’s selected x86 compiler takes 15.667 s for the fixed batch against 10.125 s for mature Bend C. Saving another 0.479 s would cross 1.5× C. Full parity requires 5.542 s. The 0.5 s experiment threshold is a spending decision, not a predicted gain. [Matched baseline](../../implementation/phase205/broad06.json)
 

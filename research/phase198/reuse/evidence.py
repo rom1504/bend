@@ -26,6 +26,9 @@ def main():
         if d.get('counts'):detail['counts']=d['counts']
         if d.get('controls'):detail['controls']=len(d['controls']) if isinstance(d['controls'],list) else d['controls']
         if d.get('events'):detail['events']=d['events']
+        if name.startswith('reuse-tree-mca') and 'rows' in d:
+            detail['model']=d['model']
+            detail['rows']=[{key:row[key] for key in ('role','iterations','noAlias','metrics')} for row in d['rows']]
         for key in ('source','api','checked','independent'):
             if key in d:detail[key]=d[key]
         if d.get('cases'):
@@ -42,6 +45,9 @@ def main():
         name=rec['name'];run=build/name;guard=build/(name+'-guard');seal=close/(name+'-close')
         for item in [run/'report.json',guard/'process.json',guard/'retention.json',seal/'report.json',run/'boundaries.stderr',run/'checked/shapes.json',run/'tree-bitonic/outer-shapes.json']:
             if item.is_file():files.add(item)
+        if name.startswith('reuse-tree-mca'):
+            files.update(run.glob('*.stdout'))
+            files.update(run.glob('*.stderr'))
         if rec['exit']:
             for item in (run/'stderr',guard/'stderr.log',run/'compiler.stderr'):
                 if item.is_file() and item.stat().st_size:files.add(item)

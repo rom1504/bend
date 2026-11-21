@@ -1,0 +1,71 @@
+{
+  "symbol": "p114r_FID_36_100_105_114_101_99_116_46_119_97_114_112_",
+  "method": "Exact contiguous scheduling suffixes on one dynamic Node/Node transition. Original begins after second take2 and stores pending work, new begins after raw-node guards and enqueues two slot-address pairs. Both stop before their unconditional transfer; no helper call, tag probe, branch or guessed call latency is fed to MCA.",
+  "cases": [
+    {
+      "role": "old",
+      "program": {
+        "file": "selfhost/build/phase197/discoveryBTiming01/tree-bitonic/project-baseline/program.s",
+        "bytes": 567056,
+        "sha256": "cff945285617f74a49e16d558f1c79e363651cb244b0748b986e2459ca5f2dca"
+      },
+      "sourceLine1": 13399,
+      "sourceLineLast": 13446,
+      "label": ".Lp114r_FID_36_100_105_114_101_99_116_46_119_97_114_112__b20:",
+      "after": "  call p125_rt_take2",
+      "before": "  jmp .Lp114r_FID_36_100_105_114_101_99_116_46_119_97_114_112__loop",
+      "instructions": 48,
+      "memoryLoads": 11,
+      "memoryStores": 14,
+      "extracted": {
+        "file": "research/phase198/reuse/mca/old.s",
+        "bytes": 1107,
+        "sha256": "b1fd582ddc40744723aff36b014fe40ee0d683309080caa4dee81bd26c33dda1"
+      }
+    },
+    {
+      "role": "new",
+      "program": {
+        "file": "selfhost/build/phase198/reuse-fusion-emit04/tree-bitonic/program.s",
+        "bytes": 573001,
+        "sha256": "2a7271aa5cd85cac3c79b4f43d967c413ac7c2ed5a6be526dc0f875b2413af06"
+      },
+      "sourceLine1": 13103,
+      "sourceLineLast": 13111,
+      "label": ".Lp198pair_p114r_FID_36_100_105_114_101_99_116_46_119_97_114_112__node:",
+      "after": "  ja .Lp198pair_p114r_FID_36_100_105_114_101_99_116_46_119_97_114_112__miss",
+      "before": "  jmp .Lp198pair_p114r_FID_36_100_105_114_101_99_116_46_119_97_114_112__scan",
+      "instructions": 9,
+      "memoryLoads": 0,
+      "memoryStores": 4,
+      "extracted": {
+        "file": "research/phase198/reuse/mca/new.s",
+        "bytes": 299,
+        "sha256": "840d94365aa152a2d6813a50dd91ab16e974fe2f7c42d3be97a2ea3d175e46eb"
+      }
+    }
+  ],
+  "dynamicWitness": {
+    "fused": {
+      "file": "selfhost/build/phase198/reuse-pairwise01/report.json",
+      "bytes": 25371,
+      "sha256": "8d32bfe0e592c38551706a6c87552969d3a4dde77356ebe33239c6e6add5a91d"
+    },
+    "local": {
+      "file": "selfhost/build/phase198/reuse-screen01/report.json",
+      "bytes": 19525,
+      "sha256": "b876c0f15460070052ff5d712d299e9c8069a33d4ebcb1853126c69412923a74"
+    },
+    "args": [
+      8,
+      0
+    ],
+    "roots": 1793,
+    "leaves": 4608,
+    "swaps": 2271,
+    "internal": 2815,
+    "modelSliceInstructionsSaved": 109785,
+    "modelSliceLoadsSaved": 30965,
+    "modelSliceStoresSaved": 28150
+  }
+}

@@ -1,0 +1,20 @@
+# Scheduling a pair of internal tree nodes on Ivy Bridge
+
+The fused worker schedules two child pairs in nine instructions. The incumbent takes 48 instructions to save its continuation and prepare the first recursive call. LLVM-MCA 11.0.1 gives those contiguous regions block reciprocal throughputs of 4 and 14 cycles on its Ivy Bridge model. The canonical native tree program takes 0.305000 ms, down from 0.595041 ms on the incumbent. Mature Bend C takes 0.178477 ms in the same four-role session.
+
+| Scheduling block | Instructions / modeled µops | Loads / stores | Block reciprocal throughput | One block, may alias | 100 blocks, may alias | 100 blocks, assume no alias |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Incumbent | 48 / 48 | 11 / 14 | 14 cycles | 64 cycles | 6,004 cycles | 1,408 cycles |
+| Fused | 9 / 9 | 0 / 4 | 4 cycles | 8 cycles | 404 cycles | 404 cycles |
+
+The incumbent slice begins immediately after taking the second node's fields. It writes the pending work to the continuation stack and loads arguments for its next descent. The fused slice begins after validating both node values and the work-stack bound. It writes two pairs of child-slot addresses onto that stack. Both ranges end immediately before the jump. Their respective starts are instruction 385 of the old function and 101 of the new function, counting from zero. Disassembly confirms the old instructions and operands in the GNU-as and incumbent direct objects. Two immediate adds use 8-bit immediates under GNU-as and 32-bit immediates under the direct encoder, giving the range 249 and 255 bytes respectively. The new 45-byte region is byte-identical between checked and native portfolio products. [Extraction and dynamic witness](plan.json) · [Object spans](native-spans.json)
+
+The model counts the executed loads and stores in each selected region and estimates their scheduling costs for a virtual four-wide Ivy Bridge backend. With conservative store-to-load ordering, repeatedly concatenating the incumbent block raises model time considerably. The distinct actual stack slots and the surrounding instructions determine dependencies in a real traversal. The new slice has only stores. Instruction fetch and branch behavior, the runtime ownership helpers, recursive returns, reconstruction, the new validation and leaf-swap passes, and the generic fallback all lie outside this comparison. Multiplying a model cycle delta by the node count would give no reliable process timing.
+
+In the independent instrumentation on input `[8,0]`, 1,793 accepted roots contain 4,608 leaf pairs. The resulting 2,815 internal node transitions agree with the locally instrumented join-entry count. That many occurrences of the two slices account for 109,785 fewer architectural instructions, including 30,965 fewer loads and 28,150 fewer stores. These are scope-limited instruction counts derived from the measured path frequency. The portfolio's measured live/incumbent ratios are 0.594, 0.513 and 0.483 at depths 6, 8 and 9. The corresponding live/mature-C ratios are 1.954, 1.709 and 1.510. The separate tree-only intervention measured 0.542 of incumbent time on the canonical direct program. [Four-role tree measurements](live-tree.json) · [Tree-only controls and timings](../results.md)
+
+Run `prepare.py` to verify the hashed emitted programs and extract the two literal ranges. Run `native-span.py` to compare the generated objects and extract the three catalog rows. The guarded job below verifies the LLVM executable and all loaded-library pins against the existing Phase 195 acquisition receipt, checks family 6/model 58 and CPU 3 affinity, and rejects unexpected diagnostics or instruction totals. The six raw model outputs, empty diagnostic streams, guard and retention records are retained in the compact archive. [Run metadata](../evidence/runs.json) · [Raw receipts](../evidence/receipts.tar.gz)
+
+```sh
+python3 -B research/phase198/qualification/job.py reuse-tree-mca01 8 2 python3 -B research/phase198/reuse/mca/run.py --out selfhost/build/phase198/reuse-tree-mca01
+```

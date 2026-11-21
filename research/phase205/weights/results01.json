@@ -1,0 +1,3056 @@
+{
+  "kind": "phase205-frozen-phase200-fixed-weights",
+  "complete": true,
+  "programsExecuted": false,
+  "method": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase205/weights/analyze.py",
+    "bytes": 8401,
+    "sha256": "d9f7e11e03bd0872b96823e219465d052bee6438a865234b7de88e20dd20b5e9"
+  },
+  "summary": {
+    "file": "/home/ai/bend2/build/publish/bend/research/phase200/measure/recovered-summary01.json",
+    "bytes": 144564,
+    "sha256": "e61335fecf06077f9a2580e47e34056f1af1193e3e7ea59177517f80ef676981"
+  },
+  "report": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/candidate-broad02-recovery01/reconstructed-report.json",
+    "bytes": 1743890,
+    "sha256": "c1ec1567bea335e8638ebde374e241e198fbdcfb18c251b9a6e984472fa702ed"
+  },
+  "source": {
+    "file": "/home/ai/bend2/build/publish/bend/selfhost/build/phase200/p200-candidate-source01/compiler.bend",
+    "bytes": 1977250,
+    "sha256": "c8b1b8a30d08e15e37d92cd6ed65ccc33b9bff484957e21ebeb903069ef106d7"
+  },
+  "executionGuardSucceeded": false,
+  "formula": "seconds(role,case)=median(exact elapsedMs/repetitions over the three measured role samples)*original catalog repetitions/1000; aggregate before taking ratios. Calibration counts never become catalog weights.",
+  "total": {
+    "cases": [
+      "mandelbrot",
+      "editdist",
+      "tree-bitonic",
+      "lexer",
+      "symreg",
+      "test-morning-program",
+      "test-evening-program",
+      "test-rle-roundtrip",
+      "test-map-set-ops",
+      "raytrace",
+      "local-pair",
+      "local-fold",
+      "scalar-region-8192",
+      "complete-generic-row32",
+      "variation-editdist-0-17",
+      "variation-editdist-3-123",
+      "variation-lexer-6-17",
+      "variation-lexer-10-123",
+      "variation-tree-bitonic-6-17",
+      "variation-tree-bitonic-9-123",
+      "variation-symreg-4-17",
+      "variation-symreg-7-123",
+      "variation-local-fold-128-0",
+      "variation-local-fold-8192-123",
+      "variation-mandelbrot-grid-4-7",
+      "variation-mandelbrot-grid-5-31",
+      "variation-ray-active-64-2440",
+      "variation-ray-active-256-2240",
+      "coverage-closures-64",
+      "coverage-closures-256",
+      "coverage-list-pipeline-128",
+      "coverage-list-pipeline-512",
+      "coverage-bst-32",
+      "coverage-bst-64",
+      "coverage-unicode-text-16",
+      "coverage-unicode-text-64",
+      "coverage-expression-32",
+      "coverage-expression-128",
+      "coverage-map-churn-32",
+      "coverage-map-churn-128",
+      "coverage-numeric-recurrence-256",
+      "coverage-numeric-recurrence-1024",
+      "coverage-record-aggregation-64",
+      "coverage-record-aggregation-256"
+    ],
+    "caseCount": 44,
+    "candidate": {
+      "seconds": 17.810074650729156,
+      "exactSeconds": "2172979987626908769579877267390233775467642860479390979484799035729506685284899751/122008471622994889872423125505184291192316879181677920050846056476139112828000000"
+    },
+    "c": {
+      "seconds": 10.94141614848184,
+      "exactSeconds": "8413176962941774293307403937147110522660522332571207692783891399139854216615869070763/768929437357076685999932902941725582235289141011930735064680921792480674981052000000"
+    },
+    "signedExcess": {
+      "seconds": 6.868658502247316,
+      "exactSeconds": "9147245957797766417074609366720955530885827383230597827822552751716327050454563232716720928582429040472811252256291225595146918681990961/1331736896630533280114771808869328699049288294840853858881944374086472859175066280661379574395291530546500454207455826810406272357000000"
+    },
+    "positiveCaseExcess": {
+      "seconds": 8.340235688799478,
+      "exactSeconds": "752015037289018231295674198222567988187568010517566792429615344972317873963219781306344997731541338211/90167120612543013074281000650328820387313244254479618827151508013121975991500552647640152089828000000"
+    },
+    "netFamilyExcess": {
+      "seconds": 6.868658502247316,
+      "exactSeconds": "9147245957797766417074609366720955530885827383230597827822552751716327050454563232716720928582429040472811252256291225595146918681990961/1331736896630533280114771808869328699049288294840853858881944374086472859175066280661379574395291530546500454207455826810406272357000000"
+    },
+    "ratio": 1.6277668639082306
+  },
+  "threshold": {
+    "maximumWholeRatioToC": 1.5,
+    "targetCandidate": {
+      "seconds": 16.41212422272276,
+      "exactSeconds": "8413176962941774293307403937147110522660522332571207692783891399139854216615869070763/512619624904717790666621935294483721490192760674620490043120614528320449987368000000"
+    },
+    "requiredSaving": {
+      "seconds": 1.3979504280063952,
+      "exactSeconds": "14893617317092500158162799714970231023515707164004214403520954441727855886986963482401420101940308008459467254941435715783682769173610831/10653895173044266240918174470954629592394306358726830871055554992691782873400530245291036595162332244372003633659646614483250178856000000"
+    },
+    "requiredCandidateReductionFraction": 0.07849211502036924
+  },
+  "families": {
+    "lexer": {
+      "cases": [
+        "lexer",
+        "variation-lexer-6-17",
+        "variation-lexer-10-123"
+      ],
+      "caseCount": 3,
+      "candidate": {
+        "seconds": 1.918631044627275,
+        "exactSeconds": "24048841/12534375"
+      },
+      "c": {
+        "seconds": 0.6835551641985466,
+        "exactSeconds": "15952537/23337600"
+      },
+      "signedExcess": {
+        "seconds": 1.2350758804287285,
+        "exactSeconds": "4817162010163/3900296400000"
+      },
+      "positiveCaseExcess": {
+        "seconds": 1.2350758804287285,
+        "exactSeconds": "4817162010163/3900296400000"
+      },
+      "netFamilyExcess": {
+        "seconds": 1.2350758804287285,
+        "exactSeconds": "4817162010163/3900296400000"
+      },
+      "ratio": 2.806841561758703
+    },
+    "raytrace": {
+      "cases": [
+        "raytrace",
+        "variation-ray-active-64-2440",
+        "variation-ray-active-256-2240"
+      ],
+      "caseCount": 3,
+      "candidate": {
+        "seconds": 3.091074261083744,
+        "exactSeconds": "25099523/8120000"
+      },
+      "c": {
+        "seconds": 1.9009603421461898,
+        "exactSeconds": "488927/257200"
+      },
+      "signedExcess": {
+        "seconds": 1.190113918937554,
+        "exactSeconds": "6213775189/5221160000"
+      },
+      "positiveCaseExcess": {
+        "seconds": 1.190113918937554,
+        "exactSeconds": "6213775189/5221160000"
+      },
+      "netFamilyExcess": {
+        "seconds": 1.190113918937554,
+        "exactSeconds": "6213775189/5221160000"
+      },
+      "ratio": 1.626059309366713
+    },
+    "bst": {
+      "cases": [
+        "coverage-bst-32",
+        "coverage-bst-64"
+      ],
+      "caseCount": 2,
+      "candidate": {
+        "seconds": 1.1541275601144527,
+        "exactSeconds": "710308961/615451000"
+      },
+      "c": {
+        "seconds": 0.41445680133048174,
+        "exactSeconds": "6840733843/16505300000"
+      },
+      "signedExcess": {
+        "seconds": 0.7396707587839709,
+        "exactSeconds": "441983882916771/597541375900000"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.7396707587839709,
+        "exactSeconds": "441983882916771/597541375900000"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.7396707587839709,
+        "exactSeconds": "441983882916771/597541375900000"
+      },
+      "ratio": 2.7846751613424927
+    },
+    "test-evening-program": {
+      "cases": [
+        "test-evening-program"
+      ],
+      "caseCount": 1,
+      "candidate": {
+        "seconds": 0.9269285714285714,
+        "exactSeconds": "12977/14000"
+      },
+      "c": {
+        "seconds": 0.26458811277026434,
+        "exactSeconds": "1803803/6817400"
+      },
+      "signedExcess": {
+        "seconds": 0.6623404586583072,
+        "exactSeconds": "316080789/477218000"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.6623404586583072,
+        "exactSeconds": "316080789/477218000"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.6623404586583072,
+        "exactSeconds": "316080789/477218000"
+      },
+      "ratio": 3.503288797533402
+    },
+    "map-churn": {
+      "cases": [
+        "coverage-map-churn-32",
+        "coverage-map-churn-128"
+      ],
+      "caseCount": 2,
+      "candidate": {
+        "seconds": 0.9699801058809226,
+        "exactSeconds": "8776283/9047900"
+      },
+      "c": {
+        "seconds": 0.34239036853831534,
+        "exactSeconds": "4187691/12230750"
+      },
+      "signedExcess": {
+        "seconds": 0.6275897373426074,
+        "exactSeconds": "1389014278067/2213252058500"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.6275897373426074,
+        "exactSeconds": "1389014278067/2213252058500"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.6275897373426074,
+        "exactSeconds": "1389014278067/2213252058500"
+      },
+      "ratio": 2.832965512499154
+    },
+    "test-rle-roundtrip": {
+      "cases": [
+        "test-rle-roundtrip"
+      ],
+      "caseCount": 1,
+      "candidate": {
+        "seconds": 0.9752383928571429,
+        "exactSeconds": "1092267/1120000"
+      },
+      "c": {
+        "seconds": 0.42043606692257013,
+        "exactSeconds": "3398164/8082475"
+      },
+      "signedExcess": {
+        "seconds": 0.5548023259345727,
+        "exactSeconds": "200891081633/362094880000"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.5548023259345727,
+        "exactSeconds": "200891081633/362094880000"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.5548023259345727,
+        "exactSeconds": "200891081633/362094880000"
+      },
+      "ratio": 2.319587850765306
+    },
+    "mandelbrot": {
+      "cases": [
+        "mandelbrot",
+        "variation-mandelbrot-grid-4-7",
+        "variation-mandelbrot-grid-5-31"
+      ],
+      "caseCount": 3,
+      "candidate": {
+        "seconds": 1.2324872307147938,
+        "exactSeconds": "2223985598477/1804469485000"
+      },
+      "c": {
+        "seconds": 0.7562782567722836,
+        "exactSeconds": "221273486601/292582108000"
+      },
+      "signedExcess": {
+        "seconds": 0.47620897394251016,
+        "exactSeconds": "2762825715966828341/5801708634538180000"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.550771539246059,
+        "exactSeconds": "805905673367401/1463230424852000"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.47620897394251016,
+        "exactSeconds": "2762825715966828341/5801708634538180000"
+      },
+      "ratio": 1.6296742894274394
+    },
+    "record-aggregation": {
+      "cases": [
+        "coverage-record-aggregation-64",
+        "coverage-record-aggregation-256"
+      ],
+      "caseCount": 2,
+      "candidate": {
+        "seconds": 0.807680387409201,
+        "exactSeconds": "83393/103250"
+      },
+      "c": {
+        "seconds": 0.3102509397761378,
+        "exactSeconds": "12895813/41565750"
+      },
+      "signedExcess": {
+        "seconds": 0.4974294476330632,
+        "exactSeconds": "853919959/1716665475"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.4974294476330632,
+        "exactSeconds": "853919959/1716665475"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.4974294476330632,
+        "exactSeconds": "853919959/1716665475"
+      },
+      "ratio": 2.603313266325589
+    },
+    "test-map-set-ops": {
+      "cases": [
+        "test-map-set-ops"
+      ],
+      "caseCount": 1,
+      "candidate": {
+        "seconds": 0.6016461751334256,
+        "exactSeconds": "380466/632375"
+      },
+      "c": {
+        "seconds": 0.2345504381037969,
+        "exactSeconds": "130498/556375"
+      },
+      "signedExcess": {
+        "seconds": 0.36709573702962867,
+        "exactSeconds": "1033264784/2814701125"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.36709573702962867,
+        "exactSeconds": "1033264784/2814701125"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.36709573702962867,
+        "exactSeconds": "1033264784/2814701125"
+      },
+      "ratio": 2.5651036084067163
+    },
+    "test-morning-program": {
+      "cases": [
+        "test-morning-program"
+      ],
+      "caseCount": 1,
+      "candidate": {
+        "seconds": 0.4846794642857143,
+        "exactSeconds": "542841/1120000"
+      },
+      "c": {
+        "seconds": 0.15793804081632654,
+        "exactSeconds": "1934741/12250000"
+      },
+      "signedExcess": {
+        "seconds": 0.3267414234693878,
+        "exactSeconds": "64041319/196000000"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.3267414234693878,
+        "exactSeconds": "64041319/196000000"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.3267414234693878,
+        "exactSeconds": "64041319/196000000"
+      },
+      "ratio": 3.068794964028777
+    },
+    "editdist": {
+      "cases": [
+        "editdist",
+        "variation-editdist-0-17",
+        "variation-editdist-3-123"
+      ],
+      "caseCount": 3,
+      "candidate": {
+        "seconds": 0.9256274350649351,
+        "exactSeconds": "1140373/1232000"
+      },
+      "c": {
+        "seconds": 0.6047907987579274,
+        "exactSeconds": "273552019/452308500"
+      },
+      "signedExcess": {
+        "seconds": 0.32083663630700765,
+        "exactSeconds": "291892757/909786240"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.32083663630700765,
+        "exactSeconds": "291892757/909786240"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.32083663630700765,
+        "exactSeconds": "291892757/909786240"
+      },
+      "ratio": 1.5304919270695208
+    },
+    "complete-generic-row32": {
+      "cases": [
+        "complete-generic-row32"
+      ],
+      "caseCount": 1,
+      "candidate": {
+        "seconds": 0.37542857142857144,
+        "exactSeconds": "657/1750"
+      },
+      "c": {
+        "seconds": 0.11643144004589788,
+        "exactSeconds": "10147/87150"
+      },
+      "signedExcess": {
+        "seconds": 0.25899713138267355,
+        "exactSeconds": "56429/217875"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.25899713138267355,
+        "exactSeconds": "56429/217875"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.25899713138267355,
+        "exactSeconds": "56429/217875"
+      },
+      "ratio": 3.224460431654676
+    },
+    "tree-bitonic": {
+      "cases": [
+        "tree-bitonic",
+        "variation-tree-bitonic-6-17",
+        "variation-tree-bitonic-9-123"
+      ],
+      "caseCount": 3,
+      "candidate": {
+        "seconds": 1.0593706525991633,
+        "exactSeconds": "39544607231/37328396000"
+      },
+      "c": {
+        "seconds": 0.810780290566931,
+        "exactSeconds": "274011307/337960000"
+      },
+      "signedExcess": {
+        "seconds": 0.2485903620322324,
+        "exactSeconds": "6588430427763/26503161160000"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.2485903620322324,
+        "exactSeconds": "6588430427763/26503161160000"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.2485903620322324,
+        "exactSeconds": "6588430427763/26503161160000"
+      },
+      "ratio": 1.3066063210027068
+    },
+    "unicode-text": {
+      "cases": [
+        "coverage-unicode-text-16",
+        "coverage-unicode-text-64"
+      ],
+      "caseCount": 2,
+      "candidate": {
+        "seconds": 0.38851259553204,
+        "exactSeconds": "26434397/68040000"
+      },
+      "c": {
+        "seconds": 0.15728404261789872,
+        "exactSeconds": "155151271/986440000"
+      },
+      "signedExcess": {
+        "seconds": 0.23122855291414127,
+        "exactSeconds": "27713310889/119852460000"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.23122855291414127,
+        "exactSeconds": "27713310889/119852460000"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.23122855291414127,
+        "exactSeconds": "27713310889/119852460000"
+      },
+      "ratio": 2.470133581674787
+    },
+    "numeric-recurrence": {
+      "cases": [
+        "coverage-numeric-recurrence-256",
+        "coverage-numeric-recurrence-1024"
+      ],
+      "caseCount": 2,
+      "candidate": {
+        "seconds": 0.6083143041108587,
+        "exactSeconds": "33609130873/55249614625"
+      },
+      "c": {
+        "seconds": 0.40655223009199226,
+        "exactSeconds": "9128312801/22452989125"
+      },
+      "signedExcess": {
+        "seconds": 0.2017620740188665,
+        "exactSeconds": "1942112012108372/9625753608811375"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.2017620740188665,
+        "exactSeconds": "1942112012108372/9625753608811375"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.2017620740188665,
+        "exactSeconds": "1942112012108372/9625753608811375"
+      },
+      "ratio": 1.496275900327033
+    },
+    "local-fold": {
+      "cases": [
+        "local-fold",
+        "variation-local-fold-128-0",
+        "variation-local-fold-8192-123"
+      ],
+      "caseCount": 3,
+      "candidate": {
+        "seconds": 0.7934357964591182,
+        "exactSeconds": "170001666648897023/214260142292000000"
+      },
+      "c": {
+        "seconds": 0.8546710699011512,
+        "exactSeconds": "1107819516198137/1296194004000000"
+      },
+      "signedExcess": {
+        "seconds": -0.06123527344203292,
+        "exactSeconds": "-303686182038577465343927/4959334138126378878000000"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.16122169323508925,
+        "exactSeconds": "1387897582591/8608628000000"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.0,
+        "exactSeconds": "0"
+      },
+      "ratio": 0.9283522332759956
+    },
+    "local-pair": {
+      "cases": [
+        "local-pair"
+      ],
+      "caseCount": 1,
+      "candidate": {
+        "seconds": 0.3030178571428571,
+        "exactSeconds": "16969/56000"
+      },
+      "c": {
+        "seconds": 0.20092637215528783,
+        "exactSeconds": "37523/186750"
+      },
+      "signedExcess": {
+        "seconds": 0.10209148498756933,
+        "exactSeconds": "4270691/41832000"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.10209148498756933,
+        "exactSeconds": "4270691/41832000"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.10209148498756933,
+        "exactSeconds": "4270691/41832000"
+      },
+      "ratio": 1.508103958143767
+    },
+    "symreg": {
+      "cases": [
+        "symreg",
+        "variation-symreg-4-17",
+        "variation-symreg-7-123"
+      ],
+      "caseCount": 3,
+      "candidate": {
+        "seconds": 1.0708427152041413,
+        "exactSeconds": "8015927/7485625"
+      },
+      "c": {
+        "seconds": 1.0069661887461232,
+        "exactSeconds": "35511292/35265625"
+      },
+      "signedExcess": {
+        "seconds": 0.0638765264580181,
+        "exactSeconds": "26979936691/422376390625"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.0638765264580181,
+        "exactSeconds": "26979936691/422376390625"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.0638765264580181,
+        "exactSeconds": "26979936691/422376390625"
+      },
+      "ratio": 1.0634346288603367
+    },
+    "scalar-region-8192": {
+      "cases": [
+        "scalar-region-8192"
+      ],
+      "caseCount": 1,
+      "candidate": {
+        "seconds": 0.00010156285066563452,
+        "exactSeconds": "19516/192156875"
+      },
+      "c": {
+        "seconds": 0.21099973537973007,
+        "exactSeconds": "99671/472375"
+      },
+      "signedExcess": {
+        "seconds": -0.21089817252906445,
+        "exactSeconds": "-153145992141/726160830625"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.0,
+        "exactSeconds": "0"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.0,
+        "exactSeconds": "0"
+      },
+      "ratio": 0.0004813411281433828
+    },
+    "closures": {
+      "cases": [
+        "coverage-closures-64",
+        "coverage-closures-256"
+      ],
+      "caseCount": 2,
+      "candidate": {
+        "seconds": 0.011669881234819593,
+        "exactSeconds": "690829979/59197687200"
+      },
+      "c": {
+        "seconds": 0.14623879311861926,
+        "exactSeconds": "83721274/572497025"
+      },
+      "signedExcess": {
+        "seconds": -0.13456891188379966,
+        "exactSeconds": "-182424307299167213/1355619992355223200"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.0,
+        "exactSeconds": "0"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.0,
+        "exactSeconds": "0"
+      },
+      "ratio": 0.07980017467289788
+    },
+    "list-pipeline": {
+      "cases": [
+        "coverage-list-pipeline-128",
+        "coverage-list-pipeline-512"
+      ],
+      "caseCount": 2,
+      "candidate": {
+        "seconds": 0.07531348782735497,
+        "exactSeconds": "13893154413/184471000000"
+      },
+      "c": {
+        "seconds": 0.28696887001108307,
+        "exactSeconds": "28934999421/100829750000"
+      },
+      "signedExcess": {
+        "seconds": -0.21165538218372806,
+        "exactSeconds": "-2249614281152631/10628665607000000"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.0,
+        "exactSeconds": "0"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.0,
+        "exactSeconds": "0"
+      },
+      "ratio": 0.26244480045674046
+    },
+    "expression": {
+      "cases": [
+        "coverage-expression-32",
+        "coverage-expression-128"
+      ],
+      "caseCount": 2,
+      "candidate": {
+        "seconds": 0.03596659773938687,
+        "exactSeconds": "1558340129/43327426750"
+      },
+      "c": {
+        "seconds": 0.6534017857142858,
+        "exactSeconds": "73181/112000"
+      },
+      "signedExcess": {
+        "seconds": -0.6174351879748988,
+        "exactSeconds": "-479393651607/776427487360"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.0,
+        "exactSeconds": "0"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.0,
+        "exactSeconds": "0"
+      },
+      "ratio": 0.05504514760404106
+    }
+  },
+  "sourceGroups": {
+    "cb2b9c30aceeb0f8ed0da1f999658aa8d7fb346851877da6902d1ded4cfc0656": {
+      "families": [
+        "mandelbrot"
+      ],
+      "cases": [
+        "mandelbrot"
+      ],
+      "caseCount": 1,
+      "candidate": {
+        "seconds": 0.5039578783151326,
+        "exactSeconds": "323037/641000"
+      },
+      "c": {
+        "seconds": 0.2420357142857143,
+        "exactSeconds": "6777/28000"
+      },
+      "signedExcess": {
+        "seconds": 0.2619221640294183,
+        "exactSeconds": "4700979/17948000"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.2619221640294183,
+        "exactSeconds": "4700979/17948000"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.2619221640294183,
+        "exactSeconds": "4700979/17948000"
+      },
+      "ratio": 2.082163286531461
+    },
+    "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f": {
+      "families": [
+        "editdist"
+      ],
+      "cases": [
+        "editdist",
+        "variation-editdist-0-17",
+        "variation-editdist-3-123"
+      ],
+      "caseCount": 3,
+      "candidate": {
+        "seconds": 0.9256274350649351,
+        "exactSeconds": "1140373/1232000"
+      },
+      "c": {
+        "seconds": 0.6047907987579274,
+        "exactSeconds": "273552019/452308500"
+      },
+      "signedExcess": {
+        "seconds": 0.32083663630700765,
+        "exactSeconds": "291892757/909786240"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.32083663630700765,
+        "exactSeconds": "291892757/909786240"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.32083663630700765,
+        "exactSeconds": "291892757/909786240"
+      },
+      "ratio": 1.5304919270695208
+    },
+    "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d": {
+      "families": [
+        "tree-bitonic"
+      ],
+      "cases": [
+        "tree-bitonic",
+        "variation-tree-bitonic-6-17",
+        "variation-tree-bitonic-9-123"
+      ],
+      "caseCount": 3,
+      "candidate": {
+        "seconds": 1.0593706525991633,
+        "exactSeconds": "39544607231/37328396000"
+      },
+      "c": {
+        "seconds": 0.810780290566931,
+        "exactSeconds": "274011307/337960000"
+      },
+      "signedExcess": {
+        "seconds": 0.2485903620322324,
+        "exactSeconds": "6588430427763/26503161160000"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.2485903620322324,
+        "exactSeconds": "6588430427763/26503161160000"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.2485903620322324,
+        "exactSeconds": "6588430427763/26503161160000"
+      },
+      "ratio": 1.3066063210027068
+    },
+    "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb": {
+      "families": [
+        "lexer"
+      ],
+      "cases": [
+        "lexer",
+        "variation-lexer-6-17",
+        "variation-lexer-10-123"
+      ],
+      "caseCount": 3,
+      "candidate": {
+        "seconds": 1.918631044627275,
+        "exactSeconds": "24048841/12534375"
+      },
+      "c": {
+        "seconds": 0.6835551641985466,
+        "exactSeconds": "15952537/23337600"
+      },
+      "signedExcess": {
+        "seconds": 1.2350758804287285,
+        "exactSeconds": "4817162010163/3900296400000"
+      },
+      "positiveCaseExcess": {
+        "seconds": 1.2350758804287285,
+        "exactSeconds": "4817162010163/3900296400000"
+      },
+      "netFamilyExcess": {
+        "seconds": 1.2350758804287285,
+        "exactSeconds": "4817162010163/3900296400000"
+      },
+      "ratio": 2.806841561758703
+    },
+    "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b": {
+      "families": [
+        "symreg"
+      ],
+      "cases": [
+        "symreg",
+        "variation-symreg-4-17",
+        "variation-symreg-7-123"
+      ],
+      "caseCount": 3,
+      "candidate": {
+        "seconds": 1.0708427152041413,
+        "exactSeconds": "8015927/7485625"
+      },
+      "c": {
+        "seconds": 1.0069661887461232,
+        "exactSeconds": "35511292/35265625"
+      },
+      "signedExcess": {
+        "seconds": 0.0638765264580181,
+        "exactSeconds": "26979936691/422376390625"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.0638765264580181,
+        "exactSeconds": "26979936691/422376390625"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.0638765264580181,
+        "exactSeconds": "26979936691/422376390625"
+      },
+      "ratio": 1.0634346288603367
+    },
+    "9033897714291ea49c25046426457ff2753276466092ba71a4e40c1e2b48a04a": {
+      "families": [
+        "test-morning-program"
+      ],
+      "cases": [
+        "test-morning-program"
+      ],
+      "caseCount": 1,
+      "candidate": {
+        "seconds": 0.4846794642857143,
+        "exactSeconds": "542841/1120000"
+      },
+      "c": {
+        "seconds": 0.15793804081632654,
+        "exactSeconds": "1934741/12250000"
+      },
+      "signedExcess": {
+        "seconds": 0.3267414234693878,
+        "exactSeconds": "64041319/196000000"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.3267414234693878,
+        "exactSeconds": "64041319/196000000"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.3267414234693878,
+        "exactSeconds": "64041319/196000000"
+      },
+      "ratio": 3.068794964028777
+    },
+    "b254a68ad0208b8a5f388d72095633cd8fc119adf40d45f5621e93f37e7b4f71": {
+      "families": [
+        "test-evening-program"
+      ],
+      "cases": [
+        "test-evening-program"
+      ],
+      "caseCount": 1,
+      "candidate": {
+        "seconds": 0.9269285714285714,
+        "exactSeconds": "12977/14000"
+      },
+      "c": {
+        "seconds": 0.26458811277026434,
+        "exactSeconds": "1803803/6817400"
+      },
+      "signedExcess": {
+        "seconds": 0.6623404586583072,
+        "exactSeconds": "316080789/477218000"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.6623404586583072,
+        "exactSeconds": "316080789/477218000"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.6623404586583072,
+        "exactSeconds": "316080789/477218000"
+      },
+      "ratio": 3.503288797533402
+    },
+    "ce4083dab9a8022b2c8867a30802113735917229341cecb8ce18ff9ac2e33989": {
+      "families": [
+        "test-rle-roundtrip"
+      ],
+      "cases": [
+        "test-rle-roundtrip"
+      ],
+      "caseCount": 1,
+      "candidate": {
+        "seconds": 0.9752383928571429,
+        "exactSeconds": "1092267/1120000"
+      },
+      "c": {
+        "seconds": 0.42043606692257013,
+        "exactSeconds": "3398164/8082475"
+      },
+      "signedExcess": {
+        "seconds": 0.5548023259345727,
+        "exactSeconds": "200891081633/362094880000"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.5548023259345727,
+        "exactSeconds": "200891081633/362094880000"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.5548023259345727,
+        "exactSeconds": "200891081633/362094880000"
+      },
+      "ratio": 2.319587850765306
+    },
+    "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6": {
+      "families": [
+        "test-map-set-ops"
+      ],
+      "cases": [
+        "test-map-set-ops"
+      ],
+      "caseCount": 1,
+      "candidate": {
+        "seconds": 0.6016461751334256,
+        "exactSeconds": "380466/632375"
+      },
+      "c": {
+        "seconds": 0.2345504381037969,
+        "exactSeconds": "130498/556375"
+      },
+      "signedExcess": {
+        "seconds": 0.36709573702962867,
+        "exactSeconds": "1033264784/2814701125"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.36709573702962867,
+        "exactSeconds": "1033264784/2814701125"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.36709573702962867,
+        "exactSeconds": "1033264784/2814701125"
+      },
+      "ratio": 2.5651036084067163
+    },
+    "4674b2580aceb5f5fe6771ce16c987b97f791b52a9e1305794c435beeebf5837": {
+      "families": [
+        "raytrace"
+      ],
+      "cases": [
+        "raytrace"
+      ],
+      "caseCount": 1,
+      "candidate": {
+        "seconds": 0.564,
+        "exactSeconds": "141/250"
+      },
+      "c": {
+        "seconds": 0.3408,
+        "exactSeconds": "213/625"
+      },
+      "signedExcess": {
+        "seconds": 0.2232,
+        "exactSeconds": "279/1250"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.2232,
+        "exactSeconds": "279/1250"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.2232,
+        "exactSeconds": "279/1250"
+      },
+      "ratio": 1.6549295774647887
+    },
+    "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4": {
+      "families": [
+        "complete-generic-row32",
+        "local-pair"
+      ],
+      "cases": [
+        "local-pair",
+        "complete-generic-row32"
+      ],
+      "caseCount": 2,
+      "candidate": {
+        "seconds": 0.6784464285714286,
+        "exactSeconds": "37993/56000"
+      },
+      "c": {
+        "seconds": 0.3173578122011857,
+        "exactSeconds": "207433/653625"
+      },
+      "signedExcess": {
+        "seconds": 0.36108861637024287,
+        "exactSeconds": "15105059/41832000"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.36108861637024287,
+        "exactSeconds": "15105059/41832000"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.36108861637024287,
+        "exactSeconds": "15105059/41832000"
+      },
+      "ratio": 2.1377965264687875
+    },
+    "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a": {
+      "families": [
+        "local-fold"
+      ],
+      "cases": [
+        "local-fold",
+        "variation-local-fold-128-0",
+        "variation-local-fold-8192-123"
+      ],
+      "caseCount": 3,
+      "candidate": {
+        "seconds": 0.7934357964591182,
+        "exactSeconds": "170001666648897023/214260142292000000"
+      },
+      "c": {
+        "seconds": 0.8546710699011512,
+        "exactSeconds": "1107819516198137/1296194004000000"
+      },
+      "signedExcess": {
+        "seconds": -0.06123527344203292,
+        "exactSeconds": "-303686182038577465343927/4959334138126378878000000"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.16122169323508925,
+        "exactSeconds": "1387897582591/8608628000000"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.0,
+        "exactSeconds": "0"
+      },
+      "ratio": 0.9283522332759956
+    },
+    "5c1b7031be03394ea7bfc64358b6db167711765e187e32d06f65a9f06bba3c7d": {
+      "families": [
+        "scalar-region-8192"
+      ],
+      "cases": [
+        "scalar-region-8192"
+      ],
+      "caseCount": 1,
+      "candidate": {
+        "seconds": 0.00010156285066563452,
+        "exactSeconds": "19516/192156875"
+      },
+      "c": {
+        "seconds": 0.21099973537973007,
+        "exactSeconds": "99671/472375"
+      },
+      "signedExcess": {
+        "seconds": -0.21089817252906445,
+        "exactSeconds": "-153145992141/726160830625"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.0,
+        "exactSeconds": "0"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.0,
+        "exactSeconds": "0"
+      },
+      "ratio": 0.0004813411281433828
+    },
+    "f908b2daf26ab7c61e2876a91a101009b6e80ad61fbd906a34a2eb03deb80377": {
+      "families": [
+        "mandelbrot"
+      ],
+      "cases": [
+        "variation-mandelbrot-grid-4-7",
+        "variation-mandelbrot-grid-5-31"
+      ],
+      "caseCount": 2,
+      "candidate": {
+        "seconds": 0.7285293523996611,
+        "exactSeconds": "512718013/703771250"
+      },
+      "c": {
+        "seconds": 0.5142425424865693,
+        "exactSeconds": "671688246/1306170125"
+      },
+      "signedExcess": {
+        "seconds": 0.21428680991309185,
+        "exactSeconds": "121219738235221/565689219436250"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.2888493752166407,
+        "exactSeconds": "588719069/2038152475"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.21428680991309185,
+        "exactSeconds": "121219738235221/565689219436250"
+      },
+      "ratio": 1.4167037773205793
+    },
+    "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955": {
+      "families": [
+        "raytrace"
+      ],
+      "cases": [
+        "variation-ray-active-64-2440",
+        "variation-ray-active-256-2240"
+      ],
+      "caseCount": 2,
+      "candidate": {
+        "seconds": 2.527074261083744,
+        "exactSeconds": "20519843/8120000"
+      },
+      "c": {
+        "seconds": 1.5601603421461898,
+        "exactSeconds": "10031831/6430000"
+      },
+      "signedExcess": {
+        "seconds": 0.9669139189375541,
+        "exactSeconds": "5048412277/5221160000"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.9669139189375541,
+        "exactSeconds": "5048412277/5221160000"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.9669139189375541,
+        "exactSeconds": "5048412277/5221160000"
+      },
+      "ratio": 1.6197529143751
+    },
+    "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943": {
+      "families": [
+        "closures"
+      ],
+      "cases": [
+        "coverage-closures-64",
+        "coverage-closures-256"
+      ],
+      "caseCount": 2,
+      "candidate": {
+        "seconds": 0.011669881234819593,
+        "exactSeconds": "690829979/59197687200"
+      },
+      "c": {
+        "seconds": 0.14623879311861926,
+        "exactSeconds": "83721274/572497025"
+      },
+      "signedExcess": {
+        "seconds": -0.13456891188379966,
+        "exactSeconds": "-182424307299167213/1355619992355223200"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.0,
+        "exactSeconds": "0"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.0,
+        "exactSeconds": "0"
+      },
+      "ratio": 0.07980017467289788
+    },
+    "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0": {
+      "families": [
+        "list-pipeline"
+      ],
+      "cases": [
+        "coverage-list-pipeline-128",
+        "coverage-list-pipeline-512"
+      ],
+      "caseCount": 2,
+      "candidate": {
+        "seconds": 0.07531348782735497,
+        "exactSeconds": "13893154413/184471000000"
+      },
+      "c": {
+        "seconds": 0.28696887001108307,
+        "exactSeconds": "28934999421/100829750000"
+      },
+      "signedExcess": {
+        "seconds": -0.21165538218372806,
+        "exactSeconds": "-2249614281152631/10628665607000000"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.0,
+        "exactSeconds": "0"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.0,
+        "exactSeconds": "0"
+      },
+      "ratio": 0.26244480045674046
+    },
+    "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f": {
+      "families": [
+        "bst"
+      ],
+      "cases": [
+        "coverage-bst-32",
+        "coverage-bst-64"
+      ],
+      "caseCount": 2,
+      "candidate": {
+        "seconds": 1.1541275601144527,
+        "exactSeconds": "710308961/615451000"
+      },
+      "c": {
+        "seconds": 0.41445680133048174,
+        "exactSeconds": "6840733843/16505300000"
+      },
+      "signedExcess": {
+        "seconds": 0.7396707587839709,
+        "exactSeconds": "441983882916771/597541375900000"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.7396707587839709,
+        "exactSeconds": "441983882916771/597541375900000"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.7396707587839709,
+        "exactSeconds": "441983882916771/597541375900000"
+      },
+      "ratio": 2.7846751613424927
+    },
+    "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550": {
+      "families": [
+        "unicode-text"
+      ],
+      "cases": [
+        "coverage-unicode-text-16",
+        "coverage-unicode-text-64"
+      ],
+      "caseCount": 2,
+      "candidate": {
+        "seconds": 0.38851259553204,
+        "exactSeconds": "26434397/68040000"
+      },
+      "c": {
+        "seconds": 0.15728404261789872,
+        "exactSeconds": "155151271/986440000"
+      },
+      "signedExcess": {
+        "seconds": 0.23122855291414127,
+        "exactSeconds": "27713310889/119852460000"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.23122855291414127,
+        "exactSeconds": "27713310889/119852460000"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.23122855291414127,
+        "exactSeconds": "27713310889/119852460000"
+      },
+      "ratio": 2.470133581674787
+    },
+    "62f40333fa5e7dacd2fadbd622d22033a3434de004df93a6870e4cd33df9d4a5": {
+      "families": [
+        "expression"
+      ],
+      "cases": [
+        "coverage-expression-32",
+        "coverage-expression-128"
+      ],
+      "caseCount": 2,
+      "candidate": {
+        "seconds": 0.03596659773938687,
+        "exactSeconds": "1558340129/43327426750"
+      },
+      "c": {
+        "seconds": 0.6534017857142858,
+        "exactSeconds": "73181/112000"
+      },
+      "signedExcess": {
+        "seconds": -0.6174351879748988,
+        "exactSeconds": "-479393651607/776427487360"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.0,
+        "exactSeconds": "0"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.0,
+        "exactSeconds": "0"
+      },
+      "ratio": 0.05504514760404106
+    },
+    "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e": {
+      "families": [
+        "map-churn"
+      ],
+      "cases": [
+        "coverage-map-churn-32",
+        "coverage-map-churn-128"
+      ],
+      "caseCount": 2,
+      "candidate": {
+        "seconds": 0.9699801058809226,
+        "exactSeconds": "8776283/9047900"
+      },
+      "c": {
+        "seconds": 0.34239036853831534,
+        "exactSeconds": "4187691/12230750"
+      },
+      "signedExcess": {
+        "seconds": 0.6275897373426074,
+        "exactSeconds": "1389014278067/2213252058500"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.6275897373426074,
+        "exactSeconds": "1389014278067/2213252058500"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.6275897373426074,
+        "exactSeconds": "1389014278067/2213252058500"
+      },
+      "ratio": 2.832965512499154
+    },
+    "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3": {
+      "families": [
+        "numeric-recurrence"
+      ],
+      "cases": [
+        "coverage-numeric-recurrence-256",
+        "coverage-numeric-recurrence-1024"
+      ],
+      "caseCount": 2,
+      "candidate": {
+        "seconds": 0.6083143041108587,
+        "exactSeconds": "33609130873/55249614625"
+      },
+      "c": {
+        "seconds": 0.40655223009199226,
+        "exactSeconds": "9128312801/22452989125"
+      },
+      "signedExcess": {
+        "seconds": 0.2017620740188665,
+        "exactSeconds": "1942112012108372/9625753608811375"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.2017620740188665,
+        "exactSeconds": "1942112012108372/9625753608811375"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.2017620740188665,
+        "exactSeconds": "1942112012108372/9625753608811375"
+      },
+      "ratio": 1.496275900327033
+    },
+    "6b31a2cfc58fbb33376fee6bf55d2a6aa05210be40a36342a82da87364080937": {
+      "families": [
+        "record-aggregation"
+      ],
+      "cases": [
+        "coverage-record-aggregation-64",
+        "coverage-record-aggregation-256"
+      ],
+      "caseCount": 2,
+      "candidate": {
+        "seconds": 0.807680387409201,
+        "exactSeconds": "83393/103250"
+      },
+      "c": {
+        "seconds": 0.3102509397761378,
+        "exactSeconds": "12895813/41565750"
+      },
+      "signedExcess": {
+        "seconds": 0.4974294476330632,
+        "exactSeconds": "853919959/1716665475"
+      },
+      "positiveCaseExcess": {
+        "seconds": 0.4974294476330632,
+        "exactSeconds": "853919959/1716665475"
+      },
+      "netFamilyExcess": {
+        "seconds": 0.4974294476330632,
+        "exactSeconds": "853919959/1716665475"
+      },
+      "ratio": 2.603313266325589
+    }
+  },
+  "ceilings": {
+    "lexer": {
+      "families": [
+        "lexer"
+      ],
+      "sourceGroups": [
+        "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb"
+      ],
+      "observed": {
+        "cases": [
+          "lexer",
+          "variation-lexer-6-17",
+          "variation-lexer-10-123"
+        ],
+        "caseCount": 3,
+        "candidate": {
+          "seconds": 1.918631044627275,
+          "exactSeconds": "24048841/12534375"
+        },
+        "c": {
+          "seconds": 0.6835551641985466,
+          "exactSeconds": "15952537/23337600"
+        },
+        "signedExcess": {
+          "seconds": 1.2350758804287285,
+          "exactSeconds": "4817162010163/3900296400000"
+        },
+        "positiveCaseExcess": {
+          "seconds": 1.2350758804287285,
+          "exactSeconds": "4817162010163/3900296400000"
+        },
+        "netFamilyExcess": {
+          "seconds": 1.2350758804287285,
+          "exactSeconds": "4817162010163/3900296400000"
+        },
+        "ratio": 2.806841561758703
+      },
+      "cParitySavings": {
+        "seconds": 1.2350758804287285,
+        "exactSeconds": "4817162010163/3900296400000"
+      },
+      "noRegressionCParitySavings": {
+        "seconds": 1.2350758804287285,
+        "exactSeconds": "4817162010163/3900296400000"
+      },
+      "absoluteZeroCostSavings": {
+        "seconds": 1.918631044627275,
+        "exactSeconds": "24048841/12534375"
+      },
+      "wholeRatioAtCParity": 1.514886057286128,
+      "wholeRatioAtNoRegressionCParity": 1.514886057286128,
+      "wholeRatioAtZeroCost": 1.4524119538499478,
+      "wholeRatioAtSelectedSourceSpeedup1_5": 1.5693152272221362,
+      "canReachThresholdAtCParity": false,
+      "canReachThresholdAtZeroCost": true,
+      "requiredGroupReductionFraction": 0.728618684619465,
+      "requiredGroupSpeedup": 3.6848520635909843,
+      "requiredFractionOfPositiveExcess": 1.1318741221965476,
+      "remainingSavingAfterCParity": {
+        "seconds": 0.16287454757766678,
+        "exactSeconds": "9085069928007711361042273453233483404566375576075433526367910109703493028571479926775763550182349793835211164421527322095315818795821/55779555879812912256116096706568741321436158946213774194008141322993627609426859922989720393520064106659704888270401122948953816000000"
+      }
+    },
+    "unicode-text": {
+      "families": [
+        "unicode-text"
+      ],
+      "sourceGroups": [
+        "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550"
+      ],
+      "observed": {
+        "cases": [
+          "coverage-unicode-text-16",
+          "coverage-unicode-text-64"
+        ],
+        "caseCount": 2,
+        "candidate": {
+          "seconds": 0.38851259553204,
+          "exactSeconds": "26434397/68040000"
+        },
+        "c": {
+          "seconds": 0.15728404261789872,
+          "exactSeconds": "155151271/986440000"
+        },
+        "signedExcess": {
+          "seconds": 0.23122855291414127,
+          "exactSeconds": "27713310889/119852460000"
+        },
+        "positiveCaseExcess": {
+          "seconds": 0.23122855291414127,
+          "exactSeconds": "27713310889/119852460000"
+        },
+        "netFamilyExcess": {
+          "seconds": 0.23122855291414127,
+          "exactSeconds": "27713310889/119852460000"
+        },
+        "ratio": 2.470133581674787
+      },
+      "cParitySavings": {
+        "seconds": 0.23122855291414127,
+        "exactSeconds": "27713310889/119852460000"
+      },
+      "noRegressionCParitySavings": {
+        "seconds": 0.23122855291414127,
+        "exactSeconds": "27713310889/119852460000"
+      },
+      "absoluteZeroCostSavings": {
+        "seconds": 0.38851259553204,
+        "exactSeconds": "26434397/68040000"
+      },
+      "wholeRatioAtCParity": 1.6066335343852305,
+      "wholeRatioAtNoRegressionCParity": 1.6066335343852305,
+      "wholeRatioAtZeroCost": 1.5922584260369639,
+      "wholeRatioAtSelectedSourceSpeedup1_5": 1.6159307179511417,
+      "canReachThresholdAtCParity": false,
+      "canReachThresholdAtZeroCost": false,
+      "requiredGroupReductionFraction": 3.598211342651589,
+      "requiredGroupSpeedup": null,
+      "requiredFractionOfPositiveExcess": 6.04575174816527,
+      "remainingSavingAfterCParity": {
+        "seconds": 1.166721875092254,
+        "exactSeconds": "460375279752982214043508433249103310924736466650135948467818276486405058740287522394827335661104878157873347109509034885392999784367053/394588710112750601515487943368689984903492828100993735965020555284880847162982601677445799820827120161926060505912837573453710328000000"
+      }
+    },
+    "tree-bitonic": {
+      "families": [
+        "tree-bitonic"
+      ],
+      "sourceGroups": [
+        "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d"
+      ],
+      "observed": {
+        "cases": [
+          "tree-bitonic",
+          "variation-tree-bitonic-6-17",
+          "variation-tree-bitonic-9-123"
+        ],
+        "caseCount": 3,
+        "candidate": {
+          "seconds": 1.0593706525991633,
+          "exactSeconds": "39544607231/37328396000"
+        },
+        "c": {
+          "seconds": 0.810780290566931,
+          "exactSeconds": "274011307/337960000"
+        },
+        "signedExcess": {
+          "seconds": 0.2485903620322324,
+          "exactSeconds": "6588430427763/26503161160000"
+        },
+        "positiveCaseExcess": {
+          "seconds": 0.2485903620322324,
+          "exactSeconds": "6588430427763/26503161160000"
+        },
+        "netFamilyExcess": {
+          "seconds": 0.2485903620322324,
+          "exactSeconds": "6588430427763/26503161160000"
+        },
+        "ratio": 1.3066063210027068
+      },
+      "cParitySavings": {
+        "seconds": 0.2485903620322324,
+        "exactSeconds": "6588430427763/26503161160000"
+      },
+      "noRegressionCParitySavings": {
+        "seconds": 0.2485903620322324,
+        "exactSeconds": "6588430427763/26503161160000"
+      },
+      "absoluteZeroCostSavings": {
+        "seconds": 1.0593706525991633,
+        "exactSeconds": "39544607231/37328396000"
+      },
+      "wholeRatioAtCParity": 1.6050467371295114,
+      "wholeRatioAtNoRegressionCParity": 1.6050467371295114,
+      "wholeRatioAtZeroCost": 1.5309447854658385,
+      "wholeRatioAtSelectedSourceSpeedup1_5": 1.5954928377607664,
+      "canReachThresholdAtCParity": false,
+      "canReachThresholdAtZeroCost": false,
+      "requiredGroupReductionFraction": 1.3196046393927632,
+      "requiredGroupSpeedup": null,
+      "requiredFractionOfPositiveExcess": 5.623510165792896,
+      "remainingSavingAfterCParity": {
+        "seconds": 1.1493600659741627,
+        "exactSeconds": "1093025230650002046421501781101537237284503576672952842562161109053744386601551737119543941999127085348371519305353490085964923730877/950985912081073483970202130764494295491770629182078985187499329884118796161789721082838221473027960758011571334432439032692152000000"
+      }
+    },
+    "bst": {
+      "families": [
+        "bst"
+      ],
+      "sourceGroups": [
+        "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f"
+      ],
+      "observed": {
+        "cases": [
+          "coverage-bst-32",
+          "coverage-bst-64"
+        ],
+        "caseCount": 2,
+        "candidate": {
+          "seconds": 1.1541275601144527,
+          "exactSeconds": "710308961/615451000"
+        },
+        "c": {
+          "seconds": 0.41445680133048174,
+          "exactSeconds": "6840733843/16505300000"
+        },
+        "signedExcess": {
+          "seconds": 0.7396707587839709,
+          "exactSeconds": "441983882916771/597541375900000"
+        },
+        "positiveCaseExcess": {
+          "seconds": 0.7396707587839709,
+          "exactSeconds": "441983882916771/597541375900000"
+        },
+        "netFamilyExcess": {
+          "seconds": 0.7396707587839709,
+          "exactSeconds": "441983882916771/597541375900000"
+        },
+        "ratio": 2.7846751613424927
+      },
+      "cParitySavings": {
+        "seconds": 0.7396707587839709,
+        "exactSeconds": "441983882916771/597541375900000"
+      },
+      "noRegressionCParitySavings": {
+        "seconds": 0.7396707587839709,
+        "exactSeconds": "441983882916771/597541375900000"
+      },
+      "absoluteZeroCostSavings": {
+        "seconds": 1.1541275601144527,
+        "exactSeconds": "710308961/615451000"
+      },
+      "wholeRatioAtCParity": 1.5601640281558766,
+      "wholeRatioAtNoRegressionCParity": 1.5601640281558766,
+      "wholeRatioAtZeroCost": 1.5222843976120746,
+      "wholeRatioAtSelectedSourceSpeedup1_5": 1.5926060418095118,
+      "canReachThresholdAtCParity": false,
+      "canReachThresholdAtZeroCost": false,
+      "requiredGroupReductionFraction": 1.2112616285393645,
+      "requiredGroupSpeedup": null,
+      "requiredFractionOfPositiveExcess": 1.889963083446269,
+      "remainingSavingAfterCParity": {
+        "seconds": 0.6582796692224243,
+        "exactSeconds": "193719929023615790956303886714292011239179952674793591209991341281583761751850202682851179687881163075954918710213323885008376657597/294282108472896341212556265253007474308601672754380324035454382031648837759316361773638554682273078042482767551298141438092152000000"
+      }
+    },
+    "expression": {
+      "families": [
+        "expression"
+      ],
+      "sourceGroups": [
+        "62f40333fa5e7dacd2fadbd622d22033a3434de004df93a6870e4cd33df9d4a5"
+      ],
+      "observed": {
+        "cases": [
+          "coverage-expression-32",
+          "coverage-expression-128"
+        ],
+        "caseCount": 2,
+        "candidate": {
+          "seconds": 0.03596659773938687,
+          "exactSeconds": "1558340129/43327426750"
+        },
+        "c": {
+          "seconds": 0.6534017857142858,
+          "exactSeconds": "73181/112000"
+        },
+        "signedExcess": {
+          "seconds": -0.6174351879748988,
+          "exactSeconds": "-479393651607/776427487360"
+        },
+        "positiveCaseExcess": {
+          "seconds": 0.0,
+          "exactSeconds": "0"
+        },
+        "netFamilyExcess": {
+          "seconds": 0.0,
+          "exactSeconds": "0"
+        },
+        "ratio": 0.05504514760404106
+      },
+      "cParitySavings": {
+        "seconds": -0.6174351879748988,
+        "exactSeconds": "-479393651607/776427487360"
+      },
+      "noRegressionCParitySavings": {
+        "seconds": 0.0,
+        "exactSeconds": "0"
+      },
+      "absoluteZeroCostSavings": {
+        "seconds": 0.03596659773938687,
+        "exactSeconds": "1558340129/43327426750"
+      },
+      "wholeRatioAtCParity": 1.6841978760912897,
+      "wholeRatioAtNoRegressionCParity": 1.6277668639082306,
+      "wholeRatioAtZeroCost": 1.6244796662318697,
+      "wholeRatioAtSelectedSourceSpeedup1_5": 1.6266711313494435,
+      "canReachThresholdAtCParity": false,
+      "canReachThresholdAtZeroCost": false,
+      "requiredGroupReductionFraction": 38.86801965912683,
+      "requiredGroupSpeedup": null,
+      "requiredFractionOfPositiveExcess": null,
+      "remainingSavingAfterCParity": {
+        "seconds": 2.015385615981294,
+        "exactSeconds": "123892120398806941519913225299112748325481850877916631923446300057068121040471611185116612217555654132013372807130344792907854033/61473158990709425415612608882632463237586030647012927389321332086100537192648593222138657214176308337835939181754237311608000000"
+      }
+    },
+    "lexer+text": {
+      "families": [
+        "lexer",
+        "unicode-text"
+      ],
+      "sourceGroups": [
+        "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+        "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550"
+      ],
+      "observed": {
+        "cases": [
+          "lexer",
+          "variation-lexer-6-17",
+          "variation-lexer-10-123",
+          "coverage-unicode-text-16",
+          "coverage-unicode-text-64"
+        ],
+        "caseCount": 5,
+        "candidate": {
+          "seconds": 2.307143640159315,
+          "exactSeconds": "149914040879/64978200000"
+        },
+        "c": {
+          "seconds": 0.8408392068164453,
+          "exactSeconds": "930628793287/1106785680000"
+        },
+        "signedExcess": {
+          "seconds": 1.4663044333428696,
+          "exactSeconds": "17934035683648039/12230772325200000"
+        },
+        "positiveCaseExcess": {
+          "seconds": 1.4663044333428696,
+          "exactSeconds": "17934035683648039/12230772325200000"
+        },
+        "netFamilyExcess": {
+          "seconds": 1.4663044333428696,
+          "exactSeconds": "17934035683648039/12230772325200000"
+        },
+        "ratio": 2.743858304246466
+      },
+      "cParitySavings": {
+        "seconds": 1.4663044333428696,
+        "exactSeconds": "17934035683648039/12230772325200000"
+      },
+      "noRegressionCParitySavings": {
+        "seconds": 1.4663044333428696,
+        "exactSeconds": "17934035683648039/12230772325200000"
+      },
+      "absoluteZeroCostSavings": {
+        "seconds": 2.307143640159315,
+        "exactSeconds": "149914040879/64978200000"
+      },
+      "wholeRatioAtCParity": 1.493752727763128,
+      "wholeRatioAtNoRegressionCParity": 1.493752727763128,
+      "wholeRatioAtZeroCost": 1.4169035159786814,
+      "wholeRatioAtSelectedSourceSpeedup1_5": 1.5574790812650474,
+      "canReachThresholdAtCParity": true,
+      "canReachThresholdAtZeroCost": true,
+      "requiredGroupReductionFraction": 0.6059225804899875,
+      "requiredGroupSpeedup": 2.537572442601199,
+      "requiredFractionOfPositiveExcess": 0.9533834831416,
+      "remainingSavingAfterCParity": {
+        "seconds": 0.0,
+        "exactSeconds": "0"
+      }
+    },
+    "lexer+text+tree-bitonic": {
+      "families": [
+        "lexer",
+        "unicode-text",
+        "tree-bitonic"
+      ],
+      "sourceGroups": [
+        "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+        "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+        "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550"
+      ],
+      "observed": {
+        "cases": [
+          "tree-bitonic",
+          "lexer",
+          "variation-lexer-6-17",
+          "variation-lexer-10-123",
+          "variation-tree-bitonic-6-17",
+          "variation-tree-bitonic-9-123",
+          "coverage-unicode-text-16",
+          "coverage-unicode-text-64"
+        ],
+        "caseCount": 8,
+        "candidate": {
+          "seconds": 3.3665142927584784,
+          "exactSeconds": "291628145766745153/86626142177400000"
+        },
+        "c": {
+          "seconds": 1.6516194973833762,
+          "exactSeconds": "129787205404403/78581783280000"
+        },
+        "signedExcess": {
+          "seconds": 1.7148947953751021,
+          "exactSeconds": "817485633110741253646313/476697250067711072400000"
+        },
+        "positiveCaseExcess": {
+          "seconds": 1.7148947953751021,
+          "exactSeconds": "817485633110741253646313/476697250067711072400000"
+        },
+        "netFamilyExcess": {
+          "seconds": 1.7148947953751021,
+          "exactSeconds": "817485633110741253646313/476697250067711072400000"
+        },
+        "ratio": 2.038311062621852
+      },
+      "cParitySavings": {
+        "seconds": 1.7148947953751021,
+        "exactSeconds": "817485633110741253646313/476697250067711072400000"
+      },
+      "noRegressionCParitySavings": {
+        "seconds": 1.7148947953751021,
+        "exactSeconds": "817485633110741253646313/476697250067711072400000"
+      },
+      "absoluteZeroCostSavings": {
+        "seconds": 3.3665142927584784,
+        "exactSeconds": "291628145766745153/86626142177400000"
+      },
+      "wholeRatioAtCParity": 1.4710326009844088,
+      "wholeRatioAtNoRegressionCParity": 1.4710326009844088,
+      "wholeRatioAtZeroCost": 1.3200814375362893,
+      "wholeRatioAtSelectedSourceSpeedup1_5": 1.5252050551175835,
+      "canReachThresholdAtCParity": true,
+      "canReachThresholdAtZeroCost": true,
+      "requiredGroupReductionFraction": 0.41525159450932636,
+      "requiredGroupSpeedup": 1.7101371985116929,
+      "requiredFractionOfPositiveExcess": 0.8151814512333504,
+      "remainingSavingAfterCParity": {
+        "seconds": 0.0,
+        "exactSeconds": "0"
+      }
+    },
+    "lexer+text+tree-bitonic+bst": {
+      "families": [
+        "lexer",
+        "unicode-text",
+        "tree-bitonic",
+        "bst"
+      ],
+      "sourceGroups": [
+        "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+        "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+        "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f",
+        "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550"
+      ],
+      "observed": {
+        "cases": [
+          "tree-bitonic",
+          "lexer",
+          "variation-lexer-6-17",
+          "variation-lexer-10-123",
+          "variation-tree-bitonic-6-17",
+          "variation-tree-bitonic-9-123",
+          "coverage-bst-32",
+          "coverage-bst-64",
+          "coverage-unicode-text-16",
+          "coverage-unicode-text-64"
+        ],
+        "caseCount": 10,
+        "candidate": {
+          "seconds": 4.520641852872931,
+          "exactSeconds": "14177303469750373108259/3136126225248412200000"
+        },
+        "c": {
+          "seconds": 2.066076298713858,
+          "exactSeconds": "160848368888840359/77852095292400000"
+        },
+        "signedExcess": {
+          "seconds": 2.454565554159073,
+          "exactSeconds": "58754116936819230508257929944309/23936666444807264064332816400000"
+        },
+        "positiveCaseExcess": {
+          "seconds": 2.454565554159073,
+          "exactSeconds": "58754116936819230508257929944309/23936666444807264064332816400000"
+        },
+        "netFamilyExcess": {
+          "seconds": 2.454565554159073,
+          "exactSeconds": "58754116936819230508257929944309/23936666444807264064332816400000"
+        },
+        "ratio": 2.188032385680554
+      },
+      "cParitySavings": {
+        "seconds": 2.454565554159073,
+        "exactSeconds": "58754116936819230508257929944309/23936666444807264064332816400000"
+      },
+      "noRegressionCParitySavings": {
+        "seconds": 2.454565554159073,
+        "exactSeconds": "58754116936819230508257929944309/23936666444807264064332816400000"
+      },
+      "absoluteZeroCostSavings": {
+        "seconds": 4.520641852872931,
+        "exactSeconds": "14177303469750373108259/3136126225248412200000"
+      },
+      "wholeRatioAtCParity": 1.4034297652320549,
+      "wholeRatioAtNoRegressionCParity": 1.4034297652320549,
+      "wholeRatioAtZeroCost": 1.2145989712401333,
+      "wholeRatioAtSelectedSourceSpeedup1_5": 1.4900442330188648,
+      "canReachThresholdAtCParity": true,
+      "canReachThresholdAtZeroCost": true,
+      "requiredGroupReductionFraction": 0.3092371555862091,
+      "requiredGroupSpeedup": 1.4476748540935784,
+      "requiredFractionOfPositiveExcess": 0.5695306958242266,
+      "remainingSavingAfterCParity": {
+        "seconds": 0.0,
+        "exactSeconds": "0"
+      }
+    },
+    "lexer+text+tree-bitonic+bst+expression": {
+      "families": [
+        "lexer",
+        "unicode-text",
+        "tree-bitonic",
+        "bst",
+        "expression"
+      ],
+      "sourceGroups": [
+        "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+        "62f40333fa5e7dacd2fadbd622d22033a3434de004df93a6870e4cd33df9d4a5",
+        "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+        "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f",
+        "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550"
+      ],
+      "observed": {
+        "cases": [
+          "tree-bitonic",
+          "lexer",
+          "variation-lexer-6-17",
+          "variation-lexer-10-123",
+          "variation-tree-bitonic-6-17",
+          "variation-tree-bitonic-9-123",
+          "coverage-bst-32",
+          "coverage-bst-64",
+          "coverage-unicode-text-16",
+          "coverage-unicode-text-64",
+          "coverage-expression-32",
+          "coverage-expression-128"
+        ],
+        "caseCount": 12,
+        "candidate": {
+          "seconds": 4.556608450612318,
+          "exactSeconds": "2476612915778176101432219265313/543521117212818320597225400000"
+        },
+        "c": {
+          "seconds": 2.7194780844281436,
+          "exactSeconds": "370504867205363197/136241166761700000"
+        },
+        "signedExcess": {
+          "seconds": 1.8371303661841742,
+          "exactSeconds": "3810627840517329706577649917108933665919/2074228324053139303230574780384397400000"
+        },
+        "positiveCaseExcess": {
+          "seconds": 2.454565554159073,
+          "exactSeconds": "58754116936819230508257929944309/23936666444807264064332816400000"
+        },
+        "netFamilyExcess": {
+          "seconds": 1.8371303661841742,
+          "exactSeconds": "3810627840517329706577649917108933665919/2074228324053139303230574780384397400000"
+        },
+        "ratio": 1.6755451999056976
+      },
+      "cParitySavings": {
+        "seconds": 1.8371303661841742,
+        "exactSeconds": "3810627840517329706577649917108933665919/2074228324053139303230574780384397400000"
+      },
+      "noRegressionCParitySavings": {
+        "seconds": 2.454565554159073,
+        "exactSeconds": "58754116936819230508257929944309/23936666444807264064332816400000"
+      },
+      "absoluteZeroCostSavings": {
+        "seconds": 4.556608450612318,
+        "exactSeconds": "2476612915778176101432219265313/543521117212818320597225400000"
+      },
+      "wholeRatioAtCParity": 1.459860777415114,
+      "wholeRatioAtNoRegressionCParity": 1.4034297652320549,
+      "wholeRatioAtZeroCost": 1.2113117735637724,
+      "wholeRatioAtSelectedSourceSpeedup1_5": 1.4889485004600778,
+      "canReachThresholdAtCParity": true,
+      "canReachThresholdAtZeroCost": true,
+      "requiredGroupReductionFraction": 0.30679625935788674,
+      "requiredGroupSpeedup": 1.4425773280936165,
+      "requiredFractionOfPositiveExcess": 0.5695306958242266,
+      "remainingSavingAfterCParity": {
+        "seconds": 0.0,
+        "exactSeconds": "0"
+      }
+    }
+  },
+  "cases": [
+    {
+      "id": "mandelbrot",
+      "family": "mandelbrot",
+      "sourceGroup": "cb2b9c30aceeb0f8ed0da1f999658aa8d7fb346851877da6902d1ded4cfc0656",
+      "catalogRepetitions": 9036,
+      "candidate": {
+        "seconds": 0.5039578783151326,
+        "exactSeconds": "323037/641000"
+      },
+      "c": {
+        "seconds": 0.2420357142857143,
+        "exactSeconds": "6777/28000"
+      },
+      "signedExcess": {
+        "seconds": 0.2619221640294183,
+        "exactSeconds": "4700979/17948000"
+      },
+      "positiveExcess": {
+        "seconds": 0.2619221640294183,
+        "exactSeconds": "4700979/17948000"
+      },
+      "dispersionFlagged": true
+    },
+    {
+      "id": "editdist",
+      "family": "editdist",
+      "sourceGroup": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f",
+      "catalogRepetitions": 240,
+      "candidate": {
+        "seconds": 0.30857142857142855,
+        "exactSeconds": "54/175"
+      },
+      "c": {
+        "seconds": 0.20115606936416186,
+        "exactSeconds": "174/865"
+      },
+      "signedExcess": {
+        "seconds": 0.10741535920726672,
+        "exactSeconds": "3252/30275"
+      },
+      "positiveExcess": {
+        "seconds": 0.10741535920726672,
+        "exactSeconds": "3252/30275"
+      },
+      "dispersionFlagged": false
+    },
+    {
+      "id": "tree-bitonic",
+      "family": "tree-bitonic",
+      "sourceGroup": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+      "catalogRepetitions": 1636,
+      "candidate": {
+        "seconds": 0.3425918057663126,
+        "exactSeconds": "28221/82375"
+      },
+      "c": {
+        "seconds": 0.27315357142857144,
+        "exactSeconds": "76483/280000"
+      },
+      "signedExcess": {
+        "seconds": 0.06943823433774117,
+        "exactSeconds": "12812743/184520000"
+      },
+      "positiveExcess": {
+        "seconds": 0.06943823433774117,
+        "exactSeconds": "12812743/184520000"
+      },
+      "dispersionFlagged": true
+    },
+    {
+      "id": "lexer",
+      "family": "lexer",
+      "sourceGroup": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+      "catalogRepetitions": 512,
+      "candidate": {
+        "seconds": 0.5085866666666666,
+        "exactSeconds": "4768/9375"
+      },
+      "c": {
+        "seconds": 0.1971336898395722,
+        "exactSeconds": "4608/23375"
+      },
+      "signedExcess": {
+        "seconds": 0.3114529768270945,
+        "exactSeconds": "546016/1753125"
+      },
+      "positiveExcess": {
+        "seconds": 0.3114529768270945,
+        "exactSeconds": "546016/1753125"
+      },
+      "dispersionFlagged": false
+    },
+    {
+      "id": "symreg",
+      "family": "symreg",
+      "sourceGroup": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b",
+      "catalogRepetitions": 144,
+      "candidate": {
+        "seconds": 0.3550344827586207,
+        "exactSeconds": "1287/3625"
+      },
+      "c": {
+        "seconds": 0.33285245901639343,
+        "exactSeconds": "2538/7625"
+      },
+      "signedExcess": {
+        "seconds": 0.022182023742227247,
+        "exactSeconds": "981/44225"
+      },
+      "positiveExcess": {
+        "seconds": 0.022182023742227247,
+        "exactSeconds": "981/44225"
+      },
+      "dispersionFlagged": true
+    },
+    {
+      "id": "test-morning-program",
+      "family": "test-morning-program",
+      "sourceGroup": "9033897714291ea49c25046426457ff2753276466092ba71a4e40c1e2b48a04a",
+      "catalogRepetitions": 55676,
+      "candidate": {
+        "seconds": 0.4846794642857143,
+        "exactSeconds": "542841/1120000"
+      },
+      "c": {
+        "seconds": 0.15793804081632654,
+        "exactSeconds": "1934741/12250000"
+      },
+      "signedExcess": {
+        "seconds": 0.3267414234693878,
+        "exactSeconds": "64041319/196000000"
+      },
+      "positiveExcess": {
+        "seconds": 0.3267414234693878,
+        "exactSeconds": "64041319/196000000"
+      },
+      "dispersionFlagged": false
+    },
+    {
+      "id": "test-evening-program",
+      "family": "test-evening-program",
+      "sourceGroup": "b254a68ad0208b8a5f388d72095633cd8fc119adf40d45f5621e93f37e7b4f71",
+      "catalogRepetitions": 259540,
+      "candidate": {
+        "seconds": 0.9269285714285714,
+        "exactSeconds": "12977/14000"
+      },
+      "c": {
+        "seconds": 0.26458811277026434,
+        "exactSeconds": "1803803/6817400"
+      },
+      "signedExcess": {
+        "seconds": 0.6623404586583072,
+        "exactSeconds": "316080789/477218000"
+      },
+      "positiveExcess": {
+        "seconds": 0.6623404586583072,
+        "exactSeconds": "316080789/477218000"
+      },
+      "dispersionFlagged": false
+    },
+    {
+      "id": "test-rle-roundtrip",
+      "family": "test-rle-roundtrip",
+      "sourceGroup": "ce4083dab9a8022b2c8867a30802113735917229341cecb8ce18ff9ac2e33989",
+      "catalogRepetitions": 970904,
+      "candidate": {
+        "seconds": 0.9752383928571429,
+        "exactSeconds": "1092267/1120000"
+      },
+      "c": {
+        "seconds": 0.42043606692257013,
+        "exactSeconds": "3398164/8082475"
+      },
+      "signedExcess": {
+        "seconds": 0.5548023259345727,
+        "exactSeconds": "200891081633/362094880000"
+      },
+      "positiveExcess": {
+        "seconds": 0.5548023259345727,
+        "exactSeconds": "200891081633/362094880000"
+      },
+      "dispersionFlagged": true
+    },
+    {
+      "id": "test-map-set-ops",
+      "family": "test-map-set-ops",
+      "sourceGroup": "60966d2aa182c2aabf20eb63270f57c7d8c5f2dc56872e7fed54dab34940c8c6",
+      "catalogRepetitions": 22056,
+      "candidate": {
+        "seconds": 0.6016461751334256,
+        "exactSeconds": "380466/632375"
+      },
+      "c": {
+        "seconds": 0.2345504381037969,
+        "exactSeconds": "130498/556375"
+      },
+      "signedExcess": {
+        "seconds": 0.36709573702962867,
+        "exactSeconds": "1033264784/2814701125"
+      },
+      "positiveExcess": {
+        "seconds": 0.36709573702962867,
+        "exactSeconds": "1033264784/2814701125"
+      },
+      "dispersionFlagged": false
+    },
+    {
+      "id": "raytrace",
+      "family": "raytrace",
+      "sourceGroup": "4674b2580aceb5f5fe6771ce16c987b97f791b52a9e1305794c435beeebf5837",
+      "catalogRepetitions": 12,
+      "candidate": {
+        "seconds": 0.564,
+        "exactSeconds": "141/250"
+      },
+      "c": {
+        "seconds": 0.3408,
+        "exactSeconds": "213/625"
+      },
+      "signedExcess": {
+        "seconds": 0.2232,
+        "exactSeconds": "279/1250"
+      },
+      "positiveExcess": {
+        "seconds": 0.2232,
+        "exactSeconds": "279/1250"
+      },
+      "dispersionFlagged": false
+    },
+    {
+      "id": "local-pair",
+      "family": "local-pair",
+      "sourceGroup": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+      "catalogRepetitions": 956,
+      "candidate": {
+        "seconds": 0.3030178571428571,
+        "exactSeconds": "16969/56000"
+      },
+      "c": {
+        "seconds": 0.20092637215528783,
+        "exactSeconds": "37523/186750"
+      },
+      "signedExcess": {
+        "seconds": 0.10209148498756933,
+        "exactSeconds": "4270691/41832000"
+      },
+      "positiveExcess": {
+        "seconds": 0.10209148498756933,
+        "exactSeconds": "4270691/41832000"
+      },
+      "dispersionFlagged": false
+    },
+    {
+      "id": "local-fold",
+      "family": "local-fold",
+      "sourceGroup": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+      "catalogRepetitions": 60684,
+      "candidate": {
+        "seconds": 0.09048417857142857,
+        "exactSeconds": "2533557/28000000"
+      },
+      "c": {
+        "seconds": 0.1680139022522434,
+        "exactSeconds": "2139111/12731750"
+      },
+      "signedExcess": {
+        "seconds": -0.07752972368081483,
+        "exactSeconds": "-110553974661/1425956000000"
+      },
+      "positiveExcess": {
+        "seconds": 0.0,
+        "exactSeconds": "0"
+      },
+      "dispersionFlagged": false
+    },
+    {
+      "id": "scalar-region-8192",
+      "family": "scalar-region-8192",
+      "sourceGroup": "5c1b7031be03394ea7bfc64358b6db167711765e187e32d06f65a9f06bba3c7d",
+      "catalogRepetitions": 5576,
+      "candidate": {
+        "seconds": 0.00010156285066563452,
+        "exactSeconds": "19516/192156875"
+      },
+      "c": {
+        "seconds": 0.21099973537973007,
+        "exactSeconds": "99671/472375"
+      },
+      "signedExcess": {
+        "seconds": -0.21089817252906445,
+        "exactSeconds": "-153145992141/726160830625"
+      },
+      "positiveExcess": {
+        "seconds": 0.0,
+        "exactSeconds": "0"
+      },
+      "dispersionFlagged": false
+    },
+    {
+      "id": "complete-generic-row32",
+      "family": "complete-generic-row32",
+      "sourceGroup": "3987479425f7bf0d5c9e7655bb22bae29ed0d44635fdbf50eff2bb3cd869dfb4",
+      "catalogRepetitions": 1460,
+      "candidate": {
+        "seconds": 0.37542857142857144,
+        "exactSeconds": "657/1750"
+      },
+      "c": {
+        "seconds": 0.11643144004589788,
+        "exactSeconds": "10147/87150"
+      },
+      "signedExcess": {
+        "seconds": 0.25899713138267355,
+        "exactSeconds": "56429/217875"
+      },
+      "positiveExcess": {
+        "seconds": 0.25899713138267355,
+        "exactSeconds": "56429/217875"
+      },
+      "dispersionFlagged": false
+    },
+    {
+      "id": "variation-editdist-0-17",
+      "family": "editdist",
+      "sourceGroup": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f",
+      "catalogRepetitions": 956,
+      "candidate": {
+        "seconds": 0.30941964285714285,
+        "exactSeconds": "6931/22400"
+      },
+      "c": {
+        "seconds": 0.20220615796519412,
+        "exactSeconds": "18881/93375"
+      },
+      "signedExcess": {
+        "seconds": 0.10721348489194875,
+        "exactSeconds": "8969909/83664000"
+      },
+      "positiveExcess": {
+        "seconds": 0.10721348489194875,
+        "exactSeconds": "8969909/83664000"
+      },
+      "dispersionFlagged": false
+    },
+    {
+      "id": "variation-editdist-3-123",
+      "family": "editdist",
+      "sourceGroup": "f9cc44d93829d8ea48148c26b8ed7e2c1785611ad0c19a3770f86227a3142e6f",
+      "catalogRepetitions": 120,
+      "candidate": {
+        "seconds": 0.30763636363636365,
+        "exactSeconds": "423/1375"
+      },
+      "c": {
+        "seconds": 0.20142857142857143,
+        "exactSeconds": "141/700"
+      },
+      "signedExcess": {
+        "seconds": 0.10620779220779221,
+        "exactSeconds": "4089/38500"
+      },
+      "positiveExcess": {
+        "seconds": 0.10620779220779221,
+        "exactSeconds": "4089/38500"
+      },
+      "dispersionFlagged": false
+    },
+    {
+      "id": "variation-lexer-6-17",
+      "family": "lexer",
+      "sourceGroup": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+      "catalogRepetitions": 2212,
+      "candidate": {
+        "seconds": 0.7334729493891797,
+        "exactSeconds": "10507/14325"
+      },
+      "c": {
+        "seconds": 0.2320625,
+        "exactSeconds": "3713/16000"
+      },
+      "signedExcess": {
+        "seconds": 0.5014104493891798,
+        "exactSeconds": "4596931/9168000"
+      },
+      "positiveExcess": {
+        "seconds": 0.5014104493891798,
+        "exactSeconds": "4596931/9168000"
+      },
+      "dispersionFlagged": true
+    },
+    {
+      "id": "variation-lexer-10-123",
+      "family": "lexer",
+      "sourceGroup": "6014af6bf7e97c8feaafa918e79f28a22d2c9c92bea836203fcd89b6d70a4fbb",
+      "catalogRepetitions": 128,
+      "candidate": {
+        "seconds": 0.6765714285714286,
+        "exactSeconds": "592/875"
+      },
+      "c": {
+        "seconds": 0.25435897435897437,
+        "exactSeconds": "248/975"
+      },
+      "signedExcess": {
+        "seconds": 0.42221245421245424,
+        "exactSeconds": "14408/34125"
+      },
+      "positiveExcess": {
+        "seconds": 0.42221245421245424,
+        "exactSeconds": "14408/34125"
+      },
+      "dispersionFlagged": false
+    },
+    {
+      "id": "variation-tree-bitonic-6-17",
+      "family": "tree-bitonic",
+      "sourceGroup": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+      "catalogRepetitions": 11108,
+      "candidate": {
+        "seconds": 0.4108826530612245,
+        "exactSeconds": "80533/196000"
+      },
+      "c": {
+        "seconds": 0.2757443661971831,
+        "exactSeconds": "391557/1420000"
+      },
+      "signedExcess": {
+        "seconds": 0.1351382868640414,
+        "exactSeconds": "4701461/34790000"
+      },
+      "positiveExcess": {
+        "seconds": 0.1351382868640414,
+        "exactSeconds": "4701461/34790000"
+      },
+      "dispersionFlagged": false
+    },
+    {
+      "id": "variation-tree-bitonic-9-123",
+      "family": "tree-bitonic",
+      "sourceGroup": "ace0242c329b1628cb9d0a0142386380e0ca4e56fa741916974938eb079b2c0d",
+      "catalogRepetitions": 636,
+      "candidate": {
+        "seconds": 0.3058961937716263,
+        "exactSeconds": "22101/72250"
+      },
+      "c": {
+        "seconds": 0.26188235294117646,
+        "exactSeconds": "1113/4250"
+      },
+      "signedExcess": {
+        "seconds": 0.044013840830449825,
+        "exactSeconds": "318/7225"
+      },
+      "positiveExcess": {
+        "seconds": 0.044013840830449825,
+        "exactSeconds": "318/7225"
+      },
+      "dispersionFlagged": false
+    },
+    {
+      "id": "variation-symreg-4-17",
+      "family": "symreg",
+      "sourceGroup": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b",
+      "catalogRepetitions": 288,
+      "candidate": {
+        "seconds": 0.35877966101694914,
+        "exactSeconds": "2646/7375"
+      },
+      "c": {
+        "seconds": 0.336384,
+        "exactSeconds": "5256/15625"
+      },
+      "signedExcess": {
+        "seconds": 0.02239566101694915,
+        "exactSeconds": "20646/921875"
+      },
+      "positiveExcess": {
+        "seconds": 0.02239566101694915,
+        "exactSeconds": "20646/921875"
+      },
+      "dispersionFlagged": false
+    },
+    {
+      "id": "variation-symreg-7-123",
+      "family": "symreg",
+      "sourceGroup": "c25c8fb869eaf5ac90cbf45feb30c0e8169207ed0b74cd655343048fcc82778b",
+      "catalogRepetitions": 88,
+      "candidate": {
+        "seconds": 0.3570285714285714,
+        "exactSeconds": "1562/4375"
+      },
+      "c": {
+        "seconds": 0.33772972972972976,
+        "exactSeconds": "1562/4625"
+      },
+      "signedExcess": {
+        "seconds": 0.0192988416988417,
+        "exactSeconds": "3124/161875"
+      },
+      "positiveExcess": {
+        "seconds": 0.0192988416988417,
+        "exactSeconds": "3124/161875"
+      },
+      "dispersionFlagged": true
+    },
+    {
+      "id": "variation-local-fold-128-0",
+      "family": "local-fold",
+      "sourceGroup": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+      "catalogRepetitions": 1895020,
+      "candidate": {
+        "seconds": 0.5300738003779464,
+        "exactSeconds": "4074293/7686275"
+      },
+      "c": {
+        "seconds": 0.36885210714285716,
+        "exactSeconds": "10327859/28000000"
+      },
+      "signedExcess": {
+        "seconds": 0.16122169323508925,
+        "exactSeconds": "1387897582591/8608628000000"
+      },
+      "positiveExcess": {
+        "seconds": 0.16122169323508925,
+        "exactSeconds": "1387897582591/8608628000000"
+      },
+      "dispersionFlagged": true
+    },
+    {
+      "id": "variation-local-fold-8192-123",
+      "family": "local-fold",
+      "sourceGroup": "d13b49747fbe6308aa35451ca6f1e1059f0a01bac8fce671dc7a195424b5cc3a",
+      "catalogRepetitions": 30516,
+      "candidate": {
+        "seconds": 0.17287781750974326,
+        "exactSeconds": "1075689/6222250"
+      },
+      "c": {
+        "seconds": 0.3178050605060506,
+        "exactSeconds": "180553/568125"
+      },
+      "signedExcess": {
+        "seconds": -0.14492724299630735,
+        "exactSeconds": "-4098560729/28280126250"
+      },
+      "positiveExcess": {
+        "seconds": 0.0,
+        "exactSeconds": "0"
+      },
+      "dispersionFlagged": false
+    },
+    {
+      "id": "variation-mandelbrot-grid-4-7",
+      "family": "mandelbrot",
+      "sourceGroup": "f908b2daf26ab7c61e2876a91a101009b6e80ad61fbd906a34a2eb03deb80377",
+      "catalogRepetitions": 24488,
+      "candidate": {
+        "seconds": 0.5620326491029578,
+        "exactSeconds": "434662/773375"
+      },
+      "c": {
+        "seconds": 0.2731832738863171,
+        "exactSeconds": "449967/1647125"
+      },
+      "signedExcess": {
+        "seconds": 0.2888493752166407,
+        "exactSeconds": "588719069/2038152475"
+      },
+      "positiveExcess": {
+        "seconds": 0.2888493752166407,
+        "exactSeconds": "588719069/2038152475"
+      },
+      "dispersionFlagged": false
+    },
+    {
+      "id": "variation-mandelbrot-grid-5-31",
+      "family": "mandelbrot",
+      "sourceGroup": "f908b2daf26ab7c61e2876a91a101009b6e80ad61fbd906a34a2eb03deb80377",
+      "catalogRepetitions": 1416,
+      "candidate": {
+        "seconds": 0.1664967032967033,
+        "exactSeconds": "18939/113750"
+      },
+      "c": {
+        "seconds": 0.2410592686002522,
+        "exactSeconds": "4779/19825"
+      },
+      "signedExcess": {
+        "seconds": -0.0745625653035489,
+        "exactSeconds": "-517371/6938750"
+      },
+      "positiveExcess": {
+        "seconds": 0.0,
+        "exactSeconds": "0"
+      },
+      "dispersionFlagged": true
+    },
+    {
+      "id": "variation-ray-active-64-2440",
+      "family": "raytrace",
+      "sourceGroup": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955",
+      "catalogRepetitions": 6324,
+      "candidate": {
+        "seconds": 1.0558821428571428,
+        "exactSeconds": "295647/280000"
+      },
+      "c": {
+        "seconds": 0.6884603421461898,
+        "exactSeconds": "11067/16075"
+      },
+      "signedExcess": {
+        "seconds": 0.3674218007109531,
+        "exactSeconds": "66150621/180040000"
+      },
+      "positiveExcess": {
+        "seconds": 0.3674218007109531,
+        "exactSeconds": "66150621/180040000"
+      },
+      "dispersionFlagged": true
+    },
+    {
+      "id": "variation-ray-active-256-2240",
+      "family": "raytrace",
+      "sourceGroup": "5ba03ffff01fc0825ecf7ec0d9fb5f5030fcc07c3d83582ad790394cbcf55955",
+      "catalogRepetitions": 1516,
+      "candidate": {
+        "seconds": 1.471192118226601,
+        "exactSeconds": "74663/50750"
+      },
+      "c": {
+        "seconds": 0.8717,
+        "exactSeconds": "8717/10000"
+      },
+      "signedExcess": {
+        "seconds": 0.599492118226601,
+        "exactSeconds": "1216969/2030000"
+      },
+      "positiveExcess": {
+        "seconds": 0.599492118226601,
+        "exactSeconds": "1216969/2030000"
+      },
+      "dispersionFlagged": true
+    },
+    {
+      "id": "coverage-closures-64",
+      "family": "closures",
+      "sourceGroup": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+      "catalogRepetitions": 76440,
+      "candidate": {
+        "seconds": 0.00614444937301537,
+        "exactSeconds": "87269/14202900"
+      },
+      "c": {
+        "seconds": 0.0736593591905565,
+        "exactSeconds": "1092/14825"
+      },
+      "signedExcess": {
+        "seconds": -0.06751490981754112,
+        "exactSeconds": "-113726431/1684463940"
+      },
+      "positiveExcess": {
+        "seconds": 0.0,
+        "exactSeconds": "0"
+      },
+      "dispersionFlagged": true
+    },
+    {
+      "id": "coverage-closures-256",
+      "family": "closures",
+      "sourceGroup": "bc5fb44cba7971ae593dd642554dc468a9cbc51ce54567467a4d8bf84bb70943",
+      "catalogRepetitions": 19600,
+      "candidate": {
+        "seconds": 0.0055254318618042225,
+        "exactSeconds": "2303/416800"
+      },
+      "c": {
+        "seconds": 0.07257943392806276,
+        "exactSeconds": "14014/193085"
+      },
+      "signedExcess": {
+        "seconds": -0.06705400206625854,
+        "exactSeconds": "-1079272089/16095565600"
+      },
+      "positiveExcess": {
+        "seconds": 0.0,
+        "exactSeconds": "0"
+      },
+      "dispersionFlagged": true
+    },
+    {
+      "id": "coverage-list-pipeline-128",
+      "family": "list-pipeline",
+      "sourceGroup": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0",
+      "catalogRepetitions": 99496,
+      "candidate": {
+        "seconds": 0.03802477354164069,
+        "exactSeconds": "1753617/46117750"
+      },
+      "c": {
+        "seconds": 0.1451829387755102,
+        "exactSeconds": "1778491/12250000"
+      },
+      "signedExcess": {
+        "seconds": -0.1071581652338695,
+        "exactSeconds": "-34593254323/322824250000"
+      },
+      "positiveExcess": {
+        "seconds": 0.0,
+        "exactSeconds": "0"
+      },
+      "dispersionFlagged": true
+    },
+    {
+      "id": "coverage-list-pipeline-512",
+      "family": "list-pipeline",
+      "sourceGroup": "b4819808f26a6d5fe8ef0295c69b447121320c3e748a7fbc937bf8a88e3d48d0",
+      "catalogRepetitions": 25008,
+      "candidate": {
+        "seconds": 0.037288714285714286,
+        "exactSeconds": "261021/7000000"
+      },
+      "c": {
+        "seconds": 0.14178593123557284,
+        "exactSeconds": "29176/205775"
+      },
+      "signedExcess": {
+        "seconds": -0.10449721694985854,
+        "exactSeconds": "-6020816149/57617000000"
+      },
+      "positiveExcess": {
+        "seconds": 0.0,
+        "exactSeconds": "0"
+      },
+      "dispersionFlagged": false
+    },
+    {
+      "id": "coverage-bst-32",
+      "family": "bst",
+      "sourceGroup": "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f",
+      "catalogRepetitions": 35620,
+      "candidate": {
+        "seconds": 0.6958607021517553,
+        "exactSeconds": "122889/176600"
+      },
+      "c": {
+        "seconds": 0.21300394418762458,
+        "exactSeconds": "251121/1178950"
+      },
+      "signedExcess": {
+        "seconds": 0.4828567579641308,
+        "exactSeconds": "2010640359/4164051400"
+      },
+      "positiveExcess": {
+        "seconds": 0.4828567579641308,
+        "exactSeconds": "2010640359/4164051400"
+      },
+      "dispersionFlagged": false
+    },
+    {
+      "id": "coverage-bst-64",
+      "family": "bst",
+      "sourceGroup": "db75d09ea4ee8cf8e46aad8955c3f8042df221e879657a20f6ab02e8ca8eca3f",
+      "catalogRepetitions": 27184,
+      "candidate": {
+        "seconds": 0.4582668579626973,
+        "exactSeconds": "79853/174250"
+      },
+      "c": {
+        "seconds": 0.20145285714285716,
+        "exactSeconds": "141017/700000"
+      },
+      "signedExcess": {
+        "seconds": 0.2568140008198401,
+        "exactSeconds": "125299551/487900000"
+      },
+      "positiveExcess": {
+        "seconds": 0.2568140008198401,
+        "exactSeconds": "125299551/487900000"
+      },
+      "dispersionFlagged": true
+    },
+    {
+      "id": "coverage-unicode-text-16",
+      "family": "unicode-text",
+      "sourceGroup": "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550",
+      "catalogRepetitions": 8272,
+      "candidate": {
+        "seconds": 0.19063045267489712,
+        "exactSeconds": "28952/151875"
+      },
+      "c": {
+        "seconds": 0.07570357142857143,
+        "exactSeconds": "21197/280000"
+      },
+      "signedExcess": {
+        "seconds": 0.11492688124632569,
+        "exactSeconds": "62557/544320"
+      },
+      "positiveExcess": {
+        "seconds": 0.11492688124632569,
+        "exactSeconds": "62557/544320"
+      },
+      "dispersionFlagged": false
+    },
+    {
+      "id": "coverage-unicode-text-64",
+      "family": "unicode-text",
+      "sourceGroup": "e0dd8066deac347ee4d88afa5ef5db0e338c5f09b3e2cc6a7bf5ec553f52d550",
+      "catalogRepetitions": 2024,
+      "candidate": {
+        "seconds": 0.19788214285714287,
+        "exactSeconds": "55407/280000"
+      },
+      "c": {
+        "seconds": 0.08158047118932728,
+        "exactSeconds": "35926/440375"
+      },
+      "signedExcess": {
+        "seconds": 0.11630167166781558,
+        "exactSeconds": "114724621/986440000"
+      },
+      "positiveExcess": {
+        "seconds": 0.11630167166781558,
+        "exactSeconds": "114724621/986440000"
+      },
+      "dispersionFlagged": false
+    },
+    {
+      "id": "coverage-expression-32",
+      "family": "expression",
+      "sourceGroup": "62f40333fa5e7dacd2fadbd622d22033a3434de004df93a6870e4cd33df9d4a5",
+      "catalogRepetitions": 148540,
+      "candidate": {
+        "seconds": 0.017904367006979015,
+        "exactSeconds": "7427/414815"
+      },
+      "c": {
+        "seconds": 0.32493125,
+        "exactSeconds": "51989/160000"
+      },
+      "signedExcess": {
+        "seconds": -0.307026882993021,
+        "exactSeconds": "-4075499407/13274080000"
+      },
+      "positiveExcess": {
+        "seconds": 0.0,
+        "exactSeconds": "0"
+      },
+      "dispersionFlagged": false
+    },
+    {
+      "id": "coverage-expression-128",
+      "family": "expression",
+      "sourceGroup": "62f40333fa5e7dacd2fadbd622d22033a3434de004df93a6870e4cd33df9d4a5",
+      "catalogRepetitions": 37732,
+      "candidate": {
+        "seconds": 0.01806223073240785,
+        "exactSeconds": "9433/522250"
+      },
+      "c": {
+        "seconds": 0.3284705357142857,
+        "exactSeconds": "367887/1120000"
+      },
+      "signedExcess": {
+        "seconds": -0.3104083049818779,
+        "exactSeconds": "-726256103/2339680000"
+      },
+      "positiveExcess": {
+        "seconds": 0.0,
+        "exactSeconds": "0"
+      },
+      "dispersionFlagged": false
+    },
+    {
+      "id": "coverage-map-churn-32",
+      "family": "map-churn",
+      "sourceGroup": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e",
+      "catalogRepetitions": 2820,
+      "candidate": {
+        "seconds": 0.48258126195028683,
+        "exactSeconds": "25239/52300"
+      },
+      "c": {
+        "seconds": 0.17873891625615765,
+        "exactSeconds": "9071/50750"
+      },
+      "signedExcess": {
+        "seconds": 0.30384234569412916,
+        "exactSeconds": "16129319/53084500"
+      },
+      "positiveExcess": {
+        "seconds": 0.30384234569412916,
+        "exactSeconds": "16129319/53084500"
+      },
+      "dispersionFlagged": true
+    },
+    {
+      "id": "coverage-map-churn-128",
+      "family": "map-churn",
+      "sourceGroup": "180fc1c2c96620613fb44e9f051a208121b65c499349dc08a10de08725c7f30e",
+      "catalogRepetitions": 544,
+      "candidate": {
+        "seconds": 0.4873988439306358,
+        "exactSeconds": "2108/4325"
+      },
+      "c": {
+        "seconds": 0.1636514522821577,
+        "exactSeconds": "986/6025"
+      },
+      "signedExcess": {
+        "seconds": 0.32374739164847816,
+        "exactSeconds": "13498/41693"
+      },
+      "positiveExcess": {
+        "seconds": 0.32374739164847816,
+        "exactSeconds": "13498/41693"
+      },
+      "dispersionFlagged": false
+    },
+    {
+      "id": "coverage-numeric-recurrence-256",
+      "family": "numeric-recurrence",
+      "sourceGroup": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+      "catalogRepetitions": 247876,
+      "candidate": {
+        "seconds": 0.31503689086591524,
+        "exactSeconds": "1177411/3737375"
+      },
+      "c": {
+        "seconds": 0.20487618741497965,
+        "exactSeconds": "4461768/21777875"
+      },
+      "signedExcess": {
+        "seconds": 0.1101607034509356,
+        "exactSeconds": "71729675221/651136684625"
+      },
+      "positiveExcess": {
+        "seconds": 0.1101607034509356,
+        "exactSeconds": "71729675221/651136684625"
+      },
+      "dispersionFlagged": true
+    },
+    {
+      "id": "coverage-numeric-recurrence-1024",
+      "family": "numeric-recurrence",
+      "sourceGroup": "36f803ed8d88bf20c5878092a572d4ae2ef48d71fd6710024f05a57349f4b0f3",
+      "catalogRepetitions": 61936,
+      "candidate": {
+        "seconds": 0.2932774132449435,
+        "exactSeconds": "108388/369575"
+      },
+      "c": {
+        "seconds": 0.2016760426770126,
+        "exactSeconds": "25991/128875"
+      },
+      "signedExcess": {
+        "seconds": 0.09160137056793091,
+        "exactSeconds": "174515187/1905159125"
+      },
+      "positiveExcess": {
+        "seconds": 0.09160137056793091,
+        "exactSeconds": "174515187/1905159125"
+      },
+      "dispersionFlagged": false
+    },
+    {
+      "id": "coverage-record-aggregation-64",
+      "family": "record-aggregation",
+      "sourceGroup": "6b31a2cfc58fbb33376fee6bf55d2a6aa05210be40a36342a82da87364080937",
+      "catalogRepetitions": 1540,
+      "candidate": {
+        "seconds": 0.4057142857142857,
+        "exactSeconds": "71/175"
+      },
+      "c": {
+        "seconds": 0.15367303609341826,
+        "exactSeconds": "3619/23550"
+      },
+      "signedExcess": {
+        "seconds": 0.25204124962086744,
+        "exactSeconds": "41549/164850"
+      },
+      "positiveExcess": {
+        "seconds": 0.25204124962086744,
+        "exactSeconds": "41549/164850"
+      },
+      "dispersionFlagged": false
+    },
+    {
+      "id": "coverage-record-aggregation-256",
+      "family": "record-aggregation",
+      "sourceGroup": "6b31a2cfc58fbb33376fee6bf55d2a6aa05210be40a36342a82da87364080937",
+      "catalogRepetitions": 392,
+      "candidate": {
+        "seconds": 0.40196610169491526,
+        "exactSeconds": "5929/14750"
+      },
+      "c": {
+        "seconds": 0.15657790368271954,
+        "exactSeconds": "6909/44125"
+      },
+      "signedExcess": {
+        "seconds": 0.24538819801219572,
+        "exactSeconds": "51107/208270"
+      },
+      "positiveExcess": {
+        "seconds": 0.24538819801219572,
+        "exactSeconds": "51107/208270"
+      },
+      "dispersionFlagged": false
+    }
+  ],
+  "scope": "Arithmetic ceiling only, not a new measurement or demonstrated implementation. Source transfer means all observed inputs sharing the explicit source hash, not a proof that a rule transfers. Lexer, Unicode text, tree-bitonic, BST and expression are separate explicit groups; combined scenarios are unions without double counting. C parity is a reference scenario, not a physical lower bound; zero-cost elimination is the absolute source-only bound with everything else fixed. Original Phase200 guard failed disk budget; all captured observations were independently recovered. Dispersion flags and frozen fixed workloads remain unchanged."
+}

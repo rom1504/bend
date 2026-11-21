@@ -1,0 +1,64 @@
+{
+  "decision": "Rejected source proxy: scalar-product fold.loop absent; ordinary direct loop calls fold.cell twice per two-cell recurrence.",
+  "execution": {
+    "compiler_exit": 0,
+    "compiler_seconds": 1.0174335911870003,
+    "guard_seconds": 1.3749726312234998,
+    "guard_exit": 1,
+    "linked": false,
+    "correctness_executed": false,
+    "timed": false,
+    "second_size_compiled": false,
+    "llvm_mca_executed": false
+  },
+  "object": {
+    "file": "selfhost/build/phase198/fold-unroll-two01/local-fold/program.o",
+    "bytes": 105504,
+    "sha256": "abe7f06faa982b078a7c175e227861d78ae39e0c13f2865ad44d9b9782396261"
+  },
+  "witness": {
+    "file": "research/phase198/loops/unroll-two/refusal-witness.txt",
+    "bytes": 3697,
+    "sha256": "6b4760483f72e4355e4149d2b68fcfa77f63d9fc8009d3938a6716e6af87c199"
+  },
+  "command": [
+    "objdump",
+    "-dr",
+    "-M",
+    "intel",
+    "--no-show-raw-insn",
+    "--disassemble=p113d_FID_36_100_105_114_101_99_116_46_102_111_108_100_46_108_111_111_112_",
+    "selfhost/build/phase198/fold-unroll-two01/local-fold/program.o"
+  ],
+  "worker": {
+    "symbol": "p113d_FID_36_100_105_114_101_99_116_46_102_111_108_100_46_108_111_111_112_",
+    "start_hex": "3946",
+    "end_exclusive_hex": "3a8c",
+    "bytes": 326,
+    "single_cell_call_hex": "39e3",
+    "two_cell_call_hex": [
+      "3a48",
+      "3a79"
+    ],
+    "backedge_hex": "3a87",
+    "header_hex": "397d"
+  },
+  "reports": [
+    {
+      "file": "selfhost/build/phase198/fold-unroll-two01/report.json",
+      "bytes": 4411,
+      "sha256": "a1230b1526a62d10c01e514998bb4fa58c7719d6658516710fe01f902b4ebb17"
+    },
+    {
+      "file": "selfhost/build/phase198/fold-unroll-two01-guard/process.json",
+      "bytes": 2146,
+      "sha256": "5d1bbd1dfa8322230426cb8157e2f5c3458c4b2447664af4d763df2012fb67da"
+    },
+    {
+      "file": "selfhost/build/phase198/fold-unroll-two01-guard/retention.json",
+      "bytes": 1044,
+      "sha256": "31f6026a143780551a5a11a37e234c3c2e4e2c8f7ce63cfdca81ab8ea11f58b7"
+    }
+  ],
+  "limits": "Successful source emission is not a whole-program correctness pass. This failure does not measure or falsify the performance potential of a fused two-cell loop."
+}

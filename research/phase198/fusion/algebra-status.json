@@ -20,15 +20,35 @@
         "bytes": 3724,
         "sha256": "8b05c1b1623e29385ce05f5f47b81c1a28dd1bfac6ac4875b47c8c39ac21491b"
       }
+    },
+    {
+      "name": "word-algebra03",
+      "result": "Missing /usr/bin/time; stopped before Lean launch",
+      "evidence": {
+        "file": "research/phase198/fusion/evidence/word-algebra-failure03.json.gz",
+        "bytes": 4097,
+        "sha256": "2ba1be92ad4f9661882ce99be26cc302921f06d1d57146669020e0a6971675b7"
+      }
+    },
+    {
+      "name": "word-algebra04",
+      "result": "Import control passed; subtraction and identity proof goals unsolved; sorryAx dependency rejected",
+      "evidence": {
+        "file": "research/phase198/fusion/evidence/word-algebra-failure04.json.gz",
+        "bytes": 27034,
+        "sha256": "3cb7f6947731842dd5626608678c277ee99c4d778ee4ec9d348533e4f59275bb"
+      }
     }
   ],
-  "nextAttempt": {
-    "name": "word-algebra03",
-    "executed": false,
+  "scope": "Negative result for the standalone arithmetic model; no accepted Lean theorem and no compiler/recognizer/runtime proof claim. All four attempts retained; no more target runs.",
+  "investigationComplete": true,
+  "additionalRunsAuthorized": false,
+  "latestAttempt": {
+    "name": "word-algebra04",
     "argv": {
       "file": "research/phase198/fusion/algebra-argv.json",
       "bytes": 344,
-      "sha256": "d7cd011c106a37399062af7520e59fd92188f93bca067e096ed93d867268a937"
+      "sha256": "ef706a39b252b530b03217b6682004bcef3da252c9728c6afc3751447a01c6d1"
     },
     "proof": {
       "file": "research/phase198/fusion/Affine.lean",
@@ -37,9 +57,47 @@
     },
     "method": {
       "file": "research/phase198/fusion/check-algebra.py",
-      "bytes": 4626,
-      "sha256": "71df62e0e66c775b7eeb0238171a56877a8df68dc8454d9a08182ad95c62ed89"
+      "bytes": 4853,
+      "sha256": "4eaf7b8f5458c120b42c98a7625c1860417d1a46f59fe54c18025a496832dda5"
+    },
+    "seconds": 13.884295768104494,
+    "phases": [
+      {
+        "label": "import-control",
+        "status": 0,
+        "seconds": 10.662292689085007,
+        "metrics": {
+          "userSeconds": 0.289764,
+          "systemSeconds": 0.245562,
+          "cumulativeChildPeakRssKiB": 455856,
+          "scope": "CPU deltas for this child; peak RSS is the cumulative maximum over all children so far, not a per-phase delta"
+        }
+      },
+      {
+        "label": "proof",
+        "status": 1,
+        "seconds": 2.697920970618725,
+        "metrics": {
+          "userSeconds": 2.579294,
+          "systemSeconds": 0.07597900000000002,
+          "cumulativeChildPeakRssKiB": 484572,
+          "scope": "CPU deltas for this child; peak RSS is the cumulative maximum over all children so far, not a per-phase delta"
+        }
+      }
+    ],
+    "proofErrors": [
+      "Affine.lean:44:44: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern",
+      "Affine.lean:45:30: error: unsolved goals",
+      "Affine.lean:50:64: error: unsolved goals"
+    ],
+    "axiomReports": [
+      "'Bend.WordFusion.run_value' depends on axioms: [propext, sorryAx]",
+      "'Bend.WordFusion.identity_entry' depends on axioms: [propext, sorryAx]"
+    ],
+    "heartbeatUnits": "Lean trace.profiler.useHeartbeats raw trace counts; not wall time",
+    "reportedProofHeartbeats": {
+      "run_value": 412458,
+      "identity_entry": 16854
     }
-  },
-  "scope": "Arithmetic model only, not compiler/recognizer/runtime correctness. Next run remains optional in parent execution queue."
+  }
 }

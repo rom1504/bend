@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Bounded Lean word-algebra check with import control and durable timing/axioms."""
-import argparse,hashlib,json,os,re,signal,subprocess,time
+import argparse,hashlib,json,os,re,resource,signal,subprocess,sys,time
 from pathlib import Path
 p=argparse.ArgumentParser(description=__doc__)
 p.add_argument('--lean',type=Path,required=True)
@@ -16,23 +16,19 @@ def pin(file):
 proof=Path(__file__).with_name('Affine.lean').resolve();lean=a.lean.resolve(strict=True)
 (a.out/'Affine.lean').write_bytes(proof.read_bytes())
 env=dict(os.environ);env.pop('LEAN_PATH',None);env.pop('LEAN_SYSROOT',None)
-t=time.monotonic();r={'kind':'phase198-independent-word-algebra','complete':False,'method':pin(__file__),'proof':pin(proof),'checkedSource':pin(a.out/'Affine.lean'),'kernel':pin(lean),'timer':pin('/usr/bin/time'),'timeoutSeconds':a.seconds,'threads':1,'maxHeartbeats':200000,'librarySearch':'Explicit toolchain default; LEAN_PATH and LEAN_SYSROOT removed','jobs':[],'scope':'All finite Context values and every bit-vector width w (including zero). Only the affine accumulator algebra is modeled. Admission, source evaluation, worker loop, U64-to-U32 lowering, rendering and runtime remain outside this theorem.'}
+t=time.monotonic();r={'kind':'phase198-independent-word-algebra','complete':False,'method':pin(__file__),'proof':pin(proof),'checkedSource':pin(a.out/'Affine.lean'),'kernel':pin(lean),'timer':{'method':'Python monotonic plus resource.getrusage(RUSAGE_CHILDREN) deltas','runtime':pin(sys.executable)},'timeoutSeconds':a.seconds,'threads':1,'maxHeartbeats':200000,'librarySearch':'Explicit toolchain default; LEAN_PATH and LEAN_SYSROOT removed','jobs':[],'scope':'All finite Context values and every bit-vector width w (including zero). Only the affine accumulator algebra is modeled. Admission, source evaluation, worker loop, U64-to-U32 lowering, rendering and runtime remain outside this theorem.'}
 def run(label,args):
- timing=a.out/(label+'-time.txt')
- command=['/usr/bin/time','-v','-o',str(timing),str(lean),'-j1',*args]
- proc=subprocess.Popen(command,cwd=a.out,env=env,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,start_new_session=True)
+ command=[str(lean),'-j1',*args]
+ usage_before=resource.getrusage(resource.RUSAGE_CHILDREN)
  started=time.monotonic();timed_out=False
+ proc=subprocess.Popen(command,cwd=a.out,env=env,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,start_new_session=True)
  try:stdout,stderr=proc.communicate(timeout=max(.01,a.seconds-(started-t)))
  except subprocess.TimeoutExpired:
   timed_out=True;os.killpg(proc.pid,signal.SIGKILL);stdout,stderr=proc.communicate()
  (a.out/(label+'-stdout')).write_text(stdout);(a.out/(label+'-stderr')).write_text(stderr)
  row=dict(label=label,command=command,status=proc.returncode,timedOut=timed_out,seconds=time.monotonic()-started,stdout=pin(a.out/(label+'-stdout')),stderr=pin(a.out/(label+'-stderr')))
- if timing.exists():
-  row['timeVerbose']=pin(timing);metrics={}
-  for line in timing.read_text().splitlines():
-   if ': ' in line:
-    key,value=line.strip().rsplit(': ',1);metrics[key]=value
-  row['metrics']=metrics
+ usage_after=resource.getrusage(resource.RUSAGE_CHILDREN)
+ row['metrics']=dict(userSeconds=usage_after.ru_utime-usage_before.ru_utime,systemSeconds=usage_after.ru_stime-usage_before.ru_stime,cumulativeChildPeakRssKiB=usage_after.ru_maxrss,scope='CPU deltas for this child; peak RSS is the cumulative maximum over all children so far, not a per-phase delta')
  r['jobs'].append(row)
  if timed_out:raise TimeoutError(label+' exceeded the whole-check deadline')
  if proc.returncode:raise RuntimeError(label+' returned '+str(proc.returncode)+': '+(stdout+stderr)[-5000:])

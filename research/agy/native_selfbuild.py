@@ -11,11 +11,11 @@ from pathlib import Path
 
 ROOT = Path("/home/ai/bend2_agy")
 CC = "/usr/bin/x86_64-linux-gnu-gcc-10"
-SOURCE = ROOT / "selfhost/build/agy/unified/compiler.bend"
+SOURCE = Path(os.environ.get("AGY_SOURCE", str(ROOT / "selfhost/build/agy/unified/compiler.bend")))
 BASE = ROOT / "selfhost/dist/base.bend"
 RT = ROOT / "selfhost/build/agy/unified/runtime-agy.o"
 N0_GZ = ROOT / "selfhost/build/agy/bootstrap/p205-compiler.gz"
-B1_DIR = ROOT / "selfhost/build/agy/unified/full44"
+B1_DIR = Path(os.environ.get("AGY_B1_DIR", str(ROOT / "selfhost/build/agy/unified/full44")))
 CATALOG = {c["id"]: c for c in json.loads((ROOT / "selfhost/tools/bench/catalogs/native45/catalog.json").read_text())["cases"]}
 
 

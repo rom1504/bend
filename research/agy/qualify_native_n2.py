@@ -9,6 +9,7 @@ Runs on N2 + runtime-agy.o:
 """
 import hashlib
 import json
+import os
 import subprocess
 import sys
 import tempfile
@@ -19,7 +20,7 @@ ROOT = Path("/home/ai/bend2_agy")
 CC = "/usr/bin/x86_64-linux-gnu-gcc-10"
 BASE = ROOT / "selfhost/dist/base.bend"
 RT = ROOT / "selfhost/build/agy/unified/runtime-agy.o"
-B1_DIR = ROOT / "selfhost/build/agy/unified/full44"
+B1_DIR = Path(os.environ.get("AGY_B1_DIR", str(ROOT / "selfhost/build/agy/unified/full44")))
 RTS_ARGS = ["+RTS", "--threads", "1", "--gpu", "off", "-RTS"]
 
 sys.path.insert(0, str(ROOT / "research/agy"))

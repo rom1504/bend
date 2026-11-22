@@ -56,6 +56,10 @@
   - **Non-CTFE 40 ablated**: **`0.3118×` geomean vs C**, **`0.5034×` fixed-work batch** (`4.557 s / 9.051 s`)
   - **Cases > 2.0× / > 1.1× C**: **`1 / 2`** out of 44 (`42/44` faster than or within `1.1×` of C!)
 - `00:40 UTC`: **TIER-3 UNIFIED CONFORMANCE & ADVERSARIAL SWEEP: `134 / 134 PASS`** (`experiments/agy/receipts/wave2-unified-qual.json`): `64/64 native64` + `10/10 runtime10` + `13/13 boundary13` + `47/47` across all 10 Tier-2 adversarial differential suites (`upstream == Phase205 == Wave2Unified`, 0 failures).
+- `01:30 UTC`: **WAVE 2 NATIVE SELF-BUILD (`N0 → N1 → N2 → N3`) + FULL NATIVE `N2` QUALIFICATION: ALL PASS** (`experiments/agy/receipts/wave2-native-selfbuild.json`, `wave2-native-selfbuild-guard.json`, `wave2-native-n2-qual.json`):
+  - Guarded on CPU 2 (`1,814.33 s` total wall time, `2.60 GiB` peak RSS, `115.0 MiB` peak disk allocated, `8.17 GiB` minimum disk free).
+  - `N0 → N1`: `490.49 s` (`n1.o = 43,113,472 B`, `n1 = 34,726,384 B`); `N1 → N2`: `512.42 s` (`n2.o = 43,056,912 B`, `n2 = 34,425,088 B`); `N2 → N3`: `496.86 s`, **`exactFixedPoint: true`** (`SHA-256: ec0eda3ae655fb0ac5f3e64deec9faaa0b51107ef6d82db92f2e93633750eefc`).
+  - Full Native `N2` Qualification (**132 / 132 PASS**): **`64/64 native64`** (`129.93 s`), **`10/10 runtime10`** (`15.69 s`), **`45/45 native45`** (`sameAsB1: 45/45`, `oracles: 45/45`, `129.61 s` `live` emit), **`13/13 boundary13`** (`20.49 s`).
 
 ## 7 Real Bugs Caught & Fixed by Tier-2 Adversarial Auditors (All 7 Passed Standard 87-Case Conformance!)
 1. **Bug #1** (`AGY-W2-ROREC`): `%edx` clobber on nested non-recursive RHS `RoBin` (`U32.sub(100, U32.add(x, 7))`) → fixed in `apply_rorec.py`.
@@ -66,4 +70,4 @@
 6. **Bug #6** (`AGY-W2C-MAPFAST` / `LISTAPP`): Missing `loc >= HEAP_OFF` static-term guard before in-place mutation → fixed in `apply_map_fast.py` & `apply_list_arr.py`.
 7. **Bug #7** (`AGY-W2C-MAPFAST`): Unsealed `0x02` value stored into `0x82` `MLeaf` causing double-free on share → fixed with `(tag(x) < 2 || tag(x) == 130)` guard in `apply_map_fast.py`.
 
-*(Distinction preserved per `AGENTS.md`: this qualifies the composed 13-pass Wave 2 hosted-B1 compiler + `runtime-agy.o` across `45/45 native45`, `64/64 native64`, `10/10 runtime10`, `13/13 boundary13`, and `47/47` Tier-2 adversarial differential suites. Refreshing the native `N0 → N1 → N2 → N3` + `qualify_native_n2.py` self-build on Wave 2 and independent Lean BendTT kernel proofs remain separate downstream gates.)*
+*(Distinction preserved per `AGENTS.md`: this qualifies both the 13-pass Wave 2 hosted-B1 compiler and the self-compiled native `N2` x86 binary + `runtime-agy.o` across `45/45 native45` (`B1 == N2`), `64/64 native64`, `10/10 runtime10`, `13/13 boundary13`, `47/47` Tier-2 adversarial differential suites, and `N2 == N3` byte-exact fixed-point self-reproduction. Independent Lean BendTT kernel proofs remain a separate downstream gate.)*

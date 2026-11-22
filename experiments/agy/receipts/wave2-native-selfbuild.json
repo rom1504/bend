@@ -1,0 +1,82 @@
+{
+  "kind": "agy-native-selfbuild-v1",
+  "source": {
+    "file": "/home/ai/bend2_agy/selfhost/build/agy/wave2_unified/compiler.bend",
+    "bytes": 2470524,
+    "sha256": "3168b467081a3bd215d2f882ba97cb1dd6f13e1ff2e816201a8b05398e976e2a"
+  },
+  "runtime": {
+    "file": "/home/ai/bend2_agy/selfhost/build/agy/unified/runtime-agy.o",
+    "bytes": 132832,
+    "sha256": "afdcbaa790b85f55548fc0dc7ab50dc11241765ff547fc98a13e0e45ea6bbeaf"
+  },
+  "base": {
+    "file": "/home/ai/bend2_agy/selfhost/dist/base.bend",
+    "bytes": 87698,
+    "sha256": "ff90fb27ed19d5c7a6165170f28ad81562bf345b9a9e6134e5c2e326beff9de4"
+  },
+  "stages": {
+    "n1": {
+      "emitSeconds": 490.49,
+      "linkSeconds": 0.379,
+      "totalSeconds": 490.869,
+      "objBytes": 43113472,
+      "objSha256": "8d7d28e1944cce97f3fa2f5413cc845a68442b2a1a9e92bb3af9ba8811b069e7",
+      "exeBytes": 34726384,
+      "exeSha256": "d542e715260b86e6769f34f47aa2b5bc9732c087b5f39aca208054f9e9522ef1"
+    },
+    "n2": {
+      "emitSeconds": 512.415,
+      "linkSeconds": 0.377,
+      "totalSeconds": 512.792,
+      "objBytes": 43056912,
+      "objSha256": "ec0eda3ae655fb0ac5f3e64deec9faaa0b51107ef6d82db92f2e93633750eefc",
+      "exeBytes": 34425088,
+      "exeSha256": "9328c2811091c38d8953db8d600515ebf2e63e84cc007f8a9a31af1b6031d74a"
+    },
+    "n3": {
+      "emitSeconds": 496.855,
+      "objBytes": 43056912,
+      "objSha256": "ec0eda3ae655fb0ac5f3e64deec9faaa0b51107ef6d82db92f2e93633750eefc",
+      "exactFixedPoint": true
+    }
+  },
+  "transfer": {
+    "raytrace": {
+      "emitSeconds": 4.027,
+      "objBytes": 192368,
+      "objSha256": "7d733597e868e9741deb95e7d6b8c294e5df58dc7035a246ff75c882ac5b8a22",
+      "sameAsHostedB1": true,
+      "oracleOk": true
+    },
+    "mandelbrot": {
+      "emitSeconds": 3.274,
+      "objBytes": 164400,
+      "objSha256": "efb68d0f83b1c746dd93521c925a90bfd8dec3d31e53de01dcdcf02aaef9abfa",
+      "sameAsHostedB1": true,
+      "oracleOk": true
+    },
+    "coverage-bst-64": {
+      "emitSeconds": 2.367,
+      "objBytes": 131232,
+      "objSha256": "0c7c729dfed482face8bbf679456c851b223888cf15203bfaebe5fa7bd7fcda4",
+      "sameAsHostedB1": true,
+      "oracleOk": true
+    },
+    "test-morning-program": {
+      "emitSeconds": 2.298,
+      "objBytes": 102520,
+      "objSha256": "54af23fa5b13f6aa8209f3b1a8fe29327a488c73bdce800b04c1b73663027bc5",
+      "sameAsHostedB1": true,
+      "oracleOk": true
+    },
+    "test-evening-program": {
+      "emitSeconds": 2.279,
+      "objBytes": 101264,
+      "objSha256": "a5a4c55451fc0f80478be8a5f123eab2c233a87bb7506815d9df32657613a3ca",
+      "sameAsHostedB1": true,
+      "oracleOk": true
+    }
+  },
+  "complete": true
+}

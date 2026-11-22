@@ -197,7 +197,7 @@ def apply_w7_lower_fast(src: str) -> str:
         '  match scan:\n'
         '    case P113KBody{body,facts,terminal}:\n'
         '      +b1 = w4g_bwd_dce(w4g_copy_pass(body))\n'
-        '      +b2 = nt_choose(List<&2,P113DStmt>,U32.is_le(p113i_size(b1),128),\n'
+        '      +b2 = nt_choose(List<&2,P113DStmt>,w4c_body_has_again(b1) || U32.is_le(p113i_size(b1),1024),\n'
         '        u => w4g_bwd_dce(w4g_copy_pass(w4g_p113k_body_only(p113k_body(b1,w4c_seed_w32_facts(params,missing()))))),\n'
         '        u => b1)\n'
         '      P113DFunction{name,params,result,public,b2}\n'

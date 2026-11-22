@@ -258,7 +258,7 @@ def w4_post_select(code: X188Seq) -> X188Seq:
   +hasImulq = Bool.not(U32.is_eq(U32.and(flags,8),0))
   +hasCall = Bool.not(U32.is_eq(U32.and(flags,16),0))
   +hasLoop = hasLbl && w7_is_loop(w4b_find_loop(flat0,[]))
-  nt_choose(X188Seq,hasCall && Bool.not(hasXmm) && Bool.not(hasLoop) && w7_len_gt(flat0,96),
+  nt_choose(X188Seq,hasCall && Bool.not(hasXmm) && Bool.not(hasLoop) && w7_len_gt(flat0,384),
     u => x188_finish(w4_peep_list(flat0,[])),
     u => w7_post_select_full(flat0,hasXmm,hasNegRbp,hasLbl,hasImulq,hasCall,hasLoop))
 
@@ -269,7 +269,7 @@ def x191_frame_forward(+code: X188Seq) -> X188Seq:
   +hasXmm = Bool.not(U32.is_eq(U32.and(flags,1),0))
   +hasLbl = Bool.not(U32.is_eq(U32.and(flags,4),0))
   +hasCall = Bool.not(U32.is_eq(U32.and(flags,16),0))
-  nt_choose(X188Seq,hasCall && Bool.not(hasXmm) && w7_len_gt(flat0,96) && Bool.not(hasLbl && w7_is_loop(w4b_find_loop(flat0,[]))),
+  nt_choose(X188Seq,hasCall && Bool.not(hasXmm) && w7_len_gt(flat0,384) && Bool.not(hasLbl && w7_is_loop(w4b_find_loop(flat0,[]))),
     u => x188_finish(w4_peep_list(flat0,[])),
     u => w4_post_select(x197d_select(x191_frame_forward_when(x191_frame_forward_enabled(),code))))"""
 
@@ -277,7 +277,7 @@ def x191_frame_forward(+code: X188Seq) -> X188Seq:
 
     # ------------------------------------------------------------------
     # A2c: Size-gate expensive multi-pass IR opts & liveness on giant non-loop functions
-    # (Preserves 100% full -O2 on ALL loops of any size and ALL functions <= 96 stmts)
+    # (Preserves 100% full -O2 on ALL loops of any size and ALL functions <= 384 stmts)
     # ------------------------------------------------------------------
     old_a2_place = """@unsafe
 def x185_function_place(+symbol: String, +params: List<&2,String>, +setup: List<&2,P113DStmt>,
@@ -287,7 +287,7 @@ def x185_function_place(+symbol: String, +params: List<&2,String>, +setup: List<
     new_a2_place = """@unsafe
 def x185_function_place(+symbol: String, +params: List<&2,String>, +setup: List<&2,P113DStmt>,
     +body: List<&2,P113DStmt>, +ids: N111Ids) -> X181Output:
-  nt_choose(X181Output,Bool.not(x190_register_loop(body)) && U32.is_gt(p113i_size(body),96),
+  nt_choose(X181Output,Bool.not(x190_register_loop(body)) && U32.is_gt(p113i_size(body),384),
     u => x186_float_function(symbol,params,setup,x185_dead_body(setup,x185_copy_function(params,setup,body)),ids),
     u => x186_function_memory(symbol,params,setup,x185_prepare_body(params,setup,x185_scratch_body(params,setup,body)),ids))"""
 
@@ -299,7 +299,7 @@ def x198n_place(symbol: String, +names: List<&2,String>, params: List<&2,NC_Bind
 
     new_a2_x198n = """@unsafe
 def x198n_place(+symbol: String, +names: List<&2,String>, +params: List<&2,NC_Binding>, +body: List<&2,P113DStmt>, +ids: N111Ids) -> X181Output:
-  nt_choose(X181Output,Bool.not(x190_register_loop(body)) && U32.is_gt(p113i_size(body),96),
+  nt_choose(X181Output,Bool.not(x190_register_loop(body)) && U32.is_gt(p113i_size(body),1024),
     u => x186_float_function(symbol,names,[],x185_dead_body([],x185_copy_function(names,[],body)),ids),
     u => x198n_normalized(symbol,names,params,x185_prepare_body(names,[],x185_scratch_body(names,[],body)),ids))"""
 
@@ -318,7 +318,7 @@ def x190_joint_frame(+frame: X181Frame, +params: List<&2,String>, +setup: List<&
 def x190_joint_frame(+frame: X181Frame, +params: List<&2,String>, +setup: List<&2,P113DStmt>,
     +body: List<&2,P113DStmt>, +registerBody: List<&2,P113DStmt>) -> X181Frame:
   +sz = p113i_add(p113i_size(setup),p113i_size(body))
-  nt_choose(X181Frame,U32.is_gt(sz,128) && Bool.not(x190_register_loop(body)),
+  nt_choose(X181Frame,U32.is_gt(sz,1024) && Bool.not(x190_register_loop(body)),
     u => frame,
     u => nt_choose(X181Frame,U32.is_le(sz,2048) &&
       U32.is_le(nt_count(String,params),64) && x190_l_safe_body(setup) && x190_l_safe_body(body),

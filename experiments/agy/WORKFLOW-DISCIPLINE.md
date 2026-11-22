@@ -42,9 +42,10 @@ Run Tier 3 qualification on one dedicated core while fanning out Tier 1 explorat
    - Every parallel track owns its own `research/agy/<wave>_<track>/` directory (scripts + `REPORT.md`) and `/tmp/agy_<wave>_<track>/` scratch directory.
    - Never edit shared promoted build artifacts (`selfhost/build/agy/*_unified/`, `*_native-self/`), `bend2/bend.ts`, `runtime.c`, `runtime-agy.o`, `experiments/STEERING.md`, or `experiments/ledger.md` from an exploration track.
    - Only the coordinator composes verified winning patches into a unified build.
-3. **Memory & Disk Safety**:
-   - Always invoke `bun` and `node` through `research/agy/locked_bun.sh` and `research/agy/locked_node.sh` (`flock` + memory/stack caps) to prevent concurrent OOM kills.
-   - Exception: a single solo `node --max-old-space-size=8192 --stack-size=16384` probe is allowed when `>= 12 GiB` RAM is free and no other heavy Node process is running.
+3. **Memory & Disk Safety (High Concurrency, Low Peak RSS)**:
+   - Keep full agent concurrency (4–5 agents analyzing/editing/testing in parallel), but serialize **heavy RAM-hungry compiler invocations** via the shared `/tmp/agy_heavy_mem.lock` used by `research/agy/locked_bun.sh`, `research/agy/locked_node.sh`, and `research/agy/locked_native.sh` so Bun + Node + native `n2` never stack RSS and trigger systemd `MemoryHigh` throttling.
+   - `locked_node.sh` caps V8 to `--max-old-space-size=1536 --max-semi-space-size=32` by default (~60% lower RSS than 4 GiB). Only override via `AGY_NODE_MAX_MB=4096` (or `6144`) for a single solo full-`compiler.bend` probe when needed.
+   - Cap parallel native `n2` sharded workers on large inputs (`> 500 KB`) to `2` concurrent workers (or serialize heavy stages) so arena-allocated RSS doesn't multiply by 4×.
    - Maintain **`>= 5.0 GiB` free disk** on `/dev/md2`; put transient `.s`/`.o`/binaries in `/tmp/` and clean up after verification.
 4. **Generality & Evidence**:
    - **Zero benchmark-specific matchers**; every pass must be a general compiler transformation.

@@ -1,0 +1,53 @@
+{
+  "cold_baseline": {
+    "n1_ms": 9060.9,
+    "link_ms": 38.7,
+    "total_ms": 9099.6,
+    "obj_bytes": 353240,
+    "out": "34"
+  },
+  "tier_a_prefix_carrier": {
+    "carrier_nodes": 56475,
+    "carrier_strings": 2445,
+    "carrier_bytes": 3052570,
+    "one_time_prep_ms": 8142.2,
+    "rebuild_1c_n1_ms": 2714.0,
+    "rebuild_1c_total_ms": 2806.0,
+    "rebuild_1c_speedup": 3.24,
+    "rebuild_1c_out": "34",
+    "rebuild_4c_n1_ms": 3227.7,
+    "rebuild_4c_total_ms": 3264.6,
+    "rebuild_4c_speedup": 2.79,
+    "rebuild_4c_out": "34",
+    "live_edit_4c_total_ms": 2761.6,
+    "live_edit_out": "52",
+    "invalidation_check": {
+      "rejected": true,
+      "rc": 1,
+      "stderr": "base_cache: cache stamp"
+    }
+  },
+  "tier_b_separate_obj": {
+    "iface_nodes": 59956,
+    "iface_strings": 2428,
+    "iface_bytes": 3260749,
+    "direct_stubs": 670,
+    "cps_stubs": 22,
+    "rebuild_1c_clean": {
+      "n1_ms": 774.3,
+      "objcopy_link_ms": 55.5,
+      "total_ms": 829.8,
+      "speedup_vs_cold": 10.97,
+      "top_obj_bytes": 123544,
+      "out": "34"
+    },
+    "rebuild_1c_live_edit": {
+      "n1_ms": 695.5,
+      "objcopy_link_ms": 72.9,
+      "total_ms": 768.4,
+      "speedup_vs_cold": 11.84,
+      "top_obj_bytes": 123544,
+      "out": "52"
+    }
+  }
+}

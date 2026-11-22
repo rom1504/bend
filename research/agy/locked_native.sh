@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# Memory-safe wrapper for heavy native self-hosted compiler runs (`n2`).
-# Shares `/tmp/agy_heavy_mem.lock` with `locked_bun.sh` and `locked_node.sh`
-# so heavy native compiles don't stack RSS with Bun/Node builds.
+# Memory-safe serialized wrapper for heavy native self-hosted compiler runs (`n2`).
+# Serializes heavy `n2` builds (~1.5 GiB) on `/tmp/agy_native_build.lock`.
 set -euo pipefail
-exec flock /tmp/agy_heavy_mem.lock "$@"
+exec flock /tmp/agy_native_build.lock "$@"

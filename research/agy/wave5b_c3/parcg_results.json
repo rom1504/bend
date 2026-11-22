@@ -1,0 +1,203 @@
+{
+  "rows": [
+    {
+      "id": "histogram",
+      "plan_pw_ms": 1830.6,
+      "emit1_ms": 3527,
+      "emit4_ms": 3691.3,
+      "emit_speedup": 0.96,
+      "total1_ms": 6448.4,
+      "total4_ms": 5585.5,
+      "total_speedup": 1.15,
+      "worker_emit_ms": [
+        3296.8,
+        3399,
+        3511.9,
+        3378.2
+      ],
+      "link4_ms": 62.9,
+      "obj1_bytes": 266936,
+      "obj4_bytes": 292120,
+      "stdout": "3307081914",
+      "exact_match": true
+    },
+    {
+      "id": "gameoflife",
+      "plan_pw_ms": 2013.0,
+      "emit1_ms": 3313,
+      "emit4_ms": 2099.3,
+      "emit_speedup": 1.58,
+      "total1_ms": 5272.4,
+      "total4_ms": 4172.7,
+      "total_speedup": 1.26,
+      "worker_emit_ms": [
+        2072.2,
+        1634.1,
+        1699.9,
+        1313
+      ],
+      "link4_ms": 59.9,
+      "obj1_bytes": 64616,
+      "obj4_bytes": 71464,
+      "stdout": "3681094808",
+      "exact_match": true
+    },
+    {
+      "id": "nbody",
+      "plan_pw_ms": 1845.3,
+      "emit1_ms": 776,
+      "emit4_ms": 694.6,
+      "emit_speedup": 1.12,
+      "total1_ms": 2835.1,
+      "total4_ms": 2597.7,
+      "total_speedup": 1.09,
+      "worker_emit_ms": [
+        654,
+        535.4,
+        620.1,
+        516.4
+      ],
+      "link4_ms": 57.3,
+      "obj1_bytes": 59144,
+      "obj4_bytes": 66712,
+      "stdout": "728502159",
+      "exact_match": true
+    },
+    {
+      "id": "editdist",
+      "plan_pw_ms": 651.9,
+      "emit1_ms": 1219.5,
+      "emit4_ms": 944.7,
+      "emit_speedup": 1.29,
+      "total1_ms": 1942,
+      "total4_ms": 1653.3,
+      "total_speedup": 1.17,
+      "worker_emit_ms": [
+        881.5,
+        799.1,
+        658.4,
+        654.7
+      ],
+      "link4_ms": 56,
+      "obj1_bytes": 131408,
+      "obj4_bytes": 146592,
+      "stdout": "expected repetitions warmups size seed",
+      "exact_match": true
+    },
+    {
+      "id": "lexer",
+      "plan_pw_ms": 2507.1,
+      "emit1_ms": 1303,
+      "emit4_ms": 1081.1,
+      "emit_speedup": 1.21,
+      "total1_ms": 3907,
+      "total4_ms": 3648.8,
+      "total_speedup": 1.07,
+      "worker_emit_ms": [
+        1039.3,
+        426.4,
+        422.9,
+        503
+      ],
+      "link4_ms": 59.7,
+      "obj1_bytes": 88352,
+      "obj4_bytes": 95920,
+      "stdout": "1822208108",
+      "exact_match": true
+    },
+    {
+      "id": "raytrace",
+      "plan_pw_ms": 1475.9,
+      "emit1_ms": 1197.2,
+      "emit4_ms": 845.3,
+      "emit_speedup": 1.42,
+      "total1_ms": 2699,
+      "total4_ms": 2376.7,
+      "total_speedup": 1.14,
+      "worker_emit_ms": [
+        737.6,
+        678.2,
+        720.9,
+        644.3
+      ],
+      "link4_ms": 54.7,
+      "obj1_bytes": 101960,
+      "obj4_bytes": 115192,
+      "stdout": "402971",
+      "exact_match": true
+    },
+    {
+      "id": "compiler_200defs",
+      "plan_pw_ms": 5671.1,
+      "emit1_ms": 14056.6,
+      "emit4_ms": 10710.6,
+      "emit_speedup": 1.31,
+      "total1_ms": 19898.7,
+      "total4_ms": 16461.1,
+      "total_speedup": 1.21,
+      "worker_emit_ms": [
+        10125,
+        5982.4,
+        5319.7,
+        5745.9
+      ],
+      "link4_ms": 78.7,
+      "obj1_bytes": 1215184,
+      "obj4_bytes": 1317032,
+      "stdout": "2970155304",
+      "exact_match": true
+    }
+  ],
+  "six_prog_emit_speedup": 1.21,
+  "six_prog_total_speedup": 1.15,
+  "rr_compare": {
+    "histogram": {
+      "lpt": 3691.3,
+      "lpt_w": [
+        3296.8,
+        3399,
+        3511.9,
+        3378.2
+      ],
+      "rr": 3629.8,
+      "rr_w": [
+        3249.3,
+        2916.5,
+        2399.5,
+        3399.8
+      ]
+    },
+    "gameoflife": {
+      "lpt": 2099.3,
+      "lpt_w": [
+        2072.2,
+        1634.1,
+        1699.9,
+        1313
+      ],
+      "rr": 2276,
+      "rr_w": [
+        1606.4,
+        2231.1,
+        461.3,
+        1495.6
+      ]
+    },
+    "compiler_200defs": {
+      "lpt": 10710.6,
+      "lpt_w": [
+        10125,
+        5982.4,
+        5319.7,
+        5745.9
+      ],
+      "rr": 10370.6,
+      "rr_w": [
+        5811,
+        6070.6,
+        5867.3,
+        9372.4
+      ]
+    }
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "name": "native-tuned-v1",
+  "native45_catalog_sha256": "746fe610bfe1a5704f390b71cd5ee702e6bd874bd89a5a9363d5f69f69c0e475",
+  "roles": [
+    "agy",
+    "hand-c",
+    "qbe",
+    "bend-c"
+  ],
+  "families": {
+    "list": {
+      "forms": [
+        "original",
+        "tuned",
+        "fused"
+      ],
+      "points": [
+        "coverage-list-pipeline-128",
+        "coverage-list-pipeline-512",
+        "list-residue-257"
+      ],
+      "controls": [
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          4294967295
+        ],
+        [
+          15,
+          0
+        ],
+        [
+          16,
+          1
+        ],
+        [
+          17,
+          7
+        ],
+        [
+          513,
+          4294967295
+        ]
+      ]
+    },
+    "expression": {
+      "forms": [
+        "original",
+        "tuned"
+      ],
+      "points": [
+        "coverage-expression-32",
+        "coverage-expression-128"
+      ],
+      "controls": [
+        [
+          0,
+          10
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          17,
+          4294967294
+        ],
+        [
+          131,
+          9
+        ]
+      ]
+    },
+    "bst": {
+      "forms": [
+        "original",
+        "tuned"
+      ],
+      "points": [
+        "coverage-bst-32",
+        "coverage-bst-64"
+      ],
+      "controls": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          4294967295
+        ],
+        [
+          9,
+          128
+        ],
+        [
+          259,
+          17
+        ],
+        [
+          31,
+          4294967294
+        ]
+      ]
+    },
+    "editdist": {
+      "forms": [
+        "original",
+        "tuned"
+      ],
+      "points": [
+        "editdist",
+        "variation-editdist-0-17",
+        "variation-editdist-3-123"
+      ],
+      "controls": [
+        [
+          0,
+          4294967295
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          4294967295
+        ],
+        [
+          2,
+          518
+        ]
+      ]
+    }
+  },
+  "extension_points": {
+    "list-residue-257": {
+      "runtimeArgs": [
+        257,
+        9176
+      ],
+      "repetitions": 50000,
+      "warmups": 4
+    }
+  },
+  "reserved": {
+    "bfs": {
+      ".bend": "d7e2acda29553218004cc937d3107e50862d692a140630740268eaa3896bffbd",
+      ".c": "ad283af87da1383a8f5f905ff8f8fb693da8b7e324ad96f76948696ab7cd98c3"
+    },
+    "merkle": {
+      ".bend": "fee3e9144d09a4426a3903656ef485d68d9b9c99822ef02368b5fcbc663e39c9",
+      ".c": "6bf4057ef894a53bd964589bb784ba6f17566c9acf3dd678d47227119176109b"
+    },
+    "kmeans": {
+      ".bend": "68af341f50d57878b2518f8c0907e445552750ceb4a264ab0e4e7877600bffb1",
+      ".c": "1a67c73d84055871187cc6bb5867f79333434114e8559b705ac3cb9949b1b6a7"
+    }
+  },
+  "source_sha256": {
+    "selfhost/tools/bench/handwritten-c/algorithms/editdist.c": "35c47197a961eb3ecd697bab1c52938178fc9c6d9aa68464f10b59532ea23428",
+    "selfhost/tools/bench/handwritten-c/algorithms/editdist_kernel.h": "d7438b3f232b8a3826c6d720331321b673595ba31080798e04dfc893cad9da0e",
+    "selfhost/tools/bench/handwritten-c/structures/bst.c": "684a6b00eba10cee75ff6712c8537a0a6e5a6fe9ffac022c98d2ea3bbd7da732",
+    "selfhost/tools/bench/handwritten-c/structures/expression.c": "603ac9a23b8e967d816d9e9e220df1d2c1b2afb0efd5a82b597395a03a97eb44",
+    "selfhost/tools/bench/handwritten-c/structures/list-pipeline.c": "8062a4fed5df6caeea0fdb0b2e47ff02c20567a7bfbfa7c0d3f281c5442117d8",
+    "selfhost/tools/bench/native-tuned-v1/driver.bend": "e45742dc416da34c031ccfd1e7d181363e95aa1f051461cfad0a77c3027a7e56",
+    "selfhost/tools/bench/native-tuned-v1/driver.c": "092fc56e5ba4616ae54d430d8d2dea288096e481f8cfc9a51882fc2f32d44a2e",
+    "selfhost/tools/bench/native-tuned-v1/kernels/bst.bend": "85cc17b97359932a9768becc224a82d126909331a5565cfa57012301200e99e0",
+    "selfhost/tools/bench/native-tuned-v1/kernels/bst.c": "56792d88e6209e4cd609ddf62eed02780c39ceb71c880ca46b64d737e421b216",
+    "selfhost/tools/bench/native-tuned-v1/kernels/editdist.bend": "1436d0c17cc84db7b950027ec93a9d5969ddb82366b4daf7df8eaaac96b743fe",
+    "selfhost/tools/bench/native-tuned-v1/kernels/editdist.c": "27da154b57cf6a07867162080cb411de669436020481b648f7c848baf85cec81",
+    "selfhost/tools/bench/native-tuned-v1/kernels/expression.bend": "1692969657f2fbf50cc20804c763e4eed8aa7bdbdf980001eb7c5b0684ca5df7",
+    "selfhost/tools/bench/native-tuned-v1/kernels/expression.c": "8e9f08fdf5c17a3bf07ed3ae3d131c89e64c0f85326aab02418b66c5ff845cc6",
+    "selfhost/tools/bench/native-tuned-v1/kernels/list-fused.bend": "11fe66e87260891e00012f89621f19e75cc1bf8082b13fe9d0ddcaea42bf2007",
+    "selfhost/tools/bench/native-tuned-v1/kernels/list-fused.c": "f63ea94b278fbe77b8b55007a6c3df6c0a836096bbea87659e0c351cd75583ee",
+    "selfhost/tools/bench/native-tuned-v1/kernels/list.bend": "70584f3c42cc6b94e2c7dc44d22814561cfc35d108fa8e183e6962733c8fc963",
+    "selfhost/tools/bench/native-tuned-v1/kernels/list.c": "f8210595c12747f8f9f4ec85fb9754c10a870b15e640b86b54b2c640be474ce0",
+    "selfhost/tools/bench/native-tuned-v1/oracle.py": "3fdf7ee98d7ccdb1c9fa081e823bda29c1a1e1702221c131f1aa0c2ff4b4111d"
+  }
+}

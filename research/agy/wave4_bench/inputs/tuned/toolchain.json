@@ -1,0 +1,79 @@
+{
+  "host": "Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz",
+  "kernel": "5.10.0-46-amd64",
+  "logical_cpu": 3,
+  "agy": {
+    "emitter": "5323d69d83a2db034ff14b23c24eda57e34d46707bd88a5ea0f67c8fb70c20f6",
+    "api": "e32709a3abefdaf47030f8a4c9736c1a71e1c924cdd7484e0f7cd7411700624e",
+    "runtime": "afdcbaa790b85f55548fc0dc7ab50dc11241765ff547fc98a13e0e45ea6bbeaf",
+    "base": "ff90fb27ed19d5c7a6165170f28ad81562bf345b9a9e6134e5c2e326beff9de4",
+    "carrier": "3b1d2d23ac05818fea2ee13442a02b6ef8f57eb6b4b1842851e8900238f539b9"
+  },
+  "qualified_policy": "selfhost/manifests/assets-native.json",
+  "qualified_policy_sha256": "767986fb99bd450f7f83e9abd4a05361c7c3fd502a6a724717eb77abc1f76597",
+  "handwritten_c_flags": [
+    "-std=c11",
+    "-O3",
+    "-ffp-contract=off",
+    "-fno-lto"
+  ],
+  "handwritten_c_clang_sha256": "8a3f27cb0d8904a46986cbcc6437c2049939204d1c9f7caa3898c36ba067c0e2",
+  "bend_to_c_clang_policy": {
+    "compiler": "clang",
+    "includeFlags": [
+      "-isystem",
+      "/home/ai/.elan/toolchains/leanprover--lean4---v4.32.0/include/clang"
+    ],
+    "flags": [
+      "-std=c11",
+      "-O3"
+    ],
+    "libraries": [
+      "-lpthread",
+      "-lm"
+    ],
+    "qualification": "Pinned incumbent construction policy; each product still requires independent qualification."
+  },
+  "bend_images": {
+    "qbe": {
+      "/home/ai/bend2/build/publish/bend/selfhost/dist/qbe/bend": "4f456b12bff06de9c7a980076af59984995b4b6364e85d6249bc47431e23971f"
+    },
+    "bend-c": {
+      "/home/ai/bend2/build/publish/bend/selfhost/dist/native/bend": "9cdee58d7423be70fe120ddaa0eac3675674292d2a0832447907051d4cc9e607"
+    }
+  },
+  "bend_sources": {
+    "list": {
+      "original": "b2444cf060eb0def29caeb4dc6d170b318acd751ed6f1aa612d09d7ca14689ed",
+      "tuned": "1833c41731dc94fc58124ff52d0fa53fcc746c17ff1fa624cd262af7406c7f7f",
+      "fused": "d612171775eb40fba67c4a86b2ae53e7da30381b7b05b2505390233f4d57f15e"
+    },
+    "expression": {
+      "original": "93c464f08dba8f413d01ac7eae78b7f5b81e612191632ef87cbd7b936404fbb5",
+      "tuned": "5771dd48c887283bc738fbb710e4945b913bd5d4c675d115e0411a14bd607101"
+    },
+    "bst": {
+      "original": "6489cc5f72bc5c137e68ca54522468559bd9684fd1e94d72b754cfa5220e296a",
+      "tuned": "eff0ccf964401778f4026687ae36023d38040b7d9ecbd7411d9c8f9e93c127b8"
+    },
+    "editdist": {
+      "original": "b5e4b1d9dd01ae532aed1cae86b0ed4361e7a93a6a4da904fd0b8227c3354953",
+      "tuned": "a651c5b138cf34fad93cf86f46a4f6dbef43e8f0ba78f4c112b603b5d3e0ee5b"
+    }
+  },
+  "resource_guard": {
+    "rssLimitBytes": 3221225472,
+    "peakTreeRssBytes": 430231552,
+    "diskBudgetBytes": 335544320,
+    "diskReserveBytes": 5368709120,
+    "wallSeconds": 69.72402219939977
+  },
+  "timing_guard": {
+    "complete": true,
+    "wallSeconds": 137.06935999263078,
+    "peakTreeRssBytes": 25165824,
+    "diskReserveBytes": 5368709120,
+    "diskBudgetBytes": 805306368
+  },
+  "timing_harness_sha256": "d8519f8be1105eea2da10b0e45ec1ee2dccff545b0adf909d5e6afd2d1dc06a7"
+}

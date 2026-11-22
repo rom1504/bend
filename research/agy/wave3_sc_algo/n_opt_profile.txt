@@ -1,0 +1,95 @@
+Total samples: 48515 (duration ~486.00s)
+
+=== BY STAGE/PREFIX ===
+   21369 ( 44.0%)  RUNTIME
+   10122 ( 20.9%)  other
+    4392 (  9.1%)  p111_closure
+    4147 (  8.5%)  agy
+    3769 (  7.8%)  p88
+    1568 (  3.2%)  p98
+     766 (  1.6%)  p113
+     566 (  1.2%)  x187
+     524 (  1.1%)  f
+     299 (  0.6%)  p111
+     232 (  0.5%)  x185
+     203 (  0.4%)  nt
+     189 (  0.4%)  x181
+     120 (  0.2%)  x186
+      90 (  0.2%)  x188
+      67 (  0.1%)  x201
+      60 (  0.1%)  x202
+      29 (  0.1%)  p114h
+       2 (  0.0%)  p134
+       1 (  0.0%)  w2d
+
+=== TOP 35 SYMBOLS ===
+    3673 (  7.6%)  term_drop
+    3644 (  7.5%)  span_fade
+    3636 (  7.5%)  p113d_$p118borrow.read.agy_str_eq_go
+    3481 (  7.2%)  p113d_$p118borrow.read.p88_string_eq_go
+    1717 (  3.5%)  p113d_$p118borrow.read.index_hash
+    1691 (  3.5%)  p111_rt_sink
+    1509 (  3.1%)  p198_rfc_take2
+    1281 (  2.6%)  p111_rt_special_ctor
+    1212 (  2.5%)  p111_rt_take
+    1162 (  2.4%)  p113d_$p118borrow.read.p98_tag_eq
+    1072 (  2.2%)  p111_rt_keep
+     896 (  1.8%)  p125_rt_take2
+     793 (  1.6%)  p125_rt_ctor2
+     708 (  1.5%)  p198_rfc_take4
+     681 (  1.4%)  p111_$direct.p131i_insert
+     679 (  1.4%)  work_loop.constprop.0
+     600 (  1.2%)  p118_rt_borrow_scalar_safe
+     600 (  1.2%)  p111_rt_ctor
+     508 (  1.0%)  p113d_$direct.index_find
+     410 (  0.8%)  p118_destination_fill
+     376 (  0.8%)  data_start
+     367 (  0.8%)  p118_rt_extend1
+     267 (  0.6%)  p125_rt_take4
+     261 (  0.5%)  p113d_$p128borrow.owned.agy_str_eq_go
+     253 (  0.5%)  p113d_$direct.p177s_loop
+     249 (  0.5%)  p113d_$direct.Bool.and
+     248 (  0.5%)  p113d_$direct.p98_tag_eq
+     234 (  0.5%)  p113d_$direct.ks
+     221 (  0.5%)  p113d_$p118.trmc.$direct.String.append
+     220 (  0.5%)  p113d_$direct.agy_str_eq
+     217 (  0.4%)  p113d_$p118borrow.read.ix
+     214 (  0.4%)  p125_rt_ctor4
+     204 (  0.4%)  ctr_take
+     198 (  0.4%)  p111_rt_return
+     182 (  0.4%)  p113d_$p118borrow.read.agy_str_eq
+
+=== 15s TIMELINE (top 4 stages + top 2 syms) ===
+     0-  15s (1470): [RUNTIME:45%, p111_closure:16%, f:13%, other:12%] | p113d_$p118borrow.read.agy_str_eq_go:9%, span_fade:8%
+    15-  30s (1500): [RUNTIME:53%, p111_closure:15%, f:12%, other:11%] | term_drop:12%, span_fade:9%
+    30-  45s (1500): [RUNTIME:49%, agy:15%, p111_closure:13%, f:11%] | p113d_$p118borrow.read.agy_str_eq_go:15%, span_fade:10%
+    45-  60s (1498): [RUNTIME:44%, other:20%, p88:14%, p111_closure:12%] | p113d_$p118borrow.read.p88_string_eq_go:14%, span_fade:9%
+    60-  75s (1500): [RUNTIME:39%, other:27%, p88:13%, p111_closure:10%] | p113d_$p118borrow.read.p88_string_eq_go:13%, span_fade:7%
+    75-  90s (1496): [RUNTIME:43%, other:22%, p88:14%, p111_closure:11%] | p113d_$p118borrow.read.p88_string_eq_go:14%, span_fade:10%
+    90- 105s (1500): [RUNTIME:39%, other:24%, p88:16%, p111_closure:10%] | p113d_$p118borrow.read.p88_string_eq_go:15%, span_fade:7%
+   105- 120s (1500): [RUNTIME:38%, p88:22%, other:19%, p98:10%] | p113d_$p118borrow.read.p88_string_eq_go:20%, p113d_$p118borrow.read.p98_tag_eq:8%
+   120- 135s (1500): [RUNTIME:35%, p88:26%, other:16%, p111_closure:13%] | p113d_$p118borrow.read.p88_string_eq_go:23%, span_fade:8%
+   135- 150s (1500): [RUNTIME:43%, other:20%, p88:19%, p111_closure:7%] | p113d_$p118borrow.read.p88_string_eq_go:17%, span_fade:9%
+   150- 165s (1500): [RUNTIME:41%, other:24%, p88:14%, p98:7%] | p113d_$p118borrow.read.p88_string_eq_go:14%, span_fade:9%
+   165- 180s (1494): [RUNTIME:40%, other:17%, p88:15%, p111_closure:12%] | p113d_$p118borrow.read.p88_string_eq_go:14%, span_fade:7%
+   180- 195s (1500): [RUNTIME:38%, other:18%, p88:15%, p111_closure:11%] | p113d_$p118borrow.read.p88_string_eq_go:14%, span_fade:6%
+   195- 210s (1500): [RUNTIME:38%, other:21%, p88:16%, p111_closure:9%] | p113d_$p118borrow.read.p88_string_eq_go:15%, p113d_$p118borrow.read.p98_tag_eq:7%
+   210- 225s (1500): [RUNTIME:43%, other:22%, p88:14%, p111_closure:9%] | p113d_$p118borrow.read.p88_string_eq_go:13%, term_drop:9%
+   225- 240s (1500): [RUNTIME:45%, other:17%, p88:13%, p111_closure:12%] | p113d_$p118borrow.read.p88_string_eq_go:13%, span_fade:10%
+   240- 255s (1500): [RUNTIME:46%, other:19%, agy:13%, p111:8%] | term_drop:12%, p113d_$p118borrow.read.agy_str_eq_go:11%
+   255- 270s (1500): [RUNTIME:46%, other:26%, agy:14%, p111_closure:6%] | p113d_$p118borrow.read.agy_str_eq_go:13%, term_drop:11%
+   270- 285s (1500): [RUNTIME:47%, other:23%, agy:20%, p111_closure:6%] | p113d_$p118borrow.read.agy_str_eq_go:17%, term_drop:15%
+   285- 300s (1500): [RUNTIME:41%, other:21%, agy:18%, p111_closure:8%] | p113d_$p118borrow.read.agy_str_eq_go:16%, term_drop:8%
+   300- 315s (1500): [RUNTIME:46%, other:21%, agy:11%, p111_closure:8%] | p113d_$p118borrow.read.agy_str_eq_go:10%, term_drop:8%
+   315- 330s (1500): [RUNTIME:46%, other:23%, agy:11%, p111_closure:8%] | p113d_$p118borrow.read.agy_str_eq_go:9%, term_drop:8%
+   330- 345s (1500): [RUNTIME:44%, other:23%, agy:11%, p111_closure:9%] | p113d_$p118borrow.read.agy_str_eq_go:9%, term_drop:8%
+   345- 360s (1500): [RUNTIME:43%, other:23%, agy:11%, p111_closure:8%] | p113d_$p118borrow.read.agy_str_eq_go:10%, term_drop:7%
+   360- 375s (1500): [RUNTIME:44%, other:24%, agy:10%, p111_closure:8%] | p113d_$p118borrow.read.agy_str_eq_go:8%, span_fade:8%
+   375- 390s (1500): [RUNTIME:46%, other:24%, agy:11%, p111_closure:8%] | p113d_$p118borrow.read.agy_str_eq_go:9%, term_drop:8%
+   390- 405s (1500): [RUNTIME:43%, other:24%, agy:11%, p111_closure:8%] | term_drop:9%, p113d_$p118borrow.read.agy_str_eq_go:9%
+   405- 420s (1500): [RUNTIME:45%, other:24%, agy:10%, p111_closure:8%] | p113d_$p118borrow.read.agy_str_eq_go:9%, term_drop:9%
+   420- 435s (1500): [RUNTIME:43%, other:26%, agy:10%, p111_closure:8%] | p113d_$p118borrow.read.agy_str_eq_go:8%, term_drop:7%
+   435- 450s (1496): [RUNTIME:43%, other:24%, agy:10%, p111_closure:9%] | p113d_$p118borrow.read.agy_str_eq_go:8%, term_drop:7%
+   450- 465s (1500): [RUNTIME:42%, other:27%, agy:11%, p111_closure:8%] | p113d_$p118borrow.read.agy_str_eq_go:9%, term_drop:8%
+   465- 480s (1500): [RUNTIME:57%, other:20%, agy:12%, x201:4%] | p113d_$p118borrow.read.index_hash:17%, term_drop:16%
+   480- 495s ( 561): [RUNTIME:84%, agy:8%, other:7%, nt:0%] | ctr_take:36%, p198_rfc_take2:19%

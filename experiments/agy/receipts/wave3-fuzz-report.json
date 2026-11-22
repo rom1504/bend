@@ -1,0 +1,79 @@
+{
+  "campaign": "wave3_track_q1_fuzz_and_observer",
+  "target": {
+    "api": "/home/ai/bend2_agy/selfhost/build/agy/wave2_unified/api.mjs",
+    "runtime": "/home/ai/bend2_agy/selfhost/build/agy/unified/runtime-agy.o"
+  },
+  "fuzzer": {
+    "script": "/home/ai/bend2_agy/research/agy/wave3_fuzz/fuzz_diff.py",
+    "seed": 20261122,
+    "per_family": 35,
+    "total_programs": 245,
+    "total_pass": 245,
+    "total_wrong_code_mismatches": 0,
+    "families": {
+      "1_ctfe_arith": {"total": 35, "pass": 35, "fail": 0},
+      "2_rorec_adt": {"total": 35, "pass": 35, "fail": 0},
+      "3_f32_xmm": {"total": 35, "pass": 35, "fail": 0},
+      "4_map_ops": {"total": 35, "pass": 35, "fail": 0},
+      "5_bst_flow_reuse": {"total": 35, "pass": 35, "fail": 0},
+      "6_w2d_list_arr": {"total": 35, "pass": 35, "fail": 0},
+      "7_dp_deadarr": {"total": 35, "pass": 35, "fail": 0}
+    },
+    "note": "Initial 245-program run passed 244/245 with 0 mismatches and 1 generator linearity error (7_dp_deadarr__028 used +sh_prev on linear Array<U32>, rejected identically by upstream and Wave 2); fixed generator and re-ran 7_dp_deadarr for 35/35 PASS."
+  },
+  "observer_gate": {
+    "abi_contract_and_observer_c": {
+      "abi_cases": 44,
+      "observer_cases": 2,
+      "pass": 46,
+      "total": 46
+    },
+    "boot_time_live_metadata_probes": {
+      "modes": ["normal", "cap-no8", "all-hot"],
+      "probes": ["map_set_del_get", "bst_zipper", "flow_native", "perceus_reuse", "listapp_arrlist"],
+      "pass": 15,
+      "total": 15,
+      "violations": 0
+    },
+    "mid_run_live_cid_hot_mutation": {
+      "probe": "repro_mapdel_livehot",
+      "reproducer_bend": "/home/ai/bend2_agy/research/agy/wave3_fuzz/repro_mapdel_livehot.bend",
+      "reproducer_hook": "/home/ai/bend2_agy/research/agy/wave3_fuzz/repro_mapdel_livehot_hook.c",
+      "pre_fix_violations": 2,
+      "post_fix_violations": 0,
+      "status": "FIXED_AND_VERIFIED"
+    }
+  },
+  "post_fix_rebuild": {
+    "compiler_bend": "/home/ai/bend2_agy/selfhost/build/agy/wave2_unified/compiler.bend",
+    "compiler_bytes": 2475442,
+    "api_mjs": "/home/ai/bend2_agy/selfhost/build/agy/wave2_unified/api.mjs",
+    "api_exports_checked": 5817,
+    "abi_observer_probe": "44+2 PASS",
+    "boot_time_observer_gate": "15/15 PASS (0 violations)",
+    "mid_run_live_cid_hot_repro": "PASS (violations=0)"
+  },
+  "bugs_found": [
+    {
+      "id": "Q1-BUG-001",
+      "severity": "live_metadata_contract_violation",
+      "status": "fixed_and_verified",
+      "pass": "AGY-W2C-1 (Map.del)",
+      "file": "/home/ai/bend2_agy/research/agy/wave2c_map/apply_map_fast.py",
+      "lines": "563-572, 691-696",
+      "summary": "agy_map_del_machine checked capabilities & 9 == 9 but omitted !cid_hot[mnode]. When cid_hot[MNode] was mutated live to 1 after Map.set built an unsealed 0x02 map, Map.del took the fast path and spliced unsealed 0x02 children into the root MNode instead of bailing to slow (p125_rt_ctor3).",
+      "fix_applied": "Added the 5-instruction !cid_hot[mnode] check immediately after line 567 in agy_map_del_machine (matching agy_map_set_machine lines 324-332). Rebuilt wave2_unified/api.mjs and verified repro_mapdel_livehot -> violations=0."
+    },
+    {
+      "id": "Q1-BUG-002",
+      "severity": "latent_soundness_and_live_metadata",
+      "status": "fixed_and_verified",
+      "pass": "AGY-W2C-LISTAPP",
+      "file": "/home/ai/bend2_agy/research/agy/wave2c_recagg/apply_list_arr.py",
+      "lines": "71, 147-218",
+      "summary": "Dormant because agy_la_scan_con checks p111_rt_take while $p118.trmc.* already specialized to p125_rt_take2. If activated, agy_la_emit_fast (1) omitted capabilities & 9 == 9 and !cid_hot[con_cid] guards, and (2) accepted 0x82(rc=1) nodes and spliced unsealed 0x02 tail b into heap[loc+1], violating the RFC child-sealing invariant (ERR_RFCS in span_fade if shared).",
+      "fix_applied": "Added capabilities & 9 == 9 and !cid_hot[con_cid] entry guards, and restricted in-place walk to tag == 0x02 only. Rebuilt wave2_unified/api.mjs (5817 exports checked) and passed observer_wave2_gate.py 15/15."
+    }
+  ]
+}

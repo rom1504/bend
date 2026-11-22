@@ -560,11 +560,16 @@ def agy_map_del_machine(+prefix: String, +slow: String, +mtip: U32, +mleaf: U32,
   +l_pfree = prefix ++ "_pf"
   +l_sink = prefix ++ "_sn"
   x188_many([
-    # Live descriptor checks: capabilities & 1 != 0 (fast free)
+    # Live descriptor checks: capabilities & 9 == 9, !cid_hot[mnode]
     x188_i2("movq",X187Rip{"p111_program",88,0},x188_reg(0,64)),
     x188_i2("andl",X187Imm{9,0},x188_reg(0,32)),
     x188_i2("cmpl",X187Imm{9,0},x188_reg(0,32)),
     x188_i1("jne",X187Target{slow}),
+    x188_i2("movq",X187Rip{"p111_program",136,0},x188_reg(0,64)),
+    x188_i2("movl",X187Imm{mnode,0},x188_reg(10,32)),
+    x188_i2("movzbl",X187Indexed{0,10,1,0},x188_reg(11,32)),
+    x188_i2("testl",x188_reg(11,32),x188_reg(11,32)),
+    x188_i1("jnz",X187Target{slow}),
     x188_i1("pushq",x188_reg(5,64)),
     x188_i1("pushq",x188_reg(3,64)),
     x188_i1("pushq",x188_reg(12,64)),

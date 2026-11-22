@@ -156,6 +156,16 @@ def agy_la_emit_fast(+symbol: String, +slow_sym: String, +nil_cid: U32, +con_cid
     # Fast path only when p118_root == 0 (top-level call)
     x188_i2("testq",x188_reg(1,64),x188_reg(1,64)),
     x188_i1("jne",X187Target{slow_sym}),
+    # Live descriptor checks: capabilities & 9 == 9, !cid_hot[con_cid]
+    x188_i2("movq",X187Rip{"p111_program",88,0},x188_reg(9,64)),
+    x188_i2("andl",X187Imm{9,0},x188_reg(9,32)),
+    x188_i2("cmpl",X187Imm{9,0},x188_reg(9,32)),
+    x188_i1("jne",X187Target{slow_sym}),
+    x188_i2("movq",X187Rip{"p111_program",136,0},x188_reg(9,64)),
+    x188_i2("movl",X187Imm{con_cid,0},x188_reg(10,32)),
+    x188_i2("movzbl",X187Indexed{9,10,1,0},x188_reg(11,32)),
+    x188_i2("testl",x188_reg(11,32),x188_reg(11,32)),
+    x188_i1("jnz",X187Target{slow_sym}),
     # Check cid(a) == nil_cid -> return b
     x188_i2("movq",x188_reg(6,64),x188_reg(9,64)),
     x188_i2("shrq",X187Imm{40,0},x188_reg(9,64)),
@@ -173,21 +183,13 @@ def agy_la_emit_fast(+symbol: String, +slow_sym: String, +nil_cid: U32, +con_cid
     x188_i2("movq",x188_reg(6,64),x188_reg(8,64)),
     x188_i2("movabsq",X187Imm{4294967295,255},x188_reg(11,64)),
     x188_label(l_walk),
-    # Check cur (%r8) is uniquely owned: tag==0x02 or (tag==0x82 && (heap[rfc]&0xffffff)==1)
+    # Check cur (%r8) is strictly unshared owned: tag == 0x02 ONLY (never mutate 0x82 RFC cells in-place!)
     x188_i2("movq",x188_reg(8,64),x188_reg(9,64)),
     x188_i2("andq",x188_reg(11,64),x188_reg(9,64)),
     x188_i2("movq",x188_reg(8,64),x188_reg(1,64)),
     x188_i2("shrq",X187Imm{56,0},x188_reg(1,64)),
     x188_i2("cmpq",X187Imm{2,0},x188_reg(1,64)),
-    x188_i1("je",X187Target{l_lok}),
-    x188_i2("cmpq",X187Imm{130,0},x188_reg(1,64)),
     x188_i1("jne",X187Target{l_bail}),
-    x188_i2("movq",X187Indexed{10,9,8,0},x188_reg(9,64)),
-    x188_i2("movq",x188_reg(9,64),x188_reg(1,64)),
-    x188_i2("andq",X187Imm{16777215,0},x188_reg(1,64)),
-    x188_i2("cmpq",X187Imm{1,0},x188_reg(1,64)),
-    x188_i1("jne",X187Target{l_bail}),
-    x188_i2("shrq",X187Imm{24,0},x188_reg(9,64)),
     x188_label(l_lok),
     # Reject static terms (loc < HEAP_OFF) before any in-place mutation
     x188_i2("movq",X187Rip{"p111_program",64,0},x188_reg(1,64)),

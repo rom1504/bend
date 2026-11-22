@@ -1,0 +1,346 @@
+{
+  "api": "/home/ai/bend2_agy/selfhost/build/agy/wave5_c1/test_streq.mjs",
+  "import_ms": 286.28,
+  "prep_ms": 312.48,
+  "jobs_ms": 26403.51,
+  "wall_ms": 31404.61,
+  "total_plan_ms": 2605.89,
+  "total_emit_ms": 23783.3,
+  "all_ok": true,
+  "rows": [
+    {
+      "id": "gameoflife",
+      "ok": true,
+      "bytes": 68728,
+      "plan_ms": 828.4095509999999,
+      "emit_ms": 15459.73762,
+      "total_ms": 16292.383963999999,
+      "sha256": "a64ca2b4c9a44eb872499602159ae27275dbbb6c1e924e75147ea8c8bbc36995"
+    },
+    {
+      "id": "nbody",
+      "ok": true,
+      "bytes": 60088,
+      "plan_ms": 1071.7074380000013,
+      "emit_ms": 4155.317429999999,
+      "total_ms": 5232.429218999998,
+      "sha256": "1868987111ac287e40faeb89c3c5593f913d20d77f29a3c4c262f1a7baf34ba8"
+    },
+    {
+      "id": "raytrace",
+      "ok": true,
+      "bytes": 102336,
+      "plan_ms": 705.769185000001,
+      "emit_ms": 4168.2427400000015,
+      "total_ms": 4878.641643999999,
+      "sha256": "d7012fcf422090b6f2f99bde1f843a0e3e9a1ccb06767a0adc1024467069bc26"
+    }
+  ],
+  "profile": {
+    "grand_ms": 27100.99,
+    "top_self": [
+      {
+        "fn": "(garbage collector) @ :0",
+        "self_ms": 2378.93,
+        "self_pct": 8.78,
+        "total_ms": 2378.93
+      },
+      {
+        "fn": "char_len @ test_streq.mjs:81",
+        "self_ms": 1521.94,
+        "self_pct": 5.62,
+        "total_ms": 1521.94
+      },
+      {
+        "fn": "(anon) @ test_streq.mjs:13025",
+        "self_ms": 1451.94,
+        "self_pct": 5.36,
+        "total_ms": 1573.98
+      },
+      {
+        "fn": "run_loop @ test_streq.mjs:146",
+        "self_ms": 1420.33,
+        "self_pct": 5.24,
+        "total_ms": 23532.65
+      },
+      {
+        "fn": "(anon) @ test_streq.mjs:13036",
+        "self_ms": 776.13,
+        "self_pct": 2.86,
+        "total_ms": 894.24
+      },
+      {
+        "fn": "(anon) @ test_streq.mjs:84763",
+        "self_ms": 654.14,
+        "self_pct": 2.41,
+        "total_ms": 731.13
+      },
+      {
+        "fn": "(anon) @ test_streq.mjs:13031",
+        "self_ms": 620.52,
+        "self_pct": 2.29,
+        "total_ms": 751.24
+      },
+      {
+        "fn": "$p111v_get @ test_streq.mjs:53220",
+        "self_ms": 596.67,
+        "self_pct": 2.2,
+        "total_ms": 1622.22
+      },
+      {
+        "fn": "(anon) @ test_streq.mjs:84781",
+        "self_ms": 593.26,
+        "self_pct": 2.19,
+        "total_ms": 2054.93
+      },
+      {
+        "fn": "$$p111v_get @ test_streq.mjs:158087",
+        "self_ms": 518.2,
+        "self_pct": 1.91,
+        "total_ms": 5052.78
+      },
+      {
+        "fn": "run_tail @ test_streq.mjs:135",
+        "self_ms": 518.05,
+        "self_pct": 1.91,
+        "total_ms": 518.05
+      },
+      {
+        "fn": "(anon) @ test_streq.mjs:84770",
+        "self_ms": 495.71,
+        "self_pct": 1.83,
+        "total_ms": 545.61
+      },
+      {
+        "fn": "run_clo @ test_streq.mjs:139",
+        "self_ms": 447.05,
+        "self_pct": 1.65,
+        "total_ms": 447.05
+      },
+      {
+        "fn": "$index_hash @ test_streq.mjs:12910",
+        "self_ms": 386.17,
+        "self_pct": 1.42,
+        "total_ms": 1490.09
+      },
+      {
+        "fn": "$p113k_put @ test_streq.mjs:66476",
+        "self_ms": 383.78,
+        "self_pct": 1.42,
+        "total_ms": 1679.59
+      },
+      {
+        "fn": "(anon) @ test_streq.mjs:103782",
+        "self_ms": 319.0,
+        "self_pct": 1.18,
+        "total_ms": 375.27
+      },
+      {
+        "fn": "$p98_tag_eq @ test_streq.mjs:50619",
+        "self_ms": 294.71,
+        "self_pct": 1.09,
+        "total_ms": 849.73
+      },
+      {
+        "fn": "(anon) @ test_streq.mjs:84776",
+        "self_ms": 292.71,
+        "self_pct": 1.08,
+        "total_ms": 1490.27
+      },
+      {
+        "fn": "(anon) @ test_streq.mjs:103806",
+        "self_ms": 270.06,
+        "self_pct": 1.0,
+        "total_ms": 311.72
+      },
+      {
+        "fn": "$index_find @ test_streq.mjs:12948",
+        "self_ms": 269.55,
+        "self_pct": 0.99,
+        "total_ms": 507.26
+      },
+      {
+        "fn": "compileSourceTextModule @ utils:317",
+        "self_ms": 267.9,
+        "self_pct": 0.99,
+        "total_ms": 267.9
+      },
+      {
+        "fn": "(anon) @ test_streq.mjs:66614",
+        "self_ms": 248.45,
+        "self_pct": 0.92,
+        "total_ms": 2752.36
+      },
+      {
+        "fn": "$p113k_join @ test_streq.mjs:66624",
+        "self_ms": 239.16,
+        "self_pct": 0.88,
+        "total_ms": 4672.99
+      },
+      {
+        "fn": "$p111v_put @ test_streq.mjs:53224",
+        "self_ms": 227.28,
+        "self_pct": 0.84,
+        "total_ms": 712.81
+      },
+      {
+        "fn": "$p113k_get @ test_streq.mjs:66460",
+        "self_ms": 223.0,
+        "self_pct": 0.82,
+        "total_ms": 1347.16
+      }
+    ],
+    "top_total": [
+      {
+        "fn": "(root) @ :0",
+        "total_ms": 27100.99,
+        "total_pct": 100.0,
+        "self_ms": 0.0
+      },
+      {
+        "fn": "run_loop @ test_streq.mjs:146",
+        "total_ms": 23532.65,
+        "total_pct": 86.83,
+        "self_ms": 1420.33
+      },
+      {
+        "fn": "(anon) @ batch_emit_timed.mjs:1",
+        "total_ms": 16109.4,
+        "total_pct": 59.44,
+        "self_ms": 11.46
+      },
+      {
+        "fn": "(anon) @ test_streq.mjs:154",
+        "total_ms": 15811.44,
+        "total_pct": 58.34,
+        "self_ms": 0.0
+      },
+      {
+        "fn": "$$nt_choose @ test_streq.mjs:157371",
+        "total_ms": 14404.01,
+        "total_pct": 53.15,
+        "self_ms": 44.52
+      },
+      {
+        "fn": "(anon) @ test_streq.mjs:167093",
+        "total_ms": 7214.07,
+        "total_pct": 26.62,
+        "self_ms": 0.0
+      },
+      {
+        "fn": "$$p169np_plan @ test_streq.mjs:160735",
+        "total_ms": 7162.25,
+        "total_pct": 26.43,
+        "self_ms": 0.0
+      },
+      {
+        "fn": "$x198pw_plan @ test_streq.mjs:155051",
+        "total_ms": 7147.72,
+        "total_pct": 26.37,
+        "self_ms": 0.0
+      },
+      {
+        "fn": "$$p113k_body @ test_streq.mjs:158791",
+        "total_ms": 7006.94,
+        "total_pct": 25.85,
+        "self_ms": 3.34
+      },
+      {
+        "fn": "$p113k_body @ test_streq.mjs:67257",
+        "total_ms": 6988.16,
+        "total_pct": 25.79,
+        "self_ms": 0.0
+      },
+      {
+        "fn": "(anon) @ test_streq.mjs:67253",
+        "total_ms": 6984.08,
+        "total_pct": 25.77,
+        "self_ms": 12.47
+      },
+      {
+        "fn": "$$p113k_stmt @ test_streq.mjs:158792",
+        "total_ms": 6975.06,
+        "total_pct": 25.74,
+        "self_ms": 6.22
+      },
+      {
+        "fn": "(anon) @ test_streq.mjs:167063",
+        "total_ms": 6151.85,
+        "total_pct": 22.7,
+        "self_ms": 0.0
+      },
+      {
+        "fn": "(anon) @ test_streq.mjs:154112",
+        "total_ms": 5872.76,
+        "total_pct": 21.67,
+        "self_ms": 2.35
+      },
+      {
+        "fn": "$x187_cursor_good @ test_streq.mjs:154121",
+        "total_ms": 5872.52,
+        "total_pct": 21.67,
+        "self_ms": 2.08
+      },
+      {
+        "fn": "$$p111v_get @ test_streq.mjs:158087",
+        "total_ms": 5052.78,
+        "total_pct": 18.64,
+        "self_ms": 518.2
+      },
+      {
+        "fn": "$$p168_request_mode @ test_streq.mjs:159345",
+        "total_ms": 4980.94,
+        "total_pct": 18.38,
+        "self_ms": 0.0
+      },
+      {
+        "fn": "(anon) @ test_streq.mjs:89748",
+        "total_ms": 4972.56,
+        "total_pct": 18.35,
+        "self_ms": 0.0
+      },
+      {
+        "fn": "(anon) @ test_streq.mjs:67861",
+        "total_ms": 4700.02,
+        "total_pct": 17.34,
+        "self_ms": 0.0
+      },
+      {
+        "fn": "$p113k_join @ test_streq.mjs:66624",
+        "total_ms": 4672.99,
+        "total_pct": 17.24,
+        "self_ms": 239.16
+      },
+      {
+        "fn": "$p113k_body_join @ test_streq.mjs:67273",
+        "total_ms": 4620.9,
+        "total_pct": 17.05,
+        "self_ms": 6.29
+      },
+      {
+        "fn": "(anon) @ test_streq.mjs:67299",
+        "total_ms": 4612.51,
+        "total_pct": 17.02,
+        "self_ms": 2.08
+      },
+      {
+        "fn": "$$p113k_join_record @ test_streq.mjs:158770",
+        "total_ms": 4433.83,
+        "total_pct": 16.36,
+        "self_ms": 0.0
+      },
+      {
+        "fn": "$p113k_join_bucket @ test_streq.mjs:66587",
+        "total_ms": 4433.83,
+        "total_pct": 16.36,
+        "self_ms": 0.0
+      },
+      {
+        "fn": "$x181_program_private @ test_streq.mjs:145953",
+        "total_ms": 4016.06,
+        "total_pct": 14.82,
+        "self_ms": 0.0
+      }
+    ]
+  }
+}

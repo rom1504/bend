@@ -8,6 +8,7 @@ cached Handwritten C reference binaries & timings.
 
 import argparse
 from concurrent.futures import ThreadPoolExecutor
+import fcntl
 import hashlib
 import json
 import math
@@ -622,71 +623,77 @@ def main():
 
         rows = []
         all_ok = True
-        for fam in selected:
-            group = "upstream" if fam in UPSTREAM_FAMILIES else "tuned"
-            c_res = c_results[fam]
-            if not c_res.get("ok"):
-                all_ok = False
-                rows.append({
+        lock_fd = open(f"/tmp/agy_cpu{args.cpu}_bench.lock", "w")
+        try:
+            fcntl.flock(lock_fd, fcntl.LOCK_EX)
+            for fam in selected:
+                group = "upstream" if fam in UPSTREAM_FAMILIES else "tuned"
+                c_res = c_results[fam]
+                if not c_res.get("ok"):
+                    all_ok = False
+                    rows.append({
+                        "name": fam,
+                        "group": group,
+                        "status": "FAIL",
+                        "error": f"C ref failed: {c_res.get('error')}",
+                    })
+                    continue
+
+                if fam in build_errors:
+                    all_ok = False
+                    rows.append({
+                        "name": fam,
+                        "group": group,
+                        "c_ms": c_res["ms"],
+                        "status": "FAIL",
+                        "error": build_errors[fam],
+                    })
+                    continue
+
+                argv = [str(bend_bins[fam]), *RTS_ARGS]
+                if fam in UPSTREAM_FAMILIES:
+                    b_res = measure_upstream(argv, fam, size, args.runs, args.cpu)
+                else:
+                    b_res = measure_tuned(
+                        argv,
+                        fam,
+                        seed_banks[fam],
+                        TUNED_POINTS[fam]["init_reps_bend"],
+                        args.runs,
+                        args.small,
+                        args.cpu,
+                    )
+
+                if not b_res.get("ok"):
+                    all_ok = False
+                    rows.append({
+                        "name": fam,
+                        "group": group,
+                        "c_ms": c_res["ms"],
+                        "status": "FAIL",
+                        "error": b_res.get("error"),
+                    })
+                    continue
+
+                ratio = b_res["ms"] / c_res["ms"] if c_res["ms"] > 0 else float("nan")
+                c16_ms = CLANG16_REF_MS[fam] if not args.small else None
+                ratio_c16 = (b_res["ms"] / c16_ms) if (c16_ms and c16_ms > 0) else None
+                row = {
                     "name": fam,
                     "group": group,
-                    "status": "FAIL",
-                    "error": f"C ref failed: {c_res.get('error')}",
-                })
-                continue
-
-            if fam in build_errors:
-                all_ok = False
-                rows.append({
-                    "name": fam,
-                    "group": group,
-                    "c_ms": c_res["ms"],
-                    "status": "FAIL",
-                    "error": build_errors[fam],
-                })
-                continue
-
-            argv = [str(bend_bins[fam]), *RTS_ARGS]
-            if fam in UPSTREAM_FAMILIES:
-                b_res = measure_upstream(argv, fam, size, args.runs, args.cpu)
-            else:
-                b_res = measure_tuned(
-                    argv,
-                    fam,
-                    seed_banks[fam],
-                    TUNED_POINTS[fam]["init_reps_bend"],
-                    args.runs,
-                    args.small,
-                    args.cpu,
-                )
-
-            if not b_res.get("ok"):
-                all_ok = False
-                rows.append({
-                    "name": fam,
-                    "group": group,
-                    "c_ms": c_res["ms"],
-                    "status": "FAIL",
-                    "error": b_res.get("error"),
-                })
-                continue
-
-            ratio = b_res["ms"] / c_res["ms"] if c_res["ms"] > 0 else float("nan")
-            c16_ms = CLANG16_REF_MS[fam] if not args.small else None
-            ratio_c16 = (b_res["ms"] / c16_ms) if (c16_ms and c16_ms > 0) else None
-            row = {
-                "name": fam,
-                "group": group,
-                "c_ms": round(c_res["ms"], 4),
-                "bend_ms": round(b_res["ms"], 4),
-                "ratio": round(ratio, 4) if math.isfinite(ratio) else None,
-                "c16_ms": round(c16_ms, 4) if c16_ms is not None else None,
-                "ratio_c16": round(ratio_c16, 4) if ratio_c16 is not None else None,
-                "status": "PASS",
-                "c": c_res,
-                "bend": b_res,
-            }
-            rows.append(row)
+                    "c_ms": round(c_res["ms"], 4),
+                    "bend_ms": round(b_res["ms"], 4),
+                    "ratio": round(ratio, 4) if math.isfinite(ratio) else None,
+                    "c16_ms": round(c16_ms, 4) if c16_ms is not None else None,
+                    "ratio_c16": round(ratio_c16, 4) if ratio_c16 is not None else None,
+                    "status": "PASS",
+                    "c": c_res,
+                    "bend": b_res,
+                }
+                rows.append(row)
+        finally:
+            fcntl.flock(lock_fd, fcntl.LOCK_UN)
+            lock_fd.close()
     finally:
         shutil.rmtree(work_dir, ignore_errors=True)
 

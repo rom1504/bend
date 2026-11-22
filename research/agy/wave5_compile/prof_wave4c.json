@@ -1,0 +1,346 @@
+{
+  "api": "/home/ai/bend2_agy/selfhost/build/agy/wave4c_unified/api.mjs",
+  "import_ms": 254.28,
+  "prep_ms": 253.32,
+  "jobs_ms": 40269.06,
+  "wall_ms": 48275.76,
+  "total_plan_ms": 2499.91,
+  "total_emit_ms": 37740.8,
+  "all_ok": true,
+  "rows": [
+    {
+      "id": "gameoflife",
+      "ok": true,
+      "bytes": 68728,
+      "plan_ms": 800.2331399999999,
+      "emit_ms": 26733.596802,
+      "total_ms": 27539.405892,
+      "sha256": "a64ca2b4c9a44eb872499602159ae27275dbbb6c1e924e75147ea8c8bbc36995"
+    },
+    {
+      "id": "nbody",
+      "ok": true,
+      "bytes": 60088,
+      "plan_ms": 895.6351309999991,
+      "emit_ms": 5411.669984999997,
+      "total_ms": 6311.762475999996,
+      "sha256": "1868987111ac287e40faeb89c3c5593f913d20d77f29a3c4c262f1a7baf34ba8"
+    },
+    {
+      "id": "raytrace",
+      "ok": true,
+      "bytes": 102336,
+      "plan_ms": 804.0443710000036,
+      "emit_ms": 5595.534521000001,
+      "total_ms": 6417.857678,
+      "sha256": "d7012fcf422090b6f2f99bde1f843a0e3e9a1ccb06767a0adc1024467069bc26"
+    }
+  ],
+  "profile": {
+    "grand_ms": 40875.7,
+    "top_self": [
+      {
+        "fn": "char_len @ api.mjs:81",
+        "self_ms": 6301.85,
+        "self_pct": 15.42,
+        "total_ms": 6301.85
+      },
+      {
+        "fn": "$agy_str_eq @ api.mjs:496",
+        "self_ms": 3651.7,
+        "self_pct": 8.93,
+        "total_ms": 8076.04
+      },
+      {
+        "fn": "(garbage collector) @ :0",
+        "self_ms": 2187.52,
+        "self_pct": 5.35,
+        "total_ms": 2187.52
+      },
+      {
+        "fn": "run_loop @ api.mjs:146",
+        "self_ms": 1389.89,
+        "self_pct": 3.4,
+        "total_ms": 37368.24
+      },
+      {
+        "fn": "(anon) @ api.mjs:13061",
+        "self_ms": 1289.45,
+        "self_pct": 3.15,
+        "total_ms": 1391.03
+      },
+      {
+        "fn": "$x185_sf_source @ api.mjs:102222",
+        "self_ms": 1212.97,
+        "self_pct": 2.97,
+        "total_ms": 2120.05
+      },
+      {
+        "fn": "$x186_e_kill_facts @ api.mjs:103792",
+        "self_ms": 931.99,
+        "self_pct": 2.28,
+        "total_ms": 3220.53
+      },
+      {
+        "fn": "$x186_e_kill_aliases @ api.mjs:103822",
+        "self_ms": 865.27,
+        "self_pct": 2.12,
+        "total_ms": 2631.06
+      },
+      {
+        "fn": "$index_bucket @ api.mjs:603",
+        "self_ms": 779.66,
+        "self_pct": 1.91,
+        "total_ms": 2865.61
+      },
+      {
+        "fn": "(anon) @ api.mjs:13072",
+        "self_ms": 697.66,
+        "self_pct": 1.71,
+        "total_ms": 794.46
+      },
+      {
+        "fn": "(anon) @ api.mjs:13067",
+        "self_ms": 677.62,
+        "self_pct": 1.66,
+        "total_ms": 766.99
+      },
+      {
+        "fn": "(anon) @ api.mjs:103818",
+        "self_ms": 564.99,
+        "self_pct": 1.38,
+        "total_ms": 3791.57
+      },
+      {
+        "fn": "(anon) @ api.mjs:84799",
+        "self_ms": 554.5,
+        "self_pct": 1.36,
+        "total_ms": 624.22
+      },
+      {
+        "fn": "$p111v_get @ api.mjs:53256",
+        "self_ms": 493.21,
+        "self_pct": 1.21,
+        "total_ms": 1554.15
+      },
+      {
+        "fn": "(anon) @ api.mjs:84817",
+        "self_ms": 475.72,
+        "self_pct": 1.16,
+        "total_ms": 2746.1
+      },
+      {
+        "fn": "$index_hash @ api.mjs:12946",
+        "self_ms": 463.31,
+        "self_pct": 1.13,
+        "total_ms": 1594.09
+      },
+      {
+        "fn": "$p88_string_eq @ api.mjs:456",
+        "self_ms": 457.46,
+        "self_pct": 1.12,
+        "total_ms": 1311.64
+      },
+      {
+        "fn": "(anon) @ api.mjs:84806",
+        "self_ms": 424.67,
+        "self_pct": 1.04,
+        "total_ms": 449.48
+      },
+      {
+        "fn": "run_clo @ api.mjs:139",
+        "self_ms": 418.5,
+        "self_pct": 1.02,
+        "total_ms": 418.5
+      },
+      {
+        "fn": "(anon) @ api.mjs:103842",
+        "self_ms": 404.03,
+        "self_pct": 0.99,
+        "total_ms": 3018.34
+      },
+      {
+        "fn": "$x186_e_find @ api.mjs:103903",
+        "self_ms": 396.91,
+        "self_pct": 0.97,
+        "total_ms": 1404.59
+      },
+      {
+        "fn": "run_tail @ api.mjs:135",
+        "self_ms": 369.12,
+        "self_pct": 0.9,
+        "total_ms": 369.12
+      },
+      {
+        "fn": "$$p111v_get @ api.mjs:158069",
+        "self_ms": 359.4,
+        "self_pct": 0.88,
+        "total_ms": 7240.07
+      },
+      {
+        "fn": "$index_remove @ api.mjs:13076",
+        "self_ms": 350.05,
+        "self_pct": 0.86,
+        "total_ms": 666.55
+      },
+      {
+        "fn": "$x186_e_equal @ api.mjs:103715",
+        "self_ms": 343.41,
+        "self_pct": 0.84,
+        "total_ms": 647.25
+      }
+    ],
+    "top_total": [
+      {
+        "fn": "(root) @ :0",
+        "total_ms": 40875.7,
+        "total_pct": 100.0,
+        "self_ms": 0.0
+      },
+      {
+        "fn": "run_loop @ api.mjs:146",
+        "total_ms": 37368.24,
+        "total_pct": 91.42,
+        "self_ms": 1389.89
+      },
+      {
+        "fn": "(anon) @ batch_emit_timed.mjs:1",
+        "total_ms": 19837.59,
+        "total_pct": 48.53,
+        "self_ms": 8.39
+      },
+      {
+        "fn": "(anon) @ api.mjs:154",
+        "total_ms": 19554.94,
+        "total_pct": 47.84,
+        "self_ms": 0.0
+      },
+      {
+        "fn": "$$nt_choose @ api.mjs:157353",
+        "total_ms": 18298.44,
+        "total_pct": 44.77,
+        "self_ms": 18.67
+      },
+      {
+        "fn": "(anon) @ api.mjs:167076",
+        "total_ms": 9655.56,
+        "total_pct": 23.62,
+        "self_ms": 0.0
+      },
+      {
+        "fn": "$$p169np_plan @ api.mjs:160717",
+        "total_ms": 9592.82,
+        "total_pct": 23.47,
+        "self_ms": 0.0
+      },
+      {
+        "fn": "$x198pw_plan @ api.mjs:155087",
+        "total_ms": 9580.4,
+        "total_pct": 23.44,
+        "self_ms": 0.0
+      },
+      {
+        "fn": "$$p113k_body @ api.mjs:158773",
+        "total_ms": 8937.8,
+        "total_pct": 21.87,
+        "self_ms": 1.93
+      },
+      {
+        "fn": "$p113k_body @ api.mjs:67293",
+        "total_ms": 8925.27,
+        "total_pct": 21.84,
+        "self_ms": 0.0
+      },
+      {
+        "fn": "$$p113k_stmt @ api.mjs:158774",
+        "total_ms": 8916.37,
+        "total_pct": 21.81,
+        "self_ms": 2.07
+      },
+      {
+        "fn": "(anon) @ api.mjs:67289",
+        "total_ms": 8904.76,
+        "total_pct": 21.78,
+        "self_ms": 12.46
+      },
+      {
+        "fn": "$agy_str_eq @ api.mjs:496",
+        "total_ms": 8076.04,
+        "total_pct": 19.76,
+        "self_ms": 3651.7
+      },
+      {
+        "fn": "(anon) @ api.mjs:167046",
+        "total_ms": 7563.48,
+        "total_pct": 18.5,
+        "self_ms": 2.07
+      },
+      {
+        "fn": "(anon) @ api.mjs:154148",
+        "total_ms": 7280.05,
+        "total_pct": 17.81,
+        "self_ms": 4.16
+      },
+      {
+        "fn": "$x187_cursor_good @ api.mjs:154157",
+        "total_ms": 7278.01,
+        "total_pct": 17.81,
+        "self_ms": 0.0
+      },
+      {
+        "fn": "$$p111v_get @ api.mjs:158069",
+        "total_ms": 7240.07,
+        "total_pct": 17.71,
+        "self_ms": 359.4
+      },
+      {
+        "fn": "$x186_e_body @ api.mjs:104045",
+        "total_ms": 7067.49,
+        "total_pct": 17.29,
+        "self_ms": 4.14
+      },
+      {
+        "fn": "$$x186_e_body @ api.mjs:159698",
+        "total_ms": 7055.06,
+        "total_pct": 17.26,
+        "self_ms": 4.17
+      },
+      {
+        "fn": "$x186_e_after @ api.mjs:104075",
+        "total_ms": 7050.91,
+        "total_pct": 17.25,
+        "self_ms": 0.0
+      },
+      {
+        "fn": "$$x186_e_scalar @ api.mjs:159697",
+        "total_ms": 6737.12,
+        "total_pct": 16.48,
+        "self_ms": 2.08
+      },
+      {
+        "fn": "$$p168_request_mode @ api.mjs:159327",
+        "total_ms": 6387.77,
+        "total_pct": 15.63,
+        "self_ms": 0.0
+      },
+      {
+        "fn": "(anon) @ api.mjs:104110",
+        "total_ms": 6366.39,
+        "total_pct": 15.58,
+        "self_ms": 0.0
+      },
+      {
+        "fn": "(anon) @ api.mjs:89784",
+        "total_ms": 6354.42,
+        "total_pct": 15.55,
+        "self_ms": 2.07
+      },
+      {
+        "fn": "char_len @ api.mjs:81",
+        "total_ms": 6301.85,
+        "total_pct": 15.42,
+        "self_ms": 6301.85
+      }
+    ]
+  }
+}

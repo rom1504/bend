@@ -38,6 +38,8 @@ STEPS = [
      lambda i, o: ["python3", "-B", str(ROOT / "research/agy/wave2c_recagg/apply_list_arr.py"), str(i), str(o)]),
     ("Wave2C-3 (AGY-W2C-1 Map.set/del/get Radix Trie)",
      lambda i, o: ["python3", "-B", str(ROOT / "research/agy/wave2c_map/apply_map_fast.py"), "--src", str(i), "--dst", str(o)]),
+    ("Wave2-14 (AGY-W2-BASEPIN 64-bit Base AST Pin)",
+     lambda i, o: ["python3", "-B", str(ROOT / "research/agy/apply_base_pin.py"), str(i), str(o)]),
 ]
 
 

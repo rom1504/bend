@@ -7,6 +7,7 @@ Stages:
   3. N2 -> N3 (Wave 5 native self-compile, pinned CPU 2, 'live' mode -> checks SHA256(n2.o) == SHA256(n3.o))
   4. Native N2 vs Hosted api.mjs byte-exact transfer + compile-speed comparison on 6 diverse programs.
 """
+import argparse
 import hashlib
 import json
 import os
@@ -18,8 +19,8 @@ from pathlib import Path
 
 ROOT = Path("/home/ai/bend2_agy")
 CC = "/usr/bin/x86_64-linux-gnu-gcc-10"
-SOURCE = ROOT / "selfhost/build/agy/wave5c_unified/compiler.bend"
-HOSTED_API = ROOT / "selfhost/build/agy/wave5c_unified/api.mjs"
+DEFAULT_SOURCE = ROOT / "selfhost/build/agy/wave5c_trimmed/compiler.bend"
+DEFAULT_HOSTED_API = ROOT / "selfhost/build/agy/wave5c_trimmed/api.mjs"
 BASE = ROOT / "selfhost/dist/base.bend"
 CARRIER = ROOT / "selfhost/build/agy/bootstrap/base.p130"
 BASE_STAMP_PATH = "/home/ai/bend2/build/publish/bend/selfhost/.bootstrap/upstream-phase182/bend2/base.bend"
@@ -42,7 +43,7 @@ def emit_native(compiler: Path, src: Path, out_obj: Path, err_log: Path, mode: s
         args = ["x86-object", str(src), BASE_STAMP_PATH, "cache", str(CARRIER), STAMP]
     else:
         args = ["x86-object", str(src), str(BASE), "live", "", ""]
-    cmd = ["taskset", "-c", str(cpu), str(compiler), "+RTS", "--threads", "1", "--gpu", "off", "-RTS", "--RTS", *args]
+    cmd = ["bash", str(ROOT / "research/agy/locked_native.sh"), "taskset", "-c", str(cpu), str(compiler), "+RTS", "--threads", "1", "--gpu", "off", "-RTS", "--RTS", *args]
     t0 = time.perf_counter()
     with out_obj.open("wb") as fout, err_log.open("wb") as ferr:
         r = subprocess.run(cmd, stdout=fout, stderr=ferr)
@@ -66,7 +67,18 @@ def link_obj(obj: Path, rt: Path, exe: Path) -> float:
 
 
 def main():
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--source", type=Path, default=DEFAULT_SOURCE)
+    ap.add_argument("--api", type=Path, default=DEFAULT_HOSTED_API)
+    ap.add_argument("--out-dir", type=Path, default=OUT_DIR)
+    ap.add_argument("--cpu", type=int, default=2)
+    args = ap.parse_args()
+    SOURCE = args.source.resolve()
+    HOSTED_API = args.api.resolve()
+    out_dir = args.out_dir.resolve()
+    cpu = args.cpu
+
+    out_dir.mkdir(parents=True, exist_ok=True)
     report = dict(
         kind="agy-wave5-native-selfbuild-v1",
         source=dict(file=str(SOURCE), bytes=SOURCE.stat().st_size, sha256=sha256_file(SOURCE)),
@@ -77,13 +89,13 @@ def main():
         complete=False,
     )
     def save():
-        (OUT_DIR / "report.json").write_text(json.dumps(report, indent=2) + "\n")
+        (out_dir / "report.json").write_text(json.dumps(report, indent=2) + "\n")
     save()
 
     # Stage 1: N0 (Wave 2 native n2) -> N1 (Wave 5)
     print(f"=== Stage 1: N0 (Wave 2 n2) -> N1 (Wave 5, {SOURCE.stat().st_size} B) ===", flush=True)
-    n1_o, n1 = OUT_DIR / "n1.o", OUT_DIR / "n1"
-    t1 = emit_native(N0_BIN, SOURCE, n1_o, OUT_DIR / "n1.stderr", mode="live", cpu=2)
+    n1_o, n1 = out_dir / "n1.o", out_dir / "n1"
+    t1 = emit_native(N0_BIN, SOURCE, n1_o, out_dir / "n1.stderr", mode="live", cpu=cpu)
     l1 = link_obj(n1_o, RT, n1)
     report["stages"]["n1"] = dict(
         emitSeconds=round(t1, 3), linkSeconds=round(l1, 3), totalSeconds=round(t1 + l1, 3),
@@ -95,9 +107,9 @@ def main():
     save()
 
     # Stage 2: N1 -> N2 (Wave 5 native self-compile!)
-    print("=== Stage 2: N1 (Wave 5) -> N2 (Wave 5 self-compiled, 'live' mode, CPU 2) ===", flush=True)
-    n2_o, n2 = OUT_DIR / "n2.o", OUT_DIR / "n2"
-    t2 = emit_native(n1, SOURCE, n2_o, OUT_DIR / "n2.stderr", mode="live", cpu=2)
+    print(f"=== Stage 2: N1 (Wave 5) -> N2 (Wave 5 self-compiled, 'live' mode, CPU {cpu}) ===", flush=True)
+    n2_o, n2 = out_dir / "n2.o", out_dir / "n2"
+    t2 = emit_native(n1, SOURCE, n2_o, out_dir / "n2.stderr", mode="live", cpu=cpu)
     l2 = link_obj(n2_o, RT, n2)
     n2_sha = sha256_file(n2_o)
     n2_bytes = n2_o.stat().st_size
@@ -112,9 +124,9 @@ def main():
     save()
 
     # Stage 3: N2 -> N3 (Exact fixed-point verification!)
-    print("=== Stage 3: N2 (Wave 5) -> N3 (Exact Fixed-Point Check, 'live' mode, CPU 2) ===", flush=True)
-    n3_o = OUT_DIR / "n3.o"
-    t3 = emit_native(n2, SOURCE, n3_o, OUT_DIR / "n3.stderr", mode="live", cpu=2)
+    print(f"=== Stage 3: N2 (Wave 5) -> N3 (Exact Fixed-Point Check, 'live' mode, CPU {cpu}) ===", flush=True)
+    n3_o = out_dir / "n3.o"
+    t3 = emit_native(n2, SOURCE, n3_o, out_dir / "n3.stderr", mode="live", cpu=cpu)
     n3_sha = sha256_file(n3_o)
     n3_bytes = n3_o.stat().st_size
     exact_fp = (n2_sha == n3_sha) and (n2_bytes == n3_bytes)
@@ -130,8 +142,8 @@ def main():
     save()
     assert exact_fp, f"FIXED POINT MISMATCH: N2={n2_sha} vs N3={n3_sha}"
 
-    # Stage 4: Native N2 vs Hosted api.mjs on 6 diverse programs (cache mode, CPU 2)
-    print("\n=== Stage 4: Native N2 ('cache' mode) vs Hosted api.mjs (6 diverse programs) ===", flush=True)
+    # Stage 4: Native N2 vs Hosted api.mjs on 5 diverse programs (live mode, CPU 2)
+    print("\n=== Stage 4: Native N2 ('live' mode) vs Hosted api.mjs (5 diverse programs) ===", flush=True)
     cases = [
         ("lexer", ROOT / "selfhost/tests/consolidation/native-broad/lexer.bend"),
         ("raytrace", ROOT / "selfhost/tests/consolidation/native-broad/raytrace.bend"),
@@ -148,7 +160,7 @@ def main():
         tot_native = 0.0
         for name, p in cases:
             no = td / f"{name}.n2.o"
-            dt = emit_native(n2, p, no, td / f"{name}.err", mode="live", cpu=2)
+            dt = emit_native(n2, p, no, td / f"{name}.err", mode="live", cpu=cpu)
             tot_native += dt
             n_sha = sha256_file(no)
             j_sha = sha256_file(td / f"{name}.js.o")

@@ -1,0 +1,313 @@
+{
+  "api": "/home/ai/bend2_agy/selfhost/build/agy/wave5b_unified/api.mjs",
+  "runtime": "/home/ai/bend2_agy/selfhost/build/agy/unified/runtime-agy.o",
+  "emit_sec": 52.0,
+  "native45_10": {
+    "rows": [
+      {
+        "id": "raytrace",
+        "reps": 20,
+        "w2_ms": 178,
+        "w5b_ms": 166,
+        "w2_runs": [
+          180,
+          178,
+          178
+        ],
+        "w5b_runs": [
+          166,
+          166,
+          168
+        ],
+        "w5b_over_w2": 0.9326,
+        "speedup": 1.0723,
+        "w2_est_over_c": 0.3017,
+        "w5b_est_over_c": 0.2813,
+        "w2_obj_bytes": 192368,
+        "w5b_obj_bytes": 200720,
+        "exact_stdout": true
+      },
+      {
+        "id": "mandelbrot",
+        "reps": 7168,
+        "w2_ms": 166,
+        "w5b_ms": 155,
+        "w2_runs": [
+          167,
+          165,
+          166
+        ],
+        "w5b_runs": [
+          157,
+          155,
+          155
+        ],
+        "w5b_over_w2": 0.9337,
+        "speedup": 1.071,
+        "w2_est_over_c": 0.8494,
+        "w5b_est_over_c": 0.7931,
+        "w2_obj_bytes": 164400,
+        "w5b_obj_bytes": 179608,
+        "exact_stdout": true
+      },
+      {
+        "id": "lexer",
+        "reps": 2048,
+        "w2_ms": 195,
+        "w5b_ms": 158,
+        "w2_runs": [
+          193,
+          195,
+          197
+        ],
+        "w5b_runs": [
+          157,
+          158,
+          158
+        ],
+        "w5b_over_w2": 0.8103,
+        "speedup": 1.2342,
+        "w2_est_over_c": 0.2429,
+        "w5b_est_over_c": 0.1968,
+        "w2_obj_bytes": 154808,
+        "w5b_obj_bytes": 188472,
+        "exact_stdout": true
+      },
+      {
+        "id": "coverage-bst-64",
+        "reps": 81920,
+        "w2_ms": 158,
+        "w5b_ms": 154,
+        "w2_runs": [
+          158,
+          160,
+          157
+        ],
+        "w5b_runs": [
+          154,
+          157,
+          153
+        ],
+        "w5b_over_w2": 0.9747,
+        "speedup": 1.026,
+        "w2_est_over_c": 0.2578,
+        "w5b_est_over_c": 0.2513,
+        "w2_obj_bytes": 131232,
+        "w5b_obj_bytes": 168664,
+        "exact_stdout": true
+      },
+      {
+        "id": "coverage-map-churn-32",
+        "reps": 10240,
+        "w2_ms": 159,
+        "w5b_ms": 155,
+        "w2_runs": [
+          159,
+          156,
+          159
+        ],
+        "w5b_runs": [
+          156,
+          155,
+          155
+        ],
+        "w5b_over_w2": 0.9748,
+        "speedup": 1.0258,
+        "w2_est_over_c": 0.3281,
+        "w5b_est_over_c": 0.3198,
+        "w2_obj_bytes": 449184,
+        "w5b_obj_bytes": 576816,
+        "exact_stdout": true
+      },
+      {
+        "id": "coverage-record-aggregation-256",
+        "reps": 832,
+        "w2_ms": 155,
+        "w5b_ms": 145,
+        "w2_runs": [
+          157,
+          154,
+          155
+        ],
+        "w5b_runs": [
+          145,
+          145,
+          145
+        ],
+        "w5b_over_w2": 0.9355,
+        "speedup": 1.069,
+        "w2_est_over_c": 0.4656,
+        "w5b_est_over_c": 0.4356,
+        "w2_obj_bytes": 440024,
+        "w5b_obj_bytes": 575920,
+        "exact_stdout": true
+      },
+      {
+        "id": "editdist",
+        "reps": 16,
+        "w2_ms": 9,
+        "w5b_ms": 153,
+        "w2_runs": [
+          11,
+          9,
+          9
+        ],
+        "w5b_runs": [
+          153,
+          155,
+          151
+        ],
+        "w5b_over_w2": 17.0,
+        "speedup": 0.0588,
+        "w2_est_over_c": 0.6197,
+        "w5b_est_over_c": 10.535,
+        "w2_obj_bytes": 160040,
+        "w5b_obj_bytes": 241616,
+        "exact_stdout": true
+      },
+      {
+        "id": "symreg",
+        "reps": 192,
+        "w2_ms": 155,
+        "w5b_ms": 138,
+        "w2_runs": [
+          155,
+          155,
+          156
+        ],
+        "w5b_runs": [
+          138,
+          138,
+          139
+        ],
+        "w5b_over_w2": 0.8903,
+        "speedup": 1.1232,
+        "w2_est_over_c": 0.3385,
+        "w5b_est_over_c": 0.3014,
+        "w2_obj_bytes": 183832,
+        "w5b_obj_bytes": 200320,
+        "exact_stdout": true
+      },
+      {
+        "id": "coverage-list-pipeline-512",
+        "reps": 147456,
+        "w2_ms": 193,
+        "w5b_ms": 144,
+        "w2_runs": [
+          193,
+          193,
+          197
+        ],
+        "w5b_runs": [
+          144,
+          144,
+          147
+        ],
+        "w5b_over_w2": 0.7461,
+        "speedup": 1.3403,
+        "w2_est_over_c": 0.229,
+        "w5b_est_over_c": 0.1709,
+        "w2_obj_bytes": 105912,
+        "w5b_obj_bytes": 124168,
+        "exact_stdout": true
+      },
+      {
+        "id": "tree-bitonic",
+        "reps": 2048,
+        "w2_ms": 176,
+        "w5b_ms": 158,
+        "w2_runs": [
+          169,
+          238,
+          176
+        ],
+        "w5b_runs": [
+          158,
+          177,
+          156
+        ],
+        "w5b_over_w2": 0.8977,
+        "speedup": 1.1139,
+        "w2_est_over_c": 0.5031,
+        "w5b_est_over_c": 0.4517,
+        "w2_obj_bytes": 162264,
+        "w5b_obj_bytes": 180240,
+        "exact_stdout": true
+      }
+    ],
+    "geomean_w5b_over_w2": 1.2032,
+    "geomean_speedup": 0.8311,
+    "geomean_w2_est_over_c": 0.3778,
+    "geomean_w5b_est_over_c": 0.4546,
+    "gate_le_1_02": false
+  },
+  "upstream_defaults": {
+    "runs_per_workload": 3,
+    "rows": [
+      {
+        "workload": "histogram",
+        "source_sha256": "c8d83ea9f09cc2fed9a8635a09564cd25176897ef70f9af33605cf7a0f9e0fe4",
+        "expected_checksum": 122845198,
+        "checksum_ok": true,
+        "obj_bytes": 260704,
+        "runs_sec": [
+          11.5867,
+          11.5764,
+          11.5606
+        ],
+        "median_sec": 11.5764,
+        "c16_sec": 7.5097,
+        "upstream_bend_c_sec": 11.4522,
+        "w4c_sec": 20.25,
+        "over_c16": 1.5415,
+        "over_upstream_bend_c": 1.0108,
+        "speedup_vs_w4c": 1.7492
+      },
+      {
+        "workload": "gameoflife",
+        "source_sha256": "31f82656e9b54917803d9fa6b07284bc260f3c62c1c15976b118236151565eae",
+        "expected_checksum": 2016151040,
+        "checksum_ok": true,
+        "obj_bytes": 61720,
+        "runs_sec": [
+          28.4833,
+          28.3591,
+          28.1253
+        ],
+        "median_sec": 28.3591,
+        "c16_sec": 17.4611,
+        "upstream_bend_c_sec": 24.4644,
+        "w4c_sec": 38.41,
+        "over_c16": 1.6241,
+        "over_upstream_bend_c": 1.1592,
+        "speedup_vs_w4c": 1.3544
+      },
+      {
+        "workload": "nbody",
+        "source_sha256": "e261a45e3a3fcc7fbdc42143a487d19d76aece4935d8ccc313408ec2ec6aba91",
+        "expected_checksum": 3516450380,
+        "checksum_ok": true,
+        "obj_bytes": 58240,
+        "runs_sec": [
+          11.1536,
+          11.1311,
+          11.1646
+        ],
+        "median_sec": 11.1536,
+        "c16_sec": 10.739,
+        "upstream_bend_c_sec": 10.4266,
+        "w4c_sec": 14.2,
+        "over_c16": 1.0386,
+        "over_upstream_bend_c": 1.0697,
+        "speedup_vs_w4c": 1.2731
+      }
+    ],
+    "total_w5b_sec": 51.0891,
+    "total_w4c_sec": 72.86,
+    "total_c16_sec": 35.7098,
+    "total_speedup_vs_w4c": 1.4261,
+    "geomean_over_c16": 1.3751,
+    "geomean_w4c_over_c16": 1.9869,
+    "geomean_over_upstream_bend_c": 1.0782
+  }
+}

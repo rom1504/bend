@@ -1,0 +1,77 @@
+{
+  "api": "selfhost/build/agy/wave5b_unified/api.mjs",
+  "oracle": "wave2",
+  "seed": 2026112205,
+  "per_family": 15,
+  "total": 90,
+  "pass": 87,
+  "fail": 0,
+  "up_err": 3,
+  "emit_sec": 236.13,
+  "exec_sec": 2.14,
+  "total_sec": 240.31,
+  "families": {
+    "11_arity64_direct": {
+      "total": 15,
+      "pass": 15,
+      "fail": 0,
+      "up_err": 0
+    },
+    "12_nat_succ_edge": {
+      "total": 15,
+      "pass": 15,
+      "fail": 0,
+      "up_err": 0
+    },
+    "13_lcu_product": {
+      "total": 15,
+      "pass": 12,
+      "fail": 0,
+      "up_err": 3
+    },
+    "14_peel_cmov_sink": {
+      "total": 15,
+      "pass": 15,
+      "fail": 0,
+      "up_err": 0
+    },
+    "15_bce_inv_min": {
+      "total": 15,
+      "pass": 15,
+      "fail": 0,
+      "up_err": 0
+    },
+    "16_xmm_gpr_peep": {
+      "total": 15,
+      "pass": 15,
+      "fail": 0,
+      "up_err": 0
+    }
+  },
+  "mismatches": [
+    {
+      "id": "13_lcu_product__002",
+      "family": "13_lcu_product",
+      "kind": "upstream_error",
+      "up": "W2_PLAN_ERR: check: ASt: type mismatch",
+      "w5a": "W5A_PLAN_ERR: check: ASt: type mismatch",
+      "src": "/home/ai/bend2_agy/selfhost/build/agy/wave5_fuzz/run_tmp/src/13_lcu_product__002.bend"
+    },
+    {
+      "id": "13_lcu_product__007",
+      "family": "13_lcu_product",
+      "kind": "upstream_error",
+      "up": "W2_PLAN_ERR: check: ASt: type mismatch",
+      "w5a": "W5A_PLAN_ERR: check: ASt: type mismatch",
+      "src": "/home/ai/bend2_agy/selfhost/build/agy/wave5_fuzz/run_tmp/src/13_lcu_product__007.bend"
+    },
+    {
+      "id": "13_lcu_product__012",
+      "family": "13_lcu_product",
+      "kind": "upstream_error",
+      "up": "W2_PLAN_ERR: check: ASt: type mismatch",
+      "w5a": "W5A_PLAN_ERR: check: ASt: type mismatch",
+      "src": "/home/ai/bend2_agy/selfhost/build/agy/wave5_fuzz/run_tmp/src/13_lcu_product__012.bend"
+    }
+  ]
+}

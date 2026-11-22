@@ -167,7 +167,42 @@ def w4c_step_scalar(stmt: N111Stmt, +env: KDef) -> KDef:
     case _: env"""
     src = replace_exact(src, old_scalar, new_scalar, "Pass 2d: w4c_step_scalar store & mod tracking")
 
-    # 2e: Hoist bound <= mask for BM-tracked local index in w4c_bce_site_local
+    # 2e: Tight (cnt - (cnt != 0)) guard for guarded PRM IV accesses (fixes exact power-of-2 arrays where cnt == cap == mask + 1!)
+    #     + Hoist bound <= mask for BM-tracked local index in w4c_bce_site_local
+    old_iv = """          nt_choose(W4CBCEPlan,isIv,
+            v =>
+              +pname = w4c_nth_param_name(params,da(d))
+              +sumName = pfx ++ "sum"
+              +gStmts = nt_append(N111Stmt,w4c_guard_ule(pfx ++ "iv0",N111Local{pname},maskRef),
+                nt_append(N111Stmt,w4c_guard_ule(pfx ++ "cnt0",N111Local{cntName},maskRef),
+                  Con{N111Bin{sumName,N111U64{},"add",N111Local{pname},N111Local{cntName}},
+                    w4c_guard_ule(pfx ++ "ivend",N111Local{sumName},maskRef)}))
+              W4CBCEPlan{p117h_put(nomask,U32.show(n),1),nt_append(N111Stmt,guards,gStmts),U32.inc(n)},"""
+    new_iv = """          +isTightPrm = guarded && agy_str_eq(dk(d),"PRM")
+          nt_choose(W4CBCEPlan,isIv,
+            v =>
+              +pname = w4c_nth_param_name(params,da(d))
+              +sumName = pfx ++ "sum"
+              +gStmts = nt_choose(List<&2,N111Stmt>,isTightPrm,
+                t =>
+                  +nzName = pfx ++ "nz"
+                  +cmName = pfx ++ "cm"
+                  +prep: List<&2,N111Stmt> = [
+                    N111Bin{nzName,N111U64{},"ne",N111Local{cntName},N111Const{0,0}},
+                    N111Bin{cmName,N111U64{},"sub",N111Local{cntName},N111Local{nzName}}]
+                  nt_append(N111Stmt,prep,
+                    nt_append(N111Stmt,w4c_guard_ule(pfx ++ "iv0",N111Local{pname},maskRef),
+                      nt_append(N111Stmt,w4c_guard_ule(pfx ++ "cnt0",N111Local{cmName},maskRef),
+                        Con{N111Bin{sumName,N111U64{},"add",N111Local{pname},N111Local{cmName}},
+                          w4c_guard_ule(pfx ++ "ivend",N111Local{sumName},maskRef)}))),
+                t =>
+                  nt_append(N111Stmt,w4c_guard_ule(pfx ++ "iv0",N111Local{pname},maskRef),
+                    nt_append(N111Stmt,w4c_guard_ule(pfx ++ "cnt0",N111Local{cntName},maskRef),
+                      Con{N111Bin{sumName,N111U64{},"add",N111Local{pname},N111Local{cntName}},
+                        w4c_guard_ule(pfx ++ "ivend",N111Local{sumName},maskRef)})))
+              W4CBCEPlan{p117h_put(nomask,U32.show(n),1),nt_append(N111Stmt,guards,gStmts),U32.inc(n)},"""
+    src = replace_exact(src, old_iv, new_iv, "Pass 2e0: tight cnt-(cnt!=0) IV guard for exact power-of-2 arrays")
+
     old_site = """                w => W4CBCEPlan{nomask,guards,U32.inc(n)})))"""
     new_site = """                w => nt_choose(W4CBCEPlan,agy_str_eq(dk(d),"BM"),
                   z => W4CBCEPlan{p117h_put(nomask,U32.show(n),1),

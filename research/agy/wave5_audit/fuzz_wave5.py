@@ -884,6 +884,7 @@ def main():
     ap.add_argument("--seed", type=int, default=2026112205)
     ap.add_argument("--per-family", type=int, default=15)
     ap.add_argument("--workers", type=int, default=4)
+    ap.add_argument("--api", type=Path, default=W5A_API)
     ap.add_argument("--oracle", choices=["wave2", "upstream"], default="wave2")
     ap.add_argument("--out-json", type=Path, default=ROOT / "experiments/agy/receipts/wave5-fuzz-report.json")
     ap.add_argument("--only-family", type=str, default=None)
@@ -931,11 +932,11 @@ def main():
     t_emit = time.perf_counter()
     w5_jobs = [{"id": c["id"], "src": str(c["src"]), "out": str(c["obj"])} for c in cases]
     if args.oracle == "wave2":
-        w5_emitted = batch_emit(W5A_API, w5_jobs, WORK_DIR / "w5_manifest.json")
+        w5_emitted = batch_emit(args.api, w5_jobs, WORK_DIR / "w5_manifest.json")
         w2_jobs = [{"id": c["id"], "src": str(c["src"]), "out": str(obj_dir / f"{c['id']}.w2.o")} for c in cases]
         w2_emitted = batch_emit(W2_API, w2_jobs, WORK_DIR / "w2_oracle_manifest.json")
         emit_sec = round(time.perf_counter() - t_emit, 2)
-        print(f"Wave 5A + Wave 2 oracle batch emit finished in {emit_sec:.2f}s", flush=True)
+        print(f"Target ({args.api.parent.name}) + Wave 2 oracle batch emit finished in {emit_sec:.2f}s", flush=True)
         up_results = {}
         with ThreadPoolExecutor(max_workers=args.workers) as ex:
             futs = {}
@@ -952,12 +953,12 @@ def main():
                 up_results[futs[fut]] = fut.result()
     else:
         with ThreadPoolExecutor(max_workers=args.workers) as ex:
-            f_w5 = ex.submit(batch_emit, W5A_API, w5_jobs, WORK_DIR / "w5_manifest.json")
+            f_w5 = ex.submit(batch_emit, args.api, w5_jobs, WORK_DIR / "w5_manifest.json")
             f_ups = {c["id"]: ex.submit(run_upstream, c["src"]) for c in cases}
             w5_emitted = f_w5.result()
             up_results = {cid: fut.result() for cid, fut in f_ups.items()}
         emit_sec = round(time.perf_counter() - t_emit, 2)
-        print(f"Wave 5A batch emit + Upstream oracle finished in {emit_sec:.2f}s", flush=True)
+        print(f"Target ({args.api.parent.name}) batch emit + Upstream oracle finished in {emit_sec:.2f}s", flush=True)
 
     t_exec = time.perf_counter()
     w5_run_results = {}
@@ -1024,6 +1025,8 @@ def main():
     print(f"  TOTAL                   : {total_pass:3d}/{total_all:3d} PASS (fail={total_fail}, up_err={total_up_err}) in {total_sec:.2f}s")
 
     report = {
+        "api": str(args.api),
+        "oracle": args.oracle,
         "seed": args.seed,
         "per_family": args.per_family,
         "total": total_all,

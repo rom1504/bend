@@ -1,0 +1,90 @@
+{
+  "compiler": "/home/ai/bend2_agy/selfhost/build/agy/wave7-native-self/n1",
+  "input": "/home/ai/bend2_agy/research/agy/w7_bench/compiler_slice_750kb.bend",
+  "input_bytes": 678696,
+  "module_source_bytes": {
+    "c0": 262279,
+    "c1": 262279,
+    "c2": 262280
+  },
+  "cpus": [
+    "0",
+    "1",
+    "4"
+  ],
+  "lanes": {
+    "x86-object": {
+      "mono_1c": {
+        "cpu": "0",
+        "n1_ms": 16643.5,
+        "link_ms": 47.8,
+        "total_ms": 16691.3,
+        "obj_bytes": 780552,
+        "out": "102"
+      },
+      "par_3c": {
+        "n1_wall_ms": 10927.6,
+        "objcopy_ms": 57.5,
+        "link_ms": 400.6,
+        "total_ms": 11385.7,
+        "speedup_n1": 1.52,
+        "speedup_total": 1.47,
+        "per_mod": {
+          "c1": {
+            "cpu": "1",
+            "ms": 6169.9,
+            "obj_bytes": 383160
+          },
+          "c0": {
+            "cpu": "0",
+            "ms": 10892.2,
+            "obj_bytes": 383160
+          },
+          "c2": {
+            "cpu": "4",
+            "ms": 10924.3,
+            "obj_bytes": 383160
+          }
+        },
+        "out": "102"
+      }
+    },
+    "x86-object-fast": {
+      "mono_1c": {
+        "cpu": "0",
+        "n1_ms": 14355.9,
+        "link_ms": 48.0,
+        "total_ms": 14403.9,
+        "obj_bytes": 875408,
+        "out": "102"
+      },
+      "par_3c": {
+        "n1_wall_ms": 9824.6,
+        "objcopy_ms": 58.2,
+        "link_ms": 228.3,
+        "total_ms": 10111.1,
+        "speedup_n1": 1.46,
+        "speedup_total": 1.42,
+        "per_mod": {
+          "c1": {
+            "cpu": "1",
+            "ms": 5527.3,
+            "obj_bytes": 416696
+          },
+          "c0": {
+            "cpu": "0",
+            "ms": 9823.8,
+            "obj_bytes": 416696
+          },
+          "c2": {
+            "cpu": "4",
+            "ms": 9820.4,
+            "obj_bytes": 416696
+          }
+        },
+        "out": "102"
+      }
+    }
+  },
+  "peak_child_rss_mib": 176.2
+}

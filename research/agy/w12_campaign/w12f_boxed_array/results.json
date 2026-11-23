@@ -1,0 +1,75 @@
+{
+  "campaign": "W12-F",
+  "title": "Compiled-Program Runtime: Inline Boxed-Element Array.get / Array.set & Sealed Ctor2 Fast-Path",
+  "cpu": 6,
+  "baseline": "selfhost/build/agy/wave11_unified/api.mjs",
+  "check_only_type_errors": 0,
+  "dynamic_calls_hashmap": {
+    "p113_rt_array_pair_base": 75497472,
+    "p113_rt_array_pair_cand": 0,
+    "p111_rt_op_array_set_base": 33357824,
+    "p111_rt_op_array_set_cand": 3,
+    "p125_rt_ctor2_base": 83695627,
+    "p125_rt_ctor2_cand": 8392721,
+    "p111_rt_sink_base": 2048,
+    "p111_rt_sink_cand": 2048,
+    "p111_rt_keep_base": 0,
+    "p111_rt_keep_cand": 0,
+    "total_target_calls_base": 192550923,
+    "total_target_calls_cand": 8392724,
+    "calls_eliminated": 184158199,
+    "call_reduction_factor": 22.94
+  },
+  "benchmarks": {
+    "hashmap": {
+      "source": "bench/runtime/hashmap/main.bend",
+      "expected_stdout": "1307803744",
+      "reps": 3,
+      "base_obj_bytes": 73576,
+      "cand_obj_bytes": 78952,
+      "base_runs_ms": [7505.5, 7486.0, 7258.5],
+      "cand_runs_ms": [6838.4, 6635.4, 6620.8],
+      "base_median_ms": 7486.0,
+      "cand_median_ms": 6635.4,
+      "speedup": 1.1282
+    },
+    "histogram": {
+      "source": "bench/runtime/histogram/main.bend",
+      "expected_stdout": "122845198",
+      "reps": 3,
+      "base_obj_bytes": 214216,
+      "cand_obj_bytes": 260872,
+      "base_runs_ms": [11746.6, 11722.8, 11593.9],
+      "cand_runs_ms": [11645.9, 11802.5, 11463.2],
+      "base_median_ms": 11722.8,
+      "cand_median_ms": 11645.9,
+      "speedup": 1.0066
+    },
+    "terrain": {
+      "source": "bench/runtime/terrain/main.bend",
+      "expected_stdout": "2572468224",
+      "reps": 1,
+      "base_obj_bytes": 744248,
+      "cand_obj_bytes": 980680,
+      "base_runs_ms": [21993.3],
+      "cand_runs_ms": [21706.6],
+      "base_median_ms": 21993.3,
+      "cand_median_ms": 21706.6,
+      "speedup": 1.0132
+    }
+  },
+  "native64_gate": {
+    "passCount": 64,
+    "total": 64,
+    "passed": true,
+    "seconds": 69.2,
+    "failures": []
+  },
+  "observer_gate": {
+    "abi_probes_passed": "44+2",
+    "passCount": 15,
+    "total": 15,
+    "violations": 0,
+    "passed": true
+  }
+}

@@ -1,0 +1,21 @@
+# Experiment: Wave 12-F — Inline Boxed-Element `Array.get` / `Array.set` & Sealed `p125_rt_ctor2` Fast-Path
+
+- **Date:** 2026-11-23
+- **Hypothesis:** Inlining the unique-owner (`!term_rfc(array)`) fast path for boxed `Array.get` (`p113_rt_array_pair`, op 72), boxed `Array.set` (`p111_rt_op`, op 73, including inline `rc > 1` decrement and class-0 freelist `rfc_wrap`), and sealed-field `p125_rt_ctor2` in `agy_rt_inline_try` will eliminate the runtime call overhead in `hashmap` (`p113_rt_array_pair` + `p111_rt_op` + `term_drop` + `p125_rt_ctor2`).
+- **Baseline:** `selfhost/build/agy/wave11_unified/api.mjs` (`selfhost/build/agy/wave11_unified/compiler.bend`), isolated on CPU `6` (`taskset -c 6`).
+- **Outcome:** **Verified & Promotable (`1.1282×` on `hashmap`, `1.0066×` on `histogram`, `1.0132×` on `terrain`)**.
+  - **Runtime call elimination:** `184,158,199` C runtime calls eliminated in `hashmap` (`192.55M → 8.39M`, `22.9×` reduction): `p113_rt_array_pair` `75,497,472 → 0` (`100%`), `p111_rt_op` `Array.set` `33,357,824 → 3` (`99.99999%`), `p125_rt_ctor2` `83,695,627 → 8,392,721` (`90.0%`).
+  - **Benchmarks (interleaved on CPU `6`, exact stdout):**
+    - `hashmap`: `7,486.0 ms → 6,635.4 ms` (**`1.1282×`**, `-850.6 ms`, stdout `1307803744`).
+    - `histogram`: `11,722.8 ms → 11,645.9 ms` (`1.0066×`, stdout `122845198`).
+    - `terrain`: `21,993.3 ms → 21,706.6 ms` (`1.0132×`, stdout `2572468224`).
+  - **Wall-clock ceiling finding:** Eliminating `184.16M` runtime calls recovers `~4.6 ns/call` (`850.6 ms`); remaining `hashmap` time (`6.64 s`) is L2/L3 cache-miss latency across the 4096-bucket array, `CCons` nodes, and 1-word RFC indirection cells.
+- **Verification:**
+  - `compiler.bend` `--check-only` / Bun JS build: **0 type/linearity errors**.
+  - `native64` qualification gate: **`64/64 PASS`** (`69.2 s`, CPU `6`).
+  - Observer Gate (`44+2` ABI + `normal`, `cap-no8`, `all-hot`): **`15/15 PASS`** (`0` violations, CPU `6`).
+- **Evidence:**
+  - [REPORT.md](file:///home/ai/bend2_agy/research/agy/w12_campaign/w12f_boxed_array/REPORT.md)
+  - [results.json](file:///home/ai/bend2_agy/research/agy/w12_campaign/w12f_boxed_array/results.json)
+  - [w12f_boxed_array.patch](file:///home/ai/bend2_agy/research/agy/w12_campaign/w12f_boxed_array/w12f_boxed_array.patch)
+  - [apply_w12f_boxed_array.py](file:///home/ai/bend2_agy/research/agy/w12_campaign/w12f_boxed_array/apply_w12f_boxed_array.py)

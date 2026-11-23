@@ -1,0 +1,98 @@
+{
+  "check_only_s": 48.54,
+  "to_js_s": 49.28,
+  "m11": {
+    "base": {
+      "wall_ms": 34106.9,
+      "stages": {
+        "read": 152.0,
+        "prep": 1755.0,
+        "p86_plan": 7214.0,
+        "x198pw_plan": 10330.0,
+        "x187_priv_done_elapsed": 20246.0,
+        "x187_pub_done_elapsed": 31458.0,
+        "x187_elf": 1848.0,
+        "total_ms": 33541.0,
+        "x187_pub_ms": 11212.0
+      },
+      "bytes": 6165176,
+      "sha256": "a1bcd3b85096ad507ff5fef8c552faee057aa99b09a46404dc637c664cae73cf"
+    },
+    "w13c": {
+      "wall_ms": 30990.3,
+      "stages": {
+        "read": 151.0,
+        "prep": 1779.0,
+        "p86_plan": 11029.0,
+        "x198pw_plan": 10199.0,
+        "x187_priv_done_elapsed": 23968.0,
+        "x187_pub_done_elapsed": 28340.0,
+        "x187_elf": 1848.0,
+        "total_ms": 30423.0,
+        "x187_pub_ms": 4372.0
+      },
+      "bytes": 6165176,
+      "sha256": "a1bcd3b85096ad507ff5fef8c552faee057aa99b09a46404dc637c664cae73cf"
+    },
+    "bit_identical": true,
+    "x187_pub_speedup": 2.565
+  },
+  "rung2": {
+    "base": {
+      "wall_ms": 153460.7,
+      "stages": {
+        "read": 25.0,
+        "prep": 351.0,
+        "p86_plan": 18750.0,
+        "x198pw_plan": 69303.0,
+        "x187_priv_done_elapsed": 109059.0,
+        "x187_pub_done_elapsed": 139105.0,
+        "x187_elf": 13231.0,
+        "total_ms": 152768.0,
+        "x187_pub_ms": 30046.0
+      },
+      "bytes": 25942432,
+      "sha256": "656a394cbbdd12105d232ed816faead5ab0eaf0877aee603be6f8ad7c36e28a5"
+    },
+    "w13c": {
+      "wall_ms": 128888.7,
+      "stages": {
+        "read": 31.0,
+        "prep": 565.0,
+        "p86_plan": 26821.0,
+        "x198pw_plan": 65857.0,
+        "x187_priv_done_elapsed": 108453.0,
+        "x187_pub_done_elapsed": 118706.0,
+        "x187_elf": 9073.0,
+        "total_ms": 128078.0,
+        "x187_pub_ms": 10253.0
+      },
+      "bytes": 25942432,
+      "sha256": "656a394cbbdd12105d232ed816faead5ab0eaf0877aee603be6f8ad7c36e28a5"
+    },
+    "bit_identical": true,
+    "x187_pub_speedup": 2.93
+  },
+  "gates": {
+    "check_only_type_errors": 0,
+    "native64_x86_object_fast": {
+      "passed": 64,
+      "total": 64,
+      "seconds": 38.7,
+      "cpu": 0
+    },
+    "native64_x86_object_o2": {
+      "passed": 64,
+      "total": 64,
+      "seconds": 66.4,
+      "cpu": 1
+    },
+    "observer_gate": {
+      "abi_probes": "44+2 PASS",
+      "passed": 15,
+      "total": 15,
+      "violations": 0,
+      "cpu": 1
+    }
+  }
+}

@@ -1,0 +1,392 @@
+{
+  "wave": "W14-F",
+  "base": "W14-A (wave11_unified + W12-G + W13-E + W14-A)",
+  "cpu": 7,
+  "holdouts_paired_ab": {
+    "terrain": {
+      "w14a_samples_s": [
+        22.4801,
+        21.6227,
+        21.812
+      ],
+      "w14a_median_s": 21.812,
+      "w14a_vs_c": 2.6452,
+      "w14f_samples_s": [
+        17.778,
+        18.0012,
+        17.8056
+      ],
+      "w14f_median_s": 17.8056,
+      "w14f_vs_c": 2.1594,
+      "c_s": 8.2458,
+      "speedup_vs_w14a": 1.225,
+      "out": "2572468224",
+      "w14a_obj_bytes": 742144,
+      "w14f_obj_bytes": 741520
+    },
+    "hashmap": {
+      "w14a_samples_s": [
+        7.1216,
+        7.1925,
+        7.1387
+      ],
+      "w14a_median_s": 7.1387,
+      "w14a_vs_c": 5.7265,
+      "w14f_samples_s": [
+        7.0055,
+        6.9275,
+        7.0733
+      ],
+      "w14f_median_s": 7.0055,
+      "w14f_vs_c": 5.6197,
+      "c_s": 1.2466,
+      "speedup_vs_w14a": 1.019,
+      "out": "1307803744",
+      "w14a_obj_bytes": 73416,
+      "w14f_obj_bytes": 83696
+    },
+    "tree-radix": {
+      "w14a_samples_s": [
+        10.7766,
+        11.709,
+        11.768
+      ],
+      "w14a_median_s": 11.709,
+      "w14a_vs_c": 1.6549,
+      "w14f_samples_s": [
+        10.2573,
+        11.572,
+        11.7558
+      ],
+      "w14f_median_s": 11.572,
+      "w14f_vs_c": 1.6355,
+      "c_s": 7.0754,
+      "speedup_vs_w14a": 1.0118,
+      "out": "1998173798",
+      "w14a_obj_bytes": 57040,
+      "w14f_obj_bytes": 59064
+    },
+    "_summary": {
+      "w14a_geomean_vs_c": 2.9267,
+      "w14f_geomean_vs_c": 2.7075,
+      "geomean_speedup_vs_w14a": 1.081
+    }
+  },
+  "dynamic_runtime_calls": {
+    "hashmap": {
+      "p125_rt_ctor2": {
+        "w14a": 83695627,
+        "w14f": 2065,
+        "eliminated_pct": 99.9975
+      },
+      "p113_rt_array_pair": {
+        "w14a": 75497472,
+        "w14f": 75497472,
+        "note": "handled orthogonally by W12-F in wave13_unified"
+      },
+      "p111_rt_op_array_set": {
+        "w14a": 33359872,
+        "w14f": 33359872,
+        "note": "handled orthogonally by W12-F in wave13_unified"
+      }
+    },
+    "tree-radix": {
+      "p111_rt_take": {
+        "w14a": 13752493,
+        "w14f": 0,
+        "eliminated_pct": 100.0
+      },
+      "p111_rt_ctor": {
+        "w14a": 13752493,
+        "w14f": 3811172,
+        "eliminated_pct": 72.29
+      },
+      "p125_rt_take2": {
+        "w14a": 9954511,
+        "w14f": 9954511
+      },
+      "p125_rt_ctor2": {
+        "w14a": 4213609,
+        "w14f": 4213609
+      }
+    }
+  },
+  "disassembly_stats": {
+    "terrain_erode": {
+      "w14a_insns": 533,
+      "w14f_insns": 392,
+      "w14a_rbp": 110,
+      "w14f_rbp": 66,
+      "w14a_imul": 4,
+      "w14f_imul": 1
+    },
+    "terrain_fill": {
+      "w14a_insns": 272,
+      "w14f_insns": 268,
+      "w14a_rbp": 69,
+      "w14f_rbp": 69
+    },
+    "tree_radix_merge": {
+      "w14a_insns": 1136,
+      "w14f_insns": 1136
+    },
+    "tree_radix_radix": {
+      "w14a_insns": 118,
+      "w14f_insns": 118
+    }
+  },
+  "proxy_7_family_regression_check": {
+    "label": "wave11",
+    "api": "/tmp/agy_w14f/api_w14f.mjs",
+    "cpu": 7,
+    "runs": 3,
+    "geomean_vs_c": 1.0357,
+    "rows": [
+      {
+        "name": "histogram",
+        "group": "upstream",
+        "bend_ms": 29.4196,
+        "c_gcc10_ms": 21.5935,
+        "ratio_vs_c": 1.3624,
+        "compile": {
+          "ok": true,
+          "compile_ms": 7757.9,
+          "obj_bytes": 224400
+        },
+        "bend_run": {
+          "ok": true,
+          "samples_ms": [
+            29.42,
+            29.507,
+            28.851
+          ],
+          "ms": 29.4196
+        },
+        "c_run": {
+          "ok": true,
+          "samples_ms": [
+            39.057,
+            21.594,
+            21.552
+          ],
+          "ms": 21.5935
+        }
+      },
+      {
+        "name": "gameoflife",
+        "group": "upstream",
+        "bend_ms": 439.4144,
+        "c_gcc10_ms": 986.7754,
+        "ratio_vs_c": 0.4453,
+        "compile": {
+          "ok": true,
+          "compile_ms": 6102.3,
+          "obj_bytes": 62104
+        },
+        "bend_run": {
+          "ok": true,
+          "samples_ms": [
+            435.094,
+            439.414,
+            447.475
+          ],
+          "ms": 439.4144
+        },
+        "c_run": {
+          "ok": true,
+          "samples_ms": [
+            986.775,
+            1011.308,
+            979.586
+          ],
+          "ms": 986.7754
+        }
+      },
+      {
+        "name": "nbody",
+        "group": "upstream",
+        "bend_ms": 94.8654,
+        "c_gcc10_ms": 88.8167,
+        "ratio_vs_c": 1.0681,
+        "compile": {
+          "ok": true,
+          "compile_ms": 5373.3,
+          "obj_bytes": 61872
+        },
+        "bend_run": {
+          "ok": true,
+          "samples_ms": [
+            96.136,
+            94.865,
+            94.776
+          ],
+          "ms": 94.8654
+        },
+        "c_run": {
+          "ok": true,
+          "samples_ms": [
+            89.77,
+            88.817,
+            88.352
+          ],
+          "ms": 88.8167
+        }
+      },
+      {
+        "name": "list",
+        "group": "tuned",
+        "bend_ms": 0.2653,
+        "c_gcc10_ms": 0.2637,
+        "ratio_vs_c": 1.0061,
+        "compile": {
+          "ok": true,
+          "compile_ms": 3122.9,
+          "obj_bytes": 62872
+        },
+        "bend_run": {
+          "ok": true,
+          "reps": 12000000,
+          "raw_samples_ms": [
+            32,
+            33,
+            32
+          ],
+          "raw_median_ms": 32.0,
+          "ms": 0.2653
+        },
+        "c_run": {
+          "ok": true,
+          "reps": 20000000,
+          "raw_samples_ms": [
+            53,
+            53,
+            53
+          ],
+          "raw_median_ms": 53.0,
+          "ms": 0.2637
+        }
+      },
+      {
+        "name": "expression",
+        "group": "tuned",
+        "bend_ms": 5.8956,
+        "c_gcc10_ms": 6.2494,
+        "ratio_vs_c": 0.9434,
+        "compile": {
+          "ok": true,
+          "compile_ms": 3123.9,
+          "obj_bytes": 62104
+        },
+        "bend_run": {
+          "ok": true,
+          "reps": 512000,
+          "raw_samples_ms": [
+            80,
+            80,
+            80
+          ],
+          "raw_median_ms": 80.0,
+          "ms": 5.8956
+        },
+        "c_run": {
+          "ok": true,
+          "reps": 320000,
+          "raw_samples_ms": [
+            53,
+            53,
+            53
+          ],
+          "raw_median_ms": 53.0,
+          "ms": 6.2494
+        }
+      },
+      {
+        "name": "bst",
+        "group": "tuned",
+        "bend_ms": 16.7776,
+        "c_gcc10_ms": 13.0823,
+        "ratio_vs_c": 1.2825,
+        "compile": {
+          "ok": true,
+          "compile_ms": 4085.6,
+          "obj_bytes": 73200
+        },
+        "bend_run": {
+          "ok": true,
+          "reps": 128000,
+          "raw_samples_ms": [
+            79,
+            80,
+            79
+          ],
+          "raw_median_ms": 79.0,
+          "ms": 16.7776
+        },
+        "c_run": {
+          "ok": true,
+          "reps": 160000,
+          "raw_samples_ms": [
+            77,
+            77,
+            77
+          ],
+          "raw_median_ms": 77.0,
+          "ms": 13.0823
+        }
+      },
+      {
+        "name": "editdist",
+        "group": "tuned",
+        "bend_ms": 15.7031,
+        "c_gcc10_ms": 9.6875,
+        "ratio_vs_c": 1.621,
+        "compile": {
+          "ok": true,
+          "compile_ms": 5129.1,
+          "obj_bytes": 110440
+        },
+        "bend_run": {
+          "ok": true,
+          "reps": 1024,
+          "raw_samples_ms": [
+            67,
+            67,
+            67
+          ],
+          "raw_median_ms": 67.0,
+          "ms": 15.7031
+        },
+        "c_run": {
+          "ok": true,
+          "reps": 1536,
+          "raw_samples_ms": [
+            62,
+            62,
+            63
+          ],
+          "raw_median_ms": 62.0,
+          "ms": 9.6875
+        }
+      }
+    ]
+  },
+  "correctness_gates": {
+    "check_only": {
+      "pass": true,
+      "ms": 50247.8,
+      "errors": 0
+    },
+    "native64_o2": {
+      "passed": 64,
+      "total": 64,
+      "wall_s": 55.08,
+      "failures": []
+    },
+    "observer_gate": {
+      "passed": 15,
+      "total": 15,
+      "wall_s": 16.68,
+      "violations": []
+    }
+  }
+}

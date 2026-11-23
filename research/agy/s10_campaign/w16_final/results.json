@@ -1,0 +1,43 @@
+{
+  "wave": "Wave 16 (W16-INT)",
+  "status": "COMPOSED_CHECKED_SPLIT_ORACLE_EXTRACTED_DEADLINE_REACHED",
+  "composed_source": "selfhost/build/agy/wave16_unified/compiler.bend",
+  "composed_bytes": 3497142,
+  "composed_lines": 82253,
+  "defs": 9343,
+  "laws": 909,
+  "types": 422,
+  "check_only_type_errors": 0,
+  "check_only_linearity_errors": 0,
+  "patches_composed": [
+    "S10-D (w5_g11_b fallthrough cmov)",
+    "S10-E --no-lexer (9 safe p86_plan/parser/check/annotate hunks + S10-A stub skip)",
+    "S10-A (zero-.p130 STB_WEAK stub & template visibility)",
+    "S10-C (fast -O0 backend: s10c_priv_emit_fast + s10c_plan_fast)",
+    "S10-H (unified S10-A stub skip + O(1) bangMap + p112s direct-stub skip)",
+    "S10-F (unboxed S10fT x187_pub + 8x-unrolled hot-8 x187_elf + 7 bare -O2 sinks)",
+    "S10-B (reachability tree-shaker + 55 flag folds + comment strip)",
+    "S10-G (compiler-only --nodrop mode)"
+  ],
+  "splits": {
+    "k10": {"dir": "selfhost/build/agy/k10_wave16", "min_kb": 334.6, "max_kb": 337.6, "max_over_avg": 1.002},
+    "k16": {"dir": "selfhost/build/agy/k16_wave16", "min_kb": 204.8, "max_kb": 212.4, "max_over_avg": 1.009},
+    "k24": {"dir": "selfhost/build/agy/k24_wave16", "min_kb": 138.3, "max_kb": 141.2, "max_over_avg": 1.005}
+  },
+  "k10_n6_o2_bootstrap": {
+    "total_segs": 65377,
+    "fid_limit": 65532,
+    "n7_o0_bytes": 102912368,
+    "merge_ms": 216.3,
+    "link_ms": 498.6,
+    "oracle_w16_path": "research/agy/s10_campaign/w16_final/p113d_oracle_w16.txt",
+    "oracle_w16_direct_defs": 2574,
+    "non_base_orphan_delta_from_w15_oracle": ["$direct.f_raw_skip"]
+  },
+  "pending_for_next_run": [
+    "Mint n7_o2 (-O2) on k10_wave16 using p113d_oracle_w16.txt (0 non-Base orphan weaks)",
+    "Mint n7_o2_nodrop via n7_o2 --nodrop",
+    "Official 8-core zero-cache cold self-compile benchmark (n7_o2 -> n8_cold & n7_o2_nodrop -> n8_cold_nd)",
+    "run_w16_gate.py all (158/158 qual + 7-family proxy + terrain holdout)"
+  ]
+}

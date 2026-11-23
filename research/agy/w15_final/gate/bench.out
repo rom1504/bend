@@ -1,0 +1,19 @@
+=== Gate 2: Official 7-Family Suite (CPU 7, 5-run median, n6_o2 -O2 vs gcc-10 -O2) ===
+  gameoflife   | n6_o2= 436.1055 ms | gcc10= 925.1525 ms | n6/gcc10= 0.4714x | n6/c16ref= 1.8058x | vsW11=1.0783x | syms=27 | obj=62416 B | ok=True
+  expression   | n6_o2=   8.4504 ms | gcc10=   6.2494 ms | n6/gcc10= 1.3522x | n6/c16ref= 1.1677x | vsW11=1.0816x | syms= 6 | obj=61008 B | ok=True
+  list         | n6_o2=   0.2653 ms | gcc10=   0.2637 ms | n6/gcc10= 1.0061x | n6/c16ref= 0.9876x | vsW11=  1.47x | syms= 6 | obj=61776 B | ok=True
+  nbody        | n6_o2=  94.7366 ms | gcc10=  88.7416 ms | n6/gcc10= 1.0676x | n6/c16ref= 1.2682x | vsW11=0.9865x | syms=25 | obj=61752 B | ok=True
+  histogram    | n6_o2=  29.5916 ms | gcc10=  23.8618 ms | n6/gcc10= 1.2401x | n6/c16ref=  1.233x | vsW11=1.4322x | syms=61 | obj=270584 B | ok=True
+  bst          | n6_o2=     None ms | gcc10=  13.0823 ms | n6/gcc10=   Nonex | n6/c16ref=   Nonex | vsW11=  Nonex | syms=10 | obj=79992 B | ok=False
+  editdist     | n6_o2=   20.625 ms | gcc10=   9.8438 ms | n6/gcc10= 2.0952x | n6/c16ref= 2.2373x | vsW11=1.1215x | syms=27 | obj=123544 B | ok=True
+
+=> Gate 2 7-Family Geomean: n6_o2 / gcc-10 -O2 = 1.1008x | n6_o2 / clang-16 ref = 1.3923x | speedup vs W11 = 1.1812x
+
+=== Gate 3: Official 3-Holdout Suite (CPU 7, 3-run median, n6_o2 -O2 vs gcc-10 -O2) ===
+  terrain      | n6_o2= 12.3272 s | gcc10= 7.8668 s | n6/gcc10=  1.567x | vsW11(21.731s)=1.7628x | syms=71 | obj=995248 B | ok=True
+  hashmap      | n6_o2=  5.8135 s | gcc10= 1.1942 s | n6/gcc10= 4.8681x | vsW11(7.166s)=1.2326x | syms=26 | obj=87944 B | ok=True
+  tree-radix   | n6_o2= 10.7071 s | gcc10= 5.3467 s | n6/gcc10= 2.0026x | vsW11(11.699s)=1.0926x | syms=13 | obj=62072 B | ok=True
+
+=> Gate 3 3-Holdout Geomean: n6_o2 / gcc-10 -O2 = 2.4813x | speedup vs W11 = 1.3340x
+
+Wrote /home/ai/bend2_agy/research/agy/w15_final/gate/bench_results.json (all_proxy_ok=False, all_holdout_ok=True, wall=178.56s)

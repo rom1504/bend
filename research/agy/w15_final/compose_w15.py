@@ -244,6 +244,133 @@ def w10_is_mod_local_sym(+name: String) -> Bool:
     return out
 
 
+def apply_w15_hotfixes(text: str) -> str:
+    """W15-FIX surgical hotfixes:
+    1. Restore cmoveq if-conversion for 1..2-stmt non-terminal `if` with empty `no`
+       in w12_x190_bin_if so W14-A's w14a_cmov_table_go + w14a_sl_loop_opt fire on editdist.
+    2. Bundle P113DCall context in w13e_sa_chk_body and w13e_sa_rew_body so the
+       cross-module w13e_vals_single_idx call has <= 3 live captures (avoiding n5_o2's
+       9+-capture p112f_inline frame-forward bug that broke bst -O2 stack-array cloning).
+    """
+    # Fix 1: w12_x190_bin_if cmov restoration
+    text = replace_exact(
+        text,
+        """               (List.is_empty(&2,P113DStmt,no) || x190_branch_terminal(yes) || x190_branch_terminal(no) || U32.is_gt(p113i_size(yes),2)) &&""",
+        """               (x190_branch_terminal(yes) || x190_branch_terminal(no) || U32.is_gt(p113i_size(yes),2)) &&""",
+        "w15_fix_cmov_bin_if",
+    )
+
+    # Fix 2a: w13e_sa_chk_body P113DCall low-capture helper
+    chk_helper = """type W13ESAChkCallCtx is Data:
+  W13ESAChkCallCtx{+rest: List<&2,P113DStmt>, +aset: List<&2,String>, +isRoot: Bool,
+                   +selfName: String, +paramIdx: U32, +fs: List<&2,P113DFunction>,
+                   +fuel: U32, +retIdx: U32}
+
+@unsafe
+def w13e_sa_chk_dcall_go(+aidx: U32, +dsts: List<&2,String>, +target: String, ctx: W13ESAChkCallCtx) -> W13ESAChk:
+  match ctx:
+    case W13ESAChkCallCtx{rest,aset,isRoot,selfName,paramIdx,fs,fuel,retIdx}:
+      nt_choose(W13ESAChk,U32.is_eq(aidx,99),
+        u => nt_choose(W13ESAChk,isRoot && agy_str_eq(target,selfName),v => W13ESABad{},
+          v => w13e_sa_chk_body(rest,w13e_str_del_many(aset,dsts),isRoot,selfName,paramIdx,fs,fuel,retIdx)),
+        u => nt_choose(W13ESAChk,U32.is_eq(aidx,98) || agy_str_eq(target,selfName),
+          v => W13ESABad{},
+          v => w13e_sa_chk_after_call(w13e_sa_chk_callee(w13e_find_fn(fs,target),aidx,fs,fuel),
+            dsts,rest,aset,isRoot,selfName,paramIdx,fs,fuel,retIdx)))
+
+@unsafe
+def w13e_sa_chk_dcall(+args: List<&2,N111Value>, +aset: List<&2,String>,
+    +dsts: List<&2,String>, +target: String, ctx: W13ESAChkCallCtx) -> W13ESAChk:
+  w13e_sa_chk_dcall_go(w13e_vals_single_idx(args,aset,0,99),dsts,target,ctx)
+
+@unsafe
+def w13e_sa_chk_body(body,aset,isRoot,selfName,paramIdx,fs,fuel,retIdx):"""
+
+    text = replace_exact(
+        text,
+        """@unsafe
+def w13e_sa_chk_body(body,aset,isRoot,selfName,paramIdx,fs,fuel,retIdx):""",
+        chk_helper,
+        "w15_fix_sa_chk_helper",
+    )
+
+    text = replace_exact(
+        text,
+        """    case Con{P113DCall{+dsts,+target,+args},+rest}:
+      +aidx = w13e_vals_single_idx(args,aset,0,99)
+      nt_choose(W13ESAChk,U32.is_eq(aidx,99),
+        u => nt_choose(W13ESAChk,isRoot && agy_str_eq(target,selfName),v => W13ESABad{},
+          v => w13e_sa_chk_body(rest,w13e_str_del_many(aset,dsts),isRoot,selfName,paramIdx,fs,fuel,retIdx)),
+        u => nt_choose(W13ESAChk,U32.is_eq(aidx,98) || agy_str_eq(target,selfName),
+          v => W13ESABad{},
+          v => w13e_sa_chk_after_call(w13e_sa_chk_callee(w13e_find_fn(fs,target),aidx,fs,fuel),
+            dsts,rest,aset,isRoot,selfName,paramIdx,fs,fuel,retIdx)))""",
+        """    case Con{P113DCall{+dsts,+target,+args},+rest}:
+      w13e_sa_chk_dcall(args,aset,dsts,target,W13ESAChkCallCtx{rest,aset,isRoot,selfName,paramIdx,fs,fuel,retIdx})""",
+        "w15_fix_sa_chk_call",
+    )
+
+    # Fix 2b: w13e_sa_rew_body P113DCall low-capture helper
+    rew_helper = """type W13ESARewCallCtx is Data:
+  W13ESARewCallCtx{+args: List<&2,N111Value>, +rest: List<&2,P113DStmt>, +aset: List<&2,String>,
+                   +cls: U32, +seq: U32, +fs: List<&2,P113DFunction>, +specs: List<&2,W13ESACloneSpec>}
+
+@unsafe
+def w13e_sa_rew_dcall_go(+aidx: U32, +dsts: List<&2,String>, +target: String, ctx: W13ESARewCallCtx) -> W13ESARew:
+  match ctx:
+    case W13ESARewCallCtx{args,rest,aset,cls,seq,fs,specs}:
+      nt_choose(W13ESARew,U32.is_lt(aidx,98),
+        u =>
+          +cName = w13e_sa_clone_name(target,cls,aidx)
+          +sp1 = nt_choose(List<&2,W13ESACloneSpec>,w13e_sa_spec_has(specs,target,cls,aidx),
+            v => specs,v => Con{W13ESACloneSpec{target,cls,aidx},specs})
+          +rIdx = w13e_sa_chk_ret(w13e_sa_chk_callee(w13e_find_fn(fs,target),aidx,fs,3))
+          +as1 = w13e_str_del_many(aset,dsts)
+          +as2 = nt_choose(List<&2,String>,U32.is_lt(rIdx,nt_count(String,dsts)),
+            v => w13e_str_add(as1,w13e_nth_str(dsts,rIdx)),v => as1)
+          w13e_sa_rew_cons(P113DCall{dsts,cName,args},w13e_sa_rew_body(rest,as2,cls,seq,fs,sp1)),
+        u => w13e_sa_rew_cons(P113DCall{dsts,target,args},w13e_sa_rew_body(rest,w13e_str_del_many(aset,dsts),cls,seq,fs,specs)))
+
+@unsafe
+def w13e_sa_rew_dcall(+args: List<&2,N111Value>, +aset: List<&2,String>,
+    +dsts: List<&2,String>, +target: String, ctx: W13ESARewCallCtx) -> W13ESARew:
+  w13e_sa_rew_dcall_go(w13e_vals_single_idx(args,aset,0,99),dsts,target,ctx)
+
+@unsafe
+def w13e_sa_rew_body(body,aset,cls,seq,fs,specs):"""
+
+    text = replace_exact(
+        text,
+        """@unsafe
+def w13e_sa_rew_body(body,aset,cls,seq,fs,specs):""",
+        rew_helper,
+        "w15_fix_sa_rew_helper",
+    )
+
+    text = replace_exact(
+        text,
+        """    case Con{P113DCall{+dsts,+target,+args},+rest}:
+      +aidx = w13e_vals_single_idx(args,aset,0,99)
+      nt_choose(W13ESARew,U32.is_lt(aidx,98),
+        u =>
+          +cName = w13e_sa_clone_name(target,cls,aidx)
+          +sp1 = nt_choose(List<&2,W13ESACloneSpec>,w13e_sa_spec_has(specs,target,cls,aidx),
+            v => specs,v => Con{W13ESACloneSpec{target,cls,aidx},specs})
+          +rIdx = w13e_sa_chk_ret(w13e_sa_chk_callee(w13e_find_fn(fs,target),aidx,fs,3))
+          +as1 = w13e_str_del_many(aset,dsts)
+          +as2 = nt_choose(List<&2,String>,U32.is_lt(rIdx,nt_count(String,dsts)),
+            v => w13e_str_add(as1,w13e_nth_str(dsts,rIdx)),v => as1)
+          w13e_sa_rew_cons(P113DCall{dsts,cName,args},w13e_sa_rew_body(rest,as2,cls,seq,fs,sp1)),
+        u => w13e_sa_rew_cons(P113DCall{dsts,target,args},w13e_sa_rew_body(rest,w13e_str_del_many(aset,dsts),cls,seq,fs,specs)))""",
+        """    case Con{P113DCall{+dsts,+target,+args},+rest}:
+      w13e_sa_rew_dcall(args,aset,dsts,target,W13ESARewCallCtx{args,rest,aset,cls,seq,fs,specs})""",
+        "w15_fix_sa_rew_call",
+    )
+
+    print("  [OK] W15-FIX (w12_x190_bin_if cmov restoration + w13e_sa low-capture P113DCall helpers)", flush=True)
+    return text
+
+
 def main() -> None:
     print(f"=== W15-INT Compose: {SRC} -> {DST} ===", flush=True)
     src = SRC.read_text(encoding="utf-8")
@@ -258,6 +385,7 @@ def main() -> None:
     src = apply_w14e.apply_w14e(src)
     print("  [OK] W14-E (inline term-drop skip + certified index_find & String.append)", flush=True)
     src = apply_w15_p126scc_local(src)
+    src = apply_w15_hotfixes(src)
 
     DST.parent.mkdir(parents=True, exist_ok=True)
     DST.write_text(src, encoding="utf-8")

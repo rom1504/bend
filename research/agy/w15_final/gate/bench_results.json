@@ -1,0 +1,523 @@
+{
+  "cpu": 7,
+  "hard_timeout_s": 60,
+  "proxy_runs": 5,
+  "holdout_runs": 3,
+  "clang16_installed": false,
+  "compilers": {
+    "n6_o2": "/home/ai/bend2_agy/selfhost/build/agy/wave15-native-mod/n6_o2",
+    "runtime": "/home/ai/bend2_agy/selfhost/build/agy/unified/runtime-agy.o",
+    "cc": "/usr/bin/x86_64-linux-gnu-gcc-10"
+  },
+  "all_proxy_ok": true,
+  "all_holdout_ok": true,
+  "total_wall_s": 179.56,
+  "proxy_summary": {
+    "geomean_n6_vs_gcc10": 1.1341,
+    "geomean_n6_vs_clang16_ref": 1.4128,
+    "geomean_speedup_vs_w11": 1.2575
+  },
+  "holdout_summary": {
+    "geomean_n6_vs_gcc10_o2": 2.4788,
+    "geomean_speedup_vs_w11": 1.3329
+  },
+  "proxy_7": [
+    {
+      "name": "gameoflife",
+      "group": "upstream",
+      "expected_checksum": 3681094808,
+      "checksum_ok": true,
+      "n6_o2_ms": 436.1453,
+      "c_gcc10_ms": 922.3993,
+      "c_clang16_ref_ms": 241.5,
+      "w11_n4_ref_ms": 470.25,
+      "ratio_n6_vs_c": 0.4728,
+      "ratio_n6_vs_c16": 1.806,
+      "speedup_vs_w11": 1.0782,
+      "n6_compile_ms": 3522.0,
+      "n6_obj_bytes": 62416,
+      "n6_direct_syms": 27,
+      "details": {
+        "c_gcc10": {
+          "ok": true,
+          "expected": 3681094808,
+          "samples_ms": [
+            923.435,
+            921.064,
+            922.399,
+            923.183,
+            920.732
+          ],
+          "ms": 922.3993
+        },
+        "n6_o2": {
+          "compile": {
+            "ok": true,
+            "compile_ms": 3522.0,
+            "obj_bytes": 62416,
+            "direct_sym_count": 27
+          },
+          "run": {
+            "ok": true,
+            "expected": 3681094808,
+            "samples_ms": [
+              435.527,
+              437.409,
+              436.145,
+              436.214,
+              435.264
+            ],
+            "ms": 436.1453
+          }
+        }
+      }
+    },
+    {
+      "name": "expression",
+      "group": "tuned",
+      "expected_checksum": 3393903617,
+      "checksum_ok": true,
+      "n6_o2_ms": 8.5487,
+      "c_gcc10_ms": 6.2494,
+      "c_clang16_ref_ms": 7.237,
+      "w11_n4_ref_ms": 9.14,
+      "ratio_n6_vs_c": 1.3679,
+      "ratio_n6_vs_c16": 1.1812,
+      "speedup_vs_w11": 1.0692,
+      "n6_compile_ms": 1037.8,
+      "n6_obj_bytes": 61008,
+      "n6_direct_syms": 6,
+      "details": {
+        "c_gcc10": {
+          "ok": true,
+          "expected": 3393903617,
+          "reps": 320000,
+          "raw_samples_ms": [
+            52,
+            53,
+            53,
+            53,
+            53
+          ],
+          "raw_median_ms": 53.0,
+          "ms": 6.2494
+        },
+        "n6_o2": {
+          "compile": {
+            "ok": true,
+            "compile_ms": 1037.8,
+            "obj_bytes": 61008,
+            "direct_sym_count": 6
+          },
+          "run": {
+            "ok": true,
+            "expected": 3393903617,
+            "reps": 384000,
+            "raw_samples_ms": [
+              87,
+              87,
+              87,
+              86,
+              86
+            ],
+            "raw_median_ms": 87.0,
+            "ms": 8.5487
+          }
+        }
+      }
+    },
+    {
+      "name": "list",
+      "group": "tuned",
+      "expected_checksum": 1904,
+      "checksum_ok": true,
+      "n6_o2_ms": 0.2653,
+      "c_gcc10_ms": 0.2686,
+      "c_clang16_ref_ms": 0.2686,
+      "w11_n4_ref_ms": 0.39,
+      "ratio_n6_vs_c": 0.9877,
+      "ratio_n6_vs_c16": 0.9876,
+      "speedup_vs_w11": 1.47,
+      "n6_compile_ms": 885.1,
+      "n6_obj_bytes": 61776,
+      "n6_direct_syms": 6,
+      "details": {
+        "c_gcc10": {
+          "ok": true,
+          "expected": 1904,
+          "reps": 20000000,
+          "raw_samples_ms": [
+            53,
+            54,
+            53,
+            54,
+            54
+          ],
+          "raw_median_ms": 54.0,
+          "ms": 0.2686
+        },
+        "n6_o2": {
+          "compile": {
+            "ok": true,
+            "compile_ms": 885.1,
+            "obj_bytes": 61776,
+            "direct_sym_count": 6
+          },
+          "run": {
+            "ok": true,
+            "expected": 1904,
+            "reps": 12000000,
+            "raw_samples_ms": [
+              32,
+              32,
+              32,
+              32,
+              32
+            ],
+            "raw_median_ms": 32.0,
+            "ms": 0.2653
+          }
+        }
+      }
+    },
+    {
+      "name": "nbody",
+      "group": "upstream",
+      "expected_checksum": 728502159,
+      "checksum_ok": true,
+      "n6_o2_ms": 94.6087,
+      "c_gcc10_ms": 87.774,
+      "c_clang16_ref_ms": 74.7,
+      "w11_n4_ref_ms": 93.46,
+      "ratio_n6_vs_c": 1.0779,
+      "ratio_n6_vs_c16": 1.2665,
+      "speedup_vs_w11": 0.9879,
+      "n6_compile_ms": 3297.1,
+      "n6_obj_bytes": 61752,
+      "n6_direct_syms": 25,
+      "details": {
+        "c_gcc10": {
+          "ok": true,
+          "expected": 728502159,
+          "samples_ms": [
+            87.758,
+            88.443,
+            89.477,
+            87.446,
+            87.774
+          ],
+          "ms": 87.774
+        },
+        "n6_o2": {
+          "compile": {
+            "ok": true,
+            "compile_ms": 3297.1,
+            "obj_bytes": 61752,
+            "direct_sym_count": 25
+          },
+          "run": {
+            "ok": true,
+            "expected": 728502159,
+            "samples_ms": [
+              94.609,
+              93.998,
+              94.617,
+              94.813,
+              94.53
+            ],
+            "ms": 94.6087
+          }
+        }
+      }
+    },
+    {
+      "name": "histogram",
+      "group": "upstream",
+      "expected_checksum": 3307081914,
+      "checksum_ok": true,
+      "n6_o2_ms": 28.8093,
+      "c_gcc10_ms": 22.7307,
+      "c_clang16_ref_ms": 24.0,
+      "w11_n4_ref_ms": 42.38,
+      "ratio_n6_vs_c": 1.2674,
+      "ratio_n6_vs_c16": 1.2004,
+      "speedup_vs_w11": 1.4711,
+      "n6_compile_ms": 3767.4,
+      "n6_obj_bytes": 270584,
+      "n6_direct_syms": 61,
+      "details": {
+        "c_gcc10": {
+          "ok": true,
+          "expected": 3307081914,
+          "samples_ms": [
+            25.564,
+            23.335,
+            22.526,
+            21.939,
+            22.731
+          ],
+          "ms": 22.7307
+        },
+        "n6_o2": {
+          "compile": {
+            "ok": true,
+            "compile_ms": 3767.4,
+            "obj_bytes": 270584,
+            "direct_sym_count": 61
+          },
+          "run": {
+            "ok": true,
+            "expected": 3307081914,
+            "samples_ms": [
+              29.44,
+              28.796,
+              29.496,
+              28.809,
+              28.662
+            ],
+            "ms": 28.8093
+          }
+        }
+      }
+    },
+    {
+      "name": "bst",
+      "group": "tuned",
+      "expected_checksum": 861157620,
+      "checksum_ok": true,
+      "n6_o2_ms": 16.99,
+      "c_gcc10_ms": 13.0823,
+      "c_clang16_ref_ms": 10.8355,
+      "w11_n4_ref_ms": 30.58,
+      "ratio_n6_vs_c": 1.2987,
+      "ratio_n6_vs_c16": 1.568,
+      "speedup_vs_w11": 1.7999,
+      "n6_compile_ms": 1169.5,
+      "n6_obj_bytes": 75680,
+      "n6_direct_syms": 12,
+      "details": {
+        "c_gcc10": {
+          "ok": true,
+          "expected": 861157620,
+          "reps": 160000,
+          "raw_samples_ms": [
+            78,
+            77,
+            77,
+            77,
+            76
+          ],
+          "raw_median_ms": 77.0,
+          "ms": 13.0823
+        },
+        "n6_o2": {
+          "compile": {
+            "ok": true,
+            "compile_ms": 1169.5,
+            "obj_bytes": 75680,
+            "direct_sym_count": 12
+          },
+          "run": {
+            "ok": true,
+            "expected": 861157620,
+            "reps": 128000,
+            "raw_samples_ms": [
+              80,
+              79,
+              80,
+              80,
+              80
+            ],
+            "raw_median_ms": 80.0,
+            "ms": 16.99
+          }
+        }
+      }
+    },
+    {
+      "name": "editdist",
+      "group": "tuned",
+      "expected_checksum": 2065873279,
+      "checksum_ok": true,
+      "n6_o2_ms": 20.625,
+      "c_gcc10_ms": 9.6875,
+      "c_clang16_ref_ms": 9.2188,
+      "w11_n4_ref_ms": 23.13,
+      "ratio_n6_vs_c": 2.129,
+      "ratio_n6_vs_c16": 2.2373,
+      "speedup_vs_w11": 1.1215,
+      "n6_compile_ms": 1920.8,
+      "n6_obj_bytes": 123544,
+      "n6_direct_syms": 27,
+      "details": {
+        "c_gcc10": {
+          "ok": true,
+          "expected": 2065873279,
+          "reps": 1536,
+          "raw_samples_ms": [
+            62,
+            63,
+            62,
+            63,
+            62
+          ],
+          "raw_median_ms": 62.0,
+          "ms": 9.6875
+        },
+        "n6_o2": {
+          "compile": {
+            "ok": true,
+            "compile_ms": 1920.8,
+            "obj_bytes": 123544,
+            "direct_sym_count": 27
+          },
+          "run": {
+            "ok": true,
+            "expected": 2065873279,
+            "reps": 768,
+            "raw_samples_ms": [
+              66,
+              66,
+              66,
+              66,
+              67
+            ],
+            "raw_median_ms": 66.0,
+            "ms": 20.625
+          }
+        }
+      }
+    }
+  ],
+  "holdouts": [
+    {
+      "name": "terrain",
+      "expected": "2572468224",
+      "checksum_ok": true,
+      "n6_o2_s": 12.3663,
+      "c_gcc10_o2_s": 7.8707,
+      "w11_n4_ref_s": 21.731,
+      "ratio_n6_vs_c_o2": 1.5712,
+      "speedup_vs_w11": 1.7573,
+      "n6_compile_ms": 19956.5,
+      "n6_obj_bytes": 995248,
+      "n6_direct_syms": 71,
+      "details": {
+        "c_o2": {
+          "ok": true,
+          "samples_s": [
+            7.8707,
+            7.8693,
+            7.8818
+          ],
+          "s": 7.8707,
+          "out": "2572468224"
+        },
+        "n6_o2": {
+          "compile": {
+            "ok": true,
+            "compile_ms": 19956.5,
+            "obj_bytes": 995248,
+            "direct_sym_count": 71
+          },
+          "run": {
+            "ok": true,
+            "samples_s": [
+              12.37,
+              12.3352,
+              12.3663
+            ],
+            "s": 12.3663,
+            "out": "2572468224"
+          }
+        }
+      }
+    },
+    {
+      "name": "hashmap",
+      "expected": "1307803744",
+      "checksum_ok": true,
+      "n6_o2_s": 5.8062,
+      "c_gcc10_o2_s": 1.195,
+      "w11_n4_ref_s": 7.166,
+      "ratio_n6_vs_c_o2": 4.8587,
+      "speedup_vs_w11": 1.2342,
+      "n6_compile_ms": 1185.1,
+      "n6_obj_bytes": 87944,
+      "n6_direct_syms": 26,
+      "details": {
+        "c_o2": {
+          "ok": true,
+          "samples_s": [
+            1.195,
+            1.1946,
+            1.196
+          ],
+          "s": 1.195,
+          "out": "1307803744"
+        },
+        "n6_o2": {
+          "compile": {
+            "ok": true,
+            "compile_ms": 1185.1,
+            "obj_bytes": 87944,
+            "direct_sym_count": 26
+          },
+          "run": {
+            "ok": true,
+            "samples_s": [
+              5.8062,
+              5.8074,
+              5.8014
+            ],
+            "s": 5.8062,
+            "out": "1307803744"
+          }
+        }
+      }
+    },
+    {
+      "name": "tree-radix",
+      "expected": "1998173798",
+      "checksum_ok": true,
+      "n6_o2_s": 10.7148,
+      "c_gcc10_o2_s": 5.3703,
+      "w11_n4_ref_s": 11.699,
+      "ratio_n6_vs_c_o2": 1.9952,
+      "speedup_vs_w11": 1.0919,
+      "n6_compile_ms": 792.4,
+      "n6_obj_bytes": 62072,
+      "n6_direct_syms": 13,
+      "details": {
+        "c_o2": {
+          "ok": true,
+          "samples_s": [
+            5.3703,
+            5.4389,
+            5.3607
+          ],
+          "s": 5.3703,
+          "out": "1998173798"
+        },
+        "n6_o2": {
+          "compile": {
+            "ok": true,
+            "compile_ms": 792.4,
+            "obj_bytes": 62072,
+            "direct_sym_count": 13
+          },
+          "run": {
+            "ok": true,
+            "samples_s": [
+              10.7106,
+              10.7148,
+              10.8001
+            ],
+            "s": 10.7148,
+            "out": "1998173798"
+          }
+        }
+      }
+    }
+  ]
+}

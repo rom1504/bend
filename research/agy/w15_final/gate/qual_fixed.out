@@ -1,0 +1,64 @@
+
+=== Native n6_o2 64/64 native64 (x86-object-fast) on CPUs [0, 1, 2, 3, 4, 5, 6] ===
+  [PROG] 16/64 completed (1.6s)
+  [PROG] 32/64 completed (3.9s)
+  [PROG] 48/64 completed (7.3s)
+  [PROG] 64/64 completed (9.9s)
+  => [PASS] x86-object-fast: 64/64 PASS (wall=9.93s, compile_sum=60.09s)
+
+=== Native n6_o2 64/64 native64 (x86-object) on CPUs [0, 1, 2, 3, 4, 5, 6] ===
+  [PROG] 16/64 completed (2.2s)
+  [PROG] 32/64 completed (8.5s)
+  [PROG] 48/64 completed (14.4s)
+  [PROG] 64/64 completed (32.1s)
+  => [PASS] x86-object: 64/64 PASS (wall=32.06s, compile_sum=163.38s)
+
+=== Native n6_o2 15/15 Live-Metadata Observer Gate (['x86-object', 'x86-object-fast']) on CPUs [0, 1, 2, 3, 4, 5, 6] ===
+  [REF] map_set_del_get    upstream='4008146603'
+  [REF] bst_zipper         upstream='382401606'
+  [REF] flow_native        upstream='49913905'
+  [REF] perceus_reuse      upstream='3114'
+  [REF] listapp_arrlist    upstream='3905793128'
+
+  --- Observer mode=x86-object ---
+    [PASS] map_set_del_get    obs=normal   out='4008146603' err=''
+    [PASS] map_set_del_get    obs=cap-no8  out='4008146603' err=''
+    [PASS] map_set_del_get    obs=all-hot  out='4008146603' err=''
+    [PASS] bst_zipper         obs=normal   out='382401606' err=''
+    [PASS] bst_zipper         obs=cap-no8  out='382401606' err=''
+    [PASS] bst_zipper         obs=all-hot  out='382401606' err=''
+    [PASS] flow_native        obs=normal   out='49913905' err=''
+    [PASS] flow_native        obs=cap-no8  out='49913905' err=''
+    [PASS] flow_native        obs=all-hot  out='49913905' err=''
+    [PASS] perceus_reuse      obs=normal   out='3114' err=''
+    [PASS] perceus_reuse      obs=cap-no8  out='3114' err=''
+    [PASS] perceus_reuse      obs=all-hot  out='3114' err=''
+    [PASS] listapp_arrlist    obs=normal   out='3905793128' err=''
+    [PASS] listapp_arrlist    obs=cap-no8  out='3905793128' err=''
+    [PASS] listapp_arrlist    obs=all-hot  out='3905793128' err=''
+  => Observer (x86-object): 15/15 PASS (0 violations, wall=10.96s)
+
+  --- Observer mode=x86-object-fast ---
+    [PASS] map_set_del_get    obs=normal   out='4008146603' err=''
+    [PASS] map_set_del_get    obs=cap-no8  out='4008146603' err=''
+    [PASS] map_set_del_get    obs=all-hot  out='4008146603' err=''
+    [PASS] bst_zipper         obs=normal   out='382401606' err=''
+    [PASS] bst_zipper         obs=cap-no8  out='382401606' err=''
+    [PASS] bst_zipper         obs=all-hot  out='382401606' err=''
+    [PASS] flow_native        obs=normal   out='49913905' err=''
+    [PASS] flow_native        obs=cap-no8  out='49913905' err=''
+    [PASS] flow_native        obs=all-hot  out='49913905' err=''
+    [PASS] perceus_reuse      obs=normal   out='3114' err=''
+    [PASS] perceus_reuse      obs=cap-no8  out='3114' err=''
+    [PASS] perceus_reuse      obs=all-hot  out='3114' err=''
+    [PASS] listapp_arrlist    obs=normal   out='3905793128' err=''
+    [PASS] listapp_arrlist    obs=cap-no8  out='3905793128' err=''
+    [PASS] listapp_arrlist    obs=all-hot  out='3905793128' err=''
+  => Observer (x86-object-fast): 15/15 PASS (0 violations, wall=2.86s)
+
+=== ELF Section Audit on n6_o2-emitted .o (compiler_slice.bend) & n6_o2 binary ===
+  [PASS] x86-object: obj=388208 B (5207.5 ms) hot=.data(WA) arity=.rodata(A) names_0=.rodata(A)
+  [PASS] x86-object-fast: obj=420808 B (2972.8 ms) hot=.data(WA) arity=.rodata(A) names_0=.rodata(A)
+  [PASS] n6_o2 binary: .text=69,278,465 B (AX) .rodata=202,272 B (A) .data=1,553,176 B (WA) .bss=1,148,552 B (WA)
+
+=== W15-GATE QUAL SUMMARY: 158/158 PASS, elf_audit=True, all_pass=True (total_wall=67.39s) ===

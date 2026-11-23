@@ -1,0 +1,656 @@
+{
+  "status": "PASSED",
+  "date": "2026-11-23",
+  "cpus": [
+    0,
+    1
+  ],
+  "check_only": {
+    "pass": true,
+    "type_errors": 0,
+    "linearity_errors": 0,
+    "unsafe_defs_checked": 9096
+  },
+  "patch": {
+    "path": "/home/ai/bend2_agy/research/agy/w14_campaign/w14b_iface_v3/w14b_iface_v3.patch",
+    "bytes": 35309,
+    "lines": 691
+  },
+  "native_profile_baseline": {
+    "m06": {
+      "module": "m06",
+      "prev_module": "m05b",
+      "in_bytes": 24677125,
+      "out_bytes": 28260620,
+      "wall_ms": 13709.1,
+      "stamp": "p130-word-pair-v1:w10-iface-v1:a49725d60e163c94",
+      "samples": 885,
+      "zero_loss": true,
+      "usable": true,
+      "buckets_pct": {
+        "1_p130_read_decode": 5.99,
+        "2_parse_check_or_shared": 6.44,
+        "3_fast_abi": 24.63,
+        "4_p130_encode_write": 1.69,
+        "5_other": 24.18,
+        "rt:ownership": 11.41,
+        "rt:reclamation": 25.65
+      },
+      "top_40": [
+        {
+          "decoded": "term_drop",
+          "percent": 19.1,
+          "samples": 169,
+          "bucket": "rt:reclamation"
+        },
+        {
+          "decoded": "span_fade",
+          "percent": 6.55,
+          "samples": 58,
+          "bucket": "rt:reclamation"
+        },
+        {
+          "decoded": "p125_rt_ctor2",
+          "percent": 5.31,
+          "samples": 47,
+          "bucket": "rt:ownership"
+        },
+        {
+          "decoded": "p111_rt_take",
+          "percent": 3.5,
+          "samples": 31,
+          "bucket": "rt:ownership"
+        },
+        {
+          "decoded": "p113d_FID_$direct.String.append",
+          "percent": 2.94,
+          "samples": 26,
+          "bucket": "3_fast_abi"
+        },
+        {
+          "decoded": "p113d_FID_$direct.p98_tag_eq",
+          "percent": 2.37,
+          "samples": 21,
+          "bucket": "3_fast_abi"
+        },
+        {
+          "decoded": "work_loop.constprop.0",
+          "percent": 2.15,
+          "samples": 19,
+          "bucket": "2_parse_check_or_shared"
+        },
+        {
+          "decoded": "p198_rfc_take2",
+          "percent": 2.03,
+          "samples": 18,
+          "bucket": "5_other"
+        },
+        {
+          "decoded": "p111_rt_ctor",
+          "percent": 1.69,
+          "samples": 15,
+          "bucket": "rt:ownership"
+        },
+        {
+          "decoded": "p113d_FID_$direct.index_hash",
+          "percent": 1.24,
+          "samples": 11,
+          "bucket": "3_fast_abi"
+        },
+        {
+          "decoded": "p113d_FID_$direct.p88_string_eq",
+          "percent": 1.24,
+          "samples": 11,
+          "bucket": "1_p130_read_decode"
+        },
+        {
+          "decoded": "p113d_FID_$direct.agy_str_eq",
+          "percent": 1.24,
+          "samples": 11,
+          "bucket": "3_fast_abi"
+        },
+        {
+          "decoded": "p113d_FID_missing",
+          "percent": 1.02,
+          "samples": 9,
+          "bucket": "3_fast_abi"
+        },
+        {
+          "decoded": "p113d_FID_$direct.ns_context",
+          "percent": 1.02,
+          "samples": 9,
+          "bucket": "3_fast_abi"
+        },
+        {
+          "decoded": "p113d_FID_$direct.w10_if_w",
+          "percent": 0.9,
+          "samples": 8,
+          "bucket": "4_p130_encode_write"
+        },
+        {
+          "decoded": "p111_rt_sink",
+          "percent": 0.9,
+          "samples": 8,
+          "bucket": "5_other"
+        },
+        {
+          "decoded": "[library_unresolved]",
+          "percent": 0.79,
+          "samples": 7,
+          "bucket": "5_other"
+        },
+        {
+          "decoded": "p113d_FID_$direct.List.reverse.go",
+          "percent": 0.68,
+          "samples": 6,
+          "bucket": "3_fast_abi"
+        },
+        {
+          "decoded": "p113d_FID_$direct.dc",
+          "percent": 0.68,
+          "samples": 6,
+          "bucket": "3_fast_abi"
+        },
+        {
+          "decoded": "p113d_FID_$direct.index_find",
+          "percent": 0.68,
+          "samples": 6,
+          "bucket": "3_fast_abi"
+        },
+        {
+          "decoded": "io_str",
+          "percent": 0.68,
+          "samples": 6,
+          "bucket": "5_other"
+        },
+        {
+          "decoded": "p198_rfc_take4",
+          "percent": 0.68,
+          "samples": 6,
+          "bucket": "5_other"
+        },
+        {
+          "decoded": "p113d_FID_$direct.p88_string_gate",
+          "percent": 0.56,
+          "samples": 5,
+          "bucket": "1_p130_read_decode"
+        },
+        {
+          "decoded": "p113d_FID_$direct.p151_roles",
+          "percent": 0.56,
+          "samples": 5,
+          "bucket": "3_fast_abi"
+        },
+        {
+          "decoded": "p113d_FID_$direct.p88_number_read",
+          "percent": 0.56,
+          "samples": 5,
+          "bucket": "1_p130_read_decode"
+        },
+        {
+          "decoded": "p113d_FID_$direct.p118t_target",
+          "percent": 0.56,
+          "samples": 5,
+          "bucket": "3_fast_abi"
+        },
+        {
+          "decoded": "p111_FID_$direct.p131i_insert",
+          "percent": 0.56,
+          "samples": 5,
+          "bucket": "2_parse_check_or_shared"
+        },
+        {
+          "decoded": "ctr_take",
+          "percent": 0.56,
+          "samples": 5,
+          "bucket": "5_other"
+        },
+        {
+          "decoded": "p113d_FID_$direct.nt_reverse",
+          "percent": 0.45,
+          "samples": 4,
+          "bucket": "3_fast_abi"
+        },
+        {
+          "decoded": "p113d_FID_$direct.ks",
+          "percent": 0.45,
+          "samples": 4,
+          "bucket": "3_fast_abi"
+        },
+        {
+          "decoded": "p113d_FID_$direct.p130m_word_gate",
+          "percent": 0.45,
+          "samples": 4,
+          "bucket": "1_p130_read_decode"
+        },
+        {
+          "decoded": "p111_FID_$direct.kid",
+          "percent": 0.45,
+          "samples": 4,
+          "bucket": "5_other"
+        },
+        {
+          "decoded": "p113d_FID_$direct.p130m_word",
+          "percent": 0.45,
+          "samples": 4,
+          "bucket": "1_p130_read_decode"
+        },
+        {
+          "decoded": "p114r_FID_$direct.w10_if_take_batch",
+          "percent": 0.45,
+          "samples": 4,
+          "bucket": "4_p130_encode_write"
+        },
+        {
+          "decoded": "p113d_FID_$direct.dn",
+          "percent": 0.45,
+          "samples": 4,
+          "bucket": "3_fast_abi"
+        },
+        {
+          "decoded": "p113d_FID_$direct.List.length",
+          "percent": 0.45,
+          "samples": 4,
+          "bucket": "3_fast_abi"
+        },
+        {
+          "decoded": "p111_FID_$p111.k.881539",
+          "percent": 0.45,
+          "samples": 4,
+          "bucket": "5_other"
+        },
+        {
+          "decoded": "p111_set_regs",
+          "percent": 0.45,
+          "samples": 4,
+          "bucket": "5_other"
+        },
+        {
+          "decoded": "p125_rt_take2",
+          "percent": 0.45,
+          "samples": 4,
+          "bucket": "rt:ownership"
+        },
+        {
+          "decoded": "p113d_FID_$direct.p130m_number_read",
+          "percent": 0.34,
+          "samples": 3,
+          "bucket": "1_p130_read_decode"
+        }
+      ]
+    },
+    "m10": {
+      "module": "m10",
+      "prev_module": "m09",
+      "in_bytes": 38371007,
+      "out_bytes": 42058950,
+      "wall_ms": 21446.6,
+      "stamp": "p130-word-pair-v1:w10-iface-v1:f70f81e1219b4655",
+      "samples": 1384,
+      "zero_loss": false,
+      "usable": false,
+      "buckets_pct": {
+        "1_p130_read_decode": 7.3,
+        "2_parse_check_or_shared": 5.49,
+        "3_fast_abi": 24.64,
+        "4_p130_encode_write": 2.82,
+        "5_other": 22.9,
+        "rt:allocation": 0.07,
+        "rt:ownership": 11.63,
+        "rt:reclamation": 25.14
+      },
+      "top_40": [
+        {
+          "decoded": "term_drop",
+          "percent": 19.87,
+          "samples": 275,
+          "bucket": "rt:reclamation"
+        },
+        {
+          "decoded": "span_fade",
+          "percent": 5.27,
+          "samples": 73,
+          "bucket": "rt:reclamation"
+        },
+        {
+          "decoded": "p125_rt_ctor2",
+          "percent": 4.48,
+          "samples": 62,
+          "bucket": "rt:ownership"
+        },
+        {
+          "decoded": "p113d_FID_$direct.String.append",
+          "percent": 3.4,
+          "samples": 47,
+          "bucket": "3_fast_abi"
+        },
+        {
+          "decoded": "p111_rt_take",
+          "percent": 2.89,
+          "samples": 40,
+          "bucket": "rt:ownership"
+        },
+        {
+          "decoded": "p111_rt_ctor",
+          "percent": 1.95,
+          "samples": 27,
+          "bucket": "rt:ownership"
+        },
+        {
+          "decoded": "p113d_FID_$direct.index_find",
+          "percent": 1.73,
+          "samples": 24,
+          "bucket": "3_fast_abi"
+        },
+        {
+          "decoded": "work_loop.constprop.0",
+          "percent": 1.66,
+          "samples": 23,
+          "bucket": "2_parse_check_or_shared"
+        },
+        {
+          "decoded": "p198_rfc_take2",
+          "percent": 1.59,
+          "samples": 22,
+          "bucket": "5_other"
+        },
+        {
+          "decoded": "p111_FID_$direct.w5c3_find",
+          "percent": 1.45,
+          "samples": 20,
+          "bucket": "5_other"
+        },
+        {
+          "decoded": "p113d_FID_$direct.w10_if_w",
+          "percent": 1.3,
+          "samples": 18,
+          "bucket": "4_p130_encode_write"
+        },
+        {
+          "decoded": "p113d_FID_$direct.p88_string_eq",
+          "percent": 1.23,
+          "samples": 17,
+          "bucket": "1_p130_read_decode"
+        },
+        {
+          "decoded": "p113d_FID_$direct.p98_tag_eq",
+          "percent": 1.23,
+          "samples": 17,
+          "bucket": "3_fast_abi"
+        },
+        {
+          "decoded": "p111_rt_sink",
+          "percent": 1.23,
+          "samples": 17,
+          "bucket": "5_other"
+        },
+        {
+          "decoded": "p113d_FID_$direct.p130m_word",
+          "percent": 1.08,
+          "samples": 15,
+          "bucket": "1_p130_read_decode"
+        },
+        {
+          "decoded": "p111_FID_$direct.w5c_find_lr",
+          "percent": 1.01,
+          "samples": 14,
+          "bucket": "2_parse_check_or_shared"
+        },
+        {
+          "decoded": "p113d_FID_missing",
+          "percent": 0.87,
+          "samples": 12,
+          "bucket": "3_fast_abi"
+        },
+        {
+          "decoded": "io_str",
+          "percent": 0.87,
+          "samples": 12,
+          "bucket": "5_other"
+        },
+        {
+          "decoded": "p113d_FID_$direct.p88_build",
+          "percent": 0.79,
+          "samples": 11,
+          "bucket": "1_p130_read_decode"
+        },
+        {
+          "decoded": "p113d_FID_$direct.dk",
+          "percent": 0.79,
+          "samples": 11,
+          "bucket": "3_fast_abi"
+        },
+        {
+          "decoded": "p198_rfc_take4",
+          "percent": 0.72,
+          "samples": 10,
+          "bucket": "5_other"
+        },
+        {
+          "decoded": "[library_unresolved]",
+          "percent": 0.72,
+          "samples": 10,
+          "bucket": "5_other"
+        },
+        {
+          "decoded": "p113d_FID_$direct.index_hash",
+          "percent": 0.65,
+          "samples": 9,
+          "bucket": "3_fast_abi"
+        },
+        {
+          "decoded": "p113d_FID_$direct.nt_reverse",
+          "percent": 0.65,
+          "samples": 9,
+          "bucket": "3_fast_abi"
+        },
+        {
+          "decoded": "p113d_FID_$direct.String.eq",
+          "percent": 0.65,
+          "samples": 9,
+          "bucket": "3_fast_abi"
+        },
+        {
+          "decoded": "p111_FID_$p111.k.699432",
+          "percent": 0.65,
+          "samples": 9,
+          "bucket": "5_other"
+        },
+        {
+          "decoded": "p113d_FID_$direct.agy_str_eq",
+          "percent": 0.58,
+          "samples": 8,
+          "bucket": "3_fast_abi"
+        },
+        {
+          "decoded": "p125_rt_take2",
+          "percent": 0.58,
+          "samples": 8,
+          "bucket": "rt:ownership"
+        },
+        {
+          "decoded": "heap_alloc_miss",
+          "percent": 0.51,
+          "samples": 7,
+          "bucket": "5_other"
+        },
+        {
+          "decoded": "p113d_FID_$direct.ks",
+          "percent": 0.51,
+          "samples": 7,
+          "bucket": "3_fast_abi"
+        },
+        {
+          "decoded": "p114r_FID_$direct.w10_if_take_batch",
+          "percent": 0.51,
+          "samples": 7,
+          "bucket": "4_p130_encode_write"
+        },
+        {
+          "decoded": "p111_FID_$p111.k.881539",
+          "percent": 0.51,
+          "samples": 7,
+          "bucket": "5_other"
+        },
+        {
+          "decoded": "io_utf8",
+          "percent": 0.51,
+          "samples": 7,
+          "bucket": "5_other"
+        },
+        {
+          "decoded": "__libc_write",
+          "percent": 0.51,
+          "samples": 7,
+          "bucket": "5_other"
+        },
+        {
+          "decoded": "p113d_FID_$direct.List.reverse.go",
+          "percent": 0.43,
+          "samples": 6,
+          "bucket": "3_fast_abi"
+        },
+        {
+          "decoded": "p113d_FID_$direct.w9_pick_kdef",
+          "percent": 0.43,
+          "samples": 6,
+          "bucket": "3_fast_abi"
+        },
+        {
+          "decoded": "p113d_FID_$direct.nq_pair_primitive",
+          "percent": 0.43,
+          "samples": 6,
+          "bucket": "3_fast_abi"
+        },
+        {
+          "decoded": "p111_set_regs",
+          "percent": 0.43,
+          "samples": 6,
+          "bucket": "5_other"
+        },
+        {
+          "decoded": "p111_rt_op",
+          "percent": 0.43,
+          "samples": 6,
+          "bucket": "5_other"
+        },
+        {
+          "decoded": "p113d_FID_$direct.nm",
+          "percent": 0.36,
+          "samples": 5,
+          "bucket": "3_fast_abi"
+        }
+      ]
+    }
+  },
+  "stage_breakdown_baseline_o0": {
+    "m06": {
+      "total_ms": 43868.7,
+      "stderr": [
+        "[w14-stage] 1a_read_files=189ms",
+        "",
+        "[w14-stage] 1b_p88_decode=7471ms",
+        "",
+        "[w14-stage] 2a_hdr_start=24ms",
+        "",
+        "[w14-stage] 2b_p86_plan_loaded=12201ms",
+        "",
+        "[w14-stage] 3a_p112s_prepare=1680ms",
+        "",
+        "[w14-stage] 3b_p128br_scan=854ms",
+        "",
+        "[w14-stage] 3c_filter_split=476ms",
+        "",
+        "[w14-stage] 3d_nq_signatures=225ms",
+        "",
+        "[w14-stage] 3e_p113pl_candidates=8045ms",
+        "",
+        "[w14-stage] 3f_p113d_passes=279ms",
+        "",
+        "[w14-stage] 3g_build_abi_maps=148ms",
+        "",
+        "[w14-stage] 4a_stamp_strip_fresh=295ms",
+        "",
+        "[w14-stage] 4b_ready_extend=6ms",
+        "",
+        "p130-word-pair-v1:w10-iface-v1:a49725d60e163c94",
+        "",
+        "[w14-stage] 4c_world_encode_stream=5175ms"
+      ]
+    },
+    "m10": {
+      "total_ms": 46813.3,
+      "stderr": [
+        "[w14-stage] 1a_read_files=161ms",
+        "",
+        "[w14-stage] 1b_p88_decode=6582ms",
+        "",
+        "[w14-stage] 2a_hdr_start=15ms",
+        "",
+        "[w14-stage] 2b_p86_plan_loaded=9450ms",
+        "",
+        "[w14-stage] 3a_p112s_prepare=1331ms",
+        "",
+        "[w14-stage] 3b_p128br_scan=571ms",
+        "",
+        "[w14-stage] 3c_filter_split=607ms",
+        "",
+        "[w14-stage] 3d_nq_signatures=328ms",
+        "",
+        "[w14-stage] 3e_p113pl_candidates=11514ms",
+        "",
+        "[w14-stage] 3f_p113d_passes=480ms",
+        "",
+        "[w14-stage] 3g_build_abi_maps=195ms",
+        "",
+        "[w14-stage] 4a_stamp_strip_fresh=317ms",
+        "",
+        "[w14-stage] 4b_ready_extend=9ms",
+        "",
+        "p130-word-pair-v1:w10-iface-v1:f70f81e1219b4655",
+        "",
+        "[w14-stage] 4c_world_encode_stream=11222ms"
+      ]
+    }
+  },
+  "native_benchmark_v3": {
+    "m11_build_o0_ms": 20913.6,
+    "m11_build_o2_ms": 54270.3,
+    "modules": {
+      "m06": {
+        "n6_base_o0_ms": 32430.0,
+        "n6_v3_o0_ms": 24491.2,
+        "n6_v3_m11_o2_ms": 18390.9,
+        "speedup_o0_vs_o0": 1.324,
+        "speedup_m11_o2_vs_o0": 1.763,
+        "base_p130_bytes": 28260620,
+        "v3_p130_bytes": 27636552,
+        "p130_size_reduction_pct": 2.21,
+        "stamp": "p130-word-pair-v1:w10-iface-v1:a49725d60e163c94",
+        "stamp_exact": true,
+        "downstream_mod": "m07",
+        "downstream_o_sha256": "72ca833b5667f17c6ecbea7712f1dfe14e553ad3030ce5145289659b191c1442",
+        "downstream_o_bit_identical": true,
+        "n5_o2_baseline_ms": 13170.4,
+        "projected_n5_o2_v3_ms": 9947.4
+      },
+      "m10": {
+        "n6_base_o0_ms": 47822.7,
+        "n6_v3_o0_ms": 30282.1,
+        "n6_v3_m11_o2_ms": 24067.1,
+        "speedup_o0_vs_o0": 1.579,
+        "speedup_m11_o2_vs_o0": 1.987,
+        "base_p130_bytes": 42058950,
+        "v3_p130_bytes": 41004322,
+        "p130_size_reduction_pct": 2.51,
+        "stamp": "p130-word-pair-v1:w10-iface-v1:f70f81e1219b4655",
+        "stamp_exact": true,
+        "downstream_mod": "m11",
+        "downstream_o_sha256": "2be0f658a6825bd836c0fd252d977bf6eb707737db5fc26171bd0ba13c57617d",
+        "downstream_o_bit_identical": true,
+        "n5_o2_baseline_ms": 15701.5,
+        "projected_n5_o2_v3_ms": 9944.0
+      }
+    }
+  }
+}

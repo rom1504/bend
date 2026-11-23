@@ -1,0 +1,527 @@
+{
+  "m06": {
+    "module": "m06",
+    "prev_module": "m05b",
+    "in_bytes": 24677125,
+    "out_bytes": 28260620,
+    "wall_ms": 13709.1,
+    "stamp": "p130-word-pair-v1:w10-iface-v1:a49725d60e163c94",
+    "samples": 885,
+    "zero_loss": true,
+    "usable": true,
+    "buckets_pct": {
+      "1_p130_read_decode": 5.99,
+      "2_parse_check_or_shared": 6.44,
+      "3_fast_abi": 24.63,
+      "4_p130_encode_write": 1.69,
+      "5_other": 24.18,
+      "rt:ownership": 11.41,
+      "rt:reclamation": 25.65
+    },
+    "top_40": [
+      {
+        "decoded": "term_drop",
+        "percent": 19.1,
+        "samples": 169,
+        "bucket": "rt:reclamation"
+      },
+      {
+        "decoded": "span_fade",
+        "percent": 6.55,
+        "samples": 58,
+        "bucket": "rt:reclamation"
+      },
+      {
+        "decoded": "p125_rt_ctor2",
+        "percent": 5.31,
+        "samples": 47,
+        "bucket": "rt:ownership"
+      },
+      {
+        "decoded": "p111_rt_take",
+        "percent": 3.5,
+        "samples": 31,
+        "bucket": "rt:ownership"
+      },
+      {
+        "decoded": "p113d_FID_$direct.String.append",
+        "percent": 2.94,
+        "samples": 26,
+        "bucket": "3_fast_abi"
+      },
+      {
+        "decoded": "p113d_FID_$direct.p98_tag_eq",
+        "percent": 2.37,
+        "samples": 21,
+        "bucket": "3_fast_abi"
+      },
+      {
+        "decoded": "work_loop.constprop.0",
+        "percent": 2.15,
+        "samples": 19,
+        "bucket": "2_parse_check_or_shared"
+      },
+      {
+        "decoded": "p198_rfc_take2",
+        "percent": 2.03,
+        "samples": 18,
+        "bucket": "5_other"
+      },
+      {
+        "decoded": "p111_rt_ctor",
+        "percent": 1.69,
+        "samples": 15,
+        "bucket": "rt:ownership"
+      },
+      {
+        "decoded": "p113d_FID_$direct.index_hash",
+        "percent": 1.24,
+        "samples": 11,
+        "bucket": "3_fast_abi"
+      },
+      {
+        "decoded": "p113d_FID_$direct.p88_string_eq",
+        "percent": 1.24,
+        "samples": 11,
+        "bucket": "1_p130_read_decode"
+      },
+      {
+        "decoded": "p113d_FID_$direct.agy_str_eq",
+        "percent": 1.24,
+        "samples": 11,
+        "bucket": "3_fast_abi"
+      },
+      {
+        "decoded": "p113d_FID_missing",
+        "percent": 1.02,
+        "samples": 9,
+        "bucket": "3_fast_abi"
+      },
+      {
+        "decoded": "p113d_FID_$direct.ns_context",
+        "percent": 1.02,
+        "samples": 9,
+        "bucket": "3_fast_abi"
+      },
+      {
+        "decoded": "p113d_FID_$direct.w10_if_w",
+        "percent": 0.9,
+        "samples": 8,
+        "bucket": "4_p130_encode_write"
+      },
+      {
+        "decoded": "p111_rt_sink",
+        "percent": 0.9,
+        "samples": 8,
+        "bucket": "5_other"
+      },
+      {
+        "decoded": "[library_unresolved]",
+        "percent": 0.79,
+        "samples": 7,
+        "bucket": "5_other"
+      },
+      {
+        "decoded": "p113d_FID_$direct.List.reverse.go",
+        "percent": 0.68,
+        "samples": 6,
+        "bucket": "3_fast_abi"
+      },
+      {
+        "decoded": "p113d_FID_$direct.dc",
+        "percent": 0.68,
+        "samples": 6,
+        "bucket": "3_fast_abi"
+      },
+      {
+        "decoded": "p113d_FID_$direct.index_find",
+        "percent": 0.68,
+        "samples": 6,
+        "bucket": "3_fast_abi"
+      },
+      {
+        "decoded": "io_str",
+        "percent": 0.68,
+        "samples": 6,
+        "bucket": "5_other"
+      },
+      {
+        "decoded": "p198_rfc_take4",
+        "percent": 0.68,
+        "samples": 6,
+        "bucket": "5_other"
+      },
+      {
+        "decoded": "p113d_FID_$direct.p88_string_gate",
+        "percent": 0.56,
+        "samples": 5,
+        "bucket": "1_p130_read_decode"
+      },
+      {
+        "decoded": "p113d_FID_$direct.p151_roles",
+        "percent": 0.56,
+        "samples": 5,
+        "bucket": "3_fast_abi"
+      },
+      {
+        "decoded": "p113d_FID_$direct.p88_number_read",
+        "percent": 0.56,
+        "samples": 5,
+        "bucket": "1_p130_read_decode"
+      },
+      {
+        "decoded": "p113d_FID_$direct.p118t_target",
+        "percent": 0.56,
+        "samples": 5,
+        "bucket": "3_fast_abi"
+      },
+      {
+        "decoded": "p111_FID_$direct.p131i_insert",
+        "percent": 0.56,
+        "samples": 5,
+        "bucket": "2_parse_check_or_shared"
+      },
+      {
+        "decoded": "ctr_take",
+        "percent": 0.56,
+        "samples": 5,
+        "bucket": "5_other"
+      },
+      {
+        "decoded": "p113d_FID_$direct.nt_reverse",
+        "percent": 0.45,
+        "samples": 4,
+        "bucket": "3_fast_abi"
+      },
+      {
+        "decoded": "p113d_FID_$direct.ks",
+        "percent": 0.45,
+        "samples": 4,
+        "bucket": "3_fast_abi"
+      },
+      {
+        "decoded": "p113d_FID_$direct.p130m_word_gate",
+        "percent": 0.45,
+        "samples": 4,
+        "bucket": "1_p130_read_decode"
+      },
+      {
+        "decoded": "p111_FID_$direct.kid",
+        "percent": 0.45,
+        "samples": 4,
+        "bucket": "5_other"
+      },
+      {
+        "decoded": "p113d_FID_$direct.p130m_word",
+        "percent": 0.45,
+        "samples": 4,
+        "bucket": "1_p130_read_decode"
+      },
+      {
+        "decoded": "p114r_FID_$direct.w10_if_take_batch",
+        "percent": 0.45,
+        "samples": 4,
+        "bucket": "4_p130_encode_write"
+      },
+      {
+        "decoded": "p113d_FID_$direct.dn",
+        "percent": 0.45,
+        "samples": 4,
+        "bucket": "3_fast_abi"
+      },
+      {
+        "decoded": "p113d_FID_$direct.List.length",
+        "percent": 0.45,
+        "samples": 4,
+        "bucket": "3_fast_abi"
+      },
+      {
+        "decoded": "p111_FID_$p111.k.881539",
+        "percent": 0.45,
+        "samples": 4,
+        "bucket": "5_other"
+      },
+      {
+        "decoded": "p111_set_regs",
+        "percent": 0.45,
+        "samples": 4,
+        "bucket": "5_other"
+      },
+      {
+        "decoded": "p125_rt_take2",
+        "percent": 0.45,
+        "samples": 4,
+        "bucket": "rt:ownership"
+      },
+      {
+        "decoded": "p113d_FID_$direct.p130m_number_read",
+        "percent": 0.34,
+        "samples": 3,
+        "bucket": "1_p130_read_decode"
+      }
+    ]
+  },
+  "m10": {
+    "module": "m10",
+    "prev_module": "m09",
+    "in_bytes": 38371007,
+    "out_bytes": 42058950,
+    "wall_ms": 21446.6,
+    "stamp": "p130-word-pair-v1:w10-iface-v1:f70f81e1219b4655",
+    "samples": 1384,
+    "zero_loss": false,
+    "usable": false,
+    "buckets_pct": {
+      "1_p130_read_decode": 7.3,
+      "2_parse_check_or_shared": 5.49,
+      "3_fast_abi": 24.64,
+      "4_p130_encode_write": 2.82,
+      "5_other": 22.9,
+      "rt:allocation": 0.07,
+      "rt:ownership": 11.63,
+      "rt:reclamation": 25.14
+    },
+    "top_40": [
+      {
+        "decoded": "term_drop",
+        "percent": 19.87,
+        "samples": 275,
+        "bucket": "rt:reclamation"
+      },
+      {
+        "decoded": "span_fade",
+        "percent": 5.27,
+        "samples": 73,
+        "bucket": "rt:reclamation"
+      },
+      {
+        "decoded": "p125_rt_ctor2",
+        "percent": 4.48,
+        "samples": 62,
+        "bucket": "rt:ownership"
+      },
+      {
+        "decoded": "p113d_FID_$direct.String.append",
+        "percent": 3.4,
+        "samples": 47,
+        "bucket": "3_fast_abi"
+      },
+      {
+        "decoded": "p111_rt_take",
+        "percent": 2.89,
+        "samples": 40,
+        "bucket": "rt:ownership"
+      },
+      {
+        "decoded": "p111_rt_ctor",
+        "percent": 1.95,
+        "samples": 27,
+        "bucket": "rt:ownership"
+      },
+      {
+        "decoded": "p113d_FID_$direct.index_find",
+        "percent": 1.73,
+        "samples": 24,
+        "bucket": "3_fast_abi"
+      },
+      {
+        "decoded": "work_loop.constprop.0",
+        "percent": 1.66,
+        "samples": 23,
+        "bucket": "2_parse_check_or_shared"
+      },
+      {
+        "decoded": "p198_rfc_take2",
+        "percent": 1.59,
+        "samples": 22,
+        "bucket": "5_other"
+      },
+      {
+        "decoded": "p111_FID_$direct.w5c3_find",
+        "percent": 1.45,
+        "samples": 20,
+        "bucket": "5_other"
+      },
+      {
+        "decoded": "p113d_FID_$direct.w10_if_w",
+        "percent": 1.3,
+        "samples": 18,
+        "bucket": "4_p130_encode_write"
+      },
+      {
+        "decoded": "p113d_FID_$direct.p88_string_eq",
+        "percent": 1.23,
+        "samples": 17,
+        "bucket": "1_p130_read_decode"
+      },
+      {
+        "decoded": "p113d_FID_$direct.p98_tag_eq",
+        "percent": 1.23,
+        "samples": 17,
+        "bucket": "3_fast_abi"
+      },
+      {
+        "decoded": "p111_rt_sink",
+        "percent": 1.23,
+        "samples": 17,
+        "bucket": "5_other"
+      },
+      {
+        "decoded": "p113d_FID_$direct.p130m_word",
+        "percent": 1.08,
+        "samples": 15,
+        "bucket": "1_p130_read_decode"
+      },
+      {
+        "decoded": "p111_FID_$direct.w5c_find_lr",
+        "percent": 1.01,
+        "samples": 14,
+        "bucket": "2_parse_check_or_shared"
+      },
+      {
+        "decoded": "p113d_FID_missing",
+        "percent": 0.87,
+        "samples": 12,
+        "bucket": "3_fast_abi"
+      },
+      {
+        "decoded": "io_str",
+        "percent": 0.87,
+        "samples": 12,
+        "bucket": "5_other"
+      },
+      {
+        "decoded": "p113d_FID_$direct.p88_build",
+        "percent": 0.79,
+        "samples": 11,
+        "bucket": "1_p130_read_decode"
+      },
+      {
+        "decoded": "p113d_FID_$direct.dk",
+        "percent": 0.79,
+        "samples": 11,
+        "bucket": "3_fast_abi"
+      },
+      {
+        "decoded": "p198_rfc_take4",
+        "percent": 0.72,
+        "samples": 10,
+        "bucket": "5_other"
+      },
+      {
+        "decoded": "[library_unresolved]",
+        "percent": 0.72,
+        "samples": 10,
+        "bucket": "5_other"
+      },
+      {
+        "decoded": "p113d_FID_$direct.index_hash",
+        "percent": 0.65,
+        "samples": 9,
+        "bucket": "3_fast_abi"
+      },
+      {
+        "decoded": "p113d_FID_$direct.nt_reverse",
+        "percent": 0.65,
+        "samples": 9,
+        "bucket": "3_fast_abi"
+      },
+      {
+        "decoded": "p113d_FID_$direct.String.eq",
+        "percent": 0.65,
+        "samples": 9,
+        "bucket": "3_fast_abi"
+      },
+      {
+        "decoded": "p111_FID_$p111.k.699432",
+        "percent": 0.65,
+        "samples": 9,
+        "bucket": "5_other"
+      },
+      {
+        "decoded": "p113d_FID_$direct.agy_str_eq",
+        "percent": 0.58,
+        "samples": 8,
+        "bucket": "3_fast_abi"
+      },
+      {
+        "decoded": "p125_rt_take2",
+        "percent": 0.58,
+        "samples": 8,
+        "bucket": "rt:ownership"
+      },
+      {
+        "decoded": "heap_alloc_miss",
+        "percent": 0.51,
+        "samples": 7,
+        "bucket": "5_other"
+      },
+      {
+        "decoded": "p113d_FID_$direct.ks",
+        "percent": 0.51,
+        "samples": 7,
+        "bucket": "3_fast_abi"
+      },
+      {
+        "decoded": "p114r_FID_$direct.w10_if_take_batch",
+        "percent": 0.51,
+        "samples": 7,
+        "bucket": "4_p130_encode_write"
+      },
+      {
+        "decoded": "p111_FID_$p111.k.881539",
+        "percent": 0.51,
+        "samples": 7,
+        "bucket": "5_other"
+      },
+      {
+        "decoded": "io_utf8",
+        "percent": 0.51,
+        "samples": 7,
+        "bucket": "5_other"
+      },
+      {
+        "decoded": "__libc_write",
+        "percent": 0.51,
+        "samples": 7,
+        "bucket": "5_other"
+      },
+      {
+        "decoded": "p113d_FID_$direct.List.reverse.go",
+        "percent": 0.43,
+        "samples": 6,
+        "bucket": "3_fast_abi"
+      },
+      {
+        "decoded": "p113d_FID_$direct.w9_pick_kdef",
+        "percent": 0.43,
+        "samples": 6,
+        "bucket": "3_fast_abi"
+      },
+      {
+        "decoded": "p113d_FID_$direct.nq_pair_primitive",
+        "percent": 0.43,
+        "samples": 6,
+        "bucket": "3_fast_abi"
+      },
+      {
+        "decoded": "p111_set_regs",
+        "percent": 0.43,
+        "samples": 6,
+        "bucket": "5_other"
+      },
+      {
+        "decoded": "p111_rt_op",
+        "percent": 0.43,
+        "samples": 6,
+        "bucket": "5_other"
+      },
+      {
+        "decoded": "p113d_FID_$direct.nm",
+        "percent": 0.36,
+        "samples": 5,
+        "bucket": "3_fast_abi"
+      }
+    ]
+  }
+}

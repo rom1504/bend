@@ -1,0 +1,84 @@
+{
+  "task": "S10-B",
+  "cpus": [5, 7],
+  "treeshake": {
+    "source": "/home/ai/bend2_agy/selfhost/build/agy/wave15_unified/compiler.bend",
+    "output": "/tmp/agy_s10b/compiler_pruned.bend",
+    "elapsed_ms": 3470.1,
+    "before": {
+      "lines": 91122,
+      "code_lines": 73628,
+      "bytes": 3874573,
+      "defs": 9610,
+      "laws": 931,
+      "types": 426
+    },
+    "after": {
+      "lines": 80477,
+      "code_lines": 70008,
+      "bytes": 3408937,
+      "defs": 9162,
+      "laws": 891,
+      "types": 415
+    },
+    "delta": {
+      "lines": 10645,
+      "lines_pct": 11.68,
+      "code_lines": 3620,
+      "code_lines_pct": 4.92,
+      "bytes": 465636,
+      "bytes_pct": 12.02,
+      "defs": 448,
+      "defs_pct": 4.66,
+      "laws": 40,
+      "types": 11
+    },
+    "fold_stats": {
+      "flags_found": 55,
+      "true_flags": 53,
+      "false_flags": 2,
+      "calls_inlined": 106,
+      "nt_choose_folded": 24
+    }
+  },
+  "check_only": {
+    "pass": true,
+    "type_errors": 0,
+    "unsafe_defs": 8946
+  },
+  "self_compile_k10_o0": {
+    "total_segs": 61822,
+    "fid_headroom": 3710,
+    "iface_sum_ms": 137064.0,
+    "mod_sum_ms": 389987.4,
+    "cpu_sum_1core_ms": 527051.4,
+    "n7_pruned_bytes": 96965880,
+    "note": "m07 compiled at fid_base=39650 (m06 ended at 39633); 0 overlaps, 3710 FID headroom"
+  },
+  "baseline_w15_unpruned": {
+    "total_segs": 64869,
+    "fid_headroom": 663,
+    "iface_sum_ms": 144743.9,
+    "actual_7core_e2e_ms": 177220.0
+  },
+  "delta_vs_unpruned": {
+    "segs": 3047,
+    "segs_pct": 4.70,
+    "fid_headroom_mult": 5.60,
+    "iface_sum_ms": 7679.9,
+    "iface_sum_pct": 5.31
+  },
+  "o2_regression_gate": {
+    "all_obj_bit_identical": true,
+    "verified_count": 7,
+    "benchmarks": [
+      {"name": "compiler_slice_O0", "mode": "x86-object-fast", "obj_bytes": 420808, "obj_bit_identical": true, "out": "34"},
+      {"name": "compiler_slice_O2", "mode": "x86-object", "obj_bytes": 388208, "obj_bit_identical": true, "out": "34"},
+      {"name": "gameoflife", "mode": "x86-object", "obj_bytes": 62416, "obj_bit_identical": true, "out": "3681094808"},
+      {"name": "histogram", "mode": "x86-object", "obj_bytes": 270584, "obj_bit_identical": true, "out": "3307081914"},
+      {"name": "bst", "mode": "x86-object", "obj_bytes": 75680, "obj_bit_identical": true},
+      {"name": "editdist", "mode": "x86-object", "obj_bytes": 123544, "obj_bit_identical": true},
+      {"name": "expression", "mode": "x86-object", "obj_bytes": 61008, "obj_bit_identical": true}
+    ]
+  }
+}

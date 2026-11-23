@@ -1,0 +1,429 @@
+{
+  "task": "S10-D",
+  "cpus": [
+    5,
+    7
+  ],
+  "patcher": "research/agy/s10_campaign/s10d_frontend_and_o2/apply_s10d.py",
+  "orthogonal_to": [
+    "S10-B",
+    "S10-E (p86_plan)",
+    "S10-F (term_drop/x187_elf)"
+  ],
+  "gates": {
+    "check_only_w15_s10d": {
+      "pass": true,
+      "type_errors": 0,
+      "unsafe_defs": 9332
+    },
+    "check_only_s10b_s10d": {
+      "pass": true,
+      "type_errors": 0,
+      "unsafe_defs": 8946
+    },
+    "idempotent": true,
+    "native64_o2": {
+      "passed": 64,
+      "total": 64,
+      "wall_s": 439.61
+    },
+    "observer_o2": {
+      "passed": 15,
+      "total": 15,
+      "violations": 0,
+      "wall_s": 81.05
+    }
+  },
+  "proxy_7": [
+    {
+      "name": "gameoflife",
+      "group": "upstream",
+      "expected_checksum": 3681094808,
+      "checksum_ok": true,
+      "n6_o2_ms": 708.1019,
+      "c_gcc10_ms": 1767.8632,
+      "c_clang16_ref_ms": 241.5,
+      "w11_n4_ref_ms": 470.25,
+      "ratio_n6_vs_c": 0.4005,
+      "ratio_n6_vs_c16": 2.9321,
+      "speedup_vs_w11": 0.6641,
+      "n6_compile_ms": 18889.8,
+      "n6_obj_bytes": 62416,
+      "n6_direct_syms": 27,
+      "details": {
+        "c_gcc10": {
+          "ok": true,
+          "expected": 3681094808,
+          "samples_ms": [
+            1739.503,
+            1769.873,
+            1723.735,
+            1767.863,
+            1812.018
+          ],
+          "ms": 1767.8632
+        },
+        "n6_o2": {
+          "compile": {
+            "ok": true,
+            "compile_ms": 18889.8,
+            "obj_bytes": 62416,
+            "direct_sym_count": 27
+          },
+          "run": {
+            "ok": true,
+            "expected": 3681094808,
+            "samples_ms": [
+              708.102,
+              703.611,
+              726.951,
+              757.343,
+              519.266
+            ],
+            "ms": 708.1019
+          }
+        }
+      }
+    },
+    {
+      "name": "expression",
+      "group": "tuned",
+      "expected_checksum": 3393903617,
+      "checksum_ok": true,
+      "n6_o2_ms": 8.8434,
+      "c_gcc10_ms": 6.721,
+      "c_clang16_ref_ms": 7.237,
+      "w11_n4_ref_ms": 9.14,
+      "ratio_n6_vs_c": 1.3158,
+      "ratio_n6_vs_c16": 1.222,
+      "speedup_vs_w11": 1.0335,
+      "n6_compile_ms": 2436.8,
+      "n6_obj_bytes": 61008,
+      "n6_direct_syms": 6,
+      "details": {
+        "c_gcc10": {
+          "ok": true,
+          "expected": 3393903617,
+          "reps": 320000,
+          "raw_samples_ms": [
+            64,
+            73,
+            57,
+            56,
+            56
+          ],
+          "raw_median_ms": 57.0,
+          "ms": 6.721
+        },
+        "n6_o2": {
+          "compile": {
+            "ok": true,
+            "compile_ms": 2436.8,
+            "obj_bytes": 61008,
+            "direct_sym_count": 6
+          },
+          "run": {
+            "ok": true,
+            "expected": 3393903617,
+            "reps": 128000,
+            "raw_samples_ms": [
+              30,
+              30,
+              31,
+              30,
+              31
+            ],
+            "raw_median_ms": 30.0,
+            "ms": 8.8434
+          }
+        }
+      }
+    },
+    {
+      "name": "list",
+      "group": "tuned",
+      "expected_checksum": 1904,
+      "checksum_ok": true,
+      "n6_o2_ms": 0.2819,
+      "c_gcc10_ms": 0.2786,
+      "c_clang16_ref_ms": 0.2686,
+      "w11_n4_ref_ms": 0.39,
+      "ratio_n6_vs_c": 1.0118,
+      "ratio_n6_vs_c16": 1.0494,
+      "speedup_vs_w11": 1.3835,
+      "n6_compile_ms": 2574.8,
+      "n6_obj_bytes": 61776,
+      "n6_direct_syms": 6,
+      "details": {
+        "c_gcc10": {
+          "ok": true,
+          "expected": 1904,
+          "reps": 20000000,
+          "raw_samples_ms": [
+            56,
+            56,
+            57,
+            57,
+            56
+          ],
+          "raw_median_ms": 56.0,
+          "ms": 0.2786
+        },
+        "n6_o2": {
+          "compile": {
+            "ok": true,
+            "compile_ms": 2574.8,
+            "obj_bytes": 61776,
+            "direct_sym_count": 6
+          },
+          "run": {
+            "ok": true,
+            "expected": 1904,
+            "reps": 12000000,
+            "raw_samples_ms": [
+              34,
+              46,
+              34,
+              34,
+              34
+            ],
+            "raw_median_ms": 34.0,
+            "ms": 0.2819
+          }
+        }
+      }
+    },
+    {
+      "name": "nbody",
+      "group": "upstream",
+      "expected_checksum": 728502159,
+      "checksum_ok": true,
+      "n6_o2_ms": 97.9648,
+      "c_gcc10_ms": 92.1107,
+      "c_clang16_ref_ms": 74.7,
+      "w11_n4_ref_ms": 93.46,
+      "ratio_n6_vs_c": 1.0636,
+      "ratio_n6_vs_c16": 1.3114,
+      "speedup_vs_w11": 0.954,
+      "n6_compile_ms": 8421.2,
+      "n6_obj_bytes": 61752,
+      "n6_direct_syms": 25,
+      "details": {
+        "c_gcc10": {
+          "ok": true,
+          "expected": 728502159,
+          "samples_ms": [
+            92.111,
+            92.562,
+            91.238,
+            91.136,
+            92.595
+          ],
+          "ms": 92.1107
+        },
+        "n6_o2": {
+          "compile": {
+            "ok": true,
+            "compile_ms": 8421.2,
+            "obj_bytes": 61752,
+            "direct_sym_count": 25
+          },
+          "run": {
+            "ok": true,
+            "expected": 728502159,
+            "samples_ms": [
+              98.319,
+              97.915,
+              97.722,
+              98.066,
+              97.965
+            ],
+            "ms": 97.9648
+          }
+        }
+      }
+    },
+    {
+      "name": "histogram",
+      "group": "upstream",
+      "expected_checksum": 3307081914,
+      "checksum_ok": true,
+      "n6_o2_ms": 29.1229,
+      "c_gcc10_ms": 22.7972,
+      "c_clang16_ref_ms": 24.0,
+      "w11_n4_ref_ms": 42.38,
+      "ratio_n6_vs_c": 1.2775,
+      "ratio_n6_vs_c16": 1.2135,
+      "speedup_vs_w11": 1.4552,
+      "n6_compile_ms": 13118.2,
+      "n6_obj_bytes": 270584,
+      "n6_direct_syms": 61,
+      "details": {
+        "c_gcc10": {
+          "ok": true,
+          "expected": 3307081914,
+          "samples_ms": [
+            22.532,
+            22.734,
+            22.92,
+            24.056,
+            22.797
+          ],
+          "ms": 22.7972
+        },
+        "n6_o2": {
+          "compile": {
+            "ok": true,
+            "compile_ms": 13118.2,
+            "obj_bytes": 270584,
+            "direct_sym_count": 61
+          },
+          "run": {
+            "ok": true,
+            "expected": 3307081914,
+            "samples_ms": [
+              29.123,
+              29.118,
+              29.001,
+              29.227,
+              29.513
+            ],
+            "ms": 29.1229
+          }
+        }
+      }
+    },
+    {
+      "name": "bst",
+      "group": "tuned",
+      "expected_checksum": 861157620,
+      "checksum_ok": true,
+      "n6_o2_ms": 17.8395,
+      "c_gcc10_ms": 13.7619,
+      "c_clang16_ref_ms": 10.8355,
+      "w11_n4_ref_ms": 30.58,
+      "ratio_n6_vs_c": 1.2963,
+      "ratio_n6_vs_c16": 1.6464,
+      "speedup_vs_w11": 1.7142,
+      "n6_compile_ms": 3716.0,
+      "n6_obj_bytes": 75680,
+      "n6_direct_syms": 12,
+      "details": {
+        "c_gcc10": {
+          "ok": true,
+          "expected": 861157620,
+          "reps": 160000,
+          "raw_samples_ms": [
+            80,
+            81,
+            81,
+            82,
+            81
+          ],
+          "raw_median_ms": 81.0,
+          "ms": 13.7619
+        },
+        "n6_o2": {
+          "compile": {
+            "ok": true,
+            "compile_ms": 3716.0,
+            "obj_bytes": 75680,
+            "direct_sym_count": 12
+          },
+          "run": {
+            "ok": true,
+            "expected": 861157620,
+            "reps": 128000,
+            "raw_samples_ms": [
+              84,
+              84,
+              85,
+              84,
+              85
+            ],
+            "raw_median_ms": 84.0,
+            "ms": 17.8395
+          }
+        }
+      }
+    },
+    {
+      "name": "editdist",
+      "group": "tuned",
+      "expected_checksum": 2065873279,
+      "checksum_ok": true,
+      "n6_o2_ms": 16.4062,
+      "c_gcc10_ms": 10.3125,
+      "c_clang16_ref_ms": 9.2188,
+      "w11_n4_ref_ms": 23.13,
+      "ratio_n6_vs_c": 1.5909,
+      "ratio_n6_vs_c16": 1.7797,
+      "speedup_vs_w11": 1.4098,
+      "n6_compile_ms": 5723.2,
+      "n6_obj_bytes": 123336,
+      "n6_direct_syms": 27,
+      "details": {
+        "c_gcc10": {
+          "ok": true,
+          "expected": 2065873279,
+          "reps": 1536,
+          "raw_samples_ms": [
+            66,
+            65,
+            65,
+            66,
+            66
+          ],
+          "raw_median_ms": 66.0,
+          "ms": 10.3125
+        },
+        "n6_o2": {
+          "compile": {
+            "ok": true,
+            "compile_ms": 5723.2,
+            "obj_bytes": 123336,
+            "direct_sym_count": 27
+          },
+          "run": {
+            "ok": true,
+            "expected": 2065873279,
+            "reps": 1024,
+            "raw_samples_ms": [
+              70,
+              70,
+              71,
+              71,
+              70
+            ],
+            "raw_median_ms": 70.0,
+            "ms": 16.4062
+          }
+        }
+      }
+    }
+  ],
+  "proxy_summary": {
+    "geomean_n6_vs_gcc10": 1.059,
+    "geomean_n6_vs_clang16_ref": 1.5055,
+    "geomean_speedup_vs_w11": 1.18
+  },
+  "expression_dsb_root_cause": {
+    "unpadded_128k_ms": [
+      29,
+      29,
+      31,
+      29,
+      29
+    ],
+    "unpadded_scaled_ms": 8.549,
+    "pad16b_128k_ms": [
+      20,
+      20,
+      20,
+      20,
+      20
+    ],
+    "pad16b_scaled_ms": 5.896,
+    "cause": "Ivy Bridge 2-branch-per-32B DSB uop-cache limit when jne+jne+jmpq share a 32B line; all W14-A passes are active (12/20/14 instructions, 0 spills, 0 p111_rt_op)."
+  }
+}

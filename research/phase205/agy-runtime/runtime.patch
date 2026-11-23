@@ -1,0 +1,352 @@
+--- runtime.c
++++ runtime.c
+@@ -306,7 +306,8 @@
+ #define RING_OFF (ALC_OFF + CUBE * 2 * ALC_WORDS)
+ #define STAK_OFF (RING_OFF + CUBE * RING_WORDS)
+ #define STAT_OFF (STAK_OFF + CUBE * STAK_LEN)
+-#define HEAP_OFF (STAT_OFF + PAGE_UP(STAT_LEN))
++static u64 p111_heap_off;
++#define HEAP_OFF p111_heap_off
+ 
+ // Globals
+ // =======
+@@ -776,7 +777,7 @@
+ 
+ INLINE Loc heap_alloc(Env e, Cls cls) {
+   Loc h = ALC_AT(e, cls);
+-  if (h) {
++  if (__builtin_expect(h != 0, 1)) {
+     ALC_AT(e, cls)   = e.mem[h];
+     ALC_LEN(e, cls) -= 1ull << cls;
+     return h;
+@@ -791,7 +792,7 @@
+   e.mem[loc]       = ALC_AT(e, cls);
+   ALC_AT(e, cls)   = loc;
+   ALC_LEN(e, cls) += 1ull << cls;
+-  if (!DEVICE && ALC_LEN(e, cls) >= KEEP_WORDS) {
++  if (!DEVICE && __builtin_expect(ALC_LEN(e, cls) >= KEEP_WORDS, 0)) {
+     heap_hand(e, cls);
+   }
+ }
+@@ -800,7 +801,7 @@
+ // =====
+ 
+ INLINE void spare_free(Env e, Cls cls, Loc loc) {
+-  if (loc >= HEAP_OFF) {
++  if (__builtin_expect(loc >= HEAP_OFF, 1)) {
+     heap_free(e, cls, loc);
+   }
+ }
+@@ -851,30 +852,43 @@
+   return term_tag(t) <= TAG_PAK || t == TERM_HOLE || term_loc(t) < HEAP_OFF;
+ }
+ 
+-OUTLINE Term rfc_wrap(Env e, Term t, u32 cnt) {
+-  if (term_tag(t) == TAG_CLO || term_tag(t) == TAG_TSK) {
+-    err_post(e.mem, ERR_RFCS);
+-    return t;
+-  }
++OUTLINE Term rfc_wrap_err(Env e, Term t) {
++  err_post(e.mem, ERR_RFCS);
++  return t;
++}
++
++INLINE Term rfc_wrap_ctr(Env e, Term t, u32 cnt) {
+   Loc r = heap_alloc(e, 0);
+   e.mem[r] = ((u64)term_loc(t) << 24) | cnt;
+   return (t & ~LOC_MASK) | RFC_BIT | r;
+ }
+ 
++INLINE Term rfc_wrap(Env e, Term t, u32 cnt) {
++  u64 tag = term_tag(t);
++  if (__builtin_expect(tag == TAG_CLO || tag == TAG_TSK, 0)) {
++    return rfc_wrap_err(e, t);
++  }
++  return rfc_wrap_ctr(e, t, cnt);
++}
++
+ INLINE Term rfc_seal(Env e, Term t) {
+-  if (term_tag(t) != TAG_CTR || term_rfc(t)) {
++  if ((t >> 56) != TAG_CTR) {
+     return t;
+   }
+-  return rfc_wrap(e, t, 1);
++  return rfc_wrap_ctr(e, t, 1);
+ }
+ 
+ INLINE u64 rfc_view(Env e, Loc r) {
++#if P144_SINGLE_MUTATOR_RFC
++  return e.mem[r];
++#else
+   DEV u32* w = a32_at(e.mem, r);
+   u64 cell = ((u64)a32_load(w + 1) << 32) | a32_load(w);
+   if ((cell & RFC_CNT) == 1) {
+     a32_acq(w);
+   }
+   return cell;
++#endif
+ }
+ 
+ /* Phase144 experiment: one Bend heap mutator, not one host thread.
+@@ -918,10 +932,18 @@
+ }
+ 
+ INLINE void rfc_bump(Env e, Loc r, u32 k) {
++#if P144_SINGLE_MUTATOR_RFC
++  u64 cell = e.mem[r];
++  if (__builtin_expect((u32)(cell & RFC_CNT) >= RFC_CNT - k, 0)) {
++    err_post(e.mem, ERR_RFCS);
++  }
++  e.mem[r] = cell + k;
++#else
+   u32 c = p144_rfc_add(a32_at(e.mem, r), k);
+-  if ((c & RFC_CNT) >= RFC_CNT - k) {
++  if (__builtin_expect((c & RFC_CNT) >= RFC_CNT - k, 0)) {
+     err_post(e.mem, ERR_RFCS);
+   }
++#endif
+ }
+ 
+ INLINE Term term_keep(Env e, Term t) {
+@@ -974,7 +996,20 @@
+   u32  step = 0;
+   for (;;) {
+     if (!term_triv(t) && term_rfc(t)) {
+-      Loc      r = term_loc(t);
++      Loc r = term_loc(t);
++#if P144_SINGLE_MUTATOR_RFC
++      u64 cell = H[r];
++      if ((cell & RFC_CNT) != 1) {
++        H[r] = cell - 1;
++        if (cur == 0) {
++          return;
++        }
++        t = 0;
++      } else {
++        t = (t & ~(RFC_BIT | LOC_MASK)) | (cell >> 24);
++        heap_free(e, 0, r);
++      }
++#else
+       DEV u32* p = a32_at(H, r);
+       if ((p144_rfc_sub(p, 1) & RFC_CNT) != 1) {
+         t = 0;
+@@ -983,6 +1018,7 @@
+         t = (t & ~(RFC_BIT | LOC_MASK)) | (H[r] >> 24);
+         heap_free(e, 0, r);
+       }
++#endif
+     }
+     if (!term_triv(t)) {
+       u64 tag = term_tag(t);
+@@ -4064,6 +4100,7 @@
+       "phase111: invalid constructor metadata");
+   }
+   p111_program_active = program;
++  p111_heap_off = STAT_OFF + PAGE_UP(program->static_words);
+   /* Binding validated both widths against the fixed capacities above. Include
+    * two runtime apply arguments even for programs whose own arity is smaller.
+    * Incoming continuation widths are bounded by both arity and result_width. */
+@@ -4085,7 +4122,23 @@
+ }
+ 
+ uint64_t p111_rt_keep(P111State *state, uint64_t term) { return term_keep(state->e, term); }
+-uint64_t p111_rt_sink(P111State *state, uint64_t term) { term_sink(state->e, term); return 0; }
++uint64_t p111_rt_sink(P111State *state, uint64_t term) {
++  if (__builtin_expect(!term_triv(term), 1)) {
++#if P144_SINGLE_MUTATOR_RFC
++    if (term_rfc(term)) {
++      Env e = state->e;
++      Loc r = term_loc(term);
++      u64 cell = e.mem[r];
++      if ((cell & RFC_CNT) != 1) {
++        e.mem[r] = cell - 1;
++        return 0;
++      }
++    }
++#endif
++    term_drop(state->e, term);
++  }
++  return 0;
++}
+ uint64_t p111_rt_tag(P111State *state, uint64_t term) { (void)state; return term_aux(term); }
+ 
+ uint64_t p111_rt_ctor(P111State *state, uint32_t cid, const uint64_t *fields, uint32_t count) {
+@@ -4933,17 +4986,69 @@
+  * capacity; take input shape remains dynamic and retains its original checks.
+  * Allocations, fields, publication, reference counts and reclamation are exact
+  * copies of the selected Phase118 runtime, not its earlier unconditional seal. */
++OUTLINE uint64_t p198_hand_ret(Env e, Cls cls, uint64_t ret) {
++  heap_hand(e, cls);
++  return ret;
++}
++
++OUTLINE uint64_t p198_rfc_free_slow(Env e, Loc r, Cls cls, Loc src, uint64_t ret) {
++  heap_free(e, 0, r);
++  spare_free(e, cls, src);
++  return ret;
++}
++
++OUTLINE uint64_t p198_fade_ret(Env e, Term term, Loc src, u32 n) {
++  span_fade(e, term, src, n);
++  return n;
++}
++
++#define P198_COPY_1(dst, src) do { (dst)[0] = (src)[0]; } while (0)
++#define P198_COPY_2(dst, src) do { (dst)[0] = (src)[0]; (dst)[1] = (src)[1]; } while (0)
++#define P198_COPY_3(dst, src) do { (dst)[0] = (src)[0]; (dst)[1] = (src)[1]; (dst)[2] = (src)[2]; } while (0)
++#define P198_COPY_4(dst, src) do { (dst)[0] = (src)[0]; (dst)[1] = (src)[1]; (dst)[2] = (src)[2]; (dst)[3] = (src)[3]; } while (0)
++
++#define P198_SEAL_ONE(mem, h0, used0, f, dst_slot) do { \
++  Term _f = (f); \
++  if ((_f >> 56) == TAG_CTR) { \
++    Loc _r = (h0); \
++    (h0) = (mem)[_r]; \
++    (used0) += 1; \
++    (mem)[_r] = ((u64)(_f & LOC_MASK) << 24) | 1u; \
++    _f = (_f & ~LOC_MASK) | RFC_BIT | _r; \
++  } \
++  (dst_slot) = _f; \
++} while (0)
++
++#define P198_SEAL_1(mem, h0, used0, dst, src) do { \
++  P198_SEAL_ONE(mem, h0, used0, (src)[0], (dst)[0]); \
++} while (0)
++#define P198_SEAL_2(mem, h0, used0, dst, src) do { \
++  P198_SEAL_ONE(mem, h0, used0, (src)[0], (dst)[0]); \
++  P198_SEAL_ONE(mem, h0, used0, (src)[1], (dst)[1]); \
++} while (0)
++#define P198_SEAL_3(mem, h0, used0, dst, src) do { \
++  P198_SEAL_ONE(mem, h0, used0, (src)[0], (dst)[0]); \
++  P198_SEAL_ONE(mem, h0, used0, (src)[1], (dst)[1]); \
++  P198_SEAL_ONE(mem, h0, used0, (src)[2], (dst)[2]); \
++} while (0)
++#define P198_SEAL_4(mem, h0, used0, dst, src) do { \
++  P198_SEAL_ONE(mem, h0, used0, (src)[0], (dst)[0]); \
++  P198_SEAL_ONE(mem, h0, used0, (src)[1], (dst)[1]); \
++  P198_SEAL_ONE(mem, h0, used0, (src)[2], (dst)[2]); \
++  P198_SEAL_ONE(mem, h0, used0, (src)[3], (dst)[3]); \
++} while (0)
++
+ #define P125_VERIFIED(N) \
+-uint64_t p125_rt_ctor##N(P111State *state, uint32_t cid, const uint64_t *fields) { \
++OUTLINE uint64_t p198_slow_ctor##N(P111State *state, uint32_t cid, const uint64_t *fields) { \
+   Env e = state->e; Loc at = heap_alloc(e, cls_fit(N)); \
+   if ((p111_program_active->capabilities & UINT64_C(8)) && !cid_hot(cid)) { \
+-    for (u32 i = 0; i < N; ++i) e.mem[at + i] = fields[i]; \
++    P198_COPY_##N(e.mem + at, fields); \
+   } else { \
+     for (u32 i = 0; i < N; ++i) e.mem[at + i] = rfc_seal(e, fields[i]); \
+   } \
+   return term_ctr(cid, at); \
+ } \
+-uint64_t p125_rt_take##N(P111State *state, uint64_t term, uint64_t *out) { \
++OUTLINE uint64_t p198_slow_take##N(P111State *state, uint64_t term, uint64_t *out) { \
+   u32 cid = (u32)term_aux(term); \
+   p111_require(cid < p111_program_active->constructor_count && N == cid_arity(cid), "phase118: take arity mismatch"); \
+   if (N == 1 && term_tag(term) == TAG_PAK) out[0] = term_loc(term); \
+@@ -4952,6 +5057,105 @@
+     spare_free(state->e, cls_fit(N), ctr_take(state->e, term, N, out)); \
+   } \
+   return N; \
++} \
++uint64_t p125_rt_ctor##N(P111State *s, uint32_t cid, const uint64_t *fields) { \
++  Env e = s->e; \
++  Cls cls = cls_fit(N); \
++  const P111Program *prog = p111_program_active; \
++  if (cid < prog->constructor_count && (prog->capabilities & UINT64_C(8)) && !prog->cid_hot[cid]) { \
++    Loc at = ALC_AT(e, cls); \
++    if (__builtin_expect(at != 0, 1)) { \
++      ALC_AT(e, cls) = e.mem[at]; \
++      ALC_LEN(e, cls) -= 1ull << cls; \
++      P198_COPY_##N(e.mem + at, fields); \
++      return term_ctr(cid, at); \
++    } \
++    return p198_slow_ctor##N(s, cid, fields); \
++  } \
++  if (N == 1) { \
++    if (__builtin_expect(ALC_LEN(e, 0) >= 2, 1)) { \
++      Loc at = ALC_AT(e, 0); \
++      Loc h0 = e.mem[at]; \
++      u64 used0 = 1; \
++      P198_SEAL_1(e.mem, h0, used0, e.mem + at, fields); \
++      ALC_AT(e, 0) = h0; \
++      ALC_LEN(e, 0) -= used0; \
++      return term_ctr(cid, at); \
++    } \
++  } else { \
++    Loc at = ALC_AT(e, cls); \
++    if (__builtin_expect(at != 0 && ALC_LEN(e, 0) >= N, 1)) { \
++      ALC_AT(e, cls) = e.mem[at]; \
++      ALC_LEN(e, cls) -= 1ull << cls; \
++      Loc h0 = ALC_AT(e, 0); \
++      u64 used0 = 0; \
++      P198_SEAL_##N(e.mem, h0, used0, e.mem + at, fields); \
++      ALC_AT(e, 0) = h0; \
++      ALC_LEN(e, 0) -= used0; \
++      return term_ctr(cid, at); \
++    } \
++  } \
++  return p198_slow_ctor##N(s, cid, fields); \
++} \
++static __attribute__((noinline)) uint64_t p198_rfc_take##N(P111State *s, uint64_t term, uint64_t *out) { \
++  Env e = s->e; \
++  Loc r = term_loc(term); \
++  u64 cell = rfc_view(e, r); \
++  Loc src = cell >> 24; \
++  P198_COPY_##N(out, e.mem + src); \
++  if (__builtin_expect((cell & RFC_CNT) == 1, 1)) { \
++    Cls cls = cls_fit(N); \
++    u64 len0 = ALC_LEN(e, 0) + 1; \
++    if (__builtin_expect(len0 >= KEEP_WORDS, 0)) { \
++      return p198_rfc_free_slow(e, r, cls, src, N); \
++    } \
++    e.mem[r] = ALC_AT(e, 0); \
++    ALC_AT(e, 0) = r; \
++    ALC_LEN(e, 0) = len0; \
++    if (__builtin_expect(src >= HEAP_OFF, 1)) { \
++      e.mem[src] = ALC_AT(e, cls); \
++      ALC_AT(e, cls) = src; \
++      u64 len = ALC_LEN(e, cls) + (1ull << cls); \
++      ALC_LEN(e, cls) = len; \
++      if (__builtin_expect(len >= KEEP_WORDS, 0)) { \
++        return p198_hand_ret(e, cls, N); \
++      } \
++    } \
++    return N; \
++  } \
++  return p198_fade_ret(e, term, src, N); \
++} \
++uint64_t p125_rt_take##N(P111State *s, uint64_t term, uint64_t *out) { \
++  u32 cid = (u32)term_aux(term); \
++  const P111Program *prog = p111_program_active; \
++  if (__builtin_expect(cid >= prog->constructor_count || prog->cid_arity[cid] != N, 0)) { \
++    return p198_slow_take##N(s, term, out); \
++  } \
++  u64 top = term >> 56; \
++  if (top == TAG_CTR) { \
++    Env e = s->e; \
++    Loc at = term_loc(term); \
++    P198_COPY_##N(out, e.mem + at); \
++    if (__builtin_expect(at >= HEAP_OFF, 1)) { \
++      Cls cls = cls_fit(N); \
++      e.mem[at] = ALC_AT(e, cls); \
++      ALC_AT(e, cls) = at; \
++      u64 len = ALC_LEN(e, cls) + (1ull << cls); \
++      ALC_LEN(e, cls) = len; \
++      if (__builtin_expect(len >= KEEP_WORDS, 0)) { \
++        return p198_hand_ret(e, cls, N); \
++      } \
++    } \
++    return N; \
++  } \
++  if (__builtin_expect(top == (0x80u | TAG_CTR), 1)) { \
++    return p198_rfc_take##N(s, term, out); \
++  } \
++  if (N == 1 && (top & 0x7fu) == TAG_PAK) { \
++    out[0] = term_loc(term); \
++    return 1; \
++  } \
++  return p198_slow_take##N(s, term, out); \
+ }
+ P125_VERIFIED(1)
+ P125_VERIFIED(2)

@@ -1,0 +1,147 @@
+{
+  "campaign": "W11-B",
+  "title": "Compiled-Program Runtime Deep-Dive (gameoflife 3x Regression + terrain/hashmap/histogram/nbody Native Profiles)",
+  "cpus_used": [5, 6],
+  "compiler_tested": "selfhost/build/agy/wave8-native-self/n1",
+  "bisect_compilers": {
+    "wave6": "selfhost/build/agy/wave6-native-self/n1",
+    "wave7": "selfhost/build/agy/wave7-native-self/n1",
+    "wave8": "selfhost/build/agy/wave8-native-self/n1"
+  },
+  "gameoflife_bisect": {
+    "input": "medium (size=12n, gens=32n, expected=3681094808) — identical to Wave 5C proxy receipt",
+    "wave5c_ref_cpu2_ms": 433.26,
+    "wave6_cpu5_ms": 436,
+    "wave6_obj_bytes": 59616,
+    "wave7_cpu5_ms": 7587,
+    "wave7_obj_bytes": 83584,
+    "wave8_cpu5_ms": 1267,
+    "wave8_obj_bytes": 54864,
+    "regression_w8_vs_w6": 2.906,
+    "wave6_vs_wave8_disasm": {
+      "step_bytes_w6": 2315,
+      "step_bytes_w8": 6967,
+      "step_insns_w6": 467,
+      "step_insns_w8": 1473,
+      "step_rbp_mem_w6": 157,
+      "step_rbp_mem_w8": 391,
+      "run_bytes_w6": 2382,
+      "run_bytes_w8": 85,
+      "classify_bytes_w6": 5023,
+      "classify_bytes_w8": 132
+    },
+    "root_cause": "apply_w7_lower_fast.py lowered p113k_function size cap from 32768 to 2048 (and p113k_function_done 2nd pass to 1024) without a pure-leaf exemption. After inlining 16x step_cell into step, raw pre-fold step exceeds 2048 IR stmts, so p113k_function skips step completely: (1) U32 w32 zero-extensions & copy/DCE never fold (step bloats 3.15x from 467 to 1473 insns), (2) step stays too large for p113i_table_function so run and classify cannot inline step, (3) step exceeds x190_joint_frame's 2048 cap and falls back to x190_allocate_legacy (391 vs 157 stack accesses).",
+    "fix": "Guard p113k_function and p113k_function_done size caps with leaf exemption (allow up to 16384 stmts when Bool.not(w7b_stmts_has_call(body))), matching Wave 7B's leaf guard in x190_joint_frame/x185_function_place.",
+    "estimated_speedup": "2.91x on gameoflife (1267ms -> ~436ms, 0.47x gcc-10); ~15% cut to 7-family proxy geomean"
+  },
+  "profiles": {
+    "gameoflife_wave8": {
+      "cpu": 5,
+      "period_us": 1000,
+      "samples": 315,
+      "resolved_fraction": 1.0,
+      "top_functions": [
+        {"decoded": "p113d_FID_$direct.step", "samples": 313, "percent": 99.37},
+        {"decoded": "p113d_FID_$direct.run", "samples": 1, "percent": 0.32},
+        {"decoded": "p111_FID_$p111.k.6240", "samples": 1, "percent": 0.32}
+      ]
+    },
+    "terrain_wave8": {
+      "cpu": 6,
+      "period_us": 8000,
+      "samples": 2670,
+      "usable": true,
+      "zero_loss": true,
+      "resolved_fraction": 1.0,
+      "p5e_w8_s": 39.66,
+      "p5e_c_gcc10_s": 12.37,
+      "ratio_vs_c": 3.206,
+      "top_functions": [
+        {"decoded": "p113d_FID_$product.erode", "samples": 1337, "percent": 50.07, "insns": 501, "rbp_mem": 108, "branches": 5, "calls": 1},
+        {"decoded": "p113d_FID_$lcu0.$direct.hist", "samples": 752, "percent": 28.16, "insns": 1231, "rbp_mem": 250, "branches": 105, "calls": 19},
+        {"decoded": "p113d_FID_$product.fill", "samples": 561, "percent": 21.01, "insns": 303, "rbp_mem": 86, "branches": 5, "calls": 1},
+        {"decoded": "blk_new.constprop.0", "samples": 17, "percent": 0.64}
+      ]
+    },
+    "hashmap_wave8": {
+      "cpu": 5,
+      "period_us": 4000,
+      "samples": 1739,
+      "usable": true,
+      "zero_loss": true,
+      "resolved_fraction": 1.0,
+      "p5e_w8_s": 15.27,
+      "p5e_c_gcc10_s": 1.85,
+      "ratio_vs_c": 8.254,
+      "top_functions": [
+        {"decoded": "p113d_FID_$p118borrow.read.has", "samples": 724, "percent": 41.63},
+        {"decoded": "p113_rt_array_pair", "samples": 204, "percent": 11.73},
+        {"decoded": "term_drop", "samples": 183, "percent": 10.52},
+        {"decoded": "p125_rt_ctor2", "samples": 120, "percent": 6.90},
+        {"decoded": "p113d_FID_$direct.has", "samples": 101, "percent": 5.81},
+        {"decoded": "p113d_FID_$p118borrow.read.len", "samples": 95, "percent": 5.46},
+        {"decoded": "p113d_FID_$direct.look", "samples": 91, "percent": 5.23},
+        {"decoded": "p113d_FID_$direct.fill", "samples": 87, "percent": 5.00},
+        {"decoded": "p111_rt_op", "samples": 80, "percent": 4.60},
+        {"decoded": "p113d_FID_$product.sweep", "samples": 39, "percent": 2.24}
+      ]
+    },
+    "histogram_wave8": {
+      "cpu": 5,
+      "period_us": 250,
+      "samples": 9,
+      "w6_cpu5_ms": 44,
+      "w8_cpu5_ms": 44,
+      "p5e_w8_ms": 59.71,
+      "p5e_c_gcc10_ms": 26.10,
+      "top_functions": [
+        {"decoded": "p113d_FID_$product.count.go", "samples": 6, "percent": 66.67, "insns": 308, "rbp_mem": 72, "branches": 7, "calls": 1},
+        {"decoded": "p113d_FID_$direct.fill.go", "samples": 3, "percent": 33.33, "insns": 209, "rbp_mem": 37, "branches": 5, "calls": 1}
+      ]
+    },
+    "nbody_wave8": {
+      "cpu": 5,
+      "period_us": 250,
+      "samples": 22,
+      "w6_cpu5_ms": 97,
+      "w8_cpu5_ms": 97,
+      "p5e_w8_ms": 136.95,
+      "p5e_c_gcc10_ms": 87.69,
+      "top_functions": [
+        {"decoded": "p113d_FID_$product.loop3", "samples": 22, "percent": 100.0, "insns": 732, "rbp_mem": 189, "calls": 0, "xmm": 447, "fp": 336}
+      ]
+    }
+  },
+  "wave12_hit_list": [
+    {
+      "rank": 1,
+      "name": "Pure-Leaf Exemption in p113k_function (Restore gameoflife 2.91x Regression)",
+      "target_benchmarks": ["gameoflife", "7-family proxy geomean"],
+      "estimated_speedup": "2.91x on gameoflife (1267ms -> ~436ms); 7-family geomean 1.69x -> ~1.43x C"
+    },
+    {
+      "rank": 2,
+      "name": "Unboxed Bool Match Fast-Path + Borrow-Loop Direct Field Load & Heap-Base Hoist",
+      "target_benchmarks": ["hashmap", "bst", "editdist", "expression", "tree-radix"],
+      "estimated_speedup": "2.0x-2.8x on hashmap (47.4% in has + 5.5% in len); 1.3x-1.6x on bst/expression"
+    },
+    {
+      "rank": 3,
+      "name": "Dual-Array Loop Scalarization for Two-Product-Param Loops (terrain $lcu0.$direct.hist)",
+      "target_benchmarks": ["terrain"],
+      "estimated_speedup": "1.35x on terrain overall (cuts 28.2% hist loop by ~5x-8x: ~11.2s -> ~1.5-2.0s)"
+    },
+    {
+      "rank": 4,
+      "name": "Expanded Live-Value GPR/XMM Register Allocation & Scratch-Spill Elimination",
+      "target_benchmarks": ["terrain", "nbody", "histogram", "editdist"],
+      "estimated_speedup": "1.5x-2.0x on terrain erode+fill (71.1% of terrain); 1.3x-1.5x on nbody (137ms -> ~90ms); 1.2x on histogram"
+    },
+    {
+      "rank": 5,
+      "name": "Inline Boxed-Element Array.get / Array.set Fast-Path (Eliminate p113_rt_array_pair & p111_rt_op)",
+      "target_benchmarks": ["hashmap"],
+      "estimated_speedup": "1.20x-1.35x additional on hashmap (cuts 11.7% p113_rt_array_pair + 4.6% p111_rt_op + pair boxing overhead)"
+    }
+  ]
+}

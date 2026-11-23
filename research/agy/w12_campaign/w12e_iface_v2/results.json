@@ -1,0 +1,211 @@
+{
+  "check_only_ms": 16630.2,
+  "compile_ms": 50099.1,
+  "iter2_ab_results": [
+    {
+      "module": "m02",
+      "baseline": {
+        "stamp": "p130-word-pair-v1:w10-iface-v1:75fcf73bd84aa2ff",
+        "nodes": 165506,
+        "strings": 5681,
+        "bytes": 8878222,
+        "ms": 29226.1,
+        "sha256": "6d6fa7e5e47642742ccb1113f76ecb09c4a012cbe743c339cd412ccc6154d8a2"
+      },
+      "v2": {
+        "stamp": "p130-word-pair-v1:w10-iface-v1:75fcf73bd84aa2ff",
+        "nodes": 277137,
+        "strings": 5681,
+        "bytes": 14891318,
+        "ms": 19712.6,
+        "sha256": "120a5e7c043d5f7d56bbc01aedfb01a5d1f5cf85ec6f6ea00e78874a18d8a045"
+      },
+      "speedup": 1.48,
+      "stamp_identical": true
+    },
+    {
+      "module": "m06",
+      "baseline": {
+        "stamp": "p130-word-pair-v1:w10-iface-v1:6bb59f4aa6b66efc",
+        "nodes": 309469,
+        "strings": 8814,
+        "bytes": 16601221,
+        "ms": 25337.6,
+        "sha256": "cff483f1066423d918713c58eae50c22e8a9bf0e094f0fa58987c34664447ff6"
+      },
+      "v2": {
+        "stamp": "p130-word-pair-v1:w10-iface-v1:6bb59f4aa6b66efc",
+        "nodes": 503759,
+        "strings": 8814,
+        "bytes": 27117725,
+        "ms": 12552.5,
+        "sha256": "1a4c52fb473d48a1831ad7f97d273fd7652c0cf3f1ced5aef75f83bdba2924cf"
+      },
+      "speedup": 2.02,
+      "stamp_identical": true
+    },
+    {
+      "module": "m10",
+      "baseline": {
+        "stamp": "p130-word-pair-v1:w10-iface-v1:de82d66c643fb98a",
+        "nodes": 463717,
+        "strings": 11566,
+        "bytes": 24880956,
+        "ms": 34114.0,
+        "sha256": "57e465c4cfd404ecbe4fe7f2a7adeebfb725117233122828a83837785bff0fa0"
+      },
+      "v2": {
+        "stamp": "p130-word-pair-v1:w10-iface-v1:de82d66c643fb98a",
+        "nodes": 741321,
+        "strings": 11566,
+        "bytes": 39995756,
+        "ms": 17205.1,
+        "sha256": "f22e678cad2865ee7e56633bacd0ef6c10134b13d2c03267cfe71663d9c5be42"
+      },
+      "speedup": 1.98,
+      "stamp_identical": true
+    }
+  ],
+  "iter2_downstream_o_parity": [
+    {
+      "module": "m07",
+      "from_iface": "m06",
+      "baseline_o": {
+        "ms": 38102.4,
+        "bytes": 9414976,
+        "sha256": "fc483c889df202c79b1d2dad6440ea4bc43d65a53a59ac920cd318329063193f"
+      },
+      "v2_o": {
+        "ms": 37617.8,
+        "bytes": 9414976,
+        "sha256": "fc483c889df202c79b1d2dad6440ea4bc43d65a53a59ac920cd318329063193f"
+      },
+      "sha256_identical": true
+    },
+    {
+      "module": "m11",
+      "from_iface": "m10",
+      "baseline_o": {
+        "ms": 27550.7,
+        "bytes": 6510272,
+        "sha256": "5cb6cd9a8e77898973280a2985e5fbebe998599b76831b815a09ef22235198c5"
+      },
+      "v2_o": {
+        "ms": 28493.1,
+        "bytes": 6510272,
+        "sha256": "5cb6cd9a8e77898973280a2985e5fbebe998599b76831b815a09ef22235198c5"
+      },
+      "sha256_identical": true
+    }
+  ],
+  "iter1_reference": {
+    "check_only_ms": 16196.3,
+    "compile_ms": 47988.0,
+    "ab_results": [
+      {
+        "module": "m01",
+        "baseline": {
+          "stamp": "p130-word-pair-v1:w10-iface-v1:110996967f070073",
+          "nodes": 131394,
+          "strings": 4752,
+          "bytes": 7051600,
+          "ms": 25478.6,
+          "sha256": "371151288f4b80a16c22e6d02b65a36ff6c27f323a9e303f7e9cf0a2576d910f"
+        },
+        "v2": {
+          "stamp": "p130-word-pair-v1:w10-iface-v1:110996967f070073",
+          "nodes": 268922,
+          "strings": 4752,
+          "bytes": 14662048,
+          "ms": 21984.9,
+          "sha256": "60b313cf0f866d0e6829b16784ad2490a8ee4c11df99771727cc7f9bb1ed7d8f"
+        },
+        "speedup": 1.16,
+        "stamp_identical": true
+      },
+      {
+        "module": "m05",
+        "baseline": {
+          "stamp": "p130-word-pair-v1:w10-iface-v1:aa6d37b54b42796a",
+          "nodes": 269012,
+          "strings": 8024,
+          "bytes": 14428267,
+          "ms": 32408.8,
+          "sha256": "a43a1cb65cd15d28274f3a3d92f113e2522913ad6716dd077d30ea643fcfc5eb"
+        },
+        "v2": {
+          "stamp": "p130-word-pair-v1:w10-iface-v1:aa6d37b54b42796a",
+          "nodes": 584352,
+          "strings": 8024,
+          "bytes": 31988547,
+          "ms": 22946.3,
+          "sha256": "c52094fab5e6a5eb17bccac030883a1f453e6919d15a85534e309731e1642051"
+        },
+        "speedup": 1.41,
+        "stamp_identical": true
+      },
+      {
+        "module": "m09",
+        "baseline": {
+          "stamp": "p130-word-pair-v1:w10-iface-v1:069e3b037858d179",
+          "nodes": 425824,
+          "strings": 10916,
+          "bytes": 22846079,
+          "ms": 39114.4,
+          "sha256": "359d37e112b01e147bced84f87574b8fefc2ba7ebca4e58ed4aa8c6ab85940be"
+        },
+        "v2": {
+          "stamp": "p130-word-pair-v1:w10-iface-v1:069e3b037858d179",
+          "nodes": 938633,
+          "strings": 10916,
+          "bytes": 51512911,
+          "ms": 22029.8,
+          "sha256": "f75093da88dc164e77898b1fab03a7865186bb9c7ea4502c1ac65ca483d07d1f"
+        },
+        "speedup": 1.78,
+        "stamp_identical": true
+      }
+    ],
+    "downstream_o_parity": [
+      {
+        "module": "m02",
+        "from_iface": "m01",
+        "baseline_o": {
+          "ms": 44357.6,
+          "bytes": 8899248,
+          "sha256": "826accebd7983c954915e7cb61845ac42ac8bf78facfd3a3c0a867c1455e29ed"
+        },
+        "v2_o": {
+          "ms": 44967.8,
+          "bytes": 8899248,
+          "sha256": "826accebd7983c954915e7cb61845ac42ac8bf78facfd3a3c0a867c1455e29ed"
+        },
+        "sha256_identical": true
+      },
+      {
+        "module": "m10",
+        "from_iface": "m09",
+        "baseline_o": {
+          "ms": 33161.7,
+          "bytes": 7267832,
+          "sha256": "d89484ab872d898ac5f64e11e4d1e5d99cfc4de6e2795d1c87a549dbfcc2c462"
+        },
+        "v2_o": {
+          "ms": 33789.5,
+          "bytes": 7267832,
+          "sha256": "d89484ab872d898ac5f64e11e4d1e5d99cfc4de6e2795d1c87a549dbfcc2c462"
+        },
+        "sha256_identical": true
+      }
+    ],
+    "chained_v2_m10": {
+      "stamp": "p130-word-pair-v1:w10-iface-v1:de82d66c643fb98a",
+      "nodes": 1022273,
+      "strings": 11566,
+      "bytes": 56135676,
+      "ms": 19522.7,
+      "sha256": "52f9df12f05bdbe23e2f7e94a879688b634b679af5de1c921dec3e0f8cec364d",
+      "stamp_identical": true
+    }
+  }
+}

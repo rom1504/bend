@@ -1,0 +1,462 @@
+--- selfhost/build/agy/wave11_unified/compiler.bend
++++ research/agy/w13_campaign/w13b_rt_inline/compiler.bend
+@@ -53411,7 +53411,7 @@
+ def agy_mark_bounded_frame(+symbol: String, body: List<&2,P113DStmt>, frame: X181Frame) -> X181Frame:
+   match frame:
+     case X181Frame{slots,bytes,calls,params,sym}:
+-      nt_choose(X181Frame,(String.starts_with(symbol,"p113d_") || String.starts_with(symbol,"p114r_")) &&
++      nt_choose(X181Frame,(String.starts_with(symbol,"p113d_") || String.starts_with(symbol,"p114r_") || String.starts_with(symbol,"p111_")) &&
+           U32.is_le(p113i_size(body),512),
+         u => X181Frame{p111v_put(slots,"__agy_ctor_ok","X186SavedMask",1,0),bytes,calls,params,sym},
+         u => frame)
+@@ -53931,8 +53931,17 @@
+       x188_i1("jae",X187Target{slow}),
+       x188_i1("jmp",X187Target{lok}),
+       x188_label(ltriv),
+-      x188_i2("shrq",X187Imm{56,0},x188_reg(0,64)),
+-      x188_i2("cmpq",X187Imm{2,0},x188_reg(0,64)),
++      x188_i2("movq",x188_reg(0,64),x188_reg(8,64)),
++      x188_i2("shrq",X187Imm{56,0},x188_reg(8,64)),
++      x188_i2("cmpq",X187Imm{2,0},x188_reg(8,64)),
++      x188_i1("jb",X187Target{lok}),
++      x188_i2("shlq",X187Imm{24,0},x188_reg(0,64)),
++      x188_i2("shrq",X187Imm{24,0},x188_reg(0,64)),
++      x188_i2("movq",X187Rip{"p111_program",64,0},x188_reg(8,64)),
++      x188_i2("addq",X187Imm{127,0},x188_reg(8,64)),
++      x188_i2("andq",X187Imm{4294967168,4294967295},x188_reg(8,64)),
++      x188_i2("addq",X187Imm{51413504,0},x188_reg(8,64)),
++      x188_i2("cmpq",x188_reg(8,64),x188_reg(0,64)),
+       x188_i1("jae",X187Target{slow}),
+       x188_label(lok),
+       agy_rfc_check_fields(count,U32.inc(index),frame,lbase,slow)]))
+@@ -54590,6 +54599,376 @@
+     x188_label(done),
+     x181_store(name,frame,x188_reg(0,64))])
+ 
++# === AGY-W13B: Inline Alloc (p125_rt_ctor2 + rfc_seal), Take (p111_rt_take), Shallow Drop ===
++
++@unsafe
++def w13b_ctor2_known(+ctor: String, ids: N111Ids) -> Bool:
++  match ids:
++    case N111Ids{functions,constructors}:
++      +entry = index_find(constructors,ctor,index_hash(ctor,2166136261),32)
++      agy_str_eq(dk(entry),"N111Id") && U32.is_lt(da(entry),65536) && U32.is_eq(dx(entry),2)
++
++@unsafe
++def w13b_rt_ctor2_text(+name: String, +symbol: String, +args: List<&2,N111Arg>, +cid: U32,
++    +is_p111: Bool, +ids: N111Ids, +frame: X181Frame, +site: U32) -> X188Seq:
++  +unsealed_ok = x181_label(site,frame)
++  +maybe_seal = x181_label(U32.inc(site),frame)
++  +do_seal = x181_label(U32.add(site,2),frame)
++  +seal_f1 = x181_label(U32.add(site,3),frame)
++  +store_sealed = x181_label(U32.add(site,4),frame)
++  +slow = x181_label(U32.add(site,5),frame)
++  +done = x181_label(U32.add(site,6),frame)
++  +ctr_hi = U32.add(33554432,U32.mul(cid,256))
++  x188_many([
++    x186_call_arguments(args,ids,frame),
++    # Load both fields and check class-1 freelist head BEFORE any mutation
++    x188_i2("movq",X187Mem{2,0},x188_reg(10,64)),
++    x188_i2("movq",X187Mem{2,8},x188_reg(11,64)),
++    x188_i2("movq",X187Mem{7,8},x188_reg(8,64)),
++    x188_i2("movq",X187Mem{8,8},x188_reg(0,64)),
++    x188_i2("testq",x188_reg(0,64),x188_reg(0,64)),
++    x188_i1("jz",X187Target{slow}),
++    # Check if either field is an unsealed TAG_CTR ((f >> 56) == 2)
++    x188_i2("movq",x188_reg(10,64),x188_reg(1,64)),
++    x188_i2("shrq",X187Imm{56,0},x188_reg(1,64)),
++    x188_i2("cmpq",X187Imm{2,0},x188_reg(1,64)),
++    x188_i1("je",X187Target{maybe_seal}),
++    x188_i2("movq",x188_reg(11,64),x188_reg(1,64)),
++    x188_i2("shrq",X187Imm{56,0},x188_reg(1,64)),
++    x188_i2("cmpq",X187Imm{2,0},x188_reg(1,64)),
++    x188_i1("je",X187Target{maybe_seal}),
++    x188_label(unsealed_ok),
++    # Pop class-1 node (2 words) and store f0, f1 directly
++    x188_i2("movq",X187Mem{7,0},x188_reg(9,64)),
++    x188_i2("leaq",X187Indexed{9,0,8,0},x188_reg(1,64)),
++    x188_i2("movq",X187Mem{1,0},x188_reg(9,64)),
++    x188_i2("movq",x188_reg(9,64),X187Mem{8,8}),
++    x188_i2("subq",X187Imm{2,0},X187Mem{8,264}),
++    x188_i2("movq",x188_reg(10,64),X187Mem{1,0}),
++    x188_i2("movq",x188_reg(11,64),X187Mem{1,8}),
++    x188_i2("movabsq",X187Imm{0,ctr_hi},x188_reg(1,64)),
++    x188_i2("orq",x188_reg(1,64),x188_reg(0,64)),
++    x188_i1("jmp",X187Target{done}),
++    x188_label(maybe_seal),
++    # Live check: (capabilities & 8) != 0 && cid_hot[cid] == 0 -> no sealing needed
++    x188_i2("movq",X187Rip{"p111_program",88,0},x188_reg(1,64)),
++    x188_i2("andl",X187Imm{8,0},x188_reg(1,32)),
++    x188_i1("jz",X187Target{do_seal}),
++    x188_i2("movq",X187Rip{"p111_program",136,0},x188_reg(1,64)),
++    x188_i2("movzbl",X187Indexed{1,6,1,0},x188_reg(1,32)),
++    x188_i2("testl",x188_reg(1,32),x188_reg(1,32)),
++    x188_i1("jz",X187Target{unsealed_ok}),
++    x188_label(do_seal),
++    # Pre-mutation check: ensure at least 2 class-0 RFC cells available in alc->free[0]
++    x188_i2("cmpq",X187Imm{2,0},X187Mem{8,256}),
++    x188_i1("jb",X187Target{slow}),
++    # Point of no return: pop class-1 node at (%rax); %rdx is now free scratch
++    x188_i2("movq",X187Mem{7,0},x188_reg(9,64)),
++    x188_i2("movq",X187Indexed{9,0,8,0},x188_reg(1,64)),
++    x188_i2("movq",x188_reg(1,64),X187Mem{8,8}),
++    x188_i2("subq",X187Imm{2,0},X187Mem{8,264}),
++    # Seal f0 (%r10) if (f0 >> 56) == 2
++    x188_i2("movq",x188_reg(10,64),x188_reg(1,64)),
++    x188_i2("shrq",X187Imm{56,0},x188_reg(1,64)),
++    x188_i2("cmpq",X187Imm{2,0},x188_reg(1,64)),
++    x188_i1("jne",X187Target{seal_f1}),
++    x188_i2("movq",X187Mem{8,0},x188_reg(1,64)),
++    x188_i2("movq",X187Indexed{9,1,8,0},x188_reg(2,64)),
++    x188_i2("movq",x188_reg(2,64),X187Mem{8,0}),
++    x188_i2("subq",X187Imm{1,0},X187Mem{8,256}),
++    x188_i2("movq",x188_reg(10,64),x188_reg(2,64)),
++    x188_i2("shlq",X187Imm{24,0},x188_reg(2,64)),
++    x188_i2("addq",X187Imm{1,0},x188_reg(2,64)),
++    x188_i2("movq",x188_reg(2,64),X187Indexed{9,1,8,0}),
++    x188_i2("shrq",X187Imm{40,0},x188_reg(10,64)),
++    x188_i2("shlq",X187Imm{40,0},x188_reg(10,64)),
++    x188_i2("orq",x188_reg(1,64),x188_reg(10,64)),
++    x188_i2("movabsq",X187Imm{0,2147483648},x188_reg(2,64)),
++    x188_i2("orq",x188_reg(2,64),x188_reg(10,64)),
++    x188_label(seal_f1),
++    # Seal f1 (%r11) if (f1 >> 56) == 2
++    x188_i2("movq",x188_reg(11,64),x188_reg(1,64)),
++    x188_i2("shrq",X187Imm{56,0},x188_reg(1,64)),
++    x188_i2("cmpq",X187Imm{2,0},x188_reg(1,64)),
++    x188_i1("jne",X187Target{store_sealed}),
++    x188_i2("movq",X187Mem{8,0},x188_reg(1,64)),
++    x188_i2("movq",X187Indexed{9,1,8,0},x188_reg(2,64)),
++    x188_i2("movq",x188_reg(2,64),X187Mem{8,0}),
++    x188_i2("subq",X187Imm{1,0},X187Mem{8,256}),
++    x188_i2("movq",x188_reg(11,64),x188_reg(2,64)),
++    x188_i2("shlq",X187Imm{24,0},x188_reg(2,64)),
++    x188_i2("addq",X187Imm{1,0},x188_reg(2,64)),
++    x188_i2("movq",x188_reg(2,64),X187Indexed{9,1,8,0}),
++    x188_i2("shrq",X187Imm{40,0},x188_reg(11,64)),
++    x188_i2("shlq",X187Imm{40,0},x188_reg(11,64)),
++    x188_i2("orq",x188_reg(1,64),x188_reg(11,64)),
++    x188_i2("movabsq",X187Imm{0,2147483648},x188_reg(2,64)),
++    x188_i2("orq",x188_reg(2,64),x188_reg(11,64)),
++    x188_label(store_sealed),
++    x188_i2("leaq",X187Indexed{9,0,8,0},x188_reg(1,64)),
++    x188_i2("movq",x188_reg(10,64),X187Mem{1,0}),
++    x188_i2("movq",x188_reg(11,64),X187Mem{1,8}),
++    x188_i2("movabsq",X187Imm{0,ctr_hi},x188_reg(1,64)),
++    x188_i2("orq",x188_reg(1,64),x188_reg(0,64)),
++    x188_i1("jmp",X187Target{done}),
++    x188_label(slow),
++    nt_choose(X188Seq,is_p111,
++      u => x188_i2("movl",X187Imm{2,0},x188_reg(1,32)),
++      u => X188Empty{}),
++    x188_i2("xorl",x188_reg(0,32),x188_reg(0,32)),
++    x188_i1("call",X187Target{symbol}),
++    x188_label(done),
++    x181_store(name,frame,x188_reg(0,64))])
++
++@unsafe
++def w13b_rt_take_p111_text(+name: String, +args: List<&2,N111Arg>,
++    +count: U32, +ids: N111Ids, +frame: X181Frame, +site: U32) -> X188Seq:
++  +cls = p185cc_class(count)
++  +atOff = U32.mul(cls,8)
++  +lenOff = U32.add(256,atOff)
++  +words = agy_cls_words(cls)
++  +slow = x181_label(site,frame)
++  +done = x181_label(U32.inc(site),frame)
++  +rfc = x181_label(U32.add(site,2),frame)
++  +shared = x181_label(U32.add(site,3),frame)
++  +lbase = U32.add(site,4)
++  x188_many([
++    x186_call_arguments(args,ids,frame),
++    x188_i2("movq",x188_reg(6,64),x188_reg(1,64)),
++    x188_i2("shrq",X187Imm{40,0},x188_reg(1,64)),
++    x188_i2("movl",x188_reg(1,32),x188_reg(0,32)),
++    x188_i2("shrl",X187Imm{16,0},x188_reg(0,32)),
++    x188_i2("andl",X187Imm{127,0},x188_reg(0,32)),
++    x188_i2("cmpl",X187Imm{2,0},x188_reg(0,32)),
++    x188_i1("jne",X187Target{slow}),
++    x188_i2("andl",X187Imm{65535,0},x188_reg(1,32)),
++    x188_i2("movq",X187Rip{"p111_program",24,0},x188_reg(8,64)),
++    x188_i2("cmpq",x188_reg(8,64),x188_reg(1,64)),
++    x188_i1("jae",X187Target{slow}),
++    x188_i2("movq",X187Rip{"p111_program",128,0},x188_reg(8,64)),
++    x188_i2("movzbl",X187Indexed{8,1,1,0},x188_reg(8,32)),
++    x188_i2("cmpl",X187Imm{count,0},x188_reg(8,32)),
++    x188_i1("jne",X187Target{slow}),
++    x188_i2("movq",X187Rip{"p111_program",88,0},x188_reg(8,64)),
++    x188_i2("andl",X187Imm{1,0},x188_reg(8,32)),
++    x188_i1("jz",X187Target{slow}),
++    x188_i2("testq",x188_reg(6,64),x188_reg(6,64)),
++    x188_i1("jl",X187Target{rfc}),
++    x188_i2("movq",x188_reg(6,64),x188_reg(0,64)),
++    x188_i2("shlq",X187Imm{24,0},x188_reg(0,64)),
++    x188_i2("shrq",X187Imm{24,0},x188_reg(0,64)),
++    x188_i2("movq",X187Rip{"p111_program",64,0},x188_reg(8,64)),
++    x188_i2("addq",X187Imm{127,0},x188_reg(8,64)),
++    x188_i2("andq",X187Imm{4294967168,4294967295},x188_reg(8,64)),
++    x188_i2("addq",X187Imm{51413504,0},x188_reg(8,64)),
++    x188_i2("cmpq",x188_reg(8,64),x188_reg(0,64)),
++    x188_i1("jb",X187Target{slow}),
++    x188_i2("movq",X187Mem{7,8},x188_reg(8,64)),
++    x188_i2("movq",X187Mem{8,lenOff},x188_reg(11,64)),
++    x188_i2("addq",X187Imm{words,0},x188_reg(11,64)),
++    x188_i2("cmpq",X187Imm{32768,0},x188_reg(11,64)),
++    x188_i1("jae",X187Target{slow}),
++    x188_i2("movq",X187Mem{7,0},x188_reg(9,64)),
++    x188_i2("leaq",X187Indexed{9,0,8,0},x188_reg(10,64)),
++    agy_copy_words(10,2,1,count,0),
++    x188_i2("movq",X187Mem{8,atOff},x188_reg(1,64)),
++    x188_i2("movq",x188_reg(1,64),X187Mem{10,0}),
++    x188_i2("movq",x188_reg(0,64),X187Mem{8,atOff}),
++    x188_i2("movq",x188_reg(11,64),X187Mem{8,lenOff}),
++    x188_i2("movl",X187Imm{count,0},x188_reg(0,32)),
++    x188_i1("jmp",X187Target{done}),
++    x188_label(rfc),
++    x188_i2("movq",x188_reg(6,64),x188_reg(1,64)),
++    x188_i2("shlq",X187Imm{24,0},x188_reg(1,64)),
++    x188_i2("shrq",X187Imm{24,0},x188_reg(1,64)),
++    x188_i2("movq",X187Mem{7,0},x188_reg(9,64)),
++    x188_i2("movq",X187Indexed{9,1,8,0},x188_reg(11,64)),
++    x188_i2("movq",x188_reg(11,64),x188_reg(0,64)),
++    x188_i2("shrq",X187Imm{24,0},x188_reg(0,64)),
++    x188_i2("leaq",X187Indexed{9,0,8,0},x188_reg(10,64)),
++    x188_i2("movl",x188_reg(11,32),x188_reg(8,32)),
++    x188_i2("andl",X187Imm{16777215,0},x188_reg(8,32)),
++    x188_i2("cmpl",X187Imm{1,0},x188_reg(8,32)),
++    x188_i1("ja",X187Target{shared}),
++    x188_i1("jb",X187Target{slow}),
++    x188_i2("movq",X187Rip{"p111_program",64,0},x188_reg(8,64)),
++    x188_i2("addq",X187Imm{127,0},x188_reg(8,64)),
++    x188_i2("andq",X187Imm{4294967168,4294967295},x188_reg(8,64)),
++    x188_i2("addq",X187Imm{51413504,0},x188_reg(8,64)),
++    x188_i2("cmpq",x188_reg(8,64),x188_reg(0,64)),
++    x188_i1("jb",X187Target{slow}),
++    x188_i2("cmpq",x188_reg(8,64),x188_reg(1,64)),
++    x188_i1("jb",X187Target{slow}),
++    x188_i2("movq",X187Mem{7,8},x188_reg(8,64)),
++    agy_rfc_unique_free(cls,atOff,lenOff,words,count,slow),
++    x188_i2("movl",X187Imm{count,0},x188_reg(0,32)),
++    x188_i1("jmp",X187Target{done}),
++    x188_label(shared),
++    agy_rfc_check_fields(count,0,frame,lbase,slow),
++    agy_rfc_bump_fields(count,0,frame,lbase),
++    x188_i2("subq",X187Imm{1,0},x188_reg(11,64)),
++    x188_i2("movq",x188_reg(11,64),X187Indexed{9,1,8,0}),
++    x188_i2("movl",X187Imm{count,0},x188_reg(0,32)),
++    x188_i1("jmp",X187Target{done}),
++    x188_label(slow),
++    x188_i2("movl",X187Imm{count,0},x188_reg(1,32)),
++    x188_i2("xorl",x188_reg(0,32),x188_reg(0,32)),
++    x188_i1("call",X187Target{"p111_rt_take"}),
++    x188_label(done),
++    x181_store(name,frame,x188_reg(0,64))])
++
++@unsafe
++def w13b_rt_sink_shallow_text(+name: String, +args: List<&2,N111Arg>,
++    +ids: N111Ids, +frame: X181Frame, +site: U32) -> X188Seq:
++  +dec_rc = x181_label(site,frame)
++  +f0_triv = x181_label(U32.inc(site),frame)
++  +f0_ok = x181_label(U32.add(site,2),frame)
++  +f1_triv = x181_label(U32.add(site,3),frame)
++  +f1_chk1 = x181_label(U32.add(site,4),frame)
++  +f1_ok = x181_label(U32.add(site,5),frame)
++  +dec_f1 = x181_label(U32.add(site,6),frame)
++  +free_nodes = x181_label(U32.add(site,7),frame)
++  +triv = x181_label(U32.add(site,8),frame)
++  +triv_ok = x181_label(U32.add(site,9),frame)
++  +slow = x181_label(U32.add(site,10),frame)
++  +done = x181_label(U32.add(site,11),frame)
++  x188_many([
++    x186_call_arguments(args,ids,frame),
++    x188_i2("testq",x188_reg(6,64),x188_reg(6,64)),
++    x188_i1("jge",X187Target{triv}),
++    # RFC-wrapped term: load H[r]
++    x188_i2("movq",X187Mem{7,0},x188_reg(9,64)),
++    x188_i2("movq",x188_reg(6,64),x188_reg(8,64)),
++    x188_i2("shlq",X187Imm{24,0},x188_reg(8,64)),
++    x188_i2("shrq",X187Imm{24,0},x188_reg(8,64)),
++    x188_i2("leaq",X187Indexed{9,8,8,0},x188_reg(10,64)),
++    x188_i2("movq",X187Mem{10,0},x188_reg(11,64)),
++    x188_i2("movl",x188_reg(11,32),x188_reg(0,32)),
++    x188_i2("andl",X187Imm{16777215,0},x188_reg(0,32)),
++    x188_i2("cmpl",X187Imm{1,0},x188_reg(0,32)),
++    x188_i1("ja",X187Target{dec_rc}),
++    x188_i1("jb",X187Target{slow}),
++    # rc == 1: shallow arity-2 TAG_CTR drop if children are trivial or rc > 1
++    x188_i2("movq",x188_reg(6,64),x188_reg(0,64)),
++    x188_i2("shrq",X187Imm{56,0},x188_reg(0,64)),
++    x188_i2("andl",X187Imm{127,0},x188_reg(0,32)),
++    x188_i2("cmpl",X187Imm{2,0},x188_reg(0,32)),
++    x188_i1("jne",X187Target{slow}),
++    x188_i2("movq",x188_reg(6,64),x188_reg(0,64)),
++    x188_i2("shrq",X187Imm{40,0},x188_reg(0,64)),
++    x188_i2("andl",X187Imm{65535,0},x188_reg(0,32)),
++    x188_i2("cmpq",X187Rip{"p111_program",24,0},x188_reg(0,64)),
++    x188_i1("jae",X187Target{slow}),
++    x188_i2("movq",X187Rip{"p111_program",128,0},x188_reg(1,64)),
++    x188_i2("movzbl",X187Indexed{1,0,1,0},x188_reg(0,32)),
++    x188_i2("cmpl",X187Imm{2,0},x188_reg(0,32)),
++    x188_i1("jne",X187Target{slow}),
++    # loc = cell >> 24; require loc >= HEAP_OFF and r >= HEAP_OFF
++    x188_i2("shrq",X187Imm{24,0},x188_reg(11,64)),
++    x188_i2("movq",X187Rip{"p111_program",64,0},x188_reg(0,64)),
++    x188_i2("addq",X187Imm{127,0},x188_reg(0,64)),
++    x188_i2("andq",X187Imm{4294967168,4294967295},x188_reg(0,64)),
++    x188_i2("addq",X187Imm{51413504,0},x188_reg(0,64)),
++    x188_i2("cmpq",x188_reg(0,64),x188_reg(11,64)),
++    x188_i1("jb",X187Target{slow}),
++    x188_i2("cmpq",x188_reg(0,64),x188_reg(8,64)),
++    x188_i1("jb",X187Target{slow}),
++    # Check freelist room (cls 0 +1 < 32768, cls 1 +2 < 32768) BEFORE any mutation
++    x188_i2("movq",X187Mem{7,8},x188_reg(1,64)),
++    x188_i2("cmpq",X187Imm{32767,0},X187Mem{1,256}),
++    x188_i1("jae",X187Target{slow}),
++    x188_i2("cmpq",X187Imm{32766,0},X187Mem{1,264}),
++    x188_i1("jae",X187Target{slow}),
++    # Validate f0 = H[loc]; %r10 = rf0_ptr (or 0)
++    x188_i2("movq",X187Indexed{9,11,8,0},x188_reg(0,64)),
++    x188_i2("testq",x188_reg(0,64),x188_reg(0,64)),
++    x188_i1("jge",X187Target{f0_triv}),
++    x188_i2("shlq",X187Imm{24,0},x188_reg(0,64)),
++    x188_i2("shrq",X187Imm{24,0},x188_reg(0,64)),
++    x188_i2("leaq",X187Indexed{9,0,8,0},x188_reg(10,64)),
++    x188_i2("movl",X187Mem{10,0},x188_reg(0,32)),
++    x188_i2("andl",X187Imm{16777215,0},x188_reg(0,32)),
++    x188_i2("cmpl",X187Imm{1,0},x188_reg(0,32)),
++    x188_i1("jbe",X187Target{slow}),
++    x188_i1("jmp",X187Target{f0_ok}),
++    x188_label(f0_triv),
++    x188_i2("shrq",X187Imm{56,0},x188_reg(0,64)),
++    x188_i2("cmpq",X187Imm{2,0},x188_reg(0,64)),
++    x188_i1("jae",X187Target{slow}),
++    x188_i2("xorl",x188_reg(10,32),x188_reg(10,32)),
++    x188_label(f0_ok),
++    # Validate f1 = H[loc + 1]; %rdx = rf1_ptr (or 0)
++    x188_i2("leaq",X187Indexed{9,11,8,0},x188_reg(0,64)),
++    x188_i2("movq",X187Mem{0,8},x188_reg(0,64)),
++    x188_i2("testq",x188_reg(0,64),x188_reg(0,64)),
++    x188_i1("jge",X187Target{f1_triv}),
++    x188_i2("shlq",X187Imm{24,0},x188_reg(0,64)),
++    x188_i2("shrq",X187Imm{24,0},x188_reg(0,64)),
++    x188_i2("leaq",X187Indexed{9,0,8,0},x188_reg(2,64)),
++    x188_i2("movl",X187Mem{2,0},x188_reg(0,32)),
++    x188_i2("andl",X187Imm{16777215,0},x188_reg(0,32)),
++    x188_i2("cmpq",x188_reg(10,64),x188_reg(2,64)),
++    x188_i1("jne",X187Target{f1_chk1}),
++    x188_i2("cmpl",X187Imm{2,0},x188_reg(0,32)),
++    x188_i1("jbe",X187Target{slow}),
++    x188_i1("jmp",X187Target{f1_ok}),
++    x188_label(f1_chk1),
++    x188_i2("cmpl",X187Imm{1,0},x188_reg(0,32)),
++    x188_i1("jbe",X187Target{slow}),
++    x188_i1("jmp",X187Target{f1_ok}),
++    x188_label(f1_triv),
++    x188_i2("shrq",X187Imm{56,0},x188_reg(0,64)),
++    x188_i2("cmpq",X187Imm{2,0},x188_reg(0,64)),
++    x188_i1("jae",X187Target{slow}),
++    x188_i2("xorl",x188_reg(2,32),x188_reg(2,32)),
++    x188_label(f1_ok),
++    # Point of no return: decrement shared child RFCs and free r (cls 0) + loc (cls 1)
++    x188_i2("testq",x188_reg(10,64),x188_reg(10,64)),
++    x188_i1("jz",X187Target{dec_f1}),
++    x188_i2("subq",X187Imm{1,0},X187Mem{10,0}),
++    x188_label(dec_f1),
++    x188_i2("testq",x188_reg(2,64),x188_reg(2,64)),
++    x188_i1("jz",X187Target{free_nodes}),
++    x188_i2("subq",X187Imm{1,0},X187Mem{2,0}),
++    x188_label(free_nodes),
++    x188_i2("movq",X187Mem{1,0},x188_reg(0,64)),
++    x188_i2("movq",x188_reg(0,64),X187Indexed{9,8,8,0}),
++    x188_i2("movq",x188_reg(8,64),X187Mem{1,0}),
++    x188_i2("addq",X187Imm{1,0},X187Mem{1,256}),
++    x188_i2("movq",X187Mem{1,8},x188_reg(0,64)),
++    x188_i2("movq",x188_reg(0,64),X187Indexed{9,11,8,0}),
++    x188_i2("movq",x188_reg(11,64),X187Mem{1,8}),
++    x188_i2("addq",X187Imm{2,0},X187Mem{1,264}),
++    x188_i2("xorl",x188_reg(0,32),x188_reg(0,32)),
++    x188_i1("jmp",X187Target{done}),
++    x188_label(dec_rc),
++    x188_i2("subq",X187Imm{1,0},x188_reg(11,64)),
++    x188_i2("movq",x188_reg(11,64),X187Mem{10,0}),
++    x188_i2("xorl",x188_reg(0,32),x188_reg(0,32)),
++    x188_i1("jmp",X187Target{done}),
++    x188_label(triv),
++    x188_i2("movq",x188_reg(6,64),x188_reg(0,64)),
++    x188_i2("shrq",X187Imm{56,0},x188_reg(0,64)),
++    x188_i2("cmpq",X187Imm{2,0},x188_reg(0,64)),
++    x188_i1("jb",X187Target{triv_ok}),
++    x188_i2("movq",x188_reg(6,64),x188_reg(8,64)),
++    x188_i2("shlq",X187Imm{24,0},x188_reg(8,64)),
++    x188_i2("shrq",X187Imm{24,0},x188_reg(8,64)),
++    x188_i2("movq",X187Rip{"p111_program",64,0},x188_reg(9,64)),
++    x188_i2("addq",X187Imm{127,0},x188_reg(9,64)),
++    x188_i2("andq",X187Imm{4294967168,4294967295},x188_reg(9,64)),
++    x188_i2("addq",X187Imm{51413504,0},x188_reg(9,64)),
++    x188_i2("cmpq",x188_reg(9,64),x188_reg(8,64)),
++    x188_i1("jae",X187Target{slow}),
++    x188_label(triv_ok),
++    x188_i2("xorl",x188_reg(0,32),x188_reg(0,32)),
++    x188_i1("jmp",X187Target{done}),
++    x188_label(slow),
++    x188_i2("xorl",x188_reg(0,32),x188_reg(0,32)),
++    x188_i1("call",X187Target{"p111_rt_sink"}),
++    x188_label(done),
++    x181_store(name,frame,x188_reg(0,64))])
++
+ @unsafe
+ def agy_rt_inline_try(+name: String, +typ: N111Type, +symbol: String, +args: List<&2,N111Arg>,
+     +ids: N111Ids, +frame: X181Frame, +code: X181Code) -> X181Code:
+@@ -54606,10 +54985,13 @@
+         u => agy_rt_inline_fallback(name,typ,symbol,args,ids,frame,code))
+     case N111U64{} Con{N111Arg{N111Ptr{},N111Local{+state}},Con{N111Arg{N111U32{},N111CtorId{+ctor}},Con{N111Arg{N111Ptr{},N111Local{+buf}},Nil{}}}} X181Code{chunks,+next,terminal,error}:
+       +n = agy_rt_ctor_arity(symbol)
+-      nt_choose(X181Code,agy_ctor_inline_enabled() && agy_frame_ctor_ok(frame) && U32.is_gt(n,0) &&
+-          agy_str_eq(state,"state") && p185cb_known(ctor,ids) && p185cc_known(ctor,n,ids) && U32.is_le(next,4294967293),
+-        u => X181Code{Con{agy_rt_ctor_text(name,symbol,args,agy_ctor_cid(ctor,ids),n,ids,frame,next),chunks},U32.add(next,2),terminal,error},
+-        u => agy_rt_inline_fallback(name,typ,symbol,args,ids,frame,code))
++      nt_choose(X181Code,agy_ctor_inline_enabled() && agy_frame_ctor_ok(frame) && U32.is_eq(n,2) &&
++          agy_str_eq(state,"state") && w13b_ctor2_known(ctor,ids) && U32.is_le(next,4294967288),
++        u => X181Code{Con{w13b_rt_ctor2_text(name,symbol,args,agy_ctor_cid(ctor,ids),False{},ids,frame,next),chunks},U32.add(next,7),terminal,error},
++        u => nt_choose(X181Code,agy_ctor_inline_enabled() && agy_frame_ctor_ok(frame) && U32.is_gt(n,0) &&
++            agy_str_eq(state,"state") && p185cb_known(ctor,ids) && p185cc_known(ctor,n,ids) && U32.is_le(next,4294967293),
++          v => X181Code{Con{agy_rt_ctor_text(name,symbol,args,agy_ctor_cid(ctor,ids),n,ids,frame,next),chunks},U32.add(next,2),terminal,error},
++          v => agy_rt_inline_fallback(name,typ,symbol,args,ids,frame,code)))
+     case N111U64{} Con{N111Arg{N111Ptr{},N111Local{+state}},Con{N111Arg{N111U64{},term},Con{N111Arg{N111Ptr{},N111Local{+buf}},Nil{}}}} X181Code{chunks,+next,terminal,error}:
+       +n = agy_rt_take_arity(symbol)
+       nt_choose(X181Code,agy_take_inline_enabled() && agy_frame_ctor_ok(frame) && U32.is_gt(n,0) &&
+@@ -54622,6 +55004,16 @@
+           x188_i2("movabsq",X187Imm{0,U32.add(16777216,U32.mul(agy_ctor_cid(ctor,ids),256))},x188_reg(0,64)),
+           x181_store(name,frame,x188_reg(0,64))]),chunks},next,terminal,error},
+         u => agy_rt_inline_fallback(name,typ,symbol,args,ids,frame,code))
++    case N111U64{} Con{N111Arg{N111Ptr{},N111Local{+state}},Con{N111Arg{N111U32{},N111CtorId{+ctor}},Con{N111Arg{N111Ptr{},N111Local{+buf}},Con{N111Arg{N111U32{},N111Const{2,0}},Nil{}}}}} X181Code{chunks,+next,terminal,error}:
++      nt_choose(X181Code,agy_ctor_inline_enabled() && agy_frame_ctor_ok(frame) && agy_str_eq(symbol,"p111_rt_ctor") &&
++          agy_str_eq(state,"state") && w13b_ctor2_known(ctor,ids) && U32.is_le(next,4294967288),
++        u => X181Code{Con{w13b_rt_ctor2_text(name,symbol,args,agy_ctor_cid(ctor,ids),True{},ids,frame,next),chunks},U32.add(next,7),terminal,error},
++        u => agy_rt_inline_fallback(name,typ,symbol,args,ids,frame,code))
++    case N111U64{} Con{N111Arg{N111Ptr{},N111Local{+state}},Con{N111Arg{N111U64{},term},Con{N111Arg{N111Ptr{},N111Local{+buf}},Con{N111Arg{N111U32{},N111Const{+cnt,0}},Nil{}}}}} X181Code{chunks,+next,terminal,error}:
++      nt_choose(X181Code,agy_take_inline_enabled() && agy_frame_ctor_ok(frame) && agy_str_eq(symbol,"p111_rt_take") &&
++          agy_str_eq(state,"state") && U32.is_ge(cnt,1) && U32.is_le(cnt,4) && U32.is_le(next,4294967279),
++        u => X181Code{Con{w13b_rt_take_p111_text(name,args,cnt,ids,frame,next),chunks},U32.add(next,16),terminal,error},
++        u => agy_rt_inline_fallback(name,typ,symbol,args,ids,frame,code))
+     case N111U64{} Con{N111Arg{N111Ptr{},N111Local{+state}},Con{N111Arg{N111U64{},a},Con{N111Arg{N111U64{},b},Con{N111Arg{N111U32{},N111Const{+cnt,0}},Nil{}}}}} X181Code{chunks,+next,terminal,error}:
+       nt_choose(X181Code,agy_str_eq(symbol,"p118_rt_borrow_scalar_safe") && agy_str_eq(state,"state") &&
+           (U32.is_eq(cnt,1) || U32.is_eq(cnt,2)) && U32.is_le(next,4294967289),
+@@ -54629,12 +55021,15 @@
+         u => agy_rt_inline_fallback(name,typ,symbol,args,ids,frame,code))
+     case N111U64{} Con{N111Arg{N111Ptr{},N111Local{+state}},Con{N111Arg{N111U64{},term},Nil{}}} X181Code{chunks,+next,terminal,error}:
+       nt_choose(X181Code,agy_str_eq(symbol,"p111_rt_sink") &&
++          agy_str_eq(state,"state") && agy_frame_ctor_ok(frame) && U32.is_le(next,4294967283),
++        u => X181Code{Con{w13b_rt_sink_shallow_text(name,args,ids,frame,next),chunks},U32.add(next,12),terminal,error},
++        u => nt_choose(X181Code,agy_str_eq(symbol,"p111_rt_sink") &&
+           agy_str_eq(state,"state") && U32.is_le(next,4294967291),
+-        u => X181Code{Con{agy_rt_sink_skip_text(name,args,ids,frame,next),chunks},U32.add(next,4),terminal,error},
+-        u => nt_choose(X181Code,agy_str_eq(symbol,"p111_rt_keep") &&
++        w => X181Code{Con{agy_rt_sink_skip_text(name,args,ids,frame,next),chunks},U32.add(next,4),terminal,error},
++        w => nt_choose(X181Code,agy_str_eq(symbol,"p111_rt_keep") &&
+           agy_str_eq(state,"state") && U32.is_le(next,4294967291),
+         v => X181Code{Con{agy_rt_keep_fast_text(name,args,ids,frame,next),chunks},U32.add(next,4),terminal,error},
+-        v => agy_rt_inline_fallback(name,typ,symbol,args,ids,frame,code)))
++        v => agy_rt_inline_fallback(name,typ,symbol,args,ids,frame,code))))
+     case _ _ _: agy_rt_inline_fallback(name,typ,symbol,args,ids,frame,code)
+ 
+ @unsafe

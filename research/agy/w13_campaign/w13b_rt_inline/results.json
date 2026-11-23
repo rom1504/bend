@@ -1,0 +1,99 @@
+{
+  "campaign": "W13-B",
+  "title": "Inline Alloc/Take/Drop Fast-Paths (p125_rt_ctor2 with alc->free[0] rfc_seal, p111_rt_take + static-field RFC take, shallow rc==1 p111_rt_sink)",
+  "cpu": 6,
+  "baseline": "selfhost/build/agy/wave11_unified/api.mjs",
+  "check_only_type_errors": 0,
+  "dynamic_calls": {
+    "hashmap": {
+      "p125_rt_ctor2_base": 83695627,
+      "p125_rt_ctor2_cand": 2055,
+      "p125_rt_ctor2_eliminated_pct": 99.9975,
+      "p125_rt_take2_base": 2048,
+      "p125_rt_take2_cand": 2048,
+      "p111_rt_sink_base": 2048,
+      "p111_rt_sink_cand": 2048
+    },
+    "bst64": {
+      "p125_rt_ctor1_base": 7,
+      "p125_rt_ctor1_cand": 3,
+      "p125_rt_ctor2_base": 63,
+      "p125_rt_ctor2_cand": 0,
+      "p125_rt_take2_base": 27,
+      "p125_rt_take2_cand": 0,
+      "p111_rt_sink_base": 3,
+      "p111_rt_sink_cand": 3
+    },
+    "compiler_slice": {
+      "p125_rt_ctor2_base": 131,
+      "p125_rt_ctor2_cand": 1,
+      "p125_rt_ctor3_base": 8,
+      "p125_rt_ctor3_cand": 1,
+      "p111_rt_ctor_base": 18,
+      "p111_rt_ctor_cand": 18,
+      "p125_rt_take2_base": 70,
+      "p125_rt_take2_cand": 0,
+      "p125_rt_take3_base": 8,
+      "p125_rt_take3_cand": 0,
+      "p111_rt_sink_base": 33,
+      "p111_rt_sink_cand": 18
+    }
+  },
+  "benchmarks": {
+    "hashmap": {
+      "source": "bench/runtime/hashmap/main.bend",
+      "expected_stdout": "1307803744",
+      "reps": 3,
+      "base_obj_bytes": 73576,
+      "cand_obj_bytes": 100880,
+      "base_runs_ms": [11300.1, 10990.2, 10972.7],
+      "cand_runs_ms": [10807.4, 10756.4, 10380.1],
+      "base_median_ms": 10990.2,
+      "cand_median_ms": 10756.4,
+      "speedup": 1.0217
+    },
+    "bst64": {
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-bst-64.bend",
+      "expected_stdout": "861157620",
+      "reps": 5,
+      "base_obj_bytes": 133464,
+      "cand_obj_bytes": 189096,
+      "normal": {
+        "base_runs_ms": [46.0, 45.0, 45.0, 45.0, 46.0],
+        "cand_runs_ms": [45.0, 45.0, 47.0, 45.0, 46.0],
+        "base_median_ms": 45.0,
+        "cand_median_ms": 45.0,
+        "speedup": 1.0
+      },
+      "all_hot": {
+        "base_runs_ms": [706.0, 736.0, 706.0, 704.0, 720.0],
+        "cand_runs_ms": [716.0, 831.0, 713.0, 718.0, 714.0],
+        "base_median_ms": 706.0,
+        "cand_median_ms": 716.0,
+        "speedup": 0.986
+      }
+    },
+    "compiler_slice": {
+      "source": "research/agy/w7_bench/compiler_slice.bend",
+      "expected_stdout": "34",
+      "base_compile_ms": 11548.6,
+      "cand_compile_ms": 12664.8,
+      "base_obj_bytes": 375080,
+      "cand_obj_bytes": 551408
+    }
+  },
+  "native64_gate": {
+    "passCount": 64,
+    "total": 64,
+    "passed": true,
+    "seconds": 109.7,
+    "failures": []
+  },
+  "observer_gate": {
+    "abi_probes_passed": "44+2",
+    "passCount": 15,
+    "total": 15,
+    "violations": 0,
+    "passed": true
+  }
+}

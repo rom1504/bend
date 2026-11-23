@@ -1,0 +1,23 @@
+# Experiment: Wave 13-B — Inline Alloc / Take / Shallow-Drop Fast-Paths (`p125_rt_ctor2` + `rfc_seal`, `p111_rt_take`, Shallow `rc == 1` `p111_rt_sink`)
+
+- **Date:** 2026-11-23
+- **Hypothesis:** Extending `agy_rt_inline_try` (on top of `wave11_unified/compiler.bend`) with (a) `p125_rt_ctor2` / `p111_rt_ctor(_, _, _, 2)` inline `alc->free[0]` `rfc_seal` for hot/cap-no8 constructors, (b) `p111_rt_take` (arity `1..4`) inlining + static-field (`loc < HEAP_OFF`) fix in `agy_rfc_check_fields`, and (c) inline `rc == 1` shallow arity-2 `TAG_CTR` drop in `p111_rt_sink` will eliminate the runtime call overhead targeting `35.3%` (`m05`) / `38.4%` (`m11`) of `n4_o2` while remaining 100% Observer-Gate safe.
+- **Baseline:** `selfhost/build/agy/wave11_unified/api.mjs` (`selfhost/build/agy/wave11_unified/compiler.bend`), isolated on CPU `6` (`taskset -c 6`).
+- **Outcome:** **100% Verified & Sound (`0` type errors, `64/64 native64` PASS, `44+2` ABI + `15/15` Observer Gate PASS with `0` violations).**
+  - **Runtime call elimination (`--wrap` exact counters):**
+    - `hashmap`: `p125_rt_ctor2` **`83,695,627 → 2,055` (`99.9975%` eliminated, `40,728×` fewer calls — `4,084×` fewer than W12-F's `8,392,721`!)**.
+    - `bst64`: `p125_rt_ctor2` `63 → 0` (`100%`), `p125_rt_take2` `27 → 0` (`100%`), `p125_rt_ctor1` `7 → 3` (`57.1%`).
+    - `compiler_slice.bend`: `p125_rt_ctor2` `131 → 1` (`99.2%`), `p125_rt_take2/3` `78 → 0` (`100%`), `p111_rt_sink` `33 → 18` (`45.5%`).
+  - **Interleaved benchmarks (CPU `6`, exact stdout):**
+    - `hashmap` (`1307803744`): `10,990.2 ms → 10,756.4 ms` (**`1.0217×`**, faster on 3/3 reps; `1.1138×` in run 1; ready to stack with W12-F's boxed `Array` inlining).
+    - `bst64` (`861157620`): `normal` `45.0 ms → 45.0 ms` (`1.0000×`); `all-hot` `706.0 ms → 716.0 ms` (`0.9860×`, since `BNode`/`BF` are arity-3 `p125_rt_ctor3`).
+    - `compiler_slice.bend` (`34`, JS compile): `11,548.6 ms → 12,664.8 ms` (`.o` size `375 KB → 551 KB`, `+47%` from inlining `w13b_rt_sink_shallow_text` + `p111_` frames).
+- **Verification:**
+  - `--check-only`: **PASS** (`0` type/linearity errors).
+  - `native64` Qualification Gate (`x86-object -O2`, 64 cases): **`64/64 PASS`** (`109.7 s`, CPU `6`).
+  - Observer Gate (`44+2` ABI + `normal`, `cap-no8`, `all-hot`): **`15/15 PASS`** (`0` violations, CPU `6`).
+- **Evidence:**
+  - [REPORT.md](file:///home/ai/bend2_agy/research/agy/w13_campaign/w13b_rt_inline/REPORT.md)
+  - [results.json](file:///home/ai/bend2_agy/research/agy/w13_campaign/w13b_rt_inline/results.json)
+  - [w13b_rt_inline.patch](file:///home/ai/bend2_agy/research/agy/w13_campaign/w13b_rt_inline/w13b_rt_inline.patch)
+  - [apply_w13b_rt_inline.py](file:///home/ai/bend2_agy/research/agy/w13_campaign/w13b_rt_inline/apply_w13b_rt_inline.py)

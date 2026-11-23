@@ -322,7 +322,8 @@ def w10_if_strip_one(+d: KDef, +rest: List<&2, KDef>, +abi: W10IfAbi, +laws: KDe
           v =>
             +laws2 = p131i_insert(laws, d, index_hash(name, 2166136261))
             Con{KDef{name, kind, arity, templates, w10_if_zero_term(typ), w10_if_zero_term(value), Nil{}, True{}, unsafe}, w10_if_strip_suffix(rest, abi, laws2)},
-          v => nt_choose(List<&2, KDef>, agy_str_eq(kind, "Def") && U32.is_eq(templates, 0),
+          v => nt_choose(List<&2, KDef>, agy_str_eq(kind, "Def") && U32.is_eq(templates, 0) &&
+              Bool.not(agy_str_eq(name, "kc") || agy_str_eq(name, "f_choose") || agy_str_eq(name, "nt_choose") || agy_str_eq(name, "p151_choose")),
             w =>
               +sig = nt_choose(KTerm, p98_tag_eq(typ, "Absent"), z => dt(p111v_get(laws, name)), z => typ)
               Con{KDef{name, kind, arity, templates, w10_if_zero_term(typ), w10_if_build_stub(d, sig, w10_if_force_cps(abi, name)), Nil{}, True{}, True{}}, w10_if_strip_suffix(rest, abi, laws)},

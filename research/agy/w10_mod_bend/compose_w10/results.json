@@ -1,0 +1,145 @@
+{
+  "mission": "Phase 2 P2-A: Compose Wave 10 Pure-Bend Modular Unified Compiler",
+  "artifacts": {
+    "compiler_bend": "selfhost/build/agy/wave10_unified/compiler.bend",
+    "compiler_bend_bytes": 3435783,
+    "api_mjs": "selfhost/build/agy/wave10_unified/api.mjs",
+    "compose_script": "research/agy/w10_mod_bend/compose_w10/compose_w10.py",
+    "cli_runner": "research/agy/w10_mod_bend/compose_w10/run_w10_cli.mjs",
+    "ab_proof_script": "research/agy/w10_mod_bend/compose_w10/verify_w10_ab.py",
+    "rung1_bench_script": "research/agy/w10_mod_bend/compose_w10/bench_rung1.mjs"
+  },
+  "components_composed": [
+    "w9_str_hot (agy_sh_try in -O0 + agy_sh intrinsic inlining guard + direct p113d_ hash-trie)",
+    "w9_elf_fast (compact x202k_template, single-pass x187_elf_symbol_add, fused w7c_relocs_fused, direct reverse-push x188_build_instruction w/ 128 MiB guard, fast x181_program_public_fast)",
+    "M1 merge_obj.bend (x86-merge-obj pure-Bend link-time segment table merge .o emitter, 0 C)",
+    "M2 mod_elf_vis.bend (STB_LOCAL $p111.k.*/main + STB_WEAK P86Seed.book, reconciled with w9_elf_fast single-pass w7c_elf_ascii_valid/w7c_elf_sym_nums_valid/w7c_elf_sym_push, wired into x86-module and --trace x86-module, 0 objcopy)",
+    "M3 iface_emit.bend (x86-iface pure-Bend .p130 interface carrier emitter, 0 JS build_iface_carrier.mjs)",
+    "trace.bend (--trace preserved and extended to emit M2 ELF visibility in --trace x86-module)"
+  ],
+  "gates": {
+    "check_only": {
+      "status": "PASS",
+      "type_and_linearity_errors": 0,
+      "unsafe_audit_defs": 8617
+    },
+    "api_mjs_build": {
+      "status": "PASS"
+    },
+    "native64": {
+      "status": "PASS",
+      "passed": 64,
+      "total": 64,
+      "elapsed_s": 45.0
+    },
+    "observer_gate": {
+      "status": "PASS",
+      "abi_probes": "44+2 PASS",
+      "modes": ["normal", "cap-no8", "all-hot"],
+      "passed": 15,
+      "total": 15,
+      "violations": 0
+    },
+    "elf_data_section_audit": {
+      "status": "PASS",
+      "p111_cid_hot_ndx": 3,
+      "data_flags": "WA",
+      "p111_cid_arity_ndx": 2,
+      "rodata_flags": "A"
+    }
+  },
+  "pure_bend_ab_proof": {
+    "zero_c": true,
+    "zero_objcopy": true,
+    "zero_js_iface_builder": true,
+    "merge_obj": {
+      "ms": 799.1,
+      "bytes": 724128,
+      "total_syms": 12,
+      "sh_info": 6,
+      "sh_info_valid": true
+    },
+    "case1_clean": {
+      "stamp": "p130-word-pair-v1:w10-iface-v1:71eb49620ebd4c52",
+      "iface_ms": 10319.0,
+      "iface_bytes": 4651837,
+      "modB_ms": 6529.7,
+      "modB_bytes": 370944,
+      "modB_syms": {"total": 1756, "sh_info": 1633, "local_def": 1632, "global_def": 88, "weak_def": 18, "local_k": 55},
+      "modA_ms": 1835.3,
+      "modA_bytes": 148072,
+      "modA_syms": {"total": 1585, "sh_info": 1565, "local_def": 1564, "global_def": 9, "weak_def": 3, "local_k": 5},
+      "link_forward_ms": 34.8,
+      "link_forward_output": "34",
+      "link_reverse_ms": 44.3,
+      "link_reverse_output": "34",
+      "linker_warnings": 0
+    },
+    "case2_body_only_edit": {
+      "stamp": "p130-word-pair-v1:w10-iface-v1:71eb49620ebd4c52",
+      "stamp_identical": true,
+      "iface_ms": 10565.1,
+      "modB_ms": 6445.3,
+      "modA_reused_untouched": true,
+      "link_ms": 34.4,
+      "output": "44",
+      "linker_warnings": 0
+    },
+    "case3_incompatible_sig_change": {
+      "stamp": "p130-word-pair-v1:w10-iface-v1:f6da53fd6a54942c",
+      "stamp_changed": true,
+      "iface_ms": 11109.6,
+      "stale_stamp_rejected": {"rc": 1, "stderr": "base_cache: cache stamp"},
+      "stale_modA_rejected": {"rc": 1, "stderr": "check: main: type mismatch"},
+      "modB_ms": 6523.2,
+      "modA_ms": 1832.3,
+      "link_ms": 35.7,
+      "output": "54",
+      "linker_warnings": 0
+    },
+    "trace_x86_module_smoke": {
+      "ms": 1864.1,
+      "trace_lines": 8,
+      "sh_info_valid": true
+    }
+  },
+  "rung1_parse_stage_timings": {
+    "src": "research/agy/w9_ladder/rung1_parse.bend",
+    "annotated_defs": 3310,
+    "live_segments": 3440,
+    "private_functions": 475,
+    "tables": 667,
+    "wave8_recorded_baseline_ms": {
+      "p86_plan": 6874.0,
+      "x198pw_plan": 10365.0,
+      "x187_prepared_fast": 16918.0,
+      "total_fast": 34157.0
+    },
+    "wave8_live_paired_ms": {
+      "prep": 226.0,
+      "p86_plan": 6724.8,
+      "x198pw_plan": 12770.4,
+      "x187_prepared_fast": 20686.9,
+      "total_fast": 40182.1,
+      "obj_bytes_fast": 9087456
+    },
+    "wave10_live_paired_ms": {
+      "prep": 273.6,
+      "p86_plan": 6721.2,
+      "x198pw_plan": 13154.2,
+      "x187_prepared_fast": 21216.0,
+      "total_fast": 41091.4,
+      "obj_bytes_fast": 8902632
+    },
+    "wave10_quiet_run_ms": {
+      "prep": 211.3,
+      "p86_plan": 6991.5,
+      "x198pw_plan": 12441.3,
+      "x187_prepared_fast": 18660.1,
+      "total_fast": 38092.9,
+      "obj_bytes_fast": 8902632
+    },
+    "obj_bytes_delta": -184824,
+    "obj_bytes_delta_pct": -2.03
+  }
+}

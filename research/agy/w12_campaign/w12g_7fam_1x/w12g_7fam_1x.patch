@@ -1,0 +1,443 @@
+--- selfhost/build/agy/wave11_unified/compiler.bend
++++ selfhost/build/agy/wave11_unified/compiler.bend (w12g)
+@@ -53688,7 +53688,7 @@
+   match frame:
+     case X181Frame{slots,bytes,calls,params,symbol}:
+       +slot = p111v_get(slots,name)
+-      nt_choose(Maybe<&2,X187Operand>,(agy_str_eq(dk(slot),"X181Register") || agy_str_eq(dk(slot),"X185Transient")) && U32.is_lt(da(slot),5),
++      nt_choose(Maybe<&2,X187Operand>,(agy_str_eq(dk(slot),"X181Register") && U32.is_lt(da(slot),5)) || (agy_str_eq(dk(slot),"X185Transient") && U32.is_lt(da(slot),6)),
+         u => x186_float_narrow(x185_physical_slot(slot)),u =>
+         nt_choose(Maybe<&2,X187Operand>,stack && agy_str_eq(dk(slot),"X181Stack") && U32.is_eq(dx(slot),8) &&
+             U32.is_ge(da(slot),48) && U32.is_le(da(slot),bytes) && U32.is_eq(U32.mod(da(slot),8),0),
+@@ -54678,7 +54678,7 @@
+       U32.is_le(da(slot),bytes) && U32.is_gt(dx(slot),0) &&
+       U32.is_le(dx(slot),U32.sub(da(slot),40)),u => 1,u =>
+   nt_choose(U32,agy_str_eq(dk(slot),"X181Register") && U32.is_lt(da(slot),5),u => 1,u =>
+-  nt_choose(U32,agy_str_eq(dk(slot),"X185Transient") && U32.is_lt(da(slot),5),u => 2,u => 0))))
++  nt_choose(U32,agy_str_eq(dk(slot),"X185Transient") && U32.is_lt(da(slot),6),u => 2,u => 0))))
+ 
+ @unsafe
+ def x186_call_value(value: N111Value, +slots: KDef, +bytes: U32) -> U32:
+@@ -54763,14 +54763,15 @@
+     case 1: 6
+     case 2: 2
+     case 3: 8
+-    case _: 9
++    case 4: 9
++    case _: 1
+ 
+ @unsafe
+ def agy_call_src_reg(value: N111Value, slots: KDef) -> U32:
+   match value:
+     case N111Local{name}:
+       +slot = p111v_get(slots,name)
+-      nt_choose(U32,agy_str_eq(dk(slot),"X185Transient") && U32.is_lt(da(slot),5),
++      nt_choose(U32,agy_str_eq(dk(slot),"X185Transient") && U32.is_lt(da(slot),6),
+         u => agy_call_treg(da(slot)),u => 0)
+     case _: 0
+ 
+@@ -55825,7 +55826,8 @@
+     case 1: x188_reg(6,64)
+     case 2: x188_reg(2,64)
+     case 3: x188_reg(8,64)
+-    case _: x188_reg(9,64)
++    case 4: x188_reg(9,64)
++    case _: x188_reg(1,64)
+ 
+ @unsafe
+ def x185_t_range(+name: String, first: U32, last: U32, region: U32, ranges: KDef) -> KDef:
+@@ -55954,6 +55956,12 @@
+   match body:
+     case Con{P113DScalar{sc},Nil{}}: w4c_sel_arm_scalar(sc)
+     case _: W4CSelArmNone{}
++
++@unsafe
++def w12g_list_is_nil(xs: List<&2,P113DStmt>) -> Bool:
++  match xs:
++    case Nil{}: True{}
++    case _: False{}
+ 
+ @unsafe
+ def w4c_t_if_sel_no(+condition: N111Value, +yes: List<&2,P113DStmt>, +no: List<&2,P113DStmt>,
+@@ -55967,7 +55975,11 @@
+         u => x185_t_next(x185_t_event(a,True{},x185_t_read(vb,x185_t_read(va,x185_t_read(condition,scan))))),
+         u => x185_t_cut(x185_t_body(no,x185_t_cut(x185_t_body(yes,x185_t_cut(x185_t_read(condition,scan)))))))
+     case W4CSelArmNone{}:
+-      x185_t_cut(x185_t_body(no,x185_t_cut(x185_t_body(yes,x185_t_cut(x185_t_read(condition,scan))))))
++      nt_choose(X185TScan,
++        w12g_list_is_nil(no) && w4c_sel_val(condition) && Bool.not(x181_register_reserved(a)) &&
++          w4c_sel_width(ta) && w4c_sel_val(va),
++        u => x185_t_next(x185_t_event(a,True{},x185_t_read(N111Local{a},x185_t_read(va,x185_t_read(condition,scan))))),
++        u => x185_t_cut(x185_t_body(no,x185_t_cut(x185_t_body(yes,x185_t_cut(x185_t_read(condition,scan)))))))
+ 
+ @unsafe
+ def w4c_t_if_sel(condition: N111Value, yes: List<&2,P113DStmt>, +no: List<&2,P113DStmt>,
+@@ -56301,7 +56313,8 @@
+     case 1: x188_physical(6)
+     case 2: x188_physical(2)
+     case 3: x188_physical(8)
+-    case _: x188_physical(9)
++    case 4: x188_physical(9)
++    case _: x188_physical(1)
+ 
+ def x188_physical_width(typ: N111Type, wide: X187Operand, narrow: X187Operand) -> X187Operand:
+   match typ:
+@@ -56966,7 +56979,7 @@
+   (agy_str_eq(dk(slot),"X181Stack") && U32.is_ge(da(slot),48) && U32.is_eq(U32.mod(da(slot),8),0) && U32.is_eq(dx(slot),8)) ||
+   (agy_str_eq(dk(slot),"X181Register") && U32.is_le(da(slot),4) &&
+     (Bool.not(destination) || U32.is_gt(da(slot),0))) ||
+-  (agy_str_eq(dk(slot),"X185Transient") && U32.is_lt(da(slot),5))
++  (agy_str_eq(dk(slot),"X185Transient") && U32.is_lt(da(slot),6))
+ 
+ @unsafe
+ def x186_p_source(value: N111Value, slots: KDef) -> KDef:
+@@ -58305,7 +58318,7 @@
+ def w4c_diamond_body(+setup: List<&2,P113DStmt>, +body: List<&2,P113DStmt>) -> List<&2,P113DStmt>:
+   +base = x185_d_base()
+   +again = x185_d_union(x185_copy_writes(setup,missing()),base)
+-  w4c_dia_out(w4c_dia_body(w5_elim_nat_fail(body),base,again,base,0))
++  w5_nat_match_chain(w4c_dia_out(w4c_dia_body(w5_nat_match_chain(w5_elim_nat_fail(body)),base,again,base,0)))
+ 
+ # General adjacent self-update splitter before CSE:
+ # When `x = pure_bin(l1, r1)` is immediately followed by `x = bin(l2, r2)` (same `x`),
+@@ -61152,18 +61165,19 @@
+ def x190_j_edges(+bit: U32, +edges: U32, color: U32) -> U32:
+   nt_choose(U32,U32.is_lt(color,4),u => U32.and(edges,U32.not(bit)),u => edges)
+ 
+-def x190_j_allowed(bit: U32, edges: U32, position: U32, +color: U32) -> Bool:
++def x190_j_allowed(bit: U32, edges: U32, +position: U32, +color: U32, +nParams: U32) -> Bool:
+   nt_choose(Bool,U32.is_lt(color,4),u => True{},u =>
+-    U32.is_lt(color,9) && U32.is_eq(U32.and(bit,edges),0) && U32.is_ge(position,x190_l_abi(U32.sub(color,4))))
+-
+-@unsafe
+-def x190_j_pick(groups: List<&2,U32>, +bit: U32, +edges: U32, +position: U32, +color: U32) -> U32:
++    +abi = x190_l_abi(U32.sub(color,4))
++    U32.is_lt(color,9) && U32.is_eq(U32.and(bit,edges),0) && (U32.is_ge(position,abi) || U32.is_ge(abi,nParams)))
++
++@unsafe
++def x190_j_pick(groups: List<&2,U32>, +bit: U32, +edges: U32, +position: U32, +color: U32, +nParams: U32) -> U32:
+   match groups:
+     case Nil{}: 9
+     case Con{mask,rest}:
+-      nt_choose(U32,x190_j_allowed(bit,edges,position,color) &&
++      nt_choose(U32,x190_j_allowed(bit,edges,position,color,nParams) &&
+           U32.is_eq(U32.and(mask,x190_j_edges(bit,edges,color)),0),
+-        u => color,u => x190_j_pick(rest,bit,edges,position,U32.inc(color)))
++        u => color,u => x190_j_pick(rest,bit,edges,position,U32.inc(color),nParams))
+ 
+ def x190_caller_first_enabled() -> Bool: True{}
+ 
+@@ -61174,17 +61188,18 @@
+     case _: []
+ 
+ @unsafe
+-def x190_j_choose(+groups: List<&2,U32>, +bit: U32, +edges: U32, +position: U32, enabled: Bool) -> U32:
+-  +caller = nt_choose(U32,enabled,u => x190_j_pick(x190_j_callers(groups),bit,edges,position,4),u => 9)
+-  nt_choose(U32,U32.is_lt(caller,9),u => caller,u => x190_j_pick(groups,bit,edges,position,0))
++def x190_j_choose(+groups: List<&2,U32>, +bit: U32, +edges: U32, +position: U32, enabled: Bool, +nParams: U32) -> U32:
++  +caller = nt_choose(U32,enabled,u => x190_j_pick(x190_j_callers(groups),bit,edges,position,4,nParams),u => 9)
++  nt_choose(U32,U32.is_lt(caller,9),u => caller,u => x190_j_pick(groups,bit,edges,position,0,nParams))
+ 
+ @unsafe
+ def x190_j_color(names: List<&2,String>, rows: List<&2,U32>, +params: List<&2,String>,
+     +bit: U32, +groups: List<&2,U32>) -> List<&2,U32>:
+   match names rows:
+     case Con{name,rest} Con{edges,more}:
++      +nParams = nt_count(String,params)
+       x190_j_color(rest,more,params,U32.shl(bit),
+-        x190_l_group(groups,x190_j_choose(groups,bit,edges,x190_l_position(name,params,0),x190_caller_first_enabled()),bit))
++        x190_l_group(groups,x190_j_choose(groups,bit,edges,x190_l_position(name,params,0),x190_caller_first_enabled(),nParams),bit))
+     case _ _: groups
+ 
+ # Affinities only choose among already legal colors; they never merge names
+@@ -61224,39 +61239,40 @@
+     case Con{head,rest}: x190_a_body(rest,ids,params,affinities)
+ 
+ @unsafe
+-def x190_a_pick(groups: List<&2,U32>, +partners: U32, +bit: U32, +edges: U32, +position: U32, +color: U32) -> U32:
++def x190_a_pick(groups: List<&2,U32>, +partners: U32, +bit: U32, +edges: U32, +position: U32, +color: U32, +nParams: U32) -> U32:
+   match groups:
+     case Nil{}: 9
+     case Con{+mask,rest}:
+-      nt_choose(U32,Bool.not(U32.is_eq(U32.and(mask,partners),0)) && x190_j_allowed(bit,edges,position,color) &&
++      nt_choose(U32,Bool.not(U32.is_eq(U32.and(mask,partners),0)) && x190_j_allowed(bit,edges,position,color,nParams) &&
+           U32.is_eq(U32.and(mask,x190_j_edges(bit,edges,color)),0),
+-        u => color,u => x190_a_pick(rest,partners,bit,edges,position,U32.inc(color)))
+-
+-@unsafe
+-def x190_a_choose(+groups: List<&2,U32>, partners: U32, +bit: U32, +edges: U32, +position: U32) -> U32:
+-  +preferred = x190_a_pick(groups,partners,bit,edges,position,0)
++        u => color,u => x190_a_pick(rest,partners,bit,edges,position,U32.inc(color),nParams))
++
++@unsafe
++def x190_a_choose(+groups: List<&2,U32>, partners: U32, +bit: U32, +edges: U32, +position: U32, +nParams: U32) -> U32:
++  +preferred = x190_a_pick(groups,partners,bit,edges,position,0,nParams)
+   nt_choose(U32,U32.is_lt(preferred,9),u => preferred,
+-    u => x190_j_choose(groups,bit,edges,position,x190_caller_first_enabled()))
++    u => x190_j_choose(groups,bit,edges,position,x190_caller_first_enabled(),nParams))
+ 
+ @unsafe
+ def x190_a_color(names: List<&2,String>, rows: List<&2,U32>, +params: List<&2,String>,
+     +bit: U32, +groups: List<&2,U32>, +affinities: KDef) -> List<&2,U32>:
+   match names rows:
+     case Con{+name,rest} Con{edges,more}:
++      +nParams = nt_count(String,params)
+       x190_a_color(rest,more,params,U32.shl(bit),
+-        x190_l_group(groups,x190_a_choose(groups,da(p111v_get(affinities,name)),bit,edges,x190_l_position(name,params,0)),bit),affinities)
++        x190_l_group(groups,x190_a_choose(groups,da(p111v_get(affinities,name)),bit,edges,x190_l_position(name,params,0),nParams),bit),affinities)
+     case _ _: groups
+ 
+ @unsafe
+ def x190_j_valid_groups(groups: List<&2,U32>, +bit: U32, +edges: U32,
+-    +position: U32, +color: U32, +seen: Bool) -> Bool:
++    +position: U32, +color: U32, +seen: Bool, +nParams: U32) -> Bool:
+   match groups:
+     case Nil{}: True{}
+     case Con{+mask,rest}:
+       +here = Bool.not(U32.is_eq(U32.and(mask,bit),0))
+-      (Bool.not(here) || (Bool.not(seen) && x190_j_allowed(bit,edges,position,color) &&
++      (Bool.not(here) || (Bool.not(seen) && x190_j_allowed(bit,edges,position,color,nParams) &&
+         U32.is_eq(U32.and(mask,x190_j_edges(bit,edges,color)),0))) &&
+-          x190_j_valid_groups(rest,bit,edges,position,U32.inc(color),seen || here)
++          x190_j_valid_groups(rest,bit,edges,position,U32.inc(color),seen || here,nParams)
+ 
+ @unsafe
+ def x190_j_valid(names: List<&2,String>, rows: List<&2,U32>, +params: List<&2,String>,
+@@ -61264,7 +61280,7 @@
+   match names rows:
+     case Nil{} Nil{}: U32.is_eq(nt_count(U32,groups),9)
+     case Con{name,rest} Con{edges,more}:
+-      x190_j_valid_groups(groups,bit,edges,x190_l_position(name,params,0),0,False{}) &&
++      x190_j_valid_groups(groups,bit,edges,x190_l_position(name,params,0),0,False{},nt_count(String,params)) &&
+         x190_j_valid(rest,more,params,U32.shl(bit),groups)
+     case _ _: False{}
+ 
+@@ -61316,26 +61332,67 @@
+         u => Con{head,w5c_occ_add(rest,U32.sub(idx,1),intv)})
+ 
+ @unsafe
+-def w5c_pj_collect_one(+name: String, +color: U32, +bit: U32, +header: U32, +ranges: KDef, +st: W5CPJState) -> W5CPJState:
++def w12g_val_is_const(v: N111Value) -> Bool:
++  match v:
++    case N111Const{_,_}: True{}
++    case _: False{}
++
++law w12g_scalars_var_shift:
++  for xs: List<&2,N111Stmt>
++  Bool
++
++@unsafe
++def w12g_scalar_var_shift(stmt: N111Stmt) -> Bool:
++  match stmt:
++    case N111Bin{_,_,op,_,r}: x181_shift(op) && Bool.not(w12g_val_is_const(r))
++    case N111If{_,yes,no}: w12g_scalars_var_shift(yes) || w12g_scalars_var_shift(no)
++    case _: False{}
++
++@unsafe
++def w12g_scalars_var_shift(xs):
++  match xs:
++    case Nil{}: False{}
++    case Con{h,t}: w12g_scalar_var_shift(h) || w12g_scalars_var_shift(t)
++
++@unsafe
++def w12g_body_var_shift(xs: List<&2,P113DStmt>) -> Bool:
++  match xs:
++    case Nil{}: False{}
++    case Con{P113DScalar{sc},t}: w12g_scalar_var_shift(sc) || w12g_body_var_shift(t)
++    case Con{P113DIf{_,yes,no},t}: w12g_body_var_shift(yes) || w12g_body_var_shift(no) || w12g_body_var_shift(t)
++    case Con{_,t}: w12g_body_var_shift(t)
++
++@unsafe
++def w12g_reads_map(rc: X181ReadCounts) -> KDef:
++  match rc:
++    case X181ReadCounts{counts,_}: counts
++
++@unsafe
++def w5c_pj_collect_one(+name: String, +color: U32, +bit: U32, +header: U32, +ranges: KDef,
++    +bReads: KDef, +bWrites: KDef, +st: W5CPJState) -> W5CPJState:
+   match st:
+     case W5CPJState{+ends,+occ}:
+-      nt_choose(W5CPJState,U32.is_ge(color,4) && U32.is_lt(color,9),
++      nt_choose(W5CPJState,U32.is_lt(color,9),
+         u =>
+-          +k = U32.sub(color,4)
++          +k = nt_choose(U32,U32.is_ge(color,4),w => U32.sub(color,4),w => U32.add(color,6))
+           +r = p111v_get(ranges,name)
+-          nt_choose(W5CPJState,U32.is_eq(U32.and(header,bit),0) && agy_str_eq(dk(r),"X185TRange"),
+-            v => W5CPJState{ends,w5c_occ_add(occ,k,W5CIntv{da(r),dx(r)})},
+-            v => W5CPJState{x185_t_end(ends,k,4294967295),occ}),
++          +deadInBody = U32.is_eq(U32.and(header,bit),0) &&
++            U32.is_eq(da(p111v_get(bReads,name)),0) && U32.is_eq(da(p111v_get(bWrites,name)),0)
++          nt_choose(W5CPJState,deadInBody,
++            v => st,
++            v => nt_choose(W5CPJState,U32.is_eq(U32.and(header,bit),0) && agy_str_eq(dk(r),"X185TRange"),
++              w => W5CPJState{ends,w5c_occ_add(occ,k,W5CIntv{da(r),dx(r)})},
++              w => W5CPJState{x185_t_end(ends,k,4294967295),occ})),
+         u => st)
+ 
+ @unsafe
+ def w5c_pj_collect(names: List<&2,String>, +groups: List<&2,U32>, +header: U32,
+-    +ranges: KDef, +bit: U32, st: W5CPJState) -> W5CPJState:
++    +ranges: KDef, +bReads: KDef, +bWrites: KDef, +bit: U32, st: W5CPJState) -> W5CPJState:
+   match names:
+     case Nil{}: st
+     case Con{+name,rest}:
+-      w5c_pj_collect(rest,groups,header,ranges,U32.shl(bit),
+-        w5c_pj_collect_one(name,x190_j_home(groups,bit,0),bit,header,ranges,st))
++      w5c_pj_collect(rest,groups,header,ranges,bReads,bWrites,U32.shl(bit),
++        w5c_pj_collect_one(name,x190_j_home(groups,bit,0),bit,header,ranges,bReads,bWrites,st))
+ 
+ law w5c_pj_pick:
+   for ends: List<&2,U32>
+@@ -61349,7 +61406,7 @@
+ def w5c_pj_pick_step(+endPos: U32, +restE: List<&2,U32>, occ: List<&2,List<&2,W5CIntv>>,
+     +first: U32, +last: U32, +index: U32) -> U32:
+   match occ:
+-    case Nil{}: 5
++    case Nil{}: 10
+     case Con{olist,+restO}:
+       nt_choose(U32,U32.is_lt(endPos,first) && w5c_intv_disjoint(first,last,olist),
+         u => index,
+@@ -61358,7 +61415,7 @@
+ @unsafe
+ def w5c_pj_pick(ends,occ,first,last,index):
+   match ends:
+-    case Nil{}: 5
++    case Nil{}: 10
+     case Con{endPos,restE}: w5c_pj_pick_step(endPos,restE,occ,first,last,index)
+ 
+ law w5c_pj_place:
+@@ -61373,9 +61430,11 @@
+ @unsafe
+ def w5c_pj_chosen(+name: String, +rest: List<&2,String>, +ranges: KDef, +frame: X181Frame,
+     +ends: List<&2,U32>, +occ: List<&2,List<&2,W5CIntv>>, +maxSpan: U32, +index: U32, +last: U32) -> X181Frame:
+-  nt_choose(X181Frame,U32.is_lt(index,5),
++  nt_choose(X181Frame,U32.is_lt(index,6),
+     u => w5c_pj_place(rest,ranges,x185_t_install(name,index,frame),x185_t_end(ends,index,last),occ,maxSpan),
+-    u => w5c_pj_place(rest,ranges,frame,ends,occ,maxSpan))
++    u => nt_choose(X181Frame,U32.is_lt(index,10),
++      v => w5c_pj_place(rest,ranges,x181_register_install(name,U32.sub(index,5),frame),x185_t_end(ends,index,last),occ,maxSpan),
++      v => w5c_pj_place(rest,ranges,frame,ends,occ,maxSpan)))
+ 
+ @unsafe
+ def w5c_pj_place(names,ranges,frame,ends,occ,maxSpan):
+@@ -61401,19 +61460,24 @@
+ 
+ @unsafe
+ def w5c_pj_apply(frame: X181Frame, +names: List<&2,String>, +groups: List<&2,U32>,
+-    +header: U32, scan: X185TScan) -> X181Frame:
++    +header: U32, +rcxInit: U32, +bReads: KDef, +bWrites: KDef, scan: X185TScan) -> X181Frame:
+   match scan:
+     case X185TScan{+ranges,allNames,+position,region}:
+       w5c_pj_run(frame,ranges,allNames,position,
+-        w5c_pj_collect(names,groups,header,ranges,1,W5CPJState{[0,0,0,0,0],[[],[],[],[],[]]}))
++        w5c_pj_collect(names,groups,header,ranges,bReads,bWrites,1,
++          W5CPJState{[0,0,0,0,0,rcxInit,0,0,0,0],[[],[],[],[],[],[],[],[],[],[]]}))
+ 
+ @unsafe
+ def w5c_post_joint_transient(+frame: X181Frame, +params: List<&2,String>, +setup: List<&2,P113DStmt>,
+     +body: List<&2,P113DStmt>, +names: List<&2,String>, +groups: List<&2,U32>, +header: U32) -> X181Frame:
+-  nt_choose(X181Frame,x185_transient_enabled() && U32.is_eq(nt_count(String,names),32) &&
++  +rcxInit = nt_choose(U32,w12g_body_var_shift(body),u => 4294967295,u => 0)
++  nt_choose(X181Frame,x185_transient_enabled() &&
+       U32.is_lt(p113i_add(p113i_size(setup),p113i_size(body)),8192),
+-    u => w5c_pj_apply(frame,names,groups,header,x185_t_body(body,
+-      X185TScan{x185_copy_writes_names(params,x185_copy_writes(setup,missing())),[],1,0})),
++    u =>
++      +bReads = w12g_reads_map(x181_reads_stmts(body,X181ReadCounts{missing(),[]}))
++      +bWrites = x185_copy_writes(body,missing())
++      w5c_pj_apply(frame,names,groups,header,rcxInit,bReads,bWrites,x185_t_body(body,
++        X185TScan{x185_copy_writes_names(params,x185_copy_writes(setup,missing())),[],1,0})),
+     u => frame)
+ 
+ @unsafe
+@@ -66549,11 +66613,17 @@
+     u => nt_choose(String,agy_str_eq(op,"je") || agy_str_eq(op,"jz"),v => "cmovneq",v => ""))
+ 
+ @unsafe
+-def w5_g11_d(+cmop: String, +d: U32, +r: U32, +lbl: String, i3: X187Parsed, +r4: List<&2,X187Parsed>,
++def w12g_g11_l4_eq(+t2: String, r4: List<&2,X187Parsed>) -> Bool:
++  match r4:
++    case Con{PLabel{l4},_}: agy_str_eq(l4,t2)
++    case _: False{}
++
++@unsafe
++def w5_g11_d(+cmop: String, +d: U32, +r: U32, +lbl: String, +t2: String, i3: X187Parsed, +r4: List<&2,X187Parsed>,
+     +fnItems: List<&2,X187Parsed>, +acc: List<&2,X187Parsed>) -> Maybe<&2,List<&2,X187Parsed>>:
+   match i3:
+     case PLabel{+l3}:
+-      nt_choose(Maybe<&2,List<&2,X187Parsed>>,agy_str_eq(l3,lbl),
++      nt_choose(Maybe<&2,List<&2,X187Parsed>>,agy_str_eq(l3,lbl) && (agy_str_eq(t2,lbl) || w12g_g11_l4_eq(t2,r4)),
+         u => Some{w5_gpr_peep(Con{PLabel{l3},r4},fnItems,
+           Con{PInst{X187Instruction{cmop,[X187Mem{5,d},x188_reg(r,64)]}},acc})},
+         u => None{})
+@@ -66564,8 +66634,8 @@
+     +fnItems: List<&2,X187Parsed>, +acc: List<&2,X187Parsed>) -> Maybe<&2,List<&2,X187Parsed>>:
+   match br2:
+     case W4BBranch{op2,t2}:
+-      nt_choose(Maybe<&2,List<&2,X187Parsed>>,agy_str_eq(op2,"jmp") && agy_str_eq(t2,lbl),
+-        u => w5_g11_d(cmop,d,r,lbl,i3,r4,fnItems,acc),
++      nt_choose(Maybe<&2,List<&2,X187Parsed>>,agy_str_eq(op2,"jmp"),
++        u => w5_g11_d(cmop,d,r,lbl,t2,i3,r4,fnItems,acc),
+         u => None{})
+     case W4BBranchNone{}: None{}
+ 
+@@ -66592,7 +66662,28 @@
+ 
+ # G10: movq %rA, %rB; addl $c, %rB32; movq %rB, %rA (rB dead) -> addl $c, %rA32
+ @unsafe
+-def w5_g10_c(+rA: U32, +rB: U32, +c: U32, rr2: W4BRR, +r3: List<&2,X187Parsed>,
++def w12g_g10_d(+rA: U32, +rB: U32, +rC: U32, +op1: String, +w1: U32, +c: U32, rr3: W4BRR, +r4: List<&2,X187Parsed>,
++    +fnItems: List<&2,X187Parsed>, +acc: List<&2,X187Parsed>) -> Maybe<&2,List<&2,X187Parsed>>:
++  match rr3:
++    case W4BRR{op3,s3,64,d3,64}:
++      nt_choose(Maybe<&2,List<&2,X187Parsed>>,
++        agy_str_eq(op3,"movq") && U32.is_eq(s3,rB) && U32.is_eq(d3,rA) &&
++        w4b_reg_dead(rB,r4,fnItems,64),
++        u => Some{w5_gpr_peep(r4,fnItems,
++          Con{PInst{X187Instruction{"movq",[x188_reg(rA,64),x188_reg(rC,64)]}},
++            Con{PInst{X187Instruction{op1,[X187Imm{c,0},x188_reg(rA,w1)]}},acc}})},
++        u => None{})
++    case _: None{}
++
++@unsafe
++def w12g_g10_r3(r3: List<&2,X187Parsed>, +rA: U32, +rB: U32, +rC: U32, +op1: String, +w1: U32, +c: U32,
++    +fnItems: List<&2,X187Parsed>, +acc: List<&2,X187Parsed>) -> Maybe<&2,List<&2,X187Parsed>>:
++  match r3:
++    case Con{i3,r4}: w12g_g10_d(rA,rB,rC,op1,w1,c,w4b_as_rr(i3),r4,fnItems,acc)
++    case _: None{}
++
++@unsafe
++def w5_g10_c(+rA: U32, +rB: U32, +op1: String, +w1: U32, +c: U32, rr2: W4BRR, +r3: List<&2,X187Parsed>,
+     +fnItems: List<&2,X187Parsed>, +acc: List<&2,X187Parsed>) -> Maybe<&2,List<&2,X187Parsed>>:
+   match rr2:
+     case W4BRR{op2,s2,64,d2,64}:
+@@ -66600,18 +66691,23 @@
+         agy_str_eq(op2,"movq") && U32.is_eq(s2,rB) && U32.is_eq(d2,rA) &&
+         w4b_reg_dead(rB,r3,fnItems,64),
+         u => Some{w5_gpr_peep(r3,fnItems,
+-          Con{PInst{X187Instruction{"addl",[X187Imm{c,0},x188_reg(rA,32)]}},acc})},
+-        u => None{})
++          Con{PInst{X187Instruction{op1,[X187Imm{c,0},x188_reg(rA,w1)]}},acc})},
++        u => nt_choose(Maybe<&2,List<&2,X187Parsed>>,
++          agy_str_eq(op2,"movq") && U32.is_eq(s2,rB) && Bool.not(U32.is_eq(d2,rB)) && Bool.not(U32.is_eq(d2,rA)),
++          v => w12g_g10_r3(r3,rA,rB,d2,op1,w1,c,fnItems,acc),
++          v => None{}))
+     case _: None{}
+ 
+ @unsafe
+ def w5_g10_b(+rA: U32, +rB: U32, im1: W4BImmReg, +i2: X187Parsed, +r3: List<&2,X187Parsed>,
+     +fnItems: List<&2,X187Parsed>, +acc: List<&2,X187Parsed>) -> Maybe<&2,List<&2,X187Parsed>>:
+   match im1:
+-    case W4BImmReg{op1,lo,0,d1,32}:
++    case W4BImmReg{+op1,lo,0,d1,+w1}:
++      +ok32 = U32.is_eq(w1,32) && (agy_str_eq(op1,"addl") || agy_str_eq(op1,"subl"))
++      +ok64 = U32.is_eq(w1,64) && (agy_str_eq(op1,"addq") || agy_str_eq(op1,"subq"))
+       nt_choose(Maybe<&2,List<&2,X187Parsed>>,
+-        agy_str_eq(op1,"addl") && U32.is_eq(d1,rB) && Bool.not(U32.is_eq(rA,rB)),
+-        u => w5_g10_c(rA,rB,lo,w4b_as_rr(i2),r3,fnItems,acc),
++        (ok32 || ok64) && U32.is_eq(d1,rB) && Bool.not(U32.is_eq(rA,rB)),
++        u => w5_g10_c(rA,rB,op1,w1,lo,w4b_as_rr(i2),r3,fnItems,acc),
+         u => None{})
+     case _: None{}
+ 

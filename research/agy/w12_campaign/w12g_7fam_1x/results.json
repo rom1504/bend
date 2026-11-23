@@ -1,0 +1,652 @@
+{
+  "task": "W12-G",
+  "cpu": 7,
+  "runs": 5,
+  "baseline_api": "selfhost/build/agy/wave11_unified/api.mjs",
+  "patch": "research/agy/w12_campaign/w12g_7fam_1x/w12g_7fam_1x.patch",
+  "summary": {
+    "baseline_geomean_vs_c": 1.3383,
+    "w12g_geomean_vs_c": 1.2644,
+    "geomean_improvement": 1.0584
+  },
+  "gates": {
+    "check_only": {
+      "pass": true,
+      "type_errors": 0,
+      "ms": 68692.1
+    },
+    "native64": {
+      "pass": true,
+      "passed": 64,
+      "total": 64,
+      "s": 61.6
+    },
+    "observer_gate": {
+      "pass": true,
+      "abi_probes": "44+2",
+      "passed": 15,
+      "total": 15,
+      "violations": 0
+    }
+  },
+  "bst_n0_diagnostic_160k_reps_cpu7_ms": {
+    "c_n64": 77,
+    "c_n0": 29,
+    "c_collect_delta": 48,
+    "bend_n64": 180,
+    "bend_n0": 132,
+    "bend_collect_delta": 48
+  },
+  "comparison": [
+    {
+      "name": "histogram",
+      "group": "upstream",
+      "baseline_c_ms": 22.1955,
+      "baseline_wave11_ms": 41.8843,
+      "baseline_ratio_vs_c": 1.8871,
+      "w12g_c_ms": 22.0131,
+      "w12g_ms": 43.6544,
+      "w12g_ratio_vs_c": 1.9831,
+      "bend_speedup_vs_wave11": 0.9595,
+      "ratio_improvement": 0.9516
+    },
+    {
+      "name": "gameoflife",
+      "group": "upstream",
+      "baseline_c_ms": 950.4193,
+      "baseline_wave11_ms": 461.0017,
+      "baseline_ratio_vs_c": 0.4851,
+      "w12g_c_ms": 928.1399,
+      "w12g_ms": 436.3005,
+      "w12g_ratio_vs_c": 0.4701,
+      "bend_speedup_vs_wave11": 1.0566,
+      "ratio_improvement": 1.0319
+    },
+    {
+      "name": "nbody",
+      "group": "upstream",
+      "baseline_c_ms": 90.8626,
+      "baseline_wave11_ms": 98.2283,
+      "baseline_ratio_vs_c": 1.0811,
+      "w12g_c_ms": 88.9869,
+      "w12g_ms": 94.5123,
+      "w12g_ratio_vs_c": 1.0621,
+      "bend_speedup_vs_wave11": 1.0393,
+      "ratio_improvement": 1.0179
+    },
+    {
+      "name": "list",
+      "group": "tuned",
+      "baseline_c_ms": 0.2786,
+      "baseline_wave11_ms": 0.2819,
+      "baseline_ratio_vs_c": 1.0118,
+      "w12g_c_ms": 0.2637,
+      "w12g_ms": 0.2653,
+      "w12g_ratio_vs_c": 1.0061,
+      "bend_speedup_vs_wave11": 1.0626,
+      "ratio_improvement": 1.0057
+    },
+    {
+      "name": "expression",
+      "group": "tuned",
+      "baseline_c_ms": 6.6031,
+      "baseline_wave11_ms": 9.7278,
+      "baseline_ratio_vs_c": 1.4732,
+      "w12g_c_ms": 7.1927,
+      "w12g_ms": 9.433,
+      "w12g_ratio_vs_c": 1.3115,
+      "bend_speedup_vs_wave11": 1.0313,
+      "ratio_improvement": 1.1233
+    },
+    {
+      "name": "bst",
+      "group": "tuned",
+      "baseline_c_ms": 13.592,
+      "baseline_wave11_ms": 31.4315,
+      "baseline_ratio_vs_c": 2.3125,
+      "w12g_c_ms": 13.0823,
+      "w12g_ms": 31.4315,
+      "w12g_ratio_vs_c": 2.4026,
+      "bend_speedup_vs_wave11": 1.0,
+      "ratio_improvement": 0.9625
+    },
+    {
+      "name": "editdist",
+      "group": "tuned",
+      "baseline_c_ms": 10.3125,
+      "baseline_wave11_ms": 23.25,
+      "baseline_ratio_vs_c": 2.2545,
+      "w12g_c_ms": 11.7188,
+      "w12g_ms": 19.2857,
+      "w12g_ratio_vs_c": 1.6457,
+      "bend_speedup_vs_wave11": 1.2056,
+      "ratio_improvement": 1.3699
+    }
+  ],
+  "baseline_raw": {
+    "label": "wave11",
+    "api": "/home/ai/bend2_agy/selfhost/build/agy/wave11_unified/api.mjs",
+    "cpu": 7,
+    "runs": 5,
+    "geomean_vs_c": 1.3383,
+    "rows": [
+      {
+        "name": "histogram",
+        "group": "upstream",
+        "bend_ms": 41.8843,
+        "c_gcc10_ms": 22.1955,
+        "ratio_vs_c": 1.8871,
+        "compile": {
+          "ok": true,
+          "compile_ms": 7775.0,
+          "obj_bytes": 214216
+        },
+        "bend_run": {
+          "ok": true,
+          "samples_ms": [
+            41.673,
+            41.876,
+            41.884,
+            42.461,
+            41.974
+          ],
+          "ms": 41.8843
+        },
+        "c_run": {
+          "ok": true,
+          "samples_ms": [
+            22.457,
+            22.323,
+            22.195,
+            22.13,
+            22.116
+          ],
+          "ms": 22.1955
+        }
+      },
+      {
+        "name": "gameoflife",
+        "group": "upstream",
+        "bend_ms": 461.0017,
+        "c_gcc10_ms": 950.4193,
+        "ratio_vs_c": 0.4851,
+        "compile": {
+          "ok": true,
+          "compile_ms": 6569.0,
+          "obj_bytes": 62296
+        },
+        "bend_run": {
+          "ok": true,
+          "samples_ms": [
+            460.857,
+            461.002,
+            462.271,
+            460.204,
+            463.559
+          ],
+          "ms": 461.0017
+        },
+        "c_run": {
+          "ok": true,
+          "samples_ms": [
+            953.886,
+            949.796,
+            947.902,
+            950.419,
+            954.469
+          ],
+          "ms": 950.4193
+        }
+      },
+      {
+        "name": "nbody",
+        "group": "upstream",
+        "bend_ms": 98.2283,
+        "c_gcc10_ms": 90.8626,
+        "ratio_vs_c": 1.0811,
+        "compile": {
+          "ok": true,
+          "compile_ms": 28089.0,
+          "obj_bytes": 61160
+        },
+        "bend_run": {
+          "ok": true,
+          "samples_ms": [
+            98.228,
+            98.693,
+            98.187,
+            98.472,
+            98.161
+          ],
+          "ms": 98.2283
+        },
+        "c_run": {
+          "ok": true,
+          "samples_ms": [
+            90.963,
+            92.195,
+            90.449,
+            90.863,
+            90.783
+          ],
+          "ms": 90.8626
+        }
+      },
+      {
+        "name": "list",
+        "group": "tuned",
+        "bend_ms": 0.2819,
+        "c_gcc10_ms": 0.2786,
+        "ratio_vs_c": 1.0118,
+        "compile": {
+          "ok": true,
+          "compile_ms": 30315.1,
+          "obj_bytes": 63144
+        },
+        "bend_run": {
+          "ok": true,
+          "reps": 12000000,
+          "raw_samples_ms": [
+            34,
+            33,
+            33,
+            34,
+            34
+          ],
+          "raw_median_ms": 34.0,
+          "ms": 0.2819
+        },
+        "c_run": {
+          "ok": true,
+          "reps": 20000000,
+          "raw_samples_ms": [
+            56,
+            56,
+            56,
+            56,
+            56
+          ],
+          "raw_median_ms": 56.0,
+          "ms": 0.2786
+        }
+      },
+      {
+        "name": "expression",
+        "group": "tuned",
+        "bend_ms": 9.7278,
+        "c_gcc10_ms": 6.6031,
+        "ratio_vs_c": 1.4732,
+        "compile": {
+          "ok": true,
+          "compile_ms": 3364.0,
+          "obj_bytes": 62520
+        },
+        "bend_run": {
+          "ok": true,
+          "reps": 128000,
+          "raw_samples_ms": [
+            33,
+            32,
+            33,
+            33,
+            33
+          ],
+          "raw_median_ms": 33.0,
+          "ms": 9.7278
+        },
+        "c_run": {
+          "ok": true,
+          "reps": 320000,
+          "raw_samples_ms": [
+            56,
+            55,
+            56,
+            55,
+            56
+          ],
+          "raw_median_ms": 56.0,
+          "ms": 6.6031
+        }
+      },
+      {
+        "name": "bst",
+        "group": "tuned",
+        "bend_ms": 31.4315,
+        "c_gcc10_ms": 13.592,
+        "ratio_vs_c": 2.3125,
+        "compile": {
+          "ok": true,
+          "compile_ms": 4075.3,
+          "obj_bytes": 79944
+        },
+        "bend_run": {
+          "ok": true,
+          "reps": 32000,
+          "raw_samples_ms": [
+            37,
+            37,
+            37,
+            37,
+            37
+          ],
+          "raw_median_ms": 37.0,
+          "ms": 31.4315
+        },
+        "c_run": {
+          "ok": true,
+          "reps": 160000,
+          "raw_samples_ms": [
+            80,
+            81,
+            80,
+            80,
+            80
+          ],
+          "raw_median_ms": 80.0,
+          "ms": 13.592
+        }
+      },
+      {
+        "name": "editdist",
+        "group": "tuned",
+        "bend_ms": 23.25,
+        "c_gcc10_ms": 10.3125,
+        "ratio_vs_c": 2.2545,
+        "compile": {
+          "ok": true,
+          "compile_ms": 5517.0,
+          "obj_bytes": 111648
+        },
+        "bend_run": {
+          "ok": true,
+          "reps": 640,
+          "raw_samples_ms": [
+            61,
+            62,
+            62,
+            62,
+            62
+          ],
+          "raw_median_ms": 62.0,
+          "ms": 23.25
+        },
+        "c_run": {
+          "ok": true,
+          "reps": 1536,
+          "raw_samples_ms": [
+            66,
+            66,
+            66,
+            66,
+            66
+          ],
+          "raw_median_ms": 66.0,
+          "ms": 10.3125
+        }
+      }
+    ]
+  },
+  "w12g_raw": {
+    "label": "w12g",
+    "api": "/tmp/agy_w12g/api_w12g.mjs",
+    "cpu": 7,
+    "runs": 5,
+    "geomean_vs_c": 1.2644,
+    "rows": [
+      {
+        "name": "histogram",
+        "group": "upstream",
+        "bend_ms": 43.6544,
+        "c_gcc10_ms": 22.0131,
+        "ratio_vs_c": 1.9831,
+        "compile": {
+          "ok": true,
+          "compile_ms": 7020.8,
+          "obj_bytes": 214136
+        },
+        "bend_run": {
+          "ok": true,
+          "samples_ms": [
+            44.258,
+            43.654,
+            43.253,
+            42.901,
+            43.817
+          ],
+          "ms": 43.6544
+        },
+        "c_run": {
+          "ok": true,
+          "samples_ms": [
+            22.104,
+            22.013,
+            21.941,
+            22.008,
+            22.082
+          ],
+          "ms": 22.0131
+        }
+      },
+      {
+        "name": "gameoflife",
+        "group": "upstream",
+        "bend_ms": 436.3005,
+        "c_gcc10_ms": 928.1399,
+        "ratio_vs_c": 0.4701,
+        "compile": {
+          "ok": true,
+          "compile_ms": 5879.8,
+          "obj_bytes": 62288
+        },
+        "bend_run": {
+          "ok": true,
+          "samples_ms": [
+            434.308,
+            438.104,
+            436.301,
+            435.967,
+            441.133
+          ],
+          "ms": 436.3005
+        },
+        "c_run": {
+          "ok": true,
+          "samples_ms": [
+            921.968,
+            959.677,
+            923.281,
+            986.203,
+            928.14
+          ],
+          "ms": 928.1399
+        }
+      },
+      {
+        "name": "nbody",
+        "group": "upstream",
+        "bend_ms": 94.5123,
+        "c_gcc10_ms": 88.9869,
+        "ratio_vs_c": 1.0621,
+        "compile": {
+          "ok": true,
+          "compile_ms": 5128.7,
+          "obj_bytes": 60776
+        },
+        "bend_run": {
+          "ok": true,
+          "samples_ms": [
+            95.212,
+            93.786,
+            93.971,
+            94.512,
+            95.396
+          ],
+          "ms": 94.5123
+        },
+        "c_run": {
+          "ok": true,
+          "samples_ms": [
+            88.987,
+            88.704,
+            88.358,
+            89.405,
+            89.048
+          ],
+          "ms": 88.9869
+        }
+      },
+      {
+        "name": "list",
+        "group": "tuned",
+        "bend_ms": 0.2653,
+        "c_gcc10_ms": 0.2637,
+        "ratio_vs_c": 1.0061,
+        "compile": {
+          "ok": true,
+          "compile_ms": 3053.6,
+          "obj_bytes": 63128
+        },
+        "bend_run": {
+          "ok": true,
+          "reps": 12000000,
+          "raw_samples_ms": [
+            32,
+            32,
+            32,
+            32,
+            32
+          ],
+          "raw_median_ms": 32.0,
+          "ms": 0.2653
+        },
+        "c_run": {
+          "ok": true,
+          "reps": 20000000,
+          "raw_samples_ms": [
+            54,
+            53,
+            54,
+            53,
+            53
+          ],
+          "raw_median_ms": 53.0,
+          "ms": 0.2637
+        }
+      },
+      {
+        "name": "expression",
+        "group": "tuned",
+        "bend_ms": 9.433,
+        "c_gcc10_ms": 7.1927,
+        "ratio_vs_c": 1.3115,
+        "compile": {
+          "ok": true,
+          "compile_ms": 3121.7,
+          "obj_bytes": 62520
+        },
+        "bend_run": {
+          "ok": true,
+          "reps": 128000,
+          "raw_samples_ms": [
+            31,
+            32,
+            32,
+            31,
+            32
+          ],
+          "raw_median_ms": 32.0,
+          "ms": 9.433
+        },
+        "c_run": {
+          "ok": true,
+          "reps": 320000,
+          "raw_samples_ms": [
+            53,
+            54,
+            61,
+            73,
+            89
+          ],
+          "raw_median_ms": 61.0,
+          "ms": 7.1927
+        }
+      },
+      {
+        "name": "bst",
+        "group": "tuned",
+        "bend_ms": 31.4315,
+        "c_gcc10_ms": 13.0823,
+        "ratio_vs_c": 2.4026,
+        "compile": {
+          "ok": true,
+          "compile_ms": 3737.8,
+          "obj_bytes": 79936
+        },
+        "bend_run": {
+          "ok": true,
+          "reps": 32000,
+          "raw_samples_ms": [
+            37,
+            41,
+            37,
+            47,
+            37
+          ],
+          "raw_median_ms": 37.0,
+          "ms": 31.4315
+        },
+        "c_run": {
+          "ok": true,
+          "reps": 160000,
+          "raw_samples_ms": [
+            77,
+            77,
+            77,
+            78,
+            77
+          ],
+          "raw_median_ms": 77.0,
+          "ms": 13.0823
+        }
+      },
+      {
+        "name": "editdist",
+        "group": "tuned",
+        "bend_ms": 19.2857,
+        "c_gcc10_ms": 11.7188,
+        "ratio_vs_c": 1.6457,
+        "compile": {
+          "ok": true,
+          "compile_ms": 5118.9,
+          "obj_bytes": 111504
+        },
+        "bend_run": {
+          "ok": true,
+          "reps": 896,
+          "raw_samples_ms": [
+            72,
+            72,
+            72,
+            74,
+            72
+          ],
+          "raw_median_ms": 72.0,
+          "ms": 19.2857
+        },
+        "c_run": {
+          "ok": true,
+          "reps": 1536,
+          "raw_samples_ms": [
+            75,
+            64,
+            63,
+            76,
+            94
+          ],
+          "raw_median_ms": 75.0,
+          "ms": 11.7188
+        }
+      }
+    ]
+  }
+}

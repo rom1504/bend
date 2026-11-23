@@ -1,0 +1,1219 @@
+{
+  "binary": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+  "cpu": 6,
+  "m11": {
+    "module": "m11",
+    "cpu": 6,
+    "period_us": 8000,
+    "wall_ms": 31943.3,
+    "obj_bytes": 6165176,
+    "trace_stages_ms": {
+      "read": 110.0,
+      "prep": 1487.0,
+      "p86_plan": 6730.0,
+      "x198pw_plan": 11855.0,
+      "x187_elf": 2051.0
+    },
+    "trace_lines": [
+      "[bend-trace] start src=/tmp/agy_w13a/src/m11_exp.bend mode=x86-module-fast mod=m11 fid_base=61351",
+      "[bend-trace] stage=read ms=110ms",
+      "[bend-trace] stage=prep ms=1487ms",
+      "[bend-trace] stage=p86_plan ms=6730ms",
+      "[bend-trace] stage=x198pw_plan ms=11855ms segs=3549",
+      "[bend-trace] stage=x187_priv_done count=233 elapsed=20437ms",
+      "[bend-trace] stage=x187_pub done=2000/3549 elapsed=25096ms",
+      "[bend-trace] stage=x187_pub_done count=3549 elapsed=29741ms",
+      "[bend-trace] stage=x187_elf ms=2051ms total_ms=31917ms"
+    ],
+    "header": {
+      "exe": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+      "pid": 28,
+      "tid": 28,
+      "period_us": 8000,
+      "capacity": 800000,
+      "signal": 40,
+      "sampler_scope": "all_created_threads",
+      "max_threads": 32,
+      "thread_capacity": 25000,
+      "final_tid": 28,
+      "main_thread_cpu_ns": 31875748185,
+      "process_cpu_ns": 31885785724,
+      "sampled_thread_cpu_ns": 31885767841,
+      "wall_ns": 31918262772,
+      "threads_allocated": 2,
+      "threads_ready": 2,
+      "threads_ended": 0,
+      "thread_overflow": 0,
+      "thread_clock_failures": 0,
+      "timer_disarm_failures": 0,
+      "samples": 3984,
+      "dropped": 0,
+      "overruns": 0,
+      "handler_intact": 1
+    },
+    "quality": {
+      "scope": "all_created_threads",
+      "main_thread_cpu_fraction": 0.9996852033352139,
+      "sampled_thread_cpu_fraction": 0.9999994391544823,
+      "minimum_process_cpu_fraction": 0.95,
+      "minimum_samples": 500,
+      "enough_samples": true,
+      "thread_lifecycle_complete": true,
+      "near_complete_process_cpu_coverage": true,
+      "usable_for_process_cpu_attribution": true,
+      "limitations": [],
+      "zero_loss": true,
+      "handler_intact": true,
+      "main_thread_shutdown": true,
+      "expected_clock_periods": 3985.720980125,
+      "delivered_per_expected_period": 0.9995682135970928,
+      "delivery_plausible": true,
+      "resolved_sample_fraction": 0.9924698795180723,
+      "unknown_samples": 30,
+      "inferred_symbol_range_samples": 0,
+      "resolved_symbol_coverage_is_not_logical_attribution": true
+    },
+    "usable": true,
+    "zeroLoss": true,
+    "groups": [
+      {
+        "name": "generated_bend",
+        "samples": 2187,
+        "fraction": 0.5489457831325302,
+        "percent": 54.89457831325302,
+        "estimated_clean_cpu_seconds": 17.53513983433735
+      },
+      {
+        "name": "reclamation",
+        "samples": 716,
+        "fraction": 0.17971887550200802,
+        "percent": 17.9718875502008,
+        "estimated_clean_cpu_seconds": 5.740813955823293
+      },
+      {
+        "name": "ownership_and_products",
+        "samples": 558,
+        "fraction": 0.14006024096385541,
+        "percent": 14.006024096385541,
+        "estimated_clean_cpu_seconds": 4.4739862951807225
+      },
+      {
+        "name": "other",
+        "samples": 435,
+        "fraction": 0.1091867469879518,
+        "percent": 10.918674698795181,
+        "estimated_clean_cpu_seconds": 3.4877850150602407
+      },
+      {
+        "name": "scheduler",
+        "samples": 58,
+        "fraction": 0.014558232931726908,
+        "percent": 1.4558232931726909,
+        "estimated_clean_cpu_seconds": 0.46503800200803214
+      },
+      {
+        "name": "unresolved",
+        "samples": 30,
+        "fraction": 0.007530120481927711,
+        "percent": 0.7530120481927711,
+        "estimated_clean_cpu_seconds": 0.24053689759036145
+      }
+    ],
+    "categories": [
+      {
+        "name": "executable",
+        "samples": 3954,
+        "fraction": 0.9924698795180723,
+        "percent": 99.24698795180723,
+        "estimated_clean_cpu_seconds": 31.70276310240964
+      },
+      {
+        "name": "library_unresolved",
+        "samples": 30,
+        "fraction": 0.007530120481927711,
+        "percent": 0.7530120481927711,
+        "estimated_clean_cpu_seconds": 0.24053689759036145
+      }
+    ],
+    "libraries": [
+      {
+        "name": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+        "samples": 30,
+        "fraction": 0.007530120481927711,
+        "percent": 0.7530120481927711,
+        "estimated_clean_cpu_seconds": 0.24053689759036145
+      }
+    ],
+    "top_50_functions": [
+      {
+        "name": "term_drop",
+        "decoded": "term_drop",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 552,
+        "fraction": 0.13855421686746988,
+        "percent": 13.855421686746988,
+        "estimated_clean_cpu_seconds": 4.425878915662651
+      },
+      {
+        "name": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_83_116_114_105_110_103_46_111_114_100_101_114_46_103_111___sh_slow",
+        "decoded": "p113d_FID_$p128borrow.owned.String.order.go__sh_slow",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 375,
+        "fraction": 0.09412650602409639,
+        "percent": 9.41265060240964,
+        "estimated_clean_cpu_seconds": 3.0067112198795183
+      },
+      {
+        "name": "p125_rt_ctor2",
+        "decoded": "p125_rt_ctor2",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 345,
+        "fraction": 0.08659638554216867,
+        "percent": 8.659638554216867,
+        "estimated_clean_cpu_seconds": 2.7661743222891566
+      },
+      {
+        "name": "span_fade",
+        "decoded": "span_fade",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 164,
+        "fraction": 0.04116465863453815,
+        "percent": 4.116465863453815,
+        "estimated_clean_cpu_seconds": 1.3149350401606426
+      },
+      {
+        "name": "p111_rt_op",
+        "decoded": "p111_rt_op",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 106,
+        "fraction": 0.026606425702811246,
+        "percent": 2.6606425702811247,
+        "estimated_clean_cpu_seconds": 0.8498970381526105
+      },
+      {
+        "name": "p198_rfc_take2",
+        "decoded": "p198_rfc_take2",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 97,
+        "fraction": 0.024347389558232933,
+        "percent": 2.4347389558232932,
+        "estimated_clean_cpu_seconds": 0.777735968875502
+      },
+      {
+        "name": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_105_110_100_101_120_95_104_97_115_104___sh_slow",
+        "decoded": "p113d_FID_$p118borrow.read.index_hash__sh_slow",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 90,
+        "fraction": 0.022590361445783132,
+        "percent": 2.2590361445783134,
+        "estimated_clean_cpu_seconds": 0.7216106927710844
+      },
+      {
+        "name": "p111_rt_take",
+        "decoded": "p111_rt_take",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 73,
+        "fraction": 0.018323293172690762,
+        "percent": 1.8323293172690762,
+        "estimated_clean_cpu_seconds": 0.5853064508032129
+      },
+      {
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_97_112_112_101_110_100_",
+        "decoded": "p113d_FID_$direct.String.append",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 64,
+        "fraction": 0.01606425702811245,
+        "percent": 1.6064257028112447,
+        "estimated_clean_cpu_seconds": 0.5131453815261043
+      },
+      {
+        "name": "p118_rt_borrow_scalar_safe",
+        "decoded": "p118_rt_borrow_scalar_safe",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 61,
+        "fraction": 0.015311244979919678,
+        "percent": 1.5311244979919678,
+        "estimated_clean_cpu_seconds": 0.4890916917670683
+      },
+      {
+        "name": "work_loop.constprop.0",
+        "decoded": "work_loop.constprop.0",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 58,
+        "fraction": 0.014558232931726908,
+        "percent": 1.4558232931726909,
+        "estimated_clean_cpu_seconds": 0.46503800200803214
+      },
+      {
+        "name": "p111_rt_ctor",
+        "decoded": "p111_rt_ctor",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 50,
+        "fraction": 0.012550200803212851,
+        "percent": 1.2550200803212852,
+        "estimated_clean_cpu_seconds": 0.4008948293172691
+      },
+      {
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_",
+        "decoded": "p113d_FID_$direct.index_find",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 45,
+        "fraction": 0.011295180722891566,
+        "percent": 1.1295180722891567,
+        "estimated_clean_cpu_seconds": 0.3608053463855422
+      },
+      {
+        "name": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_83_116_114_105_110_103_46_111_114_100_101_114_46_103_111___sh_slow",
+        "decoded": "p113d_FID_$p118borrow.read.String.order.go__sh_slow",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 43,
+        "fraction": 0.010793172690763053,
+        "percent": 1.0793172690763053,
+        "estimated_clean_cpu_seconds": 0.3447695532128514
+      },
+      {
+        "name": "ctr_take",
+        "decoded": "ctr_take",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 38,
+        "fraction": 0.009538152610441768,
+        "percent": 0.9538152610441768,
+        "estimated_clean_cpu_seconds": 0.30468007028112454
+      },
+      {
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_101_113___sh_slow",
+        "decoded": "p113d_FID_$direct.String.eq__sh_slow",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 35,
+        "fraction": 0.008785140562248996,
+        "percent": 0.8785140562248996,
+        "estimated_clean_cpu_seconds": 0.2806263805220884
+      },
+      {
+        "name": "p111_FID_36_100_105_114_101_99_116_46_112_49_51_49_105_95_105_110_115_101_114_116_",
+        "decoded": "p111_FID_$direct.p131i_insert",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 33,
+        "fraction": 0.008283132530120483,
+        "percent": 0.8283132530120483,
+        "estimated_clean_cpu_seconds": 0.2645905873493976
+      },
+      {
+        "name": "[library_unresolved]",
+        "decoded": "[library_unresolved]",
+        "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+        "samples": 30,
+        "fraction": 0.007530120481927711,
+        "percent": 0.7530120481927711,
+        "estimated_clean_cpu_seconds": 0.24053689759036145
+      },
+      {
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_111_114_100_101_114_46_103_111___sh_slow",
+        "decoded": "p113d_FID_$direct.String.order.go__sh_slow",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 27,
+        "fraction": 0.00677710843373494,
+        "percent": 0.677710843373494,
+        "estimated_clean_cpu_seconds": 0.2164832078313253
+      },
+      {
+        "name": "p111_FID_36_100_105_114_101_99_116_46_85_51_50_46_115_104_111_119_46_102_105_110_",
+        "decoded": "p111_FID_$direct.U32.show.fin",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 24,
+        "fraction": 0.006024096385542169,
+        "percent": 0.6024096385542169,
+        "estimated_clean_cpu_seconds": 0.19242951807228917
+      },
+      {
+        "name": "p198_rfc_take4",
+        "decoded": "p198_rfc_take4",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 20,
+        "fraction": 0.0050200803212851405,
+        "percent": 0.5020080321285141,
+        "estimated_clean_cpu_seconds": 0.16035793172690763
+      },
+      {
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_110_116_95_114_101_118_101_114_115_101_",
+        "decoded": "p113d_FID_$direct.nt_reverse",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 19,
+        "fraction": 0.004769076305220884,
+        "percent": 0.4769076305220884,
+        "estimated_clean_cpu_seconds": 0.15234003514056227
+      },
+      {
+        "name": "p111_FID_36_100_105_114_101_99_116_46_120_49_56_55_95_98_117_105_108_100_95_112_97_114_115_101_100_",
+        "decoded": "p111_FID_$direct.x187_build_parsed",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 19,
+        "fraction": 0.004769076305220884,
+        "percent": 0.4769076305220884,
+        "estimated_clean_cpu_seconds": 0.15234003514056227
+      },
+      {
+        "name": "p111_rt_return",
+        "decoded": "p111_rt_return",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 19,
+        "fraction": 0.004769076305220884,
+        "percent": 0.4769076305220884,
+        "estimated_clean_cpu_seconds": 0.15234003514056227
+      },
+      {
+        "name": "p125_rt_take2",
+        "decoded": "p125_rt_take2",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 19,
+        "fraction": 0.004769076305220884,
+        "percent": 0.4769076305220884,
+        "estimated_clean_cpu_seconds": 0.15234003514056227
+      },
+      {
+        "name": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_83_116_114_105_110_103_46_101_113___sh_slow",
+        "decoded": "p113d_FID_$p128borrow.owned.String.eq__sh_slow",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 18,
+        "fraction": 0.004518072289156626,
+        "percent": 0.4518072289156626,
+        "estimated_clean_cpu_seconds": 0.14432213855421686
+      },
+      {
+        "name": "p111_FID_36_100_105_114_101_99_116_46_119_55_99_95_102_97_115_116_95_105_110_115_116_95_99_",
+        "decoded": "p111_FID_$direct.w7c_fast_inst_c",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 18,
+        "fraction": 0.004518072289156626,
+        "percent": 0.4518072289156626,
+        "estimated_clean_cpu_seconds": 0.14432213855421686
+      },
+      {
+        "name": "p125_rt_ctor4",
+        "decoded": "p125_rt_ctor4",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 18,
+        "fraction": 0.004518072289156626,
+        "percent": 0.4518072289156626,
+        "estimated_clean_cpu_seconds": 0.14432213855421686
+      },
+      {
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_100_110_",
+        "decoded": "p113d_FID_$direct.dn",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 17,
+        "fraction": 0.00426706827309237,
+        "percent": 0.426706827309237,
+        "estimated_clean_cpu_seconds": 0.1363042419678715
+      },
+      {
+        "name": "p111_FID_36_100_105_114_101_99_116_46_119_53_99_51_95_102_105_110_100_",
+        "decoded": "p111_FID_$direct.w5c3_find",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 17,
+        "fraction": 0.00426706827309237,
+        "percent": 0.426706827309237,
+        "estimated_clean_cpu_seconds": 0.1363042419678715
+      },
+      {
+        "name": "p111_FID_36_100_105_114_101_99_116_46_110_117_95_104_97_115_",
+        "decoded": "p111_FID_$direct.nu_has",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 16,
+        "fraction": 0.004016064257028112,
+        "percent": 0.4016064257028112,
+        "estimated_clean_cpu_seconds": 0.12828634538152608
+      },
+      {
+        "name": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_57_56_95_116_97_103_95_101_113___sh_slow",
+        "decoded": "p113d_FID_$p128borrow.owned.p98_tag_eq__sh_slow",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 15,
+        "fraction": 0.0037650602409638554,
+        "percent": 0.37650602409638556,
+        "estimated_clean_cpu_seconds": 0.12026844879518073
+      },
+      {
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_97_103_121_95_115_116_114_95_101_113___sh_slow",
+        "decoded": "p113d_FID_$direct.agy_str_eq__sh_slow",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 15,
+        "fraction": 0.0037650602409638554,
+        "percent": 0.37650602409638556,
+        "estimated_clean_cpu_seconds": 0.12026844879518073
+      },
+      {
+        "name": "p111_set_regs",
+        "decoded": "p111_set_regs",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 15,
+        "fraction": 0.0037650602409638554,
+        "percent": 0.37650602409638556,
+        "estimated_clean_cpu_seconds": 0.12026844879518073
+      },
+      {
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_107_115_",
+        "decoded": "p113d_FID_$direct.ks",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 14,
+        "fraction": 0.0035140562248995983,
+        "percent": 0.3514056224899598,
+        "estimated_clean_cpu_seconds": 0.11225055220883534
+      },
+      {
+        "name": "p111_FID_36_100_105_114_101_99_116_46_85_51_50_46_115_104_111_119_46_103_111_",
+        "decoded": "p111_FID_$direct.U32.show.go",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 14,
+        "fraction": 0.0035140562248995983,
+        "percent": 0.3514056224899598,
+        "estimated_clean_cpu_seconds": 0.11225055220883534
+      },
+      {
+        "name": "p111_FID_36_100_105_114_101_99_116_46_119_53_99_50_95_110_117_95_104_97_115_95_108_114_",
+        "decoded": "p111_FID_$direct.w5c2_nu_has_lr",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 14,
+        "fraction": 0.0035140562248995983,
+        "percent": 0.3514056224899598,
+        "estimated_clean_cpu_seconds": 0.11225055220883534
+      },
+      {
+        "name": "p125_rt_ctor3",
+        "decoded": "p125_rt_ctor3",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 14,
+        "fraction": 0.0035140562248995983,
+        "percent": 0.3514056224899598,
+        "estimated_clean_cpu_seconds": 0.11225055220883534
+      },
+      {
+        "name": "p198_rfc_take3",
+        "decoded": "p198_rfc_take3",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 13,
+        "fraction": 0.003263052208835341,
+        "percent": 0.32630522088353414,
+        "estimated_clean_cpu_seconds": 0.10423265562248996
+      },
+      {
+        "name": "heap_alloc_miss",
+        "decoded": "heap_alloc_miss",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 12,
+        "fraction": 0.0030120481927710845,
+        "percent": 0.30120481927710846,
+        "estimated_clean_cpu_seconds": 0.09621475903614458
+      },
+      {
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_112_49_49_49_118_95_110_97_109_101_95_99_104_97_114_115_",
+        "decoded": "p113d_FID_$direct.p111v_name_chars",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 12,
+        "fraction": 0.0030120481927710845,
+        "percent": 0.30120481927710846,
+        "estimated_clean_cpu_seconds": 0.09621475903614458
+      },
+      {
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_120_49_56_55_95_98_117_105_108_100_95_109_101_115_115_97_103_101_",
+        "decoded": "p113d_FID_$direct.x187_build_message",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 12,
+        "fraction": 0.0030120481927710845,
+        "percent": 0.30120481927710846,
+        "estimated_clean_cpu_seconds": 0.09621475903614458
+      },
+      {
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_112_49_51_48_109_95_119_111_114_100_",
+        "decoded": "p113d_FID_$direct.p130m_word",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 12,
+        "fraction": 0.0030120481927710845,
+        "percent": 0.30120481927710846,
+        "estimated_clean_cpu_seconds": 0.09621475903614458
+      },
+      {
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_100_107_",
+        "decoded": "p113d_FID_$direct.dk",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 12,
+        "fraction": 0.0030120481927710845,
+        "percent": 0.30120481927710846,
+        "estimated_clean_cpu_seconds": 0.09621475903614458
+      },
+      {
+        "name": "p198_rfc_take1",
+        "decoded": "p198_rfc_take1",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 12,
+        "fraction": 0.0030120481927710845,
+        "percent": 0.30120481927710846,
+        "estimated_clean_cpu_seconds": 0.09621475903614458
+      },
+      {
+        "name": "p111_FID_36_100_105_114_101_99_116_46_119_53_99_95_102_105_110_100_95_108_114_",
+        "decoded": "p111_FID_$direct.w5c_find_lr",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 11,
+        "fraction": 0.0027610441767068274,
+        "percent": 0.2761044176706827,
+        "estimated_clean_cpu_seconds": 0.0881968624497992
+      },
+      {
+        "name": "p111_FID_36_100_105_114_101_99_116_46_120_49_56_56_95_98_117_105_108_100_95_105_110_115_116_114_117_99_116_105_111_110_",
+        "decoded": "p111_FID_$direct.x188_build_instruction",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 11,
+        "fraction": 0.0027610441767068274,
+        "percent": 0.2761044176706827,
+        "estimated_clean_cpu_seconds": 0.0881968624497992
+      },
+      {
+        "name": "p111_rt_sink",
+        "decoded": "p111_rt_sink",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 11,
+        "fraction": 0.0027610441767068274,
+        "percent": 0.2761044176706827,
+        "estimated_clean_cpu_seconds": 0.0881968624497992
+      },
+      {
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_110_117_109_98_101_114_95_114_101_97_100_",
+        "decoded": "p113d_FID_$direct.p88_number_read",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 10,
+        "fraction": 0.0025100401606425703,
+        "percent": 0.25100401606425704,
+        "estimated_clean_cpu_seconds": 0.08017896586345381
+      },
+      {
+        "name": "p111_FID_36_100_105_114_101_99_116_46_112_56_56_95_110_117_109_98_101_114_",
+        "decoded": "p111_FID_$direct.p88_number",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 10,
+        "fraction": 0.0025100401606425703,
+        "percent": 0.25100401606425704,
+        "estimated_clean_cpu_seconds": 0.08017896586345381
+      }
+    ]
+  },
+  "m05": {
+    "module": "m05",
+    "cpu": 6,
+    "period_us": 8000,
+    "wall_ms": 108703.7,
+    "obj_bytes": 9977384,
+    "trace_stages_ms": {
+      "read": 58.0,
+      "prep": 729.0,
+      "p86_plan": 38994.0,
+      "x198pw_plan": 48846.0,
+      "x187_elf": 2551.0
+    },
+    "trace_lines": [
+      "[bend-trace] start src=/tmp/agy_w13a/src/m05_exp.bend mode=x86-module-fast mod=m05 fid_base=27540",
+      "[bend-trace] stage=read ms=58ms",
+      "[bend-trace] stage=prep ms=729ms",
+      "[bend-trace] stage=p86_plan ms=38994ms",
+      "[bend-trace] stage=x198pw_plan ms=48846ms segs=5957",
+      "[bend-trace] stage=x187_priv done=500 elapsed=90346ms",
+      "[bend-trace] stage=x187_priv_done count=544 elapsed=90895ms",
+      "[bend-trace] stage=x187_pub done=2000/5957 elapsed=96031ms",
+      "[bend-trace] stage=x187_pub done=4000/5957 elapsed=101995ms",
+      "[bend-trace] stage=x187_pub_done count=5957 elapsed=105867ms",
+      "[bend-trace] stage=x187_elf ms=2551ms total_ms=108646ms"
+    ],
+    "header": {
+      "exe": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+      "pid": 49,
+      "tid": 49,
+      "period_us": 8000,
+      "capacity": 800000,
+      "signal": 40,
+      "sampler_scope": "all_created_threads",
+      "max_threads": 32,
+      "thread_capacity": 25000,
+      "final_tid": 49,
+      "main_thread_cpu_ns": 108491117518,
+      "process_cpu_ns": 108501365783,
+      "sampled_thread_cpu_ns": 108501348071,
+      "wall_ns": 108647656550,
+      "threads_allocated": 2,
+      "threads_ready": 2,
+      "threads_ended": 0,
+      "thread_overflow": 0,
+      "thread_clock_failures": 0,
+      "timer_disarm_failures": 0,
+      "samples": 13561,
+      "dropped": 0,
+      "overruns": 0,
+      "handler_intact": 1
+    },
+    "quality": {
+      "scope": "all_created_threads",
+      "main_thread_cpu_fraction": 0.9999055471336601,
+      "sampled_thread_cpu_fraction": 0.9999998367578152,
+      "minimum_process_cpu_fraction": 0.95,
+      "minimum_samples": 500,
+      "enough_samples": true,
+      "thread_lifecycle_complete": true,
+      "near_complete_process_cpu_coverage": true,
+      "usable_for_process_cpu_attribution": true,
+      "limitations": [],
+      "zero_loss": true,
+      "handler_intact": true,
+      "main_thread_shutdown": true,
+      "expected_clock_periods": 13562.668508875,
+      "delivered_per_expected_period": 0.9998769778326508,
+      "delivery_plausible": true,
+      "resolved_sample_fraction": 0.9902662045571861,
+      "unknown_samples": 132,
+      "inferred_symbol_range_samples": 0,
+      "resolved_symbol_coverage_is_not_logical_attribution": true
+    },
+    "usable": true,
+    "zeroLoss": true,
+    "groups": [
+      {
+        "name": "generated_bend",
+        "samples": 7885,
+        "fraction": 0.5814467959590001,
+        "percent": 58.14467959590001,
+        "estimated_clean_cpu_seconds": 63.20541807388835
+      },
+      {
+        "name": "reclamation",
+        "samples": 2252,
+        "fraction": 0.16606444952437135,
+        "percent": 16.606444952437137,
+        "estimated_clean_cpu_seconds": 18.051820101762406
+      },
+      {
+        "name": "ownership_and_products",
+        "samples": 1779,
+        "fraction": 0.13118501585428805,
+        "percent": 13.118501585428804,
+        "estimated_clean_cpu_seconds": 14.260296607919772
+      },
+      {
+        "name": "other",
+        "samples": 1295,
+        "fraction": 0.09549443256397021,
+        "percent": 9.549443256397021,
+        "estimated_clean_cpu_seconds": 10.380598149104047
+      },
+      {
+        "name": "scheduler",
+        "samples": 218,
+        "fraction": 0.016075510655556374,
+        "percent": 1.6075510655556373,
+        "estimated_clean_cpu_seconds": 1.7474674876484033
+      },
+      {
+        "name": "unresolved",
+        "samples": 132,
+        "fraction": 0.009733795442813952,
+        "percent": 0.9733795442813952,
+        "estimated_clean_cpu_seconds": 1.058099579677015
+      }
+    ],
+    "categories": [
+      {
+        "name": "executable",
+        "samples": 13428,
+        "fraction": 0.9901924636826193,
+        "percent": 99.01924636826193,
+        "estimated_clean_cpu_seconds": 107.63758451441633
+      },
+      {
+        "name": "library_unresolved",
+        "samples": 129,
+        "fraction": 0.009512572819113635,
+        "percent": 0.9512572819113635,
+        "estimated_clean_cpu_seconds": 1.0340518619570829
+      },
+      {
+        "name": "executable_unresolved",
+        "samples": 3,
+        "fraction": 0.0002212226237003171,
+        "percent": 0.02212226237003171,
+        "estimated_clean_cpu_seconds": 0.02404771771993216
+      },
+      {
+        "name": "library",
+        "samples": 1,
+        "fraction": 7.374087456677236e-05,
+        "percent": 0.0073740874566772365,
+        "estimated_clean_cpu_seconds": 0.008015905906644053
+      }
+    ],
+    "libraries": [
+      {
+        "name": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+        "samples": 129,
+        "fraction": 0.009512572819113635,
+        "percent": 0.9512572819113635,
+        "estimated_clean_cpu_seconds": 1.0340518619570829
+      },
+      {
+        "name": "/usr/lib/x86_64-linux-gnu/libpthread-2.31.so",
+        "samples": 1,
+        "fraction": 7.374087456677236e-05,
+        "percent": 0.0073740874566772365,
+        "estimated_clean_cpu_seconds": 0.008015905906644053
+      }
+    ],
+    "top_50_functions": [
+      {
+        "name": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_83_116_114_105_110_103_46_111_114_100_101_114_46_103_111___sh_slow",
+        "decoded": "p113d_FID_$p128borrow.owned.String.order.go__sh_slow",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 1598,
+        "fraction": 0.11783791755770223,
+        "percent": 11.783791755770224,
+        "estimated_clean_cpu_seconds": 12.809417638817196
+      },
+      {
+        "name": "term_drop",
+        "decoded": "term_drop",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 1571,
+        "fraction": 0.11584691394439937,
+        "percent": 11.584691394439938,
+        "estimated_clean_cpu_seconds": 12.592988179337805
+      },
+      {
+        "name": "p125_rt_ctor2",
+        "decoded": "p125_rt_ctor2",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 982,
+        "fraction": 0.07241353882457045,
+        "percent": 7.241353882457045,
+        "estimated_clean_cpu_seconds": 7.871619600324459
+      },
+      {
+        "name": "span_fade",
+        "decoded": "span_fade",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 681,
+        "fraction": 0.05021753557997198,
+        "percent": 5.021753557997198,
+        "estimated_clean_cpu_seconds": 5.4588319224246
+      },
+      {
+        "name": "p111_rt_take",
+        "decoded": "p111_rt_take",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 408,
+        "fraction": 0.030086276823243125,
+        "percent": 3.0086276823243123,
+        "estimated_clean_cpu_seconds": 3.2704896099107734
+      },
+      {
+        "name": "p111_rt_op",
+        "decoded": "p111_rt_op",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 390,
+        "fraction": 0.028758941081041222,
+        "percent": 2.8758941081041223,
+        "estimated_clean_cpu_seconds": 3.1262033035911805
+      },
+      {
+        "name": "p118_rt_borrow_scalar_safe",
+        "decoded": "p118_rt_borrow_scalar_safe",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 306,
+        "fraction": 0.02256470761743234,
+        "percent": 2.256470761743234,
+        "estimated_clean_cpu_seconds": 2.45286720743308
+      },
+      {
+        "name": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_83_116_114_105_110_103_46_111_114_100_101_114_46_103_111___sh_slow",
+        "decoded": "p113d_FID_$p118borrow.read.String.order.go__sh_slow",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 275,
+        "fraction": 0.0202787405058624,
+        "percent": 2.0278740505862403,
+        "estimated_clean_cpu_seconds": 2.2043741243271144
+      },
+      {
+        "name": "work_loop.constprop.0",
+        "decoded": "work_loop.constprop.0",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 218,
+        "fraction": 0.016075510655556374,
+        "percent": 1.6075510655556373,
+        "estimated_clean_cpu_seconds": 1.7474674876484033
+      },
+      {
+        "name": "p198_rfc_take2",
+        "decoded": "p198_rfc_take2",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 212,
+        "fraction": 0.01563306540815574,
+        "percent": 1.563306540815574,
+        "estimated_clean_cpu_seconds": 1.6993720522085392
+      },
+      {
+        "name": "p111_rt_ctor",
+        "decoded": "p111_rt_ctor",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 200,
+        "fraction": 0.014748174913354473,
+        "percent": 1.4748174913354473,
+        "estimated_clean_cpu_seconds": 1.6031811813288106
+      },
+      {
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_105_110_100_101_120_95_102_105_110_100_",
+        "decoded": "p113d_FID_$direct.index_find",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 187,
+        "fraction": 0.013789543543986432,
+        "percent": 1.3789543543986431,
+        "estimated_clean_cpu_seconds": 1.4989744045424378
+      },
+      {
+        "name": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_105_110_100_101_120_95_104_97_115_104___sh_slow",
+        "decoded": "p113d_FID_$p118borrow.read.index_hash__sh_slow",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 185,
+        "fraction": 0.013642061794852887,
+        "percent": 1.3642061794852887,
+        "estimated_clean_cpu_seconds": 1.4829425927291497
+      },
+      {
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_111_114_100_101_114_46_103_111___sh_slow",
+        "decoded": "p113d_FID_$direct.String.order.go__sh_slow",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 141,
+        "fraction": 0.010397463313914904,
+        "percent": 1.0397463313914903,
+        "estimated_clean_cpu_seconds": 1.1302427328368114
+      },
+      {
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_110_98_95_99_111_110_116_97_105_110_115_",
+        "decoded": "p113d_FID_$direct.nb_contains",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 138,
+        "fraction": 0.010176240690214586,
+        "percent": 1.0176240690214586,
+        "estimated_clean_cpu_seconds": 1.1061950151168793
+      },
+      {
+        "name": "[library_unresolved]",
+        "decoded": "[library_unresolved]",
+        "object": "/usr/lib/x86_64-linux-gnu/libc-2.31.so",
+        "samples": 129,
+        "fraction": 0.009512572819113635,
+        "percent": 0.9512572819113635,
+        "estimated_clean_cpu_seconds": 1.0340518619570829
+      },
+      {
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_101_113___sh_slow",
+        "decoded": "p113d_FID_$direct.String.eq__sh_slow",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 116,
+        "fraction": 0.008553941449745594,
+        "percent": 0.8553941449745593,
+        "estimated_clean_cpu_seconds": 0.9298450851707101
+      },
+      {
+        "name": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_112_57_56_95_116_97_103_95_101_113___sh_slow",
+        "decoded": "p113d_FID_$p128borrow.owned.p98_tag_eq__sh_slow",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 108,
+        "fraction": 0.007964014453211415,
+        "percent": 0.7964014453211414,
+        "estimated_clean_cpu_seconds": 0.8657178379175576
+      },
+      {
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_97_112_112_101_110_100_",
+        "decoded": "p113d_FID_$direct.String.append",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 105,
+        "fraction": 0.0077427918295110984,
+        "percent": 0.7742791829511099,
+        "estimated_clean_cpu_seconds": 0.8416701201976255
+      },
+      {
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_107_115_",
+        "decoded": "p113d_FID_$direct.ks",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 85,
+        "fraction": 0.006267974338175651,
+        "percent": 0.626797433817565,
+        "estimated_clean_cpu_seconds": 0.6813520020647444
+      },
+      {
+        "name": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_83_116_114_105_110_103_46_101_113___sh_slow",
+        "decoded": "p113d_FID_$p128borrow.owned.String.eq__sh_slow",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 82,
+        "fraction": 0.0060467517144753334,
+        "percent": 0.6046751714475334,
+        "estimated_clean_cpu_seconds": 0.6573042843448123
+      },
+      {
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_112_56_56_95_115_116_114_105_110_103_95_101_113___sh_slow",
+        "decoded": "p113d_FID_$direct.p88_string_eq__sh_slow",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 82,
+        "fraction": 0.0060467517144753334,
+        "percent": 0.6046751714475334,
+        "estimated_clean_cpu_seconds": 0.6573042843448123
+      },
+      {
+        "name": "ctr_take",
+        "decoded": "ctr_take",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 66,
+        "fraction": 0.004866897721406976,
+        "percent": 0.4866897721406976,
+        "estimated_clean_cpu_seconds": 0.5290497898385075
+      },
+      {
+        "name": "p111_rt_sink",
+        "decoded": "p111_rt_sink",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 59,
+        "fraction": 0.004350711599439569,
+        "percent": 0.43507115994395695,
+        "estimated_clean_cpu_seconds": 0.4729384484919991
+      },
+      {
+        "name": "p125_rt_take2",
+        "decoded": "p125_rt_take2",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 56,
+        "fraction": 0.004129488975739252,
+        "percent": 0.4129488975739252,
+        "estimated_clean_cpu_seconds": 0.4488907307720669
+      },
+      {
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_100_110_",
+        "decoded": "p113d_FID_$direct.dn",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 55,
+        "fraction": 0.00405574810117248,
+        "percent": 0.405574810117248,
+        "estimated_clean_cpu_seconds": 0.4408748248654229
+      },
+      {
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_110_116_95_114_101_118_101_114_115_101_",
+        "decoded": "p113d_FID_$direct.nt_reverse",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 47,
+        "fraction": 0.003465821104638301,
+        "percent": 0.3465821104638301,
+        "estimated_clean_cpu_seconds": 0.37674757761227046
+      },
+      {
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_110_109_",
+        "decoded": "p113d_FID_$direct.nm",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 47,
+        "fraction": 0.003465821104638301,
+        "percent": 0.3465821104638301,
+        "estimated_clean_cpu_seconds": 0.37674757761227046
+      },
+      {
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_100_107_",
+        "decoded": "p113d_FID_$direct.dk",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 47,
+        "fraction": 0.003465821104638301,
+        "percent": 0.3465821104638301,
+        "estimated_clean_cpu_seconds": 0.37674757761227046
+      },
+      {
+        "name": "p111_rt_return",
+        "decoded": "p111_rt_return",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 47,
+        "fraction": 0.003465821104638301,
+        "percent": 0.3465821104638301,
+        "estimated_clean_cpu_seconds": 0.37674757761227046
+      },
+      {
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_112_57_56_95_116_97_103_95_101_113___sh_slow",
+        "decoded": "p113d_FID_$direct.p98_tag_eq__sh_slow",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 46,
+        "fraction": 0.0033920802300715287,
+        "percent": 0.33920802300715286,
+        "estimated_clean_cpu_seconds": 0.36873167170562643
+      },
+      {
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_66_111_111_108_46_97_110_100_",
+        "decoded": "p113d_FID_$direct.Bool.and",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 42,
+        "fraction": 0.003097116731804439,
+        "percent": 0.3097116731804439,
+        "estimated_clean_cpu_seconds": 0.3366680480790502
+      },
+      {
+        "name": "p198_rfc_take4",
+        "decoded": "p198_rfc_take4",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 42,
+        "fraction": 0.003097116731804439,
+        "percent": 0.3097116731804439,
+        "estimated_clean_cpu_seconds": 0.3366680480790502
+      },
+      {
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_119_53_95_105_100_120_95_98_117_99_107_101_116_95_105_102_",
+        "decoded": "p113d_FID_$direct.w5_idx_bucket_if",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 39,
+        "fraction": 0.002875894108104122,
+        "percent": 0.28758941081041217,
+        "estimated_clean_cpu_seconds": 0.312620330359118
+      },
+      {
+        "name": "p111_set_regs",
+        "decoded": "p111_set_regs",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 39,
+        "fraction": 0.002875894108104122,
+        "percent": 0.28758941081041217,
+        "estimated_clean_cpu_seconds": 0.312620330359118
+      },
+      {
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_101_113_",
+        "decoded": "p113d_FID_$direct.String.eq",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 38,
+        "fraction": 0.0028021532335373496,
+        "percent": 0.28021532335373495,
+        "estimated_clean_cpu_seconds": 0.304604424452474
+      },
+      {
+        "name": "p111_FID_36_100_105_114_101_99_116_46_119_53_99_51_95_102_105_110_100_",
+        "decoded": "p111_FID_$direct.w5c3_find",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 38,
+        "fraction": 0.0028021532335373496,
+        "percent": 0.28021532335373495,
+        "estimated_clean_cpu_seconds": 0.304604424452474
+      },
+      {
+        "name": "p111_FID_36_100_105_114_101_99_116_46_119_55_99_95_102_97_115_116_95_105_110_115_116_95_99_",
+        "decoded": "p111_FID_$direct.w7c_fast_inst_c",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 38,
+        "fraction": 0.0028021532335373496,
+        "percent": 0.28021532335373495,
+        "estimated_clean_cpu_seconds": 0.304604424452474
+      },
+      {
+        "name": "p111_FID_36_112_49_49_49_46_107_46_52_53_50_51_49_56_",
+        "decoded": "p111_FID_$p111.k.452318",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 37,
+        "fraction": 0.0027284123589705776,
+        "percent": 0.2728412358970578,
+        "estimated_clean_cpu_seconds": 0.29658851854582996
+      },
+      {
+        "name": "p113d_FID_36_112_49_49_56_98_111_114_114_111_119_46_114_101_97_100_46_112_49_51_49_117_95_109_97_120_95_108_111_111_112_",
+        "decoded": "p113d_FID_$p118borrow.read.p131u_max_loop",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 36,
+        "fraction": 0.002654671484403805,
+        "percent": 0.2654671484403805,
+        "estimated_clean_cpu_seconds": 0.28857261263918593
+      },
+      {
+        "name": "p111_FID_36_100_105_114_101_99_116_46_119_55_99_95_115_117_98_115_116_95_103_111_",
+        "decoded": "p111_FID_$direct.w7c_subst_go",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 36,
+        "fraction": 0.002654671484403805,
+        "percent": 0.2654671484403805,
+        "estimated_clean_cpu_seconds": 0.28857261263918593
+      },
+      {
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_119_57_95_112_105_99_107_95_107_100_101_102_",
+        "decoded": "p113d_FID_$direct.w9_pick_kdef",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 35,
+        "fraction": 0.002580930609837033,
+        "percent": 0.25809306098370327,
+        "estimated_clean_cpu_seconds": 0.28055670673254185
+      },
+      {
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_97_103_121_95_115_116_114_95_101_113___sh_slow",
+        "decoded": "p113d_FID_$direct.agy_str_eq__sh_slow",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 35,
+        "fraction": 0.002580930609837033,
+        "percent": 0.25809306098370327,
+        "estimated_clean_cpu_seconds": 0.28055670673254185
+      },
+      {
+        "name": "p111_FID_36_100_105_114_101_99_116_46_112_49_51_49_105_95_105_110_115_101_114_116_",
+        "decoded": "p111_FID_$direct.p131i_insert",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 35,
+        "fraction": 0.002580930609837033,
+        "percent": 0.25809306098370327,
+        "estimated_clean_cpu_seconds": 0.28055670673254185
+      },
+      {
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_83_116_114_105_110_103_46_111_114_100_101_114_46_103_111_",
+        "decoded": "p113d_FID_$direct.String.order.go",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 32,
+        "fraction": 0.0023597079861367156,
+        "percent": 0.23597079861367157,
+        "estimated_clean_cpu_seconds": 0.2565089890126097
+      },
+      {
+        "name": "p111_FID_36_100_105_114_101_99_116_46_119_55_99_95_115_117_98_115_116_95_118_97_114_",
+        "decoded": "p111_FID_$direct.w7c_subst_var",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 31,
+        "fraction": 0.0022859671115699432,
+        "percent": 0.22859671115699431,
+        "estimated_clean_cpu_seconds": 0.24849308310596563
+      },
+      {
+        "name": "p111_FID_36_100_105_114_101_99_116_46_120_49_56_55_95_98_117_105_108_100_95_112_97_114_115_101_100_",
+        "decoded": "p111_FID_$direct.x187_build_parsed",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 30,
+        "fraction": 0.002212226237003171,
+        "percent": 0.2212226237003171,
+        "estimated_clean_cpu_seconds": 0.24047717719932157
+      },
+      {
+        "name": "p113d_FID_36_112_49_50_56_98_111_114_114_111_119_46_111_119_110_101_100_46_83_116_114_105_110_103_46_101_113_",
+        "decoded": "p113d_FID_$p128borrow.owned.String.eq",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 29,
+        "fraction": 0.0021384853624363985,
+        "percent": 0.21384853624363984,
+        "estimated_clean_cpu_seconds": 0.23246127129267752
+      },
+      {
+        "name": "p113d_FID_36_100_105_114_101_99_116_46_100_99_",
+        "decoded": "p113d_FID_$direct.dc",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 28,
+        "fraction": 0.002064744487869626,
+        "percent": 0.2064744487869626,
+        "estimated_clean_cpu_seconds": 0.22444536538603346
+      },
+      {
+        "name": "p111_FID_36_112_49_49_49_46_107_46_51_49_54_49_51_",
+        "decoded": "p111_FID_$p111.k.31613",
+        "object": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+        "samples": 27,
+        "fraction": 0.0019910036133028537,
+        "percent": 0.19910036133028536,
+        "estimated_clean_cpu_seconds": 0.2164294594793894
+      }
+    ]
+  }
+}

@@ -1,0 +1,672 @@
+{
+  "experiment": "W13-A",
+  "title": "Native CPU Re-Profile of n4_o2 Self-Compiling m05 & m11 + Top-3 Self-Compile Speedup Plan",
+  "binary": "/home/ai/bend2_agy/selfhost/build/agy/wave11-native-mod/n4_o2",
+  "cpu": 6,
+  "profiles": {
+    "m05": {
+      "wall_ms": 108703.7,
+      "obj_bytes": 9977384,
+      "period_us": 8000,
+      "samples": 13561,
+      "dropped": 0,
+      "overruns": 0,
+      "zeroLoss": true,
+      "usable": true,
+      "resolved_percent": 99.03,
+      "stages": {
+        "read_ms": 58.0,
+        "prep_ms": 729.0,
+        "p86_plan_ms": 38994.0,
+        "x198pw_plan_ms": 48846.0,
+        "x187_priv_ms": 2268.0,
+        "x187_pub_ms": 14972.0,
+        "x187_elf_ms": 2551.0,
+        "trace_total_ms": 108646.0
+      },
+      "groups": [
+        {
+          "name": "generated_bend",
+          "samples": 7885,
+          "fraction": 0.5814467959590001,
+          "percent": 58.14467959590001,
+          "estimated_clean_cpu_seconds": 63.20541807388835
+        },
+        {
+          "name": "reclamation",
+          "samples": 2252,
+          "fraction": 0.16606444952437135,
+          "percent": 16.606444952437137,
+          "estimated_clean_cpu_seconds": 18.051820101762406
+        },
+        {
+          "name": "ownership_and_products",
+          "samples": 1779,
+          "fraction": 0.13118501585428805,
+          "percent": 13.118501585428804,
+          "estimated_clean_cpu_seconds": 14.260296607919772
+        },
+        {
+          "name": "other",
+          "samples": 1295,
+          "fraction": 0.09549443256397021,
+          "percent": 9.549443256397021,
+          "estimated_clean_cpu_seconds": 10.380598149104047
+        },
+        {
+          "name": "scheduler",
+          "samples": 218,
+          "fraction": 0.016075510655556374,
+          "percent": 1.6075510655556373,
+          "estimated_clean_cpu_seconds": 1.7474674876484033
+        },
+        {
+          "name": "unresolved",
+          "samples": 132,
+          "fraction": 0.009733795442813952,
+          "percent": 0.9733795442813952,
+          "estimated_clean_cpu_seconds": 1.058099579677015
+        }
+      ],
+      "semantic_buckets": {
+        "sh_slow_all": {
+          "percent": 20.17,
+          "samples": 2735,
+          "est_seconds": 21.93
+        },
+        "reclamation": {
+          "percent": 16.61,
+          "samples": 2252,
+          "est_seconds": 18.06
+        },
+        "ctor_alloc": {
+          "percent": 9.36,
+          "samples": 1269,
+          "est_seconds": 10.17
+        },
+        "take_and_borrow": {
+          "percent": 9.31,
+          "samples": 1262,
+          "est_seconds": 10.12
+        },
+        "p111_rt_op": {
+          "percent": 2.88,
+          "samples": 390,
+          "est_seconds": 3.13
+        },
+        "p113_rt_array_pair": {
+          "percent": 0,
+          "samples": 0,
+          "est_seconds": 0.0
+        },
+        "scheduler": {
+          "percent": 2.38,
+          "samples": 323,
+          "est_seconds": 2.59
+        },
+        "p113d_o2_generated": {
+          "percent": 34.59,
+          "samples": 4691,
+          "est_seconds": 37.6
+        },
+        "p111_cps_or_o0_generated": {
+          "percent": 23.46,
+          "samples": 3181,
+          "est_seconds": 25.5
+        },
+        "string_append": {
+          "percent": 0.79,
+          "samples": 107,
+          "est_seconds": 0.86
+        },
+        "map_and_set_lookup": {
+          "percent": 3.16,
+          "samples": 429,
+          "est_seconds": 3.44
+        },
+        "kterm_accessors": {
+          "percent": 2.15,
+          "samples": 292,
+          "est_seconds": 2.34
+        }
+      },
+      "top_25_functions": [
+        {
+          "rank": 1,
+          "percent": 11.78,
+          "samples": 1598,
+          "est_seconds": 12.81,
+          "decoded": "p113d_FID_$p128borrow.owned.String.order.go__sh_slow"
+        },
+        {
+          "rank": 2,
+          "percent": 11.58,
+          "samples": 1571,
+          "est_seconds": 12.59,
+          "decoded": "term_drop"
+        },
+        {
+          "rank": 3,
+          "percent": 7.24,
+          "samples": 982,
+          "est_seconds": 7.87,
+          "decoded": "p125_rt_ctor2"
+        },
+        {
+          "rank": 4,
+          "percent": 5.02,
+          "samples": 681,
+          "est_seconds": 5.46,
+          "decoded": "span_fade"
+        },
+        {
+          "rank": 5,
+          "percent": 3.01,
+          "samples": 408,
+          "est_seconds": 3.27,
+          "decoded": "p111_rt_take"
+        },
+        {
+          "rank": 6,
+          "percent": 2.88,
+          "samples": 390,
+          "est_seconds": 3.13,
+          "decoded": "p111_rt_op"
+        },
+        {
+          "rank": 7,
+          "percent": 2.26,
+          "samples": 306,
+          "est_seconds": 2.45,
+          "decoded": "p118_rt_borrow_scalar_safe"
+        },
+        {
+          "rank": 8,
+          "percent": 2.03,
+          "samples": 275,
+          "est_seconds": 2.2,
+          "decoded": "p113d_FID_$p118borrow.read.String.order.go__sh_slow"
+        },
+        {
+          "rank": 9,
+          "percent": 1.61,
+          "samples": 218,
+          "est_seconds": 1.75,
+          "decoded": "work_loop.constprop.0"
+        },
+        {
+          "rank": 10,
+          "percent": 1.56,
+          "samples": 212,
+          "est_seconds": 1.7,
+          "decoded": "p198_rfc_take2"
+        },
+        {
+          "rank": 11,
+          "percent": 1.47,
+          "samples": 200,
+          "est_seconds": 1.6,
+          "decoded": "p111_rt_ctor"
+        },
+        {
+          "rank": 12,
+          "percent": 1.38,
+          "samples": 187,
+          "est_seconds": 1.5,
+          "decoded": "p113d_FID_$direct.index_find"
+        },
+        {
+          "rank": 13,
+          "percent": 1.36,
+          "samples": 185,
+          "est_seconds": 1.48,
+          "decoded": "p113d_FID_$p118borrow.read.index_hash__sh_slow"
+        },
+        {
+          "rank": 14,
+          "percent": 1.04,
+          "samples": 141,
+          "est_seconds": 1.13,
+          "decoded": "p113d_FID_$direct.String.order.go__sh_slow"
+        },
+        {
+          "rank": 15,
+          "percent": 1.02,
+          "samples": 138,
+          "est_seconds": 1.11,
+          "decoded": "p113d_FID_$direct.nb_contains"
+        },
+        {
+          "rank": 16,
+          "percent": 0.95,
+          "samples": 129,
+          "est_seconds": 1.03,
+          "decoded": "[library_unresolved]"
+        },
+        {
+          "rank": 17,
+          "percent": 0.86,
+          "samples": 116,
+          "est_seconds": 0.93,
+          "decoded": "p113d_FID_$direct.String.eq__sh_slow"
+        },
+        {
+          "rank": 18,
+          "percent": 0.8,
+          "samples": 108,
+          "est_seconds": 0.87,
+          "decoded": "p113d_FID_$p128borrow.owned.p98_tag_eq__sh_slow"
+        },
+        {
+          "rank": 19,
+          "percent": 0.77,
+          "samples": 105,
+          "est_seconds": 0.84,
+          "decoded": "p113d_FID_$direct.String.append"
+        },
+        {
+          "rank": 20,
+          "percent": 0.63,
+          "samples": 85,
+          "est_seconds": 0.68,
+          "decoded": "p113d_FID_$direct.ks"
+        },
+        {
+          "rank": 21,
+          "percent": 0.6,
+          "samples": 82,
+          "est_seconds": 0.66,
+          "decoded": "p113d_FID_$p128borrow.owned.String.eq__sh_slow"
+        },
+        {
+          "rank": 22,
+          "percent": 0.6,
+          "samples": 82,
+          "est_seconds": 0.66,
+          "decoded": "p113d_FID_$direct.p88_string_eq__sh_slow"
+        },
+        {
+          "rank": 23,
+          "percent": 0.49,
+          "samples": 66,
+          "est_seconds": 0.53,
+          "decoded": "ctr_take"
+        },
+        {
+          "rank": 24,
+          "percent": 0.44,
+          "samples": 59,
+          "est_seconds": 0.47,
+          "decoded": "p111_rt_sink"
+        },
+        {
+          "rank": 25,
+          "percent": 0.41,
+          "samples": 56,
+          "est_seconds": 0.45,
+          "decoded": "p125_rt_take2"
+        }
+      ]
+    },
+    "m11": {
+      "wall_ms": 31943.3,
+      "obj_bytes": 6165176,
+      "period_us": 8000,
+      "samples": 3984,
+      "dropped": 0,
+      "overruns": 0,
+      "zeroLoss": true,
+      "usable": true,
+      "resolved_percent": 99.25,
+      "stages": {
+        "read_ms": 110.0,
+        "prep_ms": 1487.0,
+        "p86_plan_ms": 6730.0,
+        "x198pw_plan_ms": 11855.0,
+        "x187_priv_ms": 255.0,
+        "x187_pub_ms": 9304.0,
+        "x187_elf_ms": 2051.0,
+        "trace_total_ms": 31917.0
+      },
+      "groups": [
+        {
+          "name": "generated_bend",
+          "samples": 2187,
+          "fraction": 0.5489457831325302,
+          "percent": 54.89457831325302,
+          "estimated_clean_cpu_seconds": 17.53513983433735
+        },
+        {
+          "name": "reclamation",
+          "samples": 716,
+          "fraction": 0.17971887550200802,
+          "percent": 17.9718875502008,
+          "estimated_clean_cpu_seconds": 5.740813955823293
+        },
+        {
+          "name": "ownership_and_products",
+          "samples": 558,
+          "fraction": 0.14006024096385541,
+          "percent": 14.006024096385541,
+          "estimated_clean_cpu_seconds": 4.4739862951807225
+        },
+        {
+          "name": "other",
+          "samples": 435,
+          "fraction": 0.1091867469879518,
+          "percent": 10.918674698795181,
+          "estimated_clean_cpu_seconds": 3.4877850150602407
+        },
+        {
+          "name": "scheduler",
+          "samples": 58,
+          "fraction": 0.014558232931726908,
+          "percent": 1.4558232931726909,
+          "estimated_clean_cpu_seconds": 0.46503800200803214
+        },
+        {
+          "name": "unresolved",
+          "samples": 30,
+          "fraction": 0.007530120481927711,
+          "percent": 0.7530120481927711,
+          "estimated_clean_cpu_seconds": 0.24053689759036145
+        }
+      ],
+      "semantic_buckets": {
+        "sh_slow_all": {
+          "percent": 16.09,
+          "samples": 641,
+          "est_seconds": 5.14
+        },
+        "reclamation": {
+          "percent": 17.97,
+          "samples": 716,
+          "est_seconds": 5.74
+        },
+        "ctor_alloc": {
+          "percent": 11.17,
+          "samples": 445,
+          "est_seconds": 3.57
+        },
+        "take_and_borrow": {
+          "percent": 9.21,
+          "samples": 367,
+          "est_seconds": 2.94
+        },
+        "p111_rt_op": {
+          "percent": 2.66,
+          "samples": 106,
+          "est_seconds": 0.85
+        },
+        "p113_rt_array_pair": {
+          "percent": 0.13,
+          "samples": 5,
+          "est_seconds": 0.04
+        },
+        "scheduler": {
+          "percent": 2.56,
+          "samples": 102,
+          "est_seconds": 0.82
+        },
+        "p113d_o2_generated": {
+          "percent": 31.07,
+          "samples": 1238,
+          "est_seconds": 9.92
+        },
+        "p111_cps_or_o0_generated": {
+          "percent": 23.72,
+          "samples": 945,
+          "est_seconds": 7.58
+        },
+        "string_append": {
+          "percent": 1.61,
+          "samples": 64,
+          "est_seconds": 0.51
+        },
+        "map_and_set_lookup": {
+          "percent": 2.61,
+          "samples": 104,
+          "est_seconds": 0.83
+        },
+        "kterm_accessors": {
+          "percent": 1.51,
+          "samples": 60,
+          "est_seconds": 0.48
+        }
+      },
+      "top_25_functions": [
+        {
+          "rank": 1,
+          "percent": 13.86,
+          "samples": 552,
+          "est_seconds": 4.43,
+          "decoded": "term_drop"
+        },
+        {
+          "rank": 2,
+          "percent": 9.41,
+          "samples": 375,
+          "est_seconds": 3.01,
+          "decoded": "p113d_FID_$p128borrow.owned.String.order.go__sh_slow"
+        },
+        {
+          "rank": 3,
+          "percent": 8.66,
+          "samples": 345,
+          "est_seconds": 2.77,
+          "decoded": "p125_rt_ctor2"
+        },
+        {
+          "rank": 4,
+          "percent": 4.12,
+          "samples": 164,
+          "est_seconds": 1.31,
+          "decoded": "span_fade"
+        },
+        {
+          "rank": 5,
+          "percent": 2.66,
+          "samples": 106,
+          "est_seconds": 0.85,
+          "decoded": "p111_rt_op"
+        },
+        {
+          "rank": 6,
+          "percent": 2.43,
+          "samples": 97,
+          "est_seconds": 0.78,
+          "decoded": "p198_rfc_take2"
+        },
+        {
+          "rank": 7,
+          "percent": 2.26,
+          "samples": 90,
+          "est_seconds": 0.72,
+          "decoded": "p113d_FID_$p118borrow.read.index_hash__sh_slow"
+        },
+        {
+          "rank": 8,
+          "percent": 1.83,
+          "samples": 73,
+          "est_seconds": 0.59,
+          "decoded": "p111_rt_take"
+        },
+        {
+          "rank": 9,
+          "percent": 1.61,
+          "samples": 64,
+          "est_seconds": 0.51,
+          "decoded": "p113d_FID_$direct.String.append"
+        },
+        {
+          "rank": 10,
+          "percent": 1.53,
+          "samples": 61,
+          "est_seconds": 0.49,
+          "decoded": "p118_rt_borrow_scalar_safe"
+        },
+        {
+          "rank": 11,
+          "percent": 1.46,
+          "samples": 58,
+          "est_seconds": 0.47,
+          "decoded": "work_loop.constprop.0"
+        },
+        {
+          "rank": 12,
+          "percent": 1.26,
+          "samples": 50,
+          "est_seconds": 0.4,
+          "decoded": "p111_rt_ctor"
+        },
+        {
+          "rank": 13,
+          "percent": 1.13,
+          "samples": 45,
+          "est_seconds": 0.36,
+          "decoded": "p113d_FID_$direct.index_find"
+        },
+        {
+          "rank": 14,
+          "percent": 1.08,
+          "samples": 43,
+          "est_seconds": 0.34,
+          "decoded": "p113d_FID_$p118borrow.read.String.order.go__sh_slow"
+        },
+        {
+          "rank": 15,
+          "percent": 0.95,
+          "samples": 38,
+          "est_seconds": 0.3,
+          "decoded": "ctr_take"
+        },
+        {
+          "rank": 16,
+          "percent": 0.88,
+          "samples": 35,
+          "est_seconds": 0.28,
+          "decoded": "p113d_FID_$direct.String.eq__sh_slow"
+        },
+        {
+          "rank": 17,
+          "percent": 0.83,
+          "samples": 33,
+          "est_seconds": 0.26,
+          "decoded": "p111_FID_$direct.p131i_insert"
+        },
+        {
+          "rank": 18,
+          "percent": 0.75,
+          "samples": 30,
+          "est_seconds": 0.24,
+          "decoded": "[library_unresolved]"
+        },
+        {
+          "rank": 19,
+          "percent": 0.68,
+          "samples": 27,
+          "est_seconds": 0.22,
+          "decoded": "p113d_FID_$direct.String.order.go__sh_slow"
+        },
+        {
+          "rank": 20,
+          "percent": 0.6,
+          "samples": 24,
+          "est_seconds": 0.19,
+          "decoded": "p111_FID_$direct.U32.show.fin"
+        },
+        {
+          "rank": 21,
+          "percent": 0.5,
+          "samples": 20,
+          "est_seconds": 0.16,
+          "decoded": "p198_rfc_take4"
+        },
+        {
+          "rank": 22,
+          "percent": 0.48,
+          "samples": 19,
+          "est_seconds": 0.15,
+          "decoded": "p113d_FID_$direct.nt_reverse"
+        },
+        {
+          "rank": 23,
+          "percent": 0.48,
+          "samples": 19,
+          "est_seconds": 0.15,
+          "decoded": "p111_FID_$direct.x187_build_parsed"
+        },
+        {
+          "rank": 24,
+          "percent": 0.48,
+          "samples": 19,
+          "est_seconds": 0.15,
+          "decoded": "p111_rt_return"
+        },
+        {
+          "rank": 25,
+          "percent": 0.48,
+          "samples": 19,
+          "est_seconds": 0.15,
+          "decoded": "p125_rt_take2"
+        }
+      ]
+    }
+  },
+  "smoking_gun_agy_sh_bailout": {
+    "p111_mod_m11_program_capabilities": 5,
+    "capabilities_required_by_agy_sh_guard_caps": 9,
+    "p111_cid_hot_all_ones": true,
+    "p111_cid_hot_count": 794,
+    "m05_sh_slow_percent": 20.17,
+    "m11_sh_slow_percent": 16.09,
+    "root_cause": "agy_sh_guard_caps checks (capabilities & 9) == 9 and agy_sh_chk_hot checks cid_hot[cid] == 0, but n4_o2 has capabilities=5 (bit 3 = 0) and cid_hot = all 1s, causing 100% bailout to __sh_slow despite all agy_sh_* loops being read-only and RFC-aware."
+  },
+  "w12_existing_projections": {
+    "W12-B_u32_direct_match": {
+      "m05_nested_u32_patterns": 19,
+      "m11_nested_u32_patterns": 0,
+      "k13_total_u32_patterns": 512,
+      "k13_nested_u32_patterns": 214,
+      "projected_seq_savings_s": "180-240",
+      "projected_m05_savings_pct": "25-33%",
+      "projected_m11_savings_pct": "0%"
+    },
+    "W12-F_ctor2_sealed_and_array": {
+      "p113_rt_array_pair_m05_pct": 0.0,
+      "p113_rt_array_pair_m11_pct": 0.13,
+      "p125_rt_ctor2_m05_pct": 7.24,
+      "p125_rt_ctor2_m11_pct": 8.66,
+      "projected_savings_pct": "3.5-5.5%"
+    },
+    "W12-A_bool_and_borrow_loops": {
+      "projected_savings_pct": "3-5%"
+    }
+  },
+  "top_3_new_wins": [
+    {
+      "rank": 1,
+      "name": "Fix agy_sh_guard_caps & agy_sh_chk_hot (Unlock 100% of String/Hash/Tag Fast Paths)",
+      "target_pct_m05": 20.17,
+      "target_pct_m11": 16.09,
+      "projected_speedup": "1.16x-1.21x (m05 -19s, m11 -4.5s, seq -160s)",
+      "effort": "Tiny (~10 lines in compiler.bend:71055-71075)"
+    },
+    {
+      "rank": 2,
+      "name": "Inline Hot-Path Allocation (ctor2 + 1-word rfc_seal), rfc_take2, and rc>1 term_drop/rt_sink",
+      "target_pct_m05": 35.28,
+      "target_pct_m11": 38.35,
+      "projected_speedup": "1.20x-1.28x across all 13 modules",
+      "effort": "Medium (pure-Bend x86-64 fast paths in agy_rt_inline_try)"
+    },
+    {
+      "rank": 3,
+      "name": "13/13 -O2 Unlock (m08/m09 0-arity p113d stub fix) + Fast x187_pub (skip U32.show/String.append) + Balanced K=15..16 Split",
+      "target_pct_m05": 13.8,
+      "target_pct_m11": 29.2,
+      "projected_speedup": "1.15x-1.25x on m11 (x187_pub -40-50%), balanced max-pole <= 45s",
+      "effort": "Small-Medium (1-line p113d fix + x187_pub label fast path)"
+    }
+  ]
+}

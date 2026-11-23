@@ -1,0 +1,260 @@
+--- a/selfhost/build/agy/wave11_unified/compiler.bend
++++ b/selfhost/build/agy/wave11_unified/compiler.bend
+@@ -80479,6 +80479,153 @@
+   x198pw_prepared(path,source,nt_choose(P86Preparation,cached,
+     u => p88_cache_prepare(base_path,base,carrier,stamp),u => p86_prepare(base_path,base)))
+ 
++# === W13-D: Fast -O0 lowering pipeline (`x198pw_plan_fast`) ===
++# Used ONLY by -O0 entry points (`x86-module-fast` / `x86-object-fast`).
++# -O2 (`x86-object` / `x86-module` / `x86` / `x86-shard` / `x86-iface`) stays 100% untouched.
++# Preserves exact cross-module `$direct.*` + `p111_FID_*` ABI (matching `x86-iface`),
++# `p111_runtime_admission`, `nc_compile_error_known`, `p167ob_permission`, `p112s_prepare`,
++# `p128br_scan`, `p167ob_seed_verify`, `p113d_passes`, and `p167l_functions` (`w6_dedup_segments`).
++# Skips -O2-only optimization & redundant passes:
++#   - `nq_signatures`, `p121f_plan`, `p198e_plan`, `p121c_admitted`, `p125p_select`,
++#     `p118t_retry`, `p113pl_flat_candidate`, `p126sc_candidates`
++#   - `w4p_adapt_functions`, `p169o_closed` (`p113i` inlining, `p113k` folding, `p169q_scalars`, `p128br_retry_plans`)
++#   - `p167v_original`, `p118b_verify_functions`, `p167live_eligible`, `p169a_namespace`, `p169c_selected` (cold tables)
++#   - `p112f_index`, `p168j_imports`, `p168j_registry` (6-round fusion), `p168j_forwards`
++#   - `x198pw_after` (7 -O2 annotation passes)
++
++law w13d_p113pl_cands_loop_fast:
++  for +book: List<&2,KDef>
++  for names: List<&2,String>
++  for +bangMap: KDef
++  for +acc: List<&2,P113DCandidate>
++  List<&2,P113DCandidate>
++
++@unsafe
++def w13d_p113pl_cands_ok_fast(ok: Bool, +book: List<&2,KDef>, +name: String,
++    +rest: List<&2,String>, +bangMap: KDef, +acc: List<&2,P113DCandidate>) -> List<&2,P113DCandidate>:
++  match ok:
++    case True{}:
++      w13d_p113pl_cands_loop_fast(book,rest,bangMap,Con{p113pl_boxed_candidate(book,name,[]),acc})
++    case False{}: w13d_p113pl_cands_loop_fast(book,rest,bangMap,acc)
++
++@unsafe
++def w13d_p113pl_cands_loop_fast(book,names,bangMap,acc):
++  match names:
++    case Nil{}: nt_reverse(P113DCandidate,acc,[])
++    case Con{+name,+rest}:
++      +definition = lookup(book,name)
++      +bh = index_hash(name,2166136261)
++      +isBang = Bool.not(agy_str_eq(dk(w5c3_find(bangMap,name,bh)),"Absent"))
++      w13d_p113pl_cands_ok_fast(agy_str_eq(dk(definition),"Def") &&
++        Bool.not(nc_native_def(definition) || nc_foreign(definition) || isBang) && U32.is_le(nd_arity(book,name),64),
++        book,name,rest,bangMap,acc)
++
++@unsafe
++def w13d_p113pl_candidates_fast(+book: List<&2,KDef>, names: List<&2,String>,
++    +bangs: List<&2,String>) -> List<&2,P113DCandidate>:
++  w13d_p113pl_cands_loop_fast(book,names,w8_bangs_index(bangs,missing()),[])
++
++@unsafe
++def w13d_p168_selected_fast(source: List<&2,KDef>, +book: List<&2,KDef>, +names: List<&2,String>,
++    constructors: List<&2,N_Constructor>, nodes: List<&2,P112SNode>, +bangs: List<&2,String>,
++    +workers: List<&2,P113DFunction>, +remaining: List<&2,String>) -> P167Lowered:
++  +ready = p113e_signatures(workers,missing())
++  +filtered = w7_filter_remaining(book,remaining,bangs)
++  +raw = w13d_p113pl_candidates_fast(book,filtered,bangs)
++  +fns0 = p113d_passes(raw,ready,nt_reverse(P113DFunction,workers,[]),32)
++  p167l_functions(source,book,names,constructors,nodes,bangs,fns0)
++
++@unsafe
++def w13d_p168_seed_verified_fast(source: List<&2,KDef>, +book: List<&2,KDef>, +names: List<&2,String>,
++    constructors: List<&2,N_Constructor>, nodes: List<&2,P112SNode>, +bangs: List<&2,String>,
++    +workers: List<&2,P113DFunction>, +error: String) -> P167Lowered:
++  nt_choose(P167Lowered,String.is_empty(error),
++    u => w13d_p168_selected_fast(source,book,names,constructors,nodes,bangs,workers,
++      p167ob_remaining(book,names,bangs,p113e_signatures(workers,missing()))),
++    u => p167l_fail("early scalar observer verification: " ++ error))
++
++@unsafe
++def w13d_p168_scanned_fast(source: List<&2,KDef>, book: List<&2,KDef>, names: List<&2,String>,
++    +constructors: List<&2,N_Constructor>, nodes: List<&2,P112SNode>, bangs: List<&2,String>,
++    scan: P128BROpen) -> P167Lowered:
++  match scan:
++    case P128BROpen{+workers,helpers,retry,+error}:
++      nt_choose(P167Lowered,String.is_empty(error),
++        u => w13d_p168_seed_verified_fast(source,book,names,constructors,nodes,bangs,workers,
++          p167ob_seed_verify(constructors,workers)),
++        u => p167l_fail("early scalar observer classification: " ++ error))
++
++@unsafe
++def w13d_p168_prepared_fast(source: List<&2,KDef>, +names: List<&2,String>,
++    constructors: List<&2,N_Constructor>, prepared: P112SPrepared) -> P167Lowered:
++  match prepared:
++    case P112SPrepared{+book,nodes,+error}:
++      +bangs = nc_bangs_names(book,names)
++      nt_choose(P167Lowered,String.is_empty(error),
++        u => w13d_p168_scanned_fast(source,book,names,constructors,nodes,bangs,
++          p128br_scan(book,no_candidate_names(book,names,bangs),[],[],[],[])),
++        u => p167l_fail("early scalar static preparation: " ++ error))
++
++@unsafe
++def w13d_p168_fast(+request: NR_Request) -> P167Lowered:
++  match request:
++    case NR_Request{+source,+book,+names,paths,scope,bound}:
++      +error = nc_compile_error_known(source,bound)
++      nt_choose(P167Lowered,String.is_empty(error),u =>
++        nt_choose(P167Lowered,p167ob_permission(request),
++          v =>
++            +ctors = nc_add_ctors(nc_default_ctors(),
++              p144o_constructors(source,source,p144o_payload(nc_ctor_context(book))))
++            w13d_p168_prepared_fast(source,names,ctors,p112s_prepare(book,names,ctors)),
++          v => p167l_fail("early scalar source permission refused")),
++        u => p167l_fail("early scalar request: " ++ error))
++
++@unsafe
++def w13d_p169s_seeded_fast(+program: P111Program, +nodes: List<&2,P112SNode>,
++    +functions: List<&2,P113DFunction>) -> P169Prepared:
++  match program:
++    case P111Program{+segments,constructors,show,names,effects,pure}:
++      +ids = p111q_ids(program)
++      +tables = nt_choose(List<&2,P111QData>,List.is_empty(&2,P112SNode,nodes),
++        u => p111q_tables(program,ids),u => p112s_tables(program,nodes,ids))
++      +mode = nt_choose(U32,List.is_empty(&2,P113DFunction,functions),u => 0,u => 1)
++      P169Prepared{[],p134e_registered(segments,functions,ids,P112FusionEmpty{},
++        p113a_heap_min(nodes),mode,tables,P112RegionRegistry{missing(),missing(),[],0,0}),""}
++
++@unsafe
++def w13d_p169s_lowered_fast(lowered: P167Lowered) -> P169Prepared:
++  match lowered:
++    case P167Lowered{P113DProgram{P112StaticProgram{original,nodes},functions},adapters,+error,stats}:
++      nt_choose(P169Prepared,String.is_empty(error),
++        u => w13d_p169s_seeded_fast(original,nodes,p168v_functions(functions,adapters)),
++        u => p169s_fail("adapter renderer lowering: " ++ error))
++
++@unsafe
++def w13d_p169np_admitted_fast(+request: NR_Request, +error: String) -> P169Prepared:
++  nt_choose(P169Prepared,String.is_empty(error),
++    u => w13d_p169s_lowered_fast(w13d_p168_fast(request)),
++    u => p169s_fail("compile: " ++ error))
++
++@unsafe
++def x198pw_plan_fast(plan: P86Plan) -> P169Prepared:
++  match plan:
++    case P86PlanError{error}: p169s_fail(error)
++    case P86PlanReady{+request,verdict}:
++      w13d_p169np_admitted_fast(request,p111_runtime_admission(request))
++
++@unsafe
++def x198pw_prepared_fast(+path: String,+source: String,prepared: P86Preparation) -> P169Prepared:
++  match prepared:
++    case P86PreparationError{error}: p169s_fail(error)
++    case P86PreparationReady{seed}: x198pw_plan_fast(p86_plan(seed,path,source))
++
++@unsafe
++def x198pw_compile_fast(+path: String,+source: String,+base_path: String,+base: String,
++    +carrier: String,+stamp: String,+cached: Bool) -> P169Prepared:
++  x198pw_prepared_fast(path,source,nt_choose(P86Preparation,cached,
++    u => p88_cache_prepare(base_path,base,carrier,stamp),u => p86_prepare(base_path,base)))
++
++
+ # Native x86 request protocol. The shared accepted-source and final native-body
+ # verification path constructs the cursor before emission.
+ @unsafe
+@@ -81139,8 +81286,8 @@
+     nt_choose(IO(U32),cached,
+       u => do IO<U32>:
+         carrier : String <- p86_read_file(carrier_path)
+-        x187_print_fast(x198pw_compile(path,source,base_path,base,carrier,stamp,True{})),
+-      u => x187_print_fast(x198pw_compile(path,source,base_path,base,"",stamp,False{})))
++        x187_print_fast(x198pw_compile_fast(path,source,base_path,base,carrier,stamp,True{})),
++      u => x187_print_fast(x198pw_compile_fast(path,source,base_path,base,"",stamp,False{})))
+ 
+ # Wave 8: Per-module disjoint 16-bit FID base + link-time table merge exports.
+ @unsafe
+@@ -82449,7 +82596,7 @@
+   match prep:
+     case P86PreparationError{error}: IO.die(U32,1,error)
+     case P86PreparationReady{+seed}:
+-      w10_module_prepared_fast_io(x198pw_plan(p86_plan(seed,path,source)),w10_weak_from_seed(seed),fid_base,mod_name)
++      w10_module_prepared_fast_io(x198pw_plan_fast(p86_plan(seed,path,source)),w10_weak_from_seed(seed),fid_base,mod_name)
+ 
+ @unsafe
+ def w10_module_request_fast(+path: String, +base_path: String, +carrier_path: String,
+@@ -83411,7 +83558,7 @@
+         IO.pure(W10TrCompiled,W10TrCompiled{P169Prepared{fw,cur,err},weak_set})
+ 
+ @unsafe
+-def w8_tr_compile_prep(+trace: Bool, +is_mod: Bool, +path: String, +source: String, +t1: Nat, prep: P86Preparation) -> IO(W10TrCompiled):
++def w8_tr_compile_prep(+trace: Bool, +fast: Bool, +is_mod: Bool, +path: String, +source: String, +t1: Nat, prep: P86Preparation) -> IO(W10TrCompiled):
+   match prep:
+     case P86PreparationError{error}:
+       do IO<W10TrCompiled>:
+@@ -83423,12 +83570,12 @@
+         +plan : P86Plan <- IO.pure(P86Plan,p86_plan(seed,path,source))
+         +t2 : Nat <- IO.now()
+         _ : Unit <- w8_tr_log(trace,"stage=p86_plan ms=" ++ w8_tr_ms(t1,t2))
+-        +prepared : P169Prepared <- IO.pure(P169Prepared,x198pw_plan(plan))
++        +prepared : P169Prepared <- IO.pure(P169Prepared,nt_choose(P169Prepared,fast,u => x198pw_plan_fast(plan),u => x198pw_plan(plan)))
+         +t3 : Nat <- IO.now()
+         w8_tr_compile_done(trace,t2,t3,prepared,weak_set)
+ 
+ @unsafe
+-def w8_tr_compile(+trace: Bool, +is_mod: Bool, +path: String, +source: String, +base_path: String,
++def w8_tr_compile(+trace: Bool, +fast: Bool, +is_mod: Bool, +path: String, +source: String, +base_path: String,
+     +base: String, +carrier: String, +stamp: String, +cached: Bool) -> IO(W10TrCompiled):
+   do IO<W10TrCompiled>:
+     +t0 : Nat <- IO.now()
+@@ -83438,7 +83585,7 @@
+         u => p86_prepare(base_path,base)))
+     +t1 : Nat <- IO.now()
+     _ : Unit <- w8_tr_log(trace,"stage=prep ms=" ++ w8_tr_ms(t0,t1))
+-    w8_tr_compile_prep(trace,is_mod,path,source,t1,prep)
++    w8_tr_compile_prep(trace,fast,is_mod,path,source,t1,prep)
+ 
+ @unsafe
+ def w8_tr_emit_cursor(+trace: Bool, +fast: Bool, +is_mod: Bool, +weak_set: KDef, +t_start: Nat,
+@@ -83547,7 +83694,7 @@
+     +carrier : String <- nt_choose(IO(String),cached,u => p86_read_file(carrier_path),u => IO.pure(String,""))
+     +t_rd : Nat <- IO.now()
+     _ : Unit <- w8_tr_log(trace,"stage=read ms=" ++ w8_tr_ms(t0,t_rd))
+-    +compiled : W10TrCompiled <- w8_tr_compile(trace,is_mod,path,source,base_path,base,carrier,stamp,cached)
++    +compiled : W10TrCompiled <- w8_tr_compile(trace,fast,is_mod,path,source,base_path,base,carrier,stamp,cached)
+     w8_tr_run_prepared(trace,fast,is_mod,fid_base,mod_name,t0,compiled)
+ 
+ @unsafe
+@@ -83885,7 +84032,7 @@
+ # --- Stage 3 & 4: Per-function x187_priv & x187_pub codegen ---
+ 
+ @unsafe
+-def ts_compile_prep(+thresh: Nat, +is_mod: Bool, +path: String, +source: String, +t1: Nat, prep: P86Preparation) -> IO(W10TrCompiled):
++def ts_compile_prep(+thresh: Nat, +fast: Bool, +is_mod: Bool, +path: String, +source: String, +t1: Nat, prep: P86Preparation) -> IO(W10TrCompiled):
+   match prep:
+     case P86PreparationError{error}:
+       do IO<W10TrCompiled>:
+@@ -83897,12 +84044,12 @@
+         +plan : P86Plan <- ts_p86_plan_io(thresh, seed, path, source)
+         +t2 : Nat <- IO.now()
+         _ : Unit <- w8_tr_log(True{}, "stage=p86_plan ms=" ++ w8_tr_ms(t1, t2))
+-        +prepared : P169Prepared <- IO.pure(P169Prepared, x198pw_plan(plan))
++        +prepared : P169Prepared <- IO.pure(P169Prepared, nt_choose(P169Prepared, fast, u => x198pw_plan_fast(plan), u => x198pw_plan(plan)))
+         +t3 : Nat <- IO.now()
+         w8_tr_compile_done(True{}, t2, t3, prepared, weak_set)
+ 
+ @unsafe
+-def ts_compile(+thresh: Nat, +is_mod: Bool, +path: String, +source: String, +base_path: String,
++def ts_compile(+thresh: Nat, +fast: Bool, +is_mod: Bool, +path: String, +source: String, +base_path: String,
+     +base: String, +carrier: String, +stamp: String, +cached: Bool) -> IO(W10TrCompiled):
+   do IO<W10TrCompiled>:
+     +t0 : Nat <- IO.now()
+@@ -83912,7 +84059,7 @@
+         u => p86_prepare(base_path, base)))
+     +t1 : Nat <- IO.now()
+     _ : Unit <- w8_tr_log(True{}, "stage=prep ms=" ++ w8_tr_ms(t0, t1))
+-    ts_compile_prep(thresh, is_mod, path, source, t1, prep)
++    ts_compile_prep(thresh, fast, is_mod, path, source, t1, prep)
+ 
+ law ts_emit_cursor:
+   for +thresh: Nat
+@@ -84040,7 +84187,7 @@
+     +carrier : String <- nt_choose(IO(String), cached, u => p86_read_file(carrier_path), u => IO.pure(String, ""))
+     +t_rd : Nat <- IO.now()
+     _ : Unit <- w8_tr_log(True{}, "stage=read ms=" ++ w8_tr_ms(t0, t_rd))
+-    +compiled : W10TrCompiled <- ts_compile(thresh, is_mod, path, source, base_path, base, carrier, stamp, cached)
++    +compiled : W10TrCompiled <- ts_compile(thresh, fast, is_mod, path, source, base_path, base, carrier, stamp, cached)
+     ts_run_prepared(thresh, fast, is_mod, fid_base, mod_name, t0, compiled)
+ 
+ @unsafe

@@ -1,0 +1,106 @@
+{
+  "experiment": "W13-D: Fast x198pw_plan_fast for x86-module-fast / x86-object-fast (-O0)",
+  "date": "2026-11-23",
+  "cpus": [2, 3],
+  "baseline_compiler": "selfhost/build/agy/wave11_unified/compiler.bend",
+  "patch": "research/agy/w13_campaign/w13d_fast_x198pw/w13d_fast_x198pw.patch",
+  "substage_profile_baseline_ms": {
+    "m11": {
+      "TOTAL_x198pw_plan_mono": 11824.9,
+      "14_p113pl_candidates": 3641.4,
+      "26_p167l_functions_cps": 5420.9,
+      "27_p167v_original": 1407.9,
+      "38_p168j_registry_fusion": 1178.4,
+      "30_p167live_eligible": 467.4,
+      "06_p112s_prepare": 407.1,
+      "09_p128br_scan": 307.0,
+      "21_p169o_selected_inline_fold": 290.1,
+      "24_p128br_retry_plans": 235.6,
+      "40_46_x198pw_after_7passes": 117.5,
+      "29_p118b_verify_functions": 91.6,
+      "32_p169c_selected_cold": 0.2,
+      "segs": 3549
+    },
+    "m05": {
+      "TOTAL_x198pw_plan_mono": 23280.4,
+      "26_p167l_functions_cps": 4281.9,
+      "14_p113pl_candidates": 3846.9,
+      "21_p169o_selected_inline_fold": 2532.6,
+      "27_p167v_original": 1131.7,
+      "32_p169c_selected_cold": 1088.1,
+      "06_p112s_prepare": 1012.2,
+      "38_p168j_registry_fusion": 798.2,
+      "29_p118b_verify_functions": 499.6,
+      "30_p167live_eligible": 315.9,
+      "09_p128br_scan": 294.7,
+      "24_p128br_retry_plans": 144.4,
+      "40_46_x198pw_after_7passes": 114.9,
+      "segs": 5957
+    }
+  },
+  "clean_cli_benchmark_cpu2": {
+    "m05": {
+      "baseline": {
+        "x198pw_plan_ms": 19415.0,
+        "p86_plan_ms": 16553.0,
+        "x187_elf_ms": 4412.0,
+        "trace_total_ms": 62769.0,
+        "wall_ms": 63327.2,
+        "segs": 5957,
+        "priv_count": 544,
+        "obj_bytes": 9977384
+      },
+      "w13d_fast": {
+        "x198pw_plan_ms": 10582.0,
+        "p86_plan_ms": 16262.0,
+        "x187_elf_ms": 4029.0,
+        "trace_total_ms": 48699.0,
+        "wall_ms": 49352.1,
+        "segs": 5957,
+        "priv_count": 536,
+        "obj_bytes": 9717240
+      },
+      "x198pw_speedup": 1.835,
+      "x198pw_reduction_pct": 45.5,
+      "trace_total_speedup": 1.289,
+      "trace_total_reduction_pct": 22.4,
+      "wall_speedup": 1.283
+    },
+    "m11": {
+      "baseline": {
+        "x198pw_plan_ms": 11263.0,
+        "p86_plan_ms": 7521.0,
+        "trace_total_ms": 37465.0,
+        "wall_ms": 37954.3,
+        "segs": 3549,
+        "obj_bytes": 6165176
+      },
+      "w13d_fast": {
+        "x198pw_plan_ms": 7753.0,
+        "p86_plan_ms": 7309.0,
+        "trace_total_ms": 33052.0,
+        "wall_ms": 35041.3,
+        "segs": 3549,
+        "obj_bytes": 6141376
+      },
+      "x198pw_speedup": 1.453,
+      "x198pw_reduction_pct": 31.2,
+      "trace_total_speedup": 1.134,
+      "trace_total_reduction_pct": 11.8,
+      "wall_speedup": 1.083
+    }
+  },
+  "abi_parity": {
+    "m11_direct_fns": { "baseline": 201, "w13d_fast": 201, "exact_match": true },
+    "m05_direct_fns": { "baseline": 524, "w13d_fast": 524, "exact_match": true },
+    "m11_segs": { "baseline": 3549, "w13d_fast": 3549, "delta": 0 },
+    "m05_segs": { "baseline": 5957, "w13d_fast": 5957, "delta": 0 },
+    "o2_path_untouched": true
+  },
+  "qualification_gates": {
+    "bend_typecheck_errors": 0,
+    "native64_x86_object_fast": { "passed": 64, "total": 64, "status": "PASS" },
+    "observer_gate_x86_object_fast": { "passed": 15, "total": 15, "violations": 0, "status": "PASS" },
+    "cross_module_B_to_A_o0": { "stdout": "163", "expected": "163", "link_errors": 0, "status": "PASS" }
+  }
+}

@@ -1,43 +1,68 @@
 {
-  "wave": "Wave 16 (W16-INT)",
-  "status": "COMPOSED_CHECKED_SPLIT_ORACLE_EXTRACTED_DEADLINE_REACHED",
+  "wave": "Wave 16 (W16-MINT)",
+  "status": "N7_O2_MINTED_COLD_PROFILED_O0_79_79_PASS_O2_132_158",
   "composed_source": "selfhost/build/agy/wave16_unified/compiler.bend",
   "composed_bytes": 3497142,
   "composed_lines": 82253,
-  "defs": 9343,
-  "laws": 909,
-  "types": 422,
-  "check_only_type_errors": 0,
-  "check_only_linearity_errors": 0,
-  "patches_composed": [
-    "S10-D (w5_g11_b fallthrough cmov)",
-    "S10-E --no-lexer (9 safe p86_plan/parser/check/annotate hunks + S10-A stub skip)",
-    "S10-A (zero-.p130 STB_WEAK stub & template visibility)",
-    "S10-C (fast -O0 backend: s10c_priv_emit_fast + s10c_plan_fast)",
-    "S10-H (unified S10-A stub skip + O(1) bangMap + p112s direct-stub skip)",
-    "S10-F (unboxed S10fT x187_pub + 8x-unrolled hot-8 x187_elf + 7 bare -O2 sinks)",
-    "S10-B (reachability tree-shaker + 55 flag folds + comment strip)",
-    "S10-G (compiler-only --nodrop mode)"
-  ],
-  "splits": {
-    "k10": {"dir": "selfhost/build/agy/k10_wave16", "min_kb": 334.6, "max_kb": 337.6, "max_over_avg": 1.002},
-    "k16": {"dir": "selfhost/build/agy/k16_wave16", "min_kb": 204.8, "max_kb": 212.4, "max_over_avg": 1.009},
-    "k24": {"dir": "selfhost/build/agy/k24_wave16", "min_kb": 138.3, "max_kb": 141.2, "max_over_avg": 1.005}
-  },
-  "k10_n6_o2_bootstrap": {
-    "total_segs": 65377,
+  "n7_o2": {
+    "binary": "selfhost/build/agy/wave16-native-mod/n7_o2",
+    "bytes": 79054424,
+    "mint_method": "10/10 -O2 pipelined .p130 via n6_o2 on k10_wave16 (0 stubs, 0 objcopy)",
+    "total_segs": 63354,
     "fid_limit": 65532,
-    "n7_o0_bytes": 102912368,
-    "merge_ms": 216.3,
-    "link_ms": 498.6,
-    "oracle_w16_path": "research/agy/s10_campaign/w16_final/p113d_oracle_w16.txt",
-    "oracle_w16_direct_defs": 2574,
-    "non_base_orphan_delta_from_w15_oracle": ["$direct.f_raw_skip"]
+    "merge_ms": 127.8,
+    "link_ms": 456.2,
+    "smoke_o0_ms": 2767.7,
+    "smoke_o0_bytes": 377176,
+    "smoke_o0_out": "34",
+    "smoke_o2_ms": 4990.3,
+    "smoke_o2_bytes": 388208,
+    "smoke_o2_out": "34"
   },
-  "pending_for_next_run": [
-    "Mint n7_o2 (-O2) on k10_wave16 using p113d_oracle_w16.txt (0 non-Base orphan weaks)",
-    "Mint n7_o2_nodrop via n7_o2 --nodrop",
-    "Official 8-core zero-cache cold self-compile benchmark (n7_o2 -> n8_cold & n7_o2_nodrop -> n8_cold_nd)",
-    "run_w16_gate.py all (158/158 qual + 7-family proxy + terrain holdout)"
+  "cold_bench_k10_n7_o2": {
+    "cpus": [0, 1, 2, 3, 4, 5, 6, 7],
+    "gen_stubs_ms": 913.1,
+    "compile_wall_ms": 62871.6,
+    "compile_cpu_sum_ms": 361114.5,
+    "parallel_scaling_8c": 5.74,
+    "max_rss_mib": 540.7,
+    "total_segs": 64660,
+    "projected_1pass_e2e_s": 64.4,
+    "speedup_vs_w15_112s": 1.74,
+    "stage_cpu_sum_ms": {
+      "read": 362,
+      "prep": 2366,
+      "p86_plan": 103043,
+      "x198pw_plan": 154592,
+      "x187_priv": 8145,
+      "x187_pub": 65633,
+      "x187_elf": 24146
+    },
+    "stage_pct": {
+      "read": 0.1,
+      "prep": 0.7,
+      "p86_plan": 28.5,
+      "x198pw_plan": 42.8,
+      "x187_priv": 2.3,
+      "x187_pub": 18.2,
+      "x187_elf": 6.7
+    },
+    "m00_trace_ms": {"wall": 23762.0, "rss_mib": 540.7, "segs": 7536, "read": 30, "prep": 253, "p86_plan": 9024, "x198pw_plan": 8519, "x187_priv": 1677, "x187_pub": 2101, "x187_elf": 1932},
+    "m09_trace_ms": {"wall": 34012.5, "rss_mib": 391.0, "segs": 5075, "read": 38, "prep": 233, "p86_plan": 8814, "x198pw_plan": 15245, "x187_priv": 48, "x187_pub": 7297, "x187_elf": 2128}
+  },
+  "qual_gate_n7_o2": {
+    "total_pass": 132,
+    "total_tests": 158,
+    "o0_native64": "64/64 PASS (7.34s wall, 47.46s sum)",
+    "o0_observer": "15/15 PASS (1.22s wall)",
+    "o2_native64": "53/64 PASS (127.10s wall; 11 emit hangs in x198o_progress_get)",
+    "o2_observer": "0/15 PASS (60.01s wall; 5 emit hangs in x198o_progress_get)",
+    "elf_audit": true,
+    "n6_o2_kept_hot": true
+  },
+  "root_causes_for_wave17": [
+    "x86-merge-obj copied m09 caps=7 (set3=True) over m05 Array.set caps=5; clear bit 0x2 in w10_merge_copy_root",
+    "n6_o2 cross-module -O2 codegen bugs on k10_wave16: w5c2_bits_nz (%edx vs %r8d) and x198o_progress_get (jmpq self thunk)",
+    "S10-H skipped p113d stub codegen (x187_priv down to 2.3%!) but left p111 stub segments (total_segs=64,660, x198pw_plan=42.8%, x187_pub=18.2%) and caused 4 undefined p113d refs from p111 stub wrappers"
   ]
 }

@@ -1,0 +1,99 @@
+{
+  "track": "W12-C",
+  "title": "Pure-Bend Pipelined bend_build_pipe Driver (0 Python, Native IO.fork/IO.join, Pipelined x86-iface + Parallel x86-module-fast + FNV-1a Cache)",
+  "status": "PASSED",
+  "cpu": 7,
+  "source": "research/agy/w12_campaign/w12c_bend_build/bend_build_pipe.bend",
+  "binary": "research/agy/w12_campaign/w12c_bend_build/bend_build_pipe",
+  "binary_bytes": 670656,
+  "verification": {
+    "check_only": "ALL PROOFS CHECK",
+    "unsafe_decls": 0,
+    "n3_w10_abi11102_probe": {
+      "typecheck_passed": true,
+      "rc": 1,
+      "stderr": "compile: foreign provider unavailable in fixed runtime: Chan.close",
+      "note": "n3_w10 uses ABI11102 fixed runtime-agy.o which excludes Process.run and IO.fork/IO.join/Chan.*; compiled to standalone native x86-64 ELF binary via bend2/main.ts -o .c + gcc-10 -O2 (zero Python, zero JS, zero Bun at runtime)."
+    }
+  },
+  "e2e_3mod_dag": {
+    "dag": "modA (fid_base=0) -> modB (fid_base=256) -> modC (fid_base=512, entry)",
+    "compiler": "selfhost/build/agy/wave10-native-mod/n3_w10",
+    "jobs": 2,
+    "test1_cold_pipelined": {
+      "iface_ms": 19935,
+      "compile_ms": 20626,
+      "merge_ms": 66,
+      "link_ms": 38,
+      "total_ms": 20730,
+      "rebuilt": "3/3",
+      "cached": "0/3",
+      "iface_rebuilt": 2,
+      "iface_cached": 0,
+      "sequential_sum_ms": 23447,
+      "pipelined_hidden_ms": 2821,
+      "out": "42",
+      "pass": true
+    },
+    "test2_noop_rebuild": {
+      "iface_ms": 1,
+      "compile_ms": 1,
+      "merge_ms": 0,
+      "link_ms": 0,
+      "total_ms": 1,
+      "rebuilt": "0/3",
+      "cached": "3/3",
+      "iface_rebuilt": 0,
+      "iface_cached": 2,
+      "sha_unchanged": {
+        "modA": true,
+        "modB": true,
+        "modC": true
+      },
+      "out": "42",
+      "pass": true
+    },
+    "test3_midstack_body_edit_modB": {
+      "edit": "modB mul_b constant 20 -> 30",
+      "iface_ms": 9857,
+      "compile_ms": 9857,
+      "merge_ms": 65,
+      "link_ms": 40,
+      "total_ms": 9962,
+      "rebuilt": "1/3",
+      "cached": "2/3",
+      "iface_rebuilt": 1,
+      "iface_cached": 1,
+      "modB_stamp_unchanged": true,
+      "modB_stamp": "p130-word-pair-v1:w10-iface-v1:f5c7e17ef48e3b09",
+      "sha_check": {
+        "modA_unchanged": true,
+        "modB_changed": true,
+        "modC_unchanged": true
+      },
+      "out": "52",
+      "pass": true
+    },
+    "test4_iface_changing_edit_modB": {
+      "edit": "modB added exported def extra_b(x: U32) -> U32",
+      "iface_ms": 9938,
+      "compile_ms": 10649,
+      "merge_ms": 63,
+      "link_ms": 37,
+      "total_ms": 10750,
+      "rebuilt": "2/3",
+      "cached": "1/3",
+      "iface_rebuilt": 1,
+      "iface_cached": 1,
+      "modB_stamp_old": "p130-word-pair-v1:w10-iface-v1:f5c7e17ef48e3b09",
+      "modB_stamp_new": "p130-word-pair-v1:w10-iface-v1:f47801cbb3a1ee37",
+      "sha_check": {
+        "modA_unchanged": true,
+        "modB_changed": true,
+        "modC_rebuilt": true
+      },
+      "out": "52",
+      "pass": true
+    }
+  }
+}

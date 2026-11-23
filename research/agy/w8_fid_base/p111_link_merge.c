@@ -48,6 +48,8 @@ static uint8_t w8_merged_fid_arity[65532];
 static uint8_t w8_merged_fid_flags[65532];
 static uint8_t w8_merged_fid_results[65532];
 
+static void w8_unused_seg(void) {}
+
 #define W8_ENTRY_PROG_2(M) (&p111_mod_##M##_program)
 #define W8_ENTRY_PROG(M)   W8_ENTRY_PROG_2(M)
 
@@ -66,11 +68,22 @@ int main(int argc, char **argv) {
   for (uint64_t i = 0; i < nmods; i++) {
     uint64_t b = bases[i], n = mods[i]->segment_count;
     if (b + n > 65532) return 2;
+    if (b + n > total) total = b + n;
+  }
+  /* Fill reserved inter-module FID gaps with a valid non-NULL sentinel so modules
+   * can grow/shrink within their reserved FID range without shifting downstream fid_base. */
+  for (uint64_t j = 0; j < total; j++) {
+    w8_merged_segments[j] = (void *)&w8_unused_seg;
+    w8_merged_fid_arity[j] = 0;
+    w8_merged_fid_flags[j] = 0;
+    w8_merged_fid_results[j] = 0;
+  }
+  for (uint64_t i = 0; i < nmods; i++) {
+    uint64_t b = bases[i], n = mods[i]->segment_count;
     memcpy(w8_merged_segments + b,    mods[i]->segments,    n * sizeof(void *));
     memcpy(w8_merged_fid_arity + b,   mods[i]->fid_arity,   n);
     memcpy(w8_merged_fid_flags + b,   mods[i]->fid_flags,   n);
     memcpy(w8_merged_fid_results + b, mods[i]->fid_results, n);
-    if (b + n > total) total = b + n;
     if (mods[i]->reg_width > p111_program.reg_width) p111_program.reg_width = mods[i]->reg_width;
     if (mods[i]->result_width > p111_program.result_width) p111_program.result_width = mods[i]->result_width;
   }

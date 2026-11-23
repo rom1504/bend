@@ -1,0 +1,45 @@
+{
+  "case1_clean_ab": {
+    "mono_out": "34",
+    "sep_out": "34",
+    "mono_wall_ms": 6318.2,
+    "mono_link_ms": 45.3,
+    "modB_wall_ms": 6374.7,
+    "modB_segs": 102,
+    "iface_wall_ms": 7966.6,
+    "modA_wall_ms": 1527.7,
+    "modA_segs": 8,
+    "objcopy_ms": 35.4,
+    "merge_link_ms": 162.7,
+    "total_sep_ms": 16067.1
+  },
+  "case2_body_only_b_edit": {
+    "mono_out": "44",
+    "sep_out": "44",
+    "modA_reused_sha256_identical": true,
+    "modB_rebuild_wall_ms": 6374.0,
+    "objcopy_ms": 33.8,
+    "merge_link_ms": 143.1,
+    "total_edit_ms": 6550.9
+  },
+  "case3_incompatible_sig_change": {
+    "stamp_changed": true,
+    "stale_stamp_rejected": {
+      "rc": 1,
+      "ms": 491.5,
+      "err": "{\"ok\":false,\"stage\":\"prep\",\"error\":\"base_cache: cache stamp\"}"
+    },
+    "old_modA_rejected": {
+      "rc": 1,
+      "ms": 808.2,
+      "err": "{\"ok\":false,\"stage\":\"p86_plan\",\"error\":\"check: main: type mismatch\"}"
+    },
+    "mono_out": "54",
+    "sep_out": "54",
+    "modB_wall_ms": 6383.2,
+    "iface_wall_ms": 7993.8,
+    "modA_wall_ms": 1553.6,
+    "objcopy_ms": 28.9,
+    "merge_link_ms": 136.5
+  }
+}

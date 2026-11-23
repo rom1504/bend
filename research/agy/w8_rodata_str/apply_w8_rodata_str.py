@@ -45,7 +45,7 @@ OLD_TABLE_HEAD = (
 
 NEW_TABLE_HEAD = (
     "def x188_table_head(+name: String, +alignment: U32, +exported: Bool) -> X188Seq:\n"
-    "  x188_many([X188One{PSection{nt_choose(U32,U32.is_eq(alignment,1) && Bool.not(exported),u => 2,u => 3)}},X188One{PAlign{alignment}},\n"
+    "  x188_many([X188One{PSection{nt_choose(U32,U32.is_eq(alignment,1) && Bool.not(exported) && Bool.not(agy_str_eq(name,\"p111_cid_hot\")),u => 2,u => 3)}},X188One{PAlign{alignment}},\n"
     "    nt_choose(X188Seq,exported,u => X188One{PGlobal{name}},u => X188Empty{}),\n"
     "    X188One{PType{name,1}},x188_label(name)])"
 )

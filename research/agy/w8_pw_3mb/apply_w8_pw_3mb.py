@@ -104,7 +104,8 @@ def w8_p112s_ctor_word(isWord: Bool, +constructors: KDef, +term: KTerm, +image: 
 def p112s_constructor(+constructors: KDef, +term: KTerm, +image: P112SImage) -> P112STerm:
   w8_p112s_ctor_word(agy_str_eq(tg(term),"NWord"),constructors,term,image)"""
 
-    src = replace_exact(src, old_p112s_ctor, new_p112s_ctor, "p112s_constructor")
+    if old_p112s_ctor in src:
+        src = replace_exact(src, old_p112s_ctor, new_p112s_ctor, "p112s_constructor")
 
     old_p112s_rebuild_term = """@unsafe
 def p112s_rebuild(+constructors: KDef, +original: KTerm, children: P112STerms) -> P112STerm:

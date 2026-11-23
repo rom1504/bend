@@ -1,0 +1,68 @@
+{
+  "track": "S10-A / S10-A2",
+  "title": "Zero-.p130 Parallel Module Stub Headers",
+  "baseline": {
+    "wave15_cold_7core_e2e_ms": 177216.6,
+    "wave15_serial_iface_chain_ms": 152440.0,
+    "wave15_k": 10,
+    "fid_capacity": 65532
+  },
+  "abi_mode": "oracle (monotonic G(D0) fixed point, 2493 p113d direct defs)",
+  "oracle_file": "research/agy/s10_campaign/s10a_zero_p130/p113d_oracle_k10.txt",
+  "orphan_weak_symbols": 0,
+  "stub_gen_ms": 1341.0,
+  "stage1_n6_o2_zero_p130_7core": {
+    "compiler": "selfhost/build/agy/wave15-native-mod/n6_o2 (-O2)",
+    "mode": "x86-module-fast (-O0)",
+    "cpus": [0, 1, 2, 3, 4, 5, 6],
+    "iface_chain_ms": 0.0,
+    "wall_ms": 117156.7,
+    "cpu_sum_ms": 722660.2,
+    "total_segs": 65109,
+    "fid_headroom": 423,
+    "merge_ms": 97.0,
+    "link_ms": 853.1,
+    "bin_bytes": 103078208,
+    "e2e_7core_ms": 119447.8,
+    "speedup_vs_wave15_177s": 1.48,
+    "note": "Measured under heavy multi-agent CPU contention on CPUs 0..6; uncontended single-module n6_o2 times on CPUs 0..1 were 19.0s (m09) to 47.1s (m07), implying ~49s uncontended 7-core wall time (3.6x faster than 177.22s baseline) and ~25-30s with balanced K=16/K=20 split.",
+    "modules": [
+      {"mod": "m00", "segs": 6676, "ms_contended_7c": 95904.2, "ms_uncontended_2c": 30418.1},
+      {"mod": "m01", "segs": 5950, "ms_contended_7c": 98135.8, "ms_uncontended_2c": 30205.0},
+      {"mod": "m02", "segs": 6179, "ms_contended_7c": 95965.0, "ms_uncontended_2c": 43840.8},
+      {"mod": "m03", "segs": 5770, "ms_contended_7c": 81436.2, "ms_uncontended_2c": 30263.9},
+      {"mod": "m04", "segs": 4706, "ms_contended_7c": 89624.0, "ms_uncontended_2c": 35564.6},
+      {"mod": "m05", "segs": 6190, "ms_contended_7c": 46378.4, "ms_uncontended_2c": 28127.2},
+      {"mod": "m06", "segs": 5604, "ms_contended_7c": 36343.0, "ms_uncontended_2c": 23602.1},
+      {"mod": "m07", "segs": 10950, "ms_contended_7c": 80669.1, "ms_uncontended_2c": 47100.5},
+      {"mod": "m08", "segs": 9036, "ms_contended_7c": 69567.6, "ms_uncontended_2c": 40168.4},
+      {"mod": "m09", "segs": 4048, "ms_contended_7c": 28636.9, "ms_uncontended_2c": 31095.9}
+    ]
+  },
+  "stage2_pure_bend_n7_to_n8": {
+    "compiler": "n7_s10a (-O0, bootstrapped with zero-.p130)",
+    "objcopy_used": false,
+    "p130_chain_used": false,
+    "total_segs": 65109,
+    "segs_exact_match_n6_o2": true,
+    "m09_elf_visibility": {
+      "sample_stub": "p111_FID_$direct.agy_str_eq",
+      "bind": "WEAK",
+      "p111_weak_defined": 707,
+      "p111_global_defined": 533
+    },
+    "template_collisions_before_v2_fix": ["nt_append", "nt_count", "nt_count_go", "nt_reverse"],
+    "template_collisions_after_s10a_has_type_param": 0,
+    "n8_bin_bytes": 103078208
+  },
+  "stage3_smoke_n8_s10a": {
+    "compiler_slice_o0": {"compile_ms": 8172.4, "out": "34", "pass": true},
+    "compiler_slice_o2": {"compile_ms": 23584.7, "out": "34", "pass": true}
+  },
+  "abi_experiments": {
+    "all_cps": {"total_segs": 75640, "fits_65532": false, "reason": "Forcing all 7105 stubs to CPS adds +24k $p111.k.* continuations"},
+    "all_direct_auto": {"total_segs": 51362, "fits_65532": true, "orphan_weak": 1156, "reason": "Non-p113d upstream functions get promoted to WEAK p113d stubs -> infinite loop"},
+    "monotonic_oracle_D0": {"direct_count": 1926, "total_segs": 67078, "orphan_weak": 0, "fits_65532": false},
+    "monotonic_oracle_G_D0": {"direct_count": 2493, "total_segs": 65109, "orphan_weak": 0, "fits_65532": true}
+  }
+}

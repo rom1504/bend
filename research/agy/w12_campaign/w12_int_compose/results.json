@@ -1,0 +1,124 @@
+{
+  "campaign": "W12-INT",
+  "title": "Wave 12 Unified Pure-Bend Compiler Composition, Verification & K=14 Balanced Split",
+  "base_compiler": "/home/ai/bend2_agy/selfhost/build/agy/wave11_unified/compiler.bend",
+  "output_compiler": "/home/ai/bend2_agy/selfhost/build/agy/wave12_unified/compiler.bend",
+  "output_api": "/home/ai/bend2_agy/selfhost/build/agy/wave12_unified/api.mjs",
+  "k14_dir": "/home/ai/bend2_agy/research/agy/w10_mod_bend/k14_wave12",
+  "sizes": {
+    "wave11_compiler_bytes": 3523878,
+    "wave12_compiler_bytes": 3607289,
+    "delta_bytes": 83411,
+    "wave12_compiler_lines": 85838
+  },
+  "integrated_wins": [
+    "W13-A Win #1: agy_sh_guard_caps checks only (capabilities & 1) == 1; agy_sh_chk_hot -> X188Empty{}",
+    "W11-C Win: w10_if_force_cps checks 0-arity `name` in addition to `\"$direct.\" ++ name`",
+    "W12-B: direct #U32 literal pattern matching in ff_match / kernel / native lowering",
+    "W12-E: pure-Bend fast x86-iface v2 (zero-rm, multi-cache, incremental world/ready, upstream-stub fast-path)",
+    "W12-A: unboxed Bool match fast-path + borrow-loop direct field load + sign-bit/cmp branch fusion",
+    "W12-D: dual-array LCU scalarization + W12FwdDrop store-to-load peephole",
+    "W12-F: inline boxed Array.get / Array.set fast-path in agy_rt_inline_try",
+    "W12-G: w5_nat_match_chain + G11 cmov + 6th transient reg %rcx + 10-slot transient regalloc",
+    "W13-B compact: w13b_rt_ctor2_text (inline alc->free[0] rfc_seal) + w13b_rt_take_p111_text + agy_rfc_check_fields (loc < HEAP_OFF), skipping w13b_rt_sink_shallow_text"
+  ],
+  "gates": {
+    "check_only": {
+      "ok": true,
+      "type_errors": 0,
+      "unsafe_audit_defs": 8951
+    },
+    "native64": {
+      "ok": true,
+      "passed": 64,
+      "total": 64,
+      "elapsed_s": 65.0
+    },
+    "observer_gate": {
+      "ok": true,
+      "abi_probes": "44+2",
+      "passed": 15,
+      "total": 15,
+      "violations": 0
+    },
+    "ab_o2_0arity": {
+      "ok": true,
+      "output": "203",
+      "orphan_0arity_p113d": 0,
+      "link_warnings": 0,
+      "modB_zero_cps_p113d": 0,
+      "modA_zero_cps_p113d": 0
+    }
+  },
+  "paired_runtime_cpu4": {
+    "terrain": {
+      "w11_ms": 21387.54,
+      "w12_ms": 17303.88,
+      "speedup": 1.236,
+      "w11_obj_bytes": 744248,
+      "w12_obj_bytes": 998008,
+      "checksum": 2572468224
+    },
+    "hashmap": {
+      "w11_ms": 7028.79,
+      "w12_ms": 5853.35,
+      "speedup": 1.201,
+      "w11_obj_bytes": 73576,
+      "w12_obj_bytes": 88088,
+      "checksum": 1307803744
+    },
+    "histogram": {
+      "w11_ms": 39.98,
+      "w12_ms": 39.74,
+      "speedup": 1.006,
+      "w11_obj_bytes": 214216,
+      "w12_obj_bytes": 276280,
+      "checksum": 3307081914
+    },
+    "gameoflife": {
+      "w11_ms": 434.54,
+      "w12_ms": 440.80,
+      "speedup": 0.986,
+      "w11_obj_bytes": 62296,
+      "w12_obj_bytes": 62600,
+      "checksum": 3681094808
+    },
+    "nbody": {
+      "w11_ms": 92.23,
+      "w12_ms": 91.97,
+      "speedup": 1.003,
+      "w11_obj_bytes": 61160,
+      "w12_obj_bytes": 61936,
+      "checksum": 728502159
+    },
+    "editdist": {
+      "w11_ms": 22.0,
+      "w12_ms": 21.0,
+      "speedup": 1.048,
+      "w11_obj_bytes": 111648,
+      "w12_obj_bytes": 125368,
+      "hashes": "3/3 OK"
+    },
+    "bst": {
+      "w11_ms": 30.0,
+      "w12_ms": 31.0,
+      "speedup": 0.968,
+      "w11_obj_bytes": 79944,
+      "w12_obj_bytes": 87320,
+      "hashes": "3/3 OK"
+    }
+  },
+  "k14_split": {
+    "k": 14,
+    "types": 409,
+    "defs": 9225,
+    "laws": 898,
+    "lost_decls": 0,
+    "duplicated_decls": 0,
+    "forward_cycles": 0,
+    "m00a_kb": 150.8,
+    "m00b_kb": 150.6,
+    "m05a_kb": 148.5,
+    "m05b_kb": 147.2
+  }
+}

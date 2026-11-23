@@ -1,0 +1,230 @@
+{
+  "track": "w9_str_hot",
+  "targets": {
+    "bottleneck_1": "String.order.go (14.9% native CPU in wave8-native-self/n1: 11.9% owned + 2.0% read + 1.0% direct)",
+    "bottleneck_14": "p111_FID_$direct.w5c_idx_find_lr (1.0% native CPU: hash-trie lookup in CPS p111_ instead of direct p113d_)"
+  },
+  "root_causes": [
+    "x181_program_private_fast (-O0 / x86-object-fast, which built wave8-native-self/n1) bypassed agy_sh_try, emitting 0 native x86-64 agy_sh_emit_streq/hash/tageq fast paths (0 __sh_slow symbols in n1).",
+    "p113i_eligible inlined non-recursive agy_sh_try targets (String.eq, agy_str_eq, p88_string_eq, p98_tag_eq, p98_tag_eq_read) into 61+ callers (107 call sites in n1) as direct String.order.go calls before agy_sh_try ran.",
+    "index_find, index_bucket, and index_tip were mutually recursive with match-lifted helpers (w5c_idx_find_lr, w5_idx_find_kdef, w5_idx_find_kdef_t, w5_idx_bkt_hit, w5_idx_tip_*), causing w6_p113d_deps_self (self-recursion only) to reject the entire hash-trie family to CPS p111_."
+  ],
+  "verification": {
+    "check_only_type_errors": 0,
+    "bun_build_exit": 0,
+    "native64": {
+      "passed": 64,
+      "total": 64,
+      "seconds": 47.5
+    },
+    "observer_gate": {
+      "abi_cases": "44+2",
+      "probes_passed": 15,
+      "probes_total": 15,
+      "violations": 0
+    },
+    "native_ir_probe": {
+      "base_o1_p111_index_syms": [
+        "index_find",
+        "index_bucket",
+        "index_tip",
+        "w5c_idx_find_lr"
+      ],
+      "base_o0_sh_slow_count": 0,
+      "patched_o1_p113d_index_syms": [
+        "index_find",
+        "index_bucket",
+        "index_tip",
+        "w9_pick_kdef",
+        "w9_pick_kdef_b"
+      ],
+      "patched_o0_p113d_index_syms": [
+        "index_find",
+        "index_bucket",
+        "index_tip",
+        "w9_pick_kdef",
+        "w9_pick_kdef_b"
+      ],
+      "patched_o0_sh_slow_count": 9,
+      "patched_p111_index_syms": []
+    }
+  },
+  "stage_bench": {
+    "slice_248kb": {
+      "baseline": {
+        "importMs": 359.4,
+        "prepMs": 232.4,
+        "planMs": 2323.8,
+        "pwMs": 1059.4,
+        "emitMs": 2420.2,
+        "bufMs": 16.8,
+        "totalMs": 5820.2,
+        "rssMib": 437.2,
+        "objBytes": 371720.0,
+        "src": "compiler_slice.bend",
+        "srcBytes": 248570,
+        "runs": [
+          {
+            "ok": true,
+            "src": "compiler_slice.bend",
+            "srcBytes": 248570,
+            "objBytes": 371720,
+            "importMs": 360.6,
+            "prepMs": 223.5,
+            "planMs": 2331,
+            "pwMs": 957.3,
+            "emitMs": 2463.2,
+            "bufMs": 11.9,
+            "totalMs": 5763.4,
+            "rssMib": 437.6
+          },
+          {
+            "ok": true,
+            "src": "compiler_slice.bend",
+            "srcBytes": 248570,
+            "objBytes": 371720,
+            "importMs": 358.1,
+            "prepMs": 241.4,
+            "planMs": 2316.6,
+            "pwMs": 1161.5,
+            "emitMs": 2377.3,
+            "bufMs": 21.7,
+            "totalMs": 5877,
+            "rssMib": 436.9
+          }
+        ]
+      },
+      "patched": {
+        "importMs": 365.2,
+        "prepMs": 226.6,
+        "planMs": 2497.7,
+        "pwMs": 1000.2,
+        "emitMs": 2440.3,
+        "bufMs": 8.3,
+        "totalMs": 5946.5,
+        "rssMib": 412.3,
+        "objBytes": 371440.0,
+        "src": "compiler_slice.bend",
+        "srcBytes": 248570,
+        "runs": [
+          {
+            "ok": true,
+            "src": "compiler_slice.bend",
+            "srcBytes": 248570,
+            "objBytes": 371440,
+            "importMs": 371.7,
+            "prepMs": 227,
+            "planMs": 2494.4,
+            "pwMs": 983.9,
+            "emitMs": 2365.4,
+            "bufMs": 9.2,
+            "totalMs": 5852.8,
+            "rssMib": 409.3
+          },
+          {
+            "ok": true,
+            "src": "compiler_slice.bend",
+            "srcBytes": 248570,
+            "objBytes": 371440,
+            "importMs": 358.8,
+            "prepMs": 226.1,
+            "planMs": 2501,
+            "pwMs": 1016.5,
+            "emitMs": 2515.2,
+            "bufMs": 7.4,
+            "totalMs": 6040.1,
+            "rssMib": 415.3
+          }
+        ]
+      }
+    },
+    "slice_750kb": {
+      "baseline": {
+        "importMs": 360.6,
+        "prepMs": 237.8,
+        "planMs": 5906.1,
+        "pwMs": 2051.4,
+        "emitMs": 5514.9,
+        "bufMs": 24.9,
+        "totalMs": 13497.3,
+        "rssMib": 623.2,
+        "objBytes": 742776.0,
+        "src": "compiler_slice_750kb.bend",
+        "srcBytes": 678696,
+        "runs": [
+          {
+            "ok": true,
+            "src": "compiler_slice_750kb.bend",
+            "srcBytes": 678696,
+            "objBytes": 742776,
+            "importMs": 361.2,
+            "prepMs": 241.2,
+            "planMs": 6034.8,
+            "pwMs": 2116.1,
+            "emitMs": 5659.9,
+            "bufMs": 26.4,
+            "totalMs": 13837.1,
+            "rssMib": 635.6
+          },
+          {
+            "ok": true,
+            "src": "compiler_slice_750kb.bend",
+            "srcBytes": 678696,
+            "objBytes": 742776,
+            "importMs": 360.1,
+            "prepMs": 234.3,
+            "planMs": 5777.4,
+            "pwMs": 1986.7,
+            "emitMs": 5369.8,
+            "bufMs": 23.5,
+            "totalMs": 13157.5,
+            "rssMib": 610.8
+          }
+        ]
+      },
+      "patched": {
+        "importMs": 358.3,
+        "prepMs": 228.6,
+        "planMs": 5672.8,
+        "pwMs": 2036.5,
+        "emitMs": 5319.8,
+        "bufMs": 92.8,
+        "totalMs": 13121.8,
+        "rssMib": 735.9,
+        "objBytes": 741928.0,
+        "src": "compiler_slice_750kb.bend",
+        "srcBytes": 678696,
+        "runs": [
+          {
+            "ok": true,
+            "src": "compiler_slice_750kb.bend",
+            "srcBytes": 678696,
+            "objBytes": 741928,
+            "importMs": 358.2,
+            "prepMs": 225.2,
+            "planMs": 5643.6,
+            "pwMs": 1923.1,
+            "emitMs": 5037.3,
+            "bufMs": 162.9,
+            "totalMs": 12766.9,
+            "rssMib": 716.6
+          },
+          {
+            "ok": true,
+            "src": "compiler_slice_750kb.bend",
+            "srcBytes": 678696,
+            "objBytes": 741928,
+            "importMs": 358.4,
+            "prepMs": 232,
+            "planMs": 5701.9,
+            "pwMs": 2150,
+            "emitMs": 5602.3,
+            "bufMs": 22.6,
+            "totalMs": 13476.8,
+            "rssMib": 755.1
+          }
+        ]
+      }
+    }
+  }
+}

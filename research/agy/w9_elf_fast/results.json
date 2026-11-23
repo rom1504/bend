@@ -1,0 +1,79 @@
+{
+  "experiment": "w9_elf_fast",
+  "base_compiler": "selfhost/build/agy/wave8_unified/compiler.bend",
+  "patcher": "research/agy/w9_elf_fast/apply_w9_elf_fast.py",
+  "compiler_bytes_before": 3358357,
+  "compiler_bytes_after": 3372245,
+  "wave8_invariants": {
+    "p111_cid_hot_section": 3,
+    "p111_cid_hot_section_name": ".data",
+    "p111_cid_arity_section": 2,
+    "p111_cid_names_0_section": 2,
+    "rodata_section_name": ".rodata",
+    "elf_section_guard_bytes": 134217728,
+    "fast_encoder_guard_bytes": 134217712,
+    "x86_module_preserved": true,
+    "trace_preserved": true
+  },
+  "gates": {
+    "check_only": "PASS (0 type/linearity errors across 8500 defs)",
+    "native64": {
+      "passed": 64,
+      "total": 64,
+      "seconds": 42.98
+    },
+    "observer": {
+      "abi_probes": "44+2 PASS",
+      "passed": 15,
+      "total": 15,
+      "violations": 0,
+      "modes": ["normal", "cap-no8", "all-hot"]
+    }
+  },
+  "benchmarks_3x_interleaved_median": {
+    "compiler_slice_250k": {
+      "src": "research/agy/w7_bench/compiler_slice.bend",
+      "src_bytes": 248570,
+      "x187_prepared_o2": {
+        "before_ms": [2402.4, 2492.3, 2525.9],
+        "after_ms": [2344.0, 2349.6, 2383.4],
+        "before_median_ms": 2492.3,
+        "after_median_ms": 2349.6,
+        "speedup": 1.061,
+        "before_bytes": 371720,
+        "after_bytes": 371632
+      },
+      "x187_prepared_fast": {
+        "before_ms": [1061.9, 1067.5, 1107.5],
+        "after_ms": [887.7, 1008.0, 1049.5],
+        "before_median_ms": 1067.5,
+        "after_median_ms": 1008.0,
+        "speedup": 1.059,
+        "before_bytes": 432208,
+        "after_bytes": 432120
+      }
+    },
+    "compiler_slice_750k": {
+      "src": "research/agy/w7_bench/compiler_slice_750kb.bend",
+      "src_bytes": 678696,
+      "x187_prepared_o2": {
+        "before_ms": [5758.7, 5998.7, 5428.5],
+        "after_ms": [5447.2, 5218.4, 5605.6],
+        "before_median_ms": 5758.7,
+        "after_median_ms": 5447.2,
+        "speedup": 1.057,
+        "before_bytes": 742776,
+        "after_bytes": 742688
+      },
+      "x187_prepared_fast": {
+        "before_ms": [2350.0, 2142.5, 2119.6],
+        "after_ms": [1984.7, 1982.4, 1928.9],
+        "before_median_ms": 2142.5,
+        "after_median_ms": 1982.4,
+        "speedup": 1.081,
+        "before_bytes": 927312,
+        "after_bytes": 927216
+      }
+    }
+  }
+}

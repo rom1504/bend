@@ -1,0 +1,171 @@
+{
+  "campaign": "W12-A",
+  "title": "Compiled-Program Runtime: Unboxed Bool Match Fast-Path & Borrow-Loop Direct Field Load",
+  "cpu": 5,
+  "baseline": "selfhost/build/agy/wave8-native-self/n1",
+  "check_only_type_errors": 0,
+  "benchmarks": {
+    "hashmap": {
+      "base_obj_bytes": 73664,
+      "cand_obj_bytes": 72248,
+      "expected_stdout": "1307803744",
+      "base_median_ms": 11190.4,
+      "cand_median_ms": 10301.8,
+      "speedup": 1.0863,
+      "has_func_bytes_base": 790,
+      "has_func_bytes_cand": 503,
+      "has_hot_loop_insns_base": 92,
+      "has_hot_loop_insns_cand": 27,
+      "len_hot_loop_insns_base": 45,
+      "len_hot_loop_insns_cand": 17
+    },
+    "coverage-bst-64": {
+      "base_obj_bytes": 130024,
+      "cand_obj_bytes": 124984,
+      "expected_stdout": "861157620",
+      "reps": 100000,
+      "base_median_ms": 164.0,
+      "cand_median_ms": 164.0,
+      "speedup": 1.0
+    },
+    "coverage-expression-128": {
+      "base_obj_bytes": 99168,
+      "cand_obj_bytes": 98304,
+      "expected_stdout": "3393903617",
+      "reps": 200000,
+      "base_median_ms": 58.0,
+      "cand_median_ms": 57.0,
+      "speedup": 1.0175
+    }
+  },
+  "native64_gate": {
+    "passCount": 64,
+    "total": 64,
+    "passed": true,
+    "seconds": 92.56,
+    "failures": []
+  },
+  "observer_gate": {
+    "passCount": 15,
+    "total": 15,
+    "violations": 0,
+    "passed": true,
+    "probes": {
+      "map_set_del_get": {
+        "normal": {
+          "ok": true,
+          "rc": 0,
+          "stdout": "4008146603",
+          "expected": "4008146603",
+          "stderr": ""
+        },
+        "cap-no8": {
+          "ok": true,
+          "rc": 0,
+          "stdout": "4008146603",
+          "expected": "4008146603",
+          "stderr": ""
+        },
+        "all-hot": {
+          "ok": true,
+          "rc": 0,
+          "stdout": "4008146603",
+          "expected": "4008146603",
+          "stderr": ""
+        }
+      },
+      "bst_zipper": {
+        "normal": {
+          "ok": true,
+          "rc": 0,
+          "stdout": "382401606",
+          "expected": "382401606",
+          "stderr": ""
+        },
+        "cap-no8": {
+          "ok": true,
+          "rc": 0,
+          "stdout": "382401606",
+          "expected": "382401606",
+          "stderr": ""
+        },
+        "all-hot": {
+          "ok": true,
+          "rc": 0,
+          "stdout": "382401606",
+          "expected": "382401606",
+          "stderr": ""
+        }
+      },
+      "flow_native": {
+        "normal": {
+          "ok": true,
+          "rc": 0,
+          "stdout": "49913905",
+          "expected": "49913905",
+          "stderr": ""
+        },
+        "cap-no8": {
+          "ok": true,
+          "rc": 0,
+          "stdout": "49913905",
+          "expected": "49913905",
+          "stderr": ""
+        },
+        "all-hot": {
+          "ok": true,
+          "rc": 0,
+          "stdout": "49913905",
+          "expected": "49913905",
+          "stderr": ""
+        }
+      },
+      "perceus_reuse": {
+        "normal": {
+          "ok": true,
+          "rc": 0,
+          "stdout": "3114",
+          "expected": "3114",
+          "stderr": ""
+        },
+        "cap-no8": {
+          "ok": true,
+          "rc": 0,
+          "stdout": "3114",
+          "expected": "3114",
+          "stderr": ""
+        },
+        "all-hot": {
+          "ok": true,
+          "rc": 0,
+          "stdout": "3114",
+          "expected": "3114",
+          "stderr": ""
+        }
+      },
+      "listapp_arrlist": {
+        "normal": {
+          "ok": true,
+          "rc": 0,
+          "stdout": "3905793128",
+          "expected": "3905793128",
+          "stderr": ""
+        },
+        "cap-no8": {
+          "ok": true,
+          "rc": 0,
+          "stdout": "3905793128",
+          "expected": "3905793128",
+          "stderr": ""
+        },
+        "all-hot": {
+          "ok": true,
+          "rc": 0,
+          "stdout": "3905793128",
+          "expected": "3905793128",
+          "stderr": ""
+        }
+      }
+    }
+  }
+}

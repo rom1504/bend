@@ -1,0 +1,645 @@
+--- selfhost/build/agy/wave8_unified/compiler.bend	2026-11-23 00:53:14.484840460 +0000
++++ /tmp/agy_w12a/compiler.bend	2026-11-23 08:56:40.129651728 +0000
+@@ -55149,34 +55149,154 @@
+       p113a_prefix(x181_scalar_rows(x185_late_scalar(s0,ids,site,w4_bf_mask_for(s0,r0,ids,site))),
+         x185_late_stmts(r0,ids,nt_choose(U32,U32.is_lt(site,4294967200),u => U32.inc(site),u => site)))
+ 
++# W12-A: Borrow-loop direct field load, compact tag+cid guard, and hoisted heap base.
++type W12BFLoads is Data:
++  W12BFLoads{+loads: List<&2,N111Stmt>, +tail: List<&2,P113DStmt>}
++
+ @unsafe
+-def x185_late_stmts(body,ids,site):
++def w12_ctor_id(+ctor: String, ids: N111Ids) -> U32:
++  match ids:
++    case N111Ids{functions,constructors}:
++      +entry = index_find(constructors,ctor,index_hash(ctor,2166136261),32)
++      nt_choose(U32,agy_str_eq(dk(entry),"N111Id"),u => da(entry),u => 0)
++
++@unsafe
++def w12_bf_guard(+term: N111Value, +ctor: String, +ids: N111Ids, +site: U32) -> List<&2,N111Stmt>:
++  +want = U32.or(131072,w12_ctor_id(ctor,ids))
++  [N111Set{p114t_name(site,"borrow_word"),N111U64{},term},
++   N111Bin{p114t_name(site,"borrow_aux_bits"),N111U64{},"shr",p114t_local(site,"borrow_word"),N111Const{40,0}},
++   N111Bin{p114t_name(site,"borrow_tag_aux"),N111U64{},"and",p114t_local(site,"borrow_aux_bits"),N111Const{8388607,0}},
++   N111Bin{p114t_name(site,"borrow_guard"),N111U32{},"eq",p114t_local(site,"borrow_tag_aux"),N111Const{want,0}}]
++
++@unsafe
++def w12_bf_take_loads(+buf: String, +dest: String, +count: U32,
++    body: List<&2,P113DStmt>, +acc: List<&2,N111Stmt>) -> W12BFLoads:
++  match body:
++    case Con{P113DScalar{N111Load{+v,N111U64{},N111Local{+b},+off}},+rest}:
++      nt_choose(W12BFLoads,
++        agy_str_eq(b,buf) && U32.is_eq(U32.mod(off,8),0) && U32.is_lt(U32.div(off,8),count) &&
++        Bool.not(agy_str_eq(v,buf)) && Bool.not(agy_str_eq(v,"state")) && Bool.not(agy_str_eq(v,dest)),
++        u => w12_bf_take_loads(buf,dest,count,rest,Con{N111Load{v,N111U64{},N111Local{b},off},acc}),
++        u => W12BFLoads{nt_reverse(N111Stmt,acc,[]),Con{P113DScalar{N111Load{v,N111U64{},N111Local{b},off}},rest}})
++    case _: W12BFLoads{nt_reverse(N111Stmt,acc,[]),body}
++
++@unsafe
++def w12_bf_direct_loads(loads: List<&2,N111Stmt>, +fields: N111Value) -> List<&2,P113DStmt>:
++  match loads:
++    case Nil{}: []
++    case Con{N111Load{v,N111U64{},b,off},rest}:
++      Con{P113DScalar{N111Load{v,N111U64{},fields,off}},w12_bf_direct_loads(rest,fields)}
++    case Con{h,rest}: Con{P113DScalar{h},w12_bf_direct_loads(rest,fields)}
++
++@unsafe
++def w12_bf_rfc_rows(+site: U32, +heapVal: N111Value) -> List<&2,P113DStmt>:
++  x181_scalar_rows([
++    N111Bin{p114t_name(site,"borrow_header_bytes"),N111U64{},"shl",p114t_local(site,"borrow_location"),N111Const{3,0}},
++    N111Offset{p114t_name(site,"borrow_header"),heapVal,p114t_local(site,"borrow_header_bytes")},
++    N111Load{p114t_name(site,"borrow_header_word"),N111U64{},p114t_local(site,"borrow_header"),0},
++    N111Bin{p114t_name(site,"borrow_location"),N111U64{},"shr",p114t_local(site,"borrow_header_word"),N111Const{24,0}}])
++
++@unsafe
++def w12_bf_fast_direct(+dest: String, +count: U32, +site: U32, +hasHeap: Bool,
++    +loads: List<&2,N111Stmt>) -> List<&2,P113DStmt>:
++  +heapVal : N111Value = nt_choose(N111Value,hasHeap,
++    u => N111Local{"p114t_borrow_heap"},
++    u => p114t_local(site,"borrow_heap"))
++  +pre : List<&2,P113DStmt> = nt_choose(List<&2,P113DStmt>,hasHeap,
++    u => [],
++    u => [P113DScalar{N111Load{p114t_name(site,"borrow_heap"),N111Ptr{},N111Local{"state"},0}}])
++  +mid : List<&2,P113DStmt> = [
++    P113DScalar{N111Bin{p114t_name(site,"borrow_location"),N111U64{},"and",p114t_local(site,"borrow_word"),N111Const{4294967295,255}}},
++    P113DScalar{N111Bin{p114t_name(site,"borrow_rfc_bit"),N111U64{},"shr",p114t_local(site,"borrow_word"),N111Const{63,0}}},
++    P113DIf{p114t_local(site,"borrow_rfc_bit"),w12_bf_rfc_rows(site,heapVal),[]},
++    P113DScalar{N111Bin{p114t_name(site,"borrow_field_bytes"),N111U64{},"shl",p114t_local(site,"borrow_location"),N111Const{3,0}}},
++    P113DScalar{N111Offset{p114t_name(site,"borrow_fields"),heapVal,p114t_local(site,"borrow_field_bytes")}}]
++  +post = nt_append(P113DStmt,w12_bf_direct_loads(loads,p114t_local(site,"borrow_fields")),
++            [P113DScalar{N111Set{dest,N111U64{},N111Const{count,0}}}])
++  nt_append(P113DStmt,pre,nt_append(P113DStmt,mid,post))
++
++law x185_late_stmts_h:
++  for body: List<&2,P113DStmt>
++  for +ids: N111Ids
++  for +site: U32
++  for +hasHeap: Bool
++  P113ABody
++
++@unsafe
++def w12_late_borrow_loads(+stmt: N111Stmt, +rest: List<&2,P113DStmt>, +ids: N111Ids,
++    +site: U32, +hasHeap: Bool, +dest: String, +term: N111Value, +buffer: String,
++    +ctor: String, +count: U32, taken: W12BFLoads) -> P113ABody:
++  match taken:
++    case W12BFLoads{+loads,+tail}:
++      +nextSite = nt_choose(U32,U32.is_lt(site,4294967200),u => U32.inc(site),u => site)
++      nt_choose(P113ABody,Bool.not(List.is_empty(&2,N111Stmt,loads)) && w4_bf_no_buf_load(buffer,tail),
++        u => p113a_prefix(
++               nt_append(P113DStmt,x181_scalar_rows(w12_bf_guard(term,ctor,ids,site)),
++                 [P113DIf{p114t_local(site,"borrow_guard"),
++                    w12_bf_fast_direct(dest,count,site,hasHeap,loads),
++                    Con{P113DScalar{stmt},x181_scalar_rows(loads)}}]),
++               x185_late_stmts_h(tail,ids,nextSite,hasHeap)),
++        u => p113a_prefix(x181_scalar_rows(x185_late_scalar(stmt,ids,site,w4_bf_mask_for(stmt,rest,ids,site))),
++               x185_late_stmts_h(rest,ids,nextSite,hasHeap)))
++
++@unsafe
++def w12_late_borrow_try(+stmt: N111Stmt, +rest: List<&2,P113DStmt>, +ids: N111Ids,
++    +site: U32, +hasHeap: Bool, read: P128BFRead) -> P113ABody:
++  match read:
++    case P128BFRead{+dest,+term,+buffer,+ctor,+count}:
++      w12_late_borrow_loads(stmt,rest,ids,site,hasHeap,dest,term,buffer,ctor,count,
++        w12_bf_take_loads(buffer,dest,count,rest,[]))
++    case _:
++      +nextSite = nt_choose(U32,U32.is_lt(site,4294967200),u => U32.inc(site),u => site)
++      p113a_prefix(x181_scalar_rows(x185_late_scalar(stmt,ids,site,w4_bf_mask_for(stmt,rest,ids,site))),
++        x185_late_stmts_h(rest,ids,nextSite,hasHeap))
++
++@unsafe
++def w5b_late_store_call_h(+styp: N111Type, +sbuf: String, +sval: N111Value,
++    +dest: String, +sym: String, +args: List<&2,N111Arg>, +rest: List<&2,P113DStmt>,
++    +ids: N111Ids, +site: U32, +hasHeap: Bool, matched: Maybe<&2,List<&2,P113DStmt>>) -> P113ABody:
++  match matched:
++    case Some{expanded}:
++      p113a_prefix(expanded,
++        x185_late_stmts_h(rest,ids,nt_choose(U32,U32.is_lt(site,4294967200),u => U32.inc(site),u => site),hasHeap))
++    case None{}:
++      +s0 : N111Stmt = N111Store{styp,N111Local{sbuf},0,sval}
++      +c0 : P113DStmt = P113DScalar{N111Call{dest,N111U64{},sym,args}}
++      +r0 : List<&2,P113DStmt> = Con{c0,rest}
++      p113a_prefix(x181_scalar_rows(x185_late_scalar(s0,ids,site,w4_bf_mask_for(s0,r0,ids,site))),
++        x185_late_stmts_h(r0,ids,nt_choose(U32,U32.is_lt(site,4294967200),u => U32.inc(site),u => site),hasHeap))
++
++@unsafe
++def x185_late_yes_h(condition: N111Value, no: List<&2,P113DStmt>, rest: List<&2,P113DStmt>,
++    +ids: N111Ids, +hasHeap: Bool, yes: P113ABody) -> P113ABody:
++  match yes:
++    case P113ABody{body,next}: x185_late_no_h(condition,body,rest,ids,hasHeap,x185_late_stmts_h(no,ids,next,hasHeap))
++
++@unsafe
++def x185_late_no_h(condition: N111Value, yes: List<&2,P113DStmt>, rest: List<&2,P113DStmt>,
++    +ids: N111Ids, +hasHeap: Bool, no: P113ABody) -> P113ABody:
++  match no:
++    case P113ABody{body,next}: p113a_prefix([P113DIf{condition,yes,body}],x185_late_stmts_h(rest,ids,next,hasHeap))
++
++@unsafe
++def x185_late_stmts_h(body,ids,site,hasHeap):
+   match body:
+     case Nil{}: P113ABody{[],site}
+     case Con{P113DScalar{N111Store{+styp,N111Local{+sbuf},0,+sval}},
+          Con{P113DScalar{N111Call{+dest,N111U64{},+sym,+args}},+rest}}:
+-      w5b_late_store_call(styp,sbuf,sval,dest,sym,args,rest,ids,site,
++      w5b_late_store_call_h(styp,sbuf,sval,dest,sym,args,rest,ids,site,hasHeap,
+         w5b_match_succ_pair(styp,sbuf,sval,dest,sym,args,site))
+     case Con{P113DScalar{N111If{condition,yes,no}},rest}:
+-      x185_late_yes(condition,x181_scalar_rows(no),rest,ids,x185_late_stmts(x181_scalar_rows(yes),ids,site))
++      x185_late_yes_h(condition,x181_scalar_rows(no),rest,ids,hasHeap,x185_late_stmts_h(x181_scalar_rows(yes),ids,site,hasHeap))
+     case Con{P113DScalar{+stmt},+rest}:
+-      p113a_prefix(x181_scalar_rows(x185_late_scalar(stmt,ids,site,w4_bf_mask_for(stmt,rest,ids,site))),
+-        x185_late_stmts(rest,ids,nt_choose(U32,U32.is_lt(site,4294967200),u => U32.inc(site),u => site)))
++      w12_late_borrow_try(stmt,rest,ids,site,hasHeap,p128bf_match(stmt,ids,site))
+     case Con{P113DIf{condition,yes,no},rest}:
+-      x185_late_yes(condition,no,rest,ids,x185_late_stmts(yes,ids,site))
+-    case Con{head,rest}: p113a_prefix([head],x185_late_stmts(rest,ids,site))
+-
+-@unsafe
+-def x185_late_yes(condition: N111Value, no: List<&2,P113DStmt>, rest: List<&2,P113DStmt>,
+-    +ids: N111Ids, yes: P113ABody) -> P113ABody:
+-  match yes:
+-    case P113ABody{body,next}: x185_late_no(condition,body,rest,ids,x185_late_stmts(no,ids,next))
++      x185_late_yes_h(condition,no,rest,ids,hasHeap,x185_late_stmts_h(yes,ids,site,hasHeap))
++    case Con{head,rest}: p113a_prefix([head],x185_late_stmts_h(rest,ids,site,hasHeap))
+ 
+ @unsafe
+-def x185_late_no(condition: N111Value, yes: List<&2,P113DStmt>, rest: List<&2,P113DStmt>,
+-    +ids: N111Ids, no: P113ABody) -> P113ABody:
+-  match no:
+-    case P113ABody{body,next}: p113a_prefix([P113DIf{condition,yes,body}],x185_late_stmts(rest,ids,next))
++def x185_late_stmts(body,ids,site):
++  x185_late_stmts_h(body,ids,site,False{})
+ 
+ @unsafe
+ def x181_scalar(stmt,ids,frame,code):
+@@ -59255,12 +59375,12 @@
+           x188_i1("jz",X187Target{x181_label(next,frame)})]),chunks},U32.add(next,2),False{},error}))
+ 
+ @unsafe
+-def x186_x_emit_yes(+label: U32, no: List<&2,X186FloatNode>, ids: N111Ids,
++def x186_x_emit_yes(+label: U32, +no: List<&2,X186FloatNode>, ids: N111Ids,
+     +frame: X181Frame, homes: KDef, yes: X181Code) -> X181Code:
+   match yes:
+     case X181Code{chunks,next,+terminal,error}:
+       x181_if_end(label,terminal,frame,x186_x_emit_nodes(no,ids,frame,homes,
+-        X181Code{Con{x188_cat(nt_choose(X188Seq,terminal,u => X188Empty{},
++        X181Code{Con{x188_cat(nt_choose(X188Seq,terminal || List.is_empty(&2,X186FloatNode,no),u => X188Empty{},
+           u => x188_i1("jmp",X187Target{x181_label(U32.inc(label),frame)})),
+           x188_label(x181_label(label,frame))),chunks},next,False{},error}))
+ 
+@@ -59602,12 +59722,23 @@
+     case _: X185PhysicalNone{}
+ 
+ @unsafe
++def w12_int_cmp_imm(+typ: N111Type, right: N111Value, +dst: X187Operand, +ids: N111Ids) -> X188Seq:
++  match right:
++    case N111Const{+lo,0}:
++      nt_choose(X188Seq,U32.is_eq(p111v_type(typ),1) || U32.is_le(lo,2147483647),
++        u => x188_i2(x181_width(typ,"cmpq","cmpl"),X187Imm{lo,0},dst),
++        u => X188Empty{})
++    case N111CtorId{ctor}:
++      x188_i2(x181_width(typ,"cmpq","cmpl"),X187Imm{w12_ctor_id(ctor,ids),0},dst)
++    case _: X188Empty{}
++
++@unsafe
+ def w2_int_branch_code(+typ: N111Type, op: String, +left: N111Value, +right: N111Value,
+     label: U32, +ids: N111Ids, +frame: X181Frame) -> X188Seq:
+   +lh = w2_phys_val(left,frame)
+   +dst = w2_phys_dst(lh,typ)
+   +load_l = w2_phys_load(lh,left,ids,frame)
+-  +imm = w2_int_cmp_imm(typ,right,dst)
++  +imm = w12_int_cmp_imm(typ,right,dst,ids)
+   x188_many([load_l,
+     nt_choose(X188Seq,x188_empty(imm),
+       u => x188_cat(x181_load(right,ids,frame,x188_reg(11,64)),
+@@ -59795,23 +59926,47 @@
+       nt_choose(U32,agy_str_eq(dk(found),"N111Id"),u => U32.or(da(found),65536),u => 0)
+ 
+ @unsafe
+-def w2b_bool_fast_prefix(+word: N111Value, +l_no: U32, +l_yes: U32, +ids: N111Ids, +frame: X181Frame) -> X188Seq:
++def w12_bool_fast_prefix(+word: N111Value, +invert: Bool, +l_no: U32, +l_yes: U32, +ids: N111Ids, +frame: X181Frame) -> X188Seq:
+   +lh = w2_phys_val(word,frame)
+   +reg = w2_phys_dst(lh,N111U64{})
+   +load_w = w2_phys_load(lh,word,ids,frame)
+   +expected = w2b_bool_cid_imm(ids)
+-  x188_many([
+-    load_w,
+-    x188_i2("cmpq",X187Imm{0,0},reg),
+-    x188_i1("je",X187Target{x181_label(l_yes,frame)}),
+-    x188_i2("cmpq",X187Imm{1,0},reg),
+-    x188_i1("je",X187Target{x181_label(l_no,frame)}),
+-    x188_i2("movq",reg,x188_reg(10,64)),
+-    x188_i2("shrq",X187Imm{40,0},x188_reg(10,64)),
+-    x188_i2("andl",X187Imm{8388607,0},x188_reg(10,32)),
+-    x188_i2("cmpl",X187Imm{expected,0},x188_reg(10,32)),
+-    x188_i1("je",X187Target{x181_label(l_no,frame)}),
+-    x188_label(x181_label(l_yes,frame))])
++  nt_choose(X188Seq,invert,
++    u => x188_many([
++      load_w,
++      x188_i2("testq",reg,reg),
++      x188_i1("jz",X187Target{x181_label(l_yes,frame)}),
++      x188_i2("cmpq",X187Imm{1,0},reg),
++      x188_i1("je",X187Target{x181_label(l_no,frame)}),
++      x188_i2("movq",reg,x188_reg(10,64)),
++      x188_i2("shrq",X187Imm{40,0},x188_reg(10,64)),
++      x188_i2("andl",X187Imm{8388607,0},x188_reg(10,32)),
++      x188_i2("cmpl",X187Imm{expected,0},x188_reg(10,32)),
++      x188_i1("je",X187Target{x181_label(l_no,frame)}),
++      x188_label(x181_label(l_yes,frame))]),
++    u => x188_many([
++      load_w,
++      x188_i2("testq",reg,reg),
++      x188_i1("jz",X187Target{x181_label(l_no,frame)}),
++      x188_i2("cmpq",X187Imm{1,0},reg),
++      x188_i1("je",X187Target{x181_label(l_yes,frame)}),
++      x188_i2("movq",reg,x188_reg(10,64)),
++      x188_i2("shrq",X187Imm{40,0},x188_reg(10,64)),
++      x188_i2("andl",X187Imm{8388607,0},x188_reg(10,32)),
++      x188_i2("cmpl",X187Imm{expected,0},x188_reg(10,32)),
++      x188_i1("jne",X187Target{x181_label(l_no,frame)}),
++      x188_label(x181_label(l_yes,frame))]))
++
++@unsafe
++def w2b_bool_fast_prefix(+word: N111Value, +l_no: U32, +l_yes: U32, +ids: N111Ids, +frame: X181Frame) -> X188Seq:
++  w12_bool_fast_prefix(word,True{},l_no,l_yes,ids,frame)
++
++@unsafe
++def w12_signbit_branch_code(+w: N111Value, label: U32, +ids: N111Ids, +frame: X181Frame) -> X188Seq:
++  +lh = w2_phys_val(w,frame)
++  +reg = w2_phys_dst(lh,N111U64{})
++  +load_w = w2_phys_load(lh,w,ids,frame)
++  x188_many([load_w,x188_i2("testq",reg,reg),x188_i1("jge",X187Target{x181_label(label,frame)})])
+ 
+ @unsafe
+ def w2b_emit_bool_fast(+word: N111Value, yes: List<&2,X186FloatNode>, no: List<&2,X186FloatNode>,
+@@ -61640,12 +61795,12 @@
+         X181Code{Con{prefix,chunks},U32.add(next,2),False{},error}))
+ 
+ @unsafe
+-def x190_if_yes(+label: U32, no: List<&2,P113DStmt>, facts: X190BranchFacts,
++def x190_if_yes(+label: U32, +no: List<&2,P113DStmt>, facts: X190BranchFacts,
+     ids: N111Ids, +frame: X181Frame, yes: X181Code) -> X181Code:
+   match yes:
+     case X181Code{chunks,next,+terminal,error}:
+       x181_if_end(label,terminal,frame,x190_stmts(no,facts,ids,frame,
+-        X181Code{Con{x188_cat(nt_choose(X188Seq,terminal,u => X188Empty{},
++        X181Code{Con{x188_cat(nt_choose(X188Seq,terminal || List.is_empty(&2,P113DStmt,no),u => X188Empty{},
+           u => x188_i1("jmp",X187Target{x181_label(U32.inc(label),frame)})),
+           x188_label(x181_label(label,frame))),chunks},next,False{},error}))
+ 
+@@ -61803,10 +61958,270 @@
+     case Some{fid} Con{head,rest}: x198h_tail(fid,ids,frame,x190_stmt(head,facts,ids,frame,code))
+     case _ _: x194_ps_step(x194_ps_pick(body),body,facts,ids,frame,code)
+ 
++# W12-A: Ordinary integer emitter (x190_step) 1-level step Unboxed Bool Match,
++# Sign-Bit & Cmp Branch Fusion.
++type W12IBoolMatch is Data:
++  W12IBoolHit{+word: N111Value, +invert: Bool, +yes: List<&2,P113DStmt>, +no: List<&2,P113DStmt>, +rest: List<&2,P113DStmt>}
++  W12IBoolMiss{}
++
++law w12_i_dead_in:
++  for +name: String
++  for body: List<&2,P113DStmt>
++  for +tail: List<&2,List<&2,P113DStmt>>
++  for +fuel: U32
++  Bool
++
++@unsafe
++def w12_i_dead_tail(+name: String, tail: List<&2,List<&2,P113DStmt>>, +fuel: U32) -> Bool:
++  match tail:
++    case Nil{}: True{}
++    case Con{head,rest}: w12_i_dead_in(name,head,rest,fuel)
++
++@unsafe
++def w12_i_dead_step(+name: String, body: List<&2,P113DStmt>, +tail: List<&2,List<&2,P113DStmt>>, +fuel: U32) -> Bool:
++  match body:
++    case Nil{}: w12_i_dead_tail(name,tail,U32.sub(fuel,1))
++    case Con{P113DIf{cond,yes,no},+rest}:
++      +half = U32.div(fuel,2)
++      nt_choose(Bool,w2_val_reads(name,cond),v => False{},
++        v => w12_i_dead_in(name,yes,Con{rest,tail},half) &&
++             w12_i_dead_in(name,no,Con{rest,tail},half))
++    case Con{+stmt,rest}:
++      nt_choose(Bool,w2_dstmt_reads(name,stmt),v => False{},
++        v => nt_choose(Bool,w2_dstmt_terminal(stmt) || w2_dstmt_writes(name,stmt),w => True{},
++          w => w12_i_dead_in(name,rest,tail,U32.sub(fuel,1))))
++
++@unsafe
++def w12_i_dead_in(name,body,tail,fuel):
++  nt_choose(Bool,U32.is_eq(fuel,0),u => False{},u => w12_i_dead_step(name,body,tail,fuel))
++
++# 1-level step opposite-polarity Bool check stripper for `no` branch:
++# Handles both CSE'd (eq;or;[xor];if) and un-CSE'd ([eq1];shr;and;[orCtor];eq;or;[xor];if).
++@unsafe
++def w12_i_st_if(body: List<&2,P113DStmt>, +orig: List<&2,P113DStmt>, +mc: String) -> List<&2,P113DStmt>:
++  match body:
++    case Con{P113DIf{N111Local{mcb},+yes2,no2},+tail2}:
++      nt_choose(List<&2,P113DStmt>,agy_str_eq(mcb,mc),u => x190_branch_append(yes2,tail2),u => orig)
++    case _: orig
++
++@unsafe
++def w12_i_st_xor_go(body: List<&2,P113DStmt>, +orig: List<&2,P113DStmt>, +mc: String) -> List<&2,P113DStmt>:
++  match body:
++    case Con{P113DScalar{N111Bin{+mc2,t,op,N111Local{mcb},N111Const{1,0}}},+rest}:
++      nt_choose(List<&2,P113DStmt>,agy_str_eq(op,"xor") && agy_str_eq(mcb,mc),
++        v => w12_i_st_if(rest,orig,mc2),v => orig)
++    case _: orig
++
++@unsafe
++def w12_i_st_xor(+body: List<&2,P113DStmt>, +orig: List<&2,P113DStmt>, +wantXor: Bool, +mc: String) -> List<&2,P113DStmt>:
++  nt_choose(List<&2,P113DStmt>,wantXor,
++    u => w12_i_st_xor_go(body,orig,mc),
++    u => w12_i_st_if(body,orig,mc))
++
++@unsafe
++def w12_i_st_or(body: List<&2,P113DStmt>, +orig: List<&2,P113DStmt>, +wantXor: Bool, +oRaw: String, +bx: String) -> List<&2,P113DStmt>:
++  match body:
++    case Con{P113DScalar{N111Bin{+mc,t,op,N111Local{rb},N111Local{bxb}}},+rest}:
++      nt_choose(List<&2,P113DStmt>,agy_str_eq(op,"or") && agy_str_eq(rb,oRaw) && agy_str_eq(bxb,bx),
++        u => w12_i_st_xor(rest,orig,wantXor,mc),u => orig)
++    case _: orig
++
++@unsafe
++def w12_i_st_eq(body: List<&2,P113DStmt>, +orig: List<&2,P113DStmt>, +wantXor: Bool, +oRaw: String, +oBits: String, +oExp: String) -> List<&2,P113DStmt>:
++  match body:
++    case Con{P113DScalar{N111Bin{+bx,t,op,N111Local{b2b},N111Local{exb}}},+rest}:
++      nt_choose(List<&2,P113DStmt>,agy_str_eq(op,"eq") && agy_str_eq(b2b,oBits) && agy_str_eq(exb,oExp),
++        u => w12_i_st_or(rest,orig,wantXor,oRaw,bx),u => orig)
++    case _: orig
++
++@unsafe
++def w12_i_st_opt_exp(+body: List<&2,P113DStmt>, +orig: List<&2,P113DStmt>, +wantXor: Bool, +oRaw: String, +oBits: String, +oExp: String) -> List<&2,P113DStmt>:
++  match body:
++    case Con{P113DScalar{N111Bin{+ex,t,op,N111CtorId{cname},N111Const{65536,0}}},+rest}:
++      nt_choose(List<&2,P113DStmt>,agy_str_eq(op,"or") && agy_str_eq(cname,"True"),
++        u => w12_i_st_eq(rest,orig,wantXor,oRaw,oBits,ex),
++        u => w12_i_st_eq(body,orig,wantXor,oRaw,oBits,oExp))
++    case _: w12_i_st_eq(body,orig,wantXor,oRaw,oBits,oExp)
++
++@unsafe
++def w12_i_st_and(body: List<&2,P113DStmt>, +orig: List<&2,P113DStmt>, +wantXor: Bool, +oRaw: String, +b1: String, +oExp: String) -> List<&2,P113DStmt>:
++  match body:
++    case Con{P113DScalar{N111Bin{+b2,t,op,N111Local{b1b},N111Const{8388607,0}}},+rest}:
++      nt_choose(List<&2,P113DStmt>,agy_str_eq(op,"and") && agy_str_eq(b1b,b1),
++        u => w12_i_st_opt_exp(rest,orig,wantXor,oRaw,b2,oExp),u => orig)
++    case _: orig
++
++@unsafe
++def w12_i_st_opt_shr(+body: List<&2,P113DStmt>, +orig: List<&2,P113DStmt>, +wantXor: Bool, +word: N111Value, +oRaw: String, +oBits: String, +oExp: String) -> List<&2,P113DStmt>:
++  match body:
++    case Con{P113DScalar{N111Bin{+b1,t,op,+w1,N111Const{40,0}}},+rest}:
++      nt_choose(List<&2,P113DStmt>,agy_str_eq(op,"shr") && w2_val_eq(w1,word),
++        u => w12_i_st_and(rest,orig,wantXor,oRaw,b1,oExp),
++        u => w12_i_st_opt_exp(body,orig,wantXor,oRaw,oBits,oExp))
++    case _: w12_i_st_opt_exp(body,orig,wantXor,oRaw,oBits,oExp)
++
++@unsafe
++def w12_i_strip_opp(+body: List<&2,P113DStmt>, +wantXor: Bool, +word: N111Value, +oRaw: String, +oBits: String, +oExp: String) -> List<&2,P113DStmt>:
++  match body:
++    case Con{P113DScalar{N111Set{s1,ts1,N111Local{s1b}}},+more}:
++      nt_choose(List<&2,P113DStmt>,agy_str_eq(s1,oRaw) && agy_str_eq(s1b,oRaw),
++        u => w12_i_st_opt_shr(more,body,wantXor,word,oRaw,oBits,oExp),
++        u => w12_i_st_opt_shr(body,body,wantXor,word,oRaw,oBits,oExp))
++    case Con{P113DScalar{N111Bin{+raw,t,op,+w0,N111Const{1,0}}},+more}:
++      nt_choose(List<&2,P113DStmt>,agy_str_eq(op,"eq") && w2_val_eq(w0,word),
++        u => w12_i_st_opt_shr(more,body,wantXor,word,raw,oBits,oExp),
++        u => w12_i_st_opt_shr(body,body,wantXor,word,oRaw,oBits,oExp))
++    case _: w12_i_st_opt_shr(body,body,wantXor,word,oRaw,oBits,oExp)
++
++@unsafe
++def w12_i_bool_dead(+raw: String, +b1: String, +b2: String, +ex: String, +bx: String, +mc: String,
++    +yes: List<&2,P113DStmt>, +no2: List<&2,P113DStmt>, +rest: List<&2,P113DStmt>) -> Bool:
++  w12_i_dead_in(raw,yes,[rest],256) && w12_i_dead_in(raw,no2,[rest],256) &&
++  w12_i_dead_in(b1,yes,[rest],256) && w12_i_dead_in(b1,no2,[rest],256) &&
++  w12_i_dead_in(b2,yes,[rest],256) && w12_i_dead_in(b2,no2,[rest],256) &&
++  w12_i_dead_in(ex,yes,[rest],256) && w12_i_dead_in(ex,no2,[rest],256) &&
++  w12_i_dead_in(bx,yes,[rest],256) && w12_i_dead_in(bx,no2,[rest],256) &&
++  w12_i_dead_in(mc,yes,[rest],256) && w12_i_dead_in(mc,no2,[rest],256)
++
++@unsafe
++def w12_i_bm_fin(+w0: N111Value, +invert: Bool, +raw: String, +b1: String, +b2: String, +ex: String,
++    +bx: String, +mc: String, +mc2: String, +yes: List<&2,P113DStmt>, +no: List<&2,P113DStmt>, +rest: List<&2,P113DStmt>) -> W12IBoolMatch:
++  +no2 = w12_i_strip_opp(no,Bool.not(invert),w0,raw,b2,ex)
++  nt_choose(W12IBoolMatch,
++    w12_i_bool_dead(raw,b1,b2,ex,bx,mc2,yes,no2,rest) &&
++    w12_i_dead_in(mc,yes,[rest],256) && w12_i_dead_in(mc,no2,[rest],256),
++    u => W12IBoolHit{w0,invert,yes,no2,rest},
++    u => W12IBoolMiss{})
++
++@unsafe
++def w12_i_bm_if(body: List<&2,P113DStmt>, +w0: N111Value, +invert: Bool, +raw: String, +b1: String, +b2: String,
++    +ex: String, +bx: String, +mc: String, +mc2: String) -> W12IBoolMatch:
++  match body:
++    case Con{P113DIf{N111Local{mcb},+yes,+no},+rest}:
++      nt_choose(W12IBoolMatch,agy_str_eq(mcb,mc2),
++        u => w12_i_bm_fin(w0,invert,raw,b1,b2,ex,bx,mc,mc2,yes,no,rest),
++        u => W12IBoolMiss{})
++    case _: W12IBoolMiss{}
++
++@unsafe
++def w12_i_bm_6(body: List<&2,P113DStmt>, +w0: N111Value, +raw: String, +b1: String, +b2: String,
++    +ex: String, +bx: String, +mc: String) -> W12IBoolMatch:
++  match body:
++    case Con{P113DScalar{N111Bin{+mc2,t,op,N111Local{mcb},N111Const{1,0}}},+rest}:
++      nt_choose(W12IBoolMatch,agy_str_eq(op,"xor") && agy_str_eq(mcb,mc),
++        u => w12_i_bm_if(rest,w0,True{},raw,b1,b2,ex,bx,mc,mc2),
++        u => W12IBoolMiss{})
++    case Con{P113DIf{N111Local{mcb},+yes,+no},+rest}:
++      nt_choose(W12IBoolMatch,agy_str_eq(mcb,mc),
++        u => w12_i_bm_fin(w0,False{},raw,b1,b2,ex,bx,mc,mc,yes,no,rest),
++        u => W12IBoolMiss{})
++    case _: W12IBoolMiss{}
++
++@unsafe
++def w12_i_bm_5(body: List<&2,P113DStmt>, +w0: N111Value, +raw: String, +b1: String, +b2: String, +ex: String, +bx: String) -> W12IBoolMatch:
++  match body:
++    case Con{P113DScalar{N111Bin{+mc,t,op,N111Local{rb},N111Local{bxb}}},+rest}:
++      nt_choose(W12IBoolMatch,agy_str_eq(op,"or") && agy_str_eq(rb,raw) && agy_str_eq(bxb,bx),
++        u => w12_i_bm_6(rest,w0,raw,b1,b2,ex,bx,mc),u => W12IBoolMiss{})
++    case _: W12IBoolMiss{}
++
++@unsafe
++def w12_i_bm_4(body: List<&2,P113DStmt>, +w0: N111Value, +raw: String, +b1: String, +b2: String, +ex: String) -> W12IBoolMatch:
++  match body:
++    case Con{P113DScalar{N111Bin{+bx,t,op,N111Local{b2b},N111Local{exb}}},+rest}:
++      nt_choose(W12IBoolMatch,agy_str_eq(op,"eq") && agy_str_eq(b2b,b2) && agy_str_eq(exb,ex),
++        u => w12_i_bm_5(rest,w0,raw,b1,b2,ex,bx),u => W12IBoolMiss{})
++    case _: W12IBoolMiss{}
++
++@unsafe
++def w12_i_bm_3(body: List<&2,P113DStmt>, +w0: N111Value, +raw: String, +b1: String, +b2: String) -> W12IBoolMatch:
++  match body:
++    case Con{P113DScalar{N111Bin{+ex,t,op,N111CtorId{cname},N111Const{65536,0}}},+rest}:
++      nt_choose(W12IBoolMatch,agy_str_eq(op,"or") && agy_str_eq(cname,"True"),
++        u => w12_i_bm_4(rest,w0,raw,b1,b2,ex),u => W12IBoolMiss{})
++    case _: W12IBoolMiss{}
++
++@unsafe
++def w12_i_bm_2(body: List<&2,P113DStmt>, +w0: N111Value, +raw: String, +b1: String) -> W12IBoolMatch:
++  match body:
++    case Con{P113DScalar{N111Bin{+b2,t,op,N111Local{b1b},N111Const{8388607,0}}},+rest}:
++      nt_choose(W12IBoolMatch,agy_str_eq(op,"and") && agy_str_eq(b1b,b1),
++        u => w12_i_bm_3(rest,w0,raw,b1,b2),u => W12IBoolMiss{})
++    case _: W12IBoolMiss{}
++
++@unsafe
++def w12_i_bm_1(body: List<&2,P113DStmt>, +w0: N111Value, +raw: String) -> W12IBoolMatch:
++  match body:
++    case Con{P113DScalar{N111Bin{+b1,t,op,+w1,N111Const{40,0}}},+rest}:
++      nt_choose(W12IBoolMatch,agy_str_eq(op,"shr") && w2_val_eq(w1,w0),
++        u => w12_i_bm_2(rest,w0,raw,b1),u => W12IBoolMiss{})
++    case _: W12IBoolMiss{}
++
++@unsafe
++def w12_i_bool_match(body: List<&2,P113DStmt>) -> W12IBoolMatch:
++  match body:
++    case Con{P113DScalar{N111Bin{+raw,t,op,+w0,N111Const{1,0}}},+rest}:
++      nt_choose(W12IBoolMatch,agy_str_eq(op,"eq"),
++        u => w12_i_bm_1(rest,w0,raw),u => W12IBoolMiss{})
++    case _: W12IBoolMiss{}
++
++@unsafe
++def w12_x190_emit_bool(+word: N111Value, +invert: Bool, yes: List<&2,P113DStmt>, no: List<&2,P113DStmt>,
++    +facts: X190BranchFacts, +ids: N111Ids, +frame: X181Frame, code: X181Code) -> X181Code:
++  match code:
++    case X181Code{chunks,+next,terminal,error}:
++      +prefix = w12_bool_fast_prefix(word,invert,next,U32.add(next,2),ids,frame)
++      x190_if_yes(next,no,facts,ids,frame,x190_stmts(yes,facts,ids,frame,
++        X181Code{Con{prefix,chunks},U32.add(next,3),False{},error}))
++
++@unsafe
++def w12_x190_emit_branch(prefix: X188Seq, yes: List<&2,P113DStmt>, no: List<&2,P113DStmt>,
++    +facts: X190BranchFacts, +ids: N111Ids, +frame: X181Frame, code: X181Code) -> X181Code:
++  match code:
++    case X181Code{chunks,+next,terminal,error}:
++      x190_if_yes(next,no,facts,ids,frame,x190_stmts(yes,facts,ids,frame,
++        X181Code{Con{prefix,chunks},U32.add(next,2),False{},error}))
++
++@unsafe
++def w12_x190_bin_if(+c: String, +typ: N111Type, +op: String, +left: N111Value, +right: N111Value,
++    nextStmts: List<&2,P113DStmt>, +origBody: List<&2,P113DStmt>, +facts: X190BranchFacts,
++    +ids: N111Ids, +frame: X181Frame, +code: X181Code) -> X181Code:
++  match nextStmts:
++    case Con{P113DIf{N111Local{+cb},+yes,+no},+rest}:
++      nt_choose(X181Code,agy_str_eq(c,cb) && agy_str_eq(op,"shr") && U32.is_eq(p111v_type(typ),2) &&
++          w2_val_eq(right,N111Const{63,0}) && w12_i_dead_in(c,yes,[rest],512) && w12_i_dead_in(c,no,[rest],512),
++        u => x190_stmts(rest,facts,ids,frame,
++               w12_x190_emit_branch(w12_signbit_branch_code(left,w2_code_next(code),ids,frame),yes,no,facts,ids,frame,code)),
++        u => nt_choose(X181Code,agy_str_eq(c,cb) && Bool.not(String.is_empty(w2_int_inv(op))) &&
++               (List.is_empty(&2,P113DStmt,no) || x190_branch_terminal(yes) || x190_branch_terminal(no) || U32.is_gt(p113i_size(yes),2)) &&
++               w12_i_dead_in(c,yes,[rest],512) && w12_i_dead_in(c,no,[rest],512),
++          v => x190_stmts(rest,facts,ids,frame,
++                 w12_x190_emit_branch(w2_int_branch_code(typ,op,left,right,w2_code_next(code),ids,frame),yes,no,facts,ids,frame,code)),
++          v => x198h_selected(x198h_target(origBody,ids,frame),origBody,facts,ids,frame,code)))
++    case _:
++      x198h_selected(x198h_target(origBody,ids,frame),origBody,facts,ids,frame,code)
++
++@unsafe
++def w12_x190_other(+body: List<&2,P113DStmt>, +facts: X190BranchFacts,
++    +ids: N111Ids, +frame: X181Frame, +code: X181Code) -> X181Code:
++  match body:
++    case Con{P113DScalar{N111Bin{+c,+typ,+op,+left,+right}},+rest}:
++      w12_x190_bin_if(c,typ,op,left,right,rest,body,facts,ids,frame,code)
++    case _:
++      x198h_selected(x198h_target(body,ids,frame),body,facts,ids,frame,code)
++
++@unsafe
++def w12_x190_step(hit: W12IBoolMatch, +body: List<&2,P113DStmt>, +facts: X190BranchFacts,
++    +ids: N111Ids, +frame: X181Frame, +code: X181Code) -> X181Code:
++  match hit:
++    case W12IBoolHit{word,invert,yes,no,rest}:
++      x190_stmts(rest,facts,ids,frame,w12_x190_emit_bool(word,invert,yes,no,facts,ids,frame,code))
++    case W12IBoolMiss{}: w12_x190_other(body,facts,ids,frame,code)
++
+ @unsafe
+ def x190_step(+body: List<&2,P113DStmt>, +facts: X190BranchFacts,
+     +ids: N111Ids, +frame: X181Frame, +code: X181Code) -> X181Code:
+-  x198h_selected(x198h_target(body,ids,frame),body,facts,ids,frame,code)
++  w12_x190_step(w12_i_bool_match(body),body,facts,ids,frame,code)
+ 
+ @unsafe
+ def x190_stmts(body,facts,ids,frame,code):
+@@ -68673,11 +69088,34 @@
+ 
+ # Setup executes once. Again only reaches the body label, so invariant array
+ # metadata is not recomputed from changing parameter homes on a backedge.
++law w12_has_borrow_fields:
++  for body: List<&2,P113DStmt>
++  Bool
++
++@unsafe
++def w12_has_borrow_fields(body):
++  match body:
++    case Nil{}: False{}
++    case Con{P113DScalar{N111Call{d,t,sym,args}},rest}:
++      agy_str_eq(sym,"p118_rt_borrow_fields") || w12_has_borrow_fields(rest)
++    case Con{P113DIf{c,yes,no},rest}:
++      w12_has_borrow_fields(yes) || w12_has_borrow_fields(no) || w12_has_borrow_fields(rest)
++    case Con{h,rest}: w12_has_borrow_fields(rest)
++
++@unsafe
++def x185_function_late_setup_h(symbol: String, params: List<&2,String>, body: List<&2,P113DStmt>,
++    +ids: N111Ids, +hasHeap: Bool, setup: P113ABody) -> X181Output:
++  match setup:
++    case P113ABody{ready,next}: x185_function_late_body(symbol,params,ready,ids,x185_late_stmts_h(body,ids,next,hasHeap))
++
+ @unsafe
+ def x185_function_setup(+symbol: String, +params: List<&2,String>, +setup: List<&2,P113DStmt>,
+     +body: List<&2,P113DStmt>, +ids: N111Ids) -> X181Output:
+   nt_choose(X181Output,x185_late_enabled() && p114t_names(params) && p114t_body_names(setup) && p114t_body_names(body),
+-    u => x185_function_late_setup(symbol,params,body,ids,x185_late_stmts(setup,ids,0)),
++    u => nt_choose(X181Output,x190_register_loop(body) && w12_has_borrow_fields(body),
++      v => x185_function_late_setup_h(symbol,params,body,ids,True{},
++             x185_late_stmts(nt_append(P113DStmt,setup,[P113DScalar{N111Load{"p114t_borrow_heap",N111Ptr{},N111Local{"state"},0}}]),ids,0)),
++      v => x185_function_late_setup(symbol,params,body,ids,x185_late_stmts(setup,ids,0))),
+     u => x185_function_place(symbol,params,setup,body,ids))
+ 
+ @unsafe
+@@ -70198,16 +70636,29 @@
+ # Preserve the direct-worker parameter kinds until after the existing scalar
+ # normalization. Fallback retains the old pipeline; no operation is selected here.
+ @unsafe
++def x198n_normalized_h(symbol: String, +names: List<&2,String>, +params: List<&2,NC_Binding>, +setup: List<&2,P113DStmt>, body: List<&2,P113DStmt>, ids: N111Ids) -> X181Output:
++  x185_function_copied(symbol,names,setup,x198n_body(agy_asr_and_dead(setup,x185_dead_body(setup,
++    x185_copy_function(names,setup,x186_expression_body(setup,
++      x190_local_values_body(setup,x192_predicate_body(x186_private_body(names,setup,body))))))),params),ids)
++
++@unsafe
+ def x198n_normalized(symbol: String, +names: List<&2,String>, +params: List<&2,NC_Binding>, body: List<&2,P113DStmt>, ids: N111Ids) -> X181Output:
+-  x185_function_copied(symbol,names,[],x198n_body(agy_asr_and_dead([],x185_dead_body([],
+-    x185_copy_function(names,[],x186_expression_body([],
+-      x190_local_values_body([],x192_predicate_body(x186_private_body(names,[],body))))))),params),ids)
++  x198n_normalized_h(symbol,names,params,[],body,ids)
+ 
+ @unsafe
+-def x198n_place(+symbol: String, +names: List<&2,String>, +params: List<&2,NC_Binding>, +body: List<&2,P113DStmt>, +ids: N111Ids) -> X181Output:
++def x198n_place_h(+symbol: String, +names: List<&2,String>, +params: List<&2,NC_Binding>, +setup: List<&2,P113DStmt>, +body: List<&2,P113DStmt>, +ids: N111Ids) -> X181Output:
+   nt_choose(X181Output,Bool.not(x190_register_loop(body)) && U32.is_gt(p113i_size(body),96) && w7b_stmts_has_call(body),
+-    u => x186_float_function(symbol,names,[],x185_dead_body([],x185_copy_function(names,[],body)),ids),
+-    u => x198n_normalized(symbol,names,params,x185_prepare_body(names,[],x185_scratch_body(names,[],body)),ids))
++    u => x186_float_function(symbol,names,setup,x185_dead_body(setup,x185_copy_function(names,setup,body)),ids),
++    u => x198n_normalized_h(symbol,names,params,setup,x185_prepare_body(names,setup,x185_scratch_body(names,setup,body)),ids))
++
++@unsafe
++def x198n_place(+symbol: String, +names: List<&2,String>, +params: List<&2,NC_Binding>, +body: List<&2,P113DStmt>, +ids: N111Ids) -> X181Output:
++  x198n_place_h(symbol,names,params,[],body,ids)
++
++@unsafe
++def x198n_late_h(symbol: String, names: List<&2,String>, params: List<&2,NC_Binding>, setup: List<&2,P113DStmt>, ids: N111Ids, result: P113ABody) -> X181Output:
++  match result:
++    case P113ABody{body,next}: x198n_place_h(symbol,names,params,setup,body,ids)
+ 
+ @unsafe
+ def x198n_late(symbol: String, names: List<&2,String>, params: List<&2,NC_Binding>, ids: N111Ids, result: P113ABody) -> X181Output:
+@@ -70462,7 +70913,9 @@
+         u => agy_zip_target_sym(name,sym,ids),u => sym)
+       +core = nt_choose(X181Output,String.is_empty(error),u =>
+         nt_choose(X181Output,x198n_enabled() && U32.is_eq(result,1) && U32.is_le(nt_count(NC_Binding,params),8) && x185_late_enabled() && p114t_names(names) && p114t_body_names(body),v =>
+-          x198n_late(emit_sym,names,params,ids,x185_late_stmts(body,ids,0)),v =>
++          nt_choose(X181Output,x190_register_loop(body) && w12_has_borrow_fields(body),
++            w => x198n_late_h(emit_sym,names,params,[P113DScalar{N111Load{"p114t_borrow_heap",N111Ptr{},N111Local{"state"},0}}],ids,x185_late_stmts_h(body,ids,0,True{})),
++            w => x198n_late(emit_sym,names,params,ids,x185_late_stmts(body,ids,0))),v =>
+           x181_function(emit_sym,names,body,ids)),u => X181Output{[],error})
+       nt_choose(X181Output,String.is_empty(error) && U32.is_eq(result,1) && U32.is_eq(nt_count(NC_Binding,params),3),
+         u => agy_zip_wrap_direct(name,sym,ids,core,agy_zip_get_mark(name,ids)),u => core)

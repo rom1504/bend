@@ -1,0 +1,338 @@
+{
+  "compiler_bin": "/home/ai/bend2_agy/selfhost/build/agy/wave8-native-self/n1",
+  "source_compiler_bend": "/home/ai/bend2_agy/selfhost/build/agy/wave8_unified/compiler.bend",
+  "codex_full_compiler_ref": {
+    "segments": 59598,
+    "obj_mb": 48.3,
+    "obj_bytes_per_seg": 849.8
+  },
+  "real_modules": {
+    "mod1": {
+      "source_meta": {
+        "mod": 1,
+        "path": "/tmp/agy_w9_mod_compiler/mod1.bend",
+        "total_src_bytes": 634640,
+        "body_bytes": 430094,
+        "type_header_bytes": 54398,
+        "stub_bytes": 70497,
+        "real_defs": 1310,
+        "real_laws": 124,
+        "ext_stub_defs": 708,
+        "ext_stub_fallbacks": 11,
+        "root_sccs": 781,
+        "touched_root_sccs": 735,
+        "skipped_root_sccs": 46
+      },
+      "sequential_cpu0": {
+        "ok": true,
+        "rc": 0,
+        "mod": "mod1",
+        "cpu": "0",
+        "fid_base": 10000,
+        "wall_ms": 419537.8,
+        "rss_mib": 843.6,
+        "obj_bytes": 11200344,
+        "text_bytes": 7813357,
+        "rodata_bytes": 36072,
+        "data_bytes": 99672,
+        "mod_seg_count": 7834,
+        "nm_text_syms": 10887,
+        "p111_syms": 7834,
+        "p113d_syms": 1521,
+        "k_cont_syms": 6205
+      },
+      "parallel_cpu0": {
+        "ok": true,
+        "rc": 0,
+        "cpu": "0",
+        "fid_base": 10000,
+        "wall_ms": 407461.8,
+        "rss_mib": 843.1,
+        "obj_bytes": 11200344,
+        "text_bytes": 7813357,
+        "rodata_bytes": 36072,
+        "data_bytes": 99672,
+        "mod_seg_count": 7834,
+        "nm_text_syms": 10887,
+        "p111_syms": 7834,
+        "p113d_syms": 1521,
+        "k_cont_syms": 6205,
+        "trace_lines": []
+      },
+      "ms_per_seg_seq": 53.55,
+      "ms_per_seg_par": 52.01,
+      "ms_per_body_kb_seq": 998.9,
+      "obj_bytes_per_seg": 1429.7,
+      "text_bytes_per_seg": 997.4,
+      "segs_per_body_kb": 18.65
+    },
+    "mod2": {
+      "source_meta": {
+        "mod": 2,
+        "path": "/tmp/agy_w9_mod_compiler/mod2.bend",
+        "total_src_bytes": 616117,
+        "body_bytes": 426730,
+        "type_header_bytes": 54398,
+        "stub_bytes": 85492,
+        "real_defs": 960,
+        "real_laws": 108,
+        "ext_stub_defs": 801,
+        "ext_stub_fallbacks": 9,
+        "root_sccs": 436,
+        "touched_root_sccs": 409,
+        "skipped_root_sccs": 27
+      },
+      "sequential_cpu0": {
+        "ok": true,
+        "rc": 0,
+        "mod": "mod2",
+        "cpu": "0",
+        "fid_base": 20000,
+        "wall_ms": 1276021.8,
+        "rss_mib": 898.4,
+        "obj_bytes": 11465024,
+        "text_bytes": 8243774,
+        "rodata_bytes": 36055,
+        "data_bytes": 86656,
+        "mod_seg_count": 6651,
+        "nm_text_syms": 9168,
+        "p111_syms": 6651,
+        "p113d_syms": 1348,
+        "k_cont_syms": 5277,
+        "trace_lines": []
+      },
+      "parallel_cpu1": {
+        "ok": true,
+        "rc": 0,
+        "cpu": "1",
+        "fid_base": 20000,
+        "wall_ms": 1197197.6,
+        "rss_mib": 900.4,
+        "obj_bytes": 11465024,
+        "text_bytes": 8243774,
+        "rodata_bytes": 36055,
+        "data_bytes": 86656,
+        "mod_seg_count": 6651,
+        "nm_text_syms": 9168,
+        "p111_syms": 6651,
+        "p113d_syms": 1348,
+        "k_cont_syms": 5277,
+        "trace_lines": []
+      },
+      "ms_per_seg_seq": 191.85,
+      "ms_per_seg_par": 180.0,
+      "ms_per_body_kb_seq": 3062.0,
+      "obj_bytes_per_seg": 1723.8,
+      "text_bytes_per_seg": 1239.5,
+      "segs_per_body_kb": 15.96
+    },
+    "combined_mod1_mod2": {
+      "total_body_kb": 836.7,
+      "total_segs": 14485,
+      "share_of_codex_segs_pct": 24.3,
+      "total_obj_bytes": 22665368,
+      "total_text_bytes": 16057131,
+      "obj_bytes_per_seg": 1564.7,
+      "text_bytes_per_seg": 1108.5,
+      "seq_sum_wall_ms": 1695559.6,
+      "par_2core_wall_ms": 1197327.0,
+      "par_2core_speedup_actual": 1.416,
+      "mod1_contention_ratio": 1.03,
+      "mod2_contention_ratio": 1.066,
+      "straggler_skew_mod2_over_mod1": 2.94,
+      "mean_ms_per_seg_seq": 117.06,
+      "mean_ms_per_seg_par": 110.78,
+      "mean_ms_per_body_kb_seq": 2026.4
+    }
+  },
+  "native_cross_module_ab": {
+    "compiler": "/home/ai/bend2_agy/selfhost/build/agy/wave8-native-self/n1",
+    "case1_clean_ab": {
+      "mono_out": "34",
+      "sep_out": "34",
+      "mono": {
+        "wall_ms": 16854.9,
+        "rss_mib": 137.8,
+        "obj_bytes": 371720,
+        "text_bytes": 161750,
+        "seg_count": 103,
+        "p111_syms": 103,
+        "p113d_syms": 54
+      },
+      "mono_link_ms": 35.7,
+      "modB": {
+        "wall_ms": 17304.3,
+        "rss_mib": 138.2,
+        "obj_bytes": 371320,
+        "text_bytes": 161501,
+        "seg_count": 102,
+        "p111_syms": 102,
+        "p113d_syms": 54
+      },
+      "iface_js_wall_ms": 9761.9,
+      "modA": {
+        "wall_ms": 1572.5,
+        "rss_mib": 109.3,
+        "obj_bytes": 126480,
+        "text_bytes": 6273,
+        "seg_count": 8,
+        "p111_syms": 8,
+        "p113d_syms": 2
+      },
+      "objcopy_ms": 21.5,
+      "merge_link_ms": 136.0,
+      "total_sep_ms": 28796.2,
+      "total_sep_no_iface_ms": 19034.3
+    },
+    "case2_body_only_b_edit": {
+      "mono_out": "44",
+      "sep_out": "44",
+      "mono": {
+        "wall_ms": 16807.0,
+        "rss_mib": 138.0,
+        "obj_bytes": 371728,
+        "text_bytes": 161759,
+        "seg_count": 103,
+        "p111_syms": 103,
+        "p113d_syms": 54
+      },
+      "mono_link_ms": 32.2,
+      "modA_reused_sha256_identical": true,
+      "modB_rebuild": {
+        "wall_ms": 17300.8,
+        "rss_mib": 138.2,
+        "obj_bytes": 371328,
+        "text_bytes": 161510,
+        "seg_count": 102,
+        "p111_syms": 102,
+        "p113d_syms": 54
+      },
+      "objcopy_ms": 34.9,
+      "merge_link_ms": 137.9,
+      "total_edit_ms": 17473.6
+    }
+  },
+  "js_cross_module_ab_ref": {
+    "case1_clean_ab": {
+      "mono_out": "34",
+      "sep_out": "34",
+      "mono_wall_ms": 6318.2,
+      "mono_link_ms": 45.3,
+      "modB_wall_ms": 6374.7,
+      "modB_segs": 102,
+      "iface_wall_ms": 7966.6,
+      "modA_wall_ms": 1527.7,
+      "modA_segs": 8,
+      "objcopy_ms": 35.4,
+      "merge_link_ms": 162.7,
+      "total_sep_ms": 16067.1
+    },
+    "case2_body_only_b_edit": {
+      "mono_out": "44",
+      "sep_out": "44",
+      "modA_reused_sha256_identical": true,
+      "modB_rebuild_wall_ms": 6374.0,
+      "objcopy_ms": 33.8,
+      "merge_link_ms": 143.1,
+      "total_edit_ms": 6550.9
+    },
+    "case3_incompatible_sig_change": {
+      "stamp_changed": true,
+      "stale_stamp_rejected": {
+        "rc": 1,
+        "ms": 491.5,
+        "err": "{\"ok\":false,\"stage\":\"prep\",\"error\":\"base_cache: cache stamp\"}"
+      },
+      "old_modA_rejected": {
+        "rc": 1,
+        "ms": 808.2,
+        "err": "{\"ok\":false,\"stage\":\"p86_plan\",\"error\":\"check: main: type mismatch\"}"
+      },
+      "mono_out": "54",
+      "sep_out": "54",
+      "modB_wall_ms": 6383.2,
+      "iface_wall_ms": 7993.8,
+      "modA_wall_ms": 1553.6,
+      "objcopy_ms": 28.9,
+      "merge_link_ms": 136.5
+    }
+  },
+  "recalibrated_full_compiler_estimates": {
+    "note": "Grounded in measured real K=8 compiler modules (mod1: 53.55 ms/seg; mod1+mod2 mean: 110.78-117.06 ms/seg) scaled to Codex 59,598 segments, with 30s per extra module for duplicate 53.1 KB type-header frontend parsing/checking.",
+    "k8_mod1_rate": {
+      "k": 8,
+      "avg_segs_per_mod": 7449.8,
+      "base_1c_s": 3191.7,
+      "dup_type_hdr_s": 210.0,
+      "total_1c_s": 3401.7,
+      "balanced_per_mod_s": 425.2,
+      "balanced_4c_s": 850.4,
+      "balanced_8c_s": 425.2,
+      "balanced_16c_s": 425.2
+    },
+    "k8_mean_par_rate": {
+      "k": 8,
+      "avg_segs_per_mod": 7449.8,
+      "base_1c_s": 6602.3,
+      "dup_type_hdr_s": 210.0,
+      "total_1c_s": 6812.3,
+      "balanced_per_mod_s": 851.5,
+      "balanced_4c_s": 1703.1,
+      "balanced_8c_s": 851.5,
+      "balanced_16c_s": 851.5
+    },
+    "k8_mean_seq_rate": {
+      "k": 8,
+      "avg_segs_per_mod": 7449.8,
+      "base_1c_s": 6976.3,
+      "dup_type_hdr_s": 210.0,
+      "total_1c_s": 7186.3,
+      "balanced_per_mod_s": 898.3,
+      "balanced_4c_s": 1796.6,
+      "balanced_8c_s": 898.3,
+      "balanced_16c_s": 898.3
+    },
+    "k12_mod1_rate": {
+      "k": 12,
+      "avg_segs_per_mod": 4966.5,
+      "base_1c_s": 3191.7,
+      "dup_type_hdr_s": 330.0,
+      "total_1c_s": 3521.7,
+      "balanced_per_mod_s": 293.5,
+      "balanced_4c_s": 880.4,
+      "balanced_8c_s": 586.9,
+      "balanced_16c_s": 293.5
+    },
+    "k12_mean_par_rate": {
+      "k": 12,
+      "avg_segs_per_mod": 4966.5,
+      "base_1c_s": 6602.3,
+      "dup_type_hdr_s": 330.0,
+      "total_1c_s": 6932.3,
+      "balanced_per_mod_s": 577.7,
+      "balanced_4c_s": 1733.1,
+      "balanced_8c_s": 1155.4,
+      "balanced_16c_s": 577.7
+    },
+    "k12_mean_seq_rate": {
+      "k": 12,
+      "avg_segs_per_mod": 4966.5,
+      "base_1c_s": 6976.3,
+      "dup_type_hdr_s": 330.0,
+      "total_1c_s": 7306.3,
+      "balanced_per_mod_s": 608.9,
+      "balanced_4c_s": 1826.6,
+      "balanced_8c_s": 1217.7,
+      "balanced_16c_s": 608.9
+    },
+    "naive_w8_mod_split_old_pred": {
+      "k8_4c_s": 25.8,
+      "k8_8c_s": 13.3,
+      "k8_16c_s": 13.3,
+      "k12_4c_s": 27.3,
+      "k12_8c_s": 18.0,
+      "k12_16c_s": 9.3,
+      "why_off": "Extrapolated 28 ms/KB from compiler_slice.bend (256 KB, only 103 live segments = 0.40 segs/KB) vs real K=8 compiler modules (15.9-18.7 segs/KB, 40-46x higher live-segment density)."
+    }
+  }
+}

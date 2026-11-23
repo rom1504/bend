@@ -1,0 +1,65 @@
+{
+  "campaign": "S10-F",
+  "patch": "research/agy/s10_campaign/s10f_elf_and_drop/apply_s10f.py",
+  "target_source": "selfhost/build/agy/wave15_unified/compiler.bend",
+  "check_only": {
+    "status": "PASS",
+    "errors": 0,
+    "defs_checked": 9473,
+    "idempotent": true
+  },
+  "target1_term_drop_audit": {
+    "n6_o2_p111_rt_sink_calls": 59874,
+    "n6_o2_term_drop_calls": 8,
+    "sample_0x401000_0x450000_sites": 231,
+    "sample_with_inline_agy_rt_sink_skip_text": 231,
+    "finding": "100% of general -O2 p111_rt_sink sites ALREADY emit 150-byte agy_rt_sink_skip_text (RFC rc>1 + tag<2 + loc<HEAP_OFF). Remaining term_drop/span_fade CPU (~18-22%) is genuine rc==1 heap deallocation from compiler allocations plus 7 bare/tag-only sites in x198pw_worker, agy_map_get, agy_map_set, and agy_map_sink_rsi.",
+    "o2_upgrades_applied": [
+      "x198pw_worker (line 78081): bare call p111_rt_sink -> w14e_sh_fast_sink",
+      "agy_map_get (lines 81782, 81794): tag-only -> w14e_sh_fast_sink",
+      "agy_map_set (lines 81932, 81942): tag-only -> w14e_sh_fast_sink",
+      "agy_map_sink_rsi (line 82314): tag-only -> w14e_sh_fast_sink"
+    ]
+  },
+  "target2_elf_and_pub_audit": {
+    "m09_zero_baseline_cpu6": {
+      "x187_pub_ms": 5394,
+      "x187_elf_ms": 1986,
+      "pub_plus_elf_ms": 7380,
+      "obj_bytes": 7611376,
+      "text_bytes": 6162475,
+      "total_relocs": 39415,
+      "top8_relocs_count": 34348,
+      "top8_relocs_pct": 87.1,
+      "sink_tpl_calls": 4582,
+      "keep_tpl_calls": 2007,
+      "sink_keep_tpl_bytes": 992364,
+      "sha256": "05b156f557f5a887be425d2e018446cc0b2fd74ec796c8be8d0397eaa853c28f"
+    },
+    "m00_bench_baseline_n6_o2_cpu6": {
+      "segs": 6676,
+      "x187_pub_ms": 1878,
+      "x187_elf_ms": 2240,
+      "pub_plus_elf_ms": 4118,
+      "obj_mb": 11.0
+    },
+    "v1_end_to_end_smoke": {
+      "note": "v1 m09_s10f (-O2) linked with -O0 m00..m08.o from s10c cache ran end-to-end on m09_exp (3987 segs, 7.0MB .o), m00_bench (6676 segs, 11MB .o), and compiler_slice.bend; SHA-256 diff caught and led to fixes for s10f_t_shift_cl byte order and s10f_emit_bin_op x185_id_to_const parity."
+    },
+    "v2_optimizations_in_apply_s10f": [
+      "Unboxed 2-field S10fT{t, ts} byte buffer for pure-byte x86 emission (eliminates ~250k 11-field X187Build allocs/drops per module)",
+      "Single-hash s10f_func_open + zero-hash s10f_func_close (1 hash vs 4 hashes per segment)",
+      "seen_mask U32 zero-hash hot-8 relocation registration (~34k fewer HAMT lookups per module)",
+      "Precomputed base frames s10f_init_pub_ctx (~34k fewer HAMT ops per module)",
+      "Direct List<N111Stmt> emission without x181_scalar_rows wrapping when late-lowering is not needed",
+      "Lean -O0 p111_rt_sink/p111_rt_keep direct calls (eliminates 992KB-1.5MB .text byte cons cells + 6.6k-10k p111_program relocs; -O2 untouched)",
+      "Skip redundant w7c_pub_check_scalars in -O0 x86-module-fast",
+      "8x-unrolled s10f_span8 text fixup + 8x-unrolled s10f_rev8 byte reversal",
+      "Single-pass local/global symbol partition + single-hash ELF symtab/strtab",
+      "Hot-8 symtab index cache (S10fHotIdx) in s10f_relocs_fused (87.1% HAMT lookup hit-avoidance)",
+      "Inlined local -O2 copies of s10f_u32_rev, s10f_reloc_enc, s10f_elf_sym_push, s10f_ascii_valid",
+      "Eliminated redundant x188_symbol_count pre-pass"
+    ],
+    "v2_integration_gate_status": "PENDING_WAVE16_FULL_O2_REBUILD (v2 passes --check-only with 0 errors and idempotency; standalone m09_zero link against s10a's oracle-stubbed m00..m08.o hit stub-list mismatch because s10f adds new stubs not in s10a's m09_weak.txt; full Wave 16 all-O2 rebuild will stack cleanly and run 64/64 -O0/-O2 + 15/15 Observer -O2)."
+  }
+}

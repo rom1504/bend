@@ -1,0 +1,56 @@
+{
+  "campaign": "S10-H",
+  "target": "x198pw_plan_fast (-O0 only)",
+  "cpus": [2, 3],
+  "patcher": "research/agy/s10_campaign/s10h_fast_x198pw/apply_s10h.py",
+  "stacks_after": [
+    "research/agy/s10_campaign/s10a_zero_p130/apply_s10a.py",
+    "research/agy/s10_campaign/s10c_fast_o0_backend/apply_s10c.py"
+  ],
+  "gates": {
+    "check_only": {
+      "status": "PASS",
+      "type_errors": 0,
+      "linearity_errors": 0,
+      "unsafe_defs_notice": 9404
+    },
+    "idempotency": {
+      "status": "PASS"
+    },
+    "native64_o0": {
+      "status": "PENDING_WAVE16_INTEGRATION"
+    },
+    "observer_o0": {
+      "status": "PENDING_WAVE16_INTEGRATION"
+    }
+  },
+  "empirical_measurements_n6_o2": {
+    "compiler_slice_O0": {
+      "total_ms": 3191,
+      "p86_plan_ms": 2114,
+      "x198pw_plan_ms": 470,
+      "priv_cnt": 38,
+      "pub_cnt": 83,
+      "x187_elf_ms": 123,
+      "obj_bytes": 420808
+    },
+    "m09_zero_auto_O0": {
+      "total_ms": 18350,
+      "p86_plan_ms": 5325,
+      "x198pw_plan_ms": 7923,
+      "priv_cnt": 713,
+      "pub_cnt": 3272,
+      "x187_elf_ms": 1259
+    },
+    "abi_auto_vs_cps_x198pw_plan_ms": {
+      "m01": {"auto": 12661, "cps": 19015},
+      "m02": {"auto": 13690, "cps": 18793},
+      "m03": {"auto": 9149, "cps": 31539},
+      "m04": {"auto": 14926, "cps": 31261, "cps_error": "data width overflow at 6872 segs"},
+      "m05": {"auto": 8989, "cps": 39564},
+      "m06": {"auto": 7308, "cps": 30124},
+      "m07": {"auto": 18256, "cps": 48621},
+      "m08": {"auto": 18172, "cps": 33299}
+    }
+  }
+}

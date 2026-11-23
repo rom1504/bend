@@ -1,0 +1,93 @@
+{
+  "task": "W12-D: Dual-Array Loop Scalarization (terrain hist) & GPR/XMM Spill Reduction",
+  "date": "2026-11-23",
+  "cpu": 7,
+  "baseline_compiler": "selfhost/build/agy/wave11_unified/compiler.bend",
+  "patched_compiler": "research/agy/w12_campaign/w12d_terrain_nbody/compiler_w12d.bend",
+  "patch": "research/agy/w12_campaign/w12d_terrain_nbody/w12d_terrain_nbody.patch",
+  "gates": {
+    "check_only": {
+      "pass": true,
+      "type_errors": 0,
+      "unsafe_audit_defs": 8836
+    },
+    "native64": {
+      "pass": true,
+      "passed": 64,
+      "total": 64,
+      "elapsed_s": 68.8
+    },
+    "observer_gate": {
+      "pass": true,
+      "abi_probes": "44+2",
+      "modes_passed": 15,
+      "modes_total": 15,
+      "violations": 0
+    }
+  },
+  "benchmarks": {
+    "terrain_big": {
+      "source": "bench/runtime/terrain/main.bend",
+      "knobs": {"size": "16n", "epass": "5n"},
+      "expected": "2572468224",
+      "w11_median_s": 22.1917,
+      "w11_runs_s": [22.0392, 22.1917, 22.8679],
+      "w12d_median_s": 16.7342,
+      "w12d_runs_s": [17.066, 16.7342, 16.5967],
+      "speedup": 1.326,
+      "delta_s": -5.4575
+    },
+    "nbody_big": {
+      "source": "bench/runtime/nbody/main.bend",
+      "knobs": {"sy": "17n", "st": "300n"},
+      "expected": "3516450380",
+      "w11_median_s": 11.3128,
+      "w11_runs_s": [11.3128, 11.3082, 11.51],
+      "w12d_median_s": 11.469,
+      "w12d_runs_s": [11.3573, 11.469, 16.2167],
+      "speedup": 0.986
+    },
+    "nbody_med": {
+      "source": "bench/runtime/nbody/main.bend (sy=10n)",
+      "knobs": {"sy": "10n", "st": "300n"},
+      "expected": "728502159",
+      "w11_median_s": 0.1342,
+      "w11_runs_s": [0.1335, 0.1435, 0.1342],
+      "w12d_median_s": 0.1339,
+      "w12d_runs_s": [0.1354, 0.1339, 0.1339],
+      "speedup": 1.002
+    }
+  },
+  "assembly_comparison": {
+    "terrain_hist": {
+      "w11_symbol": "p113d_$lcu0.$direct.hist",
+      "w11": {"insns": 1231, "rbp_ops": 250, "calls": 19},
+      "w12d_symbol": "p113d_$lcu1.$lcu0.$direct.hist (+ p117v_$lcu1.$lcu0.$direct.hist)",
+      "w12d": {"insns": 432, "rbp_ops": 99, "calls": 8, "hot_loop_calls": 0}
+    },
+    "terrain_erode": {
+      "w11": {"insns": 501, "rbp_ops": 108, "calls": 1},
+      "w12d": {"insns": 501, "rbp_ops": 108, "calls": 1}
+    },
+    "terrain_fill": {
+      "w11": {"insns": 303, "rbp_ops": 86, "calls": 1},
+      "w12d": {"insns": 303, "rbp_ops": 86, "calls": 1}
+    },
+    "nbody_loop3": {
+      "w11": {"insns": 733, "rbp_ops": 189, "calls": 0},
+      "w12d": {"insns": 733, "rbp_ops": 189, "calls": 0}
+    }
+  },
+  "rejected_experiments": [
+    {
+      "name": "p3_two_pass_xmm_and_9reg_pj",
+      "description": "Two-pass span-priority XMM allocation (span<=16 first) in x186_x_scanned_capped + all-9-register overflow allocation in w5c_post_joint_transient",
+      "outcome": "REJECTED (regressed both terrain 16.987s -> 18.048s and nbody 11.525s -> 11.878s on paired CPU 7 3-run median)"
+    },
+    {
+      "name": "p4_fwd_s2l_cross_reg_repl",
+      "description": "Cross-register store-to-load forwarding replacement (W12FwdRepl) in w5c_copy_peep_t",
+      "outcome": "REJECTED (failed 2/64 native64: broad/coverage-record-aggregation-64 and -256; narrowed to drop-only W12FwdDrop which passed 64/64 + 15/15)"
+    }
+  ]
+}

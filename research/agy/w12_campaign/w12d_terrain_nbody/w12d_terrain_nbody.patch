@@ -1,0 +1,334 @@
+--- /home/ai/bend2_agy/selfhost/build/agy/wave11_unified/compiler.bend	2026-11-23 08:08:46.806586287 +0000
++++ /home/ai/bend2_agy/research/agy/w12_campaign/w12d_terrain_nbody/compiler_w12d.bend	2026-11-23 09:16:56.616337283 +0000
+@@ -64127,12 +64127,141 @@
+     case _: w5c_copy_peep_t(Con{i1,rest},lbls,Con{X188One{i0},out},chg)
+ 
+ @unsafe
++def w12_mem5_disp(op: X187Operand) -> U32:
++  match op:
++    case X187Mem{b,d}: nt_choose(U32,U32.is_eq(b,5),u => d,u => 0)
++    case _: 0
++
++@unsafe
++def w12_is_mem5(op: X187Operand) -> Bool:
++  match op:
++    case X187Mem{b,_}: U32.is_eq(b,5)
++    case _: False{}
++
++@unsafe
++def w12_reg64_id(op: X187Operand) -> U32:
++  match op:
++    case X187Reg{r,w,f}: nt_choose(U32,U32.is_eq(w,64) && Bool.not(f),u => U32.inc(r),u => 0)
++    case _: 0
++
++@unsafe
++def w12_reg_any_id(op: X187Operand) -> U32:
++  match op:
++    case X187Reg{r,_,f}: nt_choose(U32,Bool.not(f),u => U32.inc(r),u => 0)
++    case _: 0
++
++@unsafe
++def w12_safe_reg_op(+op: String) -> Bool:
++  String.eq(op,"movq") || String.eq(op,"movl") ||
++  String.eq(op,"addq") || String.eq(op,"addl") ||
++  String.eq(op,"subq") || String.eq(op,"subl") ||
++  String.eq(op,"andq") || String.eq(op,"andl") ||
++  String.eq(op,"orq")  || String.eq(op,"orl")  ||
++  String.eq(op,"xorq") || String.eq(op,"xorl") ||
++  String.eq(op,"shlq") || String.eq(op,"shll") ||
++  String.eq(op,"shrq") || String.eq(op,"shrl") ||
++  String.eq(op,"sarq") || String.eq(op,"sarl")
++
++type W12StoreInfo is Data:
++  W12StoreNo{}
++  W12StoreYes{+reg: U32, +disp: U32}
++
++@unsafe
++def w12_store_info_args(args: List<&2,X187Operand>) -> W12StoreInfo:
++  match args:
++    case Con{s0,Con{+d0,Nil{}}}:
++      +r0 = w12_reg64_id(s0)
++      nt_choose(W12StoreInfo,U32.is_gt(r0,0) && Bool.not(U32.is_eq(U32.sub(r0,1),5)) && w12_is_mem5(d0),
++        u => W12StoreYes{U32.sub(r0,1),w12_mem5_disp(d0)},
++        u => W12StoreNo{})
++    case _: W12StoreNo{}
++
++@unsafe
++def w12_store_info(item: X187Parsed) -> W12StoreInfo:
++  match item:
++    case PInst{X187Instruction{op,args}}:
++      nt_choose(W12StoreInfo,String.eq(op,"movq"),u => w12_store_info_args(args),u => W12StoreNo{})
++    case _: W12StoreNo{}
++
++type W12FwdAct is Data:
++  W12FwdStop{}
++  W12FwdKeep{}
++  W12FwdDrop{}
++
++@unsafe
++def w12_fwd_classify_args(+r0: U32, +d0: U32, +op: String, args: List<&2,X187Operand>) -> W12FwdAct:
++  match args:
++    case Con{+s,Con{+d,Nil{}}}:
++      +dr64 = w12_reg64_id(d)
++      nt_choose(W12FwdAct,String.eq(op,"movq") && w12_is_mem5(s) && U32.is_eq(w12_mem5_disp(s),d0) &&
++          U32.is_gt(dr64,0) && U32.is_eq(U32.sub(dr64,1),r0),
++        u => W12FwdDrop{},
++        u =>
++          +dr = w12_reg_any_id(d)
++          nt_choose(W12FwdAct,w12_safe_reg_op(op) && U32.is_gt(dr,0) &&
++              Bool.not(U32.is_eq(U32.sub(dr,1),r0)) && Bool.not(U32.is_eq(U32.sub(dr,1),5)),
++            v => W12FwdKeep{},v => W12FwdStop{}))
++    case _: W12FwdStop{}
++
++@unsafe
++def w12_fwd_classify(+r0: U32, +d0: U32, item: X187Parsed) -> W12FwdAct:
++  match item:
++    case PInst{X187Instruction{op,args}}: w12_fwd_classify_args(r0,d0,op,args)
++    case _: W12FwdStop{}
++
++type W12FwdRes is Data:
++  W12FwdRes{+changed: Bool, +items: List<&2,X187Parsed>}
++
++law w12_fwd_s2l:
++  for +r0: U32
++  for +d0: U32
++  for items: List<&2,X187Parsed>
++  for +budget: U32
++  W12FwdRes
++
++@unsafe
++def w12_fwd_prepend(+h: X187Parsed, +chg: Bool, res: W12FwdRes) -> W12FwdRes:
++  match res:
++    case W12FwdRes{c,xs}: W12FwdRes{chg || c,Con{h,xs}}
++
++@unsafe
++def w12_fwd_step(+r0: U32, +d0: U32, +h: X187Parsed, +rest: List<&2,X187Parsed>, +budget: U32, act: W12FwdAct) -> W12FwdRes:
++  match act:
++    case W12FwdStop{}: W12FwdRes{False{},Con{h,rest}}
++    case W12FwdKeep{}: w12_fwd_prepend(h,False{},w12_fwd_s2l(r0,d0,rest,U32.sub(budget,1)))
++    case W12FwdDrop{}: W12FwdRes{True{},rest}
++
++@unsafe
++def w12_fwd_s2l(r0,d0,items,budget):
++  match items:
++    case Nil{}: W12FwdRes{False{},[]}
++    case Con{+h,+rest}:
++      nt_choose(W12FwdRes,U32.is_eq(budget,0),u => W12FwdRes{False{},Con{h,rest}},
++        u => w12_fwd_step(r0,d0,h,rest,budget,w12_fwd_classify(r0,d0,h)))
++
++@unsafe
++def w12_fwd_apply(+i0: X187Parsed, +lbls: W5BLblTrie, +out: List<&2,X188Seq>, +changed: Bool, res: W12FwdRes) -> W5BPeepOut:
++  match res:
++    case W12FwdRes{c,items2}:
++      w5c_copy_peep_t(items2,lbls,Con{X188One{i0},out},changed || c)
++
++@unsafe
++def w12_copy_other(+i0: X187Parsed, +i1: X187Parsed, +rest: List<&2,X187Parsed>,
++    +lbls: W5BLblTrie, +out: List<&2,X188Seq>, +changed: Bool, st: W12StoreInfo) -> W5BPeepOut:
++  match st:
++    case W12StoreYes{r0,d0}:
++      w12_fwd_apply(i0,lbls,out,changed,w12_fwd_s2l(r0,d0,Con{i1,rest},8))
++    case W12StoreNo{}:
++      w5c_copy_peep_t(Con{i1,rest},lbls,Con{X188One{i0},out},changed)
++
++@unsafe
+ def w5c_copy_i0(+i0: X187Parsed, +i1: X187Parsed, +rest: List<&2,X187Parsed>,
+     +lbls: W5BLblTrie, +out: List<&2,X188Seq>, +changed: Bool) -> W5BPeepOut:
+   match i0:
+     case PInst{X187Instruction{+op0,Con{X187Reg{+s,+ws,False{}},Con{X187Reg{+t,32,False{}},Nil{}}}}}:
+       w5c_copy_pair_t(op0,s,ws,t,i0,i1,rest,lbls,out,changed)
+-    case _: w5c_copy_peep_t(Con{i1,rest},lbls,Con{X188One{i0},out},changed)
++    case _:
++      w12_copy_other(i0,i1,rest,lbls,out,changed,w12_store_info(i0))
+ 
+ @unsafe
+ def w5c_copy_peep_t(items,lbls,out,changed):
+@@ -75207,12 +75336,124 @@
+     case W5LcuNo{}: W5LcuNo{}
+ 
+ @unsafe
+-def w5_lcu_ctor_before_again(revPrefix: List<&2,P113DStmt>, +aName: String) -> W5LcuCtor:
++def w5_lcu_vals_count(+name: String, vs: List<&2,N111Value>, +acc: U32) -> U32:
++  match vs:
++    case Nil{}: acc
++    case Con{h,rest}:
++      w5_lcu_vals_count(name,rest,nt_choose(U32,w5_lcu_val_is(name,h),u => U32.inc(acc),u => acc))
++
++@unsafe
++def w5_lcu_n111_reads(+name: String, s: N111Stmt) -> Bool:
++  match s:
++    case N111Set{_,_,v}: w5_lcu_val_is(name,v)
++    case N111Bin{_,_,_,l,r}: w5_lcu_val_is(name,l) || w5_lcu_val_is(name,r)
++    case N111Load{_,_,b,_}: w5_lcu_val_is(name,b)
++    case N111Store{_,b,_,v}: w5_lcu_val_is(name,b) || w5_lcu_val_is(name,v)
++    case N111Offset{_,b,by}: w5_lcu_val_is(name,b) || w5_lcu_val_is(name,by)
++    case N111Alloca{_,_,_}: False{}
++    case N111Return{v}: w5_lcu_val_is(name,v)
++    case N111Call{_,_,_,args}: w5_lcu_args_has(name,args)
++    case N111If{_,_,_}: True{}
++
++@unsafe
++def w5_lcu_n111_def(s: N111Stmt) -> String:
++  match s:
++    case N111Set{d,_,_}: d
++    case N111Bin{d,_,_,_,_}: d
++    case N111Load{d,_,_,_}: d
++    case N111Offset{d,_,_}: d
++    case N111Alloca{d,_,_}: d
++    case N111Call{d,_,_,_}: d
++    case _: ""
++
++@unsafe
++def w5_lcu_n111_is_if(s: N111Stmt) -> Bool:
++  match s:
++    case N111If{_,_,_}: True{}
++    case _: False{}
++
++@unsafe
++def w5_lcu_stmt_safe_skip(+aName: String, +buf: String, +fvs: List<&2,N111Value>, stmt: P113DStmt) -> Bool:
++  match stmt:
++    case P113DScalar{+sc}:
++      +d = w5_lcu_n111_def(sc)
++      Bool.not(w5_lcu_n111_is_if(sc)) &&
++        Bool.not(w5_lcu_n111_reads(aName,sc)) &&
++        Bool.not(w5_lcu_n111_reads(buf,sc)) &&
++        (String.is_empty(d) ||
++          (Bool.not(agy_str_eq(d,aName)) && Bool.not(agy_str_eq(d,buf)) && Bool.not(w5_lcu_vals_has(d,fvs))))
++    case _: False{}
++
++@unsafe
++def w5_lcu_skipped_safe(skipped: List<&2,P113DStmt>, +aName: String, +buf: String, +fvs: List<&2,N111Value>) -> Bool:
++  match skipped:
++    case Nil{}: True{}
++    case Con{h,rest}:
++      w5_lcu_stmt_safe_skip(aName,buf,fvs,h) && w5_lcu_skipped_safe(rest,aName,buf,fvs)
++
++law w5_lcu_find_ctor:
++  for revPrefix: List<&2,P113DStmt>
++  for +aName: String
++  for +skipped: List<&2,P113DStmt>
++  for +budget: U32
++  W5LcuCtor
++
++@unsafe
++def w5_lcu_src_live_in_skipped(+src: String, skipped: List<&2,P113DStmt>) -> Bool:
++  match skipped:
++    case Nil{}: False{}
++    case Con{P113DScalar{+sc},rest}:
++      nt_choose(Bool,w5_lcu_n111_reads(src,sc),u => True{},
++        u => nt_choose(Bool,agy_str_eq(w5_lcu_n111_def(sc),src),v => False{},
++          v => w5_lcu_src_live_in_skipped(src,rest)))
++    case _: True{}
++
++@unsafe
++def w5_lcu_try_set_ctor(+aName: String, s0: P113DStmt, rest: List<&2,P113DStmt>, +skipped: List<&2,P113DStmt>) -> W5LcuCtor:
++  match s0 rest:
++    case P113DScalar{N111Set{+dst,N111U64{},N111Local{+src}}} Con{s1,rest1}:
++      nt_choose(W5LcuCtor,agy_str_eq(dst,aName) && Bool.not(w5_lcu_src_live_in_skipped(src,skipped)),
++        u => w5_lcu_finish_ctor(w5_lcu_match_ctor_stmt(src,s1),rest1),
++        u => W5LcuNo{})
++    case _ _: W5LcuNo{}
++
++@unsafe
++def w5_lcu_find_ctor_check2(mc: W5LcuCtor, +s0: P113DStmt, +rest: List<&2,P113DStmt>, +aName: String, +skipped: List<&2,P113DStmt>, +budget: U32) -> W5LcuCtor:
++  match mc:
++    case W5LcuYes{+c,+a,+buf,+fvs,_}:
++      nt_choose(W5LcuCtor,w5_lcu_skipped_safe(skipped,aName,buf,fvs),
++        u => W5LcuYes{c,a,buf,fvs,aName},
++        u => W5LcuNo{})
++    case W5LcuNo{}:
++      match s0:
++        case P113DScalar{+sc}:
++          nt_choose(W5LcuCtor,Bool.not(w5_lcu_n111_is_if(sc)) && Bool.not(w5_lcu_n111_reads(aName,sc)),
++            u => w5_lcu_find_ctor(rest,aName,Con{s0,skipped},U32.sub(budget,1)),
++            u => W5LcuNo{})
++        case _: W5LcuNo{}
++
++@unsafe
++def w5_lcu_find_ctor_check(mc: W5LcuCtor, +s0: P113DStmt, +rest: List<&2,P113DStmt>, +aName: String, +skipped: List<&2,P113DStmt>, +budget: U32) -> W5LcuCtor:
++  match mc:
++    case W5LcuYes{+c,+a,+buf,+fvs,+an}:
++      nt_choose(W5LcuCtor,w5_lcu_skipped_safe(skipped,aName,buf,fvs),
++        u => W5LcuYes{c,a,buf,fvs,an},
++        u => W5LcuNo{})
++    case W5LcuNo{}:
++      w5_lcu_find_ctor_check2(w5_lcu_try_set_ctor(aName,s0,rest,skipped),s0,rest,aName,skipped,budget)
++
++@unsafe
++def w5_lcu_find_ctor(revPrefix,aName,skipped,budget):
+   match revPrefix:
+     case Nil{}: W5LcuNo{}
+-    case Con{s0,rest}:
+-      nt_choose(W5LcuCtor,String.is_empty(aName),u => W5LcuNo{},
+-        u => w5_lcu_finish_ctor(w5_lcu_match_ctor_stmt(aName,s0),rest))
++    case Con{+s0,+rest}:
++      nt_choose(W5LcuCtor,U32.is_eq(budget,0),u => W5LcuNo{},
++        u => w5_lcu_find_ctor_check(w5_lcu_finish_ctor(w5_lcu_match_ctor_stmt(aName,s0),rest),s0,rest,aName,skipped,budget))
++
++@unsafe
++def w5_lcu_ctor_before_again(revPrefix: List<&2,P113DStmt>, +aName: String) -> W5LcuCtor:
++  nt_choose(W5LcuCtor,String.is_empty(aName),u => W5LcuNo{},
++    u => w5_lcu_find_ctor(revPrefix,aName,[],64))
+ 
+ @unsafe
+ def w5_lcu_merge_scan_mc(+cur: W5LcuScan, +seen: Bool, +c0: String, +a0: U32, mc: W5LcuCtor) -> W5LcuScan:
+@@ -75242,9 +75483,12 @@
+ def w5_lcu_scan_agains(body,revPrefix,idx,acc):
+   match body:
+     case Nil{}: acc
+-    case Con{P113DAgain{vals},rest}:
++    case Con{P113DAgain{+vals},rest}:
+       +aName = w5_lcu_local_opt(w5_lcu_nth_val(vals,idx))
+-      +acc2 = w5_lcu_merge_scan(acc,w5_lcu_ctor_before_again(revPrefix,aName))
++      +mc = nt_choose(W5LcuCtor,U32.is_eq(w5_lcu_vals_count(aName,vals,0),1),
++        u => w5_lcu_ctor_before_again(revPrefix,aName),
++        u => W5LcuNo{})
++      +acc2 = w5_lcu_merge_scan(acc,mc)
+       w5_lcu_scan_agains(rest,[],idx,acc2)
+     case Con{P113DIf{_,yes,no},rest}:
+       +a1 = w5_lcu_scan_agains(yes,[],idx,acc)
+@@ -75494,12 +75738,42 @@
+   for +depth: U32
+   List<&2,P113DStmt>
+ 
++law w5_lcu_remove_ctor_go:
++  for revAcc: List<&2,P113DStmt>
++  for +aName: String
++  for +a: U32
++  for +skippedRev: List<&2,P113DStmt>
++  List<&2,P113DStmt>
++
++@unsafe
++def w5_lcu_is_set_to(+aName: String, s0: P113DStmt) -> Bool:
++  match s0:
++    case P113DScalar{N111Set{dst,N111U64{},N111Local{_}}}: agy_str_eq(dst,aName)
++    case _: False{}
++
++@unsafe
++def w5_lcu_remove_ctor_step(mc: W5LcuCtor, +s0: P113DStmt, +rest: List<&2,P113DStmt>, +aName: String, +a: U32, +skippedRev: List<&2,P113DStmt>) -> List<&2,P113DStmt>:
++  match mc:
++    case W5LcuYes{_,_,_,_,_}:
++      w5_lcu_prepend_rev(skippedRev,w5_lcu_drop_n(rest,a))
++    case W5LcuNo{}:
++      nt_choose(List<&2,P113DStmt>,w5_lcu_is_set_to(aName,s0),
++        u => w5_lcu_prepend_rev(skippedRev,w5_lcu_drop_n(rest,U32.inc(a))),
++        u => w5_lcu_remove_ctor_go(rest,aName,a,Con{s0,skippedRev}))
++
++@unsafe
++def w5_lcu_remove_ctor_go(revAcc,aName,a,skippedRev):
++  match revAcc:
++    case Nil{}: nt_reverse(P113DStmt,skippedRev,[])
++    case Con{+s0,+rest}:
++      w5_lcu_remove_ctor_step(w5_lcu_match_ctor_stmt(aName,s0),s0,rest,aName,a,skippedRev)
++
+ @unsafe
+ def w5_lcu_rewrite_again_mc(mc: W5LcuCtor, +vals: List<&2,N111Value>, +rest: List<&2,P113DStmt>, +revAcc: List<&2,P113DStmt>,
+     +idx: U32, +pName: String, +ctor: String, +arity: U32, +depth: U32) -> List<&2,P113DStmt>:
+   match mc:
+-    case W5LcuYes{_,+a,_,+fvs,_}:
+-      +trimmed = w5_lcu_drop_n(revAcc,U32.inc(a))
++    case W5LcuYes{_,+a,_,+fvs,+an}:
++      +trimmed = w5_lcu_remove_ctor_go(revAcc,an,a,[])
+       w5_lcu_rewrite(rest,Con{P113DAgain{w5_lcu_splice_vals(vals,idx,fvs)},trimmed},idx,pName,ctor,arity,depth)
+     case W5LcuNo{}:
+       w5_lcu_rewrite(rest,Con{P113DAgain{vals},revAcc},idx,pName,ctor,arity,depth)

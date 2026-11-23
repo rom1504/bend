@@ -1,0 +1,162 @@
+{
+  "meta": {
+    "campaign": "S10-C",
+    "version": "v3 (p112s_prepare preserved + 2-round dedup + fused priv + lean -O0 pub + fast ELF)",
+    "cpus": [
+      2,
+      3,
+      4
+    ],
+    "bench_cpu": 3,
+    "base_bin": "n6_base (m00..m08 -O0 + m09 -O2, unmodified wave15)",
+    "s10c_bin": "n6_s10c (m00..m08 -O0 + m09 -O2, S10-C patch)"
+  },
+  "gates": {
+    "check_only": {
+      "status": "PASS",
+      "type_errors": 0,
+      "linearity_errors": 0,
+      "unsafe_defs_notice": 9388
+    },
+    "idempotency": {
+      "status": "PASS"
+    },
+    "native64_x86_object_fast": {
+      "passed": 64,
+      "total": 64,
+      "wall_s": 27.82,
+      "compile_sum_s": 78.84,
+      "status": "PASS"
+    },
+    "observer_x86_object_fast": {
+      "passed": 15,
+      "total": 15,
+      "violations": 0,
+      "wall_s": 4.67,
+      "status": "PASS"
+    }
+  },
+  "benchmarks": {
+    "compiler_slice_O0": {
+      "runs": 3,
+      "base_median": {
+        "wall_ms": 6425.2,
+        "total_ms": 6371,
+        "p86_plan": 4303,
+        "x198pw_plan": 801,
+        "x187_priv": 249,
+        "x187_pub": 132,
+        "x187_elf": 274,
+        "backend_ms": 1392,
+        "obj_bytes": 420808,
+        "sha256": "8ab0c2d776136ebd1ea99a71922098a1f90a456cb03d6f434ba503d847470f73",
+        "priv_cnt": 38,
+        "pub_cnt": 83
+      },
+      "s10c_median": {
+        "wall_ms": 5875.7,
+        "total_ms": 5852,
+        "p86_plan": 4227,
+        "x198pw_plan": 800,
+        "x187_priv": 59,
+        "x187_pub": 75,
+        "x187_elf": 172,
+        "backend_ms": 1097,
+        "obj_bytes": 340264,
+        "sha256": "efd0b718ad4d3681d1625297de6dfce3765924e46856e933c0be16d536f7f508",
+        "priv_cnt": 38,
+        "pub_cnt": 83
+      },
+      "speedups": {
+        "total_x": 1.089,
+        "backend_x": 1.269,
+        "plan_x": 1.001,
+        "priv_x": 4.22,
+        "pub_x": 1.76,
+        "elf_x": 1.593,
+        "obj_delta_pct": -19.14
+      }
+    },
+    "m09_exp_O0": {
+      "runs": 3,
+      "base_median": {
+        "wall_ms": 42188.9,
+        "total_ms": 42177,
+        "p86_plan": 12051,
+        "x198pw_plan": 16453,
+        "x187_priv": 250,
+        "x187_pub": 5329,
+        "x187_elf": 2619,
+        "backend_ms": 24649,
+        "obj_bytes": 7313848,
+        "sha256": "80ff989e58babba03b1db6e576b1ce230d2001573a22ef00242d758538134a31",
+        "priv_cnt": 275,
+        "pub_cnt": 3987
+      },
+      "s10c_median": {
+        "wall_ms": 35442.9,
+        "total_ms": 35430,
+        "p86_plan": 11521,
+        "x198pw_plan": 13336,
+        "x187_priv": 36,
+        "x187_pub": 2944,
+        "x187_elf": 2201,
+        "backend_ms": 18387,
+        "obj_bytes": 5350312,
+        "sha256": "1fa947e27509bfe09b9543c060e62bc47527d80274b071201a612f346f8a853d",
+        "priv_cnt": 25,
+        "pub_cnt": 3987
+      },
+      "speedups": {
+        "total_x": 1.19,
+        "backend_x": 1.341,
+        "plan_x": 1.234,
+        "priv_x": 6.944,
+        "pub_x": 1.81,
+        "elf_x": 1.19,
+        "obj_delta_pct": -26.85
+      }
+    },
+    "compiler_slice_O2": {
+      "runs": 1,
+      "base_median": {
+        "wall_ms": 9915.3,
+        "total_ms": 9907,
+        "p86_plan": 4273,
+        "x198pw_plan": 1684,
+        "x187_priv": 1162,
+        "x187_pub": 1903,
+        "x187_elf": 230,
+        "backend_ms": 4979,
+        "obj_bytes": 388208,
+        "sha256": "08bebcba62f3771b0c9be892c03575efbc0830e245153ee2e467d6f06bad61f5",
+        "priv_cnt": 48,
+        "pub_cnt": 103
+      },
+      "s10c_median": {
+        "wall_ms": 10240.2,
+        "total_ms": 10229,
+        "p86_plan": 4527,
+        "x198pw_plan": 1843,
+        "x187_priv": 1247,
+        "x187_pub": 1884,
+        "x187_elf": 205,
+        "backend_ms": 5179,
+        "obj_bytes": 388208,
+        "sha256": "08bebcba62f3771b0c9be892c03575efbc0830e245153ee2e467d6f06bad61f5",
+        "priv_cnt": 48,
+        "pub_cnt": 103
+      },
+      "speedups": {
+        "total_x": 0.969,
+        "backend_x": 0.961,
+        "plan_x": 0.914,
+        "priv_x": 0.932,
+        "pub_x": 1.01,
+        "elf_x": 1.122,
+        "obj_delta_pct": 0.0,
+        "sha256_identical": true
+      }
+    }
+  }
+}

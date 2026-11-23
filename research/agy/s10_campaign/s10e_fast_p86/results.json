@@ -1,0 +1,55 @@
+{
+  "campaign": "S10-E",
+  "target": "p86_plan 3x speedup",
+  "status": "PATCH_CHECKED_AND_COMPILED_PENDING_W16_RUNTIME_GATE",
+  "patcher": "research/agy/s10_campaign/s10e_fast_p86/apply_s10e.py",
+  "hunks_total": 13,
+  "idempotent": true,
+  "check_only": {
+    "tool": "selfhost/.assets/bin/bun bend2/main.ts --check-only",
+    "status": "PASS",
+    "type_errors": 0,
+    "linearity_errors": 0,
+    "unsafe_defs": 9399,
+    "output_bytes": 3899680
+  },
+  "baseline_profile_n6_o2_cpu4": {
+    "m09_zero_bend_478kb": {
+      "trace_no_slow_p86_plan_ms": 5427,
+      "trace_slow_15_p86_plan_ms": 7256,
+      "parse_ms": 2360,
+      "check_ms": 1629,
+      "annotate_ms": 2868,
+      "glue_ms": 399
+    },
+    "compiler_slice_bend_248kb": {
+      "trace_slow_10_p86_plan_ms": 3404,
+      "parse_ms": 1771,
+      "check_ms": 932,
+      "annotate_ms": 508,
+      "glue_ms": 193
+    }
+  },
+  "modular_compile_n6_o2_cpu4": {
+    "touched_modules": ["m01", "m02", "m07", "m08", "m09"],
+    "status": "PASS",
+    "compile_ms": {
+      "m01": 92819,
+      "m02": 90141,
+      "m07": 112824,
+      "m08": 114021,
+      "m09": 19557
+    },
+    "merge_ms": 65,
+    "link_ms": 491,
+    "link_flags": "-O2 -no-pie (no --allow-multiple-definition)"
+  },
+  "runtime_ab_and_gates": {
+    "status": "BLOCKED_BY_DEADLINE",
+    "notes": [
+      "n6_s10e linked against /tmp/agy_s10a/obj_n7 hung in stage=prep on base.p130 (same as baseline /tmp/agy_s10a/n7_s10a).",
+      "In live mode on tiny.bend, n6_s10e timed out in stage=prep while n7_s10a completed prep in 6105ms; isolate the 4 lexer hunks vs the 9 non-lexer hunks in W16-INT.",
+      "JS api_s10e.mjs emission for 64/64 native64 -O0 and 15/15 Observer -O0 was cancelled at final-wrap to free CPU 4 for W16-INT."
+    ]
+  }
+}

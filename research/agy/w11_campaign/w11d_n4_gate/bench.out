@@ -1,0 +1,17 @@
+=== Suite A: 7-Family Proxy Suite (CPU 0, 3-run median) ===
+  histogram    | C(gcc10)=  23.090ms | W8(cpu0)=  44.218ms | W10(cpu4)= 356.034ms | n4_o2(cpu0)=  42.378ms | n4/C=1.835x | n4/W8=0.958x | n4/W10=0.119x
+  gameoflife   | C(gcc10)= 964.591ms | W8(cpu0)=1348.356ms | W10(cpu4)=1419.350ms | n4_o2(cpu0)= 470.247ms | n4/C=0.487x | n4/W8=0.349x | n4/W10=0.331x
+  nbody        | C(gcc10)=  91.057ms | W8(cpu0)=  97.211ms | W10(cpu4)= 516.559ms | n4_o2(cpu0)=  93.459ms | n4/C=1.026x | n4/W8=0.961x | n4/W10=0.181x
+  list         | C(gcc10)=   0.269ms | W8(cpu0)=   0.274ms | W10(cpu4)=   0.531ms | n4_o2(cpu0)=   0.390ms | n4/C=1.451x | n4/W8=1.424x | n4/W10=0.735x
+  expression   | C(gcc10)=   6.603ms | W8(cpu0)=  10.023ms | W10(cpu4)=  16.508ms | n4_o2(cpu0)=   9.138ms | n4/C=1.384x | n4/W8=0.912x | n4/W10=0.554x
+  bst          | C(gcc10)=  13.252ms | W8(cpu0)=  29.733ms | W10(cpu4)= 107.886ms | n4_o2(cpu0)=  30.582ms | n4/C=2.308x | n4/W8=1.029x | n4/W10=0.283x
+  editdist     | C(gcc10)=  10.000ms | W8(cpu0)=  22.812ms | W10(cpu4)=  93.750ms | n4_o2(cpu0)=  23.125ms | n4/C=2.312x | n4/W8=1.014x | n4/W10=0.247x
+
+Proxy 7-Family Geomean: n4_o2/C=1.3863x (W8/C=1.5613x) | n4_o2/W8=0.8879x | n4_o2/W10=0.2968x | n4_o2/C16=1.7762x
+
+=== Suite B: 3 Holdouts (CPU 0, 3-run median vs gcc-10 -O2) ===
+  terrain      | C(gcc10 -O2)=  8.294s | W8(cpu4)=39.6604s | W10(cpu4)=   Nones | n4_o2(cpu0)=21.7305s (syms=70) | n4/C=  2.62x | n4/W8=0.5479x
+  hashmap      | C(gcc10 -O2)=  1.212s | W8(cpu4)=15.2727s | W10(cpu4)=19.2738s | n4_o2(cpu0)= 7.1662s (syms=26) | n4/C=5.9142x | n4/W8=0.4692x
+  tree-radix   | C(gcc10 -O2)=  6.451s | W8(cpu4)=15.6124s | W10(cpu4)=14.9778s | n4_o2(cpu0)=11.6987s (syms=13) | n4/C=1.8136x | n4/W8=0.7493x
+
+Wrote /home/ai/bend2_agy/research/agy/w11_campaign/w11d_n4_gate/bench_results.json (all_proxy_ok=True, all_holdout_ok=True)

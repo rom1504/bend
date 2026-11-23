@@ -1,0 +1,52 @@
+{
+  "campaign": "W11-A",
+  "compiler_bend": "selfhost/build/agy/wave11_unified/compiler.bend",
+  "compiler_bend_bytes": 3523878,
+  "api_mjs": "selfhost/build/agy/wave11_unified/api.mjs",
+  "upgrades": [
+    "P5-E scoped nq_signature_user (db(d) -> opaque, else Wave 8 $product.* specialization)",
+    "P5-B -O2 modular fix (w10_is_mod_local_sym + w10_weak_add_def p114r_FID_ + w11_enrich_cursor_mod/w11_program_public_mod weak_set exclusion)",
+    "P5-A m00 2-fn match-bomb fix (p186ch_expand + w2_asr_strip_self flattened)",
+    "P5-F m04 5-fn -O2 cliff fix (w5b_try_ror16/rol16/cmp_jcc/cmp_bounce/sel_bounce flattened)",
+    "P5-D fast pure-Bend x86-iface (fast_iface_emit.bend)",
+    "P5-A String.order.go fast path (agy_sh_emit_strcmp for read/direct/owned)",
+    "P5-F --trace-slow <ms> per-function profiler (trace_slow.bend)",
+    "W11-B p113k_function pure-leaf exemption (up to 16384 stmts when !has_call -> 2.94x gameoflife recovery)"
+  ],
+  "verification": {
+    "check_only": {"pass": true, "type_errors": 0, "unsafe_defs": 8808},
+    "native64": {"pass": true, "passed": 64, "total": 64, "elapsed_s": 49.9},
+    "observer_gate": {"pass": true, "abi_probes": "44+2", "modes_passed": 15, "modes_total": 15, "violations": 0},
+    "ab_o2_modular": {
+      "pass": true,
+      "output": "163",
+      "iface_ms": 3755.4,
+      "modB_ms": 3242.5,
+      "modA_ms": 2400.7,
+      "merge_ms": 804.7,
+      "link_warnings": 0,
+      "local_product_syms": {"modB": 2, "modA": 0},
+      "zero_c": true,
+      "zero_objcopy": true,
+      "zero_allow_multiple_definition": true
+    },
+    "runtime_recovery_cpu3_o2": {
+      "histogram": {"median_ms": 58.47, "runs_ms": [57.86, 58.67, 58.47], "w10_ms": 356.03, "w8_ms": 59.71, "speedup_vs_w10": 6.09, "checksum_ok": true},
+      "nbody": {"median_ms": 94.64, "runs_ms": [93.26, 94.81, 94.64], "w10_ms": 516.56, "w8_ms": 136.95, "speedup_vs_w10": 5.46, "checksum_ok": true},
+      "gameoflife": {"median_ms": 447.24, "runs_ms": [443.36, 447.24, 501.39], "w10_ms": 1419.35, "w8_ms": 1315.96, "speedup_vs_w10": 3.17, "checksum_ok": true},
+      "editdist": {"median_ms": 22.0, "runs_ms": [22, 22, 22], "w10_ms": 93.75, "w8_ms": 40.78, "speedup_vs_w10": 4.26, "hashes_ok": "3/3"},
+      "bst": {"median_ms": 31.0, "runs_ms": [31, 30, 31], "w10_ms": 107.89, "w8_ms": 47.57, "speedup_vs_w10": 3.48, "hashes_ok": "3/3"}
+    }
+  },
+  "k13_wave11_split": {
+    "dir": "research/agy/w10_mod_bend/k13_wave11",
+    "k": 13,
+    "types": 404,
+    "defs": 9082,
+    "laws": 889,
+    "lost_decls": 0,
+    "duplicated_decls": 0,
+    "forward_cycles": 0,
+    "modules": ["m00a", "m00b", "m01", "m02", "m03", "m04", "m05", "m06", "m07", "m08", "m09", "m10", "m11"]
+  }
+}

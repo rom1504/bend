@@ -1,0 +1,142 @@
+{
+  "task": "W13-E",
+  "cpu": 7,
+  "runs": 5,
+  "base_compiler": "selfhost/build/agy/wave11_unified/compiler.bend",
+  "predecessor": "research/agy/w12_campaign/w12g_7fam_1x/w12g_7fam_1x.patch",
+  "patch": "research/agy/w13_campaign/w13e_bst_hist_1x/w13e_bst_hist_1x.patch",
+  "summary": {
+    "wave11_geomean_vs_c": 1.3383,
+    "w12g_geomean_vs_c": 1.2644,
+    "w13e_quiet_geomean_vs_c": 1.1856,
+    "w13e_loaded_post_gate_geomean_vs_c": 1.2433,
+    "geomean_improvement_vs_w12g_quiet": 1.0665,
+    "geomean_improvement_vs_wave11_quiet": 1.1288,
+    "note": "Both quiet-host (load ~1) and final post-64/64 loaded-host (load ~6.9) runs produced byte-for-byte identical object sizes across all 7 families (histogram 214512 B, gameoflife 62288 B, nbody 60776 B, list 63128 B, expression 62520 B, bst 73536 B, editdist 111464 B)."
+  },
+  "gates": {
+    "check_only": {
+      "pass": true,
+      "type_errors": 0,
+      "ms": 22037.8
+    },
+    "compile_js": {
+      "pass": true,
+      "bytes": 17322655,
+      "ms": 79411.1
+    },
+    "native64": {
+      "pass": true,
+      "passed": 64,
+      "total": 64,
+      "s": 63.3
+    },
+    "observer_gate": {
+      "pass": true,
+      "abi_probes": "44+2",
+      "passed": 15,
+      "total": 15,
+      "violations": 0
+    }
+  },
+  "comparison_vs_w12g_quiet": [
+    {
+      "name": "histogram",
+      "group": "upstream",
+      "w12g_ms": 43.6544,
+      "w12g_c_ms": 22.0131,
+      "w12g_ratio_vs_c": 1.9831,
+      "w13e_ms": 28.0847,
+      "w13e_c_ms": 21.8439,
+      "w13e_ratio_vs_c": 1.2857,
+      "w13e_loaded_ratio_vs_c": 1.2851,
+      "bend_speedup_vs_w12g": 1.5544,
+      "obj_bytes_w12g": 214136,
+      "obj_bytes_w13e": 214512
+    },
+    {
+      "name": "gameoflife",
+      "group": "upstream",
+      "w12g_ms": 436.3005,
+      "w12g_c_ms": 928.1399,
+      "w12g_ratio_vs_c": 0.4701,
+      "w13e_ms": 435.7978,
+      "w13e_c_ms": 932.2843,
+      "w13e_ratio_vs_c": 0.4675,
+      "w13e_loaded_ratio_vs_c": 0.4269,
+      "bend_speedup_vs_w12g": 1.0012,
+      "obj_bytes_w12g": 62288,
+      "obj_bytes_w13e": 62288
+    },
+    {
+      "name": "nbody",
+      "group": "upstream",
+      "w12g_ms": 94.5123,
+      "w12g_c_ms": 88.9869,
+      "w12g_ratio_vs_c": 1.0621,
+      "w13e_ms": 93.0095,
+      "w13e_c_ms": 86.9613,
+      "w13e_ratio_vs_c": 1.0696,
+      "w13e_loaded_ratio_vs_c": 1.2576,
+      "bend_speedup_vs_w12g": 1.0162,
+      "obj_bytes_w12g": 60776,
+      "obj_bytes_w13e": 60776
+    },
+    {
+      "name": "list",
+      "group": "tuned",
+      "w12g_ms": 0.2653,
+      "w12g_c_ms": 0.2637,
+      "w12g_ratio_vs_c": 1.0061,
+      "w13e_ms": 0.2653,
+      "w13e_c_ms": 0.2686,
+      "w13e_ratio_vs_c": 0.9877,
+      "w13e_loaded_ratio_vs_c": 1.3384,
+      "bend_speedup_vs_w12g": 1.0,
+      "obj_bytes_w12g": 63128,
+      "obj_bytes_w13e": 63128
+    },
+    {
+      "name": "expression",
+      "group": "tuned",
+      "w12g_ms": 9.433,
+      "w12g_c_ms": 7.1927,
+      "w12g_ratio_vs_c": 1.3115,
+      "w13e_ms": 9.433,
+      "w13e_c_ms": 6.2494,
+      "w13e_ratio_vs_c": 1.5094,
+      "w13e_loaded_ratio_vs_c": 1.383,
+      "bend_speedup_vs_w12g": 1.0,
+      "obj_bytes_w12g": 62520,
+      "obj_bytes_w13e": 62520
+    },
+    {
+      "name": "bst",
+      "group": "tuned",
+      "w12g_ms": 31.4315,
+      "w12g_c_ms": 13.0823,
+      "w12g_ratio_vs_c": 2.4026,
+      "w13e_ms": 22.9365,
+      "w13e_c_ms": 13.0823,
+      "w13e_ratio_vs_c": 1.7532,
+      "w13e_loaded_ratio_vs_c": 1.7143,
+      "bend_speedup_vs_w12g": 1.3704,
+      "obj_bytes_w12g": 79936,
+      "obj_bytes_w13e": 73536
+    },
+    {
+      "name": "editdist",
+      "group": "tuned",
+      "w12g_ms": 19.2857,
+      "w12g_c_ms": 11.7188,
+      "w12g_ratio_vs_c": 1.6457,
+      "w13e_ms": 19.2857,
+      "w13e_c_ms": 9.8438,
+      "w13e_ratio_vs_c": 1.9592,
+      "w13e_loaded_ratio_vs_c": 2.0971,
+      "bend_speedup_vs_w12g": 1.0,
+      "obj_bytes_w12g": 111504,
+      "obj_bytes_w13e": 111464
+    }
+  ]
+}

@@ -1,0 +1,470 @@
+# P5-F: Pure-Bend `--trace-slow <ms>` per-function slow-cliff profiler.
+# Uses native IO.now() and IO.print_err() effects; stdout .o bytes are untouched.
+# Instruments:
+#   - stage=parse     : per top-level decl (def/law/type, incl. ff_match) via p140p_tops cut
+#   - stage=check     : per KDef typecheck via check_definition_world
+#   - stage=x187_priv : per P113DFunction codegen (-O0 and -O2)
+#   - stage=x187_pub  : per N111Segment codegen (-O0 and -O2)
+
+@unsafe
+def ts_log_slow(+thresh: Nat, +stage: String, +fn_name: String, +t0: Nat, +t1: Nat) -> IO(Unit):
+  +dt : Nat = Nat.sub(t1, t0)
+  nt_choose(IO(Unit), Nat.is_ge(dt, thresh),
+    u => IO.print_err("[bend-slow] stage=" ++ stage ++ " fn=" ++ fn_name ++ " ms=" ++ Nat.show(dt) ++ "\n"),
+    u => IO.pure(Unit, Unit{}))
+
+@unsafe
+def ts_log_enter(+thresh: Nat, +stage: String, +idx: U32, +fn_name: String) -> IO(Unit):
+  nt_choose(IO(Unit), Nat.is_eq(thresh, Zero{}),
+    u => IO.print_err("[bend-enter] stage=" ++ stage ++ " idx=" ++ U32.show(idx) ++ " fn=" ++ fn_name ++ "\n"),
+    u => IO.pure(Unit, Unit{}))
+
+@unsafe
+def ts_priv_name(f: P113DFunction) -> String:
+  match f:
+    case P113DFunction{+name, params, result, public, body}: name
+
+@unsafe
+def ts_pub_name(s: N111Segment) -> String:
+  match s:
+    case N111Segment{+name, arity, result, incoming, flags, body}: name
+
+@unsafe
+def ts_head_def_name(book: List<&2, KDef>) -> String:
+  match book:
+    case Nil{}: "<none>"
+    case Con{+d, rest}: dn(d)
+
+@unsafe
+def ts_raw_head_name(raw: FRawResult) -> String:
+  match raw:
+    case FRawResult{book, error, imports}: ts_head_def_name(book)
+
+# --- Stage 1: Per-declaration parse + ff_match elaboration ---
+
+law ts_tops_io:
+  for +thresh: Nat
+  for +ts0: FInput
+  for +book: List<&2, KDef>
+  for +imports: List<&2, KTerm>
+  for +unsafe: Bool
+  for +scope: FParseScope
+  IO(FRawResult)
+
+@unsafe
+def ts_tops_step_io(+thresh: Nat, +t0: Nat, +t1: Nat, step: P140PStop) -> IO(FRawResult):
+  match step:
+    case P140PDone{+raw}:
+      do IO<FRawResult>:
+        _ : Unit <- ts_log_slow(thresh, "parse", ts_raw_head_name(raw), t0, t1)
+        IO.pure(FRawResult, raw)
+    case P140PCut{+ts2, +book2, +imports2, +unsafe2, +scope2}:
+      do IO<FRawResult>:
+        _ : Unit <- ts_log_slow(thresh, "parse", ts_head_def_name(book2), t0, t1)
+        ts_tops_io(thresh, ts2, book2, imports2, unsafe2, scope2)
+
+@unsafe
+def ts_tops_io(thresh, ts0, book, imports, unsafe, scope):
+  do IO<FRawResult>:
+    +t0 : Nat <- IO.now()
+    +stop : U32 = U32.inc(f_begin(f_skip(ts0)))
+    +step : P140PStop <- IO.pure(P140PStop, p140p_tops(stop, ts0, book, imports, unsafe, scope))
+    +t1 : Nat <- IO.now()
+    ts_tops_step_io(thresh, t0, t1, step)
+
+@unsafe
+def ts_body_header_io(+thresh: Nat, +source: String, +header: FHeader, +scope: FParseScope, +start: U32) -> IO(FResult):
+  match header:
+    case FHeader{+imports, +error, +body, +line, +offset}:
+      nt_choose(IO(FResult), String.is_empty(error),
+        u => do IO<FResult>:
+          +inp : FInput = f_input(f_lex_cursor(body, line, 0, 0, Nil{}, f_cursor_add(start, offset), f_cursor_add(start, offset)))
+          +raw : FRawResult <- ts_tops_io(thresh, inp, Nil{}, List.reverse(&2, KTerm, imports), False{}, p144p_ready_scope(scope))
+          IO.pure(FResult, f_context_result(fpe_finish_indexed(start, source, raw))),
+        u => IO.pure(FResult, FResult{Nil{}, error, imports}))
+
+@unsafe
+def ts_source_body_indexed_io(+thresh: Nat, +source: FSource, +header: FHeader, +scope: FParseScope, +start: U32) -> IO(FResult):
+  match source:
+    case FSource{name, path, +text}: ts_body_header_io(thresh, text, header, scope, start)
+    case FCompletedSource{name, path, text, +parsed}: IO.pure(FResult, parsed)
+    case FLocatedSource{+inner, +begin, end}: ts_source_body_indexed_io(thresh, inner, header, scope, begin)
+
+@unsafe
+def ts_complete_aliases_indexed_io(+thresh: Nat, +source: FSource, +ns: String, +header: FHeader,
+    +graph: FGraph, +aliases: List<&2, KTerm>, +prior: List<&2, KDef>, +sources: List<&2, FSource>,
+    +names: KDef, +ctors: KDef) -> IO(FIndexedCompletion):
+  do IO<FIndexedCompletion>:
+    +parsed : FResult <- ts_source_body_indexed_io(thresh, source, header, FParseScope{prior, names, ctors, ns, aliases, None{}}, 0)
+    IO.pure(FIndexedCompletion, f_graph_finish_indexed(source, ns, aliases, graph, sources, names, parsed))
+
+@unsafe
+def ts_complete_source_indexed_io(+thresh: Nat, +source: FSource, +ns: String, +header: FHeader,
+    +sources: List<&2, FSource>, +graph: FGraph, +root: String, +names: KDef, +ctors: KDef) -> IO(FIndexedCompletion):
+  match graph:
+    case FGraph{+book, +error, done}:
+      nt_choose(IO(FIndexedCompletion), String.is_empty(error),
+        u => ts_complete_aliases_indexed_io(thresh, source, ns, header, graph,
+          f_graph_aliases(f_header_imports(header), source, sources, root), book, sources, names, ctors),
+        u => IO.pure(FIndexedCompletion, FIndexedCompletion{graph, FResult{Nil{}, error, Nil{}}, Nil{}}))
+
+@unsafe
+def ts_prefix_complete_source_io(+thresh: Nat, +source: FSource, +ns: String, +header: FHeader,
+    +sources: List<&2, FSource>, +carrier: FPrefixGraph, +root: String) -> IO(FPrefixCompletion):
+  match carrier:
+    case FPrefixGraph{+graph, +prefix, suffix, +count, +ready}:
+      IO.pure(FPrefixCompletion, f_prefix_source_completed(prefix, count, ready, f_complete_source(source, ns, header, sources, graph, root)))
+    case FReadyPrefixGraph{+graph, +prefix, +suffix, +count, +ready, +names, +ctors, +baseNames}:
+      nt_choose(IO(FPrefixCompletion), ready,
+        u => do IO<FPrefixCompletion>:
+          +ic : FIndexedCompletion <- ts_complete_source_indexed_io(thresh, source, ns, header, sources, graph, root, names, ctors)
+          IO.pure(FPrefixCompletion, f_prefix_ready_source_completed(prefix, suffix, count, baseNames, names, ctors, ic)),
+        u => IO.pure(FPrefixCompletion, f_prefix_source_completed(prefix, count, False{}, f_complete_source(source, ns, header, sources, graph, root))))
+
+# --- Stage 2: Per-definition typechecking inside p156cp_walk ---
+
+@unsafe
+def ts_p156cp_book(+definition: KDef, +book: List<&2, KDef>, +dirty: Bool) -> List<&2, KDef>:
+  match book:
+    case Nil{}: book_put(book, definition)
+    case Con{+cache, +tail}:
+      nt_choose(List<&2, KDef>, p88_string_eq(dk(cache), "BookCache") && Bool.not(p88_string_eq(dk(definition), "BookCache")),
+        u => p143cp_logged(cache, tail, definition),
+        u => book_put(nt_choose(List<&2, KDef>, dirty, v => p143cp_canon(book), v => book), definition))
+
+@unsafe
+def ts_p156cp_dirty(+definition: KDef, +book: List<&2, KDef>) -> Bool:
+  match book:
+    case Nil{}: False{}
+    case Con{+cache, +tail}:
+      p88_string_eq(dk(cache), "BookCache") && Bool.not(p88_string_eq(dk(definition), "BookCache"))
+
+@unsafe
+def ts_p156cp_walk_io(+thresh: Nat, events: List<&2, P143CEvent>, +world: KWorld,
+    +seen: List<&2, KDef>, +dirty: Bool) -> IO(DChecking):
+  match events:
+    case Nil{}: IO.pure(DChecking, DChecking{bad(world, ""), dg_no_report("", "")})
+    case Con{P143CEvent{+definition, +next}, +rest}:
+      +guard : String = event_error(seen, definition, lookup(seen, dn(definition)))
+      nt_choose(IO(DChecking), p88_string_eq(guard, ""),
+        u => do IO<DChecking>:
+          +t0 : Nat <- IO.now()
+          +res : KChecking <- IO.pure(KChecking, check_definition_world(world, p143cs_mode(definition, next), 0))
+          +t1 : Nat <- IO.now()
+          _ : Unit <- ts_log_slow(thresh, "check", dn(definition), t0, t1)
+          nt_choose(IO(DChecking), good(res),
+            v => nt_choose(IO(DChecking), p88_string_eq(dk(next), "Absent"),
+              w => do IO<DChecking>:
+                +bk : List<&2, KDef> = kw_book(rw(res))
+                +bk2 : List<&2, KDef> = ts_p156cp_book(definition, bk, dirty)
+                +d2 : Bool = ts_p156cp_dirty(definition, bk)
+                +w2 : KWorld = kw_put_checked(kw_with_book(rw(res), bk2), dg_event_output(definition, ct(res)))
+                ts_p156cp_walk_io(thresh, rest, w2, p171s_put(seen, definition), d2),
+              w => ts_p156cp_walk_io(thresh, rest, rw(res), p171s_put(seen, definition), dirty)),
+            v => IO.pure(DChecking, dg_event_failed(res, dn(definition)))),
+        u => IO.pure(DChecking, DChecking{bad(world, dn(definition) ++ ": " ++ guard), dg_no_report(dn(definition), guard)}))
+
+@unsafe
+def ts_p143cb_resume_state_io(+thresh: Nat, +state: KBasePrefixState, +book: List<&2, KDef>,
+    +checked: List<&2, KDef>, +seen: List<&2, KDef>, +suffix: List<&2, KDef>, +bound: U32) -> IO(DChecking):
+  match state:
+    case KBasePrefixState{+base_bound, +delta, +stamp, patches, ready}:
+      do IO<DChecking>:
+        +declared : List<&2, KDef> = w7c_declare_cached(suffix, kw_bound_book(book, U32.add(bound, stamp)))
+        +ordered : List<&2, KDef> = base_prefix_world_order(declared, base_prefix_world_raw(book), suffix)
+        +world : KWorld = KWorld{ordered, Nil{}, KFreshKnown{U32.add(U32.add(bound, delta), 1)}, checked}
+        +dc : DChecking <- ts_p156cp_walk_io(thresh, p143cs_plan(suffix), world, p171s_seed(kw_bound_book(seen, bound)), True{})
+        IO.pure(DChecking, p143cp_result(dc, True{}))
+
+@unsafe
+def ts_p143cb_admitted_io(+thresh: Nat, +prepared: KBasePreparedWorld, +prefix: List<&2, KDef>,
+    +suffix: List<&2, KDef>, +bound: U32) -> IO(DChecking):
+  match prepared:
+    case KBasePreparedWorld{+state, original, final, +saved, +checked, +seen, todos, checkedBound}:
+      nt_choose(IO(DChecking), p143cp_regular(suffix) &&
+        base_prefix_world_hash_disjoint(suffix, index_first(dc(index_first(saved)))),
+        u => ts_p143cb_resume_state_io(thresh, state, saved, checked, seen, suffix, bound),
+        u => IO.pure(DChecking, base_prefix_world_check_admitted(prepared, prefix, suffix, bound)))
+
+@unsafe
+def ts_p143cb_program_io(+thresh: Nat, +load: FPrefixLoad, +origins: List<&2, DOrigin>,
+    +prepared: KBasePreparedWorld) -> IO(DResult):
+  match load:
+    case FPrefixLoad{trace, +prefix, +suffix, +ready}:
+      match trace:
+        case FLoadTrace{result, done, sources}:
+          match result:
+            case FResult{+book, +error, imports}:
+              match prepared:
+                case KBasePreparedWorld{+state, original, +final, +saved, checked, seen, +todos, checkedBound}:
+                  +bound : U32 = norm_max(base_prefix_world_bound(state), norm_max_book(suffix))
+                  nt_choose(IO(DResult), ready && String.is_empty(error) &&
+                    base_prefix_world_admitted(state, suffix, bound, final, saved),
+                    u => do IO<DResult>:
+                      +dc : DChecking <- ts_p143cb_admitted_io(thresh, prepared, prefix, suffix, bound)
+                      IO.pure(DResult, driver_program_checked_prefix(suffix, todos, origins, dc)),
+                    u => IO.pure(DResult, driver_program_checked(book, origins, dg_check_world(book))))
+
+# --- IO driver for p86_plan (parse + check + annotate) ---
+
+@unsafe
+def ts_p86_plan_loaded_io(+thresh: Nat, +seed: P86Seed, +load: FPrefixLoad) -> IO(P86Plan):
+  match seed load:
+    case P86Seed{base, book, fresh, ready, +world} FPrefixLoad{trace, prefix, +suffix, eligible}:
+      match trace:
+        case FLoadTrace{result, done, sources}:
+          match result:
+            case FResult{+original, +error, imports}:
+              nt_choose(IO(P86Plan), String.is_empty(error),
+                u => do IO<P86Plan>:
+                  +tc0 : Nat <- IO.now()
+                  +dres : DResult <- nt_choose(IO(DResult), p143cg_enough(suffix, 256),
+                    v => ts_p143cb_program_io(thresh, load, Nil{}, world),
+                    v => IO.pure(DResult, check_program_diagnostic_world(load, Nil{}, world)))
+                  +tc1 : Nat <- IO.now()
+                  _ : Unit <- w8_tr_log(True{}, "stage=check ms=" ++ w8_tr_ms(tc0, tc1))
+                  +ta0 : Nat <- IO.now()
+                  +plan : P86Plan <- IO.pure(P86Plan, p86_plan_checked(load, world, original, dres))
+                  +ta1 : Nat <- IO.now()
+                  _ : Unit <- w8_tr_log(True{}, "stage=annotate ms=" ++ w8_tr_ms(ta0, ta1))
+                  IO.pure(P86Plan, plan),
+                u => IO.pure(P86Plan, P86PlanError{"parse: " ++ error}))
+
+@unsafe
+def ts_p86_plan_comp2_io(+thresh: Nat, +seed: P86Seed, +source: FSource, +base: FSource,
+    +fresh: FFreshPrefixState, comp2: FPrefixCompletion) -> IO(P86Plan):
+  match comp2:
+    case FPrefixCompletion{+carrier2, parsed2}:
+      ts_p86_plan_loaded_io(thresh, seed, f_prefix_graph_trace(carrier2, [source, base], fresh))
+
+@unsafe
+def ts_p86_plan_seeded_io(+thresh: Nat, +seed: P86Seed, +source: FSource, +header: FHeader,
+    completion: FPrefixCompletion) -> IO(P86Plan):
+  match seed completion:
+    case P86Seed{+base, book, +fresh, ready, world} FPrefixCompletion{+carrier, parsed}:
+      match parsed:
+        case FResult{defs, +error, imports}:
+          nt_choose(IO(P86Plan), String.is_empty(error),
+            u => do IO<P86Plan>:
+              +tp0 : Nat <- IO.now()
+              +comp2 : FPrefixCompletion <- ts_prefix_complete_source_io(thresh, source, "", header, [source, base], carrier, f_path_dir(f_source_path(source)))
+              +tp1 : Nat <- IO.now()
+              _ : Unit <- w8_tr_log(True{}, "stage=parse ms=" ++ w8_tr_ms(tp0, tp1))
+              ts_p86_plan_comp2_io(thresh, seed, source, base, fresh, comp2),
+            u => IO.pure(P86Plan, P86PlanError{"parse: " ++ error}))
+
+@unsafe
+def ts_p86_plan_header_io(+thresh: Nat, +seed: P86Seed, +base: FSource, +book: List<&2, KDef>,
+    +ready: FReadyPrefixState, +source: FSource, +header: FHeader) -> IO(P86Plan):
+  match header:
+    case FHeader{+imports, +error, body, line, offset}:
+      nt_choose(IO(P86Plan), String.is_empty(error),
+        u => do IO<P86Plan>:
+          +ierr : String = p86_import_error(imports, False{})
+          nt_choose(IO(P86Plan), String.is_empty(ierr),
+            v => ts_p86_plan_seeded_io(thresh, seed, source, header,
+              f_prefix_complete_ready_seed(base, "", f_prefix_graph_empty(), f_source_path(base), f_source_text(base), book, ready)),
+            v => IO.pure(P86Plan, P86PlanError{"load: " ++ ierr})),
+        u => IO.pure(P86Plan, P86PlanError{"parse: " ++ error}))
+
+@unsafe
+def ts_p86_plan_io(+thresh: Nat, +seed: P86Seed, +path: String, +text: String) -> IO(P86Plan):
+  match seed:
+    case P86Seed{+base, +book, fresh, +ready, world}:
+      +begin : U32 = f_source_end(base)
+      +source : FSource = f_source_located(FSource{path, path, text}, begin, U32.add(U32.add(begin, p86_width(text, 0)), 1))
+      ts_p86_plan_header_io(thresh, seed, base, book, ready, source, f_source_header(source))
+
+# --- Stage 3 & 4: Per-function x187_priv & x187_pub codegen ---
+
+@unsafe
+def ts_compile_prep(+thresh: Nat, +is_mod: Bool, +path: String, +source: String, +t1: Nat, prep: P86Preparation) -> IO(W10TrCompiled):
+  match prep:
+    case P86PreparationError{error}:
+      do IO<W10TrCompiled>:
+        _ : Unit <- w8_tr_log(True{}, "stage=prep_error msg=" ++ error)
+        IO.pure(W10TrCompiled, W10TrCompiled{p169s_fail(error), missing()})
+    case P86PreparationReady{+seed}:
+      do IO<W10TrCompiled>:
+        +weak_set : KDef = nt_choose(KDef, is_mod, u => w10_weak_from_seed(seed), u => missing())
+        +plan : P86Plan <- ts_p86_plan_io(thresh, seed, path, source)
+        +t2 : Nat <- IO.now()
+        _ : Unit <- w8_tr_log(True{}, "stage=p86_plan ms=" ++ w8_tr_ms(t1, t2))
+        +prepared : P169Prepared <- IO.pure(P169Prepared, x198pw_plan(plan))
+        +t3 : Nat <- IO.now()
+        w8_tr_compile_done(True{}, t2, t3, prepared, weak_set)
+
+@unsafe
+def ts_compile(+thresh: Nat, +is_mod: Bool, +path: String, +source: String, +base_path: String,
+    +base: String, +carrier: String, +stamp: String, +cached: Bool) -> IO(W10TrCompiled):
+  do IO<W10TrCompiled>:
+    +t0 : Nat <- IO.now()
+    +prep : P86Preparation <- IO.pure(P86Preparation,
+      nt_choose(P86Preparation, cached,
+        u => p88_cache_prepare(base_path, base, carrier, stamp),
+        u => p86_prepare(base_path, base)))
+    +t1 : Nat <- IO.now()
+    _ : Unit <- w8_tr_log(True{}, "stage=prep ms=" ++ w8_tr_ms(t0, t1))
+    ts_compile_prep(thresh, is_mod, path, source, t1, prep)
+
+law ts_emit_cursor:
+  for +thresh: Nat
+  for +fast: Bool
+  for +is_mod: Bool
+  for +weak_set: KDef
+  for +t_start: Nat
+  for +cursor: P134Cursor
+  for +avail: KDef
+  for +build: X187Build
+  for +priv_n: U32
+  for +pub_n: U32
+  for +total_segs: U32
+  IO(U32)
+
+@unsafe
+def ts_emit_priv(+thresh: Nat, +fast: Bool, +is_mod: Bool, +weak_set: KDef, +t_start: Nat,
+    +head: P113DFunction, rest: List<&2, P113DFunction>, +ctx: P134Context, next: P134Cursor,
+    +avail: KDef, +build: X187Build, +priv_n: U32, +pub_n: U32, +total_segs: U32) -> IO(U32):
+  do IO<U32>:
+    +n2 : U32 = U32.inc(priv_n)
+    +fname : String = ts_priv_name(head)
+    _ : Unit <- ts_log_enter(thresh, "x187_priv", n2, fname)
+    +tf0 : Nat <- IO.now()
+    +out : X181Output <- IO.pure(X181Output, nt_choose(X181Output, fast,
+      u => x181_program_private_fast(head, ctx, avail),
+      u => x181_program_private(head, ctx, avail)))
+    +b2 : X187Build <- IO.pure(X187Build, w10f_output_fn(out, build))
+    +tf1 : Nat <- IO.now()
+    _ : Unit <- ts_log_slow(thresh, "x187_priv", fname, tf0, tf1)
+    _ : Unit <- nt_choose(IO(Unit), U32.is_eq(U32.mod(n2, 500), 0),
+      u => w8_tr_log(True{}, "stage=x187_priv done=" ++ U32.show(n2) ++ " elapsed=" ++ w8_tr_ms(t_start, tf1)),
+      u => IO.pure(Unit, Unit{}))
+    ts_emit_cursor(thresh, fast, is_mod, weak_set, t_start, P134Private{rest, ctx, next}, avail, b2, n2, pub_n, total_segs)
+
+@unsafe
+def ts_emit_pub(+thresh: Nat, +fast: Bool, +is_mod: Bool, +weak_set: KDef, +t_start: Nat,
+    +head: N111Segment, rest: List<&2, N111Segment>, +ctx: P134Context, next: P134Cursor,
+    +avail: KDef, +build: X187Build, +priv_n: U32, +pub_n: U32, +total_segs: U32) -> IO(U32):
+  do IO<U32>:
+    +n2 : U32 = U32.inc(pub_n)
+    +sname : String = ts_pub_name(head)
+    _ : Unit <- ts_log_enter(thresh, "x187_pub", n2, sname)
+    +tf0 : Nat <- IO.now()
+    +out : X181Output <- IO.pure(X181Output, nt_choose(X181Output, fast,
+      u => x181_program_public_fast(head, ctx, avail),
+      u => x181_program_public(head, ctx, avail)))
+    +b2 : X187Build <- IO.pure(X187Build, w10f_output_fn(out, build))
+    +tf1 : Nat <- IO.now()
+    _ : Unit <- ts_log_slow(thresh, "x187_pub", sname, tf0, tf1)
+    _ : Unit <- nt_choose(IO(Unit), U32.is_eq(U32.mod(n2, 2000), 0),
+      u => w8_tr_log(True{}, "stage=x187_pub done=" ++ U32.show(n2) ++ "/" ++ U32.show(total_segs) ++ " elapsed=" ++ w8_tr_ms(t_start, tf1)),
+      u => IO.pure(Unit, Unit{}))
+    ts_emit_cursor(thresh, fast, is_mod, weak_set, t_start, P134Public{rest, ctx, next}, avail, b2, priv_n, n2, total_segs)
+
+@unsafe
+def ts_emit_good(+thresh: Nat, +fast: Bool, +is_mod: Bool, +weak_set: KDef, +t_start: Nat,
+    +cursor: P134Cursor, +avail: KDef, +build: X187Build, +priv_n: U32, +pub_n: U32, +total_segs: U32) -> IO(U32):
+  match cursor:
+    case P134Private{Nil{}, ctx, next}:
+      do IO<U32>:
+        +tn : Nat <- IO.now()
+        _ : Unit <- w8_tr_log(True{}, "stage=x187_priv_done count=" ++ U32.show(priv_n) ++ " elapsed=" ++ w8_tr_ms(t_start, tn))
+        ts_emit_cursor(thresh, fast, is_mod, weak_set, t_start, next, avail, build, priv_n, pub_n, total_segs)
+    case P134Private{Con{head, rest}, ctx, next}:
+      ts_emit_priv(thresh, fast, is_mod, weak_set, t_start, head, rest, ctx, next, avail, build, priv_n, pub_n, total_segs)
+    case P134Legacy{es, ctx, next}:
+      ts_emit_cursor(thresh, fast, is_mod, weak_set, t_start, next, avail, build, priv_n, pub_n, total_segs)
+    case P134Public{Nil{}, ctx, next}:
+      do IO<U32>:
+        +tn : Nat <- IO.now()
+        _ : Unit <- w8_tr_log(True{}, "stage=x187_pub_done count=" ++ U32.show(pub_n) ++ " elapsed=" ++ w8_tr_ms(t_start, tn))
+        ts_emit_cursor(thresh, fast, is_mod, weak_set, t_start, next, avail, build, priv_n, pub_n, total_segs)
+    case P134Public{Con{head, rest}, ctx, next}:
+      ts_emit_pub(thresh, fast, is_mod, weak_set, t_start, head, rest, ctx, next, avail, build, priv_n, pub_n, total_segs)
+    case P134Tables{Nil{}}:
+      ts_emit_cursor(thresh, fast, is_mod, weak_set, t_start, P134Main{}, avail, build, priv_n, pub_n, total_segs)
+    case P134Tables{Con{head, rest}}:
+      ts_emit_cursor(thresh, fast, is_mod, weak_set, t_start, P134Tables{rest}, avail, x187_output(x181_program_data(head, avail), build), priv_n, pub_n, total_segs)
+    case P134Main{}:
+      do IO<U32>:
+        +t_elf0 : Nat <- IO.now()
+        +rc : U32 <- nt_choose(IO(U32), is_mod,
+          u => w10_x202p_x201f_finish(build, weak_set),
+          u => x202p_x201f_finish(x187_build_seq(x181_program_main(), build)))
+        +t_elf1 : Nat <- IO.now()
+        _ : Unit <- w8_tr_log(True{}, "stage=x187_elf ms=" ++ w8_tr_ms(t_elf0, t_elf1) ++ " total_ms=" ++ w8_tr_ms(t_start, t_elf1))
+        IO.pure(U32, rc)
+    case _: IO.die(U32, 1, "incomplete object cursor")
+
+@unsafe
+def ts_emit_cursor(thresh, fast, is_mod, weak_set, t_start, cursor, avail, build, priv_n, pub_n, total_segs):
+  nt_choose(IO(U32), String.is_empty(x187_build_message(build)),
+    u => ts_emit_good(thresh, fast, is_mod, weak_set, t_start, cursor, avail, build, priv_n, pub_n, total_segs),
+    u => IO.die(U32, 1, x187_build_message(build)))
+
+@unsafe
+def ts_run_prepared(+thresh: Nat, +fast: Bool, +is_mod: Bool, +fid_base: U32, +mod_name: String,
+    +t0: Nat, compiled: W10TrCompiled) -> IO(U32):
+  match compiled:
+    case W10TrCompiled{P169Prepared{fw, +cursor, +error}, +weak_set}:
+      nt_choose(IO(U32), String.is_empty(error),
+        u => do IO<U32>:
+          +avail : KDef = x181_cursor_index(cursor, missing())
+          +segs : U32 = w8_cursor_seg_count(cursor)
+          nt_choose(IO(U32), is_mod && U32.is_gt(U32.add(fid_base, segs), 65532),
+            v => IO.die(U32, 1, "x86-module: fid_base + segment_count exceeds 16-bit FID capacity (65532)"),
+            v => do IO<U32>:
+              +enr : P134Cursor = nt_choose(P134Cursor, fast, w => cursor, w => agy_enrich_cursor(cursor, avail))
+              +cur2 : P134Cursor = nt_choose(P134Cursor, is_mod, w => w8_relocate_cursor(enr, fid_base, mod_name), w => enr)
+              ts_emit_cursor(thresh, fast, is_mod, weak_set, t0, cur2, avail, x187_build_empty(), 0, 0, segs)),
+        u => IO.die(U32, 1, error))
+
+@unsafe
+def ts_run_obj(+thresh: Nat, +fast: Bool, +is_mod: Bool, +fid_base: U32, +mod_name: String,
+    +path: String, +base_path: String, +carrier_path: String, +stamp: String, +cached: Bool) -> IO(U32):
+  do IO<U32>:
+    +t0 : Nat <- IO.now()
+    _ : Unit <- w8_tr_log(True{}, "start src=" ++ path ++ " slow_ms=" ++ Nat.show(thresh) ++ nt_choose(String, is_mod, u => nt_choose(String, fast, v => " mode=x86-module-fast mod=", v => " mode=x86-module mod=") ++ mod_name ++ " fid_base=" ++ U32.show(fid_base), u => nt_choose(String, fast, v => " mode=x86-object-fast", v => " mode=x86-object")))
+    +source : String <- p86_read_file(path)
+    +base : String <- p86_read_file(base_path)
+    +carrier : String <- nt_choose(IO(String), cached, u => p86_read_file(carrier_path), u => IO.pure(String, ""))
+    +t_rd : Nat <- IO.now()
+    _ : Unit <- w8_tr_log(True{}, "stage=read ms=" ++ w8_tr_ms(t0, t_rd))
+    +compiled : W10TrCompiled <- ts_compile(thresh, is_mod, path, source, base_path, base, carrier, stamp, cached)
+    ts_run_prepared(thresh, fast, is_mod, fid_base, mod_name, t0, compiled)
+
+@unsafe
+def ts_mod_fid(+thresh: Nat, fid_m: Maybe<&2, U32>, +fast: Bool, +mod_name: String, +path: String,
+    +base: String, +carrier: String, +stamp: String, +cached: Bool) -> IO(U32):
+  match fid_m:
+    case Some{+fb}: ts_run_obj(thresh, fast, True{}, fb, mod_name, path, base, carrier, stamp, cached)
+    case _: IO.die(U32, 2, "expected U32 fid_base argument")
+
+@unsafe
+def ts_entry(+thresh: Nat, +args: List<&1, String>) -> IO(U32):
+  match args:
+    case Con{+program, Con{+path, Con{+base, Con{+mode, Con{+carrier, Con{+stamp, Nil{}}}}}}}:
+      nt_choose(IO(U32), (agy_str_eq(program, "x86-object") || agy_str_eq(program, "x86-object-fast")) && String.starts_with(path, "/") &&
+        String.starts_with(base, "/") &&
+        (agy_str_eq(mode, "live") || (agy_str_eq(mode, "cache") && String.starts_with(carrier, "/"))),
+        u => ts_run_obj(thresh, agy_str_eq(program, "x86-object-fast"), False{}, 0, "", path, base, carrier, stamp, agy_str_eq(mode, "cache")),
+        u => x181_entry_args(args))
+    case Con{+program, Con{+path, Con{+base, Con{+mode, Con{+carrier, Con{+stamp, Con{+fid_s, Con{+mod_name, Nil{}}}}}}}}}:
+      nt_choose(IO(U32), (agy_str_eq(program, "x86-module") || agy_str_eq(program, "x86-module-fast")) && String.starts_with(path, "/") &&
+        String.starts_with(base, "/") &&
+        (agy_str_eq(mode, "live") || (agy_str_eq(mode, "cache") && String.starts_with(carrier, "/"))),
+        u => ts_mod_fid(thresh, U32.read(fid_s), agy_str_eq(program, "x86-module-fast"), mod_name, path, base, carrier, stamp, agy_str_eq(mode, "cache")),
+        u => x181_entry_args(args))
+    case _: x181_entry_args(args)
+
+@unsafe
+def ts_parse_thresh_m(m: Maybe<&2, Nat>, +rest: List<&1, String>) -> IO(U32):
+  match m:
+    case Some{+thresh}: ts_entry(thresh, rest)
+    case _: IO.die(U32, 2, "expected Nat threshold after --trace-slow")
+
+@unsafe
+def ts_parse_thresh(args: List<&1, String>) -> IO(U32):
+  match args:
+    case Con{+ms_s, +rest}: ts_parse_thresh_m(Nat.read(ms_s), rest)
+    case _: IO.die(U32, 2, "expected <ms> after --trace-slow")

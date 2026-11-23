@@ -1,0 +1,444 @@
+{
+  "status": "PARTIAL_PASS_M00_O2_AND_ROOT_CAUSE_ISOLATED",
+  "iface_chain": {
+    "wall_ms": 1079133.7,
+    "records": [
+      {
+        "module": "m00",
+        "tool": "wave10_unified_js",
+        "ms": 298718.2,
+        "bytes": 5240911,
+        "nodes": 97527,
+        "strings": 3611,
+        "stamp": "p130-word-pair-v1:w10-iface-v1:54313f5d3a85bb1b",
+        "stamp_matches_p4": true
+      },
+      {
+        "module": "m01",
+        "tool": "n3_w10",
+        "ms": 120635.3,
+        "bytes": 7051600,
+        "nodes": 131394,
+        "strings": 4752,
+        "stamp": "p130-word-pair-v1:w10-iface-v1:110996967f070073",
+        "stamp_matches_p4": true
+      },
+      {
+        "module": "m02",
+        "tool": "wave10_unified_js",
+        "ms": 96522.6,
+        "bytes": 8878222,
+        "nodes": 165506,
+        "strings": 5681,
+        "stamp": "p130-word-pair-v1:w10-iface-v1:75fcf73bd84aa2ff",
+        "stamp_matches_p4": true
+      },
+      {
+        "module": "m03",
+        "tool": "wave10_unified_js",
+        "ms": 42751.6,
+        "bytes": 10566702,
+        "nodes": 196991,
+        "strings": 6505,
+        "stamp": "p130-word-pair-v1:w10-iface-v1:278dd721f62a5969",
+        "stamp_matches_p4": true
+      },
+      {
+        "module": "m04",
+        "tool": "wave10_unified_js",
+        "ms": 198704.7,
+        "bytes": 12331308,
+        "nodes": 229922,
+        "strings": 7214,
+        "stamp": "p130-word-pair-v1:w10-iface-v1:46d73a76b28fc3af",
+        "stamp_matches_p4": true
+      },
+      {
+        "module": "m05",
+        "tool": "wave10_unified_js",
+        "ms": 49417.9,
+        "bytes": 14428267,
+        "nodes": 269012,
+        "strings": 8024,
+        "stamp": "p130-word-pair-v1:w10-iface-v1:aa6d37b54b42796a",
+        "stamp_matches_p4": true
+      },
+      {
+        "module": "m06",
+        "tool": "wave10_unified_js",
+        "ms": 44606.8,
+        "bytes": 16601221,
+        "nodes": 309469,
+        "strings": 8814,
+        "stamp": "p130-word-pair-v1:w10-iface-v1:6bb59f4aa6b66efc",
+        "stamp_matches_p4": true
+      },
+      {
+        "module": "m07",
+        "tool": "wave10_unified_js",
+        "ms": 48681.9,
+        "bytes": 18598420,
+        "nodes": 346635,
+        "strings": 9570,
+        "stamp": "p130-word-pair-v1:w10-iface-v1:5011fce548756b97",
+        "stamp_matches_p4": true
+      },
+      {
+        "module": "m08",
+        "tool": "wave10_unified_js",
+        "ms": 54423.4,
+        "bytes": 20585449,
+        "nodes": 383651,
+        "strings": 10253,
+        "stamp": "p130-word-pair-v1:w10-iface-v1:be0eea42e3e2b510",
+        "stamp_matches_p4": true
+      },
+      {
+        "module": "m09",
+        "tool": "wave10_unified_js",
+        "ms": 60608.1,
+        "bytes": 22846079,
+        "nodes": 425824,
+        "strings": 10916,
+        "stamp": "p130-word-pair-v1:w10-iface-v1:069e3b037858d179",
+        "stamp_matches_p4": true
+      },
+      {
+        "module": "m10",
+        "tool": "wave10_unified_js",
+        "ms": 63718.1,
+        "bytes": 24880956,
+        "nodes": 463717,
+        "strings": 11566,
+        "stamp": "p130-word-pair-v1:w10-iface-v1:de82d66c643fb98a",
+        "stamp_matches_p4": true
+      }
+    ]
+  },
+  "step1_o2_probe": {
+    "m11": {
+      "module": "m11",
+      "mode": "x86-module",
+      "o2_timed_out": false,
+      "cpu": 1,
+      "fid_base": 59979,
+      "seg_count": 3691,
+      "seg_count_matches_o0": true,
+      "fid_end": 63669,
+      "ms": 104795.0,
+      "bytes": 5253384,
+      "sha256": "ca0e56b341a379dde777af972773d13cbb1f06fdd45a9ad72fa09d32080e07a2",
+      "trace_stages": {
+        "read": 110.0,
+        "prep": 2376.0,
+        "p86_plan": 9769.0,
+        "x198pw_plan": 19089.0,
+        "x187_priv_done_elapsed": 37040.0,
+        "x187_pub_done_elapsed": 102230.0,
+        "x187_elf": 2377.0,
+        "x187_priv_est": 5696.0,
+        "x187_pub_est": 65190.0
+      },
+      "trace_lines": [
+        "[bend-trace] start src=/tmp/agy_p5_o2/src/m11_exp.bend mode=x86-module mod=m11 fid_base=59979",
+        "[bend-trace] stage=read ms=110ms",
+        "[bend-trace] stage=prep ms=2376ms",
+        "[bend-trace] stage=p86_plan ms=9769ms",
+        "[bend-trace] stage=x198pw_plan ms=19089ms segs=3691",
+        "[bend-trace] stage=x187_priv_done count=258 elapsed=37040ms",
+        "[bend-trace] stage=x187_pub done=2000/3691 elapsed=70127ms",
+        "[bend-trace] stage=x187_pub_done count=3691 elapsed=102230ms",
+        "[bend-trace] stage=x187_elf ms=2377ms total_ms=104784ms"
+      ]
+    },
+    "m06": {
+      "module": "m06",
+      "mode": "x86-module",
+      "o2_timed_out": false,
+      "cpu": 2,
+      "fid_base": 32895,
+      "seg_count": 5577,
+      "seg_count_matches_o0": true,
+      "fid_end": 38471,
+      "ms": 249921.2,
+      "bytes": 6913864,
+      "sha256": "1743fdfeb6d53690d0d6069d11b5415886c9bb3949d78577277ab5ec67b31fc5",
+      "trace_stages": {
+        "read": 117.0,
+        "prep": 2526.0,
+        "p86_plan": 19736.0,
+        "x198pw_plan": 40942.0,
+        "x187_priv_done_elapsed": 85443.0,
+        "x187_pub_done_elapsed": 245490.0,
+        "x187_elf": 3988.0,
+        "x187_priv_est": 22122.0,
+        "x187_pub_est": 160047.0
+      },
+      "trace_lines": [
+        "[bend-trace] start src=/tmp/agy_p5_o2/src/m06_exp.bend mode=x86-module mod=m06 fid_base=32895",
+        "[bend-trace] stage=read ms=117ms",
+        "[bend-trace] stage=prep ms=2526ms",
+        "[bend-trace] stage=p86_plan ms=19736ms",
+        "[bend-trace] stage=x198pw_plan ms=40942ms segs=5577",
+        "[bend-trace] stage=x187_priv_done count=461 elapsed=85443ms",
+        "[bend-trace] stage=x187_pub done=2000/5577 elapsed=167458ms",
+        "[bend-trace] stage=x187_pub done=4000/5577 elapsed=211711ms",
+        "[bend-trace] stage=x187_pub_done count=5577 elapsed=245490ms",
+        "[bend-trace] stage=x187_elf ms=3988ms total_ms=249909ms"
+      ]
+    }
+  },
+  "step2_o2_build": {},
+  "step2_benchmarks": {},
+  "m00_o2_hybrid_validation": {
+    "link_ms": 423.7,
+    "binary_bytes": 84823840,
+    "n3_w10_bytes": 86269736,
+    "zero_objcopy_zero_allow_multidef": true,
+    "compiler_slice": {
+      "n3_w10_ms": 11238.4,
+      "n3_o2_m00_ms": 9609.7,
+      "speedup": 1.169,
+      "out": "34",
+      "bit_identical": true
+    },
+    "m11": {
+      "n3_w10_ms": 44585.2,
+      "n3_o2_m00_ms": 37349.8,
+      "speedup": 1.194,
+      "bit_identical_to_s1": true
+    },
+    "m06": {
+      "n3_w10_ms": 55144.5,
+      "n3_o2_m00_ms": 46556.2,
+      "speedup": 1.184,
+      "bit_identical_to_s1": true
+    },
+    "geomean_speedup_all3": 1.182,
+    "geomean_speedup_modules": 1.189,
+    "projected_3core_cold_e2e_s_m00_o2_only": 415.09,
+    "published_binary": "/home/ai/bend2_agy/selfhost/build/agy/wave10-native-mod/n3_o2"
+  },
+  "step2_o2_compile_attempt": {
+    "parallel_cpus": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "o2_succeeded_modules": 11,
+    "o2_timed_out_modules": [
+      "m04"
+    ],
+    "o2_timeout_s_m01_m11": 600,
+    "o2_timeout_s_m00": 960,
+    "all_seg_counts_match_o0": true,
+    "modules": [
+      {
+        "module": "m00",
+        "mode": "x86-module",
+        "cpu": 1,
+        "segs": 6173,
+        "o2_bytes": 7580208,
+        "o0_bytes": 8955584,
+        "ms": 913868.5,
+        "p86_plan_ms": 475897.0,
+        "x198pw_plan_ms": 190894.0,
+        "x187_priv_ms": 205193.0,
+        "x187_pub_ms": 37798.0,
+        "x187_elf_ms": 3272.0
+      },
+      {
+        "module": "m01",
+        "mode": "x86-module",
+        "cpu": 5,
+        "segs": 5874,
+        "o2_bytes": 7255168,
+        "o0_bytes": 8420752,
+        "ms": 543669.6,
+        "p86_plan_ms": 63433.0,
+        "x198pw_plan_ms": 66873.0,
+        "x187_priv_ms": 315358.0,
+        "x187_pub_ms": 92100.0,
+        "x187_elf_ms": 4485.0
+      },
+      {
+        "module": "m02",
+        "mode": "x86-module",
+        "cpu": 4,
+        "segs": 5580,
+        "o2_bytes": 7582920,
+        "o0_bytes": 8898472,
+        "ms": 388646.4,
+        "p86_plan_ms": 68590.0,
+        "x198pw_plan_ms": 62599.0,
+        "x187_priv_ms": 116521.0,
+        "x187_pub_ms": 134616.0,
+        "x187_elf_ms": 4394.0
+      },
+      {
+        "module": "m03",
+        "mode": "x86-module",
+        "cpu": 3,
+        "segs": 5017,
+        "o2_bytes": 6723104,
+        "o0_bytes": 7979464,
+        "ms": 195050.6,
+        "p86_plan_ms": 48528.0,
+        "x198pw_plan_ms": 43111.0,
+        "x187_priv_ms": 25148.0,
+        "x187_pub_ms": 73832.0,
+        "x187_elf_ms": 3184.0
+      },
+      {
+        "module": "m04",
+        "mode": "x86-module-fast-fallback",
+        "cpu": 3,
+        "segs": 4491,
+        "o2_bytes": 9149696,
+        "o0_bytes": 9149696,
+        "ms": 100787.8,
+        "o2_timed_out_at_s": 600,
+        "o2_x187_priv_done_ms": 110921.0
+      },
+      {
+        "module": "m05",
+        "mode": "x86-module",
+        "cpu": 2,
+        "segs": 5760,
+        "o2_bytes": 7846256,
+        "o0_bytes": 9378416,
+        "ms": 449935.0,
+        "p86_plan_ms": 70198.0,
+        "x198pw_plan_ms": 82843.0,
+        "x187_priv_ms": 61460.0,
+        "x187_pub_ms": 228195.0,
+        "x187_elf_ms": 4559.0
+      },
+      {
+        "module": "m06",
+        "mode": "x86-module",
+        "cpu": 2,
+        "segs": 5577,
+        "o2_bytes": 6913864,
+        "o0_bytes": 8460536,
+        "ms": 249921.2,
+        "p86_plan_ms": 19736.0,
+        "x198pw_plan_ms": 40942.0,
+        "x187_priv_ms": 22122.0,
+        "x187_pub_ms": 160047.0,
+        "x187_elf_ms": 3988.0
+      },
+      {
+        "module": "m07",
+        "mode": "x86-module",
+        "cpu": 2,
+        "segs": 5922,
+        "o2_bytes": 7716168,
+        "o0_bytes": 9414200,
+        "ms": 286355.5,
+        "p86_plan_ms": 27348.0,
+        "x198pw_plan_ms": 52483.0,
+        "x187_priv_ms": 13017.0,
+        "x187_pub_ms": 185807.0,
+        "x187_elf_ms": 4312.0
+      },
+      {
+        "module": "m08",
+        "mode": "x86-module",
+        "cpu": 5,
+        "segs": 6016,
+        "o2_bytes": 7232160,
+        "o0_bytes": 8602032,
+        "ms": 291223.1,
+        "p86_plan_ms": 21680.0,
+        "x198pw_plan_ms": 51095.0,
+        "x187_priv_ms": 25094.0,
+        "x187_pub_ms": 185324.0,
+        "x187_elf_ms": 4232.0
+      },
+      {
+        "module": "m09",
+        "mode": "x86-module",
+        "cpu": 4,
+        "segs": 4917,
+        "o2_bytes": 6886920,
+        "o0_bytes": 8425880,
+        "ms": 321449.8,
+        "p86_plan_ms": 33184.0,
+        "x198pw_plan_ms": 65183.0,
+        "x187_priv_ms": 15921.0,
+        "x187_pub_ms": 198400.0,
+        "x187_elf_ms": 4553.0
+      },
+      {
+        "module": "m10",
+        "mode": "x86-module",
+        "cpu": 4,
+        "segs": 4652,
+        "o2_bytes": 5846696,
+        "o0_bytes": 7267064,
+        "ms": 196017.3,
+        "p86_plan_ms": 25088.0,
+        "x198pw_plan_ms": 48768.0,
+        "x187_priv_ms": 13900.0,
+        "x187_pub_ms": 100573.0,
+        "x187_elf_ms": 3162.0
+      },
+      {
+        "module": "m11",
+        "mode": "x86-module",
+        "cpu": 1,
+        "segs": 3691,
+        "o2_bytes": 5253384,
+        "o0_bytes": 6510272,
+        "ms": 104795.0,
+        "p86_plan_ms": 9769.0,
+        "x198pw_plan_ms": 19089.0,
+        "x187_priv_ms": 5696.0,
+        "x187_pub_ms": 65190.0,
+        "x187_elf_ms": 2377.0
+      }
+    ]
+  },
+  "o2_root_cause_diagnosis": {
+    "bug_a_orphan_p114r_stubs": {
+      "total_p114r_weak_mirror_stubs": 2127,
+      "with_global_p114r_owner": 771,
+      "orphan_infinite_loop_stubs": 1356,
+      "orphan_by_true_p111_owner": {
+        "m00.o": 118,
+        "m01.o": 139,
+        "m02.o": 136,
+        "m03.o": 70,
+        "m04.o": 166,
+        "m05.o": 173,
+        "m06.o": 145,
+        "m07.o": 158,
+        "m08.o": 115,
+        "m09.o": 90,
+        "m10.o": 46
+      },
+      "gdb_proof_frame_1": "p114r_FID_36_100_105_114_101_99_116_46_112_56_54_95_114_101_97_100_95_109_111_114_101_ ($direct.p86_read_more)",
+      "gdb_proof_explanation": "m01.bend:3922 owns p86_read_more and emitted p111_FID_$direct.p86_read_more (no p114r); m11.o imported p86_read_more as self-recursive stub def p86_read_more(x): p86_read_more(x), triggering -O2 p114r emission + direct call to orphan infinite-loop p114r stub."
+    },
+    "bug_b_m2_elf_vis_p114r_gap": {
+      "duplicate_global_symbols": 998,
+      "by_prefix": {
+        "p114r": 998
+      },
+      "breakdown": {
+        "$direct.*": 998,
+        "$p111.k.*": 0
+      },
+      "verified_objcopy_parity_clean_link": true
+    },
+    "bug_c_m04_regalloc_cliff": {
+      "module": "m04",
+      "timeout_s": 600,
+      "x187_priv_done_ms": 110921.0,
+      "hung_stage": "x187_pub"
+    }
+  }
+}

@@ -1,0 +1,431 @@
+--- selfhost/build/agy/wave10_unified/compiler.bend
++++ selfhost/build/agy/wave10_unified/compiler.bend
+@@ -5748,6 +5748,38 @@
+       norm_stuck(original, raw, args, left, fallback)
+ 
+ @unsafe
++def w12_word_u32(+t: KTerm, +bit: U32, +left: U32, +acc: U32) -> Maybe<&2, U32>:
++  kc(Maybe<&2, U32>, U32.is_eq(left, 0),
++    u => kc(Maybe<&2, U32>, p98_tag_eq(t, "Ctr") && p88_string_eq(nm(t), "WNil"), u => Some{acc}, u => None{}),
++    u => kc(Maybe<&2, U32>, p98_tag_eq(t, "Ctr") && p88_string_eq(nm(t), "WCon") && U32.is_eq(terms_len(ks(t)), 2) && p98_tag_eq(kid(t, 0), "Ctr") && (p88_string_eq(nm(kid(t, 0)), "True") || p88_string_eq(nm(kid(t, 0)), "False")),
++      u => w12_word_u32(kid(t, 1), U32.shl(bit), U32.sub(left, 1), kc(U32, p88_string_eq(nm(kid(t, 0)), "True"), u => U32.or(acc, bit), u => acc)),
++      u => None{}))
++
++@unsafe
++def w12_u32_lit_val(+x: KTerm) -> Maybe<&2, U32>:
++  kc(Maybe<&2, U32>, core_literal(x) && p88_string_eq(nm(x), "U32"),
++    u => Some{kl_number(x)},
++    u => kc(Maybe<&2, U32>, p98_tag_eq(x, "Ctr") && p88_string_eq(nm(x), "U32") && U32.is_eq(terms_len(ks(x)), 1),
++      u => w12_word_u32(kid(x, 0), 1, 32, 0),
++      u => None{}))
++
++@unsafe
++def w12_norm_u32_cmp(hit: Bool, +book: List<&2, KDef>, +arm: KTerm, +original: KTerm, +raw: KTerm, +x: KTerm, +args: List<&2, KTerm>, +left: U32, +fallback: KTerm) -> KTerm:
++  match hit:
++    case True{}:
++      norm_eval(book, kid(arm, 0), args, norm_dec(left), fallback)
++    case False{}:
++      norm_match(book, kid(arm, 1), original, raw, x, args, left, fallback)
++
++@unsafe
++def w12_norm_u32_val(v: Maybe<&2, U32>, +book: List<&2, KDef>, +arm: KTerm, +original: KTerm, +raw: KTerm, +x: KTerm, +args: List<&2, KTerm>, +left: U32, +fallback: KTerm) -> KTerm:
++  match v:
++    case Some{n}:
++      w12_norm_u32_cmp(U32.is_eq(n, ix(arm)), book, arm, original, raw, x, args, left, fallback)
++    case None{}:
++      norm_stuck(original, raw, args, left, fallback)
++
++@unsafe
+ def w7_br_23(w7_c: Bool, +book: List<&2, KDef>, +arm: KTerm, +original: KTerm, +raw: KTerm, +x: KTerm, +args: List<&2, KTerm>, +left: U32, +fallback: KTerm) -> KTerm:
+   match w7_c:
+     case True{}:
+@@ -5756,8 +5788,16 @@
+       w7_br_22(p98_tag_eq(x, "Ctr"), book, arm, original, raw, x, args, left, fallback)
+ 
+ @unsafe
++def w12_norm_mat_u32(isLitMat: Bool, +book: List<&2, KDef>, +arm: KTerm, +original: KTerm, +raw: KTerm, +x: KTerm, +args: List<&2, KTerm>, +left: U32, +fallback: KTerm) -> KTerm:
++  match isLitMat:
++    case True{}:
++      w12_norm_u32_val(w12_u32_lit_val(x), book, arm, original, raw, x, args, left, fallback)
++    case False{}:
++      w7_br_23(core_literal(x), book, arm, original, raw, x, args, left, fallback)
++
++@unsafe
+ def norm_match(book, arm, original, raw, x, args, left, fallback):
+-  w7_br_23(core_literal(x), book, arm, original, raw, x, args, left, fallback)
++  w12_norm_mat_u32(p98_tag_eq(arm, "Mat") && p88_string_eq(nm(arm), "#U32"), book, arm, original, raw, x, args, left, fallback)
+ 
+ # Module: src/core/normalize.bend:187
+ @unsafe
+@@ -5852,7 +5892,7 @@
+ 
+ @unsafe
+ def w7c_norm_max_term(+t: KTerm, +bound: U32) -> U32:
+-  w7c_norm_max_terms(ks(t), U32.max(bound, ix(t)))
++  w7c_norm_max_terms(ks(t), kc(U32, p98_tag_eq(t, "Mat") && p88_string_eq(nm(t), "#U32"), u => bound, u => U32.max(bound, ix(t))))
+ 
+ @unsafe
+ def w7c_norm_max_defs(ds: List<&2, KDef>, +bound: U32) -> U32:
+@@ -6012,8 +6052,8 @@
+   match todo:
+     case Nil{}:
+       bound
+-    case Con{h, rest}:
+-      norm_max_walk(norm_join(ks(h), rest), norm_max(bound, ix(h)))
++    case Con{+h, rest}:
++      norm_max_walk(norm_join(ks(h), rest), kc(U32, p98_tag_eq(h, "Mat") && p88_string_eq(nm(h), "#U32"), u => bound, u => norm_max(bound, ix(h))))
+ 
+ # Module: src/core/normalize.bend:389
+ @unsafe
+@@ -7000,6 +7040,22 @@
+       w7_br_91(p98_tag_eq(arm, "Ann"), book, st, arm, original, raw, x, args, pending, fallback, stack)
+ 
+ @unsafe
++def w12_g_u32_cmp(hit: Bool, +book: List<&2, KDef>, +st: GState, +arm: KTerm, +original: KTerm, +raw: KTerm, +x: KTerm, +args: List<&2, KTerm>, +pending: U32, +fallback: KTerm, +stack: List<&2, GFrame>) -> GResult:
++  match hit:
++    case True{}:
++      g_eval(book, st, kid(arm, 0), args, norm_dec(pending), fallback, stack)
++    case False{}:
++      g_match(book, st, kid(arm, 1), original, raw, x, args, pending, fallback, stack)
++
++@unsafe
++def w12_g_u32_val(v: Maybe<&2, U32>, +book: List<&2, KDef>, +st: GState, +arm: KTerm, +original: KTerm, +raw: KTerm, +x: KTerm, +args: List<&2, KTerm>, +pending: U32, +fallback: KTerm, +stack: List<&2, GFrame>) -> GResult:
++  match v:
++    case Some{n}:
++      w12_g_u32_cmp(U32.is_eq(n, ix(arm)), book, st, arm, original, raw, x, args, pending, fallback, stack)
++    case None{}:
++      g_return(book, st, norm_stuck(original, raw, args, pending, fallback), stack)
++
++@unsafe
+ def w7_br_93(w7_c: Bool, +book: List<&2, KDef>, +st: GState, +arm: KTerm, +original: KTerm, +raw: KTerm, +x: KTerm, +args: List<&2, KTerm>, +pending: U32, +fallback: KTerm, +stack: List<&2, GFrame>) -> GResult:
+   match w7_c:
+     case True{}:
+@@ -7008,8 +7064,16 @@
+       w7_br_92(Bool.not(p98_tag_eq(x, "Ctr")), book, st, arm, original, raw, x, args, pending, fallback, stack)
+ 
+ @unsafe
++def w12_g_mat_u32(isLitMat: Bool, +book: List<&2, KDef>, +st: GState, +arm: KTerm, +original: KTerm, +raw: KTerm, +x: KTerm, +args: List<&2, KTerm>, +pending: U32, +fallback: KTerm, +stack: List<&2, GFrame>) -> GResult:
++  match isLitMat:
++    case True{}:
++      w12_g_u32_val(w12_u32_lit_val(x), book, st, arm, original, raw, x, args, pending, fallback, stack)
++    case False{}:
++      w7_br_93(core_literal(x), book, st, arm, original, raw, x, args, pending, fallback, stack)
++
++@unsafe
+ def g_match(book, st, arm, original, raw, x, args, pending, fallback, stack):
+-  w7_br_93(core_literal(x), book, st, arm, original, raw, x, args, pending, fallback, stack)
++  w12_g_mat_u32(p98_tag_eq(arm, "Mat") && p88_string_eq(nm(arm), "#U32"), book, st, arm, original, raw, x, args, pending, fallback, stack)
+ 
+ # Module: src/core/graph.bend:411
+ @unsafe
+@@ -9028,12 +9092,39 @@
+       dg_bad_detail(cw(e), "nonexhaustive match", dg_text("cases for " ++ dg_constructor_names(remaining(dc(lookup(cb(e), nm(a))), rm(a)))), t)
+ 
+ @unsafe
++def w12_check_u32_arm(okHit: Bool, +e: KEnv, +ctx: List<&2, KTerm>, +t: KTerm, +dem: U32, +ty: KTerm, +r: KChecking) -> KChecking:
++  match okHit:
++    case True{}:
++      ki_pair(t, ty, r, check(ke_world(e, rw(r)), ctx, kid(t, 1), dem, ty), True{})
++    case False{}:
++      r
++
++@unsafe
++def w12_check_u32_valid(valid: Bool, +e: KEnv, +ctx: List<&2, KTerm>, +t: KTerm, +dem: U32, +ty: KTerm, +a: KTerm) -> KChecking:
++  match valid:
++    case True{}:
++      +lit : KTerm = KLiteral{"U32", ix(t), "", kb(t), ke(t)}
++      +ehit = kc(KEnv, U32.is_eq(cp(e), 0), u => e, u => KEnv{cw(e), cn(e), kapply(cl(e), lit), U32.sub(cp(e), 1), cq(e), cu(e), cd(e)})
++      +rhit = check(ehit, ctx, kid(t, 0), dem, subst(kid(ty, 1), ix(ty), lit))
++      w12_check_u32_arm(good(rhit), e, ctx, t, dem, ty, rhit)
++    case False{}:
++      dg_bad_detail(cw(e), "unknown or duplicate match constructor", dg_text("a constructor of " ++ name_key(nm(a)) ++ " (missing, or already matched)"), t)
++
++@unsafe
++def w12_check_mat_dispatch(isLitU32: Bool, +e: KEnv, +ctx: List<&2, KTerm>, +t: KTerm, +dem: U32, +ty: KTerm, +a: KTerm) -> KChecking:
++  match isLitU32:
++    case True{}:
++      w12_check_u32_valid(p88_string_eq(nm(a), "U32") && List.is_empty(&2, String, rm(a)), e, ctx, t, dem, ty, a)
++    case False{}:
++      check_mat_ctr(e, ctx, t, dem, ty, a, lookup(remaining(dc(lookup(cb(e), nm(a))), rm(a)), nm(t)))
++
++@unsafe
+ def w7_br_181(w7_c: Bool, +e: KEnv, +ctx: List<&2, KTerm>, +t: KTerm, +dem: U32, +ty: KTerm, +a: KTerm) -> KChecking:
+   match w7_c:
+     case True{}:
+       w7_br_180(dead_type(cb(e), a) || ctx_dead(cb(e), ctx), e, t, ty, a)
+     case False{}:
+-      check_mat_ctr(e, ctx, t, dem, ty, a, lookup(remaining(dc(lookup(cb(e), nm(a))), rm(a)), nm(t)))
++      w12_check_mat_dispatch(p88_string_eq(nm(t), "#U32"), e, ctx, t, dem, ty, a)
+ 
+ @unsafe
+ def w7_br_182(w7_c: Bool, +e: KEnv, +ctx: List<&2, KTerm>, +t: KTerm, +dem: U32, +ty: KTerm, +a: KTerm) -> KChecking:
+@@ -11720,10 +11811,18 @@
+ def ka_args_head(e, ctx, tel, h, rest):
+   Con{ka_field(annotate(e, ctx, h, kid(tel, 0)), qt(tel)), ka_args(e, ctx, w7b_subst_fast(kid(tel, 1), ix(tel), h), rest)}
+ 
++@unsafe
++def w12_ka_mat_br(isLitU32: Bool, +e: KEnv, +ctx: List<&2, KTerm>, +t: KTerm, +ty: KTerm, +a: KTerm) -> KTerm:
++  match isLitU32:
++    case True{}:
++      kt("Mat", "#U32", ix(t), qt(t), Con{annotate(e, ctx, kid(t, 0), subst(kid(ty, 1), ix(ty), KLiteral{"U32", ix(t), "", 0, 0})), Con{annotate(e, ctx, kid(t, 1), ty), Nil{}}})
++    case False{}:
++      ka_mat_ctr(e, ctx, t, ty, a, lookup(dc(lookup(cb(e), nm(a))), nm(t)))
++
+ # Module: src/check/annotate.bend:235
+ @unsafe
+ def ka_mat(e, ctx, t, ty, a):
+-  ka_mat_ctr(e, ctx, t, ty, a, lookup(dc(lookup(cb(e), nm(a))), nm(t)))
++  w12_ka_mat_br(p88_string_eq(nm(t), "#U32"), e, ctx, t, ty, a)
+ 
+ # Module: src/check/annotate.bend:239
+ @unsafe
+@@ -12567,7 +12666,11 @@
+           +syntax = f_context_syntax(pattern)
+           f_choose(FParsed, p98_tag_eq(syntax, "Var"),
+             u => f_context_pattern_named(syntax, input, cursor, f_context_resolve_table(k_with_span(syntax, cursor, cursor), scope, True{})),
+-            u => f_choose(FParsed, core_literal(pattern), u => f_context_pattern(core_literal_step(pattern), input, cursor), u => f_choose(FParsed, p98_tag_eq(pattern, "Ctr"), u => f_context_pattern_ctor(pattern, input, cursor, scope), u => f_context_pattern_computed(pattern, input, cursor, f_context_higher(pattern)))))
++            u => f_choose(FParsed, core_literal(pattern),
++              u => f_choose(FParsed, p88_string_eq(nm(pattern), "U32"),
++                v => FParsed{kt_span("Ctr", "#U32", kl_number(pattern), 1, Nil{}, kb(pattern), ke(pattern)), input},
++                v => f_context_pattern(core_literal_step(pattern), input, cursor)),
++              u => f_choose(FParsed, p98_tag_eq(pattern, "Ctr"), u => f_context_pattern_ctor(pattern, input, cursor, scope), u => f_context_pattern_computed(pattern, input, cursor, f_context_higher(pattern)))))
+ 
+ # Module: src/front/contextual.bend:101
+ @unsafe
+@@ -15100,6 +15203,36 @@
+     case FFlatten{body, next}:
+       f_choose(FFlatten, ff_failed(body), u => FFlatten{body, next}, u => FFlatten{k_lam(nm(v), ix(v), qt(v), [body], kb(v), ke(v), True{}), next})
+ 
++# W12-B: If a column mixes #U32 literals with explicit U32{word} patterns, expand #U32 back to U32{WCon{...}}.
++@unsafe
++def w12_rows_have_ctor(rows: List<&2, KTerm>, +name: String) -> Bool:
++  match rows:
++    case Nil{}: False{}
++    case Con{+r, rs}:
++      (f_eq(tg(f_rowpat(r)), "Ctr") && f_eq(nm(f_rowpat(r)), name)) || w12_rows_have_ctor(rs, name)
++
++@unsafe
++def w12_expand_u32_row(+r: KTerm) -> KTerm:
++  +p = f_rowpat(r)
++  f_choose(KTerm, f_eq(tg(p), "Ctr") && f_eq(nm(p), "#U32"),
++    u => kt("Row", "", 0, qt(r), [kt("Patterns", "", 0, 1, Con{core_literal_step(KLiteral{"U32", ix(p), "", kb(p), ke(p)}), f_tail_terms(ks(kid(r, 0)))}), kid(r, 1)]),
++    u => r)
++
++@unsafe
++def w12_expand_u32_rows(rows: List<&2, KTerm>) -> List<&2, KTerm>:
++  match rows:
++    case Nil{}: Nil{}
++    case Con{r, rs}: Con{w12_expand_u32_row(r), w12_expand_u32_rows(rs)}
++
++@unsafe
++def w12_split_mixed(mixed: Bool, +h: KTerm, +hs: List<&2, KTerm>, +rows: List<&2, KTerm>, +v: KTerm, +vs: List<&2, KTerm>, +c: KTerm, +next: U32, +origin: KTerm) -> FFlatten:
++  match mixed:
++    case True{}:
++      +erows = w12_expand_u32_rows(rows)
++      ff_split(h, hs, erows, v, vs, f_first_ctor(erows), next, origin)
++    case False{}:
++      ff_fields_done(h, hs, rows, v, vs, c, ff_fields(ks(c), f_mark_rows(rows, qt(v)), next), origin)
++
+ # Module: src/front/flatten.bend:148
+ @unsafe
+ def w7_br_410(w7_c: Bool, +h: KTerm, +hs: List<&2, KTerm>, +rows: List<&2, KTerm>, +v: KTerm, +vs: List<&2, KTerm>, +c: KTerm, +next: U32, +origin: KTerm) -> FFlatten:
+@@ -15107,7 +15240,7 @@
+     case True{}:
+       FFlatten{kt_span("Efq", "", 0, 0, Nil{}, kb(origin), ke(origin)), next}
+     case False{}:
+-      ff_fields_done(h, hs, rows, v, vs, c, ff_fields(ks(c), f_mark_rows(rows, qt(v)), next), origin)
++      w12_split_mixed((f_eq(nm(c), "#U32") && w12_rows_have_ctor(rows, "U32")) || (f_eq(nm(c), "U32") && w12_rows_have_ctor(rows, "#U32")), h, hs, rows, v, vs, c, next, origin)
+ 
+ @unsafe
+ def ff_split(h, hs, rows, v, vs, c, next, origin):
+@@ -15136,19 +15269,31 @@
+     case FFields{+fields, next}:
+       ff_hit_done(h, hs, rows, v, vs, c, ff_match(norm_join(fields, hs), f_hit_rows(rows, c, fields, v), norm_join(fields, vs), next, origin), origin)
+ 
++@unsafe
++def w12_ctor_same(+p: KTerm, +c: KTerm) -> Bool:
++  f_eq(nm(p), nm(c)) && f_choose(Bool, f_eq(nm(c), "#U32"), u => U32.is_eq(ix(p), ix(c)), u => True{})
++
++@unsafe
++def w12_miss_rows(+rows: List<&2, KTerm>, +c: KTerm) -> List<&2, KTerm>:
++  match rows:
++    case Nil{}:
++      Nil{}
++    case Con{+r, +rs}:
++      f_choose(List<&2, KTerm>, f_eq(tg(f_rowpat(r)), "Ctr") && w12_ctor_same(f_rowpat(r), c), u => w12_miss_rows(rs, c), u => Con{r, w12_miss_rows(rs, c)})
++
+ # Module: src/front/flatten.bend:172
+ @unsafe
+ def ff_hit_done(h, hs, rows, v, vs, c, r, origin):
+   match r:
+     case FFlatten{hit, next}:
+-      f_choose(FFlatten, ff_failed(hit), u => FFlatten{hit, next}, u => ff_miss_done(c, hit, ff_match(Con{h, hs}, f_miss_rows(rows, nm(c)), Con{v, vs}, next, origin), origin))
++      f_choose(FFlatten, ff_failed(hit), u => FFlatten{hit, next}, u => ff_miss_done(c, hit, ff_match(Con{h, hs}, w12_miss_rows(rows, c), Con{v, vs}, next, origin), origin))
+ 
+ # Module: src/front/flatten.bend:178
+ @unsafe
+ def ff_miss_done(c, hit, r, origin):
+   match r:
+     case FFlatten{miss, next}:
+-      f_choose(FFlatten, ff_failed(miss), u => FFlatten{miss, next}, u => FFlatten{kt_span("Mat", nm(c), 0, 1, [hit, miss], kb(c), ke(c)), next})
++      f_choose(FFlatten, ff_failed(miss), u => FFlatten{miss, next}, u => FFlatten{kt_span("Mat", nm(c), f_choose(U32, f_eq(nm(c), "#U32"), u => ix(c), u => 0), 1, [hit, miss], kb(c), ke(c)), next})
+ 
+ # Module: src/front/flatten.bend:184
+ @unsafe
+@@ -15255,7 +15400,8 @@
+     case Nil{}:
+       Nil{}
+     case Con{+r, rs}:
+-      Con{kt("Row", "", 0, qt(r), [kt("Patterns", "", 0, 1, f_tail_terms(ks(kid(r, 0)))), f_choose(KTerm, U32.is_eq(qt(r), 0), u => kid(r, 1), u => f_pattern_sub(kid(r, 1), ix(f_rowpat(r)), v))]), f_var_rows(rs, v)}
++      +rp = f_rowpat(r)
++      Con{kt("Row", "", 0, qt(r), [kt("Patterns", "", 0, 1, f_tail_terms(ks(kid(r, 0)))), f_choose(KTerm, U32.is_eq(qt(r), 0) || f_eq(nm(rp), "_"), u => kid(r, 1), u => f_pattern_sub(kid(r, 1), ix(rp), v))]), f_var_rows(rs, v)}
+ 
+ # Module: src/front/elaborate.bend:134
+ @unsafe
+@@ -15264,12 +15410,21 @@
+     case Nil{}:
+       Nil{}
+     case Con{+r, rs}:
+-      f_choose(List<&2, KTerm>, f_eq(tg(f_rowpat(r)), "Var") || f_eq(nm(f_rowpat(r)), nm(c)), u => Con{f_hit_row(r, c, fields, v), f_hit_rows(rs, c, fields, v)}, u => f_hit_rows(rs, c, fields, v))
++      +rp = f_rowpat(r)
++      f_choose(List<&2, KTerm>, f_eq(tg(rp), "Var") || w12_ctor_same(rp, c), u => Con{f_hit_row(r, c, fields, v), f_hit_rows(rs, c, fields, v)}, u => f_hit_rows(rs, c, fields, v))
++
++@unsafe
++def w12_hit_val(+c: KTerm, +fields: List<&2, KTerm>) -> KTerm:
++  f_choose(KTerm, f_eq(nm(c), "#U32"),
++    u => KLiteral{"U32", ix(c), "", kb(c), ke(c)},
++    u => kt_span("Ctr", nm(c), 0, 1, fields, kb(c), ke(c)))
+ 
+ # Module: src/front/elaborate.bend:142
+ @unsafe
+ def f_hit_row(r, c, fields, v):
+-  kt("Row", "", 0, qt(r), [kt("Patterns", "", 0, 1, norm_join(f_choose(List<&2, KTerm>, f_eq(tg(f_rowpat(r)), "Var"), u => fields, u => ks(f_rowpat(r))), f_tail_terms(ks(kid(r, 0))))), f_choose(KTerm, U32.is_eq(qt(r), 0), u => kid(r, 1), u => f_pattern_sub(f_choose(KTerm, f_eq(tg(f_rowpat(r)), "Var"), u => f_pattern_sub(kid(r, 1), ix(f_rowpat(r)), v), u => kid(r, 1)), ix(v), kt_span("Ctr", nm(c), 0, 1, fields, kb(c), ke(c))))])
++  +rp = f_rowpat(r)
++  +isVar = f_eq(tg(rp), "Var")
++  kt("Row", "", 0, qt(r), [kt("Patterns", "", 0, 1, norm_join(f_choose(List<&2, KTerm>, isVar, u => fields, u => ks(rp)), f_tail_terms(ks(kid(r, 0))))), f_choose(KTerm, U32.is_eq(qt(r), 0), u => kid(r, 1), u => f_pattern_sub(f_choose(KTerm, isVar && Bool.not(f_eq(nm(rp), "_")), u => f_pattern_sub(kid(r, 1), ix(rp), v), u => kid(r, 1)), ix(v), w12_hit_val(c, fields)))])
+ 
+ # Module: src/front/elaborate.bend:146
+ @unsafe
+@@ -19840,10 +19995,18 @@
+ 
+ # Module: src/back/common/arity.bend:38
+ @unsafe
++def w12_jd_raise_mat(isLitU32: Bool, +book: List<&2,KDef>, +t: KTerm, +left: U32, +domain: KTerm) -> U32:
++  match isLitU32:
++    case True{}:
++      U32.min(jd_raise(book, kid(t, 0), jd_raise_arm(left, 0)), jd_raise(book, kid(t, 1), left))
++    case False{}:
++      jd_raise_match(book, t, left, j_layout_ctor(book, domain, nm(t)))
++
++@unsafe
+ def w7_br_580(w7_c: Bool, +book: List<&2,KDef>, +t: KTerm, +left: U32, +domain: KTerm) -> U32:
+   match w7_c:
+     case True{}:
+-      jd_raise_match(book, t, left, j_layout_ctor(book, domain, nm(t)))
++      w12_jd_raise_mat(p88_string_eq(nm(t), "#U32"), book, t, left, domain)
+     case False{}:
+       jd_raise_head(book, t, left)
+ 
+@@ -22312,12 +22475,20 @@
+         u => nc_erase_args(book, subst(kid(head, 1), ix(head), h), rest),
+         u => Con{nc_erase(book, h), nc_erase_args(book, subst(kid(head, 1), ix(head), h), rest)})
+ 
++@unsafe
++def w12_nc_erase_mat_br(isLitU32: Bool, +book: List<&2, KDef>, +t: KTerm, +adt: KTerm) -> KTerm:
++  match isLitU32:
++    case True{}:
++      kt("Mat", "#U32", ix(t), 0, nc_erase_list(book, ks(t)))
++    case False{}:
++      +ctr = lookup(dc(lookup(book, nm(adt))), nm(t))
++      +count = nc_live_count(book, nc_tele_fill(book, dt(ctr), ks(adt)), da(ctr))
++      kt("Mat", nt_choose(String, db(lookup(book, nm(adt))), u => nm(t), u => nc_ctor_identity(book, nm(t))), U32.inc(count), nh_field_mask(book, nc_tele_fill(book, dt(ctr), ks(adt)), da(ctr), 0), nc_erase_list(book, ks(t)))
++
+ # Module: src/back/native/erase.bend:51
+ @unsafe
+ def nc_erase_mat(+book: List<&2, KDef>, +t: KTerm, +adt: KTerm) -> KTerm:
+-  +ctr = lookup(dc(lookup(book, nm(adt))), nm(t))
+-  +count = nc_live_count(book, nc_tele_fill(book, dt(ctr), ks(adt)), da(ctr))
+-  kt("Mat", nt_choose(String, db(lookup(book, nm(adt))), u => nm(t), u => nc_ctor_identity(book, nm(t))), U32.inc(count), nh_field_mask(book, nc_tele_fill(book, dt(ctr), ks(adt)), da(ctr), 0), nc_erase_list(book, ks(t)))
++  w12_nc_erase_mat_br(p88_string_eq(nm(t), "#U32"), book, t, adt)
+ 
+ # Module: src/back/native/erase.bend:57
+ @unsafe
+@@ -22383,7 +22554,7 @@
+     case True{}:
+       nc_erase_app(book, t)
+     case False{}:
+-      k_rebuild(t, nt_choose(String, p98_tag_eq(t, "Ctr") || p98_tag_eq(t, "Mat"), u => nc_ctor_identity(book, nm(t)), u => nm(t)), ix(t), qt(t), nc_erase_list(book, ks(t)), Nil{}, 0, 0)
++      k_rebuild(t, nt_choose(String, (p98_tag_eq(t, "Ctr") || p98_tag_eq(t, "Mat")) && Bool.not(p88_string_eq(nm(t), "#U32")), u => nc_ctor_identity(book, nm(t)), u => nm(t)), ix(t), qt(t), nc_erase_list(book, ks(t)), Nil{}, 0, 0)
+ 
+ @unsafe
+ def w7_br_644(w7_c: Bool, +book: List<&2, KDef>, +t: KTerm) -> KTerm:
+@@ -24759,8 +24930,24 @@
+       False{}
+ 
+ @unsafe
++def w12_nw_walk_lit(+t: KTerm) -> NW_Rows:
++  nt_choose(NW_Rows, p98_tag_eq(t, "Mat") && p88_string_eq(nm(t), "#U32") && U32.is_eq(terms_len(ks(t)), 2),
++    u => nw_join(NW_Rows{True{}, [nw_row(kid(t, 0), 32, ix(t), 0)]}, w12_nw_walk_lit(kid(t, 1))),
++    u => nt_choose(NW_Rows, p98_tag_eq(t, "Lam"),
++      v => NW_Rows{True{}, [nw_row(t, 0, 0, 3)]},
++      v => nt_choose(NW_Rows, p98_tag_eq(t, "Efq"),
++        w => NW_Rows{True{}, Nil{}},
++        w => NW_Rows{False{}, Nil{}})))
++
++@unsafe
++def w12_nw_dispatch(+mat: KTerm) -> NW_Rows:
++  nt_choose(NW_Rows, p88_string_eq(nm(mat), "#U32"),
++    u => w12_nw_walk_lit(mat),
++    u => nw_walk(kid(mat, 0), 0, 0, NW_None{}))
++
++@unsafe
+ def nw_applicable(+mat: KTerm) -> Bool:
+-  w7_br_731(p98_tag_eq(mat, "Mat"), mat)
++  (p98_tag_eq(mat, "Mat") && p88_string_eq(nm(mat), "#U32") && U32.is_eq(terms_len(ks(mat)), 2)) || w7_br_731(p98_tag_eq(mat, "Mat"), mat)
+ 
+ # Under a row's bit constraints, reconstructing its original scalar wrapper is
+ # the original low 32-bit value. Keep the value; materialize an escaping Word
+@@ -36829,10 +37016,12 @@
+ @unsafe
+ def p112m_body(+row: KTerm, +rest: List<&2,KTerm>, +n: U32) -> KTerm:
+   nt_choose(KTerm,U32.is_eq(qt(row),0),u => nd_reapply(kid(row,0),rest),
+-    u => nd_reapply(nw_restore(nd_beta(kid(row,0),nt_choose(List<&2,KTerm>,U32.is_eq(qt(row),1),
+-      v => [var("",nc_id(U32.add(n,2)))],v => [var("",nc_id(U32.inc(n))),var("",nc_id(U32.add(n,2)))])),
+-      nw_prefix(ix(row),nw_value(row),nt_choose(KTerm,U32.is_eq(qt(row),1),
+-        v => var("",nc_id(U32.add(n,2))),v => nw_word(var("",nc_id(U32.inc(n))),var("",nc_id(U32.add(n,2)))))),nc_id(n)),rest))
++    u => nt_choose(KTerm,U32.is_eq(qt(row),3),
++      w => nd_reapply(nd_beta(kid(row,0),[var("",nc_id(n))]),rest),
++      w => nd_reapply(nw_restore(nd_beta(kid(row,0),nt_choose(List<&2,KTerm>,U32.is_eq(qt(row),1),
++        v => [var("",nc_id(U32.add(n,2)))],v => [var("",nc_id(U32.inc(n))),var("",nc_id(U32.add(n,2)))])),
++        nw_prefix(ix(row),nw_value(row),nt_choose(KTerm,U32.is_eq(qt(row),1),
++          v => var("",nc_id(U32.add(n,2))),v => nw_word(var("",nc_id(U32.inc(n))),var("",nc_id(U32.add(n,2)))))),nc_id(n)),rest)))
+ 
+ 
+ @unsafe
+@@ -36918,7 +37107,7 @@
+ def p112m_match_apply(+book: List<&2,KDef>, +t: KTerm, +env: List<&2,NC_Binding>, +n: U32) -> P111Code:
+   nt_choose(P111Code,nw_applicable(kid(t,0)) && U32.is_lt(n,4294967293),
+     u => nt_choose(P111Code,p112m_fresh_terms([t],nc_id(U32.add(n,2)),nc_id(n)) && p112m_fresh_env(env,n),
+-      v => p112m_recognized(book,t,env,n,nw_walk(kid(kid(t,0),0),0,0,NW_None{})),
++      v => p112m_recognized(book,t,env,n,w12_nw_dispatch(kid(t,0))),
+       v => p112m_original_match_apply(book,t,env,n)),
+     u => p112m_original_match_apply(book,t,env,n))
+ 
+@@ -37909,7 +38098,7 @@
+ def p113dm_match(+book: List<&2,KDef>, +t: KTerm, +env: List<&2,NC_Binding>, +owner: String, +target: P113DTarget, +n: U32) -> P113DCode:
+   nt_choose(P113DCode,nw_applicable(kid(t,0)),
+     u => nt_choose(P113DCode,U32.is_lt(n,4294967293) && p112m_fresh_terms([t],nc_id(U32.add(n,2)),nc_id(n)) && p112m_fresh_env(env,n),
+-      v => p113dm_recognized(book,t,env,owner,target,n,nw_walk(kid(kid(t,0),0),0,0,NW_None{})),
++      v => p113dm_recognized(book,t,env,owner,target,n,w12_nw_dispatch(kid(t,0))),
+       v => p113d_fail("direct: Word row freshness refusal",n)),
+     u => p113dm_original_match(book,t,env,owner,target,n))
+ 
+@@ -38742,7 +38931,7 @@
+ def p113pm_match(+book: List<&2,KDef>, +t: KTerm, +env: List<&2,NC_Binding>, +target: P113PTarget, +n: U32) -> P113DCode:
+   nt_choose(P113DCode,nw_applicable(kid(t,0)),
+     u => nt_choose(P113DCode,U32.is_lt(n,4294967293) && p112m_fresh_terms([t],nc_id(U32.add(n,2)),nc_id(n)) && p112m_fresh_env(env,n),
+-      v => p113pm_recognized(book,t,env,target,n,nw_walk(kid(kid(t,0),0),0,0,NW_None{})),
++      v => p113pm_recognized(book,t,env,target,n,w12_nw_dispatch(kid(t,0))),
+       v => p113d_fail("product: Word row freshness refusal",n)),
+     u => p113pm_original_match(book,t,env,target,n))
+ 

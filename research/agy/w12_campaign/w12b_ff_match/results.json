@@ -1,0 +1,74 @@
+{
+  "campaign": "W12-B",
+  "title": "Fix Root-Cause ff_match / f_hit_rows Exponential Wildcard-Duplication Blowup via Direct #U32 Literal Pattern Matching",
+  "cpu_pin": 6,
+  "baseline_compiler": "selfhost/build/agy/wave10_unified/compiler.bend",
+  "patched_compiler": "research/agy/w12_campaign/w12b_ff_match/compiler_w12b.bend",
+  "patch_file": "research/agy/w12_campaign/w12b_ff_match/w12b_ff_match.patch",
+  "patch_hunks": 18,
+  "patch_diff_lines": 431,
+  "gates": {
+    "check_only": {
+      "status": "PASS",
+      "type_errors": 0,
+      "linearity_errors": 0,
+      "unsafe_audit_defs": 8679
+    },
+    "native64_o2": {
+      "status": "PASS",
+      "passed": 64,
+      "total": 64,
+      "wall_s": 89.9
+    },
+    "observer_gate": {
+      "status": "PASS",
+      "abi_probes": "44+2",
+      "passed": 15,
+      "total": 15,
+      "violations": 0
+    }
+  },
+  "prototypes": {
+    "p1_rejected": {
+      "description": "Zero-alloc w12_has_var/w12_pat_sub2 + 1-ctor word ADT (U32/F32/WCon/WNil) Efq short-circuit in ff_hit_done",
+      "verdict": "REJECTED",
+      "reason": "Did not eliminate the 32x32 / 64x64 reachable Bool-bit Mat duplication in check/annotate/x198pw_plan; extra w12_has_var pass regressed p86_plan on repro_p186ch (28,950 -> 34,135 ms) and repro_w2_asr (31,276 -> 34,283 ms)."
+    },
+    "p2_promoted": {
+      "description": "Direct #U32 literal pattern matching (0-field Ctr('#U32', n) -> Mat('#U32', n, [hit, miss])) + O(1) '_' wildcard skip in f_var_rows/f_hit_row + mixed U32/#U32 fallback expansion + direct nw_walk/p112m_body lowering + norm_max_walk/w7c_norm_max_term ix exclusion",
+      "verdict": "PROMOTED"
+    }
+  },
+  "benchmarks_o2": {
+    "repro_p186ch": {
+      "golden_out": "35",
+      "baseline": {"p86_plan_ms": 28950, "x198pw_plan_ms": 9402, "x187_priv_ms": 2597, "x187_pub_ms": 5, "wall_ms": 42008.6, "obj_bytes": 225840},
+      "w12b":     {"p86_plan_ms": 627,   "x198pw_plan_ms": 1097, "x187_priv_ms": 2563, "x187_pub_ms": 5, "wall_ms": 5327.2,  "obj_bytes": 223184},
+      "speedup":  {"p86_plan": 46.17, "x198pw_plan": 8.57, "wall": 7.89}
+    },
+    "repro_w2_asr": {
+      "golden_out": "5",
+      "baseline": {"p86_plan_ms": 31276, "x198pw_plan_ms": 11744, "x187_priv_ms": 950, "x187_pub_ms": 1092, "wall_ms": 45967.8, "obj_bytes": 115168},
+      "w12b":     {"p86_plan_ms": 483,   "x198pw_plan_ms": 764,   "x187_priv_ms": 788, "x187_pub_ms": 1201, "wall_ms": 4274.7,  "obj_bytes": 115168},
+      "speedup":  {"p86_plan": 64.75, "x198pw_plan": 15.37, "wall": 10.75}
+    },
+    "repro_w5b_rol16": {
+      "golden_out": "102",
+      "baseline": {"p86_plan_ms": 1238, "x198pw_plan_ms": 1065, "x187_priv_ms": 6541, "x187_pub_ms": 10, "wall_ms": 9942.5, "obj_bytes": 187080},
+      "w12b":     {"p86_plan_ms": 547,  "x198pw_plan_ms": 1027, "x187_priv_ms": 3757, "x187_pub_ms": 11, "wall_ms": 6405.5, "obj_bytes": 187080},
+      "speedup":  {"p86_plan": 2.26, "x198pw_plan": 1.04, "wall": 1.55}
+    },
+    "repro_w5b_cmp_jcc": {
+      "golden_out": "102",
+      "baseline": {"p86_plan_ms": 1530, "x198pw_plan_ms": 1547, "x187_priv_ms": 26779, "x187_pub_ms": 5, "wall_ms": 30939.7, "obj_bytes": 346536},
+      "w12b":     {"p86_plan_ms": 685,  "x198pw_plan_ms": 1298, "x187_priv_ms": 26685, "x187_pub_ms": 7, "wall_ms": 29782.2, "obj_bytes": 346536},
+      "speedup":  {"p86_plan": 2.23, "x198pw_plan": 1.19, "wall": 1.04}
+    }
+  },
+  "benchmarks_o0_w12b": {
+    "repro_p186ch":      {"p86_plan_ms": 689, "x198pw_plan_ms": 1087, "x187_priv_ms": 842,  "x187_pub_ms": 2,   "wall_ms": 3623.0, "out": "35"},
+    "repro_w2_asr":      {"p86_plan_ms": 468, "x198pw_plan_ms": 732,  "x187_priv_ms": 320,  "x187_pub_ms": 257, "wall_ms": 2820.4, "out": "5"},
+    "repro_w5b_rol16":   {"p86_plan_ms": 523, "x198pw_plan_ms": 1007, "x187_priv_ms": 696,  "x187_pub_ms": 7,   "wall_ms": 3271.5, "out": "102"},
+    "repro_w5b_cmp_jcc": {"p86_plan_ms": 703, "x198pw_plan_ms": 1368, "x187_priv_ms": 1059, "x187_pub_ms": 3,   "wall_ms": 4174.6, "out": "102"}
+  }
+}

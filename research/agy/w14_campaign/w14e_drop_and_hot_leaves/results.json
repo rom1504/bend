@@ -1,0 +1,94 @@
+{
+  "wave": "W14-E",
+  "date": "2026-11-23",
+  "baseline": "selfhost/build/agy/wave13_unified/compiler.bend",
+  "patcher": "research/agy/w14_campaign/w14e_drop_and_hot_leaves/apply_w14e.py",
+  "patch_stats": {
+    "base_bytes": 3656056,
+    "patched_bytes": 3679125,
+    "delta_bytes": 23069,
+    "new_defs": 7,
+    "idempotent": true,
+    "x86_iface_untouched": true
+  },
+  "correctness_gates": {
+    "check_only_type_errors": 0,
+    "native64_o2": {"passed": 64, "total": 64, "seconds": 58.7},
+    "observer_o2": {"abi_passed": "44+2", "probes_passed": 15, "probes_total": 15, "violations": 0},
+    "native64_o0": {"passed": 64, "total": 64, "seconds": 22.7},
+    "observer_o0": {"abi_passed": "44+2", "probes_passed": 15, "probes_total": 15, "violations": 0},
+    "hot_bench_observer_direct": {
+      "normal": {"stdout": "45768000", "violations": 0},
+      "cap-no8": {"stdout": "45768000", "violations": 0},
+      "all-hot": {"stdout": "45768000", "violations": 0}
+    }
+  },
+  "benchmarks": {
+    "compiler_slice_o2": {
+      "base_o_bytes": 385768,
+      "w14e_o_bytes": 387472,
+      "o_delta_pct": 0.442,
+      "stdout": "34"
+    },
+    "m11_module_fast_o0": {
+      "base_o_bytes": 5939000,
+      "w14e_o_bytes": 5939000,
+      "o_delta_pct": 0.0,
+      "base_fids": 3299,
+      "w14e_fids": 3299,
+      "fid_delta": 0
+    },
+    "hot_bench_o2_ab": {
+      "stdout": "45768000",
+      "base_o_bytes": 375592,
+      "ab1_o_bytes": 378552,
+      "ab1_o_delta_pct": 0.788,
+      "ab2_o_bytes": 380376,
+      "ab2_o_delta_pct": 1.274,
+      "ab1_fast_sink_and_index_find": {
+        "base_ms": [178.20, 177.27, 176.33],
+        "w14e_ms": [173.44, 174.46, 174.46],
+        "base_median_ms": 177.27,
+        "w14e_median_ms": 174.46,
+        "speedup": 1.0161,
+        "time_reduction_pct": 1.59
+      },
+      "ab2_full_w14e": {
+        "base_ms": [183.73, 184.30, 182.55],
+        "w14e_ms": [149.91, 150.66, 149.09],
+        "base_median_ms": 183.73,
+        "w14e_median_ms": 149.91,
+        "speedup": 1.2256,
+        "time_reduction_pct": 18.41
+      },
+      "wrap_dynamic_calls": {
+        "base": {
+          "p111_rt_sink": 598006,
+          "p125_rt_ctor2": 1144317,
+          "p125_rt_take2": 40000,
+          "p125_rt_take4": 26000,
+          "p111_rt_take": 44256
+        },
+        "w14e": {
+          "p111_rt_sink": 360006,
+          "p125_rt_ctor2": 1144317,
+          "p125_rt_take2": 40000,
+          "p125_rt_take4": 26000,
+          "p111_rt_take": 44256
+        },
+        "p111_rt_sink_eliminated": 238000,
+        "p111_rt_sink_reduction_pct": 39.80
+      }
+    }
+  },
+  "rejected_attempts": [
+    {
+      "name": "mutually_recursive_index_bucket_and_w6_local_find_plus_chunk_splitting",
+      "reason": "Introducing mutual-recursion helpers (w14e_idx_bucket_hit <-> index_bucket, w14e_w6_local_hit <-> w6_local_find) broke P113Direct self-recursion admission (+340k p125_rt_take4 calls); splitting w6_canon_stmt_go into 5x more Con cells increased nt_text_finish churn (+232k p125_rt_take2, +198k p125_rt_ctor2). Reverted in favor of keeping P113Direct self-recursion intact and accelerating String.append directly in native x86-64."
+    },
+    {
+      "name": "copy_only_str_append_v2",
+      "reason": "Copying uniquely-owned heap `a` and calling p111_rt_sink(a) added +410k term_drop calls vs recursive String.append (which frees `a` in place during unpack). Replaced with zero-alloc, zero-drop in-place tail splice for uniquely-owned heap `a` and zero-drop copy for static/shared-RFC `a`."
+    }
+  ]
+}

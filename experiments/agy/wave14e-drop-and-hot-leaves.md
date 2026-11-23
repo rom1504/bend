@@ -1,0 +1,21 @@
+# Experiment: Wave 14-E — Lean `term_drop` Skip in `agy_sh_*` + Certified Native `String.append` (In-Place Splice) & `index_find` Fast Paths
+
+- **Date:** 2026-11-23
+- **Hypothesis:** Attacking the #1 (`term_drop` = `20.28%`), #3 (`String.append` = `4.11%`), and #7–#13 (`agy_str_eq` / `index_find` / `p98_tag_eq` / `index_hash` / `String.eq`) non-`x86-iface` hotspots in `wave13_unified/compiler.bend` via (a) `w14e_sh_fast_sink` (inline `rc > 1` + `tag < 2` + `loc < HEAP_OFF` skip before `p111_rt_sink` in `agy_sh_*` epilogues), (b) certified native x86-64 `String.append` with zero-alloc/zero-drop in-place tail splice for uniquely-owned heap strings and inline `alc->free[0]` RFC sealing for hot/`cap-no8` copies, and (c) certified native x86-64 `index_find` `KIndexNode` register walk + `KIndexNode`-first pure-Bend `index_find` will deliver `15–30%` runtime reduction with `<= +8%` `.o` size overhead and `0` Observer violations.
+- **Baseline:** `selfhost/build/agy/wave13_unified/compiler.bend` & `api.mjs` (read-only), isolated on CPUs `2, 3, 4`.
+- **Outcome:** **PASS & READY FOR INTEGRATION (`-18.41%` / `1.226×` wall-time reduction, `-39.80%` `p111_rt_sink` calls, `+0.44%`–`+1.27%` `.o` size, `+0` FIDs on `m11`, 100% gates green).**
+  - **Compiler hot-path A/B (`-O2`, CPU `2`, exact stdout `45768000`):** `183.73 ms → 149.91 ms` (**`1.226×`**, **`-18.41%`**, 3/3 reps faster), `.o` size `375,592 → 380,376 B` (`+1.27%`), `p111_rt_sink` calls `598,006 → 360,006` (`-39.80%`).
+  - **`compiler_slice.bend` (`-O2`, stdout `34`):** `.o` size `385,768 → 387,472 B` (**`+0.44%`**).
+  - **`m11.bend` (`-O0 x86-module-fast`):** `.o` size `5,939,000 → 5,939,000 B` (**`+0.00%`**), FIDs `3,299 → 3,299` (**`+0` FIDs**).
+  - **Rejected attempts (preserved for provenance):** (1) Mutual-recursion helpers for `index_bucket` / `w6_local_find` + 5× chunk splitting in `w6_canon_stmt_go` (`0.752×` due to breaking `P113Direct` self-recursion); (2) copy-only `String.append` without in-place tail splice (`0.899×` due to `+410k` extra `term_drop` calls on unique heap `a`).
+- **Verification:**
+  - `--check-only`: **PASS** (`0` type/linearity errors).
+  - `64/64 native64 -O2`: **`64/64 PASS`** (`58.7 s`).
+  - `15/15 Observer Gate -O2` (`44+2` ABI + `normal`/`cap-no8`/`all-hot`): **`15/15 PASS`** (`0` violations).
+  - `64/64 native64 -O0`: **`64/64 PASS`** (`22.7 s`).
+  - `15/15 Observer Gate -O0` (`44+2` ABI + `normal`/`cap-no8`/`all-hot`): **`15/15 PASS`** (`0` violations).
+  - Direct Observer Gate stress on `hot_bench` (`normal`/`cap-no8`/`all-hot`): **`3/3 PASS`** (`0` violations).
+- **Evidence:**
+  - [apply_w14e.py](file:///home/ai/bend2_agy/research/agy/w14_campaign/w14e_drop_and_hot_leaves/apply_w14e.py)
+  - [REPORT.md](file:///home/ai/bend2_agy/research/agy/w14_campaign/w14e_drop_and_hot_leaves/REPORT.md)
+  - [results.json](file:///home/ai/bend2_agy/research/agy/w14_campaign/w14e_drop_and_hot_leaves/results.json)

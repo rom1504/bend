@@ -1,0 +1,97 @@
+{
+  "campaign": "W17-O2: Wave 17 Compose, Mint & Official -O2 Cold Self-Compile",
+  "timestamp_utc": "2026-11-24T01:25:00Z",
+  "status": "PARTIAL_DEADLINE_WRAP",
+  "compose": {
+    "source": "selfhost/build/agy/wave16_unified/compiler.bend",
+    "output": "selfhost/build/agy/wave17_unified/compiler.bend",
+    "source_bytes": 3497142,
+    "output_bytes": 3523906,
+    "delta_bytes": 26764,
+    "patches_applied": [
+      "O2-C (3/3 Wave 16 -O2 bug fixes: caps AND, w14a_fast_abi_go2 nq_sigs, w11_cmp_jcc_emit liveness)",
+      "O2-F (O(N) w4b_find_loop linear branch map)",
+      "O2-A (SAFE 4/7 hunks only: w4b_reg_dead_cap, w14a_sl_rounds_cap, w14a_sl_rounds_cap_h, x191_frame_forward_large_call_cap; omitted unsafe hunks 5-7)",
+      "O2-D (full zero-.p130 stub skip + -O2 direct-stub skip + synthetic .exp matcher)",
+      "O2-E (w7c_fast_inst_c + x186/x190/x191 non-loop fast paths + w8_tr_emit_pub cold fast path)"
+    ],
+    "patches_omitted": [
+      "O2-A hunks 5-7 (unsafe)",
+      "O2-B (held back for 0% bst/terrain regression)"
+    ],
+    "check_only": {
+      "status": "PASS",
+      "type_errors": 0,
+      "linearity_errors": 0,
+      "unsafe_defs": 9163
+    }
+  },
+  "splits": {
+    "k10_wave17": {
+      "dir": "selfhost/build/agy/wave17_unified/k10_wave17",
+      "types": 422,
+      "defs": 9379,
+      "laws": 912,
+      "avg_kb": 339.4,
+      "max_kb": 340.5,
+      "max_over_avg": 1.003
+    },
+    "k16_wave17": {
+      "dir": "selfhost/build/agy/wave17_unified/k16_wave17",
+      "types": 422,
+      "defs": 9379,
+      "laws": 912,
+      "avg_kb": 212.2,
+      "max_kb": 213.4,
+      "max_over_avg": 1.006
+    },
+    "k24_wave17": {
+      "dir": "selfhost/build/agy/wave17_unified/k24_wave17",
+      "types": 422,
+      "defs": 9379,
+      "laws": 912,
+      "avg_kb": 141.5,
+      "max_kb": 142.6,
+      "max_over_avg": 1.007
+    }
+  },
+  "stage0_n8_stage0": {
+    "status": "PASS",
+    "compiler": "selfhost/build/agy/wave16-native-mod/n7_o2",
+    "mode": "x86-module-fast (-O0)",
+    "k": 10,
+    "binary_bytes": 84134680,
+    "total_segs": 65206,
+    "fid_budget": 65532,
+    "smoke_o0": {"ms": 7500.9, "out": "34", "bytes": 377176},
+    "smoke_o2": {"ms": 12107.0, "out": "34", "bytes": 390640}
+  },
+  "stage1_k16_o2_nodrop_attempt": {
+    "status": "ALL_16_COMPILED_FID_OVERFLOW",
+    "compiler": "n8_stage0 (-O0 binary, ~2.805x slower than -O2 binary)",
+    "mode": "--nodrop --trace x86-module (-O2)",
+    "k": 16,
+    "modules_compiled": 16,
+    "total_segs": 68469,
+    "fid_budget": 65532,
+    "fid_overage": 2937,
+    "cpu_sum_s": 3637.3,
+    "max_rss_mib": 474.7,
+    "projected_n8_o2_8core_wall_s": 162.1,
+    "bottleneck_diagnosis": {
+      "fid_overflow_root_cause": "o2d_is_exp_main_go did not fire on m00..m14 synthetic .exp main() (m00 had 5284 segs vs n7 5273), leaving ~20k currying factory FIDs; stub skip alone saved ~9k FIDs (77k -> 68,469), 2,937 short of 65,532 for K=16. K=10 fits cleanly.",
+      "o2_compile_time_breakdown_at_o0_bin_speed": {
+        "p86_plan_ms_range": [20027, 28551],
+        "x198pw_plan_ms_range": [56156, 113342],
+        "x187_priv_ms_range": [84642, 184975],
+        "x187_pub_ms_range": [34216, 172943],
+        "x187_elf_ms_range": [2132, 3927]
+      }
+    }
+  },
+  "pending_next_wave": [
+    "Fix o2d_is_exp_main_go AST matcher so K=16/K=24 drop below 48,000 FIDs (or mint n8_o2 on k10_wave17 immediately)",
+    "Mint selfhost/build/agy/wave17-native-mod/n8_o2 (-O2) and run official 8-core cold benchmarks + 158/158 + 7-family + terrain gate",
+    "Attack remaining -O2 bottlenecks revealed by trace: x187_priv (~30-65s/mod), x187_pub (~12-61s/mod), x198pw_plan (~20-40s/mod)"
+  ]
+}

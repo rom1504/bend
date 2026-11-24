@@ -97,7 +97,8 @@ def elf_emit_xmm_mem(pfx: U32, opc: U32, +reg: U32, +base: U32, disp: U32, b: By
   bb_emit_u32(elf_opt_sib(U32.is_eq(U32.and(base, 7), 4), b1), disp)
 
 def elf_xmm_rr_opc(+op: U32) -> U32:
-  o5 = Bool.pick(U32, U32.is_eq(op, 5), 46, 87)
+  o6 = Bool.pick(U32, U32.is_eq(op, 6), 87, 40)
+  o5 = Bool.pick(U32, U32.is_eq(op, 5), 46, o6)
   o4 = Bool.pick(U32, U32.is_eq(op, 4), 81, o5)
   o3 = Bool.pick(U32, U32.is_eq(op, 3), 94, o4)
   o2 = Bool.pick(U32, U32.is_eq(op, 2), 89, o3)

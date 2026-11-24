@@ -206,8 +206,9 @@ def opt_sc_all_rets(+self_fid: U32, +ret_sc: U32Map, +sc: U32Map, blks: List<&2,
     case Con{IrBlock{_, _, TRet{rv}}, t}:
       Bool.and(U32.is_eq(um_get(sc, rv), 1), opt_sc_all_rets(self_fid, ret_sc, sc, t, True{}))
     case Con{IrBlock{_, _, TTailCall{+cfid, _}}, t}:
-      ok = Bool.or(U32.is_eq(cfid, self_fid), U32.is_ne(um_get(ret_sc, cfid), 0))
-      Bool.and(ok, opt_sc_all_rets(self_fid, ret_sc, sc, t, has_ret))
+      +is_other_sc = Bool.and(U32.is_ne(cfid, self_fid), U32.is_ne(um_get(ret_sc, cfid), 0))
+      ok = Bool.or(U32.is_eq(cfid, self_fid), is_other_sc)
+      Bool.and(ok, opt_sc_all_rets(self_fid, ret_sc, sc, t, Bool.or(has_ret, is_other_sc)))
     case Con{IrBlock{_, _, _}, t}: opt_sc_all_rets(self_fid, ret_sc, sc, t, has_ret)
 def opt_ip_init_orig(n: Nat, +idx: U32, m: U32Map) -> U32Map:
   match n:
@@ -312,7 +313,7 @@ def opt_ip_fix(fuel: Nat, +bad: U32Map, +fns: List<&2, IrFn>, st: IpRes) -> IpRe
       opt_ip_fix(p, bad, fns, opt_ip_step(bad, fns, psc0, opt_ip_scan_fns(psc0, fns, IpScan{ret_sc, UM0{}, False{}})))
 def opt_collect_ip(small: Bool, +fns: List<&2, IrFn>, ret_sc: U32Map) -> IpRes:
   bad = opt_ip_bad_fns(fns, UM0{})
-  fuel = Bool.pick(Nat, small, 10n, 2n)
+  fuel = Bool.pick(Nat, small, 16n, 2n)
   opt_ip_fix(fuel, bad, fns, IpRes{ret_sc, UM0{}, True{}})
 def opt_collect_ret_only(fns: List<&2, IrFn>, m: U32Map) -> U32Map:
   match fns:
@@ -816,11 +817,29 @@ def opt_merge_once(+blks: List<&2, IrBlock>) -> List<&2, IrBlock>:
   preds = opt_count_preds(blks, um_set(UM0{}, 0, 2))
   bmap = opt_index_blks(blks, OT0{})
   opt_merge_go(bmap, preds, blks, MergeSt{UM0{}, UM0{}, Nil{}})
+def opt_stc_args(+orig: U32Map, args: List<&2, U32>, +idx: U32) -> List<&2, U32>:
+  match args:
+    case Nil{}: Nil{}
+    case Con{+a, t}:
+      a2 = Bool.pick(U32, U32.is_eq(um_get(orig, a), U32.add(idx, 1)), idx, a)
+      Con{a2, opt_stc_args(orig, t, U32.add(idx, 1))}
+def opt_stc_term(same: Bool, orig: U32Map, cfid: U32, args: List<&2, U32>) -> IrTerm:
+  match same:
+    case True{}: TTailCall{cfid, opt_stc_args(orig, args, 0)}
+    case False{}: TTailCall{cfid, args}
+def opt_stc_blks(+self_fid: U32, +orig: U32Map, blks: List<&2, IrBlock>) -> List<&2, IrBlock>:
+  match blks:
+    case Nil{}: Nil{}
+    case Con{IrBlock{id, ops, TTailCall{+cfid, args}}, t}:
+      Con{IrBlock{id, ops, opt_stc_term(U32.is_eq(cfid, self_fid), orig, cfid, args)}, opt_stc_blks(self_fid, orig, t)}
+    case Con{b, t}: Con{b, opt_stc_blks(self_fid, orig, t)}
 def opt_pass_cp_dce(do_merge: Bool, f: IrFn) -> IrFn:
   match do_merge f:
-    case True{} IrFn{fid, nm, +ar, nregs, esc, eff, is_m, blks}:
+    case True{} IrFn{+fid, nm, +ar, nregs, esc, eff, is_m, blks}:
       +b1 = opt_merge_once(opt_merge_once(opt_elim_unreach(blks)))
-      b2 = opt_cp_blks(opt_blks_defs(b1, UM0{}), ar, b1)
+      +defc = opt_blks_defs(b1, UM0{})
+      orig = opt_ip_orig_blks(defc, ar, b1, opt_ip_init_orig(U32.to_nat(ar), 0, UM0{}))
+      b2 = opt_cp_blks(defc, ar, opt_stc_blks(fid, orig, b1))
       IrFn{fid, nm, ar, nregs, esc, eff, is_m, opt_dce_round(opt_dce_round(b2))}
     case False{} IrFn{fid, nm, +ar, nregs, esc, eff, is_m, blks}:
       +b1 = opt_elim_unreach(blks)
@@ -862,7 +881,7 @@ def opt_collect_one(elig: Bool, +leaf: Bool, +max_ops: U32, +max_blks: U32, +fid
     case False{}: InlBank{has, tr}
     case True{}:
       +nb = b5k_list_len(IrBlock, blks)
-      ok = Bool.and(U32.is_lt(fid, 2048), Bool.and(U32.is_le(nregs, 64), Bool.and(U32.is_ge(nb, 1), Bool.and(U32.is_le(nb, max_blks), Bool.and(U32.is_le(opt_blks_op_count(blks, 0), max_ops), Bool.not(opt_blks_has_bad(leaf, fid, blks)))))))
+      ok = Bool.and(U32.is_lt(fid, 2048), Bool.and(U32.is_le(nregs, 96), Bool.and(U32.is_ge(nb, 1), Bool.and(U32.is_le(nb, max_blks), Bool.and(U32.is_le(opt_blks_op_count(blks, 0), max_ops), Bool.not(opt_blks_has_bad(leaf, fid, blks)))))))
       opt_collect_put(ok, fid, ar, nregs, blks, has, tr)
 def opt_collect_inlines(+leaf: Bool, +max_ops: U32, +max_blks: U32, fns: List<&2, IrFn>, bank: InlBank) -> InlBank:
   match fns bank:
@@ -958,7 +977,7 @@ def opt_inl_ops(+self_fid: U32, +has: U32Map, +tr: OptTrie<Maybe<&2, InlEntry>>,
   match ops st:
     case Nil{} _: st
     case Con{ICallDirect{d, +cfid, args}, t} InlCur{cid, orev, brev, +nr, +nb, +bud}:
-      can = Bool.and(U32.is_ne(cfid, self_fid), Bool.and(U32.is_gt(bud, 0), Bool.and(U32.is_lt(nr, 640), Bool.and(U32.is_lt(nb, 160), U32.is_ne(um_get(has, cfid), 0)))))
+      can = Bool.and(U32.is_ne(cfid, self_fid), Bool.and(U32.is_gt(bud, 0), Bool.and(U32.is_lt(nr, 1024), Bool.and(U32.is_lt(nb, 256), U32.is_ne(um_get(has, cfid), 0)))))
       opt_inl_ops(self_fid, has, tr, t, opt_inl_one_call(can, tr, d, cfid, args, InlCur{cid, orev, brev, nr, nb, bud}))
     case Con{op, t} InlCur{cid, orev, brev, nr, nb, bud}:
       opt_inl_ops(self_fid, has, tr, t, InlCur{cid, Con{op, orev}, brev, nr, nb, bud})
@@ -983,7 +1002,7 @@ def opt_inl_one_tail(can: Bool, tr: OptTrie<Maybe<&2, InlEntry>>, +cfid: U32, ar
 def opt_inl_fin_term(+self_fid: U32, +has: U32Map, +tr: OptTrie<Maybe<&2, InlEntry>>, term: IrTerm, st: InlCur) -> InlCur:
   match term st:
     case TTailCall{+cfid, args} InlCur{cid, orev, brev, +nr, +nb, +bud}:
-      can = Bool.and(U32.is_ne(cfid, self_fid), Bool.and(U32.is_gt(bud, 0), Bool.and(U32.is_lt(nr, 640), Bool.and(U32.is_lt(nb, 160), U32.is_ne(um_get(has, cfid), 0)))))
+      can = Bool.and(U32.is_ne(cfid, self_fid), Bool.and(U32.is_gt(bud, 0), Bool.and(U32.is_lt(nr, 1024), Bool.and(U32.is_lt(nb, 256), U32.is_ne(um_get(has, cfid), 0)))))
       opt_inl_one_tail(can, tr, cfid, args, InlCur{cid, orev, brev, nr, nb, bud})
     case other InlCur{+cid, orev, brev, nr, nb, bud}:
       InlCur{cid, Nil{}, Con{IrBlock{cid, b5k_list_rev(IrOp, orev), other}, brev}, nr, nb, bud}
@@ -1010,8 +1029,8 @@ def opt_inl_all(+bud0: U32, +bank: InlBank, fns: List<&2, IrFn>) -> List<&2, IrF
 # Top-Level -O2 Pipeline
 def opt_fn_local(+small: Bool, +ret_sc: U32Map, +psc: U32Map, f: IrFn) -> IrFn:
   match small:
-    case True{}: opt_pass_cp_dce(False{}, opt_pass_sroa_fuse(opt_pass_cp_dce(True{}, opt_pass_cf(opt_pass_sroa_tag(opt_pass_scalar(ret_sc, psc, f))))))
-    case False{}: opt_pass_cp_dce(False{}, opt_pass_sroa_fuse(opt_pass_cf(opt_pass_sroa_tag(opt_pass_scalar(ret_sc, psc, f)))))
+    case True{}: opt_pass_cp_dce(False{}, opt_pass_sroa_fuse(opt_pass_sroa_tag(opt_pass_cp_dce(True{}, opt_pass_cf(opt_pass_sroa_tag(opt_pass_scalar(ret_sc, psc, f)))))))
+    case False{}: opt_pass_cp_dce(False{}, opt_pass_cf(opt_pass_scalar(ret_sc, psc, f)))
 def opt_fns_local(+small: Bool, +ret_sc: U32Map, +psc: U32Map, fns: List<&2, IrFn>) -> List<&2, IrFn>:
   match fns:
     case Nil{}: Nil{}
@@ -1024,7 +1043,7 @@ def opt_fns_pre(do_cp: Bool, +ret_sc: U32Map, fns: List<&2, IrFn>) -> List<&2, I
 def opt_fns_mid(fns: List<&2, IrFn>) -> List<&2, IrFn>:
   match fns:
     case Nil{}: Nil{}
-    case Con{f, t}: Con{opt_pass_cp_dce(True{}, opt_pass_cf(f)), opt_fns_mid(t)}
+    case Con{f, t}: Con{opt_pass_cp_dce(True{}, opt_pass_sroa_fuse(opt_pass_cf(opt_pass_sroa_tag(f)))), opt_fns_mid(t)}
 def b5k_opt_fin(+small: Bool, fns3: List<&2, IrFn>, ip1: IpRes) -> List<&2, IrFn>:
   match ip1:
     case IpRes{ret1, psc1, _}: opt_fns_local(small, ret1, psc1, fns3)
@@ -1033,16 +1052,15 @@ def b5k_opt_go(small: Bool, +fns: List<&2, IrFn>) -> List<&2, IrFn>:
     case True{}:
       +ret0 = opt_collect_ret_only(fns, UM0{})
       +fns1 = opt_fns_pre(True{}, ret0, fns)
-      +fns2 = opt_fns_mid(opt_inl_all(20, opt_collect_inlines(False{}, 32, 4, fns1, InlBank{UM0{}, OT0{}}), fns1))
-      +fns3 = opt_inl_all(20, opt_collect_inlines(False{}, 32, 4, fns2, InlBank{UM0{}, OT0{}}), fns2)
+      +fns2 = opt_fns_mid(opt_inl_all(24, opt_collect_inlines(False{}, 48, 6, fns1, InlBank{UM0{}, OT0{}}), fns1))
+      +fns3 = opt_inl_all(24, opt_collect_inlines(False{}, 48, 6, fns2, InlBank{UM0{}, OT0{}}), fns2)
       b5k_opt_fin(True{}, fns3, opt_collect_ip(True{}, fns3, ret0))
     case False{}:
       +ret0 = opt_collect_ret_only(fns, UM0{})
-      +fns1 = opt_fns_pre(False{}, ret0, fns)
-      +fns2 = opt_inl_all(16, opt_collect_inlines(True{}, 12, 1, fns1, InlBank{UM0{}, OT0{}}), fns1)
+      +fns2 = opt_inl_all(16, opt_collect_inlines(True{}, 12, 1, fns, InlBank{UM0{}, OT0{}}), fns)
       b5k_opt_fin(False{}, fns2, opt_collect_ip(False{}, fns2, ret0))
 def b5k_opt(prog: IrProg) -> IrProg:
   match prog:
     case IrProg{+fns, ctors, statics, main_fid, main_pure, effects, show_desc, show_names}:
-      small = U32.is_le(b5k_list_len(IrFn, fns), 128)
+      small = U32.is_le(b5k_list_len(IrFn, fns), 384)
       IrProg{b5k_opt_go(small, fns), ctors, statics, main_fid, main_pure, effects, show_desc, show_names}

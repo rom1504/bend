@@ -785,6 +785,29 @@ def low_emit_ctor_expr(+env: LowEnv, st: CfgSt, +sym: U32, vfs: List<&2, U32>) -
   +nm = symtab_name(env_syms(env), sym)
   low_emit_ctor_kind(low_special_ctor_kind(nm), env, st, sym, nm, vfs)
 # Single Self-Recursive Expression -> Flat CFG Lowerer
+type UnboxArr is Data:
+  UArrNone{e: Expr}
+  UArrGet{a: Expr, i: Expr}
+  UArrSwap{a: Expr, i: Expr, v: Expr}
+  UArrSize{a: Expr}
+  UArrClone{a: Expr}
+  UArrPair{a: Expr, b: Expr}
+def low_unbox_app(is_free: Bool, icode: U32, orig: Expr, args: List<&2, Expr>) -> UnboxArr:
+  match is_free icode args:
+    case True{} 61 Con{_, Con{a, Con{i, Nil{}}}}: UArrGet{a, i}
+    case True{} 63 Con{_, Con{a, Con{i, Con{v, Nil{}}}}}: UArrSwap{a, i, v}
+    case True{} 64 Con{_, Con{a, Nil{}}}: UArrSize{a}
+    case True{} 65 Con{_, Con{a, Nil{}}}: UArrClone{a}
+    case _ _ _: UArrNone{orig}
+def low_unbox_pair(+env: LowEnv, +vm: U32Map, val: Expr) -> UnboxArr:
+  match val:
+    case EArrGet{a, i}: UArrGet{a, i}
+    case EPair{a, b}: UArrPair{a, b}
+    case EApp{EVar{+sym}, +args}:
+      low_unbox_app(U32.is_zero(um_get(vm, sym)), low_u32_intr(symtab_name(env_syms(env), sym)), EApp{EVar{sym}, args}, args)
+    case EApp{ERef{+sym}, +args}:
+      low_unbox_app(U32.is_zero(um_get(vm, sym)), low_u32_intr(symtab_name(env_syms(env), sym)), EApp{ERef{sym}, args}, args)
+    case other: UArrNone{other}
 type LowTask is Data:
   LTExpr{e: Expr}
   LTExprs{es: List<&2, Expr>, acc: List<&2, U32>}
@@ -795,6 +818,7 @@ type LowTask is Data:
   LTVar{sym: U32, lv: U32, lz: Bool}
   LTVarGlob{sym: U32, fz: Bool}
   LTLam{p0: Param, body: Expr, fvs: List<&2, U32>, bk: CloBank}
+  LTLetUnbox{pa: Pat, pb: Pat, ua: UnboxArr, body: Expr}
 def low_type_head(+syms: SymTab, e: Expr) -> String:
   match e:
     case EVar{s}: symtab_name(syms, s)
@@ -930,6 +954,64 @@ def low_go(fuel: Nat, +env: LowEnv, st: CfgSt, task: LowTask, +is_tail: Bool) ->
     case Succ{p} LTExpr{EUnOp{op, a}}:
       +st1 = low_go(p, env, st, LTExpr{a}, False{})
       low_emit_un(st1, op, cfg_res(st1))
+    case Succ{+p} LTLetUnbox{pa, pb, ua, +body}:
+      match ua:
+        case UArrGet{a, i}:
+          +st0 = st
+          base_vm = cfg_vmap(st0)
+          +st1 = low_go(p, env, st0, LTExpr{a}, False{})
+          +st2 = low_go(p, env, st1, LTExpr{i}, False{})
+          +st3 = low_emit_arr_one(st2, 78, [cfg_res(st1), cfg_res(st2)])
+          st4 = low_match_pats(64n, env, st3, [pa, pb], [cfg_res(st1), cfg_res(st3)], body, 0, False{})
+          cfg_set_vmap(low_go(p, env, st4, LTExpr{body}, is_tail), base_vm)
+        case UArrSwap{a, i, v}:
+          +st0 = st
+          base_vm = cfg_vmap(st0)
+          +st1 = low_go(p, env, st0, LTExpr{a}, False{})
+          +st2 = low_go(p, env, st1, LTExpr{i}, False{})
+          +st3 = low_go(p, env, st2, LTExpr{v}, False{})
+          +st4 = cfg_alloc_reg(st3)
+          +r0 = cfg_res(st4)
+          +st5 = cfg_alloc_reg(st4)
+          +r1 = cfg_res(st5)
+          st6 = low_match_pats(64n, env, cfg_emit(st5, IArrOp{[r0, r1], 74, [cfg_res(st1), cfg_res(st2), cfg_res(st3)]}), [pa, pb], [r0, r1], body, 0, False{})
+          cfg_set_vmap(low_go(p, env, st6, LTExpr{body}, is_tail), base_vm)
+        case UArrSize{a}:
+          +st0 = st
+          base_vm = cfg_vmap(st0)
+          +st1 = low_go(p, env, st0, LTExpr{a}, False{})
+          +st2 = cfg_alloc_reg(st1)
+          +r0 = cfg_res(st2)
+          +st3 = cfg_alloc_reg(st2)
+          +r1 = cfg_res(st3)
+          st4 = low_match_pats(64n, env, cfg_emit(st3, IArrOp{[r0, r1], 75, [cfg_res(st1)]}), [pa, pb], [r0, r1], body, 0, False{})
+          cfg_set_vmap(low_go(p, env, st4, LTExpr{body}, is_tail), base_vm)
+        case UArrClone{a}:
+          +st0 = st
+          base_vm = cfg_vmap(st0)
+          +st1 = low_go(p, env, st0, LTExpr{a}, False{})
+          +st2 = cfg_alloc_reg(st1)
+          +r0 = cfg_res(st2)
+          +st3 = cfg_alloc_reg(st2)
+          +r1 = cfg_res(st3)
+          st4 = low_match_pats(64n, env, cfg_emit(st3, IArrOp{[r0, r1], 76, [cfg_res(st1)]}), [pa, pb], [r0, r1], body, 0, False{})
+          cfg_set_vmap(low_go(p, env, st4, LTExpr{body}, is_tail), base_vm)
+        case UArrPair{a, b}:
+          +st0 = st
+          base_vm = cfg_vmap(st0)
+          +st1 = low_go(p, env, st0, LTExpr{a}, False{})
+          +st2 = low_go(p, env, st1, LTExpr{b}, False{})
+          st3 = low_match_pats(64n, env, st2, [pa, pb], [cfg_res(st1), cfg_res(st2)], body, 0, False{})
+          cfg_set_vmap(low_go(p, env, st3, LTExpr{body}, is_tail), base_vm)
+        case UArrNone{val}:
+          +st0 = st
+          base_vm = cfg_vmap(st0)
+          +st1 = low_go(p, env, st0, LTExpr{val}, False{})
+          st2 = low_match_pats(64n, env, st1, [PPair{pa, pb}], [cfg_res(st1)], body, 0, False{})
+          cfg_set_vmap(low_go(p, env, st2, LTExpr{body}, is_tail), base_vm)
+    case Succ{+p} LTExpr{ELet{PPair{pa, pb}, val, body}}:
+      +st0 = st
+      low_go(p, env, st0, LTLetUnbox{pa, pb, low_unbox_pair(env, cfg_vmap(st0), val), body}, is_tail)
     case Succ{+p} LTExpr{ELet{pat, val, +body}}:
       +st0 = st
       base_vm = cfg_vmap(st0)
@@ -966,6 +1048,9 @@ def low_go(fuel: Nat, +env: LowEnv, st: CfgSt, task: LowTask, +is_tail: Bool) ->
       +st1 = low_go(p, env, st, LTExpr{other}, False{})
       +st2 = low_go(p, env, st1, LTExprs{args, Nil{}}, False{})
       low_apply_chain(cfg_rlist(st2), st2, cfg_res(st1))
+    case Succ{+p} LTExpr{EMat{Con{val, Nil{}}, Con{Case{Con{PPair{pa, pb}, Nil{}}, body}, Nil{}}}}:
+      +st0 = st
+      low_go(p, env, st0, LTLetUnbox{pa, pb, low_unbox_pair(env, cfg_vmap(st0), val), body}, is_tail)
     case Succ{+p} LTExpr{EMat{scruts, cs}}:
       +st0 = st
       +base_vm = cfg_vmap(st0)

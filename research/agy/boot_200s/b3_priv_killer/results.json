@@ -1,0 +1,97 @@
+{
+  "campaign": "B3: Residual x187_priv O(N^2) Killer & Branch-Liveness Translation Validator",
+  "timestamp_utc": "2026-11-24T04:18:00Z",
+  "status": "PASS",
+  "target_source": "selfhost/build/agy/wave17_unified/compiler.bend",
+  "disjoint_from": [
+    "B2 (p167l_* / p168_*)",
+    "B4 (p86_* / x198pw_*)",
+    "x191_frame_forward / w7_post_select_full (never bypassed on loops)"
+  ],
+  "profile_m01_n8_o2": {
+    "module": "m01",
+    "reason_selected": "Largest net x187_priv duration in mint_bench_state.json (57.1s at stage0 O0 speed across 728 private fns)",
+    "compiler": "selfhost/build/agy/wave17-native-mod/n8_o2",
+    "cpu": 4,
+    "wall_s": 130.55,
+    "stages_ms": {
+      "read": 47,
+      "prep": 832,
+      "p86_plan": 17121,
+      "x198pw_plan": 31124,
+      "x187_priv_done_elapsed": 91349,
+      "x187_priv_net_ms": 42225,
+      "x187_priv_count": 733,
+      "x187_pub_done_elapsed": 126627,
+      "x187_pub_net_ms": 35278,
+      "x187_pub_count": 1364,
+      "x187_elf": 3275,
+      "x187_total_ms": 130384
+    },
+    "gdb_x187_priv_samples": 35,
+    "gdb_x187_priv_hot_frames": {
+      "index_hash": "8/35 (4/35 top-of-stack, 23%)",
+      "term_drop": "5/35 (14%)",
+      "w5c_p131i_leaf": "4/35 (11%)",
+      "index_remove": "2/35 (6%)",
+      "x192_shared_pick": "1/35",
+      "w10f_fn_inst": "1/35",
+      "o2e_fast_alu64": "1/35",
+      "w4_peep_extra": "1/35"
+    }
+  },
+  "apply_b3": {
+    "script": "research/agy/boot_200s/b3_priv_killer/apply_b3.py",
+    "hunks": [
+      "p111v_get_empty_fast",
+      "w5c_p131i_leaf_single_fast",
+      "x185_dead_mark_kill_fast",
+      "x185_dead_delta_union",
+      "x192_p_write_skip_zero",
+      "x190_v_written_skip_zero"
+    ],
+    "idempotent": true,
+    "patched_bytes": 3533234,
+    "check_only": {
+      "command": "research/agy/locked_bun.sh /tmp/agy_b3/compiler_b3.bend --check-only",
+      "type_errors": 0,
+      "linearity_errors": 0,
+      "unsafe_defs": 9188
+    },
+    "semantics": "100% semantically identical / bit-identical -O2 output; 0% compiled-program regression by construction"
+  },
+  "ab_native_o2_benchmark": {
+    "workload": "Exact baseline vs B3 x185_dead_body + p111v_get + w5c_p131i_leaf on M=160 sequential P113DIf with L=120 live vars x 40 iters, compiled with n8_o2 -O2 on CPU 4",
+    "old_med_ms": 2537.6,
+    "old_runs_ms": [2537.6, 2635.53, 2527.16],
+    "old_out": "19240",
+    "new_med_ms": 217.51,
+    "new_runs_ms": [217.51, 221.68, 216.86],
+    "new_out": "19240",
+    "speedup": 11.67,
+    "reduction_pct": 91.43
+  },
+  "o2_correctness_checks": {
+    "compiler_slice_o2": {"compile_ms": 13543.7, "run_med_ms": 5.77, "out": "34", "pass": true},
+    "editdist_o2": {"compile_ms": 5965.5, "run_med_ms": 8.96, "out": "2065873279", "pass": true},
+    "bst64_o2": {"compile_ms": 2094.8, "run_med_ms": 6.16, "out": "861157620", "oracle": "861157620", "pass": true}
+  },
+  "cmp_jcc_tv_checker": {
+    "script": "research/agy/boot_200s/b3_priv_killer/check_cmp_jcc_tv.py",
+    "self_test_passed": 7,
+    "self_test_total": 7,
+    "rejects_wave16_bad_w5c2_bits_nz": {
+      "ok": false,
+      "kind": "live_eliminated_reg",
+      "reason": "eliminated %rdx is LIVE on taken (.L_b0) (read by `xorl $1, %edx`)"
+    },
+    "accepts_o2c_fixed_w5c2_bits_nz": {
+      "ok": true,
+      "kind": "abstained_identity"
+    },
+    "accepts_o2c_valid_fusion": {
+      "ok": true,
+      "kind": "fused_verified"
+    }
+  }
+}

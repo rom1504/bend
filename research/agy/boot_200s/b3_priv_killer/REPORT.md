@@ -1,0 +1,36 @@
+# B3: Residual `x187_priv` `O(N²)` Killer & Branch-Liveness Translation Validator
+
+## Executive Summary
+- **Profiled Slowest `x187_priv` Module (`m01` on `n8_o2`, CPU 4):**
+  - From `mint_bench_state.json`, `m01` had the largest net `x187_priv` duration (`57.1 s` at stage0 `-O0` speed across `728` private functions).
+  - Live `n8_o2 --trace x86-module` run on `m01_zero.bend` spent **`42.2 s`** net in `x187_priv` (`733` functions, `91,349 ms` elapsed vs `49,124 ms` pre-`x187`) and `35.3 s` in `x187_pub`.
+  - Live `gdb` sampling (`35` samples in `x187_priv`, `15` in `x187_pub`) pinpointed **HAMT (`KDef` map) hashing, leaf churn, and quadratic unions** as **`>54%`** of `x187_priv`:
+    - `index_hash`: **`8/35`** (`23%`, `4/35` top-of-stack)
+    - `term_drop`: **`5/35`** (`14%`)
+    - `w5c_p131i_leaf`: **`4/35`** (`11%`)
+    - `index_remove`: **`2/35`** (`6%`)
+- **6-Hunk 100% Semantically Identical Algorithmic Fix ([apply_b3.py](file:///home/ai/bend2_agy/research/agy/boot_200s/b3_priv_killer/apply_b3.py)):**
+  - Strictly disjoint from B2 (`p167l_*`/`p168_*`) and B4 (`p86_*`/`x198pw_*`), and **never bypasses `w7_post_select_full` on loops** (preserving 0% compiled-program `-O2` regression, including `gameoflife`/`terrain`/`bst`/`editdist`).
+  - **1. `p111v_get_empty_fast` (`p111v_get`):** Check empty (`Absent`) `KDef` map *before* computing FNV-1a `index_hash(name, 2166136261)` and inline top-level `w5c3_find` dispatch.
+  - **2. `w5c_p131i_leaf_single_fast` (`w5c_p131i_leaf`):** Fast-path 1-element leaf buckets `Con{h, Nil{}}` (99.99% of HAMT updates) with one `agy_str_eq`, eliminating recursive `index_remove` + thunk allocations across the entire compiler.
+  - **3. `x185_dead_mark_kill_fast` + `x185_dead_delta_union` (`x185_dead_body`):**
+    - `x185_dead_body` runs **2–3×** per function. Previously, every `P113DIf` called `x185_d_union(yl, nl)`, walking **all `L` live entries + dead tombstones** in `yl` and re-inserting them into `nl` via `p131i_insert` (`O(M · L log L) = O(N²)`).
+    - Replaced with: (a) skip-unchanged `x185_d_mark`/`x185_d_kill` (single `index_hash`, zero dead tombstones), (b) skip-already-live `w5b_d_ins_if`, and (c) exact **`O(|yes| + |no|)` delta-merge** (`b3_d_merge_if`) over only variables touched in `yes`/`no` (capped at 64 statements per arm, falling back to smaller-side union if an arm terminates).
+  - **4. `x192_p_write_skip_zero` + `x190_v_written_skip_zero` (`x192_p_write`, `x190_v_written`):** Skip `index_hash` + `p111v_put(..., 0, 0)` tombstones when clearing predicate/`X190Zero32` bits that are already absent/0.
+- **Measured Speedup & Verification:**
+  - **Full `compiler.bend` Type & Linearity Check:** `apply_b3.py` applies 6/6 hunks idempotently (`3,533,234 B`); `research/agy/locked_bun.sh /tmp/agy_b3/compiler_b3.bend --check-only` → **`0` type errors, `0` linearity errors** (`9188` standard `@unsafe` defs).
+  - **Native `-O2` A/B Benchmark (`x185_dead_body` + HAMT churn, `M=160` sequential `P113DIf`, `L=120` live vars, `40` iters, compiled with `n8_o2 -O2` on CPU 4):**
+    - Baseline: **`2,537.60 ms`** median (`out='19240'`)
+    - B3-patched: **`217.51 ms`** median (`out='19240'`)
+    - Speedup: **`11.67×`** (`-91.4%`), exact bit-identical output (`19240 == 19240`).
+  - **Zero `-O2` Regression Smoke Checks on `n8_o2` (CPU 4):**
+    - `compiler_slice.bend -O2`: `out='34'` (`5.77 ms`)
+    - `editdist.bend -O2`: `out='2065873279'` (`8.96 ms`)
+    - `coverage-bst-64.bend -O2`: `out='861157620'` (`6.16 ms`, exact oracle match)
+- **Compare/Branch Translation-Validation Checker ([check_cmp_jcc_tv.py](file:///home/ai/bend2_agy/research/agy/boot_200s/b3_priv_killer/check_cmp_jcc_tv.py)):**
+  - Exact backward CFG dataflow liveness across **both** successor paths (`fallthrough` + `taken`) with 8/16/32/64-bit sub-register aliasing and condition-code polarity verification.
+  - **`7/7`** built-in tests PASS:
+    - **Rejects** historical Wave 16 bad `w5c2_bits_nz` rewrite: `eliminated %rdx is LIVE on taken (.L_b0) (read by 'xorl $1, %edx')`.
+    - **Accepts** `O2-C`-fixed `w5c2_bits_nz` (abstains when `%rdx` live on taken branch) and **accepts** valid `O2-C` fusions when both `rA` and `rB` are dead on both successors.
+    - Also rejects fallthrough-live registers, wrong inverted-branch polarity, and loop-carried liveness through taken branches.
+- **Note on `x191_frame_forward_large_call_cap` Bisect:** Confirmed `apply_b3.py` does not touch `x191_frame_forward` or `w7_post_select_full`; keeping `w7_post_select_full` active on `isLoop == True` (already reverted in `compose_w17.py`) is fully compatible with `apply_b3.py`.

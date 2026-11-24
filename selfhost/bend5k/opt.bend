@@ -382,11 +382,26 @@ def opt_collect_ret_only(fns: List<&2, IrFn>, m: U32Map) -> U32Map:
       sc = opt_sc_compute(True{}, m0, UM0{}, fid, ar, blks)
       m1 = Bool.pick(U32Map, Bool.and(U32.is_ge(fid, 3), opt_sc_all_rets(fid, m0, sc, blks, False{})), um_set(m0, fid, 1), m0)
       opt_collect_ret_only(t, m1)
-def opt_pass_scalar(small: Bool, +ret_sc: U32Map, +psc: U32Map, f: IrFn) -> IrFn:
+def opt_sc_rw_fast_ops(+sc: U32Map, ops: List<&2, IrOp>, +acc: List<&2, IrOp>) -> List<&2, IrOp>:
+  match ops:
+    case Nil{}: b5k_list_rev(IrOp, acc)
+    case Con{IKeep{+d, +s}, t}: opt_sc_rw_fast_ops(sc, t, opt_sc_elide_keep(U32.is_eq(um_get(sc, s), 1), d, s, acc))
+    case Con{ISink{+s}, t}: opt_sc_rw_fast_ops(sc, t, Bool.pick(List<&2, IrOp>, U32.is_eq(um_get(sc, s), 1), acc, Con{ISink{s}, acc}))
+    case Con{ITag{+d, +s}, t}: opt_sc_rw_fast_ops(sc, t, Con{Bool.pick(IrOp, U32.is_eq(um_get(sc, s), 1), IConst{d, 0}, ITag{d, s}), acc})
+    case Con{op, t}: opt_sc_rw_fast_ops(sc, t, Con{op, acc})
+def opt_sc_rw_fast_blks(+sc: U32Map, blks: List<&2, IrBlock>) -> List<&2, IrBlock>:
+  match blks:
+    case Nil{}: Nil{}
+    case Con{IrBlock{id, ops, term}, t}: Con{IrBlock{id, opt_sc_rw_fast_ops(sc, ops, Nil{}), term}, opt_sc_rw_fast_blks(sc, t)}
+def opt_sc_rw_pick(small: Bool, sc: U32Map, blks: List<&2, IrBlock>) -> List<&2, IrBlock>:
+  match small:
+    case True{}: opt_sc_rewrite_blks(sc, blks)
+    case False{}: opt_sc_rw_fast_blks(sc, blks)
+def opt_pass_scalar(+small: Bool, +ret_sc: U32Map, +psc: U32Map, f: IrFn) -> IrFn:
   match f:
     case IrFn{+fid, nm, +ar, nregs, esc, eff, is_m, +blks}:
       sc = opt_sc_compute(small, ret_sc, psc, fid, ar, blks)
-      IrFn{fid, nm, ar, nregs, esc, eff, is_m, opt_sc_rewrite_blks(sc, blks)}
+      IrFn{fid, nm, ar, nregs, esc, eff, is_m, opt_sc_rw_pick(small, sc, blks)}
 # Shared Polymorphic Bit-Trie (for SROA CtorMap & Local CSE)
 type OptTrie<-A: Data> is Data:
   OT0{}
@@ -630,12 +645,15 @@ def cf_bin_rhs_const(+has: U32Map, +val: U32Map, +nr: U32, +rev: List<&2, IrOp>,
     case 6:
       Bool.pick(CfSt, U32.is_zero(cb), cf_emit_copy(has, val, nr, rev, d, a),
         Bool.pick(CfSt, U32.is_eq(cb, 4294967295), cf_emit_const(has, val, nr, rev, d, 4294967295), CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, 6, a, b}, rev}}))
-    case 7: Bool.pick(CfSt, U32.is_zero(cb), cf_emit_copy(has, val, nr, rev, d, a), CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, 7, a, b}, rev}})
+    case 7:
+      Bool.pick(CfSt, U32.is_zero(cb), cf_emit_copy(has, val, nr, rev, d, a),
+        Bool.pick(CfSt, U32.is_eq(cb, 4294967295), CfSt{um_set(has, d, 0), val, nr, Con{IUn{d, 1, a}, rev}}, CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, 7, a, b}, rev}}))
     case 8: Bool.pick(CfSt, U32.is_zero(cb), cf_emit_copy(has, val, nr, rev, d, a), CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, 8, a, b}, rev}})
     case _: Bool.pick(CfSt, U32.is_zero(cb), cf_emit_copy(has, val, nr, rev, d, a), CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, op, a, b}, rev}})
 def cf_bin_lhs_const(+has: U32Map, +val: U32Map, +nr: U32, +rev: List<&2, IrOp>, +d: U32, +op: U32, +a: U32, +b: U32, +ca: U32) -> CfSt:
   match op:
     case 0: Bool.pick(CfSt, U32.is_zero(ca), cf_emit_copy(has, val, nr, rev, d, b), CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, 0, a, b}, rev}})
+    case 1: Bool.pick(CfSt, U32.is_zero(ca), CfSt{um_set(has, d, 0), val, nr, Con{IUn{d, 0, b}, rev}}, CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, 1, a, b}, rev}})
     case 2: cf_bin_mul_go(U32.is_zero(ca), U32.is_eq(ca, 1), has, val, nr, rev, d, a, b, b, ca)
     case 5:
       Bool.pick(CfSt, U32.is_zero(ca), cf_emit_const(has, val, nr, rev, d, 0),
@@ -643,7 +661,9 @@ def cf_bin_lhs_const(+has: U32Map, +val: U32Map, +nr: U32, +rev: List<&2, IrOp>,
     case 6:
       Bool.pick(CfSt, U32.is_zero(ca), cf_emit_copy(has, val, nr, rev, d, b),
         Bool.pick(CfSt, U32.is_eq(ca, 4294967295), cf_emit_const(has, val, nr, rev, d, 4294967295), CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, 6, a, b}, rev}}))
-    case 7: Bool.pick(CfSt, U32.is_zero(ca), cf_emit_copy(has, val, nr, rev, d, b), CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, 7, a, b}, rev}})
+    case 7:
+      Bool.pick(CfSt, U32.is_zero(ca), cf_emit_copy(has, val, nr, rev, d, b),
+        Bool.pick(CfSt, U32.is_eq(ca, 4294967295), CfSt{um_set(has, d, 0), val, nr, Con{IUn{d, 1, b}, rev}}, CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, 7, a, b}, rev}}))
     case 8: Bool.pick(CfSt, U32.is_zero(ca), cf_emit_const(has, val, nr, rev, d, 0), CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, 8, a, b}, rev}})
     case 9: Bool.pick(CfSt, U32.is_zero(ca), cf_emit_const(has, val, nr, rev, d, 0), CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, 9, a, b}, rev}})
     case _: CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, op, a, b}, rev}}
@@ -1727,11 +1747,6 @@ def opt_fns_local(+small: Bool, +ret_sc: U32Map, +psc: U32Map, fns: List<&2, IrF
   match fns:
     case Nil{}: Nil{}
     case Con{f, t}: Con{opt_fn_local(small, ret_sc, psc, f), opt_fns_local(small, ret_sc, psc, t)}
-def opt_fns_pre(do_cp: Bool, +ret_sc: U32Map, fns: List<&2, IrFn>) -> List<&2, IrFn>:
-  match do_cp fns:
-    case _ Nil{}: Nil{}
-    case True{} Con{f, t}: Con{opt_pass_cp_dce(True{}, opt_pass_cf(True{}, opt_pass_scalar(True{}, ret_sc, UM0{}, f))), opt_fns_pre(True{}, ret_sc, t)}
-    case False{} Con{f, t}: Con{opt_pass_cf(False{}, opt_pass_scalar(False{}, ret_sc, UM0{}, f)), opt_fns_pre(False{}, ret_sc, t)}
 def opt_fns_mid(fns: List<&2, IrFn>) -> List<&2, IrFn>:
   match fns:
     case Nil{}: Nil{}

@@ -1,0 +1,53 @@
+{
+  "agent": "O2-C",
+  "target": "selfhost/build/agy/wave16_unified/compiler.bend",
+  "patcher": "research/agy/o2_50s/o2c_fix_o2_bugs/apply_o2c.py",
+  "idempotent": true,
+  "check_only": {
+    "command": "./research/agy/locked_bun.sh --check-only /tmp/agy_o2c/compiler_o2c.bend",
+    "status": "PASS",
+    "type_errors": 0,
+    "linearity_errors": 0,
+    "unsafe_defs": 9127,
+    "patched_bytes": 3497447,
+    "delta_bytes": 305
+  },
+  "bugs_fixed": [
+    {
+      "id": 1,
+      "name": "x86-merge-obj p111_program.caps bit 0x2 overwrite",
+      "function": "w10_merge_copy_one",
+      "line": 77199,
+      "root_cause": "w10_merge_copy_root copied entry module m09 caps=7 (set3=True) into global p111_program+88; w10_merge_copy_one never bitwise-ANDed caps across merged modules, breaking Array.set/Array.get in m05/m01 (caps=5).",
+      "fix": "Bitwise-AND each module's p111_mod_<mod>_program+88 into p111_program+88 via movq 88(%r8),%rax; movq 88(%r9),%rcx; andq %rax,%rcx; movq %rcx,88(%r9).",
+      "verification": {
+        "before": "n7_o2 x86-merge-obj m09 m09 m05 + C harness (m09=7, m05=5) -> merged_caps=7 (exit=1)",
+        "after": "exact 4-insn w10_merge_copy_one sequence + C harness (m09=7, m05=5) -> merged_caps=5 (exit=0); x187_e_alu verified to encode andq reg64, reg64"
+      }
+    },
+    {
+      "id": 2,
+      "name": "x86-iface v3 x198o_progress_get jmpq <self> infinite-loop thunk",
+      "function": "w14a_fast_abi_go2",
+      "line": 80806,
+      "root_cause": "w14a_fast_abi_go2 called w13d_p113pl_candidates_fast (hardcoding signatures=[]) instead of p113pl_candidates(..., book_cached(nq_signatures(book, names), 0)) used by -O2 x86-object (p168_selected). Product-returning functions like x198o_progress_get (X198OProgress) were emitted as $direct stubs in m00.p130 while m00.o kept them CPS, causing m01.o to emit a 3-insn mov %rsi,%rdi; mov %rdx,%rsi; jmpq <self> infinite loop.",
+      "fix": "Compute nq_sigs = book_cached(nq_signatures(book, names), 0) and call p113pl_candidates(book, pruned, bangs, nq_sigs) in w14a_fast_abi_go2.",
+      "verification": {
+        "repro_before": "20-line repro_x198o.bend (1-ctor product MyProg): n6_o2 x86-object kept CPS (no p113d_FID), n6_o2 x86-iface emitted _cps count=0 (direct stub), caller emitted exact 48 89 f7 48 89 d6 e9 fb ff ff ff jmpq <self> loop",
+        "control": "repro_x198o_2ctor.bend (2-ctor MyProg2, not in nq_signatures): n6_o2 x86-object emitted p113d_FID_$direct.my_x198o_get2"
+      }
+    },
+    {
+      "id": 3,
+      "name": "w11_cmp_jcc_emit missing branch-target liveness check (w5c2_bits_nz xorl $1, %edx)",
+      "function": "w11_cmp_jcc_emit",
+      "line": 62207,
+      "root_cause": "w11_cmp_jcc_emit fused cmp+setcc+movzbl+movq+testl+jz into cmp+jcc while checking w5b_reg_dead_fast only on fallthrough tail, ignoring branch target lbl. When w5c2_bits16 inlined into w5c2_bits_nz, %edx was dead on fallthrough (ret) but live at .L_b0 (xorl $1, %edx), deleting sete %dl; movzbl %dl, %edx and reading uninitialized %edx.",
+      "fix": "Pass after = Con{PInst{X187Instruction{w5b_j_cc(cc,flip),[X187Target{lbl}]}},tail} to w5b_reg_dead_fast(rA, after, fnItems) && w5b_reg_dead_fast(rB, after, fnItems) so w4b_reg_dead_branch checks both fallthrough and branch target lbl.",
+      "verification": {
+        "repro_before": "15-line repro_bits.bend: n6_o2 x86/x86-object reproduced exact cmpq $1,%r8; jne .L_b0; ... .L_b0: xorl $1,%edx; movq %rdx,%r10",
+        "deadness_audit": "w5c_rd_br_jmp_f / w5c_rd_br_both_f verified to check both fallthrough and target label; all 8 other w5b_reg_dead_fast callers audited (straight-line only)"
+      }
+    }
+  ]
+}

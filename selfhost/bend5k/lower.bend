@@ -72,13 +72,13 @@ def b5k_prelude_src() -> String:
   "def Nat.show(n: Nat) -> String:\n  U32.show(n)\ndef Nat.read(s: String) -> Maybe<Nat>:\n  U32.read(s)\n" ++
   "def IO.pure(-A: Data, x: A) -> IO(A):\n  k => k(x)\ndef IO.bind(-A: Data, -B: Data, m: IO(A), f: A -> IO(B)) -> IO(B):\n  k => m(x => f(x)(k))\n" ++
   "def IO.print(s: String) -> IO(Unit):\n  k => __io_print(s, k)\ndef IO.print_err(s: String) -> IO(Unit):\n  k => __io_print_err(s, k)\n" ++
-  "def IO.exit(c: U32) -> IO(Unit):\n  k => Exit{c}\ndef IO.args() -> IO(List<String>):\n  k => __io_args(k)\ndef IO.now() -> IO(U32):\n  k => __io_now(k)\n" ++
+  "def IO.exit(c: U32) -> IO(Unit):\n  k => Exit{c}\ndef __b5k_seal_args(xs: List<String>) -> List<String>:\n  match xs:\n    case Nil{}: Nil{}\n    case Con{s, t}: Con{String.reverse(String.reverse(s)), __b5k_seal_args(t)}\ndef IO.args() -> IO(List<String>):\n  IO.bind(List<String>, List<String>, k => __io_args(k), xs => IO.pure(List<String>, __b5k_seal_args(xs)))\ndef IO.now() -> IO(U32):\n  k => __io_now(k)\n" ++
   "def File.open(p: String, m: String) -> IO(U32):\n  k => __file_open(p, m, k)\ndef File.read(f: U32, n: U32) -> IO(U32):\n  k => __file_read(f, n, k)\n" ++
   "def File.size(f: U32) -> IO(U32):\n  k => __file_size(f, k)\ndef File.write(f: U32, s: String) -> IO(U32):\n  k => __file_write(f, s, k)\n" ++
   "def File.write_bytes(f: U32, bs: List<U32>) -> IO(U32):\n  k => __file_write_bytes(f, bs, k)\ndef File.close(f: U32) -> IO(Unit):\n  k => __file_close(f, k)\n" ++
   "def __arr_len(n: U32, v: U32) -> Array<U32>:\n  if U32.is_le(n, 1): ALeaf{v} else: ANode{__arr_len(U32.shr(n), v), __arr_len(U32.shr(n), v)}\n" ++
   "def Array.new(-T: Data, d: Nat, v: T) -> Array<T>:\n  match d:\n    case 0n: ALeaf{v}\n    case 1n+p: ANode{Array.new(T, p, v), Array.new(T, p, v)}\n" ++
-  "def Array.clone(-T: Data, a: Array<T>) -> Array<T>:\n  Tuple{a, a}\n" ++
+  "def Array.clone(-T: Data, a: Array<T>) -> Array<T>:\n  Tuple{a, a}\ndef Array.fork(-T: Data, a: Array<T>) -> Array<T>:\n  Tuple{a, a}\ndef Array.join(-T: Data, a: Array<T>, b: Array<T>) -> Array<T>:\n  a\n" ++
   "def Array.get(-T: Data, a: Array<T>, i: U32) -> Array<T>:\n  match a:\n    case ALeaf{v}: Tuple{ALeaf{v}, v}\n    case ANode{l, r}:\n      if U32.is_zero(U32.and(i, 1)):\n        (l2, v) = Array.get(T, l, U32.shr(i))\n        Tuple{ANode{l2, r}, v}\n      else:\n        (r2, v) = Array.get(T, r, U32.shr(i))\n        Tuple{ANode{l, r2}, v}\n" ++
   "def Array.set(-T: Data, a: Array<T>, i: U32, v: T) -> Array<T>:\n  match a:\n    case ALeaf{_}: ALeaf{v}\n    case ANode{l, r}:\n      if U32.is_zero(U32.and(i, 1)): ANode{Array.set(T, l, U32.shr(i), v), r}\n      else: ANode{l, Array.set(T, r, U32.shr(i), v)}\n" ++
   "def Array.swap(-T: Data, a: Array<T>, i: U32, v: T) -> Array<T>:\n  match a:\n    case ALeaf{o}: Tuple{ALeaf{v}, o}\n    case ANode{l, r}:\n      if U32.is_zero(U32.and(i, 1)):\n        (l2, o) = Array.swap(T, l, U32.shr(i), v)\n        Tuple{ANode{l2, r}, o}\n      else:\n        (r2, o) = Array.swap(T, r, U32.shr(i), v)\n        Tuple{ANode{l, r2}, o}\n" ++

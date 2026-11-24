@@ -1,9 +1,8 @@
-# bend5k/main.bend — Milestone 1 End-to-End Compiler Driver
-# =========================================================
+# bend5k/main.bend — Milestone 4 End-to-End Compiler Driver (-O0 / -O2)
+# =====================================================================
 # CLI:
-#   bend5k <src.bend> <out.o>
+#   bend5k [-O0 | -O2 | --opt O0|O2] <src.bend> [<base.bend>] <out.o>
 #   bend5k --check-only <src.bend>
-#   bend5k <src.bend> <base.bend> <out.o>
 
 type B5kIoRes<-A: Data> is Data:
   B5kErr{msg: String}
@@ -11,6 +10,9 @@ type B5kIoRes<-A: Data> is Data:
 
 def b5k_die(msg: String) -> IO(Unit):
   IO.bind(Unit, Unit, IO.print_err(msg), u => IO.exit(1))
+
+def b5k_usage() -> IO(Unit):
+  b5k_die("usage: bend5k [-O0|-O2|--opt O0|O2|--check-only] <src.bend> [<base.bend>] <out.o>")
 
 def b5k_close_err(-A: Data, f: File, msg: String) -> IO(B5kIoRes<A>):
   IO.bind(Unit, B5kIoRes<A>, File.close(f), u => IO.pure(B5kIoRes<A>, B5kErr{msg}))
@@ -65,26 +67,30 @@ def b5k_write_file(+path: String, bs: List<&2, U32>) -> IO(B5kIoRes<Unit>):
     File.open(path, "w"),
     r => b5k_write_opened(path, bs, r))
 
-def b5k_compile_lower(lr: LowerRes) -> B5kIoRes<List<&2, U32>>:
-  match lr:
-    case LowerRes{False{}, err, _}: B5kErr{err}
-    case LowerRes{True{}, _, +prog}:
+def b5k_compile_lower(is_o2: Bool, lr: LowerRes) -> B5kIoRes<List<&2, U32>>:
+  match is_o2 lr:
+    case _ LowerRes{False{}, err, _}: B5kErr{err}
+    case False{} LowerRes{True{}, _, +prog}:
       fns = b5k_codegen(prog)
       B5kOk{bb_to_bytes(b5k_emit_elf(prog, fns))}
+    case True{} LowerRes{True{}, _, prog}:
+      +prog2 = b5k_opt(prog)
+      fns = b5k_peep(b5k_codegen_o2(prog2))
+      B5kOk{bb_to_bytes(b5k_emit_elf(prog2, fns))}
 
-def b5k_compile_check(check_only: Bool, cr: CheckRes) -> B5kIoRes<List<&2, U32>>:
+def b5k_compile_check(is_o2: Bool, check_only: Bool, cr: CheckRes) -> B5kIoRes<List<&2, U32>>:
   match check_only cr:
     case _ CheckRes{False{}, err, _}: B5kErr{err}
     case True{} CheckRes{True{}, _, _}: B5kOk{Nil{}}
-    case False{} CheckRes{True{}, _, book}: b5k_compile_lower(b5k_lower(book))
+    case False{} CheckRes{True{}, _, book}: b5k_compile_lower(is_o2, b5k_lower(book))
 
-def b5k_compile_parse(check_only: Bool, pr: ParseRes) -> B5kIoRes<List<&2, U32>>:
+def b5k_compile_parse(is_o2: Bool, check_only: Bool, pr: ParseRes) -> B5kIoRes<List<&2, U32>>:
   match pr:
     case ParseRes{False{}, err, _}: B5kErr{err}
-    case ParseRes{True{}, _, book}: b5k_compile_check(check_only, b5k_check(book))
+    case ParseRes{True{}, _, book}: b5k_compile_check(is_o2, check_only, b5k_check(book))
 
-def b5k_compile_src(check_only: Bool, src: String) -> B5kIoRes<List<&2, U32>>:
-  b5k_compile_parse(check_only, b5k_parse(src, symtab_new()))
+def b5k_compile_src(is_o2: Bool, check_only: Bool, src: String) -> B5kIoRes<List<&2, U32>>:
+  b5k_compile_parse(is_o2, check_only, b5k_parse(src, symtab_new()))
 
 def b5k_finish_write(res: B5kIoRes<Unit>) -> IO(Unit):
   match res:
@@ -102,44 +108,77 @@ def b5k_run_check_res(res: B5kIoRes<List<&2, U32>>) -> IO(Unit):
     case B5kErr{msg}: b5k_die(msg)
     case B5kOk{_}: IO.print("ALL PROOFS CHECK")
 
-def b5k_run_loaded(check_only: Bool, out_path: String, loaded: B5kIoRes<String>) -> IO(Unit):
+def b5k_run_loaded(is_o2: Bool, check_only: Bool, out_path: String, loaded: B5kIoRes<String>) -> IO(Unit):
   match check_only loaded:
     case _ B5kErr{msg}: b5k_die(msg)
-    case True{} B5kOk{src}: b5k_run_check_res(b5k_compile_src(True{}, src))
-    case False{} B5kOk{src}: b5k_run_emit(out_path, b5k_compile_src(False{}, src))
+    case True{} B5kOk{src}: b5k_run_check_res(b5k_compile_src(is_o2, True{}, src))
+    case False{} B5kOk{src}: b5k_run_emit(out_path, b5k_compile_src(is_o2, False{}, src))
 
-def b5k_run_driver(check_only: Bool, src_path: String, out_path: String) -> IO(Unit):
-  IO.bind(B5kIoRes<String>, Unit, b5k_read_file(src_path), r => b5k_run_loaded(check_only, out_path, r))
+def b5k_run_driver(is_o2: Bool, check_only: Bool, src_path: String, out_path: String) -> IO(Unit):
+  IO.bind(B5kIoRes<String>, Unit, b5k_read_file(src_path), r => b5k_run_loaded(is_o2, check_only, out_path, r))
 
-def b5k_dispatch_2(is_chk: Bool, a1: String, a2: String) -> IO(Unit):
+def b5k_dispatch_pos(is_o2: Bool, check_only: Bool, a1: String, rest: List<String>) -> IO(Unit):
+  match check_only rest:
+    case True{} Nil{}: b5k_run_driver(is_o2, True{}, a1, "")
+    case True{} Con{_, _}: b5k_usage()
+    case False{} Nil{}: b5k_usage()
+    case False{} Con{a2, Nil{}}: b5k_run_driver(is_o2, False{}, a1, String.reverse(String.reverse(a2)))
+    case False{} Con{_, Con{a3, Nil{}}}: b5k_run_driver(is_o2, False{}, a1, String.reverse(String.reverse(a3)))
+    case False{} Con{_, Con{_, Con{_, _}}}: b5k_usage()
+
+type B5kFlagStep is Type:
+  FlagErr{}
+  FlagCont{is_o2: Bool, check_only: Bool, rest: List<String>}
+  FlagDone{is_o2: Bool, check_only: Bool, a1: String, rest: List<String>}
+
+def b5k_step_opt(check_only: Bool, rest: List<String>) -> B5kFlagStep:
+  match rest:
+    case Nil{}: FlagErr{}
+    case Con{lvl, more}: FlagCont{b5k_str_eq(String.reverse(String.reverse(lvl)), "O2"), check_only, more}
+
+def b5k_step_s4(is_opt: Bool, is_o2: Bool, check_only: Bool, a1: String, rest: List<String>) -> B5kFlagStep:
+  match is_opt:
+    case True{}: b5k_step_opt(check_only, rest)
+    case False{}: FlagDone{is_o2, check_only, a1, rest}
+
+def b5k_step_s3(is_chk: Bool, is_o2: Bool, check_only: Bool, +a1: String, rest: List<String>) -> B5kFlagStep:
   match is_chk:
-    case True{}: b5k_run_driver(True{}, a2, "")
-    case False{}: b5k_run_driver(False{}, a1, a2)
+    case True{}: FlagCont{is_o2, True{}, rest}
+    case False{}: b5k_step_s4(b5k_str_eq(a1, "--opt"), is_o2, check_only, a1, rest)
 
-def b5k_dispatch_3_end(a1: String, a3: String, rest: List<String>) -> IO(Unit):
-  match rest:
-    case Nil{}: b5k_run_driver(False{}, a1, String.reverse(String.reverse(a3)))
-    case Con{_, _}: b5k_die("usage: bend5k [--check-only] <src.bend> [<base.bend>] <out.o>")
+def b5k_step_s2(is_o0: Bool, is_o2: Bool, check_only: Bool, +a1: String, rest: List<String>) -> B5kFlagStep:
+  match is_o0:
+    case True{}: FlagCont{False{}, check_only, rest}
+    case False{}: b5k_step_s3(b5k_str_eq(a1, "--check-only"), is_o2, check_only, a1, rest)
 
-def b5k_dispatch_2_or_3(+a1: String, a2: String, rest: List<String>) -> IO(Unit):
-  match rest:
-    case Nil{}: b5k_dispatch_2(b5k_str_eq(a1, "--check-only"), a1, String.reverse(String.reverse(a2)))
-    case Con{a3, more}: b5k_dispatch_3_end(a1, a3, more)
+def b5k_step_s1(set_o2: Bool, is_o2: Bool, check_only: Bool, +a1: String, rest: List<String>) -> B5kFlagStep:
+  match set_o2:
+    case True{}: FlagCont{True{}, check_only, rest}
+    case False{}: b5k_step_s2(b5k_str_eq(a1, "-O0"), is_o2, check_only, a1, rest)
 
-def b5k_dispatch_tail(a1: String, rest: List<String>) -> IO(Unit):
-  match rest:
-    case Nil{}: b5k_die("usage: bend5k [--check-only] <src.bend> [<base.bend>] <out.o>")
-    case Con{a2, more}: b5k_dispatch_2_or_3(String.reverse(String.reverse(a1)), a2, more)
-
-def b5k_dispatch_args(args: List<String>) -> IO(Unit):
+def b5k_parse_step(is_o2: Bool, check_only: Bool, args: List<String>) -> B5kFlagStep:
   match args:
-    case Con{a1, rest}: b5k_dispatch_tail(a1, rest)
-    case Nil{}: b5k_die("usage: bend5k [--check-only] <src.bend> [<base.bend>] <out.o>")
+    case Nil{}: FlagErr{}
+    case Con{a1, rest}:
+      +s1 = String.reverse(String.reverse(a1))
+      b5k_step_s1(b5k_str_eq(s1, "-O2"), is_o2, check_only, s1, rest)
+
+def b5k_parse_flags(fuel: Nat, st: B5kFlagStep) -> IO(Unit):
+  match fuel st:
+    case 0n _: b5k_usage()
+    case _ FlagErr{}: b5k_usage()
+    case _ FlagDone{is_o2, check_only, a1, rest}: b5k_dispatch_pos(is_o2, check_only, a1, rest)
+    case 1n+p FlagCont{is_o2, check_only, rest}: b5k_parse_flags(p, b5k_parse_step(is_o2, check_only, rest))
+
+def b5k_clone_args(xs: List<String>) -> List<String>:
+  match xs:
+    case Nil{}: Nil{}
+    case Con{s, t}: Con{String.reverse(String.reverse(s)), b5k_clone_args(t)}
 
 def b5k_main_args(argv: List<String>) -> IO(Unit):
   match argv:
-    case Nil{}: b5k_die("usage: bend5k [--check-only] <src.bend> [<base.bend>] <out.o>")
-    case Con{_, rest}: b5k_dispatch_args(rest)
+    case Nil{}: b5k_usage()
+    case Con{_, rest}: b5k_parse_flags(16n, FlagCont{False{}, False{}, b5k_clone_args(rest)})
 
 def main() -> IO(Unit):
   IO.bind(List<String>, Unit, IO.args(), argv => b5k_main_args(argv))

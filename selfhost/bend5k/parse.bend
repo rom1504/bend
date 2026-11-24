@@ -95,7 +95,7 @@ type PKont is Data:
   KBlkLetTy{pt: Pat}
   KBlkForkP2{p1: Pat}
   KBlkForkE1{p1: Pat, p2: Pat}
-  KBlkForkE2{p1: Pat, p2: Pat, e1: Expr}
+  KBlkForkE2{p1: Pat, p2: Pat, e1: Expr, ind: Bool}
   KBlkLetVal{pt: Pat}
   KBlkLetBody{pt: Pat, val: Expr}
   KBlkExpr{}
@@ -281,7 +281,8 @@ def p_after_targs(toks: List<&2, Tok>) -> Bool:
     case Con{Tok{TkSym{+c}, _}, _}:
       a = Bool.or(U32.is_eq(c, 40), Bool.or(U32.is_eq(c, 123), Bool.or(U32.is_eq(c, 44), U32.is_eq(c, 41))))
       b = Bool.or(U32.is_eq(c, 93), Bool.or(U32.is_eq(c, 125), Bool.or(U32.is_eq(c, 58), U32.is_eq(c, 62))))
-      Bool.or(a, Bool.or(b, Bool.or(U32.is_eq(c, 256), Bool.or(U32.is_eq(c, 38), U32.is_eq(c, 59)))))
+      c2 = Bool.or(U32.is_eq(c, 256), Bool.or(U32.is_eq(c, 38), Bool.or(U32.is_eq(c, 59), Bool.or(U32.is_eq(c, 266), U32.is_eq(c, 61)))))
+      Bool.or(a, Bool.or(b, c2))
     case _: False{}
 def p_targs_step(toks: List<&2, Tok>, +d: U32) -> ScanStep:
   match toks:
@@ -734,9 +735,13 @@ def p_apply_k(k: PKont, v: PVal, +st: PState, +ks: List<&2, PKont>) -> PStep:
       Bool.pick(PStep, p_is_sym(st, 61), SEval{GExpr{}, p_drop(st), Con{KBlkLetVal{pt}, ks}}, non_eq)
     case KBlkLetTy{pt} VExpr{_}: SEval{GExpr{}, p_eat_sym(st, 61, "expected '=' in let"), Con{KBlkLetVal{pt}, ks}}
     case KBlkForkP2{p1} VPat{p2}: SEval{GExpr{}, p_eat_sym(st, 61, "expected '=' in let"), Con{KBlkForkE1{p1, p2}, ks}}
-    case KBlkForkE1{p1, p2} VExpr{e1}: SEval{GExpr{}, st, Con{KBlkForkE2{p1, p2, e1}, ks}}
-    case KBlkForkE2{p1, p2, e1} VExpr{e2}:
-      st5 = Bool.pick(PState, p_is_sym(st, 59), p_drop(st), st)
+    case KBlkForkE1{p1, p2} VExpr{e1}:
+      +st1 = p_skip_nls(st)
+      +ind = p_is_indent(st1)
+      SEval{GExpr{}, Bool.pick(PState, ind, p_drop(st1), st1), Con{KBlkForkE2{p1, p2, e1, ind}, ks}}
+    case KBlkForkE2{p1, p2, e1, ind} VExpr{e2}:
+      +st4 = Bool.pick(PState, ind, p_eat_dedent(p_skip_nls(st)), st)
+      st5 = Bool.pick(PState, p_is_sym(st4, 59), p_drop(st4), st4)
       SEval{GBlock{}, st5, Con{KBlkLetBody{p2, e2}, Con{KBlkLetBody{p1, e1}, ks}}}
     case KBlkLetVal{pt} VExpr{val}:
       st5 = Bool.pick(PState, p_is_sym(st, 59), p_drop(st), st)

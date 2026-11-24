@@ -28,7 +28,7 @@ def classify_compile_err(stderr: str) -> str:
     return "parse"
 
 
-def run_case(b5k: Path, work_dir: Path, case: dict, timeout: int) -> dict:
+def run_case(b5k: Path, work_dir: Path, case: dict, timeout: int, opt: str = "O0") -> dict:
     cid = case["id"]
     src = ROOT / case["source"]["file"]
     expect = case["expect"]
@@ -44,9 +44,10 @@ def run_case(b5k: Path, work_dir: Path, case: dict, timeout: int) -> dict:
 
     cleanup()
     t0 = time.perf_counter()
+    cmd = [str(b5k)] + (["-O2"] if opt == "O2" else []) + [str(src), str(obj)]
     try:
         rcmp = subprocess.run(
-            [str(b5k), str(src), str(obj)],
+            cmd,
             capture_output=True,
             text=True,
             timeout=timeout,
@@ -113,6 +114,7 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--bend5k", type=Path, default=Path("/tmp/agy_b5k_m1/bend5k"))
     ap.add_argument("--work-dir", type=Path, default=Path("/tmp/agy_b5k_m1/qual"))
+    ap.add_argument("--opt", choices=("O0", "O2"), default="O0")
     ap.add_argument("--timeout", type=int, default=15)
     ap.add_argument("--json-out", type=Path, default=None)
     args = ap.parse_args()
@@ -126,7 +128,7 @@ def main() -> int:
 
     t_all = time.perf_counter()
     for c in cases:
-        res = run_case(args.bend5k, args.work_dir, c, args.timeout)
+        res = run_case(args.bend5k, args.work_dir, c, args.timeout, args.opt)
         results.append(res)
         cats[res["cat"]] += 1
         if res["status"] == "PASS":

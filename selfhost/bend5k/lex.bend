@@ -128,8 +128,8 @@ def lex_ident_run(fuel: Nat, st: IdStep) -> StrScan:
     case _ IdDone{r}: r
     case 0n IdNext{s, acc}: StrScan{String.reverse(acc), s, True{}}
     case 1n+p IdNext{s, acc}: lex_ident_run(p, lex_ident_step(s, acc))
-def lex_scan_ident(+s: String, acc: String) -> StrScan:
-  lex_ident_run(Succ{String.length(s)}, IdNext{s, acc})
+def lex_scan_ident(s: String, acc: String) -> StrScan:
+  lex_ident_run(256n, IdNext{s, acc})
 def lex_dec_step(s: String, +val: U32, +cnt: U32) -> NumStep:
   match s:
     case SNil{}: NmDone{NumScan{val, cnt, SNil{}}}
@@ -142,8 +142,8 @@ def lex_dec_run(fuel: Nat, st: NumStep) -> NumScan:
     case _ NmDone{r}: r
     case 0n NmNext{s, val, cnt}: NumScan{val, cnt, s}
     case 1n+p NmNext{s, val, cnt}: lex_dec_run(p, lex_dec_step(s, val, cnt))
-def lex_scan_dec(+s: String, val: U32, cnt: U32) -> NumScan:
-  lex_dec_run(Succ{String.length(s)}, NmNext{s, val, cnt})
+def lex_scan_dec(s: String, val: U32, cnt: U32) -> NumScan:
+  lex_dec_run(256n, NmNext{s, val, cnt})
 def lex_hex_step(s: String, +val: U32, +cnt: U32) -> NumStep:
   match s:
     case SNil{}: NmDone{NumScan{val, cnt, SNil{}}}
@@ -156,8 +156,8 @@ def lex_hex_run(fuel: Nat, st: NumStep) -> NumScan:
     case _ NmDone{r}: r
     case 0n NmNext{s, val, cnt}: NumScan{val, cnt, s}
     case 1n+p NmNext{s, val, cnt}: lex_hex_run(p, lex_hex_step(s, val, cnt))
-def lex_scan_hex(+s: String, val: U32, cnt: U32) -> NumScan:
-  lex_hex_run(Succ{String.length(s)}, NmNext{s, val, cnt})
+def lex_scan_hex(s: String, val: U32, cnt: U32) -> NumScan:
+  lex_hex_run(256n, NmNext{s, val, cnt})
 
 # IEEE-754 F32 Bits from Decimal
 # ------------------------------
@@ -331,15 +331,16 @@ def lex_step_if(s: String, stk: List<&2, U32>, depth: U32, line: U32, rev: List<
   match do_bol:
     case True{}: lex_bol_scan(stk, depth, line, rev, syms, lex_count_indent(s, 0))
     case False{}: lex_tok(s, stk, depth, line, rev, syms)
-def lex_run(fuel: Nat, st: LStep) -> LexRes:
+def lex_chunk(fuel: Nat, st: LStep) -> LStep:
   match fuel st:
+    case _ LDone{res}: LDone{res}
+    case 0n s: s
+    case 1n+p LNext{s, stk, bol, +depth, line, rev, syms}:
+      lex_chunk(p, lex_step_if(s, stk, depth, line, rev, syms, Bool.and(bol, U32.is_zero(depth))))
+def lex_run(outer: Nat, st: LStep) -> LexRes:
+  match outer st:
     case _ LDone{res}: res
     case 0n LNext{_, stk, _, _, line, rev, syms}: lex_eof(stk, line, rev, syms)
-    case 1n+p LNext{s, stk, bol, +depth, line, rev, syms}:
-      lex_run(p, lex_step_if(s, stk, depth, line, rev, syms, Bool.and(bol, U32.is_zero(depth))))
-def lex_str_fuel(s: String, acc: Nat) -> Nat:
-  match s:
-    case SNil{}: acc
-    case SCon{_, t}: lex_str_fuel(t, Succ{Succ{acc}})
-def b5k_lex(+src: String, syms: SymTab) -> LexRes:
-  lex_run(lex_str_fuel(src, 8n), LNext{src, Con{0, Nil{}}, True{}, 0, 1, Nil{}, syms})
+    case 1n+p s: lex_run(p, lex_chunk(U32.to_nat(512), s))
+def b5k_lex(src: String, syms: SymTab) -> LexRes:
+  lex_run(U32.to_nat(4096), LNext{src, Con{0, Nil{}}, True{}, 0, 1, Nil{}, syms})

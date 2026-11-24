@@ -157,25 +157,62 @@ def x64_bin_step4(is_sh: Bool, op: U32, acc: List<&2, X64Inst>) -> List<&2, X64I
     case True{}: x64_mask32(0, Con{XShift{op, 0, 0, True{}}, acc})
     case False{}: x64_mask32(0, Con{XAluRR{op, 0, 1}, acc})
 
-def x64_bin_step3(is_mod: Bool, +op: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+def x64_bin_step3(is_mod: Bool, +op: U32, +lbl: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
   match is_mod:
-    case True{}: Con{XMovRR{0, 2}, Con{XDiv{1, False{}}, Con{XMovRI32{2, 0}, acc}}}
+    case True{}:
+      a1 = x64_emit(XJcc{4, lbl}, x64_emit(XTestRR{1, 1}, acc))
+      a2 = x64_emit(XMovRR{0, 2}, x64_emit(XDiv{1, False{}}, x64_emit(XMovRI32{2, 0}, a1)))
+      x64_mask32(0, x64_emit(XLabel{lbl}, a2))
     case False{}: x64_bin_step4(U32.is_ge(op, 8), op, acc)
 
-def x64_bin_step2(is_div: Bool, +op: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+def x64_bin_step2(is_div: Bool, +op: U32, +lbl: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
   match is_div:
-    case True{}: Con{XDiv{1, False{}}, Con{XMovRI32{2, 0}, acc}}
-    case False{}: x64_bin_step3(U32.is_eq(op, 4), op, acc)
+    case True{}:
+      a1 = x64_emit(XMovRI32{0, 0}, x64_emit(XMovRR{2, 0}, acc))
+      a2 = x64_emit(XJcc{4, lbl}, x64_emit(XTestRR{1, 1}, a1))
+      a3 = x64_emit(XDiv{1, False{}}, x64_emit(XMovRI32{2, 0}, x64_emit(XMovRR{0, 2}, a2)))
+      x64_emit(XLabel{lbl}, a3)
+    case False{}: x64_bin_step3(U32.is_eq(op, 4), op, lbl, acc)
 
-def x64_bin_step1(is_mul: Bool, +op: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+def x64_bin_step1(is_mul: Bool, +op: U32, lbl: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
   match is_mul:
     case True{}: x64_mask32(0, Con{XMul{0, 1}, acc})
-    case False{}: x64_bin_step2(U32.is_eq(op, 3), op, acc)
+    case False{}: x64_bin_step2(U32.is_eq(op, 3), op, lbl, acc)
 
-def x64_emit_bin(dst: U32, +op: U32, lhs: U32, rhs: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
-  a1 = x64_load_vreg(1, rhs, x64_load_vreg(0, lhs, acc))
-  a2 = x64_bin_step1(U32.is_eq(op, 2), op, a1)
-  x64_store_vreg(dst, 0, a2)
+def x64_emit_bin_go(is_flt: Bool, dst: U32, +op: U32, lhs: U32, rhs: U32, lbl: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  match is_flt:
+    case True{}:
+      a1 = x64_emit(XXmmLoad{1, 5, x64_vreg_disp(rhs)}, x64_emit(XXmmLoad{0, 5, x64_vreg_disp(lhs)}, acc))
+      x64_emit(XXmmStore{5, x64_vreg_disp(dst), 0}, x64_emit(XXmmRR{U32.sub(op, 10), 0, 1}, a1))
+    case False{}:
+      a1 = x64_load_vreg(1, rhs, x64_load_vreg(0, lhs, acc))
+      x64_store_vreg(dst, 0, x64_bin_step1(U32.is_eq(op, 2), op, lbl, a1))
+
+def x64_emit_bin(dst: U32, +op: U32, lhs: U32, rhs: U32, lbl: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  x64_emit_bin_go(U32.is_ge(op, 10), dst, op, lhs, rhs, lbl, acc)
+
+def x64_un_f32_s3(is_u2f: Bool, dst: U32, src: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  match is_u2f:
+    case True{}:
+      a1 = x64_emit(XCvt{0, 0, 0}, x64_load_vreg(0, src, acc))
+      x64_emit(XXmmStore{5, x64_vreg_disp(dst), 0}, a1)
+    case False{}:
+      a1 = x64_mask32(0, x64_emit(XCvt{1, 0, 0}, x64_emit(XXmmLoad{0, 5, x64_vreg_disp(src)}, acc)))
+      x64_store_vreg(dst, 0, a1)
+
+def x64_un_f32_s2(is_sqrt: Bool, uop: U32, dst: U32, src: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  match is_sqrt:
+    case True{}:
+      a1 = x64_emit(XXmmRR{4, 0, 0}, x64_emit(XXmmLoad{0, 5, x64_vreg_disp(src)}, acc))
+      x64_emit(XXmmStore{5, x64_vreg_disp(dst), 0}, a1)
+    case False{}: x64_un_f32_s3(U32.is_eq(uop, 4), dst, src, acc)
+
+def x64_un_f32_s1(is_fneg: Bool, +uop: U32, dst: U32, src: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  match is_fneg:
+    case True{}:
+      a1 = x64_emit(XAluRR{7, 0, 1}, x64_emit(XMovRI32{1, 2147483648}, x64_load_vreg(0, src, acc)))
+      x64_store_vreg(dst, 0, a1)
+    case False{}: x64_un_f32_s2(U32.is_eq(uop, 3), uop, dst, src, acc)
 
 def x64_un_step(is_neg: Bool, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
   match is_neg:
@@ -185,70 +222,110 @@ def x64_un_step(is_neg: Bool, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
     case False{}:
       x64_emit(XAluRR{7, 0, 1}, x64_emit(XMovRI32{1, 4294967295}, acc))
 
+def x64_emit_un_go(is_flt: Bool, dst: U32, +uop: U32, src: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  match is_flt:
+    case True{}: x64_un_f32_s1(U32.is_eq(uop, 2), uop, dst, src, acc)
+    case False{}: x64_store_vreg(dst, 0, x64_un_step(U32.is_eq(uop, 0), x64_load_vreg(0, src, acc)))
+
+def x64_emit_un(dst: U32, +uop: U32, src: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  x64_emit_un_go(U32.is_ge(uop, 2), dst, uop, src, acc)
+
+def x64_emit_fcmp_s2(is_ne: Bool, +fop: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  match is_ne:
+    case True{}:
+      a1 = x64_emit(XSetcc{10, 1}, x64_emit(XSetcc{5, 0}, x64_emit(XMovRI32{1, 0}, x64_emit(XMovRI32{0, 0}, acc))))
+      x64_emit(XAluRR{6, 0, 1}, a1)
+    case False{}:
+      cc = Bool.pick(U32, Bool.or(U32.is_eq(fop, 2), U32.is_eq(fop, 4)), 7, 3)
+      x64_emit(XSetcc{cc, 0}, x64_emit(XMovRI32{0, 0}, acc))
+
+def x64_emit_fcmp_s1(is_eq: Bool, +fop: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  match is_eq:
+    case True{}:
+      a1 = x64_emit(XSetcc{11, 1}, x64_emit(XSetcc{4, 0}, x64_emit(XMovRI32{1, 0}, x64_emit(XMovRI32{0, 0}, acc))))
+      x64_emit(XAluRR{5, 0, 1}, a1)
+    case False{}: x64_emit_fcmp_s2(U32.is_eq(fop, 1), fop, acc)
+
+def x64_emit_cmp_go(is_flt: Bool, dst: U32, +cop: U32, lhs: U32, rhs: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  match is_flt:
+    case True{}:
+      +fop = U32.sub(cop, 6)
+      +swap = Bool.or(U32.is_eq(fop, 2), U32.is_eq(fop, 3))
+      a1 = x64_emit(XXmmLoad{1, 5, x64_vreg_disp(rhs)}, x64_emit(XXmmLoad{0, 5, x64_vreg_disp(lhs)}, acc))
+      a2 = x64_emit(XXmmRR{5, Bool.pick(U32, swap, 1, 0), Bool.pick(U32, swap, 0, 1)}, a1)
+      x64_store_vreg(dst, 0, x64_emit_fcmp_s1(U32.is_eq(fop, 0), fop, a2))
+    case False{}:
+      a1 = x64_load_vreg(1, rhs, x64_load_vreg(0, lhs, acc))
+      a2 = x64_emit(XSetcc{x64_cmp_cc(cop), 0}, x64_emit(XMovRI32{0, 0}, x64_emit(XCmpRR{0, 1}, a1)))
+      x64_store_vreg(dst, 0, a2)
+
+def x64_emit_cmp(dst: U32, +cop: U32, lhs: U32, rhs: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  x64_emit_cmp_go(U32.is_ge(cop, 6), dst, cop, lhs, rhs, acc)
+
 def x64_emit_ctor(dst: U32, cid: U32, +fields: List<&2, U32>, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
   cnt = b5k_u32_list_len(fields)
   a1 = x64_load_state(7, x64_store_scratch_go(fields, 0, acc))
   a2 = x64_emit(XMovRI32{1, cnt}, x64_emit(XMovRR{2, 4}, x64_emit(XMovRI32{6, cid}, a1)))
   x64_store_vreg(dst, 0, x64_emit(XCallSym{"p111_rt_ctor"}, a2))
 
-def x64_emit_op(fn_map: Map<&2, String>, op: IrOp, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+type X64Acc is Data:
+  X64Acc{insts: List<&2, X64Inst>, next_lbl: U32}
+
+def x64_emit_op(fn_map: Map<&2, String>, op: IrOp, acc: List<&2, X64Inst>, +lbl: U32) -> X64Acc:
   match op:
-    case IConst{dst, val}: x64_store_vreg(dst, 0, x64_emit(XMovRI32{0, val}, acc))
-    case IFlt{dst, bits}: x64_store_vreg(dst, 0, x64_emit(XMovRI32{0, bits}, acc))
-    case ICopy{dst, src}: x64_store_vreg(dst, 0, x64_load_vreg(0, src, acc))
-    case IBin{dst, bop, lhs, rhs}: x64_emit_bin(dst, bop, lhs, rhs, acc)
-    case IUn{dst, uop, src}: x64_store_vreg(dst, 0, x64_un_step(U32.is_eq(uop, 0), x64_load_vreg(0, src, acc)))
-    case ICmp{dst, cop, lhs, rhs}:
-      a1 = x64_load_vreg(1, rhs, x64_load_vreg(0, lhs, acc))
-      a2 = x64_emit(XSetcc{x64_cmp_cc(cop), 0}, x64_emit(XMovRI32{0, 0}, x64_emit(XCmpRR{0, 1}, a1)))
-      x64_store_vreg(dst, 0, a2)
+    case IConst{dst, val}: X64Acc{x64_store_vreg(dst, 0, x64_emit(XMovRI32{0, val}, acc)), lbl}
+    case IFlt{dst, bits}: X64Acc{x64_store_vreg(dst, 0, x64_emit(XMovRI32{0, bits}, acc)), lbl}
+    case ICopy{dst, src}: X64Acc{x64_store_vreg(dst, 0, x64_load_vreg(0, src, acc)), lbl}
+    case IBin{dst, bop, lhs, rhs}: X64Acc{x64_emit_bin(dst, bop, lhs, rhs, lbl, acc), U32.add(lbl, 1)}
+    case IUn{dst, uop, src}: X64Acc{x64_emit_un(dst, uop, src, acc), lbl}
+    case ICmp{dst, cop, lhs, rhs}: X64Acc{x64_emit_cmp(dst, cop, lhs, rhs, acc), lbl}
     case ICallDirect{dst, fid, args}:
-      x64_store_vreg(dst, 0, x64_emit_call(x64_lookup_fn_sym(fn_map, fid), args, acc))
+      X64Acc{x64_store_vreg(dst, 0, x64_emit_call(x64_lookup_fn_sym(fn_map, fid), args, acc)), lbl}
     case ICallClosure{dst, fid, +caps}:
       cnt = b5k_u32_list_len(caps)
       a1 = x64_load_state(7, x64_store_scratch_go(caps, 0, acc))
       a2 = x64_emit(XMovRI32{1, cnt}, x64_emit(XMovRR{2, 4}, x64_emit(XMovRI32{6, fid}, a1)))
-      x64_store_vreg(dst, 0, x64_emit(XCallSym{"p111_rt_closure"}, a2))
+      X64Acc{x64_store_vreg(dst, 0, x64_emit(XCallSym{"p111_rt_closure"}, a2)), lbl}
     case IApply{dst, clo, arg}:
       a1 = x64_load_state(7, x64_load_vreg(2, arg, x64_load_vreg(6, clo, acc)))
-      x64_store_vreg(dst, 0, x64_emit(XCallSym{"p111_rt_apply"}, a1))
-    case ICtor{dst, cid, fields}: x64_emit_ctor(dst, cid, fields, acc)
+      X64Acc{x64_store_vreg(dst, 0, x64_emit(XCallSym{"$b5k_apply"}, a1)), lbl}
+    case ICtor{dst, cid, fields}: X64Acc{x64_emit_ctor(dst, cid, fields, acc), lbl}
     case ITake{+dsts, src}:
       cnt = b5k_u32_list_len(dsts)
       a1 = x64_load_state(7, x64_load_vreg(6, src, acc))
       a2 = x64_emit(XCallSym{"p111_rt_take"}, x64_emit(XMovRI32{1, cnt}, x64_emit(XMovRR{2, 4}, a1)))
-      x64_load_scratch_go(dsts, 0, a2)
+      X64Acc{x64_load_scratch_go(dsts, 0, a2), lbl}
     case ITag{dst, src}:
       a1 = x64_load_state(7, x64_load_vreg(6, src, acc))
-      x64_store_vreg(dst, 0, x64_emit(XCallSym{"p111_rt_tag"}, a1))
+      X64Acc{x64_store_vreg(dst, 0, x64_emit(XCallSym{"p111_rt_tag"}, a1)), lbl}
     case IKeep{dst, src}:
       a1 = x64_load_state(7, x64_load_vreg(6, src, acc))
-      x64_store_vreg(dst, 0, x64_emit(XCallSym{"p111_rt_keep"}, a1))
+      X64Acc{x64_store_vreg(dst, 0, x64_emit(XCallSym{"p111_rt_keep"}, a1)), lbl}
     case ISink{src}:
-      x64_emit(XCallSym{"p111_rt_sink"}, x64_load_state(7, x64_load_vreg(6, src, acc)))
-    case IReuse{dst, _, cid, fields}: x64_emit_ctor(dst, cid, fields, acc)
+      X64Acc{x64_emit(XCallSym{"p111_rt_sink"}, x64_load_state(7, x64_load_vreg(6, src, acc))), lbl}
+    case IReuse{dst, _, cid, fields}: X64Acc{x64_emit_ctor(dst, cid, fields, acc), lbl}
     case IStatic{dst, idx}:
       a1 = x64_emit(XLoad{0, 0, U32.mul(idx, 8)}, x64_emit(XLeaRip{0, "p111_static_image"}, acc))
-      x64_store_vreg(dst, 0, a1)
+      X64Acc{x64_store_vreg(dst, 0, a1), lbl}
     case IArrOp{+dsts, aop, +args}:
       acnt = b5k_u32_list_len(args)
       ocnt = b5k_u32_list_len(dsts)
       a1 = x64_load_state(7, x64_store_scratch_go(args, 0, acc))
       a2 = x64_emit(XMovRI32{9, ocnt}, x64_emit(XMovRR{8, 4}, x64_emit(XMovRI32{1, acnt}, x64_emit(XMovRR{2, 4}, x64_emit(XMovRI32{6, aop}, a1)))))
-      x64_load_scratch_go(dsts, 0, x64_emit(XCallSym{"p113_rt_array_pair"}, a2))
-    case IAlloca{dst, _}: x64_store_vreg(dst, 4, acc)
+      X64Acc{x64_load_scratch_go(dsts, 0, x64_emit(XCallSym{"p113_rt_array_pair"}, a2)), lbl}
+    case IAlloca{dst, _}: X64Acc{x64_store_vreg(dst, 4, acc), lbl}
     case ILoad{dst, base, off}:
-      x64_store_vreg(dst, 0, x64_emit(XLoad{0, 0, U32.mul(off, 8)}, x64_load_vreg(0, base, acc)))
+      X64Acc{x64_store_vreg(dst, 0, x64_emit(XLoad{0, 0, U32.mul(off, 8)}, x64_load_vreg(0, base, acc))), lbl}
     case IStore{base, off, val}:
       a1 = x64_load_vreg(1, val, x64_load_vreg(0, base, acc))
-      x64_emit(XStore{0, U32.mul(off, 8), 1}, a1)
+      X64Acc{x64_emit(XStore{0, U32.mul(off, 8), 1}, a1), lbl}
     case IFail{code}:
-      x64_emit(XCallSym{"p111_rt_fail"}, x64_emit(XMovRI32{6, code}, x64_load_state(7, acc)))
+      X64Acc{x64_emit(XCallSym{"p111_rt_fail"}, x64_emit(XMovRI32{6, code}, x64_load_state(7, acc))), lbl}
 
-def x64_emit_ops(+fn_map: Map<&2, String>, ops: List<&2, IrOp>, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
-  match ops:
-    case Nil{}: acc
-    case Con{op, t}: x64_emit_ops(fn_map, t, x64_emit_op(fn_map, op, acc))
+def x64_emit_ops(+fn_map: Map<&2, String>, ops: List<&2, IrOp>, st: X64Acc) -> X64Acc:
+  match ops st:
+    case Nil{} _: st
+    case Con{op, t} X64Acc{acc, lbl}: x64_emit_ops(fn_map, t, x64_emit_op(fn_map, op, acc, lbl))
 
 def x64_emit_switch_arms(arms: List<&2, IrSwitchArm>, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
   match arms:
@@ -273,12 +350,20 @@ def x64_emit_term(fn_map: Map<&2, String>, term: IrTerm, acc: List<&2, X64Inst>)
     case TFail{code}:
       x64_emit_epilogue(x64_emit(XCallSym{"p111_rt_fail"}, x64_emit(XMovRI32{6, code}, x64_load_state(7, acc))))
 
-def x64_emit_blocks(+fn_map: Map<&2, String>, blks: List<&2, IrBlock>, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
-  match blks:
-    case Nil{}: acc
-    case Con{IrBlock{id, ops, term}, t}:
-      a1 = x64_emit_ops(fn_map, ops, x64_emit(XLabel{id}, acc))
-      x64_emit_blocks(fn_map, t, x64_emit_term(fn_map, term, a1))
+def x64_emit_term_acc(fn_map: Map<&2, String>, term: IrTerm, st: X64Acc) -> X64Acc:
+  match st:
+    case X64Acc{a1, lbl1}:
+      X64Acc{x64_emit_term(fn_map, term, a1), lbl1}
+
+def x64_emit_blocks(+fn_map: Map<&2, String>, blks: List<&2, IrBlock>, st: X64Acc) -> X64Acc:
+  match blks st:
+    case Nil{} _: st
+    case Con{IrBlock{id, ops, term}, t} X64Acc{acc, lbl}:
+      x64_emit_blocks(fn_map, t, x64_emit_term_acc(fn_map, term, x64_emit_ops(fn_map, ops, X64Acc{x64_emit(XLabel{id}, acc), lbl})))
+
+def x64_acc_insts(st: X64Acc) -> List<&2, X64Inst>:
+  match st:
+    case X64Acc{insts, _}: insts
 
 def x64_lower_fn(fn_map: Map<&2, String>, f: IrFn) -> X64Fn:
   match f:
@@ -286,7 +371,7 @@ def x64_lower_fn(fn_map: Map<&2, String>, f: IrFn) -> X64Fn:
       frame = x64_align16(U32.add(144, U32.mul(U32.max(nregs, arity), 8)))
       a0 = x64_emit(XStore{5, x64_state_disp(), 7}, x64_emit(XSubRsp{frame}, x64_emit(XMovRR{5, 4}, x64_emit(XPush{5}, Nil{}))))
       a1 = x64_save_params_go(U32.to_nat(arity), 0, a0)
-      X64Fn{x64_fn_sym(name), True{}, b5k_list_rev(X64Inst, x64_emit_blocks(fn_map, blocks, a1))}
+      X64Fn{x64_fn_sym(name), True{}, b5k_list_rev(X64Inst, x64_acc_insts(x64_emit_blocks(fn_map, blocks, X64Acc{a1, 2147483648})))}
 
 def x64_seg_push_extra(n: Nat, +idx: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
   match n:
@@ -323,6 +408,19 @@ def x64_make_seg_wrapper(f: IrFn) -> X64Fn:
       a3 = x64_emit_epilogue(x64_emit(XCallSym{"p111_rt_return"}, a2))
       X64Fn{x64_seg_sym(fid), True{}, b5k_list_rev(X64Inst, a3)}
 
+def x64_make_apply_stub() -> X64Fn:
+  a0 = x64_emit(XStore{5, U32.sub(0, 24), 2}, x64_emit(XStore{5, U32.sub(0, 16), 6}, x64_emit(XStore{5, U32.sub(0, 8), 7}, x64_emit(XSubRsp{48}, x64_emit(XMovRR{5, 4}, x64_emit(XPush{5}, Nil{}))))))
+  a1 = x64_emit(XStore{5, U32.sub(0, 32), 0}, x64_emit(XAluRI{5, 0, 65535}, x64_emit(XShift{9, 0, 40, False{}}, x64_emit(XMovRR{0, 6}, a0))))
+  a2 = x64_emit(XAluRI{1, 9, 1}, x64_emit(XAluRI{5, 9, 255}, x64_emit(XLoad{9, 8, 0}, x64_emit(XAluRR{0, 8, 0}, x64_emit(XLeaRip{8, "p111_fid_arity"}, a1)))))
+  a3 = x64_emit(XShift{8, 1, 3, False{}}, x64_emit(XShift{9, 1, 24, False{}}, x64_emit(XShift{8, 1, 24, False{}}, x64_emit(XLoad{1, 5, U32.sub(0, 16)}, a2))))
+  a4 = x64_emit(XMovRI32{1, 0}, x64_emit(XAluRI{0, 2, 40}, x64_emit(XMovRR{2, 7}, x64_emit(XAluRR{0, 8, 1}, x64_emit(XLoad{8, 7, 0}, a3)))))
+  a5 = x64_emit(XJcc{3, 2}, x64_emit(XCmpRR{1, 9}, x64_emit(XLabel{1}, a4)))
+  a6 = x64_emit(XLabel{2}, x64_emit(XJmp{1}, x64_emit(XAluRI{0, 1, 1}, x64_emit(XAluRI{0, 2, 8}, x64_emit(XAluRI{0, 8, 8}, x64_emit(XStore{2, 0, 0}, x64_emit(XLoad{0, 8, 0}, a5)))))))
+  a7 = x64_emit(XStore{7, 16, 0}, x64_emit(XAluRI{0, 0, 8}, x64_emit(XLoad{0, 7, 16}, x64_emit(XStore{2, 0, 0}, x64_emit(XLoad{0, 5, U32.sub(0, 24)}, a6)))))
+  a8 = x64_emit(XCallReg{0}, x64_emit(XLoad{7, 5, U32.sub(0, 8)}, x64_emit(XLoad{0, 8, 0}, x64_emit(XAluRR{0, 8, 0}, x64_emit(XLeaRip{8, "p111_segments"}, x64_emit(XShift{8, 0, 3, False{}}, x64_emit(XLoad{0, 5, U32.sub(0, 32)}, a7)))))))
+  a9 = x64_emit_epilogue(x64_emit(XLoad{0, 7, 40}, x64_emit(XLoad{7, 5, U32.sub(0, 8)}, a8)))
+  X64Fn{"$b5k_apply", False{}, b5k_list_rev(X64Inst, a9)}
+
 def x64_make_main_stub() -> X64Fn:
   a0 = x64_emit(XRet{}, x64_emit(XPop{5}, x64_emit(XCallSym{"p111_rt_main"}, x64_emit(XLeaRip{2, "p111_program"}, x64_emit(XMovRR{5, 4}, x64_emit(XPush{5}, Nil{}))))))
   X64Fn{"main", True{}, b5k_list_rev(X64Inst, a0)}
@@ -337,4 +435,4 @@ def b5k_codegen(prog: IrProg) -> List<&2, X64Fn>:
   match prog:
     case IrProg{+fns, _, _, _, _, _, _, _}:
       fn_map = x64_build_fn_map_go(fns, Map.new(&2, String))
-      b5k_list_rev(X64Fn, x64_lower_all(fn_map, fns, Con{x64_make_main_stub(), Nil{}}))
+      b5k_list_rev(X64Fn, x64_lower_all(fn_map, fns, Con{x64_make_apply_stub(), Con{x64_make_main_stub(), Nil{}}}))

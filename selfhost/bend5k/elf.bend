@@ -66,10 +66,10 @@ def elf_inst_len(inst: X64Inst) -> U32:
     case XCallSym{_}: 5
     case XCallReg{_}: 3
     case XRet{}: 1
-    case XXmmRR{_, _, _}: 1
-    case XXmmLoad{_, _, _}: 1
-    case XXmmStore{_, _, _}: 1
-    case XCvt{_, _, _}: 1
+    case XXmmRR{op, _, _}: Bool.pick(U32, U32.is_ge(op, 5), 4, 5)
+    case XXmmLoad{_, base, _}: Bool.pick(U32, U32.is_eq(U32.and(base, 7), 4), 10, 9)
+    case XXmmStore{base, _, _}: Bool.pick(U32, U32.is_eq(U32.and(base, 7), 4), 10, 9)
+    case XCvt{_, _, _}: 5
     case XExtReloc{_, _, _}: 0
 
 def elf_pass1_go(insts: List<&2, X64Inst>, +off: U32, lbls: Map<&2, U32>) -> Map<&2, U32>:
@@ -91,6 +91,37 @@ def elf_opt_sib(need_sib: Bool, b: ByteBuf) -> ByteBuf:
 def elf_emit_mem(opc: U32, +reg: U32, +base: U32, disp: U32, b: ByteBuf) -> ByteBuf:
   b1 = bb_emit_u8(bb_emit_u8(bb_emit_u8(b, elf_rex(1, reg, 0, base)), opc), elf_modrm(2, reg, base))
   bb_emit_u32(elf_opt_sib(U32.is_eq(U32.and(base, 7), 4), b1), disp)
+
+def elf_emit_xmm_mem(pfx: U32, opc: U32, +reg: U32, +base: U32, disp: U32, b: ByteBuf) -> ByteBuf:
+  b1 = bb_emit_u8(bb_emit_u8(bb_emit_u8(bb_emit_u8(bb_emit_u8(b, pfx), elf_rex(0, reg, 0, base)), 15), opc), elf_modrm(2, reg, base))
+  bb_emit_u32(elf_opt_sib(U32.is_eq(U32.and(base, 7), 4), b1), disp)
+
+def elf_xmm_rr_opc(+op: U32) -> U32:
+  o5 = Bool.pick(U32, U32.is_eq(op, 5), 46, 87)
+  o4 = Bool.pick(U32, U32.is_eq(op, 4), 81, o5)
+  o3 = Bool.pick(U32, U32.is_eq(op, 3), 94, o4)
+  o2 = Bool.pick(U32, U32.is_eq(op, 2), 89, o3)
+  o1 = Bool.pick(U32, U32.is_eq(op, 1), 92, o2)
+  Bool.pick(U32, U32.is_eq(op, 0), 88, o1)
+
+def elf_emit_xmm_rr_pfx(no_pfx: Bool, b: ByteBuf) -> ByteBuf:
+  match no_pfx:
+    case True{}: b
+    case False{}: bb_emit_u8(b, 243)
+
+def elf_emit_xmm_rr(+op: U32, +dst: U32, +src: U32, b: ByteBuf) -> ByteBuf:
+  b0 = elf_emit_xmm_rr_pfx(U32.is_ge(op, 5), b)
+  bb_emit_u8(bb_emit_u8(bb_emit_u8(bb_emit_u8(b0, elf_rex(0, dst, 0, src)), 15), elf_xmm_rr_opc(op)), elf_modrm(3, dst, src))
+
+def elf_emit_cvt(+op: U32, +dst: U32, +src: U32, b: ByteBuf) -> ByteBuf:
+  +is_m = U32.is_ge(op, 2)
+  +is_st = U32.is_eq(op, 3)
+  pfx = Bool.pick(U32, is_m, 102, 243)
+  w = Bool.pick(U32, is_m, 0, 1)
+  +reg = Bool.pick(U32, is_st, src, dst)
+  +rm = Bool.pick(U32, is_st, dst, src)
+  opc = Bool.pick(U32, U32.is_eq(op, 0), 42, Bool.pick(U32, U32.is_eq(op, 1), 44, Bool.pick(U32, U32.is_eq(op, 2), 110, 126)))
+  bb_emit_u8(bb_emit_u8(bb_emit_u8(bb_emit_u8(bb_emit_u8(b, pfx), elf_rex(w, reg, 0, rm)), 15), opc), elf_modrm(3, reg, rm))
 
 def elf_emit_shift(by_cl: Bool, sub: U32, +dst: U32, amt: U32, b: ByteBuf) -> ByteBuf:
   match by_cl:
@@ -126,7 +157,7 @@ def elf_emit_inst_go(inst: X64Inst, lbls: Map<&2, U32>, b: ByteBuf, rels: List<&
     case XCmpRR{+lhs, +rhs}:
       TextAcc{bb_emit_u8(bb_emit_u8(bb_emit_u8(b, elf_rex(1, rhs, 0, lhs)), 57), elf_modrm(3, rhs, lhs)), rels}
     case XCmpRI{+lhs, imm}:
-      b1 = bb_emit_u8(bb_emit_u8(bb_emit_u8(b, elf_rex(1, 0, 0, lhs)), 129), elf_modrm(3, 7, lhs))
+      b1 = bb_emit_u8(bb_emit_u8(bb_emit_u8(b, elf_rex(0, 0, 0, lhs)), 129), elf_modrm(3, 7, lhs))
       TextAcc{bb_emit_u32(b1, imm), rels}
     case XTestRR{+lhs, +rhs}:
       TextAcc{bb_emit_u8(bb_emit_u8(bb_emit_u8(b, elf_rex(1, rhs, 0, lhs)), 133), elf_modrm(3, rhs, lhs)), rels}
@@ -150,10 +181,10 @@ def elf_emit_inst_go(inst: X64Inst, lbls: Map<&2, U32>, b: ByteBuf, rels: List<&
     case XCallReg{+reg}:
       TextAcc{bb_emit_u8(bb_emit_u8(bb_emit_u8(b, elf_rex(0, 0, 0, reg)), 255), elf_modrm(3, 2, reg)), rels}
     case XRet{}: TextAcc{bb_emit_u8(b, 195), rels}
-    case XXmmRR{_, _, _}: TextAcc{bb_emit_u8(b, 144), rels}
-    case XXmmLoad{_, _, _}: TextAcc{bb_emit_u8(b, 144), rels}
-    case XXmmStore{_, _, _}: TextAcc{bb_emit_u8(b, 144), rels}
-    case XCvt{_, _, _}: TextAcc{bb_emit_u8(b, 144), rels}
+    case XXmmRR{op, dst, src}: TextAcc{elf_emit_xmm_rr(op, dst, src, b), rels}
+    case XXmmLoad{dst, base, disp}: TextAcc{elf_emit_xmm_mem(243, 16, dst, base, disp, b), rels}
+    case XXmmStore{base, disp, src}: TextAcc{elf_emit_xmm_mem(102, 214, src, base, disp, b), rels}
+    case XCvt{op, dst, src}: TextAcc{elf_emit_cvt(op, dst, src, b), rels}
     case XExtReloc{_, _, _}: TextAcc{b, rels}
 
 def elf_emit_inst(inst: X64Inst, lbls: Map<&2, U32>, ta: TextAcc) -> TextAcc:
@@ -210,9 +241,13 @@ def elf_core_ctors() -> List<&2, IrCtor>:
   Con{IrCtor{6, "Tuple", 2, False{}}, Con{IrCtor{7, "Unit", 0, False{}},
   Con{IrCtor{8, "None", 0, False{}}, Con{IrCtor{9, "Some", 1, False{}},
   Con{IrCtor{10, "Fail", 1, False{}}, Con{IrCtor{11, "Done", 1, False{}},
-  Con{IrCtor{12, "Emit", 2, False{}}, Con{IrCtor{13, "Halt", 1, False{}},
-  Con{IrCtor{14, "True", 0, False{}}, Con{IrCtor{15, "LT", 0, False{}},
-  Con{IrCtor{16, "EQ", 0, False{}}, Con{IrCtor{17, "GT", 0, False{}}, Nil{}}}}}}}}}}}}}}}}}}}
+  Con{IrCtor{12, "Emit", 1, False{}}, Con{IrCtor{13, "Halt", 2, False{}},
+  Con{IrCtor{14, "True", 0, False{}}, Con{IrCtor{15, "False", 0, False{}},
+  Con{IrCtor{16, "LT", 0, False{}}, Con{IrCtor{17, "EQ", 0, False{}},
+  Con{IrCtor{18, "GT", 0, False{}}, Con{IrCtor{19, "Chr", 1, False{}},
+  Con{IrCtor{20, "Zero", 0, False{}}, Con{IrCtor{21, "Succ", 1, False{}},
+  Con{IrCtor{22, "Exit", 1, False{}}, Con{IrCtor{23, "Pair", 2, False{}},
+  Con{IrCtor{24, "Inl", 1, False{}}, Con{IrCtor{25, "Inr", 1, False{}}, Nil{}}}}}}}}}}}}}}}}}}}}}}}}}}}
 
 def elf_has_ctor_name(ctors: List<&2, IrCtor>, +nm: String) -> Bool:
   match ctors:

@@ -1,0 +1,121 @@
+{
+  "campaign": "W18-FINAL: Wave 18 Composer, Clean Full-Reclamation n9_o2 Mint, & Official Cold Self-Compile on k16_wave18_dfs",
+  "timestamp_utc": "2026-11-24T04:57:30Z",
+  "status": "N9_O2_MINTED_SMOKE_PASS_COLD_O2_M11_TIMEOUT_GATES_PENDING_DEADLINE",
+  "promotion_decision": {
+    "promoted": false,
+    "reason": "n9_o2 was cleanly minted with full reclamation (NO --nodrop), verified with compiler_slice.bend -O0 (4.32s, out=34) and -O2 (7.03s, out=34), and extracted 3,673 direct oracle symbols. Official cold -O2 on k16_wave18_dfs completed 15/16 modules cleanly (max RSS 432.9 MiB, 35,283/65,532 total segs, median 141.1s/mod, p86_plan 9.45-12.80s), but m11 timed out at 360s in x187_pub (2000/2490 done at 357.6s) right at the 04:56 UTC hard deadline. Qualification (158/158, 7-family, terrain, test_b2_contracts.py) and cold -O0 remain to be run on the minted n9_o2 binary. Kept n6_o2, n7_o2, n8_o2, and n9_o2 intact."
+  },
+  "compose": {
+    "source": "selfhost/build/agy/wave16_unified/compiler.bend",
+    "output": "selfhost/build/agy/wave18_unified/compiler.bend",
+    "source_bytes": 3497142,
+    "output_bytes": 3541794,
+    "delta_bytes": 44652,
+    "patches_applied": [
+      "O2-C (3/3 Wave 16 -O2 bug fixes)",
+      "O2-F (O(N) w4b_find_loop)",
+      "O2-A (SAFE 3/7 hunks ONLY: w4b_reg_dead_cap, w14a_sl_rounds_cap, w14a_sl_rounds_cap_h; x191_frame_forward_large_call_cap REMOVED)",
+      "O2-D (full zero-.p130 stub skip + -O2 direct-stub skip)",
+      "O2-E (w7c_fast_inst_c + x186/x190/x191 non-loop fast paths + w8_tr_emit_pub cold fast path)",
+      "B2 (Direct-Only FID omission & explicit cross-module contracts _d/_b/_c/_w)",
+      "B3 (p111v_get empty fast, w5c_p131i_leaf single fast, x185 dead mark/kill + delta union, x192/x190 skip zero)",
+      "B4 (nc_uses_term, nq_layout_subst, pre_bang_index, o2_mod_check)"
+    ],
+    "check_only": {
+      "status": "PASS",
+      "type_errors": 0,
+      "linearity_errors": 0,
+      "unsafe_defs": 9210
+    },
+    "splits": {
+      "k16_wave18_dfs": {
+        "path": "selfhost/build/agy/wave18_unified/k16_wave18_dfs",
+        "order": "dfs",
+        "types": 422,
+        "defs": 9426,
+        "laws": 918,
+        "avg_kb": 213.3,
+        "min_kb": 209.6,
+        "max_kb": 214.2,
+        "max_over_avg": 1.004
+      },
+      "k10_wave18_dfs": {
+        "path": "selfhost/build/agy/wave18_unified/k10_wave18_dfs",
+        "order": "dfs",
+        "types": 422,
+        "defs": 9426,
+        "laws": 918,
+        "avg_kb": 341.2,
+        "min_kb": 331.4,
+        "max_kb": 348.2,
+        "max_over_avg": 1.020
+      }
+    }
+  },
+  "stage0_n9_stage0": {
+    "status": "PASS",
+    "compiler": "selfhost/build/agy/wave16-native-mod/n7_o2",
+    "mode": "--trace x86-module-fast (-O0, full reclamation)",
+    "k": 10,
+    "order": "dfs",
+    "binary_bytes": 70785376,
+    "total_segs": 37580,
+    "fid_budget": 65532,
+    "wall_s": 57.78,
+    "max_rss_mib": 405.1,
+    "smoke_o0": {"ms": 7308.3, "out": "34", "bytes": 377176},
+    "smoke_o2": {"ms": 11990.7, "out": "34", "bytes": 390536}
+  },
+  "stage1_n9_o2_clean_full_reclamation": {
+    "status": "PASS",
+    "binary": "selfhost/build/agy/wave18-native-mod/n9_o2",
+    "compiler": "n9_stage0 (-O0 binary)",
+    "mode": "--trace x86-module (-O2, FULL RECLAMATION, NO --nodrop)",
+    "k": 16,
+    "order": "dfs",
+    "binary_bytes": 80394120,
+    "total_segs": 35638,
+    "fid_budget": 65532,
+    "w18_o2_oracle_count": 3673,
+    "oracle_path": "research/agy/boot_200s/w18_final/p113d_oracle_w18_o2.txt",
+    "note": "15/16 modules completed in first pass (max RSS 425.7 MiB); m11 timed out at 600s in first pass and completed on single-core resume in 419.3s (RSS 515.8 MiB, pub=325.9s).",
+    "smoke_o0": {"ms": 4324.1, "out": "34", "bytes": 377176},
+    "smoke_o2": {"ms": 7033.4, "out": "34", "bytes": 390536}
+  },
+  "stage2_cold_o2_partial": {
+    "status": "TIMEOUT_M11_AT_360S",
+    "compiler": "selfhost/build/agy/wave18-native-mod/n9_o2",
+    "mode": "--trace x86-module (-O2, FULL RECLAMATION)",
+    "k": 16,
+    "order": "dfs",
+    "completed_modules": 15,
+    "total_modules": 16,
+    "completed_15_cpu_sum_ms": 2082537.0,
+    "completed_15_min_ms": 99606.0,
+    "completed_15_median_ms": 141133.4,
+    "completed_15_max_ms": 239127.9,
+    "completed_15_max_rss_mib": 432.9,
+    "total_segs_est": 35283,
+    "stage_ranges_15mods_ms": {
+      "p86_plan": [9452.0, 12798.0],
+      "x198pw_plan": [29810.0, 62930.0],
+      "x187_priv": [49081.0, 207617.0],
+      "x187_pub": [27674.0, 53657.0],
+      "x187_elf": [2163.0, 3248.0]
+    },
+    "straggler_m11": {
+      "timeout_s": 360,
+      "p86_plan_ms": 12730.0,
+      "x198pw_plan_ms": 51065.0,
+      "x187_priv_ms": 91670.0,
+      "x187_pub_progress": "2000/2490 at elapsed=357614ms",
+      "root_cause": "k16_wave18_dfs placed w13e_sa_rew_body (7,372 B) + w13e_sa_chk_body (6,329 B) in m11, creating a 5-10x x187_pub outlier (~300s vs 27-53s for all other 15 modules)."
+    }
+  },
+  "pending_for_followup": [
+    "Run `python3 research/agy/boot_200s/w18_final/run_w18_gate.py all` on minted `n9_o2` (158/158 + 7-family + terrain, ~4 min)",
+    "Run `python3 research/agy/boot_200s/b2_direct_fid/test_b2_contracts.py` against `n9_o2` (~1 min)",
+    "Re-run Stage 2 cold `-O2` (with `timeout_s=540`) and cold `-O0` on `n9_o2` (`~6 min`), or split `m11`'s `w13e_sa_*` hot pub functions to eliminate the `x187_pub` straggler."
+  ]
+}

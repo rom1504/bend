@@ -73,7 +73,7 @@ def elf_inst_len(inst: X64Inst) -> U32:
       rex_l = Bool.pick(U32, U32.is_ge(lhs, 8), 1, 0)
       U32.add(rex_l, Bool.pick(U32, elf_is_simm8(imm), 3, 6))
     case XTestRR{_, _}: 3
-    case XSetcc{_, _}: 4
+    case XSetcc{_, dst}: Bool.pick(U32, U32.is_ge(dst, 4), 4, 3)
     case XPush{reg}: Bool.pick(U32, U32.is_lt(reg, 8), 1, 2)
     case XPop{reg}: Bool.pick(U32, U32.is_lt(reg, 8), 1, 2)
     case XSubRsp{imm}: Bool.pick(U32, elf_is_simm8(imm), 4, 7)
@@ -102,13 +102,70 @@ def elf_inst_len(inst: X64Inst) -> U32:
 def elf_lbl_key(+id: U32) -> U32:
   Bool.pick(U32, U32.is_ge(id, 2147483648), U32.add(U32.sub(id, 2147483648), 131072), id)
 
-def elf_pass1_go(insts: List<&2, X64Inst>, +off: U32, lbls: RaVec<U32>) -> RaVec<U32>:
-  match insts:
-    case Nil{}: lbls
-    case Con{XLabel{id}, t}:
-      elf_pass1_go(t, off, ra_vec_set(U32, 9n, elf_lbl_key(id), off, lbls))
-    case Con{inst, t}:
-      elf_pass1_go(t, U32.add(off, elf_inst_len(inst)), lbls)
+def elf_not_flag_read(xs: List<&2, X64Inst>) -> Bool:
+  match xs:
+    case Con{XJcc{_, _}, _}: False{}
+    case Con{XSetcc{_, _}, _}: False{}
+    case _: True{}
+
+def elf_head_is_mask32(xs: List<&2, X64Inst>, +reg: U32) -> Bool:
+  match xs:
+    case Con{XShift{8, r1, 32, False{}}, Con{XShift{9, r2, 32, False{}}, _}}:
+      Bool.and(U32.is_eq(r1, reg), U32.is_eq(r2, reg))
+    case _: False{}
+
+def elf_head_is_shr32(xs: List<&2, X64Inst>, reg: U32) -> Bool:
+  match xs:
+    case Con{XShift{9, r2, 32, False{}}, t}:
+      Bool.and(U32.is_eq(r2, reg), elf_not_flag_read(t))
+    case _: False{}
+
+def elf_alu_rr32_len(op: U32, +dst: U32, +src: U32) -> U32:
+  is_z32 = Bool.and(U32.is_eq(op, 7), U32.is_eq(dst, src))
+  need_rex = Bool.pick(Bool, is_z32, U32.is_ge(dst, 8), Bool.or(U32.is_ge(dst, 8), U32.is_ge(src, 8)))
+  Bool.pick(U32, need_rex, 3, 2)
+
+def elf_alu_ri32_len(+dst: U32, imm: U32) -> U32:
+  rex_l = Bool.pick(U32, U32.is_ge(dst, 8), 1, 0)
+  U32.add(rex_l, Bool.pick(U32, elf_is_simm8(imm), 3, 6))
+
+def elf_mul32_len(+dst: U32, +src: U32) -> U32:
+  Bool.pick(U32, Bool.or(U32.is_ge(dst, 8), U32.is_ge(src, 8)), 4, 3)
+
+def elf_shl32_len(+dst: U32, amt: U32) -> U32:
+  rex_l = Bool.pick(U32, U32.is_ge(dst, 8), 1, 0)
+  U32.add(rex_l, Bool.pick(U32, U32.is_eq(amt, 1), 2, 3))
+
+def elf_mov32_len(r: U32) -> U32:
+  Bool.pick(U32, U32.is_ge(r, 8), 3, 2)
+
+def elf_pass1_go(insts: List<&2, X64Inst>, skip: U32, +off: U32, lbls: RaVec<U32>) -> RaVec<U32>:
+  match insts skip:
+    case Nil{} _: lbls
+    case Con{_, t} 1: elf_pass1_go(t, 0, off, lbls)
+    case Con{_, t} 2: elf_pass1_go(t, 1, off, lbls)
+    case Con{XLabel{id}, t} _:
+      elf_pass1_go(t, 0, off, ra_vec_set(U32, 9n, elf_lbl_key(id), off, lbls))
+    case Con{XAluRR{+op, +d, +s}, +t} _:
+      +ok = elf_head_is_mask32(t, d)
+      dl = Bool.pick(U32, ok, elf_alu_rr32_len(op, d, s), elf_inst_len(XAluRR{op, d, s}))
+      elf_pass1_go(t, Bool.pick(U32, ok, 2, 0), U32.add(off, dl), lbls)
+    case Con{XAluRI{+op, +d, +imm}, +t} _:
+      +ok = elf_head_is_mask32(t, d)
+      dl = Bool.pick(U32, ok, elf_alu_ri32_len(d, imm), elf_inst_len(XAluRI{op, d, imm}))
+      elf_pass1_go(t, Bool.pick(U32, ok, 2, 0), U32.add(off, dl), lbls)
+    case Con{XMul{+d, +s}, +t} _:
+      +ok = elf_head_is_mask32(t, d)
+      dl = Bool.pick(U32, ok, elf_mul32_len(d, s), elf_inst_len(XMul{d, s}))
+      elf_pass1_go(t, Bool.pick(U32, ok, 2, 0), U32.add(off, dl), lbls)
+    case Con{XShift{8, +d, +amt, False{}}, +t} _:
+      +ok_shl = Bool.and(U32.is_lt(amt, 32), elf_head_is_mask32(t, d))
+      +ok_mov = Bool.and(U32.is_eq(amt, 32), elf_head_is_shr32(t, d))
+      sk = Bool.pick(U32, ok_shl, 2, Bool.pick(U32, ok_mov, 1, 0))
+      dl = Bool.pick(U32, ok_shl, elf_shl32_len(d, amt), Bool.pick(U32, ok_mov, elf_mov32_len(d), elf_inst_len(XShift{8, d, amt, False{}})))
+      elf_pass1_go(t, sk, U32.add(off, dl), lbls)
+    case Con{inst, t} _:
+      elf_pass1_go(t, 0, U32.add(off, elf_inst_len(inst)), lbls)
 
 type TextAcc is Data:
   TextAcc{buf: ByteBuf, rels: List<&2, ElfReloc>}
@@ -239,7 +296,8 @@ def elf_emit_inst_go(inst: X64Inst, lbls: RaVec<U32>, b: ByteBuf, rels: List<&2,
     case XTestRR{+lhs, +rhs}:
       TextAcc{bb_emit_u8(bb_emit_u8(bb_emit_u8(b, elf_rex(1, rhs, 0, lhs)), 133), elf_modrm(3, rhs, lhs)), rels}
     case XSetcc{cc, +dst}:
-      b1 = bb_emit_u8(bb_emit_u8(b, elf_rex(0, 0, 0, dst)), 15)
+      b0 = elf_opt_rex(U32.is_ge(dst, 4), 0, dst, b)
+      b1 = bb_emit_u8(b0, 15)
       TextAcc{bb_emit_u8(bb_emit_u8(b1, U32.add(144, U32.and(cc, 15))), elf_modrm(3, 0, dst)), rels}
     case XPush{+reg}: TextAcc{bb_emit_u8(elf_opt_rex(U32.is_ge(reg, 8), 0, reg, b), U32.add(80, U32.and(reg, 7))), rels}
     case XPop{+reg}: TextAcc{bb_emit_u8(elf_opt_rex(U32.is_ge(reg, 8), 0, reg, b), U32.add(88, U32.and(reg, 7))), rels}
@@ -268,10 +326,86 @@ def elf_emit_inst(inst: X64Inst, lbls: RaVec<U32>, ta: TextAcc) -> TextAcc:
   match ta:
     case TextAcc{+b, rels}: elf_emit_inst_go(inst, lbls, b, rels, bb_len(b))
 
-def elf_emit_insts(insts: List<&2, X64Inst>, +lbls: RaVec<U32>, ta: TextAcc) -> TextAcc:
-  match insts:
-    case Nil{}: ta
-    case Con{inst, t}: elf_emit_insts(t, lbls, elf_emit_inst(inst, lbls, ta))
+def elf_emit_alu_rr32(op: U32, +dst: U32, +src: U32, ta: TextAcc) -> TextAcc:
+  match ta:
+    case TextAcc{b, rels}:
+      b0 = elf_opt_rex(Bool.or(U32.is_ge(dst, 8), U32.is_ge(src, 8)), src, dst, b)
+      TextAcc{bb_emit_u8(bb_emit_u8(b0, elf_alu_rr_op(op)), elf_modrm(3, src, dst)), rels}
+
+def elf_emit_alu_ri32(op: U32, +dst: U32, +imm: U32, ta: TextAcc) -> TextAcc:
+  match ta:
+    case TextAcc{b, rels}:
+      b0 = elf_opt_rex(U32.is_ge(dst, 8), 0, dst, b)
+      TextAcc{elf_emit_imm_rm(elf_is_simm8(imm), elf_alu_ri_sub(op), dst, imm, b0), rels}
+
+def elf_emit_mul32(+dst: U32, +src: U32, ta: TextAcc) -> TextAcc:
+  match ta:
+    case TextAcc{b, rels}:
+      b0 = elf_opt_rex(Bool.or(U32.is_ge(dst, 8), U32.is_ge(src, 8)), dst, src, b)
+      b1 = bb_emit_u8(bb_emit_u8(b0, 15), 175)
+      TextAcc{bb_emit_u8(b1, elf_modrm(3, dst, src)), rels}
+
+def elf_emit_shl32_imm(is_one: Bool, +dst: U32, amt: U32, b: ByteBuf) -> ByteBuf:
+  match is_one:
+    case True{}: bb_emit_u8(bb_emit_u8(b, 209), elf_modrm(3, 4, dst))
+    case False{}: bb_emit_u8(bb_emit_u8(bb_emit_u8(b, 193), elf_modrm(3, 4, dst)), amt)
+
+def elf_emit_shl32(+dst: U32, +amt: U32, ta: TextAcc) -> TextAcc:
+  match ta:
+    case TextAcc{b, rels}:
+      b0 = elf_opt_rex(U32.is_ge(dst, 8), 0, dst, b)
+      TextAcc{elf_emit_shl32_imm(U32.is_eq(amt, 1), dst, amt, b0), rels}
+
+def elf_emit_mov32(+r: U32, ta: TextAcc) -> TextAcc:
+  match ta:
+    case TextAcc{b, rels}:
+      b0 = elf_opt_rex(U32.is_ge(r, 8), r, r, b)
+      TextAcc{bb_emit_u8(bb_emit_u8(b0, 137), elf_modrm(3, r, r)), rels}
+
+def elf_em_rr(ok: Bool, op: U32, d: U32, s: U32, lbls: RaVec<U32>, ta: TextAcc) -> TextAcc:
+  match ok:
+    case True{}: elf_emit_alu_rr32(op, d, s, ta)
+    case False{}: elf_emit_inst(XAluRR{op, d, s}, lbls, ta)
+
+def elf_em_ri(ok: Bool, op: U32, d: U32, imm: U32, lbls: RaVec<U32>, ta: TextAcc) -> TextAcc:
+  match ok:
+    case True{}: elf_emit_alu_ri32(op, d, imm, ta)
+    case False{}: elf_emit_inst(XAluRI{op, d, imm}, lbls, ta)
+
+def elf_em_mul(ok: Bool, d: U32, s: U32, lbls: RaVec<U32>, ta: TextAcc) -> TextAcc:
+  match ok:
+    case True{}: elf_emit_mul32(d, s, ta)
+    case False{}: elf_emit_inst(XMul{d, s}, lbls, ta)
+
+def elf_em_shl(ok_shl: Bool, ok_mov: Bool, +d: U32, +amt: U32, lbls: RaVec<U32>, ta: TextAcc) -> TextAcc:
+  match ok_shl ok_mov:
+    case True{} _: elf_emit_shl32(d, amt, ta)
+    case False{} True{}: elf_emit_mov32(d, ta)
+    case False{} False{}: elf_emit_inst(XShift{8, d, amt, False{}}, lbls, ta)
+
+def elf_emit_insts_go(insts: List<&2, X64Inst>, skip: U32, +lbls: RaVec<U32>, ta: TextAcc) -> TextAcc:
+  match insts skip:
+    case Nil{} _: ta
+    case Con{_, t} 1: elf_emit_insts_go(t, 0, lbls, ta)
+    case Con{_, t} 2: elf_emit_insts_go(t, 1, lbls, ta)
+    case Con{XAluRR{+op, +d, +s}, +t} _:
+      +ok = elf_head_is_mask32(t, d)
+      elf_emit_insts_go(t, Bool.pick(U32, ok, 2, 0), lbls, elf_em_rr(ok, op, d, s, lbls, ta))
+    case Con{XAluRI{+op, +d, +imm}, +t} _:
+      +ok = elf_head_is_mask32(t, d)
+      elf_emit_insts_go(t, Bool.pick(U32, ok, 2, 0), lbls, elf_em_ri(ok, op, d, imm, lbls, ta))
+    case Con{XMul{+d, +s}, +t} _:
+      +ok = elf_head_is_mask32(t, d)
+      elf_emit_insts_go(t, Bool.pick(U32, ok, 2, 0), lbls, elf_em_mul(ok, d, s, lbls, ta))
+    case Con{XShift{8, +d, +amt, False{}}, +t} _:
+      +ok_shl = Bool.and(U32.is_lt(amt, 32), elf_head_is_mask32(t, d))
+      +ok_mov = Bool.and(U32.is_eq(amt, 32), elf_head_is_shr32(t, d))
+      sk = Bool.pick(U32, ok_shl, 2, Bool.pick(U32, ok_mov, 1, 0))
+      elf_emit_insts_go(t, sk, lbls, elf_em_shl(ok_shl, ok_mov, d, amt, lbls, ta))
+    case Con{inst, t} _: elf_emit_insts_go(t, 0, lbls, elf_emit_inst(inst, lbls, ta))
+
+def elf_emit_insts(insts: List<&2, X64Inst>, lbls: RaVec<U32>, ta: TextAcc) -> TextAcc:
+  elf_emit_insts_go(insts, 0, lbls, ta)
 
 # ELF Symbol Table & Alignment Helpers
 # ------------------------------------
@@ -304,7 +438,7 @@ def elf_encode_fns_go(fns: List<&2, X64Fn>, tr: TextRes) -> TextRes:
     case Con{X64Fn{name, is_glob, +insts}, t} TextRes{b0, rels0, ls, gs}:
       +b1 = elf_pad_to(b0, 16)
       +start = bb_len(b1)
-      lbls = elf_pass1_go(insts, start, RVEmpty{})
+      lbls = elf_pass1_go(insts, 0, start, RVEmpty{})
       tr1 = elf_encode_one(is_glob, name, start, elf_emit_insts(insts, lbls, TextAcc{b1, rels0}), ls, gs)
       elf_encode_fns_go(t, tr1)
 

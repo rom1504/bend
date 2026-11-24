@@ -101,41 +101,52 @@ def elf_inst_len(inst: X64Inst) -> U32:
 
 def elf_lbl_key(+id: U32) -> U32:
   Bool.pick(U32, U32.is_ge(id, 2147483648), U32.add(U32.sub(id, 2147483648), 131072), id)
-
 def elf_not_flag_read(xs: List<&2, X64Inst>) -> Bool:
   match xs:
     case Con{XJcc{_, _}, _}: False{}
     case Con{XSetcc{_, _}, _}: False{}
     case _: True{}
-
+def elf_kills_reg(+r: U32, inst: X64Inst) -> Bool:
+  match inst:
+    case XLoad{d, b, _}: Bool.and(U32.is_eq(d, r), U32.is_ne(b, r))
+    case XMovRR{d, s}: Bool.and(U32.is_eq(d, r), U32.is_ne(s, r))
+    case XMovRI32{d, _}: U32.is_eq(d, r)
+    case XAluRR{7, d, s}: Bool.and(U32.is_eq(d, r), U32.is_eq(s, r))
+    case _: False{}
+def elf_sib8_len(+base: U32) -> U32:
+  Bool.pick(U32, U32.is_eq(U32.and(base, 7), 5), 5, 4)
+def elf_shl3_code(ok: Bool, +idx: U32, xs: List<&2, X64Inst>) -> U32:
+  match ok xs:
+    case False{} _: 0
+    case True{} Con{XAluRR{0, +d2, +s2}, Con{XLoad{+d3, +b3, 0}, t3}}:
+      +nf = elf_not_flag_read(t3)
+      ok_ld = Bool.and(Bool.and(U32.is_eq(d2, idx), U32.is_ne(s2, idx)), Bool.and(Bool.and(U32.is_eq(d3, idx), U32.is_eq(b3, idx)), nf))
+      ok_b  = Bool.and(Bool.and(U32.is_eq(s2, idx), U32.is_ne(d2, idx)), Bool.and(Bool.and(U32.is_eq(d3, idx), U32.is_ne(b3, idx)), nf))
+      Bool.pick(U32, ok_ld, U32.add(16, s2), Bool.pick(U32, Bool.and(U32.is_eq(d2, idx), U32.is_ne(s2, idx)), U32.add(32, s2), Bool.pick(U32, ok_b, U32.add(48, d2), 0)))
+    case True{} Con{XAluRR{0, +d2, +s2}, Con{+nxt, +t3}}:
+      ok_a = Bool.and(Bool.and(U32.is_eq(d2, idx), U32.is_ne(s2, idx)), elf_not_flag_read(Con{nxt, t3}))
+      ok_b = Bool.and(Bool.and(U32.is_eq(s2, idx), U32.is_ne(d2, idx)), Bool.and(elf_kills_reg(idx, nxt), elf_not_flag_read(t3)))
+      Bool.pick(U32, ok_a, U32.add(32, s2), Bool.pick(U32, ok_b, U32.add(48, d2), 0))
+    case True{} Con{XAluRR{0, +d2, +s2}, Nil{}}: Bool.pick(U32, Bool.and(U32.is_eq(d2, idx), U32.is_ne(s2, idx)), U32.add(32, s2), 0)
+    case True{} _: 0
 def elf_head_is_mask32(xs: List<&2, X64Inst>, +reg: U32) -> Bool:
   match xs:
-    case Con{XShift{8, r1, 32, False{}}, Con{XShift{9, r2, 32, False{}}, _}}:
-      Bool.and(U32.is_eq(r1, reg), U32.is_eq(r2, reg))
+    case Con{XShift{8, r1, 32, False{}}, Con{XShift{9, r2, 32, False{}}, _}}: Bool.and(U32.is_eq(r1, reg), U32.is_eq(r2, reg))
     case _: False{}
-
 def elf_head_is_shr32(xs: List<&2, X64Inst>, reg: U32) -> Bool:
   match xs:
-    case Con{XShift{9, r2, 32, False{}}, t}:
-      Bool.and(U32.is_eq(r2, reg), elf_not_flag_read(t))
+    case Con{XShift{9, r2, 32, False{}}, t}: Bool.and(U32.is_eq(r2, reg), elf_not_flag_read(t))
     case _: False{}
-
 def elf_alu_rr32_len(op: U32, +dst: U32, +src: U32) -> U32:
   is_z32 = Bool.and(U32.is_eq(op, 7), U32.is_eq(dst, src))
   need_rex = Bool.pick(Bool, is_z32, U32.is_ge(dst, 8), Bool.or(U32.is_ge(dst, 8), U32.is_ge(src, 8)))
   Bool.pick(U32, need_rex, 3, 2)
-
 def elf_alu_ri32_len(+dst: U32, imm: U32) -> U32:
-  rex_l = Bool.pick(U32, U32.is_ge(dst, 8), 1, 0)
-  U32.add(rex_l, Bool.pick(U32, elf_is_simm8(imm), 3, 6))
-
+  U32.add(Bool.pick(U32, U32.is_ge(dst, 8), 1, 0), Bool.pick(U32, elf_is_simm8(imm), 3, 6))
 def elf_mul32_len(+dst: U32, +src: U32) -> U32:
   Bool.pick(U32, Bool.or(U32.is_ge(dst, 8), U32.is_ge(src, 8)), 4, 3)
-
 def elf_shl32_len(+dst: U32, amt: U32) -> U32:
-  rex_l = Bool.pick(U32, U32.is_ge(dst, 8), 1, 0)
-  U32.add(rex_l, Bool.pick(U32, U32.is_eq(amt, 1), 2, 3))
-
+  U32.add(Bool.pick(U32, U32.is_ge(dst, 8), 1, 0), Bool.pick(U32, U32.is_eq(amt, 1), 2, 3))
 def elf_mov32_len(r: U32) -> U32:
   Bool.pick(U32, U32.is_ge(r, 8), 3, 2)
 
@@ -159,10 +170,11 @@ def elf_pass1_go(insts: List<&2, X64Inst>, skip: U32, +off: U32, lbls: RaVec<U32
       dl = Bool.pick(U32, ok, elf_mul32_len(d, s), elf_inst_len(XMul{d, s}))
       elf_pass1_go(t, Bool.pick(U32, ok, 2, 0), U32.add(off, dl), lbls)
     case Con{XShift{8, +d, +amt, False{}}, +t} _:
-      +ok_shl = Bool.and(U32.is_lt(amt, 32), elf_head_is_mask32(t, d))
+      +sc = elf_shl3_code(Bool.and(U32.is_eq(amt, 3), U32.is_ne(d, 4)), d, t)
+      +ok_shl = Bool.and(U32.is_zero(sc), Bool.and(U32.is_lt(amt, 32), elf_head_is_mask32(t, d)))
       +ok_mov = Bool.and(U32.is_eq(amt, 32), elf_head_is_shr32(t, d))
-      sk = Bool.pick(U32, ok_shl, 2, Bool.pick(U32, ok_mov, 1, 0))
-      dl = Bool.pick(U32, ok_shl, elf_shl32_len(d, amt), Bool.pick(U32, ok_mov, elf_mov32_len(d), elf_inst_len(XShift{8, d, amt, False{}})))
+      sk = Bool.pick(U32, U32.is_ne(sc, 0), Bool.pick(U32, U32.is_lt(sc, 32), 2, 1), Bool.pick(U32, ok_shl, 2, Bool.pick(U32, ok_mov, 1, 0)))
+      dl = Bool.pick(U32, U32.is_ne(sc, 0), elf_sib8_len(U32.and(sc, 15)), Bool.pick(U32, ok_shl, elf_shl32_len(d, amt), Bool.pick(U32, ok_mov, elf_mov32_len(d), elf_inst_len(XShift{8, d, amt, False{}}))))
       elf_pass1_go(t, sk, U32.add(off, dl), lbls)
     case Con{inst, t} _:
       elf_pass1_go(t, 0, U32.add(off, elf_inst_len(inst)), lbls)
@@ -377,11 +389,23 @@ def elf_em_mul(ok: Bool, d: U32, s: U32, lbls: RaVec<U32>, ta: TextAcc) -> TextA
     case True{}: elf_emit_mul32(d, s, ta)
     case False{}: elf_emit_inst(XMul{d, s}, lbls, ta)
 
-def elf_em_shl(ok_shl: Bool, ok_mov: Bool, +d: U32, +amt: U32, lbls: RaVec<U32>, ta: TextAcc) -> TextAcc:
-  match ok_shl ok_mov:
-    case True{} _: elf_emit_shl32(d, amt, ta)
-    case False{} True{}: elf_emit_mov32(d, ta)
-    case False{} False{}: elf_emit_inst(XShift{8, d, amt, False{}}, lbls, ta)
+def elf_emit_sib8(opc: U32, +dst: U32, +base: U32, +idx: U32, ta: TextAcc) -> TextAcc:
+  match ta:
+    case TextAcc{b, rels}:
+      +is_bp = U32.is_eq(U32.and(base, 7), 5)
+      +md = Bool.pick(U32, is_bp, 1, 0)
+      sib = U32.or(192, U32.or(U32.shln(U32.and(idx, 7), 3n), U32.and(base, 7)))
+      b1 = bb_emit_u8(bb_emit_u8(bb_emit_u8(bb_emit_u8(b, elf_rex(1, dst, idx, base)), opc), elf_modrm(md, dst, 4)), sib)
+      TextAcc{elf_emit_disp(md, 0, b1), rels}
+
+def elf_em_shl(k: U32, +base: U32, ok_shl: Bool, ok_mov: Bool, +d: U32, +amt: U32, lbls: RaVec<U32>, ta: TextAcc) -> TextAcc:
+  match k ok_shl ok_mov:
+    case 1 _ _: elf_emit_sib8(139, d, base, d, ta)
+    case 2 _ _: elf_emit_sib8(141, d, base, d, ta)
+    case 3 _ _: elf_emit_sib8(141, base, base, d, ta)
+    case _ True{} _: elf_emit_shl32(d, amt, ta)
+    case _ False{} True{}: elf_emit_mov32(d, ta)
+    case _ False{} False{}: elf_emit_inst(XShift{8, d, amt, False{}}, lbls, ta)
 
 def elf_emit_insts_go(insts: List<&2, X64Inst>, skip: U32, +lbls: RaVec<U32>, ta: TextAcc) -> TextAcc:
   match insts skip:
@@ -398,10 +422,11 @@ def elf_emit_insts_go(insts: List<&2, X64Inst>, skip: U32, +lbls: RaVec<U32>, ta
       +ok = elf_head_is_mask32(t, d)
       elf_emit_insts_go(t, Bool.pick(U32, ok, 2, 0), lbls, elf_em_mul(ok, d, s, lbls, ta))
     case Con{XShift{8, +d, +amt, False{}}, +t} _:
-      +ok_shl = Bool.and(U32.is_lt(amt, 32), elf_head_is_mask32(t, d))
+      +sc = elf_shl3_code(Bool.and(U32.is_eq(amt, 3), U32.is_ne(d, 4)), d, t)
+      +ok_shl = Bool.and(U32.is_zero(sc), Bool.and(U32.is_lt(amt, 32), elf_head_is_mask32(t, d)))
       +ok_mov = Bool.and(U32.is_eq(amt, 32), elf_head_is_shr32(t, d))
-      sk = Bool.pick(U32, ok_shl, 2, Bool.pick(U32, ok_mov, 1, 0))
-      elf_emit_insts_go(t, sk, lbls, elf_em_shl(ok_shl, ok_mov, d, amt, lbls, ta))
+      sk = Bool.pick(U32, U32.is_ne(sc, 0), Bool.pick(U32, U32.is_lt(sc, 32), 2, 1), Bool.pick(U32, ok_shl, 2, Bool.pick(U32, ok_mov, 1, 0)))
+      elf_emit_insts_go(t, sk, lbls, elf_em_shl(U32.shrn(sc, 4n), U32.and(sc, 15), ok_shl, ok_mov, d, amt, lbls, ta))
     case Con{inst, t} _: elf_emit_insts_go(t, 0, lbls, elf_emit_inst(inst, lbls, ta))
 
 def elf_emit_insts(insts: List<&2, X64Inst>, lbls: RaVec<U32>, ta: TextAcc) -> TextAcc:
@@ -923,6 +948,11 @@ def elf_build_rodata(ir_fns: List<&2, IrFn>, +all_ctors: List<&2, IrCtor>, +n_se
   ro4 = elf_emit_cid_arities(all_ctors, ro3)
   elf_ro_s1(elf_emit_cstr_list_go(elf_ctor_names(all_ctors), ro4, Nil{}), show_desc, show_names, effects, statics, 0, bb_len(ro1), bb_len(ro2), bb_len(ro3))
 
+def elf_append_buf(dst: ByteBuf, src: ByteBuf) -> ByteBuf:
+  match dst src:
+    case ByteBuf{dl, dr} ByteBuf{sl, sr}:
+      ByteBuf{U32.add(dl, sl), b5k_list_app(U32, sr, dr)}
+
 def elf_pack_image(+text_buf: ByteBuf, +ro_buf: ByteBuf, +data_buf: ByteBuf, text_rels: List<&2, ElfReloc>, data_rels: List<&2, ElfReloc>, first_glob: U32, sr: SymTabRes) -> ByteBuf:
   match sr:
     case SymTabRes{+symtab_buf, +strtab_buf, +idx_map}:
@@ -946,14 +976,14 @@ def elf_pack_image(+text_buf: ByteBuf, +ro_buf: ByteBuf, +data_buf: ByteBuf, tex
       +off_str  = U32.add(off_sym, sz_sym)
       +off_shst = U32.add(off_str, sz_str)
       +off_shdr = x64_align16(U32.add(off_shst, sz_shst))
-      e1 = bb_append_bytes(elf_emit_ehdr(off_shdr), bb_to_bytes(text_buf))
-      e2 = bb_append_bytes(elf_pad_to(e1, 16), bb_to_bytes(rela_text_buf))
-      e3 = bb_append_bytes(elf_pad_to(e2, 16), bb_to_bytes(ro_buf))
-      e4 = bb_append_bytes(elf_pad_to(e3, 16), bb_to_bytes(data_buf))
-      e5 = bb_append_bytes(elf_pad_to(e4, 16), bb_to_bytes(rela_data_buf))
-      e6 = bb_append_bytes(elf_pad_to(e5, 16), bb_to_bytes(symtab_buf))
-      e7 = bb_append_bytes(e6, bb_to_bytes(strtab_buf))
-      h0 = elf_pad_to(bb_append_bytes(e7, bb_to_bytes(shstr_buf)), 16)
+      e1 = elf_append_buf(elf_emit_ehdr(off_shdr), text_buf)
+      e2 = elf_append_buf(elf_pad_to(e1, 16), rela_text_buf)
+      e3 = elf_append_buf(elf_pad_to(e2, 16), ro_buf)
+      e4 = elf_append_buf(elf_pad_to(e3, 16), data_buf)
+      e5 = elf_append_buf(elf_pad_to(e4, 16), rela_data_buf)
+      e6 = elf_append_buf(elf_pad_to(e5, 16), symtab_buf)
+      e7 = elf_append_buf(e6, strtab_buf)
+      h0 = elf_pad_to(elf_append_buf(e7, shstr_buf), 16)
       h1 = elf_emit_shdr(h0, 0,  0, 0,  0,        0,       0, 0,          0,  0)
       h2 = elf_emit_shdr(h1, 1,  1, 6,  off_text, sz_text, 0, 0,          16, 0)
       h3 = elf_emit_shdr(h2, 7,  4, 64, off_rtxt, sz_rtxt, 6, 1,          8,  24)

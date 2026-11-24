@@ -830,8 +830,19 @@ def peep_dead_after_fin(is_z: Bool, rest: List<&2, X64Inst>) -> Bool:
     case False{} _: False{}
     case True{} Nil{}: False{}
     case True{} Con{+nxt, t}: Bool.or(peep_is_jmp(nxt), peep_dead_reg(4n, 0, Con{nxt, t}))
-def peep_dead_after_jcc(d: U32, rest: List<&2, X64Inst>) -> Bool:
-  peep_dead_after_fin(U32.is_zero(d), rest)
+def peep_skip_lbl(xs: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  match xs:
+    case Con{XLabel{_}, t}: t
+    case rest: rest
+def peep_dead_at_lbl(fuel: Nat, hit: Bool, +lbl: U32, +r: U32, xs: List<&2, X64Inst>) -> Bool:
+  match fuel hit xs:
+    case _ True{} _: peep_dead_reg(12n, r, xs)
+    case 0n False{} _: False{}
+    case _ False{} Nil{}: False{}
+    case 1n+p False{} Con{XLabel{id}, t}: peep_dead_at_lbl(p, U32.is_eq(id, lbl), lbl, r, t)
+    case 1n+p False{} Con{_, t}: peep_dead_at_lbl(p, False{}, lbl, r, t)
+def peep_dead_after_jcc(+d: U32, lbl: U32, +rest: List<&2, X64Inst>) -> Bool:
+  Bool.or(peep_dead_after_fin(U32.is_zero(d), rest), Bool.and(peep_dead_reg(8n, d, peep_skip_lbl(rest)), peep_dead_at_lbl(16n, False{}, lbl, d, rest)))
 def peep_fuse_jcc(+cc: U32, jcc: U32) -> U32:
   Bool.pick(U32, U32.is_eq(jcc, 4), U32.xor(cc, 1), cc)
 def peep_is_z_or_nz(+jcc: U32) -> Bool:
@@ -984,14 +995,14 @@ def peep_r5(same: Bool, lbl1: U32, lbl2: U32, t2: List<&2, X64Inst>, acc: List<&
   match same:
     case True{}: PeepSt{Con{XLabel{lbl2}, t2}, acc}
     case False{}: PeepSt{Con{XLabel{lbl2}, t2}, Con{XJmp{lbl1}, acc}}
-def peep_r6a(ok: Bool, a: U32, b: U32, z1: U32, zi: U32, cc: U32, d: U32, tst: X64Inst, jcc: U32, lbl: U32, t5: List<&2, X64Inst>, acc: List<&2, X64Inst>) -> PeepSt:
+def peep_r6a(ok: Bool, cmp: X64Inst, z1: U32, zi: U32, cc: U32, d: U32, tst: X64Inst, jcc: U32, lbl: U32, t5: List<&2, X64Inst>, acc: List<&2, X64Inst>) -> PeepSt:
   match ok:
-    case True{}: PeepSt{t5, Con{XJcc{peep_fuse_jcc(cc, jcc), lbl}, Con{XCmpRR{a, b}, acc}}}
-    case False{}: PeepSt{Con{XMovRI32{z1, zi}, Con{XSetcc{cc, d}, Con{tst, Con{XJcc{jcc, lbl}, t5}}}}, Con{XCmpRR{a, b}, acc}}
-def peep_cmp_zset(ok: Bool, a: U32, b: U32, z1: U32, zi: U32, cc: U32, +d: U32, t3: List<&2, X64Inst>, acc: List<&2, X64Inst>) -> PeepSt:
+    case True{}: PeepSt{t5, Con{XJcc{peep_fuse_jcc(cc, jcc), lbl}, Con{cmp, acc}}}
+    case False{}: PeepSt{Con{XMovRI32{z1, zi}, Con{XSetcc{cc, d}, Con{tst, Con{XJcc{jcc, lbl}, t5}}}}, Con{cmp, acc}}
+def peep_cmp_zset(ok: Bool, cmp: X64Inst, z1: U32, zi: U32, cc: U32, +d: U32, t3: List<&2, X64Inst>, acc: List<&2, X64Inst>) -> PeepSt:
   match ok:
-    case True{}: PeepSt{Con{XSetcc{cc, d}, t3}, Con{XCmpRR{a, b}, Con{XAluRR{7, d, d}, acc}}}
-    case False{}: PeepSt{Con{XMovRI32{z1, zi}, Con{XSetcc{cc, d}, t3}}, Con{XCmpRR{a, b}, acc}}
+    case True{}: PeepSt{Con{XSetcc{cc, d}, t3}, Con{cmp, Con{XAluRR{7, d, d}, acc}}}
+    case False{}: PeepSt{Con{XMovRI32{z1, zi}, Con{XSetcc{cc, d}, t3}}, Con{cmp, acc}}
 def peep_r6b(ok: Bool, a: U32, b: U32, cc: U32, d: U32, tst: X64Inst, jcc: U32, lbl: U32, t4: List<&2, X64Inst>, acc: List<&2, X64Inst>) -> PeepSt:
   match ok:
     case True{}: PeepSt{t4, Con{XJcc{peep_fuse_jcc(cc, jcc), lbl}, Con{XCmpRR{a, b}, acc}}}
@@ -1155,12 +1166,12 @@ def peep_step(dlim: Nat, h: X64Inst, t: List<&2, X64Inst>, acc: List<&2, X64Inst
     case XLoad{+r1, +b1, +d1} Con{XLoad{+r2, +b2, +d2}, t2}:
       ok = Bool.and(Bool.and(U32.is_eq(b1, b2), U32.is_eq(d1, d2)), U32.is_ne(r1, b1))
       PeepSt{peep_sl_tail(ok, U32.is_eq(r1, r2), r2, r1, XLoad{r2, b2, d2}, t2), Con{XLoad{r1, b1, d1}, acc}}
-    case XLoad{+r1, +b1, +d1} Con{+m1, Con{XLoad{+r2, +b2, +d2}, t2}}:
-      ok = Bool.and(Bool.and(Bool.and(U32.is_eq(b1, b2), U32.is_eq(d1, d2)), U32.is_ne(r1, b1)), peep_no_alias(m1, b1, d1, r1))
-      PeepSt{Con{m1, peep_sl_tail(ok, U32.is_eq(r1, r2), r2, r1, XLoad{r2, b2, d2}, t2)}, Con{XLoad{r1, b1, d1}, acc}}
     case XLoad{+r1, +b, +d} Con{XMovRR{+r2, +s}, +t2}:
       ok = peep_and_dead(Bool.and(U32.is_eq(r1, s), U32.is_ne(r1, r2)), 4n, r1, t2)
       peep_fwd(ok, XLoad{r2, b, d}, XLoad{r1, b, d}, XMovRR{r2, s}, t2, acc)
+    case XLoad{+r1, +b1, +d1} Con{+m1, Con{XLoad{+r2, +b2, +d2}, t2}}:
+      ok = Bool.and(Bool.and(Bool.and(U32.is_eq(b1, b2), U32.is_eq(d1, d2)), U32.is_ne(r1, b1)), peep_no_alias(m1, b1, d1, r1))
+      PeepSt{Con{m1, peep_sl_tail(ok, U32.is_eq(r1, r2), r2, r1, XLoad{r2, b2, d2}, t2)}, Con{XLoad{r1, b1, d1}, acc}}
     case XJmp{+lbl1} Con{XLabel{+lbl2}, t2}:
       peep_r5(U32.is_eq(lbl1, lbl2), lbl1, lbl2, t2, acc)
     case XJcc{+cc, +lbl1} Con{XJmp{+lbl2}, Con{XLabel{+lbl3}, t3}}:
@@ -1169,14 +1180,25 @@ def peep_step(dlim: Nat, h: X64Inst, t: List<&2, X64Inst>, acc: List<&2, X64Inst
       peep_drop_jcc(U32.is_eq(lbl1, lbl2), cc, lbl1, lbl2, t2, acc)
     case XCmpRR{a, b} Con{XMovRI32{+z1, +zi}, Con{XSetcc{+cc, +d}, Con{+tst, Con{XJcc{+jcc, +lbl}, +t5}}}}:
       ok = Bool.and(Bool.and(U32.is_eq(z1, d), U32.is_zero(zi)),
-           Bool.and(Bool.and(peep_is_ztest(d, tst), peep_is_z_or_nz(jcc)), peep_dead_after_jcc(d, t5)))
-      peep_r6a(ok, a, b, z1, zi, cc, d, tst, jcc, lbl, t5, acc)
+           Bool.and(Bool.and(peep_is_ztest(d, tst), peep_is_z_or_nz(jcc)), peep_dead_after_jcc(d, lbl, t5)))
+      peep_r6a(ok, XCmpRR{a, b}, z1, zi, cc, d, tst, jcc, lbl, t5, acc)
+    case XTestRR{a, b} Con{XMovRI32{+z1, +zi}, Con{XSetcc{+cc, +d}, Con{+tst, Con{XJcc{+jcc, +lbl}, +t5}}}}:
+      ok = Bool.and(Bool.and(U32.is_eq(z1, d), U32.is_zero(zi)),
+           Bool.and(Bool.and(peep_is_ztest(d, tst), peep_is_z_or_nz(jcc)), peep_dead_after_jcc(d, lbl, t5)))
+      peep_r6a(ok, XTestRR{a, b}, z1, zi, cc, d, tst, jcc, lbl, t5, acc)
+    case XCmpRI{a, imm} Con{XMovRI32{+z1, +zi}, Con{XSetcc{+cc, +d}, Con{+tst, Con{XJcc{+jcc, +lbl}, +t5}}}}:
+      ok = Bool.and(Bool.and(U32.is_eq(z1, d), U32.is_zero(zi)),
+           Bool.and(Bool.and(peep_is_ztest(d, tst), peep_is_z_or_nz(jcc)), peep_dead_after_jcc(d, lbl, t5)))
+      peep_r6a(ok, XCmpRI{a, imm}, z1, zi, cc, d, tst, jcc, lbl, t5, acc)
     case XCmpRR{a, b} Con{XSetcc{+cc, +d}, Con{+tst, Con{XJcc{+jcc, +lbl}, +t4}}}:
-      ok = Bool.and(Bool.and(peep_is_ztest(d, tst), peep_is_z_or_nz(jcc)), peep_dead_after_jcc(d, t4))
+      ok = Bool.and(Bool.and(peep_is_ztest(d, tst), peep_is_z_or_nz(jcc)), peep_dead_after_jcc(d, lbl, t4))
       peep_r6b(ok, a, b, cc, d, tst, jcc, lbl, t4, acc)
     case XCmpRR{+a, +b} Con{XMovRI32{+z1, +zi}, Con{XSetcc{+cc, +d}, t3}}:
       ok = Bool.and(Bool.and(U32.is_eq(z1, d), U32.is_zero(zi)), Bool.and(U32.is_ne(d, a), U32.is_ne(d, b)))
-      peep_cmp_zset(ok, a, b, z1, zi, cc, d, t3, acc)
+      peep_cmp_zset(ok, XCmpRR{a, b}, z1, zi, cc, d, t3, acc)
+    case XCmpRI{+a, imm} Con{XMovRI32{+z1, +zi}, Con{XSetcc{+cc, +d}, t3}}:
+      ok = Bool.and(Bool.and(U32.is_eq(z1, d), U32.is_zero(zi)), U32.is_ne(d, a))
+      peep_cmp_zset(ok, XCmpRI{a, imm}, z1, zi, cc, d, t3, acc)
     case XCmpRI{r, +imm} Con{XJcc{+cc, lbl}, t2}:
       peep_cmp0(Bool.and(U32.is_zero(imm), peep_is_z_or_nz(cc)), r, imm, XJcc{cc, lbl}, t2, acc)
     case XCmpRI{r, +imm} Con{XSetcc{+cc, d}, t2}:

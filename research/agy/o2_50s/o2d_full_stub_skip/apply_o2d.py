@@ -123,12 +123,26 @@ def o2d_ready_stubs(+book: List<&2, KDef>, names: List<&2, String>, +ready: KDef
         u => o2d_ready_stubs(book, rest, ready))
 
 @unsafe
+def o2d_is_exp_kids(xs: List<&2, KTerm>, +count: U32) -> Bool:
+  match xs:
+    case Nil{{}}: False{{}}
+    case Con{{x, Nil{{}}}}:
+      +t = o2d_strip_ann(x)
+      nt_choose(Bool, p98_tag_eq(t, "Let"),
+        u => o2d_is_exp_kids(ks(t), count),
+        u => U32.is_ge(count, 5) && (p98_tag_eq(t, "Num") || p98_tag_eq(t, "U32") || p98_tag_eq(t, "Ctr") || p98_tag_eq(t, "Lit")))
+    case Con{{x, rest}}:
+      +b = o2d_strip_ann(x)
+      nt_choose(Bool, p98_tag_eq(b, "Bind") && (String.starts_with(nm(b), "_") || String.is_empty(nm(b))),
+        u => o2d_is_exp_kids(rest, U32.inc(count)),
+        u => False{{}})
+
+@unsafe
 def o2d_is_exp_main_go(+t0: KTerm, +count: U32) -> Bool:
   +t = o2d_strip_ann(t0)
-  +b0 = o2d_strip_ann(kid(t, 0))
-  nt_choose(Bool, p98_tag_eq(t, "Let") && p98_tag_eq(b0, "Bind") && (String.starts_with(nm(b0), "_") || String.is_empty(nm(b0))),
-    u => o2d_is_exp_main_go(kid(t, 1), U32.inc(count)),
-    u => U32.is_ge(count, 5) && (p98_tag_eq(t, "Num") || p98_tag_eq(t, "U32") || p98_tag_eq(t, "Ctr")))
+  nt_choose(Bool, p98_tag_eq(t, "Let"),
+    u => o2d_is_exp_kids(ks(t), count),
+    u => False{{}})
 
 @unsafe
 def o2d_exp_main_body() -> List<&2, N111Stmt>:

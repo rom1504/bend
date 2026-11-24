@@ -1,0 +1,437 @@
+{
+  "cpu": 7,
+  "hard_timeout_s": 60,
+  "proxy_runs": 5,
+  "holdout_runs": 3,
+  "clang16_installed": false,
+  "compilers": {
+    "n6_o2": "/home/ai/bend2_agy/selfhost/build/agy/wave17-native-mod/n8_o2",
+    "runtime": "/home/ai/bend2_agy/selfhost/build/agy/unified/runtime-agy.o",
+    "cc": "/usr/bin/x86_64-linux-gnu-gcc-10"
+  },
+  "all_proxy_ok": true,
+  "all_holdout_ok": true,
+  "total_wall_s": 185.94,
+  "proxy_summary": {
+    "geomean_n6_vs_gcc10": 1.1432,
+    "geomean_n6_vs_clang16_ref": 1.8591,
+    "geomean_speedup_vs_w11": 0.9556
+  },
+  "holdout_summary": {
+    "geomean_n6_vs_gcc10_o2": 2.6744,
+    "geomean_speedup_vs_w11": 1.0146
+  },
+  "proxy_7": [
+    {
+      "name": "gameoflife",
+      "group": "upstream",
+      "expected_checksum": 3681094808,
+      "checksum_ok": true,
+      "n6_o2_ms": 921.5751,
+      "c_gcc10_ms": 1877.7938,
+      "c_clang16_ref_ms": 241.5,
+      "w11_n4_ref_ms": 470.25,
+      "ratio_n6_vs_c": 0.4908,
+      "ratio_n6_vs_c16": 3.816,
+      "speedup_vs_w11": 0.5103,
+      "n6_compile_ms": 9892.5,
+      "n6_obj_bytes": 68048,
+      "n6_direct_syms": 27,
+      "details": {
+        "c_gcc10": {
+          "ok": true,
+          "expected": 3681094808,
+          "samples_ms": [
+            1551.504,
+            1944.524,
+            1877.794,
+            1915.582,
+            1823.527
+          ],
+          "ms": 1877.7938
+        },
+        "n6_o2": {
+          "compile": {
+            "ok": true,
+            "compile_ms": 9892.5,
+            "obj_bytes": 68048,
+            "direct_sym_count": 27
+          },
+          "run": {
+            "ok": true,
+            "expected": 3681094808,
+            "samples_ms": [
+              913.477,
+              909.715,
+              929.13,
+              924.546,
+              921.575
+            ],
+            "ms": 921.5751
+          }
+        }
+      }
+    },
+    {
+      "name": "expression",
+      "group": "tuned",
+      "expected_checksum": 3393903617,
+      "checksum_ok": true,
+      "n6_o2_ms": 10.0226,
+      "c_gcc10_ms": 12.0271,
+      "c_clang16_ref_ms": 7.237,
+      "w11_n4_ref_ms": 9.14,
+      "ratio_n6_vs_c": 0.8333,
+      "ratio_n6_vs_c16": 1.3849,
+      "speedup_vs_w11": 0.9119,
+      "n6_compile_ms": 2471.8,
+      "n6_obj_bytes": 61712,
+      "n6_direct_syms": 6,
+      "details": {
+        "c_gcc10": {
+          "ok": true,
+          "expected": 3393903617,
+          "reps": 320000,
+          "raw_samples_ms": [
+            101,
+            101,
+            103,
+            102,
+            102
+          ],
+          "raw_median_ms": 102.0,
+          "ms": 12.0271
+        },
+        "n6_o2": {
+          "compile": {
+            "ok": true,
+            "compile_ms": 2471.8,
+            "obj_bytes": 61712,
+            "direct_sym_count": 6
+          },
+          "run": {
+            "ok": true,
+            "expected": 3393903617,
+            "reps": 128000,
+            "raw_samples_ms": [
+              38,
+              34,
+              35,
+              34,
+              34
+            ],
+            "raw_median_ms": 34.0,
+            "ms": 10.0226
+          }
+        }
+      }
+    },
+    {
+      "name": "list",
+      "group": "tuned",
+      "expected_checksum": 1904,
+      "checksum_ok": true,
+      "n6_o2_ms": 0.4726,
+      "c_gcc10_ms": 0.3084,
+      "c_clang16_ref_ms": 0.2686,
+      "w11_n4_ref_ms": 0.39,
+      "ratio_n6_vs_c": 1.5324,
+      "ratio_n6_vs_c16": 1.7592,
+      "speedup_vs_w11": 0.8252,
+      "n6_compile_ms": 2603.4,
+      "n6_obj_bytes": 62464,
+      "n6_direct_syms": 6,
+      "details": {
+        "c_gcc10": {
+          "ok": true,
+          "expected": 1904,
+          "reps": 20000000,
+          "raw_samples_ms": [
+            66,
+            60,
+            62,
+            60,
+            68
+          ],
+          "raw_median_ms": 62.0,
+          "ms": 0.3084
+        },
+        "n6_o2": {
+          "compile": {
+            "ok": true,
+            "compile_ms": 2603.4,
+            "obj_bytes": 62464,
+            "direct_sym_count": 6
+          },
+          "run": {
+            "ok": true,
+            "expected": 1904,
+            "reps": 12000000,
+            "raw_samples_ms": [
+              56,
+              57,
+              57,
+              56,
+              57
+            ],
+            "raw_median_ms": 57.0,
+            "ms": 0.4726
+          }
+        }
+      }
+    },
+    {
+      "name": "nbody",
+      "group": "upstream",
+      "expected_checksum": 728502159,
+      "checksum_ok": true,
+      "n6_o2_ms": 126.8226,
+      "c_gcc10_ms": 103.9517,
+      "c_clang16_ref_ms": 74.7,
+      "w11_n4_ref_ms": 93.46,
+      "ratio_n6_vs_c": 1.22,
+      "ratio_n6_vs_c16": 1.6978,
+      "speedup_vs_w11": 0.7369,
+      "n6_compile_ms": 8248.7,
+      "n6_obj_bytes": 62184,
+      "n6_direct_syms": 25,
+      "details": {
+        "c_gcc10": {
+          "ok": true,
+          "expected": 728502159,
+          "samples_ms": [
+            122.967,
+            107.402,
+            103.806,
+            103.543,
+            103.952
+          ],
+          "ms": 103.9517
+        },
+        "n6_o2": {
+          "compile": {
+            "ok": true,
+            "compile_ms": 8248.7,
+            "obj_bytes": 62184,
+            "direct_sym_count": 25
+          },
+          "run": {
+            "ok": true,
+            "expected": 728502159,
+            "samples_ms": [
+              126.972,
+              126.59,
+              126.823,
+              126.984,
+              126.095
+            ],
+            "ms": 126.8226
+          }
+        }
+      }
+    },
+    {
+      "name": "histogram",
+      "group": "upstream",
+      "expected_checksum": 3307081914,
+      "checksum_ok": true,
+      "n6_o2_ms": 42.4232,
+      "c_gcc10_ms": 26.7765,
+      "c_clang16_ref_ms": 24.0,
+      "w11_n4_ref_ms": 42.38,
+      "ratio_n6_vs_c": 1.5843,
+      "ratio_n6_vs_c16": 1.7676,
+      "speedup_vs_w11": 0.999,
+      "n6_compile_ms": 5345.4,
+      "n6_obj_bytes": 275552,
+      "n6_direct_syms": 61,
+      "details": {
+        "c_gcc10": {
+          "ok": true,
+          "expected": 3307081914,
+          "samples_ms": [
+            36.28,
+            26.776,
+            26.492,
+            26.68,
+            27.819
+          ],
+          "ms": 26.7765
+        },
+        "n6_o2": {
+          "compile": {
+            "ok": true,
+            "compile_ms": 5345.4,
+            "obj_bytes": 275552,
+            "direct_sym_count": 61
+          },
+          "run": {
+            "ok": true,
+            "expected": 3307081914,
+            "samples_ms": [
+              42.874,
+              42.09,
+              42.797,
+              42.423,
+              41.487
+            ],
+            "ms": 42.4232
+          }
+        }
+      }
+    },
+    {
+      "name": "bst",
+      "group": "tuned",
+      "expected_checksum": 861157620,
+      "checksum_ok": true,
+      "n6_o2_ms": 16.99,
+      "c_gcc10_ms": 13.2522,
+      "c_clang16_ref_ms": 10.8355,
+      "w11_n4_ref_ms": 30.58,
+      "ratio_n6_vs_c": 1.2821,
+      "ratio_n6_vs_c16": 1.568,
+      "speedup_vs_w11": 1.7999,
+      "n6_compile_ms": 1826.3,
+      "n6_obj_bytes": 76488,
+      "n6_direct_syms": 12,
+      "details": {
+        "c_gcc10": {
+          "ok": true,
+          "expected": 861157620,
+          "reps": 160000,
+          "raw_samples_ms": [
+            78,
+            78,
+            78,
+            78,
+            77
+          ],
+          "raw_median_ms": 78.0,
+          "ms": 13.2522
+        },
+        "n6_o2": {
+          "compile": {
+            "ok": true,
+            "compile_ms": 1826.3,
+            "obj_bytes": 76488,
+            "direct_sym_count": 12
+          },
+          "run": {
+            "ok": true,
+            "expected": 861157620,
+            "reps": 128000,
+            "raw_samples_ms": [
+              80,
+              80,
+              80,
+              80,
+              81
+            ],
+            "raw_median_ms": 80.0,
+            "ms": 16.99
+          }
+        }
+      }
+    },
+    {
+      "name": "editdist",
+      "group": "tuned",
+      "expected_checksum": 2065873279,
+      "checksum_ok": true,
+      "n6_o2_ms": 16.1719,
+      "c_gcc10_ms": 9.8438,
+      "c_clang16_ref_ms": 9.2188,
+      "w11_n4_ref_ms": 23.13,
+      "ratio_n6_vs_c": 1.6429,
+      "ratio_n6_vs_c16": 1.7542,
+      "speedup_vs_w11": 1.4303,
+      "n6_compile_ms": 2772.9,
+      "n6_obj_bytes": 124816,
+      "n6_direct_syms": 27,
+      "details": {
+        "c_gcc10": {
+          "ok": true,
+          "expected": 2065873279,
+          "reps": 1536,
+          "raw_samples_ms": [
+            63,
+            63,
+            62,
+            63,
+            63
+          ],
+          "raw_median_ms": 63.0,
+          "ms": 9.8438
+        },
+        "n6_o2": {
+          "compile": {
+            "ok": true,
+            "compile_ms": 2772.9,
+            "obj_bytes": 124816,
+            "direct_sym_count": 27
+          },
+          "run": {
+            "ok": true,
+            "expected": 2065873279,
+            "reps": 1024,
+            "raw_samples_ms": [
+              69,
+              69,
+              69,
+              69,
+              69
+            ],
+            "raw_median_ms": 69.0,
+            "ms": 16.1719
+          }
+        }
+      }
+    }
+  ],
+  "holdouts": [
+    {
+      "name": "terrain",
+      "expected": "2572468224",
+      "checksum_ok": true,
+      "n6_o2_s": 21.4178,
+      "c_gcc10_o2_s": 8.0084,
+      "w11_n4_ref_s": 21.731,
+      "ratio_n6_vs_c_o2": 2.6744,
+      "speedup_vs_w11": 1.0146,
+      "n6_compile_ms": 34671.1,
+      "n6_obj_bytes": 1002584,
+      "n6_direct_syms": 71,
+      "details": {
+        "c_o2": {
+          "ok": true,
+          "samples_s": [
+            8.0578,
+            7.9901,
+            8.0084
+          ],
+          "s": 8.0084,
+          "out": "2572468224"
+        },
+        "n6_o2": {
+          "compile": {
+            "ok": true,
+            "compile_ms": 34671.1,
+            "obj_bytes": 1002584,
+            "direct_sym_count": 71
+          },
+          "run": {
+            "ok": true,
+            "samples_s": [
+              21.4178,
+              32.992,
+              20.7689
+            ],
+            "s": 21.4178,
+            "out": "2572468224"
+          }
+        }
+      }
+    }
+  ]
+}

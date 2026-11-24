@@ -1,7 +1,11 @@
 {
-  "campaign": "W17-O2: Wave 17 Compose, Mint & Official -O2 Cold Self-Compile",
-  "timestamp_utc": "2026-11-24T01:25:00Z",
-  "status": "PARTIAL_DEADLINE_WRAP",
+  "campaign": "W17-O2: Wave 17 Compose, Clean Full-Reclamation Mint, Cold Self-Compile & Full Qualification",
+  "timestamp_utc": "2026-11-24T03:28:00Z",
+  "status": "QUAL_158_PASS_PERF_GATE_REGRESSED_NOT_PROMOTED",
+  "promotion_decision": {
+    "promoted": false,
+    "reason": "Correctness 158/158 PASS (0 failures, 0 observer violations, ELF audit PASS, exact checksums on 7-family + terrain), and memory safety fixed (max RSS 412.6 MiB with full reclamation). HOWEVER, emitted -O2 codegen regressed ~1.8-2.0x on loop-heavy workloads: 7-family geomean 1.1432x gcc-10 -O2 (gate <= 1.06x FAIL), terrain 21.42s (gate <= 12.5s FAIL), gameoflife 921.6ms (vs ~470ms), and -O0 self-compile 136.75s (vs n7_o2 62.87s). Keeping n6_o2 and n7_o2 hot (n7_o2 NOT gzipped)."
+  },
   "compose": {
     "source": "selfhost/build/agy/wave16_unified/compiler.bend",
     "output": "selfhost/build/agy/wave17_unified/compiler.bend",
@@ -12,7 +16,7 @@
       "O2-C (3/3 Wave 16 -O2 bug fixes: caps AND, w14a_fast_abi_go2 nq_sigs, w11_cmp_jcc_emit liveness)",
       "O2-F (O(N) w4b_find_loop linear branch map)",
       "O2-A (SAFE 4/7 hunks only: w4b_reg_dead_cap, w14a_sl_rounds_cap, w14a_sl_rounds_cap_h, x191_frame_forward_large_call_cap; omitted unsafe hunks 5-7)",
-      "O2-D (full zero-.p130 stub skip + -O2 direct-stub skip + synthetic .exp matcher)",
+      "O2-D (full zero-.p130 stub skip + -O2 direct-stub skip + fixed synthetic .exp matcher)",
       "O2-E (w7c_fast_inst_c + x186/x190/x191 non-loop fast paths + w8_tr_emit_pub cold fast path)"
     ],
     "patches_omitted": [
@@ -26,72 +30,144 @@
       "unsafe_defs": 9163
     }
   },
-  "splits": {
-    "k10_wave17": {
-      "dir": "selfhost/build/agy/wave17_unified/k10_wave17",
-      "types": 422,
-      "defs": 9379,
-      "laws": 912,
-      "avg_kb": 339.4,
-      "max_kb": 340.5,
-      "max_over_avg": 1.003
-    },
-    "k16_wave17": {
-      "dir": "selfhost/build/agy/wave17_unified/k16_wave17",
-      "types": 422,
-      "defs": 9379,
-      "laws": 912,
-      "avg_kb": 212.2,
-      "max_kb": 213.4,
-      "max_over_avg": 1.006
-    },
-    "k24_wave17": {
-      "dir": "selfhost/build/agy/wave17_unified/k24_wave17",
-      "types": 422,
-      "defs": 9379,
-      "laws": 912,
-      "avg_kb": 141.5,
-      "max_kb": 142.6,
-      "max_over_avg": 1.007
-    }
-  },
   "stage0_n8_stage0": {
     "status": "PASS",
     "compiler": "selfhost/build/agy/wave16-native-mod/n7_o2",
-    "mode": "x86-module-fast (-O0)",
+    "mode": "--trace x86-module-fast (-O0, full reclamation)",
     "k": 10,
-    "binary_bytes": 84134680,
-    "total_segs": 65206,
+    "binary_bytes": 84139608,
+    "total_segs": 65212,
     "fid_budget": 65532,
-    "smoke_o0": {"ms": 7500.9, "out": "34", "bytes": 377176},
-    "smoke_o2": {"ms": 12107.0, "out": "34", "bytes": 390640}
+    "wall_s": 175.65,
+    "compile_wall_ms": 61271.6,
+    "merge_ms": 167.4,
+    "link_ms": 696.3,
+    "smoke_o0": {"ms": 7697.1, "out": "34", "bytes": 377176},
+    "smoke_o2": {"ms": 12105.5, "out": "34", "bytes": 390640}
   },
-  "stage1_k16_o2_nodrop_attempt": {
-    "status": "ALL_16_COMPILED_FID_OVERFLOW",
-    "compiler": "n8_stage0 (-O0 binary, ~2.805x slower than -O2 binary)",
-    "mode": "--nodrop --trace x86-module (-O2)",
+  "stage1_n8_o2_clean_full_reclamation": {
+    "status": "PASS",
+    "binary": "selfhost/build/agy/wave17-native-mod/n8_o2",
+    "compiler": "n8_stage0 (-O0 binary)",
+    "mode": "--trace x86-module (-O2, FULL RECLAMATION, NO --nodrop)",
     "k": 16,
-    "modules_compiled": 16,
-    "total_segs": 68469,
+    "binary_bytes": 68463120,
+    "total_segs": 42361,
     "fid_budget": 65532,
-    "fid_overage": 2937,
-    "cpu_sum_s": 3637.3,
-    "max_rss_mib": 474.7,
-    "projected_n8_o2_8core_wall_s": 162.1,
-    "bottleneck_diagnosis": {
-      "fid_overflow_root_cause": "o2d_is_exp_main_go did not fire on m00..m14 synthetic .exp main() (m00 had 5284 segs vs n7 5273), leaving ~20k currying factory FIDs; stub skip alone saved ~9k FIDs (77k -> 68,469), 2,937 short of 65,532 for K=16. K=10 fits cleanly.",
-      "o2_compile_time_breakdown_at_o0_bin_speed": {
-        "p86_plan_ms_range": [20027, 28551],
-        "x198pw_plan_ms_range": [56156, 113342],
-        "x187_priv_ms_range": [84642, 184975],
-        "x187_pub_ms_range": [34216, 172943],
-        "x187_elf_ms_range": [2132, 3927]
-      }
+    "repacked": false,
+    "wall_s": 977.66,
+    "compile_wall_ms": 509855.5,
+    "compile_cpu_sum_ms": 3509171.3,
+    "max_rss_mib": 428.4,
+    "merge_ms": 139.3,
+    "link_ms": 371.0,
+    "w17_o2_oracle_count": 3343,
+    "smoke_o0": {"ms": 5065.9, "out": "34", "bytes": 377176},
+    "smoke_o2": {"ms": 7945.8, "out": "34", "bytes": 390640}
+  },
+  "stage2_official_8core_cold_benchmarks": {
+    "o2_normal_k16": {
+      "status": "PASS",
+      "compiler": "selfhost/build/agy/wave17-native-mod/n8_o2",
+      "mode": "--trace x86-module (-O2, FULL RECLAMATION)",
+      "k": 16,
+      "work_root": "/tmp/agy_w17c_cold_o2 (empty)",
+      "total_cold_wall_s": 332.42,
+      "total_cold_wall_ms": 332417.7,
+      "stub_gen_ms": 1036.6,
+      "compile_wall_ms": 330383.6,
+      "compile_cpu_sum_ms": 2333156.8,
+      "compile_min_ms": 108870.6,
+      "compile_median_ms": 148276.0,
+      "compile_max_ms": 180627.4,
+      "merge_ms": 152.4,
+      "link_ms": 840.7,
+      "max_rss_mib": 412.6,
+      "median_rss_mib": 331.5,
+      "total_segs": 42284,
+      "fid_budget": 65532,
+      "repacked": false,
+      "out_bin_bytes": 68522736,
+      "stage_ranges_ms": {
+        "p86_plan": [13020.0, 20202.0],
+        "x198pw_plan": [31428.0, 75411.0],
+        "x187_priv": [50009.0, 139884.0],
+        "x187_pub": [7096.0, 105297.0],
+        "x187_elf": [2051.0, 4336.0]
+      },
+      "smoke_o0": {"ms": 9376.0, "out": "34", "bytes": 377176},
+      "smoke_o2": {"ms": 8193.8, "out": "34", "bytes": 390640}
+    },
+    "o0_normal_k16": {
+      "status": "PASS",
+      "compiler": "selfhost/build/agy/wave17-native-mod/n8_o2",
+      "mode": "--trace x86-module-fast (-O0, FULL RECLAMATION)",
+      "k": 16,
+      "work_root": "/tmp/agy_w17c_cold_o0 (empty)",
+      "total_cold_wall_s": 136.75,
+      "total_cold_wall_ms": 136748.3,
+      "vs_n7_o2_cold_o0_s": 62.87,
+      "stub_gen_ms": 1189.8,
+      "compile_wall_ms": 134380.9,
+      "compile_cpu_sum_ms": 763026.6,
+      "compile_min_ms": 38444.0,
+      "compile_median_ms": 43112.8,
+      "compile_max_ms": 75985.7,
+      "merge_ms": 243.2,
+      "link_ms": 929.8,
+      "max_rss_mib": 339.2,
+      "median_rss_mib": 276.2,
+      "total_segs": 42262,
+      "fid_budget": 65532,
+      "repacked": false,
+      "out_bin_bytes": 70964904,
+      "smoke_o0": {"ms": 12005.8, "out": "34", "bytes": 377176}
     }
   },
-  "pending_next_wave": [
-    "Fix o2d_is_exp_main_go AST matcher so K=16/K=24 drop below 48,000 FIDs (or mint n8_o2 on k10_wave17 immediately)",
-    "Mint selfhost/build/agy/wave17-native-mod/n8_o2 (-O2) and run official 8-core cold benchmarks + 158/158 + 7-family + terrain gate",
-    "Attack remaining -O2 bottlenecks revealed by trace: x187_priv (~30-65s/mod), x187_pub (~12-61s/mod), x198pw_plan (~20-40s/mod)"
-  ]
+  "gate_qualification_158": {
+    "status": "PASS",
+    "passed": 158,
+    "total": 158,
+    "native64_o0": {"passed": 64, "total": 64, "wall_s": 16.97, "compile_sum_ms": 112019.4},
+    "native64_o2": {"passed": 64, "total": 64, "wall_s": 38.98, "compile_sum_ms": 245773.6},
+    "observer_o2": {"passed": 15, "total": 15, "violations": 0, "wall_s": 8.05},
+    "observer_o0": {"passed": 15, "total": 15, "violations": 0, "wall_s": 2.31},
+    "elf_audit": {
+      "status": "PASS",
+      "text_bytes": 62096161,
+      "rodata_bytes": 608512,
+      "data_bytes": 1408800,
+      "bss_bytes": 1148552
+    },
+    "total_wall_s": 83.57,
+    "evidence": "research/agy/o2_50s/w17_o2/qual_results.json"
+  },
+  "gate_7family_and_terrain": {
+    "correctness_status": "PASS",
+    "perf_gate_status": "FAIL",
+    "cpu": 7,
+    "proxy_7_geomean_vs_gcc10": 1.1432,
+    "proxy_7_gate_threshold": 1.06,
+    "proxy_7_geomean_vs_clang16_ref": 1.8591,
+    "proxy_7_speedup_vs_w11": 0.9556,
+    "proxy_7": {
+      "gameoflife": {"n8_o2_ms": 921.5751, "gcc10_ms": 1877.7938, "ratio_vs_gcc10": 0.4908, "speedup_vs_w11": 0.5103, "checksum_ok": true},
+      "expression": {"n8_o2_ms": 10.0226, "gcc10_ms": 12.0271, "ratio_vs_gcc10": 0.8333, "speedup_vs_w11": 0.9119, "checksum_ok": true},
+      "list": {"n8_o2_ms": 0.4726, "gcc10_ms": 0.3084, "ratio_vs_gcc10": 1.5324, "speedup_vs_w11": 0.8252, "checksum_ok": true},
+      "nbody": {"n8_o2_ms": 126.8226, "gcc10_ms": 103.9517, "ratio_vs_gcc10": 1.22, "speedup_vs_w11": 0.7369, "checksum_ok": true},
+      "histogram": {"n8_o2_ms": 42.4232, "gcc10_ms": 26.7765, "ratio_vs_gcc10": 1.5843, "speedup_vs_w11": 0.999, "checksum_ok": true},
+      "bst": {"n8_o2_ms": 16.99, "gcc10_ms": 13.2522, "ratio_vs_gcc10": 1.2821, "speedup_vs_w11": 1.7999, "checksum_ok": true},
+      "editdist": {"n8_o2_ms": 16.1719, "gcc10_ms": 9.8438, "ratio_vs_gcc10": 1.6429, "speedup_vs_w11": 1.4303, "checksum_ok": true}
+    },
+    "holdout_terrain": {
+      "n8_o2_s": 21.4178,
+      "gcc10_o2_s": 8.0084,
+      "ratio_vs_gcc10": 2.6744,
+      "gate_threshold_s": 12.5,
+      "checksum": "2572468224",
+      "checksum_ok": true,
+      "perf_gate_pass": false
+    },
+    "evidence": "research/agy/o2_50s/w17_o2/bench_results.json"
+  }
 }

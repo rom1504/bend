@@ -22,7 +22,7 @@ def run_qual() -> int:
     q.N6_O2 = N8_O2
     q.OUT_DIR = OUT_DIR
     q.RESULTS_JSON = OUT_DIR / "qual_results.json"
-    q.TMP = Path("/tmp/agy_w17_gate/qual")
+    q.TMP = Path("/tmp/agy_w17q_gate/qual")
     q.CPUS = [0, 1, 2, 3, 4, 5, 6, 7]
     try:
         q.main()
@@ -37,7 +37,7 @@ def run_bench() -> int:
     b.N6_O2 = N8_O2
     b.OUT_DIR = OUT_DIR
     b.RESULTS_JSON = OUT_DIR / "bench_results.json"
-    b.TMP = Path("/tmp/agy_w17_gate/bench")
+    b.TMP = Path("/tmp/agy_w17q_gate/bench")
     b.CPU = 7
     b.HOLDOUTS = [("terrain", "2572468224")]
     return b.main()

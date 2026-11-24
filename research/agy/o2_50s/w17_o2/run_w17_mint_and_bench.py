@@ -21,7 +21,7 @@ BASE_CARRIER = ROOT / "selfhost/build/agy/bootstrap/base.p130"
 BASE_STAMP = "p130-word-pair-v1:p88-private-base-text-1:2dd93239749b4f1e3ee2f4e9617e31aeb5df4cc0200a4c14054a6591e2f74212"
 N7_O2 = ROOT / "selfhost/build/agy/wave16-native-mod/n7_o2"
 N8_O2 = ROOT / "selfhost/build/agy/wave17-native-mod/n8_o2"
-N8_STAGE0 = Path("/tmp/agy_w17/n8_stage0")
+N8_STAGE0 = Path("/tmp/agy_w17q/n8_stage0")
 RT = ROOT / "selfhost/build/agy/unified/runtime-agy.o"
 CC = "/usr/bin/x86_64-linux-gnu-gcc-10"
 SLICE = ROOT / "research/agy/w7_bench/compiler_slice.bend"
@@ -330,7 +330,7 @@ def stage0_mint_stage0(state: dict, resume: bool = False) -> None:
     k_dir = ROOT / "selfhost/build/agy/wave17_unified/k10_wave17"
     manifest = json.loads((k_dir / "manifest.json").read_text(encoding="utf-8"))
     mod_names = [m["name"] for m in manifest["modules"]]
-    work = Path("/tmp/agy_w17/s0")
+    work = Path("/tmp/agy_w17q/s0")
     src_dir, obj_dir = work / "src", work / "obj"
 
     o0_set = {x.strip() for x in ORACLE_W16_O0.read_text().splitlines() if x.strip()}
@@ -382,7 +382,7 @@ def stage1_mint_n8_o2(state: dict, k: int = 16) -> None:
     k_dir = ROOT / f"selfhost/build/agy/wave17_unified/k{k}_wave17"
     manifest = json.loads((k_dir / "manifest.json").read_text(encoding="utf-8"))
     mod_names = [m["name"] for m in manifest["modules"]]
-    work = Path("/tmp/agy_w17/s1")
+    work = Path("/tmp/agy_w17q/s1")
     if work.exists():
         shutil.rmtree(work)
     src_dir, obj_dir = work / "src", work / "obj"
@@ -390,15 +390,15 @@ def stage1_mint_n8_o2(state: dict, k: int = 16) -> None:
     o0_set = {x.strip() for x in ORACLE_W16_O0.read_text().splitlines() if x.strip()}
     o2_set = {x.strip() for x in ORACLE_W16_O2.read_text().splitlines() if x.strip()}
     safe_oracle = o0_set & o2_set
-    print(f"\n=== STAGE 1: Mint TRUE -O2 n8_o2 (via n8_stage0 --nodrop x86-module on k{k}_wave17) ===", flush=True)
+    print(f"\n=== STAGE 1: Mint TRUE -O2 n8_o2 (via n8_stage0 x86-module on k{k}_wave17, FULL RECLAMATION) ===", flush=True)
     t0 = time.perf_counter()
     gen_stubs.generate_all(k_dir, src_dir, abi_mode="oracle", direct_set=safe_oracle)
-    mode_args = ["--nodrop", "--trace", "x86-module"]
-    comp = compile_k_parallel(N8_STAGE0, k_dir, src_dir, obj_dir, CPUS, mode_args, timeout_s=300)
-    comp, fits, repacked = repack_if_needed(comp, N8_STAGE0, src_dir, obj_dir, CPUS, mode_args, timeout_s=300)
+    mode_args = ["--trace", "x86-module"]
+    comp = compile_k_parallel(N8_STAGE0, k_dir, src_dir, obj_dir, CPUS, mode_args, timeout_s=600)
+    comp, fits, repacked = repack_if_needed(comp, N8_STAGE0, src_dir, obj_dir, CPUS, mode_args, timeout_s=600)
     assert fits, f"Stage 1 K={k} FID overflow: {comp['total_segs']}"
     fid_bases = {r["mod"]: r["fid_base"] for r in comp["modules"]}
-    fix_undefined_p113d(N8_STAGE0, k_dir, src_dir, obj_dir, mod_names, fid_bases, safe_oracle, CPUS, mode_args, timeout_s=300)
+    fix_undefined_p113d(N8_STAGE0, k_dir, src_dir, obj_dir, mod_names, fid_bases, safe_oracle, CPUS, mode_args, timeout_s=600)
 
     N8_O2.parent.mkdir(parents=True, exist_ok=True)
     merge_ms, link_ms = mb.merge_and_link(N8_STAGE0, mod_names, obj_dir, obj_dir / "merge.o", N8_O2, cpu=0)
@@ -507,21 +507,15 @@ def run_cold_bench(label: str, k: int, mode_args: list[str], work_root: Path, ru
 
 def stage2_cold_benchmarks(state: dict, k: int = 16) -> None:
     cold = state.setdefault("stage2_cold", {})
-    # 1. Official -O2 Cold (normal mode)
+    # 1. Official -O2 Cold (normal mode, full reclamation)
     cold[f"o2_normal_k{k}"] = run_cold_bench(
-        f"o2_normal_k{k}", k, ["--trace", "x86-module"], Path("/tmp/agy_w17_cold_o2"), run_o2_smoke=True
+        f"o2_normal_k{k}", k, ["--trace", "x86-module"], Path("/tmp/agy_w17c_cold_o2"), run_o2_smoke=True
     )
     STATE_JSON.write_text(json.dumps(state, indent=2) + "\n")
 
-    # 2. Official -O2 --nodrop Cold
-    cold[f"o2_nodrop_k{k}"] = run_cold_bench(
-        f"o2_nodrop_k{k}", k, ["--nodrop", "--trace", "x86-module"], Path("/tmp/agy_w17_cold_o2_nd"), run_o2_smoke=True
-    )
-    STATE_JSON.write_text(json.dumps(state, indent=2) + "\n")
-
-    # 3. Bonus -O0 --nodrop Cold
-    cold[f"o0_nodrop_k{k}"] = run_cold_bench(
-        f"o0_nodrop_k{k}", k, ["--nodrop", "--trace", "x86-module-fast"], Path("/tmp/agy_w17_cold_o0_nd"), run_o2_smoke=False
+    # 2. Official -O0 Cold (normal mode, full reclamation)
+    cold[f"o0_normal_k{k}"] = run_cold_bench(
+        f"o0_normal_k{k}", k, ["--trace", "x86-module-fast"], Path("/tmp/agy_w17c_cold_o0"), run_o2_smoke=False
     )
     STATE_JSON.write_text(json.dumps(state, indent=2) + "\n")
 

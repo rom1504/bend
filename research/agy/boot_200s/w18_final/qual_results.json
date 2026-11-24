@@ -1,0 +1,2096 @@
+{
+  "compiler": "selfhost/build/agy/wave18-native-mod/n9_o2",
+  "compiler_bytes": 80394120,
+  "cpus": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "ulimit_stack_kb": 262144,
+  "hard_timeout_s": 60,
+  "catalog": "selfhost/tests/phase182/qualification-catalog.json",
+  "catalog_cases": 64,
+  "native64": {
+    "x86-object-fast": {
+      "mode": "x86-object-fast",
+      "passed": 64,
+      "total": 64,
+      "failed_count": 0,
+      "wall_s": 9.93,
+      "compile_sum_ms": 66682.5,
+      "failures": [],
+      "cases": [
+        {
+          "id": "focused/nt-reverse",
+          "name": "nt-reverse",
+          "kind": "execute",
+          "cpu": 0,
+          "status": "pass",
+          "compile_ms": 716.6,
+          "link_ms": 73.4,
+          "exec_ms": 8.5,
+          "obj_bytes": 43744
+        },
+        {
+          "id": "focused/string-reverse-heldout",
+          "name": "string-reverse-heldout",
+          "kind": "execute",
+          "cpu": 1,
+          "status": "pass",
+          "compile_ms": 704.0,
+          "link_ms": 59.0,
+          "exec_ms": 9.1,
+          "obj_bytes": 36504
+        },
+        {
+          "id": "focused/higher-order-capture",
+          "name": "higher-order-capture",
+          "kind": "execute",
+          "cpu": 2,
+          "status": "pass",
+          "compile_ms": 803.3,
+          "link_ms": 56.9,
+          "exec_ms": 9.6,
+          "obj_bytes": 32088
+        },
+        {
+          "id": "focused/non-tail-list",
+          "name": "non-tail-list",
+          "kind": "execute",
+          "cpu": 3,
+          "status": "pass",
+          "compile_ms": 722.1,
+          "link_ms": 68.0,
+          "exec_ms": 7.4,
+          "obj_bytes": 32304
+        },
+        {
+          "id": "focused/arrays-io",
+          "name": "arrays-io",
+          "kind": "execute",
+          "cpu": 4,
+          "status": "pass",
+          "compile_ms": 708.6,
+          "link_ms": 71.6,
+          "exec_ms": 8.0,
+          "obj_bytes": 28928
+        },
+        {
+          "id": "focused/lexer-scan",
+          "name": "lexer-scan",
+          "kind": "execute",
+          "cpu": 5,
+          "status": "pass",
+          "compile_ms": 956.0,
+          "link_ms": 65.2,
+          "exec_ms": 20.3,
+          "obj_bytes": 74184
+        },
+        {
+          "id": "focused/negative-type",
+          "name": "negative-type",
+          "kind": "refusal",
+          "cpu": 6,
+          "status": "pass",
+          "rc": 1,
+          "compile_ms": 541.2,
+          "obj_bytes": 0,
+          "stderr": "check: main: constructor does not belong to goal or field count differs",
+          "diag_ok": true
+        },
+        {
+          "id": "focused/negative-affine",
+          "name": "negative-affine",
+          "kind": "refusal",
+          "cpu": 7,
+          "status": "pass",
+          "rc": 1,
+          "compile_ms": 472.3,
+          "obj_bytes": 0,
+          "stderr": "check: twice: affine variable consumed more than allowed",
+          "diag_ok": true
+        },
+        {
+          "id": "focused/negative-foreign",
+          "name": "negative-foreign",
+          "kind": "refusal",
+          "cpu": 7,
+          "status": "pass",
+          "rc": 1,
+          "compile_ms": 494.5,
+          "obj_bytes": 0,
+          "stderr": "compile: foreign provider unavailable in fixed runtime: p108_missing",
+          "diag_ok": true
+        },
+        {
+          "id": "focused/pure-char",
+          "name": "pure-char",
+          "kind": "execute",
+          "cpu": 6,
+          "status": "pass",
+          "compile_ms": 636.5,
+          "link_ms": 50.7,
+          "exec_ms": 7.4,
+          "obj_bytes": 30336
+        },
+        {
+          "id": "focused/pure-string",
+          "name": "pure-string",
+          "kind": "execute",
+          "cpu": 1,
+          "status": "pass",
+          "compile_ms": 611.3,
+          "link_ms": 57.0,
+          "exec_ms": 13.8,
+          "obj_bytes": 31712
+        },
+        {
+          "id": "focused/pure-aggregate",
+          "name": "pure-aggregate",
+          "kind": "execute",
+          "cpu": 4,
+          "status": "pass",
+          "compile_ms": 719.9,
+          "link_ms": 58.9,
+          "exec_ms": 13.0,
+          "obj_bytes": 33024
+        },
+        {
+          "id": "focused/u32-wide-wrap",
+          "name": "u32-wide-wrap",
+          "kind": "execute",
+          "cpu": 0,
+          "status": "pass",
+          "compile_ms": 678.4,
+          "link_ms": 56.1,
+          "exec_ms": 8.0,
+          "obj_bytes": 34384
+        },
+        {
+          "id": "focused/u32-divmod",
+          "name": "u32-divmod",
+          "kind": "execute",
+          "cpu": 3,
+          "status": "pass",
+          "compile_ms": 739.9,
+          "link_ms": 67.5,
+          "exec_ms": 15.7,
+          "obj_bytes": 32328
+        },
+        {
+          "id": "focused/nat-native",
+          "name": "nat-native",
+          "kind": "execute",
+          "cpu": 2,
+          "status": "pass",
+          "compile_ms": 781.4,
+          "link_ms": 51.8,
+          "exec_ms": 6.8,
+          "obj_bytes": 33232
+        },
+        {
+          "id": "focused/f32-literal",
+          "name": "f32-literal",
+          "kind": "execute",
+          "cpu": 7,
+          "status": "pass",
+          "compile_ms": 744.1,
+          "link_ms": 52.5,
+          "exec_ms": 7.7,
+          "obj_bytes": 30016
+        },
+        {
+          "id": "focused/f32-arithmetic",
+          "name": "f32-arithmetic",
+          "kind": "execute",
+          "cpu": 5,
+          "status": "pass",
+          "compile_ms": 855.5,
+          "link_ms": 55.0,
+          "exec_ms": 8.3,
+          "obj_bytes": 35544
+        },
+        {
+          "id": "focused/pure-u32",
+          "name": "pure-u32",
+          "kind": "execute",
+          "cpu": 6,
+          "status": "pass",
+          "compile_ms": 646.8,
+          "link_ms": 59.5,
+          "exec_ms": 9.2,
+          "obj_bytes": 30464
+        },
+        {
+          "id": "focused/pure-f32",
+          "name": "pure-f32",
+          "kind": "execute",
+          "cpu": 1,
+          "status": "pass",
+          "compile_ms": 602.1,
+          "link_ms": 50.6,
+          "exec_ms": 7.7,
+          "obj_bytes": 30464
+        },
+        {
+          "id": "broad/mandelbrot",
+          "name": "mandelbrot",
+          "kind": "execute",
+          "cpu": 0,
+          "status": "pass",
+          "compile_ms": 1218.6,
+          "link_ms": 56.9,
+          "exec_ms": 11.2,
+          "obj_bytes": 61960
+        },
+        {
+          "id": "broad/editdist",
+          "name": "editdist",
+          "kind": "execute",
+          "cpu": 4,
+          "status": "pass",
+          "compile_ms": 1046.9,
+          "link_ms": 57.6,
+          "exec_ms": 120.8,
+          "obj_bytes": 50800
+        },
+        {
+          "id": "broad/tree-bitonic",
+          "name": "tree-bitonic",
+          "kind": "execute",
+          "cpu": 3,
+          "status": "pass",
+          "compile_ms": 929.0,
+          "link_ms": 55.7,
+          "exec_ms": 8.8,
+          "obj_bytes": 50560
+        },
+        {
+          "id": "broad/lexer",
+          "name": "lexer",
+          "kind": "execute",
+          "cpu": 2,
+          "status": "pass",
+          "compile_ms": 1081.1,
+          "link_ms": 66.2,
+          "exec_ms": 17.6,
+          "obj_bytes": 69104
+        },
+        {
+          "id": "broad/symreg",
+          "name": "symreg",
+          "kind": "execute",
+          "cpu": 7,
+          "status": "pass",
+          "compile_ms": 1005.2,
+          "link_ms": 64.8,
+          "exec_ms": 17.7,
+          "obj_bytes": 53816
+        },
+        {
+          "id": "broad/test-morning-program",
+          "name": "test-morning-program",
+          "kind": "execute",
+          "cpu": 6,
+          "status": "pass",
+          "compile_ms": 2295.7,
+          "link_ms": 59.0,
+          "exec_ms": 7.4,
+          "obj_bytes": 296560
+        },
+        {
+          "id": "broad/test-evening-program",
+          "name": "test-evening-program",
+          "kind": "execute",
+          "cpu": 5,
+          "status": "pass",
+          "compile_ms": 2890.0,
+          "link_ms": 63.4,
+          "exec_ms": 11.0,
+          "obj_bytes": 337496
+        },
+        {
+          "id": "broad/test-rle-roundtrip",
+          "name": "test-rle-roundtrip",
+          "kind": "execute",
+          "cpu": 1,
+          "status": "pass",
+          "compile_ms": 835.7,
+          "link_ms": 49.6,
+          "exec_ms": 7.2,
+          "obj_bytes": 41032
+        },
+        {
+          "id": "broad/test-map-set-ops",
+          "name": "test-map-set-ops",
+          "kind": "execute",
+          "cpu": 3,
+          "status": "pass",
+          "compile_ms": 3016.1,
+          "link_ms": 53.9,
+          "exec_ms": 7.1,
+          "obj_bytes": 386216
+        },
+        {
+          "id": "broad/raytrace",
+          "name": "raytrace",
+          "kind": "execute",
+          "cpu": 4,
+          "status": "pass",
+          "compile_ms": 2339.5,
+          "link_ms": 52.3,
+          "exec_ms": 419.3,
+          "obj_bytes": 88512
+        },
+        {
+          "id": "broad/local-pair",
+          "name": "local-pair",
+          "kind": "execute",
+          "cpu": 0,
+          "status": "pass",
+          "compile_ms": 988.1,
+          "link_ms": 75.0,
+          "exec_ms": 41.4,
+          "obj_bytes": 49200
+        },
+        {
+          "id": "broad/local-fold",
+          "name": "local-fold",
+          "kind": "execute",
+          "cpu": 7,
+          "status": "pass",
+          "compile_ms": 747.3,
+          "link_ms": 61.2,
+          "exec_ms": 17.8,
+          "obj_bytes": 31296
+        },
+        {
+          "id": "broad/scalar-region-0",
+          "name": "scalar-region-0",
+          "kind": "execute",
+          "cpu": 2,
+          "status": "pass",
+          "compile_ms": 772.6,
+          "link_ms": 64.8,
+          "exec_ms": 16.5,
+          "obj_bytes": 33928
+        },
+        {
+          "id": "broad/scalar-region-8192",
+          "name": "scalar-region-8192",
+          "kind": "execute",
+          "cpu": 1,
+          "status": "pass",
+          "compile_ms": 791.9,
+          "link_ms": 76.2,
+          "exec_ms": 19.4,
+          "obj_bytes": 33928
+        },
+        {
+          "id": "broad/complete-generic-row32",
+          "name": "complete-generic-row32",
+          "kind": "execute",
+          "cpu": 7,
+          "status": "pass",
+          "compile_ms": 1078.8,
+          "link_ms": 71.2,
+          "exec_ms": 16.5,
+          "obj_bytes": 55928
+        },
+        {
+          "id": "broad/variation-editdist-0-17",
+          "name": "variation-editdist-0-17",
+          "kind": "execute",
+          "cpu": 2,
+          "status": "pass",
+          "compile_ms": 1046.8,
+          "link_ms": 62.3,
+          "exec_ms": 48.0,
+          "obj_bytes": 50800
+        },
+        {
+          "id": "broad/variation-editdist-3-123",
+          "name": "variation-editdist-3-123",
+          "kind": "execute",
+          "cpu": 1,
+          "status": "pass",
+          "compile_ms": 1004.9,
+          "link_ms": 58.0,
+          "exec_ms": 286.7,
+          "obj_bytes": 50800
+        },
+        {
+          "id": "broad/variation-lexer-6-17",
+          "name": "variation-lexer-6-17",
+          "kind": "execute",
+          "cpu": 0,
+          "status": "pass",
+          "compile_ms": 1126.3,
+          "link_ms": 52.2,
+          "exec_ms": 9.3,
+          "obj_bytes": 69104
+        },
+        {
+          "id": "broad/variation-lexer-10-123",
+          "name": "variation-lexer-10-123",
+          "kind": "execute",
+          "cpu": 6,
+          "status": "pass",
+          "compile_ms": 1099.5,
+          "link_ms": 53.3,
+          "exec_ms": 41.6,
+          "obj_bytes": 69104
+        },
+        {
+          "id": "broad/variation-tree-bitonic-6-17",
+          "name": "variation-tree-bitonic-6-17",
+          "kind": "execute",
+          "cpu": 7,
+          "status": "pass",
+          "compile_ms": 926.4,
+          "link_ms": 53.2,
+          "exec_ms": 12.7,
+          "obj_bytes": 50560
+        },
+        {
+          "id": "broad/variation-tree-bitonic-9-123",
+          "name": "variation-tree-bitonic-9-123",
+          "kind": "execute",
+          "cpu": 2,
+          "status": "pass",
+          "compile_ms": 946.7,
+          "link_ms": 58.6,
+          "exec_ms": 10.7,
+          "obj_bytes": 50560
+        },
+        {
+          "id": "broad/variation-symreg-4-17",
+          "name": "variation-symreg-4-17",
+          "kind": "execute",
+          "cpu": 5,
+          "status": "pass",
+          "compile_ms": 1019.2,
+          "link_ms": 51.9,
+          "exec_ms": 12.7,
+          "obj_bytes": 53816
+        },
+        {
+          "id": "broad/variation-symreg-7-123",
+          "name": "variation-symreg-7-123",
+          "kind": "execute",
+          "cpu": 0,
+          "status": "pass",
+          "compile_ms": 1035.5,
+          "link_ms": 50.0,
+          "exec_ms": 16.9,
+          "obj_bytes": 53816
+        },
+        {
+          "id": "broad/variation-local-fold-128-0",
+          "name": "variation-local-fold-128-0",
+          "kind": "execute",
+          "cpu": 1,
+          "status": "pass",
+          "compile_ms": 750.2,
+          "link_ms": 56.9,
+          "exec_ms": 6.9,
+          "obj_bytes": 31296
+        },
+        {
+          "id": "broad/variation-local-fold-8192-123",
+          "name": "variation-local-fold-8192-123",
+          "kind": "execute",
+          "cpu": 6,
+          "status": "pass",
+          "compile_ms": 736.3,
+          "link_ms": 52.6,
+          "exec_ms": 8.2,
+          "obj_bytes": 31296
+        },
+        {
+          "id": "broad/variation-mandelbrot-grid-4-7",
+          "name": "variation-mandelbrot-grid-4-7",
+          "kind": "execute",
+          "cpu": 4,
+          "status": "pass",
+          "compile_ms": 1017.7,
+          "link_ms": 62.7,
+          "exec_ms": 12.7,
+          "obj_bytes": 39208
+        },
+        {
+          "id": "broad/variation-mandelbrot-grid-5-31",
+          "name": "variation-mandelbrot-grid-5-31",
+          "kind": "execute",
+          "cpu": 3,
+          "status": "pass",
+          "compile_ms": 963.1,
+          "link_ms": 63.4,
+          "exec_ms": 22.0,
+          "obj_bytes": 39208
+        },
+        {
+          "id": "broad/variation-ray-active-64-2440",
+          "name": "variation-ray-active-64-2440",
+          "kind": "execute",
+          "cpu": 7,
+          "status": "pass",
+          "compile_ms": 2269.0,
+          "link_ms": 52.3,
+          "exec_ms": 9.6,
+          "obj_bytes": 83144
+        },
+        {
+          "id": "broad/variation-ray-active-256-2240",
+          "name": "variation-ray-active-256-2240",
+          "kind": "execute",
+          "cpu": 2,
+          "status": "pass",
+          "compile_ms": 2280.4,
+          "link_ms": 49.2,
+          "exec_ms": 17.8,
+          "obj_bytes": 83144
+        },
+        {
+          "id": "broad/coverage-closures-64",
+          "name": "coverage-closures-64",
+          "kind": "execute",
+          "cpu": 5,
+          "status": "pass",
+          "compile_ms": 695.7,
+          "link_ms": 63.3,
+          "exec_ms": 8.5,
+          "obj_bytes": 30608
+        },
+        {
+          "id": "broad/coverage-closures-256",
+          "name": "coverage-closures-256",
+          "kind": "execute",
+          "cpu": 1,
+          "status": "pass",
+          "compile_ms": 706.4,
+          "link_ms": 61.6,
+          "exec_ms": 7.4,
+          "obj_bytes": 30608
+        },
+        {
+          "id": "broad/coverage-list-pipeline-128",
+          "name": "coverage-list-pipeline-128",
+          "kind": "execute",
+          "cpu": 0,
+          "status": "pass",
+          "compile_ms": 765.5,
+          "link_ms": 49.8,
+          "exec_ms": 7.2,
+          "obj_bytes": 32056
+        },
+        {
+          "id": "broad/coverage-list-pipeline-512",
+          "name": "coverage-list-pipeline-512",
+          "kind": "execute",
+          "cpu": 6,
+          "status": "pass",
+          "compile_ms": 783.7,
+          "link_ms": 56.2,
+          "exec_ms": 7.7,
+          "obj_bytes": 32056
+        },
+        {
+          "id": "broad/coverage-bst-32",
+          "name": "coverage-bst-32",
+          "kind": "execute",
+          "cpu": 4,
+          "status": "pass",
+          "compile_ms": 860.7,
+          "link_ms": 58.4,
+          "exec_ms": 7.9,
+          "obj_bytes": 39224
+        },
+        {
+          "id": "broad/coverage-bst-64",
+          "name": "coverage-bst-64",
+          "kind": "execute",
+          "cpu": 3,
+          "status": "pass",
+          "compile_ms": 838.8,
+          "link_ms": 63.4,
+          "exec_ms": 8.6,
+          "obj_bytes": 39224
+        },
+        {
+          "id": "broad/coverage-unicode-text-16",
+          "name": "coverage-unicode-text-16",
+          "kind": "execute",
+          "cpu": 5,
+          "status": "pass",
+          "compile_ms": 865.9,
+          "link_ms": 58.8,
+          "exec_ms": 17.2,
+          "obj_bytes": 39816
+        },
+        {
+          "id": "broad/coverage-unicode-text-64",
+          "name": "coverage-unicode-text-64",
+          "kind": "execute",
+          "cpu": 1,
+          "status": "pass",
+          "compile_ms": 860.9,
+          "link_ms": 51.2,
+          "exec_ms": 8.3,
+          "obj_bytes": 39816
+        },
+        {
+          "id": "broad/coverage-expression-32",
+          "name": "coverage-expression-32",
+          "kind": "execute",
+          "cpu": 0,
+          "status": "pass",
+          "compile_ms": 723.2,
+          "link_ms": 53.6,
+          "exec_ms": 6.6,
+          "obj_bytes": 33784
+        },
+        {
+          "id": "broad/coverage-expression-128",
+          "name": "coverage-expression-128",
+          "kind": "execute",
+          "cpu": 6,
+          "status": "pass",
+          "compile_ms": 748.4,
+          "link_ms": 49.2,
+          "exec_ms": 7.1,
+          "obj_bytes": 33784
+        },
+        {
+          "id": "broad/coverage-map-churn-32",
+          "name": "coverage-map-churn-32",
+          "kind": "execute",
+          "cpu": 4,
+          "status": "pass",
+          "compile_ms": 2107.1,
+          "link_ms": 43.7,
+          "exec_ms": 5.5,
+          "obj_bytes": 269952
+        },
+        {
+          "id": "broad/coverage-map-churn-128",
+          "name": "coverage-map-churn-128",
+          "kind": "execute",
+          "cpu": 3,
+          "status": "pass",
+          "compile_ms": 1545.7,
+          "link_ms": 33.2,
+          "exec_ms": 7.3,
+          "obj_bytes": 269952
+        },
+        {
+          "id": "broad/coverage-numeric-recurrence-256",
+          "name": "coverage-numeric-recurrence-256",
+          "kind": "execute",
+          "cpu": 5,
+          "status": "pass",
+          "compile_ms": 674.0,
+          "link_ms": 45.3,
+          "exec_ms": 7.5,
+          "obj_bytes": 29016
+        },
+        {
+          "id": "broad/coverage-numeric-recurrence-1024",
+          "name": "coverage-numeric-recurrence-1024",
+          "kind": "execute",
+          "cpu": 1,
+          "status": "pass",
+          "compile_ms": 676.2,
+          "link_ms": 37.1,
+          "exec_ms": 5.8,
+          "obj_bytes": 29016
+        },
+        {
+          "id": "broad/coverage-record-aggregation-64",
+          "name": "coverage-record-aggregation-64",
+          "kind": "execute",
+          "cpu": 0,
+          "status": "pass",
+          "compile_ms": 2043.0,
+          "link_ms": 38.7,
+          "exec_ms": 7.2,
+          "obj_bytes": 274272
+        },
+        {
+          "id": "broad/coverage-record-aggregation-256",
+          "name": "coverage-record-aggregation-256",
+          "kind": "execute",
+          "cpu": 6,
+          "status": "pass",
+          "compile_ms": 1394.3,
+          "link_ms": 32.9,
+          "exec_ms": 6.6,
+          "obj_bytes": 274272
+        }
+      ]
+    },
+    "x86-object": {
+      "mode": "x86-object",
+      "passed": 58,
+      "total": 64,
+      "failed_count": 6,
+      "wall_s": 28.42,
+      "compile_sum_ms": 177439.3,
+      "failures": [
+        {
+          "id": "focused/pure-aggregate",
+          "name": "pure-aggregate",
+          "kind": "execute",
+          "cpu": 3,
+          "status": "fail",
+          "failed_stage": "emit",
+          "rc": 1,
+          "compile_ms": 646.4,
+          "obj_bytes": 0,
+          "error": "bend: a function the device does not hold"
+        },
+        {
+          "id": "broad/editdist",
+          "name": "editdist",
+          "kind": "execute",
+          "cpu": 1,
+          "status": "fail",
+          "failed_stage": "emit",
+          "rc": 1,
+          "compile_ms": 1837.7,
+          "obj_bytes": 0,
+          "error": "bend: a function the device does not hold"
+        },
+        {
+          "id": "broad/local-pair",
+          "name": "local-pair",
+          "kind": "execute",
+          "cpu": 4,
+          "status": "fail",
+          "failed_stage": "emit",
+          "rc": 1,
+          "compile_ms": 1664.9,
+          "obj_bytes": 0,
+          "error": "bend: a function the device does not hold"
+        },
+        {
+          "id": "broad/complete-generic-row32",
+          "name": "complete-generic-row32",
+          "kind": "execute",
+          "cpu": 2,
+          "status": "fail",
+          "failed_stage": "emit",
+          "rc": 1,
+          "compile_ms": 1570.2,
+          "obj_bytes": 0,
+          "error": "bend: a function the device does not hold"
+        },
+        {
+          "id": "broad/variation-editdist-0-17",
+          "name": "variation-editdist-0-17",
+          "kind": "execute",
+          "cpu": 4,
+          "status": "fail",
+          "failed_stage": "emit",
+          "rc": 1,
+          "compile_ms": 1823.7,
+          "obj_bytes": 0,
+          "error": "bend: a function the device does not hold"
+        },
+        {
+          "id": "broad/variation-editdist-3-123",
+          "name": "variation-editdist-3-123",
+          "kind": "execute",
+          "cpu": 5,
+          "status": "fail",
+          "failed_stage": "emit",
+          "rc": 1,
+          "compile_ms": 1798.9,
+          "obj_bytes": 0,
+          "error": "bend: a function the device does not hold"
+        }
+      ],
+      "cases": [
+        {
+          "id": "focused/nt-reverse",
+          "name": "nt-reverse",
+          "kind": "execute",
+          "cpu": 0,
+          "status": "pass",
+          "compile_ms": 1207.6,
+          "link_ms": 56.7,
+          "exec_ms": 8.2,
+          "obj_bytes": 49696
+        },
+        {
+          "id": "focused/string-reverse-heldout",
+          "name": "string-reverse-heldout",
+          "kind": "execute",
+          "cpu": 1,
+          "status": "pass",
+          "compile_ms": 1057.2,
+          "link_ms": 54.4,
+          "exec_ms": 7.7,
+          "obj_bytes": 41312
+        },
+        {
+          "id": "focused/higher-order-capture",
+          "name": "higher-order-capture",
+          "kind": "execute",
+          "cpu": 2,
+          "status": "pass",
+          "compile_ms": 969.5,
+          "link_ms": 64.2,
+          "exec_ms": 8.8,
+          "obj_bytes": 30000
+        },
+        {
+          "id": "focused/non-tail-list",
+          "name": "non-tail-list",
+          "kind": "execute",
+          "cpu": 3,
+          "status": "pass",
+          "compile_ms": 967.2,
+          "link_ms": 61.4,
+          "exec_ms": 9.7,
+          "obj_bytes": 32448
+        },
+        {
+          "id": "focused/arrays-io",
+          "name": "arrays-io",
+          "kind": "execute",
+          "cpu": 4,
+          "status": "pass",
+          "compile_ms": 1272.3,
+          "link_ms": 49.8,
+          "exec_ms": 7.4,
+          "obj_bytes": 92448
+        },
+        {
+          "id": "focused/lexer-scan",
+          "name": "lexer-scan",
+          "kind": "execute",
+          "cpu": 5,
+          "status": "pass",
+          "compile_ms": 2808.7,
+          "link_ms": 55.0,
+          "exec_ms": 7.5,
+          "obj_bytes": 82248
+        },
+        {
+          "id": "focused/negative-type",
+          "name": "negative-type",
+          "kind": "refusal",
+          "cpu": 6,
+          "status": "pass",
+          "rc": 1,
+          "compile_ms": 462.2,
+          "obj_bytes": 0,
+          "stderr": "check: main: constructor does not belong to goal or field count differs",
+          "diag_ok": true
+        },
+        {
+          "id": "focused/negative-affine",
+          "name": "negative-affine",
+          "kind": "refusal",
+          "cpu": 7,
+          "status": "pass",
+          "rc": 1,
+          "compile_ms": 480.4,
+          "obj_bytes": 0,
+          "stderr": "check: twice: affine variable consumed more than allowed",
+          "diag_ok": true
+        },
+        {
+          "id": "focused/negative-foreign",
+          "name": "negative-foreign",
+          "kind": "refusal",
+          "cpu": 6,
+          "status": "pass",
+          "rc": 1,
+          "compile_ms": 526.4,
+          "obj_bytes": 0,
+          "stderr": "compile: foreign provider unavailable in fixed runtime: p108_missing",
+          "diag_ok": true
+        },
+        {
+          "id": "focused/pure-char",
+          "name": "pure-char",
+          "kind": "execute",
+          "cpu": 7,
+          "status": "pass",
+          "compile_ms": 705.4,
+          "link_ms": 56.0,
+          "exec_ms": 7.2,
+          "obj_bytes": 30408
+        },
+        {
+          "id": "focused/pure-string",
+          "name": "pure-string",
+          "kind": "execute",
+          "cpu": 6,
+          "status": "pass",
+          "compile_ms": 684.8,
+          "link_ms": 66.1,
+          "exec_ms": 8.2,
+          "obj_bytes": 34648
+        },
+        {
+          "id": "focused/pure-aggregate",
+          "name": "pure-aggregate",
+          "kind": "execute",
+          "cpu": 3,
+          "status": "fail",
+          "failed_stage": "emit",
+          "rc": 1,
+          "compile_ms": 646.4,
+          "obj_bytes": 0,
+          "error": "bend: a function the device does not hold"
+        },
+        {
+          "id": "focused/u32-wide-wrap",
+          "name": "u32-wide-wrap",
+          "kind": "execute",
+          "cpu": 2,
+          "status": "pass",
+          "compile_ms": 1022.0,
+          "link_ms": 57.0,
+          "exec_ms": 8.1,
+          "obj_bytes": 31992
+        },
+        {
+          "id": "focused/u32-divmod",
+          "name": "u32-divmod",
+          "kind": "execute",
+          "cpu": 1,
+          "status": "pass",
+          "compile_ms": 1055.0,
+          "link_ms": 58.0,
+          "exec_ms": 7.7,
+          "obj_bytes": 23912
+        },
+        {
+          "id": "focused/nat-native",
+          "name": "nat-native",
+          "kind": "execute",
+          "cpu": 7,
+          "status": "pass",
+          "compile_ms": 2636.3,
+          "link_ms": 59.4,
+          "exec_ms": 7.4,
+          "obj_bytes": 26120
+        },
+        {
+          "id": "focused/f32-literal",
+          "name": "f32-literal",
+          "kind": "execute",
+          "cpu": 0,
+          "status": "pass",
+          "compile_ms": 1024.9,
+          "link_ms": 58.7,
+          "exec_ms": 6.4,
+          "obj_bytes": 28408
+        },
+        {
+          "id": "focused/f32-arithmetic",
+          "name": "f32-arithmetic",
+          "kind": "execute",
+          "cpu": 4,
+          "status": "pass",
+          "compile_ms": 906.1,
+          "link_ms": 57.1,
+          "exec_ms": 10.8,
+          "obj_bytes": 22584
+        },
+        {
+          "id": "focused/pure-u32",
+          "name": "pure-u32",
+          "kind": "execute",
+          "cpu": 3,
+          "status": "pass",
+          "compile_ms": 720.7,
+          "link_ms": 52.8,
+          "exec_ms": 10.1,
+          "obj_bytes": 30400
+        },
+        {
+          "id": "focused/pure-f32",
+          "name": "pure-f32",
+          "kind": "execute",
+          "cpu": 6,
+          "status": "pass",
+          "compile_ms": 714.0,
+          "link_ms": 53.2,
+          "exec_ms": 10.6,
+          "obj_bytes": 30400
+        },
+        {
+          "id": "broad/mandelbrot",
+          "name": "mandelbrot",
+          "kind": "execute",
+          "cpu": 2,
+          "status": "pass",
+          "compile_ms": 3219.7,
+          "link_ms": 55.8,
+          "exec_ms": 10.5,
+          "obj_bytes": 51040
+        },
+        {
+          "id": "broad/editdist",
+          "name": "editdist",
+          "kind": "execute",
+          "cpu": 1,
+          "status": "fail",
+          "failed_stage": "emit",
+          "rc": 1,
+          "compile_ms": 1837.7,
+          "obj_bytes": 0,
+          "error": "bend: a function the device does not hold"
+        },
+        {
+          "id": "broad/tree-bitonic",
+          "name": "tree-bitonic",
+          "kind": "execute",
+          "cpu": 4,
+          "status": "pass",
+          "compile_ms": 1865.7,
+          "link_ms": 54.6,
+          "exec_ms": 7.4,
+          "obj_bytes": 74024
+        },
+        {
+          "id": "broad/lexer",
+          "name": "lexer",
+          "kind": "execute",
+          "cpu": 0,
+          "status": "pass",
+          "compile_ms": 11192.5,
+          "link_ms": 51.3,
+          "exec_ms": 7.4,
+          "obj_bytes": 100576
+        },
+        {
+          "id": "broad/symreg",
+          "name": "symreg",
+          "kind": "execute",
+          "cpu": 3,
+          "status": "pass",
+          "compile_ms": 2321.9,
+          "link_ms": 53.7,
+          "exec_ms": 9.0,
+          "obj_bytes": 59696
+        },
+        {
+          "id": "broad/test-morning-program",
+          "name": "test-morning-program",
+          "kind": "execute",
+          "cpu": 6,
+          "status": "pass",
+          "compile_ms": 1325.6,
+          "link_ms": 58.5,
+          "exec_ms": 9.8,
+          "obj_bytes": 34000
+        },
+        {
+          "id": "broad/test-evening-program",
+          "name": "test-evening-program",
+          "kind": "execute",
+          "cpu": 5,
+          "status": "pass",
+          "compile_ms": 1561.7,
+          "link_ms": 54.9,
+          "exec_ms": 7.8,
+          "obj_bytes": 22584
+        },
+        {
+          "id": "broad/test-rle-roundtrip",
+          "name": "test-rle-roundtrip",
+          "kind": "execute",
+          "cpu": 6,
+          "status": "pass",
+          "compile_ms": 992.6,
+          "link_ms": 51.7,
+          "exec_ms": 7.1,
+          "obj_bytes": 22584
+        },
+        {
+          "id": "broad/test-map-set-ops",
+          "name": "test-map-set-ops",
+          "kind": "execute",
+          "cpu": 7,
+          "status": "pass",
+          "compile_ms": 2536.4,
+          "link_ms": 53.4,
+          "exec_ms": 6.6,
+          "obj_bytes": 22584
+        },
+        {
+          "id": "broad/raytrace",
+          "name": "raytrace",
+          "kind": "execute",
+          "cpu": 1,
+          "status": "pass",
+          "compile_ms": 6786.5,
+          "link_ms": 70.7,
+          "exec_ms": 22.2,
+          "obj_bytes": 57288
+        },
+        {
+          "id": "broad/local-pair",
+          "name": "local-pair",
+          "kind": "execute",
+          "cpu": 4,
+          "status": "fail",
+          "failed_stage": "emit",
+          "rc": 1,
+          "compile_ms": 1664.9,
+          "obj_bytes": 0,
+          "error": "bend: a function the device does not hold"
+        },
+        {
+          "id": "broad/local-fold",
+          "name": "local-fold",
+          "kind": "execute",
+          "cpu": 5,
+          "status": "pass",
+          "compile_ms": 1485.1,
+          "link_ms": 56.2,
+          "exec_ms": 7.5,
+          "obj_bytes": 47496
+        },
+        {
+          "id": "broad/scalar-region-0",
+          "name": "scalar-region-0",
+          "kind": "execute",
+          "cpu": 3,
+          "status": "pass",
+          "compile_ms": 1272.5,
+          "link_ms": 51.9,
+          "exec_ms": 7.1,
+          "obj_bytes": 24248
+        },
+        {
+          "id": "broad/scalar-region-8192",
+          "name": "scalar-region-8192",
+          "kind": "execute",
+          "cpu": 6,
+          "status": "pass",
+          "compile_ms": 1242.6,
+          "link_ms": 52.6,
+          "exec_ms": 7.4,
+          "obj_bytes": 24248
+        },
+        {
+          "id": "broad/complete-generic-row32",
+          "name": "complete-generic-row32",
+          "kind": "execute",
+          "cpu": 2,
+          "status": "fail",
+          "failed_stage": "emit",
+          "rc": 1,
+          "compile_ms": 1570.2,
+          "obj_bytes": 0,
+          "error": "bend: a function the device does not hold"
+        },
+        {
+          "id": "broad/variation-editdist-0-17",
+          "name": "variation-editdist-0-17",
+          "kind": "execute",
+          "cpu": 4,
+          "status": "fail",
+          "failed_stage": "emit",
+          "rc": 1,
+          "compile_ms": 1823.7,
+          "obj_bytes": 0,
+          "error": "bend: a function the device does not hold"
+        },
+        {
+          "id": "broad/variation-editdist-3-123",
+          "name": "variation-editdist-3-123",
+          "kind": "execute",
+          "cpu": 5,
+          "status": "fail",
+          "failed_stage": "emit",
+          "rc": 1,
+          "compile_ms": 1798.9,
+          "obj_bytes": 0,
+          "error": "bend: a function the device does not hold"
+        },
+        {
+          "id": "broad/variation-lexer-6-17",
+          "name": "variation-lexer-6-17",
+          "kind": "execute",
+          "cpu": 3,
+          "status": "pass",
+          "compile_ms": 11031.7,
+          "link_ms": 49.8,
+          "exec_ms": 7.1,
+          "obj_bytes": 100576
+        },
+        {
+          "id": "broad/variation-lexer-10-123",
+          "name": "variation-lexer-10-123",
+          "kind": "execute",
+          "cpu": 6,
+          "status": "pass",
+          "compile_ms": 11261.0,
+          "link_ms": 47.4,
+          "exec_ms": 7.0,
+          "obj_bytes": 100576
+        },
+        {
+          "id": "broad/variation-tree-bitonic-6-17",
+          "name": "variation-tree-bitonic-6-17",
+          "kind": "execute",
+          "cpu": 7,
+          "status": "pass",
+          "compile_ms": 1826.3,
+          "link_ms": 53.4,
+          "exec_ms": 7.4,
+          "obj_bytes": 74024
+        },
+        {
+          "id": "broad/variation-tree-bitonic-9-123",
+          "name": "variation-tree-bitonic-9-123",
+          "kind": "execute",
+          "cpu": 2,
+          "status": "pass",
+          "compile_ms": 1815.5,
+          "link_ms": 50.6,
+          "exec_ms": 8.6,
+          "obj_bytes": 74024
+        },
+        {
+          "id": "broad/variation-symreg-4-17",
+          "name": "variation-symreg-4-17",
+          "kind": "execute",
+          "cpu": 4,
+          "status": "pass",
+          "compile_ms": 2265.8,
+          "link_ms": 66.0,
+          "exec_ms": 10.2,
+          "obj_bytes": 59696
+        },
+        {
+          "id": "broad/variation-symreg-7-123",
+          "name": "variation-symreg-7-123",
+          "kind": "execute",
+          "cpu": 5,
+          "status": "pass",
+          "compile_ms": 2253.8,
+          "link_ms": 54.2,
+          "exec_ms": 10.0,
+          "obj_bytes": 59696
+        },
+        {
+          "id": "broad/variation-local-fold-128-0",
+          "name": "variation-local-fold-128-0",
+          "kind": "execute",
+          "cpu": 7,
+          "status": "pass",
+          "compile_ms": 1543.1,
+          "link_ms": 54.8,
+          "exec_ms": 7.1,
+          "obj_bytes": 47496
+        },
+        {
+          "id": "broad/variation-local-fold-8192-123",
+          "name": "variation-local-fold-8192-123",
+          "kind": "execute",
+          "cpu": 2,
+          "status": "pass",
+          "compile_ms": 1490.7,
+          "link_ms": 48.9,
+          "exec_ms": 6.6,
+          "obj_bytes": 47496
+        },
+        {
+          "id": "broad/variation-mandelbrot-grid-4-7",
+          "name": "variation-mandelbrot-grid-4-7",
+          "kind": "execute",
+          "cpu": 7,
+          "status": "pass",
+          "compile_ms": 1682.5,
+          "link_ms": 61.8,
+          "exec_ms": 7.4,
+          "obj_bytes": 26080
+        },
+        {
+          "id": "broad/variation-mandelbrot-grid-5-31",
+          "name": "variation-mandelbrot-grid-5-31",
+          "kind": "execute",
+          "cpu": 4,
+          "status": "pass",
+          "compile_ms": 1664.5,
+          "link_ms": 54.5,
+          "exec_ms": 6.8,
+          "obj_bytes": 26080
+        },
+        {
+          "id": "broad/variation-ray-active-64-2440",
+          "name": "variation-ray-active-64-2440",
+          "kind": "execute",
+          "cpu": 5,
+          "status": "pass",
+          "compile_ms": 5914.8,
+          "link_ms": 58.3,
+          "exec_ms": 7.3,
+          "obj_bytes": 43744
+        },
+        {
+          "id": "broad/variation-ray-active-256-2240",
+          "name": "variation-ray-active-256-2240",
+          "kind": "execute",
+          "cpu": 2,
+          "status": "pass",
+          "compile_ms": 5624.2,
+          "link_ms": 52.2,
+          "exec_ms": 7.5,
+          "obj_bytes": 43744
+        },
+        {
+          "id": "broad/coverage-closures-64",
+          "name": "coverage-closures-64",
+          "kind": "execute",
+          "cpu": 1,
+          "status": "pass",
+          "compile_ms": 966.4,
+          "link_ms": 52.2,
+          "exec_ms": 7.3,
+          "obj_bytes": 23248
+        },
+        {
+          "id": "broad/coverage-closures-256",
+          "name": "coverage-closures-256",
+          "kind": "execute",
+          "cpu": 4,
+          "status": "pass",
+          "compile_ms": 966.7,
+          "link_ms": 60.3,
+          "exec_ms": 7.5,
+          "obj_bytes": 23248
+        },
+        {
+          "id": "broad/coverage-list-pipeline-128",
+          "name": "coverage-list-pipeline-128",
+          "kind": "execute",
+          "cpu": 7,
+          "status": "pass",
+          "compile_ms": 1173.2,
+          "link_ms": 57.0,
+          "exec_ms": 7.8,
+          "obj_bytes": 31384
+        },
+        {
+          "id": "broad/coverage-list-pipeline-512",
+          "name": "coverage-list-pipeline-512",
+          "kind": "execute",
+          "cpu": 1,
+          "status": "pass",
+          "compile_ms": 1201.8,
+          "link_ms": 53.3,
+          "exec_ms": 7.0,
+          "obj_bytes": 31384
+        },
+        {
+          "id": "broad/coverage-bst-32",
+          "name": "coverage-bst-32",
+          "kind": "execute",
+          "cpu": 4,
+          "status": "pass",
+          "compile_ms": 1727.7,
+          "link_ms": 52.9,
+          "exec_ms": 7.1,
+          "obj_bytes": 65368
+        },
+        {
+          "id": "broad/coverage-bst-64",
+          "name": "coverage-bst-64",
+          "kind": "execute",
+          "cpu": 7,
+          "status": "pass",
+          "compile_ms": 1765.7,
+          "link_ms": 56.0,
+          "exec_ms": 8.4,
+          "obj_bytes": 65368
+        },
+        {
+          "id": "broad/coverage-unicode-text-16",
+          "name": "coverage-unicode-text-16",
+          "kind": "execute",
+          "cpu": 1,
+          "status": "pass",
+          "compile_ms": 1382.5,
+          "link_ms": 57.5,
+          "exec_ms": 7.6,
+          "obj_bytes": 50336
+        },
+        {
+          "id": "broad/coverage-unicode-text-64",
+          "name": "coverage-unicode-text-64",
+          "kind": "execute",
+          "cpu": 0,
+          "status": "pass",
+          "compile_ms": 1388.0,
+          "link_ms": 54.3,
+          "exec_ms": 10.7,
+          "obj_bytes": 50336
+        },
+        {
+          "id": "broad/coverage-expression-32",
+          "name": "coverage-expression-32",
+          "kind": "execute",
+          "cpu": 4,
+          "status": "pass",
+          "compile_ms": 1190.3,
+          "link_ms": 53.9,
+          "exec_ms": 8.3,
+          "obj_bytes": 36280
+        },
+        {
+          "id": "broad/coverage-expression-128",
+          "name": "coverage-expression-128",
+          "kind": "execute",
+          "cpu": 1,
+          "status": "pass",
+          "compile_ms": 1169.4,
+          "link_ms": 44.8,
+          "exec_ms": 4.7,
+          "obj_bytes": 36280
+        },
+        {
+          "id": "broad/coverage-map-churn-32",
+          "name": "coverage-map-churn-32",
+          "kind": "execute",
+          "cpu": 7,
+          "status": "pass",
+          "compile_ms": 12909.9,
+          "link_ms": 41.9,
+          "exec_ms": 5.8,
+          "obj_bytes": 401832
+        },
+        {
+          "id": "broad/coverage-map-churn-128",
+          "name": "coverage-map-churn-128",
+          "kind": "execute",
+          "cpu": 0,
+          "status": "pass",
+          "compile_ms": 12606.1,
+          "link_ms": 44.0,
+          "exec_ms": 5.4,
+          "obj_bytes": 401832
+        },
+        {
+          "id": "broad/coverage-numeric-recurrence-256",
+          "name": "coverage-numeric-recurrence-256",
+          "kind": "execute",
+          "cpu": 4,
+          "status": "pass",
+          "compile_ms": 987.9,
+          "link_ms": 56.5,
+          "exec_ms": 7.5,
+          "obj_bytes": 23568
+        },
+        {
+          "id": "broad/coverage-numeric-recurrence-1024",
+          "name": "coverage-numeric-recurrence-1024",
+          "kind": "execute",
+          "cpu": 1,
+          "status": "pass",
+          "compile_ms": 895.1,
+          "link_ms": 57.9,
+          "exec_ms": 18.5,
+          "obj_bytes": 23568
+        },
+        {
+          "id": "broad/coverage-record-aggregation-64",
+          "name": "coverage-record-aggregation-64",
+          "kind": "execute",
+          "cpu": 2,
+          "status": "pass",
+          "compile_ms": 12151.5,
+          "link_ms": 33.3,
+          "exec_ms": 4.7,
+          "obj_bytes": 387200
+        },
+        {
+          "id": "broad/coverage-record-aggregation-256",
+          "name": "coverage-record-aggregation-256",
+          "kind": "execute",
+          "cpu": 5,
+          "status": "pass",
+          "compile_ms": 12217.9,
+          "link_ms": 42.8,
+          "exec_ms": 7.2,
+          "obj_bytes": 387200
+        }
+      ]
+    }
+  },
+  "observer": {
+    "x86-object": {
+      "mode": "x86-object",
+      "passed": 15,
+      "total": 15,
+      "violations": 0,
+      "wall_s": 10.53,
+      "probes": [
+        {
+          "probe": "map_set_del_get",
+          "cpu": 0,
+          "compile_ms": 10457.9,
+          "obj_bytes": 493664,
+          "compile_ok": true,
+          "runs": [
+            {
+              "obs_mode": "normal",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "4008146603",
+              "expected": "4008146603",
+              "stderr": ""
+            },
+            {
+              "obs_mode": "cap-no8",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "4008146603",
+              "expected": "4008146603",
+              "stderr": ""
+            },
+            {
+              "obs_mode": "all-hot",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "4008146603",
+              "expected": "4008146603",
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "probe": "bst_zipper",
+          "cpu": 1,
+          "compile_ms": 2053.0,
+          "obj_bytes": 68800,
+          "compile_ok": true,
+          "runs": [
+            {
+              "obs_mode": "normal",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "382401606",
+              "expected": "382401606",
+              "stderr": ""
+            },
+            {
+              "obs_mode": "cap-no8",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "382401606",
+              "expected": "382401606",
+              "stderr": ""
+            },
+            {
+              "obs_mode": "all-hot",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "382401606",
+              "expected": "382401606",
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "probe": "flow_native",
+          "cpu": 2,
+          "compile_ms": 1850.2,
+          "obj_bytes": 59496,
+          "compile_ok": true,
+          "runs": [
+            {
+              "obs_mode": "normal",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "49913905",
+              "expected": "49913905",
+              "stderr": ""
+            },
+            {
+              "obs_mode": "cap-no8",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "49913905",
+              "expected": "49913905",
+              "stderr": ""
+            },
+            {
+              "obs_mode": "all-hot",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "49913905",
+              "expected": "49913905",
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "probe": "perceus_reuse",
+          "cpu": 3,
+          "compile_ms": 1695.9,
+          "obj_bytes": 33840,
+          "compile_ok": true,
+          "runs": [
+            {
+              "obs_mode": "normal",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "3114",
+              "expected": "3114",
+              "stderr": ""
+            },
+            {
+              "obs_mode": "cap-no8",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "3114",
+              "expected": "3114",
+              "stderr": ""
+            },
+            {
+              "obs_mode": "all-hot",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "3114",
+              "expected": "3114",
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "probe": "listapp_arrlist",
+          "cpu": 4,
+          "compile_ms": 2986.1,
+          "obj_bytes": 47328,
+          "compile_ok": true,
+          "runs": [
+            {
+              "obs_mode": "normal",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "3905793128",
+              "expected": "3905793128",
+              "stderr": ""
+            },
+            {
+              "obs_mode": "cap-no8",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "3905793128",
+              "expected": "3905793128",
+              "stderr": ""
+            },
+            {
+              "obs_mode": "all-hot",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "3905793128",
+              "expected": "3905793128",
+              "stderr": ""
+            }
+          ]
+        }
+      ]
+    },
+    "x86-object-fast": {
+      "mode": "x86-object-fast",
+      "passed": 15,
+      "total": 15,
+      "violations": 0,
+      "wall_s": 1.77,
+      "probes": [
+        {
+          "probe": "map_set_del_get",
+          "cpu": 0,
+          "compile_ms": 1687.1,
+          "obj_bytes": 304272,
+          "compile_ok": true,
+          "runs": [
+            {
+              "obs_mode": "normal",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "4008146603",
+              "expected": "4008146603",
+              "stderr": ""
+            },
+            {
+              "obs_mode": "cap-no8",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "4008146603",
+              "expected": "4008146603",
+              "stderr": ""
+            },
+            {
+              "obs_mode": "all-hot",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "4008146603",
+              "expected": "4008146603",
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "probe": "bst_zipper",
+          "cpu": 1,
+          "compile_ms": 531.7,
+          "obj_bytes": 42928,
+          "compile_ok": true,
+          "runs": [
+            {
+              "obs_mode": "normal",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "382401606",
+              "expected": "382401606",
+              "stderr": ""
+            },
+            {
+              "obs_mode": "cap-no8",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "382401606",
+              "expected": "382401606",
+              "stderr": ""
+            },
+            {
+              "obs_mode": "all-hot",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "382401606",
+              "expected": "382401606",
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "probe": "flow_native",
+          "cpu": 2,
+          "compile_ms": 530.0,
+          "obj_bytes": 45064,
+          "compile_ok": true,
+          "runs": [
+            {
+              "obs_mode": "normal",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "49913905",
+              "expected": "49913905",
+              "stderr": ""
+            },
+            {
+              "obs_mode": "cap-no8",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "49913905",
+              "expected": "49913905",
+              "stderr": ""
+            },
+            {
+              "obs_mode": "all-hot",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "49913905",
+              "expected": "49913905",
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "probe": "perceus_reuse",
+          "cpu": 3,
+          "compile_ms": 468.4,
+          "obj_bytes": 35112,
+          "compile_ok": true,
+          "runs": [
+            {
+              "obs_mode": "normal",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "3114",
+              "expected": "3114",
+              "stderr": ""
+            },
+            {
+              "obs_mode": "cap-no8",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "3114",
+              "expected": "3114",
+              "stderr": ""
+            },
+            {
+              "obs_mode": "all-hot",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "3114",
+              "expected": "3114",
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "probe": "listapp_arrlist",
+          "cpu": 4,
+          "compile_ms": 773.1,
+          "obj_bytes": 46448,
+          "compile_ok": true,
+          "runs": [
+            {
+              "obs_mode": "normal",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "3905793128",
+              "expected": "3905793128",
+              "stderr": ""
+            },
+            {
+              "obs_mode": "cap-no8",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "3905793128",
+              "expected": "3905793128",
+              "stderr": ""
+            },
+            {
+              "obs_mode": "all-hot",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "3905793128",
+              "expected": "3905793128",
+              "stderr": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "elf_audit": {
+    "x86-object": {
+      "mode": "x86-object",
+      "source": "research/agy/w7_bench/compiler_slice.bend",
+      "compile_ms": 6880.1,
+      "obj_bytes": 390536,
+      "pass": true,
+      "checks": {
+        "p111_cid_hot_in_writable_data": true,
+        "p111_cid_arity_in_rodata": true,
+        "p111_cid_names_0_in_rodata": true
+      },
+      "sections": {
+        "1": {
+          "index": 1,
+          "name": ".text",
+          "type": "PROGBITS",
+          "addr_hex": "0000000000000000",
+          "off_hex": "000040",
+          "size_hex": "02b4d0",
+          "size_bytes": 177360,
+          "flags": "AX"
+        },
+        "2": {
+          "index": 2,
+          "name": ".rodata",
+          "type": "PROGBITS",
+          "addr_hex": "0000000000000000",
+          "off_hex": "02b510",
+          "size_hex": "008cdd",
+          "size_bytes": 36061,
+          "flags": "A"
+        },
+        "3": {
+          "index": 3,
+          "name": ".data",
+          "type": "PROGBITS",
+          "addr_hex": "0000000000000000",
+          "off_hex": "0341f0",
+          "size_hex": "003779",
+          "size_bytes": 14201,
+          "flags": "WA"
+        }
+      },
+      "symbols": {
+        "p111_cid_arity": {
+          "name": "p111_cid_arity",
+          "size": 775,
+          "type": "OBJECT",
+          "bind": "LOCAL",
+          "vis": "DEFAULT",
+          "ndx": 2,
+          "section_name": ".rodata",
+          "section_flags": "A"
+        },
+        "p111_cid_hot": {
+          "name": "p111_cid_hot",
+          "size": 775,
+          "type": "OBJECT",
+          "bind": "LOCAL",
+          "vis": "DEFAULT",
+          "ndx": 3,
+          "section_name": ".data",
+          "section_flags": "WA"
+        },
+        "p111_cid_names_0": {
+          "name": "p111_cid_names_0",
+          "size": 5,
+          "type": "OBJECT",
+          "bind": "LOCAL",
+          "vis": "DEFAULT",
+          "ndx": 2,
+          "section_name": ".rodata",
+          "section_flags": "A"
+        }
+      }
+    },
+    "x86-object-fast": {
+      "mode": "x86-object-fast",
+      "source": "research/agy/w7_bench/compiler_slice.bend",
+      "compile_ms": 4462.4,
+      "obj_bytes": 377176,
+      "pass": true,
+      "checks": {
+        "p111_cid_hot_in_writable_data": true,
+        "p111_cid_arity_in_rodata": true,
+        "p111_cid_names_0_in_rodata": true
+      },
+      "sections": {
+        "1": {
+          "index": 1,
+          "name": ".text",
+          "type": "PROGBITS",
+          "addr_hex": "0000000000000000",
+          "off_hex": "000040",
+          "size_hex": "02d916",
+          "size_bytes": 186646,
+          "flags": "AX"
+        },
+        "2": {
+          "index": 2,
+          "name": ".rodata",
+          "type": "PROGBITS",
+          "addr_hex": "0000000000000000",
+          "off_hex": "02d958",
+          "size_hex": "008cdd",
+          "size_bytes": 36061,
+          "flags": "A"
+        },
+        "3": {
+          "index": 3,
+          "name": ".data",
+          "type": "PROGBITS",
+          "addr_hex": "0000000000000000",
+          "off_hex": "036638",
+          "size_hex": "003779",
+          "size_bytes": 14201,
+          "flags": "WA"
+        }
+      },
+      "symbols": {
+        "p111_cid_arity": {
+          "name": "p111_cid_arity",
+          "size": 775,
+          "type": "OBJECT",
+          "bind": "LOCAL",
+          "vis": "DEFAULT",
+          "ndx": 2,
+          "section_name": ".rodata",
+          "section_flags": "A"
+        },
+        "p111_cid_hot": {
+          "name": "p111_cid_hot",
+          "size": 775,
+          "type": "OBJECT",
+          "bind": "LOCAL",
+          "vis": "DEFAULT",
+          "ndx": 3,
+          "section_name": ".data",
+          "section_flags": "WA"
+        },
+        "p111_cid_names_0": {
+          "name": "p111_cid_names_0",
+          "size": 5,
+          "type": "OBJECT",
+          "bind": "LOCAL",
+          "vis": "DEFAULT",
+          "ndx": 2,
+          "section_name": ".rodata",
+          "section_flags": "A"
+        }
+      }
+    },
+    "n6_o2_binary": {
+      "binary": "selfhost/build/agy/wave18-native-mod/n9_o2",
+      "size_bytes": 80394120,
+      "pass": true,
+      "checks": {
+        "text_AX": true,
+        "rodata_A_noW": true,
+        "data_WA": true
+      },
+      "sections": {
+        ".text": {
+          "index": 13,
+          "name": ".text",
+          "type": "PROGBITS",
+          "addr_hex": "0000000000402550",
+          "off_hex": "002550",
+          "size_hex": "46d1ce1",
+          "size_bytes": 74259681,
+          "flags": "AX"
+        },
+        ".rodata": {
+          "index": 15,
+          "name": ".rodata",
+          "type": "PROGBITS",
+          "addr_hex": "0000000004ad5000",
+          "off_hex": "46d5000",
+          "size_hex": "0948e0",
+          "size_bytes": 608480,
+          "flags": "A"
+        },
+        ".data": {
+          "index": 24,
+          "name": ".data",
+          "type": "PROGBITS",
+          "addr_hex": "0000000004b6e2a8",
+          "off_hex": "476d2a8",
+          "size_hex": "145d70",
+          "size_bytes": 1334640,
+          "flags": "WA"
+        },
+        ".bss": {
+          "index": 25,
+          "name": ".bss",
+          "type": "NOBITS",
+          "addr_hex": "0000000004cb4080",
+          "off_hex": "48b3018",
+          "size_hex": "118688",
+          "size_bytes": 1148552,
+          "flags": "WA"
+        }
+      }
+    }
+  },
+  "total_wall_s": 65.28,
+  "total_passed": 152,
+  "total_cases": 158,
+  "elf_audit_pass": true,
+  "all_pass": false
+}

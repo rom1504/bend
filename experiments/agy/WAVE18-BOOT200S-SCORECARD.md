@@ -1,7 +1,7 @@
 # Wave 18 (`BOOT-200S`) Final Scorecard
 
-**Date:** 2026-11-24 (`04:57 UTC`)  
-**Status:** **`n9_o2` MINTED & SMOKE-PASSED (FULL RECLAMATION) — `m11` `x187_pub` Straggler & Qualification Pending Follow-Up (Hard Deadline Reached)**
+**Date:** 2026-11-24 (`05:29 UTC`)  
+**Status:** **PROMOTION BLOCKED (`152/158` Qual FAIL — GDB Root-Caused to `w13e_sa_chk_scalar` Miscompile in `n9_o2`); B2 Contracts 100% PASS; `gameoflife` Restored (`0.5133× C`); Cold `-O0` (`79.84 s`) & Cold `-O2` (`394.20 s`, 16/16 Linked) Complete**
 
 ---
 
@@ -25,35 +25,42 @@
 | **Stage 1 (`n9_o2`)** | `n9_stage0` | `k16_wave18_dfs` | `x86-module` (`-O2`) | `15/16` + `419.3 s` (`m11`) | `425.7 MiB` (`515.8 MiB` `m11`) | **`35,638 / 65,532`** | **`80.4 MB`** | **`-O0`: `4.32 s` (`34`)**, **`-O2`: `7.03 s` (`34`)** |
 
 - **Direct Oracle Extracted:** `3,673` exact Wave 18 `-O2` direct symbols → [p113d_oracle_w18_o2.txt](file:///home/ai/bend2_agy/research/agy/boot_200s/w18_final/p113d_oracle_w18_o2.txt).
-- **Smoke Speedup vs `n8_o2`:** `compiler_slice.bend` `-O0` improved **`5.07 s → 4.32 s` (`1.17×`)** and `-O2` improved **`7.95 s → 7.03 s` (`1.13×`)**!
 
 ---
 
-## 3. Official 8-Core Cold `-O2` Self-Compile on `n9_o2` (`k16_wave18_dfs`, Full Reclamation)
+## 3. Official Qualification Gate, 7-Family Suite, `terrain`, & B2 Contracts on `n9_o2`
 
-15 of 16 modules completed cleanly with **major stage speedups** over `n8_o2` (`k16_wave17` BFS):
+| Gate | Result | Details |
+|---|---|---|
+| **`native64` `-O0` (`x86-object-fast`)** | **PASS (`64/64`)** | Wall `9.93 s`, compile_sum `66.68 s` |
+| **`native64` `-O2` (`x86-object`)** | **FAIL (`58/64`)** | **6 emit failures** (`focused/pure-aggregate`, `broad/editdist`, `broad/local-pair`, `broad/complete-generic-row32`, `broad/variation-editdist-0-17`, `broad/variation-editdist-3-123`) |
+| **Live-Metadata Observer (`-O2` & `-O0`)** | **PASS (`30/30`)** | `15/15` `-O2` (`10.53 s`), `15/15` `-O0` (`1.77 s`), `0` violations |
+| **ELF Section Audit** | **PASS** | `.text=74.26 MB (AX)`, `.rodata=608 KB (A)`, `.data=1.33 MB (WA)`, `.bss=1.15 MB (WA)` |
+| **B2 Cross-Module Contracts (`-O0` & `-O2`)** | **PASS (`100%`)** | Mono == Split A == Split B (`174`), relink v2 (`207`) with byte-identical caller `.o`, direct-only `add_mul` omitted from `p111`, closure factory, CPS continuation, fail-loud negative test all PASS |
+| **7-Family Proxy Suite (CPU 7, 5-run median)** | **FAIL (`5/7`)** | **`gameoflife` RESTORED (`497.54 ms`, `0.5133× C`)**, `expression` (`8.84 ms`, `1.3636× C`), `list` (`0.307 ms`, `1.1213× C`), `nbody` (`94.98 ms`, `1.0630× C`), `histogram` (`42.21 ms`, `1.8119× C`); **`bst` & `editdist` FAIL TO COMPILE** |
+| **`terrain` Holdout (CPU 7)** | **FAIL** | **FAILS TO COMPILE** (same `w13e_sa_chk_body` crash) |
 
-| Metric | `n8_o2` (`k16` BFS, 16/16) | `n9_o2` (`k16` DFS, 15/16) | Delta |
-|---|---:|---:|---|
-| **`p86_plan` range** | `13.02 – 20.20 s` | **`9.45 – 12.80 s`** | **`~1.5×` faster (B4 + DFS)** |
-| **`x198pw_plan` range** | `31.43 – 75.41 s` | **`29.81 – 62.93 s`** | **`-17%` max** |
-| **`x187_priv` range** | `50.01 – 139.88 s` | `49.08 – 123.36 s` (`m02`: `207.6 s`) | Faster on 14/15; `m02` outlier |
-| **`x187_pub` range** | `7.10 – 105.30 s` | **`27.67 – 53.66 s`** (`m11` straggler) | **2× tighter on 15/16** |
-| **Total FIDs** | `42,284 / 65,532` | **`35,283 / 65,532`** | **`-16.6%` fewer FIDs** |
-| **Max RSS (15/16)** | `412.6 MiB` | **`432.9 MiB`** | **`<= 450 MiB` budget** |
-| **15-Module Median / CPU Sum** | `148.3 s` / `2,333.2 s` (16 mods) | **`141.1 s`** / `2,082.5 s` (15 mods) | On track for ~278 s without `m11` |
-
-### Root Cause of `m11` Straggler (`TIMEOUT` at `360 s`)
-- `m11` reached `x187_pub done=2000/2490` at `elapsed=357.6 s` (`p86=12.7 s`, `pw=51.1 s`, `priv=91.7 s`, `pub > 266 s` — **`5–10×` slower in `x187_pub`** than every other module's `27.7–53.7 s`).
-- `k16_wave18_dfs` co-located `w13e_sa_rew_body` (`7,372 B`) and `w13e_sa_chk_body` (`6,329 B`) in `m11`, creating a single-module `x187_pub` tail bottleneck (~400 s).
+### GDB Root Cause of All 9 `-O2` Compile Failures (`152/158` Blocker)
+- **Control check:** `n8_o2` compiles `focused/pure-aggregate` cleanly (`rc=0`), whereas `n9_o2` aborts inside `x198pw_plan` with `bend: a function the device does not hold` (`p111_rt_fail(4)`).
+- **Exact GDB stack trace on `focused/pure-aggregate`:**
+  `p111_FID_$direct.w13e_sa_chk_body` → `p113d_FID_$direct.w13e_sa_chk_scalar` → `p113d_FID_$direct.w13e_str_in` → `p113d_FID_$direct.agy_str_eq___sh_slow` → `p113d_FID_$p118borrow.read.agy_str_eq___sh_slow` → `p113d_FID_$p118borrow.read.String.order.go___sh_slow` → `p111_rt_fail(4)`.
+- **Corrupted value:** `String.order.go` received `rcx = 0x0100040000000000` (`List.Nil`, `cid=4`) and `r9 = 0x0101640000000000` (`CON` with `cid=356`, NOT a `List`) from `w13e_sa_chk_scalar` after `p125_rt_take1`. All 9 failing tests (`pure-aggregate`, `editdist`, `local-pair`, `complete-generic-row32`, `variation-editdist-*`, `bst`, `terrain`) exercise Wave 13e Scalar Aggregate SROA (`w13e_sa_chk_body` / `w13e_sa_chk_scalar`, compiled in `m11` by Wave 18's new `-O2` passes: `O2-A`/`O2-E`/`B3`).
 
 ---
 
-## 4. Handoff / Ready-to-Run Follow-Up (Zero Re-Mint Needed!)
+## 4. Official 8-Core Cold Self-Compile Benchmarks on `n9_o2` (`k16_wave18_dfs`, Full Reclamation)
 
-All intermediate `/tmp/agy_w18` artifacts have been cleaned (`/dev/md2` preserved `>= 5.3 GiB` free), and `n9_o2` is preserved hot at [n9_o2](file:///home/ai/bend2_agy/selfhost/build/agy/wave18-native-mod/n9_o2). Because promotion gates have not run yet, `n6_o2`, `n7_o2`, and `n8_o2` were all left untouched.
+| Benchmark | Compiler | Target | Wall Time | Compile Wall | CPU Sum | Max RSS | Total FIDs | Smoke (`compiler_slice.bend`) |
+|---|---|---|---:|---:|---:|---:|---:|---|
+| **Cold `-O0`** (`x86-module-fast`) | `n9_o2` | `k16_wave18_dfs` | **`79.84 s`** | `78.31 s` | `536.19 s` | **`318.0 MiB`** | **`35,645 / 65,532`** | `n10_o0` `-O0`: `7.16 s` (`34`) |
+| **Cold `-O2`** (`x86-module`) | `n9_o2` | `k16_wave18_dfs` | **`394.20 s`** | `392.57 s` | `2,482.66 s` | **`529.7 MiB`** (`434.2 MiB` ex-`m11`) | **`35,283 / 65,532`** | `n10_o2` `-O0`: **`4.19 s`** (`34`), `-O2`: **`6.68 s`** (`34`) |
 
-Ready-to-run commands for immediate qualification (~6 min total):
-1. **Full Qualification (`158/158` + 7-family + `terrain`):** `python3 research/agy/boot_200s/w18_final/run_w18_gate.py all`
-2. **B2 Cross-Module Contracts:** `python3 research/agy/boot_200s/b2_direct_fid/test_b2_contracts.py --compiler selfhost/build/agy/wave18-native-mod/n9_o2`
-3. **Cold `-O2` (with `timeout_s=540`) & Cold `-O0`:** `python3 research/agy/boot_200s/w18_final/run_w18_mint_and_bench.py --stages 2`
+- **Cold `-O0` vs `n7_o2` (`62.87 s` on `k10`):** `k16` incurs 16× fixed `p86_plan` (`8.3–11.1 s` each) vs 10× on `k10`, plus `m11` at `42.27 s`.
+- **Cold `-O2` `m11` Straggler Breakdown:** `m11` took **`364.20 s`** (`rss=529.7 MiB`, `p86=12.65 s`, `pw=51.19 s`, `priv=90.62 s`, **`pub=271.23 s`** vs `28.9–54.4 s` for all other 15 modules; 2nd slowest `m02` was `240.34 s` with `priv=209.05 s`, `pub=28.91 s`). Co-locating `w13e_sa_rew_body` (`7,372 B`) + `w13e_sa_chk_body` (`6,329 B`) in `m11` added ~110 s to wall time.
+
+---
+
+## 5. Promotion & Disk Hygiene
+
+- **Promotion:** **BLOCKED** (`152/158` qual fail). `n6_o2`, `n7_o2`, `n8_o2`, and `n9_o2` are all preserved untouched (no `gzip`).
+- **Next Action:** Bisect which Wave 18 `-O2` patch (`O2-E` non-loop fast paths / `B3` `x185`/`x190`/`x192` / `O2-A` caps) miscompiles `w13e_sa_chk_scalar` in `m11`, fix it, re-mint `n9_o2`, and re-run `run_w18_gate.py all`.

@@ -461,90 +461,94 @@ def stage1_mint_n9_o2(state: dict, resume: bool = False) -> None:
     STATE_JSON.write_text(json.dumps(state, indent=2) + "\n")
 
 
-def run_cold_bench(label: str, mode_args: list[str], work_root: Path, run_o2_smoke: bool = True) -> dict:
+def run_cold_bench(
+    label: str, mode_args: list[str], work_root: Path, run_o2_smoke: bool = True, timeout_s: int = 600
+) -> dict:
     k_dir = ROOT / "selfhost/build/agy/wave18_unified/k16_wave18_dfs"
     manifest = json.loads((k_dir / "manifest.json").read_text(encoding="utf-8"))
     mod_names = [m["name"] for m in manifest["modules"]]
     if work_root.exists():
         shutil.rmtree(work_root)
     work_root.mkdir(parents=True, exist_ok=True)
-    src_dir, obj_dir = work_root / "src", work_root / "obj"
+    try:
+        src_dir, obj_dir = work_root / "src", work_root / "obj"
 
-    w18_set = {x.strip() for x in ORACLE_W18_O2.read_text().splitlines() if x.strip()}
-    if "x86-module-fast" in mode_args:
-        o0_set = {x.strip() for x in ORACLE_W16_O0.read_text().splitlines() if x.strip()}
-        oracle_set = w18_set & o0_set
-    else:
-        oracle_set = w18_set
+        w18_set = {x.strip() for x in ORACLE_W18_O2.read_text().splitlines() if x.strip()}
+        if "x86-module-fast" in mode_args:
+            o0_set = {x.strip() for x in ORACLE_W16_O0.read_text().splitlines() if x.strip()}
+            oracle_set = w18_set & o0_set
+        else:
+            oracle_set = w18_set
 
-    print(
-        f"\n=== OFFICIAL 8-CORE ZERO-CACHE COLD SELF-COMPILE: {label} (k16_wave18_dfs, mode={mode_args}, EMPTY {work_root}) ===",
-        flush=True,
-    )
-    t_all0 = time.perf_counter()
-    stub_meta = gen_stubs.generate_all(k_dir, src_dir, abi_mode="oracle", direct_set=oracle_set)
-    stub_ms = stub_meta["elapsed_ms"]
-    print(f"  [1/3] gen_stubs: {stub_ms:.1f} ms (oracle={len(oracle_set)})", flush=True)
+        print(
+            f"\n=== OFFICIAL 8-CORE ZERO-CACHE COLD SELF-COMPILE: {label} (k16_wave18_dfs, mode={mode_args}, EMPTY {work_root}, timeout={timeout_s}s) ===",
+            flush=True,
+        )
+        t_all0 = time.perf_counter()
+        stub_meta = gen_stubs.generate_all(k_dir, src_dir, abi_mode="oracle", direct_set=oracle_set)
+        stub_ms = stub_meta["elapsed_ms"]
+        print(f"  [1/3] gen_stubs: {stub_ms:.1f} ms (oracle={len(oracle_set)})", flush=True)
 
-    comp = compile_k_parallel(N9_O2, k_dir, src_dir, obj_dir, CPUS, mode_args, timeout_s=360)
-    print(
-        f"  [2/3] compile_wall: {comp['wall_ms']:.1f} ms ({comp['wall_ms']/1000:.2f}s) | "
-        f"cpu_sum={comp['cpu_sum_ms']:.1f} ms | max_rss={comp['max_rss_mib']:.1f} MiB | "
-        f"segs={comp['total_segs']}/65532",
-        flush=True,
-    )
-    comp, fits, repacked = repack_if_needed(comp, N9_O2, src_dir, obj_dir, CPUS, mode_args, timeout_s=360)
-    assert fits, f"{label} K=16 FID overflow: {comp['total_segs']}"
-    fid_bases = {r["mod"]: r["fid_base"] for r in comp["modules"]}
-    fix_undefined_p113d(N9_O2, k_dir, src_dir, obj_dir, mod_names, fid_bases, oracle_set, CPUS, mode_args, timeout_s=360)
+        comp = compile_k_parallel(N9_O2, k_dir, src_dir, obj_dir, CPUS, mode_args, timeout_s=timeout_s)
+        print(
+            f"  [2/3] compile_wall: {comp['wall_ms']:.1f} ms ({comp['wall_ms']/1000:.2f}s) | "
+            f"cpu_sum={comp['cpu_sum_ms']:.1f} ms | max_rss={comp['max_rss_mib']:.1f} MiB | "
+            f"segs={comp['total_segs']}/65532",
+            flush=True,
+        )
+        comp, fits, repacked = repack_if_needed(comp, N9_O2, src_dir, obj_dir, CPUS, mode_args, timeout_s=timeout_s)
+        assert fits, f"{label} K=16 FID overflow: {comp['total_segs']}"
+        fid_bases = {r["mod"]: r["fid_base"] for r in comp["modules"]}
+        fix_undefined_p113d(N9_O2, k_dir, src_dir, obj_dir, mod_names, fid_bases, oracle_set, CPUS, mode_args, timeout_s=timeout_s)
 
-    out_bin = work_root / f"n10_{label}"
-    merge_ms, link_ms = mb.merge_and_link(N9_O2, mod_names, obj_dir, obj_dir / "merge.o", out_bin, cpu=0)
-    total_ms = round((time.perf_counter() - t_all0) * 1000.0, 1)
-    print(f"  [3/3] merge={merge_ms:.1f} ms | link={link_ms:.1f} ms", flush=True)
-    print(
-        f"  >>> TOTAL 8-CORE ZERO-CACHE COLD WALL TIME ({label}, k16_wave18_dfs): "
-        f"{total_ms:.1f} ms ({total_ms/1000:.2f} s) | cpu_sum={comp['cpu_sum_ms']:.1f} ms | "
-        f"max_rss={comp['max_rss_mib']:.1f} MiB | segs={comp['total_segs']}/65532 <<<",
-        flush=True,
-    )
-    smoke = mb.smoke_binary(out_bin, work_root / "smoke", cpu=0, run_o2=run_o2_smoke)
-    bin_bytes = out_bin.stat().st_size
-    shutil.rmtree(work_root, ignore_errors=True)
-    return {
-        "label": label,
-        "k": 16,
-        "order": "dfs",
-        "mode_args": mode_args,
-        "stub_gen_ms": stub_ms,
-        "compile_wall_ms": comp["wall_ms"],
-        "compile_cpu_sum_ms": comp["cpu_sum_ms"],
-        "compile_min_ms": comp["min_ms"],
-        "compile_median_ms": comp["median_ms"],
-        "compile_max_ms": comp["max_ms"],
-        "max_rss_mib": comp["max_rss_mib"],
-        "median_rss_mib": comp["median_rss_mib"],
-        "total_segs": comp["total_segs"],
-        "repacked": repacked is not None,
-        "merge_ms": merge_ms,
-        "link_ms": link_ms,
-        "total_cold_wall_ms": total_ms,
-        "total_cold_wall_s": round(total_ms / 1000.0, 2),
-        "out_bin_bytes": bin_bytes,
-        "smoke": smoke,
-        "modules": comp["modules"],
-    }
+        out_bin = work_root / f"n10_{label}"
+        merge_ms, link_ms = mb.merge_and_link(N9_O2, mod_names, obj_dir, obj_dir / "merge.o", out_bin, cpu=0)
+        total_ms = round((time.perf_counter() - t_all0) * 1000.0, 1)
+        print(f"  [3/3] merge={merge_ms:.1f} ms | link={link_ms:.1f} ms", flush=True)
+        print(
+            f"  >>> TOTAL 8-CORE ZERO-CACHE COLD WALL TIME ({label}, k16_wave18_dfs): "
+            f"{total_ms:.1f} ms ({total_ms/1000:.2f} s) | cpu_sum={comp['cpu_sum_ms']:.1f} ms | "
+            f"max_rss={comp['max_rss_mib']:.1f} MiB | segs={comp['total_segs']}/65532 <<<",
+            flush=True,
+        )
+        smoke = mb.smoke_binary(out_bin, work_root / "smoke", cpu=0, run_o2=run_o2_smoke)
+        bin_bytes = out_bin.stat().st_size
+        return {
+            "label": label,
+            "k": 16,
+            "order": "dfs",
+            "mode_args": mode_args,
+            "stub_gen_ms": stub_ms,
+            "compile_wall_ms": comp["wall_ms"],
+            "compile_cpu_sum_ms": comp["cpu_sum_ms"],
+            "compile_min_ms": comp["min_ms"],
+            "compile_median_ms": comp["median_ms"],
+            "compile_max_ms": comp["max_ms"],
+            "max_rss_mib": comp["max_rss_mib"],
+            "median_rss_mib": comp["median_rss_mib"],
+            "total_segs": comp["total_segs"],
+            "repacked": repacked is not None,
+            "merge_ms": merge_ms,
+            "link_ms": link_ms,
+            "total_cold_wall_ms": total_ms,
+            "total_cold_wall_s": round(total_ms / 1000.0, 2),
+            "out_bin_bytes": bin_bytes,
+            "smoke": smoke,
+            "modules": comp["modules"],
+        }
+    finally:
+        shutil.rmtree(work_root, ignore_errors=True)
 
 
-def stage2_cold_benchmarks(state: dict) -> None:
+def stage2_cold_benchmarks(state: dict, timeout_s: int = 600) -> None:
     cold = state.setdefault("stage2_cold", {})
-    cold["o2_cold_k16_dfs"] = run_cold_bench(
-        "o2", ["--trace", "x86-module"], Path("/tmp/agy_w18/cold_o2"), run_o2_smoke=True
+    cold["o0_cold_k16_dfs"] = run_cold_bench(
+        "o0", ["--trace", "x86-module-fast"], Path("/tmp/agy_w18_cold_o0"), run_o2_smoke=False, timeout_s=timeout_s
     )
     STATE_JSON.write_text(json.dumps(state, indent=2) + "\n")
 
-    cold["o0_cold_k16_dfs"] = run_cold_bench(
-        "o0", ["--trace", "x86-module-fast"], Path("/tmp/agy_w18/cold_o0"), run_o2_smoke=False
+    cold["o2_cold_k16_dfs"] = run_cold_bench(
+        "o2", ["--trace", "x86-module"], Path("/tmp/agy_w18_cold_o2"), run_o2_smoke=True, timeout_s=timeout_s
     )
     STATE_JSON.write_text(json.dumps(state, indent=2) + "\n")
 

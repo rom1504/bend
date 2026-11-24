@@ -1,0 +1,102 @@
+{
+  "campaign": "O2-D Full Zero-.p130 Stub Skip + K=16/K=24 -O2 Enabler",
+  "patch_script": "research/agy/o2_50s/o2d_full_stub_skip/apply_o2d.py",
+  "target_source": "selfhost/build/agy/wave16_unified/compiler.bend",
+  "check_only": {
+    "status": "PASS",
+    "type_errors": 0,
+    "linearity_errors": 0,
+    "unsafe_defs": 9146,
+    "idempotent": true
+  },
+  "n8_o2d_o0_smoke": {
+    "binary_bytes": 83532912,
+    "binary_opt_level": "-O0 (x86-module-fast)",
+    "slice_o0_ms": 7764.6,
+    "slice_o0_out": "34",
+    "slice_o0_bytes": 377176,
+    "slice_o2_ms": 14362.3,
+    "slice_o2_out": "34",
+    "slice_o2_bytes": 388208,
+    "o2_to_o0_binary_speed_ratio": 2.805
+  },
+  "measured_k10_m09_o0": {
+    "n7_o2_baseline": {
+      "wall_ms": 19776.0,
+      "segs": 5076,
+      "x198pw_plan_ms": 8657.0,
+      "x187_pub_done_elapsed_ms": 18104.0,
+      "x187_elf_ms": 1526.0,
+      "p111_def": 5076,
+      "p111_und": 0,
+      "p111_weak_def": 895,
+      "p113d_def": 25,
+      "p113d_und": 303
+    },
+    "n8_o2d_o0_binary": {
+      "wall_ms": 58781.0,
+      "segs": 4519,
+      "x198pw_plan_ms": 30487.0,
+      "x187_pub_done_elapsed_ms": 56301.0,
+      "x187_elf_ms": 2162.0,
+      "normalized_elf_ms_at_o2_binary_speed": 770.8,
+      "p111_def": 3660,
+      "p111_und": 859,
+      "p111_weak_def": 36,
+      "p113d_def": 25,
+      "p113d_und": 0
+    },
+    "deltas": {
+      "segs_delta": -557,
+      "segs_pct": -11.0,
+      "p111_def_delta": -1416,
+      "p111_def_pct": -27.9,
+      "p111_weak_def_delta": -859,
+      "p111_weak_def_pct": -96.0,
+      "p113d_und_from_dead_wrappers": "303 -> 0 (structurally fixes W16-MINT Finding #3)",
+      "elf_speedup_normalized": "1.98x"
+    }
+  },
+  "measured_k16_samples_o0": {
+    "m00": {
+      "n7_segs": 5273,
+      "n8_segs_pre_exp_fix": 5273,
+      "n8_p111_def": 5273,
+      "n8_p111_und": 0,
+      "n8_p111_weak_def": 47,
+      "note": "m00 has 0 stubs; synthetic .exp main matcher updated in final apply_o2d.py to match Bend renamed _* Bind names"
+    },
+    "m09": {
+      "n7_segs": 5017,
+      "n7_p111_def": 5017,
+      "n7_p111_weak_def": 584,
+      "n8_segs_pre_exp_fix": 4698,
+      "n8_p111_def": 4143,
+      "n8_p111_und": 555,
+      "n8_p111_weak_def": 29
+    },
+    "m15": {
+      "n7_segs": 3197,
+      "n7_p111_def": 3197,
+      "n7_p111_weak_def": 624,
+      "n8_segs": 2780,
+      "n8_p111_def": 2187,
+      "n8_p111_und": 593,
+      "n8_p111_weak_def": 31
+    }
+  },
+  "measured_k24_samples_o0": {
+    "m00": {
+      "n7_segs": 3710,
+      "n8_segs_pre_exp_fix": 3710,
+      "n8_p111_weak_def": 32
+    }
+  },
+  "base_dedup_audit": {
+    "k10_m09_base_weak_segs": 36,
+    "k16_m09_base_weak_segs": 29,
+    "k16_m15_base_weak_segs": 31,
+    "k24_m00_base_weak_segs": 32,
+    "conclusion": "Base segments are only 29-47 per module (~500-900 total in K=16/K=24, NOT 16,000-24,000). The real FID multiplier (~25,000-30,000 FIDs) is synthetic .exp currying P167Factory chains (4,851 exports in K=10, 5,584 in K=16, 6,022 in K=24) plus CPS stub lowering (~600-900 per module)."
+  }
+}

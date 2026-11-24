@@ -287,10 +287,280 @@ def elf_emit_cid_arities(ctors: List<&2, IrCtor>, b: ByteBuf) -> ByteBuf:
     case Nil{}: b
     case Con{IrCtor{_, _, ar, _}, t}: elf_emit_cid_arities(t, bb_emit_u8(b, ar))
 
-def elf_emit_cid_hots(ctors: List<&2, IrCtor>, b: ByteBuf) -> ByteBuf:
+# Whole-Program Per-Constructor cid_hot Analysis (capabilities = 9)
+# ------------------------------------------------------------------
+
+type ReachAcc is Data:
+  ReachAcc{m: U32Map, chg: Bool}
+
+def elf_reach_mark_go(miss: Bool, m: U32Map, chg: Bool, fid: U32) -> ReachAcc:
+  match miss:
+    case True{}: ReachAcc{um_set(m, fid, 1), True{}}
+    case False{}: ReachAcc{m, chg}
+
+def elf_reach_mark(ra: ReachAcc, +fid: U32) -> ReachAcc:
+  match ra:
+    case ReachAcc{+m, chg}: elf_reach_mark_go(U32.is_zero(um_get(m, fid)), m, chg, fid)
+
+def elf_reach_ops(ops: List<&2, IrOp>, ra: ReachAcc) -> ReachAcc:
+  match ops:
+    case Nil{}: ra
+    case Con{ICallDirect{_, cfid, _}, t}: elf_reach_ops(t, elf_reach_mark(ra, cfid))
+    case Con{ICallClosure{_, cfid, _}, t}: elf_reach_ops(t, elf_reach_mark(ra, cfid))
+    case Con{IApply{_, _, _}, t}: elf_reach_ops(t, elf_reach_mark(ra, 0))
+    case Con{_, t}: elf_reach_ops(t, ra)
+
+def elf_reach_term(term: IrTerm, ra: ReachAcc) -> ReachAcc:
+  match term:
+    case TTailCall{cfid, _}: elf_reach_mark(ra, cfid)
+    case _: ra
+
+def elf_reach_blks(blks: List<&2, IrBlock>, ra: ReachAcc) -> ReachAcc:
+  match blks:
+    case Nil{}: ra
+    case Con{IrBlock{_, ops, term}, t}:
+      elf_reach_blks(t, elf_reach_term(term, elf_reach_ops(ops, ra)))
+
+def elf_reach_fn_if(live: Bool, blks: List<&2, IrBlock>, ra: ReachAcc) -> ReachAcc:
+  match live:
+    case True{}: elf_reach_blks(blks, ra)
+    case False{}: ra
+
+def elf_reach_fns(fns: List<&2, IrFn>, ra: ReachAcc) -> ReachAcc:
+  match fns ra:
+    case Nil{} _: ra
+    case Con{IrFn{fid, _, _, _, _, _, _, blks}, t} ReachAcc{+m, chg}:
+      elf_reach_fns(t, elf_reach_fn_if(U32.is_ne(um_get(m, fid), 0), blks, ReachAcc{m, chg}))
+
+def elf_reach_fix(fuel: Nat, +fns: List<&2, IrFn>, ra: ReachAcc) -> U32Map:
+  match fuel ra:
+    case 0n ReachAcc{m, _}: m
+    case _ ReachAcc{m, False{}}: m
+    case 1n+p ReachAcc{m, True{}}: elf_reach_fix(p, fns, elf_reach_fns(fns, ReachAcc{m, False{}}))
+
+def elf_reach_seed(main_pure: Bool, m0: U32Map) -> U32Map:
+  match main_pure:
+    case True{}: m0
+    case False{}: um_set(um_set(m0, 1, 1), 2, 1)
+
+def elf_compute_reach(fns: List<&2, IrFn>, main_fid: U32, main_pure: Bool) -> U32Map:
+  elf_reach_fix(64n, fns, ReachAcc{elf_reach_seed(main_pure, um_set(UM0{}, main_fid, 1)), True{}})
+
+def elf_pkey(+fid: U32, +idx: U32) -> U32:
+  U32.or(U32.shln(U32.and(fid, 2047), 5n), U32.min(idx, 31))
+
+type HotSt is Data:
+  HotSt{hot_cid: U32Map, kept_param: U32Map, kept_ret: U32Map, chg: Bool}
+
+type HotFnSt is Data:
+  HotFnSt{kreg: U32Map, rchg: Bool, hs: HotSt}
+
+def elf_hot_mark_reg_go(miss: Bool, kr: U32Map, rc: Bool, hs: HotSt, r: U32) -> HotFnSt:
+  match miss:
+    case True{}: HotFnSt{um_set(kr, r, 1), True{}, hs}
+    case False{}: HotFnSt{kr, rc, hs}
+
+def elf_hot_mark_reg(fst: HotFnSt, +r: U32) -> HotFnSt:
+  match fst:
+    case HotFnSt{+kr, rc, hs}: elf_hot_mark_reg_go(U32.is_zero(um_get(kr, r)), kr, rc, hs, r)
+
+def elf_hot_mark_reg_if(cond: Bool, fst: HotFnSt, r: U32) -> HotFnSt:
+  match cond:
+    case True{}: elf_hot_mark_reg(fst, r)
+    case False{}: fst
+
+def elf_hot_mark_regs(rs: List<&2, U32>, fst: HotFnSt) -> HotFnSt:
+  match rs:
+    case Nil{}: fst
+    case Con{r, t}: elf_hot_mark_regs(t, elf_hot_mark_reg(fst, r))
+
+def elf_hot_mark_regs_if(cond: Bool, rs: List<&2, U32>, fst: HotFnSt) -> HotFnSt:
+  match cond:
+    case True{}: elf_hot_mark_regs(rs, fst)
+    case False{}: fst
+
+def elf_hot_mark_cid_go(miss: Bool, kr: U32Map, rc: Bool, hc: U32Map, kp: U32Map, kret: U32Map, chg: Bool, cid: U32) -> HotFnSt:
+  match miss:
+    case True{}: HotFnSt{kr, rc, HotSt{um_set(hc, cid, 1), kp, kret, True{}}}
+    case False{}: HotFnSt{kr, rc, HotSt{hc, kp, kret, chg}}
+
+def elf_hot_mark_cid(fst: HotFnSt, +cid: U32) -> HotFnSt:
+  match fst:
+    case HotFnSt{kr, rc, HotSt{+hc, kp, kret, chg}}:
+      elf_hot_mark_cid_go(U32.is_zero(um_get(hc, cid)), kr, rc, hc, kp, kret, chg, cid)
+
+def elf_hot_mark_cid_if(cond: Bool, fst: HotFnSt, cid: U32) -> HotFnSt:
+  match cond:
+    case True{}: elf_hot_mark_cid(fst, cid)
+    case False{}: fst
+
+def elf_hot_mark_ret_go(miss: Bool, kr: U32Map, rc: Bool, hc: U32Map, kp: U32Map, kret: U32Map, chg: Bool, fid: U32) -> HotFnSt:
+  match miss:
+    case True{}: HotFnSt{kr, rc, HotSt{hc, kp, um_set(kret, fid, 1), True{}}}
+    case False{}: HotFnSt{kr, rc, HotSt{hc, kp, kret, chg}}
+
+def elf_hot_mark_ret(fst: HotFnSt, +fid: U32) -> HotFnSt:
+  match fst:
+    case HotFnSt{kr, rc, HotSt{hc, kp, +kret, chg}}:
+      elf_hot_mark_ret_go(U32.is_zero(um_get(kret, fid)), kr, rc, hc, kp, kret, chg, fid)
+
+def elf_hot_mark_ret_if(cond: Bool, fst: HotFnSt, fid: U32) -> HotFnSt:
+  match cond:
+    case True{}: elf_hot_mark_ret(fst, fid)
+    case False{}: fst
+
+def elf_hot_any_reg(+kr: U32Map, rs: List<&2, U32>) -> Bool:
+  match rs:
+    case Nil{}: False{}
+    case Con{r, t}: Bool.or(U32.is_ne(um_get(kr, r), 0), elf_hot_any_reg(kr, t))
+
+def elf_hot_call_args(+cfid: U32, args: List<&2, U32>, +idx: U32, fst: HotFnSt) -> HotFnSt:
+  match args fst:
+    case Nil{} _: fst
+    case Con{a, t} HotFnSt{kr, rc, HotSt{hc, +kp, kret, chg}}:
+      fst1 = elf_hot_mark_reg_if(U32.is_ne(um_get(kp, elf_pkey(cfid, idx)), 0), HotFnSt{kr, rc, HotSt{hc, kp, kret, chg}}, a)
+      elf_hot_call_args(cfid, t, U32.add(idx, 1), fst1)
+
+def elf_hot_ctor_fields(+cid: U32, fields: List<&2, U32>, fst: HotFnSt) -> HotFnSt:
+  match fst:
+    case HotFnSt{kr2, rc2, HotSt{+hc2, kp2, kret2, chg2}}:
+      elf_hot_mark_regs_if(U32.is_ne(um_get(hc2, cid), 0), fields, HotFnSt{kr2, rc2, HotSt{hc2, kp2, kret2, chg2}})
+
+def elf_hot_ctor(dst: U32, +cid: U32, fields: List<&2, U32>, fst: HotFnSt) -> HotFnSt:
+  match fst:
+    case HotFnSt{+kr, rc, hs}:
+      elf_hot_ctor_fields(cid, fields, elf_hot_mark_cid_if(U32.is_ne(um_get(kr, dst), 0), HotFnSt{kr, rc, hs}, cid))
+
+def elf_hot_arrop(aop: U32, args: List<&2, U32>, fst: HotFnSt) -> HotFnSt:
+  match aop args:
+    case 71 Con{_, Con{v, _}}: elf_hot_mark_reg(fst, v)
+    case 73 Con{_, Con{_, Con{v, _}}}: elf_hot_mark_reg(fst, v)
+    case 74 Con{_, Con{_, Con{v, _}}}: elf_hot_mark_reg(fst, v)
+    case 8 Con{v, _}: elf_hot_mark_reg(fst, v)
+    case 9 Con{l, Con{r, _}}: elf_hot_mark_reg(elf_hot_mark_reg(fst, l), r)
+    case _ _: fst
+
+def elf_hot_op(op: IrOp, fst: HotFnSt) -> HotFnSt:
+  match op:
+    case IKeep{_, src}: elf_hot_mark_reg(fst, src)
+    case ICopy{dst, src}:
+      match fst:
+        case HotFnSt{+kr, rc, hs}: elf_hot_mark_reg_if(U32.is_ne(um_get(kr, dst), 0), HotFnSt{kr, rc, hs}, src)
+    case ICtor{dst, cid, fields}: elf_hot_ctor(dst, cid, fields, fst)
+    case IReuse{dst, _, cid, fields}: elf_hot_ctor(dst, cid, fields, fst)
+    case ITake{dsts, src}:
+      match fst:
+        case HotFnSt{+kr, rc, hs}: elf_hot_mark_reg_if(elf_hot_any_reg(kr, dsts), HotFnSt{kr, rc, hs}, src)
+    case ICallDirect{dst, +cfid, args}:
+      match fst:
+        case HotFnSt{+kr, rc, hs}:
+          elf_hot_call_args(cfid, args, 0, elf_hot_mark_ret_if(U32.is_ne(um_get(kr, dst), 0), HotFnSt{kr, rc, hs}, cfid))
+    case ICallClosure{dst, +cfid, +caps}:
+      match fst:
+        case HotFnSt{+kr, rc, hs}:
+          elf_hot_call_args(cfid, caps, 0, elf_hot_mark_regs_if(U32.is_ne(um_get(kr, dst), 0), caps, HotFnSt{kr, rc, hs}))
+    case IApply{dst, clo, arg}:
+      match fst:
+        case HotFnSt{+kr, rc, hs}:
+          elf_hot_call_args(0, [clo, arg], 0, elf_hot_mark_ret_if(U32.is_ne(um_get(kr, dst), 0), HotFnSt{kr, rc, hs}, 0))
+    case IArrOp{_, aop, args}: elf_hot_arrop(aop, args, fst)
+    case _: fst
+
+def elf_hot_ops(ops: List<&2, IrOp>, fst: HotFnSt) -> HotFnSt:
+  match ops:
+    case Nil{}: fst
+    case Con{op, t}: elf_hot_ops(t, elf_hot_op(op, fst))
+
+def elf_hot_term(+fid: U32, term: IrTerm, fst: HotFnSt) -> HotFnSt:
+  match term fst:
+    case TRet{v} HotFnSt{kr, rc, HotSt{hc, kp, +kret, chg}}:
+      elf_hot_mark_reg_if(U32.is_ne(um_get(kret, fid), 0), HotFnSt{kr, rc, HotSt{hc, kp, kret, chg}}, v)
+    case TTailCall{+cfid, args} HotFnSt{kr, rc, HotSt{hc, kp, +kret, chg}}:
+      elf_hot_call_args(cfid, args, 0, elf_hot_mark_ret_if(U32.is_ne(um_get(kret, fid), 0), HotFnSt{kr, rc, HotSt{hc, kp, kret, chg}}, cfid))
+    case _ _: fst
+
+def elf_hot_blks(+fid: U32, blks: List<&2, IrBlock>, fst: HotFnSt) -> HotFnSt:
+  match blks:
+    case Nil{}: fst
+    case Con{IrBlock{_, ops, term}, t}:
+      fst1 = elf_hot_ops(b5k_list_rev(IrOp, ops), elf_hot_term(fid, term, fst))
+      elf_hot_blks(fid, t, fst1)
+
+def elf_hot_fn_fix(fuel: Nat, +fid: U32, +blks: List<&2, IrBlock>, fst: HotFnSt) -> HotFnSt:
+  match fuel fst:
+    case 0n _: fst
+    case _ HotFnSt{kr, False{}, hs}: HotFnSt{kr, False{}, hs}
+    case 1n+p HotFnSt{kr, True{}, hs}:
+      elf_hot_fn_fix(p, fid, blks, elf_hot_blks(fid, blks, HotFnSt{kr, False{}, hs}))
+
+def elf_hot_export_one(set_it: Bool, hc: U32Map, kp: U32Map, kret: U32Map, chg: Bool, pk: U32) -> HotSt:
+  match set_it:
+    case True{}: HotSt{hc, um_set(kp, pk, 1), kret, True{}}
+    case False{}: HotSt{hc, kp, kret, chg}
+
+def elf_hot_export_params(n: Nat, +fid: U32, +idx: U32, +kr: U32Map, hs: HotSt) -> HotSt:
+  match n hs:
+    case 0n _: hs
+    case 1n+p HotSt{hc, +kp, kret, chg}:
+      +pk = elf_pkey(fid, idx)
+      hs1 = elf_hot_export_one(Bool.and(U32.is_ne(um_get(kr, idx), 0), U32.is_zero(um_get(kp, pk))), hc, kp, kret, chg, pk)
+      elf_hot_export_params(p, fid, U32.add(idx, 1), kr, hs1)
+
+def elf_hot_one_fin(ar: U32, fid: U32, fst: HotFnSt) -> HotSt:
+  match fst:
+    case HotFnSt{kr, _, hs2}: elf_hot_export_params(U32.to_nat(ar), fid, 0, kr, hs2)
+
+def elf_hot_one_fn(+fid: U32, ar: U32, blks: List<&2, IrBlock>, hs: HotSt) -> HotSt:
+  elf_hot_one_fin(ar, fid, elf_hot_fn_fix(16n, fid, blks, HotFnSt{UM0{}, True{}, hs}))
+
+def elf_hot_fn_if(live: Bool, fid: U32, ar: U32, blks: List<&2, IrBlock>, hs: HotSt) -> HotSt:
+  match live:
+    case True{}: elf_hot_one_fn(fid, ar, blks, hs)
+    case False{}: hs
+
+def elf_hot_fns(+reach: U32Map, fns: List<&2, IrFn>, hs: HotSt) -> HotSt:
+  match fns:
+    case Nil{}: hs
+    case Con{IrFn{+fid, _, ar, _, _, _, _, blks}, t}:
+      elf_hot_fns(reach, t, elf_hot_fn_if(U32.is_ne(um_get(reach, fid), 0), fid, ar, blks, hs))
+
+def elf_hot_mark_cid_st(miss: Bool, hc: U32Map, kp: U32Map, kret: U32Map, chg: Bool, c: U32) -> HotSt:
+  match miss:
+    case True{}: HotSt{um_set(hc, c, 1), kp, kret, True{}}
+    case False{}: HotSt{hc, kp, kret, chg}
+
+def elf_hot_mark_cids(cids: List<&2, U32>, hs: HotSt) -> HotSt:
+  match cids hs:
+    case Nil{} _: hs
+    case Con{+c, t} HotSt{+hc, kp, kret, chg}:
+      elf_hot_mark_cids(t, elf_hot_mark_cid_st(U32.is_zero(um_get(hc, c)), hc, kp, kret, chg, c))
+
+def elf_hot_io_cont_if(cond: Bool, hs: HotSt) -> HotSt:
+  match cond:
+    case True{}: elf_hot_mark_cids([1, 5, 6, 10, 11], hs)
+    case False{}: hs
+
+def elf_hot_io_cont(hs: HotSt) -> HotSt:
+  match hs:
+    case HotSt{hc, +kp, kret, chg}:
+      elf_hot_io_cont_if(U32.is_ne(um_get(kp, elf_pkey(2, 1)), 0), HotSt{hc, kp, kret, chg})
+
+def elf_hot_fix(fuel: Nat, +reach: U32Map, +fns: List<&2, IrFn>, hs: HotSt) -> U32Map:
+  match fuel hs:
+    case 0n HotSt{hc, _, _, _}: hc
+    case _ HotSt{hc, _, _, False{}}: hc
+    case 1n+p HotSt{hc, kp, kret, True{}}:
+      elf_hot_fix(p, reach, fns, elf_hot_io_cont(elf_hot_fns(reach, fns, HotSt{hc, kp, kret, False{}})))
+
+def elf_compute_cid_hot(+fns: List<&2, IrFn>, main_fid: U32, main_pure: Bool) -> U32Map:
+  reach = elf_compute_reach(fns, main_fid, main_pure)
+  elf_hot_fix(32n, reach, fns, HotSt{UM0{}, UM0{}, UM0{}, True{}})
+
+def elf_emit_cid_hots(ctors: List<&2, IrCtor>, +hot_map: U32Map, b: ByteBuf) -> ByteBuf:
   match ctors:
     case Nil{}: b
-    case Con{IrCtor{_, _, _, hot}, t}: elf_emit_cid_hots(t, bb_emit_u8(b, Bool.to_u32(hot)))
+    case Con{IrCtor{cid, _, _, hot}, t}:
+      elf_emit_cid_hots(t, hot_map, bb_emit_u8(b, Bool.to_u32(Bool.or(hot, U32.is_ne(um_get(hot_map, cid), 0)))))
 
 type StrPool is Data:
   StrPool{buf: ByteBuf, offs: List<&2, U32>}
@@ -510,10 +780,11 @@ def elf_finish_data(text_buf: ByteBuf, +text_rels: List<&2, ElfReloc>, text_lsym
       sr = elf_ser_syms_go(all_syms, 0, SymTabRes{bb_new(), bb_emit_u8(bb_new(), 0), Map.new(&2, U32)})
       elf_pack_image(text_buf, ro_buf, data_buf, text_rels, data_rels, first_glob, sr)
 
-def elf_finish_ro(ro: RoData, text_buf: ByteBuf, text_rels: List<&2, ElfReloc>, text_lsyms: List<&2, ElfSym>, text_gsyms: List<&2, ElfSym>, ir_fns: List<&2, IrFn>, all_ctors: List<&2, IrCtor>, +n_segs: U32, +n_ctors: U32, main_fid: U32, main_pure: Bool, reg_w: U32, +n_stat: U32, +n_show: U32, +n_sname: U32, +n_eff: U32) -> ByteBuf:
+def elf_finish_ro(ro: RoData, text_buf: ByteBuf, text_rels: List<&2, ElfReloc>, text_lsyms: List<&2, ElfSym>, text_gsyms: List<&2, ElfSym>, +ir_fns: List<&2, IrFn>, all_ctors: List<&2, IrCtor>, +n_segs: U32, +n_ctors: U32, +main_fid: U32, +main_pure: Bool, reg_w: U32, +n_stat: U32, +n_show: U32, +n_sname: U32, +n_eff: U32) -> ByteBuf:
   match ro:
     case RoData{ro_buf, cid_offs, show_offs, eff_offs, off_far, off_ffl, off_frs, off_car, off_shd, off_sta}:
-      +da1 = elf_pad_to(elf_emit_cid_hots(all_ctors, bb_new()), 8)
+      hot_map = elf_compute_cid_hot(ir_fns, main_fid, main_pure)
+      +da1 = elf_pad_to(elf_emit_cid_hots(all_ctors, hot_map, bb_new()), 8)
       +off_segs = bb_len(da1)
       +ta2 = elf_emit_seg_ptrs(ir_fns, TextAcc{da1, Nil{}})
       +off_cnm = elf_ta_len(ta2)
@@ -528,7 +799,7 @@ def elf_finish_ro(ro: RoData, text_buf: ByteBuf, text_rels: List<&2, ElfReloc>, 
       p2 = elf_ta_u64(elf_ta_u64(p1, main_fid, 0), Bool.to_u32(main_pure), 0)
       p3 = elf_ta_u64(elf_ta_u64(p2, reg_w, 0), 1, 0)
       p4 = elf_ta_u64(elf_ta_u64(p3, n_stat, 0), n_show, 0)
-      p5 = elf_ta_u64(elf_ta_u64(p4, n_sname, 0), B5K_P111_SEQUENTIAL(), 0)
+      p5 = elf_ta_u64(elf_ta_u64(p4, n_sname, 0), U32.or(B5K_P111_SEQUENTIAL(), 8), 0)
       q0 = elf_emit_ptr_slot(p5, True{}, "p111_segments", 0)
       q1 = elf_emit_ptr_slot(q0, True{}, "p111_fid_arity", 0)
       q2 = elf_emit_ptr_slot(q1, True{}, "p111_fid_flags", 0)

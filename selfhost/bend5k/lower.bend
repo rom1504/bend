@@ -62,8 +62,10 @@ def b5k_prelude_src() -> String:
   "def U32.read.go(s: String, acc: U32) -> Maybe<U32>:\n  match s:\n    case SNil{}: Some{acc}\n    case SCon{c, t}: U32.read.go(t, U32.add(U32.mul(acc, 10), U32.sub(c, 48)))\n" ++
   "def U32.read(s: String) -> Maybe<U32>:\n  match s:\n    case SNil{}: None{}\n    case SCon{c, t}: U32.read.go(t, U32.sub(c, 48))\n" ++
   "def U32.max(a: U32, b: U32) -> U32:\n  if U32.is_gt(a, b): a else: b\ndef U32.min(a: U32, b: U32) -> U32:\n  if U32.is_lt(a, b): a else: b\n" ++
+  "def U32.log2.go(k: Nat, n: U32, b: Nat) -> Nat:\n  match k:\n    case 0n: b\n    case 1n+p:\n      s = U32.shln(1, p)\n      t = if U32.is_ne(U32.shrn(n, s), 0): s else: 0\n      U32.log2.go(p, U32.shrn(n, t), U32.add(b, t))\ndef U32.log2(n: U32) -> Nat:\n  U32.log2.go(5n, n, 0)\n" ++
   "def U32.cmp(a: U32, b: U32) -> Cmp:\n  if U32.is_lt(a, b): LT{} else: if U32.is_eq(a, b): EQ{} else: GT{}\n" ++
   "def Nat.add(a: Nat, b: Nat) -> Nat:\n  U32.add(a, b)\ndef Nat.sub(a: Nat, b: Nat) -> Nat:\n  if U32.is_lt(a, b): 0 else: U32.sub(a, b)\n" ++
+  "def Nat.min(a: Nat, b: Nat) -> Nat:\n  if U32.is_lt(a, b): a else: b\ndef Nat.max(a: Nat, b: Nat) -> Nat:\n  if U32.is_gt(a, b): a else: b\n" ++
   "def Nat.mul(a: Nat, b: Nat) -> Nat:\n  U32.mul(a, b)\ndef Nat.double(a: Nat) -> Nat:\n  U32.add(a, a)\n" ++
   "def Nat.is_lt(a: Nat, b: Nat) -> Bool:\n  U32.is_lt(a, b)\ndef Nat.is_le(a: Nat, b: Nat) -> Bool:\n  U32.is_le(a, b)\n" ++
   "def Nat.is_gt(a: Nat, b: Nat) -> Bool:\n  U32.is_gt(a, b)\ndef Nat.is_ge(a: Nat, b: Nat) -> Bool:\n  U32.is_ge(a, b)\n" ++
@@ -76,15 +78,27 @@ def b5k_prelude_src() -> String:
   "def File.open(p: String, m: String) -> IO(U32):\n  k => __file_open(p, m, k)\ndef File.read(f: U32, n: U32) -> IO(U32):\n  k => __file_read(f, n, k)\n" ++
   "def File.size(f: U32) -> IO(U32):\n  k => __file_size(f, k)\ndef File.write(f: U32, s: String) -> IO(U32):\n  k => __file_write(f, s, k)\n" ++
   "def File.write_bytes(f: U32, bs: List<U32>) -> IO(U32):\n  k => __file_write_bytes(f, bs, k)\ndef File.close(f: U32) -> IO(Unit):\n  k => __file_close(f, k)\n" ++
-  "def __arr_len(n: U32, v: U32) -> Array<U32>:\n  if U32.is_le(n, 1): ALeaf{v} else: ANode{__arr_len(U32.shr(n), v), __arr_len(U32.shr(n), v)}\n" ++
-  "def Array.new(-T: Data, d: Nat, v: T) -> Array<T>:\n  match d:\n    case 0n: ALeaf{v}\n    case 1n+p: ANode{Array.new(T, p, v), Array.new(T, p, v)}\n" ++
-  "def Array.clone(-T: Data, a: Array<T>) -> Array<T>:\n  Tuple{a, a}\ndef Array.fork(-T: Data, a: Array<T>) -> Array<T>:\n  Tuple{a, a}\ndef Array.join(-T: Data, a: Array<T>, b: Array<T>) -> Array<T>:\n  a\n" ++
-  "def Array.get(-T: Data, a: Array<T>, i: U32) -> Array<T>:\n  match a:\n    case ALeaf{v}: Tuple{ALeaf{v}, v}\n    case ANode{l, r}:\n      if U32.is_zero(U32.and(i, 1)):\n        (l2, v) = Array.get(T, l, U32.shr(i))\n        Tuple{ANode{l2, r}, v}\n      else:\n        (r2, v) = Array.get(T, r, U32.shr(i))\n        Tuple{ANode{l, r2}, v}\n" ++
-  "def Array.set(-T: Data, a: Array<T>, i: U32, v: T) -> Array<T>:\n  match a:\n    case ALeaf{_}: ALeaf{v}\n    case ANode{l, r}:\n      if U32.is_zero(U32.and(i, 1)): ANode{Array.set(T, l, U32.shr(i), v), r}\n      else: ANode{l, Array.set(T, r, U32.shr(i), v)}\n" ++
-  "def Array.swap(-T: Data, a: Array<T>, i: U32, v: T) -> Array<T>:\n  match a:\n    case ALeaf{o}: Tuple{ALeaf{v}, o}\n    case ANode{l, r}:\n      if U32.is_zero(U32.and(i, 1)):\n        (l2, o) = Array.swap(T, l, U32.shr(i), v)\n        Tuple{ANode{l2, r}, o}\n      else:\n        (r2, o) = Array.swap(T, r, U32.shr(i), v)\n        Tuple{ANode{l, r2}, o}\n" ++
-  "def Array.size(-T: Data, a: Array<T>) -> Array<T>:\n  match a:\n    case ALeaf{v}: Tuple{ALeaf{v}, 1}\n    case ANode{l, r}:\n      (l2, s) = Array.size(T, l)\n      Tuple{ANode{l2, r}, U32.shl(s)}\n" ++
-  "def Array.zip_alt(-T: Data, a: List<T>, b: List<T>) -> List<T>:\n  match a b:\n    case Con{x, xt} Con{y, yt}: Con{x, Con{y, Array.zip_alt(T, xt, yt)}}\n    case Nil{} _: b\n    case _ Nil{}: a\n" ++
-  "def Array.to_list(-T: Data, a: Array<T>) -> List<T>:\n  match a:\n    case ALeaf{v}: Con{v, Nil{}}\n    case ANode{l, r}: Array.zip_alt(T, Array.to_list(T, l), Array.to_list(T, r))\n" ++
+  "def __arr_mk(d: Nat, v: U32) -> Array<U32>:\n  match d:\n    case 0n: ALeaf{v}\n    case 1n+p: ANode{__arr_mk(p, v), __arr_mk(p, v)}\n" ++
+  "def __arr_mk_len(n: U32, v: U32) -> Array<U32>:\n  if U32.is_le(n, 1): ALeaf{v} else: ANode{__arr_mk_len(U32.shr(n), v), __arr_mk_len(U32.shr(n), v)}\n" ++
+  "def __arr_len(n: U32, v: U32) -> Array<U32>:\n  h = if U32.is_le(n, 1): 0 else: U32.shln(1, U32.sub(U32.log2(n), 1))\n  WCon{h, __arr_mk_len(n, v)}\n" ++
+  "def Array.new(-T: Data, d: Nat, v: T) -> Array<T>:\n  h = if U32.is_zero(d): 0 else: U32.shln(1, U32.sub(d, 1))\n  WCon{h, __arr_mk(d, v)}\n" ++
+  "def __arr_clean(a: Array<U32>) -> Array<U32>:\n  match a:\n    case MNode{l, r, _}: ANode{__arr_clean(l), __arr_clean(r)}\n    case MLeaf{v, _}: ALeaf{v}\n    case other: other\n" ++
+  "def __arr_join(a: Array<U32>, b: Array<U32>) -> Array<U32>:\n  match a:\n    case MNode{l1, r1, _}:\n      match b:\n        case MNode{l2, r2, _}: MNode{__arr_join(l1, l2), __arr_join(r1, r2), 0}\n        case _: MNode{l1, r1, 0}\n    case MLeaf{v1, _}: MLeaf{v1, 0}\n    case _: b\n" ++
+  "def Array.clone(-T: Data, a: Array<T>) -> Array<T>:\n  Tuple{a, a}\ndef Array.fork(-T: Data, a: Array<T>) -> Array<T>:\n  match a:\n    case WCon{h, t}:\n      c = WCon{h, __arr_clean(t)}\n      Tuple{c, c}\n    case other:\n      c = __arr_clean(other)\n      Tuple{c, c}\ndef Array.join(-T: Data, a: Array<T>, b: Array<T>) -> Array<T>:\n  match a b:\n    case WCon{h, t1} WCon{_, t2}: WCon{h, __arr_join(t1, t2)}\n    case x y: __arr_join(x, y)\n" ++
+  "def __arr_get(a: Array<U32>, i: U32, h: U32) -> Array<U32>:\n  match a:\n    case ALeaf{v}: Tuple{ALeaf{v}, v}\n    case MLeaf{v, _}: Tuple{MLeaf{v, 0}, v}\n    case ANode{l, r}:\n      if U32.is_zero(U32.and(i, h)):\n        (l2, v) = __arr_get(l, i, U32.shr(h))\n        Tuple{ANode{l2, r}, v}\n      else:\n        (r2, v) = __arr_get(r, i, U32.shr(h))\n        Tuple{ANode{l, r2}, v}\n    case MNode{l, r, _}:\n      if U32.is_zero(U32.and(i, h)):\n        (l2, v) = __arr_get(l, i, U32.shr(h))\n        Tuple{MNode{l2, r, 0}, v}\n      else:\n        (r2, v) = __arr_get(r, i, U32.shr(h))\n        Tuple{MNode{l, r2, 0}, v}\n" ++
+  "def __arr_get_raw(a: Array<U32>, i: U32) -> Array<U32>:\n  match a:\n    case ALeaf{v}: Tuple{ALeaf{v}, v}\n    case ANode{l, r}:\n      if U32.is_zero(U32.and(i, 1)):\n        (l2, v) = __arr_get_raw(l, U32.shr(i))\n        Tuple{ANode{l2, r}, v}\n      else:\n        (r2, v) = __arr_get_raw(r, U32.shr(i))\n        Tuple{ANode{l, r2}, v}\n" ++
+  "def Array.get(-T: Data, a: Array<T>, i: U32) -> Array<T>:\n  match a:\n    case WCon{h, t}:\n      (t2, v) = __arr_get(t, i, h)\n      Tuple{WCon{h, t2}, v}\n    case other: __arr_get_raw(other, i)\n" ++
+  "def Array.get_unchecked(-T: Data, a: Array<T>, i: U32) -> Array<T>:\n  Array.get(T, a, i)\n" ++
+  "def __arr_set(a: Array<U32>, i: U32, h: U32, v: U32) -> Array<U32>:\n  match a:\n    case ALeaf{_}: MLeaf{v, 0}\n    case MLeaf{_, _}: MLeaf{v, 0}\n    case ANode{l, r}:\n      if U32.is_zero(U32.and(i, h)): MNode{__arr_set(l, i, U32.shr(h), v), r, 0}\n      else: MNode{l, __arr_set(r, i, U32.shr(h), v), 0}\n    case MNode{l, r, _}:\n      if U32.is_zero(U32.and(i, h)): MNode{__arr_set(l, i, U32.shr(h), v), r, 0}\n      else: MNode{l, __arr_set(r, i, U32.shr(h), v), 0}\n" ++
+  "def __arr_set_raw(a: Array<U32>, i: U32, v: U32) -> Array<U32>:\n  match a:\n    case ALeaf{_}: ALeaf{v}\n    case ANode{l, r}:\n      if U32.is_zero(U32.and(i, 1)): ANode{__arr_set_raw(l, U32.shr(i), v), r}\n      else: ANode{l, __arr_set_raw(r, U32.shr(i), v)}\n" ++
+  "def Array.set(-T: Data, a: Array<T>, i: U32, v: T) -> Array<T>:\n  match a:\n    case WCon{h, t}: WCon{h, __arr_set(t, i, h, v)}\n    case other: __arr_set_raw(other, i, v)\n" ++
+  "def __arr_swap(a: Array<U32>, i: U32, h: U32, v: U32) -> Array<U32>:\n  match a:\n    case ALeaf{o}: Tuple{MLeaf{v, 0}, o}\n    case MLeaf{o, _}: Tuple{MLeaf{v, 0}, o}\n    case ANode{l, r}:\n      if U32.is_zero(U32.and(i, h)):\n        (l2, o) = __arr_swap(l, i, U32.shr(h), v)\n        Tuple{MNode{l2, r, 0}, o}\n      else:\n        (r2, o) = __arr_swap(r, i, U32.shr(h), v)\n        Tuple{MNode{l, r2, 0}, o}\n    case MNode{l, r, _}:\n      if U32.is_zero(U32.and(i, h)):\n        (l2, o) = __arr_swap(l, i, U32.shr(h), v)\n        Tuple{MNode{l2, r, 0}, o}\n      else:\n        (r2, o) = __arr_swap(r, i, U32.shr(h), v)\n        Tuple{MNode{l, r2, 0}, o}\n" ++
+  "def __arr_swap_raw(a: Array<U32>, i: U32, v: U32) -> Array<U32>:\n  match a:\n    case ALeaf{o}: Tuple{ALeaf{v}, o}\n    case ANode{l, r}:\n      if U32.is_zero(U32.and(i, 1)):\n        (l2, o) = __arr_swap_raw(l, U32.shr(i), v)\n        Tuple{ANode{l2, r}, o}\n      else:\n        (r2, o) = __arr_swap_raw(r, U32.shr(i), v)\n        Tuple{ANode{l, r2}, o}\n" ++
+  "def Array.swap(-T: Data, a: Array<T>, i: U32, v: T) -> Array<T>:\n  match a:\n    case WCon{h, t}:\n      (t2, o) = __arr_swap(t, i, h, v)\n      Tuple{WCon{h, t2}, o}\n    case other: __arr_swap_raw(other, i, v)\n" ++
+  "def __arr_sz_raw(a: Array<U32>) -> Array<U32>:\n  match a:\n    case ALeaf{v}: Tuple{ALeaf{v}, 1}\n    case ANode{l, r}:\n      (l2, s) = __arr_sz_raw(l)\n      Tuple{ANode{l2, r}, U32.shl(s)}\n" ++
+  "def Array.size(-T: Data, a: Array<T>) -> Array<T>:\n  match a:\n    case WCon{h, t}: Tuple{WCon{h, t}, if U32.is_zero(h): 1 else: U32.shl(h)}\n    case other: __arr_sz_raw(other)\n" ++
+  "def __arr_toli(a: Array<U32>, acc: List<U32>) -> List<U32>:\n  match a:\n    case ALeaf{v}: Con{v, acc}\n    case MLeaf{v, _}: Con{v, acc}\n    case ANode{l, r}: __arr_toli(l, __arr_toli(r, acc))\n    case MNode{l, r, _}: __arr_toli(l, __arr_toli(r, acc))\n" ++
+  "def Array.to_list(-T: Data, a: Array<T>) -> List<T>:\n  match a:\n    case WCon{_, t}: __arr_toli(t, Nil{})\n    case other: __arr_toli(other, Nil{})\n" ++
   "def Map.new(-q: Data, -V: Data) -> Map<V>:\n  MTip{}\n" ++
   "def Map.set(-q: Data, -V: Data, m: Map<V>, k: String, v: V) -> Map<V>:\n  match m:\n    case MTip{}: MNode{Tuple{k, v}, MTip{}, MTip{}}\n    case MNode{kv, l, r}:\n      (k0, v0) = kv\n      match String.cmp(k, k0):\n        case LT{}: MNode{Tuple{k0, v0}, Map.set(q, V, l, k, v), r}\n        case GT{}: MNode{Tuple{k0, v0}, l, Map.set(q, V, r, k, v)}\n        case EQ{}: MNode{Tuple{k, v}, l, r}\n" ++
   "def Map.get(-V: Data, d: V, m: Map<V>, k: String) -> Map<V>:\n  match m:\n    case MTip{}: Tuple{MTip{}, d}\n    case MNode{kv, l, r}:\n      (k0, v0) = kv\n      match String.cmp(k, k0):\n        case LT{}:\n          (l2, res) = Map.get(V, d, l, k)\n          Tuple{MNode{Tuple{k0, v0}, l2, r}, res}\n        case GT{}:\n          (r2, res) = Map.get(V, d, r, k)\n          Tuple{MNode{Tuple{k0, v0}, l, r2}, res}\n        case EQ{}: Tuple{MNode{Tuple{k0, v0}, l, r}, v0}\n" ++
@@ -402,13 +416,13 @@ def low_u32_intr(+s: String) -> U32:
   r = Bool.pick(U32, b5k_str_eq(s, "__file_close"), 54, Bool.pick(U32, b5k_str_eq(s, "__file_write_bytes"), 39, Bool.pick(U32, b5k_str_eq(s, "__file_write"), 38, r)))
   r = Bool.pick(U32, b5k_str_eq(s, "__file_size"), 37, Bool.pick(U32, b5k_str_eq(s, "__file_read"), 36, Bool.pick(U32, b5k_str_eq(s, "__file_open"), 35, r)))
   r = Bool.pick(U32, b5k_str_eq(s, "__io_now"), 34, Bool.pick(U32, b5k_str_eq(s, "__io_args"), 33, Bool.pick(U32, b5k_str_eq(s, "__io_print_err"), 32, Bool.pick(U32, b5k_str_eq(s, "__io_print"), 31, r))))
-  r = Bool.pick(U32, Bool.or(b5k_str_eq(s, "U32.from_nat"), Bool.or(b5k_str_eq(s, "U32.to_nat"), b5k_str_eq(s, "F32.bits"))), 27, Bool.pick(U32, b5k_str_eq(s, "U32.not"), 26, r))
+  r = Bool.pick(U32, Bool.or(b5k_str_eq(s, "U32.from_nat"), Bool.or(b5k_str_eq(s, "U32.to_nat"), Bool.or(b5k_str_eq(s, "F32.bits"), Bool.or(b5k_str_eq(s, "Bool.to_u32"), Bool.or(b5k_str_eq(s, "Char.to_u32"), b5k_str_eq(s, "Char.from_u32")))))), 27, Bool.pick(U32, b5k_str_eq(s, "U32.not"), 26, r))
   r = Bool.pick(U32, b5k_str_eq(s, "U32.shrn"), 25, Bool.pick(U32, b5k_str_eq(s, "U32.shln"), 24, Bool.pick(U32, b5k_str_eq(s, "U32.shr"), 23, Bool.pick(U32, b5k_str_eq(s, "U32.shl"), 22, r))))
-  r = Bool.pick(U32, b5k_str_eq(s, "U32.is_zero"), 21, Bool.pick(U32, b5k_str_eq(s, "U32.dec"), 20, Bool.pick(U32, b5k_str_eq(s, "U32.inc"), 19, r)))
-  r = Bool.pick(U32, b5k_str_eq(s, "U32.is_ge"), 16, Bool.pick(U32, b5k_str_eq(s, "U32.is_gt"), 15, Bool.pick(U32, b5k_str_eq(s, "U32.is_le"), 14, r)))
-  r = Bool.pick(U32, b5k_str_eq(s, "U32.is_lt"), 13, Bool.pick(U32, b5k_str_eq(s, "U32.is_ne"), 12, Bool.pick(U32, b5k_str_eq(s, "U32.is_eq"), 11, r)))
-  r = Bool.pick(U32, b5k_str_eq(s, "U32.xor"), 8, Bool.pick(U32, b5k_str_eq(s, "U32.or"), 7, Bool.pick(U32, b5k_str_eq(s, "U32.and"), 6, Bool.pick(U32, b5k_str_eq(s, "U32.mod"), 5, r))))
-  Bool.pick(U32, b5k_str_eq(s, "U32.add"), 1, Bool.pick(U32, b5k_str_eq(s, "U32.sub"), 2, Bool.pick(U32, b5k_str_eq(s, "U32.mul"), 3, Bool.pick(U32, b5k_str_eq(s, "U32.div"), 4, r))))
+  r = Bool.pick(U32, Bool.or(b5k_str_eq(s, "U32.is_zero"), b5k_str_eq(s, "Bool.not")), 21, Bool.pick(U32, b5k_str_eq(s, "U32.dec"), 20, Bool.pick(U32, b5k_str_eq(s, "U32.inc"), 19, r)))
+  r = Bool.pick(U32, Bool.or(b5k_str_eq(s, "U32.is_ge"), b5k_str_eq(s, "Nat.is_ge")), 16, Bool.pick(U32, Bool.or(b5k_str_eq(s, "U32.is_gt"), b5k_str_eq(s, "Nat.is_gt")), 15, Bool.pick(U32, Bool.or(b5k_str_eq(s, "U32.is_le"), b5k_str_eq(s, "Nat.is_le")), 14, r)))
+  r = Bool.pick(U32, Bool.or(b5k_str_eq(s, "U32.is_lt"), b5k_str_eq(s, "Nat.is_lt")), 13, Bool.pick(U32, b5k_str_eq(s, "U32.is_ne"), 12, Bool.pick(U32, Bool.or(b5k_str_eq(s, "U32.is_eq"), b5k_str_eq(s, "Nat.is_eq")), 11, r)))
+  r = Bool.pick(U32, Bool.or(b5k_str_eq(s, "U32.xor"), b5k_str_eq(s, "Bool.xor")), 8, Bool.pick(U32, Bool.or(b5k_str_eq(s, "U32.or"), b5k_str_eq(s, "Bool.or")), 7, Bool.pick(U32, Bool.or(b5k_str_eq(s, "U32.and"), b5k_str_eq(s, "Bool.and")), 6, Bool.pick(U32, b5k_str_eq(s, "U32.mod"), 5, r))))
+  Bool.pick(U32, Bool.or(b5k_str_eq(s, "U32.add"), b5k_str_eq(s, "Nat.add")), 1, Bool.pick(U32, b5k_str_eq(s, "U32.sub"), 2, Bool.pick(U32, Bool.or(b5k_str_eq(s, "U32.mul"), b5k_str_eq(s, "Nat.mul")), 3, Bool.pick(U32, b5k_str_eq(s, "U32.div"), 4, r))))
 def low_emit_bin_or_cmp(st: CfgSt, is_cmp: Bool, +op: U32, +va: U32, +vb: U32) -> CfgSt:
   +st1 = cfg_alloc_reg(st)
   +dst = cfg_res(st1)
@@ -800,10 +814,13 @@ def low_drop_u32(n: Nat, xs: List<&2, U32>) -> List<&2, U32>:
     case 0n _: xs
     case _ Nil{}: Nil{}
     case 1n+p Con{_, t}: low_drop_u32(p, t)
-def low_bank_finish_lam(+lam_fid: U32, +lam_cid: U32, +ncaps: U32, ar: U32, lam_st: CfgSt) -> CloBank:
+def low_bank_next_cid(bk: CloBank) -> U32:
+  match bk:
+    case CloBank{_, nc, _, _, _}: nc
+def low_bank_finish_lam(+ncaps: U32, ar: U32, lam_st: CfgSt) -> CloBank:
   match lam_st:
-    case CfgSt{_, nregs, _, _, _, blks_rev, _, _, _, _, _, CloBank{nf, nc, cr, fr, er}}:
-      CloBank{nf, nc, Con{IrCtor{lam_cid, String.append("__clo_", b5k_u32_to_str(lam_fid)), ncaps, False{}}, cr}, Con{IrFn{lam_fid, String.append("__lam_", b5k_u32_to_str(lam_fid)), ar, nregs, True{}, False{}, False{}, b5k_list_rev(IrBlock, blks_rev)}, fr}, Con{CloEntry{lam_cid, lam_fid, ncaps}, er}}
+    case CfgSt{_, nregs, _, _, _, blks_rev, _, _, _, _, _, CloBank{+lam_fid, +lam_cid, cr, fr, er}}:
+      CloBank{U32.add(lam_fid, 1), U32.add(lam_cid, 1), Con{IrCtor{lam_cid, String.append("__clo_", b5k_u32_to_str(lam_fid)), ncaps, False{}}, cr}, Con{IrFn{lam_fid, String.append("__lam_", b5k_u32_to_str(lam_fid)), ar, nregs, True{}, False{}, False{}, b5k_list_rev(IrBlock, blks_rev)}, fr}, Con{CloEntry{lam_cid, lam_fid, ncaps}, er}}
 def low_go(fuel: Nat, +env: LowEnv, st: CfgSt, task: LowTask, +is_tail: Bool) -> CfgSt:
   match fuel task:
     case Zero{} _: st
@@ -868,13 +885,14 @@ def low_go(fuel: Nat, +env: LowEnv, st: CfgSt, task: LowTask, +is_tail: Bool) ->
       +tmp = env_tmp(env)
       low_go(p, env, st, LTExpr{ELam{[Param{tmp, None{}, False{}, False{}}], EApp{EVar{sym}, [EVar{tmp}]}}}, False{})
     case Succ{_} LTVarGlob{sym, True{}}: low_emit_ctor_expr(env, st, sym, Nil{})
-    case Succ{p} LTLam{p0, +body, +fvs, CloBank{+lam_fid, +lam_cid, cr, fr, er}}:
+    case Succ{p} LTLam{p0, +body, +fvs, bk0}:
       +st0 = st
       +ncaps = b5k_u32_list_len(fvs)
       +ar = U32.add(ncaps, 1)
-      lam_st0 = low_bind_params([p0], low_bind_lam_caps(fvs, cfg_new(lam_fid, ar, CloBank{U32.add(lam_fid, 1), U32.add(lam_cid, 1), cr, fr, er}), 0, body), ncaps, body)
+      lam_st0 = low_bind_params([p0], low_bind_lam_caps(fvs, cfg_new(4294967295, ar, bk0), 0, body), ncaps, body)
       +lam_st1 = low_go(p, env, lam_st0, LTExpr{body}, True{})
-      bk2 = low_bank_finish_lam(lam_fid, lam_cid, ncaps, ar, cfg_seal(lam_st1, TRet{cfg_res(lam_st1)}))
+      lam_cid = low_bank_next_cid(cfg_bank(lam_st1))
+      bk2 = low_bank_finish_lam(ncaps, ar, cfg_seal(lam_st1, TRet{cfg_res(lam_st1)}))
       cap_vregs = low_lookup_fvs(fvs, cfg_vmap(st0))
       +st1 = cfg_alloc_reg(cfg_set_bank(st0, bk2))
       cfg_emit(st1, ICtor{cfg_res(st1), lam_cid, cap_vregs})

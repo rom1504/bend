@@ -149,6 +149,7 @@ def opt_sc_direct_op(+ret_sc: U32Map, op: IrOp, m: U32Map) -> U32Map:
     case ITake{ds, _}: opt_um_set_list(ds, 2, m)
     case IReuse{d, _, _, _}: um_set(m, d, 2)
     case IStatic{d, _}: um_set(m, d, 2)
+    case IArrOp{Con{r0, Con{r1, Nil{}}}, 75, _}: opt_sc_mark_scalar(um_set(m, r0, 2), r1)
     case IArrOp{ds, _, _}: opt_um_set_list(ds, 2, m)
     case IAlloca{d, _}: um_set(m, d, 2)
     case ILoad{d, _, _}: um_set(m, d, 2)
@@ -313,7 +314,7 @@ def opt_ip_fix(fuel: Nat, +bad: U32Map, +fns: List<&2, IrFn>, st: IpRes) -> IpRe
       opt_ip_fix(p, bad, fns, opt_ip_step(bad, fns, psc0, opt_ip_scan_fns(psc0, fns, IpScan{ret_sc, UM0{}, False{}})))
 def opt_collect_ip(small: Bool, +fns: List<&2, IrFn>, ret_sc: U32Map) -> IpRes:
   bad = opt_ip_bad_fns(fns, UM0{})
-  fuel = Bool.pick(Nat, small, 16n, 2n)
+  fuel = Bool.pick(Nat, small, 16n, 1n)
   opt_ip_fix(fuel, bad, fns, IpRes{ret_sc, UM0{}, True{}})
 def opt_collect_ret_only(fns: List<&2, IrFn>, m: U32Map) -> U32Map:
   match fns:
@@ -518,8 +519,12 @@ def cf_bin_rhs_const(+has: U32Map, +val: U32Map, +nr: U32, +rev: List<&2, IrOp>,
     case 2: cf_bin_mul_go(U32.is_zero(cb), U32.is_eq(cb, 1), has, val, nr, rev, d, a, b, a, cb)
     case 3: cf_bin_div_go(U32.is_eq(cb, 1), has, val, nr, rev, d, a, b, cb)
     case 4: cf_bin_mod_go(U32.is_eq(cb, 1), has, val, nr, rev, d, a, b, cb)
-    case 5: Bool.pick(CfSt, U32.is_zero(cb), cf_emit_const(has, val, nr, rev, d, 0), CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, 5, a, b}, rev}})
-    case 6: Bool.pick(CfSt, U32.is_zero(cb), cf_emit_copy(has, val, nr, rev, d, a), CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, 6, a, b}, rev}})
+    case 5:
+      Bool.pick(CfSt, U32.is_zero(cb), cf_emit_const(has, val, nr, rev, d, 0),
+        Bool.pick(CfSt, U32.is_eq(cb, 4294967295), cf_emit_copy(has, val, nr, rev, d, a), CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, 5, a, b}, rev}}))
+    case 6:
+      Bool.pick(CfSt, U32.is_zero(cb), cf_emit_copy(has, val, nr, rev, d, a),
+        Bool.pick(CfSt, U32.is_eq(cb, 4294967295), cf_emit_const(has, val, nr, rev, d, 4294967295), CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, 6, a, b}, rev}}))
     case 7: Bool.pick(CfSt, U32.is_zero(cb), cf_emit_copy(has, val, nr, rev, d, a), CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, 7, a, b}, rev}})
     case 8: Bool.pick(CfSt, U32.is_zero(cb), cf_emit_copy(has, val, nr, rev, d, a), CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, 8, a, b}, rev}})
     case _: Bool.pick(CfSt, U32.is_zero(cb), cf_emit_copy(has, val, nr, rev, d, a), CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, op, a, b}, rev}})
@@ -527,9 +532,15 @@ def cf_bin_lhs_const(+has: U32Map, +val: U32Map, +nr: U32, +rev: List<&2, IrOp>,
   match op:
     case 0: Bool.pick(CfSt, U32.is_zero(ca), cf_emit_copy(has, val, nr, rev, d, b), CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, 0, a, b}, rev}})
     case 2: cf_bin_mul_go(U32.is_zero(ca), U32.is_eq(ca, 1), has, val, nr, rev, d, a, b, b, ca)
-    case 5: Bool.pick(CfSt, U32.is_zero(ca), cf_emit_const(has, val, nr, rev, d, 0), CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, 5, a, b}, rev}})
-    case 6: Bool.pick(CfSt, U32.is_zero(ca), cf_emit_copy(has, val, nr, rev, d, b), CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, 6, a, b}, rev}})
+    case 5:
+      Bool.pick(CfSt, U32.is_zero(ca), cf_emit_const(has, val, nr, rev, d, 0),
+        Bool.pick(CfSt, U32.is_eq(ca, 4294967295), cf_emit_copy(has, val, nr, rev, d, b), CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, 5, a, b}, rev}}))
+    case 6:
+      Bool.pick(CfSt, U32.is_zero(ca), cf_emit_copy(has, val, nr, rev, d, b),
+        Bool.pick(CfSt, U32.is_eq(ca, 4294967295), cf_emit_const(has, val, nr, rev, d, 4294967295), CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, 6, a, b}, rev}}))
     case 7: Bool.pick(CfSt, U32.is_zero(ca), cf_emit_copy(has, val, nr, rev, d, b), CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, 7, a, b}, rev}})
+    case 8: Bool.pick(CfSt, U32.is_zero(ca), cf_emit_const(has, val, nr, rev, d, 0), CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, 8, a, b}, rev}})
+    case 9: Bool.pick(CfSt, U32.is_zero(ca), cf_emit_const(has, val, nr, rev, d, 0), CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, 9, a, b}, rev}})
     case _: CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, op, a, b}, rev}}
 def cf_bin_same(+has: U32Map, +val: U32Map, nr: U32, rev: List<&2, IrOp>, +d: U32, +op: U32, +a: U32) -> CfSt:
   match op:
@@ -567,7 +578,10 @@ def cf_step_op(st: CfSt, op: IrOp) -> CfSt:
           Bool.pick(CfSt, can, cf_emit_const(has, val, nr, rev, d, opt_fold_un(uop, um_get(val, s))), CfSt{um_set(has, d, 0), val, nr, Con{IUn{d, uop, s}, rev}})
         case ICmp{+d, +cop, +a, +b}:
           can = Bool.and(U32.is_lt(cop, 6), Bool.and(U32.is_ne(um_get(has, a), 0), U32.is_ne(um_get(has, b), 0)))
-          Bool.pick(CfSt, can, cf_emit_const(has, val, nr, rev, d, opt_fold_cmp(cop, um_get(val, a), um_get(val, b))), CfSt{um_set(has, d, 0), val, nr, Con{ICmp{d, cop, a, b}, rev}})
+          same_i = Bool.and(U32.is_lt(cop, 6), U32.is_eq(a, b))
+          same_v = Bool.to_u32(Bool.or(U32.is_eq(cop, 0), Bool.or(U32.is_eq(cop, 3), U32.is_eq(cop, 5))))
+          Bool.pick(CfSt, can, cf_emit_const(has, val, nr, rev, d, opt_fold_cmp(cop, um_get(val, a), um_get(val, b))),
+            Bool.pick(CfSt, same_i, cf_emit_const(has, val, nr, rev, d, same_v), CfSt{um_set(has, d, 0), val, nr, Con{ICmp{d, cop, a, b}, rev}}))
         case other:
           +op0 = other
           CfSt{opt_kill_op_dsts(op0, has), val, nr, Con{op0, rev}}
@@ -844,7 +858,7 @@ def opt_pass_cp_dce(do_merge: Bool, f: IrFn) -> IrFn:
     case False{} IrFn{fid, nm, +ar, nregs, esc, eff, is_m, blks}:
       +b1 = opt_elim_unreach(blks)
       b2 = opt_cp_blks(opt_blks_defs(b1, UM0{}), ar, b1)
-      IrFn{fid, nm, ar, nregs, esc, eff, is_m, opt_dce_round(opt_dce_round(b2))}
+      IrFn{fid, nm, ar, nregs, esc, eff, is_m, opt_dce_round(b2)}
 # Pass C — Deeper Multi-Block Inlining (<= 32 ops, <= 4 blocks, 2 rounds)
 type InlEntry is Data:
   InlEntry{fid: U32, arity: U32, nregs: U32, max_blk: U32, blks: List<&2, IrBlock>}
@@ -1030,7 +1044,7 @@ def opt_inl_all(+bud0: U32, +bank: InlBank, fns: List<&2, IrFn>) -> List<&2, IrF
 def opt_fn_local(+small: Bool, +ret_sc: U32Map, +psc: U32Map, f: IrFn) -> IrFn:
   match small:
     case True{}: opt_pass_cp_dce(False{}, opt_pass_sroa_fuse(opt_pass_sroa_tag(opt_pass_cp_dce(True{}, opt_pass_cf(opt_pass_sroa_tag(opt_pass_scalar(ret_sc, psc, f)))))))
-    case False{}: opt_pass_cp_dce(False{}, opt_pass_cf(opt_pass_scalar(ret_sc, psc, f)))
+    case False{}: opt_pass_cf(opt_pass_scalar(ret_sc, psc, f))
 def opt_fns_local(+small: Bool, +ret_sc: U32Map, +psc: U32Map, fns: List<&2, IrFn>) -> List<&2, IrFn>:
   match fns:
     case Nil{}: Nil{}
@@ -1056,9 +1070,7 @@ def b5k_opt_go(small: Bool, +fns: List<&2, IrFn>) -> List<&2, IrFn>:
       +fns3 = opt_inl_all(24, opt_collect_inlines(False{}, 48, 6, fns2, InlBank{UM0{}, OT0{}}), fns2)
       b5k_opt_fin(True{}, fns3, opt_collect_ip(True{}, fns3, ret0))
     case False{}:
-      +ret0 = opt_collect_ret_only(fns, UM0{})
-      +fns2 = opt_inl_all(16, opt_collect_inlines(True{}, 12, 1, fns, InlBank{UM0{}, OT0{}}), fns)
-      b5k_opt_fin(False{}, fns2, opt_collect_ip(False{}, fns2, ret0))
+      b5k_opt_fin(False{}, fns, opt_collect_ip(False{}, fns, UM0{}))
 def b5k_opt(prog: IrProg) -> IrProg:
   match prog:
     case IrProg{+fns, ctors, statics, main_fid, main_pure, effects, show_desc, show_names}:

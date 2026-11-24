@@ -1,0 +1,66 @@
+{
+  "campaign": "B2: Direct-Only FID Omission & Explicit Cross-Module Contracts",
+  "timestamp_utc": "2026-11-24T04:24:00Z",
+  "patch": {
+    "script": "research/agy/boot_200s/b2_direct_fid/apply_b2.py",
+    "target": "selfhost/build/agy/wave17_unified/compiler.bend",
+    "delta_bytes": 6838,
+    "new_types": 0,
+    "check_only_errors": 0,
+    "idempotent": true,
+    "self_contained_across_splits": true
+  },
+  "mint_n8_b2": {
+    "k": 10,
+    "total_segs": 65315,
+    "fid_budget": 65532,
+    "binary_bytes": 84271208
+  },
+  "smoke_compiler_slice": {
+    "o0": {"ms": 20826.3, "out": "34"},
+    "o2": {"ms": 12658.5, "out": "34"}
+  },
+  "decisive_contract_suite": {
+    "script": "research/agy/boot_200s/b2_direct_fid/test_b2_contracts.py",
+    "O0": {
+      "mono_out": "174",
+      "split_a_out": "174",
+      "split_b_out": "174",
+      "mono_v2_out": "207",
+      "relink_v2_out": "207",
+      "caller_obj_sha256": "707e6dd396a370bc58f0641176e76f89322151d6fa5de0e8b8029c452035204f",
+      "caller_obj_byte_identical": true,
+      "a_lib_p111_def_count": 9,
+      "a_lib_p113d_def_count": 3,
+      "direct_only_omitted_verified": true,
+      "closure_factory_verified": true,
+      "cps_continuation_verified": true,
+      "contract_violation_fail_loud": true
+    },
+    "O2": {
+      "mono_out": "174",
+      "split_a_out": "174",
+      "split_b_out": "174",
+      "mono_v2_out": "207",
+      "relink_v2_out": "207",
+      "caller_obj_sha256": "2602381b8b3695a5e52ff553cc04983205497496ee1a8b10cc858b5a108fafb6",
+      "caller_obj_byte_identical": true,
+      "a_lib_p111_def_count": 9,
+      "a_lib_p113d_def_count": 3,
+      "direct_only_omitted_verified": true,
+      "closure_factory_verified": true,
+      "cps_continuation_verified": true,
+      "contract_violation_fail_loud": true
+    }
+  },
+  "k16_wave17_elf_audit": {
+    "m00": {"p111_def": 1334, "k_cont": 173, "p164a_wrap": 938, "wrap_needed_by_und": 551, "nonwrap": 148, "p113d_def": 1460},
+    "m01": {"p111_def": 1259, "k_cont": 453, "p164a_wrap": 546, "wrap_needed_by_und": 288, "nonwrap": 205, "p113d_def": 735},
+    "m02": {"p111_def": 1850, "k_cont": 1055, "p164a_wrap": 373, "wrap_needed_by_und": 184, "nonwrap": 375, "p113d_def": 484},
+    "m03": {"p111_def": 1659, "k_cont": 1033, "p164a_wrap": 237, "wrap_needed_by_und": 142, "nonwrap": 346, "p113d_def": 318},
+    "m04": {"p111_def": 1932, "k_cont": 1320, "p164a_wrap": 202, "wrap_needed_by_und": 102, "nonwrap": 370, "p113d_def": 283},
+    "m14": {"p111_def": 2644, "k_cont": 2093, "p164a_wrap": 0, "wrap_needed_by_und": 0, "nonwrap": 522, "p113d_def": 43, "und_dir": 554},
+    "m15": {"p111_def": 2203, "k_cont": 1749, "p164a_wrap": 0, "wrap_needed_by_und": 0, "nonwrap": 422, "p113d_def": 20, "und_dir": 588},
+    "root_cause_m14_m15": "98.6% of m14 (2615/2644) and m15 (2171/2203) segments are genuine non-direct CPS workers + $p111.k.* continuations caused by 568 mutual-recursion SCCs (3,162 defs) rejected by p113d_passes (acyclic + self-rec only), plus their ~3,500 transitive callers. 0 p164a_segment wrappers and 0 P167Factory chains exist in m14/m15."
+  }
+}

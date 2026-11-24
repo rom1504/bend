@@ -20,7 +20,7 @@ def opt_shift_u32(+base: U32, xs: List<&2, U32>) -> List<&2, U32>:
   match xs:
     case Nil{}: Nil{}
     case Con{v, t}: Con{U32.add(base, v), opt_shift_u32(base, t)}
-def opt_op_defs(op: IrOp, m: U32Map) -> U32Map:
+def opt_op_defs(op: IrOp, +m: U32Map) -> U32Map:
   match op:
     case IConst{d, _}: opt_um_inc(m, d)
     case IFlt{d, _}: opt_um_inc(m, d)
@@ -34,14 +34,14 @@ def opt_op_defs(op: IrOp, m: U32Map) -> U32Map:
     case ICtor{d, _, _}: opt_um_inc(m, d)
     case ITake{ds, _}: opt_um_inc_list(ds, m)
     case ITag{d, _}: opt_um_inc(m, d)
-    case IKeep{d, _}: opt_um_inc(m, d)
+    case IKeep{+d, +s}: Bool.pick(U32Map, U32.is_eq(d, s), m, opt_um_inc(m, d))
     case IReuse{d, _, _, _}: opt_um_inc(m, d)
     case IStatic{d, _}: opt_um_inc(m, d)
     case IArrOp{ds, _, _}: opt_um_inc_list(ds, m)
     case IAlloca{d, _}: opt_um_inc(m, d)
     case ILoad{d, _, _}: opt_um_inc(m, d)
     case _: m
-def opt_kill_op_dsts(op: IrOp, m: U32Map) -> U32Map:
+def opt_kill_op_dsts(op: IrOp, +m: U32Map) -> U32Map:
   match op:
     case IConst{d, _}: um_set(m, d, 0)
     case IFlt{d, _}: um_set(m, d, 0)
@@ -55,7 +55,7 @@ def opt_kill_op_dsts(op: IrOp, m: U32Map) -> U32Map:
     case ICtor{d, _, _}: um_set(m, d, 0)
     case ITake{ds, _}: opt_um_set_list(ds, 0, m)
     case ITag{d, _}: um_set(m, d, 0)
-    case IKeep{d, _}: um_set(m, d, 0)
+    case IKeep{+d, +s}: Bool.pick(U32Map, U32.is_eq(d, s), m, um_set(m, d, 0))
     case IReuse{d, _, _, _}: um_set(m, d, 0)
     case IStatic{d, _}: um_set(m, d, 0)
     case IArrOp{ds, _, _}: opt_um_set_list(ds, 0, m)
@@ -167,6 +167,32 @@ def opt_sc_prop_copy(poison: Bool, +d: U32, s: U32, +m: U32Map) -> U32Map:
   match poison:
     case False{}: Bool.pick(U32Map, Bool.and(U32.is_zero(um_get(m, d)), U32.is_eq(um_get(m, s), 1)), um_set(m, d, 1), m)
     case True{}: Bool.pick(U32Map, U32.is_ne(um_get(m, s), 1), um_set(m, d, 2), m)
+def opt_sc_prop_add(+defc: U32Map, +ar: U32, +a: U32, +b: U32, +m: U32Map) -> U32Map:
+  +ma = um_get(m, a)
+  +mb = um_get(m, b)
+  +m1 = Bool.pick(U32Map, Bool.and(U32.is_eq(mb, 1), Bool.and(U32.is_ne(ma, 1), opt_cp_can_prop(defc, ar, a))), um_set(m, a, 1), m)
+  Bool.pick(U32Map, Bool.and(U32.is_eq(ma, 1), Bool.and(U32.is_ne(mb, 1), opt_cp_can_prop(defc, ar, b))), um_set(m1, b, 1), m1)
+def opt_sc_add_ops(+defc: U32Map, +ar: U32, ops: List<&2, IrOp>, +m: U32Map) -> U32Map:
+  match ops:
+    case Nil{}: m
+    case Con{IBin{_, 0, a, b}, t}: opt_sc_add_ops(defc, ar, t, opt_sc_prop_add(defc, ar, a, b, m))
+    case Con{IBin{_, +bop, +a, +b}, t}:
+      m1 = Bool.pick(U32Map, Bool.and(U32.is_ge(bop, 1), U32.is_le(bop, 9)), um_set(um_set(m, a, 1), b, 1), m)
+      opt_sc_add_ops(defc, ar, t, m1)
+    case Con{IUn{_, +uop, +s}, t}:
+      m1 = Bool.pick(U32Map, U32.is_le(uop, 1), um_set(m, s, 1), m)
+      opt_sc_add_ops(defc, ar, t, m1)
+    case Con{ICopy{d, +s}, t}:
+      m1 = Bool.pick(U32Map, Bool.and(U32.is_eq(um_get(m, d), 1), opt_cp_can_prop(defc, ar, s)), um_set(m, s, 1), m)
+      opt_sc_add_ops(defc, ar, t, m1)
+    case Con{IKeep{d, +s}, t}:
+      m1 = Bool.pick(U32Map, Bool.and(U32.is_eq(um_get(m, d), 1), opt_cp_can_prop(defc, ar, s)), um_set(m, s, 1), m)
+      opt_sc_add_ops(defc, ar, t, m1)
+    case Con{_, t}: opt_sc_add_ops(defc, ar, t, m)
+def opt_sc_add_blks(+defc: U32Map, +ar: U32, blks: List<&2, IrBlock>, m: U32Map) -> U32Map:
+  match blks:
+    case Nil{}: m
+    case Con{IrBlock{_, ops, _}, t}: opt_sc_add_blks(defc, ar, t, opt_sc_add_ops(defc, ar, ops, m))
 def opt_sc_prop_ops(+poison: Bool, ops: List<&2, IrOp>, m: U32Map) -> U32Map:
   match ops:
     case Nil{}: m
@@ -181,9 +207,15 @@ def opt_sc_prop_n(k: Nat, +poison: Bool, +blks: List<&2, IrBlock>, m: U32Map) ->
   match k:
     case 0n: m
     case 1n+p: opt_sc_prop_n(p, poison, blks, opt_sc_prop_blks(poison, blks, m))
+def opt_sc_add_n(k: Nat, +defc: U32Map, +ar: U32, +blks: List<&2, IrBlock>, m: U32Map) -> U32Map:
+  match k:
+    case 0n: m
+    case 1n+p: opt_sc_add_n(p, defc, ar, blks, opt_sc_add_blks(defc, ar, blks, m))
 def opt_sc_compute(+ret_sc: U32Map, +psc: U32Map, +fid: U32, +ar: U32, +blks: List<&2, IrBlock>) -> U32Map:
+  +defc = opt_blks_defs(blks, UM0{})
   m0 = opt_sc_direct_blks(ret_sc, blks, opt_sc_init_params(fid, psc, U32.to_nat(ar), 0, UM0{}))
-  opt_sc_prop_n(2n, True{}, blks, opt_sc_prop_n(2n, False{}, blks, m0))
+  m1 = opt_sc_prop_n(2n, True{}, blks, opt_sc_prop_n(2n, False{}, blks, m0))
+  opt_sc_add_n(4n, defc, ar, blks, m1)
 def opt_sc_elide_keep(is_sc: Bool, +d: U32, +s: U32, +acc: List<&2, IrOp>) -> List<&2, IrOp>:
   match is_sc:
     case False{}: Con{IKeep{d, s}, acc}
@@ -305,13 +337,22 @@ def opt_ip_promote_fns(+bad: U32Map, +obs: U32Map, fns: List<&2, IrFn>, st: IpRe
       opt_ip_promote_fns(bad, obs, t, opt_ip_prom_one(U32.is_zero(um_get(bad, fid)), fid, obs, ar, ret_sc, psc, chg))
 type IpScan is Data:
   IpScan{ret_sc: U32Map, obs: U32Map, chg: Bool}
+def opt_ip_add_dep_blks(blks: List<&2, IrBlock>, +m: U32Map) -> U32Map:
+  match blks:
+    case Nil{}: m
+    case Con{IrBlock{_, Con{IBin{+t2, 0, +va, _}, Con{ICopy{+dst, +s}, Nil{}}}, TJmp{_}}, t}:
+      +oa = um_get(m, va)
+      ok = Bool.and(U32.is_eq(t2, s), Bool.and(U32.is_ne(oa, 0), U32.is_zero(um_get(m, dst))))
+      opt_ip_add_dep_blks(t, Bool.pick(U32Map, ok, um_set(m, dst, oa), m))
+    case Con{_, t}: opt_ip_add_dep_blks(t, m)
 def opt_ip_scan_fns(+psc: U32Map, fns: List<&2, IrFn>, st: IpScan) -> IpScan:
   match fns st:
     case Nil{} _: st
     case Con{IrFn{+fid, _, +ar, _, _, _, _, +blks}, t} IpScan{+ret_sc, obs, chg}:
       +sc = opt_sc_compute(ret_sc, psc, fid, ar, blks)
       defc = opt_blks_defs(blks, UM0{})
-      orig = opt_ip_orig_blks(defc, ar, blks, opt_ip_init_orig(U32.to_nat(ar), 0, UM0{}))
+      orig0 = opt_ip_orig_blks(defc, ar, blks, opt_ip_init_orig(U32.to_nat(ar), 0, UM0{}))
+      orig = opt_ip_add_dep_blks(blks, orig0)
       obs1 = opt_ip_obs_blks(fid, sc, orig, blks, obs)
       +new_ret = Bool.and(U32.is_ge(fid, 3), Bool.and(U32.is_zero(um_get(ret_sc, fid)), opt_sc_all_rets(fid, ret_sc, sc, blks, False{})))
       ret1 = Bool.pick(U32Map, new_ret, um_set(ret_sc, fid, 1), ret_sc)
@@ -524,12 +565,54 @@ def cf_bin_div_go(is1: Bool, +has: U32Map, +val: U32Map, +nr: U32, +rev: List<&2
     case False{}:
       +p2 = opt_pow2_log(cb)
       Bool.pick(CfSt, U32.is_ne(p2, 0), cf_emit_sr(has, val, nr, rev, d, B5K_OP_SHR(), a, p2), CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, 3, a, b}, rev}})
+def cf_emit_mod255(has: U32Map, val: U32Map, +nr: U32, rev: List<&2, IrOp>, +d: U32, +a: U32, +b: U32, +cb: U32) -> CfSt:
+  +m = U32.div(U32.add(65535, cb), cb)
+  +r0 = nr
+  +r1 = U32.add(nr, 1)
+  +r2 = U32.add(nr, 2)
+  +r3 = U32.add(nr, 3)
+  +r4 = U32.add(nr, 4)
+  +r5 = U32.add(nr, 5)
+  +r6 = U32.add(nr, 6)
+  +r7 = U32.add(nr, 7)
+  +r8 = U32.add(nr, 8)
+  +r9 = U32.add(nr, 9)
+  +r10 = U32.add(nr, 10)
+  +r11 = U32.add(nr, 11)
+  +r12 = U32.add(nr, 12)
+  +r13 = U32.add(nr, 13)
+  o1 : List<&2, IrOp> = Con{IBin{r4, 0, r1, r3}, Con{IBin{r3, 9, a, r2}, Con{IConst{r2, 16}, Con{IBin{r1, 5, a, r0}, Con{IConst{r0, 65535}, rev}}}}}
+  o2 : List<&2, IrOp> = Con{IBin{r9, 0, r6, r8}, Con{IBin{r8, 9, r4, r7}, Con{IConst{r7, 8}, Con{IBin{r6, 5, r4, r5}, Con{IConst{r5, 255}, o1}}}}}
+  o3 : List<&2, IrOp> = Con{IBin{d, 1, r9, r13}, Con{IBin{r13, 2, r12, b}, Con{IBin{r12, 9, r11, r2}, Con{IBin{r11, 2, r9, r10}, Con{IConst{r10, m}, o2}}}}}
+  CfSt{um_set(has, d, 0), val, U32.add(nr, 14), o3}
+def cf_emit_mod257(has: U32Map, val: U32Map, +nr: U32, rev: List<&2, IrOp>, +d: U32, +a: U32, +b: U32) -> CfSt:
+  +r0 = nr
+  +r1 = U32.add(nr, 1)
+  +r2 = U32.add(nr, 2)
+  +r3 = U32.add(nr, 3)
+  +r4 = U32.add(nr, 4)
+  +r5 = U32.add(nr, 5)
+  +r6 = U32.add(nr, 6)
+  +r7 = U32.add(nr, 7)
+  +r8 = U32.add(nr, 8)
+  +r9 = U32.add(nr, 9)
+  +r10 = U32.add(nr, 10)
+  +r11 = U32.add(nr, 11)
+  +r12 = U32.add(nr, 12)
+  o1 : List<&2, IrOp> = Con{IBin{r4, 0, r1, r3}, Con{IBin{r3, 9, a, r2}, Con{IConst{r2, 16}, Con{IBin{r1, 5, a, r0}, Con{IConst{r0, 65535}, rev}}}}}
+  o2 : List<&2, IrOp> = Con{IBin{r7, 0, r5, r6}, Con{IBin{r6, 9, r4, r2}, Con{IBin{r5, 5, r4, r0}, o1}}}
+  o3 : List<&2, IrOp> = Con{IBin{d, 1, r7, r12}, Con{IBin{r12, 2, r11, b}, Con{IBin{r11, 9, r9, r10}, Con{IConst{r10, 24}, Con{IBin{r9, 2, r7, r8}, Con{IConst{r8, 65281}, o2}}}}}}
+  CfSt{um_set(has, d, 0), val, U32.add(nr, 13), o3}
 def cf_bin_mod_go(is1: Bool, +has: U32Map, +val: U32Map, +nr: U32, +rev: List<&2, IrOp>, +d: U32, +a: U32, +b: U32, +cb: U32) -> CfSt:
   match is1:
     case True{}: cf_emit_const(has, val, nr, rev, d, 0)
     case False{}:
       +p2 = opt_pow2_log(cb)
-      Bool.pick(CfSt, U32.is_ne(p2, 0), cf_emit_sr(has, val, nr, rev, d, B5K_OP_AND(), a, U32.sub(cb, 1)), CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, 4, a, b}, rev}})
+      +is255 = Bool.and(U32.is_ge(cb, 3), Bool.and(U32.is_le(cb, 85), U32.is_zero(U32.mod(255, cb))))
+      Bool.pick(CfSt, U32.is_ne(p2, 0), cf_emit_sr(has, val, nr, rev, d, B5K_OP_AND(), a, U32.sub(cb, 1)),
+        Bool.pick(CfSt, is255, cf_emit_mod255(has, val, nr, rev, d, a, b, cb),
+          Bool.pick(CfSt, U32.is_eq(cb, 257), cf_emit_mod257(has, val, nr, rev, d, a, b),
+            CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, 4, a, b}, rev}})))
 def cf_bin_rhs_const(+has: U32Map, +val: U32Map, +nr: U32, +rev: List<&2, IrOp>, +d: U32, +op: U32, +a: U32, +b: U32, +cb: U32) -> CfSt:
   match op:
     case 0: Bool.pick(CfSt, U32.is_zero(cb), cf_emit_copy(has, val, nr, rev, d, a), CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, 0, a, b}, rev}})
@@ -913,7 +996,7 @@ def opt_collect_one(elig: Bool, +leaf: Bool, +max_ops: U32, +max_blks: U32, +fid
     case False{}: InlBank{has, tr}
     case True{}:
       +nb = b5k_list_len(IrBlock, blks)
-      ok = Bool.and(U32.is_lt(fid, 2048), Bool.and(U32.is_le(nregs, 96), Bool.and(U32.is_ge(nb, 1), Bool.and(U32.is_le(nb, max_blks), Bool.and(U32.is_le(opt_blks_op_count(blks, 0), max_ops), Bool.not(opt_blks_has_bad(leaf, fid, blks)))))))
+      ok = Bool.and(U32.is_lt(fid, 2048), Bool.and(U32.is_le(nregs, 192), Bool.and(U32.is_ge(nb, 1), Bool.and(U32.is_le(nb, max_blks), Bool.and(U32.is_le(opt_blks_op_count(blks, 0), max_ops), Bool.not(opt_blks_has_bad(leaf, fid, blks)))))))
       opt_collect_put(ok, fid, ar, nregs, blks, has, tr)
 def opt_collect_inlines(+leaf: Bool, +max_ops: U32, +max_blks: U32, fns: List<&2, IrFn>, bank: InlBank) -> InlBank:
   match fns bank:
@@ -1009,7 +1092,7 @@ def opt_inl_ops(+self_fid: U32, +has: U32Map, +tr: OptTrie<Maybe<&2, InlEntry>>,
   match ops st:
     case Nil{} _: st
     case Con{ICallDirect{d, +cfid, args}, t} InlCur{cid, orev, brev, +nr, +nb, +bud}:
-      can = Bool.and(U32.is_ne(cfid, self_fid), Bool.and(U32.is_gt(bud, 0), Bool.and(U32.is_lt(nr, 1024), Bool.and(U32.is_lt(nb, 256), U32.is_ne(um_get(has, cfid), 0)))))
+      can = Bool.and(U32.is_ne(cfid, self_fid), Bool.and(U32.is_gt(bud, 0), Bool.and(U32.is_lt(nr, 4096), Bool.and(U32.is_lt(nb, 512), U32.is_ne(um_get(has, cfid), 0)))))
       opt_inl_ops(self_fid, has, tr, t, opt_inl_one_call(can, tr, d, cfid, args, InlCur{cid, orev, brev, nr, nb, bud}))
     case Con{op, t} InlCur{cid, orev, brev, nr, nb, bud}:
       opt_inl_ops(self_fid, has, tr, t, InlCur{cid, Con{op, orev}, brev, nr, nb, bud})
@@ -1058,7 +1141,7 @@ def opt_inl_all(+bud0: U32, +bank: InlBank, fns: List<&2, IrFn>) -> List<&2, IrF
   match fns:
     case Nil{}: Nil{}
     case Con{f, t}: Con{opt_inl_fn(bud0, bank, f), opt_inl_all(bud0, bank, t)}
-# Pass E — Worker-Wrapper Pair-Parameter Unboxing
+# Pass E — N-Field Worker-Wrapper Unboxing (arity 2..4, IKeep aliases, loop-hoist)
 def opt_u32_nth_go(xs: List<&2, U32>, n: Nat) -> U32:
   match xs n:
     case Nil{} _: 0
@@ -1066,243 +1149,449 @@ def opt_u32_nth_go(xs: List<&2, U32>, n: Nat) -> U32:
     case Con{_, t} 1n+p: opt_u32_nth_go(t, p)
 def opt_u32_nth(xs: List<&2, U32>, idx: U32) -> U32:
   opt_u32_nth_go(xs, U32.to_nat(idx))
-def opt_u32_rep_app(xs: List<&2, U32>, +idx: U32, +cur: U32, +f0: U32, +f1: U32) -> List<&2, U32>:
+def opt_u32_rep_app(xs: List<&2, U32>, +idx: U32, +cur: U32, +f0: U32, tail: List<&2, U32>) -> List<&2, U32>:
   match xs:
-    case Nil{}: Con{f1, Nil{}}
-    case Con{v, t}: Con{Bool.pick(U32, U32.is_eq(cur, idx), f0, v), opt_u32_rep_app(t, idx, U32.add(cur, 1), f0, f1)}
+    case Nil{}: tail
+    case Con{v, t}: Con{Bool.pick(U32, U32.is_eq(cur, idx), f0, v), opt_u32_rep_app(t, idx, U32.add(cur, 1), f0, tail)}
+def opt_ww_seq(n: Nat, +b: U32) -> List<&2, U32>:
+  match n:
+    case 0n: Nil{}
+    case 1n+p: Con{b, opt_ww_seq(p, U32.add(b, 1))}
+def opt_ww_alias(+defc: U32Map, +ar: U32, +blks: List<&2, IrBlock>) -> U32Map:
+  m0 = opt_ip_init_orig(U32.to_nat(ar), 0, UM0{})
+  opt_ip_orig_blks(defc, ar, blks, opt_ip_orig_blks(defc, ar, blks, m0))
+def opt_ww_tag_ops(+al: U32Map, ops: List<&2, IrOp>, +tgs: U32Map, +cmps: U32Map) -> U32Map:
+  match ops:
+    case Nil{}: cmps
+    case Con{ITag{d, s}, t}:
+      opt_ww_tag_ops(al, t, Bool.pick(U32Map, U32.is_ne(um_get(al, s), 0), um_set(tgs, d, 1), tgs), cmps)
+    case Con{ICmp{d, _, a, b}, t}:
+      is_t = Bool.or(U32.is_ne(um_get(tgs, a), 0), U32.is_ne(um_get(tgs, b), 0))
+      opt_ww_tag_ops(al, t, tgs, Bool.pick(U32Map, is_t, um_set(cmps, d, 1), cmps))
+    case Con{_, t}: opt_ww_tag_ops(al, t, tgs, cmps)
+def opt_ww_tag_tgts(+al: U32Map, blks: List<&2, IrBlock>, +m: U32Map) -> U32Map:
+  match blks:
+    case Nil{}: m
+    case Con{IrBlock{_, ops, TBr{c, tb, _}}, t}:
+      cmps = opt_ww_tag_ops(al, ops, UM0{}, UM0{})
+      opt_ww_tag_tgts(al, t, Bool.pick(U32Map, U32.is_ne(um_get(cmps, c), 0), um_set(m, tb, 1), m))
+    case Con{_, t}: opt_ww_tag_tgts(al, t, m)
+def opt_ww_bad_one(+al: U32Map, u: U32, +bp: U32Map) -> U32Map:
+  +a = um_get(al, u)
+  Bool.pick(U32Map, U32.is_ne(a, 0), um_set(bp, U32.sub(a, 1), 1), bp)
+def opt_ww_bad_list(+al: U32Map, xs: List<&2, U32>, bp: U32Map) -> U32Map:
+  match xs:
+    case Nil{}: bp
+    case Con{u, t}: opt_ww_bad_list(al, t, opt_ww_bad_one(al, u, bp))
+def opt_ww_bad_op(+al: U32Map, op: IrOp, bp: U32Map) -> U32Map:
+  match op:
+    case ICopy{_, s}: opt_ww_bad_one(al, s, bp)
+    case IBin{_, _, a, b}: opt_ww_bad_one(al, b, opt_ww_bad_one(al, a, bp))
+    case IUn{_, _, s}: opt_ww_bad_one(al, s, bp)
+    case ICmp{_, _, a, b}: opt_ww_bad_one(al, b, opt_ww_bad_one(al, a, bp))
+    case ICallDirect{_, _, args}: opt_ww_bad_list(al, args, bp)
+    case ICallClosure{_, _, caps}: opt_ww_bad_list(al, caps, bp)
+    case IApply{_, c, a}: opt_ww_bad_one(al, a, opt_ww_bad_one(al, c, bp))
+    case ICtor{_, _, fs}: opt_ww_bad_list(al, fs, bp)
+    case ITake{_, s}: opt_ww_bad_one(al, s, bp)
+    case ITag{_, s}: opt_ww_bad_one(al, s, bp)
+    case IKeep{_, s}: opt_ww_bad_one(al, s, bp)
+    case ISink{s}: opt_ww_bad_one(al, s, bp)
+    case IReuse{_, sl, _, fs}: opt_ww_bad_list(al, fs, opt_ww_bad_one(al, sl, bp))
+    case IArrOp{_, _, args}: opt_ww_bad_list(al, args, bp)
+    case ILoad{_, b, _}: opt_ww_bad_one(al, b, bp)
+    case IStore{b, _, v}: opt_ww_bad_one(al, v, opt_ww_bad_one(al, b, bp))
+    case _: bp
 type WwScan is Data:
-  WwScan{bad_p: U32Map, has_tk: U32Map}
-def opt_ww_scan_ops(ops: List<&2, IrOp>, st: WwScan) -> WwScan:
+  WwScan{bp: U32Map, tk_ar: U32Map, has_tag: U32Map, has_self: U32Map, has_raw: U32Map}
+def opt_ww_scan_take(+in_tag: Bool, +al: U32Map, ds: List<&2, U32>, s: U32, st: WwScan) -> WwScan:
+  match st:
+    case WwScan{+bp, +ta, ht, hs, +hr}:
+      +a = um_get(al, s)
+      +k = b5k_u32_list_len(ds)
+      +p = U32.sub(a, 1)
+      +cur = um_get(ta, p)
+      +ok = Bool.and(U32.is_ge(k, 2), Bool.and(U32.is_le(k, 4), Bool.or(U32.is_zero(cur), U32.is_eq(cur, k))))
+      bp1 = Bool.pick(U32Map, Bool.and(U32.is_ne(a, 0), Bool.not(ok)), um_set(bp, p, 1), bp)
+      ta1 = Bool.pick(U32Map, Bool.and(U32.is_ne(a, 0), ok), um_set(ta, p, k), ta)
+      hr1 = Bool.pick(U32Map, Bool.and(U32.is_ne(a, 0), Bool.and(ok, Bool.not(in_tag))), um_set(hr, p, 1), hr)
+      WwScan{bp1, ta1, ht, hs, hr1}
+def opt_ww_scan_copy(+al: U32Map, +d: U32, +s: U32, st: WwScan) -> WwScan:
+  match st:
+    case WwScan{+bp, ta, ht, hs, hr}:
+      +as = um_get(al, s)
+      ok = Bool.or(U32.is_zero(as), Bool.or(U32.is_eq(d, s), U32.is_eq(um_get(al, d), as)))
+      WwScan{Bool.pick(U32Map, ok, bp, um_set(bp, U32.sub(as, 1), 1)), ta, ht, hs, hr}
+def opt_ww_scan_ops(+in_tag: Bool, +al: U32Map, ops: List<&2, IrOp>, st: WwScan) -> WwScan:
   match ops st:
     case Nil{} _: st
-    case Con{ITake{Con{_, Con{_, Nil{}}}, s}, t} WwScan{bp, ht}:
-      opt_ww_scan_ops(t, WwScan{bp, um_set(ht, s, 1)})
-    case Con{ITag{_, _}, t} _: opt_ww_scan_ops(t, st)
-    case Con{ISink{_}, t} _: opt_ww_scan_ops(t, st)
-    case Con{op, t} WwScan{bp, ht}: opt_ww_scan_ops(t, WwScan{opt_op_uses(op, bp), ht})
-def opt_ww_scan_term(term: IrTerm, st: WwScan) -> WwScan:
-  match st:
-    case WwScan{bp, ht}: WwScan{opt_term_uses(term, bp), ht}
-def opt_ww_scan_blks(blks: List<&2, IrBlock>, st: WwScan) -> WwScan:
+    case Con{ITake{ds, s}, t} _: opt_ww_scan_ops(in_tag, al, t, opt_ww_scan_take(in_tag, al, ds, s, st))
+    case Con{ITag{_, s}, t} WwScan{bp, ta, +ht, hs, hr}:
+      +a = um_get(al, s)
+      opt_ww_scan_ops(in_tag, al, t, WwScan{bp, ta, Bool.pick(U32Map, U32.is_ne(a, 0), um_set(ht, U32.sub(a, 1), 1), ht), hs, hr})
+    case Con{ISink{_}, t} _: opt_ww_scan_ops(in_tag, al, t, st)
+    case Con{ICopy{d, s}, t} _: opt_ww_scan_ops(in_tag, al, t, opt_ww_scan_copy(al, d, s, st))
+    case Con{IKeep{d, s}, t} _: opt_ww_scan_ops(in_tag, al, t, opt_ww_scan_copy(al, d, s, st))
+    case Con{op, t} WwScan{bp, ta, ht, hs, hr}:
+      opt_ww_scan_ops(in_tag, al, t, WwScan{opt_ww_bad_op(al, op, bp), ta, ht, hs, hr})
+def opt_ww_scan_self(+al: U32Map, args: List<&2, U32>, +idx: U32, st: WwScan) -> WwScan:
+  match args st:
+    case Nil{} _: st
+    case Con{v, t} WwScan{+bp, ta, ht, +hs, hr}:
+      +a = um_get(al, v)
+      +is_sp = U32.is_eq(a, U32.add(idx, 1))
+      bp1 = Bool.pick(U32Map, Bool.and(U32.is_ne(a, 0), Bool.not(is_sp)), um_set(bp, U32.sub(a, 1), 1), bp)
+      hs1 = Bool.pick(U32Map, is_sp, um_set(hs, idx, 1), hs)
+      opt_ww_scan_self(al, t, U32.add(idx, 1), WwScan{bp1, ta, ht, hs1, hr})
+def opt_ww_scan_term(+sfid: U32, +al: U32Map, term: IrTerm, st: WwScan) -> WwScan:
+  match term st:
+    case TTailCall{cfid, +args} WwScan{+bp, +ta, +ht, +hs, +hr}:
+      Bool.pick(WwScan, U32.is_eq(cfid, sfid), opt_ww_scan_self(al, args, 0, WwScan{bp, ta, ht, hs, hr}), WwScan{opt_ww_bad_list(al, args, bp), ta, ht, hs, hr})
+    case TBr{c, _, _} WwScan{bp, ta, ht, hs, hr}: WwScan{opt_ww_bad_one(al, c, bp), ta, ht, hs, hr}
+    case TSwitch{s, _, _} WwScan{bp, ta, ht, hs, hr}: WwScan{opt_ww_bad_one(al, s, bp), ta, ht, hs, hr}
+    case TRet{v} WwScan{bp, ta, ht, hs, hr}: WwScan{opt_ww_bad_one(al, v, bp), ta, ht, hs, hr}
+    case _ _: st
+def opt_ww_scan_blks(+sfid: U32, +al: U32Map, +tgts: U32Map, blks: List<&2, IrBlock>, st: WwScan) -> WwScan:
   match blks st:
     case Nil{} _: st
-    case Con{IrBlock{_, ops, term}, t} _:
-      opt_ww_scan_blks(t, opt_ww_scan_term(term, opt_ww_scan_ops(ops, st)))
-def opt_ww_mark_cands(+fid: U32, +defc: U32Map, +bp: U32Map, +ht: U32Map, n: Nat, +idx: U32, +cm: U32Map) -> U32Map:
-  match n:
-    case 0n: cm
-    case 1n+p:
-      ok = Bool.and(U32.is_zero(um_get(defc, idx)), Bool.and(U32.is_zero(um_get(bp, idx)), U32.is_ne(um_get(ht, idx), 0)))
-      cm1 = Bool.pick(U32Map, ok, um_set(cm, opt_pkey(fid, idx), 1), cm)
-      opt_ww_mark_cands(fid, defc, bp, ht, p, U32.add(idx, 1), cm1)
-def opt_ww_cand_fin(fid: U32, ar: U32, defc: U32Map, st: WwScan, cm: U32Map) -> U32Map:
-  match st:
-    case WwScan{bp, ht}: opt_ww_mark_cands(fid, defc, bp, ht, U32.to_nat(ar), 0, cm)
+    case Con{IrBlock{id, ops, term}, t} _:
+      st1 = opt_ww_scan_ops(U32.is_ne(um_get(tgts, id), 0), al, ops, st)
+      opt_ww_scan_blks(sfid, al, tgts, t, opt_ww_scan_term(sfid, al, term, st1))
+def opt_ww_mark_cands(+fid: U32, +ar: U32, +defc: U32Map, st: WwScan, n: Nat, +idx: U32, +cm: U32Map) -> U32Map:
+  match st n:
+    case _ 0n: cm
+    case WwScan{+bp, +ta, +ht, +hs, +hr} 1n+p:
+      +k = um_get(ta, idx)
+      ok = Bool.and(U32.is_zero(um_get(defc, idx)), Bool.and(U32.is_zero(um_get(bp, idx)), Bool.and(U32.is_ge(k, 2), Bool.and(U32.is_le(k, 4), U32.is_le(U32.add(ar, k), 28)))))
+      can_h = Bool.and(U32.is_ne(um_get(hs, idx), 0), U32.is_ne(um_get(hr, idx), 0))
+      code = U32.add(k, Bool.pick(U32, can_h, Bool.pick(U32, U32.is_ne(um_get(ht, idx), 0), 20, 10), 0))
+      cm1 = Bool.pick(U32Map, ok, um_set(cm, opt_pkey(fid, idx), code), cm)
+      opt_ww_mark_cands(fid, ar, defc, WwScan{bp, ta, ht, hs, hr}, p, U32.add(idx, 1), cm1)
 def opt_ww_cand_one(elig: Bool, +fid: U32, +ar: U32, +blks: List<&2, IrBlock>, cm: U32Map) -> U32Map:
   match elig:
     case False{}: cm
     case True{}:
-      defc = opt_blks_defs(blks, UM0{})
-      opt_ww_cand_fin(fid, ar, defc, opt_ww_scan_blks(blks, WwScan{UM0{}, UM0{}}), cm)
+      +defc = opt_blks_defs(blks, UM0{})
+      +al = opt_ww_alias(defc, ar, blks)
+      tgts = opt_ww_tag_tgts(al, blks, UM0{})
+      st = opt_ww_scan_blks(fid, al, tgts, blks, WwScan{UM0{}, UM0{}, UM0{}, UM0{}, UM0{}})
+      opt_ww_mark_cands(fid, ar, defc, st, U32.to_nat(ar), 0, cm)
 def opt_ww_cand_fns(+bad_fn: U32Map, fns: List<&2, IrFn>, cm: U32Map) -> U32Map:
   match fns:
     case Nil{}: cm
     case Con{IrFn{+fid, _, +ar, _, _, _, _, blks}, t}:
-      elig = Bool.and(U32.is_zero(um_get(bad_fn, fid)), Bool.and(U32.is_ge(ar, 1), U32.is_lt(ar, 28)))
+      elig = Bool.and(U32.is_zero(um_get(bad_fn, fid)), Bool.and(U32.is_ge(ar, 1), U32.is_lt(ar, 26)))
       opt_ww_cand_fns(bad_fn, t, opt_ww_cand_one(elig, fid, ar, blks, cm))
-type PairEnt is Data:
-  PNone{}
-  PSome{vreg: U32, cid: U32, f0: U32, f1: U32}
-def opt_ww_put_pc(ok: Bool, pc: OptTrie<PairEnt>, +d: U32, cid: U32, f0: U32, f1: U32) -> OptTrie<PairEnt>:
+type WwCtorEnt is Data:
+  WNone{}
+  WSome{vreg: U32, cid: U32, ar: U32, fs: List<&2, U32>}
+def opt_ww_put_pc(ok: Bool, pc: OptTrie<WwCtorEnt>, +d: U32, cid: U32, k: U32, fs: List<&2, U32>) -> OptTrie<WwCtorEnt>:
   match ok:
-    case True{}: ot_set(PairEnt, 12n, pc, d, PSome{d, cid, f0, f1})
+    case True{}: ot_set(WwCtorEnt, 12n, pc, d, WSome{d, cid, k, fs})
     case False{}: pc
-def opt_ww_obs_ent(pe: PairEnt, +a: U32, +k: U32, +obs: U32Map) -> U32Map:
+def opt_ww_obs_ent(pe: WwCtorEnt, +a: U32, +ck: U32, +k: U32, +obs: U32Map) -> U32Map:
   match pe:
-    case PNone{}: um_set(obs, k, 4294967295)
-    case PSome{v, +cid, _, _}:
+    case WNone{}:
+      +can_h = U32.is_ge(ck, 10)
+      +cur = um_get(obs, k)
+      um_set(obs, k, Bool.pick(U32, Bool.and(can_h, U32.is_ne(cur, 4294967295)), 4294967294, 4294967295))
+    case WSome{v, +cid, ar, _}:
+      +need_ar = U32.mod(ck, 10)
+      +can_h = U32.is_ge(ck, 10)
       +cur = um_get(obs, k)
       +c1 = U32.add(cid, 1)
-      nv = Bool.pick(U32, U32.is_eq(v, a), Bool.pick(U32, U32.is_zero(cur), c1, Bool.pick(U32, U32.is_eq(cur, c1), cur, 4294967295)), 4294967295)
+      ok = Bool.and(U32.is_eq(v, a), U32.is_eq(ar, need_ar))
+      +fb = Bool.pick(U32, Bool.and(can_h, U32.is_ne(cur, 4294967295)), 4294967294, 4294967295)
+      nv = Bool.pick(U32, ok, Bool.pick(U32, U32.is_zero(cur), c1, Bool.pick(U32, U32.is_eq(cur, c1), cur, fb)), fb)
       um_set(obs, k, nv)
-def opt_ww_obs_args(+cfid: U32, +cand: U32Map, +pc: OptTrie<PairEnt>, args: List<&2, U32>, +idx: U32, +obs: U32Map) -> U32Map:
+def opt_ww_obs_args(+sfid: U32, +cfid: U32, +cand: U32Map, +al: U32Map, +pc: OptTrie<WwCtorEnt>, args: List<&2, U32>, +idx: U32, +obs: U32Map) -> U32Map:
   match args:
     case Nil{}: obs
     case Con{+a, t}:
       +k = opt_pkey(cfid, idx)
-      chk = Bool.and(U32.is_lt(cfid, 2048), Bool.and(U32.is_lt(idx, 32), U32.is_ne(um_get(cand, k), 0)))
-      obs1 = Bool.pick(U32Map, chk, opt_ww_obs_ent(ot_get(PairEnt, 12n, PNone{}, pc, a), a, k, obs), obs)
-      opt_ww_obs_args(cfid, cand, pc, t, U32.add(idx, 1), obs1)
+      +ck = Bool.pick(U32, Bool.and(U32.is_lt(cfid, 2048), U32.is_lt(idx, 32)), um_get(cand, k), 0)
+      is_sp = Bool.and(U32.is_eq(cfid, sfid), U32.is_eq(um_get(al, a), U32.add(idx, 1)))
+      chk = Bool.and(U32.is_ne(ck, 0), Bool.not(is_sp))
+      obs1 = Bool.pick(U32Map, chk, opt_ww_obs_ent(ot_get(WwCtorEnt, 12n, WNone{}, pc, a), a, ck, k, obs), obs)
+      opt_ww_obs_args(sfid, cfid, cand, al, pc, t, U32.add(idx, 1), obs1)
 type WwObsBlk is Data:
-  WwObsBlk{pc: OptTrie<PairEnt>, obs: U32Map}
-def opt_ww_obs_ops(+defc: U32Map, +uses: U32Map, +ar: U32, +cand: U32Map, ops: List<&2, IrOp>, st: WwObsBlk) -> WwObsBlk:
+  WwObsBlk{pc: OptTrie<WwCtorEnt>, obs: U32Map}
+def opt_ww_obs_ops(+sfid: U32, +defc: U32Map, +uses: U32Map, +ar: U32, +al: U32Map, +cand: U32Map, ops: List<&2, IrOp>, st: WwObsBlk) -> WwObsBlk:
   match ops st:
     case Nil{} _: st
-    case Con{ICtor{+d, cid, Con{+f0, Con{+f1, Nil{}}}}, t} WwObsBlk{pc, obs}:
-      ok = Bool.and(U32.is_lt(d, 4095), Bool.and(U32.is_eq(um_get(defc, d), 1), Bool.and(U32.is_eq(um_get(uses, d), 1), Bool.and(opt_cp_can_prop(defc, ar, f0), opt_cp_can_prop(defc, ar, f1)))))
-      opt_ww_obs_ops(defc, uses, ar, cand, t, WwObsBlk{opt_ww_put_pc(ok, pc, d, cid, f0, f1), obs})
+    case Con{ICtor{+d, cid, +fs}, t} WwObsBlk{pc, obs}:
+      +k = b5k_u32_list_len(fs)
+      ok = Bool.and(U32.is_ge(k, 2), Bool.and(U32.is_le(k, 4), Bool.and(U32.is_lt(d, 4095), Bool.and(U32.is_eq(um_get(defc, d), 1), Bool.and(U32.is_eq(um_get(uses, d), 1), opt_all_can_prop(defc, ar, fs))))))
+      opt_ww_obs_ops(sfid, defc, uses, ar, al, cand, t, WwObsBlk{opt_ww_put_pc(ok, pc, d, cid, k, fs), obs})
     case Con{ICallDirect{_, cfid, args}, t} WwObsBlk{+pc, obs}:
-      opt_ww_obs_ops(defc, uses, ar, cand, t, WwObsBlk{pc, opt_ww_obs_args(cfid, cand, pc, args, 0, obs)})
-    case Con{_, t} _: opt_ww_obs_ops(defc, uses, ar, cand, t, st)
-def opt_ww_obs_term(+cand: U32Map, term: IrTerm, st: WwObsBlk) -> U32Map:
+      opt_ww_obs_ops(sfid, defc, uses, ar, al, cand, t, WwObsBlk{pc, opt_ww_obs_args(sfid, cfid, cand, al, pc, args, 0, obs)})
+    case Con{_, t} _: opt_ww_obs_ops(sfid, defc, uses, ar, al, cand, t, st)
+def opt_ww_obs_term(+sfid: U32, +al: U32Map, +cand: U32Map, term: IrTerm, st: WwObsBlk) -> U32Map:
   match term st:
-    case TTailCall{cfid, args} WwObsBlk{pc, obs}: opt_ww_obs_args(cfid, cand, pc, args, 0, obs)
+    case TTailCall{cfid, args} WwObsBlk{pc, obs}: opt_ww_obs_args(sfid, cfid, cand, al, pc, args, 0, obs)
     case _ WwObsBlk{_, obs}: obs
-def opt_ww_obs_blks(+defc: U32Map, +uses: U32Map, +ar: U32, +cand: U32Map, blks: List<&2, IrBlock>, obs: U32Map) -> U32Map:
+def opt_ww_obs_blks(+sfid: U32, +defc: U32Map, +uses: U32Map, +ar: U32, +al: U32Map, +cand: U32Map, blks: List<&2, IrBlock>, obs: U32Map) -> U32Map:
   match blks:
     case Nil{}: obs
     case Con{IrBlock{_, ops, term}, t}:
-      obs1 = opt_ww_obs_term(cand, term, opt_ww_obs_ops(defc, uses, ar, cand, ops, WwObsBlk{OT0{}, obs}))
-      opt_ww_obs_blks(defc, uses, ar, cand, t, obs1)
+      obs1 = opt_ww_obs_term(sfid, al, cand, term, opt_ww_obs_ops(sfid, defc, uses, ar, al, cand, ops, WwObsBlk{OT0{}, obs}))
+      opt_ww_obs_blks(sfid, defc, uses, ar, al, cand, t, obs1)
 def opt_ww_obs_fns(+cand: U32Map, fns: List<&2, IrFn>, obs: U32Map) -> U32Map:
   match fns:
     case Nil{}: obs
-    case Con{IrFn{_, _, ar, _, _, _, _, +blks}, t}:
-      defc = opt_blks_defs(blks, UM0{})
+    case Con{IrFn{+fid, _, +ar, _, _, _, _, +blks}, t}:
+      +defc = opt_blks_defs(blks, UM0{})
       uses = opt_blks_uses(blks, UM0{})
-      opt_ww_obs_fns(cand, t, opt_ww_obs_blks(defc, uses, ar, cand, blks, obs))
+      al = opt_ww_alias(defc, ar, blks)
+      opt_ww_obs_fns(cand, t, opt_ww_obs_blks(fid, defc, uses, ar, al, cand, blks, obs))
 type WwPlan is Data:
-  WwPlan{pidx: U32Map, pcid: U32Map, any: Bool}
+  WwPlan{pidx: U32Map, par: U32Map, pcid: U32Map, any: Bool}
 def opt_ww_pick_param(+fid: U32, +cand: U32Map, +obs: U32Map, n: Nat, +idx: U32, pl: WwPlan) -> WwPlan:
   match n pl:
     case 0n _: pl
-    case 1n+p WwPlan{+pi, +pc, +any}:
+    case 1n+p WwPlan{+pi, +pa, +pc, +any}:
       +k = opt_pkey(fid, idx)
+      +ck = um_get(cand, k)
       +c = um_get(obs, k)
-      ok = Bool.and(U32.is_ne(um_get(cand, k), 0), Bool.and(U32.is_ne(c, 0), U32.is_ne(c, 4294967295)))
-      Bool.pick(WwPlan, ok, WwPlan{um_set(pi, fid, U32.add(idx, 1)), um_set(pc, fid, U32.sub(c, 1)), True{}}, opt_ww_pick_param(fid, cand, obs, p, U32.add(idx, 1), WwPlan{pi, pc, any}))
+      ok = Bool.and(U32.is_ne(ck, 0), Bool.and(U32.is_ne(c, 0), U32.is_ne(c, 4294967295)))
+      cinfo = Bool.pick(U32, U32.is_eq(c, 4294967294), Bool.pick(U32, U32.is_ge(ck, 20), 4294967294, 4294967293), c)
+      Bool.pick(WwPlan, ok, WwPlan{um_set(pi, fid, U32.add(idx, 1)), um_set(pa, fid, U32.mod(ck, 10)), um_set(pc, fid, cinfo), True{}},
+        opt_ww_pick_param(fid, cand, obs, p, U32.add(idx, 1), WwPlan{pi, pa, pc, any}))
 def opt_ww_build_plan(+bad_fn: U32Map, +cand: U32Map, +obs: U32Map, fns: List<&2, IrFn>, +pl: WwPlan) -> WwPlan:
   match fns:
     case Nil{}: pl
     case Con{IrFn{+fid, _, +ar, _, _, _, _, _}, t}:
-      elig = Bool.and(U32.is_zero(um_get(bad_fn, fid)), Bool.and(U32.is_ge(ar, 1), U32.is_lt(ar, 28)))
+      elig = Bool.and(U32.is_zero(um_get(bad_fn, fid)), Bool.and(U32.is_ge(ar, 1), U32.is_lt(ar, 26)))
       pl1 = Bool.pick(WwPlan, elig, opt_ww_pick_param(fid, cand, obs, U32.to_nat(ar), 0, pl), pl)
       opt_ww_build_plan(bad_fn, cand, obs, t, pl1)
-def opt_bump_v(+ar: U32, +v: U32) -> U32:
-  Bool.pick(U32, U32.is_ge(v, ar), U32.add(v, 1), v)
-def opt_bump_vs(+ar: U32, xs: List<&2, U32>) -> List<&2, U32>:
+def opt_bump_v(+ar: U32, +d: U32, +v: U32) -> U32:
+  Bool.pick(U32, U32.is_ge(v, ar), U32.add(v, d), v)
+def opt_bump_vs(+ar: U32, +d: U32, xs: List<&2, U32>) -> List<&2, U32>:
   match xs:
     case Nil{}: Nil{}
-    case Con{v, t}: Con{opt_bump_v(ar, v), opt_bump_vs(ar, t)}
-def opt_bump_op(+ar: U32, op: IrOp) -> IrOp:
+    case Con{v, t}: Con{opt_bump_v(ar, d, v), opt_bump_vs(ar, d, t)}
+def opt_bump_op(+ar: U32, +e: U32, op: IrOp) -> IrOp:
   match op:
-    case IConst{d, v}: IConst{opt_bump_v(ar, d), v}
-    case IFlt{d, b}: IFlt{opt_bump_v(ar, d), b}
-    case ICopy{d, s}: ICopy{opt_bump_v(ar, d), opt_bump_v(ar, s)}
-    case IBin{d, bop, x, y}: IBin{opt_bump_v(ar, d), bop, opt_bump_v(ar, x), opt_bump_v(ar, y)}
-    case IUn{d, uop, s}: IUn{opt_bump_v(ar, d), uop, opt_bump_v(ar, s)}
-    case ICmp{d, cop, x, y}: ICmp{opt_bump_v(ar, d), cop, opt_bump_v(ar, x), opt_bump_v(ar, y)}
-    case ICallDirect{d, fid, args}: ICallDirect{opt_bump_v(ar, d), fid, opt_bump_vs(ar, args)}
-    case ICallClosure{d, fid, caps}: ICallClosure{opt_bump_v(ar, d), fid, opt_bump_vs(ar, caps)}
-    case IApply{d, c, a}: IApply{opt_bump_v(ar, d), opt_bump_v(ar, c), opt_bump_v(ar, a)}
-    case ICtor{d, cid, fs}: ICtor{opt_bump_v(ar, d), cid, opt_bump_vs(ar, fs)}
-    case ITake{ds, s}: ITake{opt_bump_vs(ar, ds), opt_bump_v(ar, s)}
-    case ITag{d, s}: ITag{opt_bump_v(ar, d), opt_bump_v(ar, s)}
-    case IKeep{d, s}: IKeep{opt_bump_v(ar, d), opt_bump_v(ar, s)}
-    case ISink{s}: ISink{opt_bump_v(ar, s)}
-    case IReuse{d, sl, cid, fs}: IReuse{opt_bump_v(ar, d), opt_bump_v(ar, sl), cid, opt_bump_vs(ar, fs)}
-    case IStatic{d, idx}: IStatic{opt_bump_v(ar, d), idx}
-    case IArrOp{ds, aop, args}: IArrOp{opt_bump_vs(ar, ds), aop, opt_bump_vs(ar, args)}
-    case IAlloca{d, w}: IAlloca{opt_bump_v(ar, d), w}
-    case ILoad{d, b, off}: ILoad{opt_bump_v(ar, d), opt_bump_v(ar, b), off}
-    case IStore{b, off, v}: IStore{opt_bump_v(ar, b), off, opt_bump_v(ar, v)}
+    case IConst{d, v}: IConst{opt_bump_v(ar, e, d), v}
+    case IFlt{d, b}: IFlt{opt_bump_v(ar, e, d), b}
+    case ICopy{d, s}: ICopy{opt_bump_v(ar, e, d), opt_bump_v(ar, e, s)}
+    case IBin{d, bop, x, y}: IBin{opt_bump_v(ar, e, d), bop, opt_bump_v(ar, e, x), opt_bump_v(ar, e, y)}
+    case IUn{d, uop, s}: IUn{opt_bump_v(ar, e, d), uop, opt_bump_v(ar, e, s)}
+    case ICmp{d, cop, x, y}: ICmp{opt_bump_v(ar, e, d), cop, opt_bump_v(ar, e, x), opt_bump_v(ar, e, y)}
+    case ICallDirect{d, fid, args}: ICallDirect{opt_bump_v(ar, e, d), fid, opt_bump_vs(ar, e, args)}
+    case ICallClosure{d, fid, caps}: ICallClosure{opt_bump_v(ar, e, d), fid, opt_bump_vs(ar, e, caps)}
+    case IApply{d, c, a}: IApply{opt_bump_v(ar, e, d), opt_bump_v(ar, e, c), opt_bump_v(ar, e, a)}
+    case ICtor{d, cid, fs}: ICtor{opt_bump_v(ar, e, d), cid, opt_bump_vs(ar, e, fs)}
+    case ITake{ds, s}: ITake{opt_bump_vs(ar, e, ds), opt_bump_v(ar, e, s)}
+    case ITag{d, s}: ITag{opt_bump_v(ar, e, d), opt_bump_v(ar, e, s)}
+    case IKeep{d, s}: IKeep{opt_bump_v(ar, e, d), opt_bump_v(ar, e, s)}
+    case ISink{s}: ISink{opt_bump_v(ar, e, s)}
+    case IReuse{d, sl, cid, fs}: IReuse{opt_bump_v(ar, e, d), opt_bump_v(ar, e, sl), cid, opt_bump_vs(ar, e, fs)}
+    case IStatic{d, idx}: IStatic{opt_bump_v(ar, e, d), idx}
+    case IArrOp{ds, aop, args}: IArrOp{opt_bump_vs(ar, e, ds), aop, opt_bump_vs(ar, e, args)}
+    case IAlloca{d, w}: IAlloca{opt_bump_v(ar, e, d), w}
+    case ILoad{d, b, off}: ILoad{opt_bump_v(ar, e, d), opt_bump_v(ar, e, b), off}
+    case IStore{b, off, v}: IStore{opt_bump_v(ar, e, b), off, opt_bump_v(ar, e, v)}
     case IFail{c}: IFail{c}
-def opt_bump_term(+ar: U32, term: IrTerm) -> IrTerm:
+def opt_bump_ops(+ar: U32, +e: U32, ops: List<&2, IrOp>) -> List<&2, IrOp>:
+  match ops:
+    case Nil{}: Nil{}
+    case Con{op, t}: Con{opt_bump_op(ar, e, op), opt_bump_ops(ar, e, t)}
+def opt_bump_term(+ar: U32, +e: U32, term: IrTerm) -> IrTerm:
   match term:
-    case TBr{c, tb, fb}: TBr{opt_bump_v(ar, c), tb, fb}
-    case TSwitch{s, arms, db}: TSwitch{opt_bump_v(ar, s), arms, db}
-    case TRet{v}: TRet{opt_bump_v(ar, v)}
-    case TTailCall{fid, args}: TTailCall{fid, opt_bump_vs(ar, args)}
+    case TBr{c, tb, fb}: TBr{opt_bump_v(ar, e, c), tb, fb}
+    case TSwitch{s, arms, db}: TSwitch{opt_bump_v(ar, e, s), arms, db}
+    case TRet{v}: TRet{opt_bump_v(ar, e, v)}
+    case TTailCall{fid, args}: TTailCall{fid, opt_bump_vs(ar, e, args)}
     case other: other
-def opt_ww_rw_callee_op(+ar: U32, +pi: U32, +cid: U32, op1: IrOp, +acc: List<&2, IrOp>) -> List<&2, IrOp>:
-  match op1:
-    case ITake{Con{+a, Con{+b, Nil{}}}, +s}:
-      Bool.pick(List<&2, IrOp>, U32.is_eq(s, pi), Con{ICopy{b, ar}, Con{ICopy{a, pi}, acc}}, Con{ITake{[a, b], s}, acc})
+def opt_bump_blks(+ar: U32, +e: U32, blks: List<&2, IrBlock>) -> List<&2, IrBlock>:
+  match blks:
+    case Nil{}: Nil{}
+    case Con{IrBlock{id, ops, term}, t}: Con{IrBlock{id, opt_bump_ops(ar, e, ops), opt_bump_term(ar, e, term)}, opt_bump_blks(ar, e, t)}
+type WwExSt is Data:
+  WwExSt{ex: U32Map, nr: U32}
+def opt_ww_alloc_ex_ops(+pi1: U32, +k1: U32, +al: U32Map, ops: List<&2, IrOp>, st: WwExSt) -> WwExSt:
+  match ops st:
+    case Nil{} _: st
+    case Con{ICopy{+d, +s}, t} WwExSt{+ex, +nr}:
+      need = Bool.and(U32.is_ne(d, s), Bool.and(U32.is_eq(um_get(al, d), pi1), U32.is_zero(um_get(ex, d))))
+      st1 = Bool.pick(WwExSt, need, WwExSt{um_set(ex, d, U32.add(nr, 1)), U32.add(nr, k1)}, WwExSt{ex, nr})
+      opt_ww_alloc_ex_ops(pi1, k1, al, t, st1)
+    case Con{IKeep{+d, +s}, t} WwExSt{+ex, +nr}:
+      need = Bool.and(U32.is_ne(d, s), Bool.and(U32.is_eq(um_get(al, d), pi1), U32.is_zero(um_get(ex, d))))
+      st1 = Bool.pick(WwExSt, need, WwExSt{um_set(ex, d, U32.add(nr, 1)), U32.add(nr, k1)}, WwExSt{ex, nr})
+      opt_ww_alloc_ex_ops(pi1, k1, al, t, st1)
+    case Con{_, t} _: opt_ww_alloc_ex_ops(pi1, k1, al, t, st)
+def opt_ww_alloc_ex_blks(+pi1: U32, +k1: U32, +al: U32Map, blks: List<&2, IrBlock>, st: WwExSt) -> WwExSt:
+  match blks:
+    case Nil{}: st
+    case Con{IrBlock{_, ops, _}, t}: opt_ww_alloc_ex_blks(pi1, k1, al, t, opt_ww_alloc_ex_ops(pi1, k1, al, ops, st))
+def opt_ww_fields(+v: U32, +ex: U32Map, +k1: U32) -> List<&2, U32>:
+  Con{v, opt_ww_seq(U32.to_nat(k1), U32.sub(um_get(ex, v), 1))}
+def opt_ww_emit_keeps(ds: List<&2, U32>, ss: List<&2, U32>, acc: List<&2, IrOp>) -> List<&2, IrOp>:
+  match ds ss:
+    case Con{d, dt} Con{s, st}: opt_ww_emit_keeps(dt, st, Con{IKeep{d, s}, acc})
+    case _ _: acc
+def opt_ww_rw_callee_op(+ar: U32, +pi1: U32, +k1: U32, +cinfo: U32, +al: U32Map, +ex: U32Map, op: IrOp, +acc: List<&2, IrOp>) -> List<&2, IrOp>:
+  match op:
+    case ITake{+ds, +s}:
+      Bool.pick(List<&2, IrOp>, U32.is_eq(um_get(al, s), pi1), sroa_emit_copies(ds, opt_ww_fields(s, ex, k1), acc), Con{ITake{ds, s}, acc})
     case ITag{+d, +s}:
-      Bool.pick(List<&2, IrOp>, U32.is_eq(s, pi), Con{IConst{d, cid}, acc}, Con{ITag{d, s}, acc})
+      hit = U32.is_eq(um_get(al, s), pi1)
+      rep = Bool.pick(IrOp, U32.is_eq(cinfo, 4294967294), ICopy{d, U32.add(ar, k1)}, IConst{d, U32.sub(cinfo, 1)})
+      Con{Bool.pick(IrOp, hit, rep, ITag{d, s}), acc}
     case ISink{+s}:
-      Bool.pick(List<&2, IrOp>, U32.is_eq(s, pi), Con{ISink{ar}, Con{ISink{pi}, acc}}, Con{ISink{s}, acc})
+      Bool.pick(List<&2, IrOp>, U32.is_eq(um_get(al, s), pi1), sroa_emit_sinks(opt_ww_fields(s, ex, k1), acc), Con{ISink{s}, acc})
+    case IKeep{+d, +s}:
+      Bool.pick(List<&2, IrOp>, U32.is_eq(um_get(al, s), pi1), opt_ww_emit_keeps(opt_ww_fields(d, ex, k1), opt_ww_fields(s, ex, k1), acc), Con{IKeep{d, s}, acc})
+    case ICopy{+d, +s}:
+      Bool.pick(List<&2, IrOp>, U32.is_eq(um_get(al, s), pi1), sroa_emit_copies(opt_ww_fields(d, ex, k1), opt_ww_fields(s, ex, k1), acc), Con{ICopy{d, s}, acc})
     case other: Con{other, acc}
-def opt_ww_rw_callee_ops(+ar: U32, +pi: U32, +cid: U32, ops: List<&2, IrOp>, acc: List<&2, IrOp>) -> List<&2, IrOp>:
+def opt_ww_rw_callee_ops(+ar: U32, +pi1: U32, +k1: U32, +cinfo: U32, +al: U32Map, +ex: U32Map, ops: List<&2, IrOp>, acc: List<&2, IrOp>) -> List<&2, IrOp>:
   match ops:
     case Nil{}: b5k_list_rev(IrOp, acc)
-    case Con{op0, t}:
-      opt_ww_rw_callee_ops(ar, pi, cid, t, opt_ww_rw_callee_op(ar, pi, cid, opt_bump_op(ar, op0), acc))
-def opt_ww_rw_callee_blks(+ar: U32, +pi: U32, +cid: U32, blks: List<&2, IrBlock>) -> List<&2, IrBlock>:
+    case Con{op, t}: opt_ww_rw_callee_ops(ar, pi1, k1, cinfo, al, ex, t, opt_ww_rw_callee_op(ar, pi1, k1, cinfo, al, ex, op, acc))
+def opt_ww_rw_callee_tc(is_self: Bool, +ar: U32, +pi1: U32, +k1: U32, +cinfo: U32, +al: U32Map, +ex: U32Map, cfid: U32, +args: List<&2, U32>) -> IrTerm:
+  match is_self:
+    case False{}: TTailCall{cfid, args}
+    case True{}:
+      +pi = U32.sub(pi1, 1)
+      +a1 = opt_u32_nth(args, pi)
+      +a = U32.sub(a1, 1)
+      +is_sp = Bool.and(U32.is_ne(a1, 0), U32.is_eq(um_get(al, a), pi1))
+      +tail0 = opt_ww_seq(U32.to_nat(k1), U32.sub(um_get(ex, a), 1))
+      tail = Bool.pick(List<&2, U32>, U32.is_eq(cinfo, 4294967294), b5k_list_app(U32, tail0, Con{U32.add(ar, k1), Nil{}}), tail0)
+      args2 = Bool.pick(List<&2, U32>, is_sp, opt_u32_rep_app(args, pi, 0, a, tail), args)
+      TTailCall{cfid, args2}
+def opt_ww_rw_callee_term(+sfid: U32, +ar: U32, +pi1: U32, +k1: U32, +cinfo: U32, +al: U32Map, +ex: U32Map, term: IrTerm) -> IrTerm:
+  match term:
+    case TTailCall{+cfid, args}: opt_ww_rw_callee_tc(U32.is_eq(cfid, sfid), ar, pi1, k1, cinfo, al, ex, cfid, args)
+    case other: other
+def opt_ww_rw_callee_blks(+sfid: U32, +ar: U32, +pi1: U32, +k1: U32, +cinfo: U32, +al: U32Map, +ex: U32Map, blks: List<&2, IrBlock>) -> List<&2, IrBlock>:
   match blks:
     case Nil{}: Nil{}
     case Con{IrBlock{id, ops, term}, t}:
-      Con{IrBlock{id, opt_ww_rw_callee_ops(ar, pi, cid, ops, Nil{}), opt_bump_term(ar, term)}, opt_ww_rw_callee_blks(ar, pi, cid, t)}
-def opt_ww_rw_callee_one(hit: Bool, +pi1: U32, +cid: U32, f: IrFn) -> IrFn:
+      Con{IrBlock{id, opt_ww_rw_callee_ops(ar, pi1, k1, cinfo, al, ex, ops, Nil{}), opt_ww_rw_callee_term(sfid, ar, pi1, k1, cinfo, al, ex, term)},
+        opt_ww_rw_callee_blks(sfid, ar, pi1, k1, cinfo, al, ex, t)}
+def opt_ww_rw_callee_fin(+fid: U32, nm: String, +ar: U32, +ex_cnt: U32, esc: Bool, eff: Bool, is_m: Bool, +pi1: U32, +k1: U32, +cinfo: U32, +al: U32Map, blks: List<&2, IrBlock>, st: WwExSt) -> IrFn:
+  match st:
+    case WwExSt{ex, nr2}:
+      IrFn{fid, nm, U32.add(ar, ex_cnt), nr2, esc, eff, is_m, opt_ww_rw_callee_blks(fid, ar, pi1, k1, cinfo, al, ex, blks)}
+def opt_ww_rw_callee_one(hit: Bool, +pi1: U32, +k: U32, +cinfo: U32, f: IrFn) -> IrFn:
   match hit f:
     case False{} _: f
-    case True{} IrFn{fid, nm, +ar, nregs, esc, eff, is_m, blks}:
-      IrFn{fid, nm, U32.add(ar, 1), U32.add(U32.max(nregs, ar), 1), esc, eff, is_m, opt_ww_rw_callee_blks(ar, U32.sub(pi1, 1), cid, blks)}
-def opt_ww_rw_callees(+pidx: U32Map, +pcid: U32Map, fns: List<&2, IrFn>) -> List<&2, IrFn>:
+    case True{} IrFn{+fid, nm, +ar, nregs, esc, eff, is_m, blks}:
+      +k1 = U32.sub(k, 1)
+      +ex_cnt = Bool.pick(U32, U32.is_eq(cinfo, 4294967294), k, k1)
+      +b1 = opt_bump_blks(ar, ex_cnt, blks)
+      +nr1 = U32.add(U32.max(nregs, ar), ex_cnt)
+      defc = opt_blks_defs(b1, UM0{})
+      +al = opt_ww_alias(defc, ar, b1)
+      st = opt_ww_alloc_ex_blks(pi1, k1, al, b1, WwExSt{um_set(UM0{}, U32.sub(pi1, 1), U32.add(ar, 1)), nr1})
+      opt_ww_rw_callee_fin(fid, nm, ar, ex_cnt, esc, eff, is_m, pi1, k1, cinfo, al, b1, st)
+def opt_ww_rw_callees(+pidx: U32Map, +par: U32Map, +pcid: U32Map, fns: List<&2, IrFn>) -> List<&2, IrFn>:
   match fns:
     case Nil{}: Nil{}
     case Con{IrFn{+fid, nm, ar, nregs, esc, eff, is_m, blks}, t}:
       +pi1 = um_get(pidx, fid)
-      f1 = opt_ww_rw_callee_one(U32.is_ne(pi1, 0), pi1, um_get(pcid, fid), IrFn{fid, nm, ar, nregs, esc, eff, is_m, blks})
-      Con{f1, opt_ww_rw_callees(pidx, pcid, t)}
+      f1 = opt_ww_rw_callee_one(U32.is_ne(pi1, 0), pi1, um_get(par, fid), um_get(pcid, fid), IrFn{fid, nm, ar, nregs, esc, eff, is_m, blks})
+      Con{f1, opt_ww_rw_callees(pidx, par, pcid, t)}
 type WwCallRw is Data:
-  WwCallRw{args: List<&2, U32>, drop: U32Map}
-def opt_ww_rw_call_ent(pe: PairEnt, +a: U32, +pi: U32, +args: List<&2, U32>, +drop: U32Map) -> WwCallRw:
+  WwCallRw{args: List<&2, U32>, acc: List<&2, IrOp>, drop: U32Map, nr: U32}
+def opt_ww_rw_call_unpack(+a: U32, +pi: U32, +k: U32, +cinfo: U32, +args: List<&2, U32>, +acc: List<&2, IrOp>, +drop: U32Map, +nr: U32) -> WwCallRw:
+  +need_tg = U32.is_eq(cinfo, 4294967294)
+  +fs = opt_ww_seq(U32.to_nat(k), nr)
+  +tg = U32.add(nr, k)
+  acc1 = Bool.pick(List<&2, IrOp>, need_tg, Con{ITag{tg, a}, acc}, acc)
+  acc2 : List<&2, IrOp> = Con{ITake{fs, a}, acc1}
+  nr2 = Bool.pick(U32, need_tg, U32.add(tg, 1), tg)
+  +tail0 = opt_ww_seq(U32.to_nat(U32.sub(k, 1)), U32.add(nr, 1))
+  tail = Bool.pick(List<&2, U32>, need_tg, b5k_list_app(U32, tail0, Con{tg, Nil{}}), tail0)
+  WwCallRw{opt_u32_rep_app(args, pi, 0, nr, tail), acc2, drop, nr2}
+def opt_ww_rw_call_hit(ok: Bool, +v: U32, +cid: U32, f0: U32, +ft: List<&2, U32>, +a: U32, +pi: U32, +k: U32, +cinfo: U32, +args: List<&2, U32>, +acc: List<&2, IrOp>, +drop: U32Map, +nr: U32) -> WwCallRw:
+  match ok:
+    case False{}: opt_ww_rw_call_unpack(a, pi, k, cinfo, args, acc, drop, nr)
+    case True{}:
+      +need_tg = U32.is_eq(cinfo, 4294967294)
+      tail = Bool.pick(List<&2, U32>, need_tg, b5k_list_app(U32, ft, Con{nr, Nil{}}), ft)
+      acc1 = Bool.pick(List<&2, IrOp>, need_tg, Con{IConst{nr, cid}, acc}, acc)
+      nr1 = Bool.pick(U32, need_tg, U32.add(nr, 1), nr)
+      WwCallRw{opt_u32_rep_app(args, pi, 0, f0, tail), acc1, um_set(drop, v, 1), nr1}
+def opt_ww_rw_call_ent(pe: WwCtorEnt, +a: U32, +pi: U32, +k: U32, +cinfo: U32, +args: List<&2, U32>, +acc: List<&2, IrOp>, +drop: U32Map, +nr: U32) -> WwCallRw:
   match pe:
-    case PNone{}: WwCallRw{args, drop}
-    case PSome{+v, _, f0, f1}:
-      +ok = U32.is_eq(v, a)
-      WwCallRw{Bool.pick(List<&2, U32>, ok, opt_u32_rep_app(args, pi, 0, f0, f1), args), Bool.pick(U32Map, ok, um_set(drop, v, 1), drop)}
-def opt_ww_rw_call_args(+pi1: U32, pc: OptTrie<PairEnt>, +args: List<&2, U32>, +drop: U32Map) -> WwCallRw:
-  +pi = U32.sub(pi1, 1)
-  +a1 = Bool.pick(U32, U32.is_ne(pi1, 0), opt_u32_nth(args, pi), 0)
-  Bool.pick(WwCallRw, U32.is_ne(a1, 0), opt_ww_rw_call_ent(ot_get(PairEnt, 12n, PNone{}, pc, U32.sub(a1, 1)), U32.sub(a1, 1), pi, args, drop), WwCallRw{args, drop})
+    case WSome{+v, cid, ar, Con{f0, ft}}:
+      opt_ww_rw_call_hit(Bool.and(U32.is_eq(v, a), U32.is_eq(ar, k)), v, cid, f0, ft, a, pi, k, cinfo, args, acc, drop, nr)
+    case _: opt_ww_rw_call_unpack(a, pi, k, cinfo, args, acc, drop, nr)
+def opt_ww_rw_call_has_arg(has: Bool, +a1: U32, +pi: U32, +cfid: U32, +par: U32Map, +pcid: U32Map, pc: OptTrie<WwCtorEnt>, args: List<&2, U32>, acc: List<&2, IrOp>, drop: U32Map, nr: U32) -> WwCallRw:
+  match has:
+    case False{}: WwCallRw{args, acc, drop, nr}
+    case True{}:
+      +a = U32.sub(a1, 1)
+      opt_ww_rw_call_ent(ot_get(WwCtorEnt, 12n, WNone{}, pc, a), a, pi, um_get(par, cfid), um_get(pcid, cfid), args, acc, drop, nr)
+def opt_ww_rw_call_has_pi(has: Bool, +pi1: U32, +cfid: U32, +par: U32Map, +pcid: U32Map, pc: OptTrie<WwCtorEnt>, +args: List<&2, U32>, acc: List<&2, IrOp>, drop: U32Map, nr: U32) -> WwCallRw:
+  match has:
+    case False{}: WwCallRw{args, acc, drop, nr}
+    case True{}:
+      +pi = U32.sub(pi1, 1)
+      +a1 = opt_u32_nth(args, pi)
+      opt_ww_rw_call_has_arg(U32.is_ne(a1, 0), a1, pi, cfid, par, pcid, pc, args, acc, drop, nr)
+def opt_ww_rw_call_args(+sfid: U32, +sf_ar: U32, +cfid: U32, +pidx: U32Map, +par: U32Map, +pcid: U32Map, pc: OptTrie<WwCtorEnt>, +args: List<&2, U32>, acc: List<&2, IrOp>, drop: U32Map, nr: U32) -> WwCallRw:
+  +skip_self = Bool.and(U32.is_eq(cfid, sfid), U32.is_ge(b5k_u32_list_len(args), sf_ar))
+  +pi1 = Bool.pick(U32, skip_self, 0, um_get(pidx, cfid))
+  opt_ww_rw_call_has_pi(U32.is_ne(pi1, 0), pi1, cfid, par, pcid, pc, args, acc, drop, nr)
 type WwBlkRw is Data:
-  WwBlkRw{pc: OptTrie<PairEnt>, acc: List<&2, IrOp>, drop: U32Map}
-def opt_ww_rw_caller_step(dst: U32, cfid: U32, pc: OptTrie<PairEnt>, acc: List<&2, IrOp>, r: WwCallRw) -> WwBlkRw:
+  WwBlkRw{pc: OptTrie<WwCtorEnt>, acc: List<&2, IrOp>, drop: U32Map, nr: U32}
+def opt_ww_rw_caller_step(dst: U32, cfid: U32, pc: OptTrie<WwCtorEnt>, r: WwCallRw) -> WwBlkRw:
   match r:
-    case WwCallRw{args2, drop2}: WwBlkRw{pc, Con{ICallDirect{dst, cfid, args2}, acc}, drop2}
-def opt_ww_rw_caller_ops(+defc: U32Map, +uses: U32Map, +ar: U32, +pidx: U32Map, ops: List<&2, IrOp>, st: WwBlkRw) -> WwBlkRw:
+    case WwCallRw{args2, acc2, drop2, nr2}: WwBlkRw{pc, Con{ICallDirect{dst, cfid, args2}, acc2}, drop2, nr2}
+def opt_ww_rw_caller_ops(+sfid: U32, +defc: U32Map, +uses: U32Map, +ar: U32, +pidx: U32Map, +par: U32Map, +pcid: U32Map, ops: List<&2, IrOp>, st: WwBlkRw) -> WwBlkRw:
   match ops st:
     case Nil{} _: st
-    case Con{ICtor{+d, +cid, Con{+f0, Con{+f1, Nil{}}}}, t} WwBlkRw{pc, acc, drop}:
-      ok = Bool.and(U32.is_lt(d, 4096), Bool.and(U32.is_eq(um_get(defc, d), 1), Bool.and(U32.is_eq(um_get(uses, d), 1), Bool.and(opt_cp_can_prop(defc, ar, f0), opt_cp_can_prop(defc, ar, f1)))))
-      opt_ww_rw_caller_ops(defc, uses, ar, pidx, t, WwBlkRw{opt_ww_put_pc(ok, pc, d, cid, f0, f1), Con{ICtor{d, cid, [f0, f1]}, acc}, drop})
-    case Con{ICallDirect{dst, +cfid, args}, t} WwBlkRw{+pc, acc, drop}:
-      st1 = opt_ww_rw_caller_step(dst, cfid, pc, acc, opt_ww_rw_call_args(um_get(pidx, cfid), pc, args, drop))
-      opt_ww_rw_caller_ops(defc, uses, ar, pidx, t, st1)
-    case Con{op, t} WwBlkRw{pc, acc, drop}:
-      opt_ww_rw_caller_ops(defc, uses, ar, pidx, t, WwBlkRw{pc, Con{op, acc}, drop})
-def opt_ww_rw_tail_fin(id: U32, cfid: U32, acc: List<&2, IrOp>, r: WwCallRw) -> IrBlock:
+    case Con{ICtor{+d, +cid, +fs}, t} WwBlkRw{pc, acc, drop, nr}:
+      +k = b5k_u32_list_len(fs)
+      ok = Bool.and(U32.is_ge(k, 2), Bool.and(U32.is_le(k, 4), Bool.and(U32.is_lt(d, 4096), Bool.and(U32.is_eq(um_get(defc, d), 1), Bool.and(U32.is_eq(um_get(uses, d), 1), opt_all_can_prop(defc, ar, fs))))))
+      opt_ww_rw_caller_ops(sfid, defc, uses, ar, pidx, par, pcid, t, WwBlkRw{opt_ww_put_pc(ok, pc, d, cid, k, fs), Con{ICtor{d, cid, fs}, acc}, drop, nr})
+    case Con{ICallDirect{dst, +cfid, args}, t} WwBlkRw{+pc, acc, drop, nr}:
+      st1 = opt_ww_rw_caller_step(dst, cfid, pc, opt_ww_rw_call_args(sfid, ar, cfid, pidx, par, pcid, pc, args, acc, drop, nr))
+      opt_ww_rw_caller_ops(sfid, defc, uses, ar, pidx, par, pcid, t, st1)
+    case Con{op, t} WwBlkRw{pc, acc, drop, nr}:
+      opt_ww_rw_caller_ops(sfid, defc, uses, ar, pidx, par, pcid, t, WwBlkRw{pc, Con{op, acc}, drop, nr})
+type WwBlksRes is Data:
+  WwBlksRes{blks: List<&2, IrBlock>, nr: U32}
+def opt_ww_rw_tail_fin(id: U32, cfid: U32, acc_b: List<&2, IrBlock>, r: WwCallRw) -> WwBlksRes:
   match r:
-    case WwCallRw{args2, drop2}: IrBlock{id, sroa_drop_fused(drop2, acc, Nil{}), TTailCall{cfid, args2}}
-def opt_ww_rw_caller_fin(id: U32, +pidx: U32Map, term: IrTerm, st: WwBlkRw) -> IrBlock:
+    case WwCallRw{args2, acc2, drop2, nr2}: WwBlksRes{Con{IrBlock{id, sroa_drop_fused(drop2, acc2, Nil{}), TTailCall{cfid, args2}}, acc_b}, nr2}
+def opt_ww_rw_caller_fin(id: U32, +sfid: U32, +ar: U32, +pidx: U32Map, +par: U32Map, +pcid: U32Map, term: IrTerm, acc_b: List<&2, IrBlock>, st: WwBlkRw) -> WwBlksRes:
   match term st:
-    case TTailCall{+cfid, args} WwBlkRw{pc, acc, drop}:
-      opt_ww_rw_tail_fin(id, cfid, acc, opt_ww_rw_call_args(um_get(pidx, cfid), pc, args, drop))
-    case other WwBlkRw{_, acc, drop}: IrBlock{id, sroa_drop_fused(drop, acc, Nil{}), other}
-def opt_ww_rw_caller_blks(+defc: U32Map, +uses: U32Map, +ar: U32, +pidx: U32Map, blks: List<&2, IrBlock>) -> List<&2, IrBlock>:
-  match blks:
-    case Nil{}: Nil{}
-    case Con{IrBlock{id, ops, term}, t}:
-      b2 = opt_ww_rw_caller_fin(id, pidx, term, opt_ww_rw_caller_ops(defc, uses, ar, pidx, ops, WwBlkRw{OT0{}, Nil{}, UM0{}}))
-      Con{b2, opt_ww_rw_caller_blks(defc, uses, ar, pidx, t)}
-def opt_ww_rw_callers(+pidx: U32Map, fns: List<&2, IrFn>) -> List<&2, IrFn>:
+    case TTailCall{+cfid, args} WwBlkRw{pc, acc, drop, nr}:
+      opt_ww_rw_tail_fin(id, cfid, acc_b, opt_ww_rw_call_args(sfid, ar, cfid, pidx, par, pcid, pc, args, acc, drop, nr))
+    case other WwBlkRw{_, acc, drop, nr}: WwBlksRes{Con{IrBlock{id, sroa_drop_fused(drop, acc, Nil{}), other}, acc_b}, nr}
+def opt_ww_rw_caller_blks(+sfid: U32, +defc: U32Map, +uses: U32Map, +ar: U32, +pidx: U32Map, +par: U32Map, +pcid: U32Map, blks: List<&2, IrBlock>, st: WwBlksRes) -> WwBlksRes:
+  match blks st:
+    case Nil{} WwBlksRes{acc_b, nr}: WwBlksRes{b5k_list_rev(IrBlock, acc_b), nr}
+    case Con{IrBlock{id, ops, term}, t} WwBlksRes{acc_b, nr}:
+      st1 = opt_ww_rw_caller_fin(id, sfid, ar, pidx, par, pcid, term, acc_b, opt_ww_rw_caller_ops(sfid, defc, uses, ar, pidx, par, pcid, ops, WwBlkRw{OT0{}, Nil{}, UM0{}, nr}))
+      opt_ww_rw_caller_blks(sfid, defc, uses, ar, pidx, par, pcid, t, st1)
+def opt_ww_rw_caller_fn_fin(fid: U32, nm: String, ar: U32, esc: Bool, eff: Bool, is_m: Bool, r: WwBlksRes) -> IrFn:
+  match r:
+    case WwBlksRes{blks2, nr2}: IrFn{fid, nm, ar, nr2, esc, eff, is_m, blks2}
+def opt_ww_rw_callers(+pidx: U32Map, +par: U32Map, +pcid: U32Map, fns: List<&2, IrFn>) -> List<&2, IrFn>:
   match fns:
     case Nil{}: Nil{}
-    case Con{IrFn{fid, nm, +ar, nregs, esc, eff, is_m, +blks}, t}:
+    case Con{IrFn{+fid, nm, +ar, nregs, esc, eff, is_m, +blks}, t}:
       defc = opt_blks_defs(blks, UM0{})
       uses = opt_blks_uses(blks, UM0{})
-      Con{IrFn{fid, nm, ar, nregs, esc, eff, is_m, opt_ww_rw_caller_blks(defc, uses, ar, pidx, blks)}, opt_ww_rw_callers(pidx, t)}
+      f1 = opt_ww_rw_caller_fn_fin(fid, nm, ar, esc, eff, is_m, opt_ww_rw_caller_blks(fid, defc, uses, ar, pidx, par, pcid, blks, WwBlksRes{Nil{}, nregs}))
+      Con{f1, opt_ww_rw_callers(pidx, par, pcid, t)}
 def opt_ww_apply(pl: WwPlan, fns: List<&2, IrFn>) -> List<&2, IrFn>:
   match pl:
-    case WwPlan{_, _, False{}}: fns
-    case WwPlan{+pidx, pcid, True{}}: opt_ww_rw_callers(pidx, opt_ww_rw_callees(pidx, pcid, fns))
+    case WwPlan{_, _, _, False{}}: fns
+    case WwPlan{+pidx, +par, +pcid, True{}}: opt_ww_rw_callers(pidx, par, pcid, opt_ww_rw_callees(pidx, par, pcid, fns))
 def opt_ww_pass(+fns: List<&2, IrFn>) -> List<&2, IrFn>:
   +bad_fn = opt_ip_bad_fns(fns, UM0{})
   +cand = opt_ww_cand_fns(bad_fn, fns, UM0{})
   obs = opt_ww_obs_fns(cand, fns, UM0{})
-  opt_ww_apply(opt_ww_build_plan(bad_fn, cand, obs, fns, WwPlan{UM0{}, UM0{}, False{}}), fns)
+  opt_ww_apply(opt_ww_build_plan(bad_fn, cand, obs, fns, WwPlan{UM0{}, UM0{}, UM0{}, False{}}), fns)
 # Top-Level -O2 Pipeline
 def opt_fn_local(+small: Bool, +ret_sc: U32Map, +psc: U32Map, f: IrFn) -> IrFn:
   match small:
@@ -1328,9 +1617,11 @@ def b5k_opt_go(small: Bool, +fns: List<&2, IrFn>) -> List<&2, IrFn>:
   match small:
     case True{}:
       +ret0 = opt_collect_ret_only(fns, UM0{})
-      +fns1 = opt_fns_pre(True{}, ret0, fns)
-      +fns2 = opt_fns_mid(opt_inl_all(24, opt_collect_inlines(False{}, 72, 20, fns1, InlBank{UM0{}, OT0{}}), fns1))
-      +fns3 = opt_fns_mid(opt_inl_all(24, opt_collect_inlines(False{}, 72, 20, fns2, InlBank{UM0{}, OT0{}}), fns2))
+      +fns0 = b5k_opt_fin(True{}, fns, opt_collect_ip(True{}, fns, ret0))
+      +fns1a = opt_fns_mid(opt_inl_all(64, opt_collect_inlines(True{}, 64, 16, fns0, InlBank{UM0{}, OT0{}}), fns0))
+      +fns1 = opt_fns_mid(opt_inl_all(64, opt_collect_inlines(True{}, 96, 20, fns1a, InlBank{UM0{}, OT0{}}), fns1a))
+      +fns2 = opt_fns_mid(opt_inl_all(64, opt_collect_inlines(False{}, 112, 24, fns1, InlBank{UM0{}, OT0{}}), fns1))
+      +fns3 = opt_fns_mid(opt_inl_all(48, opt_collect_inlines(False{}, 160, 28, fns2, InlBank{UM0{}, OT0{}}), fns2))
       +fns4 = opt_fns_mid(opt_ww_pass(opt_fns_mid(opt_ww_pass(fns3))))
       +fns5 = b5k_opt_fin(True{}, fns4, opt_collect_ip(True{}, fns4, ret0))
       b5k_opt_fin(True{}, fns5, opt_collect_ip(True{}, fns5, ret0))

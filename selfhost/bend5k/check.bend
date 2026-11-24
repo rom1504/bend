@@ -424,6 +424,15 @@ def b5k_chk_guard_err(ok: Bool, err: String, res: ExprRes) -> ExprRes:
     case False{}: ExprErr{err}
     case True{}: res
 
+def b5k_chk_lit_ok(goal: Maybe<&2, String>, +got: String, is_num: Bool) -> Bool:
+  match goal:
+    case None{}: True{}
+    case Some{+g}:
+      Bool.or(b5k_str_eq(g, got), Bool.and(is_num, b5k_str_eq(g, "Nat")))
+
+def b5k_chk_lit(goal: Maybe<&2, String>, fn_name: String, +got: String, is_num: Bool) -> ExprRes:
+  b5k_chk_guard_err(b5k_chk_lit_ok(goal, got, is_num), "check: " ++ fn_name ++ ": literal type mismatch (" ++ got ++ ")", ExprOk{Nil{}})
+
 def b5k_chk_work(+fuel: Nat, +ctx: CheckCtx, +fn_name: String, w: ChkWork) -> ExprRes:
   match fuel w:
     case 0n _: ExprOk{Nil{}}
@@ -460,10 +469,10 @@ def b5k_chk_work(+fuel: Nat, +ctx: CheckCtx, +fn_name: String, w: ChkWork) -> Ex
       b5k_chk_work(f, ctx, fn_name, WExpr{env, goal, val})
     case 1n+f WStmts{+env, goal, Con{StRet{val}, rest}}:
       b5k_chk_pair_fin(fn_name, b5k_chk_work(f, ctx, fn_name, WExpr{env, None{}, val}), b5k_chk_work(f, ctx, fn_name, WStmts{env, goal, rest}))
-    case 1n+f WExpr{_, _, ENum{_}}: ExprOk{Nil{}}
-    case 1n+f WExpr{_, _, EFlt{_}}: ExprOk{Nil{}}
-    case 1n+f WExpr{_, _, EChr{_}}: ExprOk{Nil{}}
-    case 1n+f WExpr{_, _, EStr{_}}: ExprOk{Nil{}}
+    case 1n+f WExpr{_, goal, ENum{_}}: b5k_chk_lit(goal, fn_name, "U32", True{})
+    case 1n+f WExpr{_, goal, EFlt{_}}: b5k_chk_lit(goal, fn_name, "F32", False{})
+    case 1n+f WExpr{_, goal, EChr{_}}: b5k_chk_lit(goal, fn_name, "Char", False{})
+    case 1n+f WExpr{_, goal, EStr{_}}: b5k_chk_lit(goal, fn_name, "String", False{})
     case 1n+f WExpr{_, _, ESet{}}: ExprOk{Nil{}}
     case 1n+f WExpr{_, _, EEmpty{}}: ExprOk{Nil{}}
     case 1n+f WExpr{_, _, EUnit{}}: ExprOk{Nil{}}

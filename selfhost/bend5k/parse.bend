@@ -413,8 +413,17 @@ def p_is_ident_k(k: TokKind) -> Bool:
   match k:
     case TkIdent{_}: True{}
     case _: False{}
+def p_skip_to_colon_k(fuel: Nat, +st: PState, k: TokKind) -> PState:
+  match fuel k:
+    case 0n _: st
+    case _ TkSym{58}: st
+    case _ TkNewline{}: st
+    case _ TkEof{}: st
+    case 1n+f _:
+      +st1 = p_drop(st)
+      p_skip_to_colon_k(f, st1, p_peek(st1))
 def p_ev_do_head(+st1: PState, ks: List<&2, PKont>, k: TokKind) -> PStep:
-  st2 = Bool.pick(PState, p_is_ident_k(k), p_drop(st1), st1)
+  st2 = p_skip_to_colon_k(32n, st1, k)
   +st4 = p_skip_nls(p_eat_sym(st2, 58, "expected ':' after do"))
   st5 = Bool.pick(PState, p_is_indent(st4), p_drop(st4), st4)
   SEval{GDo{Nil{}}, st5, Con{KDoWrap{}, ks}}

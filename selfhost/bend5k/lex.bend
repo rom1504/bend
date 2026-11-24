@@ -337,9 +337,9 @@ def lex_run(fuel: Nat, st: LStep) -> LexRes:
     case 0n LNext{_, stk, _, _, line, rev, syms}: lex_eof(stk, line, rev, syms)
     case 1n+p LNext{s, stk, bol, +depth, line, rev, syms}:
       lex_run(p, lex_step_if(s, stk, depth, line, rev, syms, Bool.and(bol, U32.is_zero(depth))))
-def lex_nat_double(n: Nat, acc: Nat) -> Nat:
-  match n:
-    case 0n: acc
-    case 1n+p: lex_nat_double(p, Succ{Succ{acc}})
+def lex_str_fuel(s: String, acc: Nat) -> Nat:
+  match s:
+    case SNil{}: acc
+    case SCon{_, t}: lex_str_fuel(t, Succ{Succ{acc}})
 def b5k_lex(+src: String, syms: SymTab) -> LexRes:
-  lex_run(lex_nat_double(Succ{Succ{String.length(src)}}, 4n), LNext{src, Con{0, Nil{}}, True{}, 0, 1, Nil{}, syms})
+  lex_run(lex_str_fuel(src, 8n), LNext{src, Con{0, Nil{}}, True{}, 0, 1, Nil{}, syms})

@@ -12,6 +12,7 @@ with proportional 16-bit FID slot allocation (`0..65531`).
 from __future__ import annotations
 
 import argparse
+import heapq
 import json
 import re
 import time
@@ -278,6 +279,12 @@ def main() -> None:
     ap.add_argument("--k", type=int, default=24, help="Number of modules (e.g. 16, 24)")
     ap.add_argument("--src", type=Path, default=DEFAULT_SRC, help="Input monolithic compiler .bend")
     ap.add_argument("--out-dir", type=Path, required=True, help="Output directory")
+    ap.add_argument(
+        "--order",
+        choices=["bfs", "dfs", "source"],
+        default="bfs",
+        help="Topological tie-breaking order: bfs (queue, default), dfs (LIFO dependency stack), source (min-line heap)",
+    )
     args = ap.parse_args()
 
     out_dir: Path = args.out_dir
@@ -339,20 +346,67 @@ def main() -> None:
     main_scc = node_to_scc[main_ids[0]]
     assert len(dag_rdeps[main_scc]) == 0, f"Unexpected callers of main SCC: {dag_rdeps[main_scc]}"
 
+    scc_min_line = [min(decls[u]["start_line"] for u in comp) for comp in sccs]
     indeg = [len(dag_deps[si]) for si in range(num_sccs)]
-    q = deque(si for si in range(num_sccs) if indeg[si] == 0 and si != main_scc)
     topo: list[int] = []
     main_ready = (indeg[main_scc] == 0)
-    while q:
-        u = q.popleft()
-        topo.append(u)
-        for nxt in dag_rdeps[u]:
-            indeg[nxt] -= 1
-            if indeg[nxt] == 0:
-                if nxt == main_scc:
-                    main_ready = True
-                else:
-                    q.append(nxt)
+    if args.order == "bfs":
+        q = deque(si for si in range(num_sccs) if indeg[si] == 0 and si != main_scc)
+        while q:
+            u = q.popleft()
+            topo.append(u)
+            for nxt in dag_rdeps[u]:
+                indeg[nxt] -= 1
+                if indeg[nxt] == 0:
+                    if nxt == main_scc:
+                        main_ready = True
+                    else:
+                        q.append(nxt)
+    elif args.order == "dfs":
+        # Post-order DFS on dependency edges starting from main_scc: emits each subsystem's
+        # exclusive helper subtrees immediately before their callers, keeping tightly coupled
+        # call chains contiguous in the same module while pinning main_scc last.
+        visited = [False] * num_sccs
+
+        def _dfs_postorder(root: int) -> None:
+            st: list[tuple[int, bool]] = [(root, False)]
+            while st:
+                u, done = st.pop()
+                if done:
+                    topo.append(u)
+                    continue
+                if visited[u]:
+                    continue
+                visited[u] = True
+                st.append((u, True))
+                deps = sorted(dag_deps[u], key=lambda s: (-scc_bytes[s], scc_min_line[s]), reverse=True)
+                for v in deps:
+                    if not visited[v]:
+                        st.append((v, False))
+
+        _dfs_postorder(main_scc)
+        assert topo and topo[-1] == main_scc
+        topo.pop()
+        for si in sorted(range(num_sccs), key=lambda s: (-scc_bytes[s], scc_min_line[s])):
+            if not visited[si]:
+                _dfs_postorder(si)
+        main_ready = True
+    elif args.order == "source":
+        # Source-order topological sort (min-heap keyed by earliest declaration line).
+        heap = [(scc_min_line[si], si) for si in range(num_sccs) if indeg[si] == 0 and si != main_scc]
+        heapq.heapify(heap)
+        while heap:
+            _, u = heapq.heappop(heap)
+            topo.append(u)
+            for nxt in dag_rdeps[u]:
+                indeg[nxt] -= 1
+                if indeg[nxt] == 0:
+                    if nxt == main_scc:
+                        main_ready = True
+                    else:
+                        heapq.heappush(heap, (scc_min_line[nxt], nxt))
+    else:
+        raise ValueError(f"Unknown order: {args.order}")
     assert main_ready, "main_scc never became ready (cycle in SCC DAG!)"
     topo.append(main_scc)
     assert len(topo) == num_sccs, f"SCC DAG cycle! {len(topo)} != {num_sccs}"
@@ -538,6 +592,7 @@ def main() -> None:
         "source_bytes": args.src.stat().st_size,
         "source_kb": round(args.src.stat().st_size / 1024.0, 1),
         "k": K,
+        "order": args.order,
         "balance": {
             "avg_kb": round(avg_b / 1024.0, 1),
             "min_kb": round(min_b / 1024.0, 1),

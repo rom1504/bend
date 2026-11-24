@@ -1,0 +1,161 @@
+{
+  "campaign": "boot_200s",
+  "agent": "B4",
+  "title": "DFS Dependency-Order Balanced Splitter + x198pw_plan/p86_plan Hotspot Killer",
+  "date_utc": "2026-11-24",
+  "splitter": {
+    "script": "research/agy/s10_campaign/s10g_nodrop_and_k24/split_kN_balanced.py",
+    "flag": "--order {bfs,dfs,source}",
+    "default": "bfs",
+    "dfs_algorithm": "Post-order DFS on SCC dependency edges starting from main_scc (tie-break by (-scc_bytes, scc_min_line)), pinning main_scc last, followed by exact binary-search painter's partition.",
+    "source": "selfhost/build/agy/wave17_unified/compiler.bend",
+    "k16_comparison": {
+      "bfs": {
+        "dir": "selfhost/build/agy/wave17_unified/k16_wave17",
+        "max_over_avg": 1.0056,
+        "forward_violations": 0,
+        "exports": 5593,
+        "cross_mod_imports": 8779,
+        "stubs_total": 8793,
+        "stubs_bytes_auto": 1001534
+      },
+      "dfs": {
+        "dir": "selfhost/build/agy/wave17_unified/k16_wave17_dfs",
+        "max_over_avg": 1.0035,
+        "forward_violations": 0,
+        "exports": 1061,
+        "cross_mod_imports": 2030,
+        "stubs_total": 2041,
+        "stubs_bytes_auto": 215568
+      },
+      "deltas": {
+        "stubs_pct": -76.8,
+        "stubs_bytes_pct": -78.5,
+        "stubs_bytes_saved": 785966,
+        "exports_pct": -81.0,
+        "cross_mod_imports_pct": -76.9
+      }
+    },
+    "k24_comparison": {
+      "bfs": {
+        "dir": "selfhost/build/agy/wave17_unified/k24_wave17",
+        "max_over_avg": 1.007,
+        "forward_violations": 0,
+        "exports": 6051,
+        "cross_mod_imports": 10065,
+        "stubs_total": 10085,
+        "stubs_bytes_auto": 1154930
+      },
+      "dfs": {
+        "dir": "selfhost/build/agy/wave17_unified/k24_wave17_dfs",
+        "max_over_avg": 1.0168,
+        "forward_violations": 0,
+        "exports": 1160,
+        "cross_mod_imports": 2441,
+        "stubs_total": 2459,
+        "stubs_bytes_auto": 257236
+      },
+      "deltas": {
+        "stubs_pct": -75.6,
+        "stubs_bytes_pct": -77.7,
+        "stubs_bytes_saved": 897694,
+        "exports_pct": -80.8,
+        "cross_mod_imports_pct": -75.7
+      }
+    }
+  },
+  "native_bench_n8_o2_cpu6": {
+    "binary": "selfhost/build/agy/wave17-native-mod/n8_o2",
+    "mode": "--trace x86-module (-O2)",
+    "cpu": 6,
+    "modules": {
+      "bfs_m00": {
+        "exp": 1074,
+        "ximp": 0,
+        "p86_plan_ms": 10240,
+        "x198pw_plan_ms": 35125,
+        "segs": 1334,
+        "priv_count": 1441,
+        "x187_priv_ms": 31921,
+        "x187_pub_ms": 6177,
+        "x187_elf_ms": 2608,
+        "wall_ms": 86768.9,
+        "obj_bytes": 7370688
+      },
+      "dfs_m00": {
+        "exp": 150,
+        "ximp": 0,
+        "p86_plan_ms": 7096,
+        "x198pw_plan_ms": 48022,
+        "segs": 1667,
+        "priv_count": 316,
+        "x187_priv_ms": 22349,
+        "x187_pub_ms": 45520,
+        "x187_elf_ms": 3810,
+        "wall_ms": 127667.1,
+        "obj_bytes": 8584920
+      },
+      "bfs_m08": {
+        "exp": 313,
+        "ximp": 572,
+        "p86_plan_ms": 14581,
+        "x198pw_plan_ms": 28674,
+        "segs": 1910,
+        "priv_count": 346,
+        "x187_priv_ms": 12677,
+        "x187_pub_ms": 26512,
+        "x187_elf_ms": 2111,
+        "wall_ms": 85609.0,
+        "obj_bytes": 6440848
+      },
+      "dfs_m08": {
+        "exp": 45,
+        "ximp": 146,
+        "p86_plan_ms": 7766,
+        "x198pw_plan_ms": 26757,
+        "segs": 2328,
+        "priv_count": 295,
+        "x187_priv_ms": 9858,
+        "x187_pub_ms": 40426,
+        "x187_elf_ms": 2282,
+        "wall_ms": 87800.8,
+        "obj_bytes": 5293184
+      }
+    },
+    "m08_speedups": {
+      "p86_plan_speedup": 1.88,
+      "x198pw_plan_speedup": 1.07,
+      "x187_priv_speedup": 1.29,
+      "obj_size_delta_pct": -17.8
+    }
+  },
+  "gdb_profile_dfs_m00": {
+    "p86_plan_samples": 16,
+    "x198pw_plan_samples": 30,
+    "p86_plan_hotspots": [
+      "p98_tag_eq / agy_str_eq / f_eq / String.eq (typecheck & AST tag checks)",
+      "w7_infer_tag / w7c_subst_var (check_definition_world)",
+      "terms_at / ks / kid / j_strip (J-check & ownership)"
+    ],
+    "x198pw_plan_hotspots": [
+      "nc_uses_term / nc_uses_list (3/30 samples, liveness set construction)",
+      "nq_layout_subst / nq_layout_subst_list (2/30 samples, KTerm beta/layout substitution)",
+      "p98_tag_eq / String.eq / p88_string_eq / Char.is_eq (string/tag checks)",
+      "term_drop / span_fade / p125_rt_ctor2 (AST allocation/drop churn)"
+    ]
+  },
+  "apply_b4": {
+    "script": "research/agy/boot_200s/b4_dfs_and_plan/apply_b4.py",
+    "target": "selfhost/build/agy/wave17_unified/compiler.bend",
+    "disjoint_from_b2_b3": true,
+    "idempotent": true,
+    "check_only_errors": 0,
+    "o2_runtime_regression_pct": 0.0,
+    "optimizations": [
+      "b4_nc_uses_term: single-unpack KTerm + KLiteral/KLambda/Nil fast paths",
+      "b4_nq_layout_subst: agy_str_eq + leaf Nil{} zero-alloc short-circuit + direct KTerm construction",
+      "b4_pre_bang_index: replace O(N*|bangs|) nb_contains in w7_pre_build_set with O(1) w5c3_find on w8_bangs_index",
+      "b4_o2_mod_check: route -O2 x86-module through s10e_p143cb_program to skip redundant ADT/law/stub checking"
+    ]
+  }
+}

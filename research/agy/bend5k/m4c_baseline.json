@@ -1,0 +1,167 @@
+{
+  "campaign": "B5K-M4C",
+  "date": "2026-11-24",
+  "from_scratch_bootstrap": {
+    "source_loc_at_c_emit": 4632,
+    "bend2_to_c": {
+      "command": "bash research/agy/locked_bun.sh bend5k.bend -o bend5k.c",
+      "ok": true,
+      "wall_s": 12.192,
+      "peak_rss_mib": 2850.2,
+      "c_bytes": 3306611,
+      "c_lines": 88474,
+      "musttail_occurrences": 3
+    },
+    "gcc_o1_strip_musttail": {
+      "command": "gcc-10 -O1 -w bend5k_gcc.c -pthread -lm -o stage0_from_c",
+      "ok": true,
+      "wall_s": 18.209,
+      "peak_rss_mib": 550.4,
+      "binary_bytes": 1913936,
+      "run_s0_to_s1": {
+        "ok": false,
+        "rc": -11,
+        "wall_s_default_stack": 0.022,
+        "wall_s_256m_stack": 0.184,
+        "rss_mib_256m_stack": 268.3,
+        "error": "bend: memory fault (machine stack overflow?) — WL_JMP/WL_DYN CPS transitions require musttail or O(1)-stack trampoline"
+      }
+    },
+    "gcc_o1_sibling_calls": {
+      "ok": false,
+      "error": "hung >18m in GCC-10 -foptimize-sibling-calls on 88k-line monolithic C file"
+    },
+    "inline_wl_pack_trampoline": {
+      "ok": false,
+      "error": "macro-expanded 49-field WL_PACK/WL_UNPACK at every WL_JMP/WL_DYN timed out (>30s in gcc -O0); fix is out-of-line static inline wl_pack() helper or clang with musttail"
+    },
+    "total_bend2_plus_gcc_o1_s": 30.401,
+    "verdict": "PROVED_EMIT_AND_COMPILE_FAST_TRAMPOLINE_NEEDED_FOR_GCC10"
+  },
+  "baseline_o0_benchmark": {
+    "label": "bend5k-s1-O0",
+    "bend5k_loc": 6007,
+    "bootstrap_n9_o0_compile_s": 26.37,
+    "bootstrap_n9_o0_link_s": 0.07,
+    "bootstrap_n9_o0_obj_bytes": 6181320,
+    "cpu": 7,
+    "runs": 3,
+    "proxy_timeout_s": 25,
+    "holdout_timeout_s": 40,
+    "all_ok": false,
+    "proxy_ok_count": 1,
+    "proxy_total": 7,
+    "proxy_geomean_vs_gcc10_passing_only": 15.2054,
+    "total_wall_s": 98.16,
+    "proxy_7": [
+      {
+        "name": "expression",
+        "group": "tuned",
+        "expected_checksum": 3393903617,
+        "checksum_ok": false,
+        "bend5k_ms": null,
+        "c_gcc10_ms": 6.2494,
+        "ratio_vs_gcc10": null,
+        "compile_ms": 13.12,
+        "link_ms": null,
+        "obj_bytes": 0,
+        "error": "compile failed: unexpected token in expression"
+      },
+      {
+        "name": "nbody",
+        "group": "upstream",
+        "expected_checksum": 728502159,
+        "checksum_ok": true,
+        "bend5k_ms": 1351.2311,
+        "bend5k_samples_ms": [1352.124, 1351.231, 1348.902],
+        "c_gcc10_ms": 88.8654,
+        "c_gcc10_samples_ms": [88.368, 88.865, 89.169],
+        "ratio_vs_gcc10": 15.2054,
+        "compile_ms": 219.1,
+        "link_ms": 41.83,
+        "obj_bytes": 117616,
+        "error": null
+      },
+      {
+        "name": "histogram",
+        "group": "upstream",
+        "expected_checksum": 3307081914,
+        "checksum_ok": false,
+        "bend5k_ms": null,
+        "c_gcc10_ms": 24.0992,
+        "ratio_vs_gcc10": null,
+        "compile_ms": 27.66,
+        "link_ms": null,
+        "obj_bytes": 0,
+        "error": "compile failed: unexpected token in expression"
+      },
+      {
+        "name": "editdist",
+        "group": "tuned",
+        "expected_checksum": 2065873279,
+        "checksum_ok": false,
+        "bend5k_ms": null,
+        "c_gcc10_ms": 9.6875,
+        "ratio_vs_gcc10": null,
+        "compile_ms": 22.98,
+        "link_ms": null,
+        "obj_bytes": 0,
+        "error": "compile failed: unexpected token in expression"
+      },
+      {
+        "name": "list",
+        "group": "tuned",
+        "expected_checksum": 1904,
+        "checksum_ok": false,
+        "bend5k_ms": null,
+        "c_gcc10_ms": 0.2637,
+        "ratio_vs_gcc10": null,
+        "compile_ms": 14.21,
+        "link_ms": null,
+        "obj_bytes": 0,
+        "error": "compile failed: unexpected token in expression"
+      },
+      {
+        "name": "gameoflife",
+        "group": "upstream",
+        "expected_checksum": 3681094808,
+        "checksum_ok": false,
+        "bend5k_ms": null,
+        "c_gcc10_ms": 925.8688,
+        "ratio_vs_gcc10": null,
+        "compile_ms": 144.49,
+        "link_ms": 44.93,
+        "obj_bytes": 99872,
+        "error": "timeout>25s at -O0 (rc=124)"
+      },
+      {
+        "name": "bst",
+        "group": "tuned",
+        "expected_checksum": 861157620,
+        "checksum_ok": false,
+        "bend5k_ms": null,
+        "c_gcc10_ms": 13.4221,
+        "ratio_vs_gcc10": null,
+        "compile_ms": 11.87,
+        "link_ms": null,
+        "obj_bytes": 0,
+        "error": "compile failed: unexpected token in expression"
+      }
+    ],
+    "holdouts": [
+      {
+        "name": "terrain",
+        "expected": "2572468224",
+        "checksum_ok": false,
+        "bend5k_s": null,
+        "c_gcc10_o2_s": 7.9672,
+        "c_gcc10_o2_samples_s": [7.9926, 7.9581, 7.9672],
+        "ratio_vs_gcc10": null,
+        "compile_ms": 185.26,
+        "link_ms": 31.81,
+        "obj_bytes": 117920,
+        "error": "timeout>40s at -O0 (rc=124)"
+      }
+    ]
+  }
+}

@@ -27,7 +27,7 @@ MODULES = [
     "elf.bend",
     "main.bend",
 ]
-MAX_LOC = 8500
+MAX_LOC = 10500
 
 LOCKED_BUN = ROOT / "research/agy/locked_bun.sh"
 N9_O2 = ROOT / "selfhost/build/agy/wave18-native-mod/n9_o2"

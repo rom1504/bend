@@ -427,6 +427,15 @@ def x190_v_written(+name: String, known: Bool, state: X190Values) -> X190Values:
     case X190Values{aliases,widths}:
       X190Values{x186_e_kill_aliases(aliases,name),b3_x190_width_put(widths,name,known)}"""
 
+# --- Hunk 5: x191_frame_forward 2048-insn cap for huge non-XMM CPS workers ---
+# Leaves all hot benchmark loops (gameoflife ~500 insns, terrain, bst, editdist, etc.)
+# 100% untouched while preventing O(N^2) w14a_mb_has_back / w4b_find_label explosions
+# (e.g. 271s on 57k-insn w13e_sa_chk_body in m11).
+OLD_X191_FF_CAP = """  nt_choose(X188Seq,hasCall && Bool.not(hasXmm) && w7_len_gt(flat0,96) && Bool.not(hasLbl && w7_is_loop(w4b_find_loop(flat0,[]))),"""
+
+NEW_X191_FF_CAP = """  +isLoop = hasLbl && w7_is_loop(w4b_find_loop(flat0,[]))
+  nt_choose(X188Seq,Bool.not(hasXmm) && ((w7_len_gt(flat0,2048) && (hasCall || Bool.not(isLoop))) || (hasCall && w7_len_gt(flat0,96) && Bool.not(isLoop))),"""
+
 PATCHES: list[tuple[str, str, str]] = [
     ("p111v_get_empty_fast", OLD_P111V_GET, NEW_P111V_GET),
     ("w5c_p131i_leaf_single_fast", OLD_W5C_P131I_LEAF, NEW_W5C_P131I_LEAF),
@@ -434,6 +443,7 @@ PATCHES: list[tuple[str, str, str]] = [
     ("x185_dead_delta_union", OLD_X185_DEAD_UNION_IF, NEW_X185_DEAD_UNION_IF),
     ("x192_p_write_skip_zero", OLD_X192_P_WRITE, NEW_X192_P_WRITE),
     ("x190_v_written_skip_zero", OLD_X190_V_WRITTEN, NEW_X190_V_WRITTEN),
+    ("x191_frame_forward_2048_cap", OLD_X191_FF_CAP, NEW_X191_FF_CAP),
 ]
 
 

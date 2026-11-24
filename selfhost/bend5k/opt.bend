@@ -1311,9 +1311,9 @@ def opt_ww_scan_take(+in_tag: Bool, +al: U32Map, ds: List<&2, U32>, s: U32, st: 
 def opt_ww_scan_copy(+al: U32Map, +d: U32, +s: U32, st: WwScan) -> WwScan:
   match st:
     case WwScan{+bp, ta, ht, hs, hr}:
-      +as = um_get(al, s)
-      ok = Bool.or(U32.is_zero(as), Bool.or(U32.is_eq(d, s), U32.is_eq(um_get(al, d), as)))
-      WwScan{Bool.pick(U32Map, ok, bp, um_set(bp, U32.sub(as, 1), 1)), ta, ht, hs, hr}
+      +as0 = um_get(al, s)
+      ok = Bool.or(U32.is_zero(as0), Bool.or(U32.is_eq(d, s), U32.is_eq(um_get(al, d), as0)))
+      WwScan{Bool.pick(U32Map, ok, bp, um_set(bp, U32.sub(as0, 1), 1)), ta, ht, hs, hr}
 def opt_ww_scan_ops(+in_tag: Bool, +al: U32Map, ops: List<&2, IrOp>, st: WwScan) -> WwScan:
   match ops st:
     case Nil{} _: st

@@ -1,0 +1,50 @@
+{
+  "campaign": "O2-F: 80% x187_priv Quadratic-Bomb Killer",
+  "date_utc": "2026-11-24T01:05:00Z",
+  "root_cause": {
+    "function": "w4b_find_loop (w7_collect_jmps + w7_find_loop_go)",
+    "location": "selfhost/build/agy/wave16_unified/compiler.bend:59022-59046",
+    "caller_hot_path": "x191_frame_forward (line 64840) and w4_post_select (line 64828) — evaluated BEFORE w7_post_select_full bypass",
+    "complexity_before": "O(L * N) = O(N^2) via per-label linear String.eq scans in w4b_has_jmp_to and w4b_has_any_branch_to on every forward-jumped PLabel",
+    "complexity_after": "O(N log L) via single-pass KDef map storing (da=lastJmpIdx, dx=firstAnyBrIdx)",
+    "semantic_equivalence": "Exact mathematical equivalence: U32.is_gt(da(info), idx) && U32.is_gt(dx(info), idx) <==> w4b_has_jmp_to(lbl, rest) && Bool.not(w4b_has_any_branch_to(lbl, before))"
+  },
+  "reproducer": {
+    "name": "repro_sink4.bend (standalone w13c_sink_tpl_bytes 150-element List<&2,U32>)",
+    "compiler": "selfhost/build/agy/wave16-native-mod/n7_o2",
+    "n7_o2_wall_ms": 5907.9,
+    "n7_o2_x187_priv_elapsed_ms": 5809,
+    "n7_o2_total_ms": 5895,
+    "n7_o2_obj_bytes": 187832,
+    "n7_o2_obj_sha256": "7d8f422455ee53d0daadcf36e75f28a1f73809085ff5660cbd7c9955f80a8443"
+  },
+  "gdb_profile_n7_o2": {
+    "samples": 20,
+    "all_frames": {
+      "$direct.w4b_has_jmp_to": 56,
+      "$direct.w4b_has_any_branch_to": 13,
+      "$direct.String.eq": 5,
+      "span_fade": 5,
+      "p198_fade_ret": 5,
+      "p198_rfc_take2": 3
+    },
+    "top_frames": {
+      "$direct.String.eq": 5,
+      "span_fade": 5,
+      "$direct.w4b_has_jmp_to": 4,
+      "p198_rfc_take2": 3,
+      "p111_rt_return": 1,
+      "p125_rt_take2": 1,
+      "$direct.String.starts_with": 1
+    }
+  },
+  "patcher": {
+    "script": "research/agy/o2_50s/o2f_bomb_killer/apply_o2f.py",
+    "hunks": ["w4b_find_loop_linear"],
+    "disjoint_from": ["apply_o2a.py", "apply_o2c.py", "apply_o2e.py"],
+    "idempotent": true,
+    "bun_check_only_errors": 0,
+    "k10_m06_compile_rc": 0,
+    "k10_m06_compile_ms": 22841.5
+  }
+}

@@ -1,0 +1,12 @@
+# Experiment B1: Zero-JS-Runtime Fast Stage 0 Bootstrap (`compiler.bend` → Native C `stage0_seed`)
+
+- **Hypothesis:** Compiling `selfhost/build/agy/wave17_unified/compiler.bend` to native x86-64 via upstream `bend2` C emission + parallel `gcc -O1` can produce a fast Zero-JS Stage 0 seed (`stage0_seed`) from pure source in `<= 45 s` wall time.
+- **Evidence & Artifacts:**
+  - Script & modular C emitter: [`research/agy/boot_200s/b1_c_stage0/build_stage0.py`](file:///home/ai/bend2_agy/research/agy/boot_200s/b1_c_stage0/build_stage0.py), [`gen_comp_mod.py`](file:///home/ai/bend2_agy/research/agy/boot_200s/b1_c_stage0/gen_comp_mod.py), [`emit_mod_c.ts`](file:///home/ai/bend2_agy/research/agy/boot_200s/b1_c_stage0/emit_mod_c.ts)
+  - Full report & structured data: [`research/agy/boot_200s/b1_c_stage0/REPORT.md`](file:///home/ai/bend2_agy/research/agy/boot_200s/b1_c_stage0/REPORT.md), [`results.json`](file:///home/ai/bend2_agy/research/agy/boot_200s/b1_c_stage0/results.json)
+- **Measured Outcome:**
+  - **Monolithic `bend2 --to-c` rejected:** Blew up to `> 270 s` and `> 20 GiB` RSS (multi-pass `c_units()` + `WIDE=247` ADT flattening + `m05` `arity > 247` crash + GCC 10 lacks `musttail`).
+  - **Modular K=16 C Stage 0 implemented:** O(1)-stack `WLState*` trampoline ABI, `const seq = 1u`, `-O1 -fno-inline` + PCH, 1-pass uniform ABI (`own=true`, `ctr=true`, `Array=false`), user ADT boxing `> 4` words, and pure leaf stub inlining.
+  - **Verified stages:** Stage 1 (`1.76 s`), Stage 2 all 16 modules emitted (`145.70 s` sequential 1-worker; 15 normal mods `3.24–13.95 s`, `m06` outlier `41.22 s`), Stage 3 global C merge (`2.09 s` → `692` CIDs, `59,300` FIDs, `101,255` STAT words, `85.4 MiB` C), Stage 4 PCH (`0.99 s`) + 11/17 `.o` units compiled cleanly (`rt_main.o` + 10 `mod*.o` incl. `mod06.o`).
+  - **Remaining 1-line fix applied (not yet re-run before `04:25 UTC` cutoff):** Pinned `fact("type", "Array") = false` in `gen_comp_mod.py` to fix the `spin_agy_str_eq` arity mismatch on the remaining 6 modules; next step is re-running `build_stage0.py` to link `stage0_seed`, verifying `x86-module -O2` on `m00_zero.bend`, and widening leaf inlining to `<= 10` lines to drop `m06` and hit `<= 45 s` with 4-core `bun` + 8-core `gcc`.
+- **Promotion Decision:** **NOT YET PROMOTED** (prototype ready; final link + `m00_zero.bend` `-O2` execution gate + `m06` outlier fix needed to clear `<= 45 s`).

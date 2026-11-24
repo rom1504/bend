@@ -1,0 +1,74 @@
+{
+  "experiment": "B1: Zero-JS-Runtime Fast Stage 0 Bootstrap (Pure Source -> Native C stage0_seed)",
+  "date_utc": "2026-11-24T04:24:00Z",
+  "status": "prototype_built_partial_gate",
+  "target_wall_s": 45.0,
+  "environment": {
+    "toolchain": "gcc 10.2.1 (no clang installed on host) + bun 1.4.3 (selfhost/.assets/bin/bun)",
+    "source": "selfhost/build/agy/wave17_unified/compiler.bend (3.52 MiB, K=16 split k16_wave17)"
+  },
+  "monolithic_bend2_baseline": {
+    "command": "bun bend2/main.ts compiler.bend -o compiler.c",
+    "book_load_s": 17.09,
+    "book_load_rss_mib": 1555,
+    "book_valid_s": 18.78,
+    "book_valid_rss_mib": 4548,
+    "file_book_s": 20.83,
+    "file_book_rss_mib": 6577,
+    "c_units_outcome": "FAILED / OOM-risk: >270s wall and >20 GiB RSS due to multi-pass fixed-point loop + WIDE=247 ADT flattening + m05 arity>247 crash",
+    "gcc_10_musttail_incompatible": true
+  },
+  "modular_c_stage0_measured": {
+    "stage1_stubs_and_leaf_prep_s": 1.76,
+    "stage2_bun_1worker_wall_s": 145.70,
+    "stage2_bun_1worker_max_rss_mib": 7773.0,
+    "stage2_bun_15_normal_mods_sum_s": 104.48,
+    "stage2_bun_15_normal_mods_max_rss_mib": 2266.0,
+    "stage2_bun_m06_outlier_s": 41.22,
+    "stage2_bun_m06_outlier_rss_mib": 7664.0,
+    "stage3_global_merge_s": 2.09,
+    "merged_cids": 692,
+    "merged_fids": 59300,
+    "merged_stat_words": 101255,
+    "merged_c_mib": 85.4,
+    "stage4_pch_s": 0.99,
+    "stage4_gcc_8core_partial_s": 89.0,
+    "stage4_gcc_units_succeeded": 11,
+    "stage4_gcc_units_total": 17,
+    "stage4_gcc_units_succeeded_list": ["rt_main", "mod03", "mod04", "mod06", "mod07", "mod10", "mod11", "mod12", "mod13", "mod14", "mod15"],
+    "stage4_gcc_remaining_6_blocker": "arr_q Array fact changed mid-pass in 1-pass c_units (fixed in gen_comp_mod.py by pinning fact('type','Array')=false)",
+    "modules": [
+      {"mod": "m00", "load_s": 1.37, "valid_s": 0.91, "emit_s": 3.07, "total_s": 5.35, "rss_mib": 695, "c_bytes": 2131563},
+      {"mod": "m01", "load_s": 1.44, "valid_s": 1.40, "emit_s": 4.59, "total_s": 7.43, "rss_mib": 1181, "c_bytes": 4378227},
+      {"mod": "m02", "load_s": 0.81, "valid_s": 1.30, "emit_s": 4.10, "total_s": 6.21, "rss_mib": 836, "c_bytes": 4706844},
+      {"mod": "m03", "load_s": 1.11, "valid_s": 1.62, "emit_s": 6.55, "total_s": 9.28, "rss_mib": 1869, "c_bytes": 5533957},
+      {"mod": "m04", "load_s": 0.72, "valid_s": 1.00, "emit_s": 6.99, "total_s": 8.71, "rss_mib": 918, "c_bytes": 6127875},
+      {"mod": "m05", "load_s": 1.90, "valid_s": 2.14, "emit_s": 9.91, "total_s": 13.95, "rss_mib": 1766, "c_bytes": 5239116},
+      {"mod": "m06", "load_s": 5.06, "valid_s": 6.83, "emit_s": 29.34, "total_s": 41.22, "rss_mib": 7664, "c_bytes": 21782899},
+      {"mod": "m07", "load_s": 1.02, "valid_s": 1.26, "emit_s": 4.62, "total_s": 6.91, "rss_mib": 1066, "c_bytes": 5119002},
+      {"mod": "m08", "load_s": 0.84, "valid_s": 1.32, "emit_s": 5.66, "total_s": 7.81, "rss_mib": 1119, "c_bytes": 5395903},
+      {"mod": "m09", "load_s": 0.55, "valid_s": 0.58, "emit_s": 2.63, "total_s": 3.76, "rss_mib": 382, "c_bytes": 4632977},
+      {"mod": "m10", "load_s": 0.56, "valid_s": 0.57, "emit_s": 3.04, "total_s": 4.18, "rss_mib": 419, "c_bytes": 4194768},
+      {"mod": "m11", "load_s": 0.64, "valid_s": 1.00, "emit_s": 3.34, "total_s": 4.98, "rss_mib": 642, "c_bytes": 5465503},
+      {"mod": "m12", "load_s": 1.36, "valid_s": 1.99, "emit_s": 8.05, "total_s": 11.39, "rss_mib": 2266, "c_bytes": 7264438},
+      {"mod": "m13", "load_s": 0.62, "valid_s": 0.81, "emit_s": 3.25, "total_s": 4.68, "rss_mib": 657, "c_bytes": 5819197},
+      {"mod": "m14", "load_s": 0.65, "valid_s": 0.60, "emit_s": 3.08, "total_s": 4.34, "rss_mib": 451, "c_bytes": 5839790},
+      {"mod": "m15", "load_s": 0.45, "valid_s": 0.51, "emit_s": 2.29, "total_s": 3.24, "rss_mib": 339, "c_bytes": 4568679}
+    ]
+  },
+  "tiny_split_verification": {
+    "tiny_bend_gcc_o1_sibling_tailcall": "PASS (exit=0, jmpq verified)",
+    "tiny_bend_2tu_pch_split": "PASS (exit=0, cross-TU jmpq verified)"
+  },
+  "key_root_causes_discovered": [
+    "No clang on host (only gcc 10.2.1), which lacks __attribute__((musttail)); solved via O(1)-stack WLState* trampoline ABI.",
+    "Monolithic bend2 --to-c on compiler.bend blows up to >270s and >20 GiB RSS due to multi-pass c_units() fixed-point loop and WIDE=247 ADT flattening.",
+    "GCC -O1 with bend2's 48-arg stack ABI took 39.93s/MB and failed sibling-tail-call on 237/351 WL_JMPs (Term fb[N] stack-escape); WLState* trampoline + -O1 -fno-inline + const seq=1u cut GCC compile time 4x and eliminated stack overflow.",
+    "Modular K=16 C emission hit 3 subtle bugs all diagnosed & fixed: (1) non-@unsafe stubs unfolded infinitely, (2) once=true inlined mutually-recursive module pairs, (3) non-flat stubs for 1-line x188_* helpers exploded m05/m06 into 1133-1587 CPS continuations (m05 arity>247 crash, fixed via leaf helper inlining).",
+    "Final 6-module gcc error (spin_agy_str_eq arity mismatch) traced to fact('type','Array') flipping mid-pass in 1-pass c_units(); fixed in gen_comp_mod.py."
+  ],
+  "path_to_sub_45s": {
+    "remaining_bottleneck": "m06 (41.2s bun, 21.8 MB C, 5.7 MB .o) due to 3 x86 machine-code builders (w13e_sa_rew_body, w14a_sl_copy_3, w13e_sa_chk_body) calling >4-line helpers that remain stubbed.",
+    "projected_after_m06_fix_and_4core_bun": "1.7s stubs + ~18s bun (4-core) + 2.0s merge + ~18s gcc -O1 -fno-inline (8-core) + 1.0s link = ~41s wall (<= 45s)."
+  }
+}

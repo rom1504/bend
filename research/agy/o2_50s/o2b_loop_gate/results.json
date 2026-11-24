@@ -1,0 +1,391 @@
+{
+  "slice_o2": {
+    "base": {
+      "total_ms": 15821.0,
+      "wall_ms": 15833.3,
+      "x187_priv_ms": 3002.0,
+      "x187_pub_ms": 3169.0,
+      "x187_elf_ms": 305.0,
+      "bytes": 388208,
+      "runs": [
+        {
+          "wall_ms": 15833.3,
+          "total_ms": 15821.0,
+          "p86_ms": 5649.0,
+          "pw_ms": 2927.0,
+          "x187_priv_ms": 3002.0,
+          "x187_priv_count": 48,
+          "x187_pub_ms": 3204.0,
+          "x187_pub_count": 103,
+          "x187_elf_ms": 263.0,
+          "bytes": 388208
+        },
+        {
+          "wall_ms": 15716.7,
+          "total_ms": 15706.0,
+          "p86_ms": 5551.0,
+          "pw_ms": 2927.0,
+          "x187_priv_ms": 3008.0,
+          "x187_priv_count": 48,
+          "x187_pub_ms": 3155.0,
+          "x187_pub_count": 103,
+          "x187_elf_ms": 305.0,
+          "bytes": 388208
+        },
+        {
+          "wall_ms": 15840.0,
+          "total_ms": 15829.0,
+          "p86_ms": 5721.0,
+          "pw_ms": 2956.0,
+          "x187_priv_ms": 2881.0,
+          "x187_priv_count": 48,
+          "x187_pub_ms": 3169.0,
+          "x187_pub_count": 103,
+          "x187_elf_ms": 329.0,
+          "bytes": 388208
+        }
+      ]
+    },
+    "o2b": {
+      "total_ms": 15479.0,
+      "wall_ms": 15489.7,
+      "x187_priv_ms": 3069.0,
+      "x187_pub_ms": 2782.0,
+      "x187_elf_ms": 329.0,
+      "bytes": 388368,
+      "runs": [
+        {
+          "wall_ms": 15852.1,
+          "total_ms": 15839.0,
+          "p86_ms": 5550.0,
+          "pw_ms": 3220.0,
+          "x187_priv_ms": 3158.0,
+          "x187_priv_count": 48,
+          "x187_pub_ms": 2859.0,
+          "x187_pub_count": 103,
+          "x187_elf_ms": 295.0,
+          "bytes": 388368
+        },
+        {
+          "wall_ms": 15489.7,
+          "total_ms": 15479.0,
+          "p86_ms": 5617.0,
+          "pw_ms": 2944.0,
+          "x187_priv_ms": 3069.0,
+          "x187_priv_count": 48,
+          "x187_pub_ms": 2759.0,
+          "x187_pub_count": 103,
+          "x187_elf_ms": 336.0,
+          "bytes": 388368
+        },
+        {
+          "wall_ms": 15432.7,
+          "total_ms": 15421.0,
+          "p86_ms": 5598.0,
+          "pw_ms": 2920.0,
+          "x187_priv_ms": 3039.0,
+          "x187_priv_count": 48,
+          "x187_pub_ms": 2782.0,
+          "x187_pub_count": 103,
+          "x187_elf_ms": 329.0,
+          "bytes": 388368
+        }
+      ]
+    },
+    "priv_speedup": 0.98,
+    "pub_speedup": 1.14,
+    "priv_plus_pub_speedup": 1.05,
+    "total_speedup": 1.02
+  },
+  "zero_regression": {
+    "all_bit_identical": false,
+    "all_ok": true,
+    "families": {
+      "gameoflife": {
+        "kind": "upstream",
+        "base_compile_ms": 12742.4,
+        "o2b_compile_ms": 12285.1,
+        "base_bytes": 62416,
+        "o2b_bytes": 67800,
+        "base_sha256": "c9f9d1853213fc60",
+        "o2b_sha256": "b14d5ef88423ed1d",
+        "bit_identical": false,
+        "base_run_ms": 456.65,
+        "o2b_run_ms": 463.1,
+        "ratio": 1.0141
+      },
+      "nbody": {
+        "kind": "upstream",
+        "base_compile_ms": 9163.2,
+        "o2b_compile_ms": 8569.1,
+        "base_bytes": 61752,
+        "o2b_bytes": 61952,
+        "base_sha256": "78f8fde0462aa3a9",
+        "o2b_sha256": "c58505908816ffa6",
+        "bit_identical": false,
+        "base_run_ms": 94.24,
+        "o2b_run_ms": 94.37,
+        "ratio": 1.0014
+      },
+      "histogram": {
+        "kind": "upstream",
+        "base_compile_ms": 12212.9,
+        "o2b_compile_ms": 13422.9,
+        "base_bytes": 270584,
+        "o2b_bytes": 265600,
+        "base_sha256": "88df33faf4917ffa",
+        "o2b_sha256": "8fd1d2d1e7a4134c",
+        "bit_identical": false,
+        "base_run_ms": 28.32,
+        "o2b_run_ms": 28.37,
+        "ratio": 1.0018
+      },
+      "expression": {
+        "kind": "tuned",
+        "base_compile_ms": 2372.4,
+        "o2b_compile_ms": 2316.9,
+        "base_bytes": 61008,
+        "o2b_bytes": 61064,
+        "base_sha256": "319d1ec0c0b3d24c",
+        "o2b_sha256": "83a0ff973aab819a",
+        "bit_identical": false,
+        "base_run_ms": 3.99,
+        "o2b_run_ms": 3.94,
+        "ratio": 0.9875
+      },
+      "list": {
+        "kind": "tuned",
+        "base_compile_ms": 2412.1,
+        "o2b_compile_ms": 2403.9,
+        "base_bytes": 61776,
+        "o2b_bytes": 61776,
+        "base_sha256": "e0b8c00dd8e4481b",
+        "o2b_sha256": "4acda75082e5a242",
+        "bit_identical": false,
+        "base_run_ms": 3.95,
+        "o2b_run_ms": 3.97,
+        "ratio": 1.0051
+      },
+      "bst": {
+        "kind": "tuned",
+        "base_compile_ms": 3206.0,
+        "o2b_compile_ms": 3261.0,
+        "base_bytes": 75680,
+        "o2b_bytes": 75320,
+        "base_sha256": "f28be6c482f3cc93",
+        "o2b_sha256": "f19e890bb688ff0e",
+        "bit_identical": false,
+        "base_run_ms": 4.12,
+        "o2b_run_ms": 4.23,
+        "ratio": 1.0267
+      },
+      "editdist": {
+        "kind": "tuned",
+        "base_compile_ms": 5534.6,
+        "o2b_compile_ms": 5547.9,
+        "base_bytes": 123336,
+        "o2b_bytes": 122768,
+        "base_sha256": "74cdb151a3c93663",
+        "o2b_sha256": "0353798e6210d68d",
+        "bit_identical": false,
+        "base_run_ms": 4.06,
+        "o2b_run_ms": 4.07,
+        "ratio": 1.0025
+      },
+      "terrain": {
+        "kind": "holdout",
+        "base_compile_ms": 74633.4,
+        "o2b_compile_ms": 50546.1,
+        "base_bytes": 995248,
+        "o2b_bytes": 989552,
+        "base_sha256": "e46df55e8ca50fe0",
+        "o2b_sha256": "ef8942fe3c1d7169",
+        "bit_identical": false,
+        "base_run_s": 12.502,
+        "o2b_run_s": 12.956,
+        "ratio": 1.0363
+      }
+    }
+  },
+  "qualification_o2": {
+    "native64_o2": {
+      "passed": 57,
+      "total": 64,
+      "wall_s": 167.4
+    },
+    "observer_o2": {
+      "mode": "x86-object",
+      "passed": 15,
+      "total": 15,
+      "violations": 0,
+      "wall_s": 25.92,
+      "probes": [
+        {
+          "probe": "map_set_del_get",
+          "cpu": 2,
+          "compile_ms": 25874.6,
+          "obj_bytes": 490752,
+          "compile_ok": true,
+          "runs": [
+            {
+              "obs_mode": "normal",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "4008146603",
+              "expected": "4008146603",
+              "stderr": ""
+            },
+            {
+              "obs_mode": "cap-no8",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "4008146603",
+              "expected": "4008146603",
+              "stderr": ""
+            },
+            {
+              "obs_mode": "all-hot",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "4008146603",
+              "expected": "4008146603",
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "probe": "bst_zipper",
+          "cpu": 3,
+          "compile_ms": 3823.1,
+          "obj_bytes": 68376,
+          "compile_ok": true,
+          "runs": [
+            {
+              "obs_mode": "normal",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "382401606",
+              "expected": "382401606",
+              "stderr": ""
+            },
+            {
+              "obs_mode": "cap-no8",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "382401606",
+              "expected": "382401606",
+              "stderr": ""
+            },
+            {
+              "obs_mode": "all-hot",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "382401606",
+              "expected": "382401606",
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "probe": "flow_native",
+          "cpu": 3,
+          "compile_ms": 3976.2,
+          "obj_bytes": 57944,
+          "compile_ok": true,
+          "runs": [
+            {
+              "obs_mode": "normal",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "49913905",
+              "expected": "49913905",
+              "stderr": ""
+            },
+            {
+              "obs_mode": "cap-no8",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "49913905",
+              "expected": "49913905",
+              "stderr": ""
+            },
+            {
+              "obs_mode": "all-hot",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "49913905",
+              "expected": "49913905",
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "probe": "perceus_reuse",
+          "cpu": 3,
+          "compile_ms": 3043.8,
+          "obj_bytes": 33616,
+          "compile_ok": true,
+          "runs": [
+            {
+              "obs_mode": "normal",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "3114",
+              "expected": "3114",
+              "stderr": ""
+            },
+            {
+              "obs_mode": "cap-no8",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "3114",
+              "expected": "3114",
+              "stderr": ""
+            },
+            {
+              "obs_mode": "all-hot",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "3114",
+              "expected": "3114",
+              "stderr": ""
+            }
+          ]
+        },
+        {
+          "probe": "listapp_arrlist",
+          "cpu": 3,
+          "compile_ms": 3403.2,
+          "obj_bytes": 46496,
+          "compile_ok": true,
+          "runs": [
+            {
+              "obs_mode": "normal",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "3905793128",
+              "expected": "3905793128",
+              "stderr": ""
+            },
+            {
+              "obs_mode": "cap-no8",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "3905793128",
+              "expected": "3905793128",
+              "stderr": ""
+            },
+            {
+              "obs_mode": "all-hot",
+              "status": "pass",
+              "rc": 0,
+              "stdout": "3905793128",
+              "expected": "3905793128",
+              "stderr": ""
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

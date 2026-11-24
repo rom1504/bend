@@ -1,0 +1,113 @@
+{
+  "task": "O2-E",
+  "title": "x187_priv / x187_pub Core Codegen (x181 / x185 / x187_encode) Speedup & -O2 --nodrop",
+  "cpus": [6, 7],
+  "base_source": "selfhost/build/agy/wave16_unified/compiler.bend",
+  "patch_script": "research/agy/o2_50s/o2e_priv_core/apply_o2e.py",
+  "check_only_errors": 0,
+  "idempotent": true,
+  "patches": [
+    "O2E-1a: Direct-to-X187Build fast movq imm64 + o2e_push_mem32 + ALU/test/shift helpers (100% bit-identical to x187_encode)",
+    "O2E-1b: w7c_fast_inst_c fast-path dispatch for top-15 opcodes (movq, movl, movabsq, cmpq, cmpl, addq, addl, subq, subl, andq, andl, orq, orl, xorq, xorl, testq, testl, shrq, shlq, shrl, shll, leaq, call, ret, pushq, popq)",
+    "O2E-2a: Gate x186_private_body on o2e_has_mem_body(body) (100% bit-identical when no mem ops)",
+    "O2E-2b: Gate x191_loop_reads + x191_loop_scores in x191_joint_reads on x190_register_loop(body) (100% bit-identical)",
+    "O2E-2c: Single-pass liveness in x190_j_selected when !x190_register_loop(body), skipping 2-pass x190_l_fixed (100% bit-identical)",
+    "O2E-2d: Lightweight x185_transient_frame(x181_register_frame(...)) for trivial non-loop functions (sz < 8) in x190_joint_frame",
+    "O2E-3: Route cold public segments (weak cross-module stubs & is_direct==True cold thunk wrappers) in w8_tr_emit_pub -O2 mode through s10c_pub_emit_fast while keeping all is_direct==False strong public segments on full -O2"
+  ],
+  "n7_o2_nodrop_measurements": {
+    "compiler_slice_o2": {
+      "normal": {
+        "wall_ms": 5273.6,
+        "rss_mib": 104.2,
+        "read_ms": 26,
+        "prep_ms": 146,
+        "p86_plan_ms": 1921,
+        "x198pw_plan_ms": 969,
+        "x187_priv_ms": 840,
+        "priv_count": 48,
+        "x187_pub_ms": 1085,
+        "pub_count": 103,
+        "x187_elf_ms": 176
+      },
+      "nodrop": {
+        "wall_ms": 4764.3,
+        "rss_mib": 104.4,
+        "read_ms": 19,
+        "prep_ms": 130,
+        "p86_plan_ms": 1864,
+        "x198pw_plan_ms": 951,
+        "x187_priv_ms": 584,
+        "priv_count": 48,
+        "x187_pub_ms": 951,
+        "pub_count": 103,
+        "x187_elf_ms": 171
+      },
+      "speedup_wall": 1.11,
+      "speedup_priv": 1.44,
+      "speedup_pub": 1.14
+    },
+    "m09_zero_o2": {
+      "normal": {
+        "wall_ms": 137451.9,
+        "rss_mib": 468.5,
+        "read_ms": 27,
+        "prep_ms": 135,
+        "p86_plan_ms": 6260,
+        "x198pw_plan_ms": 40692,
+        "x187_priv_ms": 3208,
+        "priv_count": 451,
+        "x187_pub_ms": 84657,
+        "pub_count": 5090,
+        "x187_elf_ms": 2287
+      },
+      "nodrop": {
+        "wall_ms": 90035.3,
+        "rss_mib": 451.7,
+        "read_ms": 20,
+        "prep_ms": 135,
+        "p86_plan_ms": 7297,
+        "x198pw_plan_ms": 26656,
+        "x187_priv_ms": 1955,
+        "priv_count": 451,
+        "x187_pub_ms": 51772,
+        "pub_count": 5090,
+        "x187_elf_ms": 2032
+      },
+      "speedup_wall": 1.53,
+      "speedup_priv": 1.64,
+      "speedup_pub": 1.64,
+      "rss_delta_mib": -16.8
+    }
+  },
+  "ab_n8_o0_minted_compiler_slice_o2": {
+    "note": "Apples-to-apples A/B using -O0-minted n8_base vs n8_o2e (m07+m08+m09 patched), 3-run median on CPU 7",
+    "n8_base_o2": {
+      "wall_ms": 15943.0,
+      "x187_priv_ms": 2963.0,
+      "x187_pub_ms": 3291.0,
+      "rss_mib": 109.1,
+      "output": "34"
+    },
+    "n8_o2e_o2": {
+      "wall_ms": 15755.8,
+      "x187_priv_ms": 3011.0,
+      "x187_pub_ms": 3092.0,
+      "rss_mib": 109.7,
+      "output": "34"
+    },
+    "n8_o2e_o2_nodrop": {
+      "wall_ms": 14877.1,
+      "x187_priv_ms": 2383.0,
+      "x187_pub_ms": 2745.0,
+      "rss_mib": 109.9,
+      "output": "34"
+    }
+  },
+  "key_diagnostic_findings": [
+    "On m09_zero.bend -O2 (n7_o2), x187_pub (5,090 public segments) takes 84,657 ms (61.6% of total 137.45 s compile time), while x187_priv (451 private fns) takes 3,208 ms (2.3%) and x198pw_plan takes 40,692 ms (29.6%).",
+    "--nodrop on m09 -O2 cuts compile time by 1.53x (137.45 s -> 90.04 s, -47.4 s) AND lowers peak RSS (468.5 -> 451.7 MiB): x187_priv 1.64x (3,208 -> 1,955 ms), x187_pub 1.64x (84,657 -> 51,772 ms), x198pw_plan 1.53x (40,692 -> 26,656 ms).",
+    "On compiler_slice.bend -O2, O2E-1 + O2E-2 + O2E-3 gave modest gain (~6% on pub, ~0% on priv before O2-B gates w4_post_select/w7_post_select_full), confirming that in un-gated x187_priv the dominant cost is inside w4_post_select/w7_post_select_full (O2-B) and the 12-pass x198n_normalized_h IR pipeline rather than x187_encode or x190_l_fixed alone.",
+    "Because n7_o2's Wave 16 K=10 S10-H mint omits 10 cross-module p113d stubs (including w7_br_871) and has the Wave 16 x198o_progress_get -O2 hang (owned by O2-C), full 64/64 -O2 + 15/15 Observer -O2 + 8-benchmark verification must be re-run after composing O2-E with O2-C's Wave 16 fix."
+  ]
+}

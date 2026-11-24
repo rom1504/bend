@@ -1,0 +1,88 @@
+{
+  "campaign": "O2-50s",
+  "agent": "O2-A",
+  "title": "Per-Function --trace-slow -O2 Profiler & O(N^2)/O(2^k) Bomb Analysis",
+  "timestamp_utc": "2026-11-24T00:41:00Z",
+  "baseline_profiler": {
+    "binary": "/tmp/agy_o2a/n7_ts_o0 (k10_wave16 compiled via n7_o2 x86-module-fast with >=100ms per-fn x187_priv timer in w8_tr_emit_priv)",
+    "note": "Compiled at -O0 (~3x slower than -O2 native n6_o2); relative per-function ratios and top-20 rankings reflect true -O2 x187_priv hotspots.",
+    "compiler_slice_o2_ms": 15726,
+    "compiler_slice_o2_x187_priv_ms": 2789
+  },
+  "m04_top20_baseline": {
+    "fns_ge_100ms_captured": 65,
+    "sum_slow_ms": 93946,
+    "top10_ms": 57485,
+    "top10_pct": 61.2,
+    "top20_ms": 74691,
+    "top20_pct": 79.5,
+    "first_500_x187_priv_ms": 43217,
+    "top20": [
+      {"rank": 1, "fn": "$product.agy_sh_emit_streq", "ms": 12812},
+      {"rank": 2, "fn": "$direct.w5c3_sig1", "ms": 11295},
+      {"rank": 3, "fn": "$direct.agy_map_set_machine", "ms": 7058},
+      {"rank": 4, "fn": "$direct.w7_br_661", "ms": 5343},
+      {"rank": 5, "fn": "$direct.agy_map_del_machine", "ms": 4639},
+      {"rank": 6, "fn": "$direct.w7_br_660", "ms": 3601},
+      {"rank": 7, "fn": "$product.p88_roots_done", "ms": 3486},
+      {"rank": 8, "fn": "$direct.agy_map_get_machine", "ms": 3358},
+      {"rank": 9, "fn": "$direct.agy_sh_match_lit3", "ms": 3062},
+      {"rank": 10, "fn": "$direct.p130m_roots_ready", "ms": 2831},
+      {"rank": 11, "fn": "$direct.agy_map_emit_wrap", "ms": 2283},
+      {"rank": 12, "fn": "$product.agy_sh_emit_tageq", "ms": 2214},
+      {"rank": 13, "fn": "$direct.w5c3_sig3", "ms": 1891},
+      {"rank": 14, "fn": "$product.w5c2_bs_1", "ms": 1813},
+      {"rank": 15, "fn": "$direct.w7_br_865", "ms": 1809},
+      {"rank": 16, "fn": "$direct.w11_p186ch_take_r3", "ms": 1753},
+      {"rank": 17, "fn": "$product.p130m_roots_ready", "ms": 1519},
+      {"rank": 18, "fn": "$product.agy_map_emit_wrap", "ms": 1484},
+      {"rank": 19, "fn": "$direct.w7_br_351", "ms": 1257},
+      {"rank": 20, "fn": "$direct.w7_br_659", "ms": 1183}
+    ]
+  },
+  "m00_top20_baseline": {
+    "fns_ge_100ms_captured": 63,
+    "sum_slow_ms": 110555,
+    "top10_ms": 88980,
+    "top10_pct": 80.5,
+    "top20_ms": 100234,
+    "top20_pct": 90.7,
+    "top3_pct": 60.5,
+    "top20": [
+      {"rank": 1, "fn": "w13c_sink_tpl_bytes", "ms": 25475},
+      {"rank": 2, "fn": "w13c_keep_tpl_bytes", "ms": 22654},
+      {"rank": 3, "fn": "$direct.p147z_runtime_111", "ms": 18730},
+      {"rank": 4, "fn": "$direct.w13e_sa_branch_live", "ms": 4740},
+      {"rank": 5, "fn": "$direct.x198n_selected", "ms": 4103},
+      {"rank": 6, "fn": "$direct.p147z_runtime_118", "ms": 3908},
+      {"rank": 7, "fn": "$product.x187_e_error", "ms": 2624},
+      {"rank": 8, "fn": "$direct.p112r_head_buffer", "ms": 2512},
+      {"rank": 9, "fn": "$direct.w4c_guard_ule", "ms": 2445},
+      {"rank": 10, "fn": "$product.p113d_call_target", "ms": 1789},
+      {"rank": 11, "fn": "x187_e_error", "ms": 1743},
+      {"rank": 12, "fn": "$direct.s10f_rev8", "ms": 1514},
+      {"rank": 13, "fn": "$direct.p112s_datum", "ms": 1310},
+      {"rank": 14, "fn": "$direct.w14a_args_dst_eq", "ms": 1288},
+      {"rank": 15, "fn": "$direct.w5c3_finish_if", "ms": 1161},
+      {"rank": 16, "fn": "$direct.p112s_descriptor_item", "ms": 1033},
+      {"rank": 17, "fn": "$direct.agy_p124r_hview", "ms": 911},
+      {"rank": 18, "fn": "$direct.p113ai_first", "ms": 886},
+      {"rank": 19, "fn": "$direct.p118xs_prefix", "ms": 718},
+      {"rank": 20, "fn": "$direct.agy_has_mem_scalars", "ms": 690}
+    ]
+  },
+  "o2a_patches": {
+    "script": "research/agy/o2_50s/o2a_trace_slow/apply_o2a.py",
+    "check_only_errors": 0,
+    "compiler_slice_o2_out": 34,
+    "measured_effects": {
+      "s10f_rev8_before_ms": 1514,
+      "s10f_rev8_after_ms": 252,
+      "s10f_rev8_speedup": 6.01,
+      "m04_first_500_priv_before_ms": 43217,
+      "m04_first_500_priv_after_ms": 39496,
+      "m04_first_500_priv_speedup": 1.094,
+      "w13c_sink_tpl_bytes_discovery": "Skipping x185_dead_body/x185_copy_function increased w13c_sink_tpl_bytes from 25,475 ms -> 35,450 ms (+39%), proving the dominant O(N^2) bomb on large constructor-list functions (w13c_sink_tpl_bytes, agy_sh_emit_streq, agy_map_*_machine) is DOWNSTREAM of x191_ordinary and OUTSIDE w7_post_select_full (in x190_stmts / x191_frame_forward_when / w4_peep_list / w10f_output_fn / x187_encode)."
+    }
+  }
+}

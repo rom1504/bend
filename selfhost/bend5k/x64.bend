@@ -336,6 +336,28 @@ def x64_emit_switch_arms(arms: List<&2, IrSwitchArm>, acc: List<&2, X64Inst>) ->
 def x64_emit_epilogue(acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
   x64_emit(XRet{}, x64_emit(XPop{5}, x64_emit(XMovRR{4, 5}, acc)))
 
+def x64_tail_to_scratch(args: List<&2, U32>, +idx: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  match args:
+    case Nil{}: acc
+    case Con{r, t}:
+      a1 = x64_emit(XStore{4, U32.mul(idx, 8), 0}, x64_load_vreg(0, r, acc))
+      x64_tail_to_scratch(t, U32.add(idx, 1), a1)
+
+def x64_tail_from_scratch(n: Nat, +idx: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  match n:
+    case 0n: acc
+    case 1n+p:
+      a1 = x64_store_vreg(idx, 0, x64_emit(XLoad{0, 4, U32.mul(idx, 8)}, acc))
+      x64_tail_from_scratch(p, U32.add(idx, 1), a1)
+
+def x64_emit_tail(use_jmp: Bool, fn_map: Map<&2, String>, fid: U32, +args: List<&2, U32>, n: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  match use_jmp:
+    case False{}: x64_emit_epilogue(x64_emit_call(x64_lookup_fn_sym(fn_map, fid), args, acc))
+    case True{}:
+      a1 = x64_tail_to_scratch(args, 0, acc)
+      a2 = x64_tail_from_scratch(U32.to_nat(n), 0, a1)
+      x64_emit(XJmp{0}, a2)
+
 def x64_emit_term(fn_map: Map<&2, String>, term: IrTerm, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
   match term:
     case TJmp{target}: x64_emit(XJmp{target}, acc)
@@ -345,8 +367,9 @@ def x64_emit_term(fn_map: Map<&2, String>, term: IrTerm, acc: List<&2, X64Inst>)
     case TSwitch{scrut, arms, def_blk}:
       x64_emit(XJmp{def_blk}, x64_emit_switch_arms(arms, x64_load_vreg(0, scrut, acc)))
     case TRet{val}: x64_emit_epilogue(x64_load_vreg(0, val, acc))
-    case TTailCall{fid, args}:
-      x64_emit_epilogue(x64_emit_call(x64_lookup_fn_sym(fn_map, fid), args, acc))
+    case TTailCall{fid, +args}:
+      +n = b5k_u32_list_len(args)
+      x64_emit_tail(U32.is_le(n, 16), fn_map, fid, args, n, acc)
     case TFail{code}:
       x64_emit_epilogue(x64_emit(XCallSym{"p111_rt_fail"}, x64_emit(XMovRI32{6, code}, x64_load_state(7, acc))))
 

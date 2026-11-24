@@ -1,0 +1,243 @@
+{
+  "loc": {
+    "check.bend": 674,
+    "core.bend": 444,
+    "elf.bend": 560,
+    "lex.bend": 346,
+    "lower.bend": 1203,
+    "main.bend": 145,
+    "parse.bend": 799,
+    "x64.bend": 461
+  },
+  "total_loc": 4632,
+  "s0_obj_bytes": 9930560,
+  "s0_bin_bytes": 8331200,
+  "s0_to_s1": {
+    "wall_s": 1.824,
+    "max_rss_mib": 115.9,
+    "obj_bytes": 2851088,
+    "bin_bytes": 2216736
+  },
+  "s1_to_s2": {
+    "wall_s": 2.673,
+    "max_rss_mib": 734.6,
+    "obj_bytes": 2851088
+  },
+  "sha256_s1_o": "7963a2d2436f13af7b8ed454ea208dde613e6571318e64fcfc7e8f79c9b6689c",
+  "sha256_s2_o": "7963a2d2436f13af7b8ed454ea208dde613e6571318e64fcfc7e8f79c9b6689c",
+  "bit_identical": true,
+  "fids": 709,
+  "cids": 390,
+  "elf_audit": {
+    "pass": true,
+    "sections": {
+      ".text": {
+        "name": ".text",
+        "type": "PROGBITS",
+        "size": 2033810,
+        "flags": "AX"
+      },
+      ".rodata": {
+        "name": ".rodata",
+        "type": "PROGBITS",
+        "size": 5432,
+        "flags": "A"
+      },
+      ".data": {
+        "name": ".data",
+        "type": "PROGBITS",
+        "size": 9376,
+        "flags": "WA"
+      }
+    },
+    "symbols": {
+      "p111_cid_arity": {
+        "size": 390,
+        "section": ".rodata",
+        "flags": "A"
+      },
+      "p111_show_desc": {
+        "size": 0,
+        "section": ".rodata",
+        "flags": "A"
+      },
+      "p111_cid_hot": {
+        "size": 390,
+        "section": ".data",
+        "flags": "WA"
+      },
+      "p111_segments": {
+        "size": 5672,
+        "section": ".data",
+        "flags": "WA"
+      },
+      "p111_cid_names": {
+        "size": 3120,
+        "section": ".data",
+        "flags": "WA"
+      },
+      "p111_program": {
+        "size": 192,
+        "section": ".data",
+        "flags": "WA"
+      }
+    }
+  },
+  "qual_s0": {
+    "passed": 64,
+    "total": 64,
+    "cats": {
+      "pass_exec": 61,
+      "pass_reject": 3
+    }
+  },
+  "qual_s1": {
+    "passed": 64,
+    "total": 64,
+    "cats": {
+      "pass_exec": 61,
+      "pass_reject": 3
+    }
+  },
+  "observer_s1": {
+    "passed": 15,
+    "total": 15,
+    "rows": [
+      {
+        "probe": "map_set_del_get",
+        "mode": "normal",
+        "pass": true,
+        "rc": 0,
+        "got": "4008146603",
+        "exp": "4008146603",
+        "err": ""
+      },
+      {
+        "probe": "map_set_del_get",
+        "mode": "cap-no8",
+        "pass": true,
+        "rc": 0,
+        "got": "4008146603",
+        "exp": "4008146603",
+        "err": ""
+      },
+      {
+        "probe": "map_set_del_get",
+        "mode": "all-hot",
+        "pass": true,
+        "rc": 0,
+        "got": "4008146603",
+        "exp": "4008146603",
+        "err": ""
+      },
+      {
+        "probe": "bst_zipper",
+        "mode": "normal",
+        "pass": true,
+        "rc": 0,
+        "got": "382401606",
+        "exp": "382401606",
+        "err": ""
+      },
+      {
+        "probe": "bst_zipper",
+        "mode": "cap-no8",
+        "pass": true,
+        "rc": 0,
+        "got": "382401606",
+        "exp": "382401606",
+        "err": ""
+      },
+      {
+        "probe": "bst_zipper",
+        "mode": "all-hot",
+        "pass": true,
+        "rc": 0,
+        "got": "382401606",
+        "exp": "382401606",
+        "err": ""
+      },
+      {
+        "probe": "flow_native",
+        "mode": "normal",
+        "pass": true,
+        "rc": 0,
+        "got": "49913905",
+        "exp": "49913905",
+        "err": ""
+      },
+      {
+        "probe": "flow_native",
+        "mode": "cap-no8",
+        "pass": true,
+        "rc": 0,
+        "got": "49913905",
+        "exp": "49913905",
+        "err": ""
+      },
+      {
+        "probe": "flow_native",
+        "mode": "all-hot",
+        "pass": true,
+        "rc": 0,
+        "got": "49913905",
+        "exp": "49913905",
+        "err": ""
+      },
+      {
+        "probe": "perceus_reuse",
+        "mode": "normal",
+        "pass": true,
+        "rc": 0,
+        "got": "3114",
+        "exp": "3114",
+        "err": ""
+      },
+      {
+        "probe": "perceus_reuse",
+        "mode": "cap-no8",
+        "pass": true,
+        "rc": 0,
+        "got": "3114",
+        "exp": "3114",
+        "err": ""
+      },
+      {
+        "probe": "perceus_reuse",
+        "mode": "all-hot",
+        "pass": true,
+        "rc": 0,
+        "got": "3114",
+        "exp": "3114",
+        "err": ""
+      },
+      {
+        "probe": "listapp_arrlist",
+        "mode": "normal",
+        "pass": true,
+        "rc": 0,
+        "got": "3905793128",
+        "exp": "3905793128",
+        "err": ""
+      },
+      {
+        "probe": "listapp_arrlist",
+        "mode": "cap-no8",
+        "pass": true,
+        "rc": 0,
+        "got": "3905793128",
+        "exp": "3905793128",
+        "err": ""
+      },
+      {
+        "probe": "listapp_arrlist",
+        "mode": "all-hot",
+        "pass": true,
+        "rc": 0,
+        "got": "3905793128",
+        "exp": "3905793128",
+        "err": ""
+      }
+    ]
+  }
+}

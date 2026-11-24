@@ -50,8 +50,8 @@ type ExprRes is Data:
 type ChkWork is Data:
   WExpr{env: List<&2, VarBind>, goal: Maybe<&2, String>, e: Expr}
   WExprs{env: List<&2, VarBind>, es: List<&2, Expr>}
-  WCases{env: List<&2, VarBind>, goal: Maybe<&2, String>, sdups: List<&2, Bool>, cs: List<&2, Case>}
-  WCasePat{env: List<&2, VarBind>, goal: Maybe<&2, String>, pr: PatRes, body: Expr}
+  WCases{env: List<&2, VarBind>, goal: Maybe<&2, String>, sdups: List<&2, Bool>, ssyms: List<&2, U32>, cs: List<&2, Case>}
+  WCasePat{env: List<&2, VarBind>, goal: Maybe<&2, String>, pr: PatRes, wstrip: List<&2, VarBind>, body: Expr}
   WLetPat{env: List<&2, VarBind>, goal: Maybe<&2, String>, pr: PatRes, val: Expr, body: Expr}
   WStmts{env: List<&2, VarBind>, goal: Maybe<&2, String>, ss: List<&2, Stmt>}
   WStmtPat{env: List<&2, VarBind>, goal: Maybe<&2, String>, pr: PatRes, val: Expr, rest: List<&2, Stmt>}
@@ -87,7 +87,7 @@ def b5k_chk_is_base_prefix(+name: String) -> Bool:
     "U32.", "F32.", "Char.", "String.", "Bool.", "Nat.", "List.", "Maybe.",
     "Pair.", "Array.", "IO.", "Map.", "File.", "NativeHost.", "Either.",
     "Result.", "Sigma.", "Cmp.", "Word.", "Poll.", "Tool.", "Event.",
-    "Image.", "App.", "Socket.", "Listener.", "Window.", "Audio.", "Chan.", "Base."
+    "Image.", "App.", "Socket.", "Listener.", "Window.", "Audio.", "Chan.", "Set.", "Base."
   ], name)
 
 def b5k_chk_is_base_type(+name: String) -> Bool:
@@ -388,6 +388,24 @@ def b5k_chk_scruts_dups(+env: List<&2, VarBind>, es: List<&2, Expr>) -> List<&2,
     case Nil{}: Nil{}
     case Con{h, t}: Con{b5k_chk_expr_is_dup(env, h), b5k_chk_scruts_dups(env, t)}
 
+def b5k_chk_expr_sym(e: Expr) -> U32:
+  match e:
+    case EVar{sym}: U32.add(sym, 1)
+    case _: 0
+
+def b5k_chk_scruts_syms(es: List<&2, Expr>) -> List<&2, U32>:
+  match es:
+    case Nil{}: Nil{}
+    case Con{h, t}: Con{b5k_chk_expr_sym(h), b5k_chk_scruts_syms(t)}
+
+def b5k_chk_wild_strip(ps: List<&2, Pat>, ss: List<&2, U32>) -> List<&2, VarBind>:
+  match ps ss:
+    case Con{PWild{}, pt} Con{+s, st}:
+      +rest = b5k_chk_wild_strip(pt, st)
+      Bool.pick(List<&2, VarBind>, U32.is_zero(s), rest, Con{VarBind{U32.sub(s, 1), False{}}, rest})
+    case Con{_, pt} Con{_, st}: b5k_chk_wild_strip(pt, st)
+    case _ _: Nil{}
+
 def b5k_chk_pat_guard(ok: Bool, fn_name: String, res: PatRes) -> PatRes:
   match ok:
     case False{}: PatErr{b5k_chk_ctor_err(fn_name)}
@@ -517,13 +535,14 @@ def b5k_chk_work(+fuel: Nat, +ctx: CheckCtx, +fn_name: String, w: ChkWork) -> Ex
     case 1n+f WExprs{_, Nil{}}: ExprOk{Nil{}}
     case 1n+f WExprs{+env, Con{h, t}}:
       b5k_chk_pair_fin(fn_name, b5k_chk_work(f, ctx, fn_name, WExpr{env, None{}, h}), b5k_chk_work(f, ctx, fn_name, WExprs{env, t}))
-    case 1n+f WCases{_, _, _, Nil{}}: ExprOk{Nil{}}
-    case 1n+f WCases{+env, +goal, +sdups, Con{Case{pats, body}, rest}}:
+    case 1n+f WCases{_, _, _, _, Nil{}}: ExprOk{Nil{}}
+    case 1n+f WCases{+env, +goal, +sdups, +ssyms, Con{Case{+pats, body}, rest}}:
       pr = b5k_chk_pats(U32.to_nat(256), ctx, fn_name, b5k_chk_zip_pats(pats, sdups, False{}), Nil{})
-      b5k_chk_branch_fin(b5k_chk_work(f, ctx, fn_name, WCasePat{env, goal, pr, body}), b5k_chk_work(f, ctx, fn_name, WCases{env, goal, sdups, rest}))
-    case 1n+f WCasePat{_, _, PatErr{err}, _}: ExprErr{err}
-    case 1n+f WCasePat{env, goal, PatOk{+bs}, body}:
-      b5k_chk_strip_res(bs, b5k_chk_work(f, ctx, fn_name, WExpr{b5k_list_app(VarBind, bs, env), goal, body}))
+      ws = b5k_chk_wild_strip(pats, ssyms)
+      b5k_chk_branch_fin(b5k_chk_work(f, ctx, fn_name, WCasePat{env, goal, pr, ws, body}), b5k_chk_work(f, ctx, fn_name, WCases{env, goal, sdups, ssyms, rest}))
+    case 1n+f WCasePat{_, _, PatErr{err}, _, _}: ExprErr{err}
+    case 1n+f WCasePat{env, goal, PatOk{+bs}, ws, body}:
+      b5k_chk_strip_res(b5k_list_app(VarBind, bs, ws), b5k_chk_work(f, ctx, fn_name, WExpr{b5k_list_app(VarBind, bs, env), goal, body}))
     case 1n+f WLetPat{_, _, PatErr{err}, _, _}: ExprErr{err}
     case 1n+f WLetPat{+env, goal, PatOk{+bs}, val, body}:
       r1 = b5k_chk_work(f, ctx, fn_name, WExpr{env, None{}, val})
@@ -572,7 +591,8 @@ def b5k_chk_work(+fuel: Nat, +ctx: CheckCtx, +fn_name: String, w: ChkWork) -> Ex
       b5k_chk_work(f, ctx, fn_name, WLetPat{env, goal, b5k_chk_pats(U32.to_nat(256), ctx, fn_name, [PatItem{pat, inh}], Nil{}), val, body})
     case 1n+f WExpr{+env, goal, EMat{+scruts, cases}}:
       sdups = b5k_chk_scruts_dups(env, scruts)
-      b5k_chk_pair_fin(fn_name, b5k_chk_work(f, ctx, fn_name, WExprs{env, scruts}), b5k_chk_work(f, ctx, fn_name, WCases{env, goal, sdups, cases}))
+      ssyms = b5k_chk_scruts_syms(scruts)
+      b5k_chk_pair_fin(fn_name, b5k_chk_work(f, ctx, fn_name, WExprs{env, scruts}), b5k_chk_work(f, ctx, fn_name, WCases{env, goal, sdups, ssyms, cases}))
     case 1n+f WExpr{env, goal, ECtr{sym, +fields}}:
       ok = b5k_chk_ctor_ok(b5k_chk_lookup_ctor(ctx, b5k_chk_sym_name(ctx, sym)), b5k_list_len(Expr, fields), goal)
       b5k_chk_guard_err(ok, b5k_chk_ctor_err(fn_name), b5k_chk_work(f, ctx, fn_name, WExprs{env, fields}))

@@ -720,17 +720,17 @@ def p_apply_k(k: PKont, v: PVal, +st: PState, +ks: List<&2, PKont>) -> PStep:
     case KIfElse{cond, thn} VExpr{els}: SApply{VExpr{EIf{cond, thn, els}}, st, ks}
     case KDoRet{acc} VExpr{val}: SEval{GDo{Con{StRet{val}, acc}}, st, ks}
     case KDoBindPat{+acc} VPat{+pt}:
-      Bool.pick(PStep, p_is_sym(st, 58), SEval{GExpr{}, p_drop(st), Con{KDoPatTy{acc, pt, True{}}, ks}}, SEval{GExpr{}, p_eat_sym(st, 266, "expected '<-'"), Con{KDoBindVal{acc, pt}, ks}})
+      Bool.pick(PStep, p_is_sym(st, 58), SEval{GArrow{False{}}, p_drop(st), Con{KDoPatTy{acc, pt, True{}}, ks}}, SEval{GExpr{}, p_eat_sym(st, 266, "expected '<-'"), Con{KDoBindVal{acc, pt}, ks}})
     case KDoBindVal{acc, pt} VExpr{val}: SEval{GDo{Con{StBind{pt, val}, acc}}, st, ks}
     case KDoLetPat{+acc} VPat{+pt}:
-      Bool.pick(PStep, p_is_sym(st, 58), SEval{GExpr{}, p_drop(st), Con{KDoPatTy{acc, pt, False{}}, ks}}, SEval{GExpr{}, p_eat_sym(st, 61, "expected '='"), Con{KDoLetVal{acc, pt}, ks}})
+      Bool.pick(PStep, p_is_sym(st, 58), SEval{GArrow{False{}}, p_drop(st), Con{KDoPatTy{acc, pt, False{}}, ks}}, SEval{GExpr{}, p_eat_sym(st, 61, "expected '='"), Con{KDoLetVal{acc, pt}, ks}})
     case KDoPatTy{+acc, +pt, is_bind} VExpr{_}:
       Bool.pick(PStep, is_bind, SEval{GExpr{}, p_eat_sym(st, 266, "expected '<-'"), Con{KDoBindVal{acc, pt}, ks}}, SEval{GExpr{}, p_eat_sym(st, 61, "expected '='"), Con{KDoLetVal{acc, pt}, ks}})
     case KDoLetVal{acc, pt} VExpr{val}: SEval{GDo{Con{StLet{pt, val}, acc}}, st, ks}
     case KDoExpr{acc} VExpr{val}: SEval{GDo{Con{StExpr{val}, acc}}, st, ks}
     case KDoWrap{} VStmts{ss}: SApply{VExpr{EDo{ss}}, st, ks}
     case KBlkLetPat{} VPat{+pt}:
-      non_eq = Bool.pick(PStep, p_is_sym(st, 58), SEval{GExpr{}, p_drop(st), Con{KBlkLetTy{pt}, ks}}, SEval{GPat{}, st, Con{KBlkForkP2{pt}, ks}})
+      non_eq = Bool.pick(PStep, p_is_sym(st, 58), SEval{GArrow{False{}}, p_drop(st), Con{KBlkLetTy{pt}, ks}}, SEval{GPat{}, st, Con{KBlkForkP2{pt}, ks}})
       Bool.pick(PStep, p_is_sym(st, 61), SEval{GExpr{}, p_drop(st), Con{KBlkLetVal{pt}, ks}}, non_eq)
     case KBlkLetTy{pt} VExpr{_}: SEval{GExpr{}, p_eat_sym(st, 61, "expected '=' in let"), Con{KBlkLetVal{pt}, ks}}
     case KBlkForkP2{p1} VPat{p2}: SEval{GExpr{}, p_eat_sym(st, 61, "expected '=' in let"), Con{KBlkForkE1{p1, p2}, ks}}

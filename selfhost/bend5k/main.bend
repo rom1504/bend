@@ -22,7 +22,7 @@ def b5k_read_done(path: String, got: File & Result<&1, &1, U32 & String, String>
   (f, res) = got
   match res:
     case Fail{(_, msg)}: b5k_close_err(String, f, "read failed: " ++ path ++ ": " ++ msg)
-    case Done{txt}: b5k_close_ok(String, f, txt)
+    case Done{txt}: b5k_close_ok(String, f, String.reverse(String.reverse(txt)))
 
 def b5k_read_sized(path: String, got: File & Result<&1, &1, U32 & String, U32>) -> IO(B5kIoRes<String>):
   (f, res) = got
@@ -116,11 +116,25 @@ def b5k_dispatch_2(is_chk: Bool, a1: String, a2: String) -> IO(Unit):
     case True{}: b5k_run_driver(True{}, a2, "")
     case False{}: b5k_run_driver(False{}, a1, a2)
 
+def b5k_dispatch_3_end(a1: String, a3: String, rest: List<String>) -> IO(Unit):
+  match rest:
+    case Nil{}: b5k_run_driver(False{}, a1, String.reverse(String.reverse(a3)))
+    case Con{_, _}: b5k_die("usage: bend5k [--check-only] <src.bend> [<base.bend>] <out.o>")
+
+def b5k_dispatch_2_or_3(+a1: String, a2: String, rest: List<String>) -> IO(Unit):
+  match rest:
+    case Nil{}: b5k_dispatch_2(b5k_str_eq(a1, "--check-only"), a1, String.reverse(String.reverse(a2)))
+    case Con{a3, more}: b5k_dispatch_3_end(a1, a3, more)
+
+def b5k_dispatch_tail(a1: String, rest: List<String>) -> IO(Unit):
+  match rest:
+    case Nil{}: b5k_die("usage: bend5k [--check-only] <src.bend> [<base.bend>] <out.o>")
+    case Con{a2, more}: b5k_dispatch_2_or_3(String.reverse(String.reverse(a1)), a2, more)
+
 def b5k_dispatch_args(args: List<String>) -> IO(Unit):
   match args:
-    case Con{+a1, Con{a2, Nil{}}}: b5k_dispatch_2(b5k_str_eq(a1, "--check-only"), a1, a2)
-    case Con{a1, Con{_, Con{a3, Nil{}}}}: b5k_run_driver(False{}, a1, a3)
-    case _: b5k_die("usage: bend5k [--check-only] <src.bend> [<base.bend>] <out.o>")
+    case Con{a1, rest}: b5k_dispatch_tail(a1, rest)
+    case Nil{}: b5k_die("usage: bend5k [--check-only] <src.bend> [<base.bend>] <out.o>")
 
 def b5k_main_args(argv: List<String>) -> IO(Unit):
   match argv:

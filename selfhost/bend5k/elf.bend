@@ -72,11 +72,14 @@ def elf_inst_len(inst: X64Inst) -> U32:
     case XCvt{_, _, _}: 5
     case XExtReloc{_, _, _}: 0
 
-def elf_pass1_go(insts: List<&2, X64Inst>, +off: U32, lbls: Map<&2, U32>) -> Map<&2, U32>:
+def elf_lbl_key(+id: U32) -> U32:
+  Bool.pick(U32, U32.is_ge(id, 2147483648), U32.add(U32.sub(id, 2147483648), 131072), id)
+
+def elf_pass1_go(insts: List<&2, X64Inst>, +off: U32, lbls: RaVec<U32>) -> RaVec<U32>:
   match insts:
     case Nil{}: lbls
     case Con{XLabel{id}, t}:
-      elf_pass1_go(t, off, Map.set(&2, U32, lbls, b5k_u32_to_str(id), off))
+      elf_pass1_go(t, off, ra_vec_set(U32, 9n, elf_lbl_key(id), off, lbls))
     case Con{inst, t}:
       elf_pass1_go(t, U32.add(off, elf_inst_len(inst)), lbls)
 
@@ -129,7 +132,7 @@ def elf_emit_shift(by_cl: Bool, sub: U32, +dst: U32, amt: U32, b: ByteBuf) -> By
     case True{}: bb_emit_u8(bb_emit_u8(bb_emit_u8(b, elf_rex(1, 0, 0, dst)), 211), elf_modrm(3, sub, dst))
     case False{}: bb_emit_u8(bb_emit_u8(bb_emit_u8(bb_emit_u8(b, elf_rex(1, 0, 0, dst)), 193), elf_modrm(3, sub, dst)), amt)
 
-def elf_emit_inst_go(inst: X64Inst, lbls: Map<&2, U32>, b: ByteBuf, rels: List<&2, ElfReloc>, off: U32) -> TextAcc:
+def elf_emit_inst_go(inst: X64Inst, lbls: RaVec<U32>, b: ByteBuf, rels: List<&2, ElfReloc>, off: U32) -> TextAcc:
   match inst:
     case XMovRR{+dst, +src}:
       TextAcc{bb_emit_u8(bb_emit_u8(bb_emit_u8(b, elf_rex(1, src, 0, dst)), 137), elf_modrm(3, src, dst)), rels}
@@ -171,10 +174,10 @@ def elf_emit_inst_go(inst: X64Inst, lbls: Map<&2, U32>, b: ByteBuf, rels: List<&
     case XAddRsp{imm}: TextAcc{bb_emit_u32(bb_emit_u8(bb_emit_u8(bb_emit_u8(b, 72), 129), 196), imm), rels}
     case XLabel{_}: TextAcc{b, rels}
     case XJmp{target}:
-      toff = elf_map_u32(lbls, b5k_u32_to_str(target))
+      toff = ra_vec_get(U32, 9n, 0, elf_lbl_key(target), lbls)
       TextAcc{bb_emit_u32(bb_emit_u8(b, 233), U32.sub(toff, U32.add(off, 5))), rels}
     case XJcc{cc, target}:
-      toff = elf_map_u32(lbls, b5k_u32_to_str(target))
+      toff = ra_vec_get(U32, 9n, 0, elf_lbl_key(target), lbls)
       b1 = bb_emit_u8(bb_emit_u8(b, 15), U32.add(128, U32.and(cc, 15)))
       TextAcc{bb_emit_u32(b1, U32.sub(toff, U32.add(off, 6))), rels}
     case XCallSym{sym}:
@@ -188,11 +191,11 @@ def elf_emit_inst_go(inst: X64Inst, lbls: Map<&2, U32>, b: ByteBuf, rels: List<&
     case XCvt{op, dst, src}: TextAcc{elf_emit_cvt(op, dst, src, b), rels}
     case XExtReloc{_, _, _}: TextAcc{b, rels}
 
-def elf_emit_inst(inst: X64Inst, lbls: Map<&2, U32>, ta: TextAcc) -> TextAcc:
+def elf_emit_inst(inst: X64Inst, lbls: RaVec<U32>, ta: TextAcc) -> TextAcc:
   match ta:
     case TextAcc{+b, rels}: elf_emit_inst_go(inst, lbls, b, rels, bb_len(b))
 
-def elf_emit_insts(insts: List<&2, X64Inst>, +lbls: Map<&2, U32>, ta: TextAcc) -> TextAcc:
+def elf_emit_insts(insts: List<&2, X64Inst>, +lbls: RaVec<U32>, ta: TextAcc) -> TextAcc:
   match insts:
     case Nil{}: ta
     case Con{inst, t}: elf_emit_insts(t, lbls, elf_emit_inst(inst, lbls, ta))
@@ -228,7 +231,7 @@ def elf_encode_fns_go(fns: List<&2, X64Fn>, tr: TextRes) -> TextRes:
     case Con{X64Fn{name, is_glob, +insts}, t} TextRes{b0, rels0, ls, gs}:
       +b1 = elf_pad_to(b0, 16)
       +start = bb_len(b1)
-      lbls = elf_pass1_go(insts, start, Map.new(&2, U32))
+      lbls = elf_pass1_go(insts, start, RVEmpty{})
       tr1 = elf_encode_one(is_glob, name, start, elf_emit_insts(insts, lbls, TextAcc{b1, rels0}), ls, gs)
       elf_encode_fns_go(t, tr1)
 

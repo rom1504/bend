@@ -1,0 +1,209 @@
+{
+  "milestone": "B5K-W3-FINAL",
+  "date": "2026-11-24",
+  "promoted_binary": "selfhost/build/agy/bend5k/bend5k_o2",
+  "fixes": [
+    "Replaced string-keyed Map<&2, U32> reg_map in RegAllocRes / X64Ctx with dense RaVec<U32> (unified with vloc, O(1) ra_vec_get in x64_vreg_loc; removed b5k_xmm_alloc and x64_merge_xmm_*)",
+    "Replaced string-keyed Map<&2, U32> lbls in elf.bend (elf_pass1_go / elf_emit_inst_go) with dense RaVec<U32> (depth 9n, elf_lbl_key mapping synthetic labels >= 2^31 to 131072+i), unlocking 6.466s 1-core -O2 self-hosting"
+  ],
+  "loc": {
+    "core.bend": 444,
+    "lex.bend": 346,
+    "parse.bend": 804,
+    "check.bend": 674,
+    "lower.bend": 1322,
+    "opt.bend": 1078,
+    "regalloc.bend": 947,
+    "x64.bend": 1012,
+    "elf.bend": 564,
+    "main.bend": 184
+  },
+  "total_loc": 7375,
+  "loc_cap": 8500,
+  "type_check": {
+    "pass": true,
+    "wall_s": 2.31,
+    "unsafe_defs": 0
+  },
+  "selfhost": {
+    "s1_o2_to_s2_o2": {
+      "wall_s": 6.579,
+      "max_rss_mib": 1475.7,
+      "obj_bytes": 11986208,
+      "bin_bytes": 11312776
+    },
+    "s2_o2_to_s3_o2": {
+      "wall_s": 6.466,
+      "max_rss_mib": 1475.5,
+      "obj_bytes": 11986208
+    },
+    "s2_o2_to_s3_o0": {
+      "wall_s": 3.208,
+      "max_rss_mib": 632.8,
+      "obj_bytes": 3420416
+    },
+    "sha256_s1_o": "8c713f654d4f60de44c754ac41e6bb6050930c1632bc3512ab180a313b076f16",
+    "sha256_s2_o": "8c713f654d4f60de44c754ac41e6bb6050930c1632bc3512ab180a313b076f16",
+    "sha256_s3_o": "8c713f654d4f60de44c754ac41e6bb6050930c1632bc3512ab180a313b076f16",
+    "bit_identical_s1_s2_s3": true,
+    "fids": 1093,
+    "cids": 439
+  },
+  "qualification": {
+    "total_passed": 158,
+    "total_cases": 158,
+    "native64_o0": {
+      "passed": 64,
+      "total": 64,
+      "wall_s": 9.05,
+      "cats": {
+        "pass_exec": 61,
+        "pass_reject": 3
+      }
+    },
+    "native64_o2": {
+      "passed": 64,
+      "total": 64,
+      "wall_s": 17.18,
+      "cats": {
+        "pass_exec": 61,
+        "pass_reject": 3
+      }
+    },
+    "observer_o0": {
+      "passed": 15,
+      "total": 15,
+      "violations": 0
+    },
+    "observer_o2": {
+      "passed": 15,
+      "total": 15,
+      "violations": 0
+    },
+    "elf_audit": {
+      "pass": true,
+      "fids": 1093,
+      "cids": 439,
+      "sections": {
+        ".text": { "type": "PROGBITS", "flags": "AX", "size": 11091890 },
+        ".rodata": { "type": "PROGBITS", "flags": "A", "size": 7056 },
+        ".data": { "type": "PROGBITS", "flags": "WA", "size": 12888 }
+      },
+      "symbols": {
+        "p111_fid_arity": { "section": ".rodata", "flags": "A", "size": 1093 },
+        "p111_cid_arity": { "section": ".rodata", "flags": "A", "size": 439 },
+        "p111_show_desc": { "section": ".rodata", "flags": "A", "size": 0 },
+        "p111_cid_hot": { "section": ".data", "flags": "WA", "size": 439 },
+        "p111_segments": { "section": ".data", "flags": "WA", "size": 8744 },
+        "p111_cid_names": { "section": ".data", "flags": "WA", "size": 3512 },
+        "p111_program": { "section": ".data", "flags": "WA", "size": 192 }
+      }
+    }
+  },
+  "benchmarks": {
+    "cpu": 7,
+    "runs": 5,
+    "uncontended": true,
+    "opt_flag": "-O2",
+    "baseline_p1_geomean_vs_gcc10": 79.7516,
+    "proxy_geomean_vs_gcc10": 7.746,
+    "sprint_speedup_vs_p1": 10.2958,
+    "all_proxy_ok": true,
+    "proxy_7": [
+      {
+        "name": "expression",
+        "group": "tuned",
+        "checksum_ok": true,
+        "bend5k_ms": 83.7179,
+        "c_gcc10_ms": 6.2494,
+        "ratio_vs_gcc10": 13.3962,
+        "baseline_p1_ratio": 19.8518,
+        "speedup_vs_p1": 1.4819,
+        "compile_ms": 228.02,
+        "obj_bytes": 182176
+      },
+      {
+        "name": "nbody",
+        "group": "upstream",
+        "checksum_ok": true,
+        "bend5k_ms": 119.6403,
+        "c_gcc10_ms": 87.11,
+        "ratio_vs_gcc10": 1.3734,
+        "baseline_p1_ratio": 10.6007,
+        "speedup_vs_p1": 7.7186,
+        "compile_ms": 378.83,
+        "obj_bytes": 152768
+      },
+      {
+        "name": "histogram",
+        "group": "upstream",
+        "checksum_ok": true,
+        "bend5k_ms": 341.746,
+        "c_gcc10_ms": 21.5767,
+        "ratio_vs_gcc10": 15.8387,
+        "baseline_p1_ratio": 2961.6617,
+        "speedup_vs_p1": 186.9889,
+        "compile_ms": 432.23,
+        "obj_bytes": 235248
+      },
+      {
+        "name": "editdist",
+        "group": "tuned",
+        "checksum_ok": true,
+        "bend5k_ms": 150.0,
+        "c_gcc10_ms": 9.8438,
+        "ratio_vs_gcc10": 15.238,
+        "baseline_p1_ratio": 316.6452,
+        "speedup_vs_p1": 20.7799,
+        "compile_ms": 263.65,
+        "obj_bytes": 205584
+      },
+      {
+        "name": "list",
+        "group": "tuned",
+        "checksum_ok": true,
+        "bend5k_ms": 0.9452,
+        "c_gcc10_ms": 0.2637,
+        "ratio_vs_gcc10": 3.5844,
+        "baseline_p1_ratio": 7.7819,
+        "speedup_vs_p1": 2.1710,
+        "compile_ms": 218.3,
+        "obj_bytes": 181904
+      },
+      {
+        "name": "gameoflife",
+        "group": "upstream",
+        "checksum_ok": true,
+        "bend5k_ms": 6964.3813,
+        "c_gcc10_ms": 922.6309,
+        "ratio_vs_gcc10": 7.5484,
+        "baseline_p1_ratio": 18.3455,
+        "speedup_vs_p1": 2.4304,
+        "compile_ms": 295.16,
+        "obj_bytes": 160704
+      },
+      {
+        "name": "bst",
+        "group": "tuned",
+        "checksum_ok": true,
+        "bend5k_ms": 184.5559,
+        "c_gcc10_ms": 13.2522,
+        "ratio_vs_gcc10": 13.9264,
+        "baseline_p1_ratio": 728.3117,
+        "speedup_vs_p1": 52.2972,
+        "compile_ms": 268.14,
+        "obj_bytes": 190256
+      }
+    ],
+    "holdouts": [
+      {
+        "name": "terrain",
+        "status": "stopped_at_deadline_during_5run_loop",
+        "compiled_and_linked": true,
+        "obj_bytes": 229584,
+        "bin_bytes": 310696,
+        "note": "Compiled and linked cleanly (terrain.o 229,584 B, terrain.bin 310,696 B); 5-run holdout loop reached 17:44 UTC wrap deadline while running"
+      }
+    ]
+  }
+}

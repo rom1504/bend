@@ -24,14 +24,14 @@ def X64_R8()  -> U32: 8
 def X64_R9()  -> U32: 9
 
 type X64Ctx is Data:
-  X64Ctx{is_o2: Bool, reg_map: Map<&2, U32>, spill_base: U32, state_disp: U32, frame: U32, used_callee: List<&2, U32>, heap_off: U32}
+  X64Ctx{is_o2: Bool, reg_map: RaVec<U32>, vd: Nat, spill_base: U32, state_disp: U32, frame: U32, used_callee: List<&2, U32>, heap_off: U32}
 
-def x64_mk_ctx(is_o2: Bool, rm: Map<&2, U32>, sb: U32, sd: U32, frame: U32, ce: List<&2, U32>, ho: U32) -> X64Ctx:
-  X64Ctx{is_o2, rm, sb, sd, frame, ce, ho}
+def x64_mk_ctx(is_o2: Bool, rm: RaVec<U32>, vd: Nat, sb: U32, sd: U32, frame: U32, ce: List<&2, U32>, ho: U32) -> X64Ctx:
+  X64Ctx{is_o2, rm, vd, sb, sd, frame, ce, ho}
 
 def x64_ctx_heap_off(ctx: X64Ctx) -> U32:
   match ctx:
-    case X64Ctx{_, _, _, _, _, _, ho}: ho
+    case X64Ctx{_, _, _, _, _, _, _, ho}: ho
 
 def x64_heap_off(statics: List<&2, U32>) -> U32:
   n = b5k_u32_list_len(statics)
@@ -78,10 +78,6 @@ def x64_snd_str(p: Map<&2, String> & String) -> String:
   (_, sym) = p
   sym
 
-def x64_snd_u32(p: Map<&2, U32> & U32) -> U32:
-  (_, v) = p
-  v
-
 def x64_lookup_fn_sym(fn_map: Map<&2, String>, +fid: U32) -> String:
   x64_snd_str(Map.get(String, x64_fn_sym(b5k_u32_to_str(fid)), fn_map, b5k_u32_to_str(fid)))
 
@@ -95,16 +91,16 @@ def x64_opt_mov(cond: Bool, d: U32, s: U32, acc: List<&2, X64Inst>) -> List<&2, 
 
 def x64_vreg_loc(ctx: X64Ctx, v: U32) -> U32:
   match ctx:
-    case X64Ctx{False{}, _, _, _, _, _, _}: U32.add(100, v)
-    case X64Ctx{True{}, rm, _, _, _, _, _}: x64_snd_u32(Map.get(U32, 0, rm, b5k_u32_to_str(v)))
+    case X64Ctx{False{}, _, _, _, _, _, _, _}: U32.add(100, v)
+    case X64Ctx{True{}, rm, vd, _, _, _, _, _}: ra_vec_get(U32, vd, 0, v, rm)
 
 def x64_spill_disp(ctx: X64Ctx, loc: U32) -> U32:
   match ctx:
-    case X64Ctx{_, _, sb, _, _, _, _}: U32.sub(0, U32.add(sb, U32.mul(U32.sub(loc, 100), 8)))
+    case X64Ctx{_, _, _, sb, _, _, _, _}: U32.sub(0, U32.add(sb, U32.mul(U32.sub(loc, 100), 8)))
 
 def x64_is_o2(ctx: X64Ctx) -> Bool:
   match ctx:
-    case X64Ctx{o2, _, _, _, _, _, _}: o2
+    case X64Ctx{o2, _, _, _, _, _, _, _}: o2
 
 def x64_is_gpr(loc: U32) -> Bool:
   U32.is_lt(loc, 20)
@@ -193,7 +189,7 @@ def x64_emit_copy(+ctx: X64Ctx, dst: U32, +src: U32, acc: List<&2, X64Inst>) -> 
 
 def x64_load_state(ctx: X64Ctx, reg: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
   match ctx:
-    case X64Ctx{_, _, _, sd, _, _, _}: Con{XLoad{reg, 5, sd}, acc}
+    case X64Ctx{_, _, _, _, sd, _, _, _}: Con{XLoad{reg, 5, sd}, acc}
 
 def x64_store_scratch_go(+ctx: X64Ctx, vs: List<&2, U32>, +idx: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
   match vs:
@@ -775,8 +771,8 @@ def x64_emit_epilogue(acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
 
 def x64_emit_epilogue_ctx(ctx: X64Ctx, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
   match ctx:
-    case X64Ctx{_, _, _, _, _, Nil{}, _}: x64_emit_epilogue(acc)
-    case X64Ctx{_, _, _, _, frame, ce, _}:
+    case X64Ctx{_, _, _, _, _, _, Nil{}, _}: x64_emit_epilogue(acc)
+    case X64Ctx{_, _, _, _, _, frame, ce, _}:
       a1 = x64_pop_list(b5k_list_rev(U32, ce), x64_emit(XAddRsp{frame}, acc))
       x64_emit(XRet{}, x64_emit(XPop{5}, a1))
 
@@ -913,14 +909,14 @@ def x64_lower_fn(fn_map: Map<&2, String>, heap_off: U32, f: IrFn) -> X64Fn:
     case IrFn{_, name, +arity, +nregs, _, _, _, blocks}:
       scr = Bool.pick(U32, U32.is_gt(arity, 16), 272, 144)
       +frame = x64_align16(U32.add(scr, U32.mul(U32.max(nregs, arity), 8)))
-      +ctx = x64_mk_ctx(False{}, Map.new(&2, U32), 16, x64_state_disp(), frame, Nil{}, heap_off)
+      +ctx = x64_mk_ctx(False{}, RVEmpty{}, 0n, 16, x64_state_disp(), frame, Nil{}, heap_off)
       a0 = x64_emit(XStore{5, x64_state_disp(), 7}, x64_emit(XSubRsp{frame}, x64_emit(XMovRR{5, 4}, x64_emit(XPush{5}, Nil{}))))
       a1 = x64_save_params_go(ctx, U32.to_nat(arity), 0, a0)
       X64Fn{x64_fn_sym(name), True{}, b5k_list_rev(X64Inst, x64_acc_insts(x64_emit_blocks(ctx, fn_map, blocks, X64Acc{a1, 2147483648})))}
 
 def x64_lower_fn_o2_go(fn_map: Map<&2, String>, heap_off: U32, name: String, +arity: U32, blocks: List<&2, IrBlock>, ra: RegAllocRes) -> X64Fn:
   match ra:
-    case RegAllocRes{rm, +ce, sc}:
+    case RegAllocRes{rm, vd, +ce, sc}:
       +k = b5k_u32_list_len(ce)
       +state_off = U32.mul(U32.add(k, 1), 8)
       +sd = U32.sub(0, state_off)
@@ -928,34 +924,20 @@ def x64_lower_fn_o2_go(fn_map: Map<&2, String>, heap_off: U32, name: String, +ar
       scr = Bool.pick(U32, U32.is_gt(arity, 16), 256, 128)
       tot = x64_align16(U32.add(U32.add(state_off, scr), U32.mul(sc, 8)))
       +frame = U32.sub(tot, U32.mul(k, 8))
-      +ctx = x64_mk_ctx(True{}, rm, sb, sd, frame, ce, heap_off)
+      +ctx = x64_mk_ctx(True{}, rm, vd, sb, sd, frame, ce, heap_off)
       a0 = x64_push_list(ce, x64_emit(XMovRR{5, 4}, x64_emit(XPush{5}, Nil{})))
       a1 = x64_emit(XStore{5, sd, 7}, x64_emit(XSubRsp{frame}, a0))
       a2 = x64_opt_mov(U32.is_ge(arity, 5), 7, 9, x64_opt_mov(U32.is_ge(arity, 4), 0, 8, a1))
       a3 = x64_save_params_go(ctx, U32.to_nat(arity), 0, a2)
       X64Fn{x64_fn_sym(name), True{}, b5k_list_rev(X64Inst, x64_acc_insts(x64_emit_blocks(ctx, fn_map, blocks, X64Acc{a3, 2147483648})))}
 
-def x64_merge_xmm_one(is_x: Bool, k: String, xr: U32, rm: Map<&2, U32>) -> Map<&2, U32>:
-  match is_x:
-    case True{}: Map.set(&2, U32, rm, k, U32.add(20, xr))
-    case False{}: rm
-
-def x64_merge_xmm_go(n: Nat, +v: U32, +xm: Map<&2, U32>, rm: Map<&2, U32>) -> Map<&2, U32>:
-  match n:
-    case 0n: rm
-    case 1n+p:
-      +k = b5k_u32_to_str(v)
-      +xr = x64_snd_u32(Map.get(U32, 0, xm, k))
-      x64_merge_xmm_go(p, U32.add(v, 1), xm, x64_merge_xmm_one(U32.is_ge(xr, 2), k, xr, rm))
-
-def x64_lower_fn_o2_wrap(fn_map: Map<&2, String>, heap_off: U32, ra: RegAllocRes, xm: Map<&2, U32>, f: IrFn) -> X64Fn:
-  match ra f:
-    case RegAllocRes{rm, ce, sc} IrFn{_, name, +arity, +nregs, _, _, _, blocks}:
-      rm2 = x64_merge_xmm_go(U32.to_nat(U32.max(nregs, arity)), 0, xm, rm)
-      x64_lower_fn_o2_go(fn_map, heap_off, name, arity, blocks, RegAllocRes{rm2, ce, sc})
+def x64_lower_fn_o2_wrap(fn_map: Map<&2, String>, heap_off: U32, ra: RegAllocRes, f: IrFn) -> X64Fn:
+  match f:
+    case IrFn{_, name, arity, _, _, _, _, blocks}:
+      x64_lower_fn_o2_go(fn_map, heap_off, name, arity, blocks, ra)
 
 def x64_lower_fn_o2(fn_map: Map<&2, String>, heap_off: U32, +f: IrFn) -> X64Fn:
-  x64_lower_fn_o2_wrap(fn_map, heap_off, b5k_regalloc(f), b5k_xmm_alloc(f), f)
+  x64_lower_fn_o2_wrap(fn_map, heap_off, b5k_regalloc(f), f)
 
 def x64_seg_push_extra(n: Nat, +idx: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
   match n:

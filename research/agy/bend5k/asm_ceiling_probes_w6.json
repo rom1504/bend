@@ -1,0 +1,177 @@
+{
+  "schema": "agy.bend5k.asm_ceiling_probes.v6",
+  "host_pin": "taskset -c 7",
+  "compiler_baseline": "selfhost/build/agy/bend5k/bend5k_o2 -O2",
+  "c_baseline": "gcc-10 -O2",
+  "probes": [
+    {
+      "id": "1",
+      "benchmark": "bench/runtime/editdist/main.bend (scaled K=11n; 2^11=2048 pairs of 256-symbol Levenshtein DP over 4 flat Array<U32> inside Dp{a,b,prev,cur})",
+      "checksum": "2203349698",
+      "baseline_ms": 1329.12,
+      "c_ms": 325.24,
+      "baseline_vs_c": 4.087,
+      "raw_baseline_ms": [1334.88, 1327.71, 1329.12, 1329.96, 1328.7],
+      "raw_c_ms": [325.24, 324.41, 324.45, 325.32, 326.65],
+      "variants": [
+        {
+          "name": "a_hoist_cur_unspill_cmov",
+          "ms": 524.75,
+          "vs_c": 1.613,
+          "speedup_vs_base": 2.533,
+          "pct_saved": 60.5,
+          "raw_ms": [523.44, 525.41, 524.75, 524.74, 525.5],
+          "note": "SMOKING GUN #1: Patched $direct.row ONLY while keeping ALL 4 array loads + 1 store + `& mask` checks! Previously, `b` and `prev` were hoisted, but `cur` (mutated linearly by `cur[j+1] <- v`) was NOT hoisted, so its tag/size/pointer was re-decoded TWICE per DP cell (134M cells x 2 = 268M redundant array decodes!), `Array.get(b, j)` emitted a spurious U32 RC-tag `keep` check, 9 `[rbp-]` stack spills ran every cell, and the first `umin` was a branch instead of `cmova`. Hoisting linear `Array.swap` (`cur`) base+mask, dropping the spurious U32 RC-keep, unspilling into registers, and emitting `cmova` for both `umin`s cuts 60.5% (2.533x -> 1.613x C)!"
+        },
+        {
+          "name": "b_plus_scalar_carry_drop_mask",
+          "ms": 358.4,
+          "vs_c": 1.102,
+          "speedup_vs_base": 3.708,
+          "pct_saved": 73.0,
+          "raw_ms": [359.17, 358.4, 366.37, 350.29, 349.76],
+          "note": "Also drops provably-in-bounds `& mask` (`0 <= j < 256`, len 256/512) and performs loop-carried redundant-load elimination (scalar-carrying `diag = prev[j]` from previous iteration's `prev[j+1]` and `left = cur[j]` from previous iteration's stored `v = cur[j+1]`, matching gcc-10 -O2). Cuts 73.0% of total runtime (3.708x speedup -> 1.102x C, eliminating the >30s timeout at K=15n: ~21.3s -> ~5.7s!)."
+        }
+      ],
+      "verdict": "STRONG GO (hoist linear Array.swap base+mask in TCO loops + drop spurious RC-keep on scalar Array<U32>.get + unspill + cmov for umin: 2.533x -> 1.613x C; + in-bounds mask elim & loop-carried load forwarding: 3.708x -> 1.102x C)",
+      "estimated_loc": "~130 LOC (~45 LOC hoist linear Array.swap base+mask in TCO loops, ~25 LOC drop scalar Array<U32>.get RC-keep, ~60 LOC TCO loop unspill + cmov + optional load forwarding)"
+    },
+    {
+      "id": "2",
+      "benchmark": "bench/runtime/mandelbrot/main.bend (scaled hd=16n, its=51n; 2^16 x 64 = 4,194,304 pixels x 2 passes, signed 8.8 fixed-point escape-time render)",
+      "checksum": "1987531637",
+      "baseline_ms": 1831.36,
+      "c_ms": 723.39,
+      "baseline_vs_c": 2.532,
+      "raw_baseline_ms": [1836.69, 1829.08, 1834.66, 1831.36, 1830.59],
+      "raw_c_ms": [719.09, 723.92, 720.01, 723.39, 728.12],
+      "variants": [
+        {
+          "name": "a1_sar8_cmove_branchless",
+          "ms": 1886.18,
+          "vs_c": 2.607,
+          "speedup_vs_base": 0.971,
+          "pct_saved": -3.0,
+          "raw_ms": [1891.27, 1886.18, 1884.72, 1883.22, 1887.41],
+          "note": "NEGATIVE CONTROL (IMPORTANT!): Folds all 3 `asr8` 9-insn sequences to 1-insn `sar $8` and eliminates all spills, BUT blindly if-converts `sel(e2, nzr, zr)`/`sel(e2, nzi, zi)` into branchless `cmove`, forcing `2*zr*zi` multiply+shift to run on all 51 iterations even after escape (and adding a loop-carried dependency). Regresses by -3.0% (0.971x) vs baseline's skip-branch!"
+        },
+        {
+          "name": "a2_sar8_keep_skip_branch",
+          "ms": 792.71,
+          "vs_c": 1.096,
+          "speedup_vs_base": 2.310,
+          "pct_saved": 56.7,
+          "raw_ms": [792.71, 793.27, 791.68, 791.92, 794.3],
+          "note": "SMOKING GUN #1: Same `asr8 -> sar $8` peephole (27 insns -> 3 insns per iter!) + zero-frame/zero-spill regalloc while KEEPING the `e2 != 0` skip-branch! Cuts 56.7% of total runtime (2.310x speedup -> 1.096x C, closing 91% of the gap to gcc-10 -O2 without changing loop trip count!)."
+        },
+        {
+          "name": "b_monotonic_escape_early_exit",
+          "ms": 259.19,
+          "vs_c": 0.358,
+          "speedup_vs_base": 7.066,
+          "pct_saved": 85.8,
+          "raw_ms": [258.65, 259.94, 259.19, 258.92, 259.29],
+          "note": "CRUSHES gcc-10 -O2 BY 2.79x (0.358x C; 7.066x speedup, 85.8% saved)! SMOKING GUN #2: In `$direct.mit`, once `e2 = esc | (r2 + i2 > 1024)` becomes 1, `esc` is monotonic-1, `zr`/`zi` freeze, and `it` never changes again, so returning `it` immediately on `r2 + i2 > 1024` is 100% semantically identical to running the remaining dead iterations."
+        }
+      ],
+      "verdict": "STRONG GO (`asr8 -> sar $k` peephole + zero-spill regalloc keeping skip-branch: 2.310x -> 1.096x C; + monotonic-guard early-exit in self-TCO loops: 7.066x -> 0.358x C, beats gcc-10 -O2 by 2.79x; do NOT if-convert guarded heavy branches into cmov!)",
+      "estimated_loc": "~95 LOC (~35 LOC `(v >> k) | sel(v >> 31, 0, mask) -> sar $k` peephole + unspill, ~60 LOC monotonic-sticky-flag early-exit in self-TCO loops)"
+    },
+    {
+      "id": "3",
+      "benchmark": "bench/runtime/terrain/main.bend (scaled size=13n, epass=5n; 2^13=8192 64x64 heightmap tiles x 5 Gauss-Seidel relaxation sweeps)",
+      "checksum": "419010560",
+      "baseline_ms": 1911.93,
+      "c_ms": 998.35,
+      "baseline_vs_c": 1.915,
+      "raw_baseline_ms": [1915.86, 2105.68, 1904.33, 1906.88, 1911.93],
+      "raw_c_ms": [998.35, 1048.15, 991.71, 992.72, 998.49],
+      "variants": [
+        {
+          "name": "a_erode_clean_unspill_licm",
+          "ms": 1258.7,
+          "vs_c": 1.261,
+          "speedup_vs_base": 1.519,
+          "pct_saved": 34.2,
+          "raw_ms": [1258.32, 1263.67, 1256.9, 1258.7, 1259.63],
+          "note": "Patched `$direct.erode` ONLY (4-cell unrolled Gauss-Seidel sweep, keeping all 20 loads + 4 stores + `& mask` per quad): (1) hoist all 24 redundant `test %r10; je` array null-checks out of the loop, (2) hoist loop-invariant `p * 0x9e3779b1` out of the loop, (3) eliminate dead old-value `mov (%rdi), %rdx` loads on `Array.swap` when `old` is unused, (4) eliminate 20+ `[rbp-]` stack spills per quad, (5) CSE `zc = i >> 6` / `up_off` / `dn_off` across the 4 aligned lanes (`i % 4 == 0`) and fold interior `xc > 0`/`xc < 63`. Cuts 34.2% of total runtime (1.519x -> 1.261x C)."
+        },
+        {
+          "name": "b_erode_drop_mask",
+          "ms": 1199.82,
+          "vs_c": 1.202,
+          "speedup_vs_base": 1.594,
+          "pct_saved": 37.2,
+          "raw_ms": [1197.91, 1199.82, 1198.0, 1202.99, 1213.08],
+          "note": "Also drops the 24 redundant `and %r11, %idx` array masks per quad (since `0 <= k < 4096 == array_len` with clamped edge offsets). Cuts 37.2% total (1.594x -> 1.202x C); remaining ~200 ms gap vs C is in `$direct.fill` and `$direct.hist`."
+        }
+      ],
+      "verdict": "STRONG GO (hoist array null-checks + LICM pure exprs + dead Array.swap old-load elim + unspill + aligned-quad CSE in TCO loops: 1.519x -> 1.261x C; + in-bounds mask elim: 1.594x -> 1.202x C)",
+      "estimated_loc": "~120 LOC (~30 LOC hoist loop-invariant array null-checks [shared with editdist], ~25 LOC dead Array.swap old-value load elim, ~35 LOC pure-expr LICM, ~30 LOC unspill/mask-elim)"
+    },
+    {
+      "id": "4",
+      "benchmark": "bench/runtime/nbody/main.bend (scaled sy=14n, st=300n; 2^17=131,072 chaotic 3-body F32 systems x 300 symplectic Euler steps = 39.3M steps)",
+      "checksum": "1155112709",
+      "baseline_ms": 1307.4,
+      "c_ms": 1314.49,
+      "baseline_vs_c": 0.995,
+      "raw_baseline_ms": [1313.47, 1307.4, 1302.06, 1302.69, 1313.71],
+      "raw_c_ms": [1314.49, 1388.75, 1357.26, 1310.03, 1311.28],
+      "variants": [
+        {
+          "name": "a_loop3_xmm_resident_no_movd",
+          "ms": 1293.8,
+          "vs_c": 0.984,
+          "speedup_vs_base": 1.011,
+          "pct_saved": 1.0,
+          "raw_ms": [1293.53, 1293.8, 1293.56, 1299.43, 1299.28],
+          "note": "Baseline `$direct.loop3` ALREADY beats gcc-10 -O2 (0.995x C)! Even after keeping all 9 positions in `xmm0..xmm8`, hoisting `dt=0.001f`, packing 9 velocities + 3 masses into contiguous 4-byte float slots, and eliminating ALL 32+ GPR<->XMM `movd` round-trips + 18 `movq` spills per step (1.25B wasted `movd`s!), runtime improves by only 1.0% (1.011x) because OoO execution completely hides the `movd`/spill overhead behind the 3x (`sqrtss` + `divss`) divider latency/throughput."
+        },
+        {
+          "name": "b_loop3_interleaved_3pair_sqrt_div",
+          "ms": 1246.15,
+          "vs_c": 0.948,
+          "speedup_vs_base": 1.049,
+          "pct_saved": 4.7,
+          "raw_ms": [1246.15, 1245.86, 1243.41, 1248.64, 1248.25],
+          "note": "Computing `da, db, dc` first and issuing all 3 `sqrtss` and 3 `divss` back-to-back (exact IEEE-754 bit-identical) improves only 4.7% (1.049x -> 0.948x C). Confirms scalar SSE2 `nbody` is fundamentally `sqrtss`/`divss` throughput-bound; only 4-wide SIMD (`sqrtps`/`divps` across 4 systems) could move it meaningfully."
+        }
+      ],
+      "verdict": "NO-GO (already 0.995x C; eliminating 32+ movd/step + 18 spills saves only 1.0%, and interleaving 3-pair sqrtss/divss saves only 4.7% because scalar SSE2 nbody is divider/sqrt throughput-bound — do not spend compiler LOC here)",
+      "estimated_loc": "N/A (NO-GO)"
+    },
+    {
+      "id": "5",
+      "benchmark": "bench/runtime/gameoflife/main.bend (scaled size=14n, gens=32n; 2^14 x 64 = 1,048,576 4x4-toroidal Conway soups x 32 generations)",
+      "checksum": "3634539616",
+      "baseline_ms": 2052.64,
+      "c_ms": 3688.6,
+      "baseline_vs_c": 0.556,
+      "raw_baseline_ms": [2054.29, 2130.83, 2029.92, 2028.17, 2052.64],
+      "raw_c_ms": [4052.62, 3681.96, 3727.97, 3688.6, 3688.44],
+      "variants": [
+        {
+          "name": "a_run_cse_bitextract_branchless",
+          "ms": 1184.79,
+          "vs_c": 0.321,
+          "speedup_vs_base": 1.732,
+          "pct_saved": 42.3,
+          "raw_ms": [1184.49, 1185.37, 1182.66, 1184.79, 1185.54],
+          "note": "Baseline ALREADY beats gcc-10 -O2 by 1.80x (0.556x C) because bend5k inlines `step` and all 16 constant-pos `step_cell`s into `$direct.run`, constant-folding neighbor bit indices. However, `$direct.run` re-extracts each of the 16 bits 8 times (128 `shr; and` ops), executes 16 unpredictable `next_cell` branches per generation, and spills all 16 cell results to `[rbp-]`. Pure general compiler opts — CSE of repeated `(board >> k) & 1` extracts, branchless Bool-match if-conversion `((n | alive) == 3)`, and single-reg accumulation — cut 42.3% (1.732x -> 0.321x C, 3.11x faster than gcc-10 -O2)!"
+        },
+        {
+          "name": "b_run_popcnt_mask_branchless",
+          "ms": 615.93,
+          "vs_c": 0.167,
+          "speedup_vs_base": 3.333,
+          "pct_saved": 70.0,
+          "raw_ms": [617.49, 615.04, 616.01, 615.51, 615.93],
+          "note": "BEATS gcc-10 -O2 BY 6.0x (0.167x C; 3.333x speedup, 70.0% saved)! Recognizing sums of distinct single-bit extracts `sum((board >> k_i) & 1)` as `popcnt(board & const_mask)` + branchless `((n | alive) == 3)` eliminates all stack traffic and collapses each cell's 8-neighbor sum into 2 instructions (`and $mask; popcnt`)."
+        }
+      ],
+      "verdict": "STRONG GO (CSE of repeated bit-extracts + branchless small-Bool-match if-conversion + zero-spill accumulator: 1.732x -> 0.321x C; + sum-of-distinct-bit-extracts -> popcnt(x & mask) idiom: 3.333x -> 0.167x C, 6.0x faster than gcc-10 -O2!)",
+      "estimated_loc": "~105 LOC (~40 LOC small pure Bool-match branchless if-conversion, ~35 LOC local bit-extract CSE, ~30 LOC sum-of-bit-extracts -> popcnt(x & mask) peephole)"
+    }
+  ]
+}

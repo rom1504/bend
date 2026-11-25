@@ -1188,8 +1188,44 @@ def x64_arr_set_go(+skip_old: Bool, +ctx: X64Ctx, dst: U32, dsts: List<&2, U32>,
   c1 = x64_emit(XJmp{l_done}, x64_opt_inval_hoist(ho, ctx, dp, x64_arr_slow_one(ctx, "p111_rt_op", dsts, 73, args, x64_emit(XLabel{l_slow}, cold))))
   X64Acc{a4, U32.add(lbl, 3), c1}
 
-def x64_emit_arrop_o2(+ctx: X64Ctx, +aop: U32, +dsts: List<&2, U32>, +args: List<&2, U32>, +lbl: U32, acc: List<&2, X64Inst>, cold: List<&2, X64Inst>) -> X64Acc:
+def x64_arr_new_fill(c: U32, nw: U32, +l_loop: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  match c:
+    case 0: x64_emit(XStore{7, 0, 0}, acc)
+    case 1: x64_emit(XStore{7, 8, 0}, x64_emit(XStore{7, 0, 0}, acc))
+    case 2: x64_emit(XStore{7, 24, 0}, x64_emit(XStore{7, 16, 0}, x64_emit(XStore{7, 8, 0}, x64_emit(XStore{7, 0, 0}, acc))))
+    case _:
+      f0 = x64_emit(XLabel{l_loop}, x64_emit(XMovRI32{1, U32.shrn(nw, 3n)}, acc))
+      f1 = x64_emit(XStore{7, 24, 0}, x64_emit(XStore{7, 16, 0}, x64_emit(XStore{7, 8, 0}, x64_emit(XStore{7, 0, 0}, f0))))
+      f2 = x64_emit(XStore{7, 56, 0}, x64_emit(XStore{7, 48, 0}, x64_emit(XStore{7, 40, 0}, x64_emit(XStore{7, 32, 0}, f1))))
+      x64_emit(XJcc{5, l_loop}, x64_emit(XAluRI{1, 1, 1}, x64_emit(XAluRI{0, 7, 64}, f2)))
+
+def x64_arr_new_o2(ok: Bool, +ctx: X64Ctx, dst: U32, dsts: List<&2, U32>, args: List<&2, U32>, +c: U32, +vv: U32, +lbl: U32, acc: List<&2, X64Inst>, cold: List<&2, X64Inst>) -> X64Acc:
+  match ok:
+    case False{}: X64Acc{x64_arr_slow_one(ctx, "p111_rt_op", dsts, 71, args, acc), lbl, cold}
+    case True{}:
+      +coff = U32.mul(c, 8)
+      +loff = U32.add(256, coff)
+      +nw = U32.shln(1, U32.to_nat(c))
+      +hi = U32.or(100663296, U32.shln(c, 8n))
+      +l_slow = lbl
+      +l_done = U32.add(lbl, 1)
+      +l_loop = U32.add(lbl, 2)
+      a1 = x64_arr_chk_loaded(x64_is_scalar(ctx, vv), 0, l_slow, x64_load_vreg(ctx, 0, vv, acc))
+      a2 = x64_emit(XJcc{4, l_slow}, x64_emit(XTestRR{2, 2}, x64_emit(XLoad{2, 6, coff}, x64_emit(XLoad{6, 7, 8}, x64_load_state(ctx, 7, a1)))))
+      a3 = x64_mem_idx_ptr(ctx, a2)
+      a4 = x64_emit(XStore{6, coff, 1}, x64_emit(XLoad{1, 7, 0}, a3))
+      a5 = x64_emit(XStore{6, loff, 1}, x64_emit(XAluRI{1, 1, nw}, x64_emit(XLoad{1, 6, loff}, a4)))
+      a6 = x64_arr_new_fill(c, nw, l_loop, a5)
+      a7 = x64_emit(XLabel{l_done}, x64_store_vreg(ctx, dst, 0, x64_emit(XAluRR{6, 0, 2}, x64_emit(XMovRI64{0, 0, hi}, a6))))
+      c1 = x64_emit(XJmp{l_done}, x64_inval_cs_hoist(ctx, x64_arr_slow_one(ctx, "p111_rt_op", dsts, 71, args, x64_emit(XLabel{l_slow}, cold))))
+      X64Acc{a7, U32.add(lbl, 3), c1}
+
+def x64_emit_arrop_o2(+ctx: X64Ctx, consts: RaVec<U32>, +aop: U32, +dsts: List<&2, U32>, +args: List<&2, U32>, +lbl: U32, acc: List<&2, X64Inst>, cold: List<&2, X64Inst>) -> X64Acc:
   match aop dsts args:
+    case 71 Con{dst, _} Con{vd, Con{vv, _}}:
+      +dc = x64_const_val(ctx, consts, vd)
+      +c = U32.sub(dc, 1)
+      x64_arr_new_o2(Bool.and(U32.is_ne(dc, 0), U32.is_le(c, 12)), ctx, dst, dsts, args, c, vv, lbl, acc, cold)
     case 72 Con{+da, Con{+dv, _}} Con{+a, Con{+i, _}}:
       +l_slow = lbl
       +l_unsh = U32.add(lbl, 1)
@@ -1238,9 +1274,9 @@ def x64_emit_arrop_o2(+ctx: X64Ctx, +aop: U32, +dsts: List<&2, U32>, +args: List
       X64Acc{a3, U32.add(lbl, 3), c1}
     case _ _ _: X64Acc{x64_arr_slow(ctx, dsts, aop, args, acc), lbl, cold}
 
-def x64_emit_arrop(is_o2: Bool, +ctx: X64Ctx, dsts: List<&2, U32>, aop: U32, args: List<&2, U32>, lbl: U32, acc: List<&2, X64Inst>, cold: List<&2, X64Inst>) -> X64Acc:
+def x64_emit_arrop(is_o2: Bool, +ctx: X64Ctx, consts: RaVec<U32>, dsts: List<&2, U32>, aop: U32, args: List<&2, U32>, lbl: U32, acc: List<&2, X64Inst>, cold: List<&2, X64Inst>) -> X64Acc:
   match is_o2:
-    case True{}: x64_emit_arrop_o2(ctx, aop, dsts, args, lbl, acc, cold)
+    case True{}: x64_emit_arrop_o2(ctx, consts, aop, dsts, args, lbl, acc, cold)
     case False{}: X64Acc{x64_arr_slow(ctx, dsts, aop, args, acc), lbl, cold}
 
 def x64_clr_const(vd: Nat, v: U32, cs: RaVec<U32>) -> RaVec<U32>:
@@ -1367,7 +1403,7 @@ def x64_emit_op(+ctx: X64Ctx, fn_map: Map<&2, String>, skip_st: Bool, consts: Ra
     case IStatic{dst, idx}:
       a1 = x64_emit(XLoad{0, 0, U32.mul(idx, 8)}, x64_emit(XLeaRip{0, "p111_static_image"}, acc))
       X64Acc{x64_store_vreg(ctx, dst, 0, a1), lbl, cold}
-    case IArrOp{dsts, aop, args}: x64_emit_arrop(x64_is_o2(ctx), ctx, dsts, aop, args, lbl, acc, cold)
+    case IArrOp{dsts, aop, args}: x64_emit_arrop(x64_is_o2(ctx), ctx, consts, dsts, aop, args, lbl, acc, cold)
     case IAlloca{dst, _}: X64Acc{x64_store_vreg(ctx, dst, 4, acc), lbl, cold}
     case ILoad{dst, base, off}:
       X64Acc{x64_store_vreg(ctx, dst, 0, x64_emit(XLoad{0, 0, U32.mul(off, 8)}, x64_load_vreg(ctx, 0, base, acc))), lbl, cold}
@@ -1704,7 +1740,7 @@ def x64_op_uses_mem(op: IrOp) -> Bool:
     case ITake{Con{_, _}, _}: True{}
     case IKeep{_, _}: True{}
     case ISink{_}: True{}
-    case IArrOp{_, +aop, _}: Bool.or(Bool.and(U32.is_ge(aop, 72), U32.is_le(aop, 74)), Bool.and(U32.is_ge(aop, 78), U32.is_le(aop, 79)))
+    case IArrOp{_, +aop, _}: Bool.or(Bool.and(U32.is_ge(aop, 71), U32.is_le(aop, 74)), Bool.and(U32.is_ge(aop, 78), U32.is_le(aop, 79)))
     case _: False{}
 
 def x64_ops_use_mem(ops: List<&2, IrOp>) -> Bool:
@@ -1867,26 +1903,44 @@ def x64_nu_tc(+vd: Nat, args: List<&2, U32>, +idx: U32, +nu: RaVec<Bool>) -> RaV
   match args:
     case Nil{}: nu
     case Con{a, t}: x64_nu_tc(vd, t, U32.add(idx, 1), x64_hi_set_if(ra_vec_get(Bool, vd, False{}, idx, nu), vd, a, nu))
-def x64_nu_ops(+vd: Nat, +arity: U32, +ao: RaVec<U32>, ops: List<&2, IrOp>, +nu: RaVec<Bool>) -> RaVec<Bool>:
+def x64_nu_bad_op(+vd: Nat, op: IrOp, bad: RaVec<Bool>) -> RaVec<Bool>:
+  match op:
+    case ITag{_, s}: x64_hi_set(vd, s, bad)
+    case ITake{_, s}: x64_hi_set(vd, s, bad)
+    case ICallDirect{_, _, args}: x64_hi_sets(vd, args, bad)
+    case ICallClosure{_, _, caps}: x64_hi_sets(vd, caps, bad)
+    case IApply{_, c, a}: x64_hi_set(vd, a, x64_hi_set(vd, c, bad))
+    case _: bad
+def x64_nu_bad_ops(+vd: Nat, ops: List<&2, IrOp>, bad: RaVec<Bool>) -> RaVec<Bool>:
+  match ops:
+    case Nil{}: bad
+    case Con{op, t}: x64_nu_bad_ops(vd, t, x64_nu_bad_op(vd, op, bad))
+def x64_nu_bad_blks(+vd: Nat, blks: List<&2, IrBlock>, bad: RaVec<Bool>) -> RaVec<Bool>:
+  match blks:
+    case Nil{}: bad
+    case Con{IrBlock{_, ops, _}, t}: x64_nu_bad_blks(vd, t, x64_nu_bad_ops(vd, ops, bad))
+def x64_nu_ops(+vd: Nat, +arity: U32, +ao: RaVec<U32>, +bad: RaVec<Bool>, ops: List<&2, IrOp>, +nu: RaVec<Bool>) -> RaVec<Bool>:
   match ops:
     case Nil{}: nu
-    case Con{IBin{_, _, l, r}, t}: x64_nu_ops(vd, arity, ao, t, x64_nu_set(vd, arity, ao, r, x64_nu_set(vd, arity, ao, l, nu)))
-    case Con{IUn{_, _, s}, t}: x64_nu_ops(vd, arity, ao, t, x64_nu_set(vd, arity, ao, s, nu))
-    case Con{ICmp{_, cop, l, r}, t}: x64_nu_ops(vd, arity, ao, t, Bool.pick(RaVec<Bool>, U32.is_ge(cop, 2), x64_nu_set(vd, arity, ao, r, x64_nu_set(vd, arity, ao, l, nu)), nu))
-    case Con{_, t}: x64_nu_ops(vd, arity, ao, t, nu)
+    case Con{IBin{_, bop, +l, +r}, t}:
+      ok = Bool.or(U32.is_ne(bop, 0), Bool.not(Bool.or(ra_vec_get(Bool, vd, False{}, l, bad), ra_vec_get(Bool, vd, False{}, r, bad))))
+      x64_nu_ops(vd, arity, ao, bad, t, Bool.pick(RaVec<Bool>, ok, x64_nu_set(vd, arity, ao, r, x64_nu_set(vd, arity, ao, l, nu)), nu))
+    case Con{IUn{_, _, s}, t}: x64_nu_ops(vd, arity, ao, bad, t, x64_nu_set(vd, arity, ao, s, nu))
+    case Con{ICmp{_, cop, l, r}, t}: x64_nu_ops(vd, arity, ao, bad, t, Bool.pick(RaVec<Bool>, U32.is_ge(cop, 2), x64_nu_set(vd, arity, ao, r, x64_nu_set(vd, arity, ao, l, nu)), nu))
+    case Con{_, t}: x64_nu_ops(vd, arity, ao, bad, t, nu)
 def x64_nu_term(+vd: Nat, +arity: U32, fn_fid: U32, ao: RaVec<U32>, term: IrTerm, +nu: RaVec<Bool>) -> RaVec<Bool>:
   match term:
     case TBr{c, _, _}: x64_nu_set(vd, arity, ao, c, nu)
     case TTailCall{fid, args}: Bool.pick(RaVec<Bool>, U32.is_eq(fid, fn_fid), x64_nu_tc(vd, args, 0, nu), nu)
     case _: nu
-def x64_nu_blks(+vd: Nat, +arity: U32, +fn_fid: U32, +ao: RaVec<U32>, blks: List<&2, IrBlock>, nu: RaVec<Bool>) -> RaVec<Bool>:
+def x64_nu_blks(+vd: Nat, +arity: U32, +fn_fid: U32, +ao: RaVec<U32>, +bad: RaVec<Bool>, blks: List<&2, IrBlock>, nu: RaVec<Bool>) -> RaVec<Bool>:
   match blks:
     case Nil{}: nu
-    case Con{IrBlock{_, ops, term}, t}: x64_nu_blks(vd, arity, fn_fid, ao, t, x64_nu_term(vd, arity, fn_fid, ao, term, x64_nu_ops(vd, arity, ao, ops, nu)))
-def x64_run_nu(do_n: Bool, vd: Nat, arity: U32, fn_fid: U32, ao: RaVec<U32>, blks: List<&2, IrBlock>) -> RaVec<Bool>:
+    case Con{IrBlock{_, ops, term}, t}: x64_nu_blks(vd, arity, fn_fid, ao, bad, t, x64_nu_term(vd, arity, fn_fid, ao, term, x64_nu_ops(vd, arity, ao, bad, ops, nu)))
+def x64_run_nu(do_n: Bool, +vd: Nat, arity: U32, fn_fid: U32, ao: RaVec<U32>, +blks: List<&2, IrBlock>) -> RaVec<Bool>:
   match do_n:
     case False{}: RVEmpty{}
-    case True{}: x64_nu_blks(vd, arity, fn_fid, ao, blks, RVEmpty{})
+    case True{}: x64_nu_blks(vd, arity, fn_fid, ao, x64_nu_bad_blks(vd, blks, RVEmpty{}), blks, RVEmpty{})
 type X64HoistSt is Data:
   X64HoistSt{org: RaVec<U32>, used: RaVec<U32>, bad: RaVec<Bool>, sc_arr: RaVec<Bool>}
 def x64_hoist_init_org(+vd: Nat, n: Nat, +idx: U32, org: RaVec<U32>) -> RaVec<U32>:

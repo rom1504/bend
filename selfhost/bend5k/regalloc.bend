@@ -1325,7 +1325,103 @@ def peep_step(dlim: Nat, use_cmov: Bool, lcnt: RaVec<U32>, h: X64Inst, t: List<&
       peep_drop_dead(peep_and_nflags(U32.is_zero(a), 3n, t1), XAddRsp{a}, t1, acc)
     case XSubRsp{+a} +t1:
       peep_drop_dead(peep_and_nflags(U32.is_zero(a), 3n, t1), XSubRsp{a}, t1, acc)
+    case XAluRR{7, +r1, +r2} +t1:
+      peep_drop_dead(peep_and_nflags(peep_and_dead(U32.is_eq(r1, r2), dlim, r1, t1), 3n, t1), XAluRR{7, r1, r2}, t1, acc)
     case inst rest: PeepSt{rest, Con{inst, acc}}
+
+def peep_rbp_key(+d: U32) -> U32:
+  +k = U32.shrn(U32.sub(0, d), 3n)
+  Bool.pick(U32, Bool.and(U32.is_ge(d, 2147483648), Bool.and(U32.is_zero(U32.and(d, 7)), Bool.and(U32.is_gt(k, 0), U32.is_lt(k, 512)))), k, 0)
+def peep_inc_rbp(d: U32, +cnt: RaVec<U32>) -> RaVec<U32>:
+  +k = peep_rbp_key(d)
+  Bool.pick(RaVec<U32>, U32.is_zero(k), cnt, ra_vec_set(U32, 5n, k, U32.add(ra_vec_get(U32, 5n, 0, k, cnt), 1), cnt))
+def peep_count_rbp(insts: List<&2, X64Inst>, cnt: RaVec<U32>) -> RaVec<U32>:
+  match insts:
+    case Nil{}: cnt
+    case Con{XLoad{_, 5, d}, t}: peep_count_rbp(t, peep_inc_rbp(d, cnt))
+    case Con{XXmmLoad{_, 5, d}, t}: peep_count_rbp(t, peep_inc_rbp(d, cnt))
+    case Con{_, t}: peep_count_rbp(t, cnt)
+def peep_rbp_ov(fuel: Nat, +d: U32, xs: List<&2, X64Inst>) -> Bool:
+  match fuel xs:
+    case 0n _: False{}
+    case _ Nil{}: False{}
+    case 1n+p Con{XStore{5, d2, _}, t}: Bool.pick(Bool, U32.is_eq(d, d2), True{}, peep_rbp_ov(p, d, t))
+    case 1n+p Con{XLoad{_, 5, d2}, t}: Bool.pick(Bool, U32.is_eq(d, d2), False{}, peep_rbp_ov(p, d, t))
+    case 1n+p Con{XXmmLoad{_, 5, d2}, t}: Bool.pick(Bool, U32.is_eq(d, d2), False{}, peep_rbp_ov(p, d, t))
+    case 1n+p Con{XLabel{_}, _}: False{}
+    case 1n+p Con{XJmp{_}, _}: False{}
+    case 1n+p Con{XJcc{_, _}, _}: False{}
+    case 1n+p Con{XRet{}, _}: False{}
+    case 1n+p Con{_, t}: peep_rbp_ov(p, d, t)
+type PeepCSt is Data:
+  PeepCSt{cm: RaVec<U32>, slbl: U32, scm: RaVec<U32>, nf: Bool}
+type PeepSSt is Data:
+  PeepSSt{xs: List<&2, X64Inst>, cs: PeepCSt, acc: List<&2, X64Inst>}
+def peep_cm_wr(inst: X64Inst) -> U32:
+  match inst:
+    case XLoad{d, _, _}: U32.add(d, 1)
+    case XMovRI64{d, _, _}: U32.add(d, 1)
+    case XLeaRip{d, _}: U32.add(d, 1)
+    case XAluRR{_, d, _}: U32.add(d, 1)
+    case XAluRI{_, d, _}: U32.add(d, 1)
+    case XShift{_, d, _, _}: U32.add(d, 1)
+    case XMul{d, _}: U32.add(d, 1)
+    case XSetcc{_, d}: U32.add(d, 1)
+    case XCmov{_, d, _}: U32.add(d, 1)
+    case XPop{d}: U32.add(d, 1)
+    case XCvt{+op, d, _}: Bool.pick(U32, Bool.or(U32.is_eq(op, 1), U32.is_eq(op, 3)), U32.add(d, 1), 0)
+    case _: 0
+def peep_cm_upd(lcnt: RaVec<U32>, inst: X64Inst, st: PeepCSt) -> PeepCSt:
+  match inst st:
+    case XMovRI32{d, +imm} PeepCSt{cm, sl, scm, _}: PeepCSt{ra_vec_set(U32, 2n, d, Bool.pick(U32, U32.is_zero(imm), 1, Bool.pick(U32, U32.is_ge(imm, 2), imm, 0)), cm), sl, scm, False{}}
+    case XAluRR{7, +d, +s} PeepCSt{cm, sl, scm, _}: PeepCSt{ra_vec_set(U32, 2n, d, Bool.pick(U32, U32.is_eq(d, s), 1, 0), cm), sl, scm, False{}}
+    case XMovRR{d, s} PeepCSt{+cm, sl, scm, _}: PeepCSt{ra_vec_set(U32, 2n, d, ra_vec_get(U32, 2n, 0, s, cm), cm), sl, scm, False{}}
+    case XJcc{_, tgt} PeepCSt{+cm, _, _, _}: PeepCSt{cm, tgt, cm, False{}}
+    case XJmp{_} PeepCSt{_, sl, scm, _}: PeepCSt{RVEmpty{}, sl, scm, True{}}
+    case XRet{} PeepCSt{_, sl, scm, _}: PeepCSt{RVEmpty{}, sl, scm, True{}}
+    case XLabel{+id} PeepCSt{_, sl, scm, nf}: PeepCSt{Bool.pick(RaVec<U32>, Bool.and(nf, Bool.and(U32.is_eq(id, sl), peep_lbl_once(id, lcnt))), scm, RVEmpty{}), 4294967295, RVEmpty{}, False{}}
+    case XCallSym{_} PeepCSt{_, sl, scm, _}: PeepCSt{RVEmpty{}, sl, scm, False{}}
+    case XCallReg{_} PeepCSt{_, sl, scm, _}: PeepCSt{RVEmpty{}, sl, scm, False{}}
+    case XDiv{_, _} PeepCSt{cm, sl, scm, _}: PeepCSt{ra_vec_set(U32, 2n, 2, 0, ra_vec_set(U32, 2n, 0, 0, cm)), sl, scm, False{}}
+    case h PeepCSt{+cm, sl, scm, _}:
+      +w = peep_cm_wr(h)
+      PeepCSt{Bool.pick(RaVec<U32>, U32.is_zero(w), cm, ra_vec_set(U32, 2n, U32.sub(w, 1), 0, cm)), sl, scm, False{}}
+def peep_asr_ok(+k: U32, mask: U32, +d: U32, +s: U32, s2: U32, s3: U32, s4: U32, +tr: U32, tr2: U32, tr3: U32, zr: U32, cm: RaVec<U32>, +rest: List<&2, X64Inst>) -> Bool:
+  +m = Bool.pick(U32, Bool.and(U32.is_ge(k, 1), U32.is_le(k, 31)), U32.shln(4294967295, U32.to_nat(U32.sub(32, k))), 0)
+  +c1 = peep_and_dead(Bool.and(Bool.and(Bool.and(U32.is_eq(s, s2), Bool.and(U32.is_eq(s, s3), U32.is_eq(s, s4))), Bool.and(U32.is_eq(tr, tr2), U32.is_eq(tr, tr3))), Bool.and(Bool.and(U32.is_ne(m, 0), U32.is_eq(mask, m)), Bool.and(U32.is_eq(ra_vec_get(U32, 2n, 0, zr, cm), 1), Bool.and(U32.is_ne(d, s), U32.is_ne(tr, d))))), 24n, s, rest)
+  peep_and_nflags(Bool.pick(Bool, U32.is_eq(tr, s), c1, peep_and_dead(c1, 24n, tr, rest)), 3n, rest)
+def peep_sar_step(lcnt: RaVec<U32>, scnt: RaVec<U32>, h: X64Inst, t: List<&2, X64Inst>, st: PeepCSt, +acc: List<&2, X64Inst>) -> PeepSSt:
+  match h t st:
+    case XStore{5, +d, r} +t1 _:
+      +k = peep_rbp_key(d)
+      PeepSSt{t1, st, Bool.pick(List<&2, X64Inst>, Bool.or(Bool.and(U32.is_ne(k, 0), U32.is_zero(ra_vec_get(U32, 5n, 0, k, scnt))), peep_rbp_ov(12n, d, t1)), acc, Con{XStore{5, d, r}, acc})}
+    case XMovRR{+d, +s} Con{XShift{9, +d2, +k, False{}}, Con{XShift{9, +s2, 31, False{}}, Con{XMovRI32{+mr, +mask}, Con{XTestRR{+s3, +s4}, Con{XMovRR{+tr, +zr}, Con{XCmov{5, +tr2, +mr2}, Con{XAluRR{6, +d3, +tr3}, +t8}}}}}}} PeepCSt{+cm, +sl, +scm, nf}:
+      ok = Bool.and(Bool.and(Bool.and(U32.is_eq(d, d2), U32.is_eq(d, d3)), Bool.and(U32.is_eq(mr, mr2), Bool.and(U32.is_ne(mr, d), U32.is_ne(mr, s)))), peep_asr_ok(k, mask, d, s, s2, s3, s4, tr, tr2, tr3, zr, cm, t8))
+      Bool.pick(PeepSSt, ok, PeepSSt{t8, PeepCSt{ra_vec_set(U32, 2n, d, 0, ra_vec_set(U32, 2n, mr, mask, cm)), sl, scm, False{}}, Con{XShift{10, d, k, False{}}, Con{XMovRR{d, s}, Con{XMovRI32{mr, mask}, acc}}}}, PeepSSt{Con{XShift{9, d2, k, False{}}, Con{XShift{9, s2, 31, False{}}, Con{XMovRI32{mr, mask}, Con{XTestRR{s3, s4}, Con{XMovRR{tr, zr}, Con{XCmov{5, tr2, mr2}, Con{XAluRR{6, d3, tr3}, t8}}}}}}}, peep_cm_upd(lcnt, XMovRR{d, s}, PeepCSt{cm, sl, scm, nf}), Con{XMovRR{d, s}, acc}})
+    case XMovRR{+d, +s} Con{XShift{9, +d2, +k, False{}}, Con{XShift{9, +s2, 31, False{}}, Con{XTestRR{+s3, +s4}, Con{XMovRR{+tr, +zr}, Con{XCmov{5, +tr2, +mr}, Con{XAluRR{6, +d3, +tr3}, +t7}}}}}} PeepCSt{+cm, +sl, +scm, nf}:
+      ok = Bool.and(Bool.and(U32.is_eq(d, d2), U32.is_eq(d, d3)), peep_asr_ok(k, ra_vec_get(U32, 2n, 0, mr, cm), d, s, s2, s3, s4, tr, tr2, tr3, zr, cm, t7))
+      Bool.pick(PeepSSt, ok, PeepSSt{t7, PeepCSt{ra_vec_set(U32, 2n, d, 0, cm), sl, scm, False{}}, Con{XShift{10, d, k, False{}}, Con{XMovRR{d, s}, acc}}}, PeepSSt{Con{XShift{9, d2, k, False{}}, Con{XShift{9, s2, 31, False{}}, Con{XTestRR{s3, s4}, Con{XMovRR{tr, zr}, Con{XCmov{5, tr2, mr}, Con{XAluRR{6, d3, tr3}, t7}}}}}}, peep_cm_upd(lcnt, XMovRR{d, s}, PeepCSt{cm, sl, scm, nf}), Con{XMovRR{d, s}, acc}})
+    case XMovRR{+t0, +s} Con{XShift{9, +t0b, +k, False{}}, Con{XStore{5, +dp, +t0c}, Con{XShift{9, +s2, 31, False{}}, Con{XTestRR{+s3, +s4}, Con{XMovRR{+tr, +zr}, Con{XCmov{5, +tr2, +mr}, Con{XLoad{+d, 5, +dp2}, Con{XAluRR{6, +d2, +tr3}, +t9}}}}}}}} PeepCSt{+cm, +sl, +scm, nf}:
+      +dk = peep_rbp_key(dp)
+      c0 = Bool.and(Bool.and(U32.is_eq(t0, t0b), U32.is_eq(t0, t0c)), Bool.and(Bool.and(U32.is_eq(dp, dp2), Bool.and(U32.is_ne(dk, 0), U32.is_eq(ra_vec_get(U32, 5n, 0, dk, scnt), 1))), U32.is_eq(d, d2)))
+      +c1 = Bool.and(c0, peep_asr_ok(k, ra_vec_get(U32, 2n, 0, mr, cm), d, s, s2, s3, s4, tr, tr2, tr3, zr, cm, t9))
+      ok = Bool.pick(Bool, Bool.or(U32.is_eq(t0, d), Bool.or(U32.is_eq(t0, s), U32.is_eq(t0, tr))), c1, peep_and_dead(c1, 24n, t0, t9))
+      Bool.pick(PeepSSt, ok, PeepSSt{t9, PeepCSt{ra_vec_set(U32, 2n, d, 0, cm), sl, scm, False{}}, Con{XShift{10, d, k, False{}}, Con{XMovRR{d, s}, acc}}}, PeepSSt{Con{XShift{9, t0b, k, False{}}, Con{XStore{5, dp, t0c}, Con{XShift{9, s2, 31, False{}}, Con{XTestRR{s3, s4}, Con{XMovRR{tr, zr}, Con{XCmov{5, tr2, mr}, Con{XLoad{d, 5, dp2}, Con{XAluRR{6, d2, tr3}, t9}}}}}}}}, peep_cm_upd(lcnt, XMovRR{t0, s}, PeepCSt{cm, sl, scm, nf}), Con{XMovRR{t0, s}, acc}})
+    case +h1 t1 _: PeepSSt{t1, peep_cm_upd(lcnt, h1, st), Con{h1, acc}}
+def peep_strip_lbls(+lcnt: RaVec<U32>, xs: List<&2, X64Inst>, +acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  match xs:
+    case Nil{}: b5k_list_rev(X64Inst, acc)
+    case Con{XLabel{+id}, t}: peep_strip_lbls(lcnt, t, Bool.pick(List<&2, X64Inst>, peep_lbl_zero(id, lcnt), acc, Con{XLabel{id}, acc}))
+    case Con{h, t}: peep_strip_lbls(lcnt, t, Con{h, acc})
+def peep_sar_run(+lcnt: RaVec<U32>, +scnt: RaVec<U32>, fuel: Nat, st: PeepSSt) -> List<&2, X64Inst>:
+  match fuel st:
+    case 0n PeepSSt{_, _, acc}: b5k_list_rev(X64Inst, acc)
+    case 1n+p PeepSSt{Nil{}, _, acc}: b5k_list_rev(X64Inst, acc)
+    case 1n+p PeepSSt{Con{h, t}, cs, acc}: peep_sar_run(lcnt, scnt, p, peep_sar_step(lcnt, scnt, h, t, cs, acc))
+def peep_sar_dse(+insts: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  +lcnt = peep_count_lbls(insts, RVEmpty{})
+  +xs = peep_strip_lbls(lcnt, insts, Nil{})
+  peep_sar_run(lcnt, peep_count_rbp(xs, RVEmpty{}), U32.to_nat(b5k_list_len(X64Inst, xs)), PeepSSt{xs, PeepCSt{RVEmpty{}, 4294967295, RVEmpty{}, False{}}, Nil{}})
 
 def peep_run(+dlim: Nat, +use_cmov: Bool, +lcnt: RaVec<U32>, fuel: Nat, st: PeepSt) -> List<&2, X64Inst>:
   match fuel st:
@@ -1336,8 +1432,8 @@ def peep_pass(dlim: Nat, use_cmov: Bool, lcnt: RaVec<U32>, +insts: List<&2, X64I
   peep_run(dlim, use_cmov, lcnt, U32.to_nat(b5k_list_len(X64Inst, insts)), PeepSt{insts, Nil{}})
 def peep_pass2(is_big: Bool, +lcnt: RaVec<U32>, insts: List<&2, X64Inst>) -> List<&2, X64Inst>:
   match is_big:
-    case True{}: peep_pass(24n, True{}, lcnt, insts)
-    case False{}: peep_pass(24n, True{}, lcnt, peep_pass(24n, True{}, lcnt, insts))
+    case True{}: peep_sar_dse(peep_pass(24n, True{}, lcnt, insts))
+    case False{}: peep_sar_dse(peep_pass(24n, True{}, lcnt, peep_pass(24n, True{}, lcnt, insts)))
 def peep_fn(fast: Bool, f: X64Fn) -> X64Fn:
   match fast f:
     case True{} X64Fn{name, is_glob, insts}: X64Fn{name, is_glob, peep_pass(4n, False{}, RVEmpty{}, insts)}

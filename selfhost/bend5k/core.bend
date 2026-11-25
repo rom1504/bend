@@ -4,17 +4,6 @@
 # (lex, parse, check, lower, opt, regalloc, x64, elf, main) compile cleanly
 # under both `bend2 --check-only` and `n9_o2`.
 
-# P111 ABI v11102 Constants
-# -------------------------
-# sizeof(P111Program) = 192; .data (WA) for p111_cid_hot;
-# .rodata (A) for p111_cid_arity / p111_cid_names_*; .text (AX) for code.
-
-def B5K_P111_ABI_VER() -> U32:
-  11102
-def B5K_P111_DESC_BYTES() -> U32:
-  192
-def B5K_P111_SEQUENTIAL() -> U32:
-  1
 # Shared Operator & Condition Codes
 # BinOp: 0=ADD 1=SUB 2=MUL 3=DIV 4=MOD 5=AND 6=OR 7=XOR 8=SHL 9=SHR 10=FADD 11=FSUB 12=FMUL 13=FDIV
 # UnOp:  0=NEG 1=NOT 2=FNEG | CmpOp: 0=EQ 1=NE 2=LT 3=LE 4=GT 5=GE

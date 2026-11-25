@@ -1,0 +1,221 @@
+{
+  "schema": "agy.bend5k.asm_ceiling_probes.v1",
+  "host_pin": "taskset -c 7",
+  "compiler_baseline": "selfhost/build/agy/bend5k/bend5k_o2 -O2",
+  "c_baseline": "gcc-10 -O2",
+  "probes": [
+    {
+      "id": "1a",
+      "idea": "Multi-Value (rax, rdx) Return (hashmap $direct.probe)",
+      "benchmark": "bench/runtime/hashmap/main.bend (S=9n, 1/4th of 11n, linear across 2^S tables)",
+      "checksum": "1649609848",
+      "baseline_ms": 1890.4,
+      "c_ms": 306.5,
+      "baseline_vs_c": 6.17,
+      "variants": [
+        {
+          "name": "multi_value_probe_return",
+          "ms": 1890.4,
+          "speedup_vs_base": 1.0,
+          "pct_saved": 0.0,
+          "note": "bend5k_o2 ALREADY inlines $direct.probe into $direct.look (and $direct.ins into $direct.fill, $direct.bmix into $direct.sweep) and eliminates per-step Pair heap alloc/free. $direct.probe is dead code; $direct.look allocates only 1 Pair at loop exit (2048 total across 7.5s = <0.01%)."
+        },
+        {
+          "name": "bonus_borrowed_array_get_and_has_in_look",
+          "ms": 1456.4,
+          "vs_c": 4.75,
+          "speedup_vs_base": 1.298,
+          "pct_saved": 23.0,
+          "raw_ms": [1456.4, 1455.7, 1457.9],
+          "note": "Real bottleneck in hashmap is Array.get(Chain) hitting p113_rt_array_pair (val>>57 != 0 for boxed CCons) + $direct.has hitting p111_rt_take on shared CCons nodes. Borrowing in $direct.look alone buys 1.30x (+23.0%); applying to fill+sweep too projects ~1.6-1.8x."
+        }
+      ],
+      "raw_baseline_ms": [1896.6, 1890.4, 1890.2],
+      "raw_c_ms": [301.0, 306.5, 308.0],
+      "verdict": "KILL (multi-value return for hashmap) / GO-ALT (borrowed read-only Array.get + chain walk)",
+      "estimated_loc": "N/A for probe (0% gain); ~250 LOC for borrowed read-only walk"
+    },
+    {
+      "id": "1b",
+      "idea": "Non-Escaping Stack Array<U32> (sub $0x1000,%rsp; rep stosq)",
+      "benchmark": "research/agy/wave4_bench/inputs/tuned/kernels/bst.bend + driver.bend (reps=27184, warm=100, n=64, seed=17)",
+      "checksum": ["861157620", "791320282", "665342507"],
+      "baseline_ms": 62.0,
+      "c_ms": 17.0,
+      "baseline_vs_c": 3.65,
+      "variants": [
+        {
+          "name": "stack_512x8_rep_stosq",
+          "ms": 16.0,
+          "vs_c": 0.94,
+          "speedup_vs_base": 3.875,
+          "pct_saved": 74.2,
+          "raw_ms": [16.0, 16.0, 16.0, 16.0, 15.0],
+          "note": "Beats gcc-10 -O2 (17.0ms)! Eliminates heap alloc, freelist, p111_rt_sink, and array tag/mask decoding in collect+sorted_fold."
+        },
+        {
+          "name": "stack_512x8_xmm4k",
+          "ms": 17.0,
+          "vs_c": 1.0,
+          "speedup_vs_base": 3.647,
+          "pct_saved": 72.6,
+          "raw_ms": [17.0, 17.0, 17.0, 17.0, 17.0]
+        },
+        {
+          "name": "stack_512x4_xmm2k",
+          "ms": 16.0,
+          "vs_c": 0.94,
+          "speedup_vs_base": 3.875,
+          "pct_saved": 74.2,
+          "raw_ms": [16.0, 16.0, 16.0, 16.0, 16.0]
+        }
+      ],
+      "raw_baseline_ms": [68.0, 61.0, 62.0, 62.0, 62.0],
+      "raw_c_ms": [17.0, 16.0, 17.0, 17.0, 17.0],
+      "verdict": "STRONG GO",
+      "estimated_loc": "~180-250 LOC (escape check + stack alloca + direct rsp-indexed array ops)"
+    },
+    {
+      "id": "2",
+      "idea": "Loop-Versioned Array Hoisting (eliminate in-loop test dp, dp; jz slow)",
+      "benchmarks": [
+        {
+          "name": "histogram_med ($direct.count.go, 3 sites patched to 9B NOP)",
+          "checksum": "3307081914",
+          "baseline_ms": 59.65,
+          "patched_ms": 58.94,
+          "c_ms": 31.89,
+          "baseline_vs_c": 1.87,
+          "patched_vs_c": 1.85,
+          "speedup_vs_base": 1.012,
+          "pct_saved": 1.2,
+          "raw_baseline_ms": [67.22, 59.34, 59.12, 60.28, 59.65],
+          "raw_patched_ms": [58.67, 58.69, 60.0, 59.2, 58.94]
+        },
+        {
+          "name": "terrain ($direct.erode, 24 sites patched to 9B NOP)",
+          "checksum": "2572468224",
+          "baseline_ms": 15261.0,
+          "patched_ms": 15106.0,
+          "c_ms": 7882.0,
+          "baseline_vs_c": 1.94,
+          "patched_vs_c": 1.92,
+          "speedup_vs_base": 1.010,
+          "pct_saved": 1.0,
+          "raw_baseline_ms": [15304.5, 15261.0, 15237.7],
+          "raw_patched_ms": [15106.0, 15098.9, 15152.3],
+          "raw_c_ms": [7869.4, 7894.6]
+        }
+      ],
+      "verdict": "KILL",
+      "reason": "100%-predicted macro-fused test+jz off the critical path costs only 1.0-1.2% even with 24 checks per iteration in terrain. Nowhere near justifying loop versioning complexity (~300+ LOC)."
+    },
+    {
+      "id": "3a",
+      "idea": "General Multi-Op cmov + Board-Bit Reg Caching (gameoflife)",
+      "benchmark": "research/agy/wave4_bench/inputs/upstream/gameoflife/main.bend (medium)",
+      "checksum": "3681094808",
+      "baseline_ms": 1599.1,
+      "c_ms": 919.8,
+      "baseline_vs_c": 1.74,
+      "variants": [
+        {
+          "name": "run_calls_orig_inlined_step",
+          "ms": 510.2,
+          "vs_c": 0.55,
+          "speedup_vs_base": 3.134,
+          "pct_saved": 68.1,
+          "raw_ms": [510.7, 509.2, 510.2],
+          "note": "CRITICAL FINDING: bend5k_o2 inlines $direct.step into $direct.run ONE level, leaving 16 calls to $direct.step_cell per gen! Simply calling the already-inlined $direct.step (or multi-level inlining step_cell into run) gives 3.13x and ALREADY beats gcc-10 -O2 by 1.80x!"
+        },
+        {
+          "name": "run_cmov_only",
+          "ms": 520.4,
+          "vs_c": 0.57,
+          "speedup_vs_base": 3.073,
+          "speedup_vs_origstep": 0.980,
+          "pct_saved_vs_origstep": -2.0,
+          "raw_ms": [520.4, 520.4, 520.7],
+          "note": "Pure multi-op cmov is -2.0% SLOWER than branched origstep because settled 4x4 soups have predictable branches and cmov adds extra cmp+sete+or+cmov uops."
+        },
+        {
+          "name": "run_cmov_plus_board_bit_cse",
+          "ms": 325.3,
+          "vs_c": 0.35,
+          "speedup_vs_base": 4.916,
+          "speedup_vs_origstep": 1.568,
+          "pct_saved_vs_origstep": 36.2,
+          "raw_ms": [325.6, 324.9, 325.3],
+          "note": "CSE/caching the 16 extracted board bits (16 extractions instead of 144) adds another 1.57x on top of inlining -> 0.35x C (2.83x faster than gcc-10 -O2)!"
+        }
+      ],
+      "raw_baseline_ms": [1587.1, 1599.1, 1600.5],
+      "raw_c_ms": [928.9, 920.8, 918.7],
+      "verdict": "KILL (multi-op cmov alone: -2.0%) / STRONG GO (fix inliner depth so run doesn't lose step_cell inlining: 3.13x; + local CSE of pure shift/and ops: +1.57x)",
+      "estimated_loc": "~30 LOC for inliner fix (3.13x!); ~150 LOC for local CSE (+1.57x)"
+    },
+    {
+      "id": "3b",
+      "idea": "Jump-Table match Dispatch vs Mode Unboxing (lexer $direct.lex)",
+      "benchmark": "bench/runtime/lexer/main.bend (size=19n, 1/16th of 23n, linear in 2^size)",
+      "checksum": "2394243056",
+      "baseline_ms": 1403.9,
+      "c_ms": 139.3,
+      "baseline_vs_c": 10.08,
+      "variants": [
+        {
+          "name": "jumptable_only",
+          "ms": 936.9,
+          "vs_c": 6.73,
+          "speedup_vs_base": 1.498,
+          "pct_saved": 33.3,
+          "raw_ms": [936.9, 935.7, 939.5],
+          "note": "Replaces 12-way linear cmp chain (up to 24 branches/char) with 12-entry jump table, keeping heap InId/InNm alloc/free identical."
+        },
+        {
+          "name": "jumptable_plus_unboxed_mode",
+          "ms": 912.0,
+          "vs_c": 6.55,
+          "speedup_vs_base": 1.539,
+          "pct_saved": 35.0,
+          "pct_saved_over_jt": 2.7,
+          "raw_ms": [915.1, 912.0, 909.2],
+          "note": "Unboxing Mode into (tag, val) registers adds only +2.7% over jump table because gen() String construction dominates the remaining ~900ms."
+        }
+      ],
+      "raw_baseline_ms": [1403.9, 1395.5, 1479.1],
+      "raw_c_ms": [139.0, 139.3, 139.6],
+      "verdict": "STRONG GO (jump-table match: 1.50x end-to-end on lexer)",
+      "estimated_loc": "~120-160 LOC (dense/product ctor-tag jump table emission)"
+    },
+    {
+      "id": "4",
+      "idea": "True Perceus In-Place IReuse (overwrite unique node fields without freelist push/pop)",
+      "benchmark": "selfhost/tools/performance/phase37/fixtures-new/bst.bend + driver.bend (reps=5000, warm=50, n=64, seed=17)",
+      "checksum": ["861157620", "2332306653", "1020505684"],
+      "baseline_ms": 274.0,
+      "variants": [
+        {
+          "name": "clean_freelist_no_spurious_keep",
+          "ms": 55.0,
+          "speedup_vs_base": 4.982,
+          "pct_saved": 79.9,
+          "raw_ms": [55.0, 55.0, 55.0, 55.0, 54.0],
+          "note": "CRITICAL FINDING: In $direct.bst.up, nested multi-arm match (BF{v,other,True{}} <> rest vs False{}) causes bend5k_o2 to emit spurious p111_rt_keep on path and BF before testing left, wrapping unique nodes in shared 0x82 boxes! Fixing that alone buys 4.98x (+79.9%)!"
+        },
+        {
+          "name": "true_inplace_IReuse",
+          "ms": 47.0,
+          "speedup_vs_base": 5.830,
+          "speedup_vs_clean_freelist": 1.170,
+          "pct_saved_vs_clean_freelist": 14.5,
+          "raw_ms": [47.0, 47.0, 47.0, 48.0, 48.0],
+          "note": "Pure Perceus in-place IReuse (overwriting BNode <-> BF in place without freelist push/pop/program/cid_hot checks) buys 1.170x (+14.5%) on top of clean_freelist, and 5.83x combined vs baseline!"
+        }
+      ],
+      "raw_baseline_ms": [282.0, 274.0, 275.0, 274.0, 274.0],
+      "verdict": "STRONG GO (nested-match spurious-keep fix: 4.98x!) + GO (true in-place IReuse: +14.5% pure / 5.83x combined)",
+      "estimated_loc": "~80 LOC for nested-match decision tree without spurious keep (4.98x); ~150 LOC for in-place IReuse (+14.5%)"
+    }
+  ]
+}

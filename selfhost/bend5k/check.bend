@@ -14,47 +14,17 @@ type CtorEntry is Data:
   CtorEntry{name: String, info: CtorInfo}
 type DefInfo is Data:
   DefInfo{arity: U32, total_arity: U32, ret_fn: Bool, is_import: Bool}
-type ChkTrie<-A: Data> is Data:
-  CT0{}
-  CTL{val: A}
-  CTN{lo: ChkTrie<A>, hi: ChkTrie<A>}
-def ct_set_go(-A: Data, depth: Nat, +k: U32, v: A, t: ChkTrie<A>, is_lo: Bool) -> ChkTrie<A>:
-  match depth t is_lo:
-    case 0n _ _: CTL{v}
-    case 1n+p CTN{lo, hi} True{}:
-      +nxt = U32.shr(k)
-      CTN{ct_set_go(A, p, nxt, v, lo, U32.is_zero(U32.and(nxt, 1))), hi}
-    case 1n+p CTN{lo, hi} False{}:
-      +nxt = U32.shr(k)
-      CTN{lo, ct_set_go(A, p, nxt, v, hi, U32.is_zero(U32.and(nxt, 1)))}
-    case 1n+p _ True{}:
-      +nxt = U32.shr(k)
-      CTN{ct_set_go(A, p, nxt, v, CT0{}, U32.is_zero(U32.and(nxt, 1))), CT0{}}
-    case 1n+p _ False{}:
-      +nxt = U32.shr(k)
-      CTN{CT0{}, ct_set_go(A, p, nxt, v, CT0{}, U32.is_zero(U32.and(nxt, 1)))}
-def ct_set(-A: Data, t: ChkTrie<A>, +k: U32, v: A) -> ChkTrie<A>:
-  ct_set_go(A, 16n, k, v, t, U32.is_zero(U32.and(k, 1)))
-def ct_get_go(-A: Data, depth: Nat, +k: U32, t: ChkTrie<A>, is_lo: Bool) -> Maybe<&2, A>:
-  match depth t is_lo:
-    case _ CT0{} _: None{}
-    case _ CTL{v} _: Some{v}
-    case 0n CTN{_, _} _: None{}
-    case 1n+p CTN{lo, hi} True{}:
-      +nxt = U32.shr(k)
-      ct_get_go(A, p, nxt, lo, U32.is_zero(U32.and(nxt, 1)))
-    case 1n+p CTN{lo, hi} False{}:
-      +nxt = U32.shr(k)
-      ct_get_go(A, p, nxt, hi, U32.is_zero(U32.and(nxt, 1)))
-def ct_get(-A: Data, t: ChkTrie<A>, +k: U32) -> Maybe<&2, A>:
-  ct_get_go(A, 16n, k, t, U32.is_zero(U32.and(k, 1)))
+def ct_set(-A: Data, t: RaVec<Maybe<&2, A>>, +k: U32, v: A) -> RaVec<Maybe<&2, A>>:
+  ra_vec_set(Maybe<&2, A>, 8n, k, Some{v}, t)
+def ct_get(-A: Data, t: RaVec<Maybe<&2, A>>, +k: U32) -> Maybe<&2, A>:
+  ra_vec_get(Maybe<&2, A>, 8n, None{}, k, t)
 type CheckCtx is Data:
   CheckCtx{
     syms: SymTab,
-    types: ChkTrie<U32>,
-    ctors: ChkTrie<CtorInfo>,
-    defs: ChkTrie<DefInfo>,
-    laws: ChkTrie<LawDef>
+    types: RaVec<Maybe<&2, U32>>,
+    ctors: RaVec<Maybe<&2, CtorInfo>>,
+    defs: RaVec<Maybe<&2, DefInfo>>,
+    laws: RaVec<Maybe<&2, LawDef>>
   }
 type VarBind is Data:
   VarBind{sym: U32, dup: Bool}
@@ -150,35 +120,35 @@ def b5k_chk_param_dups(ps: List<&2, Param>) -> List<&2, Bool>:
   match ps:
     case Nil{}: Nil{}
     case Con{Param{_, _, erased, dup}, rest}: Con{Bool.or(erased, dup), b5k_chk_param_dups(rest)}
-def b5k_chk_seed_bt_one(m: Maybe<&2, U32>, tm: ChkTrie<U32>) -> ChkTrie<U32>:
+def b5k_chk_seed_bt_one(m: Maybe<&2, U32>, tm: RaVec<Maybe<&2, U32>>) -> RaVec<Maybe<&2, U32>>:
   match m:
     case None{}: tm
     case Some{s}: ct_set(U32, tm, s, 1)
-def b5k_chk_seed_base_types(+syms: SymTab, ns: List<&2, String>, tm: ChkTrie<U32>) -> ChkTrie<U32>:
+def b5k_chk_seed_base_types(+syms: SymTab, ns: List<&2, String>, tm: RaVec<Maybe<&2, U32>>) -> RaVec<Maybe<&2, U32>>:
   match ns:
     case Nil{}: tm
     case Con{nm, rest}: b5k_chk_seed_base_types(syms, rest, b5k_chk_seed_bt_one(symtab_lookup(syms, nm), tm))
-def b5k_chk_seed_bc_one(m: Maybe<&2, U32>, info: CtorInfo, cm: ChkTrie<CtorInfo>) -> ChkTrie<CtorInfo>:
+def b5k_chk_seed_bc_one(m: Maybe<&2, U32>, info: CtorInfo, cm: RaVec<Maybe<&2, CtorInfo>>) -> RaVec<Maybe<&2, CtorInfo>>:
   match m:
     case None{}: cm
     case Some{s}: ct_set(CtorInfo, cm, s, info)
-def b5k_chk_seed_base_ctors(+syms: SymTab, cs: List<&2, CtorEntry>, cm: ChkTrie<CtorInfo>) -> ChkTrie<CtorInfo>:
+def b5k_chk_seed_base_ctors(+syms: SymTab, cs: List<&2, CtorEntry>, cm: RaVec<Maybe<&2, CtorInfo>>) -> RaVec<Maybe<&2, CtorInfo>>:
   match cs:
     case Nil{}: cm
     case Con{CtorEntry{nm, info}, rest}: b5k_chk_seed_base_ctors(syms, rest, b5k_chk_seed_bc_one(symtab_lookup(syms, nm), info, cm))
-def b5k_chk_index_ctors(+tname: String, cs: List<&2, CtorDef>, cm: ChkTrie<CtorInfo>) -> ChkTrie<CtorInfo>:
+def b5k_chk_index_ctors(+tname: String, cs: List<&2, CtorDef>, cm: RaVec<Maybe<&2, CtorInfo>>) -> RaVec<Maybe<&2, CtorInfo>>:
   match cs:
     case Nil{}: cm
     case Con{CtorDef{csym, _, +fields}, rest}:
       arity = b5k_list_len(Param, fields)
       fdups = b5k_chk_param_dups(fields)
       b5k_chk_index_ctors(tname, rest, ct_set(CtorInfo, cm, csym, CtorInfo{tname, arity, fdups}))
-def b5k_chk_index_types(ts: List<&2, TypeDef>, tm: ChkTrie<U32>) -> ChkTrie<U32>:
+def b5k_chk_index_types(ts: List<&2, TypeDef>, tm: RaVec<Maybe<&2, U32>>) -> RaVec<Maybe<&2, U32>>:
   match ts:
     case Nil{}: tm
     case Con{TypeDef{tsym, _, _, _}, rest}:
       b5k_chk_index_types(rest, ct_set(U32, tm, tsym, 1))
-def b5k_chk_index_all_ctors(+syms: SymTab, ts: List<&2, TypeDef>, cm: ChkTrie<CtorInfo>) -> ChkTrie<CtorInfo>:
+def b5k_chk_index_all_ctors(+syms: SymTab, ts: List<&2, TypeDef>, cm: RaVec<Maybe<&2, CtorInfo>>) -> RaVec<Maybe<&2, CtorInfo>>:
   match ts:
     case Nil{}: cm
     case Con{TypeDef{tsym, _, _, ctors}, rest}:
@@ -214,7 +184,7 @@ def b5k_chk_apply_law_ret(ret: Maybe<&2, Expr>, ld: Maybe<&2, LawDef>) -> Maybe<
     case Some{e} _: Some{e}
     case None{} Some{LawDef{_, _, lret}}: Some{lret}
     case None{} None{}: None{}
-def b5k_chk_index_defs(+lm: ChkTrie<LawDef>, ds: List<&2, Def>, dm: ChkTrie<DefInfo>) -> ChkTrie<DefInfo>:
+def b5k_chk_index_defs(+lm: RaVec<Maybe<&2, LawDef>>, ds: List<&2, Def>, dm: RaVec<Maybe<&2, DefInfo>>) -> RaVec<Maybe<&2, DefInfo>>:
   match ds:
     case Nil{}: dm
     case Con{Def{+dsym, params, ret, _, is_import, _}, rest}:
@@ -223,16 +193,16 @@ def b5k_chk_index_defs(+lm: ChkTrie<LawDef>, ds: List<&2, Def>, dm: ChkTrie<DefI
       mret = b5k_chk_apply_law_ret(ret, ld)
       b5k_chk_index_defs(lm, rest, ct_set(DefInfo, dm, dsym,
         DefInfo{b5k_chk_count_live(mps, 0), b5k_list_len(Param, mps), b5k_chk_ret_is_fn(mret), is_import}))
-def b5k_chk_index_laws(ls: List<&2, LawDef>, lm: ChkTrie<LawDef>) -> ChkTrie<LawDef>:
+def b5k_chk_index_laws(ls: List<&2, LawDef>, lm: RaVec<Maybe<&2, LawDef>>) -> RaVec<Maybe<&2, LawDef>>:
   match ls:
     case Nil{}: lm
     case Con{LawDef{+lsym, lps, lret}, rest}:
       b5k_chk_index_laws(rest, ct_set(LawDef, lm, lsym, LawDef{lsym, lps, lret}))
 def b5k_chk_build_ctx(+types: List<&2, TypeDef>, defs: List<&2, Def>, laws: List<&2, LawDef>, +syms: SymTab) -> CheckCtx:
-  tm = b5k_chk_index_types(types, b5k_chk_seed_base_types(syms, b5k_chk_base_type_names(), CT0{}))
-  cm = b5k_chk_index_all_ctors(syms, types, b5k_chk_seed_base_ctors(syms, b5k_chk_base_ctors(), CT0{}))
-  +lm = b5k_chk_index_laws(laws, CT0{})
-  dm = b5k_chk_index_defs(lm, defs, CT0{})
+  tm = b5k_chk_index_types(types, b5k_chk_seed_base_types(syms, b5k_chk_base_type_names(), RVEmpty{}))
+  cm = b5k_chk_index_all_ctors(syms, types, b5k_chk_seed_base_ctors(syms, b5k_chk_base_ctors(), RVEmpty{}))
+  +lm = b5k_chk_index_laws(laws, RVEmpty{})
+  dm = b5k_chk_index_defs(lm, defs, RVEmpty{})
   CheckCtx{syms, tm, cm, dm, lm}
 # Context Lookup Helpers
 # ----------------------
@@ -259,7 +229,7 @@ def b5k_chk_known_g3(hit: Bool, syms: SymTab, sym: U32) -> Bool:
   match hit:
     case True{}: True{}
     case False{}: b5k_chk_is_base_name(symtab_name(syms, sym))
-def b5k_chk_known_g2(hit: Bool, syms: SymTab, types: ChkTrie<U32>, laws: ChkTrie<LawDef>, +sym: U32) -> Bool:
+def b5k_chk_known_g2(hit: Bool, syms: SymTab, types: RaVec<Maybe<&2, U32>>, laws: RaVec<Maybe<&2, LawDef>>, +sym: U32) -> Bool:
   match hit:
     case True{}: True{}
     case False{}: b5k_chk_known_g3(Bool.or(b5k_chk_is_some(U32, ct_get(U32, types, sym)), b5k_chk_is_some(LawDef, ct_get(LawDef, laws, sym))), syms, sym)

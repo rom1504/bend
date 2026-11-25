@@ -4,64 +4,6 @@
 #   - RegAllocRes, b5k_regalloc(fn: IrFn) -> RegAllocRes
 #   - b5k_peep(fns: List<&2, X64Fn>) -> List<&2, X64Fn>
 
-# Dense 4-Way U32 Bit-Trie (Depth 8 = 65,536 entries, Zero String Hashing)
-type RaVec<-A: Data> is Data:
-  RVEmpty{}
-  RVLeaf{val: A}
-  RVNode{c0: RaVec<A>, c1: RaVec<A>, c2: RaVec<A>, c3: RaVec<A>}
-
-def ra_vec_set_go(-A: Data, d: Nat, +idx: U32, val: A, t: RaVec<A>, q: U32) -> RaVec<A>:
-  match d t q:
-    case 0n _ _: RVLeaf{val}
-    case 1n+p RVNode{c0, c1, c2, c3} 0:
-      +nxt = U32.shrn(idx, 2n)
-      RVNode{ra_vec_set_go(A, p, nxt, val, c0, U32.and(nxt, 3)), c1, c2, c3}
-    case 1n+p RVNode{c0, c1, c2, c3} 1:
-      +nxt = U32.shrn(idx, 2n)
-      RVNode{c0, ra_vec_set_go(A, p, nxt, val, c1, U32.and(nxt, 3)), c2, c3}
-    case 1n+p RVNode{c0, c1, c2, c3} 2:
-      +nxt = U32.shrn(idx, 2n)
-      RVNode{c0, c1, ra_vec_set_go(A, p, nxt, val, c2, U32.and(nxt, 3)), c3}
-    case 1n+p RVNode{c0, c1, c2, c3} _:
-      +nxt = U32.shrn(idx, 2n)
-      RVNode{c0, c1, c2, ra_vec_set_go(A, p, nxt, val, c3, U32.and(nxt, 3))}
-    case 1n+p _ 0:
-      +nxt = U32.shrn(idx, 2n)
-      RVNode{ra_vec_set_go(A, p, nxt, val, RVEmpty{}, U32.and(nxt, 3)), RVEmpty{}, RVEmpty{}, RVEmpty{}}
-    case 1n+p _ 1:
-      +nxt = U32.shrn(idx, 2n)
-      RVNode{RVEmpty{}, ra_vec_set_go(A, p, nxt, val, RVEmpty{}, U32.and(nxt, 3)), RVEmpty{}, RVEmpty{}}
-    case 1n+p _ 2:
-      +nxt = U32.shrn(idx, 2n)
-      RVNode{RVEmpty{}, RVEmpty{}, ra_vec_set_go(A, p, nxt, val, RVEmpty{}, U32.and(nxt, 3)), RVEmpty{}}
-    case 1n+p _ _:
-      +nxt = U32.shrn(idx, 2n)
-      RVNode{RVEmpty{}, RVEmpty{}, RVEmpty{}, ra_vec_set_go(A, p, nxt, val, RVEmpty{}, U32.and(nxt, 3))}
-
-def ra_vec_set(-A: Data, d: Nat, +idx: U32, val: A, t: RaVec<A>) -> RaVec<A>:
-  ra_vec_set_go(A, d, idx, val, t, U32.and(idx, 3))
-
-def ra_vec_get_go(-A: Data, d: Nat, +idx: U32, defv: A, t: RaVec<A>, q: U32) -> A:
-  match d t q:
-    case _ RVEmpty{} _: defv
-    case _ RVLeaf{v} _: v
-    case 0n RVNode{_, _, _, _} _: defv
-    case 1n+p RVNode{c0, _, _, _} 0:
-      +nxt = U32.shrn(idx, 2n)
-      ra_vec_get_go(A, p, nxt, defv, c0, U32.and(nxt, 3))
-    case 1n+p RVNode{_, c1, _, _} 1:
-      +nxt = U32.shrn(idx, 2n)
-      ra_vec_get_go(A, p, nxt, defv, c1, U32.and(nxt, 3))
-    case 1n+p RVNode{_, _, c2, _} 2:
-      +nxt = U32.shrn(idx, 2n)
-      ra_vec_get_go(A, p, nxt, defv, c2, U32.and(nxt, 3))
-    case 1n+p RVNode{_, _, _, c3} _:
-      +nxt = U32.shrn(idx, 2n)
-      ra_vec_get_go(A, p, nxt, defv, c3, U32.and(nxt, 3))
-
-def ra_vec_get(-A: Data, d: Nat, defv: A, +idx: U32, t: RaVec<A>) -> A:
-  ra_vec_get_go(A, d, idx, defv, t, U32.and(idx, 3))
-
 # Part 1: Linear-Scan Register Allocator (GPR + XMM + Move Coalescing)
 type RegAllocRes is Data:
   RegAllocRes{reg_map: RaVec<U32>, vd: Nat, used_callee: List<&2, U32>, spill_count: U32}
@@ -1170,10 +1112,6 @@ def peep_inv_jcc(same: Bool, cc: U32, lbl1: U32, lbl2: U32, lbl3: U32, t3: List<
   match same:
     case True{}: PeepSt{Con{XLabel{lbl3}, t3}, Con{XJcc{U32.xor(cc, 1), lbl2}, acc}}
     case False{}: PeepSt{Con{XJmp{lbl2}, Con{XLabel{lbl3}, t3}}, Con{XJcc{cc, lbl1}, acc}}
-def peep_drop_jcc(same: Bool, cc: U32, lbl1: U32, lbl2: U32, t2: List<&2, X64Inst>, acc: List<&2, X64Inst>) -> PeepSt:
-  match same:
-    case True{}: PeepSt{Con{XLabel{lbl2}, t2}, acc}
-    case False{}: PeepSt{Con{XLabel{lbl2}, t2}, Con{XJcc{cc, lbl1}, acc}}
 def peep_is_u32_cc(+cc: U32) -> Bool:
   Bool.and(U32.is_ge(cc, 4), U32.is_le(cc, 7))
 def peep_next_u32_cc(xs: List<&2, X64Inst>) -> Bool:

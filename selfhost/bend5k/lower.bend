@@ -269,12 +269,6 @@ def env_tmp(e: LowEnv) -> U32:
 def env_arr_len(e: LowEnv) -> U32:
   match e:
     case LowEnv{_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, s, _, _}: s
-def env_arr_get(e: LowEnv) -> U32:
-  match e:
-    case LowEnv{_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, s, _}: s
-def env_arr_set(e: LowEnv) -> U32:
-  match e:
-    case LowEnv{_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, s}: s
 # Use-Count & Free-Variable Scanners
 def pat_binds_all(fuel: Nat, +sym: U32, ps: List<&2, Pat>) -> Bool:
   match fuel ps:
@@ -418,9 +412,6 @@ def cfg_set_res(st: CfgSt, r: U32) -> CfgSt:
 def cfg_set_rlist(st: CfgSt, rl: List<&2, U32>) -> CfgSt:
   match st:
     case CfgSt{f, nr, nb, cb, ops, blks, s, r, _, vm, nvm, mg, bk}: CfgSt{f, nr, nb, cb, ops, blks, s, r, rl, vm, nvm, mg, bk}
-def cfg_set_vmap(st: CfgSt, vm: U32Map) -> CfgSt:
-  match st:
-    case CfgSt{f, nr, nb, cb, ops, blks, s, r, rl, _, nvm, mg, bk}: CfgSt{f, nr, nb, cb, ops, blks, s, r, rl, vm, nvm, mg, bk}
 def cfg_set_vm_nvm(st: CfgSt, vm: U32Map, nvm: U32Map) -> CfgSt:
   match st:
     case CfgSt{f, nr, nb, cb, ops, blks, s, r, rl, _, _, mg, bk}: CfgSt{f, nr, nb, cb, ops, blks, s, r, rl, vm, nvm, mg, bk}

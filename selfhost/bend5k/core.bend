@@ -15,17 +15,10 @@ def B5K_P111_DESC_BYTES() -> U32:
   192
 def B5K_P111_SEQUENTIAL() -> U32:
   1
-def B5K_P111_STOP() -> U32:
-  4294967295
-
 # Shared Operator & Condition Codes
-# ---------------------------------
-# BinOp: 0=ADD 1=SUB 2=MUL 3=DIV 4=MOD 5=AND 6=OR 7=XOR 8=SHL 9=SHR
-#        10=FADD 11=FSUB 12=FMUL 13=FDIV
-# UnOp:  0=NEG 1=NOT 2=FNEG
-# CmpOp: 0=EQ 1=NE 2=LT 3=LE 4=GT 5=GE
+# BinOp: 0=ADD 1=SUB 2=MUL 3=DIV 4=MOD 5=AND 6=OR 7=XOR 8=SHL 9=SHR 10=FADD 11=FSUB 12=FMUL 13=FDIV
+# UnOp:  0=NEG 1=NOT 2=FNEG | CmpOp: 0=EQ 1=NE 2=LT 3=LE 4=GT 5=GE
 # X64CC: 2=B 3=AE 4=E 5=NE 6=BE 7=A 12=L 13=GE 14=LE 15=G
-
 def B5K_OP_ADD() -> U32:
   0
 def B5K_OP_SUB() -> U32:
@@ -46,7 +39,6 @@ def B5K_OP_SHL() -> U32:
   8
 def B5K_OP_SHR() -> U32:
   9
-
 def B5K_CMP_EQ() -> U32:
   0
 def B5K_CMP_NE() -> U32:
@@ -59,35 +51,25 @@ def B5K_CMP_GT() -> U32:
   4
 def B5K_CMP_GE() -> U32:
   5
-
 # Core Helpers
-# ------------
-
 def b5k_str_eq(a: String, b: String) -> Bool:
   String.eq(a, b)
-
 def b5k_list_len_go(-A: Data, xs: List<&2, A>, acc: U32) -> U32:
   match xs:
     case Nil{}: acc
     case Con{_, t}: b5k_list_len_go(A, t, U32.add(acc, 1))
-
 def b5k_list_len(-A: Data, xs: List<&2, A>) -> U32:
   b5k_list_len_go(A, xs, 0)
-
 def b5k_u32_list_len(xs: List<&2, U32>) -> U32:
   b5k_list_len_go(U32, xs, 0)
-
 def b5k_list_rev_go(-A: Data, xs: List<&2, A>, acc: List<&2, A>) -> List<&2, A>:
   match xs:
     case Nil{}: acc
     case Con{h, t}: b5k_list_rev_go(A, t, Con{h, acc})
-
 def b5k_list_rev(-A: Data, xs: List<&2, A>) -> List<&2, A>:
   b5k_list_rev_go(A, xs, Nil{})
-
 def b5k_list_app(-A: Data, xs: List<&2, A>, ys: List<&2, A>) -> List<&2, A>:
   b5k_list_rev_go(A, b5k_list_rev_go(A, xs, Nil{}), ys)
-
 def b5k_u32_to_str_go(fuel: Nat, +n: U32, acc: String, z: Bool) -> String:
   match fuel z:
     case 0n _: acc
@@ -97,165 +79,133 @@ def b5k_u32_to_str_go(fuel: Nat, +n: U32, acc: String, z: Bool) -> String:
       +q = U32.div(n, 10)
       c = Char.from_u32(U32.add(48, d))
       b5k_u32_to_str_go(p, q, SCon{c, acc}, U32.is_zero(q))
-
 def b5k_u32_to_str_fin(+n: U32, z: Bool) -> String:
   match z:
     case True{}: "0"
     case False{}: b5k_u32_to_str_go(12n, n, "", False{})
-
 def b5k_u32_to_str(+n: U32) -> String:
   b5k_u32_to_str_fin(n, U32.is_zero(n))
-
+# Shared Dense 4-Way U32 Bit-Trie (Depth 8 = 65,536 entries)
+type RaVec<-A: Data> is Data:
+  RVEmpty{}
+  RVLeaf{val: A}
+  RVNode{c0: RaVec<A>, c1: RaVec<A>, c2: RaVec<A>, c3: RaVec<A>}
+def ra_vec_set_go(-A: Data, d: Nat, +idx: U32, val: A, t: RaVec<A>, q: U32) -> RaVec<A>:
+  match d t q:
+    case 0n _ _: RVLeaf{val}
+    case 1n+p RVNode{c0, c1, c2, c3} 0:
+      +nxt = U32.shrn(idx, 2n)
+      RVNode{ra_vec_set_go(A, p, nxt, val, c0, U32.and(nxt, 3)), c1, c2, c3}
+    case 1n+p RVNode{c0, c1, c2, c3} 1:
+      +nxt = U32.shrn(idx, 2n)
+      RVNode{c0, ra_vec_set_go(A, p, nxt, val, c1, U32.and(nxt, 3)), c2, c3}
+    case 1n+p RVNode{c0, c1, c2, c3} 2:
+      +nxt = U32.shrn(idx, 2n)
+      RVNode{c0, c1, ra_vec_set_go(A, p, nxt, val, c2, U32.and(nxt, 3)), c3}
+    case 1n+p RVNode{c0, c1, c2, c3} _:
+      +nxt = U32.shrn(idx, 2n)
+      RVNode{c0, c1, c2, ra_vec_set_go(A, p, nxt, val, c3, U32.and(nxt, 3))}
+    case 1n+p _ 0:
+      +nxt = U32.shrn(idx, 2n)
+      RVNode{ra_vec_set_go(A, p, nxt, val, RVEmpty{}, U32.and(nxt, 3)), RVEmpty{}, RVEmpty{}, RVEmpty{}}
+    case 1n+p _ 1:
+      +nxt = U32.shrn(idx, 2n)
+      RVNode{RVEmpty{}, ra_vec_set_go(A, p, nxt, val, RVEmpty{}, U32.and(nxt, 3)), RVEmpty{}, RVEmpty{}}
+    case 1n+p _ 2:
+      +nxt = U32.shrn(idx, 2n)
+      RVNode{RVEmpty{}, RVEmpty{}, ra_vec_set_go(A, p, nxt, val, RVEmpty{}, U32.and(nxt, 3)), RVEmpty{}}
+    case 1n+p _ _:
+      +nxt = U32.shrn(idx, 2n)
+      RVNode{RVEmpty{}, RVEmpty{}, RVEmpty{}, ra_vec_set_go(A, p, nxt, val, RVEmpty{}, U32.and(nxt, 3))}
+def ra_vec_set(-A: Data, d: Nat, +idx: U32, val: A, t: RaVec<A>) -> RaVec<A>:
+  ra_vec_set_go(A, d, idx, val, t, U32.and(idx, 3))
+def ra_vec_get_go(-A: Data, d: Nat, +idx: U32, defv: A, t: RaVec<A>, q: U32) -> A:
+  match d t q:
+    case _ RVEmpty{} _: defv
+    case _ RVLeaf{v} _: v
+    case 0n RVNode{_, _, _, _} _: defv
+    case 1n+p RVNode{c0, _, _, _} 0:
+      +nxt = U32.shrn(idx, 2n)
+      ra_vec_get_go(A, p, nxt, defv, c0, U32.and(nxt, 3))
+    case 1n+p RVNode{_, c1, _, _} 1:
+      +nxt = U32.shrn(idx, 2n)
+      ra_vec_get_go(A, p, nxt, defv, c1, U32.and(nxt, 3))
+    case 1n+p RVNode{_, _, c2, _} 2:
+      +nxt = U32.shrn(idx, 2n)
+      ra_vec_get_go(A, p, nxt, defv, c2, U32.and(nxt, 3))
+    case 1n+p RVNode{_, _, _, c3} _:
+      +nxt = U32.shrn(idx, 2n)
+      ra_vec_get_go(A, p, nxt, defv, c3, U32.and(nxt, 3))
+def ra_vec_get(-A: Data, d: Nat, defv: A, +idx: U32, t: RaVec<A>) -> A:
+  ra_vec_get_go(A, d, idx, defv, t, U32.and(idx, 3))
 # String Interner (SymTab: String <-> U32)
-# ----------------------------------------
-# Uses Base `Map<&2, U32>` storing `id + 1` (0 = absent) and a 16-level
-# binary bit-trie `StrVec` for O(log N) U32 -> String reverse lookup.
-
-type StrVec is Data:
-  SVEmpty{}
-  SVLeaf{val: String}
-  SVNode{lo: StrVec, hi: StrVec}
-
-def strvec_set_go(depth: Nat, +idx: U32, val: String, t: StrVec, is_lo: Bool) -> StrVec:
-  match depth t is_lo:
-    case 0n _ _: SVLeaf{val}
-    case 1n+p SVEmpty{} True{}:
-      +nxt = U32.shr(idx)
-      SVNode{strvec_set_go(p, nxt, val, SVEmpty{}, U32.is_zero(U32.and(nxt, 1))), SVEmpty{}}
-    case 1n+p SVEmpty{} False{}:
-      +nxt = U32.shr(idx)
-      SVNode{SVEmpty{}, strvec_set_go(p, nxt, val, SVEmpty{}, U32.is_zero(U32.and(nxt, 1)))}
-    case 1n+p SVLeaf{_} True{}:
-      +nxt = U32.shr(idx)
-      SVNode{strvec_set_go(p, nxt, val, SVEmpty{}, U32.is_zero(U32.and(nxt, 1))), SVEmpty{}}
-    case 1n+p SVLeaf{_} False{}:
-      +nxt = U32.shr(idx)
-      SVNode{SVEmpty{}, strvec_set_go(p, nxt, val, SVEmpty{}, U32.is_zero(U32.and(nxt, 1)))}
-    case 1n+p SVNode{lo, hi} True{}:
-      +nxt = U32.shr(idx)
-      SVNode{strvec_set_go(p, nxt, val, lo, U32.is_zero(U32.and(nxt, 1))), hi}
-    case 1n+p SVNode{lo, hi} False{}:
-      +nxt = U32.shr(idx)
-      SVNode{lo, strvec_set_go(p, nxt, val, hi, U32.is_zero(U32.and(nxt, 1)))}
-
-def strvec_get_go(depth: Nat, +idx: U32, t: StrVec, is_lo: Bool) -> String:
-  match depth t is_lo:
-    case _ SVEmpty{} _: ""
-    case _ SVLeaf{v} _: v
-    case 0n SVNode{_, _} _: ""
-    case 1n+p SVNode{lo, hi} True{}:
-      +nxt = U32.shr(idx)
-      strvec_get_go(p, nxt, lo, U32.is_zero(U32.and(nxt, 1)))
-    case 1n+p SVNode{lo, hi} False{}:
-      +nxt = U32.shr(idx)
-      strvec_get_go(p, nxt, hi, U32.is_zero(U32.and(nxt, 1)))
-
 type SymTab is Data:
-  SymTab{next: U32, by_name: Map<&2, U32>, by_id: StrVec}
-
+  SymTab{next: U32, by_name: Map<&2, U32>, by_id: RaVec<String>}
 type SymRes is Data:
   SymRes{tab: SymTab, id: U32}
-
 def symtab_new() -> SymTab:
-  SymTab{0, Map.new(&2, U32), SVEmpty{}}
-
-def symtab_count(st: SymTab) -> U32:
-  match st:
-    case SymTab{n, _, _}: n
-
+  SymTab{0, Map.new(&2, U32), RVEmpty{}}
 def symtab_name(st: SymTab, +id: U32) -> String:
   match st:
-    case SymTab{_, _, by_id}: strvec_get_go(16n, id, by_id, U32.is_zero(U32.and(id, 1)))
-
-def symtab_intern_fin(+next: U32, m1: Map<&2, U32>, by_id: StrVec, +name: String, found: U32, miss: Bool) -> SymRes:
+    case SymTab{_, _, by_id}: ra_vec_get(String, 8n, "", id, by_id)
+def symtab_intern_fin(+next: U32, m1: Map<&2, U32>, by_id: RaVec<String>, +name: String, found: U32, miss: Bool) -> SymRes:
   match miss:
     case True{}:
       m2 = Map.set(&2, U32, m1, name, U32.add(next, 1))
-      v2 = strvec_set_go(16n, next, name, by_id, U32.is_zero(U32.and(next, 1)))
+      v2 = ra_vec_set(String, 8n, next, name, by_id)
       SymRes{SymTab{U32.add(next, 1), m2, v2}, next}
     case False{}:
       SymRes{SymTab{next, m1, by_id}, U32.sub(found, 1)}
-
-def symtab_intern_got(+next: U32, by_id: StrVec, +name: String, got: Map<&2, U32> & U32) -> SymRes:
+def symtab_intern_got(+next: U32, by_id: RaVec<String>, +name: String, got: Map<&2, U32> & U32) -> SymRes:
   (m1, +found) = got
   symtab_intern_fin(next, m1, by_id, name, found, U32.is_zero(found))
-
 def symtab_intern(st: SymTab, +name: String) -> SymRes:
   match st:
     case SymTab{next, by_name, by_id}:
       symtab_intern_got(next, by_id, name, Map.get(U32, 0, by_name, name))
-
 def symtab_lookup_fin(found: U32, miss: Bool) -> Maybe<&2, U32>:
   match miss:
     case True{}: None{}
     case False{}: Some{U32.sub(found, 1)}
-
 def symtab_lookup_got(got: Map<&2, U32> & U32) -> Maybe<&2, U32>:
   (_, +found) = got
   symtab_lookup_fin(found, U32.is_zero(found))
-
 def symtab_lookup(st: SymTab, name: String) -> Maybe<&2, U32>:
   match st:
     case SymTab{_, by_name, _}:
       symtab_lookup_got(Map.get(U32, 0, by_name, name))
-
 # Growable Byte Buffer (ByteBuf)
-# ------------------------------
-# Stores emitted bytes in reverse for O(1) append; `bb_to_bytes` reverses once.
-
 type ByteBuf is Data:
   ByteBuf{len: U32, rev: List<&2, U32>}
-
 def bb_new() -> ByteBuf:
   ByteBuf{0, Nil{}}
-
 def bb_len(b: ByteBuf) -> U32:
   match b:
     case ByteBuf{n, _}: n
-
 def bb_emit_u8(b: ByteBuf, v: U32) -> ByteBuf:
   match b:
     case ByteBuf{n, rev}: ByteBuf{U32.add(n, 1), Con{U32.and(v, 255), rev}}
-
 def bb_emit_u16(b: ByteBuf, +v: U32) -> ByteBuf:
   bb_emit_u8(bb_emit_u8(b, v), U32.shrn(v, 8n))
-
 def bb_emit_u32(b: ByteBuf, +v: U32) -> ByteBuf:
   b1 = bb_emit_u8(b, v)
   b2 = bb_emit_u8(b1, U32.shrn(v, 8n))
   b3 = bb_emit_u8(b2, U32.shrn(v, 16n))
   bb_emit_u8(b3, U32.shrn(v, 24n))
-
 def bb_emit_u64(b: ByteBuf, lo: U32, hi: U32) -> ByteBuf:
   bb_emit_u32(bb_emit_u32(b, lo), hi)
-
 def bb_emit_str_go(s: String, b: ByteBuf) -> ByteBuf:
   match s:
     case SNil{}: b
     case SCon{c, t}: bb_emit_str_go(t, bb_emit_u8(b, Char.to_u32(c)))
-
-def bb_emit_str(b: ByteBuf, s: String) -> ByteBuf:
-  bb_emit_str_go(s, b)
-
 def bb_emit_cstr(b: ByteBuf, s: String) -> ByteBuf:
   bb_emit_u8(bb_emit_str_go(s, b), 0)
-
 def bb_emit_zeros_go(n: Nat, b: ByteBuf) -> ByteBuf:
   match n:
     case 0n: b
     case 1n+p: bb_emit_zeros_go(p, bb_emit_u8(b, 0))
-
 def bb_emit_zeros(b: ByteBuf, n: U32) -> ByteBuf:
   bb_emit_zeros_go(U32.to_nat(n), b)
-
-def bb_append_bytes_go(xs: List<&2, U32>, b: ByteBuf) -> ByteBuf:
-  match xs:
-    case Nil{}: b
-    case Con{h, t}: bb_append_bytes_go(t, bb_emit_u8(b, h))
-
-def bb_append_bytes(b: ByteBuf, xs: List<&2, U32>) -> ByteBuf:
-  bb_append_bytes_go(xs, b)
-
 def bb_to_bytes(b: ByteBuf) -> List<&2, U32>:
   match b:
     case ByteBuf{_, rev}: b5k_list_rev(U32, rev)

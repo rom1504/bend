@@ -1,0 +1,2700 @@
+{
+  "meta": {
+    "wave": "Proven-8 (audited in Proven-9 P6-SWEEP)",
+    "timestamp_utc": "2026-11-25T18:41:00Z",
+    "compiler": "selfhost/build/agy/bend5k/bend5k_o2",
+    "runtime": "selfhost/build/agy/unified/runtime-agy.o",
+    "gcc": "/usr/bin/gcc-10",
+    "cpu_pin": "taskset -c 7",
+    "baseline_comparison": "General-5 (7f065d2b)"
+  },
+  "bench_runtime_17": {
+    "meta": {
+      "compiler": "/home/ai/bend2_agy/selfhost/build/agy/bend5k/bend5k_o2",
+      "runtime_o": "/home/ai/bend2_agy/selfhost/build/agy/unified/runtime-agy.o",
+      "gcc": "/usr/bin/gcc-10",
+      "cpu_pin": "taskset -c 7",
+      "timeout_s": 30.0,
+      "total_benchmarks": 17,
+      "compiled": 17,
+      "passed": 12,
+      "passed_with_c_ratio": 12,
+      "geomean_ratio_all_passing": 2.4382,
+      "orig8_passed": 8,
+      "geomean_ratio_orig8": 1.8216,
+      "gen5_passed": 9,
+      "gen5_geomean_ratio_orig8": 2.3749,
+      "gen5_geomean_ratio_all_passing": 2.795,
+      "newly_passing_vs_gen5": [
+        "bfs",
+        "editdist",
+        "merkle"
+      ],
+      "still_timeout": [
+        "gameoflife",
+        "kmeans",
+        "raytrace",
+        "tree-bitonic",
+        "tree-matmul"
+      ]
+    },
+    "results": [
+      {
+        "bench": "bfs",
+        "in_orig8": false,
+        "timeout_s": 30.0,
+        "status": "OK",
+        "checksum_match": true,
+        "gcc10_status": "OK",
+        "gcc10_ms": 6621.06,
+        "gcc10_runs_ms": [
+          6621.06
+        ],
+        "gcc10_stdout": "651176970",
+        "b5k_ms": 29868.7,
+        "b5k_runs_ms": [
+          29868.7
+        ],
+        "b5k_stdout": "651176970",
+        "expected_from_bend": null,
+        "ratio": 4.5112,
+        "compile_ms": 1032.87,
+        "obj_bytes": 279584,
+        "error": null,
+        "note": null,
+        "gen5_status": "TIMEOUT",
+        "gen5_b5k_ms": null,
+        "gen5_ratio": null,
+        "speedup_vs_gen5": null
+      },
+      {
+        "bench": "editdist",
+        "in_orig8": false,
+        "timeout_s": 30.0,
+        "status": "OK",
+        "checksum_match": true,
+        "gcc10_status": "OK",
+        "gcc10_ms": 5226.75,
+        "gcc10_runs_ms": [
+          5226.75
+        ],
+        "gcc10_stdout": "2229810577",
+        "b5k_ms": 20277.0,
+        "b5k_runs_ms": [
+          20277.0
+        ],
+        "b5k_stdout": "2229810577",
+        "expected_from_bend": null,
+        "ratio": 3.8795,
+        "compile_ms": 784.1,
+        "obj_bytes": 154256,
+        "error": null,
+        "note": null,
+        "gen5_status": "TIMEOUT",
+        "gen5_b5k_ms": null,
+        "gen5_ratio": null,
+        "speedup_vs_gen5": null
+      },
+      {
+        "bench": "gameoflife",
+        "in_orig8": false,
+        "timeout_s": 30.0,
+        "status": "TIMEOUT",
+        "checksum_match": null,
+        "gcc10_status": "TIMEOUT",
+        "gcc10_ms": null,
+        "gcc10_runs_ms": [
+          30029.95
+        ],
+        "gcc10_stdout": "",
+        "b5k_ms": null,
+        "b5k_runs_ms": [
+          30031.8
+        ],
+        "b5k_stdout": "",
+        "expected_from_bend": null,
+        "ratio": null,
+        "compile_ms": 1673.3,
+        "obj_bytes": 151504,
+        "error": "timeout>30.0s",
+        "note": null,
+        "gen5_status": "TIMEOUT",
+        "gen5_b5k_ms": null,
+        "gen5_ratio": null,
+        "speedup_vs_gen5": null
+      },
+      {
+        "bench": "hashmap",
+        "in_orig8": true,
+        "timeout_s": 30.0,
+        "status": "OK",
+        "checksum_match": true,
+        "gcc10_status": "OK",
+        "gcc10_ms": 1239.99,
+        "gcc10_runs_ms": [
+          1240.67,
+          1236.95,
+          1239.99
+        ],
+        "gcc10_stdout": "1307803744",
+        "b5k_ms": 6089.04,
+        "b5k_runs_ms": [
+          6089.04
+        ],
+        "b5k_stdout": "1307803744",
+        "expected_from_bend": null,
+        "ratio": 4.9106,
+        "compile_ms": 701.8,
+        "obj_bytes": 140176,
+        "error": null,
+        "note": null,
+        "gen5_status": "OK",
+        "gen5_b5k_ms": 7511.6,
+        "gen5_ratio": 5.067,
+        "speedup_vs_gen5": 1.2336
+      },
+      {
+        "bench": "histogram",
+        "in_orig8": true,
+        "timeout_s": 30.0,
+        "status": "OK",
+        "checksum_match": true,
+        "gcc10_status": "OK",
+        "gcc10_ms": 9184.61,
+        "gcc10_runs_ms": [
+          9184.61
+        ],
+        "gcc10_stdout": "122845198",
+        "b5k_ms": 17843.65,
+        "b5k_runs_ms": [
+          17843.65
+        ],
+        "b5k_stdout": "122845198",
+        "expected_from_bend": null,
+        "ratio": 1.9428,
+        "compile_ms": 1420.05,
+        "obj_bytes": 225200,
+        "error": null,
+        "note": null,
+        "gen5_status": "OK",
+        "gen5_b5k_ms": 17499.45,
+        "gen5_ratio": 1.926,
+        "speedup_vs_gen5": 0.9807
+      },
+      {
+        "bench": "kmeans",
+        "in_orig8": false,
+        "timeout_s": 30.0,
+        "status": "TIMEOUT",
+        "checksum_match": null,
+        "gcc10_status": "OK",
+        "gcc10_ms": 22541.43,
+        "gcc10_runs_ms": [
+          22541.43
+        ],
+        "gcc10_stdout": "1616398086",
+        "b5k_ms": null,
+        "b5k_runs_ms": [
+          30031.24
+        ],
+        "b5k_stdout": "",
+        "expected_from_bend": null,
+        "ratio": null,
+        "compile_ms": 1188.42,
+        "obj_bytes": 178336,
+        "error": "timeout>30.0s",
+        "note": null,
+        "gen5_status": "TIMEOUT",
+        "gen5_b5k_ms": null,
+        "gen5_ratio": null,
+        "speedup_vs_gen5": null
+      },
+      {
+        "bench": "lexer",
+        "in_orig8": false,
+        "timeout_s": 30.0,
+        "status": "OK",
+        "checksum_match": true,
+        "gcc10_status": "OK",
+        "gcc10_ms": 2175.05,
+        "gcc10_runs_ms": [
+          2212.39,
+          2175.05,
+          2172.55
+        ],
+        "gcc10_stdout": "2401049475",
+        "b5k_ms": 22785.42,
+        "b5k_runs_ms": [
+          22785.42
+        ],
+        "b5k_stdout": "2401049475",
+        "expected_from_bend": null,
+        "ratio": 10.4758,
+        "compile_ms": 1095.66,
+        "obj_bytes": 218272,
+        "error": null,
+        "note": null,
+        "gen5_status": "OK",
+        "gen5_b5k_ms": 22239.02,
+        "gen5_ratio": 10.288,
+        "speedup_vs_gen5": 0.976
+      },
+      {
+        "bench": "mandelbrot",
+        "in_orig8": true,
+        "timeout_s": 30.0,
+        "status": "OK",
+        "checksum_match": true,
+        "gcc10_status": "OK",
+        "gcc10_ms": 3309.71,
+        "gcc10_runs_ms": [
+          3309.71
+        ],
+        "gcc10_stdout": "3101455856",
+        "b5k_ms": 8097.35,
+        "b5k_runs_ms": [
+          8097.35
+        ],
+        "b5k_stdout": "3101455856",
+        "expected_from_bend": null,
+        "ratio": 2.4465,
+        "compile_ms": 859.15,
+        "obj_bytes": 144096,
+        "error": null,
+        "note": null,
+        "gen5_status": "OK",
+        "gen5_b5k_ms": 11081.07,
+        "gen5_ratio": 3.375,
+        "speedup_vs_gen5": 1.3685
+      },
+      {
+        "bench": "merkle",
+        "in_orig8": false,
+        "timeout_s": 30.0,
+        "status": "OK",
+        "checksum_match": true,
+        "gcc10_status": "OK",
+        "gcc10_ms": 9142.26,
+        "gcc10_runs_ms": [
+          9142.26
+        ],
+        "gcc10_stdout": "3104235417",
+        "b5k_ms": 18157.28,
+        "b5k_runs_ms": [
+          18157.28
+        ],
+        "b5k_stdout": "3104235417",
+        "expected_from_bend": null,
+        "ratio": 1.9861,
+        "compile_ms": 933.52,
+        "obj_bytes": 153904,
+        "error": null,
+        "note": null,
+        "gen5_status": "TIMEOUT",
+        "gen5_b5k_ms": null,
+        "gen5_ratio": null,
+        "speedup_vs_gen5": null
+      },
+      {
+        "bench": "nbody",
+        "in_orig8": true,
+        "timeout_s": 30.0,
+        "status": "OK",
+        "checksum_match": true,
+        "gcc10_status": "OK",
+        "gcc10_ms": 10491.23,
+        "gcc10_runs_ms": [
+          10491.23
+        ],
+        "gcc10_stdout": "3516450380",
+        "b5k_ms": 10123.55,
+        "b5k_runs_ms": [
+          10123.55
+        ],
+        "b5k_stdout": "3516450380",
+        "expected_from_bend": null,
+        "ratio": 0.965,
+        "compile_ms": 1076.81,
+        "obj_bytes": 138896,
+        "error": null,
+        "note": "gcc-10 compiled with -D__attribute__(x)= because main.c uses Clang __attribute__((musttail))",
+        "gen5_status": "OK",
+        "gen5_b5k_ms": 10287.29,
+        "gen5_ratio": 0.987,
+        "speedup_vs_gen5": 1.0162
+      },
+      {
+        "bench": "queens",
+        "in_orig8": true,
+        "timeout_s": 30.0,
+        "status": "OK",
+        "checksum_match": true,
+        "gcc10_status": "OK",
+        "gcc10_ms": 6808.82,
+        "gcc10_runs_ms": [
+          6808.82
+        ],
+        "gcc10_stdout": "2063750025",
+        "b5k_ms": 24627.44,
+        "b5k_runs_ms": [
+          24627.44
+        ],
+        "b5k_stdout": "2063750025",
+        "expected_from_bend": null,
+        "ratio": 3.617,
+        "compile_ms": 1073.2,
+        "obj_bytes": 147472,
+        "error": null,
+        "note": null,
+        "gen5_status": "OK",
+        "gen5_b5k_ms": 29753.87,
+        "gen5_ratio": 4.536,
+        "speedup_vs_gen5": 1.2082
+      },
+      {
+        "bench": "raytrace",
+        "in_orig8": false,
+        "timeout_s": 30.0,
+        "status": "TIMEOUT",
+        "checksum_match": null,
+        "gcc10_status": "OK",
+        "gcc10_ms": 18911.05,
+        "gcc10_runs_ms": [
+          18911.05
+        ],
+        "gcc10_stdout": "1924309504",
+        "b5k_ms": null,
+        "b5k_runs_ms": [
+          30032.83
+        ],
+        "b5k_stdout": "",
+        "expected_from_bend": null,
+        "ratio": null,
+        "compile_ms": 2195.83,
+        "obj_bytes": 150032,
+        "error": "timeout>30.0s",
+        "note": null,
+        "gen5_status": "TIMEOUT",
+        "gen5_b5k_ms": null,
+        "gen5_ratio": null,
+        "speedup_vs_gen5": null
+      },
+      {
+        "bench": "symreg",
+        "in_orig8": true,
+        "timeout_s": 30.0,
+        "status": "OK",
+        "checksum_match": true,
+        "gcc10_status": "OK",
+        "gcc10_ms": 13711.84,
+        "gcc10_runs_ms": [
+          13711.84
+        ],
+        "gcc10_stdout": "2383953211",
+        "b5k_ms": 8586.21,
+        "b5k_runs_ms": [
+          8586.21
+        ],
+        "b5k_stdout": "2383953211",
+        "expected_from_bend": null,
+        "ratio": 0.6262,
+        "compile_ms": 910.4,
+        "obj_bytes": 148912,
+        "error": null,
+        "note": null,
+        "gen5_status": "OK",
+        "gen5_b5k_ms": 21983.65,
+        "gen5_ratio": 1.658,
+        "speedup_vs_gen5": 2.5603
+      },
+      {
+        "bench": "terrain",
+        "in_orig8": true,
+        "timeout_s": 30.0,
+        "status": "OK",
+        "checksum_match": true,
+        "gcc10_status": "OK",
+        "gcc10_ms": 8224.37,
+        "gcc10_runs_ms": [
+          8224.37
+        ],
+        "gcc10_stdout": "2572468224",
+        "b5k_ms": 14636.07,
+        "b5k_runs_ms": [
+          14636.07
+        ],
+        "b5k_stdout": "2572468224",
+        "expected_from_bend": null,
+        "ratio": 1.7796,
+        "compile_ms": 1499.13,
+        "obj_bytes": 197360,
+        "error": null,
+        "note": null,
+        "gen5_status": "OK",
+        "gen5_b5k_ms": 15152.58,
+        "gen5_ratio": 1.924,
+        "speedup_vs_gen5": 1.0353
+      },
+      {
+        "bench": "tree-bitonic",
+        "in_orig8": false,
+        "timeout_s": 30.0,
+        "status": "TIMEOUT",
+        "checksum_match": null,
+        "gcc10_status": "OK",
+        "gcc10_ms": 19991.8,
+        "gcc10_runs_ms": [
+          19991.8
+        ],
+        "gcc10_stdout": "3787129428",
+        "b5k_ms": null,
+        "b5k_runs_ms": [
+          30028.84
+        ],
+        "b5k_stdout": "",
+        "expected_from_bend": null,
+        "ratio": null,
+        "compile_ms": 907.73,
+        "obj_bytes": 165072,
+        "error": "timeout>30.0s",
+        "note": null,
+        "gen5_status": "TIMEOUT",
+        "gen5_b5k_ms": null,
+        "gen5_ratio": null,
+        "speedup_vs_gen5": null
+      },
+      {
+        "bench": "tree-matmul",
+        "in_orig8": false,
+        "timeout_s": 30.0,
+        "status": "TIMEOUT",
+        "checksum_match": null,
+        "gcc10_status": "OK",
+        "gcc10_ms": 8887.33,
+        "gcc10_runs_ms": [
+          8887.33
+        ],
+        "gcc10_stdout": "3797651056",
+        "b5k_ms": null,
+        "b5k_runs_ms": [
+          30031.76
+        ],
+        "b5k_stdout": "",
+        "expected_from_bend": null,
+        "ratio": null,
+        "compile_ms": 881.26,
+        "obj_bytes": 157168,
+        "error": "timeout>30.0s",
+        "note": null,
+        "gen5_status": "TIMEOUT",
+        "gen5_b5k_ms": null,
+        "gen5_ratio": null,
+        "speedup_vs_gen5": null
+      },
+      {
+        "bench": "tree-radix",
+        "in_orig8": true,
+        "timeout_s": 30.0,
+        "status": "OK",
+        "checksum_match": true,
+        "gcc10_status": "OK",
+        "gcc10_ms": 6086.41,
+        "gcc10_runs_ms": [
+          6086.41
+        ],
+        "gcc10_stdout": "1998173798",
+        "b5k_ms": 8126.03,
+        "b5k_runs_ms": [
+          8126.03
+        ],
+        "b5k_stdout": "1998173798",
+        "expected_from_bend": null,
+        "ratio": 1.3351,
+        "compile_ms": 808.46,
+        "obj_bytes": 152656,
+        "error": null,
+        "note": null,
+        "gen5_status": "OK",
+        "gen5_b5k_ms": 11503.28,
+        "gen5_ratio": 2.151,
+        "speedup_vs_gen5": 1.4156
+      }
+    ]
+  },
+  "native45": {
+    "summary": {
+      "compiler": "selfhost/build/agy/bend5k/bend5k_o2",
+      "flags": "-O2",
+      "runtime": "selfhost/build/agy/unified/runtime-agy.o",
+      "cpu_pin": "taskset -c 7",
+      "total_cases": 45,
+      "passed_cases": 45,
+      "failed_cases": 0,
+      "total_ratio_families": 22,
+      "passed_ratio_families": 22,
+      "total_b5k_sec": 17.675756243068808,
+      "total_c_sec_matched": 10.124791935893183,
+      "total_x86_83k_sec_matched": 15.666571055572032,
+      "fixed_batch_ratio_vs_c": 1.7457895781943786,
+      "fixed_batch_ratio_vs_x86_83k": 1.1282466456999332,
+      "equal_family_geomean_vs_c": 1.680457134720512,
+      "equal_family_case_geomean_vs_c": 1.6645686266617243,
+      "families_over_2x_c": 9,
+      "gen5_total_b5k_sec": 34.41182872624094,
+      "gen5_equal_family_geomean_vs_c": 3.121416087007943,
+      "speedup_total_vs_gen5": 1.9468
+    },
+    "families": [
+      {
+        "family": "list-pipeline",
+        "cases": 2,
+        "passed": 2,
+        "failed": 0,
+        "b5k_sec": 2.015094852658552,
+        "c_sec": 0.2837966792851112,
+        "x86_83k_sec": 0.07459523558932316,
+        "ratio_vs_c": 7.100487777850718,
+        "ratio_vs_x86_83k": 27.013720604791192,
+        "case_geomean_vs_c": 7.100316196085498,
+        "gen5_b5k_sec": 2.057669522741832,
+        "gen5_ratio_vs_c": 7.250505988742142,
+        "speedup_vs_gen5": 1.0211
+      },
+      {
+        "family": "closures",
+        "cases": 2,
+        "passed": 2,
+        "failed": 0,
+        "b5k_sec": 0.538,
+        "c_sec": 0.11606371341281033,
+        "x86_83k_sec": 0.008840996822679774,
+        "ratio_vs_c": 4.635385032757527,
+        "ratio_vs_x86_83k": 60.85286657041554,
+        "case_geomean_vs_c": 4.633637229760438,
+        "gen5_b5k_sec": 0.923,
+        "gen5_ratio_vs_c": 7.952528597091445,
+        "speedup_vs_gen5": 1.7156
+      },
+      {
+        "family": "bst",
+        "cases": 2,
+        "passed": 2,
+        "failed": 0,
+        "b5k_sec": 1.9043271516431748,
+        "c_sec": 0.41202965847333883,
+        "x86_83k_sec": 1.1510160133157321,
+        "ratio_vs_c": 4.621820571604308,
+        "ratio_vs_x86_83k": 1.6544749418015299,
+        "case_geomean_vs_c": 4.568093252890385,
+        "gen5_b5k_sec": 5.5154678272329605,
+        "gen5_ratio_vs_c": 13.386094213870406,
+        "speedup_vs_gen5": 2.8963
+      },
+      {
+        "family": "complete-generic-row32",
+        "cases": 1,
+        "passed": 1,
+        "failed": 0,
+        "b5k_sec": 0.438,
+        "c_sec": 0.11666964285714285,
+        "x86_83k_sec": 0.3728214285714286,
+        "ratio_vs_c": 3.7541899441340787,
+        "ratio_vs_x86_83k": 1.1748251748251748,
+        "case_geomean_vs_c": 3.7541899441340787,
+        "gen5_b5k_sec": 0.613,
+        "gen5_ratio_vs_c": 5.254151679804087,
+        "speedup_vs_gen5": 1.3995
+      },
+      {
+        "family": "local-fold",
+        "cases": 3,
+        "passed": 3,
+        "failed": 0,
+        "b5k_sec": 1.7441600286639825,
+        "c_sec": 0.536017114077653,
+        "x86_83k_sec": 0.46214312857240025,
+        "ratio_vs_c": 3.253926008808938,
+        "ratio_vs_x86_83k": 3.7740689427793557,
+        "case_geomean_vs_c": 2.860004784574736,
+        "gen5_b5k_sec": 3.5740597599299244,
+        "gen5_ratio_vs_c": 6.667809042030232,
+        "speedup_vs_gen5": 2.0492
+      },
+      {
+        "family": "editdist",
+        "cases": 3,
+        "passed": 3,
+        "failed": 0,
+        "b5k_sec": 1.8364719318621758,
+        "c_sec": 0.6069723743458684,
+        "x86_83k_sec": 0.9223208596310231,
+        "ratio_vs_c": 3.025626881027879,
+        "ratio_vs_x86_83k": 1.9911421417887711,
+        "case_geomean_vs_c": 3.0255300484877754,
+        "gen5_b5k_sec": 3.145758807588076,
+        "gen5_ratio_vs_c": 5.1827050794169125,
+        "speedup_vs_gen5": 1.7129
+      },
+      {
+        "family": "local-pair",
+        "cases": 1,
+        "passed": 1,
+        "failed": 0,
+        "b5k_sec": 0.6047539936102238,
+        "c_sec": 0.20092637215528783,
+        "x86_83k_sec": 0.3030178571428571,
+        "ratio_vs_c": 3.009828859811563,
+        "ratio_vs_x86_83k": 1.995770148044819,
+        "case_geomean_vs_c": 3.0098288598115635,
+        "gen5_b5k_sec": 1.0690095846645367,
+        "gen5_ratio_vs_c": 5.320404550171953,
+        "speedup_vs_gen5": 1.7677
+      },
+      {
+        "family": "unicode-text",
+        "cases": 2,
+        "passed": 2,
+        "failed": 0,
+        "b5k_sec": 0.45499999999999996,
+        "c_sec": 0.15698664234008508,
+        "x86_83k_sec": 0.17426958853937613,
+        "ratio_vs_c": 2.8983357642258456,
+        "ratio_vs_x86_83k": 2.610897310388685,
+        "case_geomean_vs_c": 2.8979128399760854,
+        "gen5_b5k_sec": 0.6839999999999999,
+        "gen5_ratio_vs_c": 4.357058599407645,
+        "speedup_vs_gen5": 1.5033
+      },
+      {
+        "family": "lexer",
+        "cases": 3,
+        "passed": 3,
+        "failed": 0,
+        "b5k_sec": 1.4318778135048231,
+        "c_sec": 0.610209536600042,
+        "x86_83k_sec": 1.2331419768199356,
+        "ratio_vs_c": 2.346534637073918,
+        "ratio_vs_x86_83k": 1.1611621698236188,
+        "case_geomean_vs_c": 2.3466228144155075,
+        "gen5_b5k_sec": 2.2467106109324755,
+        "gen5_ratio_vs_c": 3.6818674179539546,
+        "speedup_vs_gen5": 1.5691
+      },
+      {
+        "family": "test-morning-program",
+        "cases": 1,
+        "passed": 1,
+        "failed": 0,
+        "b5k_sec": 0.30621800000000005,
+        "c_sec": 0.15922269998377414,
+        "x86_83k_sec": 0.4871131794489948,
+        "ratio_vs_c": 1.9232056737588654,
+        "ratio_vs_x86_83k": 0.6286382978723405,
+        "case_geomean_vs_c": 1.9232056737588654,
+        "gen5_b5k_sec": 0.39195904,
+        "gen5_ratio_vs_c": 2.4617032624113473,
+        "speedup_vs_gen5": 1.28
+      },
+      {
+        "family": "test-rle-roundtrip",
+        "cases": 1,
+        "passed": 1,
+        "failed": 0,
+        "b5k_sec": 0.585,
+        "c_sec": 0.42043606692257013,
+        "x86_83k_sec": 0.970904,
+        "ratio_vs_c": 1.3914125024572093,
+        "ratio_vs_x86_83k": 0.602531249227524,
+        "case_geomean_vs_c": 1.3914125024572093,
+        "gen5_b5k_sec": 0.89,
+        "gen5_ratio_vs_c": 2.1168497900631045,
+        "speedup_vs_gen5": 1.5214
+      },
+      {
+        "family": "expression",
+        "cases": 2,
+        "passed": 2,
+        "failed": 0,
+        "b5k_sec": 0.87,
+        "c_sec": 0.6490256558040512,
+        "x86_83k_sec": 0.0360725175171831,
+        "ratio_vs_c": 1.340470892359706,
+        "ratio_vs_x86_83k": 24.11808379012018,
+        "case_geomean_vs_c": 1.3404589305771353,
+        "gen5_b5k_sec": 1.056,
+        "gen5_ratio_vs_c": 1.6270543245193674,
+        "speedup_vs_gen5": 1.2138
+      },
+      {
+        "family": "scalar-region-8192",
+        "cases": 1,
+        "passed": 1,
+        "failed": 0,
+        "b5k_sec": 0.268,
+        "c_sec": 0.20657316750463087,
+        "x86_83k_sec": 0.00010083740173230856,
+        "ratio_vs_c": 1.2973611395777824,
+        "ratio_vs_x86_83k": 2657.7440056563073,
+        "case_geomean_vs_c": 1.2973611395777824,
+        "gen5_b5k_sec": 0.45,
+        "gen5_ratio_vs_c": 2.1784048985447835,
+        "speedup_vs_gen5": 1.6791
+      },
+      {
+        "family": "tree-bitonic",
+        "cases": 3,
+        "passed": 3,
+        "failed": 0,
+        "b5k_sec": 0.9155465957446809,
+        "c_sec": 0.806405747771361,
+        "x86_83k_sec": 1.058151796328493,
+        "ratio_vs_c": 1.135342348780312,
+        "ratio_vs_x86_83k": 0.8652318116563101,
+        "case_geomean_vs_c": 1.135363432965652,
+        "gen5_b5k_sec": 3.0205366970618033,
+        "gen5_ratio_vs_c": 3.7456785314459484,
+        "speedup_vs_gen5": 3.2992
+      },
+      {
+        "family": "mandelbrot",
+        "cases": 3,
+        "passed": 3,
+        "failed": 0,
+        "b5k_sec": 0.734,
+        "c_sec": 0.6682284203048309,
+        "x86_83k_sec": 1.0673045552322997,
+        "ratio_vs_c": 1.0984267919421409,
+        "ratio_vs_x86_83k": 0.6877137330686688,
+        "case_geomean_vs_c": 1.0946222374767458,
+        "gen5_b5k_sec": 1.508,
+        "gen5_ratio_vs_c": 2.256713354562328,
+        "speedup_vs_gen5": 2.0545
+      },
+      {
+        "family": "test-map-set-ops",
+        "cases": 1,
+        "passed": 1,
+        "failed": 0,
+        "b5k_sec": 0.2293873154424738,
+        "c_sec": 0.2284243231247226,
+        "x86_83k_sec": 0.5900011383039272,
+        "ratio_vs_c": 1.0042158046243848,
+        "ratio_vs_x86_83k": 0.38879130996576067,
+        "case_geomean_vs_c": 1.0042158046243848,
+        "gen5_b5k_sec": 0.35841768037886523,
+        "gen5_ratio_vs_c": 1.569087194725601,
+        "speedup_vs_gen5": 1.5625
+      },
+      {
+        "family": "map-churn",
+        "cases": 2,
+        "passed": 2,
+        "failed": 0,
+        "b5k_sec": 0.256,
+        "c_sec": 0.2564116131191433,
+        "x86_83k_sec": 0.7386867806364252,
+        "ratio_vs_c": 0.9983947173291561,
+        "ratio_vs_x86_83k": 0.34656096022111005,
+        "case_geomean_vs_c": 0.9925536131755789,
+        "gen5_b5k_sec": 0.937,
+        "gen5_ratio_vs_c": 3.6542806645992942,
+        "speedup_vs_gen5": 3.6602
+      },
+      {
+        "family": "numeric-recurrence",
+        "cases": 2,
+        "passed": 2,
+        "failed": 0,
+        "b5k_sec": 0.377,
+        "c_sec": 0.405767035159204,
+        "x86_83k_sec": 0.5897143468877417,
+        "ratio_vs_c": 0.929104553434418,
+        "ratio_vs_x86_83k": 0.6392925693425022,
+        "case_geomean_vs_c": 0.9291070911034993,
+        "gen5_b5k_sec": 0.453,
+        "gen5_ratio_vs_c": 1.1164041451081999,
+        "speedup_vs_gen5": 1.2016
+      },
+      {
+        "family": "raytrace",
+        "cases": 3,
+        "passed": 3,
+        "failed": 0,
+        "b5k_sec": 1.4319185599387207,
+        "c_sec": 1.7057595712098008,
+        "x86_83k_sec": 2.65241281512605,
+        "ratio_vs_c": 0.8394609557565843,
+        "ratio_vs_x86_83k": 0.5398550903437224,
+        "case_geomean_vs_c": 0.7920368323756299,
+        "gen5_b5k_sec": 3.3272391957104555,
+        "gen5_ratio_vs_c": 1.9505909577576803,
+        "speedup_vs_gen5": 2.3236
+      },
+      {
+        "family": "test-evening-program",
+        "cases": 1,
+        "passed": 1,
+        "failed": 0,
+        "b5k_sec": 0.21,
+        "c_sec": 0.2653333035714286,
+        "x86_83k_sec": 0.9087762298977065,
+        "ratio_vs_c": 0.7914573752083379,
+        "ratio_vs_x86_83k": 0.23107998767049395,
+        "case_geomean_vs_c": 0.7914573752083379,
+        "gen5_b5k_sec": 0.31,
+        "gen5_ratio_vs_c": 1.1683418395932608,
+        "speedup_vs_gen5": 1.4762
+      },
+      {
+        "family": "record-aggregation",
+        "cases": 2,
+        "passed": 2,
+        "failed": 0,
+        "b5k_sec": 0.239,
+        "c_sec": 0.3087960307458247,
+        "x86_83k_sec": 0.8049452554744525,
+        "ratio_vs_c": 0.7739736790746673,
+        "ratio_vs_x86_83k": 0.29691460180000456,
+        "case_geomean_vs_c": 0.7739754365079111,
+        "gen5_b5k_sec": 0.77,
+        "gen5_ratio_vs_c": 2.4935553677300994,
+        "speedup_vs_gen5": 3.2218
+      },
+      {
+        "family": "symreg",
+        "cases": 3,
+        "passed": 3,
+        "failed": 0,
+        "b5k_sec": 0.28600000000000003,
+        "c_sec": 1.0047365671245017,
+        "x86_83k_sec": 1.0602205183122724,
+        "ratio_vs_c": 0.28465172798330174,
+        "ratio_vs_x86_83k": 0.26975520192277863,
+        "case_geomean_vs_c": 0.2845809716872807,
+        "gen5_b5k_sec": 1.111,
+        "gen5_ratio_vs_c": 1.1057624817812874,
+        "speedup_vs_gen5": 3.8846
+      }
+    ],
+    "cases": [
+      {
+        "id": "mandelbrot",
+        "family": "mandelbrot",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/mandelbrot.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 9036,
+        "warmups": 4,
+        "runtime_args": [
+          2,
+          0
+        ],
+        "phase205": {
+          "c_sec": 0.24042214285714286,
+          "x86_83k_sec": 0.4833368740515933,
+          "c_median_ms": 0.026607142857142857,
+          "x86_83k_median_ms": 0.05349013657056146
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 1.2161,
+        "link_sec": 0.1104,
+        "obj_bytes": 181056,
+        "run_repetitions": 9036,
+        "samples_elapsed_ms": [
+          290,
+          254,
+          254
+        ],
+        "median_elapsed_ms": 254,
+        "fixed_work_sec": 0.254,
+        "ratio_vs_c": 1.0564750691492049,
+        "ratio_vs_x86_83k": 0.5255133916658034,
+        "gen5_fixed_work_sec": 0.511,
+        "gen5_ratio_vs_c": 2.125428190296235,
+        "speedup_vs_gen5": 2.0118
+      },
+      {
+        "id": "editdist",
+        "family": "editdist",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/editdist.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 240,
+        "warmups": 4,
+        "runtime_args": [
+          2,
+          0
+        ],
+        "phase205": {
+          "c_sec": 0.20363636363636364,
+          "x86_83k_sec": 0.3095327102803738,
+          "c_median_ms": 0.8484848484848485,
+          "x86_83k_median_ms": 1.2897196261682242
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 1.1543,
+        "link_sec": 0.107,
+        "obj_bytes": 189328,
+        "run_repetitions": 82,
+        "samples_elapsed_ms": [
+          213,
+          212,
+          211
+        ],
+        "median_elapsed_ms": 212,
+        "fixed_work_sec": 0.6204878048780488,
+        "ratio_vs_c": 3.047038327526132,
+        "ratio_vs_x86_83k": 2.004595263343938,
+        "gen5_fixed_work_sec": 1.0185365853658537,
+        "gen5_ratio_vs_c": 5.001742160278746,
+        "speedup_vs_gen5": 1.6415
+      },
+      {
+        "id": "tree-bitonic",
+        "family": "tree-bitonic",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/tree-bitonic.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 1636,
+        "warmups": 4,
+        "runtime_args": [
+          8,
+          0
+        ],
+        "phase205": {
+          "c_sec": 0.27137440758293835,
+          "x86_83k_sec": 0.3417422222222223,
+          "c_median_ms": 0.16587677725118483,
+          "x86_83k_median_ms": 0.2088888888888889
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 1.5091,
+        "link_sec": 0.1103,
+        "obj_bytes": 201920,
+        "run_repetitions": 329,
+        "samples_elapsed_ms": [
+          63,
+          63,
+          62
+        ],
+        "median_elapsed_ms": 63,
+        "fixed_work_sec": 0.31327659574468086,
+        "ratio_vs_c": 1.154407294832827,
+        "ratio_vs_x86_83k": 0.9167043911272068,
+        "gen5_fixed_work_sec": 1.0343100303951367,
+        "gen5_ratio_vs_c": 3.811376465479809,
+        "speedup_vs_gen5": 3.3016
+      },
+      {
+        "id": "lexer",
+        "family": "lexer",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/lexer.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 512,
+        "warmups": 4,
+        "runtime_args": [
+          8,
+          0
+        ],
+        "phase205": {
+          "c_sec": 0.19850267379679143,
+          "x86_83k_sec": 0.3997433155080214,
+          "c_median_ms": 0.3877005347593583,
+          "x86_83k_median_ms": 0.7807486631016043
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 1.6424,
+        "link_sec": 0.0571,
+        "obj_bytes": 253360,
+        "run_repetitions": 512,
+        "samples_elapsed_ms": [
+          475,
+          471,
+          470
+        ],
+        "median_elapsed_ms": 471,
+        "fixed_work_sec": 0.471,
+        "ratio_vs_c": 2.3727640086206896,
+        "ratio_vs_x86_83k": 1.1782561001712328,
+        "gen5_fixed_work_sec": 0.755,
+        "gen5_ratio_vs_c": 3.8034752155172415,
+        "speedup_vs_gen5": 1.603
+      },
+      {
+        "id": "symreg",
+        "family": "symreg",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/symreg.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 144,
+        "warmups": 4,
+        "runtime_args": [
+          6,
+          42
+        ],
+        "phase205": {
+          "c_sec": 0.3328524590163935,
+          "x86_83k_sec": 0.3500689655172413,
+          "c_median_ms": 2.3114754098360657,
+          "x86_83k_median_ms": 2.4310344827586206
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 1.0456,
+        "link_sec": 0.1332,
+        "obj_bytes": 184848,
+        "run_repetitions": 144,
+        "samples_elapsed_ms": [
+          97,
+          98,
+          97
+        ],
+        "median_elapsed_ms": 97,
+        "fixed_work_sec": 0.097,
+        "ratio_vs_c": 0.2914204097714736,
+        "ratio_vs_x86_83k": 0.27708825847123725,
+        "gen5_fixed_work_sec": 0.326,
+        "gen5_ratio_vs_c": 0.9794129235618596,
+        "speedup_vs_gen5": 3.3608
+      },
+      {
+        "id": "test-morning-program",
+        "family": "test-morning-program",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/test-morning-program.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 55676,
+        "warmups": 4,
+        "runtime_args": [
+          0,
+          0
+        ],
+        "phase205": {
+          "c_sec": 0.15922269998377414,
+          "x86_83k_sec": 0.4871131794489948,
+          "c_median_ms": 0.002859808534804478,
+          "x86_83k_median_ms": 0.008749069247952346
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 1.0982,
+        "link_sec": 0.0932,
+        "obj_bytes": 252800,
+        "run_repetitions": 50000,
+        "samples_elapsed_ms": [
+          275,
+          275,
+          269
+        ],
+        "median_elapsed_ms": 275,
+        "fixed_work_sec": 0.30621800000000005,
+        "ratio_vs_c": 1.9232056737588654,
+        "ratio_vs_x86_83k": 0.6286382978723405,
+        "gen5_fixed_work_sec": 0.39195904,
+        "gen5_ratio_vs_c": 2.4617032624113473,
+        "speedup_vs_gen5": 1.28
+      },
+      {
+        "id": "test-evening-program",
+        "family": "test-evening-program",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/test-evening-program.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 259540,
+        "warmups": 4,
+        "runtime_args": [
+          0,
+          0
+        ],
+        "phase205": {
+          "c_sec": 0.2653333035714286,
+          "x86_83k_sec": 0.9087762298977065,
+          "c_median_ms": 0.0010223214285714286,
+          "x86_83k_median_ms": 0.003501488132456294
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 1.0325,
+        "link_sec": 0.1204,
+        "obj_bytes": 193040,
+        "run_repetitions": 259540,
+        "samples_elapsed_ms": [
+          210,
+          210,
+          211
+        ],
+        "median_elapsed_ms": 210,
+        "fixed_work_sec": 0.21,
+        "ratio_vs_c": 0.7914573752083379,
+        "ratio_vs_x86_83k": 0.23107998767049395,
+        "gen5_fixed_work_sec": 0.31,
+        "gen5_ratio_vs_c": 1.1683418395932608,
+        "speedup_vs_gen5": 1.4762
+      },
+      {
+        "id": "test-rle-roundtrip",
+        "family": "test-rle-roundtrip",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/test-rle-roundtrip.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 970904,
+        "warmups": 4,
+        "runtime_args": [
+          0,
+          0
+        ],
+        "phase205": {
+          "c_sec": 0.42043606692257013,
+          "x86_83k_sec": 0.970904,
+          "c_median_ms": 0.0004330356728601078,
+          "x86_83k_median_ms": 0.001
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 0.8372,
+        "link_sec": 0.082,
+        "obj_bytes": 182416,
+        "run_repetitions": 970904,
+        "samples_elapsed_ms": [
+          585,
+          586,
+          585
+        ],
+        "median_elapsed_ms": 585,
+        "fixed_work_sec": 0.585,
+        "ratio_vs_c": 1.3914125024572093,
+        "ratio_vs_x86_83k": 0.602531249227524,
+        "gen5_fixed_work_sec": 0.89,
+        "gen5_ratio_vs_c": 2.1168497900631045,
+        "speedup_vs_gen5": 1.5214
+      },
+      {
+        "id": "test-map-set-ops",
+        "family": "test-map-set-ops",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/test-map-set-ops.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 22056,
+        "warmups": 4,
+        "runtime_args": [
+          0,
+          0
+        ],
+        "phase205": {
+          "c_sec": 0.2284243231247226,
+          "x86_83k_sec": 0.5900011383039272,
+          "c_median_ms": 0.010356561621541648,
+          "x86_83k_median_ms": 0.026750142287990893
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 1.3606,
+        "link_sec": 0.0534,
+        "obj_bytes": 347328,
+        "run_repetitions": 21538,
+        "samples_elapsed_ms": [
+          224,
+          223,
+          224
+        ],
+        "median_elapsed_ms": 224,
+        "fixed_work_sec": 0.2293873154424738,
+        "ratio_vs_c": 1.0042158046243848,
+        "ratio_vs_x86_83k": 0.38879130996576067,
+        "gen5_fixed_work_sec": 0.35841768037886523,
+        "gen5_ratio_vs_c": 1.569087194725601,
+        "speedup_vs_gen5": 1.5625
+      },
+      {
+        "id": "raytrace",
+        "family": "raytrace",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/raytrace.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 12,
+        "warmups": 4,
+        "runtime_args": [
+          80,
+          0
+        ],
+        "phase205": {
+          "c_sec": 0.34079999999999994,
+          "x86_83k_sec": 0.56,
+          "c_median_ms": 28.4,
+          "x86_83k_median_ms": 46.666666666666664
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 2.7912,
+        "link_sec": 0.1385,
+        "obj_bytes": 185232,
+        "run_repetitions": 12,
+        "samples_elapsed_ms": [
+          212,
+          213,
+          212
+        ],
+        "median_elapsed_ms": 212,
+        "fixed_work_sec": 0.212,
+        "ratio_vs_c": 0.6220657276995306,
+        "ratio_vs_x86_83k": 0.3785714285714285,
+        "gen5_fixed_work_sec": 0.382,
+        "gen5_ratio_vs_c": 1.120892018779343,
+        "speedup_vs_gen5": 1.8019
+      },
+      {
+        "id": "local-pair",
+        "family": "local-pair",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/local-pair.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 956,
+        "warmups": 4,
+        "runtime_args": [
+          0,
+          0
+        ],
+        "phase205": {
+          "c_sec": 0.20092637215528783,
+          "x86_83k_sec": 0.3030178571428571,
+          "c_median_ms": 0.2101740294511379,
+          "x86_83k_median_ms": 0.3169642857142857
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 1.1794,
+        "link_sec": 0.162,
+        "obj_bytes": 193936,
+        "run_repetitions": 313,
+        "samples_elapsed_ms": [
+          198,
+          198,
+          199
+        ],
+        "median_elapsed_ms": 198,
+        "fixed_work_sec": 0.6047539936102238,
+        "ratio_vs_c": 3.009828859811563,
+        "ratio_vs_x86_83k": 1.995770148044819,
+        "gen5_fixed_work_sec": 1.0690095846645367,
+        "gen5_ratio_vs_c": 5.320404550171953,
+        "speedup_vs_gen5": 1.7677
+      },
+      {
+        "id": "local-fold",
+        "family": "local-fold",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/local-fold.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 60684,
+        "warmups": 4,
+        "runtime_args": [
+          4096,
+          17
+        ],
+        "phase205": {
+          "c_sec": 0.16643540167282628,
+          "x86_83k_sec": 0.09021247677196707,
+          "c_median_ms": 0.0027426570706088308,
+          "x86_83k_median_ms": 0.0014865941067162198
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 0.8311,
+        "link_sec": 0.1162,
+        "obj_bytes": 166880,
+        "run_repetitions": 46667,
+        "samples_elapsed_ms": [
+          280,
+          279,
+          279
+        ],
+        "median_elapsed_ms": 279,
+        "fixed_work_sec": 0.3628010371354491,
+        "ratio_vs_c": 2.1798309343383115,
+        "ratio_vs_x86_83k": 4.021628161839661,
+        "gen5_fixed_work_sec": 0.6865912100627853,
+        "gen5_ratio_vs_c": 4.125271445629493,
+        "speedup_vs_gen5": 1.8925
+      },
+      {
+        "id": "scalar-region-0",
+        "family": "scalar-region-0",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/scalar-region-0.bend",
+        "ratio_eligible": false,
+        "catalog_repetitions": 4,
+        "warmups": 4,
+        "runtime_args": [
+          0,
+          524800
+        ],
+        "phase205": {
+          "c_sec": 0.0,
+          "x86_83k_sec": 0.0,
+          "c_median_ms": 0.0,
+          "x86_83k_median_ms": 0.0
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 0.827,
+        "link_sec": 0.0849,
+        "obj_bytes": 160048,
+        "run_repetitions": 4,
+        "samples_elapsed_ms": [
+          0,
+          0,
+          0
+        ],
+        "median_elapsed_ms": 0,
+        "fixed_work_sec": 0.0,
+        "ratio_vs_c": null,
+        "ratio_vs_x86_83k": null,
+        "gen5_fixed_work_sec": 0.0,
+        "gen5_ratio_vs_c": null,
+        "speedup_vs_gen5": null
+      },
+      {
+        "id": "scalar-region-8192",
+        "family": "scalar-region-8192",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/scalar-region-8192.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 5576,
+        "warmups": 4,
+        "runtime_args": [
+          8192,
+          524800
+        ],
+        "phase205": {
+          "c_sec": 0.20657316750463087,
+          "x86_83k_sec": 0.00010083740173230856,
+          "c_median_ms": 0.037046837787774546,
+          "x86_83k_median_ms": 1.808418252014142e-05
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 0.8334,
+        "link_sec": 0.0862,
+        "obj_bytes": 160080,
+        "run_repetitions": 5576,
+        "samples_elapsed_ms": [
+          268,
+          268,
+          269
+        ],
+        "median_elapsed_ms": 268,
+        "fixed_work_sec": 0.268,
+        "ratio_vs_c": 1.2973611395777824,
+        "ratio_vs_x86_83k": 2657.7440056563073,
+        "gen5_fixed_work_sec": 0.45,
+        "gen5_ratio_vs_c": 2.1784048985447835,
+        "speedup_vs_gen5": 1.6791
+      },
+      {
+        "id": "complete-generic-row32",
+        "family": "complete-generic-row32",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/complete-generic-row32.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 1460,
+        "warmups": 4,
+        "runtime_args": [
+          32,
+          17
+        ],
+        "phase205": {
+          "c_sec": 0.11666964285714285,
+          "x86_83k_sec": 0.3728214285714286,
+          "c_median_ms": 0.07991071428571428,
+          "x86_83k_median_ms": 0.25535714285714284
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 2.4547,
+        "link_sec": 0.1544,
+        "obj_bytes": 763088,
+        "run_repetitions": 1460,
+        "samples_elapsed_ms": [
+          437,
+          438,
+          439
+        ],
+        "median_elapsed_ms": 438,
+        "fixed_work_sec": 0.438,
+        "ratio_vs_c": 3.7541899441340787,
+        "ratio_vs_x86_83k": 1.1748251748251748,
+        "gen5_fixed_work_sec": 0.613,
+        "gen5_ratio_vs_c": 5.254151679804087,
+        "speedup_vs_gen5": 1.3995
+      },
+      {
+        "id": "variation-editdist-0-17",
+        "family": "editdist",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/variation-editdist-0-17.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 956,
+        "warmups": 4,
+        "runtime_args": [
+          0,
+          17
+        ],
+        "phase205": {
+          "c_sec": 0.20092637215528783,
+          "x86_83k_sec": 0.30515178571428564,
+          "c_median_ms": 0.2101740294511379,
+          "x86_83k_median_ms": 0.31919642857142855
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 0.9407,
+        "link_sec": 0.1163,
+        "obj_bytes": 189328,
+        "run_repetitions": 315,
+        "samples_elapsed_ms": [
+          202,
+          200,
+          200
+        ],
+        "median_elapsed_ms": 200,
+        "fixed_work_sec": 0.606984126984127,
+        "ratio_vs_c": 3.0209281164695176,
+        "ratio_vs_x86_83k": 1.9891219891219896,
+        "gen5_fixed_work_sec": 1.0622222222222222,
+        "gen5_ratio_vs_c": 5.286624203821655,
+        "speedup_vs_gen5": 1.75
+      },
+      {
+        "id": "variation-editdist-3-123",
+        "family": "editdist",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/variation-editdist-3-123.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 120,
+        "warmups": 4,
+        "runtime_args": [
+          3,
+          123
+        ],
+        "phase205": {
+          "c_sec": 0.20240963855421687,
+          "x86_83k_sec": 0.30763636363636365,
+          "c_median_ms": 1.6867469879518073,
+          "x86_83k_median_ms": 2.5636363636363635
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 1.1325,
+        "link_sec": 0.1104,
+        "obj_bytes": 189360,
+        "run_repetitions": 40,
+        "samples_elapsed_ms": [
+          204,
+          203,
+          203
+        ],
+        "median_elapsed_ms": 203,
+        "fixed_work_sec": 0.609,
+        "ratio_vs_c": 3.00875,
+        "ratio_vs_x86_83k": 1.979609929078014,
+        "gen5_fixed_work_sec": 1.065,
+        "gen5_ratio_vs_c": 5.261607142857143,
+        "speedup_vs_gen5": 1.7488
+      },
+      {
+        "id": "variation-lexer-6-17",
+        "family": "lexer",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/variation-lexer-6-17.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 2212,
+        "warmups": 4,
+        "runtime_args": [
+          6,
+          17
+        ],
+        "phase205": {
+          "c_sec": 0.21275034106412005,
+          "x86_83k_sec": 0.43233199464524763,
+          "c_median_ms": 0.09618008185538882,
+          "x86_83k_median_ms": 0.19544846050870146
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 1.4636,
+        "link_sec": 0.0892,
+        "obj_bytes": 253392,
+        "run_repetitions": 622,
+        "samples_elapsed_ms": [
+          141,
+          140,
+          140
+        ],
+        "median_elapsed_ms": 140,
+        "fixed_work_sec": 0.4978778135048232,
+        "ratio_vs_c": 2.3401974869444255,
+        "ratio_vs_x86_83k": 1.1516099193939129,
+        "gen5_fixed_work_sec": 0.7717106109324758,
+        "gen5_ratio_vs_c": 3.6273061047638593,
+        "speedup_vs_gen5": 1.55
+      },
+      {
+        "id": "variation-lexer-10-123",
+        "family": "lexer",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/variation-lexer-10-123.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 128,
+        "warmups": 4,
+        "runtime_args": [
+          10,
+          123
+        ],
+        "phase205": {
+          "c_sec": 0.19895652173913045,
+          "x86_83k_sec": 0.4010666666666667,
+          "c_median_ms": 1.5543478260869565,
+          "x86_83k_median_ms": 3.1333333333333333
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 1.4286,
+        "link_sec": 0.1399,
+        "obj_bytes": 253392,
+        "run_repetitions": 128,
+        "samples_elapsed_ms": [
+          475,
+          463,
+          462
+        ],
+        "median_elapsed_ms": 463,
+        "fixed_work_sec": 0.463,
+        "ratio_vs_c": 2.3271416083916083,
+        "ratio_vs_x86_83k": 1.1544215425531914,
+        "gen5_fixed_work_sec": 0.72,
+        "gen5_ratio_vs_c": 3.6188811188811183,
+        "speedup_vs_gen5": 1.5551
+      },
+      {
+        "id": "variation-tree-bitonic-6-17",
+        "family": "tree-bitonic",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/variation-tree-bitonic-6-17.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 11108,
+        "warmups": 4,
+        "runtime_args": [
+          6,
+          17
+        ],
+        "phase205": {
+          "c_sec": 0.27468046299544024,
+          "x86_83k_sec": 0.41043019266297176,
+          "c_median_ms": 0.024728165555945283,
+          "x86_83k_median_ms": 0.03694906307732911
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 1.0932,
+        "link_sec": 0.1463,
+        "obj_bytes": 201952,
+        "run_repetitions": 2800,
+        "samples_elapsed_ms": [
+          77,
+          77,
+          78
+        ],
+        "median_elapsed_ms": 77,
+        "fixed_work_sec": 0.30546999999999996,
+        "ratio_vs_c": 1.11209219858156,
+        "ratio_vs_x86_83k": 0.744267857142857,
+        "gen5_fixed_work_sec": 0.9997199999999999,
+        "gen5_ratio_vs_c": 3.6395744680851054,
+        "speedup_vs_gen5": 3.2727
+      },
+      {
+        "id": "variation-tree-bitonic-9-123",
+        "family": "tree-bitonic",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/variation-tree-bitonic-9-123.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 636,
+        "warmups": 4,
+        "runtime_args": [
+          9,
+          123
+        ],
+        "phase205": {
+          "c_sec": 0.26035087719298244,
+          "x86_83k_sec": 0.30597938144329895,
+          "c_median_ms": 0.4093567251461988,
+          "x86_83k_median_ms": 0.48109965635738833
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 1.0485,
+        "link_sec": 0.1527,
+        "obj_bytes": 201952,
+        "run_repetitions": 225,
+        "samples_elapsed_ms": [
+          105,
+          105,
+          104
+        ],
+        "median_elapsed_ms": 105,
+        "fixed_work_sec": 0.2968,
+        "ratio_vs_c": 1.1400000000000001,
+        "ratio_vs_x86_83k": 0.9700000000000001,
+        "gen5_fixed_work_sec": 0.9865066666666666,
+        "gen5_ratio_vs_c": 3.789142857142857,
+        "speedup_vs_gen5": 3.3238
+      },
+      {
+        "id": "variation-symreg-4-17",
+        "family": "symreg",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/variation-symreg-4-17.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 288,
+        "warmups": 4,
+        "runtime_args": [
+          4,
+          17
+        ],
+        "phase205": {
+          "c_sec": 0.33177599999999996,
+          "x86_83k_sec": 0.35060869565217395,
+          "c_median_ms": 1.152,
+          "x86_83k_median_ms": 1.2173913043478262
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 0.9201,
+        "link_sec": 0.0959,
+        "obj_bytes": 184848,
+        "run_repetitions": 288,
+        "samples_elapsed_ms": [
+          92,
+          93,
+          92
+        ],
+        "median_elapsed_ms": 92,
+        "fixed_work_sec": 0.092,
+        "ratio_vs_c": 0.27729552469135804,
+        "ratio_vs_x86_83k": 0.2624007936507936,
+        "gen5_fixed_work_sec": 0.384,
+        "gen5_ratio_vs_c": 1.1574074074074077,
+        "speedup_vs_gen5": 4.1739
+      },
+      {
+        "id": "variation-symreg-7-123",
+        "family": "symreg",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/variation-symreg-7-123.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 88,
+        "warmups": 4,
+        "runtime_args": [
+          7,
+          123
+        ],
+        "phase205": {
+          "c_sec": 0.34010810810810815,
+          "x86_83k_sec": 0.3595428571428571,
+          "c_median_ms": 3.864864864864865,
+          "x86_83k_median_ms": 4.085714285714285
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 1.1653,
+        "link_sec": 0.1063,
+        "obj_bytes": 184848,
+        "run_repetitions": 88,
+        "samples_elapsed_ms": [
+          96,
+          97,
+          97
+        ],
+        "median_elapsed_ms": 97,
+        "fixed_work_sec": 0.097,
+        "ratio_vs_c": 0.2852034329307056,
+        "ratio_vs_x86_83k": 0.26978703115066754,
+        "gen5_fixed_work_sec": 0.401,
+        "gen5_ratio_vs_c": 1.1790368722186904,
+        "speedup_vs_gen5": 4.134
+      },
+      {
+        "id": "variation-local-fold-128-0",
+        "family": "local-fold",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/variation-local-fold-128-0.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 1895020,
+        "warmups": 4,
+        "runtime_args": [
+          128,
+          0
+        ],
+        "phase205": {
+          "c_sec": 0.20219186607142856,
+          "x86_83k_sec": 0.2847420803718617,
+          "c_median_ms": 0.00010669642857142857,
+          "x86_83k_median_ms": 0.00015025808718212037
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 0.8365,
+        "link_sec": 0.1618,
+        "obj_bytes": 166832,
+        "run_repetitions": 400000,
+        "samples_elapsed_ms": [
+          217,
+          216,
+          217
+        ],
+        "median_elapsed_ms": 217,
+        "fixed_work_sec": 1.02804835,
+        "ratio_vs_c": 5.084518828451883,
+        "ratio_vs_x86_83k": 3.610454586330935,
+        "gen5_fixed_work_sec": 2.1982232,
+        "gen5_ratio_vs_c": 10.871966527196655,
+        "speedup_vs_gen5": 2.1382
+      },
+      {
+        "id": "variation-local-fold-8192-123",
+        "family": "local-fold",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/variation-local-fold-8192-123.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 30516,
+        "warmups": 4,
+        "runtime_args": [
+          8192,
+          123
+        ],
+        "phase205": {
+          "c_sec": 0.16738984633339818,
+          "x86_83k_sec": 0.08718857142857142,
+          "c_median_ms": 0.0054853141412176615,
+          "x86_83k_median_ms": 0.002857142857142857
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 0.7589,
+        "link_sec": 0.0977,
+        "obj_bytes": 166864,
+        "run_repetitions": 15806,
+        "samples_elapsed_ms": [
+          183,
+          183,
+          183
+        ],
+        "median_elapsed_ms": 183,
+        "fixed_work_sec": 0.3533106415285335,
+        "ratio_vs_c": 2.110705334090744,
+        "ratio_vs_x86_83k": 4.052258635961028,
+        "gen5_fixed_work_sec": 0.689245349867139,
+        "gen5_ratio_vs_c": 4.117605487816369,
+        "speedup_vs_gen5": 1.9508
+      },
+      {
+        "id": "variation-mandelbrot-grid-4-7",
+        "family": "mandelbrot",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/variation-mandelbrot-grid-4-7.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 24488,
+        "warmups": 4,
+        "runtime_args": [
+          4,
+          7
+        ],
+        "phase205": {
+          "c_sec": 0.22299199173340223,
+          "x86_83k_sec": 0.4197257590597453,
+          "c_median_ms": 0.009106174115215707,
+          "x86_83k_median_ms": 0.017140058765915768
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 1.0734,
+        "link_sec": 0.1533,
+        "obj_bytes": 182096,
+        "run_repetitions": 24488,
+        "samples_elapsed_ms": [
+          273,
+          270,
+          270
+        ],
+        "median_elapsed_ms": 270,
+        "fixed_work_sec": 0.27,
+        "ratio_vs_c": 1.210805813702934,
+        "ratio_vs_x86_83k": 0.6432771736594018,
+        "gen5_fixed_work_sec": 0.525,
+        "gen5_ratio_vs_c": 2.354344637755705,
+        "speedup_vs_gen5": 1.9444
+      },
+      {
+        "id": "variation-mandelbrot-grid-5-31",
+        "family": "mandelbrot",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/variation-mandelbrot-grid-5-31.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 1416,
+        "warmups": 4,
+        "runtime_args": [
+          5,
+          31
+        ],
+        "phase205": {
+          "c_sec": 0.20481428571428575,
+          "x86_83k_sec": 0.16424192212096106,
+          "c_median_ms": 0.14464285714285716,
+          "x86_83k_median_ms": 0.115990057995029
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 1.2422,
+        "link_sec": 0.0909,
+        "obj_bytes": 182096,
+        "run_repetitions": 1416,
+        "samples_elapsed_ms": [
+          211,
+          210,
+          210
+        ],
+        "median_elapsed_ms": 210,
+        "fixed_work_sec": 0.21,
+        "ratio_vs_c": 1.0253191044151493,
+        "ratio_vs_x86_83k": 1.278601694915254,
+        "gen5_fixed_work_sec": 0.472,
+        "gen5_ratio_vs_c": 2.3045267489711927,
+        "speedup_vs_gen5": 2.2476
+      },
+      {
+        "id": "variation-ray-active-64-2440",
+        "family": "raytrace",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/variation-ray-active-64-2440.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 6324,
+        "warmups": 4,
+        "runtime_args": [
+          64,
+          2440
+        ],
+        "phase205": {
+          "c_sec": 0.6827595712098009,
+          "x86_83k_sec": 1.0445892857142858,
+          "c_median_ms": 0.10796324655436447,
+          "x86_83k_median_ms": 0.16517857142857142
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 2.5449,
+        "link_sec": 0.1391,
+        "obj_bytes": 185936,
+        "run_repetitions": 1400,
+        "samples_elapsed_ms": [
+          136,
+          136,
+          138
+        ],
+        "median_elapsed_ms": 136,
+        "fixed_work_sec": 0.6143314285714285,
+        "ratio_vs_c": 0.8997771023302937,
+        "ratio_vs_x86_83k": 0.588108108108108,
+        "gen5_fixed_work_sec": 1.48614,
+        "gen5_ratio_vs_c": 2.1766666666666667,
+        "speedup_vs_gen5": 2.4191
+      },
+      {
+        "id": "variation-ray-active-256-2240",
+        "family": "raytrace",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/variation-ray-active-256-2240.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 1516,
+        "warmups": 4,
+        "runtime_args": [
+          256,
+          2240
+        ],
+        "phase205": {
+          "c_sec": 0.6822,
+          "x86_83k_sec": 1.0478235294117646,
+          "c_median_ms": 0.45,
+          "x86_83k_median_ms": 0.6911764705882353
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 2.7207,
+        "link_sec": 0.0843,
+        "obj_bytes": 185952,
+        "run_repetitions": 373,
+        "samples_elapsed_ms": [
+          150,
+          149,
+          149
+        ],
+        "median_elapsed_ms": 149,
+        "fixed_work_sec": 0.6055871313672923,
+        "ratio_vs_c": 0.8876973488233542,
+        "ratio_vs_x86_83k": 0.5779476356169073,
+        "gen5_fixed_work_sec": 1.4590991957104558,
+        "gen5_ratio_vs_c": 2.138814417634793,
+        "speedup_vs_gen5": 2.4094
+      },
+      {
+        "id": "coverage-closures-64",
+        "family": "closures",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-closures-64.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 76440,
+        "warmups": 4,
+        "runtime_args": [
+          64,
+          17
+        ],
+        "phase205": {
+          "c_sec": 0.058695,
+          "x86_83k_sec": 0.004640998697678937,
+          "c_median_ms": 0.0007678571428571428,
+          "x86_83k_median_ms": 6.0714268677118485e-05
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 0.8014,
+        "link_sec": 0.0913,
+        "obj_bytes": 168400,
+        "run_repetitions": 76440,
+        "samples_elapsed_ms": [
+          261,
+          261,
+          260
+        ],
+        "median_elapsed_ms": 261,
+        "fixed_work_sec": 0.261,
+        "ratio_vs_c": 4.446716074623052,
+        "ratio_vs_x86_83k": 56.23789554832923,
+        "gen5_fixed_work_sec": 0.454,
+        "gen5_ratio_vs_c": 7.734900758156573,
+        "speedup_vs_gen5": 1.7395
+      },
+      {
+        "id": "coverage-closures-256",
+        "family": "closures",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-closures-256.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 19600,
+        "warmups": 4,
+        "runtime_args": [
+          256,
+          123
+        ],
+        "phase205": {
+          "c_sec": 0.05736871341281032,
+          "x86_83k_sec": 0.004199998125000837,
+          "c_median_ms": 0.0029269751741229756,
+          "x86_83k_median_ms": 0.00021428561862249168
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 0.9819,
+        "link_sec": 0.1646,
+        "obj_bytes": 168400,
+        "run_repetitions": 19600,
+        "samples_elapsed_ms": [
+          278,
+          277,
+          277
+        ],
+        "median_elapsed_ms": 277,
+        "fixed_work_sec": 0.277,
+        "ratio_vs_c": 4.82841576046477,
+        "ratio_vs_x86_83k": 65.95241039540817,
+        "gen5_fixed_work_sec": 0.469,
+        "gen5_ratio_vs_c": 8.175187695516163,
+        "speedup_vs_gen5": 1.6931
+      },
+      {
+        "id": "coverage-list-pipeline-128",
+        "family": "list-pipeline",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-list-pipeline-128.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 99496,
+        "warmups": 4,
+        "runtime_args": [
+          128,
+          17
+        ],
+        "phase205": {
+          "c_sec": 0.1430255,
+          "x86_83k_sec": 0.03775309273218029,
+          "c_median_ms": 0.0014375,
+          "x86_83k_median_ms": 0.00037944332166298437
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 0.9494,
+        "link_sec": 0.1462,
+        "obj_bytes": 188448,
+        "run_repetitions": 28544,
+        "samples_elapsed_ms": [
+          285,
+          287,
+          286
+        ],
+        "median_elapsed_ms": 286,
+        "fixed_work_sec": 0.996911995515695,
+        "ratio_vs_c": 6.970169623708324,
+        "ratio_vs_x86_83k": 26.406101417644624,
+        "gen5_fixed_work_sec": 0.8295980941704035,
+        "gen5_ratio_vs_c": 5.800350945603431,
+        "speedup_vs_gen5": 0.8322
+      },
+      {
+        "id": "coverage-list-pipeline-512",
+        "family": "list-pipeline",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-list-pipeline-512.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 25008,
+        "warmups": 4,
+        "runtime_args": [
+          512,
+          123
+        ],
+        "phase205": {
+          "c_sec": 0.14077117928511118,
+          "x86_83k_sec": 0.03684214285714286,
+          "c_median_ms": 0.005629045876723895,
+          "x86_83k_median_ms": 0.0014732142857142858
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 1.0998,
+        "link_sec": 0.1432,
+        "obj_bytes": 188448,
+        "run_repetitions": 5600,
+        "samples_elapsed_ms": [
+          228,
+          228,
+          231
+        ],
+        "median_elapsed_ms": 228,
+        "fixed_work_sec": 1.018182857142857,
+        "ratio_vs_c": 7.232892857142856,
+        "ratio_vs_x86_83k": 27.636363636363633,
+        "gen5_fixed_work_sec": 1.2280714285714285,
+        "gen5_ratio_vs_c": 8.723883928571427,
+        "speedup_vs_gen5": 1.2061
+      },
+      {
+        "id": "coverage-bst-32",
+        "family": "bst",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-bst-32.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 35620,
+        "warmups": 4,
+        "runtime_args": [
+          32,
+          0
+        ],
+        "phase205": {
+          "c_sec": 0.21300394418762456,
+          "x86_83k_sec": 0.696467122003482,
+          "c_median_ms": 0.005979897366300522,
+          "x86_83k_median_ms": 0.01955269854024374
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 1.2041,
+        "link_sec": 0.103,
+        "obj_bytes": 202032,
+        "run_repetitions": 5600,
+        "samples_elapsed_ms": [
+          173,
+          173,
+          185
+        ],
+        "median_elapsed_ms": 173,
+        "fixed_work_sec": 1.1004035714285714,
+        "ratio_vs_c": 5.166118287740629,
+        "ratio_vs_x86_83k": 1.579979207436399,
+        "gen5_fixed_work_sec": 3.046782142857143,
+        "gen5_ratio_vs_c": 14.303876646403245,
+        "speedup_vs_gen5": 2.7688
+      },
+      {
+        "id": "coverage-bst-64",
+        "family": "bst",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-bst-64.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 27184,
+        "warmups": 4,
+        "runtime_args": [
+          64,
+          17
+        ],
+        "phase205": {
+          "c_sec": 0.19902571428571428,
+          "x86_83k_sec": 0.45454889131225007,
+          "c_median_ms": 0.007321428571428572,
+          "x86_83k_median_ms": 0.016721192293711377
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 1.2783,
+        "link_sec": 0.1242,
+        "obj_bytes": 202048,
+        "run_repetitions": 3821,
+        "samples_elapsed_ms": [
+          114,
+          113,
+          113
+        ],
+        "median_elapsed_ms": 113,
+        "fixed_work_sec": 0.8039235802146035,
+        "ratio_vs_c": 4.039295038331174,
+        "ratio_vs_x86_83k": 1.76861850414756,
+        "gen5_fixed_work_sec": 2.4686856843758176,
+        "gen5_ratio_vs_c": 12.403852905317851,
+        "speedup_vs_gen5": 3.0708
+      },
+      {
+        "id": "coverage-unicode-text-16",
+        "family": "unicode-text",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-unicode-text-16.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 8272,
+        "warmups": 4,
+        "runtime_args": [
+          16,
+          17
+        ],
+        "phase205": {
+          "c_sec": 0.07512734299516909,
+          "x86_83k_sec": 0.08862631055330221,
+          "c_median_ms": 0.009082125603864734,
+          "x86_83k_median_ms": 0.010714012397642917
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 1.3679,
+        "link_sec": 0.1284,
+        "obj_bytes": 342672,
+        "run_repetitions": 8272,
+        "samples_elapsed_ms": [
+          217,
+          217,
+          216
+        ],
+        "median_elapsed_ms": 217,
+        "fixed_work_sec": 0.217,
+        "ratio_vs_c": 2.888429050578213,
+        "ratio_vs_x86_83k": 2.448482833655706,
+        "gen5_fixed_work_sec": 0.326,
+        "gen5_ratio_vs_c": 4.339298942343306,
+        "speedup_vs_gen5": 1.5023
+      },
+      {
+        "id": "coverage-unicode-text-64",
+        "family": "unicode-text",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-unicode-text-64.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 2024,
+        "warmups": 4,
+        "runtime_args": [
+          64,
+          123
+        ],
+        "phase205": {
+          "c_sec": 0.08185929934491598,
+          "x86_83k_sec": 0.0856432779860739,
+          "c_median_ms": 0.04044431785816007,
+          "x86_83k_median_ms": 0.04231387252276379
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 1.9734,
+        "link_sec": 0.0467,
+        "obj_bytes": 654432,
+        "run_repetitions": 2024,
+        "samples_elapsed_ms": [
+          238,
+          239,
+          238
+        ],
+        "median_elapsed_ms": 238,
+        "fixed_work_sec": 0.238,
+        "ratio_vs_c": 2.9074277681901686,
+        "ratio_vs_x86_83k": 2.778968829739331,
+        "gen5_fixed_work_sec": 0.358,
+        "gen5_ratio_vs_c": 4.373357735344875,
+        "speedup_vs_gen5": 1.5042
+      },
+      {
+        "id": "coverage-expression-32",
+        "family": "expression",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-expression-32.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 148540,
+        "warmups": 4,
+        "runtime_args": [
+          32,
+          17
+        ],
+        "phase205": {
+          "c_sec": 0.3239240486611941,
+          "x86_83k_sec": 0.017904367006979015,
+          "c_median_ms": 0.002180719325846197,
+          "x86_83k_median_ms": 0.00012053566047515158
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 0.8274,
+        "link_sec": 0.1358,
+        "obj_bytes": 176336,
+        "run_repetitions": 148540,
+        "samples_elapsed_ms": [
+          488,
+          433,
+          437
+        ],
+        "median_elapsed_ms": 437,
+        "fixed_work_sec": 0.437,
+        "ratio_vs_c": 1.3490816807401564,
+        "ratio_vs_x86_83k": 24.407453211256225,
+        "gen5_fixed_work_sec": 0.521,
+        "gen5_ratio_vs_c": 1.6084017292119486,
+        "speedup_vs_gen5": 1.1922
+      },
+      {
+        "id": "coverage-expression-128",
+        "family": "expression",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-expression-128.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 37732,
+        "warmups": 4,
+        "runtime_args": [
+          128,
+          123
+        ],
+        "phase205": {
+          "c_sec": 0.32510160714285713,
+          "x86_83k_sec": 0.01816815051020408,
+          "c_median_ms": 0.008616071428571428,
+          "x86_83k_median_ms": 0.0004815051020408163
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 0.7978,
+        "link_sec": 0.1237,
+        "obj_bytes": 176352,
+        "run_repetitions": 37732,
+        "samples_elapsed_ms": [
+          433,
+          430,
+          459
+        ],
+        "median_elapsed_ms": 433,
+        "fixed_work_sec": 0.433,
+        "ratio_vs_c": 1.331891293326427,
+        "ratio_vs_x86_83k": 23.832915725615933,
+        "gen5_fixed_work_sec": 0.535,
+        "gen5_ratio_vs_c": 1.6456393578051698,
+        "speedup_vs_gen5": 1.2356
+      },
+      {
+        "id": "coverage-map-churn-32",
+        "family": "map-churn",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-map-churn-32.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 2820,
+        "warmups": 4,
+        "runtime_args": [
+          32,
+          17
+        ],
+        "phase205": {
+          "c_sec": 0.130425,
+          "x86_83k_sec": 0.3751607142857143,
+          "c_median_ms": 0.04625,
+          "x86_83k_median_ms": 0.13303571428571428
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 0.8864,
+        "link_sec": 0.06,
+        "obj_bytes": 166912,
+        "run_repetitions": 2820,
+        "samples_elapsed_ms": [
+          145,
+          142,
+          101
+        ],
+        "median_elapsed_ms": 142,
+        "fixed_work_sec": 0.142,
+        "ratio_vs_c": 1.0887483227908759,
+        "ratio_vs_x86_83k": 0.37850445047360654,
+        "gen5_fixed_work_sec": 0.428,
+        "gen5_ratio_vs_c": 3.281579451792217,
+        "speedup_vs_gen5": 3.0141
+      },
+      {
+        "id": "coverage-map-churn-128",
+        "family": "map-churn",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-map-churn-128.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 544,
+        "warmups": 4,
+        "runtime_args": [
+          128,
+          123
+        ],
+        "phase205": {
+          "c_sec": 0.12598661311914325,
+          "x86_83k_sec": 0.3635260663507109,
+          "c_median_ms": 0.23159303882195448,
+          "x86_83k_median_ms": 0.6682464454976303
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 0.8129,
+        "link_sec": 0.0673,
+        "obj_bytes": 166912,
+        "run_repetitions": 544,
+        "samples_elapsed_ms": [
+          113,
+          115,
+          114
+        ],
+        "median_elapsed_ms": 114,
+        "fixed_work_sec": 0.114,
+        "ratio_vs_c": 0.9048580414824889,
+        "ratio_vs_x86_83k": 0.3135951188986233,
+        "gen5_fixed_work_sec": 0.509,
+        "gen5_ratio_vs_c": 4.040111781706902,
+        "speedup_vs_gen5": 4.4649
+      },
+      {
+        "id": "coverage-numeric-recurrence-256",
+        "family": "numeric-recurrence",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-numeric-recurrence-256.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 247876,
+        "warmups": 4,
+        "runtime_args": [
+          256,
+          17
+        ],
+        "phase205": {
+          "c_sec": 0.20360077361326326,
+          "x86_83k_sec": 0.29664179168269433,
+          "c_median_ms": 0.0008213815521198634,
+          "x86_83k_median_ms": 0.0011967346240971065
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 0.6367,
+        "link_sec": 0.0482,
+        "obj_bytes": 158784,
+        "run_repetitions": 247876,
+        "samples_elapsed_ms": [
+          227,
+          189,
+          189
+        ],
+        "median_elapsed_ms": 189,
+        "fixed_work_sec": 0.189,
+        "ratio_vs_c": 0.9282872390210205,
+        "ratio_vs_x86_83k": 0.637132074101567,
+        "gen5_fixed_work_sec": 0.228,
+        "gen5_ratio_vs_c": 1.1198385740571042,
+        "speedup_vs_gen5": 1.2063
+      },
+      {
+        "id": "coverage-numeric-recurrence-1024",
+        "family": "numeric-recurrence",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-numeric-recurrence-1024.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 61936,
+        "warmups": 4,
+        "runtime_args": [
+          1024,
+          123
+        ],
+        "phase205": {
+          "c_sec": 0.2021662615459407,
+          "x86_83k_sec": 0.2930725552050473,
+          "c_median_ms": 0.003264115563580804,
+          "x86_83k_median_ms": 0.00473186119873817
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 0.7767,
+        "link_sec": 0.0458,
+        "obj_bytes": 158768,
+        "run_repetitions": 61936,
+        "samples_elapsed_ms": [
+          187,
+          188,
+          188
+        ],
+        "median_elapsed_ms": 188,
+        "fixed_work_sec": 0.188,
+        "ratio_vs_c": 0.9299276672694394,
+        "ratio_vs_x86_83k": 0.6414793765607508,
+        "gen5_fixed_work_sec": 0.225,
+        "gen5_ratio_vs_c": 1.1129453464660843,
+        "speedup_vs_gen5": 1.1968
+      },
+      {
+        "id": "coverage-record-aggregation-64",
+        "family": "record-aggregation",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-record-aggregation-64.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 1540,
+        "warmups": 4,
+        "runtime_args": [
+          64,
+          17
+        ],
+        "phase205": {
+          "c_sec": 0.15367303609341826,
+          "x86_83k_sec": 0.4015,
+          "c_median_ms": 0.09978768577494693,
+          "x86_83k_median_ms": 0.26071428571428573
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 0.8768,
+        "link_sec": 0.0319,
+        "obj_bytes": 246672,
+        "run_repetitions": 1540,
+        "samples_elapsed_ms": [
+          159,
+          119,
+          118
+        ],
+        "median_elapsed_ms": 119,
+        "fixed_work_sec": 0.119,
+        "ratio_vs_c": 0.7743713733075435,
+        "ratio_vs_x86_83k": 0.2963885429638854,
+        "gen5_fixed_work_sec": 0.347,
+        "gen5_ratio_vs_c": 2.2580408952749376,
+        "speedup_vs_gen5": 2.916
+      },
+      {
+        "id": "coverage-record-aggregation-256",
+        "family": "record-aggregation",
+        "source": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-record-aggregation-256.bend",
+        "ratio_eligible": true,
+        "catalog_repetitions": 392,
+        "warmups": 4,
+        "runtime_args": [
+          256,
+          123
+        ],
+        "phase205": {
+          "c_sec": 0.15512299465240642,
+          "x86_83k_sec": 0.40344525547445254,
+          "c_median_ms": 0.39572192513368987,
+          "x86_83k_median_ms": 1.0291970802919708
+        },
+        "status": "pass",
+        "error": null,
+        "emit_sec": 0.8019,
+        "link_sec": 0.0319,
+        "obj_bytes": 246848,
+        "run_repetitions": 392,
+        "samples_elapsed_ms": [
+          120,
+          119,
+          120
+        ],
+        "median_elapsed_ms": 120,
+        "fixed_work_sec": 0.12,
+        "ratio_vs_c": 0.7735797021511307,
+        "ratio_vs_x86_83k": 0.29743812418584453,
+        "gen5_fixed_work_sec": 0.423,
+        "gen5_ratio_vs_c": 2.7268684500827356,
+        "speedup_vs_gen5": 3.525
+      }
+    ]
+  },
+  "remaining_gaps": {
+    "bench_runtime_timeouts": [
+      {
+        "suite": "bench/runtime",
+        "name": "gameoflife",
+        "status": "TIMEOUT (>30s)",
+        "ratio_vs_c": null,
+        "ratio_is_lower_bound": true,
+        "b5k_sec": ">30.0",
+        "c_sec": ">30.0",
+        "gen5_status": "TIMEOUT",
+        "gen5_ratio_vs_c": null
+      },
+      {
+        "suite": "bench/runtime",
+        "name": "kmeans",
+        "status": "TIMEOUT (>30s)",
+        "ratio_vs_c": 1.331,
+        "ratio_is_lower_bound": true,
+        "b5k_sec": ">30.0",
+        "c_sec": 22.541,
+        "gen5_status": "TIMEOUT",
+        "gen5_ratio_vs_c": null
+      },
+      {
+        "suite": "bench/runtime",
+        "name": "raytrace",
+        "status": "TIMEOUT (>30s)",
+        "ratio_vs_c": 1.586,
+        "ratio_is_lower_bound": true,
+        "b5k_sec": ">30.0",
+        "c_sec": 18.911,
+        "gen5_status": "TIMEOUT",
+        "gen5_ratio_vs_c": null
+      },
+      {
+        "suite": "bench/runtime",
+        "name": "tree-bitonic",
+        "status": "TIMEOUT (>30s)",
+        "ratio_vs_c": 1.501,
+        "ratio_is_lower_bound": true,
+        "b5k_sec": ">30.0",
+        "c_sec": 19.992,
+        "gen5_status": "TIMEOUT",
+        "gen5_ratio_vs_c": null
+      },
+      {
+        "suite": "bench/runtime",
+        "name": "tree-matmul",
+        "status": "TIMEOUT (>30s)",
+        "ratio_vs_c": 3.376,
+        "ratio_is_lower_bound": true,
+        "b5k_sec": ">30.0",
+        "c_sec": 8.887,
+        "gen5_status": "TIMEOUT",
+        "gen5_ratio_vs_c": null
+      }
+    ],
+    "top_10_by_ratio_both_suites": [
+      {
+        "suite": "bench/runtime",
+        "name": "lexer",
+        "status": "OK",
+        "ratio_vs_c": 10.4758,
+        "ratio_is_lower_bound": false,
+        "b5k_sec": 22.785,
+        "c_sec": 2.175,
+        "gen5_status": "OK",
+        "gen5_ratio_vs_c": 10.288
+      },
+      {
+        "suite": "native45",
+        "name": "list-pipeline",
+        "status": "OK",
+        "ratio_vs_c": 7.1005,
+        "ratio_is_lower_bound": false,
+        "b5k_sec": 2.015,
+        "c_sec": 0.284,
+        "gen5_status": "OK",
+        "gen5_ratio_vs_c": 7.2505
+      },
+      {
+        "suite": "bench/runtime",
+        "name": "hashmap",
+        "status": "OK",
+        "ratio_vs_c": 4.9106,
+        "ratio_is_lower_bound": false,
+        "b5k_sec": 6.089,
+        "c_sec": 1.24,
+        "gen5_status": "OK",
+        "gen5_ratio_vs_c": 5.067
+      },
+      {
+        "suite": "native45",
+        "name": "closures",
+        "status": "OK",
+        "ratio_vs_c": 4.6354,
+        "ratio_is_lower_bound": false,
+        "b5k_sec": 0.538,
+        "c_sec": 0.116,
+        "gen5_status": "OK",
+        "gen5_ratio_vs_c": 7.9525
+      },
+      {
+        "suite": "native45",
+        "name": "bst",
+        "status": "OK",
+        "ratio_vs_c": 4.6218,
+        "ratio_is_lower_bound": false,
+        "b5k_sec": 1.904,
+        "c_sec": 0.412,
+        "gen5_status": "OK",
+        "gen5_ratio_vs_c": 13.3861
+      },
+      {
+        "suite": "bench/runtime",
+        "name": "bfs",
+        "status": "OK",
+        "ratio_vs_c": 4.5112,
+        "ratio_is_lower_bound": false,
+        "b5k_sec": 29.869,
+        "c_sec": 6.621,
+        "gen5_status": "TIMEOUT",
+        "gen5_ratio_vs_c": null
+      },
+      {
+        "suite": "bench/runtime",
+        "name": "editdist",
+        "status": "OK",
+        "ratio_vs_c": 3.8795,
+        "ratio_is_lower_bound": false,
+        "b5k_sec": 20.277,
+        "c_sec": 5.227,
+        "gen5_status": "TIMEOUT",
+        "gen5_ratio_vs_c": null
+      },
+      {
+        "suite": "native45",
+        "name": "complete-generic-row32",
+        "status": "OK",
+        "ratio_vs_c": 3.7542,
+        "ratio_is_lower_bound": false,
+        "b5k_sec": 0.438,
+        "c_sec": 0.117,
+        "gen5_status": "OK",
+        "gen5_ratio_vs_c": 5.2542
+      },
+      {
+        "suite": "bench/runtime",
+        "name": "queens",
+        "status": "OK",
+        "ratio_vs_c": 3.617,
+        "ratio_is_lower_bound": false,
+        "b5k_sec": 24.627,
+        "c_sec": 6.809,
+        "gen5_status": "OK",
+        "gen5_ratio_vs_c": 4.536
+      },
+      {
+        "suite": "bench/runtime",
+        "name": "tree-matmul",
+        "status": "TIMEOUT (>30s)",
+        "ratio_vs_c": 3.376,
+        "ratio_is_lower_bound": true,
+        "b5k_sec": ">30.0",
+        "c_sec": 8.887,
+        "gen5_status": "TIMEOUT",
+        "gen5_ratio_vs_c": null
+      }
+    ],
+    "top_5_wave10_targets": [
+      {
+        "rank": 1,
+        "target": "bench/runtime:lexer (10.476x C, 22.79s vs 2.18s) & native45:lexer (2.347x C)",
+        "why": "Highest exact ratio across both suites; flat since General-5 (10.288x -> 10.476x C). Single largest drag on all-passing geomean."
+      },
+      {
+        "rank": 2,
+        "target": "native45:list-pipeline (7.100x C, 2.015s vs 0.284s C)",
+        "why": "Highest ratio in native45; heavy list/heap allocation & pattern-match churn."
+      },
+      {
+        "rank": 3,
+        "target": "bench/runtime:hashmap (4.911x C, 6.09s vs 1.24s), bfs (4.511x C, 29.87s vs 6.62s) & native45:bst (4.622x C)",
+        "why": "Pointer-chasing / tree / map allocation-heavy workloads; still 4.5x-4.9x C (though bst already improved ~2.9x from 13.39x C)."
+      },
+      {
+        "rank": 4,
+        "target": "native45:closures (4.635x C), complete-generic-row32 (3.754x C) & bench/runtime:queens (3.617x C)",
+        "why": "Closure / indirect-call / generic dispatch & recursive backtracking overhead."
+      },
+      {
+        "rank": 5,
+        "target": "5 remaining bench/runtime >30s timeouts: tree-matmul (>3.38x C, C=8.89s), raytrace (>1.59x C, C=18.91s), tree-bitonic (>1.50x C, C=19.99s), kmeans (>1.33x C, C=22.54s), gameoflife (C>30s too)",
+        "why": "tree-matmul (>3.38x C) is the sharpest timeout gap; raytrace/tree-bitonic/kmeans are within 1.3x-1.6x of clearing 30s (native45 raytrace & tree-bitonic are already 0.84x C and 1.14x C)."
+      }
+    ]
+  }
+}

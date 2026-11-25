@@ -1,0 +1,146 @@
+{
+  "schema": "agy.bend5k.asm_ceiling_probes.v8",
+  "host_pin": "taskset -c 7",
+  "compiler_baseline": "selfhost/build/agy/bend5k/bend5k_o2 -O2 (Proven-10)",
+  "c_baseline": "gcc-10 -O2 (direct paired run on CPU 7 for raytrace [-ffp-contract=off], tree-bitonic, tree-matmul; phase205 native45 C reference 199.03 ms for coverage-bst-64)",
+  "measurement_note": "All variants within each probe were measured back-to-back with their baseline and C reference on CPU 7 (5 runs each, median reported) with exact stdout checksums verified identical. For tree-matmul var_c (unboxed Lf/Vl immediate), c_ms was re-measured back-to-back (865.57 ms vs 755.83 ms during the var_a/var_b batch due to concurrent Proven-11 host load); its vs_c = 354.43 / 865.57 = 0.409x and speedup_vs_base = 4.239 / 0.409 = 10.353x.",
+  "probes": [
+    {
+      "id": "1",
+      "benchmark": "bench/runtime/raytrace/main.bend (scaled ROWS=8, WIDTH=1000, DEPTH=4; 256 x 1000 pixels x 4 supersampled primary rays x up to 5 bounces x 9 spheres)",
+      "checksum": "16855370",
+      "baseline_ms": 516.48,
+      "c_ms": 235.17,
+      "baseline_vs_c": 2.196,
+      "raw_baseline_ms": [510.91, 512.52, 516.84, 555.36, 516.48],
+      "raw_c_ms": [244.23, 236.26, 234.83, 234.66, 235.17],
+      "variants": [
+        {
+          "name": "a_nearest_all_luts_xmm",
+          "ms": 261.73,
+          "vs_c": 1.113,
+          "speedup_vs_base": 1.973,
+          "pct_saved": 49.3,
+          "raw_ms": [260.23, 263.42, 261.73, 262.22, 260.56],
+          "note": "SMOKING GUN #1: Disassembly of baseline $direct.nearest (850 lines!) and $direct.nearest.t (529 lines!) reveals that ONLY 1 of 8 sphere-table switches hit the Proven-7 .rodata LUT (sx in the False{} arm ONLY)! All 7 other sphere lookups (sy, sz, sr in False{} + all 4 sx/sy/sz/sr in True{}) fell back to 8-way `cmp edi, 0..7` branch chains (49 `cmp edi` insns in $direct.nearest!) because (a) `F32.sub(0.0, const)` (-10001.0, -0.6, -3.5, -2.0, -1.0) was not constant-folded to a single negative f32 literal before LUT extraction, and (b) jump-threading fused sy arms directly into sz arms, breaking uniform switch recognition. Furthermore, the cold exit `call p111_rt_ctor` in $direct.nearest forced all 7 loop-invariant F32 args (ox,oy,oz,dx,dy,dz,bt) into GPRs/stack (6 `movd` crossings + `[rbp-0x48]` reload + `[rbp-0x40]` spill EVERY sphere!), and `U32.to_f32(1000000000)` emitted `cvtsi2ss` on every miss. Patching ONLY $direct.nearest and $direct.nearest.t to use all 4 .rodata LUTs + XMM loop registers + float `1e9f` constant (while STILL heap-allocating Hit{ms,t,i} via the runtime freelist and leaving $direct.trace untouched!) slashes 516.48 ms -> 261.73 ms (1.973x -> 1.113x C, 49.3% saved; projects FULL raytrace from >30s to ~21.0s!)."
+        },
+        {
+          "name": "b_plus_unboxed_trace_loop",
+          "ms": 231.36,
+          "vs_c": 0.984,
+          "speedup_vs_base": 2.232,
+          "pct_saved": 55.2,
+          "raw_ms": [231.36, 232.26, 231.32, 232.29, 231.16],
+          "note": "BEATS gcc-10 -O2 (0.984x C; 2.232x speedup, 55.2% saved)! Eliminating the per-bounce heap Hit{ms,t,i} allocation/free between nearest and trace (inlining/unboxing Hit return in subray/trace) and keeping trace's F32 bounce state in XMM registers with .rodata LUTs for sx/sy/sz/sr/skr saves another 30.4 ms and clears FULL raytrace at ~18.6s."
+        }
+      ],
+      "verdict": "STRONG GO (constant-fold `F32.sub(0.0, c)` + `U32.to_f32(const)` before .rodata LUT extraction + run LUT pass before jump-threading + preserve XMM loop regs across cold exit calls in nearest/nearest.t: 1.973x -> 1.113x C, unlocks FULL raytrace < 30s at ~21s; + unboxed Hit / XMM trace: 2.232x -> 0.984x C, beats C!)",
+      "estimated_loc": "~95 LOC (~25 LOC F32.sub(0,c) & U32.to_f32(c) const-fold, ~35 LOC run .rodata LUT before jump-threading & handle negated/all arms, ~35 LOC don't spill loop-live XMMs for cold exit calls)"
+    },
+    {
+      "id": "2",
+      "benchmark": "bench/runtime/tree-bitonic/main.bend (scaled SIZE=19; 524,288 leaves fused bitonic build-sort-verify)",
+      "checksum": "1842658505",
+      "baseline_ms": 1715.88,
+      "c_ms": 807.83,
+      "baseline_vs_c": 2.124,
+      "raw_baseline_ms": [1717.07, 1713.98, 1714.67, 1719.75, 1715.88],
+      "raw_c_ms": [818.78, 807.14, 807.63, 807.83, 809.76],
+      "variants": [
+        {
+          "name": "a_inline_warp_zip_no_rc_guard_direct_reuse",
+          "ms": 933.16,
+          "vs_c": 1.155,
+          "speedup_vs_base": 1.839,
+          "pct_saved": 45.6,
+          "raw_ms": [927.98, 935.54, 933.47, 923.73, 933.16],
+          "note": "SMOKING GUN #2: Keeping the EXACT same Bend5k heap representation (Leaf{v} STILL a 1-word heap node 0x20027, Node{l,r} a 2-word heap node 0x20028, exact 0xf7 freelist cap!), disassembly of $direct.warp (2,756 lines!), $direct.warp_zip, and $direct.flow shows 4 compounding wastes: (1) warp_zip is NOT inlined into warp (full 184-byte frame call per Node/Node), so warp frees both `a` and `b` to the freelist and warp_zip re-allocates a 3rd Node instead of reusing `a` directly; (2) EVEN WITH IReuse, warp_zip still emits THREE full `p111_program` + `p111_cid_hot` RC-guard checks (one for EVERY reused and allocated Node!) plus `0x3108280` static-heap bound checks on every unpack; (3) warp_leaf spills to [rbp-0x40]/[rbp-0x48] with a 14-insn XOR-mask swap; (4) flow pushes 6 callee-saved regs + 152-byte frame even on the d==0 base case. Fixing these 4 in $direct.warp + $direct.flow cuts 1715.88 ms -> 933.16 ms (1.839x -> 1.155x C, 45.6% saved; projects FULL SIZE=23 from >30s down to ~23.1s!)."
+        },
+        {
+          "name": "b_plus_unboxed_leaf_immediate",
+          "ms": 838.19,
+          "vs_c": 1.038,
+          "speedup_vs_base": 2.047,
+          "pct_saved": 51.2,
+          "raw_ms": [856.95, 838.19, 870.74, 789.45, 769.55],
+          "note": "MATCHES gcc-10 -O2 (1.038x C; 2.047x speedup, 51.2% saved; projects FULL SIZE=23 to ~20.8s)! Unboxing 1-word scalar-field Leaf{v: U32} as a tagged 64-bit immediate (0x100270000000000 | v, shared representation win with tree-matmul's Lf{v: U32}!) eliminates all 524k Leaf heap derefs and in-place Leaf writes during warp_leaf."
+        }
+      ],
+      "verdict": "STRONG GO (inline warp_zip into warp + reuse consumed Node slot across recursive calls + drop redundant p111_program/p111_cid_hot RC-guards on non-shared/linear ADTs + shrink-wrap base cases: 1.839x -> 1.155x C, unlocks FULL tree-bitonic < 30s at ~23.1s; + 1-word scalar-field ctor unboxing: 2.047x -> 1.038x C!)",
+      "estimated_loc": "~135 LOC (~40 LOC inline small non-recursive ctor-join helpers like warp_zip + cross-call IReuse, ~45 LOC drop p111_program/p111_cid_hot RC-guard & static-bound on linear/non-CAF ADTs [shared with tree-matmul/bst], ~50 LOC shrink-wrap leaf/base arms; +~120 LOC optional 1-word U32-ctor immediate unboxing)"
+    },
+    {
+      "id": "3",
+      "benchmark": "bench/runtime/tree-matmul/main.bend (scaled size=7, blog=9, nchain=32; 32 rounds of 128x128 quad-tree matrix multiply + Freivalds verification)",
+      "checksum": "47427472",
+      "baseline_ms": 3204.35,
+      "c_ms": 755.83,
+      "baseline_vs_c": 4.239,
+      "raw_baseline_ms": [3253.73, 3204.35, 3140.61, 3197.95, 3345.25],
+      "raw_c_ms": [977.54, 742.43, 723.53, 898.49, 755.83],
+      "variants": [
+        {
+          "name": "a_mul_add_no_cid_hot_rc_guard_shrinkwrap",
+          "ms": 1512.04,
+          "vs_c": 2.001,
+          "speedup_vs_base": 2.119,
+          "pct_saved": 52.8,
+          "raw_ms": [1512.04, 1509.0, 1648.4, 1602.19, 1502.93],
+          "note": "SMOKING GUN #3: Because `round` shares `+a`, `+b`, `+c`, `p111_rt_keep` sets `p111_cid_hot[0x28] = 1` (Qd) at runtime — which poisons EVERY SINGLE intermediate `Qd` allocation inside $bor.mul and $direct.add (even though all mul/add intermediates are 100% uniquely owned!), forcing every Qd alloc to fail the `p111_cid_hot` fast-path into `p111_rt_ctor` and every Qd unpack in $direct.add to fail `cmp ecx, 2` into the 0x82 RC-wrapper path! Additionally, $bor.mul pushes 6 callee-saved regs + 248-byte frame on the Lf/Lf base case (87.5% of all mul calls!). Keeping the EXACT same Bend5k heap representation, exact 8-mul-then-4-add order, and exact 0xf7 freelist cap, simply emitting unshared 0x20028 Qd allocs in mul/add + shrink-wrapping Lf/Lf cuts 3204.35 ms -> 1512.04 ms (2.119x -> 2.001x C, 52.8% saved)!"
+        },
+        {
+          "name": "b_plus_interleaved_pair_add_uncapped_freelist",
+          "ms": 1145.48,
+          "vs_c": 1.516,
+          "speedup_vs_base": 2.797,
+          "pct_saved": 64.3,
+          "raw_ms": [1036.09, 1150.62, 1125.91, 1145.48, 1332.57],
+          "note": "UNLOCKS FULL tree-matmul < 30s AT ~13.5s (vs 8.9s C)! Still keeping Lf and Qd heap-allocated, raising the tiny per-thread freelist cap from 0xf7 (247 words = only 61 Qd nodes vs 5,461 Qd + 16,384 Lf nodes per 128x128 matrix!) to 0x40000 and interleaving `add(mul, mul)` pair-by-pair (cutting peak live intermediates 4x) drops 1512.04 ms -> 1145.48 ms (2.797x -> 1.516x C, 64.3% saved)!"
+        },
+        {
+          "name": "c_plus_unboxed_lf_immediate",
+          "ms": 354.43,
+          "vs_c": 0.409,
+          "speedup_vs_base": 10.353,
+          "pct_saved": 90.3,
+          "raw_ms": [354.43, 315.59, 335.43, 369.42, 382.29],
+          "note": "CRUSHES gcc-10 -O2 BY 2.44x (0.409x C against paired 865.57 ms C run; 10.35x speedup vs baseline, 90.3% saved; projects FULL tree-matmul to ~3.6s!)! Unboxing 1-word scalar-field Lf{v: U32} & Vl{v: U32} as tagged 64-bit immediates (0x100270000000000 | v, same optimization as tree-bitonic Leaf{v: U32}!) eliminates all 67.1M leaf heap allocs/frees across 32 rounds — beating C's heap-allocated Leaf nodes by 2.44x!"
+        }
+      ],
+      "verdict": "STRONG GO (skip p111_cid_hot RC-wrapping on locally-owned ctor allocs + shrink-wrap Lf/Lf + raise per-thread freelist cap from 0xf7 to >=4096: 2.797x -> 1.516x C, unlocks FULL tree-matmul < 30s at ~13.5s; + 1-word U32-ctor immediate unboxing [shared with tree-bitonic!]: 10.35x -> 0.409x C, 2.44x faster than C!)",
+      "estimated_loc": "~110 LOC (~45 LOC skip p111_cid_hot on provably-unique/non-escaped allocs + shrink-wrap Lf/Lf [shared with tree-bitonic], ~15 LOC raise per-thread freelist cap in x64/runtime, ~50 LOC schedule consumer add immediately after its two producer muls; +~120 LOC shared 1-word U32-ctor unboxing)"
+    },
+    {
+      "id": "4",
+      "benchmark": "native45:bst (selfhost/tools/bench/catalogs/native45/fixtures/coverage-bst-64.bend; 27,184 reps x build 64-node fueled-zipper BST + inorder fold)",
+      "checksum": "861157620|4|27184",
+      "baseline_ms": 872.0,
+      "c_ms": 199.03,
+      "baseline_vs_c": 4.381,
+      "raw_baseline_ms": [904.0, 872.0, 845.0, 879.0, 848.0],
+      "raw_c_ms": [199.03],
+      "variants": [
+        {
+          "name": "a_early_exit_ireuse_no_rc_guard",
+          "ms": 204.0,
+          "vs_c": 1.025,
+          "speedup_vs_base": 4.275,
+          "pct_saved": 76.6,
+          "raw_ms": [199.0, 212.0, 202.0, 217.0, 204.0],
+          "note": "SMOKING GUN #4 (MATCHES gcc-10 -O2 AT 1.025x C!): Keeping the EXACT same fueled-zipper bst.down + insert.fin + bst.up algorithm and Bend5k heap representation, disassembly of $direct.bst.down (797 lines!) and $direct.bst.up (582 lines!) reveals THREE massive bugs/misses: (1) NO early-exit on BLeaf{} fixed-point in bst.down — `fuel = size + 1 = 65` spins ~55 useless no-op `BLeaf{} -> BLeaf{}` iterations on EVERY single insert! (2) NO cross-ctor same-size IReuse between BNode (3-field = 4-word) and BF (3-field = 4-word) — bst.down frees BNode to [pool+0x10] and 4 insns later pops BF from [pool+0x10], and bst.up does the exact reverse! (3) 9 total `p111_program` + `p111_cid_hot` RC-guards + static-bound checks across bst.down/bst.up/p37.bst.insert. Fixing these 3 general optimizations drops 872 ms -> 204 ms (4.275x speedup -> 1.025x C, 76.6% saved)!"
+        },
+        {
+          "name": "b_fused_zipper_in_place_insert",
+          "ms": 65.0,
+          "vs_c": 0.327,
+          "speedup_vs_base": 13.415,
+          "pct_saved": 92.5,
+          "raw_ms": [65.0, 69.0, 71.0, 65.0, 65.0],
+          "note": "CRUSHES gcc-10 -O2 BY 3.06x (0.327x C; 13.415x speedup, 92.5% saved)! Deforesting the linear fueled-zipper `bst.up(bst.down(fuel, x, (t, Nil{})))` into a direct in-place pointer-swinging BST insert (still allocating exact Bend5k BNode heap nodes and leaving $direct.inorder untouched!) eliminates all Cons/BF/Pair allocations and the entire bst.up ascent pass."
+        }
+      ],
+      "verdict": "STRONG GO (idempotent-state early-exit in fueled TCO loops + cross-ctor same-size-class IReuse [BNode<->BF] + drop redundant RC-guards: 4.275x -> 1.025x C, matches gcc-10 -O2! + optional zipper deforestation: 13.415x -> 0.327x C, 3.06x faster than C!)",
+      "estimated_loc": "~95 LOC (~35 LOC fixed-point/idempotent-arm early-exit in TCO countdown loops, ~40 LOC cross-ctor same-size-class IReuse [3-field BNode <-> 3-field BF], ~20 LOC incremental RC-guard elision [shared with tree-bitonic/tree-matmul])"
+    }
+  ]
+}

@@ -3,10 +3,11 @@ import Base
 # =============================================================================
 # bend5k Zero-Cost Ownership & Representation Laws (Pure Bend, zero unsafe)
 # =============================================================================
-# Formalizes and proves three core optimization laws enforced by bend5k:
+# Formalizes and proves four core optimization laws enforced by bend5k:
 #   Law 1 — Unboxed 2-Scalar Direct Transfer (`ret2`)
 #   Law 2 — Unique-Slot In-Place Reuse (`IReuse`)
 #   Law 3 — Read-Only Borrow-Walk Erasure (`borrow`)
+#   Law 4 — Linear-Array Handle Hoist & Dead-Swap-Old-Load Erasure
 # =============================================================================
 
 
@@ -537,6 +538,243 @@ def law_borrow_chain_zero_ops(c, target, rc):
 
 
 # =============================================================================
+# LAW 4: Linear-Array Handle Hoist & Dead-Swap-Old-Load Erasure
+# =============================================================================
+# On a unique linear array handle `ArrH{dp, len, data}` threaded through a
+# Nat-counted loop performing `Array.get` / `Array.swap` without resizing or
+# aliasing:
+#   - Hoisting `(dp, len)` to the loop preheader produces the exact same final
+#     array state (`==`) as decoding the handle on every iteration, with 0
+#     per-iteration tag/len decodes (`decodes == 0n`).
+#   - When the old value returned by `Array.swap` is unused (`dead_old`),
+#     eliding the old-value read produces the exact same final array state
+#     (`==`) with 0 dead old-value loads (`dead_loads == 0n`).
+
+type ArrData is Data:
+  ANil{}
+  ACon{head: U32, tail: ArrData}
+
+type ArrH is Data:
+  ArrH{dp: Nat, len: Nat, data: ArrData}
+
+type SwapPair is Data:
+  MkSwapPair{data: ArrData, old: U32}
+
+type ArrLoopRes is Data:
+  MkArrLoopRes{arr: ArrH, decodes: Nat, dead_loads: Nat}
+
+def arr_get_data(d: ArrData, idx: Nat) -> U32:
+  match d idx:
+    case ANil{} _:
+      0
+    case ACon{x, _} 0n:
+      x
+    case ACon{_, t} 1n+p:
+      arr_get_data(t, p)
+
+def arr_set_data(d: ArrData, idx: Nat, v: U32) -> ArrData:
+  match d idx:
+    case ANil{} _:
+      ANil{}
+    case ACon{_, t} 0n:
+      ACon{v, t}
+    case ACon{x, t} 1n+p:
+      ACon{x, arr_set_data(t, p, v)}
+
+# Reference Array.swap: reads old value at idx, writes new value, returns (data', old)
+def arr_swap_with_old(+data: ArrData, +idx: Nat, v: U32) -> SwapPair:
+  MkSwapPair{arr_set_data(data, idx, v), arr_get_data(data, idx)}
+
+def sp_data(sp: SwapPair) -> ArrData:
+  match sp:
+    case MkSwapPair{d, _}:
+      d
+
+def alr_arr(r: ArrLoopRes) -> ArrH:
+  match r:
+    case MkArrLoopRes{a, _, _}:
+      a
+
+def alr_decodes(r: ArrLoopRes) -> Nat:
+  match r:
+    case MkArrLoopRes{_, d, _}:
+      d
+
+def alr_dead_loads(r: ArrLoopRes) -> Nat:
+  match r:
+    case MkArrLoopRes{_, _, l}:
+      l
+
+def alr_add_costs(r: ArrLoopRes, d: Nat, l: Nat) -> ArrLoopRes:
+  match r:
+    case MkArrLoopRes{a, decs, dloads}:
+      MkArrLoopRes{a, Nat.add(d, decs), Nat.add(l, dloads)}
+
+# Reference unhoisted loop: decodes ArrH on every iteration (2 decodes/iter:
+# Array.get + Array.swap) and loads the unused old value on Array.swap (1 dead_load/iter).
+def arr_loop_ref(+n: Nat, h: ArrH, +delta: U32) -> ArrLoopRes:
+  match n:
+    case 0n:
+      MkArrLoopRes{h, 0n, 0n}
+    case 1n+p:
+      match h:
+        case ArrH{dp, len, +data}:
+          v = arr_get_data(data, p)
+          sp = arr_swap_with_old(data, p, U32.add(v, delta))
+          alr_add_costs(arr_loop_ref(p, ArrH{dp, len, sp_data(sp)}, delta), 2n, 1n)
+
+# Hoisted inner loop (preheader decoded dp/len once; still loads dead old value)
+def arr_loop_hoisted_with_old(+n: Nat, +data: ArrData, +delta: U32) -> ArrData:
+  match n:
+    case 0n:
+      data
+    case 1n+p:
+      v = arr_get_data(data, p)
+      sp = arr_swap_with_old(data, p, U32.add(v, delta))
+      arr_loop_hoisted_with_old(p, sp_data(sp), delta)
+
+def arr_loop_hoisted(+n: Nat, h: ArrH, delta: U32) -> ArrLoopRes:
+  match h:
+    case ArrH{dp, len, data}:
+      MkArrLoopRes{ArrH{dp, len, arr_loop_hoisted_with_old(n, data, delta)}, 0n, n}
+
+# Hoisted + dead-swap-old-load erased inner loop (0 per-iter decodes, 0 dead old loads)
+def arr_loop_hoisted_no_old(+n: Nat, +data: ArrData, +delta: U32) -> ArrData:
+  match n:
+    case 0n:
+      data
+    case 1n+p:
+      v = arr_get_data(data, p)
+      d1 = arr_set_data(data, p, U32.add(v, delta))
+      arr_loop_hoisted_no_old(p, d1, delta)
+
+def arr_loop_hoisted_erased(+n: Nat, h: ArrH, delta: U32) -> ArrLoopRes:
+  match h:
+    case ArrH{dp, len, data}:
+      MkArrLoopRes{ArrH{dp, len, arr_loop_hoisted_no_old(n, data, delta)}, 0n, 0n}
+
+# Helper: adding cost counters does not change the final array state
+law alr_arr_add_costs:
+  for r: ArrLoopRes
+  for d: Nat
+  for l: Nat
+  {alr_arr(r) == alr_arr(alr_add_costs(r, d, l)) : ArrH}
+
+def alr_arr_add_costs(r, d, l):
+  match r:
+    case MkArrLoopRes{a, decs, dloads}:
+      {==}
+
+# Structural induction on n: hoisting (dp, len) preserves the exact final ArrH
+law law_arr_hoist_inner:
+  for +n: Nat
+  for +dp: Nat
+  for +len: Nat
+  for +data: ArrData
+  for +delta: U32
+  {ArrH{dp, len, arr_loop_hoisted_with_old(n, data, delta)} == alr_arr(arr_loop_ref(n, ArrH{dp, len, data}, delta)) : ArrH}
+
+def law_arr_hoist_inner(n, dp, len, data, delta):
+  match n:
+    case 0n:
+      {==}
+    case 1n+p:
+      +d1 = sp_data(arr_swap_with_old(data, p, U32.add(arr_get_data(data, p), delta)))
+      %alr_arr_add_costs(arr_loop_ref(p, ArrH{dp, len, d1}, delta), 2n, 1n) : {ArrH{dp, len, arr_loop_hoisted_with_old(p, d1, delta)} == _ : ArrH}
+      law_arr_hoist_inner(p, dp, len, d1, delta)
+
+# Law 4a: Preheader handle hoist produces the exact same final array state
+law law_arr_hoist_eq:
+  for +n: Nat
+  for  h: ArrH
+  for +delta: U32
+  {alr_arr(arr_loop_hoisted(n, h, delta)) == alr_arr(arr_loop_ref(n, h, delta)) : ArrH}
+
+def law_arr_hoist_eq(n, h, delta):
+  match h:
+    case ArrH{dp, len, data}:
+      law_arr_hoist_inner(n, dp, len, data, delta)
+
+# Law 4b: Preheader handle hoist performs 0 per-iteration tag/len decodes
+law law_arr_hoist_zero_decodes:
+  for +n: Nat
+  for  h: ArrH
+  for  delta: U32
+  {alr_decodes(arr_loop_hoisted(n, h, delta)) == 0n : Nat}
+
+def law_arr_hoist_zero_decodes(n, h, delta):
+  match h:
+    case ArrH{dp, len, data}:
+      {==}
+
+# Structural induction on n: eliding dead old-value loads preserves ArrData
+law law_arr_dead_swap_data_eq:
+  for +n: Nat
+  for +data: ArrData
+  for +delta: U32
+  {arr_loop_hoisted_no_old(n, data, delta) == arr_loop_hoisted_with_old(n, data, delta) : ArrData}
+
+def law_arr_dead_swap_data_eq(n, data, delta):
+  match n:
+    case 0n:
+      {==}
+    case 1n+p:
+      law_arr_dead_swap_data_eq(p, arr_set_data(data, p, U32.add(arr_get_data(data, p), delta)), delta)
+
+# Law 4c: Hoisting + dead-swap-old-load erasure produces the exact same final ArrH
+law law_arr_dead_swap_eq:
+  for +n: Nat
+  for  h: ArrH
+  for +delta: U32
+  {alr_arr(arr_loop_hoisted_erased(n, h, delta)) == alr_arr(arr_loop_ref(n, h, delta)) : ArrH}
+
+def law_arr_dead_swap_eq(n, h, delta):
+  match h:
+    case ArrH{+dp, +len, +data}:
+      e1 = Equal.cong(
+        ArrData,
+        ArrH,
+        d => ArrH{dp, len, d},
+        arr_loop_hoisted_no_old(n, data, delta),
+        arr_loop_hoisted_with_old(n, data, delta),
+        law_arr_dead_swap_data_eq(n, data, delta)
+      )
+      e2 = law_arr_hoist_inner(n, dp, len, data, delta)
+      Equal.trans(
+        ArrH,
+        ArrH{dp, len, arr_loop_hoisted_no_old(n, data, delta)},
+        ArrH{dp, len, arr_loop_hoisted_with_old(n, data, delta)},
+        alr_arr(arr_loop_ref(n, ArrH{dp, len, data}, delta)),
+        e1,
+        e2
+      )
+
+# Law 4d: Hoisted + dead-erased loop performs 0 per-iteration decodes
+law law_arr_erased_zero_decodes:
+  for +n: Nat
+  for  h: ArrH
+  for  delta: U32
+  {alr_decodes(arr_loop_hoisted_erased(n, h, delta)) == 0n : Nat}
+
+def law_arr_erased_zero_decodes(n, h, delta):
+  match h:
+    case ArrH{dp, len, data}:
+      {==}
+
+# Law 4e: Hoisted + dead-erased loop performs 0 dead old-value loads
+law law_arr_erased_zero_dead_loads:
+  for +n: Nat
+  for  h: ArrH
+  for  delta: U32
+  {alr_dead_loads(arr_loop_hoisted_erased(n, h, delta)) == 0n : Nat}
+
+def law_arr_erased_zero_dead_loads(n, h, delta):
+  match h:
+    case ArrH{dp, len, data}:
+      {==}
+
+
+# =============================================================================
 # Top-level Witness Pack
 # =============================================================================
 
@@ -548,6 +786,9 @@ def sample_tree() -> BTree:
 
 def sample_chain() -> Chain:
   CLink{2n, CLink{5n, CEnd{}}}
+
+def sample_arr() -> ArrH:
+  ArrH{100n, 4n, ACon{1, ACon{2, ACon{3, ACon{4, ANil{}}}}}}
 
 def main() -> U32:
   _ = law_ret2_fst(42, 99)
@@ -562,4 +803,9 @@ def main() -> U32:
   _ = law_borrow_chain_rc(sample_chain(), 5n, 2n)
   _ = law_borrow_chain_val(sample_chain(), 5n, 2n, 2n)
   _ = law_borrow_chain_zero_ops(sample_chain(), 5n, 2n)
+  _ = law_arr_hoist_eq(4n, sample_arr(), 7)
+  _ = law_arr_hoist_zero_decodes(4n, sample_arr(), 7)
+  _ = law_arr_dead_swap_eq(4n, sample_arr(), 7)
+  _ = law_arr_erased_zero_decodes(4n, sample_arr(), 7)
+  _ = law_arr_erased_zero_dead_loads(4n, sample_arr(), 7)
   0

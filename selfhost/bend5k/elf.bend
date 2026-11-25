@@ -760,10 +760,16 @@ def elf_ctor_names(ctors: List<&2, IrCtor>) -> List<&2, String>:
   match ctors:
     case Nil{}: Nil{}
     case Con{IrCtor{_, nm, _, _}, t}: Con{nm, elf_ctor_names(t)}
+def elf_emit_stat_word(+x: U32, b: ByteBuf) -> ByteBuf:
+  +is_hi = U32.is_ge(x, 2147483648)
+  +is_nil = U32.is_eq(x, 2147483648)
+  lo = Bool.pick(U32, is_hi, Bool.pick(U32, is_nil, 0, U32.add(51413504, U32.sub(x, 2147483649))), x)
+  hi = Bool.pick(U32, is_hi, Bool.pick(U32, is_nil, 16777216, 33554688), 0)
+  bb_emit_u64(b, lo, hi)
 def elf_emit_u64_arr(xs: List<&2, U32>, b: ByteBuf) -> ByteBuf:
   match xs:
     case Nil{}: b
-    case Con{x, t}: elf_emit_u64_arr(t, bb_emit_u64(b, x, 0))
+    case Con{x, t}: elf_emit_u64_arr(t, elf_emit_stat_word(x, b))
 def elf_emit_seg_ptrs(fns: List<&2, IrFn>, ta: TextAcc) -> TextAcc:
   match fns ta:
     case Nil{} _: ta

@@ -316,7 +316,7 @@ def fv_go(fuel: Nat, +vmap: U32Map, +bnd: U32Map, item: UseItem, acc: List<&2, U
 type CloEntry is Data:
   CloEntry{cid: U32, fid: U32, ncaps: U32}
 type CloBank is Data:
-  CloBank{next_fid: U32, next_cid: U32, ctors_rev: List<&2, IrCtor>, fns_rev: List<&2, IrFn>, entries_rev: List<&2, CloEntry>}
+  CloBank{next_fid: U32, next_cid: U32, ctors_rev: List<&2, IrCtor>, fns_rev: List<&2, IrFn>, entries_rev: List<&2, CloEntry>, next_stat: U32, stats_rev: List<&2, U32>, str_map: Map<&2, U32>}
 type CfgSt is Data:
   CfgSt{
     cur_fid: U32, next_reg: U32, next_blk: U32, cur_blk: U32,
@@ -686,6 +686,35 @@ def low_str_chain(s: String, st: CfgSt) -> CfgSt:
       +st1 = low_str_chain(t, st)
       +st2 = low_emit_const(st1, Char.to_u32(c))
       low_emit_ctor(st2, 1, [cfg_res(st2), cfg_res(st1)])
+def low_stat_str_go(s: String, +idx: U32, rev: List<&2, U32>) -> U32 & List<&2, U32>:
+  match s:
+    case SNil{}: (idx, rev)
+    case SCon{c, SNil{}}: (U32.add(idx, 2), Con{2147483648, Con{Char.to_u32(c), rev}})
+    case SCon{c, SCon{c2, t2}}:
+      +nxt = U32.add(idx, 2)
+      low_stat_str_go(SCon{c2, t2}, nxt, Con{U32.add(2147483649, nxt), Con{Char.to_u32(c), rev}})
+def low_emit_static(st: CfgSt, idx: U32) -> CfgSt:
+  +st1 = cfg_alloc_reg(st)
+  cfg_emit(st1, IStatic{cfg_res(st1), idx})
+def low_str_intern_fin(res: U32 & List<&2, U32>, s: String, st: CfgSt, nf: U32, nc: U32, cr: List<&2, IrCtor>, fr: List<&2, IrFn>, er: List<&2, CloEntry>, +ns: U32, sm: Map<&2, U32>) -> CfgSt:
+  (ns2, sr2) = res
+  low_emit_static(cfg_set_bank(st, CloBank{nf, nc, cr, fr, er, ns2, sr2, Map.set(&2, U32, sm, s, U32.add(ns, 1))}), ns)
+def low_str_intern_miss(ok: Bool, +s: String, st: CfgSt, nf: U32, nc: U32, cr: List<&2, IrCtor>, fr: List<&2, IrFn>, er: List<&2, CloEntry>, +ns: U32, sr: List<&2, U32>, sm: Map<&2, U32>) -> CfgSt:
+  match ok:
+    case True{}: low_str_intern_fin(low_stat_str_go(s, U32.add(ns, 1), Con{U32.add(2147483649, U32.add(ns, 1)), sr}), s, st, nf, nc, cr, fr, er, ns, sm)
+    case False{}: low_str_chain(s, cfg_set_bank(st, CloBank{nf, nc, cr, fr, er, ns, sr, sm}))
+def low_str_intern_got(got: Map<&2, U32> & U32, s: String, st: CfgSt, nf: U32, nc: U32, cr: List<&2, IrCtor>, fr: List<&2, IrFn>, er: List<&2, CloEntry>, +ns: U32, sr: List<&2, U32>) -> CfgSt:
+  (sm1, hit) = got
+  match hit:
+    case 0: low_str_intern_miss(U32.is_lt(ns, 524288), s, st, nf, nc, cr, fr, er, ns, sr, sm1)
+    case h: low_emit_static(cfg_set_bank(st, CloBank{nf, nc, cr, fr, er, ns, sr, sm1}), U32.sub(h, 1))
+def low_str_lit_bk(bk: CloBank, +s0: String, st: CfgSt) -> CfgSt:
+  CloBank{nf, nc, cr, fr, er, ns, sr, sm} = bk
+  low_str_intern_got(Map.get(U32, 0, sm, s0), s0, st, nf, nc, cr, fr, er, ns, sr)
+def low_str_lit(s: String, +st: CfgSt) -> CfgSt:
+  match s:
+    case SNil{}: low_emit_ctor(st, 0, Nil{})
+    case SCon{c, t}: low_str_lit_bk(cfg_bank(st), SCon{c, t}, st)
 def low_filter_erased(es: List<&2, Expr>, +emask: U32, +idx: U32) -> List<&2, Expr>:
   match es:
     case Nil{}: Nil{}
@@ -1115,12 +1144,12 @@ def low_drop_u32(n: Nat, xs: List<&2, U32>) -> List<&2, U32>:
     case _ Nil{}: Nil{}
     case 1n+p Con{_, t}: low_drop_u32(p, t)
 def low_bank_next_cid(bk: CloBank) -> U32:
-  CloBank{_, nc, _, _, _} = bk
+  CloBank{_, nc, _, _, _, _, _, _} = bk
   nc
 def low_bank_finish_lam(+ncaps: U32, ar: U32, lam_st: CfgSt) -> CloBank:
   match lam_st:
-    case CfgSt{_, nregs, _, _, _, blks_rev, _, _, _, _, _, _, CloBank{+lam_fid, +lam_cid, cr, fr, er}}:
-      CloBank{U32.add(lam_fid, 1), U32.add(lam_cid, 1), Con{IrCtor{lam_cid, String.append("__clo_", b5k_u32_to_str(lam_fid)), ncaps, False{}}, cr}, Con{IrFn{lam_fid, String.append("__lam_", b5k_u32_to_str(lam_fid)), ar, nregs, True{}, False{}, False{}, b5k_list_rev(IrBlock, blks_rev)}, fr}, Con{CloEntry{lam_cid, lam_fid, ncaps}, er}}
+    case CfgSt{_, nregs, _, _, _, blks_rev, _, _, _, _, _, _, CloBank{+lam_fid, +lam_cid, cr, fr, er, ns, sr, sm}}:
+      CloBank{U32.add(lam_fid, 1), U32.add(lam_cid, 1), Con{IrCtor{lam_cid, String.append("__clo_", b5k_u32_to_str(lam_fid)), ncaps, False{}}, cr}, Con{IrFn{lam_fid, String.append("__lam_", b5k_u32_to_str(lam_fid)), ar, nregs, True{}, False{}, False{}, b5k_list_rev(IrBlock, blks_rev)}, fr}, Con{CloEntry{lam_cid, lam_fid, ncaps}, er}, ns, sr, sm}
 def low_expr_lt32(fuel: Nat, +syms: SymTab, e: Expr) -> Bool:
   match fuel e:
     case 0n _: False{}
@@ -1305,7 +1334,7 @@ def low_go(fuel: Nat, +env: LowEnv, st: CfgSt, task: LowTask, +is_tail: Bool) ->
       cfg_emit(st1, IFlt{cfg_res(st1), bits})
     case Succ{_} LTExpr{EChr{c}}: low_emit_const(st, c)
     case Succ{_} LTExpr{EUnit{}}: low_emit_ctor(st, 7, Nil{})
-    case Succ{_} LTExpr{EStr{s}}: low_str_chain(s, st)
+    case Succ{_} LTExpr{EStr{s}}: low_str_lit(s, st)
     case Succ{p} LTExpr{EVar{+sym}}:
       +st0 = st
       +lv = um_get(cfg_vmap(st0), sym)
@@ -1463,7 +1492,7 @@ def low_mk_apply_arms(entries: List<&2, CloEntry>, +blk_id: U32, arms: List<&2, 
   match entries:
     case Nil{}: (b5k_list_rev(IrBlock, blks), b5k_list_rev(IrSwitchArm, arms))
     case Con{CloEntry{cid, +fid, +ncaps}, t}:
-      st0 = low_alloc_regs_go(U32.to_nat(ncaps), cfg_new(0, 2, CloBank{0, 0, Nil{}, Nil{}, Nil{}}), Nil{})
+      st0 = low_alloc_regs_go(U32.to_nat(ncaps), cfg_new(0, 2, CloBank{0, 0, Nil{}, Nil{}, Nil{}, 0, Nil{}, Map.new(&2, U32)}), Nil{})
       +res_reg = U32.add(2, ncaps)
       +cap_regs = cfg_rlist(st0)
       ops = Bool.pick(List<&2, IrOp>, U32.is_zero(ncaps), [ISink{0}, ICallDirect{res_reg, fid, [1]}], [ITake{cap_regs, 0}, ICallDirect{res_reg, fid, b5k_list_app(U32, cap_regs, [1])}])
@@ -1622,9 +1651,9 @@ def low_maybe_patch_main(is_pure: Bool, mret: Maybe<&2, Expr>, +defs: List<&2, D
       Bool.pick(List<&2, Def>, low_has_arr(32n, syms, rty), low_patch_main(defs, msym, syms, t1, t2, a2l, rty), defs)
     case _ _: defs
 def b5k_lower_fin(dr: List<&2, IrFn> & CloBank, ctors_base: List<&2, IrCtor>, main_fid: U32, is_pure: Bool, sdesc: List<&2, U32>, snames: List<&2, String>) -> LowerRes:
-  (def_fns, CloBank{_, _, lam_ctors_rev, lam_fns_rev, entries_rev}) = dr
+  (def_fns, CloBank{_, _, lam_ctors_rev, lam_fns_rev, entries_rev, _, stats_rev, _}) = dr
   all_ctors = b5k_list_app(IrCtor, ctors_base, b5k_list_rev(IrCtor, lam_ctors_rev))
-  LowerRes{True{}, "", IrProg{Con{low_mk_apply_fn(b5k_list_rev(CloEntry, entries_rev)), Con{low_mk_io_run_fn(), Con{low_mk_io_cont_fn(), b5k_list_app(IrFn, def_fns, b5k_list_rev(IrFn, lam_fns_rev))}}}, all_ctors, Nil{}, main_fid, is_pure, Nil{}, sdesc, snames}}
+  LowerRes{True{}, "", IrProg{Con{low_mk_apply_fn(b5k_list_rev(CloEntry, entries_rev)), Con{low_mk_io_run_fn(), Con{low_mk_io_cont_fn(), b5k_list_app(IrFn, def_fns, b5k_list_rev(IrFn, lam_fns_rev))}}}, all_ctors, b5k_list_rev(U32, stats_rev), main_fid, is_pure, Nil{}, sdesc, snames}}
 def b5k_lower_run(+st: SymTab, +sym_tmp: U32, sym_t2: U32, defs: List<&2, Def>, ca: CtorTabAcc, fa: FnTabAcc, mret: Maybe<&2, Expr>, si: ShowInfo) -> LowerRes:
   CtorTabAcc{_, next_cid, ctor_by_sym, ctor_smask, ctor_single, ctors_rev} = ca
   FnTabAcc{next_fid, fn_by_sym, fn_arity, fn_emask, +main_fid, main_sym} = fa
@@ -1632,7 +1661,7 @@ def b5k_lower_run(+st: SymTab, +sym_tmp: U32, sym_t2: U32, defs: List<&2, Def>, 
   sintr = low_seed_u32_map(st, low_intr_specs(), UM0{})
   skind = low_seed_u32_map(st, low_kind_specs(), UM0{})
   defs2 = low_maybe_patch_main(is_pure, mret, defs, main_sym, st, sym_tmp, sym_t2, low_sym_or(symtab_lookup(st, "Array.to_list")))
-  dr = low_defs(defs2, LowEnv{st, ctor_by_sym, ctor_smask, ctor_single, fn_by_sym, fn_arity, fn_emask, sintr, skind, main_fid, is_pure, low_sym_or(symtab_lookup(st, "IO.bind")), low_sym_or(symtab_lookup(st, "IO.pure")), low_sym_or(symtab_lookup(st, "String.append")), sym_tmp, low_sym_or(symtab_lookup(st, "__arr_len"))}, 3, Nil{}, CloBank{next_fid, next_cid, Nil{}, Nil{}, Nil{}})
+  dr = low_defs(defs2, LowEnv{st, ctor_by_sym, ctor_smask, ctor_single, fn_by_sym, fn_arity, fn_emask, sintr, skind, main_fid, is_pure, low_sym_or(symtab_lookup(st, "IO.bind")), low_sym_or(symtab_lookup(st, "IO.pure")), low_sym_or(symtab_lookup(st, "String.append")), sym_tmp, low_sym_or(symtab_lookup(st, "__arr_len"))}, 3, Nil{}, CloBank{next_fid, next_cid, Nil{}, Nil{}, Nil{}, 0, Nil{}, Map.new(&2, U32)})
   b5k_lower_fin(dr, b5k_list_rev(IrCtor, ctors_rev), main_fid, is_pure, sdesc, snames)
 def b5k_lower_i2(sr: SymRes, sym_tmp: U32, +defs: List<&2, Def>, laws: List<&2, LawDef>, ca: CtorTabAcc, +fa: FnTabAcc) -> LowerRes:
   SymRes{+s5, sym_t2} = sr

@@ -1,0 +1,181 @@
+{
+  "schema": "agy.bend5k.asm_ceiling_probes.v7",
+  "host_pin": "taskset -c 7",
+  "compiler_baseline": "selfhost/build/agy/bend5k/bend5k_o2 -O2",
+  "c_baseline": "gcc-10 -O2 (direct paired run for kmeans; phase205 native45 C reference for native45 fixtures)",
+  "measurement_note": "All variants within each probe were measured back-to-back with their baseline on CPU 7 (5 runs each, median reported) with exact stdout checksums verified. Probes 1-3 and 5 ran during concurrent Proven-10 wave load (~1.55x uniform host frequency scaling on both baseline and C); for native45 probes 1-3, idle_baseline_ms (measured before wave load) and phase205 c_ms establish baseline_vs_c, and variant vs_c = baseline_vs_c / speedup_vs_base.",
+  "probes": [
+    {
+      "id": "1",
+      "benchmark": "native45:list-pipeline (selfhost/tools/bench/catalogs/native45/fixtures/coverage-list-pipeline-512.bend; 25,008 reps x suma(dbl(keep_gt1(p37.list(512, 123))), 0))",
+      "checksum": "7616|4|25008",
+      "baseline_ms": 1521.0,
+      "idle_baseline_ms": 1034.0,
+      "c_ms": 140.77,
+      "baseline_vs_c": 7.345,
+      "raw_baseline_ms": [1527.0, 1522.0, 1501.0, 1521.0, 1505.0],
+      "raw_c_ms": [140.77],
+      "variants": [
+        {
+          "name": "a_trmc_loop_fbip_no_rc_guard",
+          "ms": 411.0,
+          "vs_c": 1.985,
+          "speedup_vs_base": 3.701,
+          "pct_saved": 73.0,
+          "raw_ms": [410.0, 409.0, 411.0, 414.0, 416.0],
+          "note": "SMOKING GUN #1: Patched $direct.p37.list, $direct.keep_gt1, and $direct.dbl into iterative TRMC (Tail Recursion Modulo Cons) loops with in-place FBIP node reuse in keep_gt1/dbl and no per-node p111_program/p111_cid_hot RC-guard, while STILL allocating, walking, and freeing all real heap List nodes via the runtime freelist! Eliminating 3 x 512-deep stack recursions (168-byte frames) and per-node RC checks cuts 73.0% of runtime (3.701x speedup -> 1.985x C). Remaining ~279 ms idle cost is freelist overflow (2-word freelist cap is 0xf7 words = 123 nodes < 512 list length, forcing ~389 slow-path p111_rt_ctor calls per rep)."
+        },
+        {
+          "name": "b_stream_fusion_deforestation",
+          "ms": 19.0,
+          "vs_c": 0.092,
+          "speedup_vs_base": 80.053,
+          "pct_saved": 98.8,
+          "raw_ms": [19.0, 18.0, 19.0, 18.0, 19.0],
+          "note": "CRUSHES gcc-10 -O2 BY 10.9x (0.092x C; 80.05x speedup, 98.8% saved)! Build/foldr stream fusion (deforestation) of suma(dbl(keep_gt1(p37.list(n, seed))), 0) eliminates all 3 intermediate heap Lists and compiles the pipeline into a single 9-insn register loop."
+        }
+      ],
+      "verdict": "STRONG GO (TRMC iterative loop lowering + FBIP in-place filter/map + drop redundant unique-ctor RC-guard: 3.701x -> 1.985x C; + build/foldr list deforestation: 80.05x -> 0.092x C, 10.9x faster than C)",
+      "estimated_loc": "~140 LOC (~90 LOC TRMC destination-passing loop lowering for constructor-tail recursions [shared with row32/closures], ~50 LOC unique-field ctor fast-path; +~160 LOC optional list stream fusion)"
+    },
+    {
+      "id": "2",
+      "benchmark": "native45:closures (selfhost/tools/bench/catalogs/native45/fixtures/coverage-closures-256.bend; 19,600 reps x chain(256)(123) building & applying 256 composed closures)",
+      "checksum": "33019|4|19600",
+      "baseline_ms": 442.0,
+      "idle_baseline_ms": 271.0,
+      "c_ms": 57.37,
+      "baseline_vs_c": 4.724,
+      "raw_baseline_ms": [443.0, 444.0, 442.0, 442.0, 440.0],
+      "raw_c_ms": [57.37],
+      "variants": [
+        {
+          "name": "a_trmc_chain_tco_inline_apply",
+          "ms": 224.0,
+          "vs_c": 2.394,
+          "speedup_vs_base": 1.973,
+          "pct_saved": 49.3,
+          "raw_ms": [224.0, 224.0, 224.0, 224.0, 222.0],
+          "note": "Patched $direct.chain into a bottom-up iterative loop (no 256-deep recursion, no per-node RC-guard) and $direct.__b5k_apply (via $direct.bench) to TCO-loop tail calls in compose (cid 0x37) and inline small leaf lambda bodies (0x38 id, 0x39 add-k), while STILL heap-allocating and freeing all 512 closure nodes (256 x 0x39 + 256 x 0x37). Cuts 49.3% (1.973x -> 2.394x C). Remaining cost is heap alloc/free slow-path overflow (256 2-word compose nodes exceed the 123-node 2-word freelist cap)."
+        },
+        {
+          "name": "b_closure_deforestation_loop",
+          "ms": 3.0,
+          "vs_c": 0.032,
+          "speedup_vs_base": 147.333,
+          "pct_saved": 99.3,
+          "raw_ms": [3.0, 3.0, 3.0, 3.0, 3.0],
+          "note": "CRUSHES gcc-10 -O2 BY 31x (0.032x C; 147.3x speedup, 99.3% saved, matching x86_83k's 4.2 ms)! Deforesting / specializing chain(n)(seed) (a linear one-shot closure chain applied immediately at its construction site) eliminates all 512 closure allocations and indirect dispatches into a 3-insn accumulator loop."
+        }
+      ],
+      "verdict": "STRONG GO (TCO in __b5k_apply + inline small leaf lambdas into __b5k_apply + TRMC bottom-up chain: 1.973x -> 2.394x C; + linear one-shot closure-chain deforestation/specialization: 147.3x -> 0.032x C)",
+      "estimated_loc": "~110 LOC (~50 LOC TCO + small-lambda inlining in __b5k_apply, ~60 LOC TRMC/accumulator loop for compose chains; +~120 LOC optional closure-chain deforestation)"
+    },
+    {
+      "id": "3",
+      "benchmark": "native45:complete-generic-row32 (selfhost/tools/bench/catalogs/native45/fixtures/complete-generic-row32.bend; 1,460 reps x row.probe(32, 17) + p88_row_output + String.eq against 1,078-char literal)",
+      "checksum": "len=1085|tail=0,0,0,0,0,0]]|4|1460",
+      "baseline_ms": 722.0,
+      "idle_baseline_ms": 429.0,
+      "c_ms": 116.67,
+      "baseline_vs_c": 3.677,
+      "raw_baseline_ms": [721.0, 722.0, 727.0, 725.0, 718.0],
+      "raw_c_ms": [116.67],
+      "variants": [
+        {
+          "name": "a0_hoist_const_str_only",
+          "ms": 572.0,
+          "vs_c": 2.913,
+          "speedup_vs_base": 1.262,
+          "pct_saved": 20.8,
+          "raw_ms": [590.0, 573.0, 571.0, 570.0, 572.0],
+          "note": "DISCOVERY #1: $direct.p93.loop is 484 KB in row32.o because it rebuilds the 1,078-char constant expected String literal on the heap from scratch on every iteration (1,078 Con allocs + frees per rep)! Hoisting that constant literal out of the loop (comparing returned heap String directly against static .rodata bytes) while leaving ALL of p88_row_output and String.append untouched saves 20.8% (1.262x -> 2.913x C) and shrinks the .o by ~480 KB."
+        },
+        {
+          "name": "a_hoist_const_str_plus_trmc_string_append",
+          "ms": 142.0,
+          "vs_c": 0.723,
+          "speedup_vs_base": 5.085,
+          "pct_saved": 80.3,
+          "raw_ms": [142.0, 142.0, 141.0, 142.0, 143.0],
+          "note": "SMOKING GUN #2 (BEATS gcc-10 -O2!): Adding TRMC in-place iterative $direct.String.append (shared optimization with list-pipeline!) drops 572 ms -> 142 ms (4.03x from String.append ALONE; 5.085x total -> 0.723x C, 80.3% saved)! Baseline String.append recurses up to 1,078 levels deep on the stack (with 168-byte frames + per-char RC guards) and is called quadratically by left-associated `++` in p88_row_output and p88_row_numbers."
+        },
+        {
+          "name": "b_plus_single_pass_array_to_string",
+          "ms": 42.0,
+          "vs_c": 0.214,
+          "speedup_vs_base": 17.190,
+          "pct_saved": 94.2,
+          "raw_ms": [42.0, 41.0, 42.0, 42.0, 42.0],
+          "note": "BEATS gcc-10 -O2 BY 4.67x (0.214x C; 17.19x speedup, 94.2% saved)! Also fusing p88_row_output (Array.to_list + p88_row_numbers + U32.show + `++`) into a single-pass array-to-String builder (still allocating the exact 1,078-char heap String and leaving row.probe untouched) eliminates all 512 intermediate List<U32> nodes and all quadratic `++` re-walks."
+        }
+      ],
+      "verdict": "STRONG GO (TRMC iterative in-place String.append [4.03x alone!] + constant String literal hoisting/CAF lifting [1.26x + 480 KB code-size win]: 5.085x -> 0.723x C, beats gcc-10 -O2! + single-pass String builder / right-assoc `++`: 17.19x -> 0.214x C)",
+      "estimated_loc": "~115 LOC (~0 incremental LOC for TRMC String.append if shared with list-pipeline TRMC, ~55 LOC constant String literal hoisting/static comparison, ~60 LOC right-associated String.append / accumulator fusion)"
+    },
+    {
+      "id": "4",
+      "benchmark": "native45:local-fold (selfhost/tools/bench/catalogs/native45/fixtures/variation-local-fold-8192-123.bend; 30,516 reps x 8,192-iter in-place Array<U32> read-add-xor-write loop = 250M iters)",
+      "checksum": "805701512|4|30516",
+      "baseline_ms": 342.0,
+      "c_ms": 167.39,
+      "baseline_vs_c": 2.043,
+      "raw_baseline_ms": [345.0, 342.0, 342.0, 342.0, 343.0],
+      "raw_c_ms": [167.39],
+      "variants": [
+        {
+          "name": "a_hoist_null_cse_addr",
+          "ms": 219.0,
+          "vs_c": 1.308,
+          "speedup_vs_base": 1.562,
+          "pct_saved": 36.0,
+          "raw_ms": [230.0, 219.0, 222.0, 210.0, 209.0],
+          "note": "SMOKING GUN: Baseline $direct.fold.loop is already a tight 17-insn TCO loop, but executes TWO redundant `test %r10, %r10; je` array null-checks (even though %r10 is loop-invariant!), computes `and %r11, %rdi; lea (%r10,%rdi,8), %rdi` TWICE for the exact same index `i`, and copies `i -> r13 -> r8` every iteration. Hoisting the null-check, CSEing `&arr[i & mask]`, and incrementing `%r8d` in place shrinks the loop from 17 insns -> 9 insns and cuts 36.0% (1.562x -> 1.308x C)."
+        },
+        {
+          "name": "b_plus_unroll4_aligned",
+          "ms": 151.0,
+          "vs_c": 0.902,
+          "speedup_vs_base": 2.265,
+          "pct_saved": 55.8,
+          "raw_ms": [152.0, 151.0, 152.0, 151.0, 151.0],
+          "note": "BEATS gcc-10 -O2 (0.902x C; 2.265x speedup, 55.8% saved)! 4x aligned loop unrolling (one `and %r11` mask per 4 consecutive array slots when mask >= 3 and `i % 4 == 0`, using `add (%rdi), %ebx` memory-source ALU) eliminates loop-branch and address-mask overhead."
+        }
+      ],
+      "verdict": "STRONG GO (hoist loop-invariant array null-checks + CSE identical-index array-element address + in-place IV increment: 1.562x -> 1.308x C; + 4x aligned loop unrolling: 2.265x -> 0.902x C, beats gcc-10 -O2!)",
+      "estimated_loc": "~85 LOC (~30 LOC hoist loop-invariant array null-checks [shared with terrain/editdist], ~25 LOC local same-array/same-index address CSE, ~30 LOC 4x aligned TCO loop unrolling)"
+    },
+    {
+      "id": "5",
+      "benchmark": "bench/runtime/kmeans/main.bend (scaled SIZE=13n; 64 restarts x 20 Lloyd rounds x 8,192 2D points x K=8 clusters = 10.5M points)",
+      "checksum": "1054846867",
+      "baseline_ms": 1725.06,
+      "c_ms": 546.67,
+      "baseline_vs_c": 3.156,
+      "raw_baseline_ms": [1727.91, 1726.05, 1725.06, 1719.66, 1697.85],
+      "raw_c_ms": [546.67, 501.03, 536.41, 562.29, 549.75],
+      "variants": [
+        {
+          "name": "a_chunk_cmov_unspill_packed32",
+          "ms": 753.61,
+          "vs_c": 1.379,
+          "speedup_vs_base": 2.289,
+          "pct_saved": 56.3,
+          "raw_ms": [730.22, 747.99, 758.15, 758.43, 753.61],
+          "note": "SMOKING GUN #1: Disassembly of baseline $direct.chunk (2,758 lines!) reveals 614 `[rbp-]` stack spill/reload accesses, 122 conditional jumps, and ZERO `cmov` instructions inside the 64-point inner loop! Every `dst` emits 2 unpredictable `sel(b2u(x < cx), ...)` branches (16/point) and every `min2` emits another unpredictable branch (7/point), with every intermediate spilled to a 1,528-byte stack frame. Keeping the EXACT same algorithm (8 squared distances + 24 branchless masked adds), unpacking `c0..c7` once before the loop, if-converting `abs(x - cx)` and `min2` to `cmov`, and eliminating the 614 spills cuts 56.3% (2.289x -> 1.379x C)!"
+        },
+        {
+          "name": "b_chunk_plus_onehot_indexed_accum",
+          "ms": 573.39,
+          "vs_c": 1.049,
+          "speedup_vs_base": 3.009,
+          "pct_saved": 66.8,
+          "raw_ms": [576.8, 573.39, 573.56, 572.66, 570.96],
+          "note": "MATCHES gcc-10 -O2 (1.049x C; 3.009x speedup, 66.8% saved)! Replacing the 8 x 3 = 24 branchless one-hot masked adds `s[k] += (bk == k) * val` with direct indexed `s[bk].x += xx; s[bk].y += yy; s[bk].n += 1` eliminates 21/24 redundant multiplies & memory updates per point. Remaining ~27 ms gap vs C is in $direct.szip."
+        }
+      ],
+      "verdict": "STRONG GO (if-convert small pure `sel(b2u(cmp), a, b)` -> `cmov` + hoist loop-invariant centroid unpack + eliminate 614 `[rbp-]` spills in wide-arity TCO loops: 2.289x -> 1.379x C; + one-hot mask `m_k = (bk == k)` -> indexed accumulator update: 3.009x -> 1.049x C, matching gcc-10 -O2!)",
+      "estimated_loc": "~130 LOC (~45 LOC `sel(b2u(cmp), a, b)` -> `cmov` if-conversion, ~45 LOC local-register reuse / dead-spill elim in wide-arity TCO loops, ~40 LOC loop-invariant pure-expr hoisting + optional one-hot-mask indexing)"
+    }
+  ]
+}

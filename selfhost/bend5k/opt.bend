@@ -1136,14 +1136,53 @@ def opt_ops_has_call(+leaf: Bool, +fid: U32, ops: List<&2, IrOp>) -> Bool:
     case Con{ICallClosure{_, _, _}, t}: Bool.or(leaf, opt_ops_has_call(leaf, fid, t))
     case Con{IApply{_, _, _}, t}: Bool.or(leaf, opt_ops_has_call(leaf, fid, t))
     case Con{_, t}: opt_ops_has_call(leaf, fid, t)
+def opt_blk_is_poly_add(ops: List<&2, IrOp>, term: IrTerm) -> Bool:
+  match ops term:
+    case Con{IBin{t2, 0, _, _}, Con{ICopy{_, s}, Nil{}}} TJmp{_}: U32.is_eq(t2, s)
+    case _ _: False{}
 def opt_blks_has_bad(+leaf: Bool, +tc_ok: Bool, +fid: U32, blks: List<&2, IrBlock>) -> Bool:
   match blks:
     case Nil{}: False{}
     case Con{IrBlock{_, ops, TTailCall{cfid, _}}, t}:
       bad_tc = Bool.or(Bool.and(leaf, Bool.not(tc_ok)), U32.is_eq(cfid, fid))
       Bool.or(bad_tc, Bool.or(opt_ops_has_call(leaf, fid, ops), opt_blks_has_bad(leaf, tc_ok, fid, t)))
+    case Con{IrBlock{_, +ops, term}, t}:
+      bad_pa = Bool.and(Bool.not(leaf), opt_blk_is_poly_add(ops, term))
+      Bool.or(bad_pa, Bool.or(opt_ops_has_call(leaf, fid, ops), opt_blks_has_bad(leaf, tc_ok, fid, t)))
+def opt_fn_mark_calls_ops(ops: List<&2, IrOp>, st: ReachStep) -> ReachStep:
+  match ops st:
+    case Nil{} _: st
+    case Con{ICallDirect{_, cfid, _}, t} ReachStep{m, chg}:
+      opt_fn_mark_calls_ops(t, opt_reach_mark(m, chg, cfid))
+    case Con{ICallClosure{_, cfid, _}, t} ReachStep{m, chg}:
+      opt_fn_mark_calls_ops(t, opt_reach_mark(m, chg, cfid))
+    case Con{_, t} _: opt_fn_mark_calls_ops(t, st)
+def opt_fn_mark_calls_blks(blks: List<&2, IrBlock>, st: ReachStep) -> ReachStep:
+  match blks:
+    case Nil{}: st
+    case Con{IrBlock{_, ops, TTailCall{cfid, _}}, t}:
+      opt_fn_mark_calls_blks(t, opt_reach_mark_st(opt_fn_mark_calls_ops(ops, st), cfid))
     case Con{IrBlock{_, ops, _}, t}:
-      Bool.or(opt_ops_has_call(leaf, fid, ops), opt_blks_has_bad(leaf, tc_ok, fid, t))
+      opt_fn_mark_calls_blks(t, opt_fn_mark_calls_ops(ops, st))
+def opt_fn_reach_init(fns: List<&2, IrFn>, +m: U32Map) -> U32Map:
+  match fns:
+    case Nil{}: m
+    case Con{IrFn{+fid, _, _, _, esc, eff, is_m, _}, t}:
+      root = Bool.or(U32.is_lt(fid, 3), Bool.or(esc, Bool.or(eff, is_m)))
+      opt_fn_reach_init(t, Bool.pick(U32Map, root, um_set(m, fid, 1), m))
+def opt_fn_reach_scan(fns: List<&2, IrFn>, st: ReachStep) -> ReachStep:
+  match fns st:
+    case Nil{} _: st
+    case Con{IrFn{fid, _, _, _, _, _, _, blks}, t} ReachStep{+m, +chg}:
+      st1 = Bool.pick(ReachStep, U32.is_ne(um_get(m, fid), 0), opt_fn_mark_calls_blks(blks, ReachStep{m, chg}), ReachStep{m, chg})
+      opt_fn_reach_scan(t, st1)
+def opt_fn_reach_fix(fuel: Nat, +fns: List<&2, IrFn>, st: ReachStep) -> U32Map:
+  match fuel st:
+    case 0n ReachStep{m, _}: m
+    case _ ReachStep{m, False{}}: m
+    case 1n+p ReachStep{m, True{}}: opt_fn_reach_fix(p, fns, opt_fn_reach_scan(fns, ReachStep{m, False{}}))
+def opt_fn_reach(+fns: List<&2, IrFn>) -> U32Map:
+  opt_fn_reach_fix(32n, fns, ReachStep{opt_fn_reach_init(fns, UM0{}), True{}})
 def opt_cc_ops(ops: List<&2, IrOp>, m: U32Map) -> U32Map:
   match ops:
     case Nil{}: m
@@ -1155,10 +1194,11 @@ def opt_cc_blks(blks: List<&2, IrBlock>, m: U32Map) -> U32Map:
     case Nil{}: m
     case Con{IrBlock{_, ops, TTailCall{cfid, _}}, t}: opt_cc_blks(t, opt_um_inc(opt_cc_ops(ops, m), cfid))
     case Con{IrBlock{_, ops, _}, t}: opt_cc_blks(t, opt_cc_ops(ops, m))
-def opt_cc_fns(fns: List<&2, IrFn>, m: U32Map) -> U32Map:
+def opt_cc_fns(+reach: U32Map, fns: List<&2, IrFn>, +m: U32Map) -> U32Map:
   match fns:
     case Nil{}: m
-    case Con{IrFn{_, _, _, _, _, _, _, blks}, t}: opt_cc_fns(t, opt_cc_blks(blks, m))
+    case Con{IrFn{fid, _, _, _, _, _, _, blks}, t}:
+      opt_cc_fns(reach, t, Bool.pick(U32Map, U32.is_ne(um_get(reach, fid), 0), opt_cc_blks(blks, m), m))
 def opt_collect_put(ok: Bool, +fid: U32, ar: U32, nregs: U32, +blks: List<&2, IrBlock>, has: U32Map, tr: OptTrie<Maybe<&2, InlEntry>>) -> InlBank:
   match ok:
     case False{}: InlBank{has, tr}
@@ -1180,7 +1220,7 @@ def opt_collect_inlines_go(+sc_only: Bool, +cc: U32Map, +leaf: Bool, +max_ops: U
       elig = Bool.and(U32.is_ge(fid, 3), Bool.and(Bool.not(esc), Bool.and(Bool.not(eff), Bool.not(is_m))))
       opt_collect_inlines_go(sc_only, cc, leaf, max_ops, max_blks, t, opt_collect_one(elig, sc_only, cc, leaf, max_ops, max_blks, fid, ar, nregs, blks, has, tr))
 def opt_collect_inlines(+sc_only: Bool, +leaf: Bool, +max_ops: U32, +max_blks: U32, +fns: List<&2, IrFn>, bank: InlBank) -> InlBank:
-  cc = Bool.pick(U32Map, sc_only, opt_cc_fns(fns, UM0{}), UM0{})
+  cc = Bool.pick(U32Map, sc_only, opt_cc_fns(opt_fn_reach(fns), fns, UM0{}), UM0{})
   opt_collect_inlines_go(sc_only, cc, leaf, max_ops, max_blks, fns, bank)
 def opt_ops_pure_stc(ops: List<&2, IrOp>) -> Bool:
   match ops:
@@ -1547,14 +1587,19 @@ def opt_ww_obs_blks(+sfid: U32, +defc: U32Map, +uses: U32Map, +ar: U32, +al: U32
     case Con{IrBlock{_, ops, term}, t}:
       obs1 = opt_ww_obs_term(sfid, al, cand, term, opt_ww_obs_ops(sfid, defc, uses, ar, al, cand, ops, WwObsBlk{OT0{}, obs}))
       opt_ww_obs_blks(sfid, defc, uses, ar, al, cand, t, obs1)
-def opt_ww_obs_fns(+cand: U32Map, fns: List<&2, IrFn>, obs: U32Map) -> U32Map:
-  match fns:
-    case Nil{}: obs
-    case Con{IrFn{+fid, _, +ar, _, _, _, _, +blks}, t}:
+def opt_ww_obs_one(live: Bool, +fid: U32, +ar: U32, +cand: U32Map, +blks: List<&2, IrBlock>, obs: U32Map) -> U32Map:
+  match live:
+    case False{}: obs
+    case True{}:
       +defc = opt_blks_defs(blks, UM0{})
       uses = opt_blks_uses(blks, UM0{})
       al = opt_ww_alias(defc, ar, blks)
-      opt_ww_obs_fns(cand, t, opt_ww_obs_blks(fid, defc, uses, ar, al, cand, blks, obs))
+      opt_ww_obs_blks(fid, defc, uses, ar, al, cand, blks, obs)
+def opt_ww_obs_fns(+reach: U32Map, +cand: U32Map, fns: List<&2, IrFn>, obs: U32Map) -> U32Map:
+  match fns:
+    case Nil{}: obs
+    case Con{IrFn{+fid, _, ar, _, _, _, _, blks}, t}:
+      opt_ww_obs_fns(reach, cand, t, opt_ww_obs_one(U32.is_ne(um_get(reach, fid), 0), fid, ar, cand, blks, obs))
 type WwPlan is Data:
   WwPlan{pidx: U32Map, par: U32Map, pcid: U32Map, any: Bool}
 def opt_ww_pick_param(+fid: U32, +cand: U32Map, +obs: U32Map, n: Nat, +idx: U32, pl: WwPlan) -> WwPlan:
@@ -1812,7 +1857,7 @@ def opt_ww_apply(pl: WwPlan, fns: List<&2, IrFn>) -> List<&2, IrFn>:
 def opt_ww_pass(+fns: List<&2, IrFn>) -> List<&2, IrFn>:
   +bad_fn = opt_ip_bad_fns(fns, UM0{})
   +cand = opt_ww_cand_fns(bad_fn, fns, UM0{})
-  obs = opt_ww_obs_fns(cand, fns, UM0{})
+  obs = opt_ww_obs_fns(opt_fn_reach(fns), cand, fns, UM0{})
   opt_ww_apply(opt_ww_build_plan(bad_fn, cand, obs, fns, WwPlan{UM0{}, UM0{}, UM0{}, False{}}), fns)
 # Top-Level -O2 Pipeline
 def opt_fn_local(+small: Bool, +ret_sc: U32Map, +psc: U32Map, f: IrFn) -> IrFn:
@@ -1840,10 +1885,10 @@ def b5k_opt_go(small: Bool, +fns: List<&2, IrFn>) -> List<&2, IrFn>:
       +fns2a = opt_fns_mid(opt_inl_all(64, opt_collect_inlines(False{}, True{}, 160, 24, fns1, InlBank{UM0{}, OT0{}}), fns1))
       +fns2 = opt_fns_mid(opt_inl_all(64, opt_collect_inlines(False{}, True{}, 224, 24, fns2a, InlBank{UM0{}, OT0{}}), fns2a))
       +fns3a = opt_fns_mid(opt_inl_all(48, opt_collect_inlines(False{}, False{}, 160, 28, fns2, InlBank{UM0{}, OT0{}}), fns2))
-      +fns3b = opt_fns_mid(opt_inl_all(48, opt_collect_inlines(True{}, True{}, 512, 32, fns3a, InlBank{UM0{}, OT0{}}), fns3a))
-      +fns3c = opt_fns_mid(opt_inl_all(48, opt_collect_inlines(True{}, True{}, 512, 32, fns3b, InlBank{UM0{}, OT0{}}), fns3b))
-      +fns3d = opt_fns_mid(opt_inl_all(48, opt_collect_inlines(True{}, True{}, 512, 32, fns3c, InlBank{UM0{}, OT0{}}), fns3c))
-      +fns3 = opt_fns_mid(opt_inl_all(48, opt_collect_inlines(True{}, True{}, 512, 32, fns3d, InlBank{UM0{}, OT0{}}), fns3d))
+      +fns3b = opt_fns_mid(opt_inl_all(48, opt_collect_inlines(True{}, False{}, 512, 64, fns3a, InlBank{UM0{}, OT0{}}), fns3a))
+      +fns3c = opt_fns_mid(opt_inl_all(48, opt_collect_inlines(True{}, False{}, 512, 64, fns3b, InlBank{UM0{}, OT0{}}), fns3b))
+      +fns3d = opt_fns_mid(opt_inl_all(48, opt_collect_inlines(True{}, False{}, 512, 64, fns3c, InlBank{UM0{}, OT0{}}), fns3c))
+      +fns3 = opt_fns_mid(opt_inl_all(48, opt_collect_inlines(True{}, False{}, 512, 64, fns3d, InlBank{UM0{}, OT0{}}), fns3d))
       +fns4a = opt_fns_mid(opt_ww_pass(opt_fns_mid(opt_ww_pass(fns3))))
       +fns4 = opt_fns_mid(opt_inl_all(4, opt_collect_self_tc(fns4a, InlBank{UM0{}, OT0{}}), fns4a))
       +fns5 = b5k_opt_fin(True{}, fns4, opt_collect_ip(True{}, fns4, ret0))

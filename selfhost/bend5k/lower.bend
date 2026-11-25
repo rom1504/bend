@@ -129,7 +129,7 @@ def low_intr_specs() -> List<&2, CoreCtorSpec>:
    CoreCtorSpec{"__file_write", 38}, CoreCtorSpec{"__file_write_bytes", 39}, CoreCtorSpec{"__file_close", 54}, CoreCtorSpec{"F32.add", 40}, CoreCtorSpec{"F32.sub", 41},
    CoreCtorSpec{"F32.mul", 42}, CoreCtorSpec{"F32.div", 43}, CoreCtorSpec{"F32.is_eq", 44}, CoreCtorSpec{"F32.is_ne", 45}, CoreCtorSpec{"F32.is_lt", 46}, CoreCtorSpec{"F32.is_le", 47},
    CoreCtorSpec{"F32.is_gt", 48}, CoreCtorSpec{"F32.is_ge", 49}, CoreCtorSpec{"F32.neg", 50}, CoreCtorSpec{"F32.sqrt", 51}, CoreCtorSpec{"U32.to_f32", 52}, CoreCtorSpec{"F32.from_u32", 52},
-   CoreCtorSpec{"F32.to_u32", 53}, CoreCtorSpec{"Array.new", 60}, CoreCtorSpec{"Array.get", 61}, CoreCtorSpec{"Array.get_unchecked", 61}, CoreCtorSpec{"Array.set", 62},
+   CoreCtorSpec{"F32.to_u32", 53}, CoreCtorSpec{"Array.new", 60}, CoreCtorSpec{"Array.get", 61}, CoreCtorSpec{"Array.get_unchecked", 61}, CoreCtorSpec{"Array.set", 62}, CoreCtorSpec{"Array.set_unchecked", 62},
    CoreCtorSpec{"Array.swap", 63}, CoreCtorSpec{"Array.size", 64}, CoreCtorSpec{"Array.clone", 65}, CoreCtorSpec{"U32.cmp", 66}, CoreCtorSpec{"Nat.cmp", 66},
    CoreCtorSpec{"U32.log2", 67}, CoreCtorSpec{"String.length", 67}, CoreCtorSpec{"String.eq", 67}, CoreCtorSpec{"String.is_empty", 67}, CoreCtorSpec{"String.starts_with", 67}, CoreCtorSpec{"Cmp.is_eq", 67}]
 def low_kind_specs() -> List<&2, CoreCtorSpec>:
@@ -592,6 +592,7 @@ def low_emit_u32_intr3(st: CfgSt, code: U32, va: U32, vb: U32, vc: U32) -> CfgSt
     case 39: low_emit_io_eff3(st, 36, va, vb, vc)
     case 62: low_emit_arr_one(st, 73, [va, vb, vc])
     case 63: low_emit_arr_pair(st, 74, [va, vb, vc])
+    case 68: low_emit_arr_one(st, 79, [va, vb, vc])
     case _:
       +st1 = cfg_alloc_reg(st)
       cfg_emit(st1, IConst{cfg_res(st1), 0})
@@ -705,6 +706,7 @@ def low_peel_nat_go(fuel: Nat, +skind: U32Map, +k: U32, task: NatPeelTask) -> Na
     case 0n NPTPat{other}: NPSub{k, other}
     case 0n NPTCtr{_, sym, fs}: NPSub{k, PCtr{sym, fs}}
     case 1n+f NPTPat{PCtr{+sym, fs}}: low_peel_nat_go(f, skind, k, NPTCtr{low_special_ctor_kind(skind, sym), sym, fs})
+    case 1n+_ NPTPat{PNum{v}}: NPConst{U32.add(k, v)}
     case 1n+_ NPTPat{other}: NPSub{k, other}
     case 1n+_ NPTCtr{3, _, Nil{}}: NPConst{k}
     case 1n+f NPTCtr{4, _, Con{inner, Nil{}}}: low_peel_nat_go(f, skind, U32.add(k, 1), NPTPat{inner})
@@ -1244,11 +1246,10 @@ def low_expr_lt32(fuel: Nat, +syms: SymTab, e: Expr) -> Bool:
       +p0 = p
       Bool.or(low_expr_lt32(p0, syms, a), low_expr_lt32(p0, syms, b))
     case 1n+_ _: False{}
-def low_shift_code(syms: SymTab, +icode: U32, args: List<&2, Expr>) -> U32:
+def low_shift_code(syms: SymTab, skind: U32Map, +icode: U32, args: List<&2, Expr>) -> U32:
   match args:
-    case Con{_, Con{eb, Nil{}}}:
-      fast = Bool.and(Bool.or(U32.is_eq(icode, 24), U32.is_eq(icode, 25)), low_expr_lt32(16n, syms, eb))
-      Bool.pick(U32, fast, U32.add(icode, 4), icode)
+    case Con{_, Con{eb, Nil{}}}: Bool.pick(U32, Bool.and(Bool.or(U32.is_eq(icode, 24), U32.is_eq(icode, 25)), low_expr_lt32(16n, syms, eb)), U32.add(icode, 4), icode)
+    case Con{ty, _}: Bool.pick(U32, Bool.and(U32.is_eq(icode, 62), low_is_scalar_type(skind, ty)), 68, icode)
     case _: icode
 def low_const_log2_go(fuel: Nat, +n: U32, acc: U32, done: Bool) -> U32:
   match fuel done:
@@ -1346,7 +1347,7 @@ def low_go(fuel: Nat, +env: LowEnv, st: CfgSt, task: LowTask, +is_tail: Bool) ->
       +tmp = env_tmp(env)
       low_go(p, env, st, LTExpr{ELam{[Param{tmp, None{}, False{}, False{}}], EApp{EVar{sym}, b5k_list_app(Expr, args, [EVar{tmp}])}}}, False{})
     case Succ{p} LTAppGlob{_, +args, +icode, True{}, _, _}:
-      +icode2 = low_shift_code(env_syms(env), icode, args)
+      +icode2 = low_shift_code(env_syms(env), env_kind(env), icode, args)
       +st1 = low_go(p, env, st, LTExprs{low_drop_intr_arg(U32.is_ge(icode2, 60), args), Nil{}}, False{})
       low_emit_u32_intr(st1, icode2, cfg_rlist(st1))
     case Succ{+p} LTAppGlob{sym, +args, _, False{}, fv, False{}}:
@@ -1569,11 +1570,12 @@ def low_go(fuel: Nat, +env: LowEnv, st: CfgSt, task: LowTask, +is_tail: Bool) ->
       +st1 = low_go(p, env, st, LTExpr{a}, False{})
       +st2 = low_go(p, env, st1, LTExpr{i}, False{})
       low_emit_arr_get_pair(st2, cfg_res(st1), cfg_res(st2))
-    case Succ{+p} LTExpr{EArrSet{a, i, v}}:
-      +st1 = low_go(p, env, st, LTExpr{a}, False{})
+    case Succ{+p} LTExpr{EArrSet{a, i, +v}}:
+      +st0 = st
+      +st1 = low_go(p, env, st0, LTExpr{a}, False{})
       +st2 = low_go(p, env, st1, LTExpr{i}, False{})
       +st3 = low_go(p, env, st2, LTExpr{v}, False{})
-      low_emit_arr_one(st3, 73, [cfg_res(st1), cfg_res(st2), cfg_res(st3)])
+      low_emit_arr_one(st3, Bool.pick(U32, low_is_num_expr(16n, env, cfg_vmap(st0), cfg_nvm(st0), v), 79, 73), [cfg_res(st1), cfg_res(st2), cfg_res(st3)])
     case Succ{p} LTExpr{EDo{ss}}: low_go(p, env, st, LTExpr{low_desugar_do(env, ss)}, is_tail)
     case Succ{p} LTExpr{ELam{ps, +body}}:
       match ps:

@@ -243,6 +243,8 @@ def opt_sc_rewrite_ops(+sc: U32Map, ops: List<&2, IrOp>, +cm: U32Map, +acc: List
       opt_sc_rewrite_ops(sc, t, um_set(cm, d, 1), Con{ICtor{d, cid, fs}, acc})
     case Con{IReuse{+d, sl, cid, fs}, t}:
       opt_sc_rewrite_ops(sc, t, um_set(cm, d, 1), Con{IReuse{d, sl, cid, fs}, acc})
+    case Con{IArrOp{+ds, 73, Con{a, Con{i, Con{+v, Nil{}}}}}, t}:
+      opt_sc_rewrite_ops(sc, t, opt_um_set_list(ds, 0, cm), Con{IArrOp{ds, Bool.pick(U32, U32.is_eq(um_get(sc, v), 1), 79, 73), [a, i, v]}, acc})
     case Con{+op, t}:
       opt_sc_rewrite_ops(sc, t, opt_kill_op_dsts(op, cm), Con{op, acc})
 def opt_sc_rewrite_blks(+sc: U32Map, blks: List<&2, IrBlock>) -> List<&2, IrBlock>:
@@ -953,11 +955,31 @@ def opt_cp_term(+cm: U32Map, term: IrTerm) -> IrTerm:
 def opt_cp_blk_fin(id: U32, term: IrTerm, r: CpOpsRes) -> IrBlock:
   match r:
     case CpOpsRes{ops2, cm2}: IrBlock{id, ops2, opt_cp_term(cm2, term)}
-def opt_cp_blks(+defc: U32Map, +ar: U32, blks: List<&2, IrBlock>) -> List<&2, IrBlock>:
+def opt_keep_ops(ops: List<&2, IrOp>, m: U32Map) -> U32Map:
+  match ops:
+    case Nil{}: m
+    case Con{IKeep{d, _}, t}: opt_keep_ops(t, um_set(m, d, 1))
+    case Con{_, t}: opt_keep_ops(t, m)
+def opt_keep_blks(blks: List<&2, IrBlock>, m: U32Map) -> U32Map:
+  match blks:
+    case Nil{}: m
+    case Con{IrBlock{_, ops, _}, t}: opt_keep_blks(t, opt_keep_ops(ops, m))
+def opt_gc_cp_ops(+defc: U32Map, +km: U32Map, +ar: U32, ops: List<&2, IrOp>, +cm: U32Map) -> U32Map:
+  match ops:
+    case Nil{}: cm
+    case Con{ICopy{+d, s}, t}:
+      +rs = opt_um_lookup_or(cm, s)
+      opt_gc_cp_ops(defc, km, ar, t, Bool.pick(U32Map, Bool.and(U32.is_ge(d, ar), Bool.and(U32.is_eq(um_get(defc, d), 1), Bool.and(U32.is_zero(um_get(km, d)), Bool.and(U32.is_zero(um_get(km, rs)), Bool.and(U32.is_ne(d, rs), opt_cp_can_prop(defc, ar, rs)))))), um_set(cm, d, U32.add(rs, 1)), cm))
+    case Con{_, t}: opt_gc_cp_ops(defc, km, ar, t, cm)
+def opt_gc_cp_blks(+defc: U32Map, +km: U32Map, +ar: U32, blks: List<&2, IrBlock>, cm: U32Map) -> U32Map:
+  match blks:
+    case Nil{}: cm
+    case Con{IrBlock{_, ops, _}, t}: opt_gc_cp_blks(defc, km, ar, t, opt_gc_cp_ops(defc, km, ar, ops, cm))
+def opt_cp_blks(+defc: U32Map, +ar: U32, +gcm: U32Map, blks: List<&2, IrBlock>) -> List<&2, IrBlock>:
   match blks:
     case Nil{}: Nil{}
     case Con{IrBlock{id, ops, term}, t}:
-      Con{opt_cp_blk_fin(id, term, opt_cp_ops(defc, ar, ops, CpSt{UM0{}, OT0{}, Nil{}})), opt_cp_blks(defc, ar, t)}
+      Con{opt_cp_blk_fin(id, term, opt_cp_ops(defc, ar, ops, CpSt{gcm, OT0{}, Nil{}})), opt_cp_blks(defc, ar, gcm, t)}
 def opt_dce_ops(+uses: U32Map, ops: List<&2, IrOp>, +acc: List<&2, IrOp>) -> List<&2, IrOp>:
   match ops:
     case Nil{}: b5k_list_rev(IrOp, acc)
@@ -1063,17 +1085,36 @@ def opt_stc_blks(+self_fid: U32, +orig: U32Map, blks: List<&2, IrBlock>) -> List
     case Con{IrBlock{id, ops, TTailCall{+cfid, args}}, t}:
       Con{IrBlock{id, ops, opt_stc_term(U32.is_eq(cfid, self_fid), orig, cfid, args)}, opt_stc_blks(self_fid, orig, t)}
     case Con{b, t}: Con{b, opt_stc_blks(self_fid, orig, t)}
+def opt_empty_blks(blks: List<&2, IrBlock>, +m: OptTrie<Maybe<&2, IrTerm>>) -> OptTrie<Maybe<&2, IrTerm>>:
+  match blks:
+    case Nil{}: m
+    case Con{IrBlock{+id, Nil{}, TJmp{x}}, t}: opt_empty_blks(t, Bool.pick(OptTrie<Maybe<&2, IrTerm>>, U32.is_lt(id, 1024), ot_set(Maybe<&2, IrTerm>, 10n, m, id, Some{TJmp{x}}), m))
+    case Con{IrBlock{+id, Nil{}, TRet{x}}, t}: opt_empty_blks(t, Bool.pick(OptTrie<Maybe<&2, IrTerm>>, U32.is_lt(id, 1024), ot_set(Maybe<&2, IrTerm>, 10n, m, id, Some{TRet{x}}), m))
+    case Con{IrBlock{+id, Nil{}, TTailCall{f, xs}}, t}: opt_empty_blks(t, Bool.pick(OptTrie<Maybe<&2, IrTerm>>, U32.is_lt(id, 1024), ot_set(Maybe<&2, IrTerm>, 10n, m, id, Some{TTailCall{f, xs}}), m))
+    case Con{_, t}: opt_empty_blks(t, m)
+def opt_fwd_term(mt: Maybe<&2, IrTerm>, tgt: U32) -> IrTerm:
+  match mt:
+    case Some{t2}: t2
+    case None{}: TJmp{tgt}
+def opt_fwd_blks(+em: OptTrie<Maybe<&2, IrTerm>>, blks: List<&2, IrBlock>) -> List<&2, IrBlock>:
+  match blks:
+    case Nil{}: Nil{}
+    case Con{IrBlock{+id, ops, TJmp{+tgt}}, t}:
+      Con{IrBlock{id, ops, Bool.pick(IrTerm, Bool.and(U32.is_ne(tgt, id), U32.is_lt(tgt, 1024)), opt_fwd_term(ot_get(Maybe<&2, IrTerm>, 10n, None{}, em, tgt), tgt), TJmp{tgt})}, opt_fwd_blks(em, t)}
+    case Con{b, t}: Con{b, opt_fwd_blks(em, t)}
 def opt_pass_cp_dce(do_merge: Bool, f: IrFn) -> IrFn:
   match do_merge f:
     case True{} IrFn{+fid, nm, +ar, nregs, esc, eff, is_m, blks}:
-      +b1 = opt_merge_once(opt_merge_once(opt_elim_unreach(blks)))
+      +b0 = opt_merge_once(opt_merge_once(opt_elim_unreach(blks)))
+      +b1 = opt_elim_unreach(opt_fwd_blks(opt_empty_blks(b0, OT0{}), b0))
       +defc = opt_blks_defs(b1, UM0{})
-      orig = opt_ip_orig_blks(defc, ar, b1, opt_ip_init_orig(U32.to_nat(ar), 0, UM0{}))
-      b2 = opt_cp_blks(defc, ar, opt_stc_blks(fid, orig, b1))
+      +b1b = opt_stc_blks(fid, opt_ip_orig_blks(defc, ar, b1, opt_ip_init_orig(U32.to_nat(ar), 0, UM0{})), b1)
+      +km = opt_keep_blks(b1b, UM0{})
+      b2 = opt_cp_blks(defc, ar, opt_gc_cp_blks(defc, km, ar, b1b, opt_gc_cp_blks(defc, km, ar, b1b, UM0{})), b1b)
       IrFn{fid, nm, ar, nregs, esc, eff, is_m, opt_dce_round(opt_dce_round(b2))}
     case False{} IrFn{fid, nm, +ar, nregs, esc, eff, is_m, blks}:
       +b1 = opt_elim_unreach(blks)
-      b2 = opt_cp_blks(opt_blks_defs(b1, UM0{}), ar, b1)
+      b2 = opt_cp_blks(opt_blks_defs(b1, UM0{}), ar, UM0{}, b1)
       IrFn{fid, nm, ar, nregs, esc, eff, is_m, opt_dce_round(b2)}
 # Pass C — Deeper Multi-Block Inlining (<= 32 ops, <= 4 blocks, 2 rounds)
 type InlEntry is Data:

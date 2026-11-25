@@ -93,9 +93,8 @@ type PKont is Data:
   KDoWrap{}
   KBlkLetPat{}
   KBlkLetTy{pt: Pat}
-  KBlkForkP2{p1: Pat}
-  KBlkForkE1{p1: Pat, p2: Pat}
-  KBlkForkE2{p1: Pat, p2: Pat, e1: Expr, ind: Bool}
+  KBlkForkPats{ps: List<&2, Pat>}
+  KBlkForkExprs{cur: Pat, rem: List<&2, Pat>, ind: Bool}
   KBlkLetVal{pt: Pat}
   KBlkLetBody{pt: Pat, val: Expr}
   KBlkExpr{}
@@ -681,6 +680,10 @@ def p_eval(g: PGoal, +st: PState, +ks: List<&2, PKont>) -> PStep:
       +st1 = p_skip_nls(st)
       p_ev_fimp_if(path, st1, ks, Bool.or(p_is_dedent(st1), p_is_eof(st1)), p_is_kw(st1, 11))
     case GIf{}: SEval{GExpr{}, st, Con{KIfCond{}, ks}}
+def p_fork_start(ps: List<&2, Pat>, st: PState, ks: List<&2, PKont>) -> PStep:
+  match ps:
+    case Con{p0, rest}: SEval{GExpr{}, st, Con{KBlkForkExprs{p0, rest, False{}}, ks}}
+    case Nil{}: SApply{VExpr{EUnit{}}, p_fail(st, "expected pattern in let"), ks}
 def p_apply_k(k: PKont, v: PVal, +st: PState, +ks: List<&2, PKont>) -> PStep:
   match k v:
     case KPatList{cc, acc} VPat{p}:
@@ -756,18 +759,20 @@ def p_apply_k(k: PKont, v: PVal, +st: PState, +ks: List<&2, PKont>) -> PStep:
     case KDoExpr{acc} VExpr{val}: SEval{GDo{Con{StExpr{val}, acc}}, st, ks}
     case KDoWrap{} VStmts{ss}: SApply{VExpr{EDo{ss}}, st, ks}
     case KBlkLetPat{} VPat{+pt}:
-      non_eq = Bool.pick(PStep, p_is_sym(st, 58), SEval{GArrow{False{}}, p_drop(st), Con{KBlkLetTy{pt}, ks}}, SEval{GPat{}, st, Con{KBlkForkP2{pt}, ks}})
+      non_eq = Bool.pick(PStep, p_is_sym(st, 58), SEval{GArrow{False{}}, p_drop(st), Con{KBlkLetTy{pt}, ks}}, SEval{GPat{}, st, Con{KBlkForkPats{Con{pt, Nil{}}}, ks}})
       Bool.pick(PStep, p_is_sym(st, 61), SEval{GExpr{}, p_drop(st), Con{KBlkLetVal{pt}, ks}}, non_eq)
     case KBlkLetTy{pt} VExpr{_}: SEval{GExpr{}, p_eat_sym(st, 61, "expected '=' in let"), Con{KBlkLetVal{pt}, ks}}
-    case KBlkForkP2{p1} VPat{p2}: SEval{GExpr{}, p_eat_sym(st, 61, "expected '=' in let"), Con{KBlkForkE1{p1, p2}, ks}}
-    case KBlkForkE1{p1, p2} VExpr{e1}:
-      +st1 = p_skip_nls(st)
-      +ind = p_is_indent(st1)
-      SEval{GExpr{}, Bool.pick(PState, ind, p_drop(st1), st1), Con{KBlkForkE2{p1, p2, e1, ind}, ks}}
-    case KBlkForkE2{p1, p2, e1, ind} VExpr{e2}:
+    case KBlkForkPats{+ps} VPat{+p}:
+      more = Bool.pick(PStep, Bool.or(p_has_err(st), p_is_eof(st)), SApply{VExpr{EUnit{}}, p_fail(st, "expected '=' in let"), ks}, SEval{GPat{}, st, Con{KBlkForkPats{Con{p, ps}}, ks}})
+      Bool.pick(PStep, p_is_sym(st, 61), p_fork_start(b5k_list_rev(Pat, Con{p, ps}), p_drop(st), ks), more)
+    case KBlkForkExprs{cur, Nil{}, +ind} VExpr{e}:
       +st4 = Bool.pick(PState, ind, p_eat_dedent(p_skip_nls(st)), st)
       st5 = Bool.pick(PState, p_is_sym(st4, 59), p_drop(st4), st4)
-      SEval{GBlock{}, st5, Con{KBlkLetBody{p2, e2}, Con{KBlkLetBody{p1, e1}, ks}}}
+      SEval{GBlock{}, st5, Con{KBlkLetBody{cur, e}, ks}}
+    case KBlkForkExprs{cur, Con{p_next, p_rest}, +ind} VExpr{e}:
+      +st1 = p_skip_nls(st)
+      +is_ind = Bool.and(Bool.not(ind), p_is_indent(st1))
+      SEval{GExpr{}, Bool.pick(PState, is_ind, p_drop(st1), st1), Con{KBlkForkExprs{p_next, p_rest, Bool.or(ind, is_ind)}, Con{KBlkLetBody{cur, e}, ks}}}
     case KBlkLetVal{pt} VExpr{val}:
       st5 = Bool.pick(PState, p_is_sym(st, 59), p_drop(st), st)
       SEval{GBlock{}, st5, Con{KBlkLetBody{pt, val}, ks}}

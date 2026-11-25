@@ -74,6 +74,7 @@ def elf_inst_len(inst: X64Inst) -> U32:
       U32.add(rex_l, Bool.pick(U32, elf_is_simm8(imm), 3, 6))
     case XTestRR{_, _}: 3
     case XSetcc{_, dst}: Bool.pick(U32, U32.is_ge(dst, 4), 4, 3)
+    case XCmov{_, _, _}: 4
     case XPush{reg}: Bool.pick(U32, U32.is_lt(reg, 8), 1, 2)
     case XPop{reg}: Bool.pick(U32, U32.is_lt(reg, 8), 1, 2)
     case XSubRsp{imm}: Bool.pick(U32, elf_is_simm8(imm), 4, 7)
@@ -105,6 +106,7 @@ def elf_not_flag_read(xs: List<&2, X64Inst>) -> Bool:
   match xs:
     case Con{XJcc{_, _}, _}: False{}
     case Con{XSetcc{_, _}, _}: False{}
+    case Con{XCmov{_, _, _}, _}: False{}
     case _: True{}
 def elf_kills_reg(+r: U32, inst: X64Inst) -> Bool:
   match inst:
@@ -364,6 +366,8 @@ def elf_emit_inst_bytes_go(inst: X64Inst, +off: U32, rev: List<&2, U32>) -> Byte
     case XSetcc{cc, +dst}:
       dl = Bool.pick(U32, U32.is_ge(dst, 4), 4, 3)
       ByteBuf{U32.add(off, dl), e_b3(elf_opt_rex(U32.is_ge(dst, 4), 0, dst, rev), 15, U32.add(144, U32.and(cc, 15)), elf_modrm(3, 0, dst))}
+    case XCmov{cc, +dst, +src}:
+      ByteBuf{U32.add(off, 4), e_b4(rev, elf_rex(1, dst, 0, src), 15, U32.add(64, U32.and(cc, 15)), elf_modrm(3, dst, src))}
     case XPush{+reg}:
       ByteBuf{U32.add(off, Bool.pick(U32, U32.is_lt(reg, 8), 1, 2)), e_b1(elf_opt_rex(U32.is_ge(reg, 8), 0, reg, rev), U32.add(80, U32.and(reg, 7)))}
     case XPop{+reg}:

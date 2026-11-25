@@ -421,6 +421,7 @@ type X64Inst is Data:
   XCmpRI{lhs: U32, imm: U32}
   XTestRR{lhs: U32, rhs: U32}
   XSetcc{cc: U32, dst: U32}
+  XCmov{cc: U32, dst: U32, src: U32}
   XPush{reg: U32}
   XPop{reg: U32}
   XSubRsp{imm: U32}

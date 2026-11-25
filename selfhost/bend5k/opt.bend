@@ -839,7 +839,7 @@ type CseEnt is Data:
   CseSome{k: U32, op: U32, a: U32, b: U32, dst: U32}
 def cse_hash(+k: U32, +op: U32, +a: U32, +b: U32) -> U32:
   +h1 = U32.xor(U32.mul(a, 2654435761), U32.mul(b, 2246822519))
-  U32.and(U32.xor(U32.shrn(h1, 16n), U32.xor(h1, U32.add(U32.shln(k, 4n), op))), 255)
+  U32.and(U32.xor(U32.shrn(h1, 16n), U32.xor(h1, U32.add(U32.shln(k, 4n), op))), 1023)
 def cse_match_ent(e: CseEnt, +k: U32, +op: U32, +a: U32, +b: U32) -> U32:
   match e:
     case CseNone{}: 0
@@ -847,69 +847,78 @@ def cse_match_ent(e: CseEnt, +k: U32, +op: U32, +a: U32, +b: U32) -> U32:
       eq = Bool.and(U32.is_eq(ek, k), Bool.and(U32.is_eq(eop, op), Bool.and(U32.is_eq(ea, a), U32.is_eq(eb, b))))
       Bool.pick(U32, eq, U32.add(dst, 1), 0)
 def cse_lookup(m: RaVec<CseEnt>, +k: U32, +op: U32, +a: U32, +b: U32) -> U32:
-  cse_match_ent(ra_vec_get(CseEnt, 4n, CseNone{}, cse_hash(k, op, a, b), m), k, op, a, b)
+  cse_match_ent(ra_vec_get(CseEnt, 5n, CseNone{}, cse_hash(k, op, a, b), m), k, op, a, b)
 def cse_insert(m: RaVec<CseEnt>, +k: U32, +op: U32, +a: U32, +b: U32, dst: U32) -> RaVec<CseEnt>:
-  ra_vec_set(CseEnt, 4n, cse_hash(k, op, a, b), CseSome{k, op, a, b, dst}, m)
+  ra_vec_set(CseEnt, 5n, cse_hash(k, op, a, b), CseSome{k, op, a, b, dst}, m)
 def cse_maybe_ins(ok: Bool, m: RaVec<CseEnt>, k: U32, op: U32, a: U32, b: U32, d: U32) -> RaVec<CseEnt>:
   match ok:
     case True{}: cse_insert(m, k, op, a, b, d)
     case False{}: m
 def cse_is_comm(+bop: U32) -> Bool:
   Bool.or(U32.is_eq(bop, 0), Bool.or(U32.is_eq(bop, 2), Bool.or(U32.is_eq(bop, 5), Bool.or(U32.is_eq(bop, 6), Bool.or(U32.is_eq(bop, 7), Bool.or(U32.is_eq(bop, 10), U32.is_eq(bop, 12)))))))
+type DomCse is Data:
+  DomCse{csem: RaVec<CseEnt>, cnt: U32}
 type CpOpsRes is Data:
-  CpOpsRes{ops: List<&2, IrOp>, cm: U32Map}
+  CpOpsRes{ops: List<&2, IrOp>, cm: U32Map, dc: DomCse}
 type CpSt is Data:
-  CpSt{cm: U32Map, csem: RaVec<CseEnt>, acc: List<&2, IrOp>}
-def opt_cp_cse_go(is_hit: Bool, +hit: U32, +defc: U32Map, +ar: U32, k: U32, op: U32, a: U32, b: U32, +d: U32, orig_op: IrOp, ok_ops: Bool, +cm: U32Map, csem: RaVec<CseEnt>, +acc: List<&2, IrOp>) -> CpSt:
+  CpSt{cm: U32Map, csem: RaVec<CseEnt>, dcsem: RaVec<CseEnt>, ccnt: U32, acc: List<&2, IrOp>}
+def opt_cp_cse_go(is_hit: Bool, +hit: U32, +defc: U32Map, +ar: U32, +k: U32, +op: U32, +a: U32, +b: U32, +d: U32, orig_op: IrOp, ok_ops: Bool, +cm: U32Map, csem: RaVec<CseEnt>, dcsem: RaVec<CseEnt>, +ccnt: U32, +acc: List<&2, IrOp>) -> CpSt:
   match is_hit:
     case True{}:
       +rs = U32.sub(hit, 1)
       cm1 = Bool.pick(U32Map, Bool.and(U32.is_ne(d, rs), opt_cp_can_prop(defc, ar, rs)), um_set(cm, d, hit), um_set(cm, d, 0))
       acc1 = Bool.pick(List<&2, IrOp>, U32.is_eq(d, rs), acc, Con{ICopy{d, rs}, acc})
-      CpSt{cm1, csem, acc1}
+      CpSt{cm1, csem, dcsem, ccnt, acc1}
     case False{}:
-      csem1 = cse_maybe_ins(Bool.and(ok_ops, opt_cp_can_prop(defc, ar, d)), csem, k, op, a, b, d)
-      CpSt{um_set(cm, d, 0), csem1, Con{orig_op, acc}}
-def opt_cp_cse_step(+defc: U32Map, +ar: U32, +k: U32, +op: U32, +a: U32, +b: U32, d: U32, orig_op: IrOp, ok_ops: Bool, cm: U32Map, +csem: RaVec<CseEnt>, acc: List<&2, IrOp>) -> CpSt:
+      +can_ins = Bool.and(ok_ops, opt_cp_can_prop(defc, ar, d))
+      csem1 = cse_maybe_ins(can_ins, csem, k, op, a, b, d)
+      +is_const = U32.is_eq(k, 1)
+      +is_and = Bool.and(U32.is_eq(k, 4), U32.is_eq(op, 5))
+      +is_shr = Bool.and(U32.is_eq(k, 4), U32.is_eq(op, 9))
+      +d_ok = Bool.and(can_ins, Bool.or(is_const, Bool.and(U32.is_lt(ccnt, 5), Bool.or(is_and, is_shr))))
+      dcsem1 = cse_maybe_ins(d_ok, dcsem, k, op, a, b, d)
+      ccnt1 = Bool.pick(U32, Bool.and(d_ok, is_and), U32.add(ccnt, 1), ccnt)
+      CpSt{um_set(cm, d, 0), csem1, dcsem1, ccnt1, Con{orig_op, acc}}
+def opt_cp_cse_step(+defc: U32Map, +ar: U32, +k: U32, +op: U32, +a: U32, +b: U32, d: U32, orig_op: IrOp, ok_ops: Bool, cm: U32Map, +csem: RaVec<CseEnt>, dcsem: RaVec<CseEnt>, ccnt: U32, acc: List<&2, IrOp>) -> CpSt:
   +hit = cse_lookup(csem, k, op, a, b)
-  opt_cp_cse_go(U32.is_ne(hit, 0), hit, defc, ar, k, op, a, b, d, orig_op, ok_ops, cm, csem, acc)
+  opt_cp_cse_go(U32.is_ne(hit, 0), hit, defc, ar, k, op, a, b, d, orig_op, ok_ops, cm, csem, dcsem, ccnt, acc)
 def opt_cp_ops(+defc: U32Map, +ar: U32, ops: List<&2, IrOp>, st: CpSt) -> CpOpsRes:
   match ops st:
-    case Nil{} CpSt{cm, _, acc}: CpOpsRes{b5k_list_rev(IrOp, acc), cm}
-    case Con{ICopy{+d, s}, t} CpSt{+cm0, csem, +acc}:
+    case Nil{} CpSt{cm, _, dcsem, ccnt, acc}: CpOpsRes{b5k_list_rev(IrOp, acc), cm, DomCse{dcsem, ccnt}}
+    case Con{ICopy{+d, s}, t} CpSt{+cm0, csem, dcsem, ccnt, +acc}:
       +rs = opt_um_lookup_or(cm0, s)
       cm1 = Bool.pick(U32Map, Bool.and(U32.is_ne(d, rs), opt_cp_can_prop(defc, ar, rs)), um_set(cm0, d, U32.add(rs, 1)), um_set(cm0, d, 0))
       acc1 = Bool.pick(List<&2, IrOp>, U32.is_eq(d, rs), acc, Con{ICopy{d, rs}, acc})
-      opt_cp_ops(defc, ar, t, CpSt{cm1, csem, acc1})
-    case Con{IConst{+d, +v}, t} CpSt{cm, csem, acc}:
-      opt_cp_ops(defc, ar, t, opt_cp_cse_step(defc, ar, 1, 0, v, 0, d, IConst{d, v}, True{}, cm, csem, acc))
-    case Con{IFlt{+d, +bits}, t} CpSt{cm, csem, acc}:
-      opt_cp_ops(defc, ar, t, opt_cp_cse_step(defc, ar, 2, 0, bits, 0, d, IFlt{d, bits}, True{}, cm, csem, acc))
-    case Con{IUn{+d, +uop, s}, t} CpSt{+cm0, csem, acc}:
+      opt_cp_ops(defc, ar, t, CpSt{cm1, csem, dcsem, ccnt, acc1})
+    case Con{IConst{+d, +v}, t} CpSt{cm, csem, dcsem, ccnt, acc}:
+      opt_cp_ops(defc, ar, t, opt_cp_cse_step(defc, ar, 1, 0, v, 0, d, IConst{d, v}, True{}, cm, csem, dcsem, ccnt, acc))
+    case Con{IFlt{+d, +bits}, t} CpSt{cm, csem, dcsem, ccnt, acc}:
+      opt_cp_ops(defc, ar, t, opt_cp_cse_step(defc, ar, 2, 0, bits, 0, d, IFlt{d, bits}, True{}, cm, csem, dcsem, ccnt, acc))
+    case Con{IUn{+d, +uop, s}, t} CpSt{+cm0, csem, dcsem, ccnt, acc}:
       +rs = opt_um_lookup_or(cm0, s)
-      opt_cp_ops(defc, ar, t, opt_cp_cse_step(defc, ar, 3, uop, rs, 0, d, IUn{d, uop, rs}, opt_cp_can_prop(defc, ar, rs), cm0, csem, acc))
-    case Con{IBin{+d, +bop, a, b}, t} CpSt{+cm0, csem, acc}:
+      opt_cp_ops(defc, ar, t, opt_cp_cse_step(defc, ar, 3, uop, rs, 0, d, IUn{d, uop, rs}, opt_cp_can_prop(defc, ar, rs), cm0, csem, dcsem, ccnt, acc))
+    case Con{IBin{+d, +bop, a, b}, t} CpSt{+cm0, csem, dcsem, ccnt, acc}:
       +ra = opt_um_lookup_or(cm0, a)
       +rb = opt_um_lookup_or(cm0, b)
       +comm = cse_is_comm(bop)
       ka = Bool.pick(U32, comm, U32.min(ra, rb), ra)
       kb = Bool.pick(U32, comm, U32.max(ra, rb), rb)
       ok = Bool.and(opt_cp_can_prop(defc, ar, ra), opt_cp_can_prop(defc, ar, rb))
-      opt_cp_ops(defc, ar, t, opt_cp_cse_step(defc, ar, 4, bop, ka, kb, d, IBin{d, bop, ra, rb}, ok, cm0, csem, acc))
-    case Con{ICmp{+d, +cop, a, b}, t} CpSt{+cm0, csem, acc}:
+      opt_cp_ops(defc, ar, t, opt_cp_cse_step(defc, ar, 4, bop, ka, kb, d, IBin{d, bop, ra, rb}, ok, cm0, csem, dcsem, ccnt, acc))
+    case Con{ICmp{+d, +cop, a, b}, t} CpSt{+cm0, csem, dcsem, ccnt, acc}:
       +ra = opt_um_lookup_or(cm0, a)
       +rb = opt_um_lookup_or(cm0, b)
       +comm = U32.is_le(cop, 1)
       ka = Bool.pick(U32, comm, U32.min(ra, rb), ra)
       kb = Bool.pick(U32, comm, U32.max(ra, rb), rb)
       ok = Bool.and(opt_cp_can_prop(defc, ar, ra), opt_cp_can_prop(defc, ar, rb))
-      opt_cp_ops(defc, ar, t, opt_cp_cse_step(defc, ar, 5, cop, ka, kb, d, ICmp{d, cop, ra, rb}, ok, cm0, csem, acc))
-    case Con{ITag{+d, s}, t} CpSt{+cm0, csem, acc}:
+      opt_cp_ops(defc, ar, t, opt_cp_cse_step(defc, ar, 5, cop, ka, kb, d, ICmp{d, cop, ra, rb}, ok, cm0, csem, dcsem, ccnt, acc))
+    case Con{ITag{+d, s}, t} CpSt{+cm0, csem, dcsem, ccnt, acc}:
       +rs = opt_um_lookup_or(cm0, s)
-      opt_cp_ops(defc, ar, t, opt_cp_cse_step(defc, ar, 6, 0, rs, 0, d, ITag{d, rs}, opt_cp_can_prop(defc, ar, rs), cm0, csem, acc))
-    case Con{op, t} CpSt{+cm0, csem, acc}:
+      opt_cp_ops(defc, ar, t, opt_cp_cse_step(defc, ar, 6, 0, rs, 0, d, ITag{d, rs}, opt_cp_can_prop(defc, ar, rs), cm0, csem, dcsem, ccnt, acc))
+    case Con{op, t} CpSt{+cm0, csem, dcsem, ccnt, acc}:
       +op2 = opt_cp_rewrite_op(cm0, op)
-      opt_cp_ops(defc, ar, t, CpSt{opt_kill_op_dsts(op2, cm0), csem, Con{op2, acc}})
+      opt_cp_ops(defc, ar, t, CpSt{opt_kill_op_dsts(op2, cm0), csem, dcsem, ccnt, Con{op2, acc}})
 def opt_cp_term(+cm: U32Map, term: IrTerm) -> IrTerm:
   match term:
     case TBr{c, tb, fb}: TBr{opt_um_lookup_or(cm, c), tb, fb}
@@ -919,7 +928,44 @@ def opt_cp_term(+cm: U32Map, term: IrTerm) -> IrTerm:
     case other: other
 def opt_cp_blk_fin(id: U32, term: IrTerm, r: CpOpsRes) -> IrBlock:
   match r:
-    case CpOpsRes{ops2, cm2}: IrBlock{id, ops2, opt_cp_term(cm2, term)}
+    case CpOpsRes{ops2, cm2, _}: IrBlock{id, ops2, opt_cp_term(cm2, term)}
+def opt_jmp_tgts(blks: List<&2, IrBlock>, m: U32Map) -> U32Map:
+  match blks:
+    case Nil{}: m
+    case Con{IrBlock{id, _, TJmp{tgt}}, t}: opt_jmp_tgts(t, um_set(m, id, U32.add(tgt, 1)))
+    case Con{_, t}: opt_jmp_tgts(t, m)
+def opt_cse_put(ok: Bool, +tgt: U32, dc: DomCse, cmap: RaVec<DomCse>) -> RaVec<DomCse>:
+  match ok:
+    case True{}: ra_vec_set(DomCse, 5n, tgt, dc, cmap)
+    case False{}: cmap
+def opt_cse_prop_term(+preds: U32Map, +jmps: U32Map, +id: U32, term: IrTerm, +dc: DomCse, +cmap: RaVec<DomCse>) -> RaVec<DomCse>:
+  match term:
+    case TJmp{+tgt}:
+      ok = Bool.and(U32.is_lt(tgt, 1024), Bool.and(U32.is_ne(tgt, id), U32.is_eq(um_get(preds, tgt), 1)))
+      opt_cse_put(ok, tgt, dc, cmap)
+    case TBr{_, +tb, +fb}:
+      +ok_t = Bool.and(U32.is_lt(tb, 1024), Bool.and(U32.is_ne(tb, id), U32.is_eq(um_get(preds, tb), 1)))
+      +ok_f = Bool.and(U32.is_lt(fb, 1024), Bool.and(U32.is_ne(fb, id), U32.is_eq(um_get(preds, fb), 1)))
+      +cm1 = opt_cse_put(ok_f, fb, dc, opt_cse_put(ok_t, tb, dc, cmap))
+      +jt = um_get(jmps, tb)
+      +jf = um_get(jmps, fb)
+      +m = U32.sub(jt, 1)
+      ok_m = Bool.and(ok_t, Bool.and(ok_f, Bool.and(U32.is_ne(tb, fb), Bool.and(U32.is_ne(jt, 0), Bool.and(U32.is_eq(jt, jf), Bool.and(U32.is_lt(m, 1024), Bool.and(U32.is_ne(m, id), U32.is_eq(um_get(preds, m), 2))))))))
+      opt_cse_put(ok_m, m, dc, cm1)
+    case _: cmap
+def opt_cp_blk_cmap(+preds: U32Map, +jmps: U32Map, +id: U32, term: IrTerm, r: CpOpsRes, cmap: RaVec<DomCse>) -> RaVec<DomCse>:
+  match r:
+    case CpOpsRes{_, _, dc2}: opt_cse_prop_term(preds, jmps, id, term, dc2, cmap)
+def opt_cp_ops_dc(+defc: U32Map, +ar: U32, gcm: U32Map, ops: List<&2, IrOp>, dc: DomCse) -> CpOpsRes:
+  match dc:
+    case DomCse{+csem0, cnt0}: opt_cp_ops(defc, ar, ops, CpSt{gcm, csem0, csem0, cnt0, Nil{}})
+def opt_cp_blks_dom(+defc: U32Map, +ar: U32, +gcm: U32Map, +preds: U32Map, +jmps: U32Map, blks: List<&2, IrBlock>, +cmap: RaVec<DomCse>) -> List<&2, IrBlock>:
+  match blks:
+    case Nil{}: Nil{}
+    case Con{IrBlock{+id, ops, +term}, t}:
+      dc0 = Bool.pick(DomCse, U32.is_lt(id, 1024), ra_vec_get(DomCse, 5n, DomCse{RVEmpty{}, 0}, id, cmap), DomCse{RVEmpty{}, 0})
+      +r = opt_cp_ops_dc(defc, ar, gcm, ops, dc0)
+      Con{opt_cp_blk_fin(id, term, r), opt_cp_blks_dom(defc, ar, gcm, preds, jmps, t, opt_cp_blk_cmap(preds, jmps, id, term, r, cmap))}
 def opt_keep_ops(ops: List<&2, IrOp>, m: U32Map) -> U32Map:
   match ops:
     case Nil{}: m
@@ -944,7 +990,7 @@ def opt_cp_blks(+defc: U32Map, +ar: U32, +gcm: U32Map, blks: List<&2, IrBlock>) 
   match blks:
     case Nil{}: Nil{}
     case Con{IrBlock{id, ops, term}, t}:
-      Con{opt_cp_blk_fin(id, term, opt_cp_ops(defc, ar, ops, CpSt{gcm, RVEmpty{}, Nil{}})), opt_cp_blks(defc, ar, gcm, t)}
+      Con{opt_cp_blk_fin(id, term, opt_cp_ops(defc, ar, ops, CpSt{gcm, RVEmpty{}, RVEmpty{}, 0, Nil{}})), opt_cp_blks(defc, ar, gcm, t)}
 def opt_dce_ops(+uses: U32Map, ops: List<&2, IrOp>, +acc: List<&2, IrOp>) -> List<&2, IrOp>:
   match ops:
     case Nil{}: b5k_list_rev(IrOp, acc)
@@ -1075,7 +1121,9 @@ def opt_pass_cp_dce(do_merge: Bool, f: IrFn) -> IrFn:
       +defc = opt_blks_defs(b1, UM0{})
       +b1b = opt_stc_blks(fid, opt_ip_orig_blks(defc, ar, b1, opt_ip_init_orig(U32.to_nat(ar), 0, UM0{})), b1)
       +km = opt_keep_blks(b1b, UM0{})
-      b2 = opt_cp_blks(defc, ar, opt_gc_cp_blks(defc, km, ar, b1b, opt_gc_cp_blks(defc, km, ar, b1b, UM0{})), b1b)
+      +preds = opt_count_preds(b1b, um_set(UM0{}, 0, 2))
+      +jmps = opt_jmp_tgts(b1b, UM0{})
+      b2 = opt_cp_blks_dom(defc, ar, opt_gc_cp_blks(defc, km, ar, b1b, opt_gc_cp_blks(defc, km, ar, b1b, UM0{})), preds, jmps, b1b, RVEmpty{})
       IrFn{fid, nm, ar, nregs, esc, eff, is_m, opt_dce_round(opt_dce_round(b2))}
     case False{} IrFn{fid, nm, +ar, nregs, esc, eff, is_m, blks}:
       +b1 = opt_elim_unreach(blks)
@@ -1849,7 +1897,8 @@ def b5k_opt_go(small: Bool, +fns: List<&2, IrFn>) -> List<&2, IrFn>:
       +fns3c = opt_fns_mid(opt_inl_all(48, opt_collect_inlines(True{}, False{}, 512, 64, fns3b, InlBank{UM0{}, RVEmpty{}}), fns3b))
       +fns3d = opt_fns_mid(opt_inl_all(48, opt_collect_inlines(True{}, False{}, 512, 64, fns3c, InlBank{UM0{}, RVEmpty{}}), fns3c))
       +fns3 = opt_fns_mid(opt_inl_all(48, opt_collect_inlines(True{}, False{}, 512, 64, fns3d, InlBank{UM0{}, RVEmpty{}}), fns3d))
-      +fns4a = opt_fns_mid(opt_ww_pass(opt_fns_mid(opt_ww_pass(fns3))))
+      +fns3e = opt_fns_mid(opt_inl_all(64, opt_collect_inlines(False{}, True{}, 224, 24, fns3, InlBank{UM0{}, RVEmpty{}}), fns3))
+      +fns4a = opt_fns_mid(opt_ww_pass(opt_fns_mid(opt_ww_pass(fns3e))))
       +fns4 = opt_fns_mid(opt_inl_all(4, opt_collect_self_tc(fns4a, InlBank{UM0{}, RVEmpty{}}), fns4a))
       +fns5 = b5k_opt_fin(True{}, fns4, opt_collect_ip(True{}, fns4, ret0))
       b5k_opt_fin(True{}, fns5, opt_collect_ip(True{}, fns5, ret0))

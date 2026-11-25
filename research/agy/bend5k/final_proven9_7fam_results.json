@@ -1,0 +1,397 @@
+{
+  "label": "bend5k-O0",
+  "compiler": "selfhost/build/agy/bend5k/bend5k_o2",
+  "opt_flag": "-O2",
+  "cpu": 7,
+  "runs": 5,
+  "all_ok": true,
+  "proxy_geomean_vs_gcc10": 1.3374,
+  "total_wall_s": 123.83,
+  "proxy_7": [
+    {
+      "name": "expression",
+      "group": "tuned",
+      "expected_checksum": 3393903617,
+      "checksum_ok": true,
+      "bend5k_ms": 11.9386,
+      "c_gcc10_ms": 6.3673,
+      "ratio_vs_gcc10": 1.875,
+      "compile_ms": 386.66,
+      "link_ms": 45.05,
+      "obj_bytes": 168896,
+      "error": null,
+      "details": {
+        "c_gcc10": {
+          "ok": true,
+          "expected": 3393903617,
+          "reps": 320000,
+          "raw_samples_ms": [
+            61,
+            54,
+            54,
+            53,
+            52
+          ],
+          "raw_median_ms": 54.0,
+          "ms": 6.3673
+        },
+        "bend5k": {
+          "compile": {
+            "ok": true,
+            "compile_ms": 386.66,
+            "obj_bytes": 168896
+          },
+          "run": {
+            "ok": true,
+            "expected": 3393903617,
+            "reps": 256000,
+            "raw_samples_ms": [
+              81,
+              81,
+              81,
+              81,
+              81
+            ],
+            "raw_median_ms": 81.0,
+            "ms": 11.9386
+          }
+        }
+      }
+    },
+    {
+      "name": "nbody",
+      "group": "upstream",
+      "expected_checksum": 728502159,
+      "checksum_ok": true,
+      "bend5k_ms": 86.8248,
+      "c_gcc10_ms": 88.7187,
+      "ratio_vs_gcc10": 0.9787,
+      "compile_ms": 562.63,
+      "link_ms": 43.8,
+      "obj_bytes": 138896,
+      "error": null,
+      "details": {
+        "c_gcc10": {
+          "ok": true,
+          "expected": 728502159,
+          "samples_ms": [
+            88.433,
+            88.467,
+            88.961,
+            88.719,
+            89.084
+          ],
+          "ms": 88.7187
+        },
+        "bend5k": {
+          "compile": {
+            "ok": true,
+            "compile_ms": 562.63,
+            "obj_bytes": 138896
+          },
+          "run": {
+            "ok": true,
+            "expected": 728502159,
+            "samples_ms": [
+              87.231,
+              87.202,
+              86.825,
+              86.224,
+              86.716
+            ],
+            "ms": 86.8248
+          }
+        }
+      }
+    },
+    {
+      "name": "histogram",
+      "group": "upstream",
+      "expected_checksum": 3307081914,
+      "checksum_ok": true,
+      "bend5k_ms": 61.607,
+      "c_gcc10_ms": 24.0616,
+      "ratio_vs_gcc10": 2.5604,
+      "compile_ms": 757.36,
+      "link_ms": 44.62,
+      "obj_bytes": 225184,
+      "error": null,
+      "details": {
+        "c_gcc10": {
+          "ok": true,
+          "expected": 3307081914,
+          "samples_ms": [
+            25.034,
+            24.923,
+            24.062,
+            22.858,
+            23.866
+          ],
+          "ms": 24.0616
+        },
+        "bend5k": {
+          "compile": {
+            "ok": true,
+            "compile_ms": 757.36,
+            "obj_bytes": 225184
+          },
+          "run": {
+            "ok": true,
+            "expected": 3307081914,
+            "samples_ms": [
+              62.22,
+              61.601,
+              61.697,
+              61.265,
+              61.607
+            ],
+            "ms": 61.607
+          }
+        }
+      }
+    },
+    {
+      "name": "editdist",
+      "group": "tuned",
+      "expected_checksum": 2065873279,
+      "checksum_ok": true,
+      "bend5k_ms": 19.6875,
+      "c_gcc10_ms": 9.8438,
+      "ratio_vs_gcc10": 2.0,
+      "compile_ms": 454.59,
+      "link_ms": 43.16,
+      "obj_bytes": 185984,
+      "error": null,
+      "details": {
+        "c_gcc10": {
+          "ok": true,
+          "expected": 2065873279,
+          "reps": 1536,
+          "raw_samples_ms": [
+            62,
+            63,
+            64,
+            63,
+            62
+          ],
+          "raw_median_ms": 63.0,
+          "ms": 9.8438
+        },
+        "bend5k": {
+          "compile": {
+            "ok": true,
+            "compile_ms": 454.59,
+            "obj_bytes": 185984
+          },
+          "run": {
+            "ok": true,
+            "expected": 2065873279,
+            "reps": 512,
+            "raw_samples_ms": [
+              42,
+              43,
+              42,
+              43,
+              42
+            ],
+            "raw_median_ms": 42.0,
+            "ms": 19.6875
+          }
+        }
+      }
+    },
+    {
+      "name": "list",
+      "group": "tuned",
+      "expected_checksum": 1904,
+      "checksum_ok": true,
+      "bend5k_ms": 0.1632,
+      "c_gcc10_ms": 0.2637,
+      "ratio_vs_gcc10": 0.6189,
+      "compile_ms": 400.28,
+      "link_ms": 43.96,
+      "obj_bytes": 169088,
+      "error": null,
+      "details": {
+        "c_gcc10": {
+          "ok": true,
+          "expected": 1904,
+          "reps": 20000000,
+          "raw_samples_ms": [
+            53,
+            53,
+            53,
+            54,
+            53
+          ],
+          "raw_median_ms": 53.0,
+          "ms": 0.2637
+        },
+        "bend5k": {
+          "compile": {
+            "ok": true,
+            "compile_ms": 400.28,
+            "obj_bytes": 169088
+          },
+          "run": {
+            "ok": true,
+            "expected": 1904,
+            "reps": 25600000,
+            "raw_samples_ms": [
+              42,
+              42,
+              42,
+              42,
+              42
+            ],
+            "raw_median_ms": 42.0,
+            "ms": 0.1632
+          }
+        }
+      }
+    },
+    {
+      "name": "gameoflife",
+      "group": "upstream",
+      "expected_checksum": 3681094808,
+      "checksum_ok": true,
+      "bend5k_ms": 512.6269,
+      "c_gcc10_ms": 922.8217,
+      "ratio_vs_gcc10": 0.5555,
+      "compile_ms": 959.16,
+      "link_ms": 43.73,
+      "obj_bytes": 151504,
+      "error": null,
+      "details": {
+        "c_gcc10": {
+          "ok": true,
+          "expected": 3681094808,
+          "samples_ms": [
+            922.822,
+            923.538,
+            920.768,
+            921.262,
+            924.319
+          ],
+          "ms": 922.8217
+        },
+        "bend5k": {
+          "compile": {
+            "ok": true,
+            "compile_ms": 959.16,
+            "obj_bytes": 151504
+          },
+          "run": {
+            "ok": true,
+            "expected": 3681094808,
+            "samples_ms": [
+              522.089,
+              514.036,
+              509.486,
+              512.627,
+              509.956
+            ],
+            "ms": 512.6269
+          }
+        }
+      }
+    },
+    {
+      "name": "bst",
+      "group": "tuned",
+      "expected_checksum": 861157620,
+      "checksum_ok": true,
+      "bend5k_ms": 30.582,
+      "c_gcc10_ms": 12.9124,
+      "ratio_vs_gcc10": 2.3684,
+      "compile_ms": 401.11,
+      "link_ms": 42.23,
+      "obj_bytes": 173344,
+      "error": null,
+      "details": {
+        "c_gcc10": {
+          "ok": true,
+          "expected": 861157620,
+          "reps": 160000,
+          "raw_samples_ms": [
+            78,
+            77,
+            76,
+            76,
+            76
+          ],
+          "raw_median_ms": 76.0,
+          "ms": 12.9124
+        },
+        "bend5k": {
+          "compile": {
+            "ok": true,
+            "compile_ms": 401.11,
+            "obj_bytes": 173344
+          },
+          "run": {
+            "ok": true,
+            "expected": 861157620,
+            "reps": 32000,
+            "raw_samples_ms": [
+              36,
+              36,
+              37,
+              36,
+              37
+            ],
+            "raw_median_ms": 36.0,
+            "ms": 30.582
+          }
+        }
+      }
+    }
+  ],
+  "holdouts": [
+    {
+      "name": "terrain",
+      "expected": "2572468224",
+      "checksum_ok": true,
+      "bend5k_s": 13.6267,
+      "c_gcc10_o2_s": 7.8738,
+      "ratio_vs_gcc10": 1.7306,
+      "compile_ms": 740.28,
+      "link_ms": 45.88,
+      "obj_bytes": 197280,
+      "error": null,
+      "details": {
+        "c_o2": {
+          "ok": true,
+          "samples_s": [
+            7.871,
+            7.8662,
+            7.8896,
+            7.8738,
+            7.886
+          ],
+          "s": 7.8738,
+          "out": "2572468224"
+        },
+        "bend5k": {
+          "compile": {
+            "ok": true,
+            "compile_ms": 740.28,
+            "obj_bytes": 197280
+          },
+          "run": {
+            "ok": true,
+            "samples_s": [
+              13.6302,
+              13.6243,
+              13.6176,
+              13.6303,
+              13.6267
+            ],
+            "s": 13.6267,
+            "out": "2572468224"
+          }
+        }
+      }
+    }
+  ]
+}

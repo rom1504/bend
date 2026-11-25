@@ -1,32 +1,40 @@
 #!/usr/bin/env python3
-"""Executable Law-First Generality Matrix & machine-code contract gate for bend5k.
+"""Executable Law-First Generality Matrix & Hardware-Informed Cost-Law gate for bend5k.
 
 Links the formal proofs in `selfhost/bend5k/laws/ownership_laws.bend` to real
 x86-64 ELF `.o` output from `bend5k`:
-  - Contract A (`ret2` Law 1): 0 hot `p111_rt_ctor` calls in `queens:$direct.solve`
-    AND 0 total hot `p111_rt_ctor` calls in an unrelated holdout 2-scalar loop.
-  - Contract B (`IReuse` Law 2): in-place unique-slot reuse active (0 hot
-    `p111_rt_ctor` calls, direct slot stores, slow-path-only fallback) in
+  - Contract A (`ret2` Law 1, STRICT PASS): 0 hot `p111_rt_ctor` calls in
+    `queens:$direct.solve` AND 0 total hot `p111_rt_ctor` calls in an unrelated
+    holdout 2-scalar loop.
+  - Contract B (`IReuse` Law 2, STRICT PASS): in-place unique-slot reuse active
+    (0 hot `p111_rt_ctor` calls, direct slot stores, slow-path-only fallback) in
     `tree-bitonic:$direct.warp` AND an unrelated holdout tree-map workload.
-  - Contract C (`.rodata` LUT): `.rodata` RIP-relative indexed table lookup
-    (`lea ...(%rip)` + `.rodata` reloc, <10 conditional branches) in
-    `merkle:$direct.spk` AND an unrelated holdout 10-case `Nat`-match table.
-  - Contract D (`borrow` Law 3): STRICT PASS by default — enforces 0
-    `p111_rt_take` calls in `symreg:$direct.eval` and `hashmap:$direct.has`.
-  - Contract E (`Linear-Array Hoist` Law 4): checks `editdist:$direct.row`,
-    `terrain:$direct.erode`, plus 3 diverse unrelated holdout shapes
-    (`holdout:ro_arr_sum`, `holdout:lin_swap_dead`, `holdout:two_arr_copy`),
-    asserting preheader handle hoist (`preheader_decodes >= 1`) and 0 inner-loop
-    `p111_rt_op` / array-handle tag-decode / uninlined helper calls. Reported as
-    `[GEN-MATRIX]` PASS/RED by default, and enforced strictly when
-    `--strict-array-hoist` is passed.
-  - Harder Generality Matrix (`[GEN-MATRIX]` PASS/RED):
-    - Contract D (borrow): 6-arg borrow-walk (`arity=6`), 2-arg tree-zip borrow.
-    - Contract B (IReuse): nested-match 2-node reuse (`merge`-style).
+  - Contract C (`.rodata` LUT, STRICT PASS): `.rodata` RIP-relative indexed
+    table lookup (`lea ...(%rip)` + `.rodata` reloc, <10 conditional branches)
+    in `merkle:$direct.spk` AND an unrelated holdout 10-case `Nat`-match table.
+  - Contract D (`borrow` Law 3, STRICT PASS): enforces 0 `p111_rt_take` calls in
+    `symreg:$direct.eval` and `hashmap:$direct.has`.
+  - Contract E (`Linear-Array Hoist` Law 4, STRICT PASS by default): enforces
+    preheader handle hoist (`preheader_decodes >= min`) and 0 inner-loop
+    `p111_rt_op` / array-handle tag-decode / uninlined helper calls across
+    `editdist:$direct.row`, `terrain:$direct.erode`, plus 3 diverse unrelated
+    holdouts (`holdout:ro_arr_sum`, `holdout:lin_swap_dead`,
+    `holdout:two_arr_copy`). Use `--no-strict-array-hoist` to downgrade.
+  - Contract F (`Static String & Static-Take Zero-Alloc`, `[REPORT]` by default,
+    `--strict-static-str` to enforce): checks `lexer:$direct.tpl` /
+    `lexer:$direct.gen` AND an unrelated constant-string traversal holdout for
+    0 heap `SCon` `p111_rt_ctor` calls on constant construction and reports
+    `p111_rt_take` count on static string traversal.
+  - Contract G (`Hardware-Informed Loop Bottleneck Triager`, `--triage <file>`
+    + built-in `[REPORT]` on `kmeans:$direct.chunk` & `list-pipeline`): parses
+    `objdump -dr` for `[rbp-]` stack spills, `jcc` branches, `cmov`, `p111_rt_*`
+    calls, hardware `div`/`idiv`, and `sqrtss`/`divss` latency-bound ops.
+  - Harder Generality Matrix (`[GEN-MATRIX]`, 8 cells): 5 Contract E cells +
+    6-arg borrow-walk (`arity=6`), 2-arg tree-zip borrow, nested-match reuse.
 
-Run with `--self-test-fault-injection` to verify that every enforced contract
-(`A`, `B`, `C`, `D`, and `E` under `--strict-array-hoist`) fails loudly when
-optimizations are disabled (`-O0`) or faults are injected.
+Run with `--self-test-fault-injection` to verify that all 5 strict contracts
+(`A`, `B`, `C`, `D`, `E`) fail loudly when optimizations are disabled (`-O0`)
+or synthetic faults are injected.
 """
 from __future__ import annotations
 
@@ -307,6 +315,24 @@ def main() -> U32:
   sum_mt(merge_t(mk_mt(4n, 1), mk_mt(4n, 2)))
 """
 
+# Contract F holdout: unrelated constant string literal construction + traversal
+HOLDOUT_STATIC_STR_SRC = """\
+import Base
+
+def const_msg() -> String:
+  "alpha-beta-gamma-0123456789"
+
+def hash_str(s: String, +acc: U32) -> U32:
+  match s:
+    case SNil{}:
+      acc
+    case SCon{Chr{c}, t}:
+      hash_str(t, U32.xor(U32.mul(acc, 16777619), c))
+
+def main() -> U32:
+  hash_str(const_msg(), 2166136261)
+"""
+
 
 # ---------------------------------------------------------------------------
 # Disassembly & hot/cold/loop analysis
@@ -315,6 +341,10 @@ def main() -> U32:
 INSN_RE = re.compile(r"^\s*([0-9a-f]+):\s+(?:[0-9a-f]{2}\s+)+\s*(.+)$")
 RELOC_RE = re.compile(r"^\s*([0-9a-f]+):\s+R_X86_64_\w+\s+(.+)$")
 JCC_RE = re.compile(r"^(je|jne|jg|jge|jl|jle|ja|jae|jb|jbe|js|jns|jo|jno)\b")
+CMOV_RE = re.compile(r"^cmov")
+DIV_RE = re.compile(r"^(i?div[lqbw]?)\b")
+FP_LAT_RE = re.compile(r"^(sqrt|div)s[sd]\b")
+RBP_MEM_RE = re.compile(r"\(%rbp\)")
 BRANCH_TARGET_RE = re.compile(
     r"^(?:jmpq?|je|jne|jg|jge|jl|jle|ja|jae|jb|jbe|js|jns|jo|jno)\s+([0-9a-f]+)\b"
 )
@@ -341,6 +371,11 @@ class FuncMetrics:
     rodata_lea_rip: int
     jcc_count: int
     hot_slot_stores: int
+    rbp_spills: int = 0
+    cmov_count: int = 0
+    total_rt_calls: int = 0
+    div_count: int = 0
+    fp_lat_count: int = 0
 
 
 def compile_to_obj(
@@ -510,6 +545,11 @@ def analyze_func(symbol: str, lines: list[str]) -> FuncMetrics:
     rodata_lea_rip = 0
     jcc_count = 0
     hot_slot_stores = 0
+    rbp_spills = 0
+    cmov_count = 0
+    total_rt_calls = 0
+    div_count = 0
+    fp_lat_count = 0
 
     prev_was_lea_rip = False
     since_shr38 = 99
@@ -533,6 +573,14 @@ def analyze_func(symbol: str, lines: list[str]) -> FuncMetrics:
                     hot_slot_stores += 1
             if JCC_RE.match(asm):
                 jcc_count += 1
+            if CMOV_RE.match(asm):
+                cmov_count += 1
+            if RBP_MEM_RE.search(asm):
+                rbp_spills += 1
+            if DIV_RE.match(asm):
+                div_count += 1
+            if FP_LAT_RE.match(asm):
+                fp_lat_count += 1
             prev_was_lea_rip = bool(re.match(r"^lea\s+.*\(%rip\)", asm))
 
             # Detect array-handle tag decode: `shr $0x38, ...` followed within
@@ -555,6 +603,8 @@ def analyze_func(symbol: str, lines: list[str]) -> FuncMetrics:
         rm = RELOC_RE.match(line)
         if rm:
             target = rm.group(2)
+            if "p111_rt_" in target:
+                total_rt_calls += 1
             if "p111_rt_ctor" in target:
                 total_ctor += 1
                 if is_hot:
@@ -596,6 +646,11 @@ def analyze_func(symbol: str, lines: list[str]) -> FuncMetrics:
         rodata_lea_rip=rodata_lea_rip,
         jcc_count=jcc_count,
         hot_slot_stores=hot_slot_stores,
+        rbp_spills=rbp_spills,
+        cmov_count=cmov_count,
+        total_rt_calls=total_rt_calls,
+        div_count=div_count,
+        fp_lat_count=fp_lat_count,
     )
 
 
@@ -810,10 +865,12 @@ def check_contract_e(
     tmpdir: Path,
     opt_flag: str,
     cpu_pin: str | None,
-    strict_array_hoist: bool = False,
+    strict_array_hoist: bool = True,
 ) -> ContractResult:
     """Contract E (`Linear-Array Hoist` Law 4): editdist:$direct.row,
     terrain:$direct.erode, and 3 diverse unrelated holdout shapes.
+
+    Promoted to STRICT PASS by default.
     """
     ro_src = tmpdir / "holdout_ro_arr_sum.bend"
     ro_src.write_text(HOLDOUT_RO_ARR_SUM_SRC, encoding="utf-8")
@@ -852,6 +909,211 @@ def check_contract_e(
         summary,
         cells=cells,
     )
+
+
+def check_contract_f(
+    bend5k_bin: Path,
+    tmpdir: Path,
+    opt_flag: str,
+    cpu_pin: str | None,
+    strict_static_str: bool = False,
+) -> ContractResult:
+    """Contract F (`Static String & Static-Take Zero-Alloc Law`):
+    Checks `lexer:$direct.tpl` / `lexer:$direct.gen` AND an unrelated constant
+    string traversal holdout for 0 heap `SCon` `p111_rt_ctor` calls on constant
+    string construction and reports `p111_rt_take` count on traversal.
+    """
+    lex_obj = tmpdir / f"lexer_{opt_flag}.o"
+    compile_to_obj(
+        bend5k_bin, ROOT / "bench/runtime/lexer/main.bend", lex_obj, opt_flag, cpu_pin
+    )
+    lex_funcs = disassemble_obj(lex_obj)
+    if "$direct.tpl" not in lex_funcs or "$direct.gen" not in lex_funcs:
+        return ContractResult(
+            "Contract F (static-str)", "FAIL", "missing $direct.tpl or $direct.gen"
+        )
+    m_tpl = analyze_func("$direct.tpl", lex_funcs["$direct.tpl"])
+    m_gen = analyze_func("$direct.gen", lex_funcs["$direct.gen"])
+
+    h_src = tmpdir / "holdout_static_str.bend"
+    h_src.write_text(HOLDOUT_STATIC_STR_SRC, encoding="utf-8")
+    h_obj = tmpdir / f"holdout_static_str_{opt_flag}.o"
+    compile_to_obj(bend5k_bin, h_src, h_obj, opt_flag, cpu_pin)
+    h_funcs = disassemble_obj(h_obj)
+    if "$direct.const_msg" not in h_funcs or "$direct.hash_str" not in h_funcs:
+        return ContractResult(
+            "Contract F (static-str)",
+            "FAIL",
+            "missing holdout $direct.const_msg or $direct.hash_str",
+        )
+    m_cmsg = analyze_func("$direct.const_msg", h_funcs["$direct.const_msg"])
+    m_hash = analyze_func("$direct.hash_str", h_funcs["$direct.hash_str"])
+
+    ctor_ok = m_tpl.total_ctor_calls == 0 and m_cmsg.total_ctor_calls == 0
+    take_ok = m_gen.total_take_calls == 0 and m_hash.total_take_calls == 0
+    gen_tag = "GREEN" if m_gen.total_take_calls == 0 else "RED"
+    hash_tag = "GREEN" if m_hash.total_take_calls == 0 else "RED"
+    detail = (
+        f"lexer:$direct.tpl ctor={m_tpl.total_ctor_calls} ({'PASS' if m_tpl.total_ctor_calls == 0 else 'RED'}), "
+        f"lexer:$direct.gen take={m_gen.total_take_calls} (hot={m_gen.hot_take_calls}, {gen_tag}); "
+        f"holdout:const_msg ctor={m_cmsg.total_ctor_calls} ({'PASS' if m_cmsg.total_ctor_calls == 0 else 'RED'}), "
+        f"holdout:hash_str take={m_hash.total_take_calls} (hot={m_hash.hot_take_calls}, {hash_tag})"
+    )
+    if not strict_static_str:
+        return ContractResult("Contract F (static-str)", "REPORT", detail)
+    return ContractResult(
+        "Contract F (static-str)", "PASS" if (ctor_ok and take_ok) else "FAIL", detail
+    )
+
+
+def diagnose_bottlenecks(m: FuncMetrics) -> str:
+    """Classify monotonic hardware bottlenecks from disassembly metrics."""
+    tags: list[str] = []
+    if m.rbp_spills >= 50:
+        tags.append("SPILL-HEAVY")
+    if m.jcc_count >= 20 and m.cmov_count == 0:
+        tags.append("BRANCH-HEAVY(no-cmov)")
+    if m.total_rt_calls > 0:
+        tags.append("RT-CALLS")
+    if m.div_count > 0:
+        tags.append("HW-DIV")
+    if m.fp_lat_count > 0:
+        tags.append("FP-LATENCY-BOUND")
+    return ",".join(tags) if tags else "TIGHT-ALU"
+
+
+def format_triage_compact(label: str, m: FuncMetrics) -> str:
+    return (
+        f"{label}(insns={m.total_insns} spills={m.rbp_spills} jcc={m.jcc_count} "
+        f"cmov={m.cmov_count} rt={m.total_rt_calls} div={m.div_count} "
+        f"fp_lat={m.fp_lat_count} [{diagnose_bottlenecks(m)}])"
+    )
+
+
+def check_contract_g(
+    bend5k_bin: Path, tmpdir: Path, opt_flag: str, cpu_pin: str | None
+) -> ContractResult:
+    """Contract G (`Hardware-Informed Loop Bottleneck Triager`):
+    Built-in `[REPORT]` on `kmeans:$direct.chunk` & `list-pipeline`.
+    """
+    parts: list[str] = []
+
+    km_obj = tmpdir / f"kmeans_{opt_flag}.o"
+    compile_to_obj(
+        bend5k_bin, ROOT / "bench/runtime/kmeans/main.bend", km_obj, opt_flag, cpu_pin
+    )
+    km_funcs = disassemble_obj(km_obj)
+    if "$direct.chunk" in km_funcs:
+        m_chunk = analyze_func("$direct.chunk", km_funcs["$direct.chunk"])
+        parts.append(format_triage_compact("kmeans:$direct.chunk", m_chunk))
+    else:
+        parts.append("kmeans:$direct.chunk(MISSING)")
+
+    lp_src = (
+        ROOT
+        / "selfhost/tools/bench/catalogs/native45/fixtures/coverage-list-pipeline-512.bend"
+    )
+    if not lp_src.is_file():
+        lp_src = (
+            ROOT
+            / "selfhost/tests/consolidation/native-broad/coverage-list-pipeline-512.bend"
+        )
+    if lp_src.is_file():
+        lp_obj = tmpdir / f"list_pipeline_{opt_flag}.o"
+        compile_to_obj(bend5k_bin, lp_src, lp_obj, opt_flag, cpu_pin)
+        lp_funcs = disassemble_obj(lp_obj)
+        for sym, short in (
+            ("$direct.keep_gt1", "list-pipeline:keep_gt1"),
+            ("$direct.dbl", "list-pipeline:dbl"),
+            ("$direct.p37.list", "list-pipeline:p37.list"),
+        ):
+            if sym in lp_funcs:
+                parts.append(format_triage_compact(short, analyze_func(sym, lp_funcs[sym])))
+    else:
+        parts.append("list-pipeline(FIXTURE_NOT_FOUND)")
+
+    return ContractResult("Contract G (hw-triage)", "REPORT", "; ".join(parts))
+
+
+PRELUDE_PREFIXES = (
+    "$direct.__b5k_",
+    "$direct.Bool.",
+    "$direct.Char.",
+    "$direct.Cmp.",
+    "$direct.Maybe.",
+    "$direct.List.",
+    "$direct.String.",
+    "$direct.U32.",
+    "$direct.F32.",
+    "$direct.Nat.",
+    "$direct.IO.",
+    "$direct.File.",
+    "$direct.Map.",
+    "$direct.Array.",
+    "$bor.Bool.",
+    "$bor.Char.",
+    "$bor.String.",
+    "$bor.List.",
+    "$bor.Map.",
+    "$bor.U32.",
+    "$bor.Nat.",
+)
+
+
+def run_triage(
+    bend5k_bin: Path,
+    src_path: Path,
+    tmpdir: Path,
+    opt_flag: str,
+    cpu_pin: str | None,
+    fn_filter: str | None = None,
+    top_n: int = 12,
+    include_prelude: bool = False,
+) -> int:
+    """Hardware-informed loop bottleneck triager for an arbitrary `.bend` file."""
+    src_resolved = src_path.resolve()
+    if not src_resolved.is_file():
+        print(f"[ERROR] triage source not found: {src_resolved}", file=sys.stderr)
+        return 2
+    out_obj = tmpdir / f"triage_{src_resolved.stem}_{opt_flag}.o"
+    compile_to_obj(bend5k_bin, src_resolved, out_obj, opt_flag, cpu_pin)
+    funcs = disassemble_obj(out_obj)
+
+    metrics: list[FuncMetrics] = []
+    for sym, lines in funcs.items():
+        if not (sym.startswith("$direct.") or sym.startswith("$bor.")):
+            continue
+        if fn_filter:
+            if fn_filter not in sym:
+                continue
+        elif not include_prelude and sym.startswith(PRELUDE_PREFIXES):
+            continue
+        metrics.append(analyze_func(sym, lines))
+
+    metrics.sort(
+        key=lambda m: (
+            m.rbp_spills + m.jcc_count * 2 + m.total_rt_calls * 10 + m.div_count * 5 + m.fp_lat_count * 5,
+            m.total_insns,
+        ),
+        reverse=True,
+    )
+    shown = metrics[:top_n] if not fn_filter else metrics
+
+    print(f"=== HARDWARE-INFORMED LOOP BOTTLENECK TRIAGE ({src_path}, {opt_flag}) ===")
+    print(
+        f"{'Function':32s} {'Insns':>6s} {'Spills':>6s} {'Jcc':>5s} {'Cmov':>5s} "
+        f"{'RT':>4s} {'Div':>4s} {'FPLat':>5s}  Diagnosis"
+    )
+    print("-" * 100)
+    for m in shown:
+        print(
+            f"{m.symbol:32s} {m.total_insns:6d} {m.rbp_spills:6d} {m.jcc_count:5d} "
+            f"{m.cmov_count:5d} {m.total_rt_calls:4d} {m.div_count:4d} "
+            f"{m.fp_lat_count:5d}  {diagnose_bottlenecks(m)}"
+        )
+    if not shown:
+        print("  (no matching functions)")
+    return 0
 
 
 def check_generality_matrix(
@@ -968,13 +1230,13 @@ def run_fault_injection_self_test(
     if not tripped_d:
         all_tripped = False
 
-    # 3. Contract E under --strict-array-hoist at -O0
+    # 3. Contract E (strict by default) at -O0
     res_e = check_contract_e(
         bend5k_bin, tmpdir, "-O0", cpu_pin, strict_array_hoist=True
     )
     tripped_e = res_e.status == "FAIL"
     tag_e = "TRIPPED-OK" if tripped_e else "MISSED-FAULT"
-    print(f"  [{tag_e}] {res_e.name} (-O0 --strict-array-hoist): {res_e.detail}")
+    print(f"  [{tag_e}] {res_e.name} (-O0): {res_e.detail}")
     if not tripped_e:
         all_tripped = False
 
@@ -1043,15 +1305,38 @@ def run_fault_injection_self_test(
     if not synth_loop_ok:
         all_tripped = False
 
+    #    (c) synthetic hardware-triage counters (spills, cmov, div, sqrtss/divss)
+    synth_hw = [
+        "    1000:\t48 8b 45 f8          \tmov    -0x8(%rbp),%rax",
+        "    1004:\t48 0f 4c c1          \tcmovl  %rcx,%rax",
+        "    1008:\tf7 f9                \tidiv   %ecx",
+        "    100a:\tf3 0f 51 c0          \tsqrtss %xmm0,%xmm0",
+        "    100e:\tf3 0f 5e c1          \tdivss  %xmm1,%xmm0",
+        "    1012:\tc3                   \tretq   ",
+    ]
+    mhw = analyze_func("$direct.hw", synth_hw)
+    synth_hw_ok = (
+        mhw.rbp_spills == 1
+        and mhw.cmov_count == 1
+        and mhw.div_count == 1
+        and mhw.fp_lat_count == 2
+    )
     print(
-        f"=== FAULT-INJECTION RESULT: {'PASS (all contracts tripped)' if all_tripped else 'FAIL'} ==="
+        f"  [{'TRIPPED-OK' if synth_hw_ok else 'MISSED-FAULT'}] Synthetic hw-triage metrics: "
+        f"spills={mhw.rbp_spills} cmov={mhw.cmov_count} div={mhw.div_count} fp_lat={mhw.fp_lat_count}"
+    )
+    if not synth_hw_ok:
+        all_tripped = False
+
+    print(
+        f"=== FAULT-INJECTION RESULT: {'PASS (all 5 strict contracts tripped)' if all_tripped else 'FAIL'} ==="
     )
     return all_tripped
 
 
 def main() -> int:
     ap = argparse.ArgumentParser(
-        description="bend5k Law-First Generality Matrix & machine-code contract gate"
+        description="bend5k Law-First Generality Matrix & Hardware-Informed Cost-Law gate"
     )
     ap.add_argument(
         "--bend5k",
@@ -1074,12 +1359,48 @@ def main() -> int:
     ap.add_argument(
         "--strict-array-hoist",
         action="store_true",
-        help="Enforce PASS on all Contract E (Linear-Array Hoist) cells",
+        default=True,
+        help="Enforce PASS on all Contract E (Linear-Array Hoist) cells (default: enabled)",
+    )
+    ap.add_argument(
+        "--no-strict-array-hoist",
+        dest="strict_array_hoist",
+        action="store_false",
+        help="Downgrade Contract E (array-hoist) to REPORT-only mode",
+    )
+    ap.add_argument(
+        "--strict-static-str",
+        action="store_true",
+        default=False,
+        help="Enforce PASS on Contract F (Static String & Static-Take Zero-Alloc)",
+    )
+    ap.add_argument(
+        "--triage",
+        type=Path,
+        default=None,
+        help="Run Hardware-Informed Loop Bottleneck Triager on a single .bend file",
+    )
+    ap.add_argument(
+        "--triage-fn",
+        type=str,
+        default=None,
+        help="Substring filter for --triage function symbols",
+    )
+    ap.add_argument(
+        "--triage-top",
+        type=int,
+        default=12,
+        help="Number of top functions to display in --triage mode (default: 12)",
+    )
+    ap.add_argument(
+        "--triage-all",
+        action="store_true",
+        help="Include Base prelude functions in --triage output",
     )
     ap.add_argument(
         "--self-test-fault-injection",
         action="store_true",
-        help="Verify every enforced contract (A, B, C, D, E) trips loudly on faults",
+        help="Verify all 5 strict contracts (A, B, C, D, E) trip loudly on faults",
     )
     ap.add_argument(
         "--cpu-pin",
@@ -1097,6 +1418,18 @@ def main() -> int:
 
     with tempfile.TemporaryDirectory(prefix="law_gate_") as td:
         tmpdir = Path(td)
+
+        if args.triage is not None:
+            return run_triage(
+                bend5k_bin,
+                args.triage,
+                tmpdir,
+                "-O2",
+                cpu_pin,
+                fn_filter=args.triage_fn,
+                top_n=args.triage_top,
+                include_prelude=args.triage_all,
+            )
 
         if args.self_test_fault_injection:
             ok = run_fault_injection_self_test(bend5k_bin, tmpdir, cpu_pin)
@@ -1116,6 +1449,14 @@ def main() -> int:
                 cpu_pin,
                 strict_array_hoist=args.strict_array_hoist,
             ),
+            check_contract_f(
+                bend5k_bin,
+                tmpdir,
+                "-O2",
+                cpu_pin,
+                strict_static_str=args.strict_static_str,
+            ),
+            check_contract_g(bend5k_bin, tmpdir, "-O2", cpu_pin),
         ]
 
         failed = False
@@ -1124,7 +1465,7 @@ def main() -> int:
             if r.status == "FAIL":
                 failed = True
 
-        # Print full [GEN-MATRIX] (Contract E cells + harder generality holdouts)
+        # Print full [GEN-MATRIX] (5 Contract E cells + 3 harder generality holdouts = 8 cells)
         gen_cells: list[MatrixCell] = []
         for r in results:
             if r.cells:

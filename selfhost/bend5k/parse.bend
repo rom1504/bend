@@ -407,11 +407,7 @@ def p_ev_post(+lhs: Expr, +st: PState, +ks: List<&2, PKont>, k: TokKind) -> PSte
     case TkSym{91}: SEval{GExpr{}, p_drop(st), Con{KPostArrIdx{lhs}, ks}}
     case TkSym{60}: Bool.pick(PStep, p_is_targs(p_toks(st)), SEval{GExprList{62, Nil{}}, p_drop(st), Con{KPostApp{lhs}, ks}}, SApply{VExpr{lhs}, st, ks})
     case _: SApply{VExpr{lhs}, st, ks}
-def p_ev_bin_if(min_p: U32, prec: U32, op: U32, lhs: Expr, st: PState, ks: List<&2, PKont>, ok: Bool) -> PStep:
-  match ok:
-    case True{}: SEval{GUnary{}, p_skip_nls(p_drop(st)), Con{KBinRhs0{min_p, prec, op, lhs}, ks}}
-    case False{}: SApply{VExpr{lhs}, st, ks}
-def p_ev_bin(+min_p: U32, lhs: Expr, st: PState, ks: List<&2, PKont>, k: TokKind) -> PStep:
+def p_ev_bin(+min_p: U32, +lhs: Expr, +st: PState, +ks: List<&2, PKont>, k: TokKind) -> PStep:
   match k:
     case TkSym{+c}:
       +no_gt = U32.is_ge(min_p, 16)
@@ -419,7 +415,7 @@ def p_ev_bin(+min_p: U32, lhs: Expr, st: PState, ks: List<&2, PKont>, k: TokKind
       +info = p_binop_info(c)
       +prec = U32.shrn(info, 6n)
       ok = Bool.and(Bool.and(U32.is_gt(prec, 0), U32.is_ge(prec, mp)), Bool.not(Bool.and(no_gt, Bool.or(U32.is_eq(c, 62), U32.is_eq(c, 270)))))
-      p_ev_bin_if(min_p, prec, U32.and(info, 63), lhs, st, ks, ok)
+      Bool.pick(PStep, ok, SEval{GUnary{}, p_skip_nls(p_drop(st)), Con{KBinRhs0{min_p, prec, U32.and(info, 63), lhs}, ks}}, SApply{VExpr{lhs}, st, ks})
     case _: SApply{VExpr{lhs}, st, ks}
 def p_bin_cons(mp: U32, lhs: Expr, rhs: Expr, r: PSym, ks: List<&2, PKont>) -> PStep:
   PSym{cid, st2} = r

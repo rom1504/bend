@@ -537,10 +537,6 @@ def low_mask_scs(n: Nat, +smask: U32, +idx: U32) -> List<&2, U32>:
     case 1n+p:
       sc = Bool.to_u32(Bool.and(U32.is_lt(idx, 32), U32.is_ne(U32.and(U32.shrn(smask, U32.to_nat(idx)), 1), 0)))
       Con{sc, low_mask_scs(p, smask, U32.add(idx, 1))}
-def low_zero_scs(n: Nat) -> List<&2, U32>:
-  match n:
-    case 0n: Nil{}
-    case 1n+p: Con{0, low_zero_scs(p)}
 type PatStep is Data:
   PSNext{st: CfgSt, ps: List<&2, Pat>, regs: List<&2, U32>, scs: List<&2, U32>, trs: List<&2, U32>}
 def low_test_bool(st: CfgSt, expect_true: Bool, +r: U32, +fail_blk: U32) -> CfgSt:
@@ -608,7 +604,7 @@ def low_pat_ctr_box(st: CfgSt, cid: U32, smask: U32, is_single: Bool, fs: List<&
       +stK = low_maybe_keep(st1, Bool.and(has_fail, Bool.or(pat_is_refut(16n, fs1), pat_is_refut(16n, pt))), r)
       +st2 = low_alloc_regs_go(U32.to_nat(nf), stK, Nil{})
       +fregs = cfg_rlist(st2)
-      PSNext{cfg_emit(st2, ITake{fregs, cfg_res(stK)}), b5k_list_app(Pat, fs1, pt), b5k_list_app(U32, fregs, rt), b5k_list_app(U32, low_mask_scs(U32.to_nat(nf), smask, 0), st_tail), b5k_list_app(U32, low_zero_scs(U32.to_nat(nf)), tr_tail)}
+      PSNext{cfg_emit(st2, ITake{fregs, cfg_res(stK)}), b5k_list_app(Pat, fs1, pt), b5k_list_app(U32, fregs, rt), b5k_list_app(U32, low_mask_scs(U32.to_nat(nf), smask, 0), st_tail), b5k_list_app(U32, low_mask_scs(U32.to_nat(nf), 0, 0), tr_tail)}
 def low_pat_ctr_step(kind: U32, +env: LowEnv, st: CfgSt, +sym: U32, +fs: List<&2, Pat>, pt: List<&2, Pat>, +r: U32, rt: List<&2, U32>, +sc0: U32, st_tail: List<&2, U32>, tr0: U32, tr_tail: List<&2, U32>, body: Expr, fail_blk: U32, +has_fail: Bool) -> PatStep:
   match kind:
     case 1: PSNext{low_opt_test_bool(has_fail, False{}, st, r, fail_blk), pt, rt, st_tail, tr_tail}
@@ -669,7 +665,7 @@ def low_match_pats_go(fuel: Nat, +env: LowEnv, step: PatStep, +body: Expr, +fail
 def low_match_pats_sct(fuel: Nat, env: LowEnv, st: CfgSt, ps: List<&2, Pat>, regs: List<&2, U32>, scs: List<&2, U32>, trs: List<&2, U32>, body: Expr, fail_blk: U32, has_fail: Bool) -> CfgSt:
   low_match_pats_go(fuel, env, PSNext{st, ps, regs, scs, trs}, body, fail_blk, has_fail)
 def low_match_pats_sc(fuel: Nat, env: LowEnv, st: CfgSt, ps: List<&2, Pat>, +regs: List<&2, U32>, scs: List<&2, U32>, body: Expr, fail_blk: U32, has_fail: Bool) -> CfgSt:
-  low_match_pats_go(fuel, env, PSNext{st, ps, regs, scs, low_zero_scs(U32.to_nat(b5k_u32_list_len(regs)))}, body, fail_blk, has_fail)
+  low_match_pats_go(fuel, env, PSNext{st, ps, regs, scs, low_mask_scs(U32.to_nat(b5k_u32_list_len(regs)), 0, 0)}, body, fail_blk, has_fail)
 def low_apply_chain(vargs: List<&2, U32>, st: CfgSt, vfn: U32) -> CfgSt:
   match vargs:
     case Nil{}: cfg_set_res(st, vfn)
@@ -853,15 +849,11 @@ def low_cmp_pat_code(+skind: U32Map, p: Pat) -> U32:
       +k = um_get(skind, sym)
       Bool.pick(U32, Bool.and(U32.is_ge(k, 10), U32.is_le(k, 12)), U32.sub(k, 9), 0)
     case _: 0
-def low_all_cmp_cases_go(+skind: U32Map, cs: List<&2, Case>) -> Bool:
+def low_all_cmp_cases(+skind: U32Map, cs: List<&2, Case>, seen: Bool) -> Bool:
   match cs:
-    case Nil{}: True{}
-    case Con{Case{Con{p, Nil{}}, _}, t}: Bool.and(U32.is_ne(low_cmp_pat_code(skind, p), 0), low_all_cmp_cases_go(skind, t))
+    case Nil{}: seen
+    case Con{Case{Con{p, Nil{}}, _}, t}: Bool.and(U32.is_ne(low_cmp_pat_code(skind, p), 0), low_all_cmp_cases(skind, t, True{}))
     case _: False{}
-def low_all_cmp_cases(+skind: U32Map, cs: List<&2, Case>) -> Bool:
-  match cs:
-    case Nil{}: False{}
-    case other: low_all_cmp_cases_go(skind, other)
 type CmpMatchInfo is Data:
   CMNone{}
   CMHit{a: Expr, b: Expr}
@@ -870,7 +862,7 @@ def low_cmp_match_info(+env: LowEnv, +vm: U32Map, scrut: Expr, cs: List<&2, Case
     case EApp{f, Con{a, Con{b, Nil{}}}}:
       +s1 = low_expr_sym1(f)
       +sym = U32.sub(s1, 1)
-      Bool.pick(CmpMatchInfo, Bool.and(low_all_cmp_cases(env_kind(env), cs), Bool.and(U32.is_ne(s1, 0), Bool.and(U32.is_zero(um_get(vm, sym)), U32.is_eq(um_get(env_intr(env), sym), 66)))), CMHit{a, b}, CMNone{})
+      Bool.pick(CmpMatchInfo, Bool.and(low_all_cmp_cases(env_kind(env), cs, False{}), Bool.and(U32.is_ne(s1, 0), Bool.and(U32.is_zero(um_get(vm, sym)), U32.is_eq(um_get(env_intr(env), sym), 66)))), CMHit{a, b}, CMNone{})
     case _: CMNone{}
 def low_bool_pat_code(+skind: U32Map, p: Pat) -> U32:
   match p:
@@ -1016,7 +1008,7 @@ def low_grp_emit_take(+env: LowEnv, st: CfgSt, spec: HoistCol, +col: U32, +vs: L
       sm = Bool.pick(U32, U32.is_eq(um_get0(ctors, sym), 6), U32.shrn(low_nth_u32(U32.to_nat(col), scs), 1n), um_get(csmask, sym))
       +st2 = low_alloc_regs_go(U32.to_nat(nf), st, Nil{})
       +fregs = cfg_rlist(st2)
-      GrpTakeRes{cfg_emit(st2, ITake{fregs, low_nth_u32(U32.to_nat(col), vs)}), low_splice_u32(U32.to_nat(col), vs, fregs), low_splice_u32(U32.to_nat(col), scs, low_mask_scs(U32.to_nat(nf), sm, 0)), low_splice_u32(U32.to_nat(col), trs, low_zero_scs(U32.to_nat(nf)))}
+      GrpTakeRes{cfg_emit(st2, ITake{fregs, low_nth_u32(U32.to_nat(col), vs)}), low_splice_u32(U32.to_nat(col), vs, fregs), low_splice_u32(U32.to_nat(col), scs, low_mask_scs(U32.to_nat(nf), sm, 0)), low_splice_u32(U32.to_nat(col), trs, low_mask_scs(U32.to_nat(nf), 0, 0))}
     case HCNone{}: GrpTakeRes{st, vs, scs, trs}
 def low_mpat_needs_tag(+env: LowEnv, mp: Maybe<&2, Pat>) -> U32:
   match mp:

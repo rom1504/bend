@@ -1,0 +1,218 @@
+{
+  "schema": "agy.bend5k.asm_ceiling_probes.v4",
+  "host_pin": "taskset -c 7",
+  "compiler_baseline": "selfhost/build/agy/bend5k/bend5k_o2 -O2",
+  "c_baseline": "gcc-10 -O2",
+  "probes": [
+    {
+      "id": "1",
+      "benchmark": "bst (tuned: n=64, seed=17; research/agy/wave4_bench/inputs/tuned/kernels/bst.bend + driver.bend; reps=256000 for both b5k and C, normalized to fixed_reps=27184)",
+      "checksum": ["861157620", "2201946014", "3227443456"],
+      "baseline_raw_ms": 295.0,
+      "baseline_norm27184_ms": 31.325,
+      "c_raw_ms": 156.0,
+      "c_norm27184_ms": 16.565,
+      "baseline_vs_c": 1.891,
+      "raw_baseline_ms": [295.0, 296.0, 297.0, 295.0, 295.0, 295.0, 297.0],
+      "raw_c_ms": [163.0, 155.0, 156.0, 157.0, 158.0, 154.0, 155.0],
+      "variants": [
+        {
+          "name": "a_sorted_fold_inline_unspill",
+          "raw_ms": 182.0,
+          "norm27184_ms": 19.326,
+          "vs_c": 1.167,
+          "speedup_vs_base": 1.621,
+          "pct_saved": 38.3,
+          "raw_samples_ms": [182.0, 183.0, 182.0, 181.0, 182.0, 182.0, 182.0],
+          "note": "Patched $direct.sorted_fold ONLY (256 iters/call, 4x collect): (1) inline repeat_key as a tight inner loop using lea (*10) — previously 1-step peeling left an out-of-line `callq $direct.repeat_key` with n=0 on every non-zero bucket (~60 calls/bench!), (2) keep arr_ptr/arr_mask/left/h in registers instead of spilling all 4 to [rbp-] on every iteration, (3) hoist the loop-invariant array null-check out of the loop. Alone saves 38.3% (1.62x -> 1.167x C)."
+        },
+        {
+          "name": "b_collect_magic_mod257_addl",
+          "raw_ms": 278.0,
+          "norm27184_ms": 29.520,
+          "vs_c": 1.782,
+          "speedup_vs_base": 1.061,
+          "pct_saved": 5.8,
+          "raw_samples_ms": [285.0, 277.0, 279.0, 281.0, 278.0, 277.0, 278.0],
+          "note": "Patched $direct.collect ONLY (64 iters/call): replace 16-insn mod-257 reduction with 9-insn magic multiply (`imul $0xff00ff01; shr $40; shl $8; add; sub`), hoist array null-check, and fuse `mov; add $1; mov` into 32-bit `addl $1, (%r10,%rdi,8)`."
+        },
+        {
+          "name": "ab_sorted_fold_plus_collect",
+          "raw_ms": 164.0,
+          "norm27184_ms": 17.415,
+          "vs_c": 1.051,
+          "speedup_vs_base": 1.799,
+          "pct_saved": 44.4,
+          "raw_samples_ms": [174.0, 165.0, 164.0, 164.0, 164.0, 165.0, 164.0],
+          "note": "Within 5.1% of gcc-10 -O2 (1.051x C; 1.80x speedup, 44.4% saved) even while keeping Bend's 4 KiB heap-allocated 512-slot array zeroing vs C's 1 KiB stack uint32_t[257]!"
+        }
+      ],
+      "verdict": "STRONG GO (inline small self-TCO helper loops instead of 1-step peel+call + unspill hoisted array ptr/mask/loop-vars + 32-bit addl RMW + magic mod: 1.80x -> 1.051x C)",
+      "estimated_loc": "~120 LOC (~50 LOC inline small TCO inner loop + lea *10, ~40 LOC hoist array null-check & keep ptr/mask in regs, ~30 LOC 32-bit addl RMW + magic mod-257)"
+    },
+    {
+      "id": "2",
+      "benchmark": "histogram (7-family medium: D=18, B=7, R=24; research/agy/wave4_bench/inputs/upstream/histogram/main.bend)",
+      "checksum": "3307081914",
+      "baseline_ms": 58.73,
+      "c_ms": 31.18,
+      "baseline_vs_c": 1.883,
+      "raw_baseline_ms": [58.73, 58.32, 59.49, 60.15, 61.34, 58.59, 58.21],
+      "raw_c_ms": [35.19, 31.7, 31.45, 30.69, 30.76, 30.96, 31.18],
+      "variants": [
+        {
+          "name": "a_count_addl_unspill_hoist",
+          "ms": 45.51,
+          "vs_c": 1.459,
+          "speedup_vs_base": 1.291,
+          "pct_saved": 22.5,
+          "raw_ms": [61.6, 46.82, 45.64, 45.48, 45.23, 45.51, 45.4],
+          "note": "Patched $direct.count.go ONLY: (1) fuse 64-bit `lea; mov (%rdi),%rax; add $1,%eax; mov %rax,(%rdi)` into 32-bit `addl $1, (%r10,%rax,8)`, (2) unspill both array masks (`-0x40(%rbp)` and `-0x48(%rbp)`) into registers, (3) hoist both loop-invariant `test %r10/%r11` null-checks out of the loop, (4) bottom-tested loop (`sub $1; jne`). Alone saves 22.5% (1.29x -> 1.459x C)."
+        },
+        {
+          "name": "b_fill_hoist_imm_bottom",
+          "ms": 54.44,
+          "vs_c": 1.746,
+          "speedup_vs_base": 1.079,
+          "pct_saved": 7.3,
+          "raw_ms": [62.78, 54.01, 53.84, 54.12, 54.44, 55.49, 55.04],
+          "note": "Patched $direct.fill.go ONLY: hoist `test %r10` null-check out of loop, use 32-bit immediate `imul $0x9e3779b1, %eax, %eax` instead of reloading constant into %esi every iter, and bottom-tested loop."
+        },
+        {
+          "name": "ab_count_plus_fill",
+          "ms": 41.73,
+          "vs_c": 1.338,
+          "speedup_vs_base": 1.407,
+          "pct_saved": 28.9,
+          "raw_ms": [50.9, 41.96, 41.73, 40.82, 41.5, 41.11, 42.08],
+          "note": "Combined $direct.count.go + $direct.fill.go saves 28.9% (1.41x -> 1.338x C; on clean runs 41.1 ms vs 30.8 ms C). Remaining ~10.5 ms gap is Bend's 8-byte-per-U32 Array layout (2x memory footprint: 2 MiB vs 1 MiB for ks) plus zero.go/col.go/fork-join overhead."
+        }
+      ],
+      "verdict": "STRONG GO (32-bit addl RMW + unspill hoisted array masks + hoist array null-checks + bottom-tested loops: 1.41x -> 1.338x C)",
+      "estimated_loc": "~75 LOC (~20 LOC 32-bit addl RMW emission, ~35 LOC hoist array null-check & keep masks in regs, ~20 LOC immediate imul + bottom-tested loop)"
+    },
+    {
+      "id": "3",
+      "benchmark": "bench/runtime/lexer/main.bend (scaled DEPTH=19; 524288 lines generated and tokenized)",
+      "checksum": "2394243056",
+      "baseline_ms": 1381.73,
+      "c_ms": 140.11,
+      "baseline_vs_c": 9.861,
+      "raw_baseline_ms": [1381.73, 1376.01, 1390.57],
+      "raw_c_ms": [147.13, 139.25, 150.26, 140.11, 139.13],
+      "variants": [
+        {
+          "name": "a_lex_unboxed_mode",
+          "ms": 1086.33,
+          "vs_c": 7.753,
+          "speedup_vs_base": 1.272,
+          "pct_saved": 21.4,
+          "raw_ms": [1092.22, 1081.34, 1086.33, 1080.68, 1100.02],
+          "note": "Patched $direct.lex ONLY: unbox Mode (`Gap`/`InId{h}`/`InNm{v}`) and `(Mode, U32)` Pair into 2 registers `(mode_tag, mode_val)`, eliminating ~40M heap Mode+Pair alloc/free pairs and p111_program/p111_cid_hot checks while still walking and freeing the heap SCon String cons-list. Alone saves 21.4% (1.27x)."
+        },
+        {
+          "name": "b_ident_num_magic_div",
+          "ms": 1177.24,
+          "vs_c": 8.402,
+          "speedup_vs_base": 1.174,
+          "pct_saved": 14.8,
+          "raw_ms": [1275.28, 1203.75, 1177.24, 1169.82, 1172.35],
+          "note": "Patched $direct.ident + $direct.num ONLY: replace 64-bit hardware `div %rcx` by 26 (`ident`) and 10 (`num`) with magic multiply (`0x4ec4ec4f >> 35` and `0xcccccccd >> 35`), convert recursive cons-building to iterative, and drop per-SCon p111_program/p111_cid_hot checks. Alone saves 14.8% (1.17x)."
+        },
+        {
+          "name": "ab_lex_plus_ident_num",
+          "ms": 1007.36,
+          "vs_c": 7.190,
+          "speedup_vs_base": 1.372,
+          "pct_saved": 27.1,
+          "raw_ms": [891.83, 1043.64, 1007.36, 980.44, 1050.51],
+          "note": "Combined $direct.lex + $direct.ident + $direct.num saves 27.1% (1.37x; 872-892 ms on clean runs)."
+        },
+        {
+          "name": "abc_plus_static_tpl_gen",
+          "ms": 772.69,
+          "vs_c": 5.515,
+          "speedup_vs_base": 1.788,
+          "pct_saved": 44.1,
+          "raw_ms": [853.17, 843.26, 772.69, 769.46, 755.29],
+          "note": "CRITICAL FINDING: $direct.batch inlined $direct.line, which allocated 39 heap SCon nodes for the constant string literal `tpl()` on EVERY line (20.4M wasted SCon nodes!) and ran hardware `div` by 6 in $direct.gen. Placing constant string literals in .rodata + magic `% 6` (while STILL materializing the full ~75-node heap SCon String for $direct.lex!) delivers 1.79x speedup (44.1% saved -> 5.52x C; 755 ms clean). Remaining gap vs C's 140 ms is the cons-list String representation (~40M heap SCon nodes vs C's 75-byte stack char buffer)."
+        }
+      ],
+      "verdict": "STRONG GO (general const U32 div/mod magic multiply + small-ADT state unboxing in TCO loops + static .rodata constant string literals: 1.79x -> 5.52x C without changing String representation)",
+      "estimated_loc": "~210 LOC (~60 LOC general u32 const div/mod magic multiply, ~90 LOC small-ADT/Pair unboxing in TCO loops, ~60 LOC static .rodata string literals)"
+    },
+    {
+      "id": "4",
+      "benchmark": "bench/runtime/hashmap/main.bend (scaled TABLES=9, KEYS=16384; 512 independent 4096-bucket separate-chaining tables)",
+      "checksum": "1649609848",
+      "baseline_ms": 1833.13,
+      "c_ms": 302.29,
+      "baseline_vs_c": 6.064,
+      "raw_baseline_ms": [1833.27, 1832.88, 1832.38, 1833.13, 1854.05],
+      "raw_c_ms": [324.01, 308.09, 302.29, 302.03, 301.83],
+      "variants": [
+        {
+          "name": "a_has_borrow_walk",
+          "ms": 1459.81,
+          "vs_c": 4.829,
+          "speedup_vs_base": 1.256,
+          "pct_saved": 20.4,
+          "raw_ms": [1465.31, 1479.14, 1457.31, 1456.86, 1459.81],
+          "note": "CRITICAL BUG/GAP FOUND: in $direct.has, the shared-ctor fast-path checks `(field0 | field1) >> 57 != 0`, which is ALWAYS TRUE for `CCons{h, t}` because `t` is a Chain ctor (tag 0x82 or 0x02)! Thus 100% of CCons nodes fell back to out-of-line `callq p111_rt_take`! Walking the Chain read-only (borrowing all internal nodes: 0 p111_rt_take, 0 internal rc++/rc--, dropping original head `c` once at exit) alone saves 20.4% (1.26x)."
+        },
+        {
+          "name": "ab_has_plus_look_borrow",
+          "ms": 1370.66,
+          "vs_c": 4.534,
+          "speedup_vs_base": 1.337,
+          "pct_saved": 25.2,
+          "raw_ms": [1369.61, 1370.66, 1365.93, 1373.49, 1392.96],
+          "note": "Also hoist arr_ptr/mask and borrow `arr[b]` directly in $direct.look (eliminating 8.4M Array.get RC++ / has RC-- pairs + inline has-walk + hoisted `s * 340573321`). Saves 25.2% total (1.34x)."
+        },
+        {
+          "name": "abc_plus_fill_borrow_fast_cons",
+          "ms": 999.44,
+          "vs_c": 3.306,
+          "speedup_vs_base": 1.834,
+          "pct_saved": 45.5,
+          "raw_ms": [1044.07, 990.67, 989.04, 999.44, 1232.02],
+          "note": "Also patch $direct.fill: hoist arr_ptr/mask, borrow `arr[b]` for read-only has-walk (0 Array.get RC++), and on miss allocate CCons + 1-word RC box inline from free[1]/free[0] moving old `arr[b]` directly into `t` (0 Array.set RC--, 0 p111_rt_keep/op, 0 p111_program/p111_cid_hot checks). Cuts 45.5% of total runtime (1.83x -> 3.31x C; 989 ms clean). Remaining gap vs C's 302 ms is sweep/len + recursive drop of 8.4M boxed CCons+RC-box nodes vs C's flat index-linked uint32_t pool."
+        }
+      ],
+      "verdict": "STRONG GO (read-only borrow-walk for Data match + borrowing Array.get/set fusion in loops + removing p111_program/p111_cid_hot hot checks: 1.83x -> 3.31x C)",
+      "estimated_loc": "~180 LOC (~80 LOC read-only borrow-walk on recursive Data match, ~100 LOC borrowing Array.get + fused Array.set move in loops)"
+    },
+    {
+      "id": "5",
+      "benchmark": "bench/runtime/merkle/main.bend (scaled SIZE=18, BLOCKS=30, PROBE=1337; 2^18 leaves x 30 Speck32/64 blocks x 22 rounds)",
+      "checksum": "3967947184",
+      "baseline_ms": 3258.52,
+      "c_ms": 574.93,
+      "baseline_vs_c": 5.668,
+      "raw_baseline_ms": [3258.52, 3236.21, 3288.19],
+      "raw_c_ms": [575.52, 571.46, 572.32, 574.93, 575.85],
+      "variants": [
+        {
+          "name": "a_spk_lut_rol",
+          "ms": 493.22,
+          "vs_c": 0.858,
+          "speedup_vs_base": 6.607,
+          "pct_saved": 84.9,
+          "raw_ms": [493.22, 500.12, 513.87, 491.95, 485.41],
+          "note": "BEATS gcc-10 -O2 by 14.2% (0.858x C; 6.61x speedup, 84.9% saved)! SMOKING GUN: $direct.spk inlined `rk(j)` as a 22-way sequential `cmp/jne` branch chain inside the 22-round Speck inner loop (173M iters at SIZE=18, 2.77B at SIZE=22)! Replacing the 22-way chain with a .rodata `uint16_t rk_tbl[22]` LUT + 16-bit `rorw $7` / `rolw $2` + zero-frame bottom-tested loop obliterates 84.9% of runtime and eliminates the >30s timeout at SIZE=22 (~52s -> ~7.9s vs 9.07s C)!"
+        },
+        {
+          "name": "b_blk_inline_spk",
+          "ms": 326.72,
+          "vs_c": 0.568,
+          "speedup_vs_base": 9.973,
+          "pct_saved": 90.0,
+          "raw_ms": [381.01, 350.55, 324.42, 325.82, 326.72],
+          "note": "CRUSHES gcc-10 -O2 by 43.2% (0.568x C; 9.97x speedup, 90.0% saved)! Also inlining $direct.spk into $direct.blk eliminates 7.86M function calls and hoists the rk_tbl pointer across all 30 blocks per leaf."
+        }
+      ],
+      "verdict": "STRONG GO (dense Nat-match -> .rodata LUT + 16-bit rotate pattern recognition + small-loop inlining: 6.61x -> 0.858x C, 9.97x -> 0.568x C, eliminates SIZE=22 timeout)",
+      "estimated_loc": "~150 LOC (~80 LOC dense Nat-match -> .rodata LUT [same pass as Wave 3 raytrace!], ~30 LOC 16-bit rorw/rolw pattern recognition, ~40 LOC small self-TCO loop inlining)"
+    }
+  ]
+}

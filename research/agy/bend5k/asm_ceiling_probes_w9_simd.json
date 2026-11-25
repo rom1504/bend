@@ -1,0 +1,199 @@
+{
+  "schema": "agy.bend5k.asm_ceiling_probes.w9_simd",
+  "host_pin": "taskset -c 7",
+  "cpu_capabilities": {
+    "model": "Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz (Ivy Bridge, family 6 model 58)",
+    "sse2": true,
+    "ssse3": true,
+    "sse4_1": true,
+    "sse4_2": true,
+    "avx": true,
+    "avx2": false,
+    "fma": false,
+    "summary": "Supports 128-bit SSE2/SSE4.1 (4-wide f32 and 4-wide u32/i32) AND 256-bit AVX1 floating-point (8-wide f32: vaddps/vsubps/vmulps/vdivps/vsqrtps/vcmpps/vblendvps). Does NOT support 256-bit integer AVX2 or FMA."
+  },
+  "compiler_baseline": "selfhost/build/agy/bend5k/bend5k_o2 -O2 (Proven-11)",
+  "c_baseline": "gcc-10 -O2 -ffp-contract=off (direct paired runs on CPU 7, 1 thread; gcc-10 -O2 does not auto-vectorize by default)",
+  "measurement_note": "Every SIMD variant patches only the hot loop symbol inside the unmodified bend5k_o2 -O2 binary (same Bend5k runtime, same +RTS --threads 1 --gpu off -RTS flags) via intra-module call redirection. All timings are 5-run medians on CPU 7 with exact bit-identical stdout checksums verified against gcc-10 -O2.",
+  "probes": [
+    {
+      "id": "1",
+      "benchmark": "bench/runtime/nbody/main.bend (scaled SY=14n, ST=300n; 131,072 3-body systems x 300 symplectic Euler steps)",
+      "checksum": "1155112709",
+      "baseline_ms": 1256.86,
+      "c_ms": 1303.1,
+      "baseline_vs_c": 0.965,
+      "raw_baseline_ms": [1259.86, 1257.32, 1256.86, 1255.06, 1255.42],
+      "raw_c_ms": [1306.89, 1303.1, 1301.93, 1302.1, 1309.65],
+      "variants": [
+        {
+          "name": "a_sse2_4wide_chunk",
+          "ms": 333.56,
+          "vs_c": 0.256,
+          "speedup_vs_base": 3.768,
+          "pct_saved": 73.5,
+          "raw_ms": [333.39, 332.75, 338.2, 333.56, 336.84],
+          "note": "CRUSHES gcc-10 -O2 BY 3.91x (0.256x C, 3.768x speedup vs scalar bend5k)! Replaces $direct.chunk (8 independent systems per fork leaf) with 2 batches of 4-wide SSE2 (addps/subps/mulps/sqrtps/divps) across 4 systems simultaneously, then tail-calls $direct.chunk(j=0) for exact Bend5k Hl{} heap return. Because scalar nbody is 100% latency/throughput-bound on sqrtss+divss, 4-wide SSE2 achieves near-ideal 3.77x scaling with bit-identical IEEE-754 f32 results."
+        },
+        {
+          "name": "b_avx1_8wide_chunk",
+          "ms": 239.52,
+          "vs_c": 0.184,
+          "speedup_vs_base": 5.247,
+          "pct_saved": 80.9,
+          "raw_ms": [240.5, 239.52, 239.33, 239.08, 246.4],
+          "note": "5.44x FASTER THAN gcc-10 -O2 (0.184x C, 5.247x speedup vs scalar bend5k)! Runs ALL 8 systems of $direct.chunk in a single 8-wide 256-bit AVX1 pass (vaddps/vsubps/vmulps/vsqrtps/vdivps; valid on Ivy Bridge since AVX1 supports 256-bit FP!). Pure 1-core FP SIMD ceiling."
+        }
+      ],
+      "verdict": "STRONG GO (4-wide SSE2 hits 0.256x C [3.91x faster than C] using only 5 packed FP ops that elf.bend already encodes with a 0xF3 drop; optional 8-wide AVX1 VEX hits 0.184x C [5.44x faster than C]!)",
+      "estimated_loc": "~95 LOC (~10 LOC elf.bend packed addps/subps/mulps/divps/sqrtps + movups, ~85 LOC fork-leaf V4 kernel cloning for counted leaf loops like chunk(8n))"
+    },
+    {
+      "id": "2",
+      "benchmark": "bench/runtime/kmeans/main.bend (scaled SIZE=13n; 64 restarts x 20 rounds x 8,192 points x K=8 centroids)",
+      "checksum": "1054846867",
+      "baseline_ms": 580.46,
+      "c_ms": 354.16,
+      "baseline_vs_c": 1.639,
+      "raw_baseline_ms": [600.01, 608.28, 575.71, 580.46, 577.46],
+      "raw_c_ms": [369.0, 366.35, 353.15, 353.32, 354.16],
+      "variants": [
+        {
+          "name": "a_sse2_k8_centroids_pmaddwd",
+          "ms": 196.28,
+          "vs_c": 0.554,
+          "speedup_vs_base": 2.957,
+          "pct_saved": 66.2,
+          "raw_ms": [185.52, 190.95, 199.77, 196.28, 203.05],
+          "note": "PURE SSE2 BEATS gcc-10 -O2 BY 1.80x (0.554x C, 2.957x speedup vs scalar bend5k) while KEEPING Bend5k's exact unmodified 15-node St tree + szip merge! Packs c0..c3 and c4..c7 (already (cy<<16)|cx = 8x i16!) into two XMM regs; per point, psubw + pmaddwd computes dx^2+dy^2 for 4 centroids in 2 pure SSE2 insns (|dx|,|dy|<=1023, exact signed 16-bit), followed by pslld/por/pcmpgtd/pshufd argmin and indexed sx/sy/sn update."
+        },
+        {
+          "name": "b_sse41_k8_plus_simd_prng",
+          "ms": 191.15,
+          "vs_c": 0.54,
+          "speedup_vs_base": 3.037,
+          "pct_saved": 67.1,
+          "raw_ms": [193.8, 191.16, 190.0, 191.15, 191.15],
+          "note": "Adds SSE4.1 pminud + 4-wide SIMD PRNG (pmulld/pslld/psrld/pxor) inside $direct.chunk while still materializing Bend5k's St tree per 64-pt chunk (163,840 chunks x 15 St nodes + szip merges = ~115 ms of tree alloc/merge overhead remaining)."
+        },
+        {
+          "name": "c_sse41_k8_plus_flat_pfold",
+          "ms": 75.5,
+          "vs_c": 0.214,
+          "speedup_vs_base": 7.688,
+          "pct_saved": 87.0,
+          "raw_ms": [75.38, 75.79, 75.58, 75.5, 74.93],
+          "note": "CRUSHES gcc-10 -O2 BY 4.68x (0.214x C against paired 353.37 ms C run [raw 356.3, 350.4, 354.12, 349.74, 353.37]; 7.688x speedup vs scalar bend5k)! Deforesting pfold's recursive szip tree into a flat 24-scalar accumulator loop + our K=8 SSE2/SSE4.1 centroid distance kernel eliminates 99.6% of St heap allocations (1 St tree per Lloyd round instead of 255) and hits 75.50 ms!"
+        }
+      ],
+      "verdict": "STRONG GO (pure SSE2 K=8 centroids alone hits 0.554x C [2.96x vs base]; combining with pfold tree-deforestation hits 0.214x C [4.68x faster than C, 7.69x vs base]!)",
+      "estimated_loc": "~110 LOC (~30 LOC elf.bend SSE2/SSE4.1 integer ops [psubw/pmaddwd/paddd/pslld/por/pcmpgtd/pshufd/pminud/pmulld], ~80 LOC SLP K-way horizontal distance-min vectorization + indexed bucket accum)"
+    },
+    {
+      "id": "3",
+      "benchmark": "bench/runtime/raytrace/main.bend (scaled ROWS=8, WIDTH=1000, DEPTH=4; 256 x 1000 pixels x 4 supersampled sub-rays x up to 5 bounces x 9 spheres)",
+      "checksum": "16855370",
+      "baseline_ms": 499.47,
+      "c_ms": 235.8,
+      "baseline_vs_c": 2.118,
+      "raw_baseline_ms": [499.47, 500.7, 499.04, 500.56, 499.3],
+      "raw_c_ms": [245.93, 235.52, 235.61, 235.8, 237.96],
+      "variants": [
+        {
+          "name": "a_sse2_4wide_spheres",
+          "ms": 152.86,
+          "vs_c": 0.648,
+          "speedup_vs_base": 3.268,
+          "pct_saved": 69.4,
+          "raw_ms": [152.65, 153.22, 152.36, 152.88, 152.86],
+          "note": "4-wide SSE2 across spheres (0..3, 4..7 + scalar 8) in nearest/nearest.t + unboxed trace bounce loop. Beats gcc-10 -O2 by 1.54x (0.648x C), but leaves subray/trace shading (sqrt + 7 divss) scalar and pays horizontal sphere-index extraction on every hit."
+        },
+        {
+          "name": "b_avx1_8wide_spheres",
+          "ms": 149.48,
+          "vs_c": 0.634,
+          "speedup_vs_base": 3.341,
+          "pct_saved": 70.1,
+          "raw_ms": [149.35, 148.55, 149.56, 149.48, 149.96],
+          "note": "8-wide AVX1 across spheres 0..7 in a single vsqrtps + scalar sphere 8. Only 3.4 ms faster than 4-wide spheres because scalar shading + horizontal extraction dominate once nearest is vectorized."
+        },
+        {
+          "name": "c_sse2_4wide_subpixels",
+          "ms": 61.14,
+          "vs_c": 0.259,
+          "speedup_vs_base": 8.169,
+          "pct_saved": 87.8,
+          "raw_ms": [61.69, 60.93, 61.14, 61.18, 60.48],
+          "note": "OBLITERATES gcc-10 -O2 BY 3.86x (0.259x C, 8.169x speedup vs scalar bend5k, 2.5x faster than sphere-SIMD)! Vectorizing the 4 supersampled sub-pixels (l1..l4 in pixel) in 4-wide SSE2 runs EVERY sqrt and div (primary ray norm, nearest isect, light distance, normal/light norm, shadow isect) 4-wide with zero horizontal reduction and high spatial coherence across the 2x2 sub-pixel quad! Projects FULL raytrace (ROWS=12, WIDTH=6000) to ~4.9s (vs ~19s C)!"
+        }
+      ],
+      "verdict": "STRONG GO (4-wide SSE2 across the 4 supersampled sub-pixels hits 0.259x C [3.86x faster than C, 8.17x vs base] — strictly dominates sphere-level SIMD [0.648x C] because it vectorizes 100% of subray + trace + nearest + nearest.t under the same fork-leaf V4 batching pass as nbody!)",
+      "estimated_loc": "~90 LOC (reuses nbody's fork-leaf V4 FP cloning + ~25 LOC elf.bend cmpps/andps/andnps/orps/movmskps predicated select & active-lane mask)"
+    },
+    {
+      "id": "4",
+      "benchmark": "bench/runtime/terrain/main.bend (scaled SIZE=13n, EPASS=5n; 8,192 independent 64x64 tiles x [fill + 5 Gauss-Seidel erode sweeps + 64-bin hist])",
+      "checksum": "419010560",
+      "baseline_ms": 1715.49,
+      "c_ms": 991.92,
+      "baseline_vs_c": 1.729,
+      "raw_baseline_ms": [1839.32, 1738.53, 1703.75, 1703.69, 1715.49],
+      "raw_c_ms": [987.87, 1003.92, 991.92, 995.09, 991.18],
+      "variants": [
+        {
+          "name": "a_sse41_intratile_fill_rough",
+          "ms": 689.27,
+          "vs_c": 0.696,
+          "speedup_vs_base": 2.489,
+          "pct_saved": 59.8,
+          "raw_ms": [689.27, 681.16, 801.06, 731.6, 685.17],
+          "note": "Intra-tile 4-wide SSE4.1 (4-wide ground() fill + 4-wide rough PRNG in erode, flat u32[4096] stack tile, scalar Gauss-Seidel erode stencil) hits 689.27 ms vs paired 989.96 ms C (0.696x C). Limited by the 5 Gauss-Seidel erode passes whose h[i] <- h[i-1] horizontal loop-carried dependency prevents intra-row vectorization."
+        },
+        {
+          "name": "b_sse41_4wide_cross_tile_batch",
+          "ms": 243.44,
+          "vs_c": 0.245,
+          "speedup_vs_base": 7.047,
+          "pct_saved": 85.8,
+          "raw_ms": [244.66, 242.93, 242.23, 243.44, 244.4],
+          "note": "CRUSHES gcc-10 -O2 BY 4.07x (0.245x C, 7.047x speedup vs scalar bend5k, 2.83x faster than intra-tile SIMD)! Batching 4 independent fork-tree leaves in batch(d=2) with SoA tile layout (__m128i h[4096]) eliminates the Gauss-Seidel cross-lane dependency completely and vectorizes 100% of fill AND 100% of all 5 erode sweeps in 4-wide SSE4.1 (paddd/psubd/pslld/psrld/pand/pxor/pmulld)! Projects FULL terrain (SIZE=16n) from 13.6s down to ~1.95s (vs 7.87s C)!"
+        }
+      ],
+      "verdict": "STRONG GO (cross-tile 4-wide SSE4.1 fork-leaf batching hits 0.245x C [4.07x faster than C, 7.05x vs base] — same unified fork-leaf V4 batching pass as nbody & raytrace, proving that Bend's fork-tree parallelism maps directly onto 1-core SIMD lanes!)",
+      "estimated_loc": "~65 LOC (reuses the same fork-leaf V4 cloning + SoA stack-array promotion [U32*N] -> [V4U32*N] + shared SSE2/SSE4.1 integer opcodes from kmeans)"
+    }
+  ],
+  "wave13_simd_design": {
+    "core_insight": "ALL FOUR benchmarks break <= 0.26x C (3.86x-5.44x faster than gcc-10 -O2 on 1 core!) via ONE unified Bend4 IR pattern: Fork-Leaf / Uniform-Call 4-Wide SIMD Batching (nbody chunk(8n), raytrace pixel 4x subray, terrain batch(d=2) 4x tile) plus K-way SLP horizontal vectorization for kmeans.",
+    "minimal_elf_bend_opcode_subset": {
+      "already_in_elf_bend": [
+        "movaps (0F 28)", "xorps (0F 57)", "addss/subss/mulss/divss/sqrtss (F3 0F 58/5C/59/5E/51)", "ucomiss (0F 2E)", "movd (66 0F 6E/7E)", "cvtsi2ss/cvttss2si (F3 0F 2A/2C)", "movss load/store"
+      ],
+      "new_sse2_fp_5_plus_6_ops": [
+        "addps (0F 58), subps (0F 5C), mulps (0F 59), divps (0F 5E), sqrtps (0F 51) -- literally omit 0xF3 in elf_emit_xmm_rr!",
+        "movups load/store (0F 10 / 0F 11) -- omit 0xF3/0x66 in elf_emit_xmm_mem",
+        "shufps (0F C6 ib) / pshufd (66 0F 70 ib) -- broadcast/splat & horizontal shuffle",
+        "cmpps (0F C2 ib), andps (0F 54), andnps (0F 55), orps (0F 56), movmskps (0F 50) -- predicated select & active-lane mask for raytrace"
+      ],
+      "new_sse2_sse41_int_10_ops": [
+        "paddd (66 0F FE), psubd (66 0F FA), pand (66 0F DB), por (66 0F EB), pxor (66 0F EF), pandn (66 0F DF), pcmpgtd (66 0F 66)",
+        "pslld imm8 (66 0F 72 /6 ib), psrld imm8 (66 0F 72 /2 ib)",
+        "pmulld (66 0F 38 40, SSE4.1) -- 4-wide u32 multiply for terrain & kmeans PRNG",
+        "optional kmeans fast-path: psubw (66 0F F9), pmaddwd (66 0F F5), pminud (66 0F 38 3B, SSE4.1)"
+      ],
+      "optional_avx1_fp_vex": "2-byte/3-byte VEX (C5/C4, L=1) around existing 58/5C/59/5E/51/10/11 opcodes (~35 LOC) unlocks 8-wide nbody at 0.184x C (5.44x faster than C).",
+      "total_elf_loc": "~55 LOC for full 128-bit SSE2+SSE4.1 (14 distinct opcode forms), +~35 LOC for optional 256-bit AVX1 FP VEX"
+    },
+    "ir_vectorization_pattern": {
+      "name": "Fork-Leaf / Uniform-Call V4 Cloning + SoA Array Promotion (+ K-way SLP)",
+      "trigger": "A counted tail-loop (nbody chunk 8n), 4-way fork-tree node at d==2 (terrain batch), or 4 identical sibling calls (raytrace pixel -> 4x subray) invoking a pure/local-array kernel f(args_k) with zero cross-lane side effects.",
+      "transform": [
+        "1. Clone f -> f_v4 in opt.bend: widen scalar F32/U32 temps to V4F32/V4U32, widen pure scalar ops to packed V4 ops, convert branch diamonds (isect/fmax0/shade/clamp01) to predicated cmpps+andps/andnps/orps selects with active-lane early-out via movmskps.",
+        "2. Promote non-escaping local fixed-size arrays [0 : U32*N] inside f_v4 to SoA [N * V4U32] (16-byte stride), turning Gauss-Seidel/random-index scalar array ops into aligned 16-byte movdqa/movups loads & stores with zero cross-lane conflict (terrain).",
+        "3. In x64.bend/regalloc.bend: reuse the existing 16 XMM register bank (xmm0..xmm15) with 16-byte stack spill slots for V4 values.",
+        "4. For kmeans: SLP-pack K=8 identical dst(xx, yy, c_k, k) calls in a min2 tree into 2x 4-wide SSE2 vectors (psubw+pmaddwd+min-reduce) + indexed accumulator."
+      ],
+      "total_estimated_loc": "~250 LOC (~55 LOC elf.bend + ~65 LOC x64.bend/regalloc.bend + ~130 LOC opt.bend)"
+    }
+  }
+}

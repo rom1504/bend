@@ -1,0 +1,183 @@
+{
+  "schema": "agy.bend5k.asm_ceiling_probes.v5",
+  "host_pin": "taskset -c 7",
+  "compiler_baseline": "selfhost/build/agy/bend5k/bend5k_o2 -O2",
+  "c_baseline": "gcc-10 -O2",
+  "probes": [
+    {
+      "id": "1",
+      "benchmark": "editdist (tuned: n=2, seed=0; research/agy/wave4_bench/inputs/tuned/kernels/editdist.bend + driver.bend; reps=4096, warm=16 for both b5k and C, normalized to fixed_reps=240)",
+      "checksum": ["2065873279", "4013005126", "2763352576"],
+      "baseline_raw_ms": 447.0,
+      "baseline_norm240_ms": 26.191,
+      "c_raw_ms": 174.0,
+      "c_norm240_ms": 10.195,
+      "baseline_vs_c": 2.569,
+      "raw_baseline_ms": [445.0, 456.0, 447.0, 449.0, 446.0],
+      "raw_c_ms": [175.0, 174.0, 175.0, 172.0, 173.0],
+      "variants": [
+        {
+          "name": "a_columns_clean_loop",
+          "raw_ms": 364.0,
+          "norm240_ms": 21.328,
+          "vs_c": 2.092,
+          "speedup_vs_base": 1.228,
+          "pct_saved": 18.6,
+          "raw_samples_ms": [365.0, 363.0, 365.0, 364.0, 363.0],
+          "note": "Patched $direct.columns ONLY (keeping the 4-way branch for symbol(s&3, m)): eliminate 4 inner-loop [rbp-] spills (-0x78 left, -0x88 neg, -0x90 mh>>31, -0x98 diff+1), eliminate the 6-op (%rsp) backedge parallel-copy bounce, hoist both loop-invariant `test %r10` array null-checks out of the loop, emit 1-insn `notl` instead of `mov $0xffffffff; xor`, and use bottom-tested loop (`sub $1; jne`). Saves 18.6% (1.23x)."
+        },
+        {
+          "name": "b_columns_plus_indexed_mask",
+          "raw_ms": 301.0,
+          "norm240_ms": 17.637,
+          "vs_c": 1.730,
+          "speedup_vs_base": 1.485,
+          "pct_saved": 32.7,
+          "raw_samples_ms": [301.0, 301.0, 301.0, 301.0, 300.0],
+          "note": "Also pack the 4 loop-invariant Masks4 fields into a contiguous 4-word stack slot before the loop and replace the 4-way branch chain for `symbol(s & 3, m)` with a single indexed load `mov -0xc0(%rbp,%rax,8), %edi` (matching gcc-10's `mov -0x58(%rsp,%rdx,4), %eax`). Alone saves another 63 ms -> 32.7% total (1.485x -> 1.730x C)."
+        },
+        {
+          "name": "c_build_masks_inplace",
+          "raw_ms": 339.0,
+          "norm240_ms": 19.863,
+          "vs_c": 1.948,
+          "speedup_vs_base": 1.319,
+          "pct_saved": 24.2,
+          "raw_samples_ms": [347.0, 340.0, 337.0, 339.0, 339.0],
+          "note": "SMOKING GUN #2: Patched $direct.build_masks ONLY (972 lines of asm!): previously freed and re-allocated a 4-word heap `Masks4{a,b,c,d}` ctor on EVERY bit (32 iters x 9 stripes x 4 pairs x 4096 reps = 4.7M wasted heap Masks4 alloc/frees + p111_program/p111_cid_hot checks!). Mutating the unique Masks4 cell in place with a single indexed `or %r10, (%rdi,%rax,8)` inside a 15-insn bottom-tested loop saves 24.2% (1.32x) all by itself!"
+        },
+        {
+          "name": "bc_columns_plus_build_masks",
+          "raw_ms": 202.0,
+          "norm240_ms": 11.836,
+          "vs_c": 1.161,
+          "speedup_vs_base": 2.213,
+          "pct_saved": 54.8,
+          "raw_samples_ms": [202.0, 201.0, 200.0, 202.0, 202.0],
+          "note": "Combined clean $direct.columns + indexed mask load + in-place $direct.build_masks cuts 54.8% of total runtime (2.21x speedup -> 1.161x C!). Remaining 28 ms gap vs C's 174 ms is Bend's 2 KiB heap-allocated 256-slot U32 Array per pair vs C's 256 B stack uint8_t[256] + $direct.stripes Tuple/Masks4 plumbing."
+        }
+      ],
+      "verdict": "STRONG GO (Perceus IReuse / in-place field update for unique single-ctor records in TCO loops + contiguous-slot indexed projection for uniform-field records + clean spill-free/hoisted-nullcheck/register-swap TCO backedge: 2.21x -> 1.161x C)",
+      "estimated_loc": "~160 LOC (~70 LOC Perceus IReuse / in-place field update in TCO loops, ~40 LOC uniform-field record indexed load/update, ~50 LOC TCO loop spill/backedge-bounce/nullcheck-hoist + notl)"
+    },
+    {
+      "id": "2",
+      "benchmark": "bench/runtime/tree-radix/main.bend (scaled DEPTH=20; 2^20=1048576 24-bit keys radix-trie sort + verify)",
+      "checksum": "2606881350",
+      "baseline_ms": 2423.27,
+      "c_ms": 1135.93,
+      "baseline_vs_c": 2.133,
+      "raw_baseline_ms": [2424.0, 2423.27, 2420.89],
+      "raw_c_ms": [1131.06, 1135.93, 1149.56],
+      "variants": [
+        {
+          "name": "a_merge_dispatch_ireuse",
+          "ms": 1364.80,
+          "vs_c": 1.201,
+          "speedup_vs_base": 1.776,
+          "pct_saved": 43.7,
+          "raw_ms": [1367.58, 1360.25, 1364.8],
+          "note": "Patched $direct.merge ONLY (shrunk from 2835 B to 265 B!): (1) replace 9-way sequential Cartesian `(a_tag, b_tag)` compare chain (which put hot `Mnode/Mnode` LAST after 12 branches!) with a 3-way nested decision tree checking `Mnode` first, (2) Perceus in-place `IReuse` of `a` in `Mnode/Mnode` (free `b` to free[1], overwrite `a`'s 2 fields in place, ZERO Mnode allocations and ZERO p111_program/p111_cid_hot checks!). Alone cuts 43.7% (1.78x -> 1.201x C)."
+        },
+        {
+          "name": "ab_merge_plus_branchless_radix",
+          "ms": 1339.70,
+          "vs_c": 1.179,
+          "speedup_vs_base": 1.809,
+          "pct_saved": 44.7,
+          "raw_ms": [1342.01, 1284.97, 1339.7],
+          "note": "Also patched $direct.radix (214 B vs 972 B): replace random-bit branch (`n & k`) duplicating two Mnode alloc blocks with branchless `cmovne` swap of `(r, Free{})`, hoist tls/heap/tags, drop p111_program/p111_cid_hot checks, and bottom-test the 24-iter loop. Brings tree-radix to 1.179x C (1.81x speedup, 44.7% saved; 1278-1285 ms on clean runs vs 1136 ms C)."
+        }
+      ],
+      "verdict": "STRONG GO (Perceus in-place IReuse on matched unique CTORs + nested decision-tree match dispatch + branchless cmov for 2-arm ctor-field swap: 1.81x -> 1.179x C)",
+      "estimated_loc": "~180 LOC (~100 LOC Perceus IReuse [shared with tree-bitonic & tree-matmul], ~50 LOC nested decision-tree multi-scrutinee match, ~30 LOC branchless cmov swap_bits)"
+    },
+    {
+      "id": "3",
+      "benchmark": "bench/runtime/tree-matmul/main.bend (scaled size=7, blog=9, nchain=32; 32 rounds of 128x128 quad-tree block matmul + Freivalds verify)",
+      "checksum": "47427472",
+      "baseline_ms": 4066.42,
+      "c_ms": 674.70,
+      "baseline_vs_c": 6.027,
+      "raw_baseline_ms": [4083.35, 4066.42, 4031.03],
+      "raw_c_ms": [686.02, 666.09, 674.7],
+      "variants": [
+        {
+          "name": "a_mul_borrow_walk",
+          "ms": 3349.18,
+          "vs_c": 4.964,
+          "speedup_vs_base": 1.214,
+          "pct_saved": 17.6,
+          "raw_ms": [3838.64, 3349.18, 3173.22],
+          "note": "SMOKING GUN #1: In $direct.mul(+a, +b), `a` and `b` are shared (`+`), so `(a0|a1|a2|a3) >> 57 != 0` is 100% ALWAYS TRUE and EVERY `Qd` match fell back to out-of-line `callq p111_rt_take` followed by 8 more `keep` RC++ ops! Replacing $direct.mul with a read-only borrow-walk `mul_borrow` (0 p111_rt_take, 0 keep/RC++ inside recursion, dropping root `a` and `b` once via p111_rt_sink at top-level exit) saves 17.6% (1.21x) while remaining 100% ABI-compliant."
+        },
+        {
+          "name": "ab_mul_borrow_plus_add_ireuse",
+          "ms": 2139.33,
+          "vs_c": 3.171,
+          "speedup_vs_base": 1.901,
+          "pct_saved": 47.4,
+          "raw_ms": [2139.33, 2066.12, 2218.29],
+          "note": "Also patched $direct.add (67.1M Lf/Lf + 9.6M Qd/Qd calls!) with Perceus in-place `IReuse` (overwrite `a`'s Lf/Qd cell in place and free `b` directly to free[0]/free[2], handling both unique and RC=1 boxed nodes). Cuts 47.4% of total runtime (1.90x speedup -> 3.17x C; eliminates the >30s timeout at nchain=384: ~48.8s -> ~25.7s!). CRITICAL REMAINING GAP DIAGNOSED: `p111_cid_hot[0x28]` (for Qd) forces `p111_rt_ctor` to eagerly allocate 4 separate 1-word RC boxes for every Qd's 4 children even on ephemeral intermediate Qd trees immediately consumed by `add` (~38.4M wasted RC-box alloc/free pairs!)."
+        }
+      ],
+      "verdict": "STRONG GO (read-only borrow-walk on shared recursive Data match + Perceus IReuse on unique/RC=1 CTORs: 1.90x -> 3.17x C, eliminates >30s timeout; lazy RC-boxing for ephemeral Qd trees would close most of the remaining gap)",
+      "estimated_loc": "~180 LOC (~80 LOC read-only borrow-walk [shared with symreg & hashmap], ~100 LOC Perceus IReuse [shared with tree-radix & tree-bitonic])"
+    },
+    {
+      "id": "4",
+      "benchmark": "bench/runtime/symreg/main.bend (scaled SIZE=15, PTS=110; 32768 candidate depth-5 ASTs evaluated over 110 points = 227M eval calls)",
+      "checksum": "295732874",
+      "baseline_ms": 2854.72,
+      "c_ms": 1670.94,
+      "baseline_vs_c": 1.708,
+      "raw_baseline_ms": [2854.72, 2863.09, 2838.21],
+      "raw_c_ms": [1670.94, 1679.8, 1662.47],
+      "variants": [
+        {
+          "name": "a_eval_borrow_walk",
+          "ms": 733.23,
+          "vs_c": 0.439,
+          "speedup_vs_base": 3.893,
+          "pct_saved": 74.3,
+          "raw_ms": [732.55, 735.96, 733.23],
+          "note": "CRUSHES gcc-10 -O2 BY 2.28x (0.439x C; 3.89x speedup, 74.3% saved)! SMOKING GUN: $direct.eval(e, +x) evaluates a shared (`+e`) depth-5 AST 110 times per candidate (227M calls). Because `e` is shared and `(a|b) >> 57 != 0`, 100% of Add/Sub/Mul/Xor nodes fell back to out-of-line `callq p111_rt_take`! Replacing $direct.eval with a 280-byte read-only `eval_borrow(heap, e, x)` (0 p111_rt_take, 0 RC++/RC-- inside recursion, dropping root `e` once at top-level exit, sharing the binary-op deref+2-call sequence across Add/Sub/Mul/Xor, zero frame pointer) obliterates 74.3% of runtime!"
+        }
+      ],
+      "verdict": "STRONG GO (read-only borrow-walk on recursive Data match + shared binary-op tail merging + zero-frame leaf fast-path: 3.89x -> 0.439x C, beats gcc-10 -O2 by 2.28x!)",
+      "estimated_loc": "~110 LOC (~80 LOC read-only borrow-walk [same pass as tree-matmul & hashmap!], ~30 LOC common binary-op tail sharing & leaf zero-frame)"
+    },
+    {
+      "id": "5",
+      "benchmark": "bench/runtime/queens/main.bend (scaled DEPTH=17, SIZE=17, LIMIT=1000; N-queens bitmask backtracking search)",
+      "checksum": "3179269812",
+      "baseline_ms": 632.22,
+      "c_ms": 208.57,
+      "baseline_vs_c": 3.031,
+      "raw_baseline_ms": [632.42, 632.22, 631.5],
+      "raw_c_ms": [216.58, 208.57, 208.23],
+      "variants": [
+        {
+          "name": "a_solve_decision_tree_unspill",
+          "ms": 358.78,
+          "vs_c": 1.720,
+          "speedup_vs_base": 1.762,
+          "pct_saved": 43.3,
+          "raw_ms": [349.24, 349.14, 358.78, 359.58, 364.39],
+          "note": "Patched $direct.solve keeping the EXACT 14-arg Bend ABI & recursion structure: (1) zero-frame leaf early-out for `z == True || f == 0` (50%+ of calls!), (2) replace 8-way repeated-test Cartesian match with a clean decision tree (test z once, e once), (3) shrink 552-byte frame (`sub $0x228, %rsp`) + 170 [rbp-] spills to a compact 64-byte frame keeping cols/ld/rd/full/sib in registers, (4) emit `neg` instead of `xor; sub; mov %edi,%edi` and unpack returned `(sols, nodes)` directly without round-tripping `ret` tag. Alone saves 43.3% (1.76x -> 1.72x C)!"
+        },
+        {
+          "name": "b_solve_worker_wrapper_reg_abi",
+          "ms": 198.80,
+          "vs_c": 0.953,
+          "speedup_vs_base": 3.180,
+          "pct_saved": 68.6,
+          "raw_ms": [197.99, 199.13, 205.06, 198.0, 198.8],
+          "note": "BEATS gcc-10 -O2 BY 4.7% (0.953x C; 3.18x speedup, 68.6% saved)! Worker/wrapper specialization for self-recursive functions: drop unused `ctx`, constant `ret=Stat0`, dead fuel `f`, and precomputed booleans `z`/`e` from the internal recursive ABI -> 5-register `solve_worker(cand, cols, ld, rd, full)` returning `(sols, nodes)` in `(%eax, %edx)` with zero stack args and skipping recursive call when `cc == 0`!"
+        }
+      ],
+      "verdict": "STRONG GO (nested decision-tree match + zero-frame leaf early-out + compact regalloc + neg: 1.76x -> 1.72x C; + worker/wrapper dead/redundant-param elimination for self-recursive defs: 3.18x -> 0.953x C, beats gcc-10 -O2!)",
+      "estimated_loc": "~180 LOC (~50 LOC nested decision-tree match [shared with tree-radix], ~40 LOC zero-frame leaf early-out + neg, ~90 LOC self-recursive worker/wrapper dead-param & stack-arg elim)"
+    }
+  ]
+}

@@ -1086,6 +1086,10 @@ def opt_merge_once(+blks: List<&2, IrBlock>) -> List<&2, IrBlock>:
   preds = opt_count_preds(blks, um_set(UM0{}, 0, 2))
   bmap = opt_index_blks(blks, RVEmpty{})
   opt_merge_go(bmap, preds, blks, MergeSt{UM0{}, UM0{}, Nil{}})
+def opt_merge_n(k: Nat, blks: List<&2, IrBlock>) -> List<&2, IrBlock>:
+  match k:
+    case 0n: blks
+    case 1n+p: opt_merge_n(p, opt_merge_once(blks))
 def opt_stc_args(+orig: U32Map, args: List<&2, U32>, +idx: U32) -> List<&2, U32>:
   match args:
     case Nil{}: Nil{}
@@ -1126,7 +1130,7 @@ def opt_fwd_blks(+em: RaVec<Maybe<&2, IrTerm>>, blks: List<&2, IrBlock>) -> List
 def opt_pass_cp_dce(do_merge: Bool, f: IrFn) -> IrFn:
   match do_merge f:
     case True{} IrFn{+fid, nm, +ar, nregs, esc, eff, is_m, blks}:
-      +b0 = opt_merge_once(opt_merge_once(opt_elim_unreach(blks)))
+      +b0 = opt_merge_n(5n, opt_elim_unreach(blks))
       +b1 = opt_elim_unreach(opt_fwd_blks(opt_empty_blks(b0, RVEmpty{}), b0))
       +defc = opt_blks_defs(b1, UM0{})
       +b1b = opt_stc_blks(fid, opt_ip_orig_blks(defc, ar, b1, opt_ip_init_orig(U32.to_nat(ar), 0, UM0{})), b1)
@@ -1928,7 +1932,7 @@ def opt_ww_pass(+fns: List<&2, IrFn>) -> List<&2, IrFn>:
   +cand = opt_ww_cand_fns(bad_fn, fns, UM0{})
   obs = opt_ww_obs_fns(opt_fn_reach(fns), cand, fns, UM0{})
   opt_ww_apply(opt_ww_build_plan(bad_fn, cand, obs, fns, WwPlan{UM0{}, UM0{}, UM0{}, False{}}), fns)
-# Pass F — Branchless sel(0/1,0,K) Fold, Shared-Guard Diamond Fusion & Pure-Op Sinking
+# Pass F — Branchless sel(0/1,0,K) Fold, abs-sq Fold, b2u-is_zero Invert, Diamond Fusion & Pure-Op Sinking
 def opt_b01_ops(+defc: U32Map, +ar: U32, ops: List<&2, IrOp>, +m: U32Map) -> U32Map:
   match ops:
     case Nil{}: m
@@ -1938,33 +1942,67 @@ def opt_b01_blks(+defc: U32Map, +ar: U32, blks: List<&2, IrBlock>, m: U32Map) ->
   match blks:
     case Nil{}: m
     case Con{IrBlock{_, ops, _}, t}: opt_b01_blks(defc, ar, t, opt_b01_ops(defc, ar, ops, m))
+type SelAux is Data:
+  SelAux{zinv: U32Map, suba: U32Map, subb: U32Map, sq: U32Map}
+def opt_sel_aux_ops(+defc: U32Map, +uses: U32Map, +ar: U32, +b01: U32Map, +gh: U32Map, +gv: U32Map, ops: List<&2, IrOp>, st: SelAux) -> SelAux:
+  match ops st:
+    case Nil{} _: st
+    case Con{ICmp{+d, 0, +a, +b}, t} SelAux{+zi, sa, sb, sq}:
+      +za = Bool.and(U32.is_ne(um_get(gh, b), 0), Bool.and(U32.is_zero(um_get(gv, b)), U32.is_ne(um_get(b01, a), 0)))
+      +zb = Bool.and(U32.is_ne(um_get(gh, a), 0), Bool.and(U32.is_zero(um_get(gv, a)), U32.is_ne(um_get(b01, b), 0)))
+      +nv = Bool.pick(U32, za, U32.add(a, 1), Bool.pick(U32, zb, U32.add(b, 1), 0))
+      opt_sel_aux_ops(defc, uses, ar, b01, gh, gv, t, SelAux{Bool.pick(U32Map, U32.is_ne(nv, 0), um_set(zi, d, nv), zi), sa, sb, sq})
+    case Con{IBin{+d, 1, +a, +b}, t} SelAux{zi, +sa, +sb, sq}:
+      +ok = Bool.and(U32.is_ge(d, ar), Bool.and(U32.is_eq(um_get(defc, d), 1), Bool.and(opt_cp_can_prop(defc, ar, a), opt_cp_can_prop(defc, ar, b))))
+      opt_sel_aux_ops(defc, uses, ar, b01, gh, gv, t, SelAux{zi, Bool.pick(U32Map, ok, um_set(sa, d, U32.add(a, 1)), sa), Bool.pick(U32Map, ok, um_set(sb, d, U32.add(b, 1)), sb), sq})
+    case Con{IBin{_, 2, +a, +b}, t} SelAux{zi, sa, sb, +sq}:
+      +ok = Bool.and(U32.is_eq(a, b), U32.is_eq(um_get(uses, a), 2))
+      opt_sel_aux_ops(defc, uses, ar, b01, gh, gv, t, SelAux{zi, sa, sb, Bool.pick(U32Map, ok, um_set(sq, a, 1), sq)})
+    case Con{_, t} _: opt_sel_aux_ops(defc, uses, ar, b01, gh, gv, t, st)
+def opt_sel_aux_blks(+defc: U32Map, +uses: U32Map, +ar: U32, +b01: U32Map, +gh: U32Map, +gv: U32Map, blks: List<&2, IrBlock>, st: SelAux) -> SelAux:
+  match blks:
+    case Nil{}: st
+    case Con{IrBlock{_, ops, _}, t}: opt_sel_aux_blks(defc, uses, ar, b01, gh, gv, t, opt_sel_aux_ops(defc, uses, ar, b01, gh, gv, ops, st))
 type SelArm is Data:
   SANone{}
   SASome{d: U32, v: U32, j: U32}
+  SAVar{d: U32, s: U32, j: U32}
 def opt_sel_arm(mb: Maybe<&2, IrBlock>, +gh: U32Map, +gv: U32Map) -> SelArm:
   match mb:
     case Some{IrBlock{_, Con{IConst{d, v}, Nil{}}, TJmp{j}}}: SASome{d, v, j}
-    case Some{IrBlock{_, Con{ICopy{d, +s}, Nil{}}, TJmp{j}}}: Bool.pick(SelArm, U32.is_ne(um_get(gh, s), 0), SASome{d, um_get(gv, s), j}, SANone{})
+    case Some{IrBlock{_, Con{ICopy{+d, +s}, Nil{}}, TJmp{+j}}}: Bool.pick(SelArm, U32.is_ne(um_get(gh, s), 0), SASome{d, um_get(gv, s), j}, SAVar{d, s, j})
     case _: SANone{}
 def opt_is_sar_mask(+v: U32) -> Bool:
   +inv = U32.xor(v, 4294967295)
   Bool.and(U32.is_ge(v, 2147483648), Bool.and(U32.is_lt(v, 4294967295), U32.is_zero(U32.and(inv, U32.add(inv, 1)))))
-def opt_sel_fold(at: SelArm, af: SelArm, +id: U32, +ops: List<&2, IrOp>, +c: U32, tb: U32, fb: U32, +nr: U32, +acc: List<&2, IrBlock>) -> CfBlksRes:
+def opt_sel_fold(at: SelArm, af: SelArm, +sa: U32Map, +sb: U32Map, +sq: U32Map, +id: U32, +ops: List<&2, IrOp>, +c: U32, tb: U32, fb: U32, +nr: U32, +acc: List<&2, IrBlock>) -> CfBlksRes:
   match at af:
     case SASome{+dt, +vt, +jt} SASome{df, +vf, jf}:
       +same = Bool.and(U32.is_eq(dt, df), U32.is_eq(jt, jf))
       Bool.pick(CfBlksRes, Bool.and(same, Bool.and(U32.is_zero(vt), Bool.and(U32.is_ne(vf, 0), Bool.not(opt_is_sar_mask(vf))))), CfBlksRes{Con{IrBlock{id, b5k_list_app(IrOp, ops, [IConst{nr, 1}, IBin{U32.add(nr, 1), 1, c, nr}, IConst{U32.add(nr, 2), vf}, IBin{dt, 5, U32.add(nr, 1), U32.add(nr, 2)}]), TJmp{jt}}, acc}, U32.add(nr, 3)}, Bool.pick(CfBlksRes, Bool.and(same, Bool.and(U32.is_zero(vf), U32.is_ne(vt, 0))), CfBlksRes{Con{IrBlock{id, b5k_list_app(IrOp, ops, Bool.pick(List<&2, IrOp>, U32.is_eq(vt, 1), [ICopy{dt, c}], [IUn{nr, 0, c}, IConst{U32.add(nr, 1), vt}, IBin{dt, 5, nr, U32.add(nr, 1)}])), TJmp{jt}}, acc}, Bool.pick(U32, U32.is_eq(vt, 1), nr, U32.add(nr, 2))}, CfBlksRes{Con{IrBlock{id, ops, TBr{c, tb, fb}}, acc}, nr}))
+    case SAVar{+dt, +st, +jt} SAVar{df, +sf, jf}:
+      +neg_sq = Bool.and(U32.is_eq(dt, df), Bool.and(U32.is_eq(jt, jf), Bool.and(U32.is_ne(um_get(sq, dt), 0), Bool.and(U32.is_ne(um_get(sa, st), 0), Bool.and(U32.is_eq(um_get(sa, st), um_get(sb, sf)), U32.is_eq(um_get(sb, st), um_get(sa, sf)))))))
+      Bool.pick(CfBlksRes, neg_sq, CfBlksRes{Con{IrBlock{id, b5k_list_app(IrOp, ops, [ICopy{dt, st}]), TJmp{jt}}, acc}, nr}, CfBlksRes{Con{IrBlock{id, ops, TBr{c, tb, fb}}, acc}, nr})
     case _ _: CfBlksRes{Con{IrBlock{id, ops, TBr{c, tb, fb}}, acc}, nr}
-def opt_sel_go(+b01: U32Map, +gh: U32Map, +gv: U32Map, +preds: U32Map, +bmap: RaVec<Maybe<&2, IrBlock>>, blks: List<&2, IrBlock>, st: CfBlksRes) -> CfBlksRes:
+def opt_sel_go(+b01: U32Map, +gh: U32Map, +gv: U32Map, +zi: U32Map, +sa: U32Map, +sb: U32Map, +sq: U32Map, +preds: U32Map, +bmap: RaVec<Maybe<&2, IrBlock>>, blks: List<&2, IrBlock>, st: CfBlksRes) -> CfBlksRes:
   match blks st:
     case Nil{} CfBlksRes{acc, nr}: CfBlksRes{b5k_list_rev(IrBlock, acc), nr}
-    case Con{IrBlock{+id, ops, TBr{+c, +tb, +fb}}, t} CfBlksRes{acc, nr}:
+    case Con{IrBlock{+id, ops, TBr{+c0, +tb0, +fb0}}, t} CfBlksRes{acc, nr}:
+      +inv = um_get(zi, c0)
+      +c = Bool.pick(U32, U32.is_ne(inv, 0), U32.sub(inv, 1), c0)
+      +tb = Bool.pick(U32, U32.is_ne(inv, 0), fb0, tb0)
+      +fb = Bool.pick(U32, U32.is_ne(inv, 0), tb0, fb0)
       ok = Bool.and(U32.is_ne(um_get(b01, c), 0), Bool.and(U32.is_lt(tb, 1024), Bool.and(U32.is_lt(fb, 1024), Bool.and(U32.is_ne(tb, fb), Bool.and(U32.is_ne(tb, id), Bool.and(U32.is_ne(fb, id), Bool.and(U32.is_eq(um_get(preds, tb), 1), U32.is_eq(um_get(preds, fb), 1))))))))
-      opt_sel_go(b01, gh, gv, preds, bmap, t, opt_sel_fold(Bool.pick(SelArm, ok, opt_sel_arm(ra_vec_get(Maybe<&2, IrBlock>, 5n, None{}, tb, bmap), gh, gv), SANone{}), opt_sel_arm(ra_vec_get(Maybe<&2, IrBlock>, 5n, None{}, fb, bmap), gh, gv), id, ops, c, tb, fb, nr, acc))
-    case Con{b, t} CfBlksRes{acc, nr}: opt_sel_go(b01, gh, gv, preds, bmap, t, CfBlksRes{Con{b, acc}, nr})
+      opt_sel_go(b01, gh, gv, zi, sa, sb, sq, preds, bmap, t, opt_sel_fold(Bool.pick(SelArm, ok, opt_sel_arm(ra_vec_get(Maybe<&2, IrBlock>, 5n, None{}, tb, bmap), gh, gv), SANone{}), opt_sel_arm(ra_vec_get(Maybe<&2, IrBlock>, 5n, None{}, fb, bmap), gh, gv), sa, sb, sq, id, ops, c, tb, fb, nr, acc))
+    case Con{b, t} CfBlksRes{acc, nr}: opt_sel_go(b01, gh, gv, zi, sa, sb, sq, preds, bmap, t, CfBlksRes{Con{b, acc}, nr})
+def opt_sel_fn_aux(fid: U32, nm: String, ar: U32, nregs: U32, esc: Bool, eff: Bool, is_m: Bool, +blks: List<&2, IrBlock>, +b01: U32Map, +gh: U32Map, +gv: U32Map, aux: SelAux) -> IrFn:
+  match aux:
+    case SelAux{zi, sa, sb, sq}: cf_fn_fin(fid, nm, ar, esc, eff, is_m, opt_sel_go(b01, gh, gv, zi, sa, sb, sq, opt_count_preds(blks, um_set(UM0{}, 0, 2)), opt_index_blks(blks, RVEmpty{}), blks, CfBlksRes{Nil{}, nregs}))
 def opt_sel_fn_gc(fid: U32, nm: String, +ar: U32, nregs: U32, esc: Bool, eff: Bool, is_m: Bool, +blks: List<&2, IrBlock>, +defc: U32Map, gc: CfGConsts) -> IrFn:
   match gc:
-    case CfGConsts{gh, gv}: cf_fn_fin(fid, nm, ar, esc, eff, is_m, opt_sel_go(opt_b01_blks(defc, ar, blks, UM0{}), gh, gv, opt_count_preds(blks, um_set(UM0{}, 0, 2)), opt_index_blks(blks, RVEmpty{}), blks, CfBlksRes{Nil{}, nregs}))
+    case CfGConsts{+gh, +gv}:
+      +b01 = opt_b01_blks(defc, ar, blks, UM0{})
+      opt_sel_fn_aux(fid, nm, ar, nregs, esc, eff, is_m, blks, b01, gh, gv, opt_sel_aux_blks(defc, opt_blks_uses(blks, UM0{}), ar, b01, gh, gv, blks, SelAux{UM0{}, UM0{}, UM0{}, UM0{}}))
 def opt_fns_sel_mask(fns: List<&2, IrFn>) -> List<&2, IrFn>:
   match fns:
     case Nil{}: Nil{}
@@ -2728,7 +2766,8 @@ def b5k_opt_go(small: Bool, +fns: List<&2, IrFn>) -> List<&2, IrFn>:
       +fns4b = opt_fns_mid(opt_inl_all(False{}, 4, opt_collect_self_tc(fns4a, InlBank{UM0{}, RVEmpty{}}), fns4a))
       +fns4 = opt_fns_mid(opt_inl_all(True{}, 4, opt_collect_self_tc(fns4b, InlBank{UM0{}, RVEmpty{}}), fns4b))
       +fns5 = opt_fns_id_arm(opt_fns_sel_mask(b5k_opt_fin(True{}, fns4, opt_collect_ip(True{}, fns4, ret0))))
-      opt_fns_tco_large(opt_fns_reuse(opt_fns_jt_ru(opt_fns_early_exit(opt_fns_fuse_sink(b5k_opt_fin(True{}, fns5, opt_collect_ip(True{}, fns5, ret0)))))))
+      +fns6 = opt_fns_mid(opt_fns_sel_mask(b5k_opt_fin(True{}, fns5, opt_collect_ip(True{}, fns5, ret0))))
+      opt_fns_tco_large(opt_fns_reuse(opt_fns_jt_ru(opt_fns_early_exit(opt_fns_fuse_sink(fns6)))))
     case False{}:
       opt_fns_tco_large(opt_fns_local(False{}, UM0{}, UM0{}, fns))
 def b5k_opt(prog: IrProg) -> IrProg:

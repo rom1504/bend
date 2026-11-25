@@ -1,0 +1,364 @@
+{
+  "meta": {
+    "compiler": "/home/ai/bend2_agy/selfhost/build/agy/bend5k/bend5k_o2",
+    "runtime_o": "/home/ai/bend2_agy/selfhost/build/agy/unified/runtime-agy.o",
+    "gcc": "/usr/bin/x86_64-linux-gnu-gcc-10",
+    "cpu_pin": "taskset -c 7",
+    "total_benchmarks": 17,
+    "compiled": 17,
+    "passed": 9,
+    "geomean_ratio": 2.795,
+    "geomean_ratio_orig8": 2.3749,
+    "orig8_passed": 8
+  },
+  "results": [
+    {
+      "bench": "bfs",
+      "timeout_s": 30.0,
+      "status": "TIMEOUT",
+      "gcc10_ms": 6374.92,
+      "gcc10_runs_ms": [
+        6374.93,
+        6372.88,
+        6374.92
+      ],
+      "gcc10_stdout": "651176970",
+      "b5k_ms": null,
+      "b5k_runs_ms": [
+        30033.01
+      ],
+      "b5k_stdout": "",
+      "ratio": null,
+      "compile_ms": 726.65,
+      "obj_bytes": 225424,
+      "error": "rc=-1 stderr= stdout="
+    },
+    {
+      "bench": "editdist",
+      "timeout_s": 30.0,
+      "status": "TIMEOUT",
+      "gcc10_ms": 6741.92,
+      "gcc10_runs_ms": [
+        6741.92,
+        6742.7,
+        6703.22
+      ],
+      "gcc10_stdout": "2229810577",
+      "b5k_ms": null,
+      "b5k_runs_ms": [
+        30012.47
+      ],
+      "b5k_stdout": "",
+      "ratio": null,
+      "compile_ms": 542.39,
+      "obj_bytes": 146496,
+      "error": "rc=-1 stderr= stdout="
+    },
+    {
+      "bench": "gameoflife",
+      "timeout_s": 30.0,
+      "status": "TIMEOUT",
+      "gcc10_ms": null,
+      "gcc10_runs_ms": [
+        30030.02
+      ],
+      "gcc10_stdout": "",
+      "b5k_ms": null,
+      "b5k_runs_ms": [
+        30026.77
+      ],
+      "b5k_stdout": "",
+      "ratio": null,
+      "compile_ms": 942.4,
+      "obj_bytes": 137760,
+      "error": "rc=-1 stderr= stdout="
+    },
+    {
+      "bench": "hashmap",
+      "timeout_s": 30.0,
+      "status": "OK",
+      "gcc10_ms": 1482.53,
+      "gcc10_runs_ms": [
+        1490.48,
+        1482.53,
+        1456.11
+      ],
+      "gcc10_stdout": "1307803744",
+      "b5k_ms": 7511.6,
+      "b5k_runs_ms": [
+        7681.37,
+        7511.6,
+        7510.4
+      ],
+      "b5k_stdout": "1307803744",
+      "ratio": 5.067,
+      "compile_ms": 584.7,
+      "obj_bytes": 137328,
+      "error": null
+    },
+    {
+      "bench": "histogram",
+      "timeout_s": 30.0,
+      "status": "OK",
+      "gcc10_ms": 9088.11,
+      "gcc10_runs_ms": [
+        9105.88,
+        9068.52,
+        9088.11
+      ],
+      "gcc10_stdout": "122845198",
+      "b5k_ms": 17499.45,
+      "b5k_runs_ms": [
+        17499.45
+      ],
+      "b5k_stdout": "122845198",
+      "ratio": 1.926,
+      "compile_ms": 1138.35,
+      "obj_bytes": 204656,
+      "error": null
+    },
+    {
+      "bench": "kmeans",
+      "timeout_s": 30.0,
+      "status": "TIMEOUT",
+      "gcc10_ms": 22301.91,
+      "gcc10_runs_ms": [
+        22301.91
+      ],
+      "gcc10_stdout": "1616398086",
+      "b5k_ms": null,
+      "b5k_runs_ms": [
+        30029.38
+      ],
+      "b5k_stdout": "",
+      "ratio": null,
+      "compile_ms": 909.43,
+      "obj_bytes": 166720,
+      "error": "rc=-1 stderr= stdout="
+    },
+    {
+      "bench": "lexer",
+      "timeout_s": 30.0,
+      "status": "OK",
+      "gcc10_ms": 2161.55,
+      "gcc10_runs_ms": [
+        2168.34,
+        2157.91,
+        2161.55
+      ],
+      "gcc10_stdout": "2401049475",
+      "b5k_ms": 22239.02,
+      "b5k_runs_ms": [
+        22239.02
+      ],
+      "b5k_stdout": "2401049475",
+      "ratio": 10.288,
+      "compile_ms": 829.57,
+      "obj_bytes": 218512,
+      "error": null
+    },
+    {
+      "bench": "mandelbrot",
+      "timeout_s": 30.0,
+      "status": "OK",
+      "gcc10_ms": 3283.75,
+      "gcc10_runs_ms": [
+        3298.1,
+        3283.75,
+        3276.39
+      ],
+      "gcc10_stdout": "3101455856",
+      "b5k_ms": 11081.07,
+      "b5k_runs_ms": [
+        11081.07
+      ],
+      "b5k_stdout": "3101455856",
+      "ratio": 3.375,
+      "compile_ms": 651.26,
+      "obj_bytes": 134944,
+      "error": null
+    },
+    {
+      "bench": "merkle",
+      "timeout_s": 30.0,
+      "status": "TIMEOUT",
+      "gcc10_ms": 9067.75,
+      "gcc10_runs_ms": [
+        9082.05,
+        9067.75,
+        9064.53
+      ],
+      "gcc10_stdout": "3104235417",
+      "b5k_ms": null,
+      "b5k_runs_ms": [
+        30005.98
+      ],
+      "b5k_stdout": "",
+      "ratio": null,
+      "compile_ms": 648.11,
+      "obj_bytes": 148800,
+      "error": "rc=-1 stderr= stdout="
+    },
+    {
+      "bench": "nbody",
+      "timeout_s": 30.0,
+      "status": "OK",
+      "gcc10_ms": 10420.55,
+      "gcc10_runs_ms": [
+        10420.55
+      ],
+      "gcc10_stdout": "3516450380",
+      "b5k_ms": 10287.29,
+      "b5k_runs_ms": [
+        10287.29
+      ],
+      "b5k_stdout": "3516450380",
+      "ratio": 0.987,
+      "compile_ms": 820.85,
+      "obj_bytes": 134704,
+      "error": null,
+      "note": "gcc-10 compiled with -D__attribute__(x)= because main.c uses Clang __attribute__((musttail))"
+    },
+    {
+      "bench": "queens",
+      "timeout_s": 30.0,
+      "status": "OK",
+      "gcc10_ms": 6558.84,
+      "gcc10_runs_ms": [
+        6564.75,
+        6556.46,
+        6558.84
+      ],
+      "gcc10_stdout": "2063750025",
+      "b5k_ms": 29753.87,
+      "b5k_runs_ms": [
+        29753.87
+      ],
+      "b5k_stdout": "2063750025",
+      "ratio": 4.536,
+      "compile_ms": 809.01,
+      "obj_bytes": 144048,
+      "error": null
+    },
+    {
+      "bench": "raytrace",
+      "timeout_s": 30.0,
+      "status": "TIMEOUT",
+      "gcc10_ms": 18640.75,
+      "gcc10_runs_ms": [
+        18640.75
+      ],
+      "gcc10_stdout": "1924309504",
+      "b5k_ms": null,
+      "b5k_runs_ms": [
+        30031.76
+      ],
+      "b5k_stdout": "",
+      "ratio": null,
+      "compile_ms": 1744.77,
+      "obj_bytes": 150192,
+      "error": "rc=-1 stderr= stdout="
+    },
+    {
+      "bench": "symreg",
+      "timeout_s": 30.0,
+      "status": "OK",
+      "gcc10_ms": 13260.06,
+      "gcc10_runs_ms": [
+        13260.06
+      ],
+      "gcc10_stdout": "2383953211",
+      "b5k_ms": 21983.65,
+      "b5k_runs_ms": [
+        21983.65
+      ],
+      "b5k_stdout": "2383953211",
+      "ratio": 1.658,
+      "compile_ms": 587.49,
+      "obj_bytes": 144880,
+      "error": null
+    },
+    {
+      "bench": "terrain",
+      "timeout_s": 60.0,
+      "status": "OK",
+      "gcc10_ms": 7876.15,
+      "gcc10_runs_ms": [
+        7876.15,
+        7871.49,
+        7876.15
+      ],
+      "gcc10_stdout": "2572468224",
+      "b5k_ms": 15152.58,
+      "b5k_runs_ms": [
+        15152.58
+      ],
+      "b5k_stdout": "2572468224",
+      "ratio": 1.924,
+      "compile_ms": 1065.1,
+      "obj_bytes": 185712,
+      "error": null
+    },
+    {
+      "bench": "tree-bitonic",
+      "timeout_s": 30.0,
+      "status": "TIMEOUT",
+      "gcc10_ms": 19030.73,
+      "gcc10_runs_ms": [
+        19030.73
+      ],
+      "gcc10_stdout": "3787129428",
+      "b5k_ms": null,
+      "b5k_runs_ms": [
+        30032.34
+      ],
+      "b5k_stdout": "",
+      "ratio": null,
+      "compile_ms": 587.06,
+      "obj_bytes": 164896,
+      "error": "rc=-1 stderr= stdout="
+    },
+    {
+      "bench": "tree-matmul",
+      "timeout_s": 30.0,
+      "status": "TIMEOUT",
+      "gcc10_ms": 7844.77,
+      "gcc10_runs_ms": [
+        7981.71,
+        7844.77,
+        7808.76
+      ],
+      "gcc10_stdout": "3797651056",
+      "b5k_ms": null,
+      "b5k_runs_ms": [
+        30005.98
+      ],
+      "b5k_stdout": "",
+      "ratio": null,
+      "compile_ms": 621.63,
+      "obj_bytes": 160688,
+      "error": "rc=-1 stderr= stdout="
+    },
+    {
+      "bench": "tree-radix",
+      "timeout_s": 30.0,
+      "status": "OK",
+      "gcc10_ms": 5348.99,
+      "gcc10_runs_ms": [
+        5507.13,
+        5348.1,
+        5348.99
+      ],
+      "gcc10_stdout": "1998173798",
+      "b5k_ms": 11503.28,
+      "b5k_runs_ms": [
+        11503.28
+      ],
+      "b5k_stdout": "1998173798",
+      "ratio": 2.151,
+      "compile_ms": 529.83,
+      "obj_bytes": 148640,
+      "error": null
+    }
+  ]
+}

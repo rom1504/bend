@@ -1,0 +1,1909 @@
+{
+  "summary": {
+    "compiler": "selfhost/build/agy/bend5k/bend5k_o2",
+    "flags": "-O2",
+    "runtime": "selfhost/build/agy/unified/runtime-agy.o",
+    "cpu_pin": "taskset -c 3",
+    "total_cases": 45,
+    "passed_cases": 45,
+    "failed_cases": 0,
+    "total_ratio_families": 22,
+    "passed_ratio_families": 22,
+    "failed_ratio_families": 0,
+    "total_b5k_sec": 34.41182872624094,
+    "total_c_sec_matched": 10.124791935893183,
+    "total_x86_83k_sec_matched": 15.666571055572039,
+    "fixed_batch_ratio_vs_c": 3.3987689765997366,
+    "fixed_batch_ratio_vs_x86_83k": 2.1965131108891813,
+    "equal_family_geomean_vs_c": 3.121416087007943,
+    "equal_family_case_geomean_vs_c": 3.0776336590062945,
+    "families_over_2x_c": 16,
+    "total_emit_sec": 56.1994,
+    "total_link_sec": 1.7826
+  },
+  "families": [
+    {
+      "family": "bst",
+      "cases": 2,
+      "passed": 2,
+      "failed": 0,
+      "b5k_sec": 5.5154678272329605,
+      "c_sec": 0.41202965847333883,
+      "x86_83k_sec": 1.1510160133157321,
+      "emit_sec": 2.16,
+      "link_sec": 0.0783,
+      "case_ratios_vs_c": [
+        14.303876646403245,
+        12.403852905317851
+      ],
+      "ratio_vs_c": 13.386094213870406,
+      "ratio_vs_x86_83k": 4.791825451102588,
+      "case_geomean_vs_c": 13.320029350485575
+    },
+    {
+      "family": "local-fold",
+      "cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "b5k_sec": 3.5740597599299244,
+      "c_sec": 0.536017114077653,
+      "x86_83k_sec": 0.46214312857240025,
+      "emit_sec": 2.4408,
+      "link_sec": 0.1156,
+      "case_ratios_vs_c": [
+        4.125271445629493,
+        10.871966527196655,
+        4.117605487816369
+      ],
+      "ratio_vs_c": 6.667809042030232,
+      "ratio_vs_x86_83k": 7.733664180987612,
+      "case_geomean_vs_c": 5.694668621553724
+    },
+    {
+      "family": "raytrace",
+      "cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "b5k_sec": 3.3272391957104555,
+      "c_sec": 1.7057595712098008,
+      "x86_83k_sec": 2.65241281512605,
+      "emit_sec": 8.8623,
+      "link_sec": 0.1156,
+      "case_ratios_vs_c": [
+        1.120892018779343,
+        2.1766666666666667,
+        2.138814417634793
+      ],
+      "ratio_vs_c": 1.9505909577576803,
+      "ratio_vs_x86_83k": 1.2544198160769087,
+      "case_geomean_vs_c": 1.734507846346996
+    },
+    {
+      "family": "editdist",
+      "cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "b5k_sec": 3.145758807588076,
+      "c_sec": 0.6069723743458684,
+      "x86_83k_sec": 0.9223208596310231,
+      "emit_sec": 3.243,
+      "link_sec": 0.1198,
+      "case_ratios_vs_c": [
+        5.001742160278746,
+        5.286624203821655,
+        5.261607142857143
+      ],
+      "ratio_vs_c": 5.1827050794169125,
+      "ratio_vs_x86_83k": 3.4106989717727356,
+      "case_geomean_vs_c": 5.18170541749946
+    },
+    {
+      "family": "tree-bitonic",
+      "cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "b5k_sec": 3.0205366970618033,
+      "c_sec": 0.806405747771361,
+      "x86_83k_sec": 1.058151796328493,
+      "emit_sec": 3.4032,
+      "link_sec": 0.1219,
+      "case_ratios_vs_c": [
+        3.811376465479809,
+        3.6395744680851054,
+        3.789142857142857
+      ],
+      "ratio_vs_c": 3.7456785314459484,
+      "ratio_vs_x86_83k": 2.85454006461291,
+      "case_geomean_vs_c": 3.74591408491541
+    },
+    {
+      "family": "lexer",
+      "cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "b5k_sec": 2.2467106109324755,
+      "c_sec": 0.610209536600042,
+      "x86_83k_sec": 1.2331419768199356,
+      "emit_sec": 4.5725,
+      "link_sec": 0.1206,
+      "case_ratios_vs_c": [
+        3.8034752155172415,
+        3.6273061047638593,
+        3.6188811188811183
+      ],
+      "ratio_vs_c": 3.6818674179539546,
+      "ratio_vs_x86_83k": 1.8219399332478825,
+      "case_geomean_vs_c": 3.6822480260570827
+    },
+    {
+      "family": "list-pipeline",
+      "cases": 2,
+      "passed": 2,
+      "failed": 0,
+      "b5k_sec": 2.057669522741832,
+      "c_sec": 0.2837966792851112,
+      "x86_83k_sec": 0.07459523558932316,
+      "emit_sec": 1.9225,
+      "link_sec": 0.0786,
+      "case_ratios_vs_c": [
+        5.800350945603431,
+        8.723883928571427
+      ],
+      "ratio_vs_c": 7.250505988742142,
+      "ratio_vs_x86_83k": 27.584463089172772,
+      "case_geomean_vs_c": 7.113479345188532
+    },
+    {
+      "family": "mandelbrot",
+      "cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "b5k_sec": 1.508,
+      "c_sec": 0.6682284203048309,
+      "x86_83k_sec": 1.0673045552322997,
+      "emit_sec": 4.0511,
+      "link_sec": 0.1184,
+      "case_ratios_vs_c": [
+        2.125428190296235,
+        2.354344637755705,
+        2.3045267489711927
+      ],
+      "ratio_vs_c": 2.256713354562328,
+      "ratio_vs_x86_83k": 1.4129050537705075,
+      "case_geomean_vs_c": 2.2592592837805348
+    },
+    {
+      "family": "symreg",
+      "cases": 3,
+      "passed": 3,
+      "failed": 0,
+      "b5k_sec": 1.111,
+      "c_sec": 1.0047365671245017,
+      "x86_83k_sec": 1.0602205183122724,
+      "emit_sec": 3.4993,
+      "link_sec": 0.1221,
+      "case_ratios_vs_c": [
+        0.9794129235618596,
+        1.1574074074074077,
+        1.1790368722186904
+      ],
+      "ratio_vs_c": 1.1057624817812874,
+      "ratio_vs_x86_83k": 1.0478952074692554,
+      "case_geomean_vs_c": 1.1015219564902312
+    },
+    {
+      "family": "local-pair",
+      "cases": 1,
+      "passed": 1,
+      "failed": 0,
+      "b5k_sec": 1.0690095846645367,
+      "c_sec": 0.20092637215528783,
+      "x86_83k_sec": 0.3030178571428571,
+      "emit_sec": 0.9331,
+      "link_sec": 0.0373,
+      "case_ratios_vs_c": [
+        5.320404550171953
+      ],
+      "ratio_vs_c": 5.320404550171953,
+      "ratio_vs_x86_83k": 3.5278765243216488,
+      "case_geomean_vs_c": 5.320404550171953
+    },
+    {
+      "family": "expression",
+      "cases": 2,
+      "passed": 2,
+      "failed": 0,
+      "b5k_sec": 1.056,
+      "c_sec": 0.6490256558040512,
+      "x86_83k_sec": 0.0360725175171831,
+      "emit_sec": 1.8461,
+      "link_sec": 0.083,
+      "case_ratios_vs_c": [
+        1.6084017292119486,
+        1.6456393578051698
+      ],
+      "ratio_vs_c": 1.6270543245193674,
+      "ratio_vs_x86_83k": 29.27436377283553,
+      "case_geomean_vs_c": 1.6269140077929982
+    },
+    {
+      "family": "map-churn",
+      "cases": 2,
+      "passed": 2,
+      "failed": 0,
+      "b5k_sec": 0.937,
+      "c_sec": 0.2564116131191433,
+      "x86_83k_sec": 0.7386867806364252,
+      "emit_sec": 1.9215,
+      "link_sec": 0.0787,
+      "case_ratios_vs_c": [
+        3.281579451792217,
+        4.040111781706902
+      ],
+      "ratio_vs_c": 3.6542806645992942,
+      "ratio_vs_x86_83k": 1.2684672645592974,
+      "case_geomean_vs_c": 3.6411464960631585
+    },
+    {
+      "family": "closures",
+      "cases": 2,
+      "passed": 2,
+      "failed": 0,
+      "b5k_sec": 0.923,
+      "c_sec": 0.11606371341281033,
+      "x86_83k_sec": 0.008840996822679774,
+      "emit_sec": 1.7689,
+      "link_sec": 0.0771,
+      "case_ratios_vs_c": [
+        7.734900758156573,
+        8.175187695516163
+      ],
+      "ratio_vs_c": 7.952528597091445,
+      "ratio_vs_x86_83k": 104.39999227601031,
+      "case_geomean_vs_c": 7.951997579484054
+    },
+    {
+      "family": "test-rle-roundtrip",
+      "cases": 1,
+      "passed": 1,
+      "failed": 0,
+      "b5k_sec": 0.89,
+      "c_sec": 0.42043606692257013,
+      "x86_83k_sec": 0.970904,
+      "emit_sec": 0.8128,
+      "link_sec": 0.037,
+      "case_ratios_vs_c": [
+        2.1168497900631045
+      ],
+      "ratio_vs_c": 2.1168497900631045,
+      "ratio_vs_x86_83k": 0.9166714731837545,
+      "case_geomean_vs_c": 2.1168497900631045
+    },
+    {
+      "family": "record-aggregation",
+      "cases": 2,
+      "passed": 2,
+      "failed": 0,
+      "b5k_sec": 0.77,
+      "c_sec": 0.3087960307458247,
+      "x86_83k_sec": 0.8049452554744525,
+      "emit_sec": 2.0285,
+      "link_sec": 0.0814,
+      "case_ratios_vs_c": [
+        2.2580408952749376,
+        2.7268684500827356
+      ],
+      "ratio_vs_c": 2.4935553677300994,
+      "ratio_vs_x86_83k": 0.9565867924100565,
+      "case_geomean_vs_c": 2.481406954999885
+    },
+    {
+      "family": "unicode-text",
+      "cases": 2,
+      "passed": 2,
+      "failed": 0,
+      "b5k_sec": 0.6839999999999999,
+      "c_sec": 0.15698664234008508,
+      "x86_83k_sec": 0.17426958853937613,
+      "emit_sec": 3.6296,
+      "link_sec": 0.0843,
+      "case_ratios_vs_c": [
+        4.339298942343306,
+        4.373357735344875
+      ],
+      "ratio_vs_c": 4.357058599407645,
+      "ratio_vs_x86_83k": 3.92495331935354,
+      "case_geomean_vs_c": 4.356295053766552
+    },
+    {
+      "family": "complete-generic-row32",
+      "cases": 1,
+      "passed": 1,
+      "failed": 0,
+      "b5k_sec": 0.613,
+      "c_sec": 0.11666964285714285,
+      "x86_83k_sec": 0.3728214285714286,
+      "emit_sec": 2.4915,
+      "link_sec": 0.0433,
+      "case_ratios_vs_c": [
+        5.254151679804087
+      ],
+      "ratio_vs_c": 5.254151679804087,
+      "ratio_vs_x86_83k": 1.6442187949037264,
+      "case_geomean_vs_c": 5.254151679804087
+    },
+    {
+      "family": "numeric-recurrence",
+      "cases": 2,
+      "passed": 2,
+      "failed": 0,
+      "b5k_sec": 0.453,
+      "c_sec": 0.405767035159204,
+      "x86_83k_sec": 0.5897143468877417,
+      "emit_sec": 1.7313,
+      "link_sec": 0.078,
+      "case_ratios_vs_c": [
+        1.1198385740571042,
+        1.1129453464660843
+      ],
+      "ratio_vs_c": 1.1164041451081999,
+      "ratio_vs_x86_83k": 0.7681685249659244,
+      "case_geomean_vs_c": 1.1163866399191946
+    },
+    {
+      "family": "scalar-region-8192",
+      "cases": 1,
+      "passed": 1,
+      "failed": 0,
+      "b5k_sec": 0.45,
+      "c_sec": 0.20657316750463087,
+      "x86_83k_sec": 0.00010083740173230856,
+      "emit_sec": 0.8837,
+      "link_sec": 0.0397,
+      "case_ratios_vs_c": [
+        2.1784048985447835
+      ],
+      "ratio_vs_c": 2.1784048985447835,
+      "ratio_vs_x86_83k": 4462.629860243799,
+      "case_geomean_vs_c": 2.1784048985447835
+    },
+    {
+      "family": "test-morning-program",
+      "cases": 1,
+      "passed": 1,
+      "failed": 0,
+      "b5k_sec": 0.39195904,
+      "c_sec": 0.15922269998377414,
+      "x86_83k_sec": 0.4871131794489948,
+      "emit_sec": 0.9644,
+      "link_sec": 0.0381,
+      "case_ratios_vs_c": [
+        2.4617032624113473
+      ],
+      "ratio_vs_c": 2.4617032624113473,
+      "ratio_vs_x86_83k": 0.8046570212765957,
+      "case_geomean_vs_c": 2.4617032624113473
+    },
+    {
+      "family": "test-map-set-ops",
+      "cases": 1,
+      "passed": 1,
+      "failed": 0,
+      "b5k_sec": 0.35841768037886523,
+      "c_sec": 0.2284243231247226,
+      "x86_83k_sec": 0.5900011383039272,
+      "emit_sec": 1.2739,
+      "link_sec": 0.0383,
+      "case_ratios_vs_c": [
+        1.569087194725601
+      ],
+      "ratio_vs_c": 1.569087194725601,
+      "ratio_vs_x86_83k": 0.6074864218215009,
+      "case_geomean_vs_c": 1.569087194725601
+    },
+    {
+      "family": "test-evening-program",
+      "cases": 1,
+      "passed": 1,
+      "failed": 0,
+      "b5k_sec": 0.31,
+      "c_sec": 0.2653333035714286,
+      "x86_83k_sec": 0.9087762298977065,
+      "emit_sec": 0.8779,
+      "link_sec": 0.0368,
+      "case_ratios_vs_c": [
+        1.1683418395932608
+      ],
+      "ratio_vs_c": 1.1683418395932608,
+      "ratio_vs_x86_83k": 0.34111807703739583,
+      "case_geomean_vs_c": 1.1683418395932608
+    }
+  ],
+  "cases": [
+    {
+      "id": "mandelbrot",
+      "family": "mandelbrot",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/mandelbrot.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 9036,
+      "warmups": 4,
+      "runtime_args": [
+        2,
+        0
+      ],
+      "phase205": {
+        "c_sec": 0.24042214285714286,
+        "x86_83k_sec": 0.4833368740515933,
+        "c_median_ms": 0.026607142857142857,
+        "x86_83k_median_ms": 0.05349013657056146
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 1.4119,
+      "link_sec": 0.0402,
+      "obj_bytes": 168176,
+      "run_repetitions": 9036,
+      "samples_elapsed_ms": [
+        512,
+        511,
+        511
+      ],
+      "median_elapsed_ms": 511,
+      "fixed_work_sec": 0.511,
+      "ratio_vs_c": 2.125428190296235,
+      "ratio_vs_x86_83k": 1.0572336344142736
+    },
+    {
+      "id": "editdist",
+      "family": "editdist",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/editdist.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 240,
+      "warmups": 4,
+      "runtime_args": [
+        2,
+        0
+      ],
+      "phase205": {
+        "c_sec": 0.20363636363636364,
+        "x86_83k_sec": 0.3095327102803738,
+        "c_median_ms": 0.8484848484848485,
+        "x86_83k_median_ms": 1.2897196261682242
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 1.1051,
+      "link_sec": 0.0399,
+      "obj_bytes": 178560,
+      "run_repetitions": 82,
+      "samples_elapsed_ms": [
+        349,
+        347,
+        348
+      ],
+      "median_elapsed_ms": 348,
+      "fixed_work_sec": 1.0185365853658537,
+      "ratio_vs_c": 5.001742160278746,
+      "ratio_vs_x86_83k": 3.2905620360551433
+    },
+    {
+      "id": "tree-bitonic",
+      "family": "tree-bitonic",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/tree-bitonic.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 1636,
+      "warmups": 4,
+      "runtime_args": [
+        8,
+        0
+      ],
+      "phase205": {
+        "c_sec": 0.27137440758293835,
+        "x86_83k_sec": 0.3417422222222223,
+        "c_median_ms": 0.16587677725118483,
+        "x86_83k_median_ms": 0.2088888888888889
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 1.1616,
+      "link_sec": 0.0429,
+      "obj_bytes": 198048,
+      "run_repetitions": 329,
+      "samples_elapsed_ms": [
+        208,
+        208,
+        209
+      ],
+      "median_elapsed_ms": 208,
+      "fixed_work_sec": 1.0343100303951367,
+      "ratio_vs_c": 3.811376465479809,
+      "ratio_vs_x86_83k": 3.0265795770549047
+    },
+    {
+      "id": "lexer",
+      "family": "lexer",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/lexer.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 512,
+      "warmups": 4,
+      "runtime_args": [
+        8,
+        0
+      ],
+      "phase205": {
+        "c_sec": 0.19850267379679143,
+        "x86_83k_sec": 0.3997433155080214,
+        "c_median_ms": 0.3877005347593583,
+        "x86_83k_median_ms": 0.7807486631016043
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 1.56,
+      "link_sec": 0.0406,
+      "obj_bytes": 250592,
+      "run_repetitions": 512,
+      "samples_elapsed_ms": [
+        756,
+        755,
+        754
+      ],
+      "median_elapsed_ms": 755,
+      "fixed_work_sec": 0.755,
+      "ratio_vs_c": 3.8034752155172415,
+      "ratio_vs_x86_83k": 1.8887120077054795
+    },
+    {
+      "id": "symreg",
+      "family": "symreg",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/symreg.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 144,
+      "warmups": 4,
+      "runtime_args": [
+        6,
+        42
+      ],
+      "phase205": {
+        "c_sec": 0.3328524590163935,
+        "x86_83k_sec": 0.3500689655172413,
+        "c_median_ms": 2.3114754098360657,
+        "x86_83k_median_ms": 2.4310344827586206
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 1.2068,
+      "link_sec": 0.0404,
+      "obj_bytes": 177536,
+      "run_repetitions": 144,
+      "samples_elapsed_ms": [
+        384,
+        326,
+        264
+      ],
+      "median_elapsed_ms": 326,
+      "fixed_work_sec": 0.326,
+      "ratio_vs_c": 0.9794129235618596,
+      "ratio_vs_x86_83k": 0.9312450748620963
+    },
+    {
+      "id": "test-morning-program",
+      "family": "test-morning-program",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/test-morning-program.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 55676,
+      "warmups": 4,
+      "runtime_args": [
+        0,
+        0
+      ],
+      "phase205": {
+        "c_sec": 0.15922269998377414,
+        "x86_83k_sec": 0.4871131794489948,
+        "c_median_ms": 0.002859808534804478,
+        "x86_83k_median_ms": 0.008749069247952346
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 0.9644,
+      "link_sec": 0.0381,
+      "obj_bytes": 228720,
+      "run_repetitions": 50000,
+      "samples_elapsed_ms": [
+        353,
+        352,
+        352
+      ],
+      "median_elapsed_ms": 352,
+      "fixed_work_sec": 0.39195904,
+      "ratio_vs_c": 2.4617032624113473,
+      "ratio_vs_x86_83k": 0.8046570212765957
+    },
+    {
+      "id": "test-evening-program",
+      "family": "test-evening-program",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/test-evening-program.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 259540,
+      "warmups": 4,
+      "runtime_args": [
+        0,
+        0
+      ],
+      "phase205": {
+        "c_sec": 0.2653333035714286,
+        "x86_83k_sec": 0.9087762298977065,
+        "c_median_ms": 0.0010223214285714286,
+        "x86_83k_median_ms": 0.003501488132456294
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 0.8779,
+      "link_sec": 0.0368,
+      "obj_bytes": 176784,
+      "run_repetitions": 259540,
+      "samples_elapsed_ms": [
+        310,
+        310,
+        309
+      ],
+      "median_elapsed_ms": 310,
+      "fixed_work_sec": 0.31,
+      "ratio_vs_c": 1.1683418395932608,
+      "ratio_vs_x86_83k": 0.34111807703739583
+    },
+    {
+      "id": "test-rle-roundtrip",
+      "family": "test-rle-roundtrip",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/test-rle-roundtrip.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 970904,
+      "warmups": 4,
+      "runtime_args": [
+        0,
+        0
+      ],
+      "phase205": {
+        "c_sec": 0.42043606692257013,
+        "x86_83k_sec": 0.970904,
+        "c_median_ms": 0.0004330356728601078,
+        "x86_83k_median_ms": 0.001
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 0.8128,
+      "link_sec": 0.037,
+      "obj_bytes": 175248,
+      "run_repetitions": 970904,
+      "samples_elapsed_ms": [
+        889,
+        891,
+        890
+      ],
+      "median_elapsed_ms": 890,
+      "fixed_work_sec": 0.89,
+      "ratio_vs_c": 2.1168497900631045,
+      "ratio_vs_x86_83k": 0.9166714731837545
+    },
+    {
+      "id": "test-map-set-ops",
+      "family": "test-map-set-ops",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/test-map-set-ops.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 22056,
+      "warmups": 4,
+      "runtime_args": [
+        0,
+        0
+      ],
+      "phase205": {
+        "c_sec": 0.2284243231247226,
+        "x86_83k_sec": 0.5900011383039272,
+        "c_median_ms": 0.010356561621541648,
+        "x86_83k_median_ms": 0.026750142287990893
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 1.2739,
+      "link_sec": 0.0383,
+      "obj_bytes": 332928,
+      "run_repetitions": 21538,
+      "samples_elapsed_ms": [
+        350,
+        349,
+        350
+      ],
+      "median_elapsed_ms": 350,
+      "fixed_work_sec": 0.35841768037886523,
+      "ratio_vs_c": 1.569087194725601,
+      "ratio_vs_x86_83k": 0.6074864218215009
+    },
+    {
+      "id": "raytrace",
+      "family": "raytrace",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/raytrace.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 12,
+      "warmups": 4,
+      "runtime_args": [
+        80,
+        0
+      ],
+      "phase205": {
+        "c_sec": 0.34079999999999994,
+        "x86_83k_sec": 0.56,
+        "c_median_ms": 28.4,
+        "x86_83k_median_ms": 46.666666666666664
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 2.6119,
+      "link_sec": 0.0369,
+      "obj_bytes": 182400,
+      "run_repetitions": 12,
+      "samples_elapsed_ms": [
+        382,
+        383,
+        382
+      ],
+      "median_elapsed_ms": 382,
+      "fixed_work_sec": 0.382,
+      "ratio_vs_c": 1.120892018779343,
+      "ratio_vs_x86_83k": 0.682142857142857
+    },
+    {
+      "id": "local-pair",
+      "family": "local-pair",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/local-pair.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 956,
+      "warmups": 4,
+      "runtime_args": [
+        0,
+        0
+      ],
+      "phase205": {
+        "c_sec": 0.20092637215528783,
+        "x86_83k_sec": 0.3030178571428571,
+        "c_median_ms": 0.2101740294511379,
+        "x86_83k_median_ms": 0.3169642857142857
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 0.9331,
+      "link_sec": 0.0373,
+      "obj_bytes": 182832,
+      "run_repetitions": 313,
+      "samples_elapsed_ms": [
+        350,
+        349,
+        351
+      ],
+      "median_elapsed_ms": 350,
+      "fixed_work_sec": 1.0690095846645367,
+      "ratio_vs_c": 5.320404550171953,
+      "ratio_vs_x86_83k": 3.5278765243216488
+    },
+    {
+      "id": "local-fold",
+      "family": "local-fold",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/local-fold.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 60684,
+      "warmups": 4,
+      "runtime_args": [
+        4096,
+        17
+      ],
+      "phase205": {
+        "c_sec": 0.16643540167282628,
+        "x86_83k_sec": 0.09021247677196707,
+        "c_median_ms": 0.0027426570706088308,
+        "x86_83k_median_ms": 0.0014865941067162198
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 0.7183,
+      "link_sec": 0.0372,
+      "obj_bytes": 159296,
+      "run_repetitions": 46667,
+      "samples_elapsed_ms": [
+        274,
+        528,
+        533
+      ],
+      "median_elapsed_ms": 528,
+      "fixed_work_sec": 0.6865912100627853,
+      "ratio_vs_c": 4.125271445629493,
+      "ratio_vs_x86_83k": 7.610823187997639
+    },
+    {
+      "id": "scalar-region-0",
+      "family": "scalar-region-0",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/scalar-region-0.bend",
+      "ratio_eligible": false,
+      "catalog_repetitions": 4,
+      "warmups": 4,
+      "runtime_args": [
+        0,
+        524800
+      ],
+      "phase205": {
+        "c_sec": 0.0,
+        "x86_83k_sec": 0.0,
+        "c_median_ms": 0.0,
+        "x86_83k_median_ms": 0.0
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 0.8815,
+      "link_sec": 0.0387,
+      "obj_bytes": 153392,
+      "run_repetitions": 4,
+      "samples_elapsed_ms": [
+        0,
+        0,
+        0
+      ],
+      "median_elapsed_ms": 0,
+      "fixed_work_sec": 0.0,
+      "ratio_vs_c": null,
+      "ratio_vs_x86_83k": null
+    },
+    {
+      "id": "scalar-region-8192",
+      "family": "scalar-region-8192",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/scalar-region-8192.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 5576,
+      "warmups": 4,
+      "runtime_args": [
+        8192,
+        524800
+      ],
+      "phase205": {
+        "c_sec": 0.20657316750463087,
+        "x86_83k_sec": 0.00010083740173230856,
+        "c_median_ms": 0.037046837787774546,
+        "x86_83k_median_ms": 1.808418252014142e-05
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 0.8837,
+      "link_sec": 0.0397,
+      "obj_bytes": 153392,
+      "run_repetitions": 5576,
+      "samples_elapsed_ms": [
+        449,
+        450,
+        451
+      ],
+      "median_elapsed_ms": 450,
+      "fixed_work_sec": 0.45,
+      "ratio_vs_c": 2.1784048985447835,
+      "ratio_vs_x86_83k": 4462.629860243799
+    },
+    {
+      "id": "complete-generic-row32",
+      "family": "complete-generic-row32",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/complete-generic-row32.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 1460,
+      "warmups": 4,
+      "runtime_args": [
+        32,
+        17
+      ],
+      "phase205": {
+        "c_sec": 0.11666964285714285,
+        "x86_83k_sec": 0.3728214285714286,
+        "c_median_ms": 0.07991071428571428,
+        "x86_83k_median_ms": 0.25535714285714284
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 2.4915,
+      "link_sec": 0.0433,
+      "obj_bytes": 749168,
+      "run_repetitions": 1460,
+      "samples_elapsed_ms": [
+        613,
+        613,
+        615
+      ],
+      "median_elapsed_ms": 613,
+      "fixed_work_sec": 0.613,
+      "ratio_vs_c": 5.254151679804087,
+      "ratio_vs_x86_83k": 1.6442187949037264
+    },
+    {
+      "id": "variation-editdist-0-17",
+      "family": "editdist",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/variation-editdist-0-17.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 956,
+      "warmups": 4,
+      "runtime_args": [
+        0,
+        17
+      ],
+      "phase205": {
+        "c_sec": 0.20092637215528783,
+        "x86_83k_sec": 0.30515178571428564,
+        "c_median_ms": 0.2101740294511379,
+        "x86_83k_median_ms": 0.31919642857142855
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 1.0698,
+      "link_sec": 0.0399,
+      "obj_bytes": 178576,
+      "run_repetitions": 315,
+      "samples_elapsed_ms": [
+        350,
+        351,
+        350
+      ],
+      "median_elapsed_ms": 350,
+      "fixed_work_sec": 1.0622222222222222,
+      "ratio_vs_c": 5.286624203821655,
+      "ratio_vs_x86_83k": 3.4809634809634815
+    },
+    {
+      "id": "variation-editdist-3-123",
+      "family": "editdist",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/variation-editdist-3-123.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 120,
+      "warmups": 4,
+      "runtime_args": [
+        3,
+        123
+      ],
+      "phase205": {
+        "c_sec": 0.20240963855421687,
+        "x86_83k_sec": 0.30763636363636365,
+        "c_median_ms": 1.6867469879518073,
+        "x86_83k_median_ms": 2.5636363636363635
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 1.0681,
+      "link_sec": 0.04,
+      "obj_bytes": 178576,
+      "run_repetitions": 40,
+      "samples_elapsed_ms": [
+        354,
+        355,
+        355
+      ],
+      "median_elapsed_ms": 355,
+      "fixed_work_sec": 1.065,
+      "ratio_vs_c": 5.261607142857143,
+      "ratio_vs_x86_83k": 3.461879432624113
+    },
+    {
+      "id": "variation-lexer-6-17",
+      "family": "lexer",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/variation-lexer-6-17.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 2212,
+      "warmups": 4,
+      "runtime_args": [
+        6,
+        17
+      ],
+      "phase205": {
+        "c_sec": 0.21275034106412005,
+        "x86_83k_sec": 0.43233199464524763,
+        "c_median_ms": 0.09618008185538882,
+        "x86_83k_median_ms": 0.19544846050870146
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 1.5055,
+      "link_sec": 0.0401,
+      "obj_bytes": 250608,
+      "run_repetitions": 622,
+      "samples_elapsed_ms": [
+        217,
+        218,
+        216
+      ],
+      "median_elapsed_ms": 217,
+      "fixed_work_sec": 0.7717106109324758,
+      "ratio_vs_c": 3.6273061047638593,
+      "ratio_vs_x86_83k": 1.7849953750605647
+    },
+    {
+      "id": "variation-lexer-10-123",
+      "family": "lexer",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/variation-lexer-10-123.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 128,
+      "warmups": 4,
+      "runtime_args": [
+        10,
+        123
+      ],
+      "phase205": {
+        "c_sec": 0.19895652173913045,
+        "x86_83k_sec": 0.4010666666666667,
+        "c_median_ms": 1.5543478260869565,
+        "x86_83k_median_ms": 3.1333333333333333
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 1.507,
+      "link_sec": 0.0399,
+      "obj_bytes": 250608,
+      "run_repetitions": 128,
+      "samples_elapsed_ms": [
+        716,
+        721,
+        720
+      ],
+      "median_elapsed_ms": 720,
+      "fixed_work_sec": 0.72,
+      "ratio_vs_c": 3.6188811188811183,
+      "ratio_vs_x86_83k": 1.7952127659574466
+    },
+    {
+      "id": "variation-tree-bitonic-6-17",
+      "family": "tree-bitonic",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/variation-tree-bitonic-6-17.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 11108,
+      "warmups": 4,
+      "runtime_args": [
+        6,
+        17
+      ],
+      "phase205": {
+        "c_sec": 0.27468046299544024,
+        "x86_83k_sec": 0.41043019266297176,
+        "c_median_ms": 0.024728165555945283,
+        "x86_83k_median_ms": 0.03694906307732911
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 1.1213,
+      "link_sec": 0.0392,
+      "obj_bytes": 198064,
+      "run_repetitions": 2800,
+      "samples_elapsed_ms": [
+        251,
+        252,
+        253
+      ],
+      "median_elapsed_ms": 252,
+      "fixed_work_sec": 0.9997199999999999,
+      "ratio_vs_c": 3.6395744680851054,
+      "ratio_vs_x86_83k": 2.435785714285714
+    },
+    {
+      "id": "variation-tree-bitonic-9-123",
+      "family": "tree-bitonic",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/variation-tree-bitonic-9-123.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 636,
+      "warmups": 4,
+      "runtime_args": [
+        9,
+        123
+      ],
+      "phase205": {
+        "c_sec": 0.26035087719298244,
+        "x86_83k_sec": 0.30597938144329895,
+        "c_median_ms": 0.4093567251461988,
+        "x86_83k_median_ms": 0.48109965635738833
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 1.1203,
+      "link_sec": 0.0398,
+      "obj_bytes": 198064,
+      "run_repetitions": 225,
+      "samples_elapsed_ms": [
+        349,
+        349,
+        348
+      ],
+      "median_elapsed_ms": 349,
+      "fixed_work_sec": 0.9865066666666666,
+      "ratio_vs_c": 3.789142857142857,
+      "ratio_vs_x86_83k": 3.2240952380952383
+    },
+    {
+      "id": "variation-symreg-4-17",
+      "family": "symreg",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/variation-symreg-4-17.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 288,
+      "warmups": 4,
+      "runtime_args": [
+        4,
+        17
+      ],
+      "phase205": {
+        "c_sec": 0.33177599999999996,
+        "x86_83k_sec": 0.35060869565217395,
+        "c_median_ms": 1.152,
+        "x86_83k_median_ms": 1.2173913043478262
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 1.1659,
+      "link_sec": 0.0393,
+      "obj_bytes": 177536,
+      "run_repetitions": 288,
+      "samples_elapsed_ms": [
+        384,
+        385,
+        359
+      ],
+      "median_elapsed_ms": 384,
+      "fixed_work_sec": 0.384,
+      "ratio_vs_c": 1.1574074074074077,
+      "ratio_vs_x86_83k": 1.0952380952380951
+    },
+    {
+      "id": "variation-symreg-7-123",
+      "family": "symreg",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/variation-symreg-7-123.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 88,
+      "warmups": 4,
+      "runtime_args": [
+        7,
+        123
+      ],
+      "phase205": {
+        "c_sec": 0.34010810810810815,
+        "x86_83k_sec": 0.3595428571428571,
+        "c_median_ms": 3.864864864864865,
+        "x86_83k_median_ms": 4.085714285714285
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 1.1266,
+      "link_sec": 0.0424,
+      "obj_bytes": 177536,
+      "run_repetitions": 88,
+      "samples_elapsed_ms": [
+        401,
+        400,
+        402
+      ],
+      "median_elapsed_ms": 401,
+      "fixed_work_sec": 0.401,
+      "ratio_vs_c": 1.1790368722186904,
+      "ratio_vs_x86_83k": 1.1153051493960586
+    },
+    {
+      "id": "variation-local-fold-128-0",
+      "family": "local-fold",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/variation-local-fold-128-0.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 1895020,
+      "warmups": 4,
+      "runtime_args": [
+        128,
+        0
+      ],
+      "phase205": {
+        "c_sec": 0.20219186607142856,
+        "x86_83k_sec": 0.2847420803718617,
+        "c_median_ms": 0.00010669642857142857,
+        "x86_83k_median_ms": 0.00015025808718212037
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 0.86,
+      "link_sec": 0.0401,
+      "obj_bytes": 159296,
+      "run_repetitions": 50000,
+      "samples_elapsed_ms": [
+        58,
+        58,
+        58
+      ],
+      "median_elapsed_ms": 58,
+      "fixed_work_sec": 2.1982232,
+      "ratio_vs_c": 10.871966527196655,
+      "ratio_vs_x86_83k": 7.720050359712231
+    },
+    {
+      "id": "variation-local-fold-8192-123",
+      "family": "local-fold",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/variation-local-fold-8192-123.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 30516,
+      "warmups": 4,
+      "runtime_args": [
+        8192,
+        123
+      ],
+      "phase205": {
+        "c_sec": 0.16738984633339818,
+        "x86_83k_sec": 0.08718857142857142,
+        "c_median_ms": 0.0054853141412176615,
+        "x86_83k_median_ms": 0.002857142857142857
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 0.8625,
+      "link_sec": 0.0383,
+      "obj_bytes": 159296,
+      "run_repetitions": 15806,
+      "samples_elapsed_ms": [
+        356,
+        357,
+        358
+      ],
+      "median_elapsed_ms": 357,
+      "fixed_work_sec": 0.689245349867139,
+      "ratio_vs_c": 4.117605487816369,
+      "ratio_vs_x86_83k": 7.905225863596103
+    },
+    {
+      "id": "variation-mandelbrot-grid-4-7",
+      "family": "mandelbrot",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/variation-mandelbrot-grid-4-7.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 24488,
+      "warmups": 4,
+      "runtime_args": [
+        4,
+        7
+      ],
+      "phase205": {
+        "c_sec": 0.22299199173340223,
+        "x86_83k_sec": 0.4197257590597453,
+        "c_median_ms": 0.009106174115215707,
+        "x86_83k_median_ms": 0.017140058765915768
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 1.3272,
+      "link_sec": 0.0394,
+      "obj_bytes": 169376,
+      "run_repetitions": 24488,
+      "samples_elapsed_ms": [
+        525,
+        524,
+        525
+      ],
+      "median_elapsed_ms": 525,
+      "fixed_work_sec": 0.525,
+      "ratio_vs_c": 2.354344637755705,
+      "ratio_vs_x86_83k": 1.250816726559948
+    },
+    {
+      "id": "variation-mandelbrot-grid-5-31",
+      "family": "mandelbrot",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/variation-mandelbrot-grid-5-31.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 1416,
+      "warmups": 4,
+      "runtime_args": [
+        5,
+        31
+      ],
+      "phase205": {
+        "c_sec": 0.20481428571428575,
+        "x86_83k_sec": 0.16424192212096106,
+        "c_median_ms": 0.14464285714285716,
+        "x86_83k_median_ms": 0.115990057995029
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 1.312,
+      "link_sec": 0.0388,
+      "obj_bytes": 169376,
+      "run_repetitions": 1416,
+      "samples_elapsed_ms": [
+        473,
+        472,
+        471
+      ],
+      "median_elapsed_ms": 472,
+      "fixed_work_sec": 0.472,
+      "ratio_vs_c": 2.3045267489711927,
+      "ratio_vs_x86_83k": 2.873809523809524
+    },
+    {
+      "id": "variation-ray-active-64-2440",
+      "family": "raytrace",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/variation-ray-active-64-2440.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 6324,
+      "warmups": 4,
+      "runtime_args": [
+        64,
+        2440
+      ],
+      "phase205": {
+        "c_sec": 0.6827595712098009,
+        "x86_83k_sec": 1.0445892857142858,
+        "c_median_ms": 0.10796324655436447,
+        "x86_83k_median_ms": 0.16517857142857142
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 3.1253,
+      "link_sec": 0.0396,
+      "obj_bytes": 183120,
+      "run_repetitions": 1400,
+      "samples_elapsed_ms": [
+        329,
+        330,
+        328
+      ],
+      "median_elapsed_ms": 329,
+      "fixed_work_sec": 1.48614,
+      "ratio_vs_c": 2.1766666666666667,
+      "ratio_vs_x86_83k": 1.4227027027027026
+    },
+    {
+      "id": "variation-ray-active-256-2240",
+      "family": "raytrace",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/variation-ray-active-256-2240.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 1516,
+      "warmups": 4,
+      "runtime_args": [
+        256,
+        2240
+      ],
+      "phase205": {
+        "c_sec": 0.6822,
+        "x86_83k_sec": 1.0478235294117646,
+        "c_median_ms": 0.45,
+        "x86_83k_median_ms": 0.6911764705882353
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 3.1251,
+      "link_sec": 0.0391,
+      "obj_bytes": 183120,
+      "run_repetitions": 373,
+      "samples_elapsed_ms": [
+        358,
+        359,
+        359
+      ],
+      "median_elapsed_ms": 359,
+      "fixed_work_sec": 1.4590991957104558,
+      "ratio_vs_c": 2.138814417634793,
+      "ratio_vs_x86_83k": 1.392504705949461
+    },
+    {
+      "id": "coverage-closures-64",
+      "family": "closures",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-closures-64.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 76440,
+      "warmups": 4,
+      "runtime_args": [
+        64,
+        17
+      ],
+      "phase205": {
+        "c_sec": 0.058695,
+        "x86_83k_sec": 0.004640998697678937,
+        "c_median_ms": 0.0007678571428571428,
+        "x86_83k_median_ms": 6.0714268677118485e-05
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 0.8851,
+      "link_sec": 0.0386,
+      "obj_bytes": 161392,
+      "run_repetitions": 76440,
+      "samples_elapsed_ms": [
+        456,
+        453,
+        454
+      ],
+      "median_elapsed_ms": 454,
+      "fixed_work_sec": 0.454,
+      "ratio_vs_c": 7.734900758156573,
+      "ratio_vs_x86_83k": 97.82377233310908
+    },
+    {
+      "id": "coverage-closures-256",
+      "family": "closures",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-closures-256.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 19600,
+      "warmups": 4,
+      "runtime_args": [
+        256,
+        123
+      ],
+      "phase205": {
+        "c_sec": 0.05736871341281032,
+        "x86_83k_sec": 0.004199998125000837,
+        "c_median_ms": 0.0029269751741229756,
+        "x86_83k_median_ms": 0.00021428561862249168
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 0.8838,
+      "link_sec": 0.0385,
+      "obj_bytes": 161392,
+      "run_repetitions": 19600,
+      "samples_elapsed_ms": [
+        469,
+        469,
+        468
+      ],
+      "median_elapsed_ms": 469,
+      "fixed_work_sec": 0.469,
+      "ratio_vs_c": 8.175187695516163,
+      "ratio_vs_x86_83k": 111.66671651785714
+    },
+    {
+      "id": "coverage-list-pipeline-128",
+      "family": "list-pipeline",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-list-pipeline-128.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 99496,
+      "warmups": 4,
+      "runtime_args": [
+        128,
+        17
+      ],
+      "phase205": {
+        "c_sec": 0.1430255,
+        "x86_83k_sec": 0.03775309273218029,
+        "c_median_ms": 0.0014375,
+        "x86_83k_median_ms": 0.00037944332166298437
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 1.0385,
+      "link_sec": 0.0385,
+      "obj_bytes": 181200,
+      "run_repetitions": 28544,
+      "samples_elapsed_ms": [
+        240,
+        238,
+        238
+      ],
+      "median_elapsed_ms": 238,
+      "fixed_work_sec": 0.8295980941704035,
+      "ratio_vs_c": 5.800350945603431,
+      "ratio_vs_x86_83k": 21.974308172725248
+    },
+    {
+      "id": "coverage-list-pipeline-512",
+      "family": "list-pipeline",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-list-pipeline-512.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 25008,
+      "warmups": 4,
+      "runtime_args": [
+        512,
+        123
+      ],
+      "phase205": {
+        "c_sec": 0.14077117928511118,
+        "x86_83k_sec": 0.03684214285714286,
+        "c_median_ms": 0.005629045876723895,
+        "x86_83k_median_ms": 0.0014732142857142858
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 0.884,
+      "link_sec": 0.0401,
+      "obj_bytes": 181200,
+      "run_repetitions": 5600,
+      "samples_elapsed_ms": [
+        277,
+        275,
+        275
+      ],
+      "median_elapsed_ms": 275,
+      "fixed_work_sec": 1.2280714285714285,
+      "ratio_vs_c": 8.723883928571427,
+      "ratio_vs_x86_83k": 33.33333333333333
+    },
+    {
+      "id": "coverage-bst-32",
+      "family": "bst",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-bst-32.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 35620,
+      "warmups": 4,
+      "runtime_args": [
+        32,
+        0
+      ],
+      "phase205": {
+        "c_sec": 0.21300394418762456,
+        "x86_83k_sec": 0.696467122003482,
+        "c_median_ms": 0.005979897366300522,
+        "x86_83k_median_ms": 0.01955269854024374
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 1.0805,
+      "link_sec": 0.0391,
+      "obj_bytes": 191584,
+      "run_repetitions": 5600,
+      "samples_elapsed_ms": [
+        479,
+        480,
+        479
+      ],
+      "median_elapsed_ms": 479,
+      "fixed_work_sec": 3.046782142857143,
+      "ratio_vs_c": 14.303876646403245,
+      "ratio_vs_x86_83k": 4.374624510763209
+    },
+    {
+      "id": "coverage-bst-64",
+      "family": "bst",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-bst-64.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 27184,
+      "warmups": 4,
+      "runtime_args": [
+        64,
+        17
+      ],
+      "phase205": {
+        "c_sec": 0.19902571428571428,
+        "x86_83k_sec": 0.45454889131225007,
+        "c_median_ms": 0.007321428571428572,
+        "x86_83k_median_ms": 0.016721192293711377
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 1.0795,
+      "link_sec": 0.0392,
+      "obj_bytes": 191584,
+      "run_repetitions": 3821,
+      "samples_elapsed_ms": [
+        346,
+        347,
+        347
+      ],
+      "median_elapsed_ms": 347,
+      "fixed_work_sec": 2.4686856843758176,
+      "ratio_vs_c": 12.403852905317851,
+      "ratio_vs_x86_83k": 5.4310674419398515
+    },
+    {
+      "id": "coverage-unicode-text-16",
+      "family": "unicode-text",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-unicode-text-16.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 8272,
+      "warmups": 4,
+      "runtime_args": [
+        16,
+        17
+      ],
+      "phase205": {
+        "c_sec": 0.07512734299516909,
+        "x86_83k_sec": 0.08862631055330221,
+        "c_median_ms": 0.009082125603864734,
+        "x86_83k_median_ms": 0.010714012397642917
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 1.4451,
+      "link_sec": 0.0399,
+      "obj_bytes": 335280,
+      "run_repetitions": 8272,
+      "samples_elapsed_ms": [
+        326,
+        325,
+        327
+      ],
+      "median_elapsed_ms": 326,
+      "fixed_work_sec": 0.326,
+      "ratio_vs_c": 4.339298942343306,
+      "ratio_vs_x86_83k": 3.678365915998895
+    },
+    {
+      "id": "coverage-unicode-text-64",
+      "family": "unicode-text",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-unicode-text-64.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 2024,
+      "warmups": 4,
+      "runtime_args": [
+        64,
+        123
+      ],
+      "phase205": {
+        "c_sec": 0.08185929934491598,
+        "x86_83k_sec": 0.0856432779860739,
+        "c_median_ms": 0.04044431785816007,
+        "x86_83k_median_ms": 0.04231387252276379
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 2.1845,
+      "link_sec": 0.0444,
+      "obj_bytes": 647168,
+      "run_repetitions": 2024,
+      "samples_elapsed_ms": [
+        361,
+        358,
+        358
+      ],
+      "median_elapsed_ms": 358,
+      "fixed_work_sec": 0.358,
+      "ratio_vs_c": 4.373357735344875,
+      "ratio_vs_x86_83k": 4.18012958422975
+    },
+    {
+      "id": "coverage-expression-32",
+      "family": "expression",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-expression-32.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 148540,
+      "warmups": 4,
+      "runtime_args": [
+        32,
+        17
+      ],
+      "phase205": {
+        "c_sec": 0.3239240486611941,
+        "x86_83k_sec": 0.017904367006979015,
+        "c_median_ms": 0.002180719325846197,
+        "x86_83k_median_ms": 0.00012053566047515158
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 0.9168,
+      "link_sec": 0.0392,
+      "obj_bytes": 170688,
+      "run_repetitions": 148540,
+      "samples_elapsed_ms": [
+        521,
+        519,
+        524
+      ],
+      "median_elapsed_ms": 521,
+      "fixed_work_sec": 0.521,
+      "ratio_vs_c": 1.6084017292119486,
+      "ratio_vs_x86_83k": 29.099046048202503
+    },
+    {
+      "id": "coverage-expression-128",
+      "family": "expression",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-expression-128.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 37732,
+      "warmups": 4,
+      "runtime_args": [
+        128,
+        123
+      ],
+      "phase205": {
+        "c_sec": 0.32510160714285713,
+        "x86_83k_sec": 0.01816815051020408,
+        "c_median_ms": 0.008616071428571428,
+        "x86_83k_median_ms": 0.0004815051020408163
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 0.9293,
+      "link_sec": 0.0438,
+      "obj_bytes": 170688,
+      "run_repetitions": 37732,
+      "samples_elapsed_ms": [
+        535,
+        530,
+        546
+      ],
+      "median_elapsed_ms": 535,
+      "fixed_work_sec": 0.535,
+      "ratio_vs_c": 1.6456393578051698,
+      "ratio_vs_x86_83k": 29.447136058209065
+    },
+    {
+      "id": "coverage-map-churn-32",
+      "family": "map-churn",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-map-churn-32.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 2820,
+      "warmups": 4,
+      "runtime_args": [
+        32,
+        17
+      ],
+      "phase205": {
+        "c_sec": 0.130425,
+        "x86_83k_sec": 0.3751607142857143,
+        "c_median_ms": 0.04625,
+        "x86_83k_median_ms": 0.13303571428571428
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 0.9721,
+      "link_sec": 0.0389,
+      "obj_bytes": 160032,
+      "run_repetitions": 2820,
+      "samples_elapsed_ms": [
+        428,
+        428,
+        428
+      ],
+      "median_elapsed_ms": 428,
+      "fixed_work_sec": 0.428,
+      "ratio_vs_c": 3.281579451792217,
+      "ratio_vs_x86_83k": 1.1408444000190394
+    },
+    {
+      "id": "coverage-map-churn-128",
+      "family": "map-churn",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-map-churn-128.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 544,
+      "warmups": 4,
+      "runtime_args": [
+        128,
+        123
+      ],
+      "phase205": {
+        "c_sec": 0.12598661311914325,
+        "x86_83k_sec": 0.3635260663507109,
+        "c_median_ms": 0.23159303882195448,
+        "x86_83k_median_ms": 0.6682464454976303
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 0.9494,
+      "link_sec": 0.0398,
+      "obj_bytes": 160032,
+      "run_repetitions": 544,
+      "samples_elapsed_ms": [
+        509,
+        510,
+        508
+      ],
+      "median_elapsed_ms": 509,
+      "fixed_work_sec": 0.509,
+      "ratio_vs_c": 4.040111781706902,
+      "ratio_vs_x86_83k": 1.40017469753859
+    },
+    {
+      "id": "coverage-numeric-recurrence-256",
+      "family": "numeric-recurrence",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-numeric-recurrence-256.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 247876,
+      "warmups": 4,
+      "runtime_args": [
+        256,
+        17
+      ],
+      "phase205": {
+        "c_sec": 0.20360077361326326,
+        "x86_83k_sec": 0.29664179168269433,
+        "c_median_ms": 0.0008213815521198634,
+        "x86_83k_median_ms": 0.0011967346240971065
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 0.8653,
+      "link_sec": 0.0395,
+      "obj_bytes": 151984,
+      "run_repetitions": 247876,
+      "samples_elapsed_ms": [
+        228,
+        228,
+        228
+      ],
+      "median_elapsed_ms": 228,
+      "fixed_work_sec": 0.228,
+      "ratio_vs_c": 1.1198385740571042,
+      "ratio_vs_x86_83k": 0.7686037719320491
+    },
+    {
+      "id": "coverage-numeric-recurrence-1024",
+      "family": "numeric-recurrence",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-numeric-recurrence-1024.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 61936,
+      "warmups": 4,
+      "runtime_args": [
+        1024,
+        123
+      ],
+      "phase205": {
+        "c_sec": 0.2021662615459407,
+        "x86_83k_sec": 0.2930725552050473,
+        "c_median_ms": 0.003264115563580804,
+        "x86_83k_median_ms": 0.00473186119873817
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 0.866,
+      "link_sec": 0.0385,
+      "obj_bytes": 151984,
+      "run_repetitions": 61936,
+      "samples_elapsed_ms": [
+        224,
+        225,
+        227
+      ],
+      "median_elapsed_ms": 225,
+      "fixed_work_sec": 0.225,
+      "ratio_vs_c": 1.1129453464660843,
+      "ratio_vs_x86_83k": 0.7677279772668562
+    },
+    {
+      "id": "coverage-record-aggregation-64",
+      "family": "record-aggregation",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-record-aggregation-64.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 1540,
+      "warmups": 4,
+      "runtime_args": [
+        64,
+        17
+      ],
+      "phase205": {
+        "c_sec": 0.15367303609341826,
+        "x86_83k_sec": 0.4015,
+        "c_median_ms": 0.09978768577494693,
+        "x86_83k_median_ms": 0.26071428571428573
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 0.9799,
+      "link_sec": 0.0408,
+      "obj_bytes": 238768,
+      "run_repetitions": 1540,
+      "samples_elapsed_ms": [
+        346,
+        347,
+        347
+      ],
+      "median_elapsed_ms": 347,
+      "fixed_work_sec": 0.347,
+      "ratio_vs_c": 2.2580408952749376,
+      "ratio_vs_x86_83k": 0.8642590286425902
+    },
+    {
+      "id": "coverage-record-aggregation-256",
+      "family": "record-aggregation",
+      "source": "selfhost/tools/bench/catalogs/native45/fixtures/coverage-record-aggregation-256.bend",
+      "ratio_eligible": true,
+      "catalog_repetitions": 392,
+      "warmups": 4,
+      "runtime_args": [
+        256,
+        123
+      ],
+      "phase205": {
+        "c_sec": 0.15512299465240642,
+        "x86_83k_sec": 0.40344525547445254,
+        "c_median_ms": 0.39572192513368987,
+        "x86_83k_median_ms": 1.0291970802919708
+      },
+      "status": "pass",
+      "error": null,
+      "emit_sec": 1.0486,
+      "link_sec": 0.0406,
+      "obj_bytes": 238864,
+      "run_repetitions": 392,
+      "samples_elapsed_ms": [
+        423,
+        425,
+        268
+      ],
+      "median_elapsed_ms": 423,
+      "fixed_work_sec": 0.423,
+      "ratio_vs_c": 2.7268684500827356,
+      "ratio_vs_x86_83k": 1.0484693877551021
+    }
+  ]
+}

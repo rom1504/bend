@@ -1,0 +1,355 @@
+{
+  "meta": {
+    "compiler": "/home/ai/bend2_agy/selfhost/build/agy/bend5k/bend5k_o2",
+    "runtime_o": "/home/ai/bend2_agy/selfhost/build/agy/unified/runtime-agy.o",
+    "gcc": "/usr/bin/x86_64-linux-gnu-gcc-10",
+    "cpu_pin": "taskset -c 7",
+    "total_benchmarks": 17,
+    "passed": 8,
+    "geomean_ratio": 2.9701
+  },
+  "results": [
+    {
+      "bench": "bfs",
+      "timeout_s": 30.0,
+      "status": "TIMEOUT",
+      "gcc10_ms": 6422.77,
+      "gcc10_runs_ms": [
+        6422.77,
+        6429.25,
+        6416.1
+      ],
+      "gcc10_stdout": "651176970",
+      "b5k_ms": null,
+      "b5k_runs_ms": [
+        30023.24
+      ],
+      "b5k_stdout": "",
+      "ratio": null,
+      "compile_ms": 498.2,
+      "obj_bytes": 174016,
+      "error": "rc=-1 stderr= stdout="
+    },
+    {
+      "bench": "editdist",
+      "timeout_s": 30.0,
+      "status": "TIMEOUT",
+      "gcc10_ms": 5147.1,
+      "gcc10_runs_ms": [
+        5149.52,
+        5147.1,
+        5136.85
+      ],
+      "gcc10_stdout": "2229810577",
+      "b5k_ms": null,
+      "b5k_runs_ms": [
+        30031.68
+      ],
+      "b5k_stdout": "",
+      "ratio": null,
+      "compile_ms": 429.32,
+      "obj_bytes": 139280,
+      "error": "rc=-1 stderr= stdout="
+    },
+    {
+      "bench": "gameoflife",
+      "timeout_s": 30.0,
+      "status": "TIMEOUT",
+      "gcc10_ms": null,
+      "gcc10_runs_ms": [
+        30031.29
+      ],
+      "gcc10_stdout": "",
+      "b5k_ms": null,
+      "b5k_runs_ms": [
+        30029.69
+      ],
+      "b5k_stdout": "",
+      "ratio": null,
+      "compile_ms": 1265.81,
+      "obj_bytes": 132448,
+      "error": "rc=-1 stderr= stdout="
+    },
+    {
+      "bench": "hashmap",
+      "timeout_s": 30.0,
+      "status": "OK",
+      "gcc10_ms": 1457.89,
+      "gcc10_runs_ms": [
+        1465.21,
+        1450.19,
+        1457.89
+      ],
+      "gcc10_stdout": "1307803744",
+      "b5k_ms": 12691.9,
+      "b5k_runs_ms": [
+        12691.9
+      ],
+      "b5k_stdout": "1307803744",
+      "ratio": 8.706,
+      "compile_ms": 725.13,
+      "obj_bytes": 131760,
+      "error": null
+    },
+    {
+      "bench": "histogram",
+      "timeout_s": 30.0,
+      "status": "OK",
+      "gcc10_ms": 12542.44,
+      "gcc10_runs_ms": [
+        12542.44
+      ],
+      "gcc10_stdout": "122845198",
+      "b5k_ms": 18724.91,
+      "b5k_runs_ms": [
+        18724.91
+      ],
+      "b5k_stdout": "122845198",
+      "ratio": 1.493,
+      "compile_ms": 1368.07,
+      "obj_bytes": 192752,
+      "error": null
+    },
+    {
+      "bench": "kmeans",
+      "timeout_s": 30.0,
+      "status": "TIMEOUT",
+      "gcc10_ms": 22321.25,
+      "gcc10_runs_ms": [
+        22321.25
+      ],
+      "gcc10_stdout": "1616398086",
+      "b5k_ms": null,
+      "b5k_runs_ms": [
+        30016.42
+      ],
+      "b5k_stdout": "",
+      "ratio": null,
+      "compile_ms": 722.81,
+      "obj_bytes": 157888,
+      "error": "rc=-1 stderr= stdout="
+    },
+    {
+      "bench": "lexer",
+      "timeout_s": 30.0,
+      "status": "TIMEOUT",
+      "gcc10_ms": 2162.02,
+      "gcc10_runs_ms": [
+        2174.9,
+        2161.15,
+        2162.02
+      ],
+      "gcc10_stdout": "2401049475",
+      "b5k_ms": null,
+      "b5k_runs_ms": [
+        30027.72
+      ],
+      "b5k_stdout": "",
+      "ratio": null,
+      "compile_ms": 585.98,
+      "obj_bytes": 195328,
+      "error": "rc=-1 stderr= stdout="
+    },
+    {
+      "bench": "mandelbrot",
+      "timeout_s": 30.0,
+      "status": "OK",
+      "gcc10_ms": 3294.01,
+      "gcc10_runs_ms": [
+        3300.71,
+        3294.01,
+        3287.46
+      ],
+      "gcc10_stdout": "3101455856",
+      "b5k_ms": 11286.61,
+      "b5k_runs_ms": [
+        11286.61
+      ],
+      "b5k_stdout": "3101455856",
+      "ratio": 3.426,
+      "compile_ms": 564.11,
+      "obj_bytes": 129792,
+      "error": null
+    },
+    {
+      "bench": "merkle",
+      "timeout_s": 30.0,
+      "status": "TIMEOUT",
+      "gcc10_ms": 9085.06,
+      "gcc10_runs_ms": [
+        9129.95,
+        9085.06,
+        9060.99
+      ],
+      "gcc10_stdout": "3104235417",
+      "b5k_ms": null,
+      "b5k_runs_ms": [
+        30031.96
+      ],
+      "b5k_stdout": "",
+      "ratio": null,
+      "compile_ms": 515.66,
+      "obj_bytes": 143088,
+      "error": "rc=-1 stderr= stdout="
+    },
+    {
+      "bench": "nbody",
+      "timeout_s": 30.0,
+      "status": "OK",
+      "gcc10_ms": 10462.89,
+      "gcc10_runs_ms": [
+        10462.89
+      ],
+      "gcc10_stdout": "3516450380",
+      "b5k_ms": 10394.87,
+      "b5k_runs_ms": [
+        10394.87
+      ],
+      "b5k_stdout": "3516450380",
+      "ratio": 0.993,
+      "compile_ms": 724.0,
+      "obj_bytes": 127760,
+      "error": null,
+      "note": "gcc-10 compiled with -D__attribute__(x)= because main.c uses Clang __attribute__((musttail))"
+    },
+    {
+      "bench": "queens",
+      "timeout_s": 30.0,
+      "status": "OK",
+      "gcc10_ms": 6565.84,
+      "gcc10_runs_ms": [
+        6568.24,
+        6565.84,
+        6557.77
+      ],
+      "gcc10_stdout": "2063750025",
+      "b5k_ms": 29762.53,
+      "b5k_runs_ms": [
+        29762.53
+      ],
+      "b5k_stdout": "2063750025",
+      "ratio": 4.533,
+      "compile_ms": 677.43,
+      "obj_bytes": 136224,
+      "error": null
+    },
+    {
+      "bench": "raytrace",
+      "timeout_s": 30.0,
+      "status": "TIMEOUT",
+      "gcc10_ms": 18663.1,
+      "gcc10_runs_ms": [
+        18663.1
+      ],
+      "gcc10_stdout": "1924309504",
+      "b5k_ms": null,
+      "b5k_runs_ms": [
+        30009.73
+      ],
+      "b5k_stdout": "",
+      "ratio": null,
+      "compile_ms": 1338.82,
+      "obj_bytes": 144368,
+      "error": "rc=-1 stderr= stdout="
+    },
+    {
+      "bench": "symreg",
+      "timeout_s": 30.0,
+      "status": "OK",
+      "gcc10_ms": 13386.26,
+      "gcc10_runs_ms": [
+        13386.26
+      ],
+      "gcc10_stdout": "2383953211",
+      "b5k_ms": 22409.51,
+      "b5k_runs_ms": [
+        22409.51
+      ],
+      "b5k_stdout": "2383953211",
+      "ratio": 1.674,
+      "compile_ms": 473.64,
+      "obj_bytes": 138960,
+      "error": null
+    },
+    {
+      "bench": "terrain",
+      "timeout_s": 60.0,
+      "status": "OK",
+      "gcc10_ms": 7867.14,
+      "gcc10_runs_ms": [
+        7867.14,
+        7863.02,
+        7872.58
+      ],
+      "gcc10_stdout": "2572468224",
+      "b5k_ms": 40827.31,
+      "b5k_runs_ms": [
+        40827.31
+      ],
+      "b5k_stdout": "2572468224",
+      "ratio": 5.19,
+      "compile_ms": 735.23,
+      "obj_bytes": 148192,
+      "error": null
+    },
+    {
+      "bench": "tree-bitonic",
+      "timeout_s": 30.0,
+      "status": "TIMEOUT",
+      "gcc10_ms": 18929.03,
+      "gcc10_runs_ms": [
+        18929.03
+      ],
+      "gcc10_stdout": "3787129428",
+      "b5k_ms": null,
+      "b5k_runs_ms": [
+        30219.63
+      ],
+      "b5k_stdout": "",
+      "ratio": null,
+      "compile_ms": 491.5,
+      "obj_bytes": 157808,
+      "error": "rc=-1 stderr= stdout="
+    },
+    {
+      "bench": "tree-matmul",
+      "timeout_s": 30.0,
+      "status": "COMPILE_ERR",
+      "gcc10_ms": 7970.69,
+      "gcc10_runs_ms": [
+        8151.33,
+        7970.69,
+        7933.03
+      ],
+      "gcc10_stdout": "3797651056",
+      "b5k_ms": null,
+      "b5k_runs_ms": [],
+      "b5k_stdout": null,
+      "ratio": null,
+      "compile_ms": 8.71,
+      "obj_bytes": null,
+      "error": "expected '=' in let"
+    },
+    {
+      "bench": "tree-radix",
+      "timeout_s": 30.0,
+      "status": "OK",
+      "gcc10_ms": 5355.94,
+      "gcc10_runs_ms": [
+        5355.94,
+        5428.08,
+        5346.24
+      ],
+      "gcc10_stdout": "1998173798",
+      "b5k_ms": 18623.27,
+      "b5k_runs_ms": [
+        18623.27
+      ],
+      "b5k_stdout": "1998173798",
+      "ratio": 3.477,
+      "compile_ms": 442.19,
+      "obj_bytes": 142928,
+      "error": null
+    }
+  ]
+}

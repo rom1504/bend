@@ -1,0 +1,153 @@
+{
+  "schema": "agy.bend5k.asm_ceiling_probes.v3",
+  "host_pin": "taskset -c 7",
+  "compiler_baseline": "selfhost/build/agy/bend5k/bend5k_o2 -O2",
+  "c_baseline": "gcc-10 -O2",
+  "probes": [
+    {
+      "id": "1",
+      "benchmark": "expression (tuned: n=128, seed=123; research/agy/wave4_bench/inputs/tuned/kernels/expression.bend + driver.bend; b5k reps=256000, c reps=320000, normalized to fixed_reps=37732)",
+      "checksum": ["3393903617", "1101827231", "3946811968"],
+      "baseline_raw_ms": 81.0,
+      "baseline_norm37732_ms": 11.939,
+      "c_raw_ms": 53.0,
+      "c_norm37732_ms": 6.249,
+      "baseline_vs_c": 1.910,
+      "raw_baseline_ms": [83.0, 81.0, 81.0, 82.0, 81.0, 82.0, 81.0],
+      "raw_c_ms": [52.0, 53.0, 54.0, 53.0, 53.0, 53.0, 54.0],
+      "variants": [
+        {
+          "name": "a_lea_mul_hoist_magic_bottom_loop",
+          "raw_ms": 37.0,
+          "norm37732_ms": 5.453,
+          "vs_c": 0.873,
+          "speedup_vs_base": 2.189,
+          "pct_saved": 54.3,
+          "raw_samples_ms": [38.0, 37.0, 38.0, 37.0, 37.0, 37.0, 38.0],
+          "note": "BEATS gcc-10 -O2 by 12.7% (0.873x C)! In-place patch of $direct.unwind: (1) strength-reduce small-const imul (*3 -> lea (%r,%r,2), *5 -> lea (%r,%r,4)), (2) hoist loop-invariant division magic constants 0xaaaaaaab and 0xcccccccd out of the loop, (3) bottom-tested loop (sub $1; jne) + eliminate redundant test after sub and dead mov/push %rbx."
+        }
+      ],
+      "verdict": "STRONG GO (small-const imul->lea + div-magic LICM + bottom-tested loop: 2.19x -> 0.873x C, beats gcc-10 -O2)",
+      "estimated_loc": "~95 LOC (~20 LOC imul->lea for *3/*5/*9, ~35 LOC loop-invariant imm/magic hoisting, ~40 LOC bottom-tested loop + redundant test elim)"
+    },
+    {
+      "id": "2",
+      "benchmark": "bench/runtime/bfs/main.bend (scaled DEPTH=15; 32768 independent 32x32 mazes)",
+      "checksum": "3905624395",
+      "baseline_ms": 3738.43,
+      "c_ms": 405.74,
+      "baseline_vs_c": 9.214,
+      "raw_baseline_ms": [3881.76, 3705.27, 3738.43],
+      "raw_c_ms": [403.59, 405.74, 1629.41],
+      "variants": [
+        {
+          "name": "a_fill_magic_mod100",
+          "ms": 3524.14,
+          "vs_c": 8.686,
+          "speedup_vs_base": 1.061,
+          "pct_saved": 5.7,
+          "raw_ms": [3524.14, 3509.85, 4660.63],
+          "note": "Replaces 64-bit hardware `div %rcx` by 100 in $direct.fill with magic multiply (`imul $0x51eb851f; shr $37; imul $100`). Saves 214 ms (5.7% of total, and 26.2% of post-BFS runtime)."
+        },
+        {
+          "name": "b_bfs_unboxed_st_arrays",
+          "ms": 1024.87,
+          "vs_c": 2.526,
+          "speedup_vs_base": 3.648,
+          "pct_saved": 72.6,
+          "raw_ms": [1024.87, 1016.52, 8795.92],
+          "note": "MASSIVE WIN: $direct.bfs was 22.9 KiB (627 [rbp-] spills, 14 p111_rt_take + 14 p111_rt_ctor + 10 p113_rt_array_pair + 8 p111_rt_op calls) allocating/freeing St{g,q,d,head,tail} and Array.get Pair on every neighbour! Unboxing St into registers + hoisting g_dp/q_dp/d_dp out of the loop eliminates 72.6% of total runtime (3.65x speedup)."
+        },
+        {
+          "name": "ab_fill_plus_bfs_combined",
+          "ms": 756.34,
+          "vs_c": 1.864,
+          "speedup_vs_base": 4.943,
+          "pct_saved": 79.8,
+          "raw_ms": [735.32, 756.34, 13315.67],
+          "note": "4.94x speedup (9.21x C -> 1.86x C; eliminates >30s timeout at DEPTH=19 -> ~12s vs 6.4s C)! Remaining ~350 ms gap is $direct.maze heap-allocating/initializing/freeing 3x1024 64-bit arrays (24 KiB) per maze vs C stack uint32_t[1024] (12 KiB) + $direct.fold."
+        }
+      ],
+      "verdict": "STRONG GO (linear state-record unboxing + hoisted linear Array handles/pair-elim in loops: 3.65x; + general constant-divisor magic multiply for U32.div/mod: 4.94x total -> 1.86x C)",
+      "estimated_loc": "~220 LOC (linear record unboxing + Array.get pair fusion / handle LICM in self-TCO loops); ~60 LOC (general u32 const div/mod magic multiply)"
+    },
+    {
+      "id": "3",
+      "benchmark": "bench/runtime/raytrace/main.bend (scaled ROWS=8, WIDTH=1000, DEPTH=4; all-F32 sphere raytracer; C built with -ffp-contract=off -lm)",
+      "checksum": "16855370",
+      "baseline_ms": 798.85,
+      "c_ms": 258.82,
+      "baseline_vs_c": 3.087,
+      "raw_baseline_ms": [1001.32, 798.85, 908.1, 721.87, 733.68],
+      "raw_c_ms": [306.15, 337.28, 258.82, 239.46, 237.76],
+      "variants": [
+        {
+          "name": "a_lut_xmm_nearest",
+          "ms": 279.62,
+          "vs_c": 1.080,
+          "speedup_vs_base": 2.857,
+          "pct_saved": 65.0,
+          "raw_ms": [318.65, 310.0, 279.62, 263.82, 265.61],
+          "note": "Patched $direct.nearest + $direct.nearest.t: (1) replaced 4x 9-way if-else branch chains for sx/sy/sz/sr with static .rodata float LUTs (`movss tbl(,%rax,4), %xmm`), (2) kept 6 loop-invariant ray floats (ox,oy,oz,dx,dy,dz) in XMM registers instead of GPRs+6x movd/iter (caused by exit-only Hit p111_rt_ctor call!), (3) direct `ucomiss; jb` + `minss` + dead const-load DCE (folded fl(35,10) left dead 35.0f & 10.0f loads). Closes 96% of the gap -> 1.080x C (2.86x speedup)!"
+        }
+      ],
+      "verdict": "STRONG GO (dense Nat-match -> .rodata float/int LUT + XMM loop-invariant pinning across exit-only calls + ucomiss branch fusion & dead float-const DCE: 2.86x -> 1.08x C)",
+      "estimated_loc": "~180 LOC (~80 LOC dense match -> .rodata LUT, ~60 LOC XMM loop-invariant allocation ignoring cold/exit-only calls, ~40 LOC ucomiss branch fusion + dead const-load DCE)"
+    },
+    {
+      "id": "4",
+      "benchmark": "bench/runtime/tree-bitonic/main.bend (scaled SIZE=19; 2^19=524288-leaf tree bitonic sort+verify)",
+      "checksum": "1842658505",
+      "baseline_ms": 3051.54,
+      "c_ms": 810.05,
+      "baseline_vs_c": 3.767,
+      "raw_baseline_ms": [3051.54, 3297.75, 3026.7],
+      "raw_c_ms": [819.55, 810.05, 806.0],
+      "variants": [
+        {
+          "name": "a_warp_ireuse_only",
+          "ms": 924.32,
+          "vs_c": 1.141,
+          "speedup_vs_base": 3.301,
+          "pct_saved": 69.7,
+          "raw_ms": [924.32, 1230.09, 917.99],
+          "note": "Perceus in-place IReuse in $direct.warp ONLY: in Leaf/Leaf base case reuse both Leaf cells directly (0 Leaf free/alloc, branchless cmov swap, 1 Node pop); in Node/Node + warp_zip reuse wa, wb, and a in-place (0 Node allocs, only 1 free of b, 3 word writes) and drop redundant p111_program/p111_cid_hot hot-path checks. Alone delivers 3.30x speedup -> 1.141x C!"
+        },
+        {
+          "name": "ab_warp_plus_flow_ireuse",
+          "ms": 810.67,
+          "vs_c": 1.001,
+          "speedup_vs_base": 3.764,
+          "pct_saved": 73.4,
+          "raw_ms": [810.67, 1185.17, 798.41],
+          "note": "DEAD HEAT WITH gcc-10 -O2 (1.001x C; 798.4 ms vs 806.0 ms on clean round 3)! Adding Perceus IReuse + base-case identity elision (`case 0n Node{wa,wb}: Node{wa,wb} -> w`, which previously freed & re-allocated w!) to $direct.flow eliminates 100% of remaining overhead."
+        }
+      ],
+      "verdict": "STRONG GO (Perceus in-place IReuse for matched unique CTORs + identity-arm elision + removing hot-path p111_program/p111_cid_hot checks: 3.76x -> 1.001x C)",
+      "estimated_loc": "~220-250 LOC (Perceus IReuse token pairing in IR/codegen + identity match-rebuild elision + hoist/remove per-ICtor p111_program/p111_cid_hot tracing check)"
+    },
+    {
+      "id": "5",
+      "benchmark": "bench/runtime/kmeans/main.bend (scaled SIZE=13; 64 restarts x 20 Lloyd rounds x 8192 points, K=8; pure U32)",
+      "checksum": "1054846867",
+      "baseline_ms": 1363.35,
+      "c_ms": 354.87,
+      "baseline_vs_c": 3.842,
+      "raw_baseline_ms": [1363.35, 1485.08, 1561.92, 1336.09, 1348.52],
+      "raw_c_ms": [394.04, 375.0, 354.87, 352.09, 353.86],
+      "variants": [
+        {
+          "name": "a_chunk_tco_loop",
+          "ms": 319.73,
+          "vs_c": 0.901,
+          "speedup_vs_base": 4.264,
+          "pct_saved": 76.5,
+          "raw_ms": [328.42, 319.73, 330.44, 296.51, 294.34],
+          "note": "BEATS gcc-10 -O2 by 9.9% (0.901x C; 294 ms vs 352 ms on clean rounds)! CRITICAL BUG/GAP FOUND: $direct.chunk has 34 params (29 stack-passed) so bend5k_o2 FAILED to self-TCO it, emitting `sub $0x648, %rsp` (1608-byte frame) + 29 stack pushes + `callq $direct.chunk` + 690 [rbp-] spills on EVERY SINGLE POINT! Lowering $direct.chunk to a self-TCO loop with compact stack accumulators delivers 4.26x speedup -> 0.901x C."
+        }
+      ],
+      "verdict": "STRONG GO (lift self-TCO arity cap to support >6 / stack-passed params in-place in the loop frame + branchless cmov argmin: 4.26x -> 0.901x C, beats gcc-10 -O2)",
+      "estimated_loc": "~80 LOC (self-TCO with stack-passed params updating frame slots in-place instead of recursing); ~100 LOC (dense branchless accumulator update / spill reduction)"
+    }
+  ]
+}

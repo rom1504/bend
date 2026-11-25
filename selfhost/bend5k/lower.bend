@@ -1170,6 +1170,100 @@ def low_hoist_task(fuel: Nat, +env: LowEnv, st: CfgSt, +cs: List<&2, Case>, task
       low_hoist_task(p, env, st3, low_splice_cases(col, cs), HTNext{b5k_list_app(U32, fregs, vt), b5k_list_app(U32, fscs, sct), col}, acc_v, acc_s)
 def low_hoist_go(fuel: Nat, +env: LowEnv, st: CfgSt, cs: List<&2, Case>, vs: List<&2, U32>, scs: List<&2, U32>, col: U32, acc_v: List<&2, U32>, acc_s: List<&2, U32>) -> HoistRes:
   low_hoist_task(fuel, env, st, cs, HTNext{vs, scs, col}, acc_v, acc_s)
+def low_nth_u32(idx: Nat, xs: List<&2, U32>) -> U32:
+  match idx xs:
+    case _ Nil{}: 0
+    case 0n Con{h, _}: h
+    case 1n+p Con{_, t}: low_nth_u32(p, t)
+def low_splice_u32(col: Nat, xs: List<&2, U32>, rep: List<&2, U32>) -> List<&2, U32>:
+  match col xs:
+    case _ Nil{}: Nil{}
+    case 0n Con{_, t}: b5k_list_app(U32, rep, t)
+    case 1n+p Con{h, t}: Con{h, low_splice_u32(p, t, rep)}
+def low_grp_pat_m(+env: LowEnv, mp: Maybe<&2, Pat>) -> HoistCol:
+  match mp:
+    case Some{PPair{_, _}}: HCPair{}
+    case Some{PCtr{+sym, +fs}}:
+      +k = low_special_ctor_kind(env_kind(env), sym)
+      +nf = b5k_list_len(Pat, fs)
+      Bool.pick(HoistCol, Bool.and(Bool.or(U32.is_zero(k), U32.is_gt(k, 5)), U32.is_gt(nf, 0)), HCCtr{sym, nf}, HCNone{})
+    case _: HCNone{}
+type GrpSplit is Data:
+  GrpSplit{grp: List<&2, Case>, tail: List<&2, Case>}
+type GrpSplitTask is Data:
+  GSNext{cs: List<&2, Case>, acc: List<&2, Case>}
+  GSStep{hit: Bool, c: Case, t: List<&2, Case>, acc: List<&2, Case>}
+def low_grp_split_go(fuel: Nat, +spec: HoistCol, +col: U32, task: GrpSplitTask) -> GrpSplit:
+  match fuel task:
+    case 0n GSNext{cs, acc}: GrpSplit{b5k_list_rev(Case, acc), cs}
+    case 0n GSStep{_, c, t, acc}: GrpSplit{b5k_list_rev(Case, acc), Con{c, t}}
+    case 1n+_ GSNext{Nil{}, acc}: GrpSplit{b5k_list_rev(Case, acc), Nil{}}
+    case 1n+p GSNext{Con{Case{+ps, body}, t}, acc}:
+      low_grp_split_go(p, spec, col, GSStep{low_hoist_match_one(spec, low_nth_pat(U32.to_nat(col), ps)), Case{ps, body}, t, acc})
+    case 1n+p GSStep{True{}, c, t, acc}: low_grp_split_go(p, spec, col, GSNext{t, Con{c, acc}})
+    case 1n+_ GSStep{False{}, c, t, acc}: GrpSplit{b5k_list_rev(Case, acc), Con{c, t}}
+def low_pat_disjoint(+sym: U32, +cid: U32, mp: Maybe<&2, Pat>) -> Bool:
+  match mp:
+    case Some{PCtr{s2, _}}: U32.is_ne(sym, s2)
+    case Some{PList{Nil{}}}: U32.is_ne(cid, 4)
+    case Some{PList{Con{_, _}}}: U32.is_ne(cid, 5)
+    case _: False{}
+def low_tail_disjoint(+sym: U32, +cid: U32, +col: U32, cs: List<&2, Case>) -> Bool:
+  match cs:
+    case Nil{}: True{}
+    case Con{Case{ps, _}, t}: Bool.and(low_pat_disjoint(sym, cid, low_nth_pat(U32.to_nat(col), ps)), low_tail_disjoint(sym, cid, col, t))
+def low_grp_last_irref(+col: U32, grp: List<&2, Case>) -> Bool:
+  match grp:
+    case Nil{}: False{}
+    case Con{Case{ps, _}, Nil{}}: Bool.not(pat_is_refut(16n, low_splice_pat(U32.to_nat(col), ps)))
+    case Con{_, t}: low_grp_last_irref(col, t)
+type GrpPick is Data:
+  GPNone{}
+  GPHit{col: U32, spec: HoistCol, grp: List<&2, Case>, tail: List<&2, Case>}
+def low_grp_try_split(+env: LowEnv, +col: U32, spec: HoistCol, gs: GrpSplit) -> GrpPick:
+  match spec gs:
+    case sp GrpSplit{Con{c0, Con{c1, gt}}, Nil{}}: GPHit{col, sp, Con{c0, Con{c1, gt}}, Nil{}}
+    case HCCtr{+sym, +nf} GrpSplit{Con{+c0, Con{+c1, +gt}}, Con{+th, +tt}}:
+      +is_s = U32.is_ne(um_get(env_csingle(env), sym), 0)
+      +cv = um_get(env_ctors(env), sym)
+      ok = Bool.or(Bool.and(Bool.not(is_s), low_tail_disjoint(sym, Bool.pick(U32, U32.is_zero(cv), 0, U32.sub(cv, 1)), col, Con{th, tt})), low_grp_last_irref(col, Con{c0, Con{c1, gt}}))
+      Bool.pick(GrpPick, ok, GPHit{col, HCCtr{sym, nf}, Con{c0, Con{c1, gt}}, Bool.pick(List<&2, Case>, is_s, Nil{}, Con{th, tt})}, GPNone{})
+    case HCPair{} GrpSplit{Con{+c0, Con{+c1, +gt}}, Con{_, _}}:
+      Bool.pick(GrpPick, low_grp_last_irref(col, Con{c0, Con{c1, gt}}), GPHit{col, HCPair{}, Con{c0, Con{c1, gt}}, Nil{}}, GPNone{})
+    case _ _: GPNone{}
+type GrpFindTask is Data:
+  GFCol{vs: List<&2, U32>, col: U32}
+  GFSpec{spec: HoistCol, vt: List<&2, U32>, col: U32}
+  GFPick{pick: GrpPick, vt: List<&2, U32>, col: U32}
+def low_grp_find_go(fuel: Nat, +env: LowEnv, +ps0: List<&2, Pat>, +cs: List<&2, Case>, task: GrpFindTask) -> GrpPick:
+  match fuel task:
+    case 0n _: GPNone{}
+    case 1n+_ GFCol{Nil{}, _}: GPNone{}
+    case 1n+p GFCol{Con{_, vt}, +col}:
+      low_grp_find_go(p, env, ps0, cs, GFSpec{low_grp_pat_m(env, low_nth_pat(U32.to_nat(col), ps0)), vt, col})
+    case 1n+p GFSpec{HCNone{}, vt, col}: low_grp_find_go(p, env, ps0, cs, GFCol{vt, U32.add(col, 1)})
+    case 1n+p GFSpec{+spec, vt, +col}:
+      low_grp_find_go(p, env, ps0, cs, GFPick{low_grp_try_split(env, col, spec, low_grp_split_go(256n, spec, col, GSNext{cs, Nil{}})), vt, col})
+    case 1n+p GFPick{GPNone{}, vt, col}: low_grp_find_go(p, env, ps0, cs, GFCol{vt, U32.add(col, 1)})
+    case 1n+_ GFPick{hit, _, _}: hit
+type GrpTakeRes is Data:
+  GrpTakeRes{st: CfgSt, vs: List<&2, U32>, scs: List<&2, U32>, trs: List<&2, U32>}
+def low_grp_emit_take(+env: LowEnv, st: CfgSt, spec: HoistCol, +col: U32, +vs: List<&2, U32>, +scs: List<&2, U32>, +trs: List<&2, U32>) -> GrpTakeRes:
+  match spec:
+    case HCPair{}:
+      +sc = low_nth_u32(U32.to_nat(col), scs)
+      +st1 = cfg_alloc_reg(st)
+      +ra = cfg_res(st1)
+      +st2 = cfg_alloc_reg(st1)
+      +rb = cfg_res(st2)
+      GrpTakeRes{cfg_emit(st2, ITake{[ra, rb], low_nth_u32(U32.to_nat(col), vs)}), low_splice_u32(U32.to_nat(col), vs, [ra, rb]), low_splice_u32(U32.to_nat(col), scs, [Bool.to_u32(U32.is_ne(U32.and(sc, 2), 0)), Bool.to_u32(U32.is_ne(U32.and(sc, 4), 0))]), low_splice_u32(U32.to_nat(col), trs, [0, 0])}
+    case HCCtr{+sym, +nf}:
+      +cv = um_get(env_ctors(env), sym)
+      sm = Bool.pick(U32, U32.is_eq(Bool.pick(U32, U32.is_zero(cv), 0, U32.sub(cv, 1)), 6), U32.shrn(low_nth_u32(U32.to_nat(col), scs), 1n), um_get(env_csmask(env), sym))
+      +st2 = low_alloc_regs_go(U32.to_nat(nf), st, Nil{})
+      +fregs = cfg_rlist(st2)
+      GrpTakeRes{cfg_emit(st2, ITake{fregs, low_nth_u32(U32.to_nat(col), vs)}), low_splice_u32(U32.to_nat(col), vs, fregs), low_splice_u32(U32.to_nat(col), scs, low_mask_scs(U32.to_nat(nf), sm, 0)), low_splice_u32(U32.to_nat(col), trs, low_zero_scs(U32.to_nat(nf)))}
+    case HCNone{}: GrpTakeRes{st, vs, scs, trs}
 def low_pat_needs_tag(+env: LowEnv, p: Pat) -> Bool:
   match p:
     case PList{_}: True{}
@@ -1251,6 +1345,8 @@ type LowTask is Data:
   LTExpr{e: Expr}
   LTExprs{es: List<&2, Expr>, acc: List<&2, U32>}
   LTCases{base_vm: U32Map, base_nvm: U32Map, cs: List<&2, Case>, vscruts: List<&2, U32>, sc_scruts: List<&2, U32>, tregs: List<&2, U32>, res_reg: U32, merge_blk: U32}
+  LTCasesGrp{base_vm: U32Map, base_nvm: U32Map, cs: List<&2, Case>, vscruts: List<&2, U32>, sc_scruts: List<&2, U32>, tregs: List<&2, U32>, res_reg: U32, merge_blk: U32, pick: GrpPick}
+  LTCasesTake{base_vm: U32Map, base_nvm: U32Map, gtr: GrpTakeRes, grp: List<&2, Case>, tail: List<&2, Case>, tail_blk: U32, orig_vs: List<&2, U32>, orig_scs: List<&2, U32>, orig_trs: List<&2, U32>, res_reg: U32, merge_blk: U32}
   LTCmpCases{base_vm: U32Map, base_nvm: U32Map, cs: List<&2, Case>, va: U32, vb: U32, res_reg: U32, merge_blk: U32}
   LTMatHoist{base_vm: U32Map, base_nvm: U32Map, hr: HoistRes}
   LTMatOne{base_vm: U32Map, base_nvm: U32Map, s0: Expr, cs: List<&2, Case>, bkind: U32, cinfo: CmpMatchInfo}
@@ -1346,7 +1442,7 @@ def low_go(fuel: Nat, +env: LowEnv, st: CfgSt, task: LowTask, +is_tail: Bool) ->
       +st1 = low_go(p, env, st, LTExpr{h}, False{})
       low_go(p, env, st1, LTExprs{t, Con{cfg_res(st1), acc}}, False{})
     case Succ{_} LTCases{_, _, Nil{}, _, _, _, _, _}: cfg_seal(st, TFail{1})
-    case Succ{+p} LTCases{+base_vm, +base_nvm, Con{Case{ps, +body}, rest}, +vscruts, +sc_scruts, +tregs, +res_reg, +merge_blk}:
+    case Succ{+p} LTCases{+base_vm, +base_nvm, Con{Case{+ps, +body}, rest}, +vscruts, +sc_scruts, +tregs, +res_reg, +merge_blk}:
       match rest:
         case Nil{}:
           +st0 = st
@@ -1354,15 +1450,32 @@ def low_go(fuel: Nat, +env: LowEnv, st: CfgSt, task: LowTask, +is_tail: Bool) ->
           st1 = low_match_pats_sct(64n, env, cfg_set_vm_nvm(st0, base_vm, base_nvm), ps, vscruts, sc_scruts, tregs, body, 0, False{})
           +st2 = low_go(p, env, st1, LTExpr{body}, is_tail)
           cfg_fin_branch(st2, cfg_sealed(st2), res_reg, cfg_res(st2), merge_blk, prev_mg)
-        case Con{rh, rt}:
-          +st0 = st
-          prev_mg = cfg_merged(st0)
-          +st_f = cfg_alloc_blk(st0)
-          +nxt_blk = cfg_res(st_f)
-          st1 = low_match_case_pats(env, cfg_set_vm_nvm(st_f, base_vm, base_nvm), ps, vscruts, sc_scruts, tregs, body, nxt_blk)
-          +st2 = low_go(p, env, st1, LTExpr{body}, is_tail)
-          st3 = cfg_fin_branch(st2, cfg_sealed(st2), res_reg, cfg_res(st2), merge_blk, prev_mg)
-          low_go(p, env, cfg_start(st3, nxt_blk), LTCases{base_vm, base_nvm, Con{rh, rt}, vscruts, sc_scruts, tregs, res_reg, merge_blk}, is_tail)
+        case Con{+rh, +rt}:
+          low_go(p, env, st, LTCasesGrp{base_vm, base_nvm, Con{Case{ps, body}, Con{rh, rt}}, vscruts, sc_scruts, tregs, res_reg, merge_blk, low_grp_find_go(64n, env, ps, Con{Case{ps, body}, Con{rh, rt}}, GFCol{vscruts, 0})}, is_tail)
+    case Succ{+p} LTCasesGrp{+base_vm, +base_nvm, Con{Case{ps, +body}, rest}, +vscruts, +sc_scruts, +tregs, +res_reg, +merge_blk, GPNone{}}:
+      +st0 = st
+      prev_mg = cfg_merged(st0)
+      +st_f = cfg_alloc_blk(st0)
+      +nxt_blk = cfg_res(st_f)
+      st1 = low_match_case_pats(env, cfg_set_vm_nvm(st_f, base_vm, base_nvm), ps, vscruts, sc_scruts, tregs, body, nxt_blk)
+      +st2 = low_go(p, env, st1, LTExpr{body}, is_tail)
+      st3 = cfg_fin_branch(st2, cfg_sealed(st2), res_reg, cfg_res(st2), merge_blk, prev_mg)
+      low_go(p, env, cfg_start(st3, nxt_blk), LTCases{base_vm, base_nvm, rest, vscruts, sc_scruts, tregs, res_reg, merge_blk}, is_tail)
+    case Succ{p} LTCasesGrp{base_vm, base_nvm, _, +vscruts, +sc_scruts, +tregs, res_reg, merge_blk, GPHit{+col, spec, grp, Nil{}}}:
+      +st0 = st
+      low_go(p, env, st0, LTCasesTake{base_vm, base_nvm, low_grp_emit_take(env, st0, spec, col, vscruts, sc_scruts, tregs), low_splice_cases(col, grp), Nil{}, 0, vscruts, sc_scruts, tregs, res_reg, merge_blk}, is_tail)
+    case Succ{p} LTCasesGrp{base_vm, base_nvm, _, +vscruts, +sc_scruts, +tregs, res_reg, merge_blk, GPHit{+col, HCCtr{+sym, +nf}, grp, Con{th, tt}}}:
+      +st_f = cfg_alloc_blk(st)
+      +tail_blk = cfg_res(st_f)
+      +cv = um_get(env_ctors(env), sym)
+      +st_ok = low_opt_test_tag(True{}, st_f, low_nth_u32(U32.to_nat(col), vscruts), low_nth_u32(U32.to_nat(col), tregs), Bool.pick(U32, U32.is_zero(cv), 0, U32.sub(cv, 1)), tail_blk)
+      low_go(p, env, st_ok, LTCasesTake{base_vm, base_nvm, low_grp_emit_take(env, st_ok, HCCtr{sym, nf}, col, vscruts, sc_scruts, tregs), low_splice_cases(col, grp), Con{th, tt}, tail_blk, vscruts, sc_scruts, tregs, res_reg, merge_blk}, is_tail)
+    case Succ{_} LTCasesGrp{_, _, _, _, _, _, _, _, _}: cfg_seal(st, TFail{1})
+    case Succ{p} LTCasesTake{base_vm, base_nvm, GrpTakeRes{st1, vs1, scs1, trs1}, grp, Nil{}, _, _, _, _, res_reg, merge_blk}:
+      low_go(p, env, st1, LTCases{base_vm, base_nvm, grp, vs1, scs1, trs1, res_reg, merge_blk}, is_tail)
+    case Succ{+p} LTCasesTake{+base_vm, +base_nvm, GrpTakeRes{st1, vs1, scs1, trs1}, grp, Con{th, tt}, tail_blk, orig_vs, orig_scs, orig_trs, +res_reg, +merge_blk}:
+      st2 = low_go(p, env, st1, LTCases{base_vm, base_nvm, grp, vs1, scs1, trs1, res_reg, merge_blk}, is_tail)
+      low_go(p, env, cfg_start(st2, tail_blk), LTCases{base_vm, base_nvm, Con{th, tt}, orig_vs, orig_scs, orig_trs, res_reg, merge_blk}, is_tail)
     case Succ{_} LTCmpCases{_, _, Nil{}, _, _, _, _}: cfg_seal(st, TFail{1})
     case Succ{+p} LTCmpCases{+base_vm, +base_nvm, Con{Case{Con{_, Nil{}}, body}, Nil{}}, _, _, +res_reg, +merge_blk}:
       +st0 = st

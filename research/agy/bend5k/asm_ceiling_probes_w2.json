@@ -1,0 +1,194 @@
+{
+  "schema": "agy.bend5k.asm_ceiling_probes.v2",
+  "host_pin": "taskset -c 7",
+  "compiler_baseline": "selfhost/build/agy/bend5k/bend5k_o2 -O2",
+  "c_baseline": "gcc-10 -O2",
+  "probes": [
+    {
+      "id": "1",
+      "benchmark": "histogram (medium: D=18, B=7, R=24; research/agy/wave4_bench/inputs/upstream/histogram/main.bend)",
+      "checksum": "3307081914",
+      "baseline_ms": 57.152,
+      "c_ms": 30.318,
+      "baseline_vs_c": 1.885,
+      "raw_baseline_ms": [56.919, 57.152, 57.714, 57.546, 56.781, 57.007, 57.362],
+      "raw_c_ms": [30.531, 30.887, 30.318, 30.066, 30.323, 30.316, 29.916],
+      "variants": [
+        {
+          "name": "a_count_go_tight",
+          "ms": 40.818,
+          "vs_c": 1.346,
+          "speedup_vs_base": 1.400,
+          "pct_saved": 28.6,
+          "raw_ms": [40.818, 40.572, 41.116, 40.951, 40.531, 40.821, 40.473],
+          "note": "Hoist row_ptr = t_dp + row_base*8 and ks_ptr = ks_dp + k_idx*8, eliminate -0x40/-0x48(%rbp) mask reloads and in-loop `and mask`, fuse load+add+store into `addl $1, (%r10,%rax,8)`."
+        },
+        {
+          "name": "b1_zero_go_rep_stosq_only",
+          "ms": 58.672,
+          "baseline_paired_ms": 58.657,
+          "speedup_vs_base": 1.000,
+          "pct_saved": 0.0,
+          "raw_ms": [58.377, 57.489, 58.909, 74.524, 59.482, 57.799, 58.672],
+          "note": "KILL: $direct.zero.go only zeroes 32K slots x 24 rounds = 0.78M stores (<1ms total); rep stosq buys 0.0%."
+        },
+        {
+          "name": "b2_fill_go_sse2_only",
+          "ms": 44.314,
+          "baseline_paired_ms": 58.657,
+          "speedup_vs_base": 1.324,
+          "pct_saved": 24.5,
+          "raw_ms": [44.328, 42.423, 44.314, 47.674, 42.907, 44.44, 44.299],
+          "note": "Strength-reduce (idx+1)*0x9e3779b1 + seed to induction-var add + 4-wide SSE2 xorshift32 in $direct.fill.go."
+        },
+        {
+          "name": "b_zero_plus_fill",
+          "ms": 41.737,
+          "vs_c": 1.377,
+          "speedup_vs_base": 1.369,
+          "pct_saved": 27.0,
+          "raw_ms": [41.743, 42.021, 42.11, 41.621, 41.737, 41.342, 41.398]
+        },
+        {
+          "name": "ab_all_three_combined",
+          "ms": 25.115,
+          "vs_c": 0.828,
+          "speedup_vs_base": 2.276,
+          "pct_saved": 56.1,
+          "raw_ms": [25.075, 25.86, 25.249, 25.09, 25.115, 25.136, 25.081],
+          "note": "BEATS gcc-10 -O2 by 17.2% (0.828x C)! Entire gap is split almost 50/50 between count.go (28.6%) and fill.go (24.5%)."
+        }
+      ],
+      "verdict": "STRONG GO (count.go array-base LICM + RMW addl + mask-elim: 1.40x) / GO (fill.go IV strength-reduction + SSE2: 1.32x) / KILL (zero.go rep stosq: 0.0%)",
+      "estimated_loc": "~140 LOC (array base+offset LICM + RMW addl + proven-in-bounds mask elim); ~200 LOC (4-wide SSE2 xorshift vectorization)"
+    },
+    {
+      "id": "2",
+      "benchmark": "editdist (research/agy/wave4_bench/inputs/tuned/kernels/editdist.bend + driver.bend; n=2, seed=0; b5k reps=512, c reps=1536, normalized to fixed_reps=240)",
+      "checksum": ["2065873279", "1197591869", "1013689664"],
+      "baseline_512_ms": 57.0,
+      "baseline_norm240_ms": 26.719,
+      "c_1536_ms": 63.0,
+      "c_norm240_ms": 9.844,
+      "baseline_vs_c": 2.714,
+      "raw_baseline_512_ms": [63.0, 56.0, 57.0, 57.0, 57.0, 56.0, 57.0],
+      "raw_c_1536_ms": [64.0, 63.0, 63.0, 65.0, 63.0, 63.0, 64.0],
+      "variants": [
+        {
+          "name": "a_zerospill_no_tailbounce_branched",
+          "ms_512": 42.0,
+          "norm240_ms": 19.688,
+          "vs_c": 2.000,
+          "speedup_vs_base": 1.357,
+          "pct_saved": 26.3,
+          "raw_ms_512": [42.0, 42.0, 42.0, 42.0, 43.0, 42.0, 42.0],
+          "note": "Eliminates 48 [rbp-] spill ops (including 3 dead stores to -0xa0(%rbp) in a row!) + 6-op tail-call (%rsp) register shuffle in $direct.columns, keeping the 4-way branch on (s & 3)."
+        },
+        {
+          "name": "b_zerospill_plus_indexed_mask4",
+          "ms_512": 36.0,
+          "norm240_ms": 16.875,
+          "vs_c": 1.714,
+          "speedup_vs_base": 1.583,
+          "speedup_over_a": 1.167,
+          "pct_saved": 36.8,
+          "pct_saved_over_a": 14.3,
+          "raw_ms_512": [36.0, 36.0, 36.0, 36.0, 37.0, 36.0, 36.0],
+          "note": "Replaces unpredictable 4-way branch chain on (s & 3) with 4-entry stack table lookup `mov (%rsp,%rax,4), %eax` (+14.3% on top of zero-spill, 1.583x total). Remaining 1.71x C is $direct.build_masks (71 [rbp-] spills) + heap Array<U32> (2 KiB) vs C stack uint8_t[256] (256 B)."
+        }
+      ],
+      "verdict": "STRONG GO (dead-spill & tail-call parallel-copy reg shuffle fix: 1.36x; + branchless 4-way LUT/cmov for dense small-int match: +14.3% -> 1.58x total)",
+      "estimated_loc": "~120 LOC (regalloc spill reduction + parallel-copy cycle-breaker for tail-call args); ~90 LOC (small-int dense match -> stack LUT / cmov)"
+    },
+    {
+      "id": "3",
+      "benchmark": "bench/runtime/mandelbrot/main.bend (4096x4096, 51 iters)",
+      "checksum": "3101455856",
+      "baseline_ms": 11645.818,
+      "c_ms": 3403.483,
+      "baseline_vs_c": 3.422,
+      "raw_baseline_ms": [11549.915, 11645.818, 17414.4],
+      "raw_c_ms": [3340.09, 4315.144, 3403.483],
+      "variants": [
+        {
+          "name": "a_sar8_peephole_zerospill_branchless",
+          "ms": 7525.216,
+          "vs_c": 2.211,
+          "speedup_vs_base": 1.548,
+          "pct_saved": 35.4,
+          "raw_ms": [7892.205, 7447.337, 7525.216],
+          "note": "Replaces 3x 11-instruction `asr8` idiom `(x>>8) | select(x>>31, 0, 0xFF000000)` with single `sar $8, %reg32` + eliminates 3 stack spills in $direct.mit, keeping pure branchless cmov."
+        },
+        {
+          "name": "b_sar8_plus_skip_escaped_imul",
+          "ms": 3597.861,
+          "vs_c": 1.057,
+          "speedup_vs_base": 3.237,
+          "speedup_over_a": 2.092,
+          "pct_saved": 69.1,
+          "pct_saved_over_a": 52.2,
+          "raw_ms": [3597.861, 4100.048, 3538.129],
+          "note": "CRITICAL FINDING: gcc-10 -O2 sinks nzr/nzi (including 3rd imul) into `if (e2 == 0)` branch! Most pixels escape in 2-5 iters out of 51, so e2!=0 is 95%+ predictable and skipping the 3rd imul breaks the loop-carried zr/zi dependency chain -> 2.09x additional speedup -> 3.24x total (1.057x C)!"
+        }
+      ],
+      "verdict": "STRONG GO (asr8 -> sar $k peephole: 1.55x; + shared-guard pure-expr sinking out of cmov when expr contains imul: +2.09x -> 3.24x total, 1.06x C)",
+      "estimated_loc": "~40 LOC (asr idiom -> sar peephole); ~120 LOC (shared-guard select sinking for multi-op/imul expressions)"
+    },
+    {
+      "id": "4",
+      "benchmark": "bench/runtime/queens/main.bend (SIZE=17, DEPTH=17, LIMIT=11730)",
+      "checksum": "2063750025",
+      "baseline_uncontended_ms": 29753.87,
+      "c_uncontended_ms": 6558.84,
+      "baseline_uncontended_vs_c": 4.536,
+      "interleaved_ht_baseline_ms": 52862.822,
+      "interleaved_ht_c_ms": 9291.723,
+      "variants": [
+        {
+          "name": "unboxed_stats_return_plus_reg_worker",
+          "uncontended_ms": 6883.0,
+          "uncontended_vs_c": 1.049,
+          "uncontended_speedup_vs_base": 4.323,
+          "uncontended_pct_saved": 76.9,
+          "interleaved_ht_ms": 10035.976,
+          "interleaved_ht_vs_c": 1.080,
+          "interleaved_ht_speedup_vs_base": 5.267,
+          "raw_uncontended_ms": [6883.0, 6884.065, 6999.078],
+          "note": "Root cause of 4.54x C: $direct.solve takes 14 params (9 spilled to stack every call) and heap-allocates/frees Stats{sols,nodes} on every recursive node! Worker/wrapper returning packed (sols,nodes) in rax + register args closes 98.5% of the gap -> 1.05x C (4.32x speedup)!"
+        }
+      ],
+      "verdict": "STRONG GO (2-word scalar CTOR multi-value return in rax:rdx + worker/wrapper unboxing & arity reduction: 4.32x -> 1.05x C)",
+      "estimated_loc": "~220-280 LOC (multi-value scalar CTOR return in rax:rdx + recursive accumulator/wrapper unboxing)"
+    },
+    {
+      "id": "5",
+      "benchmark": "bench/runtime/terrain/main.bend (SIZE=16, EPASS=5; pure U32 integer, no F32)",
+      "checksum": "2572468224",
+      "baseline_uncontended_ms": 15152.58,
+      "c_uncontended_ms": 7876.15,
+      "baseline_uncontended_vs_c": 1.924,
+      "interleaved_ht_baseline_ms": 26285.649,
+      "interleaved_ht_c_ms": 13153.598,
+      "raw_interleaved_ht_baseline_ms": [26175.121, 26396.178],
+      "raw_interleaved_ht_c_ms": [12979.232, 13327.964],
+      "variants": [
+        {
+          "name": "erode_licm_zerospill_direct_idx",
+          "uncontended_ms": 11115.992,
+          "uncontended_vs_c": 1.411,
+          "uncontended_speedup_vs_base": 1.363,
+          "uncontended_pct_saved": 26.6,
+          "interleaved_ht_ms": 17684.838,
+          "interleaved_ht_vs_c": 1.344,
+          "interleaved_ht_speedup_vs_base": 1.486,
+          "interleaved_ht_pct_saved": 32.7,
+          "raw_uncontended_ms": [11184.0, 11115.992, 10965.906],
+          "raw_interleaved_ht_ms": [17620.43, 17749.245],
+          "note": "In $direct.erode: LICM `p * 0x9e3779b1` (was recomputed 4x/quad!), eliminate 20 [rbp-] spills/quad, and use direct indexed `mov (%r10,%rdi,8)` (no extra lea/redundant `and mask`). Cuts 1.93-2.00x C down to 1.34-1.41x C (saving ~4.1s). Remaining ~1.35x C is $direct.fill (42 [rbp-] spills + dead Array.swap load), $direct.hist (28 [rbp-] spills), and 64-bit vs 32-bit h[4096] L1D footprint (32 KiB vs 16 KiB)."
+        }
+      ],
+      "verdict": "STRONG GO (loop-invariant pure-expr LICM + zero-spill regalloc + direct indexed loads in $direct.erode/$direct.fill/$direct.hist: 1.36-1.49x from erode alone)",
+      "estimated_loc": "~150 LOC (pure-expr LICM + regalloc spill reduction + indexed-load folding)"
+    }
+  ]
+}

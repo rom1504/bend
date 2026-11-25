@@ -107,13 +107,11 @@ def symtab_new() -> SymTab:
 def symtab_name(st: SymTab, +id: U32) -> String:
   SymTab{_, _, by_id} = st
   ra_vec_get(String, 8n, "", id, by_id)
-def symtab_intern_fin(miss: Bool, +next: U32, m1: Map<&2, U32>, by_id: RaVec<String>, +name: String, found: U32) -> SymRes:
-  match miss:
-    case True{}: SymRes{SymTab{U32.add(next, 1), Map.set(&2, U32, m1, name, U32.add(next, 1)), ra_vec_set(String, 8n, next, name, by_id)}, next}
-    case False{}: SymRes{SymTab{next, m1, by_id}, U32.sub(found, 1)}
 def symtab_intern_got(+next: U32, by_id: RaVec<String>, +name: String, got: Map<&2, U32> & U32) -> SymRes:
-  (m1, +found) = got
-  symtab_intern_fin(U32.is_zero(found), next, m1, by_id, name, found)
+  (m1, found) = got
+  match found:
+    case 0: SymRes{SymTab{U32.add(next, 1), Map.set(&2, U32, m1, name, U32.add(next, 1)), ra_vec_set(String, 8n, next, name, by_id)}, next}
+    case f: SymRes{SymTab{next, m1, by_id}, U32.sub(f, 1)}
 def symtab_intern(st: SymTab, +name: String) -> SymRes:
   SymTab{next, by_name, by_id} = st
   symtab_intern_got(next, by_id, name, Map.get(U32, 0, by_name, name))

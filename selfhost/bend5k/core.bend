@@ -75,69 +75,39 @@ def b5k_u32_to_str_go(fuel: Nat, +n: U32, acc: String, z: Bool) -> String:
     case 0n _: acc
     case _ True{}: acc
     case 1n+p False{}:
-      d = U32.mod(n, 10)
       +q = U32.div(n, 10)
-      c = Char.from_u32(U32.add(48, d))
-      b5k_u32_to_str_go(p, q, SCon{c, acc}, U32.is_zero(q))
-def b5k_u32_to_str_fin(+n: U32, z: Bool) -> String:
-  match z:
-    case True{}: "0"
-    case False{}: b5k_u32_to_str_go(12n, n, "", False{})
+      b5k_u32_to_str_go(p, q, SCon{Char.from_u32(U32.add(48, U32.mod(n, 10))), acc}, U32.is_zero(q))
 def b5k_u32_to_str(+n: U32) -> String:
-  b5k_u32_to_str_fin(n, U32.is_zero(n))
+  Bool.pick(String, U32.is_zero(n), "0", b5k_u32_to_str_go(12n, n, "", False{}))
 # Shared Dense 4-Way U32 Bit-Trie (Depth 8 = 65,536 entries)
 type RaVec<-A: Data> is Data:
   RVEmpty{}
   RVLeaf{val: A}
   RVNode{c0: RaVec<A>, c1: RaVec<A>, c2: RaVec<A>, c3: RaVec<A>}
-def ra_vec_set_go(-A: Data, d: Nat, +idx: U32, val: A, t: RaVec<A>, q: U32) -> RaVec<A>:
+def ra_vec_set_q(-A: Data, d: Nat, +idx: U32, val: A, t: RaVec<A>, q: U32) -> RaVec<A>:
   match d t q:
     case 0n _ _: RVLeaf{val}
-    case 1n+p RVNode{c0, c1, c2, c3} 0:
-      +nxt = U32.shrn(idx, 2n)
-      RVNode{ra_vec_set_go(A, p, nxt, val, c0, U32.and(nxt, 3)), c1, c2, c3}
-    case 1n+p RVNode{c0, c1, c2, c3} 1:
-      +nxt = U32.shrn(idx, 2n)
-      RVNode{c0, ra_vec_set_go(A, p, nxt, val, c1, U32.and(nxt, 3)), c2, c3}
-    case 1n+p RVNode{c0, c1, c2, c3} 2:
-      +nxt = U32.shrn(idx, 2n)
-      RVNode{c0, c1, ra_vec_set_go(A, p, nxt, val, c2, U32.and(nxt, 3)), c3}
-    case 1n+p RVNode{c0, c1, c2, c3} _:
-      +nxt = U32.shrn(idx, 2n)
-      RVNode{c0, c1, c2, ra_vec_set_go(A, p, nxt, val, c3, U32.and(nxt, 3))}
-    case 1n+p _ 0:
-      +nxt = U32.shrn(idx, 2n)
-      RVNode{ra_vec_set_go(A, p, nxt, val, RVEmpty{}, U32.and(nxt, 3)), RVEmpty{}, RVEmpty{}, RVEmpty{}}
-    case 1n+p _ 1:
-      +nxt = U32.shrn(idx, 2n)
-      RVNode{RVEmpty{}, ra_vec_set_go(A, p, nxt, val, RVEmpty{}, U32.and(nxt, 3)), RVEmpty{}, RVEmpty{}}
-    case 1n+p _ 2:
-      +nxt = U32.shrn(idx, 2n)
-      RVNode{RVEmpty{}, RVEmpty{}, ra_vec_set_go(A, p, nxt, val, RVEmpty{}, U32.and(nxt, 3)), RVEmpty{}}
-    case 1n+p _ _:
-      +nxt = U32.shrn(idx, 2n)
-      RVNode{RVEmpty{}, RVEmpty{}, RVEmpty{}, ra_vec_set_go(A, p, nxt, val, RVEmpty{}, U32.and(nxt, 3))}
+    case 1n+p RVNode{c0, c1, c2, c3} 0: RVNode{ra_vec_set_q(A, p, U32.shrn(idx, 2n), val, c0, U32.and(U32.shrn(idx, 2n), 3)), c1, c2, c3}
+    case 1n+p RVNode{c0, c1, c2, c3} 1: RVNode{c0, ra_vec_set_q(A, p, U32.shrn(idx, 2n), val, c1, U32.and(U32.shrn(idx, 2n), 3)), c2, c3}
+    case 1n+p RVNode{c0, c1, c2, c3} 2: RVNode{c0, c1, ra_vec_set_q(A, p, U32.shrn(idx, 2n), val, c2, U32.and(U32.shrn(idx, 2n), 3)), c3}
+    case 1n+p RVNode{c0, c1, c2, c3} _: RVNode{c0, c1, c2, ra_vec_set_q(A, p, U32.shrn(idx, 2n), val, c3, U32.and(U32.shrn(idx, 2n), 3))}
+    case 1n+p _ 0: RVNode{ra_vec_set_q(A, p, U32.shrn(idx, 2n), val, RVEmpty{}, U32.and(U32.shrn(idx, 2n), 3)), RVEmpty{}, RVEmpty{}, RVEmpty{}}
+    case 1n+p _ 1: RVNode{RVEmpty{}, ra_vec_set_q(A, p, U32.shrn(idx, 2n), val, RVEmpty{}, U32.and(U32.shrn(idx, 2n), 3)), RVEmpty{}, RVEmpty{}}
+    case 1n+p _ 2: RVNode{RVEmpty{}, RVEmpty{}, ra_vec_set_q(A, p, U32.shrn(idx, 2n), val, RVEmpty{}, U32.and(U32.shrn(idx, 2n), 3)), RVEmpty{}}
+    case 1n+p _ _: RVNode{RVEmpty{}, RVEmpty{}, RVEmpty{}, ra_vec_set_q(A, p, U32.shrn(idx, 2n), val, RVEmpty{}, U32.and(U32.shrn(idx, 2n), 3))}
 def ra_vec_set(-A: Data, d: Nat, +idx: U32, val: A, t: RaVec<A>) -> RaVec<A>:
-  ra_vec_set_go(A, d, idx, val, t, U32.and(idx, 3))
-def ra_vec_get_go(-A: Data, d: Nat, +idx: U32, defv: A, t: RaVec<A>, q: U32) -> A:
+  ra_vec_set_q(A, d, idx, val, t, U32.and(idx, 3))
+def ra_vec_get_q(-A: Data, d: Nat, +idx: U32, defv: A, t: RaVec<A>, q: U32) -> A:
   match d t q:
     case _ RVEmpty{} _: defv
     case _ RVLeaf{v} _: v
     case 0n RVNode{_, _, _, _} _: defv
-    case 1n+p RVNode{c0, _, _, _} 0:
-      +nxt = U32.shrn(idx, 2n)
-      ra_vec_get_go(A, p, nxt, defv, c0, U32.and(nxt, 3))
-    case 1n+p RVNode{_, c1, _, _} 1:
-      +nxt = U32.shrn(idx, 2n)
-      ra_vec_get_go(A, p, nxt, defv, c1, U32.and(nxt, 3))
-    case 1n+p RVNode{_, _, c2, _} 2:
-      +nxt = U32.shrn(idx, 2n)
-      ra_vec_get_go(A, p, nxt, defv, c2, U32.and(nxt, 3))
-    case 1n+p RVNode{_, _, _, c3} _:
-      +nxt = U32.shrn(idx, 2n)
-      ra_vec_get_go(A, p, nxt, defv, c3, U32.and(nxt, 3))
+    case 1n+p RVNode{c0, _, _, _} 0: ra_vec_get_q(A, p, U32.shrn(idx, 2n), defv, c0, U32.and(U32.shrn(idx, 2n), 3))
+    case 1n+p RVNode{_, c1, _, _} 1: ra_vec_get_q(A, p, U32.shrn(idx, 2n), defv, c1, U32.and(U32.shrn(idx, 2n), 3))
+    case 1n+p RVNode{_, _, c2, _} 2: ra_vec_get_q(A, p, U32.shrn(idx, 2n), defv, c2, U32.and(U32.shrn(idx, 2n), 3))
+    case 1n+p RVNode{_, _, _, c3} _: ra_vec_get_q(A, p, U32.shrn(idx, 2n), defv, c3, U32.and(U32.shrn(idx, 2n), 3))
 def ra_vec_get(-A: Data, d: Nat, defv: A, +idx: U32, t: RaVec<A>) -> A:
-  ra_vec_get_go(A, d, idx, defv, t, U32.and(idx, 3))
+  ra_vec_get_q(A, d, idx, defv, t, U32.and(idx, 3))
 # String Interner (SymTab: String <-> U32)
 type SymTab is Data:
   SymTab{next: U32, by_name: Map<&2, U32>, by_id: RaVec<String>}
@@ -146,34 +116,24 @@ type SymRes is Data:
 def symtab_new() -> SymTab:
   SymTab{0, Map.new(&2, U32), RVEmpty{}}
 def symtab_name(st: SymTab, +id: U32) -> String:
-  match st:
-    case SymTab{_, _, by_id}: ra_vec_get(String, 8n, "", id, by_id)
-def symtab_intern_fin(+next: U32, m1: Map<&2, U32>, by_id: RaVec<String>, +name: String, found: U32, miss: Bool) -> SymRes:
+  SymTab{_, _, by_id} = st
+  ra_vec_get(String, 8n, "", id, by_id)
+def symtab_intern_fin(miss: Bool, +next: U32, m1: Map<&2, U32>, by_id: RaVec<String>, +name: String, found: U32) -> SymRes:
   match miss:
-    case True{}:
-      m2 = Map.set(&2, U32, m1, name, U32.add(next, 1))
-      v2 = ra_vec_set(String, 8n, next, name, by_id)
-      SymRes{SymTab{U32.add(next, 1), m2, v2}, next}
-    case False{}:
-      SymRes{SymTab{next, m1, by_id}, U32.sub(found, 1)}
+    case True{}: SymRes{SymTab{U32.add(next, 1), Map.set(&2, U32, m1, name, U32.add(next, 1)), ra_vec_set(String, 8n, next, name, by_id)}, next}
+    case False{}: SymRes{SymTab{next, m1, by_id}, U32.sub(found, 1)}
 def symtab_intern_got(+next: U32, by_id: RaVec<String>, +name: String, got: Map<&2, U32> & U32) -> SymRes:
   (m1, +found) = got
-  symtab_intern_fin(next, m1, by_id, name, found, U32.is_zero(found))
+  symtab_intern_fin(U32.is_zero(found), next, m1, by_id, name, found)
 def symtab_intern(st: SymTab, +name: String) -> SymRes:
-  match st:
-    case SymTab{next, by_name, by_id}:
-      symtab_intern_got(next, by_id, name, Map.get(U32, 0, by_name, name))
-def symtab_lookup_fin(found: U32, miss: Bool) -> Maybe<&2, U32>:
-  match miss:
-    case True{}: None{}
-    case False{}: Some{U32.sub(found, 1)}
+  SymTab{next, by_name, by_id} = st
+  symtab_intern_got(next, by_id, name, Map.get(U32, 0, by_name, name))
 def symtab_lookup_got(got: Map<&2, U32> & U32) -> Maybe<&2, U32>:
   (_, +found) = got
-  symtab_lookup_fin(found, U32.is_zero(found))
+  Bool.pick(Maybe<&2, U32>, U32.is_zero(found), None{}, Some{U32.sub(found, 1)})
 def symtab_lookup(st: SymTab, name: String) -> Maybe<&2, U32>:
-  match st:
-    case SymTab{_, by_name, _}:
-      symtab_lookup_got(Map.get(U32, 0, by_name, name))
+  SymTab{_, by_name, _} = st
+  symtab_lookup_got(Map.get(U32, 0, by_name, name))
 # Growable Byte Buffer (ByteBuf)
 type ByteBuf is Data:
   ByteBuf{len: U32, rev: List<&2, U32>}
@@ -188,10 +148,7 @@ def bb_emit_u8(b: ByteBuf, v: U32) -> ByteBuf:
 def bb_emit_u16(b: ByteBuf, +v: U32) -> ByteBuf:
   bb_emit_u8(bb_emit_u8(b, v), U32.shrn(v, 8n))
 def bb_emit_u32(b: ByteBuf, +v: U32) -> ByteBuf:
-  b1 = bb_emit_u8(b, v)
-  b2 = bb_emit_u8(b1, U32.shrn(v, 8n))
-  b3 = bb_emit_u8(b2, U32.shrn(v, 16n))
-  bb_emit_u8(b3, U32.shrn(v, 24n))
+  bb_emit_u16(bb_emit_u16(b, v), U32.shrn(v, 16n))
 def bb_emit_u64(b: ByteBuf, lo: U32, hi: U32) -> ByteBuf:
   bb_emit_u32(bb_emit_u32(b, lo), hi)
 def bb_emit_str_go(s: String, b: ByteBuf) -> ByteBuf:
@@ -297,12 +254,6 @@ type Book is Data:
 
 # Frozen Direct-First SSA/ANF CFG IR ADTs
 # ---------------------------------------
-
-type IrType is Data:
-  ITerm{}
-  IU32{}
-  IF32{}
-  IPtr{}
 
 type IrOp is Data:
   IConst{dst: U32, val: U32}

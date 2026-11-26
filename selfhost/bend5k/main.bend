@@ -54,7 +54,7 @@ def b5k_finish_write(res: B5kIoRes<Unit>) -> IO(Unit):
 def b5k_run_res(check_only: Bool, out_path: String, res: B5kIoRes<List<&2, U32>>) -> IO(Unit):
   match check_only res:
     case _ B5kErr{msg}: b5k_die(msg)
-    case True{} B5kOk{_}: IO.print("ALL PROOFS CHECK")
+    case True{} B5kOk{_}: IO.print("CHECK OK (bend5k 1-pass: scope, arity, affine, head-types; no BendTT kernel proof)")
     case False{} B5kOk{bs}: IO.bind(B5kIoRes<Unit>, Unit, b5k_write_file(out_path, bs), r => b5k_finish_write(r))
 def b5k_run_loaded(is_o2: Bool, +check_only: Bool, out_path: String, loaded: B5kIoRes<String>) -> IO(Unit):
   match loaded:

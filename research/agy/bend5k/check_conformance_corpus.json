@@ -1,0 +1,427 @@
+{
+  "version": 1,
+  "description": "Frozen differential conformance corpus for bend5k checker vs pinned upstream bend2/main.ts --check-only. Frozen BEFORE editing selfhost/bend5k/check.bend.",
+  "cases": [
+    {
+      "id": "codex_wrong_unused",
+      "group": "codex_repro",
+      "category": "unused_bad_def",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef wrong(x: U32) -> Bool:\n  x\ndef main() -> U32:\n  7\n"
+    },
+    {
+      "id": "codex_wrong_called",
+      "group": "codex_repro",
+      "category": "return_value",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef wrong(x: U32) -> Bool:\n  x\ndef b2u(b: Bool) -> U32:\n  match b:\n    case True{}: 1\n    case False{}: 0\ndef main() -> U32:\n  b2u(wrong(7))\n"
+    },
+    {
+      "id": "codex_ok_u32",
+      "group": "codex_repro",
+      "category": "valid_neighbor",
+      "expect_upstream": "accept",
+      "code": "import Base\ndef ok(x: U32) -> U32:\n  x\ndef main() -> U32:\n  ok(7)\n"
+    },
+    {
+      "id": "codex_ok_bool",
+      "group": "codex_repro",
+      "category": "valid_neighbor",
+      "expect_upstream": "accept",
+      "code": "import Base\ndef ok2(x: U32) -> Bool:\n  U32.is_eq(x, 0)\ndef b2u(b: Bool) -> U32:\n  match b:\n    case True{}: 1\n    case False{}: 0\ndef main() -> U32:\n  b2u(ok2(7))\n"
+    },
+    {
+      "id": "codex_wrong_ret_lit",
+      "group": "codex_repro",
+      "category": "return_value",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef wrong(x: U32) -> Bool:\n  42\ndef main() -> U32:\n  7\n"
+    },
+    {
+      "id": "codex_wrong_ret_ctor",
+      "group": "codex_repro",
+      "category": "return_value",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef wrong(x: U32) -> U32:\n  True{}\ndef main() -> U32:\n  7\n"
+    },
+    {
+      "id": "mut_ret_var_str_to_u32",
+      "group": "single_edit_invalid",
+      "category": "return_value",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad(s: String) -> U32:\n  s\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "mut_ret_call_u32_to_bool",
+      "group": "single_edit_invalid",
+      "category": "return_value",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad(x: U32) -> Bool:\n  U32.add(x, 1)\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "mut_ret_user_fn_mismatch",
+      "group": "single_edit_invalid",
+      "category": "return_value",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef inc(x: U32) -> U32:\n  U32.add(x, 1)\ndef bad(x: U32) -> Bool:\n  inc(x)\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "mut_ret_let_var_mismatch",
+      "group": "single_edit_invalid",
+      "category": "return_value",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad(x: U32) -> Bool:\n  y = U32.add(x, 1)\n  y\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "mut_ret_f32_to_u32",
+      "group": "single_edit_invalid",
+      "category": "return_value",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad(x: F32) -> U32:\n  F32.add(x, 1.0)\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "mut_arg_user_bool_for_u32",
+      "group": "single_edit_invalid",
+      "category": "call_argument",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef inc(x: U32) -> U32:\n  U32.add(x, 1)\ndef main() -> U32:\n  inc(True{})\n"
+    },
+    {
+      "id": "mut_arg_user_var_mismatch",
+      "group": "single_edit_invalid",
+      "category": "call_argument",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef inc(x: U32) -> U32:\n  U32.add(x, 1)\ndef bad(b: Bool) -> U32:\n  inc(b)\ndef main() -> U32:\n  bad(True{})\n"
+    },
+    {
+      "id": "mut_arg_builtin_u32_add_bool",
+      "group": "single_edit_invalid",
+      "category": "call_argument",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef main() -> U32:\n  U32.add(True{}, 1)\n"
+    },
+    {
+      "id": "mut_arg_builtin_bool_not_u32",
+      "group": "single_edit_invalid",
+      "category": "call_argument",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef b2u(b: Bool) -> U32:\n  match b:\n    case True{}: 1\n    case False{}: 0\ndef main() -> U32:\n  b2u(Bool.not(7))\n"
+    },
+    {
+      "id": "mut_arg_arity_too_many",
+      "group": "single_edit_invalid",
+      "category": "call_argument",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef inc(x: U32) -> U32:\n  U32.add(x, 1)\ndef main() -> U32:\n  inc(1, 2)\n"
+    },
+    {
+      "id": "mut_ctor_field_lit_mismatch",
+      "group": "single_edit_invalid",
+      "category": "ctor_field",
+      "expect_upstream": "reject",
+      "code": "import Base\ntype Box is Data:\n  Box{val: U32}\ndef mk() -> Box:\n  Box{True{}}\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "mut_ctor_field_var_mismatch",
+      "group": "single_edit_invalid",
+      "category": "ctor_field",
+      "expect_upstream": "reject",
+      "code": "import Base\ntype Box is Data:\n  Box{val: U32}\ndef mk(b: Bool) -> Box:\n  Box{b}\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "mut_ctor_field_second_mismatch",
+      "group": "single_edit_invalid",
+      "category": "ctor_field",
+      "expect_upstream": "reject",
+      "code": "import Base\ntype Rec is Data:\n  Rec{a: U32, b: Bool}\ndef mk() -> Rec:\n  Rec{1, 2}\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "mut_ctor_wrong_type",
+      "group": "single_edit_invalid",
+      "category": "ctor_field",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad() -> Bool:\n  Zero{}\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "mut_match_branch_var_mismatch",
+      "group": "single_edit_invalid",
+      "category": "match_branch",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad(b: Bool, x: U32) -> Bool:\n  match b:\n    case True{}: x\n    case False{}: False{}\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "mut_match_branch_call_mismatch",
+      "group": "single_edit_invalid",
+      "category": "match_branch",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad(b: Bool) -> Bool:\n  match b:\n    case True{}: U32.add(1, 2)\n    case False{}: True{}\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "mut_match_pat_field_mismatch",
+      "group": "single_edit_invalid",
+      "category": "match_branch",
+      "expect_upstream": "reject",
+      "code": "import Base\ntype Box is Data:\n  Box{val: U32}\ndef bad(bx: Box) -> Bool:\n  match bx:\n    case Box{v}: v\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "mut_match_nested_let_mismatch",
+      "group": "single_edit_invalid",
+      "category": "match_branch",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad(b: Bool, x: U32) -> Bool:\n  match b:\n    case True{}:\n      y = U32.add(x, 1)\n      y\n    case False{}: False{}\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "mut_affine_double_use_param",
+      "group": "single_edit_invalid",
+      "category": "affine_use",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad(x: U32) -> U32:\n  U32.add(x, x)\ndef main() -> U32:\n  bad(5)\n"
+    },
+    {
+      "id": "mut_affine_double_use_let",
+      "group": "single_edit_invalid",
+      "category": "affine_use",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad(x: U32) -> U32:\n  y = U32.add(x, 1)\n  U32.add(y, y)\ndef main() -> U32:\n  bad(5)\n"
+    },
+    {
+      "id": "mut_affine_double_use_ctor",
+      "group": "single_edit_invalid",
+      "category": "affine_use",
+      "expect_upstream": "reject",
+      "code": "import Base\ntype PairU is Data:\n  PairU{a: U32, b: U32}\ndef bad(x: U32) -> PairU:\n  PairU{x, x}\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "mut_unused_bad_arg",
+      "group": "single_edit_invalid",
+      "category": "unused_bad_def",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef inc(x: U32) -> U32:\n  U32.add(x, 1)\ndef dead() -> U32:\n  inc(True{})\ndef main() -> U32:\n  42\n"
+    },
+    {
+      "id": "mut_unused_bad_ctor",
+      "group": "single_edit_invalid",
+      "category": "unused_bad_def",
+      "expect_upstream": "reject",
+      "code": "import Base\ntype Box is Data:\n  Box{val: U32}\ndef dead() -> Box:\n  Box{False{}}\ndef main() -> U32:\n  42\n"
+    },
+    {
+      "id": "mut_unused_bad_affine",
+      "group": "single_edit_invalid",
+      "category": "unused_bad_def",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef dead(x: U32) -> U32:\n  U32.add(x, x)\ndef main() -> U32:\n  42\n"
+    },
+    {
+      "id": "valid_poly_id",
+      "group": "valid_neighbor",
+      "category": "valid_neighbor",
+      "expect_upstream": "accept",
+      "code": "import Base\ndef my_id(-A: Data, x: A) -> A:\n  x\ndef main() -> U32:\n  my_id(U32, 7)\n"
+    },
+    {
+      "id": "valid_bool_pick",
+      "group": "valid_neighbor",
+      "category": "valid_neighbor",
+      "expect_upstream": "accept",
+      "code": "import Base\ndef pick_u32(b: Bool, x: U32, y: U32) -> U32:\n  Bool.pick(U32, b, x, y)\ndef main() -> U32:\n  pick_u32(True{}, 10, 20)\n"
+    },
+    {
+      "id": "valid_list_sum",
+      "group": "valid_neighbor",
+      "category": "valid_neighbor",
+      "expect_upstream": "accept",
+      "code": "import Base\ndef sum(xs: List<&2, U32>, acc: U32) -> U32:\n  match xs:\n    case Nil{}: acc\n    case Con{h, t}: sum(t, U32.add(acc, h))\ndef main() -> U32:\n  sum([1, 2, 3], 0)\n"
+    },
+    {
+      "id": "valid_maybe_unwrap",
+      "group": "valid_neighbor",
+      "category": "valid_neighbor",
+      "expect_upstream": "accept",
+      "code": "import Base\ndef unwrap(m: Maybe<&2, U32>, d: U32) -> U32:\n  match m:\n    case None{}: d\n    case Some{v}: v\ndef main() -> U32:\n  unwrap(Some{42}, 0)\n"
+    },
+    {
+      "id": "valid_pair_destructure",
+      "group": "valid_neighbor",
+      "category": "valid_neighbor",
+      "expect_upstream": "accept",
+      "code": "import Base\ndef add_pair(p: U32 & U32) -> U32:\n  (a, b) = p\n  U32.add(a, b)\ndef main() -> U32:\n  add_pair((3, 4))\n"
+    },
+    {
+      "id": "valid_nat_rec",
+      "group": "valid_neighbor",
+      "category": "valid_neighbor",
+      "expect_upstream": "accept",
+      "code": "import Base\ndef nat_to_u32(n: Nat, acc: U32) -> U32:\n  match n:\n    case 0n: acc\n    case 1n+p: nat_to_u32(p, U32.add(acc, 1))\ndef main() -> U32:\n  nat_to_u32(5n, 0)\n"
+    },
+    {
+      "id": "valid_f32_ops",
+      "group": "valid_neighbor",
+      "category": "valid_neighbor",
+      "expect_upstream": "accept",
+      "code": "import Base\ndef fsum(a: F32, b: F32) -> F32:\n  F32.add(a, b)\ndef main() -> F32:\n  fsum(1.5, 2.5)\n"
+    },
+    {
+      "id": "valid_string_char",
+      "group": "valid_neighbor",
+      "category": "valid_neighbor",
+      "expect_upstream": "accept",
+      "code": "import Base\ndef eq_ab() -> Bool:\n  String.eq(\"a\", \"b\")\ndef main() -> U32:\n  Char.to_u32('A')\n"
+    },
+    {
+      "id": "valid_law_def",
+      "group": "valid_neighbor",
+      "category": "valid_neighbor",
+      "expect_upstream": "accept",
+      "code": "import Base\nlaw dbl:\n  for +x: U32\n  U32\ndef dbl(x):\n  U32.add(x, x)\ndef main() -> U32:\n  dbl(21)\n"
+    },
+    {
+      "id": "valid_ctor_nested",
+      "group": "valid_neighbor",
+      "category": "valid_neighbor",
+      "expect_upstream": "accept",
+      "code": "import Base\ntype Box is Data:\n  Box{val: U32}\ndef unbox(b: Box) -> U32:\n  match b:\n    case Box{v}: v\ndef main() -> U32:\n  unbox(Box{U32.add(3, 4)})\n"
+    },
+    {
+      "id": "qual_pure_u32",
+      "group": "phase182_qual",
+      "category": "qual_valid",
+      "expect_upstream": "accept",
+      "file": "selfhost/tests/consolidation/native-focused/pure-u32.bend"
+    },
+    {
+      "id": "qual_pure_f32",
+      "group": "phase182_qual",
+      "category": "qual_valid",
+      "expect_upstream": "accept",
+      "file": "selfhost/tests/consolidation/native-focused/pure-f32.bend"
+    },
+    {
+      "id": "qual_pure_string",
+      "group": "phase182_qual",
+      "category": "qual_valid",
+      "expect_upstream": "accept",
+      "file": "selfhost/tests/consolidation/native-focused/pure-string.bend"
+    },
+    {
+      "id": "qual_pure_aggregate",
+      "group": "phase182_qual",
+      "category": "qual_valid",
+      "expect_upstream": "accept",
+      "file": "selfhost/tests/consolidation/native-focused/pure-aggregate.bend"
+    },
+    {
+      "id": "qual_nat_native",
+      "group": "phase182_qual",
+      "category": "qual_valid",
+      "expect_upstream": "accept",
+      "file": "selfhost/tests/consolidation/native-focused/nat-native.bend"
+    },
+    {
+      "id": "qual_higher_order_capture",
+      "group": "phase182_qual",
+      "category": "qual_valid",
+      "expect_upstream": "accept",
+      "file": "selfhost/tests/consolidation/native-focused/higher-order-capture.bend"
+    },
+    {
+      "id": "qual_editdist",
+      "group": "phase182_qual",
+      "category": "qual_valid",
+      "expect_upstream": "accept",
+      "file": "selfhost/tests/consolidation/native-broad/editdist.bend"
+    },
+    {
+      "id": "qual_negative_type",
+      "group": "phase182_qual",
+      "category": "qual_reject",
+      "expect_upstream": "reject",
+      "file": "selfhost/tests/consolidation/native-focused/negative-type.bend"
+    },
+    {
+      "id": "qual_negative_affine",
+      "group": "phase182_qual",
+      "category": "qual_reject",
+      "expect_upstream": "reject",
+      "file": "selfhost/tests/consolidation/native-focused/negative-affine.bend"
+    },
+    {
+      "id": "qual_negative_foreign",
+      "group": "phase182_qual",
+      "category": "qual_reject",
+      "expect_upstream": "accept",
+      "file": "selfhost/tests/consolidation/native-focused/negative-foreign.bend",
+      "note": "Foreign provider unavailable in fixed runtime (backend-admission reject)"
+    },
+    {
+      "id": "upstream_alpha_equivalence",
+      "group": "upstream_tests",
+      "category": "proof_or_dependent",
+      "expect_upstream": "accept",
+      "file": "tests/check/alpha_equivalence.bend"
+    },
+    {
+      "id": "upstream_bool_algebra",
+      "group": "upstream_tests",
+      "category": "proof_or_dependent",
+      "expect_upstream": "accept",
+      "file": "tests/proof/bool_algebra.bend"
+    },
+    {
+      "id": "upstream_add_comm",
+      "group": "upstream_tests",
+      "category": "proof_or_dependent",
+      "expect_upstream": "accept",
+      "file": "tests/proof/add_comm.bend"
+    },
+    {
+      "id": "upstream_accept_data",
+      "group": "upstream_tests",
+      "category": "grade_system",
+      "expect_upstream": "accept",
+      "file": "tests/grade/accept_data.bend"
+    },
+    {
+      "id": "upstream_array_literal_mismatch",
+      "group": "upstream_tests",
+      "category": "upstream_reject",
+      "expect_upstream": "reject",
+      "file": "tests/check/array_literal_mismatch.bend"
+    },
+    {
+      "id": "upstream_reject_copy_paradox",
+      "group": "upstream_tests",
+      "category": "grade_system",
+      "expect_upstream": "reject",
+      "file": "tests/grade/reject_copy_paradox.bend"
+    },
+    {
+      "id": "upstream_reject_leak",
+      "group": "upstream_tests",
+      "category": "grade_system",
+      "expect_upstream": "reject",
+      "file": "tests/grade/reject_leak.bend"
+    },
+    {
+      "id": "upstream_reject_fn_field",
+      "group": "upstream_tests",
+      "category": "grade_system",
+      "expect_upstream": "reject",
+      "file": "tests/grade/reject_fn_field.bend"
+    },
+    {
+      "id": "boundary_bad_refl",
+      "group": "capability_boundary",
+      "category": "dependent_proof",
+      "expect_upstream": "reject",
+      "code": "import Base\nlaw bad_eq:\n  {0 == 1 : U32}\ndef bad_eq():\n  {==}\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "boundary_param_type_arg",
+      "group": "capability_boundary",
+      "category": "parametric_type_arg",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad_list(xs: List<&2, U32>) -> List<&2, Bool>:\n  xs\ndef main() -> U32:\n  0\n"
+    }
+  ]
+}

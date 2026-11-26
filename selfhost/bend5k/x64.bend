@@ -1220,7 +1220,7 @@ def x64_upd_xm0(+ctx: X64Ctx, +fconsts: RaVec<U32>, op: IrOp) -> U32:
     case IBin{+dst, +bop, lhs, rhs}:
       +la = Bool.pick(U32, Bool.and(x64_is_o2(ctx), U32.is_eq(bop, 13)), ra_vec_get(U32, x64_ctx_vd(ctx), 0, lhs, fconsts), 0)
       +rb = Bool.pick(U32, U32.is_ne(la, 0), ra_vec_get(U32, x64_ctx_vd(ctx), 0, rhs, fconsts), 0)
-      ok = Bool.and(Bool.and(U32.is_ge(bop, 10), Bool.not(x64_is_xmm(x64_vreg_loc(ctx, dst)))), U32.is_zero(rb))
+      ok = Bool.and(Bool.and(Bool.and(U32.is_ge(bop, 10), U32.is_le(bop, 13)), Bool.not(x64_is_xmm(x64_vreg_loc(ctx, dst)))), U32.is_zero(rb))
       Bool.pick(U32, ok, U32.add(dst, 1), 0)
     case _: 0
 def x64_u2f_only_fdiv(n: Nat, +ctx: X64Ctx, +consts: RaVec<U32>, +fcs: RaVec<U32>, +dst: U32, rest: List<&2, IrOp>) -> Bool:
@@ -1247,10 +1247,10 @@ def x64_skip_fbin_st(+ctx: X64Ctx, +consts: RaVec<U32>, +fconsts: RaVec<U32>, +u
       +c = U32.sub(rc, 1)
       f1 = Bool.and(U32.is_eq(u, 1), Bool.and(U32.is_gt(rc, 1), U32.is_le(c, 65535)))
       Bool.and(x64_is_o2(ctx), Bool.or(U32.is_zero(u), Bool.and(f1, x64_u2f_only_fdiv(4n, ctx, consts, ra_vec_set(U32, vd, dst, U32.add(c, 1), fconsts), dst, rest))))
-    case IBin{+dst, bop, _, _} Con{IBin{_, bop2, l, r}, _}:
-      Bool.and(Bool.and(x64_is_o2(ctx), U32.is_ge(bop, 10)),
+    case IBin{+dst, +bop, _, _} Con{IBin{_, +bop2, l, r}, _}:
+      Bool.and(Bool.and(x64_is_o2(ctx), Bool.and(U32.is_ge(bop, 10), U32.is_le(bop, 13))),
         Bool.and(U32.is_eq(ra_vec_get(U32, x64_ctx_vd(ctx), 0, dst, uc), 1),
-          Bool.and(U32.is_ge(bop2, 10), Bool.or(U32.is_eq(l, dst), U32.is_eq(r, dst)))))
+          Bool.and(Bool.and(U32.is_ge(bop2, 10), U32.is_le(bop2, 13)), Bool.or(U32.is_eq(l, dst), U32.is_eq(r, dst)))))
     case _ _: False{}
 def x64_emit_const_opt(skip: Bool, ctx: X64Ctx, dst: U32, val: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
   match skip:
@@ -1291,11 +1291,24 @@ def x64_emit_un_opt(skip: Bool, ctx: X64Ctx, consts: RaVec<U32>, dst: U32, uop: 
   match skip:
     case True{}: acc
     case False{}: x64_emit_un(ctx, consts, dst, uop, src, acc)
+def x64_emit_alloca(is_z: Bool, ctx: X64Ctx, dst: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  match is_z:
+    case True{}: x64_store_vreg(ctx, dst, 4, acc)
+    case False{}: x64_store_vreg(ctx, dst, 0, x64_emit(XAluRI{0, 0, 256}, x64_emit(XMovRR{0, 4}, acc)))
+def x64_emit_load_op(is_f32: Bool, +ctx: X64Ctx, dst: U32, base: U32, off: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  match is_f32:
+    case True{}: x64_store_xmm(ctx, dst, 0, x64_emit(XXmmLoad{0, 0, U32.mul(U32.sub(off, 65536), 4)}, x64_load_vreg(ctx, 0, base, acc)))
+    case False{}: x64_store_vreg(ctx, dst, 0, x64_emit(XLoad{0, 0, U32.mul(off, 8)}, x64_load_vreg(ctx, 0, base, acc)))
+def x64_emit_store_op(is_f32: Bool, +ctx: X64Ctx, base: U32, off: U32, val: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  match is_f32:
+    case True{}: x64_emit(XXmmStore{0, U32.mul(U32.sub(off, 65536), 4), 32}, x64_load_vreg(ctx, 0, base, x64_load_xmm(ctx, 0, val, acc)))
+    case False{}: x64_emit(XStore{0, U32.mul(off, 8), 1}, x64_load_vreg(ctx, 1, val, x64_load_vreg(ctx, 0, base, acc)))
 def x64_emit_op(+ctx: X64Ctx, fn_map: Map<&2, String>, reuse: RaVec<Bool>, skip_st: Bool, consts: RaVec<U32>, fconsts: RaVec<U32>, xm0: U32, uc: RaVec<U32>, op: IrOp, acc: List<&2, X64Inst>, cold: List<&2, X64Inst>, +lbl: U32) -> X64Acc:
   match op:
     case IConst{+dst, val}: X64Acc{x64_emit_const_opt(x64_skip_const(ctx, dst), ctx, dst, val, acc), lbl, cold}
     case IFlt{dst, bits}: X64Acc{x64_emit_const_opt(skip_st, ctx, dst, bits, acc), lbl, cold}
     case ICopy{dst, src}: X64Acc{x64_emit_copy(ctx, dst, src, acc), lbl, cold}
+    case IBin{dst, 14, lhs, rhs}: X64Acc{x64_store_vreg(ctx, dst, 0, x64_emit(XAluRR{0, 0, 1}, x64_load_vreg(ctx, 1, rhs, x64_load_vreg(ctx, 0, lhs, acc)))), lbl, cold}
     case IBin{dst, +bop, lhs, rhs}: X64Acc{x64_emit_bin_go(ctx, U32.is_ge(bop, 10), skip_st, consts, fconsts, xm0, dst, bop, lhs, rhs, lbl, acc), U32.add(lbl, 1), cold}
     case IUn{dst, uop, src}: X64Acc{x64_emit_un_opt(skip_st, ctx, consts, dst, uop, src, acc), lbl, cold}
     case ICmp{dst, +cop, lhs, rhs}: X64Acc{x64_emit_cmp_go(ctx, consts, U32.is_ge(cop, 6), dst, cop, lhs, rhs, acc), lbl, cold}
@@ -1318,11 +1331,9 @@ def x64_emit_op(+ctx: X64Ctx, fn_map: Map<&2, String>, reuse: RaVec<Bool>, skip_
     case IStatic{dst, idx}:
       X64Acc{x64_store_vreg(ctx, dst, 0, x64_emit(XLoad{0, 0, U32.mul(idx, 8)}, x64_emit(XLeaRip{0, "p111_static_image"}, acc))), lbl, cold}
     case IArrOp{dsts, aop, args}: x64_emit_arrop(x64_is_o2(ctx), ctx, consts, uc, aop, dsts, args, lbl, acc, cold)
-    case IAlloca{dst, _}: X64Acc{x64_store_vreg(ctx, dst, 4, acc), lbl, cold}
-    case ILoad{dst, base, off}:
-      X64Acc{x64_store_vreg(ctx, dst, 0, x64_emit(XLoad{0, 0, U32.mul(off, 8)}, x64_load_vreg(ctx, 0, base, acc))), lbl, cold}
-    case IStore{base, off, val}:
-      X64Acc{x64_emit(XStore{0, U32.mul(off, 8), 1}, x64_load_vreg(ctx, 1, val, x64_load_vreg(ctx, 0, base, acc))), lbl, cold}
+    case IAlloca{dst, +words}: X64Acc{x64_emit_alloca(U32.is_zero(words), ctx, dst, acc), lbl, cold}
+    case ILoad{dst, base, +off}: X64Acc{x64_emit_load_op(U32.is_ge(off, 65536), ctx, dst, base, off, acc), lbl, cold}
+    case IStore{base, +off, val}: X64Acc{x64_emit_store_op(U32.is_ge(off, 65536), ctx, base, off, val, acc), lbl, cold}
     case IFail{code}:
       X64Acc{x64_emit(XCallSym{"p111_rt_fail"}, x64_emit(XMovRI32{6, code}, x64_load_state(ctx, 7, acc))), lbl, cold}
 def x64_emit_switch_arms(+reg: U32, arms: List<&2, IrSwitchArm>, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
@@ -2545,6 +2556,15 @@ def x64_lower_fn_o2_w(is_b: Bool, ver_ok: Bool, +ctx: X64Ctx, fn_map: Map<&2, St
     case True{}:
       +bn = String.append("$bor.", name)
       Con{x64_make_bor_wrap(name, arity, bpm), Con{X64Fn{bn, False{}, b5k_list_rev(X64Inst, x64_acc_insts(x64_emit_fn_blks(ver_ok, ctx, Map.set(&2, String, fn_map, b5k_u32_to_str(fn_fid), bn), uc, vd, blocks, st0)))}, acc}}
+def x64_max_alloca_ops(ops: List<&2, IrOp>, m: U32) -> U32:
+  match ops:
+    case Nil{}: m
+    case Con{IAlloca{_, w}, t}: x64_max_alloca_ops(t, U32.max(m, w))
+    case Con{_, t}: x64_max_alloca_ops(t, m)
+def x64_max_alloca_blks(blks: List<&2, IrBlock>, m: U32) -> U32:
+  match blks:
+    case Nil{}: m
+    case Con{IrBlock{_, ops, _}, t}: x64_max_alloca_blks(t, x64_max_alloca_ops(ops, m))
 def x64_lower_fn_o2_emit(+fn_map: Map<&2, String>, heap_off: U32, r2s: X64R2Scan, +fn_fid: U32, +name: String, +arity: U32, +nregs: U32, +blocks: List<&2, IrBlock>, +rm: RaVec<U32>, +vd: Nat, +ce0: List<&2, U32>, +sc: U32, +c31: RaVec<U32>, is_sc: RaVec<U32>, nf: Bool, stc: Bool, harr: Bool, hc: Bool, +ao: RaVec<U32>, hp: X64HPick, hm: X64HMag, bor: X64Bor, uc: RaVec<U32>, hist: X64HiSt, acc: List<&2, X64Fn>) -> List<&2, X64Fn>:
   match r2s hp hm bor hist:
     case X64R2Scan{+r2m, u2m} X64HPick{+ha0, ha0_sc, +ha1, ha1_sc, +ha2, ha2_sc} X64HMag{+hm0, _, +hm1, _, t0c, t0t, t0e, t0d, _} X64Bor{+bpm, bbm, _} X64HiSt{hu, +cm}:
@@ -2606,7 +2626,9 @@ def x64_lower_fn_o2_emit(+fn_map: Map<&2, String>, heap_off: U32, r2s: X64R2Scan
       u2o0 = Bool.pick(U32, has_u2, U32.sub(0, U32.add(b2d, 8)), 0)
       u2o1 = Bool.pick(U32, has_u2, U32.sub(0, b3), 0)
       +sb = U32.add(b3, 8)
-      +frame = U32.sub(x64_align16(U32.add(U32.add(b3, U32.mul(U32.max(16, arity), 8)), U32.mul(sc, 8))), U32.mul(k, 8))
+      +aw = x64_max_alloca_blks(blocks, 0)
+      +ab = Bool.pick(U32, U32.is_zero(aw), 0, U32.add(256, x64_align16(U32.mul(aw, 8))))
+      +frame = U32.sub(x64_align16(U32.add(U32.add(b3, U32.add(U32.mul(U32.max(16, arity), 8), ab)), U32.mul(sc, 8))), U32.mul(k, 8))
       +is_leaf = Bool.and(Bool.and(Bool.and(U32.is_le(arity, 5), U32.is_zero(sc)), Bool.and(Bool.not(um), Bool.and(U32.is_zero(ha0), Bool.not(nf)))), Bool.not(x64_blks_tail_scr(x64_mk_ctx(True{}, rm, vd, 0, 0, 0, 0, 0, Nil{}, 0, x64_empty_meta()), blocks)))
       +nu = x64_run_nu(Bool.or(harr, um), vd, arity, fn_fid, ao, blocks)
       +ha0_sc1 = x64_nu_sc_ha_go(ha0_sc, U32.is_zero(ha0), ha0, vd, nu, ao, blocks)
@@ -2925,21 +2947,298 @@ def x64_rot_countdown(f: IrFn) -> X64RotFn:
       +blks = x64_tco_blks(fid, ar, blocks0)
       +vd = ra_vd_of(U32.max(nregs, ar))
       x64_rot_cd_st(x64_def_blks(vd, ar, fid, blks, X64DefSt{RVEmpty{}, RVEmpty{}, False{}, False{}, False{}, False{}}), vd, fid, name, ar, nregs, esc, eff, is_m, blks)
+# L13-SIMD: General 4-Wide SSE2 FP Backend (Counted-Loop V4 Kernel + Caller Batching)
+type V4Hdr is Data:
+  V4Hdr{ok: Bool, vd: Nat, c31: RaVec<U32>, blks: List<&2, IrBlock>, sid: U32, sops: List<&2, IrOp>, pdec: U32, tf: List<&2, U32>}
+type V4Cal is Data:
+  V4Cal{fid: U32, name: String, arity: U32, nregs: U32, ops: List<&2, IrOp>, targs: List<&2, U32>}
+def v4_find_blk(+bid: U32, blks: List<&2, IrBlock>) -> Maybe<&2, IrBlock>:
+  match blks:
+    case Nil{}: None{}
+    case Con{IrBlock{+id, ops, term}, t}: Bool.pick(Maybe<&2, IrBlock>, U32.is_eq(id, bid), Some{IrBlock{id, ops, term}}, v4_find_blk(bid, t))
+def v4_hdr_blk(mb: Maybe<&2, IrBlock>, vd: Nat, c31: RaVec<U32>, blks: List<&2, IrBlock>, sid: U32, fid: U32, ar: U32) -> V4Hdr:
+  match mb:
+    case Some{IrBlock{_, sops, TTailCall{tfid, Con{pdec, +tf}}}}:
+      V4Hdr{Bool.and(U32.is_eq(tfid, fid), U32.is_eq(b5k_u32_list_len(tf), U32.sub(ar, 1))), vd, c31, blks, sid, sops, pdec, tf}
+    case _: V4Hdr{False{}, 0n, RVEmpty{}, blks, 0, Nil{}, 0, Nil{}}
+def v4_hdr_t0(t0: X64T0, vd: Nat, c31: RaVec<U32>, +blks: List<&2, IrBlock>, fid: U32, ar: U32) -> V4Hdr:
+  match t0:
+    case X64T0{1, +tb, _}: v4_hdr_blk(v4_find_blk(tb, blks), vd, c31, blks, tb, fid, ar)
+    case _: V4Hdr{False{}, 0n, RVEmpty{}, blks, 0, Nil{}, 0, Nil{}}
+def v4_hdr_st(dst: X64DefSt, +vd: Nat, +blks: List<&2, IrBlock>, fid: U32, +ar: U32) -> V4Hdr:
+  match dst:
+    case X64DefSt{+c31, _, _, True{}, _, _}:
+      +uc = x64_uc_blks(vd, blks, RVEmpty{})
+      v4_hdr_t0(x64_b0_t0(vd, ar, c31, x64_hist_cm(x64_hi_blks(vd, c31, blks, X64HiSt{RVEmpty{}, RVEmpty{}})), uc, blks), vd, c31, blks, fid, ar)
+    case _: V4Hdr{False{}, 0n, RVEmpty{}, blks, 0, Nil{}, 0, Nil{}}
+def v4_hdr_go(ok: Bool, +fid: U32, +ar: U32, nregs: U32, blks0: List<&2, IrBlock>) -> V4Hdr:
+  match ok:
+    case False{}: V4Hdr{False{}, 0n, RVEmpty{}, blks0, 0, Nil{}, 0, Nil{}}
+    case True{}:
+      +blks = x64_tco_blks(fid, ar, blks0)
+      +vd = ra_vd_of(U32.max(nregs, ar))
+      v4_hdr_st(x64_def_blks(vd, ar, fid, blks, X64DefSt{RVEmpty{}, RVEmpty{}, False{}, False{}, False{}, False{}}), vd, blks, fid, ar)
+def v4_loop_hdr(f: IrFn) -> V4Hdr:
+  match f:
+    case IrFn{fid, _, +ar, nregs, _, False{}, False{}, blks0}: v4_hdr_go(Bool.and(U32.is_ge(ar, 2), U32.is_le(ar, 32)), fid, ar, nregs, blks0)
+    case IrFn{_, _, _, _, _, _, _, blks0}: V4Hdr{False{}, 0n, RVEmpty{}, blks0, 0, Nil{}, 0, Nil{}}
+
+def v4_chk_step(+vd: Nat, +c31: RaVec<U32>, +pdec: U32, ops: List<&2, IrOp>, +nf: U32, +acc: List<&2, IrOp>) -> Bool & List<&2, IrOp>:
+  match ops:
+    case Nil{}: (U32.is_ge(nf, 4), b5k_list_rev(IrOp, acc))
+    case Con{IConst{_, 1}, t}: v4_chk_step(vd, c31, pdec, t, nf, acc)
+    case Con{IFlt{d, bits}, t}: v4_chk_step(vd, c31, pdec, t, U32.add(nf, 1), Con{IFlt{d, bits}, acc})
+    case Con{ICopy{d, +s}, t}: Bool.pick(Bool & List<&2, IrOp>, Bool.or(U32.is_zero(s), U32.is_eq(s, pdec)), (False{}, Nil{}), v4_chk_step(vd, c31, pdec, t, nf, Con{ICopy{d, s}, acc}))
+    case Con{IBin{+d, 1, 0, r}, t}: Bool.pick(Bool & List<&2, IrOp>, Bool.and(U32.is_eq(d, pdec), U32.is_eq(ra_vec_get(U32, vd, 0, r, c31), 2)), v4_chk_step(vd, c31, pdec, t, nf, acc), (False{}, Nil{}))
+    case Con{IBin{d, +bop, +l, +r}, t}: Bool.pick(Bool & List<&2, IrOp>, Bool.and(Bool.and(U32.is_ge(bop, 10), U32.is_le(bop, 13)), Bool.and(Bool.and(U32.is_ne(l, 0), U32.is_ne(r, 0)), Bool.and(U32.is_ne(l, pdec), U32.is_ne(r, pdec)))), v4_chk_step(vd, c31, pdec, t, U32.add(nf, 1), Con{IBin{d, bop, l, r}, acc}), (False{}, Nil{}))
+    case Con{IUn{d, +uop, +s}, t}: Bool.pick(Bool & List<&2, IrOp>, Bool.and(Bool.or(U32.is_eq(uop, 2), U32.is_eq(uop, 3)), Bool.and(U32.is_ne(s, 0), U32.is_ne(s, pdec))), v4_chk_step(vd, c31, pdec, t, U32.add(nf, 1), Con{IUn{d, uop, s}, acc}), (False{}, Nil{}))
+    case _: (False{}, Nil{})
+def v4_match_fin(ok0: Bool, fid: U32, name: String, ar: U32, nregs: U32, tf: List<&2, U32>, res: Bool & List<&2, IrOp>) -> Maybe<&2, V4Cal>:
+  (ok1, cops) = res
+  Bool.pick(Maybe<&2, V4Cal>, Bool.and(ok0, ok1), Some{V4Cal{fid, name, ar, nregs, cops, tf}}, None{})
+def v4_match_hdr(h: V4Hdr, fid: U32, name: String, ar: U32, nregs: U32) -> Maybe<&2, V4Cal>:
+  match h:
+    case V4Hdr{True{}, vd, c31, _, _, sops, +pdec, +tf}: v4_match_fin(Bool.and(Bool.not(x64_u32_in(0, tf)), Bool.not(x64_u32_in(pdec, tf))), fid, name, ar, nregs, tf, v4_chk_step(vd, c31, pdec, sops, 0, Nil{}))
+    case _: None{}
+def v4_match_fn(f: IrFn) -> Maybe<&2, V4Cal>:
+  match f:
+    case IrFn{+fid, +name, +ar, +nregs, esc, eff, is_m, blks}: v4_match_hdr(v4_loop_hdr(IrFn{fid, name, ar, nregs, esc, eff, is_m, blks}), fid, name, ar, nregs)
+
+def v4_disp(loc: U32) -> U32: U32.sub(0, U32.add(16, U32.mul(U32.sub(loc, 100), 16)))
+def v4_xmm_io(is_ld: Bool, is_sp: Bool, +xmm: U32, +loc: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  match is_ld is_sp:
+    case True{} True{}: x64_emit(XXmmLoad{U32.add(16, xmm), 5, v4_disp(loc)}, acc)
+    case False{} True{}: x64_emit(XXmmStore{5, v4_disp(loc), U32.add(16, xmm)}, acc)
+    case True{} False{}: x64_emit_if(U32.is_ne(U32.sub(loc, 20), xmm), XXmmRR{7, xmm, U32.sub(loc, 20)}, acc)
+    case False{} False{}: x64_emit_if(U32.is_ne(U32.sub(loc, 20), xmm), XXmmRR{7, U32.sub(loc, 20), xmm}, acc)
+def v4_mem_io(is_ld: Bool, is_sp: Bool, +base: U32, +loc: U32, +off: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  match is_ld is_sp:
+    case True{} True{}: x64_emit(XXmmStore{5, v4_disp(loc), 16}, x64_emit(XXmmLoad{16, base, off}, acc))
+    case True{} False{}: x64_emit(XXmmLoad{U32.add(16, U32.sub(loc, 20)), base, off}, acc)
+    case False{} True{}: x64_emit(XXmmStore{base, off, 16}, x64_emit(XXmmLoad{16, 5, v4_disp(loc)}, acc))
+    case False{} False{}: x64_emit(XXmmStore{base, off, U32.add(16, U32.sub(loc, 20))}, acc)
+def v4_io_params(+is_ld: Bool, +rm: RaVec<U32>, +vd: Nat, n: Nat, +k: U32, +acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  match n:
+    case 0n: acc
+    case 1n+p:
+      +loc = ra_vec_get(U32, vd, 0, k, rm)
+      v4_io_params(is_ld, rm, vd, p, U32.add(k, 1), Bool.pick(List<&2, X64Inst>, U32.is_zero(loc), acc, v4_mem_io(is_ld, U32.is_ge(loc, 100), 2, loc, U32.mul(U32.sub(k, 1), 16), acc)))
+def v4_emit_fbin_rhs(rsp: Bool, fop: U32, dx: U32, rloc: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  match rsp:
+    case True{}: x64_emit(XXmmRR{fop, dx, 1}, x64_emit(XXmmLoad{17, 5, v4_disp(rloc)}, acc))
+    case False{}: x64_emit(XXmmRR{fop, dx, U32.sub(rloc, 20)}, acc)
+def v4_emit_fbin_go(eq_lr: Bool, eq_dr: Bool, comm: Bool, +fop: U32, +dx: U32, +lloc: U32, +rloc: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  match eq_lr eq_dr comm:
+    case True{} _ _: x64_emit(XXmmRR{fop, dx, dx}, v4_xmm_io(True{}, U32.is_ge(lloc, 100), dx, lloc, acc))
+    case False{} False{} _: v4_emit_fbin_rhs(U32.is_ge(rloc, 100), fop, dx, rloc, v4_xmm_io(True{}, U32.is_ge(lloc, 100), dx, lloc, acc))
+    case False{} True{} True{}: v4_emit_fbin_rhs(U32.is_ge(lloc, 100), fop, dx, lloc, acc)
+    case False{} True{} False{}: x64_emit(XXmmRR{7, dx, 0}, x64_emit(XXmmRR{fop, 0, dx}, v4_xmm_io(True{}, U32.is_ge(lloc, 100), 0, lloc, acc)))
+def v4_emit_flt(is_z: Bool, +dx: U32, bits: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  match is_z:
+    case True{}: x64_emit(XXmmRR{6, dx, dx}, acc)
+    case False{}: x64_emit(XXmmRR{13, dx, dx}, x64_emit(XCvt{2, dx, 0}, x64_emit(XMovRI32{0, bits}, acc)))
+def v4_emit_sqrt(ssp: Bool, +dx: U32, sloc: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  match ssp:
+    case True{}: x64_emit(XXmmRR{12, dx, dx}, x64_emit(XXmmLoad{U32.add(16, dx), 5, v4_disp(sloc)}, acc))
+    case False{}: x64_emit(XXmmRR{12, dx, U32.sub(sloc, 20)}, acc)
+def v4_emit_op(+rm: RaVec<U32>, +vd: Nat, op: IrOp, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  match op:
+    case IFlt{d, +bits}:
+      +dl = ra_vec_get(U32, vd, 0, d, rm)
+      +ds = U32.is_ge(dl, 100)
+      +dx = Bool.pick(U32, ds, 0, U32.sub(dl, 20))
+      v4_xmm_io(False{}, ds, dx, dl, v4_emit_flt(U32.is_zero(bits), dx, bits, acc))
+    case ICopy{d, s}:
+      +dl = ra_vec_get(U32, vd, 0, d, rm)
+      +sl = ra_vec_get(U32, vd, 0, s, rm)
+      +ds = U32.is_ge(dl, 100)
+      +dx = Bool.pick(U32, ds, 0, U32.sub(dl, 20))
+      v4_xmm_io(False{}, ds, dx, dl, v4_xmm_io(True{}, U32.is_ge(sl, 100), dx, sl, acc))
+    case IBin{d, +bop, l, r}:
+      +dl = ra_vec_get(U32, vd, 0, d, rm)
+      +ll = ra_vec_get(U32, vd, 0, l, rm)
+      +rl = ra_vec_get(U32, vd, 0, r, rm)
+      +ds = U32.is_ge(dl, 100)
+      +dx = Bool.pick(U32, ds, 0, U32.sub(dl, 20))
+      v4_xmm_io(False{}, ds, dx, dl, v4_emit_fbin_go(U32.is_eq(ll, rl), Bool.and(Bool.not(ds), U32.is_eq(dl, rl)), Bool.or(U32.is_eq(bop, 10), U32.is_eq(bop, 12)), U32.sub(bop, 2), dx, ll, rl, acc))
+    case IUn{d, 3, s}:
+      +dl = ra_vec_get(U32, vd, 0, d, rm)
+      +sl = ra_vec_get(U32, vd, 0, s, rm)
+      +ds = U32.is_ge(dl, 100)
+      +dx = Bool.pick(U32, ds, 0, U32.sub(dl, 20))
+      v4_xmm_io(False{}, ds, dx, dl, v4_emit_sqrt(U32.is_ge(sl, 100), dx, sl, acc))
+    case IUn{d, 2, s}:
+      +dl = ra_vec_get(U32, vd, 0, d, rm)
+      +sl = ra_vec_get(U32, vd, 0, s, rm)
+      +ds = U32.is_ge(dl, 100)
+      +dx = Bool.pick(U32, ds, 0, U32.sub(dl, 20))
+      v4_xmm_io(False{}, ds, dx, dl, x64_emit(XXmmRR{6, dx, 1}, v4_xmm_io(True{}, U32.is_ge(sl, 100), dx, sl, x64_emit(XXmmRR{13, 1, 1}, x64_emit(XCvt{2, 1, 0}, x64_emit(XMovRI32{0, 2147483648}, acc))))))
+    case _: acc
+def v4_emit_ops(+rm: RaVec<U32>, +vd: Nat, ops: List<&2, IrOp>, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  match ops:
+    case Nil{}: acc
+    case Con{op, t}: v4_emit_ops(rm, vd, t, v4_emit_op(rm, vd, op, acc))
+def v4_tail_mv(+rm: RaVec<U32>, +vd: Nat, +is_ld: Bool, args: List<&2, U32>, +idx: U32, +acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  match args:
+    case Nil{}: acc
+    case Con{r, t}:
+      +rl = ra_vec_get(U32, vd, 0, r, rm)
+      +il = ra_vec_get(U32, vd, 0, idx, rm)
+      +loc = Bool.pick(U32, is_ld, il, rl)
+      v4_tail_mv(rm, vd, is_ld, t, U32.add(idx, 1), Bool.pick(List<&2, X64Inst>, U32.is_eq(rl, il), acc, v4_mem_io(is_ld, U32.is_ge(loc, 100), 4, loc, U32.mul(idx, 16), acc)))
+def x64_emit_v4_go(name: String, +ar: U32, ops: List<&2, IrOp>, +tf: List<&2, U32>, ra: RegAllocRes) -> X64Fn:
+  match ra:
+    case RegAllocRes{+rm, +vd, _, sc}:
+      +frame = x64_align16(U32.add(U32.mul(sc, 16), U32.mul(ar, 16)))
+      +np = U32.to_nat(U32.sub(ar, 1))
+      a0 = x64_emit(XJcc{4, 2}, x64_emit(XTestRR{6, 6}, x64_emit(XSubRsp{frame}, x64_emit(XMovRR{5, 4}, x64_emit(XPush{5}, Nil{})))))
+      a2 = v4_emit_ops(rm, vd, ops, x64_emit(XLabel{1}, v4_io_params(True{}, rm, vd, np, 1, a0)))
+      a4 = v4_tail_mv(rm, vd, True{}, tf, 1, v4_tail_mv(rm, vd, False{}, tf, 1, a2))
+      a5 = v4_io_params(False{}, rm, vd, np, 1, x64_emit(XJcc{5, 1}, x64_emit(XAluRI{1, 6, 1}, a4)))
+      X64Fn{String.append("$v4.", name), False{}, b5k_list_rev(X64Inst, x64_emit(XRet{}, x64_emit(XPop{5}, x64_emit(XAddRsp{frame}, x64_emit(XLabel{2}, a5)))))}
+def x64_emit_v4_fn(cal: V4Cal) -> X64Fn:
+  V4Cal{+fid, +name, +ar, nregs, +ops, +tf} = cal
+  x64_emit_v4_go(name, ar, ops, tf, b5k_regalloc_v4(IrFn{fid, name, ar, nregs, False{}, False{}, False{}, Con{IrBlock{0, ops, TTailCall{fid, Con{0, tf}}}, Nil{}}}))
+
+type V4Scan is Data:
+  V4Scan{vmap: RaVec<U32>, fn_map: Map<&2, String>, acc: List<&2, X64Fn>}
+def v4_scan_one(mc: Maybe<&2, V4Cal>, st: V4Scan) -> V4Scan:
+  match mc st:
+    case None{} _: st
+    case Some{V4Cal{+fid, +name, +ar, nregs, ops, tf}} V4Scan{vm, fm, acc}:
+      V4Scan{ra_vec_set(U32, 8n, fid, ar, vm), Map.set(&2, String, fm, b5k_u32_to_str(U32.add(65536, fid)), String.append("$v4.", name)), Con{x64_emit_v4_fn(V4Cal{fid, name, ar, nregs, ops, tf}), acc}}
+def v4_scan_fns(fns: List<&2, IrFn>, st: V4Scan) -> V4Scan:
+  match fns:
+    case Nil{}: st
+    case Con{f, t}: v4_scan_fns(t, v4_scan_one(v4_match_fn(f), st))
+
+def v4_inv_mask(targs: List<&2, U32>, +idx: U32, +m: U32) -> U32:
+  match targs:
+    case Nil{}: m
+    case Con{a, t}: v4_inv_mask(t, U32.add(idx, 1), Bool.pick(U32, U32.is_eq(a, idx), U32.or(m, U32.shln(1, U32.to_nat(idx))), m))
+def v4_v_ok(+ar: U32, +im: U32, +vd: Nat, +dm: RaVec<Bool>, +v: U32) -> Bool:
+  Bool.pick(Bool, U32.is_lt(v, ar), Bool.or(U32.is_zero(v), U32.is_ne(U32.and(im, U32.shln(1, U32.to_nat(v))), 0)), ra_vec_get(Bool, vd, False{}, v, dm))
+type V4Split is Data:
+  V4Split{ok: Bool, setup: List<&2, IrOp>, w: U32, cfid: U32, cnt: U32, fargs: List<&2, U32>, post: List<&2, IrOp>, defs: List<&2, U32>}
+def v4_split_ops(+vmap: RaVec<U32>, +ar: U32, +im: U32, +vd: Nat, ops: List<&2, IrOp>, +dm: RaVec<Bool>, +srev: List<&2, IrOp>, +drev: List<&2, U32>) -> V4Split:
+  match ops:
+    case Nil{}: V4Split{False{}, Nil{}, 0, 0, 0, Nil{}, Nil{}, Nil{}}
+    case Con{ICallDirect{w, +cfid, Con{+cnt, +fargs}}, rest}:
+      +car = ra_vec_get(U32, 8n, 0, cfid, vmap)
+      V4Split{Bool.and(Bool.and(U32.is_ne(car, 0), U32.is_eq(b5k_u32_list_len(fargs), U32.sub(car, 1))), Bool.and(U32.is_lt(cnt, ar), U32.is_ne(U32.and(im, U32.shln(1, U32.to_nat(cnt))), 0))), b5k_list_rev(IrOp, srev), w, cfid, cnt, fargs, rest, b5k_list_rev(U32, drev)}
+    case Con{IConst{+d, v}, t}: v4_split_ops(vmap, ar, im, vd, t, ra_vec_set(Bool, vd, d, True{}, dm), Con{IConst{d, v}, srev}, Con{d, drev})
+    case Con{IFlt{+d, b}, t}: v4_split_ops(vmap, ar, im, vd, t, ra_vec_set(Bool, vd, d, True{}, dm), Con{IFlt{d, b}, srev}, Con{d, drev})
+    case Con{ICopy{+d, +s}, t}: Bool.pick(V4Split, v4_v_ok(ar, im, vd, dm, s), v4_split_ops(vmap, ar, im, vd, t, ra_vec_set(Bool, vd, d, True{}, dm), Con{ICopy{d, s}, srev}, Con{d, drev}), V4Split{False{}, Nil{}, 0, 0, 0, Nil{}, Nil{}, Nil{}})
+    case Con{IBin{+d, bop, +l, +r}, t}: Bool.pick(V4Split, Bool.and(v4_v_ok(ar, im, vd, dm, l), v4_v_ok(ar, im, vd, dm, r)), v4_split_ops(vmap, ar, im, vd, t, ra_vec_set(Bool, vd, d, True{}, dm), Con{IBin{d, bop, l, r}, srev}, Con{d, drev}), V4Split{False{}, Nil{}, 0, 0, 0, Nil{}, Nil{}, Nil{}})
+    case Con{IUn{+d, uop, +s}, t}: Bool.pick(V4Split, v4_v_ok(ar, im, vd, dm, s), v4_split_ops(vmap, ar, im, vd, t, ra_vec_set(Bool, vd, d, True{}, dm), Con{IUn{d, uop, s}, srev}, Con{d, drev}), V4Split{False{}, Nil{}, 0, 0, 0, Nil{}, Nil{}, Nil{}})
+    case Con{ICmp{+d, cop, +l, +r}, t}: Bool.pick(V4Split, Bool.and(v4_v_ok(ar, im, vd, dm, l), v4_v_ok(ar, im, vd, dm, r)), v4_split_ops(vmap, ar, im, vd, t, ra_vec_set(Bool, vd, d, True{}, dm), Con{ICmp{d, cop, l, r}, srev}, Con{d, drev}), V4Split{False{}, Nil{}, 0, 0, 0, Nil{}, Nil{}, Nil{}})
+    case _: V4Split{False{}, Nil{}, 0, 0, 0, Nil{}, Nil{}, Nil{}}
+def v4_s0(+jl: U32, +v: U32) -> U32: Bool.pick(U32, U32.is_zero(v), jl, v)
+def v4_s0l(+jl: U32, xs: List<&2, U32>) -> List<&2, U32>:
+  match xs:
+    case Nil{}: Nil{}
+    case Con{v, t}: Con{v4_s0(jl, v), v4_s0l(jl, t)}
+def v4_s0_op(+jl: U32, op: IrOp) -> IrOp:
+  match op:
+    case ICopy{d, s}: ICopy{d, v4_s0(jl, s)}
+    case IBin{d, b, l, r}: IBin{d, b, v4_s0(jl, l), v4_s0(jl, r)}
+    case IUn{d, u, s}: IUn{d, u, v4_s0(jl, s)}
+    case ICmp{d, c, l, r}: ICmp{d, c, v4_s0(jl, l), v4_s0(jl, r)}
+    case ICallDirect{d, f, a}: ICallDirect{d, f, v4_s0l(jl, a)}
+    case ICtor{d, c, fs}: ICtor{d, c, v4_s0l(jl, fs)}
+    case ITake{ds, s}: ITake{ds, v4_s0(jl, s)}
+    case ITag{d, s}: ITag{d, v4_s0(jl, s)}
+    case IKeep{d, s}: IKeep{d, v4_s0(jl, s)}
+    case ISink{s}: ISink{v4_s0(jl, s)}
+    case IReuse{d, sl, c, fs}: IReuse{d, v4_s0(jl, sl), c, v4_s0l(jl, fs)}
+    case o: o
+def v4_s0_ops(+jl: U32, ops: List<&2, IrOp>) -> List<&2, IrOp>:
+  match ops:
+    case Nil{}: Nil{}
+    case Con{op, t}: Con{v4_s0_op(jl, op), v4_s0_ops(jl, t)}
+def v4_live_outs(+vd: Nat, +pu: RaVec<U32>, ds: List<&2, U32>, +acc: List<&2, U32>) -> List<&2, U32>:
+  match ds:
+    case Nil{}: b5k_list_rev(U32, acc)
+    case Con{+d, t}: v4_live_outs(vd, pu, t, Bool.pick(List<&2, U32>, Bool.and(U32.is_ne(ra_vec_get(U32, vd, 0, d, pu), 0), Bool.not(x64_u32_in(d, acc))), Con{d, acc}, acc))
+def v4_io_fargs(+is_st: Bool, +p4: U32, xs: List<&2, U32>, +k: U32) -> List<&2, IrOp>:
+  match xs:
+    case Nil{}: Nil{}
+    case Con{+v, t}: Con{Bool.pick(IrOp, is_st, IStore{p4, U32.add(65536, U32.mul(k, 4)), v}, ILoad{v, p4, U32.add(65536, U32.mul(k, 4))}), v4_io_fargs(is_st, p4, t, U32.add(k, 1))}
+def v4_io_lo(+is_st: Bool, +p8: U32, xs: List<&2, U32>, +m: U32) -> List<&2, IrOp>:
+  match xs:
+    case Nil{}: Nil{}
+    case Con{+v, t}: Con{Bool.pick(IrOp, is_st, IStore{p8, U32.mul(m, 4), v}, ILoad{v, p8, U32.mul(m, 4)}), v4_io_lo(is_st, p8, t, U32.add(m, 1))}
+def v4_acc_cp(+ph2: Bool, targs: List<&2, U32>, +idx: U32, +nv: U32) -> List<&2, IrOp>:
+  match targs:
+    case Nil{}: Nil{}
+    case Con{+a, +t}: Bool.pick(List<&2, IrOp>, U32.is_eq(a, idx), v4_acc_cp(ph2, t, U32.add(idx, 1), nv), Con{Bool.pick(IrOp, ph2, ICopy{idx, nv}, ICopy{nv, a}), v4_acc_cp(ph2, t, U32.add(idx, 1), U32.add(nv, 1))})
+def v4_max_bid(blks: List<&2, IrBlock>, m: U32) -> U32:
+  match blks:
+    case Nil{}: m
+    case Con{IrBlock{id, _, _}, t}: v4_max_bid(t, U32.max(m, id))
+def v4_rw_b0(+sid: U32, +cid: U32, blks: List<&2, IrBlock>) -> List<&2, IrBlock>:
+  match blks:
+    case Con{IrBlock{0, ops, TBr{c, +tb, +eb}}, t}: Con{IrBlock{0, ops, TBr{c, Bool.pick(U32, U32.is_eq(tb, sid), cid, tb), Bool.pick(U32, U32.is_eq(eb, sid), cid, eb)}}, t}
+    case bs: bs
+def v4_seq(n: Nat, +i: U32) -> List<&2, U32>:
+  match n:
+    case 0n: Nil{}
+    case 1n+p: Con{i, v4_seq(p, U32.add(i, 1))}
+def v4_build_caller(sp: V4Split, +fid: U32, name: String, +ar: U32, +nregs: U32, esc: Bool, eff: Bool, is_m: Bool, +blks: List<&2, IrBlock>, +sid: U32, +targs: List<&2, U32>) -> IrFn & Bool:
+  match sp:
+    case V4Split{False{}, _, _, _, _, _, _, _}: (IrFn{fid, name, ar, nregs, esc, eff, is_m, blks}, False{})
+    case V4Split{True{}, setup, w, +cfid, cnt, +fargs, +post, defs}:
+      +vd = ra_vd_of(U32.max(nregs, ar))
+      +los = v4_live_outs(vd, x64_inc_uses(vd, targs, x64_uc_ops(vd, post, RVEmpty{})), defs, Nil{})
+      +kf = b5k_u32_list_len(fargs)
+      +ml = b5k_u32_list_len(los)
+      +nb = U32.add(v4_max_bid(blks, 0), 1)
+      +v = nregs
+      +a_vs = v4_seq(U32.to_nat(kf), U32.add(v, 18))
+      +v_ac = U32.add(U32.add(v, 18), kf)
+      +b8_ops: List<&2, IrOp> = [IConst{U32.add(v, 8), U32.mul(kf, 16)}, IBin{U32.add(v, 9), 14, U32.add(v, 2), U32.add(v, 8)}, IConst{U32.add(v, 10), 3}, IBin{U32.add(v, 11), 8, U32.add(v, 3), U32.add(v, 10)}, IBin{U32.add(v, 12), 14, U32.add(v, 9), U32.add(v, 11)}]
+      +p4_ops: List<&2, IrOp> = [IConst{U32.add(v, 5), 2}, IBin{U32.add(v, 6), 8, U32.add(v, 3), U32.add(v, 5)}, IBin{U32.add(v, 7), 14, U32.add(v, 2), U32.add(v, 6)}]
+      +inc_ops: List<&2, IrOp> = [IConst{U32.add(v, 13), 1}, IBin{U32.add(v, 3), 0, U32.add(v, 3), U32.add(v, 13)}, ICmp{U32.add(v, 14), 2, U32.add(v, 3), v}]
+      b_chk: IrBlock = IrBlock{nb, [IConst{v, 4}, ICmp{U32.add(v, 1), 5, 0, v}], TBr{U32.add(v, 1), U32.add(nb, 1), sid}}
+      b_ini: IrBlock = IrBlock{U32.add(nb, 1), [IAlloca{U32.add(v, 2), U32.add(U32.mul(kf, 2), U32.mul(ml, 4))}, IConst{U32.add(v, 3), 0}], TJmp{U32.add(nb, 2)}}
+      s_lo = Bool.pick(List<&2, IrOp>, U32.is_zero(ml), Nil{}, b5k_list_app(IrOp, b8_ops, v4_io_lo(True{}, U32.add(v, 12), los, 0)))
+      b_set: IrBlock = IrBlock{U32.add(nb, 2), b5k_list_app(IrOp, Con{IBin{U32.add(v, 4), 1, 0, U32.add(v, 3)}, v4_s0_ops(U32.add(v, 4), setup)}, b5k_list_app(IrOp, p4_ops, b5k_list_app(IrOp, v4_io_fargs(True{}, U32.add(v, 7), fargs, 0), b5k_list_app(IrOp, s_lo, inc_ops)))), TBr{U32.add(v, 14), U32.add(nb, 2), U32.add(nb, 3)}}
+      b_cal: IrBlock = IrBlock{U32.add(nb, 3), [ICallDirect{U32.add(v, 15), U32.add(65536, cfid), [cnt, U32.add(v, 2)]}, IConst{U32.add(v, 3), 0}], TJmp{U32.add(nb, 4)}}
+      e_lo = Bool.pick(List<&2, IrOp>, U32.is_zero(ml), Nil{}, b5k_list_app(IrOp, b8_ops, v4_io_lo(False{}, U32.add(v, 12), los, 0)))
+      b_epi: IrBlock = IrBlock{U32.add(nb, 4), b5k_list_app(IrOp, Con{IBin{U32.add(v, 4), 1, 0, U32.add(v, 3)}, p4_ops}, b5k_list_app(IrOp, v4_io_fargs(False{}, U32.add(v, 7), a_vs, 0), b5k_list_app(IrOp, e_lo, b5k_list_app(IrOp, [IConst{U32.add(v, 16), 0}, ICallDirect{w, cfid, Con{U32.add(v, 16), a_vs}}], b5k_list_app(IrOp, v4_s0_ops(U32.add(v, 4), post), b5k_list_app(IrOp, v4_acc_cp(False{}, targs, 1, v_ac), b5k_list_app(IrOp, v4_acc_cp(True{}, targs, 1, v_ac), inc_ops))))))), TBr{U32.add(v, 14), U32.add(nb, 4), U32.add(nb, 5)}}
+      b_don: IrBlock = IrBlock{U32.add(nb, 5), [IBin{U32.add(v, 17), 1, 0, v}], TTailCall{fid, Con{U32.add(v, 17), v4_seq(U32.to_nat(U32.sub(ar, 1)), 1)}}}
+      (IrFn{fid, name, ar, U32.add(v_ac, ar), esc, eff, is_m, b5k_list_app(IrBlock, v4_rw_b0(sid, nb, blks), [b_chk, b_ini, b_set, b_cal, b_epi, b_don])}, True{})
+def v4_batch_hdr(h: V4Hdr, vmap: RaVec<U32>, fid: U32, name: String, +ar: U32, nregs: U32, esc: Bool, eff: Bool, is_m: Bool) -> IrFn & Bool:
+  match h:
+    case V4Hdr{True{}, vd, _, blks, sid, sops, _, +tr}: v4_build_caller(v4_split_ops(vmap, ar, v4_inv_mask(tr, 1, 0), vd, sops, RVEmpty{}, Nil{}, Nil{}), fid, name, ar, nregs, esc, eff, is_m, blks, sid, tr)
+    case V4Hdr{False{}, _, _, blks, _, _, _, _}: (IrFn{fid, name, ar, nregs, esc, eff, is_m, blks}, False{})
+def v4_try_batch(vmap: RaVec<U32>, f: IrFn) -> IrFn & Bool:
+  match f:
+    case IrFn{+fid, +name, +ar, +nregs, +esc, +eff, +is_m, blks}: v4_batch_hdr(v4_loop_hdr(IrFn{fid, name, ar, nregs, esc, eff, is_m, blks}), vmap, fid, name, ar, nregs, esc, eff, is_m)
 def x64_lower_all_o2(fn_map: Map<&2, String>, heap_off: U32, r2s: X64R2Scan, rf: X64RotFn, acc: List<&2, X64Fn>) -> List<&2, X64Fn>:
   match rf:
     case X64RotFn{+f, t0d}: Con{x64_make_seg_wrapper(f), x64_lower_fn_o2_go(fn_map, heap_off, r2s, t0d, b5k_regalloc(f), f, acc)}
-def x64_lower_all(+is_o2: Bool, +fn_map: Map<&2, String>, +heap_off: U32, +r2s: X64R2Scan, fns: List<&2, IrFn>, acc: List<&2, X64Fn>) -> List<&2, X64Fn>:
+def x64_lower_one_o2(fn_map: Map<&2, String>, heap_off: U32, r2s: X64R2Scan, bf: IrFn & Bool, acc: List<&2, X64Fn>) -> List<&2, X64Fn>:
+  (+f, batched) = bf
+  match batched:
+    case True{}: Con{x64_make_seg_wrapper(f), x64_lower_fn_o2_go(fn_map, heap_off, r2s, False{}, b5k_regalloc(f), f, acc)}
+    case False{}: x64_lower_all_o2(fn_map, heap_off, r2s, x64_rot_countdown(f), acc)
+def x64_lower_all(+is_o2: Bool, +vmap: RaVec<U32>, +fn_map: Map<&2, String>, +heap_off: U32, +r2s: X64R2Scan, fns: List<&2, IrFn>, acc: List<&2, X64Fn>) -> List<&2, X64Fn>:
   match is_o2 fns:
     case _ Nil{}: acc
-    case False{} Con{+f, t}:
-      x64_lower_all(False{}, fn_map, heap_off, r2s, t, Con{x64_make_seg_wrapper(f), Con{x64_lower_fn(fn_map, heap_off, f), acc}})
-    case True{} Con{f, t}:
-      x64_lower_all(True{}, fn_map, heap_off, r2s, t, x64_lower_all_o2(fn_map, heap_off, r2s, x64_rot_countdown(f), acc))
+    case False{} Con{+f, t}: x64_lower_all(False{}, vmap, fn_map, heap_off, r2s, t, Con{x64_make_seg_wrapper(f), Con{x64_lower_fn(fn_map, heap_off, f), acc}})
+    case True{} Con{f, t}: x64_lower_all(True{}, vmap, fn_map, heap_off, r2s, t, x64_lower_one_o2(fn_map, heap_off, r2s, v4_try_batch(vmap, f), acc))
+def x64_codegen_v4(+fns: List<&2, IrFn>, heap_off: U32, sc: V4Scan) -> List<&2, X64Fn>:
+  match sc:
+    case V4Scan{vm, fm1, acc1}: b5k_list_rev(X64Fn, x64_lower_all(True{}, vm, fm1, heap_off, x64_scan_ret2(True{}, fns), fns, acc1))
+def x64_codegen_go(is_o2: Bool, +fns: List<&2, IrFn>, heap_off: U32, fm0: Map<&2, String>, acc0: List<&2, X64Fn>) -> List<&2, X64Fn>:
+  match is_o2:
+    case False{}: b5k_list_rev(X64Fn, x64_lower_all(False{}, RVEmpty{}, fm0, heap_off, x64_scan_ret2(False{}, fns), fns, acc0))
+    case True{}: x64_codegen_v4(fns, heap_off, v4_scan_fns(fns, V4Scan{RVEmpty{}, fm0, acc0}))
 def x64_codegen(+is_o2: Bool, prog: IrProg) -> List<&2, X64Fn>:
   match prog:
     case IrProg{+fns, _, statics, _, _, _, _, _}:
-      fn_map = x64_build_fn_map_go(fns, Map.new(&2, String))
-      b5k_list_rev(X64Fn, x64_lower_all(is_o2, fn_map, x64_heap_off(statics), x64_scan_ret2(is_o2, fns), fns, Con{x64_make_apply_stub(), Con{x64_make_main_stub(), Nil{}}}))
+      x64_codegen_go(is_o2, fns, x64_heap_off(statics), x64_build_fn_map_go(fns, Map.new(&2, String)), Con{x64_make_apply_stub(), Con{x64_make_main_stub(), Nil{}}})
 def b5k_codegen(prog: IrProg) -> List<&2, X64Fn>:
   x64_codegen(False{}, prog)
 def b5k_codegen_o2(prog: IrProg) -> List<&2, X64Fn>:

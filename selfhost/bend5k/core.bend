@@ -232,6 +232,7 @@ type IrOp is Data:
   IAlloca{dst: U32, words: U32}
   ILoad{dst: U32, base: U32, off: U32}
   IStore{base: U32, off: U32, val: U32}
+  IMutField{obj: U32, idx: U32, val: U32}
   IFail{code: U32}
 
 type IrSwitchArm is Data:

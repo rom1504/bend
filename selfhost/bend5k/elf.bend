@@ -217,6 +217,25 @@ def elf_lut_len(+is_xmm: Bool, +idx: U32, +dst: U32, +copy: U32, +gtmp: U32, n: 
   U32.add(U32.add(Bool.pick(U32, elf_is_simm8(n), 4, 7), 18), U32.add(l_ld, l_cp))
 type P1St is Data:
   P1St{xs: List<&2, X64Inst>, skip: Nat, off: U32, lbls: RaVec<U32>}
+def elf_drop2(xs: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  match xs:
+    case Con{_, Con{_, r}}: r
+    case r: r
+def elf_alu_lut_go(lcnt: RaVec<U32>, d: U32, xs: List<&2, X64Inst>) -> LutHit:
+  match xs:
+    case Con{XJcc{5, nlbl}, body}: elf_lut_start(True{}, lcnt, d, nlbl, body)
+    case _: LutHit{False{}, False{}, 0, 0, 0, 16, 0, 0, 0, Nil{}, Nil{}}
+def elf_alu_lut(op: U32, d: U32, ok32: Bool, lcnt: RaVec<U32>, t: List<&2, X64Inst>) -> LutHit:
+  match op ok32:
+    case 1 True{}: elf_alu_lut_go(lcnt, d, elf_drop2(t))
+    case 1 False{}: elf_alu_lut_go(lcnt, d, t)
+    case _ _: LutHit{False{}, False{}, 0, 0, 0, 16, 0, 0, 0, Nil{}, Nil{}}
+def elf_p1_alu(lh: LutHit, +off: U32, +dl: U32, ok32: Bool, t: List<&2, X64Inst>, lbls: RaVec<U32>) -> P1St:
+  match lh:
+    case LutHit{True{}, is_xmm, idx, dst, copy, gtmp, _, _, n, _, rest}:
+      P1St{rest, 0n, U32.add(U32.add(off, dl), elf_lut_len(is_xmm, idx, dst, copy, gtmp, n)), lbls}
+    case LutHit{False{}, _, _, _, _, _, _, _, _, _, _}:
+      P1St{t, Bool.pick(Nat, ok32, 2n, 0n), U32.add(off, dl), lbls}
 def elf_p1_lut(lh: LutHit, +off: U32, inst_len: U32, t: List<&2, X64Inst>, lbls: RaVec<U32>) -> P1St:
   match lh:
     case LutHit{True{}, is_xmm, idx, dst, copy, gtmp, _, _, n, _, rest}:
@@ -244,9 +263,10 @@ def elf_pass1_go(fuel: Nat, +lcnt: RaVec<U32>, st: P1St) -> RaVec<U32>:
       +ok = elf_head_is_mask32(t, d)
       dl = Bool.pick(U32, ok, elf_alu_rr32_len(op, d, s), Bool.pick(U32, Bool.and(U32.is_eq(op, 7), Bool.and(U32.is_eq(d, s), U32.is_lt(d, 8))), 2, 3))
       elf_pass1_go(p, lcnt, P1St{t, Bool.pick(Nat, ok, 2n, 0n), U32.add(off, dl), lbls})
-    case 1n+p P1St{Con{XAluRI{_, +d, +imm}, +t}, _, off, lbls}:
+    case 1n+p P1St{Con{XAluRI{+op, +d, +imm}, +t}, _, off, lbls}:
       +ok = elf_head_is_mask32(t, d)
-      elf_pass1_go(p, lcnt, P1St{t, Bool.pick(Nat, ok, 2n, 0n), U32.add(off, Bool.pick(U32, ok, elf_alu_ri32_len(d, imm), Bool.pick(U32, elf_is_simm8(imm), 4, 7))), lbls})
+      +dl = Bool.pick(U32, ok, elf_alu_ri32_len(d, imm), Bool.pick(U32, elf_is_simm8(imm), 4, 7))
+      elf_pass1_go(p, lcnt, elf_p1_alu(elf_alu_lut(op, d, ok, lcnt, t), off, dl, ok, t, lbls))
     case 1n+p P1St{Con{XMul{+d, +s}, +t}, _, off, lbls}:
       +ok = elf_head_is_mask32(t, d)
       elf_pass1_go(p, lcnt, P1St{t, Bool.pick(Nat, ok, 2n, 0n), U32.add(off, elf_mul_len(ok, d, s)), lbls})
@@ -426,6 +446,12 @@ def elf_emit_lut(lh: LutHit, +lbls: RaVec<U32>, orig: X64Inst, t: List<&2, X64In
       EmitSt{rest, 0n, ByteBuf{o_end, r5}, Con{ElfReloc{U32.add(o2, 3), ".rodata", 2, U32.sub(bb_len(luts), 4)}, rels}, elf_emit_u32_arr(vals, luts)}
     case LutHit{False{}, _, _, _, _, _, _, _, _, _, _} ByteBuf{off, rev}:
       EmitSt{t, 0n, elf_emit_inst_bytes_go(orig, off, rev), rels, luts}
+def elf_emit_alu_lut(lh: LutHit, +lbls: RaVec<U32>, ok32: Bool, t: List<&2, X64Inst>, b1: ByteBuf, rels: List<&2, ElfReloc>, luts: ByteBuf) -> EmitSt:
+  match lh:
+    case LutHit{True{}, is_xmm, idx, dst, copy, gtmp, join, def_lbl, n, vals, rest}:
+      elf_emit_lut(LutHit{True{}, is_xmm, idx, dst, copy, gtmp, join, def_lbl, n, vals, rest}, lbls, XRet{}, t, b1, rels, luts)
+    case LutHit{False{}, _, _, _, _, _, _, _, _, _, _}:
+      EmitSt{t, Bool.pick(Nat, ok32, 2n, 0n), b1, rels, luts}
 def elf_emit_insts_go(fuel: Nat, +lcnt: RaVec<U32>, +lbls: RaVec<U32>, st: EmitSt) -> ByteBuf & (List<&2, ElfReloc> & ByteBuf):
   match fuel st:
     case 0n EmitSt{_, _, b, rels, luts}: (b, (rels, luts))
@@ -442,9 +468,9 @@ def elf_emit_insts_go(fuel: Nat, +lcnt: RaVec<U32>, +lbls: RaVec<U32>, st: EmitS
     case 1n+p EmitSt{Con{XAluRR{op, +d, s}, +t}, _, b, rels, luts}:
       +ok = elf_head_is_mask32(t, d)
       elf_emit_insts_go(p, lcnt, lbls, EmitSt{t, Bool.pick(Nat, ok, 2n, 0n), elf_em_rr(ok, op, d, s, b), rels, luts})
-    case 1n+p EmitSt{Con{XAluRI{op, +d, imm}, +t}, _, b, rels, luts}:
+    case 1n+p EmitSt{Con{XAluRI{+op, +d, +imm}, +t}, _, b, rels, luts}:
       +ok = elf_head_is_mask32(t, d)
-      elf_emit_insts_go(p, lcnt, lbls, EmitSt{t, Bool.pick(Nat, ok, 2n, 0n), elf_em_ri(ok, op, d, imm, b), rels, luts})
+      elf_emit_insts_go(p, lcnt, lbls, elf_emit_alu_lut(elf_alu_lut(op, d, ok, lcnt, t), lbls, ok, t, elf_em_ri(ok, op, d, imm, b), rels, luts))
     case 1n+p EmitSt{Con{XMul{+d, s}, +t}, _, b, rels, luts}:
       +ok = elf_head_is_mask32(t, d)
       elf_emit_insts_go(p, lcnt, lbls, EmitSt{t, Bool.pick(Nat, ok, 2n, 0n), elf_em_mul(ok, d, s, b), rels, luts})

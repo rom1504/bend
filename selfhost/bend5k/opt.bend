@@ -655,10 +655,84 @@ def cf_step_bin_int(ha: Bool, hb: Bool, +has: U32Map, +val: U32Map, +nr: U32, +r
     case True{} False{}: cf_bin_lhs_const(has, val, nr, rev, d, op, a, b, um_get(val, a))
     case False{} False{}:
       Bool.pick(CfSt, U32.is_eq(a, b), cf_bin_same(has, val, nr, rev, d, op, a), CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, op, a, b}, rev}})
-def cf_step_bin_flt(is_flt: Bool, +has: U32Map, +val: U32Map, nr: U32, rev: List<&2, IrOp>, +d: U32, +op: U32, +a: U32, +b: U32) -> CfSt:
+def opt_u2f_bits(+c: U32) -> U32:
+  match c:
+    case 0: 0
+    case +n:
+      +e = U32.from_nat(U32.log2(n))
+      +hi = U32.is_gt(e, 23)
+      +sh = Bool.pick(U32, hi, U32.sub(e, 23), 0)
+      +q0 = U32.shrn(n, U32.to_nat(sh))
+      +rem = U32.and(n, U32.sub(U32.shln(1, U32.to_nat(sh)), 1))
+      +half = Bool.pick(U32, hi, U32.shln(1, U32.to_nat(U32.sub(sh, 1))), 0)
+      +rnd = Bool.and(hi, Bool.or(U32.is_gt(rem, half), Bool.and(U32.is_eq(rem, half), U32.is_eq(U32.and(q0, 1), 1))))
+      +q1 = Bool.pick(U32, rnd, U32.add(q0, 1), q0)
+      +ov = Bool.and(hi, U32.is_eq(q1, 16777216))
+      +exp = U32.add(127, Bool.pick(U32, ov, U32.add(e, 1), e))
+      +mant = Bool.pick(U32, hi, Bool.pick(U32, ov, 0, U32.and(q1, 8388607)), U32.and(U32.shln(n, U32.to_nat(U32.sub(23, e))), 8388607))
+      U32.or(U32.shln(exp, 23n), mant)
+def opt_f32_to_small_u32(+bits: U32) -> U32:
+  +exp = U32.shrn(bits, 23n)
+  +ok_e = Bool.and(U32.is_ge(exp, 127), U32.is_le(exp, 142))
+  +sh = Bool.pick(U32, ok_e, U32.sub(150, exp), 0)
+  +mant = U32.and(bits, 8388607)
+  +lmask = U32.sub(U32.shln(1, U32.to_nat(sh)), 1)
+  Bool.pick(U32, Bool.and(ok_e, U32.is_zero(U32.and(mant, lmask))), U32.shrn(U32.or(8388608, mant), U32.to_nat(sh)), 0)
+type OptFdiv is Data:
+  OptFdiv{a: U32, b: U32, e: U32}
+def opt_fdiv_up(fuel: Nat, lt: Bool, +a: U32, +b: U32, +exp: U32) -> OptFdiv:
+  match fuel lt:
+    case 0n _: OptFdiv{a, b, exp}
+    case _ False{}: OptFdiv{a, b, exp}
+    case 1n+p True{}:
+      +a1 = U32.shln(a, 1n)
+      opt_fdiv_up(p, U32.is_lt(a1, b), a1, b, U32.sub(exp, 1))
+def opt_fdiv_dn(fuel: Nat, ge: Bool, +a: U32, +b: U32, +exp: U32) -> OptFdiv:
+  match fuel ge:
+    case 0n _: OptFdiv{a, b, exp}
+    case _ False{}: OptFdiv{a, b, exp}
+    case 1n+p True{}:
+      +b1 = U32.shln(b, 1n)
+      opt_fdiv_dn(p, U32.is_ge(a, U32.shln(b1, 1n)), a, b1, U32.add(exp, 1))
+def opt_fdiv_loop(n: Nat, +a: U32, +b: U32, +q: U32) -> OptFdiv:
+  match n:
+    case 0n: OptFdiv{a, b, q}
+    case 1n+p:
+      +a1 = U32.shln(a, 1n)
+      +ge = U32.is_ge(a1, b)
+      opt_fdiv_loop(p, Bool.pick(U32, ge, U32.sub(a1, b), a1), b, Bool.pick(U32, ge, U32.or(U32.shln(q, 1n), 1), U32.shln(q, 1n)))
+def opt_fdiv_s3(st: OptFdiv, +e2: U32) -> U32:
+  match st:
+    case OptFdiv{rem, +b2, +q0}:
+      +r2 = U32.shln(rem, 1n)
+      rnd = Bool.or(U32.is_gt(r2, b2), Bool.and(U32.is_eq(r2, b2), U32.is_eq(U32.and(q0, 1), 1)))
+      +q1 = Bool.pick(U32, rnd, U32.add(q0, 1), q0)
+      +ov = U32.is_eq(q1, 8388608)
+      U32.or(U32.shln(Bool.pick(U32, ov, U32.add(e2, 1), e2), 23n), Bool.pick(U32, ov, 0, q1))
+def opt_fdiv_s2(st: OptFdiv) -> U32:
+  match st:
+    case OptFdiv{a2, +b2, e2}: opt_fdiv_s3(opt_fdiv_loop(23n, U32.sub(a2, b2), b2, 0), e2)
+def opt_fdiv_s1(st: OptFdiv) -> U32:
+  match st:
+    case OptFdiv{+a1, +b1, e1}: opt_fdiv_s2(opt_fdiv_dn(20n, U32.is_ge(a1, U32.shln(b1, 1n)), a1, b1, e1))
+def opt_fdiv_bits(+a0: U32, +b0: U32) -> U32:
+  opt_fdiv_s1(opt_fdiv_up(20n, U32.is_lt(a0, b0), a0, b0, 127))
+def cf_emit_flt(has: U32Map, val: U32Map, nregs: U32, rev: List<&2, IrOp>, +d: U32, +bits: U32) -> CfSt:
+  CfSt{um_set(has, d, 2), um_set(val, d, bits), nregs, Con{IFlt{d, bits}, rev}}
+def cf_step_bin_flt(is_flt: Bool, +has: U32Map, +val: U32Map, +nr: U32, +rev: List<&2, IrOp>, +d: U32, +op: U32, +a: U32, +b: U32) -> CfSt:
   match is_flt:
-    case True{}: CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, op, a, b}, rev}}
-    case False{}: cf_step_bin_int(U32.is_ne(um_get(has, a), 0), U32.is_ne(um_get(has, b), 0), has, val, nr, rev, d, op, a, b)
+    case True{}:
+      +fok = Bool.and(U32.is_eq(um_get(has, a), 2), U32.is_eq(um_get(has, b), 2))
+      +va = um_get(val, a)
+      +vb = um_get(val, b)
+      +is_neg = Bool.and(fok, Bool.and(U32.is_eq(op, 11), U32.is_zero(va)))
+      +nb = Bool.pick(U32, U32.is_zero(U32.and(vb, 2147483647)), 0, U32.xor(vb, 2147483648))
+      +na = Bool.pick(U32, Bool.and(fok, U32.is_eq(op, 13)), opt_f32_to_small_u32(va), 0)
+      +db = Bool.pick(U32, U32.is_ne(na, 0), opt_f32_to_small_u32(vb), 0)
+      Bool.pick(CfSt, is_neg, cf_emit_flt(has, val, nr, rev, d, nb),
+        Bool.pick(CfSt, U32.is_ne(db, 0), cf_emit_flt(has, val, nr, rev, d, opt_fdiv_bits(na, db)),
+          CfSt{um_set(has, d, 0), val, nr, Con{IBin{d, op, a, b}, rev}}))
+    case False{}: cf_step_bin_int(U32.is_eq(um_get(has, a), 1), U32.is_eq(um_get(has, b), 1), has, val, nr, rev, d, op, a, b)
 def cf_step_bin(+has: U32Map, +val: U32Map, nr: U32, rev: List<&2, IrOp>, +d: U32, +op: U32, +a: U32, +b: U32) -> CfSt:
   cf_step_bin_flt(U32.is_ge(op, 10), has, val, nr, rev, d, op, a, b)
 def opt_pred_arms(arms: List<&2, IrSwitchArm>, m: U32Map) -> U32Map:
@@ -719,14 +793,22 @@ def cf_step_op(+ne_v: U32, +ne_k: U32, st: CfSt, op: IrOp) -> CfSt:
     case CfSt{+has, +val, +nr, +rev}:
       match op:
         case IConst{d, v}: cf_emit_const(has, val, nr, rev, d, v)
+        case IFlt{d, bits}: cf_emit_flt(has, val, nr, rev, d, bits)
         case ICopy{d, s}: cf_emit_copy(has, val, nr, rev, d, s)
         case IBin{d, bop, a, b}: cf_step_bin(has, val, nr, rev, d, bop, a, b)
         case IUn{+d, +uop, +s}:
-          can = Bool.and(U32.is_lt(uop, 2), U32.is_ne(um_get(has, s), 0))
-          Bool.pick(CfSt, can, cf_emit_const(has, val, nr, rev, d, opt_fold_un(uop, um_get(val, s))), CfSt{um_set(has, d, 0), val, nr, Con{IUn{d, uop, s}, rev}})
+          +hs = um_get(has, s)
+          +vs = um_get(val, s)
+          +can_i = Bool.and(U32.is_lt(uop, 2), U32.is_eq(hs, 1))
+          +can_fn = Bool.and(U32.is_eq(uop, 2), U32.is_eq(hs, 2))
+          +can_u2f = Bool.and(U32.is_eq(uop, 4), U32.is_eq(hs, 1))
+          Bool.pick(CfSt, can_i, cf_emit_const(has, val, nr, rev, d, opt_fold_un(uop, vs)),
+            Bool.pick(CfSt, can_fn, cf_emit_flt(has, val, nr, rev, d, U32.xor(vs, 2147483648)),
+              Bool.pick(CfSt, can_u2f, cf_emit_flt(has, val, nr, rev, d, opt_u2f_bits(vs)),
+                CfSt{um_set(has, d, 0), val, nr, Con{IUn{d, uop, s}, rev}})))
         case ICmp{+d, +cop, +a, +b}:
-          +ha = U32.is_ne(um_get(has, a), 0)
-          +hb = U32.is_ne(um_get(has, b), 0)
+          +ha = U32.is_eq(um_get(has, a), 1)
+          +hb = U32.is_eq(um_get(has, b), 1)
           can = Bool.and(U32.is_lt(cop, 6), Bool.and(ha, hb))
           same_i = Bool.and(U32.is_lt(cop, 6), U32.is_eq(a, b))
           same_v = Bool.to_u32(Bool.or(U32.is_eq(cop, 0), Bool.or(U32.is_eq(cop, 3), U32.is_eq(cop, 5))))
@@ -754,10 +836,10 @@ def cf_fold_term(+ne_v: U32, +ne_k: U32, +has: U32Map, +val: U32Map, term: IrTer
   match term:
     case TBr{+c, +tb, +fb}:
       +ne_nz = Bool.and(U32.is_ne(ne_v, 0), Bool.and(U32.is_eq(c, U32.sub(ne_v, 1)), U32.is_zero(ne_k)))
-      Bool.pick(IrTerm, U32.is_ne(um_get(has, c), 0), TJmp{Bool.pick(U32, U32.is_zero(um_get(val, c)), fb, tb)},
+      Bool.pick(IrTerm, U32.is_eq(um_get(has, c), 1), TJmp{Bool.pick(U32, U32.is_zero(um_get(val, c)), fb, tb)},
         Bool.pick(IrTerm, ne_nz, TJmp{tb}, TBr{c, tb, fb}))
     case TSwitch{+s, +arms, +def_blk}:
-      Bool.pick(IrTerm, U32.is_ne(um_get(has, s), 0), TJmp{cf_find_arm(arms, um_get(val, s), def_blk)}, TSwitch{s, arms, def_blk})
+      Bool.pick(IrTerm, U32.is_eq(um_get(has, s), 1), TJmp{cf_find_arm(arms, um_get(val, s), def_blk)}, TSwitch{s, arms, def_blk})
     case other: other
 type CfBlksRes is Data:
   CfBlksRes{blks: List<&2, IrBlock>, nregs: U32}
@@ -2393,6 +2475,23 @@ def opt_jt_br_fact(is_t: Bool, +defc: U32Map, +ar: U32, sc: BrScan) -> BrFact:
       +ie = Bool.pick(Bool, is_t, U32.is_zero(cop), U32.is_ne(cop, 0))
       Bool.pick(BrFact, Bool.and(hb, Bool.and(Bool.not(ha), opt_cp_can_prop(defc, ar, a))), Bool.pick(BrFact, ie, BFEq{a, um_get(val, b)}, BFNe{a, um_get(val, b)}), Bool.pick(BrFact, Bool.and(ha, Bool.and(Bool.not(hb), opt_cp_can_prop(defc, ar, b))), Bool.pick(BrFact, ie, BFEq{b, um_get(val, a)}, BFNe{b, um_get(val, a)}), BFNone{}))
     case _: BFNone{}
+def opt_jt_lut_step(jt: JtTest, v: U32, k: U32) -> U32:
+  match jt:
+    case JTSome{tv, tk, is_ne, tb, fb}:
+      Bool.pick(U32, Bool.and(U32.is_eq(tv, v), U32.is_eq(tk, k)), U32.add(Bool.pick(U32, is_ne, tb, fb), 1), 0)
+    case JTNone{}: 0
+def opt_jt_is_lut_head(fuel: Nat, +jtm: RaVec<JtTest>, +v: U32, +k: U32, +tgt: U32) -> Bool:
+  match fuel:
+    case 0n: True{}
+    case 1n+p:
+      +n1 = Bool.pick(U32, U32.is_lt(tgt, 1024), opt_jt_lut_step(ra_vec_get(JtTest, 5n, JTNone{}, tgt, jtm), v, k), 0)
+      Bool.and(U32.is_ne(n1, 0), opt_jt_is_lut_head(p, jtm, v, U32.add(k, 1), U32.sub(n1, 1)))
+def opt_jt_is_lut_tgt_go(jt: JtTest, jtm: RaVec<JtTest>) -> Bool:
+  match jt:
+    case JTSome{v, 0, is_ne, tb, fb}: opt_jt_is_lut_head(4n, jtm, v, 1, Bool.pick(U32, is_ne, tb, fb))
+    case _: False{}
+def opt_jt_is_lut_tgt(+jtm: RaVec<JtTest>, +tgt: U32) -> Bool:
+  opt_jt_is_lut_tgt_go(Bool.pick(JtTest, U32.is_lt(tgt, 1024), ra_vec_get(JtTest, 5n, JTNone{}, tgt, jtm), JTNone{}), jtm)
 def opt_jt_rw_blks(+defc: U32Map, +ar: U32, +gh: U32Map, +gv: U32Map, +fm: RaVec<BrFact>, +jtm: RaVec<JtTest>, blks: List<&2, IrBlock>) -> List<&2, IrBlock>:
   match blks:
     case Nil{}: Nil{}
@@ -2400,7 +2499,9 @@ def opt_jt_rw_blks(+defc: U32Map, +ar: U32, +gh: U32Map, +gv: U32Map, +fm: RaVec
       +inf = Bool.pick(BrFact, U32.is_lt(id, 1024), ra_vec_get(BrFact, 5n, BFNone{}, id, fm), BFNone{})
       +sc = cf_br_scan_ops(c, ops, BrScan{gh, gv, False{}, 0, 0, 0})
       Con{IrBlock{id, ops, TBr{c, opt_jt_chase(8n, jtm, inf, opt_jt_chase(8n, jtm, opt_jt_br_fact(True{}, defc, ar, sc), tb)), opt_jt_chase(8n, jtm, inf, opt_jt_chase(8n, jtm, opt_jt_br_fact(False{}, defc, ar, sc), fb))}}, opt_jt_rw_blks(defc, ar, gh, gv, fm, jtm, t)}
-    case Con{IrBlock{+id, ops, TJmp{tgt}}, t}: Con{IrBlock{id, ops, TJmp{opt_jt_chase(8n, jtm, Bool.pick(BrFact, U32.is_lt(id, 1024), ra_vec_get(BrFact, 5n, BFNone{}, id, fm), BFNone{}), tgt)}}, opt_jt_rw_blks(defc, ar, gh, gv, fm, jtm, t)}
+    case Con{IrBlock{+id, ops, TJmp{+tgt}}, t}:
+      nt = Bool.pick(U32, opt_jt_is_lut_tgt(jtm, tgt), tgt, opt_jt_chase(8n, jtm, Bool.pick(BrFact, U32.is_lt(id, 1024), ra_vec_get(BrFact, 5n, BFNone{}, id, fm), BFNone{}), tgt))
+      Con{IrBlock{id, ops, TJmp{nt}}, opt_jt_rw_blks(defc, ar, gh, gv, fm, jtm, t)}
     case Con{b, t}: Con{b, opt_jt_rw_blks(defc, ar, gh, gv, fm, jtm, t)}
 def opt_jt_round_gc(+ar: U32, +defc: U32Map, +blks: List<&2, IrBlock>, gc: CfGConsts) -> List<&2, IrBlock>:
   match gc:

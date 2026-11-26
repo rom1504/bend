@@ -40,11 +40,10 @@ def b5k_list_rev(-A: Data, xs: List<&2, A>) -> List<&2, A>: b5k_list_rev_go(A, x
 def b5k_list_app(-A: Data, xs: List<&2, A>, ys: List<&2, A>) -> List<&2, A>: b5k_list_rev_go(A, b5k_list_rev_go(A, xs, Nil{}), ys)
 def b5k_u32_to_str_go(fuel: Nat, +n: U32, acc: String, z: Bool) -> String:
   match fuel z:
-    case 0n _: acc
-    case _ True{}: acc
     case 1n+p False{}:
       +q = U32.div(n, 10)
       b5k_u32_to_str_go(p, q, SCon{Char.from_u32(U32.add(48, U32.mod(n, 10))), acc}, U32.is_zero(q))
+    case _ _: acc
 def b5k_u32_to_str(+n: U32) -> String: Bool.pick(String, U32.is_zero(n), "0", b5k_u32_to_str_go(12n, n, "", False{}))
 # Shared Dense 4-Way U32 Bit-Trie (Depth 8 = 65,536 entries)
 type RaVec<-A: Data> is Data:

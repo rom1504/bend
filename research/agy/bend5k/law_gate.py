@@ -29,12 +29,22 @@ x86-64 ELF `.o` output from `bend5k`:
     + built-in `[REPORT]` on `kmeans:$direct.chunk` & `list-pipeline`): parses
     `objdump -dr` for `[rbp-]` stack spills, `jcc` branches, `cmov`, `p111_rt_*`
     calls, hardware `div`/`idiv`, and `sqrtss`/`divss` latency-bound ops.
-  - Harder Generality Matrix (`[GEN-MATRIX]`, 8 cells): 5 Contract E cells +
-    6-arg borrow-walk (`arity=6`), 2-arg tree-zip borrow, nested-match reuse.
+  - Contract H (`SIMD Vectorization Law` Law 6, STRICT PASS): verifies that
+    `nbody` AND a synthetic holdout pure-F32 counted loop emit packed
+    SSE2/AVX1 FP vector instructions (`addps`/`mulps`/`sqrtps` or
+    `vaddps`/`vmulps`/`vsqrtps`) and 0 `p111_rt_ctor` calls in the `$v4`/`$v8`
+    kernel.
+  - Contract I (`TRMC 1-Pass IMutField Law` Law 5, STRICT PASS): verifies that
+    `list-pipeline` (`$direct.dbl`, `$direct.keep_gt1`) AND a synthetic holdout
+    `List.map` loop compile to a single-pass self-TCO loop (backward branch
+    present) with 0 recursive `call` instructions.
+  - Harder Generality Matrix (`[GEN-MATRIX]`, 10 cells): 5 Contract E cells +
+    6-arg borrow-walk (`arity=6`), 2-arg tree-zip borrow, nested-match reuse,
+    holdout pure-F32 `$v4` SIMD kernel, holdout 1-pass TRMC `List.map`.
 
-Run with `--self-test-fault-injection` to verify that all 5 strict contracts
-(`A`, `B`, `C`, `D`, `E`) fail loudly when optimizations are disabled (`-O0`)
-or synthetic faults are injected.
+Run with `--self-test-fault-injection` to verify that all 7 strict contracts
+(`A`, `B`, `C`, `D`, `E`, `H`, `I`) fail loudly when optimizations are disabled
+(`-O0`) or synthetic faults are injected.
 """
 from __future__ import annotations
 
@@ -333,6 +343,67 @@ def main() -> U32:
   hash_str(const_msg(), 2166136261)
 """
 
+# Contract H holdout: synthetic pure-F32 counted loop (triggers $v4/$v8 SIMD)
+HOLDOUT_SIMD_F32_SRC = """\
+import Base
+
+def fl_c(n: U32, d: U32) -> F32:
+  F32.div(U32.to_f32(n), U32.to_f32(d))
+
+def step_f32(k: Nat, +x: F32, +y: F32, +z: F32) -> F32:
+  match k:
+    case 0n:
+      F32.add(x, F32.add(y, z))
+    case 1n+p:
+      +r2 = F32.add(F32.add(F32.mul(x, x), F32.mul(y, y)), F32.add(F32.mul(z, z), fl_c(1, 16)))
+      +inv = F32.div(fl_c(1, 1), F32.sqrt(r2))
+      nx = F32.add(x, F32.mul(y, inv))
+      ny = F32.sub(y, F32.mul(z, inv))
+      nz = F32.add(z, F32.mul(x, fl_c(1, 32)))
+      step_f32(p, nx, ny, nz)
+
+def batch_f32(n: Nat, +i: U32, +acc: U32) -> U32:
+  match n:
+    case 0n:
+      acc
+    case 1n+p:
+      +fi = U32.to_f32(U32.inc(i))
+      v = step_f32(16n, fi, F32.add(fi, fl_c(1, 2)), F32.add(fi, fl_c(1, 4)))
+      batch_f32(p, U32.inc(i), U32.add(acc, F32.to_u32(v)))
+
+def main() -> U32:
+  batch_f32(8n, 0, 0)
+"""
+
+# Contract I holdout: synthetic List.map loop (triggers 1-pass TRMC IMutField)
+HOLDOUT_TRMC_MAP_SRC = """\
+import Base
+
+def mk_u32_list(n: Nat, +k: U32) -> List<&2, U32>:
+  match n:
+    case 0n:
+      Nil{}
+    case 1n+p:
+      k <> mk_u32_list(p, U32.add(k, 3))
+
+def map_scale(xs: List<&2, U32>, +m: U32) -> List<&2, U32>:
+  match xs:
+    case Nil{}:
+      Nil{}
+    case h <> t:
+      U32.add(U32.mul(h, m), 1) <> map_scale(t, m)
+
+def sum_u32_list(xs: List<&2, U32>, +acc: U32) -> U32:
+  match xs:
+    case Nil{}:
+      acc
+    case h <> t:
+      sum_u32_list(t, U32.add(acc, h))
+
+def main() -> U32:
+  sum_u32_list(map_scale(mk_u32_list(32n, 1), 7), 0)
+"""
+
 
 # ---------------------------------------------------------------------------
 # Disassembly & hot/cold/loop analysis
@@ -344,6 +415,7 @@ JCC_RE = re.compile(r"^(je|jne|jg|jge|jl|jle|ja|jae|jb|jbe|js|jns|jo|jno)\b")
 CMOV_RE = re.compile(r"^cmov")
 DIV_RE = re.compile(r"^(i?div[lqbw]?)\b")
 FP_LAT_RE = re.compile(r"^(sqrt|div)s[sd]\b")
+PACKED_FP_RE = re.compile(r"^v?(add|sub|mul|div|sqrt)ps\b")
 RBP_MEM_RE = re.compile(r"\(%rbp\)")
 BRANCH_TARGET_RE = re.compile(
     r"^(?:jmpq?|je|jne|jg|jge|jl|jle|ja|jae|jb|jbe|js|jns|jo|jno)\s+([0-9a-f]+)\b"
@@ -376,6 +448,9 @@ class FuncMetrics:
     total_rt_calls: int = 0
     div_count: int = 0
     fp_lat_count: int = 0
+    packed_fp_ops: int = 0
+    self_rec_calls: int = 0
+    has_back_branch: bool = False
 
 
 def compile_to_obj(
@@ -550,6 +625,22 @@ def analyze_func(symbol: str, lines: list[str]) -> FuncMetrics:
     total_rt_calls = 0
     div_count = 0
     fp_lat_count = 0
+    packed_fp_ops = 0
+    self_rec_calls = 0
+    has_back_branch = False
+
+    # Check if hot region has a backward branch (self-TCO loop)
+    addr_to_idx: dict[int, int] = {}
+    for idx in range(min(cold_start, len(lines))):
+        im0 = INSN_RE.match(lines[idx])
+        if im0:
+            addr0 = int(im0.group(1), 16)
+            addr_to_idx[addr0] = idx
+            bm0 = BRANCH_TARGET_RE.match(im0.group(2).strip())
+            if bm0:
+                taddr0 = int(bm0.group(1), 16)
+                if taddr0 < addr0 and taddr0 in addr_to_idx:
+                    has_back_branch = True
 
     prev_was_lea_rip = False
     since_shr38 = 99
@@ -581,6 +672,8 @@ def analyze_func(symbol: str, lines: list[str]) -> FuncMetrics:
                 div_count += 1
             if FP_LAT_RE.match(asm):
                 fp_lat_count += 1
+            if PACKED_FP_RE.match(asm):
+                packed_fp_ops += 1
             prev_was_lea_rip = bool(re.match(r"^lea\s+.*\(%rip\)", asm))
 
             # Detect array-handle tag decode: `shr $0x38, ...` followed within
@@ -621,8 +714,10 @@ def analyze_func(symbol: str, lines: list[str]) -> FuncMetrics:
                     hot_rt_op += 1
                 if in_loop:
                     loop_rt_op += 1
-            elif "$direct." in target and in_loop:
-                if not target.startswith(symbol):
+            elif "$direct." in target:
+                if target.startswith(symbol + "-") or target == symbol:
+                    self_rec_calls += 1
+                elif in_loop:
                     loop_direct_calls += 1
             elif ".rodata" in target and prev_was_lea_rip:
                 rodata_lea_rip += 1
@@ -651,6 +746,9 @@ def analyze_func(symbol: str, lines: list[str]) -> FuncMetrics:
         total_rt_calls=total_rt_calls,
         div_count=div_count,
         fp_lat_count=fp_lat_count,
+        packed_fp_ops=packed_fp_ops,
+        self_rec_calls=self_rec_calls,
+        has_back_branch=has_back_branch,
     )
 
 
@@ -1035,6 +1133,131 @@ def check_contract_g(
     return ContractResult("Contract G (hw-triage)", "REPORT", "; ".join(parts))
 
 
+def _find_vec_kernels(funcs: dict[str, list[str]]) -> list[tuple[str, FuncMetrics]]:
+    out: list[tuple[str, FuncMetrics]] = []
+    for sym, lines in sorted(funcs.items()):
+        if sym.startswith("$v4.") or sym.startswith("$v8."):
+            out.append((sym, analyze_func(sym, lines)))
+    return out
+
+
+def check_contract_h(
+    bend5k_bin: Path, tmpdir: Path, opt_flag: str, cpu_pin: str | None
+) -> ContractResult:
+    """Contract H (`SIMD Vectorization Law` Law 6): verifies `nbody` AND a
+    synthetic holdout pure-F32 counted loop emit packed SSE2/AVX1 FP vector
+    instructions (`addps`/`mulps`/`sqrtps` or `vaddps`/`vmulps`/`vsqrtps`) and
+    0 `p111_rt_ctor` calls in the `$v4`/`$v8` kernel.
+    """
+    nb_obj = tmpdir / f"nbody_{opt_flag}.o"
+    compile_to_obj(
+        bend5k_bin, ROOT / "bench/runtime/nbody/main.bend", nb_obj, opt_flag, cpu_pin
+    )
+    nb_funcs = disassemble_obj(nb_obj)
+    nb_vecs = _find_vec_kernels(nb_funcs)
+
+    h_src = tmpdir / "holdout_simd_f32.bend"
+    h_src.write_text(HOLDOUT_SIMD_F32_SRC, encoding="utf-8")
+    h_obj = tmpdir / f"holdout_simd_f32_{opt_flag}.o"
+    compile_to_obj(bend5k_bin, h_src, h_obj, opt_flag, cpu_pin)
+    h_funcs = disassemble_obj(h_obj)
+    h_vecs = _find_vec_kernels(h_funcs)
+
+    nb_ok = bool(nb_vecs) and all(
+        m.packed_fp_ops >= 4 and m.total_ctor_calls == 0 for _, m in nb_vecs
+    )
+    h_ok = bool(h_vecs) and all(
+        m.packed_fp_ops >= 4 and m.total_ctor_calls == 0 for _, m in h_vecs
+    )
+    nb_desc = (
+        ", ".join(
+            f"{sym}(packed_fp={m.packed_fp_ops}, ctor={m.total_ctor_calls})"
+            for sym, m in nb_vecs
+        )
+        if nb_vecs
+        else "NO_$v4/$v8_KERNEL"
+    )
+    h_desc = (
+        ", ".join(
+            f"{sym}(packed_fp={m.packed_fp_ops}, ctor={m.total_ctor_calls})"
+            for sym, m in h_vecs
+        )
+        if h_vecs
+        else "NO_$v4/$v8_KERNEL"
+    )
+    cells = [
+        MatrixCell(
+            "Contract H (SIMD V4/V8)",
+            "holdout:pure_f32_v4",
+            h_ok,
+            h_desc,
+        )
+    ]
+    detail = f"nbody: {nb_desc}; holdout: {h_desc}"
+    return ContractResult(
+        "Contract H (SIMD V4/V8)",
+        "PASS" if (nb_ok and h_ok) else "FAIL",
+        detail,
+        cells=cells,
+    )
+
+
+def check_contract_i(
+    bend5k_bin: Path, tmpdir: Path, opt_flag: str, cpu_pin: str | None
+) -> ContractResult:
+    """Contract I (`TRMC 1-Pass IMutField Law` Law 5): verifies `list-pipeline`
+    (`$direct.dbl`, `$direct.keep_gt1`) AND a synthetic holdout `List.map` loop
+    compile to a single-pass self-TCO loop with 0 recursive `call` instructions.
+    """
+    lp_src = (
+        ROOT
+        / "selfhost/tools/bench/catalogs/native45/fixtures/coverage-list-pipeline-512.bend"
+    )
+    if not lp_src.is_file():
+        lp_src = (
+            ROOT
+            / "selfhost/tests/consolidation/native-broad/coverage-list-pipeline-512.bend"
+        )
+    lp_obj = tmpdir / f"lp_trmc_{opt_flag}.o"
+    compile_to_obj(bend5k_bin, lp_src, lp_obj, opt_flag, cpu_pin)
+    lp_funcs = disassemble_obj(lp_obj)
+    if "$direct.dbl" not in lp_funcs:
+        return ContractResult("Contract I (TRMC 1-pass)", "FAIL", "missing $direct.dbl")
+    m_dbl = analyze_func("$direct.dbl", lp_funcs["$direct.dbl"])
+
+    h_src = tmpdir / "holdout_trmc_map.bend"
+    h_src.write_text(HOLDOUT_TRMC_MAP_SRC, encoding="utf-8")
+    h_obj = tmpdir / f"holdout_trmc_map_{opt_flag}.o"
+    compile_to_obj(bend5k_bin, h_src, h_obj, opt_flag, cpu_pin)
+    h_funcs = disassemble_obj(h_obj)
+    if "$direct.map_scale" not in h_funcs:
+        return ContractResult(
+            "Contract I (TRMC 1-pass)", "FAIL", "missing $direct.map_scale"
+        )
+    m_map = analyze_func("$direct.map_scale", h_funcs["$direct.map_scale"])
+
+    dbl_ok = m_dbl.has_back_branch and m_dbl.self_rec_calls == 0
+    map_ok = m_map.has_back_branch and m_map.self_rec_calls == 0
+    cells = [
+        MatrixCell(
+            "Contract I (TRMC 1-pass)",
+            "holdout:list_map_trmc",
+            map_ok,
+            f"back_branch={m_map.has_back_branch} rec_calls={m_map.self_rec_calls}",
+        )
+    ]
+    detail = (
+        f"list-pipeline:$direct.dbl back_branch={m_dbl.has_back_branch} rec_calls={m_dbl.self_rec_calls}; "
+        f"holdout:$direct.map_scale back_branch={m_map.has_back_branch} rec_calls={m_map.self_rec_calls}"
+    )
+    return ContractResult(
+        "Contract I (TRMC 1-pass)",
+        "PASS" if (dbl_ok and map_ok) else "FAIL",
+        detail,
+        cells=cells,
+    )
+
+
 PRELUDE_PREFIXES = (
     "$direct.__b5k_",
     "$direct.Bool.",
@@ -1213,8 +1436,14 @@ def run_fault_injection_self_test(
     print("=== FAULT-INJECTION SELF-TEST (expecting EVERY contract to FAIL) ===")
     all_tripped = True
 
-    # 1. Contracts A, B, C at -O0
-    for fn in (check_contract_a, check_contract_b, check_contract_c):
+    # 1. Contracts A, B, C, H, I at -O0
+    for fn in (
+        check_contract_a,
+        check_contract_b,
+        check_contract_c,
+        check_contract_h,
+        check_contract_i,
+    ):
         res = fn(bend5k_bin, tmpdir, "-O0", cpu_pin)
         tripped = res.status == "FAIL"
         tag = "TRIPPED-OK" if tripped else "MISSED-FAULT"
@@ -1328,8 +1557,40 @@ def run_fault_injection_self_test(
     if not synth_hw_ok:
         all_tripped = False
 
+    #    (d) synthetic SIMD packed FP & TRMC self-recursion fault injections (Contracts H & I)
+    synth_simd_ok = analyze_func(
+        "$v4.kern",
+        [
+            "    1000:\t0f 58 c1             \taddps  %xmm1,%xmm0",
+            "    1003:\t0f 59 c2             \tmulps  %xmm2,%xmm0",
+            "    1006:\t0f 51 c0             \tsqrtps %xmm0,%xmm0",
+            "    1009:\t0f 5e c1             \tdivps  %xmm1,%xmm0",
+            "    100c:\tc3                   \tretq   ",
+        ],
+    )
+    synth_trmc_fault = analyze_func(
+        "$direct.bad_map",
+        [
+            "    1000:\te8 00 00 00 00       \tcallq  1005 <$direct.bad_map+0x5>",
+            "\t\t\t1001: R_X86_64_PLT32\t$direct.bad_map-0x4",
+            "    1005:\tc3                   \tretq   ",
+        ],
+    )
+    synth_hi_ok = (
+        synth_simd_ok.packed_fp_ops == 4
+        and synth_simd_ok.total_ctor_calls == 0
+        and synth_trmc_fault.self_rec_calls == 1
+        and not synth_trmc_fault.has_back_branch
+    )
     print(
-        f"=== FAULT-INJECTION RESULT: {'PASS (all 5 strict contracts tripped)' if all_tripped else 'FAIL'} ==="
+        f"  [{'TRIPPED-OK' if synth_hi_ok else 'MISSED-FAULT'}] Synthetic SIMD/TRMC metrics: "
+        f"packed_fp={synth_simd_ok.packed_fp_ops} trmc_rec_calls={synth_trmc_fault.self_rec_calls}"
+    )
+    if not synth_hi_ok:
+        all_tripped = False
+
+    print(
+        f"=== FAULT-INJECTION RESULT: {'PASS (all 7 strict contracts tripped)' if all_tripped else 'FAIL'} ==="
     )
     return all_tripped
 
@@ -1457,6 +1718,8 @@ def main() -> int:
                 strict_static_str=args.strict_static_str,
             ),
             check_contract_g(bend5k_bin, tmpdir, "-O2", cpu_pin),
+            check_contract_h(bend5k_bin, tmpdir, "-O2", cpu_pin),
+            check_contract_i(bend5k_bin, tmpdir, "-O2", cpu_pin),
         ]
 
         failed = False

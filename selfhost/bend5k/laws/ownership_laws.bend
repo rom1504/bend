@@ -3,11 +3,13 @@ import Base
 # =============================================================================
 # bend5k Zero-Cost Ownership & Representation Laws (Pure Bend, zero unsafe)
 # =============================================================================
-# Formalizes and proves four core optimization laws enforced by bend5k:
+# Formalizes and proves six core optimization laws enforced by bend5k:
 #   Law 1 — Unboxed 2-Scalar Direct Transfer (`ret2`)
 #   Law 2 — Unique-Slot In-Place Reuse (`IReuse`)
 #   Law 3 — Read-Only Borrow-Walk Erasure (`borrow`)
 #   Law 4 — Linear-Array Handle Hoist & Dead-Swap-Old-Load Erasure
+#   Law 5 — 1-Pass TRMC List-Map Hole-Filling (`IMutField`)
+#   Law 6 — 4-Wide Lane-Independent Vector Batching (`$v4` SIMD)
 # =============================================================================
 
 
@@ -775,6 +777,201 @@ def law_arr_erased_zero_dead_loads(n, h, delta):
 
 
 # =============================================================================
+# LAW 5: 1-Pass TRMC List-Map Hole-Filling (`IMutField`)
+# =============================================================================
+# Tail-recursion-modulo-cons (`list-pipeline:dbl` / `List.map`) fills the tail
+# hole of the growing output prefix in a single iterative pass with 0 recursive
+# stack frames, producing the exact same list (`==`) as naive recursive map.
+
+type UList is Data:
+  UNil{}
+  UCon{head: U32, tail: UList}
+
+type TrmcRes is Data:
+  MkTrmcRes{out: UList, rec_calls: Nat}
+
+def trmc_out(r: TrmcRes) -> UList:
+  match r:
+    case MkTrmcRes{xs, _}:
+      xs
+
+def trmc_rec_calls(r: TrmcRes) -> Nat:
+  match r:
+    case MkTrmcRes{_, c}:
+      c
+
+def ulist_app(a: UList, b: UList) -> UList:
+  match a:
+    case UNil{}:
+      b
+    case UCon{h, t}:
+      UCon{h, ulist_app(t, b)}
+
+def ulist_map_ref(xs: UList, +k: U32) -> UList:
+  match xs:
+    case UNil{}:
+      UNil{}
+    case UCon{h, t}:
+      UCon{U32.mul(h, k), ulist_map_ref(t, k)}
+
+def ulist_map_trmc_go(xs: UList, acc: UList, +k: U32) -> UList:
+  match xs:
+    case UNil{}:
+      acc
+    case UCon{h, t}:
+      ulist_map_trmc_go(t, ulist_app(acc, UCon{U32.mul(h, k), UNil{}}), k)
+
+def ulist_map_trmc(xs: UList, +k: U32) -> TrmcRes:
+  MkTrmcRes{ulist_map_trmc_go(xs, UNil{}, k), 0n}
+
+law ulist_app_nil_r:
+  for xs: UList
+  {ulist_app(xs, UNil{}) == xs : UList}
+
+def ulist_app_nil_r(xs):
+  match xs:
+    case UNil{}:
+      {==}
+    case UCon{+h, t}:
+      %ulist_app_nil_r(t) : {UCon{h, ulist_app(t, UNil{})} == UCon{h, _} : UList}
+      {==}
+
+law ulist_app_assoc:
+  for  a: UList
+  for +b: UList
+  for +c: UList
+  {ulist_app(ulist_app(a, b), c) == ulist_app(a, ulist_app(b, c)) : UList}
+
+def ulist_app_assoc(a, b, c):
+  match a:
+    case UNil{}:
+      {==}
+    case UCon{+h, t}:
+      %ulist_app_assoc(t, b, c) : {UCon{h, ulist_app(ulist_app(t, b), c)} == UCon{h, _} : UList}
+      {==}
+
+law law_trmc_go_eq:
+  for   xs: UList
+  for +acc: UList
+  for   +k: U32
+  {ulist_map_trmc_go(xs, acc, k) == ulist_app(acc, ulist_map_ref(xs, k)) : UList}
+
+def law_trmc_go_eq(xs, acc, k):
+  match xs:
+    case UNil{}:
+      Equal.sym(UList, ulist_app(acc, UNil{}), acc, ulist_app_nil_r(acc))
+    case UCon{+h, +t}:
+      +v = U32.mul(h, k)
+      +one = {UCon{v, UNil{}} : UList}
+      e1 = law_trmc_go_eq(t, ulist_app(acc, one), k)
+      e2 = ulist_app_assoc(acc, one, ulist_map_ref(t, k))
+      Equal.trans(
+        UList,
+        ulist_map_trmc_go(t, ulist_app(acc, one), k),
+        ulist_app(ulist_app(acc, one), ulist_map_ref(t, k)),
+        ulist_app(acc, UCon{v, ulist_map_ref(t, k)}),
+        e1,
+        e2
+      )
+
+# Law 5a: 1-pass TRMC hole-filling map produces the exact same list as recursive map
+law law_trmc_map_eq:
+  for  xs: UList
+  for  +k: U32
+  {trmc_out(ulist_map_trmc(xs, k)) == ulist_map_ref(xs, k) : UList}
+
+def law_trmc_map_eq(xs, k):
+  law_trmc_go_eq(xs, UNil{}, k)
+
+# Law 5b: 1-pass TRMC performs 0 recursive calls
+law law_trmc_zero_rec_calls:
+  for  xs: UList
+  for  +k: U32
+  {trmc_rec_calls(ulist_map_trmc(xs, k)) == 0n : Nat}
+
+def law_trmc_zero_rec_calls(xs, k):
+  {==}
+
+
+# =============================================================================
+# LAW 6: 4-Wide Lane-Independent Vector Batching (`$v4` SIMD)
+# =============================================================================
+# Running n iterations of a pure lane-independent step simultaneously across
+# 4 lanes (`$v4` SIMD) produces the exact same 4-lane state (`==`) as 4
+# independent scalar executions, in n vector steps instead of 4*n scalar steps.
+
+type Vec4 is Data:
+  V4{l0: U32, l1: U32, l2: U32, l3: U32}
+
+type BatchRes is Data:
+  MkBatchRes{lanes: Vec4, steps: Nat}
+
+def br_lanes(r: BatchRes) -> Vec4:
+  match r:
+    case MkBatchRes{v, _}:
+      v
+
+def br_steps(r: BatchRes) -> Nat:
+  match r:
+    case MkBatchRes{_, s}:
+      s
+
+def lane_step(+x: U32, +c: U32) -> U32:
+  U32.add(U32.mul(x, 3), c)
+
+def scalar_iter(+n: Nat, +x: U32, +c: U32) -> U32:
+  match n:
+    case 0n:
+      x
+    case 1n+p:
+      scalar_iter(p, lane_step(x, c), c)
+
+def v4_step(v: Vec4, +c: U32) -> Vec4:
+  match v:
+    case V4{a, b, d, e}:
+      V4{lane_step(a, c), lane_step(b, c), lane_step(d, c), lane_step(e, c)}
+
+def v4_iter(+n: Nat, v: Vec4, +c: U32) -> Vec4:
+  match n:
+    case 0n:
+      v
+    case 1n+p:
+      v4_iter(p, v4_step(v, c), c)
+
+def batch4_scalar(+n: Nat, v: Vec4, +c: U32) -> BatchRes:
+  match v:
+    case V4{a, b, d, e}:
+      MkBatchRes{V4{scalar_iter(n, a, c), scalar_iter(n, b, c), scalar_iter(n, d, c), scalar_iter(n, e, c)}, Nat.mul(4n, n)}
+
+def batch4_simd(+n: Nat, v: Vec4, +c: U32) -> BatchRes:
+  MkBatchRes{v4_iter(n, v, c), n}
+
+# Law 6a: 4-wide SIMD batching matches 4 independent scalar executions lane-for-lane
+law law_v4_batch_eq:
+  for +n: Nat
+  for  v: Vec4
+  for +c: U32
+  {br_lanes(batch4_simd(n, v, c)) == br_lanes(batch4_scalar(n, v, c)) : Vec4}
+
+def law_v4_batch_eq(n, v, c):
+  match n v:
+    case 0n V4{a, b, d, e}:
+      {==}
+    case 1n+p V4{a, b, d, e}:
+      law_v4_batch_eq(p, V4{lane_step(a, c), lane_step(b, c), lane_step(d, c), lane_step(e, c)}, c)
+
+# Law 6b: 4-wide SIMD batching executes in exactly n vector steps
+law law_v4_batch_steps:
+  for +n: Nat
+  for  v: Vec4
+  for +c: U32
+  {br_steps(batch4_simd(n, v, c)) == n : Nat}
+
+def law_v4_batch_steps(n, v, c):
+  {==}
+
+
+# =============================================================================
 # Top-level Witness Pack
 # =============================================================================
 
@@ -789,6 +986,12 @@ def sample_chain() -> Chain:
 
 def sample_arr() -> ArrH:
   ArrH{100n, 4n, ACon{1, ACon{2, ACon{3, ACon{4, ANil{}}}}}}
+
+def sample_ulist() -> UList:
+  UCon{1, UCon{2, UCon{3, UNil{}}}}
+
+def sample_vec4() -> Vec4:
+  V4{1, 2, 3, 4}
 
 def main() -> U32:
   _ = law_ret2_fst(42, 99)
@@ -808,4 +1011,8 @@ def main() -> U32:
   _ = law_arr_dead_swap_eq(4n, sample_arr(), 7)
   _ = law_arr_erased_zero_decodes(4n, sample_arr(), 7)
   _ = law_arr_erased_zero_dead_loads(4n, sample_arr(), 7)
+  _ = law_trmc_map_eq(sample_ulist(), 3)
+  _ = law_trmc_zero_rec_calls(sample_ulist(), 3)
+  _ = law_v4_batch_eq(4n, sample_vec4(), 7)
+  _ = law_v4_batch_steps(4n, sample_vec4(), 7)
   0

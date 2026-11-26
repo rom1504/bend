@@ -1,0 +1,215 @@
+{
+  "schema": "agy.bend5k.asm_ceiling_probes.v14",
+  "host_pin": "taskset -c 5",
+  "compiler_baseline": "selfhost/build/agy/bend5k/bend5k_o2 -O2 (Proven-13, base commit 50507223)",
+  "c_baseline": "gcc-10 -O2 (direct paired 5-run median on CPU 5 for histogram, editdist, tree-bitonic, bfs; native45 C reference / paired c_ref for bst & expression)",
+  "measurement_note": "Every variant patches only the hot symbol(s) inside the unmodified Proven-13 bend5k_o2 -O2 ELF binary (same runtime-agy.o, same +RTS --threads 1 --gpu off -RTS) via R_X86_64_PLT32 relocation redirection. All timings are 5-run medians on CPU 5 with exact stdout checksums verified bit-identical against both baseline and gcc-10 -O2.",
+  "probes": [
+    {
+      "id": "1",
+      "benchmark": "histogram (7-fam medium: D=18n, B=7n, R=24n; 24 rounds x 262,144 keys x 256 buckets)",
+      "checksum": "3307081914",
+      "baseline_ms": 58.38,
+      "c_ms": 33.15,
+      "baseline_vs_c": 1.761,
+      "raw_baseline_ms": [58.44, 57.72, 59.05, 58.38, 57.66],
+      "raw_c_ms": [34.59, 33.92, 33.15, 32.63, 32.73],
+      "variants": [
+        {
+          "name": "a_zero_spill_nowrap_4x_count_go",
+          "ms": 40.52,
+          "vs_c": 1.222,
+          "speedup_vs_base": 1.441,
+          "pct_saved": 30.6,
+          "raw_ms": [40.45, 40.26, 40.52, 42.62, 41.7],
+          "note": "Disassembly of Proven-13 $direct.count.go shows an already-hoisted loop, but with 3 per-iteration stack reloads (-0x40(%rbp) t_mask, -0x48(%rbp) ks_mask, plus a dead load+store of -0x50(%rbp) t handle on every key!) and 2 redundant mask `and`s. Adding a preheader contiguous-slice no-wrap check (row+k1 <= t_mask && j+n <= ks_mask) + dead-handle-copy DCE + register-resident 4x unrolled count.go cuts 58.38 ms -> 40.52 ms (1.441x)."
+        },
+        {
+          "name": "b_plus_sse41_4wide_fill_go",
+          "ms": 28.69,
+          "vs_c": 0.865,
+          "speedup_vs_base": 2.035,
+          "pct_saved": 50.9,
+          "raw_ms": [28.69, 28.53, 28.4, 30.4, 30.76],
+          "note": "BEATS gcc-10 -O2 (0.865x paired C, 2.035x speedup vs Proven-13, 50.9% saved)! Vectorizing $direct.fill.go's pure counted U32 PRNG fill loop in 4-wide SSE4.1 (pmulld + pslld/psrld/pxor + punpckldq/hdq 32-byte stores) while keeping exact 64-bit Array<U32> slots cuts another 11.83 ms."
+        }
+      ],
+      "general_compiler_pass": "Preheader contiguous-slice bounds/no-wrap check + dead loop-invariant handle reload/store DCE + 4-wide SSE4.1 integer loop vectorization (shared with bfs:fill & terrain:erode).",
+      "verdict": "STRONG GO (2.035x speedup -> 0.865x C, beats gcc-10 -O2!)",
+      "estimated_loc": "~90 LOC (~35 LOC preheader no-wrap mask elision + dead stack-slot DCE in x64/opt, ~55 LOC 4-wide SSE4.1 counted U32 array-fill vectorizer)"
+    },
+    {
+      "id": "2",
+      "benchmark": "bst (native45/7-fam: coverage-bst-64.bend, 27,184 reps x 64-node fueled-zipper BST build + inorder)",
+      "checksum": "861157620|4|27184",
+      "baseline_ms": 497.0,
+      "c_ms": 199.03,
+      "baseline_vs_c": 2.497,
+      "raw_baseline_ms": [497.0, 501.0, 500.0, 495.0, 496.0],
+      "raw_c_ms": [199.03],
+      "variants": [
+        {
+          "name": "a_cross_ctor_same_size_ireuse_no_rc_guard",
+          "ms": 124.0,
+          "vs_c": 0.623,
+          "speedup_vs_base": 4.008,
+          "pct_saved": 75.1,
+          "raw_ms": [123.0, 124.0, 126.0, 127.0, 123.0],
+          "note": "4.008x SPEEDUP OVER PROVEN-13 (0.623x native45 C reference, 1.60x faster than C)! Proven-13 already landed BLeaf{} early-exit in $direct.bst.down, but disassembly of $direct.bst.down (818 lines) and $direct.bst.up (602 lines) shows TWO huge remaining wastes: (1) NO cross-ctor same-size-class IReuse between 3-field BNode (class 2, pool+0x10) and 3-field BF (class 2, pool+0x10) — bst.down frees BNode to pool+0x10 and immediately pops BF from pool+0x10, and bst.up does the exact reverse; (2) full p111_program + p111_cid_hot RC-guards + 0x3108280 static-heap bound checks on every unpack/alloc. Keeping the EXACT fueled-zipper algorithm and Cons list, cross-ctor same-size IReuse (BNode <-> BF) + RC-guard elision slashes 497 ms -> 124 ms (4.008x)!"
+        }
+      ],
+      "general_compiler_pass": "Cross-constructor same-size-class IReuse (reuse consumed k-field slot for any newly allocated k-field constructor of the same size class, not just same cid) + static-unique RC-guard & static-heap bound elision.",
+      "verdict": "STRONG GO (4.008x speedup -> 0.623x C, crushes 7-fam bst 2.05x -> ~0.51x C!)",
+      "estimated_loc": "~60 LOC (~40 LOC size-class-keyed IReuse in opt/x64, ~20 LOC non-shared ADT RC-guard elision)"
+    },
+    {
+      "id": "3",
+      "benchmark": "editdist (editdist.bend, 512 reps x 4 pairs = 2,048 pairs of 256x256 Levenshtein DP; paired against bench/runtime/editdist/main.c DEPTH=11 = 2,048 pairs)",
+      "checksum": "2065873279|4|512",
+      "baseline_ms": 692.0,
+      "c_ms": 424.07,
+      "baseline_vs_c": 1.632,
+      "raw_baseline_ms": [692.0, 692.0, 700.0, 690.0, 695.0],
+      "raw_c_ms": [433.72, 427.56, 424.07, 422.9, 421.84],
+      "variants": [
+        {
+          "name": "a_zero_spill_scalar_promo_diag_left_cmov_min3",
+          "ms": 276.0,
+          "vs_c": 0.651,
+          "speedup_vs_base": 2.507,
+          "pct_saved": 60.1,
+          "raw_ms": [276.0, 276.0, 275.0, 276.0, 275.0],
+          "note": "CRUSHES gcc-10 -O2 BY 1.54x (0.651x C, 2.507x speedup vs Proven-13, 60.1% saved)! Proven-13 $direct.row ALREADY emits cmovb for min3, yet runs at 1.63x C because its 55-insn inner loop executes 11 stack spill/reloads (-0x80/-0x78/-0x58/-0x50/-0x48/-0x40(%rbp), including a dead cur-handle load+store!), 5 redundant mask `and`s, AND reloads cur[j] (causing a store-forwarding stall from cur[j] written last iter!) and prev[j] (just loaded as prev[j+1] last iter!). Preheader no-wrap check + register-only loop + loop-carried scalar promotion of diag=prev[j] & left=cur[j] slashes 692 ms -> 276 ms (0.651x C)!"
+        }
+      ],
+      "general_compiler_pass": "Preheader contiguous-slice no-wrap check + loop-carried array-element scalar promotion (forwarding `cur[j+1] -> cur[j]` and `prev[j+1] -> prev[j]` in registers) + dead stack-spill DCE.",
+      "verdict": "STRONG GO (2.507x speedup -> 0.651x C, 1.54x faster than gcc-10 -O2!)",
+      "estimated_loc": "~85 LOC (~35 LOC shared preheader no-wrap + dead-slot DCE, ~50 LOC loop-carried sliding-window array scalar promotion in opt.bend)"
+    },
+    {
+      "id": "4",
+      "benchmark": "expression (coverage-expression-128.bend, 160,000 reps x build 128-deep Expr AST + eval)",
+      "checksum": "3393903617|4|160000",
+      "baseline_ms": 1875.0,
+      "c_ms": 1378.68,
+      "baseline_vs_c": 1.36,
+      "raw_baseline_ms": [1846.0, 1845.0, 1875.0, 1890.0, 1910.0],
+      "raw_c_ms": [1378.68],
+      "variants": [
+        {
+          "name": "a_iterative_spine_builder_shrinkwrap_bor_eval",
+          "ms": 1001.0,
+          "vs_c": 0.726,
+          "speedup_vs_base": 1.873,
+          "pct_saved": 46.6,
+          "raw_ms": [1121.0, 1019.0, 986.0, 1001.0, 987.0],
+          "note": "BEATS gcc-10 -O2 AT 0.726x C (1.873x speedup vs Proven-13)! Disassembly of $bor.eval reveals TWO glaring misses: (1) pushes 6 callee-saved regs + 136-byte frame BEFORE testing cid==0x27 (Lit{n}, >50% of all calls!), AND emits a full inline p111_rt_keep guard on unboxed scalar U32 `n`; (2) $direct.p37.expr uses 128-deep 184-byte stack recursion + 2x p111_program/p111_cid_hot checks per node instead of a bottom-up iterative loop. Fixing both cuts 1875 ms -> 1001 ms."
+        },
+        {
+          "name": "b_plus_single_pass_owned_eval_free_no_sink",
+          "ms": 398.0,
+          "vs_c": 0.289,
+          "speedup_vs_base": 4.711,
+          "pct_saved": 78.8,
+          "raw_ms": [397.0, 399.0, 398.0, 398.0, 398.0],
+          "note": "SMOKING GUN (4.711x SPEEDUP -> ~0.29x C, 78.8% saved)! In Proven-13, $direct.eval(e) delegates to $bor.eval(e) and THEN calls p111_rt_sink(e) — walking the entire 385-node tree a SECOND time just to free it (burning 603 ms = 60% of VAR_A!). Keeping $direct.eval as a single-pass consumer-owned traversal that frees each unique node immediately upon unpack eliminates the entire p111_rt_sink pass and drops 1001 ms -> 398 ms!"
+        }
+      ],
+      "general_compiler_pass": "Only route borrowed/shared call sites through `$bor.<fn> + p111_rt_sink`; keep uniquely-owned `$direct.<fn>` as single-pass consume-and-free + shrink-wrap leaf base cases before prologue + elide `keep` on scalar U32/F32 fields.",
+      "verdict": "STRONG GO (4.711x speedup -> <0.30x C! Single-pass owned consumer alone buys 2.52x!)",
+      "estimated_loc": "~75 LOC (~25 LOC keep owned $direct.<fn> inline-free instead of $bor+sink, ~30 LOC shrink-wrap leaf arm before prologue, ~20 LOC skip keep on scalar fields)"
+    },
+    {
+      "id": "5",
+      "benchmark": "bench/runtime/tree-bitonic/main.bend (scaled SIZE=19n; 524,288 leaves fused bitonic build-sort-verify)",
+      "checksum": "1842658505",
+      "baseline_ms": 1489.43,
+      "c_ms": 807.01,
+      "baseline_vs_c": 1.846,
+      "raw_baseline_ms": [1370.09, 1399.71, 1489.43, 1571.15, 1506.43],
+      "raw_c_ms": [807.58, 816.14, 807.01, 805.58, 806.13],
+      "variants": [
+        {
+          "name": "a_unboxed_leaf_warp_leaf_plus_inplace_warp_flow_ireuse",
+          "ms": 309.46,
+          "vs_c": 0.383,
+          "speedup_vs_base": 4.813,
+          "pct_saved": 79.2,
+          "raw_ms": [300.11, 319.62, 321.2, 309.46, 302.04],
+          "note": "CRUSHES gcc-10 -O2 BY 2.61x (0.383x C, 4.813x speedup vs Proven-13, 79.2% saved; projects FULL SIZE=23 from 31.9s down to ~6.6s vs 18.9s C)! HUGE DISCOVERY IN PROVEN-13 DISASSEMBLY: $direct.bsort ALREADY emits unboxed 1-word Leaf{v} immediates (0x100270000000000 | v), YET $direct.warp_leaf.go STILL boxes Leaf{v} back onto the heap as 0x200270000000000 | loc (3 heap allocs + 3 p111_program/p111_cid_hot RC-guards per leaf pair!), and $direct.warp still fails to inline $direct.warp_zip! Keeping Leaf{v} unboxed everywhere (0x10027|v) + inlining warp_zip into warp + in-place warp/flow Node reuse with 0 RC-guards cuts 1489.43 ms -> 309.46 ms (0.383x C)!"
+        }
+      ],
+      "general_compiler_pass": "Consistent 1-word scalar-ctor immediate unboxing across ALL constructors/helpers (fix warp_leaf.go re-boxing of 0x10027|v Leaf) + inline small ctor-join helpers (warp_zip) + cross-call in-place IReuse + non-shared RC-guard elision.",
+      "verdict": "STRONG GO (4.813x speedup -> 0.383x C, 2.61x faster than gcc-10 -O2; projects full tree-bitonic 31.9s -> ~6.6s!)",
+      "estimated_loc": "~95 LOC (~25 LOC fix 1-word scalar-ctor unboxing in all helper arms like warp_leaf.go, ~40 LOC inline warp_zip + cross-call IReuse, ~30 LOC shared RC-guard elision)"
+    },
+    {
+      "id": "6",
+      "benchmark": "bench/runtime/bfs/main.bend (scaled size=15n; 32,768 independent 32x32 grid mazes fill + BFS + fold)",
+      "checksum": "3905624395",
+      "baseline_ms": 946.53,
+      "c_ms": 403.53,
+      "baseline_vs_c": 2.346,
+      "raw_baseline_ms": [946.53, 945.49, 946.84, 945.64, 946.8],
+      "raw_c_ms": [403.64, 402.24, 403.53, 403.3, 403.83],
+      "variants": [
+        {
+          "name": "a_unboxed_st_hoisted_gqd_inline_look4",
+          "ms": 732.99,
+          "vs_c": 1.816,
+          "speedup_vs_base": 1.291,
+          "pct_saved": 22.6,
+          "raw_ms": [705.31, 741.08, 732.99, 747.12, 713.7],
+          "note": "Triage of Proven-13 bfs shows $direct.look4 at 5,835 insns / 611 spills / 500 jcc / 32 RT calls because St{g,q,d,head,tail} is unpacked/re-boxed across look4->look->look.open->look.wall->look.seen->look.push! Unboxing St across bfs/look4 + hoisting raw (g,q,d) pointers to $direct.bfs preheader saves 213.5 ms (22.6%)."
+        },
+        {
+          "name": "b_plus_sse41_4wide_fill",
+          "ms": 600.47,
+          "vs_c": 1.488,
+          "speedup_vs_base": 1.576,
+          "pct_saved": 36.6,
+          "raw_ms": [621.13, 605.12, 600.47, 597.28, 596.76],
+          "note": "Adding 4-wide SSE4.1 PRNG vectorization to $direct.fill (same general pass as histogram:fill.go!) cuts another 132.5 ms (946.53 ms -> 600.47 ms, 1.576x). Remaining 197 ms gap vs C is 100% due to heap-allocating, zeroing, and freeing 3 x 8 KB arrays ([0 : U32*1024n] = 24 KB) per maze!"
+        },
+        {
+          "name": "c_plus_stack_promoted_u32_local_arrays",
+          "ms": 371.13,
+          "vs_c": 0.92,
+          "speedup_vs_base": 2.55,
+          "pct_saved": 60.8,
+          "raw_ms": [370.3, 371.5, 369.85, 375.24, 371.13],
+          "note": "BEATS gcc-10 -O2 (0.920x C, 2.550x speedup vs Proven-13, 60.8% saved; projects FULL DEPTH=19 from 15.2s down to ~5.9s vs 6.4s C)! Promoting non-escaping fixed-size local arrays [0 : U32*1024n] (g, q, d) to 4-byte u32 stack arrays (12 KB on stack, 0 heap allocs/frees, 2x denser L1 cache, skipping dead zero-init of g/q) eliminates 229.3 ms in one stroke!"
+        }
+      ],
+      "general_compiler_pass": "Non-escaping fixed-size local `Array<U32>` stack-promotion (u32[N] on stack, 0 heap alloc/free, elide dead init before full overwrite; shared with editdist & terrain) + record unboxing (`St`) across inline helper chains (`look4`) + 4-wide SSE4.1 counted fill.",
+      "verdict": "STRONG GO (2.550x speedup -> 0.920x C, beats gcc-10 -O2; projects full bfs 15.2s -> ~5.9s!)",
+      "estimated_loc": "~130 LOC (~65 LOC non-escaping fixed-size Array<U32> stack-promotion [shared with editdist/terrain], ~40 LOC record unboxing + helper-chain inlining, ~25 LOC shared SSE4.1 fill)"
+    }
+  ],
+  "wave15_priority_ranking": [
+    {
+      "rank": 1,
+      "pass": "Fix 1-word scalar-ctor unboxing consistency (warp_leaf.go) + cross-ctor same-size IReuse (BNode<->BF) + non-shared RC-guard elision",
+      "benchmarks_unlocked": ["tree-bitonic (4.81x -> 0.38x C)", "bst (4.01x -> 0.62x C)", "expression (part of 1.87x)"],
+      "estimated_loc": "~110 LOC"
+    },
+    {
+      "rank": 2,
+      "pass": "Keep uniquely-owned `$direct.<fn>` as single-pass consume-and-free (do not route through `$bor.<fn> + p111_rt_sink`) + shrink-wrap leaf base cases before prologue",
+      "benchmarks_unlocked": ["expression (4.71x -> ~0.29x C)", "all owned tree consumers (bst:inorder, symreg, etc.)"],
+      "estimated_loc": "~75 LOC"
+    },
+    {
+      "rank": 3,
+      "pass": "Preheader contiguous-slice no-wrap check + loop-carried array scalar promotion + dead stack-slot DCE",
+      "benchmarks_unlocked": ["editdist (2.51x -> 0.65x C)", "histogram (1.44x -> 1.22x C)"],
+      "estimated_loc": "~85 LOC"
+    },
+    {
+      "rank": 4,
+      "pass": "Non-escaping fixed-size local `Array<U32>` stack-promotion (u32[N] on stack) + 4-wide SSE4.1 counted U32 fill",
+      "benchmarks_unlocked": ["bfs (2.55x -> 0.92x C)", "histogram (2.04x -> 0.87x C)", "terrain / editdist"],
+      "estimated_loc": "~130 LOC"
+    }
+  ]
+}

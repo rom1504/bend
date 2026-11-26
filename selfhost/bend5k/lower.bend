@@ -28,66 +28,39 @@ def b5k_prelude_src() -> String:
   "def Bool.or(a: Bool, b: Bool) -> Bool:\n  if a: True{} else: b\ndef Bool.xor(a: Bool, b: Bool) -> Bool:\n  if a: Bool.not(b) else: b\n" ++
   "def Bool.to_u32(b: Bool) -> U32:\n  if b: 1 else: 0\ndef Bool.pick(-T: Data, b: Bool, t: T, f: T) -> T:\n  if b: t else: f\n" ++
   "def Char.to_u32(c: Char) -> U32:\n  c\ndef Char.from_u32(n: U32) -> Char:\n  n\ndef Char.show(c: Char) -> String:\n  SCon{c, SNil{}}\n" ++
-  "def Char.cmp(a: Char, b: Char) -> Cmp:\n  Tuple{Tuple{a, b}, if U32.is_lt(a, b): LT{} else: if U32.is_gt(a, b): GT{} else: EQ{}}\n" ++
-  "def Cmp.is_eq(c: Cmp) -> Bool:\n  match c:\n    case EQ{}: True{}\n    case _: False{}\n" ++
-  "def Maybe.default(-q: Data, -A: Data, m: Maybe<A>, d: A) -> A:\n  match m:\n    case None{}: d\n    case Some{v}: v\n" ++
-  "def List.append(-q: Data, -T: Data, a: List<T>, b: List<T>) -> List<T>:\n  match a:\n    case Nil{}: b\n    case Con{h, t}: Con{h, List.append(q, T, t, b)}\n" ++
-  "def String.is_empty(s: String) -> Bool:\n  match s:\n    case SNil{}: True{}\n    case SCon{_, _}: False{}\n" ++
-  "def String.length.go(s: String, acc: Nat) -> Nat:\n  match s:\n    case SNil{}: acc\n    case SCon{_, t}: String.length.go(t, U32.add(acc, 1))\n" ++
-  "def String.length(s: String) -> Nat:\n  String.length.go(s, 0)\n" ++
+  "def Char.cmp(a: Char, b: Char) -> Cmp:\n  Tuple{Tuple{a, b}, if U32.is_lt(a, b): LT{} else: if U32.is_gt(a, b): GT{} else: EQ{}}\ndef Cmp.is_eq(c: Cmp) -> Bool:\n  match c:\n    case EQ{}: True{}\n    case _: False{}\n" ++
+  "def Maybe.default(-q: Data, -A: Data, m: Maybe<A>, d: A) -> A:\n  match m:\n    case None{}: d\n    case Some{v}: v\ndef List.append(-q: Data, -T: Data, a: List<T>, b: List<T>) -> List<T>:\n  match a:\n    case Nil{}: b\n    case Con{h, t}: Con{h, List.append(q, T, t, b)}\n" ++
+  "def String.is_empty(s: String) -> Bool:\n  match s:\n    case SNil{}: True{}\n    case SCon{_, _}: False{}\ndef String.length.go(s: String, acc: Nat) -> Nat:\n  match s:\n    case SNil{}: acc\n    case SCon{_, t}: String.length.go(t, U32.add(acc, 1))\ndef String.length(s: String) -> Nat:\n  String.length.go(s, 0)\n" ++
   "def String.starts_with(s: String, p: String) -> Bool:\n  match p s:\n    case SNil{} _: True{}\n    case SCon{_, _} SNil{}: False{}\n    case SCon{c1, t1} SCon{c2, t2}: if U32.is_eq(c1, c2): String.starts_with(t2, t1) else: False{}\n" ++
-  "def String.drop(s: String, n: Nat) -> String:\n  match n s:\n    case 0n _: s\n    case _ SNil{}: SNil{}\n    case 1n+p SCon{_, t}: String.drop(t, p)\n" ++
-  "def String.append(a: String, b: String) -> String:\n  match a:\n    case SNil{}: b\n    case SCon{h, t}: SCon{h, String.append(t, b)}\n" ++
-  "def String.reverse.go(s: String, acc: String) -> String:\n  match s:\n    case SNil{}: acc\n    case SCon{h, t}: String.reverse.go(t, SCon{h, acc})\n" ++
-  "def String.reverse(s: String) -> String:\n  String.reverse.go(s, SNil{})\n" ++
-  "def String.cmp(a: String, b: String) -> Cmp:\n  match a b:\n    case SNil{} SNil{}: EQ{}\n    case SNil{} SCon{_, _}: LT{}\n    case SCon{_, _} SNil{}: GT{}\n    case SCon{x, t1} SCon{y, t2}:\n      if U32.is_lt(x, y): LT{} else: if U32.is_gt(x, y): GT{} else: String.cmp(t1, t2)\n" ++
-  "def String.eq(a: String, b: String) -> Bool:\n  match String.cmp(a, b):\n    case EQ{}: True{}\n    case _: False{}\n" ++
-  "def U32.show.go(n: U32, acc: String) -> String:\n  if U32.is_zero(n): acc else: U32.show.go(U32.div(n, 10), SCon{U32.add(48, U32.mod(n, 10)), acc})\n" ++
-  "def U32.show(n: U32) -> String:\n  if U32.is_zero(n): \"0\" else: U32.show.go(n, SNil{})\ndef F32.show(x: F32) -> String:\n  U32.show(F32.to_u32(x))\n" ++
-  "def U32.read.go(s: String, acc: U32) -> Maybe<U32>:\n  match s:\n    case SNil{}: Some{acc}\n    case SCon{c, t}: U32.read.go(t, U32.add(U32.mul(acc, 10), U32.sub(c, 48)))\n" ++
-  "def U32.read(s: String) -> Maybe<U32>:\n  match s:\n    case SNil{}: None{}\n    case SCon{c, t}: U32.read.go(t, U32.sub(c, 48))\n" ++
+  "def String.drop(s: String, n: Nat) -> String:\n  match n s:\n    case 0n _: s\n    case _ SNil{}: SNil{}\n    case 1n+p SCon{_, t}: String.drop(t, p)\ndef String.append(a: String, b: String) -> String:\n  match a:\n    case SNil{}: b\n    case SCon{h, t}: SCon{h, String.append(t, b)}\n" ++
+  "def String.reverse.go(s: String, acc: String) -> String:\n  match s:\n    case SNil{}: acc\n    case SCon{h, t}: String.reverse.go(t, SCon{h, acc})\ndef String.reverse(s: String) -> String:\n  String.reverse.go(s, SNil{})\n" ++
+  "def String.cmp(a: String, b: String) -> Cmp:\n  match a b:\n    case SNil{} SNil{}: EQ{}\n    case SNil{} SCon{_, _}: LT{}\n    case SCon{_, _} SNil{}: GT{}\n    case SCon{x, t1} SCon{y, t2}:\n      if U32.is_lt(x, y): LT{} else: if U32.is_gt(x, y): GT{} else: String.cmp(t1, t2)\ndef String.eq(a: String, b: String) -> Bool:\n  match String.cmp(a, b):\n    case EQ{}: True{}\n    case _: False{}\n" ++
+  "def U32.show.go(n: U32, acc: String) -> String:\n  if U32.is_zero(n): acc else: U32.show.go(U32.div(n, 10), SCon{U32.add(48, U32.mod(n, 10)), acc})\ndef U32.show(n: U32) -> String:\n  if U32.is_zero(n): \"0\" else: U32.show.go(n, SNil{})\ndef F32.show(x: F32) -> String:\n  U32.show(F32.to_u32(x))\n" ++
+  "def U32.read.go(s: String, acc: U32) -> Maybe<U32>:\n  match s:\n    case SNil{}: Some{acc}\n    case SCon{c, t}: U32.read.go(t, U32.add(U32.mul(acc, 10), U32.sub(c, 48)))\ndef U32.read(s: String) -> Maybe<U32>:\n  match s:\n    case SNil{}: None{}\n    case SCon{c, t}: U32.read.go(t, U32.sub(c, 48))\n" ++
   "def U32.max(a: U32, b: U32) -> U32:\n  if U32.is_gt(a, b): a else: b\ndef U32.min(a: U32, b: U32) -> U32:\n  if U32.is_lt(a, b): a else: b\n" ++
-  "def U32.log2.go(k: Nat, n: U32, b: Nat) -> Nat:\n  match k:\n    case 0n: b\n    case 1n+p:\n      s = U32.shln(1, p)\n      t = if U32.is_ne(U32.shrn(n, s), 0): s else: 0\n      U32.log2.go(p, U32.shrn(n, t), U32.add(b, t))\ndef U32.log2(n: U32) -> Nat:\n  U32.log2.go(5n, n, 0)\n" ++
-  "def U32.cmp(a: U32, b: U32) -> Cmp:\n  if U32.is_lt(a, b): LT{} else: if U32.is_eq(a, b): EQ{} else: GT{}\n" ++
-  "def Nat.add(a: Nat, b: Nat) -> Nat:\n  U32.add(a, b)\ndef Nat.sub(a: Nat, b: Nat) -> Nat:\n  if U32.is_lt(a, b): 0 else: U32.sub(a, b)\n" ++
-  "def Nat.min(a: Nat, b: Nat) -> Nat:\n  if U32.is_lt(a, b): a else: b\ndef Nat.max(a: Nat, b: Nat) -> Nat:\n  if U32.is_gt(a, b): a else: b\n" ++
-  "def Nat.mul(a: Nat, b: Nat) -> Nat:\n  U32.mul(a, b)\ndef Nat.double(a: Nat) -> Nat:\n  U32.add(a, a)\n" ++
-  "def Nat.is_lt(a: Nat, b: Nat) -> Bool:\n  U32.is_lt(a, b)\ndef Nat.is_le(a: Nat, b: Nat) -> Bool:\n  U32.is_le(a, b)\n" ++
-  "def Nat.is_gt(a: Nat, b: Nat) -> Bool:\n  U32.is_gt(a, b)\ndef Nat.is_ge(a: Nat, b: Nat) -> Bool:\n  U32.is_ge(a, b)\n" ++
-  "def Nat.is_eq(a: Nat, b: Nat) -> Bool:\n  U32.is_eq(a, b)\ndef Nat.cmp(a: Nat, b: Nat) -> Cmp:\n  if U32.is_lt(a, b): LT{} else: if U32.is_eq(a, b): EQ{} else: GT{}\n" ++
-  "def Nat.divmod(a: Nat, b: Nat) -> Nat:\n  if U32.is_zero(b): Tuple{0, a} else: Tuple{U32.div(a, b), U32.mod(a, b)}\n" ++
-  "def Nat.show(n: Nat) -> String:\n  U32.show(n)\ndef Nat.read(s: String) -> Maybe<Nat>:\n  U32.read(s)\n" ++
-  "def IO.pure(-A: Data, x: A) -> IO(A):\n  k => k(x)\ndef IO.bind(-A: Data, -B: Data, m: IO(A), f: A -> IO(B)) -> IO(B):\n  k => m(x => f(x)(k))\n" ++
-  "def IO.print(s: String) -> IO(Unit):\n  k => __io_print(s, k)\ndef IO.print_err(s: String) -> IO(Unit):\n  k => __io_print_err(s, k)\n" ++
+  "def U32.log2.go(k: Nat, n: U32, b: Nat) -> Nat:\n  match k:\n    case 0n: b\n    case 1n+p:\n      s = U32.shln(1, p)\n      t = if U32.is_ne(U32.shrn(n, s), 0): s else: 0\n      U32.log2.go(p, U32.shrn(n, t), U32.add(b, t))\ndef U32.log2(n: U32) -> Nat:\n  U32.log2.go(5n, n, 0)\ndef U32.cmp(a: U32, b: U32) -> Cmp:\n  if U32.is_lt(a, b): LT{} else: if U32.is_eq(a, b): EQ{} else: GT{}\n" ++
+  "def Nat.add(a: Nat, b: Nat) -> Nat:\n  U32.add(a, b)\ndef Nat.sub(a: Nat, b: Nat) -> Nat:\n  if U32.is_lt(a, b): 0 else: U32.sub(a, b)\ndef Nat.min(a: Nat, b: Nat) -> Nat:\n  if U32.is_lt(a, b): a else: b\ndef Nat.max(a: Nat, b: Nat) -> Nat:\n  if U32.is_gt(a, b): a else: b\n" ++
+  "def Nat.mul(a: Nat, b: Nat) -> Nat:\n  U32.mul(a, b)\ndef Nat.double(a: Nat) -> Nat:\n  U32.add(a, a)\ndef Nat.is_lt(a: Nat, b: Nat) -> Bool:\n  U32.is_lt(a, b)\ndef Nat.is_le(a: Nat, b: Nat) -> Bool:\n  U32.is_le(a, b)\n" ++
+  "def Nat.is_gt(a: Nat, b: Nat) -> Bool:\n  U32.is_gt(a, b)\ndef Nat.is_ge(a: Nat, b: Nat) -> Bool:\n  U32.is_ge(a, b)\ndef Nat.is_eq(a: Nat, b: Nat) -> Bool:\n  U32.is_eq(a, b)\ndef Nat.cmp(a: Nat, b: Nat) -> Cmp:\n  if U32.is_lt(a, b): LT{} else: if U32.is_eq(a, b): EQ{} else: GT{}\n" ++
+  "def Nat.divmod(a: Nat, b: Nat) -> Nat:\n  if U32.is_zero(b): Tuple{0, a} else: Tuple{U32.div(a, b), U32.mod(a, b)}\ndef Nat.show(n: Nat) -> String:\n  U32.show(n)\ndef Nat.read(s: String) -> Maybe<Nat>:\n  U32.read(s)\n" ++
+  "def IO.pure(-A: Data, x: A) -> IO(A):\n  k => k(x)\ndef IO.bind(-A: Data, -B: Data, m: IO(A), f: A -> IO(B)) -> IO(B):\n  k => m(x => f(x)(k))\ndef IO.print(s: String) -> IO(Unit):\n  k => __io_print(s, k)\ndef IO.print_err(s: String) -> IO(Unit):\n  k => __io_print_err(s, k)\n" ++
   "def IO.exit(c: U32) -> IO(Unit):\n  k => Exit{c}\ndef __b5k_seal_args(xs: List<String>) -> List<String>:\n  match xs:\n    case Nil{}: Nil{}\n    case Con{s, t}: Con{String.reverse(String.reverse(s)), __b5k_seal_args(t)}\ndef IO.args() -> IO(List<String>):\n  IO.bind(List<String>, List<String>, k => __io_args(k), xs => IO.pure(List<String>, __b5k_seal_args(xs)))\ndef IO.now() -> IO(U32):\n  k => __io_now(k)\n" ++
-  "def File.open(p: String, m: String) -> IO(U32):\n  k => __file_open(p, m, k)\ndef File.read(f: U32, n: U32) -> IO(U32):\n  k => __file_read(f, n, k)\n" ++
-  "def File.size(f: U32) -> IO(U32):\n  k => __file_size(f, k)\ndef File.write(f: U32, s: String) -> IO(U32):\n  k => __file_write(f, s, k)\n" ++
-  "def File.write_bytes(f: U32, bs: List<U32>) -> IO(U32):\n  k => __file_write_bytes(f, bs, k)\ndef File.close(f: U32) -> IO(Unit):\n  k => __file_close(f, k)\n" ++
-  "def __arr_len(n: U32, v: U32) -> Array<U32>:\n  d = if U32.is_le(n, 1): 0 else: U32.log2(n)\n  Array.new(U32, d, v)\n" ++
-  "def Array.fork(-T: Data, +a: Array<T>) -> Array<T>:\n  Tuple{a, a}\n" ++
-  "def Array.join(-T: Data, a: Array<T>, b: Array<T>) -> Array<T>:\n  a\n" ++
-  "def __arr_toli_go(n: Nat, i: U32, a: Array<U32>, acc: List<U32>) -> List<U32>:\n  match n:\n    case 0n: acc\n    case 1n+p:\n      (a2, v) = Array.get(U32, a, i)\n      __arr_toli_go(p, U32.sub(i, 1), a2, Con{v, acc})\n" ++
-  "def Array.to_list(-T: Data, a: Array<T>) -> List<T>:\n  (a2, n) = Array.size(T, a)\n  __arr_toli_go(U32.to_nat(n), U32.sub(n, 1), a2, Nil{})\n" ++
-  "def Map.new(-q: Data, -V: Data) -> Map<V>:\n  MTip{}\n" ++
+  "def File.open(p: String, m: String) -> IO(U32):\n  k => __file_open(p, m, k)\ndef File.read(f: U32, n: U32) -> IO(U32):\n  k => __file_read(f, n, k)\ndef File.size(f: U32) -> IO(U32):\n  k => __file_size(f, k)\ndef File.write(f: U32, s: String) -> IO(U32):\n  k => __file_write(f, s, k)\n" ++
+  "def File.write_bytes(f: U32, bs: List<U32>) -> IO(U32):\n  k => __file_write_bytes(f, bs, k)\ndef File.close(f: U32) -> IO(Unit):\n  k => __file_close(f, k)\ndef __arr_len(n: U32, v: U32) -> Array<U32>:\n  d = if U32.is_le(n, 1): 0 else: U32.log2(n)\n  Array.new(U32, d, v)\n" ++
+  "def Array.fork(-T: Data, +a: Array<T>) -> Array<T>:\n  Tuple{a, a}\ndef Array.join(-T: Data, a: Array<T>, b: Array<T>) -> Array<T>:\n  a\ndef __arr_toli_go(n: Nat, i: U32, a: Array<U32>, acc: List<U32>) -> List<U32>:\n  match n:\n    case 0n: acc\n    case 1n+p:\n      (a2, v) = Array.get(U32, a, i)\n      __arr_toli_go(p, U32.sub(i, 1), a2, Con{v, acc})\n" ++
+  "def Array.to_list(-T: Data, a: Array<T>) -> List<T>:\n  (a2, n) = Array.size(T, a)\n  __arr_toli_go(U32.to_nat(n), U32.sub(n, 1), a2, Nil{})\ndef Map.new(-q: Data, -V: Data) -> Map<V>:\n  MTip{}\n" ++
   "def Map.set(-q: Data, -V: Data, m: Map<V>, k: String, v: V) -> Map<V>:\n  match m:\n    case MTip{}: MNode{Tuple{k, v}, MTip{}, MTip{}}\n    case MNode{kv, l, r}:\n      (k0, v0) = kv\n      match String.cmp(k, k0):\n        case LT{}: MNode{Tuple{k0, v0}, Map.set(q, V, l, k, v), r}\n        case GT{}: MNode{Tuple{k0, v0}, l, Map.set(q, V, r, k, v)}\n        case EQ{}: MNode{Tuple{k, v}, l, r}\n" ++
   "def Map.get(-V: Data, d: V, m: Map<V>, k: String) -> Map<V>:\n  match m:\n    case MTip{}: Tuple{MTip{}, d}\n    case MNode{kv, l, r}:\n      (k0, v0) = kv\n      match String.cmp(k, k0):\n        case LT{}:\n          (l2, res) = Map.get(V, d, l, k)\n          Tuple{MNode{Tuple{k0, v0}, l2, r}, res}\n        case GT{}:\n          (r2, res) = Map.get(V, d, r, k)\n          Tuple{MNode{Tuple{k0, v0}, l, r2}, res}\n        case EQ{}: Tuple{MNode{Tuple{k0, v0}, l, r}, v0}\n" ++
   "def Map.del_min(m: Map<U32>) -> Map<U32>:\n  match m:\n    case MNode{kv, MTip{}, r}: Tuple{kv, r}\n    case MNode{kv, l, r}:\n      (mn, l2) = Map.del_min(l)\n      Tuple{mn, MNode{kv, l2, r}}\n" ++
   "def Map.del(-q: Data, -V: Data, m: Map<V>, k: String) -> Map<V>:\n  match m:\n    case MTip{}: MTip{}\n    case MNode{kv, l, r}:\n      (k0, v0) = kv\n      match String.cmp(k, k0):\n        case LT{}: MNode{Tuple{k0, v0}, Map.del(q, V, l, k), r}\n        case GT{}: MNode{Tuple{k0, v0}, l, Map.del(q, V, r, k)}\n        case EQ{}:\n          match l r:\n            case MTip{} _: r\n            case _ MTip{}: l\n            case _ _:\n              (mn, r2) = Map.del_min(r)\n              MNode{mn, l, r2}\n" ++
-  "def Map.to_list.go(m: Map<U32>, acc: List<U32>) -> List<U32>:\n  match m:\n    case MTip{}: acc\n    case MNode{kv, l, r}: Map.to_list.go(l, Con{kv, Map.to_list.go(r, acc)})\n" ++
-  "def Map.to_list(-q: Data, -V: Data, m: Map<V>) -> List<V>:\n  Map.to_list.go(m, Nil{})\n" ++
+  "def Map.to_list.go(m: Map<U32>, acc: List<U32>) -> List<U32>:\n  match m:\n    case MTip{}: acc\n    case MNode{kv, l, r}: Map.to_list.go(l, Con{kv, Map.to_list.go(r, acc)})\ndef Map.to_list(-q: Data, -V: Data, m: Map<V>) -> List<V>:\n  Map.to_list.go(m, Nil{})\n" ++
   "def Map.has(-q: Data, -V: Data, m: Map<V>, k: String) -> Map<V>:\n  match m:\n    case MTip{}: Tuple{MTip{}, False{}}\n    case MNode{kv, l, r}:\n      (k0, v0) = kv\n      match String.cmp(k, k0):\n        case LT{}:\n          (l2, h) = Map.has(q, V, l, k)\n          Tuple{MNode{Tuple{k0, v0}, l2, r}, h}\n        case GT{}:\n          (r2, h) = Map.has(q, V, r, k)\n          Tuple{MNode{Tuple{k0, v0}, l, r2}, h}\n        case EQ{}: Tuple{MNode{Tuple{k0, v0}, l, r}, True{}}\n" ++
   "def Map.pop_eq(l: Map<U32>, r: Map<U32>, v0: U32) -> Map<U32>:\n  match l r:\n    case MTip{} _: Tuple{r, Some{v0}}\n    case _ MTip{}: Tuple{l, Some{v0}}\n    case _ _:\n      (mn, r2) = Map.del_min(r)\n      Tuple{MNode{mn, l, r2}, Some{v0}}\n" ++
   "def Map.pop(-q: Data, -V: Data, m: Map<V>, k: String) -> Map<V>:\n  match m:\n    case MTip{}: Tuple{MTip{}, None{}}\n    case MNode{kv, l, r}:\n      (k0, v0) = kv\n      match String.cmp(k, k0):\n        case LT{}:\n          (l2, o) = Map.pop(q, V, l, k)\n          Tuple{MNode{Tuple{k0, v0}, l2, r}, o}\n        case GT{}:\n          (r2, o) = Map.pop(q, V, r, k)\n          Tuple{MNode{Tuple{k0, v0}, l, r2}, o}\n        case EQ{}: Map.pop_eq(l, r, v0)\n" ++
-  "def Map.from_list.go(xs: List<U32>, m: Map<U32>) -> Map<U32>:\n  match xs:\n    case Nil{}: m\n    case Con{kv, t}:\n      (k, v) = kv\n      Map.from_list.go(t, Map.set(0, 0, m, k, v))\n" ++
-  "def Map.from_list(-q: Data, -V: Data, xs: List<U32>) -> Map<V>:\n  Map.from_list.go(xs, MTip{})\n" ++
-  "def Map.union(-q: Data, -V: Data, a: Map<V>, b: Map<V>) -> Map<V>:\n  Map.from_list.go(Map.to_list(q, V, b), a)\n" ++
-  "def Map.keys.go(m: Map<U32>, acc: List<String>) -> List<String>:\n  match m:\n    case MTip{}: acc\n    case MNode{kv, l, r}:\n      (k, v) = kv\n      Map.keys.go(l, Con{k, Map.keys.go(r, acc)})\n" ++
-  "def Map.keys(-q: Data, -V: Data, m: Map<V>) -> List<String>:\n  Map.keys.go(m, Nil{})\n" ++
-  "def Map.values.go(m: Map<U32>, acc: List<U32>) -> List<U32>:\n  match m:\n    case MTip{}: acc\n    case MNode{kv, l, r}:\n      (k, v) = kv\n      Map.values.go(l, Con{v, Map.values.go(r, acc)})\n" ++
-  "def Map.values(-q: Data, -V: Data, m: Map<V>) -> List<V>:\n  Map.values.go(m, Nil{})\n" ++
-  "def Set.new() -> Map<Unit>:\n  MTip{}\ndef Set.add(s: Map<Unit>, k: String) -> Map<Unit>:\n  Map.set(0, 0, s, k, Unit{})\n" ++
-  "def Set.has(s: Map<Unit>, k: String) -> Map<Unit>:\n  Map.has(0, 0, s, k)\ndef Set.del(s: Map<Unit>, k: String) -> Map<Unit>:\n  Map.del(0, 0, s, k)\n" ++
-  "def Set.to_list(s: Map<Unit>) -> List<String>:\n  Map.keys(0, 0, s)\n"
+  "def Map.from_list.go(xs: List<U32>, m: Map<U32>) -> Map<U32>:\n  match xs:\n    case Nil{}: m\n    case Con{kv, t}:\n      (k, v) = kv\n      Map.from_list.go(t, Map.set(0, 0, m, k, v))\ndef Map.from_list(-q: Data, -V: Data, xs: List<U32>) -> Map<V>:\n  Map.from_list.go(xs, MTip{})\ndef Map.union(-q: Data, -V: Data, a: Map<V>, b: Map<V>) -> Map<V>:\n  Map.from_list.go(Map.to_list(q, V, b), a)\n" ++
+  "def Map.keys.go(m: Map<U32>, acc: List<String>) -> List<String>:\n  match m:\n    case MTip{}: acc\n    case MNode{kv, l, r}:\n      (k, v) = kv\n      Map.keys.go(l, Con{k, Map.keys.go(r, acc)})\ndef Map.keys(-q: Data, -V: Data, m: Map<V>) -> List<String>:\n  Map.keys.go(m, Nil{})\n" ++
+  "def Map.values.go(m: Map<U32>, acc: List<U32>) -> List<U32>:\n  match m:\n    case MTip{}: acc\n    case MNode{kv, l, r}:\n      (k, v) = kv\n      Map.values.go(l, Con{v, Map.values.go(r, acc)})\ndef Map.values(-q: Data, -V: Data, m: Map<V>) -> List<V>:\n  Map.values.go(m, Nil{})\n" ++
+  "def Set.new() -> Map<Unit>:\n  MTip{}\ndef Set.add(s: Map<Unit>, k: String) -> Map<Unit>:\n  Map.set(0, 0, s, k, Unit{})\ndef Set.has(s: Map<Unit>, k: String) -> Map<Unit>:\n  Map.has(0, 0, s, k)\ndef Set.del(s: Map<Unit>, k: String) -> Map<Unit>:\n  Map.del(0, 0, s, k)\ndef Set.to_list(s: Map<Unit>) -> List<String>:\n  Map.keys(0, 0, s)\n"
 # Lowering Environment & Pass 1 Tables
 type CoreCtorSpec is Data:
   CoreCtorSpec{name: String, arity: U32}
@@ -191,14 +164,10 @@ def env_map(e: LowEnv, which: U32) -> U32Map:
 def env_sym(e: LowEnv, is_arr: Bool) -> U32:
   LowEnv{_, _, _, _, _, _, _, _, _, _, _, _, _, _, tmp, al} = e
   Bool.pick(U32, is_arr, al, tmp)
-def env_ctors(e: LowEnv) -> U32Map:
-  env_map(e, 0)
-def env_csingle(e: LowEnv) -> U32Map:
-  env_map(e, 1)
-def env_intr(e: LowEnv) -> U32Map:
-  env_map(e, 5)
-def env_kind(e: LowEnv) -> U32Map:
-  env_map(e, 6)
+def env_ctors(e: LowEnv) -> U32Map: env_map(e, 0)
+def env_csingle(e: LowEnv) -> U32Map: env_map(e, 1)
+def env_intr(e: LowEnv) -> U32Map: env_map(e, 5)
+def env_kind(e: LowEnv) -> U32Map: env_map(e, 6)
 # Use-Count & Free-Variable Scanners
 def pat_binds_all(fuel: Nat, +sym: U32, ps: List<&2, Pat>) -> Bool:
   match fuel ps:
@@ -247,10 +216,6 @@ def count_uses_go(fuel: Nat, +sym: U32, item: UseItem) -> U32:
     case Succ{+p} UIExpr{EPair{a, b}}: U32.add(count_uses_go(p, sym, UIExpr{a}), count_uses_go(p, sym, UIExpr{b}))
     case Succ{p} UIExpr{EList{es}}: count_uses_go(p, sym, UIExprs{es})
     case Succ{_} _: 0
-def u32_mem(xs: List<&2, U32>, +x: U32) -> Bool:
-  match xs:
-    case Nil{}: False{}
-    case Con{h, t}: Bool.or(U32.is_eq(h, x), u32_mem(t, x))
 def fv_add_pat(fuel: Nat, ps: List<&2, Pat>, bnd: U32Map) -> U32Map:
   match fuel ps:
     case Zero{} _: bnd
@@ -278,7 +243,7 @@ def fv_go(fuel: Nat, +vmap: U32Map, +bnd: U32Map, item: UseItem, acc: List<&2, U
     case Succ{+p} UIStmts{Con{StRet{v}, t}}: fv_go(p, vmap, bnd, UIStmts{t}, fv_go(p, vmap, bnd, UIExpr{v}, acc))
     case Succ{_} UIExpr{EVar{+s}}:
       +a0 = acc
-      Bool.pick(List<&2, U32>, Bool.and(U32.is_ne(um_get(vmap, s), 0), Bool.and(U32.is_zero(um_get(bnd, s)), Bool.not(u32_mem(a0, s)))), Con{s, a0}, a0)
+      Bool.pick(List<&2, U32>, Bool.and(U32.is_ne(um_get(vmap, s), 0), Bool.and(U32.is_zero(um_get(bnd, s)), Bool.not(b5k_chk_u32_mem(a0, s)))), Con{s, a0}, a0)
     case Succ{+p} UIExpr{EApp{f, args}}: fv_go(p, vmap, bnd, UIExprs{args}, fv_go(p, vmap, bnd, UIExpr{f}, acc))
     case Succ{p} UIExpr{ELam{ps, body}}: fv_go(p, vmap, fv_add_params(ps, bnd), UIExpr{body}, acc)
     case Succ{+p} UIExpr{ELet{pat, v, body}}: fv_go(p, vmap, fv_add_pat(32n, [pat], bnd), UIExpr{body}, fv_go(p, vmap, bnd, UIExpr{v}, acc))
@@ -302,50 +267,49 @@ type CloBank is Data:
   CloBank{next_fid: U32, next_cid: U32, ctors_rev: List<&2, IrCtor>, fns_rev: List<&2, IrFn>, entries_rev: List<&2, CloEntry>, next_stat: U32, stats_rev: List<&2, U32>, str_map: Map<&2, U32>}
 type CfgSt is Data:
   CfgSt{cur_fid: U32, next_reg: U32, next_blk: U32, cur_blk: U32, cur_ops: List<&2, IrOp>, blocks: List<&2, IrBlock>, sealed: Bool, res: U32, rlist: List<&2, U32>, vmap: U32Map, nvm: U32Map, merged: Bool, bank: CloBank}
-def cfg_new(fid: U32, nparams: U32, bank: CloBank) -> CfgSt:
-  CfgSt{fid, nparams, 1, 0, Nil{}, Nil{}, False{}, 0, Nil{}, UM0{}, UM0{}, False{}, bank}
+def cfg_new(fid: U32, nparams: U32, bank: CloBank) -> CfgSt: CfgSt{fid, nparams, 1, 0, Nil{}, Nil{}, False{}, 0, Nil{}, UM0{}, UM0{}, False{}, bank}
 def cfg_res(st: CfgSt) -> U32:
-  match st:
-    case CfgSt{_, _, _, _, _, _, _, r, _, _, _, _, _}: r
+  CfgSt{_, _, _, _, _, _, _, r, _, _, _, _, _} = st
+  r
 def cfg_rlist(st: CfgSt) -> List<&2, U32>:
-  match st:
-    case CfgSt{_, _, _, _, _, _, _, _, rl, _, _, _, _}: rl
+  CfgSt{_, _, _, _, _, _, _, _, rl, _, _, _, _} = st
+  rl
 def cfg_vmap(st: CfgSt) -> U32Map:
-  match st:
-    case CfgSt{_, _, _, _, _, _, _, _, _, vm, _, _, _}: vm
+  CfgSt{_, _, _, _, _, _, _, _, _, vm, _, _, _} = st
+  vm
 def cfg_nvm(st: CfgSt) -> U32Map:
-  match st:
-    case CfgSt{_, _, _, _, _, _, _, _, _, _, nvm, _, _}: nvm
+  CfgSt{_, _, _, _, _, _, _, _, _, _, nvm, _, _} = st
+  nvm
 def cfg_sealed(st: CfgSt) -> Bool:
-  match st:
-    case CfgSt{_, _, _, _, _, _, s, _, _, _, _, _, _}: s
+  CfgSt{_, _, _, _, _, _, s, _, _, _, _, _, _} = st
+  s
 def cfg_merged(st: CfgSt) -> Bool:
-  match st:
-    case CfgSt{_, _, _, _, _, _, _, _, _, _, _, m, _}: m
+  CfgSt{_, _, _, _, _, _, _, _, _, _, _, m, _} = st
+  m
 def cfg_bank(st: CfgSt) -> CloBank:
-  match st:
-    case CfgSt{_, _, _, _, _, _, _, _, _, _, _, _, bk}: bk
+  CfgSt{_, _, _, _, _, _, _, _, _, _, _, _, bk} = st
+  bk
 def cfg_set_res(st: CfgSt, r: U32) -> CfgSt:
-  match st:
-    case CfgSt{f, nr, nb, cb, ops, blks, s, _, rl, vm, nvm, mg, bk}: CfgSt{f, nr, nb, cb, ops, blks, s, r, rl, vm, nvm, mg, bk}
+  CfgSt{f, nr, nb, cb, ops, blks, s, _, rl, vm, nvm, mg, bk} = st
+  CfgSt{f, nr, nb, cb, ops, blks, s, r, rl, vm, nvm, mg, bk}
 def cfg_set_rlist(st: CfgSt, rl: List<&2, U32>) -> CfgSt:
-  match st:
-    case CfgSt{f, nr, nb, cb, ops, blks, s, r, _, vm, nvm, mg, bk}: CfgSt{f, nr, nb, cb, ops, blks, s, r, rl, vm, nvm, mg, bk}
+  CfgSt{f, nr, nb, cb, ops, blks, s, r, _, vm, nvm, mg, bk} = st
+  CfgSt{f, nr, nb, cb, ops, blks, s, r, rl, vm, nvm, mg, bk}
 def cfg_set_vm_nvm(st: CfgSt, vm: U32Map, nvm: U32Map) -> CfgSt:
-  match st:
-    case CfgSt{f, nr, nb, cb, ops, blks, s, r, rl, _, _, mg, bk}: CfgSt{f, nr, nb, cb, ops, blks, s, r, rl, vm, nvm, mg, bk}
+  CfgSt{f, nr, nb, cb, ops, blks, s, r, rl, _, _, mg, bk} = st
+  CfgSt{f, nr, nb, cb, ops, blks, s, r, rl, vm, nvm, mg, bk}
 def cfg_set_merged(st: CfgSt, mg: Bool) -> CfgSt:
-  match st:
-    case CfgSt{f, nr, nb, cb, ops, blks, s, r, rl, vm, nvm, _, bk}: CfgSt{f, nr, nb, cb, ops, blks, s, r, rl, vm, nvm, mg, bk}
+  CfgSt{f, nr, nb, cb, ops, blks, s, r, rl, vm, nvm, _, bk} = st
+  CfgSt{f, nr, nb, cb, ops, blks, s, r, rl, vm, nvm, mg, bk}
 def cfg_set_bank(st: CfgSt, bk: CloBank) -> CfgSt:
-  match st:
-    case CfgSt{f, nr, nb, cb, ops, blks, s, r, rl, vm, nvm, mg, _}: CfgSt{f, nr, nb, cb, ops, blks, s, r, rl, vm, nvm, mg, bk}
+  CfgSt{f, nr, nb, cb, ops, blks, s, r, rl, vm, nvm, mg, _} = st
+  CfgSt{f, nr, nb, cb, ops, blks, s, r, rl, vm, nvm, mg, bk}
 def cfg_alloc_reg(st: CfgSt) -> CfgSt:
-  match st:
-    case CfgSt{f, +nr, nb, cb, ops, blks, s, _, rl, vm, nvm, mg, bk}: CfgSt{f, U32.add(nr, 1), nb, cb, ops, blks, s, nr, rl, vm, nvm, mg, bk}
+  CfgSt{f, +nr, nb, cb, ops, blks, s, _, rl, vm, nvm, mg, bk} = st
+  CfgSt{f, U32.add(nr, 1), nb, cb, ops, blks, s, nr, rl, vm, nvm, mg, bk}
 def cfg_alloc_blk(st: CfgSt) -> CfgSt:
-  match st:
-    case CfgSt{f, nr, +nb, cb, ops, blks, s, _, rl, vm, nvm, mg, bk}: CfgSt{f, nr, U32.add(nb, 1), cb, ops, blks, s, nb, rl, vm, nvm, mg, bk}
+  CfgSt{f, nr, +nb, cb, ops, blks, s, _, rl, vm, nvm, mg, bk} = st
+  CfgSt{f, nr, U32.add(nb, 1), cb, ops, blks, s, nb, rl, vm, nvm, mg, bk}
 def cfg_emit(st: CfgSt, op: IrOp) -> CfgSt:
   match st:
     case CfgSt{f, nr, nb, cb, ops, blks, False{}, r, rl, vm, nvm, mg, bk}: CfgSt{f, nr, nb, cb, Con{op, ops}, blks, False{}, r, rl, vm, nvm, mg, bk}
@@ -355,10 +319,9 @@ def cfg_seal(st: CfgSt, term: IrTerm) -> CfgSt:
     case CfgSt{f, nr, nb, +cb, ops, blks, False{}, r, rl, vm, nvm, mg, bk}: CfgSt{f, nr, nb, cb, Nil{}, Con{IrBlock{cb, b5k_list_rev(IrOp, ops), term}, blks}, True{}, r, rl, vm, nvm, mg, bk}
     case s: s
 def cfg_start(st: CfgSt, blk_id: U32) -> CfgSt:
-  match st:
-    case CfgSt{f, nr, nb, _, _, blks, _, r, rl, vm, nvm, mg, bk}: CfgSt{f, nr, nb, blk_id, Nil{}, blks, False{}, r, rl, vm, nvm, mg, bk}
-def cfg_end_merge(+st: CfgSt, base_vm: U32Map, base_nvm: U32Map, blk: U32, res_reg: U32) -> CfgSt:
-  cfg_set_res(cfg_set_vm_nvm(Bool.pick(CfgSt, cfg_merged(st), cfg_start(st, blk), st), base_vm, base_nvm), res_reg)
+  CfgSt{f, nr, nb, _, _, blks, _, r, rl, vm, nvm, mg, bk} = st
+  CfgSt{f, nr, nb, blk_id, Nil{}, blks, False{}, r, rl, vm, nvm, mg, bk}
+def cfg_end_merge(+st: CfgSt, base_vm: U32Map, base_nvm: U32Map, blk: U32, res_reg: U32) -> CfgSt: cfg_set_res(cfg_set_vm_nvm(Bool.pick(CfgSt, cfg_merged(st), cfg_start(st, blk), st), base_vm, base_nvm), res_reg)
 def cfg_fin_branch(st: CfgSt, sld: Bool, res_reg: U32, v: U32, merge_blk: U32, prev_mg: Bool) -> CfgSt:
   match sld:
     case True{}: cfg_set_merged(st, prev_mg)
@@ -368,12 +331,11 @@ def cfg_emit_keeps_go(k: Nat, st: CfgSt, +v: U32) -> CfgSt:
     case 0n: st
     case 1n+p: cfg_emit_keeps_go(p, cfg_emit(st, IKeep{v, v}), v)
 # Intrinsics (U32.*, F32.*, IO.*) — O(1) via precomputed sym_intr U32Map
-def low_intr_code(sintr: U32Map, sym: U32) -> U32:
-  +raw = um_get(sintr, sym)
-  Bool.pick(U32, U32.is_le(raw, 65), raw, 0)
-def low_special_ctor_kind(skind: U32Map, sym: U32) -> U32:
-  +k = um_get(skind, sym)
-  Bool.pick(U32, U32.is_le(k, 9), k, 0)
+def low_um_le(m: U32Map, sym: U32, lim: U32) -> U32:
+  +raw = um_get(m, sym)
+  Bool.pick(U32, U32.is_le(raw, lim), raw, 0)
+def low_intr_code(sintr: U32Map, sym: U32) -> U32: low_um_le(sintr, sym, 65)
+def low_special_ctor_kind(skind: U32Map, sym: U32) -> U32: low_um_le(skind, sym, 9)
 def low_emit_const(st: CfgSt, v: U32) -> CfgSt:
   +st1 = cfg_alloc_reg(st)
   cfg_emit(st1, IConst{cfg_res(st1), v})
@@ -495,8 +457,7 @@ def low_test_cmp_const(st: CfgSt, cop: U32, r: U32, val: U32, fail_blk: U32) -> 
   +st2 = cfg_alloc_reg(cfg_emit(st1, IConst{cfg_res(st1), val}))
   +st3 = cfg_alloc_blk(cfg_emit(st2, ICmp{cfg_res(st2), cop, r, cfg_res(st1)}))
   cfg_start(cfg_seal(st3, TBr{cfg_res(st2), cfg_res(st3), fail_blk}), cfg_res(st3))
-def low_maybe_keep(+st: CfgSt, need: Bool, +r: U32) -> CfgSt:
-  cfg_set_res(Bool.pick(CfgSt, need, cfg_emit(st, IKeep{r, r}), st), r)
+def low_maybe_keep(+st: CfgSt, need: Bool, +r: U32) -> CfgSt: cfg_set_res(Bool.pick(CfgSt, need, cfg_emit(st, IKeep{r, r}), st), r)
 def low_mask_scs(n: Nat, +smask: U32, +idx: U32) -> List<&2, U32>:
   match n:
     case 0n: Nil{}
@@ -510,10 +471,8 @@ def low_test_bool(st: CfgSt, expect_true: Bool, +r: U32, +fail_blk: U32) -> CfgS
   +ok_blk = cfg_res(st1)
   term = Bool.pick(IrTerm, expect_true, TBr{r, ok_blk, fail_blk}, TBr{r, fail_blk, ok_blk})
   cfg_start(cfg_seal(st1, term), ok_blk)
-def low_opt_test_bool(hf: Bool, expect_true: Bool, +st: CfgSt, r: U32, fb: U32) -> CfgSt:
-  Bool.pick(CfgSt, hf, low_test_bool(st, expect_true, r, fb), st)
-def low_opt_test_eq(hf: Bool, +st: CfgSt, r: U32, val: U32, fb: U32) -> CfgSt:
-  Bool.pick(CfgSt, hf, low_test_cmp_const(st, B5K_CMP_EQ(), r, val, fb), st)
+def low_opt_test_bool(hf: Bool, expect_true: Bool, +st: CfgSt, r: U32, fb: U32) -> CfgSt: Bool.pick(CfgSt, hf, low_test_bool(st, expect_true, r, fb), st)
+def low_opt_test_eq(hf: Bool, +st: CfgSt, r: U32, val: U32, fb: U32) -> CfgSt: Bool.pick(CfgSt, hf, low_test_cmp_const(st, B5K_CMP_EQ(), r, val, fb), st)
 def low_opt_test_tag(hf: Bool, st: CfgSt, r: U32, tr: U32, cid: U32, fb: U32) -> CfgSt:
   match hf tr:
     case False{} _: st
@@ -621,10 +580,8 @@ def low_match_pats_go(fuel: Nat, +env: LowEnv, step: PatStep, +body: Expr, +fail
     case 1n+p PSNext{st, Con{p0, pt}, Con{r, rt}, Con{sc0, st_tail}, Con{tr0, tr_tail}}:
       low_match_pats_go(p, env, low_pat_one(env, st, p0, pt, r, rt, sc0, st_tail, tr0, tr_tail, body, fail_blk, has_fail), body, fail_blk, has_fail)
     case _ PSNext{st, _, _, _, _}: st
-def low_match_pats_sct(fuel: Nat, env: LowEnv, st: CfgSt, ps: List<&2, Pat>, regs: List<&2, U32>, scs: List<&2, U32>, trs: List<&2, U32>, body: Expr, fail_blk: U32, has_fail: Bool) -> CfgSt:
-  low_match_pats_go(fuel, env, PSNext{st, ps, regs, scs, trs}, body, fail_blk, has_fail)
-def low_match_pats_sc(fuel: Nat, env: LowEnv, st: CfgSt, ps: List<&2, Pat>, +regs: List<&2, U32>, scs: List<&2, U32>, body: Expr, fail_blk: U32, has_fail: Bool) -> CfgSt:
-  low_match_pats_go(fuel, env, PSNext{st, ps, regs, scs, low_mask_scs(U32.to_nat(b5k_u32_list_len(regs)), 0, 0)}, body, fail_blk, has_fail)
+def low_match_pats_sct(fuel: Nat, env: LowEnv, st: CfgSt, ps: List<&2, Pat>, regs: List<&2, U32>, scs: List<&2, U32>, trs: List<&2, U32>, body: Expr, fail_blk: U32, has_fail: Bool) -> CfgSt: low_match_pats_go(fuel, env, PSNext{st, ps, regs, scs, trs}, body, fail_blk, has_fail)
+def low_match_pats_sc(fuel: Nat, env: LowEnv, st: CfgSt, ps: List<&2, Pat>, +regs: List<&2, U32>, scs: List<&2, U32>, body: Expr, fail_blk: U32, has_fail: Bool) -> CfgSt: low_match_pats_go(fuel, env, PSNext{st, ps, regs, scs, low_mask_scs(U32.to_nat(b5k_u32_list_len(regs)), 0, 0)}, body, fail_blk, has_fail)
 def low_apply_chain(vargs: List<&2, U32>, st: CfgSt, vfn: U32) -> CfgSt:
   match vargs:
     case Nil{}: cfg_set_res(st, vfn)
@@ -795,8 +752,7 @@ def low_emit_ctor_kind(kind: U32, +env: LowEnv, st: CfgSt, sym: U32, vfs: List<&
     case 9: low_emit_arr_one(st, 9, vfs)
     case 13: low_emit_ctor(st, 6, vfs)
     case _: low_emit_ctor(st, um_get0(env_ctors(env), sym), vfs)
-def low_emit_ctor_expr(+env: LowEnv, st: CfgSt, +sym: U32, vfs: List<&2, U32>) -> CfgSt:
-  low_emit_ctor_kind(um_get(env_kind(env), sym), env, st, sym, vfs)
+def low_emit_ctor_expr(+env: LowEnv, st: CfgSt, +sym: U32, vfs: List<&2, U32>) -> CfgSt: low_emit_ctor_kind(um_get(env_kind(env), sym), env, st, sym, vfs)
 # Single Self-Recursive Expression -> Flat CFG Lowerer
 type UnboxArr is Data:
   UArrNone{e: Expr}
@@ -1043,8 +999,7 @@ def low_match_case_pats_go(is_flat: Bool, +env: LowEnv, st: CfgSt, +ps: List<&2,
   match is_flat:
     case True{}: low_match_pats_sct(64n, env, low_pretest_pats(ps, env, st, rs, trs, fb), ps, rs, scs, trs, body, 0, False{})
     case False{}: low_match_pats_sct(64n, env, st, ps, rs, scs, trs, body, fb, True{})
-def low_match_case_pats(+env: LowEnv, st: CfgSt, +ps: List<&2, Pat>, rs: List<&2, U32>, scs: List<&2, U32>, trs: List<&2, U32>, body: Expr, fb: U32) -> CfgSt:
-  low_match_case_pats_go(Bool.and(U32.is_ge(b5k_list_len(Pat, ps), 2), low_pats_flat_ok(ps, env)), env, st, ps, rs, scs, trs, body, fb)
+def low_match_case_pats(+env: LowEnv, st: CfgSt, +ps: List<&2, Pat>, rs: List<&2, U32>, scs: List<&2, U32>, trs: List<&2, U32>, body: Expr, fb: U32) -> CfgSt: low_match_case_pats_go(Bool.and(U32.is_ge(b5k_list_len(Pat, ps), 2), low_pats_flat_ok(ps, env)), env, st, ps, rs, scs, trs, body, fb)
 type LowTask is Data:
   LTExpr{e: Expr}
   LTExprs{es: List<&2, Expr>, acc: List<&2, U32>}
@@ -1120,8 +1075,6 @@ def low_const_log2_go(fuel: Nat, +n: U32, acc: U32, done: Bool) -> U32:
     case 1n+p False{}:
       +nxt = U32.shr(n)
       low_const_log2_go(p, nxt, U32.add(acc, 1), U32.is_le(nxt, 1))
-def low_const_log2(fuel: Nat, +n: U32, acc: U32) -> U32:
-  low_const_log2_go(fuel, n, acc, U32.is_le(n, 1))
 def low_go(fuel: Nat, +env: LowEnv, st: CfgSt, task: LowTask, +is_tail: Bool) -> CfgSt:
   match fuel task:
     case Zero{} _: st
@@ -1280,12 +1233,10 @@ def low_go(fuel: Nat, +env: LowEnv, st: CfgSt, task: LowTask, +is_tail: Bool) ->
     case Succ{+p} LTLetUnbox{pa, pb, UArrNone{val}, body}: low_go(p, env, st, LTLetPat{PPair{pa, pb}, val, body}, is_tail)
     case Succ{+p} LTLetPat{pat, +val, +body}:
       +st0 = st
-      base_vm = cfg_vmap(st0)
-      base_nvm = cfg_nvm(st0)
       val_sc = low_expr_sc_code(env, cfg_vmap(st0), cfg_nvm(st0), val)
       +st1 = low_go(p, env, st0, LTExpr{val}, False{})
       st2 = low_match_pats_sc(64n, env, st1, [pat], [cfg_res(st1)], [val_sc], body, 0, False{})
-      cfg_set_vm_nvm(low_go(p, env, st2, LTExpr{body}, is_tail), base_vm, base_nvm)
+      cfg_set_vm_nvm(low_go(p, env, st2, LTExpr{body}, is_tail), cfg_vmap(st0), cfg_nvm(st0))
     case Succ{+p} LTExpr{ELet{PPair{pa, pb}, val, body}}:
       +st0 = st
       low_go(p, env, st0, LTLetUnbox{pa, pb, low_unbox_pair(env, cfg_vmap(st0), val), body}, is_tail)
@@ -1293,10 +1244,8 @@ def low_go(fuel: Nat, +env: LowEnv, st: CfgSt, task: LowTask, +is_tail: Bool) ->
       +st0 = st
       t_next = Bool.pick(LowTask, U32.is_eq(um_get(env_kind(env), sym), 13), LTLetUnbox{pa, pb, low_unbox_pair(env, cfg_vmap(st0), val), body}, LTLetPat{PCtr{sym, [pa, pb]}, val, body})
       low_go(p, env, st0, t_next, is_tail)
-    case Succ{+p} LTExpr{ELet{pat, val, body}}:
-      low_go(p, env, st, LTLetPat{pat, val, body}, is_tail)
-    case Succ{+p} LTExpr{EIf{cond, ENum{1}, ENum{0}}}:
-      low_go(p, env, st, LTExpr{cond}, is_tail)
+    case Succ{+p} LTExpr{ELet{pat, val, body}}: low_go(p, env, st, LTLetPat{pat, val, body}, is_tail)
+    case Succ{+p} LTExpr{EIf{cond, ENum{1}, ENum{0}}}: low_go(p, env, st, LTExpr{cond}, is_tail)
     case Succ{+p} LTExpr{EIf{cond, ENum{0}, ENum{1}}}:
       +st1 = low_go(p, env, st, LTExpr{cond}, False{})
       low_emit_u32_intr1(st1, 21, cfg_res(st1))
@@ -1353,9 +1302,9 @@ def low_go(fuel: Nat, +env: LowEnv, st: CfgSt, task: LowTask, +is_tail: Bool) ->
       low_emit_ctor(st2, 6, [cfg_res(st1), cfg_res(st2)])
     case Succ{p} LTExpr{EArrNew{es}}:
       match es:
-        case Con{v, Con{ENum{len}, Nil{}}}:
+        case Con{v, Con{ENum{+len}, Nil{}}}:
           +st1 = low_go(p, env, st, LTExpr{v}, False{})
-          +st2 = low_emit_const(st1, low_const_log2(32n, len, 0))
+          +st2 = low_emit_const(st1, low_const_log2_go(32n, len, 0, U32.is_le(len, 1)))
           low_emit_arr_one(st2, 71, [cfg_res(st2), cfg_res(st1)])
         case Con{v, Con{len, Nil{}}}: low_go(p, env, st, LTExpr{EApp{EVar{env_sym(env, True{})}, [len, v]}}, is_tail)
         case _: low_emit_const(st, 0)
@@ -1406,8 +1355,7 @@ def low_mk_apply_fin(entries: List<&2, CloEntry>, res: List<&2, IrBlock> & List<
     Con{IrBlock{0, [ITag{2, 0}], TSwitch{2, Con{IrArm{38, 1}, arms}, 2}},
     Con{IrBlock{1, [ISink{0}, IConst{3, 0}, ICtor{4, 12, [1, 3]}], TRet{4}},
     Con{IrBlock{2, Nil{}, TFail{1}}, arm_blks}}}}
-def low_mk_apply_fn(+entries: List<&2, CloEntry>) -> IrFn:
-  low_mk_apply_fin(entries, low_mk_apply_arms(entries, 3, Nil{}, Nil{}))
+def low_mk_apply_fn(+entries: List<&2, CloEntry>) -> IrFn: low_mk_apply_fin(entries, low_mk_apply_arms(entries, 3, Nil{}, Nil{}))
 # Main Return Type & show_desc Builder
 type ShowInfo is Data:
   ShowInfo{is_pure: Bool, desc: List<&2, U32>, names: List<&2, String>}
@@ -1430,8 +1378,7 @@ def low_amp_build(es: List<&2, Expr>) -> Expr:
     case Nil{}: EUnit{}
     case Con{h, Nil{}}: h
     case Con{h, t}: EOp{5, h, low_amp_build(t)}
-def low_reassoc_amp(fuel: Nat, e: Expr) -> Expr:
-  low_amp_build(low_amp_spine(fuel, e, Nil{}))
+def low_reassoc_amp(fuel: Nat, e: Expr) -> Expr: low_amp_build(low_amp_spine(fuel, e, Nil{}))
 def low_last_expr(es: List<&2, Expr>, def_e: Expr) -> Expr:
   match es:
     case Nil{}: def_e

@@ -19,9 +19,7 @@ type IndentRes is Data:
 type LStep is Data:
   LDone{res: LexRes}
   LNext{s: String, stk: List<&2, U32>, bol: Bool, depth: U32, line: U32, rev: List<&2, Tok>, syms: SymTab}
-
 # Character & Table Helpers
-# -------------------------
 def lex_in(+c: U32, lo: U32, hi: U32) -> Bool: Bool.and(U32.is_ge(c, lo), U32.is_le(c, hi))
 def lex_is_digit(+c: U32) -> Bool: lex_in(c, 48, 57)
 def lex_is_hex(+c: U32) -> Bool: Bool.or(lex_is_digit(c), Bool.or(lex_in(c, 97, 102), lex_in(c, 65, 70)))
@@ -71,9 +69,7 @@ def lex_depth_delta(+u: U32, +d: U32) -> U32:
   op = Bool.or(U32.is_eq(u, 40), Bool.or(U32.is_eq(u, 91), U32.is_eq(u, 123)))
   cl = Bool.or(U32.is_eq(u, 41), Bool.or(U32.is_eq(u, 93), U32.is_eq(u, 125)))
   Bool.pick(U32, op, U32.add(d, 1), Bool.pick(U32, Bool.and(cl, U32.is_gt(d, 0)), U32.sub(d, 1), d))
-
 # Sub-Scanners (Pure Safe Structural Self-Recursion)
-# --------------------------------------------------
 def lex_skip_comment(s: String) -> String:
   match s:
     case SNil{}: SNil{}
@@ -108,14 +104,9 @@ def lex_scnum_go(s: String, go: Bool, prev: Char, +is_hex: Bool, +val: U32, +cnt
     case SCon{+c, t} True{}:
       +u = Char.to_u32(c)
       +ok = Bool.pick(Bool, is_hex, lex_is_hex(u), lex_is_digit(u))
-      base = Bool.pick(U32, is_hex, 16, 10)
-      dv = Bool.pick(U32, is_hex, lex_hex_val(u), U32.sub(u, 48))
-      val2 = Bool.pick(U32, ok, U32.add(U32.mul(val, base), dv), val)
-      cnt2 = Bool.pick(U32, ok, U32.add(cnt, 1), cnt)
-      lex_scnum_go(t, Bool.or(ok, U32.is_eq(u, 95)), c, is_hex, val2, cnt2)
-
+      val2 = Bool.pick(U32, ok, U32.add(U32.mul(val, Bool.pick(U32, is_hex, 16, 10)), Bool.pick(U32, is_hex, lex_hex_val(u), U32.sub(u, 48))), val)
+      lex_scnum_go(t, Bool.or(ok, U32.is_eq(u, 95)), c, is_hex, val2, Bool.pick(U32, ok, U32.add(cnt, 1), cnt))
 # IEEE-754 F32 Bits from Decimal
-# ------------------------------
 def lex_pow10(n: Nat, acc: U32) -> U32:
   match n:
     case 0n: acc
@@ -138,9 +129,7 @@ def lex_f32_bits_if(ip: U32, fp: U32, fc: U32, zero: Bool) -> U32:
       +den = lex_pow10(U32.to_nat(U32.min(fc, 6)), 1)
       lex_f32_run(40n, False{}, U32.add(U32.mul(ip, den), fp), den, 150)
 def lex_f32_bits(+ip: U32, +fp: U32, fc: U32) -> U32: lex_f32_bits_if(ip, fp, fc, Bool.and(U32.is_zero(ip), U32.is_zero(fp)))
-
 # Layout Helpers
-# --------------
 def lex_need_nl(rev: List<&2, Tok>) -> Bool:
   match rev:
     case Nil{}: False{}
@@ -166,13 +155,10 @@ def lex_dedent_all(stk: List<&2, U32>, +line: U32, rev: List<&2, Tok>) -> List<&
     case Nil{}: rev
     case Con{0, rest}: lex_dedent_all(rest, line, rev)
     case Con{_, rest}: lex_dedent_all(rest, line, Con{Tok{TkDedent{}, line}, rev})
-
 # Main Lexer Step & Loop
-# ----------------------
 def lex_eof(stk: List<&2, U32>, +line: U32, +rev: List<&2, Tok>, syms: SymTab) -> LexRes:
   rev1 = Bool.pick(List<&2, Tok>, lex_need_nl(rev), Con{Tok{TkNewline{}, line}, rev}, rev)
-  rev2 = lex_dedent_all(stk, line, rev1)
-  LexRes{b5k_list_rev(Tok, Con{Tok{TkEof{}, line}, rev2}), syms, ""}
+  LexRes{b5k_list_rev(Tok, Con{Tok{TkEof{}, line}, lex_dedent_all(stk, line, rev1)}), syms, ""}
 def lex_bol_ded(s: String, depth: U32, line: U32, syms: SymTab, ir: IndentRes) -> LStep:
   IndentRes{stk2, rev2} = ir
   LNext{s, stk2, False{}, depth, line, rev2, syms}
@@ -269,8 +255,7 @@ def lex_chunk(fuel: Nat, st: LStep) -> LStep:
   match fuel st:
     case _ LDone{res}: LDone{res}
     case 0n s: s
-    case 1n+p LNext{s, stk, bol, +depth, line, rev, syms}:
-      lex_chunk(p, lex_step_if(s, stk, depth, line, rev, syms, Bool.and(bol, U32.is_zero(depth))))
+    case 1n+p LNext{s, stk, bol, +depth, line, rev, syms}: lex_chunk(p, lex_step_if(s, stk, depth, line, rev, syms, Bool.and(bol, U32.is_zero(depth))))
 def lex_run(outer: Nat, st: LStep) -> LexRes:
   match outer st:
     case _ LDone{res}: res

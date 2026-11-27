@@ -1,11 +1,11 @@
 # bend5k/main.bend — Milestone 4 End-to-End Compiler Driver (-O0 / -O2)
 # =====================================================================
-# CLI: bend5k [-O0 | -O2 | --opt O0|O2 | --check-only] <src.bend> [<base.bend>] <out.o>
+# CLI: bend5k [-O0 | -O2 | --opt O0|O2 | --check-only | --manifest] <src.bend|manifest> [<base.bend>] <out.o>
 type B5kIoRes<-A: Data> is Data:
   B5kErr{msg: String}
   B5kOk{val: A}
 def b5k_die(msg: String) -> IO(Unit): IO.bind(Unit, Unit, IO.print_err(msg), u => IO.exit(1))
-def b5k_usage() -> IO(Unit): b5k_die("usage: bend5k [-O0|-O2|--opt O0|O2|--check-only] <src.bend> [<base.bend>] <out.o>")
+def b5k_usage() -> IO(Unit): b5k_die("usage: bend5k [-O0|-O2|--opt O0|O2|--check-only|--manifest] <src.bend|manifest> [<base.bend>] <out.o>")
 def b5k_close_res(-A: Data, f: File, r: B5kIoRes<A>) -> IO(B5kIoRes<A>): IO.bind(Unit, B5kIoRes<A>, File.close(f), u => IO.pure(B5kIoRes<A>, r))
 def b5k_close_got(-A: Data, tag: String, path: String, got: File & Result<&1, &1, U32 & String, A>) -> IO(B5kIoRes<A>):
   match got:
@@ -338,23 +338,57 @@ def b5k_run_src_k(is_o2: Bool, check_only: Bool, src_path: String, out_path: Str
     _ => b5k_die(ierr))
 def b5k_run_src(is_o2: Bool, check_only: Bool, src_path: String, out_path: String, +src2: String) -> IO(Unit):
   b5k_parse_bind(b5k_parse(src2, symtab_new()), bk => b5k_run_src_k(is_o2, check_only, src_path, out_path, src2, bk))
-def b5k_run_driver(is_o2: Bool, +check_only: Bool, +src_path: String, out_path: String) -> IO(Unit):
-  IO.bind(B5kIoRes<String>, Unit, b5k_read_file(src_path), r => b5k_io_bind(String, r, src => b5k_run_src(is_o2, check_only, src_path, out_path, String.reverse(String.reverse(src)))))
-def b5k_dispatch_pos(is_o2: Bool, check_only: Bool, a1: String, rest: List<&2, String>) -> IO(Unit):
+# Native Multi-File Manifest Loader (0 Python bundler, O(N) reverse-fold concat)
+def b5k_srev_app(s: String, acc: String) -> String:
+  match s:
+    case SNil{}: acc
+    case SCon{c, t}: b5k_srev_app(t, SCon{c, acc})
+def b5k_man_line(+dir: String, s: String, acc: List<&2, String>) -> List<&2, String>:
+  match s:
+    case SNil{}: acc
+    case SCon{Chr{10}, _}: acc
+    case SCon{Chr{13}, _}: acc
+    case SCon{Chr{35}, _}: acc
+    case other: Con{b5k_imp_full(dir, b5k_scan_fst(b5k_take_word(other, False{}, Chr{0}, SNil{}))), acc}
+def b5k_scan_man(fuel: Nat, +dir: String, +s: String, acc: List<&2, String>) -> List<&2, String>:
+  match fuel s:
+    case 0n _: acc
+    case _ SNil{}: acc
+    case 1n+p _: b5k_scan_man(p, dir, b5k_skip_line(s), b5k_man_line(dir, b5k_skip_sp(s), acc))
+def b5k_load_man(is_o2: Bool, check_only: Bool, +man_path: String, +out_path: String, paths: List<&2, String>, +acc: String) -> IO(Unit):
+  match paths:
+    case Nil{}:
+      src = Bool.pick(String, b5k_has_base_go(64n, acc), acc, "import Base\n" ++ acc)
+      b5k_run_src(is_o2, check_only, man_path, out_path, src)
+    case Con{p, rest}:
+      IO.bind(B5kIoRes<String>, Unit, b5k_read_file(p), r => b5k_io_bind(String, r, s =>
+        b5k_load_man(is_o2, check_only, man_path, out_path, rest, b5k_srev_app(String.reverse(s), SCon{Chr{10}, acc}))))
+def b5k_run_man_k(is_o2: Bool, check_only: Bool, +man_path: String, out_path: String, paths: List<&2, String>) -> IO(Unit):
+  match paths:
+    case Nil{}: b5k_die("manifest: no modules listed: " ++ man_path)
+    case xs: b5k_load_man(is_o2, check_only, man_path, out_path, xs, SNil{})
+def b5k_run_man(is_o2: Bool, check_only: Bool, +man_path: String, out_path: String, mtxt: String) -> IO(Unit):
+  b5k_run_man_k(is_o2, check_only, man_path, out_path, b5k_scan_man(U32.to_nat(256), b5k_dir_of(man_path), mtxt, Nil{}))
+def b5k_run_driver(is_o2: Bool, check_only: Bool, is_man: Bool, +src_path: String, out_path: String) -> IO(Unit):
+  match is_man:
+    case True{}: IO.bind(B5kIoRes<String>, Unit, b5k_read_file(src_path), r => b5k_io_bind(String, r, src => b5k_run_man(is_o2, check_only, src_path, out_path, String.reverse(String.reverse(src)))))
+    case False{}: IO.bind(B5kIoRes<String>, Unit, b5k_read_file(src_path), r => b5k_io_bind(String, r, src => b5k_run_src(is_o2, check_only, src_path, out_path, String.reverse(String.reverse(src)))))
+def b5k_dispatch_pos(is_o2: Bool, check_only: Bool, is_man: Bool, a1: String, rest: List<&2, String>) -> IO(Unit):
   match check_only rest:
-    case True{} Nil{}: b5k_run_driver(is_o2, True{}, a1, "")
-    case False{} Con{a2, Nil{}}: b5k_run_driver(is_o2, False{}, a1, String.reverse(String.reverse(a2)))
-    case False{} Con{_, Con{a3, Nil{}}}: b5k_run_driver(is_o2, False{}, a1, String.reverse(String.reverse(a3)))
+    case True{} Nil{}: b5k_run_driver(is_o2, True{}, is_man, a1, "")
+    case False{} Con{a2, Nil{}}: b5k_run_driver(is_o2, False{}, is_man, a1, String.reverse(String.reverse(a2)))
+    case False{} Con{_, Con{a3, Nil{}}}: b5k_run_driver(is_o2, False{}, is_man, a1, String.reverse(String.reverse(a3)))
     case _ _: b5k_usage()
-def b5k_parse_flags(fuel: Nat, +is_o2: Bool, +chk: Bool, args: List<&2, String>) -> IO(Unit):
+def b5k_parse_flags(fuel: Nat, +is_o2: Bool, +chk: Bool, +is_man: Bool, args: List<&2, String>) -> IO(Unit):
   match fuel args:
     case 1n++p Con{+s1, Con{+s2, +more}}:
-      b5k_if_io(b5k_str_eq(s1, "-O2"), _ => b5k_parse_flags(p, True{}, chk, Con{s2, more}),
-      _ => b5k_if_io(b5k_str_eq(s1, "-O0"), _ => b5k_parse_flags(p, False{}, chk, Con{s2, more}),
-      _ => b5k_if_io(b5k_str_eq(s1, "--check-only"), _ => b5k_parse_flags(p, is_o2, True{}, Con{s2, more}),
-      _ => b5k_if_io(b5k_str_eq(s1, "--opt"), _ => b5k_parse_flags(p, b5k_str_eq(s2, "O2"), chk, more),
-      _ => b5k_dispatch_pos(is_o2, chk, s1, Con{s2, more})))))
-    case 1n+_ Con{a1, Nil{}}: b5k_dispatch_pos(is_o2, chk, a1, Nil{})
+      b5k_if_io(b5k_str_eq(s1, "-O2"), _ => b5k_parse_flags(p, True{}, chk, is_man, Con{s2, more}),
+      _ => b5k_if_io(b5k_str_eq(s1, "-O0"), _ => b5k_parse_flags(p, False{}, chk, is_man, Con{s2, more}),
+      _ => b5k_if_io(b5k_str_eq(s1, "--check-only"), _ => b5k_parse_flags(p, is_o2, True{}, is_man, Con{s2, more}),
+      _ => b5k_if_io(b5k_str_eq(s1, "--manifest"), _ => b5k_parse_flags(p, is_o2, chk, True{}, Con{s2, more}),
+      _ => b5k_if_io(b5k_str_eq(s1, "--opt"), _ => b5k_parse_flags(p, b5k_str_eq(s2, "O2"), chk, is_man, more),
+      _ => b5k_dispatch_pos(is_o2, chk, is_man, s1, Con{s2, more}))))))
+    case 1n+_ Con{a1, Nil{}}: b5k_dispatch_pos(is_o2, chk, is_man, a1, Nil{})
     case _ _: b5k_usage()
 def b5k_clone_args(xs: List<String>) -> List<&2, String>:
   match xs:
@@ -363,5 +397,5 @@ def b5k_clone_args(xs: List<String>) -> List<&2, String>:
 def b5k_main_args(argv: List<String>) -> IO(Unit):
   match argv:
     case Nil{}: b5k_usage()
-    case Con{_, rest}: b5k_parse_flags(16n, False{}, False{}, b5k_clone_args(rest))
+    case Con{_, rest}: b5k_parse_flags(16n, False{}, False{}, False{}, b5k_clone_args(rest))
 def main() -> IO(Unit): IO.bind(List<String>, Unit, IO.args(), argv => b5k_main_args(argv))

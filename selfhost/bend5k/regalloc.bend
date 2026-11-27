@@ -94,6 +94,7 @@ def ra_scan_op(+vd: Nat, cd: Nat, +track_f: Bool, +ib: U32, st: RaScan, op: IrOp
     case ILoad{+d, +b, _}: ra_rec(cd, 0, ra_touch(vd, ib, ra_touch(vd, ib, ivs, b, idx), d, idx), bs, cb, nc, rb, nr, es, f32s, ra_mark_b2(vd, track_f, d, b, nf32s), hs, cvals, idx)
     case IStore{+b, _, v}: ra_rec(cd, 0, ra_touch(vd, ib, ra_touch(vd, ib, ivs, b, idx), v, idx), bs, cb, nc, rb, nr, es, f32s, ra_mark_b(vd, track_f, b, nf32s), hs, cvals, idx)
     case IMutField{+o, _, v}: ra_rec(cd, 1, ra_touch(vd, ib, ra_touch(vd, ib, ivs, o, idx), v, idx), bs, cb, nc, rb, nr, es, f32s, ra_mark_b(vd, track_f, o, nf32s), hs, cvals, idx)
+    case ILut{+d, +iv, _, _}: ra_rec(cd, 0, ra_touch(vd, ib, ra_touch(vd, ib, ivs, iv, idx), d, idx), bs, cb, nc, rb, nr, es, f32s, ra_mark_b2(vd, track_f, d, iv, nf32s), hs, cvals, idx)
     case IFail{_}: ra_rec(cd, 2, ivs, bs, cb, nc, rb, nr, es, f32s, nf32s, hs, cvals, idx)
 def ra_scan_ops(+vd: Nat, +cd: Nat, +track_f: Bool, +ib: U32, ops: List<&2, IrOp>, st: RaScan) -> RaScan:
   match ops:
@@ -357,12 +358,15 @@ def ra_v4_split(xs: List<&2, RaIv>, p0: List<&2, RaIv>, p1: List<&2, RaIv>) -> L
     case Nil{}: (p0, p1)
     case Con{RaIv{v, 0, e, u, lu, sn}, t}: ra_v4_split(t, Con{RaIv{v, 0, e, u, lu, sn}, p0}, p1)
     case Con{iv, t}: ra_v4_split(t, p0, Con{iv, p1})
+def ra_un_xmm3(-R: Type, st: RaXmmSt, k: RaVec<U32> -> List<&2, RaSlot> -> List<&2, RaIv> -> R) -> R:
+  RaXmmSt{rm, xp, ov} = st
+  k(rm, xp, ov)
 def b5k_ra_v4_parts(+vd: Nat, +hints: RaVec<U32>, pts: RaParts) -> RegAllocRes:
   RaParts{_, xm, nc} = pts
   ra_un_pair(List<&2, RaIv>, List<&2, RaIv>, RegAllocRes, ra_v4_split(b5k_list_app(RaIv, xm, nc), Nil{}, Nil{}), p0 => p1 =>
-    ra_un_xmm(RegAllocRes, ra_assign_xmm_ov(vd, hints, ra_msort(20n, p0), RaXmmSt{RVEmpty{}, ra_mk_slots([22, 23, 24, 25, 26, 27, 28]), Nil{}}), rm0 => ov0 =>
-      ra_un_xmm(RegAllocRes, ra_assign_xmm_ov(vd, hints, ra_msort(20n, p1), RaXmmSt{rm0, ra_mk_slots([29, 30, 31, 32, 33, 34, 35]), Nil{}}), rm1 => ov1 =>
-        ra_spill_list(vd, ra_msort(20n, b5k_list_app(RaIv, ov0, ov1)), RaEvictRes{rm1, Nil{}, RaSpills{0, RVEmpty{}, RVEmpty{}}}))))
+    ra_un_xmm3(RegAllocRes, ra_assign_xmm_ov(vd, hints, ra_msort(20n, p0), RaXmmSt{RVEmpty{}, ra_mk_slots([22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]), Nil{}}), rm0 => xp0 => ov0 =>
+      ra_un_xmm(RegAllocRes, ra_assign_xmm_ov(vd, hints, ra_msort(20n, p1), RaXmmSt{rm0, xp0, ov0}), rm1 => ov1 =>
+        ra_spill_list(vd, ra_msort(20n, ov1), RaEvictRes{rm1, Nil{}, RaSpills{0, RVEmpty{}, RVEmpty{}}}))))
 def b5k_ra_v4_scan(+vd: Nat, cd: Nat, arity: U32, tot: U32, sc: RaScan) -> RegAllocRes:
   RaScan{ivs, _, cb, _, rb, _, es, f32s, nf32s, +hints, cvals, _} = sc
   b5k_ra_v4_parts(vd, hints, ra_collect_ivs(vd, cd, True{}, True{}, arity, U32.to_nat(tot), 0, ivs, cvals, cb, rb, es, f32s, nf32s, RaParts{Nil{}, Nil{}, Nil{}}))
@@ -373,7 +377,7 @@ def b5k_regalloc_v4(fn: IrFn) -> RegAllocRes:
   +cd = ra_cd_of(U32.add(U32.shrn(ra_blks_info(blocks, 16), 3n), 2))
   b5k_ra_v4_scan(vd, cd, arity, tot, ra_scan_blks(vd, cd, True{}, fid, blocks, RaScan{ra_init_params(vd, U32.to_nat(U32.sub(arity, 1)), 1, RVEmpty{}), RVEmpty{}, RVEmpty{}, 0, RVEmpty{}, 0, Nil{}, RVEmpty{}, RVEmpty{}, RVEmpty{}, RVEmpty{}, 1}))
 # Part 2: Typed X64Inst Peephole Optimizer (Short-Circuiting)
-def peep_is_caller_scratch(+r: U32) -> Bool: Bool.or(Bool.or(U32.is_eq(r, 1), U32.is_eq(r, 2)), Bool.or(Bool.or(U32.is_eq(r, 6), U32.is_eq(r, 7)), Bool.and(U32.is_ge(r, 8), U32.is_le(r, 11))))
+def peep_is_caller_scratch(+r: U32) -> Bool: Bool.or(Bool.or(U32.is_eq(r, 6), U32.is_eq(r, 7)), Bool.and(U32.is_ge(r, 8), U32.is_le(r, 11)))
 def peep_reg_use(+r: U32, inst: X64Inst) -> U32:
   match inst:
     case XMovRI32{d, _}: Bool.to_u32(U32.is_eq(d, r))

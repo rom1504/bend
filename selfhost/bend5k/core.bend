@@ -211,6 +211,7 @@ type IrOp is Data:
   ILoad{dst: U32, base: U32, off: U32}
   IStore{base: U32, off: U32, val: U32}
   IMutField{obj: U32, idx: U32, val: U32}
+  ILut{dst: U32, idx: U32, def_val: U32, vals: List<&2, U32>}
   IFail{code: U32}
 type IrSwitchArm is Data:
   IrArm{tag: U32, target: U32}

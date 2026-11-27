@@ -48,7 +48,7 @@ def elf_inst_len(inst: X64Inst) -> U32:
     case XXmmLoad{+dst, +base, disp}: U32.add(Bool.pick(U32, U32.is_ge(dst, 32), 5, U32.add(Bool.pick(U32, U32.is_ge(dst, 16), 3, 4), Bool.pick(U32, elf_is_hi(U32.and(dst, 15), base), 1, 0))), elf_mem_extra(base, disp))
     case XXmmStore{+base, disp, +src}: U32.add(Bool.pick(U32, U32.is_ge(src, 48), 5, U32.add(Bool.pick(U32, Bool.and(U32.is_ge(src, 16), U32.is_lt(src, 32)), 3, 4), Bool.pick(U32, elf_is_hi(U32.and(src, 15), base), 1, 0))), elf_mem_extra(base, disp))
     case XCvt{op, dst, src}: Bool.pick(U32, Bool.or(U32.is_lt(op, 2), elf_is_hi(dst, src)), 5, 4)
-    case XExtReloc{k, _, _}: Bool.pick(U32, U32.is_eq(k, 2), 7, 0)
+    case XExtReloc{+k, _, _}: Bool.pick(U32, U32.is_eq(k, 2), 7, Bool.pick(U32, U32.is_eq(k, 3), 3, 0))
     case _: 3
 def elf_lbl_key(+id: U32) -> U32: Bool.pick(U32, U32.is_ge(id, 2147483648), U32.add(U32.sub(id, 2147483648), 131072), id)
 def elf_not_flag_read(xs: List<&2, X64Inst>) -> Bool:
@@ -288,6 +288,7 @@ def elf_emit_inst_rev(inst: X64Inst, +rev: List<&2, U32>) -> List<&2, U32>:
     case XXmmLoad{+dst, +base, +disp}: Bool.pick(List<&2, U32>, U32.is_ge(dst, 32), elf_emit_vex_mem(Bool.pick(U32, U32.is_ge(dst, 48), 2, 1), Bool.pick(U32, U32.is_ge(dst, 48), 1, 0), Bool.pick(U32, U32.is_ge(dst, 48), 24, 16), U32.and(dst, 15), base, disp, rev), elf_emit_xmm_mem(Bool.pick(U32, U32.is_ge(dst, 16), 0, 243), 16, U32.and(dst, 15), base, disp, rev))
     case XXmmStore{+base, +disp, +src}: Bool.pick(List<&2, U32>, U32.is_ge(src, 48), elf_emit_vex_mem(1, 0, 17, U32.and(src, 15), base, disp, rev), elf_emit_xmm_mem(Bool.pick(U32, U32.is_ge(src, 32), 243, Bool.pick(U32, U32.is_ge(src, 16), 0, 102)), Bool.pick(U32, U32.is_ge(src, 16), 17, 214), U32.and(src, 15), base, disp, rev))
     case XCvt{op, dst, src}: elf_emit_cvt(op, dst, src, rev)
+    case XExtReloc{3, _, _}: e_b3(rev, 139, 4, 136)
     case _: rev
 def elf_emit_inst_bytes_go(+inst: X64Inst, off: U32, rev: List<&2, U32>) -> ByteBuf: ByteBuf{U32.add(off, elf_inst_len(inst)), elf_emit_inst_rev(inst, rev)}
 def elf_emit_lut_ld(is_xmm: Bool, +dst: U32, +base: U32, +idx: U32, +rev: List<&2, U32>) -> List<&2, U32>:

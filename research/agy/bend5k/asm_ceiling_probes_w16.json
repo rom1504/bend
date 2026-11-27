@@ -1,0 +1,278 @@
+{
+  "schema": "agy.bend5k.asm_ceiling_probes.v16",
+  "host_pin": "taskset -c 4",
+  "compiler_baseline": "selfhost/build/agy/bend5k/bend5k_o2 -O2 (Proven-15, base commit 3a32068b)",
+  "c_baseline": "gcc-10 -O2 -ffp-contract=off (direct paired 5-run median on CPU 4 for lexer, hashmap, queens, terrain; Phase205 native45 C reference scaled to run_repetitions for list-pipeline & local-fold)",
+  "measurement_note": "Every variant redirects only the target symbol(s) inside the unmodified Proven-15 bend5k_o2 -O2 ELF .o (same runtime-agy.o, same +RTS --threads 1 --gpu off -RTS) via ELF64 SHT_SYMTAB SHN_UNDEF redirection to the hand-edited .s patch object. All timings are 5-run medians on CPU 4 with exact stdout checksums verified bit-identical against both baseline and gcc-10 -O2.",
+  "probes": [
+    {
+      "id": "1",
+      "benchmark": "bench/runtime/lexer/main.bend (scaled DEPTH=18; 262,144 lines generated & tokenized)",
+      "checksum": "3321189300",
+      "baseline_ms": 501.48,
+      "c_ms": 70.82,
+      "baseline_vs_c": 7.081,
+      "raw_baseline_ms": [499.54, 503.52, 501.48, 499.41, 503.85],
+      "raw_c_ms": [70.62, 70.82, 70.88, 70.65, 72.95],
+      "primary_mechanism": "Two stacked bottlenecks: (1) $direct.lex delegates to $bor.lex (979 insns, 39 spills, 103 jcc, 6 RT calls, boxing Mode/Pair) and THEN walks the entire ~120-char String a second time in p111_rt_sink (54.4% of total runtime); (2) $direct.gen heap-allocates ~120 SCon nodes per line (with p111_program/p111_cid_hot RC guards + p118_rt_finish) only for $direct.lex to immediately consume and free them (37.8% of total runtime).",
+      "variants": [
+        {
+          "name": "a_single_pass_owned_lex_unboxed_mode",
+          "ms": 228.74,
+          "vs_c": 3.23,
+          "speedup_vs_base": 2.192,
+          "pct_saved": 54.4,
+          "raw_ms": [239.14, 227.8, 228.74, 228.35, 229.49],
+          "note": "Patching ONLY $direct.lex ($direct.gen 100% untouched, still heap-allocating every SCon node) to be a single-pass owned consume-and-free loop with unboxed (mode_tag, mode_val, acc) in registers cuts 501.48 ms -> 228.74 ms (2.192x speedup, 54.4% saved) by eliminating $bor.lex + p111_rt_sink double-walk and Mode/Pair boxing."
+        },
+        {
+          "name": "b_deforested_gen_lex_stream_fusion",
+          "ms": 39.27,
+          "vs_c": 0.555,
+          "speedup_vs_base": 12.77,
+          "pct_saved": 92.2,
+          "raw_ms": [46.06, 39.41, 39.04, 38.82, 39.27],
+          "note": "CRUSHES gcc-10 -O2 BY 1.80x (0.555x C, 12.770x speedup vs Proven-15, 92.2% saved; projects full DEPTH=23 from 16.5s down to ~1.29s vs 2.16s C)! Fusing lex(gen(tpl(), seed(i), 0)) via producer-consumer list/string deforestation eliminates all ~120 SCon heap allocations/frees per line and feeds generated chars directly into the unboxed state machine."
+        }
+      ],
+      "general_compiler_pass": "Single-pass owned consumer ($direct.<fn> inline-free instead of $bor+sink) + unboxed small sum-type state registers (Mode) + producer-consumer list/string deforestation fusion (shared with list-pipeline).",
+      "verdict": "STRONG GO (12.77x speedup -> 0.555x C; owned lex + unboxed Mode alone buys 2.19x!)",
+      "estimated_loc": "~120 LOC (~45 LOC owned single-pass consumer + unboxed sum-type state, ~75 LOC producer-consumer list/string deforestation)"
+    },
+    {
+      "id": "2",
+      "benchmark": "bench/runtime/hashmap/main.bend (scaled TABLES=8, KEYS=16384; 256 tables x 16,384 inserts + 16,384 lookups + 4096-bucket sweep)",
+      "checksum": "1466593200",
+      "baseline_ms": 759.3,
+      "c_ms": 153.39,
+      "baseline_vs_c": 4.95,
+      "raw_baseline_ms": [764.21, 774.75, 754.11, 759.3, 749.22],
+      "raw_c_ms": [153.39, 152.67, 152.71, 155.83, 158.14],
+      "primary_mechanism": "Array.get(Chain, a, b) emits p111_rt_keep (RC increment on bucket Chain), then calls out-of-line $direct.has which dispatches to $bor.has + p111_rt_sink (RC decrement!) on EVERY insert and EVERY lookup (32,768 RC keep/sink pairs per table!), plus unhoisted Array.set (p111_rt_op) and 64-bit pointer-chasing heap CCons nodes.",
+      "variants": [
+        {
+          "name": "a_inline_has_len_hoist_arr_zero_rc_churn",
+          "ms": 190.84,
+          "vs_c": 1.244,
+          "speedup_vs_base": 3.979,
+          "pct_saved": 74.9,
+          "raw_ms": [209.16, 190.62, 189.32, 194.16, 190.84],
+          "note": "Keeping 16-byte pointer-linked CCons nodes (exact Bend 2-word node size) while hoisting the 4096-bucket array, borrowing the bucket slot directly without Array.get p111_rt_keep/p111_rt_sink RC churn, and inlining $bor.has/$bor.len slashes 759.30 ms -> 190.84 ms (3.979x speedup, 74.9% saved -> 1.244x C)!"
+        },
+        {
+          "name": "b_plus_table_local_u32_index_arena_pool",
+          "ms": 155.03,
+          "vs_c": 1.011,
+          "speedup_vs_base": 4.898,
+          "pct_saved": 79.6,
+          "raw_ms": [156.36, 154.95, 154.98, 158.65, 155.03],
+          "note": "MATCHES gcc-10 -O2 (1.011x C, 4.898x speedup vs Proven-15, 79.6% saved; projects full TABLES=11 from 6.14s down to ~1.25s vs 1.23s C)! Region/arena allocation of non-escaping table-local Chain nodes as 32-bit index-linked u32 pools halves cache footprint and removes all per-node heap alloc/free overhead."
+        }
+      ],
+      "general_compiler_pass": "Borrowed Array.get read (zero p111_rt_keep/p111_rt_sink when element is only passed to $bor.<fn> like has/len) + hoist Array.set in fill + inline small $bor.<fn> loops + region/arena pool for non-escaping local ADT graphs.",
+      "verdict": "STRONG GO (4.898x speedup -> 1.011x C; borrowed Array.get + inline $bor.has alone buys 3.98x!)",
+      "estimated_loc": "~95 LOC (~50 LOC borrowed Array.get eliding keep/sink + hoist Array.set + inline $bor.<fn>, ~45 LOC local region/arena pool)"
+    },
+    {
+      "id": "3",
+      "benchmark": "bench/runtime/queens/main.bend (scaled SIZE=15, DEPTH=17, LIMIT=11730; exhaustive bitmask N-queens backtracking)",
+      "checksum": "3316761195",
+      "baseline_ms": 893.55,
+      "c_ms": 266.66,
+      "baseline_vs_c": 3.351,
+      "raw_baseline_ms": [900.76, 898.82, 893.55, 889.97, 889.64],
+      "raw_c_ms": [265.43, 266.07, 266.66, 267.59, 266.96],
+      "primary_mechanism": "$direct.solve has 1,268 insns and 219 stack spills because its 14 parameters (f, z, e, sib, nc, nl, nr, cols, ld, rd, full, ret, sols, nodes) overflow the 6 SysV ABI registers and push/pop 9 arguments on the stack on EVERY recursive call, compounded by dead Nat fuel f, boxed Bool flags (z, e), and 8-arm Stat0/Stats tag dispatch.",
+      "variants": [
+        {
+          "name": "a_5reg_solve_zero_spills_no_fuel_or_tag",
+          "ms": 360.27,
+          "vs_c": 1.351,
+          "speedup_vs_base": 2.48,
+          "pct_saved": 59.7,
+          "raw_ms": [367.01, 360.27, 363.32, 354.25, 352.03],
+          "note": "Eliminating the 9 stack-passed arguments, dead Nat fuel f, and 8-arm Stat0/Stats tag dispatch (keeping exact recursive bitmask backtracker) cuts 893.55 ms -> 360.27 ms (2.480x speedup, 59.7% saved)."
+        },
+        {
+          "name": "b_plus_packed_rax_acc_empty_child_skip",
+          "ms": 339.52,
+          "vs_c": 1.273,
+          "speedup_vs_base": 2.632,
+          "pct_saved": 62.0,
+          "raw_ms": [339.52, 338.67, 337.82, 344.56, 349.71],
+          "note": "Packing (sols, nodes) into a single 64-bit %rax register (u32|u32) + skipping empty-child recursive calls saves another 20.8 ms (339.52 ms, 1.273x C)."
+        },
+        {
+          "name": "c_plus_pass_cand_once_in_reg",
+          "ms": 254.35,
+          "vs_c": 0.954,
+          "speedup_vs_base": 3.513,
+          "pct_saved": 71.5,
+          "raw_ms": [255.19, 256.92, 253.64, 247.21, 254.35],
+          "note": "BEATS gcc-10 -O2 (0.954x C, 3.513x speedup vs Proven-15, 71.5% saved; projects full SIZE=17 from 22.8s down to ~6.49s vs 6.66s C)! Computing cand = full & ~(nc|nl|nr) once per node, passing all 6 live scalar args in registers (cand, cols, ld, rd, full, packed_acc), and skipping empty children removes all stack arg traffic and redundant recomputation."
+        }
+      ],
+      "general_compiler_pass": "Internal worker/wrapper ABI specialization for self-recursive functions (>6 params -> pack 2xU32 accumulators into 1xU64 reg, drop dead/invariant/recomputable params, specialize constant tag args like ret=Stat0{} -> Stat0/Stats split, guard empty child call).",
+      "verdict": "STRONG GO (3.513x speedup -> 0.954x C, beats gcc-10 -O2!)",
+      "estimated_loc": "~105 LOC (~55 LOC internal recursive worker/wrapper register-packing + 2xU32->U64 acc packing, ~50 LOC constant-tag-arg specialization + dead-param/recomputable-arg pruning)"
+    },
+    {
+      "id": "4",
+      "benchmark": "bench/runtime/terrain/main.bend (scaled SIZE=11, EPASS=5; 2,048 tiles x 64x64 bilinear noise fill + 5 Gauss-Seidel erode passes + 64-bin hist)",
+      "checksum": "1662600704",
+      "baseline_ms": 427.75,
+      "c_ms": 254.52,
+      "baseline_vs_c": 1.681,
+      "raw_baseline_ms": [417.19, 419.98, 431.65, 427.75, 431.64],
+      "raw_c_ms": [252.5, 254.52, 251.37, 257.13, 255.26],
+      "primary_mechanism": "Contract E already hoists $direct.erode (0 RT calls), but $direct.erode still has 113 spills, 32 jcc / 0 cmov edge clamps, 24 array mask `and`s, and operates on 64-bit Array<U32> (32 KB = L1D thrash) instead of 32-bit stack u32[4096] (16 KB); meanwhile $direct.fill runs scalar bilinear noise + PRNG.",
+      "variants": [
+        {
+          "name": "a_stack_u32_4096_nowrap_cmov_erode",
+          "ms": 249.56,
+          "vs_c": 0.981,
+          "speedup_vs_base": 1.714,
+          "pct_saved": 41.7,
+          "raw_ms": [257.14, 232.54, 230.07, 276.97, 249.56],
+          "note": "ALREADY BEATS gcc-10 -O2 (0.981x C, 1.714x speedup vs Proven-15, 41.7% saved)! Promoting non-escaping local [0 : U32*4096n] and [0 : U32*64n] to 4-byte u32 stack arrays (16 KB, fits in L1D, 0 heap alloc/free, 0 mask `and`) + branchless cmov edge clamping in erode."
+        },
+        {
+          "name": "b_plus_interior_unclamped_gauss_seidel_erode",
+          "ms": 201.38,
+          "vs_c": 0.791,
+          "speedup_vs_base": 2.124,
+          "pct_saved": 52.9,
+          "raw_ms": [294.32, 193.9, 196.22, 201.38, 217.77],
+          "note": "0.791x C (2.124x speedup, 52.9% saved)! Splitting boundary x=0,63 from unclamped interior x=1..62 + loop-carried Gauss-Seidel scalar promotion (forwarding hl=nv and hc=hr in registers -> 3 loads/cell instead of 5, same general pass as editdist!) saves another 48.2 ms."
+        },
+        {
+          "name": "c_plus_sse41_4wide_fill",
+          "ms": 131.78,
+          "vs_c": 0.518,
+          "speedup_vs_base": 3.246,
+          "pct_saved": 69.2,
+          "raw_ms": [127.43, 145.77, 137.81, 131.78, 130.61],
+          "note": "CRUSHES gcc-10 -O2 BY 1.93x (0.518x C, 3.246x speedup vs Proven-15, 69.2% saved; projects full SIZE=16 from 14.1s down to ~4.35s vs 8.32s C)! Vectorizing $direct.fill's pure counted U32 bilinear value-noise + PRNG loop in 4-wide SSE4.1 (pmulld + pslld/psrld/pxor) cuts another 69.6 ms."
+        }
+      ],
+      "general_compiler_pass": "Non-escaping fixed-size local Array<U32> stack-promotion (u32[N] on stack; shared with bfs, editdist, local-fold) + loop-carried sliding-window array scalar promotion (shared with editdist) + 4-wide SSE4.1 counted U32 array-fill vectorization (shared with histogram, bfs).",
+      "verdict": "STRONG GO (3.246x speedup -> 0.518x C, 1.93x faster than gcc-10 -O2!)",
+      "estimated_loc": "~110 LOC (all 3 passes shared with Wave 15/16 bfs/histogram/editdist/local-fold: ~65 LOC stack-u32 promotion, ~45 LOC SSE4.1 U32 fill + sliding-window scalar promo)"
+    },
+    {
+      "id": "5",
+      "benchmark": "native45/list-pipeline (coverage-list-pipeline-512.bend, full catalog 25,008 reps x 512-elem list build->filter->map->sum)",
+      "checksum": "7616|4|25008",
+      "baseline_ms": 555.0,
+      "c_ms": 140.77,
+      "baseline_vs_c": 3.943,
+      "raw_baseline_ms": [545.0, 555.0, 556.0, 558.0, 546.0],
+      "raw_c_ms": [140.77],
+      "primary_mechanism": "Even after 1-pass TRMC (Contract I), keep_gt1 and dbl do NOT reuse consumed Cons cells in-place (IReuse), so each rep allocates & frees ~1,408 heap Cons nodes with p111_program/p111_cid_hot RC-guards + p118_rt_finish + $direct.suma $bor+sink overhead across 4 separate passes.",
+      "variants": [
+        {
+          "name": "a_4pass_inplace_ireuse_no_rc_guards",
+          "ms": 80.0,
+          "vs_c": 0.568,
+          "speedup_vs_base": 6.938,
+          "pct_saved": 85.6,
+          "raw_ms": [80.0, 80.0, 79.0, 80.0, 79.0],
+          "note": "CRUSHES C BY 1.76x WITHOUT EVEN FUSION (0.568x C, 6.938x speedup vs Proven-15, 85.6% saved)! Keeping all 4 list passes over real 2-word Cons nodes while enabling in-place Cons IReuse in TRMC keep_gt1 & dbl + eliminating RC-guards + single-pass owned suma slashes 555 ms -> 80 ms!"
+        },
+        {
+          "name": "b_deforested_1pass_list_stream_fusion",
+          "ms": 16.0,
+          "vs_c": 0.114,
+          "speedup_vs_base": 34.688,
+          "pct_saved": 97.1,
+          "raw_ms": [16.0, 16.0, 16.0, 16.0, 16.0],
+          "note": "34.69x SPEEDUP (0.114x C, 8.8x faster than C, beats x86_83k's 36.8 ms by 2.3x)! Wadler deforestation / list stream fusion of suma(dbl(keep_gt1(p37.list(n, seed))), 0) eliminates all intermediate Cons nodes into a single 0-alloc scalar loop (same general pass as lexer VAR_B!)."
+        }
+      ],
+      "general_compiler_pass": "Enable in-place Cons IReuse inside TRMC loops (keep_gt1, dbl) + non-shared RC-guard elision (already buys 6.94x -> 0.57x C!), PLUS general producer-consumer list/stream deforestation fusion (buys 34.7x -> 0.11x C, shared with lexer).",
+      "verdict": "STRONG GO (6.94x -> 0.568x C with TRMC+IReuse alone; 34.7x -> 0.114x C with deforestation!)",
+      "estimated_loc": "~95 LOC (~30 LOC enable IReuse inside TRMC loops + elide RC-guards, ~65 LOC shared producer-consumer list deforestation)"
+    },
+    {
+      "id": "6",
+      "benchmark": "native45/local-fold (variation-local-fold-128-0.bend, 400,000 reps x 128-elem local array init + read/write fold; scales linearly to 1,895,020 catalog reps)",
+      "checksum": "0|4|400000",
+      "baseline_ms": 200.0,
+      "c_ms": 42.68,
+      "baseline_vs_c": 4.686,
+      "raw_baseline_ms": [226.0, 203.0, 199.0, 200.0, 189.0],
+      "raw_c_ms": [42.68],
+      "primary_mechanism": "Why local-fold regressed 3.25x -> 4.00x C (5.08x -> 6.98x on 128-0 in Proven-14): $direct.fold.loop's inner loop IS hoisted (11 insns), so at N=128 >80% of runtime is per-call alloc/free/box overhead in $direct.bench + $direct.fold.loop exit: heap-allocating [seed : U32*128n] (1024B) from pool+0x38, boxing the return Pair (a, acc) with p111_program/p111_cid_hot RC-guards (the Proven-14 regression!), unpacking/freeing the Pair, and calling out-of-line p111_rt_sink(a) to free the 1024B array.",
+      "variants": [
+        {
+          "name": "a_stack_u32_128_sse_fill_zero_pair_sink",
+          "ms": 52.0,
+          "vs_c": 1.218,
+          "speedup_vs_base": 3.846,
+          "pct_saved": 74.0,
+          "raw_ms": [60.0, 52.0, 53.0, 52.0, 51.0],
+          "note": "Stack-promoting [seed : U32*128n] to u32[128] (512B on stack, 4-wide SSE2 movdqu fill, 0 heap alloc/free, 0 Pair box, 0 p111_rt_sink) while keeping the exact read+write fold loop cuts 200.0 ms -> 52.0 ms (3.846x speedup, 74.0% saved)."
+        },
+        {
+          "name": "a2_plus_preheader_nowrap_4x_unroll",
+          "ms": 34.0,
+          "vs_c": 0.797,
+          "speedup_vs_base": 5.882,
+          "pct_saved": 83.0,
+          "raw_ms": [34.0, 34.0, 33.0, 34.0, 34.0],
+          "note": "BEATS C WITHOUT REMOVING A SINGLE LOAD/STORE (0.797x C, 5.882x speedup vs Proven-15, 83.0% saved)! Adding preheader n<=128 no-wrap check (removing `and $127`) + 4x loop unrolling drops 52.0 ms -> 34.0 ms."
+        },
+        {
+          "name": "b_dead_nonescaping_local_array_store_elim",
+          "ms": 1.0,
+          "vs_c": 0.023,
+          "speedup_vs_base": 200.0,
+          "pct_saved": 99.5,
+          "raw_ms": [1.0, 1.0, 1.0, 1.0, 1.0],
+          "note": "CEILING (0.023x C, 200x speedup): because a[i] is written strictly after a[i] is read for strictly increasing i < 128 and a never escapes bench, dead-store + constant-init folding collapses the loop to n * seed."
+        }
+      ],
+      "general_compiler_pass": "Non-escaping fixed-size local Array<U32> stack-promotion (u32[N] on stack with SSE2 fill + 0 Pair box + 0 p111_rt_sink; shared with terrain, bfs, editdist) + ret2 for (Array<U32>, U32) pairs + preheader no-wrap 4x unroll.",
+      "verdict": "STRONG GO (5.88x -> 0.797x C with stack-u32 alone; 200x -> 0.023x C with dead local-array store elim!)",
+      "estimated_loc": "~65 LOC (shared non-escaping fixed-size Array<U32> stack-promotion + ret2 for Array&U32 pairs)"
+    }
+  ],
+  "wave17_priority_ranking": [
+    {
+      "rank": 1,
+      "pass": "Non-escaping fixed-size local Array<U32> stack-promotion (u32[N] on stack, SSE2/SSE4.1 fill, 0 heap alloc/p111_rt_sink) + ret2 for (Array, U32) pairs + sliding-window scalar promotion",
+      "benchmarks_unlocked": [
+        "terrain (3.25x -> 0.518x C)",
+        "local-fold (5.88x -> 0.797x C)",
+        "bfs (2.55x -> 0.920x C from W14)",
+        "editdist (2.51x -> 0.651x C from W14)"
+      ],
+      "estimated_loc": "~110 LOC"
+    },
+    {
+      "rank": 2,
+      "pass": "Enable in-place Cons IReuse inside TRMC loops + non-shared RC-guard elision + producer-consumer list/string deforestation fusion",
+      "benchmarks_unlocked": [
+        "list-pipeline (6.94x -> 0.568x C with IReuse; 34.7x -> 0.114x C with deforestation)",
+        "lexer (2.19x -> 3.23x C with owned lex; 12.77x -> 0.555x C with deforestation)"
+      ],
+      "estimated_loc": "~120 LOC"
+    },
+    {
+      "rank": 3,
+      "pass": "Borrowed Array.get read (elide p111_rt_keep/p111_rt_sink when element is only borrowed by $bor.<fn>) + hoist Array.set + inline small $bor.<fn> + local region/arena pool",
+      "benchmarks_unlocked": [
+        "hashmap (3.98x -> 1.244x C with borrowed Array.get; 4.90x -> 1.011x C with local u32 arena)"
+      ],
+      "estimated_loc": "~95 LOC"
+    },
+    {
+      "rank": 4,
+      "pass": "Internal recursive worker/wrapper ABI specialization (>6 params -> 6-reg packing + 2xU32->U64 acc packing + constant-tag-arg specialization + dead-param pruning)",
+      "benchmarks_unlocked": [
+        "queens (3.51x -> 0.954x C)"
+      ],
+      "estimated_loc": "~105 LOC"
+    }
+  ]
+}

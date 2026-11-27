@@ -38,13 +38,17 @@ x86-64 ELF `.o` output from `bend5k`:
     `list-pipeline` (`$direct.dbl`, `$direct.keep_gt1`) AND a synthetic holdout
     `List.map` loop compile to a single-pass self-TCO loop (backward branch
     present) with 0 recursive `call` instructions.
+  - Contract J (`Conformance Gate`, STRICT PASS): verifies `bend5k --check-only`
+    rejects ill-typed `wrong(x: U32) -> Bool: x` and
+    `bad_list(xs: List<&2, U32>) -> List<&2, Bool>: xs` (and emits NO `.o`
+    under `-O2`) while accepting their valid neighbors.
   - Harder Generality Matrix (`[GEN-MATRIX]`, 10 cells): 5 Contract E cells +
     6-arg borrow-walk (`arity=6`), 2-arg tree-zip borrow, nested-match reuse,
     holdout pure-F32 `$v4` SIMD kernel, holdout 1-pass TRMC `List.map`.
 
-Run with `--self-test-fault-injection` to verify that all 7 strict contracts
-(`A`, `B`, `C`, `D`, `E`, `H`, `I`) fail loudly when optimizations are disabled
-(`-O0`) or synthetic faults are injected.
+Run with `--self-test-fault-injection` to verify that all 8 strict contracts
+(`A`, `B`, `C`, `D`, `E`, `H`, `I`, `J`) fail loudly when optimizations are
+disabled (`-O0`) or synthetic faults are injected.
 """
 from __future__ import annotations
 
@@ -402,6 +406,47 @@ def sum_u32_list(xs: List<&2, U32>, +acc: U32) -> U32:
 
 def main() -> U32:
   sum_u32_list(map_scale(mk_u32_list(32n, 1), 7), 0)
+"""
+
+# Contract J (Conformance Gate): ill-typed rejection + valid neighbors
+CONFORMANCE_WRONG_SRC = """\
+import Base
+
+def wrong(x: U32) -> Bool:
+  x
+
+def main() -> U32:
+  0
+"""
+
+CONFORMANCE_BAD_LIST_SRC = """\
+import Base
+
+def bad_list(xs: List<&2, U32>) -> List<&2, Bool>:
+  xs
+
+def main() -> U32:
+  0
+"""
+
+CONFORMANCE_GOOD_U32_SRC = """\
+import Base
+
+def good_u32(x: U32) -> U32:
+  x
+
+def main() -> U32:
+  good_u32(1)
+"""
+
+CONFORMANCE_GOOD_LIST_SRC = """\
+import Base
+
+def good_list(xs: List<&2, U32>) -> List<&2, U32>:
+  xs
+
+def main() -> U32:
+  0
 """
 
 
@@ -1258,6 +1303,77 @@ def check_contract_i(
     )
 
 
+def _run_bend5k_raw(
+    bend5k_bin: Path,
+    args: list[str],
+    cpu_pin: str | None,
+) -> subprocess.CompletedProcess[str]:
+    cmd: list[str] = []
+    if cpu_pin:
+        cmd.extend(["taskset", "-c", cpu_pin])
+    cmd.append(str(bend5k_bin))
+    cmd.extend(args)
+    return subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+
+
+def check_contract_j(
+    bend5k_bin: Path, tmpdir: Path, opt_flag: str, cpu_pin: str | None
+) -> ContractResult:
+    """Contract J (`Conformance Gate`): verifies `bend5k --check-only` rejects
+    `wrong(x: U32) -> Bool: x` and `bad_list(xs: List<&2, U32>) -> List<&2, Bool>: xs`
+    (and emits NO `.o` under `-O2`) while accepting their valid neighbors.
+    """
+    neg_cases = [
+        ("wrong", CONFORMANCE_WRONG_SRC),
+        ("bad_list", CONFORMANCE_BAD_LIST_SRC),
+    ]
+    pos_cases = [
+        ("good_u32", CONFORMANCE_GOOD_U32_SRC),
+        ("good_list", CONFORMANCE_GOOD_LIST_SRC),
+    ]
+
+    ok = True
+    parts: list[str] = []
+
+    for name, src in neg_cases:
+        sp = tmpdir / f"conf_{name}.bend"
+        sp.write_text(src, encoding="utf-8")
+        op = tmpdir / f"conf_{name}_{opt_flag}.o"
+        if op.exists():
+            op.unlink()
+        r_chk = _run_bend5k_raw(bend5k_bin, ["--check-only", str(sp)], cpu_pin)
+        r_opt = _run_bend5k_raw(bend5k_bin, [opt_flag, str(sp), str(op)], cpu_pin)
+        obj_emitted = op.exists()
+        case_ok = r_chk.returncode != 0 and r_opt.returncode != 0 and not obj_emitted
+        if not case_ok:
+            ok = False
+        parts.append(
+            f"{name}(chk_rc={r_chk.returncode}, o2_rc={r_opt.returncode}, obj={obj_emitted})"
+        )
+
+    for name, src in pos_cases:
+        sp = tmpdir / f"conf_{name}.bend"
+        sp.write_text(src, encoding="utf-8")
+        op = tmpdir / f"conf_{name}_{opt_flag}.o"
+        if op.exists():
+            op.unlink()
+        r_chk = _run_bend5k_raw(bend5k_bin, ["--check-only", str(sp)], cpu_pin)
+        r_opt = _run_bend5k_raw(bend5k_bin, [opt_flag, str(sp), str(op)], cpu_pin)
+        obj_emitted = op.exists()
+        case_ok = r_chk.returncode == 0 and r_opt.returncode == 0 and obj_emitted
+        if not case_ok:
+            ok = False
+        parts.append(
+            f"{name}(chk_rc={r_chk.returncode}, o2_rc={r_opt.returncode}, obj={obj_emitted})"
+        )
+
+    return ContractResult(
+        "Contract J (conformance)",
+        "PASS" if ok else "FAIL",
+        "; ".join(parts),
+    )
+
+
 PRELUDE_PREFIXES = (
     "$direct.__b5k_",
     "$direct.Bool.",
@@ -1589,8 +1705,21 @@ def run_fault_injection_self_test(
     if not synth_hi_ok:
         all_tripped = False
 
+    #    (e) Contract J (conformance) fault injection: permissive stub compiler
+    #        that accepts ill-typed programs without error must FAIL Contract J.
+    fake_permissive = tmpdir / "fake_permissive_bend5k.sh"
+    fake_permissive.write_text("#!/bin/sh\nexit 0\n", encoding="utf-8")
+    fake_permissive.chmod(0o755)
+    res_j = check_contract_j(fake_permissive, tmpdir, "-O2", cpu_pin)
+    tripped_j = res_j.status == "FAIL"
     print(
-        f"=== FAULT-INJECTION RESULT: {'PASS (all 7 strict contracts tripped)' if all_tripped else 'FAIL'} ==="
+        f"  [{'TRIPPED-OK' if tripped_j else 'MISSED-FAULT'}] {res_j.name} (permissive-stub): {res_j.detail}"
+    )
+    if not tripped_j:
+        all_tripped = False
+
+    print(
+        f"=== FAULT-INJECTION RESULT: {'PASS (all 8 strict contracts tripped)' if all_tripped else 'FAIL'} ==="
     )
     return all_tripped
 
@@ -1720,6 +1849,7 @@ def main() -> int:
             check_contract_g(bend5k_bin, tmpdir, "-O2", cpu_pin),
             check_contract_h(bend5k_bin, tmpdir, "-O2", cpu_pin),
             check_contract_i(bend5k_bin, tmpdir, "-O2", cpu_pin),
+            check_contract_j(bend5k_bin, tmpdir, "-O2", cpu_pin),
         ]
 
         failed = False

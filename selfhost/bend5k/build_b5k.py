@@ -13,7 +13,7 @@ import time
 from pathlib import Path
 
 ROOT = Path("/home/ai/bend2_agy")
-B5K_DIR = ROOT / "selfhost/bend5k"
+B5K_DIR = Path(__file__).resolve().parent
 OUT_DIR = Path("/tmp/agy_b5k")
 MODULES = [
     "core.bend",

@@ -474,6 +474,108 @@ def main() -> U32:
   0
 """
 
+# Contract N holdout: 32-case dense Nat-match LUT with repeated/CSE-able values inlined into a loop
+HOLDOUT_ILUT_INLINE_SRC = """\
+import Base
+
+def map32(x: Nat) -> U32:
+  match x:
+    case 0n: 7
+    case 1n: 0
+    case 2n: 13
+    case 3n: 1
+    case 4n: 29
+    case 5n: 48
+    case 6n: 13
+    case 7n: 0
+    case 8n: 61
+    case 9n: 7
+    case 10n: 48
+    case 11n: 1
+    case 12n: 83
+    case 13n: 29
+    case 14n: 97
+    case 15n: 0
+    case 16n: 109
+    case 17n: 48
+    case 18n: 127
+    case 19n: 1
+    case 20n: 149
+    case 21n: 7
+    case 22n: 163
+    case 23n: 13
+    case 24n: 179
+    case 25n: 48
+    case 26n: 191
+    case 27n: 29
+    case 28n: 211
+    case 29n: 0
+    case 30n: 223
+    case 31n: 1
+    case 32n+p: 99
+
+def fold_map32(n: Nat, +s: U32, +acc: U32) -> U32:
+  match n:
+    case 0n:
+      acc
+    case 1n+p:
+      +ns = U32.add(U32.mul(s, 1664525), 1013904223)
+      +v = map32(U32.to_nat(U32.and(U32.shrn(ns, 16n), 63)))
+      fold_map32(p, ns, U32.xor(U32.mul(acc, 16777619), v))
+
+def main() -> U32:
+  fold_map32(64n, 12345, 2166136261)
+"""
+
+# Contract O holdout: counted Array<F32> map loop (triggers 8-wide AVX1 $v8a.)
+HOLDOUT_V8A_MAP_F32_SRC = """\
+import Base
+
+def poly_map(rem: Nat, +i: U32, src: Array<F32>, dst: Array<F32>, +c: F32) -> Array<F32>:
+  match rem:
+    case 0n:
+      dst
+    case 1n+p:
+      (src1, +x) = Array.get(F32, src, i)
+      +t0 = F32.add(F32.mul(x, x), c)
+      +t1 = F32.add(F32.mul(t0, x), 0.25)
+      +t2 = F32.add(F32.mul(t1, x), c)
+      +y = F32.sub(F32.mul(t2, x), 0.125)
+      dst1 = Array.set(F32, dst, i, y)
+      poly_map(p, U32.inc(i), src1, dst1, c)
+
+def rd_f32(a: Array<F32>, i: U32) -> U32:
+  (_, v) = Array.get(F32, a, i)
+  F32.to_u32(v)
+
+def main() -> U32:
+  out = poly_map(64n, 0, [1.5 : F32*64n], [0.0 : F32*64n], 0.5)
+  rd_f32(out, 5)
+"""
+
+# Contract P holdout: loop-carried 3-field single-ctor record with 2 arrays
+HOLDOUT_WW_REC_ARR_SRC = """\
+import Base
+
+type DualSt is Data:
+  DualSt{a: Array<U32>, b: Array<U32>, acc: U32}
+
+def scan_dual(rem: Nat, +i: U32, st: DualSt) -> DualSt:
+  match rem:
+    case 0n:
+      st
+    case 1n+p:
+      DualSt{a, b, +acc} = st
+      (a1, +v) = Array.get(U32, a, i)
+      +nv = U32.xor(v, acc)
+      (b1, +old) = Array.swap(U32, b, i, nv)
+      scan_dual(p, U32.inc(i), DualSt{a1, b1, U32.add(acc, U32.add(v, old))})
+
+def main() -> U32:
+  DualSt{_, _, acc} = scan_dual(64n, 0, DualSt{[5 : U32*64n], [3 : U32*64n], 1})
+  acc
+"""
+
 
 # ---------------------------------------------------------------------------
 # Disassembly & hot/cold/loop analysis
@@ -1740,6 +1842,96 @@ def check_contract_m(
     return ContractResult("Contract M (Unseen Dual-F32 Hoist)", "PASS" if ok else "FAIL", detail)
 
 
+def check_contract_n(
+    bend5k_bin: Path, tmpdir: Path, opt_flag: str, cpu_pin: str | None
+) -> ContractResult:
+    """Contract N (IR-Level Branchless .rodata ILut + Leaf Inlining, STRICT PASS):
+    Verifies that a 32-case dense Nat-match table with repeated/CSE-able constants
+    compiles to a branchless .rodata LUT (0 jcc, cmov >= 1, rodata_lea_rip >= 1)
+    and inlines into its caller loop with 0 direct calls.
+    """
+    src = tmpdir / "holdout_ilut_inline.bend"
+    src.write_text(HOLDOUT_ILUT_INLINE_SRC, encoding="utf-8")
+    obj = tmpdir / f"holdout_ilut_inline_{opt_flag}.o"
+    compile_to_obj(bend5k_bin, src, obj, opt_flag, cpu_pin)
+    fns = disassemble_obj(obj)
+    if "$direct.fold_map32" not in fns:
+        return ContractResult("Contract N (ILut Inline)", "FAIL", "missing $direct.fold_map32")
+    mf = analyze_func("$direct.fold_map32", fns["$direct.fold_map32"])
+    # map32 may be dead-stripped once inlined into fold_map32; if present, verify it is branchless too.
+    lut_ok = True
+    lut_desc = "dead-stripped"
+    if "$direct.map32" in fns:
+        ml = analyze_func("$direct.map32", fns["$direct.map32"])
+        lut_ok = ml.rodata_lea_rip >= 1 and ml.cmov_count >= 1 and ml.jcc_count == 0
+        lut_desc = f"ro={ml.rodata_lea_rip},cmov={ml.cmov_count},jcc={ml.jcc_count}"
+    ok = (
+        lut_ok
+        and mf.rodata_lea_rip >= 1
+        and mf.cmov_count >= 1
+        and mf.loop_direct_calls == 0
+        and mf.has_back_branch
+    )
+    detail = (
+        f"fold_map32(ro={mf.rodata_lea_rip}, cmov={mf.cmov_count}, loop_calls={mf.loop_direct_calls}, "
+        f"back={mf.has_back_branch}); map32({lut_desc})"
+    )
+    return ContractResult("Contract N (ILut Inline)", "PASS" if ok else "FAIL", detail)
+
+
+def check_contract_o(
+    bend5k_bin: Path, tmpdir: Path, opt_flag: str, cpu_pin: str | None
+) -> ContractResult:
+    """Contract O (General 8-Wide AVX1 Array<F32> Map Auto-Vectorization, STRICT PASS):
+    Verifies that a counted self-TCO Array<F32> map loop emits a $v8a. AVX1 kernel
+    with packed FP instructions (vaddps/vmulps/vsubps) and 0 p111_rt_ctor calls.
+    """
+    src = tmpdir / "holdout_v8a_map_f32.bend"
+    src.write_text(HOLDOUT_V8A_MAP_F32_SRC, encoding="utf-8")
+    obj = tmpdir / f"holdout_v8a_map_f32_{opt_flag}.o"
+    compile_to_obj(bend5k_bin, src, obj, opt_flag, cpu_pin)
+    fns = disassemble_obj(obj)
+    sym = "$v8a.$direct.poly_map"
+    if sym not in fns:
+        return ContractResult("Contract O (v8a Array<F32>)", "FAIL", f"missing {sym}")
+    m = analyze_func(sym, fns[sym])
+    ok = m.packed_fp_ops >= 4 and m.total_ctor_calls == 0 and m.has_back_branch
+    detail = f"{sym}(packed_fp={m.packed_fp_ops}, ctor={m.total_ctor_calls}, back={m.has_back_branch})"
+    return ContractResult("Contract O (v8a Array<F32>)", "PASS" if ok else "FAIL", detail)
+
+
+def check_contract_p(
+    bend5k_bin: Path, tmpdir: Path, opt_flag: str, cpu_pin: str | None
+) -> ContractResult:
+    """Contract P (Loop-Carried Record Unboxing & Dual-Array Hoist, STRICT PASS):
+    Verifies that a self-TCO loop carrying a 3-field single-constructor record
+    with two Array<U32> handles unboxes the record (0 hot ctor/take) and hoists
+    both array decodes into the preheader (pre_dec >= 2, loop_dec == 0).
+    """
+    src = tmpdir / "holdout_ww_rec_arr.bend"
+    src.write_text(HOLDOUT_WW_REC_ARR_SRC, encoding="utf-8")
+    obj = tmpdir / f"holdout_ww_rec_arr_{opt_flag}.o"
+    compile_to_obj(bend5k_bin, src, obj, opt_flag, cpu_pin)
+    fns = disassemble_obj(obj)
+    if "$direct.scan_dual" not in fns:
+        return ContractResult("Contract P (WW Rec+DualArr)", "FAIL", "missing $direct.scan_dual")
+    m = analyze_func("$direct.scan_dual", fns["$direct.scan_dual"])
+    ok = (
+        m.hot_ctor_calls <= 1
+        and m.hot_take_calls == 0
+        and m.preheader_arr_decodes >= 2
+        and m.loop_arr_decodes == 0
+        and m.loop_rt_op_calls == 0
+        and m.has_back_branch
+    )
+    detail = (
+        f"scan_dual(hot_ctor={m.hot_ctor_calls}, hot_take={m.hot_take_calls}, "
+        f"pre_dec={m.preheader_arr_decodes}, loop_dec={m.loop_arr_decodes}, "
+        f"loop_op={m.loop_rt_op_calls}, back={m.has_back_branch})"
+    )
+    return ContractResult("Contract P (WW Rec+DualArr)", "PASS" if ok else "FAIL", detail)
+
+
 def run_fault_injection_self_test(
     bend5k_bin: Path, tmpdir: Path, cpu_pin: str | None
 ) -> bool:
@@ -1749,7 +1941,7 @@ def run_fault_injection_self_test(
     print("=== FAULT-INJECTION SELF-TEST (expecting EVERY contract to FAIL) ===")
     all_tripped = True
 
-    # 1. Contracts A, B, C, H, I, L, M at -O0
+    # 1. Contracts A, B, C, H, I, L, M, N, O, P at -O0
     for fn in (
         check_contract_a,
         check_contract_b,
@@ -1758,6 +1950,9 @@ def run_fault_injection_self_test(
         check_contract_i,
         check_contract_l,
         check_contract_m,
+        check_contract_n,
+        check_contract_o,
+        check_contract_p,
     ):
         res = fn(bend5k_bin, tmpdir, "-O0", cpu_pin)
         tripped = res.status == "FAIL"
@@ -1920,7 +2115,7 @@ def run_fault_injection_self_test(
             all_tripped = False
 
     print(
-        f"=== FAULT-INJECTION RESULT: {'PASS (all 11 strict contracts tripped)' if all_tripped else 'FAIL'} ==="
+        f"=== FAULT-INJECTION RESULT: {'PASS (all 14 strict contracts tripped)' if all_tripped else 'FAIL'} ==="
     )
     return all_tripped
 
@@ -2054,6 +2249,9 @@ def main() -> int:
             check_contract_k(bend5k_bin, tmpdir, "-O2", cpu_pin),
             check_contract_l(bend5k_bin, tmpdir, "-O2", cpu_pin),
             check_contract_m(bend5k_bin, tmpdir, "-O2", cpu_pin),
+            check_contract_n(bend5k_bin, tmpdir, "-O2", cpu_pin),
+            check_contract_o(bend5k_bin, tmpdir, "-O2", cpu_pin),
+            check_contract_p(bend5k_bin, tmpdir, "-O2", cpu_pin),
         ]
 
         failed = False

@@ -75,24 +75,16 @@ def low_seed_u32_map(+syms: SymTab, xs: List<&2, CoreCtorSpec>, acc: U32Map) -> 
     case Nil{}: acc
     case Con{CoreCtorSpec{nm, code}, t}: low_seed_u32_map(syms, t, low_seed_u32_one(symtab_lookup(syms, nm), code, acc))
 def low_intr_specs() -> List<&2, CoreCtorSpec>:
-  [CoreCtorSpec{"U32.add", 1}, CoreCtorSpec{"Nat.add", 1}, CoreCtorSpec{"U32.sub", 2}, CoreCtorSpec{"U32.mul", 3}, CoreCtorSpec{"Nat.mul", 3}, CoreCtorSpec{"U32.div", 4}, CoreCtorSpec{"U32.mod", 5},
-   CoreCtorSpec{"U32.and", 6}, CoreCtorSpec{"Bool.and", 6}, CoreCtorSpec{"U32.or", 7}, CoreCtorSpec{"Bool.or", 7}, CoreCtorSpec{"U32.xor", 8}, CoreCtorSpec{"Bool.xor", 8},
-   CoreCtorSpec{"U32.is_eq", 11}, CoreCtorSpec{"Nat.is_eq", 11}, CoreCtorSpec{"U32.is_ne", 12}, CoreCtorSpec{"Nat.is_ne", 12}, CoreCtorSpec{"U32.is_lt", 13}, CoreCtorSpec{"Nat.is_lt", 13},
-   CoreCtorSpec{"U32.is_le", 14}, CoreCtorSpec{"Nat.is_le", 14}, CoreCtorSpec{"U32.is_gt", 15}, CoreCtorSpec{"Nat.is_gt", 15}, CoreCtorSpec{"U32.is_ge", 16}, CoreCtorSpec{"Nat.is_ge", 16},
-   CoreCtorSpec{"U32.min", 17}, CoreCtorSpec{"Nat.min", 17}, CoreCtorSpec{"U32.max", 18}, CoreCtorSpec{"Nat.max", 18}, CoreCtorSpec{"U32.inc", 19}, CoreCtorSpec{"U32.dec", 20},
-   CoreCtorSpec{"U32.is_zero", 21}, CoreCtorSpec{"Bool.not", 21}, CoreCtorSpec{"U32.shl", 22}, CoreCtorSpec{"Nat.double", 22}, CoreCtorSpec{"U32.shr", 23}, CoreCtorSpec{"U32.shln", 24},
-   CoreCtorSpec{"U32.shrn", 25}, CoreCtorSpec{"U32.not", 26}, CoreCtorSpec{"U32.from_nat", 27}, CoreCtorSpec{"U32.to_nat", 27}, CoreCtorSpec{"F32.bits", 27}, CoreCtorSpec{"Bool.to_u32", 27},
-   CoreCtorSpec{"Char.to_u32", 27}, CoreCtorSpec{"Char.from_u32", 27}, CoreCtorSpec{"Nat.sub", 30}, CoreCtorSpec{"__io_print", 31}, CoreCtorSpec{"__io_print_err", 32},
-   CoreCtorSpec{"__io_args", 33}, CoreCtorSpec{"__io_now", 34}, CoreCtorSpec{"__file_open", 35}, CoreCtorSpec{"__file_read", 36}, CoreCtorSpec{"__file_size", 37},
-   CoreCtorSpec{"__file_write", 38}, CoreCtorSpec{"__file_write_bytes", 39}, CoreCtorSpec{"__file_close", 54}, CoreCtorSpec{"F32.add", 40}, CoreCtorSpec{"F32.sub", 41},
-   CoreCtorSpec{"F32.mul", 42}, CoreCtorSpec{"F32.div", 43}, CoreCtorSpec{"F32.is_eq", 44}, CoreCtorSpec{"F32.is_ne", 45}, CoreCtorSpec{"F32.is_lt", 46}, CoreCtorSpec{"F32.is_le", 47},
-   CoreCtorSpec{"F32.is_gt", 48}, CoreCtorSpec{"F32.is_ge", 49}, CoreCtorSpec{"F32.neg", 50}, CoreCtorSpec{"F32.sqrt", 51}, CoreCtorSpec{"U32.to_f32", 52}, CoreCtorSpec{"F32.from_u32", 52},
-   CoreCtorSpec{"F32.to_u32", 53}, CoreCtorSpec{"Array.new", 60}, CoreCtorSpec{"Array.get", 61}, CoreCtorSpec{"Array.get_unchecked", 61}, CoreCtorSpec{"Array.set", 62}, CoreCtorSpec{"Array.set_unchecked", 62},
-   CoreCtorSpec{"Array.swap", 63}, CoreCtorSpec{"Array.size", 64}, CoreCtorSpec{"Array.clone", 65}, CoreCtorSpec{"U32.cmp", 66}, CoreCtorSpec{"Nat.cmp", 66},
+  [CoreCtorSpec{"U32.add", 1}, CoreCtorSpec{"Nat.add", 1}, CoreCtorSpec{"U32.sub", 2}, CoreCtorSpec{"U32.mul", 3}, CoreCtorSpec{"Nat.mul", 3}, CoreCtorSpec{"U32.div", 4}, CoreCtorSpec{"U32.mod", 5}, CoreCtorSpec{"U32.and", 6}, CoreCtorSpec{"Bool.and", 6}, CoreCtorSpec{"U32.or", 7}, CoreCtorSpec{"Bool.or", 7}, CoreCtorSpec{"U32.xor", 8}, CoreCtorSpec{"Bool.xor", 8},
+   CoreCtorSpec{"U32.is_eq", 11}, CoreCtorSpec{"Nat.is_eq", 11}, CoreCtorSpec{"U32.is_ne", 12}, CoreCtorSpec{"Nat.is_ne", 12}, CoreCtorSpec{"U32.is_lt", 13}, CoreCtorSpec{"Nat.is_lt", 13}, CoreCtorSpec{"U32.is_le", 14}, CoreCtorSpec{"Nat.is_le", 14}, CoreCtorSpec{"U32.is_gt", 15}, CoreCtorSpec{"Nat.is_gt", 15}, CoreCtorSpec{"U32.is_ge", 16}, CoreCtorSpec{"Nat.is_ge", 16},
+   CoreCtorSpec{"U32.min", 17}, CoreCtorSpec{"Nat.min", 17}, CoreCtorSpec{"U32.max", 18}, CoreCtorSpec{"Nat.max", 18}, CoreCtorSpec{"U32.inc", 19}, CoreCtorSpec{"U32.dec", 20}, CoreCtorSpec{"U32.is_zero", 21}, CoreCtorSpec{"Bool.not", 21}, CoreCtorSpec{"U32.shl", 22}, CoreCtorSpec{"Nat.double", 22}, CoreCtorSpec{"U32.shr", 23}, CoreCtorSpec{"U32.shln", 24},
+   CoreCtorSpec{"U32.shrn", 25}, CoreCtorSpec{"U32.not", 26}, CoreCtorSpec{"U32.from_nat", 27}, CoreCtorSpec{"U32.to_nat", 27}, CoreCtorSpec{"F32.bits", 27}, CoreCtorSpec{"Bool.to_u32", 27}, CoreCtorSpec{"Char.to_u32", 27}, CoreCtorSpec{"Char.from_u32", 27}, CoreCtorSpec{"Nat.sub", 30}, CoreCtorSpec{"__io_print", 31}, CoreCtorSpec{"__io_print_err", 32},
+   CoreCtorSpec{"__io_args", 33}, CoreCtorSpec{"__io_now", 34}, CoreCtorSpec{"__file_open", 35}, CoreCtorSpec{"__file_read", 36}, CoreCtorSpec{"__file_size", 37}, CoreCtorSpec{"__file_write", 38}, CoreCtorSpec{"__file_write_bytes", 39}, CoreCtorSpec{"__file_close", 54}, CoreCtorSpec{"F32.add", 40}, CoreCtorSpec{"F32.sub", 41}, CoreCtorSpec{"F32.mul", 42},
+   CoreCtorSpec{"F32.div", 43}, CoreCtorSpec{"F32.is_eq", 44}, CoreCtorSpec{"F32.is_ne", 45}, CoreCtorSpec{"F32.is_lt", 46}, CoreCtorSpec{"F32.is_le", 47}, CoreCtorSpec{"F32.is_gt", 48}, CoreCtorSpec{"F32.is_ge", 49}, CoreCtorSpec{"F32.neg", 50}, CoreCtorSpec{"F32.sqrt", 51}, CoreCtorSpec{"U32.to_f32", 52}, CoreCtorSpec{"F32.from_u32", 52},
+   CoreCtorSpec{"F32.to_u32", 53}, CoreCtorSpec{"Array.new", 60}, CoreCtorSpec{"Array.get", 61}, CoreCtorSpec{"Array.get_unchecked", 61}, CoreCtorSpec{"Array.set", 62}, CoreCtorSpec{"Array.set_unchecked", 62}, CoreCtorSpec{"Array.swap", 63}, CoreCtorSpec{"Array.size", 64}, CoreCtorSpec{"Array.clone", 65}, CoreCtorSpec{"U32.cmp", 66}, CoreCtorSpec{"Nat.cmp", 66},
    CoreCtorSpec{"U32.log2", 67}, CoreCtorSpec{"String.length", 67}, CoreCtorSpec{"String.eq", 67}, CoreCtorSpec{"String.is_empty", 67}, CoreCtorSpec{"String.starts_with", 67}, CoreCtorSpec{"Cmp.is_eq", 67}]
 def low_kind_specs() -> List<&2, CoreCtorSpec>:
-  [CoreCtorSpec{"False", 1}, CoreCtorSpec{"True", 2}, CoreCtorSpec{"Zero", 3}, CoreCtorSpec{"Succ", 4}, CoreCtorSpec{"Chr", 5}, CoreCtorSpec{"ALeaf", 8}, CoreCtorSpec{"ANode", 9},
-   CoreCtorSpec{"LT", 10}, CoreCtorSpec{"EQ", 11}, CoreCtorSpec{"GT", 12}, CoreCtorSpec{"Pair", 13}, CoreCtorSpec{"U32", 14}, CoreCtorSpec{"Nat", 15}, CoreCtorSpec{"F32", 16}, CoreCtorSpec{"Char", 17}, CoreCtorSpec{"Bool", 18}]
+  [CoreCtorSpec{"False", 1}, CoreCtorSpec{"True", 2}, CoreCtorSpec{"Zero", 3}, CoreCtorSpec{"Succ", 4}, CoreCtorSpec{"Chr", 5}, CoreCtorSpec{"ALeaf", 8}, CoreCtorSpec{"ANode", 9}, CoreCtorSpec{"LT", 10}, CoreCtorSpec{"EQ", 11}, CoreCtorSpec{"GT", 12}, CoreCtorSpec{"Pair", 13}, CoreCtorSpec{"U32", 14}, CoreCtorSpec{"Nat", 15}, CoreCtorSpec{"F32", 16}, CoreCtorSpec{"Char", 17}, CoreCtorSpec{"Bool", 18}]
 def low_is_scalar_type(+skind: U32Map, ty: Expr) -> Bool:
   +s1 = low_expr_sym1(ty)
   Bool.and(U32.is_ne(s1, 0), U32.is_ge(um_get(skind, U32.sub(s1, 1)), 14))
@@ -319,19 +311,16 @@ def low_intr_code(sintr: U32Map, sym: U32) -> U32: low_um_le(sintr, sym, 65)
 def low_special_ctor_kind(skind: U32Map, sym: U32) -> U32: low_um_le(skind, sym, 9)
 def low_emit_u32(st: CfgSt, is_stat: Bool, +v: U32) -> CfgSt:
   +st1 = cfg_alloc(st, False{})
-  +dst = cfg_res(st1)
-  cfg_emit(st1, Bool.pick(IrOp, is_stat, IStatic{dst, v}, IConst{dst, v}))
+  cfg_emit(st1, Bool.pick(IrOp, is_stat, IStatic{cfg_res(st1), v}, IConst{cfg_res(st1), v}))
 def low_emit_const(st: CfgSt, v: U32) -> CfgSt: low_emit_u32(st, False{}, v)
 def low_emit_list(st: CfgSt, is_arr: Bool, +code: U32, +args: List<&2, U32>) -> CfgSt:
   +st1 = cfg_alloc(st, False{})
-  +dst = cfg_res(st1)
-  cfg_emit(st1, Bool.pick(IrOp, is_arr, IArrOp{[dst], code, args}, ICtor{dst, code, args}))
+  cfg_emit(st1, Bool.pick(IrOp, is_arr, IArrOp{[cfg_res(st1)], code, args}, ICtor{cfg_res(st1), code, args}))
 def low_emit_ctor(st: CfgSt, cid: U32, fs: List<&2, U32>) -> CfgSt: low_emit_list(st, False{}, cid, fs)
 def low_emit_arr_one(st: CfgSt, aop: U32, args: List<&2, U32>) -> CfgSt: low_emit_list(st, True{}, aop, args)
 def low_emit_bin_or_cmp(st: CfgSt, is_cmp: Bool, +op: U32, +va: U32, +vb: U32) -> CfgSt:
   +st1 = cfg_alloc(st, False{})
-  +dst = cfg_res(st1)
-  cfg_emit(st1, Bool.pick(IrOp, is_cmp, ICmp{dst, op, va, vb}, IBin{dst, op, va, vb}))
+  cfg_emit(st1, Bool.pick(IrOp, is_cmp, ICmp{cfg_res(st1), op, va, vb}, IBin{cfg_res(st1), op, va, vb}))
 def low_emit_un(st: CfgSt, uop: U32, va: U32) -> CfgSt:
   +st1 = cfg_alloc(st, False{})
   cfg_emit(st1, IUn{cfg_res(st1), uop, va})
@@ -339,13 +328,9 @@ def low_emit_cond_bin(st: CfgSt, cond: U32, bop: U32, va: U32, vb: U32) -> CfgSt
   +st1 = cfg_alloc(st, True{})
   +st2 = cfg_alloc(st1, True{})
   +st3 = cfg_alloc(st2, True{})
-  +b_m = cfg_res(st3)
   +st4 = cfg_alloc(st3, False{})
-  +dst = cfg_res(st4)
-  s1 = cfg_seal(cfg_emit(cfg_start(cfg_seal(st4, TBr{cond, cfg_res(st1), cfg_res(st2)}), cfg_res(st1)), IConst{dst, 0}), TJmp{b_m})
-  +s2 = cfg_alloc(cfg_start(s1, cfg_res(st2)), False{})
-  s3 = cfg_seal(cfg_emit(cfg_emit(s2, IBin{cfg_res(s2), bop, va, vb}), ICopy{dst, cfg_res(s2)}), TJmp{b_m})
-  cfg_set_res(cfg_start(s3, b_m), dst)
+  +s2 = cfg_alloc(cfg_start(cfg_seal(cfg_emit(cfg_start(cfg_seal(st4, TBr{cond, cfg_res(st1), cfg_res(st2)}), cfg_res(st1)), IConst{cfg_res(st4), 0}), TJmp{cfg_res(st3)}), cfg_res(st2)), False{})
+  cfg_set_res(cfg_start(cfg_seal(cfg_emit(cfg_emit(s2, IBin{cfg_res(s2), bop, va, vb}), ICopy{cfg_res(st4), cfg_res(s2)}), TJmp{cfg_res(st3)}), cfg_res(st3)), cfg_res(st4))
 def low_emit_safe_shift(st: CfgSt, is_shr: Bool, +va: U32, +vb: U32) -> CfgSt:
   +st1 = low_emit_const(st, 32)
   +st2 = cfg_alloc(st1, False{})
@@ -363,12 +348,9 @@ def low_emit_minmax(st: CfgSt, cop: U32, +va: U32, +vb: U32) -> CfgSt:
   +st2 = cfg_alloc(cfg_emit(st1, ICmp{cfg_res(st1), cop, va, vb}), True{})
   +st3 = cfg_alloc(st2, True{})
   +st4 = cfg_alloc(st3, True{})
-  +b_m = cfg_res(st4)
   +st5 = cfg_alloc(st4, False{})
-  +dst = cfg_res(st5)
-  s1 = cfg_seal(cfg_emit(cfg_start(cfg_seal(st5, TBr{cfg_res(st1), cfg_res(st2), cfg_res(st3)}), cfg_res(st2)), ICopy{dst, va}), TJmp{b_m})
-  s2 = cfg_seal(cfg_emit(cfg_start(s1, cfg_res(st3)), ICopy{dst, vb}), TJmp{b_m})
-  cfg_set_res(cfg_start(s2, b_m), dst)
+  s1 = cfg_seal(cfg_emit(cfg_start(cfg_seal(st5, TBr{cfg_res(st1), cfg_res(st2), cfg_res(st3)}), cfg_res(st2)), ICopy{cfg_res(st5), va}), TJmp{cfg_res(st4)})
+  cfg_set_res(cfg_start(cfg_seal(cfg_emit(cfg_start(s1, cfg_res(st3)), ICopy{cfg_res(st5), vb}), TJmp{cfg_res(st4)}), cfg_res(st4)), cfg_res(st5))
 def low_emit_arr_get_pair(st: CfgSt, +va: U32, vb: U32) -> CfgSt:
   +st1 = low_emit_arr_one(st, 78, [va, vb])
   low_emit_ctor(st1, 6, [va, cfg_res(st1)])
@@ -443,8 +425,7 @@ type PatStep is Data:
 def low_test_bool(st: CfgSt, expect_true: Bool, +r: U32, +fail_blk: U32) -> CfgSt:
   +st1 = cfg_alloc(st, True{})
   +ok_blk = cfg_res(st1)
-  term = Bool.pick(IrTerm, expect_true, TBr{r, ok_blk, fail_blk}, TBr{r, fail_blk, ok_blk})
-  cfg_start(cfg_seal(st1, term), ok_blk)
+  cfg_start(cfg_seal(st1, Bool.pick(IrTerm, expect_true, TBr{r, ok_blk, fail_blk}, TBr{r, fail_blk, ok_blk})), ok_blk)
 def low_opt_test_bool(hf: Bool, expect_true: Bool, +st: CfgSt, r: U32, fb: U32) -> CfgSt: Bool.pick(CfgSt, hf, low_test_bool(st, expect_true, r, fb), st)
 def low_opt_test_eq(hf: Bool, +st: CfgSt, r: U32, val: U32, fb: U32) -> CfgSt: Bool.pick(CfgSt, hf, low_test_cmp_const(st, B5K_CMP_EQ(), r, val, fb), st)
 def low_opt_test_tag(hf: Bool, st: CfgSt, r: U32, tr: U32, cid: U32, fb: U32) -> CfgSt:
@@ -482,10 +463,8 @@ def low_pat_nat_succ(np: NatPat, st: CfgSt, +pt: List<&2, Pat>, +r: U32, +rt: Li
       +st0 = st
       +st1 = Bool.pick(CfgSt, has_fail, Bool.pick(CfgSt, U32.is_eq(k, 1), low_test_bool(st0, True{}, r, fail_blk), low_test_cmp_const(st0, B5K_CMP_GE(), r, k, fail_blk)), st0)
       +st2 = cfg_alloc(st1, False{})
-      +ck = cfg_res(st2)
-      +st3 = cfg_alloc(cfg_emit(st2, IConst{ck, k}), False{})
-      +pr = cfg_res(st3)
-      Bool.pick(PatStep, low_pat_is_dead_var(rem, body), PSNext{st1, pt, rt, st_tail, tr_tail}, PSNext{cfg_emit(st3, IBin{pr, B5K_OP_SUB(), r, ck}), Con{rem, pt}, Con{pr, rt}, Con{1, st_tail}, Con{0, tr_tail}})
+      +st3 = cfg_alloc(cfg_emit(st2, IConst{cfg_res(st2), k}), False{})
+      Bool.pick(PatStep, low_pat_is_dead_var(rem, body), PSNext{st1, pt, rt, st_tail, tr_tail}, PSNext{cfg_emit(st3, IBin{cfg_res(st3), B5K_OP_SUB(), r, cfg_res(st2)}), Con{rem, pt}, Con{cfg_res(st3), rt}, Con{1, st_tail}, Con{0, tr_tail}})
 def low_pat_ctr_step(kind: U32, +env: LowEnv, st: CfgSt, +sym: U32, +fs: List<&2, Pat>, +pt: List<&2, Pat>, +r: U32, rt: List<&2, U32>, +sc0: U32, st_tail: List<&2, U32>, tr0: U32, tr_tail: List<&2, U32>, body: Expr, +fail_blk: U32, +has_fail: Bool) -> PatStep:
   match kind fs:
     case 1 _: PSNext{low_opt_test_bool(has_fail, False{}, st, r, fail_blk), pt, rt, st_tail, tr_tail}
@@ -493,29 +472,23 @@ def low_pat_ctr_step(kind: U32, +env: LowEnv, st: CfgSt, +sym: U32, +fs: List<&2
     case 3 _: PSNext{low_opt_test_bool(has_fail, False{}, st, r, fail_blk), pt, rt, st_tail, tr_tail}
     case 4 Con{inner, Nil{}}: low_pat_nat_succ(low_peel_nat(32n, env_map(env, 6), 1, inner), st, pt, r, rt, st_tail, tr_tail, body, fail_blk, has_fail)
     case 4 _:
-      st1 = low_opt_test_bool(has_fail, True{}, st, r, fail_blk)
-      +st2 = cfg_alloc(st1, False{})
-      +c1 = cfg_res(st2)
-      +st3 = cfg_alloc(cfg_emit(st2, IConst{c1, 1}), False{})
-      +pr = cfg_res(st3)
-      PSNext{cfg_emit(st3, IBin{pr, B5K_OP_SUB(), r, c1}), b5k_list_app(Pat, fs, pt), Con{pr, rt}, Con{1, st_tail}, Con{0, tr_tail}}
+      +st2 = cfg_alloc(low_opt_test_bool(has_fail, True{}, st, r, fail_blk), False{})
+      +st3 = cfg_alloc(cfg_emit(st2, IConst{cfg_res(st2), 1}), False{})
+      PSNext{cfg_emit(st3, IBin{cfg_res(st3), B5K_OP_SUB(), r, cfg_res(st2)}), b5k_list_app(Pat, fs, pt), Con{cfg_res(st3), rt}, Con{1, st_tail}, Con{0, tr_tail}}
     case 5 _: PSNext{st, b5k_list_app(Pat, fs, pt), Con{r, rt}, Con{1, st_tail}, Con{0, tr_tail}}
     case _ Nil{}: PSNext{low_opt_test_tag(Bool.and(has_fail, U32.is_zero(um_get(env_map(env, 1), sym))), st, r, tr0, um_get0(env_map(env, 0), sym), fail_blk), pt, rt, st_tail, tr_tail}
     case _ +fs1:
       +cid = um_get0(env_map(env, 0), sym)
       sm = Bool.pick(U32, U32.is_eq(cid, 6), U32.shrn(sc0, 1n), um_get(env_map(env, 7), sym))
       +nf = b5k_list_len(Pat, fs1)
-      st1 = low_opt_test_tag(Bool.and(has_fail, U32.is_zero(um_get(env_map(env, 1), sym))), st, r, tr0, cid, fail_blk)
-      +stK = low_maybe_keep(st1, Bool.and(has_fail, Bool.or(pat_is_refut(16n, fs1), pat_is_refut(16n, pt))), r)
+      +stK = low_maybe_keep(low_opt_test_tag(Bool.and(has_fail, U32.is_zero(um_get(env_map(env, 1), sym))), st, r, tr0, cid, fail_blk), Bool.and(has_fail, Bool.or(pat_is_refut(16n, fs1), pat_is_refut(16n, pt))), r)
       +st2 = low_alloc_regs_go(U32.to_nat(nf), stK, Nil{})
       +fregs = cfg_rlist(st2)
       PSNext{cfg_emit(st2, ITake{fregs, cfg_res(stK)}), b5k_list_app(Pat, fs1, pt), b5k_list_app(U32, fregs, rt), b5k_list_app(U32, low_mask_scs(U32.to_nat(nf), sm, 0), st_tail), b5k_list_app(U32, low_mask_scs(U32.to_nat(nf), 0, 0), tr_tail)}
 def low_take2(st: CfgSt, r: U32, ps: List<&2, Pat>, rt: List<&2, U32>, sc0: U32, sc1: U32, st_tail: List<&2, U32>, tr_tail: List<&2, U32>) -> PatStep:
   +st1 = cfg_alloc(st, False{})
-  +r1 = cfg_res(st1)
   +st2 = cfg_alloc(st1, False{})
-  +r2 = cfg_res(st2)
-  PSNext{cfg_emit(st2, ITake{[r1, r2], r}), ps, Con{r1, Con{r2, rt}}, Con{sc0, Con{sc1, st_tail}}, Con{0, Con{0, tr_tail}}}
+  PSNext{cfg_emit(st2, ITake{[cfg_res(st1), cfg_res(st2)], r}), ps, Con{cfg_res(st1), Con{cfg_res(st2), rt}}, Con{sc0, Con{sc1, st_tail}}, Con{0, Con{0, tr_tail}}}
 def low_pat_one(+env: LowEnv, st: CfgSt, p0: Pat, pt: List<&2, Pat>, +r: U32, rt: List<&2, U32>, +sc0: U32, st_tail: List<&2, U32>, tr0: U32, tr_tail: List<&2, U32>, body: Expr, fail_blk: U32, +has_fail: Bool) -> PatStep:
   match p0:
     case PWild{}:
@@ -608,19 +581,13 @@ def low_emit_add_or_cat(+env: LowEnv, st: CfgSt, +va: U32, +vb: U32) -> CfgSt:
   +st5 = cfg_alloc(st4, True{})
   +st6 = cfg_alloc(st5, True{})
   +st7 = cfg_alloc(st6, True{})
-  +b_m = cfg_res(st7)
   +st8 = cfg_alloc(st7, False{})
-  +dst = cfg_res(st8)
-  s1 = cfg_seal(cfg_emit(cfg_start(cfg_seal(st8, TBr{cfg_res(st2), cfg_res(st3), cfg_res(st4)}), cfg_res(st3)), ICopy{dst, vb}), TJmp{b_m})
-  +s2 = cfg_alloc(cfg_start(s1, cfg_res(st4)), False{})
+  +s2 = cfg_alloc(cfg_start(cfg_seal(cfg_emit(cfg_start(cfg_seal(st8, TBr{cfg_res(st2), cfg_res(st3), cfg_res(st4)}), cfg_res(st3)), ICopy{cfg_res(st8), vb}), TJmp{cfg_res(st7)}), cfg_res(st4)), False{})
   +s3 = low_emit_const(cfg_emit(s2, ITag{cfg_res(s2), va}), 1)
   +s4 = cfg_alloc(s3, False{})
-  s5 = cfg_seal(cfg_emit(s4, ICmp{cfg_res(s4), B5K_CMP_EQ(), cfg_res(s2), cfg_res(s3)}), TBr{cfg_res(s4), cfg_res(st5), cfg_res(st6)})
-  +s6 = cfg_alloc(cfg_start(s5, cfg_res(st5)), False{})
-  s7 = cfg_seal(cfg_emit(cfg_emit(s6, ICallDirect{cfg_res(s6), um_get0(fns, str_app), [va, vb]}), ICopy{dst, cfg_res(s6)}), TJmp{b_m})
-  +s8 = cfg_alloc(cfg_start(s7, cfg_res(st6)), False{})
-  s9 = cfg_seal(cfg_emit(cfg_emit(s8, IBin{cfg_res(s8), B5K_OP_ADD(), va, vb}), ICopy{dst, cfg_res(s8)}), TJmp{b_m})
-  cfg_set_res(cfg_start(s9, b_m), dst)
+  +s6 = cfg_alloc(cfg_start(cfg_seal(cfg_emit(s4, ICmp{cfg_res(s4), B5K_CMP_EQ(), cfg_res(s2), cfg_res(s3)}), TBr{cfg_res(s4), cfg_res(st5), cfg_res(st6)}), cfg_res(st5)), False{})
+  +s8 = cfg_alloc(cfg_start(cfg_seal(cfg_emit(cfg_emit(s6, ICallDirect{cfg_res(s6), um_get0(fns, str_app), [va, vb]}), ICopy{cfg_res(st8), cfg_res(s6)}), TJmp{cfg_res(st7)}), cfg_res(st6)), False{})
+  cfg_set_res(cfg_start(cfg_seal(cfg_emit(cfg_emit(s8, IBin{cfg_res(s8), B5K_OP_ADD(), va, vb}), ICopy{cfg_res(st8), cfg_res(s8)}), TJmp{cfg_res(st7)}), cfg_res(st7)), cfg_res(st8))
 def low_is_num_expr(fuel: Nat, +env: LowEnv, +vm: U32Map, +nvm: U32Map, e: Expr) -> Bool:
   match fuel e:
     case 0n _: False{}
@@ -1298,8 +1265,7 @@ def low_type_elem(e: Expr) -> Expr:
     case EApp{_, args}: low_last_expr(args, ENum{0})
     case _: ENum{0}
 def low_show_code(+hd: String) -> U32:
-  r = Bool.pick(U32, b5k_str_eq(hd, "Bool"), 6, Bool.pick(U32, b5k_str_eq(hd, "String"), 5, Bool.pick(U32, b5k_str_eq(hd, "Char"), 4, 0)))
-  r = Bool.pick(U32, Bool.or(b5k_str_eq(hd, "List"), b5k_str_eq(hd, "Array")), 7, r)
+  r = Bool.pick(U32, Bool.or(b5k_str_eq(hd, "List"), b5k_str_eq(hd, "Array")), 7, Bool.pick(U32, b5k_str_eq(hd, "Bool"), 6, Bool.pick(U32, b5k_str_eq(hd, "String"), 5, Bool.pick(U32, b5k_str_eq(hd, "Char"), 4, 0))))
   Bool.pick(U32, b5k_str_eq(hd, "IO"), 1, Bool.pick(U32, b5k_str_eq(hd, "F32"), 2, Bool.pick(U32, b5k_str_eq(hd, "Nat"), 3, r)))
 type ShowBuild is Data:
   ShowBuild{words: List<&2, U32>, names: List<&2, String>, nnames: U32}
@@ -1375,8 +1341,7 @@ def low_def(+env: LowEnv, +fid: U32, d: Def, da: DefAcc) -> DefAcc:
   +ar = low_param_arity_go(params, 0)
   +st2 = low_go(U32.to_nat(2048), env, low_bind_params(skind, params, cfg_new(fid, ar, bank), 0, body), LTExpr{body}, True{})
   +st1 = cfg_alloc(st2, False{})
-  +clo = cfg_res(st1)
-  low_def_fin(syms, fid, main_fid, sym, ar, acc, Bool.pick(CfgSt, Bool.and(U32.is_eq(fid, main_fid), Bool.not(main_pure)), cfg_seal(cfg_emit(st1, ICallClosure{clo, 1, [cfg_res(st2)]}), TRet{clo}), cfg_seal(st2, TRet{cfg_res(st2)})))
+  low_def_fin(syms, fid, main_fid, sym, ar, acc, Bool.pick(CfgSt, Bool.and(U32.is_eq(fid, main_fid), Bool.not(main_pure)), cfg_seal(cfg_emit(st1, ICallClosure{cfg_res(st1), 1, [cfg_res(st2)]}), TRet{cfg_res(st1)}), cfg_seal(st2, TRet{cfg_res(st2)})))
 def low_defs(ds: List<&2, Def>, +env: LowEnv, +fid: U32, da: DefAcc) -> DefAcc:
   match ds:
     case Nil{}: da

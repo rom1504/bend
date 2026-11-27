@@ -1,0 +1,502 @@
+{
+  "schema": "agy.bend5k.asm_ceiling_probes.v21",
+  "host_pin": "taskset -c 5",
+  "host_cpu": "Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz (Ivy Bridge)",
+  "host_isa": [
+    "sse4_1",
+    "sse4_2",
+    "popcnt",
+    "avx"
+  ],
+  "compiler_baseline": {
+    "description": "Proven-20 bend5k_o2 -O2 (base commit 89d393d6)",
+    "path": "/home/ai/bend2_agy/selfhost/build/agy/bend5k/bend5k_o2",
+    "sha256": "b0b265e9b5d4c8a735537ab645999873267935573d37c5d91794127646865df7"
+  },
+  "runtime": {
+    "path": "/home/ai/bend2_agy/selfhost/build/agy/unified/runtime-agy.o",
+    "sha256": "afdcbaa790b85f55548fc0dc7ab50dc11241765ff547fc98a13e0e45ea6bbeaf"
+  },
+  "c_baselines": {
+    "gcc10_o2": "gcc-10 -O2 -ffp-contract=off (5-run median on CPU 5)",
+    "gcc10_o3_native": "gcc-10 -O3 -march=native -ffp-contract=off (5-run median on CPU 5)"
+  },
+  "probes": [
+    {
+      "id": "1",
+      "name": "t4_utf8_state_machine",
+      "pool": "retired_w20_test_sealed",
+      "description": "Table-driven UTF-8 DFA validator & codepoint accumulator (32768 bytes x 125 rounds = 4.10M bytes)",
+      "bend_file": "research/agy/bend5k/eval_split_w20/test_sealed/t4_utf8_state_machine_std.bend",
+      "c_file": "research/agy/bend5k/eval_split_w20/test_sealed/t4_utf8_state_machine.c",
+      "hot_symbol": "$direct.scan_utf8",
+      "checksum": "1748043129",
+      "baseline_ms": 117.79,
+      "c_o2_ms": 13.22,
+      "c_o3_native_ms": 10.66,
+      "baseline_vs_c_o2": 8.91,
+      "baseline_vs_c_o3_native": 11.05,
+      "raw_baseline_ms": [
+        117.5,
+        117.9,
+        117.79,
+        117.56,
+        119.23
+      ],
+      "raw_c_o2_ms": [
+        13.02,
+        13.26,
+        14.07,
+        12.72,
+        13.22
+      ],
+      "raw_c_o3_native_ms": [
+        10.51,
+        11.33,
+        10.47,
+        10.66,
+        11.41
+      ],
+      "variants": [
+        {
+          "name": "a_rodata_lut_unbox_hoist",
+          "asm_file": "research/agy/bend5k/hand_asm_w21/probes/t4_a_lut_unbox.S",
+          "redirected_symbols": [
+            "$direct.scan_utf8"
+          ],
+          "checksum": "1748043129",
+          "ms": 17.11,
+          "vs_c_o2": 1.294,
+          "vs_c_o3_native": 1.605,
+          "speedup_vs_base": 6.884,
+          "pct_saved": 85.5,
+          "raw_ms": [
+            16.51,
+            17.0,
+            17.11,
+            17.36,
+            17.28
+          ],
+          "note": "Complete 32B .rodata CLS_LUT + 32B TRANS_LUT + URes record unboxing + buf array hoist (standard branch structure)."
+        },
+        {
+          "name": "b_branchless_cp_dfa",
+          "asm_file": "research/agy/bend5k/hand_asm_w21/probes/t4_b_branchless_dfa.S",
+          "redirected_symbols": [
+            "$direct.scan_utf8"
+          ],
+          "checksum": "1748043129",
+          "ms": 16.84,
+          "vs_c_o2": 1.274,
+          "vs_c_o3_native": 1.58,
+          "speedup_vs_base": 6.995,
+          "pct_saved": 85.7,
+          "raw_ms": [
+            17.42,
+            16.51,
+            16.68,
+            16.84,
+            17.28
+          ],
+          "note": "Variant A + branchless next_cp via cmovne + streamlined DFA state dispatch."
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "t2_poly_eval_f32",
+      "pool": "retired_w20_test_sealed",
+      "description": "Degree-7 Horner polynomial + 4-step Newton-Raphson F32 sweep (16384 points x 120 sweeps = 1.97M elems, 7.86M Newton steps)",
+      "bend_file": "research/agy/bend5k/eval_split_w20/test_sealed/t2_poly_eval_f32_std.bend",
+      "c_file": "research/agy/bend5k/eval_split_w20/test_sealed/t2_poly_eval_f32.c",
+      "hot_symbol": "$direct.sweep_arr",
+      "checksum": "1184144837",
+      "baseline_ms": 121.6,
+      "c_o2_ms": 97.12,
+      "c_o3_native_ms": 17.84,
+      "baseline_vs_c_o2": 1.252,
+      "baseline_vs_c_o3_native": 6.816,
+      "raw_baseline_ms": [
+        121.13,
+        121.53,
+        121.6,
+        121.72,
+        122.33
+      ],
+      "raw_c_o2_ms": [
+        96.93,
+        96.94,
+        97.36,
+        98.21,
+        97.12
+      ],
+      "raw_c_o3_native_ms": [
+        17.84,
+        18.24,
+        17.65,
+        18.44,
+        17.09
+      ],
+      "variants": [
+        {
+          "name": "a_scalar_xmm_hoisted",
+          "asm_file": "research/agy/bend5k/hand_asm_w21/probes/t2_a_scalar_xmm.S",
+          "redirected_symbols": [
+            "$direct.sweep_arr"
+          ],
+          "checksum": "1184144837",
+          "ms": 103.34,
+          "vs_c_o2": 1.064,
+          "vs_c_o3_native": 5.793,
+          "speedup_vs_base": 1.177,
+          "pct_saved": 15.0,
+          "raw_ms": [
+            103.41,
+            103.34,
+            102.76,
+            103.65,
+            102.94
+          ],
+          "note": "1-wide scalar XMM with hoisted SPair/xs/out + hoisted F32 constants (0 movd, 0 p111_rt_op)."
+        },
+        {
+          "name": "b_avx1_8wide_64bit_slots",
+          "asm_file": "research/agy/bend5k/hand_asm_w21/probes/t2_b_avx1_8wide_64bit_slots.S",
+          "redirected_symbols": [
+            "$direct.sweep_arr"
+          ],
+          "checksum": "1184144837",
+          "ms": 19.48,
+          "vs_c_o2": 0.201,
+          "vs_c_o3_native": 1.092,
+          "speedup_vs_base": 6.242,
+          "pct_saved": 84.0,
+          "raw_ms": [
+            19.48,
+            19.71,
+            18.87,
+            19.01,
+            19.57
+          ],
+          "note": "8-wide AVX1 (ymm0..ymm15) gather/scatter directly over Bend's unmodified 64-bit Array<F32> slots (0 ABI change)."
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "v3_base64_codec",
+      "pool": "retired_w20_validation",
+      "description": "Table-driven 64-entry Base64 encoder + FNV-1a checksum (5461 3-byte groups x 220 rounds = 1.20M groups / 4.81M LUT lookups)",
+      "bend_file": "research/agy/bend5k/eval_split_w20/validation/v3_base64_codec_std.bend",
+      "c_file": "research/agy/bend5k/eval_split_w20/validation/v3_base64_codec.c",
+      "hot_symbol": "$direct.scan_groups",
+      "checksum": "2753502860",
+      "baseline_ms": 46.15,
+      "c_o2_ms": 8.87,
+      "c_o3_native_ms": 9.08,
+      "baseline_vs_c_o2": 5.203,
+      "baseline_vs_c_o3_native": 5.083,
+      "raw_baseline_ms": [
+        46.15,
+        45.93,
+        46.12,
+        47.01,
+        46.77
+      ],
+      "raw_c_o2_ms": [
+        8.87,
+        8.69,
+        8.8,
+        9.01,
+        8.95
+      ],
+      "raw_c_o3_native_ms": [
+        9.08,
+        9.06,
+        9.34,
+        9.31,
+        9.05
+      ],
+      "variants": [
+        {
+          "name": "a_inline_64b_lut_hoist",
+          "asm_file": "research/agy/bend5k/hand_asm_w21/probes/v3_a_inline_lut_hoist.S",
+          "redirected_symbols": [
+            "$direct.scan_groups"
+          ],
+          "checksum": "2753502860",
+          "ms": 9.23,
+          "vs_c_o2": 1.041,
+          "vs_c_o3_native": 1.017,
+          "speedup_vs_base": 5.0,
+          "pct_saved": 80.0,
+          "raw_ms": [
+            10.31,
+            9.23,
+            9.63,
+            8.95,
+            9.18
+          ],
+          "note": "Full 64-entry .rodata B64_LUT (fixes Proven-20 43-entry cutoff) inlined into scan_groups + (buf,h) unboxing + buf hoist."
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "t1_rle_lz_hash",
+      "pool": "retired_w20_test_sealed",
+      "description": "Sliding-window LZ77 hash-table match finder over 2 arrays (16382 steps x 260 rounds = 4.26M steps)",
+      "bend_file": "research/agy/bend5k/eval_split_w20/test_sealed/t1_rle_lz_hash_std.bend",
+      "c_file": "research/agy/bend5k/eval_split_w20/test_sealed/t1_rle_lz_hash.c",
+      "hot_symbol": "$direct.scan_lz",
+      "checksum": "284161573",
+      "baseline_ms": 68.73,
+      "c_o2_ms": 30.91,
+      "c_o3_native_ms": 28.67,
+      "baseline_vs_c_o2": 2.224,
+      "baseline_vs_c_o3_native": 2.397,
+      "raw_baseline_ms": [
+        67.82,
+        68.86,
+        68.46,
+        68.73,
+        68.76
+      ],
+      "raw_c_o2_ms": [
+        30.75,
+        30.78,
+        31.17,
+        31.22,
+        30.91
+      ],
+      "raw_c_o3_native_ms": [
+        28.67,
+        28.87,
+        28.72,
+        28.27,
+        28.24
+      ],
+      "variants": [
+        {
+          "name": "a_unbox_dual_hoist",
+          "asm_file": "research/agy/bend5k/hand_asm_w21/probes/t1_a_unbox_dual_hoist.S",
+          "redirected_symbols": [
+            "$direct.scan_lz"
+          ],
+          "checksum": "284161573",
+          "ms": 34.64,
+          "vs_c_o2": 1.121,
+          "vs_c_o3_native": 1.208,
+          "speedup_vs_base": 1.984,
+          "pct_saved": 49.6,
+          "raw_ms": [
+            36.25,
+            35.32,
+            34.24,
+            34.64,
+            33.5
+          ],
+          "note": "LSt{src,ht,h} unboxing + dual-array hoist (src + ht) across 5-step continuation chain (0 p113_rt_array_pair, 0 spills)."
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "name": "k1_varint_decode",
+      "pool": "fresh_non_suite_w21",
+      "description": "LEB128 varint stream decoder + Murmur/XXHash-style 32-bit integer mixer (65536 bytes x 180 rounds = 11.80M bytes)",
+      "bend_file": "research/agy/bend5k/hand_asm_w21/kernels/k1_varint_decode.bend",
+      "c_file": "research/agy/bend5k/hand_asm_w21/kernels/k1_varint_decode.c",
+      "hot_symbol": "$direct.scan_varint",
+      "checksum": "3101729924",
+      "baseline_ms": 44.48,
+      "c_o2_ms": 20.68,
+      "c_o3_native_ms": 19.73,
+      "baseline_vs_c_o2": 2.151,
+      "baseline_vs_c_o3_native": 2.254,
+      "raw_baseline_ms": [
+        43.78,
+        53.68,
+        44.48,
+        44.55,
+        44.09
+      ],
+      "raw_c_o2_ms": [
+        19.33,
+        20.68,
+        19.82,
+        29.02,
+        20.99
+      ],
+      "raw_c_o3_native_ms": [
+        20.85,
+        19.73,
+        19.53,
+        21.0,
+        19.46
+      ],
+      "variants": [
+        {
+          "name": "a_unbox_hoist_rol",
+          "asm_file": "research/agy/bend5k/hand_asm_w21/probes/k1_a_unbox_hoist_rol.S",
+          "redirected_symbols": [
+            "$direct.run_rounds"
+          ],
+          "checksum": "3101729924",
+          "ms": 20.6,
+          "vs_c_o2": 0.996,
+          "vs_c_o3_native": 1.044,
+          "speedup_vs_base": 2.159,
+          "pct_saved": 53.7,
+          "raw_ms": [
+            19.68,
+            20.6,
+            19.48,
+            27.78,
+            23.94
+          ],
+          "note": "Eliminate per-step VSt re-boxing + buf hoist + hardware roll $13 rotate in mix32 (0 spills, 0 ctor)."
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "name": "k2_csr_spmv",
+      "pool": "fresh_non_suite_w21",
+      "description": "Compressed Sparse Row (CSR) indirect-gather SpMV over 4 arrays (4095 rows x ~8 edges x 160 rounds = 4.91M edges)",
+      "bend_file": "research/agy/bend5k/hand_asm_w21/kernels/k2_csr_spmv.bend",
+      "c_file": "research/agy/bend5k/hand_asm_w21/kernels/k2_csr_spmv.c",
+      "hot_symbol": "$direct.scan_rows",
+      "checksum": "1512865573",
+      "baseline_ms": 33.57,
+      "c_o2_ms": 10.2,
+      "c_o3_native_ms": 9.78,
+      "baseline_vs_c_o2": 3.291,
+      "baseline_vs_c_o3_native": 3.433,
+      "raw_baseline_ms": [
+        35.61,
+        33.43,
+        33.3,
+        33.57,
+        34.08
+      ],
+      "raw_c_o2_ms": [
+        10.32,
+        9.85,
+        10.2,
+        10.26,
+        9.65
+      ],
+      "raw_c_o3_native_ms": [
+        9.78,
+        9.94,
+        9.47,
+        9.37,
+        9.83
+      ],
+      "variants": [
+        {
+          "name": "a_quad_hoist_inline",
+          "asm_file": "research/agy/bend5k/hand_asm_w21/probes/k2_a_quad_hoist_inline.S",
+          "redirected_symbols": [
+            "$direct.scan_rows"
+          ],
+          "checksum": "1512865573",
+          "ms": 13.67,
+          "vs_c_o2": 1.34,
+          "vs_c_o3_native": 1.398,
+          "speedup_vs_base": 2.456,
+          "pct_saved": 59.3,
+          "raw_ms": [
+            15.03,
+            13.7,
+            13.65,
+            13.67,
+            13.3
+          ],
+          "note": "Quad-array hoist (row_ptr, col_idx, vals, x) before outer row loop + inline scan_edges + eliminate CSt/EAcc records."
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "name": "k3_soa_particle_acc",
+      "pool": "fresh_non_suite_w21",
+      "description": "Struct-of-Arrays (SoA) 4-array F32 particle integrator (16384 particles x 200 steps = 3.28M updates)",
+      "bend_file": "research/agy/bend5k/hand_asm_w21/kernels/k3_soa_particle_acc.bend",
+      "c_file": "research/agy/bend5k/hand_asm_w21/kernels/k3_soa_particle_acc.c",
+      "hot_symbol": "$direct.integrate",
+      "checksum": "892493655",
+      "baseline_ms": 69.78,
+      "c_o2_ms": 13.29,
+      "c_o3_native_ms": 6.95,
+      "baseline_vs_c_o2": 5.251,
+      "baseline_vs_c_o3_native": 10.04,
+      "raw_baseline_ms": [
+        69.78,
+        69.77,
+        69.78,
+        69.95,
+        70.4
+      ],
+      "raw_c_o2_ms": [
+        13.29,
+        12.74,
+        13.42,
+        13.88,
+        12.7
+      ],
+      "raw_c_o3_native_ms": [
+        7.27,
+        7.15,
+        6.78,
+        6.95,
+        6.82
+      ],
+      "variants": [
+        {
+          "name": "a_quad_hoist_scalar",
+          "asm_file": "research/agy/bend5k/hand_asm_w21/probes/k3_a_quad_hoist_scalar.S",
+          "redirected_symbols": [
+            "$direct.integrate"
+          ],
+          "checksum": "892493655",
+          "ms": 18.02,
+          "vs_c_o2": 1.356,
+          "vs_c_o3_native": 2.593,
+          "speedup_vs_base": 3.872,
+          "pct_saved": 74.2,
+          "raw_ms": [
+            18.64,
+            17.65,
+            17.84,
+            19.2,
+            18.02
+          ],
+          "note": "Quad-array hoist (px, py, vx, vy) + P4 unboxing + scalar XMM F32 (0 p111_rt_op, 0 p113_rt_array_pair)."
+        },
+        {
+          "name": "b_avx1_8wide_64bit_slots",
+          "asm_file": "research/agy/bend5k/hand_asm_w21/probes/k3_b_avx1_8wide_64bit_slots.S",
+          "redirected_symbols": [
+            "$direct.integrate"
+          ],
+          "checksum": "892493655",
+          "ms": 12.18,
+          "vs_c_o2": 0.916,
+          "vs_c_o3_native": 1.753,
+          "speedup_vs_base": 5.729,
+          "pct_saved": 82.5,
+          "raw_ms": [
+            12.36,
+            12.38,
+            12.18,
+            11.85,
+            11.85
+          ],
+          "note": "8-wide AVX1 (ymm) gather/scatter over Bend's unmodified 64-bit Array<F32> slots for all 4 SoA arrays."
+        }
+      ]
+    }
+  ]
+}

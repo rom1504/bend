@@ -1753,13 +1753,36 @@ def trmc_rep_last(fs: List<&2, U32>, +z: U32) -> List<&2, U32>:
     case Con{_, Nil{}}: Con{z, Nil{}}
     case Con{x, t}: Con{x, trmc_rep_last(t, z)}
 def trmc_no_self(fid: U32, ops: List<&2, IrOp>) -> Bool: opt_all_ops(OPNoSelf{fid}, ops)
-def trmc_term_ok(term: IrTerm) -> Bool:
+def trmc_term_ok(+fid: U32, +ar: U32, term: IrTerm) -> Bool:
   match term:
     case TJmp{tgt}: U32.is_ne(tgt, 0)
     case TBr{_, tb, fb}: Bool.and(U32.is_ne(tb, 0), U32.is_ne(fb, 0))
     case TSwitch{_, arms, db}: Bool.and(U32.is_ne(db, 0), U32.is_zero(um_get(opt_pred_arms(arms, UM0{}), 0)))
-    case TTailCall{_, _}: False{}
+    case TTailCall{cfid, args}: Bool.and(U32.is_eq(cfid, fid), U32.is_eq(b5k_u32_list_len(args), ar))
     case _: True{}
+def trmc_chase_copies(ops: List<&2, IrOp>, +v: U32) -> U32:
+  match ops:
+    case Nil{}: U32.add(v, 1)
+    case Con{ICopy{d, s}, t}: Bool.pick(U32, U32.is_eq(s, v), trmc_chase_copies(t, d), 0)
+    case _: 0
+def trmc_is_ret_chain(fuel: Nat, +bmap: RaVec<Maybe<&2, IrBlock>>, mb: Maybe<&2, IrBlock>, +v: U32) -> Bool:
+  match fuel mb:
+    case 0n _: False{}
+    case 1n+p Some{IrBlock{_, ops, TRet{+rv}}}:
+      +v1 = trmc_chase_copies(ops, v)
+      Bool.and(U32.is_ne(v1, 0), U32.is_eq(U32.sub(v1, 1), rv))
+    case 1n+p Some{IrBlock{_, ops, TJmp{+nxt}}}:
+      +v1 = trmc_chase_copies(ops, v)
+      Bool.and(U32.is_ne(v1, 0), trmc_is_ret_chain(p, bmap, opt_blk_get(bmap, nxt), U32.sub(v1, 1)))
+    case _ _: False{}
+def trmc_jmp_find(+fid: U32, +ar: U32, +bmap: RaVec<Maybe<&2, IrBlock>>, +tgt: U32, ops: List<&2, IrOp>, +rev: List<&2, IrOp>) -> TrmcDir:
+  match ops:
+    case Con{ICallDirect{+rec, +cfid, +args}, Con{ICtor{+c, +cid, +fs}, +tail}}:
+      +h1 = trmc_last_eq(fs, rec, 0)
+      +v1 = trmc_chase_copies(tail, c)
+      Bool.pick(TrmcDir, Bool.and(U32.is_eq(cfid, fid), Bool.and(U32.is_eq(b5k_u32_list_len(args), ar), Bool.and(U32.is_ne(h1, 0), Bool.and(U32.is_ne(v1, 0), Bool.and(trmc_no_self(fid, rev), trmc_is_ret_chain(8n, bmap, opt_blk_get(bmap, tgt), U32.sub(v1, 1))))))), TrmcDirHit{b5k_list_rev(IrOp, rev), c, cid, fs, args, U32.sub(h1, 1)}, TrmcDirNo{})
+    case Con{op, t}: trmc_jmp_find(fid, ar, bmap, tgt, t, Con{op, rev})
+    case Nil{}: TrmcDirNo{}
 def trmc_dir_find(+fid: U32, +ar: U32, +rv: U32, ops: List<&2, IrOp>, +rev: List<&2, IrOp>) -> TrmcDir:
   match ops:
     case Con{ICallDirect{+rec, +cfid, +args}, Con{ICtor{+c, +cid, +fs}, Nil{}}}:
@@ -1820,20 +1843,26 @@ def trmc_rw_ret(+fid: U32, +ar: U32, +bloop: U32, +rh: U32, +rp: U32, +cidx: U32
     case TrmcACons{c, cid, fs, args} TrmcRw{mrev, erev, nr, nb}: trmc_emit_cons(opt_tco_args(ar, UM0{}, args, 0, TcoSt{Nil{}, Nil{}, nr}), bloop, rh, rp, cidx, nid, Nil{}, c, cid, fs, mrev, erev, nb)
     case TrmcASkip{args} TrmcRw{mrev, erev, nr, nb}: trmc_emit_skip(opt_tco_args(ar, UM0{}, args, 0, TcoSt{Nil{}, Nil{}, nr}), bloop, nid, ops, mrev, erev, nb)
     case TrmcANone{} rw0: trmc_rw_dir(trmc_dir_find(fid, ar, rv, ops, Nil{}), ar, bloop, rh, rp, cidx, nid, ops, rv, rw0)
-def trmc_rw_blks(+fid: U32, +ar: U32, +bloop: U32, +rh: U32, +rp: U32, +cidx: U32, +flth: U32Map, +arms: RaVec<TrmcArm>, blks: List<&2, IrBlock>, rw: TrmcRw) -> TrmcRw:
+def trmc_rw_jmp(dh: TrmcDir, ar: U32, bloop: U32, rh: U32, +rp: U32, cidx: U32, nid: U32, ops: List<&2, IrOp>, tgt: U32, rw: TrmcRw) -> TrmcRw:
+  match dh rw:
+    case TrmcDirHit{pre, c, cid, fs, args, _} TrmcRw{mrev, erev, nr, nb}: trmc_emit_cons(opt_tco_args(ar, UM0{}, args, 0, TcoSt{Nil{}, Nil{}, nr}), bloop, rh, rp, cidx, nid, pre, c, cid, fs, mrev, erev, nb)
+    case TrmcDirNo{} TrmcRw{mrev, erev, nr, nb}: TrmcRw{Con{IrBlock{nid, ops, TJmp{tgt}}, mrev}, erev, nr, nb}
+def trmc_rw_blks(+fid: U32, +ar: U32, +bloop: U32, +rh: U32, +rp: U32, +cidx: U32, +bmap: RaVec<Maybe<&2, IrBlock>>, +flth: U32Map, +arms: RaVec<TrmcArm>, blks: List<&2, IrBlock>, rw: TrmcRw) -> TrmcRw:
   match blks rw:
     case Nil{} _: rw
-    case Con{IrBlock{+id, +ops, TRet{rv}}, t} rw0: trmc_rw_blks(fid, ar, bloop, rh, rp, cidx, flth, arms, t, trmc_rw_ret(fid, ar, bloop, rh, rp, cidx, Bool.pick(U32, U32.is_zero(id), bloop, id), ops, rv, opt_rv_get(TrmcArm, TrmcANone{}, id, arms), rw0))
-    case Con{IrBlock{+id, +ops, TBr{c, tb, fb}}, t} TrmcRw{mrev, erev, nr, nb}: trmc_rw_blks(fid, ar, bloop, rh, rp, cidx, flth, arms, t, TrmcRw{Con{IrBlock{Bool.pick(U32, U32.is_zero(id), bloop, id), Bool.pick(List<&2, IrOp>, U32.is_ne(um_get(flth, id), 0), trmc_drop_call(trmc_flt_split(fid, ar, ops, Nil{}), ops), ops), TBr{c, tb, fb}}, mrev}, erev, nr, nb})
-    case Con{IrBlock{+id, ops, term}, t} TrmcRw{mrev, erev, nr, nb}: trmc_rw_blks(fid, ar, bloop, rh, rp, cidx, flth, arms, t, TrmcRw{Con{IrBlock{Bool.pick(U32, U32.is_zero(id), bloop, id), ops, term}, mrev}, erev, nr, nb})
+    case Con{IrBlock{+id, +ops, TRet{rv}}, t} rw0: trmc_rw_blks(fid, ar, bloop, rh, rp, cidx, bmap, flth, arms, t, trmc_rw_ret(fid, ar, bloop, rh, rp, cidx, Bool.pick(U32, U32.is_zero(id), bloop, id), ops, rv, opt_rv_get(TrmcArm, TrmcANone{}, id, arms), rw0))
+    case Con{IrBlock{+id, +ops, TJmp{+tgt}}, t} rw0: trmc_rw_blks(fid, ar, bloop, rh, rp, cidx, bmap, flth, arms, t, trmc_rw_jmp(trmc_jmp_find(fid, ar, bmap, tgt, ops, Nil{}), ar, bloop, rh, rp, cidx, Bool.pick(U32, U32.is_zero(id), bloop, id), ops, tgt, rw0))
+    case Con{IrBlock{+id, +ops, TBr{c, tb, fb}}, t} TrmcRw{mrev, erev, nr, nb}: trmc_rw_blks(fid, ar, bloop, rh, rp, cidx, bmap, flth, arms, t, TrmcRw{Con{IrBlock{Bool.pick(U32, U32.is_zero(id), bloop, id), Bool.pick(List<&2, IrOp>, U32.is_ne(um_get(flth, id), 0), trmc_drop_call(trmc_flt_split(fid, ar, ops, Nil{}), ops), ops), TBr{c, tb, fb}}, mrev}, erev, nr, nb})
+    case Con{IrBlock{+id, +ops, TTailCall{_, args}}, t} TrmcRw{mrev, erev, nr, nb}: trmc_rw_blks(fid, ar, bloop, rh, rp, cidx, bmap, flth, arms, t, trmc_emit_skip(opt_tco_args(ar, UM0{}, args, 0, TcoSt{Nil{}, Nil{}, nr}), bloop, Bool.pick(U32, U32.is_zero(id), bloop, id), ops, mrev, erev, nb))
+    case Con{IrBlock{+id, ops, term}, t} TrmcRw{mrev, erev, nr, nb}: trmc_rw_blks(fid, ar, bloop, rh, rp, cidx, bmap, flth, arms, t, TrmcRw{Con{IrBlock{Bool.pick(U32, U32.is_zero(id), bloop, id), ops, term}, mrev}, erev, nr, nb})
 def trmc_fin(fid: U32, nm: String, ar: U32, esc: Bool, eff: Bool, is_m: Bool, bloop: U32, rh: U32, rp: U32, rw: TrmcRw) -> IrFn:
   match rw:
     case TrmcRw{mrev, erev, nr, _}: IrFn{fid, nm, ar, nr, esc, eff, is_m, Con{IrBlock{0, [IConst{rh, 0}, IConst{rp, 0}], TJmp{bloop}}, b5k_list_app(IrBlock, b5k_list_rev(IrBlock, mrev), b5k_list_rev(IrBlock, erev))}}
-def trmc_apply_sc(+fid: U32, +nm: String, +ar: U32, +nregs: U32, +esc: Bool, +eff: Bool, +is_m: Bool, +blks: List<&2, IrBlock>, sc: TrmcScan) -> IrFn:
+def trmc_apply_sc(+fid: U32, +nm: String, +ar: U32, +nregs: U32, +esc: Bool, +eff: Bool, +is_m: Bool, +bmap: RaVec<Maybe<&2, IrBlock>>, +blks: List<&2, IrBlock>, sc: TrmcScan) -> IrFn:
   match sc:
     case TrmcScan{True{}, cnt, +h1, +maxb, flth, arms}:
       +rh = U32.max(nregs, ar)
-      opt_if(IrFn, Bool.and(U32.is_gt(cnt, 0), Bool.and(U32.is_ne(h1, 0), U32.is_ne(h1, 4294967295))), _ => trmc_fin(fid, nm, ar, esc, eff, is_m, U32.add(maxb, 1), rh, U32.add(rh, 1), trmc_rw_blks(fid, ar, U32.add(maxb, 1), rh, U32.add(rh, 1), U32.sub(h1, 1), flth, arms, blks, TrmcRw{Nil{}, Nil{}, U32.add(rh, 2), U32.add(maxb, 2)})), _ => IrFn{fid, nm, ar, nregs, esc, eff, is_m, blks})
+      opt_if(IrFn, Bool.and(U32.is_gt(cnt, 0), Bool.and(U32.is_ne(h1, 0), U32.is_ne(h1, 4294967295))), _ => trmc_fin(fid, nm, ar, esc, eff, is_m, U32.add(maxb, 1), rh, U32.add(rh, 1), trmc_rw_blks(fid, ar, U32.add(maxb, 1), rh, U32.add(rh, 1), U32.sub(h1, 1), bmap, flth, arms, blks, TrmcRw{Nil{}, Nil{}, U32.add(rh, 2), U32.add(maxb, 2)})), _ => IrFn{fid, nm, ar, nregs, esc, eff, is_m, blks})
     case _: IrFn{fid, nm, ar, nregs, esc, eff, is_m, blks}
 # Pass K — Higher-Order Closure Beta-Reduction & Multi-Block Record SROA
 type CloTab is Data:
@@ -2162,14 +2191,17 @@ def trmc_scan_blks(+fid: U32, +ar: U32, +preds: U32Map, +bmap: RaVec<Maybe<&2, I
   match blks st:
     case Nil{} _: st
     case Con{IrBlock{+id, +ops, TRet{rv}}, t} TrmcScan{ok, cnt, h1, mb, flth, arms}: trmc_scan_blks(fid, ar, preds, bmap, t, trmc_scan_dir(trmc_dir_find(fid, ar, rv, ops, Nil{}), fid, ops, TrmcScan{ok, cnt, h1, U32.max(mb, id), flth, arms}))
+    case Con{IrBlock{+id, +ops, TJmp{+tgt}}, t} TrmcScan{ok, cnt, h1, mb, flth, arms}:
+      +st0 : TrmcScan = TrmcScan{Bool.and(ok, U32.is_ne(tgt, 0)), cnt, h1, U32.max(mb, id), flth, arms}
+      trmc_scan_blks(fid, ar, preds, bmap, t, Bool.pick(TrmcScan, trmc_no_self(fid, ops), st0, trmc_scan_dir(trmc_jmp_find(fid, ar, bmap, tgt, ops, Nil{}), fid, ops, st0)))
     case Con{IrBlock{+id, +ops, TBr{_, +tb, +fb}}, t} TrmcScan{ok, cnt, h1, mb, flth, arms}:
       +st0 : TrmcScan = TrmcScan{Bool.and(ok, Bool.and(U32.is_ne(tb, 0), U32.is_ne(fb, 0))), cnt, h1, U32.max(mb, id), flth, arms}
       trmc_scan_blks(fid, ar, preds, bmap, t, Bool.pick(TrmcScan, trmc_no_self(fid, ops), st0, trmc_scan_flt(fid, preds, bmap, id, tb, fb, trmc_flt_split(fid, ar, ops, Nil{}), st0)))
-    case Con{IrBlock{+id, +ops, +term}, t} TrmcScan{ok, cnt, h1, mb, flth, arms}: trmc_scan_blks(fid, ar, preds, bmap, t, TrmcScan{Bool.and(Bool.and(ok, trmc_term_ok(term)), trmc_no_self(fid, ops)), cnt, h1, U32.max(mb, id), flth, arms})
+    case Con{IrBlock{+id, +ops, +term}, t} TrmcScan{ok, cnt, h1, mb, flth, arms}: trmc_scan_blks(fid, ar, preds, bmap, t, TrmcScan{Bool.and(Bool.and(ok, trmc_term_ok(fid, ar, term)), trmc_no_self(fid, ops)), cnt, h1, U32.max(mb, id), flth, arms})
 def opt_trmc_fn(f: IrFn) -> IrFn:
   match f:
     case IrFn{+fid, +nm, +ar, +nregs, +esc, +eff, +is_m, +blks}:
-      opt_if(IrFn, Bool.and(U32.is_ge(fid, 3), Bool.and(Bool.not(eff), Bool.and(Bool.not(is_m), Bool.and(U32.is_ge(ar, 1), U32.is_le(ar, 16))))), _ => trmc_apply_sc(fid, nm, ar, nregs, esc, eff, is_m, blks, trmc_scan_blks(fid, ar, opt_preds_init(blks), opt_index_blks(blks, RVEmpty{}), blks, TrmcScan{True{}, 0, 0, 0, UM0{}, RVEmpty{}})), _ => IrFn{fid, nm, ar, nregs, esc, eff, is_m, blks})
+      opt_if(IrFn, Bool.and(U32.is_ge(fid, 3), Bool.and(Bool.not(eff), Bool.and(Bool.not(is_m), Bool.and(U32.is_ge(ar, 1), U32.is_le(ar, 16))))), _ => (+bm = opt_index_blks(blks, RVEmpty{}); trmc_apply_sc(fid, nm, ar, nregs, esc, eff, is_m, bm, blks, trmc_scan_blks(fid, ar, opt_preds_init(blks), bm, blks, TrmcScan{True{}, 0, 0, 0, UM0{}, RVEmpty{}}))), _ => IrFn{fid, nm, ar, nregs, esc, eff, is_m, blks})
 def ms_alloc_v(+arm: U32Map, +cidm: U32Map, +bad: U32Map, +htag: U32Map, +v: U32, st: WwExSt) -> WwExSt:
   match st:
     case WwExSt{+ex, +nr}: Bool.pick(WwExSt, Bool.and(U32.is_zero(um_get(ex, v)), Bool.and(U32.is_lt(nr, 7500), ms_v_ok(arm, cidm, bad, htag, v))), WwExSt{um_set(ex, v, U32.add(nr, 1)), U32.add(nr, um_get(arm, v))}, WwExSt{ex, nr})
@@ -2487,9 +2519,9 @@ def b5k_opt_go(small: Bool, +fns: List<&2, IrFn>) -> List<&2, IrFn>:
       +ctab = opt_ho_table(fns)
       +ret0 = opt_collect_ret_only(fns, UM0{})
       +fns0 = b5k_opt_fin(True{}, fns, opt_collect_ip(True{}, fns, ret0))
-      +fns2 = opt_inl_r(False{}, True{}, 224, 24, 64, opt_inl_r(False{}, True{}, 160, 24, 64, opt_inl_r(False{}, True{}, 128, 20, 64, opt_inl_beta(ctab, False{}, True{}, 64, 16, 64, fns0))))
+      +fns2 = opt_inl_r(False{}, True{}, 224, 40, 64, opt_inl_r(False{}, True{}, 160, 24, 64, opt_inl_r(False{}, True{}, 128, 20, 64, opt_inl_beta(ctab, False{}, True{}, 64, 16, 64, fns0))))
       +fns3d = opt_inl_r(True{}, False{}, 512, 64, 48, opt_inl_r(True{}, False{}, 512, 64, 48, opt_inl_r(True{}, False{}, 512, 64, 48, opt_inl_beta(ctab, False{}, False{}, 160, 28, 48, fns2))))
-      +fns3e = opt_map_fns(FMMid{}, opt_ho_beta_fns(ctab, opt_inl_r(False{}, False{}, 32, 4, 16, opt_inl_r(False{}, True{}, 224, 24, 64, opt_inl_beta(ctab, True{}, False{}, 512, 64, 48, fns3d)))))
+      +fns3e = opt_map_fns(FMMid{}, opt_ho_beta_fns(ctab, opt_inl_r(False{}, False{}, 32, 4, 16, opt_inl_r(False{}, True{}, 224, 40, 64, opt_inl_beta(ctab, True{}, False{}, 512, 64, 48, fns3d)))))
       +fns4a = opt_map_fns(FMMid{}, opt_map_fns(FMMsroa{}, opt_map_fns(FMMid{}, opt_ww_pass(opt_map_fns(FMMid{}, opt_ww_pass(fns3e))))))
       +fns4b = opt_map_fns(FMMid{}, opt_map_fns(FMInl{False{}, False{}, 4, opt_collect_self_tc(False{}, fns4a, InlBank{UM0{}, RVEmpty{}})}, fns4a))
       +fns4c = opt_map_fns(FMMid{}, opt_map_fns(FMInl{True{}, False{}, 4, opt_collect_self_tc(False{}, fns4b, InlBank{UM0{}, RVEmpty{}})}, fns4b))

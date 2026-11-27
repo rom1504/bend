@@ -76,14 +76,21 @@ def b5k_skip_line(s: String) -> String:
 def b5k_scan_fst(r: StrScan) -> String:
   StrScan{a, _, _} = r
   a
+def b5k_skip_sp(s: String) -> String:
+  match s:
+    case SCon{Chr{32}, t}: b5k_skip_sp(t)
+    case SCon{Chr{9}, t}: b5k_skip_sp(t)
+    case other: other
 def b5k_imp_line(+dir: String, r1: StrScan, +acc: List<&2, ImpReq>) -> List<&2, ImpReq>:
   StrScan{+rel, +rest, _} = r1
-  opt_if(List<&2, ImpReq>, String.ends_with(rel, ".bend"), _ => Con{ImpReq{dir, rel, opt_if(String, String.starts_with(rest, " as "), _ => b5k_scan_fst(b5k_take_word(String.drop(rest, 4n), False{}, Chr{0}, SNil{})), _ => b5k_stem_of(rel))}, acc}, _ => acc)
+  is_base = Bool.and(String.eq(rel, "Base"), Bool.not(String.starts_with(rest, " as ")))
+  alias = opt_if(String, String.starts_with(rest, " as "), _ => b5k_scan_fst(b5k_take_word(b5k_skip_sp(String.drop(rest, 4n)), False{}, Chr{0}, SNil{})), _ => b5k_stem_of(rel))
+  opt_if(List<&2, ImpReq>, is_base, _ => acc, _ => Con{ImpReq{dir, rel, alias}, acc})
 def b5k_scan_imp_go(fuel: Nat, +dir: String, +s: String, +acc: List<&2, ImpReq>) -> List<&2, ImpReq>:
   match fuel s:
     case 0n _: b5k_list_rev(ImpReq, acc)
     case _ SNil{}: b5k_list_rev(ImpReq, acc)
-    case 1n+p _: b5k_scan_imp_go(p, dir, b5k_skip_line(s), opt_if(List<&2, ImpReq>, Bool.or(String.starts_with(s, "import ./"), String.starts_with(s, "import ../")), _ => b5k_imp_line(dir, b5k_take_word(String.drop(s, 7n), False{}, Chr{0}, SNil{}), acc), _ => acc))
+    case 1n+p _: b5k_scan_imp_go(p, dir, b5k_skip_line(s), opt_if(List<&2, ImpReq>, String.starts_with(s, "import "), _ => b5k_imp_line(dir, b5k_take_word(b5k_skip_sp(String.drop(s, 7n)), False{}, Chr{0}, SNil{}), acc), _ => acc))
 def b5k_rm_add_k(old: U32, rmap: RaVec<Maybe<&2, U32>>, sr: SymRes) -> RemapTab:
   SymRes{syms2, nid} = sr
   RemapTab{syms2, ct_set(U32, rmap, old, nid)}
@@ -220,20 +227,71 @@ def b5k_parse_bind(pr: ParseRes, k: Book -> IO(Unit)) -> IO(Unit):
 def b5k_book_syms(bk: Book) -> SymTab:
   Book{_, _, _, syms} = bk
   syms
+def b5k_alias_is_base(+alias: String) -> Bool:
+  b5k_chk_str_match(False{}, ["Base", "Empty", "Unit", "Bool", "Cmp", "Either", "Sigma", "Pair", "Nat", "Maybe", "Result", "Poll", "List", "Word", "U32", "F32", "Char", "String", "Array", "Map", "IO", "File", "Equal"], alias)
+def b5k_types_has_pre(+syms: SymTab, ts: List<&2, TypeDef>, +pre: String) -> Bool:
+  match ts:
+    case Nil{}: False{}
+    case Con{TypeDef{s, _, _, _}, t}: Bool.or(String.starts_with(symtab_name(syms, s), pre), b5k_types_has_pre(syms, t, pre))
+def b5k_defs_has_pre(+syms: SymTab, ds: List<&2, Def>, +pre: String) -> Bool:
+  match ds:
+    case Nil{}: False{}
+    case Con{Def{s, _, _, _, _, _}, t}: Bool.or(String.starts_with(symtab_name(syms, s), pre), b5k_defs_has_pre(syms, t, pre))
+def b5k_laws_has_pre(+syms: SymTab, ls: List<&2, LawDef>, +pre: String) -> Bool:
+  match ls:
+    case Nil{}: False{}
+    case Con{LawDef{s, _, _}, t}: Bool.or(String.starts_with(symtab_name(syms, s), pre), b5k_laws_has_pre(syms, t, pre))
+def b5k_bk_has_prefix(bk: Book, +pre: String) -> Bool:
+  Book{ts, ds, ls, +syms} = bk
+  t_hit = b5k_types_has_pre(syms, ts, pre)
+  d_hit = b5k_defs_has_pre(syms, ds, pre)
+  l_hit = b5k_laws_has_pre(syms, ls, pre)
+  Bool.or(t_hit, Bool.or(d_hit, l_hit))
+def b5k_imp_full(+dir: String, +rel: String) -> String:
+  Bool.pick(String, String.starts_with(rel, "/"), rel, dir ++ rel)
+def b5k_check_top_imps(reqs: List<&2, ImpReq>, +seen_al: List<&2, String>, +bk: Book) -> String:
+  match reqs:
+    case Nil{}: ""
+    case Con{ImpReq{_, +rel, +alias}, rest}:
+      bad_ext = Bool.not(String.ends_with(rel, ".bend"))
+      bad_dup = b5k_chk_str_match(False{}, seen_al, alias)
+      bad_col = b5k_bk_has_prefix(bk, alias ++ ".")
+      Bool.pick(String, bad_ext, "import: expected a .bend file: " ++ rel,
+      Bool.pick(String, bad_dup, "import: duplicate alias: " ++ alias,
+      Bool.pick(String, bad_col, "import: declaration collides with alias: " ++ alias,
+        b5k_check_top_imps(rest, Con{alias, seen_al}, bk))))
 def b5k_load_imports(fuel: Nat, reqs: List<&2, ImpReq>, +seen: List<&2, String>, +bk: Book, +is_o2: Bool, +check_only: Bool, +out_path: String) -> IO(Unit):
   match fuel reqs:
     case 0n _: b5k_run_res(check_only, out_path, b5k_compile_check(is_o2, check_only, b5k_check(bk)))
     case _ Nil{}: b5k_run_res(check_only, out_path, b5k_compile_check(is_o2, check_only, b5k_check(bk)))
-    case 1n++p Con{ImpReq{dir, rel, +alias}, +rest}:
-      +full = dir ++ rel
-      +key = alias ++ ":" ++ full
-      b5k_if_io(b5k_chk_str_match(False{}, seen, key),
-        _ => b5k_load_imports(p, rest, seen, bk, is_o2, check_only, out_path),
-        _ => IO.bind(B5kIoRes<String>, Unit, b5k_read_file(full), r => b5k_io_bind(String, r, +src =>
-          b5k_parse_bind(b5k_parse(String.reverse(String.reverse(src)), b5k_book_syms(bk)), imp_bk =>
-            b5k_load_imports(p, b5k_list_app(ImpReq, b5k_scan_imp_go(U32.to_nat(2048), b5k_dir_of(full), String.reverse(String.reverse(src)), Nil{}), rest), Con{key, seen}, b5k_merge_imp_book(alias, imp_bk, bk), is_o2, check_only, out_path)))))
+    case 1n++p Con{ImpReq{dir, +rel, +alias}, +rest}:
+      +full = b5k_imp_full(dir, rel)
+      b5k_if_io(Bool.not(String.ends_with(rel, ".bend")),
+        _ => b5k_die("import: expected a .bend file: " ++ rel),
+        _ => b5k_if_io(b5k_chk_str_match(False{}, seen, alias),
+          _ => b5k_load_imports(p, rest, seen, bk, is_o2, check_only, out_path),
+          _ => IO.bind(B5kIoRes<String>, Unit, b5k_read_file(full), r => b5k_io_bind(String, r, +src =>
+            b5k_parse_bind(b5k_parse(String.reverse(String.reverse(src)), b5k_book_syms(bk)), imp_bk =>
+              b5k_load_imports(p, b5k_list_app(ImpReq, b5k_scan_imp_go(U32.to_nat(2048), b5k_dir_of(full), String.reverse(String.reverse(src)), Nil{}), rest), Con{alias, seen}, b5k_merge_imp_book(alias, imp_bk, bk), is_o2, check_only, out_path))))))
+def b5k_check_base_shadow_defs(+syms: SymTab, +ts: List<&2, TypeDef>, ds: List<&2, Def>) -> String:
+  match ds:
+    case Nil{}: ""
+    case Con{Def{s, _, _, _, _, _}, t}:
+      +nm = symtab_name(syms, s)
+      bad = b5k_chk_is_reserved_def(syms, ts, nm)
+      Bool.pick(String, bad, "check: duplicate declaration: " ++ nm, b5k_check_base_shadow_defs(syms, ts, t))
+def b5k_check_base_shadow(has_base: Bool, bk: Book) -> String:
+  Book{ts, ds, _, syms} = bk
+  Bool.pick(String, has_base, b5k_check_base_shadow_defs(syms, ts, ds), "")
+def b5k_run_src_k(is_o2: Bool, check_only: Bool, src_path: String, out_path: String, +src2: String, +bk: Book) -> IO(Unit):
+  +reqs = b5k_scan_imp_go(U32.to_nat(2048), b5k_dir_of(src_path), src2, Nil{})
+  +berr = b5k_check_base_shadow(String.contains(src2, "import Base"), bk)
+  +ierr = Bool.pick(String, String.is_empty(berr), b5k_check_top_imps(reqs, Nil{}, bk), berr)
+  b5k_if_io(String.is_empty(ierr),
+    _ => b5k_load_imports(32n, reqs, Nil{}, bk, is_o2, check_only, out_path),
+    _ => b5k_die(ierr))
 def b5k_run_src(is_o2: Bool, check_only: Bool, src_path: String, out_path: String, +src2: String) -> IO(Unit):
-  b5k_parse_bind(b5k_parse(src2, symtab_new()), bk => b5k_load_imports(32n, b5k_scan_imp_go(U32.to_nat(2048), b5k_dir_of(src_path), src2, Nil{}), Nil{}, bk, is_o2, check_only, out_path))
+  b5k_parse_bind(b5k_parse(src2, symtab_new()), bk => b5k_run_src_k(is_o2, check_only, src_path, out_path, src2, bk))
 def b5k_run_driver(is_o2: Bool, +check_only: Bool, +src_path: String, out_path: String) -> IO(Unit):
   IO.bind(B5kIoRes<String>, Unit, b5k_read_file(src_path), r => b5k_io_bind(String, r, src => b5k_run_src(is_o2, check_only, src_path, out_path, String.reverse(String.reverse(src)))))
 def b5k_dispatch_pos(is_o2: Bool, check_only: Bool, a1: String, rest: List<&2, String>) -> IO(Unit):

@@ -720,6 +720,202 @@
       "category": "dependent_proof",
       "expect_upstream": "accept",
       "code": "import Base\ndef ok(e1: {1 == 1 : U32}, e2: {1 == 1 : U32}) -> {1 == 1 : U32}:\n  Equal.trans(U32, 1, 1, 1, e1, e2)\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "l19_neg_codex_goal_007",
+      "group": "l19_soundness_neg",
+      "category": "rewrite_motive",
+      "expect_upstream": "reject",
+      "file": "tests/proof/goal_ladder_state_007.bend"
+    },
+    {
+      "id": "l19_neg_codex_goal_021",
+      "group": "l19_soundness_neg",
+      "category": "rewrite_motive",
+      "expect_upstream": "reject",
+      "file": "tests/proof/goal_ladder_state_021.bend"
+    },
+    {
+      "id": "l19_neg_codex_goal_025",
+      "group": "l19_soundness_neg",
+      "category": "rewrite_motive",
+      "expect_upstream": "reject",
+      "file": "tests/proof/goal_ladder_state_025.bend"
+    },
+    {
+      "id": "l19_neg_rewrite_non_eq",
+      "group": "l19_soundness_neg",
+      "category": "rewrite_motive",
+      "expect_upstream": "reject",
+      "file": "tests/parse/rewrite_non_equation.bend"
+    },
+    {
+      "id": "l19_neg_erased_match_ctor",
+      "group": "l19_soundness_neg",
+      "category": "erasure_soundness",
+      "expect_upstream": "reject",
+      "file": "tests/check/erased_match_ctor.bend"
+    },
+    {
+      "id": "l19_pos_drop_spine_wide",
+      "group": "l19_soundness_pos",
+      "category": "halt_lexicographic",
+      "expect_upstream": "accept",
+      "file": "tests/rfc/drop_spine_wide.bend"
+    },
+    {
+      "id": "l19_neg_halt_spin_machine",
+      "group": "l19_soundness_neg",
+      "category": "halt_lexicographic",
+      "expect_upstream": "reject",
+      "file": "tests/halt/spin_machine.bend"
+    },
+    {
+      "id": "l19_neg_halt_rebuilt_shell",
+      "group": "l19_soundness_neg",
+      "category": "halt_lexicographic",
+      "expect_upstream": "reject",
+      "file": "tests/halt/descent_rebuilt_shell.bend"
+    },
+    {
+      "id": "l19_pos_import_respelled_first",
+      "group": "l19_soundness_pos",
+      "category": "import_hygiene",
+      "expect_upstream": "accept",
+      "file": "tests/import/respelled_first.bend"
+    },
+    {
+      "id": "l19_pos_import_respelled_second",
+      "group": "l19_soundness_pos",
+      "category": "import_hygiene",
+      "expect_upstream": "accept",
+      "file": "tests/import/respelled_second.bend"
+    },
+    {
+      "id": "l19_neg_import_dup_alias",
+      "group": "l19_soundness_neg",
+      "category": "import_hygiene",
+      "expect_upstream": "reject",
+      "code": "import Base\nimport Base\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "l19_neg_parse_missing_is",
+      "group": "l19_soundness_neg",
+      "category": "parse_syntax",
+      "expect_upstream": "reject",
+      "code": "import Base\ntype Box:\n  Box{x: U32}\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "l19_neg_parse_late_import",
+      "group": "l19_soundness_neg",
+      "category": "parse_syntax",
+      "expect_upstream": "reject",
+      "code": "def foo() -> U32:\n  1\nimport Base\ndef main() -> U32:\n  foo()\n"
+    },
+    {
+      "id": "l19_neg_parse_empty_paren",
+      "group": "l19_soundness_neg",
+      "category": "parse_syntax",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef main() -> U32:\n  x = ()\n  0\n"
+    },
+    {
+      "id": "l19_neg_parse_brace_op",
+      "group": "l19_soundness_neg",
+      "category": "parse_syntax",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef main() -> U32:\n  {1 + 2 : U32}\n"
+    },
+    {
+      "id": "l19_neg_parse_reserved_lam_binder",
+      "group": "l19_soundness_neg",
+      "category": "parse_syntax",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef f() -> U32 -> U32:\n  Type => 0\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "l19_neg_parse_arr_non_pow2",
+      "group": "l19_soundness_neg",
+      "category": "parse_syntax",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef main() -> Array<U32>:\n  [0 : U32 * 3]\n"
+    },
+    {
+      "id": "l19_neg_check_dup_def",
+      "group": "l19_soundness_neg",
+      "category": "decl_hygiene",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef f() -> U32:\n  1\ndef f() -> U32:\n  2\ndef main() -> U32:\n  f()\n"
+    },
+    {
+      "id": "l19_neg_check_dup_field",
+      "group": "l19_soundness_neg",
+      "category": "decl_hygiene",
+      "expect_upstream": "reject",
+      "code": "import Base\ntype Box is Data:\n  Box{x: U32, x: U32}\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "l19_neg_check_fwd_ref",
+      "group": "l19_soundness_neg",
+      "category": "decl_hygiene",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef a() -> U32:\n  b()\ndef b() -> U32:\n  1\ndef main() -> U32:\n  a()\n"
+    },
+    {
+      "id": "l19_neg_check_match_non_exhaustive",
+      "group": "l19_soundness_neg",
+      "category": "match_soundness",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef f(b: Bool) -> U32:\n  match b:\n    case True{}: 1\ndef main() -> U32:\n  f(True{})\n"
+    },
+    {
+      "id": "l19_neg_check_match_erased_scrut",
+      "group": "l19_soundness_neg",
+      "category": "erasure_soundness",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef f(-b: Bool) -> U32:\n  match b:\n    case True{}: 1\n    case False{}: 0\ndef main() -> U32:\n  f(True{})\n"
+    },
+    {
+      "id": "l19_neg_check_erased_return",
+      "group": "l19_soundness_neg",
+      "category": "erasure_soundness",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef f(-x: U32) -> U32:\n  x\ndef main() -> U32:\n  f(1)\n"
+    },
+    {
+      "id": "l19_neg_grade_upcast",
+      "group": "l19_soundness_neg",
+      "category": "grade_system",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad(xs: List<&1, U32>) -> List<&2, U32>:\n  xs\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "l19_neg_grade_plus_nondata",
+      "group": "l19_soundness_neg",
+      "category": "grade_system",
+      "expect_upstream": "reject",
+      "code": "import Base\ntype Box is Type:\n  Box{f: U32 -> U32}\ndef bad(+b: Box) -> Box:\n  b\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "l19_neg_comptime_trailing",
+      "group": "l19_soundness_neg",
+      "category": "comptime_soundness",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad(x: U32, ~y: U32) -> U32:\n  U32.add(x, y)\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "l19_neg_neutral_nbe_false_law",
+      "group": "l19_soundness_neg",
+      "category": "dependent_proof",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef f(b: Bool) -> Bool:\n  match b:\n    case True{}: False{}\n    case False{}: True{}\nlaw bad:\n  for b: Bool\n  {f(b) == b : Bool}\ndef bad(b):\n  {==}\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "l19_pos_neutral_nbe_true_law",
+      "group": "l19_soundness_pos",
+      "category": "dependent_proof",
+      "expect_upstream": "accept",
+      "code": "import Base\ndef idb(b: Bool) -> Bool:\n  b\nlaw ok:\n  for b: Bool\n  {idb(b) == b : Bool}\ndef ok(b):\n  {==}\ndef main() -> U32:\n  0\n"
     }
   ]
 }

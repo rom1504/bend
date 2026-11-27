@@ -917,11 +917,13 @@ def x64_arr_rmw_ir_slow(+ctx: X64Ctx, da: U32, a: U32, +i: U32, cv: U32, +bop: U
   s4 = x64_push_cs4(csm, x64_emit(XMovRI32{1, 3}, x64_emit(XMovRR{2, 4}, x64_emit(XMovRI32{6, 73}, s3))))
   x64_store_vreg(ctx, da, 0, x64_pop_cs4(csm, x64_emit(XCallSym{"p111_rt_op"}, s4)))
 def x64_arr_rmw_ir(+ctx: X64Ctx, +da: U32, +a: U32, +i: U32, +cv: U32, +bop: U32, +rc: U32, +dp: U32, +lbl: U32, acc: List<&2, X64Inst>, +cold: List<&2, X64Inst>) -> X64Acc:
-  x64_if1(List<&2, X64Inst>, X64Acc, Bool.and(U32.is_ne(dp, 0), U32.is_ne(rc, 0)), acc,
+  +ho = U32.is_ne(dp, 0)
+  x64_if1(List<&2, X64Inst>, X64Acc, U32.is_ne(rc, 0), acc,
     a0 =>
-      f1 = x64_emit(XLoad{0, 7, 0}, x64_arr_elem_ptr_hoist(ctx, dp, x64_hoist_slot(False{}, ctx, a), i, lbl, a0));
-      f3 = x64_emit_copy(ctx, da, a, x64_emit(XStore{7, 0, 0}, x64_mask32(0, x64_emit(XAluRI{bop, 0, U32.sub(rc, 1)}, f1))));
-      x64_arr_cold_fin(x64_no_dp_chk(ctx), True{}, ctx, dp, lbl, 1, 2, f3, cold, c => x64_arr_rmw_ir_slow(ctx, da, a, i, cv, bop, rc, c)),
+      f1 = x64_emit(XLoad{0, 7, 0}, x64_arr_elem_ptr_sel(ho, ctx, dp, x64_hoist_slot(False{}, ctx, a), a, i, lbl, U32.add(lbl, 1), a0));
+      f2 = x64_when(Bool.not(ho), f1, a1 => x64_emit(XJcc{5, lbl}, x64_emit(XShift{9, 1, 57, False{}}, x64_emit(XMovRR{1, 0}, a1))));
+      f3 = x64_opt_store_arr_sel(ho, ctx, da, a, x64_emit(XStore{7, 0, 0}, x64_mask32(0, x64_emit(XAluRI{bop, 0, U32.sub(rc, 1)}, f2))));
+      x64_arr_cold_fin(Bool.and(ho, x64_no_dp_chk(ctx)), ho, ctx, dp, lbl, 2, 3, f3, cold, c => x64_arr_rmw_ir_slow(ctx, da, a, i, cv, bop, rc, c)),
     a0 => X64Acc{x64_arr_rmw_ir_slow(ctx, da, a, i, cv, bop, rc, a0), lbl, cold})
 def x64_sa_idx_ptr(+ctx: X64Ctx, +buf: U32, +i: U32, +c: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
   +bl = x64_vreg_loc(ctx, buf)

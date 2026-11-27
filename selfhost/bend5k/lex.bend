@@ -271,7 +271,7 @@ def lex_num_nat_emit(val: U32, rt: String, stk: List<&2, U32>, depth: U32, +line
     case SCon{Chr{43}, +rt1}:
       Bool.pick(LStep, lex_nat_plus_u32_bad(rt1), LDone{LexRes{Nil{}, syms, "nat successor requires Nat, not U32"}},
         LNext{rt1, stk, False{}, False{}, depth, line, Con{Tok{TkSym{277}, line}, Con{Tok{TkNum{val}, line}, rev}}, syms})
-    case other: LNext{other, stk, False{}, False{}, depth, line, Con{Tok{TkNum{val}, line}, rev}, syms}
+    case other: LNext{other, stk, False{}, False{}, depth, line, Con{Tok{TkNum{val}, line}, Con{Tok{TkSym{279}, line}, rev}}, syms}
 def lex_num_dec_tail_k(is_f: Bool, ovf: Bool, raw: String, val: U32, rc: Char, +rt: String, stk: List<&2, U32>, depth: U32, +line: U32, rev: List<&2, Tok>, +syms: SymTab, is_nat: Bool) -> LStep:
   match is_f is_nat:
     case True{} _: lex_flt_emit(stk, depth, line, rev, syms, lex_scan_flt_go(raw, 0, SNil{}))

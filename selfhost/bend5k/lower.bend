@@ -227,42 +227,43 @@ def low_param_mask_go(+is_e: Bool, +skind: U32Map, ps: List<&2, Param>, +idx: U3
       bit = Bool.pick(U32, Bool.and(hit, U32.is_lt(idx, 32)), U32.shln(1, U32.to_nat(idx)), 0)
       low_param_mask_go(is_e, skind, t, U32.add(idx, 1), U32.or(acc, bit))
 type CtorTabAcc is Data:
-  CtorTabAcc{syms: SymTab, next_cid: U32, by_sym: U32Map, smask_by_sym: U32Map, single_by_sym: U32Map, ctors_rev: List<&2, IrCtor>}
-def low_seed_core_one(sr: SymRes, +nm: String, ar: U32, +cid: U32, by_sym: U32Map, smask: U32Map, +single: U32Map, rev: List<&2, IrCtor>) -> CtorTabAcc:
+  CtorTabAcc{syms: SymTab, next_cid: U32, by_sym: U32Map, smask_by_sym: U32Map, single_by_sym: U32Map, arity_by_sym: U32Map, owner_by_sym: U32Map, ctors_rev: List<&2, IrCtor>}
+def low_seed_core_one(sr: SymRes, +nm: String, +ar: U32, +cid: U32, by_sym: U32Map, smask: U32Map, +single: U32Map, arity: U32Map, owner: U32Map, rev: List<&2, IrCtor>) -> CtorTabAcc:
   SymRes{s2, +sym} = sr
   is_s = Bool.or(b5k_str_eq(nm, "Tuple"), Bool.or(b5k_str_eq(nm, "Pair"), b5k_str_eq(nm, "Unit")))
-  CtorTabAcc{s2, U32.add(cid, 1), um_set(by_sym, sym, U32.add(cid, 1)), smask, Bool.pick(U32Map, is_s, um_set(single, sym, 1), single), Con{IrCtor{cid, nm, ar, False{}}, rev}}
+  CtorTabAcc{s2, U32.add(cid, 1), um_set(by_sym, sym, U32.add(cid, 1)), smask, Bool.pick(U32Map, is_s, um_set(single, sym, 1), single), um_set(arity, sym, U32.add(ar, 1)), owner, Con{IrCtor{cid, nm, ar, False{}}, rev}}
 def low_seed_core(specs: List<&2, CoreCtorSpec>, acc: CtorTabAcc) -> CtorTabAcc:
   match specs acc:
     case Nil{} _: acc
-    case Con{CoreCtorSpec{+nm, ar}, t} CtorTabAcc{syms, cid, by_sym, smask, single, rev}:
-      low_seed_core(t, low_seed_core_one(symtab_intern(syms, nm), nm, ar, cid, by_sym, smask, single, rev))
-def low_add_ctors(+skind: U32Map, cs: List<&2, CtorDef>, acc: CtorTabAcc) -> CtorTabAcc:
+    case Con{CoreCtorSpec{+nm, ar}, t} CtorTabAcc{syms, cid, by_sym, smask, single, arity, owner, rev}:
+      low_seed_core(t, low_seed_core_one(symtab_intern(syms, nm), nm, ar, cid, by_sym, smask, single, arity, owner, rev))
+def low_add_ctors(+skind: U32Map, +tsym: U32, cs: List<&2, CtorDef>, acc: CtorTabAcc) -> CtorTabAcc:
   match cs acc:
     case Nil{} a: a
-    case Con{CtorDef{+sym, _, +fields}, t} CtorTabAcc{+syms, +cid, +by_sym, +smask, +single, +rev}:
+    case Con{CtorDef{+sym, _, +fields}, t} CtorTabAcc{+syms, +cid, +by_sym, +smask, +single, +arity, +owner, +rev}:
       sm = low_param_mask_go(False{}, skind, fields, 0, 0)
-      low_add_ctors(skind, t, Bool.pick(CtorTabAcc, U32.is_ne(um_get(by_sym, sym), 0), CtorTabAcc{syms, cid, by_sym, smask, single, rev}, CtorTabAcc{syms, U32.add(cid, 1), um_set(by_sym, sym, U32.add(cid, 1)), um_set(smask, sym, sm), single, Con{IrCtor{cid, symtab_name(syms, sym), b5k_list_len(Param, fields), False{}}, rev}}))
+      +far = b5k_list_len(Param, fields)
+      low_add_ctors(skind, tsym, t, Bool.pick(CtorTabAcc, U32.is_ne(um_get(by_sym, sym), 0), CtorTabAcc{syms, cid, by_sym, smask, single, arity, um_set(owner, sym, U32.add(tsym, 1)), rev}, CtorTabAcc{syms, U32.add(cid, 1), um_set(by_sym, sym, U32.add(cid, 1)), um_set(smask, sym, sm), single, um_set(arity, sym, U32.add(far, 1)), um_set(owner, sym, U32.add(tsym, 1)), Con{IrCtor{cid, symtab_name(syms, sym), far, False{}}, rev}}))
 def low_mark_single(sym: U32, acc: CtorTabAcc) -> CtorTabAcc:
-  CtorTabAcc{syms, cid, by_sym, smask, single, rev} = acc
-  CtorTabAcc{syms, cid, by_sym, smask, um_set(single, sym, 1), rev}
+  CtorTabAcc{syms, cid, by_sym, smask, single, arity, owner, rev} = acc
+  CtorTabAcc{syms, cid, by_sym, smask, um_set(single, sym, 1), arity, owner, rev}
 def low_add_types(+skind: U32Map, ts: List<&2, TypeDef>, acc: CtorTabAcc) -> CtorTabAcc:
   match ts:
     case Nil{}: acc
-    case Con{TypeDef{_, _, _, Con{CtorDef{+csym, cid, fs}, Nil{}}}, t}:
-      low_add_types(skind, t, low_mark_single(csym, low_add_ctors(skind, [CtorDef{csym, cid, fs}], acc)))
-    case Con{TypeDef{_, _, _, cs}, t}: low_add_types(skind, t, low_add_ctors(skind, cs, acc))
+    case Con{TypeDef{tsym, _, _, Con{CtorDef{+csym, cid, fs}, Nil{}}}, t}:
+      low_add_types(skind, t, low_mark_single(csym, low_add_ctors(skind, tsym, [CtorDef{csym, cid, fs}], acc)))
+    case Con{TypeDef{tsym, _, _, cs}, t}: low_add_types(skind, t, low_add_ctors(skind, tsym, cs, acc))
 def low_param_arity_go(ps: List<&2, Param>, acc: U32) -> U32:
   match ps:
     case Nil{}: acc
     case Con{Param{_, _, erased, _}, t}: low_param_arity_go(t, U32.add(acc, Bool.pick(U32, erased, 0, 1)))
 type LowEnv is Data:
-  LowEnv{syms: SymTab, ctor_by_sym: U32Map, ctor_smask: U32Map, ctor_single: U32Map, fn_by_sym: U32Map, fn_arity: U32Map, fn_emask: U32Map, sym_intr: U32Map, sym_kind: U32Map, main_fid: U32, main_pure: Bool, sym_io_bind: U32, sym_io_pure: U32, sym_str_app: U32, sym_tmp: U32, sym_arr_len: U32}
+  LowEnv{syms: SymTab, ctor_by_sym: U32Map, ctor_smask: U32Map, ctor_single: U32Map, ctor_arity: U32Map, ctor_owner: U32Map, fn_by_sym: U32Map, fn_arity: U32Map, fn_emask: U32Map, sym_intr: U32Map, sym_kind: U32Map, main_fid: U32, main_pure: Bool, sym_io_bind: U32, sym_io_pure: U32, sym_str_app: U32, sym_tmp: U32, sym_arr_len: U32}
 def env_syms(e: LowEnv) -> SymTab:
-  LowEnv{s, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _} = e
+  LowEnv{s, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _} = e
   s
 def env_map(e: LowEnv, which: U32) -> U32Map:
-  LowEnv{_, ct, cm, cs, fn, ar, em, ir, kd, _, _, _, _, _, _, _} = e
+  LowEnv{_, ct, cm, cs, ca, co, fn, ar, em, ir, kd, _, _, _, _, _, _, _} = e
   match which:
     case 0: ct
     case 1: cs
@@ -271,9 +272,11 @@ def env_map(e: LowEnv, which: U32) -> U32Map:
     case 4: em
     case 5: ir
     case 6: kd
+    case 8: ca
+    case 9: co
     case _: cm
 def env_sym(e: LowEnv, is_arr: Bool) -> U32:
-  LowEnv{_, _, _, _, _, _, _, _, _, _, _, _, _, _, tmp, al} = e
+  LowEnv{_, _, _, _, _, _, _, _, _, _, _, _, _, _, _, _, tmp, al} = e
   Bool.pick(U32, is_arr, al, tmp)
 # Use-Count & Free-Variable Scanners
 def pat_binds_all(fuel: Nat, +sym: U32, ps: List<&2, Pat>) -> Bool:
@@ -770,12 +773,14 @@ def low_filter_erased(es: List<&2, Expr>, +emask: U32, +idx: U32) -> List<&2, Ex
     case Con{h, t}:
       +rest = low_filter_erased(t, emask, U32.add(idx, 1))
       Bool.pick(List<&2, Expr>, Bool.and(U32.is_lt(idx, 32), U32.is_ne(U32.and(U32.shrn(emask, U32.to_nat(idx)), 1), 0)), rest, Con{h, rest})
-def low_app_direct(+st: CfgSt, +fid: U32, +vargs: List<&2, U32>, is_tail: Bool) -> CfgSt:
+def low_app_direct(+st: CfgSt, +fid: U32, +vargs: List<&2, U32>, +is_tail: Bool) -> CfgSt:
   CfgSt{cfid, _, _, _, _, _, _, _, _, _, _, _, _} = st
   +st1 = cfg_alloc(st, False{})
-  Bool.pick(CfgSt, Bool.and(is_tail, U32.is_eq(fid, cfid)), cfg_set_res(cfg_seal(st, TTailCall{fid, vargs}), 0), cfg_emit(st1, ICallDirect{cfg_res(st1), fid, vargs}))
+  +st_call = cfg_emit(st1, ICallDirect{cfg_res(st1), fid, vargs})
+  Bool.pick(CfgSt, Bool.and(is_tail, U32.is_eq(fid, cfid)), cfg_set_res(cfg_seal(st, TTailCall{fid, vargs}), 0),
+    Bool.pick(CfgSt, Bool.and(is_tail, U32.is_le(b5k_u32_list_len(vargs), 5)), cfg_set_res(cfg_seal(st_call, TRet{cfg_res(st1)}), 0), st_call))
 def low_emit_add_or_cat(+env: LowEnv, st: CfgSt, +va: U32, +vb: U32) -> CfgSt:
-  LowEnv{_, _, _, _, fns, _, _, _, _, _, _, _, _, str_app, _, _} = env
+  LowEnv{_, _, _, _, _, _, fns, _, _, _, _, _, _, _, _, str_app, _, _} = env
   +st1 = low_emit_ctor(st, 0, Nil{})
   +st2 = cfg_alloc(st1, False{})
   +st3 = cfg_alloc(cfg_emit(st2, ICmp{cfg_res(st2), B5K_CMP_EQ(), va, cfg_res(st1)}), True{})
@@ -875,7 +880,7 @@ def low_curry_lam(ps: List<&2, Param>, body: Expr) -> Expr:
     case Nil{}: body
     case Con{p, rest}: ELam{[p], low_curry_lam(rest, body)}
 def low_desugar_do(+env: LowEnv, ss: List<&2, Stmt>) -> Expr:
-  LowEnv{_, _, _, _, _, _, _, _, _, _, _, io_bind, io_pure, _, +tmp, _} = env
+  LowEnv{_, _, _, _, _, _, _, _, _, _, _, _, _, io_bind, io_pure, _, +tmp, _} = env
   match ss:
     case Nil{}: EUnit{}
     case Con{StRet{v}, _}: EApp{EVar{io_pure}, [EUnit{}, v]}
@@ -1158,6 +1163,27 @@ def low_map_ops(+fuel: Nat, +is_f32: Bool, e: Expr) -> Expr:
       EOp{op2, low_map_ops(p, is_f32, a), low_map_ops(p, is_f32, b)}
     case 1n+p EAnn{v, t}: EAnn{low_map_ops(p, is_f32, v), t}
     case 1n+_ other: other
+def low_op_meth_name(+op: U32) -> String:
+  match op:
+    case 22: ".is_lt"
+    case 23: ".is_le"
+    case 24: ".is_gt"
+    case 25: ".is_ge"
+    case _: ""
+def low_map_custom_op_k(ms: Maybe<&2, U32>, op: U32, a: Expr, b: Expr) -> Expr:
+  match ms:
+    case Some{s}: EApp{EVar{s}, [a, b]}
+    case None{}: EOp{op, a, b}
+def low_map_custom_ops(+fuel: Nat, +syms: SymTab, +th: String, e: Expr) -> Expr:
+  match fuel e:
+    case 0n _: e
+    case 1n+p EOp{+op, a, b}:
+      +a2 = low_map_custom_ops(p, syms, th, a)
+      +b2 = low_map_custom_ops(p, syms, th, b)
+      +mn = low_op_meth_name(op)
+      Bool.pick(Expr, String.is_empty(mn), EOp{op, a2, b2}, low_map_custom_op_k(symtab_lookup(syms, String.append(th, mn)), op, a2, b2))
+    case 1n+p EAnn{v, t}: EAnn{low_map_custom_ops(p, syms, th, v), t}
+    case 1n+_ other: other
 def low_take_u32(n: Nat, xs: List<&2, U32>) -> List<&2, U32>:
   match n xs:
     case 0n _: Nil{}
@@ -1205,6 +1231,73 @@ def low_const_log2_go(fuel: Nat, +n: U32, acc: U32, done: Bool) -> U32:
   match fuel done:
     case 1n+p False{}: low_const_log2_go(p, U32.shr(n), U32.add(acc, 1), U32.is_le(U32.shr(n), 1))
     case _ _: acc
+def low_is_lam_mat_cases(cs: List<&2, Case>, has_ref: Bool) -> Bool:
+  match cs:
+    case Nil{}: has_ref
+    case Con{Case{Con{PWild{}, Nil{}}, EAnn{_, ERef{_}}}, t}: low_is_lam_mat_cases(t, True{})
+    case Con{Case{Con{PWild{}, Nil{}}, _}, t}: low_is_lam_mat_cases(t, has_ref)
+    case _: False{}
+def low_mk_fvars_go(n: Nat, +base: U32, +i: U32, ps: List<&2, Pat>, es: List<&2, Expr>) -> List<&2, Pat> & List<&2, Expr>:
+  match n:
+    case 0n: (b5k_list_rev(Pat, ps), b5k_list_rev(Expr, es))
+    case 1n+p:
+      +s = U32.add(base, i)
+      low_mk_fvars_go(p, base, U32.add(i, 1), Con{PVar{s, False{}}, ps}, Con{EVar{s}, es})
+def low_rw_lam_mat_arm(csym: U32, ar: U32, +rhs: Expr, p: List<&2, Pat> & List<&2, Expr>) -> Case:
+  (fps, fes) = p
+  Case{[PCtr{csym, fps}], Bool.pick(Expr, U32.is_zero(ar), rhs, EApp{rhs, fes})}
+def low_kind_arity(+k: U32) -> U32:
+  Bool.pick(U32, U32.is_eq(k, 20), 2, Bool.pick(U32, Bool.or(U32.is_eq(k, 4), Bool.or(U32.is_eq(k, 5), Bool.or(U32.is_eq(k, 14), U32.is_eq(k, 16)))), 1, 0))
+def low_rw_lam_mat_case(+env: LowEnv, +sc: U32, +fbase: U32, c: Case) -> Case:
+  match c:
+    case Case{Con{PWild{}, Nil{}}, EAnn{rhs, ERef{+csym}}}:
+      +ar0 = um_get(env_map(env, 8), csym)
+      +ar = Bool.pick(U32, U32.is_zero(ar0), low_kind_arity(um_get(env_map(env, 6), csym)), U32.sub(ar0, 1))
+      low_rw_lam_mat_arm(csym, ar, rhs, low_mk_fvars_go(U32.to_nat(ar), fbase, 0, Nil{}, Nil{}))
+    case Case{Con{PWild{}, Nil{}}, rhs}: Case{[PWild{}], EApp{rhs, [EVar{sc}]}}
+    case other: other
+def low_rw_lam_mat_cases(+env: LowEnv, +sc: U32, +fbase: U32, cs: List<&2, Case>) -> List<&2, Case>:
+  match cs:
+    case Nil{}: Nil{}
+    case Con{c, t}: Con{low_rw_lam_mat_case(env, sc, fbase, c), low_rw_lam_mat_cases(env, sc, fbase, t)}
+def low_lam_is_mat(p0: Param, body: Expr) -> Bool:
+  match p0 body:
+    case Param{0, None{}, False{}, True{}} EMat{Con{EVar{0}, Nil{}}, cs}: low_is_lam_mat_cases(cs, False{})
+    case _ _: False{}
+def low_lam_rw_body(+env: LowEnv, +sc: U32, +fb: U32, body: Expr) -> Expr:
+  match body:
+    case EMat{Con{EVar{0}, Nil{}}, cs}: EMat{[EVar{sc}], low_rw_lam_mat_cases(env, sc, fb, cs)}
+    case other: other
+def low_do_head_from_expr(+syms: SymTab, +co: U32Map, e: Expr) -> String:
+  match e:
+    case EAnn{_, typ}: low_type_head(syms, typ)
+    case ECtr{csym, _}:
+      +ow = um_get(co, csym)
+      Bool.pick(String, U32.is_zero(ow), "", symtab_name(syms, U32.sub(ow, 1)))
+    case _: ""
+def low_do_head_from_stmts(+syms: SymTab, +co: U32Map, ss: List<&2, Stmt>) -> String:
+  match ss:
+    case Nil{}: ""
+    case Con{StBind{_, v}, t}:
+      +hd = low_do_head_from_expr(syms, co, v)
+      Bool.pick(String, String.is_empty(hd), low_do_head_from_stmts(syms, co, t), hd)
+    case Con{StExpr{v}, t}:
+      +hd = low_do_head_from_expr(syms, co, v)
+      Bool.pick(String, String.is_empty(hd), low_do_head_from_stmts(syms, co, t), hd)
+    case Con{_, t}: low_do_head_from_stmts(syms, co, t)
+def low_env_with_monad(+hd: String, env: LowEnv) -> LowEnv:
+  LowEnv{+syms, ct, cm, cs, ca, co, fn, ar, em, ir, kd, mf, mp, +ib, +ip, sa, tmp, al} = env
+  +is_res = b5k_str_eq(hd, "Result")
+  +is_mb = b5k_str_eq(hd, "Maybe")
+  +is_io = Bool.or(String.is_empty(hd), b5k_str_eq(hd, "IO"))
+  +cb = Bool.pick(U32, is_io, ib, Maybe.default(&2, U32, symtab_lookup(syms, String.append(hd, ".bind")), ib))
+  +cp = Bool.pick(U32, is_io, ip, Maybe.default(&2, U32, symtab_lookup(syms, String.append(hd, ".pure")), ip))
+  nb = Bool.pick(U32, is_res, Maybe.default(&2, U32, symtab_lookup(syms, "__res_bind"), ib), Bool.pick(U32, is_mb, Maybe.default(&2, U32, symtab_lookup(syms, "__mb_bind"), ib), cb))
+  np = Bool.pick(U32, is_res, Maybe.default(&2, U32, symtab_lookup(syms, "__res_pure"), ip), Bool.pick(U32, is_mb, Maybe.default(&2, U32, symtab_lookup(syms, "__mb_pure"), ip), cp))
+  LowEnv{syms, ct, cm, cs, ca, co, fn, ar, em, ir, kd, mf, mp, nb, np, sa, tmp, al}
+def low_env_for_do(+env: LowEnv, ss: List<&2, Stmt>) -> LowEnv:
+  +hd = low_do_head_from_stmts(env_syms(env), env_map(env, 9), ss)
+  Bool.pick(LowEnv, String.is_empty(hd), env, low_env_with_monad(hd, env))
 def low_go(fuel: Nat, +env: LowEnv, st: CfgSt, task: LowTask, +is_tail: Bool) -> CfgSt:
   match fuel task:
     case Zero{} _: st
@@ -1292,8 +1385,8 @@ def low_go(fuel: Nat, +env: LowEnv, st: CfgSt, task: LowTask, +is_tail: Bool) ->
     case Succ{_} LTAppFn{_, _, fid, +ar, +vargs, False{}, True{}}:
       +st1 = low_app_direct(st, fid, low_take_u32(U32.to_nat(ar), vargs), False{})
       low_apply_chain(low_drop(U32, U32.to_nat(ar), vargs), st1, cfg_res(st1))
-    case Succ{p} LTAppFn{sym, args, _, _, _, False{}, False{}}:
-      +tmp = env_sym(env, False{})
+    case Succ{p} LTAppFn{sym, +args, _, _, _, False{}, False{}}:
+      +tmp = U32.add(env_sym(env, False{}), U32.add(b5k_list_len(Expr, args), 2))
       low_go(p, env, st, LTExpr{ELam{[Param{tmp, None{}, False{}, False{}}], EApp{EVar{sym}, b5k_list_app(Expr, args, [EVar{tmp}])}}}, False{})
     case Succ{p} LTAppSym{sym, args, 0, 0, 0}:
       +st1 = low_go(p, env, st, LTExprs{args, Nil{}}, False{})
@@ -1440,10 +1533,14 @@ def low_go(fuel: Nat, +env: LowEnv, st: CfgSt, task: LowTask, +is_tail: Bool) ->
       +st1 = low_go(p, env, st0, LTExprs{scruts, Nil{}}, False{})
       low_go(p, env, st1, LTMatStart{base_vm, base_nvm, cs, cfg_rlist(st1), sc_scruts}, is_tail)
     case Succ{p} LTExpr{EAnn{+v, typ}}:
-      +th = low_type_head(env_syms(env), typ)
-      +v1 = Bool.pick(Expr, b5k_str_eq(th, "F32"), low_map_ops(32n, True{}, v), v)
-      v2 = Bool.pick(Expr, Bool.or(b5k_str_eq(th, "U32"), b5k_str_eq(th, "Nat")), low_map_ops(32n, False{}, v1), v1)
-      low_go(p, env, st, LTExpr{v2}, is_tail)
+      +syms = env_syms(env)
+      +th = low_type_head(syms, typ)
+      +is_f = b5k_str_eq(th, "F32")
+      +is_un = Bool.or(b5k_str_eq(th, "U32"), b5k_str_eq(th, "Nat"))
+      +v1 = Bool.pick(Expr, is_f, low_map_ops(32n, True{}, v), v)
+      +v2 = Bool.pick(Expr, is_un, low_map_ops(32n, False{}, v1), v1)
+      v3 = Bool.pick(Expr, Bool.or(String.is_empty(th), Bool.or(is_f, is_un)), v2, low_map_custom_ops(32n, syms, th, v2))
+      low_go(p, env, st, LTExpr{v3}, is_tail)
     case Succ{p} LTExpr{EList{es}}:
       +st1 = low_go(p, env, st, LTExprs{es, Nil{}}, False{})
       low_list_chain(cfg_rlist(st1), st1)
@@ -1469,18 +1566,24 @@ def low_go(fuel: Nat, +env: LowEnv, st: CfgSt, task: LowTask, +is_tail: Bool) ->
       +st2 = low_go(p, env, st1, LTExpr{i}, False{})
       +st3 = low_go(p, env, st2, LTExpr{v}, False{})
       low_emit_arr_one(st3, Bool.pick(U32, low_is_num_expr(16n, env, cfg_map(st0, False{}), cfg_map(st0, True{}), v), 79, 73), [cfg_res(st1), cfg_res(st2), cfg_res(st3)])
-    case Succ{p} LTExpr{EDo{ss}}: low_go(p, env, st, LTExpr{low_desugar_do(env, ss)}, is_tail)
+    case Succ{p} LTExpr{EDo{+ss}}:
+      +e2 = low_env_for_do(env, ss)
+      low_go(p, e2, st, LTExpr{low_desugar_do(e2, ss)}, is_tail)
     case Succ{p} LTExpr{ELam{ps, +body}}:
       match ps:
         case Nil{}: low_go(p, env, st, LTExpr{body}, is_tail)
         case Con{p0, Con{p1, rest}}: low_go(p, env, st, LTExpr{low_curry_lam(Con{p0, Con{p1, rest}}, body)}, is_tail)
         case Con{+p0, Nil{}}:
           +st0 = st
-          +fvs = b5k_list_rev(U32, fv_go(U32.to_nat(2048), cfg_map(st0, False{}), fv_add_params([p0], UM0{}), UIExpr{body}, Nil{}))
+          +is_lm = low_lam_is_mat(p0, body)
+          +sc = U32.add(env_sym(env, False{}), 32)
+          +p1 = Bool.pick(Param, is_lm, Param{sc, None{}, False{}, True{}}, p0)
+          +b1 = Bool.pick(Expr, is_lm, low_lam_rw_body(env, sc, U32.add(env_sym(env, False{}), 64), body), body)
+          +fvs = b5k_list_rev(U32, fv_go(U32.to_nat(2048), cfg_map(st0, False{}), fv_add_params([p1], UM0{}), UIExpr{b1}, Nil{}))
           +ncaps = b5k_u32_list_len(fvs)
           +ar = U32.add(ncaps, 1)
-          lam_st0 = low_bind_params(env_syms(env), env_map(env, 6), [p0], low_bind_lam_caps(cfg_map(st0, True{}), fvs, cfg_new(4294967295, ar, cfg_bank(st0)), 0, body), ncaps, body)
-          +lam_st1 = low_go(p, env, lam_st0, LTExpr{body}, True{})
+          lam_st0 = low_bind_params(env_syms(env), env_map(env, 6), [p1], low_bind_lam_caps(cfg_map(st0, True{}), fvs, cfg_new(4294967295, ar, cfg_bank(st0)), 0, b1), ncaps, b1)
+          +lam_st1 = low_go(p, env, lam_st0, LTExpr{b1}, True{})
           bk2 = low_bank_finish_lam(ncaps, ar, cfg_seal(lam_st1, TRet{cfg_res(lam_st1)}))
           +st1 = cfg_alloc(cfg_set_bank(st0, bk2), False{})
           cfg_emit(st1, ICtor{cfg_res(st1), low_bank_next_cid(cfg_bank(lam_st1)), low_lookup_fvs(fvs, cfg_map(st0, False{}))})
@@ -1764,6 +1867,49 @@ def low_unfold_go(fuel: Nat, +syms: SymTab, +ds: List<&2, Def>, task: UnfTask) -
     case _ UTAppDef{None{}, _, orig}: orig
     case 1n+p UTAppDef{Some{Def{_, dps, _, body, _, _}}, args, orig}: low_unfold_go(p, syms, ds, low_unf_or(low_unf_app_body(dps, body, args), orig))
 def low_unfold_type(fuel: Nat, syms: SymTab, ds: List<&2, Def>, e: Expr) -> Expr: low_unfold_go(fuel, syms, ds, UTExpr{e})
+def low_ctors_has_name(+syms: SymTab, cs: List<&2, CtorDef>, +nm: String) -> Bool:
+  match cs:
+    case Nil{}: False{}
+    case Con{CtorDef{s, _, _}, t}: Bool.or(b5k_str_eq(symtab_name(syms, s), nm), low_ctors_has_name(syms, t, nm))
+def low_nat_is_local(+syms: SymTab, mt: Maybe<&2, TypeDef>) -> Bool:
+  match mt:
+    case Some{TypeDef{_, _, _, cs}}: Bool.not(low_ctors_has_name(syms, cs, "Zero"))
+    case None{}: False{}
+type UnitFamT is Data:
+  UFE{e: Expr}
+  UFC{cs: List<&2, Case>, acc: U32}
+  UFD{s: U32, md: Maybe<&2, Def>}
+def low_unit_fam_go(fuel: Nat, +syms: SymTab, +defs: List<&2, Def>, +fn_sym: U32, t: UnitFamT) -> U32:
+  match fuel t:
+    case 0n _: 0
+    case 1n+_ UFE{EUnit{}}: 2
+    case 1n+_ UFE{EEmpty{}}: 1
+    case 1n+_ UFE{EVar{s}}:
+      +nm = symtab_name(syms, s)
+      Bool.pick(U32, b5k_str_eq(nm, "Unit"), 2, Bool.pick(U32, b5k_str_eq(nm, "Empty"), 1, 0))
+    case 1n+p UFE{EApp{EVar{+s}, _}}:
+      Bool.pick(U32, U32.is_eq(s, fn_sym), 1, Bool.pick(U32, U32.is_eq(fn_sym, 4294967295), low_unit_fam_go(p, syms, defs, fn_sym, UFD{s, low_find_def(defs, s)}), 0))
+    case 1n+p UFD{s, Some{Def{_, _, _, body, _, _}}}: low_unit_fam_go(p, syms, defs, s, UFE{body})
+    case _ UFD{_, None{}}: 0
+    case 1n+p UFE{EMat{_, cs}}: low_unit_fam_go(p, syms, defs, fn_sym, UFC{cs, 0})
+    case _ UFE{_}: 0
+    case _ UFC{Nil{}, acc}: acc
+    case 1n++p UFC{Con{Case{_, body}, rest}, +acc}:
+      +c = low_unit_fam_go(p, syms, defs, fn_sym, UFE{body})
+      Bool.pick(U32, U32.is_zero(c), 0, low_unit_fam_go(p, syms, defs, fn_sym, UFC{rest, U32.max(acc, c)}))
+def low_def_is_unit_fam_k(syms: SymTab, defs: List<&2, Def>, s: U32, md: Maybe<&2, Def>) -> Bool:
+  match md:
+    case Some{Def{_, _, _, body, _, _}}: U32.is_eq(low_unit_fam_go(16n, syms, defs, s, UFE{body}), 2)
+    case None{}: False{}
+def low_def_is_unit_fam(+syms: SymTab, +defs: List<&2, Def>, e: Expr) -> Bool:
+  match e:
+    case EApp{EVar{+s}, _}: low_def_is_unit_fam_k(syms, defs, s, low_find_def(defs, s))
+    case EMat{_, cs}: U32.is_eq(low_unit_fam_go(16n, syms, defs, 4294967295, UFC{cs, 0}), 2)
+    case _: False{}
+def low_is_u32_box(syms: SymTab, cs: List<&2, CtorDef>) -> Bool:
+  match cs:
+    case Con{CtorDef{csym, _, _}, Nil{}}: b5k_str_eq(symtab_name(syms, csym), "U32")
+    case _: False{}
 def low_show_go(+fuel: Nat, +syms: SymTab, +types: List<&2, TypeDef>, +defs: List<&2, Def>, +cbs: U32Map, +seen: List<&2, ShowSeen>, task: ShowTask) -> ShowBuild:
   match fuel task:
     case 0n STEnc{_, _, names, nnames, _}: ShowBuild{[0], names, nnames}
@@ -1777,14 +1923,15 @@ def low_show_go(+fuel: Nat, +syms: SymTab, +types: List<&2, TypeDef>, +defs: Lis
     case 0n STAdtFSub{sb, _, _, _, _, _, _, _, _}: sb
     case 1n+p STTupA{b, nnames, +fst_idx, ShowBuild{+wa, na, nna}, in_adt}:
       +snd_idx = U32.add(fst_idx, b5k_u32_list_len(wa))
-      low_show_tup_b(nnames, fst_idx, snd_idx, wa, low_show_go(p, syms, types, defs, cbs, seen, STEnc{low_unfold_type(12n, syms, defs, b), snd_idx, na, nna, in_adt}))
+      low_show_tup_b(nnames, fst_idx, snd_idx, wa, low_show_go(p, syms, types, defs, cbs, seen, STEnc{low_unfold_type(64n, syms, defs, b), snd_idx, na, nna, in_adt}))
     case 1n+p STBinA{b, nnames, c0, c1, +idx_a, ShowBuild{+wa, na, nna}}:
       +idx_b = U32.add(idx_a, b5k_u32_list_len(wa))
       low_show_bin2_b(nnames, c0, c1, idx_a, idx_b, wa, low_show_go(p, syms, types, defs, cbs, seen, STEnc{low_reassoc_amp(64n, b), idx_b, na, nna, True{}}))
-    case 1n+_ STAdtOpt{None{}, _, _, names, nnames}: ShowBuild{[0], names, nnames}
-    case 1n+p STAdtOpt{Some{TypeDef{tsym, tps, _, +ctors}}, o, +base, names, nnames}:
+    case 1n+_ STAdtOpt{None{}, o, _, +names, +nnames}:
+      Bool.pick(ShowBuild, low_def_is_unit_fam(syms, defs, o), ShowBuild{[7, 1, 1, nnames, 7, 0], b5k_list_app(String, names, ["Unit"]), U32.add(nnames, 1)}, ShowBuild{[0], names, nnames})
+    case 1n+p STAdtOpt{Some{TypeDef{tsym, tps, _, +ctors}}, o, +base, +names, +nnames}:
       +sub_idx = U32.add(base, U32.add(3, low_ctors_hdr_len(ctors, 0)))
-      low_show_go(p, syms, types, defs, cbs, Con{ShowSeen{tsym, base}, seen}, STAdtCs{ctors, tps, low_type_args(o), sub_idx, [7, 1, b5k_list_len(CtorDef, ctors)], Nil{}, names, nnames})
+      Bool.pick(ShowBuild, low_is_u32_box(syms, ctors), ShowBuild{[0], names, nnames}, low_show_go(p, syms, types, defs, cbs, Con{ShowSeen{tsym, base}, seen}, STAdtCs{ctors, tps, low_type_args(o), sub_idx, [7, 1, b5k_list_len(CtorDef, ctors)], Nil{}, names, nnames}))
     case 1n+_ STAdtCs{Nil{}, _, _, _, hdr, sub, names, nnames}: ShowBuild{b5k_list_app(U32, hdr, sub), names, nnames}
     case 1n+p STAdtCs{Con{CtorDef{+csym, _, +fs}, rest_cs}, tps, targs, sub_idx, hdr, sub, names, +nnames}:
       hdr2 = b5k_list_app(U32, hdr, [nnames, um_get0(cbs, csym), b5k_list_len(Param, fs)])
@@ -1792,7 +1939,7 @@ def low_show_go(+fuel: Nat, +syms: SymTab, +types: List<&2, TypeDef>, +defs: Lis
     case 1n+p STAdtFs{Nil{}, _, rest_cs, tps, targs, sub_idx, hdr, sub, names, nnames}:
       low_show_go(p, syms, types, defs, cbs, seen, STAdtCs{rest_cs, tps, targs, sub_idx, hdr, sub, names, nnames})
     case 1n+p STAdtFs{Con{Param{_, fty, _, _}, ft_rest}, j, rest_cs, +tps, +targs, sub_idx, hdr, sub, names, nnames}:
-      +ft = low_unfold_type(12n, syms, defs, low_subst_expr(16n, tps, targs, low_opt_expr(fty)))
+      +ft = low_unfold_type(64n, syms, defs, low_subst_expr(16n, tps, targs, low_opt_expr(fty)))
       low_show_go(p, syms, types, defs, cbs, seen, STAdtFHit{low_show_seen_hit(seen, ft), ft, ft_rest, j, rest_cs, tps, targs, sub_idx, hdr, sub, names, nnames})
     case 1n+p STAdtFHit{Some{rec_b}, _, ft_rest, +j, rest_cs, tps, targs, sub_idx, hdr, sub, names, nnames}:
       low_show_go(p, syms, types, defs, cbs, seen, STAdtFs{ft_rest, U32.add(j, 1), rest_cs, tps, targs, sub_idx, b5k_list_app(U32, hdr, [j, rec_b]), sub, names, nnames})
@@ -1803,7 +1950,9 @@ def low_show_go(+fuel: Nat, +syms: SymTab, +types: List<&2, TypeDef>, +defs: Lis
     case 1n++p STHead{code, +o, +base, +names, +nnames, +in_adt}:
       match code:
         case 2: ShowBuild{[1], names, nnames}
-        case 3: ShowBuild{[2], names, nnames}
+        case 3:
+          +mt = low_find_type_opt(types, low_type_head_sym(o))
+          Bool.pick(ShowBuild, low_nat_is_local(syms, mt), low_show_go(p, syms, types, defs, cbs, seen, STAdtOpt{mt, o, base, names, nnames}), ShowBuild{[2], names, nnames})
         case 4: ShowBuild{[3, 0], names, nnames}
         case 5: ShowBuild{[4], names, nnames}
         case 6: ShowBuild{[7, 0, 2, nnames, 18, 0, U32.add(nnames, 1), 14, 0], b5k_list_app(String, names, ["False", "True"]), U32.add(nnames, 2)}
@@ -1848,10 +1997,10 @@ def low_show_go(+fuel: Nat, +syms: SymTab, +types: List<&2, TypeDef>, +defs: Lis
     case 1n+p STEnc{EAnn{v, _}, base, names, nnames, in_adt}: low_show_go(p, syms, types, defs, cbs, seen, STEnc{v, base, names, nnames, in_adt})
     case 1n++p STEnc{EOp{5, a, b}, base, names, +nnames, +in_adt}:
       +fst_idx = U32.add(base, 10)
-      low_show_go(p, syms, types, defs, cbs, seen, STTupA{b, nnames, fst_idx, low_show_go(p, syms, types, defs, cbs, seen, STEnc{low_reassoc_amp(64n, low_unfold_type(12n, syms, defs, a)), fst_idx, b5k_list_app(String, names, ["Tuple"]), U32.add(nnames, 1), in_adt}), in_adt})
+      low_show_go(p, syms, types, defs, cbs, seen, STTupA{b, nnames, fst_idx, low_show_go(p, syms, types, defs, cbs, seen, STEnc{low_reassoc_amp(64n, low_unfold_type(64n, syms, defs, a)), fst_idx, b5k_list_app(String, names, ["Tuple"]), U32.add(nnames, 1), in_adt}), in_adt})
     case 1n++p STEnc{EAll{Param{_, Some{a}, _, _}, b}, base, names, +nnames, +in_adt}:
       +fst_idx = U32.add(base, 10)
-      low_show_go(p, syms, types, defs, cbs, seen, STTupA{b, nnames, fst_idx, low_show_go(p, syms, types, defs, cbs, seen, STEnc{low_reassoc_amp(64n, low_unfold_type(12n, syms, defs, a)), fst_idx, b5k_list_app(String, names, ["Tuple"]), U32.add(nnames, 1), in_adt}), in_adt})
+      low_show_go(p, syms, types, defs, cbs, seen, STTupA{b, nnames, fst_idx, low_show_go(p, syms, types, defs, cbs, seen, STEnc{low_reassoc_amp(64n, low_unfold_type(64n, syms, defs, a)), fst_idx, b5k_list_app(String, names, ["Tuple"]), U32.add(nnames, 1), in_adt}), in_adt})
     case 1n+p STEnc{+o, base, names, nnames, in_adt}:
       low_show_go(p, syms, types, defs, cbs, seen, STHead{low_show_code(low_type_head(syms, o)), o, base, names, nnames, in_adt})
 def low_show_from_sb(is_io: Bool, sb: ShowBuild) -> ShowInfo:
@@ -1861,7 +2010,7 @@ def low_show_info(+syms: SymTab, types: List<&2, TypeDef>, +defs: List<&2, Def>,
   match mret:
     case None{}: ShowInfo{True{}, [0], Nil{}}
     case Some{e}:
-      +eu = low_unfold_type(16n, syms, defs, e)
+      +eu = low_unfold_type(64n, syms, defs, e)
       low_show_from_sb(U32.is_eq(low_show_code(low_type_head(syms, eu)), 1), low_show_go(64n, syms, types, defs, cbs, Nil{}, STEnc{low_reassoc_amp(64n, eu), 0, Nil{}, 0, False{}}))
 def low_has_arr(+fuel: Nat, +syms: SymTab, e: Expr) -> Bool:
   match fuel e:
@@ -1887,27 +2036,20 @@ type DefAcc is Data:
 def low_def_fin(syms: SymTab, +fid: U32, main_fid: U32, sym: U32, ar: U32, acc: List<&2, IrFn>, st: CfgSt) -> DefAcc:
   CfgSt{_, nregs, _, _, _, blks_rev, _, _, _, _, _, _, bk} = st
   DefAcc{Con{IrFn{fid, symtab_name(syms, sym), ar, nregs, False{}, False{}, U32.is_eq(fid, main_fid), b5k_list_rev(IrBlock, blks_rev)}, acc}, bk}
-def low_env_for_ret(mret: Maybe<&2, Expr>, env: LowEnv) -> LowEnv:
+def low_env_for_ret(mret: Maybe<&2, Expr>, +env: LowEnv) -> LowEnv:
   match mret:
     case None{}: env
-    case Some{r}:
-      LowEnv{+syms, ct, cm, cs, fn, ar, em, ir, kd, mf, mp, +ib, +ip, sa, tmp, al} = env
-      +hd = low_type_head(syms, r)
-      +is_res = b5k_str_eq(hd, "Result")
-      +is_mb = b5k_str_eq(hd, "Maybe")
-      nb = Bool.pick(U32, is_res, Maybe.default(&2, U32, symtab_lookup(syms, "__res_bind"), ib), Bool.pick(U32, is_mb, Maybe.default(&2, U32, symtab_lookup(syms, "__mb_bind"), ib), ib))
-      np = Bool.pick(U32, is_res, Maybe.default(&2, U32, symtab_lookup(syms, "__res_pure"), ip), Bool.pick(U32, is_mb, Maybe.default(&2, U32, symtab_lookup(syms, "__mb_pure"), ip), ip))
-      LowEnv{syms, ct, cm, cs, fn, ar, em, ir, kd, mf, mp, nb, np, sa, tmp, al}
+    case Some{r}: low_env_with_monad(low_type_head(env_syms(env), r), env)
 def low_or_law_ret(mret: Maybe<&2, Expr>, laws: List<&2, LawDef>, sym: U32) -> Maybe<&2, Expr>:
   match mret:
     case Some{r}: Some{r}
     case None{}: low_find_law_ret(laws, sym)
 def low_def(+env: LowEnv, laws: List<&2, LawDef>, +fid: U32, d: Def, da: DefAcc) -> DefAcc:
-  LowEnv{+syms, _, _, _, _, _, _, _, skind, +main_fid, main_pure, _, _, _, _, _} = env
+  LowEnv{+syms, _, _, _, _, _, _, _, _, _, skind, +main_fid, +main_pure, _, _, _, _, _} = env
   Def{+sym, +params, mret, +body, _, _} = d
   DefAcc{acc, bank} = da
   +ar = low_param_arity_live(syms, body, params, 0)
-  +st2 = low_go(U32.to_nat(2048), low_env_for_ret(low_or_law_ret(mret, laws, sym), env), low_bind_params(syms, skind, params, cfg_new(fid, ar, bank), 0, body), LTExpr{body}, True{})
+  +st2 = low_go(U32.to_nat(2048), low_env_for_ret(low_or_law_ret(mret, laws, sym), env), low_bind_params(syms, skind, params, cfg_new(fid, ar, bank), 0, body), LTExpr{body}, Bool.or(U32.is_ne(fid, main_fid), main_pure))
   +st1 = cfg_alloc(st2, False{})
   low_def_fin(syms, fid, main_fid, sym, ar, acc, Bool.pick(CfgSt, Bool.and(U32.is_eq(fid, main_fid), Bool.not(main_pure)), cfg_seal(cfg_emit(st1, ICallClosure{cfg_res(st1), 1, [cfg_res(st2)]}), TRet{cfg_res(st1)}), cfg_seal(st2, TRet{cfg_res(st2)})))
 def low_defs(ds: List<&2, Def>, +env: LowEnv, +laws: List<&2, LawDef>, +fid: U32, da: DefAcc) -> DefAcc:
@@ -1924,17 +2066,17 @@ def b5k_lower_fin(da: DefAcc, ctors_base: List<&2, IrCtor>, main_fid: U32, is_pu
   all_ctors = b5k_list_app(IrCtor, ctors_base, b5k_list_rev(IrCtor, lam_ctors_rev))
   LowerRes{True{}, "", IrProg{Con{low_mk_apply_fn(b5k_list_rev(CloEntry, entries_rev)), Con{IrFn{1, "__b5k_io_run", 2, 4, True{}, False{}, False{}, [IrBlock{0, [ISink{1}, ICtor{2, 38, Nil{}}, ICallDirect{3, 0, [0, 2]}], TRet{3}}]}, Con{IrFn{2, "__b5k_io_cont", 2, 3, True{}, False{}, False{}, [IrBlock{0, [ICallDirect{2, 0, [0, 1]}], TRet{2}}]}, b5k_list_app(IrFn, b5k_list_rev(IrFn, def_fns_rev), b5k_list_rev(IrFn, lam_fns_rev))}}}, all_ctors, b5k_list_rev(U32, stats_rev), main_fid, is_pure, Nil{}, sdesc, snames}}
 def b5k_lower_run(+st: SymTab, +sym_tmp: U32, sym_t2: U32, defs: List<&2, Def>, laws: List<&2, LawDef>, ca: CtorTabAcc, fa: FnTabAcc, mret: Maybe<&2, Expr>, si: ShowInfo) -> LowerRes:
-  CtorTabAcc{_, next_cid, ctor_by_sym, ctor_smask, ctor_single, ctors_rev} = ca
+  CtorTabAcc{_, next_cid, ctor_by_sym, ctor_smask, ctor_single, ctor_arity, ctor_owner, ctors_rev} = ca
   FnTabAcc{next_fid, fn_by_sym, fn_arity, fn_emask, +main_fid, main_sym} = fa
   ShowInfo{+is_pure, sdesc, snames} = si
   sintr = low_seed_u32_map(st, low_intr_specs(), UM0{})
   skind = low_seed_u32_map(st, low_kind_specs(), UM0{})
   defs2 = low_maybe_patch_main(is_pure, mret, defs, main_sym, st, sym_tmp, sym_t2, Maybe.default(&2, U32, symtab_lookup(st, "Array.to_list"), 0))
-  da = low_defs(defs2, LowEnv{st, ctor_by_sym, ctor_smask, ctor_single, fn_by_sym, fn_arity, fn_emask, sintr, skind, main_fid, is_pure, Maybe.default(&2, U32, symtab_lookup(st, "IO.bind"), 0), Maybe.default(&2, U32, symtab_lookup(st, "IO.pure"), 0), Maybe.default(&2, U32, symtab_lookup(st, "String.append"), 0), sym_tmp, Maybe.default(&2, U32, symtab_lookup(st, "__arr_len"), 0)}, laws, 3, DefAcc{Nil{}, CloBank{next_fid, next_cid, Nil{}, Nil{}, Nil{}, 0, Nil{}, Map.new(&2, U32)}})
+  da = low_defs(defs2, LowEnv{st, ctor_by_sym, ctor_smask, ctor_single, ctor_arity, ctor_owner, fn_by_sym, fn_arity, fn_emask, sintr, skind, main_fid, is_pure, Maybe.default(&2, U32, symtab_lookup(st, "IO.bind"), 0), Maybe.default(&2, U32, symtab_lookup(st, "IO.pure"), 0), Maybe.default(&2, U32, symtab_lookup(st, "String.append"), 0), sym_tmp, Maybe.default(&2, U32, symtab_lookup(st, "__arr_len"), 0)}, laws, 3, DefAcc{Nil{}, CloBank{next_fid, next_cid, Nil{}, Nil{}, Nil{}, 0, Nil{}, Map.new(&2, U32)}})
   b5k_lower_fin(da, b5k_list_rev(IrCtor, ctors_rev), main_fid, is_pure, sdesc, snames)
 def b5k_lower_i2(sr: SymRes, sym_tmp: U32, types: List<&2, TypeDef>, +defs: List<&2, Def>, +laws: List<&2, LawDef>, +ca: CtorTabAcc, +fa: FnTabAcc) -> LowerRes:
   SymRes{+s5, sym_t2} = sr
-  CtorTabAcc{_, _, cbs, _, _, _} = ca
+  CtorTabAcc{_, _, cbs, _, _, _, _, _} = ca
   FnTabAcc{_, _, _, _, _, main_sym} = fa
   +mret = low_find_main_ret(defs, laws, main_sym)
   b5k_lower_run(s5, sym_tmp, sym_t2, defs, laws, ca, fa, mret, low_show_info(s5, types, defs, cbs, mret))
@@ -1942,7 +2084,7 @@ def b5k_lower_i1(sr: SymRes, types: List<&2, TypeDef>, defs: List<&2, Def>, laws
   SymRes{s4, sym_tmp} = sr
   b5k_lower_i2(symtab_intern(s4, "__b5k_t2"), sym_tmp, types, defs, laws, ca, fa)
 def b5k_lower_s2(types: List<&2, TypeDef>, +defs: List<&2, Def>, laws: List<&2, LawDef>, +ca: CtorTabAcc) -> LowerRes:
-  CtorTabAcc{+syms, _, _, _, _, _} = ca
+  CtorTabAcc{+syms, _, _, _, _, _, _, _} = ca
   b5k_lower_i1(symtab_intern(syms, "__b5k_tmp"), types, defs, laws, ca, low_add_defs(syms, defs, FnTabAcc{3, UM0{}, UM0{}, UM0{}, 3, 0}))
 def low_udef_syms(ds: List<&2, Def>, acc: U32Map) -> U32Map:
   match ds:
@@ -1960,7 +2102,7 @@ def low_filter_pdefs(+um: U32Map, ps: List<&2, Def>) -> List<&2, Def>:
 def b5k_lower_with_prelude(+types: List<&2, TypeDef>, +udefs: List<&2, Def>, laws: List<&2, LawDef>, pr: ParseRes) -> LowerRes:
   ParseRes{_, _, Book{_, pdefs, _, +syms1}} = pr
   skind0 = low_seed_u32_map(syms1, low_kind_specs(), UM0{})
-  b5k_lower_s2(types, b5k_list_app(Def, low_filter_pdefs(low_udef_syms(udefs, UM0{}), pdefs), udefs), laws, low_add_types(skind0, types, low_seed_core(low_core_specs(), CtorTabAcc{syms1, 0, UM0{}, UM0{}, UM0{}, Nil{}})))
+  b5k_lower_s2(types, b5k_list_app(Def, low_filter_pdefs(low_udef_syms(udefs, UM0{}), pdefs), udefs), laws, low_add_types(skind0, types, low_seed_core(low_core_specs(), CtorTabAcc{syms1, 0, UM0{}, UM0{}, UM0{}, UM0{}, UM0{}, Nil{}})))
 def b5k_lower(book: Book) -> LowerRes:
   Book{types, defs, laws, syms} = book
   b5k_lower_with_prelude(types, defs, laws, b5k_parse(b5k_prelude_src(), syms))

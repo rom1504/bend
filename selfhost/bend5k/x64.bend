@@ -1001,16 +1001,43 @@ def x64_arr_slow_get_val(+ctx: X64Ctx, dv: U32, +args: List<&2, U32>, acc: List<
   a2 = x64_push_cs4(csm, x64_emit(XMovRI32{1, 2}, x64_emit(XMovRR{2, 4}, x64_emit(XMovRI32{6, 72}, a1))))
   a3 = x64_emit(XMovRI32{9, 2}, x64_emit(XMovRR{8, 2}, a2))
   x64_store_vreg(ctx, dv, 0, x64_emit(XLoad{0, 4, 8}, x64_pop_cs4(csm, x64_emit(XCallSym{"p113_rt_array_pair"}, a3))))
+def x64_arr_spec_test(+ctx: X64Ctx, dsts: List<&2, U32>, kind: U32, args: List<&2, U32>, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  match args:
+    case Con{v, _}:
+      +csm = x64_ctx_csm(ctx)
+      a1 = x64_push_cs4(csm, x64_emit(XMovRI32{6, kind}, x64_load_state(ctx, 7, x64_load_vreg(ctx, 2, v, acc))))
+      x64_store_head(ctx, dsts, x64_pop_cs4(csm, x64_emit(XCallSym{"p111_rt_special_test"}, a1)))
+    case Nil{}: acc
+def x64_arr_spec_take(+ctx: X64Ctx, dsts: List<&2, U32>, +kind: U32, args: List<&2, U32>, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  match args:
+    case Con{v, _}:
+      +csm = x64_ctx_csm(ctx)
+      a1 = x64_emit(XMovRR{1, 4}, x64_emit(XMovRI32{6, kind}, x64_load_state(ctx, 7, x64_load_vreg(ctx, 2, v, acc))))
+      a2 = x64_emit(XMovRI32{8, Bool.pick(U32, U32.is_eq(kind, 8), 1, 2)}, x64_push_cs4(csm, a1))
+      x64_load_scratch_go(ctx, dsts, 0, x64_pop_cs4(csm, x64_emit(XCallSym{"p111_rt_special_take"}, a2)))
+    case Nil{}: acc
+def x64_arr_slow_78(ctx: X64Ctx, dsts: List<&2, U32>, args: List<&2, U32>, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  match dsts:
+    case Con{dv, _}: x64_arr_slow_get_val(ctx, dv, args, acc)
+    case Nil{}: acc
+def x64_arr_slow_rt(is_rt: Bool, ctx: X64Ctx, aop: U32, dsts: List<&2, U32>, args: List<&2, U32>, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  match is_rt:
+    case True{}: x64_arr_slow_one(ctx, "p111_rt_op", dsts, U32.sub(aop, 100), args, acc)
+    case False{}: x64_arr_slow_pair(ctx, dsts, aop, args, acc)
 def x64_arr_slow(+ctx: X64Ctx, +aop: U32, dsts: List<&2, U32>, args: List<&2, U32>, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
-  match aop dsts:
-    case 8 _: x64_arr_slow_one(ctx, "p111_rt_special_ctor", dsts, 8, args, acc)
-    case 9 _: x64_arr_slow_one(ctx, "p111_rt_special_ctor", dsts, 9, args, acc)
-    case 71 _: x64_arr_slow_one(ctx, "p111_rt_op", dsts, 71, args, acc)
-    case 73 _: x64_arr_slow_one(ctx, "p111_rt_op", dsts, 73, args, acc)
-    case 79 _: x64_arr_slow_one(ctx, "p111_rt_op", dsts, 73, args, acc)
-    case 78 Con{dv, _}: x64_arr_slow_get_val(ctx, dv, args, acc)
-    case 78 Nil{}: acc
-    case _ _: x64_arr_slow_pair(ctx, dsts, aop, args, acc)
+  match aop:
+    case 7: x64_arr_slow_one(ctx, "p111_rt_special_ctor", dsts, 7, args, acc)
+    case 8: x64_arr_slow_one(ctx, "p111_rt_special_ctor", dsts, 8, args, acc)
+    case 9: x64_arr_slow_one(ctx, "p111_rt_special_ctor", dsts, 9, args, acc)
+    case 71: x64_arr_slow_one(ctx, "p111_rt_op", dsts, 71, args, acc)
+    case 73: x64_arr_slow_one(ctx, "p111_rt_op", dsts, 73, args, acc)
+    case 79: x64_arr_slow_one(ctx, "p111_rt_op", dsts, 73, args, acc)
+    case 78: x64_arr_slow_78(ctx, dsts, args, acc)
+    case 208: x64_arr_spec_test(ctx, dsts, 8, args, acc)
+    case 209: x64_arr_spec_test(ctx, dsts, 9, args, acc)
+    case 218: x64_arr_spec_take(ctx, dsts, 8, args, acc)
+    case 219: x64_arr_spec_take(ctx, dsts, 9, args, acc)
+    case _: x64_arr_slow_rt(Bool.and(U32.is_ge(aop, 100), U32.is_lt(aop, 200)), ctx, aop, dsts, args, acc)
 def x64_arr_elem_ptr(+ctx: X64Ctx, a: U32, i: U32, +lbl_slow: U32, +lbl_unsh: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
   a1 = x64_load_vreg(ctx, 2, i, x64_load_vreg(ctx, 6, a, acc))
   a2 = x64_emit(XJcc{5, lbl_slow}, x64_emit(XCmpRI{0, 6}, x64_emit(XAluRI{5, 0, 127}, x64_emit(XShift{9, 0, 56, False{}}, x64_emit(XMovRR{0, 6}, a1)))))
@@ -1825,21 +1852,22 @@ def x64_ru_mark(+vd: Nat, +s: U32, bids: List<&2, U32>, +brm: RaVec<RaVec<Bool>>
   match bids:
     case Nil{}: brm
     case Con{+bid, t}: x64_ru_mark(vd, s, t, ra_vec_set(RaVec<Bool>, 5n, bid, ra_vec_set(Bool, vd, s, True{}, ra_vec_get(RaVec<Bool>, 5n, RVEmpty{}, bid, brm)), brm))
-def x64_scan_reuse_ops(+ctx: X64Ctx, +bmap: RaVec<Maybe<&2, IrBlock>>, +preds: RaVec<U32>, +vd: Nat, +bid: U32, +term: IrTerm, ops: List<&2, IrOp>, +brm: RaVec<RaVec<Bool>>) -> RaVec<RaVec<Bool>>:
+def x64_scan_reuse_ops(+ctx: X64Ctx, +bmap: RaVec<Maybe<&2, IrBlock>>, +preds: RaVec<U32>, +vd: Nat, +bid: U32, +term: IrTerm, ops: List<&2, IrOp>, +seen: RaVec<Bool>, +brm: RaVec<RaVec<Bool>>) -> RaVec<RaVec<Bool>>:
   match ops:
     case Nil{}: brm
     case Con{ITake{+ds, +s}, +t}:
       +nt = b5k_u32_list_len(ds)
       +cls = x64_cls_fit(nt)
-      +st = Bool.pick(U32, Bool.and(Bool.and(U32.is_gt(nt, 0), U32.is_le(nt, 8)), Bool.and(Bool.not(x64_u32_in(s, ds)), Bool.and(Bool.not(x64_is_u2_src(ctx, s)), Bool.and(Bool.not(x64_is_bor(ctx, s)), Bool.not(ra_vec_get(Bool, vd, False{}, s, ra_vec_get(RaVec<Bool>, 5n, RVEmpty{}, bid, brm))))))), x64_find_reuse_ops(ctx, vd, s, cls, t, 2), 0)
+      +st = Bool.pick(U32, Bool.and(Bool.and(U32.is_gt(nt, 0), U32.is_le(nt, 8)), Bool.and(Bool.not(x64_u32_in(s, ds)), Bool.and(Bool.not(x64_is_u2_src(ctx, s)), Bool.and(Bool.not(x64_is_bor(ctx, s)), Bool.and(Bool.not(ra_vec_get(Bool, vd, False{}, s, seen)), Bool.not(ra_vec_get(Bool, vd, False{}, s, ra_vec_get(RaVec<Bool>, 5n, RVEmpty{}, bid, brm)))))))), x64_find_reuse_ops(ctx, vd, s, cls, t, 2), 0)
       +tu = U32.is_ne(ra_vec_get(U32, vd, 0, s, x64_uc_term(vd, term, RVEmpty{})), 0)
       hits = Bool.pick(List<&2, U32>, U32.is_eq(st, 1), Bool.pick(List<&2, U32>, tu, Nil{}, Con{bid, Nil{}}), Bool.pick(List<&2, U32>, U32.is_eq(st, 2), x64_ru_walk(24n, True{}, tu, ctx, bmap, preds, vd, s, cls, bid, term, None{}), Nil{}))
-      x64_scan_reuse_ops(ctx, bmap, preds, vd, bid, term, t, x64_ru_mark(vd, s, x64_ru_both(Con{bid, Nil{}}, hits), brm))
-    case Con{_, t}: x64_scan_reuse_ops(ctx, bmap, preds, vd, bid, term, t, brm)
+      x64_scan_reuse_ops(ctx, bmap, preds, vd, bid, term, t, ra_vec_set(Bool, vd, s, True{}, seen), x64_ru_mark(vd, s, x64_ru_both(Con{bid, Nil{}}, hits), brm))
+    case Con{IReuse{_, s, _, _}, t}: x64_scan_reuse_ops(ctx, bmap, preds, vd, bid, term, t, ra_vec_set(Bool, vd, s, True{}, seen), brm)
+    case Con{_, t}: x64_scan_reuse_ops(ctx, bmap, preds, vd, bid, term, t, seen, brm)
 def x64_scan_reuse_blks(+ctx: X64Ctx, +bmap: RaVec<Maybe<&2, IrBlock>>, +preds: RaVec<U32>, +vd: Nat, blks: List<&2, IrBlock>, +brm: RaVec<RaVec<Bool>>) -> RaVec<RaVec<Bool>>:
   match blks:
     case Nil{}: brm
-    case Con{IrBlock{+id, ops, term}, t}: x64_scan_reuse_blks(ctx, bmap, preds, vd, t, Bool.pick(RaVec<RaVec<Bool>>, U32.is_lt(id, 1024), x64_scan_reuse_ops(ctx, bmap, preds, vd, id, term, ops, brm), brm))
+    case Con{IrBlock{+id, ops, term}, t}: x64_scan_reuse_blks(ctx, bmap, preds, vd, t, Bool.pick(RaVec<RaVec<Bool>>, U32.is_lt(id, 1024), x64_scan_reuse_ops(ctx, bmap, preds, vd, id, term, ops, RVEmpty{}, brm), brm))
 def x64_ru_prep(+ctx: X64Ctx, +vd: Nat, +all_b: List<&2, IrBlock>, blks: List<&2, IrBlock>, +bm: RaVec<Maybe<&2, IrBlock>>, ps: RaVec<U32>) -> RaVec<RaVec<Bool>>:
   match blks:
     case Nil{}: x64_scan_reuse_blks(ctx, bm, ps, vd, all_b, RVEmpty{})

@@ -650,6 +650,76 @@
       "category": "dependent_proof",
       "expect_upstream": "accept",
       "code": "import Base\ndef ok(e: {1 == 1 : U32}) -> {1 == 1 : U32}:\n  Equal.sym(U32, 1, 1, e)\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v3_neg_user_def_eval",
+      "group": "v3_dependent_neg",
+      "category": "dependent_proof",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef double(+x: U32) -> U32:\n  U32.add(x, x)\nlaw bad:\n  {double(3) == 7 : U32}\ndef bad():\n  {==}\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v3_pos_user_def_eval",
+      "group": "v3_dependent_pos",
+      "category": "dependent_proof",
+      "expect_upstream": "accept",
+      "code": "import Base\ndef double(+x: U32) -> U32:\n  U32.add(x, x)\nlaw ok:\n  {double(3) == 6 : U32}\ndef ok():\n  {==}\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v3_neg_user_def_match",
+      "group": "v3_dependent_neg",
+      "category": "dependent_proof",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef flip(b: Bool) -> Bool:\n  match b:\n    case True{}: False{}\n    case False{}: True{}\nlaw bad:\n  {flip(True{}) == True{} : Bool}\ndef bad():\n  {==}\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v3_pos_user_def_match",
+      "group": "v3_dependent_pos",
+      "category": "dependent_proof",
+      "expect_upstream": "accept",
+      "code": "import Base\ndef flip(b: Bool) -> Bool:\n  match b:\n    case True{}: False{}\n    case False{}: True{}\nlaw ok:\n  {flip(True{}) == False{} : Bool}\ndef ok():\n  {==}\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v3_neg_absurd_non_empty",
+      "group": "v3_dependent_neg",
+      "category": "dependent_proof",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad(x: U32) -> Bool:\n  Empty.absurd(Bool, x)\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v3_pos_absurd_empty",
+      "group": "v3_dependent_pos",
+      "category": "dependent_proof",
+      "expect_upstream": "accept",
+      "code": "import Base\ndef ok(e: Empty) -> Bool:\n  Empty.absurd(Bool, e)\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v3_neg_absurd_ret_mismatch",
+      "group": "v3_dependent_neg",
+      "category": "dependent_proof",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad(e: Empty) -> U32:\n  Empty.absurd(Bool, e)\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v3_neg_eq_sym_bad_proof",
+      "group": "v3_dependent_neg",
+      "category": "dependent_proof",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad(e: {0 == 0 : U32}) -> {1 == 0 : U32}:\n  Equal.sym(U32, 0, 1, e)\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v3_neg_eq_trans_bad_proof",
+      "group": "v3_dependent_neg",
+      "category": "dependent_proof",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad(e1: {0 == 0 : U32}, e2: {1 == 1 : U32}) -> {0 == 1 : U32}:\n  Equal.trans(U32, 0, 0, 1, e1, e2)\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v3_pos_eq_trans_valid",
+      "group": "v3_dependent_pos",
+      "category": "dependent_proof",
+      "expect_upstream": "accept",
+      "code": "import Base\ndef ok(e1: {1 == 1 : U32}, e2: {1 == 1 : U32}) -> {1 == 1 : U32}:\n  Equal.trans(U32, 1, 1, 1, e1, e2)\ndef main() -> U32:\n  0\n"
     }
   ]
 }

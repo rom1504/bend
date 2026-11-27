@@ -3,9 +3,9 @@
 # Emits TkIndent/TkDedent/TkNewline/TkEof and interns every identifier
 # via SymTab so downstream passes only see dense U32 sym IDs.
 # Keywords (TkKw): 1=def 2=type 3=law 4=is 5=match 6=case 7=if 8=else
-#   9=do 10=return 11=import 12=as 13=for 14=exs 15=where 16=with 17=@unsafe
+#   9=do 10=return 11=import 13=for 17=@unsafe
 # Symbols (TkSym): ASCII for 1-char; 256=-> 257==> 258=== 259=!= 260=<=
-#   261=>= 262=&& 263=|| 264=++ 265=<> 266=<- 267=&1 268=&2 269=<< 270=>>
+#   261=>= 262=&& 263=|| 264=++ 265=<> 266=<- 267=&1 268=&2 269=<< 270=>> 271=&0 272=<&>
 type LexRes is Data:
   LexRes{toks: List<&2, Tok>, syms: SymTab, err: String}
 type StrScan is Data:
@@ -47,11 +47,9 @@ def lex_kw_code(+w: String) -> U32:
         case 105: Bool.pick(U32, String.eq(w, "is"), 4, Bool.pick(U32, String.eq(w, "if"), 7, Bool.pick(U32, String.eq(w, "import"), 11, 0)))
         case 109: Bool.pick(U32, String.eq(w, "match"), 5, 0)
         case 99: Bool.pick(U32, String.eq(w, "case"), 6, 0)
-        case 101: Bool.pick(U32, String.eq(w, "else"), 8, Bool.pick(U32, String.eq(w, "exs"), 14, 0))
+        case 101: Bool.pick(U32, String.eq(w, "else"), 8, 0)
         case 114: Bool.pick(U32, String.eq(w, "return"), 10, 0)
-        case 97: Bool.pick(U32, String.eq(w, "as"), 12, 0)
         case 102: Bool.pick(U32, String.eq(w, "for"), 13, 0)
-        case 119: Bool.pick(U32, String.eq(w, "where"), 15, Bool.pick(U32, String.eq(w, "with"), 16, 0))
         case _: 0
     case _: 0
 def lex_sym2(+a: U32, +b: U32) -> U32:
@@ -61,7 +59,7 @@ def lex_sym2(+a: U32, +b: U32) -> U32:
     case 33: Bool.pick(U32, U32.is_eq(b, 61), 259, 0)
     case 60: Bool.pick(U32, U32.is_eq(b, 61), 260, Bool.pick(U32, U32.is_eq(b, 62), 265, Bool.pick(U32, U32.is_eq(b, 45), 266, Bool.pick(U32, U32.is_eq(b, 60), 269, 0))))
     case 62: Bool.pick(U32, U32.is_eq(b, 61), 261, Bool.pick(U32, U32.is_eq(b, 62), 270, 0))
-    case 38: Bool.pick(U32, U32.is_eq(b, 38), 262, Bool.pick(U32, U32.is_eq(b, 49), 267, Bool.pick(U32, U32.is_eq(b, 50), 268, 0)))
+    case 38: Bool.pick(U32, U32.is_eq(b, 38), 262, Bool.pick(U32, U32.is_eq(b, 49), 267, Bool.pick(U32, U32.is_eq(b, 50), 268, Bool.pick(U32, U32.is_eq(b, 48), 271, 0))))
     case 124: Bool.pick(U32, U32.is_eq(b, 124), 263, 0)
     case 43: Bool.pick(U32, U32.is_eq(b, 43), 264, 0)
     case _: 0
@@ -128,8 +126,9 @@ def lex_f32_scale(n: Nat, +neg: Bool, +v: F32) -> F32:
 def lex_f32_bits_exp(+ip: U32, +fp: U32, +fc: U32, +e_neg: Bool, +e_val: U32) -> U32:
   +fc2 = U32.min(fc, 6)
   +den = lex_f32_scale(U32.to_nat(fc2), False{}, 1.0)
-  v0 = F32.add(F32.from_nat(U32.to_nat(ip)), F32.div(F32.from_nat(U32.to_nat(fp)), den))
-  F32.bits(lex_f32_scale(U32.to_nat(U32.min(e_val, 45)), e_neg, v0))
+  +v0 = F32.add(F32.from_nat(U32.to_nat(ip)), F32.div(F32.from_nat(U32.to_nat(fp)), den))
+  +sc = lex_f32_scale(U32.to_nat(U32.min(e_val, 38)), False{}, 1.0)
+  F32.bits(Bool.pick(F32, e_neg, F32.div(v0, sc), F32.mul(v0, sc)))
 def lex_f32_run(fuel: Nat, done: Bool, +num: U32, +den: U32, +exp: U32) -> U32:
   match fuel done:
     case 1n+p False{}:
@@ -263,8 +262,13 @@ def lex_str_done(stk: List<&2, U32>, depth: U32, +line: U32, rev: List<&2, Tok>,
   match sc:
     case StrScan{val, rest, True{}}: LNext{rest, stk, False{}, depth, line, Con{Tok{TkStr{val}, line}, rev}, syms}
     case StrScan{_, _, False{}}: LDone{LexRes{Nil{}, syms, "unterminated string literal"}}
+def lex_chr_uni_done(stk: List<&2, U32>, depth: U32, +line: U32, rev: List<&2, Tok>, syms: SymTab, ns: NumScan) -> LStep:
+  match ns:
+    case NumScan{val, _, SCon{Chr{125}, SCon{Chr{39}, t2}}}: LNext{t2, stk, False{}, depth, line, Con{Tok{TkChr{val}, line}, rev}, syms}
+    case _: LDone{LexRes{Nil{}, syms, "unterminated char escape"}}
 def lex_tok_chr(t: String, stk: List<&2, U32>, depth: U32, +line: U32, rev: List<&2, Tok>, syms: SymTab) -> LStep:
   match t:
+    case SCon{Chr{92}, SCon{Chr{117}, SCon{Chr{123}, t3}}}: lex_chr_uni_done(stk, depth, line, rev, syms, lex_scnum_go(t3, True{}, Chr{0}, True{}, 0, 0))
     case SCon{Chr{92}, SCon{ec, SCon{_, t3}}}: LNext{t3, stk, False{}, depth, line, Con{Tok{TkChr{lex_unesc(Char.to_u32(ec))}, line}, rev}, syms}
     case SCon{Chr{92}, _}: LDone{LexRes{Nil{}, syms, "unterminated char escape"}}
     case SCon{c1, SCon{_, t2}}: LNext{t2, stk, False{}, depth, line, Con{Tok{TkChr{Char.to_u32(c1)}, line}, rev}, syms}
@@ -281,8 +285,9 @@ def lex_sym_unsafe(+u: U32, t: String, +stk: List<&2, U32>, +depth: U32, +line: 
     case _ True{}: LNext{String.drop(t, 6n), stk, False{}, depth, line, Con{Tok{TkKw{17}, line}, rev}, syms}
     case SNil{} False{}: LNext{SNil{}, stk, False{}, lex_depth_delta(u, depth), line, Con{Tok{TkSym{u}, line}, rev}, syms}
     case SCon{+c2, +t2} False{}:
-      +dop = Bool.pick(U32, U32.is_eq(u, 46), lex_dot_op(SCon{c2, t2}), 0)
-      +s2 = lex_sym2(u, Char.to_u32(c2))
+      +u2 = Char.to_u32(c2)
+      +dop = Bool.pick(U32, U32.is_eq(u, 46), lex_dot_op(SCon{c2, t2}), Bool.pick(U32, Bool.and(U32.is_eq(u, 60), Bool.and(U32.is_eq(u2, 38), U32.is_eq(lex_peek_u32(t2), 62))), 272, 0))
+      +s2 = lex_sym2(u, u2)
       Bool.pick(LStep, U32.is_gt(dop, 0), LNext{String.drop(t2, 1n), stk, False{}, depth, line, Con{Tok{TkSym{dop}, line}, rev}, syms},
       Bool.pick(LStep, U32.is_zero(s2), LNext{SCon{c2, t2}, stk, False{}, lex_depth_delta(u, depth), line, Con{Tok{TkSym{u}, line}, rev}, syms}, LNext{t2, stk, False{}, depth, line, Con{Tok{TkSym{s2}, line}, rev}, syms}))
 def lex_tok_val(c: Char, +u: U32, +t: String, stk: List<&2, U32>, depth: U32, line: U32, rev: List<&2, Tok>, syms: SymTab, alp: Bool, dig: Bool) -> LStep:

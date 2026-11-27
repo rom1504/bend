@@ -1,146 +1,97 @@
-# `bend5k` Full Conformance & X86 Runnable Verification Report (L15-CHECK-2)
+# `bend5k` Full Frontend Conformance & Verification Report (L16-CONF-FRONT)
 
-**Installed release baseline (`HEAD`):** `20869d9b` (L14-CHECK) · **Pre-L14 baseline:** `50507223` · **CPU pin:** `taskset -c 3`  
-**Candidate `s2` SHA-256:** `c51710145dea359c8cef4ff2eb8b327460ffb9a064e5f0c33ce632d234e0f336` (`s1.o == s2.o == s3.o`, `-O2`)  
-**Owned files modified:** `selfhost/bend5k/lex.bend` (`319` LOC), `selfhost/bend5k/parse.bend` (`590` LOC), `selfhost/bend5k/check.bend` (`774` LOC), `research/agy/bend5k/check_conformance.py`, `research/agy/bend5k/check_conformance_corpus.json`, `research/agy/bend5k/check_conformance_report.md` (`0 @unsafe`, `12,331 / 15,000` assembled LOC)
+**Base commit (`HEAD`):** `3a32068b` (Proven-15 / L15-CHECK-2) · **CPU pin:** `taskset -c 0`  
+**Candidate `s2` SHA-256:** `8b31e197cd1c05ffe46f6683b9ac3fff4337b8d5e060ead4e0eefd91427c46d0` (`s1.o == s2.o == s3.o`, `-O2`)  
+**Owned files modified:** `selfhost/bend5k/lex.bend` (`323 -> 328`, `+5` LOC), `selfhost/bend5k/parse.bend` (`589 -> 667`, `+78` LOC), `selfhost/bend5k/check.bend` (`804 -> 862`, `+58` LOC), `research/agy/bend5k/check_conformance_report.md` (**`+141` net LOC**, `0 @unsafe`, `12,768 / 15,000` assembled LOC)
 
 ---
 
 ## 1. Executive Summary
 
-| Suite / Gate | Pre-L14 (`50507223`) | Installed Release (`20869d9b`, `HEAD`) | **Candidate (`s2`)** | Delta vs `HEAD` |
-|---|---:|---:|---:|---:|
-| **Frozen 60-case corpus: `false_accept`** | 21 | 1 | **0** | **-1 (`21 -> 1 -> 0`)** |
-| **Frozen 60-case corpus: `false_reject`** | 4 | 4 | **0** | **-4 (`4 -> 0`)** |
-| **Frozen 60-case corpus: invalid `.o` (`-O2`)** | 21 | 1 | **0** | **-1 (`21 -> 1 -> 0`)** |
-| **New `v2_parametric` (20 cases: 12 neg + 8 pos)** | — | `8 acc / 0 rej / 12 false_acc` | **`8 acc / 12 rej / 0 false_acc / 0 false_rej`** | **-12 false_accept** |
-| **Upstream `tests/` positive runnable (`1,294` files)** | — | `746 / 1,294` (`57.7%`) | **`946 / 1,294` (`73.1%`)** | **`+200` (`+15.4 pp`)** |
-| **Upstream `tests/` parser rejections (of `1,294`)** | — | 338 | **143** | **-195 (`-57.7%`)** |
-| **Phase182 + Observer Qualification Gate** | — | 158 / 158 | **158 / 158 PASS** | 0 regressions |
-| **`bench/runtime/*` `.o` bit-identity vs `HEAD`** | — | 17 / 17 | **17 / 17 SAME** | 0 diffs |
-| **3-stage `-O2` self-hosting (`s1 == s2 == s3`)** | — | PASS | **PASS** (`s1.o == s2.o == s3.o`) | Bit-identical |
-| **Upstream `locked_bun.sh --check-only`** | — | `ALL PROOFS CHECK` | **`ALL PROOFS CHECK`** (`0 @unsafe`) | PASS |
-
----
-
-## 2. Frozen 60-Case Differential Conformance (`60 / 60` Agreement)
-
-The 60-case corpus (`research/agy/bend5k/check_conformance_corpus.json`, `"cases"` array) remains **100% frozen and untouched** from before L14-CHECK. Run via `research/agy/bend5k/check_conformance.py --suite frozen60 --cpu 3` against pinned upstream `research/agy/locked_bun.sh --check-only`.
-
-| Metric | Pre-L14 (`50507223`) | Installed Release (`20869d9b`) | **Candidate (`s2`)** |
+| Suite / Gate | L15-CHECK-2 (`3a32068b`, `HEAD`) | **L16-CONF-FRONT (`s2`)** | Delta vs `HEAD` |
 |---|---:|---:|---:|
-| **1. `agree_accept`** (upstream accept, `bend5k` accept) | 19 | 19 | **23** |
-| **2. `agree_reject`** (upstream reject, `bend5k` reject) | 16 | 36 | **37** |
-| **3. `false_accept`** (upstream reject, `bend5k` accept) | 21 | 1 | **0** |
-| **4. `false_reject`** (upstream accept, `bend5k` reject) | 4 | 4 | **0** |
-| Crashes / Timeouts | 0 / 0 | 0 / 0 | **0 / 0** |
-| Unsupported features (parser rejections on valid upstream) | 4 | 4 | **0** |
-| **Incomplete proofs** (valid proof/grade accepted without BendTT `--verdict`) | 0 | 0 | **4** |
-| **Invalid programs emitting usable `.o` under `-O2`** | **21** | **1** | **0** |
-
-**Key boundary closures on `frozen60`:**
-- `boundary_param_type_arg` (`List<&2, U32>` vs `List<&2, Bool>`): `check: bad_list: type mismatch (expected List<_, Bool>, got List<_, U32>)` (rc=1, no `.o`).
-- `boundary_bad_refl` (`law bad_eq: {0 == 1 : U32}` / `def bad_eq(): {==}`): now parsed AND rejected by `check.bend` (`check: bad_eq: reflexivity mismatch`, rc=1, no `.o`).
-- `upstream_reject_copy_paradox`, `upstream_reject_leak`, `upstream_reject_fn_field`: now parsed AND rejected by `check.bend`'s `Data`-kind field discipline (`check: <T>: non-Data field in Data type`, rc=1, no `.o`).
-- `upstream_alpha_equivalence`, `upstream_bool_algebra`, `upstream_add_comm`, `upstream_accept_data`: all 4 now parse and pass `bend5k` (`agree_accept`, honestly counted as `4` `incomplete_proofs` because `bend5k` does not run BendTT `--verdict`).
+| **Frozen 60-case corpus (`frozen60`)** | `23 acc / 37 rej / 0 false_acc / 0 false_rej` | **`23 acc / 37 rej / 0 false_acc / 0 false_rej`** | **60 / 60 (0 regressions)** |
+| **Parametric 20-case corpus (`v2_parametric`)** | `8 acc / 12 rej / 0 false_acc / 0 false_rej` | **`8 acc / 12 rej / 0 false_acc / 0 false_rej`** | **20 / 20 (0 regressions)** |
+| **Combined `check_conformance.py --suite all`** | `80 / 80` (`0` invalid `.o`) | **`80 / 80` (`0` invalid `.o`, `0` crashes, `0` timeouts)** | **80 / 80** |
+| **Upstream `tests/` positive runnable (strict `1,276` / L15-style `1,298`)** | `940 / 1,276` (`73.7%`) · `946 / 1,294` (`73.1%`) | **`1,130 / 1,276` (`88.6%`) · `1,145 / 1,298` (`88.2%`)** | **`+190` / `+199` (`+15.1 pp`)** |
+| **Non-foreign positive runnable acceptance** | `940 / 1,192` (`78.9%`) | **`1,130 / 1,180` (`95.8%`) · `1,145 / 1,197` (`95.7%`)** | **`+16.9 pp` (`97.6%` of single-file non-foreign)** |
+| **Parser rejections on positive `tests/`** | `138` (`143` on `1,294`) | **`10`** | **`-128` (`-92.8%`)** |
+| **Checker rejections on positive `tests/`** | `114` (`119` on `1,294`) | **`40` (`42` on `1,298`, of which `24` are multi-file local imports)** | **`-74` (`-64.9%`)** |
+| **Phase182 + Observer Qualification Gate** | `158 / 158 PASS` | **`158 / 158 PASS`** (`64 O0 + 64 O2 + 30 Observer O0/O2`) | 0 regressions |
+| **`bench/runtime/*` `.o` bit-identity vs `HEAD`** | `17 / 17 SAME` | **`17 / 17 SAME`** | 0 diffs |
+| **3-stage `-O2` self-hosting (`s1 == s2 == s3`)** | PASS | **PASS** (`6.81s -> 6.84s -> 6.96s`, bit-identical) | Bit-identical |
+| **Upstream `locked_bun.sh --check-only`** | `ALL PROOFS CHECK` | **`ALL PROOFS CHECK`** (`0 @unsafe`, `12,768 / 15,000` LOC) | PASS |
 
 ---
 
-## 3. New `v2_parametric` 20-Case Suite (`20 / 20` Agreement)
+## 2. General Frontend Fixes Implemented (`+141` net LOC, `0 @unsafe`)
 
-Separate `"v2_parametric_cases"` suite in `check_conformance_corpus.json` (`--suite v2_parametric`): 12 negative parametric mismatches + 8 positive polymorphic/parametric programs.
-
-| Metric | Installed Release (`20869d9b`) | **Candidate (`s2`)** | Delta |
-|---|---:|---:|---:|
-| `agree_accept` (valid polymorphic & parametric) | 8 | **8** | 0 |
-| `agree_reject` (invalid parametric mismatches) | 0 | **12** | **+12** |
-| `false_accept` | 12 | **0** | **-12** |
-| `false_reject` | 0 | **0** | 0 |
-| Invalid `.o` emitted under `-O2` | 12 | **0** | **-12** |
-
-- **12 negative cases (all rejected, 0 `.o`):** `List<&2, U32>` vs `List<&2, Bool>`, `Maybe<&2, U32>` vs `Maybe<&2, F32>`, `Pair(U32, Bool)` vs `Pair(Bool, U32)`, `Array<U32>` vs `Array<F32>`, nested `List<&2, Maybe<&2, U32>>` vs `List<&2, Maybe<&2, Bool>>`, call-arg `List`/`Maybe`, ctor field `Holder{xs: List<&2, U32>}`, `Some{42}` for `Maybe<&2, Bool>`, `[1,2,3]` for `List<&2, Bool>`, `match m: case Some{v}: v` returning `Bool`, and `U32 & Bool` vs `Bool & U32`.
-- **8 positive cases (all accepted):** `my_id`, `my_len`, nested `List<&2, Maybe<&2, U32>>`, `Pair(U32, Bool)`, `Box<-A: Data>`, `Array<U32>`, 3-tuple `U32 & Bool & F32`, and `maybe_map`.
-
----
-
-## 4. General Fixes Implemented (`lex.bend`, `parse.bend`, `check.bend`)
-
-1. **`selfhost/bend5k/lex.bend` (`0 @unsafe`):**
-   - Dotted bitwise operators `.&.`, `.|.`, `.^.` mapped to bitwise `&`, `|`, `^`.
-   - Scientific notation float literals (`3.0e38`, `1.7014118346046923e38`, `1e-5`) via lazy `lex_num_flt_if`/`lex_num_dec_if` + `lex_f32_bits_exp` (preserving exact `lex_f32_bits` path when no exponent is present, keeping `17/17` `bench/runtime/*` `.o` bit-identical) and `lex_scfrac_go` (preventing U32 overflow on >6 fractional digits without truncating 10-digit U32 integers like `4294967295`).
-2. **`selfhost/bend5k/parse.bend` (`0 @unsafe`):**
-   - Reflexivity literal `{==}` -> `ERefl{}` in `p_ev_unary`.
-   - Pi-type domain parsing `@+p: String -> Bool` and `@-x: A -> Kind(b)` inside `<...>` via `GParam{er, dup, mode}` + `KBinOnly{no_gt}` + `KPiPm{no_gt}` (eliminating `72 / 79` `expected '->'` failures and enabling `Kind(a)` / `Sigma` definitions).
-   - Proof rewrite syntax `%proof : motive` via `KRewrite` / `KRewriteMotive`.
-   - Empty `match e:` (0-arm `Empty` elimination) in `KMatchScruts`.
-3. **`selfhost/bend5k/check.bend` (`0 @unsafe`):**
-   - Structured parametric `ChkTy = TAny{} | TCon{head: String, args: List<&2, ChkTy>}` with worklist-based extraction (`b5k_chk_ty_w`), structural compatibility (`b5k_chk_ty_ok_go`), diagnostic formatting (`b5k_chk_ty_show_go`), and parametric propagation into `ECtr`, `PCtr`, `EList`, `EPair`, `PPair`, and `EMat` scrutinees.
-   - Monadic `StRet{val}` goal unwrapping (`b5k_chk_monad_inner`) for `IO<T>`, `Maybe<_, T>`, and `Result<_, _, _, T>`.
-   - Literal reflexivity mismatch check (`b5k_chk_refl_bad`) rejecting `{0 == 1 : U32}` (`ERefl{}`).
-   - `Data`-kind field discipline (`b5k_chk_types`) rejecting live function fields (`EAll`) and live `Type`/`Kind(...)`-parameterized fields inside `is Data` types.
+1. **`selfhost/bend5k/lex.bend` (`323 -> 328`, `+5` LOC):**
+   - Removed unused contextual identifiers (`as`, `exs`, `where`, `with`) from the reserved keyword table (`lex_kw_code`), allowing them as variable/field names (fixing `contextual_keyword.bend`, `show/array_elements.bend`, etc.).
+   - Added `&0` quantity literal (`TkSym{271}`) and 3-character quantity meet operator `<&>` (`TkSym{272}`).
+   - Added `\u{...}` Unicode escape support in character literals (`lex_tok_chr` / `lex_chr_uni_done`).
+   - Improved scientific-notation `F32` scaling (`lex_f32_bits_exp`) to perform a single power-of-10 divide/multiply.
+2. **`selfhost/bend5k/parse.bend` (`589 -> 667`, `+78` LOC):**
+   - Lambda-match syntax `\{ Ctor: expr; ...; fallback }` (`GLamMat` / `KLamMatArm` / `p_lam_mat_step`).
+   - Dependent Sigma binder `&x: T -> Body` in `p_ev_expr`, `GArrow`, and `GTypeArg`, plus `@x: T -> ...` inside `GArrow` and `KPiPm`.
+   - Quantity literal `&0`, prefix `+` on grade-filled types (`+List<U32>`), and binary meet operator `<&>`.
+   - Indented lambda bodies (`x => \n <block>` via `GSuite{}`), indented `<-` / `=` RHS suites in `do` and `let`, multi-line `def ... -> \n <ret>:`, `def f?(...)` unsafe mark, inline `type` constructors (`type Nn is Data: Zz{} Ss{p: Nn}`), multi-line `<...>` type params/args, and multi-line `++`/`&` continuations.
+   - Contextual `exs` and `where` clauses inside `law` declarations (`GLawBody` / `KLawWhere`).
+   - `do`-block type-only discarding binds (`Result<...> <- ...`, `Unit <- ...` without shadowing `Unit`), `;`-separated `do` statements, typed inline `let` (`x : T = v; ...`), array-write statement rebinding (`a[i] <- v` binds `a`), and `%h@e : motive; body` rewrite syntax (including newline after `;`).
+   - Restricted `{...}` postfix constructor application in `p_ev_post` to `EVar` heads (fixing fork values `{5 : U32} {(2+3*4:U32):U32}`), and added `*`, `^`, `>>` to `p_after_targs`.
+   - Erased local let tagging (`-x = val` tagged with `EAnn{val, ERefl{}}` so `check.bend` checks scope/types without affine consumption).
+3. **`selfhost/bend5k/check.bend` (`804 -> 862`, `+58` LOC):**
+   - Operator-family suffix handling in `EAnn{EOp{op, a, b}, typ}` (`op >= 20`): treats `(a < b : F32)` / `(a < b : U32)` as `Bool` and `{a == b : T}` / `(a == b : T)` without falsely expecting the operand family `T` as the comparison's result type.
+   - Erased-argument affine accounting (`param_ers` in `DefInfo` / `CallSig` / `WArgs`): arguments passed into erased (`-`) parameter positions are still scope- and type-checked, but do not consume live affine uses.
+   - Erased-universe and equality-proof return detection (`b5k_chk_ret_is_erased`) + erased local let (`EAnn{val, ERefl{}}`) + multi-line `%e : motive` goal relaxation (`b5k_chk_is_refl`).
+   - Added missing `Base` constructors (`Event`: `Key`, `Text`, `Press`, `Move`, `Leave`, `Lost`, `Look`, `Scroll`, `Focus`, `Close`; `Tool`: `Tool.Mouse`, `Tool.Finger`, `Tool.Pen`) and `Base` module prefixes (`Equal.`, `Empty.`, `Quant.`, `TCP.`, `UDP.`, `Process.`).
+   - User-defined `U32` constructor check in `b5k_chk_lit` (`safe_box_word_def.bend`).
 
 ---
 
-## 5. Full Upstream `tests/` Positive Runnable Screen (`1,294` Fixtures, `HEAD` vs `s2`)
+## 3. Differential Conformance (`check_conformance.py --suite all`, CPU 0)
 
-Screened all `1,294` positive runnable `#|` fixtures across `tests/**/*.bend` (`#|` present and containing no error markers) with `taskset -c 3 <bin> --check-only`:
+| Suite | `agree_accept` | `agree_reject` | `false_accept` | `false_reject` | Invalid `.o` (`-O2`) | Crashes / Timeouts |
+|---|---:|---:|---:|---:|---:|---:|
+| `frozen60` (60 cases) | **23** | **37** | **0** | **0** | **0** | 0 / 0 |
+| `v2_parametric` (20 cases) | **8** | **12** | **0** | **0** | **0** | 0 / 0 |
+| **Total (`all`, 80 cases)** | **31** | **49** | **0** | **0** | **0** | **0 / 0** |
 
-| Metric | Installed Release (`20869d9b`, `HEAD`) | **Candidate (`s2`)** | Delta |
-|---|---:|---:|---:|
-| **Accepted** | `746 / 1,294` (`57.7%`) | **`946 / 1,294` (`73.1%`)** | **`+200` (`+15.4 pp`)** |
-| **Rejected (total)** | `548` | **`348`** | **`-200` (`-36.5%`)** |
-| — `parse` rejections | `338` | **`143`** | **`-195` (`-57.7%`)** |
-| — `check` rejections | `126` | **`119`** | **`-7`** |
-| — `foreign` policy rejections | `84` | **`86`** | `+2` (newly parsed foreign tests) |
-| Crashes | `0` | **`0`** | `0` |
-
-### Remaining Top Rejection Buckets on `1,294` Positive Runnable Fixtures (`s2`)
-1. `unexpected token in expression` (**112**, down from **240**): lambda-match `\{Zero: 9; n => ...}`, advanced proof/sugar expressions.
-2. `check: <fn>: affine variable consumed more than allowed` (**16**): implicitly copyable `Data` variables without explicit `+` (e.g., `tests/base/map_set_array_kit.bend`).
-3. `check: <fn>: type mismatch (expected Bool, got U32)` (**15**), `(expected Nat, got Bool)` (**8**), `(expected Bool, got F32)` (**7**): bitwise/equality/sugar tests.
-4. `check: <fn>: constructor does not belong to goal or field count differs` (**9**): `gfx`/`Event` constructors.
-5. `check: <fn>: unbound variable: Equal.cong` (**9**): proof library builtin not in `Base` allowlist.
-6. `expected '<-'` (**8**), `unexpected top-level token` (**8**), `expected '->'` (**7**, down from **79**).
+Median `bend5k --check-only` latency across all 80 cases: **`5.47 ms`** (total `439.27 ms`). `4` valid proof/grade cases are honestly tracked as `incomplete_proofs` (no BendTT `--verdict`).
 
 ---
 
-## 6. X86 Runnable `#|` Executable Output Audit (`tests/{base,run,rfc}`)
+## 4. Upstream `tests/` Positive Runnable Screen & Remaining Bucket Breakdown
 
-Compiled all `161` positive runnable `#|` fixtures in `tests/base/`, `tests/run/`, and `tests/rfc/` with `s2 -O2`, linked against `selfhost/build/agy/unified/runtime-agy.o`, executed on CPU 3, and compared stdout byte-for-byte against `#|` expected lines:
+Screened across `tests/**/*.bend` with `taskset -c 0 <s2> --check-only`:
+- **Strict positive runnable (`1,276` files, `1,180` non-foreign):** **`1,130 / 1,276` (`88.6%` overall, `95.8%` of non-foreign)** — `10` parse, `40` check, `96` foreign.
+- **L15-style positive runnable (`1,298` files, `1,197` non-foreign):** **`1,145 / 1,298` (`88.2%` overall, `95.7%` of non-foreign)** — `10` parse, `42` check, `101` foreign.
+- **Single-file non-foreign acceptance:** `1,145 / (1,197 - 24 multi-file local imports) = 1,145 / 1,173` (**`97.6%`**).
 
-| Namespace | Total | `x86_exact_match` | `x86_output_diff` | `run_crash_or_err` | `parse_reject` | `check_reject` | `foreign`/`timeout` |
-|---|---:|---:|---:|---:|---:|---:|---:|
-| `tests/base/` | 42 | **10** | 9 | 19 | 2 | 2 | 0 |
-| `tests/run/` | 105 | **62** | 14 | 24 | 4 | 0 | 1 (`heap.check`) |
-| `tests/rfc/` | 14 | **12** | 0 | 1 | 0 | 0 | 1 (timeout) |
-| **Total** | **161** | **84 (52.2%)** | **23** | **44** | **6** | **2** | **2** |
+### Remaining `10` Parser Rejections (down from `143`, `-93.0%`)
+1. `unexpected token in expression` (**7**): `tests/check/let_levels.bend`, `tests/eval/do_notation_nested.bend`, `tests/eval/do_notation_qualified.bend`, `tests/parse/do_head_sugar.bend`, `tests/parse/do_line_depth.bend`, `tests/parse/let_in_argument.bend`, `tests/reg/rwt_type_share.bend`.
+2. `unexpected top-level token` (**2**): `tests/check/ctr_param_chain.bend` (600-param multi-line type), `tests/gfx/app_linear.bend`.
+3. `expected 'case'` (**1**): `tests/parse/elif_alignment.bend` (layout-free unaligned `case`).
 
-**Distinction between semantic disagreements vs backend/runtime gaps:**
-- **Frontend diagnostic wording differences (non-semantic):** `bend5k --check-only` prints `CHECK OK (bend5k 1-pass: ...)` instead of `ALL PROOFS CHECK`, and prints `check: <fn>: ...` rather than upstream's multiline `SOME PROOFS FAIL` box.
-- **Confirmed runtime/lowering gaps (not checker bugs):**
-  - `run_crash_or_err` (**44**): primarily `bend: phase111: constructor arity mismatch` on missing `Base` primitives in `lower.bend`/fixed runtime (e.g., `F32.lerp`, `F32.hypot`, `F32.from_nat` in `tests/base/f32_*`).
-  - `x86_output_diff` (**23**): e.g., `tests/base/cmp_native_model.bend` (printer emits raw `0` instead of `EQ{}` for `Cmp` ctors), `tests/base/map_ops.bend` (`got='4' exp='7'`).
+### Remaining `40` Checker Rejections on `strict_1276` (down from `114`, `-64.9%`)
+1. **Multi-file local `import "./..." as M` references (`24`):** `L.t` (3), `L.two` (2), `C.seven` (2), `alias_lib.two`, `W.f`, `M.lt`, `M.get`, `M.F`, `M.quad`, `L.peek`, `far.sum`, `imported_adt_alias`, etc. (expected boundary: single-file checker without module loader).
+2. **`affine variable consumed more than allowed` (`9`, down from `16`):** `erased_local_dead_value.bend` (in-line erased/nested cases), `eta_recursive_type.bend`, `rebuild_levels.bend`, `type_erased_runtime.bend`, `dup_many.bend`, `share_cell_cycle.bend`, `template_inst_model.bend`, `template_proof_kind.bend`, `stuck/max.bend`.
+3. **`constructor does not belong to goal` (`3` non-import):** `word_lemmas.bend`, `main_forged_io.bend`, `word_add_comm.bend`.
+4. **Misc (`4`):** `assert_full_spec.bend`, `ops_own_lib.bend`, `sugar_list_own_lib.bend`, `f32_literal_unfolds.bend` (float literal rounding between `1.25e-2` and `0.0125`).
+
+### Sample Upstream Verification (`12` Newly-Accepted Fixtures vs `locked_bun.sh --check-only`)
+`11 / 12` exact agreement (`up=0, s2=0` on `map_set_array_kit`, `sugar_ops`, `string_contains`, `float_bitwise_eq_000`, `dependent_pair_destructure`, `beta_ann_match`, `meet_order_fits`, `canonical_freeze_000`, `app_play`, `chan_pipe`, `exists_where`; `1` known diff on `f32_literal_unfolds.bend`).
 
 ---
 
-## 7. Full Qualification & Performance Evidence (CPU 3)
+## 5. Full Qualification & Self-Hosting Evidence (CPU 0)
 
 | Gate | Result | Evidence |
 |---|---|---|
-| Upstream frontend check (`locked_bun.sh --check-only`) | **PASS** | `ALL PROOFS CHECK`, `0 @unsafe`, `12,331 / 15,000` LOC |
-| 3-stage self-hosting (`s1 -> s2 -> s3`, `-O2`) | **PASS** | `s1.o == s2.o == s3.o` SHA-256 `c51710145dea359c8cef4ff2eb8b327460ffb9a064e5f0c33ce632d234e0f336` (`6.37s -> 6.74s -> 6.49s`) |
+| Upstream frontend check (`locked_bun.sh --check-only`) | **PASS** | `ALL PROOFS CHECK`, `0 @unsafe`, `12,768 / 15,000` LOC |
+| 3-stage self-hosting (`s1 -> s2 -> s3`, `-O2`) | **PASS** | `s1.o == s2.o == s3.o` SHA-256 `8b31e197cd1c05ffe46f6683b9ac3fff4337b8d5e060ead4e0eefd91427c46d0` (`6.81s -> 6.84s -> 6.96s`) |
 | Phase182 Qualification (`run_qual_b5k.py -O0`) | **64 / 64 PASS** | 61 exec + 3 reject (`5.74s`) |
-| Phase182 Qualification (`run_qual_b5k.py -O2`) | **64 / 64 PASS** | 61 exec + 3 reject (`31.98s`) |
+| Phase182 Qualification (`run_qual_b5k.py -O2`) | **64 / 64 PASS** | 61 exec + 3 reject (`33.89s`) |
 | Live-Metadata Observer Gate (`observer_wave2_gate` O0+O2) | **30 / 30 PASS** | 0 `OBSERVER_VIOLATION`s across `normal`, `cap-no8`, `all-hot` |
 | **Combined Qualification Gate** | **158 / 158 PASS** | `64 + 64 + 30 = 158` |
 | `bench/runtime/*` `.o` bit-identity vs `HEAD` | **17 / 17 SAME** | 0 diffs, 0 failures across all 17 benchmarks |
-
----
-
-## 8. Honest Remaining Capability Boundary
-
-- **Parser/Checker vs Independent BendTT Kernel (`--verdict`):** `bend5k`'s 1-pass checker enforces scope, call arity, constructor existence/membership/arity, affine use counts, fixed-runtime foreign policy, parametric type arguments (`ChkTy`), `Data`-kind field discipline, and trivial literal reflexivity mismatches. It does **not** perform full dependent conversion/normalization, propositional equality proofs (`{a == b : T}` with non-literal terms, `%rewrite` motive verification), polymorphic type-variable unification across call sites (e.g. `my_id(U32, True{})`), or exhaustiveness/termination proofs — those require upstream `bend2` + BendTT `--verdict`.
-- **Smallest remaining checker boundary reproducers:**
-  1. Dependent conversion: `law bad_conv: {U32.add(1, 1) == 3 : U32}` / `def bad_conv(): {==}` (requires evaluating `U32.add(1, 1)` during typechecking).
-  2. Polymorphic call-site unification: `def my_id(-A: Data, x: A) -> A: x` called as `my_id(U32, True{})` (`A` maps to `TAny{}`).
-  3. Parser lambda-match syntax: `run(\{Zero: 9; n => ...})` (`tests/compile/closure_match_lambda.bend`, part of the remaining `112` `unexpected token in expression` bucket).

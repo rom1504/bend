@@ -82,7 +82,7 @@ def ra_scan_op(+vd: Nat, cd: Nat, +track_f: Bool, +ib: U32, st: RaScan, op: IrOp
     case ICmp{+d, +cop, +l, +r}:
       +isf = U32.is_ge(cop, 6)
       ra_rec(cd, 0, ra_touch(vd, ib, ra_touch_rhs(vd, ib, ra_touch_w(vd, ib, ivs, l, idx, 2), r, idx, Bool.pick(U32, isf, 99, 0), cvals), d, idx), bs, cb, nc, rb, nr, es, ra_mark_b2(vd, Bool.and(track_f, isf), l, r, f32s), ra_mark_b2(vd, Bool.and(track_f, Bool.not(isf)), l, r, ra_mark_b(vd, track_f, d, nf32s)), hs, cvals, idx)
-    case ICallDirect{d, _, args}: ra_rec(cd, 2, ra_touch(vd, ib, ra_touch_list(vd, ib, args, ivs, idx), d, idx), bs, cb, nc, rb, nr, es, f32s, nf32s, hs, cvals, idx)
+    case ICallDirect{d, cfid, args}: ra_rec(cd, Bool.pick(U32, U32.is_ge(cfid, 131072), 1, 2), ra_touch(vd, ib, ra_touch_list(vd, ib, args, ivs, idx), d, idx), bs, cb, nc, rb, nr, es, f32s, nf32s, hs, cvals, idx)
     case ICallClosure{+d, _, caps}: ra_rec(cd, 2, ra_touch(vd, ib, ra_touch_list(vd, ib, caps, ivs, idx), d, idx), bs, cb, nc, rb, nr, es, f32s, ra_mark_b(vd, track_f, d, nf32s), hs, cvals, idx)
     case IApply{+d, +clo, arg}: ra_rec(cd, 2, ra_touch(vd, ib, ra_touch(vd, ib, ra_touch(vd, ib, ivs, clo, idx), arg, idx), d, idx), bs, cb, nc, rb, nr, es, f32s, ra_mark_b2(vd, track_f, d, clo, nf32s), hs, cvals, idx)
     case ICtor{+d, _, +fs}: ra_rec(cd, Bool.to_u32(ra_is_nonempty(fs)), ra_touch(vd, ib, ra_touch_list(vd, ib, fs, ivs, idx), d, idx), bs, cb, nc, rb, nr, es, f32s, ra_mark_b(vd, track_f, d, nf32s), hs, cvals, idx)

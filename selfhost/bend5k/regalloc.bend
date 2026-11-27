@@ -18,21 +18,15 @@ def ra_un_pair(-A: Type, -B: Type, -R: Type, p: A & B, k: A -> B -> R) -> R:
 def ra_touch_upd(cur: RaIv, +v: U32, +idx: U32, +dw: U32, +ldw: U32) -> RaIv:
   RaIv{_, s, e, u, lu, seen} = cur
   Bool.pick(RaIv, seen, RaIv{v, U32.min(s, idx), U32.max(e, idx), U32.add(u, dw), U32.add(lu, ldw), True{}}, RaIv{v, idx, idx, 1, ldw, True{}})
-def ra_touch_w(+vd: Nat, +ib: U32, +ivs: RaVec<RaIv>, +v: U32, +idx: U32, +dw: U32) -> RaVec<RaIv>:
-  ra_vec_set(RaIv, vd, v, ra_touch_upd(ra_vec_get(RaIv, vd, RaIv{v, idx, idx, 0, 0, False{}}, v, ivs), v, idx, dw, Bool.pick(U32, U32.is_zero(ib), 0, dw)), ivs)
+def ra_touch_w(+vd: Nat, +ib: U32, +ivs: RaVec<RaIv>, +v: U32, +idx: U32, +dw: U32) -> RaVec<RaIv>: ra_vec_set(RaIv, vd, v, ra_touch_upd(ra_vec_get(RaIv, vd, RaIv{v, idx, idx, 0, 0, False{}}, v, ivs), v, idx, dw, Bool.pick(U32, U32.is_zero(ib), 0, dw)), ivs)
 def ra_touch(vd: Nat, ib: U32, ivs: RaVec<RaIv>, v: U32, idx: U32) -> RaVec<RaIv>: ra_touch_w(vd, ib, ivs, v, idx, 1)
-def ra_touch_rhs(+vd: Nat, ib: U32, +ivs: RaVec<RaIv>, +r: U32, idx: U32, +bop: U32, cvals: RaVec<U32>) -> RaVec<RaIv>:
-  +cv = ra_vec_get(U32, vd, 0, r, cvals)
-  skip = Bool.or(Bool.and(Bool.or(U32.is_le(bop, 1), Bool.and(U32.is_ge(bop, 5), U32.is_le(bop, 7))), U32.is_ne(cv, 0)), Bool.and(Bool.or(U32.is_eq(bop, 8), U32.is_eq(bop, 9)), U32.is_eq(cv, 1)))
-  opt_if(RaVec<RaIv>, skip, _ => ivs, _ => ra_touch_w(vd, ib, ivs, r, idx, 2))
+def ra_touch_rhs(+vd: Nat, ib: U32, +ivs: RaVec<RaIv>, +r: U32, idx: U32, +bop: U32, cvals: RaVec<U32>) -> RaVec<RaIv>: (+cv = ra_vec_get(U32, vd, 0, r, cvals); skip = Bool.or(Bool.and(Bool.or(U32.is_le(bop, 1), Bool.and(U32.is_ge(bop, 5), U32.is_le(bop, 7))), U32.is_ne(cv, 0)), Bool.and(Bool.or(U32.is_eq(bop, 8), U32.is_eq(bop, 9)), U32.is_eq(cv, 1))); opt_if(RaVec<RaIv>, skip, _ => ivs, _ => ra_touch_w(vd, ib, ivs, r, idx, 2)))
 def ra_vec_set_if(-A: Data, d: Nat, cond: Bool, idx: U32, val: A, t: RaVec<A>) -> RaVec<A>: opt_rv_put(A, cond, d, idx, val, t)
 def ra_vec_set_all(-A: Data, +vd: Nat, +val: A, vs: List<&2, U32>, t: RaVec<A>) -> RaVec<A>:
   match vs:
     case Nil{}: t
     case Con{v, r}: ra_vec_set_all(A, vd, val, r, ra_vec_set(A, vd, v, val, t))
-def ra_set_cval(vd: Nat, d: U32, +val: U32, cvals: RaVec<U32>) -> RaVec<U32>:
-  +cv = Bool.pick(U32, U32.is_lt(val, 64), 1, Bool.pick(U32, U32.is_lt(val, 2147483647), 2, 0))
-  ra_vec_set_if(U32, vd, U32.is_ne(cv, 0), d, cv, cvals)
+def ra_set_cval(vd: Nat, d: U32, +val: U32, cvals: RaVec<U32>) -> RaVec<U32>: (+cv = Bool.pick(U32, U32.is_lt(val, 64), 1, Bool.pick(U32, U32.is_lt(val, 2147483647), 2, 0)); ra_vec_set_if(U32, vd, U32.is_ne(cv, 0), d, cv, cvals))
 def ra_touch_list_w(+vd: Nat, +ib: U32, vs: List<&2, U32>, ivs: RaVec<RaIv>, +idx: U32, +dw: U32) -> RaVec<RaIv>:
   match vs:
     case Nil{}: ivs
@@ -48,8 +42,7 @@ def ra_scan_arrop_go(+vd: Nat, +ib: U32, +aop: U32, is_a: Bool, +ds: List<&2, U3
     case True{} Con{+da, dt} Con{+a, at}: (ra_touch_list(vd, ib, dt, ra_touch_w(vd, ib, ra_touch_list_w(vd, ib, at, ra_touch_w(vd, ib, ivs, a, idx, 0), idx, 2), da, idx, Bool.pick(U32, U32.is_eq(aop, 78), 1, 0)), idx), Bool.pick(RaVec<U32>, U32.is_eq(aop, 78), hs, ra_set_hint(vd, da, a, hs)))
     case True{} Nil{} Con{a, at}: (ra_touch_list_w(vd, ib, at, ra_touch_w(vd, ib, ivs, a, idx, 0), idx, 2), hs)
     case _ _ _: (ra_touch_list(vd, ib, ds, ra_touch_list(vd, ib, args, ivs, idx), idx), hs)
-def ra_scan_arrop(vd: Nat, ib: U32, +aop: U32, ds: List<&2, U32>, args: List<&2, U32>, ivs: RaVec<RaIv>, hs: RaVec<U32>, idx: U32) -> RaVec<RaIv> & RaVec<U32>:
-  ra_scan_arrop_go(vd, ib, aop, Bool.or(Bool.and(U32.is_ge(aop, 72), U32.is_le(aop, 75)), Bool.and(U32.is_ge(aop, 78), U32.is_le(aop, 79))), ds, args, ivs, hs, idx)
+def ra_scan_arrop(vd: Nat, ib: U32, +aop: U32, ds: List<&2, U32>, args: List<&2, U32>, ivs: RaVec<RaIv>, hs: RaVec<U32>, idx: U32) -> RaVec<RaIv> & RaVec<U32>: ra_scan_arrop_go(vd, ib, aop, Bool.or(Bool.and(U32.is_ge(aop, 72), U32.is_le(aop, 75)), Bool.and(U32.is_ge(aop, 78), U32.is_le(aop, 79))), ds, args, ivs, hs, idx)
 def ra_init_params(+vd: Nat, n: Nat, +v: U32, ivs: RaVec<RaIv>) -> RaVec<RaIv>:
   match n:
     case 0n: ivs
@@ -72,13 +65,9 @@ def ra_scan_op(+vd: Nat, cd: Nat, +track_f: Bool, +ib: U32, st: RaScan, op: IrOp
     case IConst{+d, val}: ra_rec(cd, 0, ra_touch(vd, ib, ivs, d, idx), bs, cb, nc, rb, nr, es, f32s, ra_mark_b(vd, track_f, d, nf32s), hs, ra_set_cval(vd, d, val, cvals), idx)
     case IFlt{+d, _}: ra_rec(cd, 0, ra_touch(vd, ib, ivs, d, idx), bs, cb, nc, rb, nr, es, ra_mark_b(vd, track_f, d, f32s), nf32s, hs, cvals, idx)
     case ICopy{+d, +s}: ra_rec(cd, 0, ra_touch(vd, ib, ra_touch(vd, ib, ivs, s, idx), d, idx), bs, cb, nc, rb, nr, es, ra_mark_b(vd, Bool.and(track_f, ra_vec_get(Bool, vd, False{}, s, f32s)), d, f32s), ra_mark_b(vd, Bool.and(track_f, ra_vec_get(Bool, vd, False{}, s, nf32s)), d, nf32s), ra_set_hint(vd, d, s, hs), cvals, idx)
-    case IBin{+d, +bop, +l, +r}:
-      +isf = Bool.and(U32.is_ge(bop, 10), U32.is_le(bop, 13))
-      ra_rec(cd, 0, ra_touch(vd, ib, ra_touch_rhs(vd, ib, ra_touch_w(vd, ib, ivs, l, idx, 2), r, idx, bop, cvals), d, idx), bs, cb, nc, rb, nr, es, ra_mark_b(vd, Bool.and(track_f, isf), d, ra_mark_b2(vd, Bool.and(track_f, isf), l, r, f32s)), ra_mark_b(vd, Bool.and(track_f, Bool.not(isf)), d, ra_mark_b2(vd, Bool.and(track_f, Bool.not(isf)), l, r, nf32s)), ra_set_hint(vd, d, l, hs), cvals, idx)
+    case IBin{+d, +bop, +l, +r}: (+isf = Bool.and(U32.is_ge(bop, 10), U32.is_le(bop, 13)); ra_rec(cd, 0, ra_touch(vd, ib, ra_touch_rhs(vd, ib, ra_touch_w(vd, ib, ivs, l, idx, 2), r, idx, bop, cvals), d, idx), bs, cb, nc, rb, nr, es, ra_mark_b(vd, Bool.and(track_f, isf), d, ra_mark_b2(vd, Bool.and(track_f, isf), l, r, f32s)), ra_mark_b(vd, Bool.and(track_f, Bool.not(isf)), d, ra_mark_b2(vd, Bool.and(track_f, Bool.not(isf)), l, r, nf32s)), ra_set_hint(vd, d, l, hs), cvals, idx))
     case IUn{+d, +uop, +s}: ra_rec(cd, 0, ra_touch(vd, ib, ra_touch_w(vd, ib, ivs, s, idx, 2), d, idx), bs, cb, nc, rb, nr, es, ra_mark_b(vd, Bool.and(track_f, Bool.or(U32.is_eq(uop, 2), Bool.or(U32.is_eq(uop, 3), U32.is_eq(uop, 5)))), s, ra_mark_b(vd, Bool.and(track_f, Bool.and(U32.is_ge(uop, 2), U32.is_le(uop, 4))), d, f32s)), ra_mark_b(vd, Bool.and(track_f, Bool.or(U32.is_lt(uop, 2), U32.is_eq(uop, 4))), s, ra_mark_b(vd, Bool.and(track_f, Bool.or(U32.is_lt(uop, 2), U32.is_eq(uop, 5))), d, nf32s)), ra_set_hint(vd, d, s, hs), cvals, idx)
-    case ICmp{+d, +cop, +l, +r}:
-      +isf = U32.is_ge(cop, 6)
-      ra_rec(cd, 0, ra_touch(vd, ib, ra_touch_rhs(vd, ib, ra_touch_w(vd, ib, ivs, l, idx, 2), r, idx, Bool.pick(U32, isf, 99, 0), cvals), d, idx), bs, cb, nc, rb, nr, es, ra_mark_b2(vd, Bool.and(track_f, isf), l, r, f32s), ra_mark_b2(vd, Bool.and(track_f, Bool.not(isf)), l, r, ra_mark_b(vd, track_f, d, nf32s)), hs, cvals, idx)
+    case ICmp{+d, +cop, +l, +r}: (+isf = U32.is_ge(cop, 6); ra_rec(cd, 0, ra_touch(vd, ib, ra_touch_rhs(vd, ib, ra_touch_w(vd, ib, ivs, l, idx, 2), r, idx, Bool.pick(U32, isf, 99, 0), cvals), d, idx), bs, cb, nc, rb, nr, es, ra_mark_b2(vd, Bool.and(track_f, isf), l, r, f32s), ra_mark_b2(vd, Bool.and(track_f, Bool.not(isf)), l, r, ra_mark_b(vd, track_f, d, nf32s)), hs, cvals, idx))
     case ICallDirect{d, cfid, args}: ra_rec(cd, Bool.pick(U32, U32.is_ge(cfid, 131072), 1, 2), ra_touch(vd, ib, ra_touch_list(vd, ib, args, ivs, idx), d, idx), bs, cb, nc, rb, nr, es, f32s, nf32s, hs, cvals, idx)
     case ICallClosure{+d, _, caps}: ra_rec(cd, 2, ra_touch(vd, ib, ra_touch_list(vd, ib, caps, ivs, idx), d, idx), bs, cb, nc, rb, nr, es, f32s, ra_mark_b(vd, track_f, d, nf32s), hs, cvals, idx)
     case IApply{+d, +clo, arg}: ra_rec(cd, 2, ra_touch(vd, ib, ra_touch(vd, ib, ra_touch(vd, ib, ivs, clo, idx), arg, idx), d, idx), bs, cb, nc, rb, nr, es, f32s, ra_mark_b2(vd, track_f, d, clo, nf32s), hs, cvals, idx)
@@ -100,9 +89,7 @@ def ra_scan_ops(+vd: Nat, +cd: Nat, +track_f: Bool, +ib: U32, ops: List<&2, IrOp
   match ops:
     case Nil{}: st
     case Con{op, t}: ra_scan_ops(vd, cd, track_f, ib, t, ra_scan_op(vd, cd, track_f, ib, st, op))
-def ra_check_edge(bs: RaVec<U32>, tgt: U32, idx: U32, is_tail: Bool, +es: List<&2, RaEdge>) -> List<&2, RaEdge>:
-  +s1 = ra_vec_get(U32, 8n, 0, tgt, bs)
-  Bool.pick(List<&2, RaEdge>, U32.is_zero(s1), es, Con{RaEdge{U32.sub(s1, 1), idx, is_tail}, es})
+def ra_check_edge(bs: RaVec<U32>, tgt: U32, idx: U32, is_tail: Bool, +es: List<&2, RaEdge>) -> List<&2, RaEdge>: (+s1 = ra_vec_get(U32, 8n, 0, tgt, bs); Bool.pick(List<&2, RaEdge>, U32.is_zero(s1), es, Con{RaEdge{U32.sub(s1, 1), idx, is_tail}, es}))
 def ra_check_arms(+bs: RaVec<U32>, arms: List<&2, IrSwitchArm>, +idx: U32, es: List<&2, RaEdge>) -> List<&2, RaEdge>:
   match arms:
     case Nil{}: es
@@ -114,22 +101,17 @@ def ra_scan_term(+vd: Nat, cd: Nat, track_f: Bool, fn_fid: U32, st: RaScan, term
     case TBr{+c, tb, eb}: ra_rec(cd, 0, ra_touch_w(vd, 1, ivs, c, idx, 2), bs, cb, nc, rb, nr, ra_check_edge(bs, eb, idx, False{}, ra_check_edge(bs, tb, idx, False{}, es)), f32s, ra_mark_b(vd, track_f, c, nf32s), hs, cvals, idx)
     case TSwitch{+sc, arms, db}: ra_rec(cd, 0, ra_touch_w(vd, 1, ivs, sc, idx, 2), bs, cb, nc, rb, nr, ra_check_edge(bs, db, idx, False{}, ra_check_arms(bs, arms, idx, es)), f32s, ra_mark_b(vd, track_f, sc, nf32s), hs, cvals, idx)
     case TRet{v}: ra_rec(cd, 0, ra_touch(vd, 0, ivs, v, idx), bs, cb, nc, rb, nr, es, f32s, nf32s, hs, cvals, idx)
-    case TTailCall{fid, +args}:
-      +same = U32.is_eq(fid, fn_fid)
-      ra_rec(cd, Bool.pick(U32, U32.is_gt(b5k_list_len(U32, args), 32), 2, 0), ra_touch_tail(vd, same, hs, args, 0, ivs, idx), bs, cb, nc, rb, nr, Bool.pick(List<&2, RaEdge>, same, ra_check_edge(bs, 0, idx, True{}, es), es), f32s, nf32s, ra_tail_hints(same, vd, args, 0, hs), cvals, idx)
+    case TTailCall{fid, +args}: (+same = U32.is_eq(fid, fn_fid); ra_rec(cd, Bool.pick(U32, U32.is_gt(b5k_list_len(U32, args), 32), 2, 0), ra_touch_tail(vd, same, hs, args, 0, ivs, idx), bs, cb, nc, rb, nr, Bool.pick(List<&2, RaEdge>, same, ra_check_edge(bs, 0, idx, True{}, es), es), f32s, nf32s, ra_tail_hints(same, vd, args, 0, hs), cvals, idx))
     case TFail{_}: ra_rec(cd, 2, ivs, bs, cb, nc, rb, nr, es, f32s, nf32s, hs, cvals, idx)
 def ra_scan_blks(+vd: Nat, +cd: Nat, +track_f: Bool, +fn_fid: U32, blks: List<&2, IrBlock>, st: RaScan) -> RaScan:
   match blks st:
     case Nil{} _: st
-    case Con{IrBlock{bid, ops, TRet{v}}, t} RaScan{ivs, bs, cb, nc, rb, nr, es, f32s, nf32s, hs, cvals, +idx}: ra_scan_blks(vd, cd, track_f, fn_fid, t, ra_scan_term(vd, cd, track_f, fn_fid, ra_scan_ops(vd, cd, track_f, 0, ops, RaScan{ivs, ra_vec_set(U32, 8n, bid, U32.add(idx, 1), bs), cb, nc, rb, nr, es, f32s, nf32s, hs, cvals, idx}), TRet{v}))
-    case Con{IrBlock{bid, ops, TFail{c}}, t} RaScan{ivs, bs, cb, nc, rb, nr, es, f32s, nf32s, hs, cvals, +idx}: ra_scan_blks(vd, cd, track_f, fn_fid, t, ra_scan_term(vd, cd, track_f, fn_fid, ra_scan_ops(vd, cd, track_f, 0, ops, RaScan{ivs, ra_vec_set(U32, 8n, bid, U32.add(idx, 1), bs), cb, nc, rb, nr, es, f32s, nf32s, hs, cvals, idx}), TFail{c}))
-    case Con{IrBlock{bid, ops, term}, t} RaScan{ivs, bs, cb, nc, rb, nr, es, f32s, nf32s, hs, cvals, +idx}: ra_scan_blks(vd, cd, track_f, fn_fid, t, ra_scan_term(vd, cd, track_f, fn_fid, ra_scan_ops(vd, cd, track_f, 1, ops, RaScan{ivs, ra_vec_set(U32, 8n, bid, U32.add(idx, 1), bs), cb, nc, rb, nr, es, f32s, nf32s, hs, cvals, idx}), term))
+    case Con{IrBlock{bid, ops, +term}, t} RaScan{ivs, bs, cb, nc, rb, nr, es, f32s, nf32s, hs, cvals, +idx}: (+tt = opt_term_tag(term); ra_scan_blks(vd, cd, track_f, fn_fid, t, ra_scan_term(vd, cd, track_f, fn_fid, ra_scan_ops(vd, cd, track_f, Bool.pick(U32, Bool.or(U32.is_eq(tt, 2), U32.is_eq(tt, 5)), 0, 1), ops, RaScan{ivs, ra_vec_set(U32, 8n, bid, U32.add(idx, 1), bs), cb, nc, rb, nr, es, f32s, nf32s, hs, cvals, idx}), term)))
 # Loop Back-Edge Extension & 8x Loop-Depth Weighting
 def ra_ext_end(+arity: U32, es: List<&2, RaEdge>, iv: RaIv) -> RaIv:
   match es iv:
     case Nil{} _: iv
-    case Con{RaEdge{+ls, be, is_tail}, t} RaIv{+v, +s, +e, u, lu, seen}:
-      ra_ext_end(arity, t, RaIv{v, s, Bool.pick(U32, Bool.and(Bool.not(Bool.and(is_tail, U32.is_lt(v, arity))), Bool.and(U32.is_le(s, ls), U32.is_ge(e, ls))), U32.max(e, be), e), u, lu, seen})
+    case Con{RaEdge{+ls, be, is_tail}, t} RaIv{+v, +s, +e, u, lu, seen}: ra_ext_end(arity, t, RaIv{v, s, Bool.pick(U32, Bool.and(Bool.not(Bool.and(is_tail, U32.is_lt(v, arity))), Bool.and(U32.is_le(s, ls), U32.is_ge(e, ls))), U32.max(e, be), e), u, lu, seen})
 def ra_ext_end_all(+arity: U32, es: List<&2, RaEdge>, iv: RaIv) -> RaIv:
   match es:
     case Nil{}: iv
@@ -138,14 +120,10 @@ def ra_ext_end_all(+arity: U32, es: List<&2, RaEdge>, iv: RaIv) -> RaIv:
 def ra_weight_edges(es: List<&2, RaEdge>, iv: RaIv) -> RaIv:
   match es iv:
     case Nil{} _: iv
-    case Con{RaEdge{+ls, +be, _}, t} RaIv{v, +s, +e, +u, +lu, seen}:
-      +hot = U32.is_gt(lu, 0)
-      u_span = Bool.pick(U32, Bool.and(hot, Bool.and(U32.is_lt(s, ls), Bool.and(U32.is_gt(e, be), U32.is_gt(u, 2)))), U32.add(2, U32.mul(U32.min(U32.sub(u, 2), 1000000), 8)), u)
-      ra_weight_edges(t, RaIv{v, s, e, Bool.pick(U32, Bool.and(hot, Bool.and(U32.is_lt(s, ls), Bool.and(U32.is_ge(e, ls), U32.is_le(e, be)))), U32.mul(U32.min(u, 1000000), 12), Bool.pick(U32, Bool.and(hot, Bool.and(U32.is_ge(s, ls), U32.is_le(e, be))), U32.mul(U32.min(u, 1000000), 8), u_span)), lu, seen})
+    case Con{RaEdge{+ls, +be, _}, t} RaIv{v, +s, +e, +u, +lu, seen}: (+hot = U32.is_gt(lu, 0); u_span = Bool.pick(U32, Bool.and(hot, Bool.and(U32.is_lt(s, ls), Bool.and(U32.is_gt(e, be), U32.is_gt(u, 2)))), U32.add(2, U32.mul(U32.min(U32.sub(u, 2), 1000000), 8)), u); ra_weight_edges(t, RaIv{v, s, e, Bool.pick(U32, Bool.and(hot, Bool.and(U32.is_lt(s, ls), Bool.and(U32.is_ge(e, ls), U32.is_le(e, be)))), U32.mul(U32.min(u, 1000000), 12), Bool.pick(U32, Bool.and(hot, Bool.and(U32.is_ge(s, ls), U32.is_le(e, be))), U32.mul(U32.min(u, 1000000), 8), u_span)), lu, seen}))
 type RaParts is Data:
   RaParts{cross: List<&2, RaIv>, xmm_nc: List<&2, RaIv>, gpr_nc: List<&2, RaIv>}
-def ra_iv_is_leaf(+cd: Nat, no_lf: Bool, +s: U32, +e: U32, +cb: RaVec<U32>) -> Bool:
-  opt_if(Bool, no_lf, _ => False{}, _ => Bool.and(U32.is_gt(s, 0), Bool.and(U32.is_lt(U32.add(e, 1), 65536), U32.is_eq(ra_vec_get(U32, cd, 0, U32.add(e, 1), cb), ra_vec_get(U32, cd, 0, s, cb)))))
+def ra_iv_is_leaf(+cd: Nat, no_lf: Bool, +s: U32, +e: U32, +cb: RaVec<U32>) -> Bool: opt_if(Bool, no_lf, _ => False{}, _ => Bool.and(U32.is_gt(s, 0), Bool.and(U32.is_lt(U32.add(e, 1), 65536), U32.is_eq(ra_vec_get(U32, cd, 0, U32.add(e, 1), cb), ra_vec_get(U32, cd, 0, s, cb)))))
 def ra_add_part_go(+cd: Nat, chk_rb: Bool, is_f: Bool, +cb: RaVec<U32>, +rb: RaVec<U32>, iv2: RaIv, +cr: List<&2, RaIv>, +xm: List<&2, RaIv>, +nc: List<&2, RaIv>) -> RaParts:
   RaIv{v2, +s2, +e2, u2, lu2, sn2} = iv2
   +s1 = U32.add(s2, 1)
@@ -154,8 +132,7 @@ def ra_add_part_go(+cd: Nat, chk_rb: Bool, is_f: Bool, +cb: RaVec<U32>, +rb: RaV
 def ra_add_part(+cd: Nat, chk_rb: Bool, +arity: U32, iv: RaIv, +is_f: Bool, cval: U32, +cb: RaVec<U32>, +rb: RaVec<U32>, +es: List<&2, RaEdge>, pts: RaParts) -> RaParts:
   match iv pts:
     case RaIv{_, _, _, _, _, False{}} _: pts
-    case RaIv{v, +s, +e, u, lu, True{}} RaParts{+cr, +xm, +nc}:
-      opt_if(RaParts, Bool.and(U32.is_eq(s, e), U32.is_ne(cval, 0)), _ => RaParts{cr, xm, nc}, _ => ra_add_part_go(cd, chk_rb, is_f, cb, rb, ra_weight_edges(es, ra_ext_end_all(arity, es, RaIv{v, s, e, u, lu, True{}})), cr, xm, nc))
+    case RaIv{v, +s, +e, u, lu, True{}} RaParts{+cr, +xm, +nc}: opt_if(RaParts, Bool.and(U32.is_eq(s, e), U32.is_ne(cval, 0)), _ => RaParts{cr, xm, nc}, _ => ra_add_part_go(cd, chk_rb, is_f, cb, rb, ra_weight_edges(es, ra_ext_end_all(arity, es, RaIv{v, s, e, u, lu, True{}})), cr, xm, nc))
 def ra_collect_ivs(+vd: Nat, +cd: Nat, +chk_rb: Bool, +track_f: Bool, +arity: U32, n: Nat, +v: U32, +ivs: RaVec<RaIv>, +cvals: RaVec<U32>, +cb: RaVec<U32>, +rb: RaVec<U32>, +es: List<&2, RaEdge>, +f32s: RaVec<Bool>, +nf32s: RaVec<Bool>, pts: RaParts) -> RaParts:
   match n:
     case 0n: pts
@@ -168,8 +145,7 @@ def ra_even(xs: List<&2, RaIv>) -> List<&2, RaIv>:
     case Con{x, Con{_, t}}: Con{x, ra_even(t)}
 def ra_iv_ge(a: RaIv, b: RaIv) -> Bool:
   match a b:
-    case RaIv{_, +sa, _, ua, _, _} RaIv{_, +sb, _, ub, _, _}:
-      Bool.or(U32.is_lt(sa, sb), Bool.and(U32.is_eq(sa, sb), U32.is_ge(ua, ub)))
+    case RaIv{_, +sa, _, ua, _, _} RaIv{_, +sb, _, ub, _, _}: Bool.or(U32.is_lt(sa, sb), Bool.and(U32.is_eq(sa, sb), U32.is_ge(ua, ub)))
 type RaMergeSt is Data:
   RaMergeSt{xs: List<&2, RaIv>, ys: List<&2, RaIv>, acc: List<&2, RaIv>}
 def ra_merge_run(fuel: Nat, st: RaMergeSt) -> List<&2, RaIv>:
@@ -177,17 +153,13 @@ def ra_merge_run(fuel: Nat, st: RaMergeSt) -> List<&2, RaIv>:
     case 0n RaMergeSt{xs, ys, acc}: b5k_list_rev_go(RaIv, acc, b5k_list_app(RaIv, xs, ys))
     case 1n+p RaMergeSt{Nil{}, ys, acc}: b5k_list_rev_go(RaIv, acc, ys)
     case 1n+p RaMergeSt{xs, Nil{}, acc}: b5k_list_rev_go(RaIv, acc, xs)
-    case 1n+p RaMergeSt{Con{+x, +xt}, Con{+y, +yt}, +acc}:
-      ra_merge_run(p, Bool.pick(RaMergeSt, ra_iv_ge(x, y), RaMergeSt{xt, Con{y, yt}, Con{x, acc}}, RaMergeSt{Con{x, xt}, yt, Con{y, acc}}))
+    case 1n+p RaMergeSt{Con{+x, +xt}, Con{+y, +yt}, +acc}: ra_merge_run(p, Bool.pick(RaMergeSt, ra_iv_ge(x, y), RaMergeSt{xt, Con{y, yt}, Con{x, acc}}, RaMergeSt{Con{x, xt}, yt, Con{y, acc}}))
 def ra_msort(+d: Nat, xs: List<&2, RaIv>) -> List<&2, RaIv>:
   match d xs:
     case 0n _: xs
     case _ Nil{}: Nil{}
     case _ Con{x, Nil{}}: Con{x, Nil{}}
-    case 1n+p Con{x, Con{y, +t}}:
-      +a = ra_msort(p, Con{x, ra_even(t)})
-      +b = ra_msort(p, ra_even(Con{y, t}))
-      ra_merge_run(U32.to_nat(U32.add(b5k_list_len(RaIv, a), b5k_list_len(RaIv, b))), RaMergeSt{a, b, Nil{}})
+    case 1n+p Con{x, Con{y, +t}}: (+a = ra_msort(p, Con{x, ra_even(t)}); +b = ra_msort(p, ra_even(Con{y, t})); ra_merge_run(U32.to_nat(U32.add(b5k_list_len(RaIv, a), b5k_list_len(RaIv, b))), RaMergeSt{a, b, Nil{}}))
 # Physical Register Pool Assignment (Linear Scan + Weight Eviction, Short-Circuiting)
 type RaSlot is Data:
   RaSlot{reg: U32, vid: U32, start: U32, last_end: U32, weight: U32, used: Bool}
@@ -203,10 +175,7 @@ def ra_try_go(+mode: U32, pool: List<&2, RaSlot>, found: Bool, +reg: U32, +pref:
   match pool found:
     case rest True{}: RaTry{True{}, reg, b5k_list_rev_go(RaSlot, acc, rest)}
     case Nil{} False{}: RaTry{False{}, 0, b5k_list_rev(RaSlot, acc)}
-    case Con{RaSlot{+r, +ov, os, +le, ow, +u}, t} False{}:
-      +free = Bool.or(Bool.not(u), U32.is_lt(le, s))
-      +hit = Bool.pick(Bool, U32.is_zero(mode), free, Bool.pick(Bool, U32.is_eq(mode, 1), Bool.and(U32.is_eq(r, pref), Bool.or(Bool.and(u, Bool.and(U32.is_eq(ov, src), U32.is_le(le, s))), Bool.and(Bool.not(only_used), free))), U32.is_eq(r, pref)))
-      ra_try_go(mode, t, hit, r, pref, src, only_used, v, s, e, w, Con{Bool.pick(RaSlot, hit, RaSlot{r, v, s, e, w, True{}}, RaSlot{r, ov, os, le, ow, u}), acc})
+    case Con{RaSlot{+r, +ov, os, +le, ow, +u}, t} False{}: (+free = Bool.or(Bool.not(u), U32.is_lt(le, s)); +hit = Bool.pick(Bool, U32.is_zero(mode), free, Bool.pick(Bool, U32.is_eq(mode, 1), Bool.and(U32.is_eq(r, pref), Bool.or(Bool.and(u, Bool.and(U32.is_eq(ov, src), U32.is_le(le, s))), Bool.and(Bool.not(only_used), free))), U32.is_eq(r, pref))); ra_try_go(mode, t, hit, r, pref, src, only_used, v, s, e, w, Con{Bool.pick(RaSlot, hit, RaSlot{r, v, s, e, w, True{}}, RaSlot{r, ov, os, le, ow, u}), acc}))
 def ra_un_try(-R: Type, t: RaTry, k: Bool -> U32 -> List<&2, RaSlot> -> R) -> R:
   RaTry{ok, r, pl} = t
   k(ok, r, pl)
@@ -223,20 +192,13 @@ def ra_try_pool_pref_go(has_p: Bool, p: U32, src: U32, pool: List<&2, RaSlot>, o
   match has_p:
     case True{}: ra_try_pool_pref_k(ra_try_go(1, pool, False{}, 0, p, src, only_used, v, s, e, w, Nil{}), fb, v, s, e, w)
     case False{}: ra_try_pool_fb(fb, pool, v, s, e, w)
-def ra_try_pool_pref(+vd: Nat, hints: RaVec<U32>, rmap: RaVec<U32>, pool: List<&2, RaSlot>, only_used: Bool, fb: Bool, +v: U32, s: U32, e: U32, w: U32) -> RaTry:
-  +h = ra_vec_get(U32, vd, 0, v, hints)
-  +src = U32.sub(h, 1)
-  +p = Bool.pick(U32, U32.is_ne(h, 0), ra_vec_get(U32, vd, 0, src, rmap), 0)
-  ra_try_pool_pref_go(Bool.and(U32.is_ne(p, 0), U32.is_lt(p, 100)), p, src, pool, only_used, fb, v, s, e, w)
+def ra_try_pool_pref(+vd: Nat, hints: RaVec<U32>, rmap: RaVec<U32>, pool: List<&2, RaSlot>, only_used: Bool, fb: Bool, +v: U32, s: U32, e: U32, w: U32) -> RaTry: (+h = ra_vec_get(U32, vd, 0, v, hints); +src = U32.sub(h, 1); +p = Bool.pick(U32, U32.is_ne(h, 0), ra_vec_get(U32, vd, 0, src, rmap), 0); ra_try_pool_pref_go(Bool.and(U32.is_ne(p, 0), U32.is_lt(p, 100)), p, src, pool, only_used, fb, v, s, e, w))
 def ra_find_min_go(pool: List<&2, RaSlot>, cur: RaMin) -> RaMin:
   match pool cur:
     case Nil{} _: cur
     case Con{RaSlot{r, vid, st, le, w, _}, t} RaMin{False{}, _, _, _, _, _}: ra_find_min_go(t, RaMin{True{}, r, vid, st, w, le})
-    case Con{RaSlot{r, vid, st, +le, +w, _}, t} RaMin{True{}, cr, cv, cs, +cw, +cle}:
-      better = Bool.or(U32.is_lt(w, cw), Bool.and(U32.is_eq(w, cw), U32.is_gt(le, cle)))
-      ra_find_min_go(t, Bool.pick(RaMin, better, RaMin{True{}, r, vid, st, w, le}, RaMin{True{}, cr, cv, cs, cw, cle}))
-def ra_replace_slot(pool: List<&2, RaSlot>, tgt: U32, v: U32, s: U32, e: U32, w: U32) -> List<&2, RaSlot>:
-  ra_un_try(List<&2, RaSlot>, ra_try_go(2, pool, False{}, 0, tgt, 0, False{}, v, s, e, w, Nil{}), _ => _ => pl => pl)
+    case Con{RaSlot{r, vid, st, +le, +w, _}, t} RaMin{True{}, cr, cv, cs, +cw, +cle}: (better = Bool.or(U32.is_lt(w, cw), Bool.and(U32.is_eq(w, cw), U32.is_gt(le, cle))); ra_find_min_go(t, Bool.pick(RaMin, better, RaMin{True{}, r, vid, st, w, le}, RaMin{True{}, cr, cv, cs, cw, cle})))
+def ra_replace_slot(pool: List<&2, RaSlot>, tgt: U32, v: U32, s: U32, e: U32, w: U32) -> List<&2, RaSlot>: ra_un_try(List<&2, RaSlot>, ra_try_go(2, pool, False{}, 0, tgt, 0, False{}, v, s, e, w, Nil{}), _ => _ => pl => pl)
 type RaEvictRes is Data:
   RaEvictRes{rmap: RaVec<U32>, pool: List<&2, RaSlot>, spills: RaSpills}
 def ra_spill_v(+vd: Nat, +v: U32, s: U32, +e: U32, hints: RaVec<U32>, +rm: RaVec<U32>, pl: List<&2, RaSlot>, sp: RaSpills) -> RaEvictRes:
@@ -261,13 +223,8 @@ def ra_put_pool(+which: U32, ev: RaEvictRes, +ce: List<&2, RaSlot>, +cr: List<&2
   Bool.pick(RaAllocSt, U32.is_zero(which), RaAllocSt{rm, p2, cr, lf, sp}, Bool.pick(RaAllocSt, U32.is_eq(which, 1), RaAllocSt{rm, ce, p2, lf, sp}, RaAllocSt{rm, ce, cr, p2, sp}))
 def ra_min_lt(a: RaMin, b: RaMin) -> Bool:
   match a b:
-    case RaMin{+fa, _, _, _, +wa, +lea} RaMin{+fb, _, _, _, +wb, +leb}:
-      Bool.and(fa, Bool.or(Bool.not(fb), Bool.or(U32.is_lt(wa, wb), Bool.and(U32.is_eq(wa, wb), U32.is_gt(lea, leb)))))
-def ra_evict_lce(can_ce: Bool, +vd: Nat, +ml: RaMin, +mc: RaMin, +me: RaMin, +v: U32, +s: U32, +e: U32, +w: U32, +hints: RaVec<U32>, +rm: RaVec<U32>, +ce: List<&2, RaSlot>, +cr: List<&2, RaSlot>, +lf: List<&2, RaSlot>, +sp: RaSpills) -> RaAllocSt:
-  +pick_lf = ra_min_lt(ml, mc)
-  opt_if(RaAllocSt, Bool.and(can_ce, ra_min_lt(me, Bool.pick(RaMin, pick_lf, ml, mc))),
-    _ => ra_put_pool(0, ra_evict_pool(vd, me, v, s, e, w, hints, rm, ce, sp), Nil{}, cr, lf),
-    _ => opt_if(RaAllocSt, pick_lf, _ => ra_put_pool(2, ra_evict_pool(vd, ml, v, s, e, w, hints, rm, lf, sp), ce, cr, Nil{}), _ => ra_put_pool(1, ra_evict_pool(vd, mc, v, s, e, w, hints, rm, cr, sp), ce, Nil{}, lf)))
+    case RaMin{+fa, _, _, _, +wa, +lea} RaMin{+fb, _, _, _, +wb, +leb}: Bool.and(fa, Bool.or(Bool.not(fb), Bool.or(U32.is_lt(wa, wb), Bool.and(U32.is_eq(wa, wb), U32.is_gt(lea, leb)))))
+def ra_evict_lce(can_ce: Bool, +vd: Nat, +ml: RaMin, +mc: RaMin, +me: RaMin, +v: U32, +s: U32, +e: U32, +w: U32, +hints: RaVec<U32>, +rm: RaVec<U32>, +ce: List<&2, RaSlot>, +cr: List<&2, RaSlot>, +lf: List<&2, RaSlot>, +sp: RaSpills) -> RaAllocSt: (+pick_lf = ra_min_lt(ml, mc); opt_if(RaAllocSt, Bool.and(can_ce, ra_min_lt(me, Bool.pick(RaMin, pick_lf, ml, mc))), _ => ra_put_pool(0, ra_evict_pool(vd, me, v, s, e, w, hints, rm, ce, sp), Nil{}, cr, lf), _ => opt_if(RaAllocSt, pick_lf, _ => ra_put_pool(2, ra_evict_pool(vd, ml, v, s, e, w, hints, rm, lf, sp), ce, cr, Nil{}), _ => ra_put_pool(1, ra_evict_pool(vd, mc, v, s, e, w, hints, rm, cr, sp), ce, Nil{}, lf))))
 def ra_assign_cross_k(tr: RaTry, vd: Nat, hints: RaVec<U32>, v: U32, s: U32, e: U32, w: U32, rm: RaVec<U32>, cr: List<&2, RaSlot>, lf: List<&2, RaSlot>, sp: RaSpills) -> RaAllocSt:
   match tr:
     case RaTry{True{}, r, ce2}: RaAllocSt{ra_vec_set(U32, vd, v, r, rm), ce2, cr, lf, sp}
@@ -275,17 +232,13 @@ def ra_assign_cross_k(tr: RaTry, vd: Nat, hints: RaVec<U32>, v: U32, s: U32, e: 
 def ra_assign_cross(+vd: Nat, +hints: RaVec<U32>, xs: List<&2, RaIv>, st: RaAllocSt) -> RaAllocSt:
   match xs st:
     case Nil{} _: st
-    case Con{RaIv{+v, +s, +e, +w, _, _}, t} RaAllocSt{+rm, ce, cr, lf, sp}:
-      ra_assign_cross(vd, hints, t, ra_assign_cross_k(ra_try_pool_pref(vd, hints, rm, ce, False{}, True{}, v, s, e, w), vd, hints, v, s, e, w, rm, cr, lf, sp))
+    case Con{RaIv{+v, +s, +e, +w, _, _}, t} RaAllocSt{+rm, ce, cr, lf, sp}: ra_assign_cross(vd, hints, t, ra_assign_cross_k(ra_try_pool_pref(vd, hints, rm, ce, False{}, True{}, v, s, e, w), vd, hints, v, s, e, w, rm, cr, lf, sp))
 def ra_used_callee(pool: List<&2, RaSlot>) -> List<&2, U32>:
   match pool:
     case Nil{}: Nil{}
     case Con{RaSlot{_, _, _, _, _, False{}}, t}: ra_used_callee(t)
     case Con{RaSlot{r, _, _, _, _, True{}}, t}: Con{r, ra_used_callee(t)}
-def ra_mk_slots(rs: List<&2, U32>) -> List<&2, RaSlot>:
-  match rs:
-    case Nil{}: Nil{}
-    case Con{r, t}: Con{RaSlot{r, 0, 0, 0, 0, False{}}, ra_mk_slots(t)}
+def ra_mk_slots(rs: List<&2, U32>) -> List<&2, RaSlot>: opt_mapl0(~U32, ~RaSlot, ~(r => RaSlot{r, 0, 0, 0, 0, False{}}), rs)
 def ra_init_leaf(arity: U32) -> List<&2, RaSlot>: Con{RaSlot{6, 0, 0, 0, 0, False{}}, Con{Bool.pick(RaSlot, U32.is_lt(arity, 5), RaSlot{7, 0, 0, 0, 0, False{}}, RaSlot{7, 4294967295, 0, 0, 4294967295, True{}}), Nil{}}}
 def ra_assign_try(step: Nat, is_lf: Bool, can_ce: Bool, +vd: Nat, +hints: RaVec<U32>, tr: RaTry, +v: U32, +s: U32, +e: U32, +w: U32, +rm: RaVec<U32>, ce: List<&2, RaSlot>, +cr: List<&2, RaSlot>, +lf: List<&2, RaSlot>, sp: RaSpills) -> RaAllocSt:
   match step is_lf tr:
@@ -307,30 +260,20 @@ def ra_assign_nc_step(is_lf: Bool, can_ce: Bool, +vd: Nat, +hints: RaVec<U32>, +
 def ra_assign_nc_leaf(+can_ce: Bool, +no_lf: Bool, +vd: Nat, +cd: Nat, +hints: RaVec<U32>, +cb: RaVec<U32>, xs: List<&2, RaIv>, st: RaAllocSt) -> RaAllocSt:
   match xs st:
     case Nil{} _: st
-    case Con{RaIv{v, +s, +e, w, _, _}, t} RaAllocSt{rm, ce, cr, lf, sp}:
-      ra_assign_nc_leaf(can_ce, no_lf, vd, cd, hints, cb, t, ra_assign_nc_step(ra_iv_is_leaf(cd, no_lf, s, e, cb), can_ce, vd, hints, v, s, e, w, rm, ce, cr, lf, sp))
+    case Con{RaIv{v, +s, +e, w, _, _}, t} RaAllocSt{rm, ce, cr, lf, sp}: ra_assign_nc_leaf(can_ce, no_lf, vd, cd, hints, cb, t, ra_assign_nc_step(ra_iv_is_leaf(cd, no_lf, s, e, cb), can_ce, vd, hints, v, s, e, w, rm, ce, cr, lf, sp))
 type RaXmmSt is Data:
   RaXmmSt{rmap: RaVec<U32>, pool: List<&2, RaSlot>, over: List<&2, RaIv>}
 def ra_xmm_evict(+vd: Nat, mn: RaMin, +v: U32, +s: U32, +e: U32, +w: U32, +rm: RaVec<U32>, +xp2: List<&2, RaSlot>, +ov: List<&2, RaIv>) -> RaXmmSt:
   RaMin{found, +mr, +mvid, ms, +mw, mle} = mn
-  opt_if(RaXmmSt, Bool.and(found, U32.is_gt(w, mw)),
-    _ => RaXmmSt{ra_vec_set(U32, vd, v, mr, ra_vec_set(U32, vd, mvid, 0, rm)), ra_replace_slot(xp2, mr, v, s, e, w), Con{RaIv{mvid, ms, mle, mw, 1, True{}}, ov}},
-    _ => RaXmmSt{rm, xp2, Con{RaIv{v, s, e, w, 1, True{}}, ov}})
+  opt_if(RaXmmSt, Bool.and(found, U32.is_gt(w, mw)), _ => RaXmmSt{ra_vec_set(U32, vd, v, mr, ra_vec_set(U32, vd, mvid, 0, rm)), ra_replace_slot(xp2, mr, v, s, e, w), Con{RaIv{mvid, ms, mle, mw, 1, True{}}, ov}}, _ => RaXmmSt{rm, xp2, Con{RaIv{v, s, e, w, 1, True{}}, ov}})
 def ra_assign_xmm_ov(+vd: Nat, +hints: RaVec<U32>, xs: List<&2, RaIv>, st: RaXmmSt) -> RaXmmSt:
   match xs st:
     case Nil{} _: st
-    case Con{RaIv{+v, +s, +e, +w, _, _}, t} RaXmmSt{+rm, xp, +ov}:
-      ra_assign_xmm_ov(vd, hints, t, ra_un_try(RaXmmSt, ra_try_pool_pref(vd, hints, rm, xp, False{}, True{}, v, s, e, w), ok => r => xp2 => (+xp2a = xp2; opt_if(RaXmmSt, ok, _ => RaXmmSt{ra_vec_set(U32, vd, v, r, rm), xp2a, ov}, _ => ra_xmm_evict(vd, ra_find_min_go(xp2a, RaMin{False{}, 0, 0, 0, 0, 0}), v, s, e, w, rm, xp2a, ov)))))
+    case Con{RaIv{+v, +s, +e, +w, _, _}, t} RaXmmSt{+rm, xp, +ov}: ra_assign_xmm_ov(vd, hints, t, ra_un_try(RaXmmSt, ra_try_pool_pref(vd, hints, rm, xp, False{}, True{}, v, s, e, w), ok => r => xp2 => (+xp2a = xp2; opt_if(RaXmmSt, ok, _ => RaXmmSt{ra_vec_set(U32, vd, v, r, rm), xp2a, ov}, _ => ra_xmm_evict(vd, ra_find_min_go(xp2a, RaMin{False{}, 0, 0, 0, 0, 0}), v, s, e, w, rm, xp2a, ov)))))
 def ra_finish_res(vd: Nat, st: RaAllocSt) -> RegAllocRes:
   RaAllocSt{rm, ce, _, _, RaSpills{sp, _, _}} = st
   RegAllocRes{rm, vd, ra_used_callee(ce), sp}
-def ra_finish_gpr(+vd: Nat, +cd: Nat, +hints: RaVec<U32>, no_calls: Bool, +res_h: Bool, +can_ce: Bool, +arity: U32, +cb: RaVec<U32>, +rm0: RaVec<U32>, +cr: List<&2, RaIv>, +nc: List<&2, RaIv>) -> RegAllocRes:
-  ra_finish_res(vd, opt_if(RaAllocSt, no_calls,
-    _ => ra_assign_nc_leaf(True{}, True{}, vd, cd, hints, RVEmpty{}, ra_msort(20n, nc), RaAllocSt{rm0, ra_mk_slots([3, 12, 13, 14, 15]), b5k_list_app(RaSlot, ra_mk_slots([8, 9, 10, 11]), ra_init_leaf(arity)), Nil{}, RaSpills{0, RVEmpty{}, RVEmpty{}}}),
-    _ =>
-      cr0 = ra_mk_slots(Bool.pick(List<&2, U32>, res_h, [8, 9], [8, 9, 10, 11]));
-      st1 = ra_assign_cross(vd, hints, ra_msort(20n, cr), RaAllocSt{rm0, ra_mk_slots([3, 12, 13, 14, 15]), cr0, ra_init_leaf(arity), RaSpills{0, RVEmpty{}, RVEmpty{}}});
-      ra_assign_nc_leaf(can_ce, False{}, vd, cd, hints, cb, ra_msort(20n, nc), st1)))
+def ra_finish_gpr(+vd: Nat, +cd: Nat, +hints: RaVec<U32>, no_calls: Bool, +res_h: Bool, +can_ce: Bool, +arity: U32, +cb: RaVec<U32>, +rm0: RaVec<U32>, +cr: List<&2, RaIv>, +nc: List<&2, RaIv>) -> RegAllocRes: ra_finish_res(vd, opt_if(RaAllocSt, no_calls, _ => ra_assign_nc_leaf(True{}, True{}, vd, cd, hints, RVEmpty{}, ra_msort(20n, nc), RaAllocSt{rm0, ra_mk_slots([3, 12, 13, 14, 15]), b5k_list_app(RaSlot, ra_mk_slots([8, 9, 10, 11]), ra_init_leaf(arity)), Nil{}, RaSpills{0, RVEmpty{}, RVEmpty{}}}), _ => cr0 = ra_mk_slots(Bool.pick(List<&2, U32>, res_h, [8, 9], [8, 9, 10, 11])); st1 = ra_assign_cross(vd, hints, ra_msort(20n, cr), RaAllocSt{rm0, ra_mk_slots([3, 12, 13, 14, 15]), cr0, ra_init_leaf(arity), RaSpills{0, RVEmpty{}, RVEmpty{}}}); ra_assign_nc_leaf(can_ce, False{}, vd, cd, hints, cb, ra_msort(20n, nc), st1)))
 def ra_blks_info_walk(blks: List<&2, IrBlock>, ops: List<&2, IrOp>, +acc: U32) -> U32:
   match blks ops:
     case Nil{} Nil{}: acc
@@ -342,17 +285,14 @@ def ra_blks_info_walk(blks: List<&2, IrBlock>, ops: List<&2, IrOp>, +acc: U32) -
     case _ Con{IArrOp{_, _, _}, ot}: ra_blks_info_walk(blks, ot, U32.or(U32.add(acc, 8), 1))
     case _ Con{ICallDirect{_, cfid, _}, ot}: ra_blks_info_walk(blks, ot, U32.or(U32.add(acc, 8), Bool.pick(U32, U32.is_ge(cfid, 131072), 4, 0)))
     case _ Con{_, ot}: ra_blks_info_walk(blks, ot, U32.add(acc, 8))
-def ra_blks_info(blks: List<&2, IrBlock>, acc: U32) -> U32: ra_blks_info_walk(blks, Nil{}, acc)
 def ra_vd_of(+tot: U32) -> Nat: Bool.pick(Nat, U32.is_le(tot, 64), 3n, Bool.pick(Nat, U32.is_le(tot, 256), 4n, Bool.pick(Nat, U32.is_le(tot, 1024), 5n, 8n)))
 def ra_cd_of(+nops: U32) -> Nat: Bool.pick(Nat, U32.is_le(nops, 250), 4n, Bool.pick(Nat, U32.is_le(nops, 1000), 5n, 8n))
-def ra_un_xmm(-R: Type, st: RaXmmSt, k: RaVec<U32> -> List<&2, RaIv> -> R) -> R:
-  RaXmmSt{rm, _, ov} = st
-  k(rm, ov)
+def ra_un_xmm3(-R: Type, st: RaXmmSt, k: RaVec<U32> -> List<&2, RaSlot> -> List<&2, RaIv> -> R) -> R:
+  RaXmmSt{rm, xp, ov} = st
+  k(rm, xp, ov)
 def b5k_ra_parts(+vd: Nat, +cd: Nat, +hints: RaVec<U32>, +no_rt: Bool, +res_h: Bool, +can_ce: Bool, +arity: U32, +rb1: RaVec<U32>, pts: RaParts) -> RegAllocRes:
   RaParts{+cr, +xm, +nc_l} = pts
-  opt_if(RegAllocRes, U32.is_ne(b5k_list_len(RaIv, xm), 0),
-    _ => ra_un_xmm(RegAllocRes, ra_assign_xmm_ov(vd, hints, ra_msort(20n, xm), RaXmmSt{RVEmpty{}, ra_mk_slots([22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]), Nil{}}), rm => ov => ra_finish_gpr(vd, cd, hints, no_rt, res_h, can_ce, arity, rb1, rm, cr, b5k_list_app(RaIv, nc_l, ov))),
-    _ => ra_finish_gpr(vd, cd, hints, no_rt, res_h, can_ce, arity, rb1, RVEmpty{}, cr, nc_l))
+  opt_if(RegAllocRes, U32.is_ne(b5k_list_len(RaIv, xm), 0), _ => ra_un_xmm3(RegAllocRes, ra_assign_xmm_ov(vd, hints, ra_msort(20n, xm), RaXmmSt{RVEmpty{}, ra_mk_slots([22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]), Nil{}}), rm => _ => ov => ra_finish_gpr(vd, cd, hints, no_rt, res_h, can_ce, arity, rb1, rm, cr, b5k_list_app(RaIv, nc_l, ov))), _ => ra_finish_gpr(vd, cd, hints, no_rt, res_h, can_ce, arity, rb1, RVEmpty{}, cr, nc_l))
 def b5k_ra_scan(+vd: Nat, +cd: Nat, hf: Bool, +arity: U32, tot: U32, +info: U32, sc: RaScan) -> RegAllocRes:
   RaScan{ivs, _, cb, +nc, rb, +nr, es, f32s, nf32s, +hints, cvals, +idx} = sc
   +no_rt = U32.is_zero(nr)
@@ -361,7 +301,7 @@ def b5k_ra_scan(+vd: Nat, +cd: Nat, hf: Bool, +arity: U32, tot: U32, +info: U32,
   b5k_ra_parts(vd, cd, hints, no_rt, Bool.and(can_ce, U32.is_ne(U32.and(info, 1), 0)), can_ce, arity, rb1, ra_collect_ivs(vd, cd, U32.is_ne(U32.and(info, 4), 0), hf, arity, U32.to_nat(tot), 0, ivs, cvals, ra_vec_set_if(U32, cd, U32.is_ne(nc, 0), idx, nc, cb), rb1, es, f32s, nf32s, RaParts{Nil{}, Nil{}, Nil{}}))
 def b5k_regalloc(fn: IrFn) -> RegAllocRes:
   IrFn{fid, _, +arity, +nregs, _, _, _, +blocks} = fn
-  +info = ra_blks_info(blocks, 16)
+  +info = ra_blks_info_walk(blocks, Nil{}, 16)
   +hf = U32.is_ne(U32.and(info, 2), 0)
   +tot = U32.max(nregs, arity)
   +vd = ra_vd_of(tot)
@@ -376,15 +316,9 @@ def ra_v4_split(xs: List<&2, RaIv>, p0: List<&2, RaIv>, p1: List<&2, RaIv>) -> L
     case Nil{}: (p0, p1)
     case Con{RaIv{v, 0, e, u, lu, sn}, t}: ra_v4_split(t, Con{RaIv{v, 0, e, u, lu, sn}, p0}, p1)
     case Con{iv, t}: ra_v4_split(t, p0, Con{iv, p1})
-def ra_un_xmm3(-R: Type, st: RaXmmSt, k: RaVec<U32> -> List<&2, RaSlot> -> List<&2, RaIv> -> R) -> R:
-  RaXmmSt{rm, xp, ov} = st
-  k(rm, xp, ov)
 def b5k_ra_v4_parts(+vd: Nat, +hints: RaVec<U32>, pts: RaParts) -> RegAllocRes:
   RaParts{_, xm, nc} = pts
-  ra_un_pair(List<&2, RaIv>, List<&2, RaIv>, RegAllocRes, ra_v4_split(b5k_list_app(RaIv, xm, nc), Nil{}, Nil{}), p0 => p1 =>
-    ra_un_xmm3(RegAllocRes, ra_assign_xmm_ov(vd, hints, ra_msort(20n, p0), RaXmmSt{RVEmpty{}, ra_mk_slots([22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]), Nil{}}), rm0 => xp0 => ov0 =>
-      ra_un_xmm(RegAllocRes, ra_assign_xmm_ov(vd, hints, ra_msort(20n, p1), RaXmmSt{rm0, xp0, ov0}), rm1 => ov1 =>
-        ra_spill_list(vd, ra_msort(20n, ov1), RaEvictRes{rm1, Nil{}, RaSpills{0, RVEmpty{}, RVEmpty{}}}))))
+  ra_un_pair(List<&2, RaIv>, List<&2, RaIv>, RegAllocRes, ra_v4_split(b5k_list_app(RaIv, xm, nc), Nil{}, Nil{}), p0 => p1 => ra_un_xmm3(RegAllocRes, ra_assign_xmm_ov(vd, hints, ra_msort(20n, p0), RaXmmSt{RVEmpty{}, ra_mk_slots([22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]), Nil{}}), rm0 => xp0 => ov0 => ra_un_xmm3(RegAllocRes, ra_assign_xmm_ov(vd, hints, ra_msort(20n, p1), RaXmmSt{rm0, xp0, ov0}), rm1 => _ => ov1 => ra_spill_list(vd, ra_msort(20n, ov1), RaEvictRes{rm1, Nil{}, RaSpills{0, RVEmpty{}, RVEmpty{}}}))))
 def b5k_ra_v4_scan(+vd: Nat, cd: Nat, arity: U32, tot: U32, sc: RaScan) -> RegAllocRes:
   RaScan{ivs, _, cb, _, rb, _, es, f32s, nf32s, +hints, cvals, _} = sc
   b5k_ra_v4_parts(vd, hints, ra_collect_ivs(vd, cd, True{}, True{}, arity, U32.to_nat(tot), 0, ivs, cvals, cb, rb, es, f32s, nf32s, RaParts{Nil{}, Nil{}, Nil{}}))
@@ -392,7 +326,7 @@ def b5k_regalloc_v4(fn: IrFn) -> RegAllocRes:
   IrFn{fid, _, +arity, +nregs, _, _, _, +blocks} = fn
   +tot = U32.max(nregs, arity)
   +vd = ra_vd_of(tot)
-  +cd = ra_cd_of(U32.add(U32.shrn(ra_blks_info(blocks, 16), 3n), 2))
+  +cd = ra_cd_of(U32.add(U32.shrn(ra_blks_info_walk(blocks, Nil{}, 16), 3n), 2))
   b5k_ra_v4_scan(vd, cd, arity, tot, ra_scan_blks(vd, cd, True{}, fid, blocks, RaScan{ra_init_params(vd, U32.to_nat(U32.sub(arity, 1)), 1, RVEmpty{}), RVEmpty{}, RVEmpty{}, 0, RVEmpty{}, 0, Nil{}, RVEmpty{}, RVEmpty{}, RVEmpty{}, RVEmpty{}, 1}))
 # Part 2: Typed X64Inst Peephole Optimizer (Short-Circuiting)
 def peep_is_caller_scratch(+r: U32) -> Bool: Bool.or(Bool.or(U32.is_eq(r, 6), U32.is_eq(r, 7)), Bool.and(U32.is_ge(r, 8), U32.is_le(r, 11)))
@@ -427,11 +361,7 @@ def peep_reg_use(+r: U32, inst: X64Inst) -> U32:
     case _: 2
 def peep_xmm_use(+x: U32, inst: X64Inst) -> U32:
   match inst:
-    case XXmmRR{+op, +d, +s}:
-      +v = U32.and(op, 15)
-      +rd = Bool.pick(Bool, U32.is_ge(op, 256), Bool.or(U32.is_eq(s, x), Bool.and(Bool.and(U32.is_ne(v, 4), U32.is_ne(v, 7)), U32.is_eq(U32.and(U32.shrn(op, 4n), 15), x))), Bool.or(U32.is_eq(op, 14), Bool.or(U32.is_eq(s, x), Bool.and(Bool.and(U32.is_ne(op, 7), Bool.and(U32.is_ne(op, 4), U32.is_ne(op, 12))), U32.is_eq(d, x)))))
-      +kl = Bool.and(U32.is_eq(d, x), Bool.and(Bool.not(rd), Bool.or(U32.is_ge(op, 256), Bool.or(U32.is_eq(op, 7), Bool.or(U32.is_eq(op, 4), U32.is_eq(op, 12))))))
-      Bool.pick(U32, kl, 1, Bool.pick(U32, rd, 2, 0))
+    case XXmmRR{+op, +d, +s}: (+v = U32.and(op, 15); +rd = Bool.pick(Bool, U32.is_ge(op, 256), Bool.or(U32.is_eq(s, x), Bool.and(Bool.and(U32.is_ne(v, 4), U32.is_ne(v, 7)), U32.is_eq(U32.and(U32.shrn(op, 4n), 15), x))), Bool.or(U32.is_eq(op, 14), Bool.or(U32.is_eq(s, x), Bool.and(Bool.and(U32.is_ne(op, 7), Bool.and(U32.is_ne(op, 4), U32.is_ne(op, 12))), U32.is_eq(d, x))))); +kl = Bool.and(U32.is_eq(d, x), Bool.and(Bool.not(rd), Bool.or(U32.is_ge(op, 256), Bool.or(U32.is_eq(op, 7), Bool.or(U32.is_eq(op, 4), U32.is_eq(op, 12)))))); Bool.pick(U32, kl, 1, Bool.pick(U32, rd, 2, 0)))
     case XXmmLoad{d, _, _}: Bool.to_u32(U32.is_eq(U32.and(d, 15), x))
     case XXmmStore{_, _, s}: Bool.pick(U32, U32.is_eq(U32.and(s, 15), x), 2, 0)
     case XCvt{+op, d, s}: Bool.pick(U32, Bool.and(Bool.or(U32.is_eq(op, 0), U32.is_eq(op, 2)), U32.is_eq(d, x)), 1, Bool.pick(U32, Bool.and(Bool.or(U32.is_eq(op, 1), U32.is_eq(op, 3)), U32.is_eq(s, x)), 2, 0))
@@ -501,9 +431,7 @@ def peep_no_alias(inst: X64Inst, +b: U32, d: U32, +r: U32) -> Bool:
     case XTestRR{_, _}: True{}
     case XXmmRR{_, _, _}: True{}
     case XXmmLoad{_, _, _}: True{}
-    case h:
-      +w = peep_wr_gpr(h)
-      Bool.and(U32.is_ne(w, 0), Bool.and(U32.is_ne(U32.sub(w, 1), b), U32.is_ne(U32.sub(w, 1), r)))
+    case h: (+w = peep_wr_gpr(h); Bool.and(U32.is_ne(w, 0), Bool.and(U32.is_ne(U32.sub(w, 1), b), U32.is_ne(U32.sub(w, 1), r))))
 def peep_is_zero_alu(+op: U32, imm: U32) -> Bool: Bool.and(Bool.or(Bool.or(U32.is_eq(op, 0), U32.is_eq(op, 1)), Bool.or(U32.is_eq(op, 6), U32.is_eq(op, 7))), U32.is_zero(imm))
 def peep_is_ztest(+d: U32, inst: X64Inst) -> Bool:
   match inst:
@@ -528,16 +456,11 @@ def peep_is_alu_fl(+op: U32) -> Bool: Bool.or(U32.is_le(op, 1), Bool.and(U32.is_
 def peep_is_zs_cc(+cc: U32) -> Bool: Bool.or(peep_is_z_or_nz(cc), Bool.or(U32.is_eq(cc, 8), U32.is_eq(cc, 9)))
 def peep_next_flag_cc(mode: U32, xs: List<&2, X64Inst>) -> Bool:
   match mode xs:
-    case 2 Con{h, _}:
-      +c1 = peep_flag_cc(h)
-      Bool.and(U32.is_ge(c1, 5), U32.is_le(c1, 8))
-    case m Con{h, t}:
-      +c1 = peep_flag_cc(h)
-      peep_and_nflags(Bool.and(U32.is_ne(c1, 0), Bool.pick(Bool, U32.is_eq(m, 1), peep_is_zs_cc(U32.sub(c1, 1)), peep_is_z_or_nz(U32.sub(c1, 1)))), 3n, t)
+    case 2 Con{h, _}: (+c1 = peep_flag_cc(h); Bool.and(U32.is_ge(c1, 5), U32.is_le(c1, 8)))
+    case m Con{h, t}: (+c1 = peep_flag_cc(h); peep_and_nflags(Bool.and(U32.is_ne(c1, 0), Bool.pick(Bool, U32.is_eq(m, 1), peep_is_zs_cc(U32.sub(c1, 1)), peep_is_z_or_nz(U32.sub(c1, 1)))), 3n, t))
     case _ _: False{}
 def peep_drop_m32_test(ok: Bool, +inst: X64Inst, +s1: X64Inst, +s2: X64Inst, tst: X64Inst, +t4: List<&2, X64Inst>, +acc: List<&2, X64Inst>) -> PeepSt: Bool.pick(PeepSt, ok, PeepSt{t4, Con{s2, Con{s1, Con{inst, acc}}}}, PeepSt{Con{s1, Con{s2, Con{tst, t4}}}, Con{inst, acc}})
-def peep_mov_m32(+r1: U32, +r0: U32, +rd: U32, +rs: U32, +m1: U32, +m2: U32, +r2: U32, +s: U32, ni: X64Inst, oi: X64Inst, +t5: List<&2, X64Inst>, +acc: List<&2, X64Inst>) -> PeepSt:
-  Bool.pick(PeepSt, peep_and_dead(Bool.and(Bool.and(Bool.and(U32.is_eq(rd, r1), U32.is_eq(m1, r1)), Bool.and(U32.is_eq(m2, r1), U32.is_eq(s, r1))), Bool.and(U32.is_eq(r2, r0), Bool.and(U32.is_ne(r2, r1), U32.is_ne(r2, rs)))), 8n, r1, t5), PeepSt{t5, Con{XShift{9, r2, 32, False{}}, Con{XShift{8, r2, 32, False{}}, Con{ni, acc}}}}, PeepSt{Con{oi, Con{XShift{8, m1, 32, False{}}, Con{XShift{9, m2, 32, False{}}, Con{XMovRR{r2, s}, t5}}}}, Con{XMovRR{r1, r0}, acc}})
+def peep_mov_m32(+r1: U32, +r0: U32, +rd: U32, +rs: U32, +m1: U32, +m2: U32, +r2: U32, +s: U32, ni: X64Inst, oi: X64Inst, +t5: List<&2, X64Inst>, +acc: List<&2, X64Inst>) -> PeepSt: Bool.pick(PeepSt, peep_and_dead(Bool.and(Bool.and(Bool.and(U32.is_eq(rd, r1), U32.is_eq(m1, r1)), Bool.and(U32.is_eq(m2, r1), U32.is_eq(s, r1))), Bool.and(U32.is_eq(r2, r0), Bool.and(U32.is_ne(r2, r1), U32.is_ne(r2, rs)))), 8n, r1, t5), PeepSt{t5, Con{XShift{9, r2, 32, False{}}, Con{XShift{8, r2, 32, False{}}, Con{ni, acc}}}}, PeepSt{Con{oi, Con{XShift{8, m1, 32, False{}}, Con{XShift{9, m2, 32, False{}}, Con{XMovRR{r2, s}, t5}}}}, Con{XMovRR{r1, r0}, acc}})
 # Jump Threading & Branch-to-Return (O(N), Short-Circuiting, Skip If Empty)
 type PeepLbls is Data:
   PeepLbls{tbl: RaVec<U32>, any: Bool}
@@ -552,20 +475,12 @@ def peep_res_go(fuel: Nat, done: Bool, val: U32, +tgt: U32, +tbl: RaVec<U32>) ->
   match fuel done:
     case _ True{}: val
     case 0n False{}: U32.add(tgt, 2)
-    case 1n+p False{}:
-      +ent = Bool.pick(U32, U32.is_lt(tgt, 65536), ra_vec_get(U32, 8n, 0, tgt, tbl), 0)
-      +is_z = U32.is_zero(ent)
-      +is_r = U32.is_eq(ent, 1)
-      peep_res_go(p, Bool.or(is_z, is_r), Bool.pick(U32, is_z, U32.add(tgt, 2), 1), U32.sub(ent, 2), tbl)
+    case 1n+p False{}: (+ent = Bool.pick(U32, U32.is_lt(tgt, 65536), ra_vec_get(U32, 8n, 0, tgt, tbl), 0); +is_z = U32.is_zero(ent); +is_r = U32.is_eq(ent, 1); peep_res_go(p, Bool.or(is_z, is_r), Bool.pick(U32, is_z, U32.add(tgt, 2), 1), U32.sub(ent, 2), tbl))
 def peep_thread_go(insts: List<&2, X64Inst>, +tbl: RaVec<U32>, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
   match insts:
     case Nil{}: b5k_list_rev(X64Inst, acc)
-    case Con{XJmp{tgt}, t}:
-      +res = peep_res_go(4n, False{}, 0, tgt, tbl)
-      peep_thread_go(t, tbl, Con{Bool.pick(X64Inst, U32.is_eq(res, 1), XRet{}, XJmp{U32.sub(res, 2)}), acc})
-    case Con{XJcc{cc, +tgt}, t}:
-      +res = peep_res_go(4n, False{}, 0, tgt, tbl)
-      peep_thread_go(t, tbl, Con{XJcc{cc, Bool.pick(U32, U32.is_ge(res, 2), U32.sub(res, 2), tgt)}, acc})
+    case Con{XJmp{tgt}, t}: (+res = peep_res_go(4n, False{}, 0, tgt, tbl); peep_thread_go(t, tbl, Con{Bool.pick(X64Inst, U32.is_eq(res, 1), XRet{}, XJmp{U32.sub(res, 2)}), acc}))
+    case Con{XJcc{cc, +tgt}, t}: (+res = peep_res_go(4n, False{}, 0, tgt, tbl); peep_thread_go(t, tbl, Con{XJcc{cc, Bool.pick(U32, U32.is_ge(res, 2), U32.sub(res, 2), tgt)}, acc}))
     case Con{h, t}: peep_thread_go(t, tbl, Con{h, acc})
 def peep_thread_res(+insts: List<&2, X64Inst>, pl: PeepLbls) -> List<&2, X64Inst>:
   PeepLbls{tbl, any} = pl
@@ -578,8 +493,7 @@ def peep_drop_dead(dead: Bool, inst: X64Inst, rest: List<&2, X64Inst>, +acc: Lis
 def peep_zero_mov(dlim: Nat, +r1: U32, +imm: U32, +rest: List<&2, X64Inst>, +acc: List<&2, X64Inst>) -> PeepSt: opt_if(PeepSt, peep_dead_reg(dlim, r1, rest), _ => PeepSt{rest, acc}, _ => PeepSt{rest, Con{Bool.pick(X64Inst, peep_and_nflags(U32.is_zero(imm), 3n, rest), XAluRR{7, r1, r1}, XMovRI32{r1, imm}), acc}})
 def peep_fwd(ok: Bool, new_inst: X64Inst, old1: X64Inst, old2: X64Inst, +t2: List<&2, X64Inst>, +acc: List<&2, X64Inst>) -> PeepSt: Bool.pick(PeepSt, ok, PeepSt{t2, Con{new_inst, acc}}, PeepSt{Con{old2, t2}, Con{old1, acc}})
 def peep_mov_fwd(cond: Bool, +r1: U32, r0: U32, ni: X64Inst, oi: X64Inst, +t2: List<&2, X64Inst>, +acc: List<&2, X64Inst>) -> PeepSt: peep_fwd(peep_and_dead(cond, 8n, r1, t2), ni, XMovRR{r1, r0}, oi, t2, acc)
-def peep_fwd_alu(c0: Bool, +r1: U32, +r2: U32, +r0: U32, s: U32, +n2: X64Inst, o2: X64Inst, +t3: List<&2, X64Inst>, +acc: List<&2, X64Inst>) -> PeepSt:
-  Bool.pick(PeepSt, peep_and_dead(c0, 8n, r1, t3), PeepSt{t3, Bool.pick(List<&2, X64Inst>, U32.is_eq(r2, r0), Con{n2, acc}, Con{n2, Con{XMovRR{r2, r0}, acc}})}, PeepSt{Con{o2, Con{XMovRR{r2, s}, t3}}, Con{XMovRR{r1, r0}, acc}})
+def peep_fwd_alu(c0: Bool, +r1: U32, +r2: U32, +r0: U32, s: U32, +n2: X64Inst, o2: X64Inst, +t3: List<&2, X64Inst>, +acc: List<&2, X64Inst>) -> PeepSt: Bool.pick(PeepSt, peep_and_dead(c0, 8n, r1, t3), PeepSt{t3, Bool.pick(List<&2, X64Inst>, U32.is_eq(r2, r0), Con{n2, acc}, Con{n2, Con{XMovRR{r2, r0}, acc}})}, PeepSt{Con{o2, Con{XMovRR{r2, s}, t3}}, Con{XMovRR{r1, r0}, acc}})
 def peep_mov_next(+r1: U32, +r0: U32, t1: List<&2, X64Inst>, +acc: List<&2, X64Inst>) -> PeepSt:
   match t1:
     case Con{XAluRI{+op, +rd, +imm}, Con{XMovRR{+r2, +s}, +t3}}: peep_fwd_alu(Bool.and(Bool.and(U32.is_eq(rd, r1), U32.is_eq(s, r1)), U32.is_ne(r2, r1)), r1, r2, r0, s, XAluRI{op, r2, imm}, XAluRI{op, rd, imm}, t3, acc)
@@ -588,14 +502,9 @@ def peep_mov_next(+r1: U32, +r0: U32, t1: List<&2, X64Inst>, +acc: List<&2, X64I
     case Con{XAluRR{+op, +rd, +rs}, Con{XMovRR{+r2, +s}, +t3}}: peep_fwd_alu(Bool.and(Bool.and(U32.is_eq(rd, r1), U32.is_eq(s, r1)), Bool.and(U32.is_ne(r2, r1), U32.is_ne(r2, rs))), r1, r2, r0, s, XAluRR{op, r2, rs}, XAluRR{op, rd, rs}, t3, acc)
     case Con{XShift{+op, +rd, +amt, False{}}, Con{XMovRR{+r2, +s}, +t3}}: peep_fwd_alu(Bool.and(Bool.and(U32.is_eq(rd, r1), U32.is_eq(s, r1)), U32.is_ne(r2, r1)), r1, r2, r0, s, XShift{op, r2, amt, False{}}, XShift{op, rd, amt, False{}}, t3, acc)
     case Con{XStore{+b, +d, +s}, +t2}: peep_mov_fwd(Bool.and(U32.is_eq(r1, s), U32.is_ne(r1, b)), r1, r0, XStore{b, d, r0}, XStore{b, d, s}, t2, acc)
-    case Con{XMovRR{+r2, +s}, +t2}:
-      +is_back = Bool.and(U32.is_eq(r2, r0), U32.is_eq(s, r1))
-      ok = Bool.or(is_back, peep_and_dead(Bool.and(U32.is_eq(r1, s), U32.is_ne(r1, r2)), 8n, r1, t2))
-      peep_fwd(ok, Bool.pick(X64Inst, is_back, XMovRR{r1, r0}, XMovRR{r2, r0}), XMovRR{r1, r0}, XMovRR{r2, s}, t2, acc)
+    case Con{XMovRR{+r2, +s}, +t2}: (+is_back = Bool.and(U32.is_eq(r2, r0), U32.is_eq(s, r1)); ok = Bool.or(is_back, peep_and_dead(Bool.and(U32.is_eq(r1, s), U32.is_ne(r1, r2)), 8n, r1, t2)); peep_fwd(ok, Bool.pick(X64Inst, is_back, XMovRR{r1, r0}, XMovRR{r2, r0}), XMovRR{r1, r0}, XMovRR{r2, s}, t2, acc))
     case Con{XAluRR{+op, +dst, +s}, +t2}: peep_mov_fwd(Bool.and(U32.is_eq(r1, s), U32.is_ne(r1, dst)), r1, r0, XAluRR{op, dst, r0}, XAluRR{op, dst, s}, t2, acc)
-    case Con{XCmpRR{+a, +b}, +t2}:
-      +mb = Bool.and(U32.is_eq(r1, b), U32.is_ne(r1, a))
-      peep_mov_fwd(Bool.or(mb, Bool.and(U32.is_eq(r1, a), U32.is_ne(r1, b))), r1, r0, Bool.pick(X64Inst, mb, XCmpRR{a, r0}, XCmpRR{r0, b}), XCmpRR{a, b}, t2, acc)
+    case Con{XCmpRR{+a, +b}, +t2}: (+mb = Bool.and(U32.is_eq(r1, b), U32.is_ne(r1, a)); peep_mov_fwd(Bool.or(mb, Bool.and(U32.is_eq(r1, a), U32.is_ne(r1, b))), r1, r0, Bool.pick(X64Inst, mb, XCmpRR{a, r0}, XCmpRR{r0, b}), XCmpRR{a, b}, t2, acc))
     case Con{XMul{+dst, +s}, +t2}: peep_mov_fwd(Bool.and(U32.is_eq(r1, s), U32.is_ne(r1, dst)), r1, r0, XMul{dst, r0}, XMul{dst, s}, t2, acc)
     case Con{XPush{+s}, +t2}: peep_mov_fwd(U32.is_eq(r1, s), r1, r0, XPush{r0}, XPush{s}, t2, acc)
     case Con{XTestRR{+a, +b}, +t2}: peep_mov_fwd(Bool.and(U32.is_eq(r1, a), U32.is_eq(r1, b)), r1, r0, XTestRR{r0, r0}, XTestRR{a, b}, t2, acc)
@@ -620,12 +529,8 @@ def peep_xmm_mov_next(+x1: U32, +x0: U32, t1: List<&2, X64Inst>, +acc: List<&2, 
 def peep_mov_step(is_xmm: Bool, same: Bool, +r1: U32, +r0: U32, +t1: List<&2, X64Inst>, +acc: List<&2, X64Inst>) -> PeepSt: opt_if(PeepSt, same, _ => PeepSt{t1, acc}, _ => opt_if(PeepSt, is_xmm, _ => peep_xmm_mov_next(r1, r0, t1, acc), _ => peep_mov_next(r1, r0, t1, acc)))
 def peep_drop_mask(ok: Bool, keep: X64Inst, s1: X64Inst, s2: X64Inst, +t3: List<&2, X64Inst>, acc: List<&2, X64Inst>) -> PeepSt: PeepSt{Bool.pick(List<&2, X64Inst>, ok, t3, Con{s1, Con{s2, t3}}), Con{keep, acc}}
 def peep_drop_pre_mask(ok: Bool, s1: X64Inst, s2: X64Inst, +keep: X64Inst, +t3: List<&2, X64Inst>, +acc: List<&2, X64Inst>) -> PeepSt: Bool.pick(PeepSt, ok, PeepSt{Con{keep, t3}, acc}, PeepSt{Con{s2, Con{keep, t3}}, Con{s1, acc}})
-def peep_rbp_key(+d: U32) -> U32:
-  +k = U32.shrn(U32.sub(0, d), 3n)
-  Bool.pick(U32, Bool.and(U32.is_ge(d, 2147483648), Bool.and(U32.is_zero(U32.and(d, 7)), Bool.and(U32.is_gt(k, 0), U32.is_lt(k, 512)))), k, 0)
-def peep_inc_rbp(d: U32, +cnt: RaVec<U32>) -> RaVec<U32>:
-  +k = peep_rbp_key(d)
-  ra_vec_set_if(U32, 5n, U32.is_ne(k, 0), k, U32.add(ra_vec_get(U32, 5n, 0, k, cnt), 1), cnt)
+def peep_rbp_key(+d: U32) -> U32: (+k = U32.shrn(U32.sub(0, d), 3n); Bool.pick(U32, Bool.and(U32.is_ge(d, 2147483648), Bool.and(U32.is_zero(U32.and(d, 7)), Bool.and(U32.is_gt(k, 0), U32.is_lt(k, 512)))), k, 0))
+def peep_inc_rbp(d: U32, +cnt: RaVec<U32>) -> RaVec<U32>: (+k = peep_rbp_key(d); ra_vec_set_if(U32, 5n, U32.is_ne(k, 0), k, U32.add(ra_vec_get(U32, 5n, 0, k, cnt), 1), cnt))
 def peep_count_insts(+is_rbp: Bool, insts: List<&2, X64Inst>, +cnt: RaVec<U32>) -> RaVec<U32>:
   match insts:
     case Nil{}: cnt
@@ -640,13 +545,17 @@ def peep_lbl_zero(+id: U32, lcnt: RaVec<U32>) -> Bool: Bool.and(U32.is_lt(id, 65
 def peep_cmov_rr_emit(eq1: Bool, eq2: Bool, +cc: U32, +d: U32, +s1: U32, +s2: U32, +acc: List<&2, X64Inst>) -> List<&2, X64Inst>: Bool.pick(List<&2, X64Inst>, eq1, Con{XCmov{cc, d, s2}, acc}, Bool.pick(List<&2, X64Inst>, eq2, Con{XCmov{U32.xor(cc, 1), d, s1}, acc}, Con{XCmov{cc, d, s2}, Con{XMovRR{d, s1}, acc}}))
 def peep_or_jcc(ok: Bool, cc: U32, l1: U32, orig_t: List<&2, X64Inst>, acc: List<&2, X64Inst>, hit: PeepSt) -> PeepSt: Bool.pick(PeepSt, ok, hit, PeepSt{orig_t, Con{XJcc{cc, l1}, acc}})
 def peep_cmov_dia(extra: Bool, lcnt: RaVec<U32>, cc: U32, +l1: U32, l1b: U32, l2: U32, +l2b: U32, d1: U32, d2: U32, t6: List<&2, X64Inst>, orig_t: List<&2, X64Inst>, acc: List<&2, X64Inst>, ins: List<&2, X64Inst>) -> PeepSt: peep_or_jcc(Bool.and(extra, Bool.and(Bool.and(U32.is_eq(l1, l1b), U32.is_eq(l2, l2b)), Bool.and(U32.is_eq(d1, d2), peep_lbl_once(l1, lcnt)))), cc, l1, orig_t, acc, PeepSt{Con{XLabel{l2b}, t6}, ins})
+def peep_cmov_pair(lcnt: RaVec<U32>, +cc: U32, +l1: U32, +l1b: U32, +l2: U32, +l2b: U32, ins1: X64Inst, ins2: X64Inst, t6: List<&2, X64Inst>, orig_t: List<&2, X64Inst>, +acc: List<&2, X64Inst>) -> PeepSt:
+  match ins1 ins2:
+    case XMovRR{+d1, +s1} XMovRR{+d2, +s2}: peep_cmov_dia(True{}, lcnt, cc, l1, l1b, l2, l2b, d1, d2, t6, orig_t, acc, peep_cmov_rr_emit(U32.is_eq(d1, s1), U32.is_eq(d1, s2), cc, d1, s1, s2, acc))
+    case XLoad{+d1, +b1, +disp} XMovRR{+d2, +s2}: peep_cmov_dia(Bool.and(U32.is_eq(b1, 5), Bool.and(U32.is_ne(d1, 5), U32.is_ne(d1, s2))), lcnt, cc, l1, l1b, l2, l2b, d1, d2, t6, orig_t, acc, Con{XCmov{cc, d1, s2}, Con{XLoad{d1, b1, disp}, acc}})
+    case XMovRR{+d1, +s1} XLoad{+d2, +b2, +disp}: peep_cmov_dia(Bool.and(U32.is_eq(b2, 5), Bool.and(U32.is_ne(d1, 5), U32.is_ne(d1, s1))), lcnt, cc, l1, l1b, l2, l2b, d1, d2, t6, orig_t, acc, Con{XCmov{U32.xor(cc, 1), d1, s1}, Con{XLoad{d2, b2, disp}, acc}})
+    case XMovRI32{+d1, +imm} XMovRR{+d2, +s2}: peep_cmov_dia(U32.is_ne(d1, s2), lcnt, cc, l1, l1b, l2, l2b, d1, d2, t6, orig_t, acc, Con{XCmov{cc, d1, s2}, Con{XMovRI32{d1, imm}, acc}})
+    case XMovRR{+d1, +s1} XMovRI32{+d2, +imm}: peep_cmov_dia(U32.is_ne(d1, s1), lcnt, cc, l1, l1b, l2, l2b, d1, d2, t6, orig_t, acc, Con{XCmov{U32.xor(cc, 1), d1, s1}, Con{XMovRI32{d2, imm}, acc}})
+    case _ _: PeepSt{orig_t, Con{XJcc{cc, l1}, acc}}
 def peep_jcc_cmov(lcnt: RaVec<U32>, +cc: U32, +l1: U32, body: List<&2, X64Inst>, orig_t: List<&2, X64Inst>, +acc: List<&2, X64Inst>) -> PeepSt:
   match body:
-    case Con{XMovRR{+d1, +s1}, Con{XJmp{+l2}, Con{XLabel{+l1b}, Con{XMovRR{+d2, +s2}, Con{XLabel{+l2b}, t6}}}}}: peep_cmov_dia(True{}, lcnt, cc, l1, l1b, l2, l2b, d1, d2, t6, orig_t, acc, peep_cmov_rr_emit(U32.is_eq(d1, s1), U32.is_eq(d1, s2), cc, d1, s1, s2, acc))
-    case Con{XLoad{+d1, +b1, +disp}, Con{XJmp{+l2}, Con{XLabel{+l1b}, Con{XMovRR{+d2, +s2}, Con{XLabel{+l2b}, t6}}}}}: peep_cmov_dia(Bool.and(U32.is_eq(b1, 5), Bool.and(U32.is_ne(d1, 5), U32.is_ne(d1, s2))), lcnt, cc, l1, l1b, l2, l2b, d1, d2, t6, orig_t, acc, Con{XCmov{cc, d1, s2}, Con{XLoad{d1, b1, disp}, acc}})
-    case Con{XMovRR{+d1, +s1}, Con{XJmp{+l2}, Con{XLabel{+l1b}, Con{XLoad{+d2, +b2, +disp}, Con{XLabel{+l2b}, t6}}}}}: peep_cmov_dia(Bool.and(U32.is_eq(b2, 5), Bool.and(U32.is_ne(d1, 5), U32.is_ne(d1, s1))), lcnt, cc, l1, l1b, l2, l2b, d1, d2, t6, orig_t, acc, Con{XCmov{U32.xor(cc, 1), d1, s1}, Con{XLoad{d2, b2, disp}, acc}})
-    case Con{XMovRI32{+d1, +imm}, Con{XJmp{+l2}, Con{XLabel{+l1b}, Con{XMovRR{+d2, +s2}, Con{XLabel{+l2b}, t6}}}}}: peep_cmov_dia(U32.is_ne(d1, s2), lcnt, cc, l1, l1b, l2, l2b, d1, d2, t6, orig_t, acc, Con{XCmov{cc, d1, s2}, Con{XMovRI32{d1, imm}, acc}})
-    case Con{XMovRR{+d1, +s1}, Con{XJmp{+l2}, Con{XLabel{+l1b}, Con{XMovRI32{+d2, +imm}, Con{XLabel{+l2b}, t6}}}}}: peep_cmov_dia(U32.is_ne(d1, s1), lcnt, cc, l1, l1b, l2, l2b, d1, d2, t6, orig_t, acc, Con{XCmov{U32.xor(cc, 1), d1, s1}, Con{XMovRI32{d2, imm}, acc}})
+    case Con{ins1, Con{XJmp{l2}, Con{XLabel{l1b}, Con{ins2, Con{XLabel{l2b}, t6}}}}}: peep_cmov_pair(lcnt, cc, l1, l1b, l2, l2b, ins1, ins2, t6, orig_t, acc)
     case Con{XMovRR{+d1, +s1}, Con{XRet{}, Con{XLabel{+l1b}, Con{XMovRR{+d2, +s2}, Con{XRet{}, t6}}}}}: peep_or_jcc(Bool.and(Bool.and(U32.is_eq(l1, l1b), U32.is_eq(d1, d2)), Bool.and(Bool.and(U32.is_ne(d1, s1), U32.is_ne(d1, s2)), peep_lbl_once(l1, lcnt))), cc, l1, orig_t, acc, PeepSt{t6, Con{XRet{}, Con{XCmov{cc, d1, s2}, Con{XMovRR{d1, s1}, acc}}}})
     case Con{XMovRR{d, s}, Con{XLabel{+l1b}, t3}}: peep_or_jcc(U32.is_eq(l1, l1b), cc, l1, orig_t, acc, PeepSt{Con{XLabel{l1b}, t3}, Con{XCmov{U32.xor(cc, 1), d, s}, acc}})
     case _: PeepSt{orig_t, Con{XJcc{cc, l1}, acc}}
@@ -677,36 +586,9 @@ def peep_st_fwd(+b1: U32, +d1: U32, +r1: U32, t: List<&2, X64Inst>, +acc: List<&
     case Con{XStore{+b2, +d2, +r2}, +t2}: opt_if(PeepSt, Bool.and(U32.is_eq(b1, b2), U32.is_eq(d1, d2)), _ => PeepSt{Con{XStore{b2, d2, r2}, t2}, acc}, _ => peep_st_fwd2(b1, d1, r1, Con{XStore{b2, d2, r2}, t2}, acc))
     case Con{XLoad{+r2, +b2, +d2}, +t2}: opt_if(PeepSt, Bool.and(U32.is_eq(b1, b2), U32.is_eq(d1, d2)), _ => PeepSt{peep_sl_tail(True{}, U32.is_eq(r1, r2), XMovRR{r2, r1}, XLoad{r2, b2, d2}, t2), Con{XStore{b1, d1, r1}, acc}}, _ => peep_st_fwd2(b1, d1, r1, Con{XLoad{r2, b2, d2}, t2}, acc))
     case rest: peep_st_fwd2(b1, d1, r1, rest, acc)
-def peep_xmm_fwd3(n1: X64Inst, o1: X64Inst, +x0: U32, +op: U32, +xd: U32, +xs: U32, +x2: U32, +s: U32, +t3: List<&2, X64Inst>, +acc: List<&2, X64Inst>) -> PeepSt:
-  Bool.pick(PeepSt, peep_and_scan(Bool.and(Bool.and(Bool.and(Bool.or(U32.is_lt(op, 4), Bool.and(U32.is_ge(op, 8), U32.is_le(op, 11))), U32.is_eq(xd, x0)), Bool.and(U32.is_eq(s, x0), U32.is_ne(x2, x0))), Bool.or(U32.is_eq(xs, x0), U32.is_ne(x2, xs))), 1, 8n, x0, t3), PeepSt{t3, Con{XXmmRR{op, x2, Bool.pick(U32, U32.is_eq(xs, x0), x2, xs)}, Con{n1, acc}}}, PeepSt{Con{XXmmRR{op, xd, xs}, Con{XXmmRR{7, x2, s}, t3}}, Con{o1, acc}})
-def peep_step(dlim: Nat, use_cmov: Bool, lcnt: RaVec<U32>, h: X64Inst, t: List<&2, X64Inst>, +acc: List<&2, X64Inst>) -> PeepSt:
+def peep_xmm_fwd3(n1: X64Inst, o1: X64Inst, +x0: U32, +op: U32, +xd: U32, +xs: U32, +x2: U32, +s: U32, +t3: List<&2, X64Inst>, +acc: List<&2, X64Inst>) -> PeepSt: Bool.pick(PeepSt, peep_and_scan(Bool.and(Bool.and(Bool.and(Bool.or(U32.is_lt(op, 4), Bool.and(U32.is_ge(op, 8), U32.is_le(op, 11))), U32.is_eq(xd, x0)), Bool.and(U32.is_eq(s, x0), U32.is_ne(x2, x0))), Bool.or(U32.is_eq(xs, x0), U32.is_ne(x2, xs))), 1, 8n, x0, t3), PeepSt{t3, Con{XXmmRR{op, x2, Bool.pick(U32, U32.is_eq(xs, x0), x2, xs)}, Con{n1, acc}}}, PeepSt{Con{XXmmRR{op, xd, xs}, Con{XXmmRR{7, x2, s}, t3}}, Con{o1, acc}})
+def peep_step_cmp(h: X64Inst, t: List<&2, X64Inst>, +acc: List<&2, X64Inst>) -> PeepSt:
   match h t:
-    case XMovRR{+r1, +r0} t1: peep_mov_step(False{}, U32.is_eq(r1, r0), r1, r0, t1, acc)
-    case XXmmRR{7, +x0, +xa} Con{XXmmRR{+op, +xd, +xs}, Con{XXmmRR{7, +x2, +s}, +t3}}: peep_xmm_fwd3(XXmmRR{7, x2, xa}, XXmmRR{7, x0, xa}, x0, op, xd, xs, x2, s, t3, acc)
-    case XXmmRR{7, +x1, +x0} t1: peep_mov_step(True{}, U32.is_eq(x1, x0), x1, x0, t1, acc)
-    case XXmmRR{+op, +x0, +x1} Con{XXmmRR{7, +x2, +s}, +t2}: peep_xmm_fwd(Bool.and(Bool.or(U32.is_eq(op, 4), U32.is_eq(op, 12)), Bool.and(U32.is_eq(x0, s), U32.is_ne(x0, x2))), x0, XXmmRR{op, x0, x1}, XXmmRR{op, x2, x1}, XXmmRR{7, x2, s}, t2, acc)
-    case XXmmLoad{+x0, +b, +d} Con{XXmmRR{+op, +xd, +xs}, Con{XXmmRR{7, +x2, +s}, +t3}}: peep_xmm_fwd3(XXmmLoad{U32.or(U32.and(x0, 16), x2), b, d}, XXmmLoad{x0, b, d}, U32.and(x0, 15), Bool.pick(U32, U32.is_lt(x0, 32), op, 99), xd, xs, x2, s, t3, acc)
-    case XXmmLoad{+x1, +b1, +d1} Con{XXmmLoad{+x2, +b2, +d2}, t2}: PeepSt{peep_sl_tail(Bool.and(Bool.and(U32.is_eq(b1, b2), U32.is_eq(d1, d2)), U32.is_eq(U32.shrn(x1, 4n), U32.shrn(x2, 4n))), U32.is_eq(U32.and(x1, 15), U32.and(x2, 15)), XXmmRR{Bool.pick(U32, U32.is_ge(x1, 32), 263, 7), U32.and(x2, 15), U32.and(x1, 15)}, XXmmLoad{x2, b2, d2}, t2), Con{XXmmLoad{x1, b1, d1}, acc}}
-    case XXmmLoad{+x0, +b, +d} Con{XXmmRR{7, +x2, +s}, +t2}: peep_xmm_fwd(Bool.and(U32.is_lt(x0, 32), Bool.and(U32.is_eq(U32.and(x0, 15), s), U32.is_ne(U32.and(x0, 15), x2))), U32.and(x0, 15), XXmmLoad{x0, b, d}, XXmmLoad{U32.or(U32.and(x0, 16), x2), b, d}, XXmmRR{7, x2, s}, t2, acc)
-    case XCvt{+op, +x0, +g} Con{XXmmRR{7, +x2, +s}, +t2}: peep_xmm_fwd(Bool.and(Bool.or(U32.is_eq(op, 0), U32.is_eq(op, 2)), Bool.and(U32.is_eq(x0, s), U32.is_ne(x0, x2))), x0, XCvt{op, x0, g}, XCvt{op, x2, g}, XXmmRR{7, x2, s}, t2, acc)
-    case XCvt{2, +x0, g} +t1: peep_drop_dead(peep_scan_go(1, dlim, 0, x0, t1), XCvt{2, x0, g}, t1, acc)
-    case XXmmStore{+b1, +d1, +x1} Con{XXmmLoad{+x2, +b2, +d2}, t2}: PeepSt{peep_sl_tail(Bool.and(Bool.and(U32.is_eq(b1, b2), U32.is_eq(d1, d2)), Bool.or(Bool.and(U32.is_lt(x1, 32), U32.is_eq(U32.shrn(x1, 4n), U32.shrn(x2, 4n))), Bool.and(U32.is_ge(x1, 48), Bool.and(U32.is_ge(x2, 32), U32.is_lt(x2, 48))))), U32.is_eq(U32.and(x1, 15), U32.and(x2, 15)), XXmmRR{Bool.pick(U32, U32.is_ge(x1, 48), 263, 7), U32.and(x2, 15), U32.and(x1, 15)}, XXmmLoad{x2, b2, d2}, t2), Con{XXmmStore{b1, d1, x1}, acc}}
-    case XAluRI{5, +d, +imm} Con{XShift{8, +r2, 32, False{}}, Con{XShift{9, +r3, 32, False{}}, +t3}}: peep_drop_mask(peep_and_nflags(Bool.and(Bool.and(U32.is_eq(d, r2), U32.is_eq(d, r3)), U32.is_lt(imm, 2147483648)), 3n, t3), XAluRI{5, d, imm}, XShift{8, r2, 32, False{}}, XShift{9, r3, 32, False{}}, t3, acc)
-    case XAluRI{+op, +d, +imm} Con{XShift{8, +r2, 32, False{}}, Con{XShift{9, +r3, 32, False{}}, Con{XTestRR{+a, +b}, +t4}}}: peep_drop_m32_test(Bool.and(Bool.and(peep_is_alu_fl(op), Bool.not(peep_is_zero_alu(op, imm))), Bool.and(Bool.and(Bool.and(U32.is_eq(r2, d), U32.is_eq(r3, d)), Bool.and(U32.is_eq(a, d), U32.is_eq(b, d))), Bool.and(peep_next_flag_cc(0, t4), Bool.or(U32.is_eq(op, 1), Bool.not(peep_is_lut_jcc(d, t4)))))), XAluRI{op, d, imm}, XShift{8, r2, 32, False{}}, XShift{9, r3, 32, False{}}, XTestRR{a, b}, t4, acc)
-    case XAluRI{+op, +d, +imm} Con{XTestRR{+a, +b}, +t2}:
-      +za = peep_is_zero_alu(op, imm)
-      Bool.pick(PeepSt, Bool.and(Bool.and(peep_is_alu_fl(op), Bool.not(za)), Bool.and(Bool.and(U32.is_eq(a, d), U32.is_eq(b, d)), Bool.and(peep_next_flag_cc(1, t2), Bool.or(U32.is_eq(op, 1), Bool.not(peep_is_lut_jcc(d, t2)))))), PeepSt{t2, Con{XAluRI{op, d, imm}, acc}}, peep_drop_dead(peep_and_nflags(za, 3n, Con{XTestRR{a, b}, t2}), XAluRI{op, d, imm}, Con{XTestRR{a, b}, t2}, acc))
-    case XShift{9, +d, +amt, False{}} Con{XShift{8, +r2, 32, False{}}, Con{XShift{9, +r3, 32, False{}}, +t3}}: peep_drop_mask(peep_and_nflags(Bool.and(Bool.and(U32.is_eq(d, r2), U32.is_eq(d, r3)), U32.is_ge(amt, 32)), 3n, t3), XShift{9, d, amt, False{}}, XShift{8, r2, 32, False{}}, XShift{9, r3, 32, False{}}, t3, acc)
-    case XShift{8, +r1, 32, False{}} Con{XShift{9, +r2, 32, False{}}, Con{XAluRI{5, +r3, +imm}, +t3}}: peep_drop_pre_mask(Bool.and(Bool.and(U32.is_eq(r1, r2), U32.is_eq(r1, r3)), U32.is_lt(imm, 2147483648)), XShift{8, r1, 32, False{}}, XShift{9, r2, 32, False{}}, XAluRI{5, r3, imm}, t3, acc)
-    case XShift{8, +r1, 32, False{}} Con{XShift{9, +r2, 32, False{}}, Con{XMovRI32{+mr, +mi}, Con{XAluRI{5, +r3, +imm}, +t4}}}: peep_drop_pre_mask(Bool.and(Bool.and(U32.is_eq(r1, r2), U32.is_eq(r1, r3)), Bool.and(U32.is_ne(mr, r1), U32.is_lt(imm, 2147483648))), XShift{8, r1, 32, False{}}, XShift{9, r2, 32, False{}}, XMovRI32{mr, mi}, Con{XAluRI{5, r3, imm}, t4}, acc)
-    case XAluRI{+op, d, +imm} +t1: peep_drop_dead(peep_and_nflags(peep_is_zero_alu(op, imm), 3n, t1), XAluRI{op, d, imm}, t1, acc)
-    case XStore{b1, d1, r1} rest: peep_st_fwd(b1, d1, r1, rest, acc)
-    case XLoad{+r1, +b1, +d1} Con{XLoad{+r2, +b2, +d2}, t2}: PeepSt{peep_sl_tail(Bool.and(Bool.and(U32.is_eq(b1, b2), U32.is_eq(d1, d2)), U32.is_ne(r1, b1)), U32.is_eq(r1, r2), XMovRR{r2, r1}, XLoad{r2, b2, d2}, t2), Con{XLoad{r1, b1, d1}, acc}}
-    case XLoad{+r1, +b, +d} Con{XMovRR{+r2, +s}, +t2}: peep_fwd(peep_and_dead(Bool.and(U32.is_eq(r1, s), U32.is_ne(r1, r2)), 4n, r1, t2), XLoad{r2, b, d}, XLoad{r1, b, d}, XMovRR{r2, s}, t2, acc)
-    case XLoad{+r1, +b1, +d1} Con{+m1, Con{XLoad{+r2, +b2, +d2}, t2}}: PeepSt{Con{m1, peep_sl_tail(Bool.and(Bool.and(Bool.and(U32.is_eq(b1, b2), U32.is_eq(d1, d2)), U32.is_ne(r1, b1)), peep_no_alias(m1, b1, d1, r1)), U32.is_eq(r1, r2), XMovRR{r2, r1}, XLoad{r2, b2, d2}, t2)}, Con{XLoad{r1, b1, d1}, acc}}
-    case XJmp{+lbl1} Con{XLabel{+lbl2}, t2}: peep_drop_dead(U32.is_eq(lbl1, lbl2), XJmp{lbl1}, Con{XLabel{lbl2}, t2}, acc)
-    case XLabel{+id} rest: peep_drop_dead(Bool.and(use_cmov, peep_lbl_zero(id, lcnt)), XLabel{id}, rest, acc)
-    case XJcc{cc, l1} rest: peep_jcc_step(use_cmov, lcnt, cc, l1, rest, acc)
     case XCmpRR{a, b} Con{XMovRI32{z1, zi}, Con{XSetcc{cc, d}, Con{tst, Con{XJcc{jcc, lbl}, t5}}}}: peep_try_r6a(XCmpRR{a, b}, z1, zi, cc, d, tst, jcc, lbl, t5, acc)
     case XTestRR{a, b} Con{XMovRI32{z1, zi}, Con{XSetcc{cc, d}, Con{tst, Con{XJcc{jcc, lbl}, t5}}}}: peep_try_r6a(XTestRR{a, b}, z1, zi, cc, d, tst, jcc, lbl, t5, acc)
     case XCmpRI{a, imm} Con{XMovRI32{z1, zi}, Con{XSetcc{cc, d}, Con{tst, Con{XJcc{jcc, lbl}, t5}}}}: peep_try_r6a(XCmpRI{a, imm}, z1, zi, cc, d, tst, jcc, lbl, t5, acc)
@@ -716,19 +598,65 @@ def peep_step(dlim: Nat, use_cmov: Bool, lcnt: RaVec<U32>, h: X64Inst, t: List<&
     case XTestRR{+a, +b} Con{XMovRI32{+z1, +zi}, Con{XSetcc{+cc, +d}, t3}}: peep_cmp_zset(Bool.and(U32.is_ne(d, a), U32.is_ne(d, b)), XTestRR{a, b}, z1, zi, cc, d, t3, acc)
     case XCmpRI{r, +imm} Con{XJcc{+cc, lbl}, t2}: peep_cmp0(Bool.and(U32.is_zero(imm), peep_is_z_or_nz(cc)), r, imm, XJcc{cc, lbl}, t2, acc)
     case XCmpRI{r, +imm} Con{XSetcc{+cc, d}, t2}: peep_cmp0(Bool.and(U32.is_zero(imm), peep_is_z_or_nz(cc)), r, imm, XSetcc{cc, d}, t2, acc)
-    case XMovRI32{+r1, +imm} Con{XShift{8, +r2, 32, False{}}, Con{XShift{9, +r3, 32, False{}}, +t3}}: peep_drop_mask(peep_and_nflags(Bool.and(U32.is_eq(r1, r2), U32.is_eq(r1, r3)), 3n, t3), XMovRI32{r1, imm}, XShift{8, r2, 32, False{}}, XShift{9, r3, 32, False{}}, t3, acc)
-    case XMovRI32{+r1, +imm} Con{XMovRR{+r2, +s}, +t2}: peep_imm_fwd(dlim, peep_and_dead(Bool.and(U32.is_eq(r1, s), U32.is_ne(r1, r2)), 4n, r1, t2), XMovRI32{r2, imm}, r1, imm, XMovRR{r2, s}, t2, acc)
-    case XMovRI32{+r1, +imm} Con{XAluRR{+op, +dst, +s}, +t2}: peep_imm_fwd(dlim, peep_and_dead(Bool.and(Bool.and(U32.is_eq(r1, s), U32.is_ne(r1, dst)), U32.is_lt(imm, 2147483648)), 5n, r1, t2), XAluRI{op, dst, imm}, r1, imm, XAluRR{op, dst, s}, t2, acc)
-    case XMovRI32{+r1, +imm} Con{XCmpRR{+a, +b}, +t2}: peep_imm_fwd(dlim, peep_and_dead(Bool.and(Bool.and(U32.is_zero(imm), Bool.and(U32.is_eq(r1, b), U32.is_ne(r1, a))), peep_next_flag_cc(2, t2)), 5n, r1, t2), XTestRR{a, a}, r1, imm, XCmpRR{a, b}, t2, acc)
-    case XMovRI32{r1, imm} t1: peep_zero_mov(dlim, r1, imm, t1, acc)
+    case inst rest: PeepSt{rest, Con{inst, acc}}
+def peep_step_imm(dlim: Nat, +r1: U32, +imm: U32, t: List<&2, X64Inst>, +acc: List<&2, X64Inst>) -> PeepSt:
+  match t:
+    case Con{XShift{8, +r2, 32, False{}}, Con{XShift{9, +r3, 32, False{}}, +t3}}: peep_drop_mask(peep_and_nflags(Bool.and(U32.is_eq(r1, r2), U32.is_eq(r1, r3)), 3n, t3), XMovRI32{r1, imm}, XShift{8, r2, 32, False{}}, XShift{9, r3, 32, False{}}, t3, acc)
+    case Con{XMovRR{+r2, +s}, +t2}: peep_imm_fwd(dlim, peep_and_dead(Bool.and(U32.is_eq(r1, s), U32.is_ne(r1, r2)), 4n, r1, t2), XMovRI32{r2, imm}, r1, imm, XMovRR{r2, s}, t2, acc)
+    case Con{XAluRR{+op, +dst, +s}, +t2}: peep_imm_fwd(dlim, peep_and_dead(Bool.and(Bool.and(U32.is_eq(r1, s), U32.is_ne(r1, dst)), U32.is_lt(imm, 2147483648)), 5n, r1, t2), XAluRI{op, dst, imm}, r1, imm, XAluRR{op, dst, s}, t2, acc)
+    case Con{XCmpRR{+a, +b}, +t2}: peep_imm_fwd(dlim, peep_and_dead(Bool.and(Bool.and(U32.is_zero(imm), Bool.and(U32.is_eq(r1, b), U32.is_ne(r1, a))), peep_next_flag_cc(2, t2)), 5n, r1, t2), XTestRR{a, a}, r1, imm, XCmpRR{a, b}, t2, acc)
+    case t1: peep_zero_mov(dlim, r1, imm, t1, acc)
+def peep_step_alu(dlim: Nat, h: X64Inst, t: List<&2, X64Inst>, +acc: List<&2, X64Inst>) -> PeepSt:
+  match h t:
+    case XAluRI{5, +d, +imm} Con{XShift{8, +r2, 32, False{}}, Con{XShift{9, +r3, 32, False{}}, +t3}}: peep_drop_mask(peep_and_nflags(Bool.and(Bool.and(U32.is_eq(d, r2), U32.is_eq(d, r3)), U32.is_lt(imm, 2147483648)), 3n, t3), XAluRI{5, d, imm}, XShift{8, r2, 32, False{}}, XShift{9, r3, 32, False{}}, t3, acc)
+    case XAluRI{+op, +d, +imm} Con{XShift{8, +r2, 32, False{}}, Con{XShift{9, +r3, 32, False{}}, Con{XTestRR{+a, +b}, +t4}}}: peep_drop_m32_test(Bool.and(Bool.and(peep_is_alu_fl(op), Bool.not(peep_is_zero_alu(op, imm))), Bool.and(Bool.and(Bool.and(U32.is_eq(r2, d), U32.is_eq(r3, d)), Bool.and(U32.is_eq(a, d), U32.is_eq(b, d))), Bool.and(peep_next_flag_cc(0, t4), Bool.or(U32.is_eq(op, 1), Bool.not(peep_is_lut_jcc(d, t4)))))), XAluRI{op, d, imm}, XShift{8, r2, 32, False{}}, XShift{9, r3, 32, False{}}, XTestRR{a, b}, t4, acc)
+    case XAluRI{+op, +d, +imm} Con{XTestRR{+a, +b}, +t2}: (+za = peep_is_zero_alu(op, imm); Bool.pick(PeepSt, Bool.and(Bool.and(peep_is_alu_fl(op), Bool.not(za)), Bool.and(Bool.and(U32.is_eq(a, d), U32.is_eq(b, d)), Bool.and(peep_next_flag_cc(1, t2), Bool.or(U32.is_eq(op, 1), Bool.not(peep_is_lut_jcc(d, t2)))))), PeepSt{t2, Con{XAluRI{op, d, imm}, acc}}, peep_drop_dead(peep_and_nflags(za, 3n, Con{XTestRR{a, b}, t2}), XAluRI{op, d, imm}, Con{XTestRR{a, b}, t2}, acc)))
+    case XAluRI{+op, d, +imm} +t1: peep_drop_dead(peep_and_nflags(peep_is_zero_alu(op, imm), 3n, t1), XAluRI{op, d, imm}, t1, acc)
+    case XShift{9, +d, +amt, False{}} Con{XShift{8, +r2, 32, False{}}, Con{XShift{9, +r3, 32, False{}}, +t3}}: peep_drop_mask(peep_and_nflags(Bool.and(Bool.and(U32.is_eq(d, r2), U32.is_eq(d, r3)), U32.is_ge(amt, 32)), 3n, t3), XShift{9, d, amt, False{}}, XShift{8, r2, 32, False{}}, XShift{9, r3, 32, False{}}, t3, acc)
+    case XShift{8, +r1, 32, False{}} Con{XShift{9, +r2, 32, False{}}, Con{XAluRI{5, +r3, +imm}, +t3}}: peep_drop_pre_mask(Bool.and(Bool.and(U32.is_eq(r1, r2), U32.is_eq(r1, r3)), U32.is_lt(imm, 2147483648)), XShift{8, r1, 32, False{}}, XShift{9, r2, 32, False{}}, XAluRI{5, r3, imm}, t3, acc)
+    case XShift{8, +r1, 32, False{}} Con{XShift{9, +r2, 32, False{}}, Con{XMovRI32{+mr, +mi}, Con{XAluRI{5, +r3, +imm}, +t4}}}: peep_drop_pre_mask(Bool.and(Bool.and(U32.is_eq(r1, r2), U32.is_eq(r1, r3)), Bool.and(U32.is_ne(mr, r1), U32.is_lt(imm, 2147483648))), XShift{8, r1, 32, False{}}, XShift{9, r2, 32, False{}}, XMovRI32{mr, mi}, Con{XAluRI{5, r3, imm}, t4}, acc)
+    case XAluRR{7, +r1, +r2} +t1: peep_drop_dead(peep_and_nflags(peep_and_dead(U32.is_eq(r1, r2), dlim, r1, t1), 3n, t1), XAluRR{7, r1, r2}, t1, acc)
+    case XAluRR{+op, +d, +s} Con{XShift{8, +r2, 32, False{}}, Con{XShift{9, +r3, 32, False{}}, Con{XTestRR{+a, +b}, +t4}}}: peep_drop_m32_test(Bool.and(peep_is_alu_fl(op), Bool.and(Bool.and(Bool.and(U32.is_eq(r2, d), U32.is_eq(r3, d)), Bool.and(U32.is_eq(a, d), U32.is_eq(b, d))), Bool.and(peep_next_flag_cc(0, t4), Bool.not(peep_is_lut_jcc(d, t4))))), XAluRR{op, d, s}, XShift{8, r2, 32, False{}}, XShift{9, r3, 32, False{}}, XTestRR{a, b}, t4, acc)
+    case XAluRR{+op, +d, +s} Con{XTestRR{+a, +b}, +t2}: peep_fwd(Bool.and(peep_is_alu_fl(op), Bool.and(Bool.and(U32.is_eq(a, d), U32.is_eq(b, d)), Bool.and(peep_next_flag_cc(1, t2), Bool.not(peep_is_lut_jcc(d, t2))))), XAluRR{op, d, s}, XAluRR{op, d, s}, XTestRR{a, b}, t2, acc)
+    case inst rest: PeepSt{rest, Con{inst, acc}}
+def peep_step_xmm(dlim: Nat, h: X64Inst, t: List<&2, X64Inst>, +acc: List<&2, X64Inst>) -> PeepSt:
+  match h t:
+    case XXmmRR{7, +x0, +xa} Con{XXmmRR{+op, +xd, +xs}, Con{XXmmRR{7, +x2, +s}, +t3}}: peep_xmm_fwd3(XXmmRR{7, x2, xa}, XXmmRR{7, x0, xa}, x0, op, xd, xs, x2, s, t3, acc)
+    case XXmmRR{7, +x1, +x0} t1: peep_mov_step(True{}, U32.is_eq(x1, x0), x1, x0, t1, acc)
+    case XXmmRR{+op, +x0, +x1} Con{XXmmRR{7, +x2, +s}, +t2}: peep_xmm_fwd(Bool.and(Bool.or(U32.is_eq(op, 4), U32.is_eq(op, 12)), Bool.and(U32.is_eq(x0, s), U32.is_ne(x0, x2))), x0, XXmmRR{op, x0, x1}, XXmmRR{op, x2, x1}, XXmmRR{7, x2, s}, t2, acc)
+    case XXmmLoad{+x0, +b, +d} Con{XXmmRR{+op, +xd, +xs}, Con{XXmmRR{7, +x2, +s}, +t3}}: peep_xmm_fwd3(XXmmLoad{U32.or(U32.and(x0, 16), x2), b, d}, XXmmLoad{x0, b, d}, U32.and(x0, 15), Bool.pick(U32, U32.is_lt(x0, 32), op, 99), xd, xs, x2, s, t3, acc)
+    case XXmmLoad{+x1, +b1, +d1} Con{XXmmLoad{+x2, +b2, +d2}, t2}: PeepSt{peep_sl_tail(Bool.and(Bool.and(U32.is_eq(b1, b2), U32.is_eq(d1, d2)), U32.is_eq(U32.shrn(x1, 4n), U32.shrn(x2, 4n))), U32.is_eq(U32.and(x1, 15), U32.and(x2, 15)), XXmmRR{Bool.pick(U32, U32.is_ge(x1, 32), 263, 7), U32.and(x2, 15), U32.and(x1, 15)}, XXmmLoad{x2, b2, d2}, t2), Con{XXmmLoad{x1, b1, d1}, acc}}
+    case XXmmLoad{+x0, +b, +d} Con{XXmmRR{7, +x2, +s}, +t2}: peep_xmm_fwd(Bool.and(U32.is_lt(x0, 32), Bool.and(U32.is_eq(U32.and(x0, 15), s), U32.is_ne(U32.and(x0, 15), x2))), U32.and(x0, 15), XXmmLoad{x0, b, d}, XXmmLoad{U32.or(U32.and(x0, 16), x2), b, d}, XXmmRR{7, x2, s}, t2, acc)
+    case XCvt{+op, +x0, +g} Con{XXmmRR{7, +x2, +s}, +t2}: peep_xmm_fwd(Bool.and(Bool.or(U32.is_eq(op, 0), U32.is_eq(op, 2)), Bool.and(U32.is_eq(x0, s), U32.is_ne(x0, x2))), x0, XCvt{op, x0, g}, XCvt{op, x2, g}, XXmmRR{7, x2, s}, t2, acc)
+    case XCvt{2, +x0, g} +t1: peep_drop_dead(peep_scan_go(1, dlim, 0, x0, t1), XCvt{2, x0, g}, t1, acc)
+    case XXmmStore{+b1, +d1, +x1} Con{XXmmLoad{+x2, +b2, +d2}, t2}: PeepSt{peep_sl_tail(Bool.and(Bool.and(U32.is_eq(b1, b2), U32.is_eq(d1, d2)), Bool.or(Bool.and(U32.is_lt(x1, 32), U32.is_eq(U32.shrn(x1, 4n), U32.shrn(x2, 4n))), Bool.and(U32.is_ge(x1, 48), Bool.and(U32.is_ge(x2, 32), U32.is_lt(x2, 48))))), U32.is_eq(U32.and(x1, 15), U32.and(x2, 15)), XXmmRR{Bool.pick(U32, U32.is_ge(x1, 48), 263, 7), U32.and(x2, 15), U32.and(x1, 15)}, XXmmLoad{x2, b2, d2}, t2), Con{XXmmStore{b1, d1, x1}, acc}}
+    case inst rest: PeepSt{rest, Con{inst, acc}}
+def peep_step(dlim: Nat, use_cmov: Bool, lcnt: RaVec<U32>, h: X64Inst, t: List<&2, X64Inst>, +acc: List<&2, X64Inst>) -> PeepSt:
+  match h t:
+    case XMovRR{+r1, +r0} t1: peep_mov_step(False{}, U32.is_eq(r1, r0), r1, r0, t1, acc)
+    case XXmmRR{a, b, c} t1: peep_step_xmm(dlim, XXmmRR{a, b, c}, t1, acc)
+    case XXmmLoad{a, b, c} t1: peep_step_xmm(dlim, XXmmLoad{a, b, c}, t1, acc)
+    case XCvt{a, b, c} t1: peep_step_xmm(dlim, XCvt{a, b, c}, t1, acc)
+    case XXmmStore{a, b, c} t1: peep_step_xmm(dlim, XXmmStore{a, b, c}, t1, acc)
+    case XAluRI{a, b, c} t1: peep_step_alu(dlim, XAluRI{a, b, c}, t1, acc)
+    case XShift{a, b, c, d} t1: peep_step_alu(dlim, XShift{a, b, c, d}, t1, acc)
+    case XAluRR{a, b, c} t1: peep_step_alu(dlim, XAluRR{a, b, c}, t1, acc)
+    case XStore{b1, d1, r1} rest: peep_st_fwd(b1, d1, r1, rest, acc)
+    case XLoad{+r1, +b1, +d1} Con{XLoad{+r2, +b2, +d2}, t2}: PeepSt{peep_sl_tail(Bool.and(Bool.and(U32.is_eq(b1, b2), U32.is_eq(d1, d2)), U32.is_ne(r1, b1)), U32.is_eq(r1, r2), XMovRR{r2, r1}, XLoad{r2, b2, d2}, t2), Con{XLoad{r1, b1, d1}, acc}}
+    case XLoad{+r1, +b, +d} Con{XMovRR{+r2, +s}, +t2}: peep_fwd(peep_and_dead(Bool.and(U32.is_eq(r1, s), U32.is_ne(r1, r2)), 4n, r1, t2), XLoad{r2, b, d}, XLoad{r1, b, d}, XMovRR{r2, s}, t2, acc)
+    case XLoad{+r1, +b1, +d1} Con{+m1, Con{XLoad{+r2, +b2, +d2}, t2}}: PeepSt{Con{m1, peep_sl_tail(Bool.and(Bool.and(Bool.and(U32.is_eq(b1, b2), U32.is_eq(d1, d2)), U32.is_ne(r1, b1)), peep_no_alias(m1, b1, d1, r1)), U32.is_eq(r1, r2), XMovRR{r2, r1}, XLoad{r2, b2, d2}, t2)}, Con{XLoad{r1, b1, d1}, acc}}
+    case XJmp{+lbl1} Con{XLabel{+lbl2}, t2}: peep_drop_dead(U32.is_eq(lbl1, lbl2), XJmp{lbl1}, Con{XLabel{lbl2}, t2}, acc)
+    case XLabel{+id} rest: peep_drop_dead(Bool.and(use_cmov, peep_lbl_zero(id, lcnt)), XLabel{id}, rest, acc)
+    case XJcc{cc, l1} rest: peep_jcc_step(use_cmov, lcnt, cc, l1, rest, acc)
+    case XCmpRR{a, b} t1: peep_step_cmp(XCmpRR{a, b}, t1, acc)
+    case XTestRR{a, b} t1: peep_step_cmp(XTestRR{a, b}, t1, acc)
+    case XCmpRI{a, b} t1: peep_step_cmp(XCmpRI{a, b}, t1, acc)
+    case XMovRI32{r1, imm} t1: peep_step_imm(dlim, r1, imm, t1, acc)
     case XMovRI64{+r1, lo, hi} +t1: peep_drop_dead(peep_dead_reg(dlim, r1, t1), XMovRI64{r1, lo, hi}, t1, acc)
     case XAddRsp{+a} Con{XAddRsp{+b}, +t2}: peep_fwd(peep_and_nflags(True{}, 3n, t2), XAddRsp{U32.add(a, b)}, XAddRsp{a}, XAddRsp{b}, t2, acc)
     case XSubRsp{+a} Con{XSubRsp{+b}, +t2}: peep_fwd(peep_and_nflags(True{}, 3n, t2), XSubRsp{U32.add(a, b)}, XSubRsp{a}, XSubRsp{b}, t2, acc)
     case XAddRsp{+a} +t1: peep_drop_dead(peep_and_nflags(U32.is_zero(a), 3n, t1), XAddRsp{a}, t1, acc)
     case XSubRsp{+a} +t1: peep_drop_dead(peep_and_nflags(U32.is_zero(a), 3n, t1), XSubRsp{a}, t1, acc)
-    case XAluRR{7, +r1, +r2} +t1: peep_drop_dead(peep_and_nflags(peep_and_dead(U32.is_eq(r1, r2), dlim, r1, t1), 3n, t1), XAluRR{7, r1, r2}, t1, acc)
-    case XAluRR{+op, +d, +s} Con{XShift{8, +r2, 32, False{}}, Con{XShift{9, +r3, 32, False{}}, Con{XTestRR{+a, +b}, +t4}}}: peep_drop_m32_test(Bool.and(peep_is_alu_fl(op), Bool.and(Bool.and(Bool.and(U32.is_eq(r2, d), U32.is_eq(r3, d)), Bool.and(U32.is_eq(a, d), U32.is_eq(b, d))), Bool.and(peep_next_flag_cc(0, t4), Bool.not(peep_is_lut_jcc(d, t4))))), XAluRR{op, d, s}, XShift{8, r2, 32, False{}}, XShift{9, r3, 32, False{}}, XTestRR{a, b}, t4, acc)
-    case XAluRR{+op, +d, +s} Con{XTestRR{+a, +b}, +t2}: peep_fwd(Bool.and(peep_is_alu_fl(op), Bool.and(Bool.and(U32.is_eq(a, d), U32.is_eq(b, d)), Bool.and(peep_next_flag_cc(1, t2), Bool.not(peep_is_lut_jcc(d, t2))))), XAluRR{op, d, s}, XAluRR{op, d, s}, XTestRR{a, b}, t2, acc)
     case inst rest: PeepSt{rest, Con{inst, acc}}
 def peep_rbp_ov(fuel: Nat, +d: U32, xs: List<&2, X64Inst>) -> Bool:
   match fuel xs:
@@ -763,33 +691,27 @@ def peep_cm_upd(lcnt: RaVec<U32>, inst: X64Inst, st: PeepCSt) -> PeepCSt:
     case h PeepCSt{+cm, sl, scm, _}:
       +w = peep_wr_gpr(h)
       PeepCSt{ra_vec_set_if(U32, 2n, U32.is_ne(w, 0), U32.sub(w, 1), 0, cm), sl, scm, False{}}
-def peep_asr_ok(+k: U32, mask: U32, +d: U32, +s: U32, s2: U32, s3: U32, s4: U32, +tr: U32, tr2: U32, tr3: U32, zr: U32, cm: RaVec<U32>, +rest: List<&2, X64Inst>) -> Bool:
-  +m = Bool.pick(U32, Bool.and(U32.is_ge(k, 1), U32.is_le(k, 31)), U32.shln(4294967295, U32.to_nat(U32.sub(32, k))), 0)
-  +c1 = peep_and_dead(Bool.and(Bool.and(Bool.and(U32.is_eq(s, s2), Bool.and(U32.is_eq(s, s3), U32.is_eq(s, s4))), Bool.and(U32.is_eq(tr, tr2), U32.is_eq(tr, tr3))), Bool.and(Bool.and(U32.is_ne(m, 0), U32.is_eq(mask, m)), Bool.and(U32.is_eq(ra_vec_get(U32, 2n, 0, zr, cm), 1), Bool.and(U32.is_ne(d, s), U32.is_ne(tr, d))))), 24n, s, rest)
-  peep_and_nflags(Bool.pick(Bool, U32.is_eq(tr, s), c1, peep_and_dead(c1, 24n, tr, rest)), 3n, rest)
+def peep_asr_ok(+k: U32, mask: U32, +d: U32, +s: U32, s2: U32, s3: U32, s4: U32, +tr: U32, tr2: U32, tr3: U32, zr: U32, cm: RaVec<U32>, +rest: List<&2, X64Inst>) -> Bool: (+m = Bool.pick(U32, Bool.and(U32.is_ge(k, 1), U32.is_le(k, 31)), U32.shln(4294967295, U32.to_nat(U32.sub(32, k))), 0); +c1 = peep_and_dead(Bool.and(Bool.and(Bool.and(U32.is_eq(s, s2), Bool.and(U32.is_eq(s, s3), U32.is_eq(s, s4))), Bool.and(U32.is_eq(tr, tr2), U32.is_eq(tr, tr3))), Bool.and(Bool.and(U32.is_ne(m, 0), U32.is_eq(mask, m)), Bool.and(U32.is_eq(ra_vec_get(U32, 2n, 0, zr, cm), 1), Bool.and(U32.is_ne(d, s), U32.is_ne(tr, d))))), 24n, s, rest); peep_and_nflags(Bool.pick(Bool, U32.is_eq(tr, s), c1, peep_and_dead(c1, 24n, tr, rest)), 3n, rest))
 def peep_mul_scale(+c: U32) -> U32: Bool.pick(U32, U32.is_eq(c, 3), 1, Bool.pick(U32, U32.is_eq(c, 5), 2, Bool.pick(U32, U32.is_eq(c, 9), 3, 0)))
 def peep_asr_res(ok: Bool, lcnt: RaVec<U32>, +d: U32, +s: U32, +k: U32, +h0: X64Inst, rest_ok: List<&2, X64Inst>, rest_fail: List<&2, X64Inst>, +st: PeepCSt, cm_ok: RaVec<U32>, acc_ok: List<&2, X64Inst>, +acc: List<&2, X64Inst>) -> PeepSSt:
   PeepCSt{_, sl, scm, _} = st
   Bool.pick(PeepSSt, ok, PeepSSt{rest_ok, PeepCSt{cm_ok, sl, scm, False{}}, Con{XShift{10, d, k, False{}}, Con{XMovRR{d, s}, acc_ok}}}, PeepSSt{rest_fail, peep_cm_upd(lcnt, h0, st), Con{h0, acc}})
+def peep_sar_mov(lcnt: RaVec<U32>, scnt: RaVec<U32>, +d: U32, +s: U32, t: List<&2, X64Inst>, st: PeepCSt, +acc: List<&2, X64Inst>) -> PeepSSt:
+  match t st:
+    case Con{XShift{9, +d2, +k, False{}}, Con{XShift{9, +s2, 31, False{}}, Con{XMovRI32{+mr, +mask}, Con{XTestRR{+s3, +s4}, Con{XMovRR{+tr, +zr}, Con{XCmov{5, +tr2, +mr2}, Con{XAluRR{6, +d3, +tr3}, +t8}}}}}}} PeepCSt{+cm, sl, scm, nf}: peep_asr_res(Bool.and(Bool.and(Bool.and(U32.is_eq(d, d2), U32.is_eq(d, d3)), Bool.and(U32.is_eq(mr, mr2), Bool.and(U32.is_ne(mr, d), U32.is_ne(mr, s)))), peep_asr_ok(k, mask, d, s, s2, s3, s4, tr, tr2, tr3, zr, cm, t8)), lcnt, d, s, k, XMovRR{d, s}, t8, Con{XShift{9, d2, k, False{}}, Con{XShift{9, s2, 31, False{}}, Con{XMovRI32{mr, mask}, Con{XTestRR{s3, s4}, Con{XMovRR{tr, zr}, Con{XCmov{5, tr2, mr2}, Con{XAluRR{6, d3, tr3}, t8}}}}}}}, PeepCSt{cm, sl, scm, nf}, ra_vec_set(U32, 2n, d, 0, ra_vec_set(U32, 2n, mr, mask, cm)), Con{XMovRI32{mr, mask}, acc}, acc)
+    case Con{XShift{9, +d2, +k, False{}}, Con{XShift{9, +s2, 31, False{}}, Con{XTestRR{+s3, +s4}, Con{XMovRR{+tr, +zr}, Con{XCmov{5, +tr2, +mr}, Con{XAluRR{6, +d3, +tr3}, +t7}}}}}} PeepCSt{+cm, sl, scm, nf}: peep_asr_res(Bool.and(Bool.and(U32.is_eq(d, d2), U32.is_eq(d, d3)), peep_asr_ok(k, ra_vec_get(U32, 2n, 0, mr, cm), d, s, s2, s3, s4, tr, tr2, tr3, zr, cm, t7)), lcnt, d, s, k, XMovRR{d, s}, t7, Con{XShift{9, d2, k, False{}}, Con{XShift{9, s2, 31, False{}}, Con{XTestRR{s3, s4}, Con{XMovRR{tr, zr}, Con{XCmov{5, tr2, mr}, Con{XAluRR{6, d3, tr3}, t7}}}}}}, PeepCSt{cm, sl, scm, nf}, ra_vec_set(U32, 2n, d, 0, cm), acc, acc)
+    case Con{XShift{9, +t0b, +k, False{}}, Con{XStore{5, +dp, +t0c}, Con{XShift{9, +s2, 31, False{}}, Con{XTestRR{+s3, +s4}, Con{XMovRR{+tr, +zr}, Con{XCmov{5, +tr2, +mr}, Con{XLoad{+d1, 5, +dp2}, Con{XAluRR{6, +d2, +tr3}, +t9}}}}}}}} PeepCSt{+cm, sl, scm, nf}: (+dk = peep_rbp_key(dp); +c1 = Bool.and(Bool.and(Bool.and(U32.is_eq(d, t0b), U32.is_eq(d, t0c)), Bool.and(Bool.and(U32.is_eq(dp, dp2), Bool.and(U32.is_ne(dk, 0), U32.is_eq(ra_vec_get(U32, 5n, 0, dk, scnt), 1))), U32.is_eq(d1, d2))), peep_asr_ok(k, ra_vec_get(U32, 2n, 0, mr, cm), d1, s, s2, s3, s4, tr, tr2, tr3, zr, cm, t9)); peep_asr_res(Bool.pick(Bool, Bool.or(U32.is_eq(d, d1), Bool.or(U32.is_eq(d, s), U32.is_eq(d, tr))), c1, peep_and_dead(c1, 24n, d, t9)), lcnt, d1, s, k, XMovRR{d, s}, t9, Con{XShift{9, t0b, k, False{}}, Con{XStore{5, dp, t0c}, Con{XShift{9, s2, 31, False{}}, Con{XTestRR{s3, s4}, Con{XMovRR{tr, zr}, Con{XCmov{5, tr2, mr}, Con{XLoad{d1, 5, dp2}, Con{XAluRR{6, d2, tr3}, t9}}}}}}}}, PeepCSt{cm, sl, scm, nf}, ra_vec_set(U32, 2n, d1, 0, cm), acc, acc))
+    case t1 _: PeepSSt{t1, peep_cm_upd(lcnt, XMovRR{d, s}, st), Con{XMovRR{d, s}, acc}}
 def peep_sar_step(lcnt: RaVec<U32>, scnt: RaVec<U32>, h: X64Inst, t: List<&2, X64Inst>, st: PeepCSt, +acc: List<&2, X64Inst>) -> PeepSSt:
   match h t st:
-    case XMovRI32{+r1, +imm} Con{XMul{+d, +s}, +t2} PeepCSt{+cm, +sl, +scm, nf}:
-      +sc = Bool.pick(U32, Bool.and(U32.is_eq(s, r1), Bool.and(U32.is_ne(d, r1), U32.is_ne(d, 4))), peep_mul_scale(imm), 0)
-      Bool.pick(PeepSSt, peep_and_dead(peep_and_nflags(U32.is_ne(sc, 0), 3n, t2), 6n, r1, t2), PeepSSt{t2, PeepCSt{ra_vec_set(U32, 2n, d, 0, ra_vec_set(U32, 2n, r1, 0, cm)), sl, scm, False{}}, Con{XMul{d, U32.add(16, sc)}, acc}}, PeepSSt{Con{XMul{d, s}, t2}, peep_cm_upd(lcnt, XMovRI32{r1, imm}, PeepCSt{cm, sl, scm, nf}), Con{XMovRI32{r1, imm}, acc}})
+    case XMovRI32{+r1, +imm} Con{XMul{+d, +s}, +t2} PeepCSt{+cm, +sl, +scm, nf}: (+sc = Bool.pick(U32, Bool.and(U32.is_eq(s, r1), Bool.and(U32.is_ne(d, r1), U32.is_ne(d, 4))), peep_mul_scale(imm), 0); Bool.pick(PeepSSt, peep_and_dead(peep_and_nflags(U32.is_ne(sc, 0), 3n, t2), 6n, r1, t2), PeepSSt{t2, PeepCSt{ra_vec_set(U32, 2n, d, 0, ra_vec_set(U32, 2n, r1, 0, cm)), sl, scm, False{}}, Con{XMul{d, U32.add(16, sc)}, acc}}, PeepSSt{Con{XMul{d, s}, t2}, peep_cm_upd(lcnt, XMovRI32{r1, imm}, PeepCSt{cm, sl, scm, nf}), Con{XMovRI32{r1, imm}, acc}}))
     case XMul{+d, +s} +t1 PeepCSt{+cm, +sl, +scm, nf}:
       +sc = Bool.pick(U32, U32.is_ne(d, 4), peep_mul_scale(ra_vec_get(U32, 2n, 0, s, cm)), 0)
       PeepSSt{t1, peep_cm_upd(lcnt, XMul{d, s}, PeepCSt{cm, sl, scm, nf}), Con{Bool.pick(X64Inst, peep_and_nflags(U32.is_ne(sc, 0), 3n, t1), XMul{d, U32.add(16, sc)}, XMul{d, s}), acc}}
     case XStore{5, +d, r} +t1 _:
       +k = peep_rbp_key(d)
       PeepSSt{t1, st, Bool.pick(List<&2, X64Inst>, Bool.or(Bool.and(U32.is_ne(k, 0), U32.is_zero(ra_vec_get(U32, 5n, 0, k, scnt))), peep_rbp_ov(12n, d, t1)), acc, Con{XStore{5, d, r}, acc})}
-    case XMovRR{+d, +s} Con{XShift{9, +d2, +k, False{}}, Con{XShift{9, +s2, 31, False{}}, Con{XMovRI32{+mr, +mask}, Con{XTestRR{+s3, +s4}, Con{XMovRR{+tr, +zr}, Con{XCmov{5, +tr2, +mr2}, Con{XAluRR{6, +d3, +tr3}, +t8}}}}}}} PeepCSt{+cm, sl, scm, nf}:
-      peep_asr_res(Bool.and(Bool.and(Bool.and(U32.is_eq(d, d2), U32.is_eq(d, d3)), Bool.and(U32.is_eq(mr, mr2), Bool.and(U32.is_ne(mr, d), U32.is_ne(mr, s)))), peep_asr_ok(k, mask, d, s, s2, s3, s4, tr, tr2, tr3, zr, cm, t8)), lcnt, d, s, k, XMovRR{d, s}, t8, Con{XShift{9, d2, k, False{}}, Con{XShift{9, s2, 31, False{}}, Con{XMovRI32{mr, mask}, Con{XTestRR{s3, s4}, Con{XMovRR{tr, zr}, Con{XCmov{5, tr2, mr2}, Con{XAluRR{6, d3, tr3}, t8}}}}}}}, PeepCSt{cm, sl, scm, nf}, ra_vec_set(U32, 2n, d, 0, ra_vec_set(U32, 2n, mr, mask, cm)), Con{XMovRI32{mr, mask}, acc}, acc)
-    case XMovRR{+d, +s} Con{XShift{9, +d2, +k, False{}}, Con{XShift{9, +s2, 31, False{}}, Con{XTestRR{+s3, +s4}, Con{XMovRR{+tr, +zr}, Con{XCmov{5, +tr2, +mr}, Con{XAluRR{6, +d3, +tr3}, +t7}}}}}} PeepCSt{+cm, sl, scm, nf}:
-      peep_asr_res(Bool.and(Bool.and(U32.is_eq(d, d2), U32.is_eq(d, d3)), peep_asr_ok(k, ra_vec_get(U32, 2n, 0, mr, cm), d, s, s2, s3, s4, tr, tr2, tr3, zr, cm, t7)), lcnt, d, s, k, XMovRR{d, s}, t7, Con{XShift{9, d2, k, False{}}, Con{XShift{9, s2, 31, False{}}, Con{XTestRR{s3, s4}, Con{XMovRR{tr, zr}, Con{XCmov{5, tr2, mr}, Con{XAluRR{6, d3, tr3}, t7}}}}}}, PeepCSt{cm, sl, scm, nf}, ra_vec_set(U32, 2n, d, 0, cm), acc, acc)
-    case XMovRR{+t0, +s} Con{XShift{9, +t0b, +k, False{}}, Con{XStore{5, +dp, +t0c}, Con{XShift{9, +s2, 31, False{}}, Con{XTestRR{+s3, +s4}, Con{XMovRR{+tr, +zr}, Con{XCmov{5, +tr2, +mr}, Con{XLoad{+d, 5, +dp2}, Con{XAluRR{6, +d2, +tr3}, +t9}}}}}}}} PeepCSt{+cm, sl, scm, nf}:
-      +dk = peep_rbp_key(dp)
-      +c1 = Bool.and(Bool.and(Bool.and(U32.is_eq(t0, t0b), U32.is_eq(t0, t0c)), Bool.and(Bool.and(U32.is_eq(dp, dp2), Bool.and(U32.is_ne(dk, 0), U32.is_eq(ra_vec_get(U32, 5n, 0, dk, scnt), 1))), U32.is_eq(d, d2))), peep_asr_ok(k, ra_vec_get(U32, 2n, 0, mr, cm), d, s, s2, s3, s4, tr, tr2, tr3, zr, cm, t9))
-      peep_asr_res(Bool.pick(Bool, Bool.or(U32.is_eq(t0, d), Bool.or(U32.is_eq(t0, s), U32.is_eq(t0, tr))), c1, peep_and_dead(c1, 24n, t0, t9)), lcnt, d, s, k, XMovRR{t0, s}, t9, Con{XShift{9, t0b, k, False{}}, Con{XStore{5, dp, t0c}, Con{XShift{9, s2, 31, False{}}, Con{XTestRR{s3, s4}, Con{XMovRR{tr, zr}, Con{XCmov{5, tr2, mr}, Con{XLoad{d, 5, dp2}, Con{XAluRR{6, d2, tr3}, t9}}}}}}}}, PeepCSt{cm, sl, scm, nf}, ra_vec_set(U32, 2n, d, 0, cm), acc, acc)
+    case XMovRR{d, s} t1 _: peep_sar_mov(lcnt, scnt, d, s, t1, st, acc)
     case +h1 t1 _: PeepSSt{t1, peep_cm_upd(lcnt, h1, st), Con{h1, acc}}
 def peep_strip_lbls(+lcnt: RaVec<U32>, xs: List<&2, X64Inst>, +acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
   match xs:
@@ -807,21 +729,13 @@ def peep_run(+dlim: Nat, +use_cmov: Bool, +lcnt: RaVec<U32>, fuel: Nat, st: Peep
     case 1n+p PeepSt{Nil{}, acc}: b5k_list_rev(X64Inst, acc)
     case 1n+p PeepSt{Con{h, t}, acc}: peep_run(dlim, use_cmov, lcnt, p, peep_step(dlim, use_cmov, lcnt, h, t, acc))
 def peep_pass(dlim: Nat, use_cmov: Bool, lcnt: RaVec<U32>, +insts: List<&2, X64Inst>) -> List<&2, X64Inst>: peep_run(dlim, use_cmov, lcnt, U32.to_nat(b5k_list_len(X64Inst, insts)), PeepSt{insts, Nil{}})
-def peep_fast_mov(same: Bool, d: U32, s: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
-  match same:
-    case True{}: acc
-    case False{}: Con{XMovRR{d, s}, acc}
-def peep_fast_jmp(same: Bool, l1: U32, l2: U32, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
-  match same:
-    case True{}: Con{XLabel{l2}, acc}
-    case False{}: Con{XLabel{l2}, Con{XJmp{l1}, acc}}
-def peep_fast_go(xs: List<&2, X64Inst>, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+def peep_fast_go(xs: List<&2, X64Inst>, +acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
   match xs:
     case Nil{}: b5k_list_rev(X64Inst, acc)
-    case Con{XMovRR{+d, +s}, t}: peep_fast_go(t, peep_fast_mov(U32.is_eq(d, s), d, s, acc))
+    case Con{XMovRR{+d, +s}, t}: peep_fast_go(t, Bool.pick(List<&2, X64Inst>, U32.is_eq(d, s), acc, Con{XMovRR{d, s}, acc}))
     case Con{XSubRsp{0}, t}: peep_fast_go(t, acc)
     case Con{XAddRsp{0}, t}: peep_fast_go(t, acc)
-    case Con{XJmp{+l1}, Con{XLabel{+l2}, t}}: peep_fast_go(t, peep_fast_jmp(U32.is_eq(l1, l2), l1, l2, acc))
+    case Con{XJmp{+l1}, Con{XLabel{+l2}, t}}: peep_fast_go(t, Con{XLabel{l2}, Bool.pick(List<&2, X64Inst>, U32.is_eq(l1, l2), acc, Con{XJmp{l1}, acc})})
     case Con{h, t}: peep_fast_go(t, Con{h, acc})
 def peep_fn(fast: Bool, f: X64Fn) -> X64Fn:
   match fast f:
@@ -833,8 +747,4 @@ def peep_fn(fast: Bool, f: X64Fn) -> X64Fn:
       +lc2 = peep_count_lbls(p1, RVEmpty{})
       +xs = peep_strip_lbls(lc2, p1, Nil{})
       X64Fn{name, is_glob, peep_sar_run(lc2, peep_count_insts(True{}, xs, RVEmpty{}), U32.to_nat(b5k_list_len(X64Inst, xs)), PeepSSt{xs, PeepCSt{RVEmpty{}, 4294967295, RVEmpty{}, False{}}, Nil{}})}
-def b5k_peep_go(+fast: Bool, fns: List<&2, X64Fn>, acc: List<&2, X64Fn>) -> List<&2, X64Fn>:
-  match fns:
-    case Nil{}: b5k_list_rev(X64Fn, acc)
-    case Con{f, t}: b5k_peep_go(fast, t, Con{peep_fn(fast, f), acc})
-def b5k_peep(+fns: List<&2, X64Fn>) -> List<&2, X64Fn>: b5k_peep_go(U32.is_gt(b5k_list_len(X64Fn, fns), 768), fns, Nil{})
+def b5k_peep(+fns: List<&2, X64Fn>) -> List<&2, X64Fn>: opt_mapl(~X64Fn, ~Bool, ~X64Fn, ~(fast => f => peep_fn(fast, f)), U32.is_gt(b5k_list_len(X64Fn, fns), 768), fns)

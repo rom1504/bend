@@ -423,5 +423,147 @@
       "expect_upstream": "reject",
       "code": "import Base\ndef bad_list(xs: List<&2, U32>) -> List<&2, Bool>:\n  xs\ndef main() -> U32:\n  0\n"
     }
+  ],
+  "v2_parametric_cases": [
+    {
+      "id": "v2_neg_list_ret",
+      "group": "v2_parametric_neg",
+      "category": "parametric_type_arg",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad(xs: List<&2, U32>) -> List<&2, Bool>:\n  xs\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v2_neg_maybe_ret",
+      "group": "v2_parametric_neg",
+      "category": "parametric_type_arg",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad(m: Maybe<&2, U32>) -> Maybe<&2, F32>:\n  m\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v2_neg_pair_swap",
+      "group": "v2_parametric_neg",
+      "category": "parametric_type_arg",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad(p: Pair(U32, Bool)) -> Pair(Bool, U32):\n  p\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v2_neg_array_ret",
+      "group": "v2_parametric_neg",
+      "category": "parametric_type_arg",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad(a: Array<U32>) -> Array<F32>:\n  a\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v2_neg_nested_list_maybe",
+      "group": "v2_parametric_neg",
+      "category": "parametric_type_arg",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad(xs: List<&2, Maybe<&2, U32>>) -> List<&2, Maybe<&2, Bool>>:\n  xs\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v2_neg_call_arg_list",
+      "group": "v2_parametric_neg",
+      "category": "parametric_type_arg",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef sink(xs: List<&2, Bool>) -> U32:\n  0\ndef bad(xs: List<&2, U32>) -> U32:\n  sink(xs)\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v2_neg_call_arg_maybe",
+      "group": "v2_parametric_neg",
+      "category": "parametric_type_arg",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef sink(m: Maybe<&2, F32>) -> U32:\n  0\ndef bad(m: Maybe<&2, U32>) -> U32:\n  sink(m)\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v2_neg_ctor_field_list",
+      "group": "v2_parametric_neg",
+      "category": "parametric_ctor_field",
+      "expect_upstream": "reject",
+      "code": "import Base\ntype Holder is Data:\n  Holder{xs: List<&2, U32>}\ndef bad(ys: List<&2, Bool>) -> Holder:\n  Holder{ys}\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v2_neg_some_ctor_elem",
+      "group": "v2_parametric_neg",
+      "category": "parametric_ctor_field",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad() -> Maybe<&2, Bool>:\n  Some{42}\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v2_neg_list_lit_elem",
+      "group": "v2_parametric_neg",
+      "category": "parametric_ctor_field",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad() -> List<&2, Bool>:\n  [1, 2, 3]\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v2_neg_match_maybe_unwrap",
+      "group": "v2_parametric_neg",
+      "category": "parametric_match",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad(m: Maybe<&2, U32>) -> Bool:\n  match m:\n    case None{}: False{}\n    case Some{v}: v\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v2_neg_sigma_swap",
+      "group": "v2_parametric_neg",
+      "category": "parametric_type_arg",
+      "expect_upstream": "reject",
+      "code": "import Base\ndef bad(p: U32 & Bool) -> Bool & U32:\n  p\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v2_pos_poly_id",
+      "group": "v2_parametric_pos",
+      "category": "parametric_valid",
+      "expect_upstream": "accept",
+      "code": "import Base\ndef my_id(-A: Data, x: A) -> A:\n  x\ndef check_list(xs: List<&2, Bool>) -> U32:\n  match xs:\n    case Nil{}: 0\n    case Con{_, _}: my_id(U32, 7)\ndef main() -> U32:\n  check_list(my_id(List<&2, Bool>, [True{}, False{}]))\n"
+    },
+    {
+      "id": "v2_pos_poly_list_len",
+      "group": "v2_parametric_pos",
+      "category": "parametric_valid",
+      "expect_upstream": "accept",
+      "code": "import Base\ndef my_len(-A: Data, xs: List<&2, A>, acc: U32) -> U32:\n  match xs:\n    case Nil{}: acc\n    case Con{_, t}: my_len(A, t, U32.add(acc, 1))\ndef main() -> U32:\n  U32.add(my_len(U32, [1, 2, 3], 0), my_len(Bool, [True{}, False{}], 0))\n"
+    },
+    {
+      "id": "v2_pos_nested_list_maybe",
+      "group": "v2_parametric_pos",
+      "category": "parametric_valid",
+      "expect_upstream": "accept",
+      "code": "import Base\ndef first_or(xs: List<&2, Maybe<&2, U32>>, d: U32) -> U32:\n  match xs:\n    case Nil{}: d\n    case Con{m, _}:\n      match m:\n        case None{}: d\n        case Some{v}: v\ndef main() -> U32:\n  first_or([Some{42}, None{}], 0)\n"
+    },
+    {
+      "id": "v2_pos_pair_access",
+      "group": "v2_parametric_pos",
+      "category": "parametric_valid",
+      "expect_upstream": "accept",
+      "code": "import Base\ndef mk_pair(x: U32, b: Bool) -> Pair(U32, Bool):\n  (x, b)\ndef get_fst(p: Pair(U32, Bool)) -> U32:\n  (a, _) = p\n  a\ndef main() -> U32:\n  get_fst(mk_pair(9, True{}))\n"
+    },
+    {
+      "id": "v2_pos_poly_box_ctor",
+      "group": "v2_parametric_pos",
+      "category": "parametric_valid",
+      "expect_upstream": "accept",
+      "code": "import Base\ntype Box<-A: Data> is Data:\n  Box{val: A}\ndef unbox(-A: Data, b: Box<A>) -> A:\n  match b:\n    case Box{v}: v\ndef main() -> U32:\n  unbox(U32, Box{11})\n"
+    },
+    {
+      "id": "v2_pos_array_pass",
+      "group": "v2_parametric_pos",
+      "category": "parametric_valid",
+      "expect_upstream": "accept",
+      "code": "import Base\ndef id_arr(a: Array<U32>) -> Array<U32>:\n  a\ndef main() -> U32:\n  0\n"
+    },
+    {
+      "id": "v2_pos_sigma_3tuple",
+      "group": "v2_parametric_pos",
+      "category": "parametric_valid",
+      "expect_upstream": "accept",
+      "code": "import Base\ndef mk3(a: U32, b: Bool, c: F32) -> U32 & Bool & F32:\n  (a, b, c)\ndef fst3(t: U32 & Bool & F32) -> U32:\n  (x, _, _) = t\n  x\ndef main() -> U32:\n  fst3(mk3(5, True{}, 1.0))\n"
+    },
+    {
+      "id": "v2_pos_poly_maybe_map",
+      "group": "v2_parametric_pos",
+      "category": "parametric_valid",
+      "expect_upstream": "accept",
+      "code": "import Base\ndef maybe_map(-A: Data, -B: Data, f: A -> B, m: Maybe<&2, A>) -> Maybe<&2, B>:\n  match m:\n    case None{}: None{}\n    case Some{x}: Some{f(x)}\ndef inc(x: U32) -> U32:\n  U32.add(x, 1)\ndef unwrap0(m: Maybe<&2, U32>) -> U32:\n  match m:\n    case None{}: 0\n    case Some{v}: v\ndef main() -> U32:\n  unwrap0(maybe_map(U32, U32, inc, Some{41}))\n"
+    }
   ]
 }

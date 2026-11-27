@@ -76,12 +76,18 @@ def main() -> int:
     ap.add_argument("--corpus", type=Path, default=DEFAULT_CORPUS)
     ap.add_argument("--cpu", type=int, default=2)
     ap.add_argument("--timeout", type=int, default=30)
+    ap.add_argument("--suite", choices=("frozen60", "v2_parametric", "all"), default="frozen60")
     ap.add_argument("--json-out", type=Path, default=None)
     ap.add_argument("--label", type=str, default="run")
     args = ap.parse_args()
 
     corpus = json.loads(args.corpus.read_text(encoding="utf-8"))
-    cases = corpus["cases"]
+    if args.suite == "frozen60":
+        cases = corpus["cases"]
+    elif args.suite == "v2_parametric":
+        cases = corpus.get("v2_parametric_cases", [])
+    else:
+        cases = list(corpus["cases"]) + list(corpus.get("v2_parametric_cases", []))
 
     outcomes = collections.Counter()
     by_category = collections.defaultdict(collections.Counter)

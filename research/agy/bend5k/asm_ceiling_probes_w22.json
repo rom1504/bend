@@ -1,0 +1,545 @@
+{
+  "schema": "agy.bend5k.asm_ceiling_probes.v22",
+  "host_pin": "taskset -c 5",
+  "host_cpu": "Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz (Ivy Bridge)",
+  "host_isa": [
+    "sse4_1",
+    "sse4_2",
+    "popcnt",
+    "avx"
+  ],
+  "compiler_baseline": {
+    "description": "Proven-21 bend5k_o2 -O2 (base commit 2f59e12b)",
+    "path": "/home/ai/bend2_agy/selfhost/build/agy/bend5k/bend5k_o2",
+    "sha256": "ba0df1811b3f6043d03b892394c6b5ae78bc2917e10fd9223a171c409ebdf74c"
+  },
+  "runtime": {
+    "path": "/home/ai/bend2_agy/selfhost/build/agy/unified/runtime-agy.o",
+    "sha256": "afdcbaa790b85f55548fc0dc7ab50dc11241765ff547fc98a13e0e45ea6bbeaf"
+  },
+  "c_baselines": {
+    "gcc10_o2": "gcc-10 -O2 -ffp-contract=off (5-run median on CPU 5)",
+    "gcc10_o3_native": "gcc-10 -O3 -march=native -ffp-contract=off (5-run median on CPU 5)"
+  },
+  "probes": [
+    {
+      "id": "1",
+      "name": "t4_interval_tree_query",
+      "pool": "retired_w21_test_sealed",
+      "description": "Persistent Augmented Interval Tree with two-sided overlap pruning (512 intervals, 512 queries, 65 rounds)",
+      "bend_file": "research/agy/bend5k/eval_split_w21/test_sealed/t4_interval_tree_query_std.bend",
+      "c_file": "research/agy/bend5k/eval_split_w21/test_sealed/t4_interval_tree_query.c",
+      "hot_symbol": "$direct.insert_iv + $direct.query_overlap",
+      "checksum": "3103892638",
+      "baseline_ms": 57.44,
+      "c_o2_ms": 10.28,
+      "c_o3_native_ms": 10.29,
+      "baseline_vs_c_o2": 5.588,
+      "baseline_vs_c_o3_native": 5.582,
+      "raw_baseline_ms": [
+        57.44,
+        57.38,
+        57.56,
+        57.8,
+        57.21
+      ],
+      "raw_c_o2_ms": [
+        10.26,
+        10.38,
+        10.28,
+        10.62,
+        10.05
+      ],
+      "raw_c_o3_native_ms": [
+        10.29,
+        10.41,
+        10.29,
+        10.37,
+        10.27
+      ],
+      "variants": [
+        {
+          "name": "a_query_direct_tree",
+          "asm_file": "research/agy/bend5k/hand_asm_w22/probes/t4_a_query_direct_tree.S",
+          "redirected_symbols": [
+            "$direct.query_overlap"
+          ],
+          "checksum": "3103892638",
+          "ms": 23.52,
+          "vs_c_o2": 2.288,
+          "vs_c_o3_native": 2.286,
+          "speedup_vs_base": 2.442,
+          "pct_saved": 59.1,
+          "raw_ms": [
+            23.43,
+            23.39,
+            23.58,
+            23.52,
+            23.58
+          ],
+          "note": "Deforest QReq continuation-ADT in query_overlap only; direct recursion with tail-call right descent over unmodified ITree."
+        },
+        {
+          "name": "b_insert_and_query_direct",
+          "asm_file": "research/agy/bend5k/hand_asm_w22/probes/t4_b_insert_and_query_direct.S",
+          "redirected_symbols": [
+            "$direct.insert_iv",
+            "$direct.query_overlap"
+          ],
+          "checksum": "3103892638",
+          "ms": 11.76,
+          "vs_c_o2": 1.144,
+          "vs_c_o3_native": 1.143,
+          "speedup_vs_base": 4.884,
+          "pct_saved": 79.5,
+          "raw_ms": [
+            11.76,
+            11.62,
+            12.31,
+            11.72,
+            12.21
+          ],
+          "note": "Variant A + deforest InsReq continuation-ADT + FBIP unique-node reuse in insert_iv (allocating real Bend INodes at Empty leaves via p111_rt_ctor)."
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "v4_huffman_trie_codec",
+      "pool": "retired_w21_validation",
+      "description": "Binary Prefix-Code Trie builder & bit-by-bit decoder (depth-6 trie, 45 rounds x 2048 words x 32 bits = 2.95M bits)",
+      "bend_file": "research/agy/bend5k/eval_split_w21/validation/v4_huffman_trie_codec_std.bend",
+      "c_file": "research/agy/bend5k/eval_split_w21/validation/v4_huffman_trie_codec.c",
+      "hot_symbol": "$direct.decode_words / $direct.decode_bits",
+      "checksum": "4277058299",
+      "baseline_ms": 88.16,
+      "c_o2_ms": 11.39,
+      "c_o3_native_ms": 9.24,
+      "baseline_vs_c_o2": 7.74,
+      "baseline_vs_c_o3_native": 9.541,
+      "raw_baseline_ms": [
+        84.18,
+        84.29,
+        94.43,
+        88.16,
+        112.76
+      ],
+      "raw_c_o2_ms": [
+        11.04,
+        11.39,
+        11.55,
+        11.12,
+        11.55
+      ],
+      "raw_c_o3_native_ms": [
+        7.62,
+        7.74,
+        9.65,
+        9.64,
+        9.24
+      ],
+      "variants": [
+        {
+          "name": "a_decode_bits_zero_alloc",
+          "asm_file": "research/agy/bend5k/hand_asm_w22/probes/v4_a_decode_bits_zero_alloc.S",
+          "redirected_symbols": [
+            "$direct.decode_bits"
+          ],
+          "checksum": "4277058299",
+          "ms": 12.87,
+          "vs_c_o2": 1.13,
+          "vs_c_o3_native": 1.393,
+          "speedup_vs_base": 6.85,
+          "pct_saved": 85.4,
+          "raw_ms": [
+            19.47,
+            20.66,
+            12.87,
+            12.72,
+            12.65
+          ],
+          "note": "Eliminate TNode{l,r} identity reconstruction in check_leaf + unbox DSt across 32-bit loop (1 p111_rt_ctor at exit)."
+        },
+        {
+          "name": "b_decode_words_fused",
+          "asm_file": "research/agy/bend5k/hand_asm_w22/probes/v4_b_decode_words_fused.S",
+          "redirected_symbols": [
+            "$direct.decode_words"
+          ],
+          "checksum": "4277058299",
+          "ms": 9.87,
+          "vs_c_o2": 0.867,
+          "vs_c_o3_native": 1.068,
+          "speedup_vs_base": 8.932,
+          "pct_saved": 88.8,
+          "raw_ms": [
+            9.85,
+            10.13,
+            9.8,
+            9.98,
+            9.87
+          ],
+          "note": "Variant A + fuse decode_bits into decode_words + unboxed RSt multi-return (0 heap allocations in entire 65,536-bit round)."
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "t2_chacha20_quarter",
+      "pool": "retired_w21_test_sealed",
+      "description": "RFC-7539 ChaCha20 20-round ARX stream cipher block generator (48,000 blocks x 10 double-rounds)",
+      "bend_file": "research/agy/bend5k/eval_split_w21/test_sealed/t2_chacha20_quarter_std.bend",
+      "c_file": "research/agy/bend5k/eval_split_w21/test_sealed/t2_chacha20_quarter.c",
+      "hot_symbol": "$direct.run_blocks",
+      "checksum": "1185483819",
+      "baseline_ms": 45.41,
+      "c_o2_ms": 9.53,
+      "c_o3_native_ms": 8.98,
+      "baseline_vs_c_o2": 4.765,
+      "baseline_vs_c_o3_native": 5.057,
+      "raw_baseline_ms": [
+        42.93,
+        36.73,
+        45.41,
+        51.99,
+        54.78
+      ],
+      "raw_c_o2_ms": [
+        9.18,
+        9.53,
+        9.41,
+        9.72,
+        10.34
+      ],
+      "raw_c_o3_native_ms": [
+        8.98,
+        8.88,
+        12.97,
+        9.02,
+        8.78
+      ],
+      "variants": [
+        {
+          "name": "a_scalar_unbox_rol",
+          "asm_file": "research/agy/bend5k/hand_asm_w22/probes/t2_a_scalar_unbox_rol.S",
+          "redirected_symbols": [
+            "$direct.run_blocks"
+          ],
+          "checksum": "1185483819",
+          "ms": 13.59,
+          "vs_c_o2": 1.426,
+          "vs_c_o3_native": 1.513,
+          "speedup_vs_base": 3.341,
+          "pct_saved": 70.1,
+          "raw_ms": [
+            13.59,
+            15.26,
+            13.47,
+            14.0,
+            13.46
+          ],
+          "note": "2-level nested record unboxing (ChaMat -> 4x Row4 -> 16 U32s) + hardware roll $16/$12/$8/$7 (0 heap allocs)."
+        },
+        {
+          "name": "b_sse2_4wide_rows",
+          "asm_file": "research/agy/bend5k/hand_asm_w22/probes/t2_b_sse2_4wide_rows.S",
+          "redirected_symbols": [
+            "$direct.run_blocks"
+          ],
+          "checksum": "1185483819",
+          "ms": 7.94,
+          "vs_c_o2": 0.833,
+          "vs_c_o3_native": 0.884,
+          "speedup_vs_base": 5.719,
+          "pct_saved": 82.5,
+          "raw_ms": [
+            8.28,
+            11.45,
+            7.64,
+            7.94,
+            7.79
+          ],
+          "note": "4-wide SSE2/SSSE3 vectorization (Row4 = __m128i, paddd/pxor/pshufb/pshufd, 0 heap allocs, 0 loop spills)."
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "t1_csr_dijkstra_relax",
+      "pool": "retired_w21_test_sealed",
+      "description": "Weighted CSR graph shortest-path relaxation over 5 Array<U32>s (V=2048, deg=8, 24 sources x 12 sweeps)",
+      "bend_file": "research/agy/bend5k/eval_split_w21/test_sealed/t1_csr_dijkstra_relax_std.bend",
+      "c_file": "research/agy/bend5k/eval_split_w21/test_sealed/t1_csr_dijkstra_relax.c",
+      "hot_symbol": "$direct.run_sweeps",
+      "checksum": "2992686248",
+      "baseline_ms": 34.68,
+      "c_o2_ms": 10.56,
+      "c_o3_native_ms": 12.56,
+      "baseline_vs_c_o2": 3.284,
+      "baseline_vs_c_o3_native": 2.761,
+      "raw_baseline_ms": [
+        34.7,
+        52.57,
+        34.62,
+        34.39,
+        34.68
+      ],
+      "raw_c_o2_ms": [
+        11.74,
+        10.56,
+        10.85,
+        10.39,
+        10.19
+      ],
+      "raw_c_o3_native_ms": [
+        12.56,
+        12.79,
+        12.78,
+        11.15,
+        10.4
+      ],
+      "variants": [
+        {
+          "name": "a_5array_hoist_fused",
+          "asm_file": "research/agy/bend5k/hand_asm_w22/probes/t1_a_5array_hoist_fused.S",
+          "redirected_symbols": [
+            "$direct.run_sweeps"
+          ],
+          "checksum": "2992686248",
+          "ms": 11.28,
+          "vs_c_o2": 1.068,
+          "vs_c_o3_native": 0.898,
+          "speedup_vs_base": 3.074,
+          "pct_saved": 67.5,
+          "raw_ms": [
+            11.34,
+            11.23,
+            11.28,
+            11.18,
+            11.69
+          ],
+          "note": "Hoist ALL 5 arrays (rptr, rlen, col, wt, dist) once before 12-sweep loop + fuse sweep_vertices/relax_edges + Graph unboxing."
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "name": "v3_bloom_dedup_ring",
+      "pool": "retired_w21_validation",
+      "description": "3-probe bit-packed Bloom filter + circular ring-buffer dedup (24 rounds x 65,536 keys = 1.57M keys)",
+      "bend_file": "research/agy/bend5k/eval_split_w21/validation/v3_bloom_dedup_ring_std.bend",
+      "c_file": "research/agy/bend5k/eval_split_w21/validation/v3_bloom_dedup_ring.c",
+      "hot_symbol": "$direct.step_keys",
+      "checksum": "4154903119",
+      "baseline_ms": 34.0,
+      "c_o2_ms": 15.92,
+      "c_o3_native_ms": 15.9,
+      "baseline_vs_c_o2": 2.136,
+      "baseline_vs_c_o3_native": 2.138,
+      "raw_baseline_ms": [
+        33.73,
+        34.0,
+        33.44,
+        36.11,
+        38.86
+      ],
+      "raw_c_o2_ms": [
+        15.92,
+        16.13,
+        15.53,
+        16.03,
+        15.88
+      ],
+      "raw_c_o3_native_ms": [
+        16.06,
+        15.82,
+        15.9,
+        16.11,
+        15.8
+      ],
+      "variants": [
+        {
+          "name": "a_dual_hoist_rmw",
+          "asm_file": "research/agy/bend5k/hand_asm_w22/probes/v3_a_dual_hoist_rmw.S",
+          "redirected_symbols": [
+            "$direct.step_keys"
+          ],
+          "checksum": "4154903119",
+          "ms": 17.62,
+          "vs_c_o2": 1.107,
+          "vs_c_o3_native": 1.108,
+          "speedup_vs_base": 1.93,
+          "pct_saved": 48.2,
+          "raw_ms": [
+            17.99,
+            17.83,
+            17.62,
+            17.43,
+            17.55
+          ],
+          "note": "Dual-array preheader hoist (bloom + ring) + 5-step continuation fusion + direct bit RMW (0 p113_rt_array_pair, 0 p111_rt_op)."
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "name": "k1_bsearch_branchless",
+      "pool": "fresh_non_suite_w22",
+      "description": "Power-of-2 lower-bound binary search over 16,384 sorted U32s (1,000,000 queries x 14 levels)",
+      "bend_file": "research/agy/bend5k/hand_asm_w22/kernels/k1_bsearch_branchless.bend",
+      "c_file": "research/agy/bend5k/hand_asm_w22/kernels/k1_bsearch_branchless.c",
+      "hot_symbol": "$direct.run_queries",
+      "checksum": "2353581905",
+      "baseline_ms": 103.1,
+      "c_o2_ms": 45.99,
+      "c_o3_native_ms": 45.19,
+      "baseline_vs_c_o2": 2.242,
+      "baseline_vs_c_o3_native": 2.281,
+      "raw_baseline_ms": [
+        103.1,
+        102.6,
+        101.5,
+        103.91,
+        103.35
+      ],
+      "raw_c_o2_ms": [
+        45.49,
+        45.99,
+        45.61,
+        46.86,
+        46.29
+      ],
+      "raw_c_o3_native_ms": [
+        45.84,
+        45.03,
+        45.19,
+        48.08,
+        44.94
+      ],
+      "variants": [
+        {
+          "name": "a_hoist_branch",
+          "asm_file": "research/agy/bend5k/hand_asm_w22/probes/k1_a_hoist_branch.S",
+          "redirected_symbols": [
+            "$direct.run_queries"
+          ],
+          "checksum": "2353581905",
+          "ms": 88.81,
+          "vs_c_o2": 1.931,
+          "vs_c_o3_native": 1.965,
+          "speedup_vs_base": 1.161,
+          "pct_saved": 13.9,
+          "raw_ms": [
+            88.76,
+            88.81,
+            89.07,
+            88.46,
+            89.04
+          ],
+          "note": "Control: hoist arr + fuse bsearch_step + unbox BS, keeping conditional branch (ja) to isolate branch-mispredict cost."
+        },
+        {
+          "name": "b_hoist_cmov",
+          "asm_file": "research/agy/bend5k/hand_asm_w22/probes/k1_b_hoist_cmov.S",
+          "redirected_symbols": [
+            "$direct.run_queries"
+          ],
+          "checksum": "2353581905",
+          "ms": 50.28,
+          "vs_c_o2": 1.093,
+          "vs_c_o3_native": 1.113,
+          "speedup_vs_base": 2.051,
+          "pct_saved": 51.2,
+          "raw_ms": [
+            50.87,
+            50.2,
+            49.76,
+            50.28,
+            50.54
+          ],
+          "note": "Variant A + branchless hardware cmovbel for unpredictable 50/50 binary-search comparison."
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "name": "k2_tree_nontail_fold",
+      "pool": "fresh_non_suite_w22",
+      "description": "Pure non-tail recursive ADT binary tree fold (depth-10 tree, 2047 nodes, 12,000 folds = 24.56M node visits)",
+      "bend_file": "research/agy/bend5k/hand_asm_w22/kernels/k2_tree_nontail_fold.bend",
+      "c_file": "research/agy/bend5k/hand_asm_w22/kernels/k2_tree_nontail_fold.c",
+      "hot_symbol": "$direct.fold_tree",
+      "checksum": "2883565381",
+      "baseline_ms": 204.9,
+      "c_o2_ms": 108.44,
+      "c_o3_native_ms": 74.57,
+      "baseline_vs_c_o2": 1.89,
+      "baseline_vs_c_o3_native": 2.748,
+      "raw_baseline_ms": [
+        208.6,
+        205.48,
+        204.9,
+        202.01,
+        203.42
+      ],
+      "raw_c_o2_ms": [
+        108.69,
+        105.45,
+        109.15,
+        108.44,
+        107.99
+      ],
+      "raw_c_o3_native_ms": [
+        74.19,
+        74.57,
+        75.67,
+        75.37,
+        74.13
+      ],
+      "variants": [
+        {
+          "name": "a_lean_recursion",
+          "asm_file": "research/agy/bend5k/hand_asm_w22/probes/k2_a_lean_recursion.S",
+          "redirected_symbols": [
+            "$direct.fold_tree"
+          ],
+          "checksum": "2883565381",
+          "ms": 100.24,
+          "vs_c_o2": 0.924,
+          "vs_c_o3_native": 1.344,
+          "speedup_vs_base": 2.044,
+          "pct_saved": 51.1,
+          "raw_ms": [
+            100.24,
+            99.74,
+            101.37,
+            101.21,
+            99.31
+          ],
+          "note": "Shrink-wrapped BLeaf fast-path (0 stack frame) + minimal 24B BNode frame + invariant heap base register."
+        },
+        {
+          "name": "b_leaf_inline",
+          "asm_file": "research/agy/bend5k/hand_asm_w22/probes/k2_b_leaf_inline.S",
+          "redirected_symbols": [
+            "$direct.fold_tree"
+          ],
+          "checksum": "2883565381",
+          "ms": 91.47,
+          "vs_c_o2": 0.844,
+          "vs_c_o3_native": 1.227,
+          "speedup_vs_base": 2.24,
+          "pct_saved": 55.4,
+          "raw_ms": [
+            91.27,
+            92.25,
+            91.44,
+            91.7,
+            91.47
+          ],
+          "note": "Variant A + child-leaf specialization (inline BLeaf evaluation at call site -> eliminates 50% of all recursive calls)."
+        }
+      ]
+    }
+  ]
+}

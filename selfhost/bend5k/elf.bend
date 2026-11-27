@@ -41,6 +41,7 @@ def elf_inst_len(inst: X64Inst) -> U32:
     case XJmp{_}: 5
     case XJcc{_, _}: 6
     case XCallSym{_}: 5
+    case XJmpSym{_}: 5
     case XCallReg{reg}: Bool.pick(U32, U32.is_lt(reg, 8), 2, 3)
     case XRet{}: 1
     case XXmmRR{+op, dst, src}: Bool.pick(U32, U32.is_ge(op, 256), Bool.pick(U32, U32.is_ge(U32.and(op, 15), 8), 6, 5), Bool.pick(U32, U32.is_eq(op, 14), 3, U32.add(U32.add(3, Bool.pick(U32, U32.is_eq(op, 13), 1, 0)), U32.add(Bool.pick(U32, U32.is_lt(op, 5), 1, 0), Bool.pick(U32, elf_is_hi(dst, src), 1, 0)))))
@@ -348,6 +349,7 @@ def elf_emit_insts_go(fuel: Nat, +lcnt: RaVec<U32>, +lbls: RaVec<U32>, st: EmitS
       +n_off = U32.add(off, 6)
       elf_emit_insts_go(p, lcnt, lbls, EmitSt{t, 0n, ByteBuf{n_off, e_u32(e_b2(rev, 15, U32.add(128, U32.and(cc, 15))), U32.sub(ra_vec_get(U32, 9n, 0, elf_lbl_key(target), lbls), n_off))}, rels, luts})
     case 1n+p EmitSt{Con{XCallSym{sym}, t}, _, ByteBuf{+off, rev}, rels, luts}: elf_emit_insts_go(p, lcnt, lbls, EmitSt{t, 0n, ByteBuf{U32.add(off, 5), e_u32(Con{232, rev}, 0)}, Con{ElfReloc{U32.add(off, 1), sym, 4, U32.sub(0, 4)}, rels}, luts})
+    case 1n+p EmitSt{Con{XJmpSym{sym}, t}, _, ByteBuf{+off, rev}, rels, luts}: elf_emit_insts_go(p, lcnt, lbls, EmitSt{t, 0n, ByteBuf{U32.add(off, 5), e_u32(Con{233, rev}, 0)}, Con{ElfReloc{U32.add(off, 1), sym, 4, U32.sub(0, 4)}, rels}, luts})
     case 1n+p EmitSt{Con{inst, t}, _, ByteBuf{off, rev}, rels, luts}: elf_emit_insts_go(p, lcnt, lbls, EmitSt{t, 0n, elf_emit_inst_bytes_go(inst, off, rev), rels, luts})
 # ELF Symbol Table & Alignment Helpers
 type ElfSym is Data:

@@ -256,6 +256,7 @@ type X64Inst is Data:
   XJmp{target: U32}
   XJcc{cc: U32, target: U32}
   XCallSym{sym: String}
+  XJmpSym{sym: String}
   XCallReg{reg: U32}
   XRet{}
   XXmmRR{op: U32, dst: U32, src: U32}

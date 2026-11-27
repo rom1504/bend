@@ -1116,6 +1116,11 @@ def x64_emit_epilogue_ctx(ctx: X64Ctx, acc: List<&2, X64Inst>) -> List<&2, X64In
     case X64Ctx{_, _, _, _, _, _, _, _, ce, _, X64Meta{True{}, _, _, _, _, _, _, _, _, _, _, _, _, _, _}}: x64_emit(XRet{}, x64_push_pop_list(False{}, b5k_list_rev(U32, ce), acc))
     case X64Ctx{_, _, _, _, _, _, _, _, Nil{}, _, _}: x64_emit_epilogue(acc)
     case X64Ctx{_, _, _, _, _, _, _, frame, ce, _, _}: x64_emit(XRet{}, x64_emit(XPop{5}, x64_push_pop_list(False{}, b5k_list_rev(U32, ce), x64_emit(XAddRsp{frame}, acc))))
+def x64_emit_epilogue_jmp(ctx: X64Ctx, sym: String, acc: List<&2, X64Inst>) -> List<&2, X64Inst>:
+  match ctx:
+    case X64Ctx{_, _, _, _, _, _, _, _, ce, _, X64Meta{True{}, _, _, _, _, _, _, _, _, _, _, _, _, _, _}}: x64_emit(XJmpSym{sym}, x64_push_pop_list(False{}, b5k_list_rev(U32, ce), acc))
+    case X64Ctx{_, _, _, _, _, _, _, _, Nil{}, _, _}: x64_emit(XJmpSym{sym}, x64_emit(XPop{5}, x64_emit(XMovRR{4, 5}, acc)))
+    case X64Ctx{_, _, _, _, _, _, _, frame, ce, _, _}: x64_emit(XJmpSym{sym}, x64_emit(XPop{5}, x64_push_pop_list(False{}, b5k_list_rev(U32, ce), x64_emit(XAddRsp{frame}, acc))))
 def x64_u32_in(+x: U32, xs: List<&2, U32>) -> Bool:
   match xs:
     case Nil{}: False{}
@@ -1256,6 +1261,12 @@ def x64_emit_ops_fused(+ctx: X64Ctx, +fn_map: Map<&2, String>, +reuse: RaVec<Boo
           a1 = x64_emit(XStore{5, u2o1, 2}, x64_emit(XStore{5, u2o0, 0}, x64_unpack_r2(x64_emit_call(ctx, x64_lookup_fn_sym(fn_map, cfid), args, acc))));
           X64Acc{x64_emit_term(ctx, fn_map, TTailCall{tfid, targs}, nxt, x64_store_vreg(ctx, dst, 0, x64_emit(XMovRI64{0, 0, U32.or(33554432, U32.shln(U32.sub(cur_r2, 1), 8n))}, a1))), lbl, cold},
         u => x64_emit_term_acc(ctx, fn_map, TTailCall{tfid, targs}, nxt, x64_emit_op(ctx, fn_map, RVEmpty{}, False{}, cs, fcs, xm0, RVEmpty{}, ICallDirect{dst, cfid, args}, acc, cold, lbl)))
+    case X64Ctx{_, _, _, _, _, _, _, _, _, _, X64Meta{_, _, _, _, _, _, _, _, _, _, _, _, X64R2{_, _, _, cur_r2, _, _, _}, _, _}} Con{ICallDirect{+dst, +cfid, +args}, Nil{}} X64Step{0n, +cs, +fcs, +xm0, X64Acc{+acc, +lbl, +cold}} TRet{+val}:
+      +nargs = b5k_u32_list_len(args)
+      ok = Bool.and(Bool.and(U32.is_eq(dst, val), U32.is_le(nargs, 5)), Bool.and(Bool.and(U32.is_zero(cur_r2), U32.is_zero(x64_r2_of(ctx, cfid))), Bool.not(x64_is_bor(ctx, val))))
+      opt_if(X64Acc, ok,
+        u => X64Acc{x64_emit_epilogue_jmp(ctx, x64_lookup_fn_sym(fn_map, cfid), x64_load_state(ctx, 7, x64_finish_o2_call_args(x64_is_o2(ctx), nargs, x64_load_reg_args(ctx, args, 0, True{}, acc)))), lbl, cold},
+        u => x64_emit_term_acc(ctx, fn_map, TRet{val}, nxt, x64_emit_op(ctx, fn_map, RVEmpty{}, False{}, cs, fcs, xm0, RVEmpty{}, ICallDirect{dst, cfid, args}, acc, cold, lbl)))
     case _ Con{op1, +t1} X64Step{0n, consts, fconsts, xm0, X64Acc{acc, lbl, cold}} _:
       x64_emit_ops_fused(ctx, fn_map, reuse, t1, x64_emit_ops_step(ctx, fn_map, reuse, op1, t1, consts, fconsts, xm0, uc, acc, cold, lbl), uc, term, nxt)
 def x64_acc_insts(st: X64Acc) -> List<&2, X64Inst>:

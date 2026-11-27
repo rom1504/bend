@@ -1,9 +1,4 @@
 # bend5k/core.bend — Frozen Phase 0 Core Types, Interner, ByteBuf & Helpers
-# =========================================================================
-# All types are `is Data` (&2) with dense U32 IDs so downstream passes
-# (lex, parse, check, lower, opt, regalloc, x64, elf, main) compile cleanly
-# under both `bend2 --check-only` and `n9_o2`.
-
 # Shared Operator & Condition Codes
 # BinOp: 0=ADD 1=SUB 2=MUL 3=DIV 4=MOD 5=AND 6=OR 7=XOR 8=SHL 9=SHR 10=FADD 11=FSUB 12=FMUL 13=FDIV
 # UnOp:  0=NEG 1=NOT 2=FNEG | CmpOp: 0=EQ 1=NE 2=LT 3=LE 4=GT 5=GE
@@ -123,8 +118,6 @@ def bb_to_bytes(b: ByteBuf) -> List<&2, U32>:
   b5k_list_rev(U32, rev)
 
 # Frozen Token & AST ADTs
-# -----------------------
-
 type TokKind is Data:
   TkIdent{sym: U32}
   TkNum{val: U32}
@@ -137,10 +130,8 @@ type TokKind is Data:
   TkIndent{}
   TkDedent{}
   TkEof{}
-
 type Tok is Data:
   Tok{kind: TokKind, line: U32}
-
 type Pat is Data:
   PVar{sym: U32, dup: Bool}
   PWild{}
@@ -149,19 +140,15 @@ type Pat is Data:
   PCtr{sym: U32, fields: List<&2, Pat>}
   PPair{fst: Pat, snd: Pat}
   PList{elems: List<&2, Pat>}
-
 type Param is Data:
   Param{sym: U32, typ: Maybe<&2, Expr>, erased: Bool, dup: Bool}
-
 type Case is Data:
   Case{pats: List<&2, Pat>, body: Expr}
-
 type Stmt is Data:
   StBind{pat: Pat, val: Expr}
   StLet{pat: Pat, val: Expr}
   StExpr{val: Expr}
   StRet{val: Expr}
-
 type Expr is Data:
   ENum{val: U32}
   EFlt{bits: U32}
@@ -191,25 +178,17 @@ type Expr is Data:
   EPair{fst: Expr, snd: Expr}
   EList{elems: List<&2, Expr>}
   EHole{}
-
 type CtorDef is Data:
   CtorDef{sym: U32, cid: U32, fields: List<&2, Param>}
-
 type TypeDef is Data:
   TypeDef{sym: U32, params: List<&2, Param>, is_data: Bool, ctors: List<&2, CtorDef>}
-
 type Def is Data:
   Def{sym: U32, params: List<&2, Param>, ret: Maybe<&2, Expr>, body: Expr, is_import: Bool, import_path: String}
-
 type LawDef is Data:
   LawDef{sym: U32, params: List<&2, Param>, ret: Expr}
-
 type Book is Data:
   Book{types: List<&2, TypeDef>, defs: List<&2, Def>, laws: List<&2, LawDef>, syms: SymTab}
-
 # Frozen Direct-First SSA/ANF CFG IR ADTs
-# ---------------------------------------
-
 type IrOp is Data:
   IConst{dst: U32, val: U32}
   IFlt{dst: U32, bits: U32}
@@ -233,10 +212,8 @@ type IrOp is Data:
   IStore{base: U32, off: U32, val: U32}
   IMutField{obj: U32, idx: U32, val: U32}
   IFail{code: U32}
-
 type IrSwitchArm is Data:
   IrArm{tag: U32, target: U32}
-
 type IrTerm is Data:
   TJmp{target: U32}
   TBr{cond: U32, then_blk: U32, else_blk: U32}
@@ -244,24 +221,16 @@ type IrTerm is Data:
   TRet{val: U32}
   TTailCall{fid: U32, args: List<&2, U32>}
   TFail{code: U32}
-
 type IrBlock is Data:
   IrBlock{id: U32, ops: List<&2, IrOp>, term: IrTerm}
-
 type IrCtor is Data:
   IrCtor{cid: U32, name: String, arity: U32, hot: Bool}
-
 type IrFn is Data:
   IrFn{fid: U32, name: String, arity: U32, nregs: U32, is_escaping: Bool, is_effectful: Bool, is_main: Bool, blocks: List<&2, IrBlock>}
-
 type IrProg is Data:
   IrProg{fns: List<&2, IrFn>, ctors: List<&2, IrCtor>, statics: List<&2, U32>, main_fid: U32, main_pure: Bool, effects: List<&2, String>, show_desc: List<&2, U32>, show_names: List<&2, String>}
-
 # Frozen Typed x86-64 Machine Instruction & ELF Handoff ADTs
-# ----------------------------------------------------------
-# Reg = U32 (0..15 GPR: RAX=0 RCX=1 RDX=2 RBX=3 RSP=4 RBP=5 RSI=6 RDI=7 R8..R15;
-#            0..15 XMM: XMM0..XMM15)
-
+# Reg = U32 (0..15 GPR: RAX=0 RCX=1 RDX=2 RBX=3 RSP=4 RBP=5 RSI=6 RDI=7 R8..R15; 0..15 XMM)
 type X64Inst is Data:
   XMovRR{dst: U32, src: U32}
   XMovRI32{dst: U32, imm: U32}
@@ -294,9 +263,7 @@ type X64Inst is Data:
   XXmmStore{base: U32, disp: U32, src: U32}
   XCvt{op: U32, dst: U32, src: U32}
   XExtReloc{kind: U32, sym: String, addend: U32}
-
 type X64Fn is Data:
   X64Fn{name: String, is_global: Bool, insts: List<&2, X64Inst>}
-
 type ElfReloc is Data:
   ElfReloc{off: U32, sym: String, rtype: U32, addend: U32}

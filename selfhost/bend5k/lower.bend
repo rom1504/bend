@@ -85,14 +85,10 @@ type CoreCtorSpec is Data:
   CoreCtorSpec{name: String, arity: U32}
 def low_core_specs() -> List<&2, CoreCtorSpec>:
   [CoreCtorSpec{"SNil", 0}, CoreCtorSpec{"SCon", 2}, CoreCtorSpec{"WNil", 0}, CoreCtorSpec{"WCon", 2}, CoreCtorSpec{"Nil", 0}, CoreCtorSpec{"Con", 2}, CoreCtorSpec{"Tuple", 2}, CoreCtorSpec{"Unit", 0}, CoreCtorSpec{"None", 0}, CoreCtorSpec{"Some", 1}, CoreCtorSpec{"Fail", 1}, CoreCtorSpec{"Done", 1}, CoreCtorSpec{"Emit", 2}, CoreCtorSpec{"Halt", 1}, CoreCtorSpec{"True", 0}, CoreCtorSpec{"LT", 0}, CoreCtorSpec{"EQ", 0}, CoreCtorSpec{"GT", 0}, CoreCtorSpec{"False", 0}, CoreCtorSpec{"Pair", 2}, CoreCtorSpec{"Inl", 1}, CoreCtorSpec{"Inr", 1}, CoreCtorSpec{"ALeaf", 1}, CoreCtorSpec{"ANode", 2}, CoreCtorSpec{"MTip", 0}, CoreCtorSpec{"MLeaf", 2}, CoreCtorSpec{"MNode", 3}, CoreCtorSpec{"Exit", 1}, CoreCtorSpec{"IO.print", 2}, CoreCtorSpec{"IO.print_err", 2}, CoreCtorSpec{"IO.args", 1}, CoreCtorSpec{"IO.now", 1}, CoreCtorSpec{"File.open", 3}, CoreCtorSpec{"File.read", 3}, CoreCtorSpec{"File.size", 2}, CoreCtorSpec{"File.write", 3}, CoreCtorSpec{"File.write_bytes", 3}, CoreCtorSpec{"File.close", 2}, CoreCtorSpec{"__io_emit", 0}]
-def low_seed_u32_one(m: Maybe<&2, U32>, code: U32, acc: U32Map) -> U32Map:
-  match m:
-    case None{}: acc
-    case Some{s}: um_set(acc, s, code)
-def low_seed_u32_map(+syms: SymTab, xs: List<&2, CoreCtorSpec>, acc: U32Map) -> U32Map:
+def low_seed_u32_map(+syms: SymTab, xs: List<&2, CoreCtorSpec>, +acc: U32Map) -> U32Map:
   match xs:
     case Nil{}: acc
-    case Con{CoreCtorSpec{nm, code}, t}: low_seed_u32_map(syms, t, low_seed_u32_one(symtab_lookup(syms, nm), code, acc))
+    case Con{CoreCtorSpec{nm, +code}, t}: low_seed_u32_map(syms, t, chk_maybe(U32, U32Map, symtab_lookup(syms, nm), acc, s => um_set(acc, s, code)))
 def low_intr_specs() -> List<&2, CoreCtorSpec>:
   [CoreCtorSpec{"U32.add", 1}, CoreCtorSpec{"U32.sub", 2}, CoreCtorSpec{"U32.mul", 3}, CoreCtorSpec{"U32.div", 4}, CoreCtorSpec{"U32.mod", 5}, CoreCtorSpec{"U32.and", 6}, CoreCtorSpec{"Bool.and", 6}, CoreCtorSpec{"U32.or", 7}, CoreCtorSpec{"Bool.or", 7}, CoreCtorSpec{"U32.xor", 8}, CoreCtorSpec{"Bool.xor", 8}, CoreCtorSpec{"U32.is_eq", 11}, CoreCtorSpec{"U32.is_ne", 12}, CoreCtorSpec{"U32.is_lt", 13}, CoreCtorSpec{"U32.is_le", 14}, CoreCtorSpec{"U32.is_gt", 15}, CoreCtorSpec{"U32.is_ge", 16}, CoreCtorSpec{"U32.min", 17}, CoreCtorSpec{"U32.max", 18}, CoreCtorSpec{"U32.inc", 19}, CoreCtorSpec{"U32.dec", 20}, CoreCtorSpec{"U32.is_zero", 21}, CoreCtorSpec{"Bool.not", 21}, CoreCtorSpec{"U32.shl", 22}, CoreCtorSpec{"U32.shr", 23}, CoreCtorSpec{"U32.shln", 24},
    CoreCtorSpec{"U32.shrn", 25}, CoreCtorSpec{"U32.not", 26}, CoreCtorSpec{"U32.from_nat", 27}, CoreCtorSpec{"U32.to_nat", 27}, CoreCtorSpec{"F32.bits", 27}, CoreCtorSpec{"Bool.to_u32", 27}, CoreCtorSpec{"Char.to_u32", 27}, CoreCtorSpec{"Char.from_u32", 27}, CoreCtorSpec{"__io_print", 31}, CoreCtorSpec{"__io_print_err", 32}, CoreCtorSpec{"__io_args", 33}, CoreCtorSpec{"__io_now", 34}, CoreCtorSpec{"__file_open", 35}, CoreCtorSpec{"__file_read", 36}, CoreCtorSpec{"__file_size", 37}, CoreCtorSpec{"__file_write", 38}, CoreCtorSpec{"__file_write_bytes", 39}, CoreCtorSpec{"__file_close", 54}, CoreCtorSpec{"F32.add", 40}, CoreCtorSpec{"F32.sub", 41}, CoreCtorSpec{"F32.mul", 42}, CoreCtorSpec{"F32.div", 43}, CoreCtorSpec{"F32.is_eq", 44}, CoreCtorSpec{"F32.is_ne", 45}, CoreCtorSpec{"F32.is_lt", 46},
@@ -138,10 +134,6 @@ def low_add_types(+skind: U32Map, ts: List<&2, TypeDef>, acc: CtorTabAcc) -> Cto
     case Nil{}: acc
     case Con{TypeDef{tsym, _, _, Con{CtorDef{+csym, cid, fs}, Nil{}}}, t}: low_add_types(skind, t, low_mark_single(csym, low_add_ctors(skind, tsym, [CtorDef{csym, cid, fs}], acc)))
     case Con{TypeDef{tsym, _, _, cs}, t}: low_add_types(skind, t, low_add_ctors(skind, tsym, cs, acc))
-def low_param_arity_go(ps: List<&2, Param>, acc: U32) -> U32:
-  match ps:
-    case Nil{}: acc
-    case Con{Param{_, _, erased, _}, t}: low_param_arity_go(t, U32.add(acc, Bool.pick(U32, erased, 0, 1)))
 type LowEnv is Data:
   LowEnv{syms: SymTab, ctor_by_sym: U32Map, ctor_smask: U32Map, ctor_single: U32Map, ctor_arity: U32Map, ctor_owner: U32Map, fn_by_sym: U32Map, fn_arity: U32Map, fn_emask: U32Map, sym_intr: U32Map, sym_kind: U32Map, main_fid: U32, main_pure: Bool, sym_io_bind: U32, sym_io_pure: U32, sym_str_app: U32, sym_tmp: U32, sym_arr_len: U32}
 def env_syms(e: LowEnv) -> SymTab:
@@ -219,10 +211,7 @@ def count_uses_go(fuel: Nat, +sym: U32, item: UseItem) -> U32:
     case Succ{p} UIExpr{other}: count_uses_go(p, sym, UIExprs{low_expr_kids(other)})
 def low_is_ty_univ(+syms: SymTab, e: Expr) -> Bool:
   match e:
-    case EVar{s}:
-      +nm = symtab_name(syms, s)
-      Bool.or(Bool.or(b5k_str_eq(nm, "Type"), b5k_str_eq(nm, "Data")),
-              Bool.or(b5k_str_eq(nm, "Kind"), Bool.or(b5k_str_eq(nm, "Quant"), b5k_str_eq(nm, "Set"))))
+    case EVar{s}: b5k_chk_is_universe(symtab_name(syms, s))
     case EAll{_, body}: low_is_ty_univ(syms, body)
     case _: False{}
 def low_param_is_erased(syms: SymTab, body: Expr, p: Param) -> Bool:
@@ -335,13 +324,12 @@ def cfg_emit_keeps_go(k: Nat, st: CfgSt, +v: U32) -> CfgSt:
     case 0n: st
     case 1n+p: cfg_emit_keeps_go(p, cfg_emit(st, IKeep{v, v}), v)
 # Intrinsics (U32.*, F32.*, IO.*) — O(1) via precomputed sym_intr U32Map
-def low_um_le(m: U32Map, sym: U32, lim: U32) -> U32:
-  +raw = um_get(m, sym)
-  Bool.pick(U32, U32.is_le(raw, lim), raw, 0)
 def low_intr_code(sintr: U32Map, sym: U32) -> U32:
   +raw = um_get(sintr, sym)
   Bool.pick(U32, Bool.or(U32.is_le(raw, 65), U32.is_ge(raw, 100)), raw, 0)
-def low_special_ctor_kind(skind: U32Map, sym: U32) -> U32: low_um_le(skind, sym, 9)
+def low_special_ctor_kind(skind: U32Map, sym: U32) -> U32:
+  +raw = um_get(skind, sym)
+  Bool.pick(U32, U32.is_le(raw, 9), raw, 0)
 def low_emit_u32(st: CfgSt, is_stat: Bool, +v: U32) -> CfgSt:
   +st1 = cfg_alloc(st, False{})
   cfg_emit(st1, Bool.pick(IrOp, is_stat, IStatic{cfg_res(st1), v}, IConst{cfg_res(st1), v}))
@@ -358,35 +346,23 @@ def low_emit_un(st: CfgSt, uop: U32, va: U32) -> CfgSt:
   +st1 = cfg_alloc(st, False{})
   cfg_emit(st1, IUn{cfg_res(st1), uop, va})
 def low_emit_cond_bin(st: CfgSt, cond: U32, bop: U32, va: U32, vb: U32) -> CfgSt:
-  +st1 = cfg_alloc(st, True{})
-  +st2 = cfg_alloc(st1, True{})
-  +st3 = cfg_alloc(st2, True{})
-  +st4 = cfg_alloc(st3, False{})
+  +st1 = cfg_alloc(st, True{}); +st2 = cfg_alloc(st1, True{}); +st3 = cfg_alloc(st2, True{}); +st4 = cfg_alloc(st3, False{})
   +s2 = cfg_alloc(cfg_start(cfg_seal(cfg_emit(cfg_start(cfg_seal(st4, TBr{cond, cfg_res(st1), cfg_res(st2)}), cfg_res(st1)), IConst{cfg_res(st4), 0}), TJmp{cfg_res(st3)}), cfg_res(st2)), False{})
   cfg_set_res(cfg_start(cfg_seal(cfg_emit(cfg_emit(s2, IBin{cfg_res(s2), bop, va, vb}), ICopy{cfg_res(st4), cfg_res(s2)}), TJmp{cfg_res(st3)}), cfg_res(st3)), cfg_res(st4))
 def low_emit_safe_shift(st: CfgSt, is_shr: Bool, +va: U32, +vb: U32) -> CfgSt:
-  +st1 = low_emit_const(st, 32)
-  +st2 = cfg_alloc(st1, False{})
+  +st1 = low_emit_const(st, 32); +st2 = cfg_alloc(st1, False{})
   low_emit_cond_bin(cfg_emit(st2, ICmp{cfg_res(st2), B5K_CMP_GE(), vb, cfg_res(st1)}), cfg_res(st2), Bool.pick(U32, is_shr, B5K_OP_SHR(), B5K_OP_SHL()), va, vb)
 def low_emit_io_eff(st: CfgSt, cid: U32, pre: List<&2, U32>, k: U32) -> CfgSt:
-  +st1 = cfg_alloc(st, False{})
-  low_emit_ctor(cfg_emit(st1, ICallClosure{cfg_res(st1), 2, [k]}), cid, b5k_list_app(U32, pre, [cfg_res(st1)]))
+  +st1 = cfg_alloc(st, False{}); low_emit_ctor(cfg_emit(st1, ICallClosure{cfg_res(st1), 2, [k]}), cid, b5k_list_app(U32, pre, [cfg_res(st1)]))
 def low_emit_arr_pair(st: CfgSt, aop: U32, args: List<&2, U32>) -> CfgSt:
-  +st1 = cfg_alloc(st, False{})
-  +st2 = cfg_alloc(st1, False{})
-  +st3 = cfg_alloc(cfg_emit(st2, IArrOp{[cfg_res(st1), cfg_res(st2)], aop, args}), False{})
+  +st1 = cfg_alloc(st, False{}); +st2 = cfg_alloc(st1, False{}); +st3 = cfg_alloc(cfg_emit(st2, IArrOp{[cfg_res(st1), cfg_res(st2)], aop, args}), False{})
   cfg_emit(st3, ICtor{cfg_res(st3), 6, [cfg_res(st1), cfg_res(st2)]})
 def low_emit_minmax(st: CfgSt, cop: U32, +va: U32, +vb: U32) -> CfgSt:
-  +st1 = cfg_alloc(st, False{})
-  +st2 = cfg_alloc(cfg_emit(st1, ICmp{cfg_res(st1), cop, va, vb}), True{})
-  +st3 = cfg_alloc(st2, True{})
-  +st4 = cfg_alloc(st3, True{})
-  +st5 = cfg_alloc(st4, False{})
+  +st1 = cfg_alloc(st, False{}); +st2 = cfg_alloc(cfg_emit(st1, ICmp{cfg_res(st1), cop, va, vb}), True{})
+  +st3 = cfg_alloc(st2, True{}); +st4 = cfg_alloc(st3, True{}); +st5 = cfg_alloc(st4, False{})
   s1 = cfg_seal(cfg_emit(cfg_start(cfg_seal(st5, TBr{cfg_res(st1), cfg_res(st2), cfg_res(st3)}), cfg_res(st2)), ICopy{cfg_res(st5), va}), TJmp{cfg_res(st4)})
   cfg_set_res(cfg_start(cfg_seal(cfg_emit(cfg_start(s1, cfg_res(st3)), ICopy{cfg_res(st5), vb}), TJmp{cfg_res(st4)}), cfg_res(st4)), cfg_res(st5))
-def low_emit_arr_get_pair(st: CfgSt, +va: U32, vb: U32) -> CfgSt:
-  +st1 = low_emit_arr_one(st, 78, [va, vb])
-  low_emit_ctor(st1, 6, [va, cfg_res(st1)])
+def low_emit_arr_get_pair(st: CfgSt, +va: U32, vb: U32) -> CfgSt: (+st1 = low_emit_arr_one(st, 78, [va, vb]); low_emit_ctor(st1, 6, [va, cfg_res(st1)]))
 def low_emit_u32_intr_go(st: CfgSt, +code: U32, vargs: List<&2, U32>) -> CfgSt:
   match code vargs:
     case 62 Con{va, Con{vb, Con{vc, Nil{}}}}: low_emit_arr_one(st, 73, [va, vb, vc])
@@ -442,9 +418,7 @@ def pat_is_refut(fuel: Nat, ps: List<&2, Pat>) -> Bool:
     case 1n+p Con{PPair{a, b}, t}: pat_is_refut(p, Con{a, Con{b, t}})
     case 1n+_ Con{_, _}: True{}
 def low_test_cmp_const(st: CfgSt, cop: U32, r: U32, val: U32, fail_blk: U32) -> CfgSt:
-  +st1 = cfg_alloc(st, False{})
-  +st2 = cfg_alloc(cfg_emit(st1, IConst{cfg_res(st1), val}), False{})
-  +st3 = cfg_alloc(cfg_emit(st2, ICmp{cfg_res(st2), cop, r, cfg_res(st1)}), True{})
+  +st1 = cfg_alloc(st, False{}); +st2 = cfg_alloc(cfg_emit(st1, IConst{cfg_res(st1), val}), False{}); +st3 = cfg_alloc(cfg_emit(st2, ICmp{cfg_res(st2), cop, r, cfg_res(st1)}), True{})
   cfg_start(cfg_seal(st3, TBr{cfg_res(st2), cfg_res(st3), fail_blk}), cfg_res(st3))
 def low_maybe_keep(+st: CfgSt, need: Bool, +r: U32) -> CfgSt: cfg_set_res(Bool.pick(CfgSt, need, cfg_emit(st, IKeep{r, r}), st), r)
 def low_mask_scs(n: Nat, +smask: U32, +idx: U32) -> List<&2, U32>:
@@ -622,17 +596,10 @@ def low_app_direct(+st: CfgSt, +fid: U32, +vargs: List<&2, U32>, +is_tail: Bool)
     Bool.pick(CfgSt, Bool.and(is_tail, U32.is_le(b5k_u32_list_len(vargs), 5)), cfg_set_res(cfg_seal(st_call, TRet{cfg_res(st1)}), 0), st_call))
 def low_emit_add_or_cat(+env: LowEnv, st: CfgSt, +va: U32, +vb: U32) -> CfgSt:
   LowEnv{_, _, _, _, _, _, fns, _, _, _, _, _, _, _, _, str_app, _, _} = env
-  +st1 = low_emit_ctor(st, 0, Nil{})
-  +st2 = cfg_alloc(st1, False{})
-  +st3 = cfg_alloc(cfg_emit(st2, ICmp{cfg_res(st2), B5K_CMP_EQ(), va, cfg_res(st1)}), True{})
-  +st4 = cfg_alloc(st3, True{})
-  +st5 = cfg_alloc(st4, True{})
-  +st6 = cfg_alloc(st5, True{})
-  +st7 = cfg_alloc(st6, True{})
-  +st8 = cfg_alloc(st7, False{})
+  +st1 = low_emit_ctor(st, 0, Nil{}); +st2 = cfg_alloc(st1, False{})
+  +st3 = cfg_alloc(cfg_emit(st2, ICmp{cfg_res(st2), B5K_CMP_EQ(), va, cfg_res(st1)}), True{}); +st4 = cfg_alloc(st3, True{}); +st5 = cfg_alloc(st4, True{}); +st6 = cfg_alloc(st5, True{}); +st7 = cfg_alloc(st6, True{}); +st8 = cfg_alloc(st7, False{})
   +s2 = cfg_alloc(cfg_start(cfg_seal(cfg_emit(cfg_start(cfg_seal(st8, TBr{cfg_res(st2), cfg_res(st3), cfg_res(st4)}), cfg_res(st3)), ICopy{cfg_res(st8), vb}), TJmp{cfg_res(st7)}), cfg_res(st4)), False{})
-  +s3 = low_emit_const(cfg_emit(s2, ITag{cfg_res(s2), va}), 1)
-  +s4 = cfg_alloc(s3, False{})
+  +s3 = low_emit_const(cfg_emit(s2, ITag{cfg_res(s2), va}), 1); +s4 = cfg_alloc(s3, False{})
   +s6 = cfg_alloc(cfg_start(cfg_seal(cfg_emit(s4, ICmp{cfg_res(s4), B5K_CMP_EQ(), cfg_res(s2), cfg_res(s3)}), TBr{cfg_res(s4), cfg_res(st5), cfg_res(st6)}), cfg_res(st5)), False{})
   +s8 = cfg_alloc(cfg_start(cfg_seal(cfg_emit(cfg_emit(s6, ICallDirect{cfg_res(s6), um_get0(fns, str_app), [va, vb]}), ICopy{cfg_res(st8), cfg_res(s6)}), TJmp{cfg_res(st7)}), cfg_res(st6)), False{})
   cfg_set_res(cfg_start(cfg_seal(cfg_emit(cfg_emit(s8, IBin{cfg_res(s8), B5K_OP_ADD(), va, vb}), ICopy{cfg_res(st8), cfg_res(s8)}), TJmp{cfg_res(st7)}), cfg_res(st7)), cfg_res(st8))
@@ -955,10 +922,6 @@ def low_op_meth_name(+op: U32) -> String:
     case 24: ".is_gt"
     case 25: ".is_ge"
     case _: ""
-def low_map_custom_op_k(ms: Maybe<&2, U32>, op: U32, a: Expr, b: Expr) -> Expr:
-  match ms:
-    case Some{s}: EApp{EVar{s}, [a, b]}
-    case None{}: EOp{op, a, b}
 def low_map_custom_ops(+fuel: Nat, +syms: SymTab, +th: String, e: Expr) -> Expr:
   match fuel e:
     case 0n _: e
@@ -966,7 +929,7 @@ def low_map_custom_ops(+fuel: Nat, +syms: SymTab, +th: String, e: Expr) -> Expr:
       +a2 = low_map_custom_ops(p, syms, th, a)
       +b2 = low_map_custom_ops(p, syms, th, b)
       +mn = low_op_meth_name(op)
-      Bool.pick(Expr, String.is_empty(mn), EOp{op, a2, b2}, low_map_custom_op_k(symtab_lookup(syms, String.append(th, mn)), op, a2, b2))
+      Bool.pick(Expr, String.is_empty(mn), EOp{op, a2, b2}, chk_maybe(U32, Expr, symtab_lookup(syms, String.append(th, mn)), EOp{op, a2, b2}, s => EApp{EVar{s}, [a2, b2]}))
     case 1n+p EAnn{v, t}: EAnn{low_map_custom_ops(p, syms, th, v), t}
     case 1n+_ other: other
 def low_take_u32(n: Nat, xs: List<&2, U32>) -> List<&2, U32>:
@@ -1088,106 +1051,62 @@ def low_go(fuel: Nat, +env: LowEnv, st: CfgSt, task: LowTask, +is_tail: Bool) ->
     case Succ{_} LTCases{_, _, Nil{}, _, _, _, _, _}: cfg_seal(st, TFail{1})
     case Succ{+p} LTCases{+base_vm, +base_nvm, Con{Case{+ps, +body}, rest}, +vscruts, +sc_scruts, +tregs, +res_reg, +merge_blk}:
       match rest:
-        case Nil{}:
-          +st0 = st
-          prev_mg = cfg_flag(st0, True{})
-          st1 = low_match_pats_sct(64n, env, cfg_set_vm_nvm(st0, base_vm, base_nvm), ps, vscruts, sc_scruts, tregs, body, 0, False{})
-          +st2 = low_go(p, env, st1, LTExpr{body}, is_tail)
-          cfg_fin_branch(st2, cfg_flag(st2, False{}), res_reg, cfg_res(st2), merge_blk, prev_mg)
+        case Nil{}: (+st0 = st; prev_mg = cfg_flag(st0, True{}); st1 = low_match_pats_sct(64n, env, cfg_set_vm_nvm(st0, base_vm, base_nvm), ps, vscruts, sc_scruts, tregs, body, 0, False{}); +st2 = low_go(p, env, st1, LTExpr{body}, is_tail); cfg_fin_branch(st2, cfg_flag(st2, False{}), res_reg, cfg_res(st2), merge_blk, prev_mg))
         case Con{+rh, +rt}: low_go(p, env, st, LTCasesGrp{base_vm, base_nvm, Con{Case{ps, body}, Con{rh, rt}}, vscruts, sc_scruts, tregs, res_reg, merge_blk, low_grp_find(vscruts, GPNone{}, env, ps, Con{Case{ps, body}, Con{rh, rt}}, 0)}, is_tail)
     case Succ{+p} LTCasesGrp{+base_vm, +base_nvm, Con{Case{ps, +body}, rest}, +vscruts, +sc_scruts, +tregs, +res_reg, +merge_blk, GPNone{}}:
-      +st0 = st
-      prev_mg = cfg_flag(st0, True{})
-      +st_f = cfg_alloc(st0, True{})
-      +nxt_blk = cfg_res(st_f)
+      +st0 = st; prev_mg = cfg_flag(st0, True{}); +st_f = cfg_alloc(st0, True{}); +nxt_blk = cfg_res(st_f)
       st1 = low_match_case_pats(env, cfg_set_vm_nvm(st_f, base_vm, base_nvm), ps, vscruts, sc_scruts, tregs, body, nxt_blk)
       +st2 = low_go(p, env, st1, LTExpr{body}, is_tail)
-      st3 = cfg_fin_branch(st2, cfg_flag(st2, False{}), res_reg, cfg_res(st2), merge_blk, prev_mg)
-      low_go(p, env, cfg_start(st3, nxt_blk), LTCases{base_vm, base_nvm, rest, vscruts, sc_scruts, tregs, res_reg, merge_blk}, is_tail)
+      low_go(p, env, cfg_start(cfg_fin_branch(st2, cfg_flag(st2, False{}), res_reg, cfg_res(st2), merge_blk, prev_mg), nxt_blk), LTCases{base_vm, base_nvm, rest, vscruts, sc_scruts, tregs, res_reg, merge_blk}, is_tail)
     case Succ{p} LTCasesGrp{base_vm, base_nvm, _, +vscruts, +sc_scruts, +tregs, res_reg, merge_blk, GPHit{+col, spec, grp, Nil{}}}: (+st0 = st; low_go(p, env, st0, LTCasesTake{base_vm, base_nvm, low_grp_emit_take(env, st0, spec, col, vscruts, sc_scruts, tregs), low_splice_cases(col, grp), Nil{}, 0, vscruts, sc_scruts, tregs, res_reg, merge_blk}, is_tail))
     case Succ{p} LTCasesGrp{base_vm, base_nvm, _, +vscruts, +sc_scruts, +tregs, res_reg, merge_blk, GPHit{+col, HCCtr{+sym, +nf}, grp, Con{th, tt}}}:
-      +st_f = cfg_alloc(st, True{})
-      +tail_blk = cfg_res(st_f)
+      +st_f = cfg_alloc(st, True{}); +tail_blk = cfg_res(st_f)
       +st_ok = low_opt_test_tag(True{}, st_f, low_nth(U32, U32.to_nat(col), 0, vscruts), low_nth(U32, U32.to_nat(col), 0, tregs), um_get0(env_map(env, 0), sym), tail_blk)
       low_go(p, env, st_ok, LTCasesTake{base_vm, base_nvm, low_grp_emit_take(env, st_ok, HCCtr{sym, nf}, col, vscruts, sc_scruts, tregs), low_splice_cases(col, grp), Con{th, tt}, tail_blk, vscruts, sc_scruts, tregs, res_reg, merge_blk}, is_tail)
     case Succ{_} LTCasesGrp{_, _, _, _, _, _, _, _, _}: cfg_seal(st, TFail{1})
     case Succ{p} LTCasesTake{base_vm, base_nvm, GrpTakeRes{st1, vs1, scs1, trs1}, grp, Nil{}, _, _, _, _, res_reg, merge_blk}: low_go(p, env, st1, LTCases{base_vm, base_nvm, grp, vs1, scs1, trs1, res_reg, merge_blk}, is_tail)
     case Succ{+p} LTCasesTake{+base_vm, +base_nvm, GrpTakeRes{st1, vs1, scs1, trs1}, grp, Con{th, tt}, tail_blk, orig_vs, orig_scs, orig_trs, +res_reg, +merge_blk}: low_go(p, env, cfg_start(low_go(p, env, st1, LTCases{base_vm, base_nvm, grp, vs1, scs1, trs1, res_reg, merge_blk}, is_tail), tail_blk), LTCases{base_vm, base_nvm, Con{th, tt}, orig_vs, orig_scs, orig_trs, res_reg, merge_blk}, is_tail)
     case Succ{_} LTCmpCases{_, _, Nil{}, _, _, _, _}: cfg_seal(st, TFail{1})
-    case Succ{+p} LTCmpCases{+base_vm, +base_nvm, Con{Case{Con{_, Nil{}}, body}, Nil{}}, _, _, +res_reg, +merge_blk}:
-      +st0 = st
-      prev_mg = cfg_flag(st0, True{})
-      +st2 = low_go(p, env, cfg_set_vm_nvm(st0, base_vm, base_nvm), LTExpr{body}, is_tail)
-      cfg_fin_branch(st2, cfg_flag(st2, False{}), res_reg, cfg_res(st2), merge_blk, prev_mg)
+    case Succ{+p} LTCmpCases{+base_vm, +base_nvm, Con{Case{Con{_, Nil{}}, body}, Nil{}}, _, _, +res_reg, +merge_blk}: (+st0 = st; prev_mg = cfg_flag(st0, True{}); +st2 = low_go(p, env, cfg_set_vm_nvm(st0, base_vm, base_nvm), LTExpr{body}, is_tail); cfg_fin_branch(st2, cfg_flag(st2, False{}), res_reg, cfg_res(st2), merge_blk, prev_mg))
     case Succ{p} LTCmpCases{base_vm, base_nvm, Con{Case{Con{PWild{}, Nil{}}, body}, Con{_, _}}, va, vb, res_reg, merge_blk}: low_go(p, env, st, LTCmpCases{base_vm, base_nvm, [Case{[PWild{}], body}], va, vb, res_reg, merge_blk}, is_tail)
     case Succ{+p} LTCmpCases{+base_vm, +base_nvm, Con{Case{Con{p_other, Nil{}}, body}, Con{rh, rt}}, +va, +vb, +res_reg, +merge_blk}:
-      +st0 = st
-      prev_mg = cfg_flag(st0, True{})
-      +code = low_pat_code(env_map(env, 6), True{}, p_other)
+      +st0 = st; prev_mg = cfg_flag(st0, True{}); +code = low_pat_code(env_map(env, 6), True{}, p_other)
       cop = Bool.pick(U32, U32.is_eq(code, 1), B5K_CMP_LT(), Bool.pick(U32, U32.is_eq(code, 2), B5K_CMP_EQ(), B5K_CMP_GT()))
-      +st_c = cfg_alloc(st0, False{})
-      +st_o = cfg_alloc(cfg_emit(st_c, ICmp{cfg_res(st_c), cop, va, vb}), True{})
-      +st_f = cfg_alloc(st_o, True{})
-      +nxt_blk = cfg_res(st_f)
-      st1 = cfg_start(cfg_seal(st_f, TBr{cfg_res(st_c), cfg_res(st_o), nxt_blk}), cfg_res(st_o))
-      +st2 = low_go(p, env, cfg_set_vm_nvm(st1, base_vm, base_nvm), LTExpr{body}, is_tail)
-      st3 = cfg_fin_branch(st2, cfg_flag(st2, False{}), res_reg, cfg_res(st2), merge_blk, prev_mg)
-      low_go(p, env, cfg_start(st3, nxt_blk), LTCmpCases{base_vm, base_nvm, Con{rh, rt}, va, vb, res_reg, merge_blk}, is_tail)
+      +st_c = cfg_alloc(st0, False{}); +st_o = cfg_alloc(cfg_emit(st_c, ICmp{cfg_res(st_c), cop, va, vb}), True{}); +st_f = cfg_alloc(st_o, True{}); +nxt_blk = cfg_res(st_f)
+      +st2 = low_go(p, env, cfg_set_vm_nvm(cfg_start(cfg_seal(st_f, TBr{cfg_res(st_c), cfg_res(st_o), nxt_blk}), cfg_res(st_o)), base_vm, base_nvm), LTExpr{body}, is_tail)
+      low_go(p, env, cfg_start(cfg_fin_branch(st2, cfg_flag(st2, False{}), res_reg, cfg_res(st2), merge_blk, prev_mg), nxt_blk), LTCmpCases{base_vm, base_nvm, Con{rh, rt}, va, vb, res_reg, merge_blk}, is_tail)
     case Succ{+p} LTMatStart{+base_vm, +base_nvm, +cs1, +vscruts1, sc_scruts1}:
-      +st_t = low_emit_tag_cache(vscruts1, env, st, cs1, 0, Nil{})
-      +st2 = cfg_alloc(st_t, False{})
-      +st3 = cfg_alloc(st2, True{})
-      st4 = low_go(p, env, cfg_set_merged(st3, False{}), LTCases{base_vm, base_nvm, cs1, vscruts1, sc_scruts1, cfg_rlist(st_t), cfg_res(st2), cfg_res(st3)}, is_tail)
-      cfg_end_merge(st4, base_vm, base_nvm, cfg_res(st3), cfg_res(st2))
+      +st_t = low_emit_tag_cache(vscruts1, env, st, cs1, 0, Nil{}); +st2 = cfg_alloc(st_t, False{}); +st3 = cfg_alloc(st2, True{})
+      cfg_end_merge(low_go(p, env, cfg_set_merged(st3, False{}), LTCases{base_vm, base_nvm, cs1, vscruts1, sc_scruts1, cfg_rlist(st_t), cfg_res(st2), cfg_res(st3)}, is_tail), base_vm, base_nvm, cfg_res(st3), cfg_res(st2))
     case Succ{+p} LTMatOne{_, _, s0, _, 1, _}: low_go(p, env, st, LTExpr{s0}, is_tail)
     case Succ{+p} LTMatOne{_, _, s0, _, 2, _}: (+st1 = low_go(p, env, st, LTExpr{s0}, False{}); low_emit_u32_intr(st1, 21, [cfg_res(st1)]))
     case Succ{+p} LTMatOne{+base_vm, +base_nvm, _, cs, _, CMHit{ea, eb}}:
-      +st1 = low_go(p, env, st, LTExpr{ea}, False{})
-      +st2 = low_go(p, env, st1, LTExpr{eb}, False{})
-      +st3 = cfg_alloc(st2, False{})
-      +st4 = cfg_alloc(st3, True{})
-      st5 = low_go(p, env, cfg_set_merged(st4, False{}), LTCmpCases{base_vm, base_nvm, cs, cfg_res(st1), cfg_res(st2), cfg_res(st3), cfg_res(st4)}, is_tail)
-      cfg_end_merge(st5, base_vm, base_nvm, cfg_res(st4), cfg_res(st3))
+      +st1 = low_go(p, env, st, LTExpr{ea}, False{}); +st2 = low_go(p, env, st1, LTExpr{eb}, False{}); +st3 = cfg_alloc(st2, False{}); +st4 = cfg_alloc(st3, True{})
+      cfg_end_merge(low_go(p, env, cfg_set_merged(st4, False{}), LTCmpCases{base_vm, base_nvm, cs, cfg_res(st1), cfg_res(st2), cfg_res(st3), cfg_res(st4)}, is_tail), base_vm, base_nvm, cfg_res(st4), cfg_res(st3))
     case Succ{+p} LTMatOne{+base_vm, +base_nvm, +s0, cs, _, CMNone{}}: (+st1 = low_go(p, env, st, LTExprs{[s0], Nil{}}, False{}); low_go(p, env, st1, LTMatStart{base_vm, base_nvm, cs, cfg_rlist(st1), low_exprs_sc_codes(env, base_vm, base_nvm, [s0])}, is_tail))
     case Succ{_} LTAppFn{_, _, fid, _, vargs, True{}, _}: low_app_direct(st, fid, vargs, is_tail)
     case Succ{_} LTAppFn{_, _, fid, +ar, +vargs, False{}, True{}}: (+st1 = low_app_direct(st, fid, low_take_u32(U32.to_nat(ar), vargs), False{}); low_apply_chain(low_drop(U32, U32.to_nat(ar), vargs), st1, cfg_res(st1)))
     case Succ{p} LTAppFn{sym, +args, _, _, _, False{}, False{}}: (+tmp = U32.add(env_sym(env, False{}), U32.add(b5k_list_len(Expr, args), 2)); low_go(p, env, st, LTExpr{ELam{[Param{tmp, None{}, False{}, False{}}], EApp{EVar{sym}, b5k_list_app(Expr, args, [EVar{tmp}])}}}, False{}))
     case Succ{p} LTAppSym{sym, args, 0, 0, 0}: (+st1 = low_go(p, env, st, LTExprs{args, Nil{}}, False{}); low_emit_ctor_expr(env, st1, sym, cfg_rlist(st1)))
     case Succ{+p} LTAppSym{+sym, +args, 0, 0, fv}:
-      +fid0 = U32.sub(fv, 1)
-      +ar0 = um_get0(env_map(env, 3), fid0)
-      +sa_fid1 = um_get(env_map(env, 2), env_str_app(env))
+      +fid0 = U32.sub(fv, 1); +ar0 = um_get0(env_map(env, 3), fid0); +sa_fid1 = um_get(env_map(env, 2), env_str_app(env))
       +use_sa = Bool.and(Bool.and(U32.is_ne(ar0, 2), U32.is_eq(b5k_list_len(Expr, args), 2)), Bool.and(U32.is_ne(sa_fid1, 0), b5k_str_eq(symtab_name(env_syms(env), sym), "String.append")))
-      +fid = Bool.pick(U32, use_sa, U32.sub(sa_fid1, 1), fid0)
-      +ar = Bool.pick(U32, use_sa, 2, ar0)
-      fargs = low_filter_erased(args, um_get(env_map(env, 4), fid), 0)
-      +st1 = low_go(p, env, st, LTExprs{fargs, Nil{}}, False{})
-      +vargs = cfg_rlist(st1)
-      +nargs = b5k_u32_list_len(vargs)
+      +fid = Bool.pick(U32, use_sa, U32.sub(sa_fid1, 1), fid0); +ar = Bool.pick(U32, use_sa, 2, ar0)
+      +st1 = low_go(p, env, st, LTExprs{low_filter_erased(args, um_get(env_map(env, 4), fid), 0), Nil{}}, False{})
+      +vargs = cfg_rlist(st1); +nargs = b5k_u32_list_len(vargs)
       low_go(p, env, st1, LTAppFn{sym, args, fid, ar, vargs, U32.is_eq(nargs, ar), U32.is_gt(nargs, ar)}, is_tail)
     case Succ{p} LTAppSym{sym, Con{a, Nil{}}, 0, +icode, _}: low_go(p, env, st, LTAppIntr1{sym, a, icode, low_intr_is_bin(icode)}, False{})
     case Succ{p} LTAppIntr1{sym, a, _, True{}}: (+tmp = env_sym(env, False{}); low_go(p, env, st, LTExpr{ELam{[Param{tmp, None{}, False{}, False{}}], EApp{EVar{sym}, [a, EVar{tmp}]}}}, False{}))
-    case Succ{p} LTAppIntr1{_, +a, icode, False{}}:
-      +icode2 = low_shift_code(env_syms(env), env_map(env, 6), icode, [a])
-      +st1 = low_go(p, env, st, LTExprs{Bool.pick(List<&2, Expr>, Bool.and(U32.is_ge(icode2, 60), U32.is_lt(icode2, 100)), Nil{}, [a]), Nil{}}, False{})
-      low_emit_u32_intr(st1, icode2, cfg_rlist(st1))
-    case Succ{p} LTAppSym{_, +args, 0, +icode, _}:
-      +icode2 = low_shift_code(env_syms(env), env_map(env, 6), icode, args)
-      +st1 = low_go(p, env, st, LTExprs{Bool.pick(List<&2, Expr>, Bool.and(U32.is_ge(icode2, 60), U32.is_lt(icode2, 100)), low_drop(Expr, 1n, args), args), Nil{}}, False{})
-      low_emit_u32_intr(st1, icode2, cfg_rlist(st1))
+    case Succ{p} LTAppIntr1{_, +a, icode, False{}}: (+icode2 = low_shift_code(env_syms(env), env_map(env, 6), icode, [a]); +st1 = low_go(p, env, st, LTExprs{Bool.pick(List<&2, Expr>, Bool.and(U32.is_ge(icode2, 60), U32.is_lt(icode2, 100)), Nil{}, [a]), Nil{}}, False{}); low_emit_u32_intr(st1, icode2, cfg_rlist(st1)))
+    case Succ{p} LTAppSym{_, +args, 0, +icode, _}: (+icode2 = low_shift_code(env_syms(env), env_map(env, 6), icode, args); +st1 = low_go(p, env, st, LTExprs{Bool.pick(List<&2, Expr>, Bool.and(U32.is_ge(icode2, 60), U32.is_lt(icode2, 100)), low_drop(Expr, 1n, args), args), Nil{}}, False{}); low_emit_u32_intr(st1, icode2, cfg_rlist(st1)))
     case Succ{p} LTAppSym{_, args, lv, _, _}: (+st1 = low_go(p, env, st, LTExprs{args, Nil{}}, False{}); low_apply_chain(cfg_rlist(st1), st1, U32.sub(lv, 1)))
     case Succ{p} LTVar{+sym, 0, 0}:
-      +ic = low_intr_code(env_map(env, 5), sym)
-      +t1 = env_sym(env, False{})
-      +t2 = U32.add(t1, 1)
+      +ic = low_intr_code(env_map(env, 5), sym); +t1 = env_sym(env, False{}); +t2 = U32.add(t1, 1)
       is_u1 = Bool.or(Bool.and(U32.is_ge(ic, 19), U32.is_le(ic, 23)), Bool.or(Bool.or(U32.is_eq(ic, 26), U32.is_eq(ic, 27)), Bool.or(Bool.and(U32.is_ge(ic, 50), U32.is_le(ic, 53)), Bool.or(Bool.and(U32.is_ge(ic, 137), U32.is_le(ic, 153)), Bool.or(U32.is_eq(ic, 158), Bool.or(U32.is_eq(ic, 160), Bool.or(U32.is_eq(ic, 161), Bool.or(U32.is_eq(ic, 165), U32.is_eq(ic, 186)))))))))
       e = Bool.pick(Expr, is_u1, ELam{[Param{t1, None{}, False{}, False{}}], EApp{EVar{sym}, [EVar{t1}]}}, ELam{[Param{t1, None{}, False{}, False{}}], ELam{[Param{t2, None{}, False{}, False{}}], EApp{EVar{sym}, [EVar{t1}, EVar{t2}]}}})
       low_go(p, env, st, Bool.pick(LowTask, U32.is_zero(ic), LTExpr{ECtr{sym, Nil{}}}, LTExpr{e}), False{})
     case Succ{p} LTVar{+sym, 0, +fid1}:
-      +fid = U32.sub(fid1, 1)
-      +ar = um_get0(env_map(env, 3), fid)
-      +t1 = env_sym(env, False{})
-      +t2 = U32.add(t1, 1)
+      +ar = um_get0(env_map(env, 3), U32.sub(fid1, 1)); +t1 = env_sym(env, False{}); +t2 = U32.add(t1, 1)
       e = Bool.pick(Expr, U32.is_eq(ar, 2), ELam{[Param{t1, None{}, False{}, False{}}], ELam{[Param{t2, None{}, False{}, False{}}], EApp{EVar{sym}, [EVar{t1}, EVar{t2}]}}}, ELam{[Param{t1, None{}, False{}, False{}}], EApp{EVar{sym}, [EVar{t1}]}})
       low_go(p, env, st, Bool.pick(LowTask, U32.is_zero(ar), LTExpr{EApp{EVar{sym}, Nil{}}}, LTExpr{e}), False{})
     case Succ{_} LTVar{_, lv, _}: cfg_set_res(st, U32.sub(lv, 1))
@@ -1199,57 +1118,34 @@ def low_go(fuel: Nat, +env: LowEnv, st: CfgSt, task: LowTask, +is_tail: Bool) ->
     case Succ{p} LTExpr{EVar{+sym}}: (+st0 = st; low_go(p, env, st0, LTVar{sym, um_get(cfg_map(st0, False{}), sym), um_get(env_map(env, 2), sym)}, is_tail))
     case Succ{p} LTExpr{ERef{sym}}: low_go(p, env, st, LTExpr{EVar{sym}}, is_tail)
     case Succ{+p} LTExpr{EOp{+op, +a, +b}}:
-      +st0 = st
-      +is_add = Bool.or(U32.is_eq(op, 19), Bool.and(U32.is_zero(op), Bool.or(low_is_num_expr(16n, env, cfg_map(st0, False{}), cfg_map(st0, True{}), a), low_is_num_expr(16n, env, cfg_map(st0, False{}), cfg_map(st0, True{}), b))))
+      +st0 = st; +is_add = Bool.or(U32.is_eq(op, 19), Bool.and(U32.is_zero(op), Bool.or(low_is_num_expr(16n, env, cfg_map(st0, False{}), cfg_map(st0, True{}), a), low_is_num_expr(16n, env, cfg_map(st0, False{}), cfg_map(st0, True{}), b))))
       +is_nat = Bool.and(U32.is_zero(op), Bool.or(low_is_nat_expr(8n, env, a), low_is_nat_expr(8n, env, b)))
-      +st1 = low_go(p, env, st0, LTExpr{a}, False{})
-      +st2 = low_go(p, env, st1, LTExpr{b}, False{})
+      +st1 = low_go(p, env, st0, LTExpr{a}, False{}); +st2 = low_go(p, env, st1, LTExpr{b}, False{})
       low_emit_op_go(is_add, U32.is_zero(op), is_nat, env, st2, op, cfg_res(st1), cfg_res(st2))
     case Succ{p} LTExpr{EUnOp{1, a}}: low_go(p, env, st, LTExpr{a}, is_tail)
     case Succ{p} LTExpr{EUnOp{+op, a}}: (+st1 = low_go(p, env, st, LTExpr{a}, False{}); low_emit_un(st1, Bool.pick(U32, U32.is_eq(op, 9), 1, op), cfg_res(st1)))
     case Succ{+p} LTLetUnbox{pa, pb, UArrGet{a, i, sc}, +body}:
-      +st0 = st
-      +st1 = low_go(p, env, st0, LTExpr{a}, False{})
-      +st2 = low_go(p, env, st1, LTExpr{i}, False{})
-      +st3 = low_emit_arr_one(st2, 78, [cfg_res(st1), cfg_res(st2)])
-      st4 = low_match_pats_sc(64n, env, st3, [pa, pb], [cfg_res(st1), cfg_res(st3)], [0, sc], body, 0, False{})
-      cfg_set_vm_nvm(low_go(p, env, st4, LTExpr{body}, is_tail), cfg_map(st0, False{}), cfg_map(st0, True{}))
+      +st0 = st; +st1 = low_go(p, env, st0, LTExpr{a}, False{}); +st2 = low_go(p, env, st1, LTExpr{i}, False{}); +st3 = low_emit_arr_one(st2, 78, [cfg_res(st1), cfg_res(st2)])
+      cfg_set_vm_nvm(low_go(p, env, low_match_pats_sc(64n, env, st3, [pa, pb], [cfg_res(st1), cfg_res(st3)], [0, sc], body, 0, False{}), LTExpr{body}, is_tail), cfg_map(st0, False{}), cfg_map(st0, True{}))
     case Succ{+p} LTLetUnbox{pa, pb, UArrOp2{aop, args, sc1}, +body}:
-      +st0 = st
-      +st1 = low_go(p, env, st0, LTExprs{args, Nil{}}, False{})
-      +st2 = cfg_alloc(st1, False{})
-      +st3 = cfg_alloc(st2, False{})
-      st4 = low_match_pats_sc(64n, env, cfg_emit(st3, IArrOp{[cfg_res(st2), cfg_res(st3)], aop, cfg_rlist(st1)}), [pa, pb], [cfg_res(st2), cfg_res(st3)], [0, sc1], body, 0, False{})
-      cfg_set_vm_nvm(low_go(p, env, st4, LTExpr{body}, is_tail), cfg_map(st0, False{}), cfg_map(st0, True{}))
+      +st0 = st; +st1 = low_go(p, env, st0, LTExprs{args, Nil{}}, False{}); +st2 = cfg_alloc(st1, False{}); +st3 = cfg_alloc(st2, False{})
+      cfg_set_vm_nvm(low_go(p, env, low_match_pats_sc(64n, env, cfg_emit(st3, IArrOp{[cfg_res(st2), cfg_res(st3)], aop, cfg_rlist(st1)}), [pa, pb], [cfg_res(st2), cfg_res(st3)], [0, sc1], body, 0, False{}), LTExpr{body}, is_tail), cfg_map(st0, False{}), cfg_map(st0, True{}))
     case Succ{+p} LTLetUnbox{pa, pb, UArrPair{+a, +b}, +body}:
-      +st0 = st
-      sa = low_expr_sc_code(env, cfg_map(st0, False{}), cfg_map(st0, True{}), a)
-      sb = low_expr_sc_code(env, cfg_map(st0, False{}), cfg_map(st0, True{}), b)
-      +st1 = low_go(p, env, st0, LTExpr{a}, False{})
-      +st2 = low_go(p, env, st1, LTExpr{b}, False{})
-      st3 = low_match_pats_sc(64n, env, st2, [pa, pb], [cfg_res(st1), cfg_res(st2)], [sa, sb], body, 0, False{})
-      cfg_set_vm_nvm(low_go(p, env, st3, LTExpr{body}, is_tail), cfg_map(st0, False{}), cfg_map(st0, True{}))
+      +st0 = st; sa = low_expr_sc_code(env, cfg_map(st0, False{}), cfg_map(st0, True{}), a); sb = low_expr_sc_code(env, cfg_map(st0, False{}), cfg_map(st0, True{}), b)
+      +st1 = low_go(p, env, st0, LTExpr{a}, False{}); +st2 = low_go(p, env, st1, LTExpr{b}, False{})
+      cfg_set_vm_nvm(low_go(p, env, low_match_pats_sc(64n, env, st2, [pa, pb], [cfg_res(st1), cfg_res(st2)], [sa, sb], body, 0, False{}), LTExpr{body}, is_tail), cfg_map(st0, False{}), cfg_map(st0, True{}))
     case Succ{+p} LTLetUnbox{pa, pb, UArrNone{val}, body}: low_go(p, env, st, LTLetPat{PPair{pa, pb}, val, body}, is_tail)
     case Succ{+p} LTLetPat{pat, +val, +body}:
-      +st0 = st
-      val_sc = low_expr_sc_code(env, cfg_map(st0, False{}), cfg_map(st0, True{}), val)
-      +st1 = low_go(p, env, st0, LTExpr{val}, False{})
-      st2 = low_match_pats_sc(64n, env, st1, [pat], [cfg_res(st1)], [val_sc], body, 0, False{})
-      cfg_set_vm_nvm(low_go(p, env, st2, LTExpr{body}, is_tail), cfg_map(st0, False{}), cfg_map(st0, True{}))
+      +st0 = st; val_sc = low_expr_sc_code(env, cfg_map(st0, False{}), cfg_map(st0, True{}), val); +st1 = low_go(p, env, st0, LTExpr{val}, False{})
+      cfg_set_vm_nvm(low_go(p, env, low_match_pats_sc(64n, env, st1, [pat], [cfg_res(st1)], [val_sc], body, 0, False{}), LTExpr{body}, is_tail), cfg_map(st0, False{}), cfg_map(st0, True{}))
     case Succ{+p} LTExpr{ELet{PPair{pa, pb}, val, body}}: (+st0 = st; low_go(p, env, st0, LTLetUnbox{pa, pb, low_unbox_pair(env, cfg_map(st0, False{}), val), body}, is_tail))
     case Succ{+p} LTExpr{ELet{PCtr{+sym, Con{+pa, Con{+pb, Nil{}}}}, +val, +body}}: (+st0 = st; low_go(p, env, st0, Bool.pick(LowTask, U32.is_eq(um_get(env_map(env, 6), sym), 13), LTLetUnbox{pa, pb, low_unbox_pair(env, cfg_map(st0, False{}), val), body}, LTLetPat{PCtr{sym, [pa, pb]}, val, body}), is_tail))
     case Succ{+p} LTExpr{ELet{pat, val, body}}: low_go(p, env, st, LTLetPat{pat, val, body}, is_tail)
     case Succ{+p} LTExpr{EIf{cond, ENum{1}, ENum{0}}}: low_go(p, env, st, LTExpr{cond}, is_tail)
     case Succ{+p} LTExpr{EIf{cond, ENum{0}, ENum{1}}}: (+st1 = low_go(p, env, st, LTExpr{cond}, False{}); low_emit_u32_intr(st1, 21, [cfg_res(st1)]))
     case Succ{+p} LTExpr{EIf{cond, t, f}}:
-      +st0 = st
-      +base_vm = cfg_map(st0, False{})
-      +base_nvm = cfg_map(st0, True{})
-      +st1 = low_go(p, env, st0, LTExpr{cond}, False{})
-      +st2 = cfg_alloc(st1, True{})
-      +st3 = cfg_alloc(st2, True{})
-      +st4 = cfg_alloc(st3, True{})
-      +st5 = cfg_alloc(st4, False{})
+      +st0 = st; +base_vm = cfg_map(st0, False{}); +base_nvm = cfg_map(st0, True{})
+      +st1 = low_go(p, env, st0, LTExpr{cond}, False{}); +st2 = cfg_alloc(st1, True{}); +st3 = cfg_alloc(st2, True{}); +st4 = cfg_alloc(st3, True{}); +st5 = cfg_alloc(st4, False{})
       +st6 = low_go(p, env, cfg_start(cfg_seal(st5, TBr{cfg_res(st1), cfg_res(st2), cfg_res(st3)}), cfg_res(st2)), LTExpr{t}, is_tail)
       +st7 = cfg_fin_branch(st6, cfg_flag(st6, False{}), cfg_res(st5), cfg_res(st6), cfg_res(st4), False{})
       +st8 = low_go(p, env, cfg_set_vm_nvm(cfg_start(st7, cfg_res(st3)), base_vm, base_nvm), LTExpr{f}, is_tail)
@@ -1259,69 +1155,39 @@ def low_go(fuel: Nat, +env: LowEnv, st: CfgSt, task: LowTask, +is_tail: Bool) ->
     case Succ{p} LTExpr{EApp{EVar{+sym}, args}}: (+st0 = st; low_go(p, env, st0, LTAppSym{sym, args, um_get(cfg_map(st0, False{}), sym), low_intr_code(env_map(env, 5), sym), um_get(env_map(env, 2), sym)}, is_tail))
     case Succ{+p} LTExpr{EApp{other, args}}: (+st1 = low_go(p, env, st, LTExpr{other}, False{}); +st2 = low_go(p, env, st1, LTExprs{args, Nil{}}, False{}); low_apply_chain(cfg_rlist(st2), st2, cfg_res(st1)))
     case Succ{+p} LTExpr{EMat{Con{val, Nil{}}, Con{Case{Con{PPair{pa, pb}, Nil{}}, body}, Nil{}}}}: (+st0 = st; low_go(p, env, st0, LTLetUnbox{pa, pb, low_unbox_pair(env, cfg_map(st0, False{}), val), body}, is_tail))
-    case Succ{+p} LTExpr{EMat{Con{+s0, Nil{}}, +cs}}:
-      +st0 = st
-      +base_vm = cfg_map(st0, False{})
-      +base_nvm = cfg_map(st0, True{})
-      low_go(p, env, st0, LTMatOne{base_vm, base_nvm, s0, cs, low_bool_match_kind(env_map(env, 6), cs), low_cmp_match_info(env, base_vm, s0, cs)}, is_tail)
+    case Succ{+p} LTExpr{EMat{Con{+s0, Nil{}}, +cs}}: (+st0 = st; +base_vm = cfg_map(st0, False{}); +base_nvm = cfg_map(st0, True{}); low_go(p, env, st0, LTMatOne{base_vm, base_nvm, s0, cs, low_bool_match_kind(env_map(env, 6), cs), low_cmp_match_info(env, base_vm, s0, cs)}, is_tail))
     case Succ{+p} LTExpr{EMat{+scruts, +cs}}:
-      +st0 = st
-      +base_vm = cfg_map(st0, False{})
-      +base_nvm = cfg_map(st0, True{})
-      sc_scruts = low_exprs_sc_codes(env, base_vm, base_nvm, scruts)
-      +st1 = low_go(p, env, st0, LTExprs{scruts, Nil{}}, False{})
-      low_go(p, env, st1, LTMatStart{base_vm, base_nvm, cs, cfg_rlist(st1), sc_scruts}, is_tail)
+      +st0 = st; +base_vm = cfg_map(st0, False{}); +base_nvm = cfg_map(st0, True{}); sc_scruts = low_exprs_sc_codes(env, base_vm, base_nvm, scruts)
+      +st1 = low_go(p, env, st0, LTExprs{scruts, Nil{}}, False{}); low_go(p, env, st1, LTMatStart{base_vm, base_nvm, cs, cfg_rlist(st1), sc_scruts}, is_tail)
     case Succ{p} LTExpr{EAnn{+v, typ}}:
-      +syms = env_syms(env)
-      +th = low_type_head(syms, typ)
-      +is_f = b5k_str_eq(th, "F32")
-      +is_u = b5k_str_eq(th, "U32")
-      +is_n = b5k_str_eq(th, "Nat")
-      +is_num = Bool.or(is_f, Bool.or(is_u, is_n))
+      +syms = env_syms(env); +th = low_type_head(syms, typ); +is_f = b5k_str_eq(th, "F32"); +is_n = b5k_str_eq(th, "Nat"); +is_num = Bool.or(is_f, Bool.or(b5k_str_eq(th, "U32"), is_n))
       +v2 = Bool.pick(Expr, is_num, low_map_ops(32n, Bool.pick(U32, is_f, 1, Bool.pick(U32, is_n, 2, 0)), v), v)
-      v3 = Bool.pick(Expr, Bool.or(String.is_empty(th), is_num), v2, low_map_custom_ops(32n, syms, th, v2))
-      low_go(p, env, st, LTExpr{v3}, is_tail)
+      low_go(p, env, st, LTExpr{Bool.pick(Expr, Bool.or(String.is_empty(th), is_num), v2, low_map_custom_ops(32n, syms, th, v2))}, is_tail)
     case Succ{p} LTExpr{EList{es}}: (+st1 = low_go(p, env, st, LTExprs{es, Nil{}}, False{}); low_list_chain(cfg_rlist(st1), st1))
     case Succ{+p} LTExpr{EPair{a, b}}: (+st1 = low_go(p, env, st, LTExpr{a}, False{}); +st2 = low_go(p, env, st1, LTExpr{b}, False{}); low_emit_ctor(st2, 6, [cfg_res(st1), cfg_res(st2)]))
     case Succ{+p} LTExpr{EArrNew{es}}:
       match es:
-        case Con{v, Con{dep, Con{_, Nil{}}}}:
-          +st1 = low_go(p, env, st, LTExpr{v}, False{})
-          +st2 = low_go(p, env, st1, LTExpr{dep}, False{})
-          low_emit_arr_one(st2, 71, [cfg_res(st2), cfg_res(st1)])
-        case Con{v, Con{ENum{+len}, Nil{}}}:
-          +st1 = low_go(p, env, st, LTExpr{v}, False{})
-          +st2 = low_emit_const(st1, low_const_log2_go(32n, len, 0, U32.is_le(len, 1)))
-          low_emit_arr_one(st2, 71, [cfg_res(st2), cfg_res(st1)])
+        case Con{v, Con{dep, Con{_, Nil{}}}}: (+st1 = low_go(p, env, st, LTExpr{v}, False{}); +st2 = low_go(p, env, st1, LTExpr{dep}, False{}); low_emit_arr_one(st2, 71, [cfg_res(st2), cfg_res(st1)]))
+        case Con{v, Con{ENum{+len}, Nil{}}}: (+st1 = low_go(p, env, st, LTExpr{v}, False{}); +st2 = low_emit_const(st1, low_const_log2_go(32n, len, 0, U32.is_le(len, 1))); low_emit_arr_one(st2, 71, [cfg_res(st2), cfg_res(st1)]))
         case Con{v, Con{len, Nil{}}}: low_go(p, env, st, LTExpr{EApp{EVar{env_sym(env, True{})}, [len, v]}}, is_tail)
         case _: low_emit_const(st, 0)
     case Succ{+p} LTExpr{EArrGet{a, i}}: (+st1 = low_go(p, env, st, LTExpr{a}, False{}); +st2 = low_go(p, env, st1, LTExpr{i}, False{}); low_emit_arr_get_pair(st2, cfg_res(st1), cfg_res(st2)))
     case Succ{+p} LTExpr{EArrSet{a, i, +v}}:
-      +st0 = st
-      +st1 = low_go(p, env, st0, LTExpr{a}, False{})
-      +st2 = low_go(p, env, st1, LTExpr{i}, False{})
-      +st3 = low_go(p, env, st2, LTExpr{v}, False{})
+      +st0 = st; +st1 = low_go(p, env, st0, LTExpr{a}, False{}); +st2 = low_go(p, env, st1, LTExpr{i}, False{}); +st3 = low_go(p, env, st2, LTExpr{v}, False{})
       low_emit_arr_one(st3, Bool.pick(U32, low_is_num_expr(16n, env, cfg_map(st0, False{}), cfg_map(st0, True{}), v), 79, 73), [cfg_res(st1), cfg_res(st2), cfg_res(st3)])
-    case Succ{p} LTExpr{EDo{+ss}}:
-      +e2 = low_env_for_do(env, ss)
-      low_go(p, e2, st, LTExpr{low_desugar_do(e2, ss)}, is_tail)
+    case Succ{p} LTExpr{EDo{+ss}}: (+e2 = low_env_for_do(env, ss); low_go(p, e2, st, LTExpr{low_desugar_do(e2, ss)}, is_tail))
     case Succ{p} LTExpr{ELam{ps, +body}}:
       match ps:
         case Nil{}: low_go(p, env, st, LTExpr{body}, is_tail)
         case Con{p0, Con{p1, rest}}: low_go(p, env, st, LTExpr{low_curry_lam(Con{p0, Con{p1, rest}}, body)}, is_tail)
         case Con{+p0, Nil{}}:
-          +st0 = st
-          +is_lm = low_lam_is_mat(p0, body)
-          +sc = U32.add(env_sym(env, False{}), 32)
+          +st0 = st; +is_lm = low_lam_is_mat(p0, body); +sc = U32.add(env_sym(env, False{}), 32)
           +p1 = Bool.pick(Param, is_lm, Param{sc, None{}, False{}, True{}}, p0)
           +b1 = Bool.pick(Expr, is_lm, low_lam_rw_body(env, sc, U32.add(env_sym(env, False{}), 64), body), body)
           +fvs = b5k_list_rev(U32, fv_go(U32.to_nat(2048), cfg_map(st0, False{}), fv_add_params([p1], UM0{}), UIExpr{b1}, Nil{}))
-          +ncaps = b5k_u32_list_len(fvs)
-          +ar = U32.add(ncaps, 1)
-          lam_st0 = low_bind_params(env_syms(env), env_map(env, 6), [p1], low_bind_lam_caps(cfg_map(st0, True{}), fvs, cfg_new(4294967295, ar, cfg_bank(st0)), 0, b1), ncaps, b1)
-          +lam_st1 = low_go(p, env, lam_st0, LTExpr{b1}, True{})
-          bk2 = low_bank_finish_lam(ncaps, ar, cfg_seal(lam_st1, TRet{cfg_res(lam_st1)}))
-          +st1 = cfg_alloc(cfg_set_bank(st0, bk2), False{})
+          +ncaps = b5k_u32_list_len(fvs); +ar = U32.add(ncaps, 1)
+          +lam_st1 = low_go(p, env, low_bind_params(env_syms(env), env_map(env, 6), [p1], low_bind_lam_caps(cfg_map(st0, True{}), fvs, cfg_new(4294967295, ar, cfg_bank(st0)), 0, b1), ncaps, b1), LTExpr{b1}, True{})
+          +st1 = cfg_alloc(cfg_set_bank(st0, low_bank_finish_lam(ncaps, ar, cfg_seal(lam_st1, TRet{cfg_res(lam_st1)}))), False{})
           cfg_emit(st1, ICtor{cfg_res(st1), low_bank_next_cid(cfg_bank(lam_st1)), low_lookup_fvs(fvs, cfg_map(st0, False{}))})
     case Succ{_} _: low_emit_const(st, 0)
 # Synthetic Runtime Dispatchers (__b5k_apply, __b5k_io_run, __b5k_io_cont)
@@ -1604,15 +1470,7 @@ def low_is_u32_box(syms: SymTab, cs: List<&2, CtorDef>) -> Bool:
     case _: False{}
 def low_show_go(+fuel: Nat, +syms: SymTab, +types: List<&2, TypeDef>, +defs: List<&2, Def>, +cbs: U32Map, +seen: List<&2, ShowSeen>, task: ShowTask) -> ShowBuild:
   match fuel task:
-    case 0n STEnc{_, _, names, nnames, _}: ShowBuild{[0], names, nnames, seen}
-    case 0n STHead{_, _, _, names, nnames, _}: ShowBuild{[0], names, nnames, seen}
-    case 0n STTupA{_, _, _, sb, _}: sb
-    case 0n STBinA{_, _, _, _, _, sb}: sb
-    case 0n STAdtOpt{_, _, _, names, nnames}: ShowBuild{[0], names, nnames, seen}
-    case 0n STAdtCs{_, _, _, _, hdr, sub, names, nnames}: ShowBuild{b5k_list_app(U32, hdr, sub), names, nnames, seen}
-    case 0n STAdtFs{_, _, _, _, _, _, hdr, sub, names, nnames}: ShowBuild{b5k_list_app(U32, hdr, sub), names, nnames, seen}
-    case 0n STAdtFHit{_, _, _, _, _, _, _, _, hdr, sub, names, nnames}: ShowBuild{b5k_list_app(U32, hdr, sub), names, nnames, seen}
-    case 0n STAdtFSub{sb, _, _, _, _, _, _, _, _}: sb
+    case 0n _: ShowBuild{[0], Nil{}, 0, seen}
     case 1n+p STTupA{b, nnames, +fst_idx, ShowBuild{+wa, na, nna, _}, in_adt}: (+snd_idx = U32.add(fst_idx, b5k_u32_list_len(wa)); low_sb_pre(b5k_list_app(U32, [7, 1, 1, nnames, 6, 2, 0, fst_idx, 1, snd_idx], wa), low_show_go(p, syms, types, defs, cbs, seen, STEnc{low_unfold_type(64n, syms, defs, b), snd_idx, na, nna, in_adt})))
     case 1n+p STBinA{b, +nnames, c0, c1, +idx_a, ShowBuild{+wa, na, nna, _}}: (+idx_b = U32.add(idx_a, b5k_u32_list_len(wa)); low_sb_pre(b5k_list_app(U32, [7, 1, 2, nnames, c0, 1, 0, idx_a, U32.add(nnames, 1), c1, 1, 0, idx_b], wa), low_show_go(p, syms, types, defs, cbs, seen, STEnc{low_reassoc_amp(64n, b), idx_b, na, nna, True{}})))
     case 1n+_ STAdtOpt{None{}, o, _, +names, +nnames}: Bool.pick(ShowBuild, low_def_is_unit_fam(syms, defs, o), ShowBuild{[7, 1, 1, nnames, 7, 0], b5k_list_app(String, names, ["Unit"]), U32.add(nnames, 1), seen}, ShowBuild{[0], names, nnames, seen})
@@ -1693,13 +1551,8 @@ def low_env_for_ret(mret: Maybe<&2, Expr>, +env: LowEnv) -> LowEnv:
     case None{}: env
     case Some{r}: low_env_with_monad(low_type_head(env_syms(env), r), env)
 def low_def(+env: LowEnv, laws: List<&2, LawDef>, +fid: U32, d: Def, da: DefAcc) -> DefAcc:
-  LowEnv{+syms, _, _, _, _, _, _, _, _, _, skind, +main_fid, +main_pure, _, _, _, _, _} = env
-  Def{+sym, +params, mret, +body, _, _} = d
-  DefAcc{acc, bank} = da
-  +ar = low_param_arity_live(syms, body, params, 0)
-  mr = Maybe.or(&2, Expr, mret, low_find_law_ret(laws, sym))
-  +st2 = low_go(U32.to_nat(2048), low_env_for_ret(mr, env), low_bind_params(syms, skind, params, cfg_new(fid, ar, bank), 0, body), LTExpr{body}, Bool.or(U32.is_ne(fid, main_fid), main_pure))
-  +st1 = cfg_alloc(st2, False{})
+  LowEnv{+syms, _, _, _, _, _, _, _, _, _, skind, +main_fid, +main_pure, _, _, _, _, _} = env; Def{+sym, +params, mret, +body, _, _} = d; DefAcc{acc, bank} = da
+  +ar = low_param_arity_live(syms, body, params, 0); +st2 = low_go(U32.to_nat(2048), low_env_for_ret(Maybe.or(&2, Expr, mret, low_find_law_ret(laws, sym)), env), low_bind_params(syms, skind, params, cfg_new(fid, ar, bank), 0, body), LTExpr{body}, Bool.or(U32.is_ne(fid, main_fid), main_pure)); +st1 = cfg_alloc(st2, False{})
   low_def_fin(syms, fid, main_fid, sym, ar, acc, Bool.pick(CfgSt, Bool.and(U32.is_eq(fid, main_fid), Bool.not(main_pure)), cfg_seal(cfg_emit(st1, ICallClosure{cfg_res(st1), 1, [cfg_res(st2)]}), TRet{cfg_res(st1)}), cfg_seal(st2, TRet{cfg_res(st2)})))
 def low_defs(ds: List<&2, Def>, +env: LowEnv, +laws: List<&2, LawDef>, +fid: U32, da: DefAcc) -> DefAcc:
   match ds:
@@ -1710,8 +1563,7 @@ def low_maybe_patch_main(is_pure: Bool, mret: Maybe<&2, Expr>, +defs: List<&2, D
     case True{} Some{+rty}: Bool.pick(List<&2, Def>, low_has_arr(32n, syms, rty), low_patch_main(defs, msym, syms, t1, t2, a2l, rty), defs)
     case _ _: defs
 def low_udef_sym1(d: Def, acc: U32Map) -> U32Map:
-  Def{s, _, _, _, _, _} = d
-  um_set(acc, s, 1)
+  Def{s, _, _, _, _, _} = d; um_set(acc, s, 1)
 def low_filter_pdefs(+um: U32Map, ps: List<&2, Def>) -> List<&2, Def>:
   match ps:
     case Nil{}: Nil{}
@@ -1720,29 +1572,17 @@ def b5k_lower_fin(da: DefAcc, ctors_rev: List<&2, IrCtor>, main_fid: U32, is_pur
   DefAcc{def_fns_rev, CloBank{_, _, lam_ctors_rev, lam_fns_rev, entries_rev, _, stats_rev, _}} = da
   LowerRes{True{}, "", IrProg{Con{low_mk_apply_fn(b5k_list_rev(CloEntry, entries_rev)), Con{IrFn{1, "__b5k_io_run", 2, 4, True{}, False{}, False{}, [IrBlock{0, [ISink{1}, ICtor{2, 38, Nil{}}, ICallDirect{3, 0, [0, 2]}], TRet{3}}]}, Con{IrFn{2, "__b5k_io_cont", 2, 3, True{}, False{}, False{}, [IrBlock{0, [ICallDirect{2, 0, [0, 1]}], TRet{2}}]}, b5k_list_app(IrFn, b5k_list_rev(IrFn, def_fns_rev), b5k_list_rev(IrFn, lam_fns_rev))}}}, b5k_list_app(IrCtor, b5k_list_rev(IrCtor, ctors_rev), b5k_list_rev(IrCtor, lam_ctors_rev)), b5k_list_rev(U32, stats_rev), main_fid, is_pure, Nil{}, sdesc, snames}}
 def b5k_lower_run(si: ShowInfo, mret: Maybe<&2, Expr>, +st: SymTab, +sym_tmp: U32, sym_t2: U32, defs: List<&2, Def>, laws: List<&2, LawDef>, ca: CtorTabAcc, fa: FnTabAcc) -> LowerRes:
-  ShowInfo{+is_pure, sdesc, snames} = si
-  CtorTabAcc{_, next_cid, ctor_by_sym, ctor_smask, ctor_single, ctor_arity, ctor_owner, ctors_rev} = ca
-  FnTabAcc{next_fid, fn_by_sym, fn_arity, fn_emask, +main_fid, main_sym} = fa
-  defs2 = low_maybe_patch_main(is_pure, mret, defs, main_sym, st, sym_tmp, sym_t2, Maybe.default(&2, U32, symtab_lookup(st, "Array.to_list"), 0))
-  b5k_lower_fin(low_defs(defs2, LowEnv{st, ctor_by_sym, ctor_smask, ctor_single, ctor_arity, ctor_owner, fn_by_sym, fn_arity, fn_emask, low_seed_u32_map(st, low_intr_specs(), UM0{}), low_seed_u32_map(st, low_kind_specs(), UM0{}), main_fid, is_pure, Maybe.default(&2, U32, symtab_lookup(st, "IO.bind"), 0), Maybe.default(&2, U32, symtab_lookup(st, "IO.pure"), 0), Maybe.default(&2, U32, symtab_lookup(st, "__b5k_str_append"), 0), sym_tmp, Maybe.default(&2, U32, symtab_lookup(st, "__arr_len"), 0)}, laws, 3, DefAcc{Nil{}, CloBank{next_fid, next_cid, Nil{}, Nil{}, Nil{}, 0, Nil{}, RVEmpty{}}}), ctors_rev, main_fid, is_pure, sdesc, snames)
+  ShowInfo{+is_pure, sdesc, snames} = si; CtorTabAcc{_, next_cid, ctor_by_sym, ctor_smask, ctor_single, ctor_arity, ctor_owner, ctors_rev} = ca; FnTabAcc{next_fid, fn_by_sym, fn_arity, fn_emask, +main_fid, main_sym} = fa
+  b5k_lower_fin(low_defs(low_maybe_patch_main(is_pure, mret, defs, main_sym, st, sym_tmp, sym_t2, Maybe.default(&2, U32, symtab_lookup(st, "Array.to_list"), 0)), LowEnv{st, ctor_by_sym, ctor_smask, ctor_single, ctor_arity, ctor_owner, fn_by_sym, fn_arity, fn_emask, low_seed_u32_map(st, low_intr_specs(), UM0{}), low_seed_u32_map(st, low_kind_specs(), UM0{}), main_fid, is_pure, Maybe.default(&2, U32, symtab_lookup(st, "IO.bind"), 0), Maybe.default(&2, U32, symtab_lookup(st, "IO.pure"), 0), Maybe.default(&2, U32, symtab_lookup(st, "__b5k_str_append"), 0), sym_tmp, Maybe.default(&2, U32, symtab_lookup(st, "__arr_len"), 0)}, laws, 3, DefAcc{Nil{}, CloBank{next_fid, next_cid, Nil{}, Nil{}, Nil{}, 0, Nil{}, RVEmpty{}}}), ctors_rev, main_fid, is_pure, sdesc, snames)
 def b5k_lower_s2(+cta: CtorTabAcc, +fta: FnTabAcc, sr1: SymRes, sr2: SymRes, types: List<&2, TypeDef>, +defs: List<&2, Def>, +laws: List<&2, LawDef>) -> LowerRes:
-  CtorTabAcc{_, _, ctor_by_sym, _, _, _, _, _} = cta
-  FnTabAcc{_, _, _, _, _, +main_sym} = fta
-  SymRes{_, sym_tmp} = sr1
-  SymRes{+st, sym_t2} = sr2
-  +mret = low_find_main_ret(defs, laws, main_sym)
+  CtorTabAcc{_, _, ctor_by_sym, _, _, _, _, _} = cta; FnTabAcc{_, _, _, _, _, +main_sym} = fta; SymRes{_, sym_tmp} = sr1; SymRes{+st, sym_t2} = sr2; +mret = low_find_main_ret(defs, laws, main_sym)
   b5k_lower_run(low_show_info(st, types, defs, ctor_by_sym, mret), mret, st, sym_tmp, sym_t2, defs, laws, cta, fta)
 def b5k_lower_i1(cta: CtorTabAcc, fta: FnTabAcc, sr1: SymRes, types: List<&2, TypeDef>, defs: List<&2, Def>, laws: List<&2, LawDef>) -> LowerRes:
-  SymRes{+s4, sym_tmp} = sr1
-  b5k_lower_s2(cta, fta, SymRes{s4, sym_tmp}, symtab_intern(s4, "__b5k_t2"), types, defs, laws)
+  SymRes{+s4, sym_tmp} = sr1; b5k_lower_s2(cta, fta, SymRes{s4, sym_tmp}, symtab_intern(s4, "__b5k_t2"), types, defs, laws)
 def b5k_lower_cta(+cta: CtorTabAcc, types: List<&2, TypeDef>, +defs: List<&2, Def>, laws: List<&2, LawDef>) -> LowerRes:
-  CtorTabAcc{+syms2, _, _, _, _, _, _, _} = cta
-  b5k_lower_i1(cta, low_add_defs(syms2, defs, FnTabAcc{3, UM0{}, UM0{}, UM0{}, 3, 0}), symtab_intern(syms2, "__b5k_tmp"), types, defs, laws)
+  CtorTabAcc{+syms2, _, _, _, _, _, _, _} = cta; b5k_lower_i1(cta, low_add_defs(syms2, defs, FnTabAcc{3, UM0{}, UM0{}, UM0{}, 3, 0}), symtab_intern(syms2, "__b5k_tmp"), types, defs, laws)
 def b5k_lower_pre(pr: ParseRes, +types: List<&2, TypeDef>, +udefs: List<&2, Def>, laws: List<&2, LawDef>) -> LowerRes:
   ParseRes{_, _, Book{_, pdefs, _, +syms1}} = pr
-  skind0 = low_seed_u32_map(syms1, low_kind_specs(), UM0{})
-  defs = b5k_list_app(Def, low_filter_pdefs(opt_foldl0(~Def, ~U32Map, ~low_udef_sym1, udefs, UM0{}), pdefs), udefs)
-  b5k_lower_cta(low_add_types(skind0, types, low_seed_core(low_core_specs(), CtorTabAcc{syms1, 0, UM0{}, UM0{}, UM0{}, UM0{}, UM0{}, Nil{}})), types, defs, laws)
+  b5k_lower_cta(low_add_types(low_seed_u32_map(syms1, low_kind_specs(), UM0{}), types, low_seed_core(low_core_specs(), CtorTabAcc{syms1, 0, UM0{}, UM0{}, UM0{}, UM0{}, UM0{}, Nil{}})), types, b5k_list_app(Def, low_filter_pdefs(opt_foldl0(~Def, ~U32Map, ~low_udef_sym1, udefs, UM0{}), pdefs), udefs), laws)
 def b5k_lower(book: Book) -> LowerRes:
-  Book{types, udefs, laws, syms} = book
-  b5k_lower_pre(b5k_parse(b5k_prelude_src(), syms), types, udefs, laws)
+  Book{types, udefs, laws, syms} = book; b5k_lower_pre(b5k_parse(b5k_prelude_src(), syms), types, udefs, laws)

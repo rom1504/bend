@@ -1,7 +1,10 @@
 # io (io_file_read_line): File.read_line answers one line at a time with
-# its "\n", cuts a longer line at max, and answers "" only at the end of
-# the file. The last line has no "\n".
+# its "\n", cuts a longer line at max, and answers "" at EOF or with
+# a zero cap on a readable handle.
 import Base
+
+def tmp(salt: U32) -> String:
+  "/tmp/bend_t_io_read_line_" ++ U32.show(salt)
 
 law write_go:
   for w: File & Result<&1, &1, (U32 & String), Unit>
@@ -13,6 +16,13 @@ def write_go(w):
     u : Unit <- IO.pass(Unit, r)
     File.close(f)
 
+def show_line(r: Result<&1, &1, U32 & String, String>) -> String:
+  match r:
+    case Done{s}:
+      "[" ++ s ++ "]"
+    case Fail{(code, msg)}:
+      "fail " ++ U32.show(code)
+
 law line:
   for m: File & Result<&1, &1, (U32 & String), String>
   IO(File)
@@ -20,8 +30,7 @@ law line:
 def line(m):
   (f, r) = m
   do IO<File>:
-    s : String <- IO.pass(String, r)
-    u : Unit <- IO.print("[" ++ s ++ "]")
+    u : Unit <- IO.print(show_line(r))
     return f
 
 law main:
@@ -29,12 +38,17 @@ law main:
 
 def main():
   do IO<Unit>:
-    f : File <- IO.try(File, File.open("/tmp/bend_io_read_line.tmp", "w"))
+    +salt : U32 <- IO.try(U32, IO.random_u32())
+    f : File <- IO.try(File, File.open(tmp(salt), "w"))
+    m : File & Result<&1, &1, U32 & String, String> <- File.read_line(f, 0)
+    f : File <- line(m)
     w : File & Result<&1, &1, (U32 & String), Unit> <- File.write(f, "ab\n\nlonger\nend")
     x : Unit <- write_go(w)
-    g0 : File <- IO.try(File, File.open("/tmp/bend_io_read_line.tmp", "r"))
+    g0 : File <- IO.try(File, File.open(tmp(salt), "r"))
     m1 : File & Result<&1, &1, (U32 & String), String> <- File.read_line(g0, 64)
     g1 : File <- line(m1)
+    m : File & Result<&1, &1, U32 & String, String> <- File.read_line(g1, 0)
+    g1 : File <- line(m)
     m2 : File & Result<&1, &1, (U32 & String), String> <- File.read_line(g1, 64)
     g2 : File <- line(m2)
     m3 : File & Result<&1, &1, (U32 & String), String> <- File.read_line(g2, 3)
@@ -45,10 +59,15 @@ def main():
     g5 : File <- line(m5)
     m6 : File & Result<&1, &1, (U32 & String), String> <- File.read_line(g5, 64)
     g6 : File <- line(m6)
-    File.close(g6)
+    done : Unit <- File.close(g6)
+    gone : Result<&1, &1, U32 & String, U32 & (String & String)> <-
+      Process.run("rm", ["-f", tmp(salt)], "", 128, 1000)
+    return done
 
+#|fail 9
 #|[ab
 #|]
+#|[]
 #|[
 #|]
 #|[lon]

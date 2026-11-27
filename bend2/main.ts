@@ -298,17 +298,17 @@ async function cli_file(args: string[]): Promise<void> {
     cli_fail("--checkup takes no -o: a binary holds one main, so build each"
       + " import alone");
   }
+  const seen = new Map<string, string | null>();
   try {
     if (file.endsWith(".html")) {
       return await cli_bundle(file, outs[0]);
     }
     if (publish) {
-      return await cli_publish(file, named);
+      return await cli_publish(file, named, seen);
     }
     if (checkup) {
       return await cli_checkup(file);
     }
-    const seen = new Map<string, string | null>();
     const book = await book_read(file, undefined, seen);
     if (only || verdict) {
       process.exitCode = cli_verdict(book, verdict);
@@ -345,13 +345,14 @@ async function cli_file(args: string[]): Promise<void> {
       cli_emit(book, out);
     }
   } catch (e) {
-    cli_say(2, book_err(e) + "\n");
+    cli_say(2, book_err(e, seen) + "\n");
     process.exitCode = 1;
   }
 }
 
 // cli_checkup checks and runs each import of the file alone (Base read
-// once, seeded into every module that imports it); one that fails fails it.
+// once, seeded into every module whose first import is Base, as the loader
+// would read it); one that fails fails it.
 async function cli_checkup(file: string): Promise<void> {
   const base = await book_read(BASE);
   let bad = false;
@@ -373,7 +374,7 @@ async function cli_checkup(file: string): Promise<void> {
     cli_say(1, "--- " + m[1] + " ---\n");
     let code = 1;
     try {
-      const own = /^(?:[\t\r ]*(?:(?:#|import )[^\n]*)?\n)*[\t ]*import Base\s/
+      const own = /^(?:[\t\r ]*(?:#[^\n]*)?\n)*[\t ]*import Base\s/
         .test(fs.readFileSync(at, "utf8"));
       code = book_run(await book_read(at, own ? base : undefined), [at]);
     } catch (e) {
@@ -670,8 +671,8 @@ async function cli_bundle(page: string, dir: string): Promise<void> {
 // cli_publish checks the file, then posts what the loader read (no TODO
 // left) to the hub with its proof of work, and prints the import line.
 // First it prints the terms and the license the hub will show.
-async function cli_publish(file: string, named?: string): Promise<void> {
-  const seen = new Map<string, string | null>();
+async function cli_publish(file: string, named: string | undefined,
+  seen: Map<string, string | null>): Promise<void> {
   const book = await book_read(file, undefined, seen);
   const files = pkg_files(file, book, seen);
   const entry = Object.keys(files)[0];
@@ -1074,7 +1075,10 @@ async function book_read(file: string, base?: Bend.Book,
 
 // a failed check: bend2's reason, which book_err prints under FAIL
 class Check_Fail {
-  constructor(readonly why: unknown) {}
+  readonly why: unknown;
+  constructor(why: unknown) {
+    this.why = why;
+  }
 }
 
 function book_seed(base: Bend.Book): Bend.Book {
@@ -1109,30 +1113,53 @@ function book_run(book: Bend.Book, argv: string[]): number {
   return 0;
 }
 
-function book_err(e: unknown): string {
+// Base and the entry share a namespace. Their parser spans use different file
+// objects. A file that fails to load still has a null namespace in seen.
+function book_location(err: Bend.Err, seen: Map<string, string | null>): string {
+  const span = err.spn;
+  if (span === undefined) {
+    return "";
+  }
+  const files = [...seen].reverse();
+  const bool = err.bok.tlds.Bool;
+  const base = !!bool?.b && bool.T.s?.file === span.file;
+  const source = files.find(([p, ns]) => ns === span.file.ns && (p === BASE) === base)
+    ?? files.find(([, ns]) => ns === null);
+  if (source === undefined) {
+    return "";
+  }
+  const lines = span.file.str.slice(0, span.beg).split("\n");
+  const column = lines[lines.length - 1].length + 1;
+  return "\n--> " + source[0] + ":" + lines.length + ":" + column;
+}
+
+function book_err(e: unknown, seen: Map<string, string | null> | null = null): string {
   if (e instanceof Check_Fail) {
-    return FAIL + "\n" + book_err(e.why);
+    return FAIL + "\n" + book_err(e.why, seen);
   }
   if (e instanceof AggregateError) {
     return e.errors.map((m) => Bun.inspect(m, { colors: false })).join("\n")
       || String(e);
   }
-  const err = e as Bend.Err;
-  if (e instanceof RangeError) {
+  if (e instanceof RangeError
+    && e.message.startsWith("Maximum call stack size exceeded")) {
     return "Error: the machine stack overflowed (a deep recursion, or a"
       + " literal too large to expand)";
   }
-  return err?.$ === "Err" ? Bend.err_show(err) : String(e);
+  const err = e as Bend.Err;
+  return err?.$ === "Err" ? Bend.err_show(err)
+    + (seen === null ? "" : book_location(err, seen)) : String(e);
 }
 
 // Load
 // ====
 
 async function load_js(path: string): Promise<string> {
+  const seen = new Map<string, string | null>();
   try {
-    return Comp.js_lib(await book_read(path), true);
+    return Comp.js_lib(await book_read(path, undefined, seen), true);
   } catch (e) {
-    throw new Error(book_err(e));
+    throw new Error(book_err(e, seen));
   }
 }
 

@@ -321,14 +321,41 @@ def IO.join.go(-A: Type, chan: Chan(A), got: Maybe<&1, A>) -> IO(A):
 def IO.join(-A: Type, +chan: Chan(A)) -> IO(A):
   IO.bind(Maybe<&1, A>, A, Chan.recv(A, chan), IO.join.go(A, chan))
 
-# Some{x} if act answers x within ms milliseconds, else None{}. The loser
-# is not cancelled: it runs to its end before the program exits.
+def IO.within.deadline(-A: Type, result: Chan(Maybe<&1, A>),
+  got: Poll<&1, &1, Maybe<&1, Unit>, Unit>) -> IO(Unit):
+  match got:
+    case Ready{value}:
+      IO.pure(Unit, Unit{})
+    case Wait{rest}:
+      do IO<Unit>:
+        Result<&1, &1, Maybe<&1, A>, Unit> <- Chan.send(Maybe<&1, A>, result, None{})
+        return Unit{}
+
+def IO.within.go(-A: Type, ms: U32, won: IO(Maybe<&1, A>), zero: Bool) -> IO(Maybe<&1, A>):
+  match zero:
+    case True{}:
+      # A zero deadline still gives the action a turn before the timeout.
+      late = IO.bind(Unit, Maybe<&1, A>, IO.sleep(0), u => IO.pure(Maybe<&1, A>, None{}))
+      both = IO.bind(Chan(Maybe<&1, A>), Chan(Maybe<&1, A>), IO.fork(Maybe<&1, A>, won),
+        IO.fork.go(Maybe<&1, A>, late))
+      IO.bind(Chan(Maybe<&1, A>), Maybe<&1, A>, both, c => IO.join(Maybe<&1, A>, c))
+    case False{}:
+      # The deadline competes for the result on its own turn, as a sleep would.
+      do IO<Maybe<&1, A>>:
+        +cancel : Chan(Unit) <- Chan.new(Unit, 0)
+        +result : Chan(Maybe<&1, A>) <- IO.fork(Maybe<&1, A>, won)
+        IO.spawn(Unit, IO.bind(Poll<&1, &1, Maybe<&1, Unit>, Unit>, Unit,
+          Chan.try_recv(Unit, cancel, ms), IO.within.deadline(A, result)))
+        got : Maybe<&1, A> <- IO.join(Maybe<&1, A>, result)
+        Chan.close(Unit, cancel)
+        return got
+
+# Some{x} if act answers x within ms milliseconds, else None{}. After a
+# timeout, the action still runs to its end before the program exits.
 def IO.within(-A: Type, ms: U32, act: IO(A)) -> IO(Maybe<&1, A>):
+  +timeout = ms
   won = IO.bind(A, Maybe<&1, A>, act, x => IO.pure(Maybe<&1, A>, Some{x}))
-  late = IO.bind(Unit, Maybe<&1, A>, IO.sleep(ms), u => IO.pure(Maybe<&1, A>, None{}))
-  both = IO.bind(Chan(Maybe<&1, A>), Chan(Maybe<&1, A>), IO.fork(Maybe<&1, A>, won),
-    IO.fork.go(Maybe<&1, A>, late))
-  IO.bind(Chan(Maybe<&1, A>), Maybe<&1, A>, both, c => IO.join(Maybe<&1, A>, c))
+  IO.within.go(A, timeout, won, U32.is_zero(timeout))
 
 # Modes: "r" reads, "r+" reads and writes without creating or truncating,
 # "w" creates or truncates, "a" appends or creates, "x" creates exclusively.
@@ -355,7 +382,7 @@ def File.read(file: File, max: U32) ->
 
 # The next line with its "\n", up to max bytes, so a terminal or a pipe
 # answers each line as it comes; "" at the end of the file, or when max
-# is 0.
+# is 0 (which still fails, as File.read does, on a handle that can't read).
 def File.read_line(file: File, max: U32) ->
   IO(File & Result<&1, &1, U32 & String, String>):
   import "./effs/file_read.c"
@@ -862,11 +889,22 @@ def Nat.max_ge_r(a, b):
     case 1n+ap 1n+bp:
       Nat.max_ge_r(ap, bp)
 
+# Nat.div and Nat.mod drop the other half of Nat.divmod as a Nat, which costs
+# nothing, so C computes one division (Pair.fst and Pair.snd would drop it
+# as a generic value, with a test that reads it)
+def Nat.div.go(p: Nat & Nat) -> Nat:
+  (q, r) = p
+  q
+
 def Nat.div(a: Nat, b: Nat) -> Nat:
-  Pair.fst(Nat, Nat, Nat.divmod(a, b))
+  Nat.div.go(Nat.divmod(a, b))
+
+def Nat.mod.go(p: Nat & Nat) -> Nat:
+  (q, r) = p
+  r
 
 def Nat.mod(a: Nat, b: Nat) -> Nat:
-  Pair.snd(Nat, Nat, Nat.divmod(a, b))
+  Nat.mod.go(Nat.divmod(a, b))
 
 def Nat.pow(+a: Nat, b: Nat) -> Nat:
   match b:
@@ -2108,8 +2146,30 @@ def String.cmp(a, b):
     case SCon{h1, t1} SCon{h2, t2}:
       String.cmp.fin(t1, t2, Char.cmp(h1, h2))
 
-def String.eq(a: String, b: String) -> Bool:
-  Cmp.is_eq(String.order(a, b))
+law String.eq:
+  for a: String
+  for b: String
+  Bool
+
+# Settle the heads before opening the tails, so unequal heads decide even
+# when the tails are unknown (in a proof).
+def String.eq.go(t1: String, t2: String, same: Bool) -> Bool:
+  match same:
+    case False{}:
+      False{}
+    case True{}:
+      String.eq(t1, t2)
+
+def String.eq(a, b):
+  match a b:
+    case SNil{} SNil{}:
+      True{}
+    case SNil{} SCon{h, t}:
+      False{}
+    case SCon{h, t} SNil{}:
+      False{}
+    case SCon{h1, t1} SCon{h2, t2}:
+      String.eq.go(t1, t2, Char.is_eq(h1, h2))
 
 def String.length(s: String) -> Nat:
   match s:
@@ -2193,8 +2253,23 @@ def String.starts_with.go(p, s):
 def String.starts_with(s, p):
   String.starts_with.go(p, s)
 
+# Counts like String.length, but in a loop, so a long s holds no frames.
+def String.ends_with.len(s: String, n: Nat) -> Nat:
+  match s:
+    case SNil{}:
+      n
+    case SCon{h, t}:
+      String.ends_with.len(t, 1n+n)
+
+# A p longer than s drops nothing, so String.eq fails on it.
 def String.ends_with(s: String, p: String) -> Bool:
-  String.starts_with(String.reverse(s), String.reverse(p))
+  match p:
+    case SNil{}:
+      True{}
+    case SCon{c, t}:
+      +s2 = s
+      +p2 = {SCon{c, t} : String}
+      String.eq(String.drop(s2, Nat.sub(String.ends_with.len(s2, 0n), String.ends_with.len(p2, 0n))), p2)
 
 law String.contains:
   for +s: String
@@ -2208,12 +2283,30 @@ def String.contains.if(t: String, p: String, here: Bool) -> Bool:
     case True{}:
       True{}
 
+def String.contains.pre(p: String, s: String, same: Bool) -> Bool:
+  match p s same:
+    case _ _ False{}:
+      False{}
+    case SNil{} _ True{}:
+      True{}
+    case SCon{y, yt} SNil{} True{}:
+      False{}
+    case SCon{y, yt} SCon{x, xt} True{}:
+      String.contains.pre(yt, xt, Char.is_eq(x, y))
+
+def String.contains.at(p: String, h: Char, t: String) -> Bool:
+  match p:
+    case SNil{}:
+      True{}
+    case SCon{y, yt}:
+      String.contains.pre(yt, t, Char.is_eq(h, y))
+
 def String.contains(s, p):
   match s:
     case SNil{}:
       String.is_empty(p)
     case SCon{h, t}:
-      String.contains.if(t, p, String.starts_with(SCon{h, t}, p))
+      String.contains.if(t, p, String.contains.at(p, h, t))
 
 def String.take(s: String, n: Nat) -> String:
   match s n:
@@ -2400,9 +2493,9 @@ def Nat.read.go(s, acc):
       Nat.read.if(t, acc, d, U32.is_lt(d, 10))
 
 # 2^48-1 is the text 281474976710655. Past leading zeros, fewer than
-# fifteen characters fit, more do not, and fifteen compare as text;
-# Nat.read.go still refuses a non-digit. The gate is a def, not a
-# Bool.pick: an argument is built before the call, and reading a string
+# fifteen characters fit, the sixteenth rules it out, and exactly fifteen
+# compare as text. Nat.read.go still refuses a non-digit. The gate is a def,
+# not a Bool.pick: an argument is built before the call, and reading a string
 # that does not fit would build a Nat past the bound. A law that reads
 # "7" never builds the unary nat (each digit once divided it).
 def Nat.read.trim(s: String) -> String:
@@ -2412,10 +2505,28 @@ def Nat.read.trim(s: String) -> String:
     case t:
       t
 
+def Nat.read.len_cmp(s: String, limit: Nat) -> Cmp:
+  match s limit:
+    case SNil{} 0n:
+      EQ{}
+    case SNil{} 1n+p:
+      LT{}
+    case SCon{h, t} 0n:
+      GT{}
+    case SCon{h, t} 1n+p:
+      Nat.read.len_cmp(t, p)
+
+def Nat.read.fits.cmp(s: String, size: Cmp) -> Bool:
+  match size:
+    case LT{}:
+      True{}
+    case EQ{}:
+      String.is_le(s, "281474976710655")
+    case GT{}:
+      False{}
+
 def Nat.read.fits(+s: String) -> Bool:
-  +n = String.length(s)
-  Bool.or(Nat.is_lt(n, 15n),
-    Bool.and(Nat.is_eq(n, 15n), String.is_le(s, "281474976710655")))
+  Nat.read.fits.cmp(s, Nat.read.len_cmp(s, 15n))
 
 def Nat.read.gate(+s: String, ok: Bool) -> Maybe<&2, Nat>:
   match ok:
@@ -2818,18 +2929,18 @@ def Array.show.go(
   match n:
     case 0n:
       (a, x) = r
-      f(s, x) ++ "]"
+      f("[", x) ++ s
     case 1n+p:
       (a, x) = r
-      +j = U32.inc(i)
-      Array.show.go(~T, ~f, p, j, f(s, x) ++ ", ", Array.get(T, a, j))
+      +j = U32.sub(i, 1)
+      Array.show.go(~T, ~f, p, j, f(", ", x) ++ s, Array.get(T, a, j))
 
 def Array.show.at(
   ~T: Data, ~f: String -> T -> String, an: Array<T> & U32
 ) -> String:
   (a, +n) = an
-  Array.show.go(~T, ~f, U32.to_nat(U32.sub(n, 1)), 0, "[",
-    Array.get(T, a, 0))
+  +i = U32.sub(n, 1)
+  Array.show.go(~T, ~f, U32.to_nat(i), i, "]", Array.get(T, a, i))
 
 def Array.show(~T: Data, ~f: String -> T -> String, a: Array<T>) -> String:
   Array.show.at(~T, ~f, Array.size(T, a))
@@ -2930,57 +3041,37 @@ def Map.diff.step(x: Char, y: Char) -> Nat & Bool:
 law Map.diff:
   for a: String
   for b: String
-  Nat
+  for n: Nat
+  Maybe<&2, Nat>
 
-def Map.diff.fin(xt: String, yt: String, rc: Nat & Bool) -> Nat:
+# Map.diff walks two keys once: None if they are equal, else the bit where
+# they first differ (n is the bits before a and b).
+def Map.diff.fin(xt: String, yt: String, n: Nat, rc: Nat & Bool) ->
+  Maybe<&2, Nat>:
   (r, c) = rc
   match c:
     case True{}:
-      Nat.add(33n, Map.diff(xt, yt))
+      Map.diff(xt, yt, Nat.add(n, 33n))
     case False{}:
-      r
+      Some{Nat.add(n, r)}
 
-def Map.diff(a, b):
+def Map.diff(a, b, n):
   match a b:
-    case SNil{} _:
-      0n
+    case SNil{} SNil{}:
+      None{}
+    case SNil{} SCon{h, t}:
+      Some{n}
     case SCon{h, t} SNil{}:
-      0n
+      Some{n}
     case SCon{x, xt} SCon{y, yt}:
-      Map.diff.fin(xt, yt, Map.diff.step(x, y))
+      Map.diff.fin(xt, yt, n, Map.diff.step(x, y))
 
 def Map.new(a, -V: Kind(a)) -> Map<a, V>:
   MTip{}
 
-# Map.put.go, Map.ins.go, Map.seek.go, Map.has.go, Map.get.go and
-# Map.pop.go take the node they are in, whole, and the key's bit at it:
-# the child they descend into is that node's field, a node rebuilt
-def Map.put.go(-a: Quant, -V: Kind(a), node: Map<a, V>, x: V, kb: String & Bool) -> Map<a, V>:
-  match node kb:
-    case MNode{p, MTip{}, hi} Tuple{key, False{}}:
-      MNode{p, MLeaf{key, x}, hi}
-    case MNode{p, MLeaf{k, v}, hi} Tuple{key, False{}}:
-      MNode{p, MLeaf{k, x}, hi}
-    case MNode{p, MNode{+q, c, d}, hi} Tuple{key, False{}}:
-      MNode{p, Map.put.go(a, V, MNode{q, c, d}, x, Map.bit(key, q)), hi}
-    case MNode{p, lo, MTip{}} Tuple{key, True{}}:
-      MNode{p, lo, MLeaf{key, x}}
-    case MNode{p, lo, MLeaf{k, v}} Tuple{key, True{}}:
-      MNode{p, lo, MLeaf{k, x}}
-    case MNode{p, lo, MNode{+q, c, d}} Tuple{key, True{}}:
-      MNode{p, lo, Map.put.go(a, V, MNode{q, c, d}, x, Map.bit(key, q))}
-    case m _:
-      m
-
-def Map.put(-a: Quant, -V: Kind(a), m: Map<a, V>, key: String, x: V) -> Map<a, V>:
-  match m:
-    case MTip{}:
-      MLeaf{key, x}
-    case MLeaf{k, v}:
-      MLeaf{k, x}
-    case MNode{+pos, lo, hi}:
-      Map.put.go(a, V, MNode{pos, lo, hi}, x, Map.bit(key, pos))
-
+# Map.upd.go, Map.ins.go, Map.has.go and Map.pop.go take the node they are
+# in, whole, and the key's bit at it: the child they descend into is that
+# node's field, a node rebuilt
 def Map.ins.splice.bit(
   a, -V: Kind(a), x: V, rest: Map<a, V>, pb: Nat, kb: String & Bool
 ) -> Map<a, V>:
@@ -3042,67 +3133,59 @@ def Map.hi(
   (hi2, r) = r0
   (MNode{p2, lo, hi2}, r)
 
-def Map.seek.go(-a: Quant, -V: Kind(a), node: Map<a, V>, kb: String & Bool) ->
-  Map<a, V> & String & Maybe<&2, String>:
-  match node kb:
-    case MNode{p, MTip{}, hi} Tuple{key, False{}}:
-      (MNode{p, MTip{}, hi}, key, None{})
-    case MNode{p, MLeaf{+k, v}, hi} Tuple{key, False{}}:
-      (MNode{p, MLeaf{k, v}, hi}, key, Some{k})
-    case MNode{p, MNode{+q, c, d}, hi} Tuple{key, False{}}:
-      Map.lo(a, V, String & Maybe<&2, String>, p, hi, Map.seek.go(a, V, MNode{q, c, d}, Map.bit(key, q)))
-    case MNode{p, lo, MTip{}} Tuple{key, True{}}:
-      (MNode{p, lo, MTip{}}, key, None{})
-    case MNode{p, lo, MLeaf{+k, v}} Tuple{key, True{}}:
-      (MNode{p, lo, MLeaf{k, v}}, key, Some{k})
-    case MNode{p, lo, MNode{+q, c, d}} Tuple{key, True{}}:
-      Map.hi(a, V, String & Maybe<&2, String>, p, lo, Map.seek.go(a, V, MNode{q, c, d}, Map.bit(key, q)))
-    case m Tuple{key, b}:
-      (m, key, None{})
-
-def Map.seek(-a: Quant, -V: Kind(a), m: Map<a, V>, key: String) ->
-  Map<a, V> & String & Maybe<&2, String>:
-  match m:
-    case MTip{}:
-      (MTip{}, key, None{})
-    case MLeaf{+k, v}:
-      (MLeaf{k, v}, key, Some{k})
-    case MNode{+pos, lo, hi}:
-      Map.seek.go(a, V, MNode{pos, lo, hi}, Map.bit(key, pos))
-
-def Map.set.fin.go(
-  a, -V: Kind(a), m: Map<a, V>, key: String, x: V, r: (String & String) & Cmp
-) -> Map<a, V>:
-  ((keyb2, k2), c) = r
-  match c:
-    case EQ{}:
-      Map.put(a, V, m, key, x)
-    case o:
-      Map.ins(a, V, m, key, x, Map.diff(keyb2, k2))
-
-def Map.set.fin(
-  a, -V: Kind(a), m: Map<a, V>, key: String, x: V, keyb: String, k: String
-) -> Map<a, V>:
-  Map.set.fin.go(a, V, m, key, x, String.cmp(keyb, k))
-
-def Map.set.go(
-  a, -V: Kind(a), x: V, r: Map<a, V> & String & Maybe<&2, String>
-) -> Map<a, V>:
-  (m2, key2, found) = r
-  match found:
+# Map.set walks to the nearest leaf once: a leaf with the same key takes x
+# there and the walk hands back None; else it hands back x, the key and the
+# bit where the key leaves the leaf's, for Map.ins (no bit at a tip: x
+# becomes the whole map).
+def Map.upd.fin(
+  -a: Quant, -V: Kind(a), v: V, x: V, k: String, key: String,
+  d: Maybe<&2, Nat>
+) -> Map<a, V> & Maybe<a, V> & String & Maybe<&2, Nat>:
+  match d:
     case None{}:
-      MLeaf{key2, x}
-    case Some{k}:
-      +ka = {key2 : String}
-      Map.set.fin(a, V, m2, ka, x, ka, k)
+      (MLeaf{k, x}, None{}, key, None{})
+    case Some{p}:
+      (MLeaf{k, v}, Some{x}, key, Some{p})
+
+def Map.upd.leaf(-a: Quant, -V: Kind(a), v: V, x: V, +k: String, +key: String) ->
+  Map<a, V> & Maybe<a, V> & String & Maybe<&2, Nat>:
+  Map.upd.fin(a, V, v, x, k, key, Map.diff(key, k, 0n))
+
+def Map.upd.go(-a: Quant, -V: Kind(a), node: Map<a, V>, x: V, kb: String & Bool) ->
+  Map<a, V> & Maybe<a, V> & String & Maybe<&2, Nat>:
+  match node kb:
+    case MNode{p, MLeaf{k, v}, hi} Tuple{key, False{}}:
+      Map.lo(a, V, Maybe<a, V> & String & Maybe<&2, Nat>, p, hi, Map.upd.leaf(a, V, v, x, k, key))
+    case MNode{p, MNode{+q, c, d}, hi} Tuple{key, False{}}:
+      Map.lo(a, V, Maybe<a, V> & String & Maybe<&2, Nat>, p, hi, Map.upd.go(a, V, MNode{q, c, d}, x, Map.bit(key, q)))
+    case MNode{p, lo, MLeaf{k, v}} Tuple{key, True{}}:
+      Map.hi(a, V, Maybe<a, V> & String & Maybe<&2, Nat>, p, lo, Map.upd.leaf(a, V, v, x, k, key))
+    case MNode{p, lo, MNode{+q, c, d}} Tuple{key, True{}}:
+      Map.hi(a, V, Maybe<a, V> & String & Maybe<&2, Nat>, p, lo, Map.upd.go(a, V, MNode{q, c, d}, x, Map.bit(key, q)))
+    case m Tuple{key, b}:
+      (m, Some{x}, key, None{})
+
+def Map.set.fin(a, -V: Kind(a), r: Map<a, V> & Maybe<a, V> & String & Maybe<&2, Nat>) -> Map<a, V>:
+  match r:
+    case Tuple{m2, Tuple{None{}, _}}:
+      m2
+    case Tuple{m2, Tuple{Some{x}, Tuple{key, None{}}}}:
+      MLeaf{key, x}
+    case Tuple{m2, Tuple{Some{x}, Tuple{key, Some{p}}}}:
+      Map.ins(a, V, m2, key, x, p)
 
 def Map.set(a, -V: Kind(a), m: Map<a, V>, key: String, x: V) -> Map<a, V>:
-  Map.set.go(a, V, x, Map.seek(a, V, m, key))
+  match m:
+    case MTip{}:
+      MLeaf{key, x}
+    case MLeaf{k, v}:
+      Map.set.fin(a, V, Map.upd.leaf(a, V, v, x, k, key))
+    case MNode{+pos, lo, hi}:
+      Map.set.fin(a, V, Map.upd.go(a, V, MNode{pos, lo, hi}, x, Map.bit(key, pos)))
 
-def Map.has.leaf(a, -V: Kind(a), v: V, r: (String & String) & Cmp) ->
+def Map.has.leaf(a, -V: Kind(a), v: V, key: String, +k: String) ->
   Map<a, V> & Bool:
-  ((key2, k2), c) = r
-  (MLeaf{k2, v}, Cmp.is_eq(c))
+  (MLeaf{k, v}, String.eq(key, k))
 
 def Map.has.go(-a: Quant, -V: Kind(a), node: Map<a, V>, kb: String & Bool) ->
   Map<a, V> & Bool:
@@ -3110,13 +3193,13 @@ def Map.has.go(-a: Quant, -V: Kind(a), node: Map<a, V>, kb: String & Bool) ->
     case MNode{p, MTip{}, hi} Tuple{key, False{}}:
       (MNode{p, MTip{}, hi}, False{})
     case MNode{p, MLeaf{k, v}, hi} Tuple{key, False{}}:
-      Map.lo(a, V, Bool, p, hi, Map.has.leaf(a, V, v, String.cmp(key, k)))
+      Map.lo(a, V, Bool, p, hi, Map.has.leaf(a, V, v, key, k))
     case MNode{p, MNode{+q, c, d}, hi} Tuple{key, False{}}:
       Map.lo(a, V, Bool, p, hi, Map.has.go(a, V, MNode{q, c, d}, Map.bit(key, q)))
     case MNode{p, lo, MTip{}} Tuple{key, True{}}:
       (MNode{p, lo, MTip{}}, False{})
     case MNode{p, lo, MLeaf{k, v}} Tuple{key, True{}}:
-      Map.hi(a, V, Bool, p, lo, Map.has.leaf(a, V, v, String.cmp(key, k)))
+      Map.hi(a, V, Bool, p, lo, Map.has.leaf(a, V, v, key, k))
     case MNode{p, lo, MNode{+q, c, d}} Tuple{key, True{}}:
       Map.hi(a, V, Bool, p, lo, Map.has.go(a, V, MNode{q, c, d}, Map.bit(key, q)))
     case m _:
@@ -3127,33 +3210,67 @@ def Map.has(-a: Quant, -V: Kind(a), m: Map<a, V>, key: String) -> Map<a, V> & Bo
     case MTip{}:
       (MTip{}, False{})
     case MLeaf{k, v}:
-      Map.has.leaf(a, V, v, String.cmp(key, k))
+      Map.has.leaf(a, V, v, key, k)
     case MNode{+pos, lo, hi}:
       Map.has.go(a, V, MNode{pos, lo, hi}, Map.bit(key, pos))
 
-def Map.get.leaf(-V: Data, d: V, +v: V, r: (String & String) & Cmp) ->
+def Map.get.leaf.eq(-V: Data, d: V, +v: V, k: String, found: Bool) ->
   Map<&2, V> & V:
-  ((key2, k2), c) = r
-  match c:
-    case EQ{}:
-      (MLeaf{k2, v}, v)
-    case o:
-      (MLeaf{k2, v}, d)
+  match found:
+    case True{}:
+      (MLeaf{k, v}, v)
+    case False{}:
+      (MLeaf{k, v}, d)
 
-def Map.get.go(-V: Data, node: Map<&2, V>, d: V, kb: String & Bool) -> Map<&2, V> & V:
-  match node kb:
-    case MNode{p, MTip{}, hi} Tuple{key2, False{}}:
+def Map.get.leaf(-V: Data, d: V, +v: V, key: String, +k: String) ->
+  Map<&2, V> & V:
+  Map.get.leaf.eq(V, d, v, k, String.eq(key, k))
+
+# Map.get.go carries a cursor into the key: trie positions only grow on the
+# way down, so each level drops the characters between its position and the
+# child's instead of walking the key's shared prefix from its head again.
+def Map.get.bit(rest: String, off: Nat) -> Bool:
+  match rest:
+    case SNil{}:
+      False{}
+    case SCon{c, t}:
+      Pair.snd(Char, Bool, Map.bit.chr(c, off))
+
+# Most steps down the trie move 0 or 1 characters: those skip String.drop,
+# which rebuilds the head on a 0 step and recurses on a 1 step
+def Map.get.skip(n: Nat, s: String) -> String:
+  match n s:
+    case 0n s:
+      s
+    case 1n SCon{c, t}:
+      t
+    case n s:
+      String.drop(s, n)
+
+def Map.get.go(
+  -V: Data, node: Map<&2, V>, d: V, key: String, +rest: String, ci: Nat, b: Bool
+) -> Map<&2, V> & V:
+  match node b:
+    case MNode{p, MTip{}, hi} False{}:
       (MNode{p, MTip{}, hi}, d)
-    case MNode{p, MLeaf{k, v}, hi} Tuple{key2, False{}}:
-      Map.lo(&2, V, V, p, hi, Map.get.leaf(V, d, v, String.cmp(key2, k)))
-    case MNode{p, MNode{+q, a, b}, hi} Tuple{key2, False{}}:
-      Map.lo(&2, V, V, p, hi, Map.get.go(V, MNode{q, a, b}, d, Map.bit(key2, q)))
-    case MNode{p, lo, MTip{}} Tuple{key2, True{}}:
+    case MNode{p, MLeaf{k, v}, hi} False{}:
+      Map.lo(&2, V, V, p, hi, Map.get.leaf(V, d, v, key, k))
+    case MNode{p, MNode{+q, a, b2}, hi} False{}:
+      +cq = Nat.div(q, 33n)
+      +r2 = Map.get.skip(Nat.sub(cq, ci), rest)
+      Map.lo(&2, V, V, p, hi,
+        Map.get.go(V, MNode{q, a, b2}, d, key, r2, cq,
+          Map.get.bit(r2, Nat.mod(q, 33n))))
+    case MNode{p, lo, MTip{}} True{}:
       (MNode{p, lo, MTip{}}, d)
-    case MNode{p, lo, MLeaf{k, v}} Tuple{key2, True{}}:
-      Map.hi(&2, V, V, p, lo, Map.get.leaf(V, d, v, String.cmp(key2, k)))
-    case MNode{p, lo, MNode{+q, a, b}} Tuple{key2, True{}}:
-      Map.hi(&2, V, V, p, lo, Map.get.go(V, MNode{q, a, b}, d, Map.bit(key2, q)))
+    case MNode{p, lo, MLeaf{k, v}} True{}:
+      Map.hi(&2, V, V, p, lo, Map.get.leaf(V, d, v, key, k))
+    case MNode{p, lo, MNode{+q, a, b2}} True{}:
+      +cq = Nat.div(q, 33n)
+      +r2 = Map.get.skip(Nat.sub(cq, ci), rest)
+      Map.hi(&2, V, V, p, lo,
+        Map.get.go(V, MNode{q, a, b2}, d, key, r2, cq,
+          Map.get.bit(r2, Nat.mod(q, 33n))))
     case m _:
       (m, d)
 
@@ -3162,9 +3279,13 @@ def Map.get(-V: Data, d: V, m: Map<&2, V>, key: String) -> Map<&2, V> & V:
     case MTip{}:
       (MTip{}, d)
     case MLeaf{k, v}:
-      Map.get.leaf(V, d, v, String.cmp(key, k))
+      Map.get.leaf(V, d, v, key, k)
     case MNode{+pos, lo, hi}:
-      Map.get.go(V, MNode{pos, lo, hi}, d, Map.bit(key, pos))
+      +k = key
+      +cq = Nat.div(pos, 33n)
+      +rest = String.drop(k, cq)
+      Map.get.go(V, MNode{pos, lo, hi}, d, k, rest, cq,
+        Map.get.bit(rest, Nat.mod(pos, 33n)))
 
 def Map.pop.lo(
   a, -V: Kind(a), pos: Nat, hi: Map<a, V>, r0: Map<a, V> & Maybe<a, V>
@@ -3186,14 +3307,17 @@ def Map.pop.hi(
     case hi2:
       (MNode{pos, lo, hi2}, r)
 
-def Map.pop.leaf(a, -V: Kind(a), v: V, r: (String & String) & Cmp) ->
+def Map.pop.leaf.eq(a, -V: Kind(a), v: V, k: String, found: Bool) ->
   Map<a, V> & Maybe<a, V>:
-  ((key2, k2), c) = r
-  match c:
-    case EQ{}:
+  match found:
+    case True{}:
       (MTip{}, Some{v})
-    case o:
-      (MLeaf{k2, v}, None{})
+    case False{}:
+      (MLeaf{k, v}, None{})
+
+def Map.pop.leaf(a, -V: Kind(a), v: V, key: String, +k: String) ->
+  Map<a, V> & Maybe<a, V>:
+  Map.pop.leaf.eq(a, V, v, k, String.eq(key, k))
 
 def Map.pop.go(-a: Quant, -V: Kind(a), node: Map<a, V>, kb: String & Bool) ->
   Map<a, V> & Maybe<a, V>:
@@ -3201,13 +3325,13 @@ def Map.pop.go(-a: Quant, -V: Kind(a), node: Map<a, V>, kb: String & Bool) ->
     case MNode{p, MTip{}, hi} Tuple{key, False{}}:
       (hi, None{})
     case MNode{p, MLeaf{k, v}, hi} Tuple{key, False{}}:
-      Map.pop.lo(a, V, p, hi, Map.pop.leaf(a, V, v, String.cmp(key, k)))
+      Map.pop.lo(a, V, p, hi, Map.pop.leaf(a, V, v, key, k))
     case MNode{p, MNode{+q, c, d}, hi} Tuple{key, False{}}:
       Map.pop.lo(a, V, p, hi, Map.pop.go(a, V, MNode{q, c, d}, Map.bit(key, q)))
     case MNode{p, lo, MTip{}} Tuple{key, True{}}:
       (lo, None{})
     case MNode{p, lo, MLeaf{k, v}} Tuple{key, True{}}:
-      Map.pop.hi(a, V, p, lo, Map.pop.leaf(a, V, v, String.cmp(key, k)))
+      Map.pop.hi(a, V, p, lo, Map.pop.leaf(a, V, v, key, k))
     case MNode{p, lo, MNode{+q, c, d}} Tuple{key, True{}}:
       Map.pop.hi(a, V, p, lo, Map.pop.go(a, V, MNode{q, c, d}, Map.bit(key, q)))
     case m _:
@@ -3218,7 +3342,7 @@ def Map.pop(-a: Quant, -V: Kind(a), m: Map<a, V>, key: String) -> Map<a, V> & Ma
     case MTip{}:
       (MTip{}, None{})
     case MLeaf{k, v}:
-      Map.pop.leaf(a, V, v, String.cmp(key, k))
+      Map.pop.leaf(a, V, v, key, k)
     case MNode{+pos, lo, hi}:
       Map.pop.go(a, V, MNode{pos, lo, hi}, Map.bit(key, pos))
 
@@ -3270,8 +3394,21 @@ def Map.from_list(a, -V: Kind(a), kvs: List<a, Sigma<&2, a, String, _ => V>>) ->
   Map<a, V>:
   Map.from_list.go(a, V, kvs, MTip{})
 
+def Map.union.into(a, -V: Kind(a), m: Map<a, V>, n: Map<a, V>) -> Map<a, V>:
+  match m:
+    case MTip{}:
+      n
+    case left:
+      Map.from_list.go(a, V, Map.to_list(a, V, n), left)
+
 def Map.union(a, -V: Kind(a), m: Map<a, V>, n: Map<a, V>) -> Map<a, V>:
-  Map.from_list.go(a, V, Map.to_list(a, V, n), m)
+  match n:
+    case MTip{}:
+      m
+    case MLeaf{k, v}:
+      Map.set(a, V, m, k, v)
+    case right:
+      Map.union.into(a, V, m, right)
 
 def Map.size(a, -V: Kind(a), m: Map<a, V>) -> Nat:
   match m:

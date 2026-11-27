@@ -179,11 +179,7 @@ class Open_Error extends Scope_Error {}
 
 // a live cycle found below the item at key, now a group: the emission
 // since key began is undone, and its caller retries (Reroute)
-class Regroup extends Error {
-  constructor(readonly key: string) {
-    super(key);
-  }
-}
+class Regroup extends Error {}
 class Reroute extends Error {}
 
 function oos(why: string, E = Scope_Error): never {
@@ -332,7 +328,7 @@ function root_emit(e: Safe, k: Name): [string[], string | null] {
     }
     // roots share a constant only where they give it the same model
     const f = chosen === null ? null : fit(e, k, chosen[j], F.A);
-    const key = String(j) + "\n" + tkey(F.A) + "\n" + (f === null ? "" : tkey(f));
+    const key = item_key(String(j), [F.A, f]);
     const kept = e.consts.get(key);
     if (kept !== undefined) {
       return at(B.Ref(kept));
@@ -382,13 +378,15 @@ function item_key(k: Name, cols: Cols): string {
   return [k, ...cols.flatMap((v) => v === null ? [] : [tkey(v)])].join("\n");
 }
 
+// Binder names do not affect term identity.
 function tkey(t: HTerm): string {
-  return B.term_key(B.term_lower(t));
+  return JSON.stringify(B.term_lower(t), function(k, v) {
+    return k === "s" || k === "k" && "i" in this ? undefined : v;
+  });
 }
 
-// the kernel name of book name k at cols: a Quant literal names itself;
-// a live name goes out now (before its caller), a dead one later. A live
-// name still going out (not its own) closes a live cycle: a group
+// The kernel name of k at cols. Emit live names before their callers;
+// defer dead names. A call to another unfinished item forms a group.
 function item_ref(e: Safe, k: Name, cols: Cols, live: boolean): string {
   const key = item_key(k, cols);
   const m = live && !e.seen.has(key) ? trail(e) : null;
@@ -413,7 +411,7 @@ function item_ref(e: Safe, k: Name, cols: Cols, live: boolean): string {
       if (x instanceof Scope_Error) {
         put(e, e.fail, n, x.message);
       }
-      if (x instanceof Regroup && x.key === key) {
+      if (x instanceof Regroup && x.message === key) {
         undo(e, m);
         throw new Reroute();
       }

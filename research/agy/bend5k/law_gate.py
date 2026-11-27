@@ -65,6 +65,7 @@ from pathlib import Path
 
 ROOT = Path("/home/ai/bend2_agy")
 DEFAULT_BEND5K = ROOT / "selfhost/build/agy/bend5k/bend5k_o2"
+UNSEEN_W19_DIR = Path(__file__).resolve().parent / "unseen_oracle_w19"
 
 # ---------------------------------------------------------------------------
 # Unrelated holdout workloads (fresh small Bend programs, independent of bench/)
@@ -1616,7 +1617,127 @@ def check_generality_matrix(
             )
         )
 
+    # 4. W19 Unseen Frontier (anti-overfitting Silicon Oracle laws on unseen_oracle_w19/)
+    if UNSEEN_W19_DIR.is_dir():
+        # 4a. Law 7: Dense .rodata LUT completeness (16-case Nat match with 0-arm & >2^31 U32s)
+        obj_u6 = tmpdir / f"unseen_u6_crc32_lut_{opt_flag}.o"
+        compile_to_obj(bend5k_bin, UNSEEN_W19_DIR / "u6_crc32_lut.bend", obj_u6, opt_flag, cpu_pin)
+        fu6 = disassemble_obj(obj_u6)
+        if "$direct.crc_nib" in fu6:
+            mu6 = analyze_func("$direct.crc_nib", fu6["$direct.crc_nib"])
+            has_ro = any(".rodata" in ln for ln in fu6["$direct.crc_nib"])
+            ok_u6 = has_ro and mu6.jcc_count < 10
+            cells.append(
+                MatrixCell(
+                    "W19 Unseen Law 7 (LUT)",
+                    "unseen:u6_crc_nib",
+                    ok_u6,
+                    f"rodata_lut={has_ro} jcc={mu6.jcc_count} (target: True, <10)",
+                )
+            )
+
+        # 4b. Law 8: XMM-resident F32 loop allocation (0 GP<->XMM movd in dot_row loop)
+        obj_u5 = tmpdir / f"unseen_u5_matvec_f32_{opt_flag}.o"
+        compile_to_obj(bend5k_bin, UNSEEN_W19_DIR / "u5_matvec_f32.bend", obj_u5, opt_flag, cpu_pin)
+        fu5 = disassemble_obj(obj_u5)
+        if "$direct.dot_row" in fu5:
+            # Count movd inside loop body (between first backward-branch target and back-branch)
+            dlines = fu5["$direct.dot_row"]
+            movd_cnt = sum(1 for ln in dlines if "\tmovd " in ln or "\tvmovd " in ln)
+            cells.append(
+                MatrixCell(
+                    "W19 Unseen Law 8 (XMM)",
+                    "unseen:u5_dot_row",
+                    movd_cnt == 0,
+                    f"movd={movd_cnt} (target: 0 GP<->XMM crossings in FP loop)",
+                )
+            )
+
+        # 4c. Law 10: Multi-arm TRMC (2-list merge_go: 0 recursive calls, 1-pass loop)
+        obj_u4 = tmpdir / f"unseen_u4_mergesort_{opt_flag}.o"
+        compile_to_obj(bend5k_bin, UNSEEN_W19_DIR / "u4_mergesort_list.bend", obj_u4, opt_flag, cpu_pin)
+        fu4 = disassemble_obj(obj_u4)
+        if "$direct.merge_go" in fu4:
+            mu4 = analyze_func("$direct.merge_go", fu4["$direct.merge_go"])
+            ok_u4 = mu4.self_rec_calls == 0 and mu4.has_back_branch
+            cells.append(
+                MatrixCell(
+                    "W19 Unseen Law 10 (TRMC)",
+                    "unseen:u4_merge_go",
+                    ok_u4,
+                    f"self_rec={mu4.self_rec_calls} back_branch={mu4.has_back_branch} (target: 0, True)",
+                )
+            )
+
     return cells
+
+
+def check_contract_l(
+    bend5k_bin: Path, tmpdir: Path, opt_flag: str, cpu_pin: str | None
+) -> ContractResult:
+    """Contract L (Unseen ADT VM Borrow Law, STRICT PASS):
+    Verifies that our unseen 8-way ADT bytecode VM (`u3_bytecode_vm.bend`)
+    emits a specialized `$bor.eval_prog` self-TCO loop with 0 `p111_rt_take`
+    calls and 0 hot `p111_rt_ctor` calls.
+    """
+    src = UNSEEN_W19_DIR / "u3_bytecode_vm.bend"
+    if not src.is_file():
+        return ContractResult("Contract L (Unseen VM Borrow)", "FAIL", f"missing {src}")
+    obj = tmpdir / f"contract_l_u3_vm_{opt_flag}.o"
+    compile_to_obj(bend5k_bin, src, obj, opt_flag, cpu_pin)
+    fns = disassemble_obj(obj)
+    if "$bor.eval_prog" not in fns:
+        return ContractResult(
+            "Contract L (Unseen VM Borrow)",
+            "FAIL",
+            "missing $bor.eval_prog (borrow specialization did not fire)",
+        )
+    m = analyze_func("$bor.eval_prog", fns["$bor.eval_prog"])
+    ok = (
+        m.total_take_calls == 0
+        and m.hot_ctor_calls == 0
+        and m.has_back_branch
+        and m.self_rec_calls == 0
+    )
+    detail = (
+        f"u3_bytecode_vm:$bor.eval_prog take={m.total_take_calls}, "
+        f"hot_ctor={m.hot_ctor_calls}, back_branch={m.has_back_branch}, rec={m.self_rec_calls}"
+    )
+    return ContractResult("Contract L (Unseen VM Borrow)", "PASS" if ok else "FAIL", detail)
+
+
+def check_contract_m(
+    bend5k_bin: Path, tmpdir: Path, opt_flag: str, cpu_pin: str | None
+) -> ContractResult:
+    """Contract M (Unseen Dual-Array F32 Hoist Law, STRICT PASS):
+    Verifies that our unseen dense F32 matvec (`u5_matvec_f32.bend`) hoists
+    BOTH `Array<F32>` handles into the preheader (`preheader_arr_decodes >= 2`)
+    with 0 inner-loop array decodes and 0 inner-loop `p111_rt_op` calls.
+    """
+    src = UNSEEN_W19_DIR / "u5_matvec_f32.bend"
+    if not src.is_file():
+        return ContractResult("Contract M (Unseen Dual-F32 Hoist)", "FAIL", f"missing {src}")
+    obj = tmpdir / f"contract_m_u5_matvec_{opt_flag}.o"
+    compile_to_obj(bend5k_bin, src, obj, opt_flag, cpu_pin)
+    fns = disassemble_obj(obj)
+    if "$direct.dot_row" not in fns:
+        return ContractResult(
+            "Contract M (Unseen Dual-F32 Hoist)",
+            "FAIL",
+            "missing $direct.dot_row",
+        )
+    m = analyze_func("$direct.dot_row", fns["$direct.dot_row"])
+    ok = (
+        m.preheader_arr_decodes >= 2
+        and m.loop_arr_decodes == 0
+        and m.loop_rt_op_calls == 0
+        and m.has_back_branch
+    )
+    detail = (
+        f"u5_matvec_f32:$direct.dot_row pre_dec={m.preheader_arr_decodes}, "
+        f"loop_dec={m.loop_arr_decodes}, loop_op={m.loop_rt_op_calls}, back={m.has_back_branch}"
+    )
+    return ContractResult("Contract M (Unseen Dual-F32 Hoist)", "PASS" if ok else "FAIL", detail)
 
 
 def run_fault_injection_self_test(
@@ -1628,13 +1749,15 @@ def run_fault_injection_self_test(
     print("=== FAULT-INJECTION SELF-TEST (expecting EVERY contract to FAIL) ===")
     all_tripped = True
 
-    # 1. Contracts A, B, C, H, I at -O0
+    # 1. Contracts A, B, C, H, I, L, M at -O0
     for fn in (
         check_contract_a,
         check_contract_b,
         check_contract_c,
         check_contract_h,
         check_contract_i,
+        check_contract_l,
+        check_contract_m,
     ):
         res = fn(bend5k_bin, tmpdir, "-O0", cpu_pin)
         tripped = res.status == "FAIL"
@@ -1797,7 +1920,7 @@ def run_fault_injection_self_test(
             all_tripped = False
 
     print(
-        f"=== FAULT-INJECTION RESULT: {'PASS (all 9 strict contracts tripped)' if all_tripped else 'FAIL'} ==="
+        f"=== FAULT-INJECTION RESULT: {'PASS (all 11 strict contracts tripped)' if all_tripped else 'FAIL'} ==="
     )
     return all_tripped
 
@@ -1929,6 +2052,8 @@ def main() -> int:
             check_contract_i(bend5k_bin, tmpdir, "-O2", cpu_pin),
             check_contract_j(bend5k_bin, tmpdir, "-O2", cpu_pin),
             check_contract_k(bend5k_bin, tmpdir, "-O2", cpu_pin),
+            check_contract_l(bend5k_bin, tmpdir, "-O2", cpu_pin),
+            check_contract_m(bend5k_bin, tmpdir, "-O2", cpu_pin),
         ]
 
         failed = False

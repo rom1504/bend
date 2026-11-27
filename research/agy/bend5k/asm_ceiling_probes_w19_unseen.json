@@ -1,0 +1,496 @@
+{
+  "schema": "agy.bend5k.asm_ceiling_probes.v19_unseen",
+  "host_pin": "taskset -c 0",
+  "host_cpu": "Intel(R) Xeon(R) CPU E3-1245 V2 @ 3.40GHz (Ivy Bridge)",
+  "host_isa": [
+    "sse4_1",
+    "sse4_2",
+    "popcnt",
+    "avx"
+  ],
+  "compiler_baseline": "selfhost/build/agy/bend5k/bend5k_o2 -O2 (Proven-18, base commit bde38487)",
+  "c_baselines": {
+    "gcc10_o2": "gcc-10 -O2 -ffp-contract=off (direct paired 5-run median on CPU 0)",
+    "gcc10_o3_native": "gcc-10 -O3 -march=native -ffp-contract=off (direct paired 5-run median on CPU 0)"
+  },
+  "measurement_note": "All 6 benchmarks live in research/agy/bend5k/unseen_oracle_w19/, are brand-new programs outside bench/runtime/* and native45, pass upstream locked_bun.sh --check-only, and produce bit-identical stdout checksums across Proven-18 bend5k_o2 -O2, gcc-10 -O2, and gcc-10 -O3 -march=native. Every Silicon Oracle probe redirects ONLY the target symbol(s) inside the unmodified Proven-18 bend5k_o2 -O2 ELF64 .o via SHT_SYMTAB SHN_UNDEF redirection to a hand-edited GAS .s / C-intrinsic patch object, linked against the unmodified runtime-agy.o, with 5-run medians on CPU 0 and exact checksum verification.",
+  "unseen_suite_baseline": [
+    {
+      "name": "u1_stencil2d",
+      "checksum": "2935643919",
+      "bend_ms": 170.76,
+      "c_o2_ms": 23.58,
+      "c_o3_native_ms": 9.07,
+      "vs_c_o2": 7.242,
+      "vs_c_o3_native": 18.827,
+      "raw_bend_ms": [
+        168.61,
+        168.58,
+        170.76,
+        173.78,
+        173.89
+      ],
+      "raw_c_o2_ms": [
+        23.58,
+        23.87,
+        23.67,
+        23.22,
+        22.98
+      ],
+      "raw_c_o3_native_ms": [
+        9.17,
+        9.24,
+        9.04,
+        9.07,
+        9.07
+      ]
+    },
+    {
+      "name": "u2_radix_hist",
+      "checksum": "3235176661",
+      "bend_ms": 144.93,
+      "c_o2_ms": 65.45,
+      "c_o3_native_ms": 61.16,
+      "vs_c_o2": 2.214,
+      "vs_c_o3_native": 2.37,
+      "raw_bend_ms": [
+        142.63,
+        144.93,
+        146.69,
+        148.34,
+        143.32
+      ],
+      "raw_c_o2_ms": [
+        66.53,
+        65.97,
+        65.45,
+        65.05,
+        65.31
+      ],
+      "raw_c_o3_native_ms": [
+        61.16,
+        61.24,
+        61.3,
+        60.99,
+        61.07
+      ]
+    },
+    {
+      "name": "u3_bytecode_vm",
+      "checksum": "1917154746",
+      "bend_ms": 143.45,
+      "c_o2_ms": 168.27,
+      "c_o3_native_ms": 166.39,
+      "vs_c_o2": 0.852,
+      "vs_c_o3_native": 0.862,
+      "raw_bend_ms": [
+        143.72,
+        143.45,
+        142.98,
+        145.01,
+        143.24
+      ],
+      "raw_c_o2_ms": [
+        165.0,
+        165.48,
+        168.81,
+        168.27,
+        172.73
+      ],
+      "raw_c_o3_native_ms": [
+        165.1,
+        166.67,
+        166.39,
+        165.68,
+        167.51
+      ]
+    },
+    {
+      "name": "u4_mergesort_list",
+      "checksum": "3048377415",
+      "bend_ms": 112.48,
+      "c_o2_ms": 26.74,
+      "c_o3_native_ms": 25.88,
+      "vs_c_o2": 4.206,
+      "vs_c_o3_native": 4.346,
+      "raw_bend_ms": [
+        111.93,
+        120.2,
+        112.48,
+        122.16,
+        112.1
+      ],
+      "raw_c_o2_ms": [
+        25.68,
+        26.91,
+        27.0,
+        26.74,
+        25.64
+      ],
+      "raw_c_o3_native_ms": [
+        26.06,
+        25.8,
+        25.9,
+        25.88,
+        25.47
+      ]
+    },
+    {
+      "name": "u5_matvec_f32",
+      "checksum": "3932717255",
+      "bend_ms": 165.29,
+      "c_o2_ms": 44.21,
+      "c_o3_native_ms": 40.13,
+      "vs_c_o2": 3.739,
+      "vs_c_o3_native": 4.119,
+      "raw_bend_ms": [
+        165.21,
+        165.08,
+        165.52,
+        165.29,
+        192.51
+      ],
+      "raw_c_o2_ms": [
+        47.49,
+        47.89,
+        41.49,
+        42.98,
+        44.21
+      ],
+      "raw_c_o3_native_ms": [
+        40.73,
+        40.19,
+        39.97,
+        40.05,
+        40.13
+      ]
+    },
+    {
+      "name": "u6_crc32_lut",
+      "checksum": "798446871",
+      "bend_ms": 308.25,
+      "c_o2_ms": 59.09,
+      "c_o3_native_ms": 59.35,
+      "vs_c_o2": 5.217,
+      "vs_c_o3_native": 5.194,
+      "raw_bend_ms": [
+        320.2,
+        307.93,
+        309.41,
+        305.53,
+        308.25
+      ],
+      "raw_c_o2_ms": [
+        59.82,
+        59.09,
+        58.97,
+        58.68,
+        59.54
+      ],
+      "raw_c_o3_native_ms": [
+        60.88,
+        59.55,
+        59.31,
+        59.35,
+        58.88
+      ]
+    }
+  ],
+  "probes": [
+    {
+      "id": "1",
+      "benchmark": "research/agy/bend5k/unseen_oracle_w19/u1_stencil2d.bend (64x64 F32 5-point Jacobi heat stencil, 4000 ping-pong steps)",
+      "checksum": "2935643919",
+      "baseline_ms": 170.76,
+      "c_o2_ms": 23.58,
+      "c_o3_native_ms": 9.07,
+      "baseline_vs_c_o2": 7.242,
+      "baseline_vs_c_o3_native": 18.827,
+      "raw_baseline_ms": [
+        168.61,
+        168.58,
+        170.76,
+        173.78,
+        173.89
+      ],
+      "raw_c_o2_ms": [
+        23.58,
+        23.87,
+        23.67,
+        23.22,
+        22.98
+      ],
+      "raw_c_o3_native_ms": [
+        9.17,
+        9.24,
+        9.04,
+        9.07,
+        9.07
+      ],
+      "primary_mechanism": "Proven-18 emits 917 lines / 85 spills / 87 jcc in $direct.stencil_row with 0 SIMD ops: (1) single-constructor record GPair{src, dst} carried across self-TCO loop is unboxed and re-boxed with p111_program/p111_cid_hot checks on EVERY pixel; (2) dst Array<F32> handle tag/shift/base is re-decoded on EVERY pixel instead of hoisted to preheader; (3) F32 values bounce through GP registers via movd and constants 0.5/0.125 are reloaded per cell; (4) scalar 1-wide execution over 64-bit array slots vs gcc-10 -O3 -march=native 8-wide AVX1.",
+      "variants": [
+        {
+          "name": "a_unboxed_hoisted_scalar_stencil_row",
+          "redirected_symbol": "$direct.stencil_row",
+          "ms": 27.67,
+          "vs_c_o2": 1.173,
+          "vs_c_o3_native": 3.051,
+          "speedup_vs_base": 6.171,
+          "pct_saved": 83.8,
+          "raw_ms": [
+            27.82,
+            27.68,
+            27.57,
+            27.56,
+            27.67
+          ],
+          "note": "6.17x speedup (170.76ms -> 27.67ms, 1.173x vs gcc-10 -O2) purely from unboxing GPair{src,dst} loop-carry + hoisting both Array<F32> handles + XMM-resident scalar F32."
+        },
+        {
+          "name": "b_sse41_4wide_64bit_slot_stencil_row",
+          "redirected_symbol": "$direct.stencil_row",
+          "ms": 17.32,
+          "vs_c_o2": 0.735,
+          "vs_c_o3_native": 1.91,
+          "speedup_vs_base": 9.859,
+          "pct_saved": 89.9,
+          "raw_ms": [
+            17.31,
+            17.22,
+            17.36,
+            17.32,
+            18.04
+          ],
+          "note": "9.86x speedup (170.76ms -> 17.32ms, BEATS gcc-10 -O2 at 0.735x!) using 4-wide SSE (movups + shufps $0x88 pack / unpcklps+unpckhps scatter) over Bend's existing 64-bit slots with 0 ABI change."
+        },
+        {
+          "name": "c_packed_f32_avx1_8wide_run_steps",
+          "redirected_symbol": "$direct.run_steps",
+          "ms": 10.9,
+          "vs_c_o2": 0.462,
+          "vs_c_o3_native": 1.202,
+          "speedup_vs_base": 15.666,
+          "pct_saved": 93.6,
+          "raw_ms": [
+            10.96,
+            10.36,
+            10.48,
+            11.4,
+            10.9
+          ],
+          "note": "15.67x speedup (170.76ms -> 10.90ms, 0.462x O2, 1.202x O3-native) via non-escaping packed float[4096] stack promotion (32 KB L1D-resident) + 8-wide AVX1 stencil."
+        }
+      ],
+      "general_compiler_pass": "Tier 1 (6.17x): Unbox single-constructor record parameters across self-TCO loops + extend Linear-Array Hoist (Law 4) to ALL arrays unpacked from loop-carried records (src + dst) + keep F32 SSA values in XMM registers. Tier 2 (9.86x-15.67x): 4-wide SSE strided F32 loop vectorization and non-escaping local Array<F32> packed float[N] promotion + 8-wide AVX1.",
+      "verdict": "STRONG GO (6.17x from Tier 1 alone; 9.86x beating O2 with 0 ABI change; 15.67x -> 1.20x O3-native with packed AVX1)",
+      "estimated_loc": "~90 LOC Tier 1 (record loop-carry unboxing + multi-array hoist); ~120 LOC Tier 2 (F32 SIMD / packed local array)"
+    },
+    {
+      "id": "2",
+      "benchmark": "research/agy/bend5k/unseen_oracle_w19/u6_crc32_lut.bend (65536-byte nibble-table CRC32, 200 passes = 39.3M LUT lookups)",
+      "checksum": "798446871",
+      "baseline_ms": 308.25,
+      "c_o2_ms": 59.09,
+      "c_o3_native_ms": 59.35,
+      "baseline_vs_c_o2": 5.217,
+      "baseline_vs_c_o3_native": 5.194,
+      "raw_baseline_ms": [
+        320.2,
+        307.93,
+        309.41,
+        305.53,
+        308.25
+      ],
+      "raw_c_o2_ms": [
+        59.82,
+        59.09,
+        58.97,
+        58.68,
+        59.54
+      ],
+      "raw_c_o3_native_ms": [
+        60.88,
+        59.55,
+        59.31,
+        59.35,
+        58.88
+      ],
+      "primary_mechanism": "ANTI-OVERFITTING CATCH: Proven-18's .rodata LUT pass (Contract C) FAILED to fire on unseen $direct.crc_nib (16-case Nat match with case 0n: 0 and unsigned U32 values > 2^31), emitting a 15-branch linear cmp/jne chain (rodata=0, jcc=15) AND failing to inline $direct.crc_nib into $direct.crc_scan. 39.3M unpredictable branchy calls dominate runtime.",
+      "variants": [
+        {
+          "name": "a_rodata_lut_in_crc_nib",
+          "redirected_symbol": "$direct.crc_nib",
+          "ms": 98.01,
+          "vs_c_o2": 1.659,
+          "vs_c_o3_native": 1.651,
+          "speedup_vs_base": 3.145,
+          "pct_saved": 68.2,
+          "raw_ms": [
+            98.34,
+            97.72,
+            98.24,
+            98.01,
+            97.73
+          ],
+          "note": "3.15x speedup (308.25ms -> 98.01ms) purely from lowering $direct.crc_nib to a 4-instruction .rodata RIP-relative table lookup (still out-of-line call)."
+        },
+        {
+          "name": "b_inline_rodata_lut_in_crc_scan",
+          "redirected_symbol": "$direct.crc_scan",
+          "ms": 60.54,
+          "vs_c_o2": 1.025,
+          "vs_c_o3_native": 1.02,
+          "speedup_vs_base": 5.092,
+          "pct_saved": 80.4,
+          "raw_ms": [
+            60.48,
+            61.22,
+            60.31,
+            60.54,
+            60.84
+          ],
+          "note": "5.09x speedup (308.25ms -> 60.54ms, 1.020x vs gcc-10 -O3 -march=native \u2014 MATCHING C!) by inlining the .rodata LUT lookup directly into the hoisted $direct.crc_scan loop."
+        }
+      ],
+      "general_compiler_pass": "Generalize .rodata LUT lowering (Law C) to ALL dense Nat-match constant tables (including 0-valued arms, >=16 arms, and full 32-bit unsigned U32 constants up to 0xFFFFFFFF) + inline leaf .rodata LUT functions into hot loop callers.",
+      "verdict": "STRONG GO (5.09x speedup -> 1.020x O3-native, ~35 LOC general fix!)",
+      "estimated_loc": "~35 LOC (fix .rodata LUT recognizer edge cases + inline leaf LUT)"
+    },
+    {
+      "id": "3",
+      "benchmark": "research/agy/bend5k/unseen_oracle_w19/u5_matvec_f32.bend (512x512 dense F32 matvec, 180 iterations = 47.2M FMAs)",
+      "checksum": "3932717255",
+      "baseline_ms": 165.29,
+      "c_o2_ms": 44.21,
+      "c_o3_native_ms": 40.13,
+      "baseline_vs_c_o2": 3.739,
+      "baseline_vs_c_o3_native": 4.119,
+      "raw_baseline_ms": [
+        165.21,
+        165.08,
+        165.52,
+        165.29,
+        192.51
+      ],
+      "raw_c_o2_ms": [
+        47.49,
+        47.89,
+        41.49,
+        42.98,
+        44.21
+      ],
+      "raw_c_o3_native_ms": [
+        40.73,
+        40.19,
+        39.97,
+        40.05,
+        40.13
+      ],
+      "primary_mechanism": "ANTI-OVERFITTING CATCH: Even though Proven-18 hoisted both Array<F32> handles in dot_row and inlined dot_row into matvec_rows, bend5k allocates F32 loop-carried accumulators in GP registers (%ebx) and loads F32 elements via GP mov + movd -> 4 GP<->XMM movd domain crossings per iteration, placing TWO movds directly on the 3-cycle addss critical path (stretching 3 cycles/iter to ~12 cycles/iter) + 98 spills in matvec_rows.",
+      "variants": [
+        {
+          "name": "a_xmm_resident_scalar_matvec_rows",
+          "redirected_symbol": "$direct.matvec_rows",
+          "ms": 43.76,
+          "vs_c_o2": 0.99,
+          "vs_c_o3_native": 1.09,
+          "speedup_vs_base": 3.777,
+          "pct_saved": 73.5,
+          "raw_ms": [
+            44.15,
+            43.55,
+            43.57,
+            43.76,
+            43.77
+          ],
+          "note": "3.78x speedup (165.29ms -> 43.76ms, BEATS gcc-10 -O2 at 0.990x and hits 1.090x O3-native!) purely from keeping F32 accumulator in %xmm0 (0 movd in loop) + direct movss mem loads."
+        },
+        {
+          "name": "b_unroll4_xmm_strict_ieee_matvec_rows",
+          "redirected_symbol": "$direct.matvec_rows",
+          "ms": 43.82,
+          "vs_c_o2": 0.991,
+          "vs_c_o3_native": 1.092,
+          "speedup_vs_base": 3.772,
+          "pct_saved": 73.5,
+          "raw_ms": [
+            43.71,
+            43.82,
+            43.57,
+            43.93,
+            44.02
+          ],
+          "note": "3.77x speedup (43.82ms, 0.991x O2, 1.092x O3-native). Confirms Variant A already hits 95% of the Ivy Bridge 3-cycle strict IEEE-754 addss silicon floor (47.18M * 3 / 3.4GHz = 41.6ms)."
+        }
+      ],
+      "general_compiler_pass": "XMM-Resident F32 Register Allocation Law: allocate F32 SSA values and loop-carried F32 accumulators in XMM registers with direct movss/mulss/addss memory operands (0 GP<->XMM movd inside FP loops).",
+      "verdict": "STRONG GO (3.78x speedup -> 0.990x O2, 1.090x O3-native from scalar XMM regalloc alone!)",
+      "estimated_loc": "~70 LOC (XMM register class for F32 SSA values + direct movss load/store)"
+    },
+    {
+      "id": "4",
+      "benchmark": "research/agy/bend5k/unseen_oracle_w19/u4_mergesort_list.bend (pure functional List<&2, U32> mergesort, N=8192 x 20 rounds)",
+      "checksum": "3048377415",
+      "baseline_ms": 112.48,
+      "c_o2_ms": 26.74,
+      "c_o3_native_ms": 25.88,
+      "baseline_vs_c_o2": 4.206,
+      "baseline_vs_c_o3_native": 4.346,
+      "raw_baseline_ms": [
+        111.93,
+        120.2,
+        112.48,
+        122.16,
+        112.1
+      ],
+      "raw_c_o2_ms": [
+        25.68,
+        26.91,
+        27.0,
+        26.74,
+        25.64
+      ],
+      "raw_c_o3_native_ms": [
+        26.06,
+        25.8,
+        25.9,
+        25.88,
+        25.47
+      ],
+      "primary_mechanism": "ANTI-OVERFITTING CATCH: Proven-18's TRMC pass (Law 5 / Contract I) only fires on simple single-list List.map/filter shapes and FAILED on 2-list multi-arm $direct.merge_go (1811 lines, 2 recursive $direct.merge_go calls, 101 spills, heap-allocating MCheck/MPick state wrappers and new Con cells on every comparison instead of relinking unique Con nodes).",
+      "variants": [
+        {
+          "name": "a_trmc_1pass_reuse_merge_go",
+          "redirected_symbol": "$direct.merge_go",
+          "ms": 34.43,
+          "vs_c_o2": 1.288,
+          "vs_c_o3_native": 1.33,
+          "speedup_vs_base": 3.267,
+          "pct_saved": 69.4,
+          "raw_ms": [
+            34.83,
+            34.43,
+            34.25,
+            34.54,
+            34.32
+          ],
+          "note": "3.27x speedup (112.48ms -> 34.43ms, 1.288x O2, 1.330x O3-native) via 1-pass multi-arm TRMC IMutField tail-pointer loop + in-place unique Con node reuse (0 recursion, 0 alloc)."
+        }
+      ],
+      "general_compiler_pass": "Generalize TRMC (Law 5) to multi-arm / nested-match constructor-tail recursion (2-list merge) + transient state-ADT unboxing + unique Con node in-place IReuse (tail->tail = next).",
+      "verdict": "STRONG GO (3.27x speedup -> 1.330x O3-native; eliminates recursive stack & allocation)",
+      "estimated_loc": "~85 LOC (multi-arm TRMC + unique Con reuse in tail-pointer loop)"
+    }
+  ],
+  "anti_overfitting_summary": {
+    "already_beating_o3_native": {
+      "u3_bytecode_vm": "0.86x vs gcc-10 -O3 -march=native (143.45ms vs 166.39ms) \u2014 confirms Proven-18 borrow + TSwitch jump-table laws genuinely generalize to unseen ADT interpreters."
+    },
+    "top_new_general_laws_discovered": [
+      "Law 7 (Dense .rodata LUT Completeness & Leaf Inlining): Fix .rodata LUT lowering when arm 0 returns 0, table size >= 16, or values > 2^31 (u6_crc32_lut: 5.09x -> 1.02x O3-native).",
+      "Law 8 (XMM-Resident F32 Loop Allocation): Keep F32 SSA values and loop-carried accumulators in XMM registers with 0 GP<->XMM movd inside hot loops (u5_matvec_f32: 3.78x -> 0.99x O2 / 1.09x O3-native; also accelerates u1_stencil2d).",
+      "Law 9 (Record Loop-Carry Unboxing + Multi-Array Hoist + F32 SIMD): Unbox single-constructor record state across self-TCO loops and hoist all unpacked Array<T> handles (u1_stencil2d: 6.17x scalar, 9.86x SSE4.1 64-bit slots, 15.67x packed AVX1).",
+      "Law 10 (Multi-Arm TRMC + Unique Con Reuse): Extend 1-pass TRMC IMutField to multi-arm nested matches like 2-list merge (u4_mergesort_list: 3.27x -> 1.33x O3-native)."
+    ]
+  }
+}

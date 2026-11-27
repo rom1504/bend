@@ -1126,6 +1126,286 @@
       "category": "flatten_exhaustiveness",
       "expect_upstream": "accept",
       "code": "import Base\ndef f(a: Bool, b: Bool, c: Bool) -> U32:\n  match a b c:\n    case True{} _ _: 1\n    case False{} True{} _: 2\n    case False{} False{} True{}: 3\n    case False{} False{} False{}: 4\ndef main() -> U32:\n  f(False{}, False{}, False{})\n"
+    },
+    {
+      "id": "l21_neg_binder_name_capture",
+      "group": "l21_soundness_neg",
+      "category": "dependent_proof",
+      "expect_upstream": "reject",
+      "file": "tests/check/binder_name_capture.bend"
+    },
+    {
+      "id": "l21_neg_capture_soundness",
+      "group": "l21_soundness_neg",
+      "category": "dependent_proof",
+      "expect_upstream": "reject",
+      "file": "tests/check/capture_soundness.bend"
+    },
+    {
+      "id": "l21_neg_comp_splice_tuple_goal",
+      "group": "l21_soundness_neg",
+      "category": "flatten_exhaustiveness",
+      "expect_upstream": "reject",
+      "file": "tests/check/comp_splice_tuple_goal.bend"
+    },
+    {
+      "id": "l21_neg_cop_inline_witness_002",
+      "group": "l21_soundness_neg",
+      "category": "grade_system",
+      "expect_upstream": "reject",
+      "file": "tests/check/cop_inline_witness_002.bend"
+    },
+    {
+      "id": "l21_neg_cop_let_formation",
+      "group": "l21_soundness_neg",
+      "category": "grade_system",
+      "expect_upstream": "reject",
+      "file": "tests/check/cop_let_formation.bend"
+    },
+    {
+      "id": "l21_neg_data_bound_instantiation",
+      "group": "l21_soundness_neg",
+      "category": "grade_system",
+      "expect_upstream": "reject",
+      "file": "tests/check/data_bound_instantiation.bend"
+    },
+    {
+      "id": "l21_neg_data_self_ref",
+      "group": "l21_soundness_neg",
+      "category": "grade_system",
+      "expect_upstream": "reject",
+      "file": "tests/check/data_self_ref.bend"
+    },
+    {
+      "id": "l21_neg_def_type_args",
+      "group": "l21_soundness_neg",
+      "category": "decl_hygiene",
+      "expect_upstream": "reject",
+      "file": "tests/check/def_type_args.bend"
+    },
+    {
+      "id": "l21_neg_def_type_args_none",
+      "group": "l21_soundness_neg",
+      "category": "decl_hygiene",
+      "expect_upstream": "reject",
+      "file": "tests/check/def_type_args_none.bend"
+    },
+    {
+      "id": "l21_neg_default_arm_family",
+      "group": "l21_soundness_neg",
+      "category": "dependent_proof",
+      "expect_upstream": "reject",
+      "file": "tests/check/default_arm_family.bend"
+    },
+    {
+      "id": "l21_neg_do_header_quantity_span",
+      "group": "l21_soundness_neg",
+      "category": "grade_system",
+      "expect_upstream": "reject",
+      "file": "tests/check/do_header_quantity_span.bend"
+    },
+    {
+      "id": "l21_neg_do_header_typed",
+      "group": "l21_soundness_neg",
+      "category": "decl_hygiene",
+      "expect_upstream": "reject",
+      "file": "tests/check/do_header_typed.bend"
+    },
+    {
+      "id": "l21_neg_error_window_inline_exists",
+      "group": "l21_soundness_neg",
+      "category": "decl_hygiene",
+      "expect_upstream": "reject",
+      "file": "tests/check/error_window_inline_exists.bend"
+    },
+    {
+      "id": "l21_neg_let_dependent_domain_bad",
+      "group": "l21_soundness_neg",
+      "category": "grade_system",
+      "expect_upstream": "reject",
+      "file": "tests/check/let_dependent_domain_bad.bend"
+    },
+    {
+      "id": "l21_neg_let_plus_dependent_type",
+      "group": "l21_soundness_neg",
+      "category": "grade_system",
+      "expect_upstream": "reject",
+      "file": "tests/check/let_plus_dependent_type.bend"
+    },
+    {
+      "id": "l21_neg_meet_order_rejects",
+      "group": "l21_soundness_neg",
+      "category": "grade_system",
+      "expect_upstream": "reject",
+      "file": "tests/check/meet_order_rejects.bend"
+    },
+    {
+      "id": "l21_neg_meet_stuck_pending_ref",
+      "group": "l21_soundness_neg",
+      "category": "dependent_proof",
+      "expect_upstream": "reject",
+      "file": "tests/check/meet_stuck_pending_ref.bend"
+    },
+    {
+      "id": "l21_neg_missing_ih_rewrite",
+      "group": "l21_soundness_neg",
+      "category": "dependent_proof",
+      "expect_upstream": "reject",
+      "file": "tests/check/missing_ih_rewrite.bend"
+    },
+    {
+      "id": "l21_neg_nested_field_bound",
+      "group": "l21_soundness_neg",
+      "category": "grade_system",
+      "expect_upstream": "reject",
+      "file": "tests/check/nested_field_bound.bend"
+    },
+    {
+      "id": "l21_neg_relation_install_lock",
+      "group": "l21_soundness_neg",
+      "category": "parse_lexer",
+      "expect_upstream": "reject",
+      "file": "tests/check/relation_install_lock.bend"
+    },
+    {
+      "id": "l21_neg_switch_miss_guard",
+      "group": "l21_soundness_neg",
+      "category": "dependent_proof",
+      "expect_upstream": "reject",
+      "file": "tests/check/switch_miss_guard.bend"
+    },
+    {
+      "id": "l21_neg_template_key_empty",
+      "group": "l21_soundness_neg",
+      "category": "comptime_soundness",
+      "expect_upstream": "reject",
+      "file": "tests/check/template_key_empty.bend"
+    },
+    {
+      "id": "l21_neg_template_key_nan",
+      "group": "l21_soundness_neg",
+      "category": "comptime_soundness",
+      "expect_upstream": "reject",
+      "file": "tests/check/template_key_nan.bend"
+    },
+    {
+      "id": "l21_neg_template_ns_late",
+      "group": "l21_soundness_neg",
+      "category": "comptime_soundness",
+      "expect_upstream": "reject",
+      "file": "tests/check/template_ns_late.bend"
+    },
+    {
+      "id": "l21_neg_typed_let_mismatch",
+      "group": "l21_soundness_neg",
+      "category": "decl_hygiene",
+      "expect_upstream": "reject",
+      "file": "tests/check/typed_let_mismatch.bend"
+    },
+    {
+      "id": "l21_neg_unsafe_relies",
+      "group": "l21_soundness_neg",
+      "category": "unsafe_propagation",
+      "expect_upstream": "reject",
+      "file": "tests/check/unsafe_relies.bend"
+    },
+    {
+      "id": "l21_neg_unsafe_kind",
+      "group": "l21_soundness_neg",
+      "category": "unsafe_propagation",
+      "expect_upstream": "reject",
+      "file": "tests/check/unsafe_kind.bend"
+    },
+    {
+      "id": "l21_neg_import_unsafe_unused",
+      "group": "l21_soundness_neg",
+      "category": "unsafe_propagation",
+      "expect_upstream": "reject",
+      "file": "tests/import/unsafe_unused.bend"
+    },
+    {
+      "id": "l21_neg_flatten_consumed_col",
+      "group": "l21_soundness_neg",
+      "category": "flatten_exhaustiveness",
+      "expect_upstream": "reject",
+      "file": "tests/flatten/consumed_column_error_002.bend"
+    },
+    {
+      "id": "l21_neg_flatten_destructure_let",
+      "group": "l21_soundness_neg",
+      "category": "flatten_exhaustiveness",
+      "expect_upstream": "reject",
+      "file": "tests/flatten/destructure_let_001.bend"
+    },
+    {
+      "id": "l21_neg_flatten_match_as_term",
+      "group": "l21_soundness_neg",
+      "category": "flatten_exhaustiveness",
+      "expect_upstream": "reject",
+      "file": "tests/flatten/match_as_term.bend"
+    },
+    {
+      "id": "l21_neg_page_deep_list_walk",
+      "group": "l21_soundness_neg",
+      "category": "dependent_proof",
+      "expect_upstream": "reject",
+      "file": "tests/page/deep_list_walk.bend"
+    },
+    {
+      "id": "l21_neg_parse_rewrite_ctor_brace",
+      "group": "l21_soundness_neg",
+      "category": "dependent_proof",
+      "expect_upstream": "reject",
+      "file": "tests/parse/rewrite_ctor_brace.bend"
+    },
+    {
+      "id": "l21_neg_proof_goal_ladder_015",
+      "group": "l21_soundness_neg",
+      "category": "dependent_proof",
+      "expect_upstream": "reject",
+      "file": "tests/proof/goal_ladder_state_015.bend"
+    },
+    {
+      "id": "l21_neg_state_ctor_stuck_goal",
+      "group": "l21_soundness_neg",
+      "category": "dependent_proof",
+      "expect_upstream": "reject",
+      "file": "tests/state/ctor_stuck_goal.bend"
+    },
+    {
+      "id": "l21_neg_state_rewrite_goal",
+      "group": "l21_soundness_neg",
+      "category": "dependent_proof",
+      "expect_upstream": "reject",
+      "file": "tests/state/rewrite_goal.bend"
+    },
+    {
+      "id": "l21_pos_function_congruence",
+      "group": "l21_soundness_pos",
+      "category": "dependent_proof",
+      "expect_upstream": "accept",
+      "file": "tests/proof/function_congruence.bend"
+    },
+    {
+      "id": "l21_pos_erased_apply",
+      "group": "l21_soundness_pos",
+      "category": "erasure_soundness",
+      "expect_upstream": "accept",
+      "file": "tests/compile/erased_apply.bend"
+    },
+    {
+      "id": "l21_pos_list_reverse_concat",
+      "group": "l21_soundness_pos",
+      "category": "dependent_proof",
+      "expect_upstream": "accept",
+      "file": "tests/proof/list_reverse_concat.bend"
+    },
+    {
+      "id": "l21_pos_sugar_ops",
+      "group": "l21_soundness_pos",
+      "category": "parse_lexer",
+      "expect_upstream": "accept",
+      "file": "tests/base/sugar_ops.bend"
     }
   ]
 }

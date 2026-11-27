@@ -2386,21 +2386,33 @@ def opt_ru_put(ok: Bool, +tgt: U32, ps: List<&2, ReuseTok>, pmap: RaVec<List<&2,
   match ok:
     case True{}: ra_vec_set(List<&2, ReuseTok>, 5n, tgt, ps, pmap)
     case False{}: pmap
+def opt_ru_ops_has_ctor(ops: List<&2, IrOp>) -> Bool:
+  match ops:
+    case Nil{}: False{}
+    case Con{ICtor{_, _, _}, _}: True{}
+    case Con{_, t}: opt_ru_ops_has_ctor(t)
+def opt_ru_blk_has_ctor(mb: Maybe<&2, IrBlock>) -> Bool:
+  match mb:
+    case Some{IrBlock{_, ops, _}}: opt_ru_ops_has_ctor(ops)
+    case None{}: False{}
 def opt_ru_prop(+preds: U32Map, +jmps: U32Map, +bmap: RaVec<Maybe<&2, IrBlock>>, +id: U32, term: IrTerm, ps: List<&2, ReuseTok>, +pmap: RaVec<List<&2, ReuseTok>>) -> RaVec<List<&2, ReuseTok>>:
   match term ps:
     case _ Nil{}: pmap
     case TJmp{+tgt} Con{h, t}:
       ok = Bool.and(U32.is_lt(tgt, 1024), Bool.and(U32.is_ne(tgt, id), U32.is_eq(um_get(preds, tgt), 1)))
       opt_ru_put(ok, tgt, Con{h, t}, pmap)
-    case TBr{_, +tb, +fb} Con{h, t}:
+    case TBr{_, +tb, +fb} Con{+h, +t}:
       +ok_t = Bool.and(U32.is_lt(tb, 1024), Bool.and(U32.is_ne(tb, id), U32.is_eq(um_get(preds, tb), 1)))
       +ok_f = Bool.and(U32.is_lt(fb, 1024), Bool.and(U32.is_ne(fb, id), U32.is_eq(um_get(preds, fb), 1)))
       +jt = um_get(jmps, tb)
       +jf = um_get(jmps, fb)
       +m = U32.sub(jt, 1)
-      ok_m = Bool.and(ok_t, Bool.and(ok_f, Bool.and(U32.is_ne(tb, fb), Bool.and(U32.is_ne(jt, 0), Bool.and(U32.is_eq(jt, jf), Bool.and(U32.is_lt(m, 1024), Bool.and(U32.is_ne(m, id), U32.is_eq(um_get(preds, m), 2))))))))
-      ud = opt_ru_blk_ud(ra_vec_get(Maybe<&2, IrBlock>, 5n, None{}, fb, bmap), opt_ru_blk_ud(ra_vec_get(Maybe<&2, IrBlock>, 5n, None{}, tb, bmap), UM0{}))
-      opt_ru_put(ok_m, m, opt_ru_filter_m(ud, Con{h, t}), pmap)
+      +mbt = ra_vec_get(Maybe<&2, IrBlock>, 5n, None{}, tb, bmap)
+      +mbf = ra_vec_get(Maybe<&2, IrBlock>, 5n, None{}, fb, bmap)
+      +has_c = Bool.or(opt_ru_blk_has_ctor(mbt), opt_ru_blk_has_ctor(mbf))
+      +ok_m = Bool.and(Bool.not(has_c), Bool.and(ok_t, Bool.and(ok_f, Bool.and(U32.is_ne(tb, fb), Bool.and(U32.is_ne(jt, 0), Bool.and(U32.is_eq(jt, jf), Bool.and(U32.is_lt(m, 1024), Bool.and(U32.is_ne(m, id), U32.is_eq(um_get(preds, m), 2)))))))))
+      ud = opt_ru_blk_ud(mbf, opt_ru_blk_ud(mbt, UM0{}))
+      Bool.pick(RaVec<List<&2, ReuseTok>>, ok_m, opt_ru_put(True{}, m, opt_ru_filter_m(ud, Con{h, t}), pmap), Bool.pick(RaVec<List<&2, ReuseTok>>, Bool.and(ok_t, Bool.and(ok_f, U32.is_ne(tb, fb))), opt_ru_put(True{}, fb, Con{h, t}, opt_ru_put(True{}, tb, Con{h, t}, pmap)), pmap))
     case _ _: pmap
 def opt_ru_blk_ir(id: U32, term: IrTerm, st: RuSt) -> IrBlock:
   match st:
